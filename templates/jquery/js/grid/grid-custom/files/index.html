@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>$(componentName)</title>
+	$(cssBlock)
+
+	$(scriptBlock)
+	<script src="data.js"></script>
+	
+ <script type="text/javascript">
+       $(function () {
+		$("#grid").igGrid({
+                primaryKey: "EmployeeID",
+                width: '900px',
+                columns: [
+                    { headerText: "Employee ID", key: "EmployeeID", dataType: "number", width: "15%" },
+                    { headerText: "First Name", key: "FirstName", dataType: "string", width: "25%" },
+                    { headerText: "Last Name", key: "LastName", dataType: "string", width: "25%"},
+                    { headerText: "Title", key: "Title", dataType: "string", width: "35%" }
+                ],
+                autofitLastColumn: false,
+                autoGenerateColumns: false,
+                dataSource: northwind,
+                responseDataKey: "results",
+                features: [
+					$(Gridfeatures)
+                ]
+            });
+					
+       });
+    </script>
+</head>
+<body>
+    <table id="grid"></table>
+</body>
+</html>

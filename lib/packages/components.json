@@ -1,0 +1,23 @@
+{
+	"oss": [
+		"igEditors",
+		"igCombo",
+		"igTree"
+	],
+	"full": [
+		"igGrid",
+		"igTreeGrid",
+		"igHierarchicalGrid",
+		"igDataChart",
+		"igPieChart",
+		"igDoughnutChart",
+		"igFunnelChart",
+		"GridExcelExporter"
+	],
+	"dv": [
+		"igDataChart",
+		"igPieChart",
+		"igDoughnutChart",
+		"igFunnelChart"
+	]
+}

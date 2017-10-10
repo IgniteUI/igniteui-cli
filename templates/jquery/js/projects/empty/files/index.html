@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>$(name)</title>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+
+ 
+    <!-- Ignite UI Required Combined CSS Files -->
+    <link href="cli-navigation.css" rel="stylesheet" />
+    <!-- Ignite UI Required Combined JavaScript Files -->
+    <script src="ignite-cli-views.js"></script>
+</head>
+<body>
+    <h2>Ignite UI CLI Project: $(name)</h2>
+    <ul id="list" class="nav-menu">
+        <li class="nav-menu-item"><a href="/">Home</a></li>
+	</ul>
+	<h3>Thank you for using the Ignite UI CLI!</h3>
+	<img src="Ignite-header-apps-960.png" alt="Ignite UI" height="602" width="602" />
+
+    <script>
+        var result = "";
+        for (var i = 0; i < igniteCLIViews.length; i++) {
+            var view = igniteCLIViews[i];
+            result += "<li class=\"nav-menu-item\"><a href='" + view.path + "'>" + view.name + "</a></li>"
+		}
+		result += "<li class=\"nav-menu-item-logo\"><div>Ignite UI CLI</div></li>";
+        $("#list").append(result);
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+# top-most EditorConfig file
+root = true
+
+# Tab indentation (no size specified)
+[*.js]
+indent_style = tab

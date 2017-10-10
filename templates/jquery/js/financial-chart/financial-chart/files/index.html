@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>$(idPlaceHolder)</title>
+
+	$(cssBlock)
+    <style type="text/css">
+        td { vertical-align: top; }
+        .chartElement { margin-right: 10px; }
+        .chart-container {
+            width: 49%; 
+            box-sizing:border-box; 
+            float: left;
+        }
+            .chart-container h3 {
+                text-align: center
+            }
+        #charts {
+            padding : 1px;
+        }
+    </style>
+	$(scriptBlock)
+<script type="text/javascript" src="financial-data.js"></script>
+ <script type="text/javascript">
+		$(function () {
+			$("#candlestickChart").igDataChart({
+                width: "100%",
+                height: "500px",
+                title: "Microsoft (MSFT) vs. Adobe (ADBE)",
+                subtitle: "A comparison of stocks over time",
+                horizontalZoomable: true,
+                verticalZoomable: true,
+                windowResponse: "immediate",
+                axes: [{
+                    name: "xAxis",
+                    type: "categoryX",
+                    dataSource: data,
+                    label: "Date",
+                    title: "Date",
+                    interval: 10
+                }, {
+                    name: "yAxis",
+                    type: "numericY",
+                    title: "Price",
+                }],
+                series: [{
+                    name: "series1",
+                    dataSource: data,
+                    title: "Price Series",
+                    type: "financial",
+                    displayType: "candlestick",
+                    isTransitionInEnabled: true,
+                    isHighlightingEnabled: true,
+                    xAxis: "xAxis",
+                    yAxis: "yAxis",
+                    openMemberPath: "Open",
+                    highMemberPath: "High",
+                    lowMemberPath: "Low",
+                    closeMemberPath: "Close",
+                    showTooltip: true,
+                    thickness: 1,
+                    trendLineBrush: "rgba(68, 172, 214, .8)",
+                    trendLineThickness: 5,
+                    trendLineType: "exponentialAverage",
+                    negativeBrush: "rgba(198, 45, 54, .8)"
+                }, {
+                    name: "series2",
+                    dataSource: dataAdobe,
+                    title: "Price Series",
+                    type: "financial",
+                    isTransitionInEnabled: true,
+                    isHighlightingEnabled: true,
+                    displayType: "candlestick",
+                    xAxis: "xAxis",
+                    yAxis: "yAxis",
+                    openMemberPath: "Open",
+                    highMemberPath: "High",
+                    lowMemberPath: "Low",
+                    closeMemberPath: "Close",
+                    showTooltip: true,
+                    thickness: 1,
+                    trendLineBrush: "rgba(73, 73, 73, .8)",
+                    trendLineThickness: 5,
+                    trendLineType: "exponentialAverage",
+                    negativeBrush: "rgba(198, 45, 54, .8)"
+                }],
+           });
+
+            $("#ohlcChart").igDataChart({
+                width: "100%",
+                height: "500px",
+                title: "Microsoft (MSFT) vs. Adobe (ADBE)",
+                subtitle: "A comparison of stocks over time",
+                axes: [{
+                    name: "xAxis",
+                    type: "categoryX",
+                    dataSource: data,
+                    label: "Date",
+                    interval: 10,
+                    title: "Date",
+                }, {
+                    name: "yAxis",
+                    type: "numericY",
+                    title: "Price",
+                }],
+                series: [{
+                    name: "series1",
+                    dataSource: data,
+                    title: "Price Series",
+                    type: "financial",
+                    isTransitionInEnabled: true,
+                    displayType: "ohlc",
+                    xAxis: "xAxis",
+                    yAxis: "yAxis",
+                    openMemberPath: "Open",
+                    highMemberPath: "High",
+                    lowMemberPath: "Low",
+                    closeMemberPath: "Close",
+                    showTooltip: true,
+                    thickness: 2,
+                    trendLineBrush: "rgba(68, 172, 214, .8)",
+                    trendLineThickness: 5,
+                    trendLineType: "exponentialAverage",
+                    negativeBrush: "rgba(198, 45, 54, .8)"
+                }, {
+                    name: "series2",
+                    dataSource: dataAdobe,
+                    title: "Price Series",
+                    type: "financial",
+                    isTransitionInEnabled: true,
+                    displayType: "ohlc",
+                    xAxis: "xAxis",
+                    yAxis: "yAxis",
+                    openMemberPath: "Open",
+                    highMemberPath: "High",
+                    lowMemberPath: "Low",
+                    closeMemberPath: "Close",
+                    showTooltip: true,
+                    thickness: 2,
+                    trendLineBrush: "rgba(73, 73, 73, .8)",
+                    trendLineThickness: 5,
+                    trendLineType: "exponentialAverage",
+                    negativeBrush: "rgba(198, 45, 54, .8)"
+                }],
+                horizontalZoomable: true,
+                verticalZoomable: true,
+                windowResponse: "immediate"
+            });
+		});
+    </script>
+</head>
+<body>
+	<h2>$(idPlaceHolder)</h2>
+	<div id="charts">
+        <div class="chart-container">
+            <h3>Candlestick</h3>
+                <div id="candlestickChart" class="chartElement"></div>
+        </div>
+        <div class="chart-container">
+            <h3>OHLC</h3>
+                <div id="ohlcChart" class="chartElement"></div>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr><td><div class="Quandldata-attribution">Stock data from: <a href="http://www.quandl.com/" target="_blank">Quandl</a></div></td></tr>
+    </table>
+
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>$(idPlaceHolder)</title>
+
+	$(cssBlock)
+
+    <style type="text/css">
+        h4 {
+            width: 100%;
+            text-align: center;
+        }
+
+        .chart {
+            position: relative;
+            float: left;
+            margin-right: 10px;
+        }
+    </style>
+	$(scriptBlock)
+<script type="text/javascript" src="us-fao-gross-production.js"></script>
+ <script type="text/javascript">
+     $(function () {
+	            function createScatterChart(selector, seriesType, dataSource) {
+                $(selector).igDataChart({
+                    width: "400px",
+                    height: "400px",
+                    dataSource: dataSource,
+                    title: "U.S. Agricultural Production Per Year",
+                    subtitle: "Data from 1961-2007",
+                    axes: [{
+                        name: "xAxis",
+                        type: "numericX",
+                        interval: 10,
+                        title: "Year",
+                    }, {
+                        name: "yAxis",
+                        type: "numericY",
+                        title: "Billions of USD",
+                        maximumValue: 200000,
+                        formatLabel: function (val) {
+                            var bVal = (val / 1000),
+                            rounded = Math.round(bVal * 100) / 100;
+                            return "$"+ rounded;
+                        }
+                    }],
+                    series: [{
+                        name: "scatter",
+                        type: seriesType,
+                        xAxis: "xAxis",
+                        yAxis: "yAxis",
+                        xMemberPath: "Year",
+                        yMemberPath: "Value",
+                        markerType: "circle"
+                    }],
+                    horizontalZoomable: true,
+                    verticalZoomable: true,
+                    windowResponse: "immediate"
+                });
+            }
+
+            function createBubbleChart(selector, dataSource) {
+                $(selector).igDataChart({
+                    width: "400px",
+                    height: "400px",
+                    dataSource: dataSource,
+                    title: "U.S. Agricultural Production Per Year",
+                    subtitle: "Data from 1961-2007",
+                    axes: [{
+                        name: "xAxis",
+                        type: "numericX",
+                        interval: 10,
+                        title: "Year",
+                    }, {
+                        name: "yAxis",
+                        type: "numericY",
+                        title: "Billions of USD",
+                        maximumValue: 200000,
+                        formatLabel: function (val) {
+                            var bVal = (val / 1000),
+                            rounded = Math.round(bVal * 100) / 100;
+                            return "$" + rounded;
+                        }
+                    }],
+                    series: [{
+                        name: "bubble",
+                        type: "bubble",
+                        xAxis: "xAxis",
+                        yAxis: "yAxis",
+                        xMemberPath: "Year",
+                        yMemberPath: "Value",
+                        radiusMemberPath: "Population",
+                        fillMemberPath: "Population",
+                        labelMemberPath: "Population",
+                        markerType: "circle",
+                        radiusScale: {
+                            minimumValue: 2,
+                            maximumValue: 12,
+                            isLogarithmic: true
+                        },
+                        fillScale: {
+                            type: "value",
+                            brushes: ["red", "orange", "yellow"],
+                            minimumValue: 150,
+                            maximumValue: 400
+                        }
+                    }],
+                    horizontalZoomable: true,
+                    verticalZoomable: true,
+                    windowResponse: "immediate"
+                });
+            }
+
+            createScatterChart("#chartScatter", "scatter", agriculturalData);
+            createScatterChart("#chartScatterLine", "scatterLine", agriculturalData);
+            createBubbleChart("#chartBubble", agriculturalData);
+			createScatterChart("#chartScatterSpline", "scatterSpline", agriculturalData);
+	 });
+    </script>
+</head>
+<body>
+	<h2>$(idPlaceHolder)</h2>
+	<div class="chartContainer">
+			<div class="chart">
+				<h4>Scatter</h4>
+				<div id="chartScatter"></div>
+			</div>
+			<div class="chart">
+				<h4>Scatter Line</h4>
+				<div id="chartScatterLine"></div>
+			</div>
+			<div class="chart">
+				<h4>Scatter Spline</h4>
+				<div id="chartScatterSpline"></div>
+			</div>
+			<div class="chart">
+				<h4>Bubble Chart</h4>
+				<div id="chartBubble"></div>
+			</div>
+			<div style="clear:both"></div>
+		</div>
+		<div class="UNdata-attribution">
+		Agricultural data from:<br />
+		<a href="http://data.un.org/" target="_blank">UNdata</a>
+		</div>	
+</body>
+</html>

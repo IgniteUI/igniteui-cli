@@ -1,0 +1,32 @@
+{
+	"extends": "tslint:latest",
+	"rules": {
+		"arrow-parens": [true, "ban-single-arg-parens"],
+		"indent": [ true, "tabs" ],
+		"comment-format": [ true,
+			"check-lowercase",
+			{
+				"ignore-pattern": "TODO|\\w\\.\\w"
+			}
+		],
+		"variable-name": [ true, "allow-leading-underscore" ],
+		"trailing-comma": [
+			true,
+			{
+				"multiline": "never",
+				"singleline": "never"
+			}
+		],
+		"no-bitwise": false,
+		"no-submodule-imports": [
+			true,
+			"rxjs",
+			"@angular/platform-browser",
+			"@angular/core/testing"
+		],
+		"object-literal-sort-keys": [true, "ignore-case", "match-declaration-order"],
+		"no-empty": false,
+		"max-classes-per-file": [ false ],
+		"prefer-object-spread": false
+	}
+}

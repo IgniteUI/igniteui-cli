@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>$(idPlaceHolder)</title>
+
+	$(cssBlock)
+<style>
+	.float {
+            float: left;
+            margin: 10px 10px 0 0;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        .hr {
+            border-top: 1px solid #2CBDF9;
+            margin-bottom: 10px;
+        }
+
+        .options-container {
+            width: 220px;
+            padding-top: 70px;
+        }
+
+        .main-container {
+            width: 100%;
+            height: 850px;
+        }
+
+        .editor-container {
+            float: left;
+            margin: 0 25px 20px 5px;
+        }
+
+            .editor-container .labels {
+                display: block;
+                font-size: 13px;
+                padding-bottom: 5px;
+            }
+
+        .year-profit {
+            float: right;
+            margin-left: 5px;
+            font-weight: bold;
+            border: none;
+        }
+
+        .eidtors-title {
+            padding: 0 0 3px 2px;
+        }
+
+        .number-container {
+            float: right;
+            font-size: 30px;
+            width: 200px;
+            text-align: right;
+            margin-right: 20px;
+        }
+
+        .btn-refresh {
+            float: right;
+            width: 48px;
+            height: 48px;
+            padding: 0;
+            margin: 0;
+            border-image-width: 0;
+            cursor: pointer;
+            border: 1px solid #999;
+            background-image: url(http://igniteui.com/images/samples/data-chart/music-controls-sprite.png);
+            background-position: -434px -2px;
+            background-repeat: no-repeat;
+        }
+
+            .btn-refresh:hover {
+                background-position: -434px -50px;
+            }
+
+        /* Line chart container and legend */
+        .sample-line-chart-holder {
+            position: relative;
+            width: 100%;
+			margin-top: 10px;
+        }
+
+        #legendLineChart {
+            border: none;
+            background-color: transparent;
+            font-weight: bold;
+
+        }
+
+        /* Polar chart container and legend */
+        .sample-polar-chart-holder {
+            position: relative;
+            width: 33.3%;
+            float: left;
+        }
+
+        .polar-chart-legend {
+            position: absolute;
+            top: 250px;
+            left: 15px;
+            border: none;
+            background-color: transparent;
+            font-weight: bold;
+        }
+
+        /* Line chart container and legend */
+        .sample-bar-chart-holder {
+			width: 60%;
+            float: left;
+            margin-top: 10px;
+			margin-left: 20px;
+        }
+
+        #legendBarColumnChart {
+            border: none;
+            background-color: transparent;
+            font-weight: bold;
+			margin-top: -62px;
+			position: absolute;
+			margin-left: 40px;
+        }
+
+		.grid-holder {
+			width: 35%;
+            float: left;
+			margin-top: 10px;
+			margin-left: 10px;
+		}
+		.grid-container {
+			height: 250px;
+			width: 100%
+		}
+
+
+        @media screen and (max-width: 970px) {
+            .responsive-clear {
+                clear: both;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            /* Polar chart container and legend under 600px */
+            .sample-polar-chart-holder {
+                position: relative;
+                width: 100%;
+                float: left;
+                margin-top: 10px;
+            }
+
+                .sample-polar-chart-holder > div:first-of-type {
+                    width: 99% !important;
+                }
+
+            .editor-container {
+                clear: both;
+            }
+        }
+
+        @media screen and (max-width: 430px) {
+            #sample > section > * {
+                margin: 0;
+            }
+        }
+		</style>
+	$(scriptBlock)
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout.mapping/2.4.1/knockout.mapping.min.js"></script>
+	<script src="../ignite-ui/js/extensions/infragistics.ui.combo.knockout-extensions.js"></script>
+	<script src="../ignite-ui/js/extensions/infragistics.ui.editors.knockout-extensions.js"></script>
+	<script src="../ignite-ui/js/extensions/infragistics.ui.datachart.knockout-extensions.js"></script>
+	<script src="../ignite-ui/js/extensions/infragistics.datasource.knockoutjs.js"></script>
+	<script src="../ignite-ui/js/extensions/infragistics.ui.grid.knockout-extensions.js"></script>
+
+<script type="text/javascript">
+	$(function () {
+		var viewModel,
+			overallProfit = 0,
+			MTHS = [
+				"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep",
+				"Oct", "Nov", "Dec"
+			];
+
+		function generateData() {
+			var num = 12,
+				data = [],
+				rand1,
+				rand2,
+				rand3;
+
+			overallProfit = 0;
+
+			for (var i = 0; i < num; i++) {
+				rand1 = Math.random() * 50.0;
+				rand2 = Math.random() * 40.0;
+				rand3 = rand1 - rand2;
+				overallProfit += rand3;
+				data[i] = {
+					index: ko.observable(i),
+					month: ko.observable(MTHS[i]),
+					revenue: ko.observable(rand1),
+					expenses: ko.observable(rand2),
+					profit: ko.observable(rand3)
+				};
+			}
+
+			return data;
+		}
+
+		function randomizeData() {
+			var num = 12,
+				rand1,
+				rand2,
+				rand3;
+			overallProfit = 0;
+
+			for (var i = 0; i < num; i++) {
+				rand1 = Math.random() * 50.0;
+				rand2 = Math.random() * 40.0;
+				rand3 = rand1 - rand2;
+				overallProfit += rand3;
+				viewModel.data()[i].revenue(rand1);
+				viewModel.data()[i].expenses(rand2);
+				viewModel.data()[i].profit(rand3);
+			}
+		}
+
+		function ViewModel(data) {
+			this.data = ko.observableArray(data);
+
+			this.chartThickness = 2;
+			this.transitionDuration = 1000;
+			this.chartIntervalX = 1;
+			this.revenueColor = "#a4ba29";
+			this.expensesColor = "#d3404b";
+			this.profitColor = "#216EDD";
+			this.outlineColor = "black";
+			this.yearProfit = ko.observable(overallProfit * 1000000);
+			this.months = ko.mapping.fromJS(MTHS);
+
+			this.formatMonth = function (value) {
+				return MTHS[value];
+			}
+
+			this.toFixedTwoDigits = function (value) {
+				return value.toFixed(2);
+			}
+		}
+
+		viewModel = new ViewModel(generateData());
+		ko.applyBindings(viewModel);
+
+		$(".btn-refresh").click(function () {
+			randomizeData();
+		});
+	});
+    </script>
+</head>
+<body>
+	<h2>$(idPlaceHolder)</h2>
+	<div class="main-container">
+		<div class="eidtors-title">
+			Change grid cell values to update the charts below
+			<div class="year-profit" data-bind="igCurrencyEditor: {
+				value: yearProfit,
+				readOnly: true,
+				width: 100,
+				negativePattern: '$ -n',
+				postivePattern: '$ n',
+				dataMode: 'int'
+			}"></div>
+			<span class="year-profit"> Overall Year Profit: </span>
+		</div>
+		<div class="clear hr"></div>
+		<div class="window-container-1">
+		<button class="btn-refresh" title="Randomize Chart Data"></button>
+<div class="grid-container">
+	<div class="grid-holder">
+		<table id="grid" data-bind="igGrid: {
+			dataSource: data,
+			
+			height: 250,
+			autoCommit: true,
+			autoGenerateColumns: false,
+			primaryKey: 'index',
+			columns: [
+				{ key: 'index', hidden: true },
+				{ key: 'month', headerText: 'Month Name' },
+				{ key: 'revenue', headerText: 'Revenue', formatter: toFixedTwoDigits },
+				{ key: 'expenses', headerText: 'Revenue', formatter: toFixedTwoDigits },
+				{ key: 'profit', headerText: 'Profit', formatter: toFixedTwoDigits }
+			],
+			features: [
+				{
+					name: 'Updating',
+					enableAddRow: false,
+					enableDeleteRow: false,
+					columnSettings: [{
+						columnKey: 'month',
+						readOnly: true
+					}, {
+						columnKey: 'revenue',
+						editorType: 'numeric',
+						editorOptions: {
+							width: 100,
+							minValue: 0,
+							maxValue: 50,
+							buttonType: 'spin',
+							updateMode: 'immediate'
+						}
+					}, {
+						columnKey: 'expenses',
+						editorType: 'numeric',
+						editorOptions: {
+							width: 100,
+							minValue: 0,
+							maxValue: 50,
+							buttonType: 'spin',
+							updateMode: 'immediate'
+						}
+					}, {
+						columnKey: 'profit',
+						editorType: 'numeric',
+						editorOptions: {
+							width: 100,
+							minValue: -50,
+							buttonType: 'spin',
+							updateMode: 'immediate'
+						}
+					}]
+				}
+			]
+		}"></table>
+
+
+	</div>
+	<div class="sample-bar-chart-holder" style="">
+		<div id="barColumnChart" data-bind='igDataChart: {
+				dataSource: data,
+				width: "100%",
+				height: 220,
+				title: "Yearly Profit",
+				leftMargin: 5,
+				legend: { element: "legendBarColumnChart" },
+				axes: [{
+					name: "xAxis",
+					type: "categoryX",
+					interval: chartIntervalX,
+					label: "month",
+					labelLocation: "outsideTop"
+				}, {
+					name: "yAxis",
+					type: "numericY",
+					minimumValue: -50,
+					maximumValue: 50
+				}],
+				series: [{
+					name: "column1",
+					type: "column",
+					isHighlightingEnabled: true,
+					title: "Revenue",
+					xAxis: "xAxis",
+					yAxis: "yAxis",
+					valueMemberPath: "revenue",
+					transitionDuration: transitionDuration,
+					brush: revenueColor
+				},
+				{
+					name: "column2",
+					type: "column",
+					isHighlightingEnabled: true,
+					title: "Expenses",
+					xAxis: "xAxis",
+					yAxis: "yAxis",
+					valueMemberPath: "expenses",
+					transitionDuration: transitionDuration,
+					brush: expensesColor
+				}, {
+					name: "column3",
+					type: "column",
+					isHighlightingEnabled: true,
+					title: "Profit",
+					xAxis: "xAxis",
+					yAxis: "yAxis",
+					valueMemberPath: "profit",
+					transitionDuration: transitionDuration,
+					brush: profitColor
+				}]
+			}'></div>
+		<div id="legendBarColumnChart"></div>
+	</div>
+	<div class="clear"></div>
+</div>
+<div class="sample-line-chart-holder">
+	<div id="lineChart" data-bind='igDataChart: {
+			dataSource: data,
+			width: "100%",
+			height: 200,
+			title: "Yearly Profit",
+			leftMargin: 5,
+			legend: { element: "legendLineChart" },
+			axes: [{
+				name: "xAxis",
+				type: "categoryX",
+				interval: chartIntervalX,
+				label: "month",
+				labelLocation: "outsideTop"
+
+			}, {
+				name: "yAxis",
+				type: "numericY",
+				interval: 10,
+				minimumValue: -50,
+				maximumValue: 50
+
+			}],
+			series: [{
+				name: "line1",
+				title: "Revenue",
+				type: "line",
+				isHighlightingEnabled: true,
+				thickness: chartThickness,
+				xAxis: "xAxis",
+				yAxis: "yAxis",
+				valueMemberPath: "revenue",
+				transitionDuration: transitionDuration,
+				brush: revenueColor
+			},
+			{
+				name: "line2",
+				title: "Expenses",
+				type: "line",
+				isHighlightingEnabled: true,
+				thickness: chartThickness,
+				xAxis: "xAxis",
+				yAxis: "yAxis",
+				valueMemberPath: "expenses",
+				transitionDuration: transitionDuration,
+				brush: expensesColor
+			}, {
+				name: "line3",
+				title: "Profit",
+				type: "line",
+				isHighlightingEnabled: true,
+				thickness: chartThickness,
+				xAxis: "xAxis",
+				yAxis: "yAxis",
+				valueMemberPath: "profit",
+				transitionDuration: transitionDuration,
+				brush: profitColor
+			}]
+		}'>
+	</div>
+	<div id="legendLineChart"></div>
+</div>
+			
+			<div class="sample-polar-chart-holder">
+				<div id="polarSplineChartRevenue" data-bind='igDataChart: {
+					width: "97%",
+					height: 275,
+					dataSource: data,
+					title: "Revenue",
+					legend: { element: "legendPolarChartRevenue" },
+					axes: [{
+						name: "angleAxis",
+						type: "numericAngle",
+						interval: chartIntervalX,
+						formatLabel: formatMonth,
+					},
+					{
+						name: "radiusAxis",
+						type: "numericRadius"
+					}],
+					series: [{
+						name: "polarSpline",
+						type: "polarSpline",
+						title: "Revenue",
+						angleAxis: "angleAxis",
+						radiusAxis: "radiusAxis",
+						angleMemberPath: "index",
+						radiusMemberPath: "revenue",
+						transitionDuration: transitionDuration,
+						brush: revenueColor
+					}]
+				}'>
+				</div>
+				<div id="legendPolarChartRevenue" class="polar-chart-legend"></div>
+			</div>
+			<div class="sample-polar-chart-holder">
+				<div id="polarSplineChartExpenses" data-bind='igDataChart: {
+					width: "97%",
+					height: 275,
+					dataSource: data,
+					title: "Expenses",
+					legend: { element: "legendPolarChartExpenses" },
+					axes: [{
+						name: "angleAxis",
+						type: "numericAngle",
+						interval: chartIntervalX,
+						formatLabel: formatMonth,
+					},
+					{
+						name: "radiusAxis",
+						type: "numericRadius"
+					}],
+					series: [{
+						name: "polarSpline",
+						type: "polarSpline",
+						title: "Expenses",
+						angleAxis: "angleAxis",
+						radiusAxis: "radiusAxis",
+						angleMemberPath: "index",
+						radiusMemberPath: "expenses",
+						transitionDuration: transitionDuration,
+						brush: expensesColor
+					}]
+				}'>
+				</div>
+				<div id="legendPolarChartExpenses" class="polar-chart-legend"></div>
+			</div>
+			<div class="sample-polar-chart-holder">
+				<div id="polarSplineChartProfit" data-bind='igDataChart: {
+					width: "97%",
+					height: 275,
+					title: "Profit",
+					dataSource: data,
+					legend: { element: "legendPolarChartProfit" },
+					axes: [{
+						name: "angleAxis",
+						type: "numericAngle",
+						interval: chartIntervalX,
+						formatLabel: formatMonth,
+					},
+					{
+						name: "radiusAxis",
+						type: "numericRadius"
+					}],
+					series: [{
+						name: "polarSpline",
+						type: "polarSpline",
+						title: "Profit",
+						angleAxis: "angleAxis",
+						radiusAxis: "radiusAxis",
+						angleMemberPath: "index",
+						radiusMemberPath: "profit",
+						transitionDuration: transitionDuration,
+						brush: profitColor
+					}]
+				}'>
+				</div>
+				<div id="legendPolarChartProfit" class="polar-chart-legend"></div>
+			</div>
+		
+		</div>
+	</div>
+</body>
+</html>

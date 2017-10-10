@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module": "commonjs",
+        "sourceMap": true
+    },
+    "exclude": [
+        "output",
+		"**/files/*",
+		"templates/quickstart/angular2",
+        "node_modules"
+    ]
+}

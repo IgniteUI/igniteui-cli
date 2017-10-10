@@ -1,0 +1,192 @@
+{
+	// Use IntelliSense to learn about possible Node.js debug attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"type": "node",
+			"request": "attach",
+			"name": "Attach by Process ID",
+			"processId": "${command:PickProcess}"
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Launch New jQuery",
+			"cwd": "${workspaceRoot}/output",
+			"program": "${workspaceRoot}/bin/execute.js",
+			"console": "externalTerminal",
+			"preLaunchTask": "build",
+			"args": [
+				"new"
+				 ,"jqueryproj"
+				 ,"--framework=jquery"
+			]
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Launch New Angular",
+			"cwd": "${workspaceRoot}/output",
+			"program": "${workspaceRoot}/bin/execute.js",
+			"console": "externalTerminal",
+			"preLaunchTask": "build",
+			"args": [
+				"new"
+				 ,"angularproj"
+				 ,"--framework=angular"
+			]
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Launch Wizard",
+			"cwd": "${workspaceRoot}/output",
+			"program": "${workspaceRoot}/bin/execute.js",
+			"console": "externalTerminal",
+			"preLaunchTask": "build"
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Launch New React",
+			"cwd": "${workspaceRoot}/output",
+			"program": "${workspaceRoot}/bin/execute.js",
+			"console": "externalTerminal",
+			"preLaunchTask": "build",
+			"args": [
+				"new"
+				 ,"reactproj"
+				 ,"--framework=react"
+			]
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Launch Quickstart jQuery",
+			"cwd": "${workspaceRoot}/output",
+			"program": "${workspaceRoot}/bin/execute.js",
+			"console": "externalTerminal",
+			"preLaunchTask": "build",
+			"args": [
+				"quickstart",
+				"--framework=jquery"
+			]
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Launch Quickstart React",
+			"cwd": "${workspaceRoot}/output",
+			"program": "${workspaceRoot}/bin/execute.js",
+			"console": "externalTerminal",
+			"preLaunchTask": "build",
+			"args": [
+				"quickstart",
+				"--framework=react"
+			]
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Launch Quickstart Angular2",
+			"cwd": "${workspaceRoot}/output",
+			"program": "${workspaceRoot}/bin/execute.js",
+			"console": "externalTerminal",
+			"preLaunchTask": "build",
+			"args": [
+				"quickstart",
+				"--framework=angular2"
+			]
+		},
+
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Launch Add",
+			"program": "${workspaceRoot}/bin/execute.js",
+			"console": "externalTerminal",
+			"preLaunchTask": "build",
+			"args": [
+				"add"
+			]
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"cwd": "${workspaceRoot}/output/proj",
+			"name": "Launch Start",
+			"program": "${workspaceRoot}/bin/execute.js",
+			"console": "externalTerminal",
+			"preLaunchTask": "build",
+			"args": [
+				"start"
+			]
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Launch Test",
+			"protocol": "legacy",
+			"runtimeExecutable": "npm.cmd",
+			"preLaunchTask": "build",
+			"runtimeArgs": [
+				"run",
+				"test-debug"
+			],
+			"port": 5858
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Add Combo to Jquery",
+			"cwd": "${workspaceRoot}/output/jqueryproj",
+			"program": "${workspaceRoot}/bin/execute.js",
+			"console": "externalTerminal",
+			"preLaunchTask": "build",
+			"args": [
+				"add",
+				"--template=combo",
+				"--name=mycombo"
+			]
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Add Combo to React",
+			"cwd": "${workspaceRoot}/output/reactProj",
+			"program": "${workspaceRoot}/bin/execute.js",
+			"console": "externalTerminal",
+			"preLaunchTask": "build",
+			"args": [
+				"add",
+				"--template=combo",
+				"--name=mycombo"
+			]
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Add Combo to Angular2",
+			"cwd": "${workspaceRoot}/output/angularproj",
+			"program": "${workspaceRoot}/bin/execute.js",
+			"console": "externalTerminal",
+			"preLaunchTask": "build",
+			"args": [
+				"add",
+				"--template=combo",
+				"--name=mycombo"
+			]
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Launch Wizard Reactproj",
+			"cwd": "${workspaceRoot}/output/reactproj",
+			"program": "${workspaceRoot}/bin/execute.js",
+			"console": "externalTerminal",
+			"preLaunchTask": "build"
+		}
+	]
+}

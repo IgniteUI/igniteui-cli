@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>$(idPlaceHolder)</title>
+
+	$(cssBlock)
+    <style type="text/css">
+		#chart {
+		   position: relative;
+		   float: left;
+		   margin-right: 10px;
+		   margin-bottom: 10px;
+   }
+	   
+   </style>
+	$(scriptBlock)
+<script type="text/javascript" src="data.js"></script>
+<script type="text/javascript">
+	$(function () {
+		$("#chart").igPieChart({
+			width: "435px",
+			height: "435px",
+			dataSource: data,
+			dataValue: "Pop2008",
+			dataLabel: "CountryName",
+			labelsPosition: "bestFit"
+		});
+
+	});
+</script>
+</head>
+<body>
+	<h2>$(idPlaceHolder)</h2>
+
+	<div id="chart"></div>
+</body>
+</html>

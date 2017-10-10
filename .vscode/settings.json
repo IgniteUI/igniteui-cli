@@ -1,0 +1,14 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+	"typescript.tsdk": "./node_modules/typescript/lib",
+	"editor.insertSpaces": false,
+	"editor.detectIndentation": false,
+	"files.exclude": {
+		"lib/**/*.js.map": true,
+		"lib/**/*.js": {"when": "$(basename).ts"},
+		"spec/acceptance/**/*.js.map": true,
+		"spec/acceptance/**/*.js": {"when": "$(basename).ts"},
+		"templates/**/*.js.map": true,
+		"templates/**/*.js": {"when": "$(basename).ts"}
+	}
+}

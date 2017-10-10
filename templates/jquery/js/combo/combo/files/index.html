@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>$(idPlaceHolder)</title>
+
+	$(cssBlock)
+
+	$(scriptBlock)
+
+ <script type="text/javascript">
+  	var platforms = [
+            { Name: "jQuery/HTML5/ASP.NET MVC Controls" },
+            { Name: "ASP.NET Controls" },
+            { Name: "Windows Forms Controls" },
+            { Name: "WPF Controls" },
+            { Name: "Android Native mobile controls" },
+            { Name: "iOS Controls" },
+            { Name: "SharePlus" },
+            { Name: "ReportPlus" },
+            { Name: "Indigo Studio" }
+        ];
+
+       $(function () {
+           $("#combo").igCombo({
+                width: 300,
+                dataSource: platforms,
+                textKey: "Name",
+                valueKey: "Name",
+                multiSelection: {
+                    enabled: true,
+                    showCheckboxes: true
+                },
+                dropDownOrientation: "bottom"
+            });
+       });
+    </script>
+</head>
+<body>
+	<h2>$(idPlaceHolder). MultiSelection with checkboxes is enabled</h2>
+    <div id="combo"></div>
+</body>
+</html>

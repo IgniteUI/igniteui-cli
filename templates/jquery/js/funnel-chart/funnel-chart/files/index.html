@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>$(idPlaceHolder)</title>
+
+	$(cssBlock)
+	<style>
+		.chartContainer {
+			position: relative;
+		   float: left;
+		   	margin-left: 20px;
+			margin-right: 50px;
+		}
+	</style>
+	$(scriptBlock)
+<script type="text/javascript" src="data.js"></script>
+<script type="text/javascript">
+	$(function () {
+		$("#chartNormal").igFunnelChart({
+			width: "320px",
+			height: "450px",
+			dataSource: data,
+			valueMemberPath: "Budget",
+			innerLabelMemberPath: "Budget",
+			innerLabelVisibility: "visible",
+			outerLabelMemberPath: "Department",
+			outerLabelVisibility: "visible"
+		});
+
+		//  Create a funnel chart with weighted size slices
+		$("#chartWeighted").igFunnelChart({
+			width: "320px",
+			height: "450px",
+			leftMargin: 20,
+			dataSource: data,
+			valueMemberPath: "Budget",
+			innerLabelMemberPath: "Budget",
+			innerLabelVisibility: "visible",
+			outerLabelMemberPath: "Department",
+			outerLabelVisibility: "visible",
+			funnelSliceDisplay: "weighted"
+		});
+
+		//  Create an inverted funnel chart
+		$("#chartInverted").igFunnelChart({
+			width: "320px", 
+			height: "450px",
+			leftMargin: 20,
+			dataSource: data,
+			valueMemberPath: "Budget",
+			innerLabelMemberPath: "Budget",
+			innerLabelVisibility: "visible",
+			isInverted: true
+		});
+	});
+</script>
+</head>
+<body>
+	<h2>$(idPlaceHolder)</h2>
+	<div class="sampleContent">
+			<div class="chartContainer chartContainer3">
+				<h4>Funnel Chart</h4>
+				<div id="chartNormal"></div>
+			</div>
+			<div class="chartContainer chartContainer3">
+				<h4>Weighted Slices</h4>
+				<div id="chartWeighted"></div>
+			</div>
+			<div class="chartContainer chartContainer3">
+				<h4>Inverted Funnel Chart</h4>
+				<div id="chartInverted"></div>
+			</div>
+		</div>
+
+</body>
+</html>

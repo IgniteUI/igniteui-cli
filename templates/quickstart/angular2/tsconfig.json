@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "removeComments": false,
+    "noImplicitAny": false,
+    "suppressImplicitAnyIndexErrors": true,
+    "typeRoots": [
+      "./node_modules/@types/"
+    ]
+  },
+   "files": [
+     "node_modules/igniteui-angular2/jquery.d.ts",
+    "node_modules/igniteui-angular2/igniteui.ts",
+    "node_modules/igniteui-angular2/igniteui.angular2.ts",
+    "app/app.module.ts",
+    "app/app.component.ts",
+    "app/main.ts"
+   ]
+}

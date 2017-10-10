@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>$(componentName)</title>
+	
+	$(cssBlock)
+	
+	$(scriptBlock)
+ <!--Sample JSON Data-->
+ <script src="data.js"></script>
+ <script type="text/javascript">
+       $(function () {
+		   $("#checkboxModeTreeGrid").igTreeGrid({
+			   width: "100%",
+			   dataSource: hierarchicalDS,
+			   autoGenerateColumns: false,
+			   height: 500,
+			   primaryKey: "id",
+			   columns: [
+				   { headerText: "ID", key: "id", width: "10%", dataType: "number", hidden: true },
+				   { headerText: "Tasks", key: "tasks", width: "30%", dataType: "string" },
+				   { headerText: "Start", key: "start", width: "20%", dataType: "string" },
+				   { headerText: "Finish", key: "finish", width: "20%", dataType: "string" },
+				   { headerText: "Duration", key: "duration", width: "20%", dataType: "string" },
+				   { headerText: "Progress", key: "progress", width: "10%", dataType: "string" }
+			   ],
+			   childDataKey: "products",
+			   features: [
+				 $(Gridfeatures)
+			   ]
+		   });
+       });
+    </script>
+</head>
+<body>
+	<h2>$(componentName)</h2>
+    <table id="checkboxModeTreeGrid"></table>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>$(idPlaceHolder)</title>
+
+	$(cssBlock)
+
+	$(scriptBlock)
+<script type="text/javascript" src="data.js"></script>
+<script type="text/javascript">
+	$(function () {
+		$("#chart").igDoughnutChart({
+			width: "550px",
+			height: "550px",
+			series:
+			[{
+				name: "Pop1990",
+				labelMemberPath: "CountryName",
+				valueMemberPath: "Pop1990",
+				dataSource: data,
+				labelsPosition: "bestFit",
+				formatLabel: function (context) {
+					return context.itemLabel + " (" + context.item.Pop1990 + ")";
+				},
+				showTooltip: true,
+				tooltipTemplate: "populationTooltipTemplate",
+				brushes: ["#B284BE", "#5D8AA8", "#C9FFE5", "#7CB9E8", "#F19CBB"]
+			}]
+		});
+	});
+</script>
+</head>
+<body>
+	<h2>$(idPlaceHolder)</h2>
+	<div id="chart"></div>
+</body>
+</html>

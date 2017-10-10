@@ -1,0 +1,35 @@
+
+ul#list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: blue;
+}
+
+li.nav-menu-item {
+    float: left;
+}
+li.nav-menu-item-logo {
+	float: right;
+} 
+li.nav-menu-item-logo div {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li.nav-menu-item a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li.nav-menu-item a:hover {
+    background-color: #111;
+}

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>$(idPlaceHolder)</title>
+
+	$(cssBlock)
+    <style type="text/css">
+		
+		 
+		 .selectionOptions
+		 {
+			 margin-bottom: 10px;   
+		 }
+ 
+		 td { vertical-align: top; }
+		 .chartElement {
+			 padding-bottom: 20px;
+		 }
+	 </style>
+	$(scriptBlock)
+<script type="text/javascript" src="line-chart-data.js"></script>
+ <script type="text/javascript">
+      $(function () {
+			$("#chart").igDataChart({
+				width: "100%",
+				height: "400px",
+				legend: { element: "lineLegend" },
+				title: "Population per Country",
+				subtitle: "A comparison of population in 1995 and 2005",
+				dataSource: data,
+				axes: [
+					{
+						name: "NameAxis",
+						type: "categoryX",
+						label: "CountryName"
+					},
+					{
+						name: "PopulationAxis",
+						type: "numericY",
+						minimumValue: 0,
+						title: "Millions of People",
+					}
+				],
+				series: [
+					{
+						name: "2005Population",
+						type: "line",
+						title: "2005",
+						xAxis: "NameAxis",
+						yAxis: "PopulationAxis",
+						valueMemberPath: "Pop2005",
+						isTransitionInEnabled: true,
+						isHighlightingEnabled: true,
+						thickness: 5
+					},
+					{
+						name: "1995Population",
+						type: "line",
+						title: "1995",
+						xAxis: "NameAxis",
+						yAxis: "PopulationAxis",
+						valueMemberPath: "Pop1995",
+						isTransitionInEnabled: true,
+						isHighlightingEnabled: true,
+						thickness: 5
+					}
+				]
+			});
+
+			$("#seriesType").change(function (e) {
+				var marker = "none";
+				var thickness = 5,
+					seriesType = $(this).val();
+
+				if (seriesType == "area" ||
+					seriesType == "splineArea" ||
+					seriesType == "column" ||
+					seriesType == "waterfall" ||
+					seriesType == "point" ||
+					seriesType == "stepArea") {
+					thickness = 1;
+				}
+				if (seriesType == "point") {
+					marker = "circle";
+				}
+				$("#chart").igDataChart("option", "series", [{ name: "2005Population", remove: true }]);
+				$("#chart").igDataChart("option", "series", [{ name: "1995Population", remove: true }]);
+				$("#chart").igDataChart("option", "series", [{
+					type: $(this).val(),
+					name: "2005Population",
+					title: "2005",
+					xAxis: "NameAxis",
+					yAxis: "PopulationAxis",
+					valueMemberPath: "Pop2005",
+					markerType: marker,
+					isTransitionInEnabled: true,
+					isHighlightingEnabled: true,
+					thickness: thickness
+				}]);
+				$("#chart").igDataChart("option", "series", [{
+					type: $(this).val(),
+					name: "1995Population",
+					title: "1995",
+					xAxis: "NameAxis",
+					yAxis: "PopulationAxis",
+					valueMemberPath: "Pop1995",
+					markerType: marker,
+					isTransitionInEnabled: true,
+					isHighlightingEnabled: true,
+					thickness: thickness
+				}]);
+			});
+		});
+    </script>
+</head>
+<body>
+	<h2>$(idPlaceHolder)</h2>
+
+    <div class="selectionOptions" >
+        Series type:
+        <select id="seriesType">
+            <option value="line" selected="selected">Line</option>
+            <option value="stepLine">Step Line</option>
+            <option value="spline">Spline</option>
+            <option value="splineArea">Spline Area</option>
+        </select>
+    </div>
+    
+    <table>
+        <tr>
+            <td id="chart" class="chartElement"/>      
+            <td id="lineLegend" style="float: left"/>
+        </tr>
+    </table>
+    <div class="Quandl-attribution">
+        Population data from:
+        <a href="http://www.quandl.com/" target="_blank">Quandl</a>
+    </div>
+</body>
+</html>

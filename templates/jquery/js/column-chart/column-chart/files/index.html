@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>$(idPlaceHolder)</title>
+
+	$(cssBlock)
+	<style type="text/css">
+        td { vertical-align: top; }
+        .chartElement {
+            padding-bottom: 20px;
+        }
+    </style>
+	$(scriptBlock)
+<script type="text/javascript" src="world-energy-production.js"></script>
+ <script type="text/javascript">
+		$(function () {
+			$("#columnChart").igDataChart({
+                width: "98%",
+                height: "350px",
+                dataSource: lastFiveYears,
+                legend: { element: "columnLegend" },
+                title: "Energy Production Per Country",
+                subtitle: "The top five Total Primary Energy producers",
+                axes: [{
+                    name: "xAxis",
+                    type: "categoryX",
+                    label: "Year",
+                    labelTopMargin: 5
+                }, {
+                    name: "yAxis",
+                    type: "numericY",
+                    title: "Quadrillion Btu",
+                }],
+                series: [{
+                    name: "series1",
+                    title: "Canada",
+                    type: "column",
+                    isHighlightingEnabled: true,
+                    isTransitionInEnabled: true,
+                    xAxis: "xAxis",
+                    yAxis: "yAxis",
+                    valueMemberPath: "Canada"
+                }, {
+                    name: "series2",
+                    title: "Saudi Arabia",
+                    type: "column",
+                    isHighlightingEnabled: true,
+                    isTransitionInEnabled: true,
+                    xAxis: "xAxis",
+                    yAxis: "yAxis",
+                    valueMemberPath: "SaudiArabia"
+                }, {
+                    name: "series3",
+                    title: "Russia",
+                    type: "column",
+                    isHighlightingEnabled: true,
+                    isTransitionInEnabled: true,
+                    xAxis: "xAxis",
+                    yAxis: "yAxis",
+                    valueMemberPath: "Russia"
+                },
+                {
+                    name: "series4",
+                    title: "United States",
+                    type: "column",
+                    isHighlightingEnabled: true,
+                    isTransitionInEnabled: true,
+                    xAxis: "xAxis",
+                    yAxis: "yAxis",
+                    valueMemberPath: "UnitedStates"
+                },
+                {
+                    name: "series5",
+                    title: "China",
+                    type: "column",
+                    isHighlightingEnabled: true,
+                    isTransitionInEnabled: true,
+                    xAxis: "xAxis",
+                    yAxis: "yAxis",
+                    valueMemberPath: "China"
+                }]
+            });
+		});
+    </script>
+</head>
+<body>
+	<h2>$(idPlaceHolder)</h2>
+	<table>
+		<tr>
+            <td id="columnChart" class="chartElement">
+                
+            </td>
+            <td id="columnLegend" style="float: left">
+            </td>
+        </tr>
+
+	</table>
+	<div class="EIA-attribution">
+		Energy data from:<br />
+		<a href="http://www.eia.gov" target="_blank">U.S. Energy Information Administration (September 2012) </a>
+		</div>
+</body>
+</html>

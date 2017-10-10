@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>$(componentName)</title>
+		
+			$(cssBlock)
+
+			$(scriptBlock)
+		
+        <style>
+            .selectionOptions
+            {
+                margin-bottom: 10px;   
+            }
+        </style>
+
+        
+        <!--Sample JSON Data-->
+        <script src="northwind.js"></script>
+    </head>
+    <body>
+        <div class="selectionOptions" >
+            Data Export Mode:&nbsp
+            <select id="dataExportMode">
+                <option value="allRows">All Rows</option>
+                <option value="expandedRows">Expanded Rows</option>
+            </select>
+        </div>
+        <table id="hierarchicalGrid"></table><br />
+        <input type="button" id="exportButton" class="button-style" value="Export"/>
+        <script>
+        $(function() {
+
+            $("#hierarchicalGrid").igHierarchicalGrid({
+                width: "100%",
+                autoCommit: true,
+                autoGenerateColumns: false,
+                dataSource: northwind,
+                responseDataKey: "results",
+                dataSourceType: "json",
+                autofitLastColumn: false,
+                columns: [
+                   { key: "EmployeeID", headerText: "Employee ID", dataType: "number", hidden: true },
+                   { key: "LastName", headerText: "First Name", dataType: "string", width: "10%" },
+                   { key: "FirstName", headerText: "Last Name", dataType: "string", width: "10%" },
+                   { key: "Title", headerText: "Title", dataType: "string", width: "25%" },
+                   { key: "Address", headerText: "Address", dataType: "string", width: "20%" },
+                   { key: "City", headerText: "City", dataType: "string", width: "10%" },
+                   { key: "Region", headerText: "Region", dataType: "string", width: "10%" },
+                   { key: "Country", headerText: "Country", dataType: "string", width: "10%" }
+                ],
+                childrenDataProperty: "Orders",
+				autoGenerateLayouts: false,
+				features: [
+					$(Gridfeatures)
+				],
+                columnLayouts: [
+                    {
+                        key: "Orders",
+                        autoCommit: true,
+                        autoGenerateColumns: false,
+                        autofitLastColumn: false,
+                        primaryKey: "OrderID",
+                        width: "100%",
+                        columns: [
+                            { key: "OrderID", headerText: "Order ID", dataType: "number", width: "10%", hidden: true },
+                            { key: "Freight", headerText: "Freight", dataType: "string", width: "15%" },
+                            { key: "ShipName", headerText: "Ship Name", dataType: "string", width: "20%" },
+                            { key: "ShipAddress", headerText: "Ship Address", dataType: "string", width: "25%" },
+                            { key: "ShipCity", headerText: "Ship City", dataType: "string", width: "20%" },
+                            { key: "ShipCountry", headerText: "Ship Country", dataType: "string", width: "20%" }
+                        ],
+                    }
+                ]
+            });
+
+            $("#exportButton").igButton({ labelText: "Export" });
+
+            $("#exportButton").on("igbuttonclick", function () {
+                $.ig.GridExcelExporter.exportGrid($("#hierarchicalGrid"), {
+                    dataExportMode: $("#dataExportMode").val()
+                });
+            })
+        });
+        </script>
+    </body>
+</html>
