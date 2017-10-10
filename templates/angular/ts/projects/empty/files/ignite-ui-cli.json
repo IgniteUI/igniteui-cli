@@ -1,17 +1,20 @@
 {
-    "version" : "",
-    "project": {
-        "framework" : "angular2",
-        "projectType": "ts",
-        "theme": "infragistics",
-        "themePath": "./node_modules/ignite-ui/src/css/themes/infragistics/infragistics.theme.css",
-        "isBundle": false,
-        "bundleFilePath": "/igniteui/dist/ignite.js",
-        "components": [],
-        "isShowcase": false,
-        "version": ""
-  },
-  "build" : {
-
-  }
+	"version": "",
+	"project": {
+		"framework": "angular2",
+		"projectType": "ts",
+		"theme": "$(theme)",
+		"themePath": "$(themePath)",
+		"isBundle": false,
+		"bundleFilePath": "/igniteui/dist/ignite.js",
+		"igniteuiSource": "./node_modules/ignite-ui",
+		"components": [],
+		"sourceFiles": [
+			"infragistics.core-lite.js",
+			"infragistics.lob-lite.js"
+		],
+		"isShowcase": false,
+		"version": ""
+	},
+	"build": {}
 }

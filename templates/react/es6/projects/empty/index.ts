@@ -19,8 +19,8 @@ class EmptyProject implements ProjectTemplate {
 		var filePath = path.join(projectPath, this._updateFile);
 		var configFile = fs.readFileSync(filePath, "utf8");
 		//comment out core + lob redirects
-		configFile = configFile.replace(`"ignite-ui/js/infragistics.core.js$"`, `//"ignite-ui/js/infragistics.core.js$"`);
-		configFile = configFile.replace(`"ignite-ui/js/infragistics.lob.js$"`, `//"ignite-ui/js/infragistics.lob.js$"`);
+		configFile = configFile.replace(`"ignite-ui/js/infragistics.core.js$"`, `//$&`);
+		configFile = configFile.replace(`"ignite-ui/js/infragistics.lob.js$"`, `//$&`);
 		fs.writeFileSync(filePath, configFile);
 	}
 	generateFiles(outputPath: string, name: string, theme: string, ...options: any[]): Promise<boolean> {

@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" href="styles.css">
-      <!-- Ignite UI Required Combined CSS Files -->
-      <link href="http://cdn-na.infragistics.com/igniteui/latest/css/themes/infragistics/infragistics.theme.css" rel="stylesheet" />
-      <link href="http://cdn-na.infragistics.com/igniteui/latest/css/structure/infragistics.css" rel="stylesheet" />
+      <!-- Ignite UI Required Combined CSS Files //TODO: "$(themePath)" -->
+      <link href="/ignite-ui/css/themes/$(theme)/infragistics.theme.css" rel="stylesheet" />
+      <link href="/ignite-ui/css/structure/infragistics.css" rel="stylesheet" />
 
       <script src="http://code.jquery.com/jquery-1.12.3.js"></script>
       <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
@@ -21,10 +21,7 @@
       <script src="../node_modules/zone.js/dist/zone.js"></script>
       <script src="../node_modules/reflect-metadata/Reflect.js"></script>-->
 
-      <!-- Ignite UI Required Combined JavaScript Files -->
-      <script src="http://cdn-na.infragistics.com/igniteui/latest/js/infragistics.core.js"></script>
-      <script src="http://cdn-na.infragistics.com/igniteui/latest/js/infragistics.lob.js"></script>
-      <script src="http://cdn-na.infragistics.com/igniteui/latest/js/infragistics.dv.js"></script>
+	  <%= htmlWebpackPlugin.options.igniteUIScripts %>
 
   </head>
   <body>

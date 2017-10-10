@@ -25,6 +25,8 @@ declare interface Config {
 		sourceRoot: string;
 		/**Temp */
 		igniteuiSource: string;
+
+		[key:string]: any;
 	},
 	build: {
 		/** This object contains information related to the build configuration
