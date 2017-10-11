@@ -9,16 +9,12 @@ import { AppRoutingModule} from './app-routing.module';// in case using the rout
 import { AppComponent }  from './app.component';
 import { NavMenuComponent } from "./shared/nav-menu.component";
 import { HomeComponent } from './components/home.component';
-import { AboutComponent, AboutHomeComponent, AboutItemComponent } from './components/about.component';
 import { IgniteUIModule } from 'igniteui-angular2';
 
 
 @NgModule({
   imports: [ BrowserModule, FormsModule, AppRoutingModule, IgniteUIModule],
   declarations: [
-    AboutItemComponent,
-    AboutHomeComponent,
-    AboutComponent,
     HomeComponent,
 	AppComponent,
 	NavMenuComponent],

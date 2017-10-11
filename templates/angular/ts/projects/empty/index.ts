@@ -35,6 +35,7 @@ class EmptyAngularProject implements ProjectTemplate {
 	public generateFiles(outputPath: string, name: string, theme: string, ...options: any[]): Promise<boolean> {
 		const config = {
 			"__path__": name,
+			"$(name)": name,
 			"$(theme)": theme
 		};
 		const pathsConfig = {};
