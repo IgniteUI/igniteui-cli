@@ -6,7 +6,7 @@ import { products } from "../../assets/northwindProducts";
 	selector: "app-grid",
 	template: `<ig-grid [(options)]="gridOptions" widgetId='grid'></ig-grid>`
 })
-export class GridComponent {
+export class $(ClassName)Component {
 	public gridOptions: IgGrid;
 	public products: any[];
 

@@ -36,8 +36,9 @@ class GridTemplate extends AngularTemplate {
 
 	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
 		const config = {
-			__name__: this.fileName(name),
-			__path__: this.folderName(name)
+			"__name__": this.fileName(name),
+			"__path__": this.folderName(name),
+			"$(ClassName)": this.className(name)
 		};
 		let features: string;
 		if (this.userExtraConfiguration["features"] !== undefined) {

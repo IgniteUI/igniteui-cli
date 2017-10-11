@@ -23,8 +23,9 @@ export abstract class AngularTemplate implements Template {
 	}
 	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
 		const config = {
-			__name__: this.fileName(name), // TODO: optionally pass as a different variable than name.
-			__path__: this.folderName(name)
+			"__name__": this.fileName(name), // TODO: optionally pass as a different variable than name.
+			"__path__": this.folderName(name),
+			"$(ClassName)": this.className(name)
 		};
 		const pathsConfig = {};
 		return Util.processTemplates(path.join(this.rootPath, "files"), projectPath, config, pathsConfig);
@@ -70,6 +71,10 @@ export abstract class AngularTemplate implements Template {
 			files.push("infragistics.dv.js");
 			ProjectConfig.setConfig(config);
 		}
+	}
+
+	protected className(name: string): string {
+		return name.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1)).replace(/\s/g, "");
 	}
 
 	protected folderName(name: string): string {

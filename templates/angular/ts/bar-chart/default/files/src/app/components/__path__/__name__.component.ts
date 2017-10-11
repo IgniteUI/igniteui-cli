@@ -10,7 +10,7 @@ import { lastFiveYears } from "../../assets/world-energy-production";
 		</div>
 		<div id="barLegend" style="float: left"></div>`
 })
-export class BarChartComponent {
+export class $(ClassName)Component {
 	public options: IgDataChart;
 	public data: any[];
 

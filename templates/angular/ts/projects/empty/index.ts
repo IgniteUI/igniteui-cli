@@ -12,8 +12,6 @@ class EmptyAngularProject implements ProjectTemplate {
 	public projectType: string = "ts";
 	public hasExtraConfiguration: boolean = false;
 
-	private _updateFile: string = "webpack.config.js";
-
 	public installModules(): void {
 		throw new Error("Method not implemented.");
 	}

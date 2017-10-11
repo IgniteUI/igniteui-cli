@@ -7,7 +7,7 @@ import { ActivatedRoute, Routes } from "@angular/router";
 				[(options)]="options"
 				[(ngModel)]="combo.value"></ig-combo>`
 })
-export class ComboComponent {
+export class $(ClassName)Component {
 	public options: IgCombo;
 	public platforms: any;
 	public combo: any;
