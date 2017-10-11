@@ -1,5 +1,6 @@
 import * as fs from "fs-extra";
 import * as path from "path";
+import { ProjectConfig } from "../ProjectConfig";
 import { Util } from "../Util";
 
 export abstract class AngularTemplate implements Template {
@@ -22,8 +23,9 @@ export abstract class AngularTemplate implements Template {
 	}
 	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
 		const config = {
-			__name__: this.fileName(name), // TODO: optionally pass as a different variable than name.
-			__path__: this.folderName(name)
+			"__name__": this.fileName(name), // TODO: optionally pass as a different variable than name.
+			"__path__": this.folderName(name),
+			"$(ClassName)": this.className(name)
 		};
 		const pathsConfig = {};
 		return Util.processTemplates(path.join(this.rootPath, "files"), projectPath, config, pathsConfig);
@@ -50,11 +52,30 @@ export abstract class AngularTemplate implements Template {
 			path.join(projectPath, "src/app/app.module.ts"),
 			path.join(projectPath, `src/app/components/${this.folderName(name)}/${this.fileName(name)}.component.ts`)
 		);
+
+		// make sure DV file is added to project if needed:
+		this.ensureSourceFiles();
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return [];
 	}
 	public setExtraConfiguration(extraConfigKeys: {}) { }
+
+	protected ensureSourceFiles() {
+		const components = require("../packages/components.json");
+		const config = ProjectConfig.getConfig();
+		const files: string[] = config.project.sourceFiles;
+		const dvDependencies = this.dependencies.filter(x => components.dv.indexOf(x) !== -1);
+
+		if (dvDependencies.length && files.indexOf("infragistics.dv.js") === -1) {
+			files.push("infragistics.dv.js");
+			ProjectConfig.setConfig(config);
+		}
+	}
+
+	protected className(name: string): string {
+		return name.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1)).replace(/\s/g, "");
+	}
 
 	protected folderName(name: string): string {
 		//TODO: should remove the spaces

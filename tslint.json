@@ -17,7 +17,9 @@
 				"singleline": "never"
 			}
 		],
+		"no-empty": false,
 		"no-bitwise": false,
+		"no-string-literal": false,
 		"no-submodule-imports": [
 			true,
 			"rxjs",
@@ -25,8 +27,8 @@
 			"@angular/core/testing"
 		],
 		"object-literal-sort-keys": [true, "ignore-case", "match-declaration-order"],
-		"no-empty": false,
 		"max-classes-per-file": [ false ],
-		"prefer-object-spread": false
+		"prefer-object-spread": false,
+		"prefer-conditional-expression": false
 	}
 }

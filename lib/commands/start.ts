@@ -20,7 +20,7 @@ var command = {
 				exec('npm start');
 				liteServ.server();
 			break;
-			case "angular2":
+			case "angular":
 				exec('npm start');
 			break;
 			default:
