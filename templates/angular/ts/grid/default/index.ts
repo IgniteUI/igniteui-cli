@@ -1,8 +1,8 @@
 import * as fs from "fs-extra";
 import * as path from "path";
+import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 import { AngularTemplate } from "../../../../../lib/templates/AngularTemplate";
 import { Util } from "../../../../../lib/Util";
-import { GridHelper } from "../../../../jquery/js/grid/gridtemplatehelper";
 
 class GridTemplate extends AngularTemplate {
 

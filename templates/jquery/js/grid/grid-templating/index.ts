@@ -1,6 +1,6 @@
 import * as path from "path";
 import * as fs from "fs-extra";
-import { GridHelper } from "../gridtemplatehelper";
+import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 import { jQueryTemplate } from "../../../../../lib/templates/jQueryTemplate";
 import { ProjectConfig } from "../../../../../lib/ProjectConfig";
 import { Util } from "../../../../../lib/Util";

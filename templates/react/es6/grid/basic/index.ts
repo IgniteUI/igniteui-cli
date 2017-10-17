@@ -2,7 +2,7 @@ import * as path from 'path';
 import { ReactTemplate } from "../../../../../lib/templates/ReactTemplate";
 import { Util } from "../../../../../lib/Util";
 //TODO:
-import { GridHelper } from "../../../../jquery/js/grid/gridtemplatehelper";
+import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 
 
 class GridTemplate extends ReactTemplate {
