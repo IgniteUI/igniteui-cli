@@ -32,7 +32,7 @@ export default class  $(ClassName) extends Component {
 					primaryKey="ProductID"
 					width="700px"
 					dataSource={this.state.products}
-					features={[$(gridfeatures)]}
+					features={$(gridfeatures)}
 				/>
       </div>
 		);

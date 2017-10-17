@@ -20,9 +20,7 @@ export class $(ClassName)Component {
 			],
 			width: "500px",
 			dataSource: this.products,
-			features: [
-				$(gridFeatures)
-			]
+			features: $(gridFeatures)
 		};
 	}
 }

@@ -6,7 +6,7 @@ import { ProjectConfig } from "../../../../../lib/ProjectConfig";
 import { Util } from "../../../../../lib/Util";
 
 class GridTemplatingTemplate extends jQueryTemplate {
-
+	private gridHelper: GridHelper;
 	extraConfigurations: ControlExtraConfiguration[];
 
 	public userExtraConfiguration: {};
@@ -24,6 +24,9 @@ class GridTemplatingTemplate extends jQueryTemplate {
 		this.description = "Grid templating template";
 		this.id = "grid-templating";
 		this.dependencies = ["igGrid"];
+
+		this.gridHelper = new GridHelper();
+		this.gridHelper.space = "    ";
 		var featureConfiguration: ControlExtraConfiguration = {
 			key: "features",
 			choices: ["Sorting", "Paging", "Filtering"],
@@ -37,16 +40,11 @@ class GridTemplatingTemplate extends jQueryTemplate {
 		this.userExtraConfiguration = extraConfigKeys;
 	}
 	generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
-		
 		var success = true,
 			destinationPath = path.join(projectPath, this.folderName(name));
 		//read html
-		var config = {}, features: string;
-		if (this.userExtraConfiguration["features"] !== undefined) {
-			features = GridHelper.generateFeatures(this.userExtraConfiguration["features"]);
-		} else {
-			features = "";
-		}
+		const config = {};
+		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 4);
 
 		config["$(Gridfeatures)"] = features;
 		config["$(componentName)"] = name;

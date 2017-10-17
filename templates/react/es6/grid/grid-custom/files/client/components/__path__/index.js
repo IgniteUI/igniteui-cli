@@ -33,7 +33,7 @@ export default class  $(ClassName) extends Component {
 					width="700px"
 					autoCommit={true}
 					dataSource={this.state.products}
-					features={[$(gridfeatures)]}
+					features={$(gridfeatures)}
 				/>
       </div>
 		);

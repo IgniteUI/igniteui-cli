@@ -1,88 +1,100 @@
-class GridHelper {
-    private static gridFeaturePlaceHolder: string = "$(Gridfeatures)";
-    private static themePlaceHolder: string = "$(themeNamePlaceHolder)";
-    static generateFeatures(gridFeatures) : string
-    {
-        var result = "";
-        for(var i = 0; i < gridFeatures.length; i++ ) {
-            result += this.generateFeature(gridFeatures[i]);
-            if ((i + 1) < gridFeatures.length) {
-                result += ",";
-            }
-        }
-        return result;
-    }
-    static generateTemplate(currentTemplate, features) {
-        var featureString = this.generateFeatures(features)
-        currentTemplate =  currentTemplate.replace(this.gridFeaturePlaceHolder, featureString);
-        return currentTemplate;
-    }
-    static generateFeature(feature): string {
-        var featureTemplate = "";
-        switch(feature) {
-            case "Sorting":
-            featureTemplate = this.generateSortingFeature();
-            break;
-            case "Paging":
-            featureTemplate = this.generatePagingFeature();
-            break;
-            case "Filtering":
-            featureTemplate = this.generateFilteringFeature();
-			break;
-			case "Updating":
-            featureTemplate = this.generateUpdatingFeature();
-			break;
+
+export enum FeatureOutputType {
+	/** JS/JSON array output. */
+	JS,
+	/** XML-like output for AngularJS. */
+	AngularJS
+}
+
+export class GridHelper {
+	/** Request features to add inherit option for hierarchical grid */
+	public hierarchical: boolean = false;
+	/** Output type to render */
+	public outputType: FeatureOutputType = FeatureOutputType.JS;
+	/** Indent space used for formatting output */
+	public space = "\t";
+
+	private features;
+	private featureProps = {
+		Paging: { type: "local", pageSize: 5 },
+		RowSelectors: {
+			enableRowNumbering: true,
+			multipleSelection: true, rowSelectorColumnWidth: 80
+		}
+	};
+
+	/**
+	 * Creates a new grid feature helper
+	 */
+	constructor() {
+		this.features = [];
+	}
+
+	public generateFeatures(gridFeatures: string[], pad: number = 0): string {
+		let result: string;
+		if (gridFeatures) {
+			for (const name of gridFeatures) {
+				this.addFeature(name);
+			}
+		}
+
+		switch (this.outputType) {
+			case FeatureOutputType.AngularJS:
+				result = this.generateXML(pad);
+				break;
+			case FeatureOutputType.JS:
+			default:
+				result = JSON.stringify(this.features, null, this.space)
+					.replace(/([\r\n]+)/g, `$&${ this.space.repeat(pad) }`);
+		}
+		this.features = [];
+		return result;
+	}
+
+	public addFeature(name, overrideOptions = null) {
+		const feature = this.getFeature(name);
+
+		if (overrideOptions) {
+			Object.assign(feature, overrideOptions);
+		}
+
+		// can add additional properties and handling per case:
+		switch (name) {
 			case "Selection":
-            featureTemplate = this.generateSelectionFeature();
-			break;
-			case "ColumnMoving":
-            featureTemplate = this.generateColumnMovingFeature();
-			break;
-			case "GroupBy":
-            featureTemplate = this.generateGroupByFeature();
-			break;
-			case "Summaries":
-            featureTemplate = this.generateSummariesFeature();
-			break;
-			case "Resizing":
-            featureTemplate = this.generateResizingFeature();
-			break;
-			case "Hiding":
-			featureTemplate = this.generateHidingFeature();
-			break;
-        }
-        return featureTemplate;
-    }
-    static generateSortingFeature(): string {
-        return "{ name: \"Sorting\" }";
-    }
-    static generateFilteringFeature(): string {
-        return "{ name: \"Filtering\" }";
-    }
-    static generatePagingFeature(): string {
-      
-        return "{ name: \"Paging\", type: \"local\", pageSize: 5 }";
+				this.features.push(feature);
+				this.features.push(this.getFeature("RowSelectors"));
+				break;
+			default:
+				this.features.push(feature);
+				break;
+		}
 	}
-	static generateUpdatingFeature(): string {
-        return "{ name: \"Updating\" }";
+
+	/**
+	 * Returns and object like `{name: "feature"}` with any other default properties
+	 * @param name Feature name
+	 */
+	private getFeature(name: string): object {
+		const feature = { name };
+		if (this.featureProps[name]) {
+			Object.assign(feature, this.featureProps[name]);
+		}
+		if (this.hierarchical) {
+			feature["inherit"] = true;
+		}
+		return feature;
 	}
-	static generateSelectionFeature(): string {
-		return "{ name: \"Selection\" }, { name: \"RowSelectors\", multipleSelection: true, rowSelectorColumnWidth: 80, enableRowNumbering: true }";
-	}
-	static generateColumnMovingFeature(): string {
-		return "{ name: \"ColumnMoving\" }";
-	}
-	static generateGroupByFeature(): string {
-		return "{ name: \"GroupBy\" }";
-	}
-	static generateSummariesFeature(): string {
-		return "{ name: \"Summaries\" }";
-	}
-	static generateResizingFeature(): string {
-		return "{ name: \"Resizing\" }";
-	}
-	static generateHidingFeature(): string {
-		return "{ name: \"Hiding\" }";
+
+	private generateXML(pad: number): string {
+		let result = "<features>";
+		for (const feature of this.features) {
+			result += `\r\n${ this.space.repeat(pad + 1) }<feature`;
+			result += Object.keys(feature).reduce((str, key) => {
+				str += ` ${key}="${ feature[key] }"`; return str;
+			}, "");
+			result += ">";
+		}
+		result += `\r\n${ this.space.repeat(pad) }</feature>`;
+		return result;
 	}
 }
-export {GridHelper}

@@ -5,7 +5,7 @@ import { AngularTemplate } from "../../../../../lib/templates/AngularTemplate";
 import { Util } from "../../../../../lib/Util";
 
 class GridTemplate extends AngularTemplate {
-
+	private gridHelper: GridHelper;
 	private extraConfigurations: ControlExtraConfiguration[];
 	private userExtraConfiguration: {};
 
@@ -20,6 +20,7 @@ class GridTemplate extends AngularTemplate {
 		this.hasExtraConfiguration = true;
 		this.listInComponentTemplates = true;
 
+		this.gridHelper = new GridHelper();
 		const featureConfiguration: ControlExtraConfiguration = {
 			key: "features",
 			choices: ["Sorting", "Paging", "Filtering"],
@@ -40,12 +41,7 @@ class GridTemplate extends AngularTemplate {
 			"__path__": this.folderName(name),
 			"$(ClassName)": this.className(name)
 		};
-		let features: string;
-		if (this.userExtraConfiguration["features"] !== undefined) {
-			features = GridHelper.generateFeatures(this.userExtraConfiguration["features"]);
-		} else {
-			features = "";
-		}
+		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 3);
 
 		config["$(gridFeatures)"] = features;
 		config["$(componentName)"] = name;
