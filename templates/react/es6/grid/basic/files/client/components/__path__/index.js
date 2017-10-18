@@ -31,7 +31,7 @@ export default class App extends Component {
 					id="grid"
 					width="700px"
 					dataSource={this.state.products}
-					features={[$(gridfeatures)]}
+					features={$(gridfeatures)}
 				/>
       </div>
 		);

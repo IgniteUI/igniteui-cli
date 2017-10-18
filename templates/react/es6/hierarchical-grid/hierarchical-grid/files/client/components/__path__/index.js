@@ -20,13 +20,13 @@ export default class $(ClassName) extends Component {
 				<$(Control)
 					id="grid"
 					ref="grid"
-					features={[$(gridfeatures)]}
+					features={$(gridfeatures)}
 					width="100%"
 					dataSource={this.state}
 					dataSourceType="json"
 					responseDataKey="results"
 					autoGenerateColumns={false}
-	                autofitLastColumn={false}
+					autofitLastColumn={false}
 					primaryKey="EmployeeID"
 					columns={[
 						{ key: "EmployeeID", headerText: "Employee ID", dataType: "number", width: "0%", hidden: true },

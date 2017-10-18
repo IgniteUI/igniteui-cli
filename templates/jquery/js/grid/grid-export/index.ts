@@ -1,11 +1,11 @@
 import * as path from "path";
 import * as fs from "fs-extra";
-import { GridHelper } from "../gridtemplatehelper";
+import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 import { jQueryTemplate } from "../../../../../lib/templates/jQueryTemplate";
 import { Util } from "../../../../../lib/Util";
 
 class GridExportTemplate extends jQueryTemplate {
-
+	private gridHelper: GridHelper;
 	extraConfigurations: ControlExtraConfiguration[];
 
 	public userExtraConfiguration: {};
@@ -15,13 +15,15 @@ class GridExportTemplate extends jQueryTemplate {
 	 *
 	 */
 	constructor() {
-		super(__dirname)
+		super(__dirname);
 		this.extraConfigurations = [];
 		this.name = "Grid Export";
 		this.description = "Grid export template";
 		this.dependencies = ["igGrid", "igGridExcelExporter"];
 		this.id = "grid-export";
-	
+
+		this.gridHelper = new GridHelper();
+		this.gridHelper.space = "    ";
 		this.hasExtraConfiguration = true;
 		var featureConfiguration: ControlExtraConfiguration = {
 			key: "features",
@@ -40,14 +42,10 @@ class GridExportTemplate extends jQueryTemplate {
 		var success = true,
 			destinationPath = path.join(projectPath, this.folderName(name));
 		//read html
-		var config = {}, features: string;
-		if (this.userExtraConfiguration["features"] !== undefined) {
-			features = GridHelper.generateFeatures(this.userExtraConfiguration["features"]);
-		} else {
-			features = "";
-		}
+		const config = {};
+		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 4);
 
-		config["$(Gridfeatures)"] = features;
+		config["$(gridfeatures)"] = features;
 		config["$(componentName)"] = name;
 		config["$(cssBlock)"] = this.getCssTags();
 		config["$(scriptBlock)"] = this.getScriptTags();

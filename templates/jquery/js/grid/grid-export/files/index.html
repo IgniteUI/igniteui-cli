@@ -53,6 +53,7 @@
     </head>
     <body>
         <div class="group-fields">
+            Export with features: <br />
             <div class="item">
                 <div id="sorting" class="optionContainer"></div>
                 <label class="item-label" for="sorting">Sorting</label>
@@ -110,9 +111,7 @@
                 ],
                 dataSource: employees,
                 primaryKey: "EmployeeID",
-                features: [
-                     $(Gridfeatures)
-                ]
+                features: $(gridfeatures)
             });
 
             $("#exportButton").igButton({ labelText: "Export" });

@@ -1,11 +1,11 @@
 import * as path from "path";
 import * as fs from "fs-extra";
-import { GridHelper } from "../gridtemplatehelper";
+import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 import { jQueryTemplate } from "../../../../../lib/templates/jQueryTemplate";
 import { Util } from "../../../../../lib/Util";
 
 class GridTemplate extends jQueryTemplate {
-
+	private gridHelper: GridHelper;
 	extraConfigurations: ControlExtraConfiguration[];
 
 	public userExtraConfiguration: {};
@@ -24,6 +24,8 @@ class GridTemplate extends jQueryTemplate {
 		this.hasExtraConfiguration = true;
 		this.listInComponentTemplates = true;
 
+		this.gridHelper = new GridHelper();
+		this.gridHelper.space = "    ";
 		var featureConfiguration: ControlExtraConfiguration = {
 			key: "features",
 			choices: ["Sorting", "Paging", "Filtering"],
@@ -37,16 +39,11 @@ class GridTemplate extends jQueryTemplate {
 		this.userExtraConfiguration = extraConfigKeys;
 	}
 	generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
-		
-		var destinationPath = path.join(projectPath, this.folderName(name)),
-		config = {}, features: string;
-		if (this.userExtraConfiguration["features"] !== undefined) {
-			features = GridHelper.generateFeatures(this.userExtraConfiguration["features"]);
-		} else {
-			features = "";
-		}
+		const destinationPath = path.join(projectPath, this.folderName(name));
+		const config = {};
+		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 4);
 
-		config["$(Gridfeatures)"] = features;
+		config["$(gridfeatures)"] = features;
 		config["$(componentName)"] = name;
 		config["$(cssBlock)"] = this.getCssTags();
 		config["$(scriptBlock)"] = this.getScriptTags();

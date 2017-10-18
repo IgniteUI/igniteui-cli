@@ -115,7 +115,7 @@ export default class  $(ClassName) extends Component {
 						{ headerText: "Register Date", key: "RegistererDate", width: "20%", dataType: "date" }
 					]}
 					dataSource={this.state.employees}
-					features={[$(gridfeatures)]}
+					features={$(gridfeatures)}
 				/>
 			</div>
 		);
