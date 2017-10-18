@@ -19,7 +19,7 @@ class GridExportTemplate extends ReactTemplate {
 		this.description = "The is a grid exporting template for React";
 		this.projectType = "es6";
 		this.components = ["Grid"];
-		this.controlGroup = "Grids";
+		this.controlGroup = "Data Grids";
 		this.dependencies = ["igGrid"];
 
 		this.gridHelper = new GridHelper();

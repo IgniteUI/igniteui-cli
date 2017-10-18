@@ -16,7 +16,7 @@ class HierarchicalGridCustomTemplate extends ReactTemplate {
 		this.description = "Hierarchical Grid custom template for React";
 		this.projectType = "es6";
 		this.components = ["Hierarchical Grid"];
-		this.controlGroup = "Grids";
+		this.controlGroup = "Data Grids";
 		this.dependencies = ["igHierarchicalGrid"];
 
 		this.gridHelper = new GridHelper();

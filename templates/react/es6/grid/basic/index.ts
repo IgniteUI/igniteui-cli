@@ -19,7 +19,7 @@ class GridTemplate extends ReactTemplate {
 		this.description = "The is a grid template structure for React";
 		this.projectType = "es6";
 		this.components = ["Grid"];
-		this.controlGroup = "Grids";
+		this.controlGroup = "Data Grids";
 		this.dependencies = ["igGrid"];
 
 		this.gridHelper = new GridHelper();
