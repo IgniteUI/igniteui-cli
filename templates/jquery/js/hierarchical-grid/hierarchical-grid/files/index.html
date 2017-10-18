@@ -46,26 +46,7 @@
             /*----------------- Instantiation -------------------------*/
 
             $("#grid3").igHierarchicalGrid({
-                features: [
-                    {
-                        name: "Responsive",
-                        enableVerticalRendering: false,
-                        columnSettings: [
-                            {
-                                columnKey: "Title",
-                                classes: "ui-hidden-phone"
-                            },
-                            {
-                                columnKey: "Region",
-                                classes: "ui-hidden-phone"
-                            },
-                            {
-                                columnKey: "City",
-                                classes: "ui-hidden-phone"
-                            }
-                        ]
-                    }
-                ],
+                features: $(gridfeatures),
                 width: "100%",
                 dataSource: northwind,
                 dataSourceType: "json",
@@ -118,7 +99,6 @@
                                     }
                                 ]
                             }
-                            $(Gridfeatures)
                         ]
                     }
                 ]

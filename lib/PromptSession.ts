@@ -102,7 +102,7 @@ export class PromptSession {
 					type: "list",
 					message: "Choose a group",
 					choices: this.addSeparators(groups),
-					default: groups.find(x => x === "Grids") || groups[0]
+					default: groups.find(x => x === "Data Grids") || groups[0]
 				});
 
 				var componentNames = framework.getComponentNamesByGroup(group["componentGroup"]);

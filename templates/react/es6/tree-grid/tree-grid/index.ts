@@ -16,7 +16,7 @@ class TreeGridTemplate extends ReactTemplate {
 		this.description = "Tree Grid default template for React";
 		this.projectType = "es6";
 		this.components = ["Tree Grid"];
-		this.controlGroup = "Grids";
+		this.controlGroup = "Data Grids";
 		this.dependencies = ["igTreeGrid"];
 
 		this.hasExtraConfiguration = true;

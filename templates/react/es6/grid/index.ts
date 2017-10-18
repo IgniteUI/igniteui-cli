@@ -7,7 +7,7 @@ class GridComponent extends BaseComponent {
 	constructor() {
 		super(__dirname);
 		this.name = "Grid";
-		this.group = "Grids";
+		this.group = "Data Grids";
 	}
 }
 module.exports = new GridComponent();

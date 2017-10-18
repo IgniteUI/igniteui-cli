@@ -31,14 +31,7 @@
 					primaryKey: "EmployeeID",
 					childrenDataProperty: "Orders",
 					autoGenerateLayouts: false,
-					features: [
-						{
-							name: "Updating",
-							enableAddRow: true,
-							inherit: true
-						}
-						$(Gridfeatures)
-						],
+					features: $(gridfeatures),
 					columnLayouts: [
 						{
 							key: "Orders",

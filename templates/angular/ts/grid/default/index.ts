@@ -1,11 +1,11 @@
 import * as fs from "fs-extra";
 import * as path from "path";
+import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 import { AngularTemplate } from "../../../../../lib/templates/AngularTemplate";
 import { Util } from "../../../../../lib/Util";
-import { GridHelper } from "../../../../jquery/js/grid/gridtemplatehelper";
 
 class GridTemplate extends AngularTemplate {
-
+	private gridHelper: GridHelper;
 	private extraConfigurations: ControlExtraConfiguration[];
 	private userExtraConfiguration: {};
 
@@ -13,6 +13,7 @@ class GridTemplate extends AngularTemplate {
 		super(__dirname);
 		this.id = "grid";
 		this.name = "Grid";
+		this.controlGroup = "Data Grids";
 		this.description = "Grid default template";
 		this.dependencies = ["igGrid"];
 		this.projectType = "ts";
@@ -20,6 +21,7 @@ class GridTemplate extends AngularTemplate {
 		this.hasExtraConfiguration = true;
 		this.listInComponentTemplates = true;
 
+		this.gridHelper = new GridHelper();
 		const featureConfiguration: ControlExtraConfiguration = {
 			key: "features",
 			choices: ["Sorting", "Paging", "Filtering"],
@@ -40,12 +42,7 @@ class GridTemplate extends AngularTemplate {
 			"__path__": this.folderName(name),
 			"$(ClassName)": this.className(name)
 		};
-		let features: string;
-		if (this.userExtraConfiguration["features"] !== undefined) {
-			features = GridHelper.generateFeatures(this.userExtraConfiguration["features"]);
-		} else {
-			features = "";
-		}
+		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 3);
 
 		config["$(gridFeatures)"] = features;
 		config["$(componentName)"] = name;

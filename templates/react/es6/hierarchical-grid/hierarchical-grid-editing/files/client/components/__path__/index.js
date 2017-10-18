@@ -20,7 +20,7 @@ export default class $(ClassName) extends Component {
 				<$(Control)
 					id="grid"
 					ref="grid"
-					features={[$(gridfeatures)]}
+					features={$(gridfeatures)}
 					width="100%"
 					autoCommit={true}
 					dataSource={this.state}

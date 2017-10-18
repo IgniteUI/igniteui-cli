@@ -44,7 +44,7 @@ export default class $(ClassName) extends Component {
 				</div>
 				<$(Control)
 					id="hierarchicalGrid"
-					features={[$(gridfeatures)]}
+					features={$(gridfeatures)}
 					width="100%"
 					autoCommit={true}
 					autoGenerateColumns={false}

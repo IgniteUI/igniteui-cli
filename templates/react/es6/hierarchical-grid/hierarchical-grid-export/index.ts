@@ -2,10 +2,10 @@ import * as path from 'path';
 import { ReactTemplate } from "../../../../../lib/templates/ReactTemplate";
 import { Util } from "../../../../../lib/Util";
 
-import { GridHelper } from "../../../../jquery/js/hierarchical-grid/gridtemplatehelper";
+import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 
 class HierarchicalGridExportTemplate extends ReactTemplate {
-
+	private gridHelper: GridHelper;
 	extraConfigurations: ControlExtraConfiguration[] = [];
 	public userExtraConfiguration: {};
 
@@ -16,9 +16,11 @@ class HierarchicalGridExportTemplate extends ReactTemplate {
 		this.description = "Hierarchical Grid export template for React";
 		this.projectType = "es6";
 		this.components = ["Hierarchical Grid"];
-		this.controlGroup = "Grids";
+		this.controlGroup = "Data Grids";
 		this.dependencies = ["igHierarchicalGrid"];
 
+		this.gridHelper = new GridHelper();
+		this.gridHelper.hierarchical = true;
 		this.hasExtraConfiguration = true;
 		this.extraConfigurations.push({
 			key: "features",
@@ -30,12 +32,9 @@ class HierarchicalGridExportTemplate extends ReactTemplate {
 	}
 
 	generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
-		var config = {}, pathsConfig = {}, features: string;
-		if (this.userExtraConfiguration["features"] !== undefined) {
-			features = GridHelper.generateFeatures(this.userExtraConfiguration["features"]);
-		} else {
-			features = "";
-		}
+		const config = {};
+		const pathsConfig = {};
+		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 5);
 		
 		config["__path__"] =  this.folderName(name); //folder name allowed spaces, any casing
 		config["$(ClassName)"] = this.className(name);//first letter capital, no spaces, 

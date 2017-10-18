@@ -8,7 +8,7 @@ class TreeGridComponent extends BaseComponent {
 	constructor() {
 		super(__dirname);
 		this.name = "Tree Grid";
-		this.group = "Grids";
+		this.group = "Data Grids";
 	}
 }
 module.exports = new TreeGridComponent();

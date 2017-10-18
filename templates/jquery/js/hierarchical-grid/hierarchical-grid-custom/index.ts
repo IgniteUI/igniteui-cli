@@ -1,11 +1,11 @@
 import * as path from "path";
 import * as fs from "fs-extra";
-import { GridHelper } from "../gridtemplatehelper";
+import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 import { jQueryTemplate } from "../../../../../lib/templates/jQueryTemplate";
 import { Util } from "../../../../../lib/Util";
 
 class HierarchicalGridEditingTemplate extends jQueryTemplate {
-
+	private gridHelper: GridHelper;
 	extraConfigurations: ControlExtraConfiguration[];
 
 	public userExtraConfiguration: {};
@@ -23,6 +23,9 @@ class HierarchicalGridEditingTemplate extends jQueryTemplate {
 		this.description = "Hierarchical Grid custom template";
 		this.dependencies = ["igHierarchicalGrid"];
 		this.id = "hierarchical-grid-custom";
+
+		this.gridHelper = new GridHelper();
+		this.gridHelper.hierarchical = true;
 		var featureConfiguration: ControlExtraConfiguration = {
 			key: "features",
 			choices: ["Sorting", "Selection","Updating", "Filtering", "ColumnMoving", "Summaries", "Resizing", "Hiding", "Paging"],
@@ -36,22 +39,17 @@ class HierarchicalGridEditingTemplate extends jQueryTemplate {
 		this.userExtraConfiguration = extraConfigKeys;
 	}
 	generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
-		
 		var success = true,
 			destinationPath = path.join(projectPath, this.folderName(name));
 		//read html
-		var config = {}, features: string;
-		if (this.userExtraConfiguration["features"] !== undefined) {
-			features = GridHelper.generateFeatures(this.userExtraConfiguration["features"]);
-		} else {
-			features = "";
-		}
+		const config = {};
+		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 4);
 
-		config["$(Gridfeatures)"] = features;
+		config["$(gridfeatures)"] = features;
 		config["$(componentName)"] = name;
 		config["$(cssBlock)"] = this.getCssTags();
 		config["$(scriptBlock)"] = this.getScriptTags();
-		var pathsConfig = {};
+		const pathsConfig = {};
 		return Util.processTemplates(path.join(__dirname, "files"), destinationPath, config, pathsConfig);
 	}
 	getExtraConfiguration(): ControlExtraConfiguration[] {

@@ -2,10 +2,11 @@ import * as path from 'path';
 import { ReactTemplate } from "../../../../../lib/templates/ReactTemplate";
 import { Util } from "../../../../../lib/Util";
 //TODO:
-import { GridHelper } from "../../../../jquery/js/grid/gridtemplatehelper";
+import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 
 
 class GridExportTemplate extends ReactTemplate {
+	private gridHelper: GridHelper;
 	extraConfigurations: ControlExtraConfiguration[] = [];
 	userExtraConfiguration: {};
 	/**
@@ -18,9 +19,10 @@ class GridExportTemplate extends ReactTemplate {
 		this.description = "The is a grid exporting template for React";
 		this.projectType = "es6";
 		this.components = ["Grid"];
-		this.controlGroup = "Grids";
+		this.controlGroup = "Data Grids";
 		this.dependencies = ["igGrid"];
 
+		this.gridHelper = new GridHelper();
 		this.hasExtraConfiguration = true;
 		this.extraConfigurations.push({
 			key: "features",
@@ -32,12 +34,8 @@ class GridExportTemplate extends ReactTemplate {
 	}
 
 	generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
-		var config = {}, pathsConfig = {}, features: string;
-		if (this.userExtraConfiguration["features"] !== undefined) {
-			features = GridHelper.generateFeatures(this.userExtraConfiguration["features"]);
-		} else {
-			features = "";
-		}
+		var config = {}, pathsConfig = {};
+		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 5);
 		
 		config["__path__"] =  this.folderName(name); //folder name allowed spaces, any casing
 		config["$(ClassName)"] = this.className(name);//first letter capital, no spaces, 

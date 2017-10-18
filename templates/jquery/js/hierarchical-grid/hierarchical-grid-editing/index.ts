@@ -1,12 +1,12 @@
 import * as path from "path";
 import * as fs from "fs-extra";
-import { GridHelper } from "../gridtemplatehelper";
+import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 import { jQueryTemplate } from "../../../../../lib/templates/jQueryTemplate";
 import { ProjectConfig } from "../../../../../lib/ProjectConfig";
 import { Util } from "../../../../../lib/Util";
 
 class HierarchicalGridEditingTemplate extends jQueryTemplate {
-
+	private gridHelper: GridHelper;
 	extraConfigurations: ControlExtraConfiguration[];
 
 	public userExtraConfiguration: {};
@@ -24,6 +24,9 @@ class HierarchicalGridEditingTemplate extends jQueryTemplate {
 		this.description = "Hierarchical Grid editing template";
 		this.dependencies = ["igHierarchicalGrid"];
 		this.id = "hierarchical-grid-editing";
+
+		this.gridHelper = new GridHelper();
+		this.gridHelper.hierarchical = true;
 		var featureConfiguration: ControlExtraConfiguration = {
 			key: "features",
 			choices: ["Sorting", "Paging", "Filtering"],
@@ -37,22 +40,18 @@ class HierarchicalGridEditingTemplate extends jQueryTemplate {
 		this.userExtraConfiguration = extraConfigKeys;
 	}
 	generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
-		
 		var success = true,
 			destinationPath = path.join(projectPath, this.folderName(name));
 		//read html
-		var config = {}, features: string;
-		if (this.userExtraConfiguration["features"] !== undefined) {
-			features = "," + GridHelper.generateFeatures(this.userExtraConfiguration["features"]);
-		} else {
-			features = "";
-		}
+		const config = {};
+		this.gridHelper.addFeature("Updating", { enableAddRow: true });
+		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 5);
 
-		config["$(Gridfeatures)"] = features;
+		config["$(gridfeatures)"] = features;
 		config["$(componentName)"] = name;
 		config["$(cssBlock)"] = this.getCssTags();
 		config["$(scriptBlock)"] = this.getScriptTags();
-		var pathsConfig = {};
+		const pathsConfig = {};
 		return Util.processTemplates(path.join(__dirname, "files"), destinationPath, config, pathsConfig);
 	}
 	getExtraConfiguration(): ControlExtraConfiguration[] {
