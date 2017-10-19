@@ -1,5 +1,5 @@
 import * as yargs from "yargs";
-import * as chalk from "chalk";
+import chalk from "chalk";
 import * as inquirer from "inquirer";
 import { Util } from "./Util";
 import { default as quickstart } from "./commands/quickstart";

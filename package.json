@@ -18,7 +18,7 @@
     "ignite-ui": "bin/execute.js"
   },
   "dependencies": {
-    "chalk": "^2.0.1",
+    "chalk": "^2.2.0",
     "fs-extra": "^3.0.1",
     "ignite-ui": "^17.1.1012",
     "inquirer": "^3.1.1",
