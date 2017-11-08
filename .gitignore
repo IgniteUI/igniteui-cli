@@ -1,4 +1,4 @@
-/output
+/output/**
 !output/.gitkeep
 /node_modules
 /templates/**/*.js.map
