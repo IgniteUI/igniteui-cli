@@ -9,7 +9,8 @@
   "main": "lib/cli.js",
   "scripts": {
 	"build": "node ./node_modules/typescript/lib/tsc.js",
-	"test": "npm run build && node ./node_modules/jasmine-node/lib/jasmine-node/cli.js spec/",
+	"pretest": "npm run lint && npm run build",
+	"test": "node ./node_modules/jasmine-node/lib/jasmine-node/cli.js spec/",
 	"test-debug": "node --debug-brk=5858 ./node_modules/jasmine-node/lib/jasmine-node/cli.js spec/",
 	"lint": "tslint --project tsconfig.json"
   },
