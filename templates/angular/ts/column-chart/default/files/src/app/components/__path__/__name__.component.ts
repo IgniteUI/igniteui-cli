@@ -1,5 +1,4 @@
 import { Component } from "@angular/core";
-import { ActivatedRoute, Routes } from "@angular/router";
 import { lastFiveYears } from "../../assets/world-energy-production";
 
 @Component({

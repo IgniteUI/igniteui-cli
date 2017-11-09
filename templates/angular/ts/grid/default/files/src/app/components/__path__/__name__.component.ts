@@ -1,5 +1,4 @@
 import { Component } from "@angular/core";
-import { ActivatedRoute, Routes } from "@angular/router";
 import { products } from "../../assets/northwindProducts";
 
 @Component({

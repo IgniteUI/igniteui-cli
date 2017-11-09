@@ -7,7 +7,6 @@ class ColumnChartTemplate extends AngularTemplate {
 		this.controlGroup = "Charts";
 		this.listInComponentTemplates = true;
 		this.id = "column-chart";
-		this.framework = "angular";
 		this.projectType = "ts";
 		this.name = "Column Chart";
 		this.description = "Column series template of Data Chart";

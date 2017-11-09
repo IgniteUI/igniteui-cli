@@ -7,7 +7,6 @@ class LineChartTemplate extends AngularTemplate {
 		this.controlGroup = "Charts";
 		this.listInComponentTemplates = true;
 		this.id = "line-chart";
-		this.framework = "angular";
 		this.projectType = "ts";
 		this.name = "Line Chart";
 		this.description = "Line series template of Data Chart";

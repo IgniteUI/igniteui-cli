@@ -1,5 +1,4 @@
 import { Component } from "@angular/core";
-import { ActivatedRoute, Routes } from "@angular/router";
 import { financialData } from "../../assets/financial-data";
 
 @Component({
