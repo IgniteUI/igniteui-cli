@@ -90,14 +90,14 @@
 		{
 			"type": "node",
 			"request": "launch",
-			"name": "Launch Quickstart Angular2",
+			"name": "Launch Quickstart Angular",
 			"cwd": "${workspaceRoot}/output",
 			"program": "${workspaceRoot}/bin/execute.js",
 			"console": "externalTerminal",
 			"preLaunchTask": "build",
 			"args": [
 				"quickstart",
-				"--framework=angular2"
+				"--framework=angular"
 			]
 		},
 
@@ -168,7 +168,7 @@
 		{
 			"type": "node",
 			"request": "launch",
-			"name": "Add Combo to Angular2",
+			"name": "Add Combo to Angular",
 			"cwd": "${workspaceRoot}/output/angularproj",
 			"program": "${workspaceRoot}/bin/execute.js",
 			"console": "externalTerminal",
