@@ -1,42 +1,41 @@
-import * as path from 'path';
 import * as fs from "fs-extra";
+import * as path from "path";
 import { Util } from "../../../../../lib/Util";
 
-
 class EmptyProject implements ProjectTemplate {
-	_updateFile: string = "webpack.config.js";
-	id: string = "react";
-    name = "empty";
-    description = "The is the default empty project structure for jQuery";
-    framework: string = "react";
-    projectType: string = "jsx";
-    dependencies: string[];
-    hasExtraConfiguration: boolean = false;
-	installModules(): void {
+	public _updateFile: string = "webpack.config.js";
+	public id: string = "react";
+	public name = "empty";
+	public description = "The is the default empty project structure for jQuery";
+	public framework: string = "react";
+	public projectType: string = "jsx";
+	public dependencies: string[];
+	public hasExtraConfiguration: boolean = false;
+	public installModules(): void {
 		throw new Error("Method not implemented.");
 	}
-	upgradeIgniteUIPackage(projectPath:string, packagePath: string): void {
-		var filePath = path.join(projectPath, this._updateFile);
-		var configFile = fs.readFileSync(filePath, "utf8");
+	public upgradeIgniteUIPackage(projectPath: string, packagePath: string): void {
+		const filePath = path.join(projectPath, this._updateFile);
+		let configFile = fs.readFileSync(filePath, "utf8");
 		//comment out core + lob redirects
 		configFile = configFile.replace(`"ignite-ui/js/infragistics.core.js$"`, `//$&`);
 		configFile = configFile.replace(`"ignite-ui/js/infragistics.lob.js$"`, `//$&`);
 		fs.writeFileSync(filePath, configFile);
 	}
-	generateFiles(outputPath: string, name: string, theme: string, ...options: any[]): Promise<boolean> {
+	public generateFiles(outputPath: string, name: string, theme: string, ...options: any[]): Promise<boolean> {
 
 		//TODO update the config with [{key: "keyname", "value"}]
-		var config = {
-			"__path__": name,
-			"$(theme)": theme
-		}
-		var pathsConfig = {};
+		const config = {
+			"$(theme)": theme,
+			"__path__": name
+		};
+		const pathsConfig = {};
 		return Util.processTemplates(path.join(__dirname, "./files"), path.join(outputPath, name), config, pathsConfig);
 	}
-	getExtraConfiguration(): ControlExtraConfiguration[] {
+	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		throw new Error("Method not implemented.");
 	}
-	setExtraConfiguration(extraConfigKeys: {}) {
+	public setExtraConfiguration(extraConfigKeys: {}) {
 		throw new Error("Method not implemented.");
 	}
 }

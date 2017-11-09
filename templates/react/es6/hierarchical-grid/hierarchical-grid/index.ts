@@ -1,13 +1,13 @@
-import * as path from 'path';
+import * as path from "path";
 import { ReactTemplate } from "../../../../../lib/templates/ReactTemplate";
 import { Util } from "../../../../../lib/Util";
 
 import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 
 class HierarchicalGridTemplate extends ReactTemplate {
-	private gridHelper: GridHelper;
-	extraConfigurations: ControlExtraConfiguration[] = [];
+	public extraConfigurations: ControlExtraConfiguration[] = [];
 	public userExtraConfiguration: {};
+	private gridHelper: GridHelper;
 
 	constructor() {
 		super(__dirname);
@@ -23,32 +23,32 @@ class HierarchicalGridTemplate extends ReactTemplate {
 		this.gridHelper.hierarchical = true;
 		this.hasExtraConfiguration = true;
 		this.extraConfigurations.push({
-			key: "features",
 			choices: ["Sorting", "Paging", "Filtering"],
 			default: "",
-			type: Enumerations.ControlExtraConfigType.MultiChoice,
-			message: "Select features for the igHierarchicalGrid"
+			key: "features",
+			message: "Select features for the igHierarchicalGrid",
+			type: Enumerations.ControlExtraConfigType.MultiChoice
 		});
 	}
 
-	generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
+	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
 		const config = {};
 		const pathsConfig = {};
 		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 5);
 
 		config["__path__"] =  this.folderName(name); //folder name allowed spaces, any casing
-		config["$(ClassName)"] = this.className(name);//first letter capital, no spaces, 
+		config["$(ClassName)"] = this.className(name); //first letter capital, no spaces,
 		config["$(widget)"] = "igHierarchicalGrid";
 		config["$(Control)"] = this.className("igHierarchicalGrid");
 		config["$(igniteImports)"] = this.getImports();
-		config["$(name)"] = name; // This name should not have restrictions
+		config["$(name)"] = name; // this name should not have restrictions
 		config["$(gridfeatures)"] = features;
 		return Util.processTemplates(path.join(__dirname, "files"), projectPath, config, pathsConfig);
 	}
-	getExtraConfiguration(): ControlExtraConfiguration[] {
+	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return this.extraConfigurations;
 	}
-	setExtraConfiguration(extraConfigKeys: {}) {
+	public setExtraConfiguration(extraConfigKeys: {}) {
 		this.userExtraConfiguration = extraConfigKeys;
 	}
 }

@@ -1,7 +1,7 @@
 class ReactFramework implements Framework {
-	id: string;
-	name: string;
-	projectLibraries: ProjectLibrary[];
+	public id: string;
+	public name: string;
+	public projectLibraries: ProjectLibrary[];
 
 	constructor() {
 		this.id = "react";

@@ -10,5 +10,10 @@
 		"spec/acceptance/**/*.js": {"when": "$(basename).ts"},
 		"templates/**/*.js.map": true,
 		"templates/**/*.js": {"when": "$(basename).ts"}
-	}
+	},
+	"tslint.exclude": [ 
+		"**/files/**/*.ts",
+		"./output/**/*.ts",
+		"./quickstart/**/*.ts"
+	]
 }

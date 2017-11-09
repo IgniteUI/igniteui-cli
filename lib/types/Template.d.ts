@@ -9,7 +9,7 @@ declare interface Template extends BaseTemplate {
 	listInComponentTemplates: boolean;
 	listInCustomTemplates: boolean;
 	/** Generates template files. */
-	generateFiles(projectPath: string, name: string, ...options: any[]) : Promise<boolean>;
+	generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean>;
 	/** Called when the template is added to a project */
 	registerInProject(projectPath: string, name: string);
 }

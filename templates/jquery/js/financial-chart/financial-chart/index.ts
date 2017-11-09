@@ -13,7 +13,7 @@ class FinancialChartTemplate extends jQueryTemplate {
 		this.name = "Financial Chart";
 		this.description = "Financial series template of Data Chart";
 		this.dependencies = ["igDataChart"];
-	};
-	
+	}
+
 }
 module.exports = new FinancialChartTemplate();

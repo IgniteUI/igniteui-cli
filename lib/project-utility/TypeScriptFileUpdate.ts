@@ -358,8 +358,9 @@ export class TypeScriptFileUpdate {
 		const formatOptions: ts.FormatCodeSettings  = {
 			indentSize: 4,
 			tabSize: 4,
-			newLineCharacter: ts.sys.newLine,
+			// tslint:disable-next-line:object-literal-sort-keys
 			convertTabsToSpaces: false,
+			newLineCharacter: ts.sys.newLine,
 			indentStyle: ts.IndentStyle.Smart,
 			insertSpaceAfterCommaDelimiter: true,
 			insertSpaceAfterSemicolonInForStatements: true,
@@ -377,20 +378,20 @@ export class TypeScriptFileUpdate {
 		files[filePath] = { version: 0 };
 		// create the language service host to allow the LS to communicate with the host
 		const servicesHost: ts.LanguageServiceHost = {
+			fileExists: ts.sys.fileExists,
+			getCompilationSettings: () => ({}),
+			getCurrentDirectory: () => process.cwd(),
+			getDefaultLibFileName: options => ts.getDefaultLibFilePath(options),
 			getScriptFileNames: () => Object.keys(files),
-			getScriptVersion: fileName => files[fileName] && files[fileName].version.toString(),
 			getScriptSnapshot: fileName => {
 				if (!fs.existsSync(fileName)) {
 					return undefined;
 				}
 				return ts.ScriptSnapshot.fromString(fs.readFileSync(fileName).toString());
 			},
-			getCurrentDirectory: () => process.cwd(),
-			getCompilationSettings: () => ({}),
-			getDefaultLibFileName: options => ts.getDefaultLibFilePath(options),
-			fileExists: ts.sys.fileExists,
-			readFile: ts.sys.readFile,
-			readDirectory: ts.sys.readDirectory
+			getScriptVersion: fileName => files[fileName] && files[fileName].version.toString(),
+			readDirectory: ts.sys.readDirectory,
+			readFile: ts.sys.readFile
 		};
 		return servicesHost;
 	}

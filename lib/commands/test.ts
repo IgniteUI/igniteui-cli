@@ -1,10 +1,12 @@
-var command = {
+import { Util } from "../Util";
 
-	command: 'test',
-	desc: 'test the project',
+const command = {
+	// tslint:disable:object-literal-sort-keys
+	command: "test",
+	desc: "test the project",
 	builder: {},
-	execute: async function (argv) {
-		console.log("test!");
+	async execute(argv) {
+		Util.log("test!");
 	}
 };
 export default command;

@@ -1,16 +1,14 @@
-import * as path from "path";
 import * as fs from "fs-extra";
+import * as path from "path";
 import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 import { jQueryTemplate } from "../../../../../lib/templates/jQueryTemplate";
 import { Util } from "../../../../../lib/Util";
 
 class GridExportTemplate extends jQueryTemplate {
-	private gridHelper: GridHelper;
-	extraConfigurations: ControlExtraConfiguration[];
-
+	public extraConfigurations: ControlExtraConfiguration[];
 	public userExtraConfiguration: {};
 
-	
+	private gridHelper: GridHelper;
 	/**
 	 *
 	 */
@@ -25,23 +23,20 @@ class GridExportTemplate extends jQueryTemplate {
 		this.gridHelper = new GridHelper();
 		this.gridHelper.space = "    ";
 		this.hasExtraConfiguration = true;
-		var featureConfiguration: ControlExtraConfiguration = {
-			key: "features",
+		const featureConfiguration: ControlExtraConfiguration = {
 			choices: ["Sorting", "Paging", "Filtering"],
 			default: "",
-			type: Enumerations.ControlExtraConfigType.MultiChoice,
-			message: "Select features for the igGrid"
-		}
+			key: "features",
+			message: "Select features for the igGrid",
+			type: Enumerations.ControlExtraConfigType.MultiChoice
+		};
 		this.extraConfigurations.push(featureConfiguration);
 	}
-	setExtraConfiguration(extraConfigKeys: {}) {
+	public setExtraConfiguration(extraConfigKeys: {}) {
 		this.userExtraConfiguration = extraConfigKeys;
 	}
-	generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
-		
-		var success = true,
-			destinationPath = path.join(projectPath, this.folderName(name));
-		//read html
+	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
+		const destinationPath = path.join(projectPath, this.folderName(name));
 		const config = {};
 		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 4);
 
@@ -49,10 +44,11 @@ class GridExportTemplate extends jQueryTemplate {
 		config["$(componentName)"] = name;
 		config["$(cssBlock)"] = this.getCssTags();
 		config["$(scriptBlock)"] = this.getScriptTags();
-		var pathsConfig = {};
+		const pathsConfig = {};
+
 		return Util.processTemplates(path.join(__dirname, "files"), destinationPath, config, pathsConfig);
 	}
-	getExtraConfiguration(): ControlExtraConfiguration[] {
+	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return this.extraConfigurations;
 	}
 }

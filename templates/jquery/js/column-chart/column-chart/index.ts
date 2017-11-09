@@ -12,6 +12,6 @@ class ColumnChartTemplate extends jQueryTemplate {
 		this.name = "Column Chart";
 		this.description = "Column series template of Data Chart";
 		this.dependencies = ["igDataChart"];
-	};
+	}
 }
 module.exports = new ColumnChartTemplate();

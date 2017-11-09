@@ -1,21 +1,20 @@
-import * as path from "path";
 import * as fs from "fs-extra";
+import * as path from "path";
 import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 import { jQueryTemplate } from "../../../../../lib/templates/jQueryTemplate";
 import { Util } from "../../../../../lib/Util";
 
 class GridEditingTemplate extends jQueryTemplate {
-	private gridHelper: GridHelper;
-	extraConfigurations: ControlExtraConfiguration[];
-
+	public extraConfigurations: ControlExtraConfiguration[];
 	public userExtraConfiguration: {};
 
+	private gridHelper: GridHelper;
 
 	/**
 	 *
 	 */
 	constructor() {
-		super(__dirname)
+		super(__dirname);
 		this.extraConfigurations = [];
 		this.name = "Custom Grid";
 		this.description = "Grid Custom template";
@@ -25,19 +24,22 @@ class GridEditingTemplate extends jQueryTemplate {
 		this.gridHelper = new GridHelper();
 		this.gridHelper.space = "    ";
 		this.hasExtraConfiguration = true;
-		var featureConfiguration: ControlExtraConfiguration = {
-			key: "features",
-			choices: ["Sorting", "Selection","Updating", "Filtering", "ColumnMoving", "Summaries", "Resizing", "Hiding", "Paging"],
+		const featureConfiguration: ControlExtraConfiguration = {
+			choices: [
+				"Sorting", "Selection", "Updating", "Filtering",
+				"ColumnMoving", "Summaries", "Resizing", "Hiding", "Paging"
+			],
 			default: "",
-			type: Enumerations.ControlExtraConfigType.MultiChoice,
-			message: "Select features for the custom igGrid"
-		}
+			key: "features",
+			message: "Select features for the custom igGrid",
+			type: Enumerations.ControlExtraConfigType.MultiChoice
+		};
 		this.extraConfigurations.push(featureConfiguration);
 	}
-	setExtraConfiguration(extraConfigKeys: {}) {
+	public setExtraConfiguration(extraConfigKeys: {}) {
 		this.userExtraConfiguration = extraConfigKeys;
 	}
-	generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
+	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
 		const destinationPath = path.join(projectPath, this.folderName(name));
 		//read html
 		const config = {};
@@ -47,10 +49,10 @@ class GridEditingTemplate extends jQueryTemplate {
 		config["$(componentName)"] = name;
 		config["$(cssBlock)"] = this.getCssTags();
 		config["$(scriptBlock)"] = this.getScriptTags();
-		var pathsConfig = {};
+		const pathsConfig = {};
 		return Util.processTemplates(path.join(__dirname, "files"), destinationPath, config, pathsConfig);
 	}
-	getExtraConfiguration(): ControlExtraConfiguration[] {
+	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return this.extraConfigurations;
 	}
 }

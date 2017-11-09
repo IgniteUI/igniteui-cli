@@ -7,7 +7,7 @@ class FunnelChartComponent extends BaseComponent {
 	constructor() {
 		super(__dirname);
 		this.name  = "Funnel Chart";
-		this.group = "Charts"
+		this.group = "Charts";
 	}
 }
 module.exports = new FunnelChartComponent();

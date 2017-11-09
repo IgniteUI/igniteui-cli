@@ -1,7 +1,6 @@
-import * as path from 'path';
+import * as path from "path";
 import { ReactTemplate } from "../../../../../lib/templates/ReactTemplate";
 import { Util } from "../../../../../lib/Util";
-
 
 class DoughnutChartTemplate extends ReactTemplate {
 	/**

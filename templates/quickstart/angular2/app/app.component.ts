@@ -11,7 +11,7 @@ import { Component } from '@angular/core';
         [autoGenerateColumns]='true'
         >
     </ig-grid>
-    
+
     <h2>igEditors</h2>
     <ig-text-editor value="John"></ig-text-editor>
     <br/>
@@ -26,17 +26,17 @@ import { Component } from '@angular/core';
      <ig-percent-editor value='40'></ig-percent-editor>
       <br/>
      <ig-date-picker value='{{currDate | date}}'></ig-date-picker>
-     
+
      <h2>igCombo</h2>
      <ig-combo [dataSource]='data' textKey='Name' valueKey='ProductID' [(ngModel)]="value"></ig-combo >
-     
+
      <h2>igTree</h2>
      <ig-tree widgetId='tree1' [dataSource]='treeData' [bindings]="treeBinding"></ig-tree>
-     
+
      <h2>igDialog</h2>
      <ig-dialog [(state)]='dialogState' (stateChanged)='stateChanged()'></ig-dialog>
      <button (click)='btnClicked()'>Open Dialog</button>
-     
+
      <h2>igDataChart</h2>
      <ig-data-chart [(options)]="chartOptions" widgetId='datachart1'></ig-data-chart>
     `
