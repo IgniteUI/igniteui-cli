@@ -2,12 +2,12 @@ import { Component } from "@angular/core";
 import { lastFiveYears } from "../../assets/world-energy-production";
 
 @Component({
-	selector: "app-bar-chart",
+	selector: "app-column-chart",
 	template: `
-		<div style="float: left">
-			<ig-data-chart [(options)]="options" widgetId='barChart'></ig-data-chart>
-		</div>
-		<div id="barLegend" style="float: left"></div>`
+	<div style="float: left">
+		<ig-data-chart [(options)]="options" widgetId='columnChart'></ig-data-chart>
+	</div>
+	<div id="columnLegend" style="float: left"></div>`
 })
 export class $(ClassName)Component {
 	public options: IgDataChart;
@@ -21,20 +21,21 @@ export class $(ClassName)Component {
 			dataSource: this.data,
 			title: "Energy Production Per Country",
 			subtitle: "The top five Total Primary Energy producers",
-			legend: { element: "barLegend" },
+			legend: { element: "columnLegend" },
 			axes: [{
 				name: "xAxis",
-				type: "numericX",
-				title: "Quadrillion Btu"
+				type: "categoryX",
+				label: "Year",
+				labelTopMargin: 5
 			}, {
 				name: "yAxis",
-				type: "categoryY",
-				label: "Year"
+				type: "numericY",
+				title: "Quadrillion Btu",
 			}],
 			series: [{
 				name: "series1",
 				title: "Canada",
-				type: "bar",
+				type: "column",
 				isHighlightingEnabled: true,
 				isTransitionInEnabled: true,
 				xAxis: "xAxis",
@@ -43,7 +44,7 @@ export class $(ClassName)Component {
 			}, {
 				name: "series2",
 				title: "Saudi Arabia",
-				type: "bar",
+				type: "column",
 				isHighlightingEnabled: true,
 				isTransitionInEnabled: true,
 				xAxis: "xAxis",
@@ -52,25 +53,27 @@ export class $(ClassName)Component {
 			}, {
 				name: "series3",
 				title: "Russia",
-				type: "bar",
+				type: "column",
 				isHighlightingEnabled: true,
 				isTransitionInEnabled: true,
 				xAxis: "xAxis",
 				yAxis: "yAxis",
 				valueMemberPath: "Russia"
-			}, {
+			},
+			{
 				name: "series4",
 				title: "United States",
-				type: "bar",
+				type: "column",
 				isHighlightingEnabled: true,
 				isTransitionInEnabled: true,
 				xAxis: "xAxis",
 				yAxis: "yAxis",
 				valueMemberPath: "UnitedStates"
-			}, {
+			},
+			{
 				name: "series5",
 				title: "China",
-				type: "bar",
+				type: "column",
 				isHighlightingEnabled: true,
 				isTransitionInEnabled: true,
 				xAxis: "xAxis",

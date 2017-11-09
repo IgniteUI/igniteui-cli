@@ -1,16 +1,16 @@
 import { AngularTemplate } from "../../../../../lib/templates/AngularTemplate";
 
-class BarChartTemplate extends AngularTemplate {
+class LineChartTemplate extends AngularTemplate {
 	constructor() {
 		super(__dirname);
-		this.components = ["Bar Chart"];
+		this.components = ["Line Chart"];
 		this.controlGroup = "Charts";
 		this.listInComponentTemplates = true;
-		this.id = "bar-chart";
+		this.id = "line-chart";
 		this.projectType = "ts";
-		this.name = "Bar Chart";
-		this.description = "Bar series template of Data Chart";
+		this.name = "Line Chart";
+		this.description = "Line series template of Data Chart";
 		this.dependencies = ["igDataChart"];
 	}
 }
-module.exports = new BarChartTemplate();
+module.exports = new LineChartTemplate();
