@@ -1,7 +1,6 @@
 import * as fs from "fs-extra";
 import * as path from "path";
 import { AngularTemplate } from "../../../../../lib/templates/AngularTemplate";
-//import { TreeGridFeatureHelper } from "../../../../../jquery/js/tree-grid/treegridfeaturehelper";
 import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 import { Util } from "../../../../../lib/Util";
 
