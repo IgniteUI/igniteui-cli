@@ -82,7 +82,9 @@ export abstract class jQueryTemplate implements Template {
 	//ms index
 	getJqueryDependenciesScriptTag() : string {
 		var builder = "<!-- Ignite UI required script references -->\n";
-		builder += "<script src=\"http://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.8.3.js\"></script>\n";
+
+		// builder += "<script src=\"http://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.8.3.js\"></script>\n";
+
 		builder += "<script src=\"http://code.jquery.com/jquery-1.11.3.min.js\"></script>\n";
 		builder += "<script src=\"http://code.jquery.com/ui/1.11.1/jquery-ui.min.js\"></script>\n";
 		return builder;
@@ -109,18 +111,7 @@ export abstract class jQueryTemplate implements Template {
 	getNavigationScript():string {
 		var builder = "";
 		builder += "<script src=\"../ignite-cli-views.js\"></script>";
-		builder += "<script> $(function () {\n";
-		builder += "var menu = \"<ul id='list' class='nav-menu'><li class='nav-menu-item'><a href='/'>Home</a></li></ul>\"\n";
-		builder += "$('body').prepend(menu);\n";
-		builder += "var result = \"\";\n";
-        builder += "for (var i = 0; i < igniteCLIViews.length; i++) {\n";
-        builder += "var view = igniteCLIViews[i];\n";
-        builder += "result += \"<li class=\\\"nav-menu-item\\\"><a href='/\" + view.path + \"'>\" + view.name + \"</a></li>\"\n";
-		builder += "}\n";
-		builder += "result += \"<li class=\\\"nav-menu-item-logo\\\"><div>Ignite UI CLI</div></li>\";";
-		builder += "$(\"#list\").append(result);\n";
-		builder += "});\n"
-    	builder += "</script>"
+		builder += "<script src=\"../assets/navigation-header.js\"></script>";
 
 		return builder;
 	}
@@ -132,7 +123,7 @@ export abstract class jQueryTemplate implements Template {
 		builder += "<link href=\"../ignite-ui/css/structure/infragistics.css\" rel=\"stylesheet\" />\n"
 		//builder += "<link href=\"$(themePath)\" rel=\"stylesheet\" />\n";
 		//builder += "<link href=\"$(igniteuiSource)\\css\\structure\\infragistics.css\" rel=\"stylesheet\" />\n"
-		builder += "<link href=\"../cli-navigation.css\" rel=\"stylesheet\" />\n";
+		builder += "<link href=\"../assets/app.css\" rel=\"stylesheet\" />\n";
 		return builder;
 	}
 }

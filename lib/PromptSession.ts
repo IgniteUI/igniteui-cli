@@ -81,11 +81,11 @@ export class PromptSession {
 	 */
 	async chooseActionLoop(framework: ProjectLibrary, theme: string) {
 		var actionChoices: string[] = ["Complete"];
-		if (framework.getCustomTemplates().length > 0) {
-			actionChoices.push("Add template");
-		}
 		if (framework.components.length > 0) {
 			actionChoices.push("Add component");
+		}
+		if (framework.getCustomTemplates().length > 0) {
+			actionChoices.push("Add template");
 		}
 		var action = await inquirer.prompt({
 			type: "list",
