@@ -12,13 +12,14 @@ export class $(ClassName)Component {
 	constructor() {
 		this.products = hierarchicalDS;
 		this.gridOptions = {
-			id: "basicTreeGrid",
+			id: "editingTreeGrid",
 			width: "100%",
 			dataSource: this.products,
 			autoGenerateColumns: false,
 			height: "500",
 			primaryKey: "id",
 			childDataKey: "products",
+			autoCommit : true,
 			columns: [
 				{ headerText: "ID", key: "id", width: "10%", dataType: "number", hidden: true },
 				{ headerText: "Tasks", key: "tasks", width: "30%", dataType: "string" },
@@ -29,6 +30,26 @@ export class $(ClassName)Component {
 			],
 
 			features: [
+				{
+					name: "Updating",
+					columnSettings: [
+						{
+							columnKey: "progress",
+							editorType: "currency",
+							editorOptions: {
+								buttonType: "spin"
+							}
+						},
+						{
+							columnKey: "start",
+							editorType: "datepicker"
+						},
+						{
+							columnKey: "finish",
+							editorType: "datepicker"
+						}
+					]
+				},
 				$(treeGridFeatures)
 			]
 		};
