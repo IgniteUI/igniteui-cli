@@ -1,8 +1,8 @@
 import * as fs from "fs-extra";
 import * as path from "path";
 import { AngularTemplate } from "../../../../../lib/templates/AngularTemplate";
-import { TreeGridFeatureHelper } from "../../../../jquery/js/tree-grid/treegridfeaturehelper";
 import { Util } from "../../../../../lib/Util";
+import { TreeGridFeatureHelper } from "../../../../jquery/js/tree-grid/treegridfeaturehelper";
 
 class TreeGridTemplate extends AngularTemplate {
 	private treeGridHelper: TreeGridFeatureHelper;
@@ -21,11 +21,11 @@ class TreeGridTemplate extends AngularTemplate {
 		this.hasExtraConfiguration = true;
 		this.extraConfigurations = [];
 		const featureConfiguration: ControlExtraConfiguration = {
-			key: "features",
 			choices: ["Sorting", "RowSelectors", "Filtering"],
 			default: "",
-			type: Enumerations.ControlExtraConfigType.MultiChoice,
-			message: "Select features for the igTreeGrid"
+			key: "features",
+			message: "Select features for the igTreeGrid",
+			type: Enumerations.ControlExtraConfigType.MultiChoice
 		};
 		this.extraConfigurations.push(featureConfiguration);
 	}
