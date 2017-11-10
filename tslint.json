@@ -1,5 +1,10 @@
 {
 	"extends": "tslint:latest",
+	"exclude": [ 
+		"**/files/**/*.ts",
+		"./output/**/*.ts",
+		"./quickstart/**/*.ts"
+	],
 	"rules": {
 		"arrow-parens": [true, "ban-single-arg-parens"],
 		"indent": [ true, "tabs" ],
@@ -9,6 +14,7 @@
 				"ignore-pattern": "TODO|\\w\\.\\w"
 			}
 		],
+		"member-ordering": [true, {"order": "fields-first"}],
 		"variable-name": [ true, "allow-leading-underscore" ],
 		"trailing-comma": [
 			true,
@@ -26,7 +32,6 @@
 			"@angular/platform-browser",
 			"@angular/core/testing"
 		],
-		"object-literal-sort-keys": [true, "ignore-case", "match-declaration-order"],
 		"max-classes-per-file": [ false ],
 		"prefer-object-spread": false,
 		"prefer-conditional-expression": false

@@ -23,11 +23,11 @@ class GridTemplate extends AngularTemplate {
 
 		this.gridHelper = new GridHelper();
 		const featureConfiguration: ControlExtraConfiguration = {
-			key: "features",
 			choices: ["Sorting", "Paging", "Filtering"],
 			default: "",
-			type: Enumerations.ControlExtraConfigType.MultiChoice,
-			message: "Select features for the igGrid"
+			key: "features",
+			message: "Select features for the igGrid",
+			type: Enumerations.ControlExtraConfigType.MultiChoice
 		};
 		this.extraConfigurations.push(featureConfiguration);
 	}
@@ -38,9 +38,9 @@ class GridTemplate extends AngularTemplate {
 
 	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
 		const config = {
+			"$(ClassName)": this.className(name),
 			"__name__": this.fileName(name),
-			"__path__": this.folderName(name),
-			"$(ClassName)": this.className(name)
+			"__path__": this.folderName(name)
 		};
 		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 3);
 

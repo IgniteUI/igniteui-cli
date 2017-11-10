@@ -23,9 +23,9 @@ export abstract class AngularTemplate implements Template {
 	}
 	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
 		const config = {
+			"$(ClassName)": this.className(name),
 			"__name__": this.fileName(name), // TODO: optionally pass as a different variable than name.
-			"__path__": this.folderName(name),
-			"$(ClassName)": this.className(name)
+			"__path__": this.folderName(name)
 		};
 		const pathsConfig = {};
 		return Util.processTemplates(path.join(this.rootPath, "files"), projectPath, config, pathsConfig);

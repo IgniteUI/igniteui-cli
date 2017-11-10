@@ -1,10 +1,11 @@
-import * as path from "path";
 import * as inquirer from "inquirer";
+import * as path from "path";
 import { default as add } from "./commands/add";
 import { default as build } from "./commands/build";
 import { default as start } from "./commands/start";
-import { ProjectConfig } from './ProjectConfig';
+import { ProjectConfig } from "./ProjectConfig";
 import { TemplateManager } from "./TemplateManager";
+import { Util } from "./Util";
 
 export class PromptSession {
 
@@ -13,28 +14,32 @@ export class PromptSession {
 	/**
 	 * Start questions session for project creation
 	 */
-	async start(){
-		var config =  ProjectConfig.getConfig();
+	public async start() {
+		const config =  ProjectConfig.getConfig();
+		let projLibrary: ProjectLibrary;
+
 		add.templateManager = this.templateManager;
+
+		// tslint:disable:object-literal-sort-keys
 		if (config != null && !config.project.isShowcase) {
 			//throw new Error("Add command is supported only on existing project created with igntie-ui-cli");
-			var framework = this.templateManager.getFrameworkById(config.project.framework);
+			const framework = this.templateManager.getFrameworkById(config.project.framework);
 			if (framework.projectLibraries.length > 1) {
 				//TODO proj type support
 			} else {
-				//Sorry they made me do it. 
+				// sorry they made me do it.
 				projLibrary = framework.projectLibraries[0];
 			}
 			await this.chooseActionLoop(projLibrary, config.project.theme);
 		} else {
 			//TODO update to check if project exists and load correct framework
-			var questions: inquirer.Question[] = [{
+			const questions: inquirer.Question[] = [{
 				type: "input",
 				name: "projectName",
 				message: "Enter a name for your project: ",
 				default: "app"
 			},
-			//TODO split questions and in case of existing app folder or not kebab case throw exception. 
+			//TODO split questions and in case of existing app folder or not kebab case throw exception.
 			{
 				type: "list",
 				name: "framework",
@@ -42,31 +47,30 @@ export class PromptSession {
 				choices: this.addSeparators(this.templateManager.getFrameworkNames()),
 				default: "jQuery"
 			}];
-			var answers = await inquirer.prompt(questions);
-			var projLibrary: ProjectLibrary, framework = this.templateManager.getFrameworkByName(answers["framework"]);
-			//app name validation??? 
+			const answers = await inquirer.prompt(questions);
+			const framework = this.templateManager.getFrameworkByName(answers["framework"]);
+			//app name validation???
 			if (framework.projectLibraries.length > 1) {
 				//TODO proj type support
 			} else {
-				//Sorry they made me do it. 
+				// sorry they made me do it.
 				projLibrary = framework.projectLibraries[0];
 			}
-			var themeQuestion: inquirer.Question = {
+			const themeQuestion: inquirer.Question = {
 				type: "list",
 				name: "theme",
 				message: "Choose the theme for the project",
 				choices: this.addSeparators(projLibrary.themes),
 				default: "infragistics"
 			};
-			var themeAnswer = await inquirer.prompt(themeQuestion);
-			var projTemplate = projLibrary.getProject();
-			//
+			const themeAnswer = await inquirer.prompt(themeQuestion);
+			const projTemplate = projLibrary.getProject();
 
-			console.log("Generating project structure.");
+			Util.log("Generating project structure.");
 			await projTemplate.generateFiles(process.cwd(), answers["projectName"], themeAnswer["theme"]);
 			// move cwd to project folder
 			process.chdir(answers["projectName"]);
-			console.log("Project structure generated.");
+			Util.log("Project structure generated.");
 
 			await this.chooseActionLoop(projLibrary, themeAnswer["theme"]);
 			//TODO: restore cwd?
@@ -79,25 +83,27 @@ export class PromptSession {
 	 * @param framework The framework to use
 	 * @param theme Theme to use
 	 */
-	async chooseActionLoop(framework: ProjectLibrary, theme: string) {
-		var actionChoices: string[] = ["Complete"];
+	public async chooseActionLoop(framework: ProjectLibrary, theme: string) {
+		const actionChoices: string[] = ["Complete"];
+		let templateName;
 		if (framework.components.length > 0) {
 			actionChoices.push("Add component");
 		}
 		if (framework.getCustomTemplates().length > 0) {
 			actionChoices.push("Add template");
 		}
-		var action = await inquirer.prompt({
+		const action = await inquirer.prompt({
 			type: "list",
 			name: "action",
 			message: "Choose an action",
 			choices:  this.addSeparators(actionChoices),
 			default: "Complete"
-		}), selectedTemplate: Template;
+		});
+		let selectedTemplate: Template;
 		switch (action["action"]) {
 			case "Add component":
-				var groups = framework.getComponentGroups();
-				var group = await inquirer.prompt({
+				const groups = framework.getComponentGroups();
+				const group = await inquirer.prompt({
 					name: "componentGroup",
 					type: "list",
 					message: "Choose a group",
@@ -105,24 +111,24 @@ export class PromptSession {
 					default: groups.find(x => x === "Data Grids") || groups[0]
 				});
 
-				var componentNames = framework.getComponentNamesByGroup(group["componentGroup"]);
-				var component = await inquirer.prompt({
+				const componentNames = framework.getComponentNamesByGroup(group["componentGroup"]);
+				const component = await inquirer.prompt({
 						type: "list",
 						name: "component",
 						message: "Choose a component",
 						choices: this.addSeparators(componentNames)
 					});
-				var pickedComponent = framework.getComponentByName(component["component"]);
+				const pickedComponent = framework.getComponentByName(component["component"]);
 
 				// runTemplateCollection (item: Template[])
 				//TODO refactor
-				var templates: Template[] = pickedComponent.templates;
+				const templates: Template[] = pickedComponent.templates;
 				if (templates.length === 1) {
 					//get the only one template
 					selectedTemplate = templates[0];
 				} else {
-					var templateNames = templates.map(x => x.name),
-						template = await inquirer.prompt({
+					const templateNames = templates.map(x => x.name);
+					const template = await inquirer.prompt({
 							type: "list",
 							name: "template",
 							message: "Choose one",
@@ -133,7 +139,7 @@ export class PromptSession {
 					});
 				}
 				if (selectedTemplate) {
-					var templateName = await inquirer.prompt({
+					templateName = await inquirer.prompt({
 						type: "input",
 						name: "name",
 						message: "Name your component",
@@ -141,9 +147,9 @@ export class PromptSession {
 					});
 					//TODO Validation of the template name (should not exist and should be kebab case)
 					if (selectedTemplate.hasExtraConfiguration) {
-						var extraPrompt: any[] = this.createQuestions(selectedTemplate.getExtraConfiguration());
-						var extraConfigAnswers = await inquirer.prompt(extraPrompt);
-						var extraConfig = this.parseAnswers(extraConfigAnswers);
+						const extraPrompt: any[] = this.createQuestions(selectedTemplate.getExtraConfiguration());
+						const extraConfigAnswers = await inquirer.prompt(extraPrompt);
+						const extraConfig = this.parseAnswers(extraConfigAnswers);
 						selectedTemplate.setExtraConfiguration(extraConfig);
 					}
 					await add.addTemplate(templateName["name"], selectedTemplate);
@@ -152,15 +158,15 @@ export class PromptSession {
 				break;
 			case "Add template":
 				//TODO:
-				var customTemplates = framework.getCustomTemplates(),
-				customTemplate = await inquirer.prompt({
+				const customTemplates = framework.getCustomTemplates();
+				const customTemplate = await inquirer.prompt({
 					type: "list",
 					name: "customTemplate",
 					message: "Choose custom template",
 					choices: this.addSeparators(customTemplates)
 				});
 				selectedTemplate = framework.getTemplateByName(customTemplate["customTemplate"]);
-				var templateName = await inquirer.prompt({
+				templateName = await inquirer.prompt({
 					type: "input",
 					name: "name",
 					message: "Name your template",
@@ -185,8 +191,8 @@ export class PromptSession {
 	 * @param array The original array to add separators to
 	 */
 	private addSeparators(array: any[]): any[] {
-		var newArray = [];
-		for (var i = 0; i < array.length; i++) {
+		const newArray = [];
+		for (let i = 0; i < array.length; i++) {
 			newArray.push(array[i]);
 			if (i + 1 < array.length) {
 				newArray.push(new inquirer.Separator());
@@ -197,13 +203,12 @@ export class PromptSession {
 
 	/**
 	 * Generate questions from extra configuration array
-	 * @param extraConfig 
+	 * @param extraConfig
 	 */
 	private createQuestions(extraConfig: ControlExtraConfiguration[]): any {
-		var result = [];
-		for (var i = 0; i < extraConfig.length; i++) {
-			var element = extraConfig[i];
-			var currExtraConfig = {}
+		const result = [];
+		for (const element of extraConfig) {
+			const currExtraConfig = {};
 			switch (element.type) {
 				case Enumerations.ControlExtraConfigType.Choice:
 					currExtraConfig["type"] = "list";
@@ -226,9 +231,9 @@ export class PromptSession {
 	}
 	/**
 	 * Conversion placeholder
-	 * @param answers 
+	 * @param answers
 	 */
-	private parseAnswers(answers: {}) : {} {
+	private parseAnswers(answers: {}): {} {
 		return answers;
 	}
 }

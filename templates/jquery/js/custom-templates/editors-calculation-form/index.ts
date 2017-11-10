@@ -9,11 +9,12 @@ class DataCalculationFormTemplate extends jQueryTemplate {
 		this.id = "editors-calculation-form";
 		this.framework = "jquery";
 		this.projectType = "js";
-		this.components = ["igTextEditor", "igCurrencyEditor", "igCombo", "igPercentEditor", "igDatePicker", "igNumericEditor", "igCheckboxEditor", "igValidator"];
+		this.components = [ "Editors", "Combo", "Validator" ];
 		this.listInCustomTemplates = true;
 		this.name = "Editors - Data Calculation Form";
-		this.description = "This tempalte shows basic options of the igNumericEditor, igTextEditor, igCheckbox, igPercentEditor, igMaskEditor and igDateEditor, demonstrated with a loan calculator.";
-		this.dependencies = ["igTextEditor", "igCurrencyEditor", "igCombo", "igPercentEditor", "igDatePicker", "igNumericEditor", "igCheckboxEditor"];
+		this.description = "This template shows basic options of the igNumericEditor, igTextEditor, igCheckbox, " +
+			"igPercentEditor, igMaskEditor and igDateEditor, demonstrated with a loan calculator.";
+		this.dependencies = [ "igEditors", "igCombo", "igValidator"];
 	}
 
 }

@@ -1,28 +1,28 @@
-import * as yargs from "yargs";
 import chalk from "chalk";
 import * as inquirer from "inquirer";
-import { Util } from "./Util";
+import * as yargs from "yargs";
+import { default as add } from "./commands/add";
+import { default as build } from "./commands/build";
+import { default as newCommand } from "./commands/new";
 import { default as quickstart } from "./commands/quickstart";
 import { default as start } from "./commands/start";
-import { default as newCommand } from "./commands/new";
-import { default as build } from "./commands/build";
 import { default as test } from "./commands/test";
-import { default as add } from "./commands/add";
+import { PromptSession } from "./PromptSession";
 import {TemplateManager} from "./TemplateManager";
-import { PromptSession } from './PromptSession';
+import { Util } from "./Util";
 
-process.title = 'Ignite UI CLI';
+process.title = "Ignite UI CLI";
 
 export async function run() {
-	var templateManager = new TemplateManager();
-	//Initialize all templates
+	const templateManager = new TemplateManager();
+	// initialize all templates
 	templateManager.initializeTemplate();
 
 	newCommand.template = templateManager;
 	newCommand.builder.framework.choices = templateManager.getFrameworkIds();
 	add.templateManager = templateManager;
 
-	var argv = yargs.command(quickstart)
+	const argv = yargs.command(quickstart)
 	.command(start)
 	.command(newCommand)
 	.command(build)
@@ -31,16 +31,16 @@ export async function run() {
 	.help()
 	.argv;
 
-	var command = argv._[0];
+	const command = argv._[0];
 	switch (command) {
 		case "new":
 			await newCommand.execute(argv);
-			console.log("Project Created");
+			Util.log("Project Created");
 			process.exit();
 			break;
 		case "quickstart":
 			await quickstart.execute(argv);
-			console.log("quickstart Created");
+			Util.log("quickstart Created");
 			break;
 		case "add":
 			await add.execute(argv);
@@ -54,13 +54,13 @@ export async function run() {
 			await test.execute(argv);
 			process.exit();
 			break;
-		case "start": 
+		case "start":
 			await start.execute(argv);
 			break;
 		default:
-			console.log("No command recognized, starting guide.");
-			console.log(chalk.green("Use --help after stopping this execution for a list of available commands."));
-			var prompts = new PromptSession(templateManager);
+			Util.log("No command recognized, starting guide.");
+			Util.log(chalk.green("Use --help after stopping this execution for a list of available commands."));
+			const prompts = new PromptSession(templateManager);
 			prompts.start();
 			break;
 	}

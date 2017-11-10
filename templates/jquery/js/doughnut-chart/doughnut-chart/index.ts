@@ -2,7 +2,6 @@ import { jQueryTemplate } from "../../../../../lib/templates/jQueryTemplate";
 
 class DoughnutChartTemplate extends jQueryTemplate {
 
-
 	constructor() {
 		super(__dirname);
 		this.components = ["Doughnut Chart"];
@@ -14,7 +13,7 @@ class DoughnutChartTemplate extends jQueryTemplate {
 		this.name = "Doughnut Chart";
 		this.description = "Doughnut chart template";
 		this.dependencies = ["igDoughnutChart"];
-	};
-	
+	}
+
 }
 module.exports = new DoughnutChartTemplate();

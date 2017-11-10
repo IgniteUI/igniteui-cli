@@ -1,25 +1,23 @@
-import * as path from "path";
 import * as fs from "fs-extra";
+import * as path from "path";
 import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
-import { jQueryTemplate } from "../../../../../lib/templates/jQueryTemplate";
 import { ProjectConfig } from "../../../../../lib/ProjectConfig";
+import { jQueryTemplate } from "../../../../../lib/templates/jQueryTemplate";
 import { Util } from "../../../../../lib/Util";
 
 class GridTemplatingTemplate extends jQueryTemplate {
-	private gridHelper: GridHelper;
-	extraConfigurations: ControlExtraConfiguration[];
-
+	public extraConfigurations: ControlExtraConfiguration[];
 	public userExtraConfiguration: {};
+	public hasExtraConfiguration = true;
 
-
-	hasExtraConfiguration = true;
+	private gridHelper: GridHelper;
 	/**
 	 *
 	 */
 	constructor() {
-		super(__dirname)
+		super(__dirname);
 		this.extraConfigurations = [];
-		
+
 		this.name = "Grid Templating";
 		this.description = "Grid templating template";
 		this.id = "grid-templating";
@@ -27,21 +25,20 @@ class GridTemplatingTemplate extends jQueryTemplate {
 
 		this.gridHelper = new GridHelper();
 		this.gridHelper.space = "    ";
-		var featureConfiguration: ControlExtraConfiguration = {
-			key: "features",
+		const featureConfiguration: ControlExtraConfiguration = {
 			choices: ["Sorting", "Paging", "Filtering"],
 			default: "",
-			type: Enumerations.ControlExtraConfigType.MultiChoice,
-			message: "Select features for the igGrid"
-		}
+			key: "features",
+			message: "Select features for the igGrid",
+			type: Enumerations.ControlExtraConfigType.MultiChoice
+		};
 		this.extraConfigurations.push(featureConfiguration);
 	}
-	setExtraConfiguration(extraConfigKeys: {}) {
+	public setExtraConfiguration(extraConfigKeys: {}) {
 		this.userExtraConfiguration = extraConfigKeys;
 	}
-	generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
-		var success = true,
-			destinationPath = path.join(projectPath, this.folderName(name));
+	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
+		const destinationPath = path.join(projectPath, this.folderName(name));
 		//read html
 		const config = {};
 		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 4);
@@ -50,10 +47,10 @@ class GridTemplatingTemplate extends jQueryTemplate {
 		config["$(componentName)"] = name;
 		config["$(cssBlock)"] = this.getCssTags();
 		config["$(scriptBlock)"] = this.getScriptTags();
-		var pathsConfig = {};
+		const pathsConfig = {};
 		return Util.processTemplates(path.join(__dirname, "files"), destinationPath, config, pathsConfig);
 	}
-	getExtraConfiguration(): ControlExtraConfiguration[] {
+	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return this.extraConfigurations;
 	}
 }

@@ -8,7 +8,7 @@ class ScatterChartComponent extends BaseComponent {
 	constructor() {
 		super(__dirname);
 		this.name  = "Scatter Chart";
-		this.group = "Charts"
+		this.group = "Charts";
 	}
 }
 module.exports = new ScatterChartComponent();

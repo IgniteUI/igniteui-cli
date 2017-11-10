@@ -12,6 +12,6 @@ class PieChartTemplate extends jQueryTemplate {
 		this.name = "Pie Chart";
 		this.description = "Pie chart template";
 		this.dependencies = ["igPieChart"];
-	};
+	}
 }
 module.exports = new PieChartTemplate();
