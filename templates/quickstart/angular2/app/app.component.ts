@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: 'my-app',
-    template: `<h1 id='mainheader'>My IgniteUI Angular2 App</h1>
+    template: `<h1 id='mainheader'>My IgniteUI Angular App</h1>
     <h2>igGrid</h2>
         <ig-grid
         widgetId='grid1'
