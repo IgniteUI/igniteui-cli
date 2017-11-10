@@ -36,9 +36,9 @@ class TreeGridTemplate extends AngularTemplate {
 
 	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
 		const config = {
+			"$(ClassName)": this.className(name),
 			"__name__": this.fileName(name),
-			"__path__": this.folderName(name),
-			"$(ClassName)": this.className(name)
+			"__path__": this.folderName(name)
 		};
 		const features = TreeGridFeatureHelper.generateFeatures(this.userExtraConfiguration["features"]);
 
