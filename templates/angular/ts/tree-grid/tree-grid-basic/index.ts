@@ -1,11 +1,11 @@
 import * as fs from "fs-extra";
 import * as path from "path";
 import { AngularTemplate } from "../../../../../lib/templates/AngularTemplate";
-import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
+import { TreeGridFeatureHelper } from "../../../../jquery/js/tree-grid/treegridfeaturehelper";
 import { Util } from "../../../../../lib/Util";
 
 class TreeGridTemplate extends AngularTemplate {
-	private gridHelper: GridHelper;
+	private treeGridHelper: TreeGridFeatureHelper;
 	private extraConfigurations: ControlExtraConfiguration[];
 	private userExtraConfiguration: {};
 
@@ -20,7 +20,6 @@ class TreeGridTemplate extends AngularTemplate {
 		this.listInComponentTemplates = true;
 		this.hasExtraConfiguration = true;
 		this.extraConfigurations = [];
-		this.gridHelper = new GridHelper();
 		const featureConfiguration: ControlExtraConfiguration = {
 			key: "features",
 			choices: ["Sorting", "RowSelectors", "Filtering"],
@@ -41,7 +40,7 @@ class TreeGridTemplate extends AngularTemplate {
 			"__path__": this.folderName(name),
 			"$(ClassName)": this.className(name)
 		};
-		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 3);
+		const features = TreeGridFeatureHelper.generateFeatures(this.userExtraConfiguration["features"]);
 
 		config["$(treeGridFeatures)"] = features;
 		config["$(componentName)"] = name;
