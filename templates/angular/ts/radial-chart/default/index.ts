@@ -9,7 +9,7 @@ class RadialChartTemplate extends AngularTemplate {
 		this.id = "radial-chart";
 		this.projectType = "ts";
 		this.name = "Radial Chart";
-		this.description = "Radial series template of Data Chart";
+		this.description = "Radial series template of Data Chart for Angular";
 		this.dependencies = ["igDataChart"];
 	}
 }
