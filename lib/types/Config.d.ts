@@ -26,12 +26,12 @@ declare interface Config {
 		/**Temp */
 		igniteuiSource: string;
 
-		[key:string]: any;
-	},
+		[key: string]: any;
+	};
 	build: {
 		/** This object contains information related to the build configuration
 		 *  and server configuration of the project */
 		//"projectBuild": "tsc",
 		//"serverType": "webpack"
-	}
+	};
 }

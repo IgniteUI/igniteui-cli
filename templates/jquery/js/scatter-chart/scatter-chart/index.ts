@@ -13,6 +13,6 @@ class ScatterChartTemplate extends jQueryTemplate {
 		this.name = "Scatter Chart";
 		this.description = "Scatter series template of Data Chart";
 		this.dependencies = ["igDataChart"];
-	};
+	}
 }
 module.exports = new ScatterChartTemplate();

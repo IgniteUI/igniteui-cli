@@ -11,8 +11,8 @@ class LineChartTemplate extends jQueryTemplate {
 		this.projectType = "js";
 		this.name = "Line Chart";
 		this.description = "Line series template of Data Chart";
-		this.dependencies = ["igDataChart"];	
-	};
-	
+		this.dependencies = ["igDataChart"];
+	}
+
 }
 module.exports = new LineChartTemplate();

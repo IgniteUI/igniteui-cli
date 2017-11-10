@@ -3,17 +3,17 @@ import * as path from "path";
 import { Util } from "../Util";
 
 export abstract class ReactTemplate implements Template {
-	components: string[];
-	controlGroup: string;
-	listInComponentTemplates: boolean = true;
-	listInCustomTemplates: boolean = false;
-	id: string;
-	name: string;
-	description: string;
-	dependencies: string[] = [];
-	framework: string = "react";
-	projectType: string;
-	hasExtraConfiguration: boolean = false;
+	public components: string[];
+	public controlGroup: string;
+	public listInComponentTemplates: boolean = true;
+	public listInCustomTemplates: boolean = false;
+	public id: string;
+	public name: string;
+	public description: string;
+	public dependencies: string[] = [];
+	public framework: string = "react";
+	public projectType: string;
+	public hasExtraConfiguration: boolean = false;
 
 	// non-standard template prop
 	protected widget: string;
@@ -27,12 +27,13 @@ export abstract class ReactTemplate implements Template {
 	 */
 	constructor(private rootPath: string) {}
 
-	generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
-		var config = {}, pathsConfig = {};
+	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
+		const config = {};
+		const pathsConfig = {};
 
 		config["__path__"] =  this.folderName(name); //folder name allowed spaces, any casing
-		config["$(name)"] = name; // This name should not have restrictions
-		config["$(ClassName)"] = this.className(name);//first letter capital, no spaces,
+		config["$(name)"] = name; // this name should not have restrictions
+		config["$(ClassName)"] = this.className(name); //first letter capital, no spaces,
 		if (this.widget) {
 			config["$(widget)"] = this.widget;
 			config["$(Control)"] = this.className(this.widget);
@@ -46,49 +47,49 @@ export abstract class ReactTemplate implements Template {
 		return Util.processTemplates(path.join(this.rootPath, "files"), projectPath, config, pathsConfig);
 	}
 
-	protected folderName(name: string) : string {
-		//TODO: should remove the spaces
-		return name.split(" ").join("-").toLowerCase();
-	}
-	protected getViewLink(name: string) : string {
-		var path = this.folderName(name) + "/index.js";
-		return path;
-	}
-
-	protected getToolbarLink(name: string) : string {
-		var toolbarLink = name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-		return toolbarLink;
-	}
-
-	protected className(name: string) : string {
-		var className = name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1);}).replace(/\s/g, "");
-		return className;
-	}
-
-	registerInProject(projectPath: string, name: string) {
-		var configFile = fs.readFileSync(path.join(projectPath, this.configFile), "utf8");
-		var viewsArr = JSON.parse(this.replacePattern.exec(configFile)[0]);
+	public registerInProject(projectPath: string, name: string) {
+		let configFile = fs.readFileSync(path.join(projectPath, this.configFile), "utf8");
+		const viewsArr = JSON.parse(this.replacePattern.exec(configFile)[0]);
 		viewsArr.push({path: "/" + this.folderName(name), folder: this.getViewLink(name), text: this.getToolbarLink(name)});
 		configFile = configFile.replace(this.replacePattern, JSON.stringify(viewsArr, null, 4));
 		fs.writeFileSync(path.join(projectPath, this.configFile), configFile);
 	}
-	getExtraConfiguration(): ControlExtraConfiguration[] {
+	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		throw new Error("Method not implemented.");
 	}
-	setExtraConfiguration(extraConfigKeys: {}) {
+	public setExtraConfiguration(extraConfigKeys: {}) {
 		throw new Error("Method not implemented.");
 	}
 
-	getImports(): string {
-		var config = require("../packages/components.json");
-		var builder = "";
-		builder += "\r\n"
+	protected getImports(): string {
+		const config = require("../packages/components.json");
+		let builder = "";
+		builder += "\r\n";
 		builder += "// Ignite UI Required Combined JavaScript Files\r\n";
 		builder += `import "ignite-ui/js/infragistics.core.js";\r\n`;
 		builder += `import "ignite-ui/js/infragistics.lob.js";\r\n`;
-		if (this.dependencies.filter(x => config.dv.indexOf(x) != -1).length) {
+		if (this.dependencies.filter(x => config.dv.indexOf(x) !== -1).length) {
 			builder += `import "ignite-ui/js/infragistics.dv.js";\r\n`;
 		}
 		return builder;
+	}
+
+	protected folderName(name: string): string {
+		//TODO: should remove the spaces
+		return name.split(" ").join("-").toLowerCase();
+	}
+	protected getViewLink(name: string): string {
+		const filePath = this.folderName(name) + "/index.js";
+		return filePath;
+	}
+
+	protected getToolbarLink(name: string): string {
+		const toolbarLink = name.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
+		return toolbarLink;
+	}
+
+	protected className(name: string): string {
+		const className = name.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1)).replace(/\s/g, "");
+		return className;
 	}
 }

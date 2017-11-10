@@ -1,12 +1,12 @@
-import * as path from "path";
 import * as fs from "fs-extra";
-import { TreeGridFeatureHelper } from "../treegridfeaturehelper";
+import * as path from "path";
 import { jQueryTemplate } from "../../../../../lib/templates/jQueryTemplate";
 import { Util } from "../../../../../lib/Util";
+import { TreeGridFeatureHelper } from "../treegridfeaturehelper";
 
 class TreeGridExportTemplate extends jQueryTemplate {
 
-	extraConfigurations: ControlExtraConfiguration[];
+	public extraConfigurations: ControlExtraConfiguration[];
 
 	public userExtraConfiguration: {};
 
@@ -14,33 +14,33 @@ class TreeGridExportTemplate extends jQueryTemplate {
 	 *
 	 */
 	constructor() {
-		super(__dirname)
+		super(__dirname);
 		this.extraConfigurations = [];
-		
+
 		this.name = "TreeGrid Export";
 		this.id = "tree-grid-export";
 		this.description = "Tree Grid exporting template";
 		this.dependencies = ["igTreeGrid"];
 
 		this.hasExtraConfiguration = true;
-		var featureConfiguration: ControlExtraConfiguration = {
-			key: "features",
+		const featureConfiguration: ControlExtraConfiguration = {
 			choices: ["Filtering", "Hiding"],
 			default: "",
-			type: Enumerations.ControlExtraConfigType.MultiChoice,
-			message: "Select optional features for the export template"
-		}
+			key: "features",
+			message: "Select optional features for the export template",
+			type: Enumerations.ControlExtraConfigType.MultiChoice
+		};
 		this.extraConfigurations.push(featureConfiguration);
 	}
-	setExtraConfiguration(extraConfigKeys: {}) {
+	public setExtraConfiguration(extraConfigKeys: {}) {
 		this.userExtraConfiguration = extraConfigKeys;
 	}
-	generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
-		
-		var success = true,
-			destinationPath = path.join(projectPath, this.folderName(name));
+	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
+
+		const destinationPath = path.join(projectPath, this.folderName(name));
 		//read html
-		var config = {}, features: string;
+		const config = {};
+		let features: string;
 		if (this.userExtraConfiguration["features"] !== undefined) {
 			features = TreeGridFeatureHelper.generateFeatures(this.userExtraConfiguration["features"]);
 		} else {
@@ -51,10 +51,10 @@ class TreeGridExportTemplate extends jQueryTemplate {
 		config["$(componentName)"] = name;
 		config["$(cssBlock)"] = this.getCssTags();
 		config["$(scriptBlock)"] = this.getScriptTags();
-		var pathsConfig = {};
+		const pathsConfig = {};
 		return Util.processTemplates(path.join(__dirname, "files"), destinationPath, config, pathsConfig);
 	}
-	getExtraConfiguration(): ControlExtraConfiguration[] {
+	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return this.extraConfigurations;
 	}
 }

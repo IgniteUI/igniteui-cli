@@ -1,14 +1,13 @@
-import * as path from 'path';
-import { ReactTemplate } from "../../../../../lib/templates/ReactTemplate";
-import { Util } from "../../../../../lib/Util";
+import * as path from "path";
 //TODO:
 import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
-
+import { ReactTemplate } from "../../../../../lib/templates/ReactTemplate";
+import { Util } from "../../../../../lib/Util";
 
 class GridCustomTemplate extends ReactTemplate {
+	public extraConfigurations: ControlExtraConfiguration[] = [];
+	public userExtraConfiguration: {};
 	private gridHelper: GridHelper;
-	extraConfigurations: ControlExtraConfiguration[] = [];
-	userExtraConfiguration: {};
 	/**
 	 *
 	 */
@@ -25,31 +24,35 @@ class GridCustomTemplate extends ReactTemplate {
 		this.gridHelper = new GridHelper();
 		this.hasExtraConfiguration = true;
 		this.extraConfigurations.push({
-			key: "features",
-			choices: ["Sorting", "Selection", "Updating", "Filtering", "ColumnMoving", "GroupBy", "Summaries", "Resizing", "Hiding"],
+			choices: [
+				"Sorting", "Selection", "Updating", "Filtering", "ColumnMoving",
+				"GroupBy", "Summaries", "Resizing", "Hiding"
+			],
 			default: "",
-			type: Enumerations.ControlExtraConfigType.MultiChoice,
-			message: "Select features for the igGrid"
+			key: "features",
+			message: "Select features for the igGrid",
+			type: Enumerations.ControlExtraConfigType.MultiChoice
 		});
 	}
 
-	generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
-		var config = {}, pathsConfig = {};
+	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
+		const config = {};
+		const pathsConfig = {};
 		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 5);
-		
+
 		config["__path__"] =  this.folderName(name); //folder name allowed spaces, any casing
-		config["$(ClassName)"] = this.className(name);//first letter capital, no spaces, 
+		config["$(ClassName)"] = this.className(name); //first letter capital, no spaces,
 		config["$(widget)"] = "igGrid";
 		config["$(Control)"] = this.className("igGrid");
 		config["$(igniteImports)"] = this.getImports();
-		config["$(name)"] = name; // This name should not have restrictions
+		config["$(name)"] = name; // this name should not have restrictions
 		config["$(gridfeatures)"] = features;
 		return Util.processTemplates(path.join(__dirname, "files"), projectPath, config, pathsConfig);
 	}
-	getExtraConfiguration(): ControlExtraConfiguration[] {
+	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return this.extraConfigurations;
 	}
-	setExtraConfiguration(extraConfigKeys: {}) {
+	public setExtraConfiguration(extraConfigKeys: {}) {
 		this.userExtraConfiguration = extraConfigKeys;
 	}
 }

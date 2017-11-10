@@ -1,24 +1,21 @@
-import * as path from "path";
 import * as fs from "fs-extra";
+import * as path from "path";
 import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
-import { jQueryTemplate } from "../../../../../lib/templates/jQueryTemplate";
 import { ProjectConfig } from "../../../../../lib/ProjectConfig";
+import { jQueryTemplate } from "../../../../../lib/templates/jQueryTemplate";
 import { Util } from "../../../../../lib/Util";
 
 class HierarchicalGridEditingTemplate extends jQueryTemplate {
-	private gridHelper: GridHelper;
-	extraConfigurations: ControlExtraConfiguration[];
-
+	public extraConfigurations: ControlExtraConfiguration[];
 	public userExtraConfiguration: {};
+	public hasExtraConfiguration = true;
 
-	
-
-	hasExtraConfiguration = true;
+	private gridHelper: GridHelper;
 	/**
 	 *
 	 */
 	constructor() {
-		super(__dirname)
+		super(__dirname);
 		this.extraConfigurations = [];
 		this.name = "Hierarchical Grid Editing";
 		this.description = "Hierarchical Grid editing template";
@@ -27,23 +24,22 @@ class HierarchicalGridEditingTemplate extends jQueryTemplate {
 
 		this.gridHelper = new GridHelper();
 		this.gridHelper.hierarchical = true;
-		var featureConfiguration: ControlExtraConfiguration = {
-			key: "features",
+		const featureConfiguration: ControlExtraConfiguration = {
 			choices: ["Sorting", "Paging", "Filtering"],
 			default: "",
-			type: Enumerations.ControlExtraConfigType.MultiChoice,
-			message: "Select features for the igHierarchicalGrid"
-		}
+			key: "features",
+			message: "Select features for the igHierarchicalGrid",
+			type: Enumerations.ControlExtraConfigType.MultiChoice
+		};
 		this.extraConfigurations.push(featureConfiguration);
 	}
-	setExtraConfiguration(extraConfigKeys: {}) {
+	public setExtraConfiguration(extraConfigKeys: {}) {
 		this.userExtraConfiguration = extraConfigKeys;
 	}
-	generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
-		var success = true,
-			destinationPath = path.join(projectPath, this.folderName(name));
-		//read html
+	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
+		const destinationPath = path.join(projectPath, this.folderName(name));
 		const config = {};
+
 		this.gridHelper.addFeature("Updating", { enableAddRow: true });
 		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 5);
 
@@ -54,7 +50,7 @@ class HierarchicalGridEditingTemplate extends jQueryTemplate {
 		const pathsConfig = {};
 		return Util.processTemplates(path.join(__dirname, "files"), destinationPath, config, pathsConfig);
 	}
-	getExtraConfiguration(): ControlExtraConfiguration[] {
+	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return this.extraConfigurations;
 	}
 }

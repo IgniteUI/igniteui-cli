@@ -1,4 +1,4 @@
-import * as path from 'path';
+import * as path from "path";
 import { ReactTemplate } from "../../../../../lib/templates/ReactTemplate";
 import { Util } from "../../../../../lib/Util";
 
@@ -6,7 +6,7 @@ import { TreeGridFeatureHelper } from "../../../../jquery/js/tree-grid/treegridf
 
 class TreeGridEditingTemplate extends ReactTemplate {
 
-	extraConfigurations: ControlExtraConfiguration[] = [];
+	public extraConfigurations: ControlExtraConfiguration[] = [];
 	public userExtraConfiguration: {};
 
 	constructor() {
@@ -21,35 +21,37 @@ class TreeGridEditingTemplate extends ReactTemplate {
 
 		this.hasExtraConfiguration = true;
 		this.extraConfigurations.push({
-			key: "features",
 			choices: ["Sorting", "Filtering", "Updating"],
 			default: "",
-			type: Enumerations.ControlExtraConfigType.MultiChoice,
-			message: "Select features for the igTreeGrid"
+			key: "features",
+			message: "Select features for the igTreeGrid",
+			type: Enumerations.ControlExtraConfigType.MultiChoice
 		});
 	}
 
-	generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
-		var config = {}, pathsConfig = {}, features: string;
+	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
+		const config = {};
+		const pathsConfig = {};
+		let features: string;
 		if (this.userExtraConfiguration["features"] !== undefined) {
 			features = TreeGridFeatureHelper.generateFeatures(this.userExtraConfiguration["features"]);
 		} else {
 			features = "";
 		}
-		
+
 		config["__path__"] =  this.folderName(name); //folder name allowed spaces, any casing
-		config["$(ClassName)"] = this.className(name);//first letter capital, no spaces, 
+		config["$(ClassName)"] = this.className(name); //first letter capital, no spaces,
 		config["$(widget)"] = "igTreeGrid";
 		config["$(Control)"] = this.className("igTreeGrid");
 		config["$(igniteImports)"] = this.getImports();
-		config["$(name)"] = name; // This name should not have restrictions
+		config["$(name)"] = name; // this name should not have restrictions
 		config["$(gridfeatures)"] = features;
 		return Util.processTemplates(path.join(__dirname, "files"), projectPath, config, pathsConfig);
 	}
-	getExtraConfiguration(): ControlExtraConfiguration[] {
+	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return this.extraConfigurations;
 	}
-	setExtraConfiguration(extraConfigKeys: {}) {
+	public setExtraConfiguration(extraConfigKeys: {}) {
 		this.userExtraConfiguration = extraConfigKeys;
 	}
 }

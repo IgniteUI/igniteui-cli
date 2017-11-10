@@ -13,8 +13,8 @@ class RadialChartTemplate extends jQueryTemplate {
 		this.name = "Radial Chart";
 		this.description = "Radial series template of Data Chart";
 		this.dependencies = ["igDataChart"];
-		
-	};
-	
+
+	}
+
 }
 module.exports = new RadialChartTemplate();

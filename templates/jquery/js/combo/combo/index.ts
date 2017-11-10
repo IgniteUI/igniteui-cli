@@ -13,6 +13,6 @@ class ComboTemplate extends jQueryTemplate {
 		this.name = "Combo";
 		this.description = "Combo template";
 		this.dependencies = ["igCombo"];
-	};
+	}
 }
 module.exports = new ComboTemplate();

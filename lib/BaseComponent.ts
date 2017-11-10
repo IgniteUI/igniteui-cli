@@ -2,11 +2,11 @@ import * as path from "path";
 import { Util } from "./Util";
 
 export class BaseComponent implements Component {
-	templates: Template[];
-	name: string;
-	group: string;
+	public templates: Template[];
+	public name: string;
+	public group: string;
 	private basePath: string = __dirname;
-	
+
 	/**
 	 * Create a new Component
 	 * @param rootPath Root path for the Component directory (__dirname)
@@ -18,20 +18,18 @@ export class BaseComponent implements Component {
 		this.templates = this.loadTempaltes();
 	}
 
-	private get templateIds() : string[] {
+	private get templateIds(): string[] {
 		return this.templates.map(x => x.id);
 	}
 
 	protected loadTempaltes(): Template[] {
-		var modulePath, templates: Template[] = [],
-			templatePaths = Util.getDirectoryNames(this.basePath);
+		let modulePath;
+		const templates: Template[] = [];
+		const templatePaths = Util.getDirectoryNames(this.basePath);
 
-		for (var i = 0; i < templatePaths.length; i++) {
-			modulePath = path.join(this.basePath,  templatePaths[i]);
+		for (const templatePath of templatePaths) {
+			modulePath = path.join(this.basePath,  templatePath);
 			templates.push(require(modulePath));
-			if (!templates[templates.length-1].id) {
-				console.error("NO ID!!!", templates[templates.length-1].name);
-			}
 		}
 		return templates;
 	}

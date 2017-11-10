@@ -1,15 +1,17 @@
-import { TemplateManager } from './../TemplateManager';
 import * as fs from "fs-extra";
-import * as path from 'path';
+import * as path from "path";
+import { Util } from "../Util";
+import { TemplateManager } from "./../TemplateManager";
 
-var command: { 
+let command: {
 	[name: string]: any,
 	template: TemplateManager,
 	execute: (argv: any) => Promise<void>
 };
+// tslint:disable:object-literal-sort-keys
 command = {
-	command: 'new <name>',
-	desc: 'Creating a new project',
+	command: "new <name>",
+	desc: "Creating a new project",
 	builder: {
 		name: {
 			alias: "n",
@@ -32,18 +34,18 @@ command = {
 		}
 	},
 	template: null,
-	execute: async function (argv) {
-		if (command.template.getFrameworkById(argv.framework) == undefined) {
+	async execute(argv) {
+		if (command.template.getFrameworkById(argv.framework) === undefined) {
 			throw new Error("Framework not supported");
 		}
-		var framework = command.template.getProjectLibrary(argv.framework) as ProjectLibrary;
-		if (framework.themes.indexOf(argv.theme) == -1) {
+		const framework = command.template.getProjectLibrary(argv.framework) as ProjectLibrary;
+		if (framework.themes.indexOf(argv.theme) === -1) {
 			throw new Error("Theme not supported");
 		}
-		console.log(`Project Name: ${argv.name}, framework ${argv.framework}, theme ${argv.theme}`);
-		var projTemplate = framework.getProject();
+		Util.log(`Project Name: ${argv.name}, framework ${argv.framework}, theme ${argv.theme}`);
+		const projTemplate = framework.getProject();
 		if (projTemplate == null) {
-			throw new Error("Default project template not found")
+			throw new Error("Default project template not found");
 		}
 		// TODO: update output path based on where the CLI is called
 		await projTemplate.generateFiles(process.cwd(), argv.name, argv.theme);

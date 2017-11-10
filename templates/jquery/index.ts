@@ -1,7 +1,8 @@
+// tslint:disable-next-line:class-name
 class jQueryFramework implements Framework {
-	id: string;
-	name: string;
-	projectLibraries: ProjectLibrary[];
+	public id: string;
+	public name: string;
+	public projectLibraries: ProjectLibrary[];
 
 	constructor() {
 		this.id = "jquery";
