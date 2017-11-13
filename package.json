@@ -11,8 +11,8 @@
     "build": "node ./node_modules/typescript/lib/tsc.js",
     "pretest": "npm run lint && npm run build",
     "test": "nyc npm run jasmine",
-	"jasmine": "jasmine spec/**/*.js",
-	"coverage": "nyc report --reporter=text-lcov | coveralls",
+    "jasmine": "jasmine spec/**/*.js",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
     "test-debug": "node --debug-brk=5858 ./node_modules/jasmine/bin/jasmine.js spec/**/*.js",
     "lint": "tslint --project tsconfig.json"
   },
@@ -27,13 +27,19 @@
     ],
     "exclude": [
       "**/*.d.ts",
+      "output/",
       "templates/quickstart/",
       "templates/**/files/"
     ],
     "reporter": [
-      "lcov"
+      "lcov",
+      "text-summary"
     ],
-    "instrument": false,
+    "require": [
+      "ts-node/register"
+    ],
+    "instrument": true,
+    "cache": false,
     "all": true
   },
   "author": "PwnJS",
@@ -63,6 +69,8 @@
     "coveralls": "^3.0.0",
     "jasmine": "^2.8.0",
     "nyc": "^11.3.0",
+    "source-map-support": "^0.5.0",
+    "ts-node": "^3.3.0",
     "tslint": "^5.7.0"
   }
 }
