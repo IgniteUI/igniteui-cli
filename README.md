@@ -81,10 +81,12 @@ ignite-ui start
 ## Contribution
 
 ### Run locally
-There is a predefined launch.config file for VS Code in the root folder, so you can use VS Code View/Debug window and choose one of the predefined actions. 
+1. Clone the repository
+2. Install dependencies with `npm install`
+3. Open in Visual Studio Code
+    
+    There is a predefined launch.config file for VS Code in the root folder, so you can use VS Code View/Debug window and choose one of the predefined actions. These include lanching the step by step guide, quickstart project, create new project for a particular framework or add components.
 
-These include:
-* Launch the wizard which opens a console and guides you to choose from the predefined options in Ignite UI CLI.
-* Launch new quickstart project, which basically creates and serves a project containing Ignite UI components, so you can get a quick preview.
-* Create a new "empty" project for a particular framework.
-* Add components to the current project.
+4. Hit Start Debugging/F5
+
+
