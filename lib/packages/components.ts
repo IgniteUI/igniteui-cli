@@ -1,10 +1,11 @@
-{
-	"oss": [
-		"igEditors",
-		"igCombo",
-		"igTree"
+export = {
+	dv: [
+		"igDataChart",
+		"igPieChart",
+		"igDoughnutChart",
+		"igFunnelChart"
 	],
-	"full": [
+	full: [
 		"igGrid",
 		"igTreeGrid",
 		"igHierarchicalGrid",
@@ -14,10 +15,9 @@
 		"igFunnelChart",
 		"GridExcelExporter"
 	],
-	"dv": [
-		"igDataChart",
-		"igPieChart",
-		"igDoughnutChart",
-		"igFunnelChart"
+	oss: [
+		"igEditors",
+		"igCombo",
+		"igTree"
 	]
-}
+};

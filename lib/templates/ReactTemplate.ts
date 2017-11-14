@@ -62,7 +62,7 @@ export abstract class ReactTemplate implements Template {
 	}
 
 	protected getImports(): string {
-		const config = require("../packages/components.json");
+		const config = require("../packages/components");
 		let builder = "";
 		builder += "\r\n";
 		builder += "// Ignite UI Required Combined JavaScript Files\r\n";

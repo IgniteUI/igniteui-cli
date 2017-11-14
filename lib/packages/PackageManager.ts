@@ -6,8 +6,7 @@ import { ProjectConfig } from "../ProjectConfig";
 import { Util } from "../Util";
 import { TemplateManager } from "./../TemplateManager";
 
-// tslint:disable-next-line:no-var-requires
-const componentsConfig: {oss: string[], full: string[], dv: string[]} = require("./components.json");
+import componentsConfig = require("./components");
 
 export class PackageManager {
 	private static ossPackage: string = "ignite-ui";
