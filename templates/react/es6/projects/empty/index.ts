@@ -22,7 +22,7 @@ class EmptyProject implements ProjectTemplate {
 		configFile = configFile.replace(`"ignite-ui/js/infragistics.lob.js$"`, `//$&`);
 		fs.writeFileSync(filePath, configFile);
 	}
-	public generateFiles(outputPath: string, name: string, theme: string, ...options: any[]): Promise<boolean> {
+	public async generateFiles(outputPath: string, name: string, theme: string, ...options: any[]): Promise<boolean> {
 
 		//TODO update the config with [{key: "keyname", "value"}]
 		const config = {

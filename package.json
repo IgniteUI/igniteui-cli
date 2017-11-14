@@ -7,12 +7,49 @@
     "Ignite UI"
   ],
   "main": "lib/cli.js",
+  "files": [
+	  "bin/*",
+	  "lib/**/*.d.ts",
+	  "lib/**/*.js",
+	  "templates/**/*.d.ts",
+	  "templates/**/*.js",
+	  "templates/**/files/**/*"
+  ],
   "scripts": {
 	"build": "node ./node_modules/typescript/lib/tsc.js",
-	"pretest": "npm run lint && npm run build",
-	"test": "node ./node_modules/jasmine-node/lib/jasmine-node/cli.js spec/",
-	"test-debug": "node --debug-brk=5858 ./node_modules/jasmine-node/lib/jasmine-node/cli.js spec/",
-	"lint": "tslint --project tsconfig.json"
+	"build-pack": "node ./node_modules/typescript/lib/tsc.js -p tsconfig-pack.json",
+    "pretest": "npm run lint && npm run build",
+    "test": "nyc npm run jasmine",
+    "jasmine": "jasmine spec/**/*.js",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "test-debug": "node --debug-brk=5858 ./node_modules/jasmine/bin/jasmine.js spec/**/*.js",
+    "lint": "tslint --project tsconfig.json"
+  },
+  "nyc": {
+    "extension": [
+      ".ts",
+      ".tsx"
+    ],
+    "include": [
+      "lib/",
+      "templates/"
+    ],
+    "exclude": [
+      "**/*.d.ts",
+      "output/",
+      "templates/quickstart/",
+      "templates/**/files/"
+    ],
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "instrument": true,
+    "cache": false,
+    "all": true
   },
   "author": "PwnJS",
   "license": "ISC",
@@ -30,7 +67,6 @@
     "through2": "^2.0.3",
     "yargs": "^8.0.2",
     "yargs-promise": "^1.1.0",
-	"jasmine-node": "^1.14.5",
     "typescript": "^2.5.3"
   },
   "devDependencies": {
@@ -39,6 +75,11 @@
     "@types/jasmine": "^2.5.54",
     "@types/node": "^8.0.5",
     "@types/shelljs": "^0.7.4",
+    "coveralls": "^3.0.0",
+    "jasmine": "^2.8.0",
+    "nyc": "^11.3.0",
+    "source-map-support": "^0.5.0",
+    "ts-node": "^3.3.0",
     "tslint": "^5.7.0"
   }
 }

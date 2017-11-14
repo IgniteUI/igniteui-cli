@@ -10,4 +10,4 @@ class AngularFramework implements Framework {
 		this.projectLibraries.push(require("./ts") as ProjectLibrary);
 	}
 }
-export = new AngularFramework();
+export = new AngularFramework() as Framework;

@@ -1,3 +1,25 @@
 language: node_js
 node_js:
 - '6'
+
+after_success: npm run coverage
+
+before_deploy:
+# clean up compiled files
+- git clean -n  -d  -fX -- "lib"
+- git clean -n  -d  -fX -- "templates"
+# compile files for package
+- npm run build-pack
+# update package version
+- npm version "$TRAVIS_TAG" --no-git-tag-version --save
+
+deploy:
+  provider: npm
+  skip_cleanup: true
+  email: igniteui@infragistics.com
+  api_key:
+    secure: dTAkvl/DjVSyPdfU6err2Uh09So+0XCjzgM9Lh1pt7uORRL4LB/Qlb5bfK45DvH9JqOKLEoCTIrij0mjmdEXGGOUYeT9oPnVX5ffTBJm4dZB01taSCZHGzaV5ic5/jBma0gy4V7ajPXQdjPnVluQLq2PuJ4kHFl6n/KGUpxQ/nOTOAUsMnk9bqbrEwSfve9yO16uo6icRPxCNxWqfkLXUzEwO0uCkzyUdLZg3zJ/2nlVLbMgXIlKwdG5jVWI/W5su1BjD6iBNfopQJHdP3KYPqjI0zNWtKB138uTHcDkJOzl/uDvjsXpsx4efqR9mO54xNrPwMbYOjgmHF9wpSqGpBOI7ob6myTIeDtZKXrwxS6U34jn6JvEIRBULILUPoo5O+sX+ZZKXz4zD5Z6HUqm2oBhE8RZLhC3QI7oN1IOws4UGUiETsFk1Izo5QM+eGV4KbPXn82D7C0haJJ08OEIgp7L89fZQehvDuoEj9xs0cuq78CY8AI9PSodVyJ8mB1/o+Ga9QHvtd/gH2oTZxtXuCxgV6jDPuZMWgZvMgZ6gV6yTgfe8y8EP3Y7HZOKwg50+RTmLaKk32IYOHnHkOMii1h66lpP9V7dnedElJPLXP/sYRey1h9YIKgZEetXCbCQuciVzw8IHb/3bZCbh6ZlYen5We6c560VXMHyctXGQTM=
+  on:
+    tags: true
+    repo: IgniteUI/ignite-ui-cli
+    branch: master

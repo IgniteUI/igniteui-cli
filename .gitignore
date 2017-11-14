@@ -4,11 +4,13 @@
 /templates/**/*.js.map
 /lib/**/*.js.map
 /lib/**/*.js
-/spec/acceptance/**/*.js.map
-/spec/acceptance/**/*.js
+/spec/**/*.js.map
+/spec/**/*.js
 /templates/jquery/**/*.js
 !/templates/jquery/**/files/**/*
 /templates/angular/**/*.js
 !/templates/angular/**/files/**/*
 /templates/react/**/*.js
 !/templates/react/**/files/**/*
+/coverage
+/.nyc_output

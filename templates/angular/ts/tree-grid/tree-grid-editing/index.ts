@@ -4,26 +4,26 @@ import { AngularTemplate } from "../../../../../lib/templates/AngularTemplate";
 import { Util } from "../../../../../lib/Util";
 import { TreeGridFeatureHelper } from "../../../../jquery/js/tree-grid/treegridfeaturehelper";
 
-class TreeGridTemplate extends AngularTemplate {
+class TreeGridEditingTemplate extends AngularTemplate {
 	private extraConfigurations: ControlExtraConfiguration[];
 	private userExtraConfiguration: {};
 
 	constructor() {
 		super(__dirname);
-		this.id = "tree-grid";
-		this.name = "Tree Grid";
+		this.id = "tree-grid-editing";
+		this.name = "TreeGrid Editing";
 		this.controlGroup = "Data Grids";
-		this.description = "Tree Grid default template for Angular";
+		this.description = "Tree Grid editing template for Angular";
 		this.dependencies = ["igTreeGrid"];
 		this.projectType = "ts";
 		this.listInComponentTemplates = true;
 		this.hasExtraConfiguration = true;
 		this.extraConfigurations = [];
 		const featureConfiguration: ControlExtraConfiguration = {
-			choices: ["Sorting", "RowSelectors", "Filtering"],
+			choices: ["Sorting", "Filtering"],
 			default: "",
 			key: "features",
-			message: "Select features for the igTreeGrid",
+			message: "Select optional features for the editing template",
 			type: Enumerations.ControlExtraConfigType.MultiChoice
 		};
 		this.extraConfigurations.push(featureConfiguration);
@@ -51,4 +51,4 @@ class TreeGridTemplate extends AngularTemplate {
 	}
 }
 
-module.exports = new TreeGridTemplate();
+module.exports = new TreeGridEditingTemplate();
