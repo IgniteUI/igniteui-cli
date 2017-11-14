@@ -2,7 +2,7 @@
 ### Creating projects for variety of frameworks and generating/adding components to these projects. 
 <!-- Badges section here. -->
 [![Build Status](https://img.shields.io/travis/IgniteUI/ignite-ui-cli/master.svg?label=travis)](travis-badge-url)
-[![npm](https://img.shields.io/npm/v/xxx/npm.svg)](npm-badge-url)
+[![npm](https://img.shields.io/npm/v/ignite-ui-cli.svg?maxAge=2592000)](npm-badge-url)
 [![Coverage Status](https://coveralls.io/repos/github/IgniteUI/ignite-ui-cli/badge.svg)](https://coveralls.io/github/IgniteUI/ignite-ui-cli)
 
 ## Supported frameworks
