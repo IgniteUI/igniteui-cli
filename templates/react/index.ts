@@ -10,4 +10,4 @@ class ReactFramework implements Framework {
 		this.projectLibraries.push(require("./es6") as ProjectLibrary);
 	}
 }
-export = new ReactFramework();
+export = new ReactFramework() as Framework;

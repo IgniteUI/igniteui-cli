@@ -11,4 +11,4 @@ class jQueryFramework implements Framework {
 		this.projectLibraries.push(require("./js") as ProjectLibrary);
 	}
 }
-export = new jQueryFramework();
+export = new jQueryFramework() as Framework;

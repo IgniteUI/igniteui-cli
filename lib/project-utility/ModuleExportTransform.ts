@@ -1,4 +1,4 @@
-enum TransformOperation {
+export const enum TransformOperation {
 	/** Update value. */
 	Set,
 	/** Add value at path. */
@@ -7,7 +7,7 @@ enum TransformOperation {
 	Remove
 }
 // tslint:disable-next-line:interface-name
-interface Transform {
+export interface Transform {
 	propertyPath: string;
 	transform: TransformOperation;
 	value?: any;
