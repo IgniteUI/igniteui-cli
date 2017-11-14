@@ -35,7 +35,8 @@
     "lib/**/*.js",
     "templates/**/*.d.ts",
     "templates/**/*.js",
-    "templates/**/files/**/*"
+	"templates/**/files/**/*",
+	"templates/quickstart/**/*"
   ],
   "nyc": {
     "extension": [
