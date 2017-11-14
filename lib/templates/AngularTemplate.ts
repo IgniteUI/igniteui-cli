@@ -62,7 +62,7 @@ export abstract class AngularTemplate implements Template {
 	public setExtraConfiguration(extraConfigKeys: {}) { }
 
 	protected ensureSourceFiles() {
-		const components = require("../packages/components.json");
+		const components = require("../packages/components");
 		const config = ProjectConfig.getConfig();
 		const files: string[] = config.project.sourceFiles;
 		const dvDependencies = this.dependencies.filter(x => components.dv.indexOf(x) !== -1);

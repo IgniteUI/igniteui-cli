@@ -87,7 +87,7 @@ export abstract class jQueryTemplate implements Template {
 		return builder;
 	}
 	protected getScriptTags(): string {
-		const config = require("../packages/components.json");
+		const config = require("../packages/components");
 		let builder = "";
 		builder += this.getJqueryDependenciesScriptTag();
 		builder += "\n\n";
