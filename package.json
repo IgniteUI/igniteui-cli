@@ -7,8 +7,17 @@
     "Ignite UI"
   ],
   "main": "lib/cli.js",
+  "files": [
+	  "bin/*",
+	  "lib/**/*.d.ts",
+	  "lib/**/*.js",
+	  "templates/**/*.d.ts",
+	  "templates/**/*.js",
+	  "templates/**/files/**/*"
+  ],
   "scripts": {
-    "build": "node ./node_modules/typescript/lib/tsc.js",
+	"build": "node ./node_modules/typescript/lib/tsc.js",
+	"build-pack": "node ./node_modules/typescript/lib/tsc.js -p tsconfig-pack.json",
     "pretest": "npm run lint && npm run build",
     "test": "nyc npm run jasmine",
     "jasmine": "jasmine spec/**/*.js",
