@@ -1,23 +1,27 @@
 {
   "name": "ignite-ui-cli",
   "version": "1.0.0",
-  "description": "Cli for installing Ignite UI templates",
+  "description": "CLI tool for creating Ignite UI projects",
   "keywords": [
     "CLI",
     "Ignite UI"
   ],
+  "author": "Infragistics",
+  "license": "MIT",
+  "bin": {
+    "ignite-ui": "bin/execute.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IgniteUI/ignite-ui-cli"
+  },
+  "bugs": {
+    "url": "https://github.com/IgniteUI/ignite-ui-cli/issues"
+  },
   "main": "lib/cli.js",
-  "files": [
-	  "bin/*",
-	  "lib/**/*.d.ts",
-	  "lib/**/*.js",
-	  "templates/**/*.d.ts",
-	  "templates/**/*.js",
-	  "templates/**/files/**/*"
-  ],
   "scripts": {
-	"build": "node ./node_modules/typescript/lib/tsc.js",
-	"build-pack": "node ./node_modules/typescript/lib/tsc.js -p tsconfig-pack.json",
+    "build": "node ./node_modules/typescript/lib/tsc.js",
+    "build-pack": "node ./node_modules/typescript/lib/tsc.js -p tsconfig-pack.json",
     "pretest": "npm run lint && npm run build",
     "test": "nyc npm run jasmine",
     "jasmine": "jasmine spec/**/*.js",
@@ -25,6 +29,14 @@
     "test-debug": "node --debug-brk=5858 ./node_modules/jasmine/bin/jasmine.js spec/**/*.js",
     "lint": "tslint --project tsconfig.json"
   },
+  "files": [
+    "bin/*",
+    "lib/**/*.d.ts",
+    "lib/**/*.js",
+    "templates/**/*.d.ts",
+    "templates/**/*.js",
+    "templates/**/files/**/*"
+  ],
   "nyc": {
     "extension": [
       ".ts",
@@ -51,22 +63,15 @@
     "cache": false,
     "all": true
   },
-  "author": "PwnJS",
-  "license": "ISC",
-  "bin": {
-    "ignite-ui": "bin/execute.js"
-  },
   "dependencies": {
     "chalk": "^2.2.0",
     "fs-extra": "^3.0.1",
-    "ignite-ui": "^17.1.1012",
     "inquirer": "^3.1.1",
     "lite-server": "^2.3.0",
     "resolve": "^1.3.3",
     "shelljs": "^0.7.8",
     "through2": "^2.0.3",
     "yargs": "^8.0.2",
-    "yargs-promise": "^1.1.0",
     "typescript": "^2.5.3"
   },
   "devDependencies": {
