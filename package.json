@@ -1,6 +1,6 @@
 {
   "name": "ignite-ui-cli",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "CLI tool for creating Ignite UI projects",
   "keywords": [
     "CLI",

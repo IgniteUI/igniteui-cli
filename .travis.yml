@@ -6,8 +6,8 @@ after_success: npm run coverage
 
 before_deploy:
 # clean up compiled files
-- git clean -n  -d  -fX -- "lib"
-- git clean -n  -d  -fX -- "templates"
+- git clean  -d  -fX -- "lib"
+- git clean  -d  -fX -- "templates"
 # compile files for package
 - npm run build-pack
 # update package version
