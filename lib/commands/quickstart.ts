@@ -16,7 +16,7 @@ const command = {
 			default: "jquery",
 			describe: "Framework to setup quickstart for",
 			type: "string",
-			choices: ["jquery", "react", "angular2"]
+			choices: ["jquery", "react", "angular"]
 		}
 	},
 	async execute(argv) {
@@ -30,8 +30,8 @@ const command = {
 			case "react":
 				name = "react-quickstart";
 				break;
-			case "angular2":
-				name = "angular2-quickstart";
+			case "angular":
+				name = "angular-quickstart";
 				break;
 			default:
 				throw new Error("The framework is not supported");
@@ -51,7 +51,7 @@ const command = {
 			liteServer.server();
 		}
 
-		if (argv.framework === "angular2") {
+		if (argv.framework === "angular") {
 			Util.log("The files are loaded");
 			shell.exec("npm install");
 			shell.exec("npm start");

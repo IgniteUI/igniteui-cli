@@ -7,7 +7,7 @@
     "exclude": [
         "output",
 		"**/files/*",
-		"templates/quickstart/angular2",
+		"templates/quickstart/angular",
         "node_modules"
     ]
 }
