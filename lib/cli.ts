@@ -13,7 +13,7 @@ import { Util } from "./Util";
 
 process.title = "Ignite UI CLI";
 
-export async function run() {
+export async function run(args = null) {
 	const templateManager = new TemplateManager();
 	// initialize all templates
 	templateManager.initializeTemplate();
@@ -22,7 +22,9 @@ export async function run() {
 	newCommand.builder.framework.choices = templateManager.getFrameworkIds();
 	add.templateManager = templateManager;
 
-	const argv = yargs.command(quickstart)
+	const yargsModule = args ? yargs(args) : yargs;
+
+	const argv = yargsModule.command(quickstart)
 	.command(start)
 	.command(newCommand)
 	.command(build)
@@ -36,7 +38,6 @@ export async function run() {
 		case "new":
 			await newCommand.execute(argv);
 			Util.log("Project Created");
-			process.exit();
 			break;
 		case "quickstart":
 			await quickstart.execute(argv);
