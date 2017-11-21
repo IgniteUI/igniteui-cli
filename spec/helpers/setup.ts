@@ -1,3 +1,4 @@
+// tslint:disable-next-line:no-implicit-dependencies
 import { DisplayProcessor, SpecReporter } from "jasmine-spec-reporter";
 import SuiteInfo = jasmine.SuiteInfo;
 
