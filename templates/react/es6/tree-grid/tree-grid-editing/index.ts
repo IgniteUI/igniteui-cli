@@ -7,7 +7,7 @@ import { TreeGridFeatureHelper } from "../../../../jquery/js/tree-grid/treegridf
 class TreeGridEditingTemplate extends ReactTemplate {
 
 	public extraConfigurations: ControlExtraConfiguration[] = [];
-	public userExtraConfiguration: {};
+	public userExtraConfiguration: {} = {};
 
 	constructor() {
 		super(__dirname);

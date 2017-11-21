@@ -6,7 +6,7 @@ import { TreeGridFeatureHelper } from "../../../../jquery/js/tree-grid/treegridf
 
 class TreeGridTemplate extends AngularTemplate {
 	private extraConfigurations: ControlExtraConfiguration[];
-	private userExtraConfiguration: {};
+	private userExtraConfiguration: {} = {};
 
 	constructor() {
 		super(__dirname);
