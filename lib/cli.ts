@@ -45,15 +45,12 @@ export async function run(args = null) {
 			break;
 		case "add":
 			await add.execute(argv);
-			process.exit();
 			break;
 		case "build":
 			await build.execute(argv);
-			process.exit();
 			break;
 		case "test":
 			await test.execute(argv);
-			process.exit();
 			break;
 		case "start":
 			await start.execute(argv);
