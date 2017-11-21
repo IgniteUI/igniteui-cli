@@ -26,7 +26,6 @@
     "test": "nyc npm run jasmine",
     "jasmine": "jasmine spec/**/*.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "test-debug": "node --debug-brk=5858 ./node_modules/jasmine/bin/jasmine.js spec/**/*.js",
     "lint": "tslint --project tsconfig.json"
   },
   "files": [
