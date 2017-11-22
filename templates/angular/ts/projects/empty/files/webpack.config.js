@@ -53,6 +53,7 @@ module.exports = {
 	],
 	devServer: {
 	  port: 3000,
+	  open: true,
 	  stats: { colors: true },
 	  setup: function(app) {
 		  // Here you can access the Express app object and add your own custom middleware to it.
