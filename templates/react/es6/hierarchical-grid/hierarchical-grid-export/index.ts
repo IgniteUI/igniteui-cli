@@ -6,7 +6,7 @@ import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 
 class HierarchicalGridExportTemplate extends ReactTemplate {
 	public extraConfigurations: ControlExtraConfiguration[] = [];
-	public userExtraConfiguration: {};
+	public userExtraConfiguration: {} = {};
 	private gridHelper: GridHelper;
 
 	constructor() {

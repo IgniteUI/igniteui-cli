@@ -128,14 +128,11 @@
 			"type": "node",
 			"request": "launch",
 			"name": "Launch Test",
-			"protocol": "legacy",
-			"runtimeExecutable": "npm.cmd",
+			"program": "${workspaceFolder}/node_modules/jasmine/bin/jasmine.js",
 			"preLaunchTask": "build",
-			"runtimeArgs": [
-				"run",
-				"test-debug"
-			],
-			"port": 5858
+			"args": [
+				"spec/**/*.js"
+			]
 		},
 		{
 			"type": "node",

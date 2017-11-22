@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import cli = require("../../lib/cli");
-describe("New", () => {
+describe("New command", () => {
 
 	it("React project", async done => {
 		process.chdir("./output");

@@ -8,7 +8,7 @@ class TreeGridExportTemplate extends jQueryTemplate {
 
 	public extraConfigurations: ControlExtraConfiguration[];
 
-	public userExtraConfiguration: {};
+	public userExtraConfiguration: {} = {};
 
 	/**
 	 *

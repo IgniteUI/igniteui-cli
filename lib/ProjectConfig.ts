@@ -9,7 +9,7 @@ export class ProjectConfig {
 		const filePath = path.join(process.cwd(), this.configFile);
 		if (fs.existsSync(filePath)) {
 			try {
-				return require(filePath) as Config;
+				return JSON.parse(fs.readFileSync(filePath, "utf8")) as Config;
 			} catch (error) {
 				throw new Error(`The ${this.configFile} file is not parsed correctly. ` +
 					`The following error has occurred: ${error.message}`);

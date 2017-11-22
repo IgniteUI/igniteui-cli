@@ -147,6 +147,22 @@ class Util {
 		}
 		// tslint:enable:no-console
 	}
+
+	/**
+	 * Error log with optional color.
+	 * @param message Error to log
+	 * @param colorKeyword Optional color (CSS keyword like red, green, etc.)
+	 */
+	public static error(message: string, colorKeyword?: string) {
+		// tslint:disable:no-console
+		if (colorKeyword) {
+			const color = chalk.keyword(colorKeyword);
+			console.error(color(message));
+		} else {
+			console.error(message);
+		}
+		// tslint:enable:no-console
+	}
 }
 
 export { Util };

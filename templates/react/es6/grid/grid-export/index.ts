@@ -6,7 +6,7 @@ import { Util } from "../../../../../lib/Util";
 
 class GridExportTemplate extends ReactTemplate {
 	public extraConfigurations: ControlExtraConfiguration[] = [];
-	public userExtraConfiguration: {};
+	public userExtraConfiguration: {} = {};
 	private gridHelper: GridHelper;
 	/**
 	 *
