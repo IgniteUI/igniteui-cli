@@ -7,7 +7,7 @@ import { Util } from "../../../../../lib/Util";
 class GridTemplate extends AngularTemplate {
 	private gridHelper: GridHelper;
 	private extraConfigurations: ControlExtraConfiguration[];
-	private userExtraConfiguration: {};
+	private userExtraConfiguration: {} = {};
 
 	constructor() {
 		super(__dirname);

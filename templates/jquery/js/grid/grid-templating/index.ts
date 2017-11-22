@@ -7,7 +7,7 @@ import { Util } from "../../../../../lib/Util";
 
 class GridTemplatingTemplate extends jQueryTemplate {
 	public extraConfigurations: ControlExtraConfiguration[];
-	public userExtraConfiguration: {};
+	public userExtraConfiguration: {} = {};
 	public hasExtraConfiguration = true;
 
 	private gridHelper: GridHelper;
