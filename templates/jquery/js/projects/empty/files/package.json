@@ -1,6 +1,6 @@
 {
 	"name": "$(name)",
 	"dependencies": {
-		"ignite-ui": "^17.1.1012"
+		"ignite-ui": "^17.2"
 	}
 }
