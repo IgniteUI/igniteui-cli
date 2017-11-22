@@ -11,7 +11,7 @@ import componentsConfig = require("./components");
 export class PackageManager {
 	private static ossPackage: string = "ignite-ui";
 	private static fullPackage: string = "@infragistics/ignite-ui-full";
-	private static fullPackageRegistry: string = "https://packages.infragistics.com/npm/js-licensed";
+	private static fullPackageRegistry: string = "https://packages.infragistics.com/npm/js-licensed/";
 
 	/**
 	 * Specific for Ignite UI packages handling:
