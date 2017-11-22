@@ -41,7 +41,7 @@ describe("Add command", () => {
 
 	it("Should show help with missing arg", async done => {
 
-		const child = spawnSync("node", ["..\\..\\bin\\execute.js", "add", "grid" ], {
+		const child = spawnSync("node", ["../../bin/execute.js", "add", "grid" ], {
 			encoding: "utf-8"
 		});
 		//await cli.run(["add", "grid"]);
