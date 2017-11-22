@@ -36,7 +36,7 @@ export class PackageManager {
 					// TODO: Check if OSS package uninstalled successfully?
 					this.removePackage(this.ossPackage, verbose);
 				}
-				config.project.igniteuiSource = `./node_modules/${this.fullPackage}`;
+				config.project.igniteuiSource = `./node_modules/${this.fullPackage}/en`;
 				ProjectConfig.setConfig(config);
 				if (!config.project.isBundle) {
 					// TODO make param?
@@ -44,7 +44,7 @@ export class PackageManager {
 					const projectLibrary = templateManager.getProjectLibrary(config.project.framework, config.project.projectType);
 					if (projectLibrary) {
 						// TODO multiple projects?
-						projectLibrary.getProject().upgradeIgniteUIPackage(process.cwd(), `./node_modules/${this.fullPackage}`);
+						projectLibrary.getProject().upgradeIgniteUIPackage(process.cwd(), `./node_modules/${this.fullPackage}/en`);
 					}
 				}
 			} else {

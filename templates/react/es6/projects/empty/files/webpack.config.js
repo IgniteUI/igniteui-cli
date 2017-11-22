@@ -145,6 +145,7 @@ module.exports = {
     //contentBase: ['./client', './node_modules'],
     historyApiFallback: true,
     port: 3000,
+	open: true,
     hot: true,
     compress: isProd,
 	stats: { colors: true },
