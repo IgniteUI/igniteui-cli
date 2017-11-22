@@ -6,7 +6,7 @@ import { Util } from "../../../../../lib/Util";
 
 class HierarchicalGridEditingTemplate extends jQueryTemplate {
 	public extraConfigurations: ControlExtraConfiguration[];
-	public userExtraConfiguration: {};
+	public userExtraConfiguration: {} = {};
 	public hasExtraConfiguration = true;
 
 	private gridHelper: GridHelper;

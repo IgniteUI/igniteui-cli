@@ -1,8 +1,8 @@
 
-describe("New", () => {
+describe("jQuery templates", () => {
 
 	// tslint:disable-next-line:only-arrow-functions
-	it("jQuery js templates should have IDs", async function(done) {
+	it("Templates should have IDs", async function(done) {
 		const jQueryFramework = require("../../templates/jquery");
 		expect(jQueryFramework.projectLibraries[0]).toBeDefined();
 

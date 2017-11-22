@@ -11,36 +11,36 @@ let command: {
 };
 // tslint:disable:object-literal-sort-keys
 command = {
-	command: "add",
-	desc: "Add component",
+	command: "add <template> <name>",
+	desc: "Add component by it ID and providing a name.",
 	templateManager: null,
 	builder: {
 		template: {
-			alias: "p",
-			default: "grid",
-			description: "Choose template for your sample.",
+			alias: "t",
+			description: `Template ID, such as "grid", "combo", etc.`,
 			type: "string"
 		},
 		name: {
 			alias: "n",
-			default: "app",
 			description: "File name.",
 			type: "string"
 		}
 	},
 	async execute(argv) {
 		//command.template;
-		Util.log(`Project Name: ${argv.name}, template ${argv.template}`);
 		const config =  ProjectConfig.getConfig();
 		if (config == null) {
-			throw new Error("Add command is supported only on existing project created with igntie-ui-cli");
+			Util.error("Add command is supported only on existing project created with ignite-ui-cli", "red");
+			return;
 		}
 		if (config.project.isShowcase) {
-			throw new Error("Showcases and quickstart projects don't support add command");
+			Util.error("Showcases and quickstart projects don't support the add command", "red");
+			return;
 		}
 		const framework = command.templateManager.getFrameworkById(config.project.framework);
 		if (!framework) {
-			throw new Error("Framework not supported");
+			Util.error("Framework not supported", "red");
+			return;
 		}
 		const frameworkLibrary = command.templateManager.getProjectLibrary(
 			config.project.framework,
@@ -48,8 +48,11 @@ command = {
 		) as ProjectLibrary;
 
 		if (!frameworkLibrary.hasTemplate(argv.template)) {
-			throw new Error("Template doesn't exist in the current library");
+			Util.error("Template doesn't exist in the current library", "red");
+			return;
 		}
+
+		Util.log(`Project Name: ${argv.name}, template ${argv.template}`);
 		const selectedTemplate = frameworkLibrary.getTemplateById(argv.template);
 		if (selectedTemplate) {
 			await command.addTemplate(argv.name, selectedTemplate);
