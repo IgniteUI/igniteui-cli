@@ -1,5 +1,5 @@
 import { spawnSync } from "child_process";
-import * as fs from "fs";
+import * as fs from "fs-extra";
 import { parse } from "path";
 import cli = require("../../lib/cli");
 import { ProjectConfig } from "../../lib/ProjectConfig";
@@ -97,7 +97,7 @@ describe("Add command", () => {
 		done();
 	});
 
-	it("Should correctly add template", async done => {
+	it("Should correctly add jQuery template", async done => {
 		// TODO: Mock out template manager and project register
 		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
 			project: { framework: "jquery", projectType: "js", components: [] }
@@ -114,6 +114,29 @@ describe("Add command", () => {
 		fs.rmdirSync("./test-view");
 
 		fs.unlinkSync("ignite-cli-views.js");
+		fs.unlinkSync(ProjectConfig.configFile);
+		done();
+	});
+
+	it("Should correctly add Angular template", async done => {
+		// TODO: Mock out template manager and project register
+		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
+			project: { framework: "angular", projectType: "ts", components: [] }
+		}));
+		fs.mkdirSync(`./src`);
+		fs.mkdirSync(`./src/app`);
+		fs.writeFileSync("src/app/app-routing.module.ts", "[];");
+		fs.writeFileSync("src/app/app.module.ts", "[];");
+		await cli.run(["add", "grid", "Test view"]);
+
+		expect(this.errorLog).toEqual([]);
+		expect(this.log).toContain(jasmine.stringMatching(/View 'Test view' added\s*/));
+
+		expect(fs.existsSync("./src/app/components/test-view")).toBeTruthy();
+		expect(fs.existsSync("./src/app/components/test-view/test-view.component.ts")).toBeTruthy();
+		fs.unlinkSync("./src/app/components/test-view/test-view.component.ts");
+		fs.removeSync("./src");
+
 		fs.unlinkSync(ProjectConfig.configFile);
 		done();
 	});
