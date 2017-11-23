@@ -3,11 +3,10 @@ import * as fs from "fs-extra";
 import cli = require("../../lib/cli");
 describe("Help command", () => {
 
-	it("Should list all available commands", async done => {
+	it("should list all available commands", async done => {
 		const child = spawnSync("node", ["bin/execute.js", "--help" ], {
 			encoding: "utf-8"
 		});
-		// tslint:disable-next-line:max-line-length
 		const originalHelpText: string = `Commands:
 			quickstart             A quick start for your project
 			start                  start the project
@@ -18,11 +17,27 @@ describe("Help command", () => {
 		  Options:
 			--help  Show help      [boolean]`;
 
-		const replacedHelptext: string = originalHelpText.replace(/\s/g, "");
+		const replacedHelpText: string = originalHelpText.replace(/\s/g, "");
 		const actualText: string = (child.stdout.toString("utf-8")).replace(/\s/g, "");
 
-		expect(replacedHelptext).toEqual(actualText);
+		expect(replacedHelpText).toEqual(actualText);
 		done();
 	});
 
+	it("should show help for individual commands", async done => {
+		const child = spawnSync("node", ["bin/execute.js", "new", "--help" ], {
+			encoding: "utf-8"
+		});
+		const originalNewHelpText: string = `Options:
+		--help	Show help	[boolean]
+		--name, -n	Project name	[string] [default: "app"]
+		--framework, -f	Framework to setup project for	[string] [choices: "angular", "jquery", "react"] [default: "jquery"]
+		--theme, -t	Project theme	[string] [default: "infragistics"]`;
+
+		const replacedNewHelpText: string = originalNewHelpText.replace(/\s/g, "");
+		const actualNewText: string = (child.stdout.toString("utf-8")).replace(/\s/g, "");
+
+		expect(actualNewText).toContain(replacedNewHelpText);
+		done();
+	});
 });
