@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 
-import { } from 'igniteui-js-blocks/main';
+import { IgxButtonModule } from 'igniteui-js-blocks/main';
 import { HomeComponent } from './home/home.component';
 
 @NgModule({
@@ -15,7 +15,8 @@ import { HomeComponent } from './home/home.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    IgxButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
