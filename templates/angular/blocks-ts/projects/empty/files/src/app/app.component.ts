@@ -8,7 +8,7 @@ import { routes } from "./app-routing.module";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-	private topNavLinks: Array<{
+	public topNavLinks: Array<{
 		path: string,
 		name: string
 	}> = [];
