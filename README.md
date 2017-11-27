@@ -47,7 +47,7 @@ To get a guided experience through the available options, simply run:
 ignite-ui
 ```
 
-Upton creation, projects will be automatically served on port 3000 and can be accessed via http://localhost:3000/.
+Upon creation, projects will be automatically served on port 3000 and can be accessed via http://localhost:3000/.
 
 ### List the available commands.
 
@@ -87,7 +87,7 @@ ignite-ui start
 2. Install dependencies with `npm install`
 3. Open in Visual Studio Code
     
-    There is a predefined launch.config file for VS Code in the root folder, so you can use VS Code View/Debug window and choose one of the predefined actions. These include lanching the step by step guide, quickstart project, create new project for a particular framework or add components.
+    There is a predefined launch.config file for VS Code in the root folder, so you can use VS Code View/Debug window and choose one of the predefined actions. These include launching the step by step guide, quickstart project, create new project for a particular framework or add components.
 
 4. Hit Start Debugging/F5
 
