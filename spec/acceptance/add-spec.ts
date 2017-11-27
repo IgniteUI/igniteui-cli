@@ -157,6 +157,7 @@ describe("Add command", () => {
 
 		expect(fs.existsSync("./client/components/my-grid")).toBeTruthy();
 		expect(fs.existsSync("./client/components/my-grid/index.js")).toBeTruthy();
+		expect(fs.existsSync("./client/pages/my-grid/index.js")).toBeTruthy();
 		fs.unlinkSync("./client/components/my-grid/index.js");
 		fs.removeSync("./client");
 
