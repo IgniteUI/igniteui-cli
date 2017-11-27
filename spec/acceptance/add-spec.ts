@@ -140,4 +140,27 @@ describe("Add command", () => {
 		fs.unlinkSync(ProjectConfig.configFile);
 		done();
 	});
+
+	it("Should correctly add React template", async done => {
+		// TODO: Mock out template manager and project register
+		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
+			project: { framework: "react", projectType: "es6", components: [] }
+		}));
+		fs.mkdirSync(`./client`);
+		fs.mkdirSync(`./client/pages`);
+		fs.writeFileSync("client/pages/routesTemplate.js", "[];");
+		fs.writeFileSync("client/pages/routes.js", "[];");
+		await cli.run(["add", "grid", "My grid"]);
+
+		expect(this.errorLog).toEqual([]);
+		expect(this.log).toContain(jasmine.stringMatching(/View 'My grid' added\s*/));
+
+		expect(fs.existsSync("./client/components/my-grid")).toBeTruthy();
+		expect(fs.existsSync("./client/components/my-grid/index.js")).toBeTruthy();
+		fs.unlinkSync("./client/components/my-grid/index.js");
+		fs.removeSync("./client");
+
+		fs.unlinkSync(ProjectConfig.configFile);
+		done();
+	});
 });
