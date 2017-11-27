@@ -11,16 +11,8 @@ export class $(ClassName)Component implements OnInit {
   title = '$(name)';
   constructor() { }
 
-//   @ViewChild("grid1") public grid1: IgxGridComponent;
-
   ngOnInit() {
 	this.localData = employeesData;
 	
-		// this.grid1.state = {
-		//   paging: {
-		// 	  index: 2,
-		// 	  recordsPerPage: 10
-		//   }
-		// };
 	  }
   }
