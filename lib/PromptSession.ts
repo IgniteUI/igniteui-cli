@@ -17,6 +17,7 @@ export class PromptSession {
 	public async start() {
 		const config =  ProjectConfig.getConfig();
 		let projLibrary: ProjectLibrary;
+		let theme: string;
 
 		add.templateManager = this.templateManager;
 
@@ -56,23 +57,30 @@ export class PromptSession {
 				// sorry they made me do it.
 				projLibrary = framework.projectLibraries[0];
 			}
-			const themeQuestion: inquirer.Question = {
-				type: "list",
-				name: "theme",
-				message: "Choose the theme for the project",
-				choices: this.addSeparators(projLibrary.themes),
-				default: "infragistics"
-			};
-			const themeAnswer = await inquirer.prompt(themeQuestion);
+
+			if (projLibrary.themes.length < 2) {
+				theme = projLibrary.themes[0] || "";
+			} else {
+				const themeQuestion: inquirer.Question = {
+					type: "list",
+					name: "theme",
+					message: "Choose the theme for the project",
+					choices: this.addSeparators(projLibrary.themes),
+					default: "infragistics"
+				};
+				const themeAnswer = await inquirer.prompt(themeQuestion);
+				theme = themeAnswer["theme"];
+			}
+
 			const projTemplate = projLibrary.getProject();
 
 			Util.log("Generating project structure.");
-			await projTemplate.generateFiles(process.cwd(), answers["projectName"], themeAnswer["theme"]);
+			await projTemplate.generateFiles(process.cwd(), answers["projectName"], theme);
 			// move cwd to project folder
 			process.chdir(answers["projectName"]);
 			Util.log("Project structure generated.");
 
-			await this.chooseActionLoop(projLibrary, themeAnswer["theme"]);
+			await this.chooseActionLoop(projLibrary, theme);
 			//TODO: restore cwd?
 		}
 		//process.exit(); //TODO
