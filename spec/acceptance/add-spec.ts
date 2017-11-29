@@ -55,7 +55,7 @@ describe("Add command", () => {
 		await cli.run(["add", "grid", "name"]);
 
 		expect(this.errorLog).toContain(
-			jasmine.stringMatching(/Add command is supported only on existing project created with ignite-ui-cli\s*/)
+			jasmine.stringMatching(/Add command is supported only on existing project created with igniteui-cli\s*/)
 		);
 		expect(this.log).toEqual([]);
 
