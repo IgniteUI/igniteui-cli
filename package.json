@@ -9,7 +9,7 @@
   "author": "Infragistics",
   "license": "MIT",
   "bin": {
-    "ignite-ui": "bin/execute.js"
+    "igniteui": "bin/execute.js"
   },
   "repository": {
     "type": "git",
