@@ -1,5 +1,5 @@
 {
-  "name": "ignite-ui-cli",
+  "name": "igniteui-cli",
   "version": "0.0.1",
   "description": "CLI tool for creating Ignite UI projects",
   "keywords": [
@@ -13,10 +13,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/IgniteUI/ignite-ui-cli"
+    "url": "https://github.com/IgniteUI/igniteui-cli"
   },
   "bugs": {
-    "url": "https://github.com/IgniteUI/ignite-ui-cli/issues"
+    "url": "https://github.com/IgniteUI/igniteui-cli/issues"
   },
   "main": "lib/cli.js",
   "scripts": {

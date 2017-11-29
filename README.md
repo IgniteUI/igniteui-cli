@@ -1,9 +1,9 @@
 ## Ignite UI CLI
 
 <!-- Badges section here. -->
-[![npm](https://img.shields.io/npm/v/ignite-ui-cli.svg?maxAge=2592000)](https://www.npmjs.com/package/ignite-ui-cli)
-[![Build Status](https://travis-ci.org/IgniteUI/ignite-ui-cli.svg?branch=master)](https://travis-ci.org/IgniteUI/ignite-ui-cli)
-[![Coverage Status](https://coveralls.io/repos/github/IgniteUI/ignite-ui-cli/badge.svg)](https://coveralls.io/github/IgniteUI/ignite-ui-cli)
+[![npm](https://img.shields.io/npm/v/igniteui-cli.svg?maxAge=2592000)](https://www.npmjs.com/package/igniteui-cli)
+[![Build Status](https://travis-ci.org/IgniteUI/igniteui-cli.svg?branch=master)](https://travis-ci.org/IgniteUI/igniteui-cli)
+[![Coverage Status](https://coveralls.io/repos/github/IgniteUI/igniteui-cli/badge.svg)](https://coveralls.io/github/IgniteUI/igniteui-cli)
 
 
 
@@ -36,7 +36,7 @@ Quickly create projects including [Ignite UI](https://www.igniteui.com) controls
 Install the npm package as a global module:
 
 ```bash
-npm install -g ignite-ui-cli
+npm install -g igniteui-cli
 ```
 
 ## Usage
