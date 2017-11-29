@@ -15,6 +15,7 @@ export abstract class AngularTemplate implements Template {
 	public framework: string = "angular";
 	public projectType: string;
 	public hasExtraConfiguration: boolean = false;
+	protected widget: string;
 
 	/**
 	 * Creates a new AngularTemplate for a root path (pass in __dirname)
@@ -27,6 +28,13 @@ export abstract class AngularTemplate implements Template {
 			"__name__": this.fileName(name), // TODO: optionally pass as a different variable than name.
 			"__path__": this.folderName(name)
 		};
+		if (this.widget) {
+			config["$(widget)"] = this.widget;
+		}
+		if (this.name) {
+			config["$(name)"] = this.name;
+			config["$(nameMerged)"] = this.name.replace(/ /g, ""); // this is needed for editors
+		}
 		const pathsConfig = {};
 		return Util.processTemplates(path.join(this.rootPath, "files"), projectPath, config, pathsConfig);
 	}
