@@ -1,20 +1,3 @@
-html, body {
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  background: #e6e6e6;
-  color: #4d4d4d;
-  margin: 0 auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-font-smoothing: antialiased;
-  -ms-font-smoothing: antialiased;
-  /* font-smoothing: antialiased; */
-  text-rendering: optimizeLegibility;
-}
-
 .navbar {
 	background-color: #e6e6e6;
 	user-select: none;
@@ -29,6 +12,7 @@ body {
 	z-index: 1000;
 	padding: 0 1.5em;
 	font-size: 1.2em;
+	box-sizing: border-box;
 }
 
 a {
