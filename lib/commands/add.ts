@@ -30,7 +30,7 @@ command = {
 		//command.template;
 		const config =  ProjectConfig.getConfig();
 		if (config == null) {
-			Util.error("Add command is supported only on existing project created with ignite-ui-cli", "red");
+			Util.error("Add command is supported only on existing project created with igniteui-cli", "red");
 			return;
 		}
 		if (config.project.isShowcase) {
