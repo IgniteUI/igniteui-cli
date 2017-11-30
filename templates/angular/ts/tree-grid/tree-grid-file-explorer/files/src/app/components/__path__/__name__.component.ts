@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { files } from "../../assets/data";
+import { files } from "../../assets/data-fe";
 
 @Component({
 	selector: "app-tree-grid",
