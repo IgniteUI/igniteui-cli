@@ -24,13 +24,7 @@ export class PromptSession {
 		// tslint:disable:object-literal-sort-keys
 		if (config != null && !config.project.isShowcase) {
 			//throw new Error("Add command is supported only on existing project created with igntie-ui-cli");
-			const framework = this.templateManager.getFrameworkById(config.project.framework);
-			if (framework.projectLibraries.length > 1) {
-				//TODO proj type support
-			} else {
-				// sorry they made me do it.
-				projLibrary = framework.projectLibraries[0];
-			}
+			projLibrary = this.templateManager.getProjectLibrary(config.project.framework, config.project.projectType);
 			await this.chooseActionLoop(projLibrary, config.project.theme);
 		} else {
 			//TODO update to check if project exists and load correct framework
@@ -52,10 +46,17 @@ export class PromptSession {
 			const framework = this.templateManager.getFrameworkByName(answers["framework"]);
 			//app name validation???
 			if (framework.projectLibraries.length > 1) {
-				//TODO proj type support
+				//proj type support
+				const projQuestion: inquirer.Question = {
+					type: "list",
+					name: "project",
+					message: "Choose the type of project",
+					choices: this.addSeparators(this.templateManager.getProjectLibraryNames(framework.id))
+				};
+				const proj = await inquirer.prompt(projQuestion);
+				projLibrary = this.templateManager.getProjectLibraryByName(framework, proj["project"]);
 			} else {
-				// sorry they made me do it.
-				projLibrary = framework.projectLibraries[0];
+				projLibrary = this.templateManager.getProjectLibrary(framework.id);
 			}
 
 			if (projLibrary.themes.length < 2) {
@@ -83,7 +84,6 @@ export class PromptSession {
 			await this.chooseActionLoop(projLibrary, theme);
 			//TODO: restore cwd?
 		}
-		//process.exit(); //TODO
 	}
 
 	/**

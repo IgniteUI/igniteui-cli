@@ -26,29 +26,45 @@ command = {
 			type: "string",
 			choices: []
 		},
-		theme: {
+		type: {
 			alias: "t",
-			default: "infragistics",
-			describe: "Project theme",
+			describe: "Project type (depends on framework)",
+			type: "string"
+		},
+		theme: {
+			alias: "th",
+			describe: "Project theme (depends on project type)",
 			type: "string"
 		}
 	},
 	template: null,
 	async execute(argv) {
 		if (command.template.getFrameworkById(argv.framework) === undefined) {
-			throw new Error("Framework not supported");
+			return Util.error("Framework not supported");
 		}
-		const framework = command.template.getProjectLibrary(argv.framework) as ProjectLibrary;
-		if (framework.themes.indexOf(argv.theme) === -1) {
-			throw new Error("Theme not supported");
+		let projectLib: ProjectLibrary;
+		if (argv.type) {
+			projectLib = command.template.getProjectLibrary(argv.framework, argv.type) as ProjectLibrary;
+			if (!projectLib) {
+				return Util.error(`Project type "${argv.type}" not found in framework '${argv.framework}'`);
+			}
+		} else {
+			projectLib = command.template.getProjectLibrary(argv.framework) as ProjectLibrary;
 		}
-		Util.log(`Project Name: ${argv.name}, framework ${argv.framework}, theme ${argv.theme}`);
-		const projTemplate = framework.getProject();
+
+		if (argv.theme && projectLib.themes.indexOf(argv.theme) === -1) {
+			return Util.error("Theme not supported");
+		}
+		const theme = argv.theme || projectLib.themes[0];
+
+		Util.log(`Project Name: ${argv.name}, framework ${argv.framework}, type ${projectLib.projectType}, theme ${theme}`);
+		const projTemplate = projectLib.getProject();
 		if (projTemplate == null) {
-			throw new Error("Default project template not found");
+			return Util.error("Default project template not found");
 		}
 		// TODO: update output path based on where the CLI is called
-		await projTemplate.generateFiles(process.cwd(), argv.name, argv.theme);
+		await projTemplate.generateFiles(process.cwd(), argv.name, theme);
+		Util.log("Project Created");
 	}
 };
 
