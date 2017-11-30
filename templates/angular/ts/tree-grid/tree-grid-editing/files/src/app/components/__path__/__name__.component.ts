@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { hierarchicalDS } from "../../assets/data";
+import { hierarchicalDS } from "../../assets/data-editing";
 
 @Component({
 	selector: "app-tree-grid",
