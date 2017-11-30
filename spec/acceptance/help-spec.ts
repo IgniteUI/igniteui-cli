@@ -1,6 +1,4 @@
 import { spawnSync } from "child_process";
-import * as fs from "fs-extra";
-import cli = require("../../lib/cli");
 describe("Help command", () => {
 
 	it("should list all available commands", async done => {
@@ -29,10 +27,12 @@ describe("Help command", () => {
 			encoding: "utf-8"
 		});
 		const originalNewHelpText: string = `Options:
-		--help	Show help	[boolean]
-		--name, -n	Project name	[string] [default: "app"]
-		--framework, -f	Framework to setup project for	[string] [choices: "angular", "jquery", "react"] [default: "jquery"]
-		--theme, -t	Project theme	[string] [default: "infragistics"]`;
+		--help           Show help                                           [boolean]
+		--name, -n       Project name                        [string] [default: "app"]
+		--framework, -f  Framework to setup project for
+				  [string] [choices: "angular", "jquery", "react"] [default: "jquery"]
+		--type, -t       Project type (depends on framework)                  [string]
+		--theme, --th    Project theme (depends on project type)              [string]`;
 
 		const replacedNewHelpText: string = originalNewHelpText.replace(/\s/g, "");
 		const actualNewText: string = (child.stdout.toString("utf-8")).replace(/\s/g, "");
