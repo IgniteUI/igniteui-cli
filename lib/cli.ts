@@ -37,7 +37,6 @@ export async function run(args = null) {
 	switch (command) {
 		case "new":
 			await newCommand.execute(argv);
-			Util.log("Project Created");
 			break;
 		case "quickstart":
 			await quickstart.execute(argv);
