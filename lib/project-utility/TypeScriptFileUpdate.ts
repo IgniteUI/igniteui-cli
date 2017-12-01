@@ -197,13 +197,13 @@ export class TypeScriptFileUpdate {
 	}
 
 	/**
-	 * Add identifier to import and add it to `NgModule` declarations.
-	 * Creates `declarations` array if one is not present already.
+	 * Add identifier to import and add it to `NgModule` imports.
+	 * Creates `imports` array if one is not present already.
 	 * @param targetPath Path of the file to import into
 	 * @param identifier Path to the file to import
 	 * @param modulePath Module path of the import
 	 */
-	public static addIgxDeclaration(targetPath: string, identifiers: string[], modulePath: string) {
+	public static addIgxImport(targetPath: string, identifiers: string[], modulePath: string) {
 		const targetSource = this.getFileSource(targetPath);
 		//const importDeclaration = this.createIdentifierImport(identifier, modulePath);
 
@@ -231,15 +231,15 @@ export class TypeScriptFileUpdate {
 			if (node.kind === ts.SyntaxKind.ObjectLiteralExpression) {
 				const obj = (node as ts.ObjectLiteralExpression);
 				const objProperties = ts.visitNodes(obj.properties, visitor);
-				const hasDeclarations = objProperties.find(x => x.name.getText() === "declarations");
+				const hasDeclarations = objProperties.find(x => x.name.getText() === "imports");
 
 				if (hasDeclarations) {
 					// has declaration array, continue:
 					node = ts.visitEachChild(node, visitNgModule, context);
 				} else {
 					// create declaration array, TODO: multiple?
-					const declarations = ts.createArrayLiteral(identifiers.map(x => ts.createIdentifier(x)));
-					const declaration = ts.createPropertyAssignment("declarations", declarations);
+					const imports = ts.createArrayLiteral(identifiers.map(x => ts.createIdentifier(x)));
+					const declaration = ts.createPropertyAssignment("imports", imports);
 					const properties = [
 						...objProperties,
 						declaration
@@ -248,7 +248,7 @@ export class TypeScriptFileUpdate {
 				}
 			} else if (node.kind === ts.SyntaxKind.ArrayLiteralExpression &&
 				node.parent.kind === ts.SyntaxKind.PropertyAssignment &&
-				(node.parent as ts.PropertyAssignment).name.getText() === "declarations") {
+				(node.parent as ts.PropertyAssignment).name.getText() === "imports") {
 					const initializer = (node as ts.ArrayLiteralExpression);
 
 					const elements = ts.createNodeArray([
