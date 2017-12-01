@@ -109,7 +109,7 @@ describe("Add command", () => {
 	it("Should correctly add Angular template", async done => {
 		// TODO: Mock out template manager and project register
 		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
-			project: { framework: "angular", projectType: "ts", components: [] }
+			project: { framework: "angular", projectType: "ig-ts", components: [] }
 		}));
 		fs.mkdirSync(`./src`);
 		fs.mkdirSync(`./src/app`);
