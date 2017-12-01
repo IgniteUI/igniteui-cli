@@ -3,8 +3,8 @@ import { employeesData } from './localData';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './$(name).component.html',
-  styleUrls: ['./$(name).component.css']
+  templateUrl: './$(filePrefix).component.html',
+  styleUrls: ['./$(filePrefix).component.css']
 })
 export class $(ClassName)Component implements OnInit {
   public localData: any[]; 

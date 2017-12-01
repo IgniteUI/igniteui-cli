@@ -1,13 +1,13 @@
-import { AngularTemplate } from "../../../../../lib/templates/AngularTemplate";
+import { IgniteUIForAngularTemplate } from "../../../../../lib/templates/IgniteUIForAngularTemplate";
 
-class IgxGridTemplate extends AngularTemplate {
+class IgxGridTemplate extends IgniteUIForAngularTemplate {
 	constructor() {
 		super(__dirname);
 		this.components = ["Grid"];
 		this.controlGroup = "Grids";
 		this.listInComponentTemplates = true;
 		this.id = "grid";
-		this.projectType = "blocks-ts";
+		this.projectType = "igx-ts";
 		this.name = "Grid";
 		this.description = "Basic IgxGrid";
 		this.dependencies = ["IgxGridModule"];

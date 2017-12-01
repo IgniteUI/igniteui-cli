@@ -7,6 +7,7 @@ class AngularFramework implements Framework {
 		this.id = "angular";
 		this.name = "Angular";
 		this.projectLibraries = [];
+		this.projectLibraries.push(require("./igx-ts") as ProjectLibrary);
 		this.projectLibraries.push(require("./ts") as ProjectLibrary);
 	}
 }

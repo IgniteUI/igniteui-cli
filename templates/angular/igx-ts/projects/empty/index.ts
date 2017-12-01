@@ -8,7 +8,7 @@ class EmptyJsBlocksProject implements ProjectTemplate {
 	public description = "The is the default empty angular project structure for JsBlocks";
 	public dependencies: string[] = [];
 	public framework: string = "angular";
-	public projectType: string = "blocks-ts";
+	public projectType: string = "igx-ts";
 	public hasExtraConfiguration: boolean = false;
 
 	public installModules(): void {
