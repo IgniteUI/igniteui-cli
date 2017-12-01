@@ -7,7 +7,7 @@ class DoughnutChartTemplate extends AngularTemplate {
 		this.controlGroup = "Charts";
 		this.listInComponentTemplates = true;
 		this.id = "doughnut-chart";
-		this.projectType = "ts";
+		this.projectType = "ig-ts";
 		this.name = "Doughnut Chart";
 		this.description = "Doughnut series template of Data Chart";
 		this.dependencies = ["igDoughnutChart"];

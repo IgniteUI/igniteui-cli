@@ -16,7 +16,7 @@ class GridTemplate extends AngularTemplate {
 		this.controlGroup = "Data Grids";
 		this.description = "Grid default template";
 		this.dependencies = ["igGrid"];
-		this.projectType = "ts";
+		this.projectType = "ig-ts";
 		this.extraConfigurations = [];
 		this.hasExtraConfiguration = true;
 		this.listInComponentTemplates = true;

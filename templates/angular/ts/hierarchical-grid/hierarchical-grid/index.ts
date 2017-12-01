@@ -16,7 +16,7 @@ class HierarchicalGridTemplate extends AngularTemplate {
 		this.controlGroup = "Data Grids";
 		this.description = "Hierarchical Grid default template for Angular";
 		this.dependencies = ["igHierarchicalGrid"];
-		this.projectType = "ts";
+		this.projectType = "ig-ts";
 		this.extraConfigurations = [];
 		this.hasExtraConfiguration = true;
 		this.listInComponentTemplates = true;

@@ -23,7 +23,7 @@ class EditorsAngularComponent extends AngularTemplate {
 	public mapItem: { name: string; widget: string; };
 	constructor() {
 		super(path.join(__dirname, "default"));
-		this.projectType = "ts";
+		this.projectType = "ig-ts";
 		this.components = ["Editors"];
 		this.controlGroup = "Editors";
 		this.dependencies = ["igEditors"];

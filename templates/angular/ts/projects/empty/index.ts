@@ -9,7 +9,7 @@ class EmptyAngularProject implements ProjectTemplate {
 	public description = "The is the default empty project structure for angular";
 	public dependencies: string[] = [];
 	public framework: string = "angular";
-	public projectType: string = "ts";
+	public projectType: string = "ig-ts";
 	public hasExtraConfiguration: boolean = false;
 
 	public installModules(): void {

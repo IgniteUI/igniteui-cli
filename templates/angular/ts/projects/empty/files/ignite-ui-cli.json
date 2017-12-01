@@ -2,7 +2,7 @@
 	"version": "",
 	"project": {
 		"framework": "angular",
-		"projectType": "ts",
+		"projectType": "ig-ts",
 		"theme": "$(theme)",
 		"themePath": "$(themePath)",
 		"isBundle": false,

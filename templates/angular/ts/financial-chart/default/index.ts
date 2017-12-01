@@ -7,7 +7,7 @@ class FinancialChartTemplate extends AngularTemplate {
 		this.controlGroup = "Charts";
 		this.listInComponentTemplates = true;
 		this.id = "financial-chart";
-		this.projectType = "ts";
+		this.projectType = "ig-ts";
 		this.name = "Financial Chart";
 		this.description = "Financial series template of Data Chart";
 		this.dependencies = ["igDataChart"];

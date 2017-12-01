@@ -7,7 +7,7 @@ class PieChartTemplate extends AngularTemplate {
 		this.controlGroup = "Charts";
 		this.listInComponentTemplates = true;
 		this.id = "pie-chart";
-		this.projectType = "ts";
+		this.projectType = "ig-ts";
 		this.name = "Pie Chart";
 		this.description = "Pie chart template for Angular";
 		this.dependencies = ["igPieChart"];

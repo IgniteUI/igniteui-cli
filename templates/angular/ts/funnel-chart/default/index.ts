@@ -7,7 +7,7 @@ class FunnelChartTemplate extends AngularTemplate {
 		this.controlGroup = "Charts";
 		this.listInComponentTemplates = true;
 		this.id = "funnel-chart";
-		this.projectType = "ts";
+		this.projectType = "ig-ts";
 		this.name = "Funnel Chart";
 		this.description = "Funnel chart template";
 		this.dependencies = ["igFunnelChart"];

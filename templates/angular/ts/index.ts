@@ -6,8 +6,8 @@ class AngularFramework extends BaseProjectLibrary {
 	 */
 	constructor() {
 		super(__dirname);
-		this.name = "Angular";
-		this.projectType = "ts";
+		this.name = "Ignite UI Angular Wrappers";
+		this.projectType = "ig-ts";
 		this.themes = ["infragistics"];
 	}
 }
