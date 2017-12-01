@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { $(ClassName)Component } from './$(filePrefix).component';
+import { IgxGridModule, IgxProgressBarModule, IgxAvatarModule, IgxBadgeModule, IgxSwitchModule } from 'igniteui-js-blocks/main';
 
 describe('$(ClassName)Component', () => {
   let component: $(ClassName)Component;
@@ -8,7 +9,8 @@ describe('$(ClassName)Component', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ $(ClassName)Component ]
+      declarations: [ $(ClassName)Component ],
+      imports: [ IgxGridModule ]
     })
     .compileComponents();
   }));
