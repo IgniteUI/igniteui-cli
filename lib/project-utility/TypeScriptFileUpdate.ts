@@ -197,7 +197,7 @@ export class TypeScriptFileUpdate {
 	}
 
 	/**
-	 * Add identifier to import and add it to `NgModule` imports.
+	 * Add missing identifiers to import and add it to `NgModule` imports.
 	 * Creates `imports` array if one is not present already.
 	 * @param targetPath Path of the file to import into
 	 * @param identifier Path to the file to import
@@ -250,10 +250,13 @@ export class TypeScriptFileUpdate {
 				node.parent.kind === ts.SyntaxKind.PropertyAssignment &&
 				(node.parent as ts.PropertyAssignment).name.getText() === "imports") {
 					const initializer = (node as ts.ArrayLiteralExpression);
-
+					const props = ts.visitNodes(initializer.elements, visitor);
+					const alreadyImported = props.map(x => (x as ts.Identifier).text);
 					const elements = ts.createNodeArray([
-						...ts.visitNodes(initializer.elements, visitor),
-						...identifiers.map(x => ts.createIdentifier(x))
+						...props,
+						...identifiers
+							.filter(x => alreadyImported.indexOf(x) === -1)
+							.map(x => ts.createIdentifier(x))
 					]);
 
 					return ts.updateArrayLiteral(initializer, elements);
@@ -266,9 +269,13 @@ export class TypeScriptFileUpdate {
 			if (node.kind === ts.SyntaxKind.NamedImports) {
 				const namedImports = node as ts.NamedImports;
 				const existing = ts.visitNodes(namedImports.elements, visitor);
+				const alreadyImported = existing.map(x => x.name.text);
+
 				node = ts.updateNamedImports(namedImports, [
 					...existing,
-					...identifiers.map(x => ts.createImportSpecifier(undefined,	ts.createIdentifier(x)))
+					...identifiers
+						.filter(x => alreadyImported.indexOf(x) === -1)
+						.map(x => ts.createImportSpecifier(undefined,	ts.createIdentifier(x)))
 				]);
 			} else {
 				node = ts.visitEachChild(node, visitImport, context);

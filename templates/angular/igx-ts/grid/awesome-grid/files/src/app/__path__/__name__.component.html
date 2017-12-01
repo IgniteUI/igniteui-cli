@@ -1,0 +1,76 @@
+<div class="sample-wrapper">
+  <section class="sample-content">
+      <article class="sample-column">
+
+          <div class="containerTitle">
+              <span class="titleMarathon">
+                <div class="switch-sample">
+                  <span igxLabel>Boston Marathon 2017</span>
+                  <igx-switch [checked]="this.live" [disabled]="disabled" (change)="doSwitch($event)" title="Start/Stop the marathon" >Live</igx-switch>
+                </div>
+              </span>
+              <span class="titleFilter">
+                <input id="globalFilter" igxInput (input)="doGlobalFiltering($event)" placeholder="Filter by country" />
+              </span>
+            </div>
+            <br />
+            <igx-grid #grid1 [data]="localData" [autoGenerate]="false" [paging]="true" [perPage]="6"
+              class="fontWeight" (onBeforeProcess)="applyAlternateStyling()" (onSortingDone)="sortRank($event)">
+              <igx-column [header]="'Rank'" [field]="'Id'" [sortable]="true" >
+                <ng-template igxCell let-col="column" let-ri="rowIndex" let-item="item">
+                  <div>
+                    <span *ngIf="item === 1" class="cup">
+                      <svg id="circle" height="24" width="24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <image x="0" y="0" height="24" width="24" xlink:href="assets/images/3iP.svg" />
+                      </svg>
+                    </span>
+                    <span *ngIf="(item === 2 || item === 3)" class="cup">
+                      <svg id="circle" height="24" width="24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <image x="0" y="0" height="24" width="24" xlink:href="assets/images/3hz.svg" />
+                      </svg>
+                    </span>
+                    <span class="rowIndex">
+                      {{ item }}
+                    </span>
+                  </div>
+                </ng-template>
+              </igx-column>
+              <!-- <igx-column [header]="' '" [field]="'Id'" [width]="'20px'">
+              </igx-column> -->
+              <igx-column [field]="'Position'" [header]="'Position'" [hidden]="true">
+              </igx-column>
+              <igx-column [field]="'Avatar'" [header]="'Athlete'">
+                <ng-template igxCell let-col="column" let-ri="rowIndex" let-item="item">
+                  <igx-avatar src="{{ item }}" roundShape="true" size="medium" >
+                    <igx-badge *ngIf="grid1.getCell(ri, 'Position').dataItem == 'up'" type="success" position="top-right" icon="arrow_upward"></igx-badge>
+                    <igx-badge *ngIf="grid1.getCell(ri, 'Position').dataItem == 'current'" type="warning" position="top-right" icon="arrow_forward"></igx-badge>
+                    <igx-badge *ngIf="grid1.getCell(ri, 'Position').dataItem == 'down'" type="error" position="top-right" icon="arrow_downward"></igx-badge>
+                  </igx-avatar>
+                </ng-template>
+              </igx-column>
+              <igx-column [field]="'Name'" [sortable]="false" [header]="' '" [filtering]="true"></igx-column>
+              <igx-column [field]="'AthleteNumber'" [sortable]="false" [header]="'Athlete number'" ></igx-column>
+              <igx-column [field]="'BeatsPerMinute'" [sortable]="false" [header]="'Beats per minute'"></igx-column>
+              <igx-column [field]="'TopSpeed'" [sortable]="false" [header]="'Top speed'"></igx-column>
+              <igx-column [field]="'CountryName'" [hidden]="true"></igx-column>
+              <igx-column field="TrackProgress" header="Track progress">
+                <ng-template igxCell let-col="column" let-ri="rowIndex" let-item="item">
+                  <igx-linear-bar [striped]="false" [value]="item" [max]="100">
+                  </igx-linear-bar>
+                </ng-template>
+              </igx-column>
+              <igx-column [field]="'CountryFlag'" [header]="'Country'">
+                <ng-template igxCell let-col="column" let-ri="rowIndex" let-item="item">
+                  <div class="flagParent">
+                    <span class="elipsis">{{ grid1.getCell(ri, 'CountryName').dataItem }}</span>
+                    <span>
+                      <img src="{{item}}" class="flag" />
+                    </span>
+                  </div>
+                </ng-template>
+              </igx-column>
+            </igx-grid>
+
+      </article>
+  </section>
+</div>

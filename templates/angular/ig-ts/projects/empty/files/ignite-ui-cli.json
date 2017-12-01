@@ -1,0 +1,20 @@
+{
+	"version": "",
+	"project": {
+		"framework": "angular",
+		"projectType": "ig-ts",
+		"theme": "$(theme)",
+		"themePath": "$(themePath)",
+		"isBundle": false,
+		"bundleFilePath": "/igniteui/dist/ignite.js",
+		"igniteuiSource": "./node_modules/ignite-ui",
+		"components": [],
+		"sourceFiles": [
+			"infragistics.core-lite.js",
+			"infragistics.lob-lite.js"
+		],
+		"isShowcase": false,
+		"version": ""
+	},
+	"build": {}
+}
