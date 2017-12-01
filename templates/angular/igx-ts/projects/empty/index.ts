@@ -24,6 +24,7 @@ class EmptyJsBlocksProject implements ProjectTemplate {
 	public generateFiles(outputPath: string, name: string, theme: string, ...options: any[]): Promise<boolean> {
 		const config = {
 			"$(name)": name,
+			"$(dash-name)": Util.lowerDashed(name),
 			"$(theme)": theme,
 			"__path__": name
 		};

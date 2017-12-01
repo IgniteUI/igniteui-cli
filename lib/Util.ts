@@ -163,6 +163,13 @@ class Util {
 		}
 		// tslint:enable:no-console
 	}
+
+	/**
+	 * lower-dashed string
+	 */
+	public static lowerDashed(text: string) {
+	return text.replace(/\s+/g, "-").toLowerCase();
+	}
 }
 
 export { Util };

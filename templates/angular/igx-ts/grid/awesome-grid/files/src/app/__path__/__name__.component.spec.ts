@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { $(ClassName)Component } from './grid.component';
+import { $(ClassName)Component } from './$(filePrefix).component';
 
 describe('$(ClassName)Component', () => {
   let component: $(ClassName)Component;
