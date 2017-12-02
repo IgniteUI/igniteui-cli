@@ -27,9 +27,9 @@ Quickly create projects including [Ignite UI](https://www.igniteui.com) controls
 
 * [Installation](#installation)
 * [Usage](#usage)
-* [Generating and serving quickstart projects](#generating-and-serving-quickstart-projects)
-* [Generating Projects and adding components](#generating-projects-and-adding-components)
-* [Note](#note)
+  * [Step by step](#step-by-step)
+  * [Generating Projects and adding components](#generating-projects-and-adding-components)
+* [Contribution](#contribution)
 
 ## Installation
 
@@ -42,7 +42,7 @@ npm install -g igniteui-cli
 ## Usage
 The main entry point is `igniteui` and is also aliased as `ig`. Both can be used interchangeably to call available commands.
 
-## Step by step
+### Step by step
 To get a guided experience through the available options, simply run:
 
 ```bash
