@@ -170,15 +170,15 @@ export class PromptSession {
 				const customTemplate = await inquirer.prompt({
 					type: "list",
 					name: "customTemplate",
-					message: "Choose custom template",
+					message: "Choose custom view",
 					choices: this.addSeparators(customTemplates)
 				});
 				selectedTemplate = framework.getTemplateByName(customTemplate["customTemplate"]);
 				templateName = await inquirer.prompt({
 					type: "input",
 					name: "name",
-					message: "Name your template",
-					default: selectedTemplate.name.toLowerCase().replace(/ /g, "-")
+					message: "Name your view",
+					default: selectedTemplate.name
 				});
 				// TODO: Combine name with output path, folder existing check
 				await add.addTemplate(templateName["name"], selectedTemplate);
