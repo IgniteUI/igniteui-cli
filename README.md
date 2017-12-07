@@ -66,8 +66,9 @@ ig quickstart --framework=<framework>
 
 Create a new project passing name, framework and style theme.
 ```bash
-ig new <project name> --framework=<framework> --theme=<theme>
+ig new <project name> --framework=<framework> --type=<proj-type> --theme=<theme>
 ```
+Parameters besides name are optional. Framework default to "jquery", project type defaults to the first available in the framework and theme to the first available for the project.
 
 Add a new component or template to the project passing component ID and choosing a name.
 
