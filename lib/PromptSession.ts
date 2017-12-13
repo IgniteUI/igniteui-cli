@@ -3,7 +3,6 @@ import * as path from "path";
 import { default as add } from "./commands/add";
 import { default as build } from "./commands/build";
 import { default as start } from "./commands/start";
-import { ProjectConfig } from "./ProjectConfig";
 import { TemplateManager } from "./TemplateManager";
 import { Util } from "./Util";
 
@@ -15,75 +14,67 @@ export class PromptSession {
 	 * Start questions session for project creation
 	 */
 	public async start() {
-		const config =  ProjectConfig.getConfig();
 		let projLibrary: ProjectLibrary;
 		let theme: string;
 
 		add.templateManager = this.templateManager;
 
-		// tslint:disable:object-literal-sort-keys
-		if (config != null && !config.project.isShowcase) {
-			//throw new Error("Add command is supported only on existing project created with igntie-ui-cli");
-			projLibrary = this.templateManager.getProjectLibrary(config.project.framework, config.project.projectType);
-			await this.chooseActionLoop(projLibrary, config.project.theme);
-		} else {
-			//TODO update to check if project exists and load correct framework
-			const questions: inquirer.Question[] = [{
-				type: "input",
-				name: "projectName",
-				message: "Enter a name for your project: ",
-				default: "app"
-			},
-			//TODO split questions and in case of existing app folder or not kebab case throw exception.
-			{
+		//TODO update to check if project exists and load correct framework
+		const questions: inquirer.Question[] = [{
+			type: "input",
+			name: "projectName",
+			message: "Enter a name for your project: ",
+			default: "app"
+		},
+		//TODO split questions and in case of existing app folder or not kebab case throw exception.
+		{
+			type: "list",
+			name: "framework",
+			message: "Select framework",
+			choices: this.addSeparators(this.templateManager.getFrameworkNames()),
+			default: "jQuery"
+		}];
+		const answers = await inquirer.prompt(questions);
+		const framework = this.templateManager.getFrameworkByName(answers["framework"]);
+		//app name validation???
+		if (framework.projectLibraries.length > 1) {
+			//proj type support
+			const projQuestion: inquirer.Question = {
 				type: "list",
-				name: "framework",
-				message: "Select framework",
-				choices: this.addSeparators(this.templateManager.getFrameworkNames()),
-				default: "jQuery"
-			}];
-			const answers = await inquirer.prompt(questions);
-			const framework = this.templateManager.getFrameworkByName(answers["framework"]);
-			//app name validation???
-			if (framework.projectLibraries.length > 1) {
-				//proj type support
-				const projQuestion: inquirer.Question = {
-					type: "list",
-					name: "project",
-					message: "Choose the type of project",
-					choices: this.addSeparators(this.templateManager.getProjectLibraryNames(framework.id))
-				};
-				const proj = await inquirer.prompt(projQuestion);
-				projLibrary = this.templateManager.getProjectLibraryByName(framework, proj["project"]);
-			} else {
-				projLibrary = this.templateManager.getProjectLibrary(framework.id);
-			}
-
-			if (projLibrary.themes.length < 2) {
-				theme = projLibrary.themes[0] || "";
-			} else {
-				const themeQuestion: inquirer.Question = {
-					type: "list",
-					name: "theme",
-					message: "Choose the theme for the project",
-					choices: this.addSeparators(projLibrary.themes),
-					default: "infragistics"
-				};
-				const themeAnswer = await inquirer.prompt(themeQuestion);
-				theme = themeAnswer["theme"];
-			}
-
-			const projTemplate = projLibrary.getProject();
-
-			Util.log("Generating project structure.");
-			await projTemplate.generateFiles(process.cwd(), answers["projectName"], theme);
-			// move cwd to project folder
-			process.chdir(answers["projectName"]);
-			Util.log("Project structure generated.");
-
-			await this.chooseActionLoop(projLibrary, theme);
-			//TODO: restore cwd?
+				name: "project",
+				message: "Choose the type of project",
+				choices: this.addSeparators(this.templateManager.getProjectLibraryNames(framework.id))
+			};
+			const proj = await inquirer.prompt(projQuestion);
+			projLibrary = this.templateManager.getProjectLibraryByName(framework, proj["project"]);
+		} else {
+			projLibrary = this.templateManager.getProjectLibrary(framework.id);
 		}
+
+		if (projLibrary.themes.length < 2) {
+			theme = projLibrary.themes[0] || "";
+		} else {
+			const themeQuestion: inquirer.Question = {
+				type: "list",
+				name: "theme",
+				message: "Choose the theme for the project",
+				choices: this.addSeparators(projLibrary.themes),
+				default: "infragistics"
+			};
+			const themeAnswer = await inquirer.prompt(themeQuestion);
+			theme = themeAnswer["theme"];
+		}
+
+		const projTemplate = projLibrary.getProject();
+
+		Util.log("Generating project structure.");
+		await projTemplate.generateFiles(process.cwd(), answers["projectName"], theme);
+		// move cwd to project folder
+		process.chdir(answers["projectName"]);
+		Util.log("Project structure generated.");
+
+		await this.chooseActionLoop(projLibrary, theme);
+		//TODO: restore cwd?
 	}
 
 	/**
