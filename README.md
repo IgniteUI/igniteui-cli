@@ -27,9 +27,9 @@ Quickly create projects including [Ignite UI](https://www.igniteui.com) controls
 
 * [Installation](#installation)
 * [Usage](#usage)
-* [Generating and serving quickstart projects](#generating-and-serving-quickstart-projects)
-* [Generating Projects and adding components](#generating-projects-and-adding-components)
-* [Note](#note)
+  * [Step by step](#step-by-step)
+  * [Generating Projects and adding components](#generating-projects-and-adding-components)
+* [Contribution](#contribution)
 
 ## Installation
 
@@ -40,11 +40,13 @@ npm install -g igniteui-cli
 ```
 
 ## Usage
-## Step by step
+The main entry point is `igniteui` and is also aliased as `ig`. Both can be used interchangeably to call available commands.
+
+### Step by step
 To get a guided experience through the available options, simply run:
 
 ```bash
-igniteui
+ig
 ```
 
 Upon creation, projects will be automatically served on port 3000 and can be accessed via http://localhost:3000/.
@@ -52,33 +54,34 @@ Upon creation, projects will be automatically served on port 3000 and can be acc
 ### List the available commands.
 
 ```bash
-igniteui help
+ig help
 ```
 ### Generate and serve quickstart projects
-For a jump start and a sample overview of the Ignite UI controls, you can choose a "quickstart" to generate a project with predefined IgniteUI controls for each of the supported frameworks.
+For a jump start and a sample overview of the Ignite UI controls, you can choose a "quickstart" to generate a project with predefined Ignite UI controls for each of the supported frameworks.
 
 ```bash
-igniteui quickstart --framework=<framework>
+ig quickstart --framework=<framework>
 ```
 ### Generating projects and adding components
 
 Create a new project passing name, framework and style theme.
 ```bash
-igniteui new <project name> --framework=<framework> --theme=<theme>
+ig new <project name> --framework=<framework> --type=<proj-type> --theme=<theme>
 ```
+Parameters besides name are optional. Framework default to "jquery", project type defaults to the first available in the framework and theme to the first available for the project.
 
 Add a new component or template to the project passing component ID and choosing a name.
 
 ```bash
-igniteui add <component/template> <component_name>
+ig add <component/template> <component_name>
 ```
 
 The ID matches either a component ("grid", "combo", "text-editor", etc) or a predefined template. Predefined templates are framework/project specific and can provide predefined views with either multiple components or fulfilling a specific use case like "form-validation", "master-detail" and so on.
 
 ### Build and run
 ```bash
-igniteui build
-igniteui start
+ig build
+ig start
 ```
 ## Contribution
 

@@ -1,0 +1,17 @@
+{
+	"version": "",
+	"project": {
+		"framework": "angular",
+		"projectType": "igx-ts",
+		"theme": "$(theme)",
+		"themePath": "$(themePath)",
+		"isBundle": false,
+		"bundleFilePath": "",
+		"igniteuiSource": "",
+		"components": [],
+		"sourceFiles": [],
+		"isShowcase": false,
+		"version": ""
+	},
+	"build": {}
+}

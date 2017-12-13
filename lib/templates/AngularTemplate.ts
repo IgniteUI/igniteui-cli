@@ -33,6 +33,7 @@ export abstract class AngularTemplate implements Template {
 		}
 		if (this.name) {
 			config["$(name)"] = this.name;
+			config["$(filePrefix)"] = this.fileName(name);
 			config["$(nameMerged)"] = this.name.replace(/ /g, ""); // this is needed for editors
 		}
 		const pathsConfig = {};

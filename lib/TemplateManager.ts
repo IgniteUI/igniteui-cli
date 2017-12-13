@@ -38,6 +38,35 @@ export class TemplateManager {
 	public getFrameworkById(id: string): Framework {
 		return this.frameworks.find(f => f.id === id);
 	}
+
+	/**
+	 * Get ProjectLibrary Names list
+	 * @param frameworkId
+	 * @returns Returns projectLibrary names array
+	 */
+	public getProjectLibraryNames(frameworkId: string): string[] {
+		let projects = [];
+		const framework = this.frameworks.find(f => f.id === frameworkId);
+		if (framework) {
+			projects = framework.projectLibraries.map(x => x.name);
+		}
+		return projects;
+	}
+
+	/**
+	 * Get ProjectLibrary by name
+	 * @param framework
+	 * @param name
+	 * @returns Returns matching projectLibrary or undefined
+	 */
+	public getProjectLibraryByName(framework: Framework, name: string): ProjectLibrary {
+		let projectLib: ProjectLibrary;
+		if (name) {
+			projectLib = framework.projectLibraries.find(x => x.name === name);
+		}
+		return projectLib;
+	}
+
 	/**
 	 * Get a specific project library
 	 * @param frameworkId

@@ -197,6 +197,99 @@ export class TypeScriptFileUpdate {
 	}
 
 	/**
+	 * Add missing identifiers to import and add it to `NgModule` imports.
+	 * Creates `imports` array if one is not present already.
+	 * @param targetPath Path of the file to import into
+	 * @param identifier Path to the file to import
+	 * @param modulePath Module path of the import
+	 */
+	public static addIgxImport(targetPath: string, identifiers: string[], modulePath: string) {
+		const targetSource = this.getFileSource(targetPath);
+		//const importDeclaration = this.createIdentifierImport(identifier, modulePath);
+
+		// https://github.com/Microsoft/TypeScript/issues/14419#issuecomment-307256171
+		const transformer: ts.TransformerFactory<ts.Node> = <T extends ts.Node>(context: ts.TransformationContext) =>
+		(rootNode: T) => {
+		function visitor(node: ts.Node): ts.Node {
+			if (node.kind === ts.SyntaxKind.ImportDeclaration
+				&& ((node as ts.ImportDeclaration).moduleSpecifier as ts.StringLiteral).text === modulePath
+			) {
+				// visit just the source file main array (second visit)
+				return visitImport(node as ts.ImportDeclaration);
+			} else if (node.kind === ts.SyntaxKind.CallExpression &&
+				node.parent.kind === ts.SyntaxKind.Decorator &&
+				(node as ts.CallExpression).expression.getText() === "NgModule") {
+				// found module declaration
+				// expression: NgModule(arguments)
+				node = ts.visitEachChild(node, visitNgModule, context);
+			} else {
+				node = ts.visitEachChild(node, visitor, context);
+			}
+			return node;
+		}
+		function visitNgModule(node: ts.Node): ts.Node {
+			if (node.kind === ts.SyntaxKind.ObjectLiteralExpression) {
+				const obj = (node as ts.ObjectLiteralExpression);
+				const objProperties = ts.visitNodes(obj.properties, visitor);
+				const hasDeclarations = objProperties.find(x => x.name.getText() === "imports");
+
+				if (hasDeclarations) {
+					// has declaration array, continue:
+					node = ts.visitEachChild(node, visitNgModule, context);
+				} else {
+					// create declaration array, TODO: multiple?
+					const imports = ts.createArrayLiteral(identifiers.map(x => ts.createIdentifier(x)));
+					const declaration = ts.createPropertyAssignment("imports", imports);
+					const properties = [
+						...objProperties,
+						declaration
+					];
+					return ts.updateObjectLiteral(obj, properties);
+				}
+			} else if (node.kind === ts.SyntaxKind.ArrayLiteralExpression &&
+				node.parent.kind === ts.SyntaxKind.PropertyAssignment &&
+				(node.parent as ts.PropertyAssignment).name.getText() === "imports") {
+					const initializer = (node as ts.ArrayLiteralExpression);
+					const props = ts.visitNodes(initializer.elements, visitor);
+					const alreadyImported = props.map(x => (x as ts.Identifier).text);
+					const elements = ts.createNodeArray([
+						...props,
+						...identifiers
+							.filter(x => alreadyImported.indexOf(x) === -1)
+							.map(x => ts.createIdentifier(x))
+					]);
+
+					return ts.updateArrayLiteral(initializer, elements);
+			} else {
+				node = ts.visitEachChild(node, visitNgModule, context);
+			}
+			return node;
+		}
+		function visitImport(node: ts.Node) {
+			if (node.kind === ts.SyntaxKind.NamedImports) {
+				const namedImports = node as ts.NamedImports;
+				const existing = ts.visitNodes(namedImports.elements, visitor);
+				const alreadyImported = existing.map(x => x.name.text);
+
+				node = ts.updateNamedImports(namedImports, [
+					...existing,
+					...identifiers
+						.filter(x => alreadyImported.indexOf(x) === -1)
+						.map(x => ts.createImportSpecifier(undefined,	ts.createIdentifier(x)))
+				]);
+			} else {
+				node = ts.visitEachChild(node, visitImport, context);
+			}
+			return node;
+		}
+		return ts.visitNode(rootNode, visitor);
+	};
+
+		const result = ts.transform(targetSource, [ transformer ]).transformed[0] as ts.SourceFile;
+		this.saveFile(targetPath, result);
+	}
+
+	/**
 	 * Checks based on https://github.com/Microsoft/TypeScript/wiki/Using-the-Compiler-API#using-the-type-checker
 	 * @param nodes Source nodes to iterate
 	 */

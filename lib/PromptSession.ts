@@ -24,13 +24,7 @@ export class PromptSession {
 		// tslint:disable:object-literal-sort-keys
 		if (config != null && !config.project.isShowcase) {
 			//throw new Error("Add command is supported only on existing project created with igntie-ui-cli");
-			const framework = this.templateManager.getFrameworkById(config.project.framework);
-			if (framework.projectLibraries.length > 1) {
-				//TODO proj type support
-			} else {
-				// sorry they made me do it.
-				projLibrary = framework.projectLibraries[0];
-			}
+			projLibrary = this.templateManager.getProjectLibrary(config.project.framework, config.project.projectType);
 			await this.chooseActionLoop(projLibrary, config.project.theme);
 		} else {
 			//TODO update to check if project exists and load correct framework
@@ -52,10 +46,17 @@ export class PromptSession {
 			const framework = this.templateManager.getFrameworkByName(answers["framework"]);
 			//app name validation???
 			if (framework.projectLibraries.length > 1) {
-				//TODO proj type support
+				//proj type support
+				const projQuestion: inquirer.Question = {
+					type: "list",
+					name: "project",
+					message: "Choose the type of project",
+					choices: this.addSeparators(this.templateManager.getProjectLibraryNames(framework.id))
+				};
+				const proj = await inquirer.prompt(projQuestion);
+				projLibrary = this.templateManager.getProjectLibraryByName(framework, proj["project"]);
 			} else {
-				// sorry they made me do it.
-				projLibrary = framework.projectLibraries[0];
+				projLibrary = this.templateManager.getProjectLibrary(framework.id);
 			}
 
 			if (projLibrary.themes.length < 2) {
@@ -83,7 +84,6 @@ export class PromptSession {
 			await this.chooseActionLoop(projLibrary, theme);
 			//TODO: restore cwd?
 		}
-		//process.exit(); //TODO
 	}
 
 	/**
@@ -98,7 +98,7 @@ export class PromptSession {
 			actionChoices.push("Add component");
 		}
 		if (framework.getCustomTemplates().length > 0) {
-			actionChoices.push("Add template");
+			actionChoices.push("Add view");
 		}
 		const action = await inquirer.prompt({
 			type: "list",
@@ -164,21 +164,21 @@ export class PromptSession {
 				}
 				await this.chooseActionLoop(framework, theme);
 				break;
-			case "Add template":
+			case "Add view":
 				//TODO:
 				const customTemplates = framework.getCustomTemplates();
 				const customTemplate = await inquirer.prompt({
 					type: "list",
 					name: "customTemplate",
-					message: "Choose custom template",
+					message: "Choose custom view",
 					choices: this.addSeparators(customTemplates)
 				});
 				selectedTemplate = framework.getTemplateByName(customTemplate["customTemplate"]);
 				templateName = await inquirer.prompt({
 					type: "input",
 					name: "name",
-					message: "Name your template",
-					default: selectedTemplate.name.toLowerCase().replace(/ /g, "-")
+					message: "Name your view",
+					default: selectedTemplate.name
 				});
 				// TODO: Combine name with output path, folder existing check
 				await add.addTemplate(templateName["name"], selectedTemplate);
