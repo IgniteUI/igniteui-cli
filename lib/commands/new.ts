@@ -1,6 +1,8 @@
 import * as fs from "fs-extra";
 import * as path from "path";
+import { ProjectConfig } from "../ProjectConfig";
 import { Util } from "../Util";
+import { PromptSession } from "./../PromptSession";
 import { TemplateManager } from "./../TemplateManager";
 
 let command: {
@@ -10,7 +12,7 @@ let command: {
 };
 // tslint:disable:object-literal-sort-keys
 command = {
-	command: "new <name>",
+	command: "new [name]",
 	desc: "Creating a new project",
 	builder: {
 		name: {
@@ -39,8 +41,16 @@ command = {
 	},
 	template: null,
 	async execute(argv) {
+		if (ProjectConfig.getConfig() !== null) {
+			return Util.log("There is already an existing project.", "red");
+		}
+		if (!argv.type) {
+			const templateManager = new TemplateManager();
+			const prompts = new PromptSession(templateManager);
+			await prompts.start();
+		}
 		if (command.template.getFrameworkById(argv.framework) === undefined) {
-			return Util.error("Framework not supported");
+			return Util.error("Framework not supported", "red");
 		}
 		let projectLib: ProjectLibrary;
 		if (argv.type) {
