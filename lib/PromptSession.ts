@@ -3,6 +3,7 @@ import * as path from "path";
 import { default as add } from "./commands/add";
 import { default as build } from "./commands/build";
 import { default as start } from "./commands/start";
+import { ProjectConfig } from "./ProjectConfig";
 import { TemplateManager } from "./TemplateManager";
 import { Util } from "./Util";
 
@@ -14,11 +15,16 @@ export class PromptSession {
 	 * Start questions session for project creation
 	 */
 	public async start() {
+		const config =  ProjectConfig.getConfig();
 		let projLibrary: ProjectLibrary;
 		let theme: string;
 
 		add.templateManager = this.templateManager;
 
+		if (config != null && !config.project.isShowcase) {
+			projLibrary = this.templateManager.getProjectLibrary(config.project.framework, config.project.projectType);
+			await this.chooseActionLoop(projLibrary, config.project.theme);
+		} else {
 		//TODO update to check if project exists and load correct framework
 		const questions: inquirer.Question[] = [{
 			type: "input",
@@ -76,7 +82,7 @@ export class PromptSession {
 		await this.chooseActionLoop(projLibrary, theme);
 		//TODO: restore cwd?
 	}
-
+}
 	/**
 	 * Starts a loop of 'Choose an action' questions
 	 * @param framework The framework to use
