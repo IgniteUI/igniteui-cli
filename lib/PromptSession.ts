@@ -1,7 +1,6 @@
 import * as inquirer from "inquirer";
 import * as path from "path";
 import { default as add } from "./commands/add";
-import { default as build } from "./commands/build";
 import { default as start } from "./commands/start";
 import { ProjectConfig } from "./ProjectConfig";
 import { TemplateManager } from "./TemplateManager";
@@ -188,8 +187,7 @@ export class PromptSession {
 			case "Complete":
 			default:
 				if (true) { // TODO: Make conditional?
-					await build.execute({});
-					start.execute({});
+					await start.execute({});
 				}
 		}
 	}

@@ -1,8 +1,9 @@
-import { exec } from "shelljs";
-import { ProjectConfig } from "./../ProjectConfig";
-
 import * as liteServ from "lite-server";
+import { exec } from "shelljs";
+
 import { Util } from "../Util";
+import { ProjectConfig } from "./../ProjectConfig";
+import { default as build } from "./build";
 
 // tslint:disable:object-literal-sort-keys
 const command = {
@@ -10,18 +11,21 @@ const command = {
 	desc: "start the project",
 	builder: {},
 	async execute(argv) {
+		//build
+		await build.execute();
+
 		const config = ProjectConfig.getConfig();
 		const framework = config.project.framework;
+
+		Util.log(`Starting project.`, "green");
+
 		switch (framework.toLowerCase()) {
 			case "jquery":
-				Util.log("loading lite server: " + process.cwd());
 				liteServ.server();
 				break;
 			case "react":
-				Util.log("react project building");
 				Util.log(process.cwd());
 				exec("npm start");
-				liteServ.server();
 				break;
 			case "angular":
 				exec("npm start");
