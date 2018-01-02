@@ -17,7 +17,6 @@ command = {
 	builder: {
 		name: {
 			alias: "n",
-			default: "app",
 			describe: "Project name",
 			type: "string"
 		},
@@ -42,12 +41,12 @@ command = {
 	template: null,
 	async execute(argv) {
 		if (ProjectConfig.getConfig() !== null) {
-			return Util.log("There is already an existing project.", "red");
+			return Util.error("There is already an existing project.", "red");
 		}
-		if (!argv.type) {
-			const templateManager = new TemplateManager();
-			const prompts = new PromptSession(templateManager);
+		if (!argv.name && !argv.type && !argv.theme) {
+			const prompts = new PromptSession(command.template);
 			await prompts.start();
+			return;
 		}
 		if (command.template.getFrameworkById(argv.framework) === undefined) {
 			return Util.error("Framework not supported", "red");

@@ -49,8 +49,9 @@ command = {
 		) as ProjectLibrary;
 
 		if (!argv.template && !argv.name) {
-			const prompts = new PromptSession(this.command.template);
+			const prompts = new PromptSession(command.templateManager);
 			await prompts.chooseActionLoop(frameworkLibrary, config.project.theme);
+			return;
 		}
 
 		if (argv.template && argv.name && (!frameworkLibrary.hasTemplate(argv.template))) {
