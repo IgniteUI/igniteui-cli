@@ -9,7 +9,7 @@ const command = {
 	command: "build",
 	desc: "build the project",
 	builder: {},
-	async execute(argv) {
+	async execute(argv?) {
 		Util.log("Build started.");
 		PackageManager.ensureIgniteUISource(true);
 
