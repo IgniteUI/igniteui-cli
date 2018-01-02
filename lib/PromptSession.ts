@@ -22,7 +22,6 @@ export class PromptSession {
 
 		// tslint:disable:object-literal-sort-keys
 		if (config != null && !config.project.isShowcase) {
-			//throw new Error("Add command is supported only on existing project created with igntie-ui-cli");
 			projLibrary = this.templateManager.getProjectLibrary(config.project.framework, config.project.projectType);
 			await this.chooseActionLoop(projLibrary, config.project.theme);
 		} else {
@@ -84,7 +83,6 @@ export class PromptSession {
 			//TODO: restore cwd?
 		}
 	}
-
 	/**
 	 * Starts a loop of 'Choose an action' questions
 	 * @param framework The framework to use

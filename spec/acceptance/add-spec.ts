@@ -3,6 +3,7 @@ import * as fs from "fs-extra";
 import { parse } from "path";
 import cli = require("../../lib/cli");
 import { ProjectConfig } from "../../lib/ProjectConfig";
+import { PromptSession } from "./../../lib/PromptSession";
 
 describe("Add command", () => {
 	let testFolder = parse(__filename).name;
@@ -25,21 +26,15 @@ describe("Add command", () => {
 		fs.rmdirSync(`./output/${testFolder}`);
 	});
 
-	it("Should show help with missing arg", async done => {
-
-		const child = spawnSync("node", ["../../bin/execute.js", "add", "grid" ], {
-			encoding: "utf-8"
-		});
-		//await cli.run(["add", "grid"]);
-		expect(child.stderr.toString("utf-8")).toMatch(/add\s+<template>\s+<name>/);
-		expect(child.stdout.length).toEqual(0);
-
-		done();
-	});
-
 	it("Should not work without a project", async done => {
 		await cli.run(["add", "grid", "name"]);
 
+		expect(console.error).toHaveBeenCalledWith(
+			jasmine.stringMatching(/Add command is supported only on existing project created with igniteui-cli\s*/)
+		);
+		expect(console.log).toHaveBeenCalledTimes(0);
+
+		await cli.run(["add"]);
 		expect(console.error).toHaveBeenCalledWith(
 			jasmine.stringMatching(/Add command is supported only on existing project created with igniteui-cli\s*/)
 		);

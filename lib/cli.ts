@@ -43,7 +43,12 @@ export async function run(args = null) {
 			Util.log("quickstart Created");
 			break;
 		case "add":
-			await add.execute(argv);
+			if (add.check(argv)) {
+				await add.execute(argv);
+			} else {
+				yargsModule.showHelp();
+				return;
+			}
 			break;
 		case "build":
 			await build.execute(argv);

@@ -1,9 +1,20 @@
 import { default as newCmd } from "../../lib/commands/new";
+import { ProjectConfig } from "../../lib/ProjectConfig";
+import { PromptSession } from "../../lib/PromptSession";
 import { Util } from "../../lib/Util";
 describe("Unit - New command", () => {
 
 	beforeEach(() => {
 		spyOn(Util, "log");
+	});
+
+	it("New command in existing project", async done => {
+		spyOn(Util, "error");
+		spyOn(ProjectConfig, "getConfig").and.returnValue({});
+
+		await newCmd.execute({});
+		expect(Util.error).toHaveBeenCalledWith("There is already an existing project.", "red");
+		done();
 	});
 
 	it("Logs error for wrong framework", async done => {
@@ -14,7 +25,7 @@ describe("Unit - New command", () => {
 		await newCmd.execute({ name: "Test", framework: "jq"});
 
 		expect(newCmd.template.getFrameworkById).toHaveBeenCalledWith("jq");
-		expect(Util.error).toHaveBeenCalledWith("Framework not supported");
+		expect(Util.error).toHaveBeenCalledWith("Framework not supported", "red");
 		//no further attempts to get project:
 		expect(newCmd.template.getProjectLibrary).toHaveBeenCalledTimes(0);
 		expect(Util.log).toHaveBeenCalledTimes(0);
@@ -60,6 +71,24 @@ describe("Unit - New command", () => {
 		//no further attempts to get project:
 		expect(Util.log).toHaveBeenCalledTimes(0);
 		expect(mockProjLib.getProject).toHaveBeenCalledTimes(0);
+		done();
+	});
+
+	it("Should start prompt session with missing arg", async done => {
+		spyOn(ProjectConfig, "getConfig").and.returnValue(null);
+
+		const mockProjLib = {};
+		newCmd.template = jasmine.createSpyObj("TemplateManager", {
+			getFrameworkById: {},
+			getProjectLibrary: mockProjLib
+		});
+
+		const promptSession =  PromptSession.prototype;
+		spyOn(promptSession, "start");
+		//spied getFrameworkById won't return anything, i.e. not found
+
+		await newCmd.execute({});
+		expect(promptSession.start).toHaveBeenCalled();
 		done();
 	});
 

@@ -2,6 +2,7 @@ import { ProjectConfig } from "../ProjectConfig";
 import { TemplateManager } from "../TemplateManager";
 import { Util } from "../Util";
 import { PackageManager } from "./../packages/PackageManager";
+import { PromptSession } from "./../PromptSession";
 
 let command: {
 	[name: string]: any,
@@ -11,20 +12,28 @@ let command: {
 };
 // tslint:disable:object-literal-sort-keys
 command = {
-	command: "add <template> <name>",
+	command: "add [template] [name]",
 	desc: "Add component by it ID and providing a name.",
 	templateManager: null,
 	builder: {
 		template: {
 			alias: "t",
 			description: `Template ID, such as "grid", "combo", etc.`,
-			type: "string"
+			type: "string",
+			global: true
 		},
 		name: {
 			alias: "n",
 			description: "File name.",
-			type: "string"
+			type: "string",
+			global: true
 		}
+	},
+	check: argv => {
+		if ((!argv.name && argv.template) || (argv.name  && !argv.template)) {
+			return false;
+		}
+		return true;
 	},
 	async execute(argv) {
 		//command.template;
@@ -46,6 +55,12 @@ command = {
 			config.project.framework,
 			config.project.projectType
 		) as ProjectLibrary;
+
+		if (!argv.template && !argv.name) {
+			const prompts = new PromptSession(command.templateManager);
+			await prompts.chooseActionLoop(frameworkLibrary, config.project.theme);
+			return;
+		}
 
 		if (!frameworkLibrary.hasTemplate(argv.template)) {
 			Util.error("Template doesn't exist in the current library", "red");
