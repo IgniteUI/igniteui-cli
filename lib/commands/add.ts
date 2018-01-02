@@ -19,13 +19,21 @@ command = {
 		template: {
 			alias: "t",
 			description: `Template ID, such as "grid", "combo", etc.`,
-			type: "string"
+			type: "string",
+			global: true
 		},
 		name: {
 			alias: "n",
 			description: "File name.",
-			type: "string"
+			type: "string",
+			global: true
 		}
+	},
+	check: argv => {
+		if ((!argv.name && argv.template) || (argv.name  && !argv.template)) {
+			return false;
+		}
+		return true;
 	},
 	async execute(argv) {
 		//command.template;
@@ -54,7 +62,7 @@ command = {
 			return;
 		}
 
-		if (argv.template && argv.name && (!frameworkLibrary.hasTemplate(argv.template))) {
+		if (!frameworkLibrary.hasTemplate(argv.template)) {
 			Util.error("Template doesn't exist in the current library", "red");
 			return;
 		}
