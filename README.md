@@ -1,10 +1,10 @@
+
 ## Ignite UI CLI
 
 <!-- Badges section here. -->
-[![npm](https://img.shields.io/npm/v/igniteui-cli.svg?maxAge=3600)](https://www.npmjs.com/package/igniteui-cli)
 [![Build Status](https://travis-ci.org/IgniteUI/igniteui-cli.svg?branch=master)](https://travis-ci.org/IgniteUI/igniteui-cli)
 [![Coverage Status](https://coveralls.io/repos/github/IgniteUI/igniteui-cli/badge.svg)](https://coveralls.io/github/IgniteUI/igniteui-cli)
-
+[![npm version](https://badge.fury.io/js/igniteui-cli.svg)](https://badge.fury.io/js/igniteui-cli)
 
 
 Quickly create projects including [Ignite UI](https://www.igniteui.com) controls for a variety of frameworks.
