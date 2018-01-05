@@ -1,31 +1,28 @@
 import * as path from "path";
-import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 import { AngularTemplate } from "../../../../../lib/templates/AngularTemplate";
 import { Util } from "../../../../../lib/Util";
+import { TreeGridFeatureHelper } from "../../../../jquery/js/tree-grid/treegridfeaturehelper";
 
-class GridEditingTemplate extends AngularTemplate {
-	private gridHelper: GridHelper;
+class TreeGridExportTemplate extends AngularTemplate {
 	private extraConfigurations: ControlExtraConfiguration[];
 	private userExtraConfiguration: {} = {};
 
 	constructor() {
 		super(__dirname);
-		this.id = "grid-editing";
-		this.name = "Grid Editing";
+		this.id = "tree-grid-export";
+		this.name = "Export TreeGrid";
 		this.controlGroup = "Data Grids";
-		this.description = "This is a grid editing template for Angular";
-		this.dependencies = ["igGrid"];
+		this.description = "Tree Grid export template for Angular";
+		this.dependencies = ["igTreeGrid"];
 		this.projectType = "ig-ts";
-		this.extraConfigurations = [];
-		this.hasExtraConfiguration = true;
 		this.listInComponentTemplates = true;
-
-		this.gridHelper = new GridHelper();
+		this.hasExtraConfiguration = true;
+		this.extraConfigurations = [];
 		const featureConfiguration: ControlExtraConfiguration = {
-			choices: ["Sorting", "Filtering"],
+			choices: ["Summaries", "Hiding"],
 			default: "",
 			key: "features",
-			message: "Select features for the igGrid",
+			message: "Select features for the igTreeGrid",
 			type: Enumerations.ControlExtraConfigType.MultiChoice
 		};
 		this.extraConfigurations.push(featureConfiguration);
@@ -41,9 +38,9 @@ class GridEditingTemplate extends AngularTemplate {
 			"__name__": this.fileName(name),
 			"__path__": this.folderName(name)
 		};
-		const features = this.gridHelper.generateFeatures(["Updating"].concat(this.userExtraConfiguration["features"]), 3);
+		const features = TreeGridFeatureHelper.generateFeatures(this.userExtraConfiguration["features"]);
 
-		config["$(gridFeatures)"] = features;
+		config["$(treeGridFeatures)"] = features;
 		config["$(componentName)"] = name;
 		const pathsConfig = {};
 		return Util.processTemplates(path.join(__dirname, "files"), projectPath, config, pathsConfig);
@@ -53,4 +50,4 @@ class GridEditingTemplate extends AngularTemplate {
 	}
 }
 
-module.exports = new GridEditingTemplate();
+module.exports = new TreeGridExportTemplate();

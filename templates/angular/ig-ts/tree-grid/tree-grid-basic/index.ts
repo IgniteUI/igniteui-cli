@@ -1,4 +1,3 @@
-import * as fs from "fs-extra";
 import * as path from "path";
 import { AngularTemplate } from "../../../../../lib/templates/AngularTemplate";
 import { Util } from "../../../../../lib/Util";
