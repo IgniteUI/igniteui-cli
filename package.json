@@ -73,7 +73,8 @@
     "shelljs": "^0.7.8",
     "through2": "^2.0.3",
     "yargs": "^8.0.2",
-    "typescript": "^2.5.3"
+	"typescript": "^2.5.3",
+	"console-png": "1.2.1"
   },
   "devDependencies": {
     "@types/fs-extra": "^3.0.3",

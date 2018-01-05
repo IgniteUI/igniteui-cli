@@ -3,6 +3,8 @@ import * as fs from "fs";
 import * as fsExtra from "fs-extra";
 import * as path from "path";
 import through2 = require("through2");
+import png = require('console-png');
+import { config } from "shelljs";
 const imageExtensions = [".png", ".jpg", "jpeg", "gif", "bmp"];
 const applyConfig = (configuration: { [key: string]: string }) => {
 	return through2((data, enc, cb) => {
@@ -164,6 +166,44 @@ class Util {
 		// tslint:enable:no-console
 	}
 
+	public static version ()
+	{
+		var configuration = require('../package.json');
+		var image = fs.readFileSync(__dirname + '/ignite-white.png');
+		png(image, function (err, str) {
+			if (err) {
+				console.log("Ignite UI CLI");
+			}
+			else 
+			{
+				console.log(str);
+			}
+		});
+		console.log("Ignite UI CLI version: " + configuration.version);
+		console.log("OS: " + this.getOSFriendlyName(process.platform));
+	}
+
+	public static getOSFriendlyName(platform: string) :string
+	{
+		var os = "";
+		switch (platform) {
+			case "win32":
+				os = "Windows";
+				break;
+			case "darwin":
+				os = "Mac OS";
+				break;
+
+			case "freebsd":
+				os = "FreeBSD";
+			break;
+		
+			default:
+				os = "Unknown OS"
+				break;
+		}
+		return os;
+	}
 	/**
 	 * lower-dashed string
 	 */
