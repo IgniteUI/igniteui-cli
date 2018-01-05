@@ -1,7 +1,6 @@
 import * as inquirer from "inquirer";
 import * as path from "path";
 import { default as add } from "./commands/add";
-import { default as build } from "./commands/build";
 import { default as start } from "./commands/start";
 import { ProjectConfig } from "./ProjectConfig";
 import { TemplateManager } from "./TemplateManager";
@@ -23,7 +22,6 @@ export class PromptSession {
 
 		// tslint:disable:object-literal-sort-keys
 		if (config != null && !config.project.isShowcase) {
-			//throw new Error("Add command is supported only on existing project created with igntie-ui-cli");
 			projLibrary = this.templateManager.getProjectLibrary(config.project.framework, config.project.projectType);
 			await this.chooseActionLoop(projLibrary, config.project.theme);
 		} else {
@@ -85,7 +83,6 @@ export class PromptSession {
 			//TODO: restore cwd?
 		}
 	}
-
 	/**
 	 * Starts a loop of 'Choose an action' questions
 	 * @param framework The framework to use
@@ -188,8 +185,7 @@ export class PromptSession {
 			case "Complete":
 			default:
 				if (true) { // TODO: Make conditional?
-					await build.execute({});
-					start.execute({});
+					await start.execute({});
 				}
 		}
 	}

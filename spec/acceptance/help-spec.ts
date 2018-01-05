@@ -8,10 +8,10 @@ describe("Help command", () => {
 		const originalHelpText: string = `Commands:
 			quickstart             A quick start for your project
 			start                  start the project
-			new <name>             Creating a new project
+			new [name]             Creating a new project
 			build                  build the project
 			test                   test the project
-			add <template> <name>  Add component by it ID and providing a name.
+			add [template] [name]  Add component by it ID and providing a name.
 		  Options:
 			--help  Show help      [boolean]`;
 
@@ -28,7 +28,7 @@ describe("Help command", () => {
 		});
 		const originalNewHelpText: string = `Options:
 		--help           Show help                                           [boolean]
-		--name, -n       Project name                        [string] [default: "app"]
+		--name, -n       Project name                                         [string]
 		--framework, -f  Framework to setup project for
 				  [string] [choices: "angular", "jquery", "react"] [default: "jquery"]
 		--type, -t       Project type (depends on framework)                  [string]
