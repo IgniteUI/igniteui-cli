@@ -10,16 +10,16 @@ class TreeGridExportTemplate extends AngularTemplate {
 	constructor() {
 		super(__dirname);
 		this.id = "tree-grid-export";
-		this.name = "Export TreeGrid";
+		this.name = "Tree Grid Exporting";
 		this.controlGroup = "Data Grids";
 		this.description = "Tree Grid export template for Angular";
-		this.dependencies = ["igTreeGrid"];
+		this.dependencies = ["igTreeGrid", "igExcel", "igGridExcelExporter"];
 		this.projectType = "ig-ts";
 		this.listInComponentTemplates = true;
 		this.hasExtraConfiguration = true;
 		this.extraConfigurations = [];
 		const featureConfiguration: ControlExtraConfiguration = {
-			choices: ["Summaries", "Hiding"],
+			choices: ["Filtering", "Hiding"],
 			default: "",
 			key: "features",
 			message: "Select features for the igTreeGrid",
