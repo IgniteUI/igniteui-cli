@@ -76,7 +76,7 @@ export class $(ClassName)Component {
 		this.exportFlatDS = () => {
 			$.ig.GridExcelExporter.exportGrid($("#treegrid1"), {
 				fileName: "igTreeGrid1",
-				worksheetName: "Sheet1",
+				worksheetName: "Page1",
 				gridStyling: "none"
 			});
 		}
@@ -84,7 +84,7 @@ export class $(ClassName)Component {
 		this.exportHierarchicalDS = () => {
 			$.ig.GridExcelExporter.exportGrid($("#treegrid2"), {
 				fileName: "igTreeGrid2",
-				worksheetName: "Sheet1",
+				worksheetName: "Page1",
 				gridStyling: "none"
 			});
 		}
