@@ -13,7 +13,8 @@ export = {
 		"igPieChart",
 		"igDoughnutChart",
 		"igFunnelChart",
-		"GridExcelExporter"
+		"igGridExcelExporter",
+		"igExcel"
 	],
 	oss: [
 		"igEditors",

@@ -1,4 +1,3 @@
-import * as fs from "fs-extra";
 import * as path from "path";
 import { Util } from "../../../../../lib/Util";
 import { ProjectConfig } from "./../../../../../lib/ProjectConfig";
