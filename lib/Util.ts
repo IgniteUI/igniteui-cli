@@ -169,15 +169,9 @@ class Util {
 	public static version ()
 	{
 		var configuration = require('../package.json');
-		var image = fs.readFileSync(__dirname + '/ignite-white.png');
-		png(image, function (err, str) {
-			if (err) {
-				console.log("Ignite UI CLI");
-			}
-			else 
-			{
-				console.log(str);
-			}
+		var logo = fs.readFileSync(__dirname + '/igniteui-cli.txt');
+		logo.toString().split('\n').forEach(function (line) { 
+			console.log(line);
 		});
 		console.log("Ignite UI CLI version: " + configuration.version);
 		console.log("OS: " + this.getOSFriendlyName(process.platform));
@@ -193,11 +187,9 @@ class Util {
 			case "darwin":
 				os = "Mac OS";
 				break;
-
 			case "freebsd":
 				os = "FreeBSD";
-			break;
-		
+				break;
 			default:
 				os = "Unknown OS"
 				break;
@@ -208,7 +200,7 @@ class Util {
 	 * lower-dashed string
 	 */
 	public static lowerDashed(text: string) {
-	return text.replace(/\s+/g, "-").toLowerCase();
+		return text.replace(/\s+/g, "-").toLowerCase();
 	}
 }
 
