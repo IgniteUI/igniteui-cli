@@ -80,6 +80,16 @@ export abstract class AngularTemplate implements Template {
 			files.push("infragistics.dv.js");
 			ProjectConfig.setConfig(config);
 		}
+
+		if (this.dependencies.indexOf("igExcel") !== -1) {
+			files.push("infragistics.excel-bundled.js");
+			ProjectConfig.setConfig(config);
+		}
+
+		if (this.dependencies.indexOf("igGridExcelExporter") !== -1) {
+			files.push("modules/infragistics.gridexcelexporter.js");
+			ProjectConfig.setConfig(config);
+		}
 	}
 
 	protected className(name: string): string {

@@ -1,31 +1,28 @@
 import * as path from "path";
-import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 import { AngularTemplate } from "../../../../../lib/templates/AngularTemplate";
 import { Util } from "../../../../../lib/Util";
+import { TreeGridFeatureHelper } from "../../../../jquery/js/tree-grid/treegridfeaturehelper";
 
-class HierarchicalGridTemplate extends AngularTemplate {
-	private gridHelper: GridHelper;
+class TreeGridExportTemplate extends AngularTemplate {
 	private extraConfigurations: ControlExtraConfiguration[];
 	private userExtraConfiguration: {} = {};
 
 	constructor() {
 		super(__dirname);
-		this.id = "hierarchical-grid";
-		this.name = "Hierarchical Grid";
+		this.id = "tree-grid-export";
+		this.name = "Tree Grid Exporting";
 		this.controlGroup = "Data Grids";
-		this.description = "Hierarchical Grid default template for Angular";
-		this.dependencies = ["igHierarchicalGrid"];
+		this.description = "Tree Grid export template for Angular";
+		this.dependencies = ["igTreeGrid", "igExcel", "igGridExcelExporter"];
 		this.projectType = "ig-ts";
-		this.extraConfigurations = [];
-		this.hasExtraConfiguration = true;
 		this.listInComponentTemplates = true;
-
-		this.gridHelper = new GridHelper();
+		this.hasExtraConfiguration = true;
+		this.extraConfigurations = [];
 		const featureConfiguration: ControlExtraConfiguration = {
-			choices: ["Sorting", "Paging", "Filtering"],
+			choices: ["Filtering", "Hiding"],
 			default: "",
 			key: "features",
-			message: "Select features for the igHierarchicalGrid",
+			message: "Select features for the igTreeGrid",
 			type: Enumerations.ControlExtraConfigType.MultiChoice
 		};
 		this.extraConfigurations.push(featureConfiguration);
@@ -41,9 +38,9 @@ class HierarchicalGridTemplate extends AngularTemplate {
 			"__name__": this.fileName(name),
 			"__path__": this.folderName(name)
 		};
-		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 3);
+		const features = TreeGridFeatureHelper.generateFeatures(this.userExtraConfiguration["features"]);
 
-		config["$(gridFeatures)"] = features;
+		config["$(treeGridFeatures)"] = features;
 		config["$(componentName)"] = name;
 		const pathsConfig = {};
 		return Util.processTemplates(path.join(__dirname, "files"), projectPath, config, pathsConfig);
@@ -53,4 +50,4 @@ class HierarchicalGridTemplate extends AngularTemplate {
 	}
 }
 
-module.exports = new HierarchicalGridTemplate();
+module.exports = new TreeGridExportTemplate();

@@ -22,7 +22,7 @@ class TreeGridExportTemplate extends ReactTemplate {
 
 		this.hasExtraConfiguration = true;
 		this.extraConfigurations.push({
-			choices: ["Summaries", "Hiding"],
+			choices: ["Filtering", "Hiding"],
 			default: "",
 			key: "features",
 			message: "Select features for the igTreeGrid",
