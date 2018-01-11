@@ -30,8 +30,21 @@ export async function run(args = null) {
 	.command(build)
 	.command(test)
 	.command(add)
-	.help()
+	.options({
+		v: {
+			alias: "version",
+			description: "Show current Ignite UI CLI version",
+			global: true,
+			type: "boolean"
+		}
+	})
+	.help().alias("help", "h")
 	.argv;
+
+	if (argv.version) {
+		Util.version();
+		return;
+	}
 
 	const command = argv._[0];
 	switch (command) {
