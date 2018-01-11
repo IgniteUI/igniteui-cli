@@ -163,21 +163,20 @@ class Util {
 		}
 		// tslint:enable:no-console
 	}
-
-	public static version ()
-	{
-		var configuration = require('../package.json');
-		var logo = fs.readFileSync(__dirname + '/../ignite-ui-cli.txt');
-		logo.toString().split('\n').forEach(function (line) { 
+	public static version() {
+		const configuration = require("../package.json");
+		const logo = fs.readFileSync(__dirname + "/../ignite-ui-cli.txt");
+		logo.toString().split("\n").forEach(line => {
+			// tslint:disable:no-console
 			console.log(line);
 		});
 		console.log("Ignite UI CLI version: " + configuration.version);
 		console.log("OS: " + this.getOSFriendlyName(process.platform));
+		// tslint:enable:no-console
 	}
 
-	public static getOSFriendlyName(platform: string) :string
-	{
-		var os = "";
+	public static getOSFriendlyName(platform: string): string {
+		let os = "";
 		switch (platform) {
 			case "win32":
 				os = "Windows";
@@ -189,7 +188,7 @@ class Util {
 				os = "FreeBSD";
 				break;
 			default:
-				os = "Unknown OS"
+				os = "Unknown OS";
 				break;
 		}
 		return os;

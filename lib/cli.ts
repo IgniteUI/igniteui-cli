@@ -32,10 +32,10 @@ export async function run(args = null) {
 	.command(add)
 	.options({
 		v: {
-		 alias: "version",
-		 type: "boolean",
-		 global: true,
-		 description: "Show current Ignite UI CLI version"
+			alias: "version",
+			description: "Show current Ignite UI CLI version",
+			global: true,
+			type: "boolean"
 		}
 	})
 	.help().alias("help", "h")
