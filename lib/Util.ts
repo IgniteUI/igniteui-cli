@@ -3,8 +3,6 @@ import * as fs from "fs";
 import * as fsExtra from "fs-extra";
 import * as path from "path";
 import through2 = require("through2");
-import png = require('console-png');
-import { config } from "shelljs";
 const imageExtensions = [".png", ".jpg", "jpeg", "gif", "bmp"];
 const applyConfig = (configuration: { [key: string]: string }) => {
 	return through2((data, enc, cb) => {
