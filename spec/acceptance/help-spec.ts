@@ -12,7 +12,7 @@ describe("Help command", () => {
 		build                  build the project
 		test                   test the project
 		add [template] [name]  Add component by it ID and providing a name.
-	  
+
 	  Options:
 		-v, --version  Show current Ignite UI CLI version                    [boolean]
 		--help, -h     Show help                                             [boolean]`;
