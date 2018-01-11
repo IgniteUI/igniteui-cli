@@ -30,6 +30,7 @@
     "lint": "tslint --project tsconfig.json"
   },
   "files": [
+    "ignite-ui-cli.txt",
     "bin/*",
     "lib/**/*.d.ts",
     "lib/**/*.js",
