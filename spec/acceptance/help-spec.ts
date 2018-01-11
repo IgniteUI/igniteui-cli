@@ -6,14 +6,16 @@ describe("Help command", () => {
 			encoding: "utf-8"
 		});
 		const originalHelpText: string = `Commands:
-			quickstart             A quick start for your project
-			start                  start the project
-			new [name]             Creating a new project
-			build                  build the project
-			test                   test the project
-			add [template] [name]  Add component by it ID and providing a name.
-		  Options:
-			--help  Show help      [boolean]`;
+		quickstart             A quick start for your project
+		start                  start the project
+		new [name]             Creating a new project
+		build                  build the project
+		test                   test the project
+		add [template] [name]  Add component by it ID and providing a name.
+	  
+	  Options:
+		-v, --version  Show current Ignite UI CLI version                    [boolean]
+		--help, -h     Show help                                             [boolean]`;
 
 		const replacedHelpText: string = originalHelpText.replace(/\s/g, "");
 		const actualText: string = (child.stdout.toString("utf-8")).replace(/\s/g, "");
@@ -27,7 +29,8 @@ describe("Help command", () => {
 			encoding: "utf-8"
 		});
 		const originalNewHelpText: string = `Options:
-		--help           Show help                                           [boolean]
+		-v, --version    Show current Ignite UI CLI version                  [boolean]
+		--help, -h       Show help                                           [boolean]
 		--name, -n       Project name                                         [string]
 		--framework, -f  Framework to setup project for
 				  [string] [choices: "angular", "jquery", "react"] [default: "jquery"]
