@@ -169,7 +169,7 @@ class Util {
 	public static version ()
 	{
 		var configuration = require('../package.json');
-		var logo = fs.readFileSync(__dirname + '/igniteui-cli.txt');
+		var logo = fs.readFileSync(__dirname + '/../ignite-ui-cli.txt');
 		logo.toString().split('\n').forEach(function (line) { 
 			console.log(line);
 		});

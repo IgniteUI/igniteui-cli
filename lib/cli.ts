@@ -7,7 +7,6 @@ import { default as newCommand } from "./commands/new";
 import { default as quickstart } from "./commands/quickstart";
 import { default as start } from "./commands/start";
 import { default as test } from "./commands/test";
-import { default as version } from "./commands/version";
 import { PromptSession } from "./PromptSession";
 import {TemplateManager} from "./TemplateManager";
 import { Util } from "./Util";
@@ -31,9 +30,21 @@ export async function run(args = null) {
 	.command(build)
 	.command(test)
 	.command(add)
-	.command(version)
-	.help()
+	.options({
+		v: {
+		 alias: "version",
+		 type: "boolean",
+		 global: true,
+		 description: "Show current Ignite UI CLI version"
+		}
+	})
+	.help().alias("help", "h")
 	.argv;
+
+	if (argv.version) {
+		Util.version();
+		return;
+	}
 
 	const command = argv._[0];
 	switch (command) {
@@ -60,9 +71,6 @@ export async function run(args = null) {
 			break;
 		case "start":
 			await start.execute(argv);
-			break;
-		case "v":
-			await version.execute(argv);
 			break;
 		default:
 			Util.log("No command recognized, starting guide.");
