@@ -2,6 +2,7 @@ import chalk from "chalk";
 import * as fs from "fs";
 import * as fsExtra from "fs-extra";
 import * as path from "path";
+import * as glob from "glob";
 import through2 = require("through2");
 const imageExtensions = [".png", ".jpg", "jpeg", "gif", "bmp"];
 const applyConfig = (configuration: { [key: string]: string }) => {
@@ -117,6 +118,29 @@ class Util {
 				resolve(false);
 			});
 		}
+	}
+	public static validateTemplate(sourcePath: string,
+		destinationPath: string, configuration: { [key: string]: string },
+		pathsConfiguration: { [key: string]: string }): boolean {
+			sourcePath = sourcePath.replace(/\\/g, '/');
+			destinationPath = destinationPath.replace(/\\/g, '/');
+			const paths = glob.sync(sourcePath + "/**/*", { nodir: true });
+
+			for (let i = 0; i < paths.length; i++) {
+				let filePath = paths[i];
+				filePath = filePath.replace(sourcePath, destinationPath);
+				if (configuration.hasOwnProperty("__path__")) {
+					filePath = filePath.replace("__path__", configuration["__path__"]);
+				}
+				if (configuration.hasOwnProperty("__name__")) {
+					filePath = filePath.replace("__name__", configuration["__name__"]);
+				}
+				if (fs.existsSync(filePath)) {
+					this.log(path.relative(process.cwd(), filePath) + " already exists");
+					return false;
+				}
+			}
+			return true;
 	}
 	public static applyConfigTransformation = (data: string, configuration: { [key: string]: string }): string => {
 		let key;

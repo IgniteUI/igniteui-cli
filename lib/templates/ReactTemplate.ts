@@ -44,6 +44,9 @@ export abstract class ReactTemplate implements Template {
 		}
 
 		// copy/template files to project
+		if(!Util.validateTemplate(path.join(this.rootPath, "files"), projectPath, config, pathsConfig)) {
+			return Promise.resolve(false);
+		}
 		return Util.processTemplates(path.join(this.rootPath, "files"), projectPath, config, pathsConfig);
 	}
 

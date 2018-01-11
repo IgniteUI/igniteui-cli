@@ -54,6 +54,9 @@ export abstract class jQueryTemplate implements Template {
 		};
 
 		// generate scripts/imports based on framework - per template
+		if(!Util.validateTemplate(path.join(this.rootPath, "files"), outputPath, config, pathsConfig)) {
+			return Promise.resolve(false);
+		}
 		return Util.processTemplates(path.join(this.rootPath, "files"), outputPath, config, pathsConfig);
 	}
 
