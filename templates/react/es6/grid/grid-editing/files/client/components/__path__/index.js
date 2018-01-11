@@ -31,6 +31,7 @@ export default class  $(ClassName) extends Component {
 					id="grid-editing"
 					primaryKey="ProductID"
 					width="700px"
+					autoCommit={true}
 					dataSource={this.state.products}
 					features={$(gridfeatures)}
 				/>

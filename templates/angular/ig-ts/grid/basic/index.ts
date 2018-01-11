@@ -3,18 +3,18 @@ import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 import { AngularTemplate } from "../../../../../lib/templates/AngularTemplate";
 import { Util } from "../../../../../lib/Util";
 
-class HierarchicalGridTemplate extends AngularTemplate {
+class GridTemplate extends AngularTemplate {
 	private gridHelper: GridHelper;
 	private extraConfigurations: ControlExtraConfiguration[];
 	private userExtraConfiguration: {} = {};
 
 	constructor() {
 		super(__dirname);
-		this.id = "hierarchical-grid";
-		this.name = "Hierarchical Grid";
+		this.id = "grid";
+		this.name = "Grid";
 		this.controlGroup = "Data Grids";
-		this.description = "Hierarchical Grid default template for Angular";
-		this.dependencies = ["igHierarchicalGrid"];
+		this.description = "Grid default template";
+		this.dependencies = ["igGrid"];
 		this.projectType = "ig-ts";
 		this.extraConfigurations = [];
 		this.hasExtraConfiguration = true;
@@ -25,7 +25,7 @@ class HierarchicalGridTemplate extends AngularTemplate {
 			choices: ["Sorting", "Paging", "Filtering"],
 			default: "",
 			key: "features",
-			message: "Select features for the igHierarchicalGrid",
+			message: "Select features for the igGrid",
 			type: Enumerations.ControlExtraConfigType.MultiChoice
 		};
 		this.extraConfigurations.push(featureConfiguration);
@@ -53,4 +53,4 @@ class HierarchicalGridTemplate extends AngularTemplate {
 	}
 }
 
-module.exports = new HierarchicalGridTemplate();
+module.exports = new GridTemplate();

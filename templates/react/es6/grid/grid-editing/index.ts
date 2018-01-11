@@ -15,7 +15,7 @@ class GridEditingTemplate extends ReactTemplate {
 		super(__dirname);
 		this.id = "grid-editing";
 		this.name = "Grid Editing";
-		this.description = "The is a grid editing template for React";
+		this.description = "This is a grid editing template for React";
 		this.projectType = "es6";
 		this.components = ["Grid"];
 		this.controlGroup = "Data Grids";
