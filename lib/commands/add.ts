@@ -8,7 +8,7 @@ let command: {
 	[name: string]: any,
 	templateManager: TemplateManager,
 	execute: (argv: any) => Promise<void>,
-	addTemplate: (name: string, template: Template) => Promise<void>
+	addTemplate: (name: string, template: Template) => Promise<boolean>
 };
 // tslint:disable:object-literal-sort-keys
 command = {
@@ -74,14 +74,16 @@ command = {
 			PackageManager.ensureIgniteUISource(config.packagesInstalled);
 		}
 	},
-	async addTemplate(name: string, template: Template) {
+	async addTemplate(name: string, template: Template): Promise<boolean> {
 		if (await template.generateFiles(process.cwd(), name)) {
 			//successful
 			template.registerInProject(process.cwd(), name);
 			command.templateManager.updateProjectConfiguration(template);
 			Util.log(`View '${name}' added.`);
+			return true;
 		} else {
 			/* Log error? */
+			return false;
 		}
 	}
 };

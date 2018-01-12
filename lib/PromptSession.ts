@@ -144,20 +144,23 @@ export class PromptSession {
 					});
 				}
 				if (selectedTemplate) {
-					templateName = await inquirer.prompt({
-						type: "input",
-						name: "name",
-						message: "Name your component",
-						default: selectedTemplate.name
-					});
-					//TODO Validation of the template name (should not exist and should be kebab case)
-					if (selectedTemplate.hasExtraConfiguration) {
-						const extraPrompt: any[] = this.createQuestions(selectedTemplate.getExtraConfiguration());
-						const extraConfigAnswers = await inquirer.prompt(extraPrompt);
-						const extraConfig = this.parseAnswers(extraConfigAnswers);
-						selectedTemplate.setExtraConfiguration(extraConfig);
+					let success = false;
+					while (!success) {
+						templateName = await inquirer.prompt({
+							type: "input",
+							name: "name",
+							message: "Name your component",
+							default: selectedTemplate.name
+						});
+						//TODO Validation of the template name (should not exist and should be kebab case)
+						if (selectedTemplate.hasExtraConfiguration) {
+							const extraPrompt: any[] = this.createQuestions(selectedTemplate.getExtraConfiguration());
+							const extraConfigAnswers = await inquirer.prompt(extraPrompt);
+							const extraConfig = this.parseAnswers(extraConfigAnswers);
+							selectedTemplate.setExtraConfiguration(extraConfig);
+						}
+						success = await add.addTemplate(templateName["name"], selectedTemplate);
 					}
-					await add.addTemplate(templateName["name"], selectedTemplate);
 				}
 				await this.chooseActionLoop(framework, theme);
 				break;
@@ -171,14 +174,17 @@ export class PromptSession {
 					choices: this.addSeparators(customTemplates)
 				});
 				selectedTemplate = framework.getTemplateByName(customTemplate["customTemplate"]);
-				templateName = await inquirer.prompt({
-					type: "input",
-					name: "name",
-					message: "Name your view",
-					default: selectedTemplate.name
-				});
-				// TODO: Combine name with output path, folder existing check
-				await add.addTemplate(templateName["name"], selectedTemplate);
+				let success = false;
+				while (!success) {
+					templateName = await inquirer.prompt({
+						type: "input",
+						name: "name",
+						message: "Name your view",
+						default: selectedTemplate.name
+					});
+					// TODO: Combine name with output path, folder existing check
+					success = await add.addTemplate(templateName["name"], selectedTemplate);
+				}
 
 				await this.chooseActionLoop(framework, theme);
 				break;
