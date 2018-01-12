@@ -101,6 +101,34 @@ describe("Add command", () => {
 		done();
 	});
 
+	it("Should not duplicate add jq Grid template", async done => {
+		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
+			project: { framework: "jquery", projectType: "js", components: [] }
+		}));
+		fs.writeFileSync("ignite-cli-views.js", "[];");
+		await cli.run(["add", "grid", "Test view"]);
+
+		expect(console.error).toHaveBeenCalledTimes(0);
+		expect(console.log).toHaveBeenCalledWith(jasmine.stringMatching(/View 'Test view' added\s*/));
+
+		expect(fs.existsSync("./test-view")).toBeTruthy();
+		expect(fs.existsSync("./test-view/index.html")).toBeTruthy();
+
+		fs.writeFileSync("./test-view/index.html", "test");
+		await cli.run(["add", "grid", "Test view"]);
+
+		expect(console.error).toHaveBeenCalledWith(
+			jasmine.stringMatching(/test-view[\\\/]index.html already exists!*/)
+		);
+		expect(fs.readFileSync("./test-view/index.html").toString()).toEqual("test", "Shouldn't overwrite file contents");
+
+		fs.unlinkSync("./test-view/index.html");
+		fs.rmdirSync("./test-view");
+		fs.unlinkSync("ignite-cli-views.js");
+		fs.unlinkSync(ProjectConfig.configFile);
+		done();
+	});
+
 	it("Should correctly add Angular template", async done => {
 		// TODO: Mock out template manager and project register
 		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({

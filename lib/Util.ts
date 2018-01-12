@@ -141,7 +141,7 @@ class Util {
 				filePath = filePath.replace("__name__", configuration["__name__"]);
 			}
 			if (fs.existsSync(filePath)) {
-				this.log(path.relative(process.cwd(), filePath) + " already exists");
+				this.error(path.relative(process.cwd(), filePath) + " already exists!", "red");
 				return false;
 			}
 		}
