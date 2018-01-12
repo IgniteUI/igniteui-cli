@@ -152,7 +152,7 @@ export class PromptSession {
 							message: "Name your component",
 							default: selectedTemplate.name
 						});
-						//TODO Validation of the template name (should not exist and should be kebab case)
+
 						if (selectedTemplate.hasExtraConfiguration) {
 							const extraPrompt: any[] = this.createQuestions(selectedTemplate.getExtraConfiguration());
 							const extraConfigAnswers = await inquirer.prompt(extraPrompt);
@@ -174,16 +174,18 @@ export class PromptSession {
 					choices: this.addSeparators(customTemplates)
 				});
 				selectedTemplate = framework.getTemplateByName(customTemplate["customTemplate"]);
-				let success = false;
-				while (!success) {
-					templateName = await inquirer.prompt({
-						type: "input",
-						name: "name",
-						message: "Name your view",
-						default: selectedTemplate.name
-					});
-					// TODO: Combine name with output path, folder existing check
-					success = await add.addTemplate(templateName["name"], selectedTemplate);
+				if (selectedTemplate) {
+					let success = false;
+					while (!success) {
+						templateName = await inquirer.prompt({
+							type: "input",
+							name: "name",
+							message: "Name your view",
+							default: selectedTemplate.name
+						});
+
+						success = await add.addTemplate(templateName["name"], selectedTemplate);
+					}
 				}
 
 				await this.chooseActionLoop(framework, theme);

@@ -15,7 +15,7 @@ describe("React templates", () => {
 
 	it("Templates should have no internal collisions", async done => {
 		const reactFramework: Framework = require("../../templates/react");
-		const projLibrary = reactFramework.projectLibraries.find(x => x.projectType == "es6");
+		const projLibrary = reactFramework.projectLibraries.find(x => x.projectType === "es6");
 		for (let i = 0; i < projLibrary.templates.length; i++) {
 			const element = projLibrary.templates[i];
 			for (let j = i + 1; j < projLibrary.templates.length; j++) {

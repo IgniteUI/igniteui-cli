@@ -1,8 +1,8 @@
 import chalk from "chalk";
 import * as fs from "fs";
 import * as fsExtra from "fs-extra";
-import * as path from "path";
 import * as glob from "glob";
+import * as path from "path";
 import through2 = require("through2");
 const imageExtensions = [".png", ".jpg", "jpeg", "gif", "bmp"];
 const applyConfig = (configuration: { [key: string]: string }) => {
