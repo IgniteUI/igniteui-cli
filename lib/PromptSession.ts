@@ -16,6 +16,7 @@ export class PromptSession {
 	public async start() {
 		const config =  ProjectConfig.getConfig();
 		let projLibrary: ProjectLibrary;
+		let projectName: string;
 		let theme: string;
 
 		add.templateManager = this.templateManager;
@@ -25,23 +26,28 @@ export class PromptSession {
 			projLibrary = this.templateManager.getProjectLibrary(config.project.framework, config.project.projectType);
 			await this.chooseActionLoop(projLibrary, config.project.theme);
 		} else {
-			//TODO update to check if project exists and load correct framework
-			const questions: inquirer.Question[] = [{
-				type: "input",
-				name: "projectName",
-				message: "Enter a name for your project: ",
-				default: "app"
-			},
-			//TODO split questions and in case of existing app folder or not kebab case throw exception.
-			{
+			while (!projectName) {
+				const nameRes = await inquirer.prompt({
+					type: "input",
+					name: "projectName",
+					message: "Enter a name for your project: ",
+					default: "app"
+				});
+				if (Util.directoryExists(nameRes["projectName"])) {
+					Util.error(`Folder "${nameRes["projectName"]}" already exists!`, "red");
+				} else {
+					projectName = nameRes["projectName"];
+				}
+			}
+
+			const frameRes = await inquirer.prompt({
 				type: "list",
 				name: "framework",
 				message: "Select framework",
 				choices: this.addSeparators(this.templateManager.getFrameworkNames()),
 				default: "jQuery"
-			}];
-			const answers = await inquirer.prompt(questions);
-			const framework = this.templateManager.getFrameworkByName(answers["framework"]);
+			});
+			const framework = this.templateManager.getFrameworkByName(frameRes["framework"]);
 			//app name validation???
 			if (framework.projectLibraries.length > 1) {
 				//proj type support
@@ -74,9 +80,9 @@ export class PromptSession {
 			const projTemplate = projLibrary.getProject();
 
 			Util.log("Generating project structure.");
-			await projTemplate.generateFiles(process.cwd(), answers["projectName"], theme);
+			await projTemplate.generateFiles(process.cwd(), projectName, theme);
 			// move cwd to project folder
-			process.chdir(answers["projectName"]);
+			process.chdir(projectName);
 			Util.log("Project structure generated.");
 
 			await this.chooseActionLoop(projLibrary, theme);

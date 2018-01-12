@@ -48,6 +48,10 @@ command = {
 			await prompts.start();
 			return;
 		}
+		if (Util.directoryExists(argv.name)) {
+			Util.error(`Folder "${argv.name}" already exists!`, "red");
+			return;
+		}
 		if (command.template.getFrameworkById(argv.framework) === undefined) {
 			return Util.error("Framework not supported", "red");
 		}
