@@ -119,28 +119,33 @@ class Util {
 			});
 		}
 	}
-	public static validateTemplate(sourcePath: string,
+	public static validateTemplate(
+		sourcePath: string,
 		destinationPath: string, configuration: { [key: string]: string },
 		pathsConfiguration: { [key: string]: string }): boolean {
-			sourcePath = sourcePath.replace(/\\/g, '/');
-			destinationPath = destinationPath.replace(/\\/g, '/');
-			const paths = glob.sync(sourcePath + "/**/*", { nodir: true });
 
-			for (let i = 0; i < paths.length; i++) {
-				let filePath = paths[i];
-				filePath = filePath.replace(sourcePath, destinationPath);
-				if (configuration.hasOwnProperty("__path__")) {
-					filePath = filePath.replace("__path__", configuration["__path__"]);
-				}
-				if (configuration.hasOwnProperty("__name__")) {
-					filePath = filePath.replace("__name__", configuration["__name__"]);
-				}
-				if (fs.existsSync(filePath)) {
-					this.log(path.relative(process.cwd(), filePath) + " already exists");
-					return false;
-				}
+		sourcePath = sourcePath.replace(/\\/g, "/");
+		destinationPath = destinationPath.replace(/\\/g, "/");
+
+		let paths: string[] = glob.sync(sourcePath + "/**/*", { nodir: true });
+		// TODO: D.P Temporary ignoring asset files
+		const ignorePaths: string[] = glob.sync(sourcePath + "/**/+(assets|data)/*", { nodir: true });
+		paths = paths.filter(x => ignorePaths.indexOf(x) === -1);
+
+		for (let filePath of paths) {
+			filePath = filePath.replace(sourcePath, destinationPath);
+			if (configuration.hasOwnProperty("__path__")) {
+				filePath = filePath.replace("__path__", configuration["__path__"]);
 			}
-			return true;
+			if (configuration.hasOwnProperty("__name__")) {
+				filePath = filePath.replace("__name__", configuration["__name__"]);
+			}
+			if (fs.existsSync(filePath)) {
+				this.log(path.relative(process.cwd(), filePath) + " already exists");
+				return false;
+			}
+		}
+		return true;
 	}
 	public static applyConfigTransformation = (data: string, configuration: { [key: string]: string }): string => {
 		let key;
