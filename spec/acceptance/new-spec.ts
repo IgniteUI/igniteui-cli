@@ -30,7 +30,7 @@ describe("New command", () => {
 	it("Should not work on existing folders", async done => {
 		fs.mkdirSync("testProj");
 		await cli.run(["new", "testProj"]);
-		expect(console.error).toHaveBeenCalledWith(`Folder "testProj" already exists!`);
+		expect(console.error).toHaveBeenCalledWith(jasmine.stringMatching(/Folder "testProj" already exists!/));
 		fs.rmdirSync("testProj");
 
 		await cli.run(["new", "testProj2"]);
@@ -39,7 +39,7 @@ describe("New command", () => {
 
 		fs.writeFileSync("./testProj2/ignite-cli-views.js", "text");
 		await cli.run(["new", "testProj2"]);
-		expect(console.error).toHaveBeenCalledWith(`Folder "testProj2" already exists!`);
+		expect(console.error).toHaveBeenCalledWith(jasmine.stringMatching(/Folder "testProj2" already exists!/));
 		expect(fs.readFileSync("./testProj2/ignite-cli-views.js").toString())
 			.toEqual("text", "Shouldn't overwrite existing project files!");
 
