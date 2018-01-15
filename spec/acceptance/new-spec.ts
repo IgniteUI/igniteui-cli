@@ -11,6 +11,8 @@ describe("New command", () => {
 
 	afterEach(() => {
 		// clean test folder:
+		deleteAll(this.testFolder);
+		fs.rmdirSync(this.testFolder);
 		process.chdir("../");
 	});
 
@@ -21,10 +23,11 @@ describe("New command", () => {
 
 		//TODO: read entire structure from ./templates and verify everything is copied over
 		expect(fs.existsSync("./reactProj")).toBeTruthy();
+		this.testFolder = "./reactProj";
 		done();
 	});
 
-	fit("Should not work on existing folders", async done => {
+	it("Should not work on existing folders", async done => {
 		fs.mkdirSync("testProj");
 		await cli.run(["new", "testProj"]);
 		expect(console.error).toHaveBeenCalledWith(`Folder "testProj" already exists!`);
@@ -40,7 +43,7 @@ describe("New command", () => {
 		expect(fs.readFileSync("./testProj2/ignite-cli-views.js").toString())
 			.toEqual("text", "Shouldn't overwrite existing project files!");
 
-		deleteAll("./testProj2");
+		this.testFolder = "./testProj2";
 		done();
 	});
 });

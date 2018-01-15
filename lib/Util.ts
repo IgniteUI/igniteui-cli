@@ -83,7 +83,7 @@ class Util {
 						//TODO use grep module to select files which need to be processed via pipe and copy others directly.
 						const currentFileExtension = path.extname(path.join(sourcePath, element));
 						if (imageExtensions.indexOf(currentFileExtension) !== -1) {
-							fsExtra.copy(path.join(sourcePath, element), path.join(destinationPath, element));
+							fsExtra.copySync(path.join(sourcePath, element), path.join(destinationPath, element));
 							if (--itemsLeft === 0) {
 								resolve(true);
 							}
