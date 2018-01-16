@@ -31,8 +31,8 @@ export async function run(args = null) {
 	.command(test)
 	.command(add)
 	.options({
-		v: {
-			alias: "version",
+		version: {
+			alias: "v",
 			description: "Show current Ignite UI CLI version",
 			global: true,
 			type: "boolean"

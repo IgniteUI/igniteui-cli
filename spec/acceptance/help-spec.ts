@@ -12,9 +12,8 @@ describe("Help command", () => {
 		build                  build the project
 		test                   test the project
 		add [template] [name]  Add component by it ID and providing a name.
-
 	  Options:
-		-v, --version  Show current Ignite UI CLI version                    [boolean]
+		--version, -v  Show current Ignite UI CLI version                    [boolean]
 		--help, -h     Show help                                             [boolean]`;
 
 		const replacedHelpText: string = originalHelpText.replace(/\s/g, "");
@@ -29,7 +28,7 @@ describe("Help command", () => {
 			encoding: "utf-8"
 		});
 		const originalNewHelpText: string = `Options:
-		-v, --version    Show current Ignite UI CLI version                  [boolean]
+		--version, -v    Show current Ignite UI CLI version                  [boolean]
 		--help, -h       Show help                                           [boolean]
 		--name, -n       Project name                                         [string]
 		--framework, -f  Framework to setup project for
