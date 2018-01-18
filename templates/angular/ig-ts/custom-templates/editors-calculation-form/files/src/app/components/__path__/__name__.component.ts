@@ -19,7 +19,7 @@ import { Component, ViewChild } from "@angular/core";
 				<table>
 					<tr>
 						<td>
-							<ig-text-editor class="divHeight" [(options)]="firstNameOptions" [disabled]="!editorsEnabled" [(ngModel)]="firstNameOptions.value" 
+							<ig-text-editor class="divHeight" [options]="firstNameOptions" [disabled]="!editorsEnabled" [(ngModel)]="firstNameOptions.value" 
 							[ngModelOptions]="{standalone: true}" widgetId="firstName"></ig-text-editor>
 						</td>
 						<td>
@@ -28,7 +28,7 @@ import { Component, ViewChild } from "@angular/core";
 					</tr>
 					<tr>
 						<td>
-							<ig-text-editor class="divHeight" [(options)]="lastNameOptions" [disabled]="!editorsEnabled" [(ngModel)]="lastNameOptions.value" 
+							<ig-text-editor class="divHeight" [options]="lastNameOptions" [disabled]="!editorsEnabled" [(ngModel)]="lastNameOptions.value" 
 							[ngModelOptions]="{standalone: true}" widgetId="lastName" ></ig-text-editor>
 						</td>
 						<td>
@@ -37,7 +37,7 @@ import { Component, ViewChild } from "@angular/core";
 					</tr>
 					<tr>
 						<td>
-							<ig-numeric-editor class="divHeight" [(options)]="creditAmountOptions" [disabled]="!editorsEnabled" [(ngModel)]="creditAmountOptions.value" 
+							<ig-numeric-editor class="divHeight" [options]="creditAmountOptions" [disabled]="!editorsEnabled" [(ngModel)]="creditAmountOptions.value" 
 							[ngModelOptions]="{standalone: true}" widgetId="creditAmount"></ig-numeric-editor>
 						</td>
 						<td>
@@ -46,7 +46,7 @@ import { Component, ViewChild } from "@angular/core";
 					</tr>
 					<tr>
 						<td>
-							<ig-text-editor class="divHeight" [(options)]="currencyOptions" [disabled]="!editorsEnabled" [(ngModel)]="currencyOptions.value" 
+							<ig-text-editor class="divHeight" [options]="currencyOptions" [disabled]="!editorsEnabled" [(ngModel)]="currencyOptions.value" 
 							[ngModelOptions]="{standalone: true}" widgetId="currency"></ig-text-editor>
 						</td>
 						<td>
@@ -55,7 +55,7 @@ import { Component, ViewChild } from "@angular/core";
 					</tr>
 					<tr>
 						<td>
-							<ig-percent-editor class="divHeight" [(options)]="interestRateOptions" [disabled]="!editorsEnabled" [(ngModel)]="interestRateOptions.value" 
+							<ig-percent-editor class="divHeight" [options]="interestRateOptions" [disabled]="!editorsEnabled" [(ngModel)]="interestRateOptions.value" 
 							[ngModelOptions]="{standalone: true}" widgetId="interestRate"></ig-percent-editor>
 						</td>
 						<td>
@@ -64,7 +64,7 @@ import { Component, ViewChild } from "@angular/core";
 					</tr>
 					 <tr>
 						<td>
-							<ig-date-picker class="divHeight" [(options)]="startDateOfCreditOptions" [disabled]="!editorsEnabled" [(ngModel)]="startDateOfCreditOptions.value" 
+							<ig-date-picker class="divHeight" [options]="startDateOfCreditOptions" [disabled]="!editorsEnabled" [(ngModel)]="startDateOfCreditOptions.value" 
 							[ngModelOptions]="{standalone: true}" widgetId="startDateOfCredit"></ig-date-picker>
 						</td>
 						<td>
@@ -73,7 +73,7 @@ import { Component, ViewChild } from "@angular/core";
 					</tr> 
 					<tr>
 						<td>
-							<ig-numeric-editor class="divHeight" [(options)]="termOptions" [disabled]="!editorsEnabled" [(ngModel)]="termOptions.value" 
+							<ig-numeric-editor class="divHeight" [options]="termOptions" [disabled]="!editorsEnabled" [(ngModel)]="termOptions.value" 
 							[ngModelOptions]="{standalone: true}" widgetId="term"></ig-numeric-editor>
 						</td>
 						<td>
@@ -89,7 +89,7 @@ import { Component, ViewChild } from "@angular/core";
 					</tr>
 					<tr>
 						<td>
-							<ig-mask-editor class="divHeight" [(options)]="pinOptions" [disabled]="!editorsEnabled" [(ngModel)]="pinOptions.value" 
+							<ig-mask-editor class="divHeight" [options]="pinOptions" [disabled]="!editorsEnabled" [(ngModel)]="pinOptions.value" 
 							[ngModelOptions]="{standalone: true}" widgetId="pin" [hidden]="!show"></ig-mask-editor>
 						</td>
 					</tr>
@@ -115,7 +115,7 @@ import { Component, ViewChild } from "@angular/core";
 					</td>
 					<td>
 						<div class="divHeight">
-							<ig-currency-editor [(options)]="resultOptions" [currencySymbol]="resultOptions.currencySymbol" [(ngModel)]="resultOptions.value" 
+							<ig-currency-editor [options]="resultOptions" [currencySymbol]="resultOptions.currencySymbol" [(ngModel)]="resultOptions.value" 
 							[ngModelOptions]="{standalone: true}" widgetId="resultCredit" ></ig-currency-editor>
 						</div>
 					</td>
@@ -126,7 +126,7 @@ import { Component, ViewChild } from "@angular/core";
 					</td>
 					<td>
 						<div class="divHeight">
-							<ig-currency-editor [(options)]="returnValueOptions" [currencySymbol]="returnValueOptions.currencySymbol" [(ngModel)]="returnValueOptions.value" 
+							<ig-currency-editor [options]="returnValueOptions" [currencySymbol]="returnValueOptions.currencySymbol" [(ngModel)]="returnValueOptions.value" 
 							[ngModelOptions]="{standalone: true}" widgetId="returnValue"></ig-currency-editor>
 						</div>
 					</td>
@@ -137,7 +137,7 @@ import { Component, ViewChild } from "@angular/core";
 					</td>
 					<td>
 						<div class="divHeight">
-							<ig-currency-editor [(options)]="monthlyPaymentOptions" [currencySymbol]="monthlyPaymentOptions.currencySymbol" [(ngModel)]="monthlyPaymentOptions.value" 
+							<ig-currency-editor [options]="monthlyPaymentOptions" [currencySymbol]="monthlyPaymentOptions.currencySymbol" [(ngModel)]="monthlyPaymentOptions.value" 
 							[ngModelOptions]="{standalone: true}" widgetId="monthlyPaymentValue"></ig-currency-editor>
 						</div>
 					</td>
