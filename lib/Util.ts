@@ -163,12 +163,41 @@ class Util {
 		}
 		// tslint:enable:no-console
 	}
+	public static version() {
+		const configuration = require("../package.json");
+		const logo = fs.readFileSync(__dirname + "/../ignite-ui-cli.txt");
+		logo.toString().split("\n").forEach(line => {
+			// tslint:disable:no-console
+			console.log(line);
+		});
+		console.log("Ignite UI CLI version: " + configuration.version);
+		console.log("OS: " + this.getOSFriendlyName(process.platform));
+		// tslint:enable:no-console
+	}
 
+	public static getOSFriendlyName(platform: string): string {
+		let os = "";
+		switch (platform) {
+			case "win32":
+				os = "Windows";
+				break;
+			case "darwin":
+				os = "Mac OS";
+				break;
+			case "freebsd":
+				os = "FreeBSD";
+				break;
+			default:
+				os = "Unknown OS";
+				break;
+		}
+		return os;
+	}
 	/**
 	 * lower-dashed string
 	 */
 	public static lowerDashed(text: string) {
-	return text.replace(/\s+/g, "-").toLowerCase();
+		return text.replace(/\s+/g, "-").toLowerCase();
 	}
 }
 
