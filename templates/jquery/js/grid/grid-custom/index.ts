@@ -4,7 +4,7 @@ import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 import { jQueryTemplate } from "../../../../../lib/templates/jQueryTemplate";
 import { Util } from "../../../../../lib/Util";
 
-class GridEditingTemplate extends jQueryTemplate {
+class GridCustomTemplate extends jQueryTemplate {
 	public extraConfigurations: ControlExtraConfiguration[];
 	public userExtraConfiguration: {} = {};
 
@@ -57,4 +57,4 @@ class GridEditingTemplate extends jQueryTemplate {
 	}
 }
 
-module.exports = new GridEditingTemplate();
+module.exports = new GridCustomTemplate();
