@@ -101,11 +101,11 @@ export abstract class AngularTemplate implements Template {
 
 	protected folderName(name: string): string {
 		//TODO: should remove the spaces
-		return name.split(" ").join("-").toLowerCase();
+		return Util.lowerDashed(name);
 	}
 
 	protected fileName(name: string): string {
 		//TODO: should remove the spaces
-		return name.split(" ").join("-").toLowerCase();
+		return Util.lowerDashed(name);
 	}
 }

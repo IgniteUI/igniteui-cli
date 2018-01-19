@@ -79,7 +79,7 @@ export abstract class ReactTemplate implements Template {
 
 	protected folderName(name: string): string {
 		//TODO: should remove the spaces
-		return name.split(" ").join("-").toLowerCase();
+		return Util.lowerDashed(name);
 	}
 	protected getViewLink(name: string): string {
 		const filePath = this.folderName(name) + "/index.js";

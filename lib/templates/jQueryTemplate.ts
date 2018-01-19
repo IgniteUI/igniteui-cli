@@ -129,7 +129,7 @@ export abstract class jQueryTemplate implements Template {
 
 	//getViewPath
 	protected folderName(name: string): string {
-		return name.toLowerCase().replace(/ /g, "-");
+		return Util.lowerDashed(name);
 	}
 	protected getViewLink(name: string): string {
 		const linkPath = this.folderName(name) + "/index.html";
