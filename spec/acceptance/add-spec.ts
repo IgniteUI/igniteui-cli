@@ -3,6 +3,7 @@ import * as fs from "fs-extra";
 import { parse } from "path";
 import cli = require("../../lib/cli");
 import { ProjectConfig } from "../../lib/ProjectConfig";
+import { resetSpy } from "../helpers/utils";
 import { PromptSession } from "./../../lib/PromptSession";
 
 describe("Add command", () => {
@@ -34,6 +35,7 @@ describe("Add command", () => {
 		);
 		expect(console.log).toHaveBeenCalledTimes(0);
 
+		resetSpy(console.error);
 		await cli.run(["add"]);
 		expect(console.error).toHaveBeenCalledWith(
 			jasmine.stringMatching(/Add command is supported only on existing project created with igniteui-cli\s*/)
@@ -116,6 +118,24 @@ describe("Add command", () => {
 
 		fs.writeFileSync("./test-view/index.html", "test");
 		await cli.run(["add", "grid", "Test view"]);
+
+		expect(console.error).toHaveBeenCalledWith(
+			jasmine.stringMatching(/test-view[\\\/]index.html already exists!*/)
+		);
+		expect(fs.readFileSync("./test-view/index.html").toString()).toEqual("test", "Shouldn't overwrite file contents");
+
+		// dash
+		resetSpy(console.error);
+		await cli.run(["add", "grid", "test-View"]);
+
+		expect(console.error).toHaveBeenCalledWith(
+			jasmine.stringMatching(/test-view[\\\/]index.html already exists!*/)
+		);
+		expect(fs.readFileSync("./test-view/index.html").toString()).toEqual("test", "Shouldn't overwrite file contents");
+
+		// trim
+		resetSpy(console.error);
+		await cli.run(["add", "grid", "    Test-view  \t "]);
 
 		expect(console.error).toHaveBeenCalledWith(
 			jasmine.stringMatching(/test-view[\\\/]index.html already exists!*/)

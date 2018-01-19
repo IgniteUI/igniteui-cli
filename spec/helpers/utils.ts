@@ -11,3 +11,11 @@ export function deleteAll(folderPath: string) {
 	const folders: string[] = glob.sync(folderPath + "/**/*");
 	folders.reverse().forEach(x => fs.rmdirSync(x));
 }
+
+/**
+ * Resets calls on a jasmine.Spy
+ * @param spy Spy method
+ */
+export function resetSpy(spy: any) {
+	(spy as jasmine.Spy).calls.reset();
+}
