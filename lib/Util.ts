@@ -228,6 +228,15 @@ class Util {
 	public static lowerDashed(text: string) {
 		return text.replace(/\s+/g, "-").toLowerCase();
 	}
+
+	/**
+	 * Checks if a giver string consists of alphanumeric characters, dashes and spaces only
+	 * and also starts with a letter.
+	 * @param name Text to check
+	 */
+	public static isAlphanumericExt(name: string) {
+		return /^[\sa-zA-Z][\w\s\-]+$/.test(name);
+	}
 }
 
 export { Util };

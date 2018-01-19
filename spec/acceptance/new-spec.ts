@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import cli = require("../../lib/cli");
-import { deleteAll } from "../helpers/utils";
+import { deleteAll, resetSpy } from "../helpers/utils";
 
 describe("New command", () => {
 	beforeEach(() => {
@@ -39,6 +39,12 @@ describe("New command", () => {
 
 		fs.writeFileSync("./testProj2/ignite-cli-views.js", "text");
 		await cli.run(["new", "testProj2"]);
+		expect(console.error).toHaveBeenCalledWith(jasmine.stringMatching(/Folder "testProj2" already exists!/));
+		expect(fs.readFileSync("./testProj2/ignite-cli-views.js").toString())
+			.toEqual("text", "Shouldn't overwrite existing project files!");
+
+		resetSpy(console.error);
+		await cli.run(["new", "   testProj2  \t  "]);
 		expect(console.error).toHaveBeenCalledWith(jasmine.stringMatching(/Folder "testProj2" already exists!/));
 		expect(fs.readFileSync("./testProj2/ignite-cli-views.js").toString())
 			.toEqual("text", "Shouldn't overwrite existing project files!");

@@ -27,16 +27,22 @@ export class PromptSession {
 			await this.chooseActionLoop(projLibrary, config.project.theme);
 		} else {
 			while (!projectName) {
-				const nameRes = await inquirer.prompt({
+				let nameRes = (await inquirer.prompt({
 					type: "input",
 					name: "projectName",
 					message: "Enter a name for your project: ",
 					default: "app"
-				});
-				if (Util.directoryExists(nameRes["projectName"])) {
-					Util.error(`Folder "${nameRes["projectName"]}" already exists!`, "red");
+				}))["projectName"];
+				nameRes = nameRes.trim();
+
+				if (!Util.isAlphanumericExt(nameRes)) {
+					Util.error(`Name '${nameRes}' is not valid. `
+						+ "Name should start with a letter and can also contain numbers, dashes and spaces.",
+						"red");
+				} else if (Util.directoryExists(nameRes)) {
+					Util.error(`Folder "${nameRes}" already exists!`, "red");
 				} else {
-					projectName = nameRes["projectName"];
+					projectName = nameRes;
 				}
 			}
 

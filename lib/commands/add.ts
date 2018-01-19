@@ -67,7 +67,6 @@ command = {
 			return;
 		}
 
-		Util.log(`Project Name: ${argv.name}, template ${argv.template}`);
 		const selectedTemplate = frameworkLibrary.getTemplateById(argv.template);
 		if (selectedTemplate) {
 			await command.addTemplate(argv.name, selectedTemplate);
@@ -75,6 +74,17 @@ command = {
 		}
 	},
 	async addTemplate(name: string, template: Template): Promise<boolean> {
+		// trim name to avoid creating awkward paths or mismatches:
+		name = name.trim();
+
+		// letter+alphanumeric check
+		if (!Util.isAlphanumericExt(name)) {
+			Util.error(`Name '${name}' is not valid. `
+				+ "Template names should start with a letter and can also contain numbers, dashes and spaces.",
+				"red");
+			return false;
+		}
+
 		if (await template.generateFiles(process.cwd(), name)) {
 			//successful
 			template.registerInProject(process.cwd(), name);

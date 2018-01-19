@@ -48,6 +48,18 @@ command = {
 			await prompts.start();
 			return;
 		}
+
+		// trim
+		argv.name = argv.name.trim();
+
+		// letter+alphanumeric check
+		if (!Util.isAlphanumericExt(argv.name)) {
+			Util.error(`Name '${argv.name}' is not valid. `
+				+ "Name should start with a letter and can also contain numbers, dashes and spaces.",
+				"red");
+			return;
+		}
+
 		if (Util.directoryExists(argv.name)) {
 			Util.error(`Folder "${argv.name}" already exists!`, "red");
 			return;
