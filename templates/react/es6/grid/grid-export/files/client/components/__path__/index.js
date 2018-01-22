@@ -84,7 +84,7 @@ export default class  $(ClassName) extends Component {
 				</div>
 				
 				<IgCombo  
-					width="150px"
+					width="200px"
 					mode="dropdown"
 					dataSource={this.state.keys}
 					multiSelection={{
