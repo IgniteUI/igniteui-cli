@@ -47,6 +47,10 @@ class HierarchicalGridEditingTemplate extends AngularTemplate {
 		config["$(gridFeatures)"] = features;
 		config["$(componentName)"] = name;
 		const pathsConfig = {};
+		// TODO: Refactor to base
+		if (!Util.validateTemplate(path.join(__dirname, "files"), projectPath, config, pathsConfig)) {
+			return Promise.resolve(false);
+		}
 		return Util.processTemplates(path.join(__dirname, "files"), projectPath, config, pathsConfig);
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
