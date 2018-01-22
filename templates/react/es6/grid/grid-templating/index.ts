@@ -1,32 +1,33 @@
 import * as path from "path";
+//TODO:
+import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 import { ReactTemplate } from "../../../../../lib/templates/ReactTemplate";
 import { Util } from "../../../../../lib/Util";
 
-import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
-
-class HierarchicalGridEditingTemplate extends ReactTemplate {
+class GridTemplatingTemplate extends ReactTemplate {
 	public extraConfigurations: ControlExtraConfiguration[] = [];
 	public userExtraConfiguration: {} = {};
 	private gridHelper: GridHelper;
-
+	/**
+	 *
+	 */
 	constructor() {
 		super(__dirname);
-		this.id = "hierarchical-grid-editing";
-		this.name = "Editing Hierarchical Grid";
-		this.description = "Hierarchical Grid editing template for React";
+		this.id = "grid-templating";
+		this.name = "Grid Templating";
+		this.description = "The is a grid with templating for React";
 		this.projectType = "es6";
-		this.components = ["Hierarchical Grid"];
+		this.components = ["Grid"];
 		this.controlGroup = "Data Grids";
-		this.dependencies = ["igHierarchicalGrid"];
+		this.dependencies = ["igGrid"];
 
 		this.gridHelper = new GridHelper();
-		this.gridHelper.hierarchical = true;
 		this.hasExtraConfiguration = true;
 		this.extraConfigurations.push({
-			choices: ["Sorting", "Filtering"],
+			choices: ["Sorting", "Paging", "Filtering"],
 			default: "",
 			key: "features",
-			message: "Select features for the igHierarchicalGrid",
+			message: "Select features for the igGrid",
 			type: Enumerations.ControlExtraConfigType.MultiChoice
 		});
 	}
@@ -34,17 +35,16 @@ class HierarchicalGridEditingTemplate extends ReactTemplate {
 	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
 		const config = {};
 		const pathsConfig = {};
-
-		this.gridHelper.addFeature("Updating", { enableAddRow: true });
 		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 5);
 
 		config["__path__"] =  this.folderName(name); //folder name allowed spaces, any casing
 		config["$(ClassName)"] = this.className(name); //first letter capital, no spaces,
-		config["$(widget)"] = "igHierarchicalGrid";
-		config["$(Control)"] = this.className("igHierarchicalGrid");
+		config["$(widget)"] = "igGrid";
+		config["$(Control)"] = this.className("igGrid");
 		config["$(igniteImports)"] = this.getImports();
 		config["$(name)"] = name; // this name should not have restrictions
 		config["$(gridfeatures)"] = features;
+		config["$(Description)"] = "This is an igGrid with templating.";
 		// TODO: Refactor to base
 		if (!Util.validateTemplate(path.join(__dirname, "files"), projectPath, config, pathsConfig)) {
 			return Promise.resolve(false);
@@ -58,4 +58,4 @@ class HierarchicalGridEditingTemplate extends ReactTemplate {
 		this.userExtraConfiguration = extraConfigKeys;
 	}
 }
-module.exports = new HierarchicalGridEditingTemplate();
+module.exports = new GridTemplatingTemplate();
