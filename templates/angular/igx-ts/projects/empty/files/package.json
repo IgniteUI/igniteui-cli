@@ -32,7 +32,7 @@
     "web-animations-js": "^2.3.1"
   },
   "devDependencies": {
-    "@angular/cli": "1.5.3",
+    "@angular/cli": "1.6.5",
     "@angular/compiler-cli": "^5.0.0",
     "@angular/language-service": "^5.0.0",
     "@types/hammerjs": "^2.0.35",
