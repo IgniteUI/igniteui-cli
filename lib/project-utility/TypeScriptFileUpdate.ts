@@ -227,7 +227,7 @@ export class TypeScriptFileUpdate {
 			}
 			return node;
 		}
-		function visitNgModule(node: ts.Node): ts.Node {
+		const visitNgModule = (node: ts.Node): ts.Node => {
 			if (node.kind === ts.SyntaxKind.ObjectLiteralExpression) {
 				const obj = (node as ts.ObjectLiteralExpression);
 				const objProperties = ts.visitNodes(obj.properties, visitor);
@@ -238,7 +238,7 @@ export class TypeScriptFileUpdate {
 					node = ts.visitEachChild(node, visitNgModule, context);
 				} else {
 					// create declaration array, TODO: multiple?
-					const imports = ts.createArrayLiteral(identifiers.map(x => ts.createIdentifier(x)));
+					const imports = ts.createArrayLiteral(identifiers.map(x => createIgxIdentifier(x)));
 					const declaration = ts.createPropertyAssignment("imports", imports);
 					const properties = [
 						...objProperties,
@@ -251,12 +251,12 @@ export class TypeScriptFileUpdate {
 				(node.parent as ts.PropertyAssignment).name.getText() === "imports") {
 					const initializer = (node as ts.ArrayLiteralExpression);
 					const props = ts.visitNodes(initializer.elements, visitor);
-					const alreadyImported = props.map(x => (x as ts.Identifier).text);
+					const alreadyImported = props.map(x => this.getIdentifierName(x));
 					const elements = ts.createNodeArray([
 						...props,
 						...identifiers
 							.filter(x => alreadyImported.indexOf(x) === -1)
-							.map(x => ts.createIdentifier(x))
+							.map(x => createIgxIdentifier(x))
 					]);
 
 					return ts.updateArrayLiteral(initializer, elements);
@@ -264,6 +264,20 @@ export class TypeScriptFileUpdate {
 				node = ts.visitEachChild(node, visitNgModule, context);
 			}
 			return node;
+		};
+		function createIgxIdentifier(x: string) {
+			if (x === "IgxGridModule") {
+				return ts.createCall(
+					ts.createPropertyAccess(
+						ts.createIdentifier(x),
+						"forRoot"
+					),
+					/*typeArgs*/undefined,
+					/*argsArgs*/[]
+				);
+			} else {
+				return ts.createIdentifier(x);
+			}
 		}
 		function visitImport(node: ts.Node) {
 			if (node.kind === ts.SyntaxKind.NamedImports) {
@@ -358,6 +372,19 @@ export class TypeScriptFileUpdate {
 			(node.parent && node.parent.kind === ts.SyntaxKind.SourceFile);
 	}
 
+	/**
+	 * Returns node identifier name. Either direct `ts.Identifier` equivalent or simple `ts.CallExpression` supported.
+	 * Calls with single property access will return the first identifier name (eg. `returnText.propCall()`)
+	 * @param x Node to extract identifier text from.
+	 */
+	private static getIdentifierName(x: ts.Node): string {
+		if (x.kind === ts.SyntaxKind.CallExpression) {
+			const prop = ((x as ts.CallExpression).expression as ts.PropertyAccessExpression);
+			//pluck identifier from expression.name
+			x = prop.expression;
+		}
+		return (x as ts.Identifier).text;
+	}
 	//#endregion
 
 	//#region Utility functions
