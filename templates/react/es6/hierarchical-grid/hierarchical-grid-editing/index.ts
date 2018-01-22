@@ -23,7 +23,7 @@ class HierarchicalGridEditingTemplate extends ReactTemplate {
 		this.gridHelper.hierarchical = true;
 		this.hasExtraConfiguration = true;
 		this.extraConfigurations.push({
-			choices: ["Sorting", "Updating", "Filtering"],
+			choices: ["Sorting", "Filtering"],
 			default: "",
 			key: "features",
 			message: "Select features for the igHierarchicalGrid",
@@ -45,6 +45,10 @@ class HierarchicalGridEditingTemplate extends ReactTemplate {
 		config["$(igniteImports)"] = this.getImports();
 		config["$(name)"] = name; // this name should not have restrictions
 		config["$(gridfeatures)"] = features;
+		// TODO: Refactor to base
+		if (!Util.validateTemplate(path.join(__dirname, "files"), projectPath, config, pathsConfig)) {
+			return Promise.resolve(false);
+		}
 		return Util.processTemplates(path.join(__dirname, "files"), projectPath, config, pathsConfig);
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {

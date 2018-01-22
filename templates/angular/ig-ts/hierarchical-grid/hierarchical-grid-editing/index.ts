@@ -3,18 +3,18 @@ import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 import { AngularTemplate } from "../../../../../lib/templates/AngularTemplate";
 import { Util } from "../../../../../lib/Util";
 
-class GridTemplate extends AngularTemplate {
+class HierarchicalGridEditingTemplate extends AngularTemplate {
 	private gridHelper: GridHelper;
 	private extraConfigurations: ControlExtraConfiguration[];
 	private userExtraConfiguration: {} = {};
 
 	constructor() {
 		super(__dirname);
-		this.id = "grid";
-		this.name = "Grid";
+		this.id = "hierarchical-grid-editing";
+		this.name = "Editing Hierarchical Grid";
 		this.controlGroup = "Data Grids";
-		this.description = "Grid default template";
-		this.dependencies = ["igGrid"];
+		this.description = "Editing Hierarchical Grid template for Angular";
+		this.dependencies = ["igHierarchicalGrid"];
 		this.projectType = "ig-ts";
 		this.extraConfigurations = [];
 		this.hasExtraConfiguration = true;
@@ -22,10 +22,10 @@ class GridTemplate extends AngularTemplate {
 
 		this.gridHelper = new GridHelper();
 		const featureConfiguration: ControlExtraConfiguration = {
-			choices: ["Sorting", "Paging", "Filtering"],
+			choices: ["Sorting", "Filtering"],
 			default: "",
 			key: "features",
-			message: "Select features for the igGrid",
+			message: "Select features for the igHierarchicalGrid",
 			type: Enumerations.ControlExtraConfigType.MultiChoice
 		};
 		this.extraConfigurations.push(featureConfiguration);
@@ -41,6 +41,7 @@ class GridTemplate extends AngularTemplate {
 			"__name__": this.fileName(name),
 			"__path__": this.folderName(name)
 		};
+		this.gridHelper.addFeature("Updating", { enableAddRow: true});
 		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 3);
 
 		config["$(gridFeatures)"] = features;
@@ -57,4 +58,4 @@ class GridTemplate extends AngularTemplate {
 	}
 }
 
-module.exports = new GridTemplate();
+module.exports = new HierarchicalGridEditingTemplate();

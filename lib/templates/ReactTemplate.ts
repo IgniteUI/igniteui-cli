@@ -44,6 +44,9 @@ export abstract class ReactTemplate implements Template {
 		}
 
 		// copy/template files to project
+		if (!Util.validateTemplate(path.join(this.rootPath, "files"), projectPath, config, pathsConfig)) {
+			return Promise.resolve(false);
+		}
 		return Util.processTemplates(path.join(this.rootPath, "files"), projectPath, config, pathsConfig);
 	}
 
@@ -76,7 +79,7 @@ export abstract class ReactTemplate implements Template {
 
 	protected folderName(name: string): string {
 		//TODO: should remove the spaces
-		return name.split(" ").join("-").toLowerCase();
+		return Util.lowerDashed(name);
 	}
 	protected getViewLink(name: string): string {
 		const filePath = this.folderName(name) + "/index.js";
