@@ -54,6 +54,9 @@ export abstract class jQueryTemplate implements Template {
 		};
 
 		// generate scripts/imports based on framework - per template
+		if (!Util.validateTemplate(path.join(this.rootPath, "files"), outputPath, config, pathsConfig)) {
+			return Promise.resolve(false);
+		}
 		return Util.processTemplates(path.join(this.rootPath, "files"), outputPath, config, pathsConfig);
 	}
 
@@ -126,7 +129,7 @@ export abstract class jQueryTemplate implements Template {
 
 	//getViewPath
 	protected folderName(name: string): string {
-		return name.toLowerCase().replace(/ /g, "-");
+		return Util.lowerDashed(name);
 	}
 	protected getViewLink(name: string): string {
 		const linkPath = this.folderName(name) + "/index.html";
