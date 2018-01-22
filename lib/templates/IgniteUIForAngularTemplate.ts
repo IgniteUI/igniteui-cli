@@ -36,7 +36,7 @@ export class IgniteUIForAngularTemplate extends AngularTemplate {
 		TypeScriptFileUpdate.addIgxImport(
 			path.join(projectPath, "src/app/app.module.ts"),
 			this.dependencies,
-			"igniteui-js-blocks/main"
+			"igniteui-angular/main"
 		);
 
 		// make sure DV file is added to project if needed:

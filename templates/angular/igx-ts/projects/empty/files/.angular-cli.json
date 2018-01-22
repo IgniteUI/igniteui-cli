@@ -20,7 +20,7 @@
       "prefix": "app",
       "styles": [
         "styles.css",
-        "../node_modules/igniteui-js-blocks/zero-blocks.css"
+        "../node_modules/igniteui-angular/igniteui-angular.css"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",

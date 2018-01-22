@@ -14,8 +14,8 @@ import {
   IgxAvatar,
   IgxBadge,
   IgxGridSortEvent
-} from 'igniteui-js-blocks/main';
-import { IgxColumnComponent } from 'igniteui-js-blocks/grid/column.component';
+} from 'igniteui-angular/main';
+import { IgxColumnComponent } from 'igniteui-angular/grid/column.component';
 import { athletesData } from './data';
 
 @Component({
