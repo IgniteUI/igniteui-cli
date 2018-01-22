@@ -37,6 +37,9 @@ export abstract class AngularTemplate implements Template {
 			config["$(nameMerged)"] = this.name.replace(/ /g, ""); // this is needed for editors
 		}
 		const pathsConfig = {};
+		if (!Util.validateTemplate(path.join(this.rootPath, "files"), projectPath, config, pathsConfig)) {
+			return Promise.resolve(false);
+		}
 		return Util.processTemplates(path.join(this.rootPath, "files"), projectPath, config, pathsConfig);
 	}
 
@@ -98,11 +101,11 @@ export abstract class AngularTemplate implements Template {
 
 	protected folderName(name: string): string {
 		//TODO: should remove the spaces
-		return name.split(" ").join("-").toLowerCase();
+		return Util.lowerDashed(name);
 	}
 
 	protected fileName(name: string): string {
 		//TODO: should remove the spaces
-		return name.split(" ").join("-").toLowerCase();
+		return Util.lowerDashed(name);
 	}
 }

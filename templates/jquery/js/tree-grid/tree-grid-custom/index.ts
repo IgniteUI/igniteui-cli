@@ -49,6 +49,10 @@ class TreeGridCustomTemplate extends jQueryTemplate {
 		config["$(cssBlock)"] = this.getCssTags();
 		config["$(scriptBlock)"] = this.getScriptTags();
 		const pathsConfig = {};
+		// TODO: Refactor to base
+		if (!Util.validateTemplate(path.join(__dirname, "files"), destinationPath, config, pathsConfig)) {
+			return Promise.resolve(false);
+		}
 		return Util.processTemplates(path.join(__dirname, "files"), destinationPath, config, pathsConfig);
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
