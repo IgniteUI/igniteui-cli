@@ -17,7 +17,7 @@ class TreeGridBasicTemplate extends jQueryTemplate {
 		super(__dirname);
 		this.extraConfigurations = [];
 		this.name = "Basic TreeGrid";
-		this.id = "tree-grid-basic";
+		this.id = "tree-grid";
 		this.description = "Tree Grid default template";
 		this.dependencies = ["igTreeGrid"];
 		this.listInComponentTemplates = true;
@@ -46,7 +46,7 @@ class TreeGridBasicTemplate extends jQueryTemplate {
 			features = "";
 		}
 
-		config["$(Gridfeatures)"] = features;
+		config["$(treeGridFeatures)"] = features;
 		config["$(componentName)"] = name;
 		config["$(cssBlock)"] = this.getCssTags();
 		config["$(scriptBlock)"] = this.getScriptTags();
