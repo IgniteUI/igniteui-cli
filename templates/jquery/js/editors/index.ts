@@ -55,6 +55,10 @@ class EditorsJQueryTemplate extends jQueryTemplate {
 		};
 
 		// generate scripts/imports based on framework - per template
+		// TODO: Refactor to base
+		if (!Util.validateTemplate(path.join(__dirname, "files"), projectPath, config, pathsConfig)) {
+			return Promise.resolve(false);
+		}
 		return Util.processTemplates(path.join(__dirname, "files"), outputPath, config, pathsConfig);
 	}
 }

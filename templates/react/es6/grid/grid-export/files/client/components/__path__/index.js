@@ -42,7 +42,7 @@ export default class  $(ClassName) extends Component {
 				{ "EmployeeID": "56250fa55f17965b7b19e3cf",	"FirstName": "Gomez", "LastName": "Sandoval", "Country": "Italy", "Age": 24, "RegistererDate": "06/19/2014", "IsActive": true },
 				{ "EmployeeID": "56250fa5f630e559e163de06",	"FirstName": "Estes", "LastName": "Soto", "Country": "Canada", "Age": 24, "RegistererDate": "03/28/2015", "IsActive": false }
 			],
-			keys: ["EmployeeID", "FirstName", "LastName", "RegistererDate", "Country", "Age", "IsActive", "Company"],
+			keys:["EmployeeID", "LastName", "Country", "Age", "IsActive", "Company", "RegistererDate"],
 			columnsToSkip: []
 		};
 
@@ -84,7 +84,7 @@ export default class  $(ClassName) extends Component {
 				</div>
 				
 				<IgCombo  
-					width="150px"
+					width="200px"
 					mode="dropdown"
 					dataSource={this.state.keys}
 					multiSelection={{

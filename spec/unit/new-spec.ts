@@ -2,6 +2,8 @@ import { default as newCmd } from "../../lib/commands/new";
 import { ProjectConfig } from "../../lib/ProjectConfig";
 import { PromptSession } from "../../lib/PromptSession";
 import { Util } from "../../lib/Util";
+import { resetSpy } from "../helpers/utils";
+
 describe("Unit - New command", () => {
 
 	beforeEach(() => {
@@ -14,6 +16,31 @@ describe("Unit - New command", () => {
 
 		await newCmd.execute({});
 		expect(Util.error).toHaveBeenCalledWith("There is already an existing project.", "red");
+		done();
+	});
+
+	it("Should validate and trim name", async done => {
+		spyOn(Util, "error");
+		spyOn(ProjectConfig, "getConfig").and.returnValue(null);
+
+		const errorCombos = [
+			{ name: "1 is not valid", inError: "1 is not valid" },
+			{ name: "   1 is   not valid  \t   ", inError: "1 is   not valid" },
+			{ name: "../newProject", inError: "../newProject" },
+			{ name: "/newProject", inError: "/newProject" },
+			{ name: " .newProject", inError: ".newProject" },
+			{ name: "name!", inError: "name!" },
+			{ name: "bits~and*bobs()", inError: "bits~and*bobs()" }
+		];
+
+		for (const item of errorCombos) {
+			resetSpy(Util.error);
+			await newCmd.execute({name: item.name });
+			expect(Util.error).toHaveBeenCalledWith(`Name '${item.inError}' is not valid. `
+				+ "Name should start with a letter and can also contain numbers, dashes and spaces.",
+				"red");
+		}
+
 		done();
 	});
 

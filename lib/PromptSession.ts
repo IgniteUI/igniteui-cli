@@ -16,6 +16,7 @@ export class PromptSession {
 	public async start() {
 		const config =  ProjectConfig.getConfig();
 		let projLibrary: ProjectLibrary;
+		let projectName: string;
 		let theme: string;
 
 		add.templateManager = this.templateManager;
@@ -25,23 +26,34 @@ export class PromptSession {
 			projLibrary = this.templateManager.getProjectLibrary(config.project.framework, config.project.projectType);
 			await this.chooseActionLoop(projLibrary, config.project.theme);
 		} else {
-			//TODO update to check if project exists and load correct framework
-			const questions: inquirer.Question[] = [{
-				type: "input",
-				name: "projectName",
-				message: "Enter a name for your project: ",
-				default: "app"
-			},
-			//TODO split questions and in case of existing app folder or not kebab case throw exception.
-			{
+			while (!projectName) {
+				let nameRes = (await inquirer.prompt({
+					type: "input",
+					name: "projectName",
+					message: "Enter a name for your project: ",
+					default: "app"
+				}))["projectName"];
+				nameRes = nameRes.trim();
+
+				if (!Util.isAlphanumericExt(nameRes)) {
+					Util.error(`Name '${nameRes}' is not valid. `
+						+ "Name should start with a letter and can also contain numbers, dashes and spaces.",
+						"red");
+				} else if (Util.directoryExists(nameRes)) {
+					Util.error(`Folder "${nameRes}" already exists!`, "red");
+				} else {
+					projectName = nameRes;
+				}
+			}
+
+			const frameRes = await inquirer.prompt({
 				type: "list",
 				name: "framework",
 				message: "Select framework",
 				choices: this.addSeparators(this.templateManager.getFrameworkNames()),
 				default: "jQuery"
-			}];
-			const answers = await inquirer.prompt(questions);
-			const framework = this.templateManager.getFrameworkByName(answers["framework"]);
+			});
+			const framework = this.templateManager.getFrameworkByName(frameRes["framework"]);
 			//app name validation???
 			if (framework.projectLibraries.length > 1) {
 				//proj type support
@@ -74,9 +86,9 @@ export class PromptSession {
 			const projTemplate = projLibrary.getProject();
 
 			Util.log("Generating project structure.");
-			await projTemplate.generateFiles(process.cwd(), answers["projectName"], theme);
+			await projTemplate.generateFiles(process.cwd(), projectName, theme);
 			// move cwd to project folder
-			process.chdir(answers["projectName"]);
+			process.chdir(projectName);
 			Util.log("Project structure generated.");
 
 			await this.chooseActionLoop(projLibrary, theme);
@@ -144,20 +156,23 @@ export class PromptSession {
 					});
 				}
 				if (selectedTemplate) {
-					templateName = await inquirer.prompt({
-						type: "input",
-						name: "name",
-						message: "Name your component",
-						default: selectedTemplate.name
-					});
-					//TODO Validation of the template name (should not exist and should be kebab case)
-					if (selectedTemplate.hasExtraConfiguration) {
-						const extraPrompt: any[] = this.createQuestions(selectedTemplate.getExtraConfiguration());
-						const extraConfigAnswers = await inquirer.prompt(extraPrompt);
-						const extraConfig = this.parseAnswers(extraConfigAnswers);
-						selectedTemplate.setExtraConfiguration(extraConfig);
+					let success = false;
+					while (!success) {
+						templateName = await inquirer.prompt({
+							type: "input",
+							name: "name",
+							message: "Name your component",
+							default: selectedTemplate.name
+						});
+
+						if (selectedTemplate.hasExtraConfiguration) {
+							const extraPrompt: any[] = this.createQuestions(selectedTemplate.getExtraConfiguration());
+							const extraConfigAnswers = await inquirer.prompt(extraPrompt);
+							const extraConfig = this.parseAnswers(extraConfigAnswers);
+							selectedTemplate.setExtraConfiguration(extraConfig);
+						}
+						success = await add.addTemplate(templateName["name"], selectedTemplate);
 					}
-					await add.addTemplate(templateName["name"], selectedTemplate);
 				}
 				await this.chooseActionLoop(framework, theme);
 				break;
@@ -171,14 +186,19 @@ export class PromptSession {
 					choices: this.addSeparators(customTemplates)
 				});
 				selectedTemplate = framework.getTemplateByName(customTemplate["customTemplate"]);
-				templateName = await inquirer.prompt({
-					type: "input",
-					name: "name",
-					message: "Name your view",
-					default: selectedTemplate.name
-				});
-				// TODO: Combine name with output path, folder existing check
-				await add.addTemplate(templateName["name"], selectedTemplate);
+				if (selectedTemplate) {
+					let success = false;
+					while (!success) {
+						templateName = await inquirer.prompt({
+							type: "input",
+							name: "name",
+							message: "Name your view",
+							default: selectedTemplate.name
+						});
+
+						success = await add.addTemplate(templateName["name"], selectedTemplate);
+					}
+				}
 
 				await this.chooseActionLoop(framework, theme);
 				break;

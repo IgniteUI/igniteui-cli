@@ -1,6 +1,7 @@
 import chalk from "chalk";
 import * as fs from "fs";
 import * as fsExtra from "fs-extra";
+import * as glob from "glob";
 import * as path from "path";
 import through2 = require("through2");
 const imageExtensions = [".png", ".jpg", "jpeg", "gif", "bmp"];
@@ -82,7 +83,7 @@ class Util {
 						//TODO use grep module to select files which need to be processed via pipe and copy others directly.
 						const currentFileExtension = path.extname(path.join(sourcePath, element));
 						if (imageExtensions.indexOf(currentFileExtension) !== -1) {
-							fsExtra.copy(path.join(sourcePath, element), path.join(destinationPath, element));
+							fsExtra.copySync(path.join(sourcePath, element), path.join(destinationPath, element));
 							if (--itemsLeft === 0) {
 								resolve(true);
 							}
@@ -117,6 +118,34 @@ class Util {
 				resolve(false);
 			});
 		}
+	}
+	public static validateTemplate(
+		sourcePath: string,
+		destinationPath: string, configuration: { [key: string]: string },
+		pathsConfiguration: { [key: string]: string }): boolean {
+
+		sourcePath = sourcePath.replace(/\\/g, "/");
+		destinationPath = destinationPath.replace(/\\/g, "/");
+
+		let paths: string[] = glob.sync(sourcePath + "/**/*", { nodir: true });
+		// TODO: D.P Temporary ignoring asset files
+		const ignorePaths: string[] = glob.sync(sourcePath + "/**/+(assets|data)/*", { nodir: true });
+		paths = paths.filter(x => ignorePaths.indexOf(x) === -1);
+
+		for (let filePath of paths) {
+			filePath = filePath.replace(sourcePath, destinationPath);
+			if (configuration.hasOwnProperty("__path__")) {
+				filePath = filePath.replace("__path__", configuration["__path__"]);
+			}
+			if (configuration.hasOwnProperty("__name__")) {
+				filePath = filePath.replace("__name__", configuration["__name__"]);
+			}
+			if (fs.existsSync(filePath)) {
+				this.error(path.relative(process.cwd(), filePath) + " already exists!", "red");
+				return false;
+			}
+		}
+		return true;
 	}
 	public static applyConfigTransformation = (data: string, configuration: { [key: string]: string }): string => {
 		let key;
@@ -198,6 +227,15 @@ class Util {
 	 */
 	public static lowerDashed(text: string) {
 		return text.replace(/\s+/g, "-").toLowerCase();
+	}
+
+	/**
+	 * Checks if a giver string consists of alphanumeric characters, dashes and spaces only
+	 * and also starts with a letter.
+	 * @param name Text to check
+	 */
+	public static isAlphanumericExt(name: string) {
+		return /^[\sa-zA-Z][\w\s\-]+$/.test(name);
 	}
 }
 

@@ -46,6 +46,10 @@ class TreeGridCustomTemplate extends ReactTemplate {
 		config["$(igniteImports)"] = this.getImports();
 		config["$(name)"] = name; // this name should not have restrictions
 		config["$(gridfeatures)"] = features;
+		// TODO: Refactor to base
+		if (!Util.validateTemplate(path.join(__dirname, "files"), projectPath, config, pathsConfig)) {
+			return Promise.resolve(false);
+		}
 		return Util.processTemplates(path.join(__dirname, "files"), projectPath, config, pathsConfig);
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
