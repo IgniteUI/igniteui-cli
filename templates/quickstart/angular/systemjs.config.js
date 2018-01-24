@@ -29,7 +29,7 @@
       'angular-in-memory-web-api': 'npm:angular-in-memory-web-api',
       
       //IgniteUI Angular2 library
-      'igniteui-angular2': 'npm:igniteui-angular2'
+      'igniteui-angular-wrappers': 'npm:igniteui-angular-wrappers'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
@@ -44,7 +44,7 @@
         main: './index.js',
         defaultExtension: 'js'
       },
-      'igniteui-angular2': {
+      'igniteui-angular-wrappers': {
           main: 'igniteui.angular2.js',
           defaultExtension: 'js'
       }

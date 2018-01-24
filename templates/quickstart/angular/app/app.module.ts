@@ -8,7 +8,7 @@ import { IgGridComponent, IgTextEditorComponent, IgDateEditorComponent,
      IgMaskEditorComponent, IgCurrencyEditorComponent, IgNumericEditorComponent,
      IgPercentEditorComponent, IgDatePickerComponent, IgComboComponent,
      IgTreeComponent, IgDialogComponent, IgDataChartComponent
-} from 'igniteui-angular2';
+} from 'igniteui-angular-wrappers';
 
 @NgModule({
   imports: [ BrowserModule , FormsModule ],
