@@ -43,7 +43,7 @@ class FileExplorerTemplate extends jQueryTemplate {
 		}
 
 		config["$(treeGridFeatures)"] = features;
-		config["$(componentName)"] = name;
+		config["$(description)"] = description;
 		config["$(cssBlock)"] = this.getCssTags();
 		config["$(scriptBlock)"] = this.getScriptTags();
 		const pathsConfig = {};
