@@ -3,7 +3,7 @@ import { jQueryTemplate } from "../../../../../lib/templates/jQueryTemplate";
 import { Util } from "../../../../../lib/Util";
 import { TreeGridFeatureHelper } from "../treegridfeaturehelper";
 
-class TreeGridCustomTemplate extends jQueryTemplate {
+class FileExplorerTemplate extends jQueryTemplate {
 
 	public extraConfigurations: ControlExtraConfiguration[];
 
@@ -12,15 +12,14 @@ class TreeGridCustomTemplate extends jQueryTemplate {
 	constructor() {
 		super(__dirname);
 		this.extraConfigurations = [];
-		this.name = "Custom TreeGrid";
-		this.id = "tree-grid-custom";
-		this.description = "Tree Grid custom template";
+		this.controlGroup = "";
+		this.name = "File Explorer";
+		this.id = "file-explorer";
+		this.listInCustomTemplates = true;
+		this.description = "File explorer sample using igTreeGrid";
 		this.dependencies = ["igTreeGrid"];
-		this.listInComponentTemplates = true;
-		this.hasExtraConfiguration = true;
-
 		const featureConfiguration: ControlExtraConfiguration = {
-			choices: ["Sorting", "RowSelectors", "Filtering", "Updating", "ColumnMoving", "Resizing", "Hiding"],
+			choices: ["Sorting"],
 			default: "",
 			key: "features",
 			message: "Select features for the igTreeGrid",
@@ -58,5 +57,4 @@ class TreeGridCustomTemplate extends jQueryTemplate {
 		return this.extraConfigurations;
 	}
 }
-
-module.exports = new TreeGridCustomTemplate();
+module.exports = new FileExplorerTemplate();

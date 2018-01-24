@@ -3,18 +3,18 @@ import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 import { AngularTemplate } from "../../../../../lib/templates/AngularTemplate";
 import { Util } from "../../../../../lib/Util";
 
-class HierarchicalGridCustomTemplate extends AngularTemplate {
+class GridTemplatingTemplate extends AngularTemplate {
 	private gridHelper: GridHelper;
 	private extraConfigurations: ControlExtraConfiguration[];
 	private userExtraConfiguration: {} = {};
 
 	constructor() {
 		super(__dirname);
-		this.id = "hierarchical-grid-custom";
-		this.name = "Custom Hierarchical Grid";
+		this.id = "grid-templating";
+		this.name = "Grid Templating";
 		this.controlGroup = "Data Grids";
-		this.description = "Custom Hierarchical Grid default template for Angular";
-		this.dependencies = ["igHierarchicalGrid"];
+		this.description = "This is a grid templating template for Angular";
+		this.dependencies = ["igGrid"];
 		this.projectType = "ig-ts";
 		this.extraConfigurations = [];
 		this.hasExtraConfiguration = true;
@@ -22,13 +22,10 @@ class HierarchicalGridCustomTemplate extends AngularTemplate {
 
 		this.gridHelper = new GridHelper();
 		const featureConfiguration: ControlExtraConfiguration = {
-			choices: [
-				"Sorting", "Selection", "Updating", "Filtering", "ColumnMoving",
-				"Resizing", "Hiding", "Paging", "Summaries"
-			],
+			choices: ["Sorting", "Paging", "Filtering"],
 			default: "",
 			key: "features",
-			message: "Select features for the igHierarchicalGrid",
+			message: "Select features for the igGrid",
 			type: Enumerations.ControlExtraConfigType.MultiChoice
 		};
 		this.extraConfigurations.push(featureConfiguration);
@@ -44,7 +41,7 @@ class HierarchicalGridCustomTemplate extends AngularTemplate {
 			"__name__": this.fileName(name),
 			"__path__": this.folderName(name)
 		};
-		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 3);
+		const features = this.gridHelper.generateFeatures(["Updating"].concat(this.userExtraConfiguration["features"]), 3);
 
 		config["$(gridFeatures)"] = features;
 		config["$(componentName)"] = name;
@@ -60,4 +57,4 @@ class HierarchicalGridCustomTemplate extends AngularTemplate {
 	}
 }
 
-module.exports = new HierarchicalGridCustomTemplate();
+module.exports = new GridTemplatingTemplate();

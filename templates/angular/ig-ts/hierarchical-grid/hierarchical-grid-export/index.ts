@@ -3,18 +3,18 @@ import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 import { AngularTemplate } from "../../../../../lib/templates/AngularTemplate";
 import { Util } from "../../../../../lib/Util";
 
-class HierarchicalGridCustomTemplate extends AngularTemplate {
+class HierarchicalGridExportTemplate extends AngularTemplate {
 	private gridHelper: GridHelper;
 	private extraConfigurations: ControlExtraConfiguration[];
 	private userExtraConfiguration: {} = {};
 
 	constructor() {
 		super(__dirname);
-		this.id = "hierarchical-grid-custom";
-		this.name = "Custom Hierarchical Grid";
+		this.id = "hierarchical-grid-export";
+		this.name = "Export Hierarchical Grid";
 		this.controlGroup = "Data Grids";
-		this.description = "Custom Hierarchical Grid default template for Angular";
-		this.dependencies = ["igHierarchicalGrid"];
+		this.description = "Export Hierarchical Grid template for Angular";
+		this.dependencies = ["igHierarchicalGrid", "igExcel", "igGridExcelExporter"];
 		this.projectType = "ig-ts";
 		this.extraConfigurations = [];
 		this.hasExtraConfiguration = true;
@@ -22,10 +22,7 @@ class HierarchicalGridCustomTemplate extends AngularTemplate {
 
 		this.gridHelper = new GridHelper();
 		const featureConfiguration: ControlExtraConfiguration = {
-			choices: [
-				"Sorting", "Selection", "Updating", "Filtering", "ColumnMoving",
-				"Resizing", "Hiding", "Paging", "Summaries"
-			],
+			choices: ["Summaries", "Hiding"],
 			default: "",
 			key: "features",
 			message: "Select features for the igHierarchicalGrid",
@@ -60,4 +57,4 @@ class HierarchicalGridCustomTemplate extends AngularTemplate {
 	}
 }
 
-module.exports = new HierarchicalGridCustomTemplate();
+module.exports = new HierarchicalGridExportTemplate();

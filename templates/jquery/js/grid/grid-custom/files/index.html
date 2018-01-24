@@ -10,6 +10,7 @@
  <script type="text/javascript">
        $(function () {
 		$("#grid").igGrid({
+				autoCommit : true,
                 primaryKey: "EmployeeID",
                 width: '900px',
                 columns: [
@@ -24,7 +25,6 @@
                 responseDataKey: "results",
                 features: $(gridfeatures)
             });
-					
        });
     </script>
 </head>

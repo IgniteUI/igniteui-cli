@@ -26,7 +26,7 @@ class HierarchicalGridExportTemplate extends jQueryTemplate {
 		this.gridHelper.hierarchical = true;
 		this.gridHelper.space = "    ";
 		const featureConfiguration: ControlExtraConfiguration = {
-			choices: ["Sorting", "Paging", "Filtering"],
+			choices: ["Summaries", "Hiding"],
 			default: "",
 			key: "features",
 			message: "Select features for the igHierarchicalGrid",

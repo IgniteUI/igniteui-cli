@@ -42,12 +42,13 @@ class TreeGridEditingTemplate extends jQueryTemplate {
 		const config = {};
 		let features: string;
 		if (this.userExtraConfiguration["features"] !== undefined) {
-			features = ",\n" + TreeGridFeatureHelper.generateFeatures(this.userExtraConfiguration["features"]);
+			features = ",\n" + TreeGridFeatureHelper.generateFeatures(["Updating"].concat(
+				this.userExtraConfiguration["features"]));
 		} else {
 			features = "";
 		}
 
-		config["$(Gridfeatures)"] = features;
+		config["$(treeGridFeatures)"] = features;
 		config["$(componentName)"] = name;
 		config["$(cssBlock)"] = this.getCssTags();
 		config["$(scriptBlock)"] = this.getScriptTags();

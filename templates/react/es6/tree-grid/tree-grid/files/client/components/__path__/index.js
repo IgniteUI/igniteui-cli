@@ -56,7 +56,7 @@ export default class $(ClassName) extends Component {
 						{ headerText: "Progress", key: "progress", width: "10%", dataType: "string" }
 					]}
 					childDataKey="products"
-					features={[$(gridfeatures)]}
+					features={[$(treeGridFeatures)]}
 				/>
       		</div>
 		);

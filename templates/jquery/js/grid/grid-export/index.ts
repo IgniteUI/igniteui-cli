@@ -24,7 +24,7 @@ class GridExportTemplate extends jQueryTemplate {
 		this.gridHelper.space = "    ";
 		this.hasExtraConfiguration = true;
 		const featureConfiguration: ControlExtraConfiguration = {
-			choices: ["Sorting", "Paging", "Filtering"],
+			choices: ["Summaries", "Hiding"],
 			default: "",
 			key: "features",
 			message: "Select features for the igGrid",

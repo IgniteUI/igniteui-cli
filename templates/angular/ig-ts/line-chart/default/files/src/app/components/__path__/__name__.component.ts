@@ -72,7 +72,7 @@ export class $(ClassName)Component {
 		};
 	}
 
-	updateChart(curSelection){
+	this.updateChart(curSelection){
 		//Series require the whole object 
 		this.options = {
 			series: [ 
@@ -102,7 +102,7 @@ export class $(ClassName)Component {
 		};
 	}
 	
-	selectionChanged (event: Event){
+	this.selectionChanged (event: Event){
 		//pass currently selected Option from the Select element
 		this.updateChart((<HTMLSelectElement>event.target).value);
 	}
