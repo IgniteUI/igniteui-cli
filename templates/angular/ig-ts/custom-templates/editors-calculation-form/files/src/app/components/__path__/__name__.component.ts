@@ -6,7 +6,7 @@ import {
 	IgCheckboxEditorComponent,
 	IgDatePickerComponent,
 	IgMaskEditorComponent
-} from 'igniteui-angular2';
+} from 'igniteui-angular-wrappers';
 import { Component, ViewChild } from "@angular/core";
 
 @Component({

@@ -1,4 +1,3 @@
-import { IgniteUIModule } from "igniteui-angular2";
 import { Component } from "@angular/core";
 import { hierarchicalDS } from "../../assets/data-hierarchical";
 import { flatDS } from "../../assets/data-flat";
