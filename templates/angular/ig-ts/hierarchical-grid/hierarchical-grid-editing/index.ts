@@ -22,7 +22,7 @@ class HierarchicalGridEditingTemplate extends AngularTemplate {
 
 		this.gridHelper = new GridHelper();
 		const featureConfiguration: ControlExtraConfiguration = {
-			choices: ["Sorting", "Filtering"],
+			choices: ["Sorting", "Filtering", "Paging"],
 			default: "",
 			key: "features",
 			message: "Select features for the igHierarchicalGrid",

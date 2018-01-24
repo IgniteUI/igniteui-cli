@@ -13,7 +13,7 @@ class ComboTemplate extends ReactTemplate {
 		this.description = "The is a combo template structure for React";
 		this.projectType = "es6";
 		this.components = ["Combo"];
-		this.controlGroup = "Editors";
+		this.controlGroup = "Data Entry";
 		this.dependencies = ["igCombo"];
 
 		this.hasExtraConfiguration = false;

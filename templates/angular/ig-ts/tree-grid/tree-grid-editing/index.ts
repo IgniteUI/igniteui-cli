@@ -38,7 +38,7 @@ class TreeGridEditingTemplate extends AngularTemplate {
 			"__name__": this.fileName(name),
 			"__path__": this.folderName(name)
 		};
-		const features = TreeGridFeatureHelper.generateFeatures(this.userExtraConfiguration["features"]);
+		const features = TreeGridFeatureHelper.generateFeatures(["Updating"].concat(this.userExtraConfiguration["features"]));
 
 		config["$(treeGridFeatures)"] = features;
 		config["$(componentName)"] = name;
