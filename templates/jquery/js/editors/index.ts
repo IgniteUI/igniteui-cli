@@ -47,7 +47,7 @@ class EditorsJQueryTemplate extends jQueryTemplate {
 
 		const config = {
 			"$(cssBlock)": cssTags,
-			"$(idPlaceHolder)" : name,
+			"$(Description)" : name,
 			"$(name)": this.mapItem.name.toString(),
 			"$(scriptBlock)": scriptTags,
 			"$(theme)": projectConfig.project.theme,
