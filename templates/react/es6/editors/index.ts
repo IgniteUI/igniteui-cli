@@ -14,7 +14,7 @@ class EditorsComponent extends MultiTemplateComponent<EditorsReactTemplate> {
 	constructor() {
 		super(EditorsReactTemplate, templates);
 		this.name = "Editors";
-		this.group = "Editors";
+		this.group = "Data Entry";
 	}
 }
 

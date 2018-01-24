@@ -47,7 +47,7 @@ class TreeGridExportTemplate extends jQueryTemplate {
 			features = "";
 		}
 
-		config["$(gridfeatures)"] = features;
+		config["$(treeGridFeatures)"] = features;
 		config["$(componentName)"] = name;
 		config["$(cssBlock)"] = this.getCssTags();
 		config["$(scriptBlock)"] = this.getScriptTags();

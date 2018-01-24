@@ -19,7 +19,7 @@ class TreeGridCustomTemplate extends AngularTemplate {
 		this.hasExtraConfiguration = true;
 		this.extraConfigurations = [];
 		const featureConfiguration: ControlExtraConfiguration = {
-			choices: ["Sorting", "RowSelectors", "Filtering", "Updating", "Filtering", "ColumnMoving", "Resizing", "Hiding"],
+			choices: ["Sorting", "RowSelectors", "Filtering", "Updating", "ColumnMoving", "Resizing", "Hiding"],
 			default: "",
 			key: "features",
 			message: "Select features for the igTreeGrid",

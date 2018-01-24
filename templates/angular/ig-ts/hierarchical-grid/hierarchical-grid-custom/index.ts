@@ -23,7 +23,8 @@ class HierarchicalGridCustomTemplate extends AngularTemplate {
 		this.gridHelper = new GridHelper();
 		const featureConfiguration: ControlExtraConfiguration = {
 			choices: [
-				"Sorting", "Selection", "Updating", "Filtering", "ColumnMoving", "Resizing", "Hiding"
+				"Sorting", "Selection", "Updating", "Filtering", "ColumnMoving",
+				"Resizing", "Hiding", "Paging", "Summaries"
 			],
 			default: "",
 			key: "features",

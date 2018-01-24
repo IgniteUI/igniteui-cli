@@ -24,7 +24,7 @@ class GridCustomTemplate extends AngularTemplate {
 		const featureConfiguration: ControlExtraConfiguration = {
 			choices: [
 				"Sorting", "Selection", "Updating", "Filtering", "ColumnMoving",
-				"Summaries", "Resizing", "Hiding"
+				"Summaries", "GroupBy", "Resizing", "Hiding"
 		],
 			default: "",
 			key: "features",

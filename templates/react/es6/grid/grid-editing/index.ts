@@ -24,7 +24,7 @@ class GridEditingTemplate extends ReactTemplate {
 		this.gridHelper = new GridHelper();
 		this.hasExtraConfiguration = true;
 		this.extraConfigurations.push({
-			choices: ["Sorting", "Updating", "Filtering"],
+			choices: ["Sorting", "Filtering", "Paging"],
 			default: "",
 			key: "features",
 			message: "Select features for the igGrid",
@@ -35,6 +35,7 @@ class GridEditingTemplate extends ReactTemplate {
 	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
 		const config = {};
 		const pathsConfig = {};
+		this.gridHelper.addFeature("Updating", { enableAddRow: true });
 		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 5);
 
 		config["__path__"] =  this.folderName(name); //folder name allowed spaces, any casing

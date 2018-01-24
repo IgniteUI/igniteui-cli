@@ -23,7 +23,7 @@ class HierarchicalGridEditingTemplate extends ReactTemplate {
 		this.gridHelper.hierarchical = true;
 		this.hasExtraConfiguration = true;
 		this.extraConfigurations.push({
-			choices: ["Sorting", "Filtering"],
+			choices: ["Sorting", "Filtering", "Paging"],
 			default: "",
 			key: "features",
 			message: "Select features for the igHierarchicalGrid",
