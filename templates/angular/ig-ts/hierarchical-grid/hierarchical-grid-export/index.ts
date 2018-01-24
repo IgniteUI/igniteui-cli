@@ -44,7 +44,7 @@ class HierarchicalGridExportTemplate extends AngularTemplate {
 		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 3);
 
 		config["$(gridFeatures)"] = features;
-		config["$(componentName)"] = name;
+		config["$(description)"] = this.description;
 		const pathsConfig = {};
 		// TODO: Refactor to base
 		if (!Util.validateTemplate(path.join(__dirname, "files"), projectPath, config, pathsConfig)) {
