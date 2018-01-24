@@ -44,7 +44,7 @@ class GridTemplatingTemplate extends ReactTemplate {
 		config["$(igniteImports)"] = this.getImports();
 		config["$(name)"] = name; // this name should not have restrictions
 		config["$(gridfeatures)"] = features;
-		config["$(Description)"] = "This is an igGrid with templating.";
+		config["$(description)"] = "This is an igGrid with templating.";
 		// TODO: Refactor to base
 		if (!Util.validateTemplate(path.join(__dirname, "files"), projectPath, config, pathsConfig)) {
 			return Promise.resolve(false);

@@ -15,7 +15,7 @@ export default class  $(ClassName) extends Component {
 		return(
 			<div className="App">
 				<div className="App-header">
-					<h2>$(Description)</h2>
+					<h2>$(description)</h2>
 				</div>
 				<$(Control)
 					id="grid-templating"
