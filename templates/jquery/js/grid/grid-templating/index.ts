@@ -44,7 +44,7 @@ class GridTemplatingTemplate extends jQueryTemplate {
 		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 4);
 
 		config["$(Gridfeatures)"] = features;
-		config["$(description)"] = description;
+		config["$(description)"] = this.description;
 		config["$(cssBlock)"] = this.getCssTags();
 		config["$(scriptBlock)"] = this.getScriptTags();
 		const pathsConfig = {};
