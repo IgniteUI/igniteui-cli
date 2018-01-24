@@ -4,7 +4,7 @@ import { Util } from "../../../../../lib/Util";
 class EmptyJsBlocksProject implements ProjectTemplate {
 	public id: string = "angular";
 	public name = "empty";
-	public description = "The is the default empty angular project structure for JsBlocks";
+	public description = "Default empty angular project structure for Ignite UI for Angular";
 	public dependencies: string[] = [];
 	public framework: string = "angular";
 	public projectType: string = "igx-ts";

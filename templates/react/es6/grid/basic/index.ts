@@ -15,7 +15,7 @@ class GridTemplate extends ReactTemplate {
 		super(__dirname);
 		this.id = "grid";
 		this.name = "Grid";
-		this.description = "The is a grid template structure for React";
+		this.description = "Grid template structure for React";
 		this.projectType = "es6";
 		this.components = ["Grid"];
 		this.controlGroup = "Data Grids";
@@ -43,6 +43,7 @@ class GridTemplate extends ReactTemplate {
 		config["$(Control)"] = this.className("igGrid");
 		config["$(igniteImports)"] = this.getImports();
 		config["$(name)"] = name; // this name should not have restrictions
+		config["$(description)"] = this.description;
 		config["$(gridfeatures)"] = features;
 		// TODO: Refactor to base
 		if (!Util.validateTemplate(path.join(__dirname, "files"), projectPath, config, pathsConfig)) {

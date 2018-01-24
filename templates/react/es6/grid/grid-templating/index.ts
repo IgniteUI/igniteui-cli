@@ -15,7 +15,7 @@ class GridTemplatingTemplate extends ReactTemplate {
 		super(__dirname);
 		this.id = "grid-templating";
 		this.name = "Grid Templating";
-		this.description = "The is a grid with templating for React";
+		this.description = "Grid with templating for React";
 		this.projectType = "es6";
 		this.components = ["Grid"];
 		this.controlGroup = "Data Grids";
@@ -44,7 +44,7 @@ class GridTemplatingTemplate extends ReactTemplate {
 		config["$(igniteImports)"] = this.getImports();
 		config["$(name)"] = name; // this name should not have restrictions
 		config["$(gridfeatures)"] = features;
-		config["$(description)"] = "This is an igGrid with templating.";
+		config["$(description)"] = this.description;
 		// TODO: Refactor to base
 		if (!Util.validateTemplate(path.join(__dirname, "files"), projectPath, config, pathsConfig)) {
 			return Promise.resolve(false);

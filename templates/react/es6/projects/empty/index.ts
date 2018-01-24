@@ -6,7 +6,7 @@ class EmptyProject implements ProjectTemplate {
 	public _updateFile: string = "webpack.config.js";
 	public id: string = "react";
 	public name = "empty";
-	public description = "The is the default empty project structure for jQuery";
+	public description = "Default empty project structure for React";
 	public framework: string = "react";
 	public projectType: string = "jsx";
 	public dependencies: string[];

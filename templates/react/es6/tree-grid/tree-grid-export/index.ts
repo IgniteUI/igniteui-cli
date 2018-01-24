@@ -14,7 +14,7 @@ class TreeGridExportTemplate extends ReactTemplate {
 		super(__dirname);
 		this.id = "tree-grid-export";
 		this.name = "Tree Grid Exporting";
-		this.description = "The is a tree grid exporting template for React";
+		this.description = "Tree grid exporting template for React";
 		this.projectType = "es6";
 		this.components = ["Tree Grid"];
 		this.controlGroup = "Data Grids";
@@ -47,6 +47,7 @@ class TreeGridExportTemplate extends ReactTemplate {
 		config["$(igniteImports)"] = this.getImports();
 		config["$(name)"] = name; // this name should not have restrictions
 		config["$(treeGridFeatures)"] = features;
+		config["$(description)"] = this.description;
 		// TODO: Refactor to base
 		if (!Util.validateTemplate(path.join(__dirname, "files"), projectPath, config, pathsConfig)) {
 			return Promise.resolve(false);

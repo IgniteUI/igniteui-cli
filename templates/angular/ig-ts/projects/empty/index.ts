@@ -5,7 +5,7 @@ import { ProjectConfig } from "./../../../../../lib/ProjectConfig";
 class EmptyAngularProject implements ProjectTemplate {
 	public id: string = "angular";
 	public name = "empty";
-	public description = "The is the default empty project structure for angular";
+	public description = "Default empty project structure for angular";
 	public dependencies: string[] = [];
 	public framework: string = "angular";
 	public projectType: string = "ig-ts";

@@ -23,7 +23,7 @@ export default class $(ClassName) extends Component {
 						width="650px"
 						height="350px"
 						dataSource={this.state.view}	
-						responseDataKey="lastFiveYears"					
+						responseDataKey="lastFiveYears"
 						legend={{ element: "columnLegend" }}
 						title="Energy Production Per Country"
 						subtitle="The top five Total Primary Energy producers"
