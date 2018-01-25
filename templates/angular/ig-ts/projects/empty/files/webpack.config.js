@@ -67,5 +67,6 @@ module.exports = {
 		  // --- !!! Ignite UI resources handler !!!  ---
 		  app.use('/ignite-ui', express.static( path.join(__dirname, config.project.igniteuiSource) ));
 	  }
-	}
+	},
+	devtool: 'source-map'
 };
