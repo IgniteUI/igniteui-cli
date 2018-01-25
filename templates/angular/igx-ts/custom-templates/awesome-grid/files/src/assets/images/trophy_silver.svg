@@ -6,7 +6,6 @@
     <mask id="b" fill="white">
       <use xlink:href="#a"/>
     </mask>
-    <use fill="#BDBDBD" fill-rule="nonzero" xlink:href="#a"/>
     <g fill="#BDBDBD" mask="url(#b)">
       <rect width="24" height="24" transform="translate(-2 -2)"/>
     </g>
