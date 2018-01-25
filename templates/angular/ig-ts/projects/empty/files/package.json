@@ -33,7 +33,7 @@
 		"zone.js": "^0.8.4",
 
 		"ignite-ui": "^17.2",
-		"igniteui-angular-wrappers": "^5.0.6"
+		"igniteui-angular-wrappers": "^5.0.7"
 	},
 	"devDependencies": {
 	  "html-webpack-plugin":"^2.30.1",
