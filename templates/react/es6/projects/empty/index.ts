@@ -6,7 +6,7 @@ class EmptyProject implements ProjectTemplate {
 	public _updateFile: string = "webpack.config.js";
 	public id: string = "react";
 	public name = "empty";
-	public description = "Default empty project structure for React";
+	public description = "Ignite UI CLI Default empty project structure for React";
 	public framework: string = "react";
 	public projectType: string = "jsx";
 	public dependencies: string[];
@@ -27,8 +27,10 @@ class EmptyProject implements ProjectTemplate {
 		//TODO update the config with [{key: "keyname", "value"}]
 		const config = {
 			"$(theme)": theme,
-			"__path__": name
+			"__path__": name,
+			"$(name)": name
 		};
+		config["$(description)"] = this.description;
 		const pathsConfig = {};
 		return Util.processTemplates(path.join(__dirname, "./files"), path.join(outputPath, name), config, pathsConfig);
 	}

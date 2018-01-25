@@ -5,7 +5,7 @@ import { ProjectConfig } from "./../../../../../lib/ProjectConfig";
 class EmptyAngularProject implements ProjectTemplate {
 	public id: string = "angular";
 	public name = "empty";
-	public description = "Default empty project structure for angular";
+	public description = "Ignite UI CLI Default empty project structure for Angular";
 	public dependencies: string[] = [];
 	public framework: string = "angular";
 	public projectType: string = "ig-ts";
@@ -37,6 +37,7 @@ class EmptyAngularProject implements ProjectTemplate {
 			"$(theme)": theme,
 			"__path__": name
 		};
+		config["$(description)"] = this.description;
 		const pathsConfig = {};
 		return Util.processTemplates(path.join(__dirname, "./files"), path.join(outputPath, name), config, pathsConfig);
 	}

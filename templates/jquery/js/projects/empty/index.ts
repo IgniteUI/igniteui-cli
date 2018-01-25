@@ -6,7 +6,7 @@ import { Util } from "../../../../../lib/Util";
 class EmptyProject implements ProjectTemplate {
 	public id: string = "jquery";
 	public name: string = "jquery with Javascript";
-	public description: string = "Default empty project structure for jQuery";
+	public description: string = "Ignite UI CLI Default empty project structure for jQuery";
 	public dependencies: string[];
 	public framework: string = "jquery";
 	public projectType: string = "js";
@@ -39,7 +39,8 @@ class EmptyProject implements ProjectTemplate {
 			"$(igniteuiSource)": "./node_modules/ignite-ui",
 			"$(name)" : name,
 			"$(theme)": theme,
-			"$(themePath)": themePath
+			"$(themePath)": themePath,
+			"$(description)" : this.description
 		};
 
 		//TODO
