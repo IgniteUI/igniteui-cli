@@ -26,9 +26,9 @@ class EmptyProject implements ProjectTemplate {
 
 		//TODO update the config with [{key: "keyname", "value"}]
 		const config = {
+			"$(name)": name,
 			"$(theme)": theme,
-			"__path__": name,
-			"$(name)": name
+			"__path__": name
 		};
 		config["$(description)"] = this.description;
 		const pathsConfig = {};
