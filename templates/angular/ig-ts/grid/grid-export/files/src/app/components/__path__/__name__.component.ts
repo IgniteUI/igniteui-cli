@@ -7,6 +7,7 @@ declare var $;
 @Component({
 	selector: "app-grid-export",
 	template: `
+		<h1>$(description)</h1>
 		<h2>Select columns to ignore</h2>
 		<ig-combo [(options)]="comboOptions" widgetId="combo" [(ngModel)]="comboOptions.value" (selectionChanged)="selectionChanged($event)"></ig-combo>
 		<ig-grid [(options)]="gridOptions" widgetId="grid-export"></ig-grid>

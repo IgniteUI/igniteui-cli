@@ -2,9 +2,13 @@ import { Component } from "@angular/core";
 
 @Component({
 	selector: "app-combo",
-	template: `<ig-combo [widgetId]="'combo2'"
+	template: `
+			<h1>$(description)</h1>
+			<ig-combo [widgetId]="'combo2'"
 				[(options)]="options"
-				[(ngModel)]="combo.value"></ig-combo>`
+				[(ngModel)]="combo.value">
+			</ig-combo>
+		`
 })
 export class $(ClassName)Component {
 	public options: IgCombo;

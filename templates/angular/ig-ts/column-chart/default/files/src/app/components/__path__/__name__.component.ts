@@ -4,10 +4,12 @@ import { lastFiveYears } from "../../assets/world-energy-production";
 @Component({
 	selector: "app-column-chart",
 	template: `
-	<div style="float: left">
-		<ig-data-chart [(options)]="options" widgetId='columnChart'></ig-data-chart>
-	</div>
-	<div id="columnLegend" style="float: left"></div>`
+		<h1>$(description)</h1>
+		<div style="float: left">
+			<ig-data-chart [(options)]="options" widgetId='columnChart'></ig-data-chart>
+		</div>
+		<div id="columnLegend" style="float: left"></div>
+	`
 })
 export class $(ClassName)Component {
 	public options: IgDataChart;

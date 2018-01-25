@@ -4,21 +4,22 @@ import { funnelData } from "../../assets/funnel-data";
 @Component({
 	selector: "app-funnel-chart",
 	template: `
-	<div style="float: left">
-		<ig-funnel-chart [(options)]="normalOptions" widgetId='chartNormal'>
-		</ig-funnel-chart>
-	</div>
-
-	<div style="float: left; width: 500px; height: 500px;">
-		<ig-funnel-chart [(options)]="weightedOptions" widgetId='chartWeighted'>
-		</ig-funnel-chart>
-	</div>
+		<h1>$(description)</h1>
+		<div style="float: left">
+			<ig-funnel-chart [(options)]="normalOptions" widgetId='chartNormal'>
+			</ig-funnel-chart>
+		</div>
 
 		<div style="float: left; width: 500px; height: 500px;">
-		<ig-funnel-chart [(options)]="invertedOptions" widgetId='chartInverted'>
-		</ig-funnel-chart>
+			<ig-funnel-chart [(options)]="weightedOptions" widgetId='chartWeighted'>
+			</ig-funnel-chart>
+		</div>
 
-	</div>
+			<div style="float: left; width: 500px; height: 500px;">
+			<ig-funnel-chart [(options)]="invertedOptions" widgetId='chartInverted'>
+			</ig-funnel-chart>
+
+		</div>
 	`
 })
 export class $(ClassName)Component {

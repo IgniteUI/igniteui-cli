@@ -3,7 +3,9 @@ import { files } from "../../assets/data-fe";
 
 @Component({
 	selector: "app-tree-grid",
-	template: `<ig-tree-grid [(options)]="gridOptions" widgetId='tree-grid'></ig-tree-grid>`,
+	template: `
+		<h1>$(description)</h1>
+		<ig-tree-grid [(options)]="gridOptions" widgetId='tree-grid'></ig-tree-grid>`,
 	styles: [`
 		:host /deep/ .ui-icon.ui-igtreegrid-expansion-indicator.ui-icon-minus {
 			background: url(src/app/assets/opened_folder.png) !important;

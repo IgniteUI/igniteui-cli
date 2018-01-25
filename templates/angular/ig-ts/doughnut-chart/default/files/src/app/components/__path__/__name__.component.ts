@@ -4,9 +4,10 @@ import { doughnutData } from "../../assets/doughnut-data";
 @Component({
 	selector: "app-doughnut-chart",
 	template: `
-	<div style="float: left">
-	<ig-doughnut-chart [(options)]="doughnutOptions" widgetId='doughnutChart'></ig-doughnut-chart>
-	</div>
+		<h1>$(description)</h1>
+		<div style="float: left">
+		<ig-doughnut-chart [(options)]="doughnutOptions" widgetId='doughnutChart'></ig-doughnut-chart>
+		</div>
 	`
 })
 export class $(ClassName)Component {

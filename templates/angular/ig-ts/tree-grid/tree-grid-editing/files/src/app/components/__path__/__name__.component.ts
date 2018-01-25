@@ -3,7 +3,10 @@ import { hierarchicalDS } from "../../assets/data-editing";
 
 @Component({
 	selector: "app-tree-grid-editing",
-	template: `<ig-tree-grid [(options)]="gridOptions" widgetId='tree-grid'></ig-tree-grid>`
+	template: `
+		<h1>$(description)</h1>
+		<ig-tree-grid [(options)]="gridOptions" widgetId='tree-grid'></ig-tree-grid>
+	`
 })
 export class $(ClassName)Component {
 	public gridOptions: IgTreeGrid;

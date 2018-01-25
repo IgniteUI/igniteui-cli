@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
 	selector: "editors",
 	template: `
-		<h1>Angular template for $(name)</h1>
+		<h1>$(description)</h1>
 		<$(widget) [(options)]="options" widgetId='$(widget)'></$(widget)>
 	`
 })
