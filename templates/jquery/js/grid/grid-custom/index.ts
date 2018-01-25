@@ -27,7 +27,7 @@ class GridCustomTemplate extends jQueryTemplate {
 		const featureConfiguration: ControlExtraConfiguration = {
 			choices: [
 				"Sorting", "Selection", "Updating", "Filtering",
-				"ColumnMoving", "Summaries", "Resizing", "Hiding", "Paging"
+				"ColumnMoving", "GroupBy", "Summaries", "Resizing", "Hiding", "Paging"
 			],
 			default: "",
 			key: "features",

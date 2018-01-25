@@ -1,4 +1,3 @@
-import * as fs from "fs-extra";
 import * as path from "path";
 import { jQueryTemplate } from "../../../../../lib/templates/jQueryTemplate";
 import { Util } from "../../../../../lib/Util";
@@ -21,7 +20,7 @@ class TreeGridCustomTemplate extends jQueryTemplate {
 		this.hasExtraConfiguration = true;
 
 		const featureConfiguration: ControlExtraConfiguration = {
-			choices: ["Sorting", "RowSelectors", "Filtering", "Updating", "Filtering", "ColumnMoving", "Resizing", "Hiding"],
+			choices: ["Sorting", "RowSelectors", "Filtering", "Updating", "ColumnMoving", "Resizing", "Hiding"],
 			default: "",
 			key: "features",
 			message: "Select features for the igTreeGrid",
@@ -44,7 +43,7 @@ class TreeGridCustomTemplate extends jQueryTemplate {
 			features = "";
 		}
 
-		config["$(Gridfeatures)"] = features;
+		config["$(treeGridFeatures)"] = features;
 		config["$(componentName)"] = name;
 		config["$(cssBlock)"] = this.getCssTags();
 		config["$(scriptBlock)"] = this.getScriptTags();
