@@ -10,7 +10,7 @@ class BarChartTemplate extends jQueryTemplate {
 		this.framework = "jquery";
 		this.projectType = "js";
 		this.name = "Bar Chart";
-		this.description = "Bar series template of Data Chart";
+		this.description = "Data Chart Bar series template";
 		this.dependencies = ["igDataChart"];
 	}
 }

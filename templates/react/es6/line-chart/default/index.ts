@@ -11,7 +11,7 @@ class LineChartTemplate extends ReactTemplate {
 		this.id = "line-chart";
 		this.name = "Line Chart";
 		this.widget = "igDataChart";
-		this.description = "Line series template of Data Chart";
+		this.description = "Data Chart Line series template";
 		this.projectType = "es6";
 		this.components = ["Line Chart"];
 		this.controlGroup = "Charts";

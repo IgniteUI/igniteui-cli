@@ -9,7 +9,7 @@ class BarChartTemplate extends AngularTemplate {
 		this.id = "bar-chart";
 		this.projectType = "ig-ts";
 		this.name = "Bar Chart";
-		this.description = "Bar series template of Data Chart";
+		this.description = "Data Chart Bar series template";
 		this.dependencies = ["igDataChart"];
 	}
 }

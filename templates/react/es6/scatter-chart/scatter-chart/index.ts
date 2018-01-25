@@ -11,7 +11,7 @@ class ScatterChartTemplate extends ReactTemplate {
 		this.id = "scatter-chart";
 		this.name = "Scatter Chart";
 		this.widget = "igDataChart";
-		this.description = "Scatter Chart template for React";
+		this.description = "Data Chart Scatter series template for React";
 		this.projectType = "es6";
 		this.components = ["Scatter Chart"];
 		this.controlGroup = "Charts";

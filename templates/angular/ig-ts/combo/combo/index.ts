@@ -5,8 +5,8 @@ class ComboTemplate extends AngularTemplate {
 	constructor() {
 		super(__dirname);
 		this.id = "combo";
-		this.name = "combo";
-		this.description = "Combo template structure for Angular";
+		this.name = "Combo";
+		this.description = "Combo template for Angular";
 		this.projectType = "ig-ts";
 		this.components = ["Combo"];
 		this.dependencies = ["igCombo"];
