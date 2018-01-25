@@ -6,8 +6,7 @@
     <mask id="b" fill="white">
       <use xlink:href="#a"/>
     </mask>
-    <use fill="#000000" fill-rule="nonzero" xlink:href="#a"/>
-    <g fill="#FBB13C" mask="url(#b)">
+    <g fill="#B47845" mask="url(#b)">
       <rect width="24" height="24" transform="translate(-2 -2)"/>
     </g>
   </g>

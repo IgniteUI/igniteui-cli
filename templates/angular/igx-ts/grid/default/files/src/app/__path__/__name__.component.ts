@@ -1,18 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { employeesData } from './localData';
 
 @Component({
   selector: 'app-home',
   templateUrl: './$(filePrefix).component.html',
-  styleUrls: ['./$(filePrefix).component.css']
+  styleUrls: ['./$(filePrefix).component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class $(ClassName)Component implements OnInit {
-  public localData: any[]; 
+  public localData: any[];
   title = '$(name)';
   constructor() { }
 
   ngOnInit() {
-	this.localData = employeesData;
-	
-	  }
+    this.localData = employeesData;
   }
+}
