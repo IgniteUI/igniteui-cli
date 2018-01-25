@@ -48,7 +48,9 @@ module.exports = {
 	plugins: [
 		new HtmlWebpackPlugin({
 			template: './src/index.html',
-			igniteUIScripts:  getScriptTags()
+			baseHref: '/',
+			igniteUIScripts:  getScriptTags(),
+			historyApiFallback: true
 		})
 	],
 	devServer: {

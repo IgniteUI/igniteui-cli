@@ -9,7 +9,7 @@ import { AppRoutingModule} from './app-routing.module';// in case using the rout
 import { AppComponent }  from './app.component';
 import { NavMenuComponent } from "./shared/nav-menu.component";
 import { HomeComponent } from './components/home.component';
-import { IgniteUIModule } from 'igniteui-angular2';
+import { IgniteUIModule } from 'igniteui-angular-wrappers';
 
 
 @NgModule({

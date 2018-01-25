@@ -1,6 +1,5 @@
 import { Component } from "@angular/core";
 import { employees } from "../../assets/employees";
-import { IgComboComponent } from 'igniteui-angular2';
 
 declare var $;
 
