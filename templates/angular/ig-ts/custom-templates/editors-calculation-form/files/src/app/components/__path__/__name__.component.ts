@@ -106,7 +106,7 @@ import { Component, ViewChild } from "@angular/core";
 	
 		<div id="valuesContainer" [hidden]="!showValuesContainer">
 			<h3>Credit Details:</h3>
-			<p>Dear Madam / Sir {{firstNameOptions.value}}, following are the details for your loan: </p>
+			<p>Dear Madam / Sir {{lastNameOptions.value}}, following are the details for your loan: </p>
 			<br>
 			<table class="creditTable">
 				<tr>

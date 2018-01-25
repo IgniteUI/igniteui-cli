@@ -28,7 +28,7 @@
       'rxjs':                      'npm:rxjs',
       'angular-in-memory-web-api': 'npm:angular-in-memory-web-api',
       
-      //IgniteUI Angular2 library
+      //Ignite UI Angular wrappers library
       'igniteui-angular-wrappers': 'npm:igniteui-angular-wrappers'
     },
     // packages tells the System loader how to load when no filename and/or no extension
