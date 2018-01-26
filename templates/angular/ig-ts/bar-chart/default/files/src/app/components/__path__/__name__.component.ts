@@ -4,6 +4,7 @@ import { lastFiveYears } from "../../assets/world-energy-production";
 @Component({
 	selector: "app-bar-chart",
 	template: `
+		<h1>$(description)</h1>
 		<div style="float: left">
 			<ig-data-chart [(options)]="options" widgetId='barChart'></ig-data-chart>
 		</div>

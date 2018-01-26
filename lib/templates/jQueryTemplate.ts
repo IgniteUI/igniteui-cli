@@ -48,7 +48,7 @@ export abstract class jQueryTemplate implements Template {
 
 		const config = {
 			"$(cssBlock)": cssTags,
-			"$(idPlaceHolder)" : name,
+			"$(description)" : this.description,
 			"$(scriptBlock)": scriptTags,
 			"$(theme)": projectConfig.project.theme
 		};

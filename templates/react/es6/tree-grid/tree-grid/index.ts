@@ -45,6 +45,7 @@ class TreeGridTemplate extends ReactTemplate {
 		config["$(Control)"] = this.className("igTreeGrid");
 		config["$(igniteImports)"] = this.getImports();
 		config["$(name)"] = name; // this name should not have restrictions
+		config["$(description)"] = this.description;
 		config["$(treeGridFeatures)"] = features;
 		// TODO: Refactor to base
 		if (!Util.validateTemplate(path.join(__dirname, "files"), projectPath, config, pathsConfig)) {

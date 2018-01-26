@@ -4,15 +4,16 @@ import { financialData } from "../../assets/financial-data";
 @Component({
 	selector: "app-financial-chart",
 	template: `
-	<div style="float: left">
-		<ig-data-chart [(options)]="candleOptions" widgetId='candlestickChart'>
-		</ig-data-chart>
-	</div>
-
-	<div style="float: left; width: 500px; height: 500px;">
-		<ig-data-chart [(options)]="ohlcOptions" widgetId='ohlcChart'>
-		</ig-data-chart>
-	</div>
+		<h1>$(description)</h1>
+		<div style="float: left">
+			<ig-data-chart [(options)]="candleOptions" widgetId='candlestickChart'>
+			</ig-data-chart>
+		</div>
+	
+		<div style="float: left; width: 500px; height: 500px;">
+			<ig-data-chart [(options)]="ohlcOptions" widgetId='ohlcChart'>
+			</ig-data-chart>
+		</div>
 	`
 })
 export class $(ClassName)Component {

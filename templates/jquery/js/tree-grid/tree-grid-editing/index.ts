@@ -49,7 +49,7 @@ class TreeGridEditingTemplate extends jQueryTemplate {
 		}
 
 		config["$(treeGridFeatures)"] = features;
-		config["$(componentName)"] = name;
+		config["$(description)"] = this.description;
 		config["$(cssBlock)"] = this.getCssTags();
 		config["$(scriptBlock)"] = this.getScriptTags();
 		const pathsConfig = {};

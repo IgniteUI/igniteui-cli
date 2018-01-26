@@ -6,6 +6,7 @@ declare var $;
 @Component({
 	selector: "app-hierarchical-grid-export",
 	template: `
+		<h1>$(description)</h1>
 		<h2>Data Export Mode</h2>
 		<select id="dataExportMode" (change)="selectionChanged($event)">
 			<option value="allRows">All Rows</option>

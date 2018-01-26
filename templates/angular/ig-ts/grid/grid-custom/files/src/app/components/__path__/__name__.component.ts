@@ -3,7 +3,10 @@ import { products } from "../../assets/northwindProducts";
 
 @Component({
 	selector: "app-grid",
-	template: `<ig-grid [(options)]="gridOptions" widgetId='grid-custom'></ig-grid>`
+	template: `
+		<h1>$(description)</h1>
+		<ig-grid [(options)]="gridOptions" widgetId='grid-custom'></ig-grid>
+	`
 })
 export class $(ClassName)Component {
 	public gridOptions: IgGrid;

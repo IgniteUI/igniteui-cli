@@ -4,9 +4,11 @@ import { population } from "../../assets/data";
 @Component({
 	selector: "app-pie-chart",
 	template: `
-	<div style="float: left">
-		<ig-pie-chart [(options)]="options" widgetId='pieChart'></ig-pie-chart>
-	</div>`
+		<h1>$(description)</h1>
+		<div style="float: left">
+			<ig-pie-chart [(options)]="options" widgetId='pieChart'></ig-pie-chart>
+		</div>
+	`
 })
 export class $(ClassName)Component {
 	public options: IgPieChart;

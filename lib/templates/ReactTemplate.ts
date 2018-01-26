@@ -40,7 +40,7 @@ export abstract class ReactTemplate implements Template {
 		}
 		config["$(igniteImports)"] = this.getImports();
 		if (this.description) {
-			config["$(Description)"] = this.description;
+			config["$(description)"] = this.description;
 		}
 
 		// copy/template files to project

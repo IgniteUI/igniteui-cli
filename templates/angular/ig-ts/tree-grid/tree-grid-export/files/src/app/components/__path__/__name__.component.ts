@@ -7,17 +7,18 @@ declare var $;
 @Component({
 	selector: "app-tree-grid",
 	template: `
-	<h3>Flat Data Source</h3>
-	<ig-tree-grid [(options)]="gridOptions1" widgetId="treegrid1"></ig-tree-grid>
-	<br />
-	<input type="button" id="exportFlatDS" value="Export Flat Data" (click)="exportFlatDS($event)" />
-	<br />
-	<br />
-	<br />
-	<h3>Hierarchical Data Source</h3>
-	<ig-tree-grid [(options)]="gridOptions2" widgetId="treegrid2"></ig-tree-grid>
-	<br />
-	<input type="button" id="exportHierarchicalDS" value="Export Hierarchical Data" (click)="exportHierarchicalDS($event)" />
+		<h1>$(description)</h1>
+		<h3>Flat Data Source</h3>
+		<ig-tree-grid [(options)]="gridOptions1" widgetId="treegrid1"></ig-tree-grid>
+		<br />
+		<input type="button" id="exportFlatDS" value="Export Flat Data" (click)="exportFlatDS($event)" />
+		<br />
+		<br />
+		<br />
+		<h3>Hierarchical Data Source</h3>
+		<ig-tree-grid [(options)]="gridOptions2" widgetId="treegrid2"></ig-tree-grid>
+		<br />
+		<input type="button" id="exportHierarchicalDS" value="Export Hierarchical Data" (click)="exportHierarchicalDS($event)" />
 	`
 })
 export class $(ClassName)Component {

@@ -41,7 +41,7 @@ class TreeGridTemplate extends AngularTemplate {
 		const features = TreeGridFeatureHelper.generateFeatures(this.userExtraConfiguration["features"]);
 
 		config["$(treeGridFeatures)"] = features;
-		config["$(componentName)"] = name;
+		config["$(description)"] = this.description;
 		const pathsConfig = {};
 		// TODO: Refactor to base
 		if (!Util.validateTemplate(path.join(__dirname, "files"), projectPath, config, pathsConfig)) {

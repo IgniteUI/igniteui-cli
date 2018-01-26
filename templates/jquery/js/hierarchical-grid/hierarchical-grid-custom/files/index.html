@@ -2,18 +2,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>$(componentName)</title>
+    <title>$(description)</title>
     $(cssBlock)
  
     $(scriptBlock)
  
 </head>
 <body>
-		 <table id="grid"></table>
-		 <script src="data.js"></script>
+	<h2>$(description)</h2>
+	<table id="grid"></table>
+	<script src="data.js"></script>
 		    
-		 <script>
-		   $(function () {
+	<script>
+		$(function () {
 			$("#grid").igHierarchicalGrid({
 				autoCommit : true,
 				width: "100%",
@@ -53,8 +54,6 @@
 					}
 				]
 			});
-			  
-	});           
-    </script>
-   
+		});           
+    </script>   
 </html>

@@ -15,7 +15,7 @@ export default class $(ClassName) extends Component {
 		return (
 			<div className="$(ClassName)">
 				<div className="$(ClassName)-header">
-					<h2>$(Description)</h2>
+					<h2>$(description)</h2>
 				</div>
 				<div style={{float: "left"}}>
 					<$(Control)
@@ -23,7 +23,7 @@ export default class $(ClassName) extends Component {
 						width="650px"
 						height="350px"
 						dataSource={this.state.view}	
-						responseDataKey="lastFiveYears"					
+						responseDataKey="lastFiveYears"
 						legend={{ element: "columnLegend" }}
 						title="Energy Production Per Country"
 						subtitle="The top five Total Primary Energy producers"
