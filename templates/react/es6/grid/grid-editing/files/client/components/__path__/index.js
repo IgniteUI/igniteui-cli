@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import 'jquery';
 import 'jquery-ui';
+import 'jquery-ui/ui/effects/effect-blind';
 $(igniteImports)
 import $(Control) from "igniteui-react/ui/$(widget).js";
 
