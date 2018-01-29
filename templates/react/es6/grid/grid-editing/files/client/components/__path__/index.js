@@ -34,9 +34,15 @@ export default class  $(ClassName) extends Component {
 					width="700px"
 					autoCommit={true}
 					dataSource={this.state.products}
+					autoGenerateColumns={false}
+					columns={[
+						{ headerText: "Product ID", key: "ProductID", dataType: "number" },
+						{ headerText: "Product Name", key: "Name", dataType: "string" },
+						{ headerText: "Product Number", key: "ProductNumber", dataType: "string" }
+					]}
 					features={$(gridfeatures)}
 				/>
-      </div>
+			</div>
 		);
 	}
 }
