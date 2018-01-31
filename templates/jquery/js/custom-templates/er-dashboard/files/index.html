@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>$(description)</title>
+	<link href="./styles.css" rel="stylesheet" />
+	$(cssBlock)
+	$(scriptBlock)
+
+	<script src="./scripts/dataTiles.js"></script>
+    <script src="./scripts/dataPatients.js"></script>
+    <script src="./scripts/dataOrders.js"></script>
+    <script src="./scripts/vitals.js"></script>
+
+    <script src="./scripts/scripts.js"></script>
+
+</head>
+<body onload="self.setInterval('setDateTime()', 1000);">
+		<div class="header">
+				<div id="appBar" class="appBar">
+					<span class="appBarItemPosition appBarHeading appName" data-localize="appTitle">ER Dashboard</span>
+					<span id="labelPatient" class="appBarItemPosition appBarHeading"> RIZZO John</span>
+					<span id="labelDate" class="appBarItemPosition appBarText"></span>
+					<span id="labelDay" class="appBarItemPosition appBarText"></span>
+					<span id="labelTime" class="appBarItemPosition appBarText"></span>
+			</div>
+		</div>
+		<div id="dashboard" class="dashboard">
+			<div class="tile1">
+			</div>
+			<div class="tile2">
+			</div>
+			<div class="tile3">
+			</div>
+			<div class="tile4">
+			</div>
+		</div>
+	
+	<script id="minimized-state" type="text/template">
+		<div class="item-container">
+			<h3 class="item-name">${name}</h3>
+			<img src="${picture}" />
+		</div>
+	</script>
+	
+	<script id="maximized-state" type="text/template">
+		<div class="item-container">
+			<h3 class="item-name">${name}</h3>
+			<div id="vitalsCharts" class="vitalsCharts">
+				
+			</div>
+			<div id="${control}"></div>
+		</div>
+		<script>createGrid();</script>
+	</script>
+	</body>
+</html>

@@ -1,0 +1,209 @@
+body {
+    background-color: #FFFFFF;
+    margin: 0;
+}
+
+div.ui-igtilemanager-right {
+    overflow-y: scroll;
+}
+
+.ui-igtile-maximized {
+    padding: 0px!important;
+    border: none!important;
+}
+
+.ui-igtile-maximized .ui-igtile-inner-container.dashboardTile {
+    overflow:hidden;
+    border-top: none;
+    background-color: #f3f3f3;
+}
+
+.ui-igtile-maximized .dashboardTile {
+    padding: 55px 5px 8px 5px;
+    position: relative;
+}
+
+.ui-igtile-minimized .ui-igtile-inner-container {
+    background-color: #f3f3f3;
+    font-weight: bold;
+    padding: 0px;
+}
+
+.ui-igtile-minimized, .ui-igtile {
+    padding: 0px!important;
+    border: 0px!important;
+}
+
+.dashboard
+{
+    position: relative;
+    width: 100%;
+    height: 800px;
+}
+
+.item-container {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.item-container img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    max-width: 75%;
+    -webkit-transition:0.5s;
+    -moz-transition:0.5s;
+    transition: 0.5s;
+}
+
+.item-name {
+    margin: 0;
+    color: black
+    font-size: 20px;
+    margin-left: 5px;
+}
+
+.tileHeading {
+    border-top: 5px solid #494949;
+    border-bottom: 1px solid #d3d3d3;
+    background-color: #FFFFFF;
+    min-height: 55px;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+}
+
+/*sprites*/
+
+.headingChartIcon {
+    background-image: url('images/sprite-main.png');
+    width: 28px;
+    height: 23px;
+    display: inline-block;
+    margin: 3px;
+}
+
+.columnChartIcon {background-position: 0px -168px;}
+.lineChartIcon {background-position: 0px -145px;}
+.splineChartIcon {background-position: 0px -99px;}
+.areaChartIcon {background-position: 0px -122px;}
+
+.severity_1,
+.severity_2,
+.severity_3 {
+    background-image: url('images/sprite-main.png');
+    background-repeat: repeat; 
+    height: 31px;
+    display: inline-block;
+}
+    .severity_1 {width: 32px;}
+    .severity_2 {width: 64px;}
+    .severity_3 {width: 96px;}
+
+    .ui-iggrid-selectedcell.ui-state-active .severity_1,
+    .ui-iggrid-selectedcell.ui-state-active .severity_2,
+    .ui-iggrid-selectedcell.ui-state-active .severity_3 {
+        background-position: 0px -351px;
+    }
+#appBar {
+    height: 70px;
+    position: relative; 
+    top: 0px;
+}
+
+.appBar span.logoIcon {
+    width: 32px;
+    height: 26px!important;
+    background-image: url('images/sprite-main.png');
+    background-position: 0px -325px;
+    background-repeat: no-repeat;
+    margin-left: 20px;
+    position: relative;
+    top: 50%;
+    margin-top: -13px;
+    padding:0;
+}
+
+.tileTitle {
+    margin: 10px 0 0 15px;
+    line-height:1.8em;
+    float: left;
+    
+}
+
+.tileUIElement {
+    display: inline-block;
+
+}
+
+.tileHeading a:hover {
+    background-color: #DDD;
+}
+
+.appBar span {
+    margin-left: -4px;
+    padding: 25px 10px 0px 10px;
+    height: 70px;
+    display: block;
+    float: left;
+    font-family: 'Helvetica', sans-serif;
+    font-size: 1em;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.appBarHeading {
+    font-family: 'Helvetica', sans-serif;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+#labelPatient {
+    font-style: italic;
+    background-color: #5e5e5e;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: 20px;
+    margin-right: 10px;
+    border-bottom: 3px solid #00aade;
+}
+
+.rightAligned {
+    position: relative;
+    float: right;
+    margin: 12px 5px 5px 5px;
+}
+
+.header {
+    background-color: #454545;
+    color: #FFF;
+    height: 70px; 
+}
+
+.ui-igcombo-list .ui-igcombo-listitemholder .ui-igcombo-listitem {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.control-title {
+    margin-left: 7px;
+    margin-right: 13px;
+    position: relative;
+    bottom: 11px;
+    color: #454545;
+    font-size: 1.1em;
+}
+
+.maximized-container img {
+    bottom: 10% !important;
+    right: 10% !important;
+}
+
+.minimized-container img {
+    bottom: 10% !important;
+    right: 10% !important;
+}
