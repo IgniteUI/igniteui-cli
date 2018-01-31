@@ -164,7 +164,7 @@ function createTileManager() {
         height: "800px",
         animationDuration: 150,
         dataSource: selectedPatient,
-        minimizedState:  '<div class="maximized-container"><img src="${Picture}" /></div>',
+        minimizedState:  '<div class="maximized-container"><img style="width:100%;height: 80%" src="${Picture}" /></div>',
         maximizedState: '<div class="item-container"><div class="maximized-container"><img style="width:100%;height: 80%" src="${Picture}" /></div></div>',
         tileMinimized: function (evt, ui) {
                 ui.owner.element.children(".ui-igtilemanager-left").css("height", "100%");
