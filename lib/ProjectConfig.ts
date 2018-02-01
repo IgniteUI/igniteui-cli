@@ -6,8 +6,8 @@ export class ProjectConfig {
 
 	public static configFile: string = "ignite-ui-cli.json";
 
-	/** TODO: Use this to check for existing local project instead of `getConfig` */
-	public static localConfigFile(): boolean {
+	/** Returns true if there's a CLI config file in the current working directory */
+	public static hasLocalConfig(): boolean {
 		const filePath = path.join(process.cwd(), this.configFile);
 		return fs.existsSync(filePath);
 	}
