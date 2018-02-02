@@ -1,3 +1,4 @@
 {
-	"igPackageRegistry": "https://packages.infragistics.com/npm/js-licensed/"
+	"igPackageRegistry": "https://packages.infragistics.com/npm/js-licensed/",
+	"customTemplates": []
 }

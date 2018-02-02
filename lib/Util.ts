@@ -237,6 +237,32 @@ class Util {
 	public static isAlphanumericExt(name: string) {
 		return /^[\sa-zA-Z][\w\s\-]+$/.test(name);
 	}
+
+	/**
+	 * Simple object merge - deep nested objects and arrays (of primitive values only)
+	 * @param target Object to merge values into
+	 * @param source Object to merge values from
+	 */
+	public static merge(target: any, source: any) {
+		for (const key of Object.keys(source)) {
+			if (!target.hasOwnProperty(key) || typeof source[key] !== "object") {
+				// primitive/new value:
+				target[key] = source[key];
+			} else if (Array.isArray(source[key])) {
+				// skip array merge on target type mismatch:
+				if (!Array.isArray(target[key])) {
+					continue;
+				}
+				for (const item of source[key]) {
+					if (target[key].indexOf(item) === -1) {
+						target[key].push(item);
+					}
+				}
+			} else {
+				this.merge(target[key], source[key]);
+			}
+		}
+	}
 }
 
 export { Util };

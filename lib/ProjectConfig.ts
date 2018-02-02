@@ -1,6 +1,7 @@
 import * as fs from "fs-extra";
 import * as os from "os";
 import * as path from "path";
+import { Util } from "./Util";
 
 export class ProjectConfig {
 
@@ -18,20 +19,28 @@ export class ProjectConfig {
 	 */
 	public static getConfig(global: boolean = false): Config {
 		const filePath = path.join(process.cwd(), this.configFile);
-		let config = this.globalDefaults();
+		const config = this.globalDefaults();
 
 		if (!global) {
 			const localConfig = this.localConfig();
-			config = Object.assign(config, localConfig);
+			Util.merge(config, localConfig);
 		}
 		return config;
 	}
+
+	/**
+	 * Write a configuration file (either local or global) with given `Config` object.
+	 * Will create or overwrite.
+	 * @param config Config object to set
+	 * @param global Set global values instead
+	 */
 	public static setConfig(config: Config, global: boolean = false) {
 		const basePath = global ? os.homedir() : process.cwd();
 		const filePath = path.join(basePath, this.configFile);
 		fs.writeJsonSync(filePath, config, { spaces: 4 });
 	}
 
+	/*** Get local configuration only */
 	public static localConfig(): Config {
 		const filePath = path.join(process.cwd(), this.configFile);
 		let localConfig = {};
@@ -47,6 +56,7 @@ export class ProjectConfig {
 		return localConfig as Config;
 	}
 
+	/*** Get global configuration only */
 	public static globalConfig(): Config {
 		const globalConfigPath = path.join(os.homedir(), this.configFile);
 		let globalConfig = {};
@@ -57,12 +67,12 @@ export class ProjectConfig {
 		return globalConfig as Config;
 	}
 
+	/** Get effective global configuration defaults */
 	private static globalDefaults(): Config {
-		let defaults: Config = require("./config/defaults.json");
+		const defaults: Config = require("./config/defaults.json");
 		const globalConfig = this.globalConfig();
 
-		// TODO: `Object.assign` doesn't do deep extend, nested object properties override!
-		defaults = Object.assign(defaults, globalConfig);
+		Util.merge(defaults, globalConfig);
 		return defaults;
 	}
 }
