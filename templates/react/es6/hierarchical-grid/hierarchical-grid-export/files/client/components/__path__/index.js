@@ -27,8 +27,8 @@ export default class $(ClassName) extends Component {
 		super(props);
 		this.state = {
 			northwind,
-			keys:["EmployeeID", "LastName", "Country", "Age", "IsActive", "Company", "RegistererDate"],
-			columnsToSkip: []
+			exportOptions:[{"text": "All Rows", "value": "allRows"}, {"text":"Expanded Rows", "value":"expandedRows"}],
+			exportOption: []
 		};
 
 		this.export = () => {
@@ -36,11 +36,11 @@ export default class $(ClassName) extends Component {
 			$.ig.GridExcelExporter.exportGrid($("#hierarchicalGrid"), {
 				fileName: "igHierarchicalGrid",
 				worksheetName: 'Sheet1',
-				columnsToSkip: this.state.columnsToSkip
+				exportOption: this.state.exportOption
 			});
 		}
 		this.selectionChanged = (ev, ui) => {
-			this.setState({columnsToSkip: ui.items});
+			this.setState({exportOption: ui.items[0].data.value});
 		}
 	}
 	render() {
@@ -51,13 +51,11 @@ export default class $(ClassName) extends Component {
 				</div>
 				<div>
 					<IgCombo
+						id="combo"
 						width="200px"
 						mode="dropdown"
-						dataSource={this.state.keys}
-						multiSelection={{
-							enabled: true,
-							showCheckboxes: true
-						}}
+						responseDataKey="exportOptions"
+						dataSource={this.state}
 						selectionChanged={this.selectionChanged}
 						 />
 
