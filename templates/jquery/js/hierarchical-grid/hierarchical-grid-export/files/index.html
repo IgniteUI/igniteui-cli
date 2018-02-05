@@ -6,28 +6,18 @@
 			$(cssBlock)
 
 			$(scriptBlock)
-		
-        <style>
-            .selectionOptions
-            {
-                margin-bottom: 10px;   
-            }
-        </style>
-
-        
+			<link href="./styles.css" rel="stylesheet" />
+     
         <!--Sample JSON Data-->
         <script src="northwind.js"></script>
     </head>
     <body>
 		<h2>$(description)</h2>
-        <div class="selectionOptions" >
-            Data Export Mode:&nbsp
-            <select id="dataExportMode">
-                <option value="allRows">All Rows</option>
-                <option value="expandedRows">Expanded Rows</option>
-            </select>
+		<div>
+			<h4>Data Export Mode:&nbsp</h4>
+			<div id="exportOptions"></div>
+			<input type="button" id="exportButton" class="button-style" value="Export"/>
 		</div>
-		<input type="button" id="exportButton" class="button-style" value="Export"/>
         <table id="hierarchicalGrid"></table>
         <script>
         $(function() {
@@ -73,11 +63,19 @@
                 ]
             });
 
+			$("#exportOptions").igCombo({
+                width: "200px",
+				mode: "dropdown",
+				dataSource: [{text: "All Rows", value: "allRows"}, {"text":"Expanded Rows", "value":"expandedRows"}],
+                textKey : "text",
+                valueKey: "value"
+			});
+			
             $("#exportButton").igButton({ labelText: "Export" });
 
             $("#exportButton").on("igbuttonclick", function () {
                 $.ig.GridExcelExporter.exportGrid($("#hierarchicalGrid"), {
-                    dataExportMode: $("#dataExportMode").val()
+					dataExportMode: $("#exportOptions").igCombo("value")
                 });
             })
         });
