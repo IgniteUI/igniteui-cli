@@ -6,6 +6,7 @@ import { Util } from "./Util";
 export class ProjectConfig {
 
 	public static configFile: string = "ignite-ui-cli.json";
+	public static readonly defaults: Config = require("./config/defaults.json");
 
 	/** Returns true if there's a CLI config file in the current working directory */
 	public static hasLocalConfig(): boolean {
@@ -19,13 +20,15 @@ export class ProjectConfig {
 	 */
 	public static getConfig(global: boolean = false): Config {
 		const filePath = path.join(process.cwd(), this.configFile);
-		const config = this.globalDefaults();
+		const config = {};
+
+		Util.merge(config, this.defaults);
+		Util.merge(config, this.globalConfig());
 
 		if (!global) {
-			const localConfig = this.localConfig();
-			Util.merge(config, localConfig);
+			Util.merge(config, this.localConfig());
 		}
-		return config;
+		return config as Config;
 	}
 
 	/**
@@ -65,14 +68,5 @@ export class ProjectConfig {
 			globalConfig = require(globalConfigPath);
 		}
 		return globalConfig as Config;
-	}
-
-	/** Get effective global configuration defaults */
-	private static globalDefaults(): Config {
-		const defaults: Config = require("./config/defaults.json");
-		const globalConfig = this.globalConfig();
-
-		Util.merge(defaults, globalConfig);
-		return defaults;
 	}
 }
