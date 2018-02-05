@@ -8,15 +8,26 @@ declare var $;
 	template: `
 		<h1>$(description)</h1>
 		<h2>Data Export Mode</h2>
-		<select id="dataExportMode" (change)="selectionChanged($event)">
-			<option value="allRows">All Rows</option>
-			<option value="expandedRows">Expanded Rows</option>
-		</select>
-		<input type="button" id="exportBtn" value="Export grid" (click)="export($event)" />
+		<div>
+			<ig-combo [(options)]="comboOptions" widgetId="combo" [(ngModel)]="comboOptions.value" (selectionChanged)="selectionChanged($event)"></ig-combo>
+			<input type="button" id="exportBtn" value="Export grid" (click)="export($event)" />
+		</div>
 		<ig-hierarchical-grid [(options)]="gridOptions" widgetId='hierarchical-grid-export'></ig-hierarchical-grid>
-	`
+		`,
+		styles: [`
+		.ui-igcombo-wrapper {
+			margin: 1px;
+			height: 30px;
+		}
+
+		#exportBtn {
+			height: 30px;
+			vertical-align: top;
+		}`
+	]
 })
 export class $(ClassName)Component {
+	public comboOptions: IgCombo;
 	public gridOptions: IgGrid;
 	public data: any[];
 	public export;
@@ -25,6 +36,13 @@ export class $(ClassName)Component {
 
 	constructor() {
 		this.exportMode = "allRows";
+		this.comboOptions = {
+			width: "200px",
+			height: "30px",
+			mode: "dropdown",
+			dataSource: [{text: "All Rows", value: "allRows"}, {"text":"Expanded Rows", "value":"expandedRows"}]
+		};
+
 		this.data = northwind.results;
 		this.gridOptions = {
 			width: "100%",
@@ -75,8 +93,8 @@ export class $(ClassName)Component {
 			});
 		};
 
-		this.selectionChanged = (event: Event) => {
-		 	this.exportMode=(<HTMLSelectElement>event.target).value;
+		this.selectionChanged = (ev) => {
+			 this.exportMode= ev.ui.items[0].data.value;
 		 };
 	}
 }
