@@ -2,6 +2,7 @@ import { Util } from "../Util";
 import { ProjectConfig } from "./../ProjectConfig";
 
 const command = {
+	// tslint:disable:object-literal-sort-keys
 	command: "config",
 	desc: "Get or set configuration properties",
 	builder: yargs => {
@@ -52,6 +53,7 @@ const command = {
 		// at least one command is required
 		.demand(1, "Please use either get or set command");
 	},
+	// tslint:enable:object-literal-sort-keys
 	getHandler(argv) {
 		if (!argv.global && !ProjectConfig.hasLocalConfig()) {
 			Util.error("No configuration file found in this folder!", "red");

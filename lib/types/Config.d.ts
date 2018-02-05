@@ -35,7 +35,7 @@ declare interface Config {
 		//"serverType": "webpack"
 	}
 
-	/** An array of paths to red custom templates from */
+	/** An array of paths to read custom templates from */
 	customTemplates: string[];
 	/** Infragistics package registry Url */
 	igPackageRegistry: string;
