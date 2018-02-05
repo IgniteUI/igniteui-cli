@@ -42,6 +42,11 @@ export default class $(ClassName) extends Component {
 				<div className="App-header">
 					<h2>$(description)</h2>
 				</div>
+
+				<IgButton 
+				onClick={this.export}
+				labelText="Export"
+				/>
 				<$(Control)
 					id="hierarchicalGrid"
 					features={$(gridfeatures)}
@@ -82,10 +87,7 @@ export default class $(ClassName) extends Component {
 						}
 					]}
 				/>
-			<IgButton 
-				onClick={this.export}
-				labelText="Export"
-				/>
+
       </div>
 		);
 	}

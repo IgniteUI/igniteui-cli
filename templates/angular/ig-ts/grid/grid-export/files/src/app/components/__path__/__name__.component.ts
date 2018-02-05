@@ -9,9 +9,8 @@ declare var $;
 		<h1>$(description)</h1>
 		<h2>Select columns to ignore</h2>
 		<ig-combo [(options)]="comboOptions" widgetId="combo" [(ngModel)]="comboOptions.value" (selectionChanged)="selectionChanged($event)"></ig-combo>
-		<ig-grid [(options)]="gridOptions" widgetId="grid-export"></ig-grid>
-		<br />
 		<input type="button" id="exportBtn" value="Export grid" (click)="export($event)" />
+		<ig-grid [(options)]="gridOptions" widgetId="grid-export"></ig-grid>
 	`
 })
 export class $(ClassName)Component {
