@@ -263,6 +263,17 @@ class Util {
 			}
 		}
 	}
+
+	private static propertyByPath(object: any, propPath: string) {
+		if (!propPath) {
+			return object;
+		}
+		const pathParts = propPath.split(".");
+		const currentProp = pathParts.shift();
+		if (currentProp in object) {
+			return this.propertyByPath(object[currentProp], pathParts.join("."));
+		}
+	}
 }
 
 export { Util };

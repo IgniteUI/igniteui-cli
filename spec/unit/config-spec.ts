@@ -58,6 +58,9 @@ describe("Unit - Config command", () => {
 			done();
 		});
 
+		xit("Should show error for array property", async done => {
+		});
+
 		it("Should set global prop", async done => {
 			spyOn(Util, "log");
 			spyOn(ProjectConfig, "hasLocalConfig");
@@ -87,6 +90,67 @@ describe("Unit - Config command", () => {
 			expect(ProjectConfig.localConfig).toHaveBeenCalled();
 			expect(ProjectConfig.setConfig).toHaveBeenCalledWith({ notTest: "ig", test: true }, undefined);
 			expect(Util.log).toHaveBeenCalledWith(`Property "test" set`);
+			done();
+		});
+	});
+
+	describe("Add", () => {
+		it("Should show error w/o existing project and global flag", async done => {
+			spyOn(Util, "error");
+			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
+
+			await configCmd.addHandler({ property: "test", value: true });
+			expect(Util.error).toHaveBeenCalledWith("No configuration file found in this folder!", "red");
+			done();
+		});
+
+		it("Should show error for non-array property", async done => {
+			spyOn(Util, "error");
+			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
+			spyOn(ProjectConfig, "localConfig").and.returnValue({ test: "notArray" });
+
+			await configCmd.addHandler({ property: "test", value: "" });
+			expect(Util.error).toHaveBeenCalledWith(
+				`Configuration property "test" is not an array, use config set instead.`,
+				"red");
+			done();
+		});
+
+		it("Should skip existing", async done => {
+			spyOn(Util, "log");
+			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
+			spyOn(ProjectConfig, "localConfig").and.returnValue({ test: ["existing"] });
+
+			await configCmd.addHandler({ property: "test", value: "existing" });
+			expect(Util.log).toHaveBeenCalledWith(`Value already exists in "test".`);
+			done();
+		});
+
+		it("Should create/add to global prop", async done => {
+			spyOn(Util, "log");
+			spyOn(ProjectConfig, "globalConfig").and.returnValue({ });
+			spyOn(ProjectConfig, "setConfig");
+
+			await configCmd.addHandler({ property: "test", value: "one", global: true });
+			expect(ProjectConfig.setConfig).toHaveBeenCalledWith({ test: ["one"] }, true);
+			expect(Util.log).toHaveBeenCalledWith(`Property "test" updated.`);
+
+			await configCmd.addHandler({ property: "test", value: "two", global: true });
+			expect(ProjectConfig.setConfig).toHaveBeenCalledWith({ test: ["one", "two"] }, true);
+			expect(Util.log).toHaveBeenCalledWith(`Property "test" updated.`);
+
+			done();
+		});
+
+		it("Should add to local prop", async done => {
+			spyOn(Util, "log");
+			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
+			spyOn(ProjectConfig, "localConfig").and.returnValue({ test: [] });
+			spyOn(ProjectConfig, "setConfig");
+
+			await configCmd.addHandler({ property: "test", value: "first" });
+			expect(ProjectConfig.setConfig).toHaveBeenCalledWith({ test: ["first"] }, undefined);
+			expect(Util.log).toHaveBeenCalledWith(`Property "test" updated.`);
 			done();
 		});
 	});

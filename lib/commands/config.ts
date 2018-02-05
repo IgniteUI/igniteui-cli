@@ -29,6 +29,20 @@ const command = {
 				}
 			},
 			handler: command.setHandler
+		}).command({
+			command: "add <property> <value>",
+			desc: "Add a value to an existing configuration array",
+			builder: {
+				property: {
+					describe: "Config property to add to",
+					type: "string"
+				},
+				value: {
+					describe: "New value to add",
+					type: "string"
+				}
+			},
+			handler: command.addHandler
 		}).option("global", {
 			alias: "g",
 			type: "boolean",
@@ -70,6 +84,36 @@ const command = {
 		config[argv.property] = argv.value;
 		ProjectConfig.setConfig(config, argv.global);
 		Util.log(`Property "${argv.property}" set`);
+	},
+	addHandler(argv) {
+		let config;
+
+		if (argv.global) {
+			config = ProjectConfig.globalConfig();
+		} else {
+			if (!ProjectConfig.hasLocalConfig()) {
+				Util.error("No configuration file found in this folder!", "red");
+				return;
+			}
+			config = ProjectConfig.localConfig();
+		}
+
+		// TODO: Schema/property validation?
+		if (!config[argv.property]) {
+			config[argv.property] = [];
+		} else if (!Array.isArray(config[argv.property])) {
+			Util.error(`Configuration property "${argv.property}" is not an array, use config set instead.`, "red");
+			return;
+		}
+
+		if (config[argv.property].indexOf(argv.value) !== -1) {
+			Util.log(`Value already exists in "${argv.property}".`);
+			return;
+		}
+
+		config[argv.property].push(argv.value);
+		ProjectConfig.setConfig(config, argv.global);
+		Util.log(`Property "${argv.property}" updated.`);
 	}
 };
 
