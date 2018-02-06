@@ -40,7 +40,7 @@ command = {
 	},
 	template: null,
 	async execute(argv) {
-		if (ProjectConfig.getConfig() !== null) {
+		if (ProjectConfig.hasLocalConfig()) {
 			return Util.error("There is already an existing project.", "red");
 		}
 		if (!argv.name && !argv.type && !argv.theme) {

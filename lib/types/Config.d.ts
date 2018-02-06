@@ -27,11 +27,16 @@ declare interface Config {
 		igniteuiSource: string;
 
 		[key: string]: any;
-	};
+	}
 	build: {
 		/** This object contains information related to the build configuration
 		 *  and server configuration of the project */
 		//"projectBuild": "tsc",
 		//"serverType": "webpack"
-	};
+	}
+
+	/** An array of paths to read custom templates from */
+	customTemplates: string[];
+	/** Infragistics package registry Url */
+	igPackageRegistry: string;
 }
