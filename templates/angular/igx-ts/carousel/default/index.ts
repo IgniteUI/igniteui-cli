@@ -4,7 +4,7 @@ class IgxCarouselTemplate extends IgniteUIForAngularTemplate {
 	constructor() {
 		super(__dirname);
 		this.components = ["Carousel"];
-		this.controlGroup = "Carousels";
+		this.controlGroup = "Layouts";
 		this.listInComponentTemplates = true;
 		this.id = "carousel";
 		this.projectType = "igx-ts";
