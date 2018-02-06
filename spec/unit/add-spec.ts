@@ -9,6 +9,7 @@ import { resetSpy } from "../helpers/utils";
 describe("Unit - Add command", () => {
 
 	it("Should start prompt session with missing arg", async done => {
+		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 		spyOn(ProjectConfig, "getConfig").and.returnValue({ project: {
 			framework: "angular",
 			theme: "infragistics"}});
