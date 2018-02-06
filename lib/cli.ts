@@ -3,6 +3,7 @@ import * as inquirer from "inquirer";
 import * as yargs from "yargs";
 import { default as add } from "./commands/add";
 import { default as build } from "./commands/build";
+import { default as config } from "./commands/config";
 import { default as newCommand } from "./commands/new";
 import { default as quickstart } from "./commands/quickstart";
 import { default as start } from "./commands/start";
@@ -28,6 +29,7 @@ export async function run(args = null) {
 	.command(start)
 	.command(newCommand)
 	.command(build)
+	.command(config)
 	.command(test)
 	.command(add)
 	.options({
@@ -65,6 +67,8 @@ export async function run(args = null) {
 			break;
 		case "build":
 			await build.execute(argv);
+			break;
+		case "config":
 			break;
 		case "test":
 			await test.execute(argv);

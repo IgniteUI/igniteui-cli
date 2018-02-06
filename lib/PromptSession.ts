@@ -22,7 +22,7 @@ export class PromptSession {
 		add.templateManager = this.templateManager;
 
 		// tslint:disable:object-literal-sort-keys
-		if (config != null && !config.project.isShowcase) {
+		if (ProjectConfig.hasLocalConfig() && !config.project.isShowcase) {
 			projLibrary = this.templateManager.getProjectLibrary(config.project.framework, config.project.projectType);
 			await this.chooseActionLoop(projLibrary, config.project.theme);
 		} else {
