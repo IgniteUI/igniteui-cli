@@ -8,7 +8,7 @@ class IgxCarouselComponent extends BaseComponent {
 	constructor() {
 		super(__dirname);
 		this.name  = "Carousel";
-		this.group = "Carousels";
+		this.group = "Layouts";
 	}
 }
 module.exports = new IgxCarouselComponent();
