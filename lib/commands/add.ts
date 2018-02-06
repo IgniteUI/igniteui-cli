@@ -36,12 +36,11 @@ command = {
 		return true;
 	},
 	async execute(argv) {
-		//command.template;
-		const config =  ProjectConfig.getConfig();
-		if (config == null) {
+		if (!ProjectConfig.hasLocalConfig()) {
 			Util.error("Add command is supported only on existing project created with igniteui-cli", "red");
 			return;
 		}
+		const config =  ProjectConfig.getConfig();
 		if (config.project.isShowcase) {
 			Util.error("Showcases and quickstart projects don't support the add command", "red");
 			return;
