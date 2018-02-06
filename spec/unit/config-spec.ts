@@ -74,7 +74,7 @@ describe("Unit - Config command", () => {
 			expect(ProjectConfig.localConfig).toHaveBeenCalledTimes(0);
 			expect(ProjectConfig.globalConfig).toHaveBeenCalled();
 			expect(ProjectConfig.setConfig).toHaveBeenCalledWith({ test: true }, true /*global*/);
-			expect(Util.log).toHaveBeenCalledWith(`Property "test" set`);
+			expect(Util.log).toHaveBeenCalledWith(`Property "test" set.`);
 			done();
 		});
 
@@ -89,7 +89,7 @@ describe("Unit - Config command", () => {
 			expect(ProjectConfig.globalConfig).toHaveBeenCalledTimes(0);
 			expect(ProjectConfig.localConfig).toHaveBeenCalled();
 			expect(ProjectConfig.setConfig).toHaveBeenCalledWith({ notTest: "ig", test: true }, undefined);
-			expect(Util.log).toHaveBeenCalledWith(`Property "test" set`);
+			expect(Util.log).toHaveBeenCalledWith(`Property "test" set.`);
 			done();
 		});
 	});

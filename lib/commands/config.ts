@@ -85,7 +85,7 @@ const command = {
 
 		config[argv.property] = argv.value;
 		ProjectConfig.setConfig(config, argv.global);
-		Util.log(`Property "${argv.property}" set`);
+		Util.log(`Property "${argv.property}" set.`);
 	},
 	addHandler(argv) {
 		let config;
