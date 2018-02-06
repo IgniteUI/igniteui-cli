@@ -1,4 +1,12 @@
-<nav style="display: flex; justify-content: center; flex-wrap: wrap">
-  <span igxButton *ngFor="let route of topNavLinks" routerLink="{{route.path}}">{{route.name}}</span>
-</nav>
-<router-outlet></router-outlet>
+<div class="main">
+  <igx-nav-drawer #nav id="project-menu"  isOpen="true" [enableGestures]='true' width="280px">
+      <div class="ig-drawer-content">
+          <h3>Views</h3>
+          <span *ngFor="let route of topNavLinks" class="nav-item" routerLinkActive="active" routerLink="{{route.path}}">{{route.name}}</span>
+      </div>
+  </igx-nav-drawer>
+  <div>
+      <igx-navbar title="IgniteUI for Angular!" actionButtonIcon="menu" (onAction)="nav.toggle()"></igx-navbar>
+      <router-outlet></router-outlet>
+    </div>
+</div>
