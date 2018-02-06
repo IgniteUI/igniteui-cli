@@ -1,3 +1,6 @@
+//Update the time
+self.setInterval('setDateTime()', 1000);
+
 var selectedPatient = RIZZOJohn;
 
 $(function () {
