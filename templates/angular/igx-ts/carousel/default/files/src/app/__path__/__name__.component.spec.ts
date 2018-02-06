@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { $(ClassName)Component } from './$(filePrefix).component';
-import { IgxCarousel, IgxCarouselModule, IgxSlide } from 'igniteui-angular/main'; // TODO remove this if possible
+import { IgxCarousel, IgxCarouselModule, IgxSlide } from 'igniteui-angular/main';
 
 describe('$(ClassName)Component', () => {
 	let component: $(ClassName)Component;
