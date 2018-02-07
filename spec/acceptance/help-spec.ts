@@ -10,6 +10,7 @@ describe("Help command", () => {
 		start                  start the project
 		new [name]             Creating a new project
 		build                  build the project
+		config                 Get or set configuration properties
 		test                   test the project
 		add [template] [name]  Add component by it ID and providing a name.
 	  Options:
@@ -35,6 +36,27 @@ describe("Help command", () => {
 				  [string] [choices: "angular", "jquery", "react"] [default: "jquery"]
 		--type, -t       Project type (depends on framework)                  [string]
 		--theme, --th    Project theme (depends on project type)              [string]`;
+
+		const replacedNewHelpText: string = originalNewHelpText.replace(/\s/g, "");
+		const actualNewText: string = (child.stdout.toString("utf-8")).replace(/\s/g, "");
+
+		expect(actualNewText).toContain(replacedNewHelpText);
+		done();
+	});
+
+	it("should show help config sub-commands", async done => {
+		const child = spawnSync("node", ["bin/execute.js", "config", "--help" ], {
+			encoding: "utf-8"
+		});
+		const originalNewHelpText: string = `Commands:
+		get <property>          Get configuration properties
+		set <property> <value>  Set configuration properties
+		add <property> <value>  Add a value to an existing configuration array
+
+		Options:
+		--version, -v  Show current Ignite UI CLI version                    [boolean]
+		--help, -h     Show help                                             [boolean]
+		--global, -g   Specify if the global configuration should be used    [boolean]`;
 
 		const replacedNewHelpText: string = originalNewHelpText.replace(/\s/g, "");
 		const actualNewText: string = (child.stdout.toString("utf-8")).replace(/\s/g, "");

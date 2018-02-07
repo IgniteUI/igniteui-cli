@@ -1,0 +1,91 @@
+import * as fs from "fs";
+import * as os from "os";
+import * as path from "path";
+import cli = require("../../lib/cli");
+import { deleteAll, resetSpy } from "../helpers/utils";
+
+describe("Config command", () => {
+	let testFolder = path.parse(__filename).name;
+
+	beforeEach(() => {
+		spyOn(console, "log");
+		spyOn(console, "error");
+
+		// test folder, w/ existing check:
+		while (fs.existsSync(`./output/${testFolder}`)) {
+			testFolder += 1;
+		}
+		fs.mkdirSync(`./output/${testFolder}`);
+		process.chdir(`./output/${testFolder}`);
+
+		// ~/.global/ homedir for global files:
+		fs.mkdirSync(`.global`);
+		spyOn(os, "homedir").and.returnValue(path.join(process.cwd(), ".global"));
+	});
+
+	afterEach(() => {
+		// clean test folder:
+		process.chdir("../../");
+		deleteAll(`./output/${testFolder}`);
+		fs.rmdirSync(`./output/${testFolder}`);
+	});
+
+	it("Should not work without a project & global flag", async done => {
+		await cli.run(["config", "get", "igPackageRegistry"]);
+		expect(console.error).toHaveBeenCalledWith(jasmine.stringMatching(/No configuration file found in this folder!\s*/));
+
+		resetSpy(console.error);
+		await cli.run(["config", "set", "igPackageRegistry", "maybe"]);
+		expect(console.error).toHaveBeenCalledWith(jasmine.stringMatching(/No configuration file found in this folder!\s*/));
+
+		resetSpy(console.error);
+		await cli.run(["config", "add", "igPackageRegistry", "maybe"]);
+		expect(console.error).toHaveBeenCalledWith(jasmine.stringMatching(/No configuration file found in this folder!\s*/));
+		expect(console.log).toHaveBeenCalledTimes(0);
+		done();
+	});
+
+	it("Should correctly read and update global values", async done => {
+		await cli.run(["config", "get", "igPackageRegistry", "--global"]);
+		expect(console.log).toHaveBeenCalledWith(
+			jasmine.stringMatching("https://packages.infragistics.com/npm/js-licensed/")
+		);
+
+		resetSpy(console.log);
+		await cli.run(["config", "set", "igPackageRegistry", "https://example.com", "--global"]);
+		expect(console.log).toHaveBeenCalledWith(`Property "igPackageRegistry" set.`);
+		expect(fs.existsSync("./.global/ignite-ui-cli.json")).toBeTruthy("Global config file not created");
+		const test: any = { igPackageRegistry: "https://example.com" };
+		expect(JSON.parse(fs.readFileSync("./.global/ignite-ui-cli.json", "utf-8"))).toEqual(test);
+		await cli.run(["config", "get", "igPackageRegistry", "--global"]);
+		expect(console.log).toHaveBeenCalledWith(jasmine.stringMatching("https://example.com"));
+
+		expect(console.error).toHaveBeenCalledTimes(0);
+		done();
+	});
+
+	it("Should correctly read and update local values", async done => {
+		fs.writeFileSync("ignite-ui-cli.json", JSON.stringify({ igPackageRegistry: "https://example.com" }));
+		await cli.run(["config", "get", "igPackageRegistry", "--global"]);
+		expect(console.log).toHaveBeenCalledWith(
+			jasmine.stringMatching("https://packages.infragistics.com/npm/js-licensed/")
+		);
+		await cli.run(["config", "get", "igPackageRegistry"]);
+		expect(console.log).toHaveBeenCalledWith(jasmine.stringMatching("https://example.com"));
+		await cli.run(["config", "get", "customTemplates"]);
+		expect(console.log).toHaveBeenCalledWith([]);
+		resetSpy(console.log);
+
+		resetSpy(console.log);
+		await cli.run(["config", "add", "customTemplates", "path:C:\\Test"]);
+		expect(console.log).toHaveBeenCalledWith(`Property "customTemplates" updated.`);
+		expect(fs.existsSync("./.global/ignite-ui-cli.json")).toBeFalsy();
+		const test: any = { igPackageRegistry: "https://example.com", customTemplates: ["path:C:\\Test"] };
+		expect(JSON.parse(fs.readFileSync("ignite-ui-cli.json", "utf-8"))).toEqual(test);
+		await cli.run(["config", "get", "customTemplates"]);
+		expect(console.log).toHaveBeenCalledWith(["path:C:\\Test"]);
+
+		expect(console.error).toHaveBeenCalledTimes(0);
+		done();
+	});
+});

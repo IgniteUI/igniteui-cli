@@ -12,7 +12,7 @@ describe("Unit - New command", () => {
 
 	it("New command in existing project", async done => {
 		spyOn(Util, "error");
-		spyOn(ProjectConfig, "getConfig").and.returnValue({});
+		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 
 		await newCmd.execute({});
 		expect(Util.error).toHaveBeenCalledWith("There is already an existing project.", "red");

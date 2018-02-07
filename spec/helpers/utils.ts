@@ -8,7 +8,7 @@ import * as glob from "glob";
 export function deleteAll(folderPath: string) {
 	const files: string[] = glob.sync(folderPath + "/**/*", { nodir: true, dot: true });
 	files.forEach(x => fs.unlinkSync(x));
-	const folders: string[] = glob.sync(folderPath + "/**/*");
+	const folders: string[] = glob.sync(folderPath + "/**/*", { dot: true });
 	folders.reverse().forEach(x => fs.rmdirSync(x));
 }
 
