@@ -1,10 +1,22 @@
+<p>igx-list component with filtering. You can read more about configuring the igx-grid component <a href="https://github.com/IgniteUI/igniteui-angular/blob/master/src/list/README.md" target="_blank">here</a>.</p>
+	<div class="igx-form-group" style="margin: 4px">
+	<input class="igx-form-group__input--search" placeholder="Search Contacts" [(ngModel)]="searchContact">
+	<label class="igx-form-group__label">
+		<igx-icon name="search"></igx-icon>
+	</label>
+</div>
 <igx-list>
-	<igx-list-item [isHeader]="true">Contacts</igx-list-item>
-	<igx-list-item igxRipple="pink" igxRippleTarget=".igx-list__item" *ngFor="let item of navItems">
-		<div class="item">
-			<igx-avatar [src]="item.avatar" roundShape="true"></igx-avatar>
-			<span igxLabel>{{item.text}}</span>
-			<igx-icon name="star" [class.favorite]="item.favorite"></igx-icon>
+	<igx-list-item isHeader="true"> Contacts </igx-list-item>
+	<igx-list-item #item *ngFor="let contact of contacts | igxFilter: filterContacts;">
+		<div class="item-container">
+			<div class="contact">
+				<igx-avatar [src]="contact.photo" roundShape="true"></igx-avatar>
+				<div class="contact__info">
+					<span class="name">{{ contact.name }}</span>
+					<span class="phone">{{ contact.phone }}</span>
+				</div>
+			</div>
+			<igx-icon name="star" [color]="contact.isFavorite ? 'orange' : 'lightgray'" (click)="toggleFavorite(item)"></igx-icon>
 		</div>
 	</igx-list-item>
 </igx-list>
