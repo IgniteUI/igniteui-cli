@@ -18,8 +18,7 @@ import "ignite-ui/js/modules/infragistics.excel_serialization_openxml.js";
 import "ignite-ui/js/modules/infragistics.gridexcelexporter.js";
 
 import $(Control) from "igniteui-react/ui/$(widget).js";
-import IgButton from "igniteui-react/ui/igButton.js"
-import IgCombo from "igniteui-react/ui/igCombo.js"
+import "./styles.scss";
 
 export default class  $(ClassName) extends Component {
 	constructor(props) {
@@ -82,8 +81,9 @@ export default class  $(ClassName) extends Component {
 				<div className="App-header">
 					<h2>$(description)</h2>
 				</div>
-				
-				<IgCombo  
+				<div>
+				<IgCombo
+					id="combo"
 					width="200px"
 					mode="dropdown"
 					dataSource={this.state.keys}
@@ -94,11 +94,12 @@ export default class  $(ClassName) extends Component {
 					selectionChanged={this.selectionChanged}
 					 />
 
-				<IgButton 
+				<IgButton
 					click={this.export}
 					onClick={this.export}
 					labelText="Export"
 					/>
+				</div>
 				<$(Control)
 					id="grid-export"
 					autoGenerateColumns={false}
