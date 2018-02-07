@@ -3,7 +3,7 @@ import * as path from "path";
 import { ProjectConfig } from "../ProjectConfig";
 import { Util } from "../Util";
 
-export abstract class AngularTemplate implements Template {
+export class AngularTemplate implements Template {
 	public components: string[];
 	public controlGroup: string;
 	public listInComponentTemplates: boolean = true;

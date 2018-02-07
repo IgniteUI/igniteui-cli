@@ -1,6 +1,10 @@
 import * as path from "path";
 import { ProjectConfig } from "./ProjectConfig";
 import { Util } from "./Util";
+import { jQueryTemplate } from "./templates/jQueryTemplate";
+import { ReactTemplate } from "./templates/ReactTemplate";
+import { AngularTemplate } from "./templates/AngularTemplate";
+import { IgniteUIForAngularTemplate } from "./templates/IgniteUIForAngularTemplate";
 
 export class TemplateManager {
 
@@ -22,6 +26,7 @@ export class TemplateManager {
 			this.frameworks.push(require(path.join(__dirname, this._templatesPath, framework)) as Framework);
 
 		}
+		this.loadExternalTemplates();
 	}
 
 	public getFrameworkIds(): string[] {
@@ -107,7 +112,74 @@ export class TemplateManager {
 		ProjectConfig.setConfig(config);
 	}
 
-	// plugin templates come here
+	//#region plugin templates
+
+	private loadExternalTemplates() {
+		const config = ProjectConfig.getConfig();
+		const customTemplates: Template[] = [];
+		for (const entry of config.customTemplates) {
+			let template: Template;
+			// tslint:disable-next-line:prefer-const
+			let [ protocol, value ] = entry.split(":");
+			switch (protocol) {
+				case "file":
+				case "path":
+					value = value.replace(/template\.json$/, "");
+					if (Util.isDirectory(value)) {
+						// try single template
+						template = this.loadFromConfig(path.join(value, "template.json"));
+						if (template !== null) {
+							customTemplates.push(template);
+							break;
+						}
+						// try folder of templates:
+						for (const folder of Util.getDirectoryNames(value)) {
+							template = this.loadFromConfig(path.join(value, folder, "template.json"));
+							if (template !== null) {
+								customTemplates.push(template);
+							}
+						}
+					} else {
+						// TODO: Util.log(`Ignored: Incorrect custom template path for "${entry}".`);
+					}
+					break;
+				default:
+					break;
+			}
+		}
+		this.addTemplates(customTemplates);
+	}
+
+	/**
+	 * Loads properties from a JSON file and initializes a base Template implementation
+	 * @param filePath Path to a json config file representing a template
+	 */
+	private loadFromConfig(filePath: string): Template {
+		let template: Template = null;
+		if (Util.isFile(filePath)) {
+			const rootPath = path.dirname(filePath);
+			const settings = require(filePath) as Template;
+			switch (`${settings.framework}|${settings.projectType}`) {
+				case "jquery|js":
+					template = new jQueryTemplate(rootPath);
+					break;
+				case "react|es6":
+					template = new ReactTemplate(rootPath);
+					break;
+				case "angular|ig-ts":
+					template = new AngularTemplate(rootPath);
+					break;
+				case "angular|igx-ts":
+					template = new IgniteUIForAngularTemplate(rootPath);
+					break;
+			}
+			if (template !== null) {
+				Object.assign(template, settings);
+			}
+		}
+		return template;
+	}
+
 	private addTemplates(templates: Template[]) {
 		for (const template of templates) {
 			const projectLib = this.getProjectLibrary(template.framework, template.projectType);
@@ -126,4 +198,6 @@ export class TemplateManager {
 			projectLib.registerTemplate(template);
 		}
 	}
+
+	//#endregion
 }

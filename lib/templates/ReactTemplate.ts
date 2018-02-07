@@ -2,7 +2,7 @@ import * as fs from "fs-extra";
 import * as path from "path";
 import { Util } from "../Util";
 
-export abstract class ReactTemplate implements Template {
+export class ReactTemplate implements Template {
 	public components: string[];
 	public controlGroup: string;
 	public listInComponentTemplates: boolean = true;
