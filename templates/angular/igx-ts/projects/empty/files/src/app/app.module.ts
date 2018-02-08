@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { IgxButtonModule, IgxNavigationDrawerModule, IgxNavbarModule } from 'igniteui-angular/main';
+import { IgxNavigationDrawerModule, IgxNavbarModule } from 'igniteui-angular/main';
 import { HomeComponent } from './home/home.component';
 
 @NgModule({
@@ -14,7 +14,6 @@ import { HomeComponent } from './home/home.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    IgxButtonModule,
     IgxNavigationDrawerModule,
     IgxNavbarModule
   ],
