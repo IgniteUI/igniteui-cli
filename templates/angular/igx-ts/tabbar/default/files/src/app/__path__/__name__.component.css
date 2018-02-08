@@ -1,0 +1,39 @@
+.tab-content {
+    padding: 16px;
+}
+
+.header{
+	padding: 0 0 15px 15px;
+	color: #e41c77;
+}
+
+.item {
+	position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+}
+
+.item > .person {
+    position: absolute;
+    margin-left: 72px;
+}
+
+.person .name {
+    padding: 0;
+    margin: 0;
+}
+
+.person .phone {
+    font-size: 12px;
+    color: gray;
+}
+
+.item igx-icon {
+    color: lightgray;
+}
+
+.item igx-icon.favorite {
+    color: orange;
+}
