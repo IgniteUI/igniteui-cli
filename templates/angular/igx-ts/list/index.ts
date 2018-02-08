@@ -1,14 +1,14 @@
 
 import { BaseComponent } from "../../../../lib/BaseComponent";
 
-class IgxGridComponent extends BaseComponent {
+class IgxListComponent extends BaseComponent {
 	/**
 	 *
 	 */
 	constructor() {
 		super(__dirname);
-		this.name  = "Grid";
+		this.name  = "List";
 		this.group = "Grids&Lists";
 	}
 }
-module.exports = new IgxGridComponent();
+module.exports = new IgxListComponent();
