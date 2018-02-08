@@ -16,8 +16,6 @@ process.title = "Ignite UI CLI";
 
 export async function run(args = null) {
 	const templateManager = new TemplateManager();
-	// initialize all templates
-	templateManager.initializeTemplate();
 
 	newCommand.template = templateManager;
 	newCommand.builder.framework.choices = templateManager.getFrameworkIds();

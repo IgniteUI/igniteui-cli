@@ -6,18 +6,17 @@ import { IgniteUIForAngularTemplate } from "../../lib/templates/IgniteUIForAngul
 import { jQueryTemplate } from "../../lib/templates/jQueryTemplate";
 import { ReactTemplate } from "../../lib/templates/ReactTemplate";
 import { Util } from "../../lib/Util";
+import { mockProLibFactory } from "../helpers/mocks";
+import { resetSpy } from "../helpers/utils";
 
 describe("Unit - Template manager", () => {
 	beforeEach(() => {
+		this.mockProjLibs = {};
+		this.customRequire = undefined;
+
 		this.isTemplatesPath = modulePath => {
 			return modulePath.startsWith(path.join(__dirname, "../../templates"));
 		};
-	});
-
-	it("Returns correct framework and projects", async done => {
-		const frameworkIds = ["react", "angular"];
-
-		spyOn(Util, "getDirectoryNames").and.returnValue(frameworkIds);
 		// spy on require(), https://coderwall.com/p/ck7w6g/spying-on-require-with-jasmine
 		spyOn(require("module"), "_load").and.callFake((modulePath: string) => {
 			if (this.isTemplatesPath(modulePath)) {
@@ -26,15 +25,26 @@ describe("Unit - Template manager", () => {
 				return {
 					id: folder,
 					name: folder,
-					projectLibraries: [
-						{ projectType: folder + "type1",  name: folder + 1 },
-						{ projectType: folder + "type2",  name: folder + 2 }
-					]
+					projectLibraries: this.mockProjLibs[folder]
 				} as Framework;
+			} else if (this.customRequire && this.customRequire.test(modulePath)) {
+				return this.customRequire.require(modulePath);
 			} else {
 				fail(`unexpected require: ${modulePath}`);
 			}
 		});
+	});
+
+	it("Returns correct framework and projects", async done => {
+		const frameworkIds = ["react", "angular"];
+		this.mockProjLibs = frameworkIds.reduce((obj, folder) => {
+			obj[folder] = [
+				{ projectType: folder + "type1",  name: folder + 1 },
+				{ projectType: folder + "type2",  name: folder + 2 }
+			];
+			return obj;
+		}, {});
+		spyOn(Util, "getDirectoryNames").and.returnValue(frameworkIds);
 
 		const manager = new TemplateManager();
 		expect(Util.getDirectoryNames).toHaveBeenCalledWith(path.join(__dirname, "../../templates"));
@@ -61,50 +71,64 @@ describe("Unit - Template manager", () => {
 		done();
 	});
 
-	xit("Shows warnings for incorrect custom templates", async done => {
+	it("Shows warnings for incorrect custom templates", async done => {
+		spyOn(Util, "error");
+		spyOn(Util, "getDirectoryNames").and.returnValue(["jquery"]);
+		spyOn(ProjectConfig, "getConfig").and.returnValue({ customTemplates: ["existing/template/"] });
+		spyOn(Util, "directoryExists").and.returnValue(true);
+		spyOn(Util, "fileExists").and.returnValue(true);
+		const mockProj =  mockProLibFactory("js");
+		this.mockProjLibs = { jquery: [ mockProj ] };
+		this.customRequire = {
+			test: modulePath => modulePath.endsWith("template.json"),
+			require: modulePath => {
+				// tslint:disable-next-line:no-object-literal-type-assertion
+				return {
+					components: ["Grid"],
+					controlGroup: "Grids",
+					framework: "jquery",
+					id: "existing",
+					projectType: "js"
+				} as Template;
+			}
+		};
+
+		mockProj.hasTemplate.and.returnValue(true);
+		let manager = new TemplateManager();
+		expect(mockProj.registerTemplate).toHaveBeenCalledTimes(0);
+		expect(Util.error).toHaveBeenCalledWith(`Template with id "existing" already exists.`);
+		mockProj.hasTemplate.and.returnValue(false);
+
+		resetSpy(Util.error);
+		mockProj.projectType = "somethingElse";
+		manager = new TemplateManager();
+		expect(mockProj.registerTemplate).toHaveBeenCalledTimes(0);
+		expect(Util.error).toHaveBeenCalledWith(
+			`The framework/project type for template with id "existing" is not supported.`);
+		mockProj.projectType = "js";
+
+		done();
 	});
 
 	it("Should load/create/register diff types of external custom Templates", async done => {
-		const projects = [
-			[ "jquery", "js" ],
-			[ "react", "es6" ],
-			[ "angular", "ig-ts" ],
-			[ "angular", "igx-ts" ]
-		];
+		spyOn(Util, "getDirectoryNames").and.returnValue(["jquery", "react", "angular"]);
 		const templates = [
-			"/template/jquery/js",
-			"/template/react/es6",
-			"/template/angular/ig-ts",
+			"file:/template/jquery/js",
+			"file:/template/react/es6",
+			"path:/template/angular/ig-ts",
 			"/template/angular/igx-ts"
 		];
-		spyOn(ProjectConfig, "getConfig").and.returnValue({ customTemplates: templates.map(x => `file:${x}`) });
-		spyOn(Util, "isDirectory").and.returnValue(true);
-		spyOn(Util, "isFile").and.returnValue(true);
-		const mockProLibFactory = (type, groups = ["Grids"], components = ["Grid"]) => {
-			return {
-				getComponentGroups: jasmine.createSpy("getComponentGroups").and.returnValue(groups),
-				getComponentNamesByGroup: jasmine.createSpy("getComponentNamesByGroup").and.returnValue(components),
-				hasTemplate: jasmine.createSpy("hasTemplate").and.returnValue(false),
-				projectType: type,
-				registerTemplate: jasmine.createSpy("registerTemplate")
-			};
-		};
-		const mockProjLibs = {
+		spyOn(ProjectConfig, "getConfig").and.returnValue({ customTemplates: templates });
+		spyOn(Util, "directoryExists").and.returnValue(true);
+		spyOn(Util, "fileExists").and.returnValue(true);
+		const mockProjLibs = this.mockProjLibs = {
 			angular: [ mockProLibFactory("ig-ts"), mockProLibFactory("igx-ts")],
 			jquery: [ mockProLibFactory("js") ],
 			react: [ mockProLibFactory("es6") ]
 		};
-		// spy on require(), https://coderwall.com/p/ck7w6g/spying-on-require-with-jasmine
-		spyOn(require("module"), "_load").and.callFake((modulePath: string) => {
-			if (this.isTemplatesPath(modulePath)) {
-				const folder = path.basename(modulePath);
-				// tslint:disable-next-line:no-object-literal-type-assertion
-				return {
-					id: folder,
-					name: folder,
-					projectLibraries: mockProjLibs[folder]
-				} as Framework;
-			} else if (modulePath.endsWith("template.json")) {
+		this.customRequire = {
+			test: modulePath => modulePath.endsWith("template.json"),
+			require: modulePath => {
 				const [ frameworkId, proj ] = modulePath.split(path.sep).filter(x => x && !x.includes("template"));
 				// tslint:disable-next-line:no-object-literal-type-assertion
 				return {
@@ -114,10 +138,8 @@ describe("Unit - Template manager", () => {
 					id: modulePath,
 					projectType: proj
 				} as Template;
-			} else {
-				fail(`unexpected require: ${modulePath}`);
 			}
-		});
+		};
 
 		// load:
 		const manager = new TemplateManager();

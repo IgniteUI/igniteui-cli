@@ -1,10 +1,10 @@
 import * as path from "path";
 import { ProjectConfig } from "./ProjectConfig";
-import { Util } from "./Util";
-import { jQueryTemplate } from "./templates/jQueryTemplate";
-import { ReactTemplate } from "./templates/ReactTemplate";
 import { AngularTemplate } from "./templates/AngularTemplate";
 import { IgniteUIForAngularTemplate } from "./templates/IgniteUIForAngularTemplate";
+import { jQueryTemplate } from "./templates/jQueryTemplate";
+import { ReactTemplate } from "./templates/ReactTemplate";
+import { Util } from "./Util";
 
 export class TemplateManager {
 
@@ -22,10 +22,13 @@ export class TemplateManager {
 		// read dirs and push dir names into frameworks
 		const frameworks = Util.getDirectoryNames(path.join(__dirname, this._templatesPath))
 			.filter(x => x !== this._quickstartTemplatesPath);
+		// load and initialize templates
 		for (const framework of frameworks) {
 			this.frameworks.push(require(path.join(__dirname, this._templatesPath, framework)) as Framework);
 
 		}
+
+		// load external templates
 		this.loadExternalTemplates();
 	}
 
@@ -90,16 +93,6 @@ export class TemplateManager {
 		return null;
 	}
 
-	public initializeTemplate() {
-		const templates = [];
-		// load and initialize templates
-
-		// load external templates
-		// load component definitions
-		this.addTemplates(templates);
-
-	}
-
 	public updateProjectConfiguration(template: Template) {
 		const config = ProjectConfig.getConfig();
 
@@ -114,18 +107,22 @@ export class TemplateManager {
 
 	//#region plugin templates
 
+	/** Read config and load custom templates based on type */
 	private loadExternalTemplates() {
 		const config = ProjectConfig.getConfig();
 		const customTemplates: Template[] = [];
 		for (const entry of config.customTemplates) {
 			let template: Template;
 			// tslint:disable-next-line:prefer-const
-			let [ protocol, value ] = entry.split(":");
+			let [ protocol, value ] = entry.split(/(^[^:]+):/).filter(x => x);
 			switch (protocol) {
+				default:
+					// in case just path is passed:
+					value = entry;
 				case "file":
 				case "path":
 					value = value.replace(/template\.json$/, "");
-					if (Util.isDirectory(value)) {
+					if (Util.directoryExists(value)) {
 						// try single template
 						template = this.loadFromConfig(path.join(value, "template.json"));
 						if (template !== null) {
@@ -143,7 +140,7 @@ export class TemplateManager {
 						// TODO: Util.log(`Ignored: Incorrect custom template path for "${entry}".`);
 					}
 					break;
-				default:
+				case "ignored":
 					break;
 			}
 		}
@@ -153,10 +150,11 @@ export class TemplateManager {
 	/**
 	 * Loads properties from a JSON file and initializes a base Template implementation
 	 * @param filePath Path to a json config file representing a template
+	 * @returns null if no proper file is found
 	 */
 	private loadFromConfig(filePath: string): Template {
 		let template: Template = null;
-		if (Util.isFile(filePath)) {
+		if (Util.fileExists(filePath)) {
 			const rootPath = path.dirname(filePath);
 			const settings = require(filePath) as Template;
 			switch (`${settings.framework}|${settings.projectType}`) {
@@ -184,16 +182,20 @@ export class TemplateManager {
 		for (const template of templates) {
 			const projectLib = this.getProjectLibrary(template.framework, template.projectType);
 			if (!projectLib) {
-				throw new Error("The framework of the template is not supported.");
+				Util.error(`The framework/project type for template with id "${template.id}" is not supported.`);
+				continue;
 			}
 			if (projectLib.hasTemplate(template.id)) {
-				throw new Error("Template id already exists.");
+				Util.error(`Template with id "${template.id}" already exists.`);
+				continue;
 			}
 			if (projectLib.getComponentGroups().indexOf(template.controlGroup) === -1) {
-				throw new Error("Not supported group");
+				Util.error(`No supported group for template with id "${template.id}".`);
+				continue;
 			}
 			if (projectLib.getComponentNamesByGroup(template.controlGroup).indexOf(template.components[0]) === -1) {
-				throw new Error("No matching component found");
+				Util.error(`No matching component found for template with id "${template.id}".`);
+				continue;
 			}
 			projectLib.registerTemplate(template);
 		}
