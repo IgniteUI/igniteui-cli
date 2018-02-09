@@ -79,18 +79,18 @@ describe("Unit - Template manager", () => {
 		spyOn(Util, "fileExists").and.returnValue(true);
 		const mockProj =  mockProLibFactory("js");
 		this.mockProjLibs = { jquery: [ mockProj ] };
+		let group = "Grids";
 		this.customRequire = {
-			test: modulePath => modulePath.endsWith("template.json"),
 			require: modulePath => {
-				// tslint:disable-next-line:no-object-literal-type-assertion
 				return {
 					components: ["Grid"],
-					controlGroup: "Grids",
+					controlGroup: group,
 					framework: "jquery",
 					id: "existing",
 					projectType: "js"
-				} as Template;
-			}
+				};
+			},
+			test: modulePath => modulePath.endsWith("template.json")
 		};
 
 		mockProj.hasTemplate.and.returnValue(true);
@@ -106,6 +106,12 @@ describe("Unit - Template manager", () => {
 		expect(Util.error).toHaveBeenCalledWith(
 			`The framework/project type for template with id "existing" is not supported.`);
 		mockProj.projectType = "js";
+
+		resetSpy(Util.error);
+		group = "NotGrids";
+		manager = new TemplateManager();
+		expect(mockProj.registerTemplate).toHaveBeenCalledTimes(0);
+		expect(Util.error).toHaveBeenCalledWith(`No supported group for template with id "existing".`);
 
 		done();
 	});
@@ -127,18 +133,17 @@ describe("Unit - Template manager", () => {
 			react: [ mockProLibFactory("es6") ]
 		};
 		this.customRequire = {
-			test: modulePath => modulePath.endsWith("template.json"),
 			require: modulePath => {
 				const [ frameworkId, proj ] = modulePath.split(path.sep).filter(x => x && !x.includes("template"));
-				// tslint:disable-next-line:no-object-literal-type-assertion
 				return {
 					components: ["Grid"],
 					controlGroup: "Grids",
 					framework: frameworkId,
 					id: modulePath,
 					projectType: proj
-				} as Template;
-			}
+				};
+			},
+			test: modulePath => modulePath.endsWith("template.json")
 		};
 
 		// load:

@@ -91,7 +91,7 @@ export class BaseProjectLibrary implements ProjectLibrary {
 				const component: Component = {
 					group: template.controlGroup,
 					name: newComponent,
-					templates: []
+					templates: [template]
 				};
 				this.components.push(component);
 			}

@@ -193,10 +193,6 @@ export class TemplateManager {
 				Util.error(`No supported group for template with id "${template.id}".`);
 				continue;
 			}
-			if (projectLib.getComponentNamesByGroup(template.controlGroup).indexOf(template.components[0]) === -1) {
-				Util.error(`No matching component found for template with id "${template.id}".`);
-				continue;
-			}
 			projectLib.registerTemplate(template);
 		}
 	}
