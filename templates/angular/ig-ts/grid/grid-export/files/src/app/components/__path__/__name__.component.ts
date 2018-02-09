@@ -8,11 +8,23 @@ declare var $;
 	template: `
 		<h1>$(description)</h1>
 		<h2>Select columns to ignore</h2>
-		<ig-combo [(options)]="comboOptions" widgetId="combo" [(ngModel)]="comboOptions.value" (selectionChanged)="selectionChanged($event)"></ig-combo>
+		<div>
+			<ig-combo [(options)]="comboOptions" widgetId="combo" [(ngModel)]="comboOptions.value" (selectionChanged)="selectionChanged($event)"></ig-combo>
+			<input type="button" id="exportBtn" value="Export grid" (click)="export($event)" />
+		</div>
 		<ig-grid [(options)]="gridOptions" widgetId="grid-export"></ig-grid>
-		<br />
-		<input type="button" id="exportBtn" value="Export grid" (click)="export($event)" />
-	`
+		`,
+		styles: [`
+		.ui-igcombo-wrapper {
+			margin: 1px;
+			height: 30px;
+		}
+
+		#exportBtn {
+			height: 30px;
+			vertical-align: top;
+		}`
+	]
 })
 export class $(ClassName)Component {
 	public comboOptions: IgCombo;
@@ -27,6 +39,7 @@ export class $(ClassName)Component {
 		this.keys = ["EmployeeID", "LastName", "Country", "Age", "IsActive", "Company", "RegistererDate"];
 		this.comboOptions = {
 			width: "200px",
+			height: "30px",
 			mode: "dropdown",
 			dataSource: this.keys,
 			multiSelection:{

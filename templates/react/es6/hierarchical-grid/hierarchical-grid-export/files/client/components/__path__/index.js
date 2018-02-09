@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import * as $ from 'jquery';
 import 'jquery-ui';
 $(igniteImports)
-
 import "ignite-ui/js/modules/infragistics.ext_core.js";
 import "ignite-ui/js/modules/infragistics.ext_collections.js";
 import "ignite-ui/js/modules/infragistics.ext_text.js";
@@ -19,21 +18,29 @@ import "ignite-ui/js/modules/infragistics.excel_serialization_openxml.js";
 import "ignite-ui/js/modules/infragistics.gridexcelexporter.js";
 
 import $(Control) from "igniteui-react/ui/$(widget).js";
-import IgButton from "igniteui-react/ui/igButton.js"
 
 import { northwind } from './northwind.js';
+import "./styles.scss";
 
 export default class $(ClassName) extends Component {
 	constructor(props) {
 		super(props);
-		this.state = northwind;
+		this.state = {
+			northwind,
+			exportOptions:[{"text": "All Rows", "value": "allRows"}, {"text":"Expanded Rows", "value":"expandedRows"}],
+			exportOption: []
+		};
 
 		this.export = () => {
 			// export
 			$.ig.GridExcelExporter.exportGrid($("#hierarchicalGrid"), {
 				fileName: "igHierarchicalGrid",
-				worksheetName: 'Sheet1'
+				worksheetName: 'Sheet1',
+				exportOption: this.state.exportOption
 			});
+		}
+		this.selectionChanged = (ev, ui) => {
+			this.setState({exportOption: ui.items[0].data.value});
 		}
 	}
 	render() {
@@ -42,6 +49,22 @@ export default class $(ClassName) extends Component {
 				<div className="App-header">
 					<h2>$(description)</h2>
 				</div>
+				<div>
+					<IgCombo
+						id="combo"
+						width="200px"
+						mode="dropdown"
+						responseDataKey="exportOptions"
+						dataSource={this.state}
+						selectionChanged={this.selectionChanged}
+						 />
+
+					<IgButton
+						onClick={this.export}
+						labelText="Export"
+					/>
+				</div>
+
 				<$(Control)
 					id="hierarchicalGrid"
 					features={$(gridfeatures)}
@@ -49,7 +72,7 @@ export default class $(ClassName) extends Component {
 					autoCommit={true}
 					autoGenerateColumns={false}
 					autofitLastColumn={false}
-					dataSource={this.state}
+					dataSource={this.state.northwind}
 					responseDataKey="results"
 					dataSourceType="json"
 					columns={[
@@ -82,10 +105,7 @@ export default class $(ClassName) extends Component {
 						}
 					]}
 				/>
-			<IgButton 
-				onClick={this.export}
-				labelText="Export"
-				/>
+
       </div>
 		);
 	}
