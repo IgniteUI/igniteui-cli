@@ -97,7 +97,7 @@ export abstract class AngularTemplate implements Template {
 	}
 
 	protected className(name: string): string {
-		return name.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1)).replace(/\s/g, "");
+		return name.replace(/\w[^-\s]*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1)).replace(/[-\s]/g, "");
 	}
 
 	protected folderName(name: string): string {
