@@ -98,7 +98,7 @@ function createGrid() {
                     columnKey: "Visited"
                 }, {
                     columnIndex: -1,
-                    allowSorting: false,
+                    allowSorting: true,
                     columnKey: "Severity"
                 }, {
                     columnIndex: -1,
