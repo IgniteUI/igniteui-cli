@@ -71,7 +71,6 @@ describe("Unit - Add command", () => {
 	it("Should replace dashes and empty spaces in class name", async done => {
 		spyOn(Util, "validateTemplate");
 		const angularTemplate = new AngularTemplateInstance("someDummyString");
-		const emptyObject = {};
 
 		// tslint:disable
 		const projectNames = [
@@ -109,7 +108,7 @@ describe("Unit - Add command", () => {
 			angularTemplate.generateFiles(null, item.name);
 
 			expect(Util.validateTemplate).toHaveBeenCalled();
-			expect(Util.validateTemplate).toHaveBeenCalledWith("someDummyString\\files", null, item.valid, emptyObject);
+			expect(Util.validateTemplate).toHaveBeenCalledWith(jasmine.any(String), null, item.valid, jasmine.any(Object));
 		}
 
 		done();
