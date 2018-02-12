@@ -34,7 +34,7 @@ class TreeGridTemplate extends AngularTemplate {
 
 	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
 		const config = {
-			"$(ClassName)": this.className(name),
+			"$(ClassName)": Util.className(name),
 			"__name__": this.fileName(name),
 			"__path__": this.folderName(name)
 		};

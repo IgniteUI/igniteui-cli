@@ -3,7 +3,6 @@ import * as fs from "fs-extra";
 import { default as addCmd } from "../../lib/commands/add";
 import { ProjectConfig } from "../../lib/ProjectConfig";
 import { PromptSession } from "../../lib/PromptSession";
-import { AngularTemplate } from "../../lib/templates/AngularTemplate";
 import { Util } from "../../lib/Util";
 import { resetSpy } from "../helpers/utils";
 
@@ -68,55 +67,4 @@ describe("Unit - Add command", () => {
 		done();
 	});
 
-	it("Should replace dashes and empty spaces in class name", async done => {
-		spyOn(Util, "validateTemplate");
-		const angularTemplate = new AngularTemplateInstance("someDummyString");
-
-		// tslint:disable
-		const projectNames = [
-			{
-				name: "name with spaces",
-				valid:
-				{
-					"$(ClassName)": "NameWithSpaces",
-					__name__: "name-with-spaces",
-					__path__: "name-with-spaces"
-				}
-			},
-			{
-				name: "name-with-dashes",
-				valid:
-				{
-					"$(ClassName)": "NameWithDashes",
-					__name__: "name-with-dashes",
-					__path__: "name-with-dashes"
-				}
-			},
-			{
-				name: "miXed CaSe",
-				valid:
-				{
-					"$(ClassName)": "MiXedCaSe",
-					__name__: "mixed-case",
-					__path__: "mixed-case"
-				}
-			}
-		];
-
-		// tslint:enable
-		for (const item of projectNames) {
-			angularTemplate.generateFiles(null, item.name);
-
-			expect(Util.validateTemplate).toHaveBeenCalled();
-			expect(Util.validateTemplate).toHaveBeenCalledWith(jasmine.any(String), null, item.valid, jasmine.any(Object));
-		}
-
-		done();
-	});
 });
-
-class AngularTemplateInstance extends AngularTemplate {
-	constructor(rootPath: string) {
-		super(rootPath);
-	}
-}
