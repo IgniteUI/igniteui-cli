@@ -74,12 +74,14 @@ describe("Unit - Template manager", () => {
 	it("Shows warnings for incorrect custom templates", async done => {
 		spyOn(Util, "error");
 		spyOn(Util, "getDirectoryNames").and.returnValue(["jquery"]);
-		spyOn(ProjectConfig, "getConfig").and.returnValue({ customTemplates: ["existing/template/"] });
+		const template = "existing/template/";
+		spyOn(ProjectConfig, "getConfig").and.returnValue({ customTemplates: [template] });
 		spyOn(Util, "directoryExists").and.returnValue(true);
 		spyOn(Util, "fileExists").and.returnValue(true);
 		const mockProj =  mockProLibFactory("js");
 		this.mockProjLibs = { jquery: [ mockProj ] };
 		let group = "Grids";
+		let type = "js";
 		this.customRequire = {
 			require: modulePath => {
 				return {
@@ -87,7 +89,7 @@ describe("Unit - Template manager", () => {
 					controlGroup: group,
 					framework: "jquery",
 					id: "existing",
-					projectType: "js"
+					projectType: type
 				};
 			},
 			test: modulePath => modulePath.endsWith("template.json")
@@ -112,6 +114,52 @@ describe("Unit - Template manager", () => {
 		manager = new TemplateManager();
 		expect(mockProj.registerTemplate).toHaveBeenCalledTimes(0);
 		expect(Util.error).toHaveBeenCalledWith(`No supported group for template with id "existing".`);
+		group = "Grids";
+
+		resetSpy(Util.error);
+		type = "ts-not-available";
+		manager = new TemplateManager();
+		expect(mockProj.registerTemplate).toHaveBeenCalledTimes(0);
+		expect(Util.error).toHaveBeenCalledWith(
+			`The framework/project type for template with id "existing" is not supported.`);
+		expect(Util.error).toHaveBeenCalledWith(`File path: ${(template + "template.json").replace(/\//g, path.sep)}`);
+
+		done();
+	});
+
+	it("Loads custom templates from sub folders", async done => {
+		spyOn(Util, "getDirectoryNames").and.returnValues(
+			["jquery"], //frameworks load
+			["template1", "template2"] //templates load
+		);
+		const template = "rootFolder/";
+		spyOn(ProjectConfig, "getConfig").and.returnValue({ customTemplates: [template] });
+		spyOn(Util, "directoryExists").and.returnValue(true);
+		spyOn(Util, "fileExists").and.returnValues(false, true, true);
+		this.mockProjLibs = { jquery: [ mockProLibFactory("js") ] };
+		this.customRequire = {
+			require: modulePath => {
+				return {
+					components: ["Grid"],
+					controlGroup: "Grids",
+					framework: "jquery",
+					id: modulePath,
+					projectType: "js"
+				};
+			},
+			test: modulePath => modulePath.endsWith("template.json")
+		};
+
+		const manager = new TemplateManager();
+		expect(Util.fileExists).toHaveBeenCalledTimes(3);
+		expect(Util.fileExists).toHaveBeenCalledWith("rootFolder/template.json".replace(/\//g, path.sep));
+		expect(this.mockProjLibs.jquery[0].registerTemplate).toHaveBeenCalledTimes(2);
+		expect(this.mockProjLibs.jquery[0].registerTemplate).toHaveBeenCalledWith(
+			jasmine.objectContaining({ id: "rootFolder/template1/template.json".replace(/\//g, path.sep) })
+		);
+		expect(this.mockProjLibs.jquery[0].registerTemplate).toHaveBeenCalledWith(
+			jasmine.objectContaining({ id: "rootFolder/template2/template.json".replace(/\//g, path.sep) })
+		);
 
 		done();
 	});
