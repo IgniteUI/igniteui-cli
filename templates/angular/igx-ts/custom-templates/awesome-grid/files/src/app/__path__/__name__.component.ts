@@ -24,7 +24,7 @@ import {
   import { athletesData } from './data';
   
   @Component({
-	selector: 'app-awesome-grid',
+	selector: "$(filePrefix)",
 	templateUrl: './$(filePrefix).component.html',
 	styleUrls: ['./$(filePrefix).component.css'],
 	encapsulation: ViewEncapsulation.None

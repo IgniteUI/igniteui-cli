@@ -41,9 +41,9 @@ class TreeGridExportTemplate extends ReactTemplate {
 		}
 
 		config["__path__"] =  this.folderName(name); //folder name allowed spaces, any casing
-		config["$(ClassName)"] = this.className(name); //first letter capital, no spaces,
+		config["$(ClassName)"] = Util.className(name); //first letter capital, no spaces,
 		config["$(widget)"] = "igTreeGrid";
-		config["$(Control)"] = this.className("igTreeGrid");
+		config["$(Control)"] = Util.className("igTreeGrid");
 		config["$(igniteImports)"] = this.getImports();
 		config["$(name)"] = name; // this name should not have restrictions
 		config["$(treeGridFeatures)"] = features;

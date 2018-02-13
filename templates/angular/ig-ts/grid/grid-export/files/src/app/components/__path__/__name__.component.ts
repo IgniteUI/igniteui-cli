@@ -4,7 +4,7 @@ import { employees } from "../../assets/employees";
 declare var $;
 
 @Component({
-	selector: "app-grid-export",
+	selector: "$(filePrefix)",
 	template: `
 		<h1>$(description)</h1>
 		<h2>Select columns to ignore</h2>

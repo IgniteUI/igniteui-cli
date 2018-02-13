@@ -34,6 +34,7 @@
     "bin/*",
     "lib/**/*.d.ts",
     "lib/**/*.js",
+    "lib/config/defaults.json",
     "templates/**/*.d.ts",
     "templates/**/*.js",
     "templates/**/files/**/*",
