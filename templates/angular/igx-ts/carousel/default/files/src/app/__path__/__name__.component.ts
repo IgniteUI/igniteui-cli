@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 
 @Component({
-	selector: 'app-home',
+	selector: "$(filePrefix)",
 	templateUrl: './$(filePrefix).component.html',
 	styleUrls: ['./$(filePrefix).component.css'],
 	encapsulation: ViewEncapsulation.None,

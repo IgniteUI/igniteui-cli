@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { files } from "../../assets/data-fe";
 
 @Component({
-	selector: "app-tree-grid",
+	selector: "$(filePrefix)",
 	template: `
 		<h1>$(description)</h1>
 		<ig-tree-grid [(options)]="gridOptions" widgetId='tree-grid'></ig-tree-grid>`,

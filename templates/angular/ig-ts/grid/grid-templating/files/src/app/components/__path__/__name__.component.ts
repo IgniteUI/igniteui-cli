@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { products } from "../../assets/northwind";
 
 @Component({
-	selector: "app-grid",
+	selector: "$(filePrefix)",
 	template: `
 		<h1>$(description)</h1>
 		<ig-grid [(options)]="gridOptions" widgetId='grid-templating'></ig-grid>

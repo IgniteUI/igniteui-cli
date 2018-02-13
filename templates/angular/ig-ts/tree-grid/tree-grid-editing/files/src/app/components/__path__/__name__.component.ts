@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { hierarchicalDS } from "../../assets/data-editing";
 
 @Component({
-	selector: "app-tree-grid-editing",
+	selector: "$(filePrefix)",
 	template: `
 		<h1>$(description)</h1>
 		<ig-tree-grid [(options)]="gridOptions" widgetId='tree-grid'></ig-tree-grid>
