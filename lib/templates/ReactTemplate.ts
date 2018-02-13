@@ -33,10 +33,10 @@ export abstract class ReactTemplate implements Template {
 
 		config["__path__"] =  this.folderName(name); //folder name allowed spaces, any casing
 		config["$(name)"] = name; // this name should not have restrictions
-		config["$(ClassName)"] = this.className(name); //first letter capital, no spaces,
+		config["$(ClassName)"] = Util.className(name); //first letter capital, no spaces and no dashes,
 		if (this.widget) {
 			config["$(widget)"] = this.widget;
-			config["$(Control)"] = this.className(this.widget);
+			config["$(Control)"] = Util.className(this.widget);
 		}
 		config["$(igniteImports)"] = this.getImports();
 		if (this.description) {
@@ -89,10 +89,5 @@ export abstract class ReactTemplate implements Template {
 	protected getToolbarLink(name: string): string {
 		const toolbarLink = name.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
 		return toolbarLink;
-	}
-
-	protected className(name: string): string {
-		const className = name.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1)).replace(/\s/g, "");
-		return className;
 	}
 }
