@@ -5,7 +5,7 @@ import { flatDS } from "../../assets/data-flat";
 declare var $;
 
 @Component({
-	selector: "app-tree-grid",
+	selector: "$(filePrefix)",
 	template: `
 		<h1>$(description)</h1>
 		<h3>Flat Data Source</h3>

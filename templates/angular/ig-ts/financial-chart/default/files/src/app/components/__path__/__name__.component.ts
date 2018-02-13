@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { financialData } from "../../assets/financial-data";
 
 @Component({
-	selector: "app-financial-chart",
+	selector: "$(filePrefix)",
 	template: `
 		<h1>$(description)</h1>
 		<div style="float: left">

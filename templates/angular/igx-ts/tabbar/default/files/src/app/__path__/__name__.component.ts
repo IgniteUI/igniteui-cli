@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Contacts } from './localData';
 
 @Component({
+  selector: "$(filePrefix)",
   templateUrl: './$(filePrefix).component.html',
   styleUrls: ['./$(filePrefix).component.css'],
   encapsulation: ViewEncapsulation.None

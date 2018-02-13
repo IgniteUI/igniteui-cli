@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { northwind } from "../../assets/northwind";
 
 @Component({
-	selector: "app-hierarchical-grid-editing",
+	selector: "$(filePrefix)",
 	template: `
 		<h1>$(description)</h1>
 		<ig-hierarchical-grid [(options)]="gridOptions" widgetId='hierarchical-grid-editing'></ig-hierarchical-grid>

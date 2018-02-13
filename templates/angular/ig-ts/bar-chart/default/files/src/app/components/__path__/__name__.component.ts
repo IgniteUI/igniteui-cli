@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { lastFiveYears } from "../../assets/world-energy-production";
 
 @Component({
-	selector: "app-bar-chart",
+	selector: "$(filePrefix)",
 	template: `
 		<h1>$(description)</h1>
 		<div style="float: left">

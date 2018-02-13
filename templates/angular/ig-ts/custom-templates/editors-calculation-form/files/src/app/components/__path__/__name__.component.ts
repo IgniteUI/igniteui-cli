@@ -10,7 +10,7 @@ import {
 import { Component, ViewChild } from "@angular/core";
 
 @Component({
-	selector: "app-data-calculation-form",
+	selector: "$(filePrefix)",
 	template:`
 	<h1>$(description)</h1>
 	<p>To calculate the approximate cost of your monthly installment you can use our credit calculator.</p>

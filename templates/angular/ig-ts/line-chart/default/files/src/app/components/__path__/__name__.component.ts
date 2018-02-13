@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { data } from "../../assets/line-chart-data";
 
 @Component({
-	selector: "app-line-chart",
+	selector: "$(filePrefix)",
 	template: `
 	<h1>$(description)</h1>
 	<div class="selectionOptions" (change)="selectionChanged($event)" >

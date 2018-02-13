@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { IgxFilterOptions, IgxListItem } from 'igniteui-angular/main';
 
 @Component({
+	selector: "$(filePrefix)",
 	templateUrl: './$(filePrefix).component.html',
 	styleUrls: ['./$(filePrefix).component.css'],
 	encapsulation: ViewEncapsulation.None
