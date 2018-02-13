@@ -2,7 +2,6 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { employeesData } from './localData';
 
 @Component({
-  selector: 'app-home',
   templateUrl: './$(filePrefix).component.html',
   styleUrls: ['./$(filePrefix).component.css'],
   encapsulation: ViewEncapsulation.None
