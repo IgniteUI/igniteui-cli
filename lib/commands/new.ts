@@ -18,27 +18,39 @@ command = {
 	command: "new [name]",
 	desc: "Creating a new project",
 	builder: {
-		name: {
+		"name": {
 			alias: "n",
 			describe: "Project name",
 			type: "string"
 		},
-		framework: {
+		"framework": {
 			alias: "f",
 			default: "jquery",
 			describe: "Framework to setup project for",
 			type: "string",
 			choices: []
 		},
-		type: {
+		"type": {
 			alias: "t",
 			describe: "Project type (depends on framework)",
 			type: "string"
 		},
-		theme: {
+		"theme": {
 			alias: "th",
 			describe: "Project theme (depends on project type)",
 			type: "string"
+		},
+		"skip-git": {
+			alias: "sg",
+			default: false,
+			describe: "Do not automatically initialize repository for the project with Git",
+			type: "boolean"
+		},
+		"skip-commit": {
+			alias: "sc",
+			default: false,
+			describe: "Do not automatically commit project with Git",
+			type: "boolean"
 		}
 	},
 	template: null,
@@ -95,11 +107,11 @@ command = {
 		Util.log("Project Created");
 
 		try {
-			if (!argv.skipInit) {
+			if (!argv["skip-git"]) {
 				process.chdir(argv.name);
 				shell.exec("git init", { silent: true });
 				Util.log("Git initialized");
-				if (!argv.skipCommit) {
+				if (!argv["skip-commit"]) {
 					shell.exec("git add .", { silent: true });
 					shell.exec("git commit -m " + "\"Initial commit for project: " + argv.name + "\"", { silent: true });
 					Util.log("Project Commited");
