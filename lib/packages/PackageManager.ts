@@ -1,4 +1,3 @@
-
 import { spawnSync } from "child_process";
 import * as path from "path";
 import { exec, ExecOutputReturnValue } from "shelljs";
@@ -11,7 +10,6 @@ import componentsConfig = require("./components");
 export class PackageManager {
 	private static ossPackage: string = "ignite-ui";
 	private static fullPackage: string = "@infragistics/ignite-ui-full";
-	private static fullPackageRegistry: string = "https://packages.infragistics.com/npm/js-licensed/";
 
 	/**
 	 * Specific for Ignite UI packages handling:
@@ -31,7 +29,7 @@ export class PackageManager {
 		}
 
 		if (installNow) {
-			if (this.ensureRegistryUser() && this.addPackage(this.fullPackage, verbose)) {
+			if (this.ensureRegistryUser(config) && this.addPackage(this.fullPackage, verbose)) {
 				if (this.getPackageJSON().dependencies[this.ossPackage]) {
 					// TODO: Check if OSS package uninstalled successfully?
 					this.removePackage(this.ossPackage, verbose);
@@ -146,8 +144,9 @@ export class PackageManager {
 		return original === `./node_modules/${this.ossPackage}`;
 	}
 
-	private static ensureRegistryUser(): boolean {
-		const user = exec(`npm whoami --registry=${this.fullPackageRegistry}`, { silent: true }) as ExecOutputReturnValue;
+	private static ensureRegistryUser(config: Config): boolean {
+		const fullPackageRegistry = config.igPackageRegistry;
+		const user = exec(`npm whoami --registry=${fullPackageRegistry}`, { silent: true }) as ExecOutputReturnValue;
 		if (user.code !== 0) {
 			// try registering the user:
 			Util.log(
@@ -158,18 +157,18 @@ export class PackageManager {
 				"We are initiating the login process for you. This will be required only once per environment.",
 				"gray"
 			);
-			Util.log(`Adding a registry user account for ${this.fullPackageRegistry}`, "yellow");
+			Util.log(`Adding a registry user account for ${fullPackageRegistry}`, "yellow");
 			Util.log(`Use you Infragistics account credentials. "@" is not supported,` +
 				`use "!!", so "username@infragistics.com" should be entered as "username!!infragistics.com"`, "yellow");
 
 			const cmd = /^win/.test(process.platform) ? "npm.cmd" : "npm"; //https://github.com/nodejs/node/issues/3675
 			const login = spawnSync(cmd,
-				["adduser", `--registry=${this.fullPackageRegistry}`, `--scope=@infragistics`, `--always-auth`],
+				["adduser", `--registry=${fullPackageRegistry}`, `--scope=@infragistics`, `--always-auth`],
 				{ stdio: "inherit" }
 			);
 			if (login.status === 0) {
 				//make sure scope is configured:
-				return exec(`npm config set @infragistics:registry ${this.fullPackageRegistry}`).code === 0;
+				return exec(`npm config set @infragistics:registry ${fullPackageRegistry}`).code === 0;
 			} else {
 				Util.log("Something went wrong, " +
 					"please follow the steps in this guide: https://www.igniteui.com/help/using-ignite-ui-npm-packages", "red");

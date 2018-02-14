@@ -7,7 +7,7 @@ import { Util } from "../Util";
  * Template with specific implementation for jQuery projects
  */
 // tslint:disable-next-line:class-name
-export abstract class jQueryTemplate implements Template {
+export class jQueryTemplate implements Template {
 	public components: string[];
 	public controlGroup: string;
 	public listInComponentTemplates: boolean;
