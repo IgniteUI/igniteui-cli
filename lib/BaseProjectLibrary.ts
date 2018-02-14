@@ -91,9 +91,18 @@ export class BaseProjectLibrary implements ProjectLibrary {
 				const component: Component = {
 					group: template.controlGroup,
 					name: newComponent,
-					templates: [template]
+					templates: []
 				};
 				this.components.push(component);
+			}
+			if (template.listInComponentTemplates) {
+				const currentComponents = template.components.filter(x => this.components.find(f => f.name === x));
+				for (const currentComponent of currentComponents) {
+					this.components.find(f => f.name === currentComponent).templates.push(template);
+				}
+			}
+			if (template.listInCustomTemplates) {
+				this.customTemplates.push(template);
 			}
 		}
 	}
