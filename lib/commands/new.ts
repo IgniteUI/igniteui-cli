@@ -5,6 +5,9 @@ import { Util } from "../Util";
 import { PromptSession } from "./../PromptSession";
 import { TemplateManager } from "./../TemplateManager";
 
+// TODO: remove. exec blocks main stdio!
+import shell = require("shelljs");
+
 let command: {
 	[name: string]: any,
 	template: TemplateManager,
@@ -90,6 +93,22 @@ command = {
 		// TODO: update output path based on where the CLI is called
 		await projTemplate.generateFiles(process.cwd(), argv.name, theme);
 		Util.log("Project Created");
+
+		try {
+			if (!argv.skipInit) {
+				process.chdir(argv.name);
+				shell.exec("git init", { silent: true });
+				Util.log("Git initialized");
+				if (!argv.skipCommit) {
+					shell.exec("git add .", { silent: true });
+					shell.exec("git commit -m " + "\"Initial commit for project: " + argv.name + "\"", { silent: true });
+					Util.log("Project Commited");
+				}
+				process.chdir("../");
+			}
+		} catch (error) {
+			Util.error("Git initialization failed. Install Git in order to automatically commit the project.", "yellow");
+		}
 	}
 };
 
