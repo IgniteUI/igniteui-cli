@@ -33,9 +33,11 @@ class Util {
 	public static isDirectory(dirPath): boolean {
 		return fs.lstatSync(dirPath).isDirectory();
 	}
+
 	public static isFile(filePath): boolean {
 		return fs.lstatSync(filePath).isFile();
 	}
+
 	public static getDirectoryNames(rootPath: string): string[] {
 		// TODO: add https://github.com/davetemplin/async-file
 		let folders: string[] = [];
@@ -44,6 +46,7 @@ class Util {
 		}
 		return folders;
 	}
+
 	public static async processTemplates(
 		sourcePath: string,
 		destinationPath: string, configuration: { [key: string]: string },
@@ -126,6 +129,7 @@ class Util {
 			});
 		}
 	}
+
 	public static validateTemplate(
 		sourcePath: string,
 		destinationPath: string, configuration: { [key: string]: string },
@@ -154,6 +158,7 @@ class Util {
 		}
 		return true;
 	}
+
 	public static applyConfigTransformation = (data: string, configuration: { [key: string]: string }): string => {
 		let key;
 		// tslint:disable-next-line:forin
@@ -199,6 +204,7 @@ class Util {
 		}
 		// tslint:enable:no-console
 	}
+
 	public static version() {
 		const configuration = require("../package.json");
 		const logo = fs.readFileSync(__dirname + "/../ignite-ui-cli.txt");
@@ -229,6 +235,7 @@ class Util {
 		}
 		return os;
 	}
+
 	/**
 	 * lower-dashed string
 	 */
@@ -243,6 +250,15 @@ class Util {
 	 */
 	public static isAlphanumericExt(name: string) {
 		return /^[\sa-zA-Z][\w\s\-]+$/.test(name);
+	}
+
+	/**
+	 * Separate provided name to words on each space and/or dash and capitalize first letter of each
+	 * resulting word.
+	 * @param name Text to convert to proper class name
+	 */
+	public static className(name: string): string {
+		return name.replace(/\w[^-\s]*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1)).replace(/[-\s]/g, "");
 	}
 
 	/**

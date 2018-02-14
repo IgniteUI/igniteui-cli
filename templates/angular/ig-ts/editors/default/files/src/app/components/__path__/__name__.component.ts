@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-	selector: "editors",
+	selector: "$(filePrefix)",
 	template: `
 		<h1>$(description)</h1>
 		<$(widget) [(options)]="options" widgetId='$(widget)'></$(widget)>

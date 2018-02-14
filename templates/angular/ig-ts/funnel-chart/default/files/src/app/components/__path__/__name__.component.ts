@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { funnelData } from "../../assets/funnel-data";
 
 @Component({
-	selector: "app-funnel-chart",
+	selector: "$(filePrefix)",
 	template: `
 		<h1>$(description)</h1>
 		<div style="float: left">

@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { doughnutData } from "../../assets/doughnut-data";
 
 @Component({
-	selector: "app-doughnut-chart",
+	selector: "$(filePrefix)",
 	template: `
 		<h1>$(description)</h1>
 		<div style="float: left">

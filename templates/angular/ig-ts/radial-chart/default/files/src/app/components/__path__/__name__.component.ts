@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { temperature } from "../../assets/temperature";
 
 @Component({
-	selector: "app-radial-chart",
+	selector: "$(filePrefix)",
 	template: `
 		<h1>$(description)</h1>
 		<div style="float: left">

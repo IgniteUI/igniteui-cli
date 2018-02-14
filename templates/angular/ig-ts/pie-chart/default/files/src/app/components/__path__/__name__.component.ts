@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { population } from "../../assets/data";
 
 @Component({
-	selector: "app-pie-chart",
+	selector: "$(filePrefix)",
 	template: `
 		<h1>$(description)</h1>
 		<div style="float: left">

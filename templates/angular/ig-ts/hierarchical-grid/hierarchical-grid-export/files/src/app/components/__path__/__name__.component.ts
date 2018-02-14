@@ -4,7 +4,7 @@ import { northwind } from "../../assets/northwind";
 declare var $;
 
 @Component({
-	selector: "app-hierarchical-grid-export",
+	selector: "$(filePrefix)",
 	template: `
 		<h1>$(description)</h1>
 		<h2>Data Export Mode</h2>
