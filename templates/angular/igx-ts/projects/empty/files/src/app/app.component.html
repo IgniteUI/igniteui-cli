@@ -1,6 +1,6 @@
 <div class="main">
   <igx-nav-drawer #nav id="project-menu"  isOpen="true" [enableGestures]='true' width="280px">
-      <div class="ig-drawer-content">
+      <div class="igx-drawer-content">
           <h3>Views</h3>
           <span *ngFor="let route of topNavLinks" class="nav-item" routerLinkActive="active" routerLink="{{route.path}}">{{route.name}}</span>
       </div>
