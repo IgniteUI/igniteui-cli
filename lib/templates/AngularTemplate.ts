@@ -3,7 +3,7 @@ import * as path from "path";
 import { ProjectConfig } from "../ProjectConfig";
 import { Util } from "../Util";
 
-export abstract class AngularTemplate implements Template {
+export class AngularTemplate implements Template {
 	public components: string[];
 	public controlGroup: string;
 	public listInComponentTemplates: boolean = true;
@@ -24,7 +24,7 @@ export abstract class AngularTemplate implements Template {
 	}
 	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
 		const config = {
-			"$(ClassName)": this.className(name),
+			"$(ClassName)": Util.className(name),
 			"__name__": this.fileName(name), // TODO: optionally pass as a different variable than name.
 			"__path__": this.folderName(name)
 		};
@@ -94,10 +94,6 @@ export abstract class AngularTemplate implements Template {
 			files.push("modules/infragistics.gridexcelexporter.js");
 			ProjectConfig.setConfig(config);
 		}
-	}
-
-	protected className(name: string): string {
-		return name.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1)).replace(/\s/g, "");
 	}
 
 	protected folderName(name: string): string {

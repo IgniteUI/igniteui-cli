@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 
 @Component({
-	selector: "app-combo",
+	selector: "$(filePrefix)",
 	template: `
 			<h1>$(description)</h1>
 			<ig-combo [widgetId]="'combo2'"
