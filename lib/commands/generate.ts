@@ -17,14 +17,33 @@ const command = {
 				handler: command.empty
 			})
 			.command({
-				command: "template [name] [framework] [type]",
-				default: true,
-				desc: "Generates empty template",
+				command: "template [name] [framework] [type] [skipconfig]",
+				desc: "Generates custom template",
 				builder: {
-					property: {
-						describe: "Template to generate",
-						type: "string"
-					}
+					name: {
+						alias: "n",
+						description: "File name.",
+						type: "string",
+						global: true
+					},
+					framework: {
+						alias: "f",
+						description: "Framework name.",
+						type: "string",
+						global: true
+					},
+					type: {
+						alias: "t",
+						description: "Framework type.",
+						type: "string",
+						global: true
+					},
+					skipconfig: {
+						alias: "s",
+						description: "Wheather or not to be added to config.",
+						type: "boolean",
+						global: true
+					},
 				},
 				handler: command.template
 			})
