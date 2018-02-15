@@ -15,14 +15,14 @@ export class BaseComponent implements Component {
 		if (rootPath) {
 			this.basePath = rootPath;
 		}
-		this.templates = this.loadTempaltes();
+		this.templates = this.loadTemplates();
 	}
 
 	private get templateIds(): string[] {
 		return this.templates.map(x => x.id);
 	}
 
-	protected loadTempaltes(): Template[] {
+	protected loadTemplates(): Template[] {
 		let modulePath;
 		const templates: Template[] = [];
 		const templatePaths = Util.getDirectoryNames(this.basePath);

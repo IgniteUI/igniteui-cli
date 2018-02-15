@@ -23,7 +23,13 @@ class Util {
 			return false;
 		}
 	}
-
+	public static fileExists(filePath) {
+		try {
+			return fs.statSync(filePath).isFile();
+		} catch (err) {
+			return false;
+		}
+	}
 	public static isDirectory(dirPath): boolean {
 		return fs.lstatSync(dirPath).isDirectory();
 	}
