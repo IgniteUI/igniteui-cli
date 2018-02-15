@@ -184,6 +184,34 @@
 			"program": "${workspaceRoot}/bin/execute.js",
 			"console": "externalTerminal",
 			"preLaunchTask": "build"
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Launch Generate Template",
+			"cwd": "${workspaceRoot}/output",
+			"program": "${workspaceRoot}/bin/execute.js",
+			"console": "externalTerminal",
+			"preLaunchTask": "build",
+			"args": [
+				"generate",
+				"template"
+			]
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Launch Generate Template with name and framework",
+			"cwd": "${workspaceRoot}/output",
+			"program": "${workspaceRoot}/bin/execute.js",
+			"console": "externalTerminal",
+			"preLaunchTask": "build",
+			"args": [
+				"generate",
+				"template",
+				"--name=\"bla bla-bla\"",
+				"--framework=jquery"
+			]
 		}
 	]
 }

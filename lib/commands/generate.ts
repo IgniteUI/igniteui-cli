@@ -17,7 +17,7 @@ const command = {
 				handler: command.empty
 			})
 			.command({
-				command: "template",
+				command: "template [name] [framework] [type]",
 				default: true,
 				desc: "Generates empty template",
 				builder: {
@@ -35,8 +35,6 @@ const command = {
 	async template(argv) {
 
 		let templatesFolder = path.join(__dirname, "..", "..", "templates", "jquery", "js", "generate");
-		Util.log("__dirname is now:");
-		Util.log(templatesFolder);
 
 		if (ProjectConfig.hasLocalConfig())
 			return Util.error("There is already an existing project.", "red");
@@ -44,19 +42,44 @@ const command = {
 		if (!argv.name)
 			argv.name = "custom-template";
 
-		if (!argv.framework)
-			argv.framework = "jquery";
-
 		// trim
 		argv.name = argv.name.trim();
 
-		if (Util.directoryExists(argv.name)) {
+		// letter+alphanumeric check
+		if (!Util.isAlphanumericExt(argv.name)) {
+			Util.error("Name '${argv.name}' is not valid. "
+				+ "Name should start with a letter and can also contain numbers, dashes and spaces.",
+				"red");
+			return;
+		}
+
+		const outDir = path.join(process.cwd(), argv.name);
+		if (Util.directoryExists(outDir)) {
 			Util.error(`Folder "${argv.name}" already exists!`, "red");
 			return;
 		}
 
-		Util.log(`Project Name: ${argv.name}, framework ${argv.framework}`);
-		Util.processTemplates(templatesFolder, path.join(__dirname, argv.name), { name: argv.name }, null);
+		if (!argv.framework)
+			argv.framework = "jquery";
+
+		if (command.templateManager.getFrameworkById(argv.framework) === undefined) {
+			return Util.error("Framework not supported", "red");
+		}
+
+		let projectLib: ProjectLibrary;
+		if (argv.type) {
+			projectLib = command.templateManager.getProjectLibrary(argv.framework, argv.type) as ProjectLibrary;
+			if (!projectLib) {
+				return Util.error(`Project type "${argv.type}" not found in framework '${argv.framework}'`);
+			}
+		} else {
+			projectLib = command.templateManager.getProjectLibrary(argv.framework) as ProjectLibrary;
+		}
+
+		argv.type = projectLib.projectType;
+
+		Util.log(`Project Name: ${argv.name}, framework ${argv.framework}, type ${argv.type}`);
+		 Util.processTemplates(templatesFolder, outDir, { "$(name)": argv.name, "$(framework)": argv.framework, "$(type)": argv.type, __name__: argv.name }, null);
 		return;
 	},
 	empty(argv) {

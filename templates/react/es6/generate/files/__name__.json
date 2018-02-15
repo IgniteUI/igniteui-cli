@@ -1,0 +1,6 @@
+{
+	"id": "$(name)",
+	"framework": "$(framework)",
+	"projectType": "$(type)",
+	"components": "<add your components here>"
+}
