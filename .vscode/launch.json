@@ -216,7 +216,7 @@
 		{
 			"type": "node",
 			"request": "launch",
-			"name": "Launch Generate Template with aliases",
+			"name": "Launch Generate Template with aliases no name",
 			"cwd": "${workspaceRoot}/output",
 			"program": "${workspaceRoot}/bin/execute.js",
 			"console": "externalTerminal",
@@ -224,8 +224,7 @@
 			"args": [
 				"g",
 				"t",
-				"--name="alabala"
-			]
+			],
 		}
 	]
 }

@@ -51,7 +51,7 @@ const command = {
 			describe: "Specify if the global configuration should be used"
 		})
 		// at least one command is required
-		.demand(1, "Please use either get or set command");
+		.demandCommand(1, "Please select command");
 	},
 	// tslint:enable:object-literal-sort-keys
 	getHandler(argv) {

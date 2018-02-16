@@ -13,54 +13,41 @@ const command = {
 	builder: yargs => {
 		yargs
 			.command({
-				command: "*",
-				desc: "Generates empty template",
-				handler: command.empty
-			})
-			.command({
-				command: "template [name] [framework] [type] [skipconfig]",
+				command: "template [name] [framework] [type] [skip-config]",
 				aliases: ["t"],
 				desc: "Generates custom template",
-				builder: {
-					name: {
-						alias: "n",
-						description: "File name.",
-						type: "string",
-						global: true
-					},
-					framework: {
-						alias: "f",
-						description: "Framework name.",
-						type: "string",
-						global: true
-					},
-					type: {
-						alias: "t",
-						description: "Framework type.",
-						type: "string",
-						global: true
-					},
-					skipconfig: {
-						alias: "s",
-						description: "Wheather or not to be added to config.",
-						type: "boolean",
-						global: true
-					},
-				},
+				builder: (yargs) => yargs
+					.options({
+						name: {
+							describe: "Template name.",
+							aliases: ["n"],
+							default: "custom-template",
+							type: "string"
+						},
+						framework: {
+							describe: "Framework name.",
+							aliases: ["f"],
+							default: "jquery",
+							type: "string"
+						},
+						type: {
+							describe: "Framework type.",
+							aliases: ["t"],
+							default: "js",
+							type: "string"
+						},
+						"skip-config": {
+							describe: "Skips adding to the config.",
+							type: "boolean"
+						}
+					}),
 				handler: command.template
 			})
-		// at least one command is required
-		// .demand(1, "Please use template command");
+			// at least one command is required
+			.demandCommand(1, "Please select command");
 	},
 	// tslint:enable:object-literal-sort-keys
 	async template(argv) {
-
-		if (ProjectConfig.hasLocalConfig())
-			return Util.error("There is already an existing project.", "red");
-
-		if (!argv.name)
-			argv.name = "custom-template";
-
 		// trim
 		argv.name = argv.name.trim();
 
@@ -78,9 +65,6 @@ const command = {
 			return;
 		}
 
-		if (!argv.framework)
-			argv.framework = "jquery";
-
 		if (command.templateManager.getFrameworkById(argv.framework) === undefined) {
 			return Util.error("Framework not supported", "red");
 		}
@@ -91,21 +75,23 @@ const command = {
 			if (!projectLib) {
 				return Util.error(`Project type "${argv.type}" not found in framework '${argv.framework}'`);
 			}
-		} else {
-			projectLib = command.templateManager.getProjectLibrary(argv.framework) as ProjectLibrary;
 		}
 
-		argv.type = projectLib.projectType;
-		
 		let templatesFolder = path.join(__dirname, "..", "..", "templates", argv.framework, argv.type, "generate");
 
 		Util.log(`Project Name: ${argv.name}, framework ${argv.framework}, type ${argv.type}`);
-		Util.processTemplates(templatesFolder, outDir, { "$(name)": argv.name, "$(framework)": argv.framework, "$(type)": argv.type, __name__: argv.name }, null);
-		return ;
-	},
-	empty(argv) {
-		Util.error("TODO make this later if necessary :)", "red");
-		return ;
+		const promise = Util.processTemplates(templatesFolder, outDir, { "$(name)": argv.name, "$(framework)": argv.framework, "$(type)": argv.type, __name__: argv.name }, null);
+		promise.then((res) => {
+			if(res){
+				if (ProjectConfig.hasLocalConfig())
+					return Util.error("There is already an existing project.", "red");
+			}
+			else{
+				return Util.log("Project creation failed!");
+			}
+		}).catch((err) => {
+			return Util.log("Project creation failed!");
+		});
 	}
 };
 
