@@ -7,6 +7,7 @@ import { utimes } from "fs-extra";
 const command = {
 	// tslint:disable:object-literal-sort-keys
 	command: "generate",
+	aliases: ["g"],
 	templateManager: new TemplateManager(),
 	desc: "Generates new project",
 	builder: yargs => {
@@ -18,6 +19,7 @@ const command = {
 			})
 			.command({
 				command: "template [name] [framework] [type] [skipconfig]",
+				aliases: ["t"],
 				desc: "Generates custom template",
 				builder: {
 					name: {
@@ -52,8 +54,6 @@ const command = {
 	},
 	// tslint:enable:object-literal-sort-keys
 	async template(argv) {
-
-		let templatesFolder = path.join(__dirname, "..", "..", "templates", "jquery", "js", "generate");
 
 		if (ProjectConfig.hasLocalConfig())
 			return Util.error("There is already an existing project.", "red");
@@ -96,14 +96,16 @@ const command = {
 		}
 
 		argv.type = projectLib.projectType;
+		
+		let templatesFolder = path.join(__dirname, "..", "..", "templates", argv.framework, argv.type, "generate");
 
 		Util.log(`Project Name: ${argv.name}, framework ${argv.framework}, type ${argv.type}`);
-		 Util.processTemplates(templatesFolder, outDir, { "$(name)": argv.name, "$(framework)": argv.framework, "$(type)": argv.type, __name__: argv.name }, null);
-		return;
+		Util.processTemplates(templatesFolder, outDir, { "$(name)": argv.name, "$(framework)": argv.framework, "$(type)": argv.type, __name__: argv.name }, null);
+		return ;
 	},
 	empty(argv) {
 		Util.error("TODO make this later if necessary :)", "red");
-		return;
+		return ;
 	}
 };
 

@@ -66,6 +66,7 @@ export async function run(args = null) {
 				return;
 			}
 			break;
+		case "g":
 		case "generate":
 			break;
 		case "build":

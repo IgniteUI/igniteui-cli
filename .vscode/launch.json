@@ -212,6 +212,20 @@
 				"--name=\"bla bla-bla\"",
 				"--framework=jquery"
 			]
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Launch Generate Template with aliases",
+			"cwd": "${workspaceRoot}/output",
+			"program": "${workspaceRoot}/bin/execute.js",
+			"console": "externalTerminal",
+			"preLaunchTask": "build",
+			"args": [
+				"g",
+				"t",
+				"--name="alabala"
+			]
 		}
 	]
 }
