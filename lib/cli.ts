@@ -21,7 +21,6 @@ export async function run(args = null) {
 	newCommand.template = templateManager;
 	newCommand.builder.framework.choices = templateManager.getFrameworkIds();
 	add.templateManager = templateManager;
-	generate.templateManager = templateManager;
 
 	const yargsModule = args ? yargs(args) : yargs;
 

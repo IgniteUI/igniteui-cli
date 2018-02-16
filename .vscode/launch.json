@@ -216,7 +216,7 @@
 		{
 			"type": "node",
 			"request": "launch",
-			"name": "Launch Generate Template with aliases no name",
+			"name": "Launch Generate Template with aliases g t -g",
 			"cwd": "${workspaceRoot}/output",
 			"program": "${workspaceRoot}/bin/execute.js",
 			"console": "externalTerminal",
@@ -224,7 +224,25 @@
 			"args": [
 				"g",
 				"t",
+				"-g"
 			],
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Launch Generate Template with all aliases",
+			"cwd": "${workspaceRoot}/output",
+			"program": "${workspaceRoot}/bin/execute.js",
+			"console": "externalTerminal",
+			"preLaunchTask": "build",
+			"args": [
+				"g",
+				"t",
+				"-n=alianato",
+				"-f=angular",
+				"-t=igx-ts",
+				"-s=false",
+			]
 		}
 	]
 }

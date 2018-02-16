@@ -1,8 +1,8 @@
 import * as path from "path";
 import { Util } from "../Util";
-import { ProjectConfig } from "./../ProjectConfig";
 import { TemplateManager } from "../TemplateManager";
 import { utimes } from "fs-extra";
+import { default as config } from "./config";
 
 const command = {
 	// tslint:disable:object-literal-sort-keys
@@ -16,31 +16,32 @@ const command = {
 				command: "template [name] [framework] [type] [skip-config]",
 				aliases: ["t"],
 				desc: "Generates custom template",
-				builder: (yargs) => yargs
-					.options({
-						name: {
-							describe: "Template name.",
-							aliases: ["n"],
-							default: "custom-template",
-							type: "string"
-						},
-						framework: {
-							describe: "Framework name.",
-							aliases: ["f"],
-							default: "jquery",
-							type: "string"
-						},
-						type: {
-							describe: "Framework type.",
-							aliases: ["t"],
-							default: "js",
-							type: "string"
-						},
-						"skip-config": {
-							describe: "Skips adding to the config.",
-							type: "boolean"
-						}
-					}),
+				builder: {
+					name: {
+						describe: "Template name.",
+						alias: "n",
+						default: "custom-template",
+						type: "string"
+					},
+					framework: {
+						describe: "Framework name.",
+						alias: "f",
+						default: "jquery",
+						type: "string"
+					},
+					type: {
+						describe: "Framework type.",
+						alias: "t",
+						default: "js",
+						type: "string"
+					},
+					"skip-config": {
+						describe: "Skips adding to the config.",
+						alias: "s",
+						default: false,
+						type: "boolean"
+					}
+				},
 				handler: command.template
 			})
 			// at least one command is required
@@ -82,11 +83,12 @@ const command = {
 		Util.log(`Project Name: ${argv.name}, framework ${argv.framework}, type ${argv.type}`);
 		const promise = Util.processTemplates(templatesFolder, outDir, { "$(name)": argv.name, "$(framework)": argv.framework, "$(type)": argv.type, __name__: argv.name }, null);
 		promise.then((res) => {
-			if(res){
-				if (ProjectConfig.hasLocalConfig())
-					return Util.error("There is already an existing project.", "red");
+			if (res) {
+				if (argv.skipConfig == false) {
+					config.addHandler({ property: "customTemplates", value: "parth:" + outDir, global: true });
+				}
 			}
-			else{
+			else {
 				return Util.log("Project creation failed!");
 			}
 		}).catch((err) => {
