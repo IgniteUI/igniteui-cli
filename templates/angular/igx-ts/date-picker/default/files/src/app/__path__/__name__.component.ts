@@ -11,4 +11,6 @@ export class $(ClassName)Component implements OnInit {
 
 	public ngOnInit() {
 	}
+
+	public today: Date = new Date(Date.now());
 }

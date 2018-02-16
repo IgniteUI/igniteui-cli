@@ -16,7 +16,7 @@ import {
 	PagingError,
 	SortingDirection,
 	StableSortingStrategy,
-	IgxIcon
+	IgxIconComponent
   } from 'igniteui-angular/main';
   import { IgxGridComponent } from 'igniteui-angular/grid/grid.component';
   import { timer } from 'rxjs/observable/timer';

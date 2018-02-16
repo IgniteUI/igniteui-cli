@@ -5,23 +5,26 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { IgxButtonModule } from 'igniteui-angular/main';
+import { IgxNavigationDrawerModule, IgxNavbarModule, IgxLayoutModule, IgxRippleModule } from 'igniteui-angular/main';
 import { HomeComponent } from './home/home.component';
 
 @NgModule({
-	declarations: [
-		AppComponent,
-		HomeComponent
-	],
-	imports: [
-		BrowserModule,
-		FormsModule,
-		BrowserModule,
-		BrowserAnimationsModule,
-		AppRoutingModule,
-		IgxButtonModule
-	],
-	providers: [],
-	bootstrap: [AppComponent]
+
+  declarations: [
+    AppComponent,
+    HomeComponent
+  ],
+  imports: [
+    FormsModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    IgxNavigationDrawerModule,
+    IgxNavbarModule,
+    IgxLayoutModule,
+    IgxRippleModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

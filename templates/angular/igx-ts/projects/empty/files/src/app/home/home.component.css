@@ -1,0 +1,13 @@
+a {
+  color: #731963;
+}
+
+.links{
+  display: inline-block;
+  text-align: center;
+  flex: 1 1 33%;
+}
+
+ul#linksContainer {
+  display: flex;
+}
