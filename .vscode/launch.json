@@ -242,6 +242,20 @@
 				"-t=igx-ts",
 				"-s=false",
 			]
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Add testing",
+			"cwd": "${workspaceRoot}/output/add-spec",
+			"program": "${workspaceRoot}/bin/execute.js",
+			"console": "externalTerminal",
+			"preLaunchTask": "build",
+			"args": [
+				"add",
+				"wrong",
+				"name"
+			]
 		}
 	]
 }

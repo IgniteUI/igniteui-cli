@@ -9,6 +9,7 @@ describe("Help command", () => {
 		quickstart             A quick start for your project
 		start                  start the project
 		new [name]             Creating a new project
+		generate               Generates new project                      [aliases: g]
 		build                  build the project
 		config                 Get or set configuration properties
 		test                   test the project
@@ -57,6 +58,24 @@ describe("Help command", () => {
 		--version, -v  Show current Ignite UI CLI version                    [boolean]
 		--help, -h     Show help                                             [boolean]
 		--global, -g   Specify if the global configuration should be used    [boolean]`;
+
+		const replacedNewHelpText: string = originalNewHelpText.replace(/\s/g, "");
+		const actualNewText: string = (child.stdout.toString("utf-8")).replace(/\s/g, "");
+
+		expect(actualNewText).toContain(replacedNewHelpText);
+		done();
+	});
+	it("should show help generate sub-commands", async done => {
+		const child = spawnSync("node", ["bin/execute.js", "generate", "--help" ], {
+			encoding: "utf-8"
+		});
+		const originalNewHelpText: string = `Commands:
+		template [name] [framework] [type]        Generates custom template
+  		[skip-config]                                           [aliases: t]
+
+		Options:
+		--version, -v  Show current Ignite UI CLI version                    [boolean]
+		--help, -h     Show help                                             [boolean]`;
 
 		const replacedNewHelpText: string = originalNewHelpText.replace(/\s/g, "");
 		const actualNewText: string = (child.stdout.toString("utf-8")).replace(/\s/g, "");

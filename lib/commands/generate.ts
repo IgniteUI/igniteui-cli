@@ -1,11 +1,10 @@
-import * as path from "path";
-import { Util } from "../Util";
-import { TemplateManager } from "../TemplateManager";
 import { utimes } from "fs-extra";
+import * as path from "path";
+import { TemplateManager } from "../TemplateManager";
+import { Util } from "../Util";
 import { default as config } from "./config";
 
 const command = {
-	// tslint:disable:object-literal-sort-keys
 	command: "generate",
 	aliases: ["g"],
 	templateManager: new TemplateManager(),
@@ -17,19 +16,19 @@ const command = {
 				aliases: ["t"],
 				desc: "Generates custom template",
 				builder: {
-					name: {
+					"name": {
 						describe: "Template name.",
 						alias: "n",
 						default: "custom-template",
 						type: "string"
 					},
-					framework: {
+					"framework": {
 						describe: "Framework name.",
 						alias: "f",
 						default: "jquery",
 						type: "string"
 					},
-					type: {
+					"type": {
 						describe: "Framework type.",
 						alias: "t",
 						default: "js",
@@ -47,14 +46,13 @@ const command = {
 			// at least one command is required
 			.demandCommand(1, "Please select command");
 	},
-	// tslint:enable:object-literal-sort-keys
 	async template(argv) {
 		// trim
 		argv.name = argv.name.trim();
 
 		// letter+alphanumeric check
 		if (!Util.isAlphanumericExt(argv.name)) {
-			Util.error("Name '${argv.name}' is not valid. "
+			Util.error(`Name '${argv.name}' is not valid. `
 				+ "Name should start with a letter and can also contain numbers, dashes and spaces.",
 				"red");
 			return;
@@ -78,7 +76,7 @@ const command = {
 			}
 		}
 
-		let templatesFolder = path.join(__dirname, "..", "..", "templates", argv.framework, argv.type, "generate");
+		const templatesFolder = path.join(__dirname, "..", "..", "templates", argv.framework, argv.type, "generate");
 		argv.className = Util.className(argv.name);
 
 		Util.log(`Project Name: ${argv.name}, framework ${argv.framework}, type ${argv.type}`);
@@ -88,20 +86,20 @@ const command = {
 			{
 				"$(name)": argv.name,
 				"$(framework)": argv.framework,
-				"$(type)": argv.type, __name__: argv.name,
+				"$(type)": argv.type,
+				"__name__": argv.name,
 				"$(ClassName)": argv.className
 			},
 			null);
-		promise.then((res) => {
+		promise.then(res => {
 			if (res) {
-				if (argv.skipConfig == false) {
+				if (argv.skipConfig === false) {
 					config.addHandler({ property: "customTemplates", value: "parth:" + outDir, global: true });
 				}
-			}
-			else {
+			} else {
 				return Util.log("Project creation failed!");
 			}
-		}).catch((err) => {
+		}).catch(err => {
 			return Util.log("Project creation failed!");
 		});
 	}

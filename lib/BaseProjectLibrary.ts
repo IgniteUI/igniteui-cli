@@ -62,6 +62,10 @@ export class BaseProjectLibrary implements ProjectLibrary {
 				.filter(x => x !== this._projectsPath && x !== this._customTemplatesPath);
 
 			for (const componentFolder of componentFolders) {
+				if (componentFolder === "generate") {
+					continue;
+				}
+
 				this._components.push(require(path.join(this.rootPath, componentFolder)) as Component);
 			}
 		}
