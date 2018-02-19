@@ -79,7 +79,7 @@ const command = {
 		const templatesFolder = path.join(__dirname, "..", "..", "templates", argv.framework, argv.type, "generate");
 		argv.className = Util.className(argv.name);
 
-		Util.log(`Project Name: ${argv.name}, framework ${argv.framework}, type ${argv.type}`);
+		Util.log(`Project Name: ${argv.name}, framework: ${argv.framework}, type: ${argv.type}`);
 		const promise = Util.processTemplates(
 			templatesFolder,
 			outDir,
@@ -94,7 +94,7 @@ const command = {
 		promise.then(res => {
 			if (res) {
 				if (argv.skipConfig === false) {
-					config.addHandler({ property: "customTemplates", value: "parth:" + outDir, global: true });
+					config.addHandler({ property: "customTemplates", value: "path:" + outDir, global: true });
 				}
 			} else {
 				return Util.log("Project creation failed!");
