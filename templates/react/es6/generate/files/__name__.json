@@ -1,6 +1,11 @@
 {
 	"id": "$(name)",
+	"name": "$(name)",
+	"description": "$(name) template",
 	"framework": "$(framework)",
 	"projectType": "$(type)",
-	"components": "<add your components here>"
+	"components": "<add your components here>",
+	"controlGroup": "<add your control group name here>",
+	"listInComponentTemplates": true,
+	"dependencies": "[<list your component dependencies here>]"
 }

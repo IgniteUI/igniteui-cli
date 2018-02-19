@@ -79,9 +79,19 @@ const command = {
 		}
 
 		let templatesFolder = path.join(__dirname, "..", "..", "templates", argv.framework, argv.type, "generate");
+		argv.className = Util.className(argv.name);
 
 		Util.log(`Project Name: ${argv.name}, framework ${argv.framework}, type ${argv.type}`);
-		const promise = Util.processTemplates(templatesFolder, outDir, { "$(name)": argv.name, "$(framework)": argv.framework, "$(type)": argv.type, __name__: argv.name }, null);
+		const promise = Util.processTemplates(
+			templatesFolder,
+			outDir,
+			{
+				"$(name)": argv.name,
+				"$(framework)": argv.framework,
+				"$(type)": argv.type, __name__: argv.name,
+				"$(ClassName)": argv.className
+			},
+			null);
 		promise.then((res) => {
 			if (res) {
 				if (argv.skipConfig == false) {
