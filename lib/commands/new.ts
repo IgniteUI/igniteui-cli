@@ -106,9 +106,9 @@ command = {
 		await projTemplate.generateFiles(process.cwd(), argv.name, theme);
 		Util.log("Project Created");
 
-		try {
-			if (!argv["skip-git"]) {
-				process.chdir(argv.name);
+		if (!argv["skip-git"]) {
+			process.chdir(argv.name);
+			try {
 				shell.exec("git init", { silent: true });
 				Util.log("Git initialized");
 				if (!argv["skip-commit"]) {
@@ -116,10 +116,10 @@ command = {
 					shell.exec("git commit -m " + "\"Initial commit for project: " + argv.name + "\"", { silent: true });
 					Util.log("Project Commited");
 				}
-				process.chdir("../");
+			} catch (error) {
+				Util.error("Git initialization failed. Install Git in order to automatically commit the project.", "yellow");
 			}
-		} catch (error) {
-			Util.error("Git initialization failed. Install Git in order to automatically commit the project.", "yellow");
+			process.chdir("../");
 		}
 	}
 };
