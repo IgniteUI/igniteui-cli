@@ -70,12 +70,11 @@ describe("Help command", () => {
 			encoding: "utf-8"
 		});
 		const originalNewHelpText: string = `Commands:
-		template [name] [framework] [type]        Generates custom template
-  		[skip-config]                                           [aliases: t]
+		template	[name]	Generates custom template		[aliases: t]
 
 		Options:
-		--version, -v  Show current Ignite UI CLI version                    [boolean]
-		--help, -h     Show help                                             [boolean]`;
+		--version,	-v	Show current Ignite UI CLI version	[boolean]
+		--help,		-h	Show help							[boolean]`;
 
 		const replacedNewHelpText: string = originalNewHelpText.replace(/\s/g, "");
 		const actualNewText: string = (child.stdout.toString("utf-8")).replace(/\s/g, "");

@@ -1,7 +1,7 @@
 import cli = require("../../lib/cli");
 import { Util } from "../../lib/Util";
 
-describe("Generate command", () => {
+fdescribe("Generate command", () => {
 
 	it("Should generate template with default values", async done => {
 		spyOn(Util, "error");
@@ -26,12 +26,12 @@ describe("Generate command", () => {
 		done();
 	});
 
-	it("Should generate template with custom values", async done => {
+	fit("Should generate template with custom values", async done => {
 		spyOn(Util, "error");
 		spyOn(Util, "log");
 		spyOn(Util, "processTemplates").and.returnValue(new Promise<boolean>((res, rej) => { res(false); }));
 
-		await cli.run(["generate", "template", "some-name", "angular", "igx-ts"]);
+		await cli.run(["generate", "template", "some-name", "-f=angular", "-t=igx-ts"]);
 
 		expect(Util.error).toHaveBeenCalledTimes(0);
 		expect(Util.log).toHaveBeenCalledTimes(2);

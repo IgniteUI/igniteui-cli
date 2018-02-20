@@ -14,7 +14,7 @@ const command = {
 		yargs
 			.command({
 				aliases: ["t"],
-				command: "template [name] [framework] [type] [skip-config]",
+				command: "template [name]",
 				desc: "Generates custom template",
 				// tslint:disable-next-line:object-literal-sort-keys
 				builder: {
