@@ -1,12 +1,7 @@
 .main {
 	width: 100%;
 }
- 
-h3 {
-  padding-left: 16px;
-}
 
 .content {
   flex: 1 1 100%;
-  padding: 20px;
 }
