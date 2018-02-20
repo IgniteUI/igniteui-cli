@@ -3,15 +3,20 @@ a {
 }
 
 .links{
-  display: inline-block;
   text-align: center;
-  flex: 1 1 33%;
+  padding: 0 10px;
 }
 
-ul#linksContainer {
+#linksContainer {
+  flex-flow: row wrap;
   display: flex;
+  justify-content: center;
 }
 
-:host {
-  width: 55%;
+:host{
+  text-align:center;
+}
+
+img {
+  max-width:100%;
 }
