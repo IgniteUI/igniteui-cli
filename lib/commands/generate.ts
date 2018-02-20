@@ -7,7 +7,7 @@ import { default as config } from "./config";
 const command = {
 	command: "generate",
 	aliases: ["g"],
-	templateManager: new TemplateManager(),
+	templateManager: null,
 	desc: "Generates new project",
 	builder: yargs => {
 		yargs

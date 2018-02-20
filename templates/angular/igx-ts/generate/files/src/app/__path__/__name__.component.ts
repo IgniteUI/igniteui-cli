@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
 	templateUrl: './$(filePrefix).component.html',
 	styleUrls: ['./$(filePrefix).component.css'],
 })
-export class $(ClassName)Component implements {
+export class $(ClassName)Component {
 	title = '$(name)';
 	constructor() { }
 }
