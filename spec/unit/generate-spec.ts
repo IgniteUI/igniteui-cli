@@ -1,7 +1,7 @@
 import cli = require("../../lib/cli");
 import { Util } from "../../lib/Util";
 
-fdescribe("Generate command", () => {
+describe("Unit - Generate command", () => {
 
 	it("Should generate template with default values", async done => {
 		spyOn(Util, "error");
@@ -26,7 +26,7 @@ fdescribe("Generate command", () => {
 		done();
 	});
 
-	fit("Should generate template with custom values", async done => {
+	it("Should generate template with custom values", async done => {
 		spyOn(Util, "error");
 		spyOn(Util, "log");
 		spyOn(Util, "processTemplates").and.returnValue(new Promise<boolean>((res, rej) => { res(false); }));
