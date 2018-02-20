@@ -86,7 +86,7 @@ const command = {
 			{
 				"$(templateName)": argv.name,
 				"$(templateFramework)": argv.framework,
-				"$(templateType)": argv.type,
+				"$(templateType)": argv.type
 			},
 			null);
 		promise.then(res => {
