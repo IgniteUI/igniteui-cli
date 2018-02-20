@@ -254,7 +254,6 @@
 				"-n=angular",
 				"-f=angular",
 				"-t=igx-ts",
-				"-s=true",
 			]
 		},
 		{
@@ -271,7 +270,6 @@
 				"-n=angular wrapper",
 				"-f=angular",
 				"-t=ig-ts",
-				"-s=true",
 			]
 		},
 		{
@@ -288,7 +286,6 @@
 				"-n=react",
 				"-f=react",
 				"-t=es6",
-				"-s=true",
 			]
 		}
 	]

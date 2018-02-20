@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-	selector: "$(ClassName)",
-	templateUrl: './$(ClassName).component.html',
-	styleUrls: ['./$(ClassName).component.css'],
+	selector: "$(filePrefix)",
+	templateUrl: './$(filePrefix).component.html',
+	styleUrls: ['./$(filePrefix).component.css'],
 })
 export class $(ClassName)Component implements {
 	title = '$(name)';
