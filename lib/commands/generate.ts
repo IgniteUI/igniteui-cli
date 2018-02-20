@@ -84,11 +84,9 @@ const command = {
 			templatesFolder,
 			outDir,
 			{
-				"$(name)": argv.name,
-				"$(framework)": argv.framework,
-				"$(type)": argv.type,
-				"__name__": argv.name,
-				"$(ClassName)": argv.className
+				"$(templateName)": argv.name,
+				"$(templateFramework)": argv.framework,
+				"$(templateType)": argv.type,
 			},
 			null);
 		promise.then(res => {

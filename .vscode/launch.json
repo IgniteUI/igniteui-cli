@@ -229,7 +229,21 @@
 		{
 			"type": "node",
 			"request": "launch",
-			"name": "Launch Generate Template with all aliases",
+			"name": "Launch Generate Template Jquery",
+			"cwd": "${workspaceRoot}/output",
+			"program": "${workspaceRoot}/bin/execute.js",
+			"console": "externalTerminal",
+			"preLaunchTask": "build",
+			"args": [
+				"g",
+				"t",
+				"-n=j-query"
+			]
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Launch Generate Template Angular",
 			"cwd": "${workspaceRoot}/output",
 			"program": "${workspaceRoot}/bin/execute.js",
 			"console": "externalTerminal",
@@ -240,21 +254,41 @@
 				"-n=angular",
 				"-f=angular",
 				"-t=igx-ts",
-				"-s=false",
+				"-s=true",
 			]
 		},
 		{
 			"type": "node",
 			"request": "launch",
-			"name": "Add testing",
-			"cwd": "${workspaceRoot}/output/add-spec",
+			"name": "Launch Generate Template Angular Wrapper",
+			"cwd": "${workspaceRoot}/output",
 			"program": "${workspaceRoot}/bin/execute.js",
 			"console": "externalTerminal",
 			"preLaunchTask": "build",
 			"args": [
-				"add",
-				"wrong",
-				"name"
+				"g",
+				"t",
+				"-n=angular wrapper",
+				"-f=angular",
+				"-t=ig-ts",
+				"-s=true",
+			]
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Launch Generate Template React",
+			"cwd": "${workspaceRoot}/output",
+			"program": "${workspaceRoot}/bin/execute.js",
+			"console": "externalTerminal",
+			"preLaunchTask": "build",
+			"args": [
+				"g",
+				"t",
+				"-n=react",
+				"-f=react",
+				"-t=es6",
+				"-s=true",
 			]
 		}
 	]
