@@ -49,7 +49,7 @@ To get a guided experience through the available options, simply run:
 ig
 ```
 
-Upon creation, projects will be automatically served on port 3000 and can be accessed via http://localhost:3000/.
+Upon creation, projects will be automatically served on port 4200 and can be accessed via http://localhost:4200/.
 
 ### List the available commands.
 
