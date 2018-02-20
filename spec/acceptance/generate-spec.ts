@@ -17,8 +17,8 @@ describe("Generate command", () => {
 			jasmine.any(String),
 			jasmine.any(String),
 			{
-				"$(templateName)": "custom-template",
 				"$(templateFramework)": "jquery",
+				"$(templateName)": "custom-template",
 				"$(templateType)": "js"
 			},
 			null);
@@ -40,8 +40,8 @@ describe("Generate command", () => {
 			jasmine.any(String),
 			jasmine.any(String),
 			{
-				"$(templateName)": "some-name",
 				"$(templateFramework)": "angular",
+				"$(templateName)": "some-name",
 				"$(templateType)": "igx-ts"
 			},
 			null);

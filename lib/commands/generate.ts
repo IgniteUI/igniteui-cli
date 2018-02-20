@@ -5,40 +5,42 @@ import { Util } from "../Util";
 import { default as config } from "./config";
 
 const command = {
-	command: "generate",
 	aliases: ["g"],
-	templateManager: null,
+	command: "generate",
 	desc: "Generates new project",
+	templateManager: null,
+	// tslint:disable-next-line:object-literal-sort-keys
 	builder: yargs => {
 		yargs
 			.command({
-				command: "template [name] [framework] [type] [skip-config]",
 				aliases: ["t"],
+				command: "template [name] [framework] [type] [skip-config]",
 				desc: "Generates custom template",
+				// tslint:disable-next-line:object-literal-sort-keys
 				builder: {
-					"name": {
-						describe: "Template name.",
-						alias: "n",
-						default: "custom-template",
-						type: "string"
-					},
 					"framework": {
-						describe: "Framework name.",
 						alias: "f",
 						default: "jquery",
+						describe: "Framework name.",
 						type: "string"
 					},
-					"type": {
-						describe: "Framework type.",
-						alias: "t",
-						default: "js",
+					"name": {
+						alias: "n",
+						default: "custom-template",
+						describe: "Template name.",
 						type: "string"
 					},
 					"skip-config": {
-						describe: "Skips adding to the config.",
 						alias: "s",
 						default: false,
+						describe: "Skips adding to the config.",
 						type: "boolean"
+					},
+					"type": {
+						alias: "t",
+						default: "js",
+						describe: "Framework type.",
+						type: "string"
 					}
 				},
 				handler: command.template
@@ -84,8 +86,8 @@ const command = {
 			templatesFolder,
 			outDir,
 			{
-				"$(templateName)": argv.name,
 				"$(templateFramework)": argv.framework,
+				"$(templateName)": argv.name,
 				"$(templateType)": argv.type
 			},
 			null);
