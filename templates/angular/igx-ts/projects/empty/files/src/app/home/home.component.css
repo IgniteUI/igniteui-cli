@@ -11,3 +11,7 @@ a {
 ul#linksContainer {
   display: flex;
 }
+
+:host {
+  width: 55%;
+}
