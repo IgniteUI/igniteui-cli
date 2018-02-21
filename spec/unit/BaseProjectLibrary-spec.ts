@@ -26,9 +26,9 @@ describe("Unit - Base project library ", () => {
 				const folder = path.basename(modulePath);
 				// tslint:disable-next-line:no-object-literal-type-assertion
 				return {
+					group: folder + "Group",
 					id: folder,
-					name: folder + "Name",
-					group: folder + "Group"
+					name: folder + "Name"
 				};
 			} else {
 				fail("unexpected require");
@@ -49,18 +49,18 @@ describe("Unit - Base project library ", () => {
 				const folder = path.basename(modulePath);
 				// tslint:disable-next-line:no-object-literal-type-assertion
 				return {
+					group: folder + "CustomGroup",
 					id: folder,
-					name: folder + "CustomName",
-					group: folder + "CustomGroup"
+					name: folder + "CustomName"
 				};
 			}
 			if (modulePath.startsWith(__dirname)) {
 				const folder = path.basename(modulePath);
 				// tslint:disable-next-line:no-object-literal-type-assertion
 				return {
+					group: folder + "Group",
 					id: folder,
 					name: folder + "Name",
-					group: folder + "Group",
 					templates: folder + "Template"
 				};
 			} else {
@@ -86,8 +86,8 @@ describe("Unit - Base project library ", () => {
 				const folder = path.basename(modulePath);
 				// tslint:disable-next-line:no-object-literal-type-assertion
 				return {
-					name: folder + "Name",
-					group: folder + "Group"
+					group: folder + "Group",
+					name: folder + "Name"
 				};
 			} else {
 				fail("unexpected require");
@@ -110,9 +110,9 @@ describe("Unit - Base project library ", () => {
 				const folder = path.basename(modulePath);
 				// tslint:disable-next-line:no-object-literal-type-assertion
 				return {
+					group: folder + "CustomGroup",
 					id: folder,
-					name: folder + "CustomName",
-					group: folder + "CustomGroup"
+					name: folder + "CustomName"
 				};
 			}
 			if (modulePath.startsWith(__dirname)) {
@@ -155,9 +155,9 @@ describe("Unit - Base project library ", () => {
 				const folder = path.basename(modulePath);
 				// tslint:disable-next-line:no-object-literal-type-assertion
 				return {
+					group: folder + "CustomGroup",
 					id: folder,
-					name: folder + "CustomName",
-					group: folder + "CustomGroup"
+					name: folder + "CustomName"
 				};
 			}
 			if (modulePath.startsWith(__dirname)) {
@@ -165,10 +165,10 @@ describe("Unit - Base project library ", () => {
 				// tslint:disable-next-line:no-object-literal-type-assertion
 				return {
 					templates: {
-						id: folder + "Template",
-						name: folder + "TemplateName",
+						components: { name: folder + "ComponentName"},
 						group: folder + "TemplateGroup",
-						components: { name: folder + "ComponentName"}
+						id: folder + "Template",
+						name: folder + "TemplateName"
 					}
 				};
 			} else {
@@ -199,17 +199,17 @@ describe("Unit - Base project library ", () => {
 				const folder = path.basename(modulePath);
 				// tslint:disable-next-line:no-object-literal-type-assertion
 				return {
+					group: folder + "CustomGroup",
 					id: folder,
-					name: folder + "CustomName",
-					group: folder + "CustomGroup"
+					name: folder + "CustomName"
 				};
 			}
 			if (modulePath.startsWith(__dirname)) {
 				const folder = path.basename(modulePath);
 				// tslint:disable-next-line:no-object-literal-type-assertion
 				return {
-						name: folder + "Name",
-						group: folder + "Group"
+						group: folder + "Group",
+						name: folder + "Name"
 				};
 			} else {
 				fail("unexpected require");
@@ -253,14 +253,14 @@ describe("Unit - Base project library ", () => {
 				const folder = path.basename(modulePath);
 				if (folder !== "grid") {
 					return {
-						name: folder,
-						group: "commonGroup"
+						group: "commonGroup",
+						name: folder
 					};
 				}
 				if (folder === "grid") {
 					return {
-						name: folder,
-						group: folder + "Group"
+						group: folder + "Group",
+						name: folder
 					};
 				} else {
 					fail("unexpected require");
