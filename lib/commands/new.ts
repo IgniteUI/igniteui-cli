@@ -42,12 +42,6 @@ command = {
 			default: false,
 			describe: "Do not automatically initialize repository for the project with Git",
 			type: "boolean"
-		},
-		"skip-commit": {
-			alias: "sc",
-			default: false,
-			describe: "Do not automatically commit project with Git",
-			type: "boolean"
 		}
 	},
 	template: null,
