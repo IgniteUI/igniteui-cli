@@ -19,9 +19,9 @@
 			"console": "externalTerminal",
 			"preLaunchTask": "build",
 			"args": [
-				"new"
-				 ,"jqueryproj"
-				 ,"--framework=jquery"
+				"new",
+				"jqueryproj",
+				"--framework=jquery"
 			]
 		},
 		{
@@ -33,9 +33,9 @@
 			"console": "externalTerminal",
 			"preLaunchTask": "build",
 			"args": [
-				"new"
-				 ,"angularproj"
-				 ,"--framework=angular"
+				"new",
+				"angularproj",
+				"--framework=angular"
 			]
 		},
 		{
@@ -56,9 +56,9 @@
 			"console": "externalTerminal",
 			"preLaunchTask": "build",
 			"args": [
-				"new"
-				 ,"reactproj"
-				 ,"--framework=react"
+				"new",
+				"reactproj",
+				"--framework=react"
 			]
 		},
 		{
@@ -100,7 +100,6 @@
 				"--framework=angular"
 			]
 		},
-
 		{
 			"type": "node",
 			"request": "launch",

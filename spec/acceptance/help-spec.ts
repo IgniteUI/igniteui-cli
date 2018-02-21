@@ -82,4 +82,25 @@ describe("Help command", () => {
 		expect(actualNewText).toContain(replacedNewHelpText);
 		done();
 	});
+	it("should show help generate template sub-commands", async done => {
+		const child = spawnSync("node", ["bin/execute.js", "g", "t", "-h" ], {
+			encoding: "utf-8"
+		});
+		const originalNewHelpText: string = `
+		Options:
+		--version, -v      Show current Ignite UI CLI version                [boolean]
+		--help, -h         Show help                                         [boolean]
+		--framework, -f    Framework name.                [string] [default: "jquery"]
+		--name, -n         Template name.        [string] [default: "custom-template"]
+		--skip-config, -s  Runs generate command without updating the cli config.
+															[boolean] [default: false]
+		--type, -t         Framework type.                    [string] [default: "js"]
+		`;
+
+		const replacedNewHelpText: string = originalNewHelpText.replace(/\s/g, "");
+		const actualNewText: string = (child.stdout.toString("utf-8")).replace(/\s/g, "");
+
+		expect(actualNewText).toContain(replacedNewHelpText);
+		done();
+	});
 });

@@ -4,8 +4,9 @@
 	"description": "$(templateName) template",
 	"framework": "$(templateFramework)",
 	"projectType": "$(templateType)",
-	"components": "<add array of necessary components here>",
+	"components": [],
 	"controlGroup": "<add your mandatory control group name here>",
-	"listInCustomTemplates": true,
-	"dependencies": "<add array of necessary components' dependencies here>"
+	"listInCustomTemplates": false,
+	"listInComponentTemplates": true,
+	"dependencies": []
 }

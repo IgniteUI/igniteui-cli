@@ -33,7 +33,7 @@ const command = {
 					"skip-config": {
 						alias: "s",
 						default: false,
-						describe: "Skips adding to the config.",
+						describe: "Runs generate command without updating the cli config.",
 						type: "boolean"
 					},
 					"type": {
