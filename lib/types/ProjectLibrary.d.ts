@@ -14,7 +14,7 @@ interface ProjectLibrary {
 	/** JS, TS, Dart */
 	projectType: string;
 	/** List of the supported custom templates on framework level */
-	getCustomTemplates(): string[];
+	getCustomTemplateNames(): string[];
 
 	/** Returns custom template with a specified name */
 	getTemplateByName(name: string): Template;
