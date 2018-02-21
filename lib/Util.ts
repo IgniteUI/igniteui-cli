@@ -1,4 +1,5 @@
 import chalk from "chalk";
+import { exec, execSync } from "child_process";
 import * as fs from "fs";
 import * as fsExtra from "fs-extra";
 import * as glob from "glob";
@@ -285,6 +286,15 @@ class Util {
 				this.merge(target[key], source[key]);
 			}
 		}
+	}
+
+	/**
+	 * Execute synchronous command with options
+	 * @param command Command to be executed
+	 * @param options Command options
+	 */
+	public static exec(command: string, options?: any) {
+		execSync(command, options);
 	}
 
 	private static propertyByPath(object: any, propPath: string) {

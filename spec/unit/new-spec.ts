@@ -1,3 +1,6 @@
+import * as child_process from "child_process";
+import * as fs from "fs-extra";
+import { parse } from "path";
 import { default as newCmd } from "../../lib/commands/new";
 import { ProjectConfig } from "../../lib/ProjectConfig";
 import { PromptSession } from "../../lib/PromptSession";
@@ -5,9 +8,25 @@ import { Util } from "../../lib/Util";
 import { resetSpy } from "../helpers/utils";
 
 describe("Unit - New command", () => {
+	let testFolder = parse(__filename).name;
 
 	beforeEach(() => {
 		spyOn(Util, "log");
+		spyOn(Util, "exec");
+		spyOn(process, "chdir");
+
+		// test folder, w/ existing check:
+		while (fs.existsSync(`./output/${testFolder}`)) {
+			testFolder += 1;
+		}
+		fs.mkdirSync(`./output/${testFolder}`);
+		process.chdir(`./output/${testFolder}`);
+	});
+
+	afterEach(() => {
+		// clean test folder:
+		process.chdir("../../");
+		fs.rmdirSync(`./output/${testFolder}`);
 	});
 
 	it("New command in existing project", async done => {
@@ -201,6 +220,65 @@ describe("Unit - New command", () => {
 		expect(mockTemplate.generateFiles).toHaveBeenCalledWith(process.cwd(), "Test", "ig");
 		expect(Util.log).toHaveBeenCalledWith("Project Name: Test, framework jq, type type, theme ig");
 		expect(Util.log).toHaveBeenCalledWith("Project Created");
+		done();
+	});
+
+	it("Git initialization", async done => {
+		const projectName = "projTitle";
+
+		const mockTemplate = {
+			generateFiles: async (cwd: string, name: string, theme: string) => {
+				return true;
+			}
+		};
+		const mockProjLib = {
+			getProject: () => {
+				return mockTemplate;
+			},
+			projectType: "type",
+			themes: ["ig"]
+		};
+		newCmd.template = jasmine.createSpyObj("TemplateManager", {
+			getFrameworkById: {},
+			getProjectLibrary: mockProjLib
+		});
+		spyOn(mockTemplate, "generateFiles");
+
+		await newCmd.execute({ name: projectName, framework: "jq", type: "type", theme: "ig" });
+
+		expect(process.chdir).toHaveBeenCalledWith(projectName);
+		expect(Util.exec).toHaveBeenCalledWith("git init");
+		expect(Util.exec).toHaveBeenCalledWith("git add .");
+		expect(Util.exec).toHaveBeenCalledWith("git commit -m " + "\"Initial commit for project: " + projectName + "\"");
+		expect(process.chdir).toHaveBeenCalledWith("../");
+		expect(Util.log).toHaveBeenCalledWith("Git Initialized and Project '" + projectName + "' Commited");
+		done();
+	});
+
+	it("Skip Git initialization", async done => {
+		const projectName = "projTitle";
+
+		const mockTemplate = {
+			generateFiles: async (cwd: string, name: string, theme: string) => {
+				return true;
+			}
+		};
+		const mockProjLib = {
+			getProject: () => {
+				return mockTemplate;
+			},
+			projectType: "type",
+			themes: ["ig"]
+		};
+		newCmd.template = jasmine.createSpyObj("TemplateManager", {
+			getFrameworkById: {},
+			getProjectLibrary: mockProjLib
+		});
+		spyOn(mockTemplate, "generateFiles");
+
+		await newCmd.execute({ "name": projectName, "framework": "jq", "type": "type", "theme": "ig", "skip-git": true });
+
+		expect(Util.exec).not.toHaveBeenCalled();
 		done();
 	});
 });
