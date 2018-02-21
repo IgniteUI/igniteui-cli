@@ -49,7 +49,7 @@ To get a guided experience through the available options, simply run:
 ig
 ```
 
-Upon creation, projects will be automatically served on port 4200 and can be accessed via http://localhost:4200/.
+Upon creation, projects will be automatically served on port 4200 for Angular project and can be accessed via http://localhost:4200/. **NOTE**: Port may vary for different project types. `ig start` will indicate what port to open the application under in the console.
 
 ### List the available commands.
 
