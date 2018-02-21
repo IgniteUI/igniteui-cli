@@ -120,9 +120,9 @@ describe("Unit - Base project library ", () => {
 				// tslint:disable-next-line:no-object-literal-type-assertion
 				return {
 					templates: {
+						group: folder + "TemplateGroup",
 						id: folder + "Template",
-						name: folder + "TemplateName",
-						group: folder + "TemplateGroup"
+						name: folder + "TemplateName"
 					}
 				};
 			} else {
