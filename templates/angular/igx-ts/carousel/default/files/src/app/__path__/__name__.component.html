@@ -1,7 +1,7 @@
-<div>
+<div igxLayout igxLayoutDir="columns" igxLayoutItemAlign="center">
 	<p>igx-carousel component. You can read more about configuring the igx-carousel component
 		<a href="https://github.com/IgniteUI/igniteui-angular/blob/master/src/carousel/README.md" target="_blank">here</a>.</p>
-	<igx-carousel [interval]="interval" [pause]="pause" [loop]="loop">
+	<igx-carousel [interval]="interval" [pause]="pause" [loop]="loop" igxLayout igxLayoutJustify="center">
 		<igx-slide *ngFor="let slide of slides;" [active]="slide.active">
 			<img [src]="slide.image">
 		</igx-slide>
