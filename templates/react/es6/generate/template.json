@@ -5,8 +5,8 @@
 	"framework": "$(templateFramework)",
 	"projectType": "$(templateType)",
 	"components": [],
-	"controlGroup": "<add your mandatory control group name here>",
-	"listInCustomTemplates": false,
-	"listInComponentTemplates": true,
+	"controlGroup": "",
+	"listInCustomTemplates": true,
+	"listInComponentTemplates": false,
 	"dependencies": []
 }
