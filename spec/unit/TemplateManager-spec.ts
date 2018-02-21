@@ -45,6 +45,7 @@ describe("Unit - Template manager", () => {
 			return obj;
 		}, {});
 		spyOn(Util, "getDirectoryNames").and.returnValue(frameworkIds);
+		spyOn(ProjectConfig, "globalConfig").and.returnValue({});
 
 		const manager = new TemplateManager();
 		expect(Util.getDirectoryNames).toHaveBeenCalledWith(path.join(__dirname, "../../templates"));

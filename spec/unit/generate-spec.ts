@@ -1,4 +1,5 @@
 import cli = require("../../lib/cli");
+import { ProjectConfig } from "../../lib/ProjectConfig";
 import { Util } from "../../lib/Util";
 
 describe("Unit - Generate command", () => {
@@ -7,6 +8,7 @@ describe("Unit - Generate command", () => {
 		spyOn(Util, "error");
 		spyOn(Util, "log");
 		spyOn(Util, "processTemplates").and.returnValue(new Promise<boolean>((res, rej) => { res(false); }));
+		spyOn(ProjectConfig, "globalConfig").and.returnValue({});
 
 		await cli.run(["generate", "template"]);
 
@@ -30,6 +32,7 @@ describe("Unit - Generate command", () => {
 		spyOn(Util, "error");
 		spyOn(Util, "log");
 		spyOn(Util, "processTemplates").and.returnValue(new Promise<boolean>((res, rej) => { res(false); }));
+		spyOn(ProjectConfig, "globalConfig").and.returnValue({});
 
 		await cli.run(["generate", "template", "some-name", "-f=angular", "-t=igx-ts"]);
 

@@ -84,6 +84,8 @@ describe("Add command", () => {
 
 	it("Should correctly add jQuery template", async done => {
 		// TODO: Mock out template manager and project register
+		spyOn(ProjectConfig, "globalConfig").and.returnValue({});
+
 		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
 			project: { framework: "jquery", projectType: "js", components: [] }
 		}));
@@ -104,6 +106,8 @@ describe("Add command", () => {
 	});
 
 	it("Should not duplicate add jq Grid template", async done => {
+		spyOn(ProjectConfig, "globalConfig").and.returnValue({});
+
 		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
 			project: { framework: "jquery", projectType: "js", components: [] }
 		}));
@@ -151,6 +155,8 @@ describe("Add command", () => {
 
 	it("Should correctly add Angular template", async done => {
 		// TODO: Mock out template manager and project register
+		spyOn(ProjectConfig, "globalConfig").and.returnValue({});
+
 		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
 			project: { framework: "angular", projectType: "ig-ts", components: [] }
 		}));
@@ -174,6 +180,8 @@ describe("Add command", () => {
 
 	it("Should correctly add React template", async done => {
 		// TODO: Mock out template manager and project register
+		spyOn(ProjectConfig, "globalConfig").and.returnValue({});
+
 		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
 			project: { framework: "react", projectType: "es6", components: [] }
 		}));
