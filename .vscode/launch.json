@@ -286,6 +286,21 @@
 				"-f=react",
 				"-t=es6",
 			]
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Launch Config Get global",
+			"cwd": "${workspaceRoot}/output",
+			"program": "${workspaceRoot}/bin/execute.js",
+			"console": "externalTerminal",
+			"preLaunchTask": "build",
+			"args": [
+				"config",
+				"get",
+				"bla",
+				"-g"
+			]
 		}
 	]
 }
