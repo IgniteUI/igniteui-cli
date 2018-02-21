@@ -143,7 +143,6 @@ describe("Unit - Base project library ", () => {
 		expect(library.getTemplateByName("gridtemplatename")).toBeFalsy();
 		expect(library.getTemplateByName("awesomeCustomName")).toBeTruthy();
 		expect(library.getTemplateByName("chartTemplateName")).toBe(library.templates[1]);
-
 		done();
 	});
 
@@ -225,7 +224,101 @@ describe("Unit - Base project library ", () => {
 		expect(library.getComponentByName("awesomeCustomName")).toBeFalsy();
 		expect(library.getCustomTemplateByName("awesomeCustomName")).toBeTruthy();
 		expect(library.getComponentByName("gridName")).toBe(library.components[0]);
+		done();
+	});
 
+	it("gets correct component groups", async done => {
+		spyOn(Util, "getDirectoryNames").and.returnValues(["myChart", "myCombo", "myGrid"]);
+
+		spyOn(require("module"), "_load").and.callFake((modulePath: string) => {
+			if (modulePath.startsWith(__dirname)) {
+				const folder = path.basename(modulePath);
+				return {
+					group: folder + "Group"
+				};
+			} else {
+				fail("unexpected require");
+			}
+		});
+
+		const library = new BaseProjectLibrary(__dirname);
+		expect(library.getComponentGroups()).toEqual(["myChartGroup", "myComboGroup", "myGridGroup"]);
+		done();
+	});
+
+	it("gets correct component names by group", async done => {
+		spyOn(Util, "getDirectoryNames").and.returnValues(["chart", "combo", "grid"]);
+
+		spyOn(require("module"), "_load").and.callFake((modulePath: string) => {
+				const folder = path.basename(modulePath);
+				if (folder !== "grid") {
+					return {
+						name: folder,
+						group: "commonGroup"
+					};
+				}
+				if (folder === "grid") {
+					return {
+						name: folder,
+						group: folder + "Group"
+					};
+				} else {
+					fail("unexpected require");
+				}
+		});
+
+		const library = new BaseProjectLibrary(__dirname);
+		expect(library.getComponentNamesByGroup("commonGroup")).toEqual(["chart", "combo"]);
+		expect(library.getComponentNamesByGroup("gridGroup")).toEqual(["grid"]);
+		done();
+	});
+
+	it("gets correct project", async done => {
+		spyOn(Util, "getDirectoryNames").and.returnValues(["chart", "combo", "grid"]);
+
+		spyOn(require("module"), "_load").and.callFake((modulePath: string) => {
+			if (modulePath.startsWith(__dirname)) {
+				const folder = path.basename(modulePath);
+				return {
+					group: folder + "Group"
+				};
+			} else {
+				fail("unexpected require");
+			}
+		});
+		const library = new BaseProjectLibrary(__dirname);
+
+		expect(library.getProject("grid")).toBeTruthy();
+		done();
+	});
+
+	it("has template.", async done => {
+		spyOn(Util, "getDirectoryNames").and.returnValues(["chart", "combo", "grid"], ["customControl"]);
+
+		spyOn(require("module"), "_load").and.callFake((modulePath: string) => {
+			if (modulePath.startsWith(path.join(__dirname, "custom-templates"))) {
+				const folder = path.basename(modulePath);
+				// tslint:disable-next-line:no-object-literal-type-assertion
+				return {
+						id: folder + "Custom"
+				};
+			}
+			if (modulePath.startsWith(__dirname)) {
+				const folder = path.basename(modulePath);
+				return {
+					templates: {
+						id: folder
+					}
+				};
+			} else {
+				fail("unexpected require");
+			}
+		});
+		const library = new BaseProjectLibrary(__dirname);
+
+		expect(library.hasTemplate("grid")).toBeTruthy();
+		expect(library.hasTemplate("combo")).toBeTruthy();
+		expect(library.hasTemplate("customControlCustom")).toBeTruthy();
 		done();
 	});
 });
