@@ -4,7 +4,7 @@ import * as fsExtra from "fs-extra";
 import * as glob from "glob";
 import * as path from "path";
 import through2 = require("through2");
-const imageExtensions = [".png", ".jpg", "jpeg", "gif", "bmp"];
+const imageExtensions = [".png", ".jpg", ".jpeg", ".gif", ".bmp"];
 const applyConfig = (configuration: { [key: string]: string }) => {
 	return through2((data, enc, cb) => {
 		cb(null, new Buffer(Util.applyConfigTransformation(data.toString(), configuration)));
@@ -23,7 +23,13 @@ class Util {
 			return false;
 		}
 	}
-
+	public static fileExists(filePath) {
+		try {
+			return fs.statSync(filePath).isFile();
+		} catch (err) {
+			return false;
+		}
+	}
 	public static isDirectory(dirPath): boolean {
 		return fs.lstatSync(dirPath).isDirectory();
 	}

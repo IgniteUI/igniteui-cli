@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from "@angular/core";
-import { IgxFilterOptions, IgxListItem } from 'igniteui-angular/main';
+import { IgxFilterOptions, IgxListItemComponent } from 'igniteui-angular/main';
 
 @Component({
 	selector: "$(filePrefix)",
@@ -47,7 +47,7 @@ export class $(ClassName)Component implements OnInit {
 
 	ngOnInit() { }
 
-	public toggleFavorite(item: IgxListItem) {
+	public toggleFavorite(item: IgxListItemComponent) {
 		const contact = this.contacts[item.index - 1];
 		contact.isFavorite = !contact.isFavorite;
 	}

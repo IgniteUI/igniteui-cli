@@ -1,0 +1,7 @@
+.main {
+	width: 100%;
+}
+
+.content {
+  flex: 1 1 100%;
+}
