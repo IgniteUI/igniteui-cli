@@ -101,16 +101,15 @@ command = {
 	},
 	git(skipGit, projectName) {
 		if (!skipGit) {
-			process.chdir(projectName);
 			try {
-				Util.exec("git init");
-				Util.exec("git add .");
-				Util.exec("git commit -m " + "\"Initial commit for project: " + projectName + "\"");
+				const cwdir = "./" + projectName;
+				Util.exec("git init", { cwd: cwdir });
+				Util.exec("git add .", { cwd: cwdir });
+				Util.exec("git commit -m " + "\"Initial commit for project: " + projectName + "\"", { cwd: cwdir });
 				Util.log("Git Initialized and Project '" + projectName + "' Commited");
 			} catch (error) {
 				Util.error("Git initialization failed. Install Git in order to automatically commit the project.", "yellow");
 			}
-			process.chdir("../");
 		}
 	}
 };

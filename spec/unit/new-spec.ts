@@ -7,25 +7,16 @@ import { Util } from "../../lib/Util";
 import { resetSpy } from "../helpers/utils";
 
 describe("Unit - New command", () => {
-	let testFolder = parse(__filename).name;
 
 	beforeEach(() => {
 		spyOn(Util, "log");
 		spyOn(Util, "exec");
 		spyOn(process, "chdir");
-
-		// test folder, w/ existing check:
-		while (fs.existsSync(`./output/${testFolder}`)) {
-			testFolder += 1;
-		}
-		fs.mkdirSync(`./output/${testFolder}`);
-		process.chdir(`./output/${testFolder}`);
 	});
 
 	afterEach(() => {
 		// clean test folder:
 		process.chdir("../../");
-		fs.rmdirSync(`./output/${testFolder}`);
 	});
 
 	it("New command in existing project", async done => {
@@ -245,11 +236,10 @@ describe("Unit - New command", () => {
 
 		await newCmd.execute({ name: projectName, framework: "jq", type: "type", theme: "ig" });
 
-		expect(process.chdir).toHaveBeenCalledWith(projectName);
-		expect(Util.exec).toHaveBeenCalledWith("git init");
-		expect(Util.exec).toHaveBeenCalledWith("git add .");
-		expect(Util.exec).toHaveBeenCalledWith("git commit -m " + "\"Initial commit for project: " + projectName + "\"");
-		expect(process.chdir).toHaveBeenCalledWith("../");
+		expect(Util.exec).toHaveBeenCalledWith("git init", jasmine.any(Object));
+		expect(Util.exec).toHaveBeenCalledWith("git add .", jasmine.any(Object));
+		expect(Util.exec).toHaveBeenCalledWith("git commit -m " + "\"Initial commit for project: " + projectName + "\"",
+			jasmine.any(Object));
 		expect(Util.log).toHaveBeenCalledWith("Git Initialized and Project '" + projectName + "' Commited");
 		done();
 	});
