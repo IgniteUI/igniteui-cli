@@ -61,7 +61,7 @@ describe("New command", () => {
 		process.chdir(projectName);
 		expect(fs.existsSync(".git")).toBeTruthy();
 		expect(Util.exec("git log -1 --pretty=format:'%s'").toString())
-			.toMatch("'Initial commit for project: " + projectName + "'");
+			.toMatch("Initial commit for project: " + projectName);
 		process.chdir("../");
 		this.testFolder = "./angularProj";
 		done();
