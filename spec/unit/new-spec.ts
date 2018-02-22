@@ -1,4 +1,3 @@
-import * as child_process from "child_process";
 import * as fs from "fs-extra";
 import { parse } from "path";
 import { default as newCmd } from "../../lib/commands/new";

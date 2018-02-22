@@ -294,7 +294,7 @@ class Util {
 	 * @param options Command options
 	 */
 	public static exec(command: string, options?: any) {
-		execSync(command, options);
+		return execSync(command, options);
 	}
 
 	private static propertyByPath(object: any, propPath: string) {

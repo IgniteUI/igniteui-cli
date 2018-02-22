@@ -1,5 +1,6 @@
 import * as fs from "fs";
 import cli = require("../../lib/cli");
+import { Util } from "../../lib/Util";
 import { deleteAll, resetSpy } from "../helpers/utils";
 
 describe("New command", () => {
@@ -50,6 +51,27 @@ describe("New command", () => {
 			.toEqual("text", "Shouldn't overwrite existing project files!");
 
 		this.testFolder = "./testProj2";
+		done();
+	});
+
+	it("Git Status", async done => {
+		const projectName = "angularProj";
+		await cli.run(["new", projectName, "--framework=angular", "--type=igx-ts"]);
+
+		process.chdir(projectName);
+		expect(fs.existsSync(".git")).toBeTruthy();
+		expect(Util.exec("git log -1 --pretty=format:'%s'").toString())
+			.toMatch("'Initial commit for project: " + projectName + "'");
+		process.chdir("../");
+		this.testFolder = "./angularProj";
+		done();
+	});
+
+	it("Skip Git", async done => {
+		const projectName = "angularProj";
+		await cli.run(["new", projectName, "--framework=angular", "--type=igx-ts", "--skip-git"]);
+
+		expect(fs.existsSync("./" + projectName + "/.git")).not.toBeTruthy();
 		done();
 	});
 });
