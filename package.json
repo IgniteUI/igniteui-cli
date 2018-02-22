@@ -46,8 +46,7 @@
       ".tsx"
     ],
     "include": [
-      "lib/",
-      "templates/"
+      "lib/"
     ],
     "exclude": [
       "**/*.d.ts",
