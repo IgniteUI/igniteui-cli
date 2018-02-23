@@ -206,6 +206,14 @@ class Util {
 		// tslint:enable:no-console
 	}
 
+	public static greenCheck() {
+		if (process.platform.startsWith("win")) {
+			return chalk.green("√");
+		} else {
+			return chalk.green("✔");
+		}
+	}
+
 	public static version() {
 		const configuration = require("../package.json");
 		const logo = fs.readFileSync(__dirname + "/../ignite-ui-cli.txt");

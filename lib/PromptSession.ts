@@ -89,7 +89,7 @@ export class PromptSession {
 			await projTemplate.generateFiles(process.cwd(), projectName, theme);
 			// move cwd to project folder
 			process.chdir(projectName);
-			Util.log("Project structure generated.");
+			Util.log(Util.greenCheck() + " Project structure generated.");
 
 			await this.chooseActionLoop(projLibrary, theme);
 			//TODO: restore cwd?
@@ -101,7 +101,7 @@ export class PromptSession {
 	 * @param theme Theme to use
 	 */
 	public async chooseActionLoop(framework: ProjectLibrary, theme: string) {
-		const actionChoices: string[] = ["Complete"];
+		const actionChoices: string[] = ["Complete & Run"];
 		let templateName;
 		if (framework.components.length > 0) {
 			actionChoices.push("Add component");
@@ -114,7 +114,7 @@ export class PromptSession {
 			name: "action",
 			message: "Choose an action",
 			choices:  this.addSeparators(actionChoices),
-			default: "Complete"
+			default: "Complete & Run"
 		});
 		let selectedTemplate: Template;
 		switch (action["action"]) {
@@ -202,7 +202,7 @@ export class PromptSession {
 
 				await this.chooseActionLoop(framework, theme);
 				break;
-			case "Complete":
+			case "Complete & Run":
 			default:
 				if (true) { // TODO: Make conditional?
 					await start.execute({});
