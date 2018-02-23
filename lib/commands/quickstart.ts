@@ -45,20 +45,20 @@ const command = {
 		//change folder
 		process.chdir(name);
 		if (argv.framework === "react") {
-			Util.log("The files are loaded");
+			Util.log("react-quickstart loaded");
 			shell.exec("npm install");
 			shell.exec("npm run webpack");
 			liteServer.server();
 		}
 
 		if (argv.framework === "angular") {
-			Util.log("The files are loaded");
+			Util.log("react-quickstart loaded");
 			shell.exec("npm install");
 			shell.exec("npm start");
 		}
 
 		if (argv.framework === "jquery") {
-			Util.log("The files are loaded");
+			Util.log("jquery-quickstart loaded");
 			liteServer.server();
 		}
 	}
