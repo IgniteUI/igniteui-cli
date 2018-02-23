@@ -1,8 +1,32 @@
+import * as fs from "fs";
+import * as os from "os";
+import * as path from "path";
 import cli = require("../../lib/cli");
 import { ProjectConfig } from "../../lib/ProjectConfig";
 import { Util } from "../../lib/Util";
+import { deleteAll } from "../helpers/utils";
 
 describe("Unit - Generate command", () => {
+	let testFolder = path.parse(__filename).name;
+
+	beforeEach(() => {
+		// test folder, w/ existing check:
+		while (fs.existsSync(`./output/${testFolder}`)) {
+			testFolder += 1;
+		}
+		fs.mkdirSync(`./output/${testFolder}`);
+		process.chdir(`./output/${testFolder}`);
+
+		// ~/.global/ homedir for global files:
+		fs.mkdirSync(`.global`);
+		spyOn(os, "homedir").and.returnValue(path.join(process.cwd(), ".global"));
+	});
+
+	afterEach(() => {
+		process.chdir("../../");
+		deleteAll(`./output/${testFolder}`);
+		fs.rmdirSync(`./output/${testFolder}`);
+	});
 
 	it("Should generate template with default values", async done => {
 		spyOn(Util, "error");
