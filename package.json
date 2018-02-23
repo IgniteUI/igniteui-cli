@@ -38,6 +38,7 @@
     "templates/**/*.d.ts",
     "templates/**/*.js",
     "templates/**/files/**/*",
+    "templates/**/generate/**/*",
     "templates/quickstart/**/*"
   ],
   "nyc": {
