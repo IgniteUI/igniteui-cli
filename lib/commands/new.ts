@@ -15,27 +15,33 @@ command = {
 	command: "new [name]",
 	desc: "Creating a new project",
 	builder: {
-		name: {
+		"name": {
 			alias: "n",
 			describe: "Project name",
 			type: "string"
 		},
-		framework: {
+		"framework": {
 			alias: "f",
 			default: "jquery",
 			describe: "Framework to setup project for",
 			type: "string",
 			choices: []
 		},
-		type: {
+		"type": {
 			alias: "t",
 			describe: "Project type (depends on framework)",
 			type: "string"
 		},
-		theme: {
+		"theme": {
 			alias: "th",
 			describe: "Project theme (depends on project type)",
 			type: "string"
+		},
+		"skip-git": {
+			alias: "sg",
+			default: false,
+			describe: "Do not automatically initialize repository for the project with Git",
+			type: "boolean"
 		}
 	},
 	template: null,
@@ -90,6 +96,21 @@ command = {
 		// TODO: update output path based on where the CLI is called
 		await projTemplate.generateFiles(process.cwd(), argv.name, theme);
 		Util.log("Project Created");
+
+		this.git(argv["skip-git"], argv.name);
+	},
+	git(skipGit, projectName) {
+		if (!skipGit) {
+			try {
+				const cwdir = "./" + projectName;
+				Util.exec("git init", { cwd: cwdir });
+				Util.exec("git add .", { cwd: cwdir });
+				Util.exec("git commit -m " + "\"Initial commit for project: " + projectName + "\"", { cwd: cwdir });
+				Util.log("Git Initialized and Project '" + projectName + "' Commited");
+			} catch (error) {
+				Util.error("Git initialization failed. Install Git in order to automatically commit the project.", "yellow");
+			}
+		}
 	}
 };
 

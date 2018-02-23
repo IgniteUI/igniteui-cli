@@ -1,3 +1,5 @@
+import * as fs from "fs-extra";
+import { parse } from "path";
 import { default as newCmd } from "../../lib/commands/new";
 import { ProjectConfig } from "../../lib/ProjectConfig";
 import { PromptSession } from "../../lib/PromptSession";
@@ -8,6 +10,13 @@ describe("Unit - New command", () => {
 
 	beforeEach(() => {
 		spyOn(Util, "log");
+		spyOn(Util, "exec");
+		spyOn(process, "chdir");
+	});
+
+	afterEach(() => {
+		// clean test folder:
+		process.chdir("../../");
 	});
 
 	it("New command in existing project", async done => {
@@ -201,6 +210,64 @@ describe("Unit - New command", () => {
 		expect(mockTemplate.generateFiles).toHaveBeenCalledWith(process.cwd(), "Test", "ig");
 		expect(Util.log).toHaveBeenCalledWith("Project Name: Test, framework jq, type type, theme ig");
 		expect(Util.log).toHaveBeenCalledWith("Project Created");
+		done();
+	});
+
+	it("Git initialization", async done => {
+		const projectName = "projTitle";
+
+		const mockTemplate = {
+			generateFiles: async (cwd: string, name: string, theme: string) => {
+				return true;
+			}
+		};
+		const mockProjLib = {
+			getProject: () => {
+				return mockTemplate;
+			},
+			projectType: "type",
+			themes: ["ig"]
+		};
+		newCmd.template = jasmine.createSpyObj("TemplateManager", {
+			getFrameworkById: {},
+			getProjectLibrary: mockProjLib
+		});
+		spyOn(mockTemplate, "generateFiles");
+
+		await newCmd.execute({ name: projectName, framework: "jq", type: "type", theme: "ig" });
+
+		expect(Util.exec).toHaveBeenCalledWith("git init", jasmine.any(Object));
+		expect(Util.exec).toHaveBeenCalledWith("git add .", jasmine.any(Object));
+		expect(Util.exec).toHaveBeenCalledWith("git commit -m " + "\"Initial commit for project: " + projectName + "\"",
+			jasmine.any(Object));
+		expect(Util.log).toHaveBeenCalledWith("Git Initialized and Project '" + projectName + "' Commited");
+		done();
+	});
+
+	it("Skip Git initialization", async done => {
+		const projectName = "projTitle";
+
+		const mockTemplate = {
+			generateFiles: async (cwd: string, name: string, theme: string) => {
+				return true;
+			}
+		};
+		const mockProjLib = {
+			getProject: () => {
+				return mockTemplate;
+			},
+			projectType: "type",
+			themes: ["ig"]
+		};
+		newCmd.template = jasmine.createSpyObj("TemplateManager", {
+			getFrameworkById: {},
+			getProjectLibrary: mockProjLib
+		});
+		spyOn(mockTemplate, "generateFiles");
+
+		await newCmd.execute({ "name": projectName, "framework": "jq", "type": "type", "theme": "ig", "skip-git": true });
+
+		expect(Util.exec).not.toHaveBeenCalled();
 		done();
 	});
 });
