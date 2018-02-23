@@ -269,21 +269,33 @@ class Util {
 	 */
 	public static merge(target: any, source: any) {
 		for (const key of Object.keys(source)) {
-			if (!target.hasOwnProperty(key) || typeof source[key] !== "object") {
-				// primitive/new value:
-				target[key] = source[key];
-			} else if (Array.isArray(source[key])) {
-				// skip array merge on target type mismatch:
-				if (!Array.isArray(target[key])) {
-					continue;
+			const sourceKeyIsArray = Array.isArray(source[key]);
+			const targetHasThisKey = target.hasOwnProperty[key];
+
+			if (typeof source[key] === "object" && !sourceKeyIsArray) {
+				// object value:
+				if (!targetHasThisKey) {
+					target[key] = {};
 				}
-				for (const item of source[key]) {
-					if (target[key].indexOf(item) === -1) {
-						target[key].push(item);
+				this.merge(target[key], source[key]);
+			} else if (sourceKeyIsArray) {
+				//	array value:
+				if (targetHasThisKey) {
+					// skip array merge on target type mismatch:
+					if (!Array.isArray(target[key])) {
+						continue;
 					}
+					for (const item of source[key]) {
+						if (target[key].indexOf(item) === -1) {
+							target[key].push(item);
+						}
+					}
+				} else {
+					target[key] = (source[key] as any[]).slice(0);
 				}
 			} else {
-				this.merge(target[key], source[key]);
+				// primitive value:
+				target[key] = source[key];
 			}
 		}
 	}

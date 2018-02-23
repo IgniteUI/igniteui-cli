@@ -4,6 +4,7 @@ import * as yargs from "yargs";
 import { default as add } from "./commands/add";
 import { default as build } from "./commands/build";
 import { default as config } from "./commands/config";
+import { default as generate } from "./commands/generate";
 import { default as newCommand } from "./commands/new";
 import { default as quickstart } from "./commands/quickstart";
 import { default as start } from "./commands/start";
@@ -20,12 +21,14 @@ export async function run(args = null) {
 	newCommand.template = templateManager;
 	newCommand.builder.framework.choices = templateManager.getFrameworkIds();
 	add.templateManager = templateManager;
+	generate.templateManager = templateManager;
 
 	const yargsModule = args ? yargs(args) : yargs;
 
 	const argv = yargsModule.command(quickstart)
 	.command(start)
 	.command(newCommand)
+	.command(generate)
 	.command(build)
 	.command(config)
 	.command(test)
@@ -62,6 +65,10 @@ export async function run(args = null) {
 				yargsModule.showHelp();
 				return;
 			}
+			break;
+		case "g":
+		case "generate":
+			await generate.template(argv);
 			break;
 		case "build":
 			await build.execute(argv);
