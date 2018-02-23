@@ -38,7 +38,6 @@ const command = {
 					},
 					"type": {
 						alias: "t",
-						default: "js",
 						describe: "Framework type.",
 						type: "string"
 					}
@@ -69,21 +68,18 @@ const command = {
 			return Util.error("Framework not supported", "red");
 		}
 
-		if (argv.framework === "react" && argv.type !== "es6") {
-			argv.type = "es6";
-		}
-
 		let projectLib: ProjectLibrary;
 		if (argv.type) {
 			projectLib = command.templateManager.getProjectLibrary(argv.framework, argv.type) as ProjectLibrary;
 			if (!projectLib) {
 				return Util.error(`Project type "${argv.type}" not found in framework '${argv.framework}'`);
 			}
+		} else {
+			projectLib = command.templateManager.getProjectLibrary(argv.framework) as ProjectLibrary;
+			argv.type = projectLib.projectType;
 		}
 
-		Util.log(
-			`Starting generation of template with project name: ${argv.name}, framework: ${argv.framework}, type: ${argv.type}`);
-		const promise = Util.processTemplates(
+		const res = await Util.processTemplates(
 			projectLib.generateTemplateFolderPath,
 			outDir,
 			{
@@ -92,19 +88,13 @@ const command = {
 				"$(templateType)": argv.type
 			},
 			null);
-		promise.then(res => {
-			if (res) {
-				if (argv.skipConfig === false) {
-					config.addHandler({ property: "customTemplates", value: "path:" + outDir, global: true });
-					Util.log("Template generated successfully");
-					return;
-				}
-			} else {
-				return Util.log("Project creation failed!");
-			}
-		}).catch(err => {
-			return Util.log("Project creation failed!");
-		});
+		if (!res) {
+			return Util.log("Template generation failed!");
+		}
+		if (!argv.skipConfig) {
+			config.addHandler({ property: "customTemplates", value: "path:" + outDir, global: true });
+		}
+		Util.log("Template generated successfully");
 	}
 };
 

@@ -13,9 +13,7 @@ describe("Unit - Generate command", () => {
 		await cli.run(["generate", "template"]);
 
 		expect(Util.error).toHaveBeenCalledTimes(0);
-		expect(Util.log).toHaveBeenCalledTimes(3);
-		expect(Util.log).toHaveBeenCalledWith(
-			"Starting generation of template with project name: custom-template, framework: jquery, type: js");
+		expect(Util.log).toHaveBeenCalledTimes(2);
 		expect(Util.log).toHaveBeenCalledWith("Property \"customTemplates\" updated.");
 		expect(Util.log).toHaveBeenCalledWith("Template generated successfully");
 		expect(Util.processTemplates).toHaveBeenCalledWith(
@@ -40,9 +38,7 @@ describe("Unit - Generate command", () => {
 		await cli.run(["generate", "template", "some-name", "-f=angular", "-t=igx-ts"]);
 
 		expect(Util.error).toHaveBeenCalledTimes(0);
-		expect(Util.log).toHaveBeenCalledTimes(3);
-		expect(Util.log).toHaveBeenCalledWith(
-			"Starting generation of template with project name: some-name, framework: angular, type: igx-ts");
+		expect(Util.log).toHaveBeenCalledTimes(2);
 		expect(Util.log).toHaveBeenCalledWith("Property \"customTemplates\" updated.");
 		expect(Util.log).toHaveBeenCalledWith("Template generated successfully");
 		expect(Util.processTemplates).toHaveBeenCalledWith(

@@ -94,7 +94,7 @@ describe("Help command", () => {
 		--name, -n         Template name.        [string] [default: "custom-template"]
 		--skip-config, -s  Runs generate command without updating the cli config.
 															[boolean] [default: false]
-		--type, -t         Framework type.                    [string] [default: "js"]
+		--type, -t         Framework type.                                    [string]
 		`;
 
 		const replacedNewHelpText: string = originalNewHelpText.replace(/\s/g, "");
