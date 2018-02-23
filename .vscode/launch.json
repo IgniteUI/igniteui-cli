@@ -290,6 +290,21 @@
 		{
 			"type": "node",
 			"request": "launch",
+			"name": "Launch Generate Template React without type",
+			"cwd": "${workspaceRoot}/output",
+			"program": "${workspaceRoot}/bin/execute.js",
+			"console": "externalTerminal",
+			"preLaunchTask": "build",
+			"args": [
+				"g",
+				"t",
+				"-n=react no type",
+				"-f=react",
+			]
+		},
+		{
+			"type": "node",
+			"request": "launch",
 			"name": "Launch Config Get global",
 			"cwd": "${workspaceRoot}/output",
 			"program": "${workspaceRoot}/bin/execute.js",

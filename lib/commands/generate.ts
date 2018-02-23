@@ -42,8 +42,7 @@ const command = {
 						describe: "Framework type.",
 						type: "string"
 					}
-				},
-				handler: command.template
+				}
 			})
 			// at least one command is required
 			.demandCommand(1, "Please select command");
@@ -70,6 +69,10 @@ const command = {
 			return Util.error("Framework not supported", "red");
 		}
 
+		if (argv.framework === "react" && argv.type !== "es6") {
+			argv.type = "es6";
+		}
+
 		let projectLib: ProjectLibrary;
 		if (argv.type) {
 			projectLib = command.templateManager.getProjectLibrary(argv.framework, argv.type) as ProjectLibrary;
@@ -78,12 +81,10 @@ const command = {
 			}
 		}
 
-		const templatesFolder = path.join(__dirname, "..", "..", "templates", argv.framework, argv.type, "generate");
-		argv.className = Util.className(argv.name);
-
-		Util.log(`Project Name: ${argv.name}, framework: ${argv.framework}, type: ${argv.type}`);
+		Util.log(
+			`Starting generation of template with project name: ${argv.name}, framework: ${argv.framework}, type: ${argv.type}`);
 		const promise = Util.processTemplates(
-			templatesFolder,
+			projectLib.generateTemplateFolderPath,
 			outDir,
 			{
 				"$(templateFramework)": argv.framework,
@@ -95,6 +96,8 @@ const command = {
 			if (res) {
 				if (argv.skipConfig === false) {
 					config.addHandler({ property: "customTemplates", value: "path:" + outDir, global: true });
+					Util.log("Template generated successfully");
+					return;
 				}
 			} else {
 				return Util.log("Project creation failed!");

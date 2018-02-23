@@ -68,6 +68,7 @@ export async function run(args = null) {
 			break;
 		case "g":
 		case "generate":
+			await generate.template(argv);
 			break;
 		case "build":
 			await build.execute(argv);

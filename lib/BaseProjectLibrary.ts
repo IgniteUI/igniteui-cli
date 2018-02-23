@@ -10,6 +10,7 @@ export class BaseProjectLibrary implements ProjectLibrary {
 
 	protected _projectsPath: string = "projects";
 	protected _customTemplatesPath: string = "custom-templates";
+	protected _generateCommandPath: string = "generate";
 	private rootPath: string;
 
 	private _templates: Template[];
@@ -59,17 +60,25 @@ export class BaseProjectLibrary implements ProjectLibrary {
 			//read file
 			//read components lists
 			const componentFolders: string[] = Util.getDirectoryNames(this.rootPath)
-				.filter(x => x !== this._projectsPath && x !== this._customTemplatesPath);
+				.filter(
+					x => x !== this._projectsPath &&
+					x !== this._customTemplatesPath &&
+					x !== this._generateCommandPath);
 
 			for (const componentFolder of componentFolders) {
-				if (componentFolder === "generate") {
-					continue;
-				}
 
 				this._components.push(require(path.join(this.rootPath, componentFolder)) as Component);
 			}
 		}
 		return this._components;
+	}
+
+	private _generateTemplateFolderPath: string = "";
+	public get generateTemplateFolderPath(): string {
+		if (this._generateTemplateFolderPath === "") {
+			this._generateTemplateFolderPath = path.join(this.rootPath, "generate");
+		}
+		return this._generateTemplateFolderPath;
 	}
 
 	/**

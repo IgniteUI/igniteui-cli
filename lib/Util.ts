@@ -268,14 +268,18 @@ class Util {
 	 */
 	public static merge(target: any, source: any) {
 		for (const key of Object.keys(source)) {
-			if (typeof source[key] === {} && Array.isArray(source[key])) {
-				if (!target.hasOwnProperty[key]) {
+			const sourceKeyIsArray = Array.isArray(source[key]);
+			const targetHasThisKey = target.hasOwnProperty[key];
+
+			if (typeof source[key] === "object" && !sourceKeyIsArray) {
+				// object value:
+				if (!targetHasThisKey) {
 					target[key] = {};
 				}
 				this.merge(target[key], source[key]);
-			}
-			if (target.hasOwnProperty(key)) {
-				if (Array.isArray(source[key])) {
+			} else if (sourceKeyIsArray) {
+				//	array value:
+				if (targetHasThisKey) {
 					// skip array merge on target type mismatch:
 					if (!Array.isArray(target[key])) {
 						continue;
@@ -286,16 +290,11 @@ class Util {
 						}
 					}
 				} else {
-					// primitive/new value:
-					target[key] = source[key];
+					target[key] = (source[key] as any[]).slice(0);
 				}
 			} else {
-				if (Array.isArray(source[key])) {
-					target[key] = (source[key] as any[]).slice(0);
-				} else {
-				// primitive/new value:
+				// primitive value:
 				target[key] = source[key];
-				}
 			}
 		}
 	}
