@@ -52,7 +52,7 @@ const command = {
 		}
 
 		if (argv.framework === "angular") {
-			Util.log("react-quickstart loaded");
+			Util.log("angular-quickstart loaded");
 			shell.exec("npm install");
 			shell.exec("npm start");
 		}
