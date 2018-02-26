@@ -20,10 +20,30 @@ describe("Unit - Quickstart command", () => {
 		const outDir = path.join(process.cwd(), "angular-quickstart");
 		const quickStartFiles = path.join(__dirname, "../../templates/quickstart", "angular");
 		expect(Util.processTemplates).toHaveBeenCalledWith(quickStartFiles, outDir, {}, {});
-
 		expect(Util.log).toHaveBeenCalledWith("Quick Start!");
 		expect(Util.log).toHaveBeenCalledWith("angular-quickstart loaded");
 		expect(Util.log).toHaveBeenCalledTimes(2);
 		done();
 	});
+
+	fit("Logs error for wrong framework", async done => {
+		spyOn(Util, "error");
+		spyOn(Util, "log");
+		spyOn(Util, "directoryExists").and.returnValue(true);
+		spyOn(Util, "processTemplates");
+		spyOn(process, "chdir");
+
+		await quickstartCmd.execute({ name: "wrong framework", framework: "lottery"});
+		expect(Util.error).toHaveBeenCalledWith("The framework is not supported!", "red");
+		done();
+	});
+
+	// fit("Creates default jq quickstart if wrong framework is passed", async done => {
+	// 	spyOn(Util, "log");
+	// 	await quickstartCmd.execute({ name: "wrong framework", framework: "lottery"});
+	// 	expect(Util.log).toHaveBeenCalledWith("Quick Start!");
+	// 	expect(Util.log).toHaveBeenCalledWith("jquery-quickstart loaded");
+	// 	expect(Util.log).toHaveBeenCalledTimes(2);
+	// 	done();
+	// });
 });

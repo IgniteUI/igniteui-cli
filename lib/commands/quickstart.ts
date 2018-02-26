@@ -34,7 +34,7 @@ const command = {
 				name = "angular-quickstart";
 				break;
 			default:
-				throw new Error("The framework is not supported");
+				Util.error("The framework is not supported!", "red");
 		}
 
 		const outDir = path.join(process.cwd(), name);
