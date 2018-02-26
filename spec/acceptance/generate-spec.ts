@@ -10,7 +10,6 @@ describe("Generate command", () => {
 	let testFolder = path.parse(__filename).name;
 	let expectedTemplate: any;
 	let actualTemplate: any;
-	let testId: number = 0;
 
 	beforeEach(() => {
 		spyOn(console, "log");
@@ -21,8 +20,6 @@ describe("Generate command", () => {
 			testFolder += 1;
 		}
 
-		testFolder = testFolder + testId;
-		testId++;
 		fs.mkdirSync(`./output/${testFolder}`);
 		process.chdir(`./output/${testFolder}`);
 
@@ -34,6 +31,8 @@ describe("Generate command", () => {
 	});
 
 	afterEach(() => {
+		delete require.cache[require.resolve(path.join(process.cwd(), ".global", "ignite-ui-cli.json"))];
+
 		process.chdir("../../");
 		deleteAll(`./output/${testFolder}`);
 		fs.rmdirSync(`./output/${testFolder}`);
