@@ -1,5 +1,4 @@
 import {
-	AfterViewInit,
 	Component,
 	HostListener,
 	NgZone,
@@ -18,7 +17,7 @@ import {
 	styleUrls: ['./$(filePrefix).component.css'],
 	encapsulation: ViewEncapsulation.None
   })
-  export class $(ClassName)Component implements OnInit, AfterViewInit {
+  export class $(ClassName)Component implements OnInit, OnDestroy {
 
 	@ViewChild('grid1', { read: IgxGridComponent })
 	public grid1: IgxGridComponent;
