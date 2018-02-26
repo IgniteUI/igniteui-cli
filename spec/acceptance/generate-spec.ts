@@ -3,12 +3,14 @@ import * as os from "os";
 import * as path from "path";
 import cli = require("../../lib/cli");
 import { ProjectConfig } from "../../lib/ProjectConfig";
+import { Util } from "../../lib/Util";
 import { deleteAll } from "../helpers/utils";
 
 describe("Generate command", () => {
 	let testFolder = path.parse(__filename).name;
 	let expectedTemplate: any;
 	let actualTemplate: any;
+	let testId: number = 0;
 
 	beforeEach(() => {
 		spyOn(console, "log");
@@ -18,6 +20,9 @@ describe("Generate command", () => {
 		while (fs.existsSync(`./output/${testFolder}`)) {
 			testFolder += 1;
 		}
+
+		testFolder = testFolder + testId;
+		testId++;
 		fs.mkdirSync(`./output/${testFolder}`);
 		process.chdir(`./output/${testFolder}`);
 
@@ -42,18 +47,18 @@ describe("Generate command", () => {
 		const globalConfigPath = path.join(process.cwd(), ".global", "ignite-ui-cli.json");
 		expect(fs.existsSync(globalConfigPath)).toBeTruthy();
 
-		const customTemplatePath = path.join(process.cwd(), "custom-template");
+		const templateFolderPath = path.join(process.cwd(), "custom-template");
 		const globalConfigActual = require(globalConfigPath);
 		const globalConfigExpected = {
 			customTemplates: [
-				"path:" + customTemplatePath
+				"path:" + templateFolderPath
 			]
 		};
 		expect(globalConfigActual).toEqual(globalConfigExpected);
-		expect(fs.existsSync(customTemplatePath)).toBeTruthy();
-		expect(fs.existsSync(path.join(customTemplatePath, "files"))).toBeTruthy();
+		expect(fs.existsSync(templateFolderPath)).toBeTruthy();
+		expect(fs.existsSync(path.join(templateFolderPath, "files"))).toBeTruthy();
 
-		const templatePath = path.join(customTemplatePath, "template.json");
+		const templatePath = path.join(templateFolderPath, "template.json");
 		expect(fs.existsSync(templatePath)).toBeTruthy();
 		expectedTemplate = require(templatePath) as Template;
 		actualTemplate = {
@@ -79,6 +84,18 @@ describe("Generate command", () => {
 		expect(fs.existsSync(path.join(process.cwd(), "angular-wrapper"))).toBeTruthy();
 		const templatePath = path.join(process.cwd(), "angular-wrapper", "template.json");
 		expect(fs.existsSync(templatePath)).toBeTruthy();
+
+		const globalConfigPath = path.join(process.cwd(), ".global", "ignite-ui-cli.json");
+		expect(fs.existsSync(globalConfigPath)).toBeTruthy();
+		const templateFolderPath = path.join(process.cwd(), "angular-wrapper");
+		const igniteUiCliActual = require(globalConfigPath);
+		const igniteUiCliExpected = {
+			customTemplates: [
+				"path:" + templateFolderPath
+			]
+		};
+		expect(igniteUiCliActual).toEqual(igniteUiCliExpected);
+
 		expectedTemplate = require(templatePath) as Template;
 		actualTemplate = {
 			components: [],
@@ -94,7 +111,7 @@ describe("Generate command", () => {
 		};
 		expect(expectedTemplate).toEqual(actualTemplate);
 
-		const pathDirectory = path.join(process.cwd(), "angular-wrapper", "files", "src", "app", "components", "__path__");
+		const pathDirectory = path.join(templateFolderPath, "files", "src", "app", "components", "__path__");
 		expect(fs.existsSync(pathDirectory)).toBeTruthy();
 		expect(fs.existsSync(path.join(pathDirectory, "__name__.component.ts"))).toBeTruthy();
 		done();
@@ -104,8 +121,20 @@ describe("Generate command", () => {
 		await cli.run(["generate", "template", "angular", "-f=angular", "-t=igx-ts"]);
 
 		expect(fs.existsSync(path.join(process.cwd(), ".global"))).toBeTruthy();
-		expect(fs.existsSync(path.join(process.cwd(), "angular"))).toBeTruthy();
-		const templatePath = path.join(process.cwd(), "angular", "template.json");
+		const globalConfigPath = path.join(process.cwd(), ".global", "ignite-ui-cli.json");
+		expect(fs.existsSync(globalConfigPath)).toBeTruthy();
+
+		const templateFolderPath = path.join(process.cwd(), "angular");
+		const igniteUiCliActual = require(globalConfigPath);
+		const igniteUiCliExpected = {
+			customTemplates: [
+				"path:" + templateFolderPath
+			]
+		};
+		expect(igniteUiCliActual).toEqual(igniteUiCliExpected);
+
+		expect(fs.existsSync(templateFolderPath)).toBeTruthy();
+		const templatePath = path.join(templateFolderPath, "template.json");
 		expect(fs.existsSync(templatePath)).toBeTruthy();
 		expectedTemplate = require(templatePath) as Template;
 		actualTemplate = {
@@ -122,12 +151,52 @@ describe("Generate command", () => {
 		};
 		expect(expectedTemplate).toEqual(actualTemplate);
 
-		const pathDirectory = path.join(process.cwd(), "angular", "files", "src", "app", "__path__");
+		const pathDirectory = path.join(templateFolderPath, "files", "src", "app", "__path__");
 		expect(fs.existsSync(pathDirectory)).toBeTruthy();
 		expect(fs.existsSync(path.join(pathDirectory, "__name__.component.css"))).toBeTruthy();
 		expect(fs.existsSync(path.join(pathDirectory, "__name__.component.html"))).toBeTruthy();
 		expect(fs.existsSync(path.join(pathDirectory, "__name__.component.spec.ts"))).toBeTruthy();
 		expect(fs.existsSync(path.join(pathDirectory, "__name__.component.ts"))).toBeTruthy();
+		done();
+	});
+
+	it("Should correctly generate react template", async done => {
+		await cli.run(["generate", "template", "react", "-f=react", "-t=es6"]);
+
+		expect(fs.existsSync(path.join(process.cwd(), ".global"))).toBeTruthy();
+		const globalConfigPath = path.join(process.cwd(), ".global", "ignite-ui-cli.json");
+		expect(fs.existsSync(globalConfigPath)).toBeTruthy();
+
+		const templateFolderPath = path.join(process.cwd(), "react");
+		const igniteUiCliActual = require(globalConfigPath);
+		const igniteUiCliExpected = {
+			customTemplates: [
+				"path:" + templateFolderPath
+			]
+		};
+		expect(igniteUiCliActual).toEqual(igniteUiCliExpected);
+		expect(fs.existsSync(templateFolderPath)).toBeTruthy();
+		const templatePath = path.join(templateFolderPath, "template.json");
+		expect(fs.existsSync(templatePath)).toBeTruthy();
+		expectedTemplate = require(templatePath) as Template;
+		actualTemplate = {
+			components: [],
+			controlGroup: "",
+			dependencies: [],
+			description: "This is custom template with id: react, created with IgniteUI CLI for React",
+			framework: "react",
+			id: "react",
+			listInComponentTemplates: false,
+			listInCustomTemplates: true,
+			name: "react",
+			projectType: "es6"
+		};
+		expect(expectedTemplate).toEqual(actualTemplate);
+
+		const clientDirectory = path.join(templateFolderPath, "files", "client");
+		expect(fs.existsSync(clientDirectory)).toBeTruthy();
+		expect(fs.existsSync(path.join(clientDirectory, "components", "__path__", "index.js"))).toBeTruthy();
+		expect(fs.existsSync(path.join(clientDirectory, "pages", "__path__", "index.js"))).toBeTruthy();
 		done();
 	});
 });
