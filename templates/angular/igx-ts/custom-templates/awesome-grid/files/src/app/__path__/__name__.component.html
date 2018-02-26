@@ -2,125 +2,101 @@
 	<section class="sample-content">
 	  <article class="sample-column">
   
-		<div class="containerTitle">
-		  <span class="titleMarathon">
+		<div class="grid__wrapper">
+  
+		  <div class="sample__header">
 			<div class="switch-sample">
-			  <span igxLabel>Boston Marathon 2017</span>
-			  <igx-switch [checked]="this.live" [disabled]="disabled" (change)="doSwitch($event)" title="Start/Stop the marathon">Live</igx-switch>
+			  <h2 igxLabel>Boston Marathon 2017</h2>
+			  <igx-switch [(ngModel)]="live" [disabled]="!live" title="Start/Stop the marathon"> Live </igx-switch>
 			</div>
-		  </span>
-		  <span class="titleFilter">
-			<input id="globalFilter" igxInput (input)="doGlobalFiltering($event)" placeholder="Filter by country" />
-		  </span>
-		</div>
-		<br />
   
-		<igx-grid #grid1 [data]="localData" oddRowCSS="oddRow" evenRowCSS="evenRow" paging="true" height="850px" class="fontWeight">
-		  <igx-column header="Rank" field="Id" sortable="true">
-			<ng-template igxCell let-cell="cell">
+			<input class="gridSample__filter" igxInput type="text" placeholder="Filter by country" (input)="filter($event.target.value)">
+		  </div>
   
-			  <ng-template [ngIf]="isTop3(cell)">
-				<span class="cup" *ngIf="cell.value === 1">
-					<svg id="circle" height="20" width="20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-					  <image x="0" y="0" height="20" width="20" xlink:href="assets/images/trophy_gold.svg" />
-					</svg>
-				</span>
-				<span class="cup" *ngIf="cell.value === 2">
-					<svg id="circle" height="20" width="20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-					  <image x="0" y="0" height="20" width="20" xlink:href="assets/images/trophy_silver.svg" />
-					</svg>
-				</span>
-				<span class="cup" *ngIf="cell.value === 3">
-					<svg id="circle" height="20" width="20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-					  <image x="0" y="0" height="20" width="20" xlink:href="assets/images/trophy_bronze.svg" />
-					</svg>
-				</span>
+		  <igx-grid #grid1 [data]="localData"  [paging]="true" [perPage]="6" [paginationTemplate]="pager">
+			<igx-column header="Rank" headerClasses="myClass" width="100px" field="Id" sortable="true">
+			  <ng-template igxCell let-cell="cell">
+				<div class="cell__inner">
+				  <ng-container *ngIf="isTop3(cell)">
+					<span class="cup" *ngIf="cell.value === 1">
+						<svg id="circle" height="20" width="20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+							<image x="0" y="0" height="20" width="20" xlink:href="assets/images/grid/trophy_gold.svg" />
+						</svg>
+					</span>
+					<span class="cup" *ngIf="cell.value === 2">
+					  <svg id="circle" height="20" width="20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+						  <image x="0" y="0" height="20" width="20" xlink:href="assets/images/grid/trophy_silver.svg" />
+					  </svg>
+					</span>
+					<span class="cup" *ngIf="cell.value === 3">
+					  <svg id="circle" height="20" width="20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+						  <image x="0" y="0" height="20" width="20" xlink:href="assets/images/grid/trophy_bronze.svg" />
+					  </svg>
+					</span>
+				  </ng-container>
+				  <div>{{ cell.value }}</div>
+				</div>
 			  </ng-template>
-			  <span class="rowIndex">
-				{{ cell.value }}
-			  </span>
-			</ng-template>
-		  </igx-column>
+			</igx-column>
   
-		  <igx-column field="Avatar">
-			<ng-template igxHeader>
-			  <span style="padding-left: 30px; width: 100%;">Athlete</span>
-			</ng-template>
+			  <igx-column field="Name" header="Athlete" filterable="true" width="250">
+				  <ng-template igxCell let-cell="cell">
+					  <div class="cell__inner">
+						<div class="badge_wrap">
+						  <igx-avatar [src]="cell.row.rowData.Avatar" roundShape="true" size="small"> </igx-avatar>
+						  <igx-badge *ngIf="live" [type]="getBadgeType(cell)" [icon]="getIconType(cell)"></igx-badge>
+						</div>
+						<span>{{ cell.value }}</span>
+					  </div>
+				  </ng-template>
+			  </igx-column>
   
-			<ng-template igxCell let-cell="cell">
-			  <span style="padding-left: 20px; width: 100%;">
-				<igx-avatar [src]="cell.value" roundShape="true" size="medium">
-					<igx-badge *ngIf="live && getPositionDelta(cell)=== 'up'" type="success" position="top-right" icon="arrow_upward"></igx-badge>
-					<igx-badge *ngIf="live && getPositionDelta(cell) === 'current'" type="warning" position="top-right" icon="arrow_forward"></igx-badge>
-					<igx-badge *ngIf="live && getPositionDelta(cell) === 'down'" type="error" position="top-right" icon="arrow_downward"></igx-badge>
-				</igx-avatar>
-			  </span>
-			</ng-template>
-		  </igx-column>
+			  <igx-column field="AthleteNumber" header="Athlete Number" [hidden]="hideColumn" dataType="number">
+				<ng-template igxCell let-val>
+				  <div class="cell__inner">
+					  {{ val }}
+				  </div>
+				</ng-template>
+			  </igx-column>
   
-		  <igx-column field="Name" header=" " filterable="true">
-		  </igx-column>
+			  <igx-column field="BeatsPerMinute" header="Beats per minute" [hidden]="hideColumn">
+				<ng-template igxCell let-val>
+				  <div class="cell__inner">
+					{{ val }}
+				  </div>
+				</ng-template>
+			  </igx-column>
   
-		  <igx-column field="AthleteNumber" header="Athlete number" [hidden]="windowWidth < 785">
-			<ng-template igxHeader>
-			  <span class="cellAlignSyle">Athlete number</span>
-			</ng-template>
+			  <igx-column field="TopSpeed" header="Top Speed">
   
-			<ng-template igxCell let-val>
-			  <span class="cellAlignSyle">{{ val }}</span>
-			</ng-template>
-		  </igx-column>
+				  <ng-template igxCell let-val>
+					<div class="cell__inner">
+					{{ val | number: '1.1-5' }}
+					</div>
+				  </ng-template>
   
-		  <igx-column field="BeatsPerMinute" header="Beats per minute" [hidden]="windowWidth < 785">
-			<ng-template igxHeader>
-			  <span class="cellAlignSyle">Beats per minute</span>
-			</ng-template>
+			  </igx-column>
   
-			<ng-template igxCell let-val>
-			  <span class="cellAlignSyle">{{ val }}</span>
-			</ng-template>
-		  </igx-column>
+			  <igx-column field="TrackProgress" sortable="true" header="Track Progress">
+				  <ng-template igxCell let-val>
+						<igx-linear-bar class="cell__inner_2" [value]="val"></igx-linear-bar>
+				  </ng-template>
+			  </igx-column>
   
-		  <igx-column field="TopSpeed">
-			<ng-template igxHeader>
-			  <span class="cellAlignSyle">Top speed</span>
-			</ng-template>
-			<ng-template igxCell let-val>
-			  <span class="cellAlignSyle">{{ val | number:'1.1-5' }}</span>
-			</ng-template>
-		  </igx-column>
+			  <igx-column field="CountryName" hidden="true"></igx-column>
   
-		  <igx-column field="TrackProgress">
-			<ng-template igxHeader>
-			  <span class="cellAlignSyle">Track progress</span>
-			</ng-template>
-  
-			<ng-template igxCell let-val>
-			  <span class="centerPosition">
-				<igx-linear-bar [striped]="false" [value]="val" [max]="100">
-				</igx-linear-bar>
-			  </span>
-			</ng-template>
-		  </igx-column>
-  
-		  <igx-column field="CountryName" hidden="true"></igx-column>
-  
-		  <igx-column field="CountryFlag">
-			<ng-template igxHeader>
-			  <span class="cellAlignSyle">Country</span>
-			</ng-template>
-			<ng-template igxCell let-cell="cell">
-			  <div class="flagParent">
-				<span class="elipsis">{{ cell.row.rowData.CountryName }}</span>
-				<span>
-				  <img src="{{ cell.value }}" class="flag" />
-				</span>
-			  </div>
-			</ng-template>
-		  </igx-column>
-		</igx-grid>
-  
-		<ng-template #pager let-grid>
+			  <igx-column field="CountryFlag" header="Country">
+				  <ng-template igxCell let-cell="cell">
+					<div class="cell__inner_2">
+					  <span>
+						  <img [src]="cell.value" class="flag" />
+					  </span>
+					</div>
+				  </ng-template>
+			  </igx-column>
+		  </igx-grid>
+		  
+		  <ng-template #pager let-grid>
 			<div *ngIf="grid.paging && grid.totalPages > 0" class="igx-paginator">
 				<button [disabled]="grid.isFirstPage" (click)="grid.paginate(0)" igxButton="icon" igxRipple igxRippleCentered="true">
 					<igx-icon fontSet="material" name="first_page"></igx-icon>
@@ -136,8 +112,9 @@
 					<igx-icon fontSet="material" name="last_page"></igx-icon>
 				</button>
 			</div>
-  
 		</ng-template>
+		</div>
 	  </article>
 	</section>
   </div>
+  
