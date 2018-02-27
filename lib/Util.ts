@@ -141,7 +141,7 @@ class Util {
 
 		let paths: string[] = glob.sync(sourcePath + "/**/*", { nodir: true });
 		// TODO: D.P Temporary ignoring asset files
-		const ignorePaths: string[] = glob.sync(sourcePath + "/**/+(assets|data)/*", { nodir: true });
+		const ignorePaths: string[] = glob.sync(sourcePath + "/**/+(assets|data)/**/*", { nodir: true });
 		paths = paths.filter(x => ignorePaths.indexOf(x) === -1);
 
 		for (let filePath of paths) {
