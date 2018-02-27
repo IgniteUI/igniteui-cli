@@ -95,7 +95,7 @@ command = {
 		}
 		// TODO: update output path based on where the CLI is called
 		await projTemplate.generateFiles(process.cwd(), argv.name, theme);
-		Util.log("Project Created");
+		Util.log(Util.greenCheck() + " Project Created");
 
 		this.git(argv["skip-git"], argv.name);
 	},
@@ -106,7 +106,7 @@ command = {
 				Util.exec("git init", { cwd: cwdir });
 				Util.exec("git add .", { cwd: cwdir });
 				Util.exec("git commit -m " + "\"Initial commit for project: " + projectName + "\"", { cwd: cwdir });
-				Util.log("Git Initialized and Project '" + projectName + "' Commited");
+				Util.log(Util.greenCheck() + " Git Initialized and Project '" + projectName + "' committed");
 			} catch (error) {
 				Util.error("Git initialization failed. Install Git in order to automatically commit the project.", "yellow");
 			}
