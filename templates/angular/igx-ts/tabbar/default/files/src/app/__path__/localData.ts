@@ -1,3 +1,4 @@
+//tslint:disable
 export const Contacts = [{
 	avatar: "assets/1.jpg",
 	favorite: true,

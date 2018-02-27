@@ -17,7 +17,8 @@ class IgxGridAwesomeTemplate extends IgniteUIForAngularTemplate {
 			"IgxAvatarModule",
 			"IgxBadgeModule",
 			"IgxSwitchModule",
-			"IgxInputModule"
+			"IgxInputModule",
+			"IgxButtonModule"
 		];
 	}
 }
