@@ -47,4 +47,16 @@ describe("Unit - Quickstart command", () => {
 		expect(Util.log).toHaveBeenCalledTimes(2);
 		done();
 	});
+
+	fit("Creates quickstart for React framework", async done => {
+		await quickstartCmd.execute({ framework: "react" });
+		const outDir = path.join(process.cwd(), "react-quickstart");
+		const quickStartFiles = path.join(__dirname, "../../templates/quickstart", "react");
+
+		expect(Util.processTemplates).toHaveBeenCalledWith(quickStartFiles, outDir, {}, {});
+		expect(Util.log).toHaveBeenCalledWith("Quick Start!");
+		expect(Util.log).toHaveBeenCalledWith("react-quickstart loaded");
+		expect(Util.log).toHaveBeenCalledTimes(2);
+		done();
+	});
 });
