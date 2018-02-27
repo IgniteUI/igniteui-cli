@@ -60,7 +60,7 @@ const command = {
 
 		const outDir = path.join(process.cwd(), argv.name);
 		if (Util.directoryExists(outDir)) {
-			Util.error(`Folder "${argv.name}" already exists!`, "red");
+			Util.error(`Folder '${argv.name}' already exists!`, "red");
 			return;
 		}
 
@@ -72,7 +72,7 @@ const command = {
 		if (argv.type) {
 			projectLib = command.templateManager.getProjectLibrary(argv.framework, argv.type) as ProjectLibrary;
 			if (!projectLib) {
-				return Util.error(`Project type "${argv.type}" not found in framework '${argv.framework}'`);
+				return Util.error(`Project type '${argv.type}' not found in framework '${argv.framework}'`);
 			}
 		} else {
 			projectLib = command.templateManager.getProjectLibrary(argv.framework) as ProjectLibrary;
@@ -89,7 +89,7 @@ const command = {
 			},
 			null);
 		if (!res) {
-			return Util.log("Template generation failed!");
+			return Util.error("Template generation failed!", "red");
 		}
 		if (!argv.skipConfig) {
 			config.addHandler({ property: "customTemplates", value: "path:" + outDir, global: true });
