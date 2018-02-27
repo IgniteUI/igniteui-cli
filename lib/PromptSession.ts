@@ -106,7 +106,7 @@ export class PromptSession {
 		if (framework.components.length > 0) {
 			actionChoices.push("Add component");
 		}
-		if (framework.getCustomTemplates().length > 0) {
+		if (framework.getCustomTemplateNames().length > 0) {
 			actionChoices.push("Add view");
 		}
 		const action = await inquirer.prompt({
@@ -178,7 +178,7 @@ export class PromptSession {
 				break;
 			case "Add view":
 				//TODO:
-				const customTemplates = framework.getCustomTemplates();
+				const customTemplates = framework.getCustomTemplateNames();
 				const customTemplate = await inquirer.prompt({
 					type: "list",
 					name: "customTemplate",

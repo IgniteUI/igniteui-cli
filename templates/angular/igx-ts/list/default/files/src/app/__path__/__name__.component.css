@@ -1,31 +1,30 @@
 igx-icon {
-	cursor: pointer;
-	user-select: none;
-  }
-  
-  .item-container {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-  }
-  
-  .contact {
-	display: flex;
-	flex: 1 0 240px;
-	align-items: center;
-  }
-  
-  .contact__info {
-	display: flex;
-	flex-flow: column nowrap;
-	margin-left: 24px;
-  }
-  
-  .name {
-	font-weight: 600;
-  }
-  
-  .phone {
-	font-size: 0.875em;
-  }
-  
+  cursor: pointer;
+  user-select: none;
+}
+
+.item-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contact {
+  display: flex;
+  flex: 1 0 240px;
+  align-items: center;
+}
+
+.contact__info {
+  display: flex;
+  flex-flow: column nowrap;
+  margin-left: 24px;
+}
+
+.name {
+  font-weight: 600;
+}
+
+.phone {
+  font-size: 0.875em;
+}
