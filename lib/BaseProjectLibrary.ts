@@ -11,7 +11,6 @@ export class BaseProjectLibrary implements ProjectLibrary {
 	protected _projectsPath: string = "projects";
 	protected _customTemplatesPath: string = "custom-templates";
 	protected _generateCommandPath: string = "generate";
-	private rootPath: string;
 
 	private _templates: Template[];
 	public get templates(): Template[] {
@@ -84,11 +83,8 @@ export class BaseProjectLibrary implements ProjectLibrary {
 	/**
 	 *
 	 */
-	constructor(rootPath?: string) {
-		this.rootPath = rootPath ? rootPath : __dirname;
-		// load the templates
+	constructor(private rootPath: string) {}
 
-	}
 	public getTemplateById(id: string): Template {
 		return this.templates.find(x => x.id === id);
 	}
@@ -123,7 +119,7 @@ export class BaseProjectLibrary implements ProjectLibrary {
 	public getComponentByName(name: string): Component {
 		return this.components.find(x => x.name === name);
 	}
-	public getCustomTemplates(): string[] {
+	public getCustomTemplateNames(): string[] {
 		const cTemplates: string[] = [];
 		for (const customTemplate of this.customTemplates) {
 			//var p: CustomTemplate = this.customTemplates[index] as CustomTemplate;

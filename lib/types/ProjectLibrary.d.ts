@@ -16,7 +16,7 @@ interface ProjectLibrary {
 	/**Returns the path to folder containing template for generate command */
 	generateTemplateFolderPath: string;
 	/** List of the supported custom templates on framework level */
-	getCustomTemplates(): string[];
+	getCustomTemplateNames(): string[];
 
 	/** Returns custom template with a specified name */
 	getTemplateByName(name: string): Template;
