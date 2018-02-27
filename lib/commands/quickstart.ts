@@ -35,6 +35,7 @@ const command = {
 				break;
 			default:
 				Util.error("The framework is not supported!", "red");
+				return;
 		}
 
 		const outDir = path.join(process.cwd(), name);
