@@ -11,7 +11,6 @@ export class BaseProjectLibrary implements ProjectLibrary {
 	protected _projectsPath: string = "projects";
 	protected _customTemplatesPath: string = "custom-templates";
 	protected _generateCommandPath: string = "generate";
-	private rootPath: string;
 
 	private _templates: Template[];
 	public get templates(): Template[] {
