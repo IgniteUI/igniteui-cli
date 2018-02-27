@@ -23,27 +23,36 @@ import {
 	public grid1: IgxGridComponent;
   
 	public localData: any[];
+	public isFinished = false;
 	private _live = true;
 	private _timer;
 	private windowWidth: any;
 
 	get live() {
-	  return this._live;
-	}
-
+		return this._live;
+	  }
 	set live(val) {
-	  this._live = val;
-	  val === false ? clearInterval(this._timer) : this._timer = setInterval(() => this.ticker(), 3000);
+		this._live = val;
+		if (this._live) {
+			this._timer = setInterval(() => this.ticker(), 3000);
+			} else {
+			clearInterval(this._timer);
+			}
+		}
+  
+	get hideAthleteNumber() {
+		return this.windowWidth && this.windowWidth < 960;
 	}
 
-	get hideColumn() {
-	  return this.windowWidth && this.windowWidth < 785;
+	get hideBeatsPerMinute() {
+		return this.windowWidth && this.windowWidth < 860;
 	}
 
 	constructor(private zone: NgZone) {}
   
 	public ngOnInit() {
 	  this.localData = athletesData;
+	  this.windowWidth = window.innerWidth;
 	  this._timer = setInterval(() => this.ticker(), 3000);
 	}
   
@@ -128,6 +137,7 @@ import {
   
 	  if (this.localData[0].TrackProgress >= 100) {
 		this.live = false;
+		this.isFinished = true;
 	  }
 	}
   }
