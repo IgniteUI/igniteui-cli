@@ -34,7 +34,8 @@ const command = {
 				name = "angular-quickstart";
 				break;
 			default:
-				throw new Error("The framework is not supported");
+				Util.error("The framework is not supported!", "red");
+				return;
 		}
 
 		const outDir = path.join(process.cwd(), name);
@@ -45,20 +46,20 @@ const command = {
 		//change folder
 		process.chdir(name);
 		if (argv.framework === "react") {
-			Util.log("The files are loaded");
+			Util.log("react-quickstart loaded");
 			shell.exec("npm install");
 			shell.exec("npm run webpack");
 			liteServer.server();
 		}
 
 		if (argv.framework === "angular") {
-			Util.log("The files are loaded");
+			Util.log("angular-quickstart loaded");
 			shell.exec("npm install");
 			shell.exec("npm start");
 		}
 
 		if (argv.framework === "jquery") {
-			Util.log("The files are loaded");
+			Util.log("jquery-quickstart loaded");
 			liteServer.server();
 		}
 	}
