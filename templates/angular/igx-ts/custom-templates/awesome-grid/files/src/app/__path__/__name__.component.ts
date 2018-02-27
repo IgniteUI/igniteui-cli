@@ -33,7 +33,7 @@ import {
 
 	set live(val) {
 	  this._live = val;
-	  clearInterval(this._timer);
+	  val === false ? clearInterval(this._timer) : this._timer = setInterval(() => this.ticker(), 3000);
 	}
 
 	get hideColumn() {
