@@ -1,7 +1,15 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { $(ClassName)Component } from './$(filePrefix).component';
-import { IgxGridModule, IgxProgressBarModule, IgxAvatarModule, IgxBadgeModule, IgxSwitchModule } from 'igniteui-angular/main';
+import {
+  IgxGridModule,
+  IgxProgressBarModule,
+  IgxAvatarModule,
+  IgxBadgeModule,
+  IgxIconModule,
+  IgxSwitchModule
+} from 'igniteui-angular/main';
 describe('$(ClassName)Component', () => {
   let component: $(ClassName)Component;
   let fixture: ComponentFixture<$(ClassName)Component>;
@@ -10,10 +18,13 @@ describe('$(ClassName)Component', () => {
     TestBed.configureTestingModule({
       declarations: [ $(ClassName)Component ],
       imports: [
+        FormsModule,
+        BrowserAnimationsModule,
         IgxGridModule,
         IgxProgressBarModule,
         IgxAvatarModule,
         IgxBadgeModule,
+        IgxIconModule,
         IgxSwitchModule
       ]
     })
