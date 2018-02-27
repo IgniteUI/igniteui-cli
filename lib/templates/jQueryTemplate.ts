@@ -53,6 +53,10 @@ export class jQueryTemplate implements Template {
 			"$(theme)": projectConfig.project.theme
 		};
 
+		if (this.name) {
+			config["$(name)"] = this.name;
+		}
+
 		// generate scripts/imports based on framework - per template
 		if (!Util.validateTemplate(path.join(this.rootPath, "files"), outputPath, config, pathsConfig)) {
 			return Promise.resolve(false);
