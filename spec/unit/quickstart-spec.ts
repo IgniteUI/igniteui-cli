@@ -1,5 +1,7 @@
 
+import * as liteServer from "lite-server";
 import * as path from "path";
+import shell = require("shelljs");
 import quickstart, { default as quickstartCmd } from "../../lib/commands/quickstart";
 import { Util } from "../../lib/Util";
 
@@ -13,11 +15,15 @@ describe("Unit - Quickstart command", () => {
 	});
 
 	it("Creates quickstart for the specified framework", async done => {
+		spyOn(shell, "exec");
+
 		await quickstartCmd.execute({ framework: "angular" });
 		const outDir = path.join(process.cwd(), "angular-quickstart");
 		const quickStartFiles = path.join(__dirname, "../../templates/quickstart", "angular");
 
 		expect(Util.processTemplates).toHaveBeenCalledWith(quickStartFiles, outDir, {}, {});
+		expect (shell.exec).toHaveBeenCalledWith("npm install");
+		expect (shell.exec).toHaveBeenCalledWith("npm start");
 		expect(Util.log).toHaveBeenCalledWith("Quick Start!");
 		expect(Util.log).toHaveBeenCalledWith("angular-quickstart loaded");
 		expect(Util.log).toHaveBeenCalledTimes(2);
@@ -36,7 +42,7 @@ describe("Unit - Quickstart command", () => {
 	});
 
 	it("Creates default jquery quickstart when no framework is specified", async done => {
-
+		spyOn(liteServer, "server");
 		await quickstartCmd.execute({ framework: "jquery" });
 		const outDir = path.join(process.cwd(), "jquery-quickstart");
 		const quickStartFiles = path.join(__dirname, "../../templates/quickstart", "jquery");
@@ -48,12 +54,17 @@ describe("Unit - Quickstart command", () => {
 		done();
 	});
 
-	fit("Creates quickstart for React framework", async done => {
+	it("Creates quickstart for React framework", async done => {
+		spyOn(shell, "exec");
+		spyOn(liteServer, "server");
+
 		await quickstartCmd.execute({ framework: "react" });
 		const outDir = path.join(process.cwd(), "react-quickstart");
 		const quickStartFiles = path.join(__dirname, "../../templates/quickstart", "react");
 
 		expect(Util.processTemplates).toHaveBeenCalledWith(quickStartFiles, outDir, {}, {});
+		expect (shell.exec).toHaveBeenCalledWith("npm install");
+		expect (shell.exec).toHaveBeenCalledWith("npm run webpack");
 		expect(Util.log).toHaveBeenCalledWith("Quick Start!");
 		expect(Util.log).toHaveBeenCalledWith("react-quickstart loaded");
 		expect(Util.log).toHaveBeenCalledTimes(2);
