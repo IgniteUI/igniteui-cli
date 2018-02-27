@@ -146,7 +146,7 @@ describe("Unit - Generate command", () => {
 		done();
 	});
 
-	it("Should log if generate template fail", async done => {
+	it("Logs error if generate template fail", async done => {
 		spyOn(Util, "isAlphanumericExt").and.returnValue(true);
 		spyOn(Util, "directoryExists").and.returnValue(false);
 		spyOn(Util, "processTemplates").and.returnValue(new Promise<boolean>((res, rej) => { res(false); }));
