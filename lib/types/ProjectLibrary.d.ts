@@ -13,6 +13,8 @@ interface ProjectLibrary {
 	templates: Template[];
 	/** JS, TS, Dart */
 	projectType: string;
+	/**Returns the path to folder containing template for generate command */
+	generateTemplateFolderPath: string;
 	/** List of the supported custom templates on framework level */
 	getCustomTemplateNames(): string[];
 

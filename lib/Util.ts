@@ -1,10 +1,11 @@
 import chalk from "chalk";
+import { exec, execSync } from "child_process";
 import * as fs from "fs";
 import * as fsExtra from "fs-extra";
 import * as glob from "glob";
 import * as path from "path";
 import through2 = require("through2");
-const imageExtensions = [".png", ".jpg", ".jpeg", ".gif", ".bmp"];
+const imageExtensions = [".png", ".jpg", ".jpeg", ".gif", ".bmp", ".ico"];
 const applyConfig = (configuration: { [key: string]: string }) => {
 	return through2((data, enc, cb) => {
 		cb(null, new Buffer(Util.applyConfigTransformation(data.toString(), configuration)));
@@ -268,23 +269,44 @@ class Util {
 	 */
 	public static merge(target: any, source: any) {
 		for (const key of Object.keys(source)) {
-			if (!target.hasOwnProperty(key) || typeof source[key] !== "object") {
-				// primitive/new value:
-				target[key] = source[key];
-			} else if (Array.isArray(source[key])) {
-				// skip array merge on target type mismatch:
-				if (!Array.isArray(target[key])) {
-					continue;
+			const sourceKeyIsArray = Array.isArray(source[key]);
+			const targetHasThisKey = target.hasOwnProperty[key];
+
+			if (typeof source[key] === "object" && !sourceKeyIsArray) {
+				// object value:
+				if (!targetHasThisKey) {
+					target[key] = {};
 				}
-				for (const item of source[key]) {
-					if (target[key].indexOf(item) === -1) {
-						target[key].push(item);
+				this.merge(target[key], source[key]);
+			} else if (sourceKeyIsArray) {
+				//	array value:
+				if (targetHasThisKey) {
+					// skip array merge on target type mismatch:
+					if (!Array.isArray(target[key])) {
+						continue;
 					}
+					for (const item of source[key]) {
+						if (target[key].indexOf(item) === -1) {
+							target[key].push(item);
+						}
+					}
+				} else {
+					target[key] = (source[key] as any[]).slice(0);
 				}
 			} else {
-				this.merge(target[key], source[key]);
+				// primitive value:
+				target[key] = source[key];
 			}
 		}
+	}
+
+	/**
+	 * Execute synchronous command with options
+	 * @param command Command to be executed
+	 * @param options Command options
+	 */
+	public static exec(command: string, options?: any) {
+		return execSync(command, options);
 	}
 
 	private static propertyByPath(object: any, propPath: string) {

@@ -65,7 +65,11 @@ export class ProjectConfig {
 		let globalConfig = {};
 
 		if (fs.existsSync(globalConfigPath)) {
-			globalConfig = require(globalConfigPath);
+			try {
+				globalConfig = require(globalConfigPath);
+			} catch {
+				Util.error("Invalid global config found!");
+			}
 		}
 		return globalConfig as Config;
 	}
