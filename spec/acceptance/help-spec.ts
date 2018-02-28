@@ -9,11 +9,12 @@ describe("Help command", () => {
 		quickstart             A quick start for your project
 		start                  start the project
 		new [name]             Creating a new project
-		generate               Generates new project                      [aliases: g]
+		generate               Generates the specified blueprint                [aliases: g]
 		build                  build the project
 		config                 Get or set configuration properties
 		test                   test the project
 		add [template] [name]  Add component by it ID and providing a name.
+		list [framework] [type] List all templates
 	  Options:
 		--version, -v  Show current Ignite UI CLI version                    [boolean]
 		--help, -h     Show help                                             [boolean]`;
@@ -90,11 +91,12 @@ describe("Help command", () => {
 		Options:
 		--version, -v      Show current Ignite UI CLI version                [boolean]
 		--help, -h         Show help                                         [boolean]
-		--framework, -f    Framework name.                [string] [default: "jquery"]
-		--name, -n         Template name.        [string] [default: "custom-template"]
-		--skip-config, -s  Runs generate command without updating the cli config.
+		--framework, -f    Framework to generate template for
+														  [string] [default: "jquery"]
+		--name, -n         Template name         [string] [default: "custom-template"]
+		--skip-config, -s  Runs generate command without updating the cli config
 															[boolean] [default: false]
-		--type, -t         Framework type.                                    [string]
+		--type, -t         Project type (depends on framework)                [string]
 		`;
 
 		const replacedNewHelpText: string = originalNewHelpText.replace(/\s/g, "");
