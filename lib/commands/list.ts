@@ -11,6 +11,7 @@ let command: {
 	execute: (argv: any) => Promise<void>
 };
 
+// tslint:disable:object-literal-sort-keys
 command = {
 	command: "list [framework] [type]",
 	alias: "l",

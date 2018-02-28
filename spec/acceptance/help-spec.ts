@@ -105,4 +105,22 @@ describe("Help command", () => {
 		expect(actualNewText).toContain(replacedNewHelpText);
 		done();
 	});
+	it("should show help for list command", async done => {
+		const child = spawnSync("node", ["bin/execute.js", "list", "-h" ], {
+			encoding: "utf-8"
+		});
+		const originalNewHelpText: string = `
+		Options:
+		--version, -v    Show current Ignite UI CLI version                  [boolean]
+		--help, -h       Show help                                           [boolean]
+		--framework, -f  Framework to list templates for                      [string]
+		--type, -t       Project type (depends on framework)                  [string]
+		`;
+
+		const replacedNewHelpText: string = originalNewHelpText.replace(/\s/g, "");
+		const actualNewText: string = (child.stdout.toString("utf-8")).replace(/\s/g, "");
+
+		expect(actualNewText).toContain(replacedNewHelpText);
+		done();
+	});
 });
