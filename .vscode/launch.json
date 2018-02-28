@@ -252,7 +252,7 @@
 				"t",
 				"-n=angular",
 				"-f=angular",
-				"-t=igx-ts",
+				"-t=igx-ts"
 			]
 		},
 		{
@@ -268,7 +268,7 @@
 				"t",
 				"-n=angular wrapper",
 				"-f=angular",
-				"-t=ig-ts",
+				"-t=ig-ts"
 			]
 		},
 		{
@@ -284,7 +284,7 @@
 				"t",
 				"-n=react",
 				"-f=react",
-				"-t=es6",
+				"-t=es6"
 			]
 		},
 		{
@@ -299,7 +299,7 @@
 				"g",
 				"t",
 				"-n=react no type",
-				"-f=react",
+				"-f=react"
 			]
 		},
 		{
@@ -315,6 +315,19 @@
 				"get",
 				"bla",
 				"-g"
+			]
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Launch List command for jquery",
+			"cwd": "${workspaceRoot}/output",
+			"program": "${workspaceRoot}/bin/execute.js",
+			"console": "externalTerminal",
+			"preLaunchTask": "build",
+			"args": [
+				"l",
+				"--framework=jquery"
 			]
 		}
 	]
