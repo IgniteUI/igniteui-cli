@@ -1,16 +1,13 @@
-import { Component, OnInit, ViewEncapsulation } from "@angular/core";
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
-	selector: "$(filePrefix)",
-	templateUrl: './$(filePrefix).component.html',
-	encapsulation: ViewEncapsulation.None,
+  selector: 'app-$(filePrefix)',
+  templateUrl: './$(filePrefix).component.html',
+  styleUrls: ['./$(filePrefix).component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
-export class $(ClassName)Component implements OnInit {
+export class $(ClassName)Component {
 
-	constructor() { }
+  public today: Date = new Date(Date.now());
 
-	public ngOnInit() {
-	}
-
-	public today: Date = new Date(Date.now());
 }

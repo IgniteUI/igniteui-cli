@@ -88,7 +88,7 @@ command = {
 			//successful
 			template.registerInProject(process.cwd(), name);
 			command.templateManager.updateProjectConfiguration(template);
-			Util.log(`View '${name}' added.`);
+			Util.log(`${Util.greenCheck()} View '${name}' added.`);
 			return true;
 		} else {
 			/* Log error? */

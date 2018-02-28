@@ -180,7 +180,7 @@ describe("Unit - New command", () => {
 		expect(newCmd.template.getProjectLibrary).toHaveBeenCalledWith("jq");
 		expect(Util.log).toHaveBeenCalledWith("Project Name: Test, framework jq, type js, theme ig");
 		expect(mockTemplate.generateFiles).toHaveBeenCalledWith(process.cwd(), "Test", "ig");
-		expect(Util.log).toHaveBeenCalledWith("Project Created");
+		expect(Util.log).toHaveBeenCalledWith(jasmine.stringMatching("Project Created"));
 		done();
 	});
 
@@ -209,7 +209,7 @@ describe("Unit - New command", () => {
 		expect(newCmd.template.getProjectLibrary).toHaveBeenCalledWith("jq", "type");
 		expect(mockTemplate.generateFiles).toHaveBeenCalledWith(process.cwd(), "Test", "ig");
 		expect(Util.log).toHaveBeenCalledWith("Project Name: Test, framework jq, type type, theme ig");
-		expect(Util.log).toHaveBeenCalledWith("Project Created");
+		expect(Util.log).toHaveBeenCalledWith(jasmine.stringMatching("Project Created"));
 		done();
 	});
 
@@ -240,7 +240,9 @@ describe("Unit - New command", () => {
 		expect(Util.exec).toHaveBeenCalledWith("git add .", jasmine.any(Object));
 		expect(Util.exec).toHaveBeenCalledWith("git commit -m " + "\"Initial commit for project: " + projectName + "\"",
 			jasmine.any(Object));
-		expect(Util.log).toHaveBeenCalledWith("Git Initialized and Project '" + projectName + "' Commited");
+		expect(Util.log).toHaveBeenCalledWith(
+			jasmine.stringMatching("Git Initialized and Project '" + projectName + "' committed")
+		);
 		done();
 	});
 
