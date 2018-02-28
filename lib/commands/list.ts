@@ -30,7 +30,7 @@ command = {
 	},
 	templateManager: null,
 	async execute(argv) {
-		if ((!argv.framework || !argv.type) && ProjectConfig.hasLocalConfig()) {
+		if (!argv.framework && ProjectConfig.hasLocalConfig()) {
 			const config: Config = ProjectConfig.getConfig();
 			argv.framework = config.project.framework;
 			argv.type = config.project.projectType;
@@ -41,15 +41,14 @@ command = {
 
 		const framework: Framework = this.templateManager.getFrameworkById(argv.framework);
 		if (!framework) {
-			Util.error("Wrong framework provided", "red");
-			return null;
+			return Util.error("Wrong framework provided", "red");
 		}
 
 		let projectLib: ProjectLibrary;
 		if (argv.type) {
 			projectLib = command.templateManager.getProjectLibrary(argv.framework, argv.type) as ProjectLibrary;
 			if (!projectLib) {
-				return Util.error(`Project type '${argv.type}' not found in framework '${argv.framework}'`);
+				return Util.error(`Project type '${argv.type}' not found in framework '${argv.framework}'`, "red");
 			}
 		} else {
 			projectLib = command.templateManager.getProjectLibrary(argv.framework) as ProjectLibrary;
