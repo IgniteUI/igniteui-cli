@@ -278,7 +278,7 @@ class Util {
 	public static merge(target: any, source: any) {
 		for (const key of Object.keys(source)) {
 			const sourceKeyIsArray = Array.isArray(source[key]);
-			const targetHasThisKey = target.hasOwnProperty[key];
+			const targetHasThisKey = target.hasOwnProperty(key);
 
 			if (typeof source[key] === "object" && !sourceKeyIsArray) {
 				// object value:
