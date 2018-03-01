@@ -67,7 +67,7 @@ describe("New command", () => {
 		done();
 	});
 
-	it("Skip Git", async done => {
+	it("Skip Git with command option", async done => {
 		const projectName = "angularProj";
 		await cli.run(["new", projectName, "--framework=angular", "--type=igx-ts", "--skip-git"]);
 
