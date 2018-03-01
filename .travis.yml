@@ -27,4 +27,4 @@ deploy:
 
 env:
   global:
-    - NPM_TAG = if [[ "${TRAVIS_TAG}" == *"beta"* ]]; then "next"; else "latest"; fi
+    - if [[ "${TRAVIS_TAG}" == *"beta"* ]]; then NPM_TAG="next"; else NPM_TAG="latest"; fi
