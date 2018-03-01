@@ -14,7 +14,7 @@ describe("Help command", () => {
 		config                 Get or set configuration properties
 		test                   test the project
 		add [template] [name]  Add component by it ID and providing a name.
-		list [framework] [type] List all templates
+		list [framework] [type] List all templates                           [aliases: l]
 	  Options:
 		--version, -v  Show current Ignite UI CLI version                    [boolean]
 		--help, -h     Show help                                             [boolean]`;

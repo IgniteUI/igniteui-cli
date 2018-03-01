@@ -14,7 +14,8 @@ let command: {
 // tslint:disable:object-literal-sort-keys
 command = {
 	command: "list [framework] [type]",
-	alias: "l",
+	// use aliases here, instead of alias. With single alias yargs does not build correctly argv
+	aliases: ["l"],
 	desc: "List all templates",
 	builder: {
 		framework: {
@@ -30,10 +31,12 @@ command = {
 	},
 	templateManager: null,
 	async execute(argv) {
+		let inProject = false;
 		if (!argv.framework && ProjectConfig.hasLocalConfig()) {
 			const config: Config = ProjectConfig.getConfig();
 			argv.framework = config.project.framework;
 			argv.type = config.project.projectType;
+			inProject = true;
 		}
 
 		const templatesByGroup = [];
@@ -72,6 +75,10 @@ command = {
 			for (const template of templatesByGroup[group]) {
 				Util.log("\t" + template);
 			}
+		}
+
+		if (inProject) {
+			Util.log("To list all available templates run list command outside of a project folder");
 		}
 	}
 };

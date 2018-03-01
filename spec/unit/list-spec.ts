@@ -73,7 +73,7 @@ describe("Unit - List command", () => {
 		await listCmd.execute({});
 		expect(Util.error).toHaveBeenCalledTimes(0);
 
-		expect(Util.log).toHaveBeenCalledTimes(8);
+		expect(Util.log).toHaveBeenCalledTimes(9);
 		expect(Util.log).toHaveBeenCalledWith("Available templates for 'Angular' framework 'igx-ts' type");
 		expect(Util.log).toHaveBeenCalledWith("Available templates in 'group1' group:");
 		expect(Util.log).toHaveBeenCalledWith("	id1.1");
@@ -82,6 +82,7 @@ describe("Unit - List command", () => {
 		expect(Util.log).toHaveBeenCalledWith("Available templates in 'group2' group:");
 		expect(Util.log).toHaveBeenCalledWith("	id2.1");
 		expect(Util.log).toHaveBeenCalledWith("	id2.2");
+		expect(Util.log).toHaveBeenCalledWith("To list all available templates run list command outside of a project folder");
 
 		done();
 	});
