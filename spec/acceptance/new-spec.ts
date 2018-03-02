@@ -17,14 +17,27 @@ describe("New command", () => {
 		process.chdir("../");
 	});
 
-	it("React project", async done => {
+	it("Creates React project", async done => {
 		// process.argv = ["new", "reactProj", "--framework=react"];
 
 		await cli.run(["new", "reactProj", "--framework=react"]);
 
 		//TODO: read entire structure from ./templates and verify everything is copied over
 		expect(fs.existsSync("./reactProj")).toBeTruthy();
+		expect(fs.existsSync("./reactProj/.gitignore")).toBeTruthy();
 		this.testFolder = "./reactProj";
+		done();
+	});
+
+	it("Creates Angular project", async done => {
+		// process.argv = ["new", "reactProj", "--framework=react"];
+
+		await cli.run(["new", "ngxProj", "--framework=angular", "--type=igx-ts"]);
+
+		//TODO: read entire structure from ./templates and verify everything is copied over
+		expect(fs.existsSync("./ngxProj")).toBeTruthy();
+		expect(fs.existsSync("./ngxProj/.gitignore")).toBeTruthy();
+		this.testFolder = "./ngxProj";
 		done();
 	});
 
