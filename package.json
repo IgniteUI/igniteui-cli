@@ -67,7 +67,8 @@
     "all": true
   },
   "release": {
-    "noCi": true,
+	"noCi": true,
+	"branch": "dpetev/changelog-playground",
     "verifyConditions": [
       "@semantic-release/changelog",
       "@semantic-release/git"

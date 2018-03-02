@@ -1,3 +1,28 @@
+<a name="1.2.1"></a>
+## [1.2.1](https://github.com/IgniteUI/igniteui-cli/compare/v1.2.1-beta.0...v1.2.1) (2018-03-02)
+
+
+### Bug Fixes
+
+* change the regex to allow single letter name ([9a3585d](https://github.com/IgniteUI/igniteui-cli/commit/9a3585d))
+* ignore child process output/error; put check; ([1c724b3](https://github.com/IgniteUI/igniteui-cli/commit/1c724b3))
+* manually rename gitignore on create to avoid npm install renaming ([05a6b28](https://github.com/IgniteUI/igniteui-cli/commit/05a6b28)), closes [#122](https://github.com/IgniteUI/igniteui-cli/issues/122)
+* **igx-tabbar:** add content width restriction to align text content ([926ff6d](https://github.com/IgniteUI/igniteui-cli/commit/926ff6d))
+* **igx-ts:** fix for scss compilation error in igniteui-angular@5.2.1 ([e9aca96](https://github.com/IgniteUI/igniteui-cli/commit/e9aca96))
+
+# [1.2.1](https://github.com/IgniteUI/igniteui-cli/compare/844e28b69e2f1c52925d5e93cb4bacb7fe2933d0...v1.2.1) (2018-03-01)
+
+
+### Bug Fixes
+
+* merge util typo ([c6ddc1b](https://github.com/IgniteUI/igniteui-cli/commit/c6ddc1b))
+* **build:** CI node 8, for npm@5.4+ to correctly pack `.gitignore` files ([bdf6afc](https://github.com/IgniteUI/igniteui-cli/commit/bdf6afc))
+
+
+### Features
+
+* add skipGit configuration option ([cc9ca96](https://github.com/IgniteUI/igniteui-cli/commit/cc9ca96)), closes [#180](https://github.com/IgniteUI/igniteui-cli/issues/180)
+
 <a name="1.2.0"></a>
 # [1.2.0](https://github.com/IgniteUI/igniteui-cli/compare/v1.0.10-beta.1...v1.2.0) (2018-02-27)
 
