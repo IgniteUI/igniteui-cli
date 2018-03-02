@@ -32,6 +32,7 @@ command = {
 	templateManager: null,
 	async execute(argv) {
 		let inProject = false;
+		const viewGroupName = "Views";
 		if (!argv.framework && ProjectConfig.hasLocalConfig()) {
 			const config: Config = ProjectConfig.getConfig();
 			argv.framework = config.project.framework;
@@ -56,28 +57,41 @@ command = {
 		} else {
 			projectLib = command.templateManager.getProjectLibrary(argv.framework) as ProjectLibrary;
 		}
+
+		let maxIdLength = 0;
 		projectLib.templates.map(t => {
-			if (t.controlGroup && t.controlGroup !== "Custom Templates") {
-				if (controlGroups.indexOf(t.controlGroup) === -1) {
+			if (t.controlGroup) {
+				if (t.controlGroup !== "Custom Templates" && controlGroups.indexOf(t.controlGroup) === -1) {
 					controlGroups.push(t.controlGroup);
 					templatesByGroup[t.controlGroup] = [];
 				}
 
-				if (templatesByGroup[t.controlGroup].indexOf(t.id) === -1) {
-					templatesByGroup[t.controlGroup].push(t.id);
+				templatesByGroup[t.controlGroup].push({ id: t.id, description: t.description });
+			} else {
+				if (controlGroups.indexOf(viewGroupName) === -1) {
+					templatesByGroup[viewGroupName] = [];
 				}
+
+				templatesByGroup[viewGroupName].push({ id: t.id, description: t.description });
+			}
+
+			if (t.id.length > maxIdLength) {
+				maxIdLength = t.id.length;
 			}
 		});
 
 		Util.log(`Available templates for '${framework.name}' framework '${projectLib.projectType}' type`);
+		const addSpacesCount = 5;
 		for (const group of Object.keys(templatesByGroup)) {
-			Util.log(`Available templates in '${group}' group:`);
+			Util.log(`'${group}' group:`);
 			for (const template of templatesByGroup[group]) {
-				Util.log("\t" + template);
+				const spacesCount = maxIdLength - template.id.length + addSpacesCount;
+				const output = "\t" + template.id + ".".repeat(spacesCount) + template.description;
+				Util.log(output);
 			}
 		}
 
-		if (inProject) {
+		if (!inProject) {
 			Util.log("To list all available templates run list command outside of a project folder");
 		}
 	}
