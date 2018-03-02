@@ -13,7 +13,9 @@ describe("Help command", () => {
 		start                  starts the project
 		generate               generates custom template                  [aliases: g]
 		config                 gets, sets or adds a configuration property
+		doc [term]             opens the Infragistics search for the given term
 		test                   tests the project
+
 	  Options:
 		--version, -v  Show current Ignite UI CLI version                    [boolean]
 		--help, -h     Show help                                             [boolean]`;
