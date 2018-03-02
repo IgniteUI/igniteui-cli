@@ -39,7 +39,6 @@ command = {
 		},
 		"skip-git": {
 			alias: "sg",
-			default: false,
 			describe: "Do not automatically initialize repository for the project with Git",
 			type: "boolean"
 		}
@@ -97,19 +96,8 @@ command = {
 		await projTemplate.generateFiles(process.cwd(), argv.name, theme);
 		Util.log(Util.greenCheck() + " Project Created");
 
-		this.git(argv["skip-git"], argv.name);
-	},
-	git(skipGit, projectName) {
-		if (!skipGit) {
-			try {
-				const cwdir = "./" + projectName;
-				Util.exec("git init", { cwd: cwdir });
-				Util.exec("git add .", { cwd: cwdir });
-				Util.exec("git commit -m " + "\"Initial commit for project: " + projectName + "\"", { cwd: cwdir });
-				Util.log(Util.greenCheck() + " Git Initialized and Project '" + projectName + "' committed");
-			} catch (error) {
-				Util.error("Git initialization failed. Install Git in order to automatically commit the project.", "yellow");
-			}
+		if (!argv["skip-git"] && !ProjectConfig.getConfig().skipGit) {
+			Util.gitInit(process.cwd(), argv.name);
 		}
 	}
 };

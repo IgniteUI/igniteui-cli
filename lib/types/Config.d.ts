@@ -39,4 +39,6 @@ declare interface Config {
 	customTemplates: string[];
 	/** Infragistics package registry Url */
 	igPackageRegistry: string;
+	/** Skip git initializion and commit of the new project */
+	skipGit: boolean;
 }
