@@ -15,14 +15,17 @@ class HierarchicalGridEditingTemplate extends jQueryTemplate {
 	 */
 	constructor() {
 		super(__dirname);
-		this.extraConfigurations = [];
+		this.id = "hierarchical-grid-custom";
 		this.name = "Hierarchical Grid Custom";
 		this.description = "Hierarchical Grid custom template";
+		this.projectType = "js";
+		this.components = ["Hierarchical Grid"];
+		this.controlGroup = "Data Grids";
 		this.dependencies = ["igHierarchicalGrid"];
-		this.id = "hierarchical-grid-custom";
 
 		this.gridHelper = new GridHelper();
 		this.gridHelper.hierarchical = true;
+		this.extraConfigurations = [];
 		const featureConfiguration: ControlExtraConfiguration = {
 			choices: [
 				"Sorting", "Selection", "Updating", "Filtering",

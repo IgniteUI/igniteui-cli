@@ -7,23 +7,24 @@ import { Util } from "../../../../../lib/Util";
 class GridCustomTemplate extends jQueryTemplate {
 	public extraConfigurations: ControlExtraConfiguration[];
 	public userExtraConfiguration: {} = {};
-
 	private gridHelper: GridHelper;
-
 	/**
 	 *
 	 */
 	constructor() {
 		super(__dirname);
-		this.extraConfigurations = [];
+		this.id = "grid-custom";
 		this.name = "Custom Grid";
 		this.description = "Grid Custom template";
+		this.projectType = "js";
+		this.components = ["Grid"];
+		this.controlGroup = "Data Grids";
 		this.dependencies = ["igGrid"];
-		this.id = "grid-custom";
 
 		this.gridHelper = new GridHelper();
-		this.gridHelper.space = "    ";
 		this.hasExtraConfiguration = true;
+		this.extraConfigurations = [];
+		this.gridHelper.space = "    ";
 		const featureConfiguration: ControlExtraConfiguration = {
 			choices: [
 				"Sorting", "Selection", "Updating", "Filtering",
