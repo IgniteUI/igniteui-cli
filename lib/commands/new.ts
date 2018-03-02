@@ -13,7 +13,7 @@ let command: {
 // tslint:disable:object-literal-sort-keys
 command = {
 	command: "new [name]",
-	desc: "Creating a new project",
+	desc: "creates a project",
 	builder: {
 		"name": {
 			alias: "n",
@@ -98,6 +98,12 @@ command = {
 		Util.log(Util.greenCheck() + " Project Created");
 
 		this.git(argv["skip-git"], argv.name);
+
+		Util.log("");
+		Util.log("Next Steps:");
+		Util.log(`  cd ${argv.name}`);
+		Util.log("  ig start starts the project");
+		Util.log("  ig add [template] [name] adds template by its ID");
 	},
 	git(skipGit, projectName) {
 		if (!skipGit) {

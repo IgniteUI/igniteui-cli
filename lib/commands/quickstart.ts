@@ -9,7 +9,7 @@ import shell = require("shelljs");
 // tslint:disable:object-literal-sort-keys
 const command = {
 	command: "quickstart",
-	desc: "A quick start for your project",
+	desc: "creates rich feature grid",
 	builder: {
 		framework: {
 			alias: "f",
