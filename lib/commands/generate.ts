@@ -7,7 +7,7 @@ import { default as config } from "./config";
 const command = {
 	aliases: ["g"],
 	command: "generate",
-	desc: "Generates new project",
+	desc: "generates custom template",
 	templateManager: null,
 	// tslint:disable-next-line:object-literal-sort-keys
 	builder: yargs => {
@@ -15,7 +15,7 @@ const command = {
 			.command({
 				aliases: ["t"],
 				command: "template [name]",
-				desc: "Generates custom template",
+				desc: "generates custom template",
 				// tslint:disable-next-line:object-literal-sort-keys
 				builder: {
 					"framework": {

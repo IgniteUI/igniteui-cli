@@ -7,7 +7,7 @@ import { ProjectConfig } from "./../ProjectConfig";
 // tslint:disable:object-literal-sort-keys
 const command = {
 	command: "build",
-	desc: "build the project",
+	desc: "builds the project",
 	builder: {},
 	async execute(argv?) {
 		Util.log("Build started.");
