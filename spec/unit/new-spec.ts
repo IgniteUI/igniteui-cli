@@ -234,19 +234,19 @@ describe("Unit - New command", () => {
 		});
 		spyOn(mockTemplate, "generateFiles");
 
-		await newCmd.execute({ name: projectName, framework: "jq", type: "type", theme: "ig" });
+		await newCmd.execute({ name: projectName, framework: "jq" });
 
 		expect(Util.exec).toHaveBeenCalledWith("git init", jasmine.any(Object));
 		expect(Util.exec).toHaveBeenCalledWith("git add .", jasmine.any(Object));
 		expect(Util.exec).toHaveBeenCalledWith("git commit -m " + "\"Initial commit for project: " + projectName + "\"",
 			jasmine.any(Object));
 		expect(Util.log).toHaveBeenCalledWith(
-			jasmine.stringMatching("Git Initialized and Project '" + projectName + "' committed")
+			jasmine.stringMatching("Git Initialized and Project '" + projectName + "' Committed")
 		);
 		done();
 	});
 
-	it("Skip Git initialization", async done => {
+	it("Skip Git initialization with command option", async done => {
 		const projectName = "projTitle";
 
 		const mockTemplate = {
@@ -266,10 +266,40 @@ describe("Unit - New command", () => {
 			getProjectLibrary: mockProjLib
 		});
 		spyOn(mockTemplate, "generateFiles");
+		spyOn(Util, "gitInit");
 
-		await newCmd.execute({ "name": projectName, "framework": "jq", "type": "type", "theme": "ig", "skip-git": true });
+		await newCmd.execute({ "name": projectName, "framework": "jq", "skip-git": true });
 
-		expect(Util.exec).not.toHaveBeenCalled();
+		expect(Util.gitInit).not.toHaveBeenCalled();
+		done();
+	});
+
+	it("Skip Git initialization with configuration option", async done => {
+		const projectName = "projTitle";
+
+		const mockTemplate = {
+			generateFiles: async (cwd: string, name: string, theme: string) => {
+				return true;
+			}
+		};
+		const mockProjLib = {
+			getProject: () => {
+				return mockTemplate;
+			},
+			projectType: "type",
+			themes: ["ig"]
+		};
+		newCmd.template = jasmine.createSpyObj("TemplateManager", {
+			getFrameworkById: {},
+			getProjectLibrary: mockProjLib
+		});
+		spyOn(mockTemplate, "generateFiles");
+		spyOn(ProjectConfig, "getConfig").and.returnValue({ skipGit: true });
+		spyOn(Util, "gitInit");
+
+		await newCmd.execute({ name: projectName, framework: "jq" });
+
+		expect(Util.gitInit).not.toHaveBeenCalled();
 		done();
 	});
 });
