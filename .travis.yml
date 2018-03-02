@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-- '6'
+- '8'
 
 after_success: npm run coverage
 
@@ -14,6 +14,7 @@ before_deploy:
 - npm version "$TRAVIS_TAG" --no-git-tag-version --save
 
 deploy:
+  tag: $NPM_TAG
   provider: npm
   skip_cleanup: true
   email: igniteui@infragistics.com
@@ -23,3 +24,7 @@ deploy:
     tags: true
     repo: IgniteUI/igniteui-cli
     branch: master
+
+env:
+  global:
+    - if [[ "${TRAVIS_TAG}" == *"beta"* ]]; then NPM_TAG="next"; else NPM_TAG="latest"; fi

@@ -87,6 +87,9 @@ export class PromptSession {
 
 			Util.log("  Generating project structure.");
 			await projTemplate.generateFiles(process.cwd(), projectName, theme);
+			if (!config.skipGit) {
+				Util.gitInit(process.cwd(), projectName);
+			}
 			// move cwd to project folder
 			process.chdir(projectName);
 			Util.log(Util.greenCheck() + " Project structure generated.");
