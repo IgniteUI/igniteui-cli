@@ -112,6 +112,9 @@ class Util {
 						if (configuration.hasOwnProperty("__name__")) {
 							fileName = element.replace("__name__", configuration["__name__"]);
 						}
+						if (fileName === "gitignore") {
+							fileName = ".gitignore";
+						}
 						const writeStream = fs.createWriteStream(path.join(destinationPath, fileName));
 						fs.createReadStream(path.join(sourcePath, element))
 							.pipe(applyConfig(configuration))
