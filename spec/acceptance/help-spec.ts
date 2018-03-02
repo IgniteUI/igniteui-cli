@@ -6,14 +6,15 @@ describe("Help command", () => {
 			encoding: "utf-8"
 		});
 		const originalHelpText: string = `Commands:
-		quickstart             A quick start for your project
-		start                  start the project
-		new [name]             Creating a new project
-		generate               Generates the specified blueprint                [aliases: g]
-		build                  build the project
-		config                 Get or set configuration properties
-		test                   test the project
-		add [template] [name]  Add component by it ID and providing a name.
+		quickstart             creates rich feature grid
+		quickstart             creates rich feature grid
+		new [name]             creates a project
+		add [template] [name]  adds template by its ID
+		build                  builds the project
+		start                  starts the project
+		generate               generates custom template                  [aliases: g]
+		config                 gets, sets or adds a configuration property
+		test                   tests the project
 		list [framework] [type] List all templates                           [aliases: l]
 	  Options:
 		--version, -v  Show current Ignite UI CLI version                    [boolean]
@@ -51,9 +52,9 @@ describe("Help command", () => {
 			encoding: "utf-8"
 		});
 		const originalNewHelpText: string = `Commands:
-		get <property>          Get configuration properties
-		set <property> <value>  Set configuration properties
-		add <property> <value>  Add a value to an existing configuration array
+		get <property>          Gets a configuration property
+		set <property> <value>  Sets a configuration property
+		add <property> <value>  Adds a value to an existing configuration array
 
 		Options:
 		--version, -v  Show current Ignite UI CLI version                    [boolean]
@@ -71,7 +72,7 @@ describe("Help command", () => {
 			encoding: "utf-8"
 		});
 		const originalNewHelpText: string = `Commands:
-		template	[name]	Generates custom template		[aliases: t]
+		template	[name]	generates custom template		[aliases: t]
 
 		Options:
 		--version,	-v	Show current Ignite UI CLI version	[boolean]

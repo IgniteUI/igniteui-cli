@@ -7,7 +7,7 @@ import { default as config } from "./config";
 const command = {
 	aliases: ["g"],
 	command: "generate",
-	desc: "Generates the specified blueprint",
+	desc: "generates custom template",
 	templateManager: null,
 	// tslint:disable-next-line:object-literal-sort-keys
 	builder: yargs => {
@@ -15,8 +15,7 @@ const command = {
 			.command({
 				aliases: ["t"],
 				command: "template [name]",
-				desc: "Generates custom template",
-				// tslint:disable-next-line:object-literal-sort-keys
+				desc: "generates custom template",
 				builder: {
 					"framework": {
 						alias: "f",
@@ -27,13 +26,13 @@ const command = {
 					"name": {
 						alias: "n",
 						default: "custom-template",
-						describe: "Template name",
+						describe: "Template name.",
 						type: "string"
 					},
 					"skip-config": {
 						alias: "s",
 						default: false,
-						describe: "Runs generate command without updating the cli config",
+						describe: "Runs generate command without updating the cli config.",
 						type: "boolean"
 					},
 					"type": {

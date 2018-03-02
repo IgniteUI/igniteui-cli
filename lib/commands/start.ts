@@ -8,7 +8,7 @@ import { default as build } from "./build";
 // tslint:disable:object-literal-sort-keys
 const command = {
 	command: "start",
-	desc: "start the project",
+	desc: "starts the project",
 	builder: {},
 	async execute(argv) {
 		//build
@@ -24,7 +24,6 @@ const command = {
 				liteServ.server();
 				break;
 			case "react":
-				Util.log(process.cwd());
 				exec("npm start");
 				break;
 			case "angular":

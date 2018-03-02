@@ -114,6 +114,17 @@
 		{
 			"type": "node",
 			"request": "launch",
+			"name": "Launch Help",
+			"program": "${workspaceRoot}/bin/execute.js",
+			"console": "externalTerminal",
+			"preLaunchTask": "build",
+			"args": [
+				"-h"
+			]
+		},
+		{
+			"type": "node",
+			"request": "launch",
 			"cwd": "${workspaceRoot}/output/proj",
 			"name": "Launch Start",
 			"program": "${workspaceRoot}/bin/execute.js",
