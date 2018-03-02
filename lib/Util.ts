@@ -261,7 +261,7 @@ class Util {
 	 * @param name Text to check
 	 */
 	public static isAlphanumericExt(name: string) {
-		return /^[\sa-zA-Z][\w\s\-]+$/.test(name);
+		return /^[\sa-zA-Z][\w\s\-]*$/.test(name);
 	}
 
 	/**

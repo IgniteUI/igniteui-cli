@@ -25,14 +25,15 @@ export async function run(args = null) {
 
 	const yargsModule = args ? yargs(args) : yargs;
 
-	const argv = yargsModule.command(quickstart)
-	.command(start)
+	const argv = yargsModule
+	.command(quickstart)
 	.command(newCommand)
-	.command(generate)
+	.command(add)
 	.command(build)
+	.command(start)
+	.command(generate)
 	.command(config)
 	.command(test)
-	.command(add)
 	.options({
 		version: {
 			alias: "v",

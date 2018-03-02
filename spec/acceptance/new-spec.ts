@@ -87,4 +87,15 @@ describe("New command", () => {
 		expect(fs.existsSync("./" + projectName + "/.git")).not.toBeTruthy();
 		done();
 	});
+
+	it("Creates project with single word name", async done => {
+		const projectName = "a";
+		await cli.run(["new", projectName, "--framework=jquery"]);
+
+		//TODO: read entire structure from ./templates and verify everything is copied over
+		expect(fs.existsSync("./a")).toBeTruthy();
+
+		this.testFolder = "./a";
+		done();
+	});
 });
