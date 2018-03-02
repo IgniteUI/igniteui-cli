@@ -4,11 +4,11 @@ import { ProjectConfig } from "./../ProjectConfig";
 const command = {
 	// tslint:disable:object-literal-sort-keys
 	command: "config",
-	desc: "Get or set configuration properties",
+	desc: "gets, sets or adds a configuration property",
 	builder: yargs => {
 		yargs.command({
 			command: "get <property>",
-			desc: "Get configuration properties",
+			desc: "Gets a configuration property",
 			builder: {
 				property: {
 					describe: "Config property to get",
@@ -18,7 +18,7 @@ const command = {
 			handler: command.getHandler
 		}).command({
 			command: "set <property> <value>",
-			desc: "Set configuration properties",
+			desc: "Sets a configuration property",
 			builder: {
 				property: {
 					describe: "Config property to set",
@@ -32,7 +32,7 @@ const command = {
 			handler: command.setHandler
 		}).command({
 			command: "add <property> <value>",
-			desc: "Add a value to an existing configuration array",
+			desc: "Adds a value to an existing configuration array",
 			builder: {
 				property: {
 					describe: "Config property to add to",
