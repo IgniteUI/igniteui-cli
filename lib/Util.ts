@@ -327,11 +327,11 @@ class Util {
 	 */
 	public static gitInit(parentRoot, projectName) {
 		try {
-			const cwdir = path.join(parentRoot, projectName);
-			Util.exec("git init", { cwd: cwdir });
-			Util.exec("git add .", { cwd: cwdir });
-			Util.exec("git commit -m " + "\"Initial commit for project: " + projectName + "\"", { cwd: cwdir });
-			Util.log("Git Initialized and Project '" + projectName + "' Committed");
+			const options = { cwd: path.join(parentRoot, projectName), stdio: [ process.stdin, "ignore", "ignore" ] };
+			Util.exec("git init", options);
+			Util.exec("git add .", options);
+			Util.exec("git commit -m " + "\"Initial commit for project: " + projectName + "\"", options);
+			Util.log(Util.greenCheck() + " Git Initialized and Project '" + projectName + "' Committed");
 		} catch (error) {
 			Util.error("Git initialization failed. Install Git in order to automatically commit the project.", "yellow");
 		}
