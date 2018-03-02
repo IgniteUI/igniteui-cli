@@ -16,7 +16,7 @@ command = {
 	command: "list [framework] [type]",
 	// use aliases here, instead of alias. With single alias yargs does not build correctly argv
 	aliases: ["l"],
-	desc: "List all templates",
+	desc: "list all templates",
 	builder: {
 		framework: {
 			alias: "f",
@@ -59,26 +59,28 @@ command = {
 		}
 
 		let maxIdLength = 0;
-		projectLib.templates.map(t => {
-			if (t.controlGroup) {
-				if (t.controlGroup !== "Custom Templates" && controlGroups.indexOf(t.controlGroup) === -1) {
-					controlGroups.push(t.controlGroup);
-					templatesByGroup[t.controlGroup] = [];
+		projectLib.templates
+			.filter(t => t.controlGroup !== "Custom Templates")
+			.map(t => {
+				if (t.controlGroup) {
+					if (controlGroups.indexOf(t.controlGroup) === -1) {
+						controlGroups.push(t.controlGroup);
+						templatesByGroup[t.controlGroup] = [];
+					}
+
+					templatesByGroup[t.controlGroup].push({ id: t.id, description: t.description });
+				} else {
+					if (controlGroups.indexOf(viewGroupName) === -1) {
+						templatesByGroup[viewGroupName] = [];
+					}
+
+					templatesByGroup[viewGroupName].push({ id: t.id, description: t.description });
 				}
 
-				templatesByGroup[t.controlGroup].push({ id: t.id, description: t.description });
-			} else {
-				if (controlGroups.indexOf(viewGroupName) === -1) {
-					templatesByGroup[viewGroupName] = [];
+				if (t.id.length > maxIdLength) {
+					maxIdLength = t.id.length;
 				}
-
-				templatesByGroup[viewGroupName].push({ id: t.id, description: t.description });
-			}
-
-			if (t.id.length > maxIdLength) {
-				maxIdLength = t.id.length;
-			}
-		});
+			});
 
 		Util.log(`Available templates for '${framework.name}' framework '${projectLib.projectType}' type`);
 		const addSpacesCount = 5;
@@ -86,7 +88,7 @@ command = {
 			Util.log(`'${group}' group:`);
 			for (const template of templatesByGroup[group]) {
 				const spacesCount = maxIdLength - template.id.length + addSpacesCount;
-				const output = "\t" + template.id + ".".repeat(spacesCount) + template.description;
+				const output = "\t" + template.id + " ".repeat(spacesCount) + template.description;
 				Util.log(output);
 			}
 		}

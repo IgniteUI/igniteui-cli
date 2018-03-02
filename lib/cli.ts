@@ -5,7 +5,7 @@ import { default as add } from "./commands/add";
 import { default as build } from "./commands/build";
 import { default as config } from "./commands/config";
 import { default as generate } from "./commands/generate";
-import { default as listCommand } from "./commands/list";
+import { default as list } from "./commands/list";
 import { default as newCommand } from "./commands/new";
 import { default as quickstart } from "./commands/quickstart";
 import { default as start } from "./commands/start";
@@ -23,7 +23,7 @@ export async function run(args = null) {
 	newCommand.builder.framework.choices = templateManager.getFrameworkIds();
 	add.templateManager = templateManager;
 	generate.templateManager = templateManager;
-	listCommand.templateManager = templateManager;
+	list.templateManager = templateManager;
 
 	const yargsModule = args ? yargs(args) : yargs;
 
@@ -36,7 +36,7 @@ export async function run(args = null) {
 	.command(generate)
 	.command(config)
 	.command(test)
-	.command(listCommand)
+	.command(list)
 	.options({
 		version: {
 			alias: "v",

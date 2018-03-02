@@ -7,7 +7,6 @@ describe("Help command", () => {
 		});
 		const originalHelpText: string = `Commands:
 		quickstart             creates rich feature grid
-		quickstart             creates rich feature grid
 		new [name]             creates a project
 		add [template] [name]  adds template by its ID
 		build                  builds the project
@@ -15,7 +14,7 @@ describe("Help command", () => {
 		generate               generates custom template                  [aliases: g]
 		config                 gets, sets or adds a configuration property
 		test                   tests the project
-		list [framework] [type] List all templates                           [aliases: l]
+		list [framework] [type] list all templates                           [aliases: l]
 	  Options:
 		--version, -v  Show current Ignite UI CLI version                    [boolean]
 		--help, -h     Show help                                             [boolean]`;
