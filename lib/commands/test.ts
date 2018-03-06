@@ -6,7 +6,7 @@ const command = {
 	desc: "tests the project",
 	builder: {},
 	async execute(argv) {
-		Util.log("test!");
+		Util.exec("npm test");
 	}
 };
 export default command;
