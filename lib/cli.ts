@@ -25,14 +25,15 @@ export async function run(args = null) {
 
 	const yargsModule = args ? yargs(args) : yargs;
 
-	const argv = yargsModule.command(quickstart)
-	.command(start)
+	const argv = yargsModule
+	.command(quickstart)
 	.command(newCommand)
-	.command(generate)
+	.command(add)
 	.command(build)
+	.command(start)
+	.command(generate)
 	.command(config)
 	.command(test)
-	.command(add)
 	.options({
 		version: {
 			alias: "v",
@@ -82,8 +83,8 @@ export async function run(args = null) {
 			await start.execute(argv);
 			break;
 		default:
-			Util.log("No command recognized, starting guide.");
-			Util.log(chalk.green("Use --help after stopping this execution for a list of available commands."));
+			Util.log("Starting Step by step mode.", "green");
+			Util.log("For available commands, stop this execution and use --help.", "green");
 			const prompts = new PromptSession(templateManager);
 			prompts.start();
 			break;

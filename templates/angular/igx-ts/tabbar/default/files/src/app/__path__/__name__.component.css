@@ -1,14 +1,15 @@
 .tab-content {
     padding: 16px;
+    max-width: 700px;
 }
 
 .header{
-	padding: 0 0 15px 15px;
-	color: #e41c77;
+    padding: 0 0 15px 15px;
+    color: #e41c77;
 }
 
 .item {
-	position: relative;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;

@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+/* See: https://www.infragistics.com/products/ignite-ui-angular/angular/components/themes.html */
+@import "~igniteui-angular/core/styles/themes/index";
+
+$primary: #731963 !default;
+$secondary: #ce5712 !default;
+
+$app-palette: igx-palette($primary, $secondary);
+
+@include igx-core();
+@include igx-theme($app-palette);
+
+//$navbar-theme: igx-navbar-theme($background: #731963)
+//@include igx-navbar($navbar-theme)
+
+.content p {
+  margin: 15px;
+}

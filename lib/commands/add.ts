@@ -13,7 +13,7 @@ let command: {
 // tslint:disable:object-literal-sort-keys
 command = {
 	command: "add [template] [name]",
-	desc: "Add component by it ID and providing a name.",
+	desc: "adds template by its ID",
 	templateManager: null,
 	builder: {
 		template: {
@@ -79,7 +79,7 @@ command = {
 		// letter+alphanumeric check
 		if (!Util.isAlphanumericExt(name)) {
 			Util.error(`Name '${name}' is not valid. `
-				+ "Template names should start with a letter and can also contain numbers, dashes and spaces.",
+				+ "Names should start with a letter and can also contain numbers, dashes and spaces.",
 				"red");
 			return false;
 		}
@@ -88,7 +88,7 @@ command = {
 			//successful
 			template.registerInProject(process.cwd(), name);
 			command.templateManager.updateProjectConfiguration(template);
-			Util.log(`View '${name}' added.`);
+			Util.log(`${Util.greenCheck()} View '${name}' added.`);
 			return true;
 		} else {
 			/* Log error? */

@@ -49,14 +49,15 @@ describe("Unit - Add command", () => {
 			resetSpy(Util.error);
 			await addCmd.addTemplate(item.name, mockTemplate);
 			expect(Util.error).toHaveBeenCalledWith(`Name '${item.inError}' is not valid. `
-			+ "Template names should start with a letter and can also contain numbers, dashes and spaces.", "red");
+			+ "Names should start with a letter and can also contain numbers, dashes and spaces.", "red");
 		}
 
 		const validCombos = [
 			{ name: "   valid  name  \t   ", valid: "valid  name" },
 			{ name: "th1s is valid", valid: "th1s is valid" },
 			{ name: "b1ts-and bobs ", valid: "b1ts-and bobs" },
-			{ name: "a      name", valid: "a      name" }
+			{ name: "a      name", valid: "a      name" },
+			{ name: "a", valid: "a" } // single letter name test
 		];
 
 		for (const item of validCombos) {

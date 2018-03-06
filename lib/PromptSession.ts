@@ -26,11 +26,12 @@ export class PromptSession {
 			projLibrary = this.templateManager.getProjectLibrary(config.project.framework, config.project.projectType);
 			await this.chooseActionLoop(projLibrary, config.project.theme);
 		} else {
+			Util.log(""); /* new line */
 			while (!projectName) {
 				let nameRes = (await inquirer.prompt({
 					type: "input",
 					name: "projectName",
-					message: "Enter a name for your project: ",
+					message: "Enter a name for your project:",
 					default: "app"
 				}))["projectName"];
 				nameRes = nameRes.trim();
@@ -45,11 +46,10 @@ export class PromptSession {
 					projectName = nameRes;
 				}
 			}
-
 			const frameRes = await inquirer.prompt({
 				type: "list",
 				name: "framework",
-				message: "Select framework",
+				message: "Choose framework:",
 				choices: this.addSeparators(this.templateManager.getFrameworkNames()),
 				default: "jQuery"
 			});
@@ -60,7 +60,7 @@ export class PromptSession {
 				const projQuestion: inquirer.Question = {
 					type: "list",
 					name: "project",
-					message: "Choose the type of project",
+					message: "Choose the type of project:",
 					choices: this.addSeparators(this.templateManager.getProjectLibraryNames(framework.id))
 				};
 				const proj = await inquirer.prompt(projQuestion);
@@ -75,7 +75,7 @@ export class PromptSession {
 				const themeQuestion: inquirer.Question = {
 					type: "list",
 					name: "theme",
-					message: "Choose the theme for the project",
+					message: "Choose the theme for the project:",
 					choices: this.addSeparators(projLibrary.themes),
 					default: "infragistics"
 				};
@@ -85,12 +85,15 @@ export class PromptSession {
 
 			const projTemplate = projLibrary.getProject();
 
-			Util.log("Generating project structure.");
+			Util.log("  Generating project structure.");
 			await projTemplate.generateFiles(process.cwd(), projectName, theme);
+
+			Util.log(Util.greenCheck() + " Project structure generated.");
+			if (!config.skipGit) {
+				Util.gitInit(process.cwd(), projectName);
+			}
 			// move cwd to project folder
 			process.chdir(projectName);
-			Util.log("Project structure generated.");
-
 			await this.chooseActionLoop(projLibrary, theme);
 			//TODO: restore cwd?
 		}
@@ -101,20 +104,21 @@ export class PromptSession {
 	 * @param theme Theme to use
 	 */
 	public async chooseActionLoop(framework: ProjectLibrary, theme: string) {
-		const actionChoices: string[] = ["Complete"];
+		const actionChoices: string[] = ["Complete & Run"];
 		let templateName;
 		if (framework.components.length > 0) {
 			actionChoices.push("Add component");
 		}
-		if (framework.getCustomTemplates().length > 0) {
+		if (framework.getCustomTemplateNames().length > 0) {
 			actionChoices.push("Add view");
 		}
+		Util.log(""); /* new line */
 		const action = await inquirer.prompt({
 			type: "list",
 			name: "action",
-			message: "Choose an action",
+			message: "Choose an action:",
 			choices:  this.addSeparators(actionChoices),
-			default: "Complete"
+			default: "Complete & Run"
 		});
 		let selectedTemplate: Template;
 		switch (action["action"]) {
@@ -123,7 +127,7 @@ export class PromptSession {
 				const group = await inquirer.prompt({
 					name: "componentGroup",
 					type: "list",
-					message: "Choose a group",
+					message: "Choose a group:",
 					choices: this.addSeparators(groups),
 					default: groups.find(x => x === "Data Grids") || groups[0]
 				});
@@ -132,7 +136,7 @@ export class PromptSession {
 				const component = await inquirer.prompt({
 						type: "list",
 						name: "component",
-						message: "Choose a component",
+						message: "Choose a component:",
 						choices: this.addSeparators(componentNames)
 					});
 				const pickedComponent = framework.getComponentByName(component["component"]);
@@ -148,7 +152,7 @@ export class PromptSession {
 					const template = await inquirer.prompt({
 							type: "list",
 							name: "template",
-							message: "Choose one",
+							message: "Choose one:",
 							choices: this.addSeparators(templateNames)
 						});
 					selectedTemplate = templates.find((value, i, obj) => {
@@ -161,7 +165,7 @@ export class PromptSession {
 						templateName = await inquirer.prompt({
 							type: "input",
 							name: "name",
-							message: "Name your component",
+							message: "Name your component:",
 							default: selectedTemplate.name
 						});
 
@@ -178,11 +182,11 @@ export class PromptSession {
 				break;
 			case "Add view":
 				//TODO:
-				const customTemplates = framework.getCustomTemplates();
+				const customTemplates = framework.getCustomTemplateNames();
 				const customTemplate = await inquirer.prompt({
 					type: "list",
 					name: "customTemplate",
-					message: "Choose custom view",
+					message: "Choose custom view:",
 					choices: this.addSeparators(customTemplates)
 				});
 				selectedTemplate = framework.getTemplateByName(customTemplate["customTemplate"]);
@@ -192,7 +196,7 @@ export class PromptSession {
 						templateName = await inquirer.prompt({
 							type: "input",
 							name: "name",
-							message: "Name your view",
+							message: "Name your view:",
 							default: selectedTemplate.name
 						});
 
@@ -202,7 +206,7 @@ export class PromptSession {
 
 				await this.chooseActionLoop(framework, theme);
 				break;
-			case "Complete":
+			case "Complete & Run":
 			default:
 				if (true) { // TODO: Make conditional?
 					await start.execute({});

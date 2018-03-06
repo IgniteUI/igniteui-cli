@@ -1,7 +1,7 @@
 {
 	"id": "$(templateName)",
 	"name": "$(templateName)",
-	"description": "This is custom template with id: $(templateName), created with IgniteUI CLI for jQuery",
+	"description": "Ignite UI for JavaScript template created with Ignite UI CLI",
 	"framework": "$(templateFramework)",
 	"projectType": "$(templateType)",
 	"components": [],

@@ -17,14 +17,27 @@ describe("New command", () => {
 		process.chdir("../");
 	});
 
-	it("React project", async done => {
+	it("Creates React project", async done => {
 		// process.argv = ["new", "reactProj", "--framework=react"];
 
 		await cli.run(["new", "reactProj", "--framework=react"]);
 
 		//TODO: read entire structure from ./templates and verify everything is copied over
 		expect(fs.existsSync("./reactProj")).toBeTruthy();
+		expect(fs.existsSync("./reactProj/.gitignore")).toBeTruthy();
 		this.testFolder = "./reactProj";
+		done();
+	});
+
+	it("Creates Angular project", async done => {
+		// process.argv = ["new", "reactProj", "--framework=react"];
+
+		await cli.run(["new", "ngxProj", "--framework=angular", "--type=igx-ts"]);
+
+		//TODO: read entire structure from ./templates and verify everything is copied over
+		expect(fs.existsSync("./ngxProj")).toBeTruthy();
+		expect(fs.existsSync("./ngxProj/.gitignore")).toBeTruthy();
+		this.testFolder = "./ngxProj";
 		done();
 	});
 
@@ -67,11 +80,22 @@ describe("New command", () => {
 		done();
 	});
 
-	it("Skip Git", async done => {
+	it("Skip Git with command option", async done => {
 		const projectName = "angularProj";
 		await cli.run(["new", projectName, "--framework=angular", "--type=igx-ts", "--skip-git"]);
 
 		expect(fs.existsSync("./" + projectName + "/.git")).not.toBeTruthy();
+		done();
+	});
+
+	it("Creates project with single word name", async done => {
+		const projectName = "a";
+		await cli.run(["new", projectName, "--framework=jquery"]);
+
+		//TODO: read entire structure from ./templates and verify everything is copied over
+		expect(fs.existsSync("./a")).toBeTruthy();
+
+		this.testFolder = "./a";
 		done();
 	});
 });

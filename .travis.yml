@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-- '6'
+- '8'
 
 after_success: npm run coverage
 
@@ -12,8 +12,10 @@ before_deploy:
 - npm run build-pack
 # update package version
 - npm version "$TRAVIS_TAG" --no-git-tag-version --save
+- if [[ "${TRAVIS_TAG}" == *"beta"* ]]; then export NPM_TAG="next"; else export NPM_TAG="latest"; fi
 
 deploy:
+  tag: ${NPM_TAG}
   provider: npm
   skip_cleanup: true
   email: igniteui@infragistics.com

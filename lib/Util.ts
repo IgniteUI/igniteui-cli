@@ -5,7 +5,7 @@ import * as fsExtra from "fs-extra";
 import * as glob from "glob";
 import * as path from "path";
 import through2 = require("through2");
-const imageExtensions = [".png", ".jpg", ".jpeg", ".gif", ".bmp"];
+const imageExtensions = [".png", ".jpg", ".jpeg", ".gif", ".bmp", ".ico"];
 const applyConfig = (configuration: { [key: string]: string }) => {
 	return through2((data, enc, cb) => {
 		cb(null, new Buffer(Util.applyConfigTransformation(data.toString(), configuration)));
@@ -112,6 +112,9 @@ class Util {
 						if (configuration.hasOwnProperty("__name__")) {
 							fileName = element.replace("__name__", configuration["__name__"]);
 						}
+						if (fileName === "gitignore") {
+							fileName = ".gitignore";
+						}
 						const writeStream = fs.createWriteStream(path.join(destinationPath, fileName));
 						fs.createReadStream(path.join(sourcePath, element))
 							.pipe(applyConfig(configuration))
@@ -141,7 +144,7 @@ class Util {
 
 		let paths: string[] = glob.sync(sourcePath + "/**/*", { nodir: true });
 		// TODO: D.P Temporary ignoring asset files
-		const ignorePaths: string[] = glob.sync(sourcePath + "/**/+(assets|data)/*", { nodir: true });
+		const ignorePaths: string[] = glob.sync(sourcePath + "/**/+(assets|data)/**/*", { nodir: true });
 		paths = paths.filter(x => ignorePaths.indexOf(x) === -1);
 
 		for (let filePath of paths) {
@@ -206,6 +209,14 @@ class Util {
 		// tslint:enable:no-console
 	}
 
+	public static greenCheck() {
+		if (process.platform.startsWith("win")) {
+			return chalk.green("√");
+		} else {
+			return chalk.green("✔");
+		}
+	}
+
 	public static version() {
 		const configuration = require("../package.json");
 		const logo = fs.readFileSync(__dirname + "/../ignite-ui-cli.txt");
@@ -250,7 +261,7 @@ class Util {
 	 * @param name Text to check
 	 */
 	public static isAlphanumericExt(name: string) {
-		return /^[\sa-zA-Z][\w\s\-]+$/.test(name);
+		return /^[\sa-zA-Z][\w\s\-]*$/.test(name);
 	}
 
 	/**
@@ -270,7 +281,7 @@ class Util {
 	public static merge(target: any, source: any) {
 		for (const key of Object.keys(source)) {
 			const sourceKeyIsArray = Array.isArray(source[key]);
-			const targetHasThisKey = target.hasOwnProperty[key];
+			const targetHasThisKey = target.hasOwnProperty(key);
 
 			if (typeof source[key] === "object" && !sourceKeyIsArray) {
 				// object value:
@@ -307,6 +318,23 @@ class Util {
 	 */
 	public static exec(command: string, options?: any) {
 		return execSync(command, options);
+	}
+
+	/**
+	 * Initialize git for a project, located in the provided directory and commit it.
+	 * @param parentRoot Parent directory root of the project.
+	 * @param projectName Project name.
+	 */
+	public static gitInit(parentRoot, projectName) {
+		try {
+			const options = { cwd: path.join(parentRoot, projectName), stdio: [ process.stdin, "ignore", "ignore" ] };
+			Util.exec("git init", options);
+			Util.exec("git add .", options);
+			Util.exec("git commit -m " + "\"Initial commit for project: " + projectName + "\"", options);
+			Util.log(Util.greenCheck() + " Git Initialized and Project '" + projectName + "' Committed");
+		} catch (error) {
+			Util.error("Git initialization failed. Install Git in order to automatically commit the project.", "yellow");
+		}
 	}
 
 	private static propertyByPath(object: any, propPath: string) {

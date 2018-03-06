@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Contacts } from './localData';
 
 @Component({
-  selector: "$(filePrefix)",
+  selector: 'app-$(filePrefix)',
   templateUrl: './$(filePrefix).component.html',
   styleUrls: ['./$(filePrefix).component.css'],
   encapsulation: ViewEncapsulation.None
@@ -13,6 +13,6 @@ export class $(ClassName)Component implements OnInit {
   constructor() { }
 
   ngOnInit() {
-	this.userContacts = Contacts;
+    this.userContacts = Contacts;
   }
 }
