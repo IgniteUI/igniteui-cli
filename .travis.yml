@@ -12,9 +12,10 @@ before_deploy:
 - npm run build-pack
 # update package version
 - npm version "$TRAVIS_TAG" --no-git-tag-version --save
+- if [[ "${TRAVIS_TAG}" == *"beta"* ]]; then export NPM_TAG="next"; else export NPM_TAG="latest"; fi
 
 deploy:
-  tag: $NPM_TAG
+  tag: ${NPM_TAG}
   provider: npm
   skip_cleanup: true
   email: igniteui@infragistics.com
@@ -24,7 +25,3 @@ deploy:
     tags: true
     repo: IgniteUI/igniteui-cli
     branch: master
-
-env:
-  global:
-    - if [[ "${TRAVIS_TAG}" == *"beta"* ]]; then NPM_TAG="next"; else NPM_TAG="latest"; fi
