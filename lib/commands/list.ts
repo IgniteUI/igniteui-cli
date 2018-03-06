@@ -32,8 +32,8 @@ command = {
 	templateManager: null,
 	async execute(argv) {
 		let inProject = false;
-		const viewGroupName = "Views";
-		if (!argv.framework && ProjectConfig.hasLocalConfig()) {
+		const viewsGroupName = "Views";
+		if (ProjectConfig.hasLocalConfig()) {
 			const config: Config = ProjectConfig.getConfig();
 			argv.framework = config.project.framework;
 			argv.type = config.project.projectType;
@@ -70,11 +70,11 @@ command = {
 
 					templatesByGroup[t.controlGroup].push({ id: t.id, description: t.description });
 				} else {
-					if (controlGroups.indexOf(viewGroupName) === -1) {
-						templatesByGroup[viewGroupName] = [];
+					if (controlGroups.indexOf(viewsGroupName) === -1) {
+						templatesByGroup[viewsGroupName] = [];
 					}
 
-					templatesByGroup[viewGroupName].push({ id: t.id, description: t.description });
+					templatesByGroup[viewsGroupName].push({ id: t.id, description: t.description });
 				}
 
 				if (t.id.length > maxIdLength) {
@@ -84,16 +84,17 @@ command = {
 
 		Util.log(`Available templates for '${framework.name}' framework '${projectLib.projectType}' type`);
 		const addSpacesCount = 5;
+		const spaceChar = " ";
 		for (const group of Object.keys(templatesByGroup)) {
 			Util.log(`'${group}' group:`);
 			for (const template of templatesByGroup[group]) {
 				const spacesCount = maxIdLength - template.id.length + addSpacesCount;
-				const output = "\t" + template.id + " ".repeat(spacesCount) + template.description;
+				const output = "\t" + template.id + spaceChar.repeat(spacesCount) + template.description;
 				Util.log(output);
 			}
 		}
 
-		if (!inProject) {
+		if (inProject) {
 			Util.log("To list all available templates run list command outside of a project folder");
 		}
 	}

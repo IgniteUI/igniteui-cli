@@ -39,7 +39,7 @@ describe("Unit - List command", () => {
 
 		expect(Util.error).toHaveBeenCalledTimes(0);
 
-		expect(Util.log).toHaveBeenCalledTimes(10);
+		expect(Util.log).toHaveBeenCalledTimes(9);
 		expect(Util.log).toHaveBeenCalledWith("Available templates for 'jQuery' framework 'js' type");
 		expect(Util.log).toHaveBeenCalledWith("'group1' group:");
 		expect(Util.log).toHaveBeenCalledWith("	id1.1     Description for 1.1");
@@ -48,7 +48,6 @@ describe("Unit - List command", () => {
 		expect(Util.log).toHaveBeenCalledWith("'group2' group:");
 		expect(Util.log).toHaveBeenCalledWith("	id2.1     Description for 2.1");
 		expect(Util.log).toHaveBeenCalledWith("	id2.2     Description for 2.2");
-		expect(Util.log).toHaveBeenCalledWith("To list all available templates run list command outside of a project folder");
 
 		done();
 	});
@@ -76,7 +75,7 @@ describe("Unit - List command", () => {
 		await listCmd.execute({});
 		expect(Util.error).toHaveBeenCalledTimes(0);
 
-		expect(Util.log).toHaveBeenCalledTimes(9);
+		expect(Util.log).toHaveBeenCalledTimes(10);
 		expect(Util.log).toHaveBeenCalledWith("Available templates for 'Angular' framework 'igx-ts' type");
 		expect(Util.log).toHaveBeenCalledWith("'group1' group:");
 		expect(Util.log).toHaveBeenCalledWith("	id1.1     Description for 1.1");
@@ -85,6 +84,7 @@ describe("Unit - List command", () => {
 		expect(Util.log).toHaveBeenCalledWith("'group2' group:");
 		expect(Util.log).toHaveBeenCalledWith("	id2.1     Description for 2.1");
 		expect(Util.log).toHaveBeenCalledWith("	id2.2     Description for 2.2");
+		expect(Util.log).toHaveBeenCalledWith("To list all available templates run list command outside of a project folder");
 
 		done();
 	});
@@ -146,7 +146,7 @@ describe("Unit - List command", () => {
 
 		expect(Util.error).toHaveBeenCalledTimes(0);
 
-		expect(Util.log).toHaveBeenCalledTimes(10);
+		expect(Util.log).toHaveBeenCalledTimes(9);
 		expect(Util.log).toHaveBeenCalledWith("Available templates for 'React' framework 'es6' type");
 		expect(Util.log).toHaveBeenCalledWith("'group1' group:");
 		expect(Util.log).toHaveBeenCalledWith("	id1.1     Description for 1.1");
@@ -155,7 +155,6 @@ describe("Unit - List command", () => {
 		expect(Util.log).toHaveBeenCalledWith("'group2' group:");
 		expect(Util.log).toHaveBeenCalledWith("	id2.1     Description for 2.1");
 		expect(Util.log).toHaveBeenCalledWith("	id2.2     Description for 2.2");
-		expect(Util.log).toHaveBeenCalledWith("To list all available templates run list command outside of a project folder");
 
 		done();
 	});

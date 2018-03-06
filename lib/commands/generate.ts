@@ -16,6 +16,7 @@ const command = {
 				aliases: ["t"],
 				command: "template [name]",
 				desc: "generates custom template",
+				// tslint:disable-next-line:object-literal-sort-keys
 				builder: {
 					"framework": {
 						alias: "f",
