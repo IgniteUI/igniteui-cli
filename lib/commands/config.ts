@@ -79,8 +79,9 @@ const command = {
 			config = ProjectConfig.localConfig();
 		}
 
-		if (config[argv.property]) {
-			// TODO: Schema/property validation?
+		const schemaPath = "../config/Config.schema.json";
+		if (!validateProperty(argv.property, argv.value, schemaPath)) {
+			return;
 		}
 
 		config[argv.property] = argv.value;
@@ -100,7 +101,6 @@ const command = {
 			config = ProjectConfig.localConfig();
 		}
 
-		// TODO: Schema/property validation?
 		if (!config[argv.property]) {
 			config[argv.property] = [];
 		} else if (!Array.isArray(config[argv.property])) {
@@ -118,5 +118,44 @@ const command = {
 		Util.log(`Property "${argv.property}" updated.`);
 	}
 };
+
+function validateProperty(property, value, schemaPath): boolean {
+	//	TODO: check if schema path is actually existing file
+	const schema = require(schemaPath);
+	if (typeof schema !== "object" && schema.properties) {
+		throw new Error("Incorrect schema provided. Schema should be object");
+	}
+
+	if (!schema.properties.hasOwnProperty(property)) {
+		Util.error(`Property "${property}" is not allowed in "${schema.title}" type!`, "red");
+		return  false;
+	}
+
+	const propertyType = schema.properties[property]["type"];
+	if (propertyType !== "string") {
+		let parsedValue: any;
+		try {
+			parsedValue = JSON.parse(value);
+		} catch (error) {
+			Util.error(`Invalid value provided for ${property} property`, "red");
+			return false;
+		}
+
+		if (propertyType === "array") {
+			if (Array.isArray(parsedValue)) {
+				return  true;
+			} else {
+				Util.error(`Provided value should be an empty array type for ${property} property`, "red");
+			}
+		}
+
+		if (typeof parsedValue !== propertyType) {
+			Util.error(`Invalid value type provided for ${property} property`, "red");
+			Util.error(`Value should be of type ${propertyType}`, "red");
+			return false;
+		}
+	}
+	return true;
+}
 
 export default command;
