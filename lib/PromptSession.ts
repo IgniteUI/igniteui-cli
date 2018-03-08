@@ -10,6 +10,20 @@ export class PromptSession {
 
 	constructor(private templateManager: TemplateManager) { }
 
+	public static async chooseTerm() {
+		const answers = await inquirer.prompt({
+			default: null,
+			message: "Enter a search term",
+			name: "term",
+			type: "input"
+		});
+		if (answers.term) {
+			return answers.term;
+		} else {
+			const retProm = await this.chooseTerm();
+			return retProm;
+		}
+	}
 	/**
 	 * Start questions session for project creation
 	 */
