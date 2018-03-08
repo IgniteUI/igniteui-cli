@@ -61,11 +61,11 @@ describe("Unit - Config command", () => {
 							},
 							type: "array"
 						},
-						stringProperty: {
-							type: "string"
-						},
 						booleanProperty: {
 							type: "boolean"
+						},
+						stringProperty: {
+							type: "string"
 						}
 					},
 					type: "object"
