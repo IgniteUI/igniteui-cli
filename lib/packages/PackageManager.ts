@@ -18,7 +18,11 @@ export class PackageManager {
 	 * and swaps the OSS package for the full version.
 	 * @param installNow Allow the check to also try installing required Ignite UI package
 	 */
-	public static ensureIgniteUISource(installNow: boolean = false, verbose: boolean = false) {
+	public static ensureIgniteUISource(
+		installNow: boolean = false,
+		templateManager: TemplateManager,
+		verbose: boolean = false
+) {
 		const config = ProjectConfig.getConfig();
 		const fullComponents = config.project.components.filter(x => {
 			return componentsConfig.full.indexOf(x) !== -1 || componentsConfig.dv.indexOf(x) !== -1;
@@ -38,7 +42,6 @@ export class PackageManager {
 				ProjectConfig.setConfig(config);
 				if (!config.project.isBundle) {
 					// TODO make param?
-					const templateManager = new TemplateManager();
 					const projectLibrary = templateManager.getProjectLibrary(config.project.framework, config.project.projectType);
 					if (projectLibrary) {
 						// TODO multiple projects?
