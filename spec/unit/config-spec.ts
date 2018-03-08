@@ -84,7 +84,7 @@ describe("Unit - Config command", () => {
 		xit("Should show error for array property", async done => {
 		});
 
-		fit("Should set global prop", async done => {
+		it("Should set global prop", async done => {
 			spyOn(ProjectConfig, "hasLocalConfig");
 			spyOn(ProjectConfig, "globalConfig").and.returnValue({ stringProperty: "ig" });
 			spyOn(ProjectConfig, "localConfig");
@@ -100,7 +100,7 @@ describe("Unit - Config command", () => {
 			done();
 		});
 
-		fit("Should set local prop", async done => {
+		it("Should set local prop", async done => {
 			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 			spyOn(ProjectConfig, "localConfig").and.returnValue({ stringProperty: "ig" });
 			spyOn(ProjectConfig, "globalConfig");
