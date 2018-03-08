@@ -4,6 +4,7 @@ import * as yargs from "yargs";
 import { default as add } from "./commands/add";
 import { default as build } from "./commands/build";
 import { default as config } from "./commands/config";
+import { default as doc } from "./commands/doc";
 import { default as generate } from "./commands/generate";
 import { default as list } from "./commands/list";
 import { default as newCommand } from "./commands/new";
@@ -35,6 +36,7 @@ export async function run(args = null) {
 	.command(start)
 	.command(generate)
 	.command(config)
+	.command(doc)
 	.command(test)
 	.command(list)
 	.options({
@@ -78,6 +80,9 @@ export async function run(args = null) {
 			await build.execute(argv);
 			break;
 		case "config":
+			break;
+		case "doc":
+			await doc.execute(argv);
 			break;
 		case "test":
 			await test.execute(argv);

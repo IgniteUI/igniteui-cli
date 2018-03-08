@@ -13,6 +13,7 @@ describe("Help command", () => {
 		start                  starts the project
 		generate               generates custom template                  [aliases: g]
 		config                 gets, sets or adds a configuration property
+		doc [term]             opens the Infragistics search for the given term
 		test                   tests the project
 		list [framework] [type] list all templates                           [aliases: l]
 	  Options:
@@ -92,7 +93,7 @@ describe("Help command", () => {
 		--version, -v      Show current Ignite UI CLI version                [boolean]
 		--help, -h         Show help                                         [boolean]
 		--framework, -f    Framework to generate template for
-														  [string] [default: "jquery"]
+											              [string] [default: "jquery"]
 		--name, -n         Template name         [string] [default: "custom-template"]
 		--skip-config, -s  Runs generate command without updating the cli config
 															[boolean] [default: false]

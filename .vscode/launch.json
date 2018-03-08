@@ -327,18 +327,28 @@
 				"bla",
 				"-g"
 			]
-		},
-		{
+		},{
 			"type": "node",
 			"request": "launch",
-			"name": "Launch List command for jquery",
+			"name": "Launch DOC Command, No Arguments",
 			"cwd": "${workspaceRoot}/output",
 			"program": "${workspaceRoot}/bin/execute.js",
 			"console": "externalTerminal",
 			"preLaunchTask": "build",
 			"args": [
-				"l",
-				"--framework=jquery"
+				"doc"
+			]
+		},{
+			"type": "node",
+			"request": "launch",
+			"name": "Launch DOC Command, Term Alias",
+			"cwd": "${workspaceRoot}/output",
+			"program": "${workspaceRoot}/bin/execute.js",
+			"console": "externalTerminal",
+			"preLaunchTask": "build",
+			"args": [
+				"doc",
+				"igGrid"
 			]
 		}
 	]
