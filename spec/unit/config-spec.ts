@@ -48,11 +48,11 @@ describe("Unit - Config command", () => {
 		});
 	});
 
-	describe("Set", () => {
+	fdescribe("Set", () => {
 		beforeEach(() => {
 			spyOn(Util, "log");
 			spyOn(Util, "error");
-			spyOn(require("module"), "_load").and.returnValue(
+			spyOn(ProjectConfig, "getSchema").and.returnValue(
 				{
 					properties: {
 						arrayProperty: {

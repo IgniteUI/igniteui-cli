@@ -7,6 +7,7 @@ export class ProjectConfig {
 
 	public static configFile: string = "ignite-ui-cli.json";
 	public static readonly defaults: Config = require("./config/defaults.json");
+	private static schemaPath = "./config/Config.schema.json";
 
 	/** Returns true if there's a CLI config file in the current working directory */
 	public static hasLocalConfig(): boolean {
@@ -72,5 +73,47 @@ export class ProjectConfig {
 			}
 		}
 		return globalConfig as Config;
+	}
+	/*** Validates if provided value could be set to provided property against provided schema */
+	public static validateProperty(property, value): boolean {
+		const schema = this.getSchema();
+		if (typeof schema !== "object" && schema.properties) {
+			throw new Error("Incorrect schema provided. Schema should be object");
+		}
+
+		if (!schema.properties.hasOwnProperty(property)) {
+			Util.error(`Property "${property}" is not allowed in "${schema.title}" type!`, "red");
+			return  false;
+		}
+
+		const propertyType = schema.properties[property]["type"];
+		if (propertyType !== "string") {
+			let parsedValue: any;
+			try {
+				parsedValue = JSON.parse(value);
+			} catch (error) {
+				Util.error(`Invalid value provided for ${property} property`, "red");
+				return false;
+			}
+
+			if (propertyType === "array") {
+				if (Array.isArray(parsedValue)) {
+					return  true;
+				} else {
+					Util.error(`Provided value should be an empty array type for ${property} property`, "red");
+				}
+			}
+
+			if (typeof parsedValue !== propertyType) {
+				Util.error(`Invalid value type provided for ${property} property`, "red");
+				Util.error(`Value should be of type ${propertyType}`, "red");
+				return false;
+			}
+		}
+		return true;
+	}
+	public static getSchema() {
+		const absolutePath = path.join(__dirname, this.schemaPath);
+		return  require(absolutePath);
 	}
 }
