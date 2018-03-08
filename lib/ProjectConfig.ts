@@ -75,15 +75,16 @@ export class ProjectConfig {
 		return globalConfig as Config;
 	}
 	/*** Validates if provided value could be set to provided property against provided schema */
-	public static validateProperty(property, value): boolean {
+	public static validateProperty(property, value): {valid: boolean, value: string} {
 		const schema = this.getSchema();
 		if (typeof schema !== "object" && schema.properties) {
 			throw new Error("Incorrect schema provided. Schema should be object");
 		}
 
+		const result = { valid: false, value: undefined };
 		if (!schema.properties.hasOwnProperty(property)) {
 			Util.error(`Property "${property}" is not allowed in "${schema.title}" type!`, "red");
-			return  false;
+			return  result;
 		}
 
 		const propertyType = schema.properties[property]["type"];
@@ -93,24 +94,29 @@ export class ProjectConfig {
 				parsedValue = JSON.parse(value);
 			} catch (error) {
 				Util.error(`Invalid value provided for ${property} property`, "red");
-				return false;
+				return result;
 			}
 
 			if (propertyType === "array") {
 				if (Array.isArray(parsedValue)) {
-					return  true;
+					result.valid = true;
+					result.value = parsedValue;
+					return  result;
 				} else {
 					Util.error(`Provided value should be an empty array type for ${property} property`, "red");
+					return result;
 				}
 			}
 
 			if (typeof parsedValue !== propertyType) {
 				Util.error(`Invalid value type provided for ${property} property`, "red");
 				Util.error(`Value should be of type ${propertyType}`, "red");
-				return false;
+				return result;
 			}
 		}
-		return true;
+		result.valid = true;
+		result.value = value;
+		return result;
 	}
 	public static getSchema() {
 		const absolutePath = path.join(__dirname, this.schemaPath);

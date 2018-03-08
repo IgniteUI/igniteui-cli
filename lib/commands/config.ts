@@ -79,11 +79,12 @@ const command = {
 			config = ProjectConfig.localConfig();
 		}
 
-		if (!ProjectConfig.validateProperty(argv.property, argv.value)) {
+		const validationResult = ProjectConfig.validateProperty(argv.property, argv.value);
+		if (!validationResult.valid) {
 			return;
 		}
 
-		config[argv.property] = argv.value;
+		config[argv.property] = validationResult.value;
 		ProjectConfig.setConfig(config, argv.global);
 		Util.log(`Property "${argv.property}" set.`);
 	},
