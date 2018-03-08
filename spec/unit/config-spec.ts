@@ -49,8 +49,31 @@ describe("Unit - Config command", () => {
 	});
 
 	describe("Set", () => {
-		it("Should show error w/o existing project and global flag", async done => {
+		beforeEach(() => {
+			spyOn(Util, "log");
 			spyOn(Util, "error");
+			spyOn(require("module"), "_load").and.returnValue(
+				{
+					properties: {
+						arrayProperty: {
+							items: {
+								type: "string"
+							},
+							type: "array"
+						},
+						stringProperty: {
+							type: "string"
+						},
+						booleanProperty: {
+							type: "boolean"
+						}
+					},
+					type: "object"
+				}
+			);
+		});
+
+		it("Should show error w/o existing project and global flag", async done => {
 			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
 
 			await configCmd.setHandler({ property: "test", value: true });
@@ -61,35 +84,33 @@ describe("Unit - Config command", () => {
 		xit("Should show error for array property", async done => {
 		});
 
-		it("Should set global prop", async done => {
-			spyOn(Util, "log");
+		fit("Should set global prop", async done => {
 			spyOn(ProjectConfig, "hasLocalConfig");
-			spyOn(ProjectConfig, "globalConfig").and.returnValue({ test: "ig" });
+			spyOn(ProjectConfig, "globalConfig").and.returnValue({ stringProperty: "ig" });
 			spyOn(ProjectConfig, "localConfig");
 			spyOn(ProjectConfig, "setConfig");
 
-			await configCmd.setHandler({ property: "test", value: true, global: true });
+			await configCmd.setHandler({ property: "stringProperty", value: true, global: true });
 
 			expect(ProjectConfig.hasLocalConfig).toHaveBeenCalledTimes(0);
 			expect(ProjectConfig.localConfig).toHaveBeenCalledTimes(0);
 			expect(ProjectConfig.globalConfig).toHaveBeenCalled();
-			expect(ProjectConfig.setConfig).toHaveBeenCalledWith({ test: true }, true /*global*/);
-			expect(Util.log).toHaveBeenCalledWith(`Property "test" set.`);
+			expect(ProjectConfig.setConfig).toHaveBeenCalledWith({ stringProperty: true }, true /*global*/);
+			expect(Util.log).toHaveBeenCalledWith(`Property "stringProperty" set.`);
 			done();
 		});
 
-		it("Should set local prop", async done => {
-			spyOn(Util, "log");
+		fit("Should set local prop", async done => {
 			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
-			spyOn(ProjectConfig, "localConfig").and.returnValue({ notTest: "ig" });
+			spyOn(ProjectConfig, "localConfig").and.returnValue({ stringProperty: "ig" });
 			spyOn(ProjectConfig, "globalConfig");
 			spyOn(ProjectConfig, "setConfig");
 
-			await configCmd.setHandler({ property: "test", value: true });
+			await configCmd.setHandler({ property: "booleanProperty", value: true });
 			expect(ProjectConfig.globalConfig).toHaveBeenCalledTimes(0);
 			expect(ProjectConfig.localConfig).toHaveBeenCalled();
-			expect(ProjectConfig.setConfig).toHaveBeenCalledWith({ notTest: "ig", test: true }, undefined);
-			expect(Util.log).toHaveBeenCalledWith(`Property "test" set.`);
+			expect(ProjectConfig.setConfig).toHaveBeenCalledWith({ stringProperty: "ig", booleanProperty: true }, undefined);
+			expect(Util.log).toHaveBeenCalledWith(`Property "booleanProperty" set.`);
 			done();
 		});
 	});
