@@ -4,6 +4,7 @@
 /templates/**/*.js.map
 /lib/**/*.js.map
 /lib/**/*.js
+/lib/config/Config.schema.json
 /spec/**/*.js.map
 /spec/**/*.js
 /templates/jquery/**/*.js

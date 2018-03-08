@@ -7,22 +7,24 @@ import { Util } from "../../../../../lib/Util";
 class GridEditingTemplate extends jQueryTemplate {
 	public extraConfigurations: ControlExtraConfiguration[];
 	public userExtraConfiguration: {} = {};
-
 	private gridHelper: GridHelper;
 	/**
 	 *
 	 */
 	constructor() {
 		super(__dirname);
-		this.extraConfigurations = [];
+		this.id = "grid-editing";
 		this.name = "Grid Editing";
 		this.description = "Grid editing template";
+		this.projectType = "js";
+		this.components = ["Grid"];
+		this.controlGroup = "Data Grids";
 		this.dependencies = ["igGrid"];
-		this.id = "grid-editing";
 
 		this.gridHelper = new GridHelper();
-		this.gridHelper.space = "    ";
 		this.hasExtraConfiguration = true;
+		this.extraConfigurations = [];
+		this.gridHelper.space = "    ";
 		const featureConfiguration: ControlExtraConfiguration = {
 			choices: ["Sorting", "Paging", "Filtering"],
 			default: "",

@@ -3,11 +3,10 @@ import { IgniteUIForAngularTemplate } from "../../../../../lib/templates/IgniteU
 class IgxGridAwesomeTemplate extends IgniteUIForAngularTemplate {
 	constructor() {
 		super(__dirname);
-		this.components = ["Grid"];
-		this.controlGroup = "Grids";
-		this.listInComponentTemplates = true;
 		this.id = "awesome-grid";
 		this.projectType = "igx-ts";
+		this.listInComponentTemplates = false;
+		this.listInCustomTemplates = true;
 		this.name = "Awesome Grid";
 		this.description = "Awesome IgxGrid";
 		this.dependencies = [

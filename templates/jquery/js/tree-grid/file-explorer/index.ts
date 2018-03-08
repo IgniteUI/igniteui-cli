@@ -6,18 +6,18 @@ import { TreeGridFeatureHelper } from "../treegridfeaturehelper";
 class FileExplorerTemplate extends jQueryTemplate {
 
 	public extraConfigurations: ControlExtraConfiguration[];
-
 	public userExtraConfiguration: {} = {};
 
 	constructor() {
 		super(__dirname);
-		this.extraConfigurations = [];
-		this.controlGroup = "";
-		this.name = "File Explorer";
 		this.id = "file-explorer";
-		this.listInCustomTemplates = true;
+		this.name = "File Explorer";
+		this.controlGroup = "Data Grids";
 		this.description = "File explorer sample using igTreeGrid";
 		this.dependencies = ["igTreeGrid"];
+		this.projectType = "js";
+		this.listInCustomTemplates = true;
+		this.extraConfigurations = [];
 		const featureConfiguration: ControlExtraConfiguration = {
 			choices: ["Sorting"],
 			default: "",

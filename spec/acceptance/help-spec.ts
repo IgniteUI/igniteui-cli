@@ -15,7 +15,7 @@ describe("Help command", () => {
 		config                 gets, sets or adds a configuration property
 		doc [term]             opens the Infragistics search for the given term
 		test                   tests the project
-
+		list				   list all templates                           [aliases: l]
 	  Options:
 		--version, -v  Show current Ignite UI CLI version                    [boolean]
 		--help, -h     Show help                                             [boolean]`;
@@ -92,11 +92,30 @@ describe("Help command", () => {
 		Options:
 		--version, -v      Show current Ignite UI CLI version                [boolean]
 		--help, -h         Show help                                         [boolean]
-		--framework, -f    Framework name.                [string] [default: "jquery"]
-		--name, -n         Template name.        [string] [default: "custom-template"]
-		--skip-config, -s  Runs generate command without updating the cli config.
+		--framework, -f    Framework to generate template for
+											              [string] [default: "jquery"]
+		--name, -n         Template name         [string] [default: "custom-template"]
+		--skip-config, -s  Runs generate command without updating the cli config
 															[boolean] [default: false]
-		--type, -t         Framework type.                                    [string]
+		--type, -t         Project type (depends on framework)                [string]
+		`;
+
+		const replacedNewHelpText: string = originalNewHelpText.replace(/\s/g, "");
+		const actualNewText: string = (child.stdout.toString("utf-8")).replace(/\s/g, "");
+
+		expect(actualNewText).toContain(replacedNewHelpText);
+		done();
+	});
+	it("should show help for list command", async done => {
+		const child = spawnSync("node", ["bin/execute.js", "list", "-h" ], {
+			encoding: "utf-8"
+		});
+		const originalNewHelpText: string = `
+		Options:
+		--version, -v    Show current Ignite UI CLI version                  [boolean]
+		--help, -h       Show help                                           [boolean]
+		--framework, -f  Framework to list templates for  [string] [default: "jquery"]
+		--type, -t       Project type (depends on framework)                  [string]
 		`;
 
 		const replacedNewHelpText: string = originalNewHelpText.replace(/\s/g, "");
