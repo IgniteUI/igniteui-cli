@@ -48,7 +48,7 @@ describe("Unit - Config command", () => {
 		});
 	});
 
-	fdescribe("Set", () => {
+	describe("Set", () => {
 		beforeEach(() => {
 			spyOn(Util, "log");
 			spyOn(Util, "error");
