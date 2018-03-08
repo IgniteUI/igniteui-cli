@@ -1,18 +1,25 @@
 import * as liteServ from "lite-server";
 import { exec } from "shelljs";
 
+import { TemplateManager } from "../TemplateManager";
 import { Util } from "../Util";
 import { ProjectConfig } from "./../ProjectConfig";
 import { default as build } from "./build";
 
+let command: {
+	[name: string]: any,
+	templateManager: TemplateManager,
+	execute: (argv: any) => Promise<void>
+};
 // tslint:disable:object-literal-sort-keys
-const command = {
+command = {
 	command: "start",
 	desc: "starts the project",
 	builder: {},
+	templateManager: null,
 	async execute(argv) {
 		//build
-		await build.execute();
+		await build.execute({});
 
 		const config = ProjectConfig.getConfig();
 		const framework = config.project.framework;

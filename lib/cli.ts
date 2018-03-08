@@ -23,6 +23,8 @@ export async function run(args = null) {
 	newCommand.template = templateManager;
 	newCommand.builder.framework.choices = templateManager.getFrameworkIds();
 	add.templateManager = templateManager;
+	build.templateManager = templateManager;
+	start.templateManager = templateManager;
 	generate.templateManager = templateManager;
 	list.templateManager = templateManager;
 

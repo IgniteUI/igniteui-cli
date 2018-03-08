@@ -69,7 +69,7 @@ command = {
 		const selectedTemplate = frameworkLibrary.getTemplateById(argv.template);
 		if (selectedTemplate) {
 			await command.addTemplate(argv.name, selectedTemplate);
-			PackageManager.ensureIgniteUISource(config.packagesInstalled);
+			PackageManager.ensureIgniteUISource(config.packagesInstalled, command.templateManager);
 		}
 	},
 	async addTemplate(name: string, template: Template): Promise<boolean> {
