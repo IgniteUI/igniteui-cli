@@ -10,8 +10,6 @@ describe("Unit - List command", () => {
 		{ controlGroup: "group1", id: "id1.3", description: "Description for 1.3" },
 		// same id in same group to raise code coverage
 		{ controlGroup: "group1", id: "id1.3", description: "Description for 1.3" },
-		// 'Custom Templates' group for code coverage
-		{ controlGroup: "Custom Templates", id: "will not show", description: "Description"  },
 		{ controlGroup: "group2", id: "id2.1", description: "Description for 2.1" },
 		{ controlGroup: "group2", id: "id2.2", description: "Description for 2.2" }];
 
@@ -84,7 +82,8 @@ describe("Unit - List command", () => {
 		expect(Util.log).toHaveBeenCalledWith("'group2' group:");
 		expect(Util.log).toHaveBeenCalledWith("	id2.1     Description for 2.1");
 		expect(Util.log).toHaveBeenCalledWith("	id2.2     Description for 2.2");
-		expect(Util.log).toHaveBeenCalledWith("To list all available templates run list command outside of a project folder");
+		expect(Util.log).toHaveBeenCalledWith(
+			"To list available templates for other framework and project type run outside of a project folder");
 
 		done();
 	});

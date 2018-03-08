@@ -15,7 +15,7 @@ describe("Help command", () => {
 		config                 gets, sets or adds a configuration property
 		doc [term]             opens the Infragistics search for the given term
 		test                   tests the project
-		list [framework] [type] list all templates                           [aliases: l]
+		list				   list all templates                           [aliases: l]
 	  Options:
 		--version, -v  Show current Ignite UI CLI version                    [boolean]
 		--help, -h     Show help                                             [boolean]`;
@@ -114,7 +114,7 @@ describe("Help command", () => {
 		Options:
 		--version, -v    Show current Ignite UI CLI version                  [boolean]
 		--help, -h       Show help                                           [boolean]
-		--framework, -f  Framework to list templates for                      [string]
+		--framework, -f  Framework to list templates for  [string] [default: "jquery"]
 		--type, -t       Project type (depends on framework)                  [string]
 		`;
 

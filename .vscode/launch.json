@@ -350,6 +350,17 @@
 				"doc",
 				"igGrid"
 			]
+		},{
+			"type": "node",
+			"request": "launch",
+			"name": "Launch List command",
+			"cwd": "${workspaceRoot}/output",
+			"program": "${workspaceRoot}/bin/execute.js",
+			"console": "externalTerminal",
+			"preLaunchTask": "build",
+			"args": [
+				"list"
+			]
 		}
 	]
 }

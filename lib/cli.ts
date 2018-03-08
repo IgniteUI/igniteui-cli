@@ -92,7 +92,7 @@ export async function run(args = null) {
 			break;
 		case "l":
 		case "list":
-			await list.execute(argv);
+			list.execute(argv);
 			break;
 		default:
 			Util.log("Starting Step by step mode.", "green");

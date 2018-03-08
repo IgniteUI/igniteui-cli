@@ -1,5 +1,3 @@
-import * as fs from "fs-extra";
-import * as path from "path";
 import { ProjectConfig } from "../ProjectConfig";
 import { TemplateManager } from "../TemplateManager";
 import { Util } from "../Util";
@@ -8,18 +6,19 @@ import { PromptSession } from "./../PromptSession";
 let command: {
 	[name: string]: any,
 	templateManager: TemplateManager,
-	execute: (argv: any) => Promise<void>
+	execute: (argv: any) => void
 };
 
 // tslint:disable:object-literal-sort-keys
 command = {
-	command: "list [framework] [type]",
+	command: "list",
 	// use aliases here, instead of alias. With single alias yargs does not build correctly argv
 	aliases: ["l"],
 	desc: "list all templates",
 	builder: {
 		framework: {
 			alias: "f",
+			default: "jquery",
 			describe: "Framework to list templates for",
 			type: "string"
 		},
@@ -30,7 +29,7 @@ command = {
 		}
 	},
 	templateManager: null,
-	async execute(argv) {
+	execute(argv) {
 		let inProject = false;
 		const viewsGroupName = "Views";
 		if (ProjectConfig.hasLocalConfig()) {
@@ -60,9 +59,8 @@ command = {
 
 		let maxIdLength = 0;
 		projectLib.templates
-			.filter(t => t.controlGroup !== "Custom Templates")
 			.map(t => {
-				if (t.controlGroup) {
+				if (!t.listInCustomTemplates) {
 					if (controlGroups.indexOf(t.controlGroup) === -1) {
 						controlGroups.push(t.controlGroup);
 						templatesByGroup[t.controlGroup] = [];
@@ -71,6 +69,7 @@ command = {
 					templatesByGroup[t.controlGroup].push({ id: t.id, description: t.description });
 				} else {
 					if (controlGroups.indexOf(viewsGroupName) === -1) {
+						controlGroups.push(viewsGroupName);
 						templatesByGroup[viewsGroupName] = [];
 					}
 
@@ -95,7 +94,7 @@ command = {
 		}
 
 		if (inProject) {
-			Util.log("To list all available templates run list command outside of a project folder");
+			Util.log("To list available templates for other framework and project type run outside of a project folder");
 		}
 	}
 };
