@@ -68,7 +68,6 @@ const command = {
 	},
 	setHandler(argv) {
 		let config;
-
 		if (argv.global) {
 			config = ProjectConfig.globalConfig();
 		} else {
@@ -81,6 +80,7 @@ const command = {
 
 		const validationResult = ProjectConfig.validateProperty(argv.property, argv.value);
 		if (!validationResult.valid) {
+			Util.error(validationResult.message, "red");
 			return;
 		}
 

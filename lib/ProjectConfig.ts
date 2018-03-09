@@ -75,15 +75,15 @@ export class ProjectConfig {
 		return globalConfig as Config;
 	}
 	/*** Validates if provided value could be set to provided property against provided schema */
-	public static validateProperty(property, value): {valid: boolean, value: string} {
+	public static validateProperty(property, value): {message: string, valid: boolean, value: string} {
 		const schema = this.getSchema();
 		if (typeof schema !== "object" && schema.properties) {
 			throw new Error("Incorrect schema provided. Schema should be object");
 		}
 
-		const result = { valid: false, value: undefined };
+		const result = { message: undefined, valid: false, value: undefined };
 		if (!schema.properties.hasOwnProperty(property)) {
-			Util.error(`Property "${property}" is not allowed in "${schema.title}" type!`, "red");
+			result.message = `Property "${property}" is not allowed in "${schema.title}" type!`;
 			return  result;
 		}
 
@@ -93,24 +93,24 @@ export class ProjectConfig {
 			try {
 				parsedValue = JSON.parse(value);
 			} catch (error) {
-				Util.error(`Invalid value provided for ${property} property`, "red");
+				result.message = `Invalid value provided for ${property} property`;
 				return result;
 			}
 
 			if (propertyType === "array") {
-				if (Array.isArray(parsedValue)) {
+				if (Array.isArray(parsedValue) && parsedValue.length === 0) {
 					result.valid = true;
 					result.value = parsedValue;
 					return  result;
 				} else {
-					Util.error(`Provided value should be an empty array type for ${property} property`, "red");
+					result.message = `Provided value should be an empty array for ${property} property`;
 					return result;
 				}
 			}
 
 			if (typeof parsedValue !== propertyType) {
-				Util.error(`Invalid value type provided for ${property} property`, "red");
-				Util.error(`Value should be of type ${propertyType}`, "red");
+				result.message = `Invalid value type provided for ${property} property`;
+				result.message += `\nValue should be of type ${propertyType}`;
 				return result;
 			}
 		}

@@ -81,7 +81,52 @@ describe("Unit - Config command", () => {
 			done();
 		});
 
-		xit("Should show error for array property", async done => {
+		it("Should show error when invalid value provided", async done => {
+			spyOn(ProjectConfig, "globalConfig").and.returnValue({ booleanProperty: true });
+
+			await configCmd.setHandler({ property: "booleanProperty", value: "non boolean value", global: true });
+
+			expect(Util.error).toHaveBeenCalledTimes(1);
+			expect(Util.error).toHaveBeenCalledWith("Invalid value provided for booleanProperty property", "red");
+			expect(Util.log).toHaveBeenCalledTimes(0);
+			done();
+		});
+
+		it("Should show error when invalid value type provided", async done => {
+			spyOn(ProjectConfig, "globalConfig").and.returnValue({ booleanProperty: true });
+
+			await configCmd.setHandler({ property: "booleanProperty", value: '{ "object-Value": "for boolean"}', global: true });
+
+			expect(Util.error).toHaveBeenCalledTimes(1);
+			expect(Util.error).toHaveBeenCalledWith(
+				"Invalid value type provided for booleanProperty property\nValue should be of type boolean", "red");
+			expect(Util.log).toHaveBeenCalledTimes(0);
+			done();
+		});
+
+		it("Should show error for array property", async done => {
+			spyOn(ProjectConfig, "globalConfig").and.returnValue({ arrayProperty: [] });
+
+			// tslint:disable-next-line:quotemark
+			await configCmd.setHandler({ property: "arrayProperty", value: '["Not", "empty", "array"]', global: true });
+
+			expect(Util.error).toHaveBeenCalledTimes(1);
+			expect(Util.error).toHaveBeenCalledWith("Provided value should be an empty array for arrayProperty property", "red");
+			expect(Util.log).toHaveBeenCalledTimes(0);
+			done();
+		});
+
+		it("Should reset array property when empty array is provided", async done => {
+			spyOn(ProjectConfig, "globalConfig").and.returnValue({ arrayProperty: ["Some value", "More values"] });
+			spyOn(ProjectConfig, "setConfig");
+
+			await configCmd.setHandler({ property: "arrayProperty", value: "[]", global: true });
+
+			expect(Util.error).toHaveBeenCalledTimes(0);
+			expect(Util.log).toHaveBeenCalledTimes(1);
+			expect(Util.log).toHaveBeenCalledWith("Property \"arrayProperty\" set.");
+			expect(ProjectConfig.setConfig).toHaveBeenCalledWith({ arrayProperty: [] }, true /*global*/);
+			done();
 		});
 
 		it("Should set global prop", async done => {
@@ -159,7 +204,6 @@ describe("Unit - Config command", () => {
 			await configCmd.addHandler({ property: "test", value: "two", global: true });
 			expect(ProjectConfig.setConfig).toHaveBeenCalledWith({ test: ["one", "two"] }, true);
 			expect(Util.log).toHaveBeenCalledWith(`Property "test" updated.`);
-
 			done();
 		});
 
