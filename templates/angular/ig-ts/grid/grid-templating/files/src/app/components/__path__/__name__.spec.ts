@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { $(ClassName)Component } from './$(filePrefix).component';
 import { IgniteUIModule } from 'igniteui-angular-wrappers';
+import { FormsModule } from '@angular/forms';
 
 declare var $;
 
@@ -12,7 +13,7 @@ describe('$(ClassName)Component', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [$(ClassName)Component],
-      imports: [IgniteUIModule]
+      imports: [IgniteUIModule, FormsModule]
     })
       .compileComponents();
   }));
