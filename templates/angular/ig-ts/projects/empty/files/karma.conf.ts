@@ -37,6 +37,7 @@ export default (config) => {
 			"text/x-typescript": ["ts"]
 		},
 
+		failOnEmptyTestSuite: false,
 		coverageIstanbulReporter: {
 			reports: ["html", "lcovonly"],
 			fixWebpackSourcePaths: true
