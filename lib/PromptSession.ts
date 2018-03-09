@@ -82,7 +82,6 @@ export class PromptSession {
 			} else {
 				projLibrary = this.templateManager.getProjectLibrary(framework.id);
 			}
-
 			if (projLibrary.themes.length < 2) {
 				theme = projLibrary.themes[0] || "";
 			} else {
@@ -98,7 +97,6 @@ export class PromptSession {
 			}
 
 			const projTemplate = projLibrary.getProject();
-
 			Util.log("  Generating project structure.");
 			await projTemplate.generateFiles(process.cwd(), projectName, theme);
 
@@ -120,6 +118,8 @@ export class PromptSession {
 	public async chooseActionLoop(framework: ProjectLibrary, theme: string) {
 		const actionChoices: string[] = ["Complete & Run"];
 		let templateName;
+		//tslint:disable:no-console
+		console.log(framework.components);
 		if (framework.components.length > 0) {
 			actionChoices.push("Add component");
 		}
