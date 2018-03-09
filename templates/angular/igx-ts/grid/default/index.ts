@@ -10,7 +10,9 @@ class IgxGridTemplate extends IgniteUIForAngularTemplate {
 		this.projectType = "igx-ts";
 		this.name = "Grid";
 		this.description = "Basic IgxGrid";
-		this.dependencies = ["IgxGridModule"];
+		this.dependencies = [
+			{ import: "IgxGridModule", from: "igniteui-angular/main" }
+		];
 	}
 }
 module.exports = new IgxGridTemplate();

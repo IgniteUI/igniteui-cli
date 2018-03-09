@@ -209,6 +209,22 @@ class Util {
 		// tslint:enable:no-console
 	}
 
+	/**
+	 * Log a warning with optional color.
+	 * @param message warn to log
+	 * @param colorKeyword Optional color (CSS keyword like red, green, etc.)
+	 */
+	public static warn(message: string, colorKeyword?: string) {
+		// tslint:disable:no-console
+		if (colorKeyword) {
+			const color = chalk.keyword(colorKeyword);
+			console.warn(color(message));
+		} else {
+			console.warn(message);
+		}
+		// tslint:enable:no-console
+	}
+
 	public static greenCheck() {
 		if (process.platform.startsWith("win")) {
 			return chalk.green("√");

@@ -98,7 +98,7 @@ export class TemplateManager {
 
 		// add each separately to avoid duplicates:
 		for (const element of template.dependencies) {
-			if (config.project.components.indexOf(element) === -1) {
+			if (typeof element === "string" && config.project.components.indexOf(element) === -1) {
 				config.project.components.push(element);
 			}
 		}
