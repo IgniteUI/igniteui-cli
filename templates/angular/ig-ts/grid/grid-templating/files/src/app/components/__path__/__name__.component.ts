@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { products } from "../../assets/northwind";
+import { products } from "../../assets/northwindProductsFlat";
 
 @Component({
 	selector: "$(filePrefix)",
