@@ -8,7 +8,7 @@ class IgxListComponent extends BaseComponent {
 	constructor() {
 		super(__dirname);
 		this.name  = "List";
-		this.group = "Grids&Lists";
+		this.group = "Grids & Lists";
 	}
 }
 module.exports = new IgxListComponent();

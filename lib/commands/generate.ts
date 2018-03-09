@@ -21,24 +21,24 @@ const command = {
 					"framework": {
 						alias: "f",
 						default: "jquery",
-						describe: "Framework name.",
+						describe: "Framework to generate template for",
 						type: "string"
 					},
 					"name": {
 						alias: "n",
 						default: "custom-template",
-						describe: "Template name.",
+						describe: "Template name",
 						type: "string"
 					},
 					"skip-config": {
 						alias: "s",
 						default: false,
-						describe: "Runs generate command without updating the cli config.",
+						describe: "Runs generate command without updating the cli config",
 						type: "boolean"
 					},
 					"type": {
 						alias: "t",
-						describe: "Framework type.",
+						describe: "Project type (depends on framework)",
 						type: "string"
 					}
 				}

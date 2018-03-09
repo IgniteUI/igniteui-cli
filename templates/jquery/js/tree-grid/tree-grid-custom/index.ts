@@ -11,14 +11,17 @@ class TreeGridCustomTemplate extends jQueryTemplate {
 
 	constructor() {
 		super(__dirname);
-		this.extraConfigurations = [];
-		this.name = "Custom TreeGrid";
 		this.id = "tree-grid-custom";
+		this.name = "Custom TreeGrid";
 		this.description = "Tree Grid custom template";
+		this.projectType = "js";
+		this.components = ["Tree Grid"];
+		this.controlGroup = "Data Grids";
 		this.dependencies = ["igTreeGrid"];
-		this.listInComponentTemplates = true;
-		this.hasExtraConfiguration = true;
 
+		this.hasExtraConfiguration = true;
+		this.listInComponentTemplates = true;
+		this.extraConfigurations = [];
 		const featureConfiguration: ControlExtraConfiguration = {
 			choices: ["Sorting", "RowSelectors", "Filtering", "Updating", "ColumnMoving", "Resizing", "Hiding"],
 			default: "",

@@ -9,21 +9,22 @@ class GridTemplatingTemplate extends jQueryTemplate {
 	public extraConfigurations: ControlExtraConfiguration[];
 	public userExtraConfiguration: {} = {};
 	public hasExtraConfiguration = true;
-
 	private gridHelper: GridHelper;
 	/**
 	 *
 	 */
 	constructor() {
 		super(__dirname);
-		this.extraConfigurations = [];
-
+		this.id = "grid-templating";
 		this.name = "Grid Templating";
 		this.description = "Grid templating template";
-		this.id = "grid-templating";
+		this.projectType = "js";
+		this.components = ["Grid"];
+		this.controlGroup = "Data Grids";
 		this.dependencies = ["igGrid"];
 
 		this.gridHelper = new GridHelper();
+		this.extraConfigurations = [];
 		this.gridHelper.space = "    ";
 		const featureConfiguration: ControlExtraConfiguration = {
 			choices: ["Sorting", "Paging", "Filtering"],

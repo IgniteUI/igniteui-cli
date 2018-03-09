@@ -7,7 +7,6 @@ import { TreeGridFeatureHelper } from "../treegridfeaturehelper";
 class TreeGridExportTemplate extends jQueryTemplate {
 
 	public extraConfigurations: ControlExtraConfiguration[];
-
 	public userExtraConfiguration: {} = {};
 
 	/**
@@ -16,10 +15,12 @@ class TreeGridExportTemplate extends jQueryTemplate {
 	constructor() {
 		super(__dirname);
 		this.extraConfigurations = [];
-
-		this.name = "TreeGrid Export";
 		this.id = "tree-grid-export";
+		this.name = "TreeGrid Export";
 		this.description = "Tree Grid exporting template";
+		this.projectType = "js";
+		this.components = ["Tree Grid"];
+		this.controlGroup = "Data Grids";
 		this.dependencies = ["igTreeGrid"];
 
 		this.hasExtraConfiguration = true;

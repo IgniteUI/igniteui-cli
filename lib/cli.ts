@@ -6,6 +6,7 @@ import { default as build } from "./commands/build";
 import { default as config } from "./commands/config";
 import { default as doc } from "./commands/doc";
 import { default as generate } from "./commands/generate";
+import { default as list } from "./commands/list";
 import { default as newCommand } from "./commands/new";
 import { default as quickstart } from "./commands/quickstart";
 import { default as start } from "./commands/start";
@@ -22,7 +23,10 @@ export async function run(args = null) {
 	newCommand.template = templateManager;
 	newCommand.builder.framework.choices = templateManager.getFrameworkIds();
 	add.templateManager = templateManager;
+	build.templateManager = templateManager;
+	start.templateManager = templateManager;
 	generate.templateManager = templateManager;
+	list.templateManager = templateManager;
 
 	const yargsModule = args ? yargs(args) : yargs;
 
@@ -36,6 +40,7 @@ export async function run(args = null) {
 	.command(config)
 	.command(doc)
 	.command(test)
+	.command(list)
 	.options({
 		version: {
 			alias: "v",
@@ -86,6 +91,10 @@ export async function run(args = null) {
 			break;
 		case "start":
 			await start.execute(argv);
+			break;
+		case "l":
+		case "list":
+			list.execute(argv);
 			break;
 		default:
 			Util.log("Starting Step by step mode.", "green");

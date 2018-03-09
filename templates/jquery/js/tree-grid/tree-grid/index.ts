@@ -15,13 +15,17 @@ class TreeGridBasicTemplate extends jQueryTemplate {
 	 */
 	constructor() {
 		super(__dirname);
-		this.extraConfigurations = [];
-		this.name = "Basic TreeGrid";
 		this.id = "tree-grid";
+		this.name = "Basic TreeGrid";
 		this.description = "Tree Grid default template";
+		this.projectType = "js";
+		this.components = ["Tree Grid"];
+		this.controlGroup = "Data Grids";
 		this.dependencies = ["igTreeGrid"];
-		this.listInComponentTemplates = true;
+
 		this.hasExtraConfiguration = true;
+		this.listInComponentTemplates = true;
+		this.extraConfigurations = [];
 		const featureConfiguration: ControlExtraConfiguration = {
 			choices: ["Sorting", "RowSelectors", "Filtering"],
 			default: "",
