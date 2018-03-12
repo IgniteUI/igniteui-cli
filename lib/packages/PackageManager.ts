@@ -183,6 +183,8 @@ export class PackageManager {
 
 	private static getPackageJSON(): { "dependencies": {[x: string]: string} } {
 		const filePath = path.join(process.cwd(), "package.json");
+		//tslint:disable:no-console
+		console.log(require(filePath));
 		return require(filePath);
 	}
 }
