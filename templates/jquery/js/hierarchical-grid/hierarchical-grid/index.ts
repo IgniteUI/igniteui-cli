@@ -8,23 +8,25 @@ import { Util } from "../../../../../lib/Util";
 class HierarchicalGridTemplate extends jQueryTemplate {
 	public extraConfigurations: ControlExtraConfiguration[];
 	public userExtraConfiguration: {} = {};
-
 	private gridHelper: GridHelper;
 	/**
 	 *
 	 */
 	constructor() {
 		super(__dirname);
-		this.extraConfigurations = [];
+		this.id = "hierarchical-grid";
 		this.name = "Hierarchical Grid";
 		this.description = "Hierarchical Grid default template";
+		this.projectType = "js";
+		this.components = ["Hierarchical Grid"];
+		this.controlGroup = "Data Grids";
 		this.dependencies = ["igHierarchicalGrid"];
-		this.id = "hierarchical-grid";
-		this.hasExtraConfiguration = true;
 
 		this.gridHelper = new GridHelper();
 		this.gridHelper.hierarchical = true;
 		this.gridHelper.space = "    ";
+		this.hasExtraConfiguration = true;
+		this.extraConfigurations = [];
 		const featureConfiguration: ControlExtraConfiguration = {
 			choices: ["Sorting", "Paging", "Filtering"],
 			default: "",

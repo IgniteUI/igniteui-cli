@@ -276,7 +276,7 @@
 				"t",
 				"-n=angular",
 				"-f=angular",
-				"-t=igx-ts",
+				"-t=igx-ts"
 			]
 		},
 		{
@@ -292,7 +292,7 @@
 				"t",
 				"-n=angular wrapper",
 				"-f=angular",
-				"-t=ig-ts",
+				"-t=ig-ts"
 			]
 		},
 		{
@@ -308,7 +308,7 @@
 				"t",
 				"-n=react",
 				"-f=react",
-				"-t=es6",
+				"-t=es6"
 			]
 		},
 		{
@@ -323,7 +323,7 @@
 				"g",
 				"t",
 				"-n=react no type",
-				"-f=react",
+				"-f=react"
 			]
 		},
 		{
@@ -339,6 +339,40 @@
 				"get",
 				"bla",
 				"-g"
+			]
+		},{
+			"type": "node",
+			"request": "launch",
+			"name": "Launch DOC Command, No Arguments",
+			"cwd": "${workspaceRoot}/output",
+			"program": "${workspaceRoot}/bin/execute.js",
+			"console": "externalTerminal",
+			"preLaunchTask": "build",
+			"args": [
+				"doc"
+			]
+		},{
+			"type": "node",
+			"request": "launch",
+			"name": "Launch DOC Command, Term Alias",
+			"cwd": "${workspaceRoot}/output",
+			"program": "${workspaceRoot}/bin/execute.js",
+			"console": "externalTerminal",
+			"preLaunchTask": "build",
+			"args": [
+				"doc",
+				"igGrid"
+			]
+		},{
+			"type": "node",
+			"request": "launch",
+			"name": "Launch List command",
+			"cwd": "${workspaceRoot}/output",
+			"program": "${workspaceRoot}/bin/execute.js",
+			"console": "externalTerminal",
+			"preLaunchTask": "build",
+			"args": [
+				"list"
 			]
 		}
 	]

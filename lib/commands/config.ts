@@ -68,7 +68,6 @@ const command = {
 	},
 	setHandler(argv) {
 		let config;
-
 		if (argv.global) {
 			config = ProjectConfig.globalConfig();
 		} else {
@@ -79,11 +78,13 @@ const command = {
 			config = ProjectConfig.localConfig();
 		}
 
-		if (config[argv.property]) {
-			// TODO: Schema/property validation?
+		const validationResult = ProjectConfig.validateProperty(argv.property, argv.value);
+		if (!validationResult.valid) {
+			Util.error(validationResult.message, "red");
+			return;
 		}
 
-		config[argv.property] = argv.value;
+		config[argv.property] = validationResult.value;
 		ProjectConfig.setConfig(config, argv.global);
 		Util.log(`Property "${argv.property}" set.`);
 	},
@@ -100,7 +101,6 @@ const command = {
 			config = ProjectConfig.localConfig();
 		}
 
-		// TODO: Schema/property validation?
 		if (!config[argv.property]) {
 			config[argv.property] = [];
 		} else if (!Array.isArray(config[argv.property])) {

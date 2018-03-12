@@ -1,15 +1,12 @@
 import { jQueryTemplate } from "../../../../../lib/templates/jQueryTemplate";
 
 class DataCalculationFormTemplate extends jQueryTemplate {
-	/**
-	 *
-	 */
 	constructor() {
 		super(__dirname);
 		this.id = "editors-calculation-form";
-		this.framework = "jquery";
 		this.projectType = "js";
 		this.components = [ "Editors", "Combo", "Validator" ];
+		this.listInComponentTemplates = false;
 		this.listInCustomTemplates = true;
 		this.name = "Editors - Data Calculation Form";
 		this.description = "This template shows basic options of the igNumericEditor, igTextEditor, igCheckbox, " +

@@ -7,7 +7,6 @@ import { TreeGridFeatureHelper } from "../treegridfeaturehelper";
 class TreeGridEditingTemplate extends jQueryTemplate {
 
 	public extraConfigurations: ControlExtraConfiguration[];
-
 	public userExtraConfiguration: {} = {};
 
 	/**
@@ -16,13 +15,16 @@ class TreeGridEditingTemplate extends jQueryTemplate {
 	constructor() {
 		super(__dirname);
 		this.extraConfigurations = [];
-
-		this.name = "TreeGrid Editing";
 		this.id = "tree-grid-editing";
+		this.name = "TreeGrid Editing";
 		this.description = "Tree Grid editing template";
+		this.projectType = "js";
+		this.components = ["Tree Grid"];
+		this.controlGroup = "Data Grids";
 		this.dependencies = ["igTreeGrid"];
-		this.listInComponentTemplates = true;
+
 		this.hasExtraConfiguration = true;
+		this.listInComponentTemplates = true;
 		const featureConfiguration: ControlExtraConfiguration = {
 			choices: ["Sorting", "Filtering"],
 			default: "",

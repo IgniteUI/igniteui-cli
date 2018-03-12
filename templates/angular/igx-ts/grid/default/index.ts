@@ -4,7 +4,7 @@ class IgxGridTemplate extends IgniteUIForAngularTemplate {
 	constructor() {
 		super(__dirname);
 		this.components = ["Grid"];
-		this.controlGroup = "Grids&Lists";
+		this.controlGroup = "Grids & Lists";
 		this.listInComponentTemplates = true;
 		this.id = "grid";
 		this.projectType = "igx-ts";

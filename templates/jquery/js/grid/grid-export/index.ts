@@ -7,7 +7,6 @@ import { Util } from "../../../../../lib/Util";
 class GridExportTemplate extends jQueryTemplate {
 	public extraConfigurations: ControlExtraConfiguration[];
 	public userExtraConfiguration: {} = {};
-
 	private gridHelper: GridHelper;
 	/**
 	 *
@@ -15,14 +14,17 @@ class GridExportTemplate extends jQueryTemplate {
 	constructor() {
 		super(__dirname);
 		this.extraConfigurations = [];
+		this.id = "grid-export";
 		this.name = "Grid Export";
 		this.description = "Grid export template";
+		this.projectType = "js";
+		this.components = ["Grid"];
+		this.controlGroup = "Data Grids";
 		this.dependencies = ["igGrid", "igGridExcelExporter"];
-		this.id = "grid-export";
 
 		this.gridHelper = new GridHelper();
-		this.gridHelper.space = "    ";
 		this.hasExtraConfiguration = true;
+		this.gridHelper.space = "    ";
 		const featureConfiguration: ControlExtraConfiguration = {
 			choices: ["Summaries", "Hiding"],
 			default: "",

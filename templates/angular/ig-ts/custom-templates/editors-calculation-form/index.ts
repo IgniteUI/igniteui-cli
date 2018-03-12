@@ -9,13 +9,13 @@ class EditorsCalculationForm extends AngularTemplate {
 	constructor() {
 		super(__dirname);
 		this.id = "editors-calculation-form";
+		this.projectType = "ig-ts";
+		this.listInComponentTemplates = false;
+		this.listInCustomTemplates = true;
 		this.name = "Editors Data Calculation Form";
-		this.controlGroup = "Custom Templates";
 		this.description = "This template shows basic options of the igNumericEditor, igTextEditor, igCheckbox, " +
 		"igPercentEditor, igMaskEditor and igDateEditor, demonstrated with a loan calculator.";
 		this.dependencies = ["igEditors", "igCombo", "igValidator"];
-		this.projectType = "ig-ts";
-		this.listInComponentTemplates = true;
 	}
 
 	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
