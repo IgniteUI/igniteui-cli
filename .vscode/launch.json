@@ -27,15 +27,16 @@
 		{
 			"type": "node",
 			"request": "launch",
-			"name": "Launch New Angular",
+			"name": "Launch New Angular Wrappers",
 			"cwd": "${workspaceRoot}/output",
 			"program": "${workspaceRoot}/bin/execute.js",
 			"console": "externalTerminal",
 			"preLaunchTask": "build",
 			"args": [
 				"new",
-				"angularproj",
-				"--framework=angular"
+				"angularprojTreeShaking",
+				"--framework=angular",
+				"--type=ig-ts"
 			]
 		},
 		{
@@ -72,6 +73,18 @@
 			"args": [
 				"quickstart",
 				"--framework=jquery"
+			]
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Launch Quickstart Default No Param jQuery",
+			"cwd": "${workspaceRoot}/output",
+			"program": "${workspaceRoot}/bin/execute.js",
+			"console": "externalTerminal",
+			"preLaunchTask": "build",
+			"args": [
+				"quickstart"
 			]
 		},
 		{
