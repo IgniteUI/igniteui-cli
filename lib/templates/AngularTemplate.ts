@@ -32,7 +32,7 @@ export class AngularTemplate implements Template {
 		config["$(ClassName)"] = Util.className(name);
 		config["__name__"] = this.fileName(name);
 		config["__path__"] = this.folderName(name);
-		
+
 		if (this.widget) {
 			config["$(widget)"] = this.widget;
 		}
