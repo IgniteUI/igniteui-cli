@@ -17,6 +17,7 @@ class TreeGridExportTemplate extends ReactTemplate {
 		this.description = "Tree grid exporting template for React";
 		this.projectType = "es6";
 		this.components = ["Tree Grid"];
+		this.widget = "igTreeGrid";
 		this.controlGroup = "Data Grids";
 		this.dependencies = ["igTreeGrid"];
 
@@ -31,28 +32,9 @@ class TreeGridExportTemplate extends ReactTemplate {
 	}
 
 	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
-		const config = {};
-		const pathsConfig = {};
-		let features: string;
-		if (this.userExtraConfiguration["features"] !== undefined) {
-			features = TreeGridFeatureHelper.generateFeatures(this.userExtraConfiguration["features"]);
-		} else {
-			features = "";
-		}
-
-		config["__path__"] =  this.folderName(name); //folder name allowed spaces, any casing
-		config["$(ClassName)"] = Util.className(name); //first letter capital, no spaces,
-		config["$(widget)"] = "igTreeGrid";
-		config["$(Control)"] = Util.className("igTreeGrid");
-		config["$(igniteImports)"] = this.getImports();
-		config["$(name)"] = name; // this name should not have restrictions
-		config["$(treeGridFeatures)"] = features;
-		config["$(description)"] = this.description;
-		// TODO: Refactor to base
-		if (!Util.validateTemplate(path.join(__dirname, "files"), projectPath, config, pathsConfig)) {
-			return Promise.resolve(false);
-		}
-		return Util.processTemplates(path.join(__dirname, "files"), projectPath, config, pathsConfig);
+		const features = TreeGridFeatureHelper.generateFeatures(this.userExtraConfiguration["features"]);
+		const config = { "$(treeGridFeatures)": features };
+		return super.generateFiles(projectPath, name, { extraConfig : config });
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return this.extraConfigurations;
