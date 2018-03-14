@@ -1,8 +1,8 @@
 import * as fs from "fs-extra";
 import * as path from "path";
+import { TypeScriptFileUpdate } from "../project-utility/TypeScriptFileUpdate";
 import { ProjectConfig } from "../ProjectConfig";
 import { Util } from "../Util";
-// import { TypeScriptFileUpdate } from "./../project-utility/TypeScriptFileUpdate";
 import { AngularTemplate } from "./AngularTemplate";
 
 export class IgniteUIForAngularTemplate extends AngularTemplate {
@@ -26,15 +26,18 @@ export class IgniteUIForAngularTemplate extends AngularTemplate {
 			});
 		}
 
-		// D.P. Don't use top-level import as that chains import of typescript
-		// which slows down execution of the entire component noticeably
-		const tsFileUpdate = require("./../project-utility/TypeScriptFileUpdate").TypeScriptFileUpdate;
+		// D.P. Don't use the top-level import as that chains import of typescript
+		// which slows down execution of the entire component noticeably (template loading)
+		// https://www.typescriptlang.org/docs/handbook/modules.html#dynamic-module-loading-in-nodejs
+		// tslint:disable-next-line:variable-name
+		const TsUpdate: typeof TypeScriptFileUpdate =
+			require("./../project-utility/TypeScriptFileUpdate").TypeScriptFileUpdate;
 
 		//1) import the component class name,
 		//2) and populate the Routes array with the path and component
 		//for example: { path: 'combo', component: ComboComponent }
-		tsFileUpdate.addRoute(
-			path.join(projectPath, "src/app/app-routing.module.ts"),
+		const routingModule = new TsUpdate(path.join(projectPath, "src/app/app-routing.module.ts"));
+		routingModule.addRoute(
 			path.join(projectPath, `src/app/${this.folderName(name)}/${this.fileName(name)}.component.ts`),
 			this.folderName(name), //path
 			name //text
@@ -42,22 +45,16 @@ export class IgniteUIForAngularTemplate extends AngularTemplate {
 
 		//3) add an import of the component class from its file location.
 		//4) populate the declarations portion of the @NgModule with the component class name.
-		tsFileUpdate.addDeclaration(
-			path.join(projectPath, "src/app/app.module.ts"),
+		const mainModule = new TsUpdate(path.join(projectPath, "src/app/app.module.ts"));
+		mainModule.addDeclaration(
 			path.join(projectPath, `src/app/${this.folderName(name)}/${this.fileName(name)}.component.ts`)
 		);
 
+		// import IgxModules and other dependencies
 		for (const dep of this.dependencies) {
-			if (dep.import && dep.from) {
-
-				// import IgxModules:
-				tsFileUpdate.addIgxImport(
-					path.join(projectPath, "src/app/app.module.ts"),
-					typeof dep.import === "string" ? dep.import.split(/\s*,\s*/) : dep.import,
-					dep.from
-				);
-			}
+			mainModule.addNgModuleMeta(dep);
 		}
+		mainModule.finalize();
 
 		// make sure DV file is added to project if needed:
 		this.ensureSourceFiles();
