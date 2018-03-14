@@ -31,7 +31,12 @@ describe("Unit - Package Manager", () => {
 		});
 		spyOn(ProjectConfig, "setConfig");
 		spyOn(PackageManager, "addPackage").and.returnValue(true);
-		spyOn(path, "join").and.returnValue("../../spec/unit/empty.json");
+		spyOn(path, "join").and.returnValue("fakemodule.json");
+		spyOn(require("module"), "_load").and.callFake((modulePath: string) => {
+			if (modulePath === "fakemodule.json") {
+				return mockRequire;
+			}
+		});
 		spyOn(shell, "exec").and.returnValues({
 			code: 1
 		}, {
