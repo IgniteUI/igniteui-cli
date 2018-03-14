@@ -22,7 +22,7 @@ class TreeGridEditingTemplate extends ReactTemplate {
 
 		this.hasExtraConfiguration = true;
 		this.extraConfigurations.push({
-			choices: ["Sorting", "Filtering", "Updating"],
+			choices: ["Sorting", "Filtering"],
 			default: "",
 			key: "features",
 			message: "Select features for the igTreeGrid",

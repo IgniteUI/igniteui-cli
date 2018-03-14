@@ -17,7 +17,6 @@ class FileExplorerTemplate extends jQueryTemplate {
 		this.dependencies = ["igTreeGrid"];
 		this.projectType = "js";
 		this.listInCustomTemplates = true;
-		this.hasExtraConfiguration = false;
 		this.extraConfigurations = [];
 		const featureConfiguration: ControlExtraConfiguration = {
 			choices: ["Sorting"],
@@ -26,7 +25,7 @@ class FileExplorerTemplate extends jQueryTemplate {
 			message: "Select features for the igTreeGrid",
 			type: Enumerations.ControlExtraConfigType.MultiChoice
 		};
-		//this.extraConfigurations.push(featureConfiguration);
+		this.extraConfigurations.push(featureConfiguration);
 	}
 	public setExtraConfiguration(extraConfigKeys: {}) {
 		this.userExtraConfiguration = extraConfigKeys;
