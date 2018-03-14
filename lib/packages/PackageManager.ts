@@ -22,7 +22,7 @@ export class PackageManager {
 		installNow: boolean = false,
 		templateManager: TemplateManager,
 		verbose: boolean = false
-) {
+	) {
 		const config = ProjectConfig.getConfig();
 		const fullComponents = config.project.components.filter(x => {
 			return componentsConfig.full.indexOf(x) !== -1 || componentsConfig.dv.indexOf(x) !== -1;
@@ -183,8 +183,6 @@ export class PackageManager {
 
 	private static getPackageJSON(): { "dependencies": {[x: string]: string} } {
 		const filePath = path.join(process.cwd(), "package.json");
-		//tslint:disable:no-console
-		console.log(require(filePath));
 		return require(filePath);
 	}
 }
