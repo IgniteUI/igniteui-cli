@@ -11,6 +11,7 @@ class TreeGridTemplate extends AngularTemplate {
 		super(__dirname);
 		this.id = "tree-grid";
 		this.name = "Tree Grid";
+		this.widget = "igTreeGrid";
 		this.controlGroup = "Data Grids";
 		this.description = "Tree Grid default template for Angular";
 		this.dependencies = ["igTreeGrid"];
@@ -33,21 +34,9 @@ class TreeGridTemplate extends AngularTemplate {
 	}
 
 	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
-		const config = {
-			"$(ClassName)": Util.className(name),
-			"__name__": this.fileName(name),
-			"__path__": this.folderName(name)
-		};
 		const features = TreeGridFeatureHelper.generateFeatures(this.userExtraConfiguration["features"]);
-
-		config["$(treeGridFeatures)"] = features;
-		config["$(description)"] = this.description;
-		const pathsConfig = {};
-		// TODO: Refactor to base
-		if (!Util.validateTemplate(path.join(__dirname, "files"), projectPath, config, pathsConfig)) {
-			return Promise.resolve(false);
-		}
-		return Util.processTemplates(path.join(__dirname, "files"), projectPath, config, pathsConfig);
+		const config = { "$(treeGridFeatures)": features };
+		return super.generateFiles(projectPath, name, { extraConfig : config });
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return this.extraConfigurations;
