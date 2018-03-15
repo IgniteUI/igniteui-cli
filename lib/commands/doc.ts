@@ -21,6 +21,11 @@ doc = {
 		opn(target);
 	},
 	async execute(argv) {
+		Util.postToGoogleAnalytic({
+			t: "screenview",
+			cd: "doc",
+		});
+
 		if (!argv.term) {
 			const answer = await PromptSession.chooseTerm();
 			argv.term = answer;

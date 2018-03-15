@@ -6,6 +6,11 @@ const command = {
 	desc: "tests the project",
 	builder: {},
 	async execute(argv) {
+		Util.postToGoogleAnalytic({
+			t: "screenview",
+			cd: "test",
+		});
+
 		Util.log("test!");
 	}
 };

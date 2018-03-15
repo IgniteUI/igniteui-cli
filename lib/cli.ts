@@ -99,6 +99,11 @@ export async function run(args = null) {
 		default:
 			Util.log("Starting Step by step mode.", "green");
 			Util.log("For available commands, stop this execution and use --help.", "green");
+			Util.postToGoogleAnalytic({
+				t: "screenview",
+				cd: "wizard",
+			});
+	
 			const prompts = new PromptSession(templateManager);
 			prompts.start();
 			break;

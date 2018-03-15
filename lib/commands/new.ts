@@ -45,6 +45,10 @@ command = {
 	},
 	template: null,
 	async execute(argv) {
+		Util.postToGoogleAnalytic({
+				t: "screenview",
+				cd: "new",
+			});
 		if (ProjectConfig.hasLocalConfig()) {
 			return Util.error("There is already an existing project.", "red");
 		}

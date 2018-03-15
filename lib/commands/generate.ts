@@ -47,6 +47,10 @@ const command = {
 			.demandCommand(1, "Please select command");
 	},
 	async template(argv) {
+		Util.postToGoogleAnalytic({
+			t: "screenview",
+			cd: "generate",
+		});
 		// trim
 		argv.name = argv.name.trim();
 

@@ -5,6 +5,7 @@
 /lib/**/*.js.map
 /lib/**/*.js
 /lib/config/Config.schema.json
+/lib/config/UUID.json
 /spec/**/*.js.map
 /spec/**/*.js
 /templates/jquery/**/*.js

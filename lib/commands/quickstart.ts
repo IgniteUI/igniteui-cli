@@ -20,6 +20,11 @@ const command = {
 		}
 	},
 	async execute(argv) {
+		Util.postToGoogleAnalytic({
+			t: "screenview",
+			cd: "quickstart",
+		});
+		
 		Util.log("Quick Start!");
 		const framework = argv.framework;
 		let name = "";

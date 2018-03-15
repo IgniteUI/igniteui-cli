@@ -30,6 +30,11 @@ command = {
 	},
 	templateManager: null,
 	execute(argv) {
+		Util.postToGoogleAnalytic({
+			t: "screenview",
+			cd: "list",
+		});
+
 		let inProject = false;
 		const viewsGroupName = "Views";
 		if (ProjectConfig.hasLocalConfig()) {

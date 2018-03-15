@@ -36,6 +36,11 @@ command = {
 		return true;
 	},
 	async execute(argv) {
+		Util.postToGoogleAnalytic({
+			t: "screenview",
+			cd: "add"
+		});
+
 		if (!ProjectConfig.hasLocalConfig()) {
 			Util.error("Add command is supported only on existing project created with igniteui-cli", "red");
 			return;

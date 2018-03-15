@@ -55,6 +55,12 @@ const command = {
 	},
 	// tslint:enable:object-literal-sort-keys
 	getHandler(argv) {
+		Util.postToGoogleAnalytic({
+			t: "screenview",
+			cd: "config",
+			dt: "get"
+		});
+
 		if (!argv.global && !ProjectConfig.hasLocalConfig()) {
 			Util.error("No configuration file found in this folder!", "red");
 			return;
@@ -67,6 +73,12 @@ const command = {
 		}
 	},
 	setHandler(argv) {
+		Util.postToGoogleAnalytic({
+			t: "screenview",
+			cd: "config",
+			dt: "set"
+		});
+		
 		let config;
 		if (argv.global) {
 			config = ProjectConfig.globalConfig();
@@ -89,6 +101,12 @@ const command = {
 		Util.log(`Property "${argv.property}" set.`);
 	},
 	addHandler(argv) {
+		Util.postToGoogleAnalytic({
+			t: "screenview",
+			cd: "config",
+			dt: "get"
+		});
+		
 		let config;
 
 		if (argv.global) {
