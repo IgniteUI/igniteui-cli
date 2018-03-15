@@ -33,6 +33,12 @@ export class jQueryTemplate implements Template {
 	}
 
 	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
+		let config = {};
+		for (const element of options) {
+			if (element.hasOwnProperty("extraConfig")) {
+				config = element["extraConfig"];
+			}
+		}
 
 		// view goes in its own folder based on the name
 		const outputPath = path.join(projectPath, this.folderName(name));
@@ -43,15 +49,10 @@ export class jQueryTemplate implements Template {
 			pathsConfig["$(igniteuiSource)"] = projectConfig.project.igniteuiSource;
 			pathsConfig["$(themePath)"] = projectConfig.project.themePath;
 		}
-		const scriptTags = this.getScriptTags();
-		const cssTags = this.getCssTags();
-
-		const config = {
-			"$(cssBlock)": cssTags,
-			"$(description)" : this.description,
-			"$(scriptBlock)": scriptTags,
-			"$(theme)": projectConfig.project.theme
-		};
+		config["$(cssBlock)"] =  this.getCssTags();
+		config["$(scriptBlock)"] = this.getScriptTags();
+		config["$(description)"] = this.description;
+		config["$(theme)"] = projectConfig.project.theme;
 
 		if (this.name) {
 			config["$(name)"] = this.name;

@@ -12,6 +12,7 @@ class HierarchicalGridEditingTemplate extends AngularTemplate {
 		super(__dirname);
 		this.id = "hierarchical-grid-editing";
 		this.name = "Editing Hierarchical Grid";
+		this.widget = "igHierarchicalGrid";
 		this.controlGroup = "Data Grids";
 		this.description = "Editing Hierarchical Grid template for Angular";
 		this.dependencies = ["igHierarchicalGrid"];
@@ -36,22 +37,10 @@ class HierarchicalGridEditingTemplate extends AngularTemplate {
 	}
 
 	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
-		const config = {
-			"$(ClassName)": Util.className(name),
-			"__name__": this.fileName(name),
-			"__path__": this.folderName(name)
-		};
 		this.gridHelper.addFeature("Updating", { enableAddRow: true});
 		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 3);
-
-		config["$(gridFeatures)"] = features;
-		config["$(description)"] = this.description;
-		const pathsConfig = {};
-		// TODO: Refactor to base
-		if (!Util.validateTemplate(path.join(__dirname, "files"), projectPath, config, pathsConfig)) {
-			return Promise.resolve(false);
-		}
-		return Util.processTemplates(path.join(__dirname, "files"), projectPath, config, pathsConfig);
+		const config = { "$(gridFeatures)": features };
+		return super.generateFiles(projectPath, name, { extraConfig : config });
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return this.extraConfigurations;
