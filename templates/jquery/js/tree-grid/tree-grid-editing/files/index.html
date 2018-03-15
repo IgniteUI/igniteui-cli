@@ -26,7 +26,27 @@
 			   ],
 			   childDataKey: "products",
 			   features: [
-				  $(treeGridFeatures)
+			   {
+						name: "Updating",
+						columnSettings: [
+							{
+								columnKey: "progress",
+								editorType: "currency",
+								editorOptions: {
+									buttonType: "spin"
+								}
+							},
+							{
+								columnKey: "start",
+								editorType: "datepicker"
+							},
+							{
+								columnKey: "finish",
+								editorType: "datepicker"
+							}
+						]
+			   },	
+				$(treeGridFeatures)
 			   ]
 		   });
        });

@@ -38,8 +38,8 @@ class TreeGridEditingTemplate extends jQueryTemplate {
 		this.userExtraConfiguration = extraConfigKeys;
 	}
 	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
-		const features = TreeGridFeatureHelper.generateFeatures(["Updating"].concat(
-			this.userExtraConfiguration["features"]));
+		const features = "," + TreeGridFeatureHelper.generateFeatures(
+			this.userExtraConfiguration["features"]);
 		const config = { "$(treeGridFeatures)": features };
 		return super.generateFiles(projectPath, name, { extraConfig : config });
 	}
