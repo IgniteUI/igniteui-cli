@@ -12,6 +12,7 @@ class GridEditingTemplate extends AngularTemplate {
 		super(__dirname);
 		this.id = "grid-editing";
 		this.name = "Grid Editing";
+		this.widget = "igGrid";
 		this.controlGroup = "Data Grids";
 		this.description = "This is a grid editing template for Angular";
 		this.dependencies = ["igGrid"];
@@ -36,21 +37,10 @@ class GridEditingTemplate extends AngularTemplate {
 	}
 
 	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
-		const config = {
-			"$(ClassName)": Util.className(name),
-			"__name__": this.fileName(name),
-			"__path__": this.folderName(name)
-		};
-		const features = this.gridHelper.generateFeatures(["Updating"].concat(this.userExtraConfiguration["features"]), 3);
-
-		config["$(gridFeatures)"] = features;
-		config["$(description)"] = this.description;
-		const pathsConfig = {};
-		// TODO: Refactor to base
-		if (!Util.validateTemplate(path.join(__dirname, "files"), projectPath, config, pathsConfig)) {
-			return Promise.resolve(false);
-		}
-		return Util.processTemplates(path.join(__dirname, "files"), projectPath, config, pathsConfig);
+		this.gridHelper.addFeature("Updating");
+		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 3);
+		const config = { "$(gridFeatures)": features };
+		return super.generateFiles(projectPath, name, { extraConfig : config });
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return this.extraConfigurations;

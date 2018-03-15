@@ -1,4 +1,4 @@
-import * as fs from "fs-extra";
+import * as fs from "fs";
 import * as os from "os";
 import * as path from "path";
 import { Util } from "./Util";
@@ -11,6 +11,9 @@ export class ProjectConfig {
 
 	/** Returns true if there's a CLI config file in the current working directory */
 	public static hasLocalConfig(): boolean {
+		if (os.homedir() === process.cwd()) {
+			return false;
+		}
 		const filePath = path.join(process.cwd(), this.configFile);
 		return fs.existsSync(filePath);
 	}
@@ -41,7 +44,7 @@ export class ProjectConfig {
 	public static setConfig(config: Config, global: boolean = false) {
 		const basePath = global ? os.homedir() : process.cwd();
 		const filePath = path.join(basePath, this.configFile);
-		fs.writeJsonSync(filePath, config, { spaces: 4 });
+		fs.writeFileSync(filePath, JSON.stringify(config, null, 4));
 	}
 
 	/*** Get local configuration only */
