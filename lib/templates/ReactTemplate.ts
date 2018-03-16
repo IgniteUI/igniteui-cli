@@ -28,7 +28,12 @@ export class ReactTemplate implements Template {
 	constructor(private rootPath: string) {}
 
 	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
-		const config = {};
+		let config = {};
+		for (const element of options) {
+			if (element.hasOwnProperty("extraConfig")) {
+				config = element["extraConfig"];
+			}
+		}
 		const pathsConfig = {};
 
 		config["__path__"] =  this.folderName(name); //folder name allowed spaces, any casing
