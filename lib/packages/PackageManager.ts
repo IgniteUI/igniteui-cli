@@ -22,7 +22,7 @@ export class PackageManager {
 		installNow: boolean = false,
 		templateManager: TemplateManager,
 		verbose: boolean = false
-) {
+	) {
 		const config = ProjectConfig.getConfig();
 		const fullComponents = config.project.components.filter(x => {
 			return componentsConfig.full.indexOf(x) !== -1 || componentsConfig.dv.indexOf(x) !== -1;
