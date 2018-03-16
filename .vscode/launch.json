@@ -323,7 +323,8 @@
 			"preLaunchTask": "build",
 			"args": [
 				"config",
-				"get",
+				"set",
+				"bla",
 				"bla",
 				"-g"
 			]

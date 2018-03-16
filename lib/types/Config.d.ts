@@ -41,4 +41,11 @@ declare interface Config {
 	igPackageRegistry: string;
 	/** Skip git initializion and commit of the new project */
 	skipGit: boolean;
+	/** 
+	 * IgniteUI CLI sends analytics information by default. The data is completely
+	 * anonymous, but there are times when you might want to disable this behavior.
+	 * 
+	 * Setting `skipAnalytics` to true will prevent any data from being sent.
+	 */
+	skipAnalytics: boolean;
 }

@@ -11,6 +11,7 @@ import { default as newCommand } from "./commands/new";
 import { default as quickstart } from "./commands/quickstart";
 import { default as start } from "./commands/start";
 import { default as test } from "./commands/test";
+import { GoogleAnalytics } from "./GoogleAnalytic";
 import { PromptSession } from "./PromptSession";
 import {TemplateManager} from "./TemplateManager";
 import { Util } from "./Util";
@@ -58,6 +59,10 @@ export async function run(args = null) {
 	}
 
 	const command = argv._[0];
+	GoogleAnalytics.postToGoogleAnalytic({
+		t: "screenview",
+		cd: command || "wizard"
+	});
 	switch (command) {
 		case "new":
 			await newCommand.execute(argv);
@@ -99,11 +104,6 @@ export async function run(args = null) {
 		default:
 			Util.log("Starting Step by step mode.", "green");
 			Util.log("For available commands, stop this execution and use --help.", "green");
-			Util.postToGoogleAnalytic({
-				t: "screenview",
-				cd: "wizard",
-			});
-	
 			const prompts = new PromptSession(templateManager);
 			prompts.start();
 			break;

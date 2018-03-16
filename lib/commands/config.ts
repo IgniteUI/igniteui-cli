@@ -1,3 +1,4 @@
+import { GoogleAnalytics } from "../GoogleAnalytic";
 import { Util } from "../Util";
 import { ProjectConfig } from "./../ProjectConfig";
 
@@ -55,10 +56,11 @@ const command = {
 	},
 	// tslint:enable:object-literal-sort-keys
 	getHandler(argv) {
-		Util.postToGoogleAnalytic({
-			t: "screenview",
-			cd: "config",
-			dt: "get"
+		GoogleAnalytics.postToGoogleAnalytic({
+			t: "event",
+			ec: "config",
+			ea: "get",
+			el: `property: ${argv.property}, global: ${argv.global}` 
 		});
 
 		if (!argv.global && !ProjectConfig.hasLocalConfig()) {
@@ -73,12 +75,13 @@ const command = {
 		}
 	},
 	setHandler(argv) {
-		Util.postToGoogleAnalytic({
-			t: "screenview",
-			cd: "config",
-			dt: "set"
+		GoogleAnalytics.postToGoogleAnalytic({
+			t: "event",
+			ec: "config",
+			ea: "set",
+			el: `property: ${argv.property}, value: ${argv.value}, global: ${argv.global}`
 		});
-		
+
 		let config;
 		if (argv.global) {
 			config = ProjectConfig.globalConfig();
@@ -101,12 +104,13 @@ const command = {
 		Util.log(`Property "${argv.property}" set.`);
 	},
 	addHandler(argv) {
-		Util.postToGoogleAnalytic({
-			t: "screenview",
-			cd: "config",
-			dt: "get"
+		GoogleAnalytics.postToGoogleAnalytic({
+			t: "event",
+			ec: "config",
+			ea: "add",
+			el: `property: ${argv.property}, value: ${argv.value}, global: ${argv.global}`
 		});
-		
+
 		let config;
 
 		if (argv.global) {

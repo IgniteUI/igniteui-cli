@@ -1,5 +1,6 @@
 import * as fs from "fs-extra";
 import * as path from "path";
+import { GoogleAnalytics } from "../GoogleAnalytic";
 import { ProjectConfig } from "../ProjectConfig";
 import { Util } from "../Util";
 import { PromptSession } from "./../PromptSession";
@@ -45,10 +46,13 @@ command = {
 	},
 	template: null,
 	async execute(argv) {
-		Util.postToGoogleAnalytic({
-				t: "screenview",
-				cd: "new",
-			});
+		GoogleAnalytics.postToGoogleAnalytic({
+			t: "event",
+			ec: "new",
+			ea: "params",
+			el: `name: ${argv.name}; framework: ${argv.framework}; type: ${argv.type}; theme: ${argv.theme}; skip-git: ${argv.skipGit}`
+		});
+
 		if (ProjectConfig.hasLocalConfig()) {
 			return Util.error("There is already an existing project.", "red");
 		}

@@ -1,3 +1,4 @@
+import { GoogleAnalytics } from "../GoogleAnalytic";
 import { ProjectConfig } from "../ProjectConfig";
 import { TemplateManager } from "../TemplateManager";
 import { Util } from "../Util";
@@ -30,11 +31,13 @@ command = {
 	},
 	templateManager: null,
 	execute(argv) {
-		Util.postToGoogleAnalytic({
-			t: "screenview",
-			cd: "list",
+		GoogleAnalytics.postToGoogleAnalytic({
+			t: "event",
+			ec: "list",
+			ea: "params",
+			el: `framework: ${argv.framework}; type: ${argv.type}`
 		});
-
+		
 		let inProject = false;
 		const viewsGroupName = "Views";
 		if (ProjectConfig.hasLocalConfig()) {

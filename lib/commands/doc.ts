@@ -1,4 +1,5 @@
 import * as opn from "opn";
+import { GoogleAnalytics } from "../GoogleAnalytic";
 import { PromptSession } from "../PromptSession";
 import { Util } from "../Util";
 
@@ -21,9 +22,12 @@ doc = {
 		opn(target);
 	},
 	async execute(argv) {
-		Util.postToGoogleAnalytic({
-			t: "screenview",
-			cd: "doc",
+
+		GoogleAnalytics.postToGoogleAnalytic({
+			t: "event",
+			ec: "doc",
+			ea: "params",
+			el: `term: ${argv.term}`
 		});
 
 		if (!argv.term) {
@@ -32,7 +36,7 @@ doc = {
 			await this.execute(argv);
 		} else if (!Util.isAlphanumericExt(argv.term)) {
 			return Util.error(`The search term '${argv.term}' is not valid.` + "\n" +
-"Name should start with a letter and can also contain numbers, dashes and spaces.",
+			"Name should start with a letter and can also contain numbers, dashes and spaces.",
 			"red");
 		} else {
 			Util.log(`Review your search results in the browser`, "green");

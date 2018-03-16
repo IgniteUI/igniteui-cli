@@ -2,6 +2,7 @@ import * as inquirer from "inquirer";
 import * as path from "path";
 import { default as add } from "./commands/add";
 import { default as start } from "./commands/start";
+import { GoogleAnalytics } from "./GoogleAnalytic";
 import { ProjectConfig } from "./ProjectConfig";
 import { TemplateManager } from "./TemplateManager";
 import { Util } from "./Util";
@@ -50,6 +51,13 @@ export class PromptSession {
 				}))["projectName"];
 				nameRes = nameRes.trim();
 
+				GoogleAnalytics.postToGoogleAnalytic({
+					t: "event",
+					ec: "wizard",
+					ea: "projectName",
+					el: `projectName: ${nameRes}` 
+				});
+		
 				if (!Util.isAlphanumericExt(nameRes)) {
 					Util.error(`Name '${nameRes}' is not valid. `
 						+ "Name should start with a letter and can also contain numbers, dashes and spaces.",
@@ -67,6 +75,14 @@ export class PromptSession {
 				choices: this.addSeparators(this.templateManager.getFrameworkNames()),
 				default: "jQuery"
 			});
+
+			GoogleAnalytics.postToGoogleAnalytic({
+				t: "event",
+				ec: "wizard",
+				ea: "framework",
+				el: `framework: ${frameRes["framework"]}` 
+			});
+
 			const framework = this.templateManager.getFrameworkByName(frameRes["framework"]);
 			//app name validation???
 			if (framework.projectLibraries.length > 1) {
@@ -78,6 +94,14 @@ export class PromptSession {
 					choices: this.addSeparators(this.templateManager.getProjectLibraryNames(framework.id))
 				};
 				const proj = await inquirer.prompt(projQuestion);
+
+				GoogleAnalytics.postToGoogleAnalytic({
+					t: "event",
+					ec: "wizard",
+					ea: "project type",
+					el: `project type: ${frameRes["project"]}` 
+				});
+	
 				projLibrary = this.templateManager.getProjectLibraryByName(framework, proj["project"]);
 			} else {
 				projLibrary = this.templateManager.getProjectLibrary(framework.id);
@@ -94,6 +118,14 @@ export class PromptSession {
 					default: "infragistics"
 				};
 				const themeAnswer = await inquirer.prompt(themeQuestion);
+
+				GoogleAnalytics.postToGoogleAnalytic({
+					t: "event",
+					ec: "wizard",
+					ea: "theme",
+					el: `theme: ${themeAnswer["theme"]}` 
+				});
+	
 				theme = themeAnswer["theme"];
 			}
 
@@ -134,10 +166,18 @@ export class PromptSession {
 			choices:  this.addSeparators(actionChoices),
 			default: "Complete & Run"
 		});
+
+		GoogleAnalytics.postToGoogleAnalytic({
+			t: "event",
+			ec: "wizard",
+			ea: "action",
+			el: `action: ${action["action"]}` 
+		});
+
 		let selectedTemplate: Template;
 		switch (action["action"]) {
 			case "Add component":
-				const groups = framework.getComponentGroups();
+			const groups = framework.getComponentGroups();
 				const group = await inquirer.prompt({
 					name: "componentGroup",
 					type: "list",
@@ -146,6 +186,13 @@ export class PromptSession {
 					default: groups.find(x => x === "Data Grids") || groups[0]
 				});
 
+				GoogleAnalytics.postToGoogleAnalytic({
+					t: "event",
+					ec: "wizard",
+					ea: "component group",
+					el: `component group: ${group["componentGroup"]}` 
+				});
+		
 				const componentNames = framework.getComponentNamesByGroup(group["componentGroup"]);
 				const component = await inquirer.prompt({
 						type: "list",
@@ -153,7 +200,15 @@ export class PromptSession {
 						message: "Choose a component:",
 						choices: this.addSeparators(componentNames)
 					});
-				const pickedComponent = framework.getComponentByName(component["component"]);
+
+					GoogleAnalytics.postToGoogleAnalytic({
+						t: "event",
+						ec: "wizard",
+						ea: "component",
+						el: `component: ${component["component"]}` 
+					});
+			
+					const pickedComponent = framework.getComponentByName(component["component"]);
 
 				// runTemplateCollection (item: Template[])
 				//TODO refactor
@@ -169,7 +224,15 @@ export class PromptSession {
 							message: "Choose one:",
 							choices: this.addSeparators(templateNames)
 						});
-					selectedTemplate = templates.find((value, i, obj) => {
+
+						GoogleAnalytics.postToGoogleAnalytic({
+							t: "event",
+							ec: "wizard",
+							ea: "template",
+							el: `template: ${template["template"]}` 
+						});
+				
+						selectedTemplate = templates.find((value, i, obj) => {
 						return value.name === template["template"];
 					});
 				}
@@ -183,10 +246,25 @@ export class PromptSession {
 							default: selectedTemplate.name
 						});
 
+						GoogleAnalytics.postToGoogleAnalytic({
+							t: "event",
+							ec: "wizard",
+							ea: "template name",
+							el: `template name: ${templateName["name"]}` 
+						});
+
 						if (selectedTemplate.hasExtraConfiguration) {
 							const extraPrompt: any[] = this.createQuestions(selectedTemplate.getExtraConfiguration());
 							const extraConfigAnswers = await inquirer.prompt(extraPrompt);
 							const extraConfig = this.parseAnswers(extraConfigAnswers);
+
+							GoogleAnalytics.postToGoogleAnalytic({
+								t: "event",
+								ec: "wizard",
+								ea: "extra config",
+								el: `extra config: ${JSON.stringify(extraConfig)}`
+							});
+	
 							selectedTemplate.setExtraConfiguration(extraConfig);
 						}
 						success = await add.addTemplate(templateName["name"], selectedTemplate);
@@ -203,6 +281,14 @@ export class PromptSession {
 					message: "Choose custom view:",
 					choices: this.addSeparators(customTemplates)
 				});
+
+				GoogleAnalytics.postToGoogleAnalytic({
+					t: "event",
+					ec: "wizard",
+					ea: "custom template",
+					el: `custom template: ${customTemplate["customTemplate"]}` 
+				});
+
 				selectedTemplate = framework.getTemplateByName(customTemplate["customTemplate"]);
 				if (selectedTemplate) {
 					let success = false;
@@ -214,6 +300,13 @@ export class PromptSession {
 							default: selectedTemplate.name
 						});
 
+						GoogleAnalytics.postToGoogleAnalytic({
+							t: "event",
+							ec: "wizard",
+							ea: "custom template name",
+							el: `custom template name: ${templateName["name"]}` 
+						});
+		
 						success = await add.addTemplate(templateName["name"], selectedTemplate);
 					}
 				}

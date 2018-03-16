@@ -230,7 +230,7 @@ class Util {
 		// tslint:enable:no-console
 	}
 
-	private static cliVersion(): string {
+	public static cliVersion(): string {
 		const configuration = require("../package.json");
 		return configuration.version;
 	}
@@ -352,60 +352,6 @@ class Util {
 		if (currentProp in object) {
 			return this.propertyByPath(object[currentProp], pathParts.join("."));
 		}
-	}
-
-	public static postToGoogleAnalytic(parameters: object) {
-		//	TODO: set this during npm install
-		const skipGoogleAnalytic = false;
-		if (skipGoogleAnalytic) {
-			return;
-		}
-		parameters["v"] = 1;
-		parameters["tid"] = "UA-115760770-1";
-		const appVersion = this.cliVersion();
-		parameters["av"] = appVersion;
-		parameters["an"] = "igniteui-cli";
-		const clientId = this.getUUID();
-		parameters["cid"] = clientId;
-		const queryString = Object.keys(parameters).map( key => key + "=" + parameters[key]).join("&");
-		const path = "/collect?" + queryString;
-        var options = { host: "www.google-analytics.com", path: path, method: "POST" }
-		const https = require("https");
-		const req = https.request(options);
-		req.end();
-	}
-
-	static UUIDPath: string = "./config/UUID.json";
-	public static getUUID(): string {
-		const absolutePath = path.join(__dirname, this.UUIDPath);
-		let UUID = ""
-		if (fs.existsSync(absolutePath)) {
-			UUID = require(absolutePath).UUID;
-		} else {
-			UUID = this.generateUUID();
-			fs.writeFile(absolutePath, JSON.stringify({ UUID: UUID }), err => {});
-		}
-		
-		return UUID;
-	}
-
-	public static generateUUID(): string{
-		const crypto = require("crypto");
-		const randomBytes = crypto.randomBytes(16);
-		const byteToHex = [];
-		for (let i = 0; i < 256; ++i) {
-			byteToHex[i] = (i + 0x100).toString(16).substr(1);
-		}
-		
-		let i = 0;
-		return byteToHex[randomBytes[i++]] + byteToHex[randomBytes[i++]] +
-		byteToHex[randomBytes[i++]] + byteToHex[randomBytes[i++]] + '-' +
-		byteToHex[randomBytes[i++]] + byteToHex[randomBytes[i++]] + '-' +
-		byteToHex[randomBytes[i++]] + byteToHex[randomBytes[i++]] + '-' +
-		byteToHex[randomBytes[i++]] + byteToHex[randomBytes[i++]] + '-' +
-		byteToHex[randomBytes[i++]] + byteToHex[randomBytes[i++]] +
-		byteToHex[randomBytes[i++]] + byteToHex[randomBytes[i++]] +
-		byteToHex[randomBytes[i++]] + byteToHex[randomBytes[i++]];
 	}
 }
 

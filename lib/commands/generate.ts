@@ -1,5 +1,6 @@
 import { utimes } from "fs-extra";
 import * as path from "path";
+import { GoogleAnalytics } from "../GoogleAnalytic";
 import { TemplateManager } from "../TemplateManager";
 import { Util } from "../Util";
 import { default as config } from "./config";
@@ -47,10 +48,13 @@ const command = {
 			.demandCommand(1, "Please select command");
 	},
 	async template(argv) {
-		Util.postToGoogleAnalytic({
-			t: "screenview",
-			cd: "generate",
+		GoogleAnalytics.postToGoogleAnalytic({
+			t: "event",
+			ec: "generate",
+			ea: "template",
+			el: `name: ${argv.name}; framework: ${argv.framework}; type: ${argv.type}; skip-config: ${argv.skipConfig}`
 		});
+
 		// trim
 		argv.name = argv.name.trim();
 

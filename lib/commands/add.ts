@@ -1,3 +1,4 @@
+import { GoogleAnalytics } from "../GoogleAnalytic";
 import { ProjectConfig } from "../ProjectConfig";
 import { TemplateManager } from "../TemplateManager";
 import { Util } from "../Util";
@@ -36,11 +37,6 @@ command = {
 		return true;
 	},
 	async execute(argv) {
-		Util.postToGoogleAnalytic({
-			t: "screenview",
-			cd: "add"
-		});
-
 		if (!ProjectConfig.hasLocalConfig()) {
 			Util.error("Add command is supported only on existing project created with igniteui-cli", "red");
 			return;
@@ -65,6 +61,13 @@ command = {
 			await prompts.chooseActionLoop(frameworkLibrary, config.project.theme);
 			return;
 		}
+
+		GoogleAnalytics.postToGoogleAnalytic({
+			t: "event",
+			ec: "add",
+			ea: "params",
+			el: `template: ${argv.template}; name: ${argv.name}`
+		});
 
 		if (!frameworkLibrary.hasTemplate(argv.template)) {
 			Util.error("Template doesn't exist in the current library", "red");

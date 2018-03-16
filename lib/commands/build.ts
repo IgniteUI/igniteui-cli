@@ -17,11 +17,6 @@ command = {
 	builder: {},
 	templateManager: null,
 	async execute(argv?) {
-		Util.postToGoogleAnalytic({
-			t: "screenview",
-			cd: "build",
-		});
-		
 		Util.log("Build started.");
 		PackageManager.ensureIgniteUISource(true, command.templateManager);
 
