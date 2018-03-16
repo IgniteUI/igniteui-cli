@@ -3,10 +3,12 @@ class TreeGridFeatureHelper {
 
 	public static generateFeatures(gridFeatures): string {
 		let result = "";
-		for (let i = 0; i < gridFeatures.length; i++) {
-			result += this.generateFeature(gridFeatures[i]);
-			if ((i + 1) < gridFeatures.length) {
-				result += ",";
+		if (gridFeatures !== undefined) {
+			for (let i = 0; i < gridFeatures.length; i++) {
+				result += this.generateFeature(gridFeatures[i]);
+				if ((i + 1) < gridFeatures.length) {
+					result += ",";
+				}
 			}
 		}
 		return result;

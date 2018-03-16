@@ -106,7 +106,6 @@ export class PromptSession {
 			} else {
 				projLibrary = this.templateManager.getProjectLibrary(framework.id);
 			}
-
 			if (projLibrary.themes.length < 2) {
 				theme = projLibrary.themes[0] || "";
 			} else {
@@ -130,7 +129,6 @@ export class PromptSession {
 			}
 
 			const projTemplate = projLibrary.getProject();
-
 			Util.log("  Generating project structure.");
 			await projTemplate.generateFiles(process.cwd(), projectName, theme);
 

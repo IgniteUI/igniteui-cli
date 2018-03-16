@@ -87,7 +87,7 @@ describe("Add command", () => {
 		spyOn(ProjectConfig, "globalConfig").and.returnValue({});
 
 		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
-			project: { framework: "jquery", projectType: "js", components: [] }
+			project: { framework: "jquery", projectType: "js", components: [], igniteuiSource: "", themePath: "" }
 		}));
 		fs.writeFileSync("ignite-cli-views.js", "[];");
 		await cli.run(["add", "grid", "Test view"]);
@@ -109,7 +109,7 @@ describe("Add command", () => {
 		spyOn(ProjectConfig, "globalConfig").and.returnValue({});
 
 		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
-			project: { framework: "jquery", projectType: "js", components: [] }
+			project: { framework: "jquery", projectType: "js", components: [], igniteuiSource: "", themePath: "" }
 		}));
 		fs.writeFileSync("ignite-cli-views.js", "[];");
 		await cli.run(["add", "grid", "Test view"]);

@@ -12,6 +12,7 @@ class HierarchicalGridCustomTemplate extends ReactTemplate {
 	constructor() {
 		super(__dirname);
 		this.id = "hierarchical-grid-custom";
+		this.widget = "igHierarchicalGrid";
 		this.name = "Custom Hierarchical Grid";
 		this.description = "Hierarchical Grid custom template for React";
 		this.projectType = "es6";
@@ -35,23 +36,9 @@ class HierarchicalGridCustomTemplate extends ReactTemplate {
 	}
 
 	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
-		const config = {};
-		const pathsConfig = {};
 		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 5);
-
-		config["__path__"] =  this.folderName(name); //folder name allowed spaces, any casing
-		config["$(ClassName)"] = Util.className(name); //first letter capital, no spaces,
-		config["$(widget)"] = "igHierarchicalGrid";
-		config["$(Control)"] = Util.className("igHierarchicalGrid");
-		config["$(igniteImports)"] = this.getImports();
-		config["$(name)"] = name; // this name should not have restrictions
-		config["$(description)"] = this.description;
-		config["$(gridfeatures)"] = features;
-		// TODO: Refactor to base
-		if (!Util.validateTemplate(path.join(__dirname, "files"), projectPath, config, pathsConfig)) {
-			return Promise.resolve(false);
-		}
-		return Util.processTemplates(path.join(__dirname, "files"), projectPath, config, pathsConfig);
+		const config = { "$(gridfeatures)": features };
+		return super.generateFiles(projectPath, name, { extraConfig : config });
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return this.extraConfigurations;

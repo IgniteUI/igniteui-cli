@@ -23,11 +23,16 @@ export class AngularTemplate implements Template {
 	constructor(private rootPath: string) {
 	}
 	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
-		const config = {
-			"$(ClassName)": Util.className(name),
-			"__name__": this.fileName(name), // TODO: optionally pass as a different variable than name.
-			"__path__": this.folderName(name)
-		};
+		let config = {};
+		for (const element of options) {
+			if (element.hasOwnProperty("extraConfig")) {
+				config = element["extraConfig"];
+			}
+		}
+		config["$(ClassName)"] = Util.className(name);
+		config["__name__"] = this.fileName(name);
+		config["__path__"] = this.folderName(name);
+
 		if (this.widget) {
 			config["$(widget)"] = this.widget;
 		}
