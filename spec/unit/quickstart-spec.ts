@@ -2,7 +2,7 @@
 import * as liteServer from "lite-server";
 import * as path from "path";
 import shell = require("shelljs");
-import quickstart, { default as quickstartCmd } from "../../lib/commands/quickstart";
+import { default as quickstartCmd } from "../../lib/commands/quickstart";
 import { Util } from "../../lib/Util";
 
 describe("Unit - Quickstart command", () => {

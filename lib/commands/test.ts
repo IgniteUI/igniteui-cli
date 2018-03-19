@@ -1,12 +1,23 @@
+import { ProjectConfig } from "../ProjectConfig";
 import { Util } from "../Util";
 
 const command = {
 	// tslint:disable:object-literal-sort-keys
 	command: "test",
-	desc: "tests the project",
-	builder: {},
+	desc: "executes project tests",
+	builder: {
+		e2e: {
+			describe: "Executes end-to-end tests",
+			type: "boolean"
+		}
+	},
 	async execute(argv) {
-		Util.log("test!");
+		const projConfig = ProjectConfig.getConfig().project;
+		if (argv.e2e && projConfig.framework === "angular" && projConfig.projectType === "igx-ts") {
+			Util.exec("npm run e2e", { stdio: "inherit" });
+		} else {
+			Util.exec("npm test", { stdio: "inherit" });
+		}
 	}
 };
 export default command;

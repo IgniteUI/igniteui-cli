@@ -2,7 +2,7 @@ import { spawnSync } from "child_process";
 describe("Help command", () => {
 
 	it("should list all available commands", async done => {
-		const child = spawnSync("node", ["bin/execute.js", "--help" ], {
+		const child = spawnSync("node", ["bin/execute.js", "--help"], {
 			encoding: "utf-8"
 		});
 		const originalHelpText: string = `Commands:
@@ -14,7 +14,7 @@ describe("Help command", () => {
 		generate               generates custom template                  [aliases: g]
 		config                 gets, sets or adds a configuration property
 		doc [term]             opens the Infragistics search for the given term
-		test                   tests the project
+		test                   executes project tests
 		list				   list all templates                           [aliases: l]
 	  Options:
 		--version, -v  Show current Ignite UI CLI version                    [boolean]
@@ -28,7 +28,7 @@ describe("Help command", () => {
 	});
 
 	it("should show help for individual commands", async done => {
-		const child = spawnSync("node", ["bin/execute.js", "new", "--help" ], {
+		const child = spawnSync("node", ["bin/execute.js", "new", "--help"], {
 			encoding: "utf-8"
 		});
 		const originalNewHelpText: string = `Options:
@@ -48,7 +48,7 @@ describe("Help command", () => {
 	});
 
 	it("should show help config sub-commands", async done => {
-		const child = spawnSync("node", ["bin/execute.js", "config", "--help" ], {
+		const child = spawnSync("node", ["bin/execute.js", "config", "--help"], {
 			encoding: "utf-8"
 		});
 		const originalNewHelpText: string = `Commands:
@@ -68,7 +68,7 @@ describe("Help command", () => {
 		done();
 	});
 	it("should show help generate sub-commands", async done => {
-		const child = spawnSync("node", ["bin/execute.js", "generate", "--help" ], {
+		const child = spawnSync("node", ["bin/execute.js", "generate", "--help"], {
 			encoding: "utf-8"
 		});
 		const originalNewHelpText: string = `Commands:
@@ -85,7 +85,7 @@ describe("Help command", () => {
 		done();
 	});
 	it("should show help generate template sub-commands", async done => {
-		const child = spawnSync("node", ["bin/execute.js", "g", "t", "-h" ], {
+		const child = spawnSync("node", ["bin/execute.js", "g", "t", "-h"], {
 			encoding: "utf-8"
 		});
 		const originalNewHelpText: string = `
@@ -107,7 +107,7 @@ describe("Help command", () => {
 		done();
 	});
 	it("should show help for list command", async done => {
-		const child = spawnSync("node", ["bin/execute.js", "list", "-h" ], {
+		const child = spawnSync("node", ["bin/execute.js", "list", "-h"], {
 			encoding: "utf-8"
 		});
 		const originalNewHelpText: string = `
