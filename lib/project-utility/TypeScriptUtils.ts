@@ -96,21 +96,30 @@ export class TypeScriptUtils {
 
 	/**
 	 * Generate relative path from target file to another
-	 * // TODO: Maybe move to Util?
+	 * Adds "./" to avoid node module resolution conflicts
 	 * @param targetPath Target file (root path)
 	 * @param filePath File to generate relative path to
 	 * @param posix Require path in posix style (/-separated)
 	 * @param removeExt Strip file extension
 	 */
-	public static relativePath(targetPath: string, filePath: string, posix: boolean, removeExt: boolean): string {
-		let relativePath: string = path.relative(path.dirname(targetPath), filePath);
+	public static relativePath(targetPath: string, filePath: string, posix: boolean, removeExt = true): string {
+		if (!targetPath.endsWith(path.win32.sep) && !targetPath.endsWith(path.posix.sep)) {
+			// targetPath += "dummy";
+			// path.relative splits by fragments, must be dirname w/ trailing to work both down and up
+			targetPath = path.dirname(targetPath) + path.sep;
+		}
+
+		let relativePath: string = path.relative(targetPath, filePath);
 		if (posix) {
 			relativePath = path.posix.join(...relativePath.split(path.sep));
+			relativePath = relativePath.startsWith(".") ? relativePath : "./" + relativePath;
+		} else {
+			relativePath = relativePath.startsWith(".") ? relativePath : ".\\" + relativePath;
 		}
 		if (removeExt) {
 			relativePath = relativePath.replace(path.extname(relativePath), "");
 		}
-		return "./" + relativePath;
+		return relativePath;
 	}
 
 	/**
@@ -119,7 +128,7 @@ export class TypeScriptUtils {
 	 */
 	public static getFileSource(filePath: string): ts.SourceFile {
 		let targetFile = fs.readFileSync(filePath).toString();
-		targetFile = targetFile.replace(/\r\n\r\n/g, `\r\n${this.newLinePlaceHolder}\r\n`);
+		targetFile = targetFile.replace(/(\r?\n)(\r?\n)/g, `$1${this.newLinePlaceHolder}$2`);
 		const targetSource = ts.createSourceFile(filePath, targetFile, ts.ScriptTarget.Latest, true);
 		return targetSource;
 	}
@@ -134,8 +143,8 @@ export class TypeScriptUtils {
 		const printer: ts.Printer = ts.createPrinter();
 		let text = printer.printFile(source);
 		text = text.replace(
-			new RegExp(Util.escapeRegExp(`\r\n${this.newLinePlaceHolder}\r\n`), "g"),
-			`\r\n\r\n`
+			new RegExp(`(\r?\n)${Util.escapeRegExp(this.newLinePlaceHolder)}(\r?\n)`, "g"),
+			`$1$2`
 		);
 		fs.writeFileSync(filePath, text);
 	}
