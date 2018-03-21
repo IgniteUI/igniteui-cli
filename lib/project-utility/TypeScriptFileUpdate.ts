@@ -375,18 +375,10 @@ export class TypeScriptFileUpdate {
 
 	//#endregion ts.TransformerFactory
 
-	/** Convert a string or string array union to array. Splits strings as comma delimited */
-	private asArray(value: string | string[]): string[] {
-		if (!value) {
-			return [];
-		}
-		return typeof value === "string" ? value.split(/\s*,\s*/) : value;
-	}
-
 	//#region Formatting
 
 	/** Format a TS source file, very TBD */
-	private formatFile(filePath: string) {
+	protected formatFile(filePath: string) {
 		// formatting via LanguageService https://github.com/Microsoft/TypeScript/wiki/Using-the-Compiler-API
 		// https://github.com/Microsoft/TypeScript/issues/1651
 
@@ -456,5 +448,14 @@ export class TypeScriptFileUpdate {
 		return servicesHost;
 	}
 
-	//#endregion
+	//#endregion Formatting
+
+	/** Convert a string or string array union to array. Splits strings as comma delimited */
+	private asArray(value: string | string[]): string[] {
+		if (!value) {
+			return [];
+		}
+		return typeof value === "string" ? value.split(/\s*,\s*/) : value;
+	}
+
 }
