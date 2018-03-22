@@ -25,7 +25,7 @@
     "build-pack": "node ./node_modules/typescript/lib/tsc.js -p tsconfig-pack.json && npm run config-schema",
     "pretest": "npm run lint && npm run build",
     "test": "nyc npm run jasmine",
-    "jasmine": "jasmine spec/**/*.js",
+    "jasmine": "node spec/jasmine-runner.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "lint": "tslint --project tsconfig.json",
     "config-schema": "typescript-json-schema lib/types/Config.d.ts Config -o lib/config/Config.schema.json"

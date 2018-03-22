@@ -138,11 +138,10 @@
 			"type": "node",
 			"request": "launch",
 			"name": "Launch Test",
-			"program": "${workspaceFolder}/node_modules/jasmine/bin/jasmine.js",
+			"program": "${workspaceFolder}/spec/jasmine-runner.js",
 			"preLaunchTask": "build",
-			"args": [
-				"spec/**/*.js"
-			]
+			"outFiles": [ "${workspaceRoot}/lib/**/*.js",
+				"${workspaceRoot}/spec/**/*.js" ]
 		},
 		{
 			"type": "node",
