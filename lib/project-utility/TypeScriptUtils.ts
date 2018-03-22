@@ -104,21 +104,25 @@ export class TypeScriptUtils {
 	 */
 	public static relativePath(targetPath: string, filePath: string, posix: boolean, removeExt = true): string {
 		if (!targetPath.endsWith(path.win32.sep) && !targetPath.endsWith(path.posix.sep)) {
-			// targetPath += "dummy";
 			// path.relative splits by fragments, must be dirname w/ trailing to work both down and up
-			targetPath = path.dirname(targetPath) + path.sep;
+			targetPath = path.win32.dirname(targetPath) + path.sep;
 		}
 
-		let relativePath: string = path.relative(targetPath, filePath);
+		// use win32 api as it handles both formats
+		let relativePath: string = path.win32.relative(targetPath, filePath);
+
+		if (removeExt) {
+			relativePath = relativePath.replace(path.win32.extname(relativePath), "");
+		}
+
 		if (posix) {
-			relativePath = path.posix.join(...relativePath.split(path.sep));
+			relativePath = path.posix.join(...relativePath.split(path.win32.sep));
 			relativePath = relativePath.startsWith(".") ? relativePath : "./" + relativePath;
 		} else {
+			relativePath = path.win32.join(...relativePath.split(path.win32.sep));
 			relativePath = relativePath.startsWith(".") ? relativePath : ".\\" + relativePath;
 		}
-		if (removeExt) {
-			relativePath = relativePath.replace(path.extname(relativePath), "");
-		}
+
 		return relativePath;
 	}
 
