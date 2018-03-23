@@ -2,6 +2,7 @@ import * as fs from "fs";
 import * as ts from "typescript";
 import { TypeScriptFileUpdate } from "../../../lib/project-utility/TypeScriptFileUpdate";
 import { TypeScriptUtils } from "../../../lib/project-utility/TypeScriptUtils";
+import { Util } from "../../../lib/Util";
 
 describe("Unit - TypeScriptFileUpdate", () => {
 
@@ -355,6 +356,45 @@ describe("Unit - TypeScriptFileUpdate", () => {
 			done();
 		});
 
+		it("Formats dependency properties", async done => {
+			spyOn(TypeScriptUtils, "getFileSource").and.returnValue(
+				ts.createSourceFile("/test/file", "", ts.ScriptTarget.Latest, true)
+			);
+			const utilFormatSpy = spyOn(Util, "applyConfigTransformation").and.callThrough();
+			spyOn(TestTsFileUpdate.prototype, "requestImport");
+
+			const configVariables = {
+				"$(key)": "Replace",
+				"$(key2)" : "Replace2",
+				"$(key3)" : "Replace3",
+				"__key4__": "replace4",
+				"__key5__": "replace5"
+			};
+			const tsUpdate = new TestTsFileUpdate("/test/file");
+			tsUpdate.addNgModuleMeta({ import: "$(key)", from: "package" }, configVariables);
+			expect(TestTsFileUpdate.prototype.requestImport).toHaveBeenCalledWith(["Replace"], "package");
+			// tslint:disable:object-literal-sort-keys
+			tsUpdate.addNgModuleMeta({
+				import: "$(key)Module",
+				declare: ["$(key2)Component", "$(key3)Component"],
+				from: "__key4__"
+			}, configVariables);
+			expect(TestTsFileUpdate.prototype.requestImport).toHaveBeenCalledWith(
+				["ReplaceModule", "Replace2Component", "Replace3Component"], "replace4"
+			);
+			tsUpdate.addNgModuleMeta({
+				import: [ "$(key)Module", "$(key2)Module"],
+				declare: "$(key3)Component",
+				provide: [ "$(key)Service" ],
+				from: "./src/__key4__/__key5__.service"
+			}, configVariables);
+			expect(TestTsFileUpdate.prototype.requestImport).toHaveBeenCalledWith(
+				["ReplaceModule", "Replace2Module", "Replace3Component", "ReplaceService"],
+				"./src/replace4/replace5.service"
+			);
+			// tslint:enable:object-literal-sort-keys
+			done();
+		});
 	});
 
 	it("Formats on finalize, preserves empty lines", async done => {

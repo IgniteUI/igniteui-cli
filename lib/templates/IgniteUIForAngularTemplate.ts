@@ -1,6 +1,7 @@
 import * as fs from "fs-extra";
 import * as path from "path";
 import { TypeScriptFileUpdate } from "../project-utility/TypeScriptFileUpdate";
+import { TypeScriptUtils as TsUtils } from "../project-utility/TypeScriptUtils";
 import { ProjectConfig } from "../ProjectConfig";
 import { Util } from "../Util";
 import { AngularTemplate } from "./AngularTemplate";
@@ -45,14 +46,19 @@ export class IgniteUIForAngularTemplate extends AngularTemplate {
 
 		//3) add an import of the component class from its file location.
 		//4) populate the declarations portion of the @NgModule with the component class name.
-		const mainModule = new TsUpdate(path.join(projectPath, "src/app/app.module.ts"));
+		const mainModulePath = path.join(projectPath, "src/app/app.module.ts");
+		const mainModule = new TsUpdate(mainModulePath);
 		mainModule.addDeclaration(
 			path.join(projectPath, `src/app/${this.folderName(name)}/${this.fileName(name)}.component.ts`)
 		);
 
 		// import IgxModules and other dependencies
 		for (const dep of this.dependencies) {
-			mainModule.addNgModuleMeta(dep);
+			if (dep.from && dep.from.startsWith(".")) {
+				// relative file dependency
+				dep.from = TsUtils.relativePath(mainModulePath, path.join(projectPath, dep.from), true, true);
+			}
+			mainModule.addNgModuleMeta(dep, this.getBaseVariables(name));
 		}
 		mainModule.finalize();
 

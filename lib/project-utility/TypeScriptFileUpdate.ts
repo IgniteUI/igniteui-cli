@@ -129,17 +129,17 @@ export class TypeScriptFileUpdate {
 	/**
 	 * Add a metadata update to the file's `NgModule`. Will also import identifiers.
 	 */
-	public addNgModuleMeta(dep: TemplateDependency) {
+	public addNgModuleMeta(dep: TemplateDependency, variables?: { [key: string]: string }) {
 		const copy = {
-			declare: this.asArray(dep.declare),
-			import: this.asArray(dep.import),
-			provide: this.asArray(dep.provide)
+			declare: this.asArray(dep.declare, variables),
+			import: this.asArray(dep.import, variables),
+			provide: this.asArray(dep.provide, variables)
 		};
 
 		if (dep.from) {
 			// request import
 			const identifiers = [...copy.import, ...copy.declare, ...copy.provide];
-			this.requestImport(identifiers, dep.from);
+			this.requestImport(identifiers, Util.applyConfigTransformation(dep.from, variables));
 		}
 		const imports = copy.import
 			.map(x => ({ name: x, root: dep.root }))
@@ -451,11 +451,13 @@ export class TypeScriptFileUpdate {
 	//#endregion Formatting
 
 	/** Convert a string or string array union to array. Splits strings as comma delimited */
-	private asArray(value: string | string[]): string[] {
-		if (!value) {
-			return [];
+	private asArray(value: string | string[], variables: { [key: string]: string }): string[] {
+		let result: string[] = [];
+		if (value) {
+			result = typeof value === "string" ? value.split(/\s*,\s*/) : value;
+			result = result.map(x => Util.applyConfigTransformation(x, variables));
 		}
-		return typeof value === "string" ? value.split(/\s*,\s*/) : value;
+		return result;
 	}
 
 }

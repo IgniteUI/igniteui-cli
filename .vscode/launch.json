@@ -45,7 +45,9 @@
 			"cwd": "${workspaceRoot}/output",
 			"program": "${workspaceRoot}/bin/execute.js",
 			"console": "externalTerminal",
-			"preLaunchTask": "build"
+			"preLaunchTask": "build",
+			"outFiles": [ "${workspaceRoot}/lib/**/*.js",
+				"${workspaceRoot}/spec/**/*.js" ]
 		},
 		{
 			"type": "node",

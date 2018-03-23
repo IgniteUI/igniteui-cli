@@ -30,19 +30,8 @@ export class AngularTemplate implements Template {
 				config = element["extraConfig"];
 			}
 		}
-		config["$(ClassName)"] = Util.className(name);
-		config["__name__"] = this.fileName(name);
-		config["__path__"] = this.folderName(name);
+		Object.assign(config, this.getBaseVariables(name));
 
-		if (this.widget) {
-			config["$(widget)"] = this.widget;
-		}
-		if (this.name) {
-			config["$(name)"] = this.name;
-			config["$(filePrefix)"] = this.fileName(name);
-			config["$(nameMerged)"] = this.name.replace(/ /g, ""); // this is needed for editors
-			config["$(description)"] = this.description;
-		}
 		const pathsConfig = {};
 		if (!Util.validateTemplate(path.join(this.rootPath, "files"), projectPath, config, pathsConfig)) {
 			return Promise.resolve(false);
@@ -84,6 +73,24 @@ export class AngularTemplate implements Template {
 	}
 	public setExtraConfiguration(extraConfigKeys: {}) { }
 
+	protected getBaseVariables(name: string) {
+		const config = {};
+		config["$(name)"] = name;
+		config["$(ClassName)"] = Util.className(name);
+		config["__name__"] = this.fileName(name);
+		config["__path__"] = this.folderName(name);
+		config["$(filePrefix)"] = this.fileName(name);
+		config["$(description)"] = this.description;
+
+		if (this.widget) {
+			config["$(widget)"] = this.widget;
+		}
+		if (this.name) {
+			config["$(nameMerged)"] = this.name.replace(/ /g, "");
+		}
+		return config;
+	}
+
 	protected ensureSourceFiles() {
 		const components = require("../packages/components");
 		const config = ProjectConfig.getConfig();
@@ -95,12 +102,13 @@ export class AngularTemplate implements Template {
 			ProjectConfig.setConfig(config);
 		}
 
-		if (this.dependencies.indexOf("igExcel") !== -1) {
+		if (this.dependencies.indexOf("igExcel") !== -1 && files.indexOf("infragistics.excel-bundled.js") === -1) {
 			files.push("infragistics.excel-bundled.js");
 			ProjectConfig.setConfig(config);
 		}
 
-		if (this.dependencies.indexOf("igGridExcelExporter") !== -1) {
+		if (this.dependencies.indexOf("igGridExcelExporter") !== -1
+			&& files.indexOf("modules/infragistics.gridexcelexporter.js") === -1) {
 			files.push("modules/infragistics.gridexcelexporter.js");
 			ProjectConfig.setConfig(config);
 		}
