@@ -3,6 +3,7 @@ import { TypeScriptFileUpdate } from "../../../lib/project-utility/TypeScriptFil
 import { TypeScriptUtils } from "../../../lib/project-utility/TypeScriptUtils";
 import { ProjectConfig } from "../../../lib/ProjectConfig";
 import { IgniteUIForAngularTemplate } from "../../../lib/templates/IgniteUIForAngularTemplate";
+import { Util } from "../../../lib/Util";
 import { resetSpy } from "../../helpers/utils";
 
 describe("Unit - IgniteUIForAngularTemplate Base", () => {
@@ -95,6 +96,31 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			expect(TypeScriptUtils.relativePath).toHaveBeenCalledWith(mainPath, filePath, true, true);
 			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith({ from: "./relative/result/test" }, {});
 
+			done();
+		});
+		it("[@deprecate] converts deprecated string imports", async done => {
+			spyOn(TestTemplate.prototype, "getBaseVariables").and.returnValue({});
+			spyOn(Util, "warn");
+
+			const templ = new TestTemplate();
+			templ.dependencies = ["igxGridModule"] as any;
+			templ.registerInProject("", "");
+			expect(Util.warn).toHaveBeenCalledWith("String dependencies are deprecated, use object descriptions.", "yellow");
+			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith(
+				{ import: "igxGridModule", from: "igniteui-angular/main" }, {}
+			);
+			resetSpy(helpers.tsUpdateMock.addNgModuleMeta);
+			resetSpy(Util.warn);
+
+			templ.dependencies = ["igxModule1", { import: "igxModule2", from: "igniteui-angular/component"}] as any;
+			templ.registerInProject("", "");
+			expect(Util.warn).toHaveBeenCalledWith("String dependencies are deprecated, use object descriptions.", "yellow");
+			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith(
+				{ import: "igxModule1", from: "igniteui-angular/main" }, {}
+			);
+			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith(
+				{ import: "igxModule2", from: "igniteui-angular/component"}, {}
+			);
 			done();
 		});
 	});
