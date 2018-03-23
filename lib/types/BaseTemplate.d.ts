@@ -7,7 +7,7 @@ declare interface BaseTemplate {
 	/** Description of what the template includes */
 	description: string;
 	/** List of dependencies needed to load components. */
-	dependencies: string[];
+	dependencies: (string | object)[];
 	/** jquery, react, angular */
 	framework: string;
 	/** ts, js, dart, ts-cli, js-cli */

@@ -10,7 +10,10 @@ class IgxTabbarTemplate extends IgniteUIForAngularTemplate {
 		this.projectType = "igx-ts";
 		this.name = "Tabbar";
 		this.description = "Three item tabbar template";
-		this.dependencies = ["IgxTabBarModule", "IgxAvatarModule", "IgxIconModule", "IgxRippleModule"];
+		this.dependencies = [{
+			from: "igniteui-angular/main",
+			import: ["IgxTabBarModule", "IgxAvatarModule", "IgxIconModule", "IgxRippleModule"]
+		}];
 	}
 }
 module.exports = new IgxTabbarTemplate();
