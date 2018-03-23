@@ -281,7 +281,7 @@ export class TypeScriptFileUpdate {
 	<T extends ts.Node>(context: ts.TransformationContext) => (rootNode: T) => {
 		const visitor = (node: ts.Node): ts.Node => {
 			if (node.kind === ts.SyntaxKind.CallExpression &&
-				node.parent.kind === ts.SyntaxKind.Decorator &&
+				node.parent && node.parent.kind === ts.SyntaxKind.Decorator &&
 				(node as ts.CallExpression).expression.getText() === "NgModule") {
 				// found module declaration
 				// expression: NgModule(arguments)

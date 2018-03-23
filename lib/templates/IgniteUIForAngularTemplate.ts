@@ -1,4 +1,3 @@
-import * as fs from "fs-extra";
 import * as path from "path";
 import { TypeScriptFileUpdate } from "../project-utility/TypeScriptFileUpdate";
 import { TypeScriptUtils as TsUtils } from "../project-utility/TypeScriptUtils";
