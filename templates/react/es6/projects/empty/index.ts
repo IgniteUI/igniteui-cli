@@ -26,6 +26,7 @@ class EmptyProject implements ProjectTemplate {
 
 		//TODO update the config with [{key: "keyname", "value"}]
 		const config = {
+			"$(dash-name)" : Util.lowerDashed(name),
 			"$(name)": name,
 			"$(theme)": theme,
 			"__path__": name

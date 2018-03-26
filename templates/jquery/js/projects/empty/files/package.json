@@ -1,15 +1,16 @@
 {
-	"name": "$(name)",
-	"scripts": {
-		"test": "karma start"
-	},
-	"dependencies": {
-		"ignite-ui": "^17.2"
-	},
-	"devDependencies": {
-		"karma": "^1.7.1",
-		"karma-chrome-launcher": "^2.2.0",
-		"karma-qunit": "^1.2.1",
-		"qunitjs": "^2.4.1"
-	}
+  "name": "$(dash-name)",
+  "version": "0.0.1",
+  "scripts": {
+    "test": "karma start"
+  },
+  "dependencies": {
+    "ignite-ui": "^17.2"
+  },
+  "devDependencies": {
+    "karma": "^1.7.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-qunit": "^1.2.1",
+    "qunitjs": "^2.4.1"
+  }
 }

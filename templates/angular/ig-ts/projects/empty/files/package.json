@@ -1,5 +1,5 @@
 {
-	"name": "my-project",
+	"name": "$(dash-name)",
 	"version": "1.0.0",
 	"description": "new project package.json",
 	"scripts": {

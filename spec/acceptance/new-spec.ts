@@ -17,27 +17,44 @@ describe("New command", () => {
 		process.chdir("../");
 	});
 
+	it("Creates jQuery project", async done => {
+
+		await cli.run(["new", "jQuery Proj", "--framework=jquery"]);
+
+		//TODO: read entire structure from ./templates and verify everything is copied over
+		expect(fs.existsSync("./jQuery Proj")).toBeTruthy();
+		const packageText = fs.readFileSync("./jQuery Proj/package.json", "utf-8");
+		expect(JSON.parse(packageText).name).toEqual("jquery-proj");
+		expect(fs.existsSync("./jQuery Proj/.gitignore")).toBeTruthy();
+		this.testFolder = "./jQuery Proj";
+		done();
+	});
+
 	it("Creates React project", async done => {
 		// process.argv = ["new", "reactProj", "--framework=react"];
 
-		await cli.run(["new", "reactProj", "--framework=react"]);
+		await cli.run(["new", "React Proj", "--framework=react"]);
 
 		//TODO: read entire structure from ./templates and verify everything is copied over
-		expect(fs.existsSync("./reactProj")).toBeTruthy();
-		expect(fs.existsSync("./reactProj/.gitignore")).toBeTruthy();
-		this.testFolder = "./reactProj";
+		expect(fs.existsSync("./React Proj")).toBeTruthy();
+		const packageText = fs.readFileSync("./React Proj/package.json", "utf-8");
+		expect(JSON.parse(packageText).name).toEqual("react-proj");
+		expect(fs.existsSync("./React Proj/.gitignore")).toBeTruthy();
+		this.testFolder = "./React Proj";
 		done();
 	});
 
 	it("Creates Angular project", async done => {
 		// process.argv = ["new", "reactProj", "--framework=react"];
 
-		await cli.run(["new", "ngxProj", "--framework=angular", "--type=igx-ts"]);
+		await cli.run(["new", "ngx Proj", "--framework=angular", "--type=igx-ts"]);
 
 		//TODO: read entire structure from ./templates and verify everything is copied over
-		expect(fs.existsSync("./ngxProj")).toBeTruthy();
-		expect(fs.existsSync("./ngxProj/.gitignore")).toBeTruthy();
-		this.testFolder = "./ngxProj";
+		expect(fs.existsSync("./ngx Proj")).toBeTruthy();
+		const packageText = fs.readFileSync("./ngx Proj/package.json", "utf-8");
+		expect(JSON.parse(packageText).name).toEqual("ngx-proj");
+		expect(fs.existsSync("./ngx Proj/.gitignore")).toBeTruthy();
+		this.testFolder = "./ngx Proj";
 		done();
 	});
 

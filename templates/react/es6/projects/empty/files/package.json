@@ -1,5 +1,5 @@
 {
-  "name": "react-router-dynamic-routes-webpack2",
+  "name": "$(dash-name)",
   "version": "1.0.0",
   "private": true,
   "description": "React project for Ignite UI CLI",
