@@ -34,32 +34,11 @@ class EditorsJQueryTemplate extends jQueryTemplate {
 		this.dependencies = ["igEditors"];
 	}
 	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
-		const pathsConfig = {};
-		const outputPath = path.join(projectPath, this.folderName(name));
-
-		const projectConfig = ProjectConfig.getConfig();
-		if (projectConfig != null) {
-			pathsConfig["$(igniteuiSource)"] = projectConfig.project.igniteuiSource;
-			pathsConfig["$(themePath)"] = projectConfig.project.themePath;
-		}
-		const scriptTags = this.getScriptTags();
-		const cssTags = this.getCssTags();
-
-		const config = {
-			"$(cssBlock)": cssTags,
-			"$(description)" : this.description,
-			"$(name)": this.mapItem.name.toString(),
-			"$(scriptBlock)": scriptTags,
-			"$(theme)": projectConfig.project.theme,
+		const extraConfig = {
 			"$(widget)": this.mapItem.widget.toString()
 		};
 
-		// generate scripts/imports based on framework - per template
-		// TODO: Refactor to base
-		if (!Util.validateTemplate(path.join(__dirname, "files"), outputPath, config, pathsConfig)) {
-			return Promise.resolve(false);
-		}
-		return Util.processTemplates(path.join(__dirname, "files"), outputPath, config, pathsConfig);
+		return super.generateFiles(projectPath, name, { extraConfig });
 	}
 }
 
