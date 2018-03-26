@@ -28,6 +28,8 @@
 		"@angular/router": "^5.0.1",  
 		"angular-in-memory-web-api": "~0.3.0",  
 		"core-js": "^2.4.1",
+		"jquery": ">=1.9.1",
+		"jquery-ui": ">=1.10.5",
 		"igniteui-angular-wrappers": "^5.0.7",
 		"ignite-ui": "^17.2",
 		"rxjs": "5.0.1",

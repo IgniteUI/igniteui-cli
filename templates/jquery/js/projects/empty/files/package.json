@@ -1,10 +1,12 @@
 {
   "name": "$(dash-name)",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "scripts": {
     "test": "karma start"
   },
   "dependencies": {
+    "jquery": ">=1.9.1",
+    "jquery-ui": ">=1.10.5",
     "ignite-ui": "^17.2"
   },
   "devDependencies": {
