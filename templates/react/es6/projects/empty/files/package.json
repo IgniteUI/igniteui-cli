@@ -1,6 +1,6 @@
 {
   "name": "$(dash-name)",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "private": true,
   "description": "React project for Ignite UI CLI",
   "author": "PwnJS",
