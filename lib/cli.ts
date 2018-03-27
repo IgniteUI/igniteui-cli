@@ -53,7 +53,7 @@ export async function run(args = null) {
 	.argv;
 
 	if (argv.version) {
-		Util.version();
+		Util.showVersion();
 		return;
 	}
 

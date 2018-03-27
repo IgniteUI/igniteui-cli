@@ -26,7 +26,8 @@ describe("Unit - AngularTemplate Base", () => {
 			"__path__": "my-component",
 			"$(filePrefix)": "my-component",
 			"$(description)": "test description",
-			"$(nameMerged)": "TestTemplate"
+			"$(nameMerged)": "TestTemplate",
+			"$(cliVersion)": process.env.npm_package_version
 		};
 		spyOn(Util, "processTemplates");
 		spyOn(Util, "validateTemplate").and.returnValue(true);
@@ -56,7 +57,8 @@ describe("Unit - AngularTemplate Base", () => {
 			"$(widget)": "widget no-process",
 			// extra
 			"$(extraConfig1)" : "extraConfig1",
-			"$(gridFeatures)" : "{ features }"
+			"$(gridFeatures)" : "{ features }",
+			"$(cliVersion)": process.env.npm_package_version
 		};
 		spyOn(Util, "processTemplates");
 		spyOn(Util, "validateTemplate").and.returnValue(true);

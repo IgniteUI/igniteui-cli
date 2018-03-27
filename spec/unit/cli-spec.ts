@@ -26,9 +26,9 @@ describe("Unit - Cli.ts", () => {
 	});
 	*/
 	it("Should fire properly - Version", async done => {
-		spyOn(Util, "version");
+		spyOn(Util, "showVersion");
 		await run.run("--version");
-		expect(Util.version).toHaveBeenCalled();
+		expect(Util.showVersion).toHaveBeenCalled();
 		done();
 	});
 	it("Should fire properly - quickstart", async done => {

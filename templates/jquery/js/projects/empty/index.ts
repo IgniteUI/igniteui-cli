@@ -36,6 +36,7 @@ class EmptyProject implements ProjectTemplate {
 			themePath = "$(igniteuiSource)/css/themes/" + theme + "/infragistics.theme.css";
 		}
 		const variables = {
+			"$(dash-name)" : Util.lowerDashed(name),
 			"$(description)" : this.description,
 			"$(igniteuiSource)": "./node_modules/ignite-ui",
 			"$(name)" : name,

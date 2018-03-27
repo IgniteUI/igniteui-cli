@@ -39,6 +39,7 @@ export class ReactTemplate implements Template {
 		config["__path__"] =  this.folderName(name); //folder name allowed spaces, any casing
 		config["$(name)"] = name; // this name should not have restrictions
 		config["$(ClassName)"] = Util.className(name); //first letter capital, no spaces and no dashes,
+		config["$(cliVersion)"] = Util.version();
 		if (this.widget) {
 			config["$(widget)"] = this.widget;
 			config["$(Control)"] = Util.className(this.widget);

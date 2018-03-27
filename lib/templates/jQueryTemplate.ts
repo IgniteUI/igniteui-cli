@@ -49,14 +49,12 @@ export class jQueryTemplate implements Template {
 			pathsConfig["$(igniteuiSource)"] = projectConfig.project.igniteuiSource;
 			pathsConfig["$(themePath)"] = projectConfig.project.themePath;
 		}
+		config["$(name)"] = name;
 		config["$(cssBlock)"] =  this.getCssTags();
 		config["$(scriptBlock)"] = this.getScriptTags();
 		config["$(description)"] = this.description;
 		config["$(theme)"] = projectConfig.project.theme;
-
-		if (this.name) {
-			config["$(name)"] = this.name;
-		}
+		config["$(cliVersion)"] = Util.version();
 
 		// generate scripts/imports based on framework - per template
 		if (!Util.validateTemplate(path.join(this.rootPath, "files"), outputPath, config, pathsConfig)) {

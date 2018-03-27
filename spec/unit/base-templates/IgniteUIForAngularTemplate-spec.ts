@@ -36,6 +36,8 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 					return { dv: ["igDvWidget"] };
 				}
 			});
+			// spy on version due to require override
+			spyOn(Util, "version").and.returnValue("1.0.0");
 			spyOn(helpers, "TypeScriptFileUpdate").and.callThrough();
 			// return through function to get new obj ref each time
 			spyOn(ProjectConfig, "getConfig").and.callFake(() => ({ project: { sourceFiles: ["existing"] } }));
