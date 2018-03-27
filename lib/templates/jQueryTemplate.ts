@@ -54,6 +54,7 @@ export class jQueryTemplate implements Template {
 		config["$(scriptBlock)"] = this.getScriptTags();
 		config["$(description)"] = this.description;
 		config["$(theme)"] = projectConfig.project.theme;
+		config["$(cliVersion)"] = Util.version();
 
 		// generate scripts/imports based on framework - per template
 		if (!Util.validateTemplate(path.join(this.rootPath, "files"), outputPath, config, pathsConfig)) {

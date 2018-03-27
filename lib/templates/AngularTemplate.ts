@@ -81,6 +81,7 @@ export class AngularTemplate implements Template {
 		config["__path__"] = this.folderName(name);
 		config["$(filePrefix)"] = this.fileName(name);
 		config["$(description)"] = this.description;
+		config["$(cliVersion)"] = Util.version();
 
 		if (this.widget) {
 			config["$(widget)"] = this.widget;

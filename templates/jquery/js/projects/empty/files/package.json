@@ -10,6 +10,7 @@
     "ignite-ui": "^17.2"
   },
   "devDependencies": {
+    "igniteui-cli": "^$(cliVersion)",
     "karma": "^1.7.1",
     "karma-chrome-launcher": "^2.2.0",
     "karma-qunit": "^1.2.1",
