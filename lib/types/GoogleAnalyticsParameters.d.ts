@@ -1,43 +1,41 @@
 interface GoogleAnalyticsParameters {
-	/** Specifies the application name. This field is required for any hit that has app related data
-	 * (i.e., app version, app ID, or app installer ID).
-	 * For hits sent to web properties, this field is optional. */
+	/** Application name. Should be always 'igniteui-cli'. */
 	an?: string;
 
-	/** Specifies the application version. */
+	/** igniteui-cli application version. */
 	av?: string;
 
-	/** This parameter is optional on web properties, and required on mobile properties for screenview hits,
-	 *  where it is used for the 'Screen Name' of the screenview hit. On web properties this will default to
-	 *  the unique URL of the page by either using the &dl parameter as-is or assembling it from &dh and &dp. */
+	/** Command name, e.g. '$ig doc'. */
 	cd?: string;
 
-	/** Specifies the event action. Must not be empty. */
+	/** Ths could be:
+	 * - 'subbcomand [subcomand name]' for command with subcommands;
+	 * - 'user parameters' for simple commands;
+	 * - the question form the wizard for the wizard command; */
 	ea?: string;
 
-	/** Specifies the event category. Must not be empty. */
+	/** Command in which the event happens. */
 	ec?: string;
 
-	/** Specifies the event label. */
+	/** The user input related to the Event Action ('ea'). */
 	el?: string;
 
-	/** The type of hit. Must be one of 'pageview', 'screenview', 'event', 'transaction', 'item', 'social', 'exception', 'timing'. */
+	/** The type of hit. Must be one of 'screenview' or 'event'.
+	 * Use 'screenview' for each command.
+	 * Use 'event' for each user input.
+	 */
 	t?: string;
 
 	/** The tracking ID / web property ID. The format is UA-XXXX-Y.
 	 *  All collected data is associated by this ID. */
 	tid?: string;
 
-	/** The User Agent of the browser. Note that Google has libraries to identify real user agents.
-	 *  Hand crafting your own agent could break at any time. */
+	/** User Agent. We will porvide here node version as browswer version and the user OS. */
 	ua?: string;
 
-	/** This is intended to be a known identifier for a user provided by the site owner/tracking library user.
-	 *  It must not itself be PII (personally identifiable information).
-	 *  The value should never be persisted in GA cookies or other Analytics provided storage. */
+	/** User unique ID. */
 	uid?: string;
 
-	/** The Protocol version. The current value is '1'.
-	  * This will only change when there are changes made that are not backwards compatible. */
+	/** The Protocol version. The current value is '1'. */
 	v?: number;
 }

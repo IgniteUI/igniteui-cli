@@ -6,7 +6,6 @@ import * as qs from "querystring";
 import { ProjectConfig } from "./ProjectConfig";
 import { Util } from "./Util";
 
-
 class GoogleAnalytics implements GoogleAnalytics {
 	private static userDataFolder: string = process.env.APPDATA || (process.platform == 'darwin' ? process.env.HOME + 'Library/Preferences' : '/var/local');
 	private static appFolder = "igniteui-cli";
