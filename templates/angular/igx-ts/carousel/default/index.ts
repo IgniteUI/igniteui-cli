@@ -10,7 +10,9 @@ class IgxCarouselTemplate extends IgniteUIForAngularTemplate {
 		this.projectType = "igx-ts";
 		this.name = "Carousel";
 		this.description = "Basic IgxCarousel";
-		this.dependencies = ["IgxCarouselModule"];
+		this.dependencies = [
+			{ import: "IgxCarouselModule", from: "igniteui-angular/main" }
+		];
 	}
 }
 module.exports = new IgxCarouselTemplate();

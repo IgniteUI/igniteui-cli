@@ -1,46 +1,81 @@
 import * as fs from "fs";
-import * as path from "path";
 import * as ts from "typescript";
 import { Util } from "../Util";
+import { TypeScriptUtils as TsUtils } from "./TypeScriptUtils";
 
+/**
+ * Apply various updates to typescript files using AST
+ */
 export class TypeScriptFileUpdate {
 	// https://github.com/Microsoft/TypeScript/wiki/Using-the-Compiler-API for general source parsing
 	// http://blog.scottlogic.com/2017/05/02/typescript-compiler-api-revisited.html
 	// for AST transformation API List: https://github.com/Microsoft/TypeScript/pull/13940
 
+	private targetSource: ts.SourceFile;
+	private importsMeta: { lastIndex: number, modulePaths: string[] };
+
+	private requestedImports: Array<{ from: string, imports: string[], edit: boolean }>;
+	private ngMetaEdits: {
+		declarations: string[],
+		imports: Array<{ name: string, root: boolean }>,
+		providers: string[]
+	};
+
+	/** Create updates for a file. Use `add<X>` methods to add transformations and `finalize` to apply and save them. */
+	constructor(private targetPath: string) {
+		this.targetSource = TsUtils.getFileSource(this.targetPath);
+		this.initState();
+	}
+
+	/** Applies accumulated transforms, saves and formats the file */
+	public finalize() {
+		const transforms = [];
+		// walk AST for modifications.
+		if (this.requestedImports.filter(x => x.edit).length) {
+			transforms.push(this.importsTransformer);
+		}
+		if (Object.keys(this.ngMetaEdits).filter(x => this.ngMetaEdits[x].length).length) {
+			transforms.push(this.ngModuleTransformer);
+		}
+		if (transforms.length) {
+			this.targetSource = ts.transform(this.targetSource, transforms).transformed[0];
+		}
+
+		// add new import statements after visitor walks:
+		this.addNewFileImports();
+
+		TsUtils.saveFile(this.targetPath, this.targetSource);
+		this.formatFile(this.targetPath);
+		// reset state in case of further updates
+		this.initState();
+	}
+
 	/**
-	 * Import class and add a new entry to the route variable of the routing module.
-	 * @param targetPath Path of the file to import into
-	 * @param filePath Path to the file to import
-	 * @param linkPath Routing path to add
-	 * @param linkName Name of the route to add
+	 * Create configuration object for a component and add it to the `Routes` array variable.
+	 * Imports the first exported class and finalizes the file update (see `.finalize()`).
+	 * @param filePath Path to the component file to import
+	 * @param linkPath Routing `path` to add
+	 * @param linkText Text of the route to add as `data.text`
+	 * @param routesVariable Name of the array variable holding routes
 	 */
-	public static addRoute(targetPath: string, filePath: string, linkPath: string, linkName: string) {
+	public addRoute(filePath: string, linkPath: string, linkText: string, routesVariable = "routes") {
 		let className: string;
-		const relativePath: string = this.relativePath(targetPath, filePath, true, true);
+		const fileSource = TsUtils.getFileSource(filePath);
+		const relativePath: string = TsUtils.relativePath(this.targetPath, filePath, true, true);
 
-		/* TODO: update: src/app/app-routing.module.ts */
-			// 1) import the component class name,
-		const fileSource = this.getFileSource(filePath);
-		const targetSource = this.getFileSource(targetPath);
-
-		className = this.getClassName(fileSource.getChildren());
-		const importDeclaration = this.createIdentifierImport(className, relativePath);
+		className = TsUtils.getClassName(fileSource.getChildren());
+		this.requestImport([className], relativePath);
 
 		// https://github.com/Microsoft/TypeScript/issues/14419#issuecomment-307256171
 		const transformer: ts.TransformerFactory<ts.Node> = <T extends ts.Node>(context: ts.TransformationContext) =>
 			(rootNode: T) => {
 			function visitor(node: ts.Node): ts.Node {
-				if (node.kind === ts.SyntaxKind.SourceFile) {
-					// visit just the source file main array (second visit)
-					return visitSourceFile(node as ts.SourceFile);
-				} else if (node.kind === ts.SyntaxKind.VariableDeclaration &&
-					(node as ts.VariableDeclaration).name.getText() === "routes" &&
+				if (node.kind === ts.SyntaxKind.VariableDeclaration &&
+					(node as ts.VariableDeclaration).name.getText() === routesVariable &&
 					(node as ts.VariableDeclaration).type.getText() === "Routes") {
 					// found routes variable
 					node = ts.visitEachChild(node, visitRoutesVariable, context);
 				} else {
-					// if something can be at the root dig down?
 					node = ts.visitEachChild(node, visitor, context);
 				}
 				return node;
@@ -48,10 +83,10 @@ export class TypeScriptFileUpdate {
 			function visitRoutesVariable(node: ts.Node): ts.Node {
 				if (node.kind === ts.SyntaxKind.ArrayLiteralExpression) {
 					const array = (node as ts.ArrayLiteralExpression);
-					//elements.concat(ts.visitNodes(array.elements, visitor));
+
 					const routePath = ts.createPropertyAssignment("path", ts.createLiteral(linkPath));
 					const routeComponent = ts.createPropertyAssignment("component", ts.createIdentifier(className));
-					const routeDataInner =  ts.createPropertyAssignment("text", ts.createLiteral(linkName));
+					const routeDataInner =  ts.createPropertyAssignment("text", ts.createLiteral(linkText));
 					const routeData = ts.createPropertyAssignment("data", ts.createObjectLiteral([routeDataInner]));
 					const newObject = ts.createObjectLiteral([routePath, routeComponent, routeData]);
 
@@ -60,164 +95,193 @@ export class TypeScriptFileUpdate {
 						newObject
 					]);
 
-					//elements.push(newObject);
 					return ts.updateArrayLiteral(array, elements);
 				} else {
-					node = ts.visitEachChild(node, visitRoutesVariable, context);
+					return ts.visitEachChild(node, visitRoutesVariable, context);
 				}
-				return node;
-			}
-			function visitSourceFile(node: ts.SourceFile) {
-				let lastIndex = 0;
-				let newStatements: ts.NodeArray<ts.Statement>; // because the visited ts.NodeArray is readonly
-
-				const statements = ts.visitNodes(node.statements, visitor);
-				for (let i = 0; i < statements.length; i++) {
-					if (statements[i].kind === ts.SyntaxKind.ImportDeclaration ||
-						statements[i].kind === ts.SyntaxKind.ImportEqualsDeclaration ||
-						statements[i].kind === ts.SyntaxKind.NamespaceImport) {
-						lastIndex = i + 1;
-					}
-				}
-				/* TODO: Check for existing? */
-				newStatements = ts.createNodeArray([
-					...statements.slice(0, lastIndex),
-					importDeclaration,
-					...statements.slice(lastIndex)
-				]);
-				//statements.push(importDeclaration);
-				//ts.createNode(ts.SyntaxKind.NewLineTrivia),
-				return ts.updateSourceFileNode(node, newStatements);
 			}
 			context.enableSubstitution(ts.SyntaxKind.ClassDeclaration);
 			return ts.visitNode(rootNode, visitor);
 		};
 
-		const result = ts.transform(targetSource, [ transformer ], {
+		this.targetSource = ts.transform(this.targetSource, [ transformer ], {
 			pretty: true // oh well..
 		}).transformed[0] as ts.SourceFile;
-		this.saveFile(targetPath, result);
+
+		this.finalize();
 	}
 
 	/**
 	 * Import class and add it to `NgModule` declarations.
 	 * Creates `declarations` array if one is not present already.
-	 * @param targetPath Path of the file to import into
 	 * @param filePath Path to the file to import
 	 */
-	public static addDeclaration(targetPath: string, filePath: string) {
+	public addDeclaration(filePath: string) {
 		let className: string;
-		const relativePath: string = this.relativePath(targetPath, filePath, true, true);
+		const fileSource = TsUtils.getFileSource(filePath);
+		const relativePath: string = TsUtils.relativePath(this.targetPath, filePath, true, true);
 
-		const fileSource = this.getFileSource(filePath);
-		const targetSource = this.getFileSource(targetPath);
+		className = TsUtils.getClassName(fileSource.getChildren());
 
-		className = this.getClassName(fileSource.getChildren());
-		const importDeclaration = this.createIdentifierImport(className, relativePath);
-
-		// https://github.com/Microsoft/TypeScript/issues/14419#issuecomment-307256171
-		const transformer: ts.TransformerFactory<ts.Node> = <T extends ts.Node>(context: ts.TransformationContext) =>
-			(rootNode: T) => {
-			function visitor(node: ts.Node): ts.Node {
-				if (node.kind === ts.SyntaxKind.SourceFile) {
-					// visit just the source file main array (second visit)
-					return visitSourceFile(node as ts.SourceFile);
-				} else if (node.kind === ts.SyntaxKind.CallExpression &&
-					node.parent.kind === ts.SyntaxKind.Decorator &&
-					(node as ts.CallExpression).expression.getText() === "NgModule") {
-					// found module declaration
-					// expression: NgModule(arguments)
-					node = ts.visitEachChild(node, visitNgModule, context);
-				} else {
-					// if something can be at the root dig down?
-					node = ts.visitEachChild(node, visitor, context);
-				}
-				return node;
-			}
-			function visitNgModule(node: ts.Node): ts.Node {
-				if (node.kind === ts.SyntaxKind.ObjectLiteralExpression) {
-					const obj = (node as ts.ObjectLiteralExpression);
-					const objProperties = ts.visitNodes(obj.properties, visitor);
-					const hasDeclarations = objProperties.find(x => x.name.getText() === "declarations");
-
-					if (hasDeclarations) {
-						// has declaration array, continue:
-						node = ts.visitEachChild(node, visitNgModule, context);
-					} else {
-						// create declaration array, TODO: multiple?
-						const declarations = ts.createArrayLiteral([ ts.createIdentifier(className) ]);
-						const declaration = ts.createPropertyAssignment("declarations", declarations);
-						const properties = [
-							...objProperties,
-							declaration
-						];
-						return ts.updateObjectLiteral(obj, properties);
-					}
-				} else if (node.kind === ts.SyntaxKind.ArrayLiteralExpression &&
-					node.parent.kind === ts.SyntaxKind.PropertyAssignment &&
-					(node.parent as ts.PropertyAssignment).name.getText() === "declarations") {
-						const initializer = (node as ts.ArrayLiteralExpression);
-
-						const elements = ts.createNodeArray([
-							...ts.visitNodes(initializer.elements, visitor),
-							ts.createIdentifier(className)
-						]);
-
-						return ts.updateArrayLiteral(initializer, elements);
-				} else {
-					node = ts.visitEachChild(node, visitNgModule, context);
-				}
-				return node;
-			}
-			function visitSourceFile(node: ts.SourceFile) {
-				let lastIndex = 0;
-				let newStatements: ts.NodeArray<ts.Statement>; // because the visited ts.NodeArray is readonly
-
-				const statements = ts.visitNodes(node.statements, visitor);
-				for (let i = 0; i < statements.length; i++) {
-					if (statements[i].kind === ts.SyntaxKind.ImportDeclaration ||
-						statements[i].kind === ts.SyntaxKind.ImportEqualsDeclaration ||
-						statements[i].kind === ts.SyntaxKind.NamespaceImport) {
-						lastIndex = i + 1;
-					}
-				}
-				/* TODO: Check for existing? */
-				newStatements = ts.createNodeArray([
-					...statements.slice(0, lastIndex),
-					importDeclaration,
-					...statements.slice(lastIndex)
-				]);
-				return ts.updateSourceFileNode(node, newStatements);
-			}
-			return ts.visitNode(rootNode, visitor);
-		};
-
-		const result = ts.transform(targetSource, [ transformer ]).transformed[0] as ts.SourceFile;
-		this.saveFile(targetPath, result);
+		this.addNgModuleMeta({ declare: className, from: relativePath });
 	}
 
 	/**
-	 * Add missing identifiers to import and add it to `NgModule` imports.
-	 * Creates `imports` array if one is not present already.
-	 * @param targetPath Path of the file to import into
-	 * @param identifier Path to the file to import
-	 * @param modulePath Module path of the import
+	 * Add a metadata update to the file's `NgModule`. Will also import identifiers.
 	 */
-	public static addIgxImport(targetPath: string, identifiers: string[], modulePath: string) {
-		const targetSource = this.getFileSource(targetPath);
-		//const importDeclaration = this.createIdentifierImport(identifier, modulePath);
+	public addNgModuleMeta(dep: TemplateDependency, variables?: { [key: string]: string }) {
+		const copy = {
+			declare: this.asArray(dep.declare, variables),
+			import: this.asArray(dep.import, variables),
+			provide: this.asArray(dep.provide, variables)
+		};
+
+		if (dep.from) {
+			// request import
+			const identifiers = [...copy.import, ...copy.declare, ...copy.provide];
+			this.requestImport(identifiers, Util.applyConfigTransformation(dep.from, variables));
+		}
+		const imports = copy.import
+			.map(x => ({ name: x, root: dep.root }))
+			.filter(x => !this.ngMetaEdits.imports.find(i => i.name === x.name));
+		this.ngMetaEdits.imports.push(...imports);
+
+		const declarations = copy.declare
+			.filter(x => !this.ngMetaEdits.declarations.find(d => d === x));
+		this.ngMetaEdits.declarations.push(...declarations);
+
+		const providers = copy.provide
+			.filter(x => !this.ngMetaEdits.providers.find(p => p === x));
+		this.ngMetaEdits.providers.push(...providers);
+	}
+
+	//#region File state
+
+	/** Initializes existing imports info, [re]sets import and `NgModule` edits */
+	protected initState() {
+		this.importsMeta = this.loadImportsMeta();
+		this.requestedImports = [];
+		this.ngMetaEdits = {
+			declarations: [],
+			imports: [],
+			providers: []
+		};
+	}
+
+	/* load some metadata about imports */
+	protected loadImportsMeta() {
+		const meta = { lastIndex: 0, modulePaths: [] };
+
+		for (let i = 0; i < this.targetSource.statements.length; i++) {
+			const statement = this.targetSource.statements[i];
+			switch (statement.kind) {
+				case ts.SyntaxKind.ImportDeclaration:
+					const importStmt = (statement as ts.ImportDeclaration);
+
+					if (importStmt.importClause && importStmt.importClause.namedBindings &&
+						importStmt.importClause.namedBindings.kind !== ts.SyntaxKind.NamespaceImport) {
+						// don't add imports without named (e.g. `import $ from "JQuery"` or `import "./my-module.js";`)
+						// don't add namespace imports (`import * as fs`) as available for editing, maybe in the future
+						meta.modulePaths.push((importStmt.moduleSpecifier as ts.StringLiteral).text);
+					}
+
+				// don't add equals imports (`import url = require("url")`) as available for editing, maybe in the future
+				case ts.SyntaxKind.ImportEqualsDeclaration:
+					meta.lastIndex = i + 1;
+					break;
+				default:
+					break;
+			}
+		}
+
+		return meta;
+	}
+
+	//#endregion File state
+
+	/**
+	 * Add named imports from a path/package.
+	 * @param identifiers Strings to create named import from ("Module" => `import { Module }`)
+	 * @param modulePath Module specifier - can be path to file or npm package, etc
+	 */
+	protected requestImport(identifiers: string[], modulePath: string) {
+		const existing = this.requestedImports.find(x => x.from === modulePath);
+		if (!existing) {
+			// new imports, check if already exists in file
+			this.requestedImports.push({
+				edit: this.importsMeta.modulePaths.indexOf(modulePath) !== -1,
+				from: modulePath, imports: identifiers
+			});
+		} else {
+			const newNamedImports = identifiers.filter(x => existing.imports.indexOf(x) === -1);
+			existing.imports.push(...newNamedImports);
+		}
+	}
+
+	/** Add `import` statements not previously found in the file  */
+	protected addNewFileImports() {
+		const newImports = this.requestedImports.filter(x => !x.edit);
+		if (!newImports.length) {
+			return;
+		}
+
+		const newStatements = ts.createNodeArray([
+			...this.targetSource.statements.slice(0, this.importsMeta.lastIndex),
+			...newImports.map(x => TsUtils.createIdentifierImport(x.imports, x.from)),
+			...this.targetSource.statements.slice(this.importsMeta.lastIndex)
+		]);
+
+		this.targetSource = ts.updateSourceFileNode(this.targetSource, newStatements);
+	}
+
+	//#region ts.TransformerFactory
+
+	/** Transformation to apply edits to existing named import declarations */
+	protected importsTransformer: ts.TransformerFactory<ts.Node> =
+	<T extends ts.Node>(context: ts.TransformationContext) => (rootNode: T) => {
+		const editImports = this.requestedImports.filter(x => x.edit);
 
 		// https://github.com/Microsoft/TypeScript/issues/14419#issuecomment-307256171
-		const transformer: ts.TransformerFactory<ts.Node> = <T extends ts.Node>(context: ts.TransformationContext) =>
-		(rootNode: T) => {
-		function visitor(node: ts.Node): ts.Node {
-			if (node.kind === ts.SyntaxKind.ImportDeclaration
-				&& ((node as ts.ImportDeclaration).moduleSpecifier as ts.StringLiteral).text === modulePath
+		const visitor = (node: ts.Node): ts.Node => {
+			if (node.kind === ts.SyntaxKind.ImportDeclaration &&
+				editImports.find(x => x.from === ((node as ts.ImportDeclaration).moduleSpecifier as ts.StringLiteral).text)
 			) {
 				// visit just the source file main array (second visit)
 				return visitImport(node as ts.ImportDeclaration);
-			} else if (node.kind === ts.SyntaxKind.CallExpression &&
-				node.parent.kind === ts.SyntaxKind.Decorator &&
+			} else {
+				node = ts.visitEachChild(node, visitor, context);
+			}
+			return node;
+		};
+		function visitImport(node: ts.Node) {
+			if (node.kind === ts.SyntaxKind.NamedImports) {
+				const namedImports = node as ts.NamedImports;
+				const moduleSpecifier = (namedImports.parent.parent.moduleSpecifier as ts.StringLiteral).text;
+
+				const existing = ts.visitNodes(namedImports.elements, visitor);
+				const alreadyImported = existing.map(x => x.name.text);
+
+				const editImport = editImports.find(x => x.from === moduleSpecifier);
+				const newImports = editImport.imports.filter(x => alreadyImported.indexOf(x) === -1);
+
+				node = ts.updateNamedImports(namedImports, [
+					...existing,
+					...newImports.map(x => ts.createImportSpecifier(undefined,	ts.createIdentifier(x)))
+				]);
+			} else {
+				node = ts.visitEachChild(node, visitImport, context);
+			}
+			return node;
+		}
+		return ts.visitNode(rootNode, visitor);
+	}
+
+	/** Transformation to apply `this.ngMetaEdits` to `NgModule` metadata properties */
+	protected ngModuleTransformer: ts.TransformerFactory<ts.Node> =
+	<T extends ts.Node>(context: ts.TransformationContext) => (rootNode: T) => {
+		const visitor = (node: ts.Node): ts.Node => {
+			if (node.kind === ts.SyntaxKind.CallExpression &&
+				node.parent && node.parent.kind === ts.SyntaxKind.Decorator &&
 				(node as ts.CallExpression).expression.getText() === "NgModule") {
 				// found module declaration
 				// expression: NgModule(arguments)
@@ -226,37 +290,78 @@ export class TypeScriptFileUpdate {
 				node = ts.visitEachChild(node, visitor, context);
 			}
 			return node;
-		}
+		};
 		const visitNgModule = (node: ts.Node): ts.Node => {
-			if (node.kind === ts.SyntaxKind.ObjectLiteralExpression) {
-				const obj = (node as ts.ObjectLiteralExpression);
-				const objProperties = ts.visitNodes(obj.properties, visitor);
-				const hasDeclarations = objProperties.find(x => x.name.getText() === "imports");
-
-				if (hasDeclarations) {
-					// has declaration array, continue:
-					node = ts.visitEachChild(node, visitNgModule, context);
-				} else {
-					// create declaration array, TODO: multiple?
-					const imports = ts.createArrayLiteral(identifiers.map(x => createIgxIdentifier(x)));
-					const declaration = ts.createPropertyAssignment("imports", imports);
-					const properties = [
-						...objProperties,
-						declaration
-					];
-					return ts.updateObjectLiteral(obj, properties);
+			const properties: string[] = []; // "declarations", "imports", "providers"
+			for (const key in this.ngMetaEdits) {
+				if (this.ngMetaEdits[key].length) {
+					properties.push(key);
 				}
+			}
+			if (node.kind === ts.SyntaxKind.ObjectLiteralExpression) {
+				let obj = (node as ts.ObjectLiteralExpression);
+				//TODO: test node.parent for ts.CallExpression NgModule
+				const missingProperties = properties.filter(x => !obj.properties.find(o => o.name.getText() === x));
+
+				// skip visiting if no declaration/imports/providers arrays exist:
+				if (missingProperties.length !== properties.length) {
+					obj = ts.visitEachChild(node, visitNgModule, context) as ts.ObjectLiteralExpression;
+				}
+
+				if (!missingProperties.length) {
+					return obj;
+				}
+
+				const objProperties = ts.visitNodes(obj.properties, visitor);
+				const newProps = [];
+				for (const prop of missingProperties) {
+					let arrayExpr;
+					switch (prop) {
+						case "imports":
+							const importDeps = this.ngMetaEdits.imports;
+							arrayExpr = ts.createArrayLiteral(
+								importDeps.map(x =>  TsUtils.createIdentifier(x.name, x.root ? "forRoot" : ""))
+							);
+							break;
+						case "declarations":
+						case "providers":
+							arrayExpr = ts.createArrayLiteral(
+								this.ngMetaEdits[prop].map(x =>  ts.createIdentifier(x))
+							);
+							break;
+					}
+					newProps.push(ts.createPropertyAssignment(prop, arrayExpr));
+				}
+
+				return ts.updateObjectLiteral(obj, [
+					...objProperties,
+					...newProps
+				]);
 			} else if (node.kind === ts.SyntaxKind.ArrayLiteralExpression &&
 				node.parent.kind === ts.SyntaxKind.PropertyAssignment &&
-				(node.parent as ts.PropertyAssignment).name.getText() === "imports") {
+				properties.indexOf((node.parent as ts.PropertyAssignment).name.getText()) !== -1) {
 					const initializer = (node as ts.ArrayLiteralExpression);
 					const props = ts.visitNodes(initializer.elements, visitor);
-					const alreadyImported = props.map(x => this.getIdentifierName(x));
+					const alreadyImported = props.map(x => TsUtils.getIdentifierName(x));
+					const prop = properties.find(x => x === (node.parent as ts.PropertyAssignment).name.getText());
+
+					let identifiers = [];
+					switch (prop) {
+						case "imports":
+							identifiers = this.ngMetaEdits.imports
+								.filter(x => alreadyImported.indexOf(x.name) === -1)
+								.map(x => TsUtils.createIdentifier(x.name, x.root ? "forRoot" : ""));
+							break;
+						case "declarations":
+						case "providers":
+							identifiers = this.ngMetaEdits[prop]
+								.filter(x => alreadyImported.indexOf(x) === -1)
+								.map(x => ts.createIdentifier(x));
+							break;
+					}
 					const elements = ts.createNodeArray([
 						...props,
 						...identifiers
-							.filter(x => alreadyImported.indexOf(x) === -1)
-							.map(x => createIgxIdentifier(x))
 					]);
 
 					return ts.updateArrayLiteral(initializer, elements);
@@ -265,204 +370,31 @@ export class TypeScriptFileUpdate {
 			}
 			return node;
 		};
-		function createIgxIdentifier(x: string) {
-			if (x === "IgxGridModule") {
-				return ts.createCall(
-					ts.createPropertyAccess(
-						ts.createIdentifier(x),
-						"forRoot"
-					),
-					/*typeArgs*/undefined,
-					/*argsArgs*/[]
-				);
-			} else {
-				return ts.createIdentifier(x);
-			}
-		}
-		function visitImport(node: ts.Node) {
-			if (node.kind === ts.SyntaxKind.NamedImports) {
-				const namedImports = node as ts.NamedImports;
-				const existing = ts.visitNodes(namedImports.elements, visitor);
-				const alreadyImported = existing.map(x => x.name.text);
-
-				node = ts.updateNamedImports(namedImports, [
-					...existing,
-					...identifiers
-						.filter(x => alreadyImported.indexOf(x) === -1)
-						.map(x => ts.createImportSpecifier(undefined,	ts.createIdentifier(x)))
-				]);
-			} else {
-				node = ts.visitEachChild(node, visitImport, context);
-			}
-			return node;
-		}
 		return ts.visitNode(rootNode, visitor);
-	};
-
-		const result = ts.transform(targetSource, [ transformer ]).transformed[0] as ts.SourceFile;
-		this.saveFile(targetPath, result);
 	}
 
-	/**
-	 * Checks based on https://github.com/Microsoft/TypeScript/wiki/Using-the-Compiler-API#using-the-type-checker
-	 * @param nodes Source nodes to iterate
-	 */
-	public static getClassName(nodes: ts.Node[]): string {
-		for (const node of nodes) {
-			if (node.kind === ts.SyntaxKind.ClassDeclaration && this.isNodeExported(node)) {
-				const identifier = (node as ts.ClassDeclaration).name;
-				return identifier.text;
-			} else if (node.kind === ts.SyntaxKind.ModuleDeclaration ||
-				node.kind === ts.SyntaxKind.SyntaxList) {
-				// selective children check; checking getChildCount() throws
-				const res = this.getClassName(node.getChildren());
-				if (res !== null) {
-					// stop and return
-					return res;
-				}
-			}
-		}
-		return null;
-	}
-
-	/**
-	 * Looks the last import node and inserts the new one after
-	 * https://stackoverflow.com/a/44364508
-	 * @param nodes
-	 * @param importDeclaration
-	 */
-	private static insertImportNode(nodes: ts.Node[], importDeclaration: ts.ImportDeclaration): string {
-		for (const node of nodes) {
-			if (node.kind === ts.SyntaxKind.ImportClause ||
-				node.kind === ts.SyntaxKind.ImportDeclaration ||
-				node.kind === ts.SyntaxKind.ImportEqualsDeclaration) {
-				// ts.visitNode(node, x => x, null, x => ts.createNodeArray(x.concat(importDeclaration)));
-			} else if (node.kind === ts.SyntaxKind.ModuleDeclaration ||
-				node.kind === ts.SyntaxKind.SyntaxList) {
-				// selective children visit; checking getChildCount() throws
-				this.insertImportNode(node.getChildren(), importDeclaration);
-			}
-		}
-		return null;
-	}
-
-	//#region Node manipulation utils
-
-	/**
-	 * Create a node for named import (like `import { ${className} } from "${filePath}"`)
-	 * @param identifierName Name of the identifier (class, variable)
-	 * @param importPath Path to import from
-	 */
-	private static createIdentifierImport(identifierName: string, importPath: string): ts.ImportDeclaration {
-		// started from createImportDeclaration, now we here...
-		const namedImport = ts.createNamedImports([ts.createImportSpecifier(undefined,
-			ts.createIdentifier(identifierName))]);
-		const importClause = ts.createImportClause(undefined, namedImport);
-		const importDeclaration = ts.createImportDeclaration(
-			undefined,
-			undefined,
-			importClause,
-			ts.createLiteral(importPath));
-		return importDeclaration;
-	}
-
-	/** True if this is visible outside this file, false otherwise */
-	private static isNodeExported(node: ts.Node): boolean {
-		return (node.flags & ts.NodeFlags.ExportContext) !== 0 ||
-			(node.parent && node.parent.kind === ts.SyntaxKind.SourceFile);
-	}
-
-	/**
-	 * Returns node identifier name. Either direct `ts.Identifier` equivalent or simple `ts.CallExpression` supported.
-	 * Calls with single property access will return the first identifier name (eg. `returnText.propCall()`)
-	 * @param x Node to extract identifier text from.
-	 */
-	private static getIdentifierName(x: ts.Node): string {
-		if (x.kind === ts.SyntaxKind.CallExpression) {
-			const prop = ((x as ts.CallExpression).expression as ts.PropertyAccessExpression);
-			//pluck identifier from expression.name
-			x = prop.expression;
-		}
-		return (x as ts.Identifier).text;
-	}
-	//#endregion
-
-	//#region Utility functions
-
-	/**
-	 * Generate relative path from target file to another
-	 * // TODO: Maybe move to Util?
-	 * @param targetPath Target file (root path)
-	 * @param filePath File to generate relative path to
-	 * @param posix Require path in posix style (/-separated)
-	 * @param removeExt Strip file extension
-	 */
-	private static relativePath(targetPath: string, filePath: string, posix: boolean, removeExt: boolean): string {
-		let relativePath: string = path.relative(path.dirname(targetPath), filePath);
-		if (posix) {
-			relativePath = path.posix.join(...relativePath.split(path.sep));
-		}
-		if (removeExt) {
-			relativePath = relativePath.replace(path.extname(relativePath), "");
-		}
-		return "./" + relativePath;
-	}
-
-	// tslint:disable-next-line:member-ordering
-	protected static newLinePlaceHolder = "//I keep the new line";
-
-	/**
-	 * Returns an source file, adds new line placeholders as the TS parser won't add `SyntaxKind.NewLineTrivia` to the AST.
-	 * @param filePath Path of file to read
-	 */
-	private static getFileSource(filePath: string): ts.SourceFile {
-		let targetFile = fs.readFileSync(filePath).toString();
-		targetFile = targetFile.replace(/\r\n\r\n/g, `\r\n${this.newLinePlaceHolder}\r\n`);
-		const targetSource = ts.createSourceFile(filePath, targetFile, ts.ScriptTarget.Latest, true);
-		return targetSource;
-	}
-
-	/**
-	 * Prints source, removes new line placeholders and saves the output in a target file
-	 * @param filePath File path
-	 * @param source Source AST to print
-	 * @returns Returns the final written source
-	 */
-	private static saveFile(filePath: string, source: ts.SourceFile) {
-		// https://github.com/Microsoft/TypeScript/issues/10786#issuecomment-288987738
-		const printer: ts.Printer = ts.createPrinter();
-		let text = printer.printFile(source);
-		text = text.replace(
-			new RegExp(Util.escapeRegExp(`\r\n${this.newLinePlaceHolder}\r\n`), "g"),
-			`\r\n\r\n`
-		);
-		fs.writeFileSync(filePath, text);
-		text = this.formatFile(filePath, text);
-		fs.writeFileSync(filePath, text);
-	}
-
-	//#endregion
+	//#endregion ts.TransformerFactory
 
 	//#region Formatting
 
 	/** Format a TS source file, very TBD */
-	private static formatFile(filePath: string, text: string): string {
+	protected formatFile(filePath: string) {
 		// formatting via LanguageService https://github.com/Microsoft/TypeScript/wiki/Using-the-Compiler-API
 		// https://github.com/Microsoft/TypeScript/issues/1651
 
+		const text = fs.readFileSync(filePath).toString();
 		// create the language service files
 		const services = ts.createLanguageService(this.getLanguageHost(filePath), ts.createDocumentRegistry());
 
 		const textChanges = services.getFormattingEditsForDocument(filePath, this.getFormattingOptions());
-
-		return this.applyChanges(text, textChanges);
+		fs.writeFileSync(filePath, this.applyChanges(text, textChanges));
 	}
 
 	/**
 	 * Apply formatting changes (position based) in reverse
 	 * from https://github.com/Microsoft/TypeScript/issues/1651#issuecomment-69877863
 	 */
-	private static applyChanges(orig: string, changes: ts.TextChange[]): string {
+	private applyChanges(orig: string, changes: ts.TextChange[]): string {
 		let result = orig;
 		for (let i = changes.length - 1; i >= 0; i--) {
 			const change = changes[i];
@@ -474,7 +406,7 @@ export class TypeScriptFileUpdate {
 	}
 
 	/** Return source file formatting options */
-	private static getFormattingOptions(): ts.FormatCodeSettings {
+	private getFormattingOptions(): ts.FormatCodeSettings {
 		const formatOptions: ts.FormatCodeSettings  = {
 			indentSize: 4,
 			tabSize: 4,
@@ -493,7 +425,7 @@ export class TypeScriptFileUpdate {
 	}
 
 	/** Get language service host, sloppily */
-	private static getLanguageHost(filePath: string): ts.LanguageServiceHost {
+	private getLanguageHost(filePath: string): ts.LanguageServiceHost {
 		const files = {};
 		files[filePath] = { version: 0 };
 		// create the language service host to allow the LS to communicate with the host
@@ -516,5 +448,16 @@ export class TypeScriptFileUpdate {
 		return servicesHost;
 	}
 
-	//#endregion
+	//#endregion Formatting
+
+	/** Convert a string or string array union to array. Splits strings as comma delimited */
+	private asArray(value: string | string[], variables: { [key: string]: string }): string[] {
+		let result: string[] = [];
+		if (value) {
+			result = typeof value === "string" ? value.split(/\s*,\s*/) : value;
+			result = result.map(x => Util.applyConfigTransformation(x, variables));
+		}
+		return result;
+	}
+
 }
