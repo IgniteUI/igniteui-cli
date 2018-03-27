@@ -58,9 +58,9 @@ const command = {
 	getHandler(argv) {
 		GoogleAnalytics.postToGoogleAnalytic({
 			t: "event",
-			ec: "config",
-			ea: "get",
-			el: `property: ${argv.property}, global: ${argv.global}` 
+			ec: "$ig config",
+			ea: "subcommand: get",
+			el: `property to get: ${argv.property}, is global: ${argv.global}` 
 		});
 
 		if (!argv.global && !ProjectConfig.hasLocalConfig()) {
@@ -77,9 +77,9 @@ const command = {
 	setHandler(argv) {
 		GoogleAnalytics.postToGoogleAnalytic({
 			t: "event",
-			ec: "config",
-			ea: "set",
-			el: `property: ${argv.property}, value: ${argv.value}, global: ${argv.global}`
+			ec: "$ig config",
+			ea: "subcommand: set",
+			el: `property to set: ${argv.property}, value to set: ${argv.value}, is global: ${argv.global}`
 		});
 
 		let config;
@@ -106,9 +106,9 @@ const command = {
 	addHandler(argv) {
 		GoogleAnalytics.postToGoogleAnalytic({
 			t: "event",
-			ec: "config",
-			ea: "add",
-			el: `property: ${argv.property}, value: ${argv.value}, global: ${argv.global}`
+			ec: "$ig config",
+			ea: "subcommand: add",
+			el: `property to add: ${argv.property}, value to add: ${argv.value}, is global: ${argv.global}`
 		});
 
 		let config;

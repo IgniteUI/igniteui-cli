@@ -1,5 +1,6 @@
 import * as fs from "fs-extra";
 import * as path from "path";
+import { GoogleAnalytics } from "../GoogleAnalytic";
 import { TemplateManager } from "../TemplateManager";
 import { Util } from "../Util";
 import { PackageManager } from "./../packages/PackageManager";
@@ -17,6 +18,14 @@ command = {
 	builder: {},
 	templateManager: null,
 	async execute(argv?) {
+
+		GoogleAnalytics.postToGoogleAnalytic({
+			t: "event",
+			ec: "$ig build",
+			ea: "user parameters",
+			el: "no user parameters"
+		});
+
 		Util.log("Build started.");
 		PackageManager.ensureIgniteUISource(true, command.templateManager);
 

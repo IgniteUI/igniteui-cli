@@ -64,9 +64,9 @@ command = {
 
 		GoogleAnalytics.postToGoogleAnalytic({
 			t: "event",
-			ec: "add",
-			ea: "params",
-			el: `template: ${argv.template}; name: ${argv.name}`
+			ec: "$ig add",
+			ea: "user parameters",
+			el: `template id: ${argv.template}; file name: ${argv.name}`
 		});
 
 		if (!frameworkLibrary.hasTemplate(argv.template)) {

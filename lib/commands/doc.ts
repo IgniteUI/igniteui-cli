@@ -25,9 +25,9 @@ doc = {
 
 		GoogleAnalytics.postToGoogleAnalytic({
 			t: "event",
-			ec: "doc",
-			ea: "params",
-			el: `term: ${argv.term}`
+			ec: "$ig doc",
+			ea: "user parameters",
+			el: `term to search: ${argv.term}`
 		});
 
 		if (!argv.term) {

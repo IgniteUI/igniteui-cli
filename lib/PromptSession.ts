@@ -53,9 +53,9 @@ export class PromptSession {
 
 				GoogleAnalytics.postToGoogleAnalytic({
 					t: "event",
-					ec: "wizard",
-					ea: "projectName",
-					el: `projectName: ${nameRes}` 
+					ec: "$ig wizard",
+					ea: "Enter a name for your project: ",
+					el: `project name: ${nameRes}` 
 				});
 		
 				if (!Util.isAlphanumericExt(nameRes)) {
@@ -78,8 +78,8 @@ export class PromptSession {
 
 			GoogleAnalytics.postToGoogleAnalytic({
 				t: "event",
-				ec: "wizard",
-				ea: "framework",
+				ec: "$ig wizard",
+				ea: "Choose framework:",
 				el: `framework: ${frameRes["framework"]}` 
 			});
 
@@ -97,9 +97,9 @@ export class PromptSession {
 
 				GoogleAnalytics.postToGoogleAnalytic({
 					t: "event",
-					ec: "wizard",
-					ea: "project type",
-					el: `project type: ${frameRes["project"]}` 
+					ec: "$ig wizard",
+					ea: "Choose the type of the project:",
+					el: `project type: ${proj["project"]}` 
 				});
 	
 				projLibrary = this.templateManager.getProjectLibraryByName(framework, proj["project"]);
@@ -120,8 +120,8 @@ export class PromptSession {
 
 				GoogleAnalytics.postToGoogleAnalytic({
 					t: "event",
-					ec: "wizard",
-					ea: "theme",
+					ec: "$ig wizard",
+					ea: "Choose the theme for the project:",
 					el: `theme: ${themeAnswer["theme"]}` 
 				});
 	
@@ -167,8 +167,8 @@ export class PromptSession {
 
 		GoogleAnalytics.postToGoogleAnalytic({
 			t: "event",
-			ec: "wizard",
-			ea: "action",
+			ec: "$ig wizard",
+			ea: "Choose an action:",
 			el: `action: ${action["action"]}` 
 		});
 
@@ -186,8 +186,8 @@ export class PromptSession {
 
 				GoogleAnalytics.postToGoogleAnalytic({
 					t: "event",
-					ec: "wizard",
-					ea: "component group",
+					ec: "$ig wizard",
+					ea: "Choose a group",
 					el: `component group: ${group["componentGroup"]}` 
 				});
 		
@@ -201,8 +201,8 @@ export class PromptSession {
 
 					GoogleAnalytics.postToGoogleAnalytic({
 						t: "event",
-						ec: "wizard",
-						ea: "component",
+						ec: "$ig wizard",
+						ea: "Choose a component",
 						el: `component: ${component["component"]}` 
 					});
 			
@@ -225,8 +225,8 @@ export class PromptSession {
 
 						GoogleAnalytics.postToGoogleAnalytic({
 							t: "event",
-							ec: "wizard",
-							ea: "template",
+							ec: "$ig wizard",
+							ea: "Choose one (template):",
 							el: `template: ${template["template"]}` 
 						});
 				
@@ -246,9 +246,9 @@ export class PromptSession {
 
 						GoogleAnalytics.postToGoogleAnalytic({
 							t: "event",
-							ec: "wizard",
-							ea: "template name",
-							el: `template name: ${templateName["name"]}` 
+							ec: "$ig wizard",
+							ea: "Name your component:",
+							el: `component name: ${templateName["name"]}` 
 						});
 
 						if (selectedTemplate.hasExtraConfiguration) {
@@ -258,9 +258,9 @@ export class PromptSession {
 
 							GoogleAnalytics.postToGoogleAnalytic({
 								t: "event",
-								ec: "wizard",
-								ea: "extra config",
-								el: `extra config: ${JSON.stringify(extraConfig)}`
+								ec: "$ig wizard",
+								ea: "Extra configuration:",
+								el: `extra configuration: ${JSON.stringify(extraConfig)}`
 							});
 	
 							selectedTemplate.setExtraConfiguration(extraConfig);
@@ -282,9 +282,9 @@ export class PromptSession {
 
 				GoogleAnalytics.postToGoogleAnalytic({
 					t: "event",
-					ec: "wizard",
-					ea: "custom template",
-					el: `custom template: ${customTemplate["customTemplate"]}` 
+					ec: "$ig wizard",
+					ea: "Choose custom view:",
+					el: `custom view: ${customTemplate["customTemplate"]}` 
 				});
 
 				selectedTemplate = framework.getTemplateByName(customTemplate["customTemplate"]);
@@ -300,9 +300,9 @@ export class PromptSession {
 
 						GoogleAnalytics.postToGoogleAnalytic({
 							t: "event",
-							ec: "wizard",
-							ea: "custom template name",
-							el: `custom template name: ${templateName["name"]}` 
+							ec: "$ig wizard",
+							ea: "Name your view:",
+							el: `custom view name: ${templateName["name"]}` 
 						});
 		
 						success = await add.addTemplate(templateName["name"], selectedTemplate);

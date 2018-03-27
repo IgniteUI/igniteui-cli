@@ -13,39 +13,51 @@ class GoogleAnalytics implements GoogleAnalytics {
 	private static userSettings: string = "user-settings.json";
 	private static appVersion: string;
 
-	public static postToGoogleAnalytic(parameters: object) {
+	/**
+	 * Generates http post request with provided parameters and sends it to GA
+	 * @param parameters object containing all the parameters to send
+	 */
+	public static postToGoogleAnalytic(parameters: GoogleAnalyticsParameters) {
 		const config = ProjectConfig.getConfig();
 		if (config.skipAnalytics) {
 			return;
 		}
-		parameters["v"] = 1;
-		parameters["tid"] = "UA-115760770-1";
 
-		if (!parameters["av"]) {
+		// set GA protocol version. This should be 1
+		parameters.v = 1;
+
+		// set the Tracking ID
+		parameters.tid = "UA-115760770-1";
+
+		// set application version if not set beforehand
+		if (!parameters.av) {
 			if (!this.appVersion) {
 				this.appVersion = Util.cliVersion();
 			}
 
-			parameters["av"] = this.appVersion;
+			parameters.av = this.appVersion;
 		}
 
-		parameters["an"] = "igniteui-cli";
+		// set application name
+		parameters.an = "igniteui-cli";
 
+		//	set user agent string. We are using this for detecting the user's OS.
+		//	as well as node version. The latest is set as browsert version.
 		const nodeVersion = process.version;
-		const os = process.platform;
+		const os = this.getOsForUserAgent();
+		parameters.ua = `node/${nodeVersion} (${os})`;
 
-		parameters["ua"] = `node: ${nodeVersion} os: ${os}`;
+		//	Set user ID
+		parameters.uid = this.getUUID();
 
-		const clientId = this.getUUID();
-		parameters["cid"] = clientId;
+		//	generate http request and sent it to GA
 		let queryString = qs.stringify(parameters);
 		const path = "/collect?" + queryString;
-		var options = { host: "www.google-analytics.com", path: path, method: "POST" }
+		const options = { host: "www.google-analytics.com", path: path, method: "POST" }
 		const https = require("https");
 		const req = https.request(options);
 		req.on("error", e => {
-			// TODO: remove error loging after
-			// should we save all the logs and send them later or just live without them
+			// TODO: save all the logs and send them later
 		});
 		req.end();
 	}
@@ -98,6 +110,22 @@ class GoogleAnalytics implements GoogleAnalytics {
 				return result;
 			default:
 				return  result;
+		}
+	}
+
+	private static getOsForUserAgent(): string {
+		let platform = process.platform;
+		switch (platform) {
+			case 'darwin':
+				return "Mac OS";
+			case 'win32':
+				return "Windows NT";
+			case 'linux':
+				return "Linux";
+			case 'freebsd':
+				return "OpenBSD";
+			default:
+				return  "";
 		}
 	}
 	

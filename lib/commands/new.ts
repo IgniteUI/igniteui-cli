@@ -48,9 +48,9 @@ command = {
 	async execute(argv) {
 		GoogleAnalytics.postToGoogleAnalytic({
 			t: "event",
-			ec: "new",
-			ea: "params",
-			el: `name: ${argv.name}; framework: ${argv.framework}; type: ${argv.type}; theme: ${argv.theme}; skip-git: ${argv.skipGit}`
+			ec: "$ig new",
+			ea: "user parameters",
+			el: `project name: ${argv.name}; framework: ${argv.framework}; project type: ${argv.type}; theme: ${argv.theme}; skip-git: ${argv.skipGit}`
 		});
 
 		if (ProjectConfig.hasLocalConfig()) {

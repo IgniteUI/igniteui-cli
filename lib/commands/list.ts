@@ -33,9 +33,9 @@ command = {
 	execute(argv) {
 		GoogleAnalytics.postToGoogleAnalytic({
 			t: "event",
-			ec: "list",
-			ea: "params",
-			el: `framework: ${argv.framework}; type: ${argv.type}`
+			ec: "$ig list",
+			ea: "user parameters",
+			el: `framework: ${argv.framework}; project type: ${argv.type}`
 		});
 		
 		let inProject = false;
