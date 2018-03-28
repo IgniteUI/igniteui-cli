@@ -1,9 +1,14 @@
 import * as fs from "fs";
 import cli = require("../../lib/cli");
+import { GoogleAnalytics } from "../../lib/GoogleAnalytic";
 import { Util } from "../../lib/Util";
 import { deleteAll, filesDiff, resetSpy } from "../helpers/utils";
 
 describe("New command", () => {
+	beforeAll(() => {
+		spyOn(GoogleAnalytics, "post");
+	});
+
 	beforeEach(() => {
 		spyOn(console, "log");
 		spyOn(console, "error");

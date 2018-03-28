@@ -2,12 +2,17 @@ import { spawnSync } from "child_process";
 import * as fs from "fs-extra";
 import { parse } from "path";
 import cli = require("../../lib/cli");
+import { GoogleAnalytics } from "../../lib/GoogleAnalytic";
 import { ProjectConfig } from "../../lib/ProjectConfig";
 import { resetSpy } from "../helpers/utils";
 import { PromptSession } from "./../../lib/PromptSession";
 
 describe("Add command", () => {
 	let testFolder = parse(__filename).name;
+
+	beforeAll(() => {
+		spyOn(GoogleAnalytics, "post");
+	});
 
 	beforeEach(() => {
 		spyOn(console, "log");

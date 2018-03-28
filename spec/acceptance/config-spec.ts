@@ -2,10 +2,15 @@ import * as fs from "fs";
 import * as os from "os";
 import * as path from "path";
 import cli = require("../../lib/cli");
+import { GoogleAnalytics } from "../../lib/GoogleAnalytic";
 import { deleteAll, resetSpy } from "../helpers/utils";
 
 describe("Config command", () => {
 	let testFolder = path.parse(__filename).name;
+
+	beforeAll(() => {
+		spyOn(GoogleAnalytics, "post");
+	});
 
 	beforeEach(() => {
 		spyOn(console, "log");

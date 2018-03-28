@@ -11,12 +11,17 @@ import { default as newCommand } from "../../lib/commands/new";
 import { default as quickstart } from "../../lib/commands/quickstart";
 import { default as start } from "../../lib/commands/start";
 import { default as test } from "../../lib/commands/test";
+import { GoogleAnalytics } from "../../lib/GoogleAnalytic";
 import { PromptSession } from "../../lib/PromptSession";
 import {TemplateManager} from "../../lib/TemplateManager";
 import { Util } from "../../lib/Util";
 import * as yargs from "../../node_modules/yargs";
 
 describe("Unit - Cli.ts", () => {
+	beforeAll(() => {
+		spyOn(GoogleAnalytics, "post");
+	});
+
 	/*
 	xit("Should fire properly - XX", async done => {
 		spyOn(XX , "YY");

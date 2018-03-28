@@ -1,9 +1,14 @@
 
 import { default as testCmd } from "../../lib/commands/test";
+import { GoogleAnalytics } from "../../lib/GoogleAnalytic";
 import { ProjectConfig } from "../../lib/ProjectConfig";
 import { Util } from "../../lib/Util";
 
 describe("Unit - Test command", () => {
+	beforeAll(() => {
+		spyOn(GoogleAnalytics, "post");
+	});
+
 	it("Run tests for the current project", async done => {
 		spyOn(Util, "exec");
 		await testCmd.execute({});
