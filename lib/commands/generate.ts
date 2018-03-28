@@ -49,10 +49,11 @@ const command = {
 	},
 	async template(argv) {
 		GoogleAnalytics.post({
-			t: "event",
-			ec: "$ig generate",
 			ea: "subcommand: template",
-			el: `template name: ${argv.name}; framework: ${argv.framework}; project type: ${argv.type}; skip-config: ${argv.skipConfig}`
+			ec: "$ig generate",
+			el: `template name: ${argv.name}; framework: ${argv.framework};` +
+				`project type: ${argv.type}; skip-config: ${argv.skipConfig}`,
+			t: "event"
 		});
 
 		// trim

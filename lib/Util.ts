@@ -4,8 +4,8 @@ import * as fs from "fs";
 import * as fsExtra from "fs-extra";
 import * as glob from "glob";
 import * as path from "path";
-import { GoogleAnalytics } from "./GoogleAnalytic";
 import through2 = require("through2");
+import { GoogleAnalytics } from "./GoogleAnalytic";
 const imageExtensions = [".png", ".jpg", ".jpeg", ".gif", ".bmp", ".ico"];
 const applyConfig = (configuration: { [key: string]: string }) => {
 	return through2((data, enc, cb) => {
@@ -203,8 +203,8 @@ class Util {
 	 */
 	public static error(message: string, colorKeyword?: string) {
 		GoogleAnalytics.post({
-			t: "screenview",
-			cd: `error: ${message}`
+			cd: `error: ${message}`,
+			t: "screenview"
 		});
 
 		// tslint:disable:no-console

@@ -50,7 +50,8 @@ command = {
 			t: "event",
 			ec: "$ig new",
 			ea: "user parameters",
-			el: `project name: ${argv.name}; framework: ${argv.framework}; project type: ${argv.type}; theme: ${argv.theme}; skip-git: ${argv.skipGit}`
+			el: `project name: ${argv.name}; framework: ${argv.framework};` +
+				`project type: ${argv.type}; theme: ${argv.theme}; skip-git: ${argv.skipGit}`
 		});
 
 		if (ProjectConfig.hasLocalConfig()) {

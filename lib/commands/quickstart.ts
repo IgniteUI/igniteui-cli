@@ -27,7 +27,7 @@ const command = {
 			ea: "user parameters",
 			el: `framework: ${argv.framework}`
 		});
-		
+
 		Util.log("Quick Start!");
 		const framework = argv.framework;
 		let name = "";

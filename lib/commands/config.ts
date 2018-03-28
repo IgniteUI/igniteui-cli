@@ -57,10 +57,10 @@ const command = {
 	// tslint:enable:object-literal-sort-keys
 	getHandler(argv) {
 		GoogleAnalytics.post({
-			t: "event",
-			ec: "$ig config",
 			ea: "subcommand: get",
-			el: `property to get: ${argv.property}, is global: ${argv.global}` 
+			ec: "$ig config",
+			el: `property to get: ${argv.property}, is global: ${argv.global}`,
+			t: "event"
 		});
 
 		if (!argv.global && !ProjectConfig.hasLocalConfig()) {
@@ -76,10 +76,10 @@ const command = {
 	},
 	setHandler(argv) {
 		GoogleAnalytics.post({
-			t: "event",
-			ec: "$ig config",
 			ea: "subcommand: set",
-			el: `property to set: ${argv.property}, value to set: ${argv.value}, is global: ${argv.global}`
+			ec: "$ig config",
+			el: `property to set: ${argv.property}, value to set: ${argv.value}, is global: ${argv.global}`,
+			t: "event"
 		});
 
 		let config;
@@ -105,10 +105,10 @@ const command = {
 	},
 	addHandler(argv) {
 		GoogleAnalytics.post({
-			t: "event",
-			ec: "$ig config",
 			ea: "subcommand: add",
-			el: `property to add: ${argv.property}, value to add: ${argv.value}, is global: ${argv.global}`
+			ec: "$ig config",
+			el: `property to add: ${argv.property}, value to add: ${argv.value}, is global: ${argv.global}`,
+			t: "event"
 		});
 
 		let config;

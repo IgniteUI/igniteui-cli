@@ -37,7 +37,7 @@ command = {
 			ea: "user parameters",
 			el: `framework: ${argv.framework}; project type: ${argv.type}`
 		});
-		
+
 		let inProject = false;
 		const viewsGroupName = "Views";
 		if (ProjectConfig.hasLocalConfig()) {

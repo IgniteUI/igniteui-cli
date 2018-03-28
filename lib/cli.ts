@@ -18,10 +18,10 @@ import { Util } from "./Util";
 
 process.title = "Ignite UI CLI";
 
-function logHelp(){
+function logHelp() {
 	GoogleAnalytics.post({
-		t: "screenview",
-		cd: "$ig help"
+		cd: "$ig help",
+		t: "screenview"
 	});
 }
 
@@ -72,11 +72,11 @@ export async function run(args = null) {
 	}
 
 	const command = argv._[0];
-	let GAcommand = command || "wizard";
-	GAcommand = "$ig " + GAcommand;
+	let gaCommand = command || "wizard";
+	gaCommand = "$ig " + gaCommand;
 	GoogleAnalytics.post({
-		t: "screenview",
-		cd: GAcommand
+		cd: gaCommand,
+		t: "screenview"
 	});
 	switch (command) {
 		case "new":

@@ -1,4 +1,4 @@
-import { execSync } from 'child_process';
+import { execSync } from "child_process";
 // import * as crypto from "crypto";
 import * as fs from "fs";
 import * as path from "path";
@@ -7,7 +7,8 @@ import { ProjectConfig } from "./ProjectConfig";
 import { Util } from "./Util";
 
 class GoogleAnalytics implements GoogleAnalytics {
-	private static userDataFolder: string = process.env.APPDATA || (process.platform == 'darwin' ? process.env.HOME + 'Library/Preferences' : '/var/local');
+	private static userDataFolder: string = process.env.APPDATA ||
+		(process.platform === "darwin" ? process.env.HOME + "Library/Preferences" : "/var/local");
 	private static appFolder = "igniteui-cli";
 	private static userSettings: string = "user-settings.json";
 	private static appVersion: string;
@@ -48,13 +49,13 @@ class GoogleAnalytics implements GoogleAnalytics {
 		const npmVersion = this.getNpmVersion();
 		parameters.ua = `node/${nodeVersion} (${os}) npm/${npmVersion}`;
 
-		//	Set user ID
+		//	set user ID
 		parameters.uid = this.getUUID();
 
 		//	generate http request and sent it to GA
-		let queryString = qs.stringify(parameters);
-		const path = "/collect?" + queryString;
-		const options = { host: "www.google-analytics.com", path: path, method: "POST" }
+		const queryString = qs.stringify(parameters);
+		const fullPath = "/collect?" + queryString;
+		const options = { host: "www.google-analytics.com", path: fullPath, method: "POST" };
 		const https = require("https");
 		const req = https.request(options);
 		req.on("error", e => {
@@ -65,7 +66,7 @@ class GoogleAnalytics implements GoogleAnalytics {
 
 	private static getUUID(): string {
 		const absolutePath = path.join(this.userDataFolder, this.appFolder, this.userSettings);
-		let UUID = ""
+		let UUID = "";
 		if (fs.existsSync(absolutePath)) {
 			UUID = require(absolutePath).UUID;
 		} else {
@@ -75,38 +76,40 @@ class GoogleAnalytics implements GoogleAnalytics {
 			}
 
 			UUID = this.getMachineID();
-			fs.writeFileSync(absolutePath, JSON.stringify({ UUID: UUID }));
+			fs.writeFileSync(absolutePath, JSON.stringify({ UUID }));
 		}
 
 		return UUID;
 	}
 
 	private static getMachineID(): string {
-		let platform = process.platform;
-		console.log(platform);
+		const platform = process.platform;
 		let result: string = "";
 
 		switch (platform) {
-			case 'darwin':
+			case "darwin":
 				result = execSync("ioreg -rd1 -c IOPlatformExpertDevice").toString()
-					.split('IOPlatformUUID')[1]
-					.split('\n')[0].replace(/\=|\s+|\"/ig, '')
+					.split("IOPlatformUUID")[1]
+					.split("\n")[0].replace(/\=|\s+|\"/ig, "")
 					.toLowerCase();
 				return result;
-			case 'win32':
-				result = execSync("REG QUERY HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Cryptography /v MachineGuid").toString()
-					.split('REG_SZ')[1]
-					.replace(/\r+|\n+|\s+/ig, '')
+			case "win32":
+				result = execSync("REG QUERY HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Cryptography /v MachineGuid")
+					.toString()
+					.split("REG_SZ")[1]
+					.replace(/\r+|\n+|\s+/ig, "")
 					.toLowerCase();
 				return result;
-			case 'linux':
-				result = execSync("( cat /var/lib/dbus/machine-id /etc/machine-id 2> /dev/null || hostname ) | head -n 1 || :").toString()
-					.replace(/\r+|\n+|\s+/ig, '')
+			case "linux":
+				result =
+					execSync("( cat /var/lib/dbus/machine-id /etc/machine-id 2> /dev/null || hostname ) | head -n 1 || :")
+					.toString()
+					.replace(/\r+|\n+|\s+/ig, "")
 					.toLowerCase();
 				return result;
-			case 'freebsd':
+			case "freebsd":
 				result = execSync("kenv -q smbios.system.uuid").toString()
-					.replace(/\r+|\n+|\s+/ig, '')
+					.replace(/\r+|\n+|\s+/ig, "")
 					.toLowerCase();
 				return result;
 			default:
@@ -115,15 +118,15 @@ class GoogleAnalytics implements GoogleAnalytics {
 	}
 
 	private static getOsForUserAgent(): string {
-		let platform = process.platform;
+		const platform = process.platform;
 		switch (platform) {
-			case 'darwin':
+			case "darwin":
 				return "Mac OS";
-			case 'win32':
+			case "win32":
 				return "Windows NT";
-			case 'linux':
+			case "linux":
 				return "Linux";
-			case 'freebsd':
+			case "freebsd":
 				return "OpenBSD";
 			default:
 				return "";
@@ -134,6 +137,7 @@ class GoogleAnalytics implements GoogleAnalytics {
 		if (!this.npmVersion) {
 			this.npmVersion = "";
 			const buffer = execSync("npm -v");
+			// tslint:disable-next-line:prefer-for-of
 			for (let i = 0; i < buffer.length; i += 1) {
 				this.npmVersion += String.fromCharCode(+buffer[i]).toString();
 			}
@@ -143,11 +147,11 @@ class GoogleAnalytics implements GoogleAnalytics {
 	}
 }
 
-export { GoogleAnalytics }
+export { GoogleAnalytics };
 
-process.on('uncaughtException', (err) => {
+process.on("uncaughtException", err => {
 	GoogleAnalytics.post({
-		t: "exception",
-		exd: err.message
+		exd: err.message,
+		t: "exception"
 	});
 });
