@@ -241,20 +241,18 @@ class Util {
 		}
 	}
 
-	public static version() {
-		const logo = fs.readFileSync(__dirname + "/../ignite-ui-cli.txt");
-		logo.toString().split("\n").forEach(line => {
-			// tslint:disable:no-console
-			console.log(line);
-		});
-		console.log("Ignite UI CLI version: " + this.cliVersion());
-		console.log("OS: " + this.getOSFriendlyName(process.platform));
-		// tslint:enable:no-console
-	}
-
-	public static cliVersion(): string {
+	public static version(): string {
 		const configuration = require("../package.json");
 		return configuration.version;
+	}
+
+	public static showVersion() {
+		const logo = fs.readFileSync(__dirname + "/../ignite-ui-cli.txt");
+		logo.toString().split("\n").forEach(line => {
+			this.log(line);
+		});
+		this.log("Ignite UI CLI version: " + this.version());
+		this.log("OS: " + this.getOSFriendlyName(process.platform));
 	}
 
 	public static getOSFriendlyName(platform: string): string {

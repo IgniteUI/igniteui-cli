@@ -32,7 +32,7 @@ class GoogleAnalytics implements GoogleAnalytics {
 		// set application version if not set beforehand
 		if (!parameters.av) {
 			if (!this.appVersion) {
-				this.appVersion = Util.cliVersion();
+				this.appVersion = Util.version();
 			}
 
 			parameters.av = this.appVersion;

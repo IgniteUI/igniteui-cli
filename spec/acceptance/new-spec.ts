@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import cli = require("../../lib/cli");
 import { Util } from "../../lib/Util";
-import { deleteAll, resetSpy } from "../helpers/utils";
+import { deleteAll, filesDiff, resetSpy } from "../helpers/utils";
 
 describe("New command", () => {
 	beforeEach(() => {
@@ -17,27 +17,57 @@ describe("New command", () => {
 		process.chdir("../");
 	});
 
+	it("Creates jQuery project", async done => {
+
+		await cli.run(["new", "jQuery Proj", "--framework=jquery"]);
+
+		expect(fs.existsSync("./jQuery Proj")).toBeTruthy();
+		expect(filesDiff("../templates/jquery/js/projects/empty/files", "./React Proj")).toEqual([]);
+		const packageText = fs.readFileSync("./jQuery Proj/package.json", "utf-8");
+		expect(JSON.parse(packageText).name).toEqual("jquery-proj");
+		expect(fs.existsSync("./jQuery Proj/.gitignore")).toBeTruthy();
+		this.testFolder = "./jQuery Proj";
+		done();
+	});
+
 	it("Creates React project", async done => {
 		// process.argv = ["new", "reactProj", "--framework=react"];
 
-		await cli.run(["new", "reactProj", "--framework=react"]);
+		await cli.run(["new", "React Proj", "--framework=react"]);
 
-		//TODO: read entire structure from ./templates and verify everything is copied over
-		expect(fs.existsSync("./reactProj")).toBeTruthy();
-		expect(fs.existsSync("./reactProj/.gitignore")).toBeTruthy();
-		this.testFolder = "./reactProj";
+		expect(fs.existsSync("./React Proj")).toBeTruthy();
+		expect(filesDiff("../templates/react/es6/projects/empty/files", "./React Proj")).toEqual([]);
+		const packageText = fs.readFileSync("./React Proj/package.json", "utf-8");
+		expect(JSON.parse(packageText).name).toEqual("react-proj");
+		expect(fs.existsSync("./React Proj/.gitignore")).toBeTruthy();
+		this.testFolder = "./React Proj";
 		done();
 	});
 
 	it("Creates Angular project", async done => {
 		// process.argv = ["new", "reactProj", "--framework=react"];
 
-		await cli.run(["new", "ngxProj", "--framework=angular", "--type=igx-ts"]);
+		await cli.run(["new", "ngx Proj", "--framework=angular", "--type=igx-ts"]);
 
-		//TODO: read entire structure from ./templates and verify everything is copied over
-		expect(fs.existsSync("./ngxProj")).toBeTruthy();
-		expect(fs.existsSync("./ngxProj/.gitignore")).toBeTruthy();
-		this.testFolder = "./ngxProj";
+		expect(fs.existsSync("./ngx Proj")).toBeTruthy();
+		expect(filesDiff("../templates/angular/ig-ts/projects/empty/files", "./ngx Proj")).toEqual([]);
+		const packageText = fs.readFileSync("./ngx Proj/package.json", "utf-8");
+		expect(JSON.parse(packageText).name).toEqual("ngx-proj");
+		expect(fs.existsSync("./ngx Proj/.gitignore")).toBeTruthy();
+		this.testFolder = "./ngx Proj";
+		done();
+	});
+
+	it("Creates Ignite UI for Angular project", async done => {
+
+		await cli.run(["new", "Ignite UI for Angular", "--framework=angular", "--type=igx-ts"]);
+
+		expect(fs.existsSync("./Ignite UI for Angular")).toBeTruthy();
+		expect(filesDiff("../templates/angular/igx-ts/projects/empty/files", "./Ignite UI for Angular")).toEqual([]);
+		const packageText = fs.readFileSync("./Ignite UI for Angular/package.json", "utf-8");
+		expect(JSON.parse(packageText).name).toEqual("ignite-ui-for-angular");
+		expect(fs.existsSync("./Ignite UI for Angular/.gitignore")).toBeTruthy();
+		this.testFolder = "./Ignite UI for Angular";
 		done();
 	});
 

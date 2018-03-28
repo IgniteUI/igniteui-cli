@@ -67,7 +67,7 @@ export async function run(args = null) {
 	process.removeListener("exit", logHelp);
 
 	if (argv.version) {
-		Util.version();
+		Util.showVersion();
 		return;
 	}
 

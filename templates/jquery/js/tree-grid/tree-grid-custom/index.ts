@@ -35,10 +35,6 @@ class TreeGridCustomTemplate extends jQueryTemplate {
 		this.userExtraConfiguration = extraConfigKeys;
 	}
 	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
-
-		const destinationPath = path.join(projectPath, this.folderName(name));
-		//read html
-		const config = {};
 		let features: string;
 		if (this.userExtraConfiguration["features"] !== undefined) {
 			features = TreeGridFeatureHelper.generateFeatures(this.userExtraConfiguration["features"]);
@@ -46,16 +42,10 @@ class TreeGridCustomTemplate extends jQueryTemplate {
 			features = "";
 		}
 
-		config["$(treeGridFeatures)"] = features;
-		config["$(description)"] = this.description;
-		config["$(cssBlock)"] = this.getCssTags();
-		config["$(scriptBlock)"] = this.getScriptTags();
-		const pathsConfig = {};
-		// TODO: Refactor to base
-		if (!Util.validateTemplate(path.join(__dirname, "files"), destinationPath, config, pathsConfig)) {
-			return Promise.resolve(false);
-		}
-		return Util.processTemplates(path.join(__dirname, "files"), destinationPath, config, pathsConfig);
+		const extraConfig = {
+			"$(treeGridFeatures)": features
+		};
+		return super.generateFiles(projectPath, name, { extraConfig });
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return this.extraConfigurations;

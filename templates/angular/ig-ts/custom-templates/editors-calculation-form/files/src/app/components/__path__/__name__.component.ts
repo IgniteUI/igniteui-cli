@@ -1,18 +1,18 @@
-import {
-	IgTextEditorComponent,
-	IgPercentEditorComponent,
-	IgNumericEditorComponent,
-	IgCurrencyEditorComponent,
-	IgCheckboxEditorComponent,
-	IgDatePickerComponent,
-	IgMaskEditorComponent
-} from 'igniteui-angular-wrappers';
 import { Component, ViewChild } from "@angular/core";
+import {
+	IgCheckboxEditorComponent,
+	IgCurrencyEditorComponent,
+	IgDatePickerComponent,
+	IgMaskEditorComponent,
+	IgNumericEditorComponent,
+	IgPercentEditorComponent,
+	IgTextEditorComponent
+} from "igniteui-angular-wrappers";
 
 @Component({
 	selector: "$(filePrefix)",
-	template:`
-	<h1>$(description)</h1>
+	template: `
+	<h2>$(description)</h2>
 	<p>To calculate the approximate cost of your monthly installment you can use our credit calculator.</p>
 	<div id="container">
 		<div id="igCheckboxEditorsContainer">
@@ -104,7 +104,7 @@ import { Component, ViewChild } from "@angular/core";
 				</table>
 			</form>
 		</div>
-	
+
 		<div id="valuesContainer" [hidden]="!showValuesContainer">
 			<h3>Credit Details:</h3>
 			<p>Dear Madam / Sir {{lastNameOptions.value}}, following are the details for your loan: </p>
@@ -158,7 +158,7 @@ import { Component, ViewChild } from "@angular/core";
 		background-repeat: no-repeat;
 		background-position: right bottom;
 	}
-	
+
 	#igCheckboxEditorsContainer {
 		top: 0px;
 		left: 0px;
@@ -168,7 +168,7 @@ import { Component, ViewChild } from "@angular/core";
 		float: left;
 		font-size: 14px;
 	}
-	
+
 	#valuesContainer {
 		top: 0px;
 		right: 0px;
@@ -177,7 +177,7 @@ import { Component, ViewChild } from "@angular/core";
 		padding-top: 15px;
 		font-size: 14px;
 	}
-	
+
 		#valuesContainer.p {
 			font-size: 14px;
 		}
@@ -257,7 +257,7 @@ export class $(ClassName)Component {
 			regional: "en"
 		};
 		this.termOptions = {
-			placeHolder: 'Term (months)',
+			placeHolder: "Term (months)",
 			value: 24,
 			minValue: 6,
 			maxValue: 120,
@@ -269,8 +269,8 @@ export class $(ClassName)Component {
 			checked: false
 		};
 		this.pinOptions = {
-			placeHolder: 'Enter your PIN',
-			inputMask: 'LL-000',
+			placeHolder: "Enter your PIN",
+			inputMask: "LL-000",
 			show: this.show
 		};
 		this.resultOptions = {
@@ -288,29 +288,29 @@ export class $(ClassName)Component {
 
 		this.checkboxClicked = () => {
 			this.show = !this.show;
-		}
+		};
 
 		this.doOnLoad = () => {
 			this.showValuesContainer = false;
 		};
 
 		this.onSubmit = () => {
-			//Calculate the total amount of the credit
-			let sumToGive = this.creditAmountOptions.value;
-			let loanPeriod = this.termOptions.value;
-			let salaryIsInBank = this.salaryInBankOptions.value;
+			// calculate the total amount of the credit
+			const sumToGive = this.creditAmountOptions.value;
+			const loanPeriod = this.termOptions.value;
+			const salaryIsInBank = this.salaryInBankOptions.value;
 			let selectedInterestRate = this.interestRateOptions.value;
 
 			if (salaryIsInBank) {
 				selectedInterestRate -= 1;
 			}
 
-			let monthlyPaymentNoInterestRate = sumToGive / loanPeriod;
-			let interestRate = parseFloat(selectedInterestRate) / 100.0;
-			let monthlyInterestRate = monthlyPaymentNoInterestRate * interestRate;
-			let monthlyPaymentInterestRate = monthlyPaymentNoInterestRate + monthlyInterestRate;
-			let sumToReceive = monthlyPaymentInterestRate * loanPeriod;
-			let bankDividend = sumToReceive - sumToGive;
+			const monthlyPaymentNoInterestRate = sumToGive / loanPeriod;
+			const interestRate = parseFloat(selectedInterestRate) / 100.0;
+			const monthlyInterestRate = monthlyPaymentNoInterestRate * interestRate;
+			const monthlyPaymentInterestRate = monthlyPaymentNoInterestRate + monthlyInterestRate;
+			const sumToReceive = monthlyPaymentInterestRate * loanPeriod;
+			const bankDividend = sumToReceive - sumToGive;
 
 			this.getResult(sumToGive, sumToReceive, monthlyPaymentInterestRate);
 			this.disableEditors(true);
@@ -344,9 +344,9 @@ export class $(ClassName)Component {
 		this.getResult = (creditAmount, getSumToReceive, getMonthlyPaymentInterestRate) => {
 			this.showValuesContainer = true;
 			let currencySymbol;
-			let selectedCurrency = this.currencyOptions.value;
-			let returnAmount = Math.round(getSumToReceive).toFixed(2);
-			let monthlyPayment = Math.round(getMonthlyPaymentInterestRate).toFixed(2);
+			const selectedCurrency = this.currencyOptions.value;
+			const returnAmount = Math.round(getSumToReceive).toFixed(2);
+			const monthlyPayment = Math.round(getMonthlyPaymentInterestRate).toFixed(2);
 
 			switch (selectedCurrency) {
 				case "EUR":
