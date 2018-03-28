@@ -22,6 +22,7 @@ class EmptyJsBlocksProject implements ProjectTemplate {
 	public setExtraConfiguration(extraConfigKeys: any[]) { }
 	public generateFiles(outputPath: string, name: string, theme: string, ...options: any[]): Promise<boolean> {
 		const config = {
+			"$(cliVersion)": Util.version(),
 			"$(dash-name)": Util.lowerDashed(name),
 			"$(name)": name,
 			"$(theme)": theme,
