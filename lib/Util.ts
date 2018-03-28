@@ -305,6 +305,10 @@ class Util {
 	 * @param source Object to merge values from
 	 */
 	public static merge(target: any, source: any) {
+		if (!source) {
+			return  target;
+		}
+
 		for (const key of Object.keys(source)) {
 			const sourceKeyIsArray = Array.isArray(source[key]);
 			const targetHasThisKey = target.hasOwnProperty(key);

@@ -1,8 +1,12 @@
 import { default as configCmd } from "../../lib/commands/config";
+import { GoogleAnalytics } from "../../lib/GoogleAnalytic";
 import { ProjectConfig } from "../../lib/ProjectConfig";
 import { Util } from "../../lib/Util";
 
 describe("Unit - Config command", () => {
+	beforeAll(() => {
+		spyOn(GoogleAnalytics, "post");
+	});
 
 	describe("Get", () => {
 		it("Should show error w/o existing project and global flag", async done => {
