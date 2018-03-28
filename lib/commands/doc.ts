@@ -23,7 +23,7 @@ doc = {
 	},
 	async execute(argv) {
 
-		GoogleAnalytics.postToGoogleAnalytic({
+		GoogleAnalytics.post({
 			t: "event",
 			ec: "$ig doc",
 			ea: "user parameters",

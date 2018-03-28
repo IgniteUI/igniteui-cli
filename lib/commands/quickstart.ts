@@ -21,7 +21,7 @@ const command = {
 		}
 	},
 	async execute(argv) {
-		GoogleAnalytics.postToGoogleAnalytic({
+		GoogleAnalytics.post({
 			t: "event",
 			ec: "$ig quickstart",
 			ea: "user parameters",

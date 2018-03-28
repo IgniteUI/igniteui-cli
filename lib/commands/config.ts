@@ -56,7 +56,7 @@ const command = {
 	},
 	// tslint:enable:object-literal-sort-keys
 	getHandler(argv) {
-		GoogleAnalytics.postToGoogleAnalytic({
+		GoogleAnalytics.post({
 			t: "event",
 			ec: "$ig config",
 			ea: "subcommand: get",
@@ -75,7 +75,7 @@ const command = {
 		}
 	},
 	setHandler(argv) {
-		GoogleAnalytics.postToGoogleAnalytic({
+		GoogleAnalytics.post({
 			t: "event",
 			ec: "$ig config",
 			ea: "subcommand: set",
@@ -104,7 +104,7 @@ const command = {
 		Util.log(`Property "${argv.property}" set.`);
 	},
 	addHandler(argv) {
-		GoogleAnalytics.postToGoogleAnalytic({
+		GoogleAnalytics.post({
 			t: "event",
 			ec: "$ig config",
 			ea: "subcommand: add",

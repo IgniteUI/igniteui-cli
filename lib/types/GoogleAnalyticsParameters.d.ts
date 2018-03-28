@@ -20,9 +20,13 @@ interface GoogleAnalyticsParameters {
 	/** The user input related to the Event Action ('ea'). */
 	el?: string;
 
-	/** The type of hit. Must be one of 'screenview' or 'event'.
+	/** Specifies the description of an exception. */
+	exd?: string;
+
+	/** The type of hit. Must be 'screenview', 'event' or 'exception'.
 	 * Use 'screenview' for each command.
 	 * Use 'event' for each user input.
+	 * Use 'exception' for exceptions.
 	 */
 	t?: string;
 

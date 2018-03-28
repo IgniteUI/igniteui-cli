@@ -11,12 +11,13 @@ class GoogleAnalytics implements GoogleAnalytics {
 	private static appFolder = "igniteui-cli";
 	private static userSettings: string = "user-settings.json";
 	private static appVersion: string;
+	private static npmVersion: string;
 
 	/**
 	 * Generates http post request with provided parameters and sends it to GA
-	 * @param parameters object containing all the parameters to send
+	 * @param parameters Object containing all the parameters to send
 	 */
-	public static postToGoogleAnalytic(parameters: GoogleAnalyticsParameters) {
+	public static post(parameters: GoogleAnalyticsParameters) {
 		const config = ProjectConfig.getConfig();
 		if (config.skipAnalytics) {
 			return;
@@ -44,7 +45,8 @@ class GoogleAnalytics implements GoogleAnalytics {
 		//	as well as node version. The latest is set as browsert version.
 		const nodeVersion = process.version;
 		const os = this.getOsForUserAgent();
-		parameters.ua = `node/${nodeVersion} (${os})`;
+		const npmVersion = this.getNpmVersion();
+		parameters.ua = `node/${nodeVersion} (${os}) npm/${npmVersion}`;
 
 		//	Set user ID
 		parameters.uid = this.getUUID();
@@ -83,7 +85,7 @@ class GoogleAnalytics implements GoogleAnalytics {
 		let platform = process.platform;
 		console.log(platform);
 		let result: string = "";
-	
+
 		switch (platform) {
 			case 'darwin':
 				result = execSync("ioreg -rd1 -c IOPlatformExpertDevice").toString()
@@ -108,7 +110,7 @@ class GoogleAnalytics implements GoogleAnalytics {
 					.toLowerCase();
 				return result;
 			default:
-				return  result;
+				return result;
 		}
 	}
 
@@ -124,27 +126,28 @@ class GoogleAnalytics implements GoogleAnalytics {
 			case 'freebsd':
 				return "OpenBSD";
 			default:
-				return  "";
+				return "";
 		}
 	}
-	
-	// private static getRandomUUID(): string {
-	// 	const randomBytes = crypto.randomBytes(16);
-	// 	const byteToHex = [];
-	// 	for (let i = 0; i < 256; ++i) {
-	// 		byteToHex[i] = (i + 0x100).toString(16).substr(1);
-	// 	}
 
-	// 	let i = 0;
-	// 	return byteToHex[randomBytes[i++]] + byteToHex[randomBytes[i++]] +
-	// 		byteToHex[randomBytes[i++]] + byteToHex[randomBytes[i++]] + '-' +
-	// 		byteToHex[randomBytes[i++]] + byteToHex[randomBytes[i++]] + '-' +
-	// 		byteToHex[randomBytes[i++]] + byteToHex[randomBytes[i++]] + '-' +
-	// 		byteToHex[randomBytes[i++]] + byteToHex[randomBytes[i++]] + '-' +
-	// 		byteToHex[randomBytes[i++]] + byteToHex[randomBytes[i++]] +
-	// 		byteToHex[randomBytes[i++]] + byteToHex[randomBytes[i++]] +
-	// 		byteToHex[randomBytes[i++]] + byteToHex[randomBytes[i++]];
-	// }
+	private static getNpmVersion(): string {
+		if (!this.npmVersion) {
+			this.npmVersion = "";
+			const buffer = execSync("npm -v");
+			for (let i = 0; i < buffer.length; i += 1) {
+				this.npmVersion += String.fromCharCode(+buffer[i]).toString();
+			}
+		}
+
+		return this.npmVersion.trim();
+	}
 }
 
 export { GoogleAnalytics }
+
+process.on('uncaughtException', (err) => {
+	GoogleAnalytics.post({
+		t: "exception",
+		exd: err.message
+	});
+});

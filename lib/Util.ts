@@ -4,6 +4,7 @@ import * as fs from "fs";
 import * as fsExtra from "fs-extra";
 import * as glob from "glob";
 import * as path from "path";
+import { GoogleAnalytics } from "./GoogleAnalytic";
 import through2 = require("through2");
 const imageExtensions = [".png", ".jpg", ".jpeg", ".gif", ".bmp", ".ico"];
 const applyConfig = (configuration: { [key: string]: string }) => {
@@ -201,6 +202,11 @@ class Util {
 	 * @param colorKeyword Optional color (CSS keyword like red, green, etc.)
 	 */
 	public static error(message: string, colorKeyword?: string) {
+		GoogleAnalytics.post({
+			t: "screenview",
+			cd: `error: ${message}`
+		});
+
 		// tslint:disable:no-console
 		if (colorKeyword) {
 			const color = chalk.keyword(colorKeyword);

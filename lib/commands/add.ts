@@ -62,7 +62,7 @@ command = {
 			return;
 		}
 
-		GoogleAnalytics.postToGoogleAnalytic({
+		GoogleAnalytics.post({
 			t: "event",
 			ec: "$ig add",
 			ea: "user parameters",

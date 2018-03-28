@@ -48,7 +48,7 @@ const command = {
 			.demandCommand(1, "Please select command");
 	},
 	async template(argv) {
-		GoogleAnalytics.postToGoogleAnalytic({
+		GoogleAnalytics.post({
 			t: "event",
 			ec: "$ig generate",
 			ea: "subcommand: template",

@@ -31,7 +31,7 @@ command = {
 	},
 	templateManager: null,
 	execute(argv) {
-		GoogleAnalytics.postToGoogleAnalytic({
+		GoogleAnalytics.post({
 			t: "event",
 			ec: "$ig list",
 			ea: "user parameters",

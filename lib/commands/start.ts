@@ -19,7 +19,7 @@ command = {
 	templateManager: null,
 	async execute(argv) {
 
-		GoogleAnalytics.postToGoogleAnalytic({
+		GoogleAnalytics.post({
 			t: "event",
 			ec: "$ig start",
 			ea: "user parameters",
