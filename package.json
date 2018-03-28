@@ -28,9 +28,7 @@
     "jasmine": "node spec/jasmine-runner.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "lint": "tslint --project tsconfig.json",
-    "config-schema": "typescript-json-schema lib/types/Config.d.ts Config -o lib/config/Config.schema.json",
-    "postinstall": "node ./scripts/install.js",
-    "preuninstall": "node ./scripts/uninstall.js"
+    "config-schema": "typescript-json-schema lib/types/Config.d.ts Config -o lib/config/Config.schema.json"
   },
   "files": [
     "ignite-ui-cli.txt",
