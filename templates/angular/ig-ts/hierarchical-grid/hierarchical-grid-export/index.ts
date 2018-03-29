@@ -22,6 +22,7 @@ class HierarchicalGridExportTemplate extends AngularTemplate {
 		this.listInComponentTemplates = true;
 
 		this.gridHelper = new GridHelper();
+		this.gridHelper.hierarchical = true;
 		const featureConfiguration: ControlExtraConfiguration = {
 			choices: ["Summaries", "Hiding"],
 			default: "",
