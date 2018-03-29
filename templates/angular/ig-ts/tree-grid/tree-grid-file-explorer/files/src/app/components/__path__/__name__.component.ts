@@ -44,37 +44,7 @@ export class $(ClassName)Component {
 			],
 			childDataKey: "files",
 			initialExpandDepth: 2,
-			features: [
-				{
-                    name: "Selection",
-                    multipleSelection: true
-                },
-                {
-                    name: "RowSelectors",
-                    enableCheckBoxes: true,
-                    checkBoxMode: "biState",
-                    enableSelectAllForPaging: true,
-                    enableRowNumbering: false
-                },
-                {
-                    name: "Filtering",
-                    columnSettings: [
-                        {
-                            columnKey: "dateModified",
-                            condition: "after"
-                        },
-                        {
-                            columnKey: "size",
-                            condition: "greaterThan"
-                         }
-                        ]
-                },
-                {
-                    name: "Paging",
-                    pageSize: 4
-                },
-				$(treeGridFeatures)
-			]
+			features: $(treeGridFeatures)
 		};
 	}
 }

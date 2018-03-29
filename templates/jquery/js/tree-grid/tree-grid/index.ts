@@ -1,14 +1,13 @@
 import * as fs from "fs-extra";
 import * as path from "path";
+import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 import { jQueryTemplate } from "../../../../../lib/templates/jQueryTemplate";
 import { Util } from "../../../../../lib/Util";
-import { TreeGridFeatureHelper } from "../treegridfeaturehelper";
 
 class TreeGridBasicTemplate extends jQueryTemplate {
-
 	public extraConfigurations: ControlExtraConfiguration[];
-
 	public userExtraConfiguration: {} = {};
+	private gridHelper: GridHelper;
 
 	/**
 	 *
@@ -26,8 +25,11 @@ class TreeGridBasicTemplate extends jQueryTemplate {
 		this.hasExtraConfiguration = true;
 		this.listInComponentTemplates = true;
 		this.extraConfigurations = [];
+
+		this.gridHelper = new GridHelper();
+		this.gridHelper.tree = true;
 		const featureConfiguration: ControlExtraConfiguration = {
-			choices: ["Sorting", "RowSelectors", "Filtering"],
+			choices: ["Sorting", "Selection", "Filtering"],
 			default: "",
 			key: "features",
 			message: "Select features for the igTreeGrid",
@@ -39,7 +41,7 @@ class TreeGridBasicTemplate extends jQueryTemplate {
 		this.userExtraConfiguration = extraConfigKeys;
 	}
 	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
-		const features = TreeGridFeatureHelper.generateFeatures(this.userExtraConfiguration["features"]);
+		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 4);
 		const config = { "$(treeGridFeatures)": features };
 		return super.generateFiles(projectPath, name, { extraConfig : config });
 	}
