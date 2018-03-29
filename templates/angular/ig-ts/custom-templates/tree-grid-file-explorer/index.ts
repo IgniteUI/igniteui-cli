@@ -17,7 +17,8 @@ class TreeGridFileExplorerTemplate extends AngularTemplate {
 		this.description = "Tree Grid file explorer template for Angular";
 		this.dependencies = ["igTreeGrid"];
 		this.projectType = "ig-ts";
-		this.listInComponentTemplates = true;
+		this.listInComponentTemplates = false;
+		this.listInCustomTemplates = true;
 		this.hasExtraConfiguration = true;
 		this.extraConfigurations = [];
 

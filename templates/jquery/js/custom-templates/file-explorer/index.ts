@@ -10,18 +10,18 @@ class FileExplorerTemplate extends jQueryTemplate {
 
 	constructor() {
 		super(__dirname);
-		this.id = "file-explorer";
-		this.name = "File Explorer";
+		this.id = "tree-grid-file-explorer";
+		this.name = "Tree Grid File Explorer";
 		this.controlGroup = "Data Grids";
 		this.description = "File explorer sample using igTreeGrid";
 		this.dependencies = ["igTreeGrid"];
 		this.projectType = "js";
+		this.listInComponentTemplates = false;
 		this.listInCustomTemplates = true;
 		this.extraConfigurations = [];
 
 		this.gridHelper = new GridHelper();
 		this.gridHelper.tree = true;
-		this.gridHelper.space = "    ";
 		const featureConfiguration: ControlExtraConfiguration = {
 			choices: ["Sorting"],
 			default: "",
