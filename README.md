@@ -7,7 +7,7 @@
 [![npm version](https://badge.fury.io/js/igniteui-cli.svg)](https://badge.fury.io/js/igniteui-cli)
 
 
-Quickly create projects including [Ignite UI](https://www.igniteui.com) controls for a variety of frameworks.
+Quickly create projects including [Ignite UI for Angular](https://www.infragistics.com/products/ignite-ui-angular) and [Ignite UI for JavaScript](https://www.infragistics.com/products/ignite-ui) components for a variety of frameworks.
 
 ## Overview
 ### Features:
@@ -40,7 +40,7 @@ npm install -g igniteui-cli
 ```
 
 ## Usage
-The main entry point is `igniteui` and is also aliased as `ig`. Both can be used interchangeably to call available commands.
+The main entry point is `igniteui` and is also aliased as `ig`. Both can be used interchangeably to call available commands. Check out our [Wiki documentation](https://github.com/IgniteUI/igniteui-cli/wiki) for more details.
 
 ### Step by step
 To get a guided experience through the available options, simply run:
@@ -48,8 +48,11 @@ To get a guided experience through the available options, simply run:
 ```bash
 ig
 ```
+![](assets/igniteui-cli.gif)
 
-Upon creation, projects will be automatically served on port 4200 for Angular project and can be accessed via http://localhost:4200/. **NOTE**: Port may vary for different project types. `ig start` will indicate what port to open the application under in the console.
+
+Upon creation, project will be automatically loaded in the default browser.
+**NOTE**: If that doesn't happen the port may be already in use. Ports vary for different project types, see the description for the [`ig start`](https://github.com/IgniteUI/igniteui-cli/wiki/Start) command for details on default ports.
 
 ### List the available commands.
 
@@ -84,6 +87,8 @@ ig build
 ig start
 ```
 ## Contribution
+
+See the [Contribution guide](https://github.com/IgniteUI/igniteui-cli/blob/master/.github/CONTRIBUTING.md) to get started.
 
 ### Run locally
 1. Clone the repository
