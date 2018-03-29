@@ -121,7 +121,7 @@ export default class  $(ClassName) extends Component {
 						{ headerText: "Last Name", key: "lastName", width: "220px", dataType: "string" },
 						{ headerText: "Reports To", key: "reportsTo", width: "130px", dataType: "number" }
 					]}
-					features={[$(treeGridFeatures)]}
+					features={$(treeGridFeatures)}
 				/>
 
 				<IgButton 
@@ -147,7 +147,7 @@ export default class  $(ClassName) extends Component {
 					childDataKey="products"
 					initialExpandDepth="1"
 					renderExpansionIndicatorColumn={true}
-					features={[$(treeGridFeatures)]}
+					features={$(treeGridFeatures)}
 					/>
 
 				<IgButton 

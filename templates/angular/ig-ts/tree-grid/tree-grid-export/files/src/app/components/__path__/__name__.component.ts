@@ -47,9 +47,7 @@ export class $(ClassName)Component {
 				{ headerText: "Reports To", key: "reportsTo", width: "130px", dataType: "number" }
 			],
 
-			features: [
-				$(treeGridFeatures)
-			]
+			features: $(treeGridFeatures)
 		};
 		this.gridOptions2 = {
 			id: "treegrid2",
