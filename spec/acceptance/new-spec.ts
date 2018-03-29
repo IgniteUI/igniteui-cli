@@ -5,13 +5,10 @@ import { Util } from "../../lib/Util";
 import { deleteAll, filesDiff, resetSpy } from "../helpers/utils";
 
 describe("New command", () => {
-	beforeAll(() => {
-		spyOn(GoogleAnalytics, "post");
-	});
-
 	beforeEach(() => {
 		spyOn(console, "log");
 		spyOn(console, "error");
+		spyOn(GoogleAnalytics, "post");
 		process.chdir("./output");
 	});
 
@@ -32,6 +29,18 @@ describe("New command", () => {
 		expect(JSON.parse(packageText).name).toEqual("jquery-proj");
 		expect(fs.existsSync("./jQuery Proj/.gitignore")).toBeTruthy();
 		this.testFolder = "./jQuery Proj";
+
+		expect(GoogleAnalytics.post).toHaveBeenCalledWith({cd: "$ig new", t: "screenview"});
+		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
+			{
+				t: "event",
+				// tslint:disable-next-line:object-literal-sort-keys
+				ec: "$ig new",
+				ea: "user parameters",
+				el: "project name: jQuery Proj; framework: jquery; project type: undefined; theme: undefined; skip-git: false"
+			});
+		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);
+
 		done();
 	});
 
@@ -80,6 +89,21 @@ describe("New command", () => {
 		fs.mkdirSync("testProj");
 		await cli.run(["new", "testProj"]);
 		expect(console.error).toHaveBeenCalledWith(jasmine.stringMatching(/Folder "testProj" already exists!/));
+		expect(GoogleAnalytics.post).toHaveBeenCalledWith({cd: "$ig new", t: "screenview"});
+		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
+			{
+				t: "event",
+				// tslint:disable-next-line:object-literal-sort-keys
+				ec: "$ig new",
+				ea: "user parameters",
+				el: "project name: testProj; framework: jquery; project type: undefined; theme: undefined; skip-git: false"
+			});
+		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
+			{
+				cd: "error: Folder \"testProj\" already exists!",
+				t: "screenview"
+			});
+		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(3);
 		fs.rmdirSync("testProj");
 
 		await cli.run(["new", "testProj2"]);

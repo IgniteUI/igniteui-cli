@@ -9,7 +9,8 @@ import { default as build } from "./build";
 let command: {
 	[name: string]: any,
 	templateManager: TemplateManager,
-	execute: (argv: any) => Promise<void>
+	execute: (argv: any) => Promise<void>,
+	start: (argv: any) => Promise<void>
 };
 // tslint:disable:object-literal-sort-keys
 command = {
@@ -18,7 +19,6 @@ command = {
 	builder: {},
 	templateManager: null,
 	async execute(argv) {
-
 		GoogleAnalytics.post({
 			t: "event",
 			ec: "$ig start",
@@ -26,8 +26,11 @@ command = {
 			el: "no user parameters"
 		});
 
+		command.start(argv);
+	},
+	async start(argv) {
 		//build
-		await build.execute({});
+		await build.build({});
 
 		const config = ProjectConfig.getConfig();
 		const framework = config.project.framework;

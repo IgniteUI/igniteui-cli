@@ -37,6 +37,13 @@ command = {
 		return true;
 	},
 	async execute(argv) {
+		GoogleAnalytics.post({
+			t: "event",
+			ec: "$ig add",
+			ea: "user parameters",
+			el: `template id: ${argv.template}; file name: ${argv.name}`
+		});
+
 		if (!ProjectConfig.hasLocalConfig()) {
 			Util.error("Add command is supported only on existing project created with igniteui-cli", "red");
 			return;
@@ -61,13 +68,6 @@ command = {
 			await prompts.chooseActionLoop(frameworkLibrary, config.project.theme);
 			return;
 		}
-
-		GoogleAnalytics.post({
-			t: "event",
-			ec: "$ig add",
-			ea: "user parameters",
-			el: `template id: ${argv.template}; file name: ${argv.name}`
-		});
 
 		if (!frameworkLibrary.hasTemplate(argv.template)) {
 			Util.error("Template doesn't exist in the current library", "red");

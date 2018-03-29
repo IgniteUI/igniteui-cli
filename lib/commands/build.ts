@@ -9,7 +9,8 @@ import { ProjectConfig } from "./../ProjectConfig";
 let command: {
 	[name: string]: any,
 	templateManager: TemplateManager,
-	execute: (argv: any) => Promise<void>
+	execute: (argv: any) => Promise<void>,
+	build: (argv: any) => Promise<void>
 };
 // tslint:disable:object-literal-sort-keys
 command = {
@@ -25,7 +26,9 @@ command = {
 			ea: "user parameters",
 			el: "no user parameters"
 		});
-
+		command.build(argv);
+	},
+	async build(argv?) {
 		Util.log("Build started.");
 		PackageManager.ensureIgniteUISource(true, command.templateManager);
 

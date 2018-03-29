@@ -314,7 +314,7 @@ export class PromptSession {
 			case "Complete & Run":
 			default:
 				if (true) { // TODO: Make conditional?
-					await start.execute({});
+					await start.start({});
 				}
 		}
 	}

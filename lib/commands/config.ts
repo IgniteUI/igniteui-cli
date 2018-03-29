@@ -44,7 +44,15 @@ const command = {
 					type: "string"
 				}
 			},
-			handler: command.addHandler
+			handler: argv => {
+				GoogleAnalytics.post({
+					ea: "subcommand: add",
+					ec: "$ig config",
+					el: `property to add: ${argv.property}, value to add: ${argv.value}, is global: ${argv.global}`,
+					t: "event"
+				});
+				command.addHandler(argv);
+			}
 		}).option("global", {
 			alias: "g",
 			type: "boolean",
@@ -104,13 +112,6 @@ const command = {
 		Util.log(`Property "${argv.property}" set.`);
 	},
 	addHandler(argv) {
-		GoogleAnalytics.post({
-			ea: "subcommand: add",
-			ec: "$ig config",
-			el: `property to add: ${argv.property}, value to add: ${argv.value}, is global: ${argv.global}`,
-			t: "event"
-		});
-
 		let config;
 
 		if (argv.global) {

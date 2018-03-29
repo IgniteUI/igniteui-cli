@@ -258,7 +258,7 @@ describe("Unit - PromptSession", () => {
 		spyOn(mockSession, "chooseActionLoop").and.callThrough();
 		spyOn(Util, "log");
 		spyOn(add, "addTemplate").and.returnValue(true);
-		spyOn(start, "execute").and.returnValue(Promise.resolve(true));
+		spyOn(start, "start").and.returnValue(Promise.resolve(true));
 		spyOn(inquirer, "prompt").and.returnValues(
 		Promise.resolve({ action: "Add component"}),
 		Promise.resolve({ componentGroup: "Custom Group 1"}),
@@ -272,7 +272,7 @@ describe("Unit - PromptSession", () => {
 		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(2);
 		expect(inquirer.prompt).toHaveBeenCalledTimes(7);
 		expect(Util.log).toHaveBeenCalledTimes(2);
-		expect(start.execute).toHaveBeenCalledTimes(1);
+		expect(start.start).toHaveBeenCalledTimes(1);
 		expect(add.addTemplate).toHaveBeenCalledTimes(1);
 		expect(inquirer.prompt).toHaveBeenCalledWith([{
 			type: "input",
@@ -314,7 +314,7 @@ describe("Unit - PromptSession", () => {
 		spyOn(mockSession, "chooseActionLoop").and.callThrough();
 		spyOn(Util, "log");
 		spyOn(add, "addTemplate").and.returnValue(true);
-		spyOn(start, "execute").and.returnValue(Promise.resolve(true));
+		spyOn(start, "start").and.returnValue(Promise.resolve(true));
 		spyOn(inquirer, "prompt").and.returnValues(
 		Promise.resolve({ action: "Add view"}),
 		Promise.resolve({ customTemplate: "Custom Template 1"}),
@@ -325,7 +325,7 @@ describe("Unit - PromptSession", () => {
 		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(2);
 		expect(inquirer.prompt).toHaveBeenCalledTimes(4);
 		expect(Util.log).toHaveBeenCalledTimes(2);
-		expect(start.execute).toHaveBeenCalledTimes(1);
+		expect(start.start).toHaveBeenCalledTimes(1);
 		expect(add.addTemplate).toHaveBeenCalledTimes(1);
 		expect(add.addTemplate).toHaveBeenCalledWith("Custom Template Name", [mockSelectedTemplate]);
 		done();
@@ -397,7 +397,7 @@ describe("Unit - PromptSession", () => {
 		spyOn(mockSession, "chooseActionLoop").and.callThrough();
 		spyOn(Util, "log");
 		spyOn(add, "addTemplate").and.returnValue(true);
-		spyOn(start, "execute").and.returnValue(Promise.resolve(true));
+		spyOn(start, "start").and.returnValue(Promise.resolve(true));
 		spyOn(inquirer, "prompt").and.returnValues(
 		Promise.resolve({ action: "Add component"}),
 		Promise.resolve({ componentGroup: "Custom Group 1"}),
@@ -411,7 +411,7 @@ describe("Unit - PromptSession", () => {
 		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(2);
 		expect(inquirer.prompt).toHaveBeenCalledTimes(7);
 		expect(Util.log).toHaveBeenCalledTimes(2);
-		expect(start.execute).toHaveBeenCalledTimes(1);
+		expect(start.start).toHaveBeenCalledTimes(1);
 		expect(add.addTemplate).toHaveBeenCalledTimes(1);
 		expect(inquirer.prompt).toHaveBeenCalledWith([{
 			type: "list",

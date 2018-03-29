@@ -10,13 +10,10 @@ import { PromptSession } from "./../../lib/PromptSession";
 describe("Add command", () => {
 	let testFolder = parse(__filename).name;
 
-	beforeAll(() => {
-		spyOn(GoogleAnalytics, "post");
-	});
-
 	beforeEach(() => {
 		spyOn(console, "log");
 		spyOn(console, "error");
+		spyOn(GoogleAnalytics, "post");
 
 		// test folder, w/ existing check:
 		while (fs.existsSync(`./output/${testFolder}`)) {
@@ -39,6 +36,21 @@ describe("Add command", () => {
 			jasmine.stringMatching(/Add command is supported only on existing project created with igniteui-cli\s*/)
 		);
 		expect(console.log).toHaveBeenCalledTimes(0);
+		expect(GoogleAnalytics.post).toHaveBeenCalledWith({cd: "$ig add", t: "screenview"});
+		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
+			{
+				t: "event",
+				// tslint:disable-next-line:object-literal-sort-keys
+				ec: "$ig add",
+				ea: "user parameters",
+				el: "template id: grid; file name: name"
+			});
+		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
+			{
+				cd: "error: Add command is supported only on existing project created with igniteui-cli",
+				t: "screenview"
+			});
+		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(3);
 
 		resetSpy(console.error);
 		await cli.run(["add"]);
@@ -210,6 +222,18 @@ describe("Add command", () => {
 		fs.removeSync("./src");
 
 		fs.unlinkSync(ProjectConfig.configFile);
+
+		expect(GoogleAnalytics.post).toHaveBeenCalledWith({cd: "$ig add", t: "screenview"});
+		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
+			{
+				t: "event",
+				// tslint:disable-next-line:object-literal-sort-keys
+				ec: "$ig add",
+				ea: "user parameters",
+				el: "template id: grid; file name: Test view"
+			});
+		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);
+
 		done();
 	});
 

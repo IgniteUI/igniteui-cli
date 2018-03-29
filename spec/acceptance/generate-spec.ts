@@ -12,13 +12,10 @@ describe("Generate command", () => {
 	let expectedTemplate: any;
 	let actualTemplate: any;
 
-	beforeAll(() => {
-		spyOn(GoogleAnalytics, "post");
-	});
-
 	beforeEach(() => {
 		spyOn(console, "log");
 		spyOn(console, "error");
+		spyOn(GoogleAnalytics, "post");
 
 		// test folder, w/ existing check:
 		while (fs.existsSync(`./output/${testFolder}`)) {
@@ -78,6 +75,15 @@ describe("Generate command", () => {
 			projectType: "js"
 		};
 		expect(expectedTemplate).toEqual(actualTemplate);
+		expect(GoogleAnalytics.post).toHaveBeenCalledWith({ cd: "$ig generate", t: "screenview" });
+		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
+			{
+				ea: "subcommand: template",
+				ec: "$ig generate",
+				el: "template name: custom-template; framework: jquery;project type: undefined; skip-config: false",
+				t: "event"
+			});
+		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);
 		done();
 	});
 
