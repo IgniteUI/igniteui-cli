@@ -1,12 +1,12 @@
 import * as path from "path";
+import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 import { ReactTemplate } from "../../../../../lib/templates/ReactTemplate";
 import { Util } from "../../../../../lib/Util";
-//TODO:
-import { TreeGridFeatureHelper } from "../../../../jquery/js/tree-grid/treegridfeaturehelper";
 
 class TreeGridExportTemplate extends ReactTemplate {
 	public extraConfigurations: ControlExtraConfiguration[] = [];
 	public userExtraConfiguration: {} = {};
+	private gridHelper: GridHelper;
 	/**
 	 *
 	 */
@@ -21,6 +21,8 @@ class TreeGridExportTemplate extends ReactTemplate {
 		this.controlGroup = "Data Grids";
 		this.dependencies = ["igTreeGrid"];
 
+		this.gridHelper = new GridHelper();
+		this.gridHelper.tree = true;
 		this.hasExtraConfiguration = true;
 		this.extraConfigurations.push({
 			choices: ["Filtering", "Hiding"],
@@ -32,7 +34,7 @@ class TreeGridExportTemplate extends ReactTemplate {
 	}
 
 	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
-		const features = TreeGridFeatureHelper.generateFeatures(this.userExtraConfiguration["features"]);
+		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 5);
 		const config = { "$(treeGridFeatures)": features };
 		return super.generateFiles(projectPath, name, { extraConfig : config });
 	}

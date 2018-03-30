@@ -32,29 +32,7 @@ export class $(ClassName)Component {
 				{ headerText: "Progress", key: "progress", width: "10%", dataType: "string" }
 			],
 
-			features: [
-				{
-					name: "Updating",
-					columnSettings: [
-						{
-							columnKey: "progress",
-							editorType: "currency",
-							editorOptions: {
-								buttonType: "spin"
-							}
-						},
-						{
-							columnKey: "start",
-							editorType: "datepicker"
-						},
-						{
-							columnKey: "finish",
-							editorType: "datepicker"
-						}
-					]
-				},
-				$(treeGridFeatures)
-			]
+			features: $(treeGridFeatures)
 		};
 	}
 }

@@ -22,6 +22,7 @@ class HierarchicalGridTemplate extends AngularTemplate {
 		this.listInComponentTemplates = true;
 
 		this.gridHelper = new GridHelper();
+		this.gridHelper.hierarchical = true;
 		const featureConfiguration: ControlExtraConfiguration = {
 			choices: ["Sorting", "Paging", "Filtering"],
 			default: "",
