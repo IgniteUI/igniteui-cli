@@ -43,7 +43,7 @@ class GoogleAnalytics implements GoogleAnalytics {
 		parameters.an = "igniteui-cli";
 
 		//	set user agent string. We are using this for detecting the user's OS.
-		//	as well as node version. The latest is set as browsert version.
+		//	as well as node version. The latest is set as browser version.
 		const nodeVersion = process.version;
 		const os = this.getOsForUserAgent();
 		const npmVersion = this.getNpmVersion();

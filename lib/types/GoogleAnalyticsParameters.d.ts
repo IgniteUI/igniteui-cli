@@ -9,7 +9,7 @@ interface GoogleAnalyticsParameters {
 	cd?: string;
 
 	/** Ths could be:
-	 * - 'subbcomand [subcomand name]' for command with subcommands;
+	 * - 'subcommand [subcommand name]' for command with subcommands;
 	 * - 'user parameters' for simple commands;
 	 * - the question form the wizard for the wizard command; */
 	ea?: string;
@@ -34,7 +34,7 @@ interface GoogleAnalyticsParameters {
 	 *  All collected data is associated by this ID. */
 	tid?: string;
 
-	/** User Agent. We will porvide here node version as browswer version and the user OS. */
+	/** User Agent. We will provide here node version as browser version and the user OS. */
 	ua?: string;
 
 	/** User unique ID. */
