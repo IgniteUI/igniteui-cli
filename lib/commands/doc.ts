@@ -1,5 +1,5 @@
 import * as opn from "opn";
-import { GoogleAnalytics } from "../GoogleAnalytic";
+import { GoogleAnalytic } from "../GoogleAnalytic";
 import { PromptSession } from "../PromptSession";
 import { Util } from "../Util";
 
@@ -23,7 +23,7 @@ doc = {
 	},
 	async execute(argv) {
 
-		GoogleAnalytics.post({
+		GoogleAnalytic.post({
 			t: "event",
 			ec: "$ig doc",
 			ea: "user parameters",

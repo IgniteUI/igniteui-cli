@@ -1,11 +1,11 @@
 import { default as configCmd } from "../../lib/commands/config";
-import { GoogleAnalytics } from "../../lib/GoogleAnalytic";
+import { GoogleAnalytic } from "../../lib/GoogleAnalytic";
 import { ProjectConfig } from "../../lib/ProjectConfig";
 import { Util } from "../../lib/Util";
 
 describe("Unit - Config command", () => {
 	beforeAll(() => {
-		spyOn(GoogleAnalytics, "post");
+		spyOn(GoogleAnalytic, "post");
 	});
 
 	describe("Get", () => {

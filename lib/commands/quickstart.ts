@@ -1,7 +1,7 @@
 import * as fs from "fs-extra";
 import * as liteServer from "lite-server";
 import * as path from "path";
-import { GoogleAnalytics } from "../GoogleAnalytic";
+import { GoogleAnalytic } from "../GoogleAnalytic";
 import { Util } from "../Util";
 
 // TODO: remove. exec blocks main stdio!
@@ -21,7 +21,7 @@ const command = {
 		}
 	},
 	async execute(argv) {
-		GoogleAnalytics.post({
+		GoogleAnalytic.post({
 			t: "event",
 			ec: "$ig quickstart",
 			ea: "user parameters",

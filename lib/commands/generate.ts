@@ -1,6 +1,6 @@
 import { utimes } from "fs-extra";
 import * as path from "path";
-import { GoogleAnalytics } from "../GoogleAnalytic";
+import { GoogleAnalytic } from "../GoogleAnalytic";
 import { TemplateManager } from "../TemplateManager";
 import { Util } from "../Util";
 import { default as config } from "./config";
@@ -48,7 +48,7 @@ const command = {
 			.demandCommand(1, "Please select command");
 	},
 	async template(argv) {
-		GoogleAnalytics.post({
+		GoogleAnalytic.post({
 			ea: "subcommand: template",
 			ec: "$ig generate",
 			el: `template name: ${argv.name}; framework: ${argv.framework};` +

@@ -1,6 +1,6 @@
 import * as liteServ from "lite-server";
 import { exec } from "shelljs";
-import { GoogleAnalytics } from "../GoogleAnalytic";
+import { GoogleAnalytic } from "../GoogleAnalytic";
 import { TemplateManager } from "../TemplateManager";
 import { Util } from "../Util";
 import { ProjectConfig } from "./../ProjectConfig";
@@ -19,12 +19,17 @@ command = {
 	builder: {},
 	templateManager: null,
 	async execute(argv) {
-		GoogleAnalytics.post({
+		GoogleAnalytic.post({
 			t: "event",
 			ec: "$ig start",
 			ea: "user parameters",
 			el: "no user parameters"
 		});
+
+		if (!ProjectConfig.hasLocalConfig()) {
+			Util.error("Start command is supported only on existing project created with igniteui-cli", "red");
+			return;
+		}
 
 		command.start(argv);
 	},

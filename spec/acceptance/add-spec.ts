@@ -2,7 +2,7 @@ import { spawnSync } from "child_process";
 import * as fs from "fs-extra";
 import { parse } from "path";
 import cli = require("../../lib/cli");
-import { GoogleAnalytics } from "../../lib/GoogleAnalytic";
+import { GoogleAnalytic } from "../../lib/GoogleAnalytic";
 import { ProjectConfig } from "../../lib/ProjectConfig";
 import { resetSpy } from "../helpers/utils";
 import { PromptSession } from "./../../lib/PromptSession";
@@ -13,7 +13,7 @@ describe("Add command", () => {
 	beforeEach(() => {
 		spyOn(console, "log");
 		spyOn(console, "error");
-		spyOn(GoogleAnalytics, "post");
+		spyOn(GoogleAnalytic, "post");
 
 		// test folder, w/ existing check:
 		while (fs.existsSync(`./output/${testFolder}`)) {
@@ -36,8 +36,8 @@ describe("Add command", () => {
 			jasmine.stringMatching(/Add command is supported only on existing project created with igniteui-cli\s*/)
 		);
 		expect(console.log).toHaveBeenCalledTimes(0);
-		expect(GoogleAnalytics.post).toHaveBeenCalledWith({cd: "$ig add", t: "screenview"});
-		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
+		expect(GoogleAnalytic.post).toHaveBeenCalledWith({cd: "$ig add", t: "screenview"});
+		expect(GoogleAnalytic.post).toHaveBeenCalledWith(
 			{
 				t: "event",
 				// tslint:disable-next-line:object-literal-sort-keys
@@ -45,12 +45,12 @@ describe("Add command", () => {
 				ea: "user parameters",
 				el: "template id: grid; file name: name"
 			});
-		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
+		expect(GoogleAnalytic.post).toHaveBeenCalledWith(
 			{
 				cd: "error: Add command is supported only on existing project created with igniteui-cli",
 				t: "screenview"
 			});
-		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(3);
+		expect(GoogleAnalytic.post).toHaveBeenCalledTimes(3);
 
 		resetSpy(console.error);
 		await cli.run(["add"]);
@@ -223,8 +223,8 @@ describe("Add command", () => {
 
 		fs.unlinkSync(ProjectConfig.configFile);
 
-		expect(GoogleAnalytics.post).toHaveBeenCalledWith({cd: "$ig add", t: "screenview"});
-		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
+		expect(GoogleAnalytic.post).toHaveBeenCalledWith({cd: "$ig add", t: "screenview"});
+		expect(GoogleAnalytic.post).toHaveBeenCalledWith(
 			{
 				t: "event",
 				// tslint:disable-next-line:object-literal-sort-keys
@@ -232,7 +232,7 @@ describe("Add command", () => {
 				ea: "user parameters",
 				el: "template id: grid; file name: Test view"
 			});
-		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);
+		expect(GoogleAnalytic.post).toHaveBeenCalledTimes(2);
 
 		done();
 	});

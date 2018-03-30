@@ -1,7 +1,7 @@
-import { GoogleAnalytics } from "../lib/GoogleAnalytic";
+import { GoogleAnalytic } from "../lib/GoogleAnalytic";
 
 function uninstall() {
-	GoogleAnalytics.post({
+	GoogleAnalytic.post({
 		cd: `uninstall global: ${!!process.env.npm_config_global}`,
 		t: "screenview"
 	});

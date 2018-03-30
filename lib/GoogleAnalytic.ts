@@ -6,13 +6,13 @@ import * as qs from "querystring";
 import { ProjectConfig } from "./ProjectConfig";
 import { Util } from "./Util";
 
-class GoogleAnalytics implements GoogleAnalytics {
-	private static userDataFolder: string = process.env.APPDATA ||
+class GoogleAnalytic implements GoogleAnalytic {
+	protected static userDataFolder: string = process.env.APPDATA ||
 		(process.platform === "darwin" ? process.env.HOME + "Library/Preferences" : "/var/local");
-	private static appFolder = "igniteui-cli";
-	private static userSettings: string = "user-settings.json";
-	private static appVersion: string;
-	private static npmVersion: string;
+	protected static appFolder = "igniteui-cli";
+	protected static userSettings: string = "user-settings.json";
+	protected static appVersion: string;
+	protected static npmVersion: string;
 
 	/**
 	 * Generates http post request with provided parameters and sends it to GA
@@ -20,7 +20,7 @@ class GoogleAnalytics implements GoogleAnalytics {
 	 */
 	public static post(parameters: GoogleAnalyticsParameters) {
 		const config = ProjectConfig.getConfig();
-		if (config.skipAnalytics) {
+		if (config.skipAnalytic) {
 			return;
 		}
 
@@ -64,7 +64,7 @@ class GoogleAnalytics implements GoogleAnalytics {
 		req.end();
 	}
 
-	private static getUUID(): string {
+	protected static getUUID(): string {
 		const absolutePath = path.join(this.userDataFolder, this.appFolder, this.userSettings);
 		let UUID = "";
 		if (fs.existsSync(absolutePath)) {
@@ -82,7 +82,7 @@ class GoogleAnalytics implements GoogleAnalytics {
 		return UUID;
 	}
 
-	private static getMachineID(): string {
+	protected static getMachineID(): string {
 		const platform = process.platform;
 		let result: string = "";
 
@@ -117,7 +117,7 @@ class GoogleAnalytics implements GoogleAnalytics {
 		}
 	}
 
-	private static getOsForUserAgent(): string {
+	protected static getOsForUserAgent(): string {
 		const platform = process.platform;
 		switch (platform) {
 			case "darwin":
@@ -133,7 +133,7 @@ class GoogleAnalytics implements GoogleAnalytics {
 		}
 	}
 
-	private static getNpmVersion(): string {
+	protected static getNpmVersion(): string {
 		if (!this.npmVersion) {
 			this.npmVersion = "";
 			const buffer = execSync("npm -v");
@@ -147,10 +147,10 @@ class GoogleAnalytics implements GoogleAnalytics {
 	}
 }
 
-export { GoogleAnalytics };
+export { GoogleAnalytic };
 
 process.on("uncaughtException", err => {
-	GoogleAnalytics.post({
+	GoogleAnalytic.post({
 		exd: err.message,
 		t: "exception"
 	});

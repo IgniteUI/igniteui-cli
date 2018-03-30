@@ -1,4 +1,4 @@
-import { GoogleAnalytics } from "../GoogleAnalytic";
+import { GoogleAnalytic } from "../GoogleAnalytic";
 import { ProjectConfig } from "../ProjectConfig";
 import { Util } from "../Util";
 
@@ -14,13 +14,21 @@ const command = {
 	},
 	async execute(argv) {
 
-		GoogleAnalytics.post({
+		GoogleAnalytic.post({
 			t: "event",
 			ec: "$ig test",
 			ea: "user parameters",
 			el: `e2e: ${argv.e2e};`
 		});
 
+		if (!ProjectConfig.hasLocalConfig()) {
+			Util.error("Test command is supported only on existing project created with igniteui-cli", "red");
+			return;
+		}
+
+		command.test(argv);
+	},
+	async test(argv) {
 		const projConfig = ProjectConfig.getConfig().project;
 		if (argv.e2e && projConfig.framework === "angular" && projConfig.projectType === "igx-ts") {
 			Util.exec("npm run e2e", { stdio: "inherit" });

@@ -1,4 +1,4 @@
-import { GoogleAnalytics } from "../GoogleAnalytic";
+import { GoogleAnalytic } from "../GoogleAnalytic";
 import { Util } from "../Util";
 import { ProjectConfig } from "./../ProjectConfig";
 
@@ -45,7 +45,7 @@ const command = {
 				}
 			},
 			handler: argv => {
-				GoogleAnalytics.post({
+				GoogleAnalytic.post({
 					ea: "subcommand: add",
 					ec: "$ig config",
 					el: `property to add: ${argv.property}, value to add: ${argv.value}, is global: ${argv.global}`,
@@ -64,7 +64,7 @@ const command = {
 	},
 	// tslint:enable:object-literal-sort-keys
 	getHandler(argv) {
-		GoogleAnalytics.post({
+		GoogleAnalytic.post({
 			ea: "subcommand: get",
 			ec: "$ig config",
 			el: `property to get: ${argv.property}, is global: ${argv.global}`,
@@ -83,7 +83,7 @@ const command = {
 		}
 	},
 	setHandler(argv) {
-		GoogleAnalytics.post({
+		GoogleAnalytic.post({
 			ea: "subcommand: set",
 			ec: "$ig config",
 			el: `property to set: ${argv.property}, value to set: ${argv.value}, is global: ${argv.global}`,

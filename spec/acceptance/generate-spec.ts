@@ -2,7 +2,7 @@ import * as fs from "fs";
 import * as os from "os";
 import * as path from "path";
 import cli = require("../../lib/cli");
-import { GoogleAnalytics } from "../../lib/GoogleAnalytic";
+import { GoogleAnalytic } from "../../lib/GoogleAnalytic";
 import { ProjectConfig } from "../../lib/ProjectConfig";
 import { Util } from "../../lib/Util";
 import { deleteAll } from "../helpers/utils";
@@ -15,7 +15,7 @@ describe("Generate command", () => {
 	beforeEach(() => {
 		spyOn(console, "log");
 		spyOn(console, "error");
-		spyOn(GoogleAnalytics, "post");
+		spyOn(GoogleAnalytic, "post");
 
 		// test folder, w/ existing check:
 		while (fs.existsSync(`./output/${testFolder}`)) {
@@ -75,15 +75,15 @@ describe("Generate command", () => {
 			projectType: "js"
 		};
 		expect(expectedTemplate).toEqual(actualTemplate);
-		expect(GoogleAnalytics.post).toHaveBeenCalledWith({ cd: "$ig generate", t: "screenview" });
-		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
+		expect(GoogleAnalytic.post).toHaveBeenCalledWith({ cd: "$ig generate", t: "screenview" });
+		expect(GoogleAnalytic.post).toHaveBeenCalledWith(
 			{
 				ea: "subcommand: template",
 				ec: "$ig generate",
 				el: "template name: custom-template; framework: jquery;project type: undefined; skip-config: false",
 				t: "event"
 			});
-		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);
+		expect(GoogleAnalytic.post).toHaveBeenCalledTimes(2);
 		done();
 	});
 

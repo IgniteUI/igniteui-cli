@@ -1,13 +1,13 @@
 import * as fs from "fs";
 import * as ts from "typescript";
-import { GoogleAnalytics } from "../../../lib/GoogleAnalytic";
+import { GoogleAnalytic } from "../../../lib/GoogleAnalytic";
 import { TypeScriptFileUpdate } from "../../../lib/project-utility/TypeScriptFileUpdate";
 import { TypeScriptUtils } from "../../../lib/project-utility/TypeScriptUtils";
 import { Util } from "../../../lib/Util";
 
 describe("Unit - TypeScriptFileUpdate", () => {
 	beforeAll(() => {
-		spyOn(GoogleAnalytics, "post");
+		spyOn(GoogleAnalytic, "post");
 	});
 
 	describe("Initialization", () => {

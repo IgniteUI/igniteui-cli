@@ -3,7 +3,7 @@ import * as inquirer from "inquirer";
 import * as path from "path";
 import { default as add } from "../../lib/commands/add";
 import { default as start } from "../../lib/commands/start";
-import { GoogleAnalytics } from "../../lib/GoogleAnalytic";
+import { GoogleAnalytic } from "../../lib/GoogleAnalytic";
 import { ProjectConfig } from "../../lib/ProjectConfig";
 import { PromptSession } from "../../lib/PromptSession";
 import { TemplateManager } from "../../lib/TemplateManager";
@@ -11,7 +11,7 @@ import { Util } from "../../lib/Util";
 
 describe("Unit - PromptSession", () => {
 	beforeAll(() => {
-		spyOn(GoogleAnalytics, "post");
+		spyOn(GoogleAnalytic, "post");
 	});
 
 	it("chooseTerm - Should call itself if no term is passed.", async done => {
