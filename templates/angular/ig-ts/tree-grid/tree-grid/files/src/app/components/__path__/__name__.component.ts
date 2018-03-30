@@ -31,9 +31,7 @@ export class $(ClassName)Component {
 				{ headerText: "Progress", key: "progress", width: "10%", dataType: "string" }
 			],
 
-			features: [
-				$(treeGridFeatures)
-			]
+			features: $(treeGridFeatures)
 		};
 	}
 }

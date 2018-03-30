@@ -1,9 +1,10 @@
 import * as path from "path";
+import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 import { AngularTemplate } from "../../../../../lib/templates/AngularTemplate";
 import { Util } from "../../../../../lib/Util";
-import { TreeGridFeatureHelper } from "../../../../jquery/js/tree-grid/treegridfeaturehelper";
 
 class TreeGridFileExplorerTemplate extends AngularTemplate {
+	private gridHelper: GridHelper;
 	private extraConfigurations: ControlExtraConfiguration[];
 	private userExtraConfiguration = {};
 
@@ -16,9 +17,13 @@ class TreeGridFileExplorerTemplate extends AngularTemplate {
 		this.description = "Tree Grid file explorer template for Angular";
 		this.dependencies = ["igTreeGrid"];
 		this.projectType = "ig-ts";
-		this.listInComponentTemplates = true;
+		this.listInComponentTemplates = false;
+		this.listInCustomTemplates = true;
 		this.hasExtraConfiguration = true;
 		this.extraConfigurations = [];
+
+		this.gridHelper = new GridHelper();
+		this.gridHelper.tree = true;
 		const featureConfiguration: ControlExtraConfiguration = {
 			choices: ["Sorting"],
 			default: "",
@@ -34,7 +39,26 @@ class TreeGridFileExplorerTemplate extends AngularTemplate {
 	}
 
 	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
-		const features = TreeGridFeatureHelper.generateFeatures(this.userExtraConfiguration["features"]);
+		this.gridHelper.addFeature("Selection", { multipleSelection: true });
+		this.gridHelper.updateFeature("RowSelectors", {
+			checkBoxMode: "biState",
+			enableCheckBoxes: true,
+			enableRowNumbering: false,
+			enableSelectAllForPaging: true,
+			rowSelectorColumnWidth: null
+		});
+		this.gridHelper.addFeature("Filtering", {
+			columnSettings: [{
+				columnKey: "dateModified",
+				condition: "after"
+			},
+			{
+				columnKey: "size",
+				condition: "greaterThan"
+			}]
+		});
+		this.gridHelper.addFeature("Paging", { pageSize: 4, mode: "rootLevelOnly" });
+		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 3);
 		const config = { "$(treeGridFeatures)": features };
 		return super.generateFiles(projectPath, name, { extraConfig : config });
 	}
