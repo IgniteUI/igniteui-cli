@@ -11,6 +11,8 @@ export class TypeScriptFileUpdate {
 	// http://blog.scottlogic.com/2017/05/02/typescript-compiler-api-revisited.html
 	// for AST transformation API List: https://github.com/Microsoft/TypeScript/pull/13940
 
+	protected formatOptions = { spaces: false, indentSize: 4, singleQuotes: false };
+
 	private targetSource: ts.SourceFile;
 	private importsMeta: { lastIndex: number, modulePaths: string[] };
 
@@ -20,6 +22,8 @@ export class TypeScriptFileUpdate {
 		imports: Array<{ name: string, root: boolean }>,
 		providers: string[]
 	};
+
+	private createdStringLiterals: string[];
 
 	/** Create updates for a file. Use `add<X>` methods to add transformations and `finalize` to apply and save them. */
 	constructor(private targetPath: string) {
@@ -80,7 +84,7 @@ export class TypeScriptFileUpdate {
 				}
 				return node;
 			}
-			function visitRoutesVariable(node: ts.Node): ts.Node {
+			const visitRoutesVariable = (node: ts.Node): ts.Node => {
 				if (node.kind === ts.SyntaxKind.ArrayLiteralExpression) {
 					const array = (node as ts.ArrayLiteralExpression);
 
@@ -89,6 +93,7 @@ export class TypeScriptFileUpdate {
 					const routeDataInner =  ts.createPropertyAssignment("text", ts.createLiteral(linkText));
 					const routeData = ts.createPropertyAssignment("data", ts.createObjectLiteral([routeDataInner]));
 					const newObject = ts.createObjectLiteral([routePath, routeComponent, routeData]);
+					this.createdStringLiterals.push(linkPath, linkText);
 
 					const elements = ts.createNodeArray([
 						...ts.visitNodes(array.elements, visitor),
@@ -99,7 +104,7 @@ export class TypeScriptFileUpdate {
 				} else {
 					return ts.visitEachChild(node, visitRoutesVariable, context);
 				}
-			}
+			};
 			context.enableSubstitution(ts.SyntaxKind.ClassDeclaration);
 			return ts.visitNode(rootNode, visitor);
 		};
@@ -166,6 +171,7 @@ export class TypeScriptFileUpdate {
 			imports: [],
 			providers: []
 		};
+		this.createdStringLiterals = [];
 	}
 
 	/* load some metadata about imports */
@@ -230,6 +236,7 @@ export class TypeScriptFileUpdate {
 			...newImports.map(x => TsUtils.createIdentifierImport(x.imports, x.from)),
 			...this.targetSource.statements.slice(this.importsMeta.lastIndex)
 		]);
+		newImports.forEach(x => this.createdStringLiterals.push(x.from));
 
 		this.targetSource = ts.updateSourceFileNode(this.targetSource, newStatements);
 	}
@@ -382,12 +389,59 @@ export class TypeScriptFileUpdate {
 		// formatting via LanguageService https://github.com/Microsoft/TypeScript/wiki/Using-the-Compiler-API
 		// https://github.com/Microsoft/TypeScript/issues/1651
 
-		const text = fs.readFileSync(filePath).toString();
+		let text = fs.readFileSync(filePath).toString();
 		// create the language service files
 		const services = ts.createLanguageService(this.getLanguageHost(filePath), ts.createDocumentRegistry());
 
+		this.readFormatConfigs();
 		const textChanges = services.getFormattingEditsForDocument(filePath, this.getFormattingOptions());
-		fs.writeFileSync(filePath, this.applyChanges(text, textChanges));
+		text = this.applyChanges(text, textChanges);
+
+		if (this.formatOptions.singleQuotes) {
+			for (const str of this.createdStringLiterals) {
+				// there shouldn't be duplicate strings of these
+				text = text.replace(`"${str}"`, `'${str}'`);
+			}
+		}
+
+		fs.writeFileSync(filePath, text);
+	}
+
+	/**  Try and parse formatting from project `.editorconfig` / `tslint.json` */
+	protected readFormatConfigs() {
+		if (fs.existsSync(".editorconfig")) {
+			// very basic parsing support
+			const text = fs.readFileSync(".editorconfig", "utf-8");
+			const options = text
+				.replace(/\s*[#;].*([\r\n])/g, "$1") //remove comments
+				.replace(/\[(?!\*\]|\*.ts).+\][^\[]+/g, "") // leave [*]/[*.ts] sections
+				.split(/\r\n|\r|\n/)
+				.reduce((obj, x) => {
+					if (x.indexOf("=") !== -1) {
+						const pair = x.split("=");
+						obj[pair[0].trim()] = pair[1].trim();
+					}
+					return obj;
+				}, {});
+
+			this.formatOptions.spaces = options["indent_style"] === "space";
+			if (options["indent_size"]) {
+				this.formatOptions.indentSize = parseInt(options["indent_size"], 10) || this.formatOptions.indentSize;
+			}
+		}
+		if (fs.existsSync("tslint.json")) {
+			// tslint prio - overrides other settings
+			const options = JSON.parse(fs.readFileSync("tslint.json", "utf-8"));
+			if (options.rules && options.rules.indent && options.rules.indent[0]) {
+				this.formatOptions.spaces = options.rules.indent[1] === "spaces";
+				if (options.rules.indent[2]) {
+					this.formatOptions.indentSize = parseInt(options.rules.indent[2], 10);
+				}
+			}
+			if (options.rules && options.rules.quotemark && options.rules.quotemark[0]) {
+				this.formatOptions.singleQuotes = options.rules.quotemark.indexOf("single") !== -1;
+			}
+		}
 	}
 
 	/**
@@ -408,10 +462,10 @@ export class TypeScriptFileUpdate {
 	/** Return source file formatting options */
 	private getFormattingOptions(): ts.FormatCodeSettings {
 		const formatOptions: ts.FormatCodeSettings  = {
-			indentSize: 4,
+			indentSize: this.formatOptions.indentSize,
 			tabSize: 4,
 			// tslint:disable-next-line:object-literal-sort-keys
-			convertTabsToSpaces: false,
+			convertTabsToSpaces: this.formatOptions.spaces,
 			newLineCharacter: ts.sys.newLine,
 			indentStyle: ts.IndentStyle.Smart,
 			insertSpaceAfterCommaDelimiter: true,
@@ -420,7 +474,7 @@ export class TypeScriptFileUpdate {
 			insertSpaceAfterKeywordsInControlFlowStatements: true,
 			insertSpaceAfterTypeAssertion: true
 		};
-		// TODO: these can be updated from project TSLint or other configuration
+
 		return formatOptions;
 	}
 

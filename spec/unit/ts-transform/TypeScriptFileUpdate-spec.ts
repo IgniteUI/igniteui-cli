@@ -402,6 +402,12 @@ describe("Unit - TypeScriptFileUpdate", () => {
 		const unformattedSource = fs.readFileSync("spec/unit/ts-transform/unformatted.ts-template", "utf-8");
 		const formattedSource = fs.readFileSync("spec/unit/ts-transform/formatted.ts-template", "utf-8");
 		const writeSpy = spyOn(fs, "writeFileSync");
+		spyOn(fs, "existsSync").and.callFake(filePath => {
+			if (filePath === "spec/unit/ts-transform/unformatted.ts-template") {
+				return true;
+			}
+			return false;
+		});
 
 		const tsUpdate = new TypeScriptFileUpdate("spec/unit/ts-transform/unformatted.ts-template");
 		tsUpdate.finalize();
@@ -416,6 +422,77 @@ describe("Unit - TypeScriptFileUpdate", () => {
 		// 	formattedSource
 		// );
 		expect(writeSpy.calls.mostRecent().args[1]).toEqual(formattedSource);
+		done();
+	});
+
+	it("Format applies editorconfig/tslint settings", async done => {
+		class TestTsFileUpdate extends TypeScriptFileUpdate {
+			public getFormatting() {
+				return this.formatOptions;
+			}
+			public readFormatConfigs() {
+				super.readFormatConfigs();
+			}
+		}
+		const existsSpy = spyOn(fs, "existsSync");
+		existsSpy.and.callFake(filePath => {
+			if (filePath !== "tslint.json") {
+				// "spec/unit/ts-transform/unformatted.ts-template":
+				// ".editorconfig":
+					return true;
+			}
+			return false;
+		});
+		let testTslint = null;
+		const readsSpy = spyOn(fs, "readFileSync").and.callFake((filePath, opt) => {
+			if (filePath === ".editorconfig") {
+				return `# Editor configuration, see http://editorconfig.org
+				root = true
+
+				[*]
+				charset = utf-8
+				indent_style = space
+				indent_size = 4
+
+				[*.comments]
+				#nothing in this section
+
+				[*.ts]
+				indent_size = 2
+				`;
+			} else if (testTslint && filePath === "tslint.json") {
+				return JSON.stringify(testTslint);
+			}
+			return "";
+		});
+
+		const tsUpdate = new TestTsFileUpdate("spec/unit/ts-transform/unformatted.ts-template");
+		tsUpdate.readFormatConfigs();
+		expect(tsUpdate.getFormatting().indentSize).toEqual(2);
+		expect(tsUpdate.getFormatting().spaces).toEqual(true);
+		expect(tsUpdate.getFormatting().singleQuotes).toEqual(false);
+
+		// with tslint
+		existsSpy.and.returnValue(true);
+		testTslint = {
+			rules: {
+				"prefer-const": true,
+				"quotemark": [ true, "single" ]
+			}
+		};
+		tsUpdate.readFormatConfigs();
+		expect(tsUpdate.getFormatting().singleQuotes).toEqual(true);
+
+		testTslint.rules["indent"] = [ true, "spaces", 4 ];
+		tsUpdate.readFormatConfigs();
+		expect(tsUpdate.getFormatting().indentSize).toEqual(4);
+		expect(tsUpdate.getFormatting().spaces).toEqual(true);
+
+		testTslint.rules["indent"] = [ true, "tabs", 2 ];
+		tsUpdate.readFormatConfigs();
+		expect(tsUpdate.getFormatting().indentSize).toEqual(2);
+		expect(tsUpdate.getFormatting().spaces).toEqual(false);
+
 		done();
 	});
 
