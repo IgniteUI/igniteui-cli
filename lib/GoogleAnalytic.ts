@@ -1,5 +1,5 @@
 import { execSync } from "child_process";
-// import * as crypto from "crypto";
+import { createHash} from "crypto";
 import * as fs from "fs";
 import * as path from "path";
 import * as qs from "querystring";
@@ -92,29 +92,30 @@ class GoogleAnalytic implements GoogleAnalytic {
 					.split("IOPlatformUUID")[1]
 					.split("\n")[0].replace(/\=|\s+|\"/ig, "")
 					.toLowerCase();
-				return result;
+				break;
 			case "win32":
 				result = execSync("REG QUERY HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Cryptography /v MachineGuid")
 					.toString()
 					.split("REG_SZ")[1]
 					.replace(/\r+|\n+|\s+/ig, "")
 					.toLowerCase();
-				return result;
+				break;
 			case "linux":
 				result =
 					execSync("( cat /var/lib/dbus/machine-id /etc/machine-id 2> /dev/null || hostname ) | head -n 1 || :")
-					.toString()
-					.replace(/\r+|\n+|\s+/ig, "")
-					.toLowerCase();
-				return result;
+						.toString()
+						.replace(/\r+|\n+|\s+/ig, "")
+						.toLowerCase();
+				break;
 			case "freebsd":
 				result = execSync("kenv -q smbios.system.uuid").toString()
 					.replace(/\r+|\n+|\s+/ig, "")
 					.toLowerCase();
-				return result;
-			default:
-				return result;
+				break;
 		}
+
+		result = createHash("sha256").update(result).digest("hex");
+		return result;
 	}
 
 	protected static getOsForUserAgent(): string {
