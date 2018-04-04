@@ -13,6 +13,7 @@ class GoogleAnalytic implements GoogleAnalytic {
 	protected static userSettings: string = "user-settings.json";
 	protected static appVersion: string;
 	protected static npmVersion: string;
+	protected static trackingID = "UA-392932-23";
 
 	/**
 	 * Generates http post request with provided parameters and sends it to GA
@@ -28,7 +29,7 @@ class GoogleAnalytic implements GoogleAnalytic {
 		parameters.v = 1;
 
 		// set the Tracking ID
-		parameters.tid = "UA-115760770-1";
+		parameters.tid = this.trackingID;
 
 		// set application version if not set beforehand
 		if (!parameters.av) {
