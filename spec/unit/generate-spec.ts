@@ -3,12 +3,17 @@ import * as os from "os";
 import * as path from "path";
 import { default as config } from "../../lib/commands/config";
 import { default as generateCmd } from "../../lib/commands/generate";
+import { GoogleAnalytic } from "../../lib/GoogleAnalytic";
 import { ProjectConfig } from "../../lib/ProjectConfig";
 import { Util } from "../../lib/Util";
 import { deleteAll } from "../helpers/utils";
 
 describe("Unit - Generate command", () => {
 	let testFolder = path.parse(__filename).name;
+
+	beforeAll(() => {
+		spyOn(GoogleAnalytic, "post");
+	});
 
 	beforeEach(() => {
 		// test folder, w/ existing check:

@@ -1,3 +1,4 @@
+import { GoogleAnalytic } from "../GoogleAnalytic";
 import { ProjectConfig } from "../ProjectConfig";
 import { TemplateManager } from "../TemplateManager";
 import { Util } from "../Util";
@@ -30,6 +31,13 @@ command = {
 	},
 	templateManager: null,
 	execute(argv) {
+		GoogleAnalytic.post({
+			t: "event",
+			ec: "$ig list",
+			ea: "user parameters",
+			el: `framework: ${argv.framework}; project type: ${argv.type}`
+		});
+
 		let inProject = false;
 		const viewsGroupName = "Views";
 		if (ProjectConfig.hasLocalConfig()) {

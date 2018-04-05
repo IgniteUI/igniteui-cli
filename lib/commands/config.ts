@@ -1,3 +1,4 @@
+import { GoogleAnalytic } from "../GoogleAnalytic";
 import { Util } from "../Util";
 import { ProjectConfig } from "./../ProjectConfig";
 
@@ -43,7 +44,15 @@ const command = {
 					type: "string"
 				}
 			},
-			handler: command.addHandler
+			handler: argv => {
+				GoogleAnalytic.post({
+					ea: "subcommand: add",
+					ec: "$ig config",
+					el: `property to add: ${argv.property}, value to add: ${argv.value}, is global: ${argv.global}`,
+					t: "event"
+				});
+				command.addHandler(argv);
+			}
 		}).option("global", {
 			alias: "g",
 			type: "boolean",
@@ -55,6 +64,13 @@ const command = {
 	},
 	// tslint:enable:object-literal-sort-keys
 	getHandler(argv) {
+		GoogleAnalytic.post({
+			ea: "subcommand: get",
+			ec: "$ig config",
+			el: `property to get: ${argv.property}, is global: ${argv.global}`,
+			t: "event"
+		});
+
 		if (!argv.global && !ProjectConfig.hasLocalConfig()) {
 			Util.error("No configuration file found in this folder!", "red");
 			return;
@@ -67,6 +83,13 @@ const command = {
 		}
 	},
 	setHandler(argv) {
+		GoogleAnalytic.post({
+			ea: "subcommand: set",
+			ec: "$ig config",
+			el: `property to set: ${argv.property}, value to set: ${argv.value}, is global: ${argv.global}`,
+			t: "event"
+		});
+
 		let config;
 		if (argv.global) {
 			config = ProjectConfig.globalConfig();
