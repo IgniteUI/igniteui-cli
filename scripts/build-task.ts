@@ -9,4 +9,4 @@ const scripts = {
 const config = require("../package.json");
 config.scripts = scripts;
 
-writeFileSync("../package.json", JSON.stringify(config, null, 2));
+writeFileSync("package.json", JSON.stringify(config, null, 2));
