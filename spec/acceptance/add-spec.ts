@@ -1,5 +1,6 @@
 import { spawnSync } from "child_process";
 import * as fs from "fs-extra";
+import { EOL } from "os";
 import { parse } from "path";
 import cli = require("../../lib/cli");
 import { GoogleAnalytic } from "../../lib/GoogleAnalytic";
@@ -243,6 +244,13 @@ describe("Add command", () => {
 		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
 			project: { framework: "angular", projectType: "igx-ts", components: [] }
 		}));
+		fs.writeFileSync("tslint.json", JSON.stringify({
+			rules: {
+				"indent": [ true, "spaces", 2 ],
+				"prefer-const": true,
+				"quotemark": [ true, "single" ]
+			}
+		}));
 		fs.mkdirSync(`./src`);
 		fs.mkdirSync(`./src/app`);
 		fs.writeFileSync("src/app/app-routing.module.ts", "const routes: Routes = [];");
@@ -268,34 +276,34 @@ describe("Add command", () => {
 		expect(fs.existsSync(componentPath)).toBeTruthy();
 		// file contents:
 		expect(fs.readFileSync(componentPath, "utf-8")).toContain("export class TestViewComponent");
-		expect(fs.readFileSync("src/app/app-routing.module.ts", "utf-8").replace(/\s/g, "")).toBe(
-			`import { TestViewComponent } from "./test-view/test-view.component";
-			const routes: Routes = [{ path: "test-view", component: TestViewComponent, data: { text: "Test view" } }];
-			`.replace(/\s/g, "")
+		expect(fs.readFileSync("src/app/app-routing.module.ts", "utf-8")).toBe(
+			`import { TestViewComponent } from './test-view/test-view.component';` +  EOL +
+			`const routes: Routes = [{ path: 'test-view', component: TestViewComponent, data: { text: 'Test view' } }];` +  EOL
 		);
-		expect(fs.readFileSync("src/app/app.module.ts", "utf-8").replace(/\s/g, "")).toBe(
-			`import { TestViewComponent } from "./test-view/test-view.component";
-			import { IgxGridModule } from "igniteui-angular/main";
-			@NgModule({
-				declarations: [
-					AppComponent,
-					HomeComponent,
-					TestViewComponent
-				],
-				imports: [
-					BrowserModule,
-					IgxGridModule.forRoot()
-				],
-				bootstrap: [AppComponent]
-			})
-			export class AppModule {
-			}
-			`.replace(/\s/g, "")
+
+		expect(fs.readFileSync("src/app/app.module.ts", "utf-8")).toBe(
+			`import { TestViewComponent } from './test-view/test-view.component';` +  EOL +
+			`import { IgxGridModule } from 'igniteui-angular/main';` +  EOL +
+			`@NgModule({` +  EOL +
+			`  declarations: [` +  EOL +
+			`    AppComponent,` +  EOL +
+			`    HomeComponent,` +  EOL +
+			`    TestViewComponent` +  EOL +
+			`  ],` +  EOL +
+			`  imports: [` +  EOL +
+			`    BrowserModule,` +  EOL +
+			`    IgxGridModule.forRoot()` +  EOL +
+			`  ],` +  EOL +
+			`  bootstrap: [AppComponent]` +  EOL +
+			`})` +  EOL +
+			`export class AppModule {` +  EOL +
+			`}` +  EOL
 		);
 		fs.unlinkSync("./src/app/test-view/test-view.component.ts");
 		fs.removeSync("./src");
 
 		fs.unlinkSync(ProjectConfig.configFile);
+		fs.unlinkSync("tslint.json");
 		done();
 	});
 
