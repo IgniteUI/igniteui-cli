@@ -11,13 +11,24 @@ import { default as newCommand } from "./commands/new";
 import { default as quickstart } from "./commands/quickstart";
 import { default as start } from "./commands/start";
 import { default as test } from "./commands/test";
+import { GoogleAnalytic } from "./GoogleAnalytic";
 import { PromptSession } from "./PromptSession";
 import {TemplateManager} from "./TemplateManager";
 import { Util } from "./Util";
 
 process.title = "Ignite UI CLI";
 
+function logHelp() {
+	GoogleAnalytic.post({
+		cd: "$ig help",
+		t: "screenview"
+	});
+}
+
 export async function run(args = null) {
+	//	we are subscribing on process.exit to catch when help is executed
+	process.on("exit", logHelp);
+
 	const templateManager = new TemplateManager();
 
 	newCommand.template = templateManager;
@@ -52,12 +63,21 @@ export async function run(args = null) {
 	.help().alias("help", "h")
 	.argv;
 
+	//	unsubscribing from process.exit. If `help` was executed we should not reach here
+	process.removeListener("exit", logHelp);
+
 	if (argv.version) {
 		Util.showVersion();
 		return;
 	}
 
 	const command = argv._[0];
+	let gaCommand = command || "wizard";
+	gaCommand = "$ig " + gaCommand;
+	GoogleAnalytic.post({
+		cd: gaCommand,
+		t: "screenview"
+	});
 	switch (command) {
 		case "new":
 			await newCommand.execute(argv);

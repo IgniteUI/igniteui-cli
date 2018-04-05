@@ -1,3 +1,4 @@
+import { GoogleAnalytic } from "../GoogleAnalytic";
 import { ProjectConfig } from "../ProjectConfig";
 import { TemplateManager } from "../TemplateManager";
 import { Util } from "../Util";
@@ -36,6 +37,13 @@ command = {
 		return true;
 	},
 	async execute(argv) {
+		GoogleAnalytic.post({
+			t: "event",
+			ec: "$ig add",
+			ea: "user parameters",
+			el: `template id: ${argv.template}; file name: ${argv.name}`
+		});
+
 		if (!ProjectConfig.hasLocalConfig()) {
 			Util.error("Add command is supported only on existing project created with igniteui-cli", "red");
 			return;

@@ -12,6 +12,7 @@ before_deploy:
 - npm run build-pack
 # update package version
 - npm version "$TRAVIS_TAG" --no-git-tag-version --save
+- node scripts/build-task.js
 - if [[ "${TRAVIS_TAG}" == *"beta"* ]]; then export NPM_TAG="next"; else export NPM_TAG="latest"; fi
 
 deploy:
