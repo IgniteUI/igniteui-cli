@@ -26,8 +26,8 @@ describe("Unit - AngularTemplate Base", () => {
 			"__path__": "my-component",
 			"$(filePrefix)": "my-component",
 			"$(description)": "test description",
-			"$(nameMerged)": "TestTemplate",
-			"$(cliVersion)": process.env.npm_package_version
+			"$(cliVersion)": process.env.npm_package_version,
+			"$(nameMerged)": "TestTemplate"
 		};
 		spyOn(Util, "processTemplates");
 		spyOn(Util, "validateTemplate").and.returnValue(true);

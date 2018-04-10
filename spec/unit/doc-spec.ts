@@ -1,8 +1,13 @@
 import { default as doc } from "../../lib/commands/doc";
+import { GoogleAnalytic } from "../../lib/GoogleAnalytic";
 import { PromptSession } from "../../lib/PromptSession";
 import { Util } from "../../lib/Util";
 
 describe("Unit - Doc command", () => {
+	beforeAll(() => {
+		spyOn(GoogleAnalytic, "post");
+	});
+
 	it("Should search Infragistics API for passed term", async done => {
 		spyOn(doc, "execute").and.callThrough();
 		spyOn(doc, "open");

@@ -1,6 +1,7 @@
 
 import * as fs from "fs-extra";
 import { default as addCmd } from "../../lib/commands/add";
+import { GoogleAnalytic } from "../../lib/GoogleAnalytic";
 import { ProjectConfig } from "../../lib/ProjectConfig";
 import { PromptSession } from "../../lib/PromptSession";
 import { Util } from "../../lib/Util";
@@ -9,6 +10,7 @@ import { resetSpy } from "../helpers/utils";
 describe("Unit - Add command", () => {
 
 	it("Should start prompt session with missing arg", async done => {
+		spyOn(GoogleAnalytic, "post");
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 		spyOn(ProjectConfig, "getConfig").and.returnValue({ project: {
 			framework: "angular",

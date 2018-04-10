@@ -2,6 +2,7 @@ import * as fs from "fs";
 import * as os from "os";
 import * as path from "path";
 import cli = require("../../lib/cli");
+import { GoogleAnalytic } from "../../lib/GoogleAnalytic";
 import { deleteAll, resetSpy } from "../helpers/utils";
 
 describe("Config command", () => {
@@ -10,6 +11,7 @@ describe("Config command", () => {
 	beforeEach(() => {
 		spyOn(console, "log");
 		spyOn(console, "error");
+		spyOn(GoogleAnalytic, "post");
 
 		// test folder, w/ existing check:
 		while (fs.existsSync(`./output/${testFolder}`)) {
@@ -33,6 +35,21 @@ describe("Config command", () => {
 	it("Should not work without a project & global flag", async done => {
 		await cli.run(["config", "get", "igPackageRegistry"]);
 		expect(console.error).toHaveBeenCalledWith(jasmine.stringMatching(/No configuration file found in this folder!\s*/));
+
+		expect(GoogleAnalytic.post).toHaveBeenCalledWith({cd: "$ig config", t: "screenview"});
+		expect(GoogleAnalytic.post).toHaveBeenCalledWith(
+			{
+				ea: "subcommand: get",
+				ec: "$ig config",
+				el: "property to get: igPackageRegistry, is global: false",
+				t: "event"
+			});
+		expect(GoogleAnalytic.post).toHaveBeenCalledWith(
+			{
+				cd: "error: No configuration file found in this folder!",
+				t: "screenview"
+			});
+		expect(GoogleAnalytic.post).toHaveBeenCalledTimes(3);
 
 		resetSpy(console.error);
 		await cli.run(["config", "set", "igPackageRegistry", "maybe"]);

@@ -1,5 +1,6 @@
 import * as fs from "fs-extra";
 import * as path from "path";
+import { GoogleAnalytic } from "../GoogleAnalytic";
 import { TemplateManager } from "../TemplateManager";
 import { Util } from "../Util";
 import { PackageManager } from "./../packages/PackageManager";
@@ -8,7 +9,8 @@ import { ProjectConfig } from "./../ProjectConfig";
 let command: {
 	[name: string]: any,
 	templateManager: TemplateManager,
-	execute: (argv: any) => Promise<void>
+	execute: (argv: any) => Promise<void>,
+	build: (argv: any) => Promise<void>
 };
 // tslint:disable:object-literal-sort-keys
 command = {
@@ -17,6 +19,16 @@ command = {
 	builder: {},
 	templateManager: null,
 	async execute(argv?) {
+
+		GoogleAnalytic.post({
+			t: "event",
+			ec: "$ig build",
+			ea: "user parameters",
+			el: "no user parameters"
+		});
+		command.build(argv);
+	},
+	async build(argv?) {
 		Util.log("Build started.");
 		PackageManager.ensureIgniteUISource(true, command.templateManager);
 
