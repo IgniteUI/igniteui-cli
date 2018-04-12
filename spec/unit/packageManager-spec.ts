@@ -186,7 +186,8 @@ describe("Unit - Package Manager", () => {
 	});
 	it("Should run installPackages properly with error code", async done => {
 		spyOn(ProjectConfig, "getConfig").and.returnValue({
-			packagesInstalled: false
+			packagesInstalled: false,
+			skipAnalytic: false
 		});
 		spyOn(Util, "log");
 		spyOn(shell, "exec").and.returnValue({
@@ -201,12 +202,13 @@ describe("Unit - Package Manager", () => {
 		expect(Util.log).toHaveBeenCalledWith(`Error installing npm packages.`);
 		expect(Util.log).toHaveBeenCalledWith(`Example`);
 		expect(shell.exec).toHaveBeenCalledWith(`npm install --quiet`, {silent: true});
-		expect(ProjectConfig.setConfig).toHaveBeenCalledWith({packagesInstalled: true});
+		expect(ProjectConfig.setConfig).toHaveBeenCalledWith({packagesInstalled: true, skipAnalytic: false});
 		done();
 	});
 	it("Should run installPackages properly without error code", async done => {
 		spyOn(ProjectConfig, "getConfig").and.returnValue({
-			packagesInstalled: false
+			packagesInstalled: false,
+			skipAnalytic: true
 		});
 		spyOn(Util, "log");
 		spyOn(shell, "exec").and.returnValue({
@@ -219,7 +221,7 @@ describe("Unit - Package Manager", () => {
 		expect(Util.log).toHaveBeenCalledWith(`Installing npm packages`);
 		expect(Util.log).toHaveBeenCalledWith(`Packages installed successfully`);
 		expect(shell.exec).toHaveBeenCalledWith(`npm install --quiet`, {silent: true});
-		expect(ProjectConfig.setConfig).toHaveBeenCalledWith({packagesInstalled: true});
+		expect(ProjectConfig.setConfig).toHaveBeenCalledWith({packagesInstalled: true, skipAnalytic: true});
 		done();
 	});
 	it("Should run removePackage properly with error code", async done => {
