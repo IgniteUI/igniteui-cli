@@ -66,6 +66,9 @@ export class PackageManager {
 			let command: string;
 			let managerCommand: string;
 
+			const oldSkipAnalytic = config.skipAnalytic;
+			config.skipAnalytic = true;
+
 			managerCommand = this.getManager();
 			switch (managerCommand) {
 				case "npm":
@@ -85,9 +88,9 @@ export class PackageManager {
 				Util.log(`Packages installed successfully`);
 			}
 			config.packagesInstalled = true;
+			config.skipAnalytic = oldSkipAnalytic;
 			ProjectConfig.setConfig(config);
 		}
-
 	}
 
 	public static removePackage(packageName: string, verbose: boolean = false): boolean {
