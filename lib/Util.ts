@@ -345,6 +345,7 @@ class Util {
 	 * Execute synchronous command with options
 	 * @param command Command to be executed
 	 * @param options Command options
+	 * @throws {Error} On timeout or non-zero exit code. Error has 'status', 'signal', 'output', 'stdout', 'stderr'
 	 */
 	public static exec(command: string, options?: any) {
 		return execSync(command, options);

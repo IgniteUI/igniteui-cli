@@ -34,7 +34,7 @@ command = {
 
 		const config = ProjectConfig.getConfig();
 
-		PackageManager.installPackages();
+		await PackageManager.installPackages();
 
 		if (config.project.theme.includes(".less") || config.project.theme.includes(".sass")) {
 			fs.mkdirSync("./themes");

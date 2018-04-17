@@ -14,6 +14,7 @@ export class ReactTemplate implements Template {
 	public framework: string = "react";
 	public projectType: string;
 	public hasExtraConfiguration: boolean = false;
+	public packages = [];
 
 	// non-standard template prop
 	protected widget: string;
