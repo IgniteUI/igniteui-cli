@@ -46,7 +46,6 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 		let summaryColumn = "";
 		let columnPinning = "";
 
-
 		if (this.userExtraConfiguration["columnFeatures"]) {
 			const features = this.userExtraConfiguration["columnFeatures"] as string[];
 			for (const feature of this.userExtraConfiguration["columnFeatures"] as string[]) {
@@ -93,12 +92,11 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 			"$(checkBoxBind)": checkBoxBind,
 			"$(columnBoolFeatures)": columnBoolFeatures.join(" "),
 			"$(columnFeatures)": columnFeatures.join(" "),
+			"$(columnPinning)": columnPinning,
 			"$(datePickerEditor)": datePickerEditor,
-			"$(selectedFeatures)": selectedFeatures,
-			"$(summaryColumn)": summaryColumn,
 			"$(gridFeatures)": gridFeatures.join(" "),
-			"$(columnPinning)": columnPinning
-
+			"$(selectedFeatures)": selectedFeatures,
+			"$(summaryColumn)": summaryColumn
 		};
 		return super.generateFiles(projectPath, name, { extraConfig });
 	}
