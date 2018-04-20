@@ -1,14 +1,14 @@
 
 import { BaseComponent } from "../../../../lib/BaseComponent";
 
-class IgxTabbarComponent extends BaseComponent {
+class IgxBottomNavComponent extends BaseComponent {
 	/**
 	 *
 	 */
 	constructor() {
 		super(__dirname);
-		this.name  = "Tabbar";
+		this.name  = "Bottom Navigation";
 		this.group = "Layouts";
 	}
 }
-module.exports = new IgxTabbarComponent();
+module.exports = new IgxBottomNavComponent();
