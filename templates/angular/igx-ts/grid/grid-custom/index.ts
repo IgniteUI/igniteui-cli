@@ -27,7 +27,8 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return [{
-			choices: ["Sorting", "Filtering", "Editing"],
+			choices: ["Sorting", "Filtering", "Editing", "Summaries", "Resizing",
+			"Row Selection", "Paging", "Column Pinning"],
 			default: "",
 			key: "columnFeatures",
 			message: "Choose features for the igx-grid",
@@ -38,9 +39,13 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
 		const columnFeatures = [];
 		const columnBoolFeatures = [];
+		const gridFeatures = [];
 		let checkBoxBind = `[checked]="cell.value" [disabled]="true"`;
 		let datePickerEditor = "";
 		let selectedFeatures = "";
+		let summaryColumn = "";
+		let columnPinning = "";
+
 
 		if (this.userExtraConfiguration["columnFeatures"]) {
 			const features = this.userExtraConfiguration["columnFeatures"] as string[];
@@ -48,13 +53,14 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 				switch (feature) {
 				case "Sorting":
 				case "Filtering":
+				case "Resizing":
 					const text = `[${feature.toLowerCase().replace("ing", "able")}]="true"`;
 					columnFeatures.push(text);
 					columnBoolFeatures.push(text);
 					break;
 				case "Editing":
 					columnFeatures.push(`[editable]="true"`);
-					checkBoxBind = `[(ngModel)]="cell.value"`;
+					checkBoxBind = `[ngModel]="cell.value" (ngModelChange)="cell.update($event)"`;
 					// enable Date Picker, ngModel
 					this.dependencies.push({ import: "IgxDatePickerModule", from: "igniteui-angular/main" });
 					this.dependencies.push({ import: "FormsModule", from: "@angular/forms" });
@@ -66,6 +72,19 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 					// TODO: make a Util .pad()
 					datePickerEditor = datePickerEditor.replace(/([\r\n]+)/g, `$&${ "  ".repeat(3) }`);
 					break;
+					case "Summaries":
+					summaryColumn = '[hasSummary]="true"';
+					break;
+					case "Row Selection":
+					const gridFeatureText = `[rowSelectable]="true"`;
+					gridFeatures.push(gridFeatureText);
+					break;
+					case "Paging":
+					gridFeatures.push(`[paging]="true"`);
+					break;
+					case "Column Pinning":
+					columnPinning = '[pinned]="true"';
+					break;
 				}
 			}
 			selectedFeatures = features.toString();
@@ -75,7 +94,11 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 			"$(columnBoolFeatures)": columnBoolFeatures.join(" "),
 			"$(columnFeatures)": columnFeatures.join(" "),
 			"$(datePickerEditor)": datePickerEditor,
-			"$(selectedFeatures)": selectedFeatures
+			"$(selectedFeatures)": selectedFeatures,
+			"$(summaryColumn)": summaryColumn,
+			"$(gridFeatures)": gridFeatures.join(" "),
+			"$(columnPinning)": columnPinning
+
 		};
 		return super.generateFiles(projectPath, name, { extraConfig });
 	}
