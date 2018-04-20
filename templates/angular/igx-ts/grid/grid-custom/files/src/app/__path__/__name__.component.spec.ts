@@ -1,7 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { $(ClassName)Component } from './$(filePrefix).component';
-import { IgxGridModule } from 'igniteui-angular/main';
+import { IgxGridModule, IgxDatePickerModule, IgxCheckboxModule } from 'igniteui-angular/main';
 
 describe('$(ClassName)Component', () => {
   let component: $(ClassName)Component;
@@ -10,7 +11,7 @@ describe('$(ClassName)Component', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ $(ClassName)Component ],
-      imports: [ IgxGridModule ]
+      imports: [ FormsModule, BrowserAnimationsModule, IgxGridModule, IgxDatePickerModule, IgxCheckboxModule ]
     })
     .compileComponents();
   }));
