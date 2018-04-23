@@ -1,19 +1,19 @@
 import { IgniteUIForAngularTemplate } from "../../../../../lib/templates/IgniteUIForAngularTemplate";
 
-class IgxTabbarTemplate extends IgniteUIForAngularTemplate {
+class IgxBottomNavTemplate extends IgniteUIForAngularTemplate {
 	constructor() {
 		super(__dirname);
-		this.components = ["Tabbar"];
+		this.components = ["Bottom Navigation"];
 		this.controlGroup = "Layouts";
 		this.listInComponentTemplates = true;
-		this.id = "tabbar";
+		this.id = "bottom-nav";
 		this.projectType = "igx-ts";
-		this.name = "Tabbar";
-		this.description = "Three item tabbar template";
+		this.name = "Bottom Navigation";
+		this.description = "Three item bottom navigation template";
 		this.dependencies = [{
 			from: "igniteui-angular/main",
-			import: ["IgxTabBarModule", "IgxAvatarModule", "IgxIconModule", "IgxRippleModule"]
+			import: ["IgxBottomNavModule", "IgxAvatarModule", "IgxIconModule", "IgxRippleModule"]
 		}];
 	}
 }
-module.exports = new IgxTabbarTemplate();
+module.exports = new IgxBottomNavTemplate();
