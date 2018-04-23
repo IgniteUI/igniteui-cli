@@ -72,6 +72,7 @@ describe("Generate command", () => {
 			listInComponentTemplates: false,
 			listInCustomTemplates: true,
 			name: "custom-template",
+			packages: [],
 			projectType: "js"
 		};
 		expect(expectedTemplate).toEqual(actualTemplate);
@@ -117,6 +118,7 @@ describe("Generate command", () => {
 			listInComponentTemplates: false,
 			listInCustomTemplates: true,
 			name: "angular-wrapper",
+			packages: [],
 			projectType: "ig-ts"
 		};
 		expect(expectedTemplate).toEqual(actualTemplate);
@@ -157,6 +159,7 @@ describe("Generate command", () => {
 			listInComponentTemplates: false,
 			listInCustomTemplates: true,
 			name: "angular",
+			packages: [],
 			projectType: "igx-ts"
 		};
 		expect(expectedTemplate).toEqual(actualTemplate);
@@ -199,6 +202,7 @@ describe("Generate command", () => {
 			listInComponentTemplates: false,
 			listInCustomTemplates: true,
 			name: "react",
+			packages: [],
 			projectType: "es6"
 		};
 		expect(expectedTemplate).toEqual(actualTemplate);
