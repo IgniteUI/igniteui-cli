@@ -16,6 +16,7 @@ export class AngularTemplate implements Template {
 	public framework: string = "angular";
 	public projectType: string;
 	public hasExtraConfiguration: boolean = false;
+	public packages = [];
 	protected widget: string;
 
 	/**
