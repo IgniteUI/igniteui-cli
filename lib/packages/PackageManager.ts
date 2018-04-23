@@ -1,15 +1,15 @@
-import { spawnSync } from "child_process";
+import { exec, execSync, spawnSync } from "child_process";
 import * as path from "path";
-import { exec, ExecOutputReturnValue } from "shelljs";
 import { ProjectConfig } from "../ProjectConfig";
 import { Util } from "../Util";
 import { TemplateManager } from "./../TemplateManager";
 
 import componentsConfig = require("./components");
-
 export class PackageManager {
 	private static ossPackage: string = "ignite-ui";
 	private static fullPackage: string = "@infragistics/ignite-ui-full";
+
+	private static installQueue: Array<Promise<{ packageName, error, stdout, stderr }>> = [];
 
 	/**
 	 * Specific for Ignite UI packages handling:
@@ -60,7 +60,7 @@ export class PackageManager {
 		}
 	}
 
-	public static installPackages(verbose: boolean = false) {
+	public static async installPackages(verbose: boolean = false) {
 		const config = ProjectConfig.getConfig();
 		if (!config.packagesInstalled) {
 			let command: string;
@@ -77,15 +77,22 @@ export class PackageManager {
 					command = `${managerCommand} install --quiet`;
 					break;
 			}
+			await this.flushQueue(false);
 			Util.log(`Installing ${managerCommand} packages`);
-			const result = exec(command, { silent: true }) as ExecOutputReturnValue;
-			if (result.code !== 0) {
+			try {
+				const result = execSync(command, { stdio: "pipe", killSignal: "SIGINT" });
+				Util.log(`Packages installed successfully`);
+			} catch (error) {
+				// ^C (SIGINT) produces status:3221225786 https://github.com/sass/node-sass/issues/1283#issuecomment-169450661
+				if (error.status === 3221225786 || error.status > 128) {
+					// drop process on user interrupt
+					process.exit();
+					return; // just for tests
+				}
 				Util.log(`Error installing ${managerCommand} packages.`);
 				if (verbose) {
-					Util.log(result.stderr);
+					Util.log(error.message);
 				}
-			} else {
-				Util.log(`Packages installed successfully`);
 			}
 			config.packagesInstalled = true;
 			config.skipAnalytic = oldSkipAnalytic;
@@ -103,41 +110,82 @@ export class PackageManager {
 				command = `${managerCommand} uninstall ${packageName} --quiet --save`;
 				break;
 		}
-		const result = exec(command, { silent: true }) as ExecOutputReturnValue;
-
-		if (result.code !== 0) {
+		try {
+			const result = execSync(command, { stdio: "pipe", encoding: "utf8" });
+		} catch (error) {
 			Util.log(`Error uninstalling package ${packageName} with ${managerCommand}`);
 			if (verbose) {
-				Util.log(result.stderr);
+				Util.log(error.message);
 			}
 			return false;
-		} else {
-			Util.log(`Package ${packageName} uninstalled successfully`);
-			return true;
 		}
+
+		Util.log(`Package ${packageName} uninstalled successfully`);
+		return true;
 	}
 
 	public static addPackage(packageName: string, verbose: boolean = false): boolean {
-		let command: string;
 		const managerCommand = this.getManager();
+		const command = this.getInstallCommand(managerCommand, packageName);
+		try {
+			const result = execSync(command, { stdio: "pipe", encoding: "utf8" });
+		} catch (error) {
+			Util.log(`Error installing package ${packageName} with ${managerCommand}`);
+			if (verbose) {
+				Util.log(error.message);
+			}
+			return false;
+		}
+		Util.log(`Package ${packageName} installed successfully`);
+		return true;
+	}
+
+	public static async queuePackage(packageName: string, verbose = false) {
+		const command = this.getInstallCommand(this.getManager(), packageName);
+		const packName = packageName.split(/@[^\/]+$/)[0];
+		if (this.getPackageJSON().dependencies[packName] || this.installQueue.find(x => x["packageName"] === packName)) {
+			return;
+		}
+		// D.P. Concurrent install runs should be supported
+		// https://github.com/npm/npm/issues/5948
+		// https://github.com/npm/npm/issues/2500
+		const task = new Promise<{ packageName, error, stdout, stderr }>((resolve, reject) => {
+			const child = exec(
+				command, { },
+				(error, stdout, stderr) => {
+					resolve({ packageName, error, stdout, stderr });
+				}
+			);
+		});
+		task["packageName"] = packName;
+		this.installQueue.push(task);
+	}
+
+	/** Waits for queued installs to finish, optionally log results and clear queue */
+	public static async flushQueue(logSuccess: boolean, verbose = false) {
+		if (this.installQueue.length) {
+			Util.log(`Waiting for additional packages to install`);
+			const results = await Promise.all(this.installQueue);
+			for (const res of results) {
+				if (res.error) {
+					Util.log(`Error installing package ${res.packageName}`);
+					if (verbose) {
+						Util.log(res.stderr.toString());
+					}
+				} else if (logSuccess) {
+					Util.log(`Package ${res.packageName} installed successfully`);
+				}
+			}
+			this.installQueue = [];
+		}
+	}
+
+	private static getInstallCommand(managerCommand: string, packageName: string): string {
 		switch (managerCommand) {
 			case "npm":
 			/* passes through */
 			default:
-				command = `${managerCommand} install ${packageName} --quiet --save`;
-				break;
-		}
-		const result = exec(command, { silent: true }) as ExecOutputReturnValue;
-
-		if (result.code !== 0) {
-			Util.log(`Error installing package ${packageName} with ${managerCommand}`);
-			if (verbose) {
-				Util.log(result.stderr);
-			}
-			return false;
-		} else {
-			Util.log(`Package ${packageName} installed successfully`);
-			return true;
+				return `${managerCommand} install ${packageName} --quiet --save`;
 		}
 	}
 
@@ -152,8 +200,9 @@ export class PackageManager {
 
 	private static ensureRegistryUser(config: Config): boolean {
 		const fullPackageRegistry = config.igPackageRegistry;
-		const user = exec(`npm whoami --registry=${fullPackageRegistry}`, { silent: true }) as ExecOutputReturnValue;
-		if (user.code !== 0) {
+		try {
+			const user = execSync(`npm whoami --registry=${fullPackageRegistry}`, { stdio: "pipe", encoding: "utf8" });
+		} catch (error) {
 			// try registering the user:
 			Util.log(
 				"The project you've created requires the full version of Ignite UI from Infragistics private feed.",
@@ -174,7 +223,12 @@ export class PackageManager {
 			);
 			if (login.status === 0) {
 				//make sure scope is configured:
-				return exec(`npm config set @infragistics:registry ${fullPackageRegistry}`).code === 0;
+				try {
+					execSync(`npm config set @infragistics:registry ${fullPackageRegistry}`);
+					return true;
+				} catch (error) {
+					return false;
+				}
 			} else {
 				Util.log("Something went wrong, " +
 					"please follow the steps in this guide: https://www.igniteui.com/help/using-ignite-ui-npm-packages", "red");

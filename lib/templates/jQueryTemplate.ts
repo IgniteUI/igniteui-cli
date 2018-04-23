@@ -19,6 +19,7 @@ export class jQueryTemplate implements Template {
 	public framework: string = "jquery";
 	public projectType: string;
 	public hasExtraConfiguration: boolean;
+	public packages = [];
 
 	private configFile: string = "ignite-cli-views.js";
 	private replacePattern: RegExp = /\[[\s\S]*\](?=;)/;
