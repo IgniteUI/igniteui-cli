@@ -1,24 +1,24 @@
-<div>
+
   <p>$(description)</p>
   <p>Active features: $(selectedFeatures)</p>
-  <igx-grid #grid1 [data]="localData" height="700px" $(gridFeatures)>
-    <igx-column field="FirstName" header="First Name" width="200px" $(columnFeatures) $(columnPinning) $(summaryColumn)>
+  <igx-grid #grid1 [data]="localData" width="900px" height="700px" $(gridFeatures)>
+    <igx-column field="FirstName" header="First Name"  width="130px" $(columnFeatures) $(columnPinning) $(summaryColumn)>
     </igx-column>
-    <igx-column field="LastName" header="Last Name" width="200px" $(columnFeatures) $(columnPinning)>
+    <igx-column field="LastName" header="Last Name" width="130px" $(columnFeatures) $(columnPinning)>
     </igx-column>
-    <igx-column field="Country" width="200px" $(columnFeatures) $(summaryColumn)>
+    <igx-column field="Country" width="14px" $(columnFeatures) $(summaryColumn)>
     </igx-column>
     <igx-column field="Age" width="110px" dataType="number" $(columnFeatures) $(summaryColumn)>
     </igx-column>
-    <igx-column field="RegistererDate" header="Registerer Date" width="200px" dataType="date" $(columnFeatures)>
+    <igx-column field="RegistererDate" header="Registerer Date" width="180px" dataType="date" $(columnFeatures)>
       <ng-template igxCell let-value>
         {{ value | date }}
       </ng-template>$(datePickerEditor)
     </igx-column>
-	<igx-column field="IsActive" header="Is Active" width="100px" dataType="boolean" $(columnBoolFeatures)>
+	<igx-column field="IsActive" header="Is Active" width="140px" dataType="boolean" $(columnBoolFeatures)>
       <ng-template igxCell let-cell="cell">
         <igx-checkbox $(checkBoxBind)></igx-checkbox>
       </ng-template>
     </igx-column>
   </igx-grid>
-</div>
+

@@ -4,8 +4,7 @@ import { employeesData } from './localData';
 @Component({
   selector: 'app-$(filePrefix)',
   templateUrl: './$(filePrefix).component.html',
-  styleUrls: ['./$(filePrefix).component.css'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./$(filePrefix).component.css']
 })
 export class $(ClassName)Component implements OnInit {
   public localData: any[];
