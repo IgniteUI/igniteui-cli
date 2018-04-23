@@ -4,115 +4,113 @@
 
     <div class="grid__wrapper">
 
-    <div class="sample__header">
-      <div class="switch-sample">
-      <h2 igxLabel>Boston Marathon 2017</h2>
-      <igx-switch [(ngModel)]="live" [disabled]="isFinished" title="Start/Stop the marathon"> Live </igx-switch>
-      </div>
-
-      <input class="gridSample__filter" igxInput type="text" placeholder="Filter by country" (input)="filter($event.target.value)">
-    </div>
-
-    <igx-grid #grid1 [data]="localData"[paging]="true" [perPage]="6" [paginationTemplate]="pager" height="505">
-      <igx-column header="Rank" headerClasses="myClass" width="100px" field="Id" sortable="true">
-      <ng-template igxCell let-cell="cell">
-        <div class="cell__inner">
-        <ng-container *ngIf="isTop3(cell)">
-          <span class="cup" *ngIf="cell.value === 1">
-            <svg id="circle" height="20" width="20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-              <image x="0" y="0" height="20" width="20" xlink:href="assets/images/trophy_gold.svg" />
-            </svg>
-          </span>
-          <span class="cup" *ngIf="cell.value === 2">
-          <svg id="circle" height="20" width="20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-            <image x="0" y="0" height="20" width="20" xlink:href="assets/images/trophy_silver.svg" />
-          </svg>
-          </span>
-          <span class="cup" *ngIf="cell.value === 3">
-          <svg id="circle" height="20" width="20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-            <image x="0" y="0" height="20" width="20" xlink:href="assets/images/trophy_bronze.svg" />
-          </svg>
-          </span>
-        </ng-container>
-        <div>{{ cell.value }}</div>
-        </div>
-      </ng-template>
-      </igx-column>
-
-      <igx-column field="Name" header="Athlete" filterable="true" width="250">
-        <ng-template igxCell let-cell="cell">
-          <div class="cell__inner">
-            <div class="badge_wrap">
-            <igx-avatar [src]="cell.row.rowData.Avatar" roundShape="true" size="small"> </igx-avatar>
-            <igx-badge *ngIf="live" [type]="getBadgeType(cell)" [icon]="getIconType(cell)"></igx-badge>
-            </div>
-            <span>{{ cell.value }}</span>
-          </div>
-        </ng-template>
-      </igx-column>
-
-      <igx-column field="AthleteNumber" header="Athlete Number" [hidden]="hideAthleteNumber" dataType="number">
-        <ng-template igxCell let-val>
-        <div class="cell__inner">
-          {{ val }}
-        </div>
-        </ng-template>
-      </igx-column>
-
-      <igx-column field="BeatsPerMinute" header="Beats per minute" [hidden]="hideBeatsPerMinute">
-        <ng-template igxCell let-val>
-        <div class="cell__inner">
-          {{ val }}
-        </div>
-        </ng-template>
-      </igx-column>
-
-      <igx-column field="TopSpeed" header="Top Speed">
-
-        <ng-template igxCell let-val>
-          <div class="cell__inner">
-          {{ val | number: '1.1-5' }}
-          </div>
-        </ng-template>
-
-      </igx-column>
-
-      <igx-column field="TrackProgress" sortable="true" header="Track Progress">
-        <ng-template igxCell let-val>
-            <igx-linear-bar class="cell__inner_2" [value]="val"></igx-linear-bar>
-        </ng-template>
-      </igx-column>
-
-      <igx-column field="CountryName" hidden="true"></igx-column>
-
-      <igx-column field="CountryFlag" header="Country">
-        <ng-template igxCell let-cell="cell">
-          <div class="cell__inner_2">
-          <span>
-            <img [src]="cell.value" class="flag" />
-          </span>
-          </div>
-        </ng-template>
-      </igx-column>
-    </igx-grid>
-
-    <ng-template #pager let-grid>
-      <div *ngIf="grid.paging && grid.totalPages > 0" class="igx-paginator">
-        <button [disabled]="grid.isFirstPage" (click)="grid.paginate(0)" igxButton="icon" igxRipple igxRippleCentered="true">
-          <igx-icon fontSet="material" name="first_page"></igx-icon>
-        </button>
-        <button [disabled]="grid.isFirstPage" (click)="grid.previousPage()" igxButton="icon" igxRipple igxRippleCentered="true">
-          <igx-icon fontSet="material" name="chevron_left"></igx-icon>
-        </button>
-        <span>{{ grid.page + 1 }} of {{ grid.totalPages }}</span>
-        <button [disabled]="grid.isLastPage" (click)="grid.nextPage()" igxRipple igxRippleCentered="true" igxButton="icon">
-          <igx-icon fontSet="material" name="chevron_right"></igx-icon>
-        </button>
-        <button [disabled]="grid.isLastPage" (click)="grid.paginate(grid.totalPages - 1)" igxButton="icon" igxRipple igxRippleCentered="true">
-          <igx-icon fontSet="material" name="last_page"></igx-icon>
-        </button>
-      </div>
-    </ng-template>
+		<div class="sample__header">
+			<div class="switch-sample">
+				<h2 class="switch-sample__title">Boston Marathon 2018</h2>
+				<igx-switch [(ngModel)]="live" [disabled]="isFinished" title="Start/Stop the marathon"> <span class="switch-sample__label">Live</span> </igx-switch>
+			</div>
+			<igx-input-group>
+				<input class="gridSample__filter" igxInput type="text" placeholder="Filter by country" (input)="filter($event.target.value)">
+			</igx-input-group>
+		</div>
+	
+		<igx-grid #grid1 [data]="localData" [paging]="true" [perPage]="6" height="513px" (onSelection)="cellSelection($event)" [paginationTemplate]="pager">
+			<igx-column header="Rank" headerClasses="myClass" width="100px" field="Id" sortable="true">
+					<ng-template igxCell let-cell="cell">
+						<div class="cell__inner">
+						<div>{{ cell.value }}</div>
+						<ng-container *ngIf="isTop3(cell)">
+							<span class="cup" *ngIf="cell.value === 1">
+								<svg id="circle" height="20" width="20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+									<image x="0" y="0" height="20" width="20" xlink:href="assets/images/trophy_gold.svg" />
+								</svg>
+							</span>
+							<span class="cup" *ngIf="cell.value === 2">
+								<svg id="circle" height="20" width="20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+									<image x="0" y="0" height="20" width="20" xlink:href="assets/images/trophy_silver.svg" />
+								</svg>
+							</span>
+							<span class="cup" *ngIf="cell.value === 3">
+								<svg id="circle" height="20" width="20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+									<image x="0" y="0" height="20" width="20" xlink:href="assets/images/trophy_bronze.svg" />
+								</svg>
+							</span>
+						</ng-container>
+					</div>
+				</ng-template>
+			</igx-column>
+	
+			<igx-column field="Name" header="Athlete" filterable="true" width="280">
+				<ng-template igxCell let-cell="cell">
+					<div class="cell__inner">
+						<igx-avatar [src]="cell.row.rowData.Avatar" roundShape="true" size="small"> </igx-avatar><span class="athlete_name">{{ cell.value }}</span>
+						<igx-badge *ngIf="live" [type]="getBadgeType(cell)" [icon]="getIconType(cell)"></igx-badge>
+					</div>
+	
+				</ng-template>
+			</igx-column>
+	
+			<igx-column field="AthleteNumber" header="Athlete Number" [hidden]="hideAthleteNumber" dataType="number">
+				<ng-template igxCell let-val>
+					<div class="cell__inner">
+						{{ val }}
+					</div>
+				</ng-template>
+			</igx-column>
+	
+			<igx-column field="BeatsPerMinute" header="Beats per minute" [hasSummary]="true" dataType="number" [summaries]="bnpSummary" [hidden]="hideBeatsPerMinute">
+				<ng-template igxCell let-val>
+					<div class="cell__inner">
+						{{ val }}
+					</div>
+				</ng-template>
+			</igx-column>
+	
+			<igx-column field="TopSpeed" header="Top Speed" width="120px" dataType="number" [hasSummary]="true" [summaries]="topSpeedSummary">
+	
+				<ng-template igxCell let-val>
+					<div class="cell__inner">
+						{{ val | number: '1.1-5' }}
+					</div>
+				</ng-template>
+	
+			</igx-column>
+	
+			<igx-column field="TrackProgress" sortable="true" header="Track Progress">
+				<ng-template igxCell let-val>
+					<igx-linear-bar [textVisibility]="false" class="cell__inner_2" [value]="val"></igx-linear-bar>
+				</ng-template>
+			</igx-column>
+	
+			<igx-column field="CountryName" hidden="true"></igx-column>
+			<igx-column field="CountryFlag" header="Country" width="90px">
+				<ng-template igxCell let-cell="cell">
+					<div class="cell__inner_2">
+						<span>
+							<img [src]="cell.value" class="flag" />
+						</span>
+					</div>
+				</ng-template>
+			</igx-column>
+		</igx-grid>
+	
+		<ng-template #pager let-grid>
+			<div *ngIf="grid.paging && grid.totalPages > 0" class="igx-paginator">
+				<button [disabled]="grid.isFirstPage" (click)="grid.paginate(0)" igxButton="icon" igxRipple igxRippleCentered="true">
+					<igx-icon>first_page</igx-icon>
+				</button>
+				<button [disabled]="grid.isFirstPage" (click)="grid.previousPage()" igxButton="icon" igxRipple igxRippleCentered="true">
+					<igx-icon>chevron_left</igx-icon>
+				</button>
+				<span>{{ grid.page + 1 }} of {{ grid.totalPages }}</span>
+				<button [disabled]="grid.isLastPage" (click)="grid.nextPage()" igxRipple igxRippleCentered="true" igxButton="icon">
+					<igx-icon>chevron_right</igx-icon>
+				</button>
+				<button [disabled]="grid.isLastPage" (click)="grid.paginate(grid.totalPages - 1)" igxButton="icon" igxRipple igxRippleCentered="true">
+					<igx-icon>last_page</igx-icon>
+				</button>
+			</div>
+		</ng-template>
     </div>
   </article>
   </section>
