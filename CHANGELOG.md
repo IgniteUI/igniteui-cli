@@ -1,3 +1,56 @@
+<a name="1.3.0"></a>
+# [1.3.0](https://github.com/IgniteUI/igniteui-cli/compare/v1.2.1...v1.3.0) (2018-04-24)
+
+
+### Bug Fixes
+
+* Add ts-node package ([16dc9db](https://github.com/IgniteUI/igniteui-cli/commit/16dc9db))
+* Await for test command. Cleanup. ([154030c](https://github.com/IgniteUI/igniteui-cli/commit/154030c))
+* DS file update because of naming collitions and Chart template fix. ([97bbd2f](https://github.com/IgniteUI/igniteui-cli/commit/97bbd2f))
+* e2e test for app host. Swap proj name and welcome msg. ([846acdc](https://github.com/IgniteUI/igniteui-cli/commit/846acdc))
+* fix additional failing tests ([6feee86](https://github.com/IgniteUI/igniteui-cli/commit/6feee86))
+* fix falling test ([13fa075](https://github.com/IgniteUI/igniteui-cli/commit/13fa075))
+* fix for set command to set empty array to an array type property instead of string like "[]" ([d4de501](https://github.com/IgniteUI/igniteui-cli/commit/d4de501))
+* in installPackages method enable skipAnalytic in order to not send data before npm install, and disable it after ([c0b5a16](https://github.com/IgniteUI/igniteui-cli/commit/c0b5a16))
+* jQuery package name generation, apply to react/angular wrappers ([2a5537c](https://github.com/IgniteUI/igniteui-cli/commit/2a5537c))
+* local config check when cwd is user folder (global) ([bfcbbec](https://github.com/IgniteUI/igniteui-cli/commit/bfcbbec))
+* on publish safe updated package.json in correct folder ([61920fa](https://github.com/IgniteUI/igniteui-cli/commit/61920fa))
+* prevent templates from being loaded again when updating projects ([0b81ec2](https://github.com/IgniteUI/igniteui-cli/commit/0b81ec2))
+* actually add version variable to project template [not released] ([f510ab2](https://github.com/IgniteUI/igniteui-cli/commit/f510ab2))
+* **angular-wrappers:** enable hierarchical for feature generation ([90014b8](https://github.com/IgniteUI/igniteui-cli/commit/90014b8))
+* **igniteui-angular:** lint, typescript transforms respect editorconfig/tslint ([2f6ba24](https://github.com/IgniteUI/igniteui-cli/commit/2f6ba24))
+* **igx-tab:** rename igx-tab to igx-bottom-nav ([7cd792e](https://github.com/IgniteUI/igniteui-cli/commit/7cd792e)), closes [#244](https://github.com/IgniteUI/igniteui-cli/issues/244)
+
+
+### Features
+
+* add doc command ([d19ef81](https://github.com/IgniteUI/igniteui-cli/commit/d19ef81)), closes [#66](https://github.com/IgniteUI/igniteui-cli/issues/66)
+* add e2e flag for igx-ts framework. ([16f1be1](https://github.com/IgniteUI/igniteui-cli/commit/16f1be1))
+* add events for GoogleAnalytic for each user interaction within command ([7d626e0](https://github.com/IgniteUI/igniteui-cli/commit/7d626e0))
+* Add Google Analytic to CLI application ([0127684](https://github.com/IgniteUI/igniteui-cli/commit/0127684))
+* add list command ([#203](https://github.com/IgniteUI/igniteui-cli/issues/203)) ([1f532ef](https://github.com/IgniteUI/igniteui-cli/commit/1f532ef))
+* add validation for configuration options in config set command ([2a43650](https://github.com/IgniteUI/igniteui-cli/commit/2a43650))
+* allow template variables in igniteui-angular template dependencies ([2bddcd7](https://github.com/IgniteUI/igniteui-cli/commit/2bddcd7))
+* Change UUID from random to Machine ID ([ef6eb72](https://github.com/IgniteUI/igniteui-cli/commit/ef6eb72))
+* Errors and Exceptions are now send to GA ([a992385](https://github.com/IgniteUI/igniteui-cli/commit/a992385))
+* Google Analytic events added for start and test command ([b07d0a0](https://github.com/IgniteUI/igniteui-cli/commit/b07d0a0))
+* ig-ts project - add initial unit tests for components. ([881948b](https://github.com/IgniteUI/igniteui-cli/commit/881948b))
+* Initial angular-wrappers test config and BarChart test. ([e283375](https://github.com/IgniteUI/igniteui-cli/commit/e283375))
+* Initial jQuery test configuration for Karma and QUnit. ([168a6e7](https://github.com/IgniteUI/igniteui-cli/commit/168a6e7))
+* Initial react test configuration for Jest and Enzyme. ([322c558](https://github.com/IgniteUI/igniteui-cli/commit/322c558))
+* new dependency objects for Ignite UI for Angular templates ([a8e2200](https://github.com/IgniteUI/igniteui-cli/commit/a8e2200))
+* node version and OS version added. ([567ed36](https://github.com/IgniteUI/igniteui-cli/commit/567ed36))
+* add npm package dependencies support for templates ([0b65ed9](https://github.com/IgniteUI/igniteui-cli/commit/0b65ed9))
+* **igniteui-angular:** add custom grid template with selectable features ([d2bcfda](https://github.com/IgniteUI/igniteui-cli/commit/d2bcfda))
+* postinstall and preuninstall functions added to sent screenviews to GA when install/uninstall happens ([2584482](https://github.com/IgniteUI/igniteui-cli/commit/2584482))
+* Run npm test behind ig test. ([6938352](https://github.com/IgniteUI/igniteui-cli/commit/6938352))
+* Update awesome grid to latest sample state. ([03bcc4d](https://github.com/IgniteUI/igniteui-cli/commit/03bcc4d))
+
+
+### BREAKING CHANGES
+
+* **igx-tab:** Template id `tabbar` is renamed to `bottom-nav`
+
 <a name="1.2.1"></a>
 ## [1.2.1](https://github.com/IgniteUI/igniteui-cli/compare/v1.2.1-beta.0...v1.2.1) (2018-03-02)
 

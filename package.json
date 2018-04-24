@@ -70,8 +70,8 @@
     "all": true
   },
   "release": {
-	"noCi": true,
-	"branch": "dpetev/changelog-playground",
+    "noCi": true,
+    "branch": "dpetev/changelog-playground",
     "verifyConditions": [
       "@semantic-release/changelog",
       "@semantic-release/git"
