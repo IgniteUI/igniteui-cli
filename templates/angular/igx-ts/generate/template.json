@@ -8,5 +8,6 @@
 	"controlGroup": "",
 	"listInCustomTemplates": true,
 	"listInComponentTemplates": false,
-	"dependencies": []
+	"dependencies": [],
+	"packages": []
 }

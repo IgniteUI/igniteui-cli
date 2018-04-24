@@ -77,6 +77,7 @@ command = {
 		const selectedTemplate = frameworkLibrary.getTemplateById(argv.template);
 		if (selectedTemplate) {
 			await command.addTemplate(argv.name, selectedTemplate);
+			await PackageManager.flushQueue(true);
 			PackageManager.ensureIgniteUISource(config.packagesInstalled, command.templateManager);
 		}
 	},
@@ -96,6 +97,7 @@ command = {
 			//successful
 			template.registerInProject(process.cwd(), name);
 			command.templateManager.updateProjectConfiguration(template);
+			template.packages.forEach(x => PackageManager.queuePackage(x));
 			Util.log(`${Util.greenCheck()} View '${name}' added.`);
 			return true;
 		} else {
