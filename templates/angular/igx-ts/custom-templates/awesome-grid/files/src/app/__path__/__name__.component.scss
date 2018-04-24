@@ -1,0 +1,119 @@
+@import '~igniteui-angular/core/styles/themes/index';
+
+$grid-sample-theme: igx-grid-theme(
+  $row-selected-background: #333,
+  $row-selected-text-color: #ddd,
+  $row-hover-background: #f8f8f8,
+  $row-border-color: #f8f8f8,
+
+  $cell-selected-background: igx-color($default-palette, grays, 800),
+  $cell-selected-text-color: #fff
+);
+
+$progressBar-sample-theme: igx-progress-linear-theme(
+  $track-color: rgba(181,181,181, .5),
+  $fill-color-default: orange
+);
+
+.grid__wrapper {
+  @include igx-grid($grid-sample-theme);
+  @include igx-progress-linear($progressBar-sample-theme);
+  width: 1000px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1000px) {
+  .grid__wrapper {
+    width: 98% !important;
+    margin: 0 auto;
+    padding-left: 1%;
+    padding-right: 1%;
+  }
+}
+
+@media (max-width: 720px) {
+  .grid__wrapper {
+    width: 720px !important;
+    margin: 0 3px;
+    padding-right: 5px;
+  }
+}
+
+.sample-column {
+  margin: 0 !important;
+}
+
+.switch-sample__title {
+  margin:0 rem(20px) 0 0;
+}
+
+.sample__header {
+  display: flex;
+  align-self: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: rem(20px);
+}
+
+.switch-sample {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  width: 100%;
+  height: rem(50px);
+}
+.switch-sample__label {
+  margin: 0 rem(8) 0 0;
+}
+
+.athlete_name {
+  width: rem(100px);
+  margin:0 rem(30px);
+}
+
+.athlete_name,
+.title {
+  @include ellipsis();
+}
+
+.badge_wrap,
+.cell__inner,
+.cell__inner_2 {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.cell__inner,
+.badge_wrap {
+  position: relative;
+  justify-content: space-between;
+}
+
+.gridSample__filter {
+  width: rem(200px);
+}
+
+.flagParent {
+  display: flex;
+  padding-left: rem(23px);
+}
+
+.flag {
+  width: rem(24px);
+}
+
+.rowIndex {
+  margin-left: rem(57px);
+}
+
+
+@media (max-width: rem(960px)) {
+  .grid__wrapper {
+    width: rem(960px);
+  }
+}
+
+.igx-paginator>* {
+    margin: 0 .3125rem;
+}
