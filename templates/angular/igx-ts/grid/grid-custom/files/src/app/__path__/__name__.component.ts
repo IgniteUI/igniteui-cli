@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Renderer2 } from '@angular/core';
 import { employeesData } from './localData';
 
 @Component({
@@ -9,9 +9,17 @@ import { employeesData } from './localData';
 export class $(ClassName)Component implements OnInit {
   public localData: any[];
   title = '$(name)';
-  constructor() { }
+  constructor(private renderer: Renderer2) { }
 
   ngOnInit() {
     this.localData = employeesData;
+  }
+
+  pickerOpen () {
+    this.renderer.setStyle(document.querySelector('.igx-grid__tbody'), 'z-index', 'initial');
+  }
+
+  pickerClose () {
+    this.renderer.setStyle(document.querySelector('.igx-grid__tbody'), 'z-index', 1);
   }
 }
