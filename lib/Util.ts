@@ -5,6 +5,7 @@ import * as fsExtra from "fs-extra";
 import * as glob from "glob";
 import * as path from "path";
 import through2 = require("through2");
+import { GoogleAnalytic } from "./GoogleAnalytic";
 const imageExtensions = [".png", ".jpg", ".jpeg", ".gif", ".bmp", ".ico"];
 const applyConfig = (configuration: { [key: string]: string }) => {
 	return through2((data, enc, cb) => {
@@ -24,6 +25,7 @@ class Util {
 			return false;
 		}
 	}
+
 	public static fileExists(filePath) {
 		try {
 			return fs.statSync(filePath).isFile();
@@ -31,6 +33,7 @@ class Util {
 			return false;
 		}
 	}
+
 	public static isDirectory(dirPath): boolean {
 		return fs.lstatSync(dirPath).isDirectory();
 	}
@@ -199,12 +202,33 @@ class Util {
 	 * @param colorKeyword Optional color (CSS keyword like red, green, etc.)
 	 */
 	public static error(message: string, colorKeyword?: string) {
+		GoogleAnalytic.post({
+			cd: `error: ${message}`,
+			t: "screenview"
+		});
+
 		// tslint:disable:no-console
 		if (colorKeyword) {
 			const color = chalk.keyword(colorKeyword);
 			console.error(color(message));
 		} else {
 			console.error(message);
+		}
+		// tslint:enable:no-console
+	}
+
+	/**
+	 * Log a warning with optional color.
+	 * @param message warn to log
+	 * @param colorKeyword Optional color (CSS keyword like red, green, etc.)
+	 */
+	public static warn(message: string, colorKeyword?: string) {
+		// tslint:disable:no-console
+		if (colorKeyword) {
+			const color = chalk.keyword(colorKeyword);
+			console.warn(color(message));
+		} else {
+			console.warn(message);
 		}
 		// tslint:enable:no-console
 	}
@@ -217,16 +241,18 @@ class Util {
 		}
 	}
 
-	public static version() {
+	public static version(): string {
 		const configuration = require("../package.json");
+		return configuration.version;
+	}
+
+	public static showVersion() {
 		const logo = fs.readFileSync(__dirname + "/../ignite-ui-cli.txt");
 		logo.toString().split("\n").forEach(line => {
-			// tslint:disable:no-console
-			console.log(line);
+			this.log(line);
 		});
-		console.log("Ignite UI CLI version: " + configuration.version);
-		console.log("OS: " + this.getOSFriendlyName(process.platform));
-		// tslint:enable:no-console
+		this.log("Ignite UI CLI version: " + this.version());
+		this.log("OS: " + this.getOSFriendlyName(process.platform));
 	}
 
 	public static getOSFriendlyName(platform: string): string {
@@ -279,6 +305,10 @@ class Util {
 	 * @param source Object to merge values from
 	 */
 	public static merge(target: any, source: any) {
+		if (!source) {
+			return  target;
+		}
+
 		for (const key of Object.keys(source)) {
 			const sourceKeyIsArray = Array.isArray(source[key]);
 			const targetHasThisKey = target.hasOwnProperty(key);
@@ -315,6 +345,7 @@ class Util {
 	 * Execute synchronous command with options
 	 * @param command Command to be executed
 	 * @param options Command options
+	 * @throws {Error} On timeout or non-zero exit code. Error has 'status', 'signal', 'output', 'stdout', 'stderr'
 	 */
 	public static exec(command: string, options?: any) {
 		return execSync(command, options);

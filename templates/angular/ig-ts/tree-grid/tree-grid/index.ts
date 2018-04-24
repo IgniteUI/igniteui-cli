@@ -1,9 +1,10 @@
 import * as path from "path";
+import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 import { AngularTemplate } from "../../../../../lib/templates/AngularTemplate";
 import { Util } from "../../../../../lib/Util";
-import { TreeGridFeatureHelper } from "../../../../jquery/js/tree-grid/treegridfeaturehelper";
 
 class TreeGridTemplate extends AngularTemplate {
+	private gridHelper: GridHelper;
 	private extraConfigurations: ControlExtraConfiguration[];
 	private userExtraConfiguration: {} = {};
 
@@ -11,6 +12,7 @@ class TreeGridTemplate extends AngularTemplate {
 		super(__dirname);
 		this.id = "tree-grid";
 		this.name = "Tree Grid";
+		this.widget = "igTreeGrid";
 		this.controlGroup = "Data Grids";
 		this.description = "Tree Grid default template for Angular";
 		this.dependencies = ["igTreeGrid"];
@@ -18,8 +20,11 @@ class TreeGridTemplate extends AngularTemplate {
 		this.listInComponentTemplates = true;
 		this.hasExtraConfiguration = true;
 		this.extraConfigurations = [];
+
+		this.gridHelper = new GridHelper();
+		this.gridHelper.tree = true;
 		const featureConfiguration: ControlExtraConfiguration = {
-			choices: ["Sorting", "RowSelectors", "Filtering"],
+			choices: ["Sorting", "Selection", "Filtering"],
 			default: "",
 			key: "features",
 			message: "Select features for the igTreeGrid",
@@ -33,21 +38,9 @@ class TreeGridTemplate extends AngularTemplate {
 	}
 
 	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
-		const config = {
-			"$(ClassName)": Util.className(name),
-			"__name__": this.fileName(name),
-			"__path__": this.folderName(name)
-		};
-		const features = TreeGridFeatureHelper.generateFeatures(this.userExtraConfiguration["features"]);
-
-		config["$(treeGridFeatures)"] = features;
-		config["$(description)"] = this.description;
-		const pathsConfig = {};
-		// TODO: Refactor to base
-		if (!Util.validateTemplate(path.join(__dirname, "files"), projectPath, config, pathsConfig)) {
-			return Promise.resolve(false);
-		}
-		return Util.processTemplates(path.join(__dirname, "files"), projectPath, config, pathsConfig);
+		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 3);
+		const config = { "$(treeGridFeatures)": features };
+		return super.generateFiles(projectPath, name, { extraConfig : config });
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return this.extraConfigurations;

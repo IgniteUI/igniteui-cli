@@ -4,13 +4,16 @@ class IgxListTemplate extends IgniteUIForAngularTemplate {
 	constructor() {
 		super(__dirname);
 		this.components = ["List"];
-		this.controlGroup = "Grids&Lists";
+		this.controlGroup = "Grids & Lists";
 		this.listInComponentTemplates = true;
 		this.id = "list";
 		this.projectType = "igx-ts";
 		this.name = "List";
 		this.description = "Basic IgxList";
-		this.dependencies = ["IgxListModule", "IgxAvatarModule", "IgxIconModule", "IgxFilterModule"];
+		this.dependencies = [{
+			from: "igniteui-angular/main",
+			import: ["IgxListModule", "IgxAvatarModule", "IgxIconModule", "IgxInputGroupModule", "IgxFilterModule"]
+		}];
 	}
 }
 module.exports = new IgxListTemplate();

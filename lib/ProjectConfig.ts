@@ -1,4 +1,4 @@
-import * as fs from "fs-extra";
+import * as fs from "fs";
 import * as os from "os";
 import * as path from "path";
 import { Util } from "./Util";
@@ -7,9 +7,13 @@ export class ProjectConfig {
 
 	public static configFile: string = "ignite-ui-cli.json";
 	public static readonly defaults: Config = require("./config/defaults.json");
+	private static schemaPath = "./config/Config.schema.json";
 
 	/** Returns true if there's a CLI config file in the current working directory */
 	public static hasLocalConfig(): boolean {
+		if (os.homedir() === process.cwd()) {
+			return false;
+		}
 		const filePath = path.join(process.cwd(), this.configFile);
 		return fs.existsSync(filePath);
 	}
@@ -40,7 +44,7 @@ export class ProjectConfig {
 	public static setConfig(config: Config, global: boolean = false) {
 		const basePath = global ? os.homedir() : process.cwd();
 		const filePath = path.join(basePath, this.configFile);
-		fs.writeJsonSync(filePath, config, { spaces: 4 });
+		fs.writeFileSync(filePath, JSON.stringify(config, null, 4));
 	}
 
 	/*** Get local configuration only */
@@ -72,5 +76,53 @@ export class ProjectConfig {
 			}
 		}
 		return globalConfig as Config;
+	}
+	/*** Validates if provided value could be set to provided property against provided schema */
+	public static validateProperty(property, value): {message: string, valid: boolean, value: string} {
+		const schema = this.getSchema();
+		if (typeof schema !== "object" && schema.properties) {
+			throw new Error("Incorrect schema provided. Schema should be object");
+		}
+
+		const result = { message: undefined, valid: false, value: undefined };
+		if (!schema.properties.hasOwnProperty(property)) {
+			result.message = `Property "${property}" is not allowed in "${schema.title}" type!`;
+			return  result;
+		}
+
+		const propertyType = schema.properties[property]["type"];
+		if (propertyType !== "string") {
+			let parsedValue: any;
+			try {
+				parsedValue = JSON.parse(value);
+			} catch (error) {
+				result.message = `Invalid value provided for ${property} property`;
+				return result;
+			}
+
+			if (propertyType === "array") {
+				if (Array.isArray(parsedValue) && parsedValue.length === 0) {
+					result.valid = true;
+					result.value = parsedValue;
+					return  result;
+				} else {
+					result.message = `Provided value should be an empty array for ${property} property`;
+					return result;
+				}
+			}
+
+			if (typeof parsedValue !== propertyType) {
+				result.message = `Invalid value type provided for ${property} property`;
+				result.message += `\nValue should be of type ${propertyType}`;
+				return result;
+			}
+		}
+		result.valid = true;
+		result.value = value;
+		return result;
+	}
+	public static getSchema() {
+		const absolutePath = path.join(__dirname, this.schemaPath);
+		return  require(absolutePath);
 	}
 }

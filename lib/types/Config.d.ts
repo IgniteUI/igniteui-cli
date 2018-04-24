@@ -21,7 +21,7 @@ declare interface Config {
 		isShowcase?: boolean,
 		/** Project template version */
 		version: string;
-		/** Porject root source directory */
+		/** Project root source directory */
 		sourceRoot: string;
 		/**Temp */
 		igniteuiSource: string;
@@ -39,6 +39,13 @@ declare interface Config {
 	customTemplates: string[];
 	/** Infragistics package registry Url */
 	igPackageRegistry: string;
-	/** Skip git initializion and commit of the new project */
+	/** Skip git initialization and commit of the new project */
 	skipGit: boolean;
+	/** 
+	 * IgniteUI CLI sends analytic information by default. The data is completely
+	 * anonymous, but there are times when you might want to disable this behavior.
+	 * 
+	 * Setting `skipAnalytic` to true will prevent any data from being sent.
+	 */
+	skipAnalytic: boolean;
 }

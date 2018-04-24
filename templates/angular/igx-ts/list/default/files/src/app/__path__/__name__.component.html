@@ -1,10 +1,13 @@
-<p>igx-list component with filtering. You can read more about configuring the igx-grid component <a href="https://github.com/IgniteUI/igniteui-angular/blob/master/src/list/README.md" target="_blank">here</a>.</p>
-  <div class="igx-form-group" style="margin: 4px">
-  <input class="igx-form-group__input--search" placeholder="Search Contacts" [(ngModel)]="searchContact">
-  <label class="igx-form-group__label">
-    <igx-icon name="search"></igx-icon>
-  </label>
-</div>
+<p>igx-list component with filtering. You can read more about configuring the igx-list component <a href="https://github.com/IgniteUI/igniteui-angular/blob/master/src/list/README.md" target="_blank">here</a>.</p>
+<igx-input-group type="search" class="search">
+    <igx-prefix>
+        <igx-icon>search</igx-icon>
+    </igx-prefix>
+    <input #search igxInput placeholder="Search Contacts" [(ngModel)]="searchContact">
+    <igx-suffix *ngIf="search.value.length > 0" (click)="searchContact = null">
+        <igx-icon>clear</igx-icon>
+    </igx-suffix>
+</igx-input-group>
 <igx-list>
   <igx-list-item isHeader="true"> Contacts </igx-list-item>
   <igx-list-item #item *ngFor="let contact of contacts | igxFilter: filterContacts;">

@@ -2,10 +2,14 @@
 import * as liteServer from "lite-server";
 import * as path from "path";
 import shell = require("shelljs");
-import quickstart, { default as quickstartCmd } from "../../lib/commands/quickstart";
+import { default as quickstartCmd } from "../../lib/commands/quickstart";
+import { GoogleAnalytic } from "../../lib/GoogleAnalytic";
 import { Util } from "../../lib/Util";
 
 describe("Unit - Quickstart command", () => {
+	beforeAll(() => {
+		spyOn(GoogleAnalytic, "post");
+	});
 
 	beforeEach(() => {
 		spyOn(Util, "log");

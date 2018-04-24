@@ -1,7 +1,9 @@
 import { spawnSync } from "child_process";
 import * as fs from "fs-extra";
+import { EOL } from "os";
 import { parse } from "path";
 import cli = require("../../lib/cli");
+import { GoogleAnalytic } from "../../lib/GoogleAnalytic";
 import { ProjectConfig } from "../../lib/ProjectConfig";
 import { resetSpy } from "../helpers/utils";
 import { PromptSession } from "./../../lib/PromptSession";
@@ -12,6 +14,7 @@ describe("Add command", () => {
 	beforeEach(() => {
 		spyOn(console, "log");
 		spyOn(console, "error");
+		spyOn(GoogleAnalytic, "post");
 
 		// test folder, w/ existing check:
 		while (fs.existsSync(`./output/${testFolder}`)) {
@@ -34,6 +37,21 @@ describe("Add command", () => {
 			jasmine.stringMatching(/Add command is supported only on existing project created with igniteui-cli\s*/)
 		);
 		expect(console.log).toHaveBeenCalledTimes(0);
+		expect(GoogleAnalytic.post).toHaveBeenCalledWith({cd: "$ig add", t: "screenview"});
+		expect(GoogleAnalytic.post).toHaveBeenCalledWith(
+			{
+				t: "event",
+				// tslint:disable-next-line:object-literal-sort-keys
+				ec: "$ig add",
+				ea: "user parameters",
+				el: "template id: grid; file name: name"
+			});
+		expect(GoogleAnalytic.post).toHaveBeenCalledWith(
+			{
+				cd: "error: Add command is supported only on existing project created with igniteui-cli",
+				t: "screenview"
+			});
+		expect(GoogleAnalytic.post).toHaveBeenCalledTimes(3);
 
 		resetSpy(console.error);
 		await cli.run(["add"]);
@@ -87,7 +105,7 @@ describe("Add command", () => {
 		spyOn(ProjectConfig, "globalConfig").and.returnValue({});
 
 		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
-			project: { framework: "jquery", projectType: "js", components: [] }
+			project: { framework: "jquery", projectType: "js", components: [], igniteuiSource: "", themePath: "" }
 		}));
 		fs.writeFileSync("ignite-cli-views.js", "[];");
 		await cli.run(["add", "grid", "Test view"]);
@@ -109,7 +127,7 @@ describe("Add command", () => {
 		spyOn(ProjectConfig, "globalConfig").and.returnValue({});
 
 		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
-			project: { framework: "jquery", projectType: "js", components: [] }
+			project: { framework: "jquery", projectType: "js", components: [], igniteuiSource: "", themePath: "" }
 		}));
 		fs.writeFileSync("ignite-cli-views.js", "[];");
 		await cli.run(["add", "grid", "Test view"]);
@@ -154,7 +172,6 @@ describe("Add command", () => {
 	});
 
 	it("Should correctly add Angular template", async done => {
-		// TODO: Mock out template manager and project register
 		spyOn(ProjectConfig, "globalConfig").and.returnValue({});
 
 		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
@@ -162,19 +179,131 @@ describe("Add command", () => {
 		}));
 		fs.mkdirSync(`./src`);
 		fs.mkdirSync(`./src/app`);
-		fs.writeFileSync("src/app/app-routing.module.ts", "[];");
-		fs.writeFileSync("src/app/app.module.ts", "[];");
+		fs.writeFileSync("src/app/app-routing.module.ts", "const routes: Routes = [];");
+		fs.writeFileSync("src/app/app.module.ts", `@NgModule({
+			declarations: [
+			  AppComponent,
+			  HomeComponent
+			],
+			imports: [ BrowserModule ],
+			bootstrap: [AppComponent]
+		})
+		export class AppModule { }`);
 		await cli.run(["add", "grid", "Test view"]);
 
 		expect(console.error).toHaveBeenCalledTimes(0);
 		expect(console.log).toHaveBeenCalledWith(jasmine.stringMatching(/View 'Test view' added\s*/));
 
 		expect(fs.existsSync("./src/app/components/test-view")).toBeTruthy();
-		expect(fs.existsSync("./src/app/components/test-view/test-view.component.ts")).toBeTruthy();
+		const componentPath = "./src/app/components/test-view/test-view.component.ts";
+		expect(fs.existsSync(componentPath)).toBeTruthy();
+		// file contents:
+		expect(fs.readFileSync(componentPath, "utf-8")).toContain("export class TestViewComponent");
+		expect(fs.readFileSync("src/app/app-routing.module.ts", "utf-8").replace(/\s/g, "")).toBe(
+			`import { TestViewComponent } from "./components/test-view/test-view.component";
+			const routes: Routes = [{ path: "test-view", component: TestViewComponent, data: { text: "Test view" } }];
+			`.replace(/\s/g, "")
+		);
+		expect(fs.readFileSync("src/app/app.module.ts", "utf-8").replace(/\s/g, "")).toBe(
+			`import { TestViewComponent } from "./components/test-view/test-view.component";
+			@NgModule({
+				declarations: [
+					AppComponent,
+					HomeComponent,
+					TestViewComponent
+				],
+				imports: [ BrowserModule ],
+				bootstrap: [AppComponent]
+			})
+			export class AppModule {
+			}
+			`.replace(/\s/g, "")
+		);
 		fs.unlinkSync("./src/app/components/test-view/test-view.component.ts");
 		fs.removeSync("./src");
 
 		fs.unlinkSync(ProjectConfig.configFile);
+
+		expect(GoogleAnalytic.post).toHaveBeenCalledWith({cd: "$ig add", t: "screenview"});
+		expect(GoogleAnalytic.post).toHaveBeenCalledWith(
+			{
+				t: "event",
+				// tslint:disable-next-line:object-literal-sort-keys
+				ec: "$ig add",
+				ea: "user parameters",
+				el: "template id: grid; file name: Test view"
+			});
+		expect(GoogleAnalytic.post).toHaveBeenCalledTimes(2);
+
+		done();
+	});
+
+	it("Should correctly add Ignite UI for Angular template", async done => {
+		spyOn(ProjectConfig, "globalConfig").and.returnValue({});
+
+		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
+			project: { framework: "angular", projectType: "igx-ts", components: [] }
+		}));
+		fs.writeFileSync("tslint.json", JSON.stringify({
+			rules: {
+				"indent": [ true, "spaces", 2 ],
+				"prefer-const": true,
+				"quotemark": [ true, "single" ]
+			}
+		}));
+		fs.mkdirSync(`./src`);
+		fs.mkdirSync(`./src/app`);
+		fs.writeFileSync("src/app/app-routing.module.ts", "const routes: Routes = [];");
+		fs.writeFileSync("src/app/app.module.ts", `@NgModule({
+			declarations: [
+			  AppComponent,
+			  HomeComponent
+			],
+			imports: [
+			  BrowserModule
+			],
+			bootstrap: [AppComponent]
+		})
+		export class AppModule { }`);
+
+		await cli.run(["add", "grid", "Test view"]);
+
+		expect(console.error).toHaveBeenCalledTimes(0);
+		expect(console.log).toHaveBeenCalledWith(jasmine.stringMatching(/View 'Test view' added\s*/));
+
+		expect(fs.existsSync("./src/app/test-view")).toBeTruthy();
+		const componentPath = "./src/app/test-view/test-view.component.ts";
+		expect(fs.existsSync(componentPath)).toBeTruthy();
+		// file contents:
+		expect(fs.readFileSync(componentPath, "utf-8")).toContain("export class TestViewComponent");
+		expect(fs.readFileSync("src/app/app-routing.module.ts", "utf-8")).toBe(
+			`import { TestViewComponent } from './test-view/test-view.component';` +  EOL +
+			`const routes: Routes = [{ path: 'test-view', component: TestViewComponent, data: { text: 'Test view' } }];` +  EOL
+		);
+
+		expect(fs.readFileSync("src/app/app.module.ts", "utf-8")).toBe(
+			`import { TestViewComponent } from './test-view/test-view.component';` +  EOL +
+			`import { IgxGridModule } from 'igniteui-angular/main';` +  EOL +
+			`@NgModule({` +  EOL +
+			`  declarations: [` +  EOL +
+			`    AppComponent,` +  EOL +
+			`    HomeComponent,` +  EOL +
+			`    TestViewComponent` +  EOL +
+			`  ],` +  EOL +
+			`  imports: [` +  EOL +
+			`    BrowserModule,` +  EOL +
+			`    IgxGridModule.forRoot()` +  EOL +
+			`  ],` +  EOL +
+			`  bootstrap: [AppComponent]` +  EOL +
+			`})` +  EOL +
+			`export class AppModule {` +  EOL +
+			`}` +  EOL
+		);
+		fs.unlinkSync("./src/app/test-view/test-view.component.ts");
+		fs.removeSync("./src");
+
+		fs.unlinkSync(ProjectConfig.configFile);
+		fs.unlinkSync("tslint.json");
 		done();
 	});
 

@@ -1,6 +1,8 @@
 
 import * as fs from "fs-extra";
 import { default as addCmd } from "../../lib/commands/add";
+import { GoogleAnalytic } from "../../lib/GoogleAnalytic";
+import { PackageManager } from "../../lib/packages/PackageManager";
 import { ProjectConfig } from "../../lib/ProjectConfig";
 import { PromptSession } from "../../lib/PromptSession";
 import { Util } from "../../lib/Util";
@@ -9,6 +11,7 @@ import { resetSpy } from "../helpers/utils";
 describe("Unit - Add command", () => {
 
 	it("Should start prompt session with missing arg", async done => {
+		spyOn(GoogleAnalytic, "post");
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 		spyOn(ProjectConfig, "getConfig").and.returnValue({ project: {
 			framework: "angular",
@@ -68,4 +71,45 @@ describe("Unit - Add command", () => {
 		done();
 	});
 
+	it("Should queue package dependencies and wait for install", async done => {
+		spyOn(ProjectConfig, "getConfig").and.returnValue({ project: {
+			framework: "angular",
+			theme: "infragistics"}});
+		spyOn(Util, "log");
+		spyOn(PackageManager, "queuePackage");
+
+		const mockTemplate = jasmine.createSpyObj("Template", {
+			generateFiles: Promise.resolve(true),
+			registerInProject: null
+		});
+		mockTemplate.packages = ["tslib" , "test-pack"];
+		addCmd.templateManager = jasmine.createSpyObj("TemplateManager", ["updateProjectConfiguration"]);
+
+		await addCmd.addTemplate("template with packages", mockTemplate);
+		expect(mockTemplate.generateFiles).toHaveBeenCalled();
+		expect(mockTemplate.registerInProject).toHaveBeenCalled();
+		expect(addCmd.templateManager.updateProjectConfiguration).toHaveBeenCalled();
+		expect(PackageManager.queuePackage).toHaveBeenCalledTimes(2);
+		expect(PackageManager.queuePackage).toHaveBeenCalledWith("tslib");
+		expect(PackageManager.queuePackage).toHaveBeenCalledWith("test-pack");
+
+		spyOn(GoogleAnalytic, "post");
+		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
+		addCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
+			getFrameworkById: {},
+			getProjectLibrary: jasmine.createSpyObj("ProjectLibrary", {
+				getTemplateById: {},
+				hasTemplate: true
+			})
+		});
+
+		spyOn(addCmd, "addTemplate");
+		spyOn(PackageManager, "flushQueue").and.returnValue(Promise.resolve());
+		spyOn(PackageManager, "ensureIgniteUISource");
+		await addCmd.execute({name: "template with packages", template: "test-id"});
+		expect(addCmd.addTemplate).toHaveBeenCalledWith("template with packages", {});
+		expect(PackageManager.flushQueue).toHaveBeenCalled();
+
+		done();
+	});
 });

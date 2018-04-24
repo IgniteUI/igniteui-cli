@@ -1,3 +1,4 @@
+import { GoogleAnalytic } from "../GoogleAnalytic";
 import { ProjectConfig } from "../ProjectConfig";
 import { TemplateManager } from "../TemplateManager";
 import { Util } from "../Util";
@@ -36,6 +37,13 @@ command = {
 		return true;
 	},
 	async execute(argv) {
+		GoogleAnalytic.post({
+			t: "event",
+			ec: "$ig add",
+			ea: "user parameters",
+			el: `template id: ${argv.template}; file name: ${argv.name}`
+		});
+
 		if (!ProjectConfig.hasLocalConfig()) {
 			Util.error("Add command is supported only on existing project created with igniteui-cli", "red");
 			return;
@@ -69,7 +77,8 @@ command = {
 		const selectedTemplate = frameworkLibrary.getTemplateById(argv.template);
 		if (selectedTemplate) {
 			await command.addTemplate(argv.name, selectedTemplate);
-			PackageManager.ensureIgniteUISource(config.packagesInstalled);
+			await PackageManager.flushQueue(true);
+			PackageManager.ensureIgniteUISource(config.packagesInstalled, command.templateManager);
 		}
 	},
 	async addTemplate(name: string, template: Template): Promise<boolean> {
@@ -88,6 +97,7 @@ command = {
 			//successful
 			template.registerInProject(process.cwd(), name);
 			command.templateManager.updateProjectConfiguration(template);
+			template.packages.forEach(x => PackageManager.queuePackage(x));
 			Util.log(`${Util.greenCheck()} View '${name}' added.`);
 			return true;
 		} else {

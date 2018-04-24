@@ -1,5 +1,6 @@
 import { utimes } from "fs-extra";
 import * as path from "path";
+import { GoogleAnalytic } from "../GoogleAnalytic";
 import { TemplateManager } from "../TemplateManager";
 import { Util } from "../Util";
 import { default as config } from "./config";
@@ -21,24 +22,24 @@ const command = {
 					"framework": {
 						alias: "f",
 						default: "jquery",
-						describe: "Framework name.",
+						describe: "Framework to generate template for",
 						type: "string"
 					},
 					"name": {
 						alias: "n",
 						default: "custom-template",
-						describe: "Template name.",
+						describe: "Template name",
 						type: "string"
 					},
 					"skip-config": {
 						alias: "s",
 						default: false,
-						describe: "Runs generate command without updating the cli config.",
+						describe: "Runs generate command without updating the cli config",
 						type: "boolean"
 					},
 					"type": {
 						alias: "t",
-						describe: "Framework type.",
+						describe: "Project type (depends on framework)",
 						type: "string"
 					}
 				}
@@ -47,6 +48,14 @@ const command = {
 			.demandCommand(1, "Please select command");
 	},
 	async template(argv) {
+		GoogleAnalytic.post({
+			ea: "subcommand: template",
+			ec: "$ig generate",
+			el: `template name: ${argv.name}; framework: ${argv.framework};` +
+				`project type: ${argv.type}; skip-config: ${argv.skipConfig}`,
+			t: "event"
+		});
+
 		// trim
 		argv.name = argv.name.trim();
 

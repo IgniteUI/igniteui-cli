@@ -12,6 +12,7 @@ class HierarchicalGridExportTemplate extends AngularTemplate {
 		super(__dirname);
 		this.id = "hierarchical-grid-export";
 		this.name = "Export Hierarchical Grid";
+		this.widget = "igHierarchicalGrid";
 		this.controlGroup = "Data Grids";
 		this.description = "Export Hierarchical Grid template for Angular";
 		this.dependencies = ["igHierarchicalGrid", "igExcel", "igGridExcelExporter"];
@@ -21,6 +22,7 @@ class HierarchicalGridExportTemplate extends AngularTemplate {
 		this.listInComponentTemplates = true;
 
 		this.gridHelper = new GridHelper();
+		this.gridHelper.hierarchical = true;
 		const featureConfiguration: ControlExtraConfiguration = {
 			choices: ["Summaries", "Hiding"],
 			default: "",
@@ -36,21 +38,9 @@ class HierarchicalGridExportTemplate extends AngularTemplate {
 	}
 
 	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
-		const config = {
-			"$(ClassName)": Util.className(name),
-			"__name__": this.fileName(name),
-			"__path__": this.folderName(name)
-		};
 		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 3);
-
-		config["$(gridFeatures)"] = features;
-		config["$(description)"] = this.description;
-		const pathsConfig = {};
-		// TODO: Refactor to base
-		if (!Util.validateTemplate(path.join(__dirname, "files"), projectPath, config, pathsConfig)) {
-			return Promise.resolve(false);
-		}
-		return Util.processTemplates(path.join(__dirname, "files"), projectPath, config, pathsConfig);
+		const config = { "$(gridFeatures)": features };
+		return super.generateFiles(projectPath, name, { extraConfig : config });
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return this.extraConfigurations;

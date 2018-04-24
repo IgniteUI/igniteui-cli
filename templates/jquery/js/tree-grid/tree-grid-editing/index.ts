@@ -1,14 +1,14 @@
 import * as fs from "fs-extra";
 import * as path from "path";
+import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 import { jQueryTemplate } from "../../../../../lib/templates/jQueryTemplate";
 import { Util } from "../../../../../lib/Util";
-import { TreeGridFeatureHelper } from "../treegridfeaturehelper";
 
 class TreeGridEditingTemplate extends jQueryTemplate {
 
 	public extraConfigurations: ControlExtraConfiguration[];
-
 	public userExtraConfiguration: {} = {};
+	private gridHelper: GridHelper;
 
 	/**
 	 *
@@ -16,13 +16,19 @@ class TreeGridEditingTemplate extends jQueryTemplate {
 	constructor() {
 		super(__dirname);
 		this.extraConfigurations = [];
-
-		this.name = "TreeGrid Editing";
 		this.id = "tree-grid-editing";
+		this.name = "TreeGrid Editing";
 		this.description = "Tree Grid editing template";
+		this.projectType = "js";
+		this.components = ["Tree Grid"];
+		this.controlGroup = "Data Grids";
 		this.dependencies = ["igTreeGrid"];
-		this.listInComponentTemplates = true;
+
 		this.hasExtraConfiguration = true;
+		this.listInComponentTemplates = true;
+
+		this.gridHelper = new GridHelper();
+		this.gridHelper.tree = true;
 		const featureConfiguration: ControlExtraConfiguration = {
 			choices: ["Sorting", "Filtering"],
 			default: "",
@@ -36,28 +42,27 @@ class TreeGridEditingTemplate extends jQueryTemplate {
 		this.userExtraConfiguration = extraConfigKeys;
 	}
 	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
-
-		const destinationPath = path.join(projectPath, this.folderName(name));
-		//read html
-		const config = {};
-		let features: string;
-		if (this.userExtraConfiguration["features"] !== undefined) {
-			features = ",\n" + TreeGridFeatureHelper.generateFeatures(["Updating"].concat(
-				this.userExtraConfiguration["features"]));
-		} else {
-			features = "";
-		}
-
-		config["$(treeGridFeatures)"] = features;
-		config["$(description)"] = this.description;
-		config["$(cssBlock)"] = this.getCssTags();
-		config["$(scriptBlock)"] = this.getScriptTags();
-		const pathsConfig = {};
-		// TODO: Refactor to base
-		if (!Util.validateTemplate(path.join(__dirname, "files"), destinationPath, config, pathsConfig)) {
-			return Promise.resolve(false);
-		}
-		return Util.processTemplates(path.join(__dirname, "files"), destinationPath, config, pathsConfig);
+		this.gridHelper.addFeature("Updating", {
+			columnSettings: [{
+				columnKey: "progress",
+				editorOptions: {
+					buttonType: "spin"
+				},
+				editorType: "currency"
+			},
+			{
+				columnKey: "start",
+				editorType: "datepicker"
+			},
+			{
+				columnKey: "finish",
+				editorType: "datepicker"
+			}]
+		});
+		const features = this.gridHelper.generateFeatures(
+			this.userExtraConfiguration["features"], 4);
+		const config = { "$(treeGridFeatures)": features };
+		return super.generateFiles(projectPath, name, { extraConfig : config });
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return this.extraConfigurations;

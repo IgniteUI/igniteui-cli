@@ -4,24 +4,40 @@ import * as yargs from "yargs";
 import { default as add } from "./commands/add";
 import { default as build } from "./commands/build";
 import { default as config } from "./commands/config";
+import { default as doc } from "./commands/doc";
 import { default as generate } from "./commands/generate";
+import { default as list } from "./commands/list";
 import { default as newCommand } from "./commands/new";
 import { default as quickstart } from "./commands/quickstart";
 import { default as start } from "./commands/start";
 import { default as test } from "./commands/test";
+import { GoogleAnalytic } from "./GoogleAnalytic";
 import { PromptSession } from "./PromptSession";
 import {TemplateManager} from "./TemplateManager";
 import { Util } from "./Util";
 
 process.title = "Ignite UI CLI";
 
+function logHelp() {
+	GoogleAnalytic.post({
+		cd: "$ig help",
+		t: "screenview"
+	});
+}
+
 export async function run(args = null) {
+	//	we are subscribing on process.exit to catch when help is executed
+	process.on("exit", logHelp);
+
 	const templateManager = new TemplateManager();
 
 	newCommand.template = templateManager;
 	newCommand.builder.framework.choices = templateManager.getFrameworkIds();
 	add.templateManager = templateManager;
+	build.templateManager = templateManager;
+	start.templateManager = templateManager;
 	generate.templateManager = templateManager;
+	list.templateManager = templateManager;
 
 	const yargsModule = args ? yargs(args) : yargs;
 
@@ -33,7 +49,9 @@ export async function run(args = null) {
 	.command(start)
 	.command(generate)
 	.command(config)
+	.command(doc)
 	.command(test)
+	.command(list)
 	.options({
 		version: {
 			alias: "v",
@@ -45,12 +63,21 @@ export async function run(args = null) {
 	.help().alias("help", "h")
 	.argv;
 
+	//	unsubscribing from process.exit. If `help` was executed we should not reach here
+	process.removeListener("exit", logHelp);
+
 	if (argv.version) {
-		Util.version();
+		Util.showVersion();
 		return;
 	}
 
 	const command = argv._[0];
+	let gaCommand = command || "wizard";
+	gaCommand = "$ig " + gaCommand;
+	GoogleAnalytic.post({
+		cd: gaCommand,
+		t: "screenview"
+	});
 	switch (command) {
 		case "new":
 			await newCommand.execute(argv);
@@ -76,11 +103,18 @@ export async function run(args = null) {
 			break;
 		case "config":
 			break;
+		case "doc":
+			await doc.execute(argv);
+			break;
 		case "test":
 			await test.execute(argv);
 			break;
 		case "start":
 			await start.execute(argv);
+			break;
+		case "l":
+		case "list":
+			list.execute(argv);
 			break;
 		default:
 			Util.log("Starting Step by step mode.", "green");

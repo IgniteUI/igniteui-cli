@@ -14,6 +14,7 @@ export class ReactTemplate implements Template {
 	public framework: string = "react";
 	public projectType: string;
 	public hasExtraConfiguration: boolean = false;
+	public packages = [];
 
 	// non-standard template prop
 	protected widget: string;
@@ -28,12 +29,18 @@ export class ReactTemplate implements Template {
 	constructor(private rootPath: string) {}
 
 	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
-		const config = {};
+		let config = {};
+		for (const element of options) {
+			if (element.hasOwnProperty("extraConfig")) {
+				config = element["extraConfig"];
+			}
+		}
 		const pathsConfig = {};
 
 		config["__path__"] =  this.folderName(name); //folder name allowed spaces, any casing
 		config["$(name)"] = name; // this name should not have restrictions
 		config["$(ClassName)"] = Util.className(name); //first letter capital, no spaces and no dashes,
+		config["$(cliVersion)"] = Util.version();
 		if (this.widget) {
 			config["$(widget)"] = this.widget;
 			config["$(Control)"] = Util.className(this.widget);

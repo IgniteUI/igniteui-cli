@@ -16,14 +16,17 @@ class HierarchicalGridEditingTemplate extends jQueryTemplate {
 	 */
 	constructor() {
 		super(__dirname);
-		this.extraConfigurations = [];
+		this.id = "hierarchical-grid-editing";
 		this.name = "Hierarchical Grid Editing";
 		this.description = "Hierarchical Grid editing template";
+		this.projectType = "js";
+		this.components = ["Hierarchical Grid"];
+		this.controlGroup = "Data Grids";
 		this.dependencies = ["igHierarchicalGrid"];
-		this.id = "hierarchical-grid-editing";
 
 		this.gridHelper = new GridHelper();
 		this.gridHelper.hierarchical = true;
+		this.extraConfigurations = [];
 		const featureConfiguration: ControlExtraConfiguration = {
 			choices: ["Sorting", "Paging", "Filtering"],
 			default: "",
@@ -37,22 +40,10 @@ class HierarchicalGridEditingTemplate extends jQueryTemplate {
 		this.userExtraConfiguration = extraConfigKeys;
 	}
 	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
-		const destinationPath = path.join(projectPath, this.folderName(name));
-		const config = {};
-
 		this.gridHelper.addFeature("Updating", { enableAddRow: true });
 		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 5);
-
-		config["$(gridfeatures)"] = features;
-		config["$(description)"] = this.description;
-		config["$(cssBlock)"] = this.getCssTags();
-		config["$(scriptBlock)"] = this.getScriptTags();
-		const pathsConfig = {};
-		// TODO: Refactor to base
-		if (!Util.validateTemplate(path.join(__dirname, "files"), destinationPath, config, pathsConfig)) {
-			return Promise.resolve(false);
-		}
-		return Util.processTemplates(path.join(__dirname, "files"), destinationPath, config, pathsConfig);
+		const config = { "$(gridfeatures)": features };
+		return super.generateFiles(projectPath, name, { extraConfig : config });
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return this.extraConfigurations;

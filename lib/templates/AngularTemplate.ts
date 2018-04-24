@@ -1,5 +1,6 @@
 import * as fs from "fs-extra";
 import * as path from "path";
+import { TypeScriptFileUpdate } from "../project-utility/TypeScriptFileUpdate";
 import { ProjectConfig } from "../ProjectConfig";
 import { Util } from "../Util";
 
@@ -11,10 +12,11 @@ export class AngularTemplate implements Template {
 	public id: string;
 	public name: string;
 	public description: string;
-	public dependencies: string[] = [];
+	public dependencies: Array<string | object> = [];
 	public framework: string = "angular";
 	public projectType: string;
 	public hasExtraConfiguration: boolean = false;
+	public packages = [];
 	protected widget: string;
 
 	/**
@@ -23,20 +25,14 @@ export class AngularTemplate implements Template {
 	constructor(private rootPath: string) {
 	}
 	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
-		const config = {
-			"$(ClassName)": Util.className(name),
-			"__name__": this.fileName(name), // TODO: optionally pass as a different variable than name.
-			"__path__": this.folderName(name)
-		};
-		if (this.widget) {
-			config["$(widget)"] = this.widget;
+		let config = {};
+		for (const element of options) {
+			if (element.hasOwnProperty("extraConfig")) {
+				config = element["extraConfig"];
+			}
 		}
-		if (this.name) {
-			config["$(name)"] = this.name;
-			config["$(filePrefix)"] = this.fileName(name);
-			config["$(nameMerged)"] = this.name.replace(/ /g, ""); // this is needed for editors
-			config["$(description)"] = this.description;
-		}
+		Object.assign(config, this.getBaseVariables(name));
+
 		const pathsConfig = {};
 		if (!Util.validateTemplate(path.join(this.rootPath, "files"), projectPath, config, pathsConfig)) {
 			return Promise.resolve(false);
@@ -45,15 +41,18 @@ export class AngularTemplate implements Template {
 	}
 
 	public registerInProject(projectPath: string, name: string) {
-		// D.P. Don't use top-level import as that chains import of typescript
-		// which slows down execution of the entire component noticeably
-		const TypeScriptFileUpdate = require("./../project-utility/TypeScriptFileUpdate").TypeScriptFileUpdate;
+		// D.P. Don't use the top-level import as that chains import of typescript
+		// which slows down execution of the entire component noticeably (template loading)
+		// https://www.typescriptlang.org/docs/handbook/modules.html#dynamic-module-loading-in-nodejs
+		// tslint:disable-next-line:variable-name
+		const TsUpdate: typeof TypeScriptFileUpdate =
+			require("./../project-utility/TypeScriptFileUpdate").TypeScriptFileUpdate;
 
 		//1) import the component class name,
 		//2) and populate the Routes array with the path and component
 		//for example: { path: 'combo', component: ComboComponent }
-		TypeScriptFileUpdate.addRoute(
-			path.join(projectPath, "src/app/app-routing.module.ts"),
+		const routingModule = new TsUpdate(path.join(projectPath, "src/app/app-routing.module.ts"));
+		routingModule.addRoute(
 			path.join(projectPath, `src/app/components/${this.folderName(name)}/${this.fileName(name)}.component.ts`),
 			this.folderName(name), //path
 			name //text
@@ -61,10 +60,11 @@ export class AngularTemplate implements Template {
 
 		//3) add an import of the component class from its file location.
 		//4) populate the declarations portion of the @NgModule with the component class name.
-		TypeScriptFileUpdate.addDeclaration(
-			path.join(projectPath, "src/app/app.module.ts"),
+		const mainModule = new TsUpdate(path.join(projectPath, "src/app/app.module.ts"));
+		mainModule.addDeclaration(
 			path.join(projectPath, `src/app/components/${this.folderName(name)}/${this.fileName(name)}.component.ts`)
 		);
+		mainModule.finalize();
 
 		// make sure DV file is added to project if needed:
 		this.ensureSourceFiles();
@@ -73,6 +73,25 @@ export class AngularTemplate implements Template {
 		return [];
 	}
 	public setExtraConfiguration(extraConfigKeys: {}) { }
+
+	protected getBaseVariables(name: string) {
+		const config = {};
+		config["$(name)"] = name;
+		config["$(ClassName)"] = Util.className(name);
+		config["__name__"] = this.fileName(name);
+		config["__path__"] = this.folderName(name);
+		config["$(filePrefix)"] = this.fileName(name);
+		config["$(description)"] = this.description;
+		config["$(cliVersion)"] = Util.version();
+
+		if (this.widget) {
+			config["$(widget)"] = this.widget;
+		}
+		if (this.name) {
+			config["$(nameMerged)"] = this.name.replace(/ /g, "");
+		}
+		return config;
+	}
 
 	protected ensureSourceFiles() {
 		const components = require("../packages/components");
@@ -85,12 +104,13 @@ export class AngularTemplate implements Template {
 			ProjectConfig.setConfig(config);
 		}
 
-		if (this.dependencies.indexOf("igExcel") !== -1) {
+		if (this.dependencies.indexOf("igExcel") !== -1 && files.indexOf("infragistics.excel-bundled.js") === -1) {
 			files.push("infragistics.excel-bundled.js");
 			ProjectConfig.setConfig(config);
 		}
 
-		if (this.dependencies.indexOf("igGridExcelExporter") !== -1) {
+		if (this.dependencies.indexOf("igGridExcelExporter") !== -1
+			&& files.indexOf("modules/infragistics.gridexcelexporter.js") === -1) {
 			files.push("modules/infragistics.gridexcelexporter.js");
 			ProjectConfig.setConfig(config);
 		}

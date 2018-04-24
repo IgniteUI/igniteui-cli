@@ -9,18 +9,24 @@ export enum FeatureOutputType {
 export class GridHelper {
 	/** Request features to add inherit option for hierarchical grid */
 	public hierarchical: boolean = false;
+	/** Apply feature settings for igTreeGrid - add inherit, paging and selection specifics */
+	public tree: boolean = false;
 	/** Output type to render */
 	public outputType: FeatureOutputType = FeatureOutputType.JS;
 	/** Indent space used for formatting output */
 	public space = "\t";
 
-	private features;
+	private features: any[];
 	private featureProps = {
 		Paging: { type: "local", pageSize: 5 },
 		RowSelectors: {
 			enableRowNumbering: true,
-			multipleSelection: true, rowSelectorColumnWidth: 80
+			rowSelectorColumnWidth: 80
 		}
+	};
+	private treeGridFeatureProps = {
+		Paging: { mode: "allLevels" },
+		RowSelectors: { rowSelectorNumberingMode: "hierarchical" }
 	};
 
 	/**
@@ -70,6 +76,14 @@ export class GridHelper {
 		}
 	}
 
+	public updateFeature(name, overrideOptions) {
+		const feature = this.features.find(x => x.name === name);
+
+		if (feature) {
+			Object.assign(feature, overrideOptions);
+		}
+	}
+
 	/**
 	 * Returns and object like `{name: "feature"}` with any other default properties
 	 * @param name Feature name
@@ -78,6 +92,9 @@ export class GridHelper {
 		const feature = { name };
 		if (this.featureProps[name]) {
 			Object.assign(feature, this.featureProps[name]);
+		}
+		if (this.tree && this.treeGridFeatureProps[name]) {
+			Object.assign(feature, this.treeGridFeatureProps[name]);
 		}
 		if (this.hierarchical) {
 			feature["inherit"] = true;
