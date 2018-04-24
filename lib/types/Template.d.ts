@@ -8,6 +8,8 @@ declare interface Template extends BaseTemplate {
 	/** Step by step */
 	listInComponentTemplates: boolean;
 	listInCustomTemplates: boolean;
+	/** Extra packages to install when adding to project */
+	packages: string[];
 	/** Generates template files. */
 	generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean>;
 	/** Called when the template is added to a project */
