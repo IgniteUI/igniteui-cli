@@ -65,7 +65,8 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 					this.dependencies.push({ import: "FormsModule", from: "@angular/forms" });
 					datePickerEditor = EOL +
 					`<ng-template igxCellEditor let-cell="cell">` + EOL +
-					`  <igx-datePicker cancelButtonLabel="cancel" todayButtonLabel="today" [(ngModel)]="cell.value">` + EOL +
+					`  <igx-datePicker cancelButtonLabel="cancel" todayButtonLabel="today" [(ngModel)]="cell.value"` +
+						` (onOpen)="pickerOpen()" (onClose)="pickerClose()">` + EOL +
 					`  </igx-datePicker>` + EOL +
 					`</ng-template>`;
 					// TODO: make a Util .pad()

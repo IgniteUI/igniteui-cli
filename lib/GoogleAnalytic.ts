@@ -8,7 +8,7 @@ import { Util } from "./Util";
 
 class GoogleAnalytic implements GoogleAnalytic {
 	protected static userDataFolder: string = process.env.APPDATA ||
-		(process.platform === "darwin" ? process.env.HOME + "Library/Preferences" : "/var/local");
+		(process.platform === "darwin" ? "/Users/Shared" : "/var/local");
 	protected static appFolder = "igniteui-cli";
 	protected static userSettings: string = "user-settings.json";
 	protected static appVersion: string;
