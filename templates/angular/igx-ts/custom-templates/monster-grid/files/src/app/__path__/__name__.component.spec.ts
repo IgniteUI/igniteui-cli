@@ -28,17 +28,17 @@ describe('$(ClassName)Component', () => {
       imports: [
         FormsModule,
         BrowserAnimationsModule,
-		IgxGridModule,
-		IgxAvatarModule,
-		IgxBadgeModule,
-		IgxButtonModule,
-		IgxIconModule,
-		IgxInputGroupModule,
-		IgxProgressBarModule,
-		IgxRippleModule,
-		IgxSwitchModule,
-		IgxToggleModule,
-		IgxCheckboxModule
+        IgxGridModule,
+        IgxAvatarModule,
+        IgxBadgeModule,
+        IgxButtonModule,
+        IgxIconModule,
+        IgxInputGroupModule,
+        IgxProgressBarModule,
+        IgxRippleModule,
+        IgxSwitchModule,
+        IgxToggleModule,
+        IgxCheckboxModule
       ],
       providers: [IgxExcelExporterService]
     })
