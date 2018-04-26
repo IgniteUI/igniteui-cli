@@ -1,12 +1,11 @@
 @import '~igniteui-angular/core/styles/themes/index';
 
+@include igx-core();
+
 $monster-grid-palette: igx-palette(
     $primary: #09f,
     $secondary: #ffc800
 );
-
-@include igx-core();
-@include igx-theme($monster-grid-palette);
 
 $primary-100: igx-color($monster-grid-palette, "primary", 100);
 $primary-200: igx-color($monster-grid-palette, "primary", 200);
@@ -24,6 +23,14 @@ $secondary-500: igx-color($monster-grid-palette, "secondary", 500);
 $secondary-600: igx-color($monster-grid-palette, "secondary", 600);
 $secondary-700: igx-color($monster-grid-palette, "secondary", 700);
 
+
+$checkbox-theme: igx-checkbox-theme(
+    $fill-color: $secondary-500
+);
+
+@include igx-checkbox($checkbox-theme, $monster-grid-palette);
+
+
 // grid theme
 $monster-grid-theme: igx-grid-theme(
     $header-background: lighten($primary-100, 15),
@@ -33,7 +40,7 @@ $monster-grid-theme: igx-grid-theme(
     $row-hover-background: lighten($primary-100, 10)
 );
 
-@include igx-grid($monster-grid-theme);
+@include igx-grid($monster-grid-theme, $monster-grid-palette);
 
 // button theme
 $monster-button-theme: igx-button-theme(
@@ -44,8 +51,9 @@ $monster-button-theme: igx-button-theme(
     $flat-focus-background: $primary-200,
     $flat-focus-text-color: $primary-100
 );
+
 // Pass the theme to the igx-button component mixin
-@include igx-button($monster-button-theme);
+@include igx-button($monster-button-theme, $monster-grid-palette);
 
 // linear bar theme
 $monster-linear-bar-theme: igx-progress-linear-theme(
@@ -53,7 +61,7 @@ $monster-linear-bar-theme: igx-progress-linear-theme(
     $track-color: igx-color($monster-grid-palette, "error", 500)
 );
 
-@include igx-progress-linear($monster-linear-bar-theme);
+@include igx-progress-linear($monster-linear-bar-theme, $monster-grid-palette);
 
 .sample-wrapper {
     width: inherit;
@@ -137,8 +145,14 @@ $monster-linear-bar-theme: igx-progress-linear-theme(
     display: flex;
     align-items: center;
     padding: 16px;
-    
+
     &:hover {
         background: lighten($primary-100, 10);
     }
+}
+
+//resize handle
+
+.igx-grid__th-resize-line {
+    background: $secondary-500;
 }

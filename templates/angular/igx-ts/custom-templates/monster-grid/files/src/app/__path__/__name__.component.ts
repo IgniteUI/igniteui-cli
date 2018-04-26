@@ -2,8 +2,7 @@ import {
     Component,
     OnInit,
     QueryList,
-    ViewChild,
-    ViewEncapsulation
+    ViewChild
 } from "@angular/core";
 
 import { IgxColumnComponent } from "igniteui-angular/grid/column.component";
@@ -16,8 +15,7 @@ import { data } from "./data";
 @Component({
 	selector: 'app-$(filePrefix)',
 	templateUrl: './$(filePrefix).component.html',
-	styleUrls: ['./$(filePrefix).component.scss'],
-	encapsulation: ViewEncapsulation.None
+	styleUrls: ['./$(filePrefix).component.scss']
 })
 export class $(ClassName)Component implements OnInit {
 
