@@ -8,7 +8,8 @@ import {
   IgxAvatarModule,
   IgxBadgeModule,
   IgxIconModule,
-  IgxSwitchModule
+  IgxSwitchModule,
+  IgxInputGroupModule
 } from 'igniteui-angular/main';
 describe('$(ClassName)Component', () => {
   let component: $(ClassName)Component;
@@ -25,7 +26,8 @@ describe('$(ClassName)Component', () => {
         IgxAvatarModule,
         IgxBadgeModule,
         IgxIconModule,
-        IgxSwitchModule
+        IgxSwitchModule,
+        IgxInputGroupModule
       ]
     })
     .compileComponents();
