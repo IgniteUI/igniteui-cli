@@ -1,7 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { IgxExcelExporterService } from 'igniteui-angular/services';
+
 import { $(ClassName)Component } from './$(filePrefix).component';
+
 import {
   IgxGridModule,
   IgxAvatarModule,
@@ -36,7 +39,8 @@ describe('$(ClassName)Component', () => {
 		IgxSwitchModule,
 		IgxToggleModule,
 		IgxCheckboxModule
-      ]
+      ],
+      providers: [IgxExcelExporterService]
     })
     .compileComponents();
   }));

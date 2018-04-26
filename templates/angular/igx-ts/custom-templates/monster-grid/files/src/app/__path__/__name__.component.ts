@@ -2,7 +2,8 @@ import {
     Component,
     OnInit,
     QueryList,
-    ViewChild
+    ViewChild,
+	ChangeDetectorRef
 } from "@angular/core";
 
 import { IgxColumnComponent } from "igniteui-angular/grid/column.component";
@@ -34,7 +35,7 @@ export class $(ClassName)Component implements OnInit {
 	public hiddenColsLength: number;
 	public pinnedColsLength: number;
 
-	constructor(private excelExporterService: IgxExcelExporterService) { }
+	constructor(private excelExporterService: IgxExcelExporterService, private cdr: ChangeDetectorRef) { }
 
 	public ngOnInit() {
 		this.localData = data;
@@ -44,6 +45,7 @@ export class $(ClassName)Component implements OnInit {
 		this.cols = this.grid1.columnList;
 		this.hiddenColsLength = this.cols.filter((col) => col.hidden).length;
 		this.pinnedColsLength = this.grid1.pinnedColumns.length;
+		this.cdr.detectChanges();
 	}
 
 	public toggleVisibility(col: IgxColumnComponent) {
