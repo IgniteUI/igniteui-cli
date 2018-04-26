@@ -21,13 +21,13 @@ describe('$(ClassName)Component', () => {
       imports: [
         FormsModule,
         BrowserAnimationsModule,
-		IgxGridModule,
+        IgxGridModule,
         IgxProgressBarModule,
         IgxAvatarModule,
         IgxBadgeModule,
         IgxIconModule,
         IgxSwitchModule,
-		IgxInputGroupModule
+        IgxInputGroupModule
       ]
     })
     .compileComponents();
