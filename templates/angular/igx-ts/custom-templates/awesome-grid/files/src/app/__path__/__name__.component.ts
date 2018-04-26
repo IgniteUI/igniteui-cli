@@ -5,8 +5,7 @@ import {
   NgZone,
   OnDestroy,
   OnInit,
-  ViewChild,
-  ViewEncapsulation
+  ViewChild
   } from '@angular/core';
   import { IgxNumberSummaryOperand, IgxSummaryResult} from 'igniteui-angular/grid/grid-summary';
   import { IgxGridComponent } from 'igniteui-angular/grid/grid.component';
@@ -16,8 +15,7 @@ import {
   @Component({
   selector: 'app-$(filePrefix)',
   templateUrl: './$(filePrefix).component.html',
-  styleUrls: ['./$(filePrefix).component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./$(filePrefix).component.scss']
   })
   export class $(ClassName)Component implements OnInit, OnDestroy {
 
@@ -25,7 +23,7 @@ import {
   public grid1: IgxGridComponent;
 
   public topSpeedSummary = CustomTopSpeedSummary;
-  public bnpSummary = CustomBPMSummary;  
+  public bnpSummary = CustomBPMSummary;
   public localData: any[];
   public isFinished = false;
   private _live = true;
