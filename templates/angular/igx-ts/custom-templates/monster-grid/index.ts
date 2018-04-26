@@ -28,6 +28,7 @@ class IgxGridMonsterTemplate extends IgniteUIForAngularTemplate {
 				]
 			}
 		];
+		this.packages = [ "jszip@3.1.5" ];
 	}
 }
 module.exports = new IgxGridMonsterTemplate();
