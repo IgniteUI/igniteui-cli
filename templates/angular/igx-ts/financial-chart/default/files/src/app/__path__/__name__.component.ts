@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AMZNData } from "./data";
+import { AMZNData } from './data';
 
 @Component({
   selector: 'app-$(filePrefix)',
