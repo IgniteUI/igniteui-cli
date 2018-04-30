@@ -1,5 +1,9 @@
 @import '~igniteui-angular/core/styles/themes/index';
 
+:host {
+  width: 100%;
+}
+
 :host ::ng-deep {
   $grid-sample-theme: igx-grid-theme(
   $row-selected-background: #333,
