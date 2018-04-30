@@ -4,6 +4,7 @@ import * as path from "path";
 import { default as add } from "../../lib/commands/add";
 import { default as start } from "../../lib/commands/start";
 import { GoogleAnalytic } from "../../lib/GoogleAnalytic";
+import { PackageManager } from "../../lib/packages/PackageManager";
 import { ProjectConfig } from "../../lib/ProjectConfig";
 import { PromptSession } from "../../lib/PromptSession";
 import { TemplateManager } from "../../lib/TemplateManager";
@@ -258,6 +259,7 @@ describe("Unit - PromptSession", () => {
 		spyOn(mockSession, "chooseActionLoop").and.callThrough();
 		spyOn(Util, "log");
 		spyOn(add, "addTemplate").and.returnValue(true);
+		spyOn(PackageManager, "flushQueue").and.returnValue(Promise.resolve(true));
 		spyOn(start, "start").and.returnValue(Promise.resolve(true));
 		spyOn(inquirer, "prompt").and.returnValues(
 		Promise.resolve({ action: "Add component"}),
@@ -272,6 +274,7 @@ describe("Unit - PromptSession", () => {
 		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(2);
 		expect(inquirer.prompt).toHaveBeenCalledTimes(7);
 		expect(Util.log).toHaveBeenCalledTimes(2);
+		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
 		expect(start.start).toHaveBeenCalledTimes(1);
 		expect(add.addTemplate).toHaveBeenCalledTimes(1);
 		expect(inquirer.prompt).toHaveBeenCalledWith([{
@@ -314,6 +317,7 @@ describe("Unit - PromptSession", () => {
 		spyOn(mockSession, "chooseActionLoop").and.callThrough();
 		spyOn(Util, "log");
 		spyOn(add, "addTemplate").and.returnValue(true);
+		spyOn(PackageManager, "flushQueue").and.returnValue(Promise.resolve(true));
 		spyOn(start, "start").and.returnValue(Promise.resolve(true));
 		spyOn(inquirer, "prompt").and.returnValues(
 		Promise.resolve({ action: "Add view"}),
@@ -325,6 +329,7 @@ describe("Unit - PromptSession", () => {
 		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(2);
 		expect(inquirer.prompt).toHaveBeenCalledTimes(4);
 		expect(Util.log).toHaveBeenCalledTimes(2);
+		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
 		expect(start.start).toHaveBeenCalledTimes(1);
 		expect(add.addTemplate).toHaveBeenCalledTimes(1);
 		expect(add.addTemplate).toHaveBeenCalledWith("Custom Template Name", [mockSelectedTemplate]);
@@ -397,6 +402,7 @@ describe("Unit - PromptSession", () => {
 		spyOn(mockSession, "chooseActionLoop").and.callThrough();
 		spyOn(Util, "log");
 		spyOn(add, "addTemplate").and.returnValue(true);
+		spyOn(PackageManager, "flushQueue").and.returnValue(Promise.resolve(true));
 		spyOn(start, "start").and.returnValue(Promise.resolve(true));
 		spyOn(inquirer, "prompt").and.returnValues(
 		Promise.resolve({ action: "Add component"}),
@@ -411,6 +417,7 @@ describe("Unit - PromptSession", () => {
 		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(2);
 		expect(inquirer.prompt).toHaveBeenCalledTimes(7);
 		expect(Util.log).toHaveBeenCalledTimes(2);
+		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
 		expect(start.start).toHaveBeenCalledTimes(1);
 		expect(add.addTemplate).toHaveBeenCalledTimes(1);
 		expect(inquirer.prompt).toHaveBeenCalledWith([{
