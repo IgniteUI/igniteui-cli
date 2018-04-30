@@ -3,6 +3,7 @@ import * as path from "path";
 import { default as add } from "./commands/add";
 import { default as start } from "./commands/start";
 import { GoogleAnalytic } from "./GoogleAnalytic";
+import { PackageManager } from "./packages/PackageManager";
 import { ProjectConfig } from "./ProjectConfig";
 import { TemplateManager } from "./TemplateManager";
 import { Util } from "./Util";
@@ -313,6 +314,7 @@ export class PromptSession {
 				break;
 			case "Complete & Run":
 			default:
+				await PackageManager.flushQueue(true);
 				if (true) { // TODO: Make conditional?
 					await start.start({});
 				}
