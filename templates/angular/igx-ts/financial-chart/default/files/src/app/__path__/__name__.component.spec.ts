@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { $(ClassName)Component } from './$(filePrefix).component';
-import { IgxBottomNavModule, IgxAvatarModule, IgxIconModule, IgxRippleModule } from 'igniteui-angular/main';
+import { IgxFinancialChartModule } from 'igniteui-angular-charts/ES5/igx-financial-chart-module';
 
 describe('$(ClassName)Component', () => {
   let component: $(ClassName)Component;
@@ -10,7 +10,7 @@ describe('$(ClassName)Component', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [$(ClassName)Component],
-      imports: [ IgxBottomNavModule, IgxAvatarModule, IgxIconModule, IgxRippleModule ]
+      imports: [IgxFinancialChartModule]
     })
       .compileComponents();
   }));
@@ -21,7 +21,8 @@ describe('$(ClassName)Component', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create', done => {
     expect(component).toBeTruthy();
+    fixture.whenStable().then(done);
   });
 });

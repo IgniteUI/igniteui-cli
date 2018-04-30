@@ -1,16 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { $(ClassName)Component } from './$(filePrefix).component';
-import { IgxBottomNavModule, IgxAvatarModule, IgxIconModule, IgxRippleModule } from 'igniteui-angular/main';
+import { IgxTimePickerModule } from 'igniteui-angular/main';
 
 describe('$(ClassName)Component', () => {
   let component: $(ClassName)Component;
   let fixture: ComponentFixture<$(ClassName)Component>;
+  const date: Date = new Date();
+  const hours: number = date.getHours();
+  const minutes: number =  date.getMinutes();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [$(ClassName)Component],
-      imports: [ IgxBottomNavModule, IgxAvatarModule, IgxIconModule, IgxRippleModule ]
+      imports: [IgxTimePickerModule]
     })
       .compileComponents();
   }));
@@ -21,7 +24,8 @@ describe('$(ClassName)Component', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('time is correct', () => {
+    expect(component.date.getHours() === hours);
+    expect(component.date.getMinutes() === minutes);
   });
 });

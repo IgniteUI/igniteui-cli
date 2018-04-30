@@ -1,15 +1,22 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { IgxExcelExporterService } from 'igniteui-angular/services';
+
 import { $(ClassName)Component } from './$(filePrefix).component';
+
 import {
   IgxGridModule,
-  IgxProgressBarModule,
   IgxAvatarModule,
   IgxBadgeModule,
+  IgxButtonModule,
   IgxIconModule,
+  IgxInputGroupModule,
+  IgxProgressBarModule,
+  IgxRippleModule,
   IgxSwitchModule,
-  IgxInputGroupModule
+  IgxToggleModule,
+  IgxCheckboxModule
 } from 'igniteui-angular/main';
 describe('$(ClassName)Component', () => {
   let component: $(ClassName)Component;
@@ -22,13 +29,18 @@ describe('$(ClassName)Component', () => {
         FormsModule,
         BrowserAnimationsModule,
         IgxGridModule,
-        IgxProgressBarModule,
         IgxAvatarModule,
         IgxBadgeModule,
+        IgxButtonModule,
         IgxIconModule,
+        IgxInputGroupModule,
+        IgxProgressBarModule,
+        IgxRippleModule,
         IgxSwitchModule,
-        IgxInputGroupModule
-      ]
+        IgxToggleModule,
+        IgxCheckboxModule
+      ],
+      providers: [IgxExcelExporterService]
     })
     .compileComponents();
   }));

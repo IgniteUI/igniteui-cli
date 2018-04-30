@@ -1,0 +1,21 @@
+<p>$(description)</p>
+<div>
+  <span>Chart Type:</span>
+  <select [(ngModel)]="chartType">
+    <option>Auto</option>
+    <option>Area</option>
+    <option>Line</option>
+    <option>Column</option>
+    <option>Point</option>
+    <option>Spline</option>
+    <option>SplineArea</option>
+    <option>StepArea</option>
+    <option>StepLine</option>
+    <option>Waterfall</option>
+  </select>
+</div>
+<igx-category-chart height="550px" width="100%"
+    chartTitle="Population per Country (millions)"
+    [chartType]="chartType"
+    [dataSource]="data">
+</igx-category-chart>

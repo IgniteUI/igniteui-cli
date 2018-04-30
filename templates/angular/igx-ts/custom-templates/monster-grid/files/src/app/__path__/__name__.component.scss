@@ -1,0 +1,173 @@
+@import '~igniteui-angular/core/styles/themes/index';
+
+:host {
+  padding-top: 20px;
+}
+
+:host ::ng-deep {
+  $crm-grid-palette: igx-palette(
+    $primary: #09f,
+    $secondary: #ffc800
+  );
+  
+  $primary-100: igx-color($crm-grid-palette, "primary", 100);
+  $primary-200: igx-color($crm-grid-palette, "primary", 200);
+  $primary-300: igx-color($crm-grid-palette, "primary", 300);
+  $primary-400: igx-color($crm-grid-palette, "primary", 400);
+  $primary-500: igx-color($crm-grid-palette, "primary", 500);
+  $primary-600: igx-color($crm-grid-palette, "primary", 600);
+  $primary-700: igx-color($crm-grid-palette, "primary", 700);
+  
+  $secondary-100: igx-color($crm-grid-palette, "secondary", 100);
+  $secondary-200: igx-color($crm-grid-palette, "secondary", 200);
+  $secondary-300: igx-color($crm-grid-palette, "secondary", 300);
+  $secondary-400: igx-color($crm-grid-palette, "secondary", 400);
+  $secondary-500: igx-color($crm-grid-palette, "secondary", 500);
+  $secondary-600: igx-color($crm-grid-palette, "secondary", 600);
+  $secondary-700: igx-color($crm-grid-palette, "secondary", 700);
+  
+  $checkbox-theme: igx-checkbox-theme(
+    $fill-color: igx-color($crm-grid-palette, "secondary", 500),
+    $tick-color: black
+  );
+  
+  @include igx-checkbox($checkbox-theme, $crm-grid-palette);
+  
+  $summary-theme: igx-grid-summary-theme(
+    $label-color: igx-color($crm-grid-palette, "primary", 500)
+  );
+  
+  @include igx-grid-summary($summary-theme, $crm-grid-palette);
+  
+  $filtering-theme: igx-grid-filtering-theme(
+    $toggle-active-background: igx-color($crm-grid-palette, "secondary", 500)
+  );
+  
+  @include igx-grid-filtering($filtering-theme, $crm-grid-palette);
+  
+  // grid theme
+  $crm-grid-theme: igx-grid-theme(
+    $header-background: lighten($primary-100, 15),
+    $header-text-color: $primary-600,
+    $cell-selected-background: $primary-100,
+    $row-selected-background: $primary-200,
+    $row-hover-background: lighten($primary-100, 10)
+  );
+  
+  @include igx-grid($crm-grid-theme, $crm-grid-palette);
+  
+  // button theme
+  $crm-button-theme: igx-button-theme(
+    $flat-background: $primary-400,
+    $flat-text-color: $primary-100,
+    $flat-hover-background: $primary-300,
+    $flat-hover-text-color: $primary-100,
+    $flat-focus-background: $primary-200,
+    $flat-focus-text-color: $primary-100
+  );
+  
+  // Pass the theme to the igx-button component mixin
+  @include igx-button($crm-button-theme, $crm-grid-palette);
+  
+  // linear bar theme
+  $crm-linear-bar-theme: igx-progress-linear-theme(
+    $fill-color-default: igx-color($crm-grid-palette, "success", 500),
+    $track-color: igx-color($crm-grid-palette, "error", 500)
+  );
+  
+  @include igx-progress-linear($crm-linear-bar-theme, $crm-grid-palette);
+  
+  .sample-wrapper {
+    width: inherit;
+    position: relative;
+    height: 100%;
+    margin: 0 auto;
+    background: transparent;
+  }
+  
+  .avatar-cell {
+    margin:-11px auto;
+  }
+  
+  // grid caption styling
+  .crm-sample {
+    background: $primary-500;
+    width: 1172px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    color: white;
+    font-weight: 600;
+    font-size: 1.25rem;
+    padding: 0 24px;
+    & span {
+      margin-right: auto;
+    }
+  }
+  
+  // button styling
+  .toggle-button {
+    margin-left: 8px;
+    text-transform: capitalize;
+    & span {
+      padding: 0 4px;
+    }
+    & .header-icon {
+      font-size: 1rem;
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+  
+  .relative-container {
+    position: relative;
+  }
+  
+  .toggle-content {
+    display: flex;
+    width: 240px;
+    height: 300px;
+    position: absolute;
+    z-index: 3;
+    background-color: white;
+    overflow: auto;
+    right: 0;
+    top: 100%;
+    box-shadow: igx-elevation($elevations, 4);
+  }
+  
+  .toggle-section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    font-size: 0.8em;
+  }
+  
+  .dd-title {
+    color: $primary-600;
+    margin:0;
+    padding: 16px;
+    font-size: 14px;
+  }
+  
+  .dd-list {
+    list-style-type: none;
+  }
+  
+  .dd-list__item {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    
+    &:hover {
+      background: lighten($primary-100, 10);
+    }
+  }
+  
+  //resize handle
+  
+  .igx-grid__th-resize-line {
+    background: $secondary-500;
+  }
+}
