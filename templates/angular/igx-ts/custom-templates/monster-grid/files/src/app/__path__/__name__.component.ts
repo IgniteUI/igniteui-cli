@@ -71,6 +71,10 @@ export class $(ClassName)Component implements OnInit, AfterViewInit {
   public exportData() {
     this.excelExporterService.exportData(this.localData, new IgxExcelExporterOptions('Report'));
   }
+
+  public formatDate(val: Date) {
+	return new Intl.DateTimeFormat("en-US").format(val);
+}
 }
 
 class DealsSummary extends IgxNumberSummaryOperand {
