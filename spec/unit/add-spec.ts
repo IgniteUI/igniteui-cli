@@ -1,7 +1,7 @@
 
 import * as fs from "fs-extra";
 import { default as addCmd } from "../../lib/commands/add";
-import { GoogleAnalytic } from "../../lib/GoogleAnalytic";
+import { GoogleAnalytics } from "../../lib/GoogleAnalytics";
 import { PackageManager } from "../../lib/packages/PackageManager";
 import { ProjectConfig } from "../../lib/ProjectConfig";
 import { PromptSession } from "../../lib/PromptSession";
@@ -11,7 +11,7 @@ import { resetSpy } from "../helpers/utils";
 describe("Unit - Add command", () => {
 
 	it("Should start prompt session with missing arg", async done => {
-		spyOn(GoogleAnalytic, "post");
+		spyOn(GoogleAnalytics, "post");
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 		spyOn(ProjectConfig, "getConfig").and.returnValue({ project: {
 			framework: "angular",
@@ -93,7 +93,7 @@ describe("Unit - Add command", () => {
 		expect(PackageManager.queuePackage).toHaveBeenCalledWith("tslib");
 		expect(PackageManager.queuePackage).toHaveBeenCalledWith("test-pack");
 
-		spyOn(GoogleAnalytic, "post");
+		spyOn(GoogleAnalytics, "post");
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 		addCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: {},

@@ -1,6 +1,6 @@
 import * as fs from "fs-extra";
 import * as path from "path";
-import { GoogleAnalytic } from "../GoogleAnalytic";
+import { GoogleAnalytics } from "../GoogleAnalytics";
 import { TemplateManager } from "../TemplateManager";
 import { Util } from "../Util";
 import { PackageManager } from "./../packages/PackageManager";
@@ -20,7 +20,7 @@ command = {
 	templateManager: null,
 	async execute(argv?) {
 
-		GoogleAnalytic.post({
+		GoogleAnalytics.post({
 			t: "event",
 			ec: "$ig build",
 			ea: "user parameters",

@@ -2,7 +2,7 @@ import * as inquirer from "inquirer";
 import * as path from "path";
 import { default as add } from "./commands/add";
 import { default as start } from "./commands/start";
-import { GoogleAnalytic } from "./GoogleAnalytic";
+import { GoogleAnalytics } from "./GoogleAnalytics";
 import { PackageManager } from "./packages/PackageManager";
 import { ProjectConfig } from "./ProjectConfig";
 import { TemplateManager } from "./TemplateManager";
@@ -52,7 +52,7 @@ export class PromptSession {
 				}))["projectName"];
 				nameRes = nameRes.trim();
 
-				GoogleAnalytic.post({
+				GoogleAnalytics.post({
 					t: "event",
 					ec: "$ig wizard",
 					ea: "Enter a name for your project: ",
@@ -77,7 +77,7 @@ export class PromptSession {
 				default: "jQuery"
 			});
 
-			GoogleAnalytic.post({
+			GoogleAnalytics.post({
 				t: "event",
 				ec: "$ig wizard",
 				ea: "Choose framework:",
@@ -96,7 +96,7 @@ export class PromptSession {
 				};
 				const proj = await inquirer.prompt(projQuestion);
 
-				GoogleAnalytic.post({
+				GoogleAnalytics.post({
 					t: "event",
 					ec: "$ig wizard",
 					ea: "Choose the type of the project:",
@@ -119,7 +119,7 @@ export class PromptSession {
 				};
 				const themeAnswer = await inquirer.prompt(themeQuestion);
 
-				GoogleAnalytic.post({
+				GoogleAnalytics.post({
 					t: "event",
 					ec: "$ig wizard",
 					ea: "Choose the theme for the project:",
@@ -166,7 +166,7 @@ export class PromptSession {
 			default: "Complete & Run"
 		});
 
-		GoogleAnalytic.post({
+		GoogleAnalytics.post({
 			t: "event",
 			ec: "$ig wizard",
 			ea: "Choose an action:",
@@ -185,7 +185,7 @@ export class PromptSession {
 					default: groups.find(x => x === "Data Grids") || groups[0]
 				});
 
-			GoogleAnalytic.post({
+			GoogleAnalytics.post({
 					t: "event",
 					ec: "$ig wizard",
 					ea: "Choose a group",
@@ -200,7 +200,7 @@ export class PromptSession {
 						choices: this.addSeparators(componentNames)
 					});
 
-			GoogleAnalytic.post({
+			GoogleAnalytics.post({
 						t: "event",
 						ec: "$ig wizard",
 						ea: "Choose a component",
@@ -224,7 +224,7 @@ export class PromptSession {
 							choices: this.addSeparators(templateNames)
 						});
 
-					GoogleAnalytic.post({
+					GoogleAnalytics.post({
 							t: "event",
 							ec: "$ig wizard",
 							ea: "Choose one (template):",
@@ -245,7 +245,7 @@ export class PromptSession {
 							default: selectedTemplate.name
 						});
 
-						GoogleAnalytic.post({
+						GoogleAnalytics.post({
 							t: "event",
 							ec: "$ig wizard",
 							ea: "Name your component:",
@@ -257,7 +257,7 @@ export class PromptSession {
 							const extraConfigAnswers = await inquirer.prompt(extraPrompt);
 							const extraConfig = this.parseAnswers(extraConfigAnswers);
 
-							GoogleAnalytic.post({
+							GoogleAnalytics.post({
 								t: "event",
 								ec: "$ig wizard",
 								ea: "Extra configuration:",
@@ -281,7 +281,7 @@ export class PromptSession {
 					choices: this.addSeparators(customTemplates)
 				});
 
-				GoogleAnalytic.post({
+				GoogleAnalytics.post({
 					t: "event",
 					ec: "$ig wizard",
 					ea: "Choose custom view:",
@@ -299,7 +299,7 @@ export class PromptSession {
 							default: selectedTemplate.name
 						});
 
-						GoogleAnalytic.post({
+						GoogleAnalytics.post({
 							t: "event",
 							ec: "$ig wizard",
 							ea: "Name your view:",

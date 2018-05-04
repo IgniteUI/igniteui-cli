@@ -1,6 +1,6 @@
 import * as fs from "fs-extra";
 import * as path from "path";
-import { GoogleAnalytic } from "../GoogleAnalytic";
+import { GoogleAnalytics } from "../GoogleAnalytics";
 import { ProjectConfig } from "../ProjectConfig";
 import { Util } from "../Util";
 import { PromptSession } from "./../PromptSession";
@@ -46,7 +46,7 @@ command = {
 	},
 	template: null,
 	async execute(argv) {
-		GoogleAnalytic.post({
+		GoogleAnalytics.post({
 			t: "event",
 			ec: "$ig new",
 			ea: "user parameters",
