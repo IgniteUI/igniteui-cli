@@ -1,7 +1,7 @@
-import { GoogleAnalytic } from "../lib/GoogleAnalytic";
+import { GoogleAnalytics } from "../lib/GoogleAnalytics";
 
 function install() {
-	GoogleAnalytic.post({
+	GoogleAnalytics.post({
 		cd: `install global: ${!!process.env.npm_config_global}`,
 		t: "screenview"
 	});
