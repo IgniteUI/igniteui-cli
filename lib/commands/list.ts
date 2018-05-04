@@ -1,4 +1,4 @@
-import { GoogleAnalytic } from "../GoogleAnalytic";
+import { GoogleAnalytics } from "../GoogleAnalytics";
 import { ProjectConfig } from "../ProjectConfig";
 import { TemplateManager } from "../TemplateManager";
 import { Util } from "../Util";
@@ -31,7 +31,7 @@ command = {
 	},
 	templateManager: null,
 	execute(argv) {
-		GoogleAnalytic.post({
+		GoogleAnalytics.post({
 			t: "event",
 			ec: "$ig list",
 			ea: "user parameters",

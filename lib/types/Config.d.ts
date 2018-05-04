@@ -45,7 +45,7 @@ declare interface Config {
 	 * IgniteUI CLI sends analytic information by default. The data is completely
 	 * anonymous, but there are times when you might want to disable this behavior.
 	 * 
-	 * Setting `skipAnalytic` to true will prevent any data from being sent.
+	 * Setting `disableAnalytics` to true will prevent any data from being sent.
 	 */
-	skipAnalytic: boolean;
+	disableAnalytics: boolean;
 }

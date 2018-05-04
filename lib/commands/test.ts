@@ -1,4 +1,4 @@
-import { GoogleAnalytic } from "../GoogleAnalytic";
+import { GoogleAnalytics } from "../GoogleAnalytics";
 import { ProjectConfig } from "../ProjectConfig";
 import { Util } from "../Util";
 
@@ -14,7 +14,7 @@ const command = {
 	},
 	async execute(argv) {
 
-		GoogleAnalytic.post({
+		GoogleAnalytics.post({
 			t: "event",
 			ec: "$ig test",
 			ea: "user parameters",

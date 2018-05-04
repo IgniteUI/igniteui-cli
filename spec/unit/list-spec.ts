@@ -1,6 +1,6 @@
 import { default as config } from "../../lib/commands/config";
 import { default as listCmd } from "../../lib/commands/list";
-import { GoogleAnalytic } from "../../lib/GoogleAnalytic";
+import { GoogleAnalytics } from "../../lib/GoogleAnalytics";
 import { ProjectConfig } from "../../lib/ProjectConfig";
 import { Util } from "../../lib/Util";
 
@@ -14,7 +14,7 @@ describe("Unit - List command", () => {
 		{ controlGroup: "group2", id: "id2.1", description: "Description for 2.1" },
 		{ controlGroup: "group2", id: "id2.2", description: "Description for 2.2" }];
 	beforeAll(() => {
-		spyOn(GoogleAnalytic, "post");
+		spyOn(GoogleAnalytics, "post");
 	});
 
 	beforeEach(() => {

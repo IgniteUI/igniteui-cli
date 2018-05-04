@@ -1,12 +1,12 @@
 
 import { default as testCmd } from "../../lib/commands/test";
-import { GoogleAnalytic } from "../../lib/GoogleAnalytic";
+import { GoogleAnalytics } from "../../lib/GoogleAnalytics";
 import { ProjectConfig } from "../../lib/ProjectConfig";
 import { Util } from "../../lib/Util";
 
 describe("Unit - Test command", () => {
 	beforeAll(() => {
-		spyOn(GoogleAnalytic, "post");
+		spyOn(GoogleAnalytics, "post");
 	});
 
 	beforeEach(() => {
