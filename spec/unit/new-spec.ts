@@ -1,7 +1,7 @@
 import * as fs from "fs-extra";
 import { parse } from "path";
 import { default as newCmd } from "../../lib/commands/new";
-import { GoogleAnalytic } from "../../lib/GoogleAnalytic";
+import { GoogleAnalytics } from "../../lib/GoogleAnalytics";
 import { ProjectConfig } from "../../lib/ProjectConfig";
 import { PromptSession } from "../../lib/PromptSession";
 import { Util } from "../../lib/Util";
@@ -9,7 +9,7 @@ import { resetSpy } from "../helpers/utils";
 
 describe("Unit - New command", () => {
 	beforeAll(() => {
-		spyOn(GoogleAnalytic, "post");
+		spyOn(GoogleAnalytics, "post");
 	});
 
 	beforeEach(() => {

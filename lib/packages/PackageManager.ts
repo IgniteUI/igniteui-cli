@@ -66,8 +66,8 @@ export class PackageManager {
 			let command: string;
 			let managerCommand: string;
 
-			const oldSkipAnalytic = config.skipAnalytic;
-			config.skipAnalytic = true;
+			const oldSkipAnalytic = config.disableAnalytics;
+			config.disableAnalytics = true;
 
 			managerCommand = this.getManager();
 			switch (managerCommand) {
@@ -95,7 +95,7 @@ export class PackageManager {
 				}
 			}
 			config.packagesInstalled = true;
-			config.skipAnalytic = oldSkipAnalytic;
+			config.disableAnalytics = oldSkipAnalytic;
 			ProjectConfig.setConfig(config);
 		}
 	}

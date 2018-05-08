@@ -6,7 +6,7 @@ import * as qs from "querystring";
 import { ProjectConfig } from "./ProjectConfig";
 import { Util } from "./Util";
 
-class GoogleAnalytic implements GoogleAnalytic {
+class GoogleAnalytics implements GoogleAnalytics {
 	protected static userDataFolder: string = process.env.APPDATA ||
 		(process.platform === "darwin" ? "/Users/Shared" : process.env.HOME + "/.npm/");
 	protected static appFolder = "igniteui-cli";
@@ -21,7 +21,7 @@ class GoogleAnalytic implements GoogleAnalytic {
 	 */
 	public static post(parameters: GoogleAnalyticsParameters) {
 		const config = ProjectConfig.getConfig();
-		if (config.skipAnalytic) {
+		if (config.disableAnalytics) {
 			return;
 		}
 
@@ -149,10 +149,10 @@ class GoogleAnalytic implements GoogleAnalytic {
 	}
 }
 
-export { GoogleAnalytic };
+export { GoogleAnalytics };
 
 process.on("uncaughtException", err => {
-	GoogleAnalytic.post({
+	GoogleAnalytics.post({
 		exd: err.message,
 		t: "exception"
 	});
