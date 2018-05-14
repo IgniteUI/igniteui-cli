@@ -21,7 +21,7 @@ class HierarchicalGridExportTemplate extends jQueryTemplate {
 		this.projectType = "js";
 		this.components = ["Hierarchical Grid"];
 		this.controlGroup = "Data Grids";
-		this.dependencies = ["igHierarchicalGrid", "igGridExcelExporter"];
+		this.dependencies = ["igHierarchicalGrid", "igExcel", "igGridExcelExporter"];
 
 		this.gridHelper = new GridHelper();
 		this.gridHelper.hierarchical = true;
