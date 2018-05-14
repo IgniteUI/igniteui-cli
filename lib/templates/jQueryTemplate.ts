@@ -109,6 +109,14 @@ export class jQueryTemplate implements Template {
 			//builder += "<script src=\"$(igniteuiSource)\\js\\infragistics.lob.js\"></script>\n";
 			builder += "<script src=\"../ignite-ui/js/infragistics.dv.js\"></script>\n";
 		}
+
+		if (this.dependencies.indexOf("igExcel") !== -1) {
+			builder += "<script src=\"../ignite-ui/js/infragistics.excel-bundled.js\"></script>\n";
+		}
+
+		if (this.dependencies.indexOf("igGridExcelExporter") !== -1) {
+			builder += "<script src=\"../ignite-ui/js/modules/infragistics.gridexcelexporter.js\"></script>\n";
+		}
 		builder += this.getNavigationScript();
 		return builder;
 	}
