@@ -20,7 +20,7 @@ class GridExportTemplate extends jQueryTemplate {
 		this.projectType = "js";
 		this.components = ["Grid"];
 		this.controlGroup = "Data Grids";
-		this.dependencies = ["igGrid", "igGridExcelExporter"];
+		this.dependencies = ["igGrid", "igExcel", "igGridExcelExporter"];
 
 		this.gridHelper = new GridHelper();
 		this.hasExtraConfiguration = true;
