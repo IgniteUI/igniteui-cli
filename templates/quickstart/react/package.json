@@ -15,13 +15,13 @@
   "bin": {
   },
   "dependencies": {
-    "ignite-ui": "^17.1.1012",
+    "ignite-ui": "~18.1",
     "lite-server": "^2.3.0",
     "babel-runtime": "6.22.0",
     "react": "15.4.2",
     "react-dom": "15.4.2",
     "react-router": "2.8.0",
-    "igniteui-react": "1.1.0-PreRelease.1",
+    "igniteui-react": "^1.2.0",
     "jquery": "3.2.1",
     "jquery-ui": "1.12.1"
   },
