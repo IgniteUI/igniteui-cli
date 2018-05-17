@@ -43,9 +43,9 @@
     "react": "15.6.2",
     "react-dom": "15.6.2",
     "react-router": "2.8.0",
-    "ignite-ui": "^17.2",
+    "ignite-ui": "~18.1",
     "jquery": ">=1.9.1",
     "jquery-ui": ">=1.10.5",
-    "igniteui-react": "^1.1.0"
+    "igniteui-react": "^1.2.0"
   }
 }
