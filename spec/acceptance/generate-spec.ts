@@ -76,7 +76,6 @@ describe("Generate command", () => {
 			projectType: "js"
 		};
 		expect(expectedTemplate).toEqual(actualTemplate);
-		expect(GoogleAnalytics.post).toHaveBeenCalledWith({ cd: "$ig generate", t: "screenview" });
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
 			{
 				ea: "subcommand: template",
@@ -84,6 +83,17 @@ describe("Generate command", () => {
 				el: "template name: custom-template; framework: jquery;project type: undefined; skip-config: false",
 				t: "event"
 			});
+
+		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
+			{
+				cd: "Generate",
+				t: "screenview",
+				// tslint:disable-next-line:object-literal-sort-keys
+				cd1: "jquery",
+				cd2: "js",
+				cd7: "custom-template"
+			});
+
 		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);
 		done();
 	});

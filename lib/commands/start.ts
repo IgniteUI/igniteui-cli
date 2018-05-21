@@ -42,6 +42,16 @@ command = {
 
 		Util.log(`Starting project.`, "green");
 
+		GoogleAnalytics.post({
+			cd: "Start",
+			t: "screenview",
+			// tslint:disable-next-line:object-literal-sort-keys
+			cd1: config.project.framework,
+			cd2: config.project.projectType,
+			cd11: config.skipGit,
+			cd14: config.project.theme
+		});
+
 		switch (framework.toLowerCase()) {
 			case "jquery":
 				liteServ.server();

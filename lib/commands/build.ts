@@ -34,6 +34,15 @@ command = {
 
 		const config = ProjectConfig.getConfig();
 
+		GoogleAnalytics.post({
+			cd: "Build",
+			t: "screenview",
+			cd1: config.project.framework,
+			cd2: config.project.projectType,
+			cd11: config.skipGit,
+			cd14: config.project.theme
+		});
+
 		await PackageManager.installPackages();
 
 		if (config.project.theme.includes(".less") || config.project.theme.includes(".sass")) {

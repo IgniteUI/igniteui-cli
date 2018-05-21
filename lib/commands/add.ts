@@ -76,6 +76,18 @@ command = {
 
 		const selectedTemplate = frameworkLibrary.getTemplateById(argv.template);
 		if (selectedTemplate) {
+			GoogleAnalytics.post({
+				cd: "Add",
+				t: "screenview",
+				cd1: selectedTemplate.framework,
+				cd2: selectedTemplate.projectType,
+				cd5: selectedTemplate.controlGroup,
+				cd7: selectedTemplate.id,
+				cd8: selectedTemplate.name,
+				cd11: config.skipGit,
+				cd14: config.project.theme
+			});
+
 			await command.addTemplate(argv.name, selectedTemplate);
 			await PackageManager.flushQueue(true);
 			PackageManager.ensureIgniteUISource(config.packagesInstalled, command.templateManager);

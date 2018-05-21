@@ -40,6 +40,13 @@ doc = {
 			"red");
 		} else {
 			Util.log(`Review your search results in the browser`, "green");
+
+			GoogleAnalytics.post({
+				cd: "Doc",
+				t: "screenview",
+				cd13: argv.term
+			});
+
 			doc.open(`https://www.infragistics.com/search?q=${argv.term.trim()}`);
 		}
 	}

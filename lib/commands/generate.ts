@@ -101,8 +101,18 @@ const command = {
 			return Util.error("Template generation failed!", "red");
 		}
 		if (!argv.skipConfig) {
-			config.addHandler({ property: "customTemplates", value: "path:" + outDir, global: true });
+			config.addHandler({ property: "customTemplates", value: "path:" + outDir, global: true, skipAnalytics: true });
 		}
+
+		GoogleAnalytics.post({
+			cd: "Generate",
+			t: "screenview",
+			// tslint:disable-next-line:object-literal-sort-keys
+			cd1: argv.framework,
+			cd2: argv.type,
+			cd7: argv.name
+		});
+
 		Util.log("Template generated successfully");
 	}
 };

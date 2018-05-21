@@ -30,6 +30,18 @@ const command = {
 	},
 	async test(argv) {
 		const projConfig = ProjectConfig.getConfig().project;
+
+		if (!argv.skipAnalytics) {
+			GoogleAnalytics.post({
+				cd: "Build",
+				t: "screenview",
+				cd1: projConfig.project.framework,
+				cd2: projConfig.project.projectType,
+				cd11: projConfig.skipGit,
+				cd14: projConfig.project.theme
+			});
+		}
+
 		if (argv.e2e && projConfig.framework === "angular" && projConfig.projectType === "igx-ts") {
 			Util.exec("npm run e2e", { stdio: "inherit" });
 		} else {

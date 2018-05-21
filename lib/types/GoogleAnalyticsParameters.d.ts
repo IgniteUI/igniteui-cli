@@ -42,4 +42,46 @@ interface GoogleAnalyticsParameters {
 
 	/** The Protocol version. The current value is '1'. */
 	v?: number;
+
+	/** Framework name */
+	cd1?: string;
+
+	/** Project type */
+	cd2?: string;
+
+	/** Project name */
+	cd3?: string;
+
+	/** Action */
+	cd4?: string;
+
+	/** Component group */
+	cd5?: string;
+
+	/** Component name */
+	cd6?: string;
+
+	/** Template/Custom view name */
+	cd7?: string;
+
+	/** Template/Custom view user name */
+	cd8?: string;
+
+	/** Extra configuration */
+	cd9?: string;
+
+	/** Skip Config */
+	cd10?: string;
+
+	/** Skip Git */
+	cd11?: boolean;
+
+	/** Global */
+	cd12?: string;
+
+	/** Search term */
+	cd13?: string;
+
+	/** Theme */
+	cd14?: string;
 }

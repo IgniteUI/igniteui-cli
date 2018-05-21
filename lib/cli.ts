@@ -72,12 +72,6 @@ export async function run(args = null) {
 	}
 
 	const command = argv._[0];
-	let gaCommand = command || "wizard";
-	gaCommand = "$ig " + gaCommand;
-	GoogleAnalytics.post({
-		cd: gaCommand,
-		t: "screenview"
-	});
 	switch (command) {
 		case "new":
 			await newCommand.execute(argv);

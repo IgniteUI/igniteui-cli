@@ -76,6 +76,14 @@ const command = {
 			return;
 		}
 		const config = ProjectConfig.getConfig(argv.global);
+
+		GoogleAnalytics.post({
+			cd: "Config",
+			t: "screenview",
+			// tslint:disable-next-line:object-literal-sort-keys
+			cd11: config.skipGit
+		});
+
 		if (config[argv.property] !== undefined) {
 			Util.log(config[argv.property]);
 		} else {
@@ -107,12 +115,19 @@ const command = {
 			return;
 		}
 
+		GoogleAnalytics.post({
+			cd: "Config",
+			t: "screenview",
+			// tslint:disable-next-line:object-literal-sort-keys
+			cd11: config.skipGit
+		});
+
 		config[argv.property] = validationResult.value;
 		ProjectConfig.setConfig(config, argv.global);
 		Util.log(`Property "${argv.property}" set.`);
 	},
 	addHandler(argv) {
-		let config;
+		let config: Config;
 
 		if (argv.global) {
 			config = ProjectConfig.globalConfig();
@@ -138,6 +153,16 @@ const command = {
 
 		config[argv.property].push(argv.value);
 		ProjectConfig.setConfig(config, argv.global);
+
+		if (!argv.skipAnalytics) {
+			GoogleAnalytics.post({
+				cd: "Config",
+				t: "screenview",
+				// tslint:disable-next-line:object-literal-sort-keys
+				cd11: config.skipGit
+			});
+		}
+
 		Util.log(`Property "${argv.property}" updated.`);
 	}
 };

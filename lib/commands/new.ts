@@ -102,6 +102,17 @@ command = {
 			return Util.error("Default project template not found");
 		}
 		// TODO: update output path based on where the CLI is called
+
+		GoogleAnalytics.post({
+			cd: "New",
+			t: "screenview",
+			// tslint:disable-next-line:object-literal-sort-keys
+			cd1: projTemplate.framework,
+			cd2: projTemplate.projectType,
+			cd7: argv.name,
+			cd14: theme
+		});
+
 		await projTemplate.generateFiles(process.cwd(), argv.name, theme);
 		Util.log(Util.greenCheck() + " Project Created");
 
