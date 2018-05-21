@@ -21,14 +21,15 @@ const command = {
 			el: `e2e: ${argv.e2e};`
 		});
 
+		command.test(argv);
+	},
+	async test(argv) {
+
 		if (!ProjectConfig.hasLocalConfig()) {
 			Util.error("Test command is supported only on existing project created with igniteui-cli", "red");
 			return;
 		}
 
-		command.test(argv);
-	},
-	async test(argv) {
 		const projConfig = ProjectConfig.getConfig().project;
 
 		if (!argv.skipAnalytics) {

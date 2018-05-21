@@ -32,6 +32,11 @@ command = {
 		Util.log("Build started.");
 		PackageManager.ensureIgniteUISource(true, command.templateManager);
 
+		if (!ProjectConfig.hasLocalConfig()) {
+			Util.error("Add command is supported only on existing project created with igniteui-cli", "red");
+			return;
+		}
+
 		const config = ProjectConfig.getConfig();
 
 		GoogleAnalytics.post({
