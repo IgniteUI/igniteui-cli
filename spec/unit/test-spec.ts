@@ -6,6 +6,7 @@ import { Util } from "../../lib/Util";
 
 describe("Unit - Test command", () => {
 	beforeAll(() => {
+		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 		spyOn(GoogleAnalytics, "post");
 	});
 
