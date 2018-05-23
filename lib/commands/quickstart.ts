@@ -22,10 +22,8 @@ const command = {
 	},
 	async execute(argv) {
 		GoogleAnalytics.post({
-			t: "event",
-			ec: "$ig quickstart",
-			ea: "user parameters",
-			el: `framework: ${argv.framework}`
+			t: "screenview",
+			cd: "Quick Start"
 		});
 
 		Util.log("Quick Start!");
@@ -59,12 +57,12 @@ const command = {
 		process.chdir(name);
 
 		GoogleAnalytics.post({
-			cd: "Quick Start",
-			t: "screenview",
-			// tslint:disable-next-line:object-literal-sort-keys
+			t: "event",
+			ec: "$ig quickstart",
+			ea: `framework: ${argv.framework}`,
 			cd1: framework,
 			cd2: type,
-			cd7: name
+			cd3: name
 		});
 
 		if (argv.framework === "react") {

@@ -39,11 +39,9 @@ describe("Add command", () => {
 		expect(console.log).toHaveBeenCalledTimes(0);
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
 			{
-				t: "event",
+				t: "screenview",
 				// tslint:disable-next-line:object-literal-sort-keys
-				ec: "$ig add",
-				ea: "user parameters",
-				el: "template id: grid; file name: name"
+				cd: "Add"
 			});
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
 			{
@@ -225,24 +223,23 @@ describe("Add command", () => {
 
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
 			{
+				t: "screenview",
+				// tslint:disable-next-line:object-literal-sort-keys
+				cd: "Add" });
+		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
+			{
 				t: "event",
 				// tslint:disable-next-line:object-literal-sort-keys
 				ec: "$ig add",
-				ea: "user parameters",
-				el: "template id: grid; file name: Test view"
-			});
-		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
-			{
-				cd: "Add",
-				t: "screenview",
-				// tslint:disable-next-line:object-literal-sort-keys
+				ea: "template id: grid; file name: Test view",
 				cd1: "angular",
 				cd2: "ig-ts",
 				cd5: "Data Grids",
 				cd7: "grid",
 				cd8: "Grid",
 				cd11: false,
-				cd14: undefined });
+				cd14: undefined
+			});
 		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);
 
 		done();

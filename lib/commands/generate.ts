@@ -49,11 +49,9 @@ const command = {
 	},
 	async template(argv) {
 		GoogleAnalytics.post({
-			ea: "subcommand: template",
-			ec: "$ig generate",
-			el: `template name: ${argv.name}; framework: ${argv.framework};` +
-				`project type: ${argv.type}; skip-config: ${argv.skipConfig}`,
-			t: "event"
+			t: "screenview",
+			// tslint:disable-next-line:object-literal-sort-keys
+			cd: "Generate"
 		});
 
 		// trim
@@ -105,12 +103,17 @@ const command = {
 		}
 
 		GoogleAnalytics.post({
-			cd: "Generate",
-			t: "screenview",
+			t: "event",
 			// tslint:disable-next-line:object-literal-sort-keys
+			ec: "$ig generate",
+			el: "subcommand: template",
+			ea: `template name: ${argv.name}; framework: ${argv.framework};` +
+				`project type: ${argv.type}; skip-config: ${argv.skipConfig}`,
 			cd1: argv.framework,
 			cd2: argv.type,
-			cd7: argv.name
+			cd7: argv.name,
+			cd9: "template",
+			cd10: !!argv.skipConfig
 		});
 
 		Util.log("Template generated successfully");

@@ -32,22 +32,23 @@ describe("New command", () => {
 
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
 			{
-				t: "event",
+				t: "screenview",
 				// tslint:disable-next-line:object-literal-sort-keys
-				ec: "$ig new",
-				ea: "user parameters",
-				el: "project name: jQuery Proj; framework: jquery; project type: undefined; theme: undefined; skip-git: false"
+				cd: "New"
 			});
 
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
 			{
-				cd: "New",
-				t: "screenview",
+				t: "event",
 				// tslint:disable-next-line:object-literal-sort-keys
+				ec: "$ig new",
+				ea: "project name: jQuery Proj; framework: jquery; project type: js; theme: infragistics; skip-git: false",
 				cd1: "jquery",
 				cd2: "js",
-				cd7: "jQuery Proj",
-				cd14: "infragistics" });
+				cd3: "jQuery Proj",
+				cd11: false,
+				cd14: "infragistics"
+			});
 		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);
 
 		done();
@@ -100,16 +101,15 @@ describe("New command", () => {
 		expect(console.error).toHaveBeenCalledWith(jasmine.stringMatching(/Folder "testProj" already exists!/));
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
 			{
-				t: "event",
+				t: "screenview",
 				// tslint:disable-next-line:object-literal-sort-keys
-				ec: "$ig new",
-				ea: "user parameters",
-				el: "project name: testProj; framework: jquery; project type: undefined; theme: undefined; skip-git: false"
+				cd: "New"
 			});
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
 			{
-				cd: "error: Folder \"testProj\" already exists!",
-				t: "screenview"
+				t: "screenview",
+				// tslint:disable-next-line:object-literal-sort-keys
+				cd: "error: Folder \"testProj\" already exists!"
 			});
 		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);
 		fs.rmdirSync("testProj");

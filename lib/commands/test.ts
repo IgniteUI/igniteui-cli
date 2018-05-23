@@ -15,10 +15,8 @@ const command = {
 	async execute(argv) {
 
 		GoogleAnalytics.post({
-			t: "event",
-			ec: "$ig test",
-			ea: "user parameters",
-			el: `e2e: ${argv.e2e};`
+			t: "screenview",
+			cd: "Test"
 		});
 
 		command.test(argv);
@@ -34,11 +32,12 @@ const command = {
 
 		if (!argv.skipAnalytics) {
 			GoogleAnalytics.post({
-				cd: "Build",
-				t: "screenview",
+				t: "event",
+				ec: "$ig test",
+				ea: `e2e: ${argv.e2e};`,
 				cd1: projConfig.project.framework,
 				cd2: projConfig.project.projectType,
-				cd11: projConfig.skipGit,
+				cd11: !!projConfig.skipGit,
 				cd14: projConfig.project.theme
 			});
 		}

@@ -30,7 +30,13 @@ export class PromptSession {
 	 * Start questions session for project creation
 	 */
 	public async start() {
-		const config =  ProjectConfig.getConfig();
+		GoogleAnalytics.post({
+			t: "screenview",
+			// tslint:disable-next-line:object-literal-sort-keys
+			cd: "Wizard"
+		});
+
+		const config = ProjectConfig.getConfig();
 		let projLibrary: ProjectLibrary;
 		let projectName: string;
 		let theme: string;
@@ -55,8 +61,9 @@ export class PromptSession {
 				GoogleAnalytics.post({
 					t: "event",
 					ec: "$ig wizard",
-					ea: "Enter a name for your project: ",
-					el: `project name: ${nameRes}`
+					el: "Enter a name for your project: ",
+					ea: `project name: ${nameRes}`,
+					cd3: nameRes
 				});
 
 				if (!Util.isAlphanumericExt(nameRes)) {
@@ -80,8 +87,9 @@ export class PromptSession {
 			GoogleAnalytics.post({
 				t: "event",
 				ec: "$ig wizard",
-				ea: "Choose framework:",
-				el: `framework: ${frameRes["framework"]}`
+				el: "Choose framework:",
+				ea: `framework: ${frameRes["framework"]}`,
+				cd1: frameRes["framework"]
 			});
 
 			const framework = this.templateManager.getFrameworkByName(frameRes["framework"]);
@@ -99,8 +107,9 @@ export class PromptSession {
 				GoogleAnalytics.post({
 					t: "event",
 					ec: "$ig wizard",
-					ea: "Choose the type of the project:",
-					el: `project type: ${proj["project"]}`
+					el: "Choose the type of the project:",
+					ea: `project type: ${proj["project"]}`,
+					cd2: proj["project"]
 				});
 
 				projLibrary = this.templateManager.getProjectLibraryByName(framework, proj["project"]);
@@ -122,8 +131,9 @@ export class PromptSession {
 				GoogleAnalytics.post({
 					t: "event",
 					ec: "$ig wizard",
-					ea: "Choose the theme for the project:",
-					el: `theme: ${themeAnswer["theme"]}`
+					el: "Choose the theme for the project:",
+					ea: `theme: ${themeAnswer["theme"]}`,
+					cd14: themeAnswer["theme"]
 				});
 
 				theme = themeAnswer["theme"];
@@ -139,6 +149,7 @@ export class PromptSession {
 			}
 			// move cwd to project folder
 			process.chdir(projectName);
+
 			await this.chooseActionLoop(projLibrary, theme);
 			//TODO: restore cwd?
 		}
@@ -162,22 +173,23 @@ export class PromptSession {
 			type: "list",
 			name: "action",
 			message: "Choose an action:",
-			choices:  this.addSeparators(actionChoices),
+			choices: this.addSeparators(actionChoices),
 			default: "Complete & Run"
 		});
 
 		GoogleAnalytics.post({
 			t: "event",
 			ec: "$ig wizard",
-			ea: "Choose an action:",
-			el: `action: ${action["action"]}`
+			el: "Choose an action:",
+			ea: `action: ${action["action"]}`,
+			cd4: action["action"]
 		});
 
 		let selectedTemplate: Template;
 		switch (action["action"]) {
-			case "Add component":
-			const groups = framework.getComponentGroups();
-			const group = await inquirer.prompt({
+			case "Add component": {
+				const groups = framework.getComponentGroups();
+				const group = await inquirer.prompt({
 					name: "componentGroup",
 					type: "list",
 					message: "Choose a group:",
@@ -185,57 +197,60 @@ export class PromptSession {
 					default: groups.find(x => x === "Data Grids") || groups[0]
 				});
 
-			GoogleAnalytics.post({
+				GoogleAnalytics.post({
 					t: "event",
 					ec: "$ig wizard",
-					ea: "Choose a group",
-					el: `component group: ${group["componentGroup"]}`
+					el: "Choose a group",
+					ea: `component group: ${group["componentGroup"]}`,
+					cd5: group["componentGroup"]
 				});
 
-			const componentNames = framework.getComponentNamesByGroup(group["componentGroup"]);
-			const component = await inquirer.prompt({
-						type: "list",
-						name: "component",
-						message: "Choose a component:",
-						choices: this.addSeparators(componentNames)
-					});
+				const componentNames = framework.getComponentNamesByGroup(group["componentGroup"]);
+				const component = await inquirer.prompt({
+					type: "list",
+					name: "component",
+					message: "Choose a component:",
+					choices: this.addSeparators(componentNames)
+				});
 
-			GoogleAnalytics.post({
-						t: "event",
-						ec: "$ig wizard",
-						ea: "Choose a component",
-						el: `component: ${component["component"]}`
-					});
+				const pickedComponent = framework.getComponentByName(component["component"]);
 
-			const pickedComponent = framework.getComponentByName(component["component"]);
+				GoogleAnalytics.post({
+					t: "event",
+					ec: "$ig wizard",
+					el: "Choose a component",
+					ea: `component: ${component["component"]}`,
+					cd6: pickedComponent.name
+				});
 
-			// runTemplateCollection (item: Template[])
-			//TODO refactor
-			const templates: Template[] = pickedComponent.templates;
-			if (templates.length === 1) {
+				// runTemplateCollection (item: Template[])
+				//TODO refactor
+				const templates: Template[] = pickedComponent.templates;
+				if (templates.length === 1) {
 					//get the only one template
 					selectedTemplate = templates[0];
 				} else {
 					const templateNames = templates.map(x => x.name);
 					const template = await inquirer.prompt({
-							type: "list",
-							name: "template",
-							message: "Choose one:",
-							choices: this.addSeparators(templateNames)
-						});
-
-					GoogleAnalytics.post({
-							t: "event",
-							ec: "$ig wizard",
-							ea: "Choose one (template):",
-							el: `template: ${template["template"]}`
-						});
+						type: "list",
+						name: "template",
+						message: "Choose one:",
+						choices: this.addSeparators(templateNames)
+					});
 
 					selectedTemplate = templates.find((value, i, obj) => {
 						return value.name === template["template"];
 					});
+
+					GoogleAnalytics.post({
+						t: "event",
+						ec: "$ig wizard",
+						el: "Choose one (template):",
+						ea: `template: ${template["template"]}`,
+						cd7: selectedTemplate.id
+					});
 				}
-			if (selectedTemplate) {
+				if (selectedTemplate) {
 					let success = false;
 					while (!success) {
 						templateName = await inquirer.prompt({
@@ -248,8 +263,9 @@ export class PromptSession {
 						GoogleAnalytics.post({
 							t: "event",
 							ec: "$ig wizard",
-							ea: "Name your component:",
-							el: `component name: ${templateName["name"]}`
+							el: "Name your component:",
+							ea: `component name: ${templateName["name"]}`,
+							cd8: templateName["name"]
 						});
 
 						if (selectedTemplate.hasExtraConfiguration) {
@@ -260,8 +276,8 @@ export class PromptSession {
 							GoogleAnalytics.post({
 								t: "event",
 								ec: "$ig wizard",
-								ea: "Extra configuration:",
-								el: `extra configuration: ${JSON.stringify(extraConfig)}`
+								el: "Extra configuration:",
+								ea: `extra configuration: ${JSON.stringify(extraConfig)}`
 							});
 
 							selectedTemplate.setExtraConfiguration(extraConfig);
@@ -269,9 +285,11 @@ export class PromptSession {
 						success = await add.addTemplate(templateName["name"], selectedTemplate);
 					}
 				}
-			await this.chooseActionLoop(framework, theme);
-			break;
-			case "Add view":
+
+				await this.chooseActionLoop(framework, theme);
+				break;
+			}
+			case "Add view": {
 				//TODO:
 				const customTemplates = framework.getCustomTemplateNames();
 				const customTemplate = await inquirer.prompt({
@@ -281,14 +299,16 @@ export class PromptSession {
 					choices: this.addSeparators(customTemplates)
 				});
 
+				selectedTemplate = framework.getTemplateByName(customTemplate["customTemplate"]);
+
 				GoogleAnalytics.post({
 					t: "event",
 					ec: "$ig wizard",
-					ea: "Choose custom view:",
-					el: `custom view: ${customTemplate["customTemplate"]}`
+					el: "Choose custom view:",
+					ea: `custom view: ${customTemplate["customTemplate"]}`,
+					cd7: selectedTemplate.id
 				});
 
-				selectedTemplate = framework.getTemplateByName(customTemplate["customTemplate"]);
 				if (selectedTemplate) {
 					let success = false;
 					while (!success) {
@@ -302,8 +322,9 @@ export class PromptSession {
 						GoogleAnalytics.post({
 							t: "event",
 							ec: "$ig wizard",
-							ea: "Name your view:",
-							el: `custom view name: ${templateName["name"]}`
+							el: "Name your view:",
+							ea: `custom view name: ${templateName["name"]}`,
+							cd7: templateName["name"]
 						});
 
 						success = await add.addTemplate(templateName["name"], selectedTemplate);
@@ -312,12 +333,14 @@ export class PromptSession {
 
 				await this.chooseActionLoop(framework, theme);
 				break;
+			}
 			case "Complete & Run":
-			default:
+			default: {
 				await PackageManager.flushQueue(true);
 				if (true) { // TODO: Make conditional?
 					await start.start({});
 				}
+			}
 		}
 	}
 

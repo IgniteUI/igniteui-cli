@@ -24,10 +24,8 @@ doc = {
 	async execute(argv) {
 
 		GoogleAnalytics.post({
-			t: "event",
-			ec: "$ig doc",
-			ea: "user parameters",
-			el: `term to search: ${argv.term}`
+			t: "screenview",
+			cd: "Doc"
 		});
 
 		if (!argv.term) {
@@ -42,8 +40,9 @@ doc = {
 			Util.log(`Review your search results in the browser`, "green");
 
 			GoogleAnalytics.post({
-				cd: "Doc",
-				t: "screenview",
+				t: "event",
+				ec: "$ig doc",
+				ea: `term to search: ${argv.term}`,
 				cd13: argv.term
 			});
 

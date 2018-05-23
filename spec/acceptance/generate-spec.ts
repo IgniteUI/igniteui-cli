@@ -78,20 +78,23 @@ describe("Generate command", () => {
 		expect(expectedTemplate).toEqual(actualTemplate);
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
 			{
-				ea: "subcommand: template",
-				ec: "$ig generate",
-				el: "template name: custom-template; framework: jquery;project type: undefined; skip-config: false",
-				t: "event"
+				t: "screenview",
+				// tslint:disable-next-line:object-literal-sort-keys
+				cd: "Generate"
 			});
 
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
 			{
-				cd: "Generate",
-				t: "screenview",
+				t: "event",
 				// tslint:disable-next-line:object-literal-sort-keys
+				ec: "$ig generate",
+				el: "subcommand: template",
+				ea: "template name: custom-template; framework: jquery;project type: js; skip-config: false",
 				cd1: "jquery",
 				cd2: "js",
-				cd7: "custom-template"
+				cd7: "custom-template",
+				cd9: "template",
+				cd10: false
 			});
 
 		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);

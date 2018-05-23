@@ -47,11 +47,8 @@ command = {
 	template: null,
 	async execute(argv) {
 		GoogleAnalytics.post({
-			t: "event",
-			ec: "$ig new",
-			ea: "user parameters",
-			el: `project name: ${argv.name}; framework: ${argv.framework}; ` +
-				`project type: ${argv.type}; theme: ${argv.theme}; skip-git: ${argv.skipGit}`
+			t: "screenview",
+			cd: "New"
 		});
 
 		if (ProjectConfig.hasLocalConfig()) {
@@ -104,12 +101,14 @@ command = {
 		// TODO: update output path based on where the CLI is called
 
 		GoogleAnalytics.post({
-			cd: "New",
-			t: "screenview",
-			// tslint:disable-next-line:object-literal-sort-keys
+			t: "event",
+			ec: "$ig new",
+			ea: `project name: ${argv.name}; framework: ${projTemplate.framework}; ` +
+				`project type: ${projTemplate.projectType}; theme: ${theme}; skip-git: ${!!argv.skipGit}`,
 			cd1: projTemplate.framework,
 			cd2: projTemplate.projectType,
-			cd7: argv.name,
+			cd3: argv.name,
+			cd11: !!argv.skipGit,
 			cd14: theme
 		});
 

@@ -8,16 +8,15 @@ interface GoogleAnalyticsParameters {
 	/** Command name, e.g. '$ig doc'. */
 	cd?: string;
 
-	/** Ths could be:
-	 * - 'subcommand [subcommand name]' for command with subcommands;
-	 * - 'user parameters' for simple commands;
-	 * - the question form the wizard for the wizard command; */
+	/** The user input related to this action. */
 	ea?: string;
 
 	/** Command in which the event happens. */
 	ec?: string;
 
-	/** The user input related to the Event Action ('ea'). */
+	/** Ths could be:
+	 * - 'subcommand [subcommand name]' for command with subcommands;
+	 * - the question form the wizard for the wizard command; */
 	el?: string;
 
 	/** Specifies the description of an exception. */
@@ -71,13 +70,13 @@ interface GoogleAnalyticsParameters {
 	cd9?: string;
 
 	/** Skip Config */
-	cd10?: string;
+	cd10?: boolean;
 
 	/** Skip Git */
 	cd11?: boolean;
 
 	/** Global */
-	cd12?: string;
+	cd12?: boolean;
 
 	/** Search term */
 	cd13?: string;

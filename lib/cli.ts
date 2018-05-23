@@ -20,8 +20,9 @@ process.title = "Ignite UI CLI";
 
 function logHelp() {
 	GoogleAnalytics.post({
-		cd: "$ig help",
-		t: "screenview"
+		t: "screenview",
+		// tslint:disable-next-line:object-literal-sort-keys
+		cd: "$ig help"
 	});
 }
 

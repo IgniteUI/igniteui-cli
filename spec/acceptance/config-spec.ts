@@ -38,15 +38,15 @@ describe("Config command", () => {
 
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
 			{
-				ea: "subcommand: get",
-				ec: "$ig config",
-				el: "property to get: igPackageRegistry, is global: false",
-				t: "event"
+				t: "screenview",
+				// tslint:disable-next-line:object-literal-sort-keys
+				cd: "Config"
 			});
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
 			{
-				cd: "error: No configuration file found in this folder!",
-				t: "screenview"
+				t: "screenview",
+				// tslint:disable-next-line:object-literal-sort-keys
+				cd: "error: No configuration file found in this folder!"
 			});
 		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);
 
