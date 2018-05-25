@@ -32,10 +32,8 @@ command = {
 	templateManager: null,
 	execute(argv) {
 		GoogleAnalytics.post({
-			t: "event",
-			ec: "$ig list",
-			ea: "user parameters",
-			el: `framework: ${argv.framework}; project type: ${argv.type}`
+			t: "screenview",
+			cd: "List"
 		});
 
 		let inProject = false;
@@ -88,6 +86,14 @@ command = {
 					maxIdLength = t.id.length;
 				}
 			});
+
+		GoogleAnalytics.post({
+			t: "event",
+			ec: "$ig list",
+			ea: `framework: ${argv.framework}; project type: ${argv.type}`,
+			cd1: framework.id,
+			cd2: projectLib.projectType
+		});
 
 		Util.log(`Available templates for '${framework.name}' framework '${projectLib.projectType}' type`);
 		const addSpacesCount = 5;

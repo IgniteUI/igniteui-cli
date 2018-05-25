@@ -24,10 +24,8 @@ doc = {
 	async execute(argv) {
 
 		GoogleAnalytics.post({
-			t: "event",
-			ec: "$ig doc",
-			ea: "user parameters",
-			el: `term to search: ${argv.term}`
+			t: "screenview",
+			cd: "Doc"
 		});
 
 		if (!argv.term) {
@@ -40,6 +38,14 @@ doc = {
 			"red");
 		} else {
 			Util.log(`Review your search results in the browser`, "green");
+
+			GoogleAnalytics.post({
+				t: "event",
+				ec: "$ig doc",
+				ea: `term to search: ${argv.term}`,
+				cd13: argv.term
+			});
+
 			doc.open(`https://www.infragistics.com/search?q=${argv.term.trim()}`);
 		}
 	}

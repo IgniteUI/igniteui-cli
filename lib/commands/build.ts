@@ -21,10 +21,8 @@ command = {
 	async execute(argv?) {
 
 		GoogleAnalytics.post({
-			t: "event",
-			ec: "$ig build",
-			ea: "user parameters",
-			el: "no user parameters"
+			t: "screenview",
+			cd: "Build"
 		});
 		command.build(argv);
 	},
@@ -32,7 +30,21 @@ command = {
 		Util.log("Build started.");
 		PackageManager.ensureIgniteUISource(true, command.templateManager);
 
+		if (!ProjectConfig.hasLocalConfig()) {
+			Util.error("Add command is supported only on existing project created with igniteui-cli", "red");
+			return;
+		}
+
 		const config = ProjectConfig.getConfig();
+
+		GoogleAnalytics.post({
+			t: "event",
+			ec: "$ig build",
+			cd1: config.project.framework,
+			cd2: config.project.projectType,
+			cd11: !!config.skipGit,
+			cd14: config.project.theme
+		});
 
 		await PackageManager.installPackages();
 

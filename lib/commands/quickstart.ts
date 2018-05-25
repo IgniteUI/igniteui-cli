@@ -22,24 +22,26 @@ const command = {
 	},
 	async execute(argv) {
 		GoogleAnalytics.post({
-			t: "event",
-			ec: "$ig quickstart",
-			ea: "user parameters",
-			el: `framework: ${argv.framework}`
+			t: "screenview",
+			cd: "Quick Start"
 		});
 
 		Util.log("Quick Start!");
 		const framework = argv.framework;
 		let name = "";
+		let type = "";
 		switch (framework) {
 			case "jquery":
 				name = "jquery-quickstart";
+				type = "js";
 				break;
 			case "react":
 				name = "react-quickstart";
+				type = "es6";
 				break;
 			case "angular":
 				name = "angular-quickstart";
+				type = "ig-ts";
 				break;
 			default:
 				Util.error("The framework is not supported!", "red");
@@ -53,6 +55,16 @@ const command = {
 		}
 		//change folder
 		process.chdir(name);
+
+		GoogleAnalytics.post({
+			t: "event",
+			ec: "$ig quickstart",
+			ea: `framework: ${argv.framework}`,
+			cd1: framework,
+			cd2: type,
+			cd3: name
+		});
+
 		if (argv.framework === "react") {
 			Util.log("react-quickstart loaded");
 			shell.exec("npm install");

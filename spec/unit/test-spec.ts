@@ -6,6 +6,7 @@ import { Util } from "../../lib/Util";
 
 describe("Unit - Test command", () => {
 	beforeAll(() => {
+		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 		spyOn(GoogleAnalytics, "post");
 	});
 
@@ -14,7 +15,7 @@ describe("Unit - Test command", () => {
 	});
 
 	it("Run tests for the current project", async done => {
-		await testCmd.test({});
+		await testCmd.test({skipAnalytics: true});
 		expect (Util.exec).toHaveBeenCalledWith("npm test", { stdio: "inherit" });
 
 		done();
@@ -25,7 +26,7 @@ describe("Unit - Test command", () => {
 			framework: "angular",
 			projectType: "igx-ts"}});
 
-		await testCmd.test({e2e: true});
+		await testCmd.test({e2e: true, skipAnalytics: true});
 		expect (Util.exec).toHaveBeenCalledWith("npm run e2e", { stdio: "inherit" });
 
 		done();
@@ -36,7 +37,7 @@ describe("Unit - Test command", () => {
 			framework: "angular",
 			projectType: "ig-ts"}});
 
-		await testCmd.test({e2e: true});
+		await testCmd.test({e2e: true, skipAnalytics: true});
 		expect (Util.exec).toHaveBeenCalledWith("npm test", { stdio: "inherit" });
 
 		done();
@@ -46,7 +47,7 @@ describe("Unit - Test command", () => {
 		spyOn(ProjectConfig, "getConfig").and.returnValue({ project: {
 			framework: "jquery"}});
 
-		await testCmd.test({e2e: true});
+		await testCmd.test({e2e: true, skipAnalytics: true});
 		expect (Util.exec).toHaveBeenCalledWith("npm test", { stdio: "inherit" });
 
 		done();
@@ -56,7 +57,7 @@ describe("Unit - Test command", () => {
 		spyOn(ProjectConfig, "getConfig").and.returnValue({ project: {
 			framework: "react"}});
 
-		await testCmd.test({e2e: true});
+		await testCmd.test({e2e: true, skipAnalytics: true});
 		expect (Util.exec).toHaveBeenCalledWith("npm test", { stdio: "inherit" });
 
 		done();

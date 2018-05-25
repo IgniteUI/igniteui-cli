@@ -36,20 +36,19 @@ describe("Config command", () => {
 		await cli.run(["config", "get", "igPackageRegistry"]);
 		expect(console.error).toHaveBeenCalledWith(jasmine.stringMatching(/No configuration file found in this folder!\s*/));
 
-		expect(GoogleAnalytics.post).toHaveBeenCalledWith({cd: "$ig config", t: "screenview"});
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
 			{
-				ea: "subcommand: get",
-				ec: "$ig config",
-				el: "property to get: igPackageRegistry, is global: false",
-				t: "event"
+				t: "screenview",
+				// tslint:disable-next-line:object-literal-sort-keys
+				cd: "Config"
 			});
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
 			{
-				cd: "error: No configuration file found in this folder!",
-				t: "screenview"
+				t: "screenview",
+				// tslint:disable-next-line:object-literal-sort-keys
+				cd: "error: No configuration file found in this folder!"
 			});
-		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(3);
+		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);
 
 		resetSpy(console.error);
 		await cli.run(["config", "set", "igPackageRegistry", "maybe"]);

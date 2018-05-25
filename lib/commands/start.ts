@@ -20,20 +20,18 @@ command = {
 	templateManager: null,
 	async execute(argv) {
 		GoogleAnalytics.post({
-			t: "event",
-			ec: "$ig start",
-			ea: "user parameters",
-			el: "no user parameters"
+			t: "screenview",
+			cd: "Start"
 		});
 
+		command.start(argv);
+	},
+	async start(argv) {
 		if (!ProjectConfig.hasLocalConfig()) {
 			Util.error("Start command is supported only on existing project created with igniteui-cli", "red");
 			return;
 		}
 
-		command.start(argv);
-	},
-	async start(argv) {
 		//build
 		await build.build({});
 
@@ -41,6 +39,15 @@ command = {
 		const framework = config.project.framework;
 
 		Util.log(`Starting project.`, "green");
+
+		GoogleAnalytics.post({
+			t: "event",
+			ec: "$ig start",
+			cd1: config.project.framework,
+			cd2: config.project.projectType,
+			cd11: !!config.skipGit,
+			cd14: config.project.theme
+		});
 
 		switch (framework.toLowerCase()) {
 			case "jquery":

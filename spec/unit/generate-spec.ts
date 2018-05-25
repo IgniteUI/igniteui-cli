@@ -76,7 +76,13 @@ describe("Unit - Generate command", () => {
 			},
 			null);
 
-		const addHandlerExpectedParameter = { property: "customTemplates", value: "path:" + outDir, global: true };
+		const addHandlerExpectedParameter = {
+			property: "customTemplates",
+			value: "path:" + outDir,
+			// tslint:disable-next-line:object-literal-sort-keys
+			global: true,
+			skipAnalytics: true
+		};
 		expect(config.addHandler).toHaveBeenCalledTimes(1);
 		expect(config.addHandler).toHaveBeenCalledWith(addHandlerExpectedParameter);
 
