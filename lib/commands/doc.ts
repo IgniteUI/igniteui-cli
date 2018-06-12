@@ -1,5 +1,5 @@
 import * as opn from "opn";
-import { GoogleAnalytic } from "../GoogleAnalytic";
+import { GoogleAnalytics } from "../GoogleAnalytics";
 import { PromptSession } from "../PromptSession";
 import { Util } from "../Util";
 
@@ -23,11 +23,9 @@ doc = {
 	},
 	async execute(argv) {
 
-		GoogleAnalytic.post({
-			t: "event",
-			ec: "$ig doc",
-			ea: "user parameters",
-			el: `term to search: ${argv.term}`
+		GoogleAnalytics.post({
+			t: "screenview",
+			cd: "Doc"
 		});
 
 		if (!argv.term) {
@@ -40,6 +38,14 @@ doc = {
 			"red");
 		} else {
 			Util.log(`Review your search results in the browser`, "green");
+
+			GoogleAnalytics.post({
+				t: "event",
+				ec: "$ig doc",
+				ea: `term to search: ${argv.term}`,
+				cd13: argv.term
+			});
+
 			doc.open(`https://www.infragistics.com/search?q=${argv.term.trim()}`);
 		}
 	}

@@ -22,8 +22,7 @@ class TreeGridExportTemplate extends jQueryTemplate {
 		this.projectType = "js";
 		this.components = ["Tree Grid"];
 		this.controlGroup = "Data Grids";
-		this.dependencies = ["igTreeGrid"];
-
+		this.dependencies = ["igTreeGrid", "igExcel", "igGridExcelExporter"];
 		this.gridHelper = new GridHelper();
 		this.gridHelper.tree = true;
 		this.hasExtraConfiguration = true;

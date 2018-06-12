@@ -1,6 +1,6 @@
 import { utimes } from "fs-extra";
 import * as path from "path";
-import { GoogleAnalytic } from "../GoogleAnalytic";
+import { GoogleAnalytics } from "../GoogleAnalytics";
 import { TemplateManager } from "../TemplateManager";
 import { Util } from "../Util";
 import { default as config } from "./config";
@@ -48,12 +48,10 @@ const command = {
 			.demandCommand(1, "Please select command");
 	},
 	async template(argv) {
-		GoogleAnalytic.post({
-			ea: "subcommand: template",
-			ec: "$ig generate",
-			el: `template name: ${argv.name}; framework: ${argv.framework};` +
-				`project type: ${argv.type}; skip-config: ${argv.skipConfig}`,
-			t: "event"
+		GoogleAnalytics.post({
+			t: "screenview",
+			// tslint:disable-next-line:object-literal-sort-keys
+			cd: "Generate"
 		});
 
 		// trim
@@ -101,8 +99,23 @@ const command = {
 			return Util.error("Template generation failed!", "red");
 		}
 		if (!argv.skipConfig) {
-			config.addHandler({ property: "customTemplates", value: "path:" + outDir, global: true });
+			config.addHandler({ property: "customTemplates", value: "path:" + outDir, global: true, skipAnalytics: true });
 		}
+
+		GoogleAnalytics.post({
+			t: "event",
+			// tslint:disable-next-line:object-literal-sort-keys
+			ec: "$ig generate",
+			el: "subcommand: template",
+			ea: `template name: ${argv.name}; framework: ${argv.framework};` +
+				`project type: ${argv.type}; skip-config: ${argv.skipConfig}`,
+			cd1: argv.framework,
+			cd2: argv.type,
+			cd7: argv.name,
+			cd9: "template",
+			cd10: !!argv.skipConfig
+		});
+
 		Util.log("Template generated successfully");
 	}
 };

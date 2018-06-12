@@ -11,7 +11,7 @@ import { default as newCommand } from "./commands/new";
 import { default as quickstart } from "./commands/quickstart";
 import { default as start } from "./commands/start";
 import { default as test } from "./commands/test";
-import { GoogleAnalytic } from "./GoogleAnalytic";
+import { GoogleAnalytics } from "./GoogleAnalytics";
 import { PromptSession } from "./PromptSession";
 import {TemplateManager} from "./TemplateManager";
 import { Util } from "./Util";
@@ -19,9 +19,10 @@ import { Util } from "./Util";
 process.title = "Ignite UI CLI";
 
 function logHelp() {
-	GoogleAnalytic.post({
-		cd: "$ig help",
-		t: "screenview"
+	GoogleAnalytics.post({
+		t: "screenview",
+		// tslint:disable-next-line:object-literal-sort-keys
+		cd: "$ig help"
 	});
 }
 
@@ -72,12 +73,6 @@ export async function run(args = null) {
 	}
 
 	const command = argv._[0];
-	let gaCommand = command || "wizard";
-	gaCommand = "$ig " + gaCommand;
-	GoogleAnalytic.post({
-		cd: gaCommand,
-		t: "screenview"
-	});
 	switch (command) {
 		case "new":
 			await newCommand.execute(argv);

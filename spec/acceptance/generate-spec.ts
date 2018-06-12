@@ -2,7 +2,7 @@ import * as fs from "fs";
 import * as os from "os";
 import * as path from "path";
 import cli = require("../../lib/cli");
-import { GoogleAnalytic } from "../../lib/GoogleAnalytic";
+import { GoogleAnalytics } from "../../lib/GoogleAnalytics";
 import { ProjectConfig } from "../../lib/ProjectConfig";
 import { Util } from "../../lib/Util";
 import { deleteAll } from "../helpers/utils";
@@ -15,7 +15,7 @@ describe("Generate command", () => {
 	beforeEach(() => {
 		spyOn(console, "log");
 		spyOn(console, "error");
-		spyOn(GoogleAnalytic, "post");
+		spyOn(GoogleAnalytics, "post");
 
 		// test folder, w/ existing check:
 		while (fs.existsSync(`./output/${testFolder}`)) {
@@ -76,15 +76,28 @@ describe("Generate command", () => {
 			projectType: "js"
 		};
 		expect(expectedTemplate).toEqual(actualTemplate);
-		expect(GoogleAnalytic.post).toHaveBeenCalledWith({ cd: "$ig generate", t: "screenview" });
-		expect(GoogleAnalytic.post).toHaveBeenCalledWith(
+		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
 			{
-				ea: "subcommand: template",
-				ec: "$ig generate",
-				el: "template name: custom-template; framework: jquery;project type: undefined; skip-config: false",
-				t: "event"
+				t: "screenview",
+				// tslint:disable-next-line:object-literal-sort-keys
+				cd: "Generate"
 			});
-		expect(GoogleAnalytic.post).toHaveBeenCalledTimes(2);
+
+		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
+			{
+				t: "event",
+				// tslint:disable-next-line:object-literal-sort-keys
+				ec: "$ig generate",
+				el: "subcommand: template",
+				ea: "template name: custom-template; framework: jquery;project type: js; skip-config: false",
+				cd1: "jquery",
+				cd2: "js",
+				cd7: "custom-template",
+				cd9: "template",
+				cd10: false
+			});
+
+		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);
 		done();
 	});
 

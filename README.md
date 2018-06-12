@@ -99,4 +99,14 @@ See the [Contribution guide](https://github.com/IgniteUI/igniteui-cli/blob/maste
 
 4. Hit Start Debugging/F5
 
+## Data Collection
+
+The Ignite UI CLI tool uses Google Analytics to anonymously report feature usage statistics and basic crash reports. This data is used to help improve the Ignite UI CLI tools over time. You can opt out of analytics before any data is sent by using
+
+```bach
+ig config set disableAnalytics true -g
+```
+
+when using the CLI. You can read Infragistics privacy policy at https://www.infragistics.com/legal/privacy.
+
 

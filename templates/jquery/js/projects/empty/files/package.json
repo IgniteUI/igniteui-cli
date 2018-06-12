@@ -7,7 +7,7 @@
   "dependencies": {
     "jquery": ">=1.9.1",
     "jquery-ui": ">=1.10.5",
-    "ignite-ui": "^17.2"
+    "ignite-ui": "~18.1"
   },
   "devDependencies": {
     "igniteui-cli": "^$(cliVersion)",

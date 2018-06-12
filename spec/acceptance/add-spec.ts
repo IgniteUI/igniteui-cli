@@ -3,7 +3,7 @@ import * as fs from "fs-extra";
 import { EOL } from "os";
 import { parse } from "path";
 import cli = require("../../lib/cli");
-import { GoogleAnalytic } from "../../lib/GoogleAnalytic";
+import { GoogleAnalytics } from "../../lib/GoogleAnalytics";
 import { ProjectConfig } from "../../lib/ProjectConfig";
 import { resetSpy } from "../helpers/utils";
 import { PromptSession } from "./../../lib/PromptSession";
@@ -14,7 +14,7 @@ describe("Add command", () => {
 	beforeEach(() => {
 		spyOn(console, "log");
 		spyOn(console, "error");
-		spyOn(GoogleAnalytic, "post");
+		spyOn(GoogleAnalytics, "post");
 
 		// test folder, w/ existing check:
 		while (fs.existsSync(`./output/${testFolder}`)) {
@@ -37,21 +37,18 @@ describe("Add command", () => {
 			jasmine.stringMatching(/Add command is supported only on existing project created with igniteui-cli\s*/)
 		);
 		expect(console.log).toHaveBeenCalledTimes(0);
-		expect(GoogleAnalytic.post).toHaveBeenCalledWith({cd: "$ig add", t: "screenview"});
-		expect(GoogleAnalytic.post).toHaveBeenCalledWith(
+		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
 			{
-				t: "event",
+				t: "screenview",
 				// tslint:disable-next-line:object-literal-sort-keys
-				ec: "$ig add",
-				ea: "user parameters",
-				el: "template id: grid; file name: name"
+				cd: "Add"
 			});
-		expect(GoogleAnalytic.post).toHaveBeenCalledWith(
+		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
 			{
 				cd: "error: Add command is supported only on existing project created with igniteui-cli",
 				t: "screenview"
 			});
-		expect(GoogleAnalytic.post).toHaveBeenCalledTimes(3);
+		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);
 
 		resetSpy(console.error);
 		await cli.run(["add"]);
@@ -224,16 +221,26 @@ describe("Add command", () => {
 
 		fs.unlinkSync(ProjectConfig.configFile);
 
-		expect(GoogleAnalytic.post).toHaveBeenCalledWith({cd: "$ig add", t: "screenview"});
-		expect(GoogleAnalytic.post).toHaveBeenCalledWith(
+		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
+			{
+				t: "screenview",
+				// tslint:disable-next-line:object-literal-sort-keys
+				cd: "Add" });
+		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
 			{
 				t: "event",
 				// tslint:disable-next-line:object-literal-sort-keys
 				ec: "$ig add",
-				ea: "user parameters",
-				el: "template id: grid; file name: Test view"
+				ea: "template id: grid; file name: Test view",
+				cd1: "angular",
+				cd2: "ig-ts",
+				cd5: "Data Grids",
+				cd7: "grid",
+				cd8: "Grid",
+				cd11: false,
+				cd14: undefined
 			});
-		expect(GoogleAnalytic.post).toHaveBeenCalledTimes(2);
+		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);
 
 		done();
 	});

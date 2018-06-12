@@ -1,4 +1,4 @@
-import { GoogleAnalytic } from "../GoogleAnalytic";
+import { GoogleAnalytics } from "../GoogleAnalytics";
 import { ProjectConfig } from "../ProjectConfig";
 import { TemplateManager } from "../TemplateManager";
 import { Util } from "../Util";
@@ -37,11 +37,9 @@ command = {
 		return true;
 	},
 	async execute(argv) {
-		GoogleAnalytic.post({
-			t: "event",
-			ec: "$ig add",
-			ea: "user parameters",
-			el: `template id: ${argv.template}; file name: ${argv.name}`
+		GoogleAnalytics.post({
+			t: "screenview",
+			cd: "Add"
 		});
 
 		if (!ProjectConfig.hasLocalConfig()) {
@@ -76,6 +74,20 @@ command = {
 
 		const selectedTemplate = frameworkLibrary.getTemplateById(argv.template);
 		if (selectedTemplate) {
+
+			GoogleAnalytics.post({
+				t: "event",
+				ec: "$ig add",
+				ea: `template id: ${argv.template}; file name: ${argv.name}`,
+				cd1: selectedTemplate.framework,
+				cd2: selectedTemplate.projectType,
+				cd5: selectedTemplate.controlGroup,
+				cd7: selectedTemplate.id,
+				cd8: selectedTemplate.name,
+				cd11: !!config.skipGit,
+				cd14: config.project.theme
+			});
+
 			await command.addTemplate(argv.name, selectedTemplate);
 			await PackageManager.flushQueue(true);
 			PackageManager.ensureIgniteUISource(config.packagesInstalled, command.templateManager);

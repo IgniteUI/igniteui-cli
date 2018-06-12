@@ -1,11 +1,11 @@
 import { default as doc } from "../../lib/commands/doc";
-import { GoogleAnalytic } from "../../lib/GoogleAnalytic";
+import { GoogleAnalytics } from "../../lib/GoogleAnalytics";
 import { PromptSession } from "../../lib/PromptSession";
 import { Util } from "../../lib/Util";
 
 describe("Unit - Doc command", () => {
 	beforeAll(() => {
-		spyOn(GoogleAnalytic, "post");
+		spyOn(GoogleAnalytics, "post");
 	});
 
 	it("Should search Infragistics API for passed term", async done => {

@@ -234,8 +234,9 @@
 			"outFiles": ["${workspaceFolder}/**/*.js"],
 			"args": [
 				"config",
-				"get",
-				"bla",
+				"set",
+				"disableAnalytics",
+				"false",
 				"-g"
 			]
 		},{

@@ -12,10 +12,10 @@
         </button>
         <div class="toggle-content" igxToggle #toggleRefHiding="toggle">
           <div class="toggle-section">
-            <h4 class="dd-title">Visible columns:</h4>
+            <h4 class="dd-title">Hidden columns:</h4>
             <ul class="dd-list">
               <li class="dd-list__item" *ngFor="let col of cols">
-                <igx-checkbox (change)="toggleVisibility(col)" [checked]="!col.hidden">{{col.header}}</igx-checkbox>
+                <igx-checkbox (change)="toggleVisibility(col)" [checked]="col.hidden">{{col.header}}</igx-checkbox>
               </li>
             </ul>
           </div>
@@ -99,22 +99,20 @@
     <igx-column field="country" header="Country" sortable="true" filterable="true" width="160" resizable="true">
     </igx-column>
 
-    <igx-column field="created_on" header="Created On" dataType="date" width="150" resizable="true">
-    </igx-column>
+	<igx-column field="created_on" header="Created On" dataType="date" [formatter]="formatDate" [sortable]="true" width="150" resizable="true">
+	</igx-column>
 
-    <igx-column field="referred_by" header="Referred By" filterable="true" width="160" resizable="true">
-    </igx-column>
+	<igx-column field="referred_by" header="Referred By" filterable="true" width="160" resizable="true">
+	</igx-column>
 
-    <igx-column field="birthday" header="Birthday" width="140" dataType="date" hasSummary="true" [summaries]="soonSummary" resizable="true">
-    </igx-column>
+	<igx-column field="birthday" header="Birthday" width="140" dataType="date" [formatter]="formatDate" hasSummary="true" [summaries]="soonSummary" resizable="true">
+	</igx-column>
 
-    <igx-column field="last_activity" header="Last Activity" width="140" dataType="date" hasSummary="true" [summaries]="earliestSummary"
-     resizable="true">
-    </igx-column>
+	<igx-column field="last_activity" header="Last Activity" width="140" dataType="date" [formatter]="formatDate" hasSummary="true" [summaries]="earliestSummary" resizable="true">
+	</igx-column>
 
-    <igx-column field="next_activity" header="Next Activity" width="140" dataType="date" hasSummary="true" [summaries]="earliestSummary"
-     resizable="true">
-    </igx-column>
+	<igx-column field="next_activity" header="Next Activity" width="140" dataType="date" [formatter]="formatDate" hasSummary="true" [summaries]="earliestSummary" resizable="true">
+	</igx-column>
 
     <igx-column field="deals_total" header="Total Deals" sortable="true" width="110" dataType="number" hasSummary="true" [summaries]="dealsSummary"
      resizable="true">

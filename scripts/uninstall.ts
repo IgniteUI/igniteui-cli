@@ -1,9 +1,10 @@
-import { GoogleAnalytic } from "../lib/GoogleAnalytic";
+import { GoogleAnalytics } from "../lib/GoogleAnalytics";
 
 function uninstall() {
-	GoogleAnalytic.post({
-		cd: `uninstall global: ${!!process.env.npm_config_global}`,
-		t: "screenview"
+	GoogleAnalytics.post({
+		t: "screenview",
+		// tslint:disable-next-line:object-literal-sort-keys
+		cd: `uninstall global: ${!!process.env.npm_config_global}`
 	});
 }
 

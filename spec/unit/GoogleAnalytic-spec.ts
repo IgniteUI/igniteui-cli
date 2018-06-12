@@ -3,7 +3,7 @@ import * as fs from "fs";
 import * as https from "https";
 import * as path from "path";
 import * as process from "process";
-import { GoogleAnalytic } from "../../lib/GoogleAnalytic";
+import { GoogleAnalytics } from "../../lib/GoogleAnalytics";
 import { ProjectConfig } from "../../lib/ProjectConfig";
 import { deleteAll } from "../helpers/utils";
 
@@ -11,7 +11,7 @@ describe("Unit - Google Analytic", () => {
 	let request;
 	let testFolder = path.parse(__filename).name;
 
-	class GATestClass extends GoogleAnalytic {
+	class GATestClass extends GoogleAnalytics {
 		public static userDataFolder = path.join(process.cwd(), `./output/${testFolder}`);
 	}
 
@@ -68,8 +68,8 @@ describe("Unit - Google Analytic", () => {
 		done();
 	});
 
-	it("Should not post if 'skipAnalytic' is set to true", async done => {
-		spyOn(ProjectConfig, "getConfig").and.returnValue({ skipAnalytic: true });
+	it("Should not post if 'disableAnalytics' is set to true", async done => {
+		spyOn(ProjectConfig, "getConfig").and.returnValue({ disableAnalytics: true });
 
 		GATestClass.post({});
 

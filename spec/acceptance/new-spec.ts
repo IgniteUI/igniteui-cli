@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import cli = require("../../lib/cli");
-import { GoogleAnalytic } from "../../lib/GoogleAnalytic";
+import { GoogleAnalytics } from "../../lib/GoogleAnalytics";
 import { Util } from "../../lib/Util";
 import { deleteAll, filesDiff, resetSpy } from "../helpers/utils";
 
@@ -8,7 +8,7 @@ describe("New command", () => {
 	beforeEach(() => {
 		spyOn(console, "log");
 		spyOn(console, "error");
-		spyOn(GoogleAnalytic, "post");
+		spyOn(GoogleAnalytics, "post");
 		process.chdir("./output");
 	});
 
@@ -30,16 +30,26 @@ describe("New command", () => {
 		expect(fs.existsSync("./jQuery Proj/.gitignore")).toBeTruthy();
 		this.testFolder = "./jQuery Proj";
 
-		expect(GoogleAnalytic.post).toHaveBeenCalledWith({cd: "$ig new", t: "screenview"});
-		expect(GoogleAnalytic.post).toHaveBeenCalledWith(
+		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
+			{
+				t: "screenview",
+				// tslint:disable-next-line:object-literal-sort-keys
+				cd: "New"
+			});
+
+		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
 			{
 				t: "event",
 				// tslint:disable-next-line:object-literal-sort-keys
 				ec: "$ig new",
-				ea: "user parameters",
-				el: "project name: jQuery Proj; framework: jquery; project type: undefined; theme: undefined; skip-git: false"
+				ea: "project name: jQuery Proj; framework: jquery; project type: js; theme: infragistics; skip-git: false",
+				cd1: "jquery",
+				cd2: "js",
+				cd3: "jQuery Proj",
+				cd11: false,
+				cd14: "infragistics"
 			});
-		expect(GoogleAnalytic.post).toHaveBeenCalledTimes(2);
+		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);
 
 		done();
 	});
@@ -89,21 +99,19 @@ describe("New command", () => {
 		fs.mkdirSync("testProj");
 		await cli.run(["new", "testProj"]);
 		expect(console.error).toHaveBeenCalledWith(jasmine.stringMatching(/Folder "testProj" already exists!/));
-		expect(GoogleAnalytic.post).toHaveBeenCalledWith({cd: "$ig new", t: "screenview"});
-		expect(GoogleAnalytic.post).toHaveBeenCalledWith(
+		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
 			{
-				t: "event",
+				t: "screenview",
 				// tslint:disable-next-line:object-literal-sort-keys
-				ec: "$ig new",
-				ea: "user parameters",
-				el: "project name: testProj; framework: jquery; project type: undefined; theme: undefined; skip-git: false"
+				cd: "New"
 			});
-		expect(GoogleAnalytic.post).toHaveBeenCalledWith(
+		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
 			{
-				cd: "error: Folder \"testProj\" already exists!",
-				t: "screenview"
+				t: "screenview",
+				// tslint:disable-next-line:object-literal-sort-keys
+				cd: "error: Folder \"testProj\" already exists!"
 			});
-		expect(GoogleAnalytic.post).toHaveBeenCalledTimes(3);
+		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);
 		fs.rmdirSync("testProj");
 
 		await cli.run(["new", "testProj2"]);

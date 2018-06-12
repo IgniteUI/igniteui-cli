@@ -5,7 +5,7 @@ import * as fsExtra from "fs-extra";
 import * as glob from "glob";
 import * as path from "path";
 import through2 = require("through2");
-import { GoogleAnalytic } from "./GoogleAnalytic";
+import { GoogleAnalytics } from "./GoogleAnalytics";
 const imageExtensions = [".png", ".jpg", ".jpeg", ".gif", ".bmp", ".ico"];
 const applyConfig = (configuration: { [key: string]: string }) => {
 	return through2((data, enc, cb) => {
@@ -202,9 +202,10 @@ class Util {
 	 * @param colorKeyword Optional color (CSS keyword like red, green, etc.)
 	 */
 	public static error(message: string, colorKeyword?: string) {
-		GoogleAnalytic.post({
-			cd: `error: ${message}`,
-			t: "screenview"
+		GoogleAnalytics.post({
+			t: "screenview",
+			// tslint:disable-next-line:object-literal-sort-keys
+			cd: `error: ${message}`
 		});
 
 		// tslint:disable:no-console
