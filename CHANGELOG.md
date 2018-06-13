@@ -1,3 +1,20 @@
+<a name="1.3.2"></a>
+# [1.3.2](https://github.com/IgniteUI/igniteui-cli/compare/v1.3.1...v1.3.2) (2018-06-12)
+
+
+### Bug Fixes
+* update Monster Grid styling due to api changes. ([2294d88](https://github.com/IgniteUI/igniteui-cli/commit/2294d88))
+* add excel dependencies in jQuery templates and fix exporting samples ([8a21e78](https://github.com/IgniteUI/igniteui-cli/commit/8a21e78))
+* add custom parameters to Google Analytics ([ce93114](https://github.com/IgniteUI/igniteui-cli/commit/ce93114))
+
+
+### Features
+* update Ignite UI for Angular to 6.0.0 and project to Angular 6 ([f878c37](https://github.com/IgniteUI/igniteui-cli/commit/f878c37))
+* update Ignite UI Angular wrappers project to Angular 6 [7868d8f](https://github.com/IgniteUI/igniteui-cli/commit/7868d8f)
+* update Ignite UI for JavaScript to 18.1 in jQuery, React and Angular wrappers projects ([16afac22](https://github.com/IgniteUI/igniteui-cli/commit/16afac22), [1c91a4d](https://github.com/IgniteUI/igniteui-cli/commit/1c91a4d), [65b8190](https://github.com/IgniteUI/igniteui-cli/commit/65b8190))
+* update quickstart projects ([84d8fc9](https://github.com/IgniteUI/igniteui-cli/commit/84d8fc9))
+
+
 <a name="1.3.0"></a>
 # [1.3.0](https://github.com/IgniteUI/igniteui-cli/compare/v1.2.1...v1.3.0) (2018-04-30)
 
