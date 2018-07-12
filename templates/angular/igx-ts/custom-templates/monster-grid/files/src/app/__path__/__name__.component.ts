@@ -7,11 +7,10 @@ import {
   ChangeDetectorRef
 } from '@angular/core';
 
-import { IgxColumnComponent } from 'igniteui-angular/grid/column.component';
-import { IgxDateSummaryOperand, IgxNumberSummaryOperand, IgxSummaryResult } from 'igniteui-angular/grid/grid-summary';
-import { IgxGridComponent } from 'igniteui-angular/grid/grid.component';
-import { IgxToggleDirective, STRING_FILTERS } from 'igniteui-angular/main';
-import { IgxExcelExporterOptions, IgxExcelExporterService } from 'igniteui-angular/services';
+import { IgxColumnComponent, IgxDateSummaryOperand, IgxNumberSummaryOperand, IgxSummaryResult } from 'igniteui-angular';
+import { IgxGridComponent } from 'igniteui-angular';
+import { IgxToggleDirective } from 'igniteui-angular';
+import { IgxExcelExporterOptions, IgxExcelExporterService } from 'igniteui-angular';
 import { data } from './data';
 
 @Component({
