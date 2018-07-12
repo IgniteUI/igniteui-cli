@@ -4,7 +4,7 @@ import { filter } from 'rxjs/operators';
 
 import { routes } from './app-routing.module';
 
-import { IgxNavigationDrawerComponent } from 'igniteui-angular/navigation-drawer';
+import { IgxNavigationDrawerComponent } from 'igniteui-angular';
 
 
 @Component({
