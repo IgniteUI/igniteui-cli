@@ -9,6 +9,7 @@ import { TemplateManager } from "./TemplateManager";
 import { Util } from "./Util";
 
 export class PromptSession {
+	private WIZARD_BACK_OPTION = "Back";
 
 	constructor(private templateManager: TemplateManager) { }
 
@@ -188,101 +189,120 @@ export class PromptSession {
 		let selectedTemplate: Template;
 		switch (action["action"]) {
 			case "Add component": {
-				const groups = framework.getComponentGroups();
-				const group = await inquirer.prompt({
-					name: "componentGroup",
-					type: "list",
-					message: "Choose a group:",
-					choices: this.addSeparators(groups),
-					default: groups.find(x => x === "Data Grids") || groups[0]
-				});
-
-				GoogleAnalytics.post({
-					t: "event",
-					ec: "$ig wizard",
-					el: "Choose a group",
-					ea: `component group: ${group["componentGroup"]}`,
-					cd5: group["componentGroup"]
-				});
-
-				const componentNames = framework.getComponentNamesByGroup(group["componentGroup"]);
-				const component = await inquirer.prompt({
-					type: "list",
-					name: "component",
-					message: "Choose a component:",
-					choices: this.addSeparators(componentNames)
-				});
-
-				const pickedComponent = framework.getComponentByName(component["component"]);
-
-				GoogleAnalytics.post({
-					t: "event",
-					ec: "$ig wizard",
-					el: "Choose a component",
-					ea: `component: ${component["component"]}`,
-					cd6: pickedComponent.name
-				});
-
-				// runTemplateCollection (item: Template[])
-				//TODO refactor
-				const templates: Template[] = pickedComponent.templates;
-				if (templates.length === 1) {
-					//get the only one template
-					selectedTemplate = templates[0];
-				} else {
-					const templateNames = templates.map(x => x.name);
-					const template = await inquirer.prompt({
+				let addComponentCompleted = false;
+				while (!addComponentCompleted) {
+					const groups = framework.getComponentGroups();
+					groups.push(this.WIZARD_BACK_OPTION);
+					const group = await inquirer.prompt({
+						name: "componentGroup",
 						type: "list",
-						name: "template",
-						message: "Choose one:",
-						choices: this.addSeparators(templateNames)
+						message: "Choose a group:",
+						choices: this.addSeparators(groups),
+						default: groups.find(x => x === "Data Grids") || groups[0]
 					});
 
-					selectedTemplate = templates.find((value, i, obj) => {
-						return value.name === template["template"];
-					});
+					const chosenGroupName = group["componentGroup"];
+
+					if (chosenGroupName === this.WIZARD_BACK_OPTION) {
+						addComponentCompleted = true;
+						continue;
+					}
 
 					GoogleAnalytics.post({
 						t: "event",
 						ec: "$ig wizard",
-						el: "Choose one (template):",
-						ea: `template: ${template["template"]}`,
-						cd7: selectedTemplate.id
+						el: "Choose a group",
+						ea: `component group: ${chosenGroupName}`,
+						cd5: group["componentGroup"]
 					});
-				}
-				if (selectedTemplate) {
-					let success = false;
-					while (!success) {
-						templateName = await inquirer.prompt({
-							type: "input",
-							name: "name",
-							message: "Name your component:",
-							default: selectedTemplate.name
+
+					const componentNames = framework.getComponentNamesByGroup(chosenGroupName);
+					componentNames.push(this.WIZARD_BACK_OPTION);
+					const component = await inquirer.prompt({
+						type: "list",
+						name: "component",
+						message: "Choose a component:",
+						choices: this.addSeparators(componentNames)
+					});
+
+					const chosenComponentName = component["component"];
+
+					if (chosenComponentName === this.WIZARD_BACK_OPTION) {
+						continue;
+					}
+
+					addComponentCompleted = true;
+					const pickedComponent = framework.getComponentByName(chosenComponentName);
+
+					GoogleAnalytics.post({
+						t: "event",
+						ec: "$ig wizard",
+						el: "Choose a component",
+						ea: `component: ${chosenComponentName}`,
+						cd6: pickedComponent.name
+					});
+
+					// runTemplateCollection (item: Template[])
+					//TODO refactor
+					const templates: Template[] = pickedComponent.templates;
+					if (templates.length === 1) {
+						//get the only one template
+						selectedTemplate = templates[0];
+					} else {
+						const templateNames = templates.map(x => x.name);
+						const template = await inquirer.prompt({
+							type: "list",
+							name: "template",
+							message: "Choose one:",
+							choices: this.addSeparators(templateNames)
+						});
+
+						selectedTemplate = templates.find((value, i, obj) => {
+							return value.name === template["template"];
 						});
 
 						GoogleAnalytics.post({
 							t: "event",
 							ec: "$ig wizard",
-							el: "Name your component:",
-							ea: `component name: ${templateName["name"]}`,
-							cd8: templateName["name"]
+							el: "Choose one (template):",
+							ea: `template: ${template["template"]}`,
+							cd7: selectedTemplate.id
 						});
-
-						if (selectedTemplate.hasExtraConfiguration) {
-							const extraPrompt: any[] = this.createQuestions(selectedTemplate.getExtraConfiguration());
-							const extraConfigAnswers = await inquirer.prompt(extraPrompt);
-							const extraConfig = this.parseAnswers(extraConfigAnswers);
+					}
+					if (selectedTemplate) {
+						let success = false;
+						while (!success) {
+							templateName = await inquirer.prompt({
+								type: "input",
+								name: "name",
+								message: "Name your component:",
+								default: selectedTemplate.name
+							});
 
 							GoogleAnalytics.post({
 								t: "event",
 								ec: "$ig wizard",
-								el: "Extra configuration:",
-								ea: `extra configuration: ${JSON.stringify(extraConfig)}`
+								el: "Name your component:",
+								ea: `component name: ${templateName["name"]}`,
+								cd8: templateName["name"]
 							});
 
-							selectedTemplate.setExtraConfiguration(extraConfig);
+							if (selectedTemplate.hasExtraConfiguration) {
+								const extraPrompt: any[] = this.createQuestions(selectedTemplate.getExtraConfiguration());
+								const extraConfigAnswers = await inquirer.prompt(extraPrompt);
+								const extraConfig = this.parseAnswers(extraConfigAnswers);
+
+								GoogleAnalytics.post({
+									t: "event",
+									ec: "$ig wizard",
+									el: "Extra configuration:",
+									ea: `extra configuration: ${JSON.stringify(extraConfig)}`
+								});
+
+								selectedTemplate.setExtraConfiguration(extraConfig);
+							}
+							success = await add.addTemplate(templateName["name"], selectedTemplate);
 						}
-						success = await add.addTemplate(templateName["name"], selectedTemplate);
 					}
 				}
 
@@ -292,6 +312,7 @@ export class PromptSession {
 			case "Add view": {
 				//TODO:
 				const customTemplates = framework.getCustomTemplateNames();
+				customTemplates.push(this.WIZARD_BACK_OPTION);
 				const customTemplate = await inquirer.prompt({
 					type: "list",
 					name: "customTemplate",
@@ -299,13 +320,20 @@ export class PromptSession {
 					choices: this.addSeparators(customTemplates)
 				});
 
-				selectedTemplate = framework.getTemplateByName(customTemplate["customTemplate"]);
+				const chosenTemplateName = customTemplate["customTemplate"];
+
+				if (chosenTemplateName === this.WIZARD_BACK_OPTION) {
+					await this.chooseActionLoop(framework, theme);
+					break;
+				}
+
+				selectedTemplate = framework.getTemplateByName(chosenTemplateName);
 
 				GoogleAnalytics.post({
 					t: "event",
 					ec: "$ig wizard",
 					el: "Choose custom view:",
-					ea: `custom view: ${customTemplate["customTemplate"]}`,
+					ea: `custom view: ${chosenTemplateName}`,
 					cd7: selectedTemplate.id
 				});
 
