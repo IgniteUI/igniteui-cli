@@ -10,10 +10,10 @@ class IgxGridMonsterTemplate extends IgniteUIForAngularTemplate {
 		this.name = "Monster Grid";
 		this.description = "Monster IgxGrid";
 		this.dependencies = [
-			{ import: "IgxGridModule", from: "igniteui-angular/main", root: true },
-			{ provide: "IgxExcelExporterService", from: "igniteui-angular/services" },
+			{ import: "IgxGridModule", from: "igniteui-angular", root: true },
+			{ provide: "IgxExcelExporterService", from: "igniteui-angular" },
 			{
-				from: "igniteui-angular/main",
+				from: "igniteui-angular",
 				import: [
 					"IgxAvatarModule",
 					"IgxBadgeModule",
@@ -28,7 +28,6 @@ class IgxGridMonsterTemplate extends IgniteUIForAngularTemplate {
 				]
 			}
 		];
-		this.packages = [ "jszip@3.1.5" ];
 	}
 }
 module.exports = new IgxGridMonsterTemplate();
