@@ -107,7 +107,7 @@ describe("Unit - Add command", () => {
 		spyOn(PackageManager, "flushQueue").and.returnValue(Promise.resolve());
 		spyOn(PackageManager, "ensureIgniteUISource");
 		await addCmd.execute({name: "template with packages", template: "test-id"});
-		expect(addCmd.addTemplate).toHaveBeenCalledWith("template with packages", {});
+		expect(addCmd.addTemplate).toHaveBeenCalledWith("template with packages", {}, undefined);
 		expect(PackageManager.flushQueue).toHaveBeenCalled();
 
 		done();
