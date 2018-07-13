@@ -10,7 +10,7 @@ import {
   IgxIconModule,
   IgxSwitchModule,
   IgxInputGroupModule
-} from 'igniteui-angular/main';
+} from 'igniteui-angular';
 describe('$(ClassName)Component', () => {
   let component: $(ClassName)Component;
   let fixture: ComponentFixture<$(ClassName)Component>;

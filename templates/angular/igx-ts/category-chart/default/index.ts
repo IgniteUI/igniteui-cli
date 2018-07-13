@@ -14,7 +14,7 @@ class IgxCategoryChartTemplate extends IgniteUIForAngularTemplate {
 			{ import: "IgxCategoryChartModule", from: "igniteui-angular-charts/ES5/igx-category-chart-module" },
 			{import: "FormsModule", from: "@angular/forms"}
 		];
-		this.packages = ["tslib", "igniteui-angular-charts"];
+		this.packages = ["tslib", "igniteui-angular-charts@5.3.1"];
 	}
 }
 module.exports = new IgxCategoryChartTemplate();

@@ -10,10 +10,10 @@ class IgxGridCRMTemplate extends IgniteUIForAngularTemplate {
 		this.name = "CRM Grid";
 		this.description = "CRM IgxGrid";
 		this.dependencies = [
-			{ import: "IgxGridModule", from: "igniteui-angular/main", root: true },
-			{ provide: "IgxExcelExporterService", from: "igniteui-angular/services" },
+			{ import: "IgxGridModule", from: "igniteui-angular", root: true },
+			{ provide: "IgxExcelExporterService", from: "igniteui-angular" },
 			{
-				from: "igniteui-angular/main",
+				from: "igniteui-angular",
 				import: [
 					"IgxAvatarModule",
 					"IgxBadgeModule",
@@ -28,7 +28,6 @@ class IgxGridCRMTemplate extends IgniteUIForAngularTemplate {
 				]
 			}
 		];
-		this.packages = [ "jszip@3.1.5" ];
 	}
 }
 module.exports = new IgxGridCRMTemplate();
