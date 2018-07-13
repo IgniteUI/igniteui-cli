@@ -4,15 +4,26 @@ import {
   AfterViewInit,
   QueryList,
   ViewChild,
-  ChangeDetectorRef
+  ChangeDetectorRef,
+  ElementRef
 } from '@angular/core';
 
-import { IgxColumnComponent, IgxDateSummaryOperand, IgxNumberSummaryOperand, IgxSummaryResult } from 'igniteui-angular';
-import { IgxGridComponent } from 'igniteui-angular';
-import { IgxToggleDirective } from 'igniteui-angular';
-import { IgxExcelExporterOptions, IgxExcelExporterService } from 'igniteui-angular';
+import {
+  CloseScrollStrategy,
+  ConnectedPositioningStrategy,
+  HorizontalAlignment,
+  IgxColumnComponent,
+  IgxDateSummaryOperand,
+  IgxExcelExporterOptions,
+  IgxExcelExporterService,
+  IgxGridComponent,
+  IgxNumberSummaryOperand,
+  IgxSummaryResult,
+  IgxToggleDirective,
+  OverlaySettings,
+  PositionSettings,
+  VerticalAlignment} from 'igniteui-angular';
 import { data } from './data';
-
 
 @Component({
   selector: 'app-$(filePrefix)',
@@ -24,8 +35,11 @@ export class $(ClassName)Component implements OnInit, AfterViewInit {
   @ViewChild('grid1', { read: IgxGridComponent })
   public grid1: IgxGridComponent;
 
-  @ViewChild('toggleRefHiding') public toggleHiding: IgxToggleDirective;
-  @ViewChild('toggleRefPinning') public togglePinning: IgxToggleDirective;
+  @ViewChild('toggleRefHiding') public toggleRefHiding: IgxToggleDirective;
+  @ViewChild('toggleRefPinning') public toggleRefPinning: IgxToggleDirective;
+
+  @ViewChild('hidingButton') public hidingButton: ElementRef;
+  @ViewChild('pinningButton') public pinningButton: ElementRef;
 
   public localData: any[];
   public dealsSummary = DealsSummary;
@@ -36,20 +50,44 @@ export class $(ClassName)Component implements OnInit, AfterViewInit {
   public hiddenColsLength: number;
   public pinnedColsLength: number;
 
-  public searchText = '';
-  public caseSensitive = false;
+  public searchText: string = '';
+  public caseSensitive: boolean = false;
 
-  constructor(private excelExporterService: IgxExcelExporterService, private cdr: ChangeDetectorRef) { }
+  public _positionSettings: PositionSettings = {
+    horizontalDirection: HorizontalAlignment.Left,
+    horizontalStartPoint: HorizontalAlignment.Right,
+    verticalStartPoint: VerticalAlignment.Bottom
+  };
+
+  public _overlaySettings: OverlaySettings = {
+    closeOnOutsideClick: true,
+    modal: false,
+    positionStrategy: new ConnectedPositioningStrategy(this._positionSettings),
+    scrollStrategy: new CloseScrollStrategy()
+  };
+
+  constructor(private excelExporterService: IgxExcelExporterService) { }
 
   public ngOnInit() {
     this.localData = data;
   }
 
+  public toggleHiding() {
+    this._overlaySettings.positionStrategy.settings.target = this.hidingButton.nativeElement;
+    this.toggleRefHiding.toggle(this._overlaySettings);
+  }
+
+  public togglePinning() {
+    this._overlaySettings.positionStrategy.settings.target = this.pinningButton.nativeElement;
+    this.toggleRefPinning.toggle(this._overlaySettings);
+  }
+
   public ngAfterViewInit() {
+    this.grid1.summariesHeight = 60;
+    this.grid1.reflow();
     this.cols = this.grid1.columnList;
     this.hiddenColsLength = this.cols.filter((col) => col.hidden).length;
     this.pinnedColsLength = this.cols.filter((col) => col.pinned).length;
-    this.cdr.detectChanges();
   }
 
   public toggleVisibility(col: IgxColumnComponent) {
@@ -102,8 +140,15 @@ export class $(ClassName)Component implements OnInit, AfterViewInit {
     this.searchText = '';
     this.grid1.clearSearch();
   }
+
+  public formatValue(val: any): string {
+    return val.toLocaleString('en-us', { maximumFractionDigits: 2 });
+  }
 }
 
+  function formatDate(val: Date) {
+    return new Intl.DateTimeFormat('en-US').format(val);
+  }
 class DealsSummary extends IgxNumberSummaryOperand {
   constructor() {
     super();
@@ -123,7 +168,6 @@ class DealsSummary extends IgxNumberSummaryOperand {
     return result;
   }
 }
-
 class EarliestSummary extends IgxDateSummaryOperand {
   constructor() {
     super();
@@ -138,7 +182,6 @@ class EarliestSummary extends IgxDateSummaryOperand {
     return result;
   }
 }
-
 class SoonSummary extends IgxDateSummaryOperand {
   constructor() {
     super();
