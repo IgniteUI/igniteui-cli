@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { employeesData } from './localData';
-import { IgxColumnComponent } from 'igniteui-angular/grid/column.component';
+import { IgxColumnComponent } from 'igniteui-angular';
 
 @Component({
   selector: 'app-$(filePrefix)',
