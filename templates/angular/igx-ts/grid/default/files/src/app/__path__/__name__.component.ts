@@ -18,7 +18,7 @@ export class $(ClassName)Component implements OnInit {
 
   public onColumnInit(column: IgxColumnComponent) {
     if (column.field === 'RegistererDate') {
-      column.formatter = (date => date.toDateString());
+      column.formatter = (date => date.toLocaleDateString());
     }
   }
 }
