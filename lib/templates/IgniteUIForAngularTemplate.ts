@@ -8,12 +8,13 @@ import { AngularTemplate } from "./AngularTemplate";
 export class IgniteUIForAngularTemplate extends AngularTemplate {
 
 	public dependencies: TemplateDependency[] = [];
+	public framework: string = "angular-wrappers";
 
 	constructor(rootPath: string) {
 		super(rootPath);
 	}
 
-	public registerInProject(projectPath: string, name: string) {
+	public registerInProject(projectPath: string, name: string, modulePath: string = "app.module.ts") {
 		const stringDeps = this.dependencies.filter(x => typeof x === "string");
 		if (stringDeps.length) {
 			/** @deprecate */
@@ -45,7 +46,7 @@ export class IgniteUIForAngularTemplate extends AngularTemplate {
 
 		//3) add an import of the component class from its file location.
 		//4) populate the declarations portion of the @NgModule with the component class name.
-		const mainModulePath = path.join(projectPath, "src/app/app.module.ts");
+		const mainModulePath = path.join(projectPath, `src/app/${modulePath}`);
 		const mainModule = new TsUpdate(mainModulePath);
 		mainModule.addDeclaration(
 			path.join(projectPath, `src/app/${this.folderName(name)}/${this.fileName(name)}.component.ts`)

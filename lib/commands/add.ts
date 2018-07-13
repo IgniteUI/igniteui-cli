@@ -9,7 +9,7 @@ let command: {
 	[name: string]: any,
 	templateManager: TemplateManager,
 	execute: (argv: any) => Promise<void>,
-	addTemplate: (name: string, template: Template) => Promise<boolean>
+	addTemplate: (name: string, template: Template, module?: string) => Promise<boolean>
 };
 // tslint:disable:object-literal-sort-keys
 command = {
@@ -26,6 +26,12 @@ command = {
 		name: {
 			alias: "n",
 			description: "File name.",
+			type: "string",
+			global: true
+		},
+		module: {
+			alias: "m",
+			description: "The module to which the template is to be added",
 			type: "string",
 			global: true
 		}
@@ -88,12 +94,12 @@ command = {
 				cd14: config.project.theme
 			});
 
-			await command.addTemplate(argv.name, selectedTemplate);
+			await command.addTemplate(argv.name, selectedTemplate, argv.module);
 			await PackageManager.flushQueue(true);
 			PackageManager.ensureIgniteUISource(config.packagesInstalled, command.templateManager);
 		}
 	},
-	async addTemplate(name: string, template: Template): Promise<boolean> {
+	async addTemplate(name: string, template: Template, modulePath?: string): Promise<boolean> {
 		// trim name to avoid creating awkward paths or mismatches:
 		name = name.trim();
 
@@ -107,7 +113,7 @@ command = {
 
 		if (await template.generateFiles(process.cwd(), name)) {
 			//successful
-			template.registerInProject(process.cwd(), name);
+			template.registerInProject(process.cwd(), name, modulePath);
 			command.templateManager.updateProjectConfiguration(template);
 			template.packages.forEach(x => PackageManager.queuePackage(x));
 			Util.log(`${Util.greenCheck()} View '${name}' added.`);
