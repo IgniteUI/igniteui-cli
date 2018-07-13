@@ -39,8 +39,8 @@ export class AngularTemplate implements Template {
 		}
 		return Util.processTemplates(path.join(this.rootPath, "files"), projectPath, config, pathsConfig);
 	}
-		
-	public registerInProject(projectPath: string, name: string, modulePath: string = 'app.module.ts') {
+
+	public registerInProject(projectPath: string, name: string, modulePath: string = "app.module.ts") {
 		// D.P. Don't use the top-level import as that chains import of typescript
 		// which slows down execution of the entire component noticeably (template loading)
 		// https://www.typescriptlang.org/docs/handbook/modules.html#dynamic-module-loading-in-nodejs
