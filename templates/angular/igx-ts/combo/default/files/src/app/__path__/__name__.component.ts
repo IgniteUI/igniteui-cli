@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { IgxComboComponent  } from 'igniteui-angular';
 import { localData  } from './local-data';
 

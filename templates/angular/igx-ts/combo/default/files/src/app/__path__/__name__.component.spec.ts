@@ -1,8 +1,7 @@
-import { async, TestBed, ComponentFixture, tick, fakeAsync, flush  } from '@angular/core/testing';
+import { async, TestBed, ComponentFixture } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { $(ClassName)Component } from './$(filePrefix).component';
-import { IgxSelectionAPIService , IgxToggleModule , IgxComboModule, IgxRippleModule } from 'igniteui-angular';
-import { FormGroup, FormControl, Validators, FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { IgxComboModule } from 'igniteui-angular';
 
 describe('$(ClassName)Component', () => {
   let component: $(ClassName)Component;
@@ -11,10 +10,7 @@ describe('$(ClassName)Component', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [$(ClassName)Component],
-      imports: [ IgxComboModule,
-        NoopAnimationsModule,
-        IgxToggleModule,
-        ReactiveFormsModule ]
+      imports: [ IgxComboModule, NoopAnimationsModule]
     })
       .compileComponents();
   }));
