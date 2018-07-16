@@ -8,7 +8,7 @@ class AngularFramework extends BaseProjectLibrary {
 		super(__dirname);
 		this.name = "Ignite UI for Angular";
 		this.projectType = "igx-ts";
-		this.themes = ["infragistics"];
+		this.themes = ["Custom", "Default"];
 	}
 }
 module.exports =  new AngularFramework();
