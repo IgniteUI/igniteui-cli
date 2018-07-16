@@ -3,16 +3,16 @@ import { IgxComboComponent  } from 'igniteui-angular';
 import { localData  } from "./local-data";
 
 @Component({
-	selector: 'app-$(filePrefix)',
-  	templateUrl: './$(filePrefix).component.html',
-  	styleUrls: ['./$(filePrefix).component.css']
+  selector: 'app-$(filePrefix)',
+  templateUrl: './$(filePrefix).component.html',
+  styleUrls: ['./$(filePrefix).component.css']
 })
 
 export class $(ClassName)Component implements OnInit {
 
-	public lData = localData;
+  public localData = localData;
 
-  	constructor() { }
+  constructor() { }
 
- 	 public ngOnInit() { }
+  public ngOnInit() { }
 }
