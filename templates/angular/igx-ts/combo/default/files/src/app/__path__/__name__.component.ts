@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { IgxComboComponent  } from 'igniteui-angular';
-import { localData  } from "./local-data";
+import { localData  } from './local-data';
 
 @Component({
   selector: 'app-$(filePrefix)',
