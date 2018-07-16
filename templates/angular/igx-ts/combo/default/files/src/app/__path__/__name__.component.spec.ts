@@ -12,9 +12,9 @@ describe('$(ClassName)Component', () => {
     TestBed.configureTestingModule({
       declarations: [$(ClassName)Component],
       imports: [ IgxComboModule,
-		NoopAnimationsModule,
-		IgxToggleModule,
-		ReactiveFormsModule ]
+        NoopAnimationsModule,
+        IgxToggleModule,
+        ReactiveFormsModule ]
     })
       .compileComponents();
   }));
