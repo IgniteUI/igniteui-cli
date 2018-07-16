@@ -1,0 +1,16 @@
+.combo-container {
+    margin: 10px;
+}
+
+.header-class, .footer-class, .empty-class {
+    text-align: center;
+    font-style: italic;
+    font-weight: bold;
+}
+
+:host {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
