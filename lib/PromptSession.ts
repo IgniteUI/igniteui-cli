@@ -108,56 +108,7 @@ export class PromptSession {
 				break;
 			}
 			case "Add view": {
-				//TODO:
-				const customTemplates = projectLibrary.getCustomTemplateNames();
-				customTemplates.push(this.WIZARD_BACK_OPTION);
-				const customTemplate = await inquirer.prompt({
-					choices: this.addSeparators(customTemplates),
-					message: "Choose custom view:",
-					name: "customTemplate",
-					type: "list"
-				});
-
-				const chosenTemplateName = customTemplate["customTemplate"];
-
-				if (chosenTemplateName === this.WIZARD_BACK_OPTION) {
-					await this.chooseActionLoop(projectLibrary, theme);
-					break;
-				}
-
-				const selectedTemplate = await projectLibrary.getTemplateByName(chosenTemplateName);
-
-				GoogleAnalytics.post({
-					cd7: selectedTemplate.id,
-					ea: `custom view: ${chosenTemplateName}`,
-					ec: "$ig wizard",
-					el: "Choose custom view:",
-					t: "event"
-				});
-
-				if (selectedTemplate) {
-					let success = false;
-					while (!success) {
-						const templateName = await inquirer.prompt({
-							default: selectedTemplate.name,
-							message: "Name your view:",
-							name: "name",
-							type: "input"
-						});
-
-						GoogleAnalytics.post({
-							cd7: templateName["name"],
-							ea: `custom view name: ${templateName["name"]}`,
-							ec: "$ig wizard",
-							el: "Name your view:",
-							t: "event"
-						});
-
-						success = await add.addTemplate(templateName["name"], selectedTemplate);
-					}
-				}
-
-				await this.chooseActionLoop(projectLibrary, theme);
+				this.addView(projectLibrary, theme);
 				break;
 			}
 			case "Complete & Run":
@@ -305,6 +256,35 @@ export class PromptSession {
 				await this.choseComponent(projectLibrary, theme, groupName);
 			}
 		}
+	}
+
+	private async addView(projectLibrary: ProjectLibrary, theme: string) {
+		const customTemplateNameRes = await this.getUserInput({
+			choices: projectLibrary.getCustomTemplateNames(),
+			message: "Choose custom view:",
+			name: "customTemplate",
+			type: "list"
+		}, true);
+
+		if (customTemplateNameRes !== this.WIZARD_BACK_OPTION) {
+			const selectedTemplate = await projectLibrary.getTemplateByName(customTemplateNameRes);
+			if (selectedTemplate) {
+				let success = false;
+				while (!success) {
+					const customViewNameRes = await this.getUserInput({
+						default: selectedTemplate.name,
+						message: "Name your view:",
+						name: "customViewName",
+						type: "input"
+					});
+
+					success = await add.addTemplate(customViewNameRes, selectedTemplate);
+				}
+			}
+		}
+
+		await this.chooseActionLoop(projectLibrary, theme);
+
 	}
 
 	private async getUserInput(options: IUserInputOptions, withBackChoice: boolean = false): Promise<string> {
