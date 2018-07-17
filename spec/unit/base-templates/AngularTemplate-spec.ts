@@ -116,7 +116,8 @@ describe("Unit - AngularTemplate Base", () => {
 
 			expect(helpers.TypeScriptFileUpdate).toHaveBeenCalledWith(path.join("target/path", "src/app/app.module.ts"));
 			expect(helpers.tsUpdateMock.addDeclaration).toHaveBeenCalledWith(
-				path.join("target/path", `src/app/components/view-name/view-name.component.ts`)
+				path.join("target/path", `src/app/components/view-name/view-name.component.ts`),
+				false // if added to a custom module => true
 			);
 			expect(helpers.tsUpdateMock.finalize).toHaveBeenCalled();
 

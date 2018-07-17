@@ -129,7 +129,8 @@ describe("Unit - Add command", () => {
 			ts.createSourceFile("test-file-name", ``, ts.ScriptTarget.Latest, true)
 		);
 		const routeSpy = spyOn(TypeScriptFileUpdate.prototype, "addRoute");
-		const declarationSpy = spyOn(TypeScriptFileUpdate.prototype, "addDeclaration");
+		const declarationSpy = spyOn(TypeScriptFileUpdate.prototype, "addDeclaration").and.callThrough();
+		const ngMetaSpy = spyOn(TypeScriptFileUpdate.prototype, "addNgModuleMeta");
 		const finalizeSpy = spyOn(TypeScriptFileUpdate.prototype, "finalize");
 		const mockTemplate = new IgniteUIForAngularTemplate("");
 		mockTemplate.packages = [];
@@ -168,6 +169,13 @@ describe("Unit - Add command", () => {
 		expect(sourceFilesSpy).toHaveBeenCalledTimes(1);
 		expect(routeSpy).toHaveBeenCalledTimes(1);
 		expect(declarationSpy).toHaveBeenCalledTimes(1);
+		expect(declarationSpy).toHaveBeenCalledWith("My\\Example\\Path\\" +
+		`src\\app\\test-file-name\\test-file-name.component.ts`, true);
+		expect(ngMetaSpy).toHaveBeenCalledTimes(1);
+		expect(ngMetaSpy).toHaveBeenCalledWith({
+			declare: null,
+			from: "../test-file-name/test-file-name.component"
+		}, null, true);
 		expect(finalizeSpy).toHaveBeenCalledTimes(1);
 		expect(addCmd.templateManager.updateProjectConfiguration).toHaveBeenCalledTimes(1);
 		done();
@@ -183,7 +191,8 @@ describe("Unit - Add command", () => {
 			ts.createSourceFile("test-file-name", ``, ts.ScriptTarget.Latest, true)
 		);
 		const routeSpy = spyOn(TypeScriptFileUpdate.prototype, "addRoute");
-		const declarationSpy = spyOn(TypeScriptFileUpdate.prototype, "addDeclaration");
+		const declarationSpy = spyOn(TypeScriptFileUpdate.prototype, "addDeclaration").and.callThrough();
+		const ngMetaSpy = spyOn(TypeScriptFileUpdate.prototype, "addNgModuleMeta");
 		const finalizeSpy = spyOn(TypeScriptFileUpdate.prototype, "finalize");
 		const mockTemplate = new AngularTemplate("");
 		mockTemplate.packages = [];
@@ -222,6 +231,13 @@ describe("Unit - Add command", () => {
 		expect(sourceFilesSpy).toHaveBeenCalledTimes(1);
 		expect(routeSpy).toHaveBeenCalledTimes(1);
 		expect(declarationSpy).toHaveBeenCalledTimes(1);
+		expect(declarationSpy).toHaveBeenCalledWith("My\\Example\\Path\\" +
+		`src\\app\\components\\test-file-name\\test-file-name.component.ts`, true);
+		expect(ngMetaSpy).toHaveBeenCalledTimes(1);
+		expect(ngMetaSpy).toHaveBeenCalledWith({
+			declare: null,
+			from: "../components/test-file-name/test-file-name.component"
+		}, null, true);
 		expect(finalizeSpy).toHaveBeenCalledTimes(1);
 		expect(addCmd.templateManager.updateProjectConfiguration).toHaveBeenCalledTimes(1);
 		done();
