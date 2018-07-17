@@ -290,7 +290,7 @@ describe("Add command", () => {
 
 		expect(fs.readFileSync("src/app/app.module.ts", "utf-8")).toBe(
 			`import { TestViewComponent } from './test-view/test-view.component';` +  EOL +
-			`import { IgxGridModule } from 'igniteui-angular/main';` +  EOL +
+			`import { IgxGridModule } from 'igniteui-angular';` +  EOL +
 			`@NgModule({` +  EOL +
 			`  declarations: [` +  EOL +
 			`    AppComponent,` +  EOL +

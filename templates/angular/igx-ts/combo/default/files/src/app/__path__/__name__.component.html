@@ -1,0 +1,28 @@
+<p>igx-combo component with templating. You can read more about configuring the igx-combo component <a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/combo.html" target="_blank">here</a>.</p>
+
+<igx-combo #combo3 class="input-container" width="300px"
+  [data]="localData"
+  [valueKey]="'field'"
+  [groupKey]="'region'"
+  placeholder="Location(s)"
+  [itemsMaxHeight]="250"
+  searchPlaceholder="Search..."
+  [allowCustomValues]="true"
+>
+
+  <ng-template #itemTemplate let-display let-key="valueKey">
+    <div class="item">
+      <span class="state">{{ display[key] }} - </span>
+      <span class="region">{{ display.region }}</span>
+    </div>
+  </ng-template>
+
+  <ng-template #headerTemplate>
+    <div class="header-class">State - Region</div>
+  </ng-template>
+
+  <ng-template #footerTemplate>
+    <div class="footer-class">Infragistics 2018</div>
+  </ng-template>
+
+</igx-combo>

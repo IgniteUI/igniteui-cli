@@ -14,8 +14,8 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 		this.name = "Custom Grid";
 		this.description = "IgxGrid with optional sorting, filtering and editing features.";
 		this.dependencies = [
-			{ import: "IgxGridModule", from: "igniteui-angular/main", root: true },
-			{ import: "IgxCheckboxModule", from: "igniteui-angular/main" }
+			{ import: "IgxGridModule", from: "igniteui-angular", root: true },
+			{ import: "IgxCheckboxModule", from: "igniteui-angular" }
 		];
 
 		this.hasExtraConfiguration = true;
@@ -61,7 +61,7 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 					columnFeatures.push(`[editable]="true"`);
 					checkBoxBind = `[ngModel]="cell.value" (ngModelChange)="cell.update($event)"`;
 					// enable Date Picker, ngModel
-					this.dependencies.push({ import: "IgxDatePickerModule", from: "igniteui-angular/main" });
+					this.dependencies.push({ import: "IgxDatePickerModule", from: "igniteui-angular" });
 					this.dependencies.push({ import: "FormsModule", from: "@angular/forms" });
 					datePickerEditor = EOL +
 					`<ng-template igxCellEditor let-cell="cell">` + EOL +

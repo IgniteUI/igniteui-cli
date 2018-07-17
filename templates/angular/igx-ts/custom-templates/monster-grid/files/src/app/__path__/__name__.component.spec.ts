@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { IgxExcelExporterService } from 'igniteui-angular/services';
+import { IgxExcelExporterService } from 'igniteui-angular';
 
 import { $(ClassName)Component } from './$(filePrefix).component';
 
@@ -17,7 +17,7 @@ import {
   IgxSwitchModule,
   IgxToggleModule,
   IgxCheckboxModule
-} from 'igniteui-angular/main';
+} from 'igniteui-angular';
 describe('$(ClassName)Component', () => {
   let component: $(ClassName)Component;
   let fixture: ComponentFixture<$(ClassName)Component>;
