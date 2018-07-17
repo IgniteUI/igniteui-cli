@@ -1,10 +1,16 @@
 
 import * as fs from "fs-extra";
+import * as path from "path";
+import * as ts from "typescript";
 import { default as addCmd } from "../../lib/commands/add";
 import { GoogleAnalytics } from "../../lib/GoogleAnalytics";
 import { PackageManager } from "../../lib/packages/PackageManager";
+import { TypeScriptFileUpdate } from "../../lib/project-utility/TypeScriptFileUpdate";
+import { TypeScriptUtils } from "../../lib/project-utility/TypeScriptUtils";
 import { ProjectConfig } from "../../lib/ProjectConfig";
 import { PromptSession } from "../../lib/PromptSession";
+import { AngularTemplate } from "../../lib/templates/AngularTemplate";
+import { IgniteUIForAngularTemplate } from "../../lib/templates/IgniteUIForAngularTemplate";
 import { Util } from "../../lib/Util";
 import { resetSpy } from "../helpers/utils";
 
@@ -110,6 +116,114 @@ describe("Unit - Add command", () => {
 		expect(addCmd.addTemplate).toHaveBeenCalledWith("template with packages", {}, undefined);
 		expect(PackageManager.flushQueue).toHaveBeenCalled();
 
+		done();
+	});
+
+	it("Should properly accept module args when passed - IgniteUI for Anuglar", async done => {
+		const mockProjectConfig = {project: {
+			framework: "angular",
+			theme: "infragistics"
+		}};
+
+		spyOn(TypeScriptUtils, "getFileSource").and.returnValue(
+			ts.createSourceFile("test-file-name", ``, ts.ScriptTarget.Latest, true)
+		);
+		const routeSpy = spyOn(TypeScriptFileUpdate.prototype, "addRoute");
+		const declarationSpy = spyOn(TypeScriptFileUpdate.prototype, "addDeclaration");
+		const finalizeSpy = spyOn(TypeScriptFileUpdate.prototype, "finalize");
+		const mockTemplate = new IgniteUIForAngularTemplate("");
+		mockTemplate.packages = [];
+		mockTemplate.dependencies = [];
+
+		spyOn(process, "cwd").and.returnValue("My/Example/Path");
+		spyOn(mockTemplate, "generateFiles").and.returnValue(Promise.resolve(true));
+		spyOn(mockTemplate, "registerInProject").and.callThrough();
+		const sourceFilesSpy = spyOn<any>(mockTemplate, "ensureSourceFiles");
+		const mockLibrary = jasmine.createSpyObj("frameworkLibrary", ["hasTemplate", "getTemplateById"]);
+		mockLibrary.hasTemplate.and.returnValue(true);
+		mockLibrary.getTemplateById.and.returnValue(mockTemplate);
+		addCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
+			getFrameworkById: {},
+			getProjectLibrary: mockLibrary,
+			updateProjectConfiguration: () => {}
+		});
+		spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
+		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
+		spyOn(addCmd, "addTemplate").and.callThrough();
+		spyOn(PackageManager, "flushQueue").and.returnValue(Promise.resolve());
+		spyOn(PackageManager, "ensureIgniteUISource");
+		await addCmd.execute({
+			name: "test-file-name", template: "CustomTemplate",
+			// tslint:disable-next-line:object-literal-sort-keys
+			module: "myCustomModule/my-custom-module.module.ts"
+		});
+		expect(addCmd.addTemplate).toHaveBeenCalledWith("test-file-name", mockTemplate,
+		"myCustomModule/my-custom-module.module.ts");
+		expect(PackageManager.flushQueue).toHaveBeenCalled();
+		expect(mockTemplate.generateFiles).toHaveBeenCalledTimes(1);
+		expect(mockTemplate.generateFiles).toHaveBeenCalledWith("My/Example/Path", "test-file-name");
+		expect(mockTemplate.registerInProject).toHaveBeenCalledTimes(1);
+		expect(mockTemplate.registerInProject).toHaveBeenCalledWith("My/Example/Path", "test-file-name",
+		"myCustomModule/my-custom-module.module.ts");
+		expect(sourceFilesSpy).toHaveBeenCalledTimes(1);
+		expect(routeSpy).toHaveBeenCalledTimes(1);
+		expect(declarationSpy).toHaveBeenCalledTimes(1);
+		expect(finalizeSpy).toHaveBeenCalledTimes(1);
+		expect(addCmd.templateManager.updateProjectConfiguration).toHaveBeenCalledTimes(1);
+		done();
+	});
+
+	it("Should properly accept module args when passed - Angular Wrappers", async done => {
+		const mockProjectConfig = {project: {
+			framework: "angular",
+			theme: "infragistics"
+		}};
+
+		spyOn(TypeScriptUtils, "getFileSource").and.returnValue(
+			ts.createSourceFile("test-file-name", ``, ts.ScriptTarget.Latest, true)
+		);
+		const routeSpy = spyOn(TypeScriptFileUpdate.prototype, "addRoute");
+		const declarationSpy = spyOn(TypeScriptFileUpdate.prototype, "addDeclaration");
+		const finalizeSpy = spyOn(TypeScriptFileUpdate.prototype, "finalize");
+		const mockTemplate = new AngularTemplate("");
+		mockTemplate.packages = [];
+		mockTemplate.dependencies = [];
+
+		spyOn(process, "cwd").and.returnValue("My/Example/Path");
+		spyOn(mockTemplate, "generateFiles").and.returnValue(Promise.resolve(true));
+		spyOn(mockTemplate, "registerInProject").and.callThrough();
+		const sourceFilesSpy = spyOn<any>(mockTemplate, "ensureSourceFiles");
+		const mockLibrary = jasmine.createSpyObj("frameworkLibrary", ["hasTemplate", "getTemplateById"]);
+		mockLibrary.hasTemplate.and.returnValue(true);
+		mockLibrary.getTemplateById.and.returnValue(mockTemplate);
+		addCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
+			getFrameworkById: {},
+			getProjectLibrary: mockLibrary,
+			updateProjectConfiguration: () => {}
+		});
+		spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
+		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
+		spyOn(addCmd, "addTemplate").and.callThrough();
+		spyOn(PackageManager, "flushQueue").and.returnValue(Promise.resolve());
+		spyOn(PackageManager, "ensureIgniteUISource");
+		await addCmd.execute({
+			name: "test-file-name", template: "CustomTemplate",
+			// tslint:disable-next-line:object-literal-sort-keys
+			module: "myCustomModule/my-custom-module.module.ts"
+		});
+		expect(addCmd.addTemplate).toHaveBeenCalledWith("test-file-name", mockTemplate,
+		"myCustomModule/my-custom-module.module.ts");
+		expect(PackageManager.flushQueue).toHaveBeenCalled();
+		expect(mockTemplate.generateFiles).toHaveBeenCalledTimes(1);
+		expect(mockTemplate.generateFiles).toHaveBeenCalledWith("My/Example/Path", "test-file-name");
+		expect(mockTemplate.registerInProject).toHaveBeenCalledTimes(1);
+		expect(mockTemplate.registerInProject).toHaveBeenCalledWith("My/Example/Path", "test-file-name",
+		"myCustomModule/my-custom-module.module.ts");
+		expect(sourceFilesSpy).toHaveBeenCalledTimes(1);
+		expect(routeSpy).toHaveBeenCalledTimes(1);
+		expect(declarationSpy).toHaveBeenCalledTimes(1);
+		expect(finalizeSpy).toHaveBeenCalledTimes(1);
+		expect(addCmd.templateManager.updateProjectConfiguration).toHaveBeenCalledTimes(1);
 		done();
 	});
 });
