@@ -12,7 +12,7 @@
 			</igx-input-group>
 		</div>
 	
-		<igx-grid #grid1 [data]="localData" [paging]="true" [perPage]="6" [height]="null" (onSelection)="cellSelection($event)" [paginationTemplate]="pager">
+		<igx-grid #grid1 [data]="localData" [paging]="true" [perPage]="6" height="513px" (onSelection)="cellSelection($event)" [paginationTemplate]="pager">
 			<igx-column header="Rank" headerClasses="myClass" width="100px" field="Id" sortable="true">
 					<ng-template igxCell let-cell="cell">
 						<div class="cell__inner">
@@ -22,7 +22,7 @@
 								<img src="assets/images/trophy_gold.svg" alt="golf-trophy" />
 							</span>
 							<span class="cup" *ngIf="cell.value === 2">
-								<img src="assets/images/trophy_silver.svg" alt="silve-trophy" />
+								<img src="assets/images/trophy_silver.svg" alt="silver-trophy" />
 							</span>
 							<span class="cup" *ngIf="cell.value === 3">
 								<img src="assets/images/trophy_bronze.svg" alt="bronze-trophy" />
