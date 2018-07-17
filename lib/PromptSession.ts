@@ -31,114 +31,46 @@ export class PromptSession {
 	 * Start questions session for project creation
 	 */
 	public async start() {
-		GoogleAnalytics.post({
-			t: "screenview",
-			// tslint:disable-next-line:object-literal-sort-keys
-			cd: "Wizard"
-		});
+		GoogleAnalytics.post({ cd: "Wizard", t: "screenview" });
 
-		const config = ProjectConfig.getConfig();
 		let projLibrary: ProjectLibrary;
-		let projectName: string;
 		let theme: string;
 
 		add.templateManager = this.templateManager;
+		const config = ProjectConfig.getConfig();
 
-		// tslint:disable:object-literal-sort-keys
 		if (ProjectConfig.hasLocalConfig() && !config.project.isShowcase) {
 			projLibrary = this.templateManager.getProjectLibrary(config.project.framework, config.project.projectType);
-			await this.chooseActionLoop(projLibrary, config.project.theme);
+			theme = config.project.theme;
 		} else {
 			Util.log(""); /* new line */
-			while (!projectName) {
-				let nameRes = (await inquirer.prompt({
-					type: "input",
-					name: "projectName",
-					message: "Enter a name for your project:",
-					default: "app"
-				}))["projectName"];
-				nameRes = nameRes.trim();
 
-				GoogleAnalytics.post({
-					t: "event",
-					ec: "$ig wizard",
-					el: "Enter a name for your project: ",
-					ea: `project name: ${nameRes}`,
-					cd3: nameRes
+			let projectName: string;
+			while (!projectName) {
+				const nameRes: string = await this.getUserInput({
+					default: "app",
+					message: "Enter a name for your project:",
+					name: "projectName",
+					type: "input"
 				});
 
-				if (!Util.isAlphanumericExt(nameRes)) {
-					Util.error(`Name '${nameRes}' is not valid. `
-						+ "Name should start with a letter and can also contain numbers, dashes and spaces.",
-						"red");
-				} else if (Util.directoryExists(nameRes)) {
-					Util.error(`Folder "${nameRes}" already exists!`, "red");
-				} else {
+				if (this.nameIsValid(nameRes)) {
 					projectName = nameRes;
 				}
 			}
-			const frameRes = await inquirer.prompt({
-				type: "list",
-				name: "framework",
+
+			const frameRes: string = await this.getUserInput({
+				choices: this.templateManager.getFrameworkNames(),
+				default: "jQuery",
 				message: "Choose framework:",
-				choices: this.addSeparators(this.templateManager.getFrameworkNames()),
-				default: "jQuery"
+				name: "framework",
+				type: "list"
 			});
 
-			GoogleAnalytics.post({
-				t: "event",
-				ec: "$ig wizard",
-				el: "Choose framework:",
-				ea: `framework: ${frameRes["framework"]}`,
-				cd1: frameRes["framework"]
-			});
-
-			const framework = this.templateManager.getFrameworkByName(frameRes["framework"]);
+			const framework = this.templateManager.getFrameworkByName(frameRes);
 			//app name validation???
-			if (framework.projectLibraries.length > 1) {
-				//proj type support
-				const projQuestion: inquirer.Question = {
-					type: "list",
-					name: "project",
-					message: "Choose the type of project:",
-					choices: this.addSeparators(this.templateManager.getProjectLibraryNames(framework.id))
-				};
-				const proj = await inquirer.prompt(projQuestion);
-
-				GoogleAnalytics.post({
-					t: "event",
-					ec: "$ig wizard",
-					el: "Choose the type of the project:",
-					ea: `project type: ${proj["project"]}`,
-					cd2: proj["project"]
-				});
-
-				projLibrary = this.templateManager.getProjectLibraryByName(framework, proj["project"]);
-			} else {
-				projLibrary = this.templateManager.getProjectLibrary(framework.id);
-			}
-			if (projLibrary.themes.length < 2) {
-				theme = projLibrary.themes[0] || "";
-			} else {
-				const themeQuestion: inquirer.Question = {
-					type: "list",
-					name: "theme",
-					message: "Choose the theme for the project:",
-					choices: this.addSeparators(projLibrary.themes),
-					default: "infragistics"
-				};
-				const themeAnswer = await inquirer.prompt(themeQuestion);
-
-				GoogleAnalytics.post({
-					t: "event",
-					ec: "$ig wizard",
-					el: "Choose the theme for the project:",
-					ea: `theme: ${themeAnswer["theme"]}`,
-					cd14: themeAnswer["theme"]
-				});
-
-				theme = themeAnswer["theme"];
-			}
+			projLibrary = await this.getProjectLibrary(framework);
+			theme = await this.getTheme(projLibrary);
 
 			const projTemplate = projLibrary.getProject();
 			Util.log("  Generating project structure.");
@@ -150,229 +82,82 @@ export class PromptSession {
 			}
 			// move cwd to project folder
 			process.chdir(projectName);
-
-			await this.chooseActionLoop(projLibrary, theme);
-			//TODO: restore cwd?
 		}
+		await this.chooseActionLoop(projLibrary, theme);
+		//TODO: restore cwd?
 	}
 	/**
 	 * Starts a loop of 'Choose an action' questions
-	 * @param framework The framework to use
+	 * @param projectLibrary The framework to use
 	 * @param theme Theme to use
 	 */
-	public async chooseActionLoop(framework: ProjectLibrary, theme: string) {
-		const actionChoices: string[] = ["Complete & Run"];
-		let templateName;
-		if (framework.components.length > 0) {
-			actionChoices.push("Add component");
-		}
-		if (framework.getCustomTemplateNames().length > 0) {
-			actionChoices.push("Add view");
-		}
+	public async chooseActionLoop(projectLibrary: ProjectLibrary, theme: string) {
+		const actionChoices: string[] = this.generateActionChoices(projectLibrary);
 		Util.log(""); /* new line */
-		const action = await inquirer.prompt({
-			type: "list",
-			name: "action",
+		const action: string = await this.getUserInput({
+			choices: actionChoices,
+			default: "Complete & Run",
 			message: "Choose an action:",
-			choices: this.addSeparators(actionChoices),
-			default: "Complete & Run"
+			name: "action",
+			type: "list"
 		});
 
-		GoogleAnalytics.post({
-			t: "event",
-			ec: "$ig wizard",
-			el: "Choose an action:",
-			ea: `action: ${action["action"]}`,
-			cd4: action["action"]
-		});
-
-		let selectedTemplate: Template;
-		switch (action["action"]) {
+		switch (action) {
 			case "Add component": {
-				let chooseGroupCompleted = false;
-				while (!chooseGroupCompleted) {
-					const groups = framework.getComponentGroups();
-					groups.push(this.WIZARD_BACK_OPTION);
-					const group = await inquirer.prompt({
-						name: "componentGroup",
-						type: "list",
-						message: "Choose a group:",
-						choices: this.addSeparators(groups),
-						default: groups.find(x => x === "Data Grids") || groups[0]
-					});
-
-					const chosenGroupName = group["componentGroup"];
-
-					if (chosenGroupName === this.WIZARD_BACK_OPTION) {
-						chooseGroupCompleted = true;
-						continue;
-					}
-
-					GoogleAnalytics.post({
-						t: "event",
-						ec: "$ig wizard",
-						el: "Choose a group",
-						ea: `component group: ${chosenGroupName}`,
-						cd5: group["componentGroup"]
-					});
-
-					let chooseComponentCompleted = false;
-					while (!chooseComponentCompleted) {
-						if (chooseComponentCompleted) {
-							chooseGroupCompleted = true;
-							break;
-						}
-						const componentNames = framework.getComponentNamesByGroup(chosenGroupName);
-						componentNames.push(this.WIZARD_BACK_OPTION);
-						const component = await inquirer.prompt({
-							type: "list",
-							name: "component",
-							message: "Choose a component:",
-							choices: this.addSeparators(componentNames)
-						});
-
-						const chosenComponentName = component["component"];
-
-						if (chosenComponentName === this.WIZARD_BACK_OPTION) {
-							chooseComponentCompleted = true;
-							continue;
-						}
-
-						chooseGroupCompleted = true;
-						const pickedComponent = framework.getComponentByName(chosenComponentName);
-
-						GoogleAnalytics.post({
-							t: "event",
-							ec: "$ig wizard",
-							el: "Choose a component",
-							ea: `component: ${chosenComponentName}`,
-							cd6: pickedComponent.name
-						});
-
-						// runTemplateCollection (item: Template[])
-						//TODO refactor
-						const templates: Template[] = pickedComponent.templates;
-						if (templates.length === 1) {
-							//get the only one template
-							selectedTemplate = templates[0];
-						} else {
-							const templateNames = templates.map(x => x.name);
-							templateNames.push(this.WIZARD_BACK_OPTION);
-							const template = await inquirer.prompt({
-								type: "list",
-								name: "template",
-								message: "Choose one:",
-								choices: this.addSeparators(templateNames)
-							});
-
-							if (template["template"] === this.WIZARD_BACK_OPTION) {
-								chooseComponentCompleted = false;
-								continue;
-							}
-							selectedTemplate = templates.find((value, i, obj) => {
-								return value.name === template["template"];
-							});
-
-							GoogleAnalytics.post({
-								t: "event",
-								ec: "$ig wizard",
-								el: "Choose one (template):",
-								ea: `template: ${template["template"]}`,
-								cd7: selectedTemplate.id
-							});
-						}
-					}
-					if (selectedTemplate) {
-						let success = false;
-						while (!success) {
-							templateName = await inquirer.prompt({
-								type: "input",
-								name: "name",
-								message: "Name your component:",
-								default: selectedTemplate.name
-							});
-
-							GoogleAnalytics.post({
-								t: "event",
-								ec: "$ig wizard",
-								el: "Name your component:",
-								ea: `component name: ${templateName["name"]}`,
-								cd8: templateName["name"]
-							});
-
-							if (selectedTemplate.hasExtraConfiguration) {
-								const extraPrompt: any[] = this.createQuestions(selectedTemplate.getExtraConfiguration());
-								const extraConfigAnswers = await inquirer.prompt(extraPrompt);
-								const extraConfig = this.parseAnswers(extraConfigAnswers);
-
-								GoogleAnalytics.post({
-									t: "event",
-									ec: "$ig wizard",
-									el: "Extra configuration:",
-									ea: `extra configuration: ${JSON.stringify(extraConfig)}`
-								});
-
-								selectedTemplate.setExtraConfiguration(extraConfig);
-							}
-							success = await add.addTemplate(templateName["name"], selectedTemplate);
-						}
-					}
-				}
-
-				await this.chooseActionLoop(framework, theme);
+				this.addComponent(projectLibrary, theme);
 				break;
 			}
 			case "Add view": {
 				//TODO:
-				const customTemplates = framework.getCustomTemplateNames();
+				const customTemplates = projectLibrary.getCustomTemplateNames();
 				customTemplates.push(this.WIZARD_BACK_OPTION);
 				const customTemplate = await inquirer.prompt({
-					type: "list",
-					name: "customTemplate",
+					choices: this.addSeparators(customTemplates),
 					message: "Choose custom view:",
-					choices: this.addSeparators(customTemplates)
+					name: "customTemplate",
+					type: "list"
 				});
 
 				const chosenTemplateName = customTemplate["customTemplate"];
 
 				if (chosenTemplateName === this.WIZARD_BACK_OPTION) {
-					await this.chooseActionLoop(framework, theme);
+					await this.chooseActionLoop(projectLibrary, theme);
 					break;
 				}
 
-				selectedTemplate = framework.getTemplateByName(chosenTemplateName);
+				const selectedTemplate = await projectLibrary.getTemplateByName(chosenTemplateName);
 
 				GoogleAnalytics.post({
-					t: "event",
+					cd7: selectedTemplate.id,
+					ea: `custom view: ${chosenTemplateName}`,
 					ec: "$ig wizard",
 					el: "Choose custom view:",
-					ea: `custom view: ${chosenTemplateName}`,
-					cd7: selectedTemplate.id
+					t: "event"
 				});
 
 				if (selectedTemplate) {
 					let success = false;
 					while (!success) {
-						templateName = await inquirer.prompt({
-							type: "input",
-							name: "name",
+						const templateName = await inquirer.prompt({
+							default: selectedTemplate.name,
 							message: "Name your view:",
-							default: selectedTemplate.name
+							name: "name",
+							type: "input"
 						});
 
 						GoogleAnalytics.post({
-							t: "event",
+							cd7: templateName["name"],
+							ea: `custom view name: ${templateName["name"]}`,
 							ec: "$ig wizard",
 							el: "Name your view:",
-							ea: `custom view name: ${templateName["name"]}`,
-							cd7: templateName["name"]
+							t: "event"
 						});
 
 						success = await add.addTemplate(templateName["name"], selectedTemplate);
 					}
 				}
 
-				await this.chooseActionLoop(framework, theme);
+				await this.chooseActionLoop(projectLibrary, theme);
 				break;
 			}
 			case "Complete & Run":
@@ -387,7 +172,7 @@ export class PromptSession {
 
 	/**
 	 * Returns a new array with inquirer.Separator() added between items
-	 * @param array The original array to add separators to
+	 * @param array The original array to add separatorfdks to
 	 */
 	private addSeparators(array: any[]): any[] {
 		const newArray = [];
@@ -435,4 +220,190 @@ export class PromptSession {
 	private parseAnswers(answers: {}): {} {
 		return answers;
 	}
+
+	private async addComponent(projectLibrary: ProjectLibrary, theme: string) {
+		const groups = projectLibrary.getComponentGroups();
+		const groupRes: string = await this.getUserInput({
+			choices: groups,
+			default: groups.find(x => x === "Data Grids") || groups[0],
+			message: "Choose a group:",
+			name: "componentGroup",
+			type: "list"
+		}, true);
+
+		if (groupRes !== this.WIZARD_BACK_OPTION) {
+			await this.choseComponent(projectLibrary, theme, groupRes);
+		}
+		await this.chooseActionLoop(projectLibrary, theme);
+	}
+
+	private async choseComponent(projectLibrary: ProjectLibrary, theme: string, groupName: string) {
+		const componentNameRes = await this.getUserInput({
+			choices: projectLibrary.getComponentNamesByGroup(groupName),
+			message: "Choose a component:",
+			name: "component",
+			type: "list"
+		}, true);
+
+		if (componentNameRes !== this.WIZARD_BACK_OPTION) {
+			const component = projectLibrary.getComponentByName(componentNameRes);
+
+			// runTemplateCollection (item: Template[])
+			await this.getTemplate(projectLibrary, theme, groupName, component);
+		} else {
+			await this.addComponent(projectLibrary, theme);
+		}
+
+	}
+
+	private async getTemplate(projectLibrary: ProjectLibrary, theme: string, groupName: string, component: Component) {
+		let selectedTemplate: Template;
+		const templates: Template[] = component.templates;
+		if (templates.length === 1) {
+			//get the only one template
+			selectedTemplate = templates[0];
+		} else {
+			const templateRes = await this.getUserInput({
+				choices: templates.map(x => x.name),
+				message: "Choose one:",
+				name: "template",
+				type: "list"
+			}, true);
+
+			if (templateRes !== this.WIZARD_BACK_OPTION) {
+				selectedTemplate = templates.find((value, i, obj) => {
+					return value.name === templateRes;
+				});
+				if (selectedTemplate) {
+					let success = false;
+					while (!success) {
+						const templateName = await this.getUserInput({
+							default: selectedTemplate.name,
+							message: "Name your component:",
+							name: "componentName",
+							type: "input"
+						});
+
+						if (selectedTemplate.hasExtraConfiguration) {
+							const extraPrompt: any[] = this.createQuestions(selectedTemplate.getExtraConfiguration());
+							const extraConfigAnswers = await inquirer.prompt(extraPrompt);
+							const extraConfig = this.parseAnswers(extraConfigAnswers);
+
+							GoogleAnalytics.post({
+								ea: `extra configuration: ${JSON.stringify(extraConfig)}`,
+								ec: "$ig wizard",
+								el: "Extra configuration:",
+								t: "event"
+							});
+
+							selectedTemplate.setExtraConfiguration(extraConfig);
+						}
+						success = await add.addTemplate(templateName["name"], selectedTemplate);
+					}
+				}
+			} else {
+				await this.choseComponent(projectLibrary, theme, groupName);
+			}
+		}
+	}
+
+	private async getUserInput(options: IUserInputOptions, withBackChoice: boolean = false): Promise<string> {
+		if (options.choices) {
+			if (withBackChoice) {
+				options.choices.push(this.WIZARD_BACK_OPTION);
+			}
+			options.choices = this.addSeparators(options.choices);
+		}
+
+		const userInput = await inquirer.prompt({
+			choices: options.choices || [],
+			default: options.default || "",
+			message: options.message,
+			name: options.name,
+			type: options.type
+		});
+
+		const result = userInput[options.name] as string;
+
+		GoogleAnalytics.post({
+			cd1: result,
+			ea: `${options.name}: ${result}`,
+			ec: "$ig wizard",
+			el: options.message,
+			t: "event"
+		});
+
+		return result;
+	}
+
+	private nameIsValid(name: string): boolean {
+		if (!Util.isAlphanumericExt(name)) {
+			Util.error(`Name '${name}' is not valid. `
+				+ "Name should start with a letter and can also contain numbers, dashes and spaces.",
+				"red");
+			return false;
+		}
+
+		if (Util.directoryExists(name)) {
+			Util.error(`Folder "${name}" already exists!`, "red");
+			return false;
+		}
+
+		return true;
+	}
+
+	private async getProjectLibrary(framework: Framework): Promise<ProjectLibrary> {
+		let projectLibrary: ProjectLibrary;
+		if (framework.projectLibraries.length > 1) {
+			const projectRes = await this.getUserInput({
+				choices: this.templateManager.getProjectLibraryNames(framework.id),
+				message: "Choose the type of project:",
+				name: "projectType",
+				type: "list"
+			});
+
+			projectLibrary = this.templateManager.getProjectLibraryByName(framework, projectRes);
+		} else {
+			projectLibrary = this.templateManager.getProjectLibrary(framework.id);
+		}
+
+		return projectLibrary;
+	}
+
+	private async getTheme(projectLibrary: ProjectLibrary): Promise<string> {
+		let theme: string;
+		if (projectLibrary.themes.length < 2) {
+			theme = projectLibrary.themes[0] || "";
+		} else {
+			theme = await this.getUserInput({
+				choices: projectLibrary.themes,
+				default: "infragistics",
+				message: "Choose the theme for the project:",
+				name: "theme",
+				type: "list"
+			});
+		}
+
+		return theme;
+	}
+
+	private generateActionChoices(projectLibrary: ProjectLibrary): string[] {
+		const actionChoices: string[] = ["Complete & Run"];
+		if (projectLibrary.components.length > 0) {
+			actionChoices.push("Add component");
+		}
+		if (projectLibrary.getCustomTemplateNames().length > 0) {
+			actionChoices.push("Add view");
+		}
+
+		return actionChoices;
+	}
+}
+
+interface IUserInputOptions {
+	type: string;
+	name: string;
+	message: string;
+	choices?: any[];
+	default?: string;
 }
