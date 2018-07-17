@@ -451,7 +451,7 @@ describe("Unit - PromptSession", () => {
 		await mockSession.start();
 		const CUSTOM_THEME = `
 		/* See: https://www.infragistics.com/products/ignite-ui-angular/angular/components/themes.html */
-		@import "~igniteui-angular/core/styles/themes/index";
+		@import "~igniteui-angular/lib/core/styles/themes/index";
 		$primary: #731963 !default;
 		$secondary: #ce5712 !default;
 		$app-palette: igx-palette($primary, $secondary);
