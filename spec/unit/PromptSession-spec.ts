@@ -435,4 +435,51 @@ describe("Unit - PromptSession", () => {
 		}]);
 		done();
 	});
+	it("start - Should fire correctly with Angular Custom theme selected", async done => {
+		const mockSession = new PromptSession(new TemplateManager());
+		spyOn(Util, "isAlphanumericExt").and.callThrough();
+		spyOn(Util, "gitInit");
+		spyOn(Util, "log");
+		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
+		spyOn(inquirer, "prompt").and.returnValues(
+			Promise.resolve({ projectName: "Test1"}),
+			Promise.resolve({ framework: "Angular"}),
+			Promise.resolve({ project: "Ignite UI for Angular"}),
+			Promise.resolve({ theme: "Custom"}));
+		spyOn(mockSession, "chooseActionLoop");
+		spyOn(process, "chdir");
+		await mockSession.start();
+		const CUSTOM_THEME = `
+		/* See: https://www.infragistics.com/products/ignite-ui-angular/angular/components/themes.html */
+		@import "~igniteui-angular/lib/core/styles/themes/index";
+		$primary: #731963 !default;
+		$secondary: #ce5712 !default;
+		$app-palette: igx-palette($primary, $secondary);
+		@include igx-core();
+		@include igx-theme($app-palette);`;
+		const actualCall = (Util.processTemplates as jasmine.Spy).calls.argsFor(0)[2]["$(CustomTheme)"].replace(/\s/g, "");
+		const expectedCall = CUSTOM_THEME.replace(/\s/g, "");
+		expect(actualCall).toEqual(expectedCall);
+		done();
+	});
+	it("start - Should fire correctly with Angular Default theme selected", async done => {
+		const mockSession = new PromptSession(new TemplateManager());
+		spyOn(Util, "isAlphanumericExt").and.callThrough();
+		spyOn(Util, "gitInit");
+		spyOn(Util, "log");
+		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
+		spyOn(inquirer, "prompt").and.returnValues(
+			Promise.resolve({ projectName: "Test1"}),
+			Promise.resolve({ framework: "Angular"}),
+			Promise.resolve({ project: "Ignite UI for Angular"}),
+			Promise.resolve({ theme: "Default"}));
+		spyOn(mockSession, "chooseActionLoop");
+		spyOn(process, "chdir");
+		await mockSession.start();
+		const DEFAULT_THEME = `,"node_modules/igniteui-angular/styles/igniteui-angular.css"`;
+		const actualCall = (Util.processTemplates as jasmine.Spy).calls.argsFor(0)[2]["$(DefaultTheme)"].replace(/\s/g, "");
+		const expectedCall = DEFAULT_THEME.replace(/\s/g, "");
+		expect(actualCall).toEqual(expectedCall);
+		done();
+	});
 });

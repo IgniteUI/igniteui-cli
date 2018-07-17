@@ -124,7 +124,7 @@ export class PromptSession {
 					name: "theme",
 					message: "Choose the theme for the project:",
 					choices: this.addSeparators(projLibrary.themes),
-					default: "infragistics"
+					default: projLibrary.themes[0]
 				};
 				const themeAnswer = await inquirer.prompt(themeQuestion);
 
