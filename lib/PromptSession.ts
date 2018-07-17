@@ -189,8 +189,8 @@ export class PromptSession {
 		let selectedTemplate: Template;
 		switch (action["action"]) {
 			case "Add component": {
-				let addComponentCompleted = false;
-				while (!addComponentCompleted) {
+				let chooseGroupCompleted = false;
+				while (!chooseGroupCompleted) {
 					const groups = framework.getComponentGroups();
 					groups.push(this.WIZARD_BACK_OPTION);
 					const group = await inquirer.prompt({
@@ -204,7 +204,7 @@ export class PromptSession {
 					const chosenGroupName = group["componentGroup"];
 
 					if (chosenGroupName === this.WIZARD_BACK_OPTION) {
-						addComponentCompleted = true;
+						chooseGroupCompleted = true;
 						continue;
 					}
 
@@ -216,41 +216,46 @@ export class PromptSession {
 						cd5: group["componentGroup"]
 					});
 
-					const componentNames = framework.getComponentNamesByGroup(chosenGroupName);
-					componentNames.push(this.WIZARD_BACK_OPTION);
-					const component = await inquirer.prompt({
-						type: "list",
-						name: "component",
-						message: "Choose a component:",
-						choices: this.addSeparators(componentNames)
-					});
+					let chooseComponentCompleted = false;
+					while (!chooseComponentCompleted) {
+						if (chooseComponentCompleted) {
+							chooseGroupCompleted = true;
+							break;
+						}
+						const componentNames = framework.getComponentNamesByGroup(chosenGroupName);
+						componentNames.push(this.WIZARD_BACK_OPTION);
+						const component = await inquirer.prompt({
+							type: "list",
+							name: "component",
+							message: "Choose a component:",
+							choices: this.addSeparators(componentNames)
+						});
 
-					const chosenComponentName = component["component"];
+						const chosenComponentName = component["component"];
 
-					if (chosenComponentName === this.WIZARD_BACK_OPTION) {
-						continue;
-					}
+						if (chosenComponentName === this.WIZARD_BACK_OPTION) {
+							chooseComponentCompleted = true;
+							continue;
+						}
 
-					addComponentCompleted = true;
-					const pickedComponent = framework.getComponentByName(chosenComponentName);
+						chooseGroupCompleted = true;
+						const pickedComponent = framework.getComponentByName(chosenComponentName);
 
-					GoogleAnalytics.post({
-						t: "event",
-						ec: "$ig wizard",
-						el: "Choose a component",
-						ea: `component: ${chosenComponentName}`,
-						cd6: pickedComponent.name
-					});
+						GoogleAnalytics.post({
+							t: "event",
+							ec: "$ig wizard",
+							el: "Choose a component",
+							ea: `component: ${chosenComponentName}`,
+							cd6: pickedComponent.name
+						});
 
-					// runTemplateCollection (item: Template[])
-					//TODO refactor
-					const templates: Template[] = pickedComponent.templates;
-					if (templates.length === 1) {
-						//get the only one template
-						selectedTemplate = templates[0];
-					} else {
-						let addTemplateCompleted = false;
-						while (!addTemplateCompleted) {
+						// runTemplateCollection (item: Template[])
+						//TODO refactor
+						const templates: Template[] = pickedComponent.templates;
+						if (templates.length === 1) {
+							//get the only one template
+							selectedTemplate = templates[0];
+						} else {
 							const templateNames = templates.map(x => x.name);
 							templateNames.push(this.WIZARD_BACK_OPTION);
 							const template = await inquirer.prompt({
@@ -261,6 +266,7 @@ export class PromptSession {
 							});
 
 							if (template["template"] === this.WIZARD_BACK_OPTION) {
+								chooseComponentCompleted = false;
 								continue;
 							}
 							selectedTemplate = templates.find((value, i, obj) => {
@@ -274,7 +280,6 @@ export class PromptSession {
 								ea: `template: ${template["template"]}`,
 								cd7: selectedTemplate.id
 							});
-							addTemplateCompleted = true;
 						}
 					}
 					if (selectedTemplate) {
