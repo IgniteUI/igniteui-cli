@@ -95,9 +95,16 @@ export class TypeScriptFileUpdate {
 					const newObject = ts.createObjectLiteral([routePath, routeComponent, routeData]);
 					this.createdStringLiterals.push(linkPath, linkText);
 
+					const notFoundWildCard = "**";
+					const nodes = ts.visitNodes(array.elements, visitor);
+					const errorRouteNode = nodes.filter(element => element.getText().includes(notFoundWildCard))[0];
+					const resultNodes = nodes
+						.slice(0, nodes.indexOf(errorRouteNode))
+						.concat(newObject)
+						.concat(errorRouteNode);
+
 					const elements = ts.createNodeArray([
-						...ts.visitNodes(array.elements, visitor),
-						newObject
+						...resultNodes
 					]);
 
 					return ts.updateArrayLiteral(array, elements);
