@@ -62,7 +62,8 @@ export class AngularTemplate implements Template {
 		//4) populate the declarations portion of the @NgModule with the component class name.
 		const mainModule = new TsUpdate(path.join(projectPath, `src/app/${modulePath}`));
 		mainModule.addDeclaration(
-			path.join(projectPath, `src/app/components/${this.folderName(name)}/${this.fileName(name)}.component.ts`)
+			path.join(projectPath, `src/app/components/${this.folderName(name)}/${this.fileName(name)}.component.ts`),
+			modulePath !== "app.module.ts"
 		);
 		mainModule.finalize();
 

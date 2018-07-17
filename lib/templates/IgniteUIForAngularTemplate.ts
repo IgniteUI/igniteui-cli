@@ -49,7 +49,8 @@ export class IgniteUIForAngularTemplate extends AngularTemplate {
 		const mainModulePath = path.join(projectPath, `src/app/${modulePath}`);
 		const mainModule = new TsUpdate(mainModulePath);
 		mainModule.addDeclaration(
-			path.join(projectPath, `src/app/${this.folderName(name)}/${this.fileName(name)}.component.ts`)
+			path.join(projectPath, `src/app/${this.folderName(name)}/${this.fileName(name)}.component.ts`),
+			modulePath !== "app.module.ts"
 		);
 
 		// import IgxModules and other dependencies
