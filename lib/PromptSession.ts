@@ -249,25 +249,33 @@ export class PromptSession {
 						//get the only one template
 						selectedTemplate = templates[0];
 					} else {
-						const templateNames = templates.map(x => x.name);
-						const template = await inquirer.prompt({
-							type: "list",
-							name: "template",
-							message: "Choose one:",
-							choices: this.addSeparators(templateNames)
-						});
+						let addTemplateCompleted = false;
+						while (!addTemplateCompleted) {
+							const templateNames = templates.map(x => x.name);
+							templateNames.push(this.WIZARD_BACK_OPTION);
+							const template = await inquirer.prompt({
+								type: "list",
+								name: "template",
+								message: "Choose one:",
+								choices: this.addSeparators(templateNames)
+							});
 
-						selectedTemplate = templates.find((value, i, obj) => {
-							return value.name === template["template"];
-						});
+							if (template["template"] === this.WIZARD_BACK_OPTION) {
+								continue;
+							}
+							selectedTemplate = templates.find((value, i, obj) => {
+								return value.name === template["template"];
+							});
 
-						GoogleAnalytics.post({
-							t: "event",
-							ec: "$ig wizard",
-							el: "Choose one (template):",
-							ea: `template: ${template["template"]}`,
-							cd7: selectedTemplate.id
-						});
+							GoogleAnalytics.post({
+								t: "event",
+								ec: "$ig wizard",
+								el: "Choose one (template):",
+								ea: `template: ${template["template"]}`,
+								cd7: selectedTemplate.id
+							});
+							addTemplateCompleted = true;
+						}
 					}
 					if (selectedTemplate) {
 						let success = false;
