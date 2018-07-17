@@ -457,7 +457,7 @@ describe("Unit - PromptSession", () => {
 		$app-palette: igx-palette($primary, $secondary);
 		@include igx-core();
 		@include igx-theme($app-palette);`;
-		const actualCall = (Util.processTemplates as any).calls.argsFor(0)[2]["$(CustomTheme)"].replace(/\s/g, "");
+		const actualCall = (Util.processTemplates as jasmine.Spy).calls.argsFor(0)[2]["$(CustomTheme)"].replace(/\s/g, "");
 		const expectedCall = CUSTOM_THEME.replace(/\s/g, "");
 		expect(actualCall).toEqual(expectedCall);
 		done();
@@ -477,7 +477,7 @@ describe("Unit - PromptSession", () => {
 		spyOn(process, "chdir");
 		await mockSession.start();
 		const DEFAULT_THEME = `,"node_modules/igniteui-angular/styles/igniteui-angular.css"`;
-		const actualCall = (Util.processTemplates as any).calls.argsFor(0)[2]["$(DefaultTheme)"].replace(/\s/g, "");
+		const actualCall = (Util.processTemplates as jasmine.Spy).calls.argsFor(0)[2]["$(DefaultTheme)"].replace(/\s/g, "");
 		const expectedCall = DEFAULT_THEME.replace(/\s/g, "");
 		expect(actualCall).toEqual(expectedCall);
 		done();

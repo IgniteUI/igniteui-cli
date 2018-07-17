@@ -21,9 +21,9 @@ $app-palette: igx-palette($primary, $secondary);
 
 @include igx-core();
 @include igx-theme($app-palette);
-	`;
+`;
 	private DEFAULT_THEME = `,
-			  "node_modules/igniteui-angular/styles/igniteui-angular.css"`;
+              "node_modules/igniteui-angular/styles/igniteui-angular.css"`;
 
 	public installModules(): void {
 		throw new Error("Method not implemented.");
