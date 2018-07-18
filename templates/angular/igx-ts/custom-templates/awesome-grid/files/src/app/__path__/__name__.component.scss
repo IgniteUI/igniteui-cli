@@ -10,7 +10,7 @@
   $row-selected-text-color: #ddd,
   $row-hover-background: #f8f8f8,
   $row-border-color: #f8f8f8,
-
+  
   $cell-selected-background: igx-color($default-palette, grays, 800),
   $cell-selected-text-color: #fff
   );
@@ -67,14 +67,15 @@
   width: 100%;
   height: rem(50px);
   }
+
   .switch-sample__label {
   margin: 0 rem(8) 0 0;
   }
 
   .athlete_name {
   width: rem(100px);
-  margin:0 rem(30px);
-  }
+	margin:0 rem(30px);
+	}
 
   .athlete_name,
   .title {
@@ -108,18 +109,27 @@
   width: rem(24px);
   }
 
-  .rowIndex {
-  margin-left: rem(57px);
+  .cup {
+    padding-left: 20px;
   }
 
+  .rowIndex {
+    margin-left: rem(57px);
+  }
 
   @media (max-width: rem(960px)) {
   .grid__wrapper {
     width: rem(960px);
   }
-  }
+}
 
   .igx-paginator>* {
     margin: 0 .3125rem;
+    display: flex;
+    align-items: center;
+  } 
+
+  .linear-bar-container {
+    width: 100%;
   }
 }
