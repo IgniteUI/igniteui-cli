@@ -412,7 +412,7 @@ export class PromptSession {
 		} else {
 			theme = await this.getUserInput({
 				choices: projectLibrary.themes,
-				default: "infragistics",
+				default: projectLibrary.themes[0],
 				message: "Choose the theme for the project:",
 				name: "theme",
 				type: "list"
