@@ -27,7 +27,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss"$(DefaultTheme)
             ],
             "scripts": ["./node_modules/hammerjs/hammer.min.js"]
           },
