@@ -283,14 +283,6 @@ class Util {
 	}
 
 	/**
-	 * Checks if a giver string consists of numeric characters only.
-	 * @param value to check
-	 */
-	public static isNumeric(value: string) {
-		return /^[0-9]+$/.test(value);
-	}
-
-	/**
 	 * Checks if a giver string consists of alphanumeric characters, dashes and spaces only
 	 * and also starts with a letter.
 	 * @param name Text to check
