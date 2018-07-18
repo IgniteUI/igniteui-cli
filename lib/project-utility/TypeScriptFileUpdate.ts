@@ -238,6 +238,10 @@ export class TypeScriptFileUpdate {
 			return;
 		}
 
+		const targetSource = this.targetSource.statements.slice(0, this.importsMeta.lastIndex);
+		const newImportsMap = newImports.map(x => TsUtils.createIdentifierImport(x.imports, x.from));
+		const targetSourceMeta = this.targetSource.statements.slice(this.importsMeta.lastIndex);
+
 		const newStatements = ts.createNodeArray([
 			...this.targetSource.statements.slice(0, this.importsMeta.lastIndex),
 			...newImports.map(x => TsUtils.createIdentifierImport(x.imports, x.from)),
@@ -312,8 +316,11 @@ export class TypeScriptFileUpdate {
 					properties.push(key);
 				}
 			}
-			if (node.kind === ts.SyntaxKind.ObjectLiteralExpression) {
+			if (node.kind === ts.SyntaxKind.ObjectLiteralExpression &&
+				node.parent &&
+				node.parent.kind === ts.SyntaxKind.FunctionExpression) {
 				let obj = (node as ts.ObjectLiteralExpression);
+
 				//TODO: test node.parent for ts.CallExpression NgModule
 				const missingProperties = properties.filter(x => !obj.properties.find(o => o.name.getText() === x));
 

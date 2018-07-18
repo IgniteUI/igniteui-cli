@@ -1,0 +1,26 @@
+import { ErrorHandler, EventEmitter, Injector, NgZone, Injectable, isDevMode } from '@angular/core';
+import { Router } from '@angular/router';
+
+@Injectable()
+export class GlobalErrorHandlerService implements ErrorHandler {
+  errorEvent: EventEmitter<boolean> = new EventEmitter<boolean>(true);
+
+  private router: Router;
+  private isInErrorState: boolean;
+
+  constructor(private injector: Injector, private zone: NgZone) { }
+
+  handleError(error) {
+    this.router = this.injector.get(Router);
+
+    if (!this.isInErrorState) {
+      this.isInErrorState = true;
+      this.zone.run(() => {
+        this.router.navigate(['error']);
+      });
+      if (isDevMode) {
+        throw error;
+      }
+    }
+  }
+}
