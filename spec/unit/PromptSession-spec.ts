@@ -192,7 +192,7 @@ describe("Unit - PromptSession", () => {
 		expect(mockTemplate.getFrameworkByName).toHaveBeenCalledTimes(1);
 		done();
 	});
-	it("chooseActionLoop - should run through properly - Add Component", async done => {
+	fit("chooseActionLoop - should run through properly - Add Component", async done => {
 		// tslint:disable:object-literal-sort-keys
 		const mockExtraConfigurations = [{
 			choices: [],
@@ -270,7 +270,7 @@ describe("Unit - PromptSession", () => {
 			Promise.resolve({ componentGroup: "Custom Group 1" }),
 			Promise.resolve({ component: "Custom Group 1 Component 2" }),
 			Promise.resolve({ template: "Template 1" }),
-			Promise.resolve({ name: "Template 1 Custom Name" }),
+			Promise.resolve({ componentName: "Template 1 Custom Name" }),
 			Promise.resolve({ customValue1: "Test", customValue2: "Test" }),
 			Promise.resolve({ action: "Complete & Run" })
 		);

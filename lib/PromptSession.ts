@@ -92,30 +92,34 @@ export class PromptSession {
 	 * @param theme Theme to use
 	 */
 	public async chooseActionLoop(projectLibrary: ProjectLibrary, theme: string) {
-		const actionChoices: string[] = this.generateActionChoices(projectLibrary);
-		Util.log(""); /* new line */
-		const action: string = await this.getUserInput({
-			choices: actionChoices,
-			default: "Complete & Run",
-			message: "Choose an action:",
-			name: "action",
-			type: "list"
-		});
+		let actionIsOver = false;
+		while (!actionIsOver) {
+			const actionChoices: string[] = this.generateActionChoices(projectLibrary);
+			Util.log(""); /* new line */
+			const action: string = await this.getUserInput({
+				choices: actionChoices,
+				default: "Complete & Run",
+				message: "Choose an action:",
+				name: "action",
+				type: "list"
+			});
 
-		switch (action) {
-			case "Add component": {
-				this.addComponent(projectLibrary, theme);
-				break;
-			}
-			case "Add view": {
-				this.addView(projectLibrary, theme);
-				break;
-			}
-			case "Complete & Run":
-			default: {
-				await PackageManager.flushQueue(true);
-				if (true) { // TODO: Make conditional?
-					await start.start({});
+			switch (action) {
+				case "Add component": {
+					actionIsOver = await this.addComponent(projectLibrary, theme);
+					break;
+				}
+				case "Add view": {
+					actionIsOver = await this.addView(projectLibrary, theme);
+					break;
+				}
+				case "Complete & Run":
+				default: {
+					await PackageManager.flushQueue(true);
+					if (true) { // TODO: Make conditional?
+						await start.start({});
+						actionIsOver = true;
+					}
 				}
 			}
 		}
@@ -172,42 +176,50 @@ export class PromptSession {
 		return answers;
 	}
 
-	private async addComponent(projectLibrary: ProjectLibrary, theme: string) {
-		const groups = projectLibrary.getComponentGroups();
-		const groupRes: string = await this.getUserInput({
-			choices: groups,
-			default: groups.find(x => x === "Data Grids") || groups[0],
-			message: "Choose a group:",
-			name: "componentGroup",
-			type: "list"
-		}, true);
+	private async addComponent(projectLibrary: ProjectLibrary, theme: string): Promise<boolean> {
+		let addComponentIsOver = false;
+		while (!addComponentIsOver) {
+			const groups = projectLibrary.getComponentGroups();
+			const groupRes: string = await this.getUserInput({
+				choices: groups,
+				default: groups.find(x => x === "Data Grids") || groups[0],
+				message: "Choose a group:",
+				name: "componentGroup",
+				type: "list"
+			}, true);
 
-		if (groupRes !== this.WIZARD_BACK_OPTION) {
-			await this.choseComponent(projectLibrary, theme, groupRes);
+			if (groupRes === this.WIZARD_BACK_OPTION) {
+				return false;
+			}
+			addComponentIsOver = await this.choseComponent(projectLibrary, theme, groupRes);
 		}
-		await this.chooseActionLoop(projectLibrary, theme);
+		return true;
 	}
 
-	private async choseComponent(projectLibrary: ProjectLibrary, theme: string, groupName: string) {
-		const componentNameRes = await this.getUserInput({
-			choices: projectLibrary.getComponentNamesByGroup(groupName),
-			message: "Choose a component:",
-			name: "component",
-			type: "list"
-		}, true);
+	private async choseComponent(projectLibrary: ProjectLibrary, theme: string, groupName: string): Promise<boolean> {
+		let choseComponentIsOver = false;
+		while (!choseComponentIsOver) {
+			const componentNameRes = await this.getUserInput({
+				choices: projectLibrary.getComponentNamesByGroup(groupName),
+				message: "Choose a component:",
+				name: "component",
+				type: "list"
+			}, true);
 
-		if (componentNameRes !== this.WIZARD_BACK_OPTION) {
+			if (componentNameRes === this.WIZARD_BACK_OPTION) {
+				return false;
+			}
+
 			const component = projectLibrary.getComponentByName(componentNameRes);
 
 			// runTemplateCollection (item: Template[])
-			await this.getTemplate(projectLibrary, theme, groupName, component);
-		} else {
-			await this.addComponent(projectLibrary, theme);
+			choseComponentIsOver = await this.getTemplate(projectLibrary, theme, groupName, component);
 		}
-
+		return true;
 	}
 
-	private async getTemplate(projectLibrary: ProjectLibrary, theme: string, groupName: string, component: Component) {
+	private async getTemplate(projectLibrary: ProjectLibrary, theme: string, groupName: string, component: Component)
+		: Promise<boolean> {
 		let selectedTemplate: Template;
 		const templates: Template[] = component.templates;
 		if (templates.length === 1) {
@@ -221,44 +233,45 @@ export class PromptSession {
 				type: "list"
 			}, true);
 
-			if (templateRes !== this.WIZARD_BACK_OPTION) {
-				selectedTemplate = templates.find((value, i, obj) => {
-					return value.name === templateRes;
-				});
-				if (selectedTemplate) {
-					let success = false;
-					while (!success) {
-						const templateName = await this.getUserInput({
-							default: selectedTemplate.name,
-							message: "Name your component:",
-							name: "componentName",
-							type: "input"
+			if (templateRes === this.WIZARD_BACK_OPTION) {
+				return false;
+			}
+
+			selectedTemplate = templates.find((value, i, obj) => {
+				return value.name === templateRes;
+			});
+			if (selectedTemplate) {
+				let success = false;
+				while (!success) {
+					const templateName = await this.getUserInput({
+						default: selectedTemplate.name,
+						message: "Name your component:",
+						name: "componentName",
+						type: "input"
+					});
+
+					if (selectedTemplate.hasExtraConfiguration) {
+						const extraPrompt: any[] = this.createQuestions(selectedTemplate.getExtraConfiguration());
+						const extraConfigAnswers = await inquirer.prompt(extraPrompt);
+						const extraConfig = this.parseAnswers(extraConfigAnswers);
+
+						GoogleAnalytics.post({
+							ea: `extra configuration: ${JSON.stringify(extraConfig)}`,
+							ec: "$ig wizard",
+							el: "Extra configuration:",
+							t: "event"
 						});
 
-						if (selectedTemplate.hasExtraConfiguration) {
-							const extraPrompt: any[] = this.createQuestions(selectedTemplate.getExtraConfiguration());
-							const extraConfigAnswers = await inquirer.prompt(extraPrompt);
-							const extraConfig = this.parseAnswers(extraConfigAnswers);
-
-							GoogleAnalytics.post({
-								ea: `extra configuration: ${JSON.stringify(extraConfig)}`,
-								ec: "$ig wizard",
-								el: "Extra configuration:",
-								t: "event"
-							});
-
-							selectedTemplate.setExtraConfiguration(extraConfig);
-						}
-						success = await add.addTemplate(templateName["name"], selectedTemplate);
+						selectedTemplate.setExtraConfiguration(extraConfig);
 					}
+					success = await add.addTemplate(templateName, selectedTemplate);
 				}
-			} else {
-				await this.choseComponent(projectLibrary, theme, groupName);
 			}
 		}
+		return true;
 	}
 
-	private async addView(projectLibrary: ProjectLibrary, theme: string) {
+	private async addView(projectLibrary: ProjectLibrary, theme: string): Promise<boolean> {
 		const customTemplateNameRes = await this.getUserInput({
 			choices: projectLibrary.getCustomTemplateNames(),
 			message: "Choose custom view:",
@@ -266,25 +279,25 @@ export class PromptSession {
 			type: "list"
 		}, true);
 
-		if (customTemplateNameRes !== this.WIZARD_BACK_OPTION) {
-			const selectedTemplate = await projectLibrary.getTemplateByName(customTemplateNameRes);
-			if (selectedTemplate) {
-				let success = false;
-				while (!success) {
-					const customViewNameRes = await this.getUserInput({
-						default: selectedTemplate.name,
-						message: "Name your view:",
-						name: "customViewName",
-						type: "input"
-					});
+		if (customTemplateNameRes === this.WIZARD_BACK_OPTION) {
+			return false;
+		}
+		const selectedTemplate = await projectLibrary.getTemplateByName(customTemplateNameRes);
+		if (selectedTemplate) {
+			let success = false;
+			while (!success) {
+				const customViewNameRes = await this.getUserInput({
+					default: selectedTemplate.name,
+					message: "Name your view:",
+					name: "customViewName",
+					type: "input"
+				});
 
-					success = await add.addTemplate(customViewNameRes, selectedTemplate);
-				}
+				success = await add.addTemplate(customViewNameRes, selectedTemplate);
 			}
 		}
 
-		await this.chooseActionLoop(projectLibrary, theme);
-
+		return true;
 	}
 
 	private async getUserInput(options: IUserInputOptions, withBackChoice: boolean = false): Promise<string> {
