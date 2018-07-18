@@ -238,10 +238,6 @@ export class TypeScriptFileUpdate {
 			return;
 		}
 
-		const targetSource = this.targetSource.statements.slice(0, this.importsMeta.lastIndex);
-		const newImportsMap = newImports.map(x => TsUtils.createIdentifierImport(x.imports, x.from));
-		const targetSourceMeta = this.targetSource.statements.slice(this.importsMeta.lastIndex);
-
 		const newStatements = ts.createNodeArray([
 			...this.targetSource.statements.slice(0, this.importsMeta.lastIndex),
 			...newImports.map(x => TsUtils.createIdentifierImport(x.imports, x.from)),
