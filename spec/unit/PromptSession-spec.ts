@@ -17,9 +17,9 @@ describe("Unit - PromptSession", () => {
 
 	it("chooseTerm - Should call itself if no term is passed.", async done => {
 		spyOn(PromptSession, "chooseTerm").and.callThrough();
-		spyOn(inquirer, "prompt").and.returnValues(Promise.resolve({ term: ""}),
-		Promise.resolve({ term: ""}), Promise.resolve({ term: ""}),
-		Promise.resolve({ term: ""}), Promise.resolve({ term: "Test"}));
+		spyOn(inquirer, "prompt").and.returnValues(Promise.resolve({ term: "" }),
+			Promise.resolve({ term: "" }), Promise.resolve({ term: "" }),
+			Promise.resolve({ term: "" }), Promise.resolve({ term: "Test" }));
 		const testVar = await PromptSession.chooseTerm();
 		expect(PromptSession.chooseTerm).toHaveBeenCalled();
 		expect(PromptSession.chooseTerm).toHaveBeenCalledTimes(5);
@@ -72,10 +72,10 @@ describe("Unit - PromptSession", () => {
 		spyOn(Util, "directoryExists").and.returnValue(false);
 		spyOn(Util, "isAlphanumericExt").and.returnValue(true);
 		spyOn(Util, "gitInit");
-		spyOn(inquirer, "prompt").and.returnValues(Promise.resolve({ projectName: "Test Project"}),
-		Promise.resolve({ framework: "Custom Framework 1"}),
-		Promise.resolve({ project: "jQuery"}),
-		Promise.resolve({ theme: "infragistics"}));
+		spyOn(inquirer, "prompt").and.returnValues(Promise.resolve({ projectName: "Test Project" }),
+			Promise.resolve({ framework: "Custom Framework 1" }),
+			Promise.resolve({ project: "jQuery" }),
+			Promise.resolve({ theme: "infragistics" }));
 		spyOn(process, "chdir");
 		spyOn(mockSession, "chooseActionLoop");
 		await mockSession.start();
@@ -166,12 +166,12 @@ describe("Unit - PromptSession", () => {
 		spyOn(Util, "isAlphanumericExt").and.callThrough();
 		spyOn(Util, "gitInit");
 		spyOn(Util, "error");
-		spyOn(inquirer, "prompt").and.returnValues(Promise.resolve({ projectName: "*This will ** not Work *"}),
-		Promise.resolve({ projectName: "Th15 w1ll"}),
-		Promise.resolve({ projectName: "Th15 w1ll"}),
-		Promise.resolve({ framework: "Custom Framework 1"}),
-		Promise.resolve({ project: "jQuery"}),
-		Promise.resolve({ theme: "infragistics"}));
+		spyOn(inquirer, "prompt").and.returnValues(Promise.resolve({ projectName: "*This will ** not Work *" }),
+			Promise.resolve({ projectName: "Th15 w1ll" }),
+			Promise.resolve({ projectName: "Th15 w1ll" }),
+			Promise.resolve({ framework: "Custom Framework 1" }),
+			Promise.resolve({ project: "jQuery" }),
+			Promise.resolve({ theme: "infragistics" }));
 		spyOn(process, "chdir");
 		spyOn(mockSession, "chooseActionLoop");
 		await mockSession.start();
@@ -207,11 +207,11 @@ describe("Unit - PromptSession", () => {
 			key: "customValue2",
 			type: Enumerations.ControlExtraConfigType.Value
 		}];
-		const mockSelectedTemplate =  {
+		const mockSelectedTemplate = {
 			name: "Template 1",
 			hasExtraConfiguration: () => true,
 			getExtraConfiguration: () => mockExtraConfigurations,
-			setExtraConfiguration: () => {}
+			setExtraConfiguration: () => { }
 		};
 		const mockComponentTemplates = [mockSelectedTemplate, { name: "Template 2" }];
 		const mockComponent = {
@@ -262,18 +262,22 @@ describe("Unit - PromptSession", () => {
 		spyOn(PackageManager, "flushQueue").and.returnValue(Promise.resolve(true));
 		spyOn(start, "start").and.returnValue(Promise.resolve(true));
 		spyOn(inquirer, "prompt").and.returnValues(
-		Promise.resolve({ action: "Add component"}),
-		Promise.resolve({ componentGroup: "Custom Group 1"}),
-		Promise.resolve({ component: "Custom Group 1 Component 2"}),
-		Promise.resolve({ template: "Template 1"}),
-		Promise.resolve({ name: "Template 1 Custom Name"}),
-		Promise.resolve({ customValue1: "Test", customValue2: "Test"}),
-		Promise.resolve({ action: "Complete & Run"})
+			Promise.resolve({ action: "Add component" }),
+			Promise.resolve({ componentGroup: "Back" }),
+			Promise.resolve({ action: "Add component" }),
+			Promise.resolve({ componentGroup: "Custom Group 1" }),
+			Promise.resolve({ component: "Back" }),
+			Promise.resolve({ componentGroup: "Custom Group 1" }),
+			Promise.resolve({ component: "Custom Group 1 Component 2" }),
+			Promise.resolve({ template: "Template 1" }),
+			Promise.resolve({ componentName: "Template 1 Custom Name" }),
+			Promise.resolve({ customValue1: "Test", customValue2: "Test" }),
+			Promise.resolve({ action: "Complete & Run" })
 		);
 		await mockSession.chooseActionLoop(mockProjectLibrary, "infragistics");
 		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(2);
-		expect(inquirer.prompt).toHaveBeenCalledTimes(7);
-		expect(Util.log).toHaveBeenCalledTimes(2);
+		expect(inquirer.prompt).toHaveBeenCalledTimes(11);
+		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
 		expect(start.start).toHaveBeenCalledTimes(1);
 		expect(add.addTemplate).toHaveBeenCalledTimes(1);
@@ -293,7 +297,7 @@ describe("Unit - PromptSession", () => {
 		done();
 	});
 	it("chooseActionLoop - should run through properly - Add View", async done => {
-		const mockSelectedTemplate =  {
+		const mockSelectedTemplate = {
 			name: "Custom Template 1"
 		};
 		const mockProject = {
@@ -320,15 +324,17 @@ describe("Unit - PromptSession", () => {
 		spyOn(PackageManager, "flushQueue").and.returnValue(Promise.resolve(true));
 		spyOn(start, "start").and.returnValue(Promise.resolve(true));
 		spyOn(inquirer, "prompt").and.returnValues(
-		Promise.resolve({ action: "Add view"}),
-		Promise.resolve({ customTemplate: "Custom Template 1"}),
-		Promise.resolve({ name: "Custom Template Name"}),
-		Promise.resolve({ action: "Complete & Run"})
+			Promise.resolve({ action: "Add view" }),
+			Promise.resolve({ customTemplate: "Back" }),
+			Promise.resolve({ action: "Add view" }),
+			Promise.resolve({ customTemplate: "Custom Template 1" }),
+			Promise.resolve({ customViewName: "Custom Template Name" }),
+			Promise.resolve({ action: "Complete & Run" })
 		);
 		await mockSession.chooseActionLoop(mockProjectLibrary, "infragistics");
 		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(2);
-		expect(inquirer.prompt).toHaveBeenCalledTimes(4);
-		expect(Util.log).toHaveBeenCalledTimes(2);
+		expect(inquirer.prompt).toHaveBeenCalledTimes(6);
+		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
 		expect(start.start).toHaveBeenCalledTimes(1);
 		expect(add.addTemplate).toHaveBeenCalledTimes(1);
@@ -350,11 +356,11 @@ describe("Unit - PromptSession", () => {
 			key: "customValue2",
 			type: Enumerations.ControlExtraConfigType.MultiChoice
 		}];
-		const mockSelectedTemplate =  {
+		const mockSelectedTemplate = {
 			name: "Template 1",
 			hasExtraConfiguration: () => true,
 			getExtraConfiguration: () => mockExtraConfigurations,
-			setExtraConfiguration: () => {}
+			setExtraConfiguration: () => { }
 		};
 		const mockComponentTemplates = [mockSelectedTemplate, { name: "Template 2" }];
 		const mockComponent = {
@@ -405,18 +411,22 @@ describe("Unit - PromptSession", () => {
 		spyOn(PackageManager, "flushQueue").and.returnValue(Promise.resolve(true));
 		spyOn(start, "start").and.returnValue(Promise.resolve(true));
 		spyOn(inquirer, "prompt").and.returnValues(
-		Promise.resolve({ action: "Add component"}),
-		Promise.resolve({ componentGroup: "Custom Group 1"}),
-		Promise.resolve({ component: "Custom Group 1 Component 2"}),
-		Promise.resolve({ template: "Template 1"}),
-		Promise.resolve({ name: "Template 1 Custom Name"}),
-		Promise.resolve({ customValue1: "Test", customValue2: "Test"}),
-		Promise.resolve({ action: "Complete & Run"})
+			Promise.resolve({ action: "Add component" }),
+			Promise.resolve({ componentGroup: "Back" }),
+			Promise.resolve({ action: "Add component" }),
+			Promise.resolve({ componentGroup: "Custom Group 1" }),
+			Promise.resolve({ component: "Back" }),
+			Promise.resolve({ componentGroup: "Custom Group 1" }),
+			Promise.resolve({ component: "Custom Group 1 Component 2" }),
+			Promise.resolve({ template: "Template 1" }),
+			Promise.resolve({ name: "Template 1 Custom Name" }),
+			Promise.resolve({ customValue1: "Test", customValue2: "Test" }),
+			Promise.resolve({ action: "Complete & Run" })
 		);
 		await mockSession.chooseActionLoop(mockProjectLibrary, "infragistics");
 		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(2);
-		expect(inquirer.prompt).toHaveBeenCalledTimes(7);
-		expect(Util.log).toHaveBeenCalledTimes(2);
+		expect(inquirer.prompt).toHaveBeenCalledTimes(11);
+		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
 		expect(start.start).toHaveBeenCalledTimes(1);
 		expect(add.addTemplate).toHaveBeenCalledTimes(1);
@@ -444,9 +454,9 @@ describe("Unit - PromptSession", () => {
 		spyOn(inquirer, "prompt").and.returnValues(
 			Promise.resolve({ projectName: "Test1"}),
 			Promise.resolve({ framework: "Angular"}),
-			Promise.resolve({ project: "Ignite UI for Angular"}),
+			Promise.resolve({ projectType: "Ignite UI for Angular"}),
 			Promise.resolve({ theme: "Custom"}));
-		spyOn(mockSession, "chooseActionLoop");
+		spyOn(mockSession, "chooseActionLoop").and.returnValue(Promise.resolve());
 		spyOn(process, "chdir");
 		await mockSession.start();
 		const CUSTOM_THEME = `
@@ -471,9 +481,9 @@ describe("Unit - PromptSession", () => {
 		spyOn(inquirer, "prompt").and.returnValues(
 			Promise.resolve({ projectName: "Test1"}),
 			Promise.resolve({ framework: "Angular"}),
-			Promise.resolve({ project: "Ignite UI for Angular"}),
+			Promise.resolve({ projectType: "Ignite UI for Angular"}),
 			Promise.resolve({ theme: "Default"}));
-		spyOn(mockSession, "chooseActionLoop");
+		spyOn(mockSession, "chooseActionLoop").and.returnValue(Promise.resolve());
 		spyOn(process, "chdir");
 		await mockSession.start();
 		const DEFAULT_THEME = `,"node_modules/igniteui-angular/styles/igniteui-angular.css"`;
