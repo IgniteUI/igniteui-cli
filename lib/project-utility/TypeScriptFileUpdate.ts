@@ -128,7 +128,7 @@ export class TypeScriptFileUpdate {
 		const relativePath: string = TsUtils.relativePath(this.targetPath, filePath, true, true);
 		className = TsUtils.getClassName(fileSource.getChildren());
 		if (addToExport) {
-			this.addNgModuleMeta({ declare: className, from: relativePath }, null, addToExport);
+			this.addNgModuleMeta({ declare: className, from: relativePath, export: className });
 		} else {
 			this.addNgModuleMeta({ declare: className, from: relativePath });
 		}
@@ -137,11 +137,13 @@ export class TypeScriptFileUpdate {
 	/**
 	 * Add a metadata update to the file's `NgModule`. Will also import identifiers.
 	 */
-	public addNgModuleMeta(dep: TemplateDependency, variables?: { [key: string]: string }, addToExport?: boolean) {
+	public addNgModuleMeta(dep: TemplateDependency, variables?: { [key: string]: string }) {
 		const copy = {
 			declare: this.asArray(dep.declare, variables),
 			import: this.asArray(dep.import, variables),
-			provide: this.asArray(dep.provide, variables)
+			provide: this.asArray(dep.provide, variables),
+			// tslint:disable-next-line:object-literal-sort-keys
+			export: this.asArray(dep.export, variables)
 		};
 
 		if (dep.from) {
@@ -162,11 +164,9 @@ export class TypeScriptFileUpdate {
 			.filter(x => !this.ngMetaEdits.providers.find(p => p === x));
 		this.ngMetaEdits.providers.push(...providers);
 
-		if (addToExport) {
-			const exportsArr = copy.declare
-				.filter(x => !this.ngMetaEdits.exports.find(p => p === x));
-			this.ngMetaEdits.exports.push(...exportsArr);
-		}
+		const exportsArr = copy.export
+			.filter(x => !this.ngMetaEdits.exports.find(p => p === x));
+		this.ngMetaEdits.exports.push(...exportsArr);
 	}
 
 	//#region File state

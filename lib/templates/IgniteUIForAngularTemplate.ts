@@ -8,7 +8,6 @@ import { AngularTemplate } from "./AngularTemplate";
 export class IgniteUIForAngularTemplate extends AngularTemplate {
 
 	public dependencies: TemplateDependency[] = [];
-	public framework: string = "angular-wrappers";
 
 	constructor(rootPath: string) {
 		super(rootPath);
