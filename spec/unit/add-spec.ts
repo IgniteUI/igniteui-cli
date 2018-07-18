@@ -176,8 +176,10 @@ describe("Unit - Add command", () => {
 		expect(ngMetaSpy).toHaveBeenCalledTimes(1);
 		expect(ngMetaSpy).toHaveBeenCalledWith({
 			declare: null,
-			from: "../test-file-name/test-file-name.component"
-		}, null, true);
+			from: "../test-file-name/test-file-name.component",
+			// tslint:disable-next-line:object-literal-sort-keys
+			export: null
+		});
 		expect(finalizeSpy).toHaveBeenCalledTimes(1);
 		expect(addCmd.templateManager.updateProjectConfiguration).toHaveBeenCalledTimes(1);
 		done();
@@ -240,8 +242,10 @@ describe("Unit - Add command", () => {
 		expect(ngMetaSpy).toHaveBeenCalledTimes(1);
 		expect(ngMetaSpy).toHaveBeenCalledWith({
 			declare: null,
-			from: "../components/test-file-name/test-file-name.component"
-		}, null, true);
+			from: "../components/test-file-name/test-file-name.component",
+			// tslint:disable-next-line:object-literal-sort-keys
+			export: null
+		});
 		expect(finalizeSpy).toHaveBeenCalledTimes(1);
 		expect(addCmd.templateManager.updateProjectConfiguration).toHaveBeenCalledTimes(1);
 		done();
