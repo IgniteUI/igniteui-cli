@@ -445,7 +445,7 @@ describe("Unit - PromptSession", () => {
 		}]);
 		done();
 	});
-	xit("start - Should fire correctly with Angular Custom theme selected", async done => {
+	it("start - Should fire correctly with Angular Custom theme selected", async done => {
 		const mockSession = new PromptSession(new TemplateManager());
 		spyOn(Util, "isAlphanumericExt").and.callThrough();
 		spyOn(Util, "gitInit");
@@ -456,7 +456,7 @@ describe("Unit - PromptSession", () => {
 			Promise.resolve({ framework: "Angular"}),
 			Promise.resolve({ projectType: "Ignite UI for Angular"}),
 			Promise.resolve({ theme: "Custom"}));
-		spyOn(mockSession, "chooseActionLoop");
+		spyOn(mockSession, "chooseActionLoop").and.returnValue(Promise.resolve());
 		spyOn(process, "chdir");
 		await mockSession.start();
 		const CUSTOM_THEME = `
@@ -472,7 +472,7 @@ describe("Unit - PromptSession", () => {
 		expect(actualCall).toEqual(expectedCall);
 		done();
 	});
-	xit("start - Should fire correctly with Angular Default theme selected", async done => {
+	it("start - Should fire correctly with Angular Default theme selected", async done => {
 		const mockSession = new PromptSession(new TemplateManager());
 		spyOn(Util, "isAlphanumericExt").and.callThrough();
 		spyOn(Util, "gitInit");
@@ -483,7 +483,7 @@ describe("Unit - PromptSession", () => {
 			Promise.resolve({ framework: "Angular"}),
 			Promise.resolve({ projectType: "Ignite UI for Angular"}),
 			Promise.resolve({ theme: "Default"}));
-		spyOn(mockSession, "chooseActionLoop");
+		spyOn(mockSession, "chooseActionLoop").and.returnValue(Promise.resolve());
 		spyOn(process, "chdir");
 		await mockSession.start();
 		const DEFAULT_THEME = `,"node_modules/igniteui-angular/styles/igniteui-angular.css"`;
