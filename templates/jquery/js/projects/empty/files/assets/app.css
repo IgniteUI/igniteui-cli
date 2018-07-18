@@ -1,21 +1,28 @@
+html {
+	height: 100%;
+}
+
 body {
 	font-family: Arial, Helvetica, sans-serif;
+	padding: 0;
+	display: flex;
+	flex: 1 1 auto;
+	height: 100%;
 }
 
 /* Navigation Header */
-ul#list {
-    list-style-type: none;
-    margin: 0;
+.nav-menu {
+	width: 250px;
+	height: 100%;
+	list-style-type: none;
+	margin: 0;
     padding: 0;
-    overflow: hidden;
-    background-color: #e6e6e6;
+	overflow: auto;
+	background-color: #e6e6e6;
 }
 
-li.nav-menu-item {
-    float: left;
-}
 li.nav-menu-item-logo {
-	float: right;
+	float: none;
 } 
 li.nav-menu-item-logo div {
     display: block;
@@ -25,9 +32,10 @@ li.nav-menu-item-logo div {
 }
 
 li.nav-menu-item a {
+    background-color: #eee;
+    color: black;
     display: block;
-    text-align: center;
-    padding: 14px 16px;
+    padding: 14px 16px; 
     text-decoration: none;
 }
 
