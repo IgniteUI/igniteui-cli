@@ -136,7 +136,8 @@ describe("Unit - Add command", () => {
 		mockTemplate.packages = [];
 		mockTemplate.dependencies = [];
 
-		spyOn(process, "cwd").and.returnValue("My/Example/Path");
+		const directoryPath = path.join("My/Example/Path");
+		spyOn(process, "cwd").and.returnValue(directoryPath);
 		spyOn(mockTemplate, "generateFiles").and.returnValue(Promise.resolve(true));
 		spyOn(mockTemplate, "registerInProject").and.callThrough();
 		const sourceFilesSpy = spyOn<any>(mockTemplate, "ensureSourceFiles");
@@ -162,15 +163,16 @@ describe("Unit - Add command", () => {
 		"myCustomModule/my-custom-module.module.ts");
 		expect(PackageManager.flushQueue).toHaveBeenCalled();
 		expect(mockTemplate.generateFiles).toHaveBeenCalledTimes(1);
-		expect(mockTemplate.generateFiles).toHaveBeenCalledWith("My/Example/Path", "test-file-name");
+		expect(mockTemplate.generateFiles).toHaveBeenCalledWith(directoryPath, "test-file-name");
 		expect(mockTemplate.registerInProject).toHaveBeenCalledTimes(1);
-		expect(mockTemplate.registerInProject).toHaveBeenCalledWith("My/Example/Path", "test-file-name",
+		expect(mockTemplate.registerInProject).toHaveBeenCalledWith(directoryPath, "test-file-name",
 		"myCustomModule/my-custom-module.module.ts");
 		expect(sourceFilesSpy).toHaveBeenCalledTimes(1);
 		expect(routeSpy).toHaveBeenCalledTimes(1);
 		expect(declarationSpy).toHaveBeenCalledTimes(1);
-		expect(declarationSpy).toHaveBeenCalledWith("My\\Example\\Path\\" +
-		`src\\app\\test-file-name\\test-file-name.component.ts`, true);
+		expect(declarationSpy).toHaveBeenCalledWith(
+			path.join(directoryPath, `src/app/test-file-name/test-file-name.component.ts`),
+			true);
 		expect(ngMetaSpy).toHaveBeenCalledTimes(1);
 		expect(ngMetaSpy).toHaveBeenCalledWith({
 			declare: null,
@@ -198,7 +200,8 @@ describe("Unit - Add command", () => {
 		mockTemplate.packages = [];
 		mockTemplate.dependencies = [];
 
-		spyOn(process, "cwd").and.returnValue("My/Example/Path");
+		const directoryPath = path.join("My/Example/Path");
+		spyOn(process, "cwd").and.returnValue(directoryPath);
 		spyOn(mockTemplate, "generateFiles").and.returnValue(Promise.resolve(true));
 		spyOn(mockTemplate, "registerInProject").and.callThrough();
 		const sourceFilesSpy = spyOn<any>(mockTemplate, "ensureSourceFiles");
@@ -224,15 +227,16 @@ describe("Unit - Add command", () => {
 		"myCustomModule/my-custom-module.module.ts");
 		expect(PackageManager.flushQueue).toHaveBeenCalled();
 		expect(mockTemplate.generateFiles).toHaveBeenCalledTimes(1);
-		expect(mockTemplate.generateFiles).toHaveBeenCalledWith("My/Example/Path", "test-file-name");
+		expect(mockTemplate.generateFiles).toHaveBeenCalledWith(directoryPath, "test-file-name");
 		expect(mockTemplate.registerInProject).toHaveBeenCalledTimes(1);
-		expect(mockTemplate.registerInProject).toHaveBeenCalledWith("My/Example/Path", "test-file-name",
+		expect(mockTemplate.registerInProject).toHaveBeenCalledWith(directoryPath, "test-file-name",
 		"myCustomModule/my-custom-module.module.ts");
 		expect(sourceFilesSpy).toHaveBeenCalledTimes(1);
 		expect(routeSpy).toHaveBeenCalledTimes(1);
 		expect(declarationSpy).toHaveBeenCalledTimes(1);
-		expect(declarationSpy).toHaveBeenCalledWith("My\\Example\\Path\\" +
-		`src\\app\\components\\test-file-name\\test-file-name.component.ts`, true);
+		expect(declarationSpy).toHaveBeenCalledWith(
+			path.join(directoryPath, `src/app/components/test-file-name/test-file-name.component.ts`),
+			true);
 		expect(ngMetaSpy).toHaveBeenCalledTimes(1);
 		expect(ngMetaSpy).toHaveBeenCalledWith({
 			declare: null,
