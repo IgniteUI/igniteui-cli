@@ -259,32 +259,32 @@ export class PromptSession {
 			selectedTemplate = templates.find((value, i, obj) => {
 				return value.name === templateRes;
 			});
-			if (selectedTemplate) {
-				let success = false;
-				while (!success) {
-					const templateName = await this.getUserInput({
-						default: selectedTemplate.name,
-						message: "Name your component:",
-						name: "componentName",
-						type: "input"
+		}
+		if (selectedTemplate) {
+			let success = false;
+			while (!success) {
+				const templateName = await this.getUserInput({
+					default: selectedTemplate.name,
+					message: "Name your component:",
+					name: "componentName",
+					type: "input"
+				});
+
+				if (selectedTemplate.hasExtraConfiguration) {
+					const extraPrompt: any[] = this.createQuestions(selectedTemplate.getExtraConfiguration());
+					const extraConfigAnswers = await inquirer.prompt(extraPrompt);
+					const extraConfig = this.parseAnswers(extraConfigAnswers);
+
+					GoogleAnalytics.post({
+						ea: `extra configuration: ${JSON.stringify(extraConfig)}`,
+						ec: "$ig wizard",
+						el: "Extra configuration:",
+						t: "event"
 					});
 
-					if (selectedTemplate.hasExtraConfiguration) {
-						const extraPrompt: any[] = this.createQuestions(selectedTemplate.getExtraConfiguration());
-						const extraConfigAnswers = await inquirer.prompt(extraPrompt);
-						const extraConfig = this.parseAnswers(extraConfigAnswers);
-
-						GoogleAnalytics.post({
-							ea: `extra configuration: ${JSON.stringify(extraConfig)}`,
-							ec: "$ig wizard",
-							el: "Extra configuration:",
-							t: "event"
-						});
-
-						selectedTemplate.setExtraConfiguration(extraConfig);
-					}
-					success = await add.addTemplate(templateName, selectedTemplate);
+					selectedTemplate.setExtraConfiguration(extraConfig);
 				}
+				success = await add.addTemplate(templateName, selectedTemplate);
 			}
 		}
 		return true;
