@@ -50,8 +50,8 @@ export class $(ClassName)Component implements OnInit, AfterViewInit {
   public hiddenColsLength: number;
   public pinnedColsLength: number;
 
-  public searchText: string = '';
-  public caseSensitive: boolean = false;
+  public searchText = '';
+  public caseSensitive = false;
 
   public _positionSettings: PositionSettings = {
     horizontalDirection: HorizontalAlignment.Left,
@@ -66,7 +66,7 @@ export class $(ClassName)Component implements OnInit, AfterViewInit {
     scrollStrategy: new CloseScrollStrategy()
   };
 
-  constructor(private excelExporterService: IgxExcelExporterService) { }
+  constructor(private crd: ChangeDetectorRef, private excelExporterService: IgxExcelExporterService) { }
 
   public ngOnInit() {
     this.localData = data;
@@ -88,6 +88,7 @@ export class $(ClassName)Component implements OnInit, AfterViewInit {
     this.cols = this.grid1.columnList;
     this.hiddenColsLength = this.cols.filter((col) => col.hidden).length;
     this.pinnedColsLength = this.cols.filter((col) => col.pinned).length;
+    this.crd.detectChanges();
   }
 
   public toggleVisibility(col: IgxColumnComponent) {
