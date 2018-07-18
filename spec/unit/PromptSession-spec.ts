@@ -192,7 +192,7 @@ describe("Unit - PromptSession", () => {
 		expect(mockTemplate.getFrameworkByName).toHaveBeenCalledTimes(1);
 		done();
 	});
-	fit("chooseActionLoop - should run through properly - Add Component", async done => {
+	it("chooseActionLoop - should run through properly - Add Component", async done => {
 		// tslint:disable:object-literal-sort-keys
 		const mockExtraConfigurations = [{
 			choices: [],
@@ -275,7 +275,7 @@ describe("Unit - PromptSession", () => {
 			Promise.resolve({ action: "Complete & Run" })
 		);
 		await mockSession.chooseActionLoop(mockProjectLibrary, "infragistics");
-		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(3);
+		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(2);
 		expect(inquirer.prompt).toHaveBeenCalledTimes(11);
 		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
@@ -328,11 +328,11 @@ describe("Unit - PromptSession", () => {
 			Promise.resolve({ customTemplate: "Back" }),
 			Promise.resolve({ action: "Add view" }),
 			Promise.resolve({ customTemplate: "Custom Template 1" }),
-			Promise.resolve({ name: "Custom Template Name" }),
+			Promise.resolve({ customViewName: "Custom Template Name" }),
 			Promise.resolve({ action: "Complete & Run" })
 		);
 		await mockSession.chooseActionLoop(mockProjectLibrary, "infragistics");
-		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(3);
+		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(2);
 		expect(inquirer.prompt).toHaveBeenCalledTimes(6);
 		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
@@ -424,7 +424,7 @@ describe("Unit - PromptSession", () => {
 			Promise.resolve({ action: "Complete & Run" })
 		);
 		await mockSession.chooseActionLoop(mockProjectLibrary, "infragistics");
-		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(3);
+		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(2);
 		expect(inquirer.prompt).toHaveBeenCalledTimes(11);
 		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);

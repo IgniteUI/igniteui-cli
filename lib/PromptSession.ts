@@ -118,11 +118,12 @@ export class PromptSession {
 					await PackageManager.flushQueue(true);
 					if (true) { // TODO: Make conditional?
 						await start.start({});
-						actionIsOver = true;
+						return;
 					}
 				}
 			}
 		}
+		await this.chooseActionLoop(projectLibrary, theme);
 	}
 
 	/**
@@ -176,6 +177,11 @@ export class PromptSession {
 		return answers;
 	}
 
+	/**
+	 * Add the component user has selected
+	 * @param projectLibrary to add component to
+	 * @param theme to use to style the project
+	 */
 	private async addComponent(projectLibrary: ProjectLibrary, theme: string): Promise<boolean> {
 		let addComponentIsOver = false;
 		while (!addComponentIsOver) {
@@ -196,6 +202,12 @@ export class PromptSession {
 		return true;
 	}
 
+	/**
+	 * Select the component in the selected components group
+	 * @param projectLibrary to add component to
+	 * @param theme to use to style the project
+	 * @param groupName to chose components from
+	 */
 	private async choseComponent(projectLibrary: ProjectLibrary, theme: string, groupName: string): Promise<boolean> {
 		let choseComponentIsOver = false;
 		while (!choseComponentIsOver) {
@@ -218,6 +230,13 @@ export class PromptSession {
 		return true;
 	}
 
+	/**
+	 * Select template for provided component and set template's extra configurations if any
+	 * @param projectLibrary to add component to
+	 * @param theme to use to style the project
+	 * @param groupName to chose components from
+	 * @param component to get template for
+	 */
 	private async getTemplate(projectLibrary: ProjectLibrary, theme: string, groupName: string, component: Component)
 		: Promise<boolean> {
 		let selectedTemplate: Template;
@@ -271,6 +290,11 @@ export class PromptSession {
 		return true;
 	}
 
+	/**
+	 * Add the view user has selected
+	 * @param projectLibrary to add component to
+	 * @param theme to use to style the project
+	 */
 	private async addView(projectLibrary: ProjectLibrary, theme: string): Promise<boolean> {
 		const customTemplateNameRes = await this.getUserInput({
 			choices: projectLibrary.getCustomTemplateNames(),
@@ -300,6 +324,12 @@ export class PromptSession {
 		return true;
 	}
 
+	/**
+	 * Gets the user input according to provided @param options.
+	 * If @param withBackChoice is set to true adds Back option to the list
+	 * @param options to use for the user input
+	 * @param withBackChoice determines whether or not Back option should be added
+	 */
 	private async getUserInput(options: IUserInputOptions, withBackChoice: boolean = false): Promise<string> {
 		if (options.choices) {
 			if (withBackChoice) {
@@ -329,6 +359,10 @@ export class PromptSession {
 		return result;
 	}
 
+	/**
+	 * Check if provided @param name is valid for project name
+	 * @param name the name to check
+	 */
 	private nameIsValid(name: string): boolean {
 		if (!Util.isAlphanumericExt(name)) {
 			Util.error(`Name '${name}' is not valid. `
@@ -345,6 +379,10 @@ export class PromptSession {
 		return true;
 	}
 
+	/**
+	 * Gets the project library from the user input, or default if provided @param framework has single project library
+	 * @param framework to get project library for
+	 */
 	private async getProjectLibrary(framework: Framework): Promise<ProjectLibrary> {
 		let projectLibrary: ProjectLibrary;
 		if (framework.projectLibraries.length > 1) {
@@ -363,6 +401,10 @@ export class PromptSession {
 		return projectLibrary;
 	}
 
+	/**
+	 * Gets the them from the user input, or default if provided @param projectLibrary has single theme
+	 * @param projectLibrary to get theme for
+	 */
 	private async getTheme(projectLibrary: ProjectLibrary): Promise<string> {
 		let theme: string;
 		if (projectLibrary.themes.length < 2) {
@@ -380,6 +422,10 @@ export class PromptSession {
 		return theme;
 	}
 
+	/**
+	 * Generates a list of options for chooseActionLoop
+	 * @param projectLibrary to generate options for
+	 */
 	private generateActionChoices(projectLibrary: ProjectLibrary): string[] {
 		const actionChoices: string[] = ["Complete & Run"];
 		if (projectLibrary.components.length > 0) {
@@ -393,6 +439,9 @@ export class PromptSession {
 	}
 }
 
+/**
+ * Options for User Input
+ */
 interface IUserInputOptions {
 	type: string;
 	name: string;
