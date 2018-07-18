@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { IgxFilterOptions } from 'igniteui-angular';
-import { IgxListItemComponent } from 'igniteui-angular/lib/list/list-item.component';
+import { IgxFilterOptions, IgxListItemComponent } from 'igniteui-angular';
 
 @Component({
   selector: 'app-$(filePrefix)',
