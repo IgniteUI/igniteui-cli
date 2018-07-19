@@ -1,5 +1,3 @@
-
-import * as fs from "fs-extra";
 import * as path from "path";
 import * as ts from "typescript";
 import { default as addCmd } from "../../lib/commands/add";
@@ -248,6 +246,16 @@ describe("Unit - Add command", () => {
 		});
 		expect(finalizeSpy).toHaveBeenCalledTimes(1);
 		expect(addCmd.templateManager.updateProjectConfiguration).toHaveBeenCalledTimes(1);
+		done();
+	});
+
+	it("Should not add component and should log error if wrong path is massed to module", async done => {
+		spyOn(Util, "directoryExists").and.returnValue(false);
+		spyOn(Util, "error");
+		addCmd.addTemplate("TemplateName", null, "WrongPath");
+		expect(Util.directoryExists).toHaveBeenCalledTimes(1);
+		expect(Util.error).toHaveBeenCalledTimes(1);
+		expect(Util.error).toHaveBeenCalledWith(`Wrong module path provided: WrongPath. No components were added!`);
 		done();
 	});
 });
