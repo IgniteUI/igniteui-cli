@@ -6,7 +6,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./$(filePrefix).component.css']
 })
 export class $(ClassName)Component {
-  public chartType: string = 'Auto';
+  public chartType = 'Auto';
 
   data = [
     { 'CountryName': 'China', 'Pop1995': 1216, 'Pop2005': 1297, },
