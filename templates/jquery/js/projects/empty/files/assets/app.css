@@ -9,6 +9,8 @@ body {
 	display: flex;
 	flex: 1 1 auto;
 	height: 100%;
+	background: url(lines-bottom-right.svg) right bottom;	
+	background-repeat: no-repeat;
 }
 
 /* Navigation Header */
@@ -27,7 +29,7 @@ li.nav-menu-item-logo {
 } 
 li.nav-menu-item-logo div {
     display: block;
-    text-align: center;
+    text-align: right;
     padding: 14px 16px;
     text-decoration: none;
 }
