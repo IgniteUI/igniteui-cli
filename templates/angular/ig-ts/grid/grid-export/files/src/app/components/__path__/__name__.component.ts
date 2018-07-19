@@ -9,7 +9,7 @@ declare var $;
 		<h1>$(description)</h1>
 		<h2>Select columns to ignore</h2>
 		<div>
-			<ig-combo [(options)]="comboOptions" widgetId="combo" [(ngModel)]="comboOptions.value" (selectionChanged)="selectionChanged($event)"></ig-combo>
+			<ig-combo [(options)]="comboOptions" widgetId="combo" (selectionChanged)="selectionChanged($event)"></ig-combo>
 			<input type="button" id="exportBtn" value="Export grid" (click)="export($event)" />
 		</div>
 		<ig-grid [(options)]="gridOptions" widgetId="grid-export"></ig-grid>
