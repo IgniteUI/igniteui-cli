@@ -1,9 +1,7 @@
 <div class="sample-wrapper">
-  <section class="sample-content">
-  <article class="sample-column">
-
-    <div class="grid__wrapper">
-
+	<section class="sample-content">
+		<article class="sample-column">	
+		<div class="grid__wrapper">	
 		<div class="sample__header">
 			<div class="switch-sample">
 				<h2 class="switch-sample__title">Boston Marathon 2018</h2>
@@ -21,19 +19,13 @@
 						<div>{{ cell.value }}</div>
 						<ng-container *ngIf="isTop3(cell)">
 							<span class="cup" *ngIf="cell.value === 1">
-								<svg id="circle" height="20" width="20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-									<image x="0" y="0" height="20" width="20" xlink:href="assets/images/trophy_gold.svg" />
-								</svg>
+								<img src="assets/images/trophy_gold.svg" alt="golf-trophy" />
 							</span>
 							<span class="cup" *ngIf="cell.value === 2">
-								<svg id="circle" height="20" width="20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-									<image x="0" y="0" height="20" width="20" xlink:href="assets/images/trophy_silver.svg" />
-								</svg>
+								<img src="assets/images/trophy_silver.svg" alt="silver-trophy" />
 							</span>
 							<span class="cup" *ngIf="cell.value === 3">
-								<svg id="circle" height="20" width="20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-									<image x="0" y="0" height="20" width="20" xlink:href="assets/images/trophy_bronze.svg" />
-								</svg>
+								<img src="assets/images/trophy_bronze.svg" alt="bronze-trophy" />
 							</span>
 						</ng-container>
 					</div>
@@ -78,7 +70,9 @@
 	
 			<igx-column field="TrackProgress" sortable="true" header="Track Progress">
 				<ng-template igxCell let-val>
-					<igx-linear-bar [textVisibility]="false" class="cell__inner_2" [value]="val"></igx-linear-bar>
+					<div class="linear-bar-container">
+						<igx-linear-bar [textVisibility]="false" class="cell__inner_2" [value]="val"></igx-linear-bar>
+					</div>
 				</ng-template>
 			</igx-column>
 	
@@ -110,8 +104,8 @@
 					<igx-icon>last_page</igx-icon>
 				</button>
 			</div>
-		</ng-template>
-    </div>
-  </article>
-  </section>
+		</ng-template>	
+		</div>
+		</article>
+	</section>
 </div>

@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { $(ClassName)Component } from './$(filePrefix).component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { IgxTimePickerModule } from 'igniteui-angular';
 
 describe('$(ClassName)Component', () => {
@@ -13,7 +14,7 @@ describe('$(ClassName)Component', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [$(ClassName)Component],
-      imports: [IgxTimePickerModule]
+      imports: [IgxTimePickerModule, NoopAnimationsModule]
     })
       .compileComponents();
   }));
