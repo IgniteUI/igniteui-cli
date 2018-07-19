@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class GlobalErrorHandlerService implements ErrorHandler {
-  errorEvent: EventEmitter<boolean> = new EventEmitter<boolean>(true);
+  public errorEvent: EventEmitter<boolean> = new EventEmitter<boolean>(true);
 
   private router: Router;
   private isInErrorState: boolean;
@@ -15,11 +15,12 @@ export class GlobalErrorHandlerService implements ErrorHandler {
 
     if (!this.isInErrorState) {
       this.isInErrorState = true;
-      this.zone.run(() => {
-        this.router.navigate(['error']);
-      });
       if (isDevMode) {
         throw error;
+      } else {
+      this.zone.run(() => {
+         this.router.navigate(['error']);
+        });
       }
     }
   }
