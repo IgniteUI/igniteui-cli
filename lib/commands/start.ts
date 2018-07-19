@@ -1,4 +1,5 @@
 import * as  browserSync from "browser-sync";
+import * as path from "path";
 import { exec } from "shelljs";
 import { GoogleAnalytics } from "../GoogleAnalytics";
 import { TemplateManager } from "../TemplateManager";
@@ -62,8 +63,10 @@ command = {
 
 		switch (framework.toLowerCase()) {
 			case "jquery":
-			browserSync.init(
-				{ server: "./", port: argv.port });
+			const filePath = path.join(process.cwd(), "bs-config.js");
+			const bsConfig = require(filePath);
+			bsConfig.server.port = argv.port;
+			browserSync.init(bsConfig);
 			break;
 			case "react":
 				exec(`npm start -- --port=` + argv.port);
