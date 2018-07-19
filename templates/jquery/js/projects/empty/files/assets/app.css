@@ -1,36 +1,42 @@
-html {
-	height: 100%;
+html, body {
+    height: 100%;
 }
 
 body {
-	font-family: Arial, Helvetica, sans-serif;
-	padding: 0;
-	margin: 0;
-	display: flex;
-	flex: 1 1 auto;
-	height: 100%;
-	background: url(lines-bottom-right.svg) right bottom;	
-	background-repeat: no-repeat;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    background: url(lines-bottom-right.svg) right bottom;
+    background-repeat: no-repeat;
+}
+body.no-background {
+    background: none;
+}
+
+.content {
+    flex: 1 1 auto;
+    padding: 15px;
+    overflow-y: auto;
 }
 
 /* Navigation Header */
 .nav-menu {
-	width: 250px;
-	height: 100%;
-	list-style-type: none;
-	margin: 0;
+    width: 250px;
+    flex-basis: 250px;
+    flex-shrink: 0;
+    height: 100%;
+    list-style-type: none;
+    margin: 0;
     padding: 0;
-	overflow: auto;
-	background-color: #e6e6e6;
+    overflow: auto;
+    background-color: #e6e6e6;
 }
 
-li.nav-menu-item-logo {
-	float: none;
-} 
-li.nav-menu-item-logo div {
+li.nav-menu-item-logo h1 {
+    font-size: 1.4em;
     display: block;
-    text-align: right;
-    padding: 14px 16px;
+    padding: 0 16px;
     text-decoration: none;
 }
 
@@ -49,6 +55,6 @@ li.nav-menu-item a:hover {
 }
 
 li.active a {
-	background-color: rgb(68, 67, 67);
+    background-color: rgb(68, 67, 67);
     color: white;
 }

@@ -4,7 +4,7 @@ $(function () {
 	var menu = "<ul id='list' class='nav-menu'></ul>"
 	$('body').prepend(menu);
 	var result = "";
-	result += "<li class=\"nav-menu-item-logo\"><div>Ignite UI CLI</div></li>";
+	result += "<li class=\"nav-menu-item-logo\"><h1>$(name)</h1></li>";
 
 	var path = window.location.pathname;
 	path = path.slice(1);
