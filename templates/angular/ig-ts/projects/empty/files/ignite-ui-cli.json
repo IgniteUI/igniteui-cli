@@ -1,6 +1,7 @@
 {
 	"version": "",
 	"project": {
+		"defaultPort": 3001,
 		"framework": "angular",
 		"projectType": "ig-ts",
 		"theme": "$(theme)",
