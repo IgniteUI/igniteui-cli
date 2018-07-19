@@ -11,7 +11,9 @@
 		"spec/**/*.js.map": true,
 		"spec/**/*.js": {"when": "$(basename).ts"},
 		"templates/**/*.js.map": true,
-		"templates/**/*.js": {"when": "$(basename).ts"}
+		"templates/**/*.js": {"when": "$(basename).ts"},
+		"migrations/**/*.js.map": true,
+		"migrations/**/*.js": {"when": "$(basename).ts"}
 	},
 	"tslint.exclude": [ 
 		"**/files/**/*.ts",

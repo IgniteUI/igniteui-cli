@@ -15,5 +15,7 @@
 !/templates/angular/**/files/**/*
 /templates/react/**/*.js
 !/templates/react/**/files/**/*
+/migrations/**/*.js.map
+/migrations/**/*.js
 /coverage
 /.nyc_output

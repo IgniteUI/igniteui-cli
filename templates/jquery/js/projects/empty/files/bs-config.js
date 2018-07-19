@@ -1,13 +1,21 @@
+var fallback = require("connect-history-api-fallback");
+var routes = require("./bs-routes.json").routes;
 /**
  * Browser Sync config.
  * NOTE: Ignite UI paths auto-updated by the CLI, must be valid JSON.
  */
 module.exports = {
+	files: ["./**/*.{html,htm,css,js}"],
+	watchOptions: {
+	  ignored: "node_modules"
+	},
 	"server": {
-		"routes": {
-			"/ignite-ui/js/infragistics.core.js": "./node_modules/ignite-ui/js/infragistics.core-lite.js",
-			"/ignite-ui/js/infragistics.lob.js": "./node_modules/ignite-ui/js/infragistics.lob-lite.js",
-			"/ignite-ui": "$(igniteuiSource)"
-		}
+		routes: routes,
+		baseDir: "./",
+		middleware: [
+		  fallback({
+			index: "/index.html"
+		  })
+		]
 	}
-}
+};
