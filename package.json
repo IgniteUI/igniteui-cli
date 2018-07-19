@@ -80,7 +80,8 @@
     "shelljs": "^0.7.8",
     "through2": "^2.0.3",
     "typescript": "^2.8.1",
-    "yargs": "^8.0.2"
+    "yargs": "^8.0.2",
+    "browser-sync": "2.24.5"
   },
   "devDependencies": {
     "@types/fs-extra": "^3.0.3",

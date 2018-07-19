@@ -256,6 +256,11 @@ describe("Unit - PromptSession", () => {
 			getProjectLibraryByName: mockProjectLibrary
 		});
 		const mockSession = new PromptSession(mockTemplate);
+		spyOn(ProjectConfig, "getConfig").and.returnValue({
+			project: {
+				defaultPort: 4200
+			}
+		});
 		spyOn(mockSession, "chooseActionLoop").and.callThrough();
 		spyOn(Util, "log");
 		spyOn(add, "addTemplate").and.returnValue(true);
@@ -272,11 +277,12 @@ describe("Unit - PromptSession", () => {
 			Promise.resolve({ template: "Template 1" }),
 			Promise.resolve({ componentName: "Template 1 Custom Name" }),
 			Promise.resolve({ customValue1: "Test", customValue2: "Test" }),
-			Promise.resolve({ action: "Complete & Run" })
+			Promise.resolve({ action: "Complete & Run" }),
+			Promise.resolve({ port: 7777})
 		);
 		await mockSession.chooseActionLoop(mockProjectLibrary, "infragistics");
 		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(2);
-		expect(inquirer.prompt).toHaveBeenCalledTimes(11);
+		expect(inquirer.prompt).toHaveBeenCalledTimes(12);
 		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
 		expect(start.start).toHaveBeenCalledTimes(1);
@@ -318,6 +324,11 @@ describe("Unit - PromptSession", () => {
 			getProjectLibraryByName: mockProjectLibrary
 		});
 		const mockSession = new PromptSession(mockTemplate);
+		spyOn(ProjectConfig, "getConfig").and.returnValue({
+			project: {
+				defaultPort: 4200
+			}
+		});
 		spyOn(mockSession, "chooseActionLoop").and.callThrough();
 		spyOn(Util, "log");
 		spyOn(add, "addTemplate").and.returnValue(true);
@@ -329,11 +340,12 @@ describe("Unit - PromptSession", () => {
 			Promise.resolve({ action: "Add view" }),
 			Promise.resolve({ customTemplate: "Custom Template 1" }),
 			Promise.resolve({ customViewName: "Custom Template Name" }),
-			Promise.resolve({ action: "Complete & Run" })
+			Promise.resolve({ action: "Complete & Run" }),
+			Promise.resolve({ port: 7777})
 		);
 		await mockSession.chooseActionLoop(mockProjectLibrary, "infragistics");
 		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(2);
-		expect(inquirer.prompt).toHaveBeenCalledTimes(6);
+		expect(inquirer.prompt).toHaveBeenCalledTimes(7);
 		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
 		expect(start.start).toHaveBeenCalledTimes(1);
@@ -405,10 +417,16 @@ describe("Unit - PromptSession", () => {
 			getProjectLibraryByName: mockProjectLibrary
 		});
 		const mockSession = new PromptSession(mockTemplate);
+		spyOn(ProjectConfig, "getConfig").and.returnValue({
+			project: {
+				defaultPort: 4200
+			}
+		});
 		spyOn(mockSession, "chooseActionLoop").and.callThrough();
 		spyOn(Util, "log");
 		spyOn(add, "addTemplate").and.returnValue(true);
 		spyOn(PackageManager, "flushQueue").and.returnValue(Promise.resolve(true));
+		//spyOn(start, "start").and.returnValue(Promise.resolve({port: 3333 }));
 		spyOn(start, "start").and.returnValue(Promise.resolve(true));
 		spyOn(inquirer, "prompt").and.returnValues(
 			Promise.resolve({ action: "Add component" }),
@@ -421,11 +439,12 @@ describe("Unit - PromptSession", () => {
 			Promise.resolve({ template: "Template 1" }),
 			Promise.resolve({ name: "Template 1 Custom Name" }),
 			Promise.resolve({ customValue1: "Test", customValue2: "Test" }),
-			Promise.resolve({ action: "Complete & Run" })
+			Promise.resolve({ action: "Complete & Run" }),
+			Promise.resolve({ port: 7777})
 		);
 		await mockSession.chooseActionLoop(mockProjectLibrary, "infragistics");
 		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(2);
-		expect(inquirer.prompt).toHaveBeenCalledTimes(11);
+		expect(inquirer.prompt).toHaveBeenCalledTimes(12);
 		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
 		expect(start.start).toHaveBeenCalledTimes(1);
