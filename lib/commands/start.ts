@@ -1,4 +1,5 @@
-import * as liteServ from "lite-server";
+import * as  bs from "browser-sync";
+import * as path from "path";
 import { exec } from "shelljs";
 import { GoogleAnalytics } from "../GoogleAnalytics";
 import { TemplateManager } from "../TemplateManager";
@@ -16,8 +17,15 @@ let command: {
 command = {
 	command: "start",
 	desc: "starts the project",
-	builder: {},
 	templateManager: null,
+	builder: {
+		port: {
+			alias: "p",
+			describe: "serve app port",
+			type: "number"
+		}
+	},
+
 	async execute(argv) {
 		GoogleAnalytics.post({
 			t: "screenview",
@@ -37,30 +45,37 @@ command = {
 
 		const config = ProjectConfig.getConfig();
 		const framework = config.project.framework;
+		const projectType = config.project.projectType;
+		const defaultPort = config.project.defaultPort;
 
 		Util.log(`Starting project.`, "green");
 
 		GoogleAnalytics.post({
 			t: "event",
 			ec: "$ig start",
-			cd1: config.project.framework,
-			cd2: config.project.projectType,
+			cd1: framework,
+			cd2: projectType,
 			cd11: !!config.skipGit,
 			cd14: config.project.theme
 		});
 
+		argv.port = Number(argv.port) || defaultPort;
+
 		switch (framework.toLowerCase()) {
 			case "jquery":
-				liteServ.server();
-				break;
+			const browserSync = bs.create("igniteui-cli");
+			const filePath = path.join(process.cwd(), "bs-config.js");
+			const bsConfig = require(filePath);
+			bsConfig.port = argv.port;
+			browserSync.init(bsConfig);
+			break;
 			case "react":
-				exec("npm start");
+				exec(`npm start -- --port=` + argv.port);
 				break;
 			case "angular":
-				exec("npm start");
+				exec(`npm start -- --port=` + argv.port);
 				break;
 			default:
-				liteServ.server();
 				break;
 		}
 	}
