@@ -113,10 +113,29 @@ export class PromptSession {
 					break;
 				}
 				case "Complete & Run":
+				const config = ProjectConfig.getConfig();
+				const defaultPort = config.project.defaultPort;
+				let port;
+				let userPort: boolean;
+				while (!userPort) {
+					// tslint:disable-next-line:prefer-const
+					port = (await inquirer.prompt({
+						default: defaultPort,
+						message: "Choose app host port:",
+						name: "port",
+						type: "input"
+					}))["port"];
+
+					if (!Number(port)) {
+						Util.log(`port should be a number. Input valid port or use the suggested default port`, "yellow");
+					} else {
+						userPort = true;
+					}
+				}
 				default: {
 					await PackageManager.flushQueue(true);
 					if (true) { // TODO: Make conditional?
-						await start.start({});
+						await start.start({port});
 						return;
 					}
 				}
