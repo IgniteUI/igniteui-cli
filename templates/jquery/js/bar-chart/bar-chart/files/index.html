@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>$(description)</title>
+	<title>$(description)</title>
 
 	$(cssBlock)
 	<style type="text/css">
-        td { vertical-align: top; }
-        .chartElement {
-            padding-bottom: 20px;
-        }
-    </style>
+		.chartElement {
+			padding-bottom: 20px;
+		}
+		.chartContainer {
+			display: flex;
+		}
+	</style>
 	$(scriptBlock)
-<script type="text/javascript" src="world-energy-production.js"></script>
- <script type="text/javascript">
+	<script type="text/javascript" src="world-energy-production.js"></script>
+	<script type="text/javascript">
 		$(function () {
 			$("#barChart").igDataChart({
 				width: "98%",
@@ -78,23 +81,23 @@
 				}]
 			});
 		});
-    </script>
+	</script>
 </head>
-<body>
-	<h2>$(description)</h2>
-	<table>
-        <tr>
-            <td id="barChart" class="chartElement">
-                
-            </td>
-            <td id="barLegend" style="float: left">
-            </td>
-        </tr>
 
-	</table>
-	<div class="EIA-attribution">
-		Energy data from:<br />
-		<a href="http://www.eia.gov" target="_blank">U.S. Energy Information Administration (September 2012) </a>
+<body>
+	<div class="content">
+		<h2>$(description)</h2>
+		<div class="chartContainer">
+			<div id="barChart" class="chartElement"></div>
+			<div id="barLegend"></div>
 		</div>
+		<div class="data-source-footer">
+			<span>Energy data from: </span>
+			<span>
+				<a href="http://www.eia.gov" target="_blank">U.S. Energy Information Administration (September 2012) </a>
+			</span>
+		</div>
+	</div>
 </body>
+
 </html>

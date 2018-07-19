@@ -4,9 +4,7 @@
 <head>
 	<title>$(description)</title>
 
-	$(cssBlock)
-
-	$(scriptBlock)
+	$(cssBlock) $(scriptBlock)
 
 	<!-- External files for exporting -->
 	<script src="https://www.igniteui.com/js/external/FileSaver.js"></script>
@@ -68,18 +66,20 @@
 </head>
 
 <body>
-	<h2>$(description)</h2>
-	<h3>Flat Data Source</h3>
-	<table id="treegrid1"></table>
-	<br />
-	<input type="button" id="exportFlatDS" value="Export Flat Data" />
-	<br />
-	<br />
-	<br />
-	<h3>Hierarchical Data Source</h3>
-	<table id="treegrid2"></table>
-	<br />
-	<input type="button" id="exportHierarchicalDS" value="Export Hierarchical Data" />
+	<div class="content">
+		<h2>$(description)</h2>
+		<h3>Flat Data Source</h3>
+		<table id="treegrid1"></table>
+		<br />
+		<input type="button" id="exportFlatDS" value="Export Flat Data" />
+		<br />
+		<br />
+		<br />
+		<h3>Hierarchical Data Source</h3>
+		<table id="treegrid2"></table>
+		<br />
+		<input type="button" id="exportHierarchicalDS" value="Export Hierarchical Data" />
+	</div>
 </body>
 
 </html>
