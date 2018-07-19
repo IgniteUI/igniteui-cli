@@ -1,4 +1,4 @@
-import * as  browserSync from "browser-sync";
+import * as  bs from "browser-sync";
 import * as path from "path";
 import { exec } from "shelljs";
 import { GoogleAnalytics } from "../GoogleAnalytics";
@@ -63,9 +63,10 @@ command = {
 
 		switch (framework.toLowerCase()) {
 			case "jquery":
+			const browserSync = bs.create("igniteui-cli");
 			const filePath = path.join(process.cwd(), "bs-config.js");
 			const bsConfig = require(filePath);
-			bsConfig.server.port = argv.port;
+			bsConfig.port = argv.port;
 			browserSync.init(bsConfig);
 			break;
 			case "react":
