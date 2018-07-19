@@ -4,6 +4,7 @@ $(function () {
 	var menu = "<ul id='list' class='nav-menu'></ul>"
 	$('body').prepend(menu);
 	var result = "";
+	result += "<li class=\"nav-menu-item-logo\"><div>Ignite UI CLI</div></li>";
 
 	var path = window.location.pathname;
 	path = path.slice(1);
@@ -21,5 +22,5 @@ $(function () {
 		result += "<li class=\"" + navMenuClass +"\"><a href='/" + view.path + "'>" + view.name + "</a></li>"
 	}
 
-	result += "<li class=\"nav-menu-item-logo\"><div>Ignite UI CLI</div></li>"; $("#list").append(result);
+	$("#list").append(result);
 });
