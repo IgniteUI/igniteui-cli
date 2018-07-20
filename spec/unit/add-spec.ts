@@ -69,7 +69,7 @@ describe("Unit - Add command", () => {
 
 		for (const item of validCombos) {
 			await addCmd.addTemplate(item.name, mockTemplate);
-			expect(mockTemplate.generateFiles).toHaveBeenCalledWith(process.cwd(), item.valid);
+			expect(mockTemplate.generateFiles).toHaveBeenCalledWith(process.cwd(), item.valid, jasmine.any(Object));
 		}
 
 		done();
@@ -162,7 +162,8 @@ describe("Unit - Add command", () => {
 		"myCustomModule/my-custom-module.module.ts");
 		expect(PackageManager.flushQueue).toHaveBeenCalled();
 		expect(mockTemplate.generateFiles).toHaveBeenCalledTimes(1);
-		expect(mockTemplate.generateFiles).toHaveBeenCalledWith(directoryPath, "test-file-name");
+		expect(mockTemplate.generateFiles)
+			.toHaveBeenCalledWith(directoryPath, "test-file-name", { modulePath: "myCustomModule/my-custom-module.module.ts" });
 		expect(mockTemplate.registerInProject).toHaveBeenCalledTimes(1);
 		expect(mockTemplate.registerInProject).toHaveBeenCalledWith(directoryPath, "test-file-name",
 		"myCustomModule/my-custom-module.module.ts");
@@ -229,7 +230,8 @@ describe("Unit - Add command", () => {
 		"myCustomModule/my-custom-module.module.ts");
 		expect(PackageManager.flushQueue).toHaveBeenCalled();
 		expect(mockTemplate.generateFiles).toHaveBeenCalledTimes(1);
-		expect(mockTemplate.generateFiles).toHaveBeenCalledWith(directoryPath, "test-file-name");
+		expect(mockTemplate.generateFiles)
+			.toHaveBeenCalledWith(directoryPath, "test-file-name", {modulePath: "myCustomModule/my-custom-module.module.ts"});
 		expect(mockTemplate.registerInProject).toHaveBeenCalledTimes(1);
 		expect(mockTemplate.registerInProject).toHaveBeenCalledWith(directoryPath, "test-file-name",
 		"myCustomModule/my-custom-module.module.ts");
@@ -252,12 +254,13 @@ describe("Unit - Add command", () => {
 	});
 
 	it("Should not add component and should log error if wrong path is massed to module", async done => {
-		spyOn(Util, "directoryExists").and.returnValue(false);
+		spyOn(Util, "fileExists").and.returnValue(false);
 		spyOn(Util, "error");
-		addCmd.addTemplate("TemplateName", null, "WrongPath");
-		expect(Util.directoryExists).toHaveBeenCalledTimes(1);
+		const wrongPath = "myCustomModule/my-custom-module.module.ts";
+		addCmd.addTemplate("test-file-name", new AngularTemplate(__dirname), wrongPath);
+		expect(Util.fileExists).toHaveBeenCalledTimes(1);
 		expect(Util.error).toHaveBeenCalledTimes(1);
-		expect(Util.error).toHaveBeenCalledWith(`Wrong module path provided: WrongPath. No components were added!`);
+		expect(Util.error).toHaveBeenCalledWith(`Wrong module path provided: ${wrongPath}. No components were added!`);
 		done();
 	});
 });

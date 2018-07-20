@@ -33,7 +33,7 @@ describe("Unit - AngularTemplate Base", () => {
 		spyOn(Util, "validateTemplate").and.returnValue(true);
 
 		const templ = new TestTemplate();
-		templ.generateFiles("/target/path", "my component");
+		templ.generateFiles("/target/path", "my component", {});
 		expect(Util.validateTemplate).toHaveBeenCalledWith(
 			path.join("root/path" , "files"),
 			"/target/path",

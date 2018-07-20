@@ -24,12 +24,15 @@ export class AngularTemplate implements Template {
 	 */
 	constructor(private rootPath: string) {
 	}
-	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
+	public generateFiles(projectPath: string, name: string, options: {}): Promise<boolean> {
 		let config = {};
-		for (const element of options) {
-			if (element.hasOwnProperty("extraConfig")) {
-				config = element["extraConfig"];
-			}
+		if (options["modulePath"] && !Util.fileExists(path.join(process.cwd(), `src\\app`, options["modulePath"]))) {
+			Util.error(`Wrong module path provided: ${options["modulePath"]}. No components were added!`);
+			return Promise.resolve(false);
+		}
+
+		if (options["extraConfig"]) {
+			config = options["extraConfig"];
 		}
 		Object.assign(config, this.getBaseVariables(name));
 

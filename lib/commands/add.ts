@@ -101,11 +101,6 @@ command = {
 		}
 	},
 	async addTemplate(name: string, template: Template, modulePath?: string): Promise<boolean> {
-		if (modulePath && !Util.directoryExists(path.join(process.cwd(), modulePath))) {
-			Util.error(`Wrong module path provided: ${modulePath}. No components were added!`);
-			return;
-		}
-
 		// trim name to avoid creating awkward paths or mismatches:
 		name = name.trim();
 
@@ -117,7 +112,7 @@ command = {
 			return false;
 		}
 
-		if (await template.generateFiles(process.cwd(), name)) {
+		if (await template.generateFiles(process.cwd(), name, {modulePath})) {
 			//successful
 			template.registerInProject(process.cwd(), name, modulePath);
 			command.templateManager.updateProjectConfiguration(template);
