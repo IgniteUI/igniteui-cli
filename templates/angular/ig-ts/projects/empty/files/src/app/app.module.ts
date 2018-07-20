@@ -13,12 +13,12 @@ import { IgniteUIModule } from 'igniteui-angular-wrappers';
 
 
 @NgModule({
-  imports: [ BrowserModule, FormsModule, AppRoutingModule, IgniteUIModule],
-  declarations: [
-    HomeComponent,
+imports: [ BrowserModule, FormsModule, AppRoutingModule, IgniteUIModule],
+declarations: [
+	HomeComponent,
 	AppComponent,
 	NavMenuComponent],
-    // providers: [{provide: APP_BASE_HREF, useValue: '/'}],//set it either here or in the index.html
-  bootstrap: [ AppComponent ]
+	// providers: [{provide: APP_BASE_HREF, useValue: '/'}],//set it either here or in the index.html
+	bootstrap: [ AppComponent ]
 })
 export class AppModule { }

@@ -5,12 +5,13 @@ import { routes } from "../app-routing.module";
 	selector: "nav-menu",
 	styleUrls: ["src/app/shared/toolbar.css"],
 	template: `
-	<nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
-	<div class="container">
-		<!-- only top bav links generated -->
-		<a class="nav-link" *ngFor="let route of topNavLinks" routerLink="{{route.path}}">{{route.name}}</a>
-	</div>
-</nav>`
+	<nav class="nav-menu">
+		<h1>$(name)</h1>
+		<div class="nav-menu-item" *ngFor="let route of topNavLinks">
+			<!-- only top bav links generated -->
+			<a routerLink="{{route.path}}" routerLinkActive="active">{{route.name}}</a>
+		</div>
+	</nav>`
 })
 export class NavMenuComponent {
 	private topNavLinks: Array<{
