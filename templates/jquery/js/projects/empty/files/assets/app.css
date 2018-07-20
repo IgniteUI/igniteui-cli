@@ -1,38 +1,60 @@
+html, body {
+    height: 100%;
+}
+
 body {
-	font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    background: url(lines-bottom-right.svg) right bottom;
+    background-repeat: no-repeat;
+}
+body.no-background {
+    background: none;
+}
+
+.content {
+    flex: 1 1 auto;
+    padding: 15px;
+    overflow-y: auto;
 }
 
 /* Navigation Header */
-ul#list {
+.nav-menu {
+    width: 250px;
+    flex-basis: 250px;
+    flex-shrink: 0;
+    height: 100%;
     list-style-type: none;
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    overflow: auto;
     background-color: #e6e6e6;
 }
 
-li.nav-menu-item {
-    float: left;
-}
-li.nav-menu-item-logo {
-	float: right;
-} 
-li.nav-menu-item-logo div {
+li.nav-menu-item-logo h1 {
+    font-size: 1.4em;
     display: block;
-    text-align: center;
-    padding: 14px 16px;
+    padding: 0 16px;
     text-decoration: none;
 }
 
 li.nav-menu-item a {
+    background-color: #eee;
+    color: black;
     display: block;
-    text-align: center;
-    padding: 14px 16px;
+    padding: 14px 16px; 
     text-decoration: none;
 }
 
 /* Change the link color to #111 (black) on hover */
 li.nav-menu-item a:hover {
     background-color: #111;
+    color: white;
+}
+
+li.active a {
+    background-color: rgb(68, 67, 67);
     color: white;
 }

@@ -1,28 +1,41 @@
 @import "client/variables";
 
 .navbar {
-  background-color: $light;
-  user-select: none;
-  -webkit-user-select: none;
-  position: fixed;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  height: 2em;
-  line-height: 2em;
-  width: 100%;
-  z-index: 1000;
-  padding: 0 1.5em;
-  font-size: 1.2em;
+	width: 250px;
+	height: 100%;
+    flex-basis: 250px;
+    flex-shrink: 0;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+    background-color: #e6e6e6;
 
   a {
+	background-color: #eee;
+    color: black;
+    display: block;
+    padding: 14px 16px; 
     text-decoration: none;
-    color: inherit;
-    &:after {
-      content: '\a0\b7\a0';
-    }
-    &:last-child:after {
-      content: '';
-    }
+	}
+	
+   a:hover {
+	background-color: #111;
+    color: white;
+   }
+   a.active {
+	background-color: rgb(68, 67, 67);
+	color: white;
+   }
+
+   li {
+	float: none; 
+   }
+
+   li div {
+	display: block;
+    text-align: right;
+    padding: 14px 16px;
+    text-decoration: none;  
+   }
   }
-}

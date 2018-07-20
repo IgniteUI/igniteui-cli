@@ -21,7 +21,7 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 		const helpers = {
 			// tslint:disable
 			tsUpdateMock: jasmine.createSpyObj("TypeScriptFileUpdate", ["addRoute", "addDeclaration", "addNgModuleMeta", "finalize"]) as TypeScriptFileUpdate,
-			TypeScriptFileUpdate: function() {
+			TypeScriptFileUpdate: function () {
 				return helpers.tsUpdateMock;
 			},
 			// tslint:enable
@@ -56,7 +56,8 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 
 			expect(helpers.TypeScriptFileUpdate).toHaveBeenCalledWith(path.join("target/path", "src/app/app.module.ts"));
 			expect(helpers.tsUpdateMock.addDeclaration).toHaveBeenCalledWith(
-				path.join("target/path", `src/app/view-name/view-name.component.ts`)
+				path.join("target/path", `src/app/view-name/view-name.component.ts`),
+				false // if added to a custom module => true
 			);
 			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledTimes(0);
 			expect(helpers.tsUpdateMock.finalize).toHaveBeenCalled();
@@ -114,14 +115,14 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			resetSpy(helpers.tsUpdateMock.addNgModuleMeta);
 			resetSpy(Util.warn);
 
-			templ.dependencies = ["igxModule1", { import: "igxModule2", from: "igniteui-angular/component"}] as any;
+			templ.dependencies = ["igxModule1", { import: "igxModule2", from: "igniteui-angular/component" }] as any;
 			templ.registerInProject("", "");
 			expect(Util.warn).toHaveBeenCalledWith("String dependencies are deprecated, use object descriptions.", "yellow");
 			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith(
 				{ import: "igxModule1", from: "igniteui-angular/main" }, {}
 			);
 			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith(
-				{ import: "igxModule2", from: "igniteui-angular/component"}, {}
+				{ import: "igxModule2", from: "igniteui-angular/component" }, {}
 			);
 			done();
 		});

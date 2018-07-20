@@ -20,7 +20,8 @@ export class TypeScriptFileUpdate {
 	private ngMetaEdits: {
 		declarations: string[],
 		imports: Array<{ name: string, root: boolean }>,
-		providers: string[]
+		providers: string[],
+		exports: string[]
 	};
 
 	private createdStringLiterals: string[];
@@ -95,9 +96,23 @@ export class TypeScriptFileUpdate {
 					const newObject = ts.createObjectLiteral([routePath, routeComponent, routeData]);
 					this.createdStringLiterals.push(linkPath, linkText);
 
+					const notFoundWildCard = "**";
+					const nodes = ts.visitNodes(array.elements, visitor);
+					const errorRouteNode = nodes.filter(element => element.getText().includes(notFoundWildCard))[0];
+					let resultNodes = null;
+
+					if (errorRouteNode) {
+						resultNodes = nodes
+							.slice(0, nodes.indexOf(errorRouteNode))
+							.concat(newObject)
+							.concat(errorRouteNode);
+					} else {
+						resultNodes = nodes
+							.concat(newObject);
+					}
+
 					const elements = ts.createNodeArray([
-						...ts.visitNodes(array.elements, visitor),
-						newObject
+						...resultNodes
 					]);
 
 					return ts.updateArrayLiteral(array, elements);
@@ -109,7 +124,7 @@ export class TypeScriptFileUpdate {
 			return ts.visitNode(rootNode, visitor);
 		};
 
-		this.targetSource = ts.transform(this.targetSource, [ transformer ], {
+		this.targetSource = ts.transform(this.targetSource, [transformer], {
 			pretty: true // oh well..
 		}).transformed[0] as ts.SourceFile;
 
@@ -121,14 +136,16 @@ export class TypeScriptFileUpdate {
 	 * Creates `declarations` array if one is not present already.
 	 * @param filePath Path to the file to import
 	 */
-	public addDeclaration(filePath: string) {
+	public addDeclaration(filePath: string, addToExport?: boolean) {
 		let className: string;
 		const fileSource = TsUtils.getFileSource(filePath);
 		const relativePath: string = TsUtils.relativePath(this.targetPath, filePath, true, true);
-
 		className = TsUtils.getClassName(fileSource.getChildren());
-
-		this.addNgModuleMeta({ declare: className, from: relativePath });
+		if (addToExport) {
+			this.addNgModuleMeta({ declare: className, from: relativePath, export: className });
+		} else {
+			this.addNgModuleMeta({ declare: className, from: relativePath });
+		}
 	}
 
 	/**
@@ -138,7 +155,9 @@ export class TypeScriptFileUpdate {
 		const copy = {
 			declare: this.asArray(dep.declare, variables),
 			import: this.asArray(dep.import, variables),
-			provide: this.asArray(dep.provide, variables)
+			provide: this.asArray(dep.provide, variables),
+			// tslint:disable-next-line:object-literal-sort-keys
+			export: this.asArray(dep.export, variables)
 		};
 
 		if (dep.from) {
@@ -158,6 +177,10 @@ export class TypeScriptFileUpdate {
 		const providers = copy.provide
 			.filter(x => !this.ngMetaEdits.providers.find(p => p === x));
 		this.ngMetaEdits.providers.push(...providers);
+
+		const exportsArr = copy.export
+			.filter(x => !this.ngMetaEdits.exports.find(p => p === x));
+		this.ngMetaEdits.exports.push(...exportsArr);
 	}
 
 	//#region File state
@@ -169,7 +192,9 @@ export class TypeScriptFileUpdate {
 		this.ngMetaEdits = {
 			declarations: [],
 			imports: [],
-			providers: []
+			providers: [],
+			// tslint:disable-next-line:object-literal-sort-keys
+			exports: []
 		};
 		this.createdStringLiterals = [];
 	}
@@ -245,108 +270,113 @@ export class TypeScriptFileUpdate {
 
 	/** Transformation to apply edits to existing named import declarations */
 	protected importsTransformer: ts.TransformerFactory<ts.Node> =
-	<T extends ts.Node>(context: ts.TransformationContext) => (rootNode: T) => {
-		const editImports = this.requestedImports.filter(x => x.edit);
+		<T extends ts.Node>(context: ts.TransformationContext) => (rootNode: T) => {
+			const editImports = this.requestedImports.filter(x => x.edit);
 
-		// https://github.com/Microsoft/TypeScript/issues/14419#issuecomment-307256171
-		const visitor = (node: ts.Node): ts.Node => {
-			if (node.kind === ts.SyntaxKind.ImportDeclaration &&
-				editImports.find(x => x.from === ((node as ts.ImportDeclaration).moduleSpecifier as ts.StringLiteral).text)
-			) {
-				// visit just the source file main array (second visit)
-				return visitImport(node as ts.ImportDeclaration);
-			} else {
-				node = ts.visitEachChild(node, visitor, context);
+			// https://github.com/Microsoft/TypeScript/issues/14419#issuecomment-307256171
+			const visitor = (node: ts.Node): ts.Node => {
+				if (node.kind === ts.SyntaxKind.ImportDeclaration &&
+					editImports.find(x => x.from === ((node as ts.ImportDeclaration).moduleSpecifier as ts.StringLiteral).text)
+				) {
+					// visit just the source file main array (second visit)
+					return visitImport(node as ts.ImportDeclaration);
+				} else {
+					node = ts.visitEachChild(node, visitor, context);
+				}
+				return node;
+			};
+			function visitImport(node: ts.Node) {
+				if (node.kind === ts.SyntaxKind.NamedImports) {
+					const namedImports = node as ts.NamedImports;
+					const moduleSpecifier = (namedImports.parent.parent.moduleSpecifier as ts.StringLiteral).text;
+
+					const existing = ts.visitNodes(namedImports.elements, visitor);
+					const alreadyImported = existing.map(x => x.name.text);
+
+					const editImport = editImports.find(x => x.from === moduleSpecifier);
+					const newImports = editImport.imports.filter(x => alreadyImported.indexOf(x) === -1);
+
+					node = ts.updateNamedImports(namedImports, [
+						...existing,
+						...newImports.map(x => ts.createImportSpecifier(undefined, ts.createIdentifier(x)))
+					]);
+				} else {
+					node = ts.visitEachChild(node, visitImport, context);
+				}
+				return node;
 			}
-			return node;
-		};
-		function visitImport(node: ts.Node) {
-			if (node.kind === ts.SyntaxKind.NamedImports) {
-				const namedImports = node as ts.NamedImports;
-				const moduleSpecifier = (namedImports.parent.parent.moduleSpecifier as ts.StringLiteral).text;
-
-				const existing = ts.visitNodes(namedImports.elements, visitor);
-				const alreadyImported = existing.map(x => x.name.text);
-
-				const editImport = editImports.find(x => x.from === moduleSpecifier);
-				const newImports = editImport.imports.filter(x => alreadyImported.indexOf(x) === -1);
-
-				node = ts.updateNamedImports(namedImports, [
-					...existing,
-					...newImports.map(x => ts.createImportSpecifier(undefined,	ts.createIdentifier(x)))
-				]);
-			} else {
-				node = ts.visitEachChild(node, visitImport, context);
-			}
-			return node;
+			return ts.visitNode(rootNode, visitor);
 		}
-		return ts.visitNode(rootNode, visitor);
-	}
 
 	/** Transformation to apply `this.ngMetaEdits` to `NgModule` metadata properties */
 	protected ngModuleTransformer: ts.TransformerFactory<ts.Node> =
-	<T extends ts.Node>(context: ts.TransformationContext) => (rootNode: T) => {
-		const visitor = (node: ts.Node): ts.Node => {
-			if (node.kind === ts.SyntaxKind.CallExpression &&
-				node.parent && node.parent.kind === ts.SyntaxKind.Decorator &&
-				(node as ts.CallExpression).expression.getText() === "NgModule") {
-				// found module declaration
-				// expression: NgModule(arguments)
-				node = ts.visitEachChild(node, visitNgModule, context);
-			} else {
-				node = ts.visitEachChild(node, visitor, context);
-			}
-			return node;
-		};
-		const visitNgModule = (node: ts.Node): ts.Node => {
-			const properties: string[] = []; // "declarations", "imports", "providers"
-			for (const key in this.ngMetaEdits) {
-				if (this.ngMetaEdits[key].length) {
-					properties.push(key);
+		<T extends ts.Node>(context: ts.TransformationContext) => (rootNode: T) => {
+			const visitor = (node: ts.Node): ts.Node => {
+				if (node.kind === ts.SyntaxKind.CallExpression &&
+					node.parent && node.parent.kind === ts.SyntaxKind.Decorator &&
+					(node as ts.CallExpression).expression.getText() === "NgModule") {
+					// found module declaration
+					// expression: NgModule(arguments)
+					node = ts.visitEachChild(node, visitNgModule, context);
+				} else {
+					node = ts.visitEachChild(node, visitor, context);
 				}
-			}
-			if (node.kind === ts.SyntaxKind.ObjectLiteralExpression) {
-				let obj = (node as ts.ObjectLiteralExpression);
-				//TODO: test node.parent for ts.CallExpression NgModule
-				const missingProperties = properties.filter(x => !obj.properties.find(o => o.name.getText() === x));
-
-				// skip visiting if no declaration/imports/providers arrays exist:
-				if (missingProperties.length !== properties.length) {
-					obj = ts.visitEachChild(node, visitNgModule, context) as ts.ObjectLiteralExpression;
-				}
-
-				if (!missingProperties.length) {
-					return obj;
-				}
-
-				const objProperties = ts.visitNodes(obj.properties, visitor);
-				const newProps = [];
-				for (const prop of missingProperties) {
-					let arrayExpr;
-					switch (prop) {
-						case "imports":
-							const importDeps = this.ngMetaEdits.imports;
-							arrayExpr = ts.createArrayLiteral(
-								importDeps.map(x =>  TsUtils.createIdentifier(x.name, x.root ? "forRoot" : ""))
-							);
-							break;
-						case "declarations":
-						case "providers":
-							arrayExpr = ts.createArrayLiteral(
-								this.ngMetaEdits[prop].map(x =>  ts.createIdentifier(x))
-							);
-							break;
+				return node;
+			};
+			const visitNgModule = (node: ts.Node): ts.Node => {
+				const properties: string[] = []; // "declarations", "imports", "providers"
+				for (const key in this.ngMetaEdits) {
+					if (this.ngMetaEdits[key].length) {
+						properties.push(key);
 					}
-					newProps.push(ts.createPropertyAssignment(prop, arrayExpr));
 				}
+				if (node.kind === ts.SyntaxKind.ObjectLiteralExpression &&
+					node.parent &&
+					node.parent.kind === ts.SyntaxKind.CallExpression) {
 
-				return ts.updateObjectLiteral(obj, [
-					...objProperties,
-					...newProps
-				]);
-			} else if (node.kind === ts.SyntaxKind.ArrayLiteralExpression &&
-				node.parent.kind === ts.SyntaxKind.PropertyAssignment &&
-				properties.indexOf((node.parent as ts.PropertyAssignment).name.getText()) !== -1) {
+					let obj = (node as ts.ObjectLiteralExpression);
+
+					//TODO: test node.parent for ts.CallExpression NgModule
+					const missingProperties = properties.filter(x => !obj.properties.find(o => o.name.getText() === x));
+
+					// skip visiting if no declaration/imports/providers arrays exist:
+					if (missingProperties.length !== properties.length) {
+						obj = ts.visitEachChild(node, visitNgModule, context) as ts.ObjectLiteralExpression;
+					}
+
+					if (!missingProperties.length) {
+						return obj;
+					}
+
+					const objProperties = ts.visitNodes(obj.properties, visitor);
+					const newProps = [];
+					for (const prop of missingProperties) {
+						let arrayExpr;
+						switch (prop) {
+							case "imports":
+								const importDeps = this.ngMetaEdits.imports;
+								arrayExpr = ts.createArrayLiteral(
+									importDeps.map(x => TsUtils.createIdentifier(x.name, x.root ? "forRoot" : ""))
+								);
+								break;
+							case "declarations":
+							case "providers":
+							case "exports":
+								arrayExpr = ts.createArrayLiteral(
+									this.ngMetaEdits[prop].map(x => ts.createIdentifier(x))
+								);
+								break;
+						}
+						newProps.push(ts.createPropertyAssignment(prop, arrayExpr));
+					}
+
+					return ts.updateObjectLiteral(obj, [
+						...objProperties,
+						...newProps
+					]);
+				} else if (node.kind === ts.SyntaxKind.ArrayLiteralExpression &&
+					node.parent.kind === ts.SyntaxKind.PropertyAssignment &&
+					properties.indexOf((node.parent as ts.PropertyAssignment).name.getText()) !== -1) {
 					const initializer = (node as ts.ArrayLiteralExpression);
 					const props = ts.visitNodes(initializer.elements, visitor);
 					const alreadyImported = props.map(x => TsUtils.getIdentifierName(x));
@@ -361,6 +391,7 @@ export class TypeScriptFileUpdate {
 							break;
 						case "declarations":
 						case "providers":
+						case "exports":
 							identifiers = this.ngMetaEdits[prop]
 								.filter(x => alreadyImported.indexOf(x) === -1)
 								.map(x => ts.createIdentifier(x));
@@ -372,13 +403,13 @@ export class TypeScriptFileUpdate {
 					]);
 
 					return ts.updateArrayLiteral(initializer, elements);
-			} else {
-				node = ts.visitEachChild(node, visitNgModule, context);
-			}
-			return node;
-		};
-		return ts.visitNode(rootNode, visitor);
-	}
+				} else {
+					node = ts.visitEachChild(node, visitNgModule, context);
+				}
+				return node;
+			};
+			return ts.visitNode(rootNode, visitor);
+		}
 
 	//#endregion ts.TransformerFactory
 
@@ -461,7 +492,7 @@ export class TypeScriptFileUpdate {
 
 	/** Return source file formatting options */
 	private getFormattingOptions(): ts.FormatCodeSettings {
-		const formatOptions: ts.FormatCodeSettings  = {
+		const formatOptions: ts.FormatCodeSettings = {
 			indentSize: this.formatOptions.indentSize,
 			tabSize: 4,
 			// tslint:disable-next-line:object-literal-sort-keys

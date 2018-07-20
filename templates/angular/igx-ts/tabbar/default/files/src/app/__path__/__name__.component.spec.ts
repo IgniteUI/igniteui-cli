@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { $(ClassName)Component } from './$(filePrefix).component';
-import { IgxBottomNavModule, IgxAvatarModule, IgxIconModule, IgxRippleModule } from 'igniteui-angular/main';
+import { IgxBottomNavModule, IgxAvatarModule, IgxIconModule, IgxRippleModule } from 'igniteui-angular';
 
 describe('$(ClassName)Component', () => {
   let component: $(ClassName)Component;

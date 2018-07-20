@@ -1,42 +1,45 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>$(description)</title>
+	<title>$(description)</title>
 
-	$(cssBlock)
+	$(cssBlock) $(scriptBlock)
 
-	$(scriptBlock)
+	<script type="text/javascript">
+		var platforms = [
+			{ Name: "jQuery/HTML5/ASP.NET MVC Controls" },
+			{ Name: "ASP.NET Controls" },
+			{ Name: "Windows Forms Controls" },
+			{ Name: "WPF Controls" },
+			{ Name: "Android Native mobile controls" },
+			{ Name: "iOS Controls" },
+			{ Name: "SharePlus" },
+			{ Name: "ReportPlus" },
+			{ Name: "Indigo Studio" }
+		];
 
- <script type="text/javascript">
-  	var platforms = [
-            { Name: "jQuery/HTML5/ASP.NET MVC Controls" },
-            { Name: "ASP.NET Controls" },
-            { Name: "Windows Forms Controls" },
-            { Name: "WPF Controls" },
-            { Name: "Android Native mobile controls" },
-            { Name: "iOS Controls" },
-            { Name: "SharePlus" },
-            { Name: "ReportPlus" },
-            { Name: "Indigo Studio" }
-        ];
-
-       $(function () {
-           $("#combo").igCombo({
-                width: 300,
-                dataSource: platforms,
-                textKey: "Name",
-                valueKey: "Name",
-                multiSelection: {
-                    enabled: true,
-                    showCheckboxes: true
-                },
-                dropDownOrientation: "bottom"
-            });
-       });
-    </script>
+		$(function () {
+			$("#combo").igCombo({
+				width: 300,
+				dataSource: platforms,
+				textKey: "Name",
+				valueKey: "Name",
+				multiSelection: {
+					enabled: true,
+					showCheckboxes: true
+				},
+				dropDownOrientation: "bottom"
+			});
+		});
+	</script>
 </head>
+
 <body>
-	<h2>$(description). MultiSelection with checkboxes is enabled</h2>
-    <div id="combo"></div>
+	<div class="content">
+		<h2>$(description). MultiSelection with checkboxes is enabled</h2>
+		<div id="combo"></div>
+	</div>
 </body>
+
 </html>
