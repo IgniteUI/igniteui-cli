@@ -42,7 +42,10 @@
     "templates/**/*.js",
     "templates/**/files/**/*",
     "templates/**/generate/**/*",
-    "templates/quickstart/**/*"
+    "templates/quickstart/**/*",
+    "migrations/**/*.d.ts",
+    "migrations/**/*.js",
+    "migrations/**/*.json"
   ],
   "nyc": {
     "extension": [
@@ -84,6 +87,7 @@
     "browser-sync": "2.24.5"
   },
   "devDependencies": {
+    "@angular-devkit/schematics": "^0.6.8",
     "@types/fs-extra": "^3.0.3",
     "@types/inquirer": "0.0.35",
     "@types/jasmine": "^2.8.6",
@@ -97,5 +101,13 @@
     "ts-node": "^3.3.0",
     "tslint": "^5.9.1",
     "typescript-json-schema": "^0.21.0"
+  },
+  "ng-update": {
+    "migrations": "./migrations/migration-collection.json",
+    "packageGroup": [
+      "igniteui-cli",
+      "igniteui-angular",
+      "igniteui-angular-charts"
+    ]
   }
 }
