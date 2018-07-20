@@ -259,109 +259,171 @@
 	});
     </script>
 </head>
-<body>
-	<h2>$(description)</h2>
-	<div class="main-container">
-		<div class="eidtors-title">
-			Change grid cell values to update the charts below
-			<div class="year-profit" data-bind="igCurrencyEditor: {
-				value: yearProfit,
-				readOnly: true,
-				width: 100,
-				negativePattern: '$ -n',
-				postivePattern: '$ n',
-				dataMode: 'int'
-			}"></div>
-			<span class="year-profit"> Overall Year Profit: </span>
+<body class="no-background">
+	<div class="content">
+		<h2>$(description)</h2>
+		<div class="main-container">
+			<div class="eidtors-title">
+				Change grid cell values to update the charts below
+				<div class="year-profit" data-bind="igCurrencyEditor: {
+					value: yearProfit,
+					readOnly: true,
+					width: 100,
+					negativePattern: '$ -n',
+					postivePattern: '$ n',
+					dataMode: 'int'
+				}"></div>
+				<span class="year-profit"> Overall Year Profit: </span>
+			</div>
+			<div class="clear hr"></div>
+			<div class="window-container-1">
+			<button class="btn-refresh" title="Randomize Chart Data"></button>
+	<div class="grid-container">
+		<div class="grid-holder">
+			<table id="grid" data-bind="igGrid: {
+				dataSource: data,
+				
+				height: 250,
+				autoCommit: true,
+				autoGenerateColumns: false,
+				primaryKey: 'index',
+				columns: [
+					{ key: 'index', hidden: true },
+					{ key: 'month', headerText: 'Month Name' },
+					{ key: 'revenue', headerText: 'Revenue', formatter: toFixedTwoDigits },
+					{ key: 'expenses', headerText: 'Revenue', formatter: toFixedTwoDigits },
+					{ key: 'profit', headerText: 'Profit', formatter: toFixedTwoDigits }
+				],
+				features: [
+					{
+						name: 'Updating',
+						enableAddRow: false,
+						enableDeleteRow: false,
+						columnSettings: [{
+							columnKey: 'month',
+							readOnly: true
+						}, {
+							columnKey: 'revenue',
+							editorType: 'numeric',
+							editorOptions: {
+								width: 100,
+								minValue: 0,
+								maxValue: 50,
+								buttonType: 'spin',
+								updateMode: 'immediate'
+							}
+						}, {
+							columnKey: 'expenses',
+							editorType: 'numeric',
+							editorOptions: {
+								width: 100,
+								minValue: 0,
+								maxValue: 50,
+								buttonType: 'spin',
+								updateMode: 'immediate'
+							}
+						}, {
+							columnKey: 'profit',
+							editorType: 'numeric',
+							editorOptions: {
+								width: 100,
+								minValue: -50,
+								buttonType: 'spin',
+								updateMode: 'immediate'
+							}
+						}]
+					}
+				]
+			}"></table>
+	
+	
 		</div>
-		<div class="clear hr"></div>
-		<div class="window-container-1">
-		<button class="btn-refresh" title="Randomize Chart Data"></button>
-<div class="grid-container">
-	<div class="grid-holder">
-		<table id="grid" data-bind="igGrid: {
-			dataSource: data,
-			
-			height: 250,
-			autoCommit: true,
-			autoGenerateColumns: false,
-			primaryKey: 'index',
-			columns: [
-				{ key: 'index', hidden: true },
-				{ key: 'month', headerText: 'Month Name' },
-				{ key: 'revenue', headerText: 'Revenue', formatter: toFixedTwoDigits },
-				{ key: 'expenses', headerText: 'Revenue', formatter: toFixedTwoDigits },
-				{ key: 'profit', headerText: 'Profit', formatter: toFixedTwoDigits }
-			],
-			features: [
-				{
-					name: 'Updating',
-					enableAddRow: false,
-					enableDeleteRow: false,
-					columnSettings: [{
-						columnKey: 'month',
-						readOnly: true
+		<div class="sample-bar-chart-holder" style="">
+			<div id="barColumnChart" data-bind='igDataChart: {
+					dataSource: data,
+					width: "100%",
+					height: 220,
+					title: "Yearly Profit",
+					leftMargin: 5,
+					legend: { element: "legendBarColumnChart" },
+					axes: [{
+						name: "xAxis",
+						type: "categoryX",
+						interval: chartIntervalX,
+						label: "month",
+						labelLocation: "outsideTop"
 					}, {
-						columnKey: 'revenue',
-						editorType: 'numeric',
-						editorOptions: {
-							width: 100,
-							minValue: 0,
-							maxValue: 50,
-							buttonType: 'spin',
-							updateMode: 'immediate'
-						}
+						name: "yAxis",
+						type: "numericY",
+						minimumValue: -50,
+						maximumValue: 50
+					}],
+					series: [{
+						name: "column1",
+						type: "column",
+						isHighlightingEnabled: true,
+						title: "Revenue",
+						xAxis: "xAxis",
+						yAxis: "yAxis",
+						valueMemberPath: "revenue",
+						transitionDuration: transitionDuration,
+						brush: revenueColor
+					},
+					{
+						name: "column2",
+						type: "column",
+						isHighlightingEnabled: true,
+						title: "Expenses",
+						xAxis: "xAxis",
+						yAxis: "yAxis",
+						valueMemberPath: "expenses",
+						transitionDuration: transitionDuration,
+						brush: expensesColor
 					}, {
-						columnKey: 'expenses',
-						editorType: 'numeric',
-						editorOptions: {
-							width: 100,
-							minValue: 0,
-							maxValue: 50,
-							buttonType: 'spin',
-							updateMode: 'immediate'
-						}
-					}, {
-						columnKey: 'profit',
-						editorType: 'numeric',
-						editorOptions: {
-							width: 100,
-							minValue: -50,
-							buttonType: 'spin',
-							updateMode: 'immediate'
-						}
+						name: "column3",
+						type: "column",
+						isHighlightingEnabled: true,
+						title: "Profit",
+						xAxis: "xAxis",
+						yAxis: "yAxis",
+						valueMemberPath: "profit",
+						transitionDuration: transitionDuration,
+						brush: profitColor
 					}]
-				}
-			]
-		}"></table>
-
-
+				}'></div>
+			<div id="legendBarColumnChart"></div>
+		</div>
+		<div class="clear"></div>
 	</div>
-	<div class="sample-bar-chart-holder" style="">
-		<div id="barColumnChart" data-bind='igDataChart: {
+	<div class="sample-line-chart-holder">
+		<div id="lineChart" data-bind='igDataChart: {
 				dataSource: data,
 				width: "100%",
-				height: 220,
+				height: 200,
 				title: "Yearly Profit",
 				leftMargin: 5,
-				legend: { element: "legendBarColumnChart" },
+				legend: { element: "legendLineChart" },
 				axes: [{
 					name: "xAxis",
 					type: "categoryX",
 					interval: chartIntervalX,
 					label: "month",
 					labelLocation: "outsideTop"
+	
 				}, {
 					name: "yAxis",
 					type: "numericY",
+					interval: 10,
 					minimumValue: -50,
 					maximumValue: 50
+	
 				}],
 				series: [{
-					name: "column1",
-					type: "column",
-					isHighlightingEnabled: true,
+					name: "line1",
 					title: "Revenue",
+					type: "line",
+					isHighlightingEnabled: true,
+					thickness: chartThickness,
 					xAxis: "xAxis",
 					yAxis: "yAxis",
 					valueMemberPath: "revenue",
@@ -369,191 +431,131 @@
 					brush: revenueColor
 				},
 				{
-					name: "column2",
-					type: "column",
-					isHighlightingEnabled: true,
+					name: "line2",
 					title: "Expenses",
+					type: "line",
+					isHighlightingEnabled: true,
+					thickness: chartThickness,
 					xAxis: "xAxis",
 					yAxis: "yAxis",
 					valueMemberPath: "expenses",
 					transitionDuration: transitionDuration,
 					brush: expensesColor
 				}, {
-					name: "column3",
-					type: "column",
-					isHighlightingEnabled: true,
+					name: "line3",
 					title: "Profit",
+					type: "line",
+					isHighlightingEnabled: true,
+					thickness: chartThickness,
 					xAxis: "xAxis",
 					yAxis: "yAxis",
 					valueMemberPath: "profit",
 					transitionDuration: transitionDuration,
 					brush: profitColor
 				}]
-			}'></div>
-		<div id="legendBarColumnChart"></div>
+			}'>
+		</div>
+		<div id="legendLineChart"></div>
 	</div>
-	<div class="clear"></div>
-</div>
-<div class="sample-line-chart-holder">
-	<div id="lineChart" data-bind='igDataChart: {
-			dataSource: data,
-			width: "100%",
-			height: 200,
-			title: "Yearly Profit",
-			leftMargin: 5,
-			legend: { element: "legendLineChart" },
-			axes: [{
-				name: "xAxis",
-				type: "categoryX",
-				interval: chartIntervalX,
-				label: "month",
-				labelLocation: "outsideTop"
-
-			}, {
-				name: "yAxis",
-				type: "numericY",
-				interval: 10,
-				minimumValue: -50,
-				maximumValue: 50
-
-			}],
-			series: [{
-				name: "line1",
-				title: "Revenue",
-				type: "line",
-				isHighlightingEnabled: true,
-				thickness: chartThickness,
-				xAxis: "xAxis",
-				yAxis: "yAxis",
-				valueMemberPath: "revenue",
-				transitionDuration: transitionDuration,
-				brush: revenueColor
-			},
-			{
-				name: "line2",
-				title: "Expenses",
-				type: "line",
-				isHighlightingEnabled: true,
-				thickness: chartThickness,
-				xAxis: "xAxis",
-				yAxis: "yAxis",
-				valueMemberPath: "expenses",
-				transitionDuration: transitionDuration,
-				brush: expensesColor
-			}, {
-				name: "line3",
-				title: "Profit",
-				type: "line",
-				isHighlightingEnabled: true,
-				thickness: chartThickness,
-				xAxis: "xAxis",
-				yAxis: "yAxis",
-				valueMemberPath: "profit",
-				transitionDuration: transitionDuration,
-				brush: profitColor
-			}]
-		}'>
-	</div>
-	<div id="legendLineChart"></div>
-</div>
-			
-			<div class="sample-polar-chart-holder">
-				<div id="polarSplineChartRevenue" data-bind='igDataChart: {
-					width: "97%",
-					height: 275,
-					dataSource: data,
-					title: "Revenue",
-					legend: { element: "legendPolarChartRevenue" },
-					axes: [{
-						name: "angleAxis",
-						type: "numericAngle",
-						interval: chartIntervalX,
-						formatLabel: formatMonth,
-					},
-					{
-						name: "radiusAxis",
-						type: "numericRadius"
-					}],
-					series: [{
-						name: "polarSpline",
-						type: "polarSpline",
+				
+				<div class="sample-polar-chart-holder">
+					<div id="polarSplineChartRevenue" data-bind='igDataChart: {
+						width: "97%",
+						height: 275,
+						dataSource: data,
 						title: "Revenue",
-						angleAxis: "angleAxis",
-						radiusAxis: "radiusAxis",
-						angleMemberPath: "index",
-						radiusMemberPath: "revenue",
-						transitionDuration: transitionDuration,
-						brush: revenueColor
-					}]
-				}'>
+						legend: { element: "legendPolarChartRevenue" },
+						axes: [{
+							name: "angleAxis",
+							type: "numericAngle",
+							interval: chartIntervalX,
+							formatLabel: formatMonth,
+						},
+						{
+							name: "radiusAxis",
+							type: "numericRadius"
+						}],
+						series: [{
+							name: "polarSpline",
+							type: "polarSpline",
+							title: "Revenue",
+							angleAxis: "angleAxis",
+							radiusAxis: "radiusAxis",
+							angleMemberPath: "index",
+							radiusMemberPath: "revenue",
+							transitionDuration: transitionDuration,
+							brush: revenueColor
+						}]
+					}'>
+					</div>
+					<div id="legendPolarChartRevenue" class="polar-chart-legend"></div>
 				</div>
-				<div id="legendPolarChartRevenue" class="polar-chart-legend"></div>
-			</div>
-			<div class="sample-polar-chart-holder">
-				<div id="polarSplineChartExpenses" data-bind='igDataChart: {
-					width: "97%",
-					height: 275,
-					dataSource: data,
-					title: "Expenses",
-					legend: { element: "legendPolarChartExpenses" },
-					axes: [{
-						name: "angleAxis",
-						type: "numericAngle",
-						interval: chartIntervalX,
-						formatLabel: formatMonth,
-					},
-					{
-						name: "radiusAxis",
-						type: "numericRadius"
-					}],
-					series: [{
-						name: "polarSpline",
-						type: "polarSpline",
+				<div class="sample-polar-chart-holder">
+					<div id="polarSplineChartExpenses" data-bind='igDataChart: {
+						width: "97%",
+						height: 275,
+						dataSource: data,
 						title: "Expenses",
-						angleAxis: "angleAxis",
-						radiusAxis: "radiusAxis",
-						angleMemberPath: "index",
-						radiusMemberPath: "expenses",
-						transitionDuration: transitionDuration,
-						brush: expensesColor
-					}]
-				}'>
+						legend: { element: "legendPolarChartExpenses" },
+						axes: [{
+							name: "angleAxis",
+							type: "numericAngle",
+							interval: chartIntervalX,
+							formatLabel: formatMonth,
+						},
+						{
+							name: "radiusAxis",
+							type: "numericRadius"
+						}],
+						series: [{
+							name: "polarSpline",
+							type: "polarSpline",
+							title: "Expenses",
+							angleAxis: "angleAxis",
+							radiusAxis: "radiusAxis",
+							angleMemberPath: "index",
+							radiusMemberPath: "expenses",
+							transitionDuration: transitionDuration,
+							brush: expensesColor
+						}]
+					}'>
+					</div>
+					<div id="legendPolarChartExpenses" class="polar-chart-legend"></div>
 				</div>
-				<div id="legendPolarChartExpenses" class="polar-chart-legend"></div>
-			</div>
-			<div class="sample-polar-chart-holder">
-				<div id="polarSplineChartProfit" data-bind='igDataChart: {
-					width: "97%",
-					height: 275,
-					title: "Profit",
-					dataSource: data,
-					legend: { element: "legendPolarChartProfit" },
-					axes: [{
-						name: "angleAxis",
-						type: "numericAngle",
-						interval: chartIntervalX,
-						formatLabel: formatMonth,
-					},
-					{
-						name: "radiusAxis",
-						type: "numericRadius"
-					}],
-					series: [{
-						name: "polarSpline",
-						type: "polarSpline",
+				<div class="sample-polar-chart-holder">
+					<div id="polarSplineChartProfit" data-bind='igDataChart: {
+						width: "97%",
+						height: 275,
 						title: "Profit",
-						angleAxis: "angleAxis",
-						radiusAxis: "radiusAxis",
-						angleMemberPath: "index",
-						radiusMemberPath: "profit",
-						transitionDuration: transitionDuration,
-						brush: profitColor
-					}]
-				}'>
+						dataSource: data,
+						legend: { element: "legendPolarChartProfit" },
+						axes: [{
+							name: "angleAxis",
+							type: "numericAngle",
+							interval: chartIntervalX,
+							formatLabel: formatMonth,
+						},
+						{
+							name: "radiusAxis",
+							type: "numericRadius"
+						}],
+						series: [{
+							name: "polarSpline",
+							type: "polarSpline",
+							title: "Profit",
+							angleAxis: "angleAxis",
+							radiusAxis: "radiusAxis",
+							angleMemberPath: "index",
+							radiusMemberPath: "profit",
+							transitionDuration: transitionDuration,
+							brush: profitColor
+						}]
+					}'>
+					</div>
+					<div id="legendPolarChartProfit" class="polar-chart-legend"></div>
 				</div>
-				<div id="legendPolarChartProfit" class="polar-chart-legend"></div>
+			
 			</div>
-		
 		</div>
 	</div>
 </body>

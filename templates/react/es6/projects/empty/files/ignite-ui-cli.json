@@ -1,6 +1,7 @@
 {
     "version" : "",
     "project": {
+		"defaultPort": 3002,
 		"framework" : "react",
 		"projectType": "es6",
 		"theme": "$(theme)",

@@ -1,0 +1,10 @@
+{
+	"$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+    "schematics": {
+        "migration-01": {
+            "version": "2.0.0-beta.0",
+            "description": "Updates Ignite UI for Angular project from 1.3",
+            "factory": "./update-2"
+        }
+    }
+}
