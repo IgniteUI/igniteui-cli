@@ -1,188 +1,202 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>$(description)</title>
-        <style>
-            #exportButton {
-                margin-bottom: 8px;
-            }
-            .optionContainer{
-				display: inline-block;
-			}
-			.item {
-				display: inline-block;
-				height: 30px;
-			}
-			.item ~ .item {
-				margin-left: 15px;
-			}
-			.item-label {
-				display: block;
-				float: right;
-				margin-left: 5px;
-                line-height: 21px;
-			}
-            .exporting-overlay {
-                position: absolute;
-                background-color: rgba(181, 181, 181, 0.9);
-                top: 0;
-                left: 0;
-                z-index: 100000;
-                text-align: center;
-                vertical-align: top;
-                padding-top: 100px;
-            }
-            .exporting-overlay:after {
-                content: "";
-                display: inline-block;
-                vertical-align: middle;
-                height: 100%;
-            }
-            .exporting-text {
-                font-size: 46px;
-                font-weight: bold;
-                vertical-align: top;
-            }
-        </style>
-		$(cssBlock)
-		
-		$(scriptBlock)
 
-		<!-- External files for exporting -->
-		<script src="https://www.igniteui.com/js/external/FileSaver.js"></script>
-		<script src="https://www.igniteui.com/js/external/Blob.js"></script>
-        <!--Sample JSON Data-->
-        <script src="employee.js"></script>
-    </head>
-    <body>
+<head>
+	<title>$(description)</title>
+	<style>
+		#exportButton {
+			margin-bottom: 8px;
+		}
+
+		.optionContainer {
+			display: inline-block;
+		}
+
+		.item {
+			display: inline-block;
+			height: 30px;
+		}
+
+		.item~.item {
+			margin-left: 15px;
+		}
+
+		.item-label {
+			display: block;
+			float: right;
+			margin-left: 5px;
+			line-height: 21px;
+		}
+
+		.exporting-overlay {
+			position: absolute;
+			background-color: rgba(181, 181, 181, 0.9);
+			top: 0;
+			left: 0;
+			z-index: 100000;
+			text-align: center;
+			vertical-align: top;
+			padding-top: 100px;
+		}
+
+		.exporting-overlay:after {
+			content: "";
+			display: inline-block;
+			vertical-align: middle;
+			height: 100%;
+		}
+
+		.exporting-text {
+			font-size: 46px;
+			font-weight: bold;
+			vertical-align: top;
+		}
+	</style>
+	$(cssBlock) $(scriptBlock)
+
+	<!-- External files for exporting -->
+	<script src="https://www.igniteui.com/js/external/FileSaver.js"></script>
+	<script src="https://www.igniteui.com/js/external/Blob.js"></script>
+	<!--Sample JSON Data-->
+	<script src="employee.js"></script>
+</head>
+
+<body>
+	<div class="content">
 		<h2>$(description)</h2>
-        <div class="group-fields">
-            Export with features: <br />
-            <div class="item">
-                <div id="sorting" class="optionContainer"></div>
-                <label class="item-label" for="sorting">Sorting</label>
-            </div>
-            <div class="item">
-                <div id="summaries" class="optionContainer"></div>
-                <label class="item-label" for="summaries">Summaries</label>
-            </div>
-            <div class="item">
-                <div id="colfixing" class="optionContainer"></div>
-                <label class="item-label" for="colfixing">Column Fixing</label>
-            </div>
-            <div class="item">
-                <div id="styling" class="optionContainer"></div>
-                <label class="item-label" for="styling">Grid Styling</label>
-            </div>
-        </div>
-              
-        <div class="optionContainer">
-            Columns to skip <br />
-            <div id="colstoskip"></div>
-        </div><br/>
-        <input type="button" id="exportButton" /><br />
-        <table id="grid1"></table>
-        <script>
+		<div class="group-fields">
+			Export with features:
+			<br />
+			<div class="item">
+				<div id="sorting" class="optionContainer"></div>
+				<label class="item-label" for="sorting">Sorting</label>
+			</div>
+			<div class="item">
+				<div id="summaries" class="optionContainer"></div>
+				<label class="item-label" for="summaries">Summaries</label>
+			</div>
+			<div class="item">
+				<div id="colfixing" class="optionContainer"></div>
+				<label class="item-label" for="colfixing">Column Fixing</label>
+			</div>
+			<div class="item">
+				<div id="styling" class="optionContainer"></div>
+				<label class="item-label" for="styling">Grid Styling</label>
+			</div>
+		</div>
 
-        $(function () {
-            var keys = ["EmployeeID", "FirstName", "LastName", "RegistererDate", "Country", "Age", "IsActive", "Company"],
-                columnsToSkip = [];
+		<div class="optionContainer">
+			Columns to skip
+			<br />
+			<div id="colstoskip"></div>
+		</div>
+		<br/>
+		<input type="button" id="exportButton" />
+		<br />
+		<table id="grid1"></table>
+	</div>
+	<script>
 
-            $("div.optionContainer:lt(4)").igCheckboxEditor();
-            $("#colstoskip").igCombo({
-                width: "150px",
-                mode: "dropdown",
-                dataSource: keys,
-                multiSelection: {
-                    enabled: true,
-                    showCheckboxes: true
-                }
-            });
-            $("fieldset").show();
-            $("#grid1").igGrid({
-                autoGenerateColumns: false,
-                width: "100%",
-                primaryKey: "EmployeeID",
-                autofitLastColumn: true,
-                columns: [
-                    { headerText: "Employee ID", key: "EmployeeID", dataType: "string", hidden: true },
-                    { headerText: "Last Name", key: "LastName", width: "15%", dataType: "string" },
-                    { headerText: "Country", key: "Country", width: "15%", dataType: "string" },
-                    { headerText: "Age", key: "Age", width: "15%", dataType: "number" },
-                    { headerText: "Is Active", key: "IsActive", width: "15%", dataType: "bool", format: "checkbox" },
-                    { headerText: "Company", key: "Company", width: "20%", dataType: "string", unbound: true, formula: function () { return "http://infragistics.com/"; } },
-                    { headerText: "Register Date", key: "RegistererDate", width: "20%", dataType: "date" }
-                ],
-                dataSource: employees,
-                primaryKey: "EmployeeID",
-                features: $(gridfeatures)
-            });
+		$(function () {
+			var keys = ["EmployeeID", "FirstName", "LastName", "RegistererDate", "Country", "Age", "IsActive", "Company"],
+				columnsToSkip = [];
 
-            $("#exportButton").igButton({ labelText: "Export" });
-            $("#exportButton").on("click", function () {
-                var exportingOverlay = $('<div>');
-                if ($("#colstoskip").igCombo("selectedItems") != null) {
-                    $.each($("#colstoskip").igCombo("selectedItems"), function (index, item) {
-                        columnsToSkip.push(item.data.value);
-                    });
-                }
+			$("div.optionContainer:lt(4)").igCheckboxEditor();
+			$("#colstoskip").igCombo({
+				width: "150px",
+				mode: "dropdown",
+				dataSource: keys,
+				multiSelection: {
+					enabled: true,
+					showCheckboxes: true
+				}
+			});
+			$("fieldset").show();
+			$("#grid1").igGrid({
+				autoGenerateColumns: false,
+				width: "100%",
+				primaryKey: "EmployeeID",
+				autofitLastColumn: true,
+				columns: [
+					{ headerText: "Employee ID", key: "EmployeeID", dataType: "string", hidden: true },
+					{ headerText: "Last Name", key: "LastName", width: "15%", dataType: "string" },
+					{ headerText: "Country", key: "Country", width: "15%", dataType: "string" },
+					{ headerText: "Age", key: "Age", width: "15%", dataType: "number" },
+					{ headerText: "Is Active", key: "IsActive", width: "15%", dataType: "bool", format: "checkbox" },
+					{ headerText: "Company", key: "Company", width: "20%", dataType: "string", unbound: true, formula: function () { return "http://infragistics.com/"; } },
+					{ headerText: "Register Date", key: "RegistererDate", width: "20%", dataType: "date" }
+				],
+				dataSource: employees,
+				primaryKey: "EmployeeID",
+				features: $(gridfeatures)
+			});
 
-                $.ig.GridExcelExporter.exportGrid($("#grid1"), {
-                    fileName: "igGrid",
-                    gridStyling: $("#styling").igCheckboxEditor("value") ? "applied" : "none",
-                    columnsToSkip: columnsToSkip,
-                    gridFeatureOptions: {
-                        filtering: $("#filtering").igCombo("value"),
-                        paging: $("#paging").igCombo("value"),
-                        hiding: $("#hiding").igCombo("value"),
-                        columnFixing: $("#colfixing").igCheckboxEditor("value") ? "applied" : "none",
-                        sorting: $("#sorting").igCheckboxEditor("value") ? "applied" : "none",
-                        summaries: $("#summaries").igCheckboxEditor("value") ? "applied" : "none"
-                    },
-                },
-                {
-                    exportStarting: function (e, args) {
-                        showOverlay(args.grid, exportingOverlay);
-                    },
-                    success: function () {
-                        hideOverlay(exportingOverlay);
-                    },
-                    cellExported: function (e, args) {
-                        if (args.xlRow.index() == 0) {
-                            return;
-                        }
-                        if (args.columnKey == 'Company') {
-                            var xlRow = args.xlRow;
-                            xlRow.cells(args.columnIndex).applyFormula('=HYPERLINK("' + args.cellValue + '")');
-                        }
-                        if (args.columnKey == "Age" && args.cellValue > 43) {
-                            args.xlRow.getCellFormat(args.columnIndex).font().bold(1);
-                            args.xlRow.getCellFormat(args.columnIndex).fill($.ig.excel.CellFill.createLinearGradientFill(45, '#FF0000', '#00FFFF'));
-                        }
-                    },
-                    exportEnding: function (e, args) {
-                        var columns = args.worksheet.columns();
-                        columns.item(columns.count() - 1).cellFormat().formatString("dd/MMM/YYYY");
-                    },
-                });
-            });
-        });
+			$("#exportButton").igButton({ labelText: "Export" });
+			$("#exportButton").on("click", function () {
+				var exportingOverlay = $('<div>');
+				if ($("#colstoskip").igCombo("selectedItems") != null) {
+					$.each($("#colstoskip").igCombo("selectedItems"), function (index, item) {
+						columnsToSkip.push(item.data.value);
+					});
+				}
 
-        function showOverlay(grid, exportingOverlay) {
-            var $gridContainer = $('#' + grid.attr('id') + '_container');
+				$.ig.GridExcelExporter.exportGrid($("#grid1"), {
+					fileName: "igGrid",
+					gridStyling: $("#styling").igCheckboxEditor("value") ? "applied" : "none",
+					columnsToSkip: columnsToSkip,
+					gridFeatureOptions: {
+						filtering: $("#filtering").igCombo("value"),
+						paging: $("#paging").igCombo("value"),
+						hiding: $("#hiding").igCombo("value"),
+						columnFixing: $("#colfixing").igCheckboxEditor("value") ? "applied" : "none",
+						sorting: $("#sorting").igCheckboxEditor("value") ? "applied" : "none",
+						summaries: $("#summaries").igCheckboxEditor("value") ? "applied" : "none"
+					},
+				},
+					{
+						exportStarting: function (e, args) {
+							showOverlay(args.grid, exportingOverlay);
+						},
+						success: function () {
+							hideOverlay(exportingOverlay);
+						},
+						cellExported: function (e, args) {
+							if (args.xlRow.index() == 0) {
+								return;
+							}
+							if (args.columnKey == 'Company') {
+								var xlRow = args.xlRow;
+								xlRow.cells(args.columnIndex).applyFormula('=HYPERLINK("' + args.cellValue + '")');
+							}
+							if (args.columnKey == "Age" && args.cellValue > 43) {
+								args.xlRow.getCellFormat(args.columnIndex).font().bold(1);
+								args.xlRow.getCellFormat(args.columnIndex).fill($.ig.excel.CellFill.createLinearGradientFill(45, '#FF0000', '#00FFFF'));
+							}
+						},
+						exportEnding: function (e, args) {
+							var columns = args.worksheet.columns();
+							columns.item(columns.count() - 1).cellFormat().formatString("dd/MMM/YYYY");
+						},
+					});
+			});
+		});
 
-            exportingOverlay.css({
-                "width": $gridContainer.outerWidth(),
-                "height": $gridContainer.outerHeight()
-            }).html('<span class="exporting-text">Exporting...</span>');
-            exportingOverlay.addClass("exporting-overlay");
+		function showOverlay(grid, exportingOverlay) {
+			var $gridContainer = $('#' + grid.attr('id') + '_container');
 
-            $gridContainer.append(exportingOverlay);
-        }
+			exportingOverlay.css({
+				"width": $gridContainer.outerWidth(),
+				"height": $gridContainer.outerHeight()
+			}).html('<span class="exporting-text">Exporting...</span>');
+			exportingOverlay.addClass("exporting-overlay");
 
-        function hideOverlay(exportingOverlay) {
-            exportingOverlay.remove();
-        }
-        </script>
-    </body>
+			$gridContainer.append(exportingOverlay);
+		}
+
+		function hideOverlay(exportingOverlay) {
+			exportingOverlay.remove();
+		}
+	</script>
+</body>
+
 </html>

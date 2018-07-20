@@ -1,111 +1,114 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>$(description)</title>
+	<title>$(description)</title>
 
 	$(cssBlock)
-    <style type="text/css">
-        h2
-        {
-            width: 100%;
-            text-align: center;
-        }
-        
-        .chart
-        {
-            position: relative;
-            float: left;
-            margin-right: 10px;
-        }
-    </style>
+	<style type="text/css">
+		h2 {
+			width: 100%;
+			text-align: center;
+		}
+
+		.chart {
+			position: relative;
+			float: left;
+			margin-right: 10px;
+		}
+	</style>
 	$(scriptBlock)
-<script type="text/javascript" src="temperature.js"></script>
- <script type="text/javascript">
+	<script type="text/javascript" src="temperature.js"></script>
+	<script type="text/javascript">
 		$(function () {
 			function createChart(selector, seriesType, data, hasLegend) {
-                $(selector).igDataChart({
-                    width: "400px",
-                    height: "400px",
-                    dataSource: data,
-                    legend: hasLegend ? {  element: seriesType + "Legend"  } : null,
-                    title: "New York City vs. Philadelphia",
-                    subtitle: "A comparison of daily temperatures",
-                    axes: [{
-                        name: "angleAxis",
-                        type: "categoryAngle",
-                        label: "Time",
-                        startAngleOffset: -90,
-                        interval: 1
-                    }, {
-                        name: "radiusAxis",
-                        type: "numericRadius",
-                        innerRadiusExtentScale: .1,
-                        maximumValue: 95,
-                        minimumValue: 75,
-                        interval: 5,
-                        radiusExtentScale: .6
-                    }],
-                    series: [{
-                        name: "series1",
-                        title: 'Philadelphia',
-                        type: seriesType,
-                        angleAxis: "angleAxis",
-                        valueAxis: "radiusAxis",
-                        valueMemberPath: "PhiladelphiaTemp",
-                        markerType: "circle"
-                    }, {
-                        name: "series2",
-                        title: 'New York City',
-                        type: seriesType,
-                        angleAxis: "angleAxis",
-                        valueAxis: "radiusAxis",
-                        valueMemberPath: "NewYorkCityTemp",
-                        markerType: "circle"
-                    }],
-                    horizontalZoomable: true,
-                    verticalZoomable: true,
-                    windowResponse: "immediate"
-                });
-            }
+				$(selector).igDataChart({
+					width: "400px",
+					height: "400px",
+					dataSource: data,
+					legend: hasLegend ? { element: seriesType + "Legend" } : null,
+					title: "New York City vs. Philadelphia",
+					subtitle: "A comparison of daily temperatures",
+					axes: [{
+						name: "angleAxis",
+						type: "categoryAngle",
+						label: "Time",
+						startAngleOffset: -90,
+						interval: 1
+					}, {
+						name: "radiusAxis",
+						type: "numericRadius",
+						innerRadiusExtentScale: .1,
+						maximumValue: 95,
+						minimumValue: 75,
+						interval: 5,
+						radiusExtentScale: .6
+					}],
+					series: [{
+						name: "series1",
+						title: 'Philadelphia',
+						type: seriesType,
+						angleAxis: "angleAxis",
+						valueAxis: "radiusAxis",
+						valueMemberPath: "PhiladelphiaTemp",
+						markerType: "circle"
+					}, {
+						name: "series2",
+						title: 'New York City',
+						type: seriesType,
+						angleAxis: "angleAxis",
+						valueAxis: "radiusAxis",
+						valueMemberPath: "NewYorkCityTemp",
+						markerType: "circle"
+					}],
+					horizontalZoomable: true,
+					verticalZoomable: true,
+					windowResponse: "immediate"
+				});
+			}
 
-            createChart("#chartRadialLine", "radialLine", data, true);
-            createChart("#chartRadialColumn", "radialColumn", data, true);
-            createChart("#chartRadialPie", "radialPie", data, true);
-            createChart("#chartRadialArea", "radialArea", data, true);
+			createChart("#chartRadialLine", "radialLine", data, true);
+			createChart("#chartRadialColumn", "radialColumn", data, true);
+			createChart("#chartRadialPie", "radialPie", data, true);
+			createChart("#chartRadialArea", "radialArea", data, true);
 		});
-    </script>
+	</script>
 </head>
+
 <body>
+	<div class="content">
 	<h2>$(description)</h2>
-    <div class="chartContainer">
-			<div class="chart">
-				<h2>Radial Line</h2>
-				<div id="chartRadialLine"></div>
-				<div id="radialLineLegend"></div>
-			</div>
-			<div class="chart">
-				<h2>Radial Column</h2>
-				<div id="chartRadialColumn"></div>
-				<div id="radialColumnLegend"></div>
-			</div>
-			<div class="chart">
-				<h2>Radial Pie</h2>
-				<div id="chartRadialPie"></div>
-				<div id="radialPieLegend"></div>
-			</div>
-			<div class="chart">
-				<h2>Radial Area</h2>
-				<div id="chartRadialArea"></div>
-				<div id="radialAreaLegend"></div>
-			</div>
-		   
+	<div class="chartContainer">
+		<div class="chart">
+			<h2>Radial Line</h2>
+			<div id="chartRadialLine"></div>
+			<div id="radialLineLegend"></div>
 		</div>
-		<div style="clear:both"></div>
-		<br />
-    <table>
-       
-        <tr><td>Weather data from:<br />
-        <a href="http://www.noaa.gov/" target="_blank">NOAA</a></td></tr>
-    </table>
+		<div class="chart">
+			<h2>Radial Column</h2>
+			<div id="chartRadialColumn"></div>
+			<div id="radialColumnLegend"></div>
+		</div>
+		<div class="chart">
+			<h2>Radial Pie</h2>
+			<div id="chartRadialPie"></div>
+			<div id="radialPieLegend"></div>
+		</div>
+		<div class="chart">
+			<h2>Radial Area</h2>
+			<div id="chartRadialArea"></div>
+			<div id="radialAreaLegend"></div>
+		</div>
+
+	</div>
+	<div style="clear:both"></div>
+	<div class="data-source-footer">
+			<span>Weather data from: </span>
+			<span>
+				<a href="http://www.noaa.gov/" target="_blank">NOAA</a>
+			</span>
+		</div>
+	</div>
 </body>
+
 </html>
