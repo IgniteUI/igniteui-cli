@@ -5,9 +5,9 @@
       <span *ngFor="let route of topNavLinks" igxDrawerItem igxRipple routerLinkActive="igx-nav-drawer__item--active" routerLink="{{route.path}}">{{route.name}}</span>
     </ng-template>
   </igx-nav-drawer>
-  <div igxFlex class="main">
+  <div  class="main" igxFlex igxLayout igxLayoutDir="columns">
     <igx-navbar title="$(name)" actionButtonIcon="menu" (onAction)="nav.toggle()"></igx-navbar>
-    <div class="content">
+    <div class="content" igxFlex>
       <router-outlet></router-outlet>
      </div>
   </div>
