@@ -152,6 +152,7 @@ describe("Unit - Add command", () => {
 		spyOn(addCmd, "addTemplate").and.callThrough();
 		spyOn(PackageManager, "flushQueue").and.returnValue(Promise.resolve());
 		spyOn(PackageManager, "ensureIgniteUISource");
+		spyOn(Util, "directoryExists").and.returnValue(true);
 		await addCmd.execute({
 			name: "test-file-name", template: "CustomTemplate",
 			// tslint:disable-next-line:object-literal-sort-keys
@@ -204,6 +205,7 @@ describe("Unit - Add command", () => {
 		spyOn(process, "cwd").and.returnValue(directoryPath);
 		spyOn(mockTemplate, "generateFiles").and.returnValue(Promise.resolve(true));
 		spyOn(mockTemplate, "registerInProject").and.callThrough();
+		spyOn(Util, "directoryExists").and.returnValue(true);
 		const sourceFilesSpy = spyOn<any>(mockTemplate, "ensureSourceFiles");
 		const mockLibrary = jasmine.createSpyObj("frameworkLibrary", ["hasTemplate", "getTemplateById"]);
 		mockLibrary.hasTemplate.and.returnValue(true);
