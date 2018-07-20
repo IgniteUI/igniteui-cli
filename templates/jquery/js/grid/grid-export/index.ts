@@ -24,7 +24,6 @@ class GridExportTemplate extends jQueryTemplate {
 
 		this.gridHelper = new GridHelper();
 		this.hasExtraConfiguration = true;
-		this.gridHelper.space = "    ";
 		const featureConfiguration: ControlExtraConfiguration = {
 			choices: ["Summaries", "Hiding"],
 			default: "",
