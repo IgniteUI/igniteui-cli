@@ -223,123 +223,125 @@
     </script>
 </head>
 <body>
-	<h2>$(description)</h2>
-	<p>To calculate the approximate cost of your monthly installment you can use our credit calculator.</p>
-    <div id="container">
-        <div id="igCheckboxEditorsContainer">
-            <form id="form" action="javascript:console.log('Submit');">
-                <table>
-                    <tr>
-                        <td>
-                            <div class="divHeight"><div id="firstName"></div></div>
-                        </td>
-                        <td>
-                            First name
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="divHeight"><div id="lastName"></div></div>
-                        </td>
-                        <td>
-                            Last name
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="divHeight"><div id="creditAmount"></div></div>
-                        </td>
-                        <td>
-                            Credit amount
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="divHeight"><div id="currency"></div></div>
-                        </td>
-                        <td>
-                            Currency
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="divHeight"><div id="interestRate"></div></div>
-                        </td>
-                        <td>
-                            Interest rate
-                        </td>
-                    </tr>
-                     <tr>
-                        <td>
-                            <div class="divHeight"><div id="startDateOfCredit"></div></div>
-                        </td>
-                        <td>
-                            Start date of the credit
-                        </td>
-                    </tr> 
-                    <tr>
-                        <td>
-                            <div class="divHeight"><div id="term"></div> </div>
-                        </td>
-                        <td>
-                            Term
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="divHeight"><div id="salaryInBank"></div><label> Is your salary transferred in the bank</label></div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="divHeight"><div id="pin"></div> </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="divHeight"><input id="btnReset" type="button" value="Reset" /> <input id="btnEnable" type="button" value="Enable" disabled/> <input type="submit" id="submitBtn" value="Submit" /></div>
-                        </td>
-                    </tr>
-                </table>
-            </form>
-        </div>
-
-        <div id="valuesContainer">
-            <h3>Credit Details:</h3>
-            <br>
-            <table class="creditTable">
-                <tr>
-                    <td>
-                        Your credit:          
-                    </td>
-                    <td>
-            <div class="divHeight">
-                            <div id="resultCredit"></div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        You will have to return                      
-                    </td>
-                    <td>
-                        <div class="divHeight">
-                            <div id="returnValue"></div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Your monthly payment will be 
-                    </td>
-                    <td>
-                        <div class="divHeight">
-                            <div id="monthlyPaymentValue"></div>
-            </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-
+	<div class="content">
+		<h2>$(description)</h2>
+		<p>To calculate the approximate cost of your monthly installment you can use our credit calculator.</p>
+		<div id="container">
+			<div id="igCheckboxEditorsContainer">
+				<form id="form" action="javascript:console.log('Submit');">
+					<table>
+						<tr>
+							<td>
+								<div class="divHeight"><div id="firstName"></div></div>
+							</td>
+							<td>
+								First name
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="divHeight"><div id="lastName"></div></div>
+							</td>
+							<td>
+								Last name
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="divHeight"><div id="creditAmount"></div></div>
+							</td>
+							<td>
+								Credit amount
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="divHeight"><div id="currency"></div></div>
+							</td>
+							<td>
+								Currency
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="divHeight"><div id="interestRate"></div></div>
+							</td>
+							<td>
+								Interest rate
+							</td>
+						</tr>
+						 <tr>
+							<td>
+								<div class="divHeight"><div id="startDateOfCredit"></div></div>
+							</td>
+							<td>
+								Start date of the credit
+							</td>
+						</tr> 
+						<tr>
+							<td>
+								<div class="divHeight"><div id="term"></div> </div>
+							</td>
+							<td>
+								Term
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="divHeight"><div id="salaryInBank"></div><label> Is your salary transferred in the bank</label></div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="divHeight"><div id="pin"></div> </div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="divHeight"><input id="btnReset" type="button" value="Reset" /> <input id="btnEnable" type="button" value="Enable" disabled/> <input type="submit" id="submitBtn" value="Submit" /></div>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+	
+			<div id="valuesContainer">
+				<h3>Credit Details:</h3>
+				<br>
+				<table class="creditTable">
+					<tr>
+						<td>
+							Your credit:          
+						</td>
+						<td>
+				<div class="divHeight">
+								<div id="resultCredit"></div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							You will have to return                      
+						</td>
+						<td>
+							<div class="divHeight">
+								<div id="returnValue"></div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Your monthly payment will be 
+						</td>
+						<td>
+							<div class="divHeight">
+								<div id="monthlyPaymentValue"></div>
+				</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
