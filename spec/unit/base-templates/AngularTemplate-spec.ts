@@ -33,7 +33,7 @@ describe("Unit - AngularTemplate Base", () => {
 		spyOn(Util, "validateTemplate").and.returnValue(true);
 
 		const templ = new TestTemplate();
-		templ.generateFiles("/target/path", "my component");
+		templ.generateFiles("/target/path", "my component", {});
 		expect(Util.validateTemplate).toHaveBeenCalledWith(
 			path.join("root/path" , "files"),
 			"/target/path",
@@ -116,7 +116,8 @@ describe("Unit - AngularTemplate Base", () => {
 
 			expect(helpers.TypeScriptFileUpdate).toHaveBeenCalledWith(path.join("target/path", "src/app/app.module.ts"));
 			expect(helpers.tsUpdateMock.addDeclaration).toHaveBeenCalledWith(
-				path.join("target/path", `src/app/components/view-name/view-name.component.ts`)
+				path.join("target/path", `src/app/components/view-name/view-name.component.ts`),
+				false // if added to a custom module => true
 			);
 			expect(helpers.tsUpdateMock.finalize).toHaveBeenCalled();
 

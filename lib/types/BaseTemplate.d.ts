@@ -16,7 +16,7 @@ declare interface BaseTemplate {
 	hasExtraConfiguration: boolean;
 
 	/** Generates template files. */
-	generateFiles(outputPath: string, name: string,  ...options: any[]): Promise<boolean>;
+	generateFiles(outputPath: string, name: string, ...options: any[]): Promise<boolean>;
 	/** this method is used to run extra configuration in context of prompt session */
 	getExtraConfiguration(): ControlExtraConfiguration[];
 	/** This method is used when the user selects extra configuration and it should be passed to the template */
