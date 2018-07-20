@@ -74,41 +74,55 @@ export class TypeScriptFileUpdate {
 		// https://github.com/Microsoft/TypeScript/issues/14419#issuecomment-307256171
 		const transformer: ts.TransformerFactory<ts.Node> = <T extends ts.Node>(context: ts.TransformationContext) =>
 			(rootNode: T) => {
-				function visitor(node: ts.Node): ts.Node {
-					if (node.kind === ts.SyntaxKind.VariableDeclaration &&
-						(node as ts.VariableDeclaration).name.getText() === routesVariable &&
-						(node as ts.VariableDeclaration).type.getText() === "Routes") {
-						// found routes variable
-						node = ts.visitEachChild(node, visitRoutesVariable, context);
-					} else {
-						node = ts.visitEachChild(node, visitor, context);
-					}
-					return node;
+			function visitor(node: ts.Node): ts.Node {
+				if (node.kind === ts.SyntaxKind.VariableDeclaration &&
+					(node as ts.VariableDeclaration).name.getText() === routesVariable &&
+					(node as ts.VariableDeclaration).type.getText() === "Routes") {
+					// found routes variable
+					node = ts.visitEachChild(node, visitRoutesVariable, context);
+				} else {
+					node = ts.visitEachChild(node, visitor, context);
 				}
-				const visitRoutesVariable = (node: ts.Node): ts.Node => {
-					if (node.kind === ts.SyntaxKind.ArrayLiteralExpression) {
-						const array = (node as ts.ArrayLiteralExpression);
+				return node;
+			}
+			const visitRoutesVariable = (node: ts.Node): ts.Node => {
+				if (node.kind === ts.SyntaxKind.ArrayLiteralExpression) {
+					const array = (node as ts.ArrayLiteralExpression);
 
-						const routePath = ts.createPropertyAssignment("path", ts.createLiteral(linkPath));
-						const routeComponent = ts.createPropertyAssignment("component", ts.createIdentifier(className));
-						const routeDataInner = ts.createPropertyAssignment("text", ts.createLiteral(linkText));
-						const routeData = ts.createPropertyAssignment("data", ts.createObjectLiteral([routeDataInner]));
-						const newObject = ts.createObjectLiteral([routePath, routeComponent, routeData]);
-						this.createdStringLiterals.push(linkPath, linkText);
+					const routePath = ts.createPropertyAssignment("path", ts.createLiteral(linkPath));
+					const routeComponent = ts.createPropertyAssignment("component", ts.createIdentifier(className));
+					const routeDataInner =  ts.createPropertyAssignment("text", ts.createLiteral(linkText));
+					const routeData = ts.createPropertyAssignment("data", ts.createObjectLiteral([routeDataInner]));
+					const newObject = ts.createObjectLiteral([routePath, routeComponent, routeData]);
+					this.createdStringLiterals.push(linkPath, linkText);
 
-						const elements = ts.createNodeArray([
-							...ts.visitNodes(array.elements, visitor),
-							newObject
-						]);
+					const notFoundWildCard = "**";
+					const nodes = ts.visitNodes(array.elements, visitor);
+					const errorRouteNode = nodes.filter(element => element.getText().includes(notFoundWildCard))[0];
+					let resultNodes = null;
 
-						return ts.updateArrayLiteral(array, elements);
+					if (errorRouteNode) {
+						resultNodes = nodes
+							.slice(0, nodes.indexOf(errorRouteNode))
+							.concat(newObject)
+							.concat(errorRouteNode);
 					} else {
-						return ts.visitEachChild(node, visitRoutesVariable, context);
+						resultNodes = nodes
+							.concat(newObject);
 					}
-				};
-				context.enableSubstitution(ts.SyntaxKind.ClassDeclaration);
-				return ts.visitNode(rootNode, visitor);
+
+					const elements = ts.createNodeArray([
+						...resultNodes
+					]);
+
+					return ts.updateArrayLiteral(array, elements);
+				} else {
+					return ts.visitEachChild(node, visitRoutesVariable, context);
+				}
 			};
+			context.enableSubstitution(ts.SyntaxKind.ClassDeclaration);
+			return ts.visitNode(rootNode, visitor);
+		};
 
 		this.targetSource = ts.transform(this.targetSource, [transformer], {
 			pretty: true // oh well..
@@ -316,8 +330,12 @@ export class TypeScriptFileUpdate {
 						properties.push(key);
 					}
 				}
-				if (node.kind === ts.SyntaxKind.ObjectLiteralExpression) {
+				if (node.kind === ts.SyntaxKind.ObjectLiteralExpression &&
+					node.parent &&
+					node.parent.kind === ts.SyntaxKind.CallExpression) {
+
 					let obj = (node as ts.ObjectLiteralExpression);
+
 					//TODO: test node.parent for ts.CallExpression NgModule
 					const missingProperties = properties.filter(x => !obj.properties.find(o => o.name.getText() === x));
 
