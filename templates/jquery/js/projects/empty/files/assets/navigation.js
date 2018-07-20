@@ -1,8 +1,8 @@
 /// <reference path="../ignite-cli-views.js" />
 
 $(function () {
-	var menu = "<ul id='list' class='nav-menu'></ul>"
-	$('body').prepend(menu);
+	var $menu = $("<ul id='list' class='nav-menu'></ul>");
+	$menu.prependTo("body");
 	var result = "";
 	result += "<li class=\"nav-menu-item-logo\"><h1>$(name)</h1></li>";
 
@@ -21,8 +21,8 @@ $(function () {
 		result += "<li class=\"" + navMenuClass +"\"><a href='/" + view.path + "'>" + view.name + "</a></li>"
 	}
 
-	$("#list").append(result);
-	var $active = $("#list").children(".active");
+	$menu.append(result);
+	var $active = $menu.children(".active");
 	if ($active.length) {
 		$active.get(0).scrollIntoView(false);
 	}
