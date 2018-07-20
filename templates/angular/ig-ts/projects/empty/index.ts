@@ -5,7 +5,7 @@ import { ProjectConfig } from "./../../../../../lib/ProjectConfig";
 class EmptyAngularProject implements ProjectTemplate {
 	public id: string = "angular";
 	public name = "empty";
-	public description = "Ignite UI CLI Default empty project structure for Angular";
+	public description = "Ignite UI CLI project for Angular";
 	public dependencies: string[] = [];
 	public framework: string = "angular";
 	public projectType: string = "ig-ts";
