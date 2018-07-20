@@ -11,7 +11,7 @@ declare interface Template extends BaseTemplate {
 	/** Extra packages to install when adding to project */
 	packages: string[];
 	/** Generates template files. */
-	generateFiles(projectPath: string, name: string, options: {}): Promise<boolean>;
+	generateFiles(projectPath: string, name: string, options?: {[key: string]: any}): Promise<boolean>;
 	/** Called when the template is added to a project */
-	registerInProject(projectPath: string, name: string, modulePath?: string);
+	registerInProject(projectPath: string, name: string, options?: {[key: string]: any});
 }

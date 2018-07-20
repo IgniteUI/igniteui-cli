@@ -13,7 +13,11 @@ export class IgniteUIForAngularTemplate extends AngularTemplate {
 		super(rootPath);
 	}
 
-	public registerInProject(projectPath: string, name: string, modulePath: string = "app.module.ts") {
+	public registerInProject(projectPath: string, name: string, options?: {[key: string]: any}) {
+		let modulePath = "app.module.ts";
+		if (options && options.modulePath) {
+			modulePath = options.modulePath;
+		}
 		const stringDeps = this.dependencies.filter(x => typeof x === "string");
 		if (stringDeps.length) {
 			/** @deprecate */

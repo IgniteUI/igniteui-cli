@@ -112,9 +112,9 @@ command = {
 			return false;
 		}
 
-		if (await template.generateFiles(process.cwd(), name, {modulePath})) {
+		if (await template.generateFiles(process.cwd(), name, { modulePath })) {
 			//successful
-			template.registerInProject(process.cwd(), name, modulePath);
+			template.registerInProject(process.cwd(), name, { modulePath });
 			command.templateManager.updateProjectConfiguration(template);
 			template.packages.forEach(x => PackageManager.queuePackage(x));
 			Util.log(`${Util.greenCheck()} View '${name}' added.`);

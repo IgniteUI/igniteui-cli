@@ -166,7 +166,7 @@ describe("Unit - Add command", () => {
 			.toHaveBeenCalledWith(directoryPath, "test-file-name", { modulePath: "myCustomModule/my-custom-module.module.ts" });
 		expect(mockTemplate.registerInProject).toHaveBeenCalledTimes(1);
 		expect(mockTemplate.registerInProject).toHaveBeenCalledWith(directoryPath, "test-file-name",
-		"myCustomModule/my-custom-module.module.ts");
+		{ modulePath: "myCustomModule/my-custom-module.module.ts"});
 		expect(sourceFilesSpy).toHaveBeenCalledTimes(1);
 		expect(routeSpy).toHaveBeenCalledTimes(1);
 		expect(declarationSpy).toHaveBeenCalledTimes(1);
@@ -234,7 +234,7 @@ describe("Unit - Add command", () => {
 			.toHaveBeenCalledWith(directoryPath, "test-file-name", {modulePath: "myCustomModule/my-custom-module.module.ts"});
 		expect(mockTemplate.registerInProject).toHaveBeenCalledTimes(1);
 		expect(mockTemplate.registerInProject).toHaveBeenCalledWith(directoryPath, "test-file-name",
-		"myCustomModule/my-custom-module.module.ts");
+		{ modulePath: "myCustomModule/my-custom-module.module.ts"});
 		expect(sourceFilesSpy).toHaveBeenCalledTimes(1);
 		expect(routeSpy).toHaveBeenCalledTimes(1);
 		expect(declarationSpy).toHaveBeenCalledTimes(1);
