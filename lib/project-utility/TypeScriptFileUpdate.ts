@@ -95,9 +95,23 @@ export class TypeScriptFileUpdate {
 					const newObject = ts.createObjectLiteral([routePath, routeComponent, routeData]);
 					this.createdStringLiterals.push(linkPath, linkText);
 
+					const notFoundWildCard = "**";
+					const nodes = ts.visitNodes(array.elements, visitor);
+					const errorRouteNode = nodes.filter(element => element.getText().includes(notFoundWildCard))[0];
+					let resultNodes = null;
+
+					if (errorRouteNode) {
+						resultNodes = nodes
+							.slice(0, nodes.indexOf(errorRouteNode))
+							.concat(newObject)
+							.concat(errorRouteNode);
+					} else {
+						resultNodes = nodes
+							.concat(newObject);
+					}
+
 					const elements = ts.createNodeArray([
-						...ts.visitNodes(array.elements, visitor),
-						newObject
+						...resultNodes
 					]);
 
 					return ts.updateArrayLiteral(array, elements);
@@ -305,8 +319,12 @@ export class TypeScriptFileUpdate {
 					properties.push(key);
 				}
 			}
-			if (node.kind === ts.SyntaxKind.ObjectLiteralExpression) {
+			if (node.kind === ts.SyntaxKind.ObjectLiteralExpression &&
+				node.parent &&
+				node.parent.kind === ts.SyntaxKind.CallExpression) {
+
 				let obj = (node as ts.ObjectLiteralExpression);
+
 				//TODO: test node.parent for ts.CallExpression NgModule
 				const missingProperties = properties.filter(x => !obj.properties.find(o => o.name.getText() === x));
 

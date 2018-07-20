@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>$(description)</title>
-	
-	$(cssBlock)
-	
-	$(scriptBlock)
-<!--Sample JSON Data-->
-<script src="data.js"></script>
-<script type="text/javascript">
+
+	$(cssBlock) $(scriptBlock)
+	<!--Sample JSON Data-->
+	<script src="data.js"></script>
+	<script type="text/javascript">
 		$(function () {
 			$("#checkboxModeTreeGrid").igTreeGrid({
 				width: "100%",
@@ -30,8 +29,12 @@
 		});
 	</script>
 </head>
+
 <body>
-	<h2>$(description)</h2>
-	<table id="checkboxModeTreeGrid"></table>
+	<div class="content">
+		<h2>$(description)</h2>
+		<table id="checkboxModeTreeGrid"></table>
+	</div>
 </body>
+
 </html>
