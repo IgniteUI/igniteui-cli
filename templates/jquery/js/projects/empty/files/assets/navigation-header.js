@@ -10,11 +10,10 @@ $(function () {
 	path = path.slice(1);
 
 
-	result += "<li class='nav-menu-item" + (path ? "" : " active") + "'><a href='/'>Home</a></li>"
-	
+	result += "<li class='nav-menu-item" + (path ? "" : " active") + "'><a href='/'>Home</a></li>";
+
 	for (var i = 0; i < igniteCLIViews.length; i++) {
 		var navMenuClass = "nav-menu-item";
-		
 		var view = igniteCLIViews[i];
 		if(view.path === path) {
 			navMenuClass += " active"; 
@@ -23,4 +22,8 @@ $(function () {
 	}
 
 	$("#list").append(result);
+	var $active = $("#list").children(".active");
+	if ($active.length) {
+		$active.get(0).scrollIntoView(false);
+	}
 });
