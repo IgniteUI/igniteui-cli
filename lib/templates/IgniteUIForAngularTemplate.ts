@@ -13,7 +13,11 @@ export class IgniteUIForAngularTemplate extends AngularTemplate {
 		super(rootPath);
 	}
 
-	public registerInProject(projectPath: string, name: string) {
+	public registerInProject(projectPath: string, name: string, options?: {[key: string]: any}) {
+		let modulePath = "app.module.ts";
+		if (options && options.modulePath) {
+			modulePath = options.modulePath;
+		}
 		const stringDeps = this.dependencies.filter(x => typeof x === "string");
 		if (stringDeps.length) {
 			/** @deprecate */
@@ -45,10 +49,11 @@ export class IgniteUIForAngularTemplate extends AngularTemplate {
 
 		//3) add an import of the component class from its file location.
 		//4) populate the declarations portion of the @NgModule with the component class name.
-		const mainModulePath = path.join(projectPath, "src/app/app.module.ts");
+		const mainModulePath = path.join(projectPath, `src/app/${modulePath}`);
 		const mainModule = new TsUpdate(mainModulePath);
 		mainModule.addDeclaration(
-			path.join(projectPath, `src/app/${this.folderName(name)}/${this.fileName(name)}.component.ts`)
+			path.join(projectPath, `src/app/${this.folderName(name)}/${this.fileName(name)}.component.ts`),
+			modulePath !== "app.module.ts"
 		);
 
 		// import IgxModules and other dependencies
