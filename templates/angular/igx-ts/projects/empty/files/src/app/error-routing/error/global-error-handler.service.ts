@@ -15,7 +15,7 @@ export class GlobalErrorHandlerService implements ErrorHandler {
 
     if (!this.isInErrorState) {
       this.isInErrorState = true;
-      if (isDevMode) {
+      if (isDevMode()) {
         throw error;
       } else {
       this.zone.run(() => {
