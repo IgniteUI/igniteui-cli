@@ -11,20 +11,18 @@ class EmptyProject implements ProjectTemplate {
 	public framework: string = "jquery";
 	public projectType: string = "js";
 	public hasExtraConfiguration: boolean = false;
-	private _updateFile: string = "bs-config.js";
-	private _updateFileRegex: RegExp = /\{[\s\S]*\}(?=;|$)/;
+	public routesFile = "bs-routes.json";
 
 	public upgradeIgniteUIPackage(projectPath: string, packagePath: string): void {
-		const filePath = path.join(projectPath, this._updateFile);
-		let configFile = fs.readFileSync(filePath, "utf8");
-		const config = JSON.parse(this._updateFileRegex.exec(configFile)[0]);
+		const filePath = path.join(projectPath, this.routesFile);
+		const routes = fs.readFileSync(path.join(projectPath, this.routesFile), "utf8");
+		const config = JSON.parse(routes);
 
-		delete config.server.routes["/ignite-ui/js/infragistics.core.js"];
-		delete config.server.routes["/ignite-ui/js/infragistics.lob.js"];
-		config.server.routes["/ignite-ui"] = packagePath;
+		delete config.routes["/ignite-ui/js/infragistics.core.js"];
+		delete config.routes["/ignite-ui/js/infragistics.lob.js"];
+		config.routes["/ignite-ui"] = packagePath;
 
-		configFile = configFile.replace(this._updateFileRegex, JSON.stringify(config, null, 4));
-		fs.writeFileSync(filePath, configFile);
+		fs.writeFileSync(filePath, JSON.stringify(config, null, 4));
 	}
 
 	public generateFiles(outputPath: string, name: string, theme: string, ...options: any[]): Promise<boolean> {

@@ -7,6 +7,8 @@ declare interface Config {
 	packagesInstalled: boolean;
 	/** Project options */
 	project: {
+		/** default project serve port */
+		defaultPort: number;
 		framework: string;
 		/** Stands for js, ts, es6 */
 		projectType: string;

@@ -16,12 +16,12 @@ before_deploy:
 - if [[ "${TRAVIS_TAG}" == *"beta"* ]]; then export NPM_TAG="next"; else export NPM_TAG="latest"; fi
 
 deploy:
-  tag: ${NPM_TAG}
+  tag: "${NPM_TAG}"
   provider: npm
   skip_cleanup: true
   email: igniteui@infragistics.com
   api_key:
-    secure: dTAkvl/DjVSyPdfU6err2Uh09So+0XCjzgM9Lh1pt7uORRL4LB/Qlb5bfK45DvH9JqOKLEoCTIrij0mjmdEXGGOUYeT9oPnVX5ffTBJm4dZB01taSCZHGzaV5ic5/jBma0gy4V7ajPXQdjPnVluQLq2PuJ4kHFl6n/KGUpxQ/nOTOAUsMnk9bqbrEwSfve9yO16uo6icRPxCNxWqfkLXUzEwO0uCkzyUdLZg3zJ/2nlVLbMgXIlKwdG5jVWI/W5su1BjD6iBNfopQJHdP3KYPqjI0zNWtKB138uTHcDkJOzl/uDvjsXpsx4efqR9mO54xNrPwMbYOjgmHF9wpSqGpBOI7ob6myTIeDtZKXrwxS6U34jn6JvEIRBULILUPoo5O+sX+ZZKXz4zD5Z6HUqm2oBhE8RZLhC3QI7oN1IOws4UGUiETsFk1Izo5QM+eGV4KbPXn82D7C0haJJ08OEIgp7L89fZQehvDuoEj9xs0cuq78CY8AI9PSodVyJ8mB1/o+Ga9QHvtd/gH2oTZxtXuCxgV6jDPuZMWgZvMgZ6gV6yTgfe8y8EP3Y7HZOKwg50+RTmLaKk32IYOHnHkOMii1h66lpP9V7dnedElJPLXP/sYRey1h9YIKgZEetXCbCQuciVzw8IHb/3bZCbh6ZlYen5We6c560VXMHyctXGQTM=
+    secure: hrxBzn0NvabRiucr8tUIey4KukijZ8yzN+CI7jNXklVShZq9qQttQ+8LMuW02wP+DcKkV5YojdpSuJ7MUVBP1pe39K2C13Hpw6Zd4qzQPyoLc0ZbQr20mwrgx8Z5J7Nt34dX9dg7wH+hEmn4qcXQAxrOeh6zgHs4HYmcAD6N8nc1rQ6fFO/p+dx4QemsYMQgkI3X319xQhIte2v9Mj6ssTIUWh2BRqXTEURmom7Kra4euCPb1vLDtDstGkKg2YlZ0VXWBXm3CaazmGXtIvyx18dHzf6QOS4lDbDFJ+bhc3Oqgjw1lRElICBEgtiMcRdoWlEvagynCXKLX8fkfi4hAhdH02pz6Dclp/u4hMshzUci3KWx+JQDidYgUcrDfEDmEIf8VO7dUG8rWN4FN3wojcX74rypCv1QLZRPPRcuCeLodx56V5A0kMeV3C4l9MLT5lCi3O5vr45+R35BaXb8J1srUJtwaMWTBCXoHsIYSo7V0utXhegaQNP0CmOMVKRyA00bjVcWzo0Q+Nk759EusGMjWBjv1LtQzAKrIvPVoYDPFPI0PnKHLe4FUirc5hNdiQmgOE0GST0+092t1jXqOzh5eERSc9RA5pjxvElWgO02xcivz9JLjsFYybGvPqan3u0x5U9Tzd0/9uvYPGB7eNP/YmdGvOqORg9zCG59huI=
   on:
     tags: true
     repo: IgniteUI/igniteui-cli
