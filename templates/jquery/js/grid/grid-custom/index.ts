@@ -24,7 +24,6 @@ class GridCustomTemplate extends jQueryTemplate {
 		this.gridHelper = new GridHelper();
 		this.hasExtraConfiguration = true;
 		this.extraConfigurations = [];
-		this.gridHelper.space = "    ";
 		const featureConfiguration: ControlExtraConfiguration = {
 			choices: [
 				"Sorting", "Selection", "Updating", "Filtering",

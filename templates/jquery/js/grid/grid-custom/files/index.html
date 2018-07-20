@@ -1,35 +1,38 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>$(description)</title>
-	$(cssBlock)
 
-	$(scriptBlock)
+<head>
+	<title>$(description)</title>
+	$(cssBlock) $(scriptBlock)
 	<script src="data.js"></script>
-	
- <script type="text/javascript">
-       $(function () {
-		$("#grid").igGrid({
-				autoCommit : true,
-                primaryKey: "EmployeeID",
-                width: '900px',
-                columns: [
-                    { headerText: "Employee ID", key: "EmployeeID", dataType: "number", width: "15%" },
-                    { headerText: "First Name", key: "FirstName", dataType: "string", width: "25%" },
-                    { headerText: "Last Name", key: "LastName", dataType: "string", width: "25%"},
-                    { headerText: "Title", key: "Title", dataType: "string", width: "35%" }
-                ],
-                autofitLastColumn: false,
-                autoGenerateColumns: false,
-                dataSource: northwind,
-                responseDataKey: "results",
-                features: $(gridfeatures)
-            });
-       });
-    </script>
+
+	<script type="text/javascript">
+		$(function () {
+			$("#grid").igGrid({
+				autoCommit: true,
+				primaryKey: "EmployeeID",
+				width: '900px',
+				columns: [
+					{ headerText: "Employee ID", key: "EmployeeID", dataType: "number", width: "15%" },
+					{ headerText: "First Name", key: "FirstName", dataType: "string", width: "25%" },
+					{ headerText: "Last Name", key: "LastName", dataType: "string", width: "25%" },
+					{ headerText: "Title", key: "Title", dataType: "string", width: "35%" }
+				],
+				autofitLastColumn: false,
+				autoGenerateColumns: false,
+				dataSource: northwind,
+				responseDataKey: "results",
+				features: $(gridfeatures)
+			});
+		});
+	</script>
 </head>
+
 <body>
-	<h2>$(description)</h2>
-    <table id="grid"></table>
+	<div class="content">
+		<h2>$(description)</h2>
+		<table id="grid"></table>
+	</div>
 </body>
+
 </html>
