@@ -98,10 +98,17 @@ export class TypeScriptFileUpdate {
 					const notFoundWildCard = "**";
 					const nodes = ts.visitNodes(array.elements, visitor);
 					const errorRouteNode = nodes.filter(element => element.getText().includes(notFoundWildCard))[0];
-					const resultNodes = nodes
-						.slice(0, nodes.indexOf(errorRouteNode))
-						.concat(newObject)
-						.concat(errorRouteNode);
+					let resultNodes = null;
+
+					if (errorRouteNode) {
+						resultNodes = nodes
+							.slice(0, nodes.indexOf(errorRouteNode))
+							.concat(newObject)
+							.concat(errorRouteNode);
+					} else {
+						resultNodes = nodes
+							.concat(newObject);
+					}
 
 					const elements = ts.createNodeArray([
 						...resultNodes
@@ -314,7 +321,8 @@ export class TypeScriptFileUpdate {
 			}
 			if (node.kind === ts.SyntaxKind.ObjectLiteralExpression &&
 				node.parent &&
-				node.parent.kind === ts.SyntaxKind.FunctionExpression) {
+				node.parent.kind === ts.SyntaxKind.CallExpression) {
+
 				let obj = (node as ts.ObjectLiteralExpression);
 
 				//TODO: test node.parent for ts.CallExpression NgModule
