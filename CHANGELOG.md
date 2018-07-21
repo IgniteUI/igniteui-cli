@@ -3,43 +3,36 @@
 
 ### Bug Fixes
 
-* change the date column values with real dates ([917c727](https://github.com/IgniteUI/igniteui-cli/commit/917c727))
-* check add for wrong module path ([fa755a1](https://github.com/IgniteUI/igniteui-cli/commit/fa755a1))
-* fix wrong path in Custom theme style.scss import ([f0c7f57](https://github.com/IgniteUI/igniteui-cli/commit/f0c7f57))
-* Fixing spaces in the menu generation ([f31b580](https://github.com/IgniteUI/igniteui-cli/commit/f31b580))
-* jQuery read from bs-config.js ([c055dee](https://github.com/IgniteUI/igniteui-cli/commit/c055dee))
-* Remove excess Util function. ([b70d969](https://github.com/IgniteUI/igniteui-cli/commit/b70d969))
-* set port outside server obj. ([c12aef1](https://github.com/IgniteUI/igniteui-cli/commit/c12aef1))
-* **command:add:** simplify addNgMetadata call signature, remove type overrid in template, [#273](https://github.com/IgniteUI/igniteui-cli/issues/273) ([8a14a3c](https://github.com/IgniteUI/igniteui-cli/commit/8a14a3c))
-* Undefined check for argv.port ([5fc05d0](https://github.com/IgniteUI/igniteui-cli/commit/5fc05d0))
-* **igx:** make sure the content contained stretches to the available space ([9c34970](https://github.com/IgniteUI/igniteui-cli/commit/9c34970))
-* **igx-charts:** add animations module to spec imports ([785e035](https://github.com/IgniteUI/igniteui-cli/commit/785e035))
+* **igx-ts:** make sure the content contained stretches to the available space ([9c34970](https://github.com/IgniteUI/igniteui-cli/commit/9c34970))
 * **igx-ts:** properly generate angular.json with project name ([89cd0c7](https://github.com/IgniteUI/igniteui-cli/commit/89cd0c7))
+* **igx-ts:** Keep "**" wildcard last position when adding new routes ([4a3282a](https://github.com/IgniteUI/igniteui-cli/commit/4a3282a))
+* **igx-grid:** Basic Grid template: change the date column values with real dates ([917c727](https://github.com/IgniteUI/igniteui-cli/commit/917c727))
+* **igx-charts:** add animations module to spec imports ([785e035](https://github.com/IgniteUI/igniteui-cli/commit/785e035))
 
 
 ### Features
 
-* **igx:** Keep "**" wildcard last position when adding new routes ([4a3282a](https://github.com/IgniteUI/igniteui-cli/commit/4a3282a))
 * add `ng update` migration schematic ([5bb5dc7](https://github.com/IgniteUI/igniteui-cli/commit/5bb5dc7))
-* add Back and to 'Choose one' step when there are more components ([bdcbc18](https://github.com/IgniteUI/igniteui-cli/commit/bdcbc18))
-* add back option where necessary in the wizard, closes [#293](https://github.com/IgniteUI/igniteui-cli/issues/293) ([5931f98](https://github.com/IgniteUI/igniteui-cli/commit/5931f98))
-* Add search functionality and rename to crm-grid. [#287](https://github.com/IgniteUI/igniteui-cli/issues/287) ([#288](https://github.com/IgniteUI/igniteui-cli/issues/288)) ([992bda3](https://github.com/IgniteUI/igniteui-cli/commit/992bda3))
-* Adding template for igxCombo ([#301](https://github.com/IgniteUI/igniteui-cli/issues/301)) ([65721a8](https://github.com/IgniteUI/igniteui-cli/commit/65721a8)), closes [#298](https://github.com/IgniteUI/igniteui-cli/issues/298)
-* Changing the menu for jQuery projects [#211](https://github.com/IgniteUI/igniteui-cli/issues/211) ([823c2cf](https://github.com/IgniteUI/igniteui-cli/commit/823c2cf))
+
+  You can now run `ng update igniteui-cli` in Ignite UI for Angular projects. This will also update installed `igniteui-angular` and `igniteui-angular-charts` packages.
+* **step by step:** add 'Back' option when adding a Component or View in the Step by step mode, closes [#293](https://github.com/IgniteUI/igniteui-cli/issues/293) ([5931f98](https://github.com/IgniteUI/igniteui-cli/commit/5931f98), [bdcbc18](https://github.com/IgniteUI/igniteui-cli/commit/bdcbc18))
+* **add command:** add support for choosing destination module in Angular projects [#273](https://github.com/IgniteUI/igniteui-cli/issues/273) ([c60f017](https://github.com/IgniteUI/igniteui-cli/commit/c60f017))
+* **start command:** Select port to run via start command or Step by step mode [#272](https://github.com/IgniteUI/igniteui-cli/issues/272) ([#308](https://github.com/IgniteUI/igniteui-cli/pull/308))
+
+* **igx-ts:** Update Ignite UI for Angular project to 6.1.1 ([38bd53f](https://github.com/IgniteUI/igniteui-cli/commit/38bd53f))
+* **igx-ts:** Update project to latest Angular CLI 6.0.8 ([79103ad](https://github.com/IgniteUI/igniteui-cli/commit/79103ad))
 * **igx-charts:** Update Ignite UI for Angular charts for new 6.x package ([6581aa7](https://github.com/IgniteUI/igniteui-cli/commit/6581aa7))
-* Changing the menu from horizontal to vertical + improvements ([019f0e7](https://github.com/IgniteUI/igniteui-cli/commit/019f0e7))
-* **cli:** Added background image - jQuery projects. [#211](https://github.com/IgniteUI/igniteui-cli/issues/211) ([c3970e9](https://github.com/IgniteUI/igniteui-cli/commit/c3970e9))
-* Optional theme support for Angular projects add, closes [#272](https://github.com/IgniteUI/igniteui-cli/issues/272) ([c94e1a6](https://github.com/IgniteUI/igniteui-cli/commit/c94e1a6))
-* **cli:** Changed alignment of logo to "right" - jQuery projects. [#211](https://github.com/IgniteUI/igniteui-cli/issues/211) ([f3e0fa0](https://github.com/IgniteUI/igniteui-cli/commit/f3e0fa0))
-* **command:add:** add declarations to ngModule.exports when targeting custom module, [#273](https://github.com/IgniteUI/igniteui-cli/issues/273) ([677799d](https://github.com/IgniteUI/igniteui-cli/commit/677799d))
-* **command:add:** add supprt for choosing destination module in add, WIP, [#273](https://github.com/IgniteUI/igniteui-cli/issues/273) ([c60f017](https://github.com/IgniteUI/igniteui-cli/commit/c60f017))
-* Include promptSession port choise. ([d363535](https://github.com/IgniteUI/igniteui-cli/commit/d363535))
-* User choose port initial implementation. ([c145646](https://github.com/IgniteUI/igniteui-cli/commit/c145646))
-* **igx:** Added 404 routing and view ([e2fbafd](https://github.com/IgniteUI/igniteui-cli/commit/e2fbafd))
-* **igx:** Added routing on uncaught error. ([37f9062](https://github.com/IgniteUI/igniteui-cli/commit/37f9062))
-* **igx:** Update Ignite UI for Angular project to 6.1.1 ([38bd53f](https://github.com/IgniteUI/igniteui-cli/commit/38bd53f))
-* **igx-ts:** Update Ignite UI for Angular project and templates to 6.1.0 ([bb9fa46](https://github.com/IgniteUI/igniteui-cli/commit/bb9fa46))
-* **igx-ts:** update project to latest Angular CLI 6.0.8 ([79103ad](https://github.com/IgniteUI/igniteui-cli/commit/79103ad))
+* **igx-ts:** Optional theme support for Ignite UI for Angular projects, closes [#272](https://github.com/IgniteUI/igniteui-cli/issues/272) ([c94e1a6](https://github.com/IgniteUI/igniteui-cli/commit/c94e1a6))
+* **igx-ts:** Added 404 routing and view ([e2fbafd](https://github.com/IgniteUI/igniteui-cli/commit/e2fbafd))
+* **igx-ts:** Added routing on uncaught error. ([37f9062](https://github.com/IgniteUI/igniteui-cli/commit/37f9062))
+* **igx-ts:** Add template for `IgxCombo` ([#301](https://github.com/IgniteUI/igniteui-cli/issues/301)) ([65721a8](https://github.com/IgniteUI/igniteui-cli/commit/65721a8)), closes [#298](https://github.com/IgniteUI/igniteui-cli/issues/298)
+* **igx-ts:** Monster Grid view updated with search functionality and renamed to "CRM Grid". [#287](https://github.com/IgniteUI/igniteui-cli/issues/287) ([#288](https://github.com/IgniteUI/igniteui-cli/issues/288)) ([992bda3](https://github.com/IgniteUI/igniteui-cli/commit/992bda3))
+
+
+* **jquery:** Changing the menu from horizontal to vertical + improvements for jQuery projects [#211](https://github.com/IgniteUI/igniteui-cli/issues/211) ([#307](https://github.com/IgniteUI/igniteui-cli/pull/307))
+* **react:** Changing the menu from horizontal to vertical + improvements for React projects ([019f0e7](https://github.com/IgniteUI/igniteui-cli/commit/019f0e7))
+* **angular-wrappers:** Changing the menu from horizontal to vertical + improvements for Angular Wrappers projects [#279](https://github.com/IgniteUI/igniteui-cli/issues/279) ([#316](https://github.com/IgniteUI/igniteui-cli/pull/316))
+
 
 <a name="1.3.2"></a>
 # [1.3.2](https://github.com/IgniteUI/igniteui-cli/compare/v1.3.1...v1.3.2) (2018-06-12)
