@@ -74,32 +74,30 @@ export class $(ClassName)Component {
 
 	updateChart(curSelection){
 		//Series require the whole object 
-		this.options = {
-			series: [ 
-				{
-					name: "2005Population",
-					type: curSelection,
-					title: "2005",
-					xAxis: "NameAxis",
-					yAxis: "PopulationAxis",
-					valueMemberPath: "Pop2005",
-					isTransitionInEnabled: true,
-					isHighlightingEnabled: true,
-					thickness: 5
-				},
-				{
-					name: "1995Population",
-					type: curSelection,
-					title: "1995",
-					xAxis: "NameAxis",
-					yAxis: "PopulationAxis",
-					valueMemberPath: "Pop1995",
-					isTransitionInEnabled: true,
-					isHighlightingEnabled: true,
-					thickness: 5
-				}
-			]
-		};
+		this.options = Object.assign({}, this.options, { series: [
+			{
+				name: "2005Population",
+				type: curSelection,
+				title: "2005",
+				xAxis: "NameAxis",
+				yAxis: "PopulationAxis",
+				valueMemberPath: "Pop2005",
+				isTransitionInEnabled: true,
+				isHighlightingEnabled: true,
+				thickness: 5
+			},
+			{
+				name: "1995Population",
+				type: curSelection,
+				title: "1995",
+				xAxis: "NameAxis",
+				yAxis: "PopulationAxis",
+				valueMemberPath: "Pop1995",
+				isTransitionInEnabled: true,
+				isHighlightingEnabled: true,
+				thickness: 5
+			}
+		]});
 	}
 	
 	selectionChanged (event: Event){

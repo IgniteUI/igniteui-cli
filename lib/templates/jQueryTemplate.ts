@@ -33,12 +33,10 @@ export class jQueryTemplate implements Template {
 		this.hasExtraConfiguration = false;
 	}
 
-	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
+	public generateFiles(projectPath: string, name: string, options: {}): Promise<boolean> {
 		let config = {};
-		for (const element of options) {
-			if (element.hasOwnProperty("extraConfig")) {
-				config = element["extraConfig"];
-			}
+		if (options["extraConfig"]) {
+			config = options["extraConfig"];
 		}
 
 		// view goes in its own folder based on the name

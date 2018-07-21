@@ -1,30 +1,37 @@
-.navbar {
+.nav-menu {
+	width: 250px;
+	flex-basis: 250px;
+	flex-shrink: 0;
+	height: 100%;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: auto;
 	background-color: #e6e6e6;
-	user-select: none;
-	-webkit-user-select: none;
-	position: fixed;
-	position: -webkit-sticky;
-	position: sticky;
-	top: 0;
-	height: 2em;
-	line-height: 2em;
-	width: 100%;
-	z-index: 1000;
-	padding: 0 1.5em;
-	font-size: 1.2em;
-	box-sizing: border-box;
 }
 
-a {
+.nav-menu h1 {
+	font-size: 1.4em;
+	display: block;
+	padding: 0 16px;
 	text-decoration: none;
-	color: inherit;
 }
 
-a:after {
-	content: '\a0\b7\a0';
+.nav-menu-item a {
+	background-color: #eee;
+	color: black;
+	display: block;
+	padding: 14px 16px; 
+	text-decoration: none;
 }
 
-a:last-child:after {
-	content: '';
+/* Change the link color to #111 (black) on hover */
+.nav-menu-item a:hover {
+	background-color: #111;
+	color: white;
 }
- 
+
+.nav-menu-item a.active {
+	background-color: rgb(68, 67, 67);
+	color: white;
+}

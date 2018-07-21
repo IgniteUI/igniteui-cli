@@ -16,11 +16,10 @@ jasmineInst.env.addReporter(new SpecReporter({
 }));
 
 jasmineInst.loadConfig({
-	spec_dir: "spec",
+	spec_dir: "",
 	spec_files: [
-		"acceptance/**/*[sS]pec.js",
-		"templates/**/*[sS]pec.js",
-		"unit/**/*[sS]pec.js"
+		"spec/**/*[sS]pec.js",
+		"migrations/**/*[sS]pec.js"
 	]
 });
 

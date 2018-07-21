@@ -1,6 +1,7 @@
 {
     "version" : "",
     "project": {
+		"defaultPort": 3000,
 		"framework" : "jquery",
 		"projectType": "js",
 		"theme": "$(theme)",
@@ -16,6 +17,5 @@
 		"sourceRoot": "."
 	},
 	"build" : {
-
 	}
 }
