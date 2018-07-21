@@ -121,7 +121,7 @@ export class jQueryTemplate implements Template {
 	protected getNavigationScript(): string {
 		let builder = "";
 		builder += "<script src=\"../ignite-cli-views.js\"></script>";
-		builder += "<script src=\"../assets/navigation-header.js\"></script>";
+		builder += "<script src=\"../assets/navigation.js\"></script>";
 
 		return builder;
 	}
