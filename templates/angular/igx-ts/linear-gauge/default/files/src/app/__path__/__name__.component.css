@@ -1,0 +1,16 @@
+.sample-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.buttons-container {
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.sample-button {
+  margin: 3px;
+  flex-grow: 1;
+  height: 30px;
+  font: 12px Titillium Web, sans-serif;
+}

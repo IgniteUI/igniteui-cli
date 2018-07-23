@@ -1,20 +1,16 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { $(ClassName)Component } from './$(filePrefix).component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { IgxTimePickerModule } from 'igniteui-angular';
+import { IgxRadialGaugeModule } from 'igniteui-angular-gauges/ES5/igx-radial-gauge-module';
 
 describe('$(ClassName)Component', () => {
   let component: $(ClassName)Component;
   let fixture: ComponentFixture<$(ClassName)Component>;
-  const date: Date = new Date();
-  const hours: number = date.getHours();
-  const minutes: number =  date.getMinutes();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [$(ClassName)Component],
-      imports: [IgxTimePickerModule, NoopAnimationsModule]
+      imports: [IgxRadialGaugeModule, NoopAnimationsModule]
     })
       .compileComponents();
   }));
@@ -25,8 +21,7 @@ describe('$(ClassName)Component', () => {
     fixture.detectChanges();
   });
 
-  it('time is correct', () => {
-    expect(component.date.getHours() === hours);
-    expect(component.date.getMinutes() === minutes);
+  it('should create', () => {
+    expect(component).toBeTruthy();
   });
 });

@@ -1,6 +1,6 @@
 import { IgniteUIForAngularTemplate } from "../../../../../lib/templates/IgniteUIForAngularTemplate";
 
-class IgxTimePickerTemplate extends IgniteUIForAngularTemplate {
+class IgxRadialGaugeTemplate extends IgniteUIForAngularTemplate {
 	constructor() {
 		super(__dirname);
 		this.components = ["Radial Gauge"];
@@ -11,8 +11,12 @@ class IgxTimePickerTemplate extends IgniteUIForAngularTemplate {
 		this.name = "Radial Gauge";
 		this.description = "IgxRadialGauge with different animations";
 		this.dependencies = [
-			{ import: "IgxTimePickerModule", from: "igniteui-angular" }
+			{
+				from: "igniteui-angular-gauges/ES5/igx-radial-gauge-module",
+				import: ["IgxRadialGaugeModule"]
+			}
 		];
+		this.packages = ["tslib@1.7.1", "igniteui-angular-core@6.1.1", "igniteui-angular-gauges@6.1.1"];
 	}
 }
-module.exports = new IgxTimePickerTemplate();
+module.exports = new IgxRadialGaugeTemplate();

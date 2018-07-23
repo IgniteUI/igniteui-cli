@@ -90,7 +90,7 @@ export class $(ClassName)Component implements AfterViewInit {
     this.linearGauge.backingBrush = "#ffffff";
     this.linearGauge.backingOutline = "#d1d1d1";
     this.linearGauge.backingStrokeThickness = 0;
-  
+}
 
   public AnimateToGauge2(): void {
        // linear gauge requires settings for these properties:
