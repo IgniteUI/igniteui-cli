@@ -1,0 +1,54 @@
+<div igxLayout igxLayoutDir="columns" igxLayoutItemAlign="center">
+  <p>You can read more about configuring the linear gauge component in the
+    <a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/lineargauge.html" target="_blank">official documentation page
+  </a>.
+  </p>
+  <div class="sample-container">
+    <div class="buttons-container">
+      <button igxButton="raised" (click)="AnimateToGauge1()"
+          igxButtonColor="black"
+          igxButtonBackground="#e2e2e2"
+          class="sample-button">Gauge Animation #1</button>
+      <button igxButton="raised" (click)="AnimateToGauge2()"
+          igxButtonColor="black"
+          igxButtonBackground="#e2e2e2"
+          class="sample-button">Gauge Animation #2</button>
+      <button igxButton="raised" (click)="AnimateToGauge3()"
+          igxButtonColor="black"
+          igxButtonBackground="#e2e2e2"
+          class="sample-button">Gauge Animation #3</button>
+    </div>
+
+    <div class="sample-control" >
+      <!-- Note the linear gauge requires settings only for
+      minimumValue, maximumValue, and value properties.
+      All other properties are optional and listed here
+      for demonstration purpose only -->
+      <igx-linear-gauge
+        #linearGauge
+        height="80px"
+        width="100%"
+        minimumValue=0
+        maximumValue=100
+        value=50
+        interval=10
+        labelInterval=10
+        labelExtent=0.02
+        minorTickEndExtent=0.10,
+        minorTickStartExtent=0.20,
+        tickStartExtent=0.25,
+        tickEndExtent=0.05,
+        tickStrokeThickness=2,
+        needleShape="Needle"
+        needleBrush="#79797a"
+        needleOutline="#79797a"
+        scaleStrokeThickness=0
+        scaleBrush="#ffffff"
+        scaleOutline="#d3d3d3"
+        backingBrush="#ffffff"
+        backingOutline="#d1d1d1"
+        backingStrokeThickness=0>
+      </igx-linear-gauge>
+    </div>
+  </div>
+</div>
