@@ -2,11 +2,10 @@
 html, body {
 	margin: 0;
 	padding: 0;
-  }
-  
-  body {
+}
+
+body {
 	font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	background: #e6e6e6;
 	color: #4d4d4d;
 	margin: 0 auto;
 	-webkit-font-smoothing: antialiased;
@@ -14,5 +13,10 @@ html, body {
 	-ms-font-smoothing: antialiased;
 	/* font-smoothing: antialiased; */
 	text-rendering: optimizeLegibility;
-  }
-  
+}
+
+.content {
+	flex: 1 1 auto;
+	padding: 15px;
+	overflow-y: auto;
+}

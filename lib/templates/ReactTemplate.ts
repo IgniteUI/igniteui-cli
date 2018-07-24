@@ -26,18 +26,16 @@ export class ReactTemplate implements Template {
 	 * Base ReactTemplate constructor
 	 * @param rootPath The template folder path. Pass in `__dirname`
 	 */
-	constructor(private rootPath: string) {}
+	constructor(private rootPath: string) { }
 
-	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
+	public generateFiles(projectPath: string, name: string, options: {}): Promise<boolean> {
 		let config = {};
-		for (const element of options) {
-			if (element.hasOwnProperty("extraConfig")) {
-				config = element["extraConfig"];
-			}
+		if (options["extraConfig"]) {
+			config = options["extraConfig"];
 		}
 		const pathsConfig = {};
 
-		config["__path__"] =  this.folderName(name); //folder name allowed spaces, any casing
+		config["__path__"] = this.folderName(name); //folder name allowed spaces, any casing
 		config["$(name)"] = name; // this name should not have restrictions
 		config["$(ClassName)"] = Util.className(name); //first letter capital, no spaces and no dashes,
 		config["$(cliVersion)"] = Util.version();
@@ -60,7 +58,7 @@ export class ReactTemplate implements Template {
 	public registerInProject(projectPath: string, name: string) {
 		let configFile = fs.readFileSync(path.join(projectPath, this.configFile), "utf8");
 		const viewsArr = JSON.parse(this.replacePattern.exec(configFile)[0]);
-		viewsArr.push({path: "/" + this.folderName(name), folder: this.getViewLink(name), text: this.getToolbarLink(name)});
+		viewsArr.push({ path: "/" + this.folderName(name), folder: this.getViewLink(name), text: this.getToolbarLink(name) });
 		configFile = configFile.replace(this.replacePattern, JSON.stringify(viewsArr, null, 4));
 		fs.writeFileSync(path.join(projectPath, this.configFile), configFile);
 	}
