@@ -10,4 +10,6 @@ declare interface TemplateDependency {
 	from?: string;
 	/** Call `forRoot()` on modules when adding them to the `ngModule` imports metadata */
 	root?: boolean;
+	/** Add an identifier into `ngModule` exports metadata */
+	export?: string | string[];	
 }

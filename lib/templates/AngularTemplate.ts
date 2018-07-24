@@ -24,12 +24,15 @@ export class AngularTemplate implements Template {
 	 */
 	constructor(private rootPath: string) {
 	}
-	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
+	public generateFiles(projectPath: string, name: string, options: {}): Promise<boolean> {
 		let config = {};
-		for (const element of options) {
-			if (element.hasOwnProperty("extraConfig")) {
-				config = element["extraConfig"];
-			}
+		if (options["modulePath"] && !Util.fileExists(path.join(process.cwd(), `src\\app`, options["modulePath"]))) {
+			Util.error(`Wrong module path provided: ${options["modulePath"]}. No components were added!`);
+			return Promise.resolve(false);
+		}
+
+		if (options["extraConfig"]) {
+			config = options["extraConfig"];
 		}
 		Object.assign(config, this.getBaseVariables(name));
 
@@ -40,7 +43,11 @@ export class AngularTemplate implements Template {
 		return Util.processTemplates(path.join(this.rootPath, "files"), projectPath, config, pathsConfig);
 	}
 
-	public registerInProject(projectPath: string, name: string) {
+	public registerInProject(projectPath: string, name: string, options?: {[key: string]: any}) {
+		let modulePath = "app.module.ts";
+		if (options && options.modulePath) {
+			modulePath = options.modulePath;
+		}
 		// D.P. Don't use the top-level import as that chains import of typescript
 		// which slows down execution of the entire component noticeably (template loading)
 		// https://www.typescriptlang.org/docs/handbook/modules.html#dynamic-module-loading-in-nodejs
@@ -60,9 +67,10 @@ export class AngularTemplate implements Template {
 
 		//3) add an import of the component class from its file location.
 		//4) populate the declarations portion of the @NgModule with the component class name.
-		const mainModule = new TsUpdate(path.join(projectPath, "src/app/app.module.ts"));
+		const mainModule = new TsUpdate(path.join(projectPath, `src/app/${modulePath}`));
 		mainModule.addDeclaration(
-			path.join(projectPath, `src/app/components/${this.folderName(name)}/${this.fileName(name)}.component.ts`)
+			path.join(projectPath, `src/app/components/${this.folderName(name)}/${this.fileName(name)}.component.ts`),
+			modulePath !== "app.module.ts"
 		);
 		mainModule.finalize();
 

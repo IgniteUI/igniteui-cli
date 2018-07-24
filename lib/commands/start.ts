@@ -66,14 +66,19 @@ command = {
 			const browserSync = bs.create("igniteui-cli");
 			const filePath = path.join(process.cwd(), "bs-config.js");
 			const bsConfig = require(filePath);
-			bsConfig.port = argv.port;
+			if (argv.port) {
+				bsConfig.port = argv.port;
+			}
+
 			browserSync.init(bsConfig);
 			break;
 			case "react":
-				exec(`npm start -- --port=` + argv.port);
-				break;
 			case "angular":
-				exec(`npm start -- --port=` + argv.port);
+				if (argv.port) {
+					exec(`npm start -- --port=` + argv.port);
+				} else {
+					exec(`npm start`);
+				}
 				break;
 			default:
 				break;
