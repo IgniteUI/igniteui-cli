@@ -1,0 +1,73 @@
+<div igxLayout igxLayoutDir="columns" igxLayoutItemAlign="center">
+  <p>You can read more about configuring the radial gauge component in the
+    <a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/radialgauge.html" target="_blank">
+    official documentation page
+    </a>.
+  </p>
+  <div class="sample-container">
+    <div class="buttons-container">
+      <button igxButton="raised" (click)="AnimateToGauge1()"
+        igxButtonColor="black"
+        igxButtonBackground="#e2e2e2"
+        class="sample-button">Gauge Animation #1</button>
+      <button igxButton="raised" (click)="AnimateToGauge2()"
+        igxButtonColor="black"
+        igxButtonBackground="#e2e2e2"
+        class="sample-button">Gauge Animation #2</button>
+      <button igxButton="raised" (click)="AnimateToGauge3()"
+        igxButtonColor="black"
+        igxButtonBackground="#e2e2e2"
+        class="sample-button">Gauge Animation #3</button>
+      <button igxButton="raised" (click)="AnimateToGauge4()"
+        igxButtonColor="black"
+        igxButtonBackground="#e2e2e2"
+        class="sample-button">Gauge Animation #4</button>
+    </div>
+
+    <div class="sample-control" >
+      <!-- Note the radial gauge requires settings only for
+      minimumValue, maximumValue, and value properties.
+      All other properties are optional and listed here
+      for demonstration purpose only -->
+      <igx-radial-gauge
+        #radialGauge
+        height="330px"
+        width="100%"
+        value=25
+        interval=5
+        minimumValue=0
+        maximumValue=50
+        labelInterval=5
+        labelExtent=0.71
+        minorTickCount=4
+        minorTickEndExtent=.625
+        minorTickStartExtent=.6
+        minorTickStrokeThickness=1
+        minorTickBrush = "#79797a"
+        tickStartExtent=.6
+        tickEndExtent=.65
+        tickStrokeThickness=2
+        tickBrush = "#79797a"
+        needleShape="Triangle"
+        needleEndWidthRatio=0.03
+        needleStartWidthRatio=0.05
+        needlePivotShape="CircleOverlay"
+        needlePivotWidthRatio=0.15
+        needleBaseFeatureWidthRatio=0.15
+        needleBrush="#79797a"
+        needleOutline="#79797a"
+        needlePivotBrush="#79797a"
+        needlePivotOutline="#79797a"
+        isNeedleDraggingEnabled=true
+        backingBrush="#fcfcfc"
+        backingOutline="#d6d6d6"
+        backingStrokeThickness=5
+        scaleStartAngle=120
+        scaleEndAngle=60
+        scaleBrush="#d6d6d6"
+        rangeBrushes="#F86232, #DC3F76, #7446B9"
+        rangeOutlines="#F86232, #DC3F76, #7446B9">
+      </igx-radial-gauge>
+    </div>
+    </div>
+</div>
