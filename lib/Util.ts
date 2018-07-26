@@ -369,6 +369,42 @@ class Util {
 		}
 	}
 
+	public static isDefaultNamePattern(name: string): boolean {
+		const regExpr = new RegExp("^app?\d{0,3}");
+		if (regExpr.test(name)) {
+			return true;
+		}
+		return false;
+	}
+
+	public static incrementName(name: string, nameLength: number): string {
+		const text: string = name.slice(0, nameLength);
+		const number: number = parseInt(name.slice(nameLength), 10) || 0;
+		return `${text}${number + 1}`;
+	}
+
+	public static getAvailableName(defaultName: string, framework: string, projectType: string): string {
+		const nameLength = defaultName.length;
+		let specificPath = "";
+
+		if (framework === "angular" && projectType === "igx-ts") {
+			specificPath = "\\src\\app";
+		} else if (framework === "angular" && projectType === "ig-ts") {
+			specificPath = "\\src\\app\\components";
+		} else if (framework === "react") {
+			specificPath = "\\client\\components";
+		}
+
+		while (Util.directoryExists(path.join(process.cwd(), specificPath, Util.lowerDashed(defaultName)))) {
+			defaultName = Util.incrementName(defaultName, nameLength);
+		}
+		return defaultName;
+	}
+
+	public static getComponentFolderPath(framework: string, projType: string) {
+		return path;
+	}
+
 	private static propertyByPath(object: any, propPath: string) {
 		if (!propPath) {
 			return object;
