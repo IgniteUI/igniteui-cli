@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  title = 'Welcome to IgniteUI for Angular!';
+  title = 'Welcome to Ignite UI for Angular!';
   constructor() { }
 
   ngOnInit() {
