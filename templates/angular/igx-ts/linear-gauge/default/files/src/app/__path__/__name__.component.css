@@ -1,0 +1,26 @@
+.sample-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.buttons-container {
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.sample-button {
+  margin: 3px;
+  flex-grow: 1;
+  height: 30px;
+  font: 12px Titillium Web, sans-serif;
+  min-width:5.5rem;
+  height:2.25rem;
+  font-size:.875rem;
+  font-weight:600;
+  line-height:1;
+  text-align:center;
+  border:none;
+  border-radius:2px;
+  text-transform:uppercase;
+  cursor:pointer;
+}
