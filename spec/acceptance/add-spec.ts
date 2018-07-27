@@ -113,6 +113,7 @@ describe("Add command", () => {
 		expect(fs.existsSync("./test-view")).toBeTruthy();
 		expect(fs.existsSync("./test-view/index.html")).toBeTruthy();
 		fs.unlinkSync("./test-view/index.html");
+		fs.unlinkSync("./test-view/style.css");
 		fs.rmdirSync("./test-view");
 
 		fs.unlinkSync("ignite-cli-views.js");
@@ -162,6 +163,7 @@ describe("Add command", () => {
 		expect(fs.readFileSync("./test-view/index.html").toString()).toEqual("test", "Shouldn't overwrite file contents");
 
 		fs.unlinkSync("./test-view/index.html");
+		fs.unlinkSync("./test-view/style.css");
 		fs.rmdirSync("./test-view");
 		fs.unlinkSync("ignite-cli-views.js");
 		fs.unlinkSync(ProjectConfig.configFile);
