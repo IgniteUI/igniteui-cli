@@ -14,6 +14,6 @@ describe('$(name) App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getWelcomeText()).toEqual('Welcome to IgniteUI for Angular!');
+    expect(page.getWelcomeText()).toEqual('Welcome to Ignite UI for Angular!');
   });
 });
