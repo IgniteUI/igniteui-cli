@@ -369,14 +369,14 @@ class Util {
 		}
 	}
 
-	public static incrementName(name: string, nameLength: number): string {
-		const text: string = name.slice(0, nameLength);
-		const number: number = parseInt(name.slice(nameLength), 10) || 0;
+	public static incrementName(name: string, baseLength: number): string {
+		const text: string = name.slice(0, baseLength);
+		const number: number = parseInt(name.slice(baseLength), 10) || 0;
 		return `${text}${number + 1}`;
 	}
 
-	public static getAvailableName(defaultName: string, framework: string, projectType: string): string {
-		const nameLength = defaultName.length;
+	public static getAvailableName(defaultName: string, framework?: string, projectType?: string): string {
+		const baseLength = defaultName.length;
 		let specificPath = "";
 
 		if (framework === "angular" && projectType === "igx-ts") {
@@ -388,7 +388,7 @@ class Util {
 		}
 
 		while (Util.directoryExists(path.join(process.cwd(), specificPath, Util.lowerDashed(defaultName)))) {
-			defaultName = Util.incrementName(defaultName, nameLength);
+			defaultName = Util.incrementName(defaultName, baseLength);
 		}
 		return defaultName;
 	}
