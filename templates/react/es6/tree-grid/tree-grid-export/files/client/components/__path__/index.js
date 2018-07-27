@@ -104,7 +104,7 @@ export default class  $(ClassName) extends Component {
 		return (
 			<div className="App">
 				<div className="App-header">
-					<h2>$(description)</h2>
+					<h2 style={{textAlign: "center"}}>$(description)</h2>
 				</div>
 
 				<$(Control)
@@ -123,13 +123,13 @@ export default class  $(ClassName) extends Component {
 					]}
 					features={$(treeGridFeatures)}
 				/>
-
-				<IgButton 
-					click={this.exportFlatDS}
-					onClick={this.exportFlatDS}
-					labelText="Export Flat Data"
-					/>
-
+				<div style={{marginBottom: "1vw", textAlign: "center"}}>
+					<IgButton 
+						click={this.exportFlatDS}
+						onClick={this.exportFlatDS}
+						labelText="Export Flat Data"
+						/>
+				</div>
 					<$(Control)
 					id="treegrid2"
 					width="100%"
@@ -149,12 +149,13 @@ export default class  $(ClassName) extends Component {
 					renderExpansionIndicatorColumn={true}
 					features={$(treeGridFeatures)}
 					/>
-
-				<IgButton 
-					click={this.exportHierarchicalDS}
-					onClick={this.exportHierarchicalDS}
-					labelText="Export Hierarchical Data"
-					/>
+				<div style={{marginBottom: "1vw", textAlign: "center"}}>
+					<IgButton 
+						click={this.exportHierarchicalDS}
+						onClick={this.exportHierarchicalDS}
+						labelText="Export Hierarchical Data"
+						/>
+				</div>
 			</div>
 		);
 	}

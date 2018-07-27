@@ -4,7 +4,7 @@ import $(Control) from 'components/__path__';
 
 export default () => (
   <article className="$(ClassName)">
-    <Header title="$(name)" className="header-blue" />
+    <Header title="$(name)" className="header-main" />
     <$(Control) />
   </article>
 );
