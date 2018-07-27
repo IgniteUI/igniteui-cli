@@ -25,20 +25,22 @@ export default class $(ClassName) extends Component {
 		return (
 			<div className="$(ClassName)">
 				<div className="$(ClassName)-header">
-					<h2>$(description)</h2>
+					<h2 style={{textAlign: "center", marginBottom: "2vw"}}>$(description)</h2>
 				</div>
-				<$(Control)
-					id="combo"
-					width={300}
-					dataSource={this.state.platforms}
-					textKey="Name"
-					valueKey="Name"
-					multiSelection={{
-						enabled: true,
-						showCheckboxes: true
-					}}
-					dropDownOrientation="bottom"
-				/>
+				<div style={{marginLeft: "35.5vw"}}>
+					<$(Control)
+						id="combo"
+						width="16vw"
+						dataSource={this.state.platforms}
+						textKey="Name"
+						valueKey="Name"
+						multiSelection={{
+							enabled: true,
+							showCheckboxes: true
+						}}
+						dropDownOrientation="bottom"
+					/>
+				</div>
 			</div>
 		);
 	}
