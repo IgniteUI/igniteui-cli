@@ -25,14 +25,16 @@ export default class App extends Component {
 		return (
 			<div className="App">
 				<div className="App-header">
-					<h2>$(description)</h2>
+					<h2 style={{textAlign: "center"}}>$(description)</h2>
 				</div>
-				<$(Control)
-					id="grid"
-					width="700px"
-					dataSource={this.state.products}
-					features={$(gridfeatures)}
-				/>
+				<div style={{marginLeft: "25vw"}}>
+					<$(Control)
+						id="grid"
+						width="700px"
+						dataSource={this.state.products}
+						features={$(gridfeatures)}
+					/>
+				</div>
       </div>
 		);
 	}
