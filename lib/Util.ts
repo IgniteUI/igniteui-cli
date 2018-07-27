@@ -369,14 +369,6 @@ class Util {
 		}
 	}
 
-	public static isDefaultNamePattern(name: string): boolean {
-		const regExpr = new RegExp("^app?\d{0,3}");
-		if (regExpr.test(name)) {
-			return true;
-		}
-		return false;
-	}
-
 	public static incrementName(name: string, nameLength: number): string {
 		const text: string = name.slice(0, nameLength);
 		const number: number = parseInt(name.slice(nameLength), 10) || 0;
@@ -399,10 +391,6 @@ class Util {
 			defaultName = Util.incrementName(defaultName, nameLength);
 		}
 		return defaultName;
-	}
-
-	public static getComponentFolderPath(framework: string, projType: string) {
-		return path;
 	}
 
 	private static propertyByPath(object: any, propPath: string) {
