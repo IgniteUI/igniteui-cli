@@ -371,8 +371,8 @@ class Util {
 
 	public static incrementName(name: string, baseLength: number): string {
 		const text: string = name.slice(0, baseLength);
-		const number: number = parseInt(name.slice(baseLength), 10) || 0;
-		return `${text}${number + 1}`;
+		const number: number = parseInt(name.slice(baseLength + 1), 10) || 0;
+		return `${text} ${number + 1}`;
 	}
 
 	public static getAvailableName(defaultName: string, framework?: string, projectType?: string): string {
