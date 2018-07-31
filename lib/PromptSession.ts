@@ -37,7 +37,7 @@ export class PromptSession {
 		let theme: string;
 		add.templateManager = this.templateManager;
 		const config = ProjectConfig.getConfig();
-		const defaultProjName = "Ig Project";
+		const defaultProjName = "IG Project";
 
 		if (ProjectConfig.hasLocalConfig() && !config.project.isShowcase) {
 			projLibrary = this.templateManager.getProjectLibrary(config.project.framework, config.project.projectType);
