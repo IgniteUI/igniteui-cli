@@ -371,11 +371,13 @@ class Util {
 
 	public static incrementName(name: string, baseLength: number): string {
 		const text: string = name.slice(0, baseLength);
-		const number: number = parseInt(name.slice(baseLength), 10) || 0;
-		return `${text}${number + 1}`;
+		const number: number = parseInt(name.slice(baseLength + 1), 10) || 0;
+		return `${text} ${number + 1}`;
 	}
 
-	public static getAvailableName(defaultName: string, framework?: string, projectType?: string): string {
+	public static getAvailableName(
+		defaultName: string, isApp: boolean, framework?: string, projectType?: string): string {
+
 		const baseLength = defaultName.length;
 		let specificPath = "";
 
@@ -386,9 +388,14 @@ class Util {
 		} else if (framework === "react") {
 			specificPath = "\\client\\components";
 		}
-
-		while (Util.directoryExists(path.join(process.cwd(), specificPath, Util.lowerDashed(defaultName)))) {
-			defaultName = Util.incrementName(defaultName, baseLength);
+		if (isApp) {
+			while (Util.directoryExists(path.join(process.cwd(), defaultName))) {
+				defaultName = Util.incrementName(defaultName, baseLength);
+			}
+		} else {
+			while (Util.directoryExists(path.join(process.cwd(), specificPath, Util.lowerDashed(defaultName)))) {
+				defaultName = Util.incrementName(defaultName, baseLength);
+			}
 		}
 		return defaultName;
 	}

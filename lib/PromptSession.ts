@@ -37,7 +37,7 @@ export class PromptSession {
 		let theme: string;
 		add.templateManager = this.templateManager;
 		const config = ProjectConfig.getConfig();
-		const defaultProjName = "app";
+		const defaultProjName = "Ig Project";
 
 		if (ProjectConfig.hasLocalConfig() && !config.project.isShowcase) {
 			projLibrary = this.templateManager.getProjectLibrary(config.project.framework, config.project.projectType);
@@ -46,7 +46,7 @@ export class PromptSession {
 			Util.log(""); /* new line */
 
 			let projectName: string;
-			const availableDefaultName = Util.getAvailableName(defaultProjName);
+			const availableDefaultName = Util.getAvailableName(defaultProjName, true);
 			while (!projectName) {
 				const defaultAppName = availableDefaultName;
 				const nameRes: string = await this.getUserInput({
@@ -284,7 +284,7 @@ export class PromptSession {
 		}
 		if (selectedTemplate) {
 			let success = false;
-			const availableDefaultName = Util.getAvailableName(selectedTemplate.name,
+			const availableDefaultName = Util.getAvailableName(selectedTemplate.name, false,
 				config.project.framework, config.project.projectType);
 			while (!success) {
 				const templateName = await this.getUserInput({
@@ -334,7 +334,7 @@ export class PromptSession {
 		const selectedTemplate = await projectLibrary.getTemplateByName(customTemplateNameRes);
 		if (selectedTemplate) {
 			let success = false;
-			const availableDefaultName = Util.getAvailableName(selectedTemplate.name,
+			const availableDefaultName = Util.getAvailableName(selectedTemplate.name, false,
 				config.project.framework, config.project.projectType);
 			while (!success) {
 				const customViewNameRes = await this.getUserInput({
