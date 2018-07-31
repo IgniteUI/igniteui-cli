@@ -1,6 +1,6 @@
 import { Util } from "../../lib/Util";
 
-fdescribe("Unit - Util", () => {
+describe("Unit - Util", () => {
 	it("className should replace dashes and empty spaces", async done => {
 		const projectNames = [
 			{
