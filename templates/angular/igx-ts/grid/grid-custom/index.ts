@@ -118,8 +118,8 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 			selectedFeatures = features.map((e, i) => {
 				anchorWrapper.href = featuresUrls[i];
 				anchorWrapper.text = e;
-				return `${anchorWrapper.start}${anchorWrapper.href}${anchorWrapper.middle}` +
-				`${anchorWrapper.text}${anchorWrapper.end} `;
+				return ` ${anchorWrapper.start}${anchorWrapper.href}${anchorWrapper.middle}` +
+				`${anchorWrapper.text}${anchorWrapper.end}`;
 			}).toString();
 		}
 		const extraConfig = {
