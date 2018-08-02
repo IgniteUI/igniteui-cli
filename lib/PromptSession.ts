@@ -1,5 +1,6 @@
 import * as inquirer from "inquirer";
 import * as path from "path";
+import chalk from "../node_modules/chalk";
 import { default as add } from "./commands/add";
 import { default as start } from "./commands/start";
 import { GoogleAnalytics } from "./GoogleAnalytics";
@@ -93,7 +94,7 @@ export class PromptSession {
 	public async chooseActionLoop(projectLibrary: ProjectLibrary, theme: string) {
 		let actionIsOver = false;
 		while (!actionIsOver) {
-			const actionChoices: string[] = this.generateActionChoices(projectLibrary);
+			const actionChoices: Array<{}> = this.generateActionChoices(projectLibrary);
 			Util.log(""); /* new line */
 			const action: string = await this.getUserInput({
 				choices: actionChoices,
@@ -108,7 +109,7 @@ export class PromptSession {
 					actionIsOver = await this.addComponent(projectLibrary, theme);
 					break;
 				}
-				case "Add view": {
+				case "Add scenario": {
 					actionIsOver = await this.addView(projectLibrary, theme);
 					break;
 				}
@@ -146,7 +147,7 @@ export class PromptSession {
 
 	/**
 	 * Returns a new array with inquirer.Separator() added between items
-	 * @param array The original array to add separatorfdks to
+	 * @param array The original array to add separator to
 	 */
 	private addSeparators(array: any[]): any[] {
 		const newArray = [];
@@ -202,10 +203,12 @@ export class PromptSession {
 	 */
 	private async addComponent(projectLibrary: ProjectLibrary, theme: string): Promise<boolean> {
 		let addComponentIsOver = false;
+		const groupsChoices: Array<{}> = this.generateGroupChoices(projectLibrary);
 		while (!addComponentIsOver) {
 			const groups = projectLibrary.getComponentGroups();
 			const groupRes: string = await this.getUserInput({
-				choices: groups,
+				//choices: groups,
+				choices: groupsChoices,
 				default: groups.find(x => x === "Data Grids") || groups[0],
 				message: "Choose a group:",
 				name: "componentGroup",
@@ -228,9 +231,10 @@ export class PromptSession {
 	 */
 	private async choseComponent(projectLibrary: ProjectLibrary, theme: string, groupName: string): Promise<boolean> {
 		let choseComponentIsOver = false;
+		const componentChoices: Array<{}> = this.generateComponentChoices(projectLibrary, groupName);
 		while (!choseComponentIsOver) {
 			const componentNameRes = await this.getUserInput({
-				choices: projectLibrary.getComponentNamesByGroup(groupName),
+				choices: componentChoices,
 				message: "Choose a component:",
 				name: "component",
 				type: "list"
@@ -241,8 +245,6 @@ export class PromptSession {
 			}
 
 			const component = projectLibrary.getComponentByName(componentNameRes);
-
-			// runTemplateCollection (item: Template[])
 			choseComponentIsOver = await this.getTemplate(projectLibrary, theme, groupName, component);
 		}
 		return true;
@@ -259,12 +261,15 @@ export class PromptSession {
 		: Promise<boolean> {
 		let selectedTemplate: Template;
 		const templates: Template[] = component.templates;
+
 		if (templates.length === 1) {
 			//get the only one template
 			selectedTemplate = templates[0];
 		} else {
+			const formatedOutput = projectLibrary.formatOutput(templates);
+
 			const templateRes = await this.getUserInput({
-				choices: templates.map(x => x.name),
+				choices: formatedOutput,
 				message: "Choose one:",
 				name: "template",
 				type: "list"
@@ -275,7 +280,8 @@ export class PromptSession {
 			}
 
 			selectedTemplate = templates.find((value, i, obj) => {
-				return value.name === templateRes;
+				//return value.name === templateRes;
+				return templateRes.startsWith(value.name);
 			});
 		}
 		if (selectedTemplate) {
@@ -314,8 +320,10 @@ export class PromptSession {
 	 * @param theme to use to style the project
 	 */
 	private async addView(projectLibrary: ProjectLibrary, theme: string): Promise<boolean> {
+		const customTemplates: Template[] = projectLibrary.getCustomTemplates();
+		const formatedOutput = projectLibrary.formatOutput(customTemplates);
 		const customTemplateNameRes = await this.getUserInput({
-			choices: projectLibrary.getCustomTemplateNames(),
+			choices: formatedOutput,
 			message: "Choose custom view:",
 			name: "customTemplate",
 			type: "list"
@@ -324,7 +332,9 @@ export class PromptSession {
 		if (customTemplateNameRes === this.WIZARD_BACK_OPTION) {
 			return false;
 		}
-		const selectedTemplate = await projectLibrary.getTemplateByName(customTemplateNameRes);
+		const selectedTemplate = customTemplates.find((value, i, obj) => {
+			return customTemplateNameRes.startsWith(value.name);
+		});
 		if (selectedTemplate) {
 			let success = false;
 			while (!success) {
@@ -353,6 +363,10 @@ export class PromptSession {
 			if (withBackChoice) {
 				options.choices.push(this.WIZARD_BACK_OPTION);
 			}
+			//optional TODO: plug and remove separators where descriptions are available.
+			// if (options.message === "Choose the theme for the project:" || options.message === "Choose framework:") {
+			// 	//options.choices = this.addSeparators(options.choices);
+			// }
 			options.choices = this.addSeparators(options.choices);
 		}
 
@@ -444,16 +458,115 @@ export class PromptSession {
 	 * Generates a list of options for chooseActionLoop
 	 * @param projectLibrary to generate options for
 	 */
-	private generateActionChoices(projectLibrary: ProjectLibrary): string[] {
-		const actionChoices: string[] = ["Complete & Run"];
+	private generateActionChoices(projectLibrary: ProjectLibrary): Array<{}> {
+		const actionChoices: Array<{}> = [{
+			name: "Complete & Run" + chalk.gray("..........install packages and run in the default browser"),
+			short: "Complete & Run",
+			value: "Complete & Run"
+		}];
 		if (projectLibrary.components.length > 0) {
-			actionChoices.push("Add component");
+			actionChoices.push({
+				name:  "Add component" + chalk.gray("...........add a specific component view (e.g a grid)"),
+				short: "Add component", // displayed result after selection
+				value: "Add component" // actual selection value
+			});
 		}
 		if (projectLibrary.getCustomTemplateNames().length > 0) {
-			actionChoices.push("Add view");
+			actionChoices.push({
+				name: "Add scenario " + chalk.gray("...........add a predefined scenario view (e.g grid or dashboard)"),
+				short: "Add scenario",
+				value: "Add scenario"
+			});
 		}
 
 		return actionChoices;
+	}
+
+	/**
+	 * Generates a list of options for addComponent
+	 * @param projectLibrary to generate options for
+	 */
+	private generateGroupChoices(projectLibrary: ProjectLibrary): Array<{}> {
+		const groups = projectLibrary.getComponentGroups();
+		const groupChoices: Array<{}> = [];
+		for (const group of groups) {
+			groupChoices.push({
+				name: group + chalk.gray(`...........contains similar ${group} components`),
+				short: group,
+				value: group
+			});
+		}
+
+		return groupChoices;
+	}
+
+	/**
+	 * Generates a list of options for choseComponent
+	 * @param projectLibrary to generate options for
+	 * @param groupName to chose components from
+	 * @param componentName template to copy in project
+	 */
+	private generateComponentChoices(
+		projectLibrary: ProjectLibrary,
+		groupName: string,
+		componentName?: string): Array<{}> {
+
+		const componentChoices: Array<{}> = [];
+		const groupedComponents = projectLibrary.getComponentNamesByGroup(groupName);
+		for (const component of groupedComponents) {
+			const hasChildComponents = projectLibrary.getComponentByName(component).templates.length > 1;
+			if (hasChildComponents) {
+				componentChoices.push({
+					name: component + chalk.gray(`...........choose from ${component} templates`),
+					short: component,
+					value: component
+				});
+			} else {
+				//case: Charts and Data Entry case where templates are directly nested in a Group.
+				const templateDescription = projectLibrary.getComponentByName(component).templates[0].description;
+				componentChoices.push({
+					name: component + chalk.gray(`...........${templateDescription}`),
+					short: component,
+					value: component
+				});
+			}
+		}
+		// }
+		return componentChoices;
+	}
+
+	/**
+	 * Generates a list of options for choseComponent
+	 * @param projectLibrary to generate options for
+	 * @param groupName to chose components from
+	 */
+	private generateTemplateChoices(
+		projectLibrary: ProjectLibrary,
+		componentName: string,
+		groupName: string, templates: Template[]): Array<{}> {
+
+		const templateChoices: Array<{}> = [];
+		let templateDescription: string;
+
+		if (templates.length === 1) {
+			templateDescription = templates[0].description;
+			templateChoices.push({
+				name: componentName + chalk.gray(`...........${templateDescription}`),
+				short: componentName,
+				value: componentName
+			});
+		} else {
+			// tslint:disable-next-line:prefer-for-of
+			for (let i = 0; i < templates.length; i++) {
+				templateDescription = templates[i].description;
+				templateChoices.push({
+					name: templates[i] + chalk.gray(`...........${templateDescription}`),
+					short: templates[i],
+					value: templates[i]
+				});
+			}
+		}
+		return templateChoices;
 	}
 }
 

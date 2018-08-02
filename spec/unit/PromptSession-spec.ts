@@ -302,7 +302,7 @@ describe("Unit - PromptSession", () => {
 		}]);
 		done();
 	});
-	it("chooseActionLoop - should run through properly - Add View", async done => {
+	it("chooseActionLoop - should run through properly - Add scenario", async done => {
 		const mockSelectedTemplate = {
 			name: "Custom Template 1"
 		};
@@ -335,9 +335,9 @@ describe("Unit - PromptSession", () => {
 		spyOn(PackageManager, "flushQueue").and.returnValue(Promise.resolve(true));
 		spyOn(start, "start").and.returnValue(Promise.resolve(true));
 		spyOn(inquirer, "prompt").and.returnValues(
-			Promise.resolve({ action: "Add view" }),
+			Promise.resolve({ action: "Add scenario" }),
 			Promise.resolve({ customTemplate: "Back" }),
-			Promise.resolve({ action: "Add view" }),
+			Promise.resolve({ action: "Add scenario" }),
 			Promise.resolve({ customTemplate: "Custom Template 1" }),
 			Promise.resolve({ customViewName: "Custom Template Name" }),
 			Promise.resolve({ action: "Complete & Run" }),

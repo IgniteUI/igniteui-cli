@@ -91,6 +91,10 @@ export class BaseProjectLibrary implements ProjectLibrary {
 	public getTemplateByName(name: string): Template {
 		return this.templates.find(x => x.name === name);
 	}
+	public getTemplateDescriptionByName(name: string): string {
+		//return this.templates.find(x => x.name === name);
+		return this.components.find(x => x.name === name).templates[0].description;
+	}
 	public registerTemplate(template: Template): void {
 		if (template) {
 			this.templates.push(template);
@@ -118,6 +122,53 @@ export class BaseProjectLibrary implements ProjectLibrary {
 
 	public getComponentByName(name: string): Component {
 		return this.components.find(x => x.name === name);
+	}
+	public getComponentDescriptionByName(name: string): string {
+		return this.components.find(x => x.name === name).templates[0].description;
+	}
+
+	public getCustomTemplates(): Template[] {
+		return this.customTemplates;
+	}
+
+	public formatOutput(templates: Template[]): string[] {
+		const result: string[] = [];
+		const addCharsCount = 3;
+		const spaceChar = " ";
+		const truncateChar = ".";
+		let maxNameLength = 0;
+		const viewPort = process.stdout.columns;
+		const cutSuffix = 3;
+		const nameLeftPadding = 3;
+
+		for (const template of templates) {
+			if (template.name.length > maxNameLength) {
+				maxNameLength = template.name.length;
+			}
+		}
+		for (const template of templates) {
+			const charsCount = maxNameLength - template.name.length + addCharsCount;
+			const output = template.name + spaceChar.repeat(charsCount) + template.description;
+			let shortOutput = "";
+			//adjust for console characters prior description
+			if (output.length + nameLeftPadding > viewPort) {
+				shortOutput = output.slice(0, (viewPort - nameLeftPadding - cutSuffix));
+				shortOutput = shortOutput + truncateChar.repeat(3);
+				result.push(shortOutput);
+			} else {
+				result.push(output);
+			}
+		}
+		return result;
+	}
+
+	//TODO cleanup
+	public getCustomTemplateDescription(): string[] {
+		const cTemplatesDesc: string[] = [];
+		for (const customTemplate of this.customTemplates) {
+			cTemplatesDesc.push(customTemplate.description);
+		}
+		return cTemplatesDesc;
 	}
 	public getCustomTemplateNames(): string[] {
 		const cTemplates: string[] = [];
