@@ -99,6 +99,7 @@ export class BaseProjectLibrary implements ProjectLibrary {
 
 				const component: Component = {
 					group: template.controlGroup,
+					groupPriority: 0,
 					name: newComponent,
 					templates: []
 				};
@@ -145,7 +146,9 @@ export class BaseProjectLibrary implements ProjectLibrary {
 	}
 
 	public getComponentNamesByGroup(group: string): string[] {
-		return this.components.filter(x => x.group === group).map(x => x.name);
+		return this.components.filter(x => x.group === group)
+			.sort((a, b) => b.groupPriority - a.groupPriority)
+			.map(x => x.name);
 	}
 
 	/**

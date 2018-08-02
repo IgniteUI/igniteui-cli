@@ -9,6 +9,7 @@ class IgxGridComponent extends BaseComponent {
 		super(__dirname);
 		this.name  = "Grid";
 		this.group = "Grids & Lists";
+		this.groupPriority = 10;
 	}
 }
 module.exports = new IgxGridComponent();
