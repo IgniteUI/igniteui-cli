@@ -369,6 +369,37 @@ class Util {
 		}
 	}
 
+	public static incrementName(name: string, baseLength: number): string {
+		const text: string = name.slice(0, baseLength);
+		const number: number = parseInt(name.slice(baseLength + 1), 10) || 0;
+		return `${text} ${number + 1}`;
+	}
+
+	public static getAvailableName(
+		defaultName: string, isApp: boolean, framework?: string, projectType?: string): string {
+
+		const baseLength = defaultName.length;
+		let specificPath = "";
+
+		if (framework === "angular" && projectType === "igx-ts") {
+			specificPath = "\\src\\app";
+		} else if (framework === "angular" && projectType === "ig-ts") {
+			specificPath = "\\src\\app\\components";
+		} else if (framework === "react") {
+			specificPath = "\\client\\components";
+		}
+		if (isApp) {
+			while (Util.directoryExists(path.join(process.cwd(), defaultName))) {
+				defaultName = Util.incrementName(defaultName, baseLength);
+			}
+		} else {
+			while (Util.directoryExists(path.join(process.cwd(), specificPath, Util.lowerDashed(defaultName)))) {
+				defaultName = Util.incrementName(defaultName, baseLength);
+			}
+		}
+		return defaultName;
+	}
+
 	private static propertyByPath(object: any, propPath: string) {
 		if (!propPath) {
 			return object;
