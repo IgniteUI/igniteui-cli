@@ -85,7 +85,8 @@ describe("Unit - PromptSession", () => {
 		expect(Util.log).toHaveBeenCalledWith(Util.greenCheck() + " Project structure generated.");
 		expect(Util.isAlphanumericExt).toHaveBeenCalledTimes(1);
 		expect(Util.isAlphanumericExt).toHaveBeenCalledWith("Test Project");
-		expect(Util.directoryExists).toHaveBeenCalledTimes(1);
+		//+1 call because of Util.getAvailableName calls directoryExists
+		expect(Util.directoryExists).toHaveBeenCalledTimes(2);
 		expect(Util.directoryExists).toHaveBeenCalledWith("Test Project");
 		expect(Util.greenCheck).toHaveBeenCalledTimes(1 + 1);
 		expect(Util.gitInit).toHaveBeenCalled();
@@ -168,6 +169,7 @@ describe("Unit - PromptSession", () => {
 		spyOn(Util, "error");
 		spyOn(inquirer, "prompt").and.returnValues(Promise.resolve({ projectName: "*This will ** not Work *" }),
 			Promise.resolve({ projectName: "Th15 w1ll" }),
+			// incrementing default names will prevent a second error to be thrown
 			Promise.resolve({ projectName: "Th15 w1ll" }),
 			Promise.resolve({ framework: "Custom Framework 1" }),
 			Promise.resolve({ project: "jQuery" }),
@@ -178,16 +180,16 @@ describe("Unit - PromptSession", () => {
 		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(Util.log).toHaveBeenCalledWith("  Generating project structure.");
 		expect(Util.log).toHaveBeenCalledWith("");
-		expect(Util.error).toHaveBeenCalledTimes(2);
+		expect(Util.error).toHaveBeenCalledTimes(1);
 		expect(Util.log).toHaveBeenCalledWith(Util.greenCheck() + " Project structure generated.");
-		expect(Util.isAlphanumericExt).toHaveBeenCalledTimes(3);
+		expect(Util.isAlphanumericExt).toHaveBeenCalledTimes(2);
 		expect(Util.isAlphanumericExt).toHaveBeenCalledWith("*This will ** not Work *");
 		expect(Util.isAlphanumericExt).toHaveBeenCalledWith("Th15 w1ll");
-		expect(Util.directoryExists).toHaveBeenCalledTimes(2);
+		expect(Util.directoryExists).toHaveBeenCalledTimes(3);
 		expect(Util.directoryExists).toHaveBeenCalledWith("Th15 w1ll");
 		expect(Util.greenCheck).toHaveBeenCalledTimes(1 + 1);
 		expect(Util.gitInit).toHaveBeenCalledTimes(0);
-		expect(inquirer.prompt).toHaveBeenCalledTimes(6);
+		expect(inquirer.prompt).toHaveBeenCalledTimes(5);
 		expect(inquirer.prompt).toHaveBeenCalledWith(mockQuestion);
 		expect(mockTemplate.getFrameworkByName).toHaveBeenCalledTimes(1);
 		done();
@@ -312,7 +314,7 @@ describe("Unit - PromptSession", () => {
 		const mockProjectLibrary = jasmine.createSpyObj("mockProjectLibrary", {
 			name: "mockProjectLibrary",
 			getCustomTemplateNames: [mockSelectedTemplate.name, "Custom Template 2"],
-			getTemplateByName: [mockSelectedTemplate],
+			getTemplateByName: mockSelectedTemplate,
 			getProject: () => {
 				return mockProject;
 			}
@@ -326,7 +328,9 @@ describe("Unit - PromptSession", () => {
 		const mockSession = new PromptSession(mockTemplate);
 		spyOn(ProjectConfig, "getConfig").and.returnValue({
 			project: {
-				defaultPort: 4200
+				defaultPort: 4200,
+				framework: "angular",
+				projectType: "igx-ts"
 			}
 		});
 		spyOn(mockSession, "chooseActionLoop").and.callThrough();
@@ -334,6 +338,7 @@ describe("Unit - PromptSession", () => {
 		spyOn(add, "addTemplate").and.returnValue(true);
 		spyOn(PackageManager, "flushQueue").and.returnValue(Promise.resolve(true));
 		spyOn(start, "start").and.returnValue(Promise.resolve(true));
+		spyOn(Util, "getAvailableName").and.callThrough();
 		spyOn(inquirer, "prompt").and.returnValues(
 			Promise.resolve({ action: "Add view" }),
 			Promise.resolve({ customTemplate: "Back" }),
@@ -349,8 +354,9 @@ describe("Unit - PromptSession", () => {
 		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
 		expect(start.start).toHaveBeenCalledTimes(1);
+		expect(Util.getAvailableName).toHaveBeenCalledTimes(1);
 		expect(add.addTemplate).toHaveBeenCalledTimes(1);
-		expect(add.addTemplate).toHaveBeenCalledWith("Custom Template Name", [mockSelectedTemplate]);
+		expect(add.addTemplate).toHaveBeenCalledWith("Custom Template Name", Object({ name: "Custom Template 1" }));
 		done();
 	});
 	it("chooseActionLoop - should run through properly - Add Component", async done => {
