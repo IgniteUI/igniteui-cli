@@ -209,7 +209,7 @@ export class PromptSession {
 			const groups = projectLibrary.getComponentGroups();
 			const groupRes: string = await this.getUserInput({
 				choices: groups,
-				default: groups.find(x => x === "Data Grids") || groups[0],
+				default: groups.find(x => x.includes("Grids")) || groups[0],
 				message: "Choose a group:",
 				name: "componentGroup",
 				type: "list"
