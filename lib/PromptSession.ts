@@ -159,6 +159,10 @@ export class PromptSession {
 				newArray.push(new inquirer.Separator());
 			}
 		}
+		if (array.length > 4) {
+			// additional separator after last item for lists that wrap around
+			newArray.push(new inquirer.Separator(new Array(15).join("=")));
+		}
 		return newArray;
 	}
 
