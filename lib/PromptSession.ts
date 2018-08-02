@@ -37,6 +37,7 @@ export class PromptSession {
 		let theme: string;
 		add.templateManager = this.templateManager;
 		const config = ProjectConfig.getConfig();
+		const defaultProjName = "IG Project";
 
 		if (ProjectConfig.hasLocalConfig() && !config.project.isShowcase) {
 			projLibrary = this.templateManager.getProjectLibrary(config.project.framework, config.project.projectType);
@@ -45,9 +46,11 @@ export class PromptSession {
 			Util.log(""); /* new line */
 
 			let projectName: string;
+			const availableDefaultName = Util.getAvailableName(defaultProjName, true);
 			while (!projectName) {
+				const defaultAppName = availableDefaultName;
 				const nameRes: string = await this.getUserInput({
-					default: "app",
+					default: defaultAppName,
 					message: "Enter a name for your project:",
 					name: "projectName",
 					type: "input"
@@ -259,6 +262,7 @@ export class PromptSession {
 		: Promise<boolean> {
 		let selectedTemplate: Template;
 		const templates: Template[] = component.templates;
+		const config = ProjectConfig.getConfig();
 		if (templates.length === 1) {
 			//get the only one template
 			selectedTemplate = templates[0];
@@ -280,9 +284,11 @@ export class PromptSession {
 		}
 		if (selectedTemplate) {
 			let success = false;
+			const availableDefaultName = Util.getAvailableName(selectedTemplate.name, false,
+				config.project.framework, config.project.projectType);
 			while (!success) {
 				const templateName = await this.getUserInput({
-					default: selectedTemplate.name,
+					default: availableDefaultName,
 					message: "Name your component:",
 					name: "componentName",
 					type: "input"
@@ -314,6 +320,7 @@ export class PromptSession {
 	 * @param theme to use to style the project
 	 */
 	private async addView(projectLibrary: ProjectLibrary, theme: string): Promise<boolean> {
+		const config = ProjectConfig.getConfig();
 		const customTemplateNameRes = await this.getUserInput({
 			choices: projectLibrary.getCustomTemplateNames(),
 			message: "Choose custom view:",
@@ -327,9 +334,11 @@ export class PromptSession {
 		const selectedTemplate = await projectLibrary.getTemplateByName(customTemplateNameRes);
 		if (selectedTemplate) {
 			let success = false;
+			const availableDefaultName = Util.getAvailableName(selectedTemplate.name, false,
+				config.project.framework, config.project.projectType);
 			while (!success) {
 				const customViewNameRes = await this.getUserInput({
-					default: selectedTemplate.name,
+					default: availableDefaultName,
 					message: "Name your view:",
 					name: "customViewName",
 					type: "input"

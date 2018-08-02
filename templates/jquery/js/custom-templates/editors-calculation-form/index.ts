@@ -8,7 +8,7 @@ class DataCalculationFormTemplate extends jQueryTemplate {
 		this.components = [ "Editors", "Combo", "Validator" ];
 		this.listInComponentTemplates = false;
 		this.listInCustomTemplates = true;
-		this.name = "Editors - Data Calculation Form";
+		this.name = "Editors Data Calculation Form";
 		this.description = "This template shows basic options of the igNumericEditor, igTextEditor, igCheckbox, " +
 			"igPercentEditor, igMaskEditor and igDateEditor, demonstrated with a loan calculator.";
 		this.dependencies = [ "igEditors", "igCombo", "igValidator"];
