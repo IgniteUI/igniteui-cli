@@ -121,6 +121,9 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 				return ` ${anchorWrapper.start}${anchorWrapper.href}${anchorWrapper.middle}` +
 				`${anchorWrapper.text}${anchorWrapper.end}`;
 			}).toString();
+			if (selectedFeatures.length > 0) {
+				selectedFeatures = `<p>Active Features:</p><p>${selectedFeatures}</p>`;
+			}
 		}
 		const extraConfig = {
 			"$(checkBoxBind)": checkBoxBind,
