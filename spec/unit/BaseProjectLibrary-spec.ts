@@ -273,6 +273,24 @@ describe("Unit - Base project library ", () => {
 		done();
 	});
 
+	it("should sort component in a group based on priority", async done => {
+		spyOnProperty(BaseProjectLibrary.prototype, "components").and.returnValue([
+			{ name: "Component1", group: "commonGroup", groupPriority: 1 },
+			{ name: "Component2", group: "commonGroup", groupPriority: 20 },
+			{ name: "Component3", group: "commonGroup", groupPriority: 13 },
+			{ name: "Component4", group: "commonGroup", groupPriority: 4 },
+			{ name: "Component5", group: "commonGroup", groupPriority: -4 },
+			{ name: "Component6", group: "commonGroup", groupPriority: 0 },
+			{ name: "Component7", group: "commonGroup", groupPriority: 0 }
+		] as Component[]);
+
+		const library = new BaseProjectLibrary(__dirname);
+		expect(library.getComponentNamesByGroup("commonGroup")).toEqual(
+			["Component2", "Component3", "Component4", "Component1", "Component6", "Component7", "Component5"]
+		);
+		done();
+	});
+
 	it("gets correct project", async done => {
 		spyOn(Util, "getDirectoryNames").and.returnValues(["chart", "combo", "grid"]);
 
