@@ -159,6 +159,10 @@ export class PromptSession {
 				newArray.push(new inquirer.Separator());
 			}
 		}
+		if (array.length > 4) {
+			// additional separator after last item for lists that wrap around
+			newArray.push(new inquirer.Separator(new Array(15).join("=")));
+		}
 		return newArray;
 	}
 
@@ -209,7 +213,7 @@ export class PromptSession {
 			const groups = projectLibrary.getComponentGroups();
 			const groupRes: string = await this.getUserInput({
 				choices: groups,
-				default: groups.find(x => x === "Data Grids") || groups[0],
+				default: groups.find(x => x.includes("Grids")) || groups[0],
 				message: "Choose a group:",
 				name: "componentGroup",
 				type: "list"
