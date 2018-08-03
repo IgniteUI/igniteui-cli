@@ -94,8 +94,8 @@ command = {
 				cd11: !!config.skipGit,
 				cd14: config.project.theme
 			});
-
-			await command.addTemplate(argv.name, selectedTemplate, argv.module);
+			const selectedModule = argv.module || argv.m;
+			await command.addTemplate(argv.name, selectedTemplate, selectedModule);
 			await PackageManager.flushQueue(true);
 			PackageManager.ensureIgniteUISource(config.packagesInstalled, command.templateManager);
 		}
