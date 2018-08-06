@@ -106,30 +106,31 @@ export default class  $(ClassName) extends Component {
 				<div className="App-header">
 					<h2 style={{textAlign: "center"}}>$(description)</h2>
 				</div>
-
-				<$(Control)
-					id="treegrid1"
-					width="100%"
-					dataSource={this.state.flatDS}
-					autoGenerateColumns={false}
-					primaryKey="employeeID"
-					foreignKey="PID"
-					initialExpandDepth="1"
-					columns={[
-						{ headerText: "Employee ID", key: "employeeID", width: "200px", dataType: "number" },
-						{ headerText: "First Name", key: "firstName", width: "220px", dataType: "string" },
-						{ headerText: "Last Name", key: "lastName", width: "220px", dataType: "string" },
-						{ headerText: "Reports To", key: "reportsTo", width: "130px", dataType: "number" }
-					]}
-					features={$(treeGridFeatures)}
-				/>
-				<div style={{marginBottom: "1vw", textAlign: "center"}}>
+				<div style={{display: "flex", flexFlow: "column", alignItems: "center", marginBottom: "1vw"}}>
+					<$(Control)
+						id="treegrid1"
+						width="100%"
+						dataSource={this.state.flatDS}
+						autoGenerateColumns={false}
+						primaryKey="employeeID"
+						foreignKey="PID"
+						initialExpandDepth="1"
+						columns={[
+							{ headerText: "Employee ID", key: "employeeID", width: "200px", dataType: "number" },
+							{ headerText: "First Name", key: "firstName", width: "220px", dataType: "string" },
+							{ headerText: "Last Name", key: "lastName", width: "220px", dataType: "string" },
+							{ headerText: "Reports To", key: "reportsTo", width: "130px", dataType: "number" }
+						]}
+						features={$(treeGridFeatures)}
+					/>
+				
 					<IgButton 
 						click={this.exportFlatDS}
 						onClick={this.exportFlatDS}
 						labelText="Export Flat Data"
 						/>
 				</div>
+				<div style={{display: "flex", flexFlow: "column", alignItems: "center"}}>
 					<$(Control)
 					id="treegrid2"
 					width="100%"
@@ -149,7 +150,7 @@ export default class  $(ClassName) extends Component {
 					renderExpansionIndicatorColumn={true}
 					features={$(treeGridFeatures)}
 					/>
-				<div style={{marginBottom: "1vw", textAlign: "center"}}>
+				
 					<IgButton 
 						click={this.exportHierarchicalDS}
 						onClick={this.exportHierarchicalDS}

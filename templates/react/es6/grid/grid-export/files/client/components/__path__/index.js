@@ -81,7 +81,7 @@ export default class  $(ClassName) extends Component {
 				<div className="App-header">
 					<h2 style={{textAlign: "center"}}>$(description)</h2>
 				</div>
-				<div style={{marginLeft: "36vw"}}>
+				<div style={{textAlign: "center"}}>
 				<IgCombo
 					id="combo"
 					width="200px"

@@ -11,7 +11,7 @@ export default class $(ClassName) extends Component {
         <div className="App-header">
 			<h2 style={{textAlign: "center", marginBottom: "2vw"}}>$(description)</h2>
         </div>
-		<div style={{marginLeft: "38vw"}}>
+		<div style={{display: "flex", flexFlow: "column", alignItems: "center"}}>
         	<$(Control) id="editor" />
 		</div>
       </div>

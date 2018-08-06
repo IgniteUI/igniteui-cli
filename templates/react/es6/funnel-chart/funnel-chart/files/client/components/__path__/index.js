@@ -24,7 +24,7 @@ export default class $(ClassName) extends Component {
 				<div className="$(ClassName)-header">
 					<h2 style={{textAlign: "center", marginBottom: "4%"}}>$(description)</h2>
 				</div>
-				<div style={{marginLeft: "38%" }}>
+				<div style={{display: "flex", flexFlow: "column", alignItems: "center"}}>
 					<$(Control)
 						id="chartNormal"
 						width={325}

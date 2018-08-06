@@ -23,7 +23,7 @@ export default class $(ClassName) extends Component {
 				<div className="$(ClassName)-header">
 					<h2 style={{textAlign: "center"}}>$(description)</h2>
 				</div>
-				<div style={{marginLeft: "32vw"}}>
+				<div style={{display: "flex", flexFlow: "column", alignItems: "center"}}>
 					<$(Control)
 						id="piechart"
 						width="435px"
