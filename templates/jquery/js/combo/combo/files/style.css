@@ -1,4 +1,5 @@
-#combo {
-	position: absolute;
-	margin-left: 30%
+.wrapper {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
 }

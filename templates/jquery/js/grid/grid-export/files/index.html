@@ -20,34 +20,36 @@
 	<div class="content">
 		<h2>$(description)</h2>
 		<div class="group-fields">
-			Export with features:
-			<br />
-			<div class="item">
-				<div id="sorting" class="optionContainer"></div>
-				<label class="item-label" for="sorting">Sorting</label>
+			<div>
+				Export with features:
 			</div>
-			<div class="item">
-				<div id="summaries" class="optionContainer"></div>
-				<label class="item-label" for="summaries">Summaries</label>
-			</div>
-			<div class="item">
-				<div id="colfixing" class="optionContainer"></div>
-				<label class="item-label" for="colfixing">Column Fixing</label>
-			</div>
-			<div class="item">
-				<div id="styling" class="optionContainer"></div>
-				<label class="item-label" for="styling">Grid Styling</label>
+			<div class="options">
+				<div class="item">
+					<div id="sorting" class="optionContainer"></div>
+					<label class="item-label" for="sorting">Sorting</label>
+				</div>
+				<div class="item">
+					<div id="summaries" class="optionContainer"></div>
+					<label class="item-label" for="summaries">Summaries</label>
+				</div>
+				<div class="item">
+					<div id="colfixing" class="optionContainer"></div>
+					<label class="item-label" for="colfixing">Column Fixing</label>
+				</div>
+				<div class="item">
+					<div id="styling" class="optionContainer"></div>
+					<label class="item-label" for="styling">Grid Styling</label>
+				</div>
 			</div>
 		</div>
 
 		<div class="optionContainer">
-			Columns to skip
-			<br />
+			<div>
+				Columns to skip
+			</div>
 			<div id="colstoskip"></div>
+			<input type="button" id="exportButton" />
 		</div>
-		<br/>
-		<input type="button" id="exportButton" />
-		<br />
 		<table id="grid1"></table>
 	</div>
 	<script>

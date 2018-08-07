@@ -1,4 +1,5 @@
-#grid_container {
-	margin-left: 30%;
-	margin-top: 7%;
+.wrapper {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
 }

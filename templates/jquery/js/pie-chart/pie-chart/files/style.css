@@ -1,3 +1,5 @@
-#chart {
-	margin-left: 32%;
+.wrapper {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
 }

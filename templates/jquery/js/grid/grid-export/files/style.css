@@ -1,25 +1,27 @@
 #exportButton {
-	margin-bottom: 8px;
+	margin-bottom: 20px;
+	padding: 4px 16px;
+}
+
+.group-fields {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	margin: 1vw;
+}
+
+.options {
+	display: flex;
+	flex-direction: row;
+	align-self: center;
 }
 
 .optionContainer {
-	display: inline-block;
+	text-align: center;
 }
 
 .item {
-	display: inline-block;
-	height: 30px;
-}
-
-.item~.item {
-	margin-left: 15px;
-}
-
-.item-label {
-	display: block;
-	float: right;
-	margin-left: 5px;
-	line-height: 21px;
+	padding: 10px;
 }
 
 .exporting-overlay {
