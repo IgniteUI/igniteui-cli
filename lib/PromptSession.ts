@@ -1,6 +1,7 @@
 import * as inquirer from "inquirer";
 import * as path from "path";
 import chalk from "../node_modules/chalk";
+import { BaseComponent } from "./BaseComponent";
 import { default as add } from "./commands/add";
 import { default as start } from "./commands/start";
 import { GoogleAnalytics } from "./GoogleAnalytics";
@@ -207,7 +208,6 @@ export class PromptSession {
 		while (!addComponentIsOver) {
 			const groups = projectLibrary.getComponentGroups();
 			const groupRes: string = await this.getUserInput({
-				//choices: groups,
 				choices: groupsChoices,
 				default: groups.find(x => x === "Data Grids") || groups[0],
 				message: "Choose a group:",
@@ -231,10 +231,9 @@ export class PromptSession {
 	 */
 	private async choseComponent(projectLibrary: ProjectLibrary, theme: string, groupName: string): Promise<boolean> {
 		let choseComponentIsOver = false;
-		const componentChoices: Array<{}> = this.generateComponentChoices(projectLibrary, groupName);
 		while (!choseComponentIsOver) {
 			const componentNameRes = await this.getUserInput({
-				choices: componentChoices,
+				choices: this.formatOutput(projectLibrary.getComponentsByGroup(groupName)),
 				message: "Choose a component:",
 				name: "component",
 				type: "list"
@@ -266,10 +265,8 @@ export class PromptSession {
 			//get the only one template
 			selectedTemplate = templates[0];
 		} else {
-			const formatedOutput = projectLibrary.formatOutput(templates);
-
 			const templateRes = await this.getUserInput({
-				choices: formatedOutput,
+				choices: this.formatOutput(templates),
 				message: "Choose one:",
 				name: "template",
 				type: "list"
@@ -280,8 +277,7 @@ export class PromptSession {
 			}
 
 			selectedTemplate = templates.find((value, i, obj) => {
-				//return value.name === templateRes;
-				return templateRes.startsWith(value.name);
+				return value.name === templateRes;
 			});
 		}
 		if (selectedTemplate) {
@@ -321,7 +317,7 @@ export class PromptSession {
 	 */
 	private async addView(projectLibrary: ProjectLibrary, theme: string): Promise<boolean> {
 		const customTemplates: Template[] = projectLibrary.getCustomTemplates();
-		const formatedOutput = projectLibrary.formatOutput(customTemplates);
+		const formatedOutput = this.formatOutput(customTemplates);
 		const customTemplateNameRes = await this.getUserInput({
 			choices: formatedOutput,
 			message: "Choose custom view:",
@@ -500,73 +496,33 @@ export class PromptSession {
 		return groupChoices;
 	}
 
-	/**
-	 * Generates a list of options for choseComponent
-	 * @param projectLibrary to generate options for
-	 * @param groupName to chose components from
-	 * @param componentName template to copy in project
-	 */
-	private generateComponentChoices(
-		projectLibrary: ProjectLibrary,
-		groupName: string,
-		componentName?: string): Array<{}> {
+	private formatOutput(items: Array<Template | Component>): Array<{name: string, value: string, short: string}> {
+		const choiceItems = [];
+		const leftPadding = 2;
+		const rightPadding = 1;
 
-		const componentChoices: Array<{}> = [];
-		const groupedComponents = projectLibrary.getComponentNamesByGroup(groupName);
-		for (const component of groupedComponents) {
-			const hasChildComponents = projectLibrary.getComponentByName(component).templates.length > 1;
-			if (hasChildComponents) {
-				componentChoices.push({
-					name: component + chalk.gray(`...........choose from ${component} templates`),
-					short: component,
-					value: component
-				});
+		const maxNameLength = Math.max(...items.map(x => x.name.length)) + 3;
+		const targetNameLength = Math.max(18, maxNameLength);
+		let description: string;
+		for (const item of items) {
+			const choiceItem = {
+				name: "",
+				short: item.name,
+				value: item.name
+			};
+			choiceItem.name = item.name  +  Util.addColor(".".repeat(targetNameLength - item.name.length), 0);
+			if (item instanceof BaseComponent && item.templates.length <= 1) {
+				description = item.templates[0].description;
 			} else {
-				//case: Charts and Data Entry case where templates are directly nested in a Group.
-				const templateDescription = projectLibrary.getComponentByName(component).templates[0].description;
-				componentChoices.push({
-					name: component + chalk.gray(`...........${templateDescription}`),
-					short: component,
-					value: component
-				});
+				description = item.description;
 			}
+			const max = process.stdout.columns - targetNameLength - leftPadding - rightPadding;
+			description = Util.truncate(description, max, 3, ".");
+			description = Util.addColor(description, 0);
+			choiceItem.name += description;
+			choiceItems.push(choiceItem);
 		}
-		// }
-		return componentChoices;
-	}
-
-	/**
-	 * Generates a list of options for choseComponent
-	 * @param projectLibrary to generate options for
-	 * @param groupName to chose components from
-	 */
-	private generateTemplateChoices(
-		projectLibrary: ProjectLibrary,
-		componentName: string,
-		groupName: string, templates: Template[]): Array<{}> {
-
-		const templateChoices: Array<{}> = [];
-		let templateDescription: string;
-
-		if (templates.length === 1) {
-			templateDescription = templates[0].description;
-			templateChoices.push({
-				name: componentName + chalk.gray(`...........${templateDescription}`),
-				short: componentName,
-				value: componentName
-			});
-		} else {
-			// tslint:disable-next-line:prefer-for-of
-			for (let i = 0; i < templates.length; i++) {
-				templateDescription = templates[i].description;
-				templateChoices.push({
-					name: templates[i] + chalk.gray(`...........${templateDescription}`),
-					short: templates[i],
-					value: templates[i]
-				});
-			}
-		}
-		return templateChoices;
+		return choiceItems;
 	}
 }
 

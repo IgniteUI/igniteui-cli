@@ -29,7 +29,7 @@ interface ProjectLibrary {
 	getComponentGroups(): string[];
 
 	/** Get all components in a **group** available for the framework */
-	getComponentNamesByGroup(group: string): string[];
+	getComponentsByGroup(group: string): Component[];
 
 	getProject(name?: string): ProjectTemplate;
 	/** Returns true is the framework contains project with a specific name */

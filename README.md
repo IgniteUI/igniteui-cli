@@ -12,7 +12,7 @@ Quickly create projects including [Ignite UI for Angular](https://www.infragisti
 ## Overview
 ### Features:
 - Create project structure
-- Add scenarios with Ignite UI components (e.g. Combo, Grid or Chart)
+- Add views with Ignite UI components (e.g. Combo, Grid or Chart)
 - Add scenario based templates with multiple components (e.g. a dashboard)
 - Build and install npm packages
 - Select a theme, support for custom themes coming soon
