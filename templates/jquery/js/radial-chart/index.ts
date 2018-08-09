@@ -9,7 +9,7 @@ class RadialChartComponent extends BaseComponent {
 		super(__dirname);
 		this.name  = "Radial Chart";
 		this.group = "Charts";
-		this.description = "Visualizes categorized data with a line, columns or pie-slice.";
+		this.description = "visualizes categorized data with a line, columns or pie-slice.";
 	}
 }
 module.exports = new RadialChartComponent();

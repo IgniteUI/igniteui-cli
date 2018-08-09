@@ -9,7 +9,7 @@ class DoughnutChartComponent extends BaseComponent {
 		super(__dirname);
 		this.name  = "Doughnut Chart";
 		this.group = "Charts";
-		this.description = `The igDoughnutChart control allows for proportionally illustrating the
+		this.description = `igDoughnutChart control allows for proportionally illustrating the
 							occurrences of a variable.`;
 	}
 }
