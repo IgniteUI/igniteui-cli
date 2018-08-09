@@ -510,16 +510,19 @@ export class PromptSession {
 				short: item.name,
 				value: item.name
 			};
-			choiceItem.name = item.name  +  Util.addColor(".".repeat(targetNameLength - item.name.length), 0);
+			choiceItem.name = item.name;
 			if (item instanceof BaseComponent && item.templates.length <= 1) {
-				description = item.templates[0].description;
+				description = item.templates[0].description || "";
 			} else {
-				description = item.description;
+				description = item.description || "";
 			}
-			const max = process.stdout.columns - targetNameLength - leftPadding - rightPadding;
-			description = Util.truncate(description, max, 3, ".");
-			description = Util.addColor(description, 0);
-			choiceItem.name += description;
+			if (description !== "") {
+				choiceItem.name = item.name  +  Util.addColor(".".repeat(targetNameLength - item.name.length), 0);
+				const max = process.stdout.columns - targetNameLength - leftPadding - rightPadding;
+				description = Util.truncate(description, max, 3, ".");
+				description = Util.addColor(description, 0);
+				choiceItem.name += description;
+			}
 			choiceItems.push(choiceItem);
 		}
 		return choiceItems;
