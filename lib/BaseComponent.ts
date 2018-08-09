@@ -5,7 +5,7 @@ export class BaseComponent implements Component {
 	public templates: Template[];
 	public name: string;
 	public group: string;
-	public description: string = `Components with ${this.name}`;
+	public description: string;
 	private basePath: string = __dirname;
 
 	/**
