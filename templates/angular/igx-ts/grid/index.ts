@@ -10,6 +10,7 @@ class IgxGridComponent extends BaseComponent {
 		this.name  = "Grid";
 		this.group = "Grids & Lists";
 		this.description = "pick from grids: basic or custom";
+		this.groupPriority = 10;
 	}
 }
 module.exports = new IgxGridComponent();

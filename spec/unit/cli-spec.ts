@@ -79,10 +79,15 @@ describe("Unit - Cli.ts", () => {
 		expect(list.execute).toHaveBeenCalled();
 		done();
 	});
-	xit("Should fire properly - fallback to default", async done => {
+	it("Should fire properly - fallback to default", async done => {
 		spyOn(Util , "log");
 		await run.run("Nonexistent command");
-		expect(Util.log).toHaveBeenCalledTimes(2);
+		// expected console output:
+		/*  Starting Step by step mode.
+			For available commands, stop this execution and use --help.
+			new line
+		*/
+		expect(Util.log).toHaveBeenCalledTimes(3);
 		done();
 	});
 });

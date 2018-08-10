@@ -2,6 +2,7 @@ export abstract class MultiTemplateComponent<T extends Template> implements Comp
 	public name: string;
 	public group: string;
 	public description: string;
+	public groupPriority = 0;
 
 	get templates(): T[] {
 		// TODO: prop-full

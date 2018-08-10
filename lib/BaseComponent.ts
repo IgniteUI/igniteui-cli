@@ -6,6 +6,7 @@ export class BaseComponent implements Component {
 	public name: string;
 	public group: string;
 	public description: string;
+	public groupPriority = 0;
 	private basePath: string = __dirname;
 
 	/**
