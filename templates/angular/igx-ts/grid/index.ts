@@ -9,7 +9,7 @@ class IgxGridComponent extends BaseComponent {
 		super(__dirname);
 		this.name  = "Grid";
 		this.group = "Grids & Lists";
-		this.description = "pick from Grids: Basic or Custom";
+		this.description = "pick from grids: basic or custom";
 	}
 }
 module.exports = new IgxGridComponent();

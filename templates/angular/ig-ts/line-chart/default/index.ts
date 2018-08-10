@@ -9,7 +9,7 @@ class LineChartTemplate extends AngularTemplate {
 		this.id = "line-chart";
 		this.projectType = "ig-ts";
 		this.name = "Line Chart";
-		this.description = "Data Chart Line series template";
+		this.description = "igDataChart line series template";
 		this.dependencies = ["igDataChart"];
 	}
 }

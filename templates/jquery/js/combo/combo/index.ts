@@ -11,7 +11,7 @@ class ComboTemplate extends jQueryTemplate {
 		this.framework = "jquery";
 		this.projectType = "js";
 		this.name = "Combo";
-		this.description = "Combo template";
+		this.description = "combo template";
 		this.dependencies = ["igCombo"];
 	}
 }

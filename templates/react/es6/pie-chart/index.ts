@@ -8,7 +8,7 @@ class PieChartComponent extends BaseComponent {
 		super(__dirname);
 		this.name  = "Pie Chart";
 		this.group = "Charts";
-		this.description = "displays pie chars in HTML5 web applications and is based on the Canvas element.";
+		this.description = "igPieChart illustrate proportion.";
 	}
 }
 module.exports = new PieChartComponent();

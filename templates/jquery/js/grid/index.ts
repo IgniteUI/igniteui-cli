@@ -9,7 +9,7 @@ class GridComponent extends BaseComponent {
 		super(__dirname);
 		this.name = "Grid";
 		this.group = "Data Grids";
-		this.description = "pick from Grids: Basic, Custom, Editing, Export, Templating.";
+		this.description = "pick from grids: basic, custom, editing, export, templating.";
 	}
 }
 module.exports = new GridComponent();
