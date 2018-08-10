@@ -8,6 +8,8 @@ import { IgxDialogComponent } from 'igniteui-angular';
 })
 
 export class $(ClassName)Component {
+	public dialogMessage: string = "";
+
 	onDialogOKSelected(args) {
 		args.dialog.close();
 	}
