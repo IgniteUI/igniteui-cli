@@ -268,8 +268,9 @@ describe("Unit - Base project library ", () => {
 		});
 
 		const library = new BaseProjectLibrary(__dirname);
-		expect(library.getComponentNamesByGroup("commonGroup")).toEqual(["chart", "combo"]);
-		expect(library.getComponentNamesByGroup("gridGroup")).toEqual(["grid"]);
+		expect(library.getComponentsByGroup("commonGroup")).toEqual([{
+			group: "commonGroup", name: "chart" }, { group: "commonGroup", name: "combo" }]);
+		expect(library.getComponentsByGroup("gridGroup")).toEqual([{ group: "gridGroup", name: "grid" }]);
 		done();
 	});
 

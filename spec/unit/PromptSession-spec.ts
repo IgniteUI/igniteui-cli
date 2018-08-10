@@ -216,7 +216,8 @@ describe("Unit - PromptSession", () => {
 		const mockComponentTemplates = [mockSelectedTemplate, { name: "Template 2" }];
 		const mockComponent = {
 			name: "Custom Group 1 Component 2",
-			templates: mockComponentTemplates
+			templates: mockComponentTemplates,
+			description: "mockComponent description"
 		};
 		const mockProject = {
 			generateFiles: () => Promise.resolve(true)
@@ -226,7 +227,8 @@ describe("Unit - PromptSession", () => {
 			themes: ["infragistics", "infragistics.less"],
 			getCustomTemplateNames: ["Custom Template 1"],
 			getComponentGroups: ["Custom Group 1", "Custom Group 2"],
-			getComponentNamesByGroup: ["Custom Group 1 Component 1", "Custom Group 1 Component 2"],
+			getComponentsByGroup: [{group: "Custom Group 1", name: "Component 1" },
+				{ group: "Custom Group 1", name: "Component 2" }],
 			getComponentByName: mockComponent,
 			getProject: () => {
 				return mockProject;
@@ -304,7 +306,10 @@ describe("Unit - PromptSession", () => {
 	});
 	it("chooseActionLoop - should run through properly - Add scenario", async done => {
 		const mockSelectedTemplate = {
-			name: "Custom Template 1"
+			name: "Custom Template 1",
+			templates: [{
+				description : "description for Template 1"
+			}]
 		};
 		const mockProject = {
 			generateFiles: () => Promise.resolve(true)
@@ -313,6 +318,7 @@ describe("Unit - PromptSession", () => {
 			name: "mockProjectLibrary",
 			getCustomTemplateNames: [mockSelectedTemplate.name, "Custom Template 2"],
 			getTemplateByName: [mockSelectedTemplate],
+			getCustomTemplates: [mockSelectedTemplate],
 			getProject: () => {
 				return mockProject;
 			}
@@ -350,7 +356,7 @@ describe("Unit - PromptSession", () => {
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
 		expect(start.start).toHaveBeenCalledTimes(1);
 		expect(add.addTemplate).toHaveBeenCalledTimes(1);
-		expect(add.addTemplate).toHaveBeenCalledWith("Custom Template Name", [mockSelectedTemplate]);
+		expect(add.addTemplate).toHaveBeenCalledWith("Custom Template Name", mockSelectedTemplate);
 		done();
 	});
 	it("chooseActionLoop - should run through properly - Add Component", async done => {
@@ -372,9 +378,11 @@ describe("Unit - PromptSession", () => {
 			name: "Template 1",
 			hasExtraConfiguration: () => true,
 			getExtraConfiguration: () => mockExtraConfigurations,
-			setExtraConfiguration: () => { }
+			setExtraConfiguration: () => { },
+			description: "description for Template 1"
 		};
-		const mockComponentTemplates = [mockSelectedTemplate, { name: "Template 2" }];
+		const mockComponentTemplates = [mockSelectedTemplate,
+			{ name: "Template 2"}];
 		const mockComponent = {
 			name: "Custom Group 1 Component 2",
 			templates: mockComponentTemplates
@@ -387,7 +395,12 @@ describe("Unit - PromptSession", () => {
 			themes: ["infragistics", "infragistics.less"],
 			getCustomTemplateNames: ["Custom Template 1"],
 			getComponentGroups: ["Custom Group 1", "Custom Group 2"],
-			getComponentNamesByGroup: ["Custom Group 1 Component 1", "Custom Group 1 Component 2"],
+			getComponentsByGroup:
+			[{ group: "Custom Group 1", name: "Component 1", description : "description for Component 1",
+				// tslint:disable-next-line:align
+				templates: [{ description : "description for Template 1"}] },
+			{group: "Custom Group 1", name: "Component 2", description : "description for Component 2",
+				templates: [{ description : "description for Template 2"}] }],
 			getComponentByName: mockComponent,
 			getProject: () => {
 				return mockProject;
