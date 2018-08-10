@@ -15,3 +15,4 @@ export class $(ClassName)Component {
 	}
 	public closeDialog(evt) {}
 }
+

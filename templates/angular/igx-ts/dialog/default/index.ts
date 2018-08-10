@@ -17,3 +17,4 @@ class IgxDialogTemplate extends IgniteUIForAngularTemplate {
 	}
 }
 module.exports = new IgxDialogTemplate();
+
