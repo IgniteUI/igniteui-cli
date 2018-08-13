@@ -1,18 +1,27 @@
 import { IgniteUIForAngularTemplate } from "../../../../../lib/templates/IgniteUIForAngularTemplate";
 
-class IgxDatePickerTemplate extends IgniteUIForAngularTemplate {
+class IgxInputGroupTemplate extends IgniteUIForAngularTemplate {
 	constructor() {
 		super(__dirname);
-		this.components = ["Date Picker"];
-		this.controlGroup = "Scheduling";
+		this.components = ["Input Group"];
+		this.controlGroup = "Data Entry & Display";
 		this.listInComponentTemplates = true;
-		this.id = "date-picker";
+		this.id = "input-group";
 		this.projectType = "igx-ts";
-		this.name = "Date Picker";
-		this.description = "Basic IgxDatePicker";
-		this.dependencies = [
-			{ import: "IgxDatePickerModule", from: "igniteui-angular" }
-		];
+		this.name = "Input Group";
+		this.description = "IgxInputGroup form view template";
+		this.dependencies = [{
+			from: "igniteui-angular",
+			import: [
+			"IgxButtonModule",
+			"IgxComboModule",
+			"IgxDatePickerModule",
+			"IgxIconModule",
+			"IgxInputGroupModule",
+			"IgxMaskModule",
+			"IgxRippleModule",
+			"IgxTimePickerModule"]
+		}];
 	}
 }
-module.exports = new IgxDatePickerTemplate();
+module.exports = new IgxInputGroupTemplate();
