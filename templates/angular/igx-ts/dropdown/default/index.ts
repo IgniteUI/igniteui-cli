@@ -4,7 +4,7 @@ class IgxDropDownTemplate extends IgniteUIForAngularTemplate {
 	constructor() {
 		super(__dirname);
 		this.components = ["DropDown"];
-		this.controlGroup = "Grids & Lists";
+		this.controlGroup = "Data Entry & Display";
 		this.listInComponentTemplates = true;
 		this.id = "dropdown";
 		this.projectType = "igx-ts";

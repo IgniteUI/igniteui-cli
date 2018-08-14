@@ -8,7 +8,7 @@ class IgxDropDownComponent extends BaseComponent {
 	constructor() {
 		super(__dirname);
 		this.name  = "DropDown";
-		this.group = "Grids & Lists";
+		this.group = "Data Entry & Display";
 	}
 }
 module.exports = new IgxDropDownComponent();
