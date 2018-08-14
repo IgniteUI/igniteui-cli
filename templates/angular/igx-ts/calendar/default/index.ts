@@ -34,9 +34,11 @@ class IgxCalendarTemplate extends IgniteUIForAngularTemplate {
 
 	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
 		let selectionType = "";
+		let selectionMode = "";
 
 		if (this.userExtraConfiguration["selectionType"]) {
 			const type = this.userExtraConfiguration["selectionType"] as string;
+			selectionMode = type;
 			switch (type) {
 				case "Single selection":
 					selectionType = "";
@@ -51,6 +53,7 @@ class IgxCalendarTemplate extends IgniteUIForAngularTemplate {
 		}
 
 		const extraConfig = {
+			"$(selectionMode)": selectionMode,
 			"$(selectionType)": selectionType
 		};
 
