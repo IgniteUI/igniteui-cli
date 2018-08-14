@@ -7,7 +7,7 @@ class IgxDropDownComponent extends BaseComponent {
 	 */
 	constructor() {
 		super(__dirname);
-		this.name  = "DropDown";
+		this.name  = "Drop Down";
 		this.group = "Data Entry & Display";
 	}
 }
