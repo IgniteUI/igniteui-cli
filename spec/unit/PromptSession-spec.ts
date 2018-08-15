@@ -227,7 +227,7 @@ describe("Unit - PromptSession", () => {
 			name: "mockProjectLibrary",
 			themes: ["infragistics", "infragistics.less"],
 			getCustomTemplateNames: ["Custom Template 1"],
-			getComponentGroups: ["Custom Group 1", "Custom Group 2"],
+			getComponentGroupNames: ["Custom Group 1", "Custom Group 2"],
 			getComponentNamesByGroup: ["Custom Group 1 Component 1", "Custom Group 1 Component 2"],
 			getComponentByName: mockComponent,
 			getProject: () => {
@@ -392,7 +392,7 @@ describe("Unit - PromptSession", () => {
 			name: "mockProjectLibrary",
 			themes: ["infragistics", "infragistics.less"],
 			getCustomTemplateNames: ["Custom Template 1"],
-			getComponentGroups: ["Custom Group 1", "Custom Group 2"],
+			getComponentGroupNames: ["Custom Group 1", "Custom Group 2"],
 			getComponentNamesByGroup: ["Custom Group 1 Component 1", "Custom Group 1 Component 2"],
 			getComponentByName: mockComponent,
 			getProject: () => {
