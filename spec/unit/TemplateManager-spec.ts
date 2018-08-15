@@ -142,7 +142,7 @@ describe("Unit - Template manager", () => {
 			require: modulePath => {
 				return {
 					components: ["Grid"],
-					controlGroup: { name: "Grids", description: "Grids description" },
+					controlGroup: "Grids",
 					framework: "jquery",
 					id: modulePath,
 					projectType: "js"
@@ -186,7 +186,7 @@ describe("Unit - Template manager", () => {
 				const [ frameworkId, proj ] = modulePath.split(path.sep).filter(x => x && !x.includes("template"));
 				return {
 					components: ["Grid"],
-					controlGroup: { name: "Grids", description: "Grids description"},
+					controlGroup: "Grids",
 					framework: frameworkId,
 					id: modulePath,
 					projectType: proj
