@@ -8,6 +8,9 @@ export class BaseProjectLibrary implements ProjectLibrary {
 	public name: string;
 	public themes: string[];
 
+	/** Implementation, not part of the interface */
+	public groupDescriptions = new Map<string, string>();
+
 	protected _projectsPath: string = "projects";
 	protected _customTemplatesPath: string = "custom-templates";
 	protected _generateCommandPath: string = "generate";
@@ -132,7 +135,7 @@ export class BaseProjectLibrary implements ProjectLibrary {
 		return this.customTemplates.find((x, y, z) => x.name === name);
 	}
 
-	public getComponentGroups(): string[] {
+	public getComponentGroupNames(): string[] {
 		let groups: string[];
 
 		//poor-man's groupBy reduce
@@ -142,6 +145,22 @@ export class BaseProjectLibrary implements ProjectLibrary {
 			}
 			return prev;
 		}, []);
+		return groups;
+	}
+
+	/**
+	 * Return Component Groups with descriptions
+	 */
+	public getComponentGroups(): ComponentGroup[] {
+		const groups: ComponentGroup[] = [];
+
+		for (const groupName of this.getComponentGroupNames()) {
+			groups.push({
+				name: groupName,
+				// tslint:disable-next-line:object-literal-sort-keys
+				description: this.groupDescriptions.get(groupName) || ""
+			});
+		}
 		return groups;
 	}
 

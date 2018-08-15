@@ -26,7 +26,7 @@ interface ProjectLibrary {
 	getComponentByName(name: string): Component;
 
 	/** Get names for all the component **groups** available for the framework */
-	getComponentGroups(): string[];
+	getComponentGroupNames(): string[];
 
 	/** Get all components in a **group** available for the framework */
 	getComponentNamesByGroup(group: string): string[];
