@@ -242,7 +242,7 @@ describe("Unit - Base project library ", () => {
 		});
 
 		const library = new BaseProjectLibrary(__dirname);
-		expect(library.getComponentGroups()).toEqual(["myChartGroup", "myComboGroup", "myGridGroup"]);
+		expect(library.getComponentGroupNames()).toEqual(["myChartGroup", "myComboGroup", "myGridGroup"]);
 		done();
 	});
 

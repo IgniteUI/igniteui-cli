@@ -193,7 +193,7 @@ export class TemplateManager {
 				Util.error(`Template with id "${template.id}" already exists.`);
 				continue;
 			}
-			if (projectLib.getComponentGroups().indexOf(template.controlGroup) === -1 && !template.listInCustomTemplates) {
+			if (projectLib.getComponentGroupNames().indexOf(template.controlGroup) === -1 && !template.listInCustomTemplates) {
 				Util.error(`No supported group for template with id "${template.id}".`);
 				continue;
 			}
