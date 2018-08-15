@@ -81,7 +81,7 @@ describe("Unit - Template manager", () => {
 		spyOn(Util, "fileExists").and.returnValue(true);
 		const mockProj =  mockProLibFactory("js");
 		this.mockProjLibs = { jquery: [ mockProj ] };
-		let group = "Grids";
+		const group: ComponentGroup = { name: "Grids", description: "Grids Description" };
 		let type = "js";
 		this.customRequire = {
 			require: modulePath => {
@@ -111,11 +111,11 @@ describe("Unit - Template manager", () => {
 		mockProj.projectType = "js";
 
 		resetSpy(Util.error);
-		group = "NotGrids";
+		group.name = "NotGrids";
 		manager = new TemplateManager();
 		expect(mockProj.registerTemplate).toHaveBeenCalledTimes(0);
 		expect(Util.error).toHaveBeenCalledWith(`No supported group for template with id "existing".`);
-		group = "Grids";
+		group.name = "Grids";
 
 		resetSpy(Util.error);
 		type = "ts-not-available";

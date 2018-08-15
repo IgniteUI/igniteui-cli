@@ -210,7 +210,7 @@ export class PromptSession {
 	private async addComponent(projectLibrary: ProjectLibrary, theme: string): Promise<boolean> {
 		let addComponentIsOver = false;
 		while (!addComponentIsOver) {
-			const groups = projectLibrary.getComponentGroups();
+			const groups = projectLibrary.getComponentGroupNames();
 			const groupRes: string = await this.getUserInput({
 				choices: groups,
 				default: groups.find(x => x.includes("Grids")) || groups[0],
