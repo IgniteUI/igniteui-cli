@@ -10,8 +10,8 @@ import {UserService} from './user.service';
   
   export class $(ClassName)Component {
 
-  email = 'newuser@infragistics.com';
-  password = 'custompass';
+  email = '';
+  password = '';
 
   constructor(private api: ApiService, private user: UserService) {
   }

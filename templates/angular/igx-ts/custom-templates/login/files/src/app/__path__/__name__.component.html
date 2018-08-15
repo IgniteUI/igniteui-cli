@@ -1,14 +1,20 @@
-<div class="card mt-5" style="margin:auto;width: 600px;">
-	<div class="card-body">
-	  <h5 class="card-title">Login</h5>
-	  <div class="form-group">
-		<label for="email">Email</label>
-		<input type="text" class="form-control" id="email" placeholder="Email Address" [(ngModel)]="email">
-	  </div>
-	  <div class="form-group">
-		<label for="email">Password</label>
-		<input type="password" class="form-control" id="password" placeholder="Password" [(ngModel)]="password">
-	  </div>
-	  <button type="submit" class="btn btn-primary" (click)="tryLogin()">Login</button>
+<form class="input-group-form">
+	<h3 class="login-title">Welcome Back</h3>
+	<igx-input-group>
+		<igx-prefix>
+			<igx-icon name="account_circle"></igx-icon>
+		</igx-prefix>
+		<label igxLabel for="email">Username</label>
+		<input igxInput id="email" name="email" type="email" [(ngModel)]="email" />
+	</igx-input-group>
+	<igx-input-group>
+		<igx-prefix>
+			<igx-icon name="lock"></igx-icon>
+		</igx-prefix>
+		<input igxInput id="password" name="password" type="password" [(ngModel)]="password" />
+		<label igxLabel for="password">Password</label>
+	</igx-input-group>
+	<div class="button-wrapper">
+		<button igxButton="raised" type="submit" igxRipple (click)="tryLogin()">LOG IN</button>
 	</div>
-  </div>
+</form>
