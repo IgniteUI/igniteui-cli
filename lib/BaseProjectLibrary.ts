@@ -162,18 +162,18 @@ export class BaseProjectLibrary implements ProjectLibrary {
 	// /**
 	//  * Return Component Groups with descriptions
 	//  */
-	// public getComponentGroups(): ComponentGroup[] {
-	// 	const groups: ComponentGroup[] = [];
+	public getComponentGroups(): ComponentGroup[] {
+		const groups: ComponentGroup[] = [];
 
-	// 	for (const groupName of this.getComponentGroupNames()) {
-	// 		groups.push({
-	// 			name: groupName,
-	// 			// tslint:disable-next-line:object-literal-sort-keys
-	// 			description: this.groupDescriptions.get(groupName) || ""
-	// 		});
-	// 	}
-	// 	return groups;
-	// }
+		for (const groupName of this.getComponentGroupNames()) {
+			groups.push({
+				name: groupName,
+				// tslint:disable-next-line:object-literal-sort-keys
+				description: this.groupDescriptions.get(groupName) || ""
+			});
+		}
+		return groups;
+	}
 
 	public getComponentNamesByGroup(group: string): string[] {
 		return this.components.filter(x => x.group === group)

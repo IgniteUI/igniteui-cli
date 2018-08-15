@@ -231,6 +231,7 @@ describe("Unit - PromptSession", () => {
 			getComponentGroupNames: ["Custom Group 1", "Custom Group 2"],
 			getComponentsByGroup: [{group: "Custom Group 1", name: "Component 1" },
 			{ group: "Custom Group 1", name: "Component 2" }],
+			getComponentGroups: [{ description: "Custom Group 2", name: "Group 2" }],
 			getComponentByName: mockComponent,
 			getProject: () => {
 				return mockProject;
@@ -400,6 +401,7 @@ describe("Unit - PromptSession", () => {
 			name: "mockProjectLibrary",
 			themes: ["infragistics", "infragistics.less"],
 			getCustomTemplateNames: ["Custom Template 1"],
+			getComponentGroups: [{ description: "Custom Group 2", name: "Group 2" }],
 			getComponentGroupNames: ["Custom Group 1", "Custom Group 2"],
 			getComponentsByGroup:
 			[{ group: "Custom Group 1", name: "Component 1", description : "description for Component 1",

@@ -11,7 +11,7 @@ export function mockProLibFactory(
 	components = ["Grid"]) {
 	return {
 		getComponentGroupNames: jasmine.createSpy("getComponentGroupNames").and.returnValue(groupNames),
-		//getComponentGroups: jasmine.createSpy("getComponentGroupNames").and.returnValue(groups),
+		getComponentGroups: jasmine.createSpy("getComponentGroupNames").and.returnValue(groups),
 		getComponentNamesByGroup: jasmine.createSpy("getComponentNamesByGroup").and.returnValue(components),
 		hasTemplate: jasmine.createSpy("hasTemplate").and.returnValue(false),
 		projectType: type,
