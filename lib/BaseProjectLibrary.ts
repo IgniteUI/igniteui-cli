@@ -97,8 +97,8 @@ export class BaseProjectLibrary implements ProjectLibrary {
 			this.templates.push(template);
 			const newComponents = template.components.filter(x => !this.components.find(f => f.name === x));
 			for (const newComponent of newComponents) {
-
 				const component: Component = {
+					description: "",
 					group: template.controlGroup,
 					groupPriority: 0,
 					name: newComponent,

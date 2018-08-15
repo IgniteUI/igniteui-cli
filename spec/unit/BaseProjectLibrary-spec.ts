@@ -165,6 +165,7 @@ describe("Unit - Base project library ", () => {
 				// tslint:disable-next-line:no-object-literal-type-assertion
 				return {
 					templates: {
+						//components: { name: folder + "ComponentName", description: "ComponentDescription"},
 						components: { name: folder + "ComponentName"},
 						group: folder + "TemplateGroup",
 						id: folder + "Template",
@@ -178,14 +179,19 @@ describe("Unit - Base project library ", () => {
 
 		const library = new BaseProjectLibrary(__dirname);
 
-		const mockTemplate = library.templates[0];
+		const mockTemplate: Template = library.templates[0];
 		mockTemplate.components = ["newComponent"];
+		// mockTemplate.components = [{
+		// 		description: "ComponentDescription",
+		// 		name: "newComponent"
+		// 	}];
 		mockTemplate.name = "newName";
 		library.registerTemplate(mockTemplate);
 
 		expect(library.getTemplateById("gridTemplate")).toBeTruthy();
 		expect(library.getTemplateByName("newName")).toBeTruthy();
 		expect(library.getComponentByName("newComponent")).toBeTruthy();
+		//expect(library.getComponentByName("newComponent").description).toBe("ComponentDescription");
 		expect(library.templates.length).toEqual(3);
 		done();
 	});
@@ -253,24 +259,37 @@ describe("Unit - Base project library ", () => {
 				const folder = path.basename(modulePath);
 				if (folder !== "grid") {
 					return {
+						description: "common description",
 						group: "commonGroup",
-						name: folder
+						groupPriority: 1,
+						name: folder,
+						templates: []
 					};
 				}
 				if (folder === "grid") {
 					return {
+						description: "grid description",
 						group: folder + "Group",
-						name: folder
+						groupPriority: 2,
+						name: folder,
+						templates: []
 					};
 				} else {
 					fail("unexpected require");
 				}
 		});
+		const expectedCommonGroup: Component[] = [
+			{ group: "commonGroup", name: "chart", description: "common description", groupPriority: 1, templates: [] },
+			{ group: "commonGroup", name: "combo", description: "common description", groupPriority: 1, templates: [] }
+		];
 
+		const expectedGridGroup: Component[] = [
+			{ group: "gridGroup", name: "grid", description: "grid description", groupPriority: 2, templates: [] }
+		];
 		const library = new BaseProjectLibrary(__dirname);
-		expect(library.getComponentsByGroup("commonGroup")).toEqual([{
-			group: "commonGroup", name: "chart" }, { group: "commonGroup", name: "combo" }]);
-		expect(library.getComponentsByGroup("gridGroup")).toEqual([{ group: "gridGroup", name: "grid" }]);
+
+		expect(library.getComponentsByGroup("commonGroup")).toEqual(expectedCommonGroup);
+		expect(library.getComponentsByGroup("gridGroup")).toEqual(expectedGridGroup);
 		done();
 	});
 
