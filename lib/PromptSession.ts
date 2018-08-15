@@ -213,7 +213,7 @@ export class PromptSession {
 		let addComponentIsOver = false;
 		const groupsChoices: Array<{}> = this.generateGroupChoices(projectLibrary);
 		while (!addComponentIsOver) {
-			const groups = projectLibrary.getComponentGroups();
+			const groups = projectLibrary.getComponentGroupNames();
 			const groupRes: string = await this.getUserInput({
 				choices: groupsChoices,
 				default: groups.find(x => x.includes("Grids")) || groups[0],
@@ -495,7 +495,7 @@ export class PromptSession {
 	 * @param projectLibrary to generate options for
 	 */
 	private generateGroupChoices(projectLibrary: ProjectLibrary): Array<{}> {
-		const groups = projectLibrary.getComponentGroups();
+		const groups = projectLibrary.getComponentGroupNames();
 		const groupChoices: Array<{}> = [];
 		for (const group of groups) {
 			groupChoices.push({

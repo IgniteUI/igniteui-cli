@@ -8,6 +8,9 @@ export class BaseProjectLibrary implements ProjectLibrary {
 	public name: string;
 	public themes: string[];
 
+	/** Implementation, not part of the interface */
+	public groupDescriptions = new Map<string, string>();
+
 	protected _projectsPath: string = "projects";
 	protected _customTemplatesPath: string = "custom-templates";
 	protected _generateCommandPath: string = "generate";
@@ -138,7 +141,7 @@ export class BaseProjectLibrary implements ProjectLibrary {
 		return this.customTemplates.find((x, y, z) => x.name === name);
 	}
 
-	public getComponentGroups(): string[] {
+	public getComponentGroupNames(): string[] {
 		let groups: string[];
 
 		//poor-man's groupBy reduce
@@ -153,7 +156,29 @@ export class BaseProjectLibrary implements ProjectLibrary {
 
 	public getComponentsByGroup(group: string): Component[] {
 		return this.components.filter(x => x.group === group)
-				.sort((a, b) => b.groupPriority - a.groupPriority);
+		.sort((a, b) => b.groupPriority - a.groupPriority);
+}
+
+	// /**
+	//  * Return Component Groups with descriptions
+	//  */
+	// public getComponentGroups(): ComponentGroup[] {
+	// 	const groups: ComponentGroup[] = [];
+
+	// 	for (const groupName of this.getComponentGroupNames()) {
+	// 		groups.push({
+	// 			name: groupName,
+	// 			// tslint:disable-next-line:object-literal-sort-keys
+	// 			description: this.groupDescriptions.get(groupName) || ""
+	// 		});
+	// 	}
+	// 	return groups;
+	// }
+
+	public getComponentNamesByGroup(group: string): string[] {
+		return this.components.filter(x => x.group === group)
+			.sort((a, b) => b.groupPriority - a.groupPriority)
+			.map(x => x.name);
 	}
 
 	/**
