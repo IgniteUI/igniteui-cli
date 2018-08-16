@@ -409,11 +409,11 @@ class Util {
 		let specificPath = "";
 
 		if (framework === "angular" && projectType === "igx-ts") {
-			specificPath = "\\src\\app";
+			specificPath = path.join("src", "app");
 		} else if (framework === "angular" && projectType === "ig-ts") {
-			specificPath = "\\src\\app\\components";
+			specificPath =  path.join("src", "app", "components");
 		} else if (framework === "react") {
-			specificPath = "\\client\\components";
+			specificPath = path.join("client", "components");
 		}
 		if (isApp) {
 			while (Util.directoryExists(path.join(process.cwd(), defaultName))) {
