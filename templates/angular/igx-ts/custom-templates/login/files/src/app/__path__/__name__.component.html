@@ -1,4 +1,4 @@
-<form class="input-group-form">
+<form class="input-group-form" id="loginForm">
 	<h3 class="login-title">Welcome Back</h3>
 	<igx-input-group>
 		<igx-prefix>
@@ -18,3 +18,8 @@
 		<button igxButton="raised" type="submit" igxRipple (click)="tryLogin()">LOG IN</button>
 	</div>
 </form>
+
+<div id="successMsg" hidden>
+	<span id="helloMsg"></span>
+	<a (click)="logout()">(Logout)</a>
+</div>
