@@ -1,0 +1,34 @@
+<p>igx-tabs component sample.</p>
+<p>You can read more about configuring the igx-tabs component in the 
+<a href="https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/src/lib/tabs/README.md" target="_blank">README</a> or the 
+<a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/tabs.html" target="_blank">official documentation</a>.</p>
+<igx-tabs>
+	<igx-tabs-group label="MY ALBUMS" icon="library_music">
+	  <div style="margin: 10px 3px 3px 1px">
+		<igx-card>
+		  <igx-card-header class="compact">
+			<igx-avatar src="https://www.infragistics.com/angular-demos/assets/images/card/avatars/mellow_d.jpg" roundShape="true"></igx-avatar>
+			<div class="igx-card-header__tgroup">
+			  <h3 class="igx-card-header__title--small">HERE</h3>
+			  <h5 class="igx-card-header__subtitle">by Melow D</h5>
+			</div>
+		  </igx-card-header>
+		  <igx-card-actions>
+			<div class="igx-card-actions__bgroup">
+			  <button igxButton igxRipple>PLAY</button>
+			</div>
+		  </igx-card-actions>
+		</igx-card>
+	  </div>
+	</igx-tabs-group>
+	<igx-tabs-group label="FAVOURITES" icon="favorite">
+	  <div style="margin: 3px">
+		<h5 class="igx-card-header__subtitle">Add your favourite songs here.</h5>
+	  </div>
+	</igx-tabs-group>
+	<igx-tabs-group label="INFO" icon="info">
+	  <div style="margin: 3px">
+		<h5 class="igx-card-header__subtitle">"Here" is the sixth studio album by American singer and songwriter Melow D.</h5>
+	  </div>
+	</igx-tabs-group>
+</igx-tabs>
