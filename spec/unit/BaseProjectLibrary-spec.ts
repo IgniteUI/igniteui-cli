@@ -165,7 +165,6 @@ describe("Unit - Base project library ", () => {
 				// tslint:disable-next-line:no-object-literal-type-assertion
 				return {
 					templates: {
-						//components: { name: folder + "ComponentName", description: "ComponentDescription"},
 						components: { name: folder + "ComponentName"},
 						group: folder + "TemplateGroup",
 						id: folder + "Template",
@@ -181,17 +180,12 @@ describe("Unit - Base project library ", () => {
 
 		const mockTemplate: Template = library.templates[0];
 		mockTemplate.components = ["newComponent"];
-		// mockTemplate.components = [{
-		// 		description: "ComponentDescription",
-		// 		name: "newComponent"
-		// 	}];
 		mockTemplate.name = "newName";
 		library.registerTemplate(mockTemplate);
 
 		expect(library.getTemplateById("gridTemplate")).toBeTruthy();
 		expect(library.getTemplateByName("newName")).toBeTruthy();
 		expect(library.getComponentByName("newComponent")).toBeTruthy();
-		//expect(library.getComponentByName("newComponent").description).toBe("ComponentDescription");
 		expect(library.templates.length).toEqual(3);
 		done();
 	});

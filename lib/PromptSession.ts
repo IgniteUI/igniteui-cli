@@ -338,7 +338,7 @@ export class PromptSession {
 			return false;
 		}
 		const selectedTemplate = customTemplates.find((value, i, obj) => {
-			return customTemplateNameRes.startsWith(value.name);
+			return customTemplateNameRes === value.name;
 		});
 		if (selectedTemplate) {
 			let success = false;
@@ -370,10 +370,6 @@ export class PromptSession {
 			if (withBackChoice) {
 				options.choices.push(this.WIZARD_BACK_OPTION);
 			}
-			//optional TODO: plug and remove separators where descriptions are available.
-			// if (options.message === "Choose the theme for the project:" || options.message === "Choose framework:") {
-			// 	//options.choices = this.addSeparators(options.choices);
-			// }
 			options.choices = this.addSeparators(options.choices);
 		}
 
