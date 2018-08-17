@@ -11,7 +11,7 @@ class FinancialChartTemplate extends jQueryTemplate {
 		this.framework =  "jquery";
 		this.projectType =  "js";
 		this.name = "Financial Chart";
-		this.description = "Data Chart Financial series template";
+		this.description = "igDataChart financial series template";
 		this.dependencies = ["igDataChart"];
 	}
 

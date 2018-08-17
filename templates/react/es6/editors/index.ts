@@ -15,6 +15,7 @@ class EditorsComponent extends MultiTemplateComponent<EditorsReactTemplate> {
 		super(EditorsReactTemplate, templates);
 		this.name = "Editors";
 		this.group = "Data Entry";
+		this.description = "pick from: igTextEditor, igNumericEditor, igCurrencyEditor, igMaskEditor, igDatePicker.";
 	}
 }
 

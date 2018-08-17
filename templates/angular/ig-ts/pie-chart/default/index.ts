@@ -9,7 +9,7 @@ class PieChartTemplate extends AngularTemplate {
 		this.id = "pie-chart";
 		this.projectType = "ig-ts";
 		this.name = "Pie Chart";
-		this.description = "Pie chart template for Angular";
+		this.description = "igPieChart template for Angular";
 		this.dependencies = ["igPieChart"];
 	}
 }

@@ -9,7 +9,7 @@ class FunnelChartTemplate extends AngularTemplate {
 		this.id = "funnel-chart";
 		this.projectType = "ig-ts";
 		this.name = "Funnel Chart";
-		this.description = "Funnel chart template";
+		this.description = "igFunnelChart template";
 		this.dependencies = ["igFunnelChart"];
 	}
 }

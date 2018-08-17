@@ -9,7 +9,7 @@ class IgxDatePickerTemplate extends IgniteUIForAngularTemplate {
 		this.id = "date-picker";
 		this.projectType = "igx-ts";
 		this.name = "Date Picker";
-		this.description = "Basic IgxDatePicker";
+		this.description = "basic IgxDatePicker";
 		this.dependencies = [
 			{ import: "IgxDatePickerModule", from: "igniteui-angular" }
 		];
