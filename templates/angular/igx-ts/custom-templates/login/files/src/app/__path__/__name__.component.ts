@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {ApiService} from './api.service';
 import {UserService} from './user.service';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-login-view',
@@ -12,9 +13,14 @@ import {UserService} from './user.service';
 
   email = '';
   password = '';
+  public myUser: FormGroup;
 
 
-  constructor(private api: ApiService, private user: UserService) {
+  constructor(private api: ApiService, private user: UserService, fb: FormBuilder) {
+	this.myUser = fb.group( {
+		email: ['', Validators.required],
+		password: ['', Validators.required]
+	  });
   }
 
   tryLogin() {
@@ -30,7 +36,7 @@ import {UserService} from './user.service';
       const form = document.getElementById('loginForm');
 
       this.user.setToken(r.token);
-      msgHello.textContent = 'Hello, ' + this.email + '! You have successfully logged in!';
+      msgHello.textContent = 'Hello, ' + this.email + '! You have successfully logged in! ';
       form.hidden = true;
       msgSuccess.hidden = false;
           }
@@ -44,6 +50,8 @@ import {UserService} from './user.service';
     const msgSuccess = document.getElementById('successMsg');
     const form = document.getElementById('loginForm');
 
+	this.email = '';
+	this.password = '';
     msgSuccess.hidden = true;
     form.hidden = false;
   }

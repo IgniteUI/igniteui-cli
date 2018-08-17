@@ -1,25 +1,25 @@
-<form class="input-group-form" id="loginForm">
+<form class="input-group-form" id="loginForm" [formGroup]="myUser" (ngSubmit)="tryLogin()">
 	<h3 class="login-title">Welcome Back</h3>
 	<igx-input-group>
 		<igx-prefix>
 			<igx-icon name="account_circle"></igx-icon>
 		</igx-prefix>
 		<label igxLabel for="email">Username</label>
-		<input igxInput id="email" name="email" type="email" [(ngModel)]="email" />
+		<input igxInput id="email" name="email" formControlName="email" type="text" [(ngModel)]="email" />
 	</igx-input-group>
 	<igx-input-group>
 		<igx-prefix>
 			<igx-icon name="lock"></igx-icon>
 		</igx-prefix>
-		<input igxInput id="password" name="password" type="password" [(ngModel)]="password" />
+		<input igxInput id="password" name="password" type="password" formControlName="password" [(ngModel)]="password" />
 		<label igxLabel for="password">Password</label>
 	</igx-input-group>
 	<div class="button-wrapper">
-		<button igxButton="raised" type="submit" igxRipple (click)="tryLogin()">LOG IN</button>
+		<button igxButton="raised" type="submit" igxRipple [disabled]="!myUser.valid">LOG IN</button>
 	</div>
 </form>
 
-<div id="successMsg" hidden>
+<div id="successMsg" class="loggedin-container" hidden>
 	<span id="helloMsg"></span>
 	<a (click)="logout()">(Logout)</a>
 </div>

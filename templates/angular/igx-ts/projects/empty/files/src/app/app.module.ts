@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -15,7 +15,8 @@ import { HomeComponent } from './home/home.component';
     HomeComponent
 ],
 imports: [
-    FormsModule,
+	FormsModule,
+	ReactiveFormsModule,
     BrowserModule,
     BrowserAnimationsModule,
 	AppRoutingModule,
