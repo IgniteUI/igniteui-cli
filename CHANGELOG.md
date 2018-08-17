@@ -1,3 +1,35 @@
+<a name="2.1.0"></a>
+# [2.1.0](https://github.com/IgniteUI/igniteui-cli/compare/v2.1.0...v2.0.0) (2018-08-17)
+
+
+### Bug Fixes
+
+* **step-by-step:** add an end separator for longer lists ([76aa019](https://github.com/IgniteUI/igniteui-cli/commit/76aa019))
+* **step-by-step, igx:** select Grids & Lists group by default ([3d368d9](https://github.com/IgniteUI/igniteui-cli/commit/3d368d9))
+* **templates:angular:** active features no longer shows up if no features are selected in Custom Grid Template ([bb0ba68](https://github.com/IgniteUI/igniteui-cli/commit/bb0ba68))
+* **templates:angular:** add module dependencies to angular templates, [#321](https://github.com/IgniteUI/igniteui-cli/issues/321) ([6dd15cd](https://github.com/IgniteUI/igniteui-cli/commit/6dd15cd))
+* **templates:angular:** more blank space before URL in featureUrls array ([0625a66](https://github.com/IgniteUI/igniteui-cli/commit/0625a66))
+* **templates:angular:** update readme links in angular templates, [#321](https://github.com/IgniteUI/igniteui-cli/issues/321) ([34311e5](https://github.com/IgniteUI/igniteui-cli/commit/34311e5))
+
+
+### Features
+
+* **templates:calendar:** add a template for igxCalendar [#333](https://github.com/IgniteUI/igniteui-cli/issues/333) ([e281fe0](https://github.com/IgniteUI/igniteui-cli/commit/e281fe0))
+* **templates:dialog:** add a dialog template ([7f1d5ab](https://github.com/IgniteUI/igniteui-cli/commit/7f1d5ab))
+* **templates:dropdown:** add a dropdown template [#337](https://github.com/IgniteUI/igniteui-cli/issues/337) ([f58f92d](https://github.com/IgniteUI/igniteui-cli/commit/f58f92db6d22fc383b3d5833a7ab35aa10ed40ef))
+* **templates:grid multicolumn headers:** add multicolumn headers template [#340](https://github.com/IgniteUI/igniteui-cli/issues/340) ([e1acab5](https://github.com/IgniteUI/igniteui-cli/commit/e1acab58da9b8b07abc403145b19355750c58c8b))
+* **templates:input group:** add input group form view template [#338](https://github.com/IgniteUI/igniteui-cli/issues/338) ([062875e](https://github.com/IgniteUI/igniteui-cli/commit/062875ed91f5c797a18c882c30de9667c2d4d755))
+* **templates:tabs:** add tabs template [#335](https://github.com/IgniteUI/igniteui-cli/issues/335) ([062875e](https://github.com/IgniteUI/igniteui-cli/commit/062875ed91f5c797a18c882c30de9667c2d4d755)) ([38105e9](https://github.com/IgniteUI/igniteui-cli/commit/38105e9355a881c6edfcfef04dc5115989437571))
+* **step-by-step:** add `groupPriority` to sort components within a group [#303](https://github.com/IgniteUI/igniteui-cli/issues/303) ([ca77f5b](https://github.com/IgniteUI/igniteui-cli/commit/ca77f5b))
+* **templates:angular:** add links to documentation on enabled features in custom grid template ([d1e94b2](https://github.com/IgniteUI/igniteui-cli/commit/d1e94b2))
+* add a ComponentGroup interface to describe groups in step by step ([71d3535](https://github.com/IgniteUI/igniteui-cli/commit/71d3535))
+
+* **templates: radial gauge/lineargauge/bulletgraph** Add sample templates for Radial and Linear Gauge and Bulletgraph [#319](https://github.com/IgniteUI/igniteui-cli/issues/319) ([4986508](https://github.com/IgniteUI/igniteui-cli/commit/49865087fa0b77f12999d010999535d78bfc373f))
+* **step-by-step** Default project names and components have uniquie name suggestion based on the folder structure [#215](https://github.com/IgniteUI/igniteui-cli/issues/215) [#216](https://github.com/IgniteUI/igniteui-cli/issues/216) ([d779991](https://github.com/IgniteUI/igniteui-cli/commit/d779991fbd40303e25c3d558bff132312f5ca989))
+* **step-by-step** Update default project name to IG Project [#216](https://github.com/IgniteUI/igniteui-cli/issues/216) ([fbf7d4a](https://github.com/IgniteUI/igniteui-cli/commit/fbf7d4a))
+* **step-by-step** add descriptions to the groups, compoents and templates. [#218](https://github.com/IgniteUI/igniteui-cli/issues/218) ([1768729](https://github.com/IgniteUI/igniteui-cli/commit/176872969b7d9de8e1110c3acca26d744f0e93e1))
+
+
 # [2.0.0](https://github.com/IgniteUI/igniteui-cli/compare/v1.3.4...v2.0.0) (2018-07-20)
 
 
