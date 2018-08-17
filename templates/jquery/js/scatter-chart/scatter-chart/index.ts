@@ -11,7 +11,7 @@ class ScatterChartTemplate extends jQueryTemplate {
 		this.framework = "jquery";
 		this.projectType = "js";
 		this.name = "Scatter Chart";
-		this.description = "Data Chart Scatter series template";
+		this.description = "igDataChart Scatter series template";
 		this.dependencies = ["igDataChart"];
 	}
 }

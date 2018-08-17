@@ -17,7 +17,7 @@ class HierarchicalGridEditingTemplate extends jQueryTemplate {
 		super(__dirname);
 		this.id = "hierarchical-grid-custom";
 		this.name = "Hierarchical Grid Custom";
-		this.description = "Hierarchical Grid custom template";
+		this.description = "igHierarchicalGrid custom template";
 		this.projectType = "js";
 		this.components = ["Hierarchical Grid"];
 		this.controlGroup = "Data Grids";

@@ -13,7 +13,7 @@ class FileExplorerTemplate extends jQueryTemplate {
 		this.id = "tree-grid-file-explorer";
 		this.name = "Tree Grid File Explorer";
 		this.controlGroup = "Data Grids";
-		this.description = "File explorer sample using igTreeGrid";
+		this.description = "file explorer sample using igTreeGrid";
 		this.dependencies = ["igTreeGrid"];
 		this.projectType = "js";
 		this.listInComponentTemplates = false;

@@ -15,7 +15,7 @@ class GridExportTemplate extends ReactTemplate {
 		super(__dirname);
 		this.id = "grid-export";
 		this.name = "Grid Exporting";
-		this.description = "Grid exporting template for React";
+		this.description = "igGrid exporting template for React";
 		this.projectType = "es6";
 		this.components = ["Grid"];
 		this.widget = "igGrid";

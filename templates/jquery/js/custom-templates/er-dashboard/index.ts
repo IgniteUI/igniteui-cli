@@ -9,7 +9,7 @@ class ERDashboardTemplate extends jQueryTemplate {
 		this.listInComponentTemplates = false;
 		this.listInCustomTemplates = true;
 		this.name = "ER Dashboard";
-		this.description = "This sample shows a dashboard for emergency room monitoring.";
+		this.description = "this sample shows a dashboard for emergency room monitoring.";
 		this.dependencies = [ "igGrid", "igCombo", "igDataChart", "igTileManager"];
 	}
 

@@ -369,6 +369,33 @@ class Util {
 		}
 	}
 
+	/**
+	 * Truncating text to fit console viewPort and appending specified truncate characters at the end
+	 * to indicate text is truncated.
+	 * @param text Text to be used.
+	 * @param limit max viewPort.
+	 * @param truncateCount How many characters to be replaced at the text end with a specified truncateChar.
+	 * @param truncateChar Char to use for truncated text.
+	 */
+	public static truncate(text: string, limit: number, count = 3, truncateChar = ".") {
+		//adjust for console characters prior description
+		if (text.length > limit) {
+			text = text.slice(0, (limit - count)).trim() + truncateChar.repeat(count);
+		}
+		return text;
+	}
+
+	/**
+	 * to indicate text is truncated.
+	 * @param text Text to be used.
+	 * @param startIndex Apply color from this index on.
+	 */
+	public static addColor(text: string, startIndex: number) {
+		const name = text.slice(0, startIndex);
+		const separatedDescription = text.slice(startIndex);
+		return name + chalk.gray(`${separatedDescription}`);
+	}
+
 	public static incrementName(name: string, baseLength: number): string {
 		const text: string = name.slice(0, baseLength);
 		const number: number = parseInt(name.slice(baseLength + 1), 10) || 0;
@@ -382,11 +409,11 @@ class Util {
 		let specificPath = "";
 
 		if (framework === "angular" && projectType === "igx-ts") {
-			specificPath = "\\src\\app";
+			specificPath = path.join("src", "app");
 		} else if (framework === "angular" && projectType === "ig-ts") {
-			specificPath = "\\src\\app\\components";
+			specificPath =  path.join("src", "app", "components");
 		} else if (framework === "react") {
-			specificPath = "\\client\\components";
+			specificPath = path.join("client", "components");
 		}
 		if (isApp) {
 			while (Util.directoryExists(path.join(process.cwd(), defaultName))) {

@@ -14,7 +14,7 @@ class HierarchicalGridExportTemplate extends ReactTemplate {
 		this.id = "hierarchical-grid-export";
 		this.name = "Export Hierarchical Grid";
 		this.widget = "igHierarchicalGrid";
-		this.description = "Hierarchical Grid export template for React";
+		this.description = "igHierarchicalGrid export template for React";
 		this.projectType = "es6";
 		this.components = ["Hierarchical Grid"];
 		this.controlGroup = "Data Grids";

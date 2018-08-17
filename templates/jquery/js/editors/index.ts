@@ -18,6 +18,7 @@ class EditorsComponent extends MultiTemplateComponent<EditorsJQueryTemplate> {
 			super(EditorsJQueryTemplate, templates);
 			this.name = "Editors";
 			this.group = "Data Entry";
+			this.description = "pick from: igTextEditor, igNumericEditor, igCurrencyEditor, igMaskEditor, igDatePicker.";
 	}
 }
 
