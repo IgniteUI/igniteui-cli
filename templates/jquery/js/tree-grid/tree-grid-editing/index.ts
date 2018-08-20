@@ -18,7 +18,7 @@ class TreeGridEditingTemplate extends jQueryTemplate {
 		this.extraConfigurations = [];
 		this.id = "tree-grid-editing";
 		this.name = "TreeGrid Editing";
-		this.description = "Tree Grid editing template";
+		this.description = "igTreeGrid editing template";
 		this.projectType = "js";
 		this.components = ["Tree Grid"];
 		this.controlGroup = "Data Grids";

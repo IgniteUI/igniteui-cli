@@ -11,7 +11,7 @@ class FinancialChartComponent extends ReactTemplate {
 		this.id = "financial-chart";
 		this.name = "Financial Chart";
 		this.widget = "igDataChart";
-		this.description = "Financial Chart template for React";
+		this.description = "financial chart template for React";
 		this.projectType = "es6";
 		this.components = ["Financial Chart"];
 		this.controlGroup = "Charts";

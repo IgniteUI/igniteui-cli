@@ -1,0 +1,32 @@
+:host {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.sample-wrapper {
+    width: 100%;
+	height: 100%;
+	position: relative;
+    margin: 0 auto;
+    background: transparent;
+}
+.input-group-form{
+	border: 2px solid #731963;
+	padding: 15px;
+}
+.sample-title {
+    color: #731963;
+    margin-bottom: 24px;
+}
+.sample-title .light {
+    font-weight: 400;
+}
+.button-wrapper{
+	margin-top: 15px;
+}
+button{
+    background-color:#731963;
+    border-color:#731963;
+    color: white;
+}

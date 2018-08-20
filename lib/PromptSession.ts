@@ -1,4 +1,7 @@
 import * as inquirer from "inquirer";
+import * as path from "path";
+import chalk from "../node_modules/chalk";
+import { BaseComponent } from "./BaseComponent";
 import { default as add } from "./commands/add";
 import { default as start } from "./commands/start";
 import { GoogleAnalytics } from "./GoogleAnalytics";
@@ -95,7 +98,7 @@ export class PromptSession {
 	public async chooseActionLoop(projectLibrary: ProjectLibrary, theme: string) {
 		let actionIsOver = false;
 		while (!actionIsOver) {
-			const actionChoices: string[] = this.generateActionChoices(projectLibrary);
+			const actionChoices: Array<{}> = this.generateActionChoices(projectLibrary);
 			Util.log(""); /* new line */
 			const action: string = await this.getUserInput({
 				choices: actionChoices,
@@ -110,7 +113,7 @@ export class PromptSession {
 					actionIsOver = await this.addComponent(projectLibrary, theme);
 					break;
 				}
-				case "Add view": {
+				case "Add scenario": {
 					actionIsOver = await this.addView(projectLibrary, theme);
 					break;
 				}
@@ -148,7 +151,7 @@ export class PromptSession {
 
 	/**
 	 * Returns a new array with inquirer.Separator() added between items
-	 * @param array The original array to add separatorfdks to
+	 * @param array The original array to add separator to
 	 */
 	private addSeparators(array: any[]): any[] {
 		const newArray = [];
@@ -157,6 +160,10 @@ export class PromptSession {
 			if (i + 1 < array.length) {
 				newArray.push(new inquirer.Separator());
 			}
+		}
+		if (array.length > 4) {
+			// additional separator after last item for lists that wrap around
+			newArray.push(new inquirer.Separator(new Array(15).join("=")));
 		}
 		return newArray;
 	}
@@ -205,10 +212,10 @@ export class PromptSession {
 	private async addComponent(projectLibrary: ProjectLibrary, theme: string): Promise<boolean> {
 		let addComponentIsOver = false;
 		while (!addComponentIsOver) {
-			const groups = projectLibrary.getComponentGroups();
+			const groups = projectLibrary.getComponentGroupNames();
 			const groupRes: string = await this.getUserInput({
-				choices: groups,
-				default: groups.find(x => x === "Data Grids") || groups[0],
+				choices: this.formatOutput(projectLibrary.getComponentGroups()),
+				default: groups.find(x => x.includes("Grids")) || groups[0],
 				message: "Choose a group:",
 				name: "componentGroup",
 				type: "list"
@@ -232,7 +239,7 @@ export class PromptSession {
 		let choseComponentIsOver = false;
 		while (!choseComponentIsOver) {
 			const componentNameRes = await this.getUserInput({
-				choices: projectLibrary.getComponentNamesByGroup(groupName),
+				choices: this.formatOutput(projectLibrary.getComponentsByGroup(groupName)),
 				message: "Choose a component:",
 				name: "component",
 				type: "list"
@@ -243,8 +250,6 @@ export class PromptSession {
 			}
 
 			const component = projectLibrary.getComponentByName(componentNameRes);
-
-			// runTemplateCollection (item: Template[])
 			choseComponentIsOver = await this.getTemplate(projectLibrary, theme, groupName, component);
 		}
 		return true;
@@ -267,7 +272,7 @@ export class PromptSession {
 			selectedTemplate = templates[0];
 		} else {
 			const templateRes = await this.getUserInput({
-				choices: templates.map(x => x.name),
+				choices: this.formatOutput(templates),
 				message: "Choose one:",
 				name: "template",
 				type: "list"
@@ -319,9 +324,11 @@ export class PromptSession {
 	 * @param theme to use to style the project
 	 */
 	private async addView(projectLibrary: ProjectLibrary, theme: string): Promise<boolean> {
+		const customTemplates: Template[] = projectLibrary.getCustomTemplates();
+		const formatedOutput = this.formatOutput(customTemplates);
 		const config = ProjectConfig.getConfig();
 		const customTemplateNameRes = await this.getUserInput({
-			choices: projectLibrary.getCustomTemplateNames(),
+			choices: formatedOutput,
 			message: "Choose custom view:",
 			name: "customTemplate",
 			type: "list"
@@ -330,7 +337,9 @@ export class PromptSession {
 		if (customTemplateNameRes === this.WIZARD_BACK_OPTION) {
 			return false;
 		}
-		const selectedTemplate = await projectLibrary.getTemplateByName(customTemplateNameRes);
+		const selectedTemplate = customTemplates.find((value, i, obj) => {
+			return customTemplateNameRes === value.name;
+		});
 		if (selectedTemplate) {
 			let success = false;
 			const availableDefaultName = Util.getAvailableName(selectedTemplate.name, false,
@@ -455,16 +464,61 @@ export class PromptSession {
 	 * Generates a list of options for chooseActionLoop
 	 * @param projectLibrary to generate options for
 	 */
-	private generateActionChoices(projectLibrary: ProjectLibrary): string[] {
-		const actionChoices: string[] = ["Complete & Run"];
+	private generateActionChoices(projectLibrary: ProjectLibrary): Array<{}> {
+		const actionChoices: Array<{}> = [{
+			name: "Complete & Run" + chalk.gray("..........install packages and run in the default browser"),
+			short: "Complete & Run",
+			value: "Complete & Run"
+		}];
 		if (projectLibrary.components.length > 0) {
-			actionChoices.push("Add component");
+			actionChoices.push({
+				name:  "Add component" + chalk.gray("...........add a specific component view (e.g a grid)"),
+				short: "Add component", // displayed result after selection
+				value: "Add component" // actual selection value
+			});
 		}
 		if (projectLibrary.getCustomTemplateNames().length > 0) {
-			actionChoices.push("Add view");
+			actionChoices.push({
+				name: "Add scenario " + chalk.gray("...........add a predefined scenario view (e.g grid or dashboard)"),
+				short: "Add scenario",
+				value: "Add scenario"
+			});
 		}
 
 		return actionChoices;
+	}
+
+	private formatOutput(items: Array<Template | Component | ComponentGroup>):
+							Array<{name: string, value: string, short: string}> {
+		const choiceItems = [];
+		const leftPadding = 2;
+		const rightPadding = 1;
+
+		const maxNameLength = Math.max(...items.map(x => x.name.length)) + 3;
+		const targetNameLength = Math.max(18, maxNameLength);
+		let description: string;
+		for (const item of items) {
+			const choiceItem = {
+				name: "",
+				short: item.name,
+				value: item.name
+			};
+			choiceItem.name = item.name;
+			if (item instanceof BaseComponent && item.templates.length <= 1) {
+				description = item.templates[0].description || "";
+			} else {
+				description = item.description || "";
+			}
+			if (description !== "") {
+				choiceItem.name = item.name  +  Util.addColor(".".repeat(targetNameLength - item.name.length), 0);
+				const max = process.stdout.columns - targetNameLength - leftPadding - rightPadding;
+				description = Util.truncate(description, max, 3, ".");
+				description = Util.addColor(description, 0);
+				choiceItem.name += description;
+			}
+			choiceItems.push(choiceItem);
+		}
+		return choiceItems;
 	}
 }
 

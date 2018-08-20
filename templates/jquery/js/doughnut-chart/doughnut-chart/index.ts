@@ -11,7 +11,7 @@ class DoughnutChartTemplate extends jQueryTemplate {
 		this.framework =  "jquery";
 		this.projectType =  "js";
 		this.name = "Doughnut Chart";
-		this.description = "Doughnut chart template";
+		this.description = "igDoughnutChart template";
 		this.dependencies = ["igDoughnutChart"];
 	}
 

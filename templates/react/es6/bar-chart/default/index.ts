@@ -11,7 +11,7 @@ class BarChartTemplate extends ReactTemplate {
 		this.id = "bar-chart";
 		this.name = "Bar Chart";
 		this.widget = "igDataChart";
-		this.description = "Data Chart Bar series template";
+		this.description = "igDataChart bar series template";
 		this.projectType = "es6";
 		this.components = ["Bar Chart"];
 		this.controlGroup = "Charts";

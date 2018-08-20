@@ -11,7 +11,7 @@ class PieChartTemplate extends ReactTemplate {
 		this.id = "pie-chart";
 		this.name = "Pie Chart";
 		this.widget = "igPieChart";
-		this.description = "Pie Chart template for React";
+		this.description = "igPieChart chart template for React";
 		this.projectType = "es6";
 		this.components = ["Pie Chart"];
 		this.controlGroup = "Charts";

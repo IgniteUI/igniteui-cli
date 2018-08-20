@@ -14,7 +14,7 @@ class TreeGridExportTemplate extends ReactTemplate {
 		super(__dirname);
 		this.id = "tree-grid-export";
 		this.name = "Tree Grid Exporting";
-		this.description = "Tree grid exporting template for React";
+		this.description = "igTreeGrid exporting template for React";
 		this.projectType = "es6";
 		this.components = ["Tree Grid"];
 		this.widget = "igTreeGrid";
