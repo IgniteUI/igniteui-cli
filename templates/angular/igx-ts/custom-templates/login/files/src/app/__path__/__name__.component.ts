@@ -13,14 +13,25 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
   email = '';
   password = '';
+  firstName = '';
+  lastName = '';
+  newEmail = '';
+  newPassword = '';
   public myUser: FormGroup;
-
+  public myRegistration: FormGroup;
 
   constructor(private api: ApiService, private user: UserService, fb: FormBuilder) {
 	this.myUser = fb.group( {
 		email: ['', Validators.required],
 		password: ['', Validators.required]
 	  });
+
+	this.myRegistration = fb.group( {
+		newEmail: ['', Validators.required],
+		newPassword: ['', Validators.required],
+		firstName: ['', Validators.required],
+		lastName: ['', Validators.required]
+	});
   }
 
   tryLogin() {
@@ -46,13 +57,43 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
         });
   }
 
+  showRegistrationForm() {
+    const loginForm = document.getElementById('loginForm');
+    const registrationForm = document.getElementById('registrationForm');
+
+    loginForm.hidden = true;
+    registrationForm.hidden = false;
+  }
+
+  tryRegister() {
+    this.api.register(
+      this.firstName,
+      this.lastName,
+      this.newEmail,
+      this.newPassword
+    )
+      .subscribe(
+        r => {
+          const msgSuccess = document.getElementById('registrationSuccessMsg');
+          const registrationForm = document.getElementById('registrationForm');
+
+          registrationForm.hidden = true;
+          msgSuccess.hidden = false;
+        },
+        r => {
+          alert(r.error.error);
+        });
+  }
+
   logout() {
-    const msgSuccess = document.getElementById('successMsg');
+	const msgSuccess = document.getElementById('successMsg');
+	const msgRegistrationSuccess = document.getElementById('registrationSuccessMsg');
     const form = document.getElementById('loginForm');
 
 	this.email = '';
 	this.password = '';
-    msgSuccess.hidden = true;
+	msgSuccess.hidden = true;
+	msgRegistrationSuccess.hidden = true;
     form.hidden = false;
   }
 }

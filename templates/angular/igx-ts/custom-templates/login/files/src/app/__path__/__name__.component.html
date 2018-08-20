@@ -17,9 +17,39 @@
 	<div class="button-wrapper">
 		<button igxButton="raised" type="submit" igxRipple [disabled]="!myUser.valid">LOG IN</button>
 	</div>
+	<div class="register-container">
+		<a (click)="showRegistrationForm()">Register</a>
+	</div>
 </form>
 
 <div id="successMsg" class="loggedin-container" hidden>
 	<span id="helloMsg"></span>
 	<a (click)="logout()">(Logout)</a>
+</div>
+
+<form class="input-group-form" id="registrationForm" [formGroup]="myRegistration" (ngSubmit)="tryRegister()" hidden>
+	<h3 class="registration-title">Create your account</h3>
+	<igx-input-group>
+		<label igxLabel for="firstName">First Name</label>
+		<input igxInput id="firstName" name="firstName" formControlName="firstName" type="text" [(ngModel)]="firstName" />
+	</igx-input-group>
+	<igx-input-group>
+		<label igxLabel for="lastName">Last Name</label>
+		<input igxInput id="lastName" name="lastName" formControlName="lastName" type="text" [(ngModel)]="lastName" />
+	</igx-input-group>
+	<igx-input-group>
+		<label igxLabel for="newEmail">Username</label>
+		<input igxInput id="newEmail" name="newEmail" formControlName="newEmail" type="text" [(ngModel)]="newEmail" />
+	</igx-input-group>
+	<igx-input-group>
+		<input igxInput id="newPassword" name="newPassword" type="password" formControlName="newPassword" [(ngModel)]="newPassword" />
+		<label igxLabel for="newPassword">Password</label>
+	</igx-input-group>
+	<div class="button-wrapper">
+		<button igxButton="raised" type="submit" igxRipple [disabled]="!myRegistration.valid">SIGN UP</button>
+	</div>
+</form>
+
+<div id="registrationSuccessMsg" class="loggedin-container" hidden>
+	<span id="registrationMsg">Thank you for signing up! You can now <a (click)="logout()">sign in</a> using your credentials</span>
 </div>

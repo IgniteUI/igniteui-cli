@@ -1,10 +1,10 @@
-.login-title {
+.login-title, .registration-title {
     color: #66ccff;
 }
 
 .input-group-form, .loggedin-container {
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
-    padding: 24px 16px;
+    padding: 34px 16px;
 	margin-bottom: 48px;
 	margin-top: 20px;
 }
@@ -17,4 +17,9 @@ button {
     width: 100%;
     background-color:#3399ff;
     color: white;
+}
+
+.register-container {
+    float: right;
+    margin: 2px 8px;
 }
