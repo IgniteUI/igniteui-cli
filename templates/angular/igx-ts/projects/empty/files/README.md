@@ -41,3 +41,8 @@ Run `ig test --e2e` to execute the end-to-end tests via [Protractor](http://www.
 ### Further help
 
 To get more help on the IgniteUI CLI go check out the [IgniteUI CLI Wiki](https://github.com/IgniteUI/igniteui-cli/wiki).
+
+## Angular CLI compatibility
+### Code scaffolding
+
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
