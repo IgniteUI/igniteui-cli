@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ApiService} from './api.service';
+import {AuthenticationService} from './authentication.service';
 import {UserService} from './user.service';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
@@ -20,7 +20,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
   public myUser: FormGroup;
   public myRegistration: FormGroup;
 
-  constructor(private api: ApiService, private user: UserService, fb: FormBuilder) {
+  constructor(private authentication: AuthenticationService, private user: UserService, fb: FormBuilder) {
 	this.myUser = fb.group( {
 		email: ['', Validators.required],
 		password: ['', Validators.required]
@@ -35,7 +35,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
   }
 
   tryLogin() {
-    this.api.login(
+    this.authentication.login(
       this.email,
       this.password
     )
@@ -66,7 +66,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
   }
 
   tryRegister() {
-    this.api.register(
+    this.authentication.register(
       this.firstName,
       this.lastName,
       this.newEmail,

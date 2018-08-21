@@ -7,7 +7,7 @@ import {User} from './model/UserModel'
 @Injectable({
   providedIn: 'root'
 })
-export class ApiService {
+export class AuthenticationService {
 
   constructor(private http: HttpClient) {
 
