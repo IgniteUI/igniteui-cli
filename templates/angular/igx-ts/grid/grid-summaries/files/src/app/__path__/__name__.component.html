@@ -1,0 +1,44 @@
+<p>igx-grid component with a predefined set of default summaries and a custom summary.</p>
+<p>You can read more about configuring the igx-grid summaries feature in the
+    <a href="https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/src/lib/grid/README.md" target="_blank">README</a> or the
+    <a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid_summaries.html" target="_blank">official documentation</a>.</p>
+
+<igx-grid #sampleGrid [data]="localData" [autoGenerate]="false" width="900px" height="600px" [paging]="true">
+    <igx-column field="FirstName" header="First Name" [resizable]="true" [hasSummary]="true">
+        <ng-template igxHeader let-col>
+            <span style="float:left">{{col.field}}</span>
+            <igx-icon name="functions" class="header-icon" color="{{ col.hasSummary ? '#731963' : '' }}" (click)="toggleSummary(col.field)">functions</igx-icon>
+        </ng-template>
+    </igx-column>
+    <igx-column field="LastName" header="Last Name" [resizable]="true" [hasSummary]="true">
+        <ng-template igxHeader let-col>
+            <span style="float:left">{{col.field}}</span>
+            <igx-icon name="functions" class="header-icon" color="{{ col.hasSummary ? '#731963' : '' }}" (click)="toggleSummary(col.field)">functions</igx-icon>
+        </ng-template>
+    </igx-column>
+    <igx-column field="Country" header="Country" [resizable]="true" [hasSummary]="true">
+        <ng-template igxHeader let-col>
+            <span style="float:left">{{col.field}}</span>
+            <igx-icon name="functions" class="header-icon" color="{{ col.hasSummary ? '#731963' : '' }}" (click)="toggleSummary(col.field)">functions</igx-icon>
+        </ng-template>
+    </igx-column>
+    <igx-column field="Age" header="Age" [resizable]="true" [editable]="true" [dataType]="'number'" [hasSummary]="true">
+        <ng-template igxHeader let-col>
+            <span style="float:left">{{col.field}}</span>
+            <igx-icon name="functions" class="header-icon" color="{{ col.hasSummary ? '#731963' : '' }}" (click)="toggleSummary(col.field)">functions</igx-icon>
+        </ng-template>
+    </igx-column>
+    <igx-column field="RegistererDate" header="Registerer Date" [formatter]="formatDate" [resizable]="true" [dataType]="'date'"
+        [hasSummary]="true" [summaries]="customDateSummary">
+        <ng-template igxHeader let-col>
+            <span style="float:left">{{col.field}}</span>
+            <igx-icon name="functions" class="header-icon" color="{{ col.hasSummary ? '#731963' : '' }}" (click)="toggleSummary(col.field)">functions</igx-icon>
+        </ng-template>
+    </igx-column>
+    <igx-column field="IsActive" header="IsActive" [dataType]="'boolean'" [resizable]="true" [hasSummary]="true">
+        <ng-template igxHeader let-col>
+            <span style="float:left">{{col.field}}</span>
+            <igx-icon name="functions" class="header-icon" color="{{ col.hasSummary ? '#731963' : '' }}" (click)="toggleSummary(col.field)">functions</igx-icon>
+        </ng-template>
+    </igx-column>
+</igx-grid>
