@@ -386,10 +386,16 @@ export class PromptSession {
 		// post to GA everything but 'Back' user choice
 		if (!withBackChoice || result !== this.WIZARD_BACK_OPTION) {
 			GoogleAnalytics.post({
-				cd1: result,
 				ea: `${options.name}: ${result}`,
 				ec: "$ig wizard",
 				el: options.message,
+				t: "event"
+			});
+		} else {
+			GoogleAnalytics.post({
+				ea: `Back from ${options.name}`,
+				ec: "$ig wizard",
+				el: result,
 				t: "event"
 			});
 		}
