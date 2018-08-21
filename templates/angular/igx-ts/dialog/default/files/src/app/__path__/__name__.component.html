@@ -1,0 +1,9 @@
+<p>Standard dialog window template </p>
+<p>You can read more about configuring the igx-dialog component in the
+	<a href="https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/src/lib/dialog/README.md" target="_blank">README</a> or the
+	<a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/dialog.html" target="_blank">official documentation</a>.</p>
+<button igxButton="raised" (click)="dialog.open()">Show Dialog</button>
+<igx-dialog #dialog title="Confirmation" leftButtonLabel="Cancel" (onLeftButtonSelect)="dialog.close()" rightButtonLabel="OK"
+ (onRightButtonSelect)="onDialogOKSelected($event)" message="Are you sure you want to delete the Microsoft_Annual_Report_2015.pdf?">
+</igx-dialog>
+

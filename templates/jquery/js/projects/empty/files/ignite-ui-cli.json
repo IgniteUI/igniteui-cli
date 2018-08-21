@@ -1,6 +1,6 @@
 {
-    "version" : "",
-    "project": {
+	"version" : "",
+	"project": {
 		"defaultPort": 3000,
 		"framework" : "jquery",
 		"projectType": "js",
@@ -11,8 +11,8 @@
 		"igniteuiSource": "$(igniteuiSource)",
 		"isBundle": false,
 		"bundleFilePath": "/igniteui/dist/ignite.js",
-        "components": [],
-        "isShowcase": false,
+		"components": [],
+		"isShowcase": false,
 		"version": "",
 		"sourceRoot": "."
 	},

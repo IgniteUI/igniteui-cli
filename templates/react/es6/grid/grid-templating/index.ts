@@ -16,7 +16,7 @@ class GridTemplatingTemplate extends ReactTemplate {
 		this.id = "grid-templating";
 		this.widget = "igGrid";
 		this.name = "Grid Templating";
-		this.description = "Grid with templating for React";
+		this.description = "igGrid with templating for React";
 		this.projectType = "es6";
 		this.components = ["Grid"];
 		this.controlGroup = "Data Grids";

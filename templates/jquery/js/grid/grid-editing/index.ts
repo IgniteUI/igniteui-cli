@@ -15,7 +15,7 @@ class GridEditingTemplate extends jQueryTemplate {
 		super(__dirname);
 		this.id = "grid-editing";
 		this.name = "Grid Editing";
-		this.description = "Grid editing template";
+		this.description = "igGrid editing template";
 		this.projectType = "js";
 		this.components = ["Grid"];
 		this.controlGroup = "Data Grids";

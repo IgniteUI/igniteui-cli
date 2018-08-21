@@ -14,7 +14,7 @@ class HierarchicalGridExportTemplate extends AngularTemplate {
 		this.name = "Export Hierarchical Grid";
 		this.widget = "igHierarchicalGrid";
 		this.controlGroup = "Data Grids";
-		this.description = "Export Hierarchical Grid template for Angular";
+		this.description = "igHierarchicalGrid export template for Angular";
 		this.dependencies = ["igHierarchicalGrid", "igExcel", "igGridExcelExporter"];
 		this.projectType = "ig-ts";
 		this.extraConfigurations = [];

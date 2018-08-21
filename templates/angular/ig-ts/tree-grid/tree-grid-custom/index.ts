@@ -14,7 +14,7 @@ class TreeGridCustomTemplate extends AngularTemplate {
 		this.name = "Custom TreeGrid";
 		this.controlGroup = "Data Grids";
 		this.widget = "igTreeGrid";
-		this.description = "Tree Grid custom template for Angular";
+		this.description = "igTreeGrid custom template for Angular";
 		this.dependencies = ["igTreeGrid"];
 		this.projectType = "ig-ts";
 		this.listInComponentTemplates = true;

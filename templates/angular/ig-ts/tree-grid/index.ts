@@ -8,6 +8,7 @@ class TreeGridComponent extends BaseComponent {
 		super(__dirname);
 		this.name = "Tree Grid";
 		this.group = "Data Grids";
+		this.description = "pick from tree grids: basic, custom, editing, export.";
 	}
 }
 module.exports = new TreeGridComponent();

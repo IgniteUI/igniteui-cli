@@ -14,7 +14,7 @@ class TreeGridEditingTemplate extends ReactTemplate {
 		super(__dirname);
 		this.id = "tree-grid-editing";
 		this.name = "Editing Tree Grid";
-		this.description = "Tree Grid editing template for React";
+		this.description = "igTreeGrid editing template for React";
 		this.projectType = "es6";
 		this.widget = "igTreeGrid";
 		this.components = ["Tree Grid"];

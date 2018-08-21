@@ -11,7 +11,7 @@ class FunnelChartTemplate extends jQueryTemplate {
 		this.framework = "jquery";
 		this.projectType = "js";
 		this.name = "Funnel Chart";
-		this.description = "Funnel chart template";
+		this.description = "igFunnelChart template";
 		this.dependencies = ["igFunnelChart"];
 	}
 

@@ -17,7 +17,7 @@ class GridTemplatingTemplate extends jQueryTemplate {
 		super(__dirname);
 		this.id = "grid-templating";
 		this.name = "Grid Templating";
-		this.description = "Grid templating template";
+		this.description = "igGrid templating template";
 		this.projectType = "js";
 		this.components = ["Grid"];
 		this.controlGroup = "Data Grids";

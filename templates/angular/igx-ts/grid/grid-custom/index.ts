@@ -12,7 +12,7 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 		this.id = "custom-grid";
 		this.projectType = "igx-ts";
 		this.name = "Custom Grid";
-		this.description = "IgxGrid with optional sorting, filtering and editing features.";
+		this.description = "IgxGrid with optional features like sorting, filtering, editing, etc.";
 		this.dependencies = [
 			{ import: "IgxGridModule", from: "igniteui-angular", root: true },
 			{ import: "IgxCheckboxModule", from: "igniteui-angular" }

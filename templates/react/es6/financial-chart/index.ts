@@ -8,6 +8,7 @@ class FinancialChartComponent extends BaseComponent {
 		super(__dirname);
 		this.name  = "Financial Chart";
 		this.group = "Charts";
+		this.description = "lightweight, high-performance chart.";
 	}
 }
 module.exports = new FinancialChartComponent();

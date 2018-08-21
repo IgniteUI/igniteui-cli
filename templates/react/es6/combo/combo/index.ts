@@ -10,7 +10,7 @@ class ComboTemplate extends ReactTemplate {
 		this.id = "combo";
 		this.name = "Combo";
 		this.widget = "igCombo";
-		this.description = "Combo template for React";
+		this.description = "igCombo template for React";
 		this.projectType = "es6";
 		this.components = ["Combo"];
 		this.controlGroup = "Data Entry";
