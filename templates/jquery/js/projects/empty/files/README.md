@@ -4,7 +4,7 @@ This project was generated with [IgniteUI CLI](https://github.com/IgniteUI/ignit
 
 ## Development server
 
-Run `ig start` to build the application, start a web server and open the application in the default browser. Then navigate to `http://localhost:4200/`. Default serving port can be configured in `ignite-ui-cli.json` via `defaultPort` property.
+Run `ig start` to build the application, start a web server and open the application in the default browser. Then navigate to `http://localhost:3000/`. Default serving port can be configured in `ignite-ui-cli.json` via `defaultPort` property.
 
 ## Build
 
@@ -28,11 +28,7 @@ The ID matches either a component ("grid", "combo", etc) or a predefined templat
 
 ## Running unit tests
 
-Run `ig test` to execute the unit tests via [Karma](https://karma-runner.github.io). Runs all `.spec.ts` files under `./src` folder.
-
-## Running end-to-end tests
-
-Run `ig test --e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/). Runs all `.e2e-spec.ts` files under `e2e` folder.
+Run `ig test` to execute the unit tests via [Karma](https://karma-runner.github.io) and [QUnit](https://qunitjs.com/) test setup . Runs all `.spec.js` files in test folder.
 
 ## Help
 
