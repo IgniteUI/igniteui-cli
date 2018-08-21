@@ -14,7 +14,7 @@ class GridExportTemplate extends AngularTemplate {
 		this.name = "Export Grid";
 		this.controlGroup = "Data Grids";
 		this.widget = "igGrid";
-		this.description = "This is a grid export template for Angular";
+		this.description = "igGrid export template for Angular";
 		this.dependencies = ["igGrid", "igExcel", "igGridExcelExporter"];
 		this.projectType = "ig-ts";
 		this.extraConfigurations = [];

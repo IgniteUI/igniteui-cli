@@ -8,6 +8,9 @@ export class BaseProjectLibrary implements ProjectLibrary {
 	public name: string;
 	public themes: string[];
 
+	/** Implementation, not part of the interface */
+	public groupDescriptions = new Map<string, string>();
+
 	protected _projectsPath: string = "projects";
 	protected _customTemplatesPath: string = "custom-templates";
 	protected _generateCommandPath: string = "generate";
@@ -91,13 +94,14 @@ export class BaseProjectLibrary implements ProjectLibrary {
 	public getTemplateByName(name: string): Template {
 		return this.templates.find(x => x.name === name);
 	}
+
 	public registerTemplate(template: Template): void {
 		if (template) {
 			this.templates.push(template);
 			const newComponents = template.components.filter(x => !this.components.find(f => f.name === x));
 			for (const newComponent of newComponents) {
-
 				const component: Component = {
+					description: "",
 					group: template.controlGroup,
 					groupPriority: 0,
 					name: newComponent,
@@ -120,6 +124,11 @@ export class BaseProjectLibrary implements ProjectLibrary {
 	public getComponentByName(name: string): Component {
 		return this.components.find(x => x.name === name);
 	}
+
+	public getCustomTemplates(): Template[] {
+		return this.customTemplates;
+	}
+
 	public getCustomTemplateNames(): string[] {
 		const cTemplates: string[] = [];
 		for (const customTemplate of this.customTemplates) {
@@ -132,7 +141,7 @@ export class BaseProjectLibrary implements ProjectLibrary {
 		return this.customTemplates.find((x, y, z) => x.name === name);
 	}
 
-	public getComponentGroups(): string[] {
+	public getComponentGroupNames(): string[] {
 		let groups: string[];
 
 		//poor-man's groupBy reduce
@@ -142,6 +151,27 @@ export class BaseProjectLibrary implements ProjectLibrary {
 			}
 			return prev;
 		}, []);
+		return groups;
+	}
+
+	public getComponentsByGroup(group: string): Component[] {
+		return this.components.filter(x => x.group === group)
+		.sort((a, b) => b.groupPriority - a.groupPriority);
+}
+
+	// /**
+	//  * Return Component Groups with descriptions
+	//  */
+	public getComponentGroups(): ComponentGroup[] {
+		const groups: ComponentGroup[] = [];
+
+		for (const groupName of this.getComponentGroupNames()) {
+			groups.push({
+				name: groupName,
+				// tslint:disable-next-line:object-literal-sort-keys
+				description: this.groupDescriptions.get(groupName) || ""
+			});
+		}
 		return groups;
 	}
 

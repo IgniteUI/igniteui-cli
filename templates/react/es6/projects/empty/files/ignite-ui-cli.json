@@ -1,6 +1,6 @@
 {
-    "version" : "",
-    "project": {
+	"version" : "",
+	"project": {
 		"defaultPort": 3002,
 		"framework" : "react",
 		"projectType": "es6",
@@ -11,12 +11,11 @@
 		"isBundle": false,
 		"bundleFilePath": "/igniteui/dist/ignite.js",
 		"igniteuiSource": "./node_modules/ignite-ui",
-        "components": [],
-        "isShowcase": false,
+		"components": [],
+		"isShowcase": false,
 		"version": "",
 		"sourceRoot": "./client"
 	},
 	"build" : {
-
 	}
 }

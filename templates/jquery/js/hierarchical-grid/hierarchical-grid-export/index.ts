@@ -17,7 +17,7 @@ class HierarchicalGridExportTemplate extends jQueryTemplate {
 		super(__dirname);
 		this.id = "hierarchical-grid-export";
 		this.name = "Hierarchical Grid Export";
-		this.description = "Hierarchical Grid export template";
+		this.description = "igHierarchicalGrid export template";
 		this.projectType = "js";
 		this.components = ["Hierarchical Grid"];
 		this.controlGroup = "Data Grids";

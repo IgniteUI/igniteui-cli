@@ -14,7 +14,7 @@ class GridEditingTemplate extends AngularTemplate {
 		this.name = "Grid Editing";
 		this.widget = "igGrid";
 		this.controlGroup = "Data Grids";
-		this.description = "This is a grid editing template for Angular";
+		this.description = "igGrid editing template for Angular";
 		this.dependencies = ["igGrid"];
 		this.projectType = "ig-ts";
 		this.extraConfigurations = [];

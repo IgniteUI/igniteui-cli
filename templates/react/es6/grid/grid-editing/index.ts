@@ -16,7 +16,7 @@ class GridEditingTemplate extends ReactTemplate {
 		this.id = "grid-editing";
 		this.name = "Grid Editing";
 		this.widget = "igGrid";
-		this.description = "Grid editing template for React";
+		this.description = "igGrid editing template for React";
 		this.projectType = "es6";
 		this.components = ["Grid"];
 		this.controlGroup = "Data Grids";
