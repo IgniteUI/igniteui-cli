@@ -118,29 +118,29 @@ export class PromptSession {
 					break;
 				}
 				case "Complete & Run":
-				const config = ProjectConfig.getConfig();
-				const defaultPort = config.project.defaultPort;
-				let port;
-				let userPort: boolean;
-				while (!userPort) {
-					// tslint:disable-next-line:prefer-const
-					port = (await inquirer.prompt({
-						default: defaultPort,
-						message: "Choose app host port:",
-						name: "port",
-						type: "input"
-					}))["port"];
+					const config = ProjectConfig.getConfig();
+					const defaultPort = config.project.defaultPort;
+					let port;
+					let userPort: boolean;
+					while (!userPort) {
+						// tslint:disable-next-line:prefer-const
+						port = (await inquirer.prompt({
+							default: defaultPort,
+							message: "Choose app host port:",
+							name: "port",
+							type: "input"
+						}))["port"];
 
-					if (!Number(port)) {
-						Util.log(`port should be a number. Input valid port or use the suggested default port`, "yellow");
-					} else {
-						userPort = true;
+						if (!Number(port)) {
+							Util.log(`port should be a number. Input valid port or use the suggested default port`, "yellow");
+						} else {
+							userPort = true;
+						}
 					}
-				}
 				default: {
 					await PackageManager.flushQueue(true);
 					if (true) { // TODO: Make conditional?
-						await start.start({port});
+						await start.start({ port });
 						return;
 					}
 				}
@@ -383,13 +383,22 @@ export class PromptSession {
 
 		const result = userInput[options.name] as string;
 
-		GoogleAnalytics.post({
-			cd1: result,
-			ea: `${options.name}: ${result}`,
-			ec: "$ig wizard",
-			el: options.message,
-			t: "event"
-		});
+		// post to GA everything but 'Back' user choice
+		if (!withBackChoice || result !== this.WIZARD_BACK_OPTION) {
+			GoogleAnalytics.post({
+				ea: `${options.name}: ${result}`,
+				ec: "$ig wizard",
+				el: options.message,
+				t: "event"
+			});
+		} else {
+			GoogleAnalytics.post({
+				ea: `Back from ${options.name}`,
+				ec: "$ig wizard",
+				el: result,
+				t: "event"
+			});
+		}
 
 		return result;
 	}
