@@ -11,7 +11,7 @@ class ColumnChartTemplate extends ReactTemplate {
 		this.id = "column-chart";
 		this.name = "Column Chart";
 		this.widget = "igDataChart";
-		this.description = "Data Chart Column series template";
+		this.description = "igDataChart column series template";
 		this.projectType = "es6";
 		this.components = ["Column Chart"];
 		this.controlGroup = "Charts";

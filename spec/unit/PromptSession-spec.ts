@@ -85,7 +85,8 @@ describe("Unit - PromptSession", () => {
 		expect(Util.log).toHaveBeenCalledWith(Util.greenCheck() + " Project structure generated.");
 		expect(Util.isAlphanumericExt).toHaveBeenCalledTimes(1);
 		expect(Util.isAlphanumericExt).toHaveBeenCalledWith("Test Project");
-		expect(Util.directoryExists).toHaveBeenCalledTimes(1);
+		//+1 call because of Util.getAvailableName calls directoryExists
+		expect(Util.directoryExists).toHaveBeenCalledTimes(2);
 		expect(Util.directoryExists).toHaveBeenCalledWith("Test Project");
 		expect(Util.greenCheck).toHaveBeenCalledTimes(1 + 1);
 		expect(Util.gitInit).toHaveBeenCalled();
@@ -168,6 +169,7 @@ describe("Unit - PromptSession", () => {
 		spyOn(Util, "error");
 		spyOn(inquirer, "prompt").and.returnValues(Promise.resolve({ projectName: "*This will ** not Work *" }),
 			Promise.resolve({ projectName: "Th15 w1ll" }),
+			// incrementing default names will prevent a second error to be thrown
 			Promise.resolve({ projectName: "Th15 w1ll" }),
 			Promise.resolve({ framework: "Custom Framework 1" }),
 			Promise.resolve({ project: "jQuery" }),
@@ -178,16 +180,16 @@ describe("Unit - PromptSession", () => {
 		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(Util.log).toHaveBeenCalledWith("  Generating project structure.");
 		expect(Util.log).toHaveBeenCalledWith("");
-		expect(Util.error).toHaveBeenCalledTimes(2);
+		expect(Util.error).toHaveBeenCalledTimes(1);
 		expect(Util.log).toHaveBeenCalledWith(Util.greenCheck() + " Project structure generated.");
-		expect(Util.isAlphanumericExt).toHaveBeenCalledTimes(3);
+		expect(Util.isAlphanumericExt).toHaveBeenCalledTimes(2);
 		expect(Util.isAlphanumericExt).toHaveBeenCalledWith("*This will ** not Work *");
 		expect(Util.isAlphanumericExt).toHaveBeenCalledWith("Th15 w1ll");
-		expect(Util.directoryExists).toHaveBeenCalledTimes(2);
+		expect(Util.directoryExists).toHaveBeenCalledTimes(3);
 		expect(Util.directoryExists).toHaveBeenCalledWith("Th15 w1ll");
 		expect(Util.greenCheck).toHaveBeenCalledTimes(1 + 1);
 		expect(Util.gitInit).toHaveBeenCalledTimes(0);
-		expect(inquirer.prompt).toHaveBeenCalledTimes(6);
+		expect(inquirer.prompt).toHaveBeenCalledTimes(5);
 		expect(inquirer.prompt).toHaveBeenCalledWith(mockQuestion);
 		expect(mockTemplate.getFrameworkByName).toHaveBeenCalledTimes(1);
 		done();
@@ -216,7 +218,8 @@ describe("Unit - PromptSession", () => {
 		const mockComponentTemplates = [mockSelectedTemplate, { name: "Template 2" }];
 		const mockComponent = {
 			name: "Custom Group 1 Component 2",
-			templates: mockComponentTemplates
+			templates: mockComponentTemplates,
+			description: "mockComponent description"
 		};
 		const mockProject = {
 			generateFiles: () => Promise.resolve(true)
@@ -225,8 +228,10 @@ describe("Unit - PromptSession", () => {
 			name: "mockProjectLibrary",
 			themes: ["infragistics", "infragistics.less"],
 			getCustomTemplateNames: ["Custom Template 1"],
-			getComponentGroups: ["Custom Group 1", "Custom Group 2"],
-			getComponentNamesByGroup: ["Custom Group 1 Component 1", "Custom Group 1 Component 2"],
+			getComponentGroupNames: ["Custom Group 1", "Custom Group 2"],
+			getComponentsByGroup: [{group: "Custom Group 1", name: "Component 1" },
+			{ group: "Custom Group 1", name: "Component 2" }],
+			getComponentGroups: [{ description: "Custom Group 2", name: "Group 2" }],
 			getComponentByName: mockComponent,
 			getProject: () => {
 				return mockProject;
@@ -302,9 +307,12 @@ describe("Unit - PromptSession", () => {
 		}]);
 		done();
 	});
-	it("chooseActionLoop - should run through properly - Add View", async done => {
+	it("chooseActionLoop - should run through properly - Add scenario", async done => {
 		const mockSelectedTemplate = {
-			name: "Custom Template 1"
+			name: "Custom Template 1",
+			templates: [{
+				description : "description for Template 1"
+			}]
 		};
 		const mockProject = {
 			generateFiles: () => Promise.resolve(true)
@@ -313,6 +321,7 @@ describe("Unit - PromptSession", () => {
 			name: "mockProjectLibrary",
 			getCustomTemplateNames: [mockSelectedTemplate.name, "Custom Template 2"],
 			getTemplateByName: [mockSelectedTemplate],
+			getCustomTemplates: [mockSelectedTemplate],
 			getProject: () => {
 				return mockProject;
 			}
@@ -326,7 +335,9 @@ describe("Unit - PromptSession", () => {
 		const mockSession = new PromptSession(mockTemplate);
 		spyOn(ProjectConfig, "getConfig").and.returnValue({
 			project: {
-				defaultPort: 4200
+				defaultPort: 4200,
+				framework: "angular",
+				projectType: "igx-ts"
 			}
 		});
 		spyOn(mockSession, "chooseActionLoop").and.callThrough();
@@ -334,10 +345,11 @@ describe("Unit - PromptSession", () => {
 		spyOn(add, "addTemplate").and.returnValue(true);
 		spyOn(PackageManager, "flushQueue").and.returnValue(Promise.resolve(true));
 		spyOn(start, "start").and.returnValue(Promise.resolve(true));
+		spyOn(Util, "getAvailableName").and.callThrough();
 		spyOn(inquirer, "prompt").and.returnValues(
-			Promise.resolve({ action: "Add view" }),
+			Promise.resolve({ action: "Add scenario" }),
 			Promise.resolve({ customTemplate: "Back" }),
-			Promise.resolve({ action: "Add view" }),
+			Promise.resolve({ action: "Add scenario" }),
 			Promise.resolve({ customTemplate: "Custom Template 1" }),
 			Promise.resolve({ customViewName: "Custom Template Name" }),
 			Promise.resolve({ action: "Complete & Run" }),
@@ -349,8 +361,9 @@ describe("Unit - PromptSession", () => {
 		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
 		expect(start.start).toHaveBeenCalledTimes(1);
+		expect(Util.getAvailableName).toHaveBeenCalledTimes(1);
 		expect(add.addTemplate).toHaveBeenCalledTimes(1);
-		expect(add.addTemplate).toHaveBeenCalledWith("Custom Template Name", [mockSelectedTemplate]);
+		expect(add.addTemplate).toHaveBeenCalledWith("Custom Template Name", mockSelectedTemplate);
 		done();
 	});
 	it("chooseActionLoop - should run through properly - Add Component", async done => {
@@ -372,9 +385,11 @@ describe("Unit - PromptSession", () => {
 			name: "Template 1",
 			hasExtraConfiguration: () => true,
 			getExtraConfiguration: () => mockExtraConfigurations,
-			setExtraConfiguration: () => { }
+			setExtraConfiguration: () => { },
+			description: "description for Template 1"
 		};
-		const mockComponentTemplates = [mockSelectedTemplate, { name: "Template 2" }];
+		const mockComponentTemplates = [mockSelectedTemplate,
+			{ name: "Template 2"}];
 		const mockComponent = {
 			name: "Custom Group 1 Component 2",
 			templates: mockComponentTemplates
@@ -386,8 +401,14 @@ describe("Unit - PromptSession", () => {
 			name: "mockProjectLibrary",
 			themes: ["infragistics", "infragistics.less"],
 			getCustomTemplateNames: ["Custom Template 1"],
-			getComponentGroups: ["Custom Group 1", "Custom Group 2"],
-			getComponentNamesByGroup: ["Custom Group 1 Component 1", "Custom Group 1 Component 2"],
+			getComponentGroups: [{ description: "Custom Group 2", name: "Group 2" }],
+			getComponentGroupNames: ["Custom Group 1", "Custom Group 2"],
+			getComponentsByGroup:
+			[{ group: "Custom Group 1", name: "Component 1", description : "description for Component 1",
+				// tslint:disable-next-line:align
+				templates: [{ description : "description for Template 1"}] },
+			{group: "Custom Group 1", name: "Component 2", description : "description for Component 2",
+				templates: [{ description : "description for Template 2"}] }],
 			getComponentByName: mockComponent,
 			getProject: () => {
 				return mockProject;

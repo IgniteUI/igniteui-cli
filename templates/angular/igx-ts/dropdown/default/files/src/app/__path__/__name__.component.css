@@ -1,0 +1,13 @@
+:host {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.drop-down-wrapper {
+    margin: 10px;
+    width: 200px;
+}
+button {
+    width: 100%;
+}

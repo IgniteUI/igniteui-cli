@@ -16,7 +16,7 @@ class GridExportTemplate extends jQueryTemplate {
 		this.extraConfigurations = [];
 		this.id = "grid-export";
 		this.name = "Grid Export";
-		this.description = "Grid export template";
+		this.description = "igGrid export template";
 		this.projectType = "js";
 		this.components = ["Grid"];
 		this.controlGroup = "Data Grids";

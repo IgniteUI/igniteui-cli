@@ -11,7 +11,7 @@ class FunnelChartTemplate extends ReactTemplate {
 		this.id = "funnel-chart";
 		this.name = "Funnel Chart";
 		this.widget = "igFunnelChart";
-		this.description = "Funnel chart template";
+		this.description = "igFunnelChart template";
 		this.projectType = "es6";
 		this.components = ["Funnel Chart"];
 		this.controlGroup = "Charts";
