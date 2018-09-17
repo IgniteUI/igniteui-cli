@@ -1,3 +1,17 @@
+# [2.1.1](https://github.com/IgniteUI/igniteui-cli/compare/v2.1.0...v2.1.1) (2018-09-17)
+
+
+### Bug Fixes
+
+* Add es7/object in polyfill.ts ([b9a4447](https://github.com/IgniteUI/igniteui-cli/commit/b9a4447))
+* Additional Angular Groups Descriptions. ([e182e0b](https://github.com/IgniteUI/igniteui-cli/commit/e182e0b))
+* Skip sending 'Back' user choice to GA, closes [#345](https://github.com/IgniteUI/igniteui-cli/issues/345) ([f69bc30](https://github.com/IgniteUI/igniteui-cli/commit/f69bc30))
+
+
+### Features
+
+* Adding README.md files for all frameworks and proj types. ([5ab1528](https://github.com/IgniteUI/igniteui-cli/commit/5ab1528))
+
 <a name="2.1.0"></a>
 # [2.1.0](https://github.com/IgniteUI/igniteui-cli/compare/v2.1.0...v2.0.0) (2018-08-17)
 
