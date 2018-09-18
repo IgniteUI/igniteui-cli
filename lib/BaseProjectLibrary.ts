@@ -187,7 +187,8 @@ export class BaseProjectLibrary implements ProjectLibrary {
 	 */
 	public getProject(name: string = "empty"): ProjectTemplate {
 		if (this.hasProject(name)) {
-			return require(path.join(this.rootPath, this._projectsPath, name)) as ProjectTemplate;
+			const projModule = require(path.join(this.rootPath, this._projectsPath, name));
+			return projModule.default || projModule as ProjectTemplate;
 		}
 		return null;
 	}
