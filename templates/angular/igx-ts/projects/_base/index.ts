@@ -2,7 +2,7 @@ import * as path from "path";
 import { Util } from "../../../../../lib/Util";
 
 export class BaseIgxProject implements ProjectTemplate {
-	public id: string = "angular";
+	public id: string = "base";
 	public name = "base";
 	public description = "Empty project layout structure for Ignite UI for Angular";
 	public dependencies: string[] = [];
@@ -60,5 +60,3 @@ $app-palette: igx-palette($primary, $secondary);
 		return Util.processTemplates(path.join(__dirname, "./files"), path.join(outputPath, name), config, pathsConfig);
 	}
 }
-// TODO: Don't export usable instance for base?
-export default new BaseIgxProject();

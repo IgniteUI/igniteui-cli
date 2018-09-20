@@ -11,6 +11,8 @@ export class BaseProjectLibrary implements ProjectLibrary {
 	/** Implementation, not part of the interface */
 	public groupDescriptions = new Map<string, string>();
 
+	/** Used to prefix folders that don't contain usable templates */
+	protected _ignorePrefix = "_";
 	protected _projectsPath: string = "projects";
 	protected _customTemplatesPath: string = "custom-templates";
 	protected _generateCommandPath: string = "generate";
@@ -24,11 +26,20 @@ export class BaseProjectLibrary implements ProjectLibrary {
 		list = list.concat(this.customTemplates);
 		return list;
 	}
-	private _projects: string[] = [];
-	public get projects(): string[] {
+	private _projectIds: string[] = [];
+	public get projectIds(): string[] {
 		//read projects list
+		if (!this._projectIds.length) {
+			this._projectIds = Util.getDirectoryNames(path.join(this.rootPath, this._projectsPath));
+			this._projectIds = this._projectIds.filter(x => !x.startsWith(this._ignorePrefix));
+		}
+		return this._projectIds;
+	}
+
+	private _projects: ProjectTemplate[] = [];
+	public get projects(): ProjectTemplate[] {
 		if (!this._projects.length) {
-			this._projects = Util.getDirectoryNames(path.join(this.rootPath, this._projectsPath));
+			this._projects = this.projectIds.map(x => this.getProject(x));
 		}
 		return this._projects;
 	}
@@ -183,18 +194,18 @@ export class BaseProjectLibrary implements ProjectLibrary {
 
 	/**
 	 * Get project template
-	 * @param name Optional name of the project template. Defaults to "empty"
+	 * @param id ID of the project template.
 	 */
-	public getProject(name: string = "empty"): ProjectTemplate {
-		if (this.hasProject(name)) {
-			const projModule = require(path.join(this.rootPath, this._projectsPath, name));
+	public getProject(id: string): ProjectTemplate {
+		if (this.hasProject(id)) {
+			const projModule = require(path.join(this.rootPath, this._projectsPath, id));
 			return projModule.default || projModule as ProjectTemplate;
 		}
 		return null;
 	}
 
-	public hasProject(name: string): boolean {
-		return this.projects.indexOf(name) > -1;
+	public hasProject(id: string): boolean {
+		return this.projectIds.indexOf(id) > -1;
 	}
 	//abstraction for projects
 

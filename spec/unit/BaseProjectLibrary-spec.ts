@@ -11,7 +11,7 @@ describe("Unit - Base project library ", () => {
 
 		const library = new BaseProjectLibrary("../test");
 		expect(library.hasProject("angular")).toBe(true);
-		expect(library.projects).toEqual(mockProjects);
+		expect(library.projectIds).toEqual(mockProjects);
 		expect(Util.getDirectoryNames).toHaveBeenCalledWith(path.join("../test", "projects"));
 		done();
 	});
