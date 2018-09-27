@@ -448,7 +448,7 @@ export class PromptSession {
 	}
 
 	/**
-	 * Gets the them from the user input, or default if provided @param projectLibrary has single theme
+	 * Gets project template from the user input, or default if provided @param projectLibrary has a single template
 	 * @param projectLibrary to get theme for
 	 */
 	private async getProjectTemplate(projectLibrary: ProjectLibrary): Promise<ProjectTemplate> {
@@ -469,7 +469,7 @@ export class PromptSession {
 	}
 
 	/**
-	 * Gets the them from the user input, or default if provided @param projectLibrary has single theme
+	 * Gets the theme from the user input, or default if provided @param projectLibrary has a single theme
 	 * @param projectLibrary to get theme for
 	 */
 	private async getTheme(projectLibrary: ProjectLibrary): Promise<string> {
