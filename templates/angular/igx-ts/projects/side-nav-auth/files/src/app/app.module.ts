@@ -22,7 +22,8 @@ import { AuthenticationModule, ExternalAuthService } from './authentication';
     FormsModule,
     BrowserModule,
     BrowserAnimationsModule,
-    AuthenticationModule, // WARNING: `AuthenticationModule` defines child routes, must be imported before root `AppRoutingModule`
+    // NOTE: `AuthenticationModule` defines child routes, must be imported before root `AppRoutingModule`
+    AuthenticationModule,
     AppRoutingModule,
     IgxNavigationDrawerModule,
     IgxNavbarModule,
