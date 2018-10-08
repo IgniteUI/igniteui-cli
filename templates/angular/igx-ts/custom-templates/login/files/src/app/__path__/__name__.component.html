@@ -1,55 +1,58 @@
-<form class="input-group-form" id="loginForm" [formGroup]="myUser" (ngSubmit)="tryLogin()">
-	<h3 class="login-title">Welcome Back</h3>
-	<igx-input-group>
-		<igx-prefix>
-			<igx-icon name="account_circle"></igx-icon>
-		</igx-prefix>
-		<label igxLabel for="email">Username</label>
-		<input igxInput id="email" name="email" formControlName="email" type="text" [(ngModel)]="email" />
-	</igx-input-group>
-	<igx-input-group>
-		<igx-prefix>
-			<igx-icon name="lock"></igx-icon>
-		</igx-prefix>
-		<input igxInput id="password" name="password" type="password" formControlName="password" [(ngModel)]="password" />
-		<label igxLabel for="password">Password</label>
-	</igx-input-group>
-	<div class="button-wrapper">
-		<button igxButton="raised" type="submit" igxRipple [disabled]="!myUser.valid">LOG IN</button>
-	</div>
-	<div class="register-container">
-		<a (click)="showRegistrationForm()">Register</a>
-	</div>
-</form>
-
-<div id="successMsg" class="loggedin-container" hidden>
-	<span id="helloMsg"></span>
-	<a (click)="logout()">(Logout)</a>
-</div>
-
-<form class="input-group-form" id="registrationForm" [formGroup]="myRegistration" (ngSubmit)="tryRegister()" hidden>
-	<h3 class="registration-title">Create your account</h3>
-	<igx-input-group>
-		<label igxLabel for="firstName">First Name</label>
-		<input igxInput id="firstName" name="firstName" formControlName="firstName" type="text" [(ngModel)]="firstName" />
-	</igx-input-group>
-	<igx-input-group>
-		<label igxLabel for="lastName">Last Name</label>
-		<input igxInput id="lastName" name="lastName" formControlName="lastName" type="text" [(ngModel)]="lastName" />
-	</igx-input-group>
-	<igx-input-group>
-		<label igxLabel for="newEmail">Username</label>
-		<input igxInput id="newEmail" name="newEmail" formControlName="newEmail" type="text" [(ngModel)]="newEmail" />
-	</igx-input-group>
-	<igx-input-group>
-		<input igxInput id="newPassword" name="newPassword" type="password" formControlName="newPassword" [(ngModel)]="newPassword" />
-		<label igxLabel for="newPassword">Password</label>
-	</igx-input-group>
-	<div class="button-wrapper">
-		<button igxButton="raised" type="submit" igxRipple [disabled]="!myRegistration.valid">SIGN UP</button>
-	</div>
-</form>
-
-<div id="registrationSuccessMsg" class="loggedin-container" hidden>
-	<span id="registrationMsg">Thank you for signing up! You can now <a (click)="logout()">sign in</a> using your credentials</span>
-</div>
+<form *ngIf="showLogin" class="input-group-form" id="loginForm" [formGroup]="myUser" (ngSubmit)="tryLogin()">
+    <h3 class="login-title">Welcome Back</h3>
+    <igx-input-group>
+      <igx-prefix>
+        <igx-icon name="account_circle"></igx-icon>
+      </igx-prefix>
+      <label igxLabel for="email">Username</label>
+      <input igxInput id="email" name="email" formControlName="email" type="text" [(ngModel)]="email" />
+    </igx-input-group>
+    <igx-input-group>
+      <igx-prefix>
+        <igx-icon name="lock"></igx-icon>
+      </igx-prefix>
+      <input igxInput id="password" name="password" type="password" formControlName="password" [(ngModel)]="password" />
+      <label igxLabel for="password">Password</label>
+    </igx-input-group>
+    <div class="button-wrapper">
+      <button igxButton="raised" type="submit" igxRipple [disabled]="!myUser.valid">LOG IN</button>
+    </div>
+    <div class="register-container">
+      <a (click)="showRegistrationForm()">Register</a>
+    </div>
+  </form>
+  
+  <div *ngIf="showSuccessLogin" id="loggedin-container" class="loggedin-container">
+    <span id="helloMsg"> You've successfully logged in
+    </span>
+  </div>
+  
+  <form *ngIf="showRegister" class="input-group-form" id="registrationForm" [formGroup]="myRegistration" (ngSubmit)="tryRegister()">
+    <h3 class="registration-title">Create your account</h3>
+    <igx-input-group>
+      <label igxLabel for="firstName">First Name</label>
+      <input igxInput id="firstName" name="firstName" formControlName="firstName" type="text" [(ngModel)]="firstName" />
+    </igx-input-group>
+    <igx-input-group>
+      <label igxLabel for="lastName">Last Name</label>
+      <input igxInput id="lastName" name="lastName" formControlName="lastName" type="text" [(ngModel)]="lastName" />
+    </igx-input-group>
+    <igx-input-group>
+      <label igxLabel for="newEmail">Username</label>
+      <input igxInput id="newEmail" name="newEmail" formControlName="newEmail" type="text" [(ngModel)]="newEmail" />
+    </igx-input-group>
+    <igx-input-group>
+      <input igxInput id="newPassword" name="newPassword" type="password" formControlName="newPassword" [(ngModel)]="newPassword" />
+      <label igxLabel for="newPassword">Password</label>
+    </igx-input-group>
+    <div class="button-wrapper">
+      <button igxButton="raised" type="submit" igxRipple [disabled]="!myRegistration.valid">SIGN UP</button>
+    </div>
+    <div class="register-container">
+      <a (click)="showLoginForm()">Log in</a>
+    </div>
+  </form>
+  
+  <div *ngIf="showSuccessRegister" class="loggedin-container">
+    <span id="registrationMsg">You have successfully registered. </span>
+  </div>

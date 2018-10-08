@@ -1,6 +1,4 @@
 import {Component} from '@angular/core';
-import {AuthenticationService} from './authentication.service';
-import {UserService} from './user.service';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 @Component({
@@ -19,81 +17,41 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
   newPassword = '';
   public myUser: FormGroup;
   public myRegistration: FormGroup;
+  public showLogin = true;
+  public showRegister = false;
+  public showSuccessLogin = false;
+  public showSuccessRegister = false;
 
-  constructor(private authentication: AuthenticationService, private user: UserService, fb: FormBuilder) {
-	this.myUser = fb.group( {
-		email: ['', Validators.required],
-		password: ['', Validators.required]
-	  });
+  constructor(fb: FormBuilder) {
+    this.myUser = fb.group( {
+        email: ['', Validators.required],
+        password: ['', Validators.required]
+      });
 
-	this.myRegistration = fb.group( {
-		newEmail: ['', Validators.required],
-		newPassword: ['', Validators.required],
-		firstName: ['', Validators.required],
-		lastName: ['', Validators.required]
-	});
+    this.myRegistration = fb.group( {
+        newEmail: ['', Validators.required],
+        newPassword: ['', Validators.required],
+        firstName: ['', Validators.required],
+        lastName: ['', Validators.required]
+    });
   }
 
   tryLogin() {
-    this.authentication.login(
-      this.email,
-      this.password
-    )
-      .subscribe(
-        r => {
-          if (r.token) {
-      const msgSuccess = document.getElementById('successMsg');
-      const msgHello = document.getElementById('helloMsg');
-      const form = document.getElementById('loginForm');
-
-      this.user.setToken(r.token);
-      msgHello.textContent = 'Hello, ' + this.email + '! You have successfully logged in! ';
-      form.hidden = true;
-      msgSuccess.hidden = false;
-          }
-        },
-        r => {
-          alert(r.error.error);
-        });
+    this.showLogin = false;
+    this.showSuccessLogin = true;
   }
 
   showRegistrationForm() {
-    const loginForm = document.getElementById('loginForm');
-    const registrationForm = document.getElementById('registrationForm');
-
-    loginForm.hidden = true;
-    registrationForm.hidden = false;
+    this.showLogin = false;
+    this.showRegister = true;
+  }
+  showLoginForm() {
+    this.showLogin = true;
+    this.showRegister = false;
   }
 
   tryRegister() {
-    this.authentication.register(
-      this.firstName,
-      this.lastName,
-      this.newEmail,
-      this.newPassword
-    )
-      .subscribe(
-        r => {
-          const msgSuccess = document.getElementById('registrationSuccessMsg');
-          const registrationForm = document.getElementById('registrationForm');
-
-          registrationForm.hidden = true;
-          msgSuccess.hidden = false;
-        },
-        r => {
-          alert(r.error.error);
-        });
-  }
-
-  logout() {
-	const msgSuccess = document.getElementById('successMsg');
-	const msgRegistrationSuccess = document.getElementById('registrationSuccessMsg');
-    const form = document.getElementById('loginForm');
-
-	this.email = '';
-	this.password = '';
-	msgSuccess.hidden = true;
-	msgRegistrationSuccess.hidden = true;
-    form.hidden = false;
+    this.showRegister = false;
+    this.showSuccessRegister = true;
   }
 }
