@@ -8,27 +8,20 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 })
 
   export class LoginViewComponent {
-
-  email = '';
-  password = '';
-  firstName = '';
-  lastName = '';
-  newEmail = '';
-  newPassword = '';
-  public myUser: FormGroup;
-  public myRegistration: FormGroup;
+  public loginForm: FormGroup;
+  public registrationForm: FormGroup;
   public showLogin = true;
   public showRegister = false;
   public showSuccessLogin = false;
   public showSuccessRegister = false;
 
   constructor(fb: FormBuilder) {
-    this.myUser = fb.group( {
+    this.loginForm = fb.group( {
         email: ['', Validators.required],
         password: ['', Validators.required]
       });
 
-    this.myRegistration = fb.group( {
+    this.registrationForm = fb.group( {
         newEmail: ['', Validators.required],
         newPassword: ['', Validators.required],
         firstName: ['', Validators.required],
@@ -37,6 +30,8 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
   }
 
   tryLogin() {
+    const loginInfo = this.loginForm.value;
+    // use loginInfo
     this.showLogin = false;
     this.showSuccessLogin = true;
   }
@@ -51,6 +46,8 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
   }
 
   tryRegister() {
+    const registerInfo = this.registrationForm.value;
+    // use registerInfo
     this.showRegister = false;
     this.showSuccessRegister = true;
   }
