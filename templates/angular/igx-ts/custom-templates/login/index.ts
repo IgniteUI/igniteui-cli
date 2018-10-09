@@ -11,7 +11,10 @@ class IgxLoginTemplate extends IgniteUIForAngularTemplate {
 		this.description = "Login view";
 		this.dependencies = [{
 			from: "igniteui-angular",
-			import: ["IgxInputGroupModule, IgxIconModule"]
+			import: ["IgxInputGroupModule", "IgxIconModule", "IgxButtonModule", "IgxRippleModule"]
+		}, {
+			from: "@angular/forms",
+			import: ["ReactiveFormsModule"]
 		}];
 	}
 }
