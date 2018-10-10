@@ -39,7 +39,7 @@ export const data = {
       iconName: "fa-sun"
     },
     {
-      name: "Tuesday",
+      name: "Thursday",
       tempMax: 20,
       tempMin: 12,
       description: "Few Clouds",
