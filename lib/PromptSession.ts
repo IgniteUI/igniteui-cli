@@ -1,6 +1,5 @@
+import chalk from "chalk";
 import * as inquirer from "inquirer";
-import * as path from "path";
-import chalk from "../node_modules/chalk";
 import { BaseComponent } from "./BaseComponent";
 import { default as add } from "./commands/add";
 import { default as start } from "./commands/start";
