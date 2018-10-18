@@ -12,6 +12,8 @@ declare interface Config {
 		framework: string;
 		/** Stands for js, ts, es6 */
 		projectType: string;
+		/** Stands for the project template from which it has been generated  */
+		projectTemplate: string;
 		/** Theme of the project */
 		theme: string;
 		themePath: string;

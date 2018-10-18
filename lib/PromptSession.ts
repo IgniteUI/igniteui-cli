@@ -73,9 +73,11 @@ export class PromptSession {
 			const framework = this.templateManager.getFrameworkByName(frameRes);
 			//app name validation???
 			projLibrary = await this.getProjectLibrary(framework);
+
+			const projTemplate = await this.getProjectTemplate(projLibrary);
+			// project options:
 			theme = await this.getTheme(projLibrary);
 
-			const projTemplate = projLibrary.getProject();
 			Util.log("  Generating project structure.");
 			await projTemplate.generateFiles(process.cwd(), projectName, theme);
 
@@ -445,7 +447,28 @@ export class PromptSession {
 	}
 
 	/**
-	 * Gets the them from the user input, or default if provided @param projectLibrary has single theme
+	 * Gets project template from the user input, or default if provided @param projectLibrary has a single template
+	 * @param projectLibrary to get theme for
+	 */
+	private async getProjectTemplate(projectLibrary: ProjectLibrary): Promise<ProjectTemplate> {
+		let projTemplate: ProjectTemplate;
+
+		if (projectLibrary.projectIds.length < 2) {
+			return projectLibrary.getProject(projectLibrary.projectIds[0]);
+		}
+		const componentNameRes = await this.getUserInput({
+			choices: this.formatOutput(projectLibrary.projects),
+			message: "Choose project template:",
+			name: "projTemplate",
+			type: "list"
+		});
+		projTemplate = projectLibrary.projects.find(x => x.name === componentNameRes);
+
+		return projTemplate;
+	}
+
+	/**
+	 * Gets the theme from the user input, or default if provided @param projectLibrary has a single theme
 	 * @param projectLibrary to get theme for
 	 */
 	private async getTheme(projectLibrary: ProjectLibrary): Promise<string> {

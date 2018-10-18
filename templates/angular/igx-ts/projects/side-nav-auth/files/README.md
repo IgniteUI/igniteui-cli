@@ -1,6 +1,10 @@
 # $(name)
 
-This project was generated with [IgniteUI CLI](https://github.com/IgniteUI/igniteui-cli) version $(cliVersion).
+
+TODO: Project setup + links
+
+
+This project was generated with [Ignite UI CLI](https://github.com/IgniteUI/igniteui-cli) version $(cliVersion).
 
 ## Development server
 

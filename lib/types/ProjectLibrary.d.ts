@@ -6,9 +6,10 @@ interface ProjectLibrary {
 	themes: string[];
 	/** Collection of component which the framework supports e.g. igGrid, igTextEditor */
 	components: Component[];
-	/**List of supported projects as templates (Showcases()) e.g. Empty, Showcase1, Showcase 2 */
-	//TODO This should be project Types?
-	projects: string[];
+	/**List of supported projects as template Ids (Showcases()) e.g. Empty, Showcase1, Showcase 2 */
+	projectIds: string[];
+	/** List of project template instances */
+	projects: ProjectTemplate[];
 	/**Collection of custom templates provided by the framework */
 	templates: Template[];
 	/** JS, TS, Dart */
