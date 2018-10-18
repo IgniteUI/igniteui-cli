@@ -1,0 +1,6 @@
+<igx-dialog #dialog (onOpen)="onOpen()" [title]="title" [closeOnOutsideSelect]="true">
+  <div class="sign-dialog">
+    <app-login *ngIf="showLogin" (loggedIn)="close()" (viewChange)="toggleView()"></app-login>
+    <app-register *ngIf="!showLogin"  (registered)="close()" (viewChange)="toggleView()"></app-register>
+  </div>
+</igx-dialog>

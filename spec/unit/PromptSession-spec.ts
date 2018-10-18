@@ -34,6 +34,7 @@ describe("Unit - PromptSession", () => {
 		};
 		const mockProjectLibrary = {
 			themes: ["infragistics", "infragistics.less"],
+			projectIds: ["empty"],
 			getProject: () => {
 				return mockProject;
 			}
@@ -121,6 +122,7 @@ describe("Unit - PromptSession", () => {
 			generateFiles: () => Promise.resolve(true)
 		};
 		const mockProjectLibrary = {
+			projectIds: ["empty"],
 			themes: ["infragistics", "infragistics.less"],
 			getProject: () => {
 				return mockProject;
@@ -495,6 +497,7 @@ describe("Unit - PromptSession", () => {
 			Promise.resolve({ projectName: "Test1"}),
 			Promise.resolve({ framework: "Angular"}),
 			Promise.resolve({ projectType: "Ignite UI for Angular"}),
+			Promise.resolve({ projTemplate: "Default side navigation"}),
 			Promise.resolve({ theme: "Custom"}));
 		spyOn(mockSession, "chooseActionLoop").and.returnValue(Promise.resolve());
 		spyOn(process, "chdir");
@@ -522,6 +525,7 @@ describe("Unit - PromptSession", () => {
 			Promise.resolve({ projectName: "Test1"}),
 			Promise.resolve({ framework: "Angular"}),
 			Promise.resolve({ projectType: "Ignite UI for Angular"}),
+			Promise.resolve({ projTemplate: "Default side navigation"}),
 			Promise.resolve({ theme: "Default"}));
 		spyOn(mockSession, "chooseActionLoop").and.returnValue(Promise.resolve());
 		spyOn(process, "chdir");

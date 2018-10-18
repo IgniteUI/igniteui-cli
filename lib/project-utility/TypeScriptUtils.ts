@@ -147,7 +147,7 @@ export class TypeScriptUtils {
 		const printer: ts.Printer = ts.createPrinter();
 		let text = printer.printFile(source);
 		text = text.replace(
-			new RegExp(`(\r?\n)${Util.escapeRegExp(this.newLinePlaceHolder)}(\r?\n)`, "g"),
+			new RegExp(`(\r?\n)\\s*?${Util.escapeRegExp(this.newLinePlaceHolder)}(\r?\n)`, "g"),
 			`$1$2`
 		);
 		fs.writeFileSync(filePath, text);

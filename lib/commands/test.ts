@@ -28,21 +28,21 @@ const command = {
 			return;
 		}
 
-		const projConfig = ProjectConfig.getConfig().project;
+		const project = ProjectConfig.getConfig().project;
 
 		if (!argv.skipAnalytics) {
 			GoogleAnalytics.post({
 				t: "event",
 				ec: "$ig test",
 				ea: `e2e: ${argv.e2e};`,
-				cd1: projConfig.project.framework,
-				cd2: projConfig.project.projectType,
-				cd11: !!projConfig.skipGit,
-				cd14: projConfig.project.theme
+				cd1: project.framework,
+				cd2: project.projectType,
+				cd11: !!project.skipGit,
+				cd14: project.theme
 			});
 		}
 
-		if (argv.e2e && projConfig.framework === "angular" && projConfig.projectType === "igx-ts") {
+		if (argv.e2e && project.framework === "angular" && project.projectType === "igx-ts") {
 			Util.exec("npm run e2e", { stdio: "inherit" });
 		} else {
 			Util.exec("npm test", { stdio: "inherit" });
