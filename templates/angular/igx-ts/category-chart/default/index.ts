@@ -9,7 +9,7 @@ class IgxCategoryChartTemplate extends IgniteUIForAngularTemplate {
 		this.id = "category-chart";
 		this.projectType = "igx-ts";
 		this.name = "Category Chart";
-		this.description = "Basic Category chart with chart type selector.";
+		this.description = "basic category chart with chart type selector.";
 		this.dependencies = [
 			{ import: "IgxCategoryChartModule", from: "igniteui-angular-charts/ES5/igx-category-chart-module" },
 			{import: "FormsModule", from: "@angular/forms"}

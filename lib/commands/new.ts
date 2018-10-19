@@ -42,6 +42,10 @@ command = {
 			alias: "sg",
 			describe: "Do not automatically initialize repository for the project with Git",
 			type: "boolean"
+		},
+		"template": {
+			describe: "Project template",
+			type: "string"
 		}
 	},
 	template: null,
@@ -92,11 +96,11 @@ command = {
 			return Util.error("Theme not supported");
 		}
 		const theme = argv.theme || projectLib.themes[0];
-
+		const projectTemplate = argv.template || projectLib.projectIds[0];
 		Util.log(`Project Name: ${argv.name}, framework ${argv.framework}, type ${projectLib.projectType}, theme ${theme}`);
-		const projTemplate = projectLib.getProject();
+		const projTemplate = projectLib.getProject(projectTemplate);
 		if (projTemplate == null) {
-			return Util.error("Default project template not found");
+			return Util.error("Project template not found");
 		}
 		// TODO: update output path based on where the CLI is called
 

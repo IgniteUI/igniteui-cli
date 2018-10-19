@@ -14,7 +14,7 @@ class TreeGridCustomTemplate extends ReactTemplate {
 		super(__dirname);
 		this.id = "tree-grid-custom";
 		this.name = "Custom Tree Grid";
-		this.description = "Tree Grid custom template for React";
+		this.description = "igTreeGrid custom template for React";
 		this.projectType = "es6";
 		this.widget = "igTreeGrid";
 		this.components = ["Tree Grid"];

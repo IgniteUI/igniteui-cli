@@ -11,7 +11,7 @@ class RadialChartTemplate extends jQueryTemplate {
 		this.framework = "jquery";
 		this.projectType = "js";
 		this.name = "Radial Chart";
-		this.description = "Data Chart Radial series template";
+		this.description = "igDataChart radial series template";
 		this.dependencies = ["igDataChart"];
 
 	}

@@ -16,7 +16,7 @@ class TreeGridBasicTemplate extends jQueryTemplate {
 		super(__dirname);
 		this.id = "tree-grid";
 		this.name = "Basic TreeGrid";
-		this.description = "Tree Grid default template";
+		this.description = "igTreeGrid default template";
 		this.projectType = "js";
 		this.components = ["Tree Grid"];
 		this.controlGroup = "Data Grids";

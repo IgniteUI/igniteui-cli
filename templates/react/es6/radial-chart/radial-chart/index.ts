@@ -11,7 +11,7 @@ class RadialChartTemplate extends ReactTemplate {
 		this.id = "radial-chart";
 		this.name = "Radial Chart";
 		this.widget = "igDataChart";
-		this.description = "Radial Chart template for React";
+		this.description = "radial chart template for React";
 		this.projectType = "es6";
 		this.components = ["Radial Chart"];
 		this.controlGroup = "Charts";

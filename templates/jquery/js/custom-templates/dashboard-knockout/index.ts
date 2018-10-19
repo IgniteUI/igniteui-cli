@@ -9,7 +9,7 @@ class DashboardKnockoutTemplate extends jQueryTemplate {
 		this.listInComponentTemplates = false;
 		this.listInCustomTemplates = true;
 		this.name = "Dashboard Knockout";
-		this.description = "Dashboard sample with knockout components which update both ways on editing";
+		this.description = "dashboard sample with knockout components which update both ways on editing";
 		this.dependencies = [
 			"igEditors",
 			"igCombo",

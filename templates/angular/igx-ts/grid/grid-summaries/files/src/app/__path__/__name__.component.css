@@ -1,0 +1,13 @@
+.igx-grid__th-title{
+    display : flex;
+    justify-content: space-between;
+    align-items : center;
+}
+
+.header-icon {
+    font-size: 1.4em;
+    width: 1.1em;
+    height: 1.1em;
+    float: right;
+    cursor: pointer;
+}

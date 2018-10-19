@@ -14,7 +14,7 @@ class GridTemplatingTemplate extends AngularTemplate {
 		this.name = "Grid Templating";
 		this.controlGroup = "Data Grids";
 		this.widget = "igGrid";
-		this.description = "This is a grid templating template for Angular";
+		this.description = "igGrid templating template for Angular";
 		this.dependencies = ["igGrid"];
 		this.projectType = "ig-ts";
 		this.extraConfigurations = [];

@@ -1,0 +1,32 @@
+form {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    padding: 10px;
+    > * {
+        width: 100%;
+    }
+}
+
+a {
+    padding-top: 10px;
+    cursor: pointer;
+}
+button {
+    margin-top: 15px;
+    width: 100%;
+}
+
+.social-login {
+    border-top: 1px solid gray;
+
+    button.google {
+        background-color: rgb(255, 19, 74);
+    }
+    button.facebook {
+        background-color: rgb(19, 119, 213)
+    }
+    button.microsoft {
+        background-color: rgb(27, 158, 245)
+    }
+}

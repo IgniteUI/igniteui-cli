@@ -11,7 +11,7 @@ class DoughnutChartTemplate extends ReactTemplate {
 		this.id = "doughnut-chart";
 		this.name = "Doughnut Chart";
 		this.widget = "igDoughnutChart";
-		this.description = "Doughnut chart template";
+		this.description = "igDataChart template";
 		this.projectType = "es6";
 		this.components = ["Doughnut Chart"];
 		this.controlGroup = "Charts";
