@@ -27,7 +27,7 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return [{
-			choices: ["Sorting", "Filtering", "Editing", "Group By", "Resizing",
+			choices: ["Sorting", "Filtering", "Cell Editing", "Row Editing", "Group By", "Resizing",
 				"Row Selection", "Paging", "Column Pinning", "Column Moving", "Column Hiding"],
 			default: "",
 			key: "columnFeatures",
@@ -72,7 +72,7 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 						columnBoolFeatures.push('[movable]="true"');
 					case "Column Hiding":
 						gridFeatures.push('[showToolbar]="true" [columnHiding]="true" toolbarTitle="Users"');
-					case "Editing":
+					case "Cell Editing":
 						columnFeatures.push(`[editable]="true"`);
 						checkBoxBind = `[ngModel]="cell.value" (ngModelChange)="cell.update($event)"`;
 						// enable Date Picker, ngModel
@@ -86,6 +86,10 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 							`</ng-template>`;
 						// TODO: make a Util .pad()
 						datePickerEditor = datePickerEditor.replace(/([\r\n]+)/g, `$&${"  ".repeat(3)}`);
+						break;
+						case "Row Editing":
+						gridFeatures.push(`[rowEditable]="true"`);
+						this.dependencies.push({ import: "IgxDatePickerModule", from: "igniteui-angular" });
 						break;
 					case "Row Selection":
 						const gridFeatureText = `[rowSelectable]="true"`;
@@ -104,7 +108,6 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 				switch (feature) {
 					case "Sorting":
 					case "Filtering":
-					case "Editing":
 					case "Paging":
 						featuresUrls.push(`${featureUrl}${feature}.html`);
 						break;
@@ -113,6 +116,12 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 						break;
 					case "Column Pinning":
 						featuresUrls.push(`${featureUrl}column_pinning.html`);
+						break;
+					case "Cell Editing":
+						featuresUrls.push(`${featureUrl}cell_editing.html`);
+						break;
+					case "Row Editing":
+						featuresUrls.push(`${featureUrl}row_editing.html`);
 						break;
 					case "Column Moving":
 						featuresUrls.push(`${featureUrl}column_moving.html`);
