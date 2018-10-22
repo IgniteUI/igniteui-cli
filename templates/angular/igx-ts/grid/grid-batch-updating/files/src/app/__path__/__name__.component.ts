@@ -1,12 +1,13 @@
 import { Component, ViewChild } from "@angular/core";
 import { data } from "./data";
 
-import { IgxGridComponent, IgxToggleDirective, Transaction } from "igniteui-angular";
+import { IgxGridComponent, IgxGridTransaction, IgxTransactionService, IgxToggleDirective, Transaction } from "igniteui-angular";
 
 @Component({
   selector: 'app-$(filePrefix)',
   templateUrl: './$(filePrefix).component.html',
-  styleUrls: ['./$(filePrefix).component.css']
+  styleUrls: ['./$(filePrefix).component.css'],
+  providers: [{ provide: IgxGridTransaction, useClass: IgxTransactionService }]
 })
 export class $(ClassName)Component {
 	@ViewChild("gridRowEditTransaction", { read: IgxGridComponent }) public gridRowEditTransaction: IgxGridComponent;
@@ -54,7 +55,7 @@ export class $(ClassName)Component {
 		this.gridRowEditTransaction.transactions.commit(this.data);
 		this.toggle.close();
 	}
-	
+
 	public cancel() {
 		this.gridRowEditTransaction.transactions.clear();
 		this.toggle.close();
