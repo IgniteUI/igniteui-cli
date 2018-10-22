@@ -51,7 +51,7 @@ export class $(ClassName)Component {
 		this.gridRowEditTransaction.transactions.redo();
 	}
 
-	public openCommitDialog(gridID) {
+	public commit() {
 		this.gridRowEditTransaction.transactions.commit(this.data);
 		this.toggle.close();
 	}
@@ -59,14 +59,6 @@ export class $(ClassName)Component {
 	public cancel() {
 		this.gridRowEditTransaction.transactions.clear();
 		this.toggle.close();
-	}
-
-	public stateFormatter(value: string) {
-		return JSON.stringify(value);
-	}
-
-	public typeFormatter(value: string) {
-		return value.toUpperCase();
 	}
 
 	private getRandomInt(min, max) {
