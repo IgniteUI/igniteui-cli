@@ -1,0 +1,44 @@
+@import url("https://unpkg.com/@fortawesome/fontawesome-free-webfonts@^1.0.9/css/fontawesome.css");
+@import url("https://unpkg.com/@fortawesome/fontawesome-free-webfonts@^1.0.9/css/fa-regular.css");
+@import url("https://unpkg.com/@fortawesome/fontawesome-free-webfonts@^1.0.9/css/fa-solid.css");
+
+.sample-wrapper {
+    width: 24rem;
+    margin-top: 20px;
+}
+
+%columnDisplay {
+    display: flex;
+    > * {
+        flex: 1 1 auto;
+    }
+
+    igx-icon {
+        font-size: 1.5em;
+        margin-right: 1rem;
+    }
+}
+.forecast__day {
+    @extend %columnDisplay;
+    padding-top: 1rem;
+}
+
+.right {
+    text-align: right;
+}
+
+.weather__main-temp {
+    @extend %columnDisplay;
+    font-size: 4rem;
+    line-height: 4rem;
+    igx-icon {
+        font-size: 4rem;
+        width: 4rem;
+        height: 4rem;
+    }
+}
+
+.weather__main-hum {
+    @extend %columnDisplay;
+    padding: .7rem 0;
+}
