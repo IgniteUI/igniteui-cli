@@ -11,8 +11,8 @@ class IgxDropDownTemplate extends IgniteUIForAngularTemplate {
 		this.name = "Drop Down";
 		this.description = "Basic IgxDropDown sample";
 		this.dependencies = [{
-			from: "igniteui-angular",
-			import: ["IgxDropDownModule", "IgxButtonModule", "IgxToggleModule"]
+			import: ["IgxDropDownModule", "IgxButtonModule", "IgxToggleModule"],
+			from: "igniteui-angular"
 		}];
 	}
 }

@@ -12,8 +12,8 @@ class IgxRadialGaugeTemplate extends IgniteUIForAngularTemplate {
 		this.description = "IgxRadialGauge with different animations";
 		this.dependencies = [
 			{
-				from: "igniteui-angular-gauges/ES5/igx-radial-gauge-module",
-				import: ["IgxRadialGaugeModule"]
+				import: ["IgxRadialGaugeModule"],
+				from: "igniteui-angular-gauges/ES5/igx-radial-gauge-module"
 			}
 		];
 		this.packages = ["tslib@1.7.1", "igniteui-angular-core@6.1.1", "igniteui-angular-gauges@6.1.1"];

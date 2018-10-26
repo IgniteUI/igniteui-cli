@@ -34,6 +34,7 @@
 		],
 		"max-classes-per-file": [ false ],
 		"prefer-object-spread": false,
-		"prefer-conditional-expression": false
+		"prefer-conditional-expression": false,
+		"object-literal-sort-keys": [ true, "ignore-case", "match-declaration-order", "shorthand-first" ]
 	}
 }

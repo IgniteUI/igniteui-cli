@@ -38,15 +38,17 @@ describe("Config command", () => {
 
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
 			{
+				// tslint:disable:object-literal-sort-keys
 				t: "screenview",
-				// tslint:disable-next-line:object-literal-sort-keys
 				cd: "Config"
+				// tslint:enable:object-literal-sort-keys
 			});
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
 			{
+				// tslint:disable:object-literal-sort-keys
 				t: "screenview",
-				// tslint:disable-next-line:object-literal-sort-keys
 				cd: "error: No configuration file found in this folder!"
+				// tslint:enable:object-literal-sort-keys
 			});
 		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);
 

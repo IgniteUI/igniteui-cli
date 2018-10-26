@@ -240,8 +240,8 @@ export class TypeScriptFileUpdate {
 		if (!existing) {
 			// new imports, check if already exists in file
 			this.requestedImports.push({
-				edit: this.importsMeta.modulePaths.indexOf(modulePath) !== -1,
-				from: modulePath, imports: identifiers
+				from: modulePath, imports: identifiers,
+				edit: this.importsMeta.modulePaths.indexOf(modulePath) !== -1
 			});
 		} else {
 			const newNamedImports = identifiers.filter(x => existing.imports.indexOf(x) === -1);
@@ -493,17 +493,18 @@ export class TypeScriptFileUpdate {
 	/** Return source file formatting options */
 	private getFormattingOptions(): ts.FormatCodeSettings {
 		const formatOptions: ts.FormatCodeSettings = {
+			// tslint:disable:object-literal-sort-keys
 			indentSize: this.formatOptions.indentSize,
 			tabSize: 4,
-			// tslint:disable-next-line:object-literal-sort-keys
-			convertTabsToSpaces: this.formatOptions.spaces,
 			newLineCharacter: ts.sys.newLine,
+			convertTabsToSpaces: this.formatOptions.spaces,
 			indentStyle: ts.IndentStyle.Smart,
 			insertSpaceAfterCommaDelimiter: true,
 			insertSpaceAfterSemicolonInForStatements: true,
 			insertSpaceBeforeAndAfterBinaryOperators: true,
 			insertSpaceAfterKeywordsInControlFlowStatements: true,
 			insertSpaceAfterTypeAssertion: true
+			// tslint:enable:object-literal-sort-keys
 		};
 
 		return formatOptions;
@@ -515,20 +516,20 @@ export class TypeScriptFileUpdate {
 		files[filePath] = { version: 0 };
 		// create the language service host to allow the LS to communicate with the host
 		const servicesHost: ts.LanguageServiceHost = {
-			fileExists: ts.sys.fileExists,
 			getCompilationSettings: () => ({}),
-			getCurrentDirectory: () => process.cwd(),
-			getDefaultLibFileName: options => ts.getDefaultLibFilePath(options),
 			getScriptFileNames: () => Object.keys(files),
+			getScriptVersion: fileName => files[fileName] && files[fileName].version.toString(),
 			getScriptSnapshot: fileName => {
 				if (!fs.existsSync(fileName)) {
 					return undefined;
 				}
 				return ts.ScriptSnapshot.fromString(fs.readFileSync(fileName).toString());
 			},
-			getScriptVersion: fileName => files[fileName] && files[fileName].version.toString(),
+			getCurrentDirectory: () => process.cwd(),
+			getDefaultLibFileName: options => ts.getDefaultLibFilePath(options),
 			readDirectory: ts.sys.readDirectory,
-			readFile: ts.sys.readFile
+			readFile: ts.sys.readFile,
+			fileExists: ts.sys.fileExists
 		};
 		return servicesHost;
 	}

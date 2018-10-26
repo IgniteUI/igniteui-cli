@@ -11,16 +11,16 @@ class IgxInputGroupTemplate extends IgniteUIForAngularTemplate {
 		this.name = "Input Group";
 		this.description = "IgxInputGroup form view template";
 		this.dependencies = [{
-			from: "igniteui-angular",
 			import: [
-			"IgxButtonModule",
-			"IgxComboModule",
-			"IgxDatePickerModule",
-			"IgxIconModule",
-			"IgxInputGroupModule",
-			"IgxMaskModule",
-			"IgxRippleModule",
-			"IgxTimePickerModule"]
+				"IgxButtonModule",
+				"IgxComboModule",
+				"IgxDatePickerModule",
+				"IgxIconModule",
+				"IgxInputGroupModule",
+				"IgxMaskModule",
+				"IgxRippleModule",
+				"IgxTimePickerModule"],
+			from: "igniteui-angular"
 		}];
 	}
 }

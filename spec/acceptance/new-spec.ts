@@ -4,7 +4,7 @@ import { GoogleAnalytics } from "../../lib/GoogleAnalytics";
 import { Util } from "../../lib/Util";
 import { deleteAll, filesDiff, resetSpy } from "../helpers/utils";
 
-describe("New command", () => {
+fdescribe("New command", () => {
 	beforeEach(() => {
 		spyOn(console, "log");
 		spyOn(console, "error");
@@ -32,15 +32,16 @@ describe("New command", () => {
 
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
 			{
+				// tslint:disable:object-literal-sort-keys
 				t: "screenview",
-				// tslint:disable-next-line:object-literal-sort-keys
 				cd: "New"
+				// tslint:enable:object-literal-sort-keys
 			});
 
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
 			{
+				// tslint:disable:object-literal-sort-keys
 				t: "event",
-				// tslint:disable-next-line:object-literal-sort-keys
 				ec: "$ig new",
 				ea: "project name: jQuery Proj; framework: jquery; project type: js; theme: infragistics; skip-git: false",
 				cd1: "jquery",
@@ -48,6 +49,7 @@ describe("New command", () => {
 				cd3: "jQuery Proj",
 				cd11: false,
 				cd14: "infragistics"
+				// tslint:enable:object-literal-sort-keys
 			});
 		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);
 
@@ -101,15 +103,17 @@ describe("New command", () => {
 		expect(console.error).toHaveBeenCalledWith(jasmine.stringMatching(/Folder "testProj" already exists!/));
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
 			{
+				// tslint:disable:object-literal-sort-keys
 				t: "screenview",
-				// tslint:disable-next-line:object-literal-sort-keys
 				cd: "New"
+				// tslint:enable:object-literal-sort-keys
 			});
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
 			{
+				// tslint:disable:object-literal-sort-keys
 				t: "screenview",
-				// tslint:disable-next-line:object-literal-sort-keys
 				cd: "error: Folder \"testProj\" already exists!"
+				// tslint:enable:object-literal-sort-keys
 			});
 		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);
 		fs.rmdirSync("testProj");

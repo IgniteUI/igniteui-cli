@@ -39,14 +39,17 @@ describe("Add command", () => {
 		expect(console.log).toHaveBeenCalledTimes(0);
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
 			{
+				// tslint:disable:object-literal-sort-keys
 				t: "screenview",
-				// tslint:disable-next-line:object-literal-sort-keys
 				cd: "Add"
+				// tslint:enable:object-literal-sort-keys
 			});
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
 			{
+				// tslint:disable:object-literal-sort-keys
 				cd: "error: Add command is supported only on existing project created with igniteui-cli",
 				t: "screenview"
+				// tslint:enable:object-literal-sort-keys
 			});
 		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);
 
@@ -223,13 +226,15 @@ describe("Add command", () => {
 
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
 			{
+				// tslint:disable:object-literal-sort-keys
 				t: "screenview",
-				// tslint:disable-next-line:object-literal-sort-keys
-				cd: "Add" });
+				cd: "Add"
+				// tslint:enable:object-literal-sort-keys
+			});
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
 			{
+				// tslint:disable:object-literal-sort-keys
 				t: "event",
-				// tslint:disable-next-line:object-literal-sort-keys
 				ec: "$ig add",
 				ea: "template id: grid; file name: Test view",
 				cd1: "angular",
@@ -239,6 +244,7 @@ describe("Add command", () => {
 				cd8: "Grid",
 				cd11: false,
 				cd14: undefined
+				// tslint:enable:object-literal-sort-keys
 			});
 		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);
 
