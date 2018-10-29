@@ -4,7 +4,7 @@ import { GoogleAnalytics } from "../../lib/GoogleAnalytics";
 import { Util } from "../../lib/Util";
 import { deleteAll, filesDiff, resetSpy } from "../helpers/utils";
 
-fdescribe("New command", () => {
+describe("New command", () => {
 	beforeEach(() => {
 		spyOn(console, "log");
 		spyOn(console, "error");
@@ -156,6 +156,7 @@ fdescribe("New command", () => {
 		await cli.run(["new", projectName, "--framework=angular", "--type=igx-ts", "--skip-git"]);
 
 		expect(fs.existsSync("./" + projectName + "/.git")).not.toBeTruthy();
+		this.testFolder = projectName;
 		done();
 	});
 
