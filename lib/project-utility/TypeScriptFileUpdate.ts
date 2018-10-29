@@ -193,7 +193,6 @@ export class TypeScriptFileUpdate {
 			declarations: [],
 			imports: [],
 			providers: [],
-			// tslint:disable-next-line:object-literal-sort-keys
 			exports: []
 		};
 		this.createdStringLiterals = [];

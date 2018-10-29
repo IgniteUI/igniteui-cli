@@ -179,7 +179,6 @@ export class BaseProjectLibrary implements ProjectLibrary {
 		for (const groupName of this.getComponentGroupNames()) {
 			groups.push({
 				name: groupName,
-				// tslint:disable-next-line:object-literal-sort-keys
 				description: this.groupDescriptions.get(groupName) || ""
 			});
 		}

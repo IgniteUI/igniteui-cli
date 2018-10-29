@@ -30,27 +30,23 @@ describe("New command", () => {
 		expect(fs.existsSync("./jQuery Proj/.gitignore")).toBeTruthy();
 		this.testFolder = "./jQuery Proj";
 
-		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
-			{
-				// tslint:disable:object-literal-sort-keys
-				t: "screenview",
-				cd: "New"
-				// tslint:enable:object-literal-sort-keys
-			});
+		let expectedPrams: GoogleAnalyticsParameters = {
+			t: "screenview",
+			cd: "New"
+		};
+		expect(GoogleAnalytics.post).toHaveBeenCalledWith(expectedPrams);
 
-		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
-			{
-				// tslint:disable:object-literal-sort-keys
-				t: "event",
-				ec: "$ig new",
-				ea: "project name: jQuery Proj; framework: jquery; project type: js; theme: infragistics; skip-git: false",
-				cd1: "jquery",
-				cd2: "js",
-				cd3: "jQuery Proj",
-				cd11: false,
-				cd14: "infragistics"
-				// tslint:enable:object-literal-sort-keys
-			});
+		expectedPrams = {
+			t: "event",
+			ec: "$ig new",
+			ea: "project name: jQuery Proj; framework: jquery; project type: js; theme: infragistics; skip-git: false",
+			cd1: "jquery",
+			cd2: "js",
+			cd3: "jQuery Proj",
+			cd11: false,
+			cd14: "infragistics"
+		};
+		expect(GoogleAnalytics.post).toHaveBeenCalledWith(expectedPrams);
 		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);
 
 		done();
@@ -101,20 +97,18 @@ describe("New command", () => {
 		fs.mkdirSync("testProj");
 		await cli.run(["new", "testProj"]);
 		expect(console.error).toHaveBeenCalledWith(jasmine.stringMatching(/Folder "testProj" already exists!/));
-		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
-			{
-				// tslint:disable:object-literal-sort-keys
-				t: "screenview",
-				cd: "New"
-				// tslint:enable:object-literal-sort-keys
-			});
-		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
-			{
-				// tslint:disable:object-literal-sort-keys
-				t: "screenview",
-				cd: "error: Folder \"testProj\" already exists!"
-				// tslint:enable:object-literal-sort-keys
-			});
+
+		let expectedPrams: GoogleAnalyticsParameters = {
+			t: "screenview",
+			cd: "New"
+		};
+		expect(GoogleAnalytics.post).toHaveBeenCalledWith(expectedPrams);
+
+		expectedPrams = {
+			t: "screenview",
+			cd: "error: Folder \"testProj\" already exists!"
+		};
+		expect(GoogleAnalytics.post).toHaveBeenCalledWith(expectedPrams);
 		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);
 		fs.rmdirSync("testProj");
 
