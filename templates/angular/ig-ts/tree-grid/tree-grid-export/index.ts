@@ -14,7 +14,7 @@ class TreeGridExportTemplate extends AngularTemplate {
 		this.name = "Tree Grid Exporting";
 		this.widget = "igTreeGrid";
 		this.controlGroup = "Data Grids";
-		this.description = "Tree Grid export template for Angular";
+		this.description = "igTreeGrid export template for Angular";
 		this.dependencies = ["igTreeGrid", "igExcel", "igGridExcelExporter"];
 		this.projectType = "ig-ts";
 		this.listInComponentTemplates = true;

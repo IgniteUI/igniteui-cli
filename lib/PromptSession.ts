@@ -1,5 +1,6 @@
+import chalk from "chalk";
 import * as inquirer from "inquirer";
-import * as path from "path";
+import { BaseComponent } from "./BaseComponent";
 import { default as add } from "./commands/add";
 import { default as start } from "./commands/start";
 import { GoogleAnalytics } from "./GoogleAnalytics";
@@ -37,6 +38,7 @@ export class PromptSession {
 		let theme: string;
 		add.templateManager = this.templateManager;
 		const config = ProjectConfig.getConfig();
+		const defaultProjName = "IG Project";
 
 		if (ProjectConfig.hasLocalConfig() && !config.project.isShowcase) {
 			projLibrary = this.templateManager.getProjectLibrary(config.project.framework, config.project.projectType);
@@ -45,9 +47,11 @@ export class PromptSession {
 			Util.log(""); /* new line */
 
 			let projectName: string;
+			const availableDefaultName = Util.getAvailableName(defaultProjName, true);
 			while (!projectName) {
+				const defaultAppName = availableDefaultName;
 				const nameRes: string = await this.getUserInput({
-					default: "app",
+					default: defaultAppName,
 					message: "Enter a name for your project:",
 					name: "projectName",
 					type: "input"
@@ -69,9 +73,11 @@ export class PromptSession {
 			const framework = this.templateManager.getFrameworkByName(frameRes);
 			//app name validation???
 			projLibrary = await this.getProjectLibrary(framework);
+
+			const projTemplate = await this.getProjectTemplate(projLibrary);
+			// project options:
 			theme = await this.getTheme(projLibrary);
 
-			const projTemplate = projLibrary.getProject();
 			Util.log("  Generating project structure.");
 			await projTemplate.generateFiles(process.cwd(), projectName, theme);
 
@@ -93,7 +99,7 @@ export class PromptSession {
 	public async chooseActionLoop(projectLibrary: ProjectLibrary, theme: string) {
 		let actionIsOver = false;
 		while (!actionIsOver) {
-			const actionChoices: string[] = this.generateActionChoices(projectLibrary);
+			const actionChoices: Array<{}> = this.generateActionChoices(projectLibrary);
 			Util.log(""); /* new line */
 			const action: string = await this.getUserInput({
 				choices: actionChoices,
@@ -108,34 +114,34 @@ export class PromptSession {
 					actionIsOver = await this.addComponent(projectLibrary, theme);
 					break;
 				}
-				case "Add view": {
+				case "Add scenario": {
 					actionIsOver = await this.addView(projectLibrary, theme);
 					break;
 				}
 				case "Complete & Run":
-				const config = ProjectConfig.getConfig();
-				const defaultPort = config.project.defaultPort;
-				let port;
-				let userPort: boolean;
-				while (!userPort) {
-					// tslint:disable-next-line:prefer-const
-					port = (await inquirer.prompt({
-						default: defaultPort,
-						message: "Choose app host port:",
-						name: "port",
-						type: "input"
-					}))["port"];
+					const config = ProjectConfig.getConfig();
+					const defaultPort = config.project.defaultPort;
+					let port;
+					let userPort: boolean;
+					while (!userPort) {
+						// tslint:disable-next-line:prefer-const
+						port = (await inquirer.prompt({
+							default: defaultPort,
+							message: "Choose app host port:",
+							name: "port",
+							type: "input"
+						}))["port"];
 
-					if (!Number(port)) {
-						Util.log(`port should be a number. Input valid port or use the suggested default port`, "yellow");
-					} else {
-						userPort = true;
+						if (!Number(port)) {
+							Util.log(`port should be a number. Input valid port or use the suggested default port`, "yellow");
+						} else {
+							userPort = true;
+						}
 					}
-				}
 				default: {
 					await PackageManager.flushQueue(true);
 					if (true) { // TODO: Make conditional?
-						await start.start({port});
+						await start.start({ port });
 						return;
 					}
 				}
@@ -146,7 +152,7 @@ export class PromptSession {
 
 	/**
 	 * Returns a new array with inquirer.Separator() added between items
-	 * @param array The original array to add separatorfdks to
+	 * @param array The original array to add separator to
 	 */
 	private addSeparators(array: any[]): any[] {
 		const newArray = [];
@@ -155,6 +161,10 @@ export class PromptSession {
 			if (i + 1 < array.length) {
 				newArray.push(new inquirer.Separator());
 			}
+		}
+		if (array.length > 4) {
+			// additional separator after last item for lists that wrap around
+			newArray.push(new inquirer.Separator(new Array(15).join("=")));
 		}
 		return newArray;
 	}
@@ -203,10 +213,10 @@ export class PromptSession {
 	private async addComponent(projectLibrary: ProjectLibrary, theme: string): Promise<boolean> {
 		let addComponentIsOver = false;
 		while (!addComponentIsOver) {
-			const groups = projectLibrary.getComponentGroups();
+			const groups = projectLibrary.getComponentGroupNames();
 			const groupRes: string = await this.getUserInput({
-				choices: groups,
-				default: groups.find(x => x === "Data Grids") || groups[0],
+				choices: this.formatOutput(projectLibrary.getComponentGroups()),
+				default: groups.find(x => x.includes("Grids")) || groups[0],
 				message: "Choose a group:",
 				name: "componentGroup",
 				type: "list"
@@ -230,7 +240,7 @@ export class PromptSession {
 		let choseComponentIsOver = false;
 		while (!choseComponentIsOver) {
 			const componentNameRes = await this.getUserInput({
-				choices: projectLibrary.getComponentNamesByGroup(groupName),
+				choices: this.formatOutput(projectLibrary.getComponentsByGroup(groupName)),
 				message: "Choose a component:",
 				name: "component",
 				type: "list"
@@ -241,8 +251,6 @@ export class PromptSession {
 			}
 
 			const component = projectLibrary.getComponentByName(componentNameRes);
-
-			// runTemplateCollection (item: Template[])
 			choseComponentIsOver = await this.getTemplate(projectLibrary, theme, groupName, component);
 		}
 		return true;
@@ -259,12 +267,13 @@ export class PromptSession {
 		: Promise<boolean> {
 		let selectedTemplate: Template;
 		const templates: Template[] = component.templates;
+		const config = ProjectConfig.getConfig();
 		if (templates.length === 1) {
 			//get the only one template
 			selectedTemplate = templates[0];
 		} else {
 			const templateRes = await this.getUserInput({
-				choices: templates.map(x => x.name),
+				choices: this.formatOutput(templates),
 				message: "Choose one:",
 				name: "template",
 				type: "list"
@@ -280,9 +289,11 @@ export class PromptSession {
 		}
 		if (selectedTemplate) {
 			let success = false;
+			const availableDefaultName = Util.getAvailableName(selectedTemplate.name, false,
+				config.project.framework, config.project.projectType);
 			while (!success) {
 				const templateName = await this.getUserInput({
-					default: selectedTemplate.name,
+					default: availableDefaultName,
 					message: "Name your component:",
 					name: "componentName",
 					type: "input"
@@ -314,8 +325,11 @@ export class PromptSession {
 	 * @param theme to use to style the project
 	 */
 	private async addView(projectLibrary: ProjectLibrary, theme: string): Promise<boolean> {
+		const customTemplates: Template[] = projectLibrary.getCustomTemplates();
+		const formatedOutput = this.formatOutput(customTemplates);
+		const config = ProjectConfig.getConfig();
 		const customTemplateNameRes = await this.getUserInput({
-			choices: projectLibrary.getCustomTemplateNames(),
+			choices: formatedOutput,
 			message: "Choose custom view:",
 			name: "customTemplate",
 			type: "list"
@@ -324,12 +338,16 @@ export class PromptSession {
 		if (customTemplateNameRes === this.WIZARD_BACK_OPTION) {
 			return false;
 		}
-		const selectedTemplate = await projectLibrary.getTemplateByName(customTemplateNameRes);
+		const selectedTemplate = customTemplates.find((value, i, obj) => {
+			return customTemplateNameRes === value.name;
+		});
 		if (selectedTemplate) {
 			let success = false;
+			const availableDefaultName = Util.getAvailableName(selectedTemplate.name, false,
+				config.project.framework, config.project.projectType);
 			while (!success) {
 				const customViewNameRes = await this.getUserInput({
-					default: selectedTemplate.name,
+					default: availableDefaultName,
 					message: "Name your view:",
 					name: "customViewName",
 					type: "input"
@@ -366,13 +384,22 @@ export class PromptSession {
 
 		const result = userInput[options.name] as string;
 
-		GoogleAnalytics.post({
-			cd1: result,
-			ea: `${options.name}: ${result}`,
-			ec: "$ig wizard",
-			el: options.message,
-			t: "event"
-		});
+		// post to GA everything but 'Back' user choice
+		if (!withBackChoice || result !== this.WIZARD_BACK_OPTION) {
+			GoogleAnalytics.post({
+				ea: `${options.name}: ${result}`,
+				ec: "$ig wizard",
+				el: options.message,
+				t: "event"
+			});
+		} else {
+			GoogleAnalytics.post({
+				ea: `Back from ${options.name}`,
+				ec: "$ig wizard",
+				el: result,
+				t: "event"
+			});
+		}
 
 		return result;
 	}
@@ -420,7 +447,28 @@ export class PromptSession {
 	}
 
 	/**
-	 * Gets the them from the user input, or default if provided @param projectLibrary has single theme
+	 * Gets project template from the user input, or default if provided @param projectLibrary has a single template
+	 * @param projectLibrary to get theme for
+	 */
+	private async getProjectTemplate(projectLibrary: ProjectLibrary): Promise<ProjectTemplate> {
+		let projTemplate: ProjectTemplate;
+
+		if (projectLibrary.projectIds.length < 2) {
+			return projectLibrary.getProject(projectLibrary.projectIds[0]);
+		}
+		const componentNameRes = await this.getUserInput({
+			choices: this.formatOutput(projectLibrary.projects),
+			message: "Choose project template:",
+			name: "projTemplate",
+			type: "list"
+		});
+		projTemplate = projectLibrary.projects.find(x => x.name === componentNameRes);
+
+		return projTemplate;
+	}
+
+	/**
+	 * Gets the theme from the user input, or default if provided @param projectLibrary has a single theme
 	 * @param projectLibrary to get theme for
 	 */
 	private async getTheme(projectLibrary: ProjectLibrary): Promise<string> {
@@ -444,16 +492,61 @@ export class PromptSession {
 	 * Generates a list of options for chooseActionLoop
 	 * @param projectLibrary to generate options for
 	 */
-	private generateActionChoices(projectLibrary: ProjectLibrary): string[] {
-		const actionChoices: string[] = ["Complete & Run"];
+	private generateActionChoices(projectLibrary: ProjectLibrary): Array<{}> {
+		const actionChoices: Array<{}> = [{
+			name: "Complete & Run" + chalk.gray("..........install packages and run in the default browser"),
+			short: "Complete & Run",
+			value: "Complete & Run"
+		}];
 		if (projectLibrary.components.length > 0) {
-			actionChoices.push("Add component");
+			actionChoices.push({
+				name:  "Add component" + chalk.gray("...........add a specific component view (e.g a grid)"),
+				short: "Add component", // displayed result after selection
+				value: "Add component" // actual selection value
+			});
 		}
 		if (projectLibrary.getCustomTemplateNames().length > 0) {
-			actionChoices.push("Add view");
+			actionChoices.push({
+				name: "Add scenario " + chalk.gray("...........add a predefined scenario view (e.g grid or dashboard)"),
+				short: "Add scenario",
+				value: "Add scenario"
+			});
 		}
 
 		return actionChoices;
+	}
+
+	private formatOutput(items: Array<Template | Component | ComponentGroup>):
+							Array<{name: string, value: string, short: string}> {
+		const choiceItems = [];
+		const leftPadding = 2;
+		const rightPadding = 1;
+
+		const maxNameLength = Math.max(...items.map(x => x.name.length)) + 3;
+		const targetNameLength = Math.max(18, maxNameLength);
+		let description: string;
+		for (const item of items) {
+			const choiceItem = {
+				name: "",
+				short: item.name,
+				value: item.name
+			};
+			choiceItem.name = item.name;
+			if (item instanceof BaseComponent && item.templates.length <= 1) {
+				description = item.templates[0].description || "";
+			} else {
+				description = item.description || "";
+			}
+			if (description !== "") {
+				choiceItem.name = item.name  +  Util.addColor(".".repeat(targetNameLength - item.name.length), 0);
+				const max = process.stdout.columns - targetNameLength - leftPadding - rightPadding;
+				description = Util.truncate(description, max, 3, ".");
+				description = Util.addColor(description, 0);
+				choiceItem.name += description;
+			}
+			choiceItems.push(choiceItem);
+		}
+		return choiceItems;
 	}
 }
 

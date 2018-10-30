@@ -11,7 +11,7 @@ describe("Unit - Base project library ", () => {
 
 		const library = new BaseProjectLibrary("../test");
 		expect(library.hasProject("angular")).toBe(true);
-		expect(library.projects).toEqual(mockProjects);
+		expect(library.projectIds).toEqual(mockProjects);
 		expect(Util.getDirectoryNames).toHaveBeenCalledWith(path.join("../test", "projects"));
 		done();
 	});
@@ -178,7 +178,7 @@ describe("Unit - Base project library ", () => {
 
 		const library = new BaseProjectLibrary(__dirname);
 
-		const mockTemplate = library.templates[0];
+		const mockTemplate: Template = library.templates[0];
 		mockTemplate.components = ["newComponent"];
 		mockTemplate.name = "newName";
 		library.registerTemplate(mockTemplate);
@@ -242,7 +242,7 @@ describe("Unit - Base project library ", () => {
 		});
 
 		const library = new BaseProjectLibrary(__dirname);
-		expect(library.getComponentGroups()).toEqual(["myChartGroup", "myComboGroup", "myGridGroup"]);
+		expect(library.getComponentGroupNames()).toEqual(["myChartGroup", "myComboGroup", "myGridGroup"]);
 		done();
 	});
 
@@ -253,23 +253,55 @@ describe("Unit - Base project library ", () => {
 				const folder = path.basename(modulePath);
 				if (folder !== "grid") {
 					return {
+						description: "common description",
 						group: "commonGroup",
-						name: folder
+						groupPriority: 1,
+						name: folder,
+						templates: []
 					};
 				}
 				if (folder === "grid") {
 					return {
+						description: "grid description",
 						group: folder + "Group",
-						name: folder
+						groupPriority: 2,
+						name: folder,
+						templates: []
 					};
 				} else {
 					fail("unexpected require");
 				}
 		});
+		const expectedCommonGroup: Component[] = [
+			{ group: "commonGroup", name: "chart", description: "common description", groupPriority: 1, templates: [] },
+			{ group: "commonGroup", name: "combo", description: "common description", groupPriority: 1, templates: [] }
+		];
+
+		const expectedGridGroup: Component[] = [
+			{ group: "gridGroup", name: "grid", description: "grid description", groupPriority: 2, templates: [] }
+		];
+		const library = new BaseProjectLibrary(__dirname);
+
+		expect(library.getComponentsByGroup("commonGroup")).toEqual(expectedCommonGroup);
+		expect(library.getComponentsByGroup("gridGroup")).toEqual(expectedGridGroup);
+		done();
+	});
+
+	it("should sort component in a group based on priority", async done => {
+		spyOnProperty(BaseProjectLibrary.prototype, "components").and.returnValue([
+			{ name: "Component1", group: "commonGroup", groupPriority: 1 },
+			{ name: "Component2", group: "commonGroup", groupPriority: 20 },
+			{ name: "Component3", group: "commonGroup", groupPriority: 13 },
+			{ name: "Component4", group: "commonGroup", groupPriority: 4 },
+			{ name: "Component5", group: "commonGroup", groupPriority: -4 },
+			{ name: "Component6", group: "commonGroup", groupPriority: 0 },
+			{ name: "Component7", group: "commonGroup", groupPriority: 0 }
+		] as Component[]);
 
 		const library = new BaseProjectLibrary(__dirname);
-		expect(library.getComponentNamesByGroup("commonGroup")).toEqual(["chart", "combo"]);
-		expect(library.getComponentNamesByGroup("gridGroup")).toEqual(["grid"]);
+		expect(library.getComponentsByGroup("commonGroup").map(x => x.name)).toEqual(
+			["Component2", "Component3", "Component4", "Component1", "Component6", "Component7", "Component5"]
+		);
 		done();
 	});
 

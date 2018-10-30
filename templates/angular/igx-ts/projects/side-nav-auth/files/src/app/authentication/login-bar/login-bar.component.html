@@ -1,0 +1,15 @@
+<button *ngIf="!userService.currentUser" igxRipple="white" igxButton="flat" igxButtonColor="white" (click)="openDialog()">Log In</button>
+
+<button class="login-button" *ngIf="userService.currentUser" igxRipple="white" igxButton="flat"
+    igxButtonBackground="c" igxButtonColor="white" [igxToggleAction]="options">
+  <igx-avatar [initials]="userService.initials" [src]="userService.currentUser.picture" [roundShape]="true" size="small" bgColor="white">
+  </igx-avatar>
+  <igx-icon>keyboard_arrow_down</igx-icon>
+</button>
+
+<igx-drop-down #options (onSelection)="menuSelect($event)">
+  <igx-drop-down-item igxRipple>Profile</igx-drop-down-item>
+  <igx-drop-down-item igxRipple>Log Out</igx-drop-down-item>
+</igx-drop-down>
+
+<app-login-dialog></app-login-dialog>

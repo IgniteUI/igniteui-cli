@@ -95,6 +95,7 @@ describe("Unit - New command", () => {
 
 		const mockProjLib = {
 			getProject: () => { },
+			projectIds: ["empty"],
 			projectType: "type",
 			themes: ["ig"]
 		};
@@ -137,6 +138,7 @@ describe("Unit - New command", () => {
 
 		const mockProjLib = {
 			getProject: () => { },
+			projectIds: ["empty"],
 			projectType: "type",
 			themes: ["ig"]
 		};
@@ -151,7 +153,7 @@ describe("Unit - New command", () => {
 		expect(newCmd.template.getProjectLibrary).toHaveBeenCalledWith("jq", "type");
 		expect(Util.log).toHaveBeenCalledWith("Project Name: Test, framework jq, type type, theme ig");
 		expect(mockProjLib.getProject).toHaveBeenCalled();
-		expect(Util.error).toHaveBeenCalledWith("Default project template not found");
+		expect(Util.error).toHaveBeenCalledWith("Project template not found");
 		//no other logs:
 		expect(Util.log).toHaveBeenCalledTimes(1);
 		done();
@@ -167,6 +169,7 @@ describe("Unit - New command", () => {
 			getProject: () => {
 				return mockTemplate;
 			},
+			projectIds: ["empty"],
 			projectType: "js",
 			themes: ["ig"]
 		};
@@ -198,6 +201,7 @@ describe("Unit - New command", () => {
 			getProject: () => {
 				return mockTemplate;
 			},
+			projectIds: ["empty"],
 			projectType: "type",
 			themes: ["ig"]
 		};
@@ -229,6 +233,7 @@ describe("Unit - New command", () => {
 			getProject: () => {
 				return mockTemplate;
 			},
+			projectIds: ["empty"],
 			projectType: "type",
 			themes: ["ig"]
 		};
@@ -262,6 +267,7 @@ describe("Unit - New command", () => {
 			getProject: () => {
 				return mockTemplate;
 			},
+			projectIds: ["empty"],
 			projectType: "type",
 			themes: ["ig"]
 		};
@@ -290,6 +296,7 @@ describe("Unit - New command", () => {
 			getProject: () => {
 				return mockTemplate;
 			},
+			projectIds: ["empty"],
 			projectType: "type",
 			themes: ["ig"]
 		};

@@ -1,0 +1,35 @@
+<div class="sample-wrapper">
+    <igx-card>
+      <igx-card-header>
+        <h3 class="igx-card-header__title">{{data.city}}</h3>
+        <h5 class="igx-card-header__subtitle">{{data.dateTime}}, {{data.today.description}}</h5>
+      </igx-card-header>
+      <igx-card-content>
+        <div class="weather__main" *ngIf=data>
+          <div class="weather__main-temp">
+            <div>{{data.today.tempMax}}°<sup>C</sup></div>
+            <div class="right"><igx-icon color="orange" fontSet="fas" name="fa-sun"></igx-icon></div>
+          </div>
+          <div class="weather__main-hum">
+            <div><igx-icon color="blue" fontSet="fas" name="fa-umbrella"></igx-icon>{{data.precipitation}} Precipitation </div>
+            <div class="right"><igx-icon color="aqua-blue" fontSet="fas" name="fa-tint"></igx-icon>{{data.humidity}} Humidity </div>
+          </div>
+        </div>
+        <button igxButton igxRipple (click)="toggleDetails()">Forecast Details</button>
+        <igx-expansion-panel>
+          <igx-expansion-panel-body>
+            <div class="forecast__container" *ngIf=data>
+              <div *ngFor="let day of data.daysOfWeek" class="forecast__day">
+                <div>{{day.name}}</div>
+                <div class="right">
+                  <igx-icon [color]="day.iconColor" fontSet="fas" [name]="day.iconName" font-size="1em"></igx-icon>
+                  {{day.tempMin}}°/{{day.tempMax}}°
+                </div>
+              </div>
+            </div>
+          </igx-expansion-panel-body>
+        </igx-expansion-panel>
+      </igx-card-content>
+    </igx-card>
+  </div>
+  
