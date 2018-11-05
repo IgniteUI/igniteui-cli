@@ -1,19 +1,18 @@
 import { Component, ViewChild } from "@angular/core";
 import { data } from "./data";
 
-import { IgxGridComponent, IgxGridTransaction, IgxTransactionService, IgxToggleDirective, Transaction } from "igniteui-angular";
+import { IgxGridComponent, IgxGridTransaction, IgxToggleDirective,
+	Transaction, IgxTransactionService } from "igniteui-angular";
 
 @Component({
-  selector: 'app-$(filePrefix)',
-  templateUrl: './$(filePrefix).component.html',
-  styleUrls: ['./$(filePrefix).component.css'],
-  providers: [{ provide: IgxGridTransaction, useClass: IgxTransactionService }]
+	selector: 'app-$(filePrefix)',
+	styleUrls: ['./$(filePrefix).component.css'],
+	templateUrl: './$(filePrefix).component.html',
+	providers: [{ provide: IgxGridTransaction, useClass: IgxTransactionService }]
 })
 export class $(ClassName)Component {
 	@ViewChild("gridRowEditTransaction", { read: IgxGridComponent }) public gridRowEditTransaction: IgxGridComponent;
-    @ViewChild(IgxToggleDirective) public toggle: IgxToggleDirective;
-
-    public currentActiveGrid: { id: string, transactions: any[] } = { id: "", transactions: [] };
+	@ViewChild(IgxToggleDirective) public toggle: IgxToggleDirective;
 
     public data: any[];
     private addProductId: number;
