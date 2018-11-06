@@ -1,20 +1,18 @@
 import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
-import {
-    CloseScrollStrategy, ConnectedPositioningStrategy, IBaseChipEventArgs, IgxChipsAreaComponent, HorizontalAlignment,
-    IgxDropDownComponent, VerticalAlignment
+import { CloseScrollStrategy, ConnectedPositioningStrategy, HorizontalAlignment, IBaseChipEventArgs, IgxChipsAreaComponent,
+	IgxDropDownComponent, VerticalAlignment
 } from 'igniteui-angular';
 
 @Component({
-    selector: 'app-$(filePrefix)',
-    templateUrl: './$(filePrefix).component.html',
-    styleUrls: ['./$(filePrefix).component.css']
+	selector: 'app-$(filePrefix)',
+	styleUrls: ['./$(filePrefix).component.css'],
+	templateUrl: './$(filePrefix).component.html'
 })
 
 export class $(ClassName)Component {
-
-    public dropDownList = [
-        {
-            id: "1",
+	public dropDownList = [
+		{
+    		id: "1",
             name: "Bug fixing for smart devices"
         },
         {
@@ -49,25 +47,25 @@ export class $(ClassName)Component {
 
     public chipList = [];
 
-    @ViewChild("chipsArea", { read: IgxChipsAreaComponent })
+	@ViewChild("chipsArea", { read: IgxChipsAreaComponent })
     public chipsArea: IgxChipsAreaComponent;
 
     @ViewChild(IgxDropDownComponent)
     public igxDropDown: IgxDropDownComponent;
     
-    private dropDownOpened = false;
+	private dropDownOpened = false;
 
     private _positionSettings = {
         horizontalStartPoint: HorizontalAlignment.Left,
         verticalStartPoint: VerticalAlignment.Bottom
     };
 
-    private _overlaySettings = {
-        closeOnOutsideClick: true,
+	private _overlaySettings = {
+    	closeOnOutsideClick: true,
         modal: false,
         positionStrategy: new ConnectedPositioningStrategy(this._positionSettings),
         scrollStrategy: new CloseScrollStrategy()
-    };
+	};
 
     constructor(public cdr: ChangeDetectorRef) { }
 
