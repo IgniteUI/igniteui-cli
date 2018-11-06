@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { CloseScrollStrategy, ConnectedPositioningStrategy, IBaseChipEventArgs, IgxChipsAreaComponent, HorizontalAlignment,
 	IgxDropDownComponent, VerticalAlignment } from 'igniteui-angular';
 
