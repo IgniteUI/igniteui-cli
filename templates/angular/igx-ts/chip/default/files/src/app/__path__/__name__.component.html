@@ -9,7 +9,7 @@
 				<span #label [class]="'igx-chip__text'">{{chip.name}}</span>
 			</igx-chip>
 		</igx-chips-area>
-		<button  #openButton igxButton="raised" (click)="toggleDropDown($event)" [igxDropDownItemNavigation]="dropdown2">Options</button>
+		<button  #openButton igxButton="raised" (click)="toggleDropDown($event)" [igxDropDownItemNavigation]="dropdown2">Talks</button>
 		<igx-drop-down #dropdown (onSelection)="itemSelection($event)" (onOpened)="onDropDownOpen()" (onClosed)="onDropDownClose()">
 			<igx-drop-down-item *ngFor="let item of dropDownList">
 				<div class="igx-drop-down__item-template">

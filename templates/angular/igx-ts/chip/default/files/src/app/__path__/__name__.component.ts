@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
-import { IgxChipsAreaComponent, IgxDropDownComponent } from 'igniteui-angular';
+import { CloseScrollStrategy, ConnectedPositioningStrategy, IBaseChipEventArgs, IgxChipsAreaComponent, HorizontalAlignment,
+	IgxDropDownComponent, VerticalAlignment } from 'igniteui-angular';
 
 @Component({
   selector: 'app-$(filePrefix)',
@@ -11,34 +12,36 @@ export class $(ClassName)Component {
 
 	public dropDownList = [
         {
-            name: "Lisa Landers"
+			id: "1",
+            name: "Bug fixing for smart devices"
         },
         {
-            name: "Lisa Spencer"
+			id: "2",
+            name: "The True Purpose of Design Systems"
         },
         {
-            name: "Dorothy H. Spencer"
+			id: "3",
+            name: "The IoT is dead, long live the internet"
         },
         {
-            name: "Dorothy Taylor"
+			id: "4",
+            name: "Micro frontends in practice"
         },
         {
-            name: "Stephanie May"
+			id: "5",
+            name: "Lessons about API testing"
         },
         {
-            name: "Marianne Taylor"
+			id: "6",
+            name: "Scaling big with Apache Kafka"
         },
         {
-            name: "Tammie Alvarez"
+			id: "7",
+            name: "Last minute performance testing"
         },
         {
-            name: "Tammie Flores"
-        },
-        {
-            name: "Charlotte Flores"
-        },
-        {
-            name: "Ward Riley"
+			id: "8",
+            name: "Sales Skillz for IT People"
         }
 	];
 
@@ -52,21 +55,30 @@ export class $(ClassName)Component {
 	
 	private dropDownOpened = false;
 
+	private _positionSettings = {
+        horizontalStartPoint: HorizontalAlignment.Left,
+        verticalStartPoint: VerticalAlignment.Bottom
+    };
+
+    private _overlaySettings = {
+        closeOnOutsideClick: true,
+        modal: false,
+        positionStrategy: new ConnectedPositioningStrategy(this._positionSettings),
+        scrollStrategy: new CloseScrollStrategy()
+    };
+
   constructor(public cdr: ChangeDetectorRef) { }
 
-  public chipRemoved(event) {
-	this.chipList = this.chipList.filter((item) => {
-		return item.id !== event.owner.id;
-	});
-	this.chipsArea.cdr.detectChanges();
-}
-
-  public toggleDropDown(ev) {
-	if (!this.dropDownOpened) {
-		this.igxDropDown.open({
-			modal: false
+	public chipRemoved(event: IBaseChipEventArgs) {
+		this.chipList = this.chipList.filter((item) => {
+			return item.id !== event.owner.id;
 		});
-		}
+		this.cdr.detectChanges();
+	}
+
+	public toggleDropDown(ev) {
+		this._overlaySettings.positionStrategy.settings.target = ev.target;
+		this.igxDropDown.toggle(this._overlaySettings);
 	}
 
 	public onDropDownOpen() {
@@ -78,6 +90,13 @@ export class $(ClassName)Component {
     }
 
     public itemSelection(ev) {
+		if (
+            this.chipList.find(
+                (val) => val.name === ev.newSelection.elementRef.nativeElement.textContent
+            ) !== undefined
+        ) {
+            return;
+        }
         let i;
         for (i = 0; i < this.dropDownList.length; i++) {
             if (
@@ -85,6 +104,7 @@ export class $(ClassName)Component {
                 this.dropDownList[i].name
             ) {
                 this.chipList.push({
+					id: this.dropDownList[i].id,
                     name: this.dropDownList[i].name
                 });
                 this.igxDropDown.close();
