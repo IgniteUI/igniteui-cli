@@ -21,7 +21,7 @@ describe("Unit - Package Manager", () => {
 				}
 			}
 		});
-		spyOn(ProjectConfig, "getConfig").and.returnValue({
+		spyOn(ProjectConfig, "localConfig").and.returnValue({
 			igPackageRegistry: "trial",
 			project: {
 				components: ["igGrid", "igExcel"],
@@ -77,7 +77,7 @@ describe("Unit - Package Manager", () => {
 		);
 		expect(cp.execSync).toHaveBeenCalledWith("npm config set @infragistics:registry trial");
 		expect(PackageManager.removePackage).toHaveBeenCalled();
-		expect(PackageManager.addPackage).toHaveBeenCalledWith("@infragistics/ignite-ui-full", true);
+		expect(PackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@"17.2"`, true);
 		done();
 	});
 	it("ensureIgniteUISource - Should run through properly when install = true && package error", async done => {
@@ -95,7 +95,7 @@ describe("Unit - Package Manager", () => {
 				}
 			}
 		});
-		spyOn(ProjectConfig, "getConfig").and.returnValue({
+		spyOn(ProjectConfig, "localConfig").and.returnValue({
 			igPackageRegistry: "trial",
 			project: {
 				components: ["igGrid", "igExcel"],
@@ -112,7 +112,7 @@ describe("Unit - Package Manager", () => {
 		spyOn(Util, "log");
 		spyOn(PackageManager, "removePackage");
 		PackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
-		expect(ProjectConfig.getConfig).toHaveBeenCalled();
+		expect(ProjectConfig.localConfig).toHaveBeenCalled();
 		expect(Util.log).toHaveBeenCalledTimes(7);
 		expect(Util.log).toHaveBeenCalledWith(
 			"The project you've created requires the full version of Ignite UI from Infragistics private feed.",
@@ -168,7 +168,7 @@ describe("Unit - Package Manager", () => {
 				}
 			}
 		});
-		spyOn(ProjectConfig, "getConfig").and.returnValue({
+		spyOn(ProjectConfig, "localConfig").and.returnValue({
 			igPackageRegistry: "trial",
 			project: {
 				components: ["igGrid", "igExcel"],
@@ -177,15 +177,74 @@ describe("Unit - Package Manager", () => {
 			}
 		});
 		PackageManager.ensureIgniteUISource(false, mockTemplateMgr, true);
-		expect(ProjectConfig.getConfig).toHaveBeenCalled();
+		expect(ProjectConfig.localConfig).toHaveBeenCalled();
 		expect(Util.log).toHaveBeenCalledWith(
 		"Template(s) that require the full version of Ignite UI found in the project." +
 		"You'll might be prompted for credentials on build to install it.", "yellow");
 		done();
 	});
+
+	it("ensureIgniteUISource - Should respect oss version when upgrading", async done => {
+		class TestPackageManager extends PackageManager {
+			public static ensureRegistryUser(config: Config): boolean { return true; }
+			public static getPackageJSON(): any {}
+		}
+		const mockDeps = {
+			dependencies: {
+				"ignite-ui": "~17.2"
+			}
+		};
+		const mockTemplateMgr = jasmine.createSpyObj("mockTemplateMgr", {
+			getProjectLibrary: {
+				getProject() {
+					return { upgradeIgniteUIPackage: () => {} };
+				}
+			}
+		});
+		spyOn(ProjectConfig, "localConfig").and.callFake(() => {
+			return {
+				project: {
+					components: ["igGrid", "igExcel"],
+					igniteuiSource: `./node_modules/ignite-ui`,
+					isBundle: false
+				}
+			};
+		});
+		spyOn(ProjectConfig, "setConfig");
+		spyOn(TestPackageManager, "addPackage").and.callThrough();
+		spyOn(cp, "execSync");
+		spyOn(Util, "log");
+		spyOn(TestPackageManager, "removePackage");
+		spyOn(TestPackageManager, "getPackageJSON").and.callFake(() => mockDeps);
+
+		TestPackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
+		expect(TestPackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@"~17.2"`, true);
+		expect(cp.execSync).toHaveBeenCalledWith(
+			`npm install @infragistics/ignite-ui-full@"~17.2" --quiet --save`,
+			jasmine.any(Object)
+		);
+		expect(TestPackageManager.removePackage).toHaveBeenCalledWith("ignite-ui", true);
+
+		mockDeps.dependencies["ignite-ui"] = "^17.1";
+		TestPackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
+		expect(TestPackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@"^17.1"`, true);
+		expect(cp.execSync).toHaveBeenCalledWith(
+			`npm install @infragistics/ignite-ui-full@"^17.1" --quiet --save`,
+			jasmine.any(Object)
+		);
+
+		mockDeps.dependencies["ignite-ui"] = ">=0.1.0 <0.2.0";
+		TestPackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
+		expect(TestPackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@">=0.1.0 <0.2.0"`, true);
+		expect(cp.execSync).toHaveBeenCalledWith(
+			`npm install @infragistics/ignite-ui-full@">=0.1.0 <0.2.0" --quiet --save`,
+			jasmine.any(Object)
+		);
+		done();
+	});
+
 	it("Should run installPackages properly with error code", async done => {
-		spyOn(ProjectConfig, "getConfig").and.returnValue({
-			disableAnalytics: false,
+		spyOn(ProjectConfig, "localConfig").and.returnValue({
 			packagesInstalled: false
 		});
 		spyOn(Util, "log");
@@ -196,34 +255,33 @@ describe("Unit - Package Manager", () => {
 		});
 		spyOn(ProjectConfig, "setConfig");
 		await PackageManager.installPackages(true);
-		expect(ProjectConfig.getConfig).toHaveBeenCalledTimes(1);
+		expect(ProjectConfig.localConfig).toHaveBeenCalledTimes(1);
 		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(Util.log).toHaveBeenCalledWith(`Installing npm packages`);
 		expect(Util.log).toHaveBeenCalledWith(`Error installing npm packages.`);
 		expect(Util.log).toHaveBeenCalledWith(`Example`);
 		expect(cp.execSync).toHaveBeenCalledWith(`npm install --quiet`, { stdio: "pipe", killSignal: "SIGINT" });
-		expect(ProjectConfig.setConfig).toHaveBeenCalledWith({disableAnalytics: false, packagesInstalled: true});
+		expect(ProjectConfig.setConfig).toHaveBeenCalledWith({ packagesInstalled: true});
 		done();
 	});
 	it("Should run installPackages properly without error code", async done => {
-		spyOn(ProjectConfig, "getConfig").and.returnValue({
-			disableAnalytics: true,
+		spyOn(ProjectConfig, "localConfig").and.returnValue({
 			packagesInstalled: false
 		});
 		spyOn(Util, "log");
 		spyOn(cp, "execSync").and.returnValue("");
 		spyOn(ProjectConfig, "setConfig");
 		await PackageManager.installPackages(true);
-		expect(ProjectConfig.getConfig).toHaveBeenCalledTimes(1);
+		expect(ProjectConfig.localConfig).toHaveBeenCalledTimes(1);
 		expect(Util.log).toHaveBeenCalledTimes(2);
 		expect(Util.log).toHaveBeenCalledWith(`Installing npm packages`);
 		expect(Util.log).toHaveBeenCalledWith(`Packages installed successfully`);
 		expect(cp.execSync).toHaveBeenCalledWith(`npm install --quiet`, { stdio: "pipe", killSignal: "SIGINT" });
-		expect(ProjectConfig.setConfig).toHaveBeenCalledWith({disableAnalytics: true, packagesInstalled: true});
+		expect(ProjectConfig.setConfig).toHaveBeenCalledWith({ packagesInstalled: true});
 		done();
 	});
 	it("Should exit on installPackages if child install is terminated", async done => {
-		spyOn(ProjectConfig, "getConfig").and.returnValue({
+		spyOn(ProjectConfig, "localConfig").and.returnValue({
 			packagesInstalled: false,
 			skipAnalytic: true
 		});
