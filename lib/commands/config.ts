@@ -60,7 +60,6 @@ const command = {
 	getHandler(argv) {
 		GoogleAnalytics.post({
 			t: "screenview",
-			// tslint:disable-next-line:object-literal-sort-keys
 			cd: "Config"
 		});
 
@@ -72,7 +71,6 @@ const command = {
 
 		GoogleAnalytics.post({
 			t: "event",
-			// tslint:disable-next-line:object-literal-sort-keys
 			ec: "$ig config",
 			el: "subcommand: get",
 			ea: `property to get: ${argv.property}, is global: ${argv.global}`,
@@ -90,7 +88,6 @@ const command = {
 	setHandler(argv) {
 		GoogleAnalytics.post({
 			t: "screenview",
-			// tslint:disable-next-line:object-literal-sort-keys
 			cd: "Config"
 		});
 
@@ -113,7 +110,6 @@ const command = {
 
 		GoogleAnalytics.post({
 			t: "event",
-			// tslint:disable-next-line:object-literal-sort-keys
 			ec: "$ig config",
 			el: "subcommand: set",
 			ea: `property to set: ${argv.property}, value to set: ${argv.value}, is global: ${argv.global}`,
@@ -130,7 +126,6 @@ const command = {
 		if (!argv.skipAnalytics) {
 			GoogleAnalytics.post({
 				t: "screenview",
-				// tslint:disable-next-line:object-literal-sort-keys
 				cd: "Config"
 			});
 		}
@@ -165,7 +160,6 @@ const command = {
 		if (!argv.skipAnalytics) {
 			GoogleAnalytics.post({
 				t: "event",
-				// tslint:disable-next-line:object-literal-sort-keys
 				ec: "$ig config",
 				el: "subcommand: add",
 				ea: `property to add: ${argv.property}, value to add: ${argv.value}, is global: ${argv.global}`,

@@ -24,8 +24,8 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			TypeScriptFileUpdate: function () {
 				return helpers.tsUpdateMock;
 			},
-			// tslint:enable
 			requireMock: require
+			// tslint:enable
 		};
 		beforeEach(() => {
 			// spy on require:

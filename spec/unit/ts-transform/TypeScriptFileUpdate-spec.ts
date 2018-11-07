@@ -290,7 +290,7 @@ describe("Unit - TypeScriptFileUpdate", () => {
 			const tsUpdate = new TestTsFileUpdate("/test/file");
 			tsUpdate.addNgModuleMeta({ import: "Named", from: "package" }); //reuse import
 			tsUpdate.addNgModuleMeta({ declare: "Component1", from: "another/package" });
-			tsUpdate.addNgModuleMeta({ provide: "GridService", import: "Module1", declare:  [ "Component2" ] }); // no import
+			tsUpdate.addNgModuleMeta({ import: "Module1", declare:  [ "Component2" ], provide: "GridService" }); // no import
 			tsUpdate.finalize();
 
 			expect(fs.writeFileSync).toHaveBeenCalledWith(
@@ -334,7 +334,7 @@ describe("Unit - TypeScriptFileUpdate", () => {
 			const tsUpdate = new TestTsFileUpdate("/test/file");
 			tsUpdate.addNgModuleMeta({ import: "Named" });
 			tsUpdate.addNgModuleMeta({ declare: "Component1" });
-			tsUpdate.addNgModuleMeta({ provide: "GridService", import: "Module1", declare:  [ "Component2" ] });
+			tsUpdate.addNgModuleMeta({ import: "Module1", declare:  [ "Component2" ], provide: "GridService" });
 			tsUpdate.finalize();
 
 			expect(fs.writeFileSync).toHaveBeenCalledWith(

@@ -118,7 +118,8 @@ export class PackageManager {
 				break;
 		}
 		try {
-			const result = execSync(command, { stdio: "pipe", encoding: "utf8" });
+				// tslint:disable-next-line:object-literal-sort-keys
+				const result = execSync(command, { stdio: "pipe", encoding: "utf8" });
 		} catch (error) {
 			Util.log(`Error uninstalling package ${packageName} with ${managerCommand}`);
 			if (verbose) {
@@ -135,7 +136,8 @@ export class PackageManager {
 		const managerCommand = this.getManager();
 		const command = this.getInstallCommand(managerCommand, packageName);
 		try {
-			const result = execSync(command, { stdio: "pipe", encoding: "utf8" });
+				// tslint:disable-next-line:object-literal-sort-keys
+				const result = execSync(command, { stdio: "pipe", encoding: "utf8" });
 		} catch (error) {
 			Util.log(`Error installing package ${packageName} with ${managerCommand}`);
 			if (verbose) {
@@ -208,8 +210,9 @@ export class PackageManager {
 	private static ensureRegistryUser(config: Config): boolean {
 		const fullPackageRegistry = config.igPackageRegistry;
 		try {
-			const user = execSync(`npm whoami --registry=${fullPackageRegistry}`, { stdio: "pipe", encoding: "utf8" });
-		} catch (error) {
+				// tslint:disable-next-line:object-literal-sort-keys
+				const user = execSync(`npm whoami --registry=${fullPackageRegistry}`, { stdio: "pipe", encoding: "utf8" });
+			} catch (error) {
 			// try registering the user:
 			Util.log(
 				"The project you've created requires the full version of Ignite UI from Infragistics private feed.",
