@@ -37,17 +37,17 @@ describe("Add command", () => {
 			jasmine.stringMatching(/Add command is supported only on existing project created with igniteui-cli\s*/)
 		);
 		expect(console.log).toHaveBeenCalledTimes(0);
-		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
-			{
-				t: "screenview",
-				// tslint:disable-next-line:object-literal-sort-keys
-				cd: "Add"
-			});
-		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
-			{
-				cd: "error: Add command is supported only on existing project created with igniteui-cli",
-				t: "screenview"
-			});
+		let expectedPrams: GoogleAnalyticsParameters = 	 {
+			t: "screenview",
+			cd: "Add"
+		};
+		expect(GoogleAnalytics.post).toHaveBeenCalledWith(expectedPrams);
+
+		expectedPrams = {
+			t: "screenview",
+			cd: "error: Add command is supported only on existing project created with igniteui-cli"
+		};
+		expect(GoogleAnalytics.post).toHaveBeenCalledWith(expectedPrams);
 		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);
 
 		resetSpy(console.error);
@@ -223,25 +223,25 @@ describe("Add command", () => {
 
 		fs.unlinkSync(ProjectConfig.configFile);
 
-		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
-			{
-				t: "screenview",
-				// tslint:disable-next-line:object-literal-sort-keys
-				cd: "Add" });
-		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
-			{
-				t: "event",
-				// tslint:disable-next-line:object-literal-sort-keys
-				ec: "$ig add",
-				ea: "template id: grid; file name: Test view",
-				cd1: "angular",
-				cd2: "ig-ts",
-				cd5: "Data Grids",
-				cd7: "grid",
-				cd8: "Grid",
-				cd11: false,
-				cd14: undefined
-			});
+		let expectedPrams: GoogleAnalyticsParameters = {
+			t: "screenview",
+			cd: "Add"
+		};
+		expect(GoogleAnalytics.post).toHaveBeenCalledWith(expectedPrams);
+
+		expectedPrams = {
+			t: "event",
+			ec: "$ig add",
+			ea: "template id: grid; file name: Test view",
+			cd1: "angular",
+			cd2: "ig-ts",
+			cd5: "Data Grids",
+			cd7: "grid",
+			cd8: "Grid",
+			cd11: false,
+			cd14: undefined
+		};
+		expect(GoogleAnalytics.post).toHaveBeenCalledWith(expectedPrams);
 		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);
 
 		done();

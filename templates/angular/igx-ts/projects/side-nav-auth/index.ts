@@ -13,10 +13,10 @@ class AuthSideProject extends SideNavProject implements ProjectTemplate {
 
 	public async generateFiles(outputPath: string, name: string, theme: string, ...options: any[]): Promise<boolean> {
 		const config = {
-			"$(CustomTheme)": "",
-			"$(DefaultTheme)": "",
 			"$(cliVersion)": Util.version(),
+			"$(CustomTheme)": "",
 			"$(dash-name)": Util.lowerDashed(name),
+			"$(DefaultTheme)": "",
 			"$(name)": name,
 			"$(theme)": theme,
 			"__path__": name
