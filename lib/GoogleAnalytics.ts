@@ -153,7 +153,7 @@ export { GoogleAnalytics };
 
 process.on("uncaughtException", err => {
 	GoogleAnalytics.post({
-		exd: err.message,
-		t: "exception"
+		t: "exception",
+		exd: err.message
 	});
 });

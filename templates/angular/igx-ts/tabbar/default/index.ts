@@ -11,11 +11,11 @@ class IgxBottomNavTemplate extends IgniteUIForAngularTemplate {
 		this.name = "Bottom Navigation";
 		this.description = "three item bottom navigation template";
 		this.dependencies = [{
-			from: "igniteui-angular",
-			import: ["IgxBottomNavModule", "IgxAvatarModule", "IgxIconModule", "IgxRippleModule"]
+			import: ["IgxBottomNavModule", "IgxAvatarModule", "IgxIconModule", "IgxRippleModule"],
+			from: "igniteui-angular"
 		}, {
-			from: "@angular/common",
-			import: "CommonModule"
+			import: "CommonModule",
+			from: "@angular/common"
 		}];
 	}
 }

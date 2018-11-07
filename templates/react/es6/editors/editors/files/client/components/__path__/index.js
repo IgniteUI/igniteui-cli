@@ -9,9 +9,11 @@ export default class $(ClassName) extends Component {
     return (
       <div className="App">
         <div className="App-header">
-			<h2>$(description)</h2>
+			<h2 style={{textAlign: "center", marginBottom: "2vw"}}>$(description)</h2>
         </div>
-        <$(Control) id="editor" />
+		<div style={{display: "flex", flexFlow: "column", alignItems: "center"}}>
+        	<$(Control) id="editor" />
+		</div>
       </div>
     );
   }

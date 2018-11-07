@@ -30,25 +30,23 @@ describe("New command", () => {
 		expect(fs.existsSync("./jQuery Proj/.gitignore")).toBeTruthy();
 		this.testFolder = "./jQuery Proj";
 
-		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
-			{
-				t: "screenview",
-				// tslint:disable-next-line:object-literal-sort-keys
-				cd: "New"
-			});
+		let expectedPrams: GoogleAnalyticsParameters = {
+			t: "screenview",
+			cd: "New"
+		};
+		expect(GoogleAnalytics.post).toHaveBeenCalledWith(expectedPrams);
 
-		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
-			{
-				t: "event",
-				// tslint:disable-next-line:object-literal-sort-keys
-				ec: "$ig new",
-				ea: "project name: jQuery Proj; framework: jquery; project type: js; theme: infragistics; skip-git: false",
-				cd1: "jquery",
-				cd2: "js",
-				cd3: "jQuery Proj",
-				cd11: false,
-				cd14: "infragistics"
-			});
+		expectedPrams = {
+			t: "event",
+			ec: "$ig new",
+			ea: "project name: jQuery Proj; framework: jquery; project type: js; theme: infragistics; skip-git: false",
+			cd1: "jquery",
+			cd2: "js",
+			cd3: "jQuery Proj",
+			cd11: false,
+			cd14: "infragistics"
+		};
+		expect(GoogleAnalytics.post).toHaveBeenCalledWith(expectedPrams);
 		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);
 
 		done();
@@ -99,18 +97,18 @@ describe("New command", () => {
 		fs.mkdirSync("testProj");
 		await cli.run(["new", "testProj"]);
 		expect(console.error).toHaveBeenCalledWith(jasmine.stringMatching(/Folder "testProj" already exists!/));
-		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
-			{
-				t: "screenview",
-				// tslint:disable-next-line:object-literal-sort-keys
-				cd: "New"
-			});
-		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
-			{
-				t: "screenview",
-				// tslint:disable-next-line:object-literal-sort-keys
-				cd: "error: Folder \"testProj\" already exists!"
-			});
+
+		let expectedPrams: GoogleAnalyticsParameters = {
+			t: "screenview",
+			cd: "New"
+		};
+		expect(GoogleAnalytics.post).toHaveBeenCalledWith(expectedPrams);
+
+		expectedPrams = {
+			t: "screenview",
+			cd: "error: Folder \"testProj\" already exists!"
+		};
+		expect(GoogleAnalytics.post).toHaveBeenCalledWith(expectedPrams);
 		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);
 		fs.rmdirSync("testProj");
 
@@ -152,6 +150,7 @@ describe("New command", () => {
 		await cli.run(["new", projectName, "--framework=angular", "--type=igx-ts", "--skip-git"]);
 
 		expect(fs.existsSync("./" + projectName + "/.git")).not.toBeTruthy();
+		this.testFolder = projectName;
 		done();
 	});
 

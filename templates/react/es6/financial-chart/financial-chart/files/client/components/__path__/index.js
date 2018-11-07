@@ -15,12 +15,12 @@ export default class $(ClassName) extends Component {
 		return (
 			<div className="$(ClassName)">
 				<div className="$(ClassName)-header">
-					<h2>$(description)</h2>
+					<h2 style={{textAlign: "center", marginBottom: "3%"}}>$(description)</h2>
 				</div>
-				<div style={{float: "left"}}>
+				<div style={{float: "left", marginLeft: "2vw"}}>
 						<$(Control)
 							id="financialchart"
-							width="500px"
+							width="40vw"
 							height="500px"
 							title="Microsoft (MSFT) vs. Adobe (ADBE)"
 							subtitle="A comparison of stocks over time"
@@ -88,7 +88,7 @@ export default class $(ClassName) extends Component {
 				<div style={{float: "left"}}>
 						<$(Control)
 							id="financialchart"
-							width="500px"
+							width="40vw"
 							height="500px"
 
 							title="Microsoft (MSFT) vs. Adobe (ADBE)"
