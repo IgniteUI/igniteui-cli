@@ -5,14 +5,8 @@
 	<title>$(description)</title>
 
 	$(cssBlock)
-	<style type="text/css">
-		#chart {
-			position: relative;
-			float: left;
-			margin-right: 10px;
-			margin-bottom: 10px;
-		}
-	</style>
+	<link rel="stylesheet" href="./style.css">
+
 	$(scriptBlock)
 	<script type="text/javascript" src="data.js"></script>
 	<script type="text/javascript">
@@ -33,7 +27,9 @@
 <body>
 	<div class="content">
 		<h2>$(description)</h2>
-		<div id="chart"></div>
+		<div class="wrapper">
+			<div id="chart"></div>
+		</div>
 	</div>
 </body>
 

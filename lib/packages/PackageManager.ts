@@ -23,7 +23,7 @@ export class PackageManager {
 		templateManager: TemplateManager,
 		verbose: boolean = false
 	) {
-		const config = ProjectConfig.getConfig();
+		const config = ProjectConfig.localConfig();
 		const fullComponents = config.project.components.filter(x => {
 			return componentsConfig.full.indexOf(x) !== -1 || componentsConfig.dv.indexOf(x) !== -1;
 		});
@@ -33,8 +33,10 @@ export class PackageManager {
 		}
 
 		if (installNow) {
-			if (this.ensureRegistryUser(config) && this.addPackage(this.fullPackage, verbose)) {
-				if (this.getPackageJSON().dependencies[this.ossPackage]) {
+			const ossVersion = this.getPackageJSON().dependencies[this.ossPackage];
+			const version = ossVersion ? `@"${ossVersion}"` : "";
+			if (this.ensureRegistryUser(config) && this.addPackage(this.fullPackage + version, verbose)) {
+				if (ossVersion) {
 					// TODO: Check if OSS package uninstalled successfully?
 					this.removePackage(this.ossPackage, verbose);
 				}
@@ -45,7 +47,14 @@ export class PackageManager {
 					const projectLibrary = templateManager.getProjectLibrary(config.project.framework, config.project.projectType);
 					if (projectLibrary) {
 						// TODO multiple projects?
-						projectLibrary.getProject().upgradeIgniteUIPackage(process.cwd(), `./node_modules/${this.fullPackage}/en`);
+						let project;
+						if (!config.project.projectTemplate) {
+							// in case project tempale is missing from the config we provide backward.
+							project = projectLibrary.getProject(projectLibrary.projectIds[0]);
+						} else {
+							project = projectLibrary.getProject(config.project.projectTemplate);
+						}
+						project.upgradeIgniteUIPackage(process.cwd(), `./node_modules/${this.fullPackage}/en`);
 					}
 				}
 			} else {
@@ -61,13 +70,10 @@ export class PackageManager {
 	}
 
 	public static async installPackages(verbose: boolean = false) {
-		const config = ProjectConfig.getConfig();
+		const config = ProjectConfig.localConfig();
 		if (!config.packagesInstalled) {
 			let command: string;
 			let managerCommand: string;
-
-			const oldSkipAnalytic = config.disableAnalytics;
-			config.disableAnalytics = true;
 
 			managerCommand = this.getManager();
 			switch (managerCommand) {
@@ -95,7 +101,6 @@ export class PackageManager {
 				}
 			}
 			config.packagesInstalled = true;
-			config.disableAnalytics = oldSkipAnalytic;
 			ProjectConfig.setConfig(config);
 		}
 	}
@@ -111,7 +116,8 @@ export class PackageManager {
 				break;
 		}
 		try {
-			const result = execSync(command, { stdio: "pipe", encoding: "utf8" });
+				// tslint:disable-next-line:object-literal-sort-keys
+				const result = execSync(command, { stdio: "pipe", encoding: "utf8" });
 		} catch (error) {
 			Util.log(`Error uninstalling package ${packageName} with ${managerCommand}`);
 			if (verbose) {
@@ -128,7 +134,8 @@ export class PackageManager {
 		const managerCommand = this.getManager();
 		const command = this.getInstallCommand(managerCommand, packageName);
 		try {
-			const result = execSync(command, { stdio: "pipe", encoding: "utf8" });
+				// tslint:disable-next-line:object-literal-sort-keys
+				const result = execSync(command, { stdio: "pipe", encoding: "utf8" });
 		} catch (error) {
 			Util.log(`Error installing package ${packageName} with ${managerCommand}`);
 			if (verbose) {
@@ -180,29 +187,12 @@ export class PackageManager {
 		}
 	}
 
-	private static getInstallCommand(managerCommand: string, packageName: string): string {
-		switch (managerCommand) {
-			case "npm":
-			/* passes through */
-			default:
-				return `${managerCommand} install ${packageName} --quiet --save`;
-		}
-	}
-
-	private static getManager(/*config:Config*/): string {
-		//stub to potentially swap out managers
-		return "npm";
-	}
-
-	private static isOSSPackage(original): boolean {
-		return original === `./node_modules/${this.ossPackage}`;
-	}
-
-	private static ensureRegistryUser(config: Config): boolean {
+	protected static ensureRegistryUser(config: Config): boolean {
 		const fullPackageRegistry = config.igPackageRegistry;
 		try {
-			const user = execSync(`npm whoami --registry=${fullPackageRegistry}`, { stdio: "pipe", encoding: "utf8" });
-		} catch (error) {
+				// tslint:disable-next-line:object-literal-sort-keys
+				const user = execSync(`npm whoami --registry=${fullPackageRegistry}`, { stdio: "pipe", encoding: "utf8" });
+			} catch (error) {
 			// try registering the user:
 			Util.log(
 				"The project you've created requires the full version of Ignite UI from Infragistics private feed.",
@@ -238,8 +228,26 @@ export class PackageManager {
 		return true;
 	}
 
-	private static getPackageJSON(): { "dependencies": {[x: string]: string} } {
+	protected static getPackageJSON(): { "dependencies": {[x: string]: string} } {
 		const filePath = path.join(process.cwd(), "package.json");
 		return require(filePath);
+	}
+
+	private static getInstallCommand(managerCommand: string, packageName: string): string {
+		switch (managerCommand) {
+			case "npm":
+			/* passes through */
+			default:
+				return `${managerCommand} install ${packageName} --quiet --save`;
+		}
+	}
+
+	private static getManager(/*config:Config*/): string {
+		//stub to potentially swap out managers
+		return "npm";
+	}
+
+	private static isOSSPackage(original): boolean {
+		return original === `./node_modules/${this.ossPackage}`;
 	}
 }

@@ -3,7 +3,7 @@
 <a href="https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/src/lib/grid/README.md" target="_blank">README</a> or the 
 <a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid.html" target="_blank">official documentation</a>.</p>
 $(selectedFeatures)
-<igx-grid #grid1 [data]="localData" width="900px" height="550px" $(gridFeatures)>
+<igx-grid #grid1 [data]="localData" [primaryKey]="'FirstName'" width="900px" height="550px" $(gridFeatures)>
   <igx-column field="FirstName" header="First Name"  width="150px" $(columnFeatures) $(columnPinning)>
   </igx-column>
   <igx-column field="LastName" header="Last Name" width="150px" $(columnFeatures) $(columnPinning)>

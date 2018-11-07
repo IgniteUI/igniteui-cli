@@ -204,7 +204,6 @@ class Util {
 	public static error(message: string, colorKeyword?: string) {
 		GoogleAnalytics.post({
 			t: "screenview",
-			// tslint:disable-next-line:object-literal-sort-keys
 			cd: `error: ${message}`
 		});
 

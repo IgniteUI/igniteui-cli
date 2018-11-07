@@ -10,6 +10,7 @@
 		"bundleFilePath": "/igniteui/dist/ignite.js",
 		"igniteuiSource": "./node_modules/ignite-ui",
 		"components": [],
+		"projectTemplate": "empty",
 		"sourceFiles": [
 			"infragistics.core-lite.js",
 			"infragistics.lob-lite.js"

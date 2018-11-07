@@ -4,6 +4,7 @@
 		"defaultPort": 3000,
 		"framework" : "jquery",
 		"projectType": "js",
+		"projectTemplate": "empty",
 		"theme": "$(theme)",
 		"themePath": "$(themePath)",
 		"cssPath": "$(cssPath)",
