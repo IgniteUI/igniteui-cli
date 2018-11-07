@@ -21,7 +21,7 @@ describe("Unit - Package Manager", () => {
 				}
 			}
 		});
-		spyOn(ProjectConfig, "getConfig").and.returnValue({
+		spyOn(ProjectConfig, "localConfig").and.returnValue({
 			igPackageRegistry: "trial",
 			project: {
 				components: ["igGrid", "igExcel"],
@@ -95,7 +95,7 @@ describe("Unit - Package Manager", () => {
 				}
 			}
 		});
-		spyOn(ProjectConfig, "getConfig").and.returnValue({
+		spyOn(ProjectConfig, "localConfig").and.returnValue({
 			igPackageRegistry: "trial",
 			project: {
 				components: ["igGrid", "igExcel"],
@@ -112,7 +112,7 @@ describe("Unit - Package Manager", () => {
 		spyOn(Util, "log");
 		spyOn(PackageManager, "removePackage");
 		PackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
-		expect(ProjectConfig.getConfig).toHaveBeenCalled();
+		expect(ProjectConfig.localConfig).toHaveBeenCalled();
 		expect(Util.log).toHaveBeenCalledTimes(7);
 		expect(Util.log).toHaveBeenCalledWith(
 			"The project you've created requires the full version of Ignite UI from Infragistics private feed.",
@@ -168,7 +168,7 @@ describe("Unit - Package Manager", () => {
 				}
 			}
 		});
-		spyOn(ProjectConfig, "getConfig").and.returnValue({
+		spyOn(ProjectConfig, "localConfig").and.returnValue({
 			igPackageRegistry: "trial",
 			project: {
 				components: ["igGrid", "igExcel"],
@@ -177,7 +177,7 @@ describe("Unit - Package Manager", () => {
 			}
 		});
 		PackageManager.ensureIgniteUISource(false, mockTemplateMgr, true);
-		expect(ProjectConfig.getConfig).toHaveBeenCalled();
+		expect(ProjectConfig.localConfig).toHaveBeenCalled();
 		expect(Util.log).toHaveBeenCalledWith(
 		"Template(s) that require the full version of Ignite UI found in the project." +
 		"You'll might be prompted for credentials on build to install it.", "yellow");
@@ -201,7 +201,7 @@ describe("Unit - Package Manager", () => {
 				}
 			}
 		});
-		spyOn(ProjectConfig, "getConfig").and.callFake(() => {
+		spyOn(ProjectConfig, "localConfig").and.callFake(() => {
 			return {
 				project: {
 					components: ["igGrid", "igExcel"],
@@ -244,8 +244,7 @@ describe("Unit - Package Manager", () => {
 	});
 
 	it("Should run installPackages properly with error code", async done => {
-		spyOn(ProjectConfig, "getConfig").and.returnValue({
-			disableAnalytics: false,
+		spyOn(ProjectConfig, "localConfig").and.returnValue({
 			packagesInstalled: false
 		});
 		spyOn(Util, "log");
@@ -256,34 +255,33 @@ describe("Unit - Package Manager", () => {
 		});
 		spyOn(ProjectConfig, "setConfig");
 		await PackageManager.installPackages(true);
-		expect(ProjectConfig.getConfig).toHaveBeenCalledTimes(1);
+		expect(ProjectConfig.localConfig).toHaveBeenCalledTimes(1);
 		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(Util.log).toHaveBeenCalledWith(`Installing npm packages`);
 		expect(Util.log).toHaveBeenCalledWith(`Error installing npm packages.`);
 		expect(Util.log).toHaveBeenCalledWith(`Example`);
 		expect(cp.execSync).toHaveBeenCalledWith(`npm install --quiet`, { stdio: "pipe", killSignal: "SIGINT" });
-		expect(ProjectConfig.setConfig).toHaveBeenCalledWith({disableAnalytics: false, packagesInstalled: true});
+		expect(ProjectConfig.setConfig).toHaveBeenCalledWith({ packagesInstalled: true});
 		done();
 	});
 	it("Should run installPackages properly without error code", async done => {
-		spyOn(ProjectConfig, "getConfig").and.returnValue({
-			disableAnalytics: true,
+		spyOn(ProjectConfig, "localConfig").and.returnValue({
 			packagesInstalled: false
 		});
 		spyOn(Util, "log");
 		spyOn(cp, "execSync").and.returnValue("");
 		spyOn(ProjectConfig, "setConfig");
 		await PackageManager.installPackages(true);
-		expect(ProjectConfig.getConfig).toHaveBeenCalledTimes(1);
+		expect(ProjectConfig.localConfig).toHaveBeenCalledTimes(1);
 		expect(Util.log).toHaveBeenCalledTimes(2);
 		expect(Util.log).toHaveBeenCalledWith(`Installing npm packages`);
 		expect(Util.log).toHaveBeenCalledWith(`Packages installed successfully`);
 		expect(cp.execSync).toHaveBeenCalledWith(`npm install --quiet`, { stdio: "pipe", killSignal: "SIGINT" });
-		expect(ProjectConfig.setConfig).toHaveBeenCalledWith({disableAnalytics: true, packagesInstalled: true});
+		expect(ProjectConfig.setConfig).toHaveBeenCalledWith({ packagesInstalled: true});
 		done();
 	});
 	it("Should exit on installPackages if child install is terminated", async done => {
-		spyOn(ProjectConfig, "getConfig").and.returnValue({
+		spyOn(ProjectConfig, "localConfig").and.returnValue({
 			packagesInstalled: false,
 			skipAnalytic: true
 		});

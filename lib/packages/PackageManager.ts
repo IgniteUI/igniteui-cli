@@ -23,7 +23,7 @@ export class PackageManager {
 		templateManager: TemplateManager,
 		verbose: boolean = false
 	) {
-		const config = ProjectConfig.getConfig();
+		const config = ProjectConfig.localConfig();
 		const fullComponents = config.project.components.filter(x => {
 			return componentsConfig.full.indexOf(x) !== -1 || componentsConfig.dv.indexOf(x) !== -1;
 		});
@@ -63,13 +63,10 @@ export class PackageManager {
 	}
 
 	public static async installPackages(verbose: boolean = false) {
-		const config = ProjectConfig.getConfig();
+		const config = ProjectConfig.localConfig();
 		if (!config.packagesInstalled) {
 			let command: string;
 			let managerCommand: string;
-
-			const oldSkipAnalytic = config.disableAnalytics;
-			config.disableAnalytics = true;
 
 			managerCommand = this.getManager();
 			switch (managerCommand) {
@@ -97,7 +94,6 @@ export class PackageManager {
 				}
 			}
 			config.packagesInstalled = true;
-			config.disableAnalytics = oldSkipAnalytic;
 			ProjectConfig.setConfig(config);
 		}
 	}
