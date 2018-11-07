@@ -13,7 +13,7 @@ class IgxMultiColumnHeadersTemplate extends IgniteUIForAngularTemplate {
 		this.name = "Multi Column Headers";
 		this.description = "IgxGrid with multiple header columns.";
 		this.dependencies = [
-			{ import: "IgxGridModule", from: "igniteui-angular", root: true },
+			{ import: "IgxGridModule", from: "igniteui-angular" },
 			{ import: "IgxCheckboxModule", from: "igniteui-angular" }
 		];
 
