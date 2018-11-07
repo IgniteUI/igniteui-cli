@@ -14,7 +14,7 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 		this.name = "Custom Grid";
 		this.description = "IgxGrid with optional features like sorting, filtering, editing, etc.";
 		this.dependencies = [
-			{ import: "IgxGridModule", from: "igniteui-angular", root: true },
+			{ import: "IgxGridModule", from: "igniteui-angular" },
 			{ import: "IgxCheckboxModule", from: "igniteui-angular" }
 		];
 
@@ -87,9 +87,9 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 						this.dependencies.push({ import: "FormsModule", from: "@angular/forms" });
 						datePickerEditor = EOL +
 							`<ng-template igxCellEditor let-cell="cell">` + EOL +
-							`  <igx-datePicker cancelButtonLabel="cancel" todayButtonLabel="today" [(ngModel)]="cell.value"` +
+							`  <igx-date-picker cancelButtonLabel="cancel" todayButtonLabel="today" [(ngModel)]="cell.value"` +
 							` (onOpen)="pickerOpen()" (onClose)="pickerClose()">` + EOL +
-							`  </igx-datePicker>` + EOL +
+							`  </igx-date-picker>` + EOL +
 							`</ng-template>`;
 						// TODO: make a Util .pad()
 						datePickerEditor = datePickerEditor.replace(/([\r\n]+)/g, `$&${"  ".repeat(3)}`);
