@@ -78,14 +78,12 @@
     "fs-extra": "^3.0.1",
     "glob": "^7.1.2",
     "inquirer": "^6.0.0",
-    "lite-server": "^2.3.0",
     "opn": "^5.3.0",
     "resolve": "^1.6.0",
     "shelljs": "^0.7.8",
     "through2": "^2.0.3",
     "typescript": "^2.8.1",
-    "yargs": "^8.0.2",
-    "browser-sync": "2.24.5"
+    "yargs": "^8.0.2"
   },
   "devDependencies": {
     "@angular-devkit/schematics": "^0.6.8",
@@ -94,9 +92,11 @@
     "@types/jasmine": "^2.8.6",
     "@types/node": "^8.10.0",
     "@types/shelljs": "^0.7.8",
+    "browser-sync": "^2.26.3",
     "coveralls": "^3.0.0",
     "jasmine": "^2.99.0",
     "jasmine-spec-reporter": "^4.2.1",
+    "lite-server": "^2.4.0",
     "nyc": "^11.6.0",
     "source-map-support": "^0.5.4",
     "ts-node": "^3.3.0",
