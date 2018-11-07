@@ -15,12 +15,12 @@ export default class $(ClassName) extends Component {
 		return (
 			<div className="$(ClassName)">
 				<div className="$(ClassName)-header">
-					<h2>$(description)</h2>
+					<h2 style={{textAlign: "center", marginBottom: "2vw"}}>$(description)</h2>
 				</div>
-				<div style={{float: "left"}}>
+				<div style={{float: "left", marginLeft: "13vw"}}>
 					<$(Control)
 						id="scatterchart"
-						width="400px"
+						width="60vw"
 						height="400px"
 						dataSource={this.state.view}
 						responseDataKey="agriculturalData"

@@ -25,16 +25,18 @@ export default class  $(ClassName) extends Component {
 		return (
 			<div className="App">
 				<div className="App-header">
-					<h2>$(description)</h2>
+					<h2 style={{textAlign: "center"}}>$(description)</h2>
 				</div>
-				<$(Control)
-					id="grid-custom"
-					primaryKey="ProductID"
-					width="700px"
-					autoCommit={true}
-					dataSource={this.state.products}
-					features={$(gridfeatures)}
-				/>
+				<div style={{display: "flex", flexFlow: "column", alignItems: "center"}}>
+					<$(Control)
+						id="grid-custom"
+						primaryKey="ProductID"
+						width="700px"
+						autoCommit={true}
+						dataSource={this.state.products}
+						features={$(gridfeatures)}
+					/>
+				</div>
       </div>
 		);
 	}
