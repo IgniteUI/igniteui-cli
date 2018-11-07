@@ -1,5 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 $(CustomTheme)
+html, body {
+  height: 100%;
+}
 .content p {
   margin: 15px;
 }
