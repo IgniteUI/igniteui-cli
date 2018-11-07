@@ -73,4 +73,28 @@ h3 {
 			);
 		done();
 	});
+
+	it("should remove forRoot() from IgxGridModule", done => {
+		const indexFile = "/src/app/app.module.ts";
+		appTree.create(indexFile,
+`@NgModule({
+  imports: [
+   IgxGridModule.forRoot(),
+   IgxRippleModule
+  ]
+})`
+		);
+
+		schematicRunner.runSchematic("migration-02", {}, appTree);
+		expect(appTree.readContent(indexFile))
+			.toEqual(
+`@NgModule({
+  imports: [
+   IgxGridModule,
+   IgxRippleModule
+  ]
+})`
+			);
+		done();
+	});
 });

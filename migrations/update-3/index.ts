@@ -64,5 +64,17 @@ export default function(): Rule {
 
 		addTypography(host);
 		addHomeHeaderStyles(host);
+
+		const appModulePath = "src/app/app.module.ts";
+		if (host.exists(appModulePath)) {
+			let content = host.read(appModulePath).toString();
+			if (content.indexOf("IgxGridModule.forRoot()") !== -1) {
+				content = content.replace(
+					`IgxGridModule.forRoot()`,
+					`IgxGridModule`
+				);
+				host.overwrite(appModulePath, content);
+			}
+		}
 	};
 }
