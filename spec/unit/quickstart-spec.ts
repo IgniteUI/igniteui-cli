@@ -46,8 +46,10 @@ describe("Unit - Quickstart command", () => {
 	});
 
 	it("Creates default jquery quickstart when no framework is specified", async done => {
+		spyOn(shell, "exec");
 		spyOn(liteServer, "server");
 		await quickstartCmd.execute({ framework: "jquery" });
+		expect(shell.exec).toHaveBeenCalledWith("npm install");
 		const outDir = path.join(process.cwd(), "jquery-quickstart");
 		const quickStartFiles = path.join(__dirname, "../../templates/quickstart", "jquery");
 

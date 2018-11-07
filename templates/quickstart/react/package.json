@@ -1,7 +1,7 @@
 {
   "name": "ignite-ui-cli",
   "version": "1.0.0",
-  "description": "Cli for installing Ignite UI templates",
+  "description": "Ignite UI for JavaScript React Wrappers quick start",
   "keywords": [
     "CLI",
     "Ignite UI"

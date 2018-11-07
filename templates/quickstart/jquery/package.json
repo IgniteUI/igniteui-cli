@@ -1,0 +1,12 @@
+{
+  "name": "igniteui-jquery-quickstart",
+  "version": "1.0.0",
+  "description": "Ignite UI for JavaScript quick start",
+  "keywords": [],
+  "author": "",
+  "dependencies": {},
+  "devDependencies": {
+    "lite-server": "^2.4.0"
+  },
+  "repository": {}
+}
