@@ -59,17 +59,20 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 			for (const feature of this.userExtraConfiguration["columnFeatures"] as string[]) {
 				switch (feature) {
 					case "Sorting":
+					this.formatTreeGridFeatures(feature, columnFeatures, columnBoolFeatures);
+					break;
 					case "Filtering":
+					this.formatTreeGridFeatures(feature, columnFeatures, columnBoolFeatures);
+					treeGridFeatures.push('[allowFiltering]="true"');
+					break;
 					case "Resizing":
-						const text = `[${feature.toLowerCase().replace("ing", "able")}]="true"`;
-						columnFeatures.push(text);
-						columnBoolFeatures.push(text);
+						this.formatTreeGridFeatures(feature, columnFeatures, columnBoolFeatures);
 						break;
 					case "Column Moving":
 						columnFeatures.push('[movable]="true"');
 						columnBoolFeatures.push('[movable]="true"');
 					case "Column Hiding":
-						treeGridFeatures.push('[showToolbar]="true" [columnHiding]="true" toolbarTitle="Employees"');
+					treeGridFeatures.push('[showToolbar]="true" [columnHiding]="true" toolbarTitle="Employees"');
 					case "Cell Editing":
 						columnFeatures.push(`[editable]="true"`);
 						checkBoxBind = `[ngModel]="cell.value" (ngModelChange)="cell.update($event)"`;
@@ -150,6 +153,12 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 			"$(treeGridFeatures)": treeGridFeatures.join(" ")
 		};
 		return super.generateFiles(projectPath, name, { extraConfig });
+	}
+
+	private formatTreeGridFeatures(feature: string, columnFeatures: any[], columnBoolFeatures: any[]) {
+		const text = `[${feature.toLowerCase().replace("ing", "able")}]="true"`;
+		columnFeatures.push(text);
+		columnBoolFeatures.push(text);
 	}
 }
 module.exports = new IgxCustomTreeGridTemplate();
