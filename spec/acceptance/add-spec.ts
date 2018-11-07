@@ -299,7 +299,7 @@ describe("Add command", () => {
 			`  ],` +  EOL +
 			`  imports: [` +  EOL +
 			`    BrowserModule,` +  EOL +
-			`    IgxGridModule.forRoot()` +  EOL +
+			`    IgxGridModule` +  EOL +
 			`  ],` +  EOL +
 			`  bootstrap: [AppComponent]` +  EOL +
 			`})` +  EOL +
