@@ -52,6 +52,7 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 		let datePickerEditor = "";
 		let selectedFeatures = "";
 		let columnPinning = "";
+		let addGridToolbar = false;
 
 		if (this.userExtraConfiguration["columnFeatures"]) {
 			const features = this.userExtraConfiguration["columnFeatures"] as string[];
@@ -71,8 +72,11 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 					case "Column Moving":
 						columnFeatures.push('[movable]="true"');
 						columnBoolFeatures.push('[movable]="true"');
+						break;
 					case "Column Hiding":
-					treeGridFeatures.push('[showToolbar]="true" [columnHiding]="true" toolbarTitle="Employees"');
+						treeGridFeatures.push('[columnHiding]="true"');
+						addGridToolbar = true;
+						break;
 					case "Cell Editing":
 						columnFeatures.push(`[editable]="true"`);
 						checkBoxBind = `[ngModel]="cell.value" (ngModelChange)="cell.update($event)"`;
@@ -101,6 +105,8 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 						break;
 					case "Column Pinning":
 						columnPinning = '[pinned]="true"';
+						treeGridFeatures.push('[columnPinning]="true"');
+						addGridToolbar = true;
 						break;
 				}
 				switch (feature) {
@@ -141,6 +147,9 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 			}).toString();
 			if (selectedFeatures.length > 0) {
 				selectedFeatures = `<p>Active Features:</p><p>${selectedFeatures}</p>`;
+			}
+			if (addGridToolbar) {
+				treeGridFeatures.push('[showToolbar]="true" toolbarTitle="Employees"');
 			}
 		}
 		const extraConfig = {
