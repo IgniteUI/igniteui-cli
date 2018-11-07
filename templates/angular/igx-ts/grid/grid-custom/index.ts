@@ -54,6 +54,7 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 		let selectedFeatures = "";
 		let columnPinning = "";
 		let groupByColumn = "";
+		let addGridToolbar = false;
 
 		if (this.userExtraConfiguration["columnFeatures"]) {
 			const features = this.userExtraConfiguration["columnFeatures"] as string[];
@@ -61,17 +62,23 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 			for (const feature of this.userExtraConfiguration["columnFeatures"] as string[]) {
 				switch (feature) {
 					case "Sorting":
+						this.formatGridFeatures(feature, columnFeatures, columnBoolFeatures);
+						break;
 					case "Filtering":
+						this.formatGridFeatures(feature, columnFeatures, columnBoolFeatures);
+						gridFeatures.push('[allowFiltering]="true"');
+						break;
 					case "Resizing":
-						const text = `[${feature.toLowerCase().replace("ing", "able")}]="true"`;
-						columnFeatures.push(text);
-						columnBoolFeatures.push(text);
+						this.formatGridFeatures(feature, columnFeatures, columnBoolFeatures);
 						break;
 					case "Column Moving":
 						columnFeatures.push('[movable]="true"');
 						columnBoolFeatures.push('[movable]="true"');
+						break;
 					case "Column Hiding":
-						gridFeatures.push('[showToolbar]="true" [columnHiding]="true" toolbarTitle="Users"');
+						gridFeatures.push('[columnHiding]="true"');
+						addGridToolbar = true;
+						break;
 					case "Editing":
 						columnFeatures.push(`[editable]="true"`);
 						checkBoxBind = `[ngModel]="cell.value" (ngModelChange)="cell.update($event)"`;
@@ -96,6 +103,8 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 						break;
 					case "Column Pinning":
 						columnPinning = '[pinned]="true"';
+						gridFeatures.push('[columnPinning]="true"');
+						addGridToolbar = true;
 						break;
 					case "Group By":
 						groupByColumn = '[groupable]="true"';
@@ -137,6 +146,9 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 			if (selectedFeatures.length > 0) {
 				selectedFeatures = `<p>Active Features:</p><p>${selectedFeatures}</p>`;
 			}
+			if (addGridToolbar) {
+				gridFeatures.push('[showToolbar]="true" toolbarTitle="Employees"');
+			}
 		}
 		const extraConfig = {
 			"$(checkBoxBind)": checkBoxBind,
@@ -149,6 +161,12 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 			"$(selectedFeatures)": selectedFeatures
 		};
 		return super.generateFiles(projectPath, name, { extraConfig });
+	}
+
+	private formatGridFeatures(feature: string, columnFeatures: any[], columnBoolFeatures: any[]) {
+		const text = `[${feature.toLowerCase().replace("ing", "able")}]="true"`;
+		columnFeatures.push(text);
+		columnBoolFeatures.push(text);
 	}
 }
 module.exports = new IgxCustomGridTemplate();
