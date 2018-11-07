@@ -22,7 +22,7 @@
           <span class="phone">{{ contact.phone }}</span>
         </div>
       </div>
-      <igx-icon name="star" [color]="contact.isFavorite ? 'orange' : 'lightgray'" (click)="toggleFavorite(item)"></igx-icon>
+      <igx-icon [color]="contact.isFavorite ? 'orange' : 'lightgray'" (click)="toggleFavorite(item)">star</igx-icon>
     </div>
   </igx-list-item>
 </igx-list>

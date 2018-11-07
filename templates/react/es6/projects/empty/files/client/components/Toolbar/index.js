@@ -14,7 +14,7 @@ for (var i = 0; i < data.length; i++) {
 
 export default () => (
   <nav className="navbar">
-        <li className="nav-menu-item-logo"><div>Ignite UI CLI</div></li>
+        <li className="nav-menu-item-logo"><div>$(name)</div></li>
     {links}
   </nav>
 );
