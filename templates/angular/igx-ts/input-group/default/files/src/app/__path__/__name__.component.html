@@ -12,7 +12,7 @@
                     <input igxInput name="fullName" type="text" [(ngModel)]="user.fullName" required="required" />
                     <label igxLabel for="fullName">Full Name</label>
                     <igx-suffix>
-                        <igx-icon name="person"></igx-icon>
+                        <igx-icon>person</igx-icon>
                     </igx-suffix>
                 </igx-input-group>
                 <igx-input-group>
@@ -20,7 +20,7 @@
                     <label igxLabel for="phone">Phone</label>
                     <input igxInput name="phone" type="text" [(ngModel)]="user.phone" />
                     <igx-suffix>
-                        <igx-icon name="phone"></igx-icon>
+                        <igx-icon>phone</igx-icon>
                     </igx-suffix>
                     <igx-hint position="start">Ex.: +359 888 123 456</igx-hint>
                 </igx-input-group>
@@ -28,7 +28,7 @@
                     <label igxLabel for="email">Email address</label>
                     <input igxInput name="email" type="email" [(ngModel)]="user.email" required />
                     <igx-suffix>
-                        <igx-icon name="email"></igx-icon>
+                        <igx-icon>email</igx-icon>
                     </igx-suffix>
                 </igx-input-group>
                 <div class="igx-combo">
@@ -37,7 +37,7 @@
                     </igx-combo>
                 </div>
                 <div class="igx-datePicker">
-                    <igx-datePicker name="date" (onSelection)="onDateSelection($event)"></igx-datePicker>
+                    <igx-date-picker name="date" (onSelection)="onDateSelection($event)"></igx-date-picker>
                 </div>
                 <div class="igx-time-picker">
                     <igx-time-picker name="dateTime" (onValueChanged)="onTimeSelection($event)"></igx-time-picker>

@@ -1,0 +1,8 @@
+.wrapper {
+    text-align: center;
+}
+
+#exportButton {
+    padding: 4px 16px;
+    margin-bottom: 20px;
+}

@@ -5,18 +5,8 @@
 	<title>$(description)</title>
 
 	$(cssBlock)
-	<style type="text/css">
-		h2 {
-			width: 100%;
-			text-align: center;
-		}
+	<link rel="stylesheet" href="./style.css">
 
-		.chart {
-			position: relative;
-			float: left;
-			margin-right: 10px;
-		}
-	</style>
 	$(scriptBlock)
 	<script type="text/javascript" src="temperature.js"></script>
 	<script type="text/javascript">
@@ -80,22 +70,22 @@
 	<h2>$(description)</h2>
 	<div class="chartContainer">
 		<div class="chart">
-			<h2>Radial Line</h2>
+			<h4>Radial Line</h4>
 			<div id="chartRadialLine"></div>
 			<div id="radialLineLegend"></div>
 		</div>
 		<div class="chart">
-			<h2>Radial Column</h2>
+			<h4>Radial Column</h4>
 			<div id="chartRadialColumn"></div>
 			<div id="radialColumnLegend"></div>
 		</div>
 		<div class="chart">
-			<h2>Radial Pie</h2>
+			<h4>Radial Pie</h4>
 			<div id="chartRadialPie"></div>
 			<div id="radialPieLegend"></div>
 		</div>
 		<div class="chart">
-			<h2>Radial Area</h2>
+			<h4>Radial Area</h4>
 			<div id="chartRadialArea"></div>
 			<div id="radialAreaLegend"></div>
 		</div>
