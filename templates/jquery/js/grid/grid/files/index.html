@@ -4,7 +4,10 @@
 <head>
 	<title>$(description)</title>
 
-	$(cssBlock) $(scriptBlock)
+	$(cssBlock)
+	<link rel="stylesheet" href="./style.css">
+	
+	$(scriptBlock)
 
 	<script type="text/javascript">
 		var products = [
@@ -37,7 +40,9 @@
 <body>
 	<div class="content">
 		<h2>$(description)</h2>
-		<table id="grid"></table>
+		<div class="wrapper">
+			<table id="grid"></table>
+		</div>
 	</div>
 </body>
 </html>
