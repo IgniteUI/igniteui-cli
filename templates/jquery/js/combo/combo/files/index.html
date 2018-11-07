@@ -4,8 +4,11 @@
 <head>
 	<title>$(description)</title>
 
-	$(cssBlock) $(scriptBlock)
+	$(cssBlock) 
+	<link rel="stylesheet" href="./style.css">
 
+	$(scriptBlock)
+	
 	<script type="text/javascript">
 		var platforms = [
 			{ Name: "jQuery/HTML5/ASP.NET MVC Controls" },
@@ -38,7 +41,9 @@
 <body>
 	<div class="content">
 		<h2>$(description). MultiSelection with checkboxes is enabled</h2>
-		<div id="combo"></div>
+		<div class="wrapper">
+			<div id="combo"></div>
+		</div>
 	</div>
 </body>
 

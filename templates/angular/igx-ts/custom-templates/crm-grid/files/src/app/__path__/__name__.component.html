@@ -31,15 +31,15 @@
             <div class="caseSensitiveButton">
               <button igxButton="icon" igxRipple igxRippleCentered="true" (click)="updateSearch()"
                   [igxButtonBackground]="caseSensitive? 'rgb(73, 180, 254)' : 'transparent'">
-                <igx-icon class="caseSensitiveIcon" fontSet="material" name="text_fields"></igx-icon>
+                <igx-icon class="caseSensitiveIcon" fontSet="material">text_fields</igx-icon>
               </button>
             </div>
             <div class="searchButtons">
               <button igxButton="icon" igxRipple igxRippleCentered="true" (click)="grid1.findPrev(searchText, caseSensitive)">
-                <igx-icon fontSet="material" name="navigate_before"></igx-icon>
+                <igx-icon fontSet="material">navigate_before</igx-icon>
               </button>
               <button igxButton="icon" igxRipple igxRippleCentered="true" (click)="grid1.findNext(searchText, caseSensitive)">
-                <igx-icon fontSet="material" name="navigate_next"></igx-icon>
+                <igx-icon fontSet="material">navigate_next</igx-icon>
               </button>
             </div>
           </igx-suffix>
@@ -48,7 +48,7 @@
         <div class="operationsContainer">
           <div class="relative-container">
             <button #hidingButton class="toggle-button" igxButton="flat" igxRipple="#09f" (click)="toggleHiding()">
-				<igx-icon class="header-icon">visibility_off</igx-icon><span>{{hiddenColsLength}}</span><igx-icon class="header-icon">arrow_drop_down</igx-icon></button>
+                <igx-icon class="header-icon">visibility_off</igx-icon><span>{{hiddenColsLength}}</span><igx-icon class="header-icon">arrow_drop_down</igx-icon></button>
             <div class="toggle-content" igxToggle #toggleRefHiding="toggle">
               <div class="toggle-section">
                 <h4 class="dd-title">Hidden columns:</h4>
@@ -63,7 +63,7 @@
 
           <div class="relative-container">
             <button #pinningButton class="toggle-button" igxButton="flat" igxRipple="#09f" (click)="togglePinning()">
-				<igx-icon class="pin-icon" fontSet="fas" iconName="fa-thumbtack"></igx-icon><span>{{pinnedColsLength}}</span><igx-icon class="header-icon">arrow_drop_down</igx-icon></button>
+                <igx-icon class="pin-icon" fontSet="fas" name="fa-thumbtack"></igx-icon><span>{{pinnedColsLength}}</span><igx-icon class="header-icon">arrow_drop_down</igx-icon></button>
             <div class="toggle-content" igxToggle #toggleRefPinning="toggle">
               <div class="toggle-section">
                 <h4 class="dd-title">Pinned columns:</h4>
@@ -77,7 +77,7 @@
           </div>
 
           <button class="toggle-button" igxButton="icon" igxRipple="#09f" (click)="exportData()">
-			  <igx-icon class="header-icon">file_download</igx-icon></button>
+              <igx-icon class="header-icon">file_download</igx-icon></button>
         </div>
       </div>
 
