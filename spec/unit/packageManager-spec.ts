@@ -77,7 +77,7 @@ describe("Unit - Package Manager", () => {
 		);
 		expect(cp.execSync).toHaveBeenCalledWith("npm config set @infragistics:registry trial");
 		expect(PackageManager.removePackage).toHaveBeenCalled();
-		expect(PackageManager.addPackage).toHaveBeenCalledWith("@infragistics/ignite-ui-full", true);
+		expect(PackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@"17.2"`, true);
 		done();
 	});
 	it("ensureIgniteUISource - Should run through properly when install = true && package error", async done => {
@@ -183,6 +183,66 @@ describe("Unit - Package Manager", () => {
 		"You'll might be prompted for credentials on build to install it.", "yellow");
 		done();
 	});
+
+	it("ensureIgniteUISource - Should respect oss version when upgrading", async done => {
+		class TestPackageManager extends PackageManager {
+			public static ensureRegistryUser(config: Config): boolean { return true; }
+			public static getPackageJSON(): any {}
+		}
+		const mockDeps = {
+			dependencies: {
+				"ignite-ui": "~17.2"
+			}
+		};
+		const mockTemplateMgr = jasmine.createSpyObj("mockTemplateMgr", {
+			getProjectLibrary: {
+				getProject() {
+					return { upgradeIgniteUIPackage: () => {} };
+				}
+			}
+		});
+		spyOn(ProjectConfig, "getConfig").and.callFake(() => {
+			return {
+				project: {
+					components: ["igGrid", "igExcel"],
+					igniteuiSource: `./node_modules/ignite-ui`,
+					isBundle: false
+				}
+			};
+		});
+		spyOn(ProjectConfig, "setConfig");
+		spyOn(TestPackageManager, "addPackage").and.callThrough();
+		spyOn(cp, "execSync");
+		spyOn(Util, "log");
+		spyOn(TestPackageManager, "removePackage");
+		spyOn(TestPackageManager, "getPackageJSON").and.callFake(() => mockDeps);
+
+		TestPackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
+		expect(TestPackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@"~17.2"`, true);
+		expect(cp.execSync).toHaveBeenCalledWith(
+			`npm install @infragistics/ignite-ui-full@"~17.2" --quiet --save`,
+			jasmine.any(Object)
+		);
+		expect(TestPackageManager.removePackage).toHaveBeenCalledWith("ignite-ui", true);
+
+		mockDeps.dependencies["ignite-ui"] = "^17.1";
+		TestPackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
+		expect(TestPackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@"^17.1"`, true);
+		expect(cp.execSync).toHaveBeenCalledWith(
+			`npm install @infragistics/ignite-ui-full@"^17.1" --quiet --save`,
+			jasmine.any(Object)
+		);
+
+		mockDeps.dependencies["ignite-ui"] = ">=0.1.0 <0.2.0";
+		TestPackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
+		expect(TestPackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@">=0.1.0 <0.2.0"`, true);
+		expect(cp.execSync).toHaveBeenCalledWith(
+			`npm install @infragistics/ignite-ui-full@">=0.1.0 <0.2.0" --quiet --save`,
+			jasmine.any(Object)
+		);
+		done();
+	});
+
 	it("Should run installPackages properly with error code", async done => {
 		spyOn(ProjectConfig, "getConfig").and.returnValue({
 			disableAnalytics: false,

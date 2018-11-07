@@ -33,8 +33,10 @@ export class PackageManager {
 		}
 
 		if (installNow) {
-			if (this.ensureRegistryUser(config) && this.addPackage(this.fullPackage, verbose)) {
-				if (this.getPackageJSON().dependencies[this.ossPackage]) {
+			const ossVersion = this.getPackageJSON().dependencies[this.ossPackage];
+			const version = ossVersion ? `@"${ossVersion}"` : "";
+			if (this.ensureRegistryUser(config) && this.addPackage(this.fullPackage + version, verbose)) {
+				if (ossVersion) {
 					// TODO: Check if OSS package uninstalled successfully?
 					this.removePackage(this.ossPackage, verbose);
 				}
@@ -180,25 +182,7 @@ export class PackageManager {
 		}
 	}
 
-	private static getInstallCommand(managerCommand: string, packageName: string): string {
-		switch (managerCommand) {
-			case "npm":
-			/* passes through */
-			default:
-				return `${managerCommand} install ${packageName} --quiet --save`;
-		}
-	}
-
-	private static getManager(/*config:Config*/): string {
-		//stub to potentially swap out managers
-		return "npm";
-	}
-
-	private static isOSSPackage(original): boolean {
-		return original === `./node_modules/${this.ossPackage}`;
-	}
-
-	private static ensureRegistryUser(config: Config): boolean {
+	protected static ensureRegistryUser(config: Config): boolean {
 		const fullPackageRegistry = config.igPackageRegistry;
 		try {
 			const user = execSync(`npm whoami --registry=${fullPackageRegistry}`, { stdio: "pipe", encoding: "utf8" });
@@ -238,8 +222,26 @@ export class PackageManager {
 		return true;
 	}
 
-	private static getPackageJSON(): { "dependencies": {[x: string]: string} } {
+	protected static getPackageJSON(): { "dependencies": {[x: string]: string} } {
 		const filePath = path.join(process.cwd(), "package.json");
 		return require(filePath);
+	}
+
+	private static getInstallCommand(managerCommand: string, packageName: string): string {
+		switch (managerCommand) {
+			case "npm":
+			/* passes through */
+			default:
+				return `${managerCommand} install ${packageName} --quiet --save`;
+		}
+	}
+
+	private static getManager(/*config:Config*/): string {
+		//stub to potentially swap out managers
+		return "npm";
+	}
+
+	private static isOSSPackage(original): boolean {
+		return original === `./node_modules/${this.ossPackage}`;
 	}
 }
