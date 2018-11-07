@@ -37,10 +37,10 @@ $app-palette: igx-palette($primary, $secondary);
 	public setExtraConfiguration(extraConfigKeys: any[]) { }
 	public generateFiles(outputPath: string, name: string, theme: string, ...options: any[]): Promise<boolean> {
 		const config = {
-			"$(CustomTheme)": "",
-			"$(DefaultTheme)": "",
 			"$(cliVersion)": Util.version(),
+			"$(CustomTheme)": "",
 			"$(dash-name)": Util.lowerDashed(name),
+			"$(DefaultTheme)": "",
 			"$(name)": name,
 			"$(projectTemplate)": this.id,
 			"$(theme)": theme,

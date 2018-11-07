@@ -38,9 +38,8 @@ describe("Unit - Google Analytic", () => {
 		expect(https.request).toHaveBeenCalledWith(
 			{
 				host: "www.google-analytics.com",
-				path: jasmine.any(String),
-				// tslint:disable-next-line:object-literal-sort-keys
-				method: "POST"
+				method: "POST",
+				path: jasmine.any(String)
 			});
 		expect(request.on).toHaveBeenCalledTimes(1);
 		expect(request.on).toHaveBeenCalledWith("error", jasmine.any(Function));
@@ -57,9 +56,8 @@ describe("Unit - Google Analytic", () => {
 		expect(https.request).toHaveBeenCalledWith(
 			{
 				host: "www.google-analytics.com",
-				path: jasmine.any(String),
-				// tslint:disable-next-line:object-literal-sort-keys
-				method: "POST"
+				method: "POST",
+				path: jasmine.any(String)
 			});
 		expect(request.on).toHaveBeenCalledTimes(1);
 		expect(request.on).toHaveBeenCalledWith("error", jasmine.any(Function));

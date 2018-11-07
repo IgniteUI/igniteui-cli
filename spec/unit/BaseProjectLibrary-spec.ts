@@ -273,12 +273,12 @@ describe("Unit - Base project library ", () => {
 				}
 		});
 		const expectedCommonGroup: Component[] = [
-			{ group: "commonGroup", name: "chart", description: "common description", groupPriority: 1, templates: [] },
-			{ group: "commonGroup", name: "combo", description: "common description", groupPriority: 1, templates: [] }
+			{ name: "chart", description: "common description", group: "commonGroup", groupPriority: 1, templates: [] },
+			{ name: "combo", description: "common description", group: "commonGroup", groupPriority: 1, templates: [] }
 		];
 
 		const expectedGridGroup: Component[] = [
-			{ group: "gridGroup", name: "grid", description: "grid description", groupPriority: 2, templates: [] }
+			{  name: "grid", description: "grid description", group: "gridGroup", groupPriority: 2, templates: [] }
 		];
 		const library = new BaseProjectLibrary(__dirname);
 

@@ -32,7 +32,10 @@ export class PromptSession {
 	 * Start questions session for project creation
 	 */
 	public async start() {
-		GoogleAnalytics.post({ cd: "Wizard", t: "screenview" });
+		GoogleAnalytics.post({
+			t: "screenview",
+			cd: "Wizard"
+		});
 
 		let projLibrary: ProjectLibrary;
 		let theme: string;
@@ -51,10 +54,10 @@ export class PromptSession {
 			while (!projectName) {
 				const defaultAppName = availableDefaultName;
 				const nameRes: string = await this.getUserInput({
-					default: defaultAppName,
-					message: "Enter a name for your project:",
+					type: "input",
 					name: "projectName",
-					type: "input"
+					message: "Enter a name for your project:",
+					default: defaultAppName
 				});
 
 				if (this.nameIsValid(nameRes)) {
@@ -63,11 +66,11 @@ export class PromptSession {
 			}
 
 			const frameRes: string = await this.getUserInput({
-				choices: this.templateManager.getFrameworkNames(),
-				default: "jQuery",
-				message: "Choose framework:",
+				type: "list",
 				name: "framework",
-				type: "list"
+				message: "Choose framework:",
+				choices: this.templateManager.getFrameworkNames(),
+				default: "jQuery"
 			});
 
 			const framework = this.templateManager.getFrameworkByName(frameRes);
@@ -102,11 +105,11 @@ export class PromptSession {
 			const actionChoices: Array<{}> = this.generateActionChoices(projectLibrary);
 			Util.log(""); /* new line */
 			const action: string = await this.getUserInput({
-				choices: actionChoices,
-				default: "Complete & Run",
-				message: "Choose an action:",
+				type: "list",
 				name: "action",
-				type: "list"
+				message: "Choose an action:",
+				choices: actionChoices,
+				default: "Complete & Run"
 			});
 
 			switch (action) {
@@ -215,11 +218,11 @@ export class PromptSession {
 		while (!addComponentIsOver) {
 			const groups = projectLibrary.getComponentGroupNames();
 			const groupRes: string = await this.getUserInput({
-				choices: this.formatOutput(projectLibrary.getComponentGroups()),
-				default: groups.find(x => x.includes("Grids")) || groups[0],
-				message: "Choose a group:",
+				type: "list",
 				name: "componentGroup",
-				type: "list"
+				message: "Choose a group:",
+				choices: this.formatOutput(projectLibrary.getComponentGroups()),
+				default: groups.find(x => x.includes("Grids")) || groups[0]
 			}, true);
 
 			if (groupRes === this.WIZARD_BACK_OPTION) {
@@ -240,10 +243,10 @@ export class PromptSession {
 		let choseComponentIsOver = false;
 		while (!choseComponentIsOver) {
 			const componentNameRes = await this.getUserInput({
-				choices: this.formatOutput(projectLibrary.getComponentsByGroup(groupName)),
-				message: "Choose a component:",
+				type: "list",
 				name: "component",
-				type: "list"
+				message: "Choose a component:",
+				choices: this.formatOutput(projectLibrary.getComponentsByGroup(groupName))
 			}, true);
 
 			if (componentNameRes === this.WIZARD_BACK_OPTION) {
@@ -273,10 +276,10 @@ export class PromptSession {
 			selectedTemplate = templates[0];
 		} else {
 			const templateRes = await this.getUserInput({
-				choices: this.formatOutput(templates),
-				message: "Choose one:",
+				type: "list",
 				name: "template",
-				type: "list"
+				message: "Choose one:",
+				choices: this.formatOutput(templates)
 			}, true);
 
 			if (templateRes === this.WIZARD_BACK_OPTION) {
@@ -293,10 +296,10 @@ export class PromptSession {
 				config.project.framework, config.project.projectType);
 			while (!success) {
 				const templateName = await this.getUserInput({
-					default: availableDefaultName,
-					message: "Name your component:",
+					type: "input",
 					name: "componentName",
-					type: "input"
+					message: "Name your component:",
+					default: availableDefaultName
 				});
 
 				if (selectedTemplate.hasExtraConfiguration) {
@@ -305,10 +308,10 @@ export class PromptSession {
 					const extraConfig = this.parseAnswers(extraConfigAnswers);
 
 					GoogleAnalytics.post({
-						ea: `extra configuration: ${JSON.stringify(extraConfig)}`,
+						t: "event",
 						ec: "$ig wizard",
 						el: "Extra configuration:",
-						t: "event"
+						ea: `extra configuration: ${JSON.stringify(extraConfig)}`
 					});
 
 					selectedTemplate.setExtraConfiguration(extraConfig);
@@ -329,10 +332,10 @@ export class PromptSession {
 		const formatedOutput = this.formatOutput(customTemplates);
 		const config = ProjectConfig.getConfig();
 		const customTemplateNameRes = await this.getUserInput({
-			choices: formatedOutput,
-			message: "Choose custom view:",
+			type: "list",
 			name: "customTemplate",
-			type: "list"
+			message: "Choose custom view:",
+			choices: formatedOutput
 		}, true);
 
 		if (customTemplateNameRes === this.WIZARD_BACK_OPTION) {
@@ -347,10 +350,10 @@ export class PromptSession {
 				config.project.framework, config.project.projectType);
 			while (!success) {
 				const customViewNameRes = await this.getUserInput({
-					default: availableDefaultName,
-					message: "Name your view:",
+					type: "input",
 					name: "customViewName",
-					type: "input"
+					message: "Name your view:",
+					default: availableDefaultName
 				});
 
 				success = await add.addTemplate(customViewNameRes, selectedTemplate);
@@ -387,17 +390,17 @@ export class PromptSession {
 		// post to GA everything but 'Back' user choice
 		if (!withBackChoice || result !== this.WIZARD_BACK_OPTION) {
 			GoogleAnalytics.post({
-				ea: `${options.name}: ${result}`,
+				t: "event",
 				ec: "$ig wizard",
 				el: options.message,
-				t: "event"
+				ea: `${options.name}: ${result}`
 			});
 		} else {
 			GoogleAnalytics.post({
-				ea: `Back from ${options.name}`,
+				t: "event",
 				ec: "$ig wizard",
 				el: result,
-				t: "event"
+				ea: `Back from ${options.name}`
 			});
 		}
 
@@ -432,10 +435,10 @@ export class PromptSession {
 		let projectLibrary: ProjectLibrary;
 		if (framework.projectLibraries.length > 1) {
 			const projectRes = await this.getUserInput({
-				choices: this.templateManager.getProjectLibraryNames(framework.id),
-				message: "Choose the type of project:",
+				type: "list",
 				name: "projectType",
-				type: "list"
+				message: "Choose the type of project:",
+				choices: this.templateManager.getProjectLibraryNames(framework.id)
 			});
 
 			projectLibrary = this.templateManager.getProjectLibraryByName(framework, projectRes);
@@ -457,10 +460,10 @@ export class PromptSession {
 			return projectLibrary.getProject(projectLibrary.projectIds[0]);
 		}
 		const componentNameRes = await this.getUserInput({
-			choices: this.formatOutput(projectLibrary.projects),
-			message: "Choose project template:",
+			type: "list",
 			name: "projTemplate",
-			type: "list"
+			message: "Choose project template:",
+			choices: this.formatOutput(projectLibrary.projects)
 		});
 		projTemplate = projectLibrary.projects.find(x => x.name === componentNameRes);
 
@@ -477,11 +480,11 @@ export class PromptSession {
 			theme = projectLibrary.themes[0] || "";
 		} else {
 			theme = await this.getUserInput({
-				choices: projectLibrary.themes,
-				default: projectLibrary.themes[0],
-				message: "Choose the theme for the project:",
+				type: "list",
 				name: "theme",
-				type: "list"
+				message: "Choose the theme for the project:",
+				choices: projectLibrary.themes,
+				default: projectLibrary.themes[0]
 			});
 		}
 
