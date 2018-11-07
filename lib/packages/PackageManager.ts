@@ -45,8 +45,14 @@ export class PackageManager {
 					const projectLibrary = templateManager.getProjectLibrary(config.project.framework, config.project.projectType);
 					if (projectLibrary) {
 						// TODO multiple projects?
-						projectLibrary.getProject(config.project.projectTemplate)
-						.upgradeIgniteUIPackage(process.cwd(), `./node_modules/${this.fullPackage}/en`);
+						let project;
+						if (!config.project.projectTemplate) {
+							// in case project tempale is missing from the config we provide backward.
+							project = projectLibrary.getProject(projectLibrary.projectIds[0]);
+						} else {
+							project = projectLibrary.getProject(config.project.projectTemplate);
+						}
+						project.upgradeIgniteUIPackage(process.cwd(), `./node_modules/${this.fullPackage}/en`);
 					}
 				}
 			} else {
