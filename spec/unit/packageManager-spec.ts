@@ -199,7 +199,8 @@ describe("Unit - Package Manager", () => {
 			getProjectLibrary: {
 				getProject() {
 					return { upgradeIgniteUIPackage: () => {} };
-				}
+				},
+				projectIds: ["empty"]
 			}
 		});
 		spyOn(ProjectConfig, "localConfig").and.callFake(() => {
