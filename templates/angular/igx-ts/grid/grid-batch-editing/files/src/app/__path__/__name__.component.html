@@ -1,0 +1,30 @@
+<p>igx-grid component with batch editing.</p>
+<p>You can read more about configuring the igx-grid component in the 
+<a href="https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/src/lib/grid/README.md" target="_blank">README</a> or the 
+<a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid.html" target="_blank">official documentation</a>.</p>
+<igx-grid #gridRowEditTransaction [data]="data" [primaryKey]="'ProductID'" width="800px" height="500px"
+            [rowEditable]="true">
+            <igx-column width="100px">
+                <ng-template igxCell let-cell="cell" let-val>
+                    <button igxButton (click)="deleteRow($event, 'gridRowEditTransaction', cell.cellID.rowID)">Delete</button>
+                </ng-template>
+            </igx-column>
+            <igx-column width="60px" field="ProductID" header="Product ID"></igx-column>
+            <igx-column width="100px" field="ReorderLevel" header="ReorderLever" [dataType]="'number'"></igx-column>
+            <igx-column width="190px" field="ProductName" header="ProductName" [dataType]="'string'"></igx-column>
+            <igx-column width="100px" field="UnitsInStock" header="UnitsInStock" [dataType]="'number'">
+                <ng-template igxCellEditor let-cell="cell">
+                    <input name="units" [(ngModel)]="cell.gridAPI.get_cell_inEditMode(cell.gridID).cell.editValue" style="color: black; width: 30px;" />
+                </ng-template>
+            </igx-column>
+            <igx-column width="150px" field="OrderDate" [dataType]="'date'"></igx-column>
+            <igx-column width="100px" field="Discontinued" header="Discontinued" [dataType]="'boolean'"></igx-column>
+        </igx-grid>
+    <div class="buttons-wrapper">
+        <button igxButton (click)="addRow('gridRowEditTransaction')">Add Row</button>
+        <div class="transaction-buttons-wrapper">
+            <button igxButton (click)="undo('gridRowEditTransaction')">Undo</button>
+            <button igxButton (click)="redo('gridRowEditTransaction')">Redo</button>
+            <button igxButton (click)="commit('gridRowEditTransaction')">Commit</button>
+        </div>
+    </div>
