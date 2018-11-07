@@ -4,7 +4,11 @@
 <head>
 	<title>$(description)</title>
 
-	$(cssBlock) $(scriptBlock)
+	$(cssBlock)
+	<link rel="stylesheet" href="./style.css">
+	
+	$(scriptBlock)
+
 	<script type="text/javascript">
 		$(function () {
 			$("#editor").$(widget)();
@@ -14,8 +18,10 @@
 
 <body>
 	<div class="content">
-		<h2>$(description)</h2>
-		<div id="editor"></div>
+		<h1>$(description)</h1>
+		<div class="wrapper">
+			<div id="editor"></div>
+		</div>
 	</div>
 </body>
 
