@@ -26,22 +26,24 @@ export default class  $(ClassName) extends Component {
 		return (
 			<div className="App">
 				<div className="App-header">
-					<h2>$(description)</h2>
+					<h2 style={{textAlign: "center"}}>$(description)</h2>
 				</div>
-				<$(Control)
-					id="grid-editing"
-					primaryKey="ProductID"
-					width="700px"
-					autoCommit={true}
-					dataSource={this.state.products}
-					autoGenerateColumns={false}
-					columns={[
-						{ headerText: "Product ID", key: "ProductID", dataType: "number" },
-						{ headerText: "Product Name", key: "Name", dataType: "string" },
-						{ headerText: "Product Number", key: "ProductNumber", dataType: "string" }
-					]}
-					features={$(gridfeatures)}
-				/>
+				<div style={{display: "flex", flexFlow: "column", alignItems: "center"}}>
+					<$(Control)
+						id="grid-editing"
+						primaryKey="ProductID"
+						width="700px"
+						autoCommit={true}
+						dataSource={this.state.products}
+						autoGenerateColumns={false}
+						columns={[
+							{ headerText: "Product ID", key: "ProductID", dataType: "number" },
+							{ headerText: "Product Name", key: "Name", dataType: "string" },
+							{ headerText: "Product Number", key: "ProductNumber", dataType: "string" }
+						]}
+						features={$(gridfeatures)}
+					/>
+				</div>
 			</div>
 		);
 	}
