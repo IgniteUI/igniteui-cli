@@ -14,7 +14,7 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 		this.name = "Custom Tree Grid";
 		this.description = "IgxTreeGrid with optional features like sorting, filtering, row editing, etc.";
 		this.dependencies = [
-			{ import: "IgxTreeGridModule", from: "igniteui-angular", root: true }
+			{ import: "IgxTreeGridModule", from: "igniteui-angular" }
 		];
 
 		this.hasExtraConfiguration = true;
