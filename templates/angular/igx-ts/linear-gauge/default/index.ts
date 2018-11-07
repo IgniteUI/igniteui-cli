@@ -12,8 +12,9 @@ class IgxLinearGaugeTemplate extends IgniteUIForAngularTemplate {
 		this.description = "IgxLinearGauge with different animations.";
 		this.dependencies = [
 			{
-				from: "igniteui-angular-gauges/ES5/igx-linear-gauge-module",
-				import: ["IgxLinearGaugeModule"]}
+				import: ["IgxLinearGaugeModule"],
+				from: "igniteui-angular-gauges/ES5/igx-linear-gauge-module"
+			}
 		];
 		this.packages = ["tslib@1.7.1", "igniteui-angular-core@6.1.1", "igniteui-angular-gauges@6.1.1"];
 	}

@@ -10,14 +10,13 @@ const command = {
 	command: "generate",
 	desc: "generates custom template",
 	templateManager: null,
-	// tslint:disable-next-line:object-literal-sort-keys
+	// tslint:disable:object-literal-sort-keys
 	builder: yargs => {
 		yargs
 			.command({
 				aliases: ["t"],
 				command: "template [name]",
 				desc: "generates custom template",
-				// tslint:disable-next-line:object-literal-sort-keys
 				builder: {
 					"framework": {
 						alias: "f",
@@ -50,7 +49,6 @@ const command = {
 	async template(argv) {
 		GoogleAnalytics.post({
 			t: "screenview",
-			// tslint:disable-next-line:object-literal-sort-keys
 			cd: "Generate"
 		});
 
@@ -104,7 +102,6 @@ const command = {
 
 		GoogleAnalytics.post({
 			t: "event",
-			// tslint:disable-next-line:object-literal-sort-keys
 			ec: "$ig generate",
 			el: "subcommand: template",
 			ea: `template name: ${argv.name}; framework: ${argv.framework};` +

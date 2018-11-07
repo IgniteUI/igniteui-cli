@@ -18,7 +18,8 @@ describe("Unit - Package Manager", () => {
 					return {
 						upgradeIgniteUIPackage: () => false
 					};
-				}
+				},
+				projectIds: ["empty"]
 			}
 		});
 		spyOn(ProjectConfig, "getConfig").and.returnValue({

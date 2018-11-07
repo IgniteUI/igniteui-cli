@@ -36,18 +36,17 @@ describe("Config command", () => {
 		await cli.run(["config", "get", "igPackageRegistry"]);
 		expect(console.error).toHaveBeenCalledWith(jasmine.stringMatching(/No configuration file found in this folder!\s*/));
 
-		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
-			{
-				t: "screenview",
-				// tslint:disable-next-line:object-literal-sort-keys
-				cd: "Config"
-			});
-		expect(GoogleAnalytics.post).toHaveBeenCalledWith(
-			{
-				t: "screenview",
-				// tslint:disable-next-line:object-literal-sort-keys
-				cd: "error: No configuration file found in this folder!"
-			});
+		let expectedParams: GoogleAnalyticsParameters = {
+			t: "screenview",
+			cd: "Config"
+		};
+		expect(GoogleAnalytics.post).toHaveBeenCalledWith(expectedParams);
+
+		expectedParams = {
+			t: "screenview",
+			cd: "error: No configuration file found in this folder!"
+		};
+		expect(GoogleAnalytics.post).toHaveBeenCalledWith(expectedParams);
 		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);
 
 		resetSpy(console.error);

@@ -21,12 +21,12 @@ export default class $(ClassName) extends Component {
 		return (
 			<div className="$(ClassName)">
 				<div className="$(ClassName)-header">
-					<h2>$(description)</h2>
+					<h2 style={{textAlign: "center"}}>$(description)</h2>
 				</div>
-				<div style={{float: "left"}}>
+				<div style={{float: "left", marginLeft: "13vw"}}>
 					<$(Control)
 						id="linechart"
-						width="600px"
+						width="60vw"
 						height="400px"
 						legend={{ element: "lineLegend" }}
 						title="Population per Country"

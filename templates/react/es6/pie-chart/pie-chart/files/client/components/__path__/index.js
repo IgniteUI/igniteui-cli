@@ -21,9 +21,9 @@ export default class $(ClassName) extends Component {
 		return (
 			<div className="$(ClassName)">
 				<div className="$(ClassName)-header">
-					<h2>$(description)</h2>
+					<h2 style={{textAlign: "center"}}>$(description)</h2>
 				</div>
-				<div style={{float: "left"}}>
+				<div style={{display: "flex", flexFlow: "column", alignItems: "center"}}>
 					<$(Control)
 						id="piechart"
 						width="435px"
