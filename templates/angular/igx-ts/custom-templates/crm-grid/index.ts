@@ -13,7 +13,6 @@ class IgxGridCRMTemplate extends IgniteUIForAngularTemplate {
 			{ import: "IgxGridModule", from: "igniteui-angular" },
 			{ provide: "IgxExcelExporterService", from: "igniteui-angular" },
 			{
-				from: "igniteui-angular",
 				import: [
 					"IgxAvatarModule",
 					"IgxBadgeModule",
@@ -25,7 +24,8 @@ class IgxGridCRMTemplate extends IgniteUIForAngularTemplate {
 					"IgxSwitchModule",
 					"IgxToggleModule",
 					"IgxCheckboxModule"
-				]
+				],
+				from: "igniteui-angular"
 			}
 		];
 	}
