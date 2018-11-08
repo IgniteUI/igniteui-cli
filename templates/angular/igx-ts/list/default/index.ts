@@ -11,15 +11,14 @@ class IgxListTemplate extends IgniteUIForAngularTemplate {
 		this.name = "List";
 		this.description = "basic IgxList";
 		this.dependencies = [{
-			from: "igniteui-angular",
-			import: ["IgxListModule", "IgxAvatarModule", "IgxIconModule",
-			"IgxInputGroupModule", "IgxFilterModule"]
+			import: ["IgxListModule", "IgxAvatarModule", "IgxIconModule", "IgxInputGroupModule", "IgxFilterModule"],
+			from: "igniteui-angular"
 		}, {
-			from: "@angular/common",
-			import: ["CommonModule"]
+			import: ["CommonModule"],
+			from: "@angular/common"
 		}, {
-			from: "@angular/forms",
-			import: ["FormsModule"]
+			import: ["FormsModule"],
+			from: "@angular/forms"
 		}];
 	}
 }

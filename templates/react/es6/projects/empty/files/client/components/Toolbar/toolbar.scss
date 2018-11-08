@@ -10,22 +10,30 @@
     padding: 0;
     overflow: auto;
     background-color: #e6e6e6;
+    
+   li.nav-menu-item-logo div {
+      text-align: center;
+      background-color: white;
+      color: #0099cc;
+      font-size: 1.4em;
+   }
 
-  a {
-	background-color: #eee;
-    color: black;
-    display: block;
-    padding: 14px 16px; 
-    text-decoration: none;
-	}
-	
+   a {
+     background-color: white;
+     color: black;
+     display: block;
+     padding: 14px 16px; 
+     text-decoration: none;
+   }
+
    a:hover {
-	background-color: #111;
-    color: white;
+	background-color: #f9f9f9;
+    color: #0099cc;
+    transition-duration: 0.15s;
    }
    a.active {
-	background-color: rgb(68, 67, 67);
-	color: white;
+	background-color: #f4f4f4;
+    color: #0099cc;
    }
 
    li {

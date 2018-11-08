@@ -1,4 +1,3 @@
-// tslint:disable:no-implicit-dependencies
 import Jasmine = require("jasmine");
 import { DisplayProcessor, SpecReporter } from "jasmine-spec-reporter";
 
