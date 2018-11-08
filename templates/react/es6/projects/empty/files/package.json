@@ -14,7 +14,8 @@
   "jest": {
     "testMatch": [
       "<rootDir>/__tests__/**/?(*.)(spec|test).{js,jsx}"
-    ]
+    ],
+    "testURL": "http://localhost/"
   },
   "license": "MIT",
   "devDependencies": {
