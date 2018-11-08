@@ -11,6 +11,6 @@ export class $(ClassName)Component implements OnInit {
   title = '$(name)';
 
   ngOnInit() {
-	this.localData = EMPLOYEE_DATA;
+    this.localData = EMPLOYEE_DATA;
   }
 }
