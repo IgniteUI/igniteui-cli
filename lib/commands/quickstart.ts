@@ -1,6 +1,5 @@
-import * as fs from "fs-extra";
-import * as liteServer from "lite-server";
 import * as path from "path";
+import * as resolve from "resolve";
 import { GoogleAnalytics } from "../GoogleAnalytics";
 import { Util } from "../Util";
 
@@ -69,6 +68,8 @@ const command = {
 			Util.log("react-quickstart loaded");
 			shell.exec("npm install");
 			shell.exec("npm run webpack");
+			// lite-server installed per project
+			const liteServer = require(resolve.sync("lite-server", { basedir: process.cwd() }));
 			liteServer.server();
 		}
 
@@ -80,6 +81,9 @@ const command = {
 
 		if (argv.framework === "jquery") {
 			Util.log("jquery-quickstart loaded");
+			shell.exec("npm install");
+			// lite-server installed per project
+			const liteServer = require(resolve.sync("lite-server", { basedir: process.cwd() }));
 			liteServer.server();
 		}
 	}

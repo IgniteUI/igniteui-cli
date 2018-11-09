@@ -11,8 +11,8 @@ class IgxTabsTemplate extends IgniteUIForAngularTemplate {
 		this.name = "Tabs";
 		this.description = "Basic IgxTabs sample";
 		this.dependencies = [{
-			from: "igniteui-angular",
-			import: ["IgxTabsModule", "IgxCardModule", "IgxAvatarModule", "IgxButtonModule", "IgxRippleModule"]
+			import: ["IgxTabsModule", "IgxCardModule", "IgxAvatarModule", "IgxButtonModule", "IgxRippleModule"],
+			from: "igniteui-angular"
 		}];
 	}
 }

@@ -4,6 +4,7 @@
 		"defaultPort": 3002,
 		"framework" : "react",
 		"projectType": "es6",
+		"projectTemplate": "empty",
 		"theme": "$(theme)",
 		"themePath": "$(themePath)",
 		"cssPath": "$(cssPath)",

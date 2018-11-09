@@ -7,12 +7,13 @@ import { PackageManager } from "./../packages/PackageManager";
 import { ProjectConfig } from "./../ProjectConfig";
 
 let command: {
-	[name: string]: any,
+	command: string,
+	desc: string,
+	builder: {},
 	templateManager: TemplateManager,
 	execute: (argv: any) => Promise<void>,
 	build: (argv: any) => Promise<void>
 };
-// tslint:disable:object-literal-sort-keys
 command = {
 	command: "build",
 	desc: "builds the project",

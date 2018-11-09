@@ -1,7 +1,7 @@
 {
   "name": "angular-quickstart",
   "version": "1.0.0",
-  "description": "QuickStart package.json",
+  "description": "Ignite UI for JavaScript Angular Wrappers quick start",
   "scripts": {
     "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
     "lint": "tslint ./app/**/*.ts -t verbose",
@@ -12,12 +12,6 @@
   },
   "keywords": [],
   "author": "",
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/angular/angular.io/blob/master/LICENSE"
-    }
-  ],
   "dependencies": {
     "@angular/common": "^5.2.0",
     "@angular/compiler": "^5.2.0",

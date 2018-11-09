@@ -2,7 +2,7 @@ import * as path from "path";
 import { Util } from "../../../../../lib/Util";
 import { SideNavProject } from "../side-nav";
 
-class AuthSideProject extends SideNavProject implements ProjectTemplate {
+export class AuthSideProject extends SideNavProject implements ProjectTemplate {
 	public id: string = "side-nav-auth";
 	public name = "Side navigation + login";
 	public description = "Side navigation extended with user authentication module";
@@ -13,10 +13,10 @@ class AuthSideProject extends SideNavProject implements ProjectTemplate {
 
 	public async generateFiles(outputPath: string, name: string, theme: string, ...options: any[]): Promise<boolean> {
 		const config = {
-			"$(CustomTheme)": "",
-			"$(DefaultTheme)": "",
 			"$(cliVersion)": Util.version(),
+			"$(CustomTheme)": "",
 			"$(dash-name)": Util.lowerDashed(name),
+			"$(DefaultTheme)": "",
 			"$(name)": name,
 			"$(theme)": theme,
 			"__path__": name
