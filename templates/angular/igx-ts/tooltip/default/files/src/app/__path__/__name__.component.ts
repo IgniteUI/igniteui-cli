@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 
 @Component({
 	selector: "app-$(filePrefix)",
-	styleUrls: ["./$(filePrefix).component.css"],
+	styleUrls: ["./$(filePrefix).component.scss"],
 	templateUrl: "./$(filePrefix).component.html"
 })
 
