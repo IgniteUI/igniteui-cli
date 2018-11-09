@@ -62,14 +62,11 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 			for (const feature of this.userExtraConfiguration["columnFeatures"] as string[]) {
 				switch (feature) {
 					case "Sorting":
-						this.formatGridFeatures(feature, columnFeatures, columnBoolFeatures);
-						break;
 					case "Filtering":
-						this.formatGridFeatures(feature, columnFeatures, columnBoolFeatures);
-						gridFeatures.push('[allowFiltering]="true"');
-						break;
 					case "Resizing":
-						this.formatGridFeatures(feature, columnFeatures, columnBoolFeatures);
+						const text = `[${feature.toLowerCase().replace("ing", "able")}]="true"`;
+						columnFeatures.push(text);
+						columnBoolFeatures.push(text);
 						break;
 					case "Column Moving":
 						columnFeatures.push('[movable]="true"');
@@ -170,12 +167,6 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 			"$(selectedFeatures)": selectedFeatures
 		};
 		return super.generateFiles(projectPath, name, { extraConfig });
-	}
-
-	private formatGridFeatures(feature: string, columnFeatures: any[], columnBoolFeatures: any[]) {
-		const text = `[${feature.toLowerCase().replace("ing", "able")}]="true"`;
-		columnFeatures.push(text);
-		columnBoolFeatures.push(text);
 	}
 }
 module.exports = new IgxCustomGridTemplate();
