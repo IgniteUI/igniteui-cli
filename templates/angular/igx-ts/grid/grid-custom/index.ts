@@ -50,7 +50,7 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 			end: `</a>`
 		};
 		let checkBoxBind = `[checked]="cell.value" [disabled]="true"`;
-		let datePickerEditor = "";
+		const datePickerEditor = "";
 		let selectedFeatures = "";
 		let columnPinning = "";
 		let groupByColumn = "";
@@ -124,7 +124,7 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 						featuresUrls.push(`${featureUrl}column_pinning.html`);
 						break;
 					case "Cell Editing":
-						featuresUrls.push(`${featureUrl}cell_editing.html`);
+						featuresUrls.push(`${featureUrl}editing.html`);
 						break;
 					case "Row Editing":
 						featuresUrls.push(`${featureUrl}row_editing.html`);
