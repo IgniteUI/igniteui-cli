@@ -50,10 +50,11 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 			end: `</a>`
 		};
 		let checkBoxBind = `[checked]="cell.value" [disabled]="true"`;
-		let datePickerEditor = "";
+		const datePickerEditor = "";
 		let selectedFeatures = "";
 		let columnPinning = "";
 		let groupByColumn = "";
+		let addGridToolbar = false;
 
 		if (this.userExtraConfiguration["columnFeatures"]) {
 			const features = this.userExtraConfiguration["columnFeatures"] as string[];
@@ -70,22 +71,25 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 					case "Column Moving":
 						columnFeatures.push('[movable]="true"');
 						columnBoolFeatures.push('[movable]="true"');
+						break;
 					case "Column Hiding":
-						gridFeatures.push('[showToolbar]="true" [columnHiding]="true" toolbarTitle="Users"');
+						gridFeatures.push('[columnHiding]="true"');
+						addGridToolbar = true;
+						break;
 					case "Cell Editing":
 						columnFeatures.push(`[editable]="true"`);
 						checkBoxBind = `[ngModel]="cell.value" (ngModelChange)="cell.update($event)"`;
 						// enable Date Picker, ngModel
-						this.dependencies.push({ import: "IgxDatePickerModule", from: "igniteui-angular" });
-						this.dependencies.push({ import: "FormsModule", from: "@angular/forms" });
-						datePickerEditor = EOL +
-							`<ng-template igxCellEditor let-cell="cell">` + EOL +
-							`  <igx-date-picker cancelButtonLabel="cancel" todayButtonLabel="today" [(ngModel)]="cell.value"` +
-							` (onOpen)="pickerOpen()" (onClose)="pickerClose()">` + EOL +
-							`  </igx-date-picker>` + EOL +
-							`</ng-template>`;
+						// this.dependencies.push({ import: "IgxDatePickerModule", from: "igniteui-angular" });
+						// this.dependencies.push({ import: "FormsModule", from: "@angular/forms" });
+						// datePickerEditor = EOL +
+						// 	`<ng-template igxCellEditor let-cell="cell">` + EOL +
+						// 	`  <igx-date-picker cancelButtonLabel="cancel" todayButtonLabel="today" [(ngModel)]="cell.value"` +
+						// 	` (onOpen)="pickerOpen()" (onClose)="pickerClose()">` + EOL +
+						// 	`  </igx-date-picker>` + EOL +
+						// 	`</ng-template>`;
 						// TODO: make a Util .pad()
-						datePickerEditor = datePickerEditor.replace(/([\r\n]+)/g, `$&${"  ".repeat(3)}`);
+						// datePickerEditor = datePickerEditor.replace(/([\r\n]+)/g, `$&${"  ".repeat(3)}`);
 						break;
 						case "Row Editing":
 						gridFeatures.push(`[rowEditable]="true"`);
@@ -100,6 +104,8 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 						break;
 					case "Column Pinning":
 						columnPinning = '[pinned]="true"';
+						gridFeatures.push('[columnPinning]="true"');
+						addGridToolbar = true;
 						break;
 					case "Group By":
 						groupByColumn = '[groupable]="true"';
@@ -118,7 +124,7 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 						featuresUrls.push(`${featureUrl}column_pinning.html`);
 						break;
 					case "Cell Editing":
-						featuresUrls.push(`${featureUrl}cell_editing.html`);
+						featuresUrls.push(`${featureUrl}editing.html`);
 						break;
 					case "Row Editing":
 						featuresUrls.push(`${featureUrl}row_editing.html`);
@@ -144,7 +150,10 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 				`${anchorWrapper.text}${anchorWrapper.end}`;
 			}).toString();
 			if (selectedFeatures.length > 0) {
-				selectedFeatures = `<p>Active Features:</p><p>${selectedFeatures}</p>`;
+				selectedFeatures = `<p>Active Features: ${selectedFeatures}</p>`;
+			}
+			if (addGridToolbar) {
+				gridFeatures.push('[showToolbar]="true" toolbarTitle="Employees"');
 			}
 		}
 		const extraConfig = {

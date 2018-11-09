@@ -3,7 +3,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 @Component({
   selector: 'app-$(filePrefix)',
   templateUrl: './$(filePrefix).component.html',
-  styleUrls: ['./$(filePrefix).component.css'],
+  styleUrls: ['./$(filePrefix).component.scss'],
   encapsulation: ViewEncapsulation.Emulated,
 })
 export class $(ClassName)Component {

@@ -6,7 +6,7 @@ import { employeesData } from './localData';
 	encapsulation: ViewEncapsulation.None,
 	selector: 'app-grid-summaries',
 	templateUrl: './grid-summaries.component.html',
-	styleUrls: ['./grid-summaries.component.css']
+	styleUrls: ['./grid-summaries.component.scss']
 })
 export class GridSummariesComponent implements OnInit {
 	@ViewChild("sampleGrid", { read: IgxGridComponent })

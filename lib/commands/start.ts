@@ -1,4 +1,5 @@
 import * as path from "path";
+import * as resolve from "resolve";
 import { exec } from "shelljs";
 import { GoogleAnalytics } from "../GoogleAnalytics";
 import { TemplateManager } from "../TemplateManager";
@@ -63,8 +64,7 @@ command = {
 		switch (framework.toLowerCase()) {
 			case "jquery":
 			// browser-sync installed per project
-			// tslint:disable-next-line:no-implicit-dependencies
-			const bs = require("browser-sync");
+			const bs = require(resolve.sync("browser-sync", { basedir: process.cwd() }));
 			const browserSync = bs.create("igniteui-cli");
 			const filePath = path.join(process.cwd(), "bs-config.js");
 			const bsConfig = require(filePath);

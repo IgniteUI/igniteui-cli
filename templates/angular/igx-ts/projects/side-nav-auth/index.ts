@@ -2,7 +2,7 @@ import * as path from "path";
 import { Util } from "../../../../../lib/Util";
 import { SideNavProject } from "../side-nav";
 
-class AuthSideProject extends SideNavProject implements ProjectTemplate {
+export class AuthSideProject extends SideNavProject implements ProjectTemplate {
 	public id: string = "side-nav-auth";
 	public name = "Side navigation + login";
 	public description = "Side navigation extended with user authentication module";
