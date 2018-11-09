@@ -14,12 +14,4 @@ export class $(ClassName)Component implements OnInit {
   ngOnInit() {
     this.localData = employeesData;
   }
-
-  pickerOpen () {
-    this.renderer.setStyle(document.querySelector('.igx-grid__tbody'), 'z-index', 'initial');
-  }
-
-  pickerClose () {
-    this.renderer.setStyle(document.querySelector('.igx-grid__tbody'), 'z-index', 1);
-  }
 }
