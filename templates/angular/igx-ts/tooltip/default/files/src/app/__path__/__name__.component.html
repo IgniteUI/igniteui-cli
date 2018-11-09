@@ -1,0 +1,28 @@
+<p>An igxTooltip template </p>
+<p>You can read more about configuring the igxTooltip component in the
+	<a href="https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/src/lib/directives/tooltip/README.md" target="_blank">README</a> or the
+	<a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/tooltip.html" target="_blank">official documentation</a>.</p>
+
+	<article class="sample-column">
+        <div class="wrapper">
+            <igx-avatar class="avatar" #target="tooltipTarget" [igxTooltipTarget]="tooltipRef"
+                        src="../assets/1.jpg" size="medium" [roundShape]="true">
+            </igx-avatar>
+
+            <div #tooltipRef="tooltip" igxTooltip>
+				<div class="locationTooltipContent">
+					<igx-avatar class="locationIcon" src="../assets/2.png" size="medium"
+						[roundShape]="false"></igx-avatar>
+					<div>
+						<div>Name: June Osborne</div>
+						<div>Address: 2 Commerce Dr, Cranbury, NJ 08512, USA</div>
+					</div>
+				</div>
+            </div>
+        </div>
+    </article>
+    <article class="sample-column">
+		<div class="bottomMargin">
+			<igx-switch [(ngModel)]="target.tooltipDisabled">Disable tooltip</igx-switch>
+		</div>
+    </article>
