@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
 	selector: "$(filePrefix)",
 	templateUrl: './$(filePrefix).component.html',
-	styleUrls: ['./$(filePrefix).component.css'],
+	styleUrls: ['./$(filePrefix).component.scss'],
 })
 export class $(ClassName)Component {
 	title = '$(name)';

@@ -6,7 +6,7 @@ import { IgxGridComponent, IgxGridTransaction, IgxToggleDirective,
 
 @Component({
 	selector: 'app-$(filePrefix)',
-	styleUrls: ['./$(filePrefix).component.css'],
+	styleUrls: ['./$(filePrefix).component.scss'],
 	templateUrl: './$(filePrefix).component.html',
 	providers: [{ provide: IgxGridTransaction, useClass: IgxTransactionService }]
 })
