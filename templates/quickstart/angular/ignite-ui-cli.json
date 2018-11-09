@@ -2,7 +2,7 @@
     "version" : "",
     "project": {
         "framework" : "angular",
-        "projectType": "es6",
+        "projectType": "",
         "theme": "infragistics",
         "themePath": "./node_modules/ignite-ui/src/css/themes/infragistics/infragistics.theme.css",
         "isBundle": false,

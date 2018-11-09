@@ -1,5 +1,5 @@
 {
-	"version": "",
+	"version": "$(cliVersion)",
 	"project": {
 		"defaultPort": 3001,
 		"framework": "angular",

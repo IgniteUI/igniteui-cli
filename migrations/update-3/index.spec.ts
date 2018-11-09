@@ -97,4 +97,35 @@ h3 {
 			);
 		done();
 	});
+
+	it("should update config", done => {
+		const indexFile = "ignite-ui-cli.json";
+		appTree.create(indexFile,
+`{
+    "version": "",
+    "project": {
+        "framework": "angular",
+        "projectType": "igx-ts",
+        "projectTemplate": ""
+    },
+    "packagesInstalled": true
+}`
+		);
+
+		schematicRunner.runSchematic("migration-02", {}, appTree);
+		expect(appTree.readContent(indexFile))
+			.toEqual(
+`{
+    "version": "3.0.0",
+    "project": {
+        "framework": "angular",
+        "projectType": "igx-ts",
+        "projectTemplate": "side-nav"
+    },
+    "packagesInstalled": true
+}
+`
+			);
+		done();
+	});
 });
