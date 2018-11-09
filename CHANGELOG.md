@@ -1,3 +1,45 @@
+# [3.0.0](https:///github.com/IgniteUI/igniteui-cli/compare/v2.1.6...v3.0.0) (2018-11-09)
+
+This release brings projects with Ignite UI for Angular 6.2.0 with new features and components, styling updates for Ignite UI for JavaScript projects and other improvements.
+A brand new project template type for Ignite UI for Angular with built-in authentication is available and you can read more about it [our wiki](https://github.com/IgniteUI/igniteui-cli/wiki/Angular-Authentication-Project-Template) :tada:.
+
+### Bug Fixes
+
+* **igx-ts:** Rename files extensions and styleUrls from css to scss. ([#399](https:///github.com/IgniteUI/igniteui-cli/issues/399)) ([bbd1a5d](https:///github.com/IgniteUI/igniteui-cli/commit/bbd1a5d))
+* **ts-transform:** Properly remove line placeholders after print formatting ([bc5fd8d](https:///github.com/IgniteUI/igniteui-cli/commit/bc5fd8d))
+* **angular-wrappers:** Update project dependencies, fix build errors due to older typescript version (PR [#392](https://github.com/IgniteUI/igniteui-cli/pull/392))
+* Remove GA from non-global install and uninstall ([c861e28](https:///github.com/IgniteUI/igniteui-cli/commit/c861e28))
+* Update ignite-ui-cli.json to use correct project template for both React and jQuery ([ab8a11e](https:///github.com/IgniteUI/igniteui-cli/commit/ab8a11e))
+
+
+
+### Features
+
+* **Ignite UI for Angular:**
+	* **igx-ts:** Add Tree Grid template. ([#386](https:///github.com/IgniteUI/igniteui-cli/issues/386)) ([9fbf18c](https:///github.com/IgniteUI/igniteui-cli/commit/9fbf18c))
+	* **igx-ts:** Add 'Row Editing' feature to the 'Custom Grid' Ignite UI for Angular template (PR [#378](https://github.com/IgniteUI/igniteui-cli/pull/378)), closes [#377](https://github.com/IgniteUI/igniteui-cli/issues/377)
+	* **igx-ts:** Add 'Batch Editing' template to the Ignite UI for Angular Grid templates (PR [#379](https://github.com/IgniteUI/igniteui-cli/pull/379)), closes [#377](https://github.com/IgniteUI/igniteui-cli/issues/377)
+
+	* **igx-ts:** Add a "Log In" scenario [#336](https://github.com/IgniteUI/igniteui-cli/issues/336) (PR [#356](https://github.com/IgniteUI/igniteui-cli/issues/356)) ([6e8df34](https://github.com/IgniteUI/igniteui-cli/commit/6e8df34))
+	* **igx-ts:** Add Weather Sample scenario [#371](https://github.com/IgniteUI/igniteui-cli/issues/371) ([416810f](https://github.com/IgniteUI/igniteui-cli/commit/416810f))
+	* **igx-ts:** Add chips template ([#383](https:///github.com/IgniteUI/igniteui-cli/issues/383)) ([3dafe25](https:///github.com/IgniteUI/igniteui-cli/commit/3dafe25))
+	* **igx-ts:** Add Tooltip template ([#385](https:///github.com/IgniteUI/igniteui-cli/issues/385)) ([0d07867](https:///github.com/IgniteUI/igniteui-cli/commit/0d07867))
+
+	* **igx-ts:** Split igx project into base and side-nav extension ([f42c8fa](https://github.com/IgniteUI/igniteui-cli/commit/f42c8fa))
+	* **igx-ts:** Add new Side Nav with Authentication project ([ad79ef3](https://github.com/IgniteUI/igniteui-cli/commit/ad79ef3))
+	* **igx-ts:** Update projects and templates to igniteui-angular 6.2.0 ([79597b5](https://github.com/IgniteUI/igniteui-cli/commit/79597b5))
+	* **igx-ts:** Update templates to igniteui-angular-charts and igniteui-angular-gauges 6.2.x ([7e61f89](https://github.com/IgniteUI/igniteui-cli/commit/7e61f89))
+	* **igx-ts:** Update projects to angular cli 6.2.7 ([685f88a](https://github.com/IgniteUI/igniteui-cli/commit/685f88a))
+* **projects:** Make templates selectable in step-by-step ([cd98bae](https://github.com/IgniteUI/igniteui-cli/commit/cd98bae))
+* **projects:** Add projectTemplate param to new command ([6c20ba9](https://github.com/IgniteUI/igniteui-cli/commit/6c20ba9)), closes [#369](https://github.com/IgniteUI/igniteui-cli/issues/369)
+* **jquery:** Updated project styling  ([#328](https://github.com/IgniteUI/igniteui-cli/pull/328))
+* **react:** Improve project styling . ([#329](https://github.com/IgniteUI/igniteui-cli/issues/329)) ([49f3d20](https://github.com/IgniteUI/igniteui-cli/commit/49f3d20))
+
+
+
+
+
+
 # [2.1.1](https://github.com/IgniteUI/igniteui-cli/compare/v2.1.0...v2.1.1) (2018-09-17)
 
 
