@@ -1,0 +1,22 @@
+.chips {
+	display: flex;
+	flex-flow: column;
+	padding-top: 20px;
+	padding-right: 400px;
+}
+
+.chipsArea {
+	width:500px;
+	height: auto;
+	min-height: 100px;
+	border: 2px solid lightgray;
+}
+
+.chipStyle {
+	margin: auto;
+	padding: 8px;
+}
+
+.header {
+	text-align: center;
+}

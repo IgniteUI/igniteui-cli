@@ -1,0 +1,27 @@
+<div igxLayout igxLayoutDir="columns" igxLayoutItemAlign="center">
+          <p>igx-chip components inside igx-chips-area</p>
+          <p>You can read more about configuring the igx-chip component in the
+               <a href="https://github.com/IgniteUI/igniteui-angular/tree/master/projects/igniteui-angular/src/lib/chips/README.md"
+                target="_blank">README</a> or the
+               <a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/chip.html" target="_blank">official
+                    documentation</a>.</p>
+          <span class="header">Selected Events</span>
+          <div class="chipsArea">
+               <igx-chips-area #chipsArea class="chiparea">
+                    <igx-chip class="chipStyle" *ngFor="let chip of chipList" [id]="chip.id" [removable]="true" (onRemove)="chipRemoved($event)">
+                         <span #label [class]="'igx-chip__text'">{{chip.name}}</span>
+                    </igx-chip>
+               </igx-chips-area>
+          </div>
+          <div class="chips">
+               <button #openButton igxButton="raised" (click)="toggleDropDown($event)" [igxDropDownItemNavigation]="dropdown2">Talks</button>
+               <igx-drop-down #dropdown (onSelection)="itemSelection($event)" (onOpened)="onDropDownOpen()" (onClosed)="onDropDownClose()">
+                    <igx-drop-down-item *ngFor="let item of dropDownList">
+                         <div class="igx-drop-down__item-template">
+                              <span>{{item.name}}</span>
+                         </div>
+                    </igx-drop-down-item>
+               </igx-drop-down>
+          </div>
+     </div>
+     
