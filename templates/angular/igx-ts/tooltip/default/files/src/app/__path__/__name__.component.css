@@ -1,0 +1,23 @@
+.wrapper {
+    text-align: center;
+    margin: 20px;
+}
+
+.avatar {
+    display: inline-block;
+}
+
+.bottomMargin {
+    margin-bottom: 50px;
+}
+
+.locationTooltipContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.locationIcon {
+    width: 45px;
+    height: 45px;
+}
