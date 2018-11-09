@@ -25,6 +25,8 @@ import {
   VerticalAlignment} from 'igniteui-angular';
 import { data } from './data';
 
+// tslint:disable:no-use-before-declare
+
 @Component({
   selector: 'app-$(filePrefix)',
   templateUrl: './$(filePrefix).component.html',
