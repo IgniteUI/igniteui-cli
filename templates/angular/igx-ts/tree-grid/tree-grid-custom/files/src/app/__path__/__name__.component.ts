@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewEncapsulation, Renderer2 } from '@angular/core';
-import { employeesData } from './localData';
+import { Component, OnInit } from '@angular/core';
+import { EMPLOYEE_DATA } from './localData';
 
 @Component({
   selector: 'app-$(filePrefix)',
@@ -9,9 +9,8 @@ import { employeesData } from './localData';
 export class $(ClassName)Component implements OnInit {
   public localData: any[];
   title = '$(name)';
-  constructor(private renderer: Renderer2) { }
 
   ngOnInit() {
-    this.localData = employeesData;
+    this.localData = EMPLOYEE_DATA;
   }
 }
