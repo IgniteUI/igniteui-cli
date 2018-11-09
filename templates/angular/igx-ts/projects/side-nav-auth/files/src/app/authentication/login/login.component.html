@@ -16,7 +16,7 @@
   
   <div class="button-wrapper">
     <button igxButton="raised" type="submit" igxRipple [disabled]="!loginForm.valid">LOG IN</button>
-    <a id="register" (click)="showRegistrationForm($event)">Create new account?</a>
+    <a id="register" (click)="showRegistrationForm()">Create new account?</a>
   </div>
   <div class="social-login" *ngIf="authService.hasProvider()">
     <button type="button" *ngIf="authService.hasProvider(providers.Facebook)" class="facebook" igxButton="raised" (click)="signUpFb()">Sign Up Facebook</button>
