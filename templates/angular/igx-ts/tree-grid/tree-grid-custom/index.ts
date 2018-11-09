@@ -1,4 +1,3 @@
-import { EOL } from "os";
 import { IgniteUIForAngularTemplate } from "../../../../../lib/templates/IgniteUIForAngularTemplate";
 
 class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
@@ -48,8 +47,6 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 			text: ``,
 			end: `</a>`
 		};
-		let checkBoxBind = `[checked]="cell.value" [disabled]="true"`;
-		let datePickerEditor = "";
 		let selectedFeatures = "";
 		let columnPinning = "";
 		let addGridToolbar = false;
@@ -79,22 +76,9 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 						break;
 					case "Cell Editing":
 						columnFeatures.push(`[editable]="true"`);
-						checkBoxBind = `[ngModel]="cell.value" (ngModelChange)="cell.update($event)"`;
-						// enable Date Picker, ngModel
-						this.dependencies.push({ import: "IgxDatePickerModule", from: "igniteui-angular" });
-						this.dependencies.push({ import: "FormsModule", from: "@angular/forms" });
-						datePickerEditor = EOL +
-							`<ng-template igxCellEditor let-cell="cell">` + EOL +
-							`  <igx-datePicker cancelButtonLabel="cancel" todayButtonLabel="today" [(ngModel)]="cell.value"` +
-							` (onOpen)="pickerOpen()" (onClose)="pickerClose()">` + EOL +
-							`  </igx-datePicker>` + EOL +
-							`</ng-template>`;
-						// TODO: make a Util .pad()
-						datePickerEditor = datePickerEditor.replace(/([\r\n]+)/g, `$&${"  ".repeat(3)}`);
 						break;
 					case "Row Editing":
 						treeGridFeatures.push(`[rowEditable]="true"`);
-						this.dependencies.push({ import: "IgxDatePickerModule", from: "igniteui-angular" });
 						break;
 					case "Row Selection":
 						const gridFeatureText = `[rowSelectable]="true"`;
@@ -153,11 +137,9 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 			}
 		}
 		const extraConfig = {
-			"$(checkBoxBind)": checkBoxBind,
 			"$(columnBoolFeatures)": columnBoolFeatures.join(" "),
 			"$(columnFeatures)": columnFeatures.join(" "),
 			"$(columnPinning)": columnPinning,
-			"$(datePickerEditor)": datePickerEditor,
 			"$(selectedFeatures)": selectedFeatures,
 			"$(treeGridFeatures)": treeGridFeatures.join(" ")
 		};
