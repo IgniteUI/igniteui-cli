@@ -44,7 +44,7 @@ export class ProjectConfig {
 	public static setConfig(config: Config, global: boolean = false) {
 		const basePath = global ? os.homedir() : process.cwd();
 		const filePath = path.join(basePath, this.configFile);
-		fs.writeFileSync(filePath, JSON.stringify(config, null, 4));
+		fs.writeFileSync(filePath, JSON.stringify(config, null, 4) + "\n");
 	}
 
 	/*** Get local configuration only */

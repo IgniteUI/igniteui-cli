@@ -1,5 +1,5 @@
 {
-	"version" : "",
+	"version" : "$(cliVersion)",
 	"project": {
 		"defaultPort": 3000,
 		"framework" : "jquery",
