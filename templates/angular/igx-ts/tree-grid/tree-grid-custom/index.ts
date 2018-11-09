@@ -130,7 +130,7 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 				`${anchorWrapper.text}${anchorWrapper.end}`;
 			}).toString();
 			if (selectedFeatures.length > 0) {
-				selectedFeatures = `<p>Active Features:</p><p>${selectedFeatures}</p>`;
+				selectedFeatures = `<p>Active Features:<br />${selectedFeatures}</p>`;
 			}
 			if (addGridToolbar) {
 				treeGridFeatures.push('[showToolbar]="true" toolbarTitle="Employees"');
