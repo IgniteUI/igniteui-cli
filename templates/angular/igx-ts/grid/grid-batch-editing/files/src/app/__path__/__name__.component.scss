@@ -14,32 +14,3 @@ h4 {
     flex-direction: row;
     justify-content: right;
 }
-.grid-row-edit-wrapper {
-    flex-flow: row wrap;
-    padding: 50px;
-}
-.dialog__header {
-    width: 100%;
-    text-align: center;
-    padding: 5px;
-    font-weight: 800;
-}
-.dialog__container {
-    width: 840px;
-    min-height: 420px;
-    background: #FFF;
-}
-.dialog__body {
-    padding: 4px;
-    height: 350px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.dialog__buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
