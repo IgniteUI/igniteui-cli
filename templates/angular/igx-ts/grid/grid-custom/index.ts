@@ -76,16 +76,16 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 						columnFeatures.push(`[editable]="true"`);
 						checkBoxBind = `[ngModel]="cell.value" (ngModelChange)="cell.update($event)"`;
 						// enable Date Picker, ngModel
-						this.dependencies.push({ import: "IgxDatePickerModule", from: "igniteui-angular" });
-						this.dependencies.push({ import: "FormsModule", from: "@angular/forms" });
-						datePickerEditor = EOL +
-							`<ng-template igxCellEditor let-cell="cell">` + EOL +
-							`  <igx-date-picker cancelButtonLabel="cancel" todayButtonLabel="today" [(ngModel)]="cell.value"` +
-							` (onOpen)="pickerOpen()" (onClose)="pickerClose()">` + EOL +
-							`  </igx-date-picker>` + EOL +
-							`</ng-template>`;
+						// this.dependencies.push({ import: "IgxDatePickerModule", from: "igniteui-angular" });
+						// this.dependencies.push({ import: "FormsModule", from: "@angular/forms" });
+						// datePickerEditor = EOL +
+						// 	`<ng-template igxCellEditor let-cell="cell">` + EOL +
+						// 	`  <igx-date-picker cancelButtonLabel="cancel" todayButtonLabel="today" [(ngModel)]="cell.value"` +
+						// 	` (onOpen)="pickerOpen()" (onClose)="pickerClose()">` + EOL +
+						// 	`  </igx-date-picker>` + EOL +
+						// 	`</ng-template>`;
 						// TODO: make a Util .pad()
-						datePickerEditor = datePickerEditor.replace(/([\r\n]+)/g, `$&${"  ".repeat(3)}`);
+						// datePickerEditor = datePickerEditor.replace(/([\r\n]+)/g, `$&${"  ".repeat(3)}`);
 						break;
 						case "Row Editing":
 						gridFeatures.push(`[rowEditable]="true"`);
@@ -144,7 +144,7 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 				`${anchorWrapper.text}${anchorWrapper.end}`;
 			}).toString();
 			if (selectedFeatures.length > 0) {
-				selectedFeatures = `<p>Active Features:</p><p>${selectedFeatures}</p>`;
+				selectedFeatures = `<p>Active Features: ${selectedFeatures}</p>`;
 			}
 		}
 		const extraConfig = {
