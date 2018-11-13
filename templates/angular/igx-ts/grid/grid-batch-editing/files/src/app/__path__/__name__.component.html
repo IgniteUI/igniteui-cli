@@ -23,11 +23,11 @@
     </igx-grid>
   </app-grid-with-transactions>
 <div class="buttons-row">
-    <button igxButton (click)="addRow('gridRowEditTransaction')">Add Row</button>
+    <button igxButton (click)="addRow()" igxRipple>Add Row</button>
     <div class="buttons-wrapper">
-        <button igxButton [disabled]="!undoEnabled" (click)="undo()">Undo</button>
-        <button igxButton [disabled]="!redoEnabled" (click)="redo()">Redo</button>
-        <button igxButton [disabled]="!hasTransactions" (click)="openCommitDialog()">Commit</button>
+        <button igxButton [disabled]="!undoEnabled" (click)="undo()" igxRipple>Undo</button>
+        <button igxButton [disabled]="!redoEnabled" (click)="redo()" igxRipple>Redo</button>
+        <button igxButton [disabled]="!hasTransactions" (click)="openCommitDialog()" igxRipple>Commit</button>
     </div>
 </div>
 <igx-dialog title="Submit the following transactions?">

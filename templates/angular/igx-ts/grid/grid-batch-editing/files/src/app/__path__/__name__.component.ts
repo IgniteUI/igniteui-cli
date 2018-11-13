@@ -11,9 +11,7 @@ import { IgxDialogComponent, IgxGridComponent, Transaction } from 'igniteui-angu
 export class $(ClassName)Component implements OnInit {
   @ViewChild('gridRowEditTransaction', { read: IgxGridComponent }) public grid: IgxGridComponent;
   @ViewChild(IgxDialogComponent) public dialog: IgxDialogComponent;
-  @ViewChild("dialogGrid", { read: IgxGridComponent }) public dialogGrid: IgxGridComponent;
-  
-  public currentActiveGrid: { id: string, transactions: any[] } = { id: "", transactions: [] };
+  @ViewChild('dialogGrid', { read: IgxGridComponent }) public dialogGrid: IgxGridComponent;
 
   public data: any[];
   public transactionsData: Transaction[] = [];
