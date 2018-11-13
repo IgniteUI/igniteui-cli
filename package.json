@@ -110,5 +110,6 @@
       "igniteui-angular",
       "igniteui-angular-charts"
     ]
-  }
+  },
+  "schematics": "./schematics/collection.json"
 }
