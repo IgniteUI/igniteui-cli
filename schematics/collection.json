@@ -2,8 +2,8 @@
   "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
   "schematics": {
     "ng-add": {
-      "description": "A blank schematic.",
-      "factory": "./igschematics/index"
+      "description": "Installs the needed dependencies onto the host application.",
+      "factory": "./ng-add/index"
     }
   }
 }
