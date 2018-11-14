@@ -11,12 +11,12 @@ interface IDependency {
 function addPackageJsonDependencies(): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		const dependencies: IDependency[] = [
-			{ name: "igniteui-angular", version: "^6.2.0" },
-			{ name: "web-animations-js", version: "^2.3.1" }
+			{ name: "igniteui-angular", version: loadPackageVersion("igniteui-angular") || "^6.2.0" },
+			{ name: "web-animations-js", version: loadPackageVersion("web-animations-js") || "^2.3.1" }
 		];
 
 		dependencies.forEach(d => {
-			addPackageJsonDependency(tree, "igniteui-angular", "^6.2.0");
+			addPackageJsonDependency(tree, d.name, d.version);
 			_context.logger.log("info", `Added ${d.name} to dependencies - Version: ${d.version}`);
 		});
 
@@ -24,9 +24,18 @@ function addPackageJsonDependencies(): Rule {
 	};
 }
 
+function loadPackageVersion(packageName: string): string | null {
+	try {
+		return require(`${packageName}/package.json`).version;
+	} catch {
+		return null;
+	}
+}
+
 function addPackageJsonDependency(tree: Tree, pkg: string, version: string): Tree {
-	if (tree.exists("package.json")) {
-		const sourceText = tree.read("package.json")!.toString();
+	const targetFile = "package.json";
+	if (tree.exists(targetFile)) {
+		const sourceText = tree.read(targetFile)!.toString();
 		const json = JSON.parse(sourceText);
 
 		if (!json.dependencies) {
@@ -41,7 +50,7 @@ function addPackageJsonDependency(tree: Tree, pkg: string, version: string): Tre
 					.reduce((result, key) => (result[key] = json.dependencies[key]) && result, {});
 		}
 
-		tree.overwrite("package.json", JSON.stringify(json, null, 2));
+		tree.overwrite(targetFile, JSON.stringify(json, null, 2));
 	}
 
 	return tree;
