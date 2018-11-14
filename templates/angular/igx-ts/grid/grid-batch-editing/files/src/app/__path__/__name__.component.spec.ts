@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { $(ClassName)Component } from './$(filePrefix).component';
+import { GridWithTransactionsComponent } from './grid-transaction.component';
 import { IgxDialogModule, IgxGridModule, IgxFocusModule, IgxButtonModule } from 'igniteui-angular';
 
 describe('$(ClassName)Component', () => {
