@@ -100,7 +100,12 @@ command = {
 			PackageManager.ensureIgniteUISource(config.packagesInstalled, command.templateManager);
 		}
 	},
-	async addTemplate(name: string, template: Template, modulePath?: string): Promise<boolean> {
+	async addTemplate(fileName: string, template: Template, modulePath?: string): Promise<boolean> {
+		const parts = path.parse(fileName);
+		let name = fileName;
+		if (parts.dir) {
+			name = parts.base;
+		}
 		// trim name to avoid creating awkward paths or mismatches:
 		name = name.trim();
 
@@ -112,9 +117,9 @@ command = {
 			return false;
 		}
 
-		if (await template.generateFiles(process.cwd(), name, { modulePath })) {
+		if (await template.generateFiles(process.cwd(), fileName, { modulePath })) {
 			//successful
-			template.registerInProject(process.cwd(), name, { modulePath });
+			template.registerInProject(process.cwd(), fileName, { modulePath });
 			command.templateManager.updateProjectConfiguration(template);
 			template.packages.forEach(x => PackageManager.queuePackage(x));
 			Util.log(`${Util.greenCheck()} View '${name}' added.`);

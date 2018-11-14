@@ -46,8 +46,6 @@ describe("Unit - Add command", () => {
 		const errorCombos = [
 			{ name: "1 is not valid", inError: "1 is not valid" },
 			{ name: "   1 is   not valid  \t   ", inError: "1 is   not valid" },
-			{ name: "../editors", inError: "../editors" },
-			{ name: "template/editors", inError: "template/editors" },
 			{ name: "name!", inError: "name!" },
 			{ name: "bits~and*bobs()", inError: "bits~and*bobs()" }
 		];
@@ -63,6 +61,8 @@ describe("Unit - Add command", () => {
 			{ name: "   valid  name  \t   ", valid: "valid  name" },
 			{ name: "th1s is valid", valid: "th1s is valid" },
 			{ name: "b1ts-and bobs ", valid: "b1ts-and bobs" },
+			{ name: "../editors", inError: "../editors" },
+			{ name: "template/editors", inError: "template/editors" },
 			{ name: "a      name", valid: "a      name" },
 			{ name: "a", valid: "a" } // single letter name test
 		];

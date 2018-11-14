@@ -124,12 +124,32 @@ export class AngularTemplate implements Template {
 		}
 	}
 
-	protected folderName(name: string): string {
+	protected folderName(pathName: string): string {
 		//TODO: should remove the spaces
-		return Util.lowerDashed(name);
+		const parts = path.parse(pathName);
+		let folderName = pathName;
+		if (parts.dir) {
+			// TODO: config-based "src/app"?
+			folderName = parts.base.replace(/\\/, "/");
+			const relative = path.join(process.cwd(), "src/app", folderName);
+			// path.join will also resolve any '..' segments
+			// so if relative result doesn't start with CWD it's out of project root
+			if (!relative.startsWith(process.cwd())) {
+				Util.error(`Path ${"src/app/" + folderName} is not valid!`);
+				process.exit(1);
+			}
+		}
+		return Util.lowerDashed(folderName);
 	}
 
-	protected fileName(name: string): string {
+	protected fileName(pathName: string): string {
+		// TODO: Util func.
+		const parts = path.parse(pathName);
+		let name = pathName;
+		if (parts.dir) {
+			name = parts.base;
+		}
+		name = name.trim();
 		//TODO: should remove the spaces
 		return Util.lowerDashed(name);
 	}
