@@ -4,7 +4,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { $(ClassName)Component } from './$(filePrefix).component';
 import { GridWithTransactionsComponent } from './grid-transaction.component';
-import { IgxDialogModule, IgxGridModule, IgxFocusModule, IgxButtonModule } from 'igniteui-angular';
+import { IgxDialogModule, IgxGridModule, IgxFocusModule, IgxButtonModule, IgxRippleModule } from 'igniteui-angular';
 
 describe('$(ClassName)Component', () => {
   let component: $(ClassName)Component;
@@ -13,7 +13,7 @@ describe('$(ClassName)Component', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ $(ClassName)Component, GridWithTransactionsComponent ],
-      imports: [ FormsModule, NoopAnimationsModule, IgxDialogModule, IgxGridModule, IgxFocusModule, IgxButtonModule ]
+      imports: [ FormsModule, NoopAnimationsModule, IgxDialogModule, IgxGridModule, IgxFocusModule, IgxButtonModule, IgxRippleModule ]
     })
     .compileComponents();
   }));
