@@ -17,15 +17,19 @@ export class $(ClassName)Component implements OnInit {
   public transactionsData: Transaction[] = [];
   private addProductId: number;
 
+  public get transactions() {
+    return this.grid.transactions;
+  }
+
   constructor() {
     this.data = data;
     this.addProductId = this.data.length + 1;
   }
 
   public ngOnInit(): void {
-    this.transactionsData = this.grid.transactions.getAggregatedChanges(true);
-    this.grid.transactions.onStateUpdate.subscribe(() => {
-        this.transactionsData = this.grid.transactions.getAggregatedChanges(true);
+    this.transactionsData = this.transactions.getAggregatedChanges(true);
+    this.transactions.onStateUpdate.subscribe(() => {
+        this.transactionsData = this.transactions.getAggregatedChanges(true);
     });
   }
 
@@ -50,14 +54,6 @@ export class $(ClassName)Component implements OnInit {
     this.grid.deleteRow(rowID);
   }
 
-  public undo() {
-    this.grid.transactions.undo();
-  }
-
-  public redo() {
-    this.grid.transactions.redo();
-  }
-
   public openCommitDialog() {
     this.dialog.open();
     this.dialogGrid.reflow();
@@ -77,14 +73,6 @@ export class $(ClassName)Component implements OnInit {
     this.dialog.close();
   }
 
-  public stateFormatter(value: string) {
-    return JSON.stringify(value);
-  }
-
-  public typeFormatter(value: string) {
-    return value.toUpperCase();
-  }
-
   private getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
@@ -93,15 +81,15 @@ export class $(ClassName)Component implements OnInit {
     return `transaction--${type.toLowerCase()}`;
   }
 
-  public get undoEnabled(): boolean {
-    return this.grid.transactions.canUndo;
-  }
-
-  public get redoEnabled(): boolean {
-    return this.grid.transactions.canRedo;
-  }
-
   public get hasTransactions(): boolean {
     return this.grid.transactions.getAggregatedChanges(false).length > 0;
+  }
+
+  public stateFormatter(value: string) {
+    return JSON.stringify(value);
+  }
+
+  public typeFormatter(value: string) {
+    return value.toUpperCase();
   }
 }
