@@ -12,7 +12,7 @@ describe('$(ClassName)Component', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ $(ClassName)Component ],
+      declarations: [ $(ClassName)Component, GridWithTransactionsComponent ],
       imports: [ FormsModule, NoopAnimationsModule, IgxDialogModule, IgxGridModule, IgxFocusModule, IgxButtonModule ]
     })
     .compileComponents();
