@@ -4,7 +4,13 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { $(ClassName)Component } from './$(filePrefix).component';
 import { GridWithTransactionsComponent } from './grid-transaction.component';
-import { IgxDialogModule, IgxGridModule, IgxFocusModule, IgxButtonModule, IgxRippleModule } from 'igniteui-angular';
+import {
+	IgxButtonModule,
+	IgxDialogModule,
+	IgxFocusModule,
+	IgxGridModule,
+	IgxRippleModule
+} from 'igniteui-angular';
 
 describe('$(ClassName)Component', () => {
   let component: $(ClassName)Component;
