@@ -46,7 +46,10 @@
     "templates/**/*.json",
     "migrations/**/*.d.ts",
     "migrations/**/*.js",
-    "migrations/**/*.json"
+    "migrations/**/*.json",
+    "schematics/**/*.d.ts",
+    "schematics/**/*.js",
+    "schematics/**/*.json"
   ],
   "nyc": {
     "extension": [
@@ -74,6 +77,7 @@
     "all": true
   },
   "dependencies": {
+    "@schematics/angular": "^7.0.6",
     "chalk": "^2.3.2",
     "fs-extra": "^3.0.1",
     "glob": "^7.1.2",

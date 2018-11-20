@@ -1,9 +1,14 @@
+// tslint:disable-next-line:no-submodule-imports
+import { WorkspaceProject, WorkspaceSchema } from "@angular-devkit/core/src/workspace";
 // tslint:disable-next-line:ordered-imports
-import { chain, Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
+import { chain, Rule, SchematicContext, Tree, SchematicsException } from "@angular-devkit/schematics";
 // tslint:disable-next-line:no-submodule-imports
 import { NodePackageInstallTask } from "@angular-devkit/schematics/tasks";
+// tslint:disable-next-line:no-submodule-imports
+import { getWorkspace } from "@schematics/angular/utility/config";
+import { Util } from "../../lib/Util";
 
-interface IDependency {
+export interface IDependency {
 	name: string;
 	version: string;
 }
@@ -11,8 +16,8 @@ interface IDependency {
 function addPackageJsonDependencies(): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		const dependencies: IDependency[] = [
-			{ name: "igniteui-angular", version: loadPackageVersion("igniteui-angular") || "^6.2.0" },
-			{ name: "web-animations-js", version: loadPackageVersion("web-animations-js") || "^2.3.1" }
+			{ name: "igniteui-angular", version: "~6.2.0" },
+			{ name: "web-animations-js", version: "^2.3.1" }
 		];
 
 		dependencies.forEach(d => {
@@ -20,16 +25,62 @@ function addPackageJsonDependencies(): Rule {
 			_context.logger.log("info", `Added ${d.name} to dependencies - Version: ${d.version}`);
 		});
 
+		tree.create("ignite-ui-cli.json", JSON.stringify(GetCliConfig(tree), null, 2) + "\n");
 		return tree;
 	};
 }
 
-function loadPackageVersion(packageName: string): string | null {
+function GetCliConfig(tree: Tree): Config {
 	try {
-		return require(`${packageName}/package.json`).version;
+		const workspace = getWorkspace(tree);
+		const allProjects = getProjects(workspace);
+
+		const cliConfig: Config = require("./files/ignite-ui-cli.json");
+		cliConfig.version = Util.version();
+		const userPort = getPort(workspace);
+		if (userPort) {
+			cliConfig.project.defaultPort = userPort;
+		}
+		const projectType = getProjectType(workspace);
+		if (projectType) {
+			cliConfig.project.projectType = projectType;
+		}
+
+		return cliConfig;
 	} catch {
-		return null;
+		throw new SchematicsException("angular.json file was not found in the project.");
 	}
+}
+
+function getPort(workspace: WorkspaceSchema) {
+	const targetProjectName = workspace.defaultProject;
+	const projectServe = targetProjectName
+		? workspace.projects[targetProjectName].architect.serve.options
+		: null;
+
+	if (projectServe) {
+		return (projectServe as any).port;
+	}
+}
+function getProjectType(workspace: WorkspaceSchema) {
+	const targetProjectName = workspace.defaultProject;
+	if (targetProjectName) {
+		return workspace.projects[targetProjectName].projectType;
+	}
+}
+
+function getProjects(workspace: WorkspaceSchema): WorkspaceProject[] {
+	const targetedProjects: WorkspaceProject[] = [];
+	for (const projName of Object.keys(workspace.projects)) {
+		const proj = workspace.projects[projName];
+		if (proj.architect && proj.architect.e2e) {
+			continue;
+		}
+
+		targetedProjects.push(proj);
+	}
+
+	return targetedProjects;
 }
 
 function addPackageJsonDependency(tree: Tree, pkg: string, version: string): Tree {
@@ -48,9 +99,8 @@ function addPackageJsonDependency(tree: Tree, pkg: string, version: string): Tre
 				Object.keys(json.dependencies)
 					.sort()
 					.reduce((result, key) => (result[key] = json.dependencies[key]) && result, {});
+			tree.overwrite(targetFile, JSON.stringify(json, null, 2) + "\n");
 		}
-
-		tree.overwrite(targetFile, JSON.stringify(json, null, 2));
 	}
 
 	return tree;
@@ -65,7 +115,8 @@ function installPackageJsonDependencies(): Rule {
 	};
 }
 
-export default function(): Rule {
+// tslint:disable-next-line:space-before-function-paren
+export default function (): Rule {
 	return chain([
 		addPackageJsonDependencies(),
 		installPackageJsonDependencies()
