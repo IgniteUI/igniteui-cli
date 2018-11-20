@@ -47,7 +47,7 @@ function GetCliConfig(tree: Tree): Config {
 		}
 
 		return cliConfig;
-	} catch {
+	} catch { // TODO: Catch specific exception
 		throw new SchematicsException("angular.json file was not found in the project.");
 	}
 }
