@@ -30,34 +30,6 @@ describe("schematics", () => {
 		tree.create("/package.json", JSON.stringify(pkgJsonConfig));
 	});
 
-	it("should add packages to package.json dependencies", () => {
-		expect(tree).toBeTruthy();
-		expect(tree.exists("/angular.json")).toBeTruthy();
-		expect(tree.exists("/package.json")).toBeTruthy();
-
-		runner.runSchematic("ng-add", {}, tree);
-
-		const pkgJsonData = JSON.parse(tree.readContent("/package.json"));
-		expect(pkgJsonData.dependencies).toBeTruthy();
-		expect(pkgJsonData.devDependencies).toBeFalsy();
-	});
-
-	it("should add the correct cli packages to package.json dependencies", () => {
-		expect(tree).toBeTruthy();
-		expect(tree.exists("/angular.json")).toBeTruthy();
-		expect(tree.exists("/package.json")).toBeTruthy();
-
-		runner.runSchematic("ng-add", {}, tree);
-
-		const pkgJsonData = JSON.parse(tree.readContent("/package.json"));
-		expect(pkgJsonData.dependencies).toBeTruthy();
-		expect(pkgJsonData.devDependencies).toBeFalsy();
-
-		const dependenciesFound = Object.keys(pkgJsonData.dependencies)
-			.filter(pkg => pkg.includes("igniteui-angular") || pkg.includes("web-animations-js"));
-		expect(dependenciesFound.length).toBeGreaterThan(0);
-	});
-
 	it("should create an ignite-ui-cli.json file correctly", () => {
 		expect(tree).toBeTruthy();
 		expect(tree.exists("/angular.json")).toBeTruthy();

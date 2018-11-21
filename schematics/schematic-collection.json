@@ -1,9 +1,9 @@
 {
   "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
   "schematics": {
-    "ng-add": {
+    "cli-config": {
       "description": "Installs the needed dependencies onto the host application.",
-      "factory": "./ng-add/index"
+      "factory": "./cli-config/index"
     }
   }
 }
