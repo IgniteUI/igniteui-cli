@@ -11,15 +11,18 @@ export interface IDependency {
 	version: string;
 }
 
-function createCliConfig(): Rule {
-	return (tree: Tree, _context: SchematicContext) => {
-		tree.create("ignite-ui-cli.json", JSON.stringify(GetCliConfig(tree), null, 2) + "\n");
+// TODO: add typing to options
+
+function createCliConfig(options): Rule {
+	return (tree: Tree, context: SchematicContext) => {
+		tree.create("ignite-ui-cli.json", JSON.stringify(GetCliConfig(tree, options), null, 2) + "\n");
 		return tree;
 	};
 }
 
-function GetCliConfig(tree: Tree): Config {
+function GetCliConfig(tree: Tree, options): Config {
 	try {
+		// TODO if options.port? || options.theme?
 		const workspace = getWorkspace(tree);
 		const cliConfig: Config = require("./files/ignite-ui-cli.json");
 		cliConfig.version = Util.version();
@@ -61,8 +64,8 @@ function getProjectType(workspace: WorkspaceSchema) {
 }
 
 // tslint:disable-next-line:space-before-function-paren
-export default function (): Rule {
+export default function (options): Rule {
 	return chain([
-		createCliConfig()
+		createCliConfig(options)
 	]);
 }

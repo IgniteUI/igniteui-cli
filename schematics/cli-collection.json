@@ -1,5 +1,5 @@
 {
-  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "$schema": "./../@angular-devkit/schematics/collection-schema.json",
   "schematics": {
     "cli-config": {
       "description": "Installs the needed dependencies onto the host application.",
