@@ -115,5 +115,5 @@
       "igniteui-angular-charts"
     ]
   },
-  "schematics": "./schematics/schematic-collection.json"
+  "schematics": "./schematics/cli-collection.json"
 }
