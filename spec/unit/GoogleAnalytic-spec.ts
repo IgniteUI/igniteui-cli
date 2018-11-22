@@ -13,6 +13,7 @@ describe("Unit - Google Analytic", () => {
 
 	class GATestClass extends GoogleAnalytics {
 		public static userDataFolder = path.join(process.cwd(), `./output/${testFolder}`);
+		public static getUserID(): any { return super.getUserID(); }
 	}
 
 	beforeEach(() => {
@@ -74,6 +75,16 @@ describe("Unit - Google Analytic", () => {
 		expect(https.request).toHaveBeenCalledTimes(0);
 		expect(request.on).toHaveBeenCalledTimes(0);
 		expect(request.end).toHaveBeenCalledTimes(0);
+
+		done();
+	});
+
+	it("Random Guid is generated if the platform check fails", async done => {
+		spyOn(childProcess, "execSync").and.throwError("Error!");
+		const value = GATestClass.getUserID();
+
+		expect(value).toBeDefined();
+		expect(value).toBe(jasmine.any(String));
 
 		done();
 	});
