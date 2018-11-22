@@ -81,12 +81,12 @@ describe("Unit - Google Analytic", () => {
 		done();
 	});
 
-	fit("Random Guid is generated if the platform check fails", done => {
+	it("Random Guid is generated if the platform check fails", done => {
 		serviceSpy.and.throwError("Error!");
 		const value = GATestClass.getUserID();
 
 		expect(value).toBeDefined();
-		expect(value).toBe(jasmine.any(String));
+		expect(value).toMatch(/\d{1,}/);
 
 		done();
 	});
