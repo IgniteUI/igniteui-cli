@@ -5,7 +5,7 @@ import { SchematicTestRunner, UnitTestTree } from "@angular-devkit/schematics/te
 import * as path from "path";
 
 describe("schematics", () => {
-	const collectionPath = path.join(__dirname, "../collection.json");
+	const collectionPath = path.join(__dirname, "../cli-collection.json");
 	const runner: SchematicTestRunner = new SchematicTestRunner("cli-schematics", collectionPath);
 	let tree: UnitTestTree;
 	const ngJsonConfig = {
@@ -35,7 +35,7 @@ describe("schematics", () => {
 		expect(tree.exists("/angular.json")).toBeTruthy();
 		expect(tree.exists("/package.json")).toBeTruthy();
 
-		runner.runSchematic("ng-add", {}, tree);
+		runner.runSchematic("cli-config", {}, tree);
 		expect(tree.exists("ignite-ui-cli.json")).toBeTruthy();
 
 		const cliJsonData = JSON.parse(tree.readContent("/ignite-ui-cli.json"));
