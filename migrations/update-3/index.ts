@@ -1,7 +1,7 @@
 // tslint:disable:no-implicit-dependencies
 import { Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
 
-function addTypography(host: Tree) {
+export function addTypography(host: Tree) {
 	const indexHtml = "src/index.html";
 	const bodyTagRegex = /<body[^>]*?>/;
 	const classRegex = /class=["']([^"']*?)["']/;

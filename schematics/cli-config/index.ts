@@ -1,26 +1,23 @@
 // tslint:disable-next-line:no-submodule-imports
 import { WorkspaceSchema } from "@angular-devkit/core/src/workspace";
 // tslint:disable-next-line:ordered-imports
-import { chain, Rule, SchematicContext, Tree, SchematicsException } from "@angular-devkit/schematics";
+import { chain, Rule, Tree, SchematicsException } from "@angular-devkit/schematics";
 // tslint:disable-next-line:no-submodule-imports
 import { getWorkspace } from "@schematics/angular/utility/config";
 import { Util } from "../../lib/Util";
-
-export interface IDependency {
-	name: string;
-	version: string;
-}
+import { addTypography } from "../../migrations/update-3/index";
 
 function createCliConfig(): Rule {
 	return (tree: Tree) => {
 		tree.create("ignite-ui-cli.json", JSON.stringify(GetCliConfig(tree), null, 2) + "\n");
+		addTypography(tree);
+
 		return tree;
 	};
 }
 
 function GetCliConfig(tree: Tree): Config {
 	try {
-		// TODO if options.port? || options.theme?
 		const workspace = getWorkspace(tree);
 		const cliConfig: Config = require("./files/ignite-ui-cli.json");
 		cliConfig.version = Util.version();
@@ -36,8 +33,8 @@ function GetCliConfig(tree: Tree): Config {
 		return cliConfig;
 	} catch (e) {
 		switch (e) {
-			case typeof (e) === typeof (SchematicsException):
-				throw new SchematicsException("angular.json file was not found in the project.");
+			case typeof e === typeof SchematicsException:
+				throw new SchematicsException("angular.json was not found in the project's root.");
 			default:
 				throw new Error(e.message);
 		}
