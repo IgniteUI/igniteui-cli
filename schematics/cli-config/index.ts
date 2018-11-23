@@ -11,6 +11,7 @@ function createCliConfig(): Rule {
 	return (tree: Tree) => {
 		tree.create("ignite-ui-cli.json", JSON.stringify(GetCliConfig(tree), null, 2) + "\n");
 		addTypography(tree);
+		addFontsToIndexHtml(tree);
 
 		return tree;
 	};
@@ -39,6 +40,25 @@ function GetCliConfig(tree: Tree): Config {
 				throw new Error(e.message);
 		}
 	}
+}
+
+function addFontsToIndexHtml(tree: Tree) {
+	const titillium = '<link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">';
+	const materialIcons = '<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">';
+	const targetFile = "/src/index.html";
+	if (tree.exists(targetFile)) {
+		let content = tree.read(targetFile).toString();
+		if (!content.includes(titillium)) {
+			content = content.replace("</head>", `  ${titillium}\n</head>`);
+		}
+		if (!content.includes(materialIcons)) {
+			content = content.replace("</head>", `  ${materialIcons}\n</head>`);
+		}
+
+		tree.overwrite(targetFile, content);
+	}
+
+	return tree;
 }
 
 function getPort(workspace: WorkspaceSchema) {
