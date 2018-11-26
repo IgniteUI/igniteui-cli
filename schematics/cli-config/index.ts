@@ -1,17 +1,23 @@
+// tslint:disable:no-implicit-dependencies
 // tslint:disable-next-line:no-submodule-imports
 import { WorkspaceSchema } from "@angular-devkit/core/src/workspace";
 // tslint:disable-next-line:ordered-imports
-import { chain, Rule, Tree, SchematicsException } from "@angular-devkit/schematics";
+import { chain, Rule, SchematicsException, Tree, SchematicContext } from "@angular-devkit/schematics";
 // tslint:disable-next-line:no-submodule-imports
 import { getWorkspace } from "@schematics/angular/utility/config";
+import * as fs from "fs";
+import * as path from "path";
+import { TypeScriptFileUpdate } from "../../lib/project-utility/TypeScriptFileUpdate";
+import { TypeScriptUtils as TsUtils } from "../../lib/project-utility/TypeScriptUtils";
 import { Util } from "../../lib/Util";
 import { addTypography } from "../../migrations/update-3/index";
 
 function createCliConfig(): Rule {
-	return (tree: Tree) => {
+	return (tree: Tree, context: SchematicContext) => {
 		tree.create("ignite-ui-cli.json", JSON.stringify(GetCliConfig(tree), null, 2) + "\n");
 		addTypography(tree);
 		addFontsToIndexHtml(tree);
+		importBrowserAnimationModule(tree, context);
 
 		return tree;
 	};
@@ -59,6 +65,16 @@ function addFontsToIndexHtml(tree: Tree) {
 	}
 
 	return tree;
+}
+
+function importBrowserAnimationModule(tree: Tree, context: SchematicContext) {
+	const moduleFile = "./src/app/app.module.ts";
+	if (fs.existsSync(moduleFile)) {
+		const mainModule = new TypeScriptFileUpdate(path.join(process.cwd(), moduleFile));
+		mainModule.addNgModuleMeta({ import: "BrowserAnimationsModule", from: "@angular/platform-browser/animations" });
+		mainModule.finalize();
+		context.logger.info("BrowserAnimationsModule added to app.module.ts file");
+	}
 }
 
 function getPort(workspace: WorkspaceSchema) {

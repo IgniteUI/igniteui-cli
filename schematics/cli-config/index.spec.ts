@@ -1,8 +1,11 @@
+// tslint:disable:no-implicit-dependencies
 import { EmptyTree } from "@angular-devkit/schematics";
 // tslint:disable-next-line:no-submodule-imports
 import { SchematicTestRunner, UnitTestTree } from "@angular-devkit/schematics/testing";
+import * as fs from "fs";
 // tslint:disable-next-line:no-submodule-imports
 import * as path from "path";
+import { deleteAll } from "../../spec/helpers/utils";
 
 describe("schematics", () => {
 	const collectionPath = path.join(__dirname, "../cli-collection.json");
@@ -73,5 +76,41 @@ describe("schematics", () => {
 		expect(headContentsRegex.test(content)).toBeTruthy();
 		expect(headContentsRegex.exec(content).pop().includes("family=Titillium+Web")).toBeTruthy();
 		expect(headContentsRegex.exec(content).pop().includes("family=Material+Icons")).toBeTruthy();
+	});
+
+	it("should add BrowserAnimationsModule to app.module.ts", () => {
+		const moduleContent =
+			`import { NgModule } from '@angular/core';\r\n` +
+			`@NgModule({\r\n` +
+			`	imports: []\r\n` +
+			`})\r\n` +
+			`export class AppModule {\r\n` +
+			`}\r\n`;
+
+		const moduleContentAfterSchematic =
+			`import { NgModule } from '@angular/core';\r\n` +
+			`import { BrowserAnimationsModule } from "@angular/platform-browser/animations";\r\n` +
+			`@NgModule({\r\n` +
+			`	imports: [BrowserAnimationsModule]\r\n` +
+			`})\r\n` +
+			`export class AppModule {\r\n` +
+			`}\r\n`;
+
+		const targetFile = path.join(process.cwd(), "/src/app/app.module.ts");
+		if (!fs.existsSync("./src")) {
+			fs.mkdirSync("./src");
+			process.chdir("./src");
+			if (!fs.existsSync("./app")) {
+				fs.mkdirSync("./app");
+				process.chdir("../");
+			}
+		}
+		fs.writeFileSync(targetFile, moduleContent);
+
+		runner.runSchematic("cli-config", {}, tree);
+		const content = fs.readFileSync(targetFile, "utf8");
+		expect(content).toEqual(moduleContentAfterSchematic);
+		deleteAll("./src");
+		fs.rmdirSync("./src");
 	});
 });
