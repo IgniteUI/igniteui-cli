@@ -2,6 +2,8 @@ import { EmptyTree } from "@angular-devkit/schematics";
 // tslint:disable-next-line:no-submodule-imports
 import { SchematicTestRunner, UnitTestTree } from "@angular-devkit/schematics/testing";
 // tslint:disable-next-line:no-submodule-imports
+import { getWorkspace } from "@schematics/angular/utility/config";
+// tslint:disable-next-line:no-submodule-imports
 import * as path from "path";
 
 describe("schematics", () => {
@@ -55,7 +57,7 @@ describe("schematics", () => {
 
 		runner.runSchematic("cli-config", {}, tree);
 
-		const content = tree.read(targetFile).toString();
+		const content = tree.readContent(targetFile);
 		expect(content.includes("<body class=\"igx-typography\">")).toBeTruthy();
 	});
 
@@ -67,11 +69,55 @@ describe("schematics", () => {
 
 		runner.runSchematic("cli-config", {}, tree);
 
-		const content = tree.read(targetFile).toString();
+		const content = tree.readContent(targetFile);
 		const headContentsRegex = /(?:<head>)([\s\S]*)(?:<\/head>)/;
 
 		expect(headContentsRegex.test(content)).toBeTruthy();
 		expect(headContentsRegex.exec(content).pop().includes("family=Titillium+Web")).toBeTruthy();
 		expect(headContentsRegex.exec(content).pop().includes("family=Material+Icons")).toBeTruthy();
+	});
+
+	it("should add the default scss theme correctly", () => {
+		const targetFile = "/src/styles.scss";
+		tree.create(targetFile, "");
+
+		runner.runSchematic("cli-config", {}, tree);
+
+		const content = tree.readContent(targetFile);
+		expect(content.includes("@import")).toBeTruthy();
+	});
+
+	// TODO
+	xit("should add the default css theme correctly", () => {
+		const targetFile = "/angular.json";
+		expect(tree.exists(targetFile)).toBeTruthy();
+
+		const targetImport = "node_modules/igniteui-angular/styles/igniteui-angular.css";
+		runner.runSchematic("cli-config", {}, tree);
+		const workspace = JSON.parse(tree.readContent(targetFile));  //getWorkspace(tree) as any;
+		const currentProjectName = workspace.defaultProject;
+
+		if (!currentProjectName) {
+			fail("defaultProject not found in angular.json");
+		}
+
+		expect(
+			workspace.projects[currentProjectName].architect.build.options.styles.filter(s => s.includes(targetImport)).length
+		)
+			.toBeGreaterThan(0);
+		expect(
+			workspace.projects[currentProjectName].architect.test.options.styles.filter(s => s.includes(targetImport)).length
+		)
+			.toBeGreaterThan(0);
+	});
+
+	it("should add the default sass theme correctly", () => {
+		const targetFile = "/src/styles.sass";
+		tree.create(targetFile, "");
+
+		runner.runSchematic("cli-config", {}, tree);
+
+		const content = tree.readContent(targetFile);
+		expect(content.includes("@import")).toBeTruthy();
 	});
 });
