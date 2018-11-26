@@ -68,7 +68,7 @@ function getPort(workspace: WorkspaceSchema) {
 		: null;
 
 	if (projectServe) {
-		return (projectServe as any).port;
+		return projectServe.port;
 	}
 }
 function getProjectType(workspace: WorkspaceSchema) {

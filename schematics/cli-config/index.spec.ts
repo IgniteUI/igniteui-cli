@@ -28,6 +28,11 @@ describe("schematics", () => {
 		tree = new UnitTestTree(new EmptyTree());
 		tree.create("/angular.json", JSON.stringify(ngJsonConfig));
 		tree.create("/package.json", JSON.stringify(pkgJsonConfig));
+		tree.create("/src/index.html",
+			`<head>
+			 </head>
+			 <body>
+			 </body>`);
 	});
 
 	it("should create an ignite-ui-cli.json file correctly", () => {
@@ -40,5 +45,33 @@ describe("schematics", () => {
 
 		const cliJsonData = JSON.parse(tree.readContent("/ignite-ui-cli.json"));
 		expect(cliJsonData.project.projectTemplate).toEqual("ng-cli");
+	});
+
+	it("should add typography correctly", () => {
+		const targetFile = "/src/index.html";
+		expect(tree).toBeTruthy();
+		expect(tree.exists("/angular.json")).toBeTruthy();
+		expect(tree.exists(targetFile)).toBeTruthy();
+
+		runner.runSchematic("cli-config", {}, tree);
+
+		const content = tree.read(targetFile).toString();
+		expect(content.includes("<body class=\"igx-typography\">")).toBeTruthy();
+	});
+
+	it("should add Titillium and Material Icons stylesheets correctly", () => {
+		const targetFile = "/src/index.html";
+		expect(tree).toBeTruthy();
+		expect(tree.exists("/angular.json")).toBeTruthy();
+		expect(tree.exists(targetFile)).toBeTruthy();
+
+		runner.runSchematic("cli-config", {}, tree);
+
+		const content = tree.read(targetFile).toString();
+		const headContentsRegex = /(?:<head>)([\s\S]*)(?:<\/head>)/;
+
+		expect(headContentsRegex.test(content)).toBeTruthy();
+		expect(headContentsRegex.exec(content).pop().includes("family=Titillium+Web")).toBeTruthy();
+		expect(headContentsRegex.exec(content).pop().includes("family=Material+Icons")).toBeTruthy();
 	});
 });
