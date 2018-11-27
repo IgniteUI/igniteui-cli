@@ -6,7 +6,7 @@ import * as qs from "querystring";
 import { ProjectConfig } from "./ProjectConfig";
 import { Util } from "./Util";
 
-class GoogleAnalytics implements GoogleAnalytics {
+class GoogleAnalytics {
 	protected static userDataFolder: string = process.env.APPDATA ||
 		(process.platform === "darwin" ? "/Users/Shared" : process.env.HOME + "/.npm/");
 	protected static appFolder = "igniteui-cli";
@@ -76,17 +76,30 @@ class GoogleAnalytics implements GoogleAnalytics {
 				fs.mkdirSync(dirName);
 			}
 
-			UUID = this.getMachineID();
+			UUID = this.getUserID();
 			fs.writeFileSync(absolutePath, JSON.stringify({ UUID }));
 		}
 
 		return UUID;
 	}
 
-	protected static getMachineID(): string {
+	protected static getUserID(): string {
 		const platform = process.platform;
 		let result: string = "";
 
+		try	{
+			result = this.getMachineID(platform, result);
+		}	catch {
+				result = this.createRandomGuid()
+				.replace(/\r+|\n+|\s+/ig, "")
+				.toLowerCase();
+		}
+
+		result = createHash("sha256").update(result).digest("hex");
+		return result;
+	}
+
+	protected static getMachineID(platform: string, result: string) {
 		switch (platform) {
 			case "darwin":
 				result = execSync("ioreg -rd1 -c IOPlatformExpertDevice").toString()
@@ -114,9 +127,18 @@ class GoogleAnalytics implements GoogleAnalytics {
 					.toLowerCase();
 				break;
 		}
-
-		result = createHash("sha256").update(result).digest("hex");
 		return result;
+	}
+
+	protected static createRandomGuid(): string {
+		function s4() {
+			return Math.floor((1 + Math.random()) * 0x10000)
+			.toString(16)
+			.substring(1);
+		}
+		const currentDate = new Date();
+		const currentTime = currentDate.getTime().toString();
+		return currentTime + s4() + s4() + "-" + s4() + "-" + s4() + "-" + s4() + "-" + s4() + s4() + s4();
 	}
 
 	protected static getOsForUserAgent(): string {
