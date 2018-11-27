@@ -39,11 +39,14 @@ describe("schematics", () => {
 			 </body>`);
 	});
 
-	it("should create an ignite-ui-cli.json file correctly", () => {
+	it("should create the needed files correctly", () => {
 		expect(tree).toBeTruthy();
 		expect(tree.exists("/angular.json")).toBeTruthy();
 		expect(tree.exists("/package.json")).toBeTruthy();
+		expect(tree.exists("/src/index.html"));
+	});
 
+	it("should create an ignite-ui-cli.json file correctly", () => {
 		runner.runSchematic("cli-config", {}, tree);
 		expect(tree.exists("ignite-ui-cli.json")).toBeTruthy();
 
@@ -53,10 +56,6 @@ describe("schematics", () => {
 
 	it("should add typography correctly", () => {
 		const targetFile = "/src/index.html";
-		expect(tree).toBeTruthy();
-		expect(tree.exists("/angular.json")).toBeTruthy();
-		expect(tree.exists(targetFile)).toBeTruthy();
-
 		runner.runSchematic("cli-config", {}, tree);
 
 		const content = tree.readContent(targetFile);
@@ -65,10 +64,6 @@ describe("schematics", () => {
 
 	it("should add Titillium and Material Icons stylesheets correctly", () => {
 		const targetFile = "/src/index.html";
-		expect(tree).toBeTruthy();
-		expect(tree.exists("/angular.json")).toBeTruthy();
-		expect(tree.exists(targetFile)).toBeTruthy();
-
 		runner.runSchematic("cli-config", {}, tree);
 
 		const content = tree.readContent(targetFile);
