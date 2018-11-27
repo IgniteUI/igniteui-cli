@@ -2,6 +2,8 @@
 import { EmptyTree } from "@angular-devkit/schematics";
 // tslint:disable-next-line:no-submodule-imports
 import { SchematicTestRunner, UnitTestTree } from "@angular-devkit/schematics/testing";
+// tslint:disable-next-line:no-submodule-imports
+import { getWorkspace } from "@schematics/angular/utility/config";
 import * as fs from "fs";
 import * as path from "path";
 import { deleteAll } from "../../spec/helpers/utils";
@@ -87,19 +89,16 @@ describe("schematics", () => {
 		expect(content.includes("@import")).toBeTruthy();
 	});
 
-	// TODO
-	xit("should add the default css theme correctly", () => {
+	it("should add the default css theme to the workspace", () => {
+		const cssFile = "/src/styles.css";
+		tree.create(cssFile, "");
 		const targetFile = "/angular.json";
 		expect(tree.exists(targetFile)).toBeTruthy();
 
 		const targetImport = "node_modules/igniteui-angular/styles/igniteui-angular.css";
 		runner.runSchematic("cli-config", {}, tree);
-		const workspace = JSON.parse(tree.readContent(targetFile));  //getWorkspace(tree) as any;
+		const workspace = getWorkspace(tree) as any;
 		const currentProjectName = workspace.defaultProject;
-
-		if (!currentProjectName) {
-			fail("defaultProject not found in angular.json");
-		}
 
 		expect(
 			workspace.projects[currentProjectName].architect.build.options.styles.filter(s => s.includes(targetImport)).length
