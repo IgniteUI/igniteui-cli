@@ -90,6 +90,7 @@
   },
   "devDependencies": {
     "@angular-devkit/schematics": "^7.0.6",
+    "@schematics/angular": "7.1.0",
     "@types/fs-extra": "^3.0.3",
     "@types/inquirer": "0.0.35",
     "@types/jasmine": "^2.8.6",

@@ -2,13 +2,12 @@
 // tslint:disable-next-line:no-submodule-imports
 import { WorkspaceSchema } from "@angular-devkit/core/src/workspace";
 // tslint:disable-next-line:ordered-imports
-import { chain, Rule, Tree, SchematicsException, contentTemplate, SchematicContext } from "@angular-devkit/schematics";
+import { chain, Rule, Tree, SchematicsException, SchematicContext } from "@angular-devkit/schematics";
 // tslint:disable-next-line:no-submodule-imports
 import { getWorkspace } from "@schematics/angular/utility/config";
 import * as fs from "fs";
 import * as path from "path";
 import { TypeScriptFileUpdate } from "../../lib/project-utility/TypeScriptFileUpdate";
-import { TypeScriptUtils as TsUtils } from "../../lib/project-utility/TypeScriptUtils";
 import { Util } from "../../lib/Util";
 import { addTypography } from "../../migrations/update-3/index";
 
