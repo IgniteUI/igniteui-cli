@@ -183,7 +183,7 @@ function importBrowserAnimationModule(tree: Tree, context: SchematicContext) {
 		const mainModule = new TypeScriptFileUpdate(path.join(process.cwd(), moduleFile));
 		mainModule.addNgModuleMeta({ import: "BrowserAnimationsModule", from: "@angular/platform-browser/animations" });
 		mainModule.finalize();
-		context.logger.info("BrowserAnimationsModule added to app.module.ts file");
+		context.logger.info("Updating app.module.ts to include BrowserAnimationsModule");
 	}
 }
 
