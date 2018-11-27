@@ -117,7 +117,7 @@ describe("schematics", () => {
 
 	it("should add BrowserAnimationsModule to app.module.ts", () => {
 		const moduleContent =
-`import { NgModule } from '@angular/core'
+`import { NgModule } from '@angular/core';
 @NgModule({
 	imports: []
 })
@@ -126,7 +126,7 @@ export class AppModule {
 `;
 
 		const moduleContentAfterSchematic =
-`import { NgModule } from '@angular/core'
+`import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 @NgModule({
 	imports: [BrowserAnimationsModule]
