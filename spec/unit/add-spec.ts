@@ -253,7 +253,7 @@ describe("Unit - Add command", () => {
 		done();
 	});
 
-	it("Should not add component and should log error if wrong path is massed to module", async done => {
+	it("Should not add component and should log error if wrong path is passed to module", async done => {
 		spyOn(Util, "fileExists").and.returnValue(false);
 		spyOn(Util, "error");
 		const wrongPath = "myCustomModule/my-custom-module.module.ts";

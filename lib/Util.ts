@@ -75,7 +75,7 @@ class Util {
 					destinationFolderName = configuration["__path__"];
 				}
 				if (!Util.directoryExists(path.join(destinationPath, destinationFolderName))) {
-					fs.mkdirSync(path.join(destinationPath, destinationFolderName));
+					fsExtra.ensureDirSync(path.join(destinationPath, destinationFolderName));
 				}
 				//TODO: This call should have await!
 				await Util.processTemplates(

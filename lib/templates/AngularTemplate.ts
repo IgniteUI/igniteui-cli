@@ -84,8 +84,8 @@ export class AngularTemplate implements Template {
 
 	protected getBaseVariables(name: string) {
 		const config = {};
-		config["$(name)"] = name;
-		config["$(ClassName)"] = Util.className(name);
+		config["$(name)"] = this.fileName(name);
+		config["$(ClassName)"] = Util.className(this.fileName(name));
 		config["__name__"] = this.fileName(name);
 		config["__path__"] = this.folderName(name);
 		config["$(filePrefix)"] = this.fileName(name);
@@ -129,8 +129,8 @@ export class AngularTemplate implements Template {
 		const parts = path.parse(pathName);
 		let folderName = pathName;
 		if (parts.dir) {
+			folderName = parts.dir;
 			// TODO: config-based "src/app"?
-			folderName = parts.base.replace(/\\/, "/");
 			const relative = path.join(process.cwd(), "src/app", folderName);
 			// path.join will also resolve any '..' segments
 			// so if relative result doesn't start with CWD it's out of project root
@@ -145,10 +145,8 @@ export class AngularTemplate implements Template {
 	protected fileName(pathName: string): string {
 		// TODO: Util func.
 		const parts = path.parse(pathName);
-		let name = pathName;
-		if (parts.dir) {
-			name = parts.base;
-		}
+
+		let name = parts.name;
 		name = name.trim();
 		//TODO: should remove the spaces
 		return Util.lowerDashed(name);
