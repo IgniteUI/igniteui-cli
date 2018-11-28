@@ -99,8 +99,8 @@ function importDefaultThemeSass(tree: Tree): Tree {
 function importDefaultThemeCss(tree: Tree): Tree {
 	const targetFile = "/angular.json";
 	const workspace = getWorkspace(tree);
-	const importedStylesToBuild = importDefaultThemeToBuildStyles(workspace);
-	const importedStylesToTest = importDefaultThemeToTestStyles(workspace);
+	const importedStylesToBuild = importDefaultThemeToAngularWorkspace(workspace, "build");
+	const importedStylesToTest = importDefaultThemeToAngularWorkspace(workspace, "test");
 
 	if (importedStylesToBuild || importedStylesToTest) {
 		tree.overwrite(targetFile, JSON.stringify(workspace, null, 2) + "\n");
@@ -109,47 +109,23 @@ function importDefaultThemeCss(tree: Tree): Tree {
 	return tree;
 }
 
-function importDefaultThemeToBuildStyles(workspace: WorkspaceSchema) {
+function importDefaultThemeToAngularWorkspace(workspace: WorkspaceSchema, key: string) {
 	const projectName = workspace.defaultProject;
 	if (projectName) {
 		if (!workspace.projects[projectName].architect) {
 			workspace.projects[projectName].architect = {};
 		}
-		if (!workspace.projects[projectName].architect.build) {
-			workspace.projects[projectName].architect.build = {};
+		if (!workspace.projects[projectName].architect[key]) {
+			workspace.projects[projectName].architect[key] = {};
 		}
-		if (!workspace.projects[projectName].architect.build.options) {
-			workspace.projects[projectName].architect.build.options = {};
+		if (!workspace.projects[projectName].architect[key].options) {
+			workspace.projects[projectName].architect[key].options = {};
 		}
-		if (!workspace.projects[projectName].architect.build.options.styles) {
-			workspace.projects[projectName].architect.build.options.styles = [];
+		if (!workspace.projects[projectName].architect[key].options.styles) {
+			workspace.projects[projectName].architect[key].options.styles = [];
 		}
-		if (!workspace.projects[projectName].architect.build.options.styles.includes(cssImport)) {
-			workspace.projects[projectName].architect.build.options.styles.push(cssImport);
-			return true;
-		}
-
-		return false;
-	}
-}
-
-function importDefaultThemeToTestStyles(workspace: WorkspaceSchema) {
-	const projectName = workspace.defaultProject;
-	if (projectName) {
-		if (!workspace.projects[projectName].architect) {
-			workspace.projects[projectName].architect = {};
-		}
-		if (!workspace.projects[projectName].architect.test) {
-			workspace.projects[projectName].architect.test = {};
-		}
-		if (!workspace.projects[projectName].architect.test.options) {
-			workspace.projects[projectName].architect.test.options = {};
-		}
-		if (!workspace.projects[projectName].architect.test.options.styles) {
-			workspace.projects[projectName].architect.test.options.styles = [];
-		}
-		if (!workspace.projects[projectName].architect.test.options.styles.includes(cssImport)) {
-			workspace.projects[projectName].architect.test.options.styles.push(cssImport);
+		if (!workspace.projects[projectName].architect[key].options.styles.includes(cssImport)) {
+			workspace.projects[projectName].architect[key].options.styles.push(cssImport);
 			return true;
 		}
 
