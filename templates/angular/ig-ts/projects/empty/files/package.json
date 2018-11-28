@@ -34,6 +34,7 @@
 	  "igniteui-angular-wrappers": "~7.0.0",
 	  "ignite-ui": "~18.2",
 	  "rxjs": "~6.3.3",
+	  "rxjs-compat": "~6.3.3",
 	  "zone.js": "~0.8.26"
 	},
 	"devDependencies": {
