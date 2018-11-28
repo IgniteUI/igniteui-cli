@@ -117,21 +117,23 @@ describe("schematics", () => {
 
 	it("should add BrowserAnimationsModule to app.module.ts", () => {
 		const moduleContent =
-			`import { NgModule } from '@angular/core';\r\n` +
-			`@NgModule({\r\n` +
-			`	imports: []\r\n` +
-			`})\r\n` +
-			`export class AppModule {\r\n` +
-			`}\r\n`;
+`import { NgModule } from '@angular/core';
+@NgModule({
+	imports: []
+})
+export class AppModule {
+}
+`;
 
 		const moduleContentAfterSchematic =
-			`import { NgModule } from '@angular/core';\r\n` +
-			`import { BrowserAnimationsModule } from "@angular/platform-browser/animations";\r\n` +
-			`@NgModule({\r\n` +
-			`	imports: [BrowserAnimationsModule]\r\n` +
-			`})\r\n` +
-			`export class AppModule {\r\n` +
-			`}\r\n`;
+`import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+@NgModule({
+	imports: [BrowserAnimationsModule]
+})
+export class AppModule {
+}
+`;
 
 		const targetFile = path.join(process.cwd(), "/src/app/app.module.ts");
 		if (!fs.existsSync("./src")) {
