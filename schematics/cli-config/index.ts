@@ -2,9 +2,10 @@
 // tslint:disable-next-line:no-submodule-imports
 import { WorkspaceSchema } from "@angular-devkit/core/src/workspace";
 // tslint:disable-next-line:ordered-imports
-import { chain, Rule, Tree, SchematicsException, SchematicContext } from "@angular-devkit/schematics";
+import { chain, Rule, SchematicContext, SchematicsException, Tree } from "@angular-devkit/schematics";
 // tslint:disable-next-line:no-submodule-imports
 import { getWorkspace } from "@schematics/angular/utility/config";
+import chalk from "chalk";
 import * as fs from "fs";
 import * as path from "path";
 import { TypeScriptFileUpdate } from "../../lib/project-utility/TypeScriptFileUpdate";
@@ -26,6 +27,13 @@ const sassImports =
 
 function createCliConfig(): Rule {
 	return (tree: Tree, context: SchematicContext) => {
+		context.logger.info(``);
+		context.logger.warn(`Ignite UI CLI installed`);
+		context.logger.info(`- try it out in this project by running 'npx ig'`);
+		context.logger.info(`- to run 'ig' everywhere and create new projects run 'npm install -g igniteui-cli'`);
+		context.logger.info(`Learn more: ` +  chalk.whiteBright(`https://github.com/IgniteUI/igniteui-cli#ignite-ui-cli`));
+		context.logger.info(``);
+
 		tree.create("ignite-ui-cli.json", JSON.stringify(GetCliConfig(tree), null, 2) + "\n");
 		addTypography(tree);
 		addFontsToIndexHtml(tree);
@@ -37,27 +45,22 @@ function createCliConfig(): Rule {
 }
 
 function GetCliConfig(tree: Tree): Config {
+	let workspace;
 	try {
-		const workspace = getWorkspace(tree);
-		const cliConfig: Config = require("./files/ignite-ui-cli.json");
-		cliConfig.version = Util.version();
-		const userPort = getPort(workspace);
-		if (userPort) {
-			cliConfig.project.defaultPort = userPort;
-		}
-		const projectType = getProjectType(workspace);
-		if (projectType) {
-			cliConfig.project.projectType = projectType;
-		}
-
-		return cliConfig;
+		workspace = getWorkspace(tree);
 	} catch (e) {
 		if (e.toString().includes("Could not find (undefined)")) {
 			throw new SchematicsException("angular.json was not found in the project's root");
 		}
-
 		throw new Error(e.message);
 	}
+	const cliConfig: Config = require("./files/ignite-ui-cli.json");
+	cliConfig.version = Util.version();
+	const userPort = getPort(workspace);
+	if (userPort) {
+		cliConfig.project.defaultPort = userPort;
+	}
+	return cliConfig;
 }
 
 function importDefaultTheme(tree: Tree): Tree {
@@ -158,7 +161,8 @@ function importBrowserAnimationModule(tree: Tree, context: SchematicContext) {
 		const mainModule = new TypeScriptFileUpdate(path.join(process.cwd(), moduleFile));
 		mainModule.addNgModuleMeta({ import: "BrowserAnimationsModule", from: "@angular/platform-browser/animations" });
 		mainModule.finalize();
-		context.logger.info("Updating app.module.ts to include BrowserAnimationsModule");
+		// TODO: ts transform to plug using the virtual tree API
+		tree.overwrite("./src/app/app.module.ts", fs.readFileSync("./src/app/app.module.ts"));
 	}
 }
 
