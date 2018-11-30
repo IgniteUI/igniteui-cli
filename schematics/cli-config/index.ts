@@ -22,7 +22,7 @@ const sassImports =
 // $app-palette: igx-palette($primary, $secondary);
 
 @include igx-core();
-@include igx-theme($default-theme-palette);
+@include igx-theme($default-palette);
 `;
 
 function createCliConfig(): Rule {
@@ -65,9 +65,9 @@ function GetCliConfig(tree: Tree): Config {
 
 function importDefaultTheme(tree: Tree): Tree {
 	if (tree.exists("/src/styles.sass")) {
-		importDefaultThemeSass(tree);
+		importDefaultThemeSass(tree, "sass");
 	} else if (tree.exists("/src/styles.scss")) {
-		importDefaultThemeScss(tree);
+		importDefaultThemeSass(tree, "scss");
 	} else if (tree.exists("/src/styles.css")) {
 		importDefaultThemeCss(tree);
 	}
@@ -75,20 +75,8 @@ function importDefaultTheme(tree: Tree): Tree {
 	return tree;
 }
 
-function importDefaultThemeScss(tree: Tree): Tree {
-	const targetFile = "/src/styles.scss";
-	let content = tree.read(targetFile).toString();
-
-	if (!content.includes(sassImports)) {
-		content += sassImports;
-	}
-
-	tree.overwrite(targetFile, content);
-	return tree;
-}
-
-function importDefaultThemeSass(tree: Tree): Tree {
-	const targetFile = "/src/styles.sass";
+function importDefaultThemeSass(tree: Tree, ext: string): Tree {
+	const targetFile = `/src/styles.${ext}`;
 	let content = tree.read(targetFile).toString();
 
 	if (!content.includes(sassImports)) {
