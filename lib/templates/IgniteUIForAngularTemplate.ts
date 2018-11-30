@@ -40,12 +40,14 @@ export class IgniteUIForAngularTemplate extends AngularTemplate {
 		//1) import the component class name,
 		//2) and populate the Routes array with the path and component
 		//for example: { path: 'combo', component: ComboComponent }
-		const routingModule = new TsUpdate(path.join(projectPath, "src/app/app-routing.module.ts"));
-		routingModule.addRoute(
-			path.join(projectPath, `src/app/${this.folderName(name)}/${this.fileName(name)}.component.ts`),
-			this.folderName(name), //path
-			name //text
-		);
+		if (Util.fileExists("src/app/app-routing.module.ts")) {
+			const routingModule = new TsUpdate(path.join(projectPath, "src/app/app-routing.module.ts"));
+			routingModule.addRoute(
+				path.join(projectPath, `src/app/${this.folderName(name)}/${this.fileName(name)}.component.ts`),
+				this.folderName(name), //path
+				name //text
+			);
+		}
 
 		//3) add an import of the component class from its file location.
 		//4) populate the declarations portion of the @NgModule with the component class name.

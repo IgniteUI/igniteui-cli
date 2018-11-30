@@ -22,7 +22,8 @@ class IgxGridAwesomeTemplate extends IgniteUIForAngularTemplate {
 					"IgxButtonModule"
 				],
 				from: "igniteui-angular"
-			}
+			},
+			{ import: "FormsModule", from: "@angular/forms" }
 		];
 	}
 }

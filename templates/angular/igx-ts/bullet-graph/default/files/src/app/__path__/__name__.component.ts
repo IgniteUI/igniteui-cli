@@ -1,17 +1,17 @@
 
-import { AfterViewInit, Component, ViewEncapsulation, ViewChild } from "@angular/core";
-import { IgxLinearGraphRangeComponent } from "igniteui-angular-gauges/ES5/igx-linear-graph-range-component";
-import { IgxBulletGraphComponent } from "igniteui-angular-gauges/ES5/igx-bullet-graph-component";
+import { AfterViewInit, Component, ViewEncapsulation, ViewChild } from '@angular/core';
+import { IgxLinearGraphRangeComponent } from 'igniteui-angular-gauges/ES5/igx-linear-graph-range-component';
+import { IgxBulletGraphComponent } from 'igniteui-angular-gauges/ES5/igx-bullet-graph-component';
 
 @Component({
-  selector: "app-$(filePrefix)",
-  templateUrl: "./$(filePrefix).component.html",
-  styleUrls: ["./$(filePrefix).component.scss"],
+  selector: 'app-$(filePrefix)',
+  templateUrl: './$(filePrefix).component.html',
+  styleUrls: ['./$(filePrefix).component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class $(ClassName)Component implements AfterViewInit {
 
-  @ViewChild("bulletGraph")
+  @ViewChild('bulletGraph')
   public bulletGraph: IgxBulletGraphComponent;
 
   public ngAfterViewInit(): void {
@@ -35,10 +35,10 @@ export class $(ClassName)Component implements AfterViewInit {
     // setting custom appearance of performance bar
     this.bulletGraph.valueInnerExtent = 0.5;
     this.bulletGraph.valueOuterExtent = 0.7;
-    this.bulletGraph.valueBrush = "#000000";
+    this.bulletGraph.valueBrush = '#000000';
 
     // setting custom appearance of target bar
-    this.bulletGraph.targetValueBrush = "#000000";
+    this.bulletGraph.targetValueBrush = '#000000';
     this.bulletGraph.targetValueBreadth = 10;
     this.bulletGraph.targetValue = 90;
 
@@ -61,8 +61,8 @@ export class $(ClassName)Component implements AfterViewInit {
     range3.startValue = 80;
     range3.endValue = 120;
 
-    this.bulletGraph.rangeBrushes  = [ "#FF9800", "#F96232", "#C62828"];
-    this.bulletGraph.rangeOutlines = [ "#FF9800", "#F96232", "#C62828"];
+    this.bulletGraph.rangeBrushes  = [ '#FF9800', '#F96232', '#C62828'];
+    this.bulletGraph.rangeOutlines = [ '#FF9800', '#F96232', '#C62828'];
     this.bulletGraph.ranges.clear();
     this.bulletGraph.ranges.add(range1);
     this.bulletGraph.ranges.add(range2);
@@ -79,15 +79,15 @@ export class $(ClassName)Component implements AfterViewInit {
 
     // setting extent of gauge scale
     this.bulletGraph.scaleBackgroundThickness = 0.5;
-    this.bulletGraph.scaleBackgroundBrush = "#dbdbdb";
-    this.bulletGraph.scaleBackgroundOutline = "gray";
+    this.bulletGraph.scaleBackgroundBrush = '#dbdbdb';
+    this.bulletGraph.scaleBackgroundOutline = 'gray';
     this.bulletGraph.scaleStartExtent = 0.05;
     this.bulletGraph.scaleEndExtent = 0.95;
     this.bulletGraph.scaleBackgroundThickness = 0;
 
     // setting appearance of backing fill and outline
-    this.bulletGraph.backingBrush = "#f7f7f7";
-    this.bulletGraph.backingOutline = "#d1d1d1";
+    this.bulletGraph.backingBrush = '#f7f7f7';
+    this.bulletGraph.backingOutline = '#d1d1d1';
     this.bulletGraph.backingStrokeThickness = 0;
 
   }
@@ -106,10 +106,10 @@ export class $(ClassName)Component implements AfterViewInit {
     // setting custom appearance of performance bar
     this.bulletGraph.valueInnerExtent = 0.5;
     this.bulletGraph.valueOuterExtent = 0.7;
-    this.bulletGraph.valueBrush = "#000000";
+    this.bulletGraph.valueBrush = '#000000';
 
     // setting custom appearance of target bar
-    this.bulletGraph.targetValueBrush = "#000000";
+    this.bulletGraph.targetValueBrush = '#000000';
     this.bulletGraph.targetValueBreadth = 10;
     this.bulletGraph.targetValue = 180;
 
@@ -135,8 +135,8 @@ export class $(ClassName)Component implements AfterViewInit {
     range4.startValue = 175;
     range4.endValue = 200;
 
-    this.bulletGraph.rangeBrushes  = [ "#0078C8", "#0099FF", "#21A7FF", "#4FB9FF"];
-    this.bulletGraph.rangeOutlines = [ "#0078C8", "#0099FF", "#21A7FF", "#4FB9FF"];
+    this.bulletGraph.rangeBrushes  = [ '#0078C8', '#0099FF', '#21A7FF', '#4FB9FF'];
+    this.bulletGraph.rangeOutlines = [ '#0078C8', '#0099FF', '#21A7FF', '#4FB9FF'];
     this.bulletGraph.ranges.clear();
     this.bulletGraph.ranges.add(range1);
     this.bulletGraph.ranges.add(range2);
@@ -154,15 +154,15 @@ export class $(ClassName)Component implements AfterViewInit {
 
     // setting extent of gauge scale
     this.bulletGraph.scaleBackgroundThickness = 0.5;
-    this.bulletGraph.scaleBackgroundBrush = "#dbdbdb";
-    this.bulletGraph.scaleBackgroundOutline = "gray";
+    this.bulletGraph.scaleBackgroundBrush = '#dbdbdb';
+    this.bulletGraph.scaleBackgroundOutline = 'gray';
     this.bulletGraph.scaleStartExtent = 0.05;
     this.bulletGraph.scaleEndExtent = 0.95;
     this.bulletGraph.scaleBackgroundThickness = 0;
 
     // setting appearance of backing fill and outline
-    this.bulletGraph.backingBrush = "#f7f7f7";
-    this.bulletGraph.backingOutline = "#d1d1d1";
+    this.bulletGraph.backingBrush = '#f7f7f7';
+    this.bulletGraph.backingOutline = '#d1d1d1';
     this.bulletGraph.backingStrokeThickness = 0;
   }
 
@@ -180,10 +180,10 @@ export class $(ClassName)Component implements AfterViewInit {
     // setting custom appearance of performance bar
     this.bulletGraph.valueInnerExtent = 0.5;
     this.bulletGraph.valueOuterExtent = 0.7;
-    this.bulletGraph.valueBrush = "#000000";
+    this.bulletGraph.valueBrush = '#000000';
 
     // setting custom appearance of target bar
-    this.bulletGraph.targetValueBrush = "#000000";
+    this.bulletGraph.targetValueBrush = '#000000';
     this.bulletGraph.targetValueBreadth = 10;
     this.bulletGraph.targetValue = 60;
 
@@ -203,8 +203,8 @@ export class $(ClassName)Component implements AfterViewInit {
     range2.startValue = 40;
     range2.endValue = 80;
 
-    this.bulletGraph.rangeBrushes  = [ "#a4bd29", "#F86232" ];
-    this.bulletGraph.rangeOutlines = [ "#a4bd29", "#F86232" ];
+    this.bulletGraph.rangeBrushes  = [ '#a4bd29', '#F86232' ];
+    this.bulletGraph.rangeOutlines = [ '#a4bd29', '#F86232' ];
     this.bulletGraph.ranges.clear();
     this.bulletGraph.ranges.add(range1);
     this.bulletGraph.ranges.add(range2);
@@ -220,15 +220,15 @@ export class $(ClassName)Component implements AfterViewInit {
 
     // setting extent of gauge scale
     this.bulletGraph.scaleBackgroundThickness = 0.5;
-    this.bulletGraph.scaleBackgroundBrush = "#dbdbdb";
-    this.bulletGraph.scaleBackgroundOutline = "gray";
+    this.bulletGraph.scaleBackgroundBrush = '#dbdbdb';
+    this.bulletGraph.scaleBackgroundOutline = 'gray';
     this.bulletGraph.scaleStartExtent = 0.05;
     this.bulletGraph.scaleEndExtent = 0.95;
     this.bulletGraph.scaleBackgroundThickness = 0;
 
     // setting appearance of backing fill and outline
-    this.bulletGraph.backingBrush = "#f7f7f7";
-    this.bulletGraph.backingOutline = "#d1d1d1";
+    this.bulletGraph.backingBrush = '#f7f7f7';
+    this.bulletGraph.backingOutline = '#d1d1d1';
     this.bulletGraph.backingStrokeThickness = 0;
 
   }

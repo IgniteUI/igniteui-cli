@@ -10,7 +10,7 @@ describe('$(ClassName)Component', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [$(ClassName)Component],
-      imports: [ IgxComboModule, NoopAnimationsModule]
+      imports: [ IgxDropDownModule, NoopAnimationsModule]
     })
       .compileComponents();
   }));

@@ -16,7 +16,7 @@ import { RadialGaugeScaleOversweepShape } from 'igniteui-angular-gauges/ES5/Radi
 })
 export class $(ClassName)Component implements AfterViewInit {
 
-  @ViewChild("radialGauge")
+  @ViewChild('radialGauge')
   public radialGauge: IgxRadialGaugeComponent;
 
   public ngAfterViewInit(): void {
@@ -28,8 +28,8 @@ export class $(ClassName)Component implements AfterViewInit {
 
   public AnimateToGauge4(): void {
 
-    this.radialGauge.height = "330px";
-    this.radialGauge.width = "100%";
+    this.radialGauge.height = '330px';
+    this.radialGauge.width = '100%';
     this.radialGauge.minimumValue = 0;
     this.radialGauge.maximumValue = 80;
     this.radialGauge.value = 10;
@@ -38,12 +38,12 @@ export class $(ClassName)Component implements AfterViewInit {
     // Label Settings
     this.radialGauge.labelExtent = 0.6;
     this.radialGauge.labelInterval = 10;
-    this.radialGauge.font = "10px Verdana,Arial";
+    this.radialGauge.font = '10px Verdana,Arial';
 
     // Scale Settings
     this.radialGauge.scaleStartAngle = 150;
     this.radialGauge.scaleEndAngle = 30;
-    this.radialGauge.scaleBrush = "#0b8fed";
+    this.radialGauge.scaleBrush = '#0b8fed';
     this.radialGauge.scaleOversweepShape = RadialGaugeScaleOversweepShape.Auto;
     this.radialGauge.scaleSweepDirection = SweepDirection.Clockwise;
     this.radialGauge.scaleEndExtent = 0.825;
@@ -56,8 +56,8 @@ export class $(ClassName)Component implements AfterViewInit {
 
     // Backing Settings
     this.radialGauge.backingShape = RadialGaugeBackingShape.Fitted;
-    this.radialGauge.backingBrush = "#fcfcfc";
-    this.radialGauge.backingOutline = "#d6d6d6";
+    this.radialGauge.backingBrush = '#fcfcfc';
+    this.radialGauge.backingOutline = '#d6d6d6';
     this.radialGauge.backingOversweep = 5;
     this.radialGauge.backingCornerRadius = 10;
     this.radialGauge.backingOuterExtent = 0.9;
@@ -68,14 +68,14 @@ export class $(ClassName)Component implements AfterViewInit {
     this.radialGauge.needleEndExtent = 0.5;
     this.radialGauge.needlePointFeatureExtent = 0.3;
     this.radialGauge.needlePivotWidthRatio = 0.2;
-    this.radialGauge.needleBrush = "#9f9fa0";
-    this.radialGauge.needleOutline = "#9f9fa0";
-    this.radialGauge.needlePivotBrush = "#9f9fa0";
-    this.radialGauge.needlePivotOutline = "#9f9fa0";
+    this.radialGauge.needleBrush = '#9f9fa0';
+    this.radialGauge.needleOutline = '#9f9fa0';
+    this.radialGauge.needlePivotBrush = '#9f9fa0';
+    this.radialGauge.needlePivotOutline = '#9f9fa0';
 
     // TickMark Settings
-    this.radialGauge.tickBrush = "rgba(51, 51, 51, 1)";
-    this.radialGauge.minorTickBrush = "rgba(73, 73, 73, 1)";
+    this.radialGauge.tickBrush = 'rgba(51, 51, 51, 1)';
+    this.radialGauge.minorTickBrush = 'rgba(73, 73, 73, 1)';
     this.radialGauge.minorTickCount = 6;
 
     this.radialGauge.ranges.clear();
@@ -83,8 +83,8 @@ export class $(ClassName)Component implements AfterViewInit {
 
   public AnimateToGauge3(): void {
 
-    this.radialGauge.height = "330px";
-    this.radialGauge.width = "100%";
+    this.radialGauge.height = '330px';
+    this.radialGauge.width = '100%';
 
     this.radialGauge.minimumValue = 0;
     this.radialGauge.maximumValue = 50;
@@ -94,7 +94,7 @@ export class $(ClassName)Component implements AfterViewInit {
     // setting appearance of labels
     this.radialGauge.labelInterval = 5;
     this.radialGauge.labelExtent = 0.71;
-    this.radialGauge.font = "10px Verdana,Arial";
+    this.radialGauge.font = '10px Verdana,Arial';
 
     // setting custom needle
     this.radialGauge.isNeedleDraggingEnabled = true;
@@ -105,34 +105,34 @@ export class $(ClassName)Component implements AfterViewInit {
     this.radialGauge.needlePivotShape = RadialGaugePivotShape.CircleOverlay;
     this.radialGauge.needlePivotWidthRatio = 0.15;
     this.radialGauge.needleBaseFeatureWidthRatio = 0.15;
-    this.radialGauge.needleBrush = "#79797a";
-    this.radialGauge.needleOutline = "#79797a";
-    this.radialGauge.needlePivotBrush = "#79797a";
-    this.radialGauge.needlePivotOutline = "#79797a";
+    this.radialGauge.needleBrush = '#79797a';
+    this.radialGauge.needleOutline = '#79797a';
+    this.radialGauge.needlePivotBrush = '#79797a';
+    this.radialGauge.needlePivotOutline = '#79797a';
 
     // setting appearance of major/minor ticks
     this.radialGauge.minorTickCount = 4;
     this.radialGauge.minorTickEndExtent = 0.625;
     this.radialGauge.minorTickStartExtent = 0.6;
     this.radialGauge.minorTickStrokeThickness = 1;
-    this.radialGauge.minorTickBrush = "#79797a";
+    this.radialGauge.minorTickBrush = '#79797a';
     this.radialGauge.tickStartExtent = 0.6;
     this.radialGauge.tickEndExtent = 0.65;
     this.radialGauge.tickStrokeThickness = 2;
-    this.radialGauge.tickBrush = "#79797a";
+    this.radialGauge.tickBrush = '#79797a';
 
     // setting extent of gauge scale
     this.radialGauge.scaleStartAngle = 120;
     this.radialGauge.scaleEndAngle = 60;
-    this.radialGauge.scaleBrush = "#d6d6d6";
+    this.radialGauge.scaleBrush = '#d6d6d6';
     this.radialGauge.scaleOversweepShape = RadialGaugeScaleOversweepShape.Fitted;
     this.radialGauge.scaleSweepDirection = SweepDirection.Clockwise;
     this.radialGauge.scaleEndExtent = 0.57;
     this.radialGauge.scaleStartExtent = 0.5;
 
     // setting appearance of backing dial
-    this.radialGauge.backingBrush = "#fcfcfc";
-    this.radialGauge.backingOutline = "#d6d6d6";
+    this.radialGauge.backingBrush = '#fcfcfc';
+    this.radialGauge.backingOutline = '#d6d6d6';
     this.radialGauge.backingStrokeThickness = 5;
     this.radialGauge.backingShape = RadialGaugeBackingShape.Circular;
 
@@ -146,8 +146,8 @@ export class $(ClassName)Component implements AfterViewInit {
     const range3 = new IgxRadialGaugeRangeComponent();
     range3.startValue = 35;
     range3.endValue = 45;
-    this.radialGauge.rangeBrushes  = [ "#F86232", "#DC3F76", "#7446B9"];
-    this.radialGauge.rangeOutlines = [ "#F86232", "#DC3F76", "#7446B9"];
+    this.radialGauge.rangeBrushes  = [ '#F86232', '#DC3F76', '#7446B9'];
+    this.radialGauge.rangeOutlines = [ '#F86232', '#DC3F76', '#7446B9'];
     this.radialGauge.ranges.clear();
     this.radialGauge.ranges.add(range1);
     this.radialGauge.ranges.add(range2);
@@ -164,8 +164,8 @@ export class $(ClassName)Component implements AfterViewInit {
 
   public AnimateToGauge2(): void {
 
-    this.radialGauge.height = "330px";
-    this.radialGauge.width = "100%";
+    this.radialGauge.height = '330px';
+    this.radialGauge.width = '100%';
 
     this.radialGauge.minimumValue = 100;
     this.radialGauge.maximumValue = 200;
@@ -174,29 +174,29 @@ export class $(ClassName)Component implements AfterViewInit {
     // Scale Settings
     this.radialGauge.scaleStartAngle = 135;
     this.radialGauge.scaleEndAngle = 45;
-    this.radialGauge.scaleBrush = "transparent";
+    this.radialGauge.scaleBrush = 'transparent';
     this.radialGauge.scaleSweepDirection = SweepDirection.Clockwise;
 
     // Backing Settings
-    this.radialGauge.backingOutline = "white";
-    this.radialGauge.backingBrush = "white";
+    this.radialGauge.backingOutline = 'white';
+    this.radialGauge.backingBrush = 'white';
 
     // Needle Settings
     this.radialGauge.needleEndExtent = 0.8;
     this.radialGauge.needleShape = RadialGaugeNeedleShape.Triangle;
     this.radialGauge.needlePivotShape = RadialGaugePivotShape.Circle;
     this.radialGauge.needlePivotWidthRatio = 0.1;
-    this.radialGauge.needleBrush = "#79797a";
-    this.radialGauge.needleOutline = "#79797a";
+    this.radialGauge.needleBrush = '#79797a';
+    this.radialGauge.needleOutline = '#79797a';
 
     // TickMark Settings
-    this.radialGauge.tickBrush = "transparent";
-    this.radialGauge.minorTickBrush = "transparent";
+    this.radialGauge.tickBrush = 'transparent';
+    this.radialGauge.minorTickBrush = 'transparent';
 
     // Label Settings
     this.radialGauge.labelInterval = 100;
     this.radialGauge.labelExtent = 1;
-    this.radialGauge.font = "15px Verdana,Arial";
+    this.radialGauge.font = '15px Verdana,Arial';
 
     // setting custom gauge ranges
     const range1 = new IgxRadialGaugeRangeComponent();
@@ -206,8 +206,8 @@ export class $(ClassName)Component implements AfterViewInit {
     range2.startValue = 150;
     range2.endValue = 200;
 
-    this.radialGauge.rangeBrushes  = [ "#32f845", "#bf32f8" ];
-    this.radialGauge.rangeOutlines = [ "#32f845", "#bf32f8" ];
+    this.radialGauge.rangeBrushes  = [ '#32f845', '#bf32f8' ];
+    this.radialGauge.rangeOutlines = [ '#32f845', '#bf32f8' ];
     this.radialGauge.ranges.clear();
     this.radialGauge.ranges.add(range1);
     this.radialGauge.ranges.add(range2);
@@ -224,8 +224,8 @@ export class $(ClassName)Component implements AfterViewInit {
 
   public AnimateToGauge1(): void {
 
-    this.radialGauge.height = "330px";
-    this.radialGauge.width = "100%";
+    this.radialGauge.height = '330px';
+    this.radialGauge.width = '100%';
 
     this.radialGauge.minimumValue = 0;
     this.radialGauge.maximumValue = 10;
@@ -234,29 +234,29 @@ export class $(ClassName)Component implements AfterViewInit {
     // Scale Settings
     this.radialGauge.scaleStartAngle = 200;
     this.radialGauge.scaleEndAngle = -20;
-    this.radialGauge.scaleBrush = "transparent";
+    this.radialGauge.scaleBrush = 'transparent';
     this.radialGauge.scaleSweepDirection = SweepDirection.Clockwise;
 
     // Backing Settings
-    this.radialGauge.backingOutline = "white";
-    this.radialGauge.backingBrush = "white";
+    this.radialGauge.backingOutline = 'white';
+    this.radialGauge.backingBrush = 'white';
 
     // Needle Settings
     this.radialGauge.needleEndExtent = 0.8;
     this.radialGauge.needleShape = RadialGaugeNeedleShape.Triangle;
     this.radialGauge.needlePivotShape = RadialGaugePivotShape.Circle;
     this.radialGauge.needlePivotWidthRatio = 0.1;
-    this.radialGauge.needleBrush = "#79797a";
-    this.radialGauge.needleOutline = "#79797a";
+    this.radialGauge.needleBrush = '#79797a';
+    this.radialGauge.needleOutline = '#79797a';
 
     // TickMark Settings
-    this.radialGauge.tickBrush = "transparent";
-    this.radialGauge.minorTickBrush = "transparent";
+    this.radialGauge.tickBrush = 'transparent';
+    this.radialGauge.minorTickBrush = 'transparent';
 
     // Label Settings
     this.radialGauge.labelInterval = 10;
     this.radialGauge.labelExtent = 1;
-    this.radialGauge.font = "15px Verdana,Arial";
+    this.radialGauge.font = '15px Verdana,Arial';
 
     // setting custom gauge ranges
     const range1 = new IgxRadialGaugeRangeComponent();
@@ -266,8 +266,8 @@ export class $(ClassName)Component implements AfterViewInit {
     range2.startValue = 5;
     range2.endValue = 10;
 
-    this.radialGauge.rangeBrushes  = [ "#a4bd29", "#F86232" ];
-    this.radialGauge.rangeOutlines = [ "#a4bd29", "#F86232" ];
+    this.radialGauge.rangeBrushes  = [ '#a4bd29', '#F86232' ];
+    this.radialGauge.rangeOutlines = [ '#a4bd29', '#F86232' ];
     this.radialGauge.ranges.clear();
     this.radialGauge.ranges.add(range1);
     this.radialGauge.ranges.add(range2);

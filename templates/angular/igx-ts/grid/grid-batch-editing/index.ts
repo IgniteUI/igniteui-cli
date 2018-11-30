@@ -11,8 +11,18 @@ class IgxGridBatchEditingTemplate extends IgniteUIForAngularTemplate {
 		this.name = "Grid Batch Editing";
 		this.description = "Sample IgxGrid with batch editing";
 		this.dependencies = [
-			{ import: "IgxGridModule", from: "igniteui-angular", root: true },
-			{ import: "IgxIconModule", from: "igniteui-angular" }
+			{ declare: "GridWithTransactionsComponent", from: "./src/app/$(filePrefix)/grid-transaction.component.ts" },
+			{
+				import: [
+				"IgxGridModule",
+				"IgxFocusModule",
+				"IgxButtonModule",
+				"IgxDialogModule",
+				"IgxRippleModule"
+				],
+				from: "igniteui-angular"
+			},
+			{ import: "FormsModule", from: "@angular/forms" }
 		];
 	}
 }
