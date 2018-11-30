@@ -3,14 +3,31 @@ h4 {
     padding-top: 2%;
     padding-bottom: 2%;
 }
-.buttons-wrapper {
+.buttons-row {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding: 5px;
 }
-.transaction-buttons-wrapper {
+.buttons-wrapper {
     display: flex;
     flex-direction: row;
-    justify-content: right;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.transaction--update, .transaction--delete, .transaction--add {
+    font-weight: 600;
+}
+.transaction--add {
+    color: #6b3;
+}
+.transaction--update {
+    color: #4a71b9;
+}
+.transaction--delete {
+    color: #ee4920;
+}
+.transaction-log {
+    word-wrap: none;
 }

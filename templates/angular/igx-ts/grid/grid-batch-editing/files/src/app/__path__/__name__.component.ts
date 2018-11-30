@@ -1,23 +1,36 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { data } from './data';
 
-import { IgxGridComponent, IgxGridTransaction, IgxToggleDirective, IgxTransactionService } from 'igniteui-angular';
+import { IgxDialogComponent, IgxGridComponent, Transaction } from 'igniteui-angular';
 
 @Component({
   selector: 'app-$(filePrefix)',
   styleUrls: ['./$(filePrefix).component.scss'],
-  templateUrl: './$(filePrefix).component.html',
-  providers: [{ provide: IgxGridTransaction, useClass: IgxTransactionService }]
+  templateUrl: './$(filePrefix).component.html'
 })
-export class $(ClassName)Component {
+export class $(ClassName)Component implements OnInit {
   @ViewChild('gridRowEditTransaction', { read: IgxGridComponent }) public grid: IgxGridComponent;
-  @ViewChild(IgxToggleDirective) public toggle: IgxToggleDirective;
+  @ViewChild(IgxDialogComponent) public dialog: IgxDialogComponent;
+  @ViewChild('dialogGrid', { read: IgxGridComponent }) public dialogGrid: IgxGridComponent;
 
   public data: any[];
+  public transactionsData: Transaction[] = [];
   private addProductId: number;
+
+  public get transactions() {
+    return this.grid.transactions;
+  }
+
   constructor() {
     this.data = data;
     this.addProductId = this.data.length + 1;
+  }
+
+  public ngOnInit(): void {
+    this.transactionsData = this.transactions.getAggregatedChanges(true);
+    this.transactions.onStateUpdate.subscribe(() => {
+        this.transactionsData = this.transactions.getAggregatedChanges(true);
+    });
   }
 
   public addRow() {
@@ -41,20 +54,42 @@ export class $(ClassName)Component {
     this.grid.deleteRow(rowID);
   }
 
-  public undo() {
-    this.grid.transactions.undo();
-  }
-
-  public redo() {
-    this.grid.transactions.redo();
+  public openCommitDialog() {
+    this.dialog.open();
+    this.dialogGrid.reflow();
   }
 
   public commit() {
     this.grid.transactions.commit(this.data);
-    this.toggle.close();
+    this.dialog.close();
+  }
+
+  public cancel() {
+    this.dialog.close();
+  }
+
+  public discard() {
+    this.grid.transactions.clear();
+    this.dialog.close();
   }
 
   private getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  private classFromType(type: string): string {
+    return `transaction--${type.toLowerCase()}`;
+  }
+
+  public get hasTransactions(): boolean {
+    return this.grid.transactions.getAggregatedChanges(false).length > 0;
+  }
+
+  public stateFormatter(value: string) {
+    return JSON.stringify(value);
+  }
+
+  public typeFormatter(value: string) {
+    return value.toUpperCase();
   }
 }
