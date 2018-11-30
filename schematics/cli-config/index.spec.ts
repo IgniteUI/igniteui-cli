@@ -116,6 +116,8 @@ describe("schematics", () => {
 	});
 
 	it("should add BrowserAnimationsModule to app.module.ts", () => {
+		fs.mkdirSync(`./output/schematic-test`);
+		process.chdir(`./output/schematic-test`);
 		const moduleContent =
 `import { NgModule } from '@angular/core';
 @NgModule({
@@ -145,11 +147,13 @@ export class AppModule {
 			}
 		}
 		fs.writeFileSync(targetFile, moduleContent);
+		tree.create("/src/app/app.module.ts", moduleContent);
 
 		runner.runSchematic("cli-config", {}, tree);
 		const content = fs.readFileSync(targetFile, "utf8");
 		expect(content).toEqual(moduleContentAfterSchematic);
-		deleteAll("./src");
-		fs.rmdirSync("./src");
+		process.chdir("../../");
+		deleteAll("./output/schematic-test");
+		fs.rmdirSync("./output/schematic-test");
 	});
 });
