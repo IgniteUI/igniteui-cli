@@ -10,15 +10,18 @@ import { deleteAll } from "../helpers/utils";
 describe("Unit - Google Analytic", () => {
 	let request;
 	let testFolder = path.parse(__filename).name;
+	let serviceSpy;
 
 	class GATestClass extends GoogleAnalytics {
 		public static userDataFolder = path.join(process.cwd(), `./output/${testFolder}`);
+		public static getUserID(): any { return super.getUserID(); }
 	}
 
 	beforeEach(() => {
 		request = jasmine.createSpyObj("request", ["on", "end"]);
 		spyOn(https, "request").and.returnValue(request);
-		spyOn(childProcess, "execSync").and.returnValue("some string which contains REG_SZ so we can get Machine Key");
+		serviceSpy =
+			spyOn(childProcess, "execSync").and.returnValue("some string which contains REG_SZ so we can get Machine Key");
 		while (fs.existsSync(`./output/${testFolder}`)) {
 			testFolder += 1;
 		}
@@ -74,6 +77,16 @@ describe("Unit - Google Analytic", () => {
 		expect(https.request).toHaveBeenCalledTimes(0);
 		expect(request.on).toHaveBeenCalledTimes(0);
 		expect(request.end).toHaveBeenCalledTimes(0);
+
+		done();
+	});
+
+	it("Random Guid is generated if the platform check fails", done => {
+		serviceSpy.and.throwError("Error!");
+		const value = GATestClass.getUserID();
+
+		expect(value).toBeDefined();
+		expect(value).toMatch(/\d{1,}/);
 
 		done();
 	});
