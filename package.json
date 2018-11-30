@@ -46,7 +46,10 @@
     "templates/**/*.json",
     "migrations/**/*.d.ts",
     "migrations/**/*.js",
-    "migrations/**/*.json"
+    "migrations/**/*.json",
+    "schematics/**/*.d.ts",
+    "schematics/**/*.js",
+    "schematics/**/*.json"
   ],
   "nyc": {
     "extension": [
@@ -86,7 +89,8 @@
     "yargs": "^8.0.2"
   },
   "devDependencies": {
-    "@angular-devkit/schematics": "^0.6.8",
+    "@angular-devkit/schematics": "^7.0.6",
+    "@schematics/angular": "7.1.0",
     "@types/fs-extra": "^3.0.3",
     "@types/inquirer": "0.0.35",
     "@types/jasmine": "^2.8.6",
@@ -110,5 +114,6 @@
       "igniteui-angular",
       "igniteui-angular-charts"
     ]
-  }
+  },
+  "schematics": "./schematics/cli-collection.json"
 }

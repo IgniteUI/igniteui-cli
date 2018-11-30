@@ -153,6 +153,11 @@ describe("Unit - Add command", () => {
 		spyOn(PackageManager, "flushQueue").and.returnValue(Promise.resolve());
 		spyOn(PackageManager, "ensureIgniteUISource");
 		spyOn(Util, "directoryExists").and.returnValue(true);
+		spyOn(Util, "fileExists").and.callFake(file => {
+			if (file === "src/app/app-routing.module.ts") {
+				return true;
+			}
+		});
 		await addCmd.execute({
 			name: "test-file-name", template: "CustomTemplate",
 			// tslint:disable-next-line:object-literal-sort-keys

@@ -46,6 +46,11 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 
 		it("registers route and declare component", async done => {
 			const templ = new TestTemplate();
+			spyOn(Util, "fileExists").and.callFake(file => {
+				if (file === "src/app/app-routing.module.ts") {
+					return true;
+				}
+			});
 			templ.registerInProject("target/path", "view name");
 			expect(helpers.TypeScriptFileUpdate).toHaveBeenCalledWith(path.join("target/path", "src/app/app-routing.module.ts"));
 			expect(helpers.tsUpdateMock.addRoute).toHaveBeenCalledWith(

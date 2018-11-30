@@ -17,5 +17,7 @@
 !/templates/react/**/files/**/*
 /migrations/**/*.js.map
 /migrations/**/*.js
+/schematics/**/*.js.map
+/schematics/**/*.js
 /coverage
 /.nyc_output
