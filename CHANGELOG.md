@@ -1,3 +1,15 @@
+# [3.1.0](https://github.com/IgniteUI/igniteui-cli/compare/v3.0.1...v3.1.0) (2018-11-30)
+
+
+### Features
+
+* **Ignite UI for Angular:**
+	* **igx-ts:** Update Ignite UI for Angular projects to 7.0.0 and ng cli latest ([b4f37bf](https://github.com/IgniteUI/igniteui-cli/commit/b4f37bf))
+	* **schematics:** Add schematic for initial support of "ng add igniteui-angular" ([#410](https://github.com/IgniteUI/igniteui-cli/issues/410)) ([cac7feb](https://github.com/IgniteUI/igniteui-cli/commit/cac7feb))
+	* **igxGrid:** Updating the batch editing template ([e3795d5](https://github.com/IgniteUI/igniteui-cli/commit/e3795d5))
+* **ig-ts:** Update igniteui-angular-wrappers & Angular7 to v7 [#411](https://github.com/IgniteUI/igniteui-cli/issues/411) ([6e503f3](https://github.com/IgniteUI/igniteui-cli/commit/6e503f3))
+* **js, react:** updating Ignite UI for JavaScript packages to 18.2 ([65d6c73](https://github.com/IgniteUI/igniteui-cli/commit/65d6c73))
+
 # [3.0.0](https:///github.com/IgniteUI/igniteui-cli/compare/v2.1.6...v3.0.0) (2018-11-09)
 
 This release brings projects with Ignite UI for Angular 6.2.0 with new features and components, styling updates for Ignite UI for JavaScript projects and other improvements.
