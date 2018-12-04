@@ -26,7 +26,8 @@ class IgxGridCRMTemplate extends IgniteUIForAngularTemplate {
 					"IgxCheckboxModule"
 				],
 				from: "igniteui-angular"
-			}
+			},
+			{ import: "FormsModule", from: "@angular/forms" }
 		];
 	}
 }
