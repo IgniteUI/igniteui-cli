@@ -1,0 +1,12 @@
+{
+	"extends": "../tslint.json",
+	"rules": {
+		"no-implicit-dependencies": [true, "dev"],
+		"no-submodule-imports": [
+			true,
+			"@angular-devkit/core",
+			"@angular-devkit/schematics",
+			"@schematics/angular"
+		]
+	}
+}
