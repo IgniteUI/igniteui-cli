@@ -20,7 +20,7 @@ describe("Unit - AngularTemplate Base", () => {
 
 	it("generateFiles call processTemplates with correct path and variables", async done => {
 		const expected = {
-			"$(name)": "my component",
+			"$(name)": "my-component",
 			"$(ClassName)": "MyComponent",
 			"__name__": "my-component",
 			"__path__": "my-component",
