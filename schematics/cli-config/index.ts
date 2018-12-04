@@ -2,7 +2,6 @@ import { WorkspaceSchema } from "@angular-devkit/core/src/workspace";
 import { chain, Rule, SchematicContext, SchematicsException, Tree } from "@angular-devkit/schematics";
 import { getWorkspace } from "@schematics/angular/utility/config";
 import chalk from "chalk";
-import * as fs from "fs";
 import { TypeScriptFileUpdate } from "../../lib/project-utility/TypeScriptFileUpdate";
 import { NgTreeFileSystem } from "../../lib/project-utility/TypeScriptUtils";
 import { Util } from "../../lib/Util";
