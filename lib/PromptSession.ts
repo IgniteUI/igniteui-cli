@@ -122,7 +122,7 @@ export class PromptSession {
 					break;
 				}
 				case "Complete & Run":
-					const config = ProjectConfig.getConfig();
+					const config = ProjectConfig.localConfig();
 					const defaultPort = config.project.defaultPort;
 					let port;
 					let userPort: boolean;
@@ -139,6 +139,8 @@ export class PromptSession {
 							Util.log(`port should be a number. Input valid port or use the suggested default port`, "yellow");
 						} else {
 							userPort = true;
+							config.project.defaultPort = port;
+							ProjectConfig.setConfig(config);
 						}
 					}
 				default: {
