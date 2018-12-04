@@ -348,6 +348,7 @@ describe("Add command", () => {
 		await cli.run(["add", "grid", "folder\\test nested folders\\  \t Test Nested Folders	\t"]);
 
 		expect(console.error).toHaveBeenCalledTimes(0);
+		// tslint:disable-next-line:no-console
 		expect(console.log).toHaveBeenCalledWith(jasmine.stringMatching(/View 'Test Nested Folders' added\s*/));
 
 		expect(fs.existsSync("./src/app/folder/test-nested-folders")).toBeTruthy();
