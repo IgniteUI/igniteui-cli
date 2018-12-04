@@ -117,7 +117,7 @@ describe("Unit - Add command", () => {
 		done();
 	});
 
-	it("Should properly accept module args when passed - IgniteUI for Anuglar", async done => {
+	it("Should properly accept module args when passed - IgniteUI for Angular", async done => {
 		const mockProjectConfig = {project: {
 			framework: "angular",
 			theme: "infragistics"

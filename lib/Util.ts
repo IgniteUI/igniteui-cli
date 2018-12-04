@@ -75,7 +75,7 @@ class Util {
 					destinationFolderName = configuration["__path__"];
 				}
 				if (!Util.directoryExists(path.join(destinationPath, destinationFolderName))) {
-					fsExtra.ensureDirSync(path.join(destinationPath, destinationFolderName));
+					this.mkDirByPathSync(path.join(destinationPath, destinationFolderName));
 				}
 				//TODO: This call should have await!
 				await Util.processTemplates(
@@ -424,6 +424,33 @@ class Util {
 			}
 		}
 		return defaultName;
+	}
+
+	public static mkDirByPathSync(targetDir, { isRelativeToScript = false } = {}) {
+		const sep = path.sep;
+		const initDir = path.isAbsolute(targetDir) ? sep : "";
+		const baseDir = isRelativeToScript ? __dirname : ".";
+
+		return targetDir.split(sep).reduce((parentDir, childDir) => {
+			const curDir = path.resolve(baseDir, parentDir, childDir);
+			try {
+				fs.mkdirSync(curDir);
+			} catch (err) {
+				if (err.code === "EEXIST") { // curDir already exists!
+					return curDir;
+				}
+				// avoid `EISDIR` error on Mac and `EACCES`-->`ENOENT` and `EPERM` on Windows.
+				if (err.code === "ENOENT") { // throw the original parentDir error on curDir `ENOENT` failure.
+					throw new Error(`EACCES: permission denied, mkdir "${parentDir}"`);
+				}
+
+				const caughtErr = ["EACCES", "EPERM", "EISDIR"].indexOf(err.code) > -1;
+				if (!caughtErr || caughtErr && curDir === path.resolve(targetDir)) {
+					throw err; // throw if it is the last created dir.
+				}
+			}
+			return curDir;
+		}, initDir);
 	}
 
 	private static propertyByPath(object: any, propPath: string) {

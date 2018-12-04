@@ -355,12 +355,9 @@ describe("Add command", () => {
 		expect(fs.existsSync(componentPath)).toBeTruthy();
 		// file contents:
 		expect(fs.readFileSync(componentPath, "utf-8")).toContain("export class TestNestedFoldersComponent");
-		// expect(fs.readFileSync("src/app/app-routing.module.ts", "utf-8")).toBe(
-		// 	`import { TestNestedFoldersComponent } from './folder/test-nested-folders/test-nested-folders.component';` +  EOL +
-		// 	`const routes: Routes = [{ path: 'test-nested-folders', component: TestNestedFoldersComponent, data: { text: 'test-nested-folders' } }];` + EOL
-		// );
 		expect(fs.readFileSync("src/app/app-routing.module.ts", "utf-8")).toBe(
 			`import { TestNestedFoldersComponent } from './folder/test-nested-folders/test-nested-folders.component';` +  EOL +
+			// tslint:disable-next-line:max-line-length
 			`const routes: Routes = [{ path: 'test-nested-folders', component: TestNestedFoldersComponent, data: { text: 'Test Nested Folders' } }];` + EOL
 		);
 
