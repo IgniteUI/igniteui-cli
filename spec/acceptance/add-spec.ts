@@ -287,7 +287,7 @@ describe("Add command", () => {
 		expect(fs.readFileSync(componentPath, "utf-8")).toContain("export class TestViewComponent");
 		expect(fs.readFileSync("src/app/app-routing.module.ts", "utf-8")).toBe(
 			`import { TestViewComponent } from './test-view/test-view.component';` +  EOL +
-			`const routes: Routes = [{ path: 'test-view', component: TestViewComponent, data: { text: 'test-view' } }];` +  EOL
+			`const routes: Routes = [{ path: 'test-view', component: TestViewComponent, data: { text: 'Test view' } }];` +  EOL
 		);
 
 		expect(fs.readFileSync("src/app/app.module.ts", "utf-8")).toBe(
@@ -316,7 +316,7 @@ describe("Add command", () => {
 		done();
 	});
 
-	it("Should correctly add Ignite UI for Angular template passing folders path and spaces in name arg"
+	it("Should correctly add Ignite UI for Angular template passing folders path and spaces/tabs in name arg"
 		, async done => {
 		spyOn(ProjectConfig, "globalConfig").and.returnValue({});
 
@@ -345,19 +345,23 @@ describe("Add command", () => {
 		})
 		export class AppModule { }`);
 
-		await cli.run(["add", "grid", "folder\\test nested folders\\  \t Test nested folders	\t"]);
+		await cli.run(["add", "grid", "folder\\test nested folders\\  \t Test Nested Folders	\t"]);
 
 		expect(console.error).toHaveBeenCalledTimes(0);
-		expect(console.log).toHaveBeenCalledWith(jasmine.stringMatching(/View 'Test nested folders' added\s*/));
+		expect(console.log).toHaveBeenCalledWith(jasmine.stringMatching(/View 'Test Nested Folders' added\s*/));
 
 		expect(fs.existsSync("./src/app/folder/test-nested-folders")).toBeTruthy();
 		const componentPath = "./src/app/folder/test-nested-folders/test-nested-folders.component.ts";
 		expect(fs.existsSync(componentPath)).toBeTruthy();
 		// file contents:
 		expect(fs.readFileSync(componentPath, "utf-8")).toContain("export class TestNestedFoldersComponent");
+		// expect(fs.readFileSync("src/app/app-routing.module.ts", "utf-8")).toBe(
+		// 	`import { TestNestedFoldersComponent } from './folder/test-nested-folders/test-nested-folders.component';` +  EOL +
+		// 	`const routes: Routes = [{ path: 'test-nested-folders', component: TestNestedFoldersComponent, data: { text: 'test-nested-folders' } }];` + EOL
+		// );
 		expect(fs.readFileSync("src/app/app-routing.module.ts", "utf-8")).toBe(
 			`import { TestNestedFoldersComponent } from './folder/test-nested-folders/test-nested-folders.component';` +  EOL +
-			`const routes: Routes = [{ path: 'test-nested-folders', component: TestNestedFoldersComponent, data: { text: 'test-nested-folders' } }];` + EOL
+			`const routes: Routes = [{ path: 'test-nested-folders', component: TestNestedFoldersComponent, data: { text: 'Test Nested Folders' } }];` + EOL
 		);
 
 		expect(fs.readFileSync("src/app/app.module.ts", "utf-8")).toBe(

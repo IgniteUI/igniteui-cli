@@ -142,13 +142,17 @@ export class AngularTemplate implements Template {
 		return Util.lowerDashed(folderName);
 	}
 
-	protected fileName(pathName: string): string {
+	protected fileName(pathName: string, skipLowerDashed?: boolean): string {
 		// TODO: Util func.
 		const parts = path.parse(pathName);
 
 		let name = parts.name;
 		name = name.trim();
-		//TODO: should remove the spaces
-		return Util.lowerDashed(name);
+
+		if (!skipLowerDashed) {
+			return Util.lowerDashed(name);
+		}
+
+		return name;
 	}
 }

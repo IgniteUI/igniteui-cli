@@ -45,7 +45,7 @@ export class IgniteUIForAngularTemplate extends AngularTemplate {
 		routingModule.addRoute(
 			path.join(projectPath, `src/app/${this.folderName(name)}/${this.fileName(name)}.component.ts`),
 			this.fileName(name),
-			this.fileName(name)
+			this.fileName(name, true)
 		);
 
 		//3) add an import of the component class from its file location.
