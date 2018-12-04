@@ -1,14 +1,10 @@
-// tslint:disable:no-implicit-dependencies
-// tslint:disable-next-line:no-submodule-imports
 import { WorkspaceSchema } from "@angular-devkit/core/src/workspace";
-// tslint:disable-next-line:ordered-imports
 import { chain, Rule, SchematicContext, SchematicsException, Tree } from "@angular-devkit/schematics";
-// tslint:disable-next-line:no-submodule-imports
 import { getWorkspace } from "@schematics/angular/utility/config";
 import chalk from "chalk";
 import * as fs from "fs";
-import * as path from "path";
 import { TypeScriptFileUpdate } from "../../lib/project-utility/TypeScriptFileUpdate";
+import { NgTreeFileSystem } from "../../lib/project-utility/TypeScriptUtils";
 import { Util } from "../../lib/Util";
 import { addTypography } from "../../migrations/update-3/index";
 
@@ -145,12 +141,11 @@ function addFontsToIndexHtml(tree: Tree) {
 
 function importBrowserAnimationModule(tree: Tree, context: SchematicContext) {
 	const moduleFile = "./src/app/app.module.ts";
-	if (fs.existsSync(moduleFile)) {
-		const mainModule = new TypeScriptFileUpdate(path.join(process.cwd(), moduleFile));
+	if (tree.exists(moduleFile)) {
+		// const mainModule = new TypeScriptFileUpdate(path.join(process.cwd(), moduleFile));
+		const mainModule = new TypeScriptFileUpdate(moduleFile, new NgTreeFileSystem(tree));
 		mainModule.addNgModuleMeta({ import: "BrowserAnimationsModule", from: "@angular/platform-browser/animations" });
 		mainModule.finalize();
-		// TODO: ts transform to plug using the virtual tree API
-		tree.overwrite("./src/app/app.module.ts", fs.readFileSync("./src/app/app.module.ts"));
 	}
 }
 

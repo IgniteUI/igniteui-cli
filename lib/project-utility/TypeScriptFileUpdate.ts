@@ -1,7 +1,6 @@
-import * as fs from "fs";
 import * as ts from "typescript";
 import { Util } from "../Util";
-import { TypeScriptUtils as TsUtils } from "./TypeScriptUtils";
+import { FsFileSystem, IFileSystem, TypeScriptUtils as TsUtils } from "./TypeScriptUtils";
 
 /**
  * Apply various updates to typescript files using AST
@@ -27,8 +26,8 @@ export class TypeScriptFileUpdate {
 	private createdStringLiterals: string[];
 
 	/** Create updates for a file. Use `add<X>` methods to add transformations and `finalize` to apply and save them. */
-	constructor(private targetPath: string) {
-		this.targetSource = TsUtils.getFileSource(this.targetPath);
+	constructor(private targetPath: string, private fileSystem: IFileSystem = new FsFileSystem()) {
+		this.targetSource = TsUtils.getFileSource(this.targetPath, this.fileSystem);
 		this.initState();
 	}
 
@@ -49,7 +48,7 @@ export class TypeScriptFileUpdate {
 		// add new import statements after visitor walks:
 		this.addNewFileImports();
 
-		TsUtils.saveFile(this.targetPath, this.targetSource);
+		TsUtils.saveFile(this.targetPath, this.targetSource, this.fileSystem);
 		this.formatFile(this.targetPath);
 		// reset state in case of further updates
 		this.initState();
@@ -65,7 +64,7 @@ export class TypeScriptFileUpdate {
 	 */
 	public addRoute(filePath: string, linkPath: string, linkText: string, routesVariable = "routes") {
 		let className: string;
-		const fileSource = TsUtils.getFileSource(filePath);
+		const fileSource = TsUtils.getFileSource(filePath, this.fileSystem);
 		const relativePath: string = TsUtils.relativePath(this.targetPath, filePath, true, true);
 
 		className = TsUtils.getClassName(fileSource.getChildren());
@@ -74,55 +73,55 @@ export class TypeScriptFileUpdate {
 		// https://github.com/Microsoft/TypeScript/issues/14419#issuecomment-307256171
 		const transformer: ts.TransformerFactory<ts.Node> = <T extends ts.Node>(context: ts.TransformationContext) =>
 			(rootNode: T) => {
-			function visitor(node: ts.Node): ts.Node {
-				if (node.kind === ts.SyntaxKind.VariableDeclaration &&
-					(node as ts.VariableDeclaration).name.getText() === routesVariable &&
-					(node as ts.VariableDeclaration).type.getText() === "Routes") {
-					// found routes variable
-					node = ts.visitEachChild(node, visitRoutesVariable, context);
-				} else {
-					node = ts.visitEachChild(node, visitor, context);
-				}
-				return node;
-			}
-			const visitRoutesVariable = (node: ts.Node): ts.Node => {
-				if (node.kind === ts.SyntaxKind.ArrayLiteralExpression) {
-					const array = (node as ts.ArrayLiteralExpression);
-
-					const routePath = ts.createPropertyAssignment("path", ts.createLiteral(linkPath));
-					const routeComponent = ts.createPropertyAssignment("component", ts.createIdentifier(className));
-					const routeDataInner =  ts.createPropertyAssignment("text", ts.createLiteral(linkText));
-					const routeData = ts.createPropertyAssignment("data", ts.createObjectLiteral([routeDataInner]));
-					const newObject = ts.createObjectLiteral([routePath, routeComponent, routeData]);
-					this.createdStringLiterals.push(linkPath, linkText);
-
-					const notFoundWildCard = "**";
-					const nodes = ts.visitNodes(array.elements, visitor);
-					const errorRouteNode = nodes.filter(element => element.getText().includes(notFoundWildCard))[0];
-					let resultNodes = null;
-
-					if (errorRouteNode) {
-						resultNodes = nodes
-							.slice(0, nodes.indexOf(errorRouteNode))
-							.concat(newObject)
-							.concat(errorRouteNode);
+				function visitor(node: ts.Node): ts.Node {
+					if (node.kind === ts.SyntaxKind.VariableDeclaration &&
+						(node as ts.VariableDeclaration).name.getText() === routesVariable &&
+						(node as ts.VariableDeclaration).type.getText() === "Routes") {
+						// found routes variable
+						node = ts.visitEachChild(node, visitRoutesVariable, context);
 					} else {
-						resultNodes = nodes
-							.concat(newObject);
+						node = ts.visitEachChild(node, visitor, context);
 					}
-
-					const elements = ts.createNodeArray([
-						...resultNodes
-					]);
-
-					return ts.updateArrayLiteral(array, elements);
-				} else {
-					return ts.visitEachChild(node, visitRoutesVariable, context);
+					return node;
 				}
+				const visitRoutesVariable = (node: ts.Node): ts.Node => {
+					if (node.kind === ts.SyntaxKind.ArrayLiteralExpression) {
+						const array = (node as ts.ArrayLiteralExpression);
+
+						const routePath = ts.createPropertyAssignment("path", ts.createLiteral(linkPath));
+						const routeComponent = ts.createPropertyAssignment("component", ts.createIdentifier(className));
+						const routeDataInner = ts.createPropertyAssignment("text", ts.createLiteral(linkText));
+						const routeData = ts.createPropertyAssignment("data", ts.createObjectLiteral([routeDataInner]));
+						const newObject = ts.createObjectLiteral([routePath, routeComponent, routeData]);
+						this.createdStringLiterals.push(linkPath, linkText);
+
+						const notFoundWildCard = "**";
+						const nodes = ts.visitNodes(array.elements, visitor);
+						const errorRouteNode = nodes.filter(element => element.getText().includes(notFoundWildCard))[0];
+						let resultNodes = null;
+
+						if (errorRouteNode) {
+							resultNodes = nodes
+								.slice(0, nodes.indexOf(errorRouteNode))
+								.concat(newObject)
+								.concat(errorRouteNode);
+						} else {
+							resultNodes = nodes
+								.concat(newObject);
+						}
+
+						const elements = ts.createNodeArray([
+							...resultNodes
+						]);
+
+						return ts.updateArrayLiteral(array, elements);
+					} else {
+						return ts.visitEachChild(node, visitRoutesVariable, context);
+					}
+				};
+				context.enableSubstitution(ts.SyntaxKind.ClassDeclaration);
+				return ts.visitNode(rootNode, visitor);
 			};
-			context.enableSubstitution(ts.SyntaxKind.ClassDeclaration);
-			return ts.visitNode(rootNode, visitor);
-		};
 
 		this.targetSource = ts.transform(this.targetSource, [transformer], {
 			pretty: true // oh well..
@@ -138,7 +137,7 @@ export class TypeScriptFileUpdate {
 	 */
 	public addDeclaration(filePath: string, addToExport?: boolean) {
 		let className: string;
-		const fileSource = TsUtils.getFileSource(filePath);
+		const fileSource = TsUtils.getFileSource(filePath, this.fileSystem);
 		const relativePath: string = TsUtils.relativePath(this.targetPath, filePath, true, true);
 		className = TsUtils.getClassName(fileSource.getChildren());
 		if (addToExport) {
@@ -419,7 +418,7 @@ export class TypeScriptFileUpdate {
 		// formatting via LanguageService https://github.com/Microsoft/TypeScript/wiki/Using-the-Compiler-API
 		// https://github.com/Microsoft/TypeScript/issues/1651
 
-		let text = fs.readFileSync(filePath).toString();
+		let text = this.fileSystem.readFile(filePath);
 		// create the language service files
 		const services = ts.createLanguageService(this.getLanguageHost(filePath), ts.createDocumentRegistry());
 
@@ -434,14 +433,14 @@ export class TypeScriptFileUpdate {
 			}
 		}
 
-		fs.writeFileSync(filePath, text);
+		this.fileSystem.writeFile(filePath, text);
 	}
 
 	/**  Try and parse formatting from project `.editorconfig` / `tslint.json` */
 	protected readFormatConfigs() {
-		if (fs.existsSync(".editorconfig")) {
+		if (this.fileSystem.fileExists(".editorconfig")) {
 			// very basic parsing support
-			const text = fs.readFileSync(".editorconfig", "utf-8");
+			const text = this.fileSystem.readFile(".editorconfig", "utf-8");
 			const options = text
 				.replace(/\s*[#;].*([\r\n])/g, "$1") //remove comments
 				.replace(/\[(?!\*\]|\*.ts).+\][^\[]+/g, "") // leave [*]/[*.ts] sections
@@ -459,9 +458,9 @@ export class TypeScriptFileUpdate {
 				this.formatOptions.indentSize = parseInt(options["indent_size"], 10) || this.formatOptions.indentSize;
 			}
 		}
-		if (fs.existsSync("tslint.json")) {
+		if (this.fileSystem.fileExists("tslint.json")) {
 			// tslint prio - overrides other settings
-			const options = JSON.parse(fs.readFileSync("tslint.json", "utf-8"));
+			const options = JSON.parse(this.fileSystem.readFile("tslint.json", "utf-8"));
 			if (options.rules && options.rules.indent && options.rules.indent[0]) {
 				this.formatOptions.spaces = options.rules.indent[1] === "spaces";
 				if (options.rules.indent[2]) {
@@ -519,10 +518,10 @@ export class TypeScriptFileUpdate {
 			getScriptFileNames: () => Object.keys(files),
 			getScriptVersion: fileName => files[fileName] && files[fileName].version.toString(),
 			getScriptSnapshot: fileName => {
-				if (!fs.existsSync(fileName)) {
+				if (!this.fileSystem.fileExists(fileName)) {
 					return undefined;
 				}
-				return ts.ScriptSnapshot.fromString(fs.readFileSync(fileName).toString());
+				return ts.ScriptSnapshot.fromString(this.fileSystem.readFile(fileName));
 			},
 			getCurrentDirectory: () => process.cwd(),
 			getDefaultLibFileName: options => ts.getDefaultLibFilePath(options),
