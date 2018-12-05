@@ -13,7 +13,7 @@ export class IgniteUIForAngularTemplate extends AngularTemplate {
 		super(rootPath);
 	}
 
-	public registerInProject(projectPath: string, name: string, options?: {[key: string]: any}) {
+	public registerInProject(projectPath: string, name: string, options?: AddTemplateArgs) {
 		let modulePath = "app.module.ts";
 		if (options && options.modulePath) {
 			modulePath = options.modulePath;
@@ -37,10 +37,10 @@ export class IgniteUIForAngularTemplate extends AngularTemplate {
 		const TsUpdate: typeof TypeScriptFileUpdate =
 			require("./../project-utility/TypeScriptFileUpdate").TypeScriptFileUpdate;
 
-		//1) import the component class name,
-		//2) and populate the Routes array with the path and component
-		//for example: { path: 'combo', component: ComboComponent }
-		if (Util.fileExists("src/app/app-routing.module.ts")) {
+		if (!(options && options.skipRoute) && Util.fileExists("src/app/app-routing.module.ts")) {
+			//1) import the component class name,
+			//2) and populate the Routes array with the path and component
+			//for example: { path: 'combo', component: ComboComponent }
 			const routingModule = new TsUpdate(path.join(projectPath, "src/app/app-routing.module.ts"));
 			routingModule.addRoute(
 				path.join(projectPath, `src/app/${this.folderName(name)}/${this.fileName(name)}.component.ts`),
