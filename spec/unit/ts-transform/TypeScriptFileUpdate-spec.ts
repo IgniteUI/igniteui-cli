@@ -2,7 +2,7 @@ import * as fs from "fs";
 import * as ts from "typescript";
 import { GoogleAnalytics } from "../../../lib/GoogleAnalytics";
 import { TypeScriptFileUpdate } from "../../../lib/project-utility/TypeScriptFileUpdate";
-import { TypeScriptUtils } from "../../../lib/project-utility/TypeScriptUtils";
+import { FsFileSystem, TypeScriptUtils } from "../../../lib/project-utility/TypeScriptUtils";
 import { Util } from "../../../lib/Util";
 
 describe("Unit - TypeScriptFileUpdate", () => {
@@ -20,7 +20,7 @@ describe("Unit - TypeScriptFileUpdate", () => {
 			spyOn(TestTsFileUpdate.prototype, "initState");
 
 			const tsUpdate = new TestTsFileUpdate("/test/file");
-			expect(TypeScriptUtils.getFileSource).toHaveBeenCalledWith("/test/file");
+			expect(TypeScriptUtils.getFileSource).toHaveBeenCalledWith("/test/file", jasmine.any(FsFileSystem));
 			expect(TestTsFileUpdate.prototype.initState).toHaveBeenCalled();
 			done();
 		});
