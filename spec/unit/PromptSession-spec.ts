@@ -263,7 +263,7 @@ describe("Unit - PromptSession", () => {
 			getProjectLibraryByName: mockProjectLibrary
 		});
 		const mockSession = new PromptSession(mockTemplate);
-		spyOn(ProjectConfig, "getConfig").and.returnValue({
+		spyOn(ProjectConfig, "localConfig").and.returnValue({
 			project: {
 				defaultPort: 4200
 			}
@@ -287,6 +287,7 @@ describe("Unit - PromptSession", () => {
 			Promise.resolve({ action: "Complete & Run" }),
 			Promise.resolve({ port: 7777})
 		);
+		spyOn(ProjectConfig, "setConfig");
 		await mockSession.chooseActionLoop(mockProjectLibrary, "infragistics");
 		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(2);
 		expect(inquirer.prompt).toHaveBeenCalledTimes(12);
@@ -335,7 +336,7 @@ describe("Unit - PromptSession", () => {
 			getProjectLibraryByName: mockProjectLibrary
 		});
 		const mockSession = new PromptSession(mockTemplate);
-		spyOn(ProjectConfig, "getConfig").and.returnValue({
+		spyOn(ProjectConfig, "localConfig").and.returnValue({
 			project: {
 				defaultPort: 4200,
 				framework: "angular",
@@ -357,6 +358,7 @@ describe("Unit - PromptSession", () => {
 			Promise.resolve({ action: "Complete & Run" }),
 			Promise.resolve({ port: 7777})
 		);
+		spyOn(ProjectConfig, "setConfig");
 		await mockSession.chooseActionLoop(mockProjectLibrary, "infragistics");
 		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(2);
 		expect(inquirer.prompt).toHaveBeenCalledTimes(7);
@@ -440,7 +442,7 @@ describe("Unit - PromptSession", () => {
 			getProjectLibraryByName: mockProjectLibrary
 		});
 		const mockSession = new PromptSession(mockTemplate);
-		spyOn(ProjectConfig, "getConfig").and.returnValue({
+		spyOn(ProjectConfig, "localConfig").and.returnValue({
 			project: {
 				defaultPort: 4200
 			}
@@ -465,6 +467,7 @@ describe("Unit - PromptSession", () => {
 			Promise.resolve({ action: "Complete & Run" }),
 			Promise.resolve({ port: 7777})
 		);
+		spyOn(ProjectConfig, "setConfig");
 		await mockSession.chooseActionLoop(mockProjectLibrary, "infragistics");
 		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(2);
 		expect(inquirer.prompt).toHaveBeenCalledTimes(12);
@@ -485,6 +488,49 @@ describe("Unit - PromptSession", () => {
 			name: "customValue2",
 			choices: ["Choice 1", "Choice 2", "Choice 3"]
 		}]);
+		done();
+	});
+	it("chooseActionLoop - Complete and Run should update default port", async done => {
+		const mockProject = {
+			generateFiles: () => Promise.resolve(true)
+		};
+		const mockProjectLibrary = jasmine.createSpyObj("mockProjectLibrary", {
+			name: "mockProjectLibrary",
+			getCustomTemplateNames: [],
+			getTemplateByName: [],
+			getCustomTemplates: [],
+			getProject: () => {
+				return mockProject;
+			}
+		});
+		mockProjectLibrary.components = ["igGrid", "igCombo"];
+		const mockTemplate = jasmine.createSpyObj("mockTemplate", {
+			getProjectLibrary: mockProjectLibrary,
+			getFrameworkNames: () => this.frameworks.map(f => f.name),
+			getProjectLibraryByName: mockProjectLibrary
+		});
+		const params = {
+			project: {
+				defaultPort: 4200,
+				framework: "angular",
+				projectType: "igx-ts"
+			}
+		};
+		spyOn(ProjectConfig, "localConfig").and.returnValue(params);
+		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
+		const mockSession = new PromptSession(mockTemplate);
+		spyOn(mockSession, "chooseActionLoop").and.callThrough();
+		spyOn(inquirer, "prompt").and.returnValues(
+			Promise.resolve({ action: "Complete & Run" }),
+			Promise.resolve({ port: 7777})
+		);
+		params.project.defaultPort = 7777;
+		spyOn(start, "start");
+		spyOn(ProjectConfig, "setConfig");
+
+		await mockSession.chooseActionLoop(mockProjectLibrary, "");
+		expect(start.start).toHaveBeenCalledWith({port: 7777});
+		expect(ProjectConfig.setConfig).toHaveBeenCalledWith(params);
 		done();
 	});
 	it("start - Should fire correctly with Angular Custom theme selected", async done => {
