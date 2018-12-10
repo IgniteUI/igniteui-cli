@@ -58,11 +58,12 @@ describe("Unit - Add command", () => {
 		}
 
 		const validCombos = [
+			{ name: "valid name.ts", valid: "valid name" }, // file extension test
 			{ name: "   valid  name  \t   ", valid: "valid  name" },
 			{ name: "th1s is valid", valid: "th1s is valid" },
 			{ name: "b1ts-and bobs ", valid: "b1ts-and bobs" },
-			{ name: "../editors", inError: "../editors" },
-			{ name: "template/editors", inError: "template/editors" },
+			{ name: "../editors", valid: "../editors" },
+			{ name: "template/editors", valid: "template/editors" },
 			{ name: "a      name", valid: "a      name" },
 			{ name: "a", valid: "a" } // single letter name test
 		];
