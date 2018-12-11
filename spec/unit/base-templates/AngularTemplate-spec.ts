@@ -80,16 +80,14 @@ describe("Unit - AngularTemplate Base", () => {
 	});
 
 	describe("registerInProject", () => {
-		const helpers = {
-			// tslint:disable
-			tsUpdateMock: jasmine.createSpyObj("TypeScriptFileUpdate", ["addRoute", "addDeclaration", "finalize"]) as TypeScriptFileUpdate,
-			TypeScriptFileUpdate: function() {
-				return helpers.tsUpdateMock;
-			},
-			requireMock: require
-			// tslint:enable
-		};
+		let helpers;
 		beforeEach(() => {
+			helpers = {
+				tsUpdateMock: jasmine.createSpyObj(
+					"TypeScriptFileUpdate", ["addRoute", "addDeclaration", "finalize"]) as TypeScriptFileUpdate,
+				TypeScriptFileUpdate: () => helpers.tsUpdateMock,
+				requireMock: require
+			};
 			// spy on require:
 			spyOn(require("module"), "_load").and.callFake((modulePath: string) => {
 				if (modulePath.endsWith("../project-utility/TypeScriptFileUpdate")) {
@@ -114,6 +112,24 @@ describe("Unit - AngularTemplate Base", () => {
 				"view name" //text
 			);
 
+			expect(helpers.TypeScriptFileUpdate).toHaveBeenCalledWith(path.join("target/path", "src/app/app.module.ts"));
+			expect(helpers.tsUpdateMock.addDeclaration).toHaveBeenCalledWith(
+				path.join("target/path", `src/app/components/view-name/view-name.component.ts`),
+				false // if added to a custom module => true
+			);
+			expect(helpers.tsUpdateMock.finalize).toHaveBeenCalled();
+
+			//config update:
+			expect(ProjectConfig.setConfig).toHaveBeenCalledTimes(0);
+			done();
+		});
+		it("should skip route if skipRoute is passed", async done => {
+			const templ = new TestTemplate();
+			templ.registerInProject("target/path", "view name", { skipRoute: true });
+			expect(helpers.tsUpdateMock.addRoute).toHaveBeenCalledTimes(0);
+
+			// just declare
+			expect(helpers.TypeScriptFileUpdate).toHaveBeenCalledTimes(1);
 			expect(helpers.TypeScriptFileUpdate).toHaveBeenCalledWith(path.join("target/path", "src/app/app.module.ts"));
 			expect(helpers.tsUpdateMock.addDeclaration).toHaveBeenCalledWith(
 				path.join("target/path", `src/app/components/view-name/view-name.component.ts`),

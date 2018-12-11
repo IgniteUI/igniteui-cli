@@ -112,7 +112,7 @@ describe("Unit - Add command", () => {
 		spyOn(PackageManager, "flushQueue").and.returnValue(Promise.resolve());
 		spyOn(PackageManager, "ensureIgniteUISource");
 		await addCmd.execute({name: "template with packages", template: "test-id"});
-		expect(addCmd.addTemplate).toHaveBeenCalledWith("template with packages", {}, undefined);
+		expect(addCmd.addTemplate).toHaveBeenCalledWith("template with packages", {}, jasmine.any(Object));
 		expect(PackageManager.flushQueue).toHaveBeenCalled();
 
 		done();
@@ -164,15 +164,21 @@ describe("Unit - Add command", () => {
 			// tslint:disable-next-line:object-literal-sort-keys
 			module: "myCustomModule/my-custom-module.module.ts"
 		});
-		expect(addCmd.addTemplate).toHaveBeenCalledWith("test-file-name", mockTemplate,
-		"myCustomModule/my-custom-module.module.ts");
+		expect(addCmd.addTemplate).toHaveBeenCalledWith(
+			"test-file-name", mockTemplate,
+			jasmine.objectContaining({ modulePath: "myCustomModule/my-custom-module.module.ts" })
+		);
 		expect(PackageManager.flushQueue).toHaveBeenCalled();
 		expect(mockTemplate.generateFiles).toHaveBeenCalledTimes(1);
-		expect(mockTemplate.generateFiles)
-			.toHaveBeenCalledWith(directoryPath, "test-file-name", { modulePath: "myCustomModule/my-custom-module.module.ts" });
+		expect(mockTemplate.generateFiles).toHaveBeenCalledWith(
+			directoryPath, "test-file-name",
+			jasmine.objectContaining({ modulePath: "myCustomModule/my-custom-module.module.ts" })
+		);
 		expect(mockTemplate.registerInProject).toHaveBeenCalledTimes(1);
-		expect(mockTemplate.registerInProject).toHaveBeenCalledWith(directoryPath, "test-file-name",
-		{ modulePath: "myCustomModule/my-custom-module.module.ts"});
+		expect(mockTemplate.registerInProject).toHaveBeenCalledWith(
+			directoryPath, "test-file-name",
+			jasmine.objectContaining({ modulePath: "myCustomModule/my-custom-module.module.ts" })
+		);
 		expect(sourceFilesSpy).toHaveBeenCalledTimes(1);
 		expect(routeSpy).toHaveBeenCalledTimes(1);
 		expect(declarationSpy).toHaveBeenCalledTimes(1);
@@ -232,15 +238,19 @@ describe("Unit - Add command", () => {
 			// tslint:disable-next-line:object-literal-sort-keys
 			module: "myCustomModule/my-custom-module.module.ts"
 		});
-		expect(addCmd.addTemplate).toHaveBeenCalledWith("test-file-name", mockTemplate,
-		"myCustomModule/my-custom-module.module.ts");
+		expect(addCmd.addTemplate).toHaveBeenCalledWith(
+			"test-file-name", mockTemplate,
+			jasmine.objectContaining({ modulePath: "myCustomModule/my-custom-module.module.ts" })
+		);
 		expect(PackageManager.flushQueue).toHaveBeenCalled();
 		expect(mockTemplate.generateFiles).toHaveBeenCalledTimes(1);
-		expect(mockTemplate.generateFiles)
-			.toHaveBeenCalledWith(directoryPath, "test-file-name", {modulePath: "myCustomModule/my-custom-module.module.ts"});
+		expect(mockTemplate.generateFiles).toHaveBeenCalledWith(
+			directoryPath, "test-file-name",
+			jasmine.objectContaining({ modulePath: "myCustomModule/my-custom-module.module.ts" })
+		);
 		expect(mockTemplate.registerInProject).toHaveBeenCalledTimes(1);
 		expect(mockTemplate.registerInProject).toHaveBeenCalledWith(directoryPath, "test-file-name",
-		{ modulePath: "myCustomModule/my-custom-module.module.ts"});
+		jasmine.objectContaining({ modulePath: "myCustomModule/my-custom-module.module.ts" }));
 		expect(sourceFilesSpy).toHaveBeenCalledTimes(1);
 		expect(routeSpy).toHaveBeenCalledTimes(1);
 		expect(declarationSpy).toHaveBeenCalledTimes(1);
@@ -259,11 +269,63 @@ describe("Unit - Add command", () => {
 		done();
 	});
 
+	it("Should properly accept skip-route args when passed", async done => {
+		spyOn(GoogleAnalytics, "post");
+		const mockProjectConfig = {project: {
+			framework: "angular",
+			theme: "infragistics"
+		}};
+		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
+		spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
+
+		const mockTemplate = jasmine.createSpyObj("Template", {
+			generateFiles: true, registerInProject: null
+		});
+		mockTemplate.packages = [];
+		const mockLibrary = jasmine.createSpyObj("frameworkLibrary", {
+			getTemplateById: mockTemplate, hasTemplate: true
+		});
+		addCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
+			getFrameworkById: {},
+			getProjectLibrary: mockLibrary,
+			updateProjectConfiguration: () => {}
+		});
+
+		const directoryPath = path.join("My/Example/Path");
+		spyOn(process, "cwd").and.returnValue(directoryPath);
+		spyOn(addCmd, "addTemplate").and.callThrough();
+		spyOn(PackageManager, "flushQueue").and.returnValue(Promise.resolve());
+		spyOn(PackageManager, "ensureIgniteUISource");
+
+		await addCmd.execute({
+			name: "test-file-name", template: "CustomTemplate",
+			// tslint:disable-next-line:object-literal-sort-keys
+			skipRoute: true
+		});
+		expect(addCmd.addTemplate).toHaveBeenCalledWith(
+			"test-file-name", mockTemplate,
+			jasmine.objectContaining({ skipRoute: true })
+		);
+		expect(PackageManager.flushQueue).toHaveBeenCalled();
+		expect(mockTemplate.generateFiles).toHaveBeenCalledTimes(1);
+		expect(mockTemplate.generateFiles).toHaveBeenCalledWith(
+			directoryPath, "test-file-name",
+			jasmine.objectContaining({ skipRoute: true })
+		);
+		expect(mockTemplate.registerInProject).toHaveBeenCalledTimes(1);
+		expect(mockTemplate.registerInProject).toHaveBeenCalledWith(
+			directoryPath, "test-file-name",
+			jasmine.objectContaining({ skipRoute: true })
+		);
+		expect(addCmd.templateManager.updateProjectConfiguration).toHaveBeenCalledWith(mockTemplate);
+		done();
+	});
+
 	it("Should not add component and should log error if wrong path is passed to module", async done => {
 		spyOn(Util, "fileExists").and.returnValue(false);
 		spyOn(Util, "error");
 		const wrongPath = "myCustomModule/my-custom-module.module.ts";
-		addCmd.addTemplate("test-file-name", new AngularTemplate(__dirname), wrongPath);
+		addCmd.addTemplate("test-file-name", new AngularTemplate(__dirname), { modulePath: wrongPath });
 		expect(Util.fileExists).toHaveBeenCalledTimes(1);
 		expect(Util.error).toHaveBeenCalledTimes(1);
 		expect(Util.error).toHaveBeenCalledWith(`Wrong module path provided: ${wrongPath}. No components were added!`);
