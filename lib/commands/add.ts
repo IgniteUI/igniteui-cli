@@ -10,7 +10,7 @@ let command: {
 	[name: string]: any,
 	templateManager: TemplateManager,
 	execute: (argv: any) => Promise<void>,
-	addTemplate: (name: string, template: Template, module?: string) => Promise<boolean>
+	addTemplate: (name: string, template: Template, options?: AddTemplateArgs) => Promise<boolean>
 };
 // tslint:disable:object-literal-sort-keys
 command = {
@@ -18,22 +18,28 @@ command = {
 	desc: "adds template by its ID",
 	templateManager: null,
 	builder: {
-		template: {
+		"template": {
 			alias: "t",
 			description: `Template ID, such as "grid", "combo", etc.`,
 			type: "string",
 			global: true
 		},
-		name: {
+		"name": {
 			alias: "n",
 			description: "File name.",
 			type: "string",
 			global: true
 		},
-		module: {
+		"module": {
 			alias: "m",
 			description: "The module to which the template is to be added",
 			type: "string",
+			global: true
+		},
+		"skip-route": {
+			alias: "skr",
+			describe: "Don't auto-generate am app navigation route for the new component",
+			type: "boolean",
 			global: true
 		}
 	},
@@ -95,12 +101,15 @@ command = {
 				cd14: config.project.theme
 			});
 
-			await command.addTemplate(argv.name, selectedTemplate, argv.module);
+			await command.addTemplate(argv.name, selectedTemplate, {
+				modulePath: argv.module,
+				skipRoute: argv.skipRoute
+			});
 			await PackageManager.flushQueue(true);
 			PackageManager.ensureIgniteUISource(config.packagesInstalled, command.templateManager);
 		}
 	},
-	async addTemplate(name: string, template: Template, modulePath?: string): Promise<boolean> {
+	async addTemplate(name: string, template: Template, options?: AddTemplateArgs): Promise<boolean> {
 		// trim name to avoid creating awkward paths or mismatches:
 		name = name.trim();
 
@@ -112,9 +121,9 @@ command = {
 			return false;
 		}
 
-		if (await template.generateFiles(process.cwd(), name, { modulePath })) {
+		if (await template.generateFiles(process.cwd(), name, options || {})) {
 			//successful
-			template.registerInProject(process.cwd(), name, { modulePath });
+			template.registerInProject(process.cwd(), name, options || {});
 			command.templateManager.updateProjectConfiguration(template);
 			template.packages.forEach(x => PackageManager.queuePackage(x));
 			Util.log(`${Util.greenCheck()} View '${name}' added.`);
