@@ -1,3 +1,13 @@
+# [3.2.0](http://git+https/github.com/IgniteUI/igniteui-cli/compare/v3.1.0...v3.2.0) (2018-12-12)
+
+
+### Features
+
+* Support adding component with folder path. [#381](https://github.com/IgniteUI/igniteui-cli/issues/381) ([9fdc598](https://github.com/IgniteUI/igniteui-cli/commit/9fdc598))
+* **add command:** new `--skip-route` argument [#368](https://github.com/IgniteUI/igniteui-cli/issues/368) ([cbf3e08](https://github.com/IgniteUI/igniteui-cli/commit/cbf3e08))
+* **ts-transform:** Ignite UI for Angular `ng add` support: Added IFileSystem and included functionality for file manipulation via Angular Schematics API ([2cfbcfd](https://github.com/IgniteUI/igniteui-cli/commit/2cfbcfd))
+* **step-by-step:** Update default port in project config file every time the user sets custom port different than default. ([76526a3](http://git+https/github.com/IgniteUI/igniteui-cli/commit/76526a3))
+
 # [3.1.0](https://github.com/IgniteUI/igniteui-cli/compare/v3.0.1...v3.1.0) (2018-11-30)
 
 
