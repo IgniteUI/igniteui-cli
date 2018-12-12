@@ -11,6 +11,7 @@ import { Util } from "./Util";
 
 export class PromptSession {
 	private WIZARD_BACK_OPTION = "Back";
+	private config: Config;
 
 	constructor(private templateManager: TemplateManager) { }
 
@@ -28,6 +29,7 @@ export class PromptSession {
 			return retProm;
 		}
 	}
+
 	/**
 	 * Start questions session for project creation
 	 */
@@ -40,12 +42,12 @@ export class PromptSession {
 		let projLibrary: ProjectLibrary;
 		let theme: string;
 		add.templateManager = this.templateManager;
-		const config = ProjectConfig.getConfig();
+		this.config = ProjectConfig.getConfig();
 		const defaultProjName = "IG Project";
 
-		if (ProjectConfig.hasLocalConfig() && !config.project.isShowcase) {
-			projLibrary = this.templateManager.getProjectLibrary(config.project.framework, config.project.projectType);
-			theme = config.project.theme;
+		if (ProjectConfig.hasLocalConfig() && !this.config.project.isShowcase) {
+			projLibrary = this.templateManager.getProjectLibrary(this.config.project.framework, this.config.project.projectType);
+			theme = this.config.project.theme;
 		} else {
 			Util.log(""); /* new line */
 
@@ -69,7 +71,7 @@ export class PromptSession {
 				type: "list",
 				name: "framework",
 				message: "Choose framework:",
-				choices: this.templateManager.getFrameworkNames(),
+				choices: this.getFrameworkNames(),
 				default: "jQuery"
 			});
 
@@ -85,7 +87,7 @@ export class PromptSession {
 			await projTemplate.generateFiles(process.cwd(), projectName, theme);
 
 			Util.log(Util.greenCheck() + " Project structure generated.");
-			if (!config.skipGit) {
+			if (!this.config.skipGit) {
 				Util.gitInit(process.cwd(), projectName);
 			}
 			// move cwd to project folder
@@ -273,25 +275,22 @@ export class PromptSession {
 		let selectedTemplate: Template;
 		const templates: Template[] = component.templates;
 		const config = ProjectConfig.getConfig();
-		if (templates.length === 1) {
-			//get the only one template
-			selectedTemplate = templates[0];
-		} else {
-			const templateRes = await this.getUserInput({
-				type: "list",
-				name: "template",
-				message: "Choose one:",
-				choices: this.formatOutput(templates)
-			}, true);
 
-			if (templateRes === this.WIZARD_BACK_OPTION) {
-				return false;
-			}
+		const templateRes = await this.getUserInput({
+			type: "list",
+			name: "template",
+			message: "Choose one:",
+			choices: this.formatOutput(templates)
+		}, true);
 
-			selectedTemplate = templates.find((value, i, obj) => {
-				return value.name === templateRes;
-			});
+		if (templateRes === this.WIZARD_BACK_OPTION) {
+			return false;
 		}
+
+		selectedTemplate = templates.find((value, i, obj) => {
+			return value.name === templateRes;
+		});
+
 		if (selectedTemplate) {
 			let success = false;
 			const availableDefaultName = Util.getAvailableName(selectedTemplate.name, false,
@@ -366,13 +365,18 @@ export class PromptSession {
 	}
 
 	/**
-	 * Gets the user input according to provided @param options.
-	 * If @param withBackChoice is set to true adds Back option to the list
+	 * Gets the user input according to provided `options`.Returns directly if single choice is provided.
 	 * @param options to use for the user input
-	 * @param withBackChoice determines whether or not Back option should be added
+	 * @param withBackChoice Add a "Back" option to choices list
 	 */
 	private async getUserInput(options: IUserInputOptions, withBackChoice: boolean = false): Promise<string> {
+
 		if (options.choices) {
+			if (options.choices.length < 2) {
+				// single choice to return:
+				const choice = options.choices[0];
+				return choice.value || choice;
+			}
 			if (withBackChoice) {
 				options.choices.push(this.WIZARD_BACK_OPTION);
 			}
@@ -435,32 +439,69 @@ export class PromptSession {
 	 */
 	private async getProjectLibrary(framework: Framework): Promise<ProjectLibrary> {
 		let projectLibrary: ProjectLibrary;
-		if (framework.projectLibraries.length > 1) {
-			const projectRes = await this.getUserInput({
-				type: "list",
-				name: "projectType",
-				message: "Choose the type of project:",
-				choices: this.templateManager.getProjectLibraryNames(framework.id)
-			});
+		const projectLibraries = this.getProjectLibNames(framework);
 
-			projectLibrary = this.templateManager.getProjectLibraryByName(framework, projectRes);
-		} else {
-			projectLibrary = this.templateManager.getProjectLibrary(framework.id);
-		}
+		const projectRes = await this.getUserInput({
+			type: "list",
+			name: "projectType",
+			message: "Choose the type of project:",
+			choices: projectLibraries
+		});
+		projectLibrary = this.templateManager.getProjectLibraryByName(framework, projectRes);
 
 		return projectLibrary;
 	}
 
+	/** Returns the framework names, potentially filtered by config */
+	private getFrameworkNames(): string[] {
+		let frameworksNames: string[] = [];
+		if (
+			this.config.stepByStep &&
+			this.config.stepByStep.frameworks &&
+			this.config.stepByStep.frameworks.length
+		) {
+			this.config.stepByStep.frameworks.forEach(x => {
+				const framework = this.templateManager.getFrameworkById(x);
+				if (framework) {
+					frameworksNames.push(framework.name);
+				}
+			});
+		}
+		if (!frameworksNames.length) {
+			// no config or wrong projTypes array:
+			frameworksNames = this.templateManager.getFrameworkNames();
+		}
+		return frameworksNames;
+	}
+
+	/** Returns the projectLibraries names, potentially filtered by config */
+	private getProjectLibNames(framework: Framework): string[] {
+		let projectLibraries: string[] = [];
+		const frameworkConfig = this.config.stepByStep && this.config.stepByStep[framework.id as FrameworkId];
+
+		if (frameworkConfig && frameworkConfig.projTypes && frameworkConfig.projTypes.length) {
+			frameworkConfig.projTypes.forEach(x => {
+				const projLib = framework.projectLibraries.find(p => p.projectType === x);
+				if (projLib) {
+					projectLibraries.push(projLib.name);
+				}
+			});
+		}
+
+		if (!projectLibraries.length) {
+			// no config or wrong projTypes array:
+			projectLibraries = this.templateManager.getProjectLibraryNames(framework.id);
+		}
+		return projectLibraries;
+	}
+
 	/**
-	 * Gets project template from the user input, or default if provided @param projectLibrary has a single template
+	 * Gets project template from user input, or default if provided `projectLibrary` has a single template
 	 * @param projectLibrary to get theme for
 	 */
 	private async getProjectTemplate(projectLibrary: ProjectLibrary): Promise<ProjectTemplate> {
 		let projTemplate: ProjectTemplate;
 
-		if (projectLibrary.projectIds.length < 2) {
-			return projectLibrary.getProject(projectLibrary.projectIds[0]);
-		}
 		const componentNameRes = await this.getUserInput({
 			type: "list",
 			name: "projTemplate",
@@ -478,18 +519,13 @@ export class PromptSession {
 	 */
 	private async getTheme(projectLibrary: ProjectLibrary): Promise<string> {
 		let theme: string;
-		if (projectLibrary.themes.length < 2) {
-			theme = projectLibrary.themes[0] || "";
-		} else {
-			theme = await this.getUserInput({
-				type: "list",
-				name: "theme",
-				message: "Choose the theme for the project:",
-				choices: projectLibrary.themes,
-				default: projectLibrary.themes[0]
-			});
-		}
-
+		theme = await this.getUserInput({
+			type: "list",
+			name: "theme",
+			message: "Choose the theme for the project:",
+			choices: projectLibrary.themes,
+			default: projectLibrary.themes[0]
+		});
 		return theme;
 	}
 

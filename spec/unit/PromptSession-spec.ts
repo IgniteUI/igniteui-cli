@@ -27,17 +27,17 @@ describe("Unit - PromptSession", () => {
 		expect(inquirer.prompt).toHaveBeenCalledTimes(5);
 		done();
 	});
-	it("start - Should fire correctly when local project is missing", async done => {
+	it("start - Should create new project correctly", async done => {
+		spyOn(ProjectConfig, "getConfig").and.returnValue({});
 		// tslint:disable:object-literal-sort-keys
 		const mockProject = {
+			name: "Project 1",
 			generateFiles: () => Promise.resolve(true)
 		};
 		const mockProjectLibrary = {
 			themes: ["infragistics", "infragistics.less"],
 			projectIds: ["empty"],
-			getProject: () => {
-				return mockProject;
-			}
+			projects: [mockProject]
 		};
 		const projectLibraries = ["jQuery", "Angular", "React"];
 		const mockFramework1 = {
@@ -56,8 +56,8 @@ describe("Unit - PromptSession", () => {
 			getProjectLibrary: mockProjectLibrary,
 			frameworks: mockFrameworks,
 			getFrameworkByName: mockFramework1,
-			getFrameworkNames: () => this.frameworks.map(f => f.name),
-			getProjectLibraryNames: () => projectLibraries,
+			getFrameworkNames: mockFrameworks.map(f => f.name),
+			getProjectLibraryNames: projectLibraries,
 			getProjectLibraryByName: mockProjectLibrary
 		});
 		const mockSession = new PromptSession(mockTemplate);
@@ -116,17 +116,85 @@ describe("Unit - PromptSession", () => {
 		expect(mockSession.chooseActionLoop).toHaveBeenCalledWith({}, "");
 		done();
 	});
+
+	it("start - Should skip framework/projType input w/ restricted config", async done => {
+		spyOn(ProjectConfig, "getConfig").and.returnValue({
+			stepByStep: {
+				frameworks: ["angular"],
+				angular: {
+					projTypes: ["igx-ts"]
+				}
+			}
+		} /* as Config */);
+		// tslint:disable:object-literal-sort-keys
+		const mockProject = jasmine.createSpyObj({ generateFiles: Promise.resolve(true) });
+		mockProject.name = "Project";
+		const mockProjectLibrary = {
+			themes: ["infragistics"],
+			projectIds: ["empty"],
+			projects: [mockProject]
+		};
+		const projectLibraries = [
+			{ projectType: "ig-ts" , name: "Ignite UI Angular Wrappers" },
+			{ projectType: "igx-ts", name: "Ignite UI for Angular" }
+		];
+		const mockFramework1 = {
+			id: "angular",
+			name: "Custom Framework 1",
+			projectLibraries
+		};
+		const mockTemplate = jasmine.createSpyObj("mockTemplate", {
+			getFrameworkByName: mockFramework1,
+			getFrameworkById: mockFramework1,
+			getFrameworkNames: null,
+			getProjectLibraryNames: null,
+			getProjectLibraryByName: mockProjectLibrary
+		});
+		const mockSession = new PromptSession(mockTemplate);
+		spyOn(Util, "greenCheck").and.returnValue("");
+		spyOn(Util, "log");
+		spyOn(Util, "directoryExists").and.returnValue(false);
+		spyOn(Util, "isAlphanumericExt").and.returnValue(true);
+		spyOn(Util, "gitInit");
+		spyOn(inquirer, "prompt").and.returnValues(
+			Promise.resolve({ projectName: "Test Project" })
+		);
+		spyOn(process, "chdir");
+		spyOn(mockSession, "chooseActionLoop");
+		await mockSession.start();
+
+		// prompt only for project name:
+		expect(inquirer.prompt).toHaveBeenCalledTimes(1);
+		expect(inquirer.prompt).toHaveBeenCalledWith(
+			jasmine.objectContaining({ type: "input", name: "projectName" })
+		);
+		expect(mockTemplate.getFrameworkNames).toHaveBeenCalledTimes(0);
+		expect(mockTemplate.getProjectLibraryNames).toHaveBeenCalledTimes(0);
+
+		expect(mockTemplate.getFrameworkByName).toHaveBeenCalledTimes(1);
+		expect(mockTemplate.getFrameworkByName).toHaveBeenCalledWith("Custom Framework 1");
+		expect(mockTemplate.getFrameworkById).toHaveBeenCalledTimes(1);
+		expect(mockTemplate.getFrameworkById).toHaveBeenCalledWith("angular");
+		expect(mockTemplate.getProjectLibraryByName).toHaveBeenCalledTimes(1);
+		expect(mockTemplate.getProjectLibraryByName).toHaveBeenCalledWith(mockFramework1, "Ignite UI for Angular");
+		expect(mockProject.generateFiles).toHaveBeenCalledWith(process.cwd(), "Test Project", mockProjectLibrary.themes[0]);
+
+		expect(Util.log).toHaveBeenCalledWith(" Project structure generated.");
+		expect(Util.gitInit).toHaveBeenCalled();
+		expect(mockSession.chooseActionLoop).toHaveBeenCalled();
+		done();
+	});
+
 	it("start - New project - missing IFs", async done => {
 		// tslint:disable:object-literal-sort-keys
 		const mockProject = {
+			name: "Project 1",
 			generateFiles: () => Promise.resolve(true)
 		};
 		const mockProjectLibrary = {
 			projectIds: ["empty"],
 			themes: ["infragistics", "infragistics.less"],
-			getProject: () => {
-				return mockProject;
-			}
+			projects: [mockProject]
 		};
 		const projectLibraries = ["jQuery", "Angular", "React"];
 		const mockFramework1 = {
@@ -145,8 +213,8 @@ describe("Unit - PromptSession", () => {
 			getProjectLibrary: mockProjectLibrary,
 			frameworks: mockFrameworks,
 			getFrameworkByName: mockFramework1,
-			getFrameworkNames: () => this.frameworks.map(f => f.name),
-			getProjectLibraryNames: () => projectLibraries,
+			getFrameworkNames: mockFrameworks.map(f => f.name),
+			getProjectLibraryNames: projectLibraries,
 			getProjectLibraryByName: mockProjectLibrary
 		});
 		const mockSession = new PromptSession(mockTemplate);
@@ -233,7 +301,8 @@ describe("Unit - PromptSession", () => {
 			getComponentGroupNames: ["Custom Group 1", "Custom Group 2"],
 			getComponentsByGroup: [{group: "Custom Group 1", name: "Component 1" },
 			{ group: "Custom Group 1", name: "Component 2" }],
-			getComponentGroups: [{ description: "Custom Group 2", name: "Group 2" }],
+			getComponentGroups: [
+				{ description: "Custom Group 1", name: "Group 1" }, { description: "Custom Group 2", name: "Group 2" }],
 			getComponentByName: mockComponent,
 			getProject: () => {
 				return mockProject;
@@ -258,8 +327,8 @@ describe("Unit - PromptSession", () => {
 			getProjectLibrary: mockProjectLibrary,
 			frameworks: mockFrameworks,
 			getFrameworkByName: mockFramework1,
-			getFrameworkNames: () => this.frameworks.map(f => f.name),
-			getProjectLibraryNames: () => projectLibraries,
+			getFrameworkNames: mockFrameworks.map(f => f.name),
+			getProjectLibraryNames: projectLibraries,
 			getProjectLibraryByName: mockProjectLibrary
 		});
 		const mockSession = new PromptSession(mockTemplate);
@@ -324,7 +393,7 @@ describe("Unit - PromptSession", () => {
 			name: "mockProjectLibrary",
 			getCustomTemplateNames: [mockSelectedTemplate.name, "Custom Template 2"],
 			getTemplateByName: [mockSelectedTemplate],
-			getCustomTemplates: [mockSelectedTemplate],
+			getCustomTemplates: [mockSelectedTemplate, { name: "Not selected"}],
 			getProject: () => {
 				return mockProject;
 			}
@@ -332,7 +401,6 @@ describe("Unit - PromptSession", () => {
 		mockProjectLibrary.components = ["igGrid", "igCombo"];
 		const mockTemplate = jasmine.createSpyObj("mockTemplate", {
 			getProjectLibrary: mockProjectLibrary,
-			getFrameworkNames: () => this.frameworks.map(f => f.name),
 			getProjectLibraryByName: mockProjectLibrary
 		});
 		const mockSession = new PromptSession(mockTemplate);
@@ -405,7 +473,8 @@ describe("Unit - PromptSession", () => {
 			name: "mockProjectLibrary",
 			themes: ["infragistics", "infragistics.less"],
 			getCustomTemplateNames: ["Custom Template 1"],
-			getComponentGroups: [{ description: "Custom Group 2", name: "Group 2" }],
+			getComponentGroups: [
+				{ description: "Custom Group 1", name: "Group 1" }, { description: "Custom Group 2", name: "Group 2" }],
 			getComponentGroupNames: ["Custom Group 1", "Custom Group 2"],
 			getComponentsByGroup:
 			[{ group: "Custom Group 1", name: "Component 1", description : "description for Component 1",
@@ -437,8 +506,8 @@ describe("Unit - PromptSession", () => {
 			getProjectLibrary: mockProjectLibrary,
 			frameworks: mockFrameworks,
 			getFrameworkByName: mockFramework1,
-			getFrameworkNames: () => this.frameworks.map(f => f.name),
-			getProjectLibraryNames: () => projectLibraries,
+			getFrameworkNames: mockFrameworks.map(f => f.name),
+			getProjectLibraryNames: projectLibraries,
 			getProjectLibraryByName: mockProjectLibrary
 		});
 		const mockSession = new PromptSession(mockTemplate);
@@ -506,7 +575,6 @@ describe("Unit - PromptSession", () => {
 		mockProjectLibrary.components = ["igGrid", "igCombo"];
 		const mockTemplate = jasmine.createSpyObj("mockTemplate", {
 			getProjectLibrary: mockProjectLibrary,
-			getFrameworkNames: () => this.frameworks.map(f => f.name),
 			getProjectLibraryByName: mockProjectLibrary
 		});
 		const params = {
@@ -534,6 +602,7 @@ describe("Unit - PromptSession", () => {
 		done();
 	});
 	it("start - Should fire correctly with Angular Custom theme selected", async done => {
+		spyOn(ProjectConfig, "getConfig").and.returnValue({ customTemplates: [] });
 		const mockSession = new PromptSession(new TemplateManager());
 		spyOn(Util, "isAlphanumericExt").and.callThrough();
 		spyOn(Util, "gitInit");
@@ -562,6 +631,7 @@ describe("Unit - PromptSession", () => {
 		done();
 	});
 	it("start - Should fire correctly with Angular Default theme selected", async done => {
+		spyOn(ProjectConfig, "getConfig").and.returnValue({ customTemplates: [] });
 		const mockSession = new PromptSession(new TemplateManager());
 		spyOn(Util, "isAlphanumericExt").and.callThrough();
 		spyOn(Util, "gitInit");
