@@ -75,7 +75,7 @@ class Util {
 					destinationFolderName = configuration["__path__"];
 				}
 				if (!Util.directoryExists(path.join(destinationPath, destinationFolderName))) {
-					this.mkDirByPathSync(path.join(destinationPath, destinationFolderName));
+					this.createDirectory(path.join(destinationPath, destinationFolderName));
 				}
 				//TODO: This call should have await!
 				await Util.processTemplates(
@@ -426,31 +426,34 @@ class Util {
 		return defaultName;
 	}
 
-	public static mkDirByPathSync(targetDir, { isRelativeToScript = false } = {}) {
-		const sep = path.sep;
-		const initDir = path.isAbsolute(targetDir) ? sep : "";
-		const baseDir = isRelativeToScript ? __dirname : ".";
+	/**
+	 * Creates all folders in a given absolute path. Starts from cwd
+	 * @param targetDir Absolute path to folder to create
+	 * @throws Throws on `EACCES`, `EISDIR`
+	 */
+	public static createDirectory(targetDir: string) {
+		// start from current
+		let curDir = process.cwd();
+		if (path.isAbsolute(targetDir)) {
+			// strip target to relative
+			targetDir = path.relative(curDir, targetDir);
+		}
 
-		return targetDir.split(sep).reduce((parentDir, childDir) => {
-			const curDir = path.resolve(baseDir, parentDir, childDir);
+		// split target into parts and go through
+		targetDir.split(path.sep).forEach(childDir => {
+			curDir = path.resolve(curDir, childDir);
 			try {
 				fs.mkdirSync(curDir);
 			} catch (err) {
-				if (err.code === "EEXIST") { // curDir already exists!
-					return curDir;
+				// reuse catch rather than another one from `this.directoryExists`
+				if (err.code === "EEXIST") {
+					return;
 				}
-				// avoid `EISDIR` error on Mac and `EACCES`-->`ENOENT` and `EPERM` on Windows.
-				if (err.code === "ENOENT") { // throw the original parentDir error on curDir `ENOENT` failure.
-					throw new Error(`EACCES: permission denied, mkdir "${parentDir}"`);
-				}
-
-				const caughtErr = ["EACCES", "EPERM", "EISDIR"].indexOf(err.code) > -1;
-				if (!caughtErr || caughtErr && curDir === path.resolve(targetDir)) {
-					throw err; // throw if it is the last created dir.
-				}
+				this.error(`Failed to create ${curDir}`, "red");
+				this.error(err.message, "red");
+				throw err;
 			}
-			return curDir;
-		}, initDir);
+		});
 	}
 
 	private static propertyByPath(object: any, propPath: string) {
