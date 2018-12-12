@@ -131,7 +131,8 @@ export class AngularTemplate implements Template {
 		const parts = path.parse(pathName);
 		let folderName = pathName;
 		if (parts.dir) {
-			folderName = parts.dir.replace(/\\/g, "/");
+			folderName = path.join(parts.dir, parts.name);
+			folderName = folderName.replace(/\\/g, "/");
 			// TODO: config-based "src/app"?
 			const relative = path.join(process.cwd(), "src/app", folderName);
 			// path.join will also resolve any '..' segments
@@ -140,6 +141,8 @@ export class AngularTemplate implements Template {
 				Util.error(`Path ${"src/app/" + folderName} is not valid!`, "red");
 				process.exit(1);
 			}
+			//clean up potential leading spaces in folder names (`path/    name`):
+			folderName = folderName.replace(/\/\s+/g, "/");
 		}
 		return Util.lowerDashed(folderName);
 	}

@@ -5,7 +5,7 @@ import { parse } from "path";
 import cli = require("../../lib/cli");
 import { GoogleAnalytics } from "../../lib/GoogleAnalytics";
 import { ProjectConfig } from "../../lib/ProjectConfig";
-import { resetSpy } from "../helpers/utils";
+import { deleteAll, resetSpy } from "../helpers/utils";
 import { PromptSession } from "./../../lib/PromptSession";
 
 describe("Add command", () => {
@@ -345,25 +345,26 @@ describe("Add command", () => {
 		})
 		export class AppModule { }`);
 
-		await cli.run(["add", "grid", "folder\\test nested folders\\  \t Test Nested Folders	\t"]);
+		await cli.run(["add", "grid", "folder/test nested folders/  \t Test Nested Folders	\t"]);
 
 		expect(console.error).toHaveBeenCalledTimes(0);
-		// tslint:disable-next-line:no-console
 		expect(console.log).toHaveBeenCalledWith(jasmine.stringMatching(/View 'Test Nested Folders' added\s*/));
 
-		expect(fs.existsSync("./src/app/folder/test-nested-folders")).toBeTruthy();
-		const componentPath = "./src/app/folder/test-nested-folders/test-nested-folders.component.ts";
+		const componentFolder = "folder/test-nested-folders/test-nested-folders";
+		expect(fs.existsSync(`./src/app/${componentFolder}`)).toBeTruthy();
+		const componentPath = `./src/app/${componentFolder}/test-nested-folders.component.ts`;
 		expect(fs.existsSync(componentPath)).toBeTruthy();
 		// file contents:
 		expect(fs.readFileSync(componentPath, "utf-8")).toContain("export class TestNestedFoldersComponent");
+
 		expect(fs.readFileSync("src/app/app-routing.module.ts", "utf-8")).toBe(
-			`import { TestNestedFoldersComponent } from './folder/test-nested-folders/test-nested-folders.component';` +  EOL +
+			`import { TestNestedFoldersComponent } from './${componentFolder}/test-nested-folders.component';` +  EOL +
 			// tslint:disable-next-line:max-line-length
 			`const routes: Routes = [{ path: 'test-nested-folders', component: TestNestedFoldersComponent, data: { text: 'Test Nested Folders' } }];` + EOL
 		);
 
 		expect(fs.readFileSync("src/app/app.module.ts", "utf-8")).toBe(
-			`import { TestNestedFoldersComponent } from './folder/test-nested-folders/test-nested-folders.component';` +  EOL +
+			`import { TestNestedFoldersComponent } from './${componentFolder}/test-nested-folders.component';` +  EOL +
 			`import { IgxGridModule } from 'igniteui-angular';` +  EOL +
 			`@NgModule({` +  EOL +
 			`  declarations: [` +  EOL +
@@ -380,9 +381,9 @@ describe("Add command", () => {
 			`export class AppModule {` +  EOL +
 			`}` +  EOL
 		);
-		fs.unlinkSync("./src/app/folder/test-nested-folders/test-nested-folders.component.ts");
-		fs.removeSync("./src");
 
+		deleteAll("./src");
+		fs.rmdirSync("./src");
 		fs.unlinkSync(ProjectConfig.configFile);
 		fs.unlinkSync("tslint.json");
 		done();

@@ -145,7 +145,8 @@ export class jQueryTemplate implements Template {
 		let folderName = pathName;
 		const parts = path.parse(pathName);
 		if (parts.dir) {
-			folderName = parts.dir.replace(/\\/g, "/");
+			folderName = path.join(parts.dir, parts.name);
+			folderName = folderName.replace(/\\/g, "/");
 			const fullPath = path.join(process.cwd(), folderName);
 			// path.join will also resolve any '..' segments
 			// if it doesn't start with CWD it's out of project root
@@ -153,6 +154,8 @@ export class jQueryTemplate implements Template {
 				Util.error(`Path ${folderName} is not valid!`, "red");
 				process.exit(1);
 			}
+			//clean up potential leading spaces in folder names (`path/    name`):
+			folderName = folderName.replace(/\/\s+/g, "/");
 		}
 		return Util.lowerDashed(folderName);
 	}
