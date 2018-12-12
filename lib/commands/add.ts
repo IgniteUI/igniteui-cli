@@ -109,9 +109,9 @@ command = {
 			PackageManager.ensureIgniteUISource(config.packagesInstalled, command.templateManager);
 		}
 	},
-	async addTemplate(name: string, template: Template, options?: AddTemplateArgs): Promise<boolean> {
-		// trim name to avoid creating awkward paths or mismatches:
-		name = name.trim();
+	async addTemplate(fileName: string, template: Template, options?: AddTemplateArgs): Promise<boolean> {
+		fileName = fileName.trim();
+		const name = Util.nameFromPath(fileName);
 
 		// letter+alphanumeric check
 		if (!Util.isAlphanumericExt(name)) {
@@ -121,9 +121,9 @@ command = {
 			return false;
 		}
 
-		if (await template.generateFiles(process.cwd(), name, options || {})) {
+		if (await template.generateFiles(process.cwd(), fileName, options || {})) {
 			//successful
-			template.registerInProject(process.cwd(), name, options || {});
+			template.registerInProject(process.cwd(), fileName, options || {});
 			command.templateManager.updateProjectConfiguration(template);
 			template.packages.forEach(x => PackageManager.queuePackage(x));
 			Util.log(`${Util.greenCheck()} View '${name}' added.`);
