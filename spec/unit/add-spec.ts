@@ -44,10 +44,9 @@ describe("Unit - Add command", () => {
 		const mockTemplate = jasmine.createSpyObj("Template", ["generateFiles"]);
 
 		const errorCombos = [
+			{ name: "name.ts", inError: "name.ts" }, // file extension test
 			{ name: "1 is not valid", inError: "1 is not valid" },
 			{ name: "   1 is   not valid  \t   ", inError: "1 is   not valid" },
-			{ name: "../editors", inError: "../editors" },
-			{ name: "template/editors", inError: "template/editors" },
 			{ name: "name!", inError: "name!" },
 			{ name: "bits~and*bobs()", inError: "bits~and*bobs()" }
 		];
@@ -63,6 +62,8 @@ describe("Unit - Add command", () => {
 			{ name: "   valid  name  \t   ", valid: "valid  name" },
 			{ name: "th1s is valid", valid: "th1s is valid" },
 			{ name: "b1ts-and bobs ", valid: "b1ts-and bobs" },
+			{ name: "../editors", valid: "../editors" },
+			{ name: "template/editors", valid: "template/editors" },
 			{ name: "a      name", valid: "a      name" },
 			{ name: "a", valid: "a" } // single letter name test
 		];
@@ -117,7 +118,7 @@ describe("Unit - Add command", () => {
 		done();
 	});
 
-	it("Should properly accept module args when passed - IgniteUI for Anuglar", async done => {
+	it("Should properly accept module args when passed - IgniteUI for Angular", async done => {
 		const mockProjectConfig = {project: {
 			framework: "angular",
 			theme: "infragistics"
@@ -320,7 +321,7 @@ describe("Unit - Add command", () => {
 		done();
 	});
 
-	it("Should not add component and should log error if wrong path is massed to module", async done => {
+	it("Should not add component and should log error if wrong path is passed to module", async done => {
 		spyOn(Util, "fileExists").and.returnValue(false);
 		spyOn(Util, "error");
 		const wrongPath = "myCustomModule/my-custom-module.module.ts";

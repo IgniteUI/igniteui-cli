@@ -13,6 +13,7 @@ export class IgniteUIForAngularTemplate extends AngularTemplate {
 		super(rootPath);
 	}
 
+	//TODO: rename name to fullName for clarity + in all other places fileName to fullName
 	public registerInProject(projectPath: string, name: string, options?: AddTemplateArgs) {
 		let modulePath = "app.module.ts";
 		if (options && options.modulePath) {
@@ -44,8 +45,8 @@ export class IgniteUIForAngularTemplate extends AngularTemplate {
 			const routingModule = new TsUpdate(path.join(projectPath, "src/app/app-routing.module.ts"));
 			routingModule.addRoute(
 				path.join(projectPath, `src/app/${this.folderName(name)}/${this.fileName(name)}.component.ts`),
-				this.folderName(name), //path
-				name //text
+				this.fileName(name),		//path
+				Util.nameFromPath(name)		//text
 			);
 		}
 

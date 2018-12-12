@@ -58,7 +58,7 @@ class Util {
 
 		// TODO: Rework with glob...
 		if (!Util.directoryExists(destinationPath)) {
-			fs.mkdirSync(destinationPath);
+			this.createDirectory(destinationPath);
 		}
 
 		if (fs.existsSync(sourcePath)) {
@@ -75,7 +75,7 @@ class Util {
 					destinationFolderName = configuration["__path__"];
 				}
 				if (!Util.directoryExists(path.join(destinationPath, destinationFolderName))) {
-					fs.mkdirSync(path.join(destinationPath, destinationFolderName));
+					this.createDirectory(path.join(destinationPath, destinationFolderName));
 				}
 				//TODO: This call should have await!
 				await Util.processTemplates(
@@ -424,6 +424,47 @@ class Util {
 			}
 		}
 		return defaultName;
+	}
+
+	/**
+	 * Creates all folders in a given absolute path. Starts from cwd
+	 * @param targetDir Absolute path to folder to create
+	 * @throws Throws on `EACCES`, `EISDIR`
+	 */
+	public static createDirectory(targetDir: string) {
+		// start from current
+		let curDir = process.cwd();
+		if (path.isAbsolute(targetDir)) {
+			// strip target to relative
+			targetDir = path.relative(curDir, targetDir);
+		}
+
+		// split target into parts and go through
+		targetDir.split(path.sep).forEach(childDir => {
+			curDir = path.resolve(curDir, childDir);
+			try {
+				fs.mkdirSync(curDir);
+			} catch (err) {
+				// reuse catch rather than another one from `this.directoryExists`
+				if (err.code === "EEXIST") {
+					return;
+				}
+				this.error(`Failed to create ${curDir}`, "red");
+				this.error(err.message, "red");
+				throw err;
+			}
+		});
+	}
+
+	/**
+	 * Extracts the name (last part) from a path and trims.
+	 * @param fileName Path-like name, e.g. /path/to/my component
+	 */
+	public static nameFromPath(fileName: string) {
+		const parts = path.parse(fileName);
+		const name = parts.name + parts.ext;
+		// trim name itself to avoid creating awkward component names
+		return name.trim();
 	}
 
 	private static propertyByPath(object: any, propPath: string) {
