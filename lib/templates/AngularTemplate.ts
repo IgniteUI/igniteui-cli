@@ -63,7 +63,7 @@ export class AngularTemplate implements Template {
 			routingModule.addRoute(
 				path.join(projectPath, `src/app/components/${this.folderName(name)}/${this.fileName(name)}.component.ts`),
 				this.folderName(name), //path
-				name //text
+				Util.nameFromPath(name) //text
 			);
 		}
 
@@ -86,8 +86,8 @@ export class AngularTemplate implements Template {
 
 	protected getBaseVariables(name: string) {
 		const config = {};
-		config["$(name)"] = this.fileName(name);
-		config["$(ClassName)"] = Util.className(this.fileName(name));
+		config["$(name)"] = Util.nameFromPath(name);
+		config["$(ClassName)"] = Util.className(Util.nameFromPath(name));
 		config["__name__"] = this.fileName(name);
 		config["__path__"] = this.folderName(name);
 		config["$(filePrefix)"] = this.fileName(name);
