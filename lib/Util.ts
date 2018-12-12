@@ -58,7 +58,7 @@ class Util {
 
 		// TODO: Rework with glob...
 		if (!Util.directoryExists(destinationPath)) {
-			fs.mkdirSync(destinationPath);
+			this.createDirectory(destinationPath);
 		}
 
 		if (fs.existsSync(sourcePath)) {

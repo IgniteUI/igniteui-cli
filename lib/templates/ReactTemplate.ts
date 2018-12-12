@@ -36,8 +36,8 @@ export class ReactTemplate implements Template {
 		const pathsConfig = {};
 
 		config["__path__"] = this.folderName(name); //folder name allowed spaces, any casing
-		config["$(name)"] = name; // this name should not have restrictions
-		config["$(ClassName)"] = Util.className(name); //first letter capital, no spaces and no dashes,
+		config["$(name)"] = Util.nameFromPath(name); // this name should not have restrictions
+		config["$(ClassName)"] = Util.className(Util.nameFromPath(name)); //first letter capital, no spaces and no dashes,
 		config["$(cliVersion)"] = Util.version();
 		if (this.widget) {
 			config["$(widget)"] = this.widget;
@@ -61,7 +61,10 @@ export class ReactTemplate implements Template {
 		}
 		let configFile = fs.readFileSync(path.join(projectPath, this.configFile), "utf8");
 		const viewsArr = JSON.parse(this.replacePattern.exec(configFile)[0]);
-		viewsArr.push({ path: "/" + this.folderName(name), folder: this.getViewLink(name), text: this.getToolbarLink(name) });
+		viewsArr.push({
+			folder: this.getViewLink(name),
+			path: "/" + this.folderName(Util.nameFromPath(name)),
+			text: this.getToolbarLink(name) });
 		configFile = configFile.replace(this.replacePattern, JSON.stringify(viewsArr, null, 4));
 		fs.writeFileSync(path.join(projectPath, this.configFile), configFile);
 	}
@@ -85,9 +88,22 @@ export class ReactTemplate implements Template {
 		return builder;
 	}
 
-	protected folderName(name: string): string {
+	protected folderName(pathName: string): string {
 		//TODO: should remove the spaces
-		return Util.lowerDashed(name);
+		const parts = path.parse(pathName);
+		let folderName = pathName;
+		if (parts.dir) {
+			folderName = parts.dir.replace(/\\/g, "/");
+			// TODO: config-based "src/app"?
+			const relative = path.join(process.cwd(), "client/components", folderName);
+			// path.join will also resolve any '..' segments
+			// so if relative result doesn't start with CWD it's out of project root
+			if (!relative.startsWith(process.cwd())) {
+				Util.error(`Path ${"client/components/" + folderName} is not valid!`, "red");
+				process.exit(1);
+			}
+		}
+		return Util.lowerDashed(folderName);
 	}
 	protected getViewLink(name: string): string {
 		const filePath = this.folderName(name) + "/index.js";
@@ -95,6 +111,7 @@ export class ReactTemplate implements Template {
 	}
 
 	protected getToolbarLink(name: string): string {
+		name = Util.nameFromPath(name);
 		const toolbarLink = name.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
 		return toolbarLink;
 	}

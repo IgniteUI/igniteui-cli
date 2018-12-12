@@ -48,7 +48,7 @@ export class jQueryTemplate implements Template {
 			pathsConfig["$(igniteuiSource)"] = projectConfig.project.igniteuiSource;
 			pathsConfig["$(themePath)"] = projectConfig.project.themePath;
 		}
-		config["$(name)"] = name;
+		config["$(name)"] = Util.nameFromPath(name);
 		config["$(cssBlock)"] =  this.getCssTags();
 		config["$(scriptBlock)"] = this.getScriptTags();
 		config["$(description)"] = this.description;
@@ -73,7 +73,7 @@ export class jQueryTemplate implements Template {
 		}
 		let configFile = fs.readFileSync(path.join(projectPath, this.configFile), "utf8");
 		const viewsArr = JSON.parse(this.replacePattern.exec(configFile)[0]);
-		viewsArr.push({name, path: this.getViewLink(name)});
+		viewsArr.push({name: Util.nameFromPath(name), path: this.getViewLink(name)});
 		configFile = configFile.replace(this.replacePattern, JSON.stringify(viewsArr, null, 4));
 		fs.writeFileSync(path.join(projectPath, this.configFile), configFile);
 	}
@@ -102,29 +102,29 @@ export class jQueryTemplate implements Template {
 		builder += "<!-- Ignite UI Required Combined JavaScript Files -->\n";
 		//builder += "<script src=\"$(igniteuiSource)\\js\\infragistics.core.js\"></script>\n";
 		//builder += "<script src=\"$(igniteuiSource)\\js\\infragistics.lob.js\"></script>\n";
-		builder += "<script src=\"../ignite-ui/js/infragistics.core.js\"></script>\n";
-		builder += "<script src=\"../ignite-ui/js/infragistics.lob.js\"></script>\n";
+		builder += "<script src=\"/ignite-ui/js/infragistics.core.js\"></script>\n";
+		builder += "<script src=\"/ignite-ui/js/infragistics.lob.js\"></script>\n";
 		// temporary:
 		if (this.dependencies.filter(x => config.dv.indexOf(x) !== -1).length) {
 			builder += "\n";
 			//builder += "<script src=\"$(igniteuiSource)\\js\\infragistics.lob.js\"></script>\n";
-			builder += "<script src=\"../ignite-ui/js/infragistics.dv.js\"></script>\n";
+			builder += "<script src=\"/ignite-ui/js/infragistics.dv.js\"></script>\n";
 		}
 
 		if (this.dependencies.indexOf("igExcel") !== -1) {
-			builder += "<script src=\"../ignite-ui/js/infragistics.excel-bundled.js\"></script>\n";
+			builder += "<script src=\"/ignite-ui/js/infragistics.excel-bundled.js\"></script>\n";
 		}
 
 		if (this.dependencies.indexOf("igGridExcelExporter") !== -1) {
-			builder += "<script src=\"../ignite-ui/js/modules/infragistics.gridexcelexporter.js\"></script>\n";
+			builder += "<script src=\"/ignite-ui/js/modules/infragistics.gridexcelexporter.js\"></script>\n";
 		}
 		builder += this.getNavigationScript();
 		return builder;
 	}
 	protected getNavigationScript(): string {
 		let builder = "";
-		builder += "<script src=\"../ignite-cli-views.js\"></script>";
-		builder += "<script src=\"../assets/navigation.js\"></script>";
+		builder += "<script src=\"/ignite-cli-views.js\"></script>";
+		builder += "<script src=\"/assets/navigation.js\"></script>";
 
 		return builder;
 	}
@@ -132,20 +132,32 @@ export class jQueryTemplate implements Template {
 	protected getCssTags(): string {
 		let builder = "";
 		builder += "<!-- Ignite UI Required Combined CSS Files -->\n";
-		builder += "<link href=\"../ignite-ui/css/themes/infragistics/infragistics.theme.css\" rel=\"stylesheet\" />\n";
-		builder += "<link href=\"../ignite-ui/css/structure/infragistics.css\" rel=\"stylesheet\" />\n";
+		builder += "<link href=\"/ignite-ui/css/themes/infragistics/infragistics.theme.css\" rel=\"stylesheet\" />\n";
+		builder += "<link href=\"/ignite-ui/css/structure/infragistics.css\" rel=\"stylesheet\" />\n";
 		//builder += "<link href=\"$(themePath)\" rel=\"stylesheet\" />\n";
 		//builder += "<link href=\"$(igniteuiSource)\\css\\structure\\infragistics.css\" rel=\"stylesheet\" />\n"
-		builder += "<link href=\"../assets/app.css\" rel=\"stylesheet\" />\n";
+		builder += "<link href=\"/assets/app.css\" rel=\"stylesheet\" />\n";
 		return builder;
 	}
 
 	//getViewPath
-	protected folderName(name: string): string {
-		return Util.lowerDashed(name);
+	protected folderName(pathName: string): string {
+		let folderName = pathName;
+		const parts = path.parse(pathName);
+		if (parts.dir) {
+			folderName = parts.dir.replace(/\\/g, "/");
+			const fullPath = path.join(process.cwd(), folderName);
+			// path.join will also resolve any '..' segments
+			// if it doesn't start with CWD it's out of project root
+			if (!fullPath.startsWith(process.cwd())) {
+				Util.error(`Path ${folderName} is not valid!`, "red");
+				process.exit(1);
+			}
+		}
+		return Util.lowerDashed(folderName);
 	}
-	protected getViewLink(name: string): string {
-		const linkPath = this.folderName(name) + "/index.html";
+	protected getViewLink(pathName: string): string {
+		const linkPath = this.folderName(pathName) + "/index.html";
 		return linkPath;
 	}
 }
