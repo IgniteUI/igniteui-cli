@@ -1,12 +1,7 @@
-// tslint:disable:no-implicit-dependencies
 import { EmptyTree } from "@angular-devkit/schematics";
-// tslint:disable-next-line:no-submodule-imports
 import { SchematicTestRunner, UnitTestTree } from "@angular-devkit/schematics/testing";
-// tslint:disable-next-line:no-submodule-imports
 import { getWorkspace } from "@schematics/angular/utility/config";
-import * as fs from "fs";
 import * as path from "path";
-import { deleteAll } from "../../spec/helpers/utils";
 
 describe("schematics", () => {
 	const collectionPath = path.join(__dirname, "../cli-collection.json");
@@ -116,8 +111,6 @@ describe("schematics", () => {
 	});
 
 	it("should add BrowserAnimationsModule to app.module.ts", () => {
-		fs.mkdirSync(`./output/schematic-test`);
-		process.chdir(`./output/schematic-test`);
 		const moduleContent =
 `import { NgModule } from '@angular/core';
 @NgModule({
@@ -136,24 +129,11 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 export class AppModule {
 }
 `;
-
-		const targetFile = path.join(process.cwd(), "/src/app/app.module.ts");
-		if (!fs.existsSync("./src")) {
-			fs.mkdirSync("./src");
-			process.chdir("./src");
-			if (!fs.existsSync("./app")) {
-				fs.mkdirSync("./app");
-				process.chdir("../");
-			}
-		}
-		fs.writeFileSync(targetFile, moduleContent);
-		tree.create("/src/app/app.module.ts", moduleContent);
+		const targetFile = "/src/app/app.module.ts";
+		tree.create(targetFile, moduleContent);
 
 		runner.runSchematic("cli-config", {}, tree);
-		const content = fs.readFileSync(targetFile, "utf8");
-		expect(content).toEqual(moduleContentAfterSchematic);
-		process.chdir("../../");
-		deleteAll("./output/schematic-test");
-		fs.rmdirSync("./output/schematic-test");
+		const content = tree.readContent(targetFile);
+		expect(content.replace(/\r\n/g, "\n")).toEqual(moduleContentAfterSchematic.replace(/\r\n/g, "\n"));
 	});
 });

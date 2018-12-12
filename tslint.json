@@ -28,11 +28,9 @@
 		"no-string-literal": false,
 		"no-submodule-imports": [
 			true,
-			"rxjs",
-			"@angular/platform-browser",
-			"@angular/core/testing"
+			"@angular-devkit/schematics"
 		],
-		"max-classes-per-file": [ false ],
+		"max-classes-per-file": false,
 		"prefer-object-spread": false,
 		"prefer-conditional-expression": false,
 		"object-literal-sort-keys": [ true, "ignore-case", "match-declaration-order", "shorthand-first" ]
