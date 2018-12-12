@@ -44,6 +44,7 @@ describe("Unit - Add command", () => {
 		const mockTemplate = jasmine.createSpyObj("Template", ["generateFiles"]);
 
 		const errorCombos = [
+			{ name: "name.ts", inError: "name.ts" }, // file extension test
 			{ name: "1 is not valid", inError: "1 is not valid" },
 			{ name: "   1 is   not valid  \t   ", inError: "1 is   not valid" },
 			{ name: "name!", inError: "name!" },
@@ -58,7 +59,6 @@ describe("Unit - Add command", () => {
 		}
 
 		const validCombos = [
-			{ name: "valid name.ts", valid: "valid name" }, // file extension test
 			{ name: "   valid  name  \t   ", valid: "valid  name" },
 			{ name: "th1s is valid", valid: "th1s is valid" },
 			{ name: "b1ts-and bobs ", valid: "b1ts-and bobs" },

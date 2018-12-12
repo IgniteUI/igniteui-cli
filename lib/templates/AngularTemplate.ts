@@ -131,30 +131,21 @@ export class AngularTemplate implements Template {
 		const parts = path.parse(pathName);
 		let folderName = pathName;
 		if (parts.dir) {
-			folderName = parts.dir;
+			folderName = parts.dir.replace(/\\/g, "/");
 			// TODO: config-based "src/app"?
 			const relative = path.join(process.cwd(), "src/app", folderName);
 			// path.join will also resolve any '..' segments
 			// so if relative result doesn't start with CWD it's out of project root
 			if (!relative.startsWith(process.cwd())) {
-				Util.error(`Path ${"src/app/" + folderName} is not valid!`);
+				Util.error(`Path ${"src/app/" + folderName} is not valid!`, "red");
 				process.exit(1);
 			}
 		}
 		return Util.lowerDashed(folderName);
 	}
 
-	protected fileName(pathName: string, skipLowerDashed?: boolean): string {
-		// TODO: Util func.
-		const parts = path.parse(pathName);
-
-		let name = parts.name;
-		name = name.trim();
-
-		if (!skipLowerDashed) {
-			return Util.lowerDashed(name);
-		}
-
-		return name;
+	protected fileName(pathName: string): string {
+		const name = Util.nameFromPath(pathName);
+		return Util.lowerDashed(name);
 	}
 }

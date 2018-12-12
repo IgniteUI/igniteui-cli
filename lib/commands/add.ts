@@ -110,14 +110,8 @@ command = {
 		}
 	},
 	async addTemplate(fileName: string, template: Template, options?: AddTemplateArgs): Promise<boolean> {
-		const parts = path.parse(fileName);
-		// trim the fileName to avoid awkward paths or mismatches:
 		fileName = fileName.trim();
-		fileName = parts.ext ? path.join(parts.dir, parts.name) : fileName;
-		fileName = fileName.replace(/\\/g, "/");
-		let name = parts.dir ? parts.name : fileName;
-		// trim name itself to avoid creating awkward component names
-		name = name.trim();
+		const name = Util.nameFromPath(fileName);
 
 		// letter+alphanumeric check
 		if (!Util.isAlphanumericExt(name)) {

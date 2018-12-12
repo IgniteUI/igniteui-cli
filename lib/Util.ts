@@ -456,6 +456,17 @@ class Util {
 		});
 	}
 
+	/**
+	 * Extracts the name (last part) from a path and trims.
+	 * @param fileName Path-like name, e.g. /path/to/my component
+	 */
+	public static nameFromPath(fileName: string) {
+		const parts = path.parse(fileName);
+		const name = parts.name + parts.ext;
+		// trim name itself to avoid creating awkward component names
+		return name.trim();
+	}
+
 	private static propertyByPath(object: any, propPath: string) {
 		if (!propPath) {
 			return object;
