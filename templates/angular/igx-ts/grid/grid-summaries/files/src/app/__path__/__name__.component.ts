@@ -47,12 +47,12 @@ class CustomDateSummary extends IgxDateSummaryOperand {
     result.push({
       key: 'earliest',
       label: 'Earliest Date',
-      summaryResult: (IgxDateSummaryOperand.earliest(data)).toLocaleDateString()
+      summaryResult: data.length ? (IgxDateSummaryOperand.earliest(data)).toLocaleDateString() : null
     });
     result.push({
       key: 'latest',
       label: 'Latest Date',
-      summaryResult: (IgxDateSummaryOperand.latest(data)).toLocaleDateString()
+      summaryResult: data.length ? ( IgxDateSummaryOperand.latest(data)).toLocaleDateString() : null
     });
 
     return result;
