@@ -13,7 +13,7 @@ import { employeesData } from './localData';
 export class GridSummariesComponent implements OnInit {
   @ViewChild('sampleGrid', { read: IgxGridComponent })
   public sampleGrid: IgxGridComponent;
-  customDateSummary = CustomDateSummary;
+  public customDateSummary = CustomDateSummary;
 
   public localData: any[];
   title = 'Grid Summaries';
@@ -32,7 +32,7 @@ export class GridSummariesComponent implements OnInit {
     if (this.sampleGrid.getColumnByName(name).hasSummary) {
       this.sampleGrid.disableSummaries(name);
     } else {
-      this.sampleGrid.enableSummaries(name, this.customDateSummary);
+      this.sampleGrid.enableSummaries(name);
     }
   }
 }
