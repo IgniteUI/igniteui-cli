@@ -37,7 +37,15 @@ declare interface Config {
 		 *  and server configuration of the project */
 		//"projectBuild": "tsc",
 		//"serverType": "webpack"
-	}
+	},
+	/** Step by step mode configuration */
+	stepByStep?: {
+		/** Frameworks to list in Step by Step mode */
+		frameworks: string[];
+		[FrameworkId.angular]: StepFrameworkConfig;
+		[FrameworkId.react]: StepFrameworkConfig;
+		[FrameworkId.jquery]: StepFrameworkConfig;
+	},
 
 	/** An array of paths to read custom templates from */
 	customTemplates: string[];
@@ -52,4 +60,15 @@ declare interface Config {
 	 * Setting `disableAnalytics` to true will prevent any data from being sent.
 	 */
 	disableAnalytics: boolean;
+}
+
+declare enum FrameworkId {
+	angular = "angular",
+	react = "react",
+	jquery = "jquery"
+}
+
+declare interface StepFrameworkConfig {
+	/** Project types to list in Step by Step */
+	projTypes: string[];
 }
