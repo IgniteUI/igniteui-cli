@@ -6,11 +6,13 @@ import { employeesData } from './localData';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
-  selector: 'app-grid-summaries',
-  templateUrl: './grid-summaries.component.html',
-  styleUrls: ['./grid-summaries.component.scss']
+  selector: 'app-$(filePrefix)',
+  templateUrl: './$(filePrefix).component.html',
+  styleUrls: ['./$(filePrefix).component.scss']
 })
-export class GridSummariesComponent implements OnInit {
+
+
+export class $(ClassName)Component implements OnInit {
   @ViewChild('sampleGrid', { read: IgxGridComponent })
   public sampleGrid: IgxGridComponent;
   public customDateSummary = CustomDateSummary;
