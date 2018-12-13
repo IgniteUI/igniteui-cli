@@ -8,6 +8,7 @@ import { deleteAll, resetSpy } from "../helpers/utils";
 describe("Config command", () => {
 	let testFolder = path.parse(__filename).name;
 
+	// tslint:disable:no-console
 	beforeEach(() => {
 		spyOn(console, "log");
 		spyOn(console, "error");

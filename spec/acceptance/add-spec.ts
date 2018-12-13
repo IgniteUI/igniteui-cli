@@ -11,6 +11,7 @@ import { PromptSession } from "./../../lib/PromptSession";
 describe("Add command", () => {
 	let testFolder = parse(__filename).name;
 
+	// tslint:disable:no-console
 	beforeEach(() => {
 		spyOn(console, "log");
 		spyOn(console, "error");
