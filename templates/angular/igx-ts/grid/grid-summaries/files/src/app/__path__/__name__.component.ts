@@ -52,7 +52,7 @@ class CustomDateSummary extends IgxDateSummaryOperand {
     result.push({
       key: 'latest',
       label: 'Latest Date',
-      summaryResult: data.length ? ( IgxDateSummaryOperand.latest(data)).toLocaleDateString() : null
+      summaryResult: data.length ? (IgxDateSummaryOperand.latest(data)).toLocaleDateString() : null
     });
 
     return result;
