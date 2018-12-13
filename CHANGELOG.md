@@ -1,12 +1,23 @@
-# [3.2.0](http://git+https/github.com/IgniteUI/igniteui-cli/compare/v3.1.0...v3.2.0) (2018-12-12)
+# [3.2.0](https://github.com/IgniteUI/igniteui-cli/compare/v3.1.0...v3.2.0) (2018-12-13)
 
+This update brings enhancements to the way views can be added to a project. New streamlined project creation using Step by Step mode by lets you jump in directly to Ignite UI for Angular. Other framework and project options can be re-enabled through configuration.
 
 ### Features
 
-* Support adding component with folder path. [#381](https://github.com/IgniteUI/igniteui-cli/issues/381) ([9fdc598](https://github.com/IgniteUI/igniteui-cli/commit/9fdc598))
-* **add command:** new `--skip-route` argument [#368](https://github.com/IgniteUI/igniteui-cli/issues/368) ([cbf3e08](https://github.com/IgniteUI/igniteui-cli/commit/cbf3e08))
+* Updated Ignite UI for Angular projects to 7.1.0 and latest Angular CLI out of the box.
+* Support adding components with specified folder path. [#381](https://github.com/IgniteUI/igniteui-cli/issues/381) ([9fdc598](https://github.com/IgniteUI/igniteui-cli/commit/9fdc598))
+* **add command:** New `--skip-route` argument [#368](https://github.com/IgniteUI/igniteui-cli/issues/368) ([cbf3e08](https://github.com/IgniteUI/igniteui-cli/commit/cbf3e08))
 * **ts-transform:** Ignite UI for Angular `ng add` support: Added IFileSystem and included functionality for file manipulation via Angular Schematics API ([2cfbcfd](https://github.com/IgniteUI/igniteui-cli/commit/2cfbcfd))
-* **step-by-step:** Update default port in project config file every time the user sets custom port different than default. ([76526a3](http://git+https/github.com/IgniteUI/igniteui-cli/commit/76526a3))
+* **config:** Add step by step section to config interface and defaults ([70b7a66](https://github.com/IgniteUI/igniteui-cli/commit/70b7a66))
+* **step-by-step:** Filter available frameworks/proj choices by configuration. Auto-select if single option remains. ([a42bd1e](https://github.com/IgniteUI/igniteui-cli/commit/a42bd1e))
+* **step-by-step:** Update default port in project config file every time the user sets custom port different than default. ([76526a3](https://github.com/IgniteUI/igniteui-cli/commit/76526a3))
+
+
+### Bug Fixes
+
+* **igx-ts:** Batch editing template relative dep path ([24ffec9](https://github.com/IgniteUI/igniteui-cli/commit/24ffec9))
+* **igx-ts:** Grid Summaries template: Fix adding the component more than once. Updates for igniteui-angular@7.1.0 [PR #425](https://github.com/IgniteUI/igniteui-cli/pull/425)
+
 
 # [3.1.0](https://github.com/IgniteUI/igniteui-cli/compare/v3.0.1...v3.1.0) (2018-11-30)
 
