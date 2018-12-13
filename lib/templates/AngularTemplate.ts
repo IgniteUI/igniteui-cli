@@ -43,7 +43,7 @@ export class AngularTemplate implements Template {
 		return Util.processTemplates(path.join(this.rootPath, "files"), projectPath, config, pathsConfig);
 	}
 
-	public registerInProject(projectPath: string, name: string, options?: {[key: string]: any}) {
+	public registerInProject(projectPath: string, name: string, options?: AddTemplateArgs) {
 		let modulePath = "app.module.ts";
 		if (options && options.modulePath) {
 			modulePath = options.modulePath;
@@ -55,15 +55,17 @@ export class AngularTemplate implements Template {
 		const TsUpdate: typeof TypeScriptFileUpdate =
 			require("./../project-utility/TypeScriptFileUpdate").TypeScriptFileUpdate;
 
-		//1) import the component class name,
-		//2) and populate the Routes array with the path and component
-		//for example: { path: 'combo', component: ComboComponent }
-		const routingModule = new TsUpdate(path.join(projectPath, "src/app/app-routing.module.ts"));
-		routingModule.addRoute(
-			path.join(projectPath, `src/app/components/${this.folderName(name)}/${this.fileName(name)}.component.ts`),
-			this.folderName(name), //path
-			name //text
-		);
+		if (!(options && options.skipRoute)) {
+			//1) import the component class name,
+			//2) and populate the Routes array with the path and component
+			//for example: { path: 'combo', component: ComboComponent }
+			const routingModule = new TsUpdate(path.join(projectPath, "src/app/app-routing.module.ts"));
+			routingModule.addRoute(
+				path.join(projectPath, `src/app/components/${this.folderName(name)}/${this.fileName(name)}.component.ts`),
+				this.folderName(name), //path
+				Util.nameFromPath(name) //text
+			);
+		}
 
 		//3) add an import of the component class from its file location.
 		//4) populate the declarations portion of the @NgModule with the component class name.
@@ -84,8 +86,8 @@ export class AngularTemplate implements Template {
 
 	protected getBaseVariables(name: string) {
 		const config = {};
-		config["$(name)"] = name;
-		config["$(ClassName)"] = Util.className(name);
+		config["$(name)"] = Util.nameFromPath(name);
+		config["$(ClassName)"] = Util.className(Util.nameFromPath(name));
 		config["__name__"] = this.fileName(name);
 		config["__path__"] = this.folderName(name);
 		config["$(filePrefix)"] = this.fileName(name);
@@ -124,13 +126,29 @@ export class AngularTemplate implements Template {
 		}
 	}
 
-	protected folderName(name: string): string {
+	protected folderName(pathName: string): string {
 		//TODO: should remove the spaces
-		return Util.lowerDashed(name);
+		const parts = path.parse(pathName);
+		let folderName = pathName;
+		if (parts.dir) {
+			folderName = path.join(parts.dir, parts.name);
+			folderName = folderName.replace(/\\/g, "/");
+			// TODO: config-based "src/app"?
+			const relative = path.join(process.cwd(), "src/app", folderName);
+			// path.join will also resolve any '..' segments
+			// so if relative result doesn't start with CWD it's out of project root
+			if (!relative.startsWith(process.cwd())) {
+				Util.error(`Path ${"src/app/" + folderName} is not valid!`, "red");
+				process.exit(1);
+			}
+			//clean up potential leading spaces in folder names (`path/    name`):
+			folderName = folderName.replace(/\/\s+/g, "/");
+		}
+		return Util.lowerDashed(folderName);
 	}
 
-	protected fileName(name: string): string {
-		//TODO: should remove the spaces
+	protected fileName(pathName: string): string {
+		const name = Util.nameFromPath(pathName);
 		return Util.lowerDashed(name);
 	}
 }
