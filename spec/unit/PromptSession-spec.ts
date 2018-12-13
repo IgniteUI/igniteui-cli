@@ -177,6 +177,9 @@ describe("Unit - PromptSession", () => {
 		expect(mockTemplate.getFrameworkById).toHaveBeenCalledWith("angular");
 		expect(mockTemplate.getProjectLibraryByName).toHaveBeenCalledTimes(1);
 		expect(mockTemplate.getProjectLibraryByName).toHaveBeenCalledWith(mockFramework1, "Ignite UI for Angular");
+
+		expect(Util.log).toHaveBeenCalledWith("  Framework: Custom Framework 1");
+		expect(Util.log).toHaveBeenCalledWith("  Project type: Ignite UI for Angular");
 		expect(mockProject.generateFiles).toHaveBeenCalledWith(process.cwd(), "Test Project", mockProjectLibrary.themes[0]);
 
 		expect(Util.log).toHaveBeenCalledWith(" Project structure generated.");

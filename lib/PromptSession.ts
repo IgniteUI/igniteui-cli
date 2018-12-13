@@ -374,8 +374,10 @@ export class PromptSession {
 		if (options.choices) {
 			if (options.choices.length < 2) {
 				// single choice to return:
-				const choice = options.choices[0];
-				return choice.value || choice;
+				let choice = options.choices[0];
+				choice = choice.value || choice;
+				this.logAutoSelected(options, choice);
+				return choice;
 			}
 			if (withBackChoice) {
 				options.choices.push(this.WIZARD_BACK_OPTION);
@@ -411,6 +413,28 @@ export class PromptSession {
 		}
 
 		return result;
+	}
+
+	private logAutoSelected(options: IUserInputOptions, choice: any) {
+		let text;
+		switch (options.name) {
+			case "framework":
+				text = `  Framework`;
+				break;
+			case "projectType":
+				text = `  Project type`;
+				break;
+			default:
+				return;
+				//TODO: text = `  ${options.name}`;
+		}
+		GoogleAnalytics.post({
+			t: "event",
+			ec: "$ig wizard",
+			el: options.message,
+			ea: `${options.name}: ${choice}`
+		});
+		Util.log(`${text}: ${choice}`);
 	}
 
 	/**
