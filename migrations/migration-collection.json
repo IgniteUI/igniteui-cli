@@ -10,6 +10,11 @@
             "version": "3.0.0",
             "description": "Updates Ignite UI for Angular project from 2.1.x",
             "factory": "./update-3"
+        },
+        "migration-03": {
+            "version": "3.2.0",
+            "description": "Updates Ignite UI for Angular project from 3.1.x",
+            "factory": "./update-3_2"
         }
     }
 }
