@@ -24,7 +24,7 @@
     "core-js": "^2.5.4",
     "jszip": "^3.1.5",
     "hammerjs": "^2.0.8",
-    "igniteui-angular": "~6.1.1",
+    "igniteui-angular": "^6.1.1",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26",
     "web-animations-js": "^2.3.1"
