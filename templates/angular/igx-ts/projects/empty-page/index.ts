@@ -1,6 +1,6 @@
-import { BaseIgxProject } from "../_base";
 import * as path from "path";
 import { Util } from "../../../../../lib/Util";
+import { BaseIgxProject } from "../_base";
 
 export class EmptyPageTemplate extends BaseIgxProject implements ProjectTemplate {
 	public id: string = "empty-page";
@@ -24,7 +24,7 @@ export class EmptyPageTemplate extends BaseIgxProject implements ProjectTemplate
 		};
 		const pathsConfig = {};
 
-		await super.generateFiles(outputPath, name, theme, ...options)
+		await super.generateFiles(outputPath, name, theme, ...options);
 		return Util.processTemplates(path.join(__dirname, "./files"), path.join(outputPath, name), config, pathsConfig);
 	}
 }
