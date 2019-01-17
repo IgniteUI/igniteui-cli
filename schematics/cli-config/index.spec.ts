@@ -3,7 +3,7 @@ import { SchematicTestRunner, UnitTestTree } from "@angular-devkit/schematics/te
 import { getWorkspace } from "@schematics/angular/utility/config";
 import * as path from "path";
 
-describe("schematics", () => {
+describe("cli-config schematic", () => {
 	const collectionPath = path.join(__dirname, "../cli-collection.json");
 	const runner: SchematicTestRunner = new SchematicTestRunner("cli-schematics", collectionPath);
 	let tree: UnitTestTree;
@@ -19,9 +19,34 @@ describe("schematics", () => {
 	};
 
 	const pkgJsonConfig = {
-		dependencies: null,
-		devDependencies: null
+		dependencies: {},
+		devDependencies: {},
+		peerDependencies: {}
 	};
+
+	function createIgPkgJson() {
+		const filePath = "node_modules/igniteui-angular/package.json";
+		tree.create(filePath, JSON.stringify(pkgJsonConfig));
+		const pkgJson = JSON.parse(tree.readContent(filePath));
+		const angularCommon = "@angular/common";
+		const angularCore = "@angular/core";
+		const targetVersion = "^7.0.3";
+		pkgJson.peerDependencies[angularCommon] = targetVersion;
+		pkgJson.peerDependencies[angularCore] = targetVersion;
+
+		tree.overwrite(filePath, JSON.stringify(pkgJson));
+	}
+
+	function populatePkgJson() {
+		const targetFile = "/package.json";
+		const angularCore = "@angular/core";
+		const angularCommon = "@angular/common";
+		const version = "^6.1.0";
+		const pkgJson = JSON.parse(tree.readContent(targetFile));
+		pkgJson.dependencies[angularCore] = version;
+		pkgJson.dependencies[angularCommon] = version;
+		tree.overwrite(targetFile, JSON.stringify(pkgJson));
+	}
 
 	beforeEach(() => {
 		tree = new UnitTestTree(new EmptyTree());
@@ -32,6 +57,8 @@ describe("schematics", () => {
 			 </head>
 			 <body>
 			 </body>`);
+		createIgPkgJson();
+		populatePkgJson();
 	});
 
 	it("should create the needed files correctly", () => {
@@ -112,7 +139,7 @@ describe("schematics", () => {
 
 	it("should add BrowserAnimationsModule to app.module.ts", () => {
 		const moduleContent =
-`import { NgModule } from '@angular/core';
+			`import { NgModule } from '@angular/core';
 @NgModule({
 	imports: []
 })
@@ -121,7 +148,7 @@ export class AppModule {
 `;
 
 		const moduleContentAfterSchematic =
-`import { NgModule } from '@angular/core';
+			`import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 @NgModule({
 	imports: [BrowserAnimationsModule]
@@ -135,5 +162,11 @@ export class AppModule {
 		runner.runSchematic("cli-config", {}, tree);
 		const content = tree.readContent(targetFile);
 		expect(content.replace(/\r\n/g, "\n")).toEqual(moduleContentAfterSchematic.replace(/\r\n/g, "\n"));
+	});
+
+	it("should properly display the dependency mismatch warning", () => {
+		spyOn(console, "warn");
+		runner.runSchematic("cli-config", {}, tree);
+		expect(console.warn).toHaveBeenCalledWith(jasmine.stringMatching(/WARNING */));
 	});
 });
