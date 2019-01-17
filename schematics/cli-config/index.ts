@@ -1,6 +1,7 @@
 import { DependencyNotFoundException } from "@angular-devkit/core";
 // tslint:disable-next-line:ordered-imports
 import { yellow } from "@angular-devkit/core/src/terminal";
+// tslint:disable-next-line:no-implicit-dependencies
 import { chain, FileDoesNotExistException, Rule, Tree } from "@angular-devkit/schematics";
 import { TypeScriptFileUpdate } from "../../lib/project-utility/TypeScriptFileUpdate";
 import { NgTreeFileSystem } from "../../lib/project-utility/TypeScriptUtils";

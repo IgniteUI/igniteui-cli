@@ -1,4 +1,5 @@
 import { WorkspaceSchema } from "@angular-devkit/core/src/workspace";
+// tslint:disable-next-line:no-submodule-imports
 import { Tree } from "@angular-devkit/schematics/src/tree/interface";
 import { getWorkspace } from "@schematics/angular/utility/config";
 
