@@ -1,5 +1,12 @@
+import { DependencyNotFoundException } from "@angular-devkit/core";
+// tslint:disable-next-line:ordered-imports
+import { yellow } from "@angular-devkit/core/src/terminal";
 import { WorkspaceSchema } from "@angular-devkit/core/src/workspace";
-import { chain, Rule, SchematicContext, SchematicsException, Tree } from "@angular-devkit/schematics";
+import {
+	chain, FileDoesNotExistException, Rule, SchematicContext,
+	// tslint:disable-next-line:ordered-imports
+	SchematicsException, Tree
+} from "@angular-devkit/schematics";
 import { getWorkspace } from "@schematics/angular/utility/config";
 import chalk from "chalk";
 import { TypeScriptFileUpdate } from "../../lib/project-utility/TypeScriptFileUpdate";
@@ -20,13 +27,56 @@ const sassImports =
 @include igx-theme($default-palette);
 `;
 
+function displayVersionMismatch(): Rule {
+	return (tree: Tree) => {
+		const pkgJson = JSON.parse(tree.read("/node_modules/igniteui-angular/package.json").toString());
+		const ngKey = "@angular/core";
+		const ngCommonKey = "@angular/common";
+		const ngCoreProjVer = getDependencyVersion(ngKey, tree);
+		const ngCommonProjVer = getDependencyVersion(ngCommonKey, tree);
+		const ngCoreVer = pkgJson.peerDependencies[ngKey];
+		const ngCommonVer = pkgJson.peerDependencies[ngCommonKey];
+
+		if (ngCoreProjVer < ngCoreVer || ngCommonProjVer < ngCommonVer) {
+			// tslint:disable-next-line:no-console
+			console.warn(yellow(`
+WARNING Version mismatch detected - igniteui-angular is built against a newer version of @angular/core (${ngCoreVer}).
+Running 'ng update' will prevent potential version conflicts.\n`));
+		}
+	};
+}
+
+function getDependencyVersion(pkg: string, tree: Tree): string {
+	const targetFile = "/package.json";
+	if (tree.exists(targetFile)) {
+		const sourceText = tree.read(targetFile).toString();
+		const json = JSON.parse(sourceText);
+
+		let targetDep: any;
+		if (json.dependencies[pkg]) {
+			targetDep = json.dependencies[pkg];
+		} else if (json.devDependencies[pkg]) {
+			targetDep = json.devDependencies[pkg];
+		} else {
+			targetDep = json.peerDependencies[pkg];
+		}
+		if (!targetDep) {
+			throw new DependencyNotFoundException();
+		}
+
+		return targetDep;
+	}
+
+	throw new FileDoesNotExistException(`${tree.root.path}/${targetFile}`);
+}
+
 function createCliConfig(): Rule {
 	return (tree: Tree, context: SchematicContext) => {
 		context.logger.info(``);
 		context.logger.warn(`Ignite UI CLI installed`);
 		context.logger.info(`- try it out in this project by running 'npx ig'`);
 		context.logger.info(`- to run 'ig' everywhere and create new projects run 'npm install -g igniteui-cli'`);
-		context.logger.info(`Learn more: ` +  chalk.whiteBright(`https://github.com/IgniteUI/igniteui-cli#ignite-ui-cli`));
+		context.logger.info(`Learn more: ` + chalk.whiteBright(`https://github.com/IgniteUI/igniteui-cli#ignite-ui-cli`));
 		context.logger.info(``);
 
 		tree.create("ignite-ui-cli.json", JSON.stringify(GetCliConfig(tree), null, 2) + "\n");
@@ -168,6 +218,7 @@ function getProjectType(workspace: WorkspaceSchema) {
 // tslint:disable-next-line:space-before-function-paren
 export default function (): Rule {
 	return chain([
-		createCliConfig()
+		createCliConfig(),
+		displayVersionMismatch()
 	]);
 }
