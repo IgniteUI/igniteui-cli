@@ -167,6 +167,7 @@ export class AppModule {
 	it("should properly display the dependency mismatch warning", () => {
 		spyOn(console, "warn");
 		runner.runSchematic("cli-config", {}, tree);
+		// tslint:disable-next-line:no-console
 		expect(console.warn).toHaveBeenCalledWith(jasmine.stringMatching(/WARNING */));
 	});
 });
