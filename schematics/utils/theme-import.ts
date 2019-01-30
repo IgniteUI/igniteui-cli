@@ -19,12 +19,13 @@ const sassImports =
 export function importDefaultTheme(tree: Tree): Tree {
 	if (tree.exists("/src/styles.sass")) {
 		importDefaultThemeSass(tree, "sass");
+		return tree;
 	} else if (tree.exists("/src/styles.scss")) {
 		importDefaultThemeSass(tree, "scss");
-	} else if (tree.exists("/src/styles.css")) {
-		importDefaultThemeCss(tree);
+		return tree;
 	}
 
+	importIgDefaultTheme(tree);
 	return tree;
 }
 
@@ -59,7 +60,7 @@ function importDefaultThemeSass(tree: Tree, ext: string): Tree {
 	return tree;
 }
 
-function importDefaultThemeCss(tree: Tree): Tree {
+function importIgDefaultTheme(tree: Tree): Tree {
 	const targetFile = "/angular.json";
 	const workspace = getWorkspace(tree);
 	const importedStylesToBuild = importDefaultThemeToAngularWorkspace(workspace, "build");
