@@ -7,6 +7,7 @@ import { IgxInputGroupModule, IgxButtonModule, IgxRippleModule, IgxIconModule } 
 import { RegisterComponent } from './register.component';
 import { AuthenticationService } from '../services/authentication.service';
 import { UserService } from '../services/user.service';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
@@ -16,7 +17,8 @@ describe('RegisterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ ReactiveFormsModule, RouterTestingModule, IgxInputGroupModule, IgxButtonModule, IgxIconModule, IgxRippleModule ],
+	  imports: [ ReactiveFormsModule, RouterTestingModule, NoopAnimationsModule,
+		IgxInputGroupModule, IgxButtonModule, IgxIconModule, IgxRippleModule ],
       declarations: [ RegisterComponent ],
       providers: [
         { provide: AuthenticationService, useValue: authSpy },

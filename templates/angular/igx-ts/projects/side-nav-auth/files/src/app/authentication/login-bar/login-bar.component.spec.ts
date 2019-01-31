@@ -19,6 +19,8 @@ import {
 import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
 import { LoginBarComponent } from './login-bar.component';
 import { UserService } from '../services/user.service';
+import { AuthModule } from 'angular-auth-oidc-client';
+import { ExternalAuthService } from '../services/external-auth.service';
 
 @Component({
   selector: 'app-login-dialog',
@@ -33,14 +35,20 @@ describe('LoginBarComponent', () => {
   let fixture: ComponentFixture<LoginBarComponent>;
   class TestUserServSpy {
     logout() {}
-    get currentUser() { return null; }
+	get currentUser() { return null; }
+	clearCurrentUser() {}
+  }
+
+  class TestAuthService {
+	  logout() {}
   }
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
-        NoopAnimationsModule,
+		NoopAnimationsModule,
+		AuthModule.forRoot(),
         IgxButtonModule,
         IgxToggleModule,
         IgxIconModule,
@@ -51,7 +59,8 @@ describe('LoginBarComponent', () => {
       ],
       declarations: [ LoginBarComponent, TestLoginDialogComponent ],
       providers: [
-        { provide: UserService, useClass: TestUserServSpy }
+		{ provide: UserService, useClass: TestUserServSpy },
+		{ provide: ExternalAuthService, useClass: TestAuthService }
       ]
     })
     .compileComponents();
@@ -107,17 +116,20 @@ describe('LoginBarComponent', () => {
   });
 
   it('should handle user menu items', async () => {
-    const userServ = TestBed.get(UserService);
+	const userServ = TestBed.get(UserService);
+	const authServ = TestBed.get(ExternalAuthService);
     const router: Router = TestBed.get(Router);
-    spyOn(router, 'navigate');
-    spyOn(userServ, 'logout');
+	spyOn(router, 'navigate');
+	spyOn(userServ, 'clearCurrentUser');
+    spyOn(authServ, 'logout');
 
     component.igxDropDown.open();
     component.igxDropDown.setSelectedItem(0);
     expect(router.navigate).toHaveBeenCalledWith(['/profile']);
 
     component.igxDropDown.setSelectedItem(1);
-    expect(router.navigate).toHaveBeenCalledWith(['/home']);
-    expect(userServ.logout).toHaveBeenCalled();
+	expect(router.navigate).toHaveBeenCalledWith(['/home']);
+	expect(userServ.clearCurrentUser).toHaveBeenCalled();
+    expect(authServ.logout).toHaveBeenCalled();
   });
 });

@@ -11,6 +11,7 @@ import { LoginComponent } from './login.component';
 import { ExternalAuthService, ExternalAuthProvider } from '../services/external-auth.service';
 import { AuthenticationService } from '../services/authentication.service';
 import { UserService } from '../services/user.service';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -21,7 +22,8 @@ describe('LoginComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ ReactiveFormsModule, RouterTestingModule, IgxInputGroupModule, IgxButtonModule, IgxIconModule, IgxRippleModule ],
+	  imports: [ ReactiveFormsModule, RouterTestingModule, NoopAnimationsModule,
+		IgxInputGroupModule, IgxButtonModule, IgxIconModule, IgxRippleModule ],
       declarations: [ LoginComponent ],
       providers: [
         { provide: ExternalAuthService, useValue: extAuthSpy },
