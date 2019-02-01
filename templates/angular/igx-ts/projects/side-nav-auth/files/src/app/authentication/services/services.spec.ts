@@ -64,7 +64,6 @@ describe('Services', () => {
             const dummyData = { email: 'Dummy', password: 'Data' };
             const mockObs = { toPromise: () => { } };
             spyOn(mockObs, 'toPromise').and.callFake(() => {
-                console.log('Before error throw');
                 throw new Error('Test Error');
             });
             spyOn(mock_httpClient, 'post').and.returnValue(mockObs);

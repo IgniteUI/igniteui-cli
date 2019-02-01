@@ -8,21 +8,24 @@ import { RegisterComponent } from './register.component';
 import { AuthenticationService } from '../services/authentication.service';
 import { UserService } from '../services/user.service';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { Router } from '@angular/router';
 
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
   let fixture: ComponentFixture<RegisterComponent>;
   const authSpy = jasmine.createSpyObj('AuthenticationService', ['register']);
   const userServSpy = jasmine.createSpyObj('UserService', ['setCurrentUser']);
+  const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-	  imports: [ ReactiveFormsModule, RouterTestingModule, NoopAnimationsModule,
-		IgxInputGroupModule, IgxButtonModule, IgxIconModule, IgxRippleModule ],
+      imports: [ ReactiveFormsModule, NoopAnimationsModule, RouterTestingModule,
+        IgxInputGroupModule, IgxButtonModule, IgxIconModule, IgxRippleModule ],
       declarations: [ RegisterComponent ],
       providers: [
         { provide: AuthenticationService, useValue: authSpy },
-        { provide: UserService, useValue: userServSpy }
+        { provide: UserService, useValue: userServSpy },
+        { provide: Router, useValue: routerSpy }
       ]
     })
     .compileComponents();
@@ -62,7 +65,7 @@ describe('RegisterComponent', () => {
     });
     expect(userServSpy.setCurrentUser).toHaveBeenCalledWith({name: 'John Doe'});
     expect(component.registered.emit).toHaveBeenCalled();
-
+    expect(routerSpy.navigate).toHaveBeenCalledWith(['/profile']);
     authSpy.register.and.returnValue(Promise.resolve({
       error: 'Reg error'
     }));

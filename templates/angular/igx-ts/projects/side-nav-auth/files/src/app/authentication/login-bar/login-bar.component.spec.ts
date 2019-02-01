@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { NoopAnimationsModule, BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 
@@ -35,20 +35,20 @@ describe('LoginBarComponent', () => {
   let fixture: ComponentFixture<LoginBarComponent>;
   class TestUserServSpy {
     logout() {}
-	get currentUser() { return null; }
-	clearCurrentUser() {}
+    get currentUser() { return null; }
+    clearCurrentUser() { return null; }
   }
 
   class TestAuthService {
-	  logout() {}
+    logout() {}
   }
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
-		NoopAnimationsModule,
-		AuthModule.forRoot(),
+        NoopAnimationsModule,
+        AuthModule.forRoot(),
         IgxButtonModule,
         IgxToggleModule,
         IgxIconModule,
@@ -59,8 +59,8 @@ describe('LoginBarComponent', () => {
       ],
       declarations: [ LoginBarComponent, TestLoginDialogComponent ],
       providers: [
-		{ provide: UserService, useClass: TestUserServSpy },
-		{ provide: ExternalAuthService, useClass: TestAuthService }
+        { provide: UserService, useClass: TestUserServSpy },
+        { provide: ExternalAuthService, useClass: TestAuthService }
       ]
     })
     .compileComponents();
@@ -116,11 +116,11 @@ describe('LoginBarComponent', () => {
   });
 
   it('should handle user menu items', async () => {
-	const userServ = TestBed.get(UserService);
-	const authServ = TestBed.get(ExternalAuthService);
+    const userServ = TestBed.get(UserService);
+    const authServ = TestBed.get(ExternalAuthService);
     const router: Router = TestBed.get(Router);
-	spyOn(router, 'navigate');
-	spyOn(userServ, 'clearCurrentUser');
+    spyOn(router, 'navigate');
+    spyOn(userServ, 'clearCurrentUser');
     spyOn(authServ, 'logout');
 
     component.igxDropDown.open();
@@ -128,8 +128,8 @@ describe('LoginBarComponent', () => {
     expect(router.navigate).toHaveBeenCalledWith(['/profile']);
 
     component.igxDropDown.setSelectedItem(1);
-	expect(router.navigate).toHaveBeenCalledWith(['/home']);
-	expect(userServ.clearCurrentUser).toHaveBeenCalled();
+    expect(router.navigate).toHaveBeenCalledWith(['/home']);
+    expect(userServ.clearCurrentUser).toHaveBeenCalled();
     expect(authServ.logout).toHaveBeenCalled();
   });
 });
