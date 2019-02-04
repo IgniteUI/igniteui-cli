@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { IgrCategoryChartModule } from 'igniteui-react-charts/ES5/igr-category-chart-module';
 import { IgrCategoryChart } from 'igniteui-react-charts/ES5/igr-category-chart';
+import style from './style.css';
 
 IgrCategoryChartModule.register();
 
@@ -12,7 +13,8 @@ var data = [
     { 'CountryName': 'Brazil', 'Pop1995': 161, 'Pop2005': 186, 'Pop2015': 204, 'Pop2025': 218 }
 ];
 
-export default class $(ClassName) extends Component { 
+export default class $(ClassName) extends Component {
+    title = 'Category Chart'
     state = {
         data: []
     }
@@ -20,13 +22,24 @@ export default class $(ClassName) extends Component {
     componentDidMount() {
         this.setState({ data: data });
     }
-    
-    render () {
+
+    render() {
         return (
-            <IgrCategoryChart dataSource={this.state.data}
-                width="100%"
-                height="500px">
-            </IgrCategoryChart>
+            <div>
+                <h1 className={style.title}>{this.title}</h1>
+                <div>
+                    Read more on the&nbsp;
+                    <a href="https://www.infragistics.com/products/ignite-ui-react/react/components/categorychart.html">
+                        official documentation page
+                    </a>
+                </div>
+                <div className={style.container}>
+                    <IgrCategoryChart dataSource={this.state.data}
+                        width="100%"
+                        height="500px">
+                    </IgrCategoryChart>
+                </div>
+            </div >
         )
-     }
-  }
+    }
+}

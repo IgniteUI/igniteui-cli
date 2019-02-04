@@ -10,7 +10,7 @@ class GridTemplate extends IgniteUIForReactTemplate {
 		this.id = "grid";
 		this.name = "Grid";
 		this.widget = "igGrid";
-		this.description = "igGrid template for React";
+		this.description = "IgrGrid template for React";
 		this.projectType = "igr-es6";
 		this.components = ["Grid"];
 		this.controlGroup = "Data Grids";
