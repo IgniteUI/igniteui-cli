@@ -2,6 +2,10 @@ import { User } from '../models/user';
 
 export function parseUser(jwt: string): User {
   const token = decodeJWT(jwt);
+  if (token === null) {
+    console.error(`The JWT token provided was not valid:\n${jwt}`);
+    return null;
+  }
   const user = JSON.parse(token.payload) as User;
   // store token:
   user.token = jwt;

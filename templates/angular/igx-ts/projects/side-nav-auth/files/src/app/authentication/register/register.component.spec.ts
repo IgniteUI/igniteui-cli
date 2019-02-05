@@ -73,4 +73,10 @@ describe('RegisterComponent', () => {
     await component.tryRegister();
     expect(window.alert).toHaveBeenCalledWith('Reg error');
   });
+  
+  it(`should properly emit when 'showLoginForm' is called`, () => {
+    spyOn(component.viewChange, 'emit');
+    component.showLoginForm();
+    expect(component.viewChange.emit).toHaveBeenCalled();
+  });
 });
