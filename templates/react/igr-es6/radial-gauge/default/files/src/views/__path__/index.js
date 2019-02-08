@@ -34,7 +34,7 @@ export default class $(ClassName) extends Component {
                             backingOuterExtent={0.8}
                             backingInnerExtent={0.15}
                             scaleStartAngle={135} scaleEndAngle={45}
-                            height="300px" width="300px"
+                            height="300px" width="50%"
                             minimumValue={0} value={50}
                             maximumValue={80} interval={10}>
                         </IgrRadialGauge>
@@ -54,7 +54,7 @@ export default class $(ClassName) extends Component {
                             needlePivotOutline="#9f9fa0"
                             needlePivotWidthRatio={0.2}
                             needlePivotStrokeThickness={1}
-                            height="300px" width="300px"
+                            height="300px" width="50%"
                             minimumValue={0}
                             maximumValue={80} interval={10}>
                         </IgrRadialGauge>
