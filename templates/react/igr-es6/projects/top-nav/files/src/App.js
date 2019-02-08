@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, BrowserRouter as Router, Switch, NavLink } from 'react-router-dom';
 import asyncComponent from './hoc/asyncComponent';
-import RouterNav from './router/index';
+import NavigationHeader from './components/navigation-header/index';
 import routes from './routes.json';
 import './App.css';
 
@@ -16,9 +16,9 @@ class App extends Component {
 	  <div className="app__name">
         {this.name}
         </div>
-        <RouterNav
+        <NavigationHeader
         routes={routes}>
-        </RouterNav>
+        </NavigationHeader>
         <div className="content">
           <Switch>
             {routes.map((route, i) => <Route exact key={i} path={route.path} component={asyncComponent(() =>  import("" + route.componentPath))} />)}

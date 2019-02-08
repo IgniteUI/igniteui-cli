@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
-export default class RouterNav extends Component {
+export default class NavigationHeader extends Component {
 	state = {
 		activeItem: null
 	}
