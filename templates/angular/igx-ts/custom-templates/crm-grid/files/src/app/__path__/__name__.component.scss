@@ -56,12 +56,6 @@ $summary-theme: igx-grid-summary-theme(
 
   @include igx-input-group($search-theme);
 
-  $filtering-theme: igx-grid-filtering-theme(
-    $palette: $crm-grid-palette,
-    $toggle-active-background: igx-color($crm-grid-palette, "secondary", 500)
-  );
-
-  @include igx-grid-filtering($filtering-theme);
 
   // grid theme
   $crm-grid-theme: igx-grid-theme(
