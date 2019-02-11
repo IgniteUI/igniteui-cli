@@ -5,7 +5,8 @@ class IgrFinancialChartTemplate extends IgniteUIForReactTemplate {
 		super(__dirname);
 		this.components = ["Financial Chart"];
 		this.controlGroup = "Charts";
-		this.listInComponentTemplates = true;
+		// set to true once bug with chart destoy is fixed
+		this.listInComponentTemplates = false;
 		this.id = "financial-chart";
 		this.projectType = "igr-es6";
 		this.name = "Financial Chart";

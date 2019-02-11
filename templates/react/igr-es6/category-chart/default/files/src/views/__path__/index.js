@@ -20,7 +20,7 @@ export default class $(ClassName) extends Component {
     }
 
     componentDidMount() {
-        this.setState({ data: data });
+        this.setState({ data });
     }
 
     render() {

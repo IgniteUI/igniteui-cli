@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, BrowserRouter as Router, Switch, NavLink } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import asyncComponent from './hoc/asyncComponent';
 import NavigationHeader from './components/navigation-header/index';
 import routes from './routes.json';
