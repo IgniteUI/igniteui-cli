@@ -107,8 +107,6 @@ describe("cli-config schematic", () => {
 	});
 
 	it("should add the default css theme to the workspace", () => {
-		const cssFile = "/src/styles.css";
-		tree.create(cssFile, "");
 		const targetFile = "/angular.json";
 		expect(tree.exists(targetFile)).toBeTruthy();
 
@@ -125,6 +123,23 @@ describe("cli-config schematic", () => {
 			workspace.projects[currentProjectName].architect.test.options.styles.filter(s => s.includes(targetImport)).length
 		)
 			.toBeGreaterThan(0);
+	});
+
+	it("should not add the default css theme to the workspace if the global styles file is scss", () => {
+		// if the global styles file is scss or sass - the default theme is imported there
+		const stylesheet = "/src/styles.scss";
+		tree.create(stylesheet, "");
+		const targetFile = "/angular.json";
+		expect(tree.exists(targetFile)).toBeTruthy();
+
+		runner.runSchematic("cli-config", {}, tree);
+		const workspace = getWorkspace(tree) as any;
+		const currentProjectName = workspace.defaultProject;
+
+		// the schematic creates the hierarchy that leads to the styles object within the workspace,
+		// providing that it is not already present
+		expect(workspace.projects[currentProjectName].architect.build).toBeFalsy();
+		expect(workspace.projects[currentProjectName].architect.test).toBeFalsy();
 	});
 
 	it("should add the default sass theme correctly", () => {

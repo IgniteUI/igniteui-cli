@@ -21,7 +21,6 @@ export class FacebookProvider implements AuthProvider {
 
     public login() {
         this.config();
-        const self = this;
         FB.login((response) => {
             if (response.authResponse) {
                 FB.api(
@@ -36,7 +35,7 @@ export class FacebookProvider implements AuthProvider {
                             picture: newResponse.picture,
                             externalToken: FB.getAuthResponse()['accessToken']
                         };
-                        self.router.navigate([this.externalStsConfig.redirect_url]);
+                        this.router.navigate([this.externalStsConfig.redirect_url]);
                     });
             } else {
                 console.log('User cancelled login or did not fully authorize.');
