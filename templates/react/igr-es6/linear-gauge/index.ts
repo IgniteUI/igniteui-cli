@@ -1,0 +1,15 @@
+
+import { BaseComponent } from "../../../../lib/BaseComponent";
+
+class IgrLinearGaugeComponent extends BaseComponent {
+	/**
+	 *
+	 */
+	constructor() {
+		super(__dirname);
+		this.name  = "Linear Gauge";
+		this.group = "Gauges";
+		this.description = `value compared against a scale and one or more ranges.`;
+	}
+}
+module.exports = new IgrLinearGaugeComponent();

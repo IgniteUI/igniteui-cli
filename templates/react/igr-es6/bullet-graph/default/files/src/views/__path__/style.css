@@ -1,0 +1,12 @@
+:local(.container) {
+    padding-top: 24px;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+}
+:local(.title) {
+    color: rgb(0, 153, 255);
+}
+:local(.graph) {
+    width: 50%;
+}
