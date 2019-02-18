@@ -306,7 +306,7 @@ class Util {
 	 */
 	public static merge(target: any, source: any) {
 		if (!source) {
-			return  target;
+			return target;
 		}
 
 		for (const key of Object.keys(source)) {
@@ -358,7 +358,7 @@ class Util {
 	 */
 	public static gitInit(parentRoot, projectName) {
 		try {
-			const options = { cwd: path.join(parentRoot, projectName), stdio: [ process.stdin, "ignore", "ignore" ] };
+			const options = { cwd: path.join(parentRoot, projectName), stdio: [process.stdin, "ignore", "ignore"] };
 			Util.exec("git init", options);
 			Util.exec("git add .", options);
 			Util.exec("git commit -m " + "\"Initial commit for project: " + projectName + "\"", options);
@@ -410,7 +410,7 @@ class Util {
 		if (framework === "angular" && projectType === "igx-ts") {
 			specificPath = path.join("src", "app");
 		} else if (framework === "angular" && projectType === "ig-ts") {
-			specificPath =  path.join("src", "app", "components");
+			specificPath = path.join("src", "app", "components");
 		} else if (framework === "react") {
 			specificPath = path.join("client", "components");
 		}
@@ -465,6 +465,11 @@ class Util {
 		const name = parts.name + parts.ext;
 		// trim name itself to avoid creating awkward component names
 		return name.trim();
+	}
+
+	public static camelCase(str: string) {
+		const result = this.className(str);
+		return result[0].toLowerCase() + result.substring(1, result.length);
 	}
 
 	private static propertyByPath(object: any, propPath: string) {

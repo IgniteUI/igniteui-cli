@@ -93,6 +93,7 @@ export class AngularTemplate implements Template {
 		config["$(filePrefix)"] = this.fileName(name);
 		config["$(description)"] = this.description;
 		config["$(cliVersion)"] = Util.version();
+		config["$(camelCaseName)"] = Util.camelCase(name);
 
 		if (this.widget) {
 			config["$(widget)"] = this.widget;
