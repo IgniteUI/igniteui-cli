@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "igniteui-react-core": "^16.6.4",
+    "igniteui-react-core": "^16.6.5",
     "react": "^16.7.0",
     "react-app-polyfill": "^0.2.0",
     "react-dom": "^16.7.0",
