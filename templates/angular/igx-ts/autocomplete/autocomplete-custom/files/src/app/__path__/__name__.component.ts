@@ -29,10 +29,10 @@ export class $(ClassName)RegionContains implements PipeTransform {
 	}
 
 	private filterRegions(regions: any[], term: string) {
-		return regions.filter((region) => this.filterTowns(region.towns, term).length > 0);
+		return regions.filter((region: any) => this.filterTowns(region.towns, term.trim().toLowerCase()).length > 0);
 	}
 
 	private filterTowns(towns: string[], term: string) {
-		return towns.filter((town: string) => town.toLowerCase().indexOf(term.toLowerCase()) > -1)
+		return towns.filter((town: string) => town.toLowerCase().startsWith(term))
 	}
 }
