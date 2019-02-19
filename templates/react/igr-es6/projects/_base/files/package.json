@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "igniteui-react-core": "^16.6.4",
-    "react": "^16.7.0",
+    "igniteui-react-core": "~16.6.5",
+    "react": "^16.8.2",
     "react-app-polyfill": "^0.2.0",
-    "react-dom": "^16.7.0",
+    "react-dom": "^16.8.2",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "^2.1.4"
+    "react-scripts": "2.1.5"
   },
   "devDependencies": {
     "igniteui-cli": "~$(cliVersion)"

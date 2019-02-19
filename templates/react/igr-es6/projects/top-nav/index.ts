@@ -12,14 +12,7 @@ export class TopNavIgrProject extends BaseIgrProject implements ProjectTemplate 
 	public hasExtraConfiguration: boolean = false;
 
 	public async generateFiles(outputPath: string, name: string, theme: string, ...options: any[]): Promise<boolean> {
-		const config = {
-			"$(cliVersion)": Util.version(),
-			"$(dash-name)" : Util.lowerDashed(name),
-			"$(name)": name,
-			"$(theme)": theme,
-			"__path__": name
-		};
-		config["$(description)"] = this.description;
+		const config = this.getVariablesConfig(name, theme);
 		const pathsConfig = {};
 
 		if (!await super.generateFiles(outputPath, name, theme, ...options)) {
