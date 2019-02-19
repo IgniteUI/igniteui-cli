@@ -18,6 +18,9 @@ class IgxAutocompleteTemplate extends IgniteUIForAngularTemplate {
 		}, {
 			declare: ["$(ClassName)PipeStartsWith"],
 			from: "./src/app/__path__/__name__.component.ts"
+		}, {
+			declare: ["$(ClassName)RegionContains"],
+			from: "./src/app/__path__/__name__.component.ts"
 		}];
 		this.hasExtraConfiguration = true;
 	}
@@ -39,14 +42,17 @@ class IgxAutocompleteTemplate extends IgniteUIForAngularTemplate {
 	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
 		const selection = this.userExtraConfiguration["autocompleteOptions"];
 		const extraConfig = {
-			"$(autocomplete)": {}
+			"$(autocomplete)": "",
+			"$(LocalData)": ""
 		};
 		switch (selection) {
 			case "Simple Autocomplete":
 				extraConfig["$(autocomplete)"] = this.getSimpleAutoCompleteTmp();
+				extraConfig["$(LocalData)"] = "townsSimple";
 				break;
 			case "Autocomplete With Groups":
 				extraConfig["$(autocomplete)"] = this.getAutocompleteWithGroupsTmp();
+				extraConfig["$(LocalData)"] = "townsGrouped";
 				break;
 			default:
 				throw new Error("Unexpected input.");
@@ -58,7 +64,7 @@ class IgxAutocompleteTemplate extends IgniteUIForAngularTemplate {
 	private getSimpleAutoCompleteTmp() {
 		const template =
 			`<igx-drop-down #townsPanel maxHeight="300px">
-				<igx-drop-down-item *ngFor="let town of townsSimple | $(camelCaseName)StartsWith:townSelected" [value]="town">
+				<igx-drop-down-item *ngFor="let town of towns | $(camelCaseName)StartsWith:townSelected" [value]="town">
 					{{town}}
 				</igx-drop-down-item>
 			</igx-drop-down>`;
@@ -67,8 +73,9 @@ class IgxAutocompleteTemplate extends IgniteUIForAngularTemplate {
 	private getAutocompleteWithGroupsTmp() {
 		const template =
 			`<igx-drop-down #townsPanel maxHeight="300px">
-				<igx-drop-down-item-group *ngFor="let region of townsGrouped.regions" [label]="region.name">
-					<igx-drop-down-item *ngFor="let town of region.towns" [value]="town">
+				<igx-drop-down-item-group *ngFor="let region of towns.regions |
+					$(camelCaseName)RegionContains:townSelected" [label]="region.name">
+					<igx-drop-down-item *ngFor="let town of region.towns | $(camelCaseName)StartsWith:townSelected" [value]="town">
 						{{town}}
 					</igx-drop-down-item>
 				</igx-drop-down-item-group>
