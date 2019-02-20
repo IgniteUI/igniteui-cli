@@ -1,0 +1,16 @@
+{
+	"version": "$(cliVersion)",
+	"project": {
+		"defaultPort": 3003,
+		"framework": "react",
+		"projectType": "igr-es6",
+		"projectTemplate": "$(projectTemplate)",
+		"theme": "$(theme)",
+		"isBundle": false,
+		"components": [],
+		"sourceFiles": [],
+		"isShowcase": false,
+		"version": ""
+	},
+	"build": {}
+}
