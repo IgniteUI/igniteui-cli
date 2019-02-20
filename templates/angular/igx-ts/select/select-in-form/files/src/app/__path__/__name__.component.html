@@ -1,0 +1,13 @@
+<form>
+	<div class="select-wrapper">
+		<igx-select [(ngModel)]="selected" [ngModelOptions]="{standalone: true}">
+			<igx-select-item *ngFor="let item of items" [value]="item">
+				{{item}}
+			</igx-select-item>
+		</igx-select>
+		<div class="actions">
+			<button igxButton (click)="onSubmit()">Submit</button>
+		</div>
+	</div>
+	<p class="output">You selected: {{value}}</p>
+</form>
