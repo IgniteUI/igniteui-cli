@@ -1,7 +1,6 @@
-import * as fs from "fs-extra";
-import { parse } from "path";
 import { default as newCmd } from "../../lib/commands/new";
 import { GoogleAnalytics } from "../../lib/GoogleAnalytics";
+import { PackageManager } from "../../lib/packages/PackageManager";
 import { ProjectConfig } from "../../lib/ProjectConfig";
 import { PromptSession } from "../../lib/PromptSession";
 import { Util } from "../../lib/Util";
@@ -16,6 +15,7 @@ describe("Unit - New command", () => {
 		spyOn(Util, "log");
 		spyOn(Util, "exec");
 		spyOn(process, "chdir");
+		spyOn(PackageManager, "installPackages");
 	});
 
 	afterEach(() => {
@@ -187,6 +187,7 @@ describe("Unit - New command", () => {
 		expect(newCmd.template.getProjectLibrary).toHaveBeenCalledWith("jq");
 		expect(Util.log).toHaveBeenCalledWith("Project Name: Test, framework jq, type js, theme ig");
 		expect(mockTemplate.generateFiles).toHaveBeenCalledWith(process.cwd(), "Test", "ig");
+		expect(PackageManager.installPackages).toHaveBeenCalled();
 		expect(Util.log).toHaveBeenCalledWith(jasmine.stringMatching("Project Created"));
 		done();
 	});
@@ -216,6 +217,7 @@ describe("Unit - New command", () => {
 		expect(newCmd.template.getFrameworkById).toHaveBeenCalledWith("jq");
 		expect(newCmd.template.getProjectLibrary).toHaveBeenCalledWith("jq", "type");
 		expect(mockTemplate.generateFiles).toHaveBeenCalledWith(process.cwd(), "Test", "ig");
+		expect(PackageManager.installPackages).toHaveBeenCalled();
 		expect(Util.log).toHaveBeenCalledWith("Project Name: Test, framework jq, type type, theme ig");
 		expect(Util.log).toHaveBeenCalledWith(jasmine.stringMatching("Project Created"));
 		done();
@@ -311,6 +313,31 @@ describe("Unit - New command", () => {
 		await newCmd.execute({ name: projectName, framework: "jq" });
 
 		expect(Util.gitInit).not.toHaveBeenCalled();
+		done();
+	});
+
+	it("Skip package install with command option", async done => {
+		const mockTemplate = {
+			generateFiles: () => Promise.resolve()
+		};
+		const mockProjLib = {
+			getProject: () => {
+				return mockTemplate;
+			},
+			projectIds: ["empty"],
+			projectType: "type",
+			themes: ["ig"]
+		};
+		newCmd.template = jasmine.createSpyObj("TemplateManager", {
+			getFrameworkById: {},
+			getProjectLibrary: mockProjLib
+		});
+		spyOn(mockTemplate, "generateFiles");
+		spyOn(Util, "gitInit");
+
+		await newCmd.execute({ name: "title", framework: "jq", skipInstall: true });
+
+		expect(PackageManager.installPackages).not.toHaveBeenCalled();
 		done();
 	});
 });

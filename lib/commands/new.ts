@@ -1,6 +1,5 @@
-import * as fs from "fs-extra";
-import * as path from "path";
 import { GoogleAnalytics } from "../GoogleAnalytics";
+import { PackageManager } from "../packages/PackageManager";
 import { ProjectConfig } from "../ProjectConfig";
 import { Util } from "../Util";
 import { PromptSession } from "./../PromptSession";
@@ -41,6 +40,11 @@ command = {
 		"skip-git": {
 			alias: "sg",
 			describe: "Do not automatically initialize repository for the project with Git",
+			type: "boolean"
+		},
+		"skip-install": {
+			alias: "si",
+			describe: "Do not automatically install packages",
 			type: "boolean"
 		},
 		"template": {
@@ -123,11 +127,15 @@ command = {
 			Util.gitInit(process.cwd(), argv.name);
 		}
 
+		if (!argv.skipInstall) {
+			await PackageManager.installPackages();
+		}
+
 		Util.log("");
 		Util.log("Next Steps:");
 		Util.log(`  cd ${argv.name}`);
-		Util.log("  ig start starts the project");
-		Util.log("  ig add [template] [name] adds template by its ID");
+		Util.log("  ig add      start guided mode for adding views to the app");
+		Util.log("  ig start    starts a web server and opens the app in the default browser");
 	}
 };
 
