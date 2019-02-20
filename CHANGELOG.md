@@ -1,3 +1,12 @@
+# [4.0.0](http://git+https/github.com/IgniteUI/igniteui-cli/compare/v3.2.3...v4.0.0) (2019-02-20)
+
+This update brings a brand new [project template](https://github.com/IgniteUI/igniteui-cli/wiki/New#creating-ignite-ui-for-react-applications-v400) for our [Ignite UI for React](https://www.infragistics.com/products/ignite-ui-react) product 🎉 . It also comes with a selection of predefined templates for our React components - Data Grid, Chars and Gauges. You can read more in [our wiki](https://github.com/IgniteUI/igniteui-cli/wiki/Add#ignite-ui-for-react-templates-v400).
+
+### Features
+
+* Add **Ignite UI for React** project, grid, gauges and charts templates ([#440](https://github.com/IgniteUI/igniteui-cli/pull/440)) [8fca090](https://github.com/IgniteUI/igniteui-cli/commit/8fca0909543fa0d2a6bff33eac946620f33feb5a)
+* **new-cmd:** install packages on creation, add `--skip-install` param ([246a0a4](http://git+https/github.com/IgniteUI/igniteui-cli/commit/246a0a4))
+
 # [3.2.0](https://github.com/IgniteUI/igniteui-cli/compare/v3.1.0...v3.2.0) (2018-12-13)
 
 This update brings enhancements to the way views can be added to a project. New streamlined project creation using Step by Step mode by lets you jump in directly to Ignite UI for Angular. Other framework and project options can be re-enabled through configuration.
