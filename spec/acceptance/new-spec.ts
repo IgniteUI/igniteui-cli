@@ -1,6 +1,7 @@
 import * as fs from "fs";
 import cli = require("../../lib/cli");
 import { GoogleAnalytics } from "../../lib/GoogleAnalytics";
+import { PackageManager } from "../../lib/packages/PackageManager";
 import { Util } from "../../lib/Util";
 import { deleteAll, filesDiff, resetSpy } from "../helpers/utils";
 
@@ -11,6 +12,7 @@ describe("New command", () => {
 		spyOn(console, "log");
 		spyOn(console, "error");
 		spyOn(GoogleAnalytics, "post");
+		spyOn(PackageManager, "installPackages");
 		process.chdir("./output");
 	});
 
@@ -26,7 +28,7 @@ describe("New command", () => {
 		await cli.run(["new", "jQuery Proj", "--framework=jquery"]);
 
 		expect(fs.existsSync("./jQuery Proj")).toBeTruthy();
-		expect(filesDiff("../templates/jquery/js/projects/empty/files", "./React Proj")).toEqual([]);
+		expect(filesDiff("../templates/jquery/js/projects/empty/files", "./jQuery Proj")).toEqual([]);
 		const packageText = fs.readFileSync("./jQuery Proj/package.json", "utf-8");
 		expect(JSON.parse(packageText).name).toEqual("jquery-proj");
 		expect(fs.existsSync("./jQuery Proj/.gitignore")).toBeTruthy();
@@ -37,6 +39,7 @@ describe("New command", () => {
 			cd: "New"
 		};
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith(expectedPrams);
+		expect(PackageManager.installPackages).toHaveBeenCalled();
 
 		expectedPrams = {
 			t: "event",
@@ -147,11 +150,13 @@ describe("New command", () => {
 		done();
 	});
 
-	it("Skip Git with command option", async done => {
+	it("Skip Git/Install with command option", async done => {
 		const projectName = "angularProj";
-		await cli.run(["new", projectName, "--framework=angular", "--type=igx-ts", "--skip-git"]);
+		await cli.run(["new", projectName, "--framework=angular", "--type=igx-ts", "--skip-git", "--skip-install"]);
 
 		expect(fs.existsSync("./" + projectName + "/.git")).not.toBeTruthy();
+		expect(PackageManager.installPackages).not.toHaveBeenCalled();
+
 		this.testFolder = projectName;
 		done();
 	});
