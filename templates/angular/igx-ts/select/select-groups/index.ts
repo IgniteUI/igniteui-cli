@@ -3,13 +3,13 @@ import { IgniteUIForAngularTemplate } from "../../../../../lib/templates/IgniteU
 class IgxSelectTemplate extends IgniteUIForAngularTemplate {
 	constructor() {
 		super(__dirname);
-		this.components = ["Select"];
+		this.components = ["Select With Groups"];
 		this.controlGroup = "Grids & Lists";
 		this.listInComponentTemplates = true;
-		this.id = "select";
+		this.id = "select-groups";
 		this.projectType = "igx-ts";
-		this.name = "Select";
-		this.description = "basic IgxSelect";
+		this.name = "Select With Groups";
+		this.description = "IgxSelect that has groups";
 		this.dependencies = [{
 			import: [
 				"IgxSelectModule", "IgxDropDownModule", "IgxFilterModule",
