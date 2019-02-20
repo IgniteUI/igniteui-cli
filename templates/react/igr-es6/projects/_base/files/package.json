@@ -11,7 +11,9 @@
     "react-scripts": "2.1.5"
   },
   "devDependencies": {
-    "igniteui-cli": "~$(cliVersion)"
+	"igniteui-cli": "~$(cliVersion)",
+	"enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.9.1"
   },
   "scripts": {
     "start": "react-scripts start",
