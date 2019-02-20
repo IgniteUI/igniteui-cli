@@ -59,7 +59,7 @@ command = {
 			cd14: config.project.theme
 		});
 
-		argv.port = Number(argv.port) || defaultPort;
+		let port = Number(argv.port) || defaultPort;
 
 		switch (framework.toLowerCase()) {
 			case "jquery":
@@ -68,16 +68,22 @@ command = {
 			const browserSync = bs.create("igniteui-cli");
 			const filePath = path.join(process.cwd(), "bs-config.js");
 			const bsConfig = require(filePath);
-			if (argv.port) {
-				bsConfig.port = argv.port;
+			if (port) {
+				bsConfig.port = port;
 			}
 
 			browserSync.init(bsConfig);
 			break;
 			case "react":
+				if (projectType === "igr-es6" && port) {
+					// https://facebook.github.io/create-react-app/docs/advanced-configuration
+					process.env.PORT = `${port}`;
+					port = null;
+				}
+				/* falls through */
 			case "angular":
-				if (argv.port) {
-					exec(`npm start -- --port=` + argv.port);
+				if (port) {
+					exec(`npm start -- --port=` + port);
 				} else {
 					exec(`npm start`);
 				}

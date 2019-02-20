@@ -7,8 +7,8 @@ class ReactFramework implements Framework {
 		this.id = "react";
 		this.name = "React";
 		this.projectLibraries = [];
-		this.projectLibraries.push(require("./igr-es6") as ProjectLibrary);
 		this.projectLibraries.push(require("./es6") as ProjectLibrary);
+		this.projectLibraries.push(require("./igr-es6") as ProjectLibrary);
 	}
 }
 export = new ReactFramework() as Framework;
