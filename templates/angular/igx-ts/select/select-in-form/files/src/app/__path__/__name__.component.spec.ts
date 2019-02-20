@@ -1,4 +1,4 @@
-import { FormsModule } from '@angular/forms';
+import { FormsModule } from "@angular/forms";
 import { async, TestBed, ComponentFixture } from "@angular/core/testing";
 import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 
