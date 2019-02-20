@@ -28,7 +28,7 @@ describe("New command", () => {
 		await cli.run(["new", "jQuery Proj", "--framework=jquery"]);
 
 		expect(fs.existsSync("./jQuery Proj")).toBeTruthy();
-		expect(filesDiff("../templates/jquery/js/projects/empty/files", "./React Proj")).toEqual([]);
+		expect(filesDiff("../templates/jquery/js/projects/empty/files", "./jQuery Proj")).toEqual([]);
 		const packageText = fs.readFileSync("./jQuery Proj/package.json", "utf-8");
 		expect(JSON.parse(packageText).name).toEqual("jquery-proj");
 		expect(fs.existsSync("./jQuery Proj/.gitignore")).toBeTruthy();

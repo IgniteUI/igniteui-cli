@@ -188,6 +188,8 @@ describe("Unit - New command", () => {
 		expect(Util.log).toHaveBeenCalledWith("Project Name: Test, framework jq, type js, theme ig");
 		expect(mockTemplate.generateFiles).toHaveBeenCalledWith(process.cwd(), "Test", "ig");
 		expect(PackageManager.installPackages).toHaveBeenCalled();
+		expect(process.chdir).toHaveBeenCalledWith("Test");
+		expect(process.chdir).toHaveBeenCalledWith("..");
 		expect(Util.log).toHaveBeenCalledWith(jasmine.stringMatching("Project Created"));
 		done();
 	});
@@ -218,6 +220,8 @@ describe("Unit - New command", () => {
 		expect(newCmd.template.getProjectLibrary).toHaveBeenCalledWith("jq", "type");
 		expect(mockTemplate.generateFiles).toHaveBeenCalledWith(process.cwd(), "Test", "ig");
 		expect(PackageManager.installPackages).toHaveBeenCalled();
+		expect(process.chdir).toHaveBeenCalledWith("Test");
+		expect(process.chdir).toHaveBeenCalledWith("..");
 		expect(Util.log).toHaveBeenCalledWith("Project Name: Test, framework jq, type type, theme ig");
 		expect(Util.log).toHaveBeenCalledWith(jasmine.stringMatching("Project Created"));
 		done();
@@ -338,6 +342,7 @@ describe("Unit - New command", () => {
 		await newCmd.execute({ name: "title", framework: "jq", skipInstall: true });
 
 		expect(PackageManager.installPackages).not.toHaveBeenCalled();
+		expect(process.chdir).not.toHaveBeenCalled();
 		done();
 	});
 });

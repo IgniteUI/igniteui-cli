@@ -128,7 +128,9 @@ command = {
 		}
 
 		if (!argv.skipInstall) {
+			process.chdir(argv.name);
 			await PackageManager.installPackages();
+			process.chdir("..");
 		}
 
 		Util.log("");
