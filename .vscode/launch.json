@@ -18,7 +18,8 @@
 			"program": "${workspaceRoot}/bin/execute.js",
 			"console": "externalTerminal",
 			"preLaunchTask": "build",
-			"outFiles": ["${workspaceFolder}/**/*.js"],
+			"outFiles": [ "${workspaceRoot}/lib/**/*.js",
+				"${workspaceRoot}/spec/**/*.js" ],
 			"args": [
 				"new",
 				"jqueryproj",
