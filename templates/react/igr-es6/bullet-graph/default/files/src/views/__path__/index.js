@@ -51,7 +51,7 @@ export default class $(ClassName) extends Component {
                             targetValueInnerExtent={0.3}
                             targetValueOuterExtent={0.85}
                             height="80px" width="400px"
-                            minimumValue={0} value={50}
+                            minimumValue={0}
                             maximumValue={100}>
                         </IgrBulletGraph>
                     </div>

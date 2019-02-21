@@ -1,0 +1,10 @@
+:local(.container) {
+    padding-top: 24px;
+    display: flex;
+    flex-flow: row;
+	justify-content: center;
+	text-align: left;
+}
+:local(.title) {
+    color: rgb(0, 153, 255);
+}

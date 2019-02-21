@@ -8,7 +8,7 @@ class IgrReactProjectLibrary extends BaseProjectLibrary {
 		super(__dirname);
 		this.name = "Ignite UI for React";
 		this.projectType = "igr-es6";
-		this.themes = ["none"];
+		this.themes = ["default"];
 
 		const groups = require("./groups.json");
 		// tslint:disable-next-line:forin
