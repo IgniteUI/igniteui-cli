@@ -34,7 +34,7 @@ class IgxAutocompleteTemplate extends IgniteUIForAngularTemplate {
 			choices: ["Simple Autocomplete", "Autocomplete With Groups"],
 			default: "Simple Autocomplete",
 			key: "autocompleteOptions",
-			message: "Select what the type of IgxAutocomplete you want",
+			message: "Select the type of IgxAutocomplete you prefer",
 			type: Enumerations.ControlExtraConfigType.Choice
 		}];
 	}
