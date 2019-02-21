@@ -470,6 +470,9 @@ class Util {
 	}
 
 	public static camelCase(str: string) {
+		if (!str)  {
+			return null;
+		}
 		const result = this.className(str);
 		return result[0].toLowerCase() + result.substring(1, result.length);
 	}
