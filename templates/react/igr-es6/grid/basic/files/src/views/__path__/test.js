@@ -1,9 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import $(ClassName) from './index';
+import { shallow } from 'enzyme';
 
 it('$(ClassName) renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<$(ClassName) />, div);
-  ReactDOM.unmountComponentAtNode(div);
+	const wrapperComponent = shallow(<$(ClassName) />);
+	expect(wrapperComponent).toBeDefined();
+	expect(wrapperComponent).toBeTruthy();
 });

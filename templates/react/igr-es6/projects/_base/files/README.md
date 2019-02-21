@@ -1,68 +1,48 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# $(name)
 
-## Available Scripts
+This project was generated with [Ignite UI CLI](https://github.com/IgniteUI/igniteui-cli) version $(cliVersion).<br>
+The template builds upon a project bootstrapped with [Create React App](https://github.com/facebook/create-react-app), so all CRA features are available in this project.
 
-In the project directory, you can run:
+## Development server
 
-### `npm start`
+Run `ig start` to build the application, start a web server and open the application in the default browser. <br>
+The default serving port is `http://localhost:3003/`, configured in `ignite-ui-cli.json` via `defaultPort` property. We've made it easy to change it on the fly as well by passing a `--port` parameter.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Build
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+Run `ig build` to build the application into an output directory.
 
-### `npm test`
+## Step by step mode
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+If you want to get a guided experience through the available options, you can initialize the step by step mode that will help you to create and setup your new application, as well as update project previously created with the Ignite UI CLI. To start the guide, simply run the `ig` command.
 
-### `npm run build`
+## List templates
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The `ig list` command lists all available templates for this project.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+## Adding components
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Add a new component or template to the project passing component ID and choosing a name.
 
-### `npm run eject`
+`ig add <component/template> <component_name>`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+The ID matches either a component ("grid", "category-chart", etc) or a predefined template. Predefined templates can provide either multiple components or fulfilling a specific use case like "form-validation", "master-detail" and so on.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Running unit tests
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Run `ig test` to execute the unit tests.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Commands Help
+
+`ig help` lists the available commands and provides a brief description of what they do.
 
 ## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+To get more help on the IgniteUI CLI go check out the [IgniteUI CLI Wiki](https://github.com/IgniteUI/igniteui-cli/wiki).
+
+Learn more about CRA features in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
 
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

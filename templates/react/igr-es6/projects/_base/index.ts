@@ -11,15 +11,7 @@ export class BaseIgrProject implements ProjectTemplate {
 	public hasExtraConfiguration: boolean = false;
 
 	public async generateFiles(outputPath: string, name: string, theme: string, ...options: any[]): Promise<boolean> {
-		//TODO update the config with [{key: "keyname", "value"}]
-		const config = {
-			"$(cliVersion)": Util.version(),
-			"$(dash-name)" : Util.lowerDashed(name),
-			"$(name)": name,
-			"$(theme)": theme,
-			"__path__": name
-		};
-		config["$(description)"] = this.description;
+		const config = this.getVariablesConfig(name, theme);
 		const pathsConfig = {};
 		return Util.processTemplates(path.join(__dirname, "./files"), path.join(outputPath, name), config, pathsConfig);
 	}
@@ -35,5 +27,17 @@ export class BaseIgrProject implements ProjectTemplate {
 	}
 	public setExtraConfiguration(extraConfigKeys: {}) {
 		throw new Error("Method not implemented.");
+	}
+
+	protected getVariablesConfig(name: string, theme: string) {
+		return {
+			"$(cliVersion)": Util.version(),
+			"$(dash-name)": Util.lowerDashed(name),
+			"$(description)": this.description,
+			"$(name)": name,
+			"$(projectTemplate)": this.id,
+			"$(theme)": theme,
+			"__path__": name
+		};
 	}
 }
