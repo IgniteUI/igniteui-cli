@@ -32,13 +32,17 @@ describe("Help command", () => {
 			encoding: "utf-8"
 		});
 		const originalNewHelpText: string = `Options:
-		--version, -v    Show current Ignite UI CLI version                  [boolean]
-		--help, -h       Show help                                           [boolean]
-		--name, -n       Project name                                         [string]
-		--framework, -f  Framework to setup project for
+		--version, -v         Show current Ignite UI CLI version             [boolean]
+		--help, -h            Show help                                      [boolean]
+		--name, -n            Project name                                    [string]
+		--framework, -f       Framework to setup project for
 				  [string] [choices: "angular", "jquery", "react"] [default: "jquery"]
-		--type, -t       Project type (depends on framework)                  [string]
-		--theme, --th    Project theme (depends on project type)              [string]`;
+		--type, -t            Project type (depends on framework)             [string]
+		--theme, --th         Project theme (depends on project type)         [string]
+		--skip-git, --sg      Do not automatically initialize repository for the
+							  project with Git                               [boolean]
+		--skip-install, --si  Do not automatically install packages          [boolean]
+		--template            Project template                                [string]`;
 
 		const replacedNewHelpText: string = originalNewHelpText.replace(/\s/g, "");
 		const actualNewText: string = (child.stdout.toString("utf-8")).replace(/\s/g, "");
