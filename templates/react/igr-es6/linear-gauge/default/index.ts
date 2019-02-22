@@ -3,10 +3,10 @@ import { IgniteUIForReactTemplate } from "../../../../../lib/templates/IgniteUIF
 class IgrLinearGaugeTemplate extends IgniteUIForReactTemplate {
 	constructor() {
 		super(__dirname);
-		this.components = ["Linear Graph"];
+		this.components = ["Linear Gauge"];
 		this.controlGroup = "Gauges";
 		this.listInComponentTemplates = true;
-		this.id = "linear-graph";
+		this.id = "linear-gauge";
 		this.projectType = "igr-es6";
 		this.name = "Linear Gauge";
 		this.description = `value compared against a scale and one or more ranges.`;
