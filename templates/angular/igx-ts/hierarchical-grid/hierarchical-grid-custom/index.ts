@@ -61,14 +61,12 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 
 	//tslint:disable
 	private pinningTemplate(columnName: string): string {
-		return `
-		<ng-template igxHeader>
+		return `<ng-template igxHeader>
 			<div class="title-inner">
 				<span style="float:left">${columnName}</span>
 				<igx-icon class="pin-icon" fontSet="fas" name="fa-thumbtack" (click)="toggleColumn(${columnName.toLowerCase()})"></igx-icon>
 			</div>
-		</ng-template>
-		`;
+		</ng-template>`;
 	}
 
 	private getSelectedFeatures(columnFeatures: string[], gridFeatures: string[]) {

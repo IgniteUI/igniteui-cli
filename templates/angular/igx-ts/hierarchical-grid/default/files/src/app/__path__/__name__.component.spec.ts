@@ -1,9 +1,9 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { $(ClassName)Component } from "./$(filePrefix).component";
-import { IgxGridModule, IgxHierarchicalGridModule } from "igniteui-angular";
+import { $(ClassName)Component } from './$(filePrefix).component';
+import { IgxGridModule, IgxHierarchicalGridModule } from 'igniteui-angular';
 
-describe("$(ClassName)Component", () => {
+describe('$(ClassName)Component', () => {
   let component: $(ClassName)Component;
   let fixture: ComponentFixture<$(ClassName)Component>;
 
@@ -21,7 +21,7 @@ describe("$(ClassName)Component", () => {
     fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });
