@@ -1,8 +1,7 @@
 import { IgniteUIForAngularTemplate } from "../../../../../lib/templates/IgniteUIForAngularTemplate";
 
 class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
-	private userExtraConfiguration: {} = {};
-
+	private userExtraConfiguration: {};
 	constructor() {
 		super(__dirname);
 		this.components = ["Hierarchical Grid"];
@@ -36,20 +35,44 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 
 	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
 		const columnFeatures = [];
-		const columnBoolFeatures = [];
 		const gridFeatures = [];
+		const extraConfig = {
+			"$(selectedFeatures)": this.getSelectedFeatures(columnFeatures, gridFeatures),
+			// tslint:disable-next-line: object-literal-sort-keys
+			"$(columnFeatures)": columnFeatures.join(" "),
+			// "$(columnPinning)": columnPinning,
+			"$(gridFeatures)": gridFeatures.join(" "),
+			"$(pinningTemplate)": ""
+		};
+
+		return super.generateFiles(projectPath, name, { extraConfig });
+	}
+
+	//tslint:disable
+	private pinningTemplate(columnName: string): string {
+		return `
+		<ng-template igxHeader>
+			<div class="title-inner">
+				<span style="float:left">${columnName}</span>
+				<igx-icon class="pin-icon" fontSet="fas" name="fa-thumbtack" (click)="toggleColumn(${columnName.toLowerCase()})"></igx-icon>
+			</div>
+		</ng-template>
+		`;
+	}
+
+	private getSelectedFeatures(columnFeatures: string[], gridFeatures: string[]) {
+		const columnBoolFeatures = [];
+		let addGridToolbar = false;
+		let columnPinning = "";
+		let selectedFeatures = "";
 		const featureUrl = "https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid_";
 		const anchorWrapper = {
 			start: `<a href="`,
-			// tslint:disable-next-line:object-literal-sort-keys
 			href: ``,
 			middle: `" target="_blank">`,
 			text: ``,
 			end: `</a>`
 		};
-		let selectedFeatures = "";
-		let columnPinning = "";
-		let addGridToolbar = false;
 
 		if (this.userExtraConfiguration["columnFeatures"]) {
 			const features = this.userExtraConfiguration["columnFeatures"] as string[];
@@ -88,31 +111,8 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 						addGridToolbar = true;
 						break;
 				}
-				switch (feature) {
-					case "Sorting":
-					case "Filtering":
-					case "Paging":
-						featuresUrls.push(`${featureUrl}${feature}.html`);
-						break;
-					case "Resizing":
-						featuresUrls.push(`${featureUrl}column_resizing.html`);
-						break;
-					case "Column Pinning":
-						featuresUrls.push(`${featureUrl}column_pinning.html`);
-						break;
-					case "Cell Editing":
-						featuresUrls.push(`${featureUrl}editing.html`);
-						break;
-					case "Column Moving":
-						featuresUrls.push(`${featureUrl}column_moving.html`);
-						break;
-					case "Column Hiding":
-						featuresUrls.push(`${featureUrl}column_hiding.html`);
-						break;
-					case "Row Selection":
-						featuresUrls.push(`${featureUrl}selection.html`);
-						break;
-				}
+
+				featuresUrls.push(this.getFeatureUrl(feature, featureUrl));
 				selectedFeatures = features.map((e, i) => {
 					anchorWrapper.href = featuresUrls[i];
 					anchorWrapper.text = e;
@@ -123,33 +123,33 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 					selectedFeatures = `<p>Active Features: ${selectedFeatures}</p>`;
 				}
 				if (addGridToolbar) {
-					gridFeatures.push('[showToolbar]="true" toolbarTitle="Employees"');
+					gridFeatures.push('[showToolbar]="true" toolbarTitle="Singers"');
 				}
 			}
 		}
-		const extraConfig = {
-			// "$(checkBoxBind)": checkBoxBind,
-			// "$(columnBoolFeatures)": columnBoolFeatures.join(" "),
-			"$(columnFeatures)": columnFeatures.join(" "),
-			// "$(columnPinning)": columnPinning,
-			// "$(datePickerEditor)": datePickerEditor,
-			"$(gridFeatures)": gridFeatures.join(" "),
-			"$(pinningTemplate)": "",
-			"$(selectedFeatures)": selectedFeatures,
-		};
-		return super.generateFiles(projectPath, name, { extraConfig });
+
+		return selectedFeatures;
 	}
 
-	//tslint:disable
-	private pinningTemplate(columnName: string): string {
-		return `
-		<ng-template igxHeader>
-			<div class="title-inner">
-				<span style="float:left">${columnName}</span>
-				<igx-icon class="pin-icon" fontSet="fas" name="fa-thumbtack" (click)="toggleColumn(${columnName.toLowerCase()})"></igx-icon>
-			</div>
-		</ng-template>
-		`;
+	private getFeatureUrl(feature: string, featureUrl: string): string {
+		switch (feature) {
+			case "Sorting":
+			case "Filtering":
+			case "Paging":
+				return `${featureUrl}${feature}.html`;
+			case "Resizing":
+				return `${featureUrl}column_resizing.html`;
+			case "Column Pinning":
+				return `${featureUrl}column_pinning.html`;
+			case "Cell Editing":
+				return `${featureUrl}editing.html`;
+			case "Column Moving":
+				return `${featureUrl}column_moving.html`;
+			case "Column Hiding":
+				return `${featureUrl}column_hiding.html`;
+			case "Row Selection":
+				return `${featureUrl}selection.html`;
+		}
 	}
 }
 module.exports = new IgxHierarchicalGridTemplate();
