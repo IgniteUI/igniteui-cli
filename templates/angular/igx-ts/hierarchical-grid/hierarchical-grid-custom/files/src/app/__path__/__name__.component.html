@@ -7,37 +7,28 @@
 $(selectedFeatures)
 <igx-hierarchical-grid #hGrid [data]="localData" [autoGenerate]="false" [height]="'600px'" [width]="'1000px'"
 	$(gridFeatures)>
-
 	<igx-column #artist field="Artist" [dataType]="'string'" $(columnFeatures)>
-		$(pinningTemplate)
+		$(artist-pin)
 	</igx-column>
-
 	<igx-column #grammy field="HasGrammyAward" [dataType]="'boolean'" $(columnFeatures)>
-		$(pinningTemplate)
+		$(grammy-pin)
 	</igx-column>
-
 	<igx-column #debut field="Debut" [dataType]="'number'" $(columnFeatures)></igx-column>
-
 	<igx-column #nominations field="GrammyNominations" [dataType]="'number'" $(columnFeatures)>
-		$(pinningTemplate)
+		$(nominations-pin)
 	</igx-column>
-
 	<igx-column #awards field="GrammyAwards" [dataType]="'number'">
-		$(pinningTemplate)
+		$(awards-pin)
 	</igx-column>
-
 	<igx-row-island [key]="'Albums'" [autoGenerate]="false" $(gridFeatures)>
 		<igx-column #album field="Album" [dataType]="'string'" $(columnFeatures)>
-			$(pinningTemplate)
+			$(album-pin)
 		</igx-column>
-
 		<igx-column #launch field="Launch Date" [dataType]="'date'" $(columnFeatures)>
-			$(pinningTemplate)
+			$(launch-pin)
 		</igx-column>
-
 		<igx-column #review field="Billboard Review" [dataType]="'number'" $(columnFeatures)></igx-column>
 		<igx-column field="US Billboard 200" [dataType]="'number'" $(columnFeatures)></igx-column>
-
 		<igx-row-island [key]="'Songs'" [autoGenerate]="false">
 			<igx-column field="No."></igx-column>
 			<igx-column field="Title"></igx-column>

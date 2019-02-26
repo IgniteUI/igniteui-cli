@@ -2,6 +2,8 @@ import { IgniteUIForAngularTemplate } from "../../../../../lib/templates/IgniteU
 
 class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 	private userExtraConfiguration: {};
+	private usePinning: boolean;
+
 	constructor() {
 		super(__dirname);
 		this.components = ["Hierarchical Grid"];
@@ -36,16 +38,25 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
 		const columnFeatures = [];
 		const gridFeatures = [];
+		let pinningConfig: {};
 		const extraConfig = {
 			"$(selectedFeatures)": this.getSelectedFeatures(columnFeatures, gridFeatures),
 			// tslint:disable-next-line: object-literal-sort-keys
 			"$(columnFeatures)": columnFeatures.join(" "),
-			// "$(columnPinning)": columnPinning,
-			"$(gridFeatures)": gridFeatures.join(" "),
-			"$(pinningTemplate)": ""
+			"$(gridFeatures)": gridFeatures.join(" ")
 		};
+		if (this.usePinning) {
+			pinningConfig = {
+				"$(album-pin)": this.pinningTemplate("Album"),
+				"$(artist-pin)": this.pinningTemplate("Artist"),
+				"$(awards-pin)": this.pinningTemplate("Awards"),
+				"$(grammy-pin)": this.pinningTemplate("Grammy"),
+				"$(launch-pin)": this.pinningTemplate("Launch"),
+				"$(nominations-pin)": this.pinningTemplate("Nominations")
+			};
+		}
 
-		return super.generateFiles(projectPath, name, { extraConfig });
+		return super.generateFiles(projectPath, name, { extraConfig, pinningConfig });
 	}
 
 	//tslint:disable
@@ -63,7 +74,6 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 	private getSelectedFeatures(columnFeatures: string[], gridFeatures: string[]) {
 		const columnBoolFeatures = [];
 		let addGridToolbar = false;
-		let columnPinning = "";
 		let selectedFeatures = "";
 		const featureUrl = "https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid_";
 		const anchorWrapper = {
@@ -106,9 +116,7 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 						gridFeatures.push(`[paging]="true" [perPage]="5"`);
 						break;
 					case "Column Pinning":
-						columnPinning = '[pinned]="true"';
-						gridFeatures.push('[columnPinning]="true"');
-						addGridToolbar = true;
+						this.usePinning = true;
 						break;
 				}
 
