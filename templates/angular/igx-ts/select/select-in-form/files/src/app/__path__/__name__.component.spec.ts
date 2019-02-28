@@ -1,13 +1,15 @@
-import { FormsModule } from "@angular/forms";
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
-import { NoopAnimationsModule } from "@angular/platform-browser/animations";
+import { FormsModule } from '@angular/forms';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-import { $(ClassName)Component } from "./$(filePrefix).component";
-import { IgxSelectModule, IgxToggleModule } from "igniteui-angular";
+import { $(ClassName)Component } from './$(filePrefix).component';
+import {
+	IgxSelectModule, IgxToggleModule, IgxDropDownModule, IgxFilterModule, IgxButtonModule, IgxToastModule
+} from 'igniteui-angular';
 
-describe("$(ClassName)Component", () => {
+describe('$(ClassName)Component', () => {
 	let component: $(ClassName)Component;
-	let fixture: ComponentFixture<$(ClassName)Component>;
+	let fixture: ComponentFixture<$(ClassName)Component >;
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
@@ -16,6 +18,10 @@ describe("$(ClassName)Component", () => {
 				FormsModule,
 				IgxSelectModule,
 				IgxToggleModule,
+				IgxDropDownModule,
+				IgxFilterModule,
+				IgxButtonModule,
+				IgxToastModule,
 				NoopAnimationsModule,
 			]
 		})
@@ -28,7 +34,7 @@ describe("$(ClassName)Component", () => {
 		fixture.detectChanges();
 	});
 
-	it("should create", () => {
+	it('should create', () => {
 		expect(component).toBeTruthy();
 	});
 });
