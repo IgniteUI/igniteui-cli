@@ -1,19 +1,28 @@
-import { Component, ViewChild } from "@angular/core";
-import { IgxSelectComponent } from "igniteui-angular";
+import { Component, ViewChild } from '@angular/core';
+import { IgxSelectComponent, IgxToastPosition, IgxToastComponent } from 'igniteui-angular';
 
 @Component({
-	selector: "app-$(filePrefix)",
-	styleUrls: ["$(filePrefix).component.scss"],
-	templateUrl: "$(filePrefix).component.html"
+    selector: 'app-$(filePrefix)',
+    styleUrls: ['$(filePrefix).component.scss'],
+    templateUrl: '$(filePrefix).component.html'
 })
 export class $(ClassName)Component {
-	@ViewChild(IgxSelectComponent)
-	public igxSelect: IgxSelectComponent;
+    @ViewChild(IgxSelectComponent)
+    public igxSelect: IgxSelectComponent;
 
-	public items: string[] = ["Orange", "Apple", "Banana", "Mango"];
-	public value: string;
+    @ViewChild(IgxToastComponent)
+    public output: IgxToastComponent;
 
-	public onSubmit() {
-		this.value = this.igxSelect.value;
-	}
+    public items: string[] = ['Orange', 'Apple', 'Banana', 'Mango'];
+    public value: string;
+    public outputPosition = IgxToastPosition.Middle;
+
+    public onSubmit() {
+        this.value = this.igxSelect.value;
+        this.output.show();
+    }
+
+    public handleSelection(event) {
+        this.value = event.newSelection.value;
+    }
 }
