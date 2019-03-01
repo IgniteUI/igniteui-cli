@@ -424,6 +424,12 @@ export class PromptSession {
 			case "projectType":
 				text = `  Project type`;
 				break;
+			case "projTemplate":
+				text = `  Proj Template`;
+				break;
+			case "theme":
+				text = `  Theme`;
+				break;
 			default:
 				return;
 				//TODO: text = `  ${options.name}`;

@@ -80,7 +80,8 @@ describe("Unit - PromptSession", () => {
 		spyOn(process, "chdir");
 		spyOn(mockSession, "chooseActionLoop");
 		await mockSession.start();
-		expect(Util.log).toHaveBeenCalledTimes(3);
+		expect(Util.log).toHaveBeenCalledTimes(4);
+		expect(Util.log).toHaveBeenCalledWith("  Proj Template: Project 1");
 		expect(Util.log).toHaveBeenCalledWith("  Generating project structure.");
 		expect(Util.log).toHaveBeenCalledWith("");
 		expect(Util.log).toHaveBeenCalledWith(Util.greenCheck() + " Project structure generated.");
@@ -250,9 +251,10 @@ describe("Unit - PromptSession", () => {
 		spyOn(process, "chdir");
 		spyOn(mockSession, "chooseActionLoop");
 		await mockSession.start();
-		expect(Util.log).toHaveBeenCalledTimes(3);
-		expect(Util.log).toHaveBeenCalledWith("  Generating project structure.");
+		expect(Util.log).toHaveBeenCalledTimes(4);
+		expect(Util.log).toHaveBeenCalledWith("  Proj Template: Project 1");
 		expect(Util.log).toHaveBeenCalledWith("");
+		expect(Util.log).toHaveBeenCalledWith("  Generating project structure.");
 		expect(Util.error).toHaveBeenCalledTimes(1);
 		expect(Util.log).toHaveBeenCalledWith(Util.greenCheck() + " Project structure generated.");
 		expect(Util.isAlphanumericExt).toHaveBeenCalledTimes(2);
