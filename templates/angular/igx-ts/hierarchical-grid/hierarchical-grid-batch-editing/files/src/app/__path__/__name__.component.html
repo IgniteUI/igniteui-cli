@@ -3,11 +3,11 @@
 <app-hierarchical-grid-with-transactions>
     <igx-hierarchical-grid #hGrid class="hgrid" [data]="localdata" [primaryKey]="'Artist'"
         [rowEditable]="true" [height]="'580px'" [width]="'1000px'">
-        <igx-column field="Artist" [editable]="true" [dataType]="'string'"></igx-column>
-        <igx-column field="HasGrammyAward" [editable]="true" [dataType]="'boolean'"></igx-column>
-        <igx-column field="Debut" [editable]="true" [dataType]="'number'"></igx-column>
-        <igx-column field="GrammyNominations" [editable]="true" [dataType]="'number'"></igx-column>
-        <igx-column field="GrammyAwards" [editable]="true" [dataType]="'number'"></igx-column>
+        <igx-column [header]="'Artist'" field="artist" [editable]="true" [dataType]="'string'"></igx-column>
+        <igx-column [header]="'Has a Grammy Award'" field="hasGrammyAward" [editable]="true" [dataType]="'boolean'"></igx-column>
+        <igx-column [header]="'Debut'" field="debut" [editable]="true" [dataType]="'number'"></igx-column>
+        <igx-column [header]="'Grammy Nominations'" field="grammyNominations" [editable]="true" [dataType]="'number'"></igx-column>
+        <igx-column [header]="'Grammy Awards'" field="grammyAwards" [editable]="true" [dataType]="'number'"></igx-column>
         <igx-column width="150px">
             <ng-template igxCell let-cell="cell" let-val>
                 <button igxButton (click)="removeRow(cell.cellID.rowIndex)"
@@ -35,7 +35,7 @@
 </div>
 
 <igx-dialog #dialogAddSinger title="New Singer" [rightButtonLabel]="'Add'" [leftButtonLabel]="'Cancel'"
-    (onLeftButtonSelect)="cancel()" (onRightButtonSelect)="addSinger()">
+    (onLeftButtonSelect)="closeDialog()" (onRightButtonSelect)="addSinger()">
     <div class="dialogNewSinger">
         <igx-input-group>
             <label igxLabel for="artist">Artist</label>
@@ -76,6 +76,6 @@
     <div class="buttons-wrapper">
         <button igxButton (click)="commit()">Commit</button>
         <button igxButton (click)="discard()">Discard</button>
-        <button igxButton (click)="cancel()">Cancel</button>
+        <button igxButton (click)="closeDialog()">Cancel</button>
     </div>
 </igx-dialog>

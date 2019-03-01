@@ -104,7 +104,7 @@ export class $(ClassName)Component implements OnInit {
 
     public addSinger() {
         this.hierarchicalGrid.addRow(this.singer);
-        this.cancel();
+        this.closeDialog();
     }
 
     public removeRow(rowIndex) {
@@ -124,7 +124,7 @@ export class $(ClassName)Component implements OnInit {
         return `transaction--${type.toLowerCase()}`;
     }
 
-    public cancel() {
+    public closeDialog() {
         this.dialogChanges.close();
         this.dialogSinger.close();
         this.singer = new Singer();

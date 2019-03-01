@@ -1,24 +1,24 @@
 /* tslint:disable */
 export const SINGERS = [
 	{
-		Artist: "Naomí Yepes",
-		HasGrammyAward: false,
-		Debut: "2011",
-		"GrammyNominations": 6,
-		"GrammyAwards": 0,
+		artist: "Naomí Yepes",
+		hasGrammyAward: false,
+		debut: "2011",
+		"grammyNominations": 6,
+		"grammyAwards": 0,
 		"Albums": [{
 			"Album": "Initiation",
 			"Launch Date": new Date("September 3, 2013"),
 			"Billboard Review": "86",
 			"US Billboard 200": "1",
-			"Artist": "Naomí Yepes"
+			"artist": "Naomí Yepes"
 		},
 		{
 			"Album": "Dream Driven",
 			"Launch Date": new Date("August 25, 2014"),
 			"Billboard Review": "81",
 			"US Billboard 200": "1",
-			"Artist": "Naomí Yepes",
+			"artist": "Naomí Yepes",
 			"Songs":[{
 				"No.": "1",
 				"Title": "Intro",
@@ -109,14 +109,14 @@ export const SINGERS = [
 			"Launch Date": new Date("May 20, 2016"),
 			"Billboard Review": "60",
 			"US Billboard 200": "2",
-			"Artist": "Naomí Yepes"
+			"artist": "Naomí Yepes"
 		},
 		{
 			"Album": "Organic me",
 			"Launch Date": new Date("August 17, 2018"),
 			"Billboard Review": "82",
 			"US Billboard 200": "1",
-			"Artist": "Naomí Yepes",
+			"artist": "Naomí Yepes",
 			"Songs":[{
 				"No.": "1",
 				"Title": "I Love",
@@ -200,21 +200,21 @@ export const SINGERS = [
 			"Launch Date": new Date("December 7, 2019"),
 			"Billboard Review": "75",
 			"US Billboard 200": "12",
-			"Artist": "Naomí Yepes"
+			"artist": "Naomí Yepes"
 		}]
 	},
 	{
-		"Artist": "Babila Ebwélé",
-		HasGrammyAward: true,
-		"Debut": "2009",
-		"GrammyNominations": 0,
-		"GrammyAwards": 11,
+		"artist": "Babila Ebwélé",
+		hasGrammyAward: true,
+		"debut": "2009",
+		"GgammyNominations": 0,
+		"GgammyAwards": 11,
 		"Albums": [{
 			"Album": "Pushing up daisies",
 			"Launch Date": new Date("May 31, 2000"),
 			"Billboard Review": "86",
 			"US Billboard 200": "42",
-			"Artist": "Babila Ebwélé",
+			"artist": "Babila Ebwélé",
 			"Songs":[{
 				"No.": "1",
 				"Title": "Wood Shavings Forever",
@@ -291,7 +291,7 @@ export const SINGERS = [
 			"Launch Date": new Date("June 8, 2016"),
 			"Billboard Review": "85",
 			"US Billboard 200": "95",
-			"Artist": "Babila Ebwélé",
+			"artist": "Babila Ebwélé",
 			"Songs":[{
 				"No.": "1",
 				"Title": "Men Sound Better With You",
@@ -372,59 +372,59 @@ export const SINGERS = [
 		}]
 	},
 	{
-		"Artist": "Ahmad Nazeri",
-		HasGrammyAward: true,
-		"Debut": "2004",
-		"GrammyNominations": 3,
-		"GrammyAwards": 1,
+		"artist": "Ahmad Nazeri",
+		hasGrammyAward: true,
+		"debut": "2004",
+		"GgammyNominations": 3,
+		"GgammyAwards": 1,
 		"Albums": [{
 			"Album": "Emergency",
 			"Launch Date": new Date("March 6, 2004"),
 			"Billboard Review": "98",
 			"US Billboard 200": "69",
-			"Artist": "Ahmad Nazeri"
+			"artist": "Ahmad Nazeri"
 		},
 		{
 			"Album": "Bursting bubbles",
 			"Launch Date": new Date("April 17, 2006"),
 			"Billboard Review": "69",
 			"US Billboard 200": "39",
-			"Artist": "Ahmad Nazeri"
+			"artist": "Ahmad Nazeri"
 		}]
 	},
 	{
-		"Artist": "Kimmy McIlmorie",
-		HasGrammyAward: true,
-		"Debut": "2007",
-		"GrammyNominations": 21,
-		"GrammyAwards": 3,
+		"artist": "Kimmy McIlmorie",
+		hasGrammyAward: true,
+		"debut": "2007",
+		"GgammyNominations": 21,
+		"GgammyAwards": 3,
 		"Albums": [{
 			"Album": "Here we go again",
 			"Launch Date": new Date("November 18, 2017"),
 			"Billboard Review": "68",
 			"US Billboard 200": "1",
-			"Artist": "Kimmy McIlmorie"
+			"artist": "Kimmy McIlmorie"
 		}]
 	},
 	{
-		"Artist": "Mar Rueda",
-		HasGrammyAward: true,
-		"Debut": "1996",
-		"GrammyNominations": 14,
-		"GrammyAwards": 2
+		"artist": "Mar Rueda",
+		hasGrammyAward: true,
+		"debut": "1996",
+		"GgammyNominations": 14,
+		"GgammyAwards": 2
 	},
 	{
-		"Artist": "Izabella Tabakova",
-		HasGrammyAward: true,
-		"Debut": "2017",
-		"GrammyNominations": 7,
-		"GrammyAwards": 11,
+		"artist": "Izabella Tabakova",
+		hasGrammyAward: true,
+		"debut": "2017",
+		"GgammyNominations": 7,
+		"GgammyAwards": 11,
 		"Albums": [{
 			"Album": "Once bitten",
 			"Launch Date": new Date("July 16, 2007"),
 			"Billboard Review": "79",
 			"US Billboard 200": "53",
-			"Artist": "Izabella Tabakova",
+			"artist": "Izabella Tabakova",
 			"Songs":[{
 				"No.": "1",
 				"Title": "Whole Lotta Super Cats",
@@ -501,7 +501,7 @@ export const SINGERS = [
 			"Launch Date": new Date("November 17, 2004"),
 			"Billboard Review": "69",
 			"US Billboard 200": "30",
-			"Artist": "Izabella Tabakova",
+			"artist": "Izabella Tabakova",
 			"Songs":[{
 				"No.": "1",
 				"Title": "We Shall Tickle",
@@ -578,49 +578,49 @@ export const SINGERS = [
 			"Launch Date": new Date("November 3, 2002"),
 			"Billboard Review": "79",
 			"US Billboard 200": "85",
-			"Artist": "Izabella Tabakova"
+			"artist": "Izabella Tabakova"
 		}]
 	},
 	{
-		"Artist": "Nguyễn Diệp Chi",
-		HasGrammyAward: true,
-		"Debut": "1992",
-		"GrammyNominations": 4,
-		"GrammyAwards": 2,
+		"artist": "Nguyễn Diệp Chi",
+		hasGrammyAward: true,
+		"debut": "1992",
+		"GgammyNominations": 4,
+		"GgammyAwards": 2,
 		"Albums": [{
 			"Album": "Library of liberty",
 			"Launch Date": new Date("December 22, 2003"),
 			"Billboard Review": "93",
 			"US Billboard 200": "5",
-			"Artist": "Nguyễn Diệp Chi"
+			"artist": "Nguyễn Diệp Chi"
 		}]
 	},
 	{
-		"Artist": "Eva Lee",
-		HasGrammyAward: false,
-		"Debut": "2008",
-		"GrammyNominations": 2,
-		"GrammyAwards": 0,
+		"artist": "Eva Lee",
+		hasGrammyAward: false,
+		"debut": "2008",
+		"GgammyNominations": 2,
+		"GgammyAwards": 0,
 		"Albums": [{
 			"Album": "Just a tease",
 			"Launch Date": new Date("May 3, 2001"),
 			"Billboard Review": "91",
 			"US Billboard 200": "29",
-			"Artist": "Eva Lee"
+			"artist": "Eva Lee"
 		}]
 	},
 	{
-		"Artist": "Siri Jakobsson",
-		HasGrammyAward: true,
-		"Debut": "1990",
-		"GrammyNominations": 2,
-		"GrammyAwards": 8,
+		"artist": "Siri Jakobsson",
+		hasGrammyAward: true,
+		"debut": "1990",
+		"GgammyNominations": 2,
+		"GgammyAwards": 8,
 		"Albums": [{
 			"Album": "Under the bus",
 			"Launch Date": new Date("May 14, 2000"),
 			"Billboard Review": "67",
 			"US Billboard 200": "67",
-			"Artist": "Siri Jakobsson",
+			"artist": "Siri Jakobsson",
 			"Songs":[{
 				"No.": "1",
 				"Title": "Jack Broke My Heart At Tesco's",
@@ -722,24 +722,24 @@ export const SINGERS = [
 		}]
 	},
 	{
-		"Artist": "Pablo Cambeiro",
-		HasGrammyAward: false,
-		"Debut": "2011",
-		"GrammyNominations": 5,
-		"GrammyAwards": 0,
+		"artist": "Pablo Cambeiro",
+		hasGrammyAward: false,
+		"debut": "2011",
+		"GgammyNominations": 5,
+		"GgammyAwards": 0,
 		"Albums": [{
 			"Album": "Fluke",
 			"Launch Date": new Date("August 4, 2017"),
 			"Billboard Review": "93",
 			"US Billboard 200": "98",
-			"Artist": "Pablo Cambeiro"
+			"artist": "Pablo Cambeiro"
 		},
 		{
 			"Album": "Crowd control",
 			"Launch Date": new Date("August 26, 2003"),
 			"Billboard Review": "68",
 			"US Billboard 200": "84",
-			"Artist": "Pablo Cambeiro",
+			"artist": "Pablo Cambeiro",
 			"Songs":[{
 				"No.": "1",
 				"Title": "My Bed on My Mind",
@@ -806,38 +806,38 @@ export const SINGERS = [
 		}]
 	},
 	{
-		"Artist": "Athar Malakooti",
-		HasGrammyAward: false,
-		"Debut": "2017",
-		"GrammyNominations": 0,
-		"GrammyAwards": 0,
+		"artist": "Athar Malakooti",
+		hasGrammyAward: false,
+		"debut": "2017",
+		"GgammyNominations": 0,
+		"GgammyAwards": 0,
 		"Albums": [{
 			"Album": "Pushing up daisies",
 			"Launch Date": new Date("February 24, 2016"),
 			"Billboard Review": "74",
 			"US Billboard 200": "77",
-			"Artist": "Athar Malakooti"
+			"artist": "Athar Malakooti"
 		}]
 	},
 	{
-		"Artist": "Marti Valencia",
-		HasGrammyAward: true,
-		"Debut": "2004",
-		"GrammyNominations": 1,
-		"GrammyAwards": 1,
+		"artist": "Marti Valencia",
+		hasGrammyAward: true,
+		"debut": "2004",
+		"GgammyNominations": 1,
+		"GgammyAwards": 1,
 		"Albums": [{
 			"Album": "Nemesis",
 			"Launch Date": new Date("June 30, 2004"),
 			"Billboard Review": "94",
 			"US Billboard 200": "9",
-			"Artist": "Marti Valencia"
+			"artist": "Marti Valencia"
 		},
 		{
 			"Album": "First chance",
 			"Launch Date": new Date("January 7, 2019"),
 			"Billboard Review": "96",
 			"US Billboard 200": "19",
-			"Artist": "Marti Valencia",
+			"artist": "Marti Valencia",
 			"Songs":[{
 				"No.": "1",
 				"Title": "My Name is Jason",
@@ -928,42 +928,42 @@ export const SINGERS = [
 			"Launch Date": new Date("April 29, 2007"),
 			"Billboard Review": "66",
 			"US Billboard 200": "37",
-			"Artist": "Marti Valencia"
+			"artist": "Marti Valencia"
 		}]
 	},
 	{
-		"Artist": "Alicia Stanger",
-		HasGrammyAward: false,
-		"Debut": "2010",
-		"GrammyNominations": 1,
-		"GrammyAwards": 0,
+		"artist": "Alicia Stanger",
+		hasGrammyAward: false,
+		"debut": "2010",
+		"GgammyNominations": 1,
+		"GgammyAwards": 0,
 		"Albums": [{
 			"Album": "Forever alone",
 			"Launch Date": new Date("November 3, 2005"),
 			"Billboard Review": "82",
 			"US Billboard 200": "7",
-			"Artist": "Alicia Stanger"
+			"artist": "Alicia Stanger"
 		}]
 	},
 	{
-		"Artist": "Peter Taylor",
-		HasGrammyAward: true,
-		"Debut": "2005",
-		"GrammyNominations": 0,
-		"GrammyAwards": 2,
+		"artist": "Peter Taylor",
+		hasGrammyAward: true,
+		"debut": "2005",
+		"GgammyNominations": 0,
+		"GgammyAwards": 2,
 		"Albums": [{
 			"Album": "Decisions decisions",
 			"Launch Date": new Date("April 10, 2008"),
 			"Billboard Review": "85",
 			"US Billboard 200": "35",
-			"Artist": "Peter Taylor"
+			"artist": "Peter Taylor"
 		},
 		{
 			"Album": "Climate changed",
 			"Launch Date": new Date("June 20, 2015"),
 			"Billboard Review": "66",
 			"US Billboard 200": "89",
-			"Artist": "Peter Taylor"
+			"artist": "Peter Taylor"
 		}]
 	}
 ];
