@@ -1,7 +1,7 @@
 <button igxButton="raised" (click)="dialogAddSinger.open()" class="addSingerBtn">Add Singer</button>
 
 <app-hierarchical-grid-with-transactions>
-    <igx-hierarchical-grid #hGrid class="hgrid" [data]="localdata" [primaryKey]="'Artist'"
+    <igx-hierarchical-grid #hGrid class="hgrid" [data]="localdata" [primaryKey]="'artist'"
         [rowEditable]="true" [height]="'580px'" [width]="'1000px'">
         <igx-column [header]="'Artist'" field="artist" [editable]="true" [dataType]="'string'"></igx-column>
         <igx-column [header]="'Has a Grammy Award'" field="hasGrammyAward" [editable]="true" [dataType]="'boolean'"></igx-column>

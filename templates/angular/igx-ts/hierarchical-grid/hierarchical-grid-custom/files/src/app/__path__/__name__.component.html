@@ -20,7 +20,7 @@ $(selectedFeatures)
 	<igx-column #awards field="GrammyAwards" [dataType]="'number'">
 		$(awards-pin)
 	</igx-column>
-	<igx-row-island [key]="'Albums'" [autoGenerate]="false" $(gridFeatures)>
+	<igx-row-island [key]="'Albums'" [autoGenerate]="false" $(rowIslandFeatures)>
 		<igx-column #album field="Album" [dataType]="'string'" $(columnFeatures)>
 			$(album-pin)
 		</igx-column>

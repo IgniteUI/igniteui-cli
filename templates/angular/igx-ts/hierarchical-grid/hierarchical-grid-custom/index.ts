@@ -43,7 +43,8 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 			"$(selectedFeatures)": this.getSelectedFeatures(columnFeatures, gridFeatures),
 			// tslint:disable-next-line: object-literal-sort-keys
 			"$(columnFeatures)": columnFeatures.join(" "),
-			"$(gridFeatures)": gridFeatures.join(" ")
+			"$(gridFeatures)": gridFeatures.join(" "),
+			"$(rowIslandFeatures)": gridFeatures.join(" ").replace(/Singers/g, "Albums")
 		};
 		if (this.usePinning) {
 			pinningConfig = {
