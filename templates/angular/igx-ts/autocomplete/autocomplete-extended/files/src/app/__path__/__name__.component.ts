@@ -1,5 +1,6 @@
-import { Component, Pipe, PipeTransform } from '@angular/core';
+import { Component, Pipe, PipeTransform, ViewChild } from '@angular/core';
 import { townsExtended } from './towns-data-extended';
+import { IgxToastComponent, IgxToastPosition } from 'igniteui-angular';
 
 @Component({
     selector: 'app-$(filePrefix)',
@@ -10,6 +11,10 @@ export class $(ClassName)Component {
     public extendedTowns: any;
     public townSelected: string;
     public postalCode: string;
+    public messagePosition = IgxToastPosition.Bottom;
+
+    @ViewChild(IgxToastComponent)
+    public toast: IgxToastComponent;
 
     constructor() {
         this.extendedTowns = townsExtended;
@@ -18,6 +23,8 @@ export class $(ClassName)Component {
     public getPostalCode(event) {
         const targetRegion = this.extendedTowns.regions.filter((r) => r.name === event.newSelection.group.label)[0];
         this.postalCode = targetRegion.towns.filter(t => t.name === event.newSelection.value)[0].postalCode;
+        
+        this.toast.show();
     }
 }
 

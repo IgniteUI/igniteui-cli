@@ -11,7 +11,7 @@ class IgxAutocompleteTemplate extends IgniteUIForAngularTemplate {
 		this.name = "Enhanced Autocomplete";
 		this.description = "IgxAutocomplete with enhanced groups";
 		this.dependencies = [{
-			import: ["IgxAutocompleteModule", "IgxDropDownModule", "IgxInputGroupModule"],
+			import: ["IgxAutocompleteModule", "IgxDropDownModule", "IgxInputGroupModule", "IgxToastModule"],
 			from: "igniteui-angular"
 		}, {
 			declare: ["$(ClassName)PipeStartsWith"],

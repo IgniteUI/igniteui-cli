@@ -22,8 +22,7 @@
 				</igx-drop-down-item>
 			</igx-drop-down-item-group>
 		</igx-drop-down>
-		<div *ngIf="postalCode">
-			<span class="postalCode">Postal Code: {{postalCode}}</span>
-		</div>
+
+		<igx-toast #message message="Postal Code: {{postalCode}}" [position]="messagePosition"></igx-toast>
 	</div>
 </div>
