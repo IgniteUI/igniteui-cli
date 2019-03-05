@@ -31,18 +31,18 @@
                         <igx-icon>email</igx-icon>
                     </igx-suffix>
                 </igx-input-group>
-                <div class="igx-combo">
+                <div class="component-container">
                     <igx-combo #combo1 name="genres" class="input-container" width="100%" [itemsMaxHeight]="130" [data]="genres" [(ngModel)]="user.genres"
                         placeholder="Select your favorite genres" searchPlaceholder="Search..." required [type]='"line"'>
                     </igx-combo>
                 </div>
-                <div class="igx-datePicker">
+                <div class="component-container">
                     <igx-date-picker name="date" (onSelection)="onDateSelection($event)"></igx-date-picker>
                 </div>
-                <div class="igx-time-picker">
+                <div class="component-container">
                     <igx-time-picker name="dateTime" (onValueChanged)="onTimeSelection($event)"></igx-time-picker>
                 </div>
-                <div class="button-wrapper">
+                <div class="component-container">
                     <button igxButton="raised" igxRipple>Book</button>
                 </div>
             </form>
