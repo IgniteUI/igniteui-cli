@@ -11,8 +11,8 @@ export class $(ClassName)Component {
     dateTime: new Date(),
     email: '',
     fullName: '',
-	genres: '',
-	movie: '',
+    genres: '',
+    movie: '',
     phone: ''
   };
 

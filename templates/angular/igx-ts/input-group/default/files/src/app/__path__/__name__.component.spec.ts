@@ -31,9 +31,9 @@ describe('$(ClassName)Component', () => {
         IgxIconModule,
         IgxComboModule,
         IgxDatePickerModule,
-		IgxTimePickerModule,
-		IgxSelectModule,
-		IgxDropDownModule
+        IgxTimePickerModule,
+        IgxSelectModule,
+        IgxDropDownModule
       ]
     })
       .compileComponents();
