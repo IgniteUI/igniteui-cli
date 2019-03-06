@@ -1,0 +1,25 @@
+<p>IgxHierarchicalGrid with basic configuration. </p>
+<p>You can read more about configuring the igx-hierarchical-gird component in the 
+	<a href="https://github.com/IgniteUI/igniteui-angular/tree/master/projects/igniteui-angular/src/lib/grids/hierarchical-grid/README.md" target="_blank">README</a> or the 
+	<a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/hierarchicalgrid/hierarchical_grid.html" target="_blank">official documentation</a>.</p>
+<igx-hierarchical-grid #hGrid [data]="localData" [autoGenerate]="false" [height]="'600px'" [width]="'1000px'">
+	<igx-column field="Artist" [editable]="true" [dataType]="'string'"></igx-column>
+	<igx-column field="HasGrammyAward" [editable]="true" [dataType]="'boolean'">
+	</igx-column>
+	<igx-column field="Debut" [editable]="true" [dataType]="'number'"></igx-column>
+	<igx-column field="GrammyNominations" [editable]="true" [dataType]="'number'"></igx-column>
+	<igx-column field="GrammyAwards" [editable]="true" [dataType]="'number'"></igx-column>
+
+	<igx-row-island [key]="'Albums'" [autoGenerate]="false">
+		<igx-column field="Album" [editable]="true" [dataType]="'string'"></igx-column>
+		<igx-column field="Launch Date" [editable]="true" [dataType]="'date'"></igx-column>
+		<igx-column field="Billboard Review" [editable]="true" [dataType]="'number'"></igx-column>
+		<igx-column field="US Billboard 200" [editable]="true" [dataType]="'number'"></igx-column>
+		<igx-row-island [key]="'Songs'" [autoGenerate]="false">
+			<igx-column field="No."></igx-column>
+			<igx-column field="Title"></igx-column>
+			<igx-column field="Released"></igx-column>
+			<igx-column field="Genre"></igx-column>
+		</igx-row-island>
+	</igx-row-island>
+</igx-hierarchical-grid>
