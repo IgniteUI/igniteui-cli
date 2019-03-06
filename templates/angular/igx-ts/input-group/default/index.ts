@@ -18,7 +18,9 @@ class IgxInputGroupTemplate extends IgniteUIForAngularTemplate {
 					"IgxIconModule",
 					"IgxInputGroupModule",
 					"IgxRippleModule",
-					"IgxTimePickerModule"
+					"IgxTimePickerModule",
+					"IgxSelectModule",
+					"IgxDropDownModule"
 				],
 				from: "igniteui-angular"
 			},
