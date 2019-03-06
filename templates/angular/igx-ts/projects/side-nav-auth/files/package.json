@@ -24,7 +24,7 @@
     "angular-auth-oidc-client": "^6.0.6",
     "core-js": "^2.5.4",
     "hammerjs": "^2.0.8",
-    "igniteui-angular": "7.2.0-rc.1",
+    "igniteui-angular": "7.2.0-rc.2",
     "jszip": "^3.1.5",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
