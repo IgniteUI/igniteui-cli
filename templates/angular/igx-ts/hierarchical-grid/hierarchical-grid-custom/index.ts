@@ -74,7 +74,7 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 		const columnBoolFeatures = [];
 		let addGridToolbar = false;
 		let selectedFeatures = "";
-		const featureUrl = "https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid_";
+		const featureUrl = "https://www.infragistics.com/products/ignite-ui-angular/angular/components/hierarchicalgrid/";
 		const anchorWrapper = {
 			start: `<a href="`,
 			href: ``,
