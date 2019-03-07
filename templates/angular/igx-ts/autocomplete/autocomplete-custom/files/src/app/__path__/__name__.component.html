@@ -10,7 +10,11 @@
 				<label igxLabel for="town">Town</label>
 				<input igxInput name="town" type="text" [igxAutocomplete]="townsPanel" [(ngModel)]="townSelected" />
 			</igx-input-group>
-			$(autocomplete)
+			<igx-drop-down #townsPanel maxHeight="300px">
+				<igx-drop-down-item *ngFor="let town of towns | $(camelCaseName)StartsWith:townSelected" [value]="town">
+					{{town}}
+				</igx-drop-down-item>
+			</igx-drop-down>
 		</form>
 	</article>
 </section>
