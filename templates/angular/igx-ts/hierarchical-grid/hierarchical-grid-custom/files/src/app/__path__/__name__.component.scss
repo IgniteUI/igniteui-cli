@@ -1,0 +1,31 @@
+@import url("https://unpkg.com/@fortawesome/fontawesome-free-webfonts@^1.0.9/css/fontawesome.css");
+@import url("https://unpkg.com/@fortawesome/fontawesome-free-webfonts@^1.0.9/css/fa-regular.css");
+@import url("https://unpkg.com/@fortawesome/fontawesome-free-webfonts@^1.0.9/css/fa-solid.css");
+
+.igx-grid__th--pinned  {
+    .pin-icon {
+        color: #444;
+        &:hover {
+            color: #999
+        }
+    }
+}
+
+.title-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pin-icon {
+    margin-left: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: #999;
+
+    &:hover {
+        color: #444
+    }
+}

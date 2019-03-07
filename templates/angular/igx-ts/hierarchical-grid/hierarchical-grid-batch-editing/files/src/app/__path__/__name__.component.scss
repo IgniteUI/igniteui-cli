@@ -1,0 +1,53 @@
+h4 {
+    text-align: center;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+.buttons-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5px;
+}
+.buttons-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.addSingerBtn.igx-button--raised{
+    margin-bottom: 10px;
+}
+
+.dialogNewSinger,.dialogNewAlbum {
+    margin: 10px;
+    padding: 10px;;
+}
+
+.igx-input-group {
+    margin-bottom: 10px;
+    padding: 5px;
+}
+.igx-checkbox {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-top: 8px;
+    padding-bottom: 5px;
+}
+
+.transaction--update, .transaction--delete, .transaction--add {
+    font-weight: 600;
+}
+.transaction--add {
+    color: #6b3;
+}
+.transaction--update {
+    color: #4a71b9;
+}
+.transaction--delete {
+    color: #ee4920;
+}
+.transaction-log {
+    word-wrap: none;
+}
