@@ -15,7 +15,7 @@ export class $(ClassName)Component {
 
     public items: string[] = ['Orange', 'Apple', 'Banana', 'Mango'];
     public value: string;
-    public outputPosition = IgxToastPosition.Bottom;
+    public outputPosition = IgxToastPosition.Middle;
 
     public onSubmit() {
         this.value = this.igxSelect.value;
