@@ -11,7 +11,7 @@ export class $(ClassName)Component {
     public extendedTowns: any;
     public townSelected: string;
     public postalCode: string;
-    public messagePosition = IgxToastPosition.Bottom;
+    public messagePosition = IgxToastPosition.Middle;
 
     @ViewChild(IgxToastComponent)
     public toast: IgxToastComponent;
