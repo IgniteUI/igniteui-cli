@@ -1,0 +1,37 @@
+<div class="content-wrapper">
+	<p>The <b>igx-autocomplete</b> directive provides a way to enhance a text input by showing a panel of suggested options provided by the developer.<br />
+	Using the <b>igx-drop-down</b> as a provider, allows using its functionalities like grouping, templating, etc.</p>
+	<p>You can read more about configuring those components, using the following links:</p>
+	<ul>
+		<li>
+			<b>igx-autocomplete</b> - 
+			<a href="https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/src/lib/directives/autocomplete/README.md" target="_blank">README</a> or the 
+			<a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/autocomplete.html" target="_blank">official documentation</a>.
+		</li>
+		<li>
+			<b>igx-drop-down</b> - 
+			<a href="https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/src/lib/drop-down/README.md" target="_blank">README</a> or the
+			<a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/drop_down.html" target="_blank">official documentation</a>.
+		</li>
+	</ul>
+	<p>The following sample demonstrates igx-drop-down with defined groups:</p>
+	<div class="enhanced-groups">
+		<igx-input-group>
+			<label igxLabel for="townEhanced">Town</label>
+			<input igxInput name="townEhanced" type="text" [igxAutocomplete]="townsEnhancedPanel"
+				[(ngModel)]="townSelected"/>
+		</igx-input-group>
+		<igx-drop-down #townsEnhancedPanel maxHeight="300px" (onSelection)="getPostalCode($event)">
+			<igx-drop-down-item-group
+				*ngFor="let eRegion of extendedTowns.regions | $(camelCaseName)RegionContains:townSelected"
+				[label]="eRegion.name">
+				<igx-drop-down-item *ngFor="let town of eRegion.towns | $(camelCaseName)StartsWith:townSelected"
+					[value]="town.name">
+					{{town.name}}
+				</igx-drop-down-item>
+			</igx-drop-down-item-group>
+		</igx-drop-down>
+
+		<igx-toast #message message="Postal Code: {{postalCode}}" [position]="messagePosition"></igx-toast>
+	</div>
+</div>

@@ -10,7 +10,8 @@ import {
   IgxIconModule,
   IgxComboModule,
   IgxDatePickerModule,
-  IgxTimePickerModule
+  IgxTimePickerModule,
+  IgxSelectModule
 } from 'igniteui-angular';
 
 describe('$(ClassName)Component', () => {
@@ -29,7 +30,8 @@ describe('$(ClassName)Component', () => {
         IgxIconModule,
         IgxComboModule,
         IgxDatePickerModule,
-        IgxTimePickerModule
+        IgxTimePickerModule,
+        IgxSelectModule
       ]
     })
       .compileComponents();

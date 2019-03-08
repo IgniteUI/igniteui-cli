@@ -1,13 +1,33 @@
-<p>Form view with igx-input-group.</p>
-<p>You can read more about configuring the igx-input-group component in the
-<a href="https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/src/lib/input-group/README.md" target="_blank">README</a> or the
-<a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/input_group.html" target="_blank">official documentation</a>.</p>
-
+<div class="description-container">
+    <p>Form view with <b>igx-input-group</b>, <b>igx-select</b> and <b>igx-combo</b> that allows to book a movie ticket.
+    You can read more about configuring those components, using the following links:
+    <b>igx-input-group</b> - 
+    <a href="https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/src/lib/input-group/README.md" target="_blank">README</a> or the
+    <a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/input_group.html" target="_blank">official documentation</a>, 
+    <b>igx-select</b> - 
+    <a href="https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/src/lib/select/README.md" target="_blank">README</a> or the
+    <a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/select.html" target="_blank">official documentation</a>,
+    <b>igx-combo</b> - 
+    <a href="https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/src/lib/combo/README.md" target="_blank">README</a> or the
+    <a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/combo.html" target="_blank">official documentation</a>.
+    </p>
+</div>
 <div class="sample-wrapper">
     <section class="sample-content">
         <article class="sample-column">
             <form class="input-group-form">
-                <h4 class="sample-title">Book your movie ticket</h4>
+				<h4 class="sample-title">Book your movie ticket</h4>
+				<div class="component-container">
+                    <igx-select #select name="movies" [(ngModel)]="user.movie">
+                        <igx-select-item-group *ngFor="let genre of genres" [label]="genre.type">
+                            <igx-select-item *ngFor="let movie of genre.movies" [value]="movie">
+                                {{ movie }}
+                            </igx-select-item>
+                        </igx-select-item-group>
+                        <label igxLabel for="movies">Movie</label>
+                        <ng-template igxSelectToggleIcon><igx-icon fontSet="material">local_movies</igx-icon></ng-template>
+                    </igx-select>
+                </div>
                 <igx-input-group>
                     <input igxInput name="fullName" type="text" [(ngModel)]="user.fullName" required="required" />
                     <label igxLabel for="fullName">Full Name</label>
@@ -31,18 +51,19 @@
                         <igx-icon>email</igx-icon>
                     </igx-suffix>
                 </igx-input-group>
-                <div class="igx-combo">
-                    <igx-combo #combo1 name="genres" class="input-container" width="100%" [itemsMaxHeight]="130" [data]="genres" [(ngModel)]="user.genres"
+                <div class="component-container">
+					<igx-combo #combo1 name="genres" class="input-container" width="100%" [itemsMaxHeight]="130" 
+						[data]="genres" [valueKey]="'type'" [displayKey]="'type'" [(ngModel)]="user.genres"
                         placeholder="Select your favorite genres" searchPlaceholder="Search..." required [type]='"line"'>
                     </igx-combo>
                 </div>
-                <div class="igx-datePicker">
+                <div class="component-container">
                     <igx-date-picker name="date" (onSelection)="onDateSelection($event)"></igx-date-picker>
                 </div>
-                <div class="igx-time-picker">
+                <div class="component-container">
                     <igx-time-picker name="dateTime" (onValueChanged)="onTimeSelection($event)"></igx-time-picker>
                 </div>
-                <div class="button-wrapper">
+                <div class="component-container">
                     <button igxButton="raised" igxRipple>Book</button>
                 </div>
             </form>
