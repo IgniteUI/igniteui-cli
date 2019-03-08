@@ -48,7 +48,7 @@ import 'core-js/es6/set';
  import 'core-js/es6/reflect';
 
 /**
- *  ES7 `Object.entries` needed for igxGrid to render in IE. 
+ *  ES7 `Object.entries` needed for igxGrid to render in IE.
  * 	- https://github.com/IgniteUI/igniteui-cli/issues/344
 */
 import 'core-js/es7/object';
