@@ -12,8 +12,9 @@ class IgxSelectTemplate extends IgniteUIForAngularTemplate {
 		this.description = "basic IgxSelect";
 		this.dependencies = [{
 			import: [
-				"IgxSelectModule", "IgxFilterModule",
-				"IgxButtonModule", "IgxToggleModule"
+				"IgxSelectModule",
+				"IgxButtonModule",
+				"IgxToggleModule"
 			],
 			from: "igniteui-angular"
 		}];
