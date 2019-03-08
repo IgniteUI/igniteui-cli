@@ -1,0 +1,13 @@
+<p>The <b>igx-select</b> allows you to select a single item from a drop-down list.</p>
+<p>You can read more about how to configure <b>igx-select</b> in the 
+<a href="https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/src/lib/select/README.md" target="_blank">README</a> or the 
+<a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/select.html" target="_blank">official documentation</a>.</p>
+
+<div class="select-wrapper">
+	<igx-select #select>
+		<label igxLabel>Simple Select</label>
+		<igx-select-item *ngFor="let item of items" [value]="item">
+			{{item}}
+		</igx-select-item>
+	</igx-select>
+</div>
