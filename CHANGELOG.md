@@ -3,45 +3,30 @@
 
 ### Bug Fixes
 
-* **autocomplete:** description ([708fbe5](https://github.com/IgniteUI/igniteui-cli/commit/708fbe5))
-* **autocomplete:** descriptions and styles ([df0eb79](https://github.com/IgniteUI/igniteui-cli/commit/df0eb79))
-* **autocomplete:** fix tests' imports [#450](https://github.com/IgniteUI/igniteui-cli/issues/450) ([e6b5213](https://github.com/IgniteUI/igniteui-cli/commit/e6b5213))
-* **autocomplete:** lint; move toast ([e6f5185](https://github.com/IgniteUI/igniteui-cli/commit/e6f5185))
-* **drop-down:** add toggle to test ([35d7e15](https://github.com/IgniteUI/igniteui-cli/commit/35d7e15))
-* **hgrid:** Grid adds an empty row. ([fd156c6](https://github.com/IgniteUI/igniteui-cli/commit/fd156c6))
-* **igr-templates:** change linear and radial gauge template ids, [#459](https://github.com/IgniteUI/igniteui-cli/issues/459) ([98aec1a](https://github.com/IgniteUI/igniteui-cli/commit/98aec1a))
-* **igx template:** update input group template styling [#471](https://github.com/IgniteUI/igniteui-cli/issues/471) ([b66ca19](https://github.com/IgniteUI/igniteui-cli/commit/b66ca19))
+* Ignite UI for Angular:
+	* **igx-ts:** update input group template styling [#471](https://github.com/IgniteUI/igniteui-cli/issues/471) ([PR #472](https://github.com/IgniteUI/igniteui-cli/pull/472))
+	* **igx-ts:** update links to readme doc in grid templates [#468](https://github.com/IgniteUI/igniteui-cli/issues/468) ([6f6ca3a](https://github.com/IgniteUI/igniteui-cli/commit/6f6ca3a))
+	* **igx-ts:** update drop-down template to use igxToggleAction + navigation directive, [#477](https://github.com/IgniteUI/igniteui-cli/issues/477) ([PR #478](https://github.com/IgniteUI/igniteui-cli/pull/478))
+	* **igx-ts:** update igxDatePicker template deprecated selector [#462](https://github.com/IgniteUI/igniteui-cli/issues/462) ([c9a1085](https://github.com/IgniteUI/igniteui-cli/commit/c9a1085))
+* Ignite UI for React:
+	* **igr-es6:** change linear and radial gauge template ids, [#459](https://github.com/IgniteUI/igniteui-cli/issues/459) ([98aec1a](https://github.com/IgniteUI/igniteui-cli/commit/98aec1a))
 * add projTemplate and theme to GA ([5270bd9](https://github.com/IgniteUI/igniteui-cli/commit/5270bd9))
-* update links to readme doc in grid templates [#468](https://github.com/IgniteUI/igniteui-cli/issues/468) ([6f6ca3a](https://github.com/IgniteUI/igniteui-cli/commit/6f6ca3a))
-* **igx-ts:** update drop-down template to use igxToggleAction + navigation directive, [#477](https://github.com/IgniteUI/igniteui-cli/issues/477) ([8c5a4c1](https://github.com/IgniteUI/igniteui-cli/commit/8c5a4c1))
-* **input:** css, lint, descroption and remove drop-down [#471](https://github.com/IgniteUI/igniteui-cli/issues/471) ([bf84e08](https://github.com/IgniteUI/igniteui-cli/commit/bf84e08))
-* **input:** fix description [#471](https://github.com/IgniteUI/igniteui-cli/issues/471) ([9e7a2b8](https://github.com/IgniteUI/igniteui-cli/commit/9e7a2b8))
-* **input:** rmv dd module - select grouping is in the select module [#471](https://github.com/IgniteUI/igniteui-cli/issues/471) ([8116a81](https://github.com/IgniteUI/igniteui-cli/commit/8116a81))
-* **select:** add property use by the template ([5880bfb](https://github.com/IgniteUI/igniteui-cli/commit/5880bfb))
-* **select:** remove dd module; descr; toast ([2ea7256](https://github.com/IgniteUI/igniteui-cli/commit/2ea7256))
-* **select:** Toolbar title is not displayed ([ec40359](https://github.com/IgniteUI/igniteui-cli/commit/ec40359))
 
 
 ### Features
 
-* Add camelCaseName global variable. ([1db2a63](https://github.com/IgniteUI/igniteui-cli/commit/1db2a63))
-* Add initial test. ([57ad7d3](https://github.com/IgniteUI/igniteui-cli/commit/57ad7d3))
-* Add support for multiple keys to generateFiles ([7ce75be](https://github.com/IgniteUI/igniteui-cli/commit/7ce75be))
-* Template the autocomplete sample to include groups as well. ([83014ee](https://github.com/IgniteUI/igniteui-cli/commit/83014ee))
-* **autocomplete:** Add simple autocomplete sample ([2eddbb8](https://github.com/IgniteUI/igniteui-cli/commit/2eddbb8))
-* **autocomplete:** Add template with extended data source. ([fe45eda](https://github.com/IgniteUI/igniteui-cli/commit/fe45eda))
-* **autocomplete:** Use IgxToast to display town postal codes ([5b5d1f1](https://github.com/IgniteUI/igniteui-cli/commit/5b5d1f1))
-* **hgrid:** Add basic template. ([038031d](https://github.com/IgniteUI/igniteui-cli/commit/038031d))
-* **hgrid:** Add batch editing template. ([e173b11](https://github.com/IgniteUI/igniteui-cli/commit/e173b11))
-* **hgrid:** Add column pinning to custom template. ([450020a](https://github.com/IgniteUI/igniteui-cli/commit/450020a))
-* **hgrid:** Add custom template. ([49989bd](https://github.com/IgniteUI/igniteui-cli/commit/49989bd))
-* **hgrid:** Add summaries template. ([e214ead](https://github.com/IgniteUI/igniteui-cli/commit/e214ead))
-* **input:** add select to the input sample [#471](https://github.com/IgniteUI/igniteui-cli/issues/471) ([a6fa29b](https://github.com/IgniteUI/igniteui-cli/commit/a6fa29b))
-* **select:** Add a basic sample. ([af9b144](https://github.com/IgniteUI/igniteui-cli/commit/af9b144))
-* **select:** Add a sample of select in a form. ([fb15102](https://github.com/IgniteUI/igniteui-cli/commit/fb15102))
-* **select:** Add select with groups sample; Add padding-top to samples ([5b2c603](https://github.com/IgniteUI/igniteui-cli/commit/5b2c603))
-* **select:** Template imports; Add filtering for regions (groups sample) ([aaa9b6a](https://github.com/IgniteUI/igniteui-cli/commit/aaa9b6a))
-* **select:** Update forms sample; fix indentation. ([3d46b9e](https://github.com/IgniteUI/igniteui-cli/commit/3d46b9e))
+* Ignite UI for Angular:
+	* Project templates updated to the latest [7.2.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/7.2.0) version of Ignite UI for Angular, Charts and Gauges
+	* **igx-ts:** Add IgxAutocomplete templates [#450](https://github.com/IgniteUI/igniteui-cli/issues/450) ([PR #458](https://github.com/IgniteUI/igniteui-cli/pull/458))
+	* **igx-ts:** Add IgxHierarchicalGrid basic template. ([038031d](https://github.com/IgniteUI/igniteui-cli/commit/038031d))
+	* **igx-ts:** Add IgxHierarchicalGrid batch editing template. ([e173b11](https://github.com/IgniteUI/igniteui-cli/commit/e173b11))
+	* **igx-ts:** Add IgxHierarchicalGrid custom template. ([49989bd](https://github.com/IgniteUI/igniteui-cli/commit/49989bd))
+	* **igx-ts:** Add IgxHierarchicalGrid summaries template. ([e214ead](https://github.com/IgniteUI/igniteui-cli/commit/e214ead))
+	* **igx-ts:** Add IgxSelect basic template. ([af9b144](https://github.com/IgniteUI/igniteui-cli/commit/af9b144))
+	* **igx-ts:** Add IgxSelect in a form template. ([fb15102](https://github.com/IgniteUI/igniteui-cli/commit/fb15102))
+	* **igx-ts:** Add IgxSelect with groups template; Add padding-top to templates ([5b2c603](https://github.com/IgniteUI/igniteui-cli/commit/5b2c603))
+* **angular, templates:** Add camelCaseName global variable. ([1db2a63](https://github.com/IgniteUI/igniteui-cli/commit/1db2a63))
+
 
 # [4.0.0](https://github.com/IgniteUI/igniteui-cli/compare/v3.2.3...v4.0.0) (2019-02-20)
 
