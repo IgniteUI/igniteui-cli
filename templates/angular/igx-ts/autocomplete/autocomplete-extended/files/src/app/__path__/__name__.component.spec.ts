@@ -1,7 +1,8 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 import { NoopAnimationsModule } from "@angular/platform-browser/animations";
-import { $(ClassName)Component } from "./$(filePrefix).component";
+import { $(ClassName)Component, $(ClassName)PipeStartsWith, $(ClassName)RegionContains } from "./$(filePrefix).component";
 import { IgxDropDownModule, IgxAutocompleteModule, IgxInputGroupModule, IgxToastModule } from "igniteui-angular";
+import { FormsModule } from '@angular/forms';
 
 describe("$(ClassName)Component", () => {
     let component: $(ClassName)Component;
@@ -9,8 +10,8 @@ describe("$(ClassName)Component", () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [$(ClassName)Component],
-            imports: [IgxDropDownModule, IgxAutocompleteModule, NoopAnimationsModule, IgxInputGroupModule, IgxToastModule]
+            declarations: [$(ClassName)Component, $(ClassName)PipeStartsWith, $(ClassName)RegionContains],
+            imports: [FormsModule, IgxDropDownModule, IgxAutocompleteModule, NoopAnimationsModule, IgxInputGroupModule, IgxToastModule]
         })
             .compileComponents();
     }));
