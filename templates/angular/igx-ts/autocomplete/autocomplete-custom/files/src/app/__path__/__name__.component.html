@@ -1,0 +1,20 @@
+<p>The <b>igx-autocomplete</b> directive provides a way to enhance a text input by showing a panel of suggested options provided by the developer.</p>
+<p>You can read more about configuring the <b>igx-autocomplete</b> in the 
+<a href="https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/src/lib/directives/autocomplete/README.md" target="_blank">README</a> or the 
+<a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/autocomplete.html" target="_blank">official documentation</a>.</p>
+
+<section class="sample-content">
+	<article class="sample-column">
+		<form class="input-group-form">
+			<igx-input-group>
+				<label igxLabel for="town">Town</label>
+				<input igxInput name="town" type="text" [igxAutocomplete]="townsPanel" [(ngModel)]="townSelected" />
+			</igx-input-group>
+			<igx-drop-down #townsPanel maxHeight="300px">
+				<igx-drop-down-item *ngFor="let town of towns | $(camelCaseName)StartsWith:townSelected" [value]="town">
+					{{town}}
+				</igx-drop-down-item>
+			</igx-drop-down>
+		</form>
+	</article>
+</section>

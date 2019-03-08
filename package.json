@@ -94,6 +94,7 @@
     "chalk": "^2.3.2",
     "fs-extra": "^3.0.1",
     "glob": "^7.1.2",
+    "igniteui-angular": "^7.2.0-beta.5",
     "inquirer": "^6.0.0",
     "opn": "^5.3.0",
     "resolve": "^1.6.0",

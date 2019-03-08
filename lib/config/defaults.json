@@ -4,7 +4,7 @@
 	"skipGit": false,
 	"skipAnalytic": false,
 	"stepByStep": {
-		"frameworks": ["angular"],
+		"frameworks": ["angular", "react"],
 		"angular": {
 			"projTypes": ["igx-ts"]
 		}
