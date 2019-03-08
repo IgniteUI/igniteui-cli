@@ -1,7 +1,7 @@
 import { async, TestBed, ComponentFixture } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { $(ClassName)Component } from './$(filePrefix).component';
-import { IgxDropDownModule } from 'igniteui-angular';
+import { IgxDropDownModule, IgxToggleModule } from 'igniteui-angular';
 
 describe('$(ClassName)Component', () => {
   let component: $(ClassName)Component;
@@ -10,7 +10,7 @@ describe('$(ClassName)Component', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [$(ClassName)Component],
-      imports: [ IgxDropDownModule, NoopAnimationsModule]
+      imports: [ IgxDropDownModule, NoopAnimationsModule, IgxToggleModule]
     })
       .compileComponents();
   }));
