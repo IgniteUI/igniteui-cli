@@ -7,7 +7,7 @@ import { IgxSelectComponent, IgxToastPosition, IgxToastComponent } from 'igniteu
     templateUrl: '$(filePrefix).component.html'
 })
 export class $(ClassName)Component {
-	public selected;
+    public selected;
     @ViewChild(IgxSelectComponent)
     public igxSelect: IgxSelectComponent;
 
