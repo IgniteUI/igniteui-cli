@@ -4,7 +4,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { $(ClassName)Component } from './$(filePrefix).component';
 import {
-    IgxSelectModule, IgxToggleModule, IgxFilterModule, IgxButtonModule, IgxToastModule
+    IgxSelectModule, IgxToggleModule, IgxButtonModule, IgxToastModule
 } from 'igniteui-angular';
 
 describe('$(ClassName)Component', () => {
@@ -18,7 +18,6 @@ describe('$(ClassName)Component', () => {
                 FormsModule,
                 IgxSelectModule,
                 IgxToggleModule,
-                IgxFilterModule,
                 IgxButtonModule,
                 IgxToastModule,
                 NoopAnimationsModule,
