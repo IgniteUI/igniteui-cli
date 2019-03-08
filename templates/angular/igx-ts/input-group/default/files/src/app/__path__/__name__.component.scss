@@ -2,7 +2,6 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 .sample-wrapper {
     width: 100%;
@@ -31,4 +30,9 @@ button{
     background-color:#731963;
     border-color:#731963;
     color: white;
+}
+.description-container {
+    width: 70%;
+    display: flex;
+    align-self: center;
 }
