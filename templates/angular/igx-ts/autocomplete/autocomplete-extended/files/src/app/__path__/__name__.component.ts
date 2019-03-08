@@ -23,7 +23,6 @@ export class $(ClassName)Component {
     public getPostalCode(event) {
         const targetRegion = this.extendedTowns.regions.filter((r) => r.name === event.newSelection.group.label)[0];
         this.postalCode = targetRegion.towns.filter(t => t.name === event.newSelection.value)[0].postalCode;
-        
         this.toast.show();
     }
 }

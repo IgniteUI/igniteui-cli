@@ -1,10 +1,11 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
-import { NoopAnimationsModule } from "@angular/platform-browser/animations";
-import { $(ClassName)Component, $(ClassName)PipeStartsWith, $(ClassName)RegionContains } from "./$(filePrefix).component";
-import { IgxDropDownModule, IgxAutocompleteModule, IgxInputGroupModule, IgxToastModule } from "igniteui-angular";
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { $(ClassName)Component, $(ClassName)PipeStartsWith,
+    $(ClassName)RegionContains } from './$(filePrefix).component';
+import { IgxDropDownModule, IgxAutocompleteModule, IgxInputGroupModule, IgxToastModule } from 'igniteui-angular';
 import { FormsModule } from '@angular/forms';
 
-describe("$(ClassName)Component", () => {
+describe('$(ClassName)Component', () => {
     let component: $(ClassName)Component;
     let fixture: ComponentFixture<$(ClassName)Component>;
 
@@ -22,7 +23,7 @@ describe("$(ClassName)Component", () => {
         fixture.detectChanges();
     });
 
-    it("should create", () => {
+    it('should create', () => {
         expect(component).toBeTruthy();
     });
 });
