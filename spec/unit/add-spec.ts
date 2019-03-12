@@ -14,8 +14,11 @@ import { resetSpy } from "../helpers/utils";
 
 describe("Unit - Add command", () => {
 
-	it("Should start prompt session with missing arg", async done => {
+	beforeEach(() => {
 		spyOn(GoogleAnalytics, "post");
+	});
+
+	it("Should start prompt session with missing arg", async done => {
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 		spyOn(ProjectConfig, "getConfig").and.returnValue({ project: {
 			framework: "angular",
@@ -98,7 +101,6 @@ describe("Unit - Add command", () => {
 		expect(PackageManager.queuePackage).toHaveBeenCalledWith("tslib");
 		expect(PackageManager.queuePackage).toHaveBeenCalledWith("test-pack");
 
-		spyOn(GoogleAnalytics, "post");
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 		addCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: {},
@@ -270,7 +272,6 @@ describe("Unit - Add command", () => {
 	});
 
 	it("Should properly accept skip-route args when passed", async done => {
-		spyOn(GoogleAnalytics, "post");
 		const mockProjectConfig = {project: {
 			framework: "angular",
 			theme: "infragistics"
