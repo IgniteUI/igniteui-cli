@@ -1,0 +1,18 @@
+.select-wrapper {
+    padding-top: 50px;
+    display: flex;
+    flex-flow: row;
+}
+
+.actions {
+    display: flex;
+    flex-flow: column;
+    padding-left: 20px;
+    padding-top: 5%;
+}
+
+.content {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}

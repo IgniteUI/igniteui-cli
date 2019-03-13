@@ -27,6 +27,7 @@ describe("Unit - AngularTemplate Base", () => {
 			"$(filePrefix)": "my-component",
 			"$(description)": "test description",
 			"$(cliVersion)": process.env.npm_package_version,
+			"$(camelCaseName)": "myComponent",
 			"$(nameMerged)": "TestTemplate"
 		};
 		spyOn(Util, "processTemplates");
@@ -57,6 +58,7 @@ describe("Unit - AngularTemplate Base", () => {
 			"$(widget)": "widget no-process",
 			// extra
 			"$(extraConfig1)" : "extraConfig1",
+			"$(camelCaseName)": "page",
 			"$(gridFeatures)" : "{ features }",
 			"$(cliVersion)": process.env.npm_package_version
 		};
