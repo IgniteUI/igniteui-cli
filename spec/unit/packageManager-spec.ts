@@ -181,7 +181,7 @@ describe("Unit - Package Manager", () => {
 		expect(ProjectConfig.localConfig).toHaveBeenCalled();
 		expect(Util.log).toHaveBeenCalledWith(
 		"Template(s) that require the full version of Ignite UI found in the project." +
-		"You'll might be prompted for credentials on build to install it.", "yellow");
+		"You might be prompted for credentials on build to install it.", "yellow");
 		done();
 	});
 
