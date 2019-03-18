@@ -1,3 +1,14 @@
+# [4.1.1](https://github.com/IgniteUI/igniteui-cli/compare/v4.1.0...v4.1.1) (2019-03-18)
+
+
+### Bug Fixes
+
+* bump inquirer.js due to vulnerable lodash dep [#465](https://github.com/IgniteUI/igniteui-cli/issues/465) ([1dcddc6](https://github.com/IgniteUI/igniteui-cli/commit/1dcddc6))
+* removed extraneous package dep ([f2c063d](https://github.com/IgniteUI/igniteui-cli/commit/f2c063d))
+* Ignite UI Angular Wrappers:
+	* **ig-ts:** bump vulnerable webpack-dev-server in project template [#465](https://github.com/IgniteUI/igniteui-cli/issues/465) ([55e266a](https://github.com/IgniteUI/igniteui-cli/commit/55e266a))
+
+
 # [4.1.0](https://github.com/IgniteUI/igniteui-cli/compare/v4.0.0...v4.1.0) (2019-03-08)
 
 
