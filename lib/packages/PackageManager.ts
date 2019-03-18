@@ -65,7 +65,7 @@ export class PackageManager {
 			}
 		} else {
 			Util.log("Template(s) that require the full version of Ignite UI found in the project." +
-				"You'll might be prompted for credentials on build to install it.", "yellow");
+				"You might be prompted for credentials on build to install it.", "yellow");
 		}
 	}
 

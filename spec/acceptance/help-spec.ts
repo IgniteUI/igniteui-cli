@@ -1,10 +1,38 @@
 import { spawnSync } from "child_process";
+import * as cli from "../../lib/cli";
+import { GoogleAnalytics } from "../../lib/GoogleAnalytics";
+
 describe("Help command", () => {
 
 	it("should list all available commands", async done => {
-		const child = spawnSync("node", ["bin/execute.js", "--help"], {
-			encoding: "utf-8"
+		const exitError = Error("exit");
+		let thrownError;
+		const listeners = []/* process.listeners("exit") */;
+
+		spyOn(process, "on").and.callFake((type, handler) => {
+			if (type === "exit") {
+				listeners.push(handler);
+			} else {
+				throw Error("wrong event type");
+			}
 		});
+		spyOn(process, "exit").and.callFake(() => {
+			// still terminate execution, but not the whole process
+			listeners.forEach(x => x.call(process, 0));
+			throw exitError;
+		});
+		spyOn(GoogleAnalytics, "post");
+		const consoleSpy = spyOn(console, "log");
+
+		try {
+			await cli.run(["--help"]);
+		} catch (e) {
+			thrownError = e;
+		}
+		expect(process.on).toHaveBeenCalled();
+		expect(process.exit).toHaveBeenCalled();
+		expect(thrownError).toEqual(exitError);
+
 		const originalHelpText: string = `Commands:
 		quickstart             creates rich feature grid
 		new [name]             creates a project
@@ -18,12 +46,12 @@ describe("Help command", () => {
 		list				   list all templates                           [aliases: l]
 	  Options:
 		--version, -v  Show current Ignite UI CLI version                    [boolean]
-		--help, -h     Show help                                             [boolean]`;
+		--help, -h     Show help                                             [boolean]`.replace(/\s/g, "");
 
-		const replacedHelpText: string = originalHelpText.replace(/\s/g, "");
-		const actualText: string = (child.stdout.toString("utf-8")).replace(/\s/g, "");
-
-		expect(replacedHelpText).toEqual(actualText);
+		expect(GoogleAnalytics.post).toHaveBeenCalledWith({ t: "screenview", cd: "$ig help" });
+		expect(consoleSpy).toHaveBeenCalledTimes(1);
+		const actualText: string = (consoleSpy.calls.mostRecent().args[0] + "").replace(/\s/g, "");
+		expect(originalHelpText).toEqual(actualText);
 		done();
 	});
 

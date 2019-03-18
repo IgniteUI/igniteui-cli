@@ -15,6 +15,7 @@ jasmineInst.env.addReporter(new SpecReporter({
 }));
 
 jasmineInst.loadConfig({
+	random: false,
 	spec_dir: "",
 	spec_files: [
 		"spec/**/*[sS]pec.js",
