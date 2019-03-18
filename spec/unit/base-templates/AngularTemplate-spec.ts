@@ -26,7 +26,7 @@ describe("Unit - AngularTemplate Base", () => {
 			"__path__": "my-component",
 			"$(filePrefix)": "my-component",
 			"$(description)": "test description",
-			"$(cliVersion)": process.env.npm_package_version,
+			"$(cliVersion)": Util.version(),
 			"$(camelCaseName)": "myComponent",
 			"$(nameMerged)": "TestTemplate"
 		};
@@ -60,7 +60,7 @@ describe("Unit - AngularTemplate Base", () => {
 			"$(extraConfig1)" : "extraConfig1",
 			"$(camelCaseName)": "page",
 			"$(gridFeatures)" : "{ features }",
-			"$(cliVersion)": process.env.npm_package_version
+			"$(cliVersion)": Util.version()
 		};
 		spyOn(Util, "processTemplates");
 		spyOn(Util, "validateTemplate").and.returnValue(true);

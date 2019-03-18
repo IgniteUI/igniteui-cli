@@ -81,13 +81,14 @@ describe("Unit - Cli.ts", () => {
 	});
 	it("Should fire properly - fallback to default", async done => {
 		spyOn(Util , "log");
+		spyOn(GoogleAnalytics, "post");
+		spyOn(PromptSession.prototype, "start");
 		await run.run("Nonexistent command");
+
 		// expected console output:
-		/*  Starting Step by step mode.
-			For available commands, stop this execution and use --help.
-			new line
-		*/
-		expect(Util.log).toHaveBeenCalledTimes(3);
+		expect(Util.log).toHaveBeenCalledWith("Starting Step by step mode.", "green");
+		expect(Util.log).toHaveBeenCalledWith("For available commands, stop this execution and use --help.", "green");
+		expect(PromptSession.prototype.start).toHaveBeenCalled();
 		done();
 	});
 });
