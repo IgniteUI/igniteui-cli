@@ -30,10 +30,10 @@ Quickly create projects including [Ignite UI for Angular](https://www.infragisti
   * [Step by step](#step-by-step)
   * [List available commands](#list-the-available-commands)
   * [Generating Projects and adding components](#generating-projects-and-adding-components)
-  	* [Generate Ignite UI for Angular project](#generate-Ignite-UI-for-Angular-project)
-	* [Generate Ignite UI for React project](#Generate-Ignite-UI-for-React-project)
-	* [Adding components](#Adding-components)
-  * [Build and run](#Build-and-run)
+  	* [Generate Ignite UI for Angular project](#generate-ignite-ui-for-angular-project)
+	* [Generate Ignite UI for React project](#generate-ignite-ui-for-react-project)
+	* [Adding components](#adding-components)
+  * [Build and run](#build-and-run)
 * [Contribution](#contribution)
 
 ## Installation
@@ -100,7 +100,9 @@ Add a new component or template to the project passing component ID and choosing
 ig add <component/template> <component_name>
 ```
 
-The ID matches either a component ("grid", "combo", "text-editor", etc) or a predefined template. Predefined templates are framework/project specific and can provide predefined views with either multiple components or fulfilling a specific use case like "form-validation", "master-detail" and so on. For full list of supported templates in the current project you can simply run [ig list](https://github.com/IgniteUI/igniteui-cli/wiki/List) command
+The ID matches either a component ("grid", "combo", "text-editor", etc) or a predefined template. Predefined templates are framework/project specific and can provide predefined views with either multiple components or fulfilling a specific use case like "form-validation", "master-detail" and so on.
+
+For full list of supported templates in the current project you can simply run [ig list](https://github.com/IgniteUI/igniteui-cli/wiki/List) command:
 ```bash
 ig list
 ```
