@@ -14,6 +14,7 @@ import msKeys from './microsoft-keys';
 import { Register } from '../models/register';
 import { ExternalLogin } from '../models/login';
 import { UserJWT } from '../models/user';
+import { encodeBase64Url } from './jwt-util';
 
 @Injectable({
     providedIn: 'root'
@@ -124,16 +125,11 @@ export class BackendInterceptor implements HttpInterceptor {
 
     /** Note: This is used for example purposes only and does NOT generate a valid JWT w/ base64Url encoding */
     private generateToken(payload: any): string {
-        const header = JSON.stringify({
+        const header = {
             alg: 'Mock',
             typ: 'JWT'
-		});
-		// TODO: implement encodeBase64Url in jwt-utils.ts similar to decodeBase64Url
-		// and use it here instead of deprecated unescape
-        return btoa(unescape(encodeURI(JSON.stringify(header)))) +
-               '.' +
-               btoa(unescape(encodeURI(JSON.stringify(payload)))) +
-               '.mockSignature';
+        };
+        return btoa(encodeBase64Url(header)) + '.' + btoa(encodeBase64Url(payload)) + '.mockSignature';
     }
 }
 
