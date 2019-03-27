@@ -127,8 +127,13 @@ export class BackendInterceptor implements HttpInterceptor {
         const header = JSON.stringify({
             alg: 'Mock',
             typ: 'JWT'
-        });
-        return btoa(JSON.stringify(header)) + '.' + btoa(JSON.stringify(payload)) + '.mockSignature';
+		});
+		// TODO: implement encodeBase64Url in jwt-utils.ts similar to decodeBase64Url
+		// and use it here instead of deprecated unescape
+        return btoa(unescape(encodeURI(JSON.stringify(header)))) +
+               '.' +
+               btoa(unescape(encodeURI(JSON.stringify(payload)))) +
+               '.mockSignature';
     }
 }
 

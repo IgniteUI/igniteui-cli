@@ -32,5 +32,12 @@ export function decodeBase64Url(base64Url: string) {
     throw Error('Invalid base64 input');
   }
   output += new Array(1 + padding).join('=');
-  return atob(output);
+  const decoded = atob(output);
+  try {
+    return decodeURIComponent(decoded.split('')
+      .map(function (c) { return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2); })
+      .join(''));
+  } catch (er) {
+    return decoded;
+  }
 }
