@@ -35,7 +35,7 @@ export function decodeBase64Url(base64Url: string) {
   const decoded = atob(output);
   try {
     return decodeURIComponent(decoded.split('')
-      .map(function (c) { return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2); })
+      .map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
       .join(''));
   } catch (er) {
     return decoded;
