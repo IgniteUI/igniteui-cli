@@ -53,6 +53,6 @@ export function encodeBase64Url(input: {}) {
       result += c;
     }
   }
-  return result;
+  return btoa(result);
 }
 

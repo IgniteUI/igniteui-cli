@@ -129,7 +129,7 @@ export class BackendInterceptor implements HttpInterceptor {
             alg: 'Mock',
             typ: 'JWT'
         };
-        return btoa(encodeBase64Url(header)) + '.' + btoa(encodeBase64Url(payload)) + '.mockSignature';
+        return encodeBase64Url(header) + '.' + encodeBase64Url(payload) + '.mockSignature';
     }
 }
 
