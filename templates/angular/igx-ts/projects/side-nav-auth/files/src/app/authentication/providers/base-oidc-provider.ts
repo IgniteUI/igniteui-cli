@@ -27,8 +27,6 @@ export abstract class BaseOidcProvider implements AuthProvider {
         openIDImplicitFlowConfiguration.auto_userinfo = this.externalStsConfig.auto_userinfo;
         openIDImplicitFlowConfiguration.max_id_token_iat_offset_allowed_in_seconds =
             this.externalStsConfig.max_id_token_iat_offset_allowed_in_seconds;
-        // TODO: always?
-        openIDImplicitFlowConfiguration.silent_renew = false;
 
         const authWellKnownEndpoints = new AuthWellKnownEndpoints();
         authWellKnownEndpoints.setWellKnownEndpoints(this.oidcConfigService.wellKnownEndpoints);
@@ -57,7 +55,7 @@ export abstract class BaseOidcProvider implements AuthProvider {
                     resolve(this.formatUserData(userData));
                 });
             });
-            this.oidcSecurityService.authorizedCallback();
+            this.oidcSecurityService.authorizedImplicitFlowCallback();
         });
         this.oidcConfigService.load_using_stsServer(this.externalStsConfig.stsServer);
         return user;
