@@ -2,12 +2,12 @@ import {Component} from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-login-view',
-  templateUrl: './login-view.component.html',
-  styleUrls: ['./login-view.component.scss']
+  selector: 'app-$(filePrefix)',
+  templateUrl: './$(filePrefix).component.html',
+  styleUrls: ['./$(filePrefix).component.scss']
 })
 
-  export class LoginViewComponent {
+  export class $(ClassName)Component {
   public loginForm: FormGroup;
   public registrationForm: FormGroup;
   public showLogin = true;

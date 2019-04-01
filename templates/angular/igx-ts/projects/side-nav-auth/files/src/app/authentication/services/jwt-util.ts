@@ -32,5 +32,27 @@ export function decodeBase64Url(base64Url: string) {
     throw Error('Invalid base64 input');
   }
   output += new Array(1 + padding).join('=');
-  return atob(output);
+  const decoded = atob(output);
+  try {
+    return decodeURIComponent(decoded.split('')
+      .map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
+      .join(''));
+  } catch (er) {
+    return decoded;
+  }
 }
+
+export function encodeBase64Url(input: {}) {
+  const encodedToURI: string = encodeURI(JSON.stringify(input));
+  let result: string = '';
+  for (let i = 0; i < encodedToURI.length; i++) {
+    const c = encodedToURI[i];
+    if (c === '%') {
+      result += String.fromCharCode(parseInt((encodedToURI[++i] + encodedToURI[++i]), 16));
+    } else {
+      result += c;
+    }
+  }
+  return btoa(result);
+}
+
