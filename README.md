@@ -28,7 +28,12 @@ Quickly create projects including [Ignite UI for Angular](https://www.infragisti
 * [Installation](#installation)
 * [Usage](#usage)
   * [Step by step](#step-by-step)
+  * [List available commands](#list-the-available-commands)
   * [Generating Projects and adding components](#generating-projects-and-adding-components)
+  	* [Generate Ignite UI for Angular project](#generate-ignite-ui-for-angular-project)
+	* [Generate Ignite UI for React project](#generate-ignite-ui-for-react-project)
+	* [Adding components](#adding-components)
+  * [Build and run](#build-and-run)
 * [Contribution](#contribution)
 
 ## Installation
@@ -54,16 +59,11 @@ ig
 Upon creation, project will be automatically loaded in the default browser.
 **NOTE**: If that doesn't happen the port may be already in use. Ports vary for different project types, see the description for the [`ig start`](https://github.com/IgniteUI/igniteui-cli/wiki/Start) command for details on default ports.
 
+
 ### List the available commands.
 
 ```bash
 ig help
-```
-### Generate and serve quickstart projects
-For a jump start and a sample overview of the Ignite UI controls, you can choose a "quickstart" to generate a project with predefined Ignite UI controls for each of the supported frameworks.
-
-```bash
-ig quickstart --framework=<framework>
 ```
 ### Generating projects and adding components
 
@@ -71,8 +71,29 @@ Create a new project passing name, framework and style theme.
 ```bash
 ig new <project name> --framework=<framework> --type=<proj-type> --theme=<theme>
 ```
-Parameters besides name are optional. Framework default to "jquery", project type defaults to the first available in the framework and theme to the first available for the project.
+This will create the project and will install the needed dependencies.
 
+Parameters besides name are optional. Framework default to "jquery", project type defaults to the first available in the framework and theme to the first available for the project. For more information visit [ig new](https://github.com/IgniteUI/igniteui-cli/wiki/New) Wiki page.
+
+#### Generate Ignite UI for Angular project
+
+To create a new project with Ignite UI for Angular use [ig new](https://github.com/IgniteUI/igniteui-cli/wiki/New#creating-ignite-ui-for-angular-applications) by specifying `angular` as framework, and optionally `igx-ts` as project type and selecting one of the [project templates](https://github.com/IgniteUI/igniteui-cli/wiki/New#arguments):
+```bash
+ig new "IG Project" --framework=angular --type=igx-ts --template=side-nav
+```
+#### Generate Ignite UI for React project
+
+To create a new project with Ignite UI for React use [ig new](https://github.com/IgniteUI/igniteui-cli/wiki/New#creating-ignite-ui-for-react-applications-v400) by specifying `react` as framework and `igr-es6` as project type:
+```bash
+ig new "IG Project" --framework=react --type=igr-es6
+```
+
+#### Adding components
+Once you have created a project, at any point you can add additional component templates using [ig add](https://github.com/IgniteUI/igniteui-cli/wiki/Add). Running the command without parameters will guide you through the available templates:
+
+```bash
+ig add
+```
 Add a new component or template to the project passing component ID and choosing a name.
 
 ```bash
@@ -80,6 +101,11 @@ ig add <component/template> <component_name>
 ```
 
 The ID matches either a component ("grid", "combo", "text-editor", etc) or a predefined template. Predefined templates are framework/project specific and can provide predefined views with either multiple components or fulfilling a specific use case like "form-validation", "master-detail" and so on.
+
+For full list of supported templates in the current project you can simply run [ig list](https://github.com/IgniteUI/igniteui-cli/wiki/List) command:
+```bash
+ig list
+```
 
 ### Build and run
 ```bash
