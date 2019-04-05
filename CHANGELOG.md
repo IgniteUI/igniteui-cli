@@ -1,3 +1,12 @@
+# [4.1.4](https://github.com/IgniteUI/igniteui-cli/compare/v4.1.3...v4.1.4) (2019-04-05)
+
+
+### Features
+
+* **igx:** update igniteui-angular package, allow most recent patch versions ([29f5225](https://github.com/IgniteUI/igniteui-cli/commit/29f5225))
+* **igx:** update project template to latest angular cli ([4d8067c](https://github.com/IgniteUI/igniteui-cli/commit/4d8067c))
+* **igx, side-nav-auth:** update angular package versions to latest ([b36903f](https://github.com/IgniteUI/igniteui-cli/commit/b36903f))
+
 # [4.1.1](https://github.com/IgniteUI/igniteui-cli/compare/v4.1.0...v4.1.1) (2019-03-18)
 
 
