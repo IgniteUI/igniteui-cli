@@ -1,24 +1,34 @@
+import { ControlExtraConfiguration } from "./ControlExtraConfiguration";
+
 /** Base template interface */
-declare interface BaseTemplate {
+export abstract class BaseTemplate {
 	/** ID of the template to be called in directly (matches the CLI full command parameter) */
-	id: string;
+	public id: string;
+
 	/** Friendly name of the template (for steps) */
-	name: string;
+	public name: string;
+
 	/** Description of what the template includes */
-	description: string;
+	public description: string;
+
 	/** List of dependencies needed to load components. */
-	dependencies: (string | object)[];
+	public dependencies: Array<(string | object)>;
+
 	/** jquery, react, angular */
-	framework: string;
+	public framework: string;
+
 	/** ts, js, dart, ts-cli, js-cli */
-	projectType: string;
+	public projectType: string;
+
 	/** This property controls if extra configuration is available to the template */
-	hasExtraConfiguration: boolean;
+	public hasExtraConfiguration: boolean;
 
 	/** Generates template files. */
-	generateFiles(outputPath: string, name: string, ...options: any[]): Promise<boolean>;
+	public abstract generateFiles(outputPath: string, name: string, ...options: any[]): Promise<boolean>;
+
 	/** this method is used to run extra configuration in context of prompt session */
-	getExtraConfiguration(): ControlExtraConfiguration[];
+	public abstract getExtraConfiguration(): ControlExtraConfiguration[];
+
 	/** This method is used when the user selects extra configuration and it should be passed to the template */
-	setExtraConfiguration(extraConfigKeys: {});
+	public abstract setExtraConfiguration(extraConfigKeys: {});
 }

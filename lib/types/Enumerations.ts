@@ -1,6 +1,6 @@
-declare namespace Enumerations {
-
-	//const makes enum ambient https://stackoverflow.com/a/42904083
+// tslint:disable-next-line: no-namespace
+export namespace Enumerations {
+	// const makes enum ambient https://stackoverflow.com/a/42904083
 	/**
 	 * Type of the extra configuration that can be required by components/templates.
 	 */
