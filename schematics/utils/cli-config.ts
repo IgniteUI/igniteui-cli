@@ -5,6 +5,7 @@ import { Rule, SchematicContext, SchematicsException, Tree } from "@angular-devk
 // tslint:disable-next-line:no-implicit-dependencies
 import { getWorkspace } from "@schematics/angular/utility/config";
 import chalk from "chalk";
+import { Config } from "../../lib/types/index";
 import { Util } from "../../lib/Util";
 
 export function createCliConfig(): Rule {
