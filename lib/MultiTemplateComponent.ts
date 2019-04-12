@@ -1,3 +1,5 @@
+import { Component, Template } from "./types/index";
+
 export abstract class MultiTemplateComponent<T extends Template> implements Component {
 	public name: string;
 	public group: string;
@@ -14,11 +16,8 @@ export abstract class MultiTemplateComponent<T extends Template> implements Comp
 
 		return templates;
 	}
-	/**
-	 *
-	 */
-	constructor(private testType, private templatesMap: Map<string, {name: string, widget: string}>) {
 
+	constructor(private testType, private templatesMap: Map<string, { name: string, widget: string }>) {
 	}
 
 	private create(c: new () => T): T {
@@ -55,5 +54,4 @@ export abstract class MultiTemplateComponent<T extends Template> implements Comp
 	private getTemplate(id: string): T {
 		return this.makeTemplate(id);
 	}
-
 }

@@ -1,13 +1,14 @@
 import * as fs from "fs-extra";
 import * as path from "path";
 import { ProjectConfig } from "../ProjectConfig";
+import { AddTemplateArgs, ControlExtraConfiguration, Template } from "../types/index";
 import { Util } from "../Util";
 
 /**
  * Template with specific implementation for jQuery projects
  */
 // tslint:disable-next-line:class-name
-export class jQueryTemplate implements Template {
+export class jQueryTemplate extends Template {
 	public components: string[];
 	public controlGroup: string;
 	public listInComponentTemplates: boolean;
@@ -28,6 +29,7 @@ export class jQueryTemplate implements Template {
 	 *
 	 */
 	constructor(private rootPath: string) {
+		super();
 		this.listInComponentTemplates = false;
 		this.listInCustomTemplates = false;
 		this.hasExtraConfiguration = false;
@@ -49,7 +51,7 @@ export class jQueryTemplate implements Template {
 			pathsConfig["$(themePath)"] = projectConfig.project.themePath;
 		}
 		config["$(name)"] = Util.nameFromPath(name);
-		config["$(cssBlock)"] =  this.getCssTags();
+		config["$(cssBlock)"] = this.getCssTags();
 		config["$(scriptBlock)"] = this.getScriptTags();
 		config["$(description)"] = this.description;
 		config["$(theme)"] = projectConfig.project.theme;
@@ -73,7 +75,7 @@ export class jQueryTemplate implements Template {
 		}
 		let configFile = fs.readFileSync(path.join(projectPath, this.configFile), "utf8");
 		const viewsArr = JSON.parse(this.replacePattern.exec(configFile)[0]);
-		viewsArr.push({name: Util.nameFromPath(name), path: this.getViewLink(name)});
+		viewsArr.push({ name: Util.nameFromPath(name), path: this.getViewLink(name) });
 		configFile = configFile.replace(this.replacePattern, JSON.stringify(viewsArr, null, 4));
 		fs.writeFileSync(path.join(projectPath, this.configFile), configFile);
 	}

@@ -7,6 +7,10 @@ import { GoogleAnalytics } from "./GoogleAnalytics";
 import { PackageManager } from "./packages/PackageManager";
 import { ProjectConfig } from "./ProjectConfig";
 import { TemplateManager } from "./TemplateManager";
+import {
+	Component, ComponentGroup, Config, ControlExtraConfiguration, Enumerations, Framework,
+	FrameworkId, ProjectLibrary, ProjectTemplate, Template
+} from "./types/index";
 import { Util } from "./Util";
 
 export class PromptSession {
@@ -76,7 +80,7 @@ export class PromptSession {
 			});
 
 			const framework = this.templateManager.getFrameworkByName(frameRes);
-			//app name validation???
+			// app name validation???
 			projLibrary = await this.getProjectLibrary(framework);
 
 			const projTemplate = await this.getProjectTemplate(projLibrary);
@@ -432,7 +436,7 @@ export class PromptSession {
 				break;
 			default:
 				return;
-				//TODO: text = `  ${options.name}`;
+			//TODO: text = `  ${options.name}`;
 		}
 		GoogleAnalytics.post({
 			t: "event",
@@ -571,7 +575,7 @@ export class PromptSession {
 		}];
 		if (projectLibrary.components.length > 0) {
 			actionChoices.push({
-				name:  "Add component" + chalk.gray("...........add a specific component view (e.g a grid)"),
+				name: "Add component" + chalk.gray("...........add a specific component view (e.g a grid)"),
 				short: "Add component", // displayed result after selection
 				value: "Add component" // actual selection value
 			});
@@ -588,7 +592,7 @@ export class PromptSession {
 	}
 
 	private formatOutput(items: Array<Template | Component | ComponentGroup>):
-							Array<{name: string, value: string, short: string}> {
+		Array<{ name: string, value: string, short: string }> {
 		const choiceItems = [];
 		const leftPadding = 2;
 		const rightPadding = 1;
@@ -609,7 +613,7 @@ export class PromptSession {
 				description = item.description || "";
 			}
 			if (description !== "") {
-				choiceItem.name = item.name  +  Util.addColor(".".repeat(targetNameLength - item.name.length), 0);
+				choiceItem.name = item.name + Util.addColor(".".repeat(targetNameLength - item.name.length), 0);
 				const max = process.stdout.columns - targetNameLength - leftPadding - rightPadding;
 				description = Util.truncate(description, max, 3, ".");
 				description = Util.addColor(description, 0);
