@@ -1,7 +1,6 @@
-import * as path from "path";
 import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 import { AngularTemplate } from "../../../../../lib/templates/AngularTemplate";
-import { Util } from "../../../../../lib/Util";
+import { ControlExtraConfiguration, Enumerations } from "../../../../../lib/types/index";
 
 class TreeGridEditingTemplate extends AngularTemplate {
 	private gridHelper: GridHelper;
@@ -38,26 +37,28 @@ class TreeGridEditingTemplate extends AngularTemplate {
 	}
 
 	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
-		this.gridHelper.addFeature("Updating", { columnSettings: [
-			{
-				columnKey: "progress",
-				editorOptions: {
-					buttonType: "spin"
+		this.gridHelper.addFeature("Updating", {
+			columnSettings: [
+				{
+					columnKey: "progress",
+					editorOptions: {
+						buttonType: "spin"
+					},
+					editorType: "currency"
 				},
-				editorType: "currency"
-			},
-			{
-				columnKey: "start",
-				editorType: "datepicker"
-			},
-			{
-				columnKey: "finish",
-				editorType: "datepicker"
-			}
-		]});
+				{
+					columnKey: "start",
+					editorType: "datepicker"
+				},
+				{
+					columnKey: "finish",
+					editorType: "datepicker"
+				}
+			]
+		});
 		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 3);
 		const config = { "$(treeGridFeatures)": features };
-		return super.generateFiles(projectPath, name, { extraConfig : config });
+		return super.generateFiles(projectPath, name, { extraConfig: config });
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return this.extraConfigurations;

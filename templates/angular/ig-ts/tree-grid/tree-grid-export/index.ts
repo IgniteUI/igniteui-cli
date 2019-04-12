@@ -1,7 +1,6 @@
-import * as path from "path";
 import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 import { AngularTemplate } from "../../../../../lib/templates/AngularTemplate";
-import { Util } from "../../../../../lib/Util";
+import { ControlExtraConfiguration, Enumerations } from "../../../../../lib/types/index";
 
 class TreeGridExportTemplate extends AngularTemplate {
 	private gridHelper: GridHelper;
@@ -40,7 +39,7 @@ class TreeGridExportTemplate extends AngularTemplate {
 	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
 		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 3);
 		const config = { "$(treeGridFeatures)": features };
-		return super.generateFiles(projectPath, name, { extraConfig : config });
+		return super.generateFiles(projectPath, name, { extraConfig: config });
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return this.extraConfigurations;

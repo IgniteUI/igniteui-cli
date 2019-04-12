@@ -1,7 +1,6 @@
-import * as path from "path";
 import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 import { AngularTemplate } from "../../../../../lib/templates/AngularTemplate";
-import { Util } from "../../../../../lib/Util";
+import { ControlExtraConfiguration, Enumerations } from "../../../../../lib/types/index";
 
 class HierarchicalGridCustomTemplate extends AngularTemplate {
 	private gridHelper: GridHelper;
