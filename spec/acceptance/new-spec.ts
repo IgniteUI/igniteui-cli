@@ -2,6 +2,7 @@ import * as fs from "fs";
 import cli = require("../../lib/cli");
 import { GoogleAnalytics } from "../../lib/GoogleAnalytics";
 import { PackageManager } from "../../lib/packages/PackageManager";
+import { GoogleAnalyticsParameters } from "../../lib/types/index";
 import { Util } from "../../lib/Util";
 import { deleteAll, filesDiff, resetSpy } from "../helpers/utils";
 

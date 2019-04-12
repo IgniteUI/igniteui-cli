@@ -2,6 +2,7 @@ import * as cp from "child_process";
 import * as path from "path";
 import { PackageManager } from "../../lib/packages/PackageManager";
 import { ProjectConfig } from "../../lib/ProjectConfig";
+import { Config } from "../../lib/types/index";
 import { Util } from "../../lib/Util";
 import { resetSpy } from "../helpers/utils";
 

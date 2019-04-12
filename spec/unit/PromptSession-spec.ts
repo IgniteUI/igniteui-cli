@@ -1,6 +1,4 @@
-import chalk from "chalk";
 import * as inquirer from "inquirer";
-import * as path from "path";
 import { default as add } from "../../lib/commands/add";
 import { default as start } from "../../lib/commands/start";
 import { GoogleAnalytics } from "../../lib/GoogleAnalytics";
@@ -8,6 +6,7 @@ import { PackageManager } from "../../lib/packages/PackageManager";
 import { ProjectConfig } from "../../lib/ProjectConfig";
 import { PromptSession } from "../../lib/PromptSession";
 import { TemplateManager } from "../../lib/TemplateManager";
+import { Enumerations } from "../../lib/types/index";
 import { Util } from "../../lib/Util";
 
 describe("Unit - PromptSession", () => {
@@ -136,7 +135,7 @@ describe("Unit - PromptSession", () => {
 			projects: [mockProject]
 		};
 		const projectLibraries = [
-			{ projectType: "ig-ts" , name: "Ignite UI Angular Wrappers" },
+			{ projectType: "ig-ts", name: "Ignite UI Angular Wrappers" },
 			{ projectType: "igx-ts", name: "Ignite UI for Angular" }
 		];
 		const mockFramework1 = {
@@ -304,7 +303,7 @@ describe("Unit - PromptSession", () => {
 			themes: ["infragistics", "infragistics.less"],
 			getCustomTemplateNames: ["Custom Template 1"],
 			getComponentGroupNames: ["Custom Group 1", "Custom Group 2"],
-			getComponentsByGroup: [{group: "Custom Group 1", name: "Component 1" },
+			getComponentsByGroup: [{ group: "Custom Group 1", name: "Component 1" },
 			{ group: "Custom Group 1", name: "Component 2" }],
 			getComponentGroups: [
 				{ description: "Custom Group 1", name: "Group 1" }, { description: "Custom Group 2", name: "Group 2" }],
@@ -359,7 +358,7 @@ describe("Unit - PromptSession", () => {
 			Promise.resolve({ componentName: "Template 1 Custom Name" }),
 			Promise.resolve({ customValue1: "Test", customValue2: "Test" }),
 			Promise.resolve({ action: "Complete & Run" }),
-			Promise.resolve({ port: 7777})
+			Promise.resolve({ port: 7777 })
 		);
 		spyOn(ProjectConfig, "setConfig");
 		await mockSession.chooseActionLoop(mockProjectLibrary, "infragistics");
@@ -388,7 +387,7 @@ describe("Unit - PromptSession", () => {
 		const mockSelectedTemplate = {
 			name: "Custom Template 1",
 			templates: [{
-				description : "description for Template 1"
+				description: "description for Template 1"
 			}]
 		};
 		const mockProject = {
@@ -398,7 +397,7 @@ describe("Unit - PromptSession", () => {
 			name: "mockProjectLibrary",
 			getCustomTemplateNames: [mockSelectedTemplate.name, "Custom Template 2"],
 			getTemplateByName: [mockSelectedTemplate],
-			getCustomTemplates: [mockSelectedTemplate, { name: "Not selected"}],
+			getCustomTemplates: [mockSelectedTemplate, { name: "Not selected" }],
 			getProject: () => {
 				return mockProject;
 			}
@@ -429,7 +428,7 @@ describe("Unit - PromptSession", () => {
 			Promise.resolve({ customTemplate: "Custom Template 1" }),
 			Promise.resolve({ customViewName: "Custom Template Name" }),
 			Promise.resolve({ action: "Complete & Run" }),
-			Promise.resolve({ port: 7777})
+			Promise.resolve({ port: 7777 })
 		);
 		spyOn(ProjectConfig, "setConfig");
 		await mockSession.chooseActionLoop(mockProjectLibrary, "infragistics");
@@ -466,7 +465,7 @@ describe("Unit - PromptSession", () => {
 			description: "description for Template 1"
 		};
 		const mockComponentTemplates = [mockSelectedTemplate,
-			{ name: "Template 2"}];
+			{ name: "Template 2" }];
 		const mockComponent = {
 			name: "Custom Group 1 Component 2",
 			templates: mockComponentTemplates
@@ -482,11 +481,15 @@ describe("Unit - PromptSession", () => {
 				{ description: "Custom Group 1", name: "Group 1" }, { description: "Custom Group 2", name: "Group 2" }],
 			getComponentGroupNames: ["Custom Group 1", "Custom Group 2"],
 			getComponentsByGroup:
-			[{ group: "Custom Group 1", name: "Component 1", description : "description for Component 1",
-				// tslint:disable-next-line:align
-				templates: [{ description : "description for Template 1"}] },
-			{group: "Custom Group 1", name: "Component 2", description : "description for Component 2",
-				templates: [{ description : "description for Template 2"}] }],
+				[{
+					group: "Custom Group 1", name: "Component 1", description: "description for Component 1",
+					// tslint:disable-next-line:align
+					templates: [{ description: "description for Template 1" }]
+				},
+				{
+					group: "Custom Group 1", name: "Component 2", description: "description for Component 2",
+					templates: [{ description: "description for Template 2" }]
+				}],
 			getComponentByName: mockComponent,
 			getProject: () => {
 				return mockProject;
@@ -539,7 +542,7 @@ describe("Unit - PromptSession", () => {
 			Promise.resolve({ name: "Template 1 Custom Name" }),
 			Promise.resolve({ customValue1: "Test", customValue2: "Test" }),
 			Promise.resolve({ action: "Complete & Run" }),
-			Promise.resolve({ port: 7777})
+			Promise.resolve({ port: 7777 })
 		);
 		spyOn(ProjectConfig, "setConfig");
 		await mockSession.chooseActionLoop(mockProjectLibrary, "infragistics");
@@ -595,14 +598,14 @@ describe("Unit - PromptSession", () => {
 		spyOn(mockSession, "chooseActionLoop").and.callThrough();
 		spyOn(inquirer, "prompt").and.returnValues(
 			Promise.resolve({ action: "Complete & Run" }),
-			Promise.resolve({ port: 7777})
+			Promise.resolve({ port: 7777 })
 		);
 		params.project.defaultPort = 7777;
 		spyOn(start, "start");
 		spyOn(ProjectConfig, "setConfig");
 
 		await mockSession.chooseActionLoop(mockProjectLibrary, "");
-		expect(start.start).toHaveBeenCalledWith({port: 7777});
+		expect(start.start).toHaveBeenCalledWith({ port: 7777 });
 		expect(ProjectConfig.setConfig).toHaveBeenCalledWith(params);
 		done();
 	});
@@ -614,11 +617,11 @@ describe("Unit - PromptSession", () => {
 		spyOn(Util, "log");
 		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
 		spyOn(inquirer, "prompt").and.returnValues(
-			Promise.resolve({ projectName: "Test1"}),
-			Promise.resolve({ framework: "Angular"}),
-			Promise.resolve({ projectType: "Ignite UI for Angular"}),
-			Promise.resolve({ projTemplate: "Default side navigation"}),
-			Promise.resolve({ theme: "Custom"}));
+			Promise.resolve({ projectName: "Test1" }),
+			Promise.resolve({ framework: "Angular" }),
+			Promise.resolve({ projectType: "Ignite UI for Angular" }),
+			Promise.resolve({ projTemplate: "Default side navigation" }),
+			Promise.resolve({ theme: "Custom" }));
 		spyOn(mockSession, "chooseActionLoop").and.returnValue(Promise.resolve());
 		spyOn(process, "chdir");
 		await mockSession.start();
@@ -643,11 +646,11 @@ describe("Unit - PromptSession", () => {
 		spyOn(Util, "log");
 		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
 		spyOn(inquirer, "prompt").and.returnValues(
-			Promise.resolve({ projectName: "Test1"}),
-			Promise.resolve({ framework: "Angular"}),
-			Promise.resolve({ projectType: "Ignite UI for Angular"}),
-			Promise.resolve({ projTemplate: "Default side navigation"}),
-			Promise.resolve({ theme: "Default"}));
+			Promise.resolve({ projectName: "Test1" }),
+			Promise.resolve({ framework: "Angular" }),
+			Promise.resolve({ projectType: "Ignite UI for Angular" }),
+			Promise.resolve({ projTemplate: "Default side navigation" }),
+			Promise.resolve({ theme: "Default" }));
 		spyOn(mockSession, "chooseActionLoop").and.returnValue(Promise.resolve());
 		spyOn(process, "chdir");
 		await mockSession.start();
