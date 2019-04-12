@@ -1,8 +1,7 @@
-import * as path from "path";
 import { ReactTemplate } from "../../../../../lib/templates/ReactTemplate";
-import { Util } from "../../../../../lib/Util";
 
 import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
+import { ControlExtraConfiguration, Enumerations } from "../../../../../lib/types/index";
 
 class HierarchicalGridTemplate extends ReactTemplate {
 	public extraConfigurations: ControlExtraConfiguration[] = [];

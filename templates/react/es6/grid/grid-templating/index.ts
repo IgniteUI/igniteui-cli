@@ -1,16 +1,13 @@
-import * as path from "path";
 //TODO:
 import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 import { ReactTemplate } from "../../../../../lib/templates/ReactTemplate";
-import { Util } from "../../../../../lib/Util";
+import { ControlExtraConfiguration, Enumerations } from "../../../../../lib/types/index";
 
 class GridTemplatingTemplate extends ReactTemplate {
 	public extraConfigurations: ControlExtraConfiguration[] = [];
 	public userExtraConfiguration: {} = {};
 	private gridHelper: GridHelper;
-	/**
-	 *
-	 */
+
 	constructor() {
 		super(__dirname);
 		this.id = "grid-templating";

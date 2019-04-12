@@ -1,3 +1,5 @@
+import { Framework, ProjectLibrary } from "../../lib/types/index";
+
 class ReactFramework implements Framework {
 	public id: string;
 	public name: string;

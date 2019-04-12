@@ -1,16 +1,14 @@
-import * as path from "path";
+
 //TODO:
 import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 import { ReactTemplate } from "../../../../../lib/templates/ReactTemplate";
-import { Util } from "../../../../../lib/Util";
+import { ControlExtraConfiguration, Enumerations } from "../../../../../lib/types/index";
 
 class GridCustomTemplate extends ReactTemplate {
 	public extraConfigurations: ControlExtraConfiguration[] = [];
 	public userExtraConfiguration: {} = {};
 	private gridHelper: GridHelper;
-	/**
-	 *
-	 */
+
 	constructor() {
 		super(__dirname);
 		this.id = "grid-custom";
@@ -39,7 +37,7 @@ class GridCustomTemplate extends ReactTemplate {
 	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
 		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 5);
 		const config = { "$(gridfeatures)": features };
-		return super.generateFiles(projectPath, name, { extraConfig : config });
+		return super.generateFiles(projectPath, name, { extraConfig: config });
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return this.extraConfigurations;

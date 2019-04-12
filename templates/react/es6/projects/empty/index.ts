@@ -1,5 +1,6 @@
 import * as fs from "fs-extra";
 import * as path from "path";
+import { ControlExtraConfiguration, ProjectTemplate } from "../../../../../lib/types/index";
 import { Util } from "../../../../../lib/Util";
 
 class EmptyProject implements ProjectTemplate {
@@ -27,7 +28,7 @@ class EmptyProject implements ProjectTemplate {
 		//TODO update the config with [{key: "keyname", "value"}]
 		const config = {
 			"$(cliVersion)": Util.version(),
-			"$(dash-name)" : Util.lowerDashed(name),
+			"$(dash-name)": Util.lowerDashed(name),
 			"$(name)": name,
 			"$(theme)": theme,
 			"__path__": name
