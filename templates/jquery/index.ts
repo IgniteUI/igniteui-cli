@@ -1,3 +1,5 @@
+import { Framework, ProjectLibrary } from "../../lib/types/index";
+
 // tslint:disable-next-line:class-name
 class jQueryFramework implements Framework {
 	public id: string;
