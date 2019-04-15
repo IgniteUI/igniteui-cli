@@ -1,6 +1,5 @@
 import * as path from "path";
 import * as resolve from "resolve";
-import { exec } from "shelljs";
 import { GoogleAnalytics } from "../GoogleAnalytics";
 import { TemplateManager } from "../TemplateManager";
 import { Util } from "../Util";
@@ -83,9 +82,9 @@ command = {
 				/* falls through */
 			case "angular":
 				if (port) {
-					exec(`npm start -- --port=` + port);
+					Util.exec(`npm start -- --port=` + port);
 				} else {
-					exec(`npm start`);
+					Util.exec(`npm start`);
 				}
 				break;
 			default:
