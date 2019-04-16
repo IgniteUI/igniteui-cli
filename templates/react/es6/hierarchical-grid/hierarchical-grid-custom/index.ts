@@ -1,7 +1,7 @@
 import { ReactTemplate } from "../../../../../lib/templates/ReactTemplate";
 
 import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
-import { ControlExtraConfiguration, Enumerations } from "../../../../../lib/types/index";
+import { ControlExtraConfigType, ControlExtraConfiguration } from "../../../../../lib/types/index";
 
 class HierarchicalGridCustomTemplate extends ReactTemplate {
 	public extraConfigurations: ControlExtraConfiguration[] = [];
@@ -30,7 +30,7 @@ class HierarchicalGridCustomTemplate extends ReactTemplate {
 			default: "",
 			key: "features",
 			message: "Select features for the igHierarchicalGrid",
-			type: Enumerations.ControlExtraConfigType.MultiChoice
+			type: ControlExtraConfigType.MultiChoice
 		});
 	}
 

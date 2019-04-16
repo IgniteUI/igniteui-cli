@@ -2,7 +2,7 @@
 //TODO:
 import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 import { ReactTemplate } from "../../../../../lib/templates/ReactTemplate";
-import { ControlExtraConfiguration, Enumerations } from "../../../../../lib/types/index";
+import { ControlExtraConfigType, ControlExtraConfiguration } from "../../../../../lib/types/index";
 
 class GridCustomTemplate extends ReactTemplate {
 	public extraConfigurations: ControlExtraConfiguration[] = [];
@@ -30,7 +30,7 @@ class GridCustomTemplate extends ReactTemplate {
 			default: "",
 			key: "features",
 			message: "Select features for the igGrid",
-			type: Enumerations.ControlExtraConfigType.MultiChoice
+			type: ControlExtraConfigType.MultiChoice
 		});
 	}
 
