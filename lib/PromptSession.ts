@@ -8,7 +8,7 @@ import { PackageManager } from "./packages/PackageManager";
 import { ProjectConfig } from "./ProjectConfig";
 import { TemplateManager } from "./TemplateManager";
 import {
-	Component, ComponentGroup, Config, ControlExtraConfiguration, Enumerations, Framework,
+	Component, ComponentGroup, Config, ControlExtraConfigType, ControlExtraConfiguration, Framework,
 	FrameworkId, ProjectLibrary, ProjectTemplate, Template
 } from "./types/index";
 import { Util } from "./Util";
@@ -189,13 +189,13 @@ export class PromptSession {
 		for (const element of extraConfig) {
 			const currExtraConfig = {};
 			switch (element.type) {
-				case Enumerations.ControlExtraConfigType.Choice:
+				case ControlExtraConfigType.Choice:
 					currExtraConfig["type"] = "list";
 					break;
-				case Enumerations.ControlExtraConfigType.MultiChoice:
+				case ControlExtraConfigType.MultiChoice:
 					currExtraConfig["type"] = "checkbox";
 					break;
-				case Enumerations.ControlExtraConfigType.Value:
+				case ControlExtraConfigType.Value:
 				default:
 					currExtraConfig["type"] = "input";
 					break;

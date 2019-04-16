@@ -1,4 +1,4 @@
-import { Enumerations } from "./Enumerations";
+import { ControlExtraConfigType } from "./enumerations/ControlExtraConfigType";
 
 /**
  * This interface holds extra configuration step for a component.
@@ -21,5 +21,5 @@ export interface ControlExtraConfiguration {
 	message: string;
 
 	/** The type of the extra configuration - choice, multi-choice value */
-	type: Enumerations.ControlExtraConfigType;
+	type: ControlExtraConfigType;
 }

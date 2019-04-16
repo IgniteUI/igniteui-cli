@@ -6,7 +6,7 @@ import { PackageManager } from "../../lib/packages/PackageManager";
 import { ProjectConfig } from "../../lib/ProjectConfig";
 import { PromptSession } from "../../lib/PromptSession";
 import { TemplateManager } from "../../lib/TemplateManager";
-import { Enumerations } from "../../lib/types/index";
+import { ControlExtraConfigType } from "../../lib/types/index";
 import { Util } from "../../lib/Util";
 
 describe("Unit - PromptSession", () => {
@@ -275,13 +275,13 @@ describe("Unit - PromptSession", () => {
 			default: "Choice 1",
 			message: "Please enter a value",
 			key: "customValue1",
-			type: Enumerations.ControlExtraConfigType.Value
+			type: ControlExtraConfigType.Value
 		}, {
 			choices: [],
 			default: "Choice 1",
 			message: "Please enter a value",
 			key: "customValue2",
-			type: Enumerations.ControlExtraConfigType.Value
+			type: ControlExtraConfigType.Value
 		}];
 		const mockSelectedTemplate = {
 			name: "Template 1",
@@ -449,13 +449,13 @@ describe("Unit - PromptSession", () => {
 			default: "Choice 1",
 			message: "Please select a value",
 			key: "customValue1",
-			type: Enumerations.ControlExtraConfigType.Choice
+			type: ControlExtraConfigType.Choice
 		}, {
 			choices: ["Choice 1", "Choice 2", "Choice 3"],
 			default: "Choice 1",
 			message: "Please select a value",
 			key: "customValue2",
-			type: Enumerations.ControlExtraConfigType.MultiChoice
+			type: ControlExtraConfigType.MultiChoice
 		}];
 		const mockSelectedTemplate = {
 			name: "Template 1",

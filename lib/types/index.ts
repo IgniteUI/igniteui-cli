@@ -12,4 +12,4 @@ export * from "./ProjectLibrary";
 export * from "./Template";
 export * from "./ProjectTemplate";
 export * from "./TemplateDependency";
-export * from "./Enumerations";
+export * from "./enumerations/ControlExtraConfigType";
