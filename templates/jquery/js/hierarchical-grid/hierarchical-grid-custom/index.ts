@@ -1,6 +1,6 @@
 import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 import { jQueryTemplate } from "../../../../../lib/templates/jQueryTemplate";
-import { ControlExtraConfiguration, Enumerations } from "../../../../../lib/types/index";
+import { ControlExtraConfigType, ControlExtraConfiguration } from "../../../../../lib/types/index";
 
 class HierarchicalGridEditingTemplate extends jQueryTemplate {
 	public extraConfigurations: ControlExtraConfiguration[];
@@ -32,7 +32,7 @@ class HierarchicalGridEditingTemplate extends jQueryTemplate {
 			default: "",
 			key: "features",
 			message: "Select features for the igHierarchicalGrid",
-			type: Enumerations.ControlExtraConfigType.MultiChoice
+			type: ControlExtraConfigType.MultiChoice
 		};
 		this.extraConfigurations.push(featureConfiguration);
 	}

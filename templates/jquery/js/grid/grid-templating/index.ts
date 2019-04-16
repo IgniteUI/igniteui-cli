@@ -1,15 +1,13 @@
 import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 import { jQueryTemplate } from "../../../../../lib/templates/jQueryTemplate";
-import { ControlExtraConfiguration, Enumerations } from "../../../../../lib/types/index";
+import { ControlExtraConfigType, ControlExtraConfiguration } from "../../../../../lib/types/index";
 
 class GridTemplatingTemplate extends jQueryTemplate {
 	public extraConfigurations: ControlExtraConfiguration[];
 	public userExtraConfiguration: {} = {};
 	public hasExtraConfiguration = true;
 	private gridHelper: GridHelper;
-	/**
-	 *
-	 */
+
 	constructor() {
 		super(__dirname);
 		this.id = "grid-templating";
@@ -27,7 +25,7 @@ class GridTemplatingTemplate extends jQueryTemplate {
 			default: "",
 			key: "features",
 			message: "Select features for the igGrid",
-			type: Enumerations.ControlExtraConfigType.MultiChoice
+			type: ControlExtraConfigType.MultiChoice
 		};
 		this.extraConfigurations.push(featureConfiguration);
 	}
