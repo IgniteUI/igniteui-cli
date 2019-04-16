@@ -1,5 +1,5 @@
 import { IgniteUIForAngularTemplate } from "../../../../../lib/templates/IgniteUIForAngularTemplate";
-import { ControlExtraConfiguration, Enumerations } from "../../../../../lib/types/index";
+import { ControlExtraConfigType, ControlExtraConfiguration } from "../../../../../lib/types/index";
 
 class IgxCalendarTemplate extends IgniteUIForAngularTemplate {
 	private userExtraConfiguration: {} = {};
@@ -29,7 +29,7 @@ class IgxCalendarTemplate extends IgniteUIForAngularTemplate {
 			default: "Single selection",
 			key: "selectionType",
 			message: "Choose selection type for the igx-calendar",
-			type: Enumerations.ControlExtraConfigType.Choice
+			type: ControlExtraConfigType.Choice
 		}];
 	}
 

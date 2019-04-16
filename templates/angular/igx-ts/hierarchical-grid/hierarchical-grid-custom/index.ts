@@ -1,5 +1,5 @@
 import { IgniteUIForAngularTemplate } from "../../../../../lib/templates/IgniteUIForAngularTemplate";
-import { ControlExtraConfiguration, Enumerations } from "../../../../../lib/types/index";
+import { ControlExtraConfigType, ControlExtraConfiguration } from "../../../../../lib/types/index";
 
 class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 	private userExtraConfiguration: {};
@@ -32,7 +32,7 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 			default: "",
 			key: "columnFeatures",
 			message: "Choose features for the igx-hierarchical-grid",
-			type: Enumerations.ControlExtraConfigType.MultiChoice
+			type: ControlExtraConfigType.MultiChoice
 		}];
 	}
 

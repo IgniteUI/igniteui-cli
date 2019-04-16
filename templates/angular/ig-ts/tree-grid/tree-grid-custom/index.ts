@@ -1,6 +1,6 @@
 import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 import { AngularTemplate } from "../../../../../lib/templates/AngularTemplate";
-import { ControlExtraConfiguration, Enumerations } from "../../../../../lib/types/index";
+import { ControlExtraConfigType, ControlExtraConfiguration } from "../../../../../lib/types/index";
 
 class TreeGridCustomTemplate extends AngularTemplate {
 	private gridHelper: GridHelper;
@@ -27,7 +27,7 @@ class TreeGridCustomTemplate extends AngularTemplate {
 			default: "",
 			key: "features",
 			message: "Select features for the igTreeGrid",
-			type: Enumerations.ControlExtraConfigType.MultiChoice
+			type: ControlExtraConfigType.MultiChoice
 		};
 		this.extraConfigurations.push(featureConfiguration);
 	}
