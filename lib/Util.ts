@@ -1,7 +1,6 @@
 import chalk from "chalk";
-import { exec, execSync } from "child_process";
+import { execSync } from "child_process";
 import * as fs from "fs";
-import * as fsExtra from "fs-extra";
 import * as glob from "glob";
 import * as path from "path";
 import through2 = require("through2");
@@ -12,6 +11,8 @@ const applyConfig = (configuration: { [key: string]: string }) => {
 		cb(null, new Buffer(Util.applyConfigTransformation(data.toString(), configuration)));
 	});
 };
+
+const noop = () => through2.obj();
 
 class Util {
 	public static getCurrentDirectoryBase() {
@@ -54,87 +55,38 @@ class Util {
 	public static async processTemplates(
 		sourcePath: string,
 		destinationPath: string, configuration: { [key: string]: string },
-		pathsConfiguration: { [key: string]: string }) {
+		pathsConfiguration: { [key: string]: string }): Promise<boolean> {
 
-		// TODO: Rework with glob...
-		if (!Util.directoryExists(destinationPath)) {
-			this.createDirectory(destinationPath);
-		}
+		sourcePath = sourcePath.replace(/\\/g, "/");
+		destinationPath = destinationPath.replace(/\\/g, "/");
 
-		if (fs.existsSync(sourcePath)) {
-			const items = fs.readdirSync(sourcePath);
-			let folders;
-			let itemsLeft = 0;
-
-			folders = Util.getDirectoryNames(sourcePath);
-			for (const folder of folders) {
-				let sourceFolderName;
-				let destinationFolderName;
-				sourceFolderName = destinationFolderName = folder;
-				if (sourceFolderName === "__path__" && configuration.hasOwnProperty("__path__")) {
-					destinationFolderName = configuration["__path__"];
-				}
-				if (!Util.directoryExists(path.join(destinationPath, destinationFolderName))) {
-					this.createDirectory(path.join(destinationPath, destinationFolderName));
-				}
-				//TODO: This call should have await!
-				await Util.processTemplates(
-					path.join(sourcePath, sourceFolderName),
-					path.join(destinationPath, destinationFolderName),
-					configuration,
-					pathsConfiguration);
-			}
-			return new Promise<boolean>((resolve, reject) => {
-				//var itemsLeft = items.length - folders.length;
-				if (folders.length === items.length) {
-					resolve(true);
-				}
-				for (const element of items) {
-					let key;
-					if (Util.isFile(path.join(sourcePath, element))) {
-						itemsLeft++;
-						// temporary recognize image extensions
-						//TODO use grep module to select files which need to be processed via pipe and copy others directly.
-						const currentFileExtension = path.extname(path.join(sourcePath, element));
-						if (imageExtensions.indexOf(currentFileExtension) !== -1) {
-							fsExtra.copySync(path.join(sourcePath, element), path.join(destinationPath, element));
-							if (--itemsLeft === 0) {
-								resolve(true);
-							}
-							continue;
-						}
-
-						// tslint:disable-next-line:forin
-						for (key in pathsConfiguration) {
-							// we need to recalculate relative path for every single file,
-							// so we don't overwrite the pathsConfiguration but reuse them for every single file
-							configuration[key] = path.relative(destinationPath, pathsConfiguration[key]);
-						}
-
-						let fileName: string = element;
-						if (configuration.hasOwnProperty("__name__")) {
-							fileName = element.replace("__name__", configuration["__name__"]);
-						}
-						if (fileName === "gitignore") {
-							fileName = ".gitignore";
-						}
-						const writeStream = fs.createWriteStream(path.join(destinationPath, fileName));
-						fs.createReadStream(path.join(sourcePath, element))
-							.pipe(applyConfig(configuration))
-							.pipe(writeStream);
-						writeStream.on("finish", () => {
-							if (--itemsLeft === 0) {
-								resolve(true);
-							}
-						});
-					}
-				}
-			});
-		} else {
-			return new Promise<boolean>((resolve, reject) => {
+		return new Promise((resolve, reject) => {
+			const filePaths: string[] = glob.sync(sourcePath + "/**/*", { nodir: true });
+			let fileCount = filePaths.length;
+			// if no files should be created, resolve
+			if (fileCount === 0) {
 				resolve(false);
-			});
-		}
+			}
+			for (const filePath of filePaths) {
+				let targetPath = filePath.replace(sourcePath, destinationPath);
+				targetPath = Util.applyConfigTransformation(targetPath, configuration);
+				Util.createDirectory(path.dirname(targetPath));
+				if (path.basename(targetPath) === "gitignore") {
+					targetPath = path.join(path.dirname(targetPath), ".gitignore");
+				}
+				const writeStream = fs.createWriteStream(targetPath);
+				const isImage = imageExtensions.indexOf(path.extname(targetPath)) !== -1;
+				fs.createReadStream(filePath)
+					// for image files, just copy the content
+					.pipe(!isImage ? applyConfig(configuration) : noop())
+					.pipe(writeStream);
+				writeStream.on("finish", () => {
+					if (--fileCount === 0) {
+						resolve(true);
+					}
+				});
+			}
+		});
 	}
 
 	public static validateTemplate(
@@ -152,12 +104,7 @@ class Util {
 
 		for (let filePath of paths) {
 			filePath = filePath.replace(sourcePath, destinationPath);
-			if (configuration.hasOwnProperty("__path__")) {
-				filePath = filePath.replace("__path__", configuration["__path__"]);
-			}
-			if (configuration.hasOwnProperty("__name__")) {
-				filePath = filePath.replace("__name__", configuration["__name__"]);
-			}
+			filePath = Util.applyConfigTransformation(filePath, configuration);
 			if (fs.existsSync(filePath)) {
 				this.error(path.relative(process.cwd(), filePath) + " already exists!", "red");
 				return false;
@@ -410,7 +357,7 @@ class Util {
 		if (framework === "angular" && projectType === "igx-ts") {
 			specificPath = path.join("src", "app");
 		} else if (framework === "angular" && projectType === "ig-ts") {
-			specificPath =  path.join("src", "app", "components");
+			specificPath = path.join("src", "app", "components");
 		} else if (framework === "react" && projectType === "es6") {
 			specificPath = path.join("client", "components");
 		} else if (framework === "react" && projectType === "igr-es6") {
@@ -470,22 +417,11 @@ class Util {
 	}
 
 	public static camelCase(str: string) {
-		if (!str)  {
+		if (!str) {
 			return null;
 		}
 		const result = this.className(str);
 		return result[0].toLowerCase() + result.substring(1, result.length);
-	}
-
-	private static propertyByPath(object: any, propPath: string) {
-		if (!propPath) {
-			return object;
-		}
-		const pathParts = propPath.split(".");
-		const currentProp = pathParts.shift();
-		if (currentProp in object) {
-			return this.propertyByPath(object[currentProp], pathParts.join("."));
-		}
 	}
 }
 
