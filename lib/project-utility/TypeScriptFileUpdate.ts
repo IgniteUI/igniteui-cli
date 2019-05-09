@@ -66,7 +66,7 @@ export class TypeScriptFileUpdate {
 	public addRoute(filePath: string, linkPath: string, linkText: string, routesVariable = "routes") {
 		let className: string;
 		const fileSource = TsUtils.getFileSource(filePath, this.fileSystem);
-		const relativePath: string = TsUtils.relativePath(this.targetPath, filePath, true, true);
+		const relativePath: string = Util.relativePath(this.targetPath, filePath, true, true);
 
 		className = TsUtils.getClassName(fileSource.getChildren());
 		this.requestImport([className], relativePath);
@@ -139,7 +139,7 @@ export class TypeScriptFileUpdate {
 	public addDeclaration(filePath: string, addToExport?: boolean) {
 		let className: string;
 		const fileSource = TsUtils.getFileSource(filePath, this.fileSystem);
-		const relativePath: string = TsUtils.relativePath(this.targetPath, filePath, true, true);
+		const relativePath: string = Util.relativePath(this.targetPath, filePath, true, true);
 		className = TsUtils.getClassName(fileSource.getChildren());
 		if (addToExport) {
 			this.addNgModuleMeta({ declare: className, from: relativePath, export: className });

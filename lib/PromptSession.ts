@@ -1,6 +1,5 @@
 import chalk from "chalk";
 import * as inquirer from "inquirer";
-import { BaseComponent } from "./BaseComponent";
 import { default as add } from "./commands/add";
 import { default as start } from "./commands/start";
 import { GoogleAnalytics } from "./GoogleAnalytics";
@@ -229,7 +228,7 @@ export class PromptSession {
 				type: "list",
 				name: "componentGroup",
 				message: "Choose a group:",
-				choices: this.formatOutput(projectLibrary.getComponentGroups()),
+				choices: Util.formatOutput(projectLibrary.getComponentGroups()),
 				default: groups.find(x => x.includes("Grids")) || groups[0]
 			}, true);
 
@@ -254,7 +253,7 @@ export class PromptSession {
 				type: "list",
 				name: "component",
 				message: "Choose a component:",
-				choices: this.formatOutput(projectLibrary.getComponentsByGroup(groupName))
+				choices: Util.formatOutput(projectLibrary.getComponentsByGroup(groupName))
 			}, true);
 
 			if (componentNameRes === this.WIZARD_BACK_OPTION) {
@@ -284,7 +283,7 @@ export class PromptSession {
 			type: "list",
 			name: "template",
 			message: "Choose one:",
-			choices: this.formatOutput(templates)
+			choices: Util.formatOutput(templates)
 		}, true);
 
 		if (templateRes === this.WIZARD_BACK_OPTION) {
@@ -334,7 +333,7 @@ export class PromptSession {
 	 */
 	private async addView(projectLibrary: ProjectLibrary, theme: string): Promise<boolean> {
 		const customTemplates: Template[] = projectLibrary.getCustomTemplates();
-		const formatedOutput = this.formatOutput(customTemplates);
+		const formatedOutput = Util.formatOutput(customTemplates);
 		const config = ProjectConfig.getConfig();
 		const customTemplateNameRes = await this.getUserInput({
 			type: "list",
@@ -436,7 +435,7 @@ export class PromptSession {
 				break;
 			default:
 				return;
-			//TODO: text = `  ${options.name}`;
+				//TODO: text = `  ${options.name}`;
 		}
 		GoogleAnalytics.post({
 			t: "event",
@@ -540,7 +539,7 @@ export class PromptSession {
 			type: "list",
 			name: "projTemplate",
 			message: "Choose project template:",
-			choices: this.formatOutput(projectLibrary.projects)
+			choices: Util.formatOutput(projectLibrary.projects)
 		});
 		projTemplate = projectLibrary.projects.find(x => x.name === componentNameRes);
 
@@ -575,7 +574,7 @@ export class PromptSession {
 		}];
 		if (projectLibrary.components.length > 0) {
 			actionChoices.push({
-				name: "Add component" + chalk.gray("...........add a specific component view (e.g a grid)"),
+				name:  "Add component" + chalk.gray("...........add a specific component view (e.g a grid)"),
 				short: "Add component", // displayed result after selection
 				value: "Add component" // actual selection value
 			});
@@ -589,39 +588,6 @@ export class PromptSession {
 		}
 
 		return actionChoices;
-	}
-
-	private formatOutput(items: Array<Template | Component | ComponentGroup>):
-		Array<{ name: string, value: string, short: string }> {
-		const choiceItems = [];
-		const leftPadding = 2;
-		const rightPadding = 1;
-
-		const maxNameLength = Math.max(...items.map(x => x.name.length)) + 3;
-		const targetNameLength = Math.max(18, maxNameLength);
-		let description: string;
-		for (const item of items) {
-			const choiceItem = {
-				name: "",
-				short: item.name,
-				value: item.name
-			};
-			choiceItem.name = item.name;
-			if (item instanceof BaseComponent && item.templates.length <= 1) {
-				description = item.templates[0].description || "";
-			} else {
-				description = item.description || "";
-			}
-			if (description !== "") {
-				choiceItem.name = item.name + Util.addColor(".".repeat(targetNameLength - item.name.length), 0);
-				const max = process.stdout.columns - targetNameLength - leftPadding - rightPadding;
-				description = Util.truncate(description, max, 3, ".");
-				description = Util.addColor(description, 0);
-				choiceItem.name += description;
-			}
-			choiceItems.push(choiceItem);
-		}
-		return choiceItems;
 	}
 }
 

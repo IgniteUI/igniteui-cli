@@ -64,7 +64,7 @@ export class IgniteUIForAngularTemplate extends AngularTemplate {
 			if (dep.from && dep.from.startsWith(".")) {
 				// relative file dependency
 				const copy = Object.assign({}, dep);
-				copy.from = TsUtils.relativePath(mainModulePath, path.join(projectPath, copy.from), true, true);
+				copy.from = Util.relativePath(mainModulePath, path.join(projectPath, copy.from), true, true);
 				mainModule.addNgModuleMeta(copy, this.getBaseVariables(name));
 			} else {
 				mainModule.addNgModuleMeta(dep, this.getBaseVariables(name));

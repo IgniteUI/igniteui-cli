@@ -163,11 +163,11 @@ describe("Unit - TypeScriptFileUpdate", () => {
 		spyOn(fs, "writeFileSync");
 		const formatSpy = spyOn(TypeScriptFileUpdate.prototype as any, "formatFile");
 		spyOn(TypeScriptUtils, "getClassName").and.returnValues("Component1", "Component2");
-		spyOn(TypeScriptUtils, "relativePath").and.returnValues("./to/component", "./to/component2");
+		spyOn(Util, "relativePath").and.returnValues("./to/component", "./to/component2");
 
 		const tsUpdate = new TypeScriptFileUpdate("route-module.ts");
 		tsUpdate.addRoute("path/to/component", "href", "text");
-		expect(TypeScriptUtils.relativePath).toHaveBeenCalledWith("route-module.ts", "path/to/component", true, true);
+		expect(Util.relativePath).toHaveBeenCalledWith("route-module.ts", "path/to/component", true, true);
 		expect(TypeScriptUtils.getClassName).toHaveBeenCalledWith(["component1"]);
 		expect(fs.writeFileSync).toHaveBeenCalledWith(
 			"route-module.ts",
@@ -182,7 +182,7 @@ describe("Unit - TypeScriptFileUpdate", () => {
 		expect(formatSpy).toHaveBeenCalled();
 
 		tsUpdate.addRoute("path/to/component2", "href2", "text2", "routes2");
-		expect(TypeScriptUtils.relativePath).toHaveBeenCalledWith("route-module.ts", "path/to/component2", true, true);
+		expect(Util.relativePath).toHaveBeenCalledWith("route-module.ts", "path/to/component2", true, true);
 		expect(TypeScriptUtils.getClassName).toHaveBeenCalledWith(["component2"]);
 		expect(fs.writeFileSync).toHaveBeenCalledWith(
 			"route-module.ts",
@@ -206,12 +206,12 @@ describe("Unit - TypeScriptFileUpdate", () => {
 		);
 
 		spyOn(TypeScriptUtils, "getClassName").and.returnValue("DeclareComponent");
-		spyOn(TypeScriptUtils, "relativePath").and.returnValue("./to/component");
+		spyOn(Util, "relativePath").and.returnValue("./to/component");
 		const addMetaSpy = spyOn(TypeScriptFileUpdate.prototype, "addNgModuleMeta");
 
 		const tsUpdate = new TypeScriptFileUpdate("app.module.ts");
 		tsUpdate.addDeclaration("relative/path");
-		expect(TypeScriptUtils.relativePath).toHaveBeenCalledWith("app.module.ts", "relative/path", true, true);
+		expect(Util.relativePath).toHaveBeenCalledWith("app.module.ts", "relative/path", true, true);
 		expect(TypeScriptUtils.getClassName).toHaveBeenCalledWith(["component1"]);
 		expect(addMetaSpy).toHaveBeenCalledWith({ declare: "DeclareComponent", from: "./to/component" });
 		done();

@@ -1,10 +1,11 @@
 import chalk from "chalk";
-import { exec, execSync } from "child_process";
+import { execSync } from "child_process";
 import * as fs from "fs";
 import * as fsExtra from "fs-extra";
 import * as glob from "glob";
 import * as path from "path";
 import through2 = require("through2");
+import { BaseComponent } from "./BaseComponent";
 import { GoogleAnalytics } from "./GoogleAnalytics";
 const imageExtensions = [".png", ".jpg", ".jpeg", ".gif", ".bmp", ".ico"];
 const applyConfig = (configuration: { [key: string]: string }) => {
@@ -477,6 +478,71 @@ class Util {
 		return result[0].toLowerCase() + result.substring(1, result.length);
 	}
 
+	/**
+	 * Generate relative path from target file to another
+	 * Adds "./" to avoid node module resolution conflicts
+	 * @param targetPath Target file (root path)
+	 * @param filePath File to generate relative path to
+	 * @param posix Require path in posix style (/-separated)
+	 * @param removeExt Strip file extension
+	 */
+	public static relativePath(targetPath: string, filePath: string, posix: boolean, removeExt = true): string {
+		if (!targetPath.endsWith(path.win32.sep) && !targetPath.endsWith(path.posix.sep)) {
+			// path.relative splits by fragments, must be dirname w/ trailing to work both down and up
+			targetPath = path.win32.dirname(targetPath) + path.sep;
+		}
+
+		// use win32 api as it handles both formats
+		let relativePath: string = path.win32.relative(targetPath, filePath);
+
+		if (removeExt) {
+			relativePath = relativePath.replace(path.win32.extname(relativePath), "");
+		}
+
+		if (posix) {
+			relativePath = path.posix.join(...relativePath.split(path.win32.sep));
+			relativePath = relativePath.startsWith(".") ? relativePath : "./" + relativePath;
+		} else {
+			relativePath = path.win32.join(...relativePath.split(path.win32.sep));
+			relativePath = relativePath.startsWith(".") ? relativePath : ".\\" + relativePath;
+		}
+
+		return relativePath;
+	}
+
+	public static formatOutput(items: Array<Template | Component | ComponentGroup>):
+							Array<{name: string, value: string, short: string}> {
+		const choiceItems = [];
+		const leftPadding = 2;
+		const rightPadding = 1;
+
+		const maxNameLength = Math.max(...items.map(x => x.name.length)) + 3;
+		const targetNameLength = Math.max(18, maxNameLength);
+		let description: string;
+		for (const item of items) {
+			const choiceItem = {
+				name: "",
+				short: item.name,
+				value: item.name
+			};
+			choiceItem.name = item.name;
+			if (item instanceof BaseComponent && item.templates.length <= 1) {
+				description = item.templates[0].description || "";
+			} else {
+				description = item.description || "";
+			}
+			if (description !== "") {
+				choiceItem.name = item.name  +  Util.addColor(".".repeat(targetNameLength - item.name.length), 0);
+				const max = process.stdout.columns - targetNameLength - leftPadding - rightPadding;
+				description = Util.truncate(description, max, 3, ".");
+				description = Util.addColor(description, 0);
+				choiceItem.name += description;
+			}
+			choiceItems.push(choiceItem);
+		}
+		return choiceItems;
+	}
+
 	private static propertyByPath(object: any, propPath: string) {
 		if (!propPath) {
 			return object;
@@ -487,6 +553,7 @@ class Util {
 			return this.propertyByPath(object[currentProp], pathParts.join("."));
 		}
 	}
+
 }
 
 export { Util };
