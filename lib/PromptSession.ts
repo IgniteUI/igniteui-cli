@@ -228,7 +228,7 @@ export class PromptSession {
 				type: "list",
 				name: "componentGroup",
 				message: "Choose a group:",
-				choices: Util.formatOutput(projectLibrary.getComponentGroups()),
+				choices: Util.formatChoices(projectLibrary.getComponentGroups()),
 				default: groups.find(x => x.includes("Grids")) || groups[0]
 			}, true);
 
@@ -253,7 +253,7 @@ export class PromptSession {
 				type: "list",
 				name: "component",
 				message: "Choose a component:",
-				choices: Util.formatOutput(projectLibrary.getComponentsByGroup(groupName))
+				choices: Util.formatChoices(projectLibrary.getComponentsByGroup(groupName))
 			}, true);
 
 			if (componentNameRes === this.WIZARD_BACK_OPTION) {
@@ -283,7 +283,7 @@ export class PromptSession {
 			type: "list",
 			name: "template",
 			message: "Choose one:",
-			choices: Util.formatOutput(templates)
+			choices: Util.formatChoices(templates)
 		}, true);
 
 		if (templateRes === this.WIZARD_BACK_OPTION) {
@@ -333,7 +333,7 @@ export class PromptSession {
 	 */
 	private async addView(projectLibrary: ProjectLibrary, theme: string): Promise<boolean> {
 		const customTemplates: Template[] = projectLibrary.getCustomTemplates();
-		const formatedOutput = Util.formatOutput(customTemplates);
+		const formatedOutput = Util.formatChoices(customTemplates);
 		const config = ProjectConfig.getConfig();
 		const customTemplateNameRes = await this.getUserInput({
 			type: "list",
@@ -539,7 +539,7 @@ export class PromptSession {
 			type: "list",
 			name: "projTemplate",
 			message: "Choose project template:",
-			choices: Util.formatOutput(projectLibrary.projects)
+			choices: Util.formatChoices(projectLibrary.projects)
 		});
 		projTemplate = projectLibrary.projects.find(x => x.name === componentNameRes);
 

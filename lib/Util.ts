@@ -510,7 +510,7 @@ class Util {
 		return relativePath;
 	}
 
-	public static formatOutput(items: Array<Template | Component | ComponentGroup>):
+	public static formatChoices(items: Array<Template | Component | ComponentGroup>):
 							Array<{name: string, value: string, short: string}> {
 		const choiceItems = [];
 		const leftPadding = 2;
