@@ -16,7 +16,7 @@ const applyConfig = (configuration: { [key: string]: string }) => {
 };
 
 const noop = () => through2.obj();
-const defaultDelimiters: TemplateDelimiters = {
+export const defaultDelimiters: TemplateDelimiters = {
 	content: {
 		start: `$(`,
 		end: `)`
@@ -26,7 +26,10 @@ const defaultDelimiters: TemplateDelimiters = {
 		end: `__`
 	}
 };
-class Util {
+
+export type ChoiceItem = Pick<Template | ComponentGroup, "name" | "description"> | Component;
+
+export class Util {
 	public static getCurrentDirectoryBase() {
 		return path.basename(process.cwd());
 	}
@@ -462,13 +465,12 @@ class Util {
 		return relativePath;
 	}
 
-	public static formatChoices(items: Array<Template | Component | ComponentGroup>):
-							Array<{name: string, value: string, short: string}> {
+	public static formatChoices(items: ChoiceItem[], padding = 3): Array<{name: string, value: string, short: string}> {
 		const choiceItems = [];
 		const leftPadding = 2;
 		const rightPadding = 1;
 
-		const maxNameLength = Math.max(...items.map(x => x.name.length)) + 3;
+		const maxNameLength = Math.max(...items.map(x => x.name.length)) + padding;
 		const targetNameLength = Math.max(18, maxNameLength);
 		let description: string;
 		for (const item of items) {
@@ -545,5 +547,3 @@ class Util {
 		return true;
 	}
 }
-
-export { Util, defaultDelimiters };
