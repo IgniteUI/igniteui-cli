@@ -396,12 +396,6 @@ class Util {
 		return name + chalk.gray(`${separatedDescription}`);
 	}
 
-	public static incrementName(name: string, baseLength: number): string {
-		const text: string = name.slice(0, baseLength);
-		const number: number = parseInt(name.slice(baseLength + 1), 10) || 0;
-		return `${text} ${number + 1}`;
-	}
-
 	public static getAvailableName(
 		defaultName: string, isApp: boolean, framework?: string, projectType?: string): string {
 
@@ -541,6 +535,12 @@ class Util {
 			choiceItems.push(choiceItem);
 		}
 		return choiceItems;
+	}
+
+	private static incrementName(name: string, baseLength: number): string {
+		const text: string = name.slice(0, baseLength);
+		const number: number = parseInt(name.slice(baseLength + 1), 10) || 0;
+		return `${text} ${number + 1}`;
 	}
 }
 
