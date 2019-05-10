@@ -348,7 +348,17 @@ class Util {
 	 * @throws {Error} On timeout or non-zero exit code. Error has 'status', 'signal', 'output', 'stdout', 'stderr'
 	 */
 	public static exec(command: string, options?: any) {
-		return execSync(command, options);
+		try {
+			return execSync(command, { stdio: ["pipe"], killSignal: "SIGTERM" });
+		} catch (error) {
+			if (error.status === 3221225786 || error.status > 128) {
+				process.exit();
+				return;
+			} else {
+				// throw the error instead of logging it?
+				Util.error(error.message, "red");
+			}
+		}
 	}
 
 	/**
@@ -410,7 +420,7 @@ class Util {
 		if (framework === "angular" && projectType === "igx-ts") {
 			specificPath = path.join("src", "app");
 		} else if (framework === "angular" && projectType === "ig-ts") {
-			specificPath =  path.join("src", "app", "components");
+			specificPath = path.join("src", "app", "components");
 		} else if (framework === "react" && projectType === "es6") {
 			specificPath = path.join("client", "components");
 		} else if (framework === "react" && projectType === "igr-es6") {
@@ -470,7 +480,7 @@ class Util {
 	}
 
 	public static camelCase(str: string) {
-		if (!str)  {
+		if (!str) {
 			return null;
 		}
 		const result = this.className(str);
