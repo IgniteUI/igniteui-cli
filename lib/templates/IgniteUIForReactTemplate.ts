@@ -4,7 +4,7 @@ import * as path from "path";
 import { AddTemplateArgs, ControlExtraConfiguration, Template } from "../types/index";
 import { Util } from "../Util";
 
-export class IgniteUIForReactTemplate extends Template {
+export class IgniteUIForReactTemplate implements Template {
 	public components: string[];
 	public controlGroup: string;
 	public listInComponentTemplates: boolean = true;
@@ -27,9 +27,7 @@ export class IgniteUIForReactTemplate extends Template {
 	 * Base ReactTemplate constructor
 	 * @param rootPath The template folder path. Pass in `__dirname`
 	 */
-	constructor(private rootPath: string) {
-		super();
-	}
+	constructor(private rootPath: string) { }
 
 	public generateFiles(projectPath: string, name: string, options: {}): Promise<boolean> {
 		let config = {};

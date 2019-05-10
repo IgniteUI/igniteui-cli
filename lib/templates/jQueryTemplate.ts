@@ -8,7 +8,7 @@ import { Util } from "../Util";
  * Template with specific implementation for jQuery projects
  */
 // tslint:disable-next-line:class-name
-export class jQueryTemplate extends Template {
+export class jQueryTemplate implements Template {
 	public components: string[];
 	public controlGroup: string;
 	public listInComponentTemplates: boolean;
@@ -25,11 +25,7 @@ export class jQueryTemplate extends Template {
 	private configFile: string = "ignite-cli-views.js";
 	private replacePattern: RegExp = /\[[\s\S]*\](?=;)/;
 
-	/**
-	 *
-	 */
 	constructor(private rootPath: string) {
-		super();
 		this.listInComponentTemplates = false;
 		this.listInCustomTemplates = false;
 		this.hasExtraConfiguration = false;
