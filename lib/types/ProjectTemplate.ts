@@ -1,9 +1,9 @@
 import { BaseTemplate } from "./BaseTemplate";
 
 /** Interface for project templates */
-export abstract class ProjectTemplate extends BaseTemplate {
+export interface ProjectTemplate extends BaseTemplate {
 	/** This method should be called after generateFiles completes. */
-	public abstract installModules(): void;
+	installModules(): void;
 
 	/**
 	 * Called initially when the project updates to using the full Ignite UI package.
@@ -11,8 +11,8 @@ export abstract class ProjectTemplate extends BaseTemplate {
 	 * @param projectPath The project root folder
 	 * @param packagePath The relative path to the new package folder
 	 */
-	public abstract upgradeIgniteUIPackage(projectPath: string, packagePath: string): void;
+	upgradeIgniteUIPackage(projectPath: string, packagePath: string): void;
 
 	/** Generates template files. */
-	public abstract generateFiles(outputPath: string, name: string, theme: string, ...options: any[]): Promise<boolean>;
+	generateFiles(outputPath: string, name: string, theme: string, ...options: any[]): Promise<boolean>;
 }
