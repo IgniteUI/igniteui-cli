@@ -14,7 +14,7 @@ export class $(ClassName)Component implements OnInit {
         this.localData = SINGERS;
     }
 
-    public toggleColumn(col: IgxColumnComponent) {
+    public toggleColumn(col: IgxColumnComponent, event: MouseEvent) {
 		col.pinned ? col.unpin() : col.pin();
 		event.stopPropagation();
     }
