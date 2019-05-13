@@ -2,9 +2,6 @@
 import { BaseComponent } from "../../../../lib/BaseComponent";
 
 class IgxCalendarComponent extends BaseComponent {
-	/**
-	 *
-	 */
 	constructor() {
 		super(__dirname);
 		this.name  = "Calendar";

@@ -1,3 +1,4 @@
+import { Framework } from "../../lib/types/index";
 import { Util } from "../../lib/Util";
 
 describe("Angular templates", () => {

@@ -1,4 +1,5 @@
 import * as path from "path";
+import { ProjectTemplate } from "../../../../../lib/types/index";
 import { Util } from "../../../../../lib/Util";
 import { SideNavProject } from "../side-nav";
 

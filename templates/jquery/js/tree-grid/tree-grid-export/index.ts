@@ -1,8 +1,6 @@
-import * as fs from "fs-extra";
-import * as path from "path";
 import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 import { jQueryTemplate } from "../../../../../lib/templates/jQueryTemplate";
-import { Util } from "../../../../../lib/Util";
+import { ControlExtraConfigType, ControlExtraConfiguration } from "../../../../../lib/types/index";
 
 class TreeGridExportTemplate extends jQueryTemplate {
 
@@ -10,9 +8,6 @@ class TreeGridExportTemplate extends jQueryTemplate {
 	public userExtraConfiguration: {} = {};
 	private gridHelper: GridHelper;
 
-	/**
-	 *
-	 */
 	constructor() {
 		super(__dirname);
 		this.extraConfigurations = [];
@@ -31,7 +26,7 @@ class TreeGridExportTemplate extends jQueryTemplate {
 			default: "",
 			key: "features",
 			message: "Select optional features for the export template",
-			type: Enumerations.ControlExtraConfigType.MultiChoice
+			type: ControlExtraConfigType.MultiChoice
 		};
 		this.extraConfigurations.push(featureConfiguration);
 	}
@@ -41,7 +36,7 @@ class TreeGridExportTemplate extends jQueryTemplate {
 	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
 		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 4);
 		const config = { "$(treeGridFeatures)": features };
-		return super.generateFiles(projectPath, name, { extraConfig : config });
+		return super.generateFiles(projectPath, name, { extraConfig: config });
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return this.extraConfigurations;

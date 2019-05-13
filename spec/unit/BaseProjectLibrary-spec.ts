@@ -1,7 +1,8 @@
 import * as path from "path";
 import { BaseProjectLibrary } from "../../lib/BaseProjectLibrary";
-import { TemplateManager } from "../../lib/TemplateManager";
+import { Component, Template } from "../../lib/types/index";
 import { Util } from "../../lib/Util";
+
 describe("Unit - Base project library ", () => {
 
 	it("has correct projects.", async done => {

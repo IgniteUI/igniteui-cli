@@ -5,6 +5,7 @@ import { default as buildCmd } from "../../lib/commands/build";
 import { default as startCmd } from "../../lib/commands/start";
 import { GoogleAnalytics } from "../../lib/GoogleAnalytics";
 import { ProjectConfig } from "../../lib/ProjectConfig";
+import { Config } from "../../lib/types/index";
 import { Util } from "../../lib/Util";
 
 describe("Unit - start command", () => {

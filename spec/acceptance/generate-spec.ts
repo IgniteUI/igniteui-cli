@@ -4,7 +4,7 @@ import * as path from "path";
 import cli = require("../../lib/cli");
 import { GoogleAnalytics } from "../../lib/GoogleAnalytics";
 import { ProjectConfig } from "../../lib/ProjectConfig";
-import { Util } from "../../lib/Util";
+import { Config, GoogleAnalyticsParameters, Template } from "../../lib/types/index";
 import { deleteAll } from "../helpers/utils";
 
 describe("Generate command", () => {

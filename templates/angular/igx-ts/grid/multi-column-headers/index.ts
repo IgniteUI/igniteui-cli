@@ -1,4 +1,5 @@
 import { IgniteUIForAngularTemplate } from "../../../../../lib/templates/IgniteUIForAngularTemplate";
+import { ControlExtraConfigType, ControlExtraConfiguration } from "../../../../../lib/types/index";
 
 class IgxMultiColumnHeadersTemplate extends IgniteUIForAngularTemplate {
 	private userExtraConfiguration: {} = {};
@@ -31,7 +32,7 @@ class IgxMultiColumnHeadersTemplate extends IgniteUIForAngularTemplate {
 			default: "",
 			key: "columnFeatures",
 			message: "Choose features for the igx-grid",
-			type: Enumerations.ControlExtraConfigType.MultiChoice
+			type: ControlExtraConfigType.MultiChoice
 		}];
 	}
 

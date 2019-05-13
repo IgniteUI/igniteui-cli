@@ -1,4 +1,6 @@
 import * as path from "path";
+import { ControlExtraConfiguration } from "../../../../../lib/types/ControlExtraConfiguration";
+import { ProjectTemplate } from "../../../../../lib/types/index";
 import { Util } from "../../../../../lib/Util";
 import { ProjectConfig } from "./../../../../../lib/ProjectConfig";
 

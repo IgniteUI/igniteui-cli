@@ -1,4 +1,5 @@
 import { IgniteUIForAngularTemplate } from "../../../../../lib/templates/IgniteUIForAngularTemplate";
+import { ControlExtraConfigType, ControlExtraConfiguration } from "../../../../../lib/types/index";
 
 class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 	private userExtraConfiguration: {} = {};
@@ -30,7 +31,7 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 			default: "",
 			key: "columnFeatures",
 			message: "Choose features for the igx-tree-grid",
-			type: Enumerations.ControlExtraConfigType.MultiChoice
+			type: ControlExtraConfigType.MultiChoice
 		}];
 	}
 

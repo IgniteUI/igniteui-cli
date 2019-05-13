@@ -1,4 +1,5 @@
 import * as ts from "typescript";
+import { TemplateDependency } from "../types/index";
 import { Util } from "../Util";
 import { FsFileSystem, IFileSystem, TypeScriptUtils as TsUtils } from "./TypeScriptUtils";
 

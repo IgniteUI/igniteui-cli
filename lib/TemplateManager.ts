@@ -4,6 +4,7 @@ import { AngularTemplate } from "./templates/AngularTemplate";
 import { IgniteUIForAngularTemplate } from "./templates/IgniteUIForAngularTemplate";
 import { jQueryTemplate } from "./templates/jQueryTemplate";
 import { ReactTemplate } from "./templates/ReactTemplate";
+import { Framework, ProjectLibrary, Template } from "./types/index";
 import { Util } from "./Util";
 
 export class TemplateManager {
@@ -114,7 +115,7 @@ export class TemplateManager {
 		for (const entry of config.customTemplates) {
 			let template: Template;
 			// tslint:disable-next-line:prefer-const
-			let [ protocol, value ] = entry.split(/(^[^:]+):/).filter(x => x);
+			let [protocol, value] = entry.split(/(^[^:]+):/).filter(x => x);
 			switch (protocol) {
 				default:
 					// in case just path is passed:

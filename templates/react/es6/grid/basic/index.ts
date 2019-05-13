@@ -1,16 +1,13 @@
-import * as path from "path";
 //TODO:
 import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 import { ReactTemplate } from "../../../../../lib/templates/ReactTemplate";
-import { Util } from "../../../../../lib/Util";
+import { ControlExtraConfigType, ControlExtraConfiguration } from "../../../../../lib/types/index";
 
 class GridTemplate extends ReactTemplate {
 	public extraConfigurations: ControlExtraConfiguration[] = [];
 	public userExtraConfiguration: {} = {};
 	private gridHelper: GridHelper;
-	/**
-	 *
-	 */
+
 	constructor() {
 		super(__dirname);
 		this.id = "grid";
@@ -29,14 +26,14 @@ class GridTemplate extends ReactTemplate {
 			default: "",
 			key: "features",
 			message: "Select features for the igGrid",
-			type: Enumerations.ControlExtraConfigType.MultiChoice
+			type: ControlExtraConfigType.MultiChoice
 		});
 	}
 
 	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
 		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 5);
 		const config = { "$(gridfeatures)": features };
-		return super.generateFiles(projectPath, name, { extraConfig : config });
+		return super.generateFiles(projectPath, name, { extraConfig: config });
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return this.extraConfigurations;

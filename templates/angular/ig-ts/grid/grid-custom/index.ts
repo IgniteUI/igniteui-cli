@@ -1,7 +1,6 @@
-import * as path from "path";
 import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 import { AngularTemplate } from "../../../../../lib/templates/AngularTemplate";
-import { Util } from "../../../../../lib/Util";
+import { ControlExtraConfigType, ControlExtraConfiguration } from "../../../../../lib/types/index";
 
 class GridCustomTemplate extends AngularTemplate {
 	private gridHelper: GridHelper;
@@ -30,7 +29,7 @@ class GridCustomTemplate extends AngularTemplate {
 			default: "",
 			key: "features",
 			message: "Select features for the igGrid",
-			type: Enumerations.ControlExtraConfigType.MultiChoice
+			type: ControlExtraConfigType.MultiChoice
 		};
 		this.extraConfigurations.push(featureConfiguration);
 	}

@@ -1,4 +1,5 @@
 import * as path from "path";
+import { ControlExtraConfiguration, ProjectTemplate } from "../../../../../lib/types/index";
 import { Util } from "../../../../../lib/Util";
 
 export class BaseIgrProject implements ProjectTemplate {
