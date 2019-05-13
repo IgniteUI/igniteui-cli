@@ -15,6 +15,7 @@ export class $(ClassName)Component implements OnInit {
     }
 
     public toggleColumn(col: IgxColumnComponent) {
-        col.pinned ? col.unpin() : col.pin();
+		col.pinned ? col.unpin() : col.pin();
+		event.stopPropagation();
     }
 }
