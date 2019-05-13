@@ -62,10 +62,13 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 
 	//tslint:disable
 	private pinningTemplate(columnName: string): string {
-		return `<ng-template igxHeader>
+		// https://github.com/IgniteUI/igniteui-angular/issues/3998
+		// Defining let-columnRef="column" does not seem to work.
+		// Angular passes in the $implicit(ly) defined value.
+		return `<ng-template igxHeader let-columnRef>
 			<div class="title-inner">
 				<span style="float:left">${columnName}</span>
-				<igx-icon class="pin-icon" fontSet="fas" name="fa-thumbtack" (click)="toggleColumn(${columnName.toLowerCase()})"></igx-icon>
+				<igx-icon class="pin-icon" fontSet="fas" name="fa-thumbtack" (click)="toggleColumn(columnRef, $event)"></igx-icon>
 			</div>
 		</ng-template>`;
 	}
