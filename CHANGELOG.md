@@ -1,3 +1,17 @@
+## [4.1.5](https://github.com/IgniteUI/igniteui-cli/compare/v4.1.4...v4.1.5) (2019-05-13)
+
+### Features
+
+* **ig-ts:** Updated Ignite UI for Angular projects to `igniteui-angular@7.3.0` ([2add88b](https://github.com/IgniteUI/igniteui-cli/commit/2add88b))
+* **ig-ts:** Add content wrapper for empty project [#504](https://github.com/IgniteUI/igniteui-cli/issues/504) ([PR 505](https://github.com/IgniteUI/igniteui-cli/pull/505))
+
+### Bug Fixes
+
+* **igx-ts:** add `IgxButtonModule` import to dialog template [#499](https://github.com/IgniteUI/igniteui-cli/issues/499) ([61a7fd6](https://github.com/IgniteUI/igniteui-cli/commit/61a7fd6))
+* **ig-ts:** Properly pass in column reference on column pinning [#507](https://github.com/IgniteUI/igniteui-cli/issues/507) ([7857b7a](https://github.com/IgniteUI/igniteui-cli/commit/7857b7a))
+* **ig-ts:** Stop event propagation on pin icon click in Custom hierarchical grid [#511](https://github.com/IgniteUI/igniteui-cli/issues/511) ([05ee2f2](https://github.com/IgniteUI/igniteui-cli/commit/05ee2f2))
+
+
 # [4.1.4](https://github.com/IgniteUI/igniteui-cli/compare/v4.1.3...v4.1.4) (2019-04-05)
 
 
