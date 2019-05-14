@@ -37,7 +37,7 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 		}];
 	}
 
-	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
+	public generateConfig(name: string, ...options: any[]): {[key: string]: any} {
 		const columnFeatures = [];
 		const columnBoolFeatures = [];
 		const gridFeatures = [];
@@ -167,7 +167,7 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 			"$(groupByColumn)": groupByColumn,
 			"$(selectedFeatures)": selectedFeatures
 		};
-		return super.generateFiles(projectPath, name, { extraConfig });
+		return super.generateConfig(name, { extraConfig });
 	}
 }
 module.exports = new IgxCustomGridTemplate();

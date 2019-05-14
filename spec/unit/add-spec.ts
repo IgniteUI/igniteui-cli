@@ -139,7 +139,7 @@ describe("Unit - Add command", () => {
 
 		const directoryPath = path.join("My/Example/Path");
 		spyOn(process, "cwd").and.returnValue(directoryPath);
-		spyOn(mockTemplate, "generateFiles").and.returnValue(Promise.resolve(true));
+		spyOn(mockTemplate, "generateConfig").and.returnValue({});
 		spyOn(mockTemplate, "registerInProject").and.callThrough();
 		const sourceFilesSpy = spyOn<any>(mockTemplate, "ensureSourceFiles");
 		const mockLibrary = jasmine.createSpyObj("frameworkLibrary", ["hasTemplate", "getTemplateById"]);
@@ -171,14 +171,14 @@ describe("Unit - Add command", () => {
 			jasmine.objectContaining({ modulePath: "myCustomModule/my-custom-module.module.ts" })
 		);
 		expect(PackageManager.flushQueue).toHaveBeenCalled();
-		expect(mockTemplate.generateFiles).toHaveBeenCalledTimes(1);
-		expect(mockTemplate.generateFiles).toHaveBeenCalledWith(
-			directoryPath, "test-file-name",
+		expect(mockTemplate.generateConfig).toHaveBeenCalledTimes(1);
+		expect(mockTemplate.generateConfig).toHaveBeenCalledWith(
+			"test-file-name",
 			jasmine.objectContaining({ modulePath: "myCustomModule/my-custom-module.module.ts" })
 		);
 		expect(mockTemplate.registerInProject).toHaveBeenCalledTimes(1);
 		expect(mockTemplate.registerInProject).toHaveBeenCalledWith(
-			directoryPath, "test-file-name",
+			"test-file-name",
 			jasmine.objectContaining({ modulePath: "myCustomModule/my-custom-module.module.ts" })
 		);
 		expect(sourceFilesSpy).toHaveBeenCalledTimes(1);
@@ -218,7 +218,7 @@ describe("Unit - Add command", () => {
 
 		const directoryPath = path.join("My/Example/Path");
 		spyOn(process, "cwd").and.returnValue(directoryPath);
-		spyOn(mockTemplate, "generateFiles").and.returnValue(Promise.resolve(true));
+		spyOn(mockTemplate, "generateConfig").and.returnValue({});
 		spyOn(mockTemplate, "registerInProject").and.callThrough();
 		spyOn(Util, "directoryExists").and.returnValue(true);
 		const sourceFilesSpy = spyOn<any>(mockTemplate, "ensureSourceFiles");
@@ -245,9 +245,9 @@ describe("Unit - Add command", () => {
 			jasmine.objectContaining({ modulePath: "myCustomModule/my-custom-module.module.ts" })
 		);
 		expect(PackageManager.flushQueue).toHaveBeenCalled();
-		expect(mockTemplate.generateFiles).toHaveBeenCalledTimes(1);
-		expect(mockTemplate.generateFiles).toHaveBeenCalledWith(
-			directoryPath, "test-file-name",
+		expect(mockTemplate.generateConfig).toHaveBeenCalledTimes(1);
+		expect(mockTemplate.generateConfig).toHaveBeenCalledWith(
+			"test-file-name",
 			jasmine.objectContaining({ modulePath: "myCustomModule/my-custom-module.module.ts" })
 		);
 		expect(mockTemplate.registerInProject).toHaveBeenCalledTimes(1);

@@ -36,29 +36,29 @@ class TreeGridEditingTemplate extends AngularTemplate {
 		this.userExtraConfiguration = extraConfigKeys;
 	}
 
-	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
+	public generateConfig(name: string, ...options: any[]): {[key: string]: any} {
 		this.gridHelper.addFeature("Updating", {
 			columnSettings: [
-				{
-					columnKey: "progress",
-					editorOptions: {
-						buttonType: "spin"
-					},
-					editorType: "currency"
+			{
+				columnKey: "progress",
+				editorOptions: {
+					buttonType: "spin"
 				},
-				{
-					columnKey: "start",
-					editorType: "datepicker"
-				},
-				{
-					columnKey: "finish",
-					editorType: "datepicker"
-				}
+				editorType: "currency"
+			},
+			{
+				columnKey: "start",
+				editorType: "datepicker"
+			},
+			{
+				columnKey: "finish",
+				editorType: "datepicker"
+			}
 			]
 		});
 		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 3);
 		const config = { "$(treeGridFeatures)": features };
-		return super.generateFiles(projectPath, name, { extraConfig: config });
+		return super.generateConfig(name, { extraConfig : config });
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return this.extraConfigurations;

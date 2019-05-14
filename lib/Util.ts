@@ -56,11 +56,14 @@ class Util {
 
 	public static async processTemplates(
 		sourcePath: string,
-		destinationPath: string, configuration: { [key: string]: string },
-		pathsConfiguration: { [key: string]: string }): Promise<boolean> {
+		destinationPath: string, configuration: { [key: string]: string }, validate = true): Promise<boolean> {
 
 		sourcePath = sourcePath.replace(/\\/g, "/");
 		destinationPath = destinationPath.replace(/\\/g, "/");
+
+		if (validate && !this.validateTemplate(sourcePath, destinationPath, configuration)) {
+			return false;
+		}
 
 		return new Promise((resolve, reject) => {
 			const filePaths: string[] = glob.sync(sourcePath + "/**/*", { nodir: true });
@@ -89,30 +92,6 @@ class Util {
 				});
 			}
 		});
-	}
-
-	public static validateTemplate(
-		sourcePath: string,
-		destinationPath: string, configuration: { [key: string]: string },
-		pathsConfiguration: { [key: string]: string }): boolean {
-
-		sourcePath = sourcePath.replace(/\\/g, "/");
-		destinationPath = destinationPath.replace(/\\/g, "/");
-
-		let paths: string[] = glob.sync(sourcePath + "/**/*", { nodir: true });
-		// TODO: D.P Temporary ignoring asset files
-		const ignorePaths: string[] = glob.sync(sourcePath + "/**/+(assets|data)/**/*", { nodir: true });
-		paths = paths.filter(x => ignorePaths.indexOf(x) === -1);
-
-		for (let filePath of paths) {
-			filePath = filePath.replace(sourcePath, destinationPath);
-			filePath = Util.applyConfigTransformation(filePath, configuration);
-			if (fs.existsSync(filePath)) {
-				this.error(path.relative(process.cwd(), filePath) + " already exists!", "red");
-				return false;
-			}
-		}
-		return true;
 	}
 
 	public static applyConfigTransformation = (data: string, configuration: { [key: string]: string }): string => {
@@ -500,6 +479,29 @@ class Util {
 		if (currentProp in object) {
 			return this.propertyByPath(object[currentProp], pathParts.join("."));
 		}
+	}
+
+	private static validateTemplate(
+		sourcePath: string,
+		destinationPath: string, configuration: { [key: string]: string }): boolean {
+
+		sourcePath = sourcePath.replace(/\\/g, "/");
+		destinationPath = destinationPath.replace(/\\/g, "/");
+
+		let paths: string[] = glob.sync(sourcePath + "/**/*", { nodir: true });
+		// TODO: D.P Temporary ignoring asset files
+		const ignorePaths: string[] = glob.sync(sourcePath + "/**/+(assets|data)/**/*", { nodir: true });
+		paths = paths.filter(x => ignorePaths.indexOf(x) === -1);
+
+		for (let filePath of paths) {
+			filePath = filePath.replace(sourcePath, destinationPath);
+			filePath = Util.applyConfigTransformation(filePath, configuration);
+			if (fs.existsSync(filePath)) {
+				this.error(path.relative(process.cwd(), filePath) + " already exists!", "red");
+				return false;
+			}
+		}
+		return true;
 	}
 }
 

@@ -1,5 +1,7 @@
 import chalk from "chalk";
 import * as inquirer from "inquirer";
+import * as path from "path";
+import { BaseComponent } from "./BaseComponent";
 import { default as add } from "./commands/add";
 import { default as start } from "./commands/start";
 import { GoogleAnalytics } from "./GoogleAnalytics";
@@ -87,7 +89,10 @@ export class PromptSession {
 			theme = await this.getTheme(projLibrary);
 
 			Util.log("  Generating project structure.");
-			await projTemplate.generateFiles(process.cwd(), projectName, theme);
+			const config = projTemplate.generateConfig(process.cwd(), projectName, theme);
+			for (const templatePath of projTemplate.templatePath) {
+				await Util.processTemplates(templatePath, path.join(process.cwd(), projectName), config, false);
+			}
 
 			Util.log(Util.greenCheck() + " Project structure generated.");
 			if (!this.config.skipGit) {

@@ -24,7 +24,12 @@ export class AngularTemplate implements Template {
 	 */
 	constructor(private rootPath: string) { }
 
-	public generateFiles(projectPath: string, name: string, options: {}): Promise<boolean> {
+
+	public get templatePath(): string[] {
+		return [path.join(this.rootPath, "files")];
+	}
+
+	public generateConfig(name: string, options: {}): {[key: string]: any} {
 		const config = {};
 		if (options["modulePath"] && !Util.fileExists(path.join(process.cwd(), `src\\app`, options["modulePath"]))) {
 			Util.error(`Wrong module path provided: ${options["modulePath"]}. No components were added!`);
@@ -37,11 +42,7 @@ export class AngularTemplate implements Template {
 		}
 		Object.assign(config, ...terms, this.getBaseVariables(name));
 
-		const pathsConfig = {};
-		if (!Util.validateTemplate(path.join(this.rootPath, "files"), projectPath, config, pathsConfig)) {
-			return Promise.resolve(false);
-		}
-		return Util.processTemplates(path.join(this.rootPath, "files"), projectPath, config, pathsConfig);
+		return config;
 	}
 
 	public registerInProject(projectPath: string, name: string, options?: AddTemplateArgs) {

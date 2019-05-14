@@ -31,11 +31,11 @@ describe("Unit - AngularTemplate Base", () => {
 			"$(nameMerged)": "TestTemplate"
 		};
 		spyOn(Util, "processTemplates");
-		spyOn(Util, "validateTemplate").and.returnValue(true);
+		const validateSpy = spyOn<any>(Util, "validateTemplate").and.returnValue(true);
 
 		const templ = new TestTemplate();
-		templ.generateFiles("/target/path", "my component", {});
-		expect(Util.validateTemplate).toHaveBeenCalledWith(
+		templ.generateConfig("my component", {});
+		expect(validateSpy).toHaveBeenCalledWith(
 			path.join("root/path" , "files"),
 			"/target/path",
 			expected, {});
@@ -63,14 +63,14 @@ describe("Unit - AngularTemplate Base", () => {
 			"$(cliVersion)": Util.version()
 		};
 		spyOn(Util, "processTemplates");
-		spyOn(Util, "validateTemplate").and.returnValue(true);
+		const validateSpy = spyOn<any>(Util, "validateTemplate").and.returnValue(true);
 
 		const templ = new TestWidgetTemplate("root");
-		templ.generateFiles("/target/path", "page", { extraConfig : {
+		templ.generateConfig("page", { extraConfig : {
 			"$(extraConfig1)" : "extraConfig1",
 			"$(gridFeatures)" : "{ features }"
 		} });
-		expect(Util.validateTemplate).toHaveBeenCalledWith(
+		expect(validateSpy).toHaveBeenCalledWith(
 			path.join("root" , "files"),
 			"/target/path",
 			expected, {});

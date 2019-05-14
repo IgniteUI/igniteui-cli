@@ -33,7 +33,7 @@ class IgxCalendarTemplate extends IgniteUIForAngularTemplate {
 		}];
 	}
 
-	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
+	public generateConfig(name: string, ...options: any[]): {[key: string]: any} {
 		let selectionType = "";
 		let selectionMode = "";
 
@@ -58,7 +58,7 @@ class IgxCalendarTemplate extends IgniteUIForAngularTemplate {
 			"$(selectionType)": selectionType
 		};
 
-		return super.generateFiles(projectPath, name, { extraConfig });
+		return super.generateConfig(name, { extraConfig });
 	}
 }
 module.exports = new IgxCalendarTemplate();

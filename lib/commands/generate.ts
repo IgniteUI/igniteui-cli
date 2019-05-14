@@ -92,8 +92,7 @@ const command = {
 				"$(templateFramework)": argv.framework,
 				"$(templateName)": argv.name,
 				"$(templateType)": argv.type
-			},
-			null);
+			});
 		if (!res) {
 			return Util.error("Template generation failed!", "red");
 		}

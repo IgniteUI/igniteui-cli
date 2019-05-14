@@ -123,8 +123,14 @@ command = {
 				"red");
 			return false;
 		}
-
-		if (await template.generateFiles(process.cwd(), fileName, options || {})) {
+		const config = template.generateConfig(fileName, options || {});
+		let templateCreated = 0;
+		for (const templatePath of template.templatePath) {
+			if (await Util.processTemplates(templatePath, process.cwd(), config)) {
+				templateCreated++;
+			}
+		}
+		if (templateCreated) {
 			//successful
 			template.registerInProject(process.cwd(), fileName, options || {});
 			command.templateManager.updateProjectConfiguration(template);

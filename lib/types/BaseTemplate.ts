@@ -22,9 +22,11 @@ export interface BaseTemplate {
 
 	/** This property controls if extra configuration is available to the template */
 	hasExtraConfiguration: boolean;
+	/** An array with the physical path to the template files */
+	templatePath: string[];
 
-	/** Generates template files. */
-	generateFiles(outputPath: string, name: string, ...options: any[]): Promise<boolean>;
+	/** Generates template config */
+	generateConfig(name: string, ...options: any[]): { [key: string]: any };
 
 	/** this method is used to run extra configuration in context of prompt session */
 	getExtraConfiguration(): ControlExtraConfiguration[];

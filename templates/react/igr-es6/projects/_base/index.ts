@@ -11,10 +11,12 @@ export class BaseIgrProject implements ProjectTemplate {
 	public dependencies: string[];
 	public hasExtraConfiguration: boolean = false;
 
-	public async generateFiles(outputPath: string, name: string, theme: string, ...options: any[]): Promise<boolean> {
-		const config = this.getVariablesConfig(name, theme);
-		const pathsConfig = {};
-		return Util.processTemplates(path.join(__dirname, "./files"), path.join(outputPath, name), config, pathsConfig);
+	public get templatePath(): string[] {
+		return [path.join(__dirname, "files")];
+	}
+
+	public generateConfig(name: string, theme: string, ...options: any[]): {[key: string]: any} {
+		return this.getVariablesConfig(name, theme);
 	}
 
 	public installModules(): void {

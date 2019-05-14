@@ -29,12 +29,15 @@ export class ReactTemplate implements Template {
 	 */
 	constructor(private rootPath: string) { }
 
-	public generateFiles(projectPath: string, name: string, options: {}): Promise<boolean> {
+	public get templatePath(): string[] {
+		return [path.join(this.rootPath, "files")];
+	}
+
+	public generateConfig(name: string, options: {}): {[key: string]: any} {
 		let config = {};
 		if (options["extraConfig"]) {
 			config = options["extraConfig"];
 		}
-		const pathsConfig = {};
 
 		config["__path__"] = this.folderName(name); //folder name allowed spaces, any casing
 		config["$(name)"] = Util.nameFromPath(name); // this name should not have restrictions
@@ -49,11 +52,7 @@ export class ReactTemplate implements Template {
 			config["$(description)"] = this.description;
 		}
 
-		// copy/template files to project
-		if (!Util.validateTemplate(path.join(this.rootPath, "files"), projectPath, config, pathsConfig)) {
-			return Promise.resolve(false);
-		}
-		return Util.processTemplates(path.join(this.rootPath, "files"), projectPath, config, pathsConfig);
+		return config;
 	}
 
 	public registerInProject(projectPath: string, name: string, options?: AddTemplateArgs) {

@@ -36,11 +36,11 @@ class HierarchicalGridEditingTemplate extends jQueryTemplate {
 	public setExtraConfiguration(extraConfigKeys: {}) {
 		this.userExtraConfiguration = extraConfigKeys;
 	}
-	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
+	public generateConfig(name: string, ...options: any[]): {[key: string]: any} {
 		this.gridHelper.addFeature("Updating", { enableAddRow: true });
 		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 5);
 		const config = { "$(gridfeatures)": features };
-		return super.generateFiles(projectPath, name, { extraConfig : config });
+		return super.generateConfig(name, { extraConfig : config });
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return this.extraConfigurations;

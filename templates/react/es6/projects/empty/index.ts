@@ -12,6 +12,11 @@ class EmptyProject implements ProjectTemplate {
 	public projectType: string = "jsx";
 	public dependencies: string[];
 	public hasExtraConfiguration: boolean = false;
+
+	public get templatePath(): string[] {
+		return [path.join(__dirname, "files")];
+	}
+
 	public installModules(): void {
 		throw new Error("Method not implemented.");
 	}
@@ -23,19 +28,17 @@ class EmptyProject implements ProjectTemplate {
 		configFile = configFile.replace(`"ignite-ui/js/infragistics.lob.js$"`, `//$&`);
 		fs.writeFileSync(filePath, configFile);
 	}
-	public async generateFiles(outputPath: string, name: string, theme: string, ...options: any[]): Promise<boolean> {
+	public generateConfig(name: string, theme: string, ...options: any[]): {[key: string]: any} {
 
 		//TODO update the config with [{key: "keyname", "value"}]
-		const config = {
+		return {
 			"$(cliVersion)": Util.version(),
 			"$(dash-name)": Util.lowerDashed(name),
+			"$(description)": this.description,
 			"$(name)": name,
 			"$(theme)": theme,
 			"__path__": name
 		};
-		config["$(description)"] = this.description;
-		const pathsConfig = {};
-		return Util.processTemplates(path.join(__dirname, "./files"), path.join(outputPath, name), config, pathsConfig);
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		throw new Error("Method not implemented.");

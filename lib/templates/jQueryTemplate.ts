@@ -31,14 +31,15 @@ export class jQueryTemplate implements Template {
 		this.hasExtraConfiguration = false;
 	}
 
-	public generateFiles(projectPath: string, name: string, options: {}): Promise<boolean> {
+	public get templatePath(): string[] {
+		return [path.join(this.rootPath, "files")];
+	}
+
+	public generateConfig(name: string, options: {}): {[key: string]: any} {
 		let config = {};
 		if (options["extraConfig"]) {
 			config = options["extraConfig"];
 		}
-
-		// view goes in its own folder based on the name
-		const outputPath = path.join(projectPath, this.folderName(name));
 
 		const pathsConfig = {};
 		const projectConfig = ProjectConfig.getConfig();
@@ -53,11 +54,7 @@ export class jQueryTemplate implements Template {
 		config["$(theme)"] = projectConfig.project.theme;
 		config["$(cliVersion)"] = Util.version();
 
-		// generate scripts/imports based on framework - per template
-		if (!Util.validateTemplate(path.join(this.rootPath, "files"), outputPath, config, pathsConfig)) {
-			return Promise.resolve(false);
-		}
-		return Util.processTemplates(path.join(this.rootPath, "files"), outputPath, config, pathsConfig);
+		return config;
 	}
 
 	/**

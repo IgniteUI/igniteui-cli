@@ -12,14 +12,8 @@ export class TopNavIgrProject extends BaseIgrProject implements ProjectTemplate 
 	public projectType: string = "igr-es6";
 	public hasExtraConfiguration: boolean = false;
 
-	public async generateFiles(outputPath: string, name: string, theme: string, ...options: any[]): Promise<boolean> {
-		const config = this.getVariablesConfig(name, theme);
-		const pathsConfig = {};
-
-		if (!await super.generateFiles(outputPath, name, theme, ...options)) {
-			return false;
-		}
-		return Util.processTemplates(path.join(__dirname, "./files"), path.join(outputPath, name), config, pathsConfig);
+	public get templatePath(): string[] {
+		return [...super.templatePath, path.join(__dirname, "files")];
 	}
 }
 export default new TopNavIgrProject();

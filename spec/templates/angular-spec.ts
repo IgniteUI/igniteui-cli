@@ -27,7 +27,7 @@ describe("Angular templates", () => {
 				const target = projLibrary.templates[j];
 				// pass some __path__ so those won't match
 				expect(
-					Util.validateTemplate(element["rootPath"] + "/files", target["rootPath"] + "/files", {__path__: "1"}, {})
+					(Util as any).validateTemplate(element["rootPath"] + "/files", target["rootPath"] + "/files", {__path__: "1"}, {})
 				).toBeTruthy(`Template ${element.id} can overwrite ${target.id}`);
 			}
 		}
@@ -43,7 +43,7 @@ describe("Angular templates", () => {
 				const target = projLibrary.templates[j];
 				// pass some __path__ so those won't match
 				expect(
-					Util.validateTemplate(element["rootPath"] + "/files", target["rootPath"] + "/files", {__path__: "1"}, {})
+					(Util as any).validateTemplate(element["rootPath"] + "/files", target["rootPath"] + "/files", {__path__: "1"}, {})
 				).toBeTruthy(`Template ${element.id} can overwrite ${target.id}`);
 			}
 		}
