@@ -1,6 +1,6 @@
 import * as fs from "fs-extra";
 import * as path from "path";
-import { jQueryTemplate } from "../../../../../lib/templates/jQueryTemplate";
+import { ControlExtraConfiguration, ProjectTemplate } from "../../../../../lib/types/index";
 import { Util } from "../../../../../lib/Util";
 
 class EmptyProject implements ProjectTemplate {
@@ -35,10 +35,10 @@ class EmptyProject implements ProjectTemplate {
 		}
 		const variables = {
 			"$(cliVersion)": Util.version(),
-			"$(dash-name)" : Util.lowerDashed(name),
-			"$(description)" : this.description,
+			"$(dash-name)": Util.lowerDashed(name),
+			"$(description)": this.description,
 			"$(igniteuiSource)": "./node_modules/ignite-ui",
-			"$(name)" : name,
+			"$(name)": name,
 			"$(theme)": theme,
 			"$(themePath)": themePath
 		};
@@ -55,6 +55,6 @@ class EmptyProject implements ProjectTemplate {
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return [];
 	}
-	public setExtraConfiguration(extraConfigKeys: {}) {}
+	public setExtraConfiguration(extraConfigKeys: {}) { }
 }
 module.exports = new EmptyProject();

@@ -1,7 +1,6 @@
-import * as path from "path";
 import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 import { AngularTemplate } from "../../../../../lib/templates/AngularTemplate";
-import { Util } from "../../../../../lib/Util";
+import { ControlExtraConfigType, ControlExtraConfiguration } from "../../../../../lib/types/index";
 
 class TreeGridFileExplorerTemplate extends AngularTemplate {
 	private gridHelper: GridHelper;
@@ -29,7 +28,7 @@ class TreeGridFileExplorerTemplate extends AngularTemplate {
 			default: "",
 			key: "features",
 			message: "Select features for the igTreeGrid",
-			type: Enumerations.ControlExtraConfigType.MultiChoice
+			type: ControlExtraConfigType.MultiChoice
 		};
 		this.extraConfigurations.push(featureConfiguration);
 	}
@@ -60,7 +59,7 @@ class TreeGridFileExplorerTemplate extends AngularTemplate {
 		this.gridHelper.addFeature("Paging", { pageSize: 4, mode: "rootLevelOnly" });
 		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 3);
 		const config = { "$(treeGridFeatures)": features };
-		return super.generateFiles(projectPath, name, { extraConfig : config });
+		return super.generateFiles(projectPath, name, { extraConfig: config });
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return this.extraConfigurations;

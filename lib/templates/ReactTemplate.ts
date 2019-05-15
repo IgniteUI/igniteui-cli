@@ -1,5 +1,6 @@
 import * as fs from "fs-extra";
 import * as path from "path";
+import { AddTemplateArgs, ControlExtraConfiguration, Template } from "../types/index";
 import { Util } from "../Util";
 
 export class ReactTemplate implements Template {
@@ -64,7 +65,8 @@ export class ReactTemplate implements Template {
 		viewsArr.push({
 			folder: this.getViewLink(name),
 			path: "/" + this.folderName(Util.nameFromPath(name)),
-			text: this.getToolbarLink(name) });
+			text: this.getToolbarLink(name)
+		});
 		configFile = configFile.replace(this.replacePattern, JSON.stringify(viewsArr, null, 4));
 		fs.writeFileSync(path.join(projectPath, this.configFile), configFile);
 	}

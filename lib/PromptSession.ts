@@ -1,12 +1,15 @@
 import chalk from "chalk";
 import * as inquirer from "inquirer";
-import { BaseComponent } from "./BaseComponent";
 import { default as add } from "./commands/add";
 import { default as start } from "./commands/start";
 import { GoogleAnalytics } from "./GoogleAnalytics";
 import { PackageManager } from "./packages/PackageManager";
 import { ProjectConfig } from "./ProjectConfig";
 import { TemplateManager } from "./TemplateManager";
+import {
+	Component, ComponentGroup, Config, ControlExtraConfigType, ControlExtraConfiguration, Framework,
+	FrameworkId, ProjectLibrary, ProjectTemplate, Template
+} from "./types/index";
 import { Util } from "./Util";
 
 export class PromptSession {
@@ -76,7 +79,7 @@ export class PromptSession {
 			});
 
 			const framework = this.templateManager.getFrameworkByName(frameRes);
-			//app name validation???
+			// app name validation???
 			projLibrary = await this.getProjectLibrary(framework);
 
 			const projTemplate = await this.getProjectTemplate(projLibrary);
@@ -185,13 +188,13 @@ export class PromptSession {
 		for (const element of extraConfig) {
 			const currExtraConfig = {};
 			switch (element.type) {
-				case Enumerations.ControlExtraConfigType.Choice:
+				case ControlExtraConfigType.Choice:
 					currExtraConfig["type"] = "list";
 					break;
-				case Enumerations.ControlExtraConfigType.MultiChoice:
+				case ControlExtraConfigType.MultiChoice:
 					currExtraConfig["type"] = "checkbox";
 					break;
-				case Enumerations.ControlExtraConfigType.Value:
+				case ControlExtraConfigType.Value:
 				default:
 					currExtraConfig["type"] = "input";
 					break;
@@ -225,7 +228,7 @@ export class PromptSession {
 				type: "list",
 				name: "componentGroup",
 				message: "Choose a group:",
-				choices: this.formatOutput(projectLibrary.getComponentGroups()),
+				choices: Util.formatChoices(projectLibrary.getComponentGroups()),
 				default: groups.find(x => x.includes("Grids")) || groups[0]
 			}, true);
 
@@ -250,7 +253,7 @@ export class PromptSession {
 				type: "list",
 				name: "component",
 				message: "Choose a component:",
-				choices: this.formatOutput(projectLibrary.getComponentsByGroup(groupName))
+				choices: Util.formatChoices(projectLibrary.getComponentsByGroup(groupName))
 			}, true);
 
 			if (componentNameRes === this.WIZARD_BACK_OPTION) {
@@ -280,7 +283,7 @@ export class PromptSession {
 			type: "list",
 			name: "template",
 			message: "Choose one:",
-			choices: this.formatOutput(templates)
+			choices: Util.formatChoices(templates)
 		}, true);
 
 		if (templateRes === this.WIZARD_BACK_OPTION) {
@@ -330,7 +333,7 @@ export class PromptSession {
 	 */
 	private async addView(projectLibrary: ProjectLibrary, theme: string): Promise<boolean> {
 		const customTemplates: Template[] = projectLibrary.getCustomTemplates();
-		const formatedOutput = this.formatOutput(customTemplates);
+		const formatedOutput = Util.formatChoices(customTemplates);
 		const config = ProjectConfig.getConfig();
 		const customTemplateNameRes = await this.getUserInput({
 			type: "list",
@@ -536,7 +539,7 @@ export class PromptSession {
 			type: "list",
 			name: "projTemplate",
 			message: "Choose project template:",
-			choices: this.formatOutput(projectLibrary.projects)
+			choices: Util.formatChoices(projectLibrary.projects)
 		});
 		projTemplate = projectLibrary.projects.find(x => x.name === componentNameRes);
 
@@ -585,39 +588,6 @@ export class PromptSession {
 		}
 
 		return actionChoices;
-	}
-
-	private formatOutput(items: Array<Template | Component | ComponentGroup>):
-							Array<{name: string, value: string, short: string}> {
-		const choiceItems = [];
-		const leftPadding = 2;
-		const rightPadding = 1;
-
-		const maxNameLength = Math.max(...items.map(x => x.name.length)) + 3;
-		const targetNameLength = Math.max(18, maxNameLength);
-		let description: string;
-		for (const item of items) {
-			const choiceItem = {
-				name: "",
-				short: item.name,
-				value: item.name
-			};
-			choiceItem.name = item.name;
-			if (item instanceof BaseComponent && item.templates.length <= 1) {
-				description = item.templates[0].description || "";
-			} else {
-				description = item.description || "";
-			}
-			if (description !== "") {
-				choiceItem.name = item.name  +  Util.addColor(".".repeat(targetNameLength - item.name.length), 0);
-				const max = process.stdout.columns - targetNameLength - leftPadding - rightPadding;
-				description = Util.truncate(description, max, 3, ".");
-				description = Util.addColor(description, 0);
-				choiceItem.name += description;
-			}
-			choiceItems.push(choiceItem);
-		}
-		return choiceItems;
 	}
 }
 

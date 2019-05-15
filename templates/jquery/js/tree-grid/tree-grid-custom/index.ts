@@ -1,7 +1,6 @@
-import * as path from "path";
 import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 import { jQueryTemplate } from "../../../../../lib/templates/jQueryTemplate";
-import { Util } from "../../../../../lib/Util";
+import { ControlExtraConfigType, ControlExtraConfiguration } from "../../../../../lib/types/index";
 
 class TreeGridCustomTemplate extends jQueryTemplate {
 	public extraConfigurations: ControlExtraConfiguration[];
@@ -29,7 +28,7 @@ class TreeGridCustomTemplate extends jQueryTemplate {
 			default: "",
 			key: "features",
 			message: "Select features for the igTreeGrid",
-			type: Enumerations.ControlExtraConfigType.MultiChoice
+			type: ControlExtraConfigType.MultiChoice
 		};
 		this.extraConfigurations.push(featureConfiguration);
 	}

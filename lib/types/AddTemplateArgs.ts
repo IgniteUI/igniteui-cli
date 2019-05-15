@@ -1,4 +1,4 @@
-declare interface AddTemplateArgs {
+export interface AddTemplateArgs {
 	modulePath?: string;
 	skipRoute?: boolean;
 	extraConfig?: any;

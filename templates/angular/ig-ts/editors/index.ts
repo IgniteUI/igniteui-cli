@@ -1,5 +1,4 @@
 import * as path from "path";
-import { BaseComponent } from "../../../../lib/BaseComponent";
 import { MultiTemplateComponent } from "../../../../lib/MultiTemplateComponent";
 import { AngularTemplate } from "../../../../lib/templates/AngularTemplate";
 

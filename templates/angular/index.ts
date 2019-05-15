@@ -1,3 +1,5 @@
+import { Framework, ProjectLibrary } from "../../lib/types/index";
+
 class AngularFramework implements Framework {
 	public id: string;
 	public name: string;

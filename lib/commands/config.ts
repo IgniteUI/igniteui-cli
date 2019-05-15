@@ -1,4 +1,5 @@
 import { GoogleAnalytics } from "../GoogleAnalytics";
+import { Config } from "../types/Config";
 import { Util } from "../Util";
 import { ProjectConfig } from "./../ProjectConfig";
 

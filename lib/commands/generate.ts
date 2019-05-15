@@ -2,6 +2,7 @@ import { utimes } from "fs-extra";
 import * as path from "path";
 import { GoogleAnalytics } from "../GoogleAnalytics";
 import { TemplateManager } from "../TemplateManager";
+import { ProjectLibrary } from "../types/ProjectLibrary";
 import { Util } from "../Util";
 import { default as config } from "./config";
 

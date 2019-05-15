@@ -1,8 +1,6 @@
-import * as fs from "fs-extra";
-import * as path from "path";
 import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 import { jQueryTemplate } from "../../../../../lib/templates/jQueryTemplate";
-import { Util } from "../../../../../lib/Util";
+import { ControlExtraConfigType, ControlExtraConfiguration } from "../../../../../lib/types/index";
 
 class GridExportTemplate extends jQueryTemplate {
 	public extraConfigurations: ControlExtraConfiguration[];
@@ -29,7 +27,7 @@ class GridExportTemplate extends jQueryTemplate {
 			default: "",
 			key: "features",
 			message: "Select features for the igGrid",
-			type: Enumerations.ControlExtraConfigType.MultiChoice
+			type: ControlExtraConfigType.MultiChoice
 		};
 		this.extraConfigurations.push(featureConfiguration);
 	}
@@ -39,7 +37,7 @@ class GridExportTemplate extends jQueryTemplate {
 	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
 		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 4);
 		const config = { "$(gridfeatures)": features };
-		return super.generateFiles(projectPath, name, { extraConfig : config });
+		return super.generateFiles(projectPath, name, { extraConfig: config });
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return this.extraConfigurations;

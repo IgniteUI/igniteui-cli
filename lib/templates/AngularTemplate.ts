@@ -1,7 +1,7 @@
-import * as fs from "fs-extra";
 import * as path from "path";
 import { TypeScriptFileUpdate } from "../project-utility/TypeScriptFileUpdate";
 import { ProjectConfig } from "../ProjectConfig";
+import { AddTemplateArgs, ControlExtraConfiguration, Template } from "../types/index";
 import { Util } from "../Util";
 
 export class AngularTemplate implements Template {
@@ -22,8 +22,8 @@ export class AngularTemplate implements Template {
 	/**
 	 * Creates a new AngularTemplate for a root path (pass in __dirname)
 	 */
-	constructor(private rootPath: string) {
-	}
+	constructor(private rootPath: string) { }
+
 	public generateFiles(projectPath: string, name: string, options: {}): Promise<boolean> {
 		const config = {};
 		if (options["modulePath"] && !Util.fileExists(path.join(process.cwd(), `src\\app`, options["modulePath"]))) {

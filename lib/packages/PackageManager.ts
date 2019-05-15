@@ -1,10 +1,12 @@
 import { exec, spawnSync } from "child_process";
 import * as path from "path";
 import { ProjectConfig } from "../ProjectConfig";
+import { Config } from "../types/index";
 import { Util } from "../Util";
 import { TemplateManager } from "./../TemplateManager";
 
 import componentsConfig = require("./components");
+
 export class PackageManager {
 	private static ossPackage: string = "ignite-ui";
 	private static fullPackage: string = "@infragistics/ignite-ui-full";

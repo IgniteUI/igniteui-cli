@@ -1,7 +1,6 @@
 import * as path from "path";
 import { TypeScriptFileUpdate } from "../project-utility/TypeScriptFileUpdate";
-import { TypeScriptUtils as TsUtils } from "../project-utility/TypeScriptUtils";
-import { ProjectConfig } from "../ProjectConfig";
+import { AddTemplateArgs, TemplateDependency } from "../types/index";
 import { Util } from "../Util";
 import { AngularTemplate } from "./AngularTemplate";
 
@@ -64,7 +63,7 @@ export class IgniteUIForAngularTemplate extends AngularTemplate {
 			if (dep.from && dep.from.startsWith(".")) {
 				// relative file dependency
 				const copy = Object.assign({}, dep);
-				copy.from = TsUtils.relativePath(mainModulePath, path.join(projectPath, copy.from), true, true);
+				copy.from = Util.relativePath(mainModulePath, path.join(projectPath, copy.from), true, true);
 				mainModule.addNgModuleMeta(copy, this.getBaseVariables(name));
 			} else {
 				mainModule.addNgModuleMeta(dep, this.getBaseVariables(name));

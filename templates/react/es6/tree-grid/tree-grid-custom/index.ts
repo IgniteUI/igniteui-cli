@@ -1,8 +1,7 @@
-import * as path from "path";
 import { ReactTemplate } from "../../../../../lib/templates/ReactTemplate";
-import { Util } from "../../../../../lib/Util";
 
 import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
+import { ControlExtraConfigType, ControlExtraConfiguration } from "../../../../../lib/types/index";
 
 class TreeGridCustomTemplate extends ReactTemplate {
 
@@ -29,7 +28,7 @@ class TreeGridCustomTemplate extends ReactTemplate {
 			default: "",
 			key: "features",
 			message: "Select features for the igTreeGrid",
-			type: Enumerations.ControlExtraConfigType.MultiChoice
+			type: ControlExtraConfigType.MultiChoice
 		});
 	}
 
