@@ -351,13 +351,13 @@ class Util {
 		try {
 			// inherit the parent process' stdin so we can catch if an attempt to interrupt the process is made
 			// ignore stdout and stderr as they will output unnecessary text onto the console
-			return execSync(command, { stdio: ["inherit"], killSignal: "SIGINT" });
+			return execSync(command, options);
 		} catch (error) {
 			// execSync may throw an error during process interruption
 			// if this happens - stderr will contain "^C" which was appended in the checkExecSyncError function
 			// this means that a SIGINT was attempted and failed
 			// npm may be involved in this as it works just fine with any other node process
-			if (error.stderr.toString() === "^C") {
+			if (error.stderr && error.stderr.toString() === "^C") {
 				return process.exit();
 			}
 

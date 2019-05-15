@@ -86,7 +86,7 @@ export class PackageManager {
 			await this.flushQueue(false);
 			Util.log(`Installing ${managerCommand} packages`);
 			try {
-				const result = execSync(command, { stdio: "pipe", killSignal: "SIGINT" });
+				const result = Util.exec(command, { stdio: ["inherit"], killSignal: "SIGINT" });
 				Util.log(`Packages installed successfully`);
 			} catch (error) {
 				// ^C (SIGINT) produces status:3221225786 https://github.com/sass/node-sass/issues/1283#issuecomment-169450661
@@ -116,8 +116,8 @@ export class PackageManager {
 				break;
 		}
 		try {
-				// tslint:disable-next-line:object-literal-sort-keys
-				const result = execSync(command, { stdio: "pipe", encoding: "utf8" });
+			// tslint:disable-next-line:object-literal-sort-keys
+			const result = execSync(command, { stdio: "pipe", encoding: "utf8" });
 		} catch (error) {
 			Util.log(`Error uninstalling package ${packageName} with ${managerCommand}`);
 			if (verbose) {
@@ -134,8 +134,8 @@ export class PackageManager {
 		const managerCommand = this.getManager();
 		const command = this.getInstallCommand(managerCommand, packageName);
 		try {
-				// tslint:disable-next-line:object-literal-sort-keys
-				const result = execSync(command, { stdio: "pipe", encoding: "utf8" });
+			// tslint:disable-next-line:object-literal-sort-keys
+			const result = execSync(command, { stdio: "pipe", encoding: "utf8" });
 		} catch (error) {
 			Util.log(`Error installing package ${packageName} with ${managerCommand}`);
 			if (verbose) {
@@ -158,7 +158,7 @@ export class PackageManager {
 		// https://github.com/npm/npm/issues/2500
 		const task = new Promise<{ packageName, error, stdout, stderr }>((resolve, reject) => {
 			const child = exec(
-				command, { },
+				command, {},
 				(error, stdout, stderr) => {
 					resolve({ packageName, error, stdout, stderr });
 				}
@@ -190,9 +190,9 @@ export class PackageManager {
 	protected static ensureRegistryUser(config: Config): boolean {
 		const fullPackageRegistry = config.igPackageRegistry;
 		try {
-				// tslint:disable-next-line:object-literal-sort-keys
-				const user = execSync(`npm whoami --registry=${fullPackageRegistry}`, { stdio: "pipe", encoding: "utf8" });
-			} catch (error) {
+			// tslint:disable-next-line:object-literal-sort-keys
+			const user = execSync(`npm whoami --registry=${fullPackageRegistry}`, { stdio: "pipe", encoding: "utf8" });
+		} catch (error) {
 			// try registering the user:
 			Util.log(
 				"The project you've created requires the full version of Ignite UI from Infragistics private feed.",
@@ -228,7 +228,7 @@ export class PackageManager {
 		return true;
 	}
 
-	protected static getPackageJSON(): { "dependencies": {[x: string]: string} } {
+	protected static getPackageJSON(): { "dependencies": { [x: string]: string } } {
 		const filePath = path.join(process.cwd(), "package.json");
 		return require(filePath);
 	}
