@@ -1,6 +1,5 @@
 import * as path from "path";
 import { TypeScriptFileUpdate } from "../project-utility/TypeScriptFileUpdate";
-import { TypeScriptUtils as TsUtils } from "../project-utility/TypeScriptUtils";
 import { AddTemplateArgs, TemplateDependency } from "../types/index";
 import { Util } from "../Util";
 import { AngularTemplate } from "./AngularTemplate";
