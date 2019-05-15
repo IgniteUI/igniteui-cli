@@ -13,7 +13,7 @@ describe("Unit - New command", () => {
 
 	beforeEach(() => {
 		spyOn(Util, "log");
-		spyOn(Util, "exec");
+		spyOn(Util, "execSync");
 		spyOn(process, "chdir");
 		spyOn(PackageManager, "installPackages");
 	});
@@ -251,9 +251,9 @@ describe("Unit - New command", () => {
 
 		await newCmd.execute({ name: projectName, framework: "jq" });
 
-		expect(Util.exec).toHaveBeenCalledWith("git init", jasmine.any(Object));
-		expect(Util.exec).toHaveBeenCalledWith("git add .", jasmine.any(Object));
-		expect(Util.exec).toHaveBeenCalledWith("git commit -m " + "\"Initial commit for project: " + projectName + "\"",
+		expect(Util.execSync).toHaveBeenCalledWith("git init", jasmine.any(Object));
+		expect(Util.execSync).toHaveBeenCalledWith("git add .", jasmine.any(Object));
+		expect(Util.execSync).toHaveBeenCalledWith("git commit -m " + "\"Initial commit for project: " + projectName + "\"",
 			jasmine.any(Object));
 		expect(Util.log).toHaveBeenCalledWith(
 			jasmine.stringMatching("Git Initialized and Project '" + projectName + "' Committed")

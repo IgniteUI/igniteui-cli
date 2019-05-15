@@ -11,12 +11,12 @@ describe("Unit - Test command", () => {
 	});
 
 	beforeEach(() => {
-		spyOn(Util, "exec");
+		spyOn(Util, "execSync");
 	});
 
 	it("Run tests for the current project", async done => {
 		await testCmd.test({skipAnalytics: true});
-		expect (Util.exec).toHaveBeenCalledWith("npm test", { stdio: "inherit" });
+		expect (Util.execSync).toHaveBeenCalledWith("npm test", { stdio: "inherit" });
 
 		done();
 	});
@@ -27,7 +27,7 @@ describe("Unit - Test command", () => {
 			projectType: "igx-ts"}});
 
 		await testCmd.test({e2e: true, skipAnalytics: true});
-		expect (Util.exec).toHaveBeenCalledWith("npm run e2e", { stdio: "inherit" });
+		expect (Util.execSync).toHaveBeenCalledWith("npm run e2e", { stdio: "inherit" });
 
 		done();
 	});
@@ -38,7 +38,7 @@ describe("Unit - Test command", () => {
 			projectType: "ig-ts"}});
 
 		await testCmd.test({e2e: true, skipAnalytics: true});
-		expect (Util.exec).toHaveBeenCalledWith("npm test", { stdio: "inherit" });
+		expect (Util.execSync).toHaveBeenCalledWith("npm test", { stdio: "inherit" });
 
 		done();
 	});
@@ -48,7 +48,7 @@ describe("Unit - Test command", () => {
 			framework: "jquery"}});
 
 		await testCmd.test({e2e: true, skipAnalytics: true});
-		expect (Util.exec).toHaveBeenCalledWith("npm test", { stdio: "inherit" });
+		expect (Util.execSync).toHaveBeenCalledWith("npm test", { stdio: "inherit" });
 
 		done();
 	});
@@ -58,7 +58,7 @@ describe("Unit - Test command", () => {
 			framework: "react"}});
 
 		await testCmd.test({e2e: true, skipAnalytics: true});
-		expect (Util.exec).toHaveBeenCalledWith("npm test", { stdio: "inherit" });
+		expect (Util.execSync).toHaveBeenCalledWith("npm test", { stdio: "inherit" });
 
 		done();
 	});
