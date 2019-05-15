@@ -31,7 +31,8 @@ describe("Unit - PromptSession", () => {
 		// tslint:disable:object-literal-sort-keys
 		const mockProject = {
 			name: "Project 1",
-			generateConfig: () => Promise.resolve(true)
+			generateConfig: () => Promise.resolve(true),
+			templatePath: ["test"]
 		};
 		const mockProjectLibrary = {
 			themes: ["infragistics", "infragistics.less"],
@@ -59,6 +60,7 @@ describe("Unit - PromptSession", () => {
 			getProjectLibraryNames: projectLibraries,
 			getProjectLibraryByName: mockProjectLibrary
 		});
+		mockTemplate.templatePath = ["test"];
 		const mockSession = new PromptSession(mockTemplate);
 		const mockQuestion: inquirer.Question = {
 			type: "list",
@@ -71,6 +73,7 @@ describe("Unit - PromptSession", () => {
 		spyOn(Util, "log");
 		spyOn(Util, "directoryExists").and.returnValue(false);
 		spyOn(Util, "isAlphanumericExt").and.returnValue(true);
+		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
 		spyOn(Util, "gitInit");
 		spyOn(inquirer, "prompt").and.returnValues(Promise.resolve({ projectName: "Test Project" }),
 			Promise.resolve({ framework: "Custom Framework 1" }),
@@ -129,6 +132,7 @@ describe("Unit - PromptSession", () => {
 		// tslint:disable:object-literal-sort-keys
 		const mockProject = jasmine.createSpyObj({ generateConfig: Promise.resolve(true) });
 		mockProject.name = "Project";
+		mockProject.templatePath = ["test"];
 		const mockProjectLibrary = {
 			themes: ["infragistics"],
 			projectIds: ["empty"],
@@ -150,6 +154,7 @@ describe("Unit - PromptSession", () => {
 			getProjectLibraryNames: null,
 			getProjectLibraryByName: mockProjectLibrary
 		});
+		mockTemplate.templatePath = ["test"];
 		const mockSession = new PromptSession(mockTemplate);
 		spyOn(Util, "greenCheck").and.returnValue("");
 		spyOn(Util, "log");
@@ -180,7 +185,7 @@ describe("Unit - PromptSession", () => {
 
 		expect(Util.log).toHaveBeenCalledWith("  Framework: Custom Framework 1");
 		expect(Util.log).toHaveBeenCalledWith("  Project type: Ignite UI for Angular");
-		expect(mockProject.generateConfig).toHaveBeenCalledWith(process.cwd(), "Test Project", mockProjectLibrary.themes[0]);
+		expect(mockProject.generateConfig).toHaveBeenCalledWith("Test Project", mockProjectLibrary.themes[0]);
 
 		expect(Util.log).toHaveBeenCalledWith(" Project structure generated.");
 		expect(Util.gitInit).toHaveBeenCalled();
@@ -192,7 +197,8 @@ describe("Unit - PromptSession", () => {
 		// tslint:disable:object-literal-sort-keys
 		const mockProject = {
 			name: "Project 1",
-			generateConfig: () => Promise.resolve(true)
+			generateConfig: () => ({ test: "test" }),
+			templatePath: ["test"]
 		};
 		const mockProjectLibrary = {
 			projectIds: ["empty"],
@@ -220,6 +226,7 @@ describe("Unit - PromptSession", () => {
 			getProjectLibraryNames: projectLibraries,
 			getProjectLibraryByName: mockProjectLibrary
 		});
+		mockTemplate.templatePath = ["test"];
 		const mockSession = new PromptSession(mockTemplate);
 		const mockQuestion: inquirer.Question = {
 			type: "list",
