@@ -2,7 +2,7 @@ import { BaseTemplate } from "./BaseTemplate";
 
 /** Interface for project templates */
 export interface ProjectTemplate extends BaseTemplate {
-	/** This method should be called after generateFiles completes. */
+	/** This method should be called after generateConfig completes. */
 	installModules(): void;
 
 	/**

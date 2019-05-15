@@ -31,7 +31,7 @@ describe("Unit - PromptSession", () => {
 		// tslint:disable:object-literal-sort-keys
 		const mockProject = {
 			name: "Project 1",
-			generateFiles: () => Promise.resolve(true)
+			generateConfig: () => Promise.resolve(true)
 		};
 		const mockProjectLibrary = {
 			themes: ["infragistics", "infragistics.less"],
@@ -127,7 +127,7 @@ describe("Unit - PromptSession", () => {
 			}
 		} /* as Config */);
 		// tslint:disable:object-literal-sort-keys
-		const mockProject = jasmine.createSpyObj({ generateFiles: Promise.resolve(true) });
+		const mockProject = jasmine.createSpyObj({ generateConfig: Promise.resolve(true) });
 		mockProject.name = "Project";
 		const mockProjectLibrary = {
 			themes: ["infragistics"],
@@ -180,7 +180,7 @@ describe("Unit - PromptSession", () => {
 
 		expect(Util.log).toHaveBeenCalledWith("  Framework: Custom Framework 1");
 		expect(Util.log).toHaveBeenCalledWith("  Project type: Ignite UI for Angular");
-		expect(mockProject.generateFiles).toHaveBeenCalledWith(process.cwd(), "Test Project", mockProjectLibrary.themes[0]);
+		expect(mockProject.generateConfig).toHaveBeenCalledWith(process.cwd(), "Test Project", mockProjectLibrary.themes[0]);
 
 		expect(Util.log).toHaveBeenCalledWith(" Project structure generated.");
 		expect(Util.gitInit).toHaveBeenCalled();
@@ -192,7 +192,7 @@ describe("Unit - PromptSession", () => {
 		// tslint:disable:object-literal-sort-keys
 		const mockProject = {
 			name: "Project 1",
-			generateFiles: () => Promise.resolve(true)
+			generateConfig: () => Promise.resolve(true)
 		};
 		const mockProjectLibrary = {
 			projectIds: ["empty"],
@@ -296,7 +296,7 @@ describe("Unit - PromptSession", () => {
 			description: "mockComponent description"
 		};
 		const mockProject = {
-			generateFiles: () => Promise.resolve(true)
+			generateConfig: () => Promise.resolve(true)
 		};
 		const mockProjectLibrary = jasmine.createSpyObj("mockProjectLibrary", {
 			name: "mockProjectLibrary",
@@ -391,7 +391,7 @@ describe("Unit - PromptSession", () => {
 			}]
 		};
 		const mockProject = {
-			generateFiles: () => Promise.resolve(true)
+			generateConfig: () => Promise.resolve(true)
 		};
 		const mockProjectLibrary = jasmine.createSpyObj("mockProjectLibrary", {
 			name: "mockProjectLibrary",
@@ -471,7 +471,7 @@ describe("Unit - PromptSession", () => {
 			templates: mockComponentTemplates
 		};
 		const mockProject = {
-			generateFiles: () => Promise.resolve(true)
+			generateConfig: () => Promise.resolve(true)
 		};
 		const mockProjectLibrary = jasmine.createSpyObj("mockProjectLibrary", {
 			name: "mockProjectLibrary",
@@ -569,7 +569,7 @@ describe("Unit - PromptSession", () => {
 	});
 	it("chooseActionLoop - Complete and Run should update default port", async done => {
 		const mockProject = {
-			generateFiles: () => Promise.resolve(true)
+			generateConfig: () => Promise.resolve(true)
 		};
 		const mockProjectLibrary = jasmine.createSpyObj("mockProjectLibrary", {
 			name: "mockProjectLibrary",

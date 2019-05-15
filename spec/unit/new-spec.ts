@@ -161,7 +161,7 @@ describe("Unit - New command", () => {
 
 	it("Generates default without project type", async done => {
 		const mockTemplate = {
-			generateFiles: async (cwd: string, name: string, theme: string) => {
+			generateConfig: async (cwd: string, name: string, theme: string) => {
 				return true;
 			}
 		};
@@ -179,14 +179,14 @@ describe("Unit - New command", () => {
 		});
 		//spyOn(newCmd.template, "getFrameworkById").and.returnValue({});
 		//spyOn(newCmd.template, "getProjectLibrary").and.returnValue(mockProjLib);
-		spyOn(mockTemplate, "generateFiles");
+		spyOn(mockTemplate, "generateConfig");
 
 		await newCmd.execute({ name: "Test", framework: "jq", theme: "ig" });
 
 		expect(newCmd.template.getFrameworkById).toHaveBeenCalledWith("jq");
 		expect(newCmd.template.getProjectLibrary).toHaveBeenCalledWith("jq");
 		expect(Util.log).toHaveBeenCalledWith("Project Name: Test, framework jq, type js, theme ig");
-		expect(mockTemplate.generateFiles).toHaveBeenCalledWith(process.cwd(), "Test", "ig");
+		expect(mockTemplate.generateConfig).toHaveBeenCalledWith(process.cwd(), "Test", "ig");
 		expect(PackageManager.installPackages).toHaveBeenCalled();
 		expect(process.chdir).toHaveBeenCalledWith("Test");
 		expect(process.chdir).toHaveBeenCalledWith("..");
@@ -196,7 +196,7 @@ describe("Unit - New command", () => {
 
 	it("Correctly generates passed project type", async done => {
 		const mockTemplate = {
-			generateFiles: async (cwd: string, name: string, theme: string) => {
+			generateConfig: async (cwd: string, name: string, theme: string) => {
 				return true;
 			}
 		};
@@ -212,13 +212,13 @@ describe("Unit - New command", () => {
 			getFrameworkById: {},
 			getProjectLibrary: mockProjLib
 		});
-		spyOn(mockTemplate, "generateFiles");
+		spyOn(mockTemplate, "generateConfig");
 
 		await newCmd.execute({ name: "Test", framework: "jq", type: "type", theme: "ig" });
 
 		expect(newCmd.template.getFrameworkById).toHaveBeenCalledWith("jq");
 		expect(newCmd.template.getProjectLibrary).toHaveBeenCalledWith("jq", "type");
-		expect(mockTemplate.generateFiles).toHaveBeenCalledWith(process.cwd(), "Test", "ig");
+		expect(mockTemplate.generateConfig).toHaveBeenCalledWith(process.cwd(), "Test", "ig");
 		expect(PackageManager.installPackages).toHaveBeenCalled();
 		expect(process.chdir).toHaveBeenCalledWith("Test");
 		expect(process.chdir).toHaveBeenCalledWith("..");
@@ -231,7 +231,7 @@ describe("Unit - New command", () => {
 		const projectName = "projTitle";
 
 		const mockTemplate = {
-			generateFiles: async (cwd: string, name: string, theme: string) => {
+			generateConfig: async (cwd: string, name: string, theme: string) => {
 				return true;
 			}
 		};
@@ -247,7 +247,7 @@ describe("Unit - New command", () => {
 			getFrameworkById: {},
 			getProjectLibrary: mockProjLib
 		});
-		spyOn(mockTemplate, "generateFiles");
+		spyOn(mockTemplate, "generateConfig");
 
 		await newCmd.execute({ name: projectName, framework: "jq" });
 
@@ -265,7 +265,7 @@ describe("Unit - New command", () => {
 		const projectName = "projTitle";
 
 		const mockTemplate = {
-			generateFiles: async (cwd: string, name: string, theme: string) => {
+			generateConfig: async (cwd: string, name: string, theme: string) => {
 				return true;
 			}
 		};
@@ -281,7 +281,7 @@ describe("Unit - New command", () => {
 			getFrameworkById: {},
 			getProjectLibrary: mockProjLib
 		});
-		spyOn(mockTemplate, "generateFiles");
+		spyOn(mockTemplate, "generateConfig");
 		spyOn(Util, "gitInit");
 
 		await newCmd.execute({ "name": projectName, "framework": "jq", "skip-git": true });
@@ -294,7 +294,7 @@ describe("Unit - New command", () => {
 		const projectName = "projTitle";
 
 		const mockTemplate = {
-			generateFiles: async (cwd: string, name: string, theme: string) => {
+			generateConfig: async (cwd: string, name: string, theme: string) => {
 				return true;
 			}
 		};
@@ -310,7 +310,7 @@ describe("Unit - New command", () => {
 			getFrameworkById: {},
 			getProjectLibrary: mockProjLib
 		});
-		spyOn(mockTemplate, "generateFiles");
+		spyOn(mockTemplate, "generateConfig");
 		spyOn(ProjectConfig, "getConfig").and.returnValue({ skipGit: true });
 		spyOn(Util, "gitInit");
 
@@ -322,7 +322,7 @@ describe("Unit - New command", () => {
 
 	it("Skip package install with command option", async done => {
 		const mockTemplate = {
-			generateFiles: () => Promise.resolve()
+			generateConfig: () => Promise.resolve()
 		};
 		const mockProjLib = {
 			getProject: () => {
@@ -336,7 +336,7 @@ describe("Unit - New command", () => {
 			getFrameworkById: {},
 			getProjectLibrary: mockProjLib
 		});
-		spyOn(mockTemplate, "generateFiles");
+		spyOn(mockTemplate, "generateConfig");
 		spyOn(Util, "gitInit");
 
 		await newCmd.execute({ name: "title", framework: "jq", skipInstall: true });

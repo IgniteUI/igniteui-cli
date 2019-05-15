@@ -44,7 +44,7 @@ describe("Unit - Add command", () => {
 			theme: "infragistics"}});
 		spyOn(Util, "error");
 
-		const mockTemplate = jasmine.createSpyObj("Template", ["generateFiles"]);
+		const mockTemplate = jasmine.createSpyObj("Template", ["generateConfig"]);
 
 		const errorCombos = [
 			{ name: "name.ts", inError: "name.ts" }, // file extension test
@@ -73,7 +73,7 @@ describe("Unit - Add command", () => {
 
 		for (const item of validCombos) {
 			await addCmd.addTemplate(item.name, mockTemplate);
-			expect(mockTemplate.generateFiles).toHaveBeenCalledWith(process.cwd(), item.valid, jasmine.any(Object));
+			expect(mockTemplate.generateConfig).toHaveBeenCalledWith(process.cwd(), item.valid, jasmine.any(Object));
 		}
 
 		done();
@@ -87,14 +87,14 @@ describe("Unit - Add command", () => {
 		spyOn(PackageManager, "queuePackage");
 
 		const mockTemplate = jasmine.createSpyObj("Template", {
-			generateFiles: Promise.resolve(true),
+			generateConfig: Promise.resolve(true),
 			registerInProject: null
 		});
 		mockTemplate.packages = ["tslib" , "test-pack"];
 		addCmd.templateManager = jasmine.createSpyObj("TemplateManager", ["updateProjectConfiguration"]);
 
 		await addCmd.addTemplate("template with packages", mockTemplate);
-		expect(mockTemplate.generateFiles).toHaveBeenCalled();
+		expect(mockTemplate.generateConfig).toHaveBeenCalled();
 		expect(mockTemplate.registerInProject).toHaveBeenCalled();
 		expect(addCmd.templateManager.updateProjectConfiguration).toHaveBeenCalled();
 		expect(PackageManager.queuePackage).toHaveBeenCalledTimes(2);
@@ -139,7 +139,7 @@ describe("Unit - Add command", () => {
 
 		const directoryPath = path.join("My/Example/Path");
 		spyOn(process, "cwd").and.returnValue(directoryPath);
-		spyOn(mockTemplate, "generateConfig").and.returnValue({});
+		spyOn(mockTemplate, "generateConfig").and.returnValue(Promise.resolve(true));
 		spyOn(mockTemplate, "registerInProject").and.callThrough();
 		const sourceFilesSpy = spyOn<any>(mockTemplate, "ensureSourceFiles");
 		const mockLibrary = jasmine.createSpyObj("frameworkLibrary", ["hasTemplate", "getTemplateById"]);
@@ -218,7 +218,7 @@ describe("Unit - Add command", () => {
 
 		const directoryPath = path.join("My/Example/Path");
 		spyOn(process, "cwd").and.returnValue(directoryPath);
-		spyOn(mockTemplate, "generateConfig").and.returnValue({});
+		spyOn(mockTemplate, "generateConfig").and.returnValue(Promise.resolve(true));
 		spyOn(mockTemplate, "registerInProject").and.callThrough();
 		spyOn(Util, "directoryExists").and.returnValue(true);
 		const sourceFilesSpy = spyOn<any>(mockTemplate, "ensureSourceFiles");
@@ -280,7 +280,7 @@ describe("Unit - Add command", () => {
 		spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
 
 		const mockTemplate = jasmine.createSpyObj("Template", {
-			generateFiles: true, registerInProject: null
+			generateConfig: true, registerInProject: null
 		});
 		mockTemplate.packages = [];
 		const mockLibrary = jasmine.createSpyObj("frameworkLibrary", {
@@ -308,9 +308,9 @@ describe("Unit - Add command", () => {
 			jasmine.objectContaining({ skipRoute: true })
 		);
 		expect(PackageManager.flushQueue).toHaveBeenCalled();
-		expect(mockTemplate.generateFiles).toHaveBeenCalledTimes(1);
-		expect(mockTemplate.generateFiles).toHaveBeenCalledWith(
-			directoryPath, "test-file-name",
+		expect(mockTemplate.generateConfig).toHaveBeenCalledTimes(1);
+		expect(mockTemplate.generateConfig).toHaveBeenCalledWith(
+			"test-file-name",
 			jasmine.objectContaining({ skipRoute: true })
 		);
 		expect(mockTemplate.registerInProject).toHaveBeenCalledTimes(1);

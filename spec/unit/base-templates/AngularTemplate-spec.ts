@@ -18,7 +18,7 @@ describe("Unit - AngularTemplate Base", () => {
 		public widget = "widget no-process";
 	}
 
-	it("generateFiles call processTemplates with correct path and variables", async done => {
+	it("generateConfig call processTemplates with correct path and variables", async done => {
 		const expected = {
 			"$(name)": "my component",
 			"$(ClassName)": "MyComponent",
@@ -46,7 +46,7 @@ describe("Unit - AngularTemplate Base", () => {
 		done();
 	});
 
-	it("generateFiles merge passed variables", async done => {
+	it("generateConfig merge passed variables", async done => {
 		const expected = {
 			"$(name)": "page",
 			"$(ClassName)": "Page",
