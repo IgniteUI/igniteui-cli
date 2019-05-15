@@ -161,10 +161,10 @@ describe("Unit - New command", () => {
 
 	it("Generates default without project type", async done => {
 		const mockTemplate = {
-			generateConfig: async (cwd: string, name: string, theme: string) => {
-				return true;
-			}
+			generateConfig: { test: "test" },
+			templatePath: ["test"]
 		};
+		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
 		const mockProjLib = {
 			getProject: () => {
 				return mockTemplate;
@@ -186,7 +186,7 @@ describe("Unit - New command", () => {
 		expect(newCmd.template.getFrameworkById).toHaveBeenCalledWith("jq");
 		expect(newCmd.template.getProjectLibrary).toHaveBeenCalledWith("jq");
 		expect(Util.log).toHaveBeenCalledWith("Project Name: Test, framework jq, type js, theme ig");
-		expect(mockTemplate.generateConfig).toHaveBeenCalledWith(process.cwd(), "Test", "ig");
+		expect(mockTemplate.generateConfig).toHaveBeenCalledWith("Test", "ig");
 		expect(PackageManager.installPackages).toHaveBeenCalled();
 		expect(process.chdir).toHaveBeenCalledWith("Test");
 		expect(process.chdir).toHaveBeenCalledWith("..");
@@ -196,9 +196,8 @@ describe("Unit - New command", () => {
 
 	it("Correctly generates passed project type", async done => {
 		const mockTemplate = {
-			generateConfig: async (cwd: string, name: string, theme: string) => {
-				return true;
-			}
+			generateConfig: { test: "test" },
+			templatePath: ["test"]
 		};
 		const mockProjLib = {
 			getProject: () => {
@@ -218,7 +217,7 @@ describe("Unit - New command", () => {
 
 		expect(newCmd.template.getFrameworkById).toHaveBeenCalledWith("jq");
 		expect(newCmd.template.getProjectLibrary).toHaveBeenCalledWith("jq", "type");
-		expect(mockTemplate.generateConfig).toHaveBeenCalledWith(process.cwd(), "Test", "ig");
+		expect(mockTemplate.generateConfig).toHaveBeenCalledWith("Test", "ig");
 		expect(PackageManager.installPackages).toHaveBeenCalled();
 		expect(process.chdir).toHaveBeenCalledWith("Test");
 		expect(process.chdir).toHaveBeenCalledWith("..");
@@ -231,9 +230,8 @@ describe("Unit - New command", () => {
 		const projectName = "projTitle";
 
 		const mockTemplate = {
-			generateConfig: async (cwd: string, name: string, theme: string) => {
-				return true;
-			}
+			generateConfig: { test: "test" },
+			templatePath: ["test"]
 		};
 		const mockProjLib = {
 			getProject: () => {
@@ -265,9 +263,8 @@ describe("Unit - New command", () => {
 		const projectName = "projTitle";
 
 		const mockTemplate = {
-			generateConfig: async (cwd: string, name: string, theme: string) => {
-				return true;
-			}
+			generateConfig: { test: "test" },
+			templatePath: ["test"]
 		};
 		const mockProjLib = {
 			getProject: () => {
@@ -294,9 +291,8 @@ describe("Unit - New command", () => {
 		const projectName = "projTitle";
 
 		const mockTemplate = {
-			generateConfig: async (cwd: string, name: string, theme: string) => {
-				return true;
-			}
+			generateConfig: { test: "test" },
+			templatePath: ["test"]
 		};
 		const mockProjLib = {
 			getProject: () => {
@@ -322,7 +318,8 @@ describe("Unit - New command", () => {
 
 	it("Skip package install with command option", async done => {
 		const mockTemplate = {
-			generateConfig: () => Promise.resolve()
+			generateConfig: { test: "test" },
+			templatePath: ["test"]
 		};
 		const mockProjLib = {
 			getProject: () => {

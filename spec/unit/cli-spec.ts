@@ -22,7 +22,7 @@ describe("Unit - Cli.ts", () => {
 	});
 
 	/*
-	xit("Should fire properly - XX", async done => {
+	it("Should fire properly - XX", async done => {
 		spyOn(XX , "YY");
 		await run.run("--XX");
 		expect(XX.YY).toHaveBeenCalled();

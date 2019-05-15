@@ -31,18 +31,19 @@ describe("Unit - AngularTemplate Base", () => {
 			"$(nameMerged)": "TestTemplate"
 		};
 		spyOn(Util, "processTemplates");
-		const validateSpy = spyOn<any>(Util, "validateTemplate").and.returnValue(true);
+		// const validateSpy = spyOn<any>(Util, "validateTemplate").and.returnValue(true);
 
 		const templ = new TestTemplate();
-		templ.generateConfig("my component", {});
-		expect(validateSpy).toHaveBeenCalledWith(
-			path.join("root/path" , "files"),
-			"/target/path",
-			expected, {});
-		expect(Util.processTemplates).toHaveBeenCalledWith(
-			path.join("root/path" , "files"),
-			"/target/path",
-			expected, {});
+		const actual = templ.generateConfig("my component", {});
+		expect(actual).toEqual(expected);
+		// expect(validateSpy).toHaveBeenCalledWith(
+		// 	path.join("root/path" , "files"),
+		// 	"/target/path",
+		// 	expected, {});
+		// expect(Util.processTemplates).toHaveBeenCalledWith(
+		// 	path.join("root/path" , "files"),
+		// 	"/target/path",
+		// 	expected, {});
 		done();
 	});
 
@@ -63,21 +64,22 @@ describe("Unit - AngularTemplate Base", () => {
 			"$(cliVersion)": Util.version()
 		};
 		spyOn(Util, "processTemplates");
-		const validateSpy = spyOn<any>(Util, "validateTemplate").and.returnValue(true);
+		// const validateSpy = spyOn<any>(Util, "validateTemplate").and.returnValue(true);
 
 		const templ = new TestWidgetTemplate("root");
-		templ.generateConfig("page", { extraConfig : {
+		const actual = templ.generateConfig("page", { extraConfig : {
 			"$(extraConfig1)" : "extraConfig1",
 			"$(gridFeatures)" : "{ features }"
 		} });
-		expect(validateSpy).toHaveBeenCalledWith(
-			path.join("root" , "files"),
-			"/target/path",
-			expected, {});
-		expect(Util.processTemplates).toHaveBeenCalledWith(
-			path.join("root" , "files"),
-			"/target/path",
-			expected, {});
+		expect(actual).toEqual(expected);
+		// expect(validateSpy).toHaveBeenCalledWith(
+		// 	path.join("root" , "files"),
+		// 	"/target/path",
+		// 	expected, {});
+		// expect(Util.processTemplates).toHaveBeenCalledWith(
+		// 	path.join("root" , "files"),
+		// 	"/target/path",
+		// 	expected, {});
 		done();
 	});
 
