@@ -1,4 +1,3 @@
-import { execSync } from "child_process";
 import { createHash} from "crypto";
 import * as fs from "fs";
 import * as path from "path";
@@ -102,13 +101,13 @@ class GoogleAnalytics {
 	protected static getMachineID(platform: string, result: string) {
 		switch (platform) {
 			case "darwin":
-				result = execSync("ioreg -rd1 -c IOPlatformExpertDevice").toString()
+				result = Util.execSync("ioreg -rd1 -c IOPlatformExpertDevice").toString()
 					.split("IOPlatformUUID")[1]
 					.split("\n")[0].replace(/\=|\s+|\"/ig, "")
 					.toLowerCase();
 				break;
 			case "win32":
-				result = execSync("REG QUERY HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Cryptography /v MachineGuid")
+				result = Util.execSync("REG QUERY HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Cryptography /v MachineGuid")
 					.toString()
 					.split("REG_SZ")[1]
 					.replace(/\r+|\n+|\s+/ig, "")
@@ -116,13 +115,13 @@ class GoogleAnalytics {
 				break;
 			case "linux":
 				result =
-					execSync("( cat /var/lib/dbus/machine-id /etc/machine-id 2> /dev/null || hostname ) | head -n 1 || :")
+					Util.execSync("( cat /var/lib/dbus/machine-id /etc/machine-id 2> /dev/null || hostname ) | head -n 1 || :")
 						.toString()
 						.replace(/\r+|\n+|\s+/ig, "")
 						.toLowerCase();
 				break;
 			case "freebsd":
-				result = execSync("kenv -q smbios.system.uuid").toString()
+				result = Util.execSync("kenv -q smbios.system.uuid").toString()
 					.replace(/\r+|\n+|\s+/ig, "")
 					.toLowerCase();
 				break;
@@ -160,7 +159,7 @@ class GoogleAnalytics {
 	protected static getNpmVersion(): string {
 		if (!this.npmVersion) {
 			this.npmVersion = "";
-			const buffer = execSync("npm -v");
+			const buffer = Util.execSync("npm -v");
 			// tslint:disable-next-line:prefer-for-of
 			for (let i = 0; i < buffer.length; i += 1) {
 				this.npmVersion += String.fromCharCode(+buffer[i]).toString();

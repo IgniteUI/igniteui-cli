@@ -82,9 +82,9 @@ command = {
 				/* falls through */
 			case "angular":
 				if (port) {
-					Util.exec(`npm start -- --port=` + port);
+					Util.execSync(`npm start -- --port=` + port);
 				} else {
-					Util.exec(`npm start`);
+					Util.execSync(`npm start`);
 				}
 				break;
 			default:

@@ -347,10 +347,8 @@ class Util {
 	 * @param options Command options
 	 * @throws {Error} On timeout or non-zero exit code. Error has 'status', 'signal', 'output', 'stdout', 'stderr'
 	 */
-	public static exec(command: string, options?: any) {
+	public static execSync(command: string, options?: any) {
 		try {
-			// inherit the parent process' stdin so we can catch if an attempt to interrupt the process is made
-			// ignore stdout and stderr as they will output unnecessary text onto the console
 			return execSync(command, options);
 		} catch (error) {
 			// execSync may throw an error during process interruption
@@ -378,9 +376,9 @@ class Util {
 	public static gitInit(parentRoot, projectName) {
 		try {
 			const options = { cwd: path.join(parentRoot, projectName), stdio: [process.stdin, "ignore", "ignore"] };
-			Util.exec("git init", options);
-			Util.exec("git add .", options);
-			Util.exec("git commit -m " + "\"Initial commit for project: " + projectName + "\"", options);
+			Util.execSync("git init", options);
+			Util.execSync("git add .", options);
+			Util.execSync("git commit -m " + "\"Initial commit for project: " + projectName + "\"", options);
 			Util.log(Util.greenCheck() + " Git Initialized and Project '" + projectName + "' Committed");
 		} catch (error) {
 			Util.error("Git initialization failed. Install Git in order to automatically commit the project.", "yellow");
