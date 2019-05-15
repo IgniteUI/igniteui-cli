@@ -123,13 +123,12 @@ command = {
 			return false;
 		}
 		const config = template.generateConfig(fileName, options || {});
-		let templateCreated = 0;
-		for (const templatePath of template.templatePath) {
-			if (await Util.processTemplates(templatePath, process.cwd(), config)) {
-				templateCreated++;
-			}
+		let fail = false;
+		const templatePaths = template.templatePath;
+		for (const templatePath of templatePaths) {
+			fail = fail || !await Util.processTemplates(templatePath, process.cwd(), config);
 		}
-		if (templateCreated) {
+		if (!fail && templatePaths.length) {
 			template.registerInProject(process.cwd(), fileName, options || {});
 			command.templateManager.updateProjectConfiguration(template);
 			template.packages.forEach(x => PackageManager.queuePackage(x));
