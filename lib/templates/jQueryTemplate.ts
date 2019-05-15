@@ -47,6 +47,7 @@ export class jQueryTemplate implements Template {
 			pathsConfig["$(igniteuiSource)"] = projectConfig.project.igniteuiSource;
 			pathsConfig["$(themePath)"] = projectConfig.project.themePath;
 		}
+		config["__path__"] = this.folderName(name);
 		config["$(name)"] = Util.nameFromPath(name);
 		config["$(cssBlock)"] = this.getCssTags();
 		config["$(scriptBlock)"] = this.getScriptTags();

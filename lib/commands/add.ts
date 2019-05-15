@@ -1,4 +1,3 @@
-import * as path from "path";
 import { GoogleAnalytics } from "../GoogleAnalytics";
 import { ProjectConfig } from "../ProjectConfig";
 import { TemplateManager } from "../TemplateManager";
@@ -131,7 +130,6 @@ command = {
 			}
 		}
 		if (templateCreated) {
-			//successful
 			template.registerInProject(process.cwd(), fileName, options || {});
 			command.templateManager.updateProjectConfiguration(template);
 			template.packages.forEach(x => PackageManager.queuePackage(x));
