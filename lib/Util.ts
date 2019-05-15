@@ -1,5 +1,5 @@
 import chalk from "chalk";
-import { exec, execSync } from "child_process";
+import { execSync } from "child_process";
 import * as fs from "fs";
 import * as fsExtra from "fs-extra";
 import * as glob from "glob";
@@ -349,15 +349,24 @@ class Util {
 	 */
 	public static exec(command: string, options?: any) {
 		try {
-			return execSync(command, { stdio: ["pipe"], killSignal: "SIGTERM" });
+			// inherit the parent process' stdin so we can catch if an attempt to interrupt the process is made
+			// ignore stdout and stderr as they will output unnecessary text onto the console
+			return execSync(command, { stdio: ["inherit"], killSignal: "SIGINT" });
 		} catch (error) {
-			if (error.status === 3221225786 || error.status > 128) {
-				process.exit();
-				return;
-			} else {
-				// throw the error instead of logging it?
-				Util.error(error.message, "red");
+			// execSync may throw an error during process interruption
+			// if this happens - stderr will contain "^C" which was appended in the checkExecSyncError function
+			// this means that a SIGINT was attempted and failed
+			// npm may be involved in this as it works just fine with any other node process
+			if (error.stderr.toString() === "^C") {
+				return process.exit();
 			}
+
+			// if SIGINT killed the process with no errors
+			if (error.status === 3221225786 || error.status > 128) {
+				return process.exit();
+			}
+
+			throw error;
 		}
 	}
 
