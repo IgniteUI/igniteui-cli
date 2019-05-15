@@ -7,6 +7,7 @@ import * as path from "path";
 import through2 = require("through2");
 import { BaseComponent } from "./BaseComponent";
 import { GoogleAnalytics } from "./GoogleAnalytics";
+import { Component, ComponentGroup, Template } from "./types";
 const imageExtensions = [".png", ".jpg", ".jpeg", ".gif", ".bmp", ".ico"];
 const applyConfig = (configuration: { [key: string]: string }) => {
 	return through2((data, enc, cb) => {
@@ -541,6 +542,17 @@ class Util {
 		const text: string = name.slice(0, baseLength);
 		const number: number = parseInt(name.slice(baseLength + 1), 10) || 0;
 		return `${text} ${number + 1}`;
+	}
+
+	private static propertyByPath(object: any, propPath: string) {
+		if (!propPath) {
+			return object;
+		}
+		const pathParts = propPath.split(".");
+		const currentProp = pathParts.shift();
+		if (currentProp in object) {
+			return this.propertyByPath(object[currentProp], pathParts.join("."));
+		}
 	}
 }
 
