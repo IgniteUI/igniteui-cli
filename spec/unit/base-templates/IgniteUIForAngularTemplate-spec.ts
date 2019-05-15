@@ -91,7 +91,7 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 		});
 		it("formats relative imports", async done => {
 			spyOn(TestTemplate.prototype, "getBaseVariables").and.returnValue({});
-			spyOn(TypeScriptUtils, "relativePath").and.returnValue("./relative/result/test");
+			spyOn(Util, "relativePath").and.returnValue("./relative/result/test");
 			const mainPath = path.join("target", "src/app/app.module.ts");
 			const filePath = path.join("target", "./test.ts");
 
@@ -99,7 +99,7 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			templ.dependencies = [{ from: "./test.ts" }];
 			templ.registerInProject("target", "name");
 
-			expect(TypeScriptUtils.relativePath).toHaveBeenCalledWith(mainPath, filePath, true, true);
+			expect(Util.relativePath).toHaveBeenCalledWith(mainPath, filePath, true, true);
 			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith({ from: "./relative/result/test" }, {});
 
 			done();
