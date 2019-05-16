@@ -81,10 +81,11 @@ command = {
 				}
 				/* falls through */
 			case "angular":
+				const options =  { stdio: ["inherit"], killSignal: "SIGINT" };
 				if (port) {
-					Util.execSync(`npm start -- --port=` + port);
+					Util.execSync(`npm start -- --port=` + port, options);
 				} else {
-					Util.execSync(`npm start`);
+					Util.execSync(`npm start`, options);
 				}
 				break;
 			default:

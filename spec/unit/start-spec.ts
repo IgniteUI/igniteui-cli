@@ -44,15 +44,17 @@ describe("Unit - start command", () => {
 
 		await startCmd.execute({});
 		expect(buildCmd.build).toHaveBeenCalled();
-		expect(Util.execSync).toHaveBeenCalledWith("npm start");
+		expect(Util.execSync).toHaveBeenCalledWith("npm start", { stdio: ["inherit"], killSignal: "SIGINT" });
 		expect(Util.log).toHaveBeenCalledWith(`Starting project.`, "green");
 
 		config.project.defaultPort = 3567;
 		await startCmd.execute({});
-		expect(Util.execSync).toHaveBeenCalledWith("npm start -- --port=3567");
+		// tslint:disable-next-line: max-line-length
+		expect(Util.execSync).toHaveBeenCalledWith("npm start -- --port=3567", { stdio: ["inherit"], killSignal: "SIGINT" });
 
 		await startCmd.execute({ port: 1234 });
-		expect(Util.execSync).toHaveBeenCalledWith("npm start -- --port=1234");
+		// tslint:disable-next-line: max-line-length
+		expect(Util.execSync).toHaveBeenCalledWith("npm start -- --port=1234", { stdio: ["inherit"], killSignal: "SIGINT" });
 
 		expect(Util.error).not.toHaveBeenCalled();
 		done();
@@ -71,15 +73,17 @@ describe("Unit - start command", () => {
 
 		await startCmd.execute({});
 		expect(buildCmd.build).toHaveBeenCalled();
-		expect(Util.execSync).toHaveBeenCalledWith("npm start");
+		expect(Util.execSync).toHaveBeenCalledWith("npm start", { stdio: ["inherit"], killSignal: "SIGINT" });
 		expect(Util.log).toHaveBeenCalledWith(`Starting project.`, "green");
 
 		config.project.defaultPort = 3567;
 		await startCmd.execute({});
-		expect(Util.execSync).toHaveBeenCalledWith("npm start -- --port=3567");
+		// tslint:disable-next-line: max-line-length
+		expect(Util.execSync).toHaveBeenCalledWith("npm start -- --port=3567", { stdio: ["inherit"], killSignal: "SIGINT" });
 
 		await startCmd.execute({ port: 1234 });
-		expect(Util.execSync).toHaveBeenCalledWith("npm start -- --port=1234");
+		// tslint:disable-next-line: max-line-length
+		expect(Util.execSync).toHaveBeenCalledWith("npm start -- --port=1234", { stdio: ["inherit"], killSignal: "SIGINT" });
 
 		expect(Util.error).not.toHaveBeenCalled();
 		done();
@@ -98,17 +102,17 @@ describe("Unit - start command", () => {
 
 		await startCmd.execute({});
 		expect(buildCmd.build).toHaveBeenCalled();
-		expect(Util.execSync).toHaveBeenCalledWith("npm start");
+		expect(Util.execSync).toHaveBeenCalledWith("npm start", { stdio: ["inherit"], killSignal: "SIGINT" });
 		expect(Util.log).toHaveBeenCalledWith(`Starting project.`, "green");
 
 		config.project.defaultPort = 3567;
 		await startCmd.execute({});
 		expect(process.env.PORT).toEqual("3567");
-		expect(Util.execSync).toHaveBeenCalledWith("npm start");
+		expect(Util.execSync).toHaveBeenCalledWith("npm start", { stdio: ["inherit"], killSignal: "SIGINT" });
 
 		await startCmd.execute({ port: 1234 });
 		expect(process.env.PORT).toEqual("1234");
-		expect(Util.execSync).toHaveBeenCalledWith("npm start");
+		expect(Util.execSync).toHaveBeenCalledWith("npm start", { stdio: ["inherit"], killSignal: "SIGINT" });
 
 		expect(Util.error).not.toHaveBeenCalled();
 		done();
