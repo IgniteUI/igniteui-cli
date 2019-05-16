@@ -117,7 +117,7 @@ describe("Unit - PromptSession", () => {
 		expect(ProjectConfig.hasLocalConfig).toHaveBeenCalledTimes(1);
 		expect(mockTemplate.getProjectLibrary).toHaveBeenCalledTimes(1);
 		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(1);
-		expect(mockSession.chooseActionLoop).toHaveBeenCalledWith({}, "");
+		expect(mockSession.chooseActionLoop).toHaveBeenCalledWith({});
 		done();
 	});
 
@@ -375,8 +375,8 @@ describe("Unit - PromptSession", () => {
 			Promise.resolve({ port: 7777 })
 		);
 		spyOn(ProjectConfig, "setConfig");
-		await mockSession.chooseActionLoop(mockProjectLibrary, "infragistics");
-		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(2);
+		await mockSession.chooseActionLoop(mockProjectLibrary);
+		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(1);
 		expect(inquirer.prompt).toHaveBeenCalledTimes(12);
 		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
@@ -445,7 +445,7 @@ describe("Unit - PromptSession", () => {
 			Promise.resolve({ port: 7777 })
 		);
 		spyOn(ProjectConfig, "setConfig");
-		await mockSession.chooseActionLoop(mockProjectLibrary, "infragistics");
+		await mockSession.chooseActionLoop(mockProjectLibrary);
 		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(2);
 		expect(inquirer.prompt).toHaveBeenCalledTimes(7);
 		expect(Util.log).toHaveBeenCalledTimes(3);
@@ -559,7 +559,7 @@ describe("Unit - PromptSession", () => {
 			Promise.resolve({ port: 7777 })
 		);
 		spyOn(ProjectConfig, "setConfig");
-		await mockSession.chooseActionLoop(mockProjectLibrary, "infragistics");
+		await mockSession.chooseActionLoop(mockProjectLibrary);
 		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(2);
 		expect(inquirer.prompt).toHaveBeenCalledTimes(12);
 		expect(Util.log).toHaveBeenCalledTimes(3);
@@ -618,7 +618,7 @@ describe("Unit - PromptSession", () => {
 		spyOn(start, "start");
 		spyOn(ProjectConfig, "setConfig");
 
-		await mockSession.chooseActionLoop(mockProjectLibrary, "");
+		await mockSession.chooseActionLoop(mockProjectLibrary);
 		expect(start.start).toHaveBeenCalledWith({ port: 7777 });
 		expect(ProjectConfig.setConfig).toHaveBeenCalledWith(params);
 		done();

@@ -10,7 +10,7 @@ import {
 	Component, Config, ControlExtraConfigType, ControlExtraConfiguration, Framework,
 	FrameworkId, ProjectLibrary, ProjectTemplate, Template
 } from "./types/index";
-import { Util, ChoiceItem } from "./Util";
+import { ChoiceItem, Util } from "./Util";
 
 const WIZARD_BACK_OPTION = "Back";
 
@@ -197,12 +197,12 @@ export class PromptSession {
 				runner.addTask(this.getComponentTask);
 				runner.addTask(this.getTemplateTask);
 				// TODO: on template selected
-				runner.addTask((runner) => Promise.resolve(runner.resetTasks()));
+				runner.addTask(run => Promise.resolve(run.resetTasks()));
 				break;
 			case "Add scenario":
 				runner.clearPending();
 				runner.addTask(this.getCustomViewTask);
-				runner.addTask((runner) => Promise.resolve(runner.resetTasks()));
+				runner.addTask(run => Promise.resolve(run.resetTasks()));
 				break;
 			case "Complete & Run":
 				runner.clearPending();
@@ -346,7 +346,7 @@ export class PromptSession {
 			name: `${type === "component" ? type : "customView"}Name`,
 			message: `Name your ${type}:`,
 			default: availableDefaultName,
-			validate: (input) => {
+			validate: (input, _answers) => {
 				// TODO: Util.validateComponentName
 				const name = Util.nameFromPath(input);
 
@@ -414,7 +414,7 @@ export class PromptSession {
 		if (selectedTemplate) {
 			context.template = selectedTemplate;
 			runner.addTask(this.getViewNameTask);
-			runner.addTask(this.customizeTemplateTask)
+			runner.addTask(this.customizeTemplateTask);
 			return true;
 		}
 		return false;
@@ -645,6 +645,7 @@ interface PromptTaskContext {
 
 class TaskRunner<T> {
 	protected taskQueue: Array<PromptInputTask<T>> = [];
+	protected additions: Array<PromptInputTask<T>> = [];
 	protected currentTask: PromptInputTask<T>;
 
 	public get done(): boolean {
@@ -653,14 +654,14 @@ class TaskRunner<T> {
 
 	constructor(protected context: T) {}
 
-	/** Add a task to the queue. Will insert if called while running */
+	/** Add a task to the queue. Will insert after current if called while running */
 	public addTask(task: (runner: this, context: T) => Promise<"Back" | any>) {
 		const taskObj = { done: false, run: task };
 		if (this.currentTask) {
-			const index = this.taskQueue.indexOf(this.currentTask);
-			this.taskQueue.splice(index, 0, taskObj);
+			this.additions.push(taskObj);
+		} else {
+			this.taskQueue.push(taskObj);
 		}
-		this.taskQueue.push(taskObj);
 	}
 
 	/** clear */
@@ -686,6 +687,10 @@ class TaskRunner<T> {
 			const previousTask = this.taskQueue[i - 1];
 			this.currentTask = task;
 			const result = await task.run(this, this.context);
+			if (this.additions.length) {
+				this.taskQueue.splice(i + 1, 0, ...this.additions);
+				this.additions = [];
+			}
 			this.currentTask = null;
 			if (result === WIZARD_BACK_OPTION) {
 				previousTask.done = false;
@@ -705,5 +710,5 @@ interface IUserInputOptions {
 	message: string;
 	choices?: any[];
 	default?: string;
-	validate?: (input: string) => string | boolean;
+	validate?: (input: string, ...args) => string | boolean;
 }

@@ -34,7 +34,7 @@ describe("Unit - Add command", () => {
 		spyOn(promptSession, "chooseActionLoop");
 
 		await addCmd.execute({});
-		expect(promptSession.chooseActionLoop).toHaveBeenCalledWith(mockProjLib, "infragistics");
+		expect(promptSession.chooseActionLoop).toHaveBeenCalledWith(mockProjLib);
 		done();
 	});
 
