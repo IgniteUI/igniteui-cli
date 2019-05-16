@@ -24,7 +24,6 @@ export class AngularTemplate implements Template {
 	 */
 	constructor(private rootPath: string) { }
 
-
 	public get templatePath(): string[] {
 		return [path.join(this.rootPath, "files")];
 	}

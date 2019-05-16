@@ -1,7 +1,6 @@
 import chalk from "chalk";
 import * as inquirer from "inquirer";
 import * as path from "path";
-import { BaseComponent } from "./BaseComponent";
 import { default as add } from "./commands/add";
 import { default as start } from "./commands/start";
 import { GoogleAnalytics } from "./GoogleAnalytics";
@@ -9,7 +8,7 @@ import { PackageManager } from "./packages/PackageManager";
 import { ProjectConfig } from "./ProjectConfig";
 import { TemplateManager } from "./TemplateManager";
 import {
-	Component, ComponentGroup, Config, ControlExtraConfigType, ControlExtraConfiguration, Framework,
+	Component, Config, ControlExtraConfigType, ControlExtraConfiguration, Framework,
 	FrameworkId, ProjectLibrary, ProjectTemplate, Template
 } from "./types/index";
 import { Util } from "./Util";
