@@ -446,7 +446,7 @@ describe("Unit - PromptSession", () => {
 		);
 		spyOn(ProjectConfig, "setConfig");
 		await mockSession.chooseActionLoop(mockProjectLibrary);
-		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(2);
+		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(1);
 		expect(inquirer.prompt).toHaveBeenCalledTimes(7);
 		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
@@ -560,7 +560,7 @@ describe("Unit - PromptSession", () => {
 		);
 		spyOn(ProjectConfig, "setConfig");
 		await mockSession.chooseActionLoop(mockProjectLibrary);
-		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(2);
+		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(1);
 		expect(inquirer.prompt).toHaveBeenCalledTimes(12);
 		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);

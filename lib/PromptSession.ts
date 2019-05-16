@@ -197,11 +197,13 @@ export class PromptSession {
 				runner.addTask(this.getComponentTask);
 				runner.addTask(this.getTemplateTask);
 				// TODO: on template selected
+				runner.addTask(this.templateSelectedTask());
 				runner.addTask(run => Promise.resolve(run.resetTasks()));
 				break;
 			case "Add scenario":
 				runner.clearPending();
 				runner.addTask(this.getCustomViewTask);
+				runner.addTask(this.templateSelectedTask("view"));
 				runner.addTask(run => Promise.resolve(run.resetTasks()));
 				break;
 			case "Complete & Run":
@@ -213,7 +215,7 @@ export class PromptSession {
 					message: "Choose app host port:",
 					name: "port",
 					type: "input",
-					validate: (input, answers) => {
+					validate: (input, _answers) => {
 						if (!Number(input)) {
 							Util.log(`port should be a number. Input valid port or use the suggested default port`, "yellow");
 							return false;
@@ -239,7 +241,7 @@ export class PromptSession {
 	 * Return component group user has selected
 	 * @param projectLibrary to add component to
 	 */
-	private getComponentGroupTask = async (runner: TaskRunner<PromptTaskContext>, context: PromptTaskContext) => {
+	private getComponentGroupTask = async (_runner: TaskRunner<PromptTaskContext>, context: PromptTaskContext) => {
 		const groups = context.projectLibrary.getComponentGroupNames();
 		const groupRes: string = await this.getUserInput({
 			type: "list",
@@ -248,10 +250,12 @@ export class PromptSession {
 			choices: Util.formatChoices(context.projectLibrary.getComponentGroups()),
 			default: groups.find(x => x.includes("Grids")) || groups[0]
 		}, true);
-		if (groupRes !== WIZARD_BACK_OPTION) {
-			context.group = groupRes;
+
+		if (groupRes === WIZARD_BACK_OPTION) {
+			return WIZARD_BACK_OPTION;
 		}
-		return groupRes;
+		context.group = groupRes;
+		return true;
 	}
 
 	/**
@@ -259,7 +263,7 @@ export class PromptSession {
 	 * @param projectLibrary to add component to
 	 * @param groupName to chose components from
 	 */
-	private getComponentTask = async (runner: TaskRunner<PromptTaskContext>, context: PromptTaskContext) => {
+	private getComponentTask = async (_runner: TaskRunner<PromptTaskContext>, context: PromptTaskContext) => {
 		const componentNameRes = await this.getUserInput({
 			type: "list",
 			name: "component",
@@ -280,7 +284,7 @@ export class PromptSession {
 	 * @param projectLibrary to add component to
 	 * @param component to get template for
 	 */
-	private getTemplateTask = async (runner: TaskRunner<PromptTaskContext>, context: PromptTaskContext) => {
+	private getTemplateTask = async (_runner: TaskRunner<PromptTaskContext>, context: PromptTaskContext) => {
 		let selectedTemplate: Template;
 		const templates: Template[] = context.component.templates;
 
@@ -301,8 +305,6 @@ export class PromptSession {
 
 		if (selectedTemplate) {
 			context.template = selectedTemplate;
-			runner.addTask(this.getTemplateNameTask);
-			runner.addTask(this.customizeTemplateTask);
 			return true;
 		}
 
@@ -314,27 +316,21 @@ export class PromptSession {
 	 * @param projectLibrary to add component to
 	 * @param component to get template for
 	 */
-	private getTemplateNameTask = async (runner: TaskRunner<PromptTaskContext>, context: PromptTaskContext) => {
-		const name = await this.chooseTemplateName(context.template);
-		context.name = name;
-		return true;
+	private templateSelectedTask(type: "component" | "view" = "component") {
+		return async (_runner: TaskRunner<PromptTaskContext>, context: PromptTaskContext) => {
+			const name = await this.chooseTemplateName(context.template, type);
+			if (context.template.hasExtraConfiguration) {
+				await this.customizeTemplateTask(context.template);
+			}
+			const res = await add.addTemplate(name, context.template);
+			return res;
+		};
 	}
 
 	/**
-	 * Select template for provided component and set template's extra configurations if any
-	 * @param projectLibrary to add component to
-	 * @param component to get template for
-	 */
-	private getViewNameTask = async (runner: TaskRunner<PromptTaskContext>, context: PromptTaskContext) => {
-		const name = await this.chooseTemplateName(context.template, "view");
-		context.name = name;
-		return true;
-	}
-
-	/**
-	 * Select template for provided component and set template's extra configurations if any
-	 * @param projectLibrary to add component to
-	 * @param component to get template for
+	 * Prompt user for template name with appropriate default
+	 * @param template template to get name for
+	 * @param type type of the name question
 	 */
 	private async chooseTemplateName(template: Template, type: "component" | "view" = "component") {
 		const config = ProjectConfig.getConfig();
@@ -365,27 +361,20 @@ export class PromptSession {
 		return templateName;
 	}
 
-	/**
-	 * Select template for provided component and set template's extra configurations if any
-	 * @param projectLibrary to add component to
-	 * @param component to get template for
-	 */
-	private customizeTemplateTask = async (runner: TaskRunner<PromptTaskContext>, context: PromptTaskContext) => {
-		if (context.template.hasExtraConfiguration) {
-			const extraPrompt: any[] = this.createQuestions(context.template.getExtraConfiguration());
-			const extraConfigAnswers = await inquirer.prompt(extraPrompt);
-			const extraConfig = this.parseAnswers(extraConfigAnswers);
+	/** Create prompts from template extra configuration and assign user answers to the template */
+	private async customizeTemplateTask(template: Template) {
+		const extraPrompt: any[] = this.createQuestions(template.getExtraConfiguration());
+		const extraConfigAnswers = await inquirer.prompt(extraPrompt);
+		const extraConfig = this.parseAnswers(extraConfigAnswers);
 
-			GoogleAnalytics.post({
-				t: "event",
-				ec: "$ig wizard",
-				el: "Extra configuration:",
-				ea: `extra configuration: ${JSON.stringify(extraConfig)}`
-			});
+		GoogleAnalytics.post({
+			t: "event",
+			ec: "$ig wizard",
+			el: "Extra configuration:",
+			ea: `extra configuration: ${JSON.stringify(extraConfig)}`
+		});
 
-			context.template.setExtraConfiguration(extraConfig);
-		}
-		return true;
+		template.setExtraConfiguration(extraConfig);
 	}
 
 	/**
@@ -393,9 +382,8 @@ export class PromptSession {
 	 * @param projectLibrary to add component to
 	 * @param theme to use to style the project
 	 */
-	private getCustomViewTask = async (runner: TaskRunner<PromptTaskContext>, context: PromptTaskContext) => {
+	private getCustomViewTask = async (_runner: TaskRunner<PromptTaskContext>, context: PromptTaskContext) => {
 		const customTemplates: Template[] = context.projectLibrary.getCustomTemplates();
-		const config = ProjectConfig.getConfig();
 
 		const customTemplateNameRes = await this.getUserInput({
 			type: "list",
@@ -413,8 +401,6 @@ export class PromptSession {
 
 		if (selectedTemplate) {
 			context.template = selectedTemplate;
-			runner.addTask(this.getViewNameTask);
-			runner.addTask(this.customizeTemplateTask);
 			return true;
 		}
 		return false;
@@ -692,8 +678,9 @@ class TaskRunner<T> {
 				this.additions = [];
 			}
 			this.currentTask = null;
-			if (result === WIZARD_BACK_OPTION) {
-				previousTask.done = false;
+			if (result !== true) {
+				task.done = false;
+				previousTask.done = result === WIZARD_BACK_OPTION ? false : previousTask.done;
 				break;
 			}
 			task.done = result;
