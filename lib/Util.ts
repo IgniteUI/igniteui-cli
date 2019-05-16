@@ -1,17 +1,20 @@
 import chalk from "chalk";
 import { execSync } from "child_process";
 import * as fs from "fs";
-import * as fsExtra from "fs-extra";
 import * as glob from "glob";
 import * as path from "path";
 import through2 = require("through2");
+import { BaseComponent } from "./BaseComponent";
 import { GoogleAnalytics } from "./GoogleAnalytics";
+import { Component, ComponentGroup, Template } from "./types";
 const imageExtensions = [".png", ".jpg", ".jpeg", ".gif", ".bmp", ".ico"];
 const applyConfig = (configuration: { [key: string]: string }) => {
 	return through2((data, enc, cb) => {
 		cb(null, new Buffer(Util.applyConfigTransformation(data.toString(), configuration)));
 	});
 };
+
+const noop = () => through2.obj();
 
 class Util {
 	public static getCurrentDirectoryBase() {
@@ -54,87 +57,38 @@ class Util {
 	public static async processTemplates(
 		sourcePath: string,
 		destinationPath: string, configuration: { [key: string]: string },
-		pathsConfiguration: { [key: string]: string }) {
+		pathsConfiguration: { [key: string]: string }): Promise<boolean> {
 
-		// TODO: Rework with glob...
-		if (!Util.directoryExists(destinationPath)) {
-			this.createDirectory(destinationPath);
-		}
+		sourcePath = sourcePath.replace(/\\/g, "/");
+		destinationPath = destinationPath.replace(/\\/g, "/");
 
-		if (fs.existsSync(sourcePath)) {
-			const items = fs.readdirSync(sourcePath);
-			let folders;
-			let itemsLeft = 0;
-
-			folders = Util.getDirectoryNames(sourcePath);
-			for (const folder of folders) {
-				let sourceFolderName;
-				let destinationFolderName;
-				sourceFolderName = destinationFolderName = folder;
-				if (sourceFolderName === "__path__" && configuration.hasOwnProperty("__path__")) {
-					destinationFolderName = configuration["__path__"];
-				}
-				if (!Util.directoryExists(path.join(destinationPath, destinationFolderName))) {
-					this.createDirectory(path.join(destinationPath, destinationFolderName));
-				}
-				//TODO: This call should have await!
-				await Util.processTemplates(
-					path.join(sourcePath, sourceFolderName),
-					path.join(destinationPath, destinationFolderName),
-					configuration,
-					pathsConfiguration);
-			}
-			return new Promise<boolean>((resolve, reject) => {
-				//var itemsLeft = items.length - folders.length;
-				if (folders.length === items.length) {
-					resolve(true);
-				}
-				for (const element of items) {
-					let key;
-					if (Util.isFile(path.join(sourcePath, element))) {
-						itemsLeft++;
-						// temporary recognize image extensions
-						//TODO use grep module to select files which need to be processed via pipe and copy others directly.
-						const currentFileExtension = path.extname(path.join(sourcePath, element));
-						if (imageExtensions.indexOf(currentFileExtension) !== -1) {
-							fsExtra.copySync(path.join(sourcePath, element), path.join(destinationPath, element));
-							if (--itemsLeft === 0) {
-								resolve(true);
-							}
-							continue;
-						}
-
-						// tslint:disable-next-line:forin
-						for (key in pathsConfiguration) {
-							// we need to recalculate relative path for every single file,
-							// so we don't overwrite the pathsConfiguration but reuse them for every single file
-							configuration[key] = path.relative(destinationPath, pathsConfiguration[key]);
-						}
-
-						let fileName: string = element;
-						if (configuration.hasOwnProperty("__name__")) {
-							fileName = element.replace("__name__", configuration["__name__"]);
-						}
-						if (fileName === "gitignore") {
-							fileName = ".gitignore";
-						}
-						const writeStream = fs.createWriteStream(path.join(destinationPath, fileName));
-						fs.createReadStream(path.join(sourcePath, element))
-							.pipe(applyConfig(configuration))
-							.pipe(writeStream);
-						writeStream.on("finish", () => {
-							if (--itemsLeft === 0) {
-								resolve(true);
-							}
-						});
-					}
-				}
-			});
-		} else {
-			return new Promise<boolean>((resolve, reject) => {
+		return new Promise((resolve, reject) => {
+			const filePaths: string[] = glob.sync(sourcePath + "/**/*", { nodir: true });
+			let fileCount = filePaths.length;
+			// if no files should be created, resolve
+			if (fileCount === 0) {
 				resolve(false);
-			});
-		}
+			}
+			for (const filePath of filePaths) {
+				let targetPath = filePath.replace(sourcePath, destinationPath);
+				targetPath = Util.applyConfigTransformation(targetPath, configuration);
+				Util.createDirectory(path.dirname(targetPath));
+				if (path.basename(targetPath) === "gitignore") {
+					targetPath = path.join(path.dirname(targetPath), ".gitignore");
+				}
+				const writeStream = fs.createWriteStream(targetPath);
+				const isImage = imageExtensions.indexOf(path.extname(targetPath)) !== -1;
+				fs.createReadStream(filePath)
+					// for image files, just copy the content
+					.pipe(!isImage ? applyConfig(configuration) : noop())
+					.pipe(writeStream);
+				writeStream.on("finish", () => {
+					if (--fileCount === 0) {
+						resolve(true);
+					}
+				});
+			}
+		});
 	}
 
 	public static validateTemplate(
@@ -152,12 +106,7 @@ class Util {
 
 		for (let filePath of paths) {
 			filePath = filePath.replace(sourcePath, destinationPath);
-			if (configuration.hasOwnProperty("__path__")) {
-				filePath = filePath.replace("__path__", configuration["__path__"]);
-			}
-			if (configuration.hasOwnProperty("__name__")) {
-				filePath = filePath.replace("__name__", configuration["__name__"]);
-			}
+			filePath = Util.applyConfigTransformation(filePath, configuration);
 			if (fs.existsSync(filePath)) {
 				this.error(path.relative(process.cwd(), filePath) + " already exists!", "red");
 				return false;
@@ -412,12 +361,6 @@ class Util {
 		return name + chalk.gray(`${separatedDescription}`);
 	}
 
-	public static incrementName(name: string, baseLength: number): string {
-		const text: string = name.slice(0, baseLength);
-		const number: number = parseInt(name.slice(baseLength + 1), 10) || 0;
-		return `${text} ${number + 1}`;
-	}
-
 	public static getAvailableName(
 		defaultName: string, isApp: boolean, framework?: string, projectType?: string): string {
 
@@ -492,6 +435,77 @@ class Util {
 		}
 		const result = this.className(str);
 		return result[0].toLowerCase() + result.substring(1, result.length);
+	}
+
+	/**
+	 * Generate relative path from target file to another
+	 * Adds "./" to avoid node module resolution conflicts
+	 * @param targetPath Target file (root path)
+	 * @param filePath File to generate relative path to
+	 * @param posix Require path in posix style (/-separated)
+	 * @param removeExt Strip file extension
+	 */
+	public static relativePath(targetPath: string, filePath: string, posix: boolean, removeExt = true): string {
+		if (!targetPath.endsWith(path.win32.sep) && !targetPath.endsWith(path.posix.sep)) {
+			// path.relative splits by fragments, must be dirname w/ trailing to work both down and up
+			targetPath = path.win32.dirname(targetPath) + path.sep;
+		}
+
+		// use win32 api as it handles both formats
+		let relativePath: string = path.win32.relative(targetPath, filePath);
+
+		if (removeExt) {
+			relativePath = relativePath.replace(path.win32.extname(relativePath), "");
+		}
+
+		if (posix) {
+			relativePath = path.posix.join(...relativePath.split(path.win32.sep));
+			relativePath = relativePath.startsWith(".") ? relativePath : "./" + relativePath;
+		} else {
+			relativePath = path.win32.join(...relativePath.split(path.win32.sep));
+			relativePath = relativePath.startsWith(".") ? relativePath : ".\\" + relativePath;
+		}
+
+		return relativePath;
+	}
+
+	public static formatChoices(items: Array<Template | Component | ComponentGroup>):
+							Array<{name: string, value: string, short: string}> {
+		const choiceItems = [];
+		const leftPadding = 2;
+		const rightPadding = 1;
+
+		const maxNameLength = Math.max(...items.map(x => x.name.length)) + 3;
+		const targetNameLength = Math.max(18, maxNameLength);
+		let description: string;
+		for (const item of items) {
+			const choiceItem = {
+				name: "",
+				short: item.name,
+				value: item.name
+			};
+			choiceItem.name = item.name;
+			if (item instanceof BaseComponent && item.templates.length <= 1) {
+				description = item.templates[0].description || "";
+			} else {
+				description = item.description || "";
+			}
+			if (description !== "") {
+				choiceItem.name = item.name  +  Util.addColor(".".repeat(targetNameLength - item.name.length), 0);
+				const max = process.stdout.columns - targetNameLength - leftPadding - rightPadding;
+				description = Util.truncate(description, max, 3, ".");
+				description = Util.addColor(description, 0);
+				choiceItem.name += description;
+			}
+			choiceItems.push(choiceItem);
+		}
+		return choiceItems;
+	}
+
+	private static incrementName(name: string, baseLength: number): string {
+		const text: string = name.slice(0, baseLength);
+		const number: number = parseInt(name.slice(baseLength + 1), 10) || 0;
+		return `${text} ${number + 1}`;
 	}
 
 	private static propertyByPath(object: any, propPath: string) {

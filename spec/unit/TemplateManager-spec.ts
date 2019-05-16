@@ -5,6 +5,7 @@ import { AngularTemplate } from "../../lib/templates/AngularTemplate";
 import { IgniteUIForAngularTemplate } from "../../lib/templates/IgniteUIForAngularTemplate";
 import { jQueryTemplate } from "../../lib/templates/jQueryTemplate";
 import { ReactTemplate } from "../../lib/templates/ReactTemplate";
+import { ComponentGroup, Framework } from "../../lib/types/index";
 import { Util } from "../../lib/Util";
 import { mockProLibFactory } from "../helpers/mocks";
 import { resetSpy } from "../helpers/utils";

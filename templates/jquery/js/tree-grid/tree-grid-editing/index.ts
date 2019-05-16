@@ -1,8 +1,6 @@
-import * as fs from "fs-extra";
-import * as path from "path";
 import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 import { jQueryTemplate } from "../../../../../lib/templates/jQueryTemplate";
-import { Util } from "../../../../../lib/Util";
+import { ControlExtraConfigType, ControlExtraConfiguration } from "../../../../../lib/types/index";
 
 class TreeGridEditingTemplate extends jQueryTemplate {
 
@@ -10,9 +8,6 @@ class TreeGridEditingTemplate extends jQueryTemplate {
 	public userExtraConfiguration: {} = {};
 	private gridHelper: GridHelper;
 
-	/**
-	 *
-	 */
 	constructor() {
 		super(__dirname);
 		this.extraConfigurations = [];
@@ -34,7 +29,7 @@ class TreeGridEditingTemplate extends jQueryTemplate {
 			default: "",
 			key: "features",
 			message: "Select optional features for the editing template",
-			type: Enumerations.ControlExtraConfigType.MultiChoice
+			type: ControlExtraConfigType.MultiChoice
 		};
 		this.extraConfigurations.push(featureConfiguration);
 	}

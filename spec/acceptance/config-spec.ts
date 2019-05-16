@@ -3,6 +3,7 @@ import * as os from "os";
 import * as path from "path";
 import cli = require("../../lib/cli");
 import { GoogleAnalytics } from "../../lib/GoogleAnalytics";
+import { GoogleAnalyticsParameters } from "../../lib/types/index";
 import { deleteAll, resetSpy } from "../helpers/utils";
 
 describe("Config command", () => {

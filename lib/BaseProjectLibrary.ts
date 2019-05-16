@@ -1,4 +1,5 @@
 import * as path from "path";
+import { Component, ComponentGroup, ProjectLibrary, ProjectTemplate, Template } from "./types/index";
 import { Util } from "./Util";
 
 export class BaseProjectLibrary implements ProjectLibrary {
@@ -44,13 +45,13 @@ export class BaseProjectLibrary implements ProjectLibrary {
 		return this._projects;
 	}
 
-/*	private _customTemplates : string[];
-	public get customTemplates() : string[] {
-		if (!this._customTemplates.length) {
-			this._customTemplates = Util.getDirectoryNames(path.join(this.rootPath, this._customTemplatesPath));
-		}
-		return this._customTemplates;
-	}*/
+	/*	private _customTemplates : string[];
+		public get customTemplates() : string[] {
+			if (!this._customTemplates.length) {
+				this._customTemplates = Util.getDirectoryNames(path.join(this.rootPath, this._customTemplatesPath));
+			}
+			return this._customTemplates;
+		}*/
 
 	private _customTemplates: Template[] = [];
 	public get customTemplates(): Template[] {
@@ -75,8 +76,8 @@ export class BaseProjectLibrary implements ProjectLibrary {
 			const componentFolders: string[] = Util.getDirectoryNames(this.rootPath)
 				.filter(
 					x => x !== this._projectsPath &&
-					x !== this._customTemplatesPath &&
-					x !== this._generateCommandPath);
+						x !== this._customTemplatesPath &&
+						x !== this._generateCommandPath);
 
 			for (const componentFolder of componentFolders) {
 
@@ -97,7 +98,7 @@ export class BaseProjectLibrary implements ProjectLibrary {
 	/**
 	 *
 	 */
-	constructor(private rootPath: string) {}
+	constructor(private rootPath: string) { }
 
 	public getTemplateById(id: string): Template {
 		return this.templates.find(x => x.id === id);
@@ -167,8 +168,8 @@ export class BaseProjectLibrary implements ProjectLibrary {
 
 	public getComponentsByGroup(group: string): Component[] {
 		return this.components.filter(x => x.group === group)
-		.sort((a, b) => b.groupPriority - a.groupPriority);
-}
+			.sort((a, b) => b.groupPriority - a.groupPriority);
+	}
 
 	// /**
 	//  * Return Component Groups with descriptions

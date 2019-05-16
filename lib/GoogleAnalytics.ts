@@ -3,6 +3,7 @@ import * as fs from "fs";
 import * as path from "path";
 import * as qs from "querystring";
 import { ProjectConfig } from "./ProjectConfig";
+import { GoogleAnalyticsParameters } from "./types/index";
 import { Util } from "./Util";
 
 class GoogleAnalytics {

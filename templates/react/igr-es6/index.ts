@@ -1,9 +1,6 @@
 import { BaseProjectLibrary } from "../../../lib/BaseProjectLibrary";
 
 class IgrReactProjectLibrary extends BaseProjectLibrary {
-	/**
-	 *
-	 */
 	constructor() {
 		super(__dirname);
 		this.name = "Ignite UI for React";

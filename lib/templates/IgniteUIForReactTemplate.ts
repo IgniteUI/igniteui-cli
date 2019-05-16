@@ -1,5 +1,7 @@
 import * as fs from "fs-extra";
 import * as path from "path";
+
+import { AddTemplateArgs, ControlExtraConfiguration, Template } from "../types/index";
 import { Util } from "../Util";
 
 export class IgniteUIForReactTemplate implements Template {
@@ -62,7 +64,8 @@ export class IgniteUIForReactTemplate implements Template {
 		viewsArr.push({
 			componentPath: this.getViewLink(name),
 			path: "/" + this.folderName(Util.nameFromPath(name)),
-			text: this.getToolbarLink(name) });
+			text: this.getToolbarLink(name)
+		});
 
 		fs.writeFileSync(path.join(projectPath, this.configFile), JSON.stringify(viewsArr, null, 4));
 	}

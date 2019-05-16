@@ -1,6 +1,5 @@
-import * as path from "path";
 import { AngularTemplate } from "../../../../../lib/templates/AngularTemplate";
-import { Util } from "../../../../../lib/Util";
+import { ControlExtraConfiguration } from "../../../../../lib/types/index";
 
 class EditorsCalculationForm extends AngularTemplate {
 	private extraConfigurations: ControlExtraConfiguration[];

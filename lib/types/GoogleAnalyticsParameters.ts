@@ -1,6 +1,8 @@
-interface GoogleAnalyticsParameters {
-	/** The tracking ID / web property ID. The format is UA-XXXX-Y.
-	 *  All collected data is associated by this ID. */
+export interface GoogleAnalyticsParameters {
+	/**
+	 * The tracking ID / web property ID. The format is UA-XXXX-Y.
+	 *  All collected data is associated by this ID.
+	 */
 	tid?: string;
 
 	/** Application name. Should be always 'igniteui-cli'. */
@@ -18,7 +20,8 @@ interface GoogleAnalyticsParameters {
 	/** The Protocol version. The current value is '1'. */
 	v?: number;
 
-	/** The type of hit. Must be 'screenview', 'event' or 'exception'.
+	/**
+	 * The type of hit. Must be 'screenview', 'event' or 'exception'.
 	 * Use 'screenview' for each command.
 	 * Use 'event' for each user input.
 	 * Use 'exception' for exceptions.
@@ -34,9 +37,11 @@ interface GoogleAnalyticsParameters {
 	/** Command in which the event happens. */
 	ec?: string;
 
-	/** Ths could be:
+	/**
+	 * Ths could be:
 	 * - 'subcommand [subcommand name]' for command with subcommands;
-	 * - the question form the wizard for the wizard command; */
+	 * - the question form the wizard for the wizard command;
+	 */
 	el?: string;
 
 	/** The user input related to this action. */

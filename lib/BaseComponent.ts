@@ -1,4 +1,5 @@
 import * as path from "path";
+import { Component, Template } from "./types/index";
 import { Util } from "./Util";
 
 export class BaseComponent implements Component {
@@ -30,7 +31,7 @@ export class BaseComponent implements Component {
 		const templatePaths = Util.getDirectoryNames(this.basePath);
 
 		for (const templatePath of templatePaths) {
-			modulePath = path.join(this.basePath,  templatePath);
+			modulePath = path.join(this.basePath, templatePath);
 			templates.push(require(modulePath));
 		}
 		return templates;
