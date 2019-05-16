@@ -12,19 +12,6 @@ export class EmptyPageTemplate extends BaseIgxProject implements ProjectTemplate
 	public projectType: string = "igx-ts";
 	public hasExtraConfiguration: boolean = false;
 
-	public generateConfig(name: string, theme: string, ...options: any[]): {[key: string]: any} {
-		return {
-			"$(cliVersion)": Util.version(),
-			"$(CustomTheme)": "",
-			"$(dash-name)": Util.lowerDashed(name),
-			"$(DefaultTheme)": "",
-			"$(name)": name,
-			"$(projectTemplate)": this.id,
-			"$(theme)": theme,
-			"__path__": name
-		};
-	}
-
 	public get templatePath(): string[] {
 		return [...super.templatePath, path.join(__dirname, "files")];
 	}
