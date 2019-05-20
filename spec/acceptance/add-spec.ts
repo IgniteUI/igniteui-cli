@@ -1,4 +1,3 @@
-
 import * as fs from "fs-extra";
 import { EOL } from "os";
 import { parse } from "path";
