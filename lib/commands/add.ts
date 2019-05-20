@@ -1,4 +1,3 @@
-import * as path from "path";
 import { GoogleAnalytics } from "../GoogleAnalytics";
 import { ProjectConfig } from "../ProjectConfig";
 import { TemplateManager } from "../TemplateManager";
@@ -123,9 +122,13 @@ command = {
 				"red");
 			return false;
 		}
-
-		if (await template.generateFiles(process.cwd(), fileName, options || {})) {
-			//successful
+		const config = template.generateConfig(fileName, options || {});
+		let fail = false;
+		const templatePaths = template.templatePaths;
+		for (const templatePath of templatePaths) {
+			fail = fail || !await Util.processTemplates(templatePath, process.cwd(), config);
+		}
+		if (!fail && templatePaths.length) {
 			template.registerInProject(process.cwd(), fileName, options || {});
 			command.templateManager.updateProjectConfiguration(template);
 			template.packages.forEach(x => PackageManager.queuePackage(x));

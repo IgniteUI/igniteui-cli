@@ -29,9 +29,9 @@ class EditorsAngularComponent extends AngularTemplate {
 		this.dependencies = ["igEditors"];
 		this.hasExtraConfiguration = false;
 	}
-	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
+	public generateConfig(name: string, ...options: any[]): {[key: string]: any} {
 		this.widget = this.mapItem.widget;
-		return super.generateFiles(projectPath, name, options);
+		return super.generateConfig(name, options);
 	}
 }
 

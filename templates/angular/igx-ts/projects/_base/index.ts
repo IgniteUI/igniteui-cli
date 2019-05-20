@@ -25,7 +25,11 @@ $app-palette: igx-palette($primary, $secondary);
 @include igx-theme($app-palette);
 `;
 	private DEFAULT_THEME = `,
-              "node_modules/igniteui-angular/styles/igniteui-angular.css"`;
+			  "node_modules/igniteui-angular/styles/igniteui-angular.css"`;
+
+	public get templatePaths(): string[] {
+		return [path.join(__dirname, "files")];
+	}
 
 	public installModules(): void {
 		throw new Error("Method not implemented.");
@@ -37,7 +41,7 @@ $app-palette: igx-palette($primary, $secondary);
 		return [];
 	}
 	public setExtraConfiguration(extraConfigKeys: any[]) { }
-	public generateFiles(outputPath: string, name: string, theme: string, ...options: any[]): Promise<boolean> {
+	public generateConfig(name: string, theme: string, ...options: any[]): {[key: string]: any} {
 		const config = {
 			"$(cliVersion)": Util.version(),
 			"$(CustomTheme)": "",
@@ -59,7 +63,6 @@ $app-palette: igx-palette($primary, $secondary);
 				break;
 		}
 
-		const pathsConfig = {};
-		return Util.processTemplates(path.join(__dirname, "./files"), path.join(outputPath, name), config, pathsConfig);
+		return config;
 	}
 }

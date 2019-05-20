@@ -2,7 +2,7 @@ import { BaseTemplate } from "./BaseTemplate";
 
 /** Interface for project templates */
 export interface ProjectTemplate extends BaseTemplate {
-	/** This method should be called after generateFiles completes. */
+	/** This method should be called after generateConfig completes. */
 	installModules(): void;
 
 	/**
@@ -14,5 +14,5 @@ export interface ProjectTemplate extends BaseTemplate {
 	upgradeIgniteUIPackage(projectPath: string, packagePath: string): void;
 
 	/** Generates template files. */
-	generateFiles(outputPath: string, name: string, theme: string, ...options: any[]): Promise<boolean>;
+	generateConfig(name: string, theme: string, ...options: any[]): {[key: string]: any};
 }

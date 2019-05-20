@@ -34,12 +34,12 @@ class EditorsJQueryTemplate extends jQueryTemplate {
 		this.projectType = "js";
 		this.dependencies = ["igEditors"];
 	}
-	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
+	public generateConfig(name: string, ...options: any[]): {[key: string]: any} {
 		const extraConfig = {
 			"$(widget)": this.mapItem.widget.toString()
 		};
 
-		return super.generateFiles(projectPath, name, { extraConfig });
+		return super.generateConfig(name, { extraConfig });
 	}
 }
 

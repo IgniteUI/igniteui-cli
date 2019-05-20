@@ -1,4 +1,5 @@
 import * as inquirer from "inquirer";
+import * as path from "path";
 import { default as add } from "../../lib/commands/add";
 import { default as start } from "../../lib/commands/start";
 import { GoogleAnalytics } from "../../lib/GoogleAnalytics";
@@ -31,7 +32,8 @@ describe("Unit - PromptSession", () => {
 		// tslint:disable:object-literal-sort-keys
 		const mockProject = {
 			name: "Project 1",
-			generateFiles: () => Promise.resolve(true)
+			generateConfig: () => Promise.resolve(true),
+			templatePaths: ["test"]
 		};
 		const mockProjectLibrary = {
 			themes: ["infragistics", "infragistics.less"],
@@ -59,6 +61,7 @@ describe("Unit - PromptSession", () => {
 			getProjectLibraryNames: projectLibraries,
 			getProjectLibraryByName: mockProjectLibrary
 		});
+		mockTemplate.templatePaths = ["test"];
 		const mockSession = new PromptSession(mockTemplate);
 		const mockQuestion: inquirer.Question = {
 			type: "list",
@@ -71,6 +74,7 @@ describe("Unit - PromptSession", () => {
 		spyOn(Util, "log");
 		spyOn(Util, "directoryExists").and.returnValue(false);
 		spyOn(Util, "isAlphanumericExt").and.returnValue(true);
+		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
 		spyOn(Util, "gitInit");
 		spyOn(inquirer, "prompt").and.returnValues(Promise.resolve({ projectName: "Test Project" }),
 			Promise.resolve({ framework: "Custom Framework 1" }),
@@ -127,8 +131,10 @@ describe("Unit - PromptSession", () => {
 			}
 		} /* as Config */);
 		// tslint:disable:object-literal-sort-keys
-		const mockProject = jasmine.createSpyObj({ generateFiles: Promise.resolve(true) });
+		const mockConfig = { test: "test" };
+		const mockProject = jasmine.createSpyObj({ generateConfig: mockConfig });
 		mockProject.name = "Project";
+		mockProject.templatePaths = ["test"];
 		const mockProjectLibrary = {
 			themes: ["infragistics"],
 			projectIds: ["empty"],
@@ -150,6 +156,7 @@ describe("Unit - PromptSession", () => {
 			getProjectLibraryNames: null,
 			getProjectLibraryByName: mockProjectLibrary
 		});
+		mockTemplate.templatePaths = ["test"];
 		const mockSession = new PromptSession(mockTemplate);
 		spyOn(Util, "greenCheck").and.returnValue("");
 		spyOn(Util, "log");
@@ -161,6 +168,8 @@ describe("Unit - PromptSession", () => {
 		);
 		spyOn(process, "chdir");
 		spyOn(mockSession, "chooseActionLoop");
+		spyOn(process, "cwd").and.returnValue("Mock");
+		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
 		await mockSession.start();
 
 		// prompt only for project name:
@@ -180,7 +189,8 @@ describe("Unit - PromptSession", () => {
 
 		expect(Util.log).toHaveBeenCalledWith("  Framework: Custom Framework 1");
 		expect(Util.log).toHaveBeenCalledWith("  Project type: Ignite UI for Angular");
-		expect(mockProject.generateFiles).toHaveBeenCalledWith(process.cwd(), "Test Project", mockProjectLibrary.themes[0]);
+		expect(mockProject.generateConfig).toHaveBeenCalledWith("Test Project", mockProjectLibrary.themes[0]);
+		expect(Util.processTemplates).toHaveBeenCalledWith("test", path.join("Mock", "Test Project") , mockConfig, false);
 
 		expect(Util.log).toHaveBeenCalledWith(" Project structure generated.");
 		expect(Util.gitInit).toHaveBeenCalled();
@@ -192,7 +202,8 @@ describe("Unit - PromptSession", () => {
 		// tslint:disable:object-literal-sort-keys
 		const mockProject = {
 			name: "Project 1",
-			generateFiles: () => Promise.resolve(true)
+			generateConfig: () => ({ test: "test" }),
+			templatePaths: ["test"]
 		};
 		const mockProjectLibrary = {
 			projectIds: ["empty"],
@@ -220,6 +231,7 @@ describe("Unit - PromptSession", () => {
 			getProjectLibraryNames: projectLibraries,
 			getProjectLibraryByName: mockProjectLibrary
 		});
+		mockTemplate.templatePaths = ["test"];
 		const mockSession = new PromptSession(mockTemplate);
 		const mockQuestion: inquirer.Question = {
 			type: "list",
@@ -296,7 +308,7 @@ describe("Unit - PromptSession", () => {
 			description: "mockComponent description"
 		};
 		const mockProject = {
-			generateFiles: () => Promise.resolve(true)
+			generateConfig: () => Promise.resolve(true)
 		};
 		const mockProjectLibrary = jasmine.createSpyObj("mockProjectLibrary", {
 			name: "mockProjectLibrary",
@@ -391,7 +403,7 @@ describe("Unit - PromptSession", () => {
 			}]
 		};
 		const mockProject = {
-			generateFiles: () => Promise.resolve(true)
+			generateConfig: () => Promise.resolve(true)
 		};
 		const mockProjectLibrary = jasmine.createSpyObj("mockProjectLibrary", {
 			name: "mockProjectLibrary",
@@ -471,7 +483,7 @@ describe("Unit - PromptSession", () => {
 			templates: mockComponentTemplates
 		};
 		const mockProject = {
-			generateFiles: () => Promise.resolve(true)
+			generateConfig: () => Promise.resolve(true)
 		};
 		const mockProjectLibrary = jasmine.createSpyObj("mockProjectLibrary", {
 			name: "mockProjectLibrary",
@@ -569,7 +581,7 @@ describe("Unit - PromptSession", () => {
 	});
 	it("chooseActionLoop - Complete and Run should update default port", async done => {
 		const mockProject = {
-			generateFiles: () => Promise.resolve(true)
+			generateConfig: () => Promise.resolve(true)
 		};
 		const mockProjectLibrary = jasmine.createSpyObj("mockProjectLibrary", {
 			name: "mockProjectLibrary",

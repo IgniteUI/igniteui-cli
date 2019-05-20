@@ -13,6 +13,10 @@ class EmptyAngularProject implements ProjectTemplate {
 	public projectType: string = "ig-ts";
 	public hasExtraConfiguration: boolean = false;
 
+	public get templatePaths(): string[] {
+		return [path.join(__dirname, "files")];
+	}
+
 	public installModules(): void {
 		throw new Error("Method not implemented.");
 	}
@@ -33,17 +37,15 @@ class EmptyAngularProject implements ProjectTemplate {
 		return [];
 	}
 	public setExtraConfiguration(extraConfigKeys: any[]) { }
-	public generateFiles(outputPath: string, name: string, theme: string, ...options: any[]): Promise<boolean> {
-		const config = {
+	public generateConfig(name: string, theme: string, ...options: any[]): {[key: string]: any} {
+		return {
 			"$(cliVersion)": Util.version(),
 			"$(dash-name)": Util.lowerDashed(name),
+			"$(description)": this.description,
 			"$(name)": name,
 			"$(theme)": theme,
 			"__path__": name
 		};
-		config["$(description)"] = this.description;
-		const pathsConfig = {};
-		return Util.processTemplates(path.join(__dirname, "./files"), path.join(outputPath, name), config, pathsConfig);
 	}
 }
 module.exports = new EmptyAngularProject();

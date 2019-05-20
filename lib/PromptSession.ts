@@ -1,5 +1,6 @@
 import chalk from "chalk";
 import * as inquirer from "inquirer";
+import * as path from "path";
 import { default as add } from "./commands/add";
 import { default as start } from "./commands/start";
 import { GoogleAnalytics } from "./GoogleAnalytics";
@@ -7,7 +8,7 @@ import { PackageManager } from "./packages/PackageManager";
 import { ProjectConfig } from "./ProjectConfig";
 import { TemplateManager } from "./TemplateManager";
 import {
-	Component, ComponentGroup, Config, ControlExtraConfigType, ControlExtraConfiguration, Framework,
+	Component, Config, ControlExtraConfigType, ControlExtraConfiguration, Framework,
 	FrameworkId, ProjectLibrary, ProjectTemplate, Template
 } from "./types/index";
 import { Util } from "./Util";
@@ -87,7 +88,10 @@ export class PromptSession {
 			theme = await this.getTheme(projLibrary);
 
 			Util.log("  Generating project structure.");
-			await projTemplate.generateFiles(process.cwd(), projectName, theme);
+			const config = projTemplate.generateConfig(projectName, theme);
+			for (const templatePath of projTemplate.templatePaths) {
+				await Util.processTemplates(templatePath, path.join(process.cwd(), projectName), config, false);
+			}
 
 			Util.log(Util.greenCheck() + " Project structure generated.");
 			if (!this.config.skipGit) {

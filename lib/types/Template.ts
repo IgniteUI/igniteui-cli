@@ -19,9 +19,7 @@ export interface Template extends BaseTemplate {
 	packages: string[];
 
 	/** Generates template files. */
-	generateFiles(
-		projectPath: string, name: string, options?: { [key: string]: any }): Promise<boolean>;
-
+	generateConfig(name: string, options?: {[key: string]: any}): {[key: string]: any};
 	/** Called when the template is added to a project */
 	registerInProject(projectPath: string, name: string, options?: AddTemplateArgs);
 }

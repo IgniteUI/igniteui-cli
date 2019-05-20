@@ -73,8 +73,7 @@ describe("Unit - Generate command", () => {
 				"$(templateFramework)": "jquery",
 				"$(templateName)": "custom-template",
 				"$(templateType)": "js"
-			},
-			null);
+			});
 
 		const addHandlerExpectedParameter = {
 			property: "customTemplates",

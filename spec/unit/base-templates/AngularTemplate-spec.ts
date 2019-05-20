@@ -18,7 +18,7 @@ describe("Unit - AngularTemplate Base", () => {
 		public widget = "widget no-process";
 	}
 
-	it("generateFiles call processTemplates with correct path and variables", async done => {
+	it("generateConfig call processTemplates with correct path and variables", async done => {
 		const expected = {
 			"$(name)": "my component",
 			"$(ClassName)": "MyComponent",
@@ -31,22 +31,23 @@ describe("Unit - AngularTemplate Base", () => {
 			"$(nameMerged)": "TestTemplate"
 		};
 		spyOn(Util, "processTemplates");
-		spyOn(Util, "validateTemplate").and.returnValue(true);
+		// const validateSpy = spyOn<any>(Util, "validateTemplate").and.returnValue(true);
 
 		const templ = new TestTemplate();
-		templ.generateFiles("/target/path", "my component", {});
-		expect(Util.validateTemplate).toHaveBeenCalledWith(
-			path.join("root/path" , "files"),
-			"/target/path",
-			expected, {});
-		expect(Util.processTemplates).toHaveBeenCalledWith(
-			path.join("root/path" , "files"),
-			"/target/path",
-			expected, {});
+		const actual = templ.generateConfig("my component", {});
+		expect(actual).toEqual(expected);
+		// expect(validateSpy).toHaveBeenCalledWith(
+		// 	path.join("root/path" , "files"),
+		// 	"/target/path",
+		// 	expected, {});
+		// expect(Util.processTemplates).toHaveBeenCalledWith(
+		// 	path.join("root/path" , "files"),
+		// 	"/target/path",
+		// 	expected, {});
 		done();
 	});
 
-	it("generateFiles merge passed variables", async done => {
+	it("generateConfig merge passed variables", async done => {
 		const expected = {
 			"$(name)": "page",
 			"$(ClassName)": "Page",
@@ -63,21 +64,22 @@ describe("Unit - AngularTemplate Base", () => {
 			"$(cliVersion)": Util.version()
 		};
 		spyOn(Util, "processTemplates");
-		spyOn(Util, "validateTemplate").and.returnValue(true);
+		// const validateSpy = spyOn<any>(Util, "validateTemplate").and.returnValue(true);
 
 		const templ = new TestWidgetTemplate("root");
-		templ.generateFiles("/target/path", "page", { extraConfig : {
+		const actual = templ.generateConfig("page", { extraConfig : {
 			"$(extraConfig1)" : "extraConfig1",
 			"$(gridFeatures)" : "{ features }"
 		} });
-		expect(Util.validateTemplate).toHaveBeenCalledWith(
-			path.join("root" , "files"),
-			"/target/path",
-			expected, {});
-		expect(Util.processTemplates).toHaveBeenCalledWith(
-			path.join("root" , "files"),
-			"/target/path",
-			expected, {});
+		expect(actual).toEqual(expected);
+		// expect(validateSpy).toHaveBeenCalledWith(
+		// 	path.join("root" , "files"),
+		// 	"/target/path",
+		// 	expected, {});
+		// expect(Util.processTemplates).toHaveBeenCalledWith(
+		// 	path.join("root" , "files"),
+		// 	"/target/path",
+		// 	expected, {});
 		done();
 	});
 

@@ -36,7 +36,7 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 		}];
 	}
 
-	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
+	public generateConfig(name: string, ...options: any[]): {[key: string]: any} {
 		const columnFeatures = [];
 		const gridFeatures = [];
 		let pinningConfig: {};
@@ -58,7 +58,7 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 			};
 		}
 
-		return super.generateFiles(projectPath, name, { extraConfig, pinningConfig });
+		return super.generateConfig(name, { extraConfig, pinningConfig });
 	}
 
 	//tslint:disable

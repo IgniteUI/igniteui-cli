@@ -12,23 +12,8 @@ export class AuthSideProject extends SideNavProject implements ProjectTemplate {
 	public projectType: string = "igx-ts";
 	public hasExtraConfiguration: boolean = false;
 
-	public async generateFiles(outputPath: string, name: string, theme: string, ...options: any[]): Promise<boolean> {
-		const config = {
-			"$(cliVersion)": Util.version(),
-			"$(CustomTheme)": "",
-			"$(dash-name)": Util.lowerDashed(name),
-			"$(DefaultTheme)": "",
-			"$(name)": name,
-			"$(theme)": theme,
-			"__path__": name
-		};
-		const pathsConfig = {};
-		await super.generateFiles(outputPath, name, theme, ...options);
-		// if (!await super.generateFiles(outputPath, name, theme, ...options)) {
-		// 	// TODO ?
-		// 	return false;
-		// }
-		return Util.processTemplates(path.join(__dirname, "./files"), path.join(outputPath, name), config, pathsConfig);
+	public get templatePaths() {
+		return [...super.templatePaths, path.join(__dirname, "files")];
 	}
 }
 export default new AuthSideProject();

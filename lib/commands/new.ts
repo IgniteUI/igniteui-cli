@@ -1,3 +1,4 @@
+import * as path from "path";
 import { GoogleAnalytics } from "../GoogleAnalytics";
 import { PackageManager } from "../packages/PackageManager";
 import { ProjectConfig } from "../ProjectConfig";
@@ -121,7 +122,11 @@ command = {
 			cd14: theme
 		});
 
-		await projTemplate.generateFiles(process.cwd(), argv.name, theme);
+		const config = projTemplate.generateConfig(argv.name, theme);
+		for (const templatePath of projTemplate.templatePaths) {
+			await Util.processTemplates(templatePath, path.join(process.cwd(), argv.name), config, false);
+		}
+
 		Util.log(Util.greenCheck() + " Project Created");
 
 		if (!argv["skip-git"] && !ProjectConfig.getConfig().skipGit) {

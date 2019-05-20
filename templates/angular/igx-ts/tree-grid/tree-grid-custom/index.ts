@@ -35,7 +35,7 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 		}];
 	}
 
-	public generateFiles(projectPath: string, name: string, ...options: any[]): Promise<boolean> {
+	public generateConfig(name: string, ...options: any[]): {[key: string]: any} {
 		const columnFeatures = [];
 		const columnBoolFeatures = [];
 		const treeGridFeatures = [];
@@ -144,7 +144,7 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 			"$(selectedFeatures)": selectedFeatures,
 			"$(treeGridFeatures)": treeGridFeatures.join(" ")
 		};
-		return super.generateFiles(projectPath, name, { extraConfig });
+		return super.generateConfig(name, { extraConfig });
 	}
 
 	private formatTreeGridFeatures(feature: string, columnFeatures: any[], columnBoolFeatures: any[]) {

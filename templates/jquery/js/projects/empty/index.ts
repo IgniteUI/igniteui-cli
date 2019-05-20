@@ -13,6 +13,10 @@ class EmptyProject implements ProjectTemplate {
 	public hasExtraConfiguration: boolean = false;
 	public routesFile = "bs-routes.json";
 
+	public get templatePaths(): string[] {
+		return [path.join(__dirname, "files")];
+	}
+
 	public upgradeIgniteUIPackage(projectPath: string, packagePath: string): void {
 		const filePath = path.join(projectPath, this.routesFile);
 		const routes = fs.readFileSync(path.join(projectPath, this.routesFile), "utf8");
@@ -25,15 +29,14 @@ class EmptyProject implements ProjectTemplate {
 		fs.writeFileSync(filePath, JSON.stringify(config, null, 4));
 	}
 
-	public generateFiles(outputPath: string, name: string, theme: string, ...options: any[]): Promise<boolean> {
-		const outDir = path.join(outputPath, name);
+	public generateConfig(name: string, theme: string, ...options: any[]): {[key: string]: any} {
 		let themePath = "";
 		if (theme.indexOf(".less") !== -1 || theme.indexOf(".scss") !== -1) {
 			themePath = ".themes/" + theme.split(".")[0] + "/infragistics.theme.css";
 		} else {
 			themePath = "$(igniteuiSource)/css/themes/" + theme + "/infragistics.theme.css";
 		}
-		const variables = {
+		return {
 			"$(cliVersion)": Util.version(),
 			"$(dash-name)": Util.lowerDashed(name),
 			"$(description)": this.description,
@@ -42,11 +45,6 @@ class EmptyProject implements ProjectTemplate {
 			"$(theme)": theme,
 			"$(themePath)": themePath
 		};
-
-		//TODO
-
-		const pathsConfig = {};
-		return Util.processTemplates(path.join(__dirname, "./files"), outDir, variables, pathsConfig);
 	}
 
 	public installModules(): void {

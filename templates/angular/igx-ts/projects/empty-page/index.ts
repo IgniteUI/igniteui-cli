@@ -12,21 +12,8 @@ export class EmptyPageTemplate extends BaseIgxProject implements ProjectTemplate
 	public projectType: string = "igx-ts";
 	public hasExtraConfiguration: boolean = false;
 
-	public async generateFiles(outputPath: string, name: string, theme: string, ...options: any[]): Promise<boolean> {
-		const config = {
-			"$(cliVersion)": Util.version(),
-			"$(CustomTheme)": "",
-			"$(dash-name)": Util.lowerDashed(name),
-			"$(DefaultTheme)": "",
-			"$(name)": name,
-			"$(projectTemplate)": this.id,
-			"$(theme)": theme,
-			"__path__": name
-		};
-		const pathsConfig = {};
-
-		await super.generateFiles(outputPath, name, theme, ...options);
-		return Util.processTemplates(path.join(__dirname, "./files"), path.join(outputPath, name), config, pathsConfig);
+	public get templatePaths(): string[] {
+		return [...super.templatePaths, path.join(__dirname, "files")];
 	}
 }
 export default new EmptyPageTemplate();
