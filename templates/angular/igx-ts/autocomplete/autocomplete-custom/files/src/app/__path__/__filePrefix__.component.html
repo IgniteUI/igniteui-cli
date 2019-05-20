@@ -11,7 +11,7 @@
 				<input igxInput name="town" type="text" [igxAutocomplete]="townsPanel" [(ngModel)]="townSelected" />
 			</igx-input-group>
 			<igx-drop-down #townsPanel maxHeight="300px">
-				<igx-drop-down-item *ngFor="let town of towns | $(camelCaseName)StartsWith:townSelected" [value]="town">
+				<igx-drop-down-item *ngFor="let town of towns | <%=camelCaseName%>StartsWith:townSelected" [value]="town">
 					{{town}}
 				</igx-drop-down-item>
 			</igx-drop-down>

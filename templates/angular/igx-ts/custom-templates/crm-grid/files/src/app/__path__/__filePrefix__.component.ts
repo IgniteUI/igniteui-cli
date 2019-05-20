@@ -28,11 +28,11 @@ import { data } from './data';
 // tslint:disable:no-use-before-declare
 
 @Component({
-  selector: 'app-$(filePrefix)',
-  templateUrl: './$(filePrefix).component.html',
-  styleUrls: ['./$(filePrefix).component.scss']
+  selector: 'app-<%=filePrefix%>',
+  templateUrl: './<%=filePrefix%>.component.html',
+  styleUrls: ['./<%=filePrefix%>.component.scss']
 })
-export class $(ClassName)Component implements OnInit, AfterViewInit {
+export class <%=ClassName%>Component implements OnInit, AfterViewInit {
 
   @ViewChild('grid1', { read: IgxGridComponent })
   public grid1: IgxGridComponent;

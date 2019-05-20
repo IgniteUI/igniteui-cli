@@ -1,7 +1,7 @@
 import * as path from "path";
 import { TypeScriptFileUpdate } from "../project-utility/TypeScriptFileUpdate";
 import { AddTemplateArgs, TemplateDependency } from "../types/index";
-import { defaultDelimiters, Util } from "../Util";
+import { Util } from "../Util";
 import { AngularTemplate } from "./AngularTemplate";
 
 export class IgniteUIForAngularTemplate extends AngularTemplate {
@@ -10,8 +10,8 @@ export class IgniteUIForAngularTemplate extends AngularTemplate {
 
 	public delimiters = {
 		content: {
-			end: `)`,
-			start: `$(`
+			end: `%>`,
+			start: `<%=`
 		},
 		path: {
 			end: `__`,
@@ -76,10 +76,10 @@ export class IgniteUIForAngularTemplate extends AngularTemplate {
 				const copy = Object.assign({}, dep);
 				copy.from = Util.relativePath(mainModulePath, path.join(projectPath, copy.from), true, true);
 				mainModule.addNgModuleMeta(copy,
-					Util.applyDelimiters(this.getBaseVariables(name), this.delimiters.content || defaultDelimiters.content));
+					Util.applyDelimiters(this.getBaseVariables(name), this.delimiters.content));
 			} else {
 				mainModule.addNgModuleMeta(dep,
-					Util.applyDelimiters(this.getBaseVariables(name), this.delimiters.content || defaultDelimiters.content));
+					Util.applyDelimiters(this.getBaseVariables(name), this.delimiters.content));
 			}
 		}
 		mainModule.finalize();

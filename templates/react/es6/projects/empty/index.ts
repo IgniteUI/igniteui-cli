@@ -1,8 +1,7 @@
 import * as fs from "fs-extra";
 import * as path from "path";
 import { ControlExtraConfiguration, ProjectTemplate } from "../../../../../lib/types/index";
-import { TemplateDelimiters } from "../../../../../lib/types/TemplateReplaceDelimiters";
-import { Util } from "../../../../../lib/Util";
+import { defaultDelimiters, Util } from "../../../../../lib/Util";
 
 class EmptyProject implements ProjectTemplate {
 	public _updateFile: string = "webpack.config.js";
@@ -13,16 +12,7 @@ class EmptyProject implements ProjectTemplate {
 	public projectType: string = "jsx";
 	public dependencies: string[];
 	public hasExtraConfiguration: boolean = false;
-	public delimiters = {
-		content: {
-			end: `)`,
-			start: `$(`
-		},
-		path: {
-			end: `__`,
-			start: `__`
-		}
-	};
+	public delimiters = defaultDelimiters;
 
 	public get templatePaths(): string[] {
 		return [path.join(__dirname, "files")];

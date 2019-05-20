@@ -4,12 +4,12 @@ import { IgxLinearGraphRangeComponent } from "igniteui-angular-gauges/ES5/igx-li
 import { LinearGraphNeedleShape } from "igniteui-angular-gauges/ES5/LinearGraphNeedleShape";
 
 @Component({
-  selector: 'app-$(filePrefix)',
-  templateUrl: './$(filePrefix).component.html',
-  styleUrls: ['./$(filePrefix).component.scss'],
+  selector: 'app-<%=filePrefix%>',
+  templateUrl: './<%=filePrefix%>.component.html',
+  styleUrls: ['./<%=filePrefix%>.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class $(ClassName)Component implements AfterViewInit {
+export class <%=ClassName%>Component implements AfterViewInit {
 
   @ViewChild("linearGauge")
   public linearGauge: IgxLinearGaugeComponent;

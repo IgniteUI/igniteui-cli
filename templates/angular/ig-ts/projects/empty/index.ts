@@ -1,7 +1,7 @@
 import * as path from "path";
 import { ControlExtraConfiguration } from "../../../../../lib/types/ControlExtraConfiguration";
 import { ProjectTemplate } from "../../../../../lib/types/index";
-import { Util } from "../../../../../lib/Util";
+import { defaultDelimiters, Util } from "../../../../../lib/Util";
 import { ProjectConfig } from "./../../../../../lib/ProjectConfig";
 
 class EmptyAngularProject implements ProjectTemplate {
@@ -12,16 +12,7 @@ class EmptyAngularProject implements ProjectTemplate {
 	public framework: string = "angular";
 	public projectType: string = "ig-ts";
 	public hasExtraConfiguration: boolean = false;
-	public delimiters = {
-		content: {
-			end: `)`,
-			start: `$(`
-		},
-		path: {
-			end: `__`,
-			start: `__`
-		}
-	};
+	public delimiters = defaultDelimiters;
 
 	public get templatePaths(): string[] {
 		return [path.join(__dirname, "files")];

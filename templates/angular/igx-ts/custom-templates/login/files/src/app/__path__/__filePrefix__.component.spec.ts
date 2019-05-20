@@ -1,23 +1,23 @@
 import { async, TestBed, ComponentFixture } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { $(ClassName)Component } from './$(filePrefix).component';
+import { <%=ClassName%>Component } from './<%=filePrefix%>.component';
 import { IgxInputGroupModule, IgxIconModule, IgxButtonModule, IgxRippleModule } from 'igniteui-angular';
 
-describe('$(ClassName)Component', () => {
-  let component: $(ClassName)Component;
-  let fixture: ComponentFixture<$(ClassName)Component>;
+describe('<%=ClassName%>Component', () => {
+  let component: <%=ClassName%>Component;
+  let fixture: ComponentFixture<<%=ClassName%>Component>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [$(ClassName)Component],
+      declarations: [<%=ClassName%>Component],
       imports: [ ReactiveFormsModule, NoopAnimationsModule, IgxInputGroupModule, IgxIconModule, IgxButtonModule, IgxRippleModule ]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent($(ClassName)Component);
+    fixture = TestBed.createComponent(<%=ClassName%>Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

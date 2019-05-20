@@ -13,11 +13,11 @@ import {
 // tslint:disable:no-use-before-declare
 
 @Component({
-selector: 'app-$(filePrefix)',
-templateUrl: './$(filePrefix).component.html',
-styleUrls: ['./$(filePrefix).component.scss']
+selector: 'app-<%=filePrefix%>',
+templateUrl: './<%=filePrefix%>.component.html',
+styleUrls: ['./<%=filePrefix%>.component.scss']
 })
-export class $(ClassName)Component implements OnInit, OnDestroy {
+export class <%=ClassName%>Component implements OnInit, OnDestroy {
 
   @ViewChild('grid1', { read: IgxGridComponent })
   public grid1: IgxGridComponent;

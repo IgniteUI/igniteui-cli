@@ -1,7 +1,7 @@
 import * as fs from "fs-extra";
 import * as path from "path";
 import { ControlExtraConfiguration, ProjectTemplate } from "../../../../../lib/types/index";
-import { Util } from "../../../../../lib/Util";
+import { defaultDelimiters, Util } from "../../../../../lib/Util";
 
 class EmptyProject implements ProjectTemplate {
 	public id: string = "jquery";
@@ -12,16 +12,7 @@ class EmptyProject implements ProjectTemplate {
 	public projectType: string = "js";
 	public hasExtraConfiguration: boolean = false;
 	public routesFile = "bs-routes.json";
-	public delimiters = {
-		content: {
-			end: `)`,
-			start: `$(`
-		},
-		path: {
-			end: `__`,
-			start: `__`
-		}
-	};
+	public delimiters = defaultDelimiters;
 
 	public get templatePaths(): string[] {
 		return [path.join(__dirname, "files")];

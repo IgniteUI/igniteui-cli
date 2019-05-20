@@ -1,6 +1,6 @@
-# $(name)
+# <%=name%>
 
-This project was generated with [Ignite UI CLI](https://github.com/IgniteUI/igniteui-cli) version $(cliVersion).
+This project was generated with [Ignite UI CLI](https://github.com/IgniteUI/igniteui-cli) version <%=cliVersion%>.
 
 ## Development server
 

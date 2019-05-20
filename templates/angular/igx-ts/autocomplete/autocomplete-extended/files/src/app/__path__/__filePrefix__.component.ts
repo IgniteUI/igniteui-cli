@@ -3,11 +3,11 @@ import { townsExtended } from './towns-data-extended';
 import { IgxToastComponent, IgxToastPosition } from 'igniteui-angular';
 
 @Component({
-    selector: 'app-$(filePrefix)',
-    templateUrl: './$(filePrefix).component.html',
-    styleUrls: ['./$(filePrefix).component.scss']
+    selector: 'app-<%=filePrefix%>',
+    templateUrl: './<%=filePrefix%>.component.html',
+    styleUrls: ['./<%=filePrefix%>.component.scss']
 })
-export class $(ClassName)Component {
+export class <%=ClassName%>Component {
     public extendedTowns: any;
     public townSelected: string;
     public postalCode: string;
@@ -27,15 +27,15 @@ export class $(ClassName)Component {
     }
 }
 
-@Pipe({ name: '$(camelCaseName)StartsWith' })
-export class  $(ClassName)PipeStartsWith implements PipeTransform {
+@Pipe({ name: '<%=camelCaseName%>StartsWith' })
+export class  <%=ClassName%>PipeStartsWith implements PipeTransform {
     public transform(collection: any[], term = '') {
         return collection.filter((item) => item.name.toString().toLowerCase().startsWith(term.trim().toLowerCase()));
     }
 }
 
-@Pipe({ name: '$(camelCaseName)RegionContains' })
-export class $(ClassName)RegionContains implements PipeTransform {
+@Pipe({ name: '<%=camelCaseName%>RegionContains' })
+export class <%=ClassName%>RegionContains implements PipeTransform {
     transform(regions: any[], term = '') {
         return this.filterRegions(regions, term);
     }
