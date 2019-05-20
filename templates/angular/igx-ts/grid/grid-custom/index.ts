@@ -158,14 +158,14 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 			}
 		}
 		const extraConfig = {
-			"$(checkBoxBind)": checkBoxBind,
-			"$(columnBoolFeatures)": columnBoolFeatures.join(" "),
-			"$(columnFeatures)": columnFeatures.join(" "),
-			"$(columnPinning)": columnPinning,
-			"$(datePickerEditor)": datePickerEditor,
-			"$(gridFeatures)": gridFeatures.join(" "),
-			"$(groupByColumn)": groupByColumn,
-			"$(selectedFeatures)": selectedFeatures
+			checkBoxBind,
+			columnPinning,
+			datePickerEditor,
+			groupByColumn,
+			selectedFeatures,
+			columnBoolFeatures: columnBoolFeatures.join(" "),
+			columnFeatures: columnFeatures.join(" "),
+			gridFeatures: gridFeatures.join(" ")
 		};
 		return super.generateConfig(name, { extraConfig });
 	}

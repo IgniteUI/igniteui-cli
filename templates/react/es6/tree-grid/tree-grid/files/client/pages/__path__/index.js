@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from 'components/Header';
-import $(Control) from 'components/__path__';
+import $(Control) from 'components/$(path)';
 
 export default () => (
   <article className="$(ClassName)">

@@ -1,4 +1,5 @@
 import { ControlExtraConfiguration } from "./ControlExtraConfiguration";
+import { TemplateDelimiters } from "./TemplateReplaceDelimiters";
 
 /** Base template interface */
 export interface BaseTemplate {
@@ -10,6 +11,9 @@ export interface BaseTemplate {
 
 	/** Description of what the template includes */
 	description: string;
+
+	/** An object that specifies what string should be used as start and end delimiters */
+	delimiters: TemplateDelimiters;
 
 	/** List of dependencies needed to load components. */
 	dependencies: Array<(string | object)>;

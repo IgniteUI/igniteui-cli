@@ -137,7 +137,7 @@ describe("Generate command", () => {
 
 		const pathDirectory = path.join(templateFolderPath, "files", "src", "app", "components", "__path__");
 		expect(fs.existsSync(pathDirectory)).toBeTruthy();
-		expect(fs.existsSync(path.join(pathDirectory, "__name__.component.ts"))).toBeTruthy();
+		expect(fs.existsSync(path.join(pathDirectory, "__filePrefix__.component.ts"))).toBeTruthy();
 		done();
 	});
 
@@ -178,10 +178,10 @@ describe("Generate command", () => {
 
 		const pathDirectory = path.join(templateFolderPath, "files", "src", "app", "__path__");
 		expect(fs.existsSync(pathDirectory)).toBeTruthy();
-		expect(fs.existsSync(path.join(pathDirectory, "__name__.component.scss"))).toBeTruthy();
-		expect(fs.existsSync(path.join(pathDirectory, "__name__.component.html"))).toBeTruthy();
-		expect(fs.existsSync(path.join(pathDirectory, "__name__.component.spec.ts"))).toBeTruthy();
-		expect(fs.existsSync(path.join(pathDirectory, "__name__.component.ts"))).toBeTruthy();
+		expect(fs.existsSync(path.join(pathDirectory, "__filePrefix__.component.scss"))).toBeTruthy();
+		expect(fs.existsSync(path.join(pathDirectory, "__filePrefix__.component.html"))).toBeTruthy();
+		expect(fs.existsSync(path.join(pathDirectory, "__filePrefix__.component.spec.ts"))).toBeTruthy();
+		expect(fs.existsSync(path.join(pathDirectory, "__filePrefix__.component.ts"))).toBeTruthy();
 		done();
 	});
 

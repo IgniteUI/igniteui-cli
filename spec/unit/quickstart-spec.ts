@@ -24,7 +24,7 @@ describe("Unit - Quickstart command", () => {
 		const outDir = path.join(process.cwd(), "angular-quickstart");
 		const quickStartFiles = path.join(__dirname, "../../templates/quickstart", "angular");
 
-		expect(Util.processTemplates).toHaveBeenCalledWith(quickStartFiles, outDir, {}, false);
+		expect(Util.processTemplates).toHaveBeenCalledWith(quickStartFiles, outDir, {}, {}, false);
 		expect(Util.execSync).toHaveBeenCalledWith("npm install");
 		expect(Util.execSync).toHaveBeenCalledWith("npm start");
 		expect(Util.log).toHaveBeenCalledWith("Quick Start!");
@@ -52,7 +52,7 @@ describe("Unit - Quickstart command", () => {
 		const outDir = path.join(process.cwd(), "jquery-quickstart");
 		const quickStartFiles = path.join(__dirname, "../../templates/quickstart", "jquery");
 
-		expect(Util.processTemplates).toHaveBeenCalledWith(quickStartFiles, outDir, {}, false);
+		expect(Util.processTemplates).toHaveBeenCalledWith(quickStartFiles, outDir, {}, {}, false);
 		expect(Util.log).toHaveBeenCalledWith("Quick Start!");
 		expect(Util.log).toHaveBeenCalledWith("jquery-quickstart loaded");
 		expect(Util.log).toHaveBeenCalledTimes(2);
@@ -67,7 +67,7 @@ describe("Unit - Quickstart command", () => {
 		const outDir = path.join(process.cwd(), "react-quickstart");
 		const quickStartFiles = path.join(__dirname, "../../templates/quickstart", "react");
 
-		expect(Util.processTemplates).toHaveBeenCalledWith(quickStartFiles, outDir, {}, false);
+		expect(Util.processTemplates).toHaveBeenCalledWith(quickStartFiles, outDir, {}, {}, false);
 		expect(Util.execSync).toHaveBeenCalledWith("npm install");
 		expect(Util.execSync).toHaveBeenCalledWith("npm run webpack");
 		expect(Util.log).toHaveBeenCalledWith("Quick Start!");

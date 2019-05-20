@@ -1,6 +1,7 @@
 import * as fs from "fs-extra";
 import * as path from "path";
 import { ControlExtraConfiguration, ProjectTemplate } from "../../../../../lib/types/index";
+import { TemplateDelimiters } from "../../../../../lib/types/TemplateReplaceDelimiters";
 import { Util } from "../../../../../lib/Util";
 
 class EmptyProject implements ProjectTemplate {
@@ -12,6 +13,16 @@ class EmptyProject implements ProjectTemplate {
 	public projectType: string = "jsx";
 	public dependencies: string[];
 	public hasExtraConfiguration: boolean = false;
+	public delimiters = {
+		content: {
+			end: `)`,
+			start: `$(`
+		},
+		path: {
+			end: `__`,
+			start: `__`
+		}
+	};
 
 	public get templatePaths(): string[] {
 		return [path.join(__dirname, "files")];
@@ -32,12 +43,12 @@ class EmptyProject implements ProjectTemplate {
 
 		//TODO update the config with [{key: "keyname", "value"}]
 		return {
-			"$(cliVersion)": Util.version(),
-			"$(dash-name)": Util.lowerDashed(name),
-			"$(description)": this.description,
-			"$(name)": name,
-			"$(theme)": theme,
-			"__path__": name
+			"cliVersion": Util.version(),
+			"dash-name": Util.lowerDashed(name),
+			"description": this.description,
+			"name": name,
+			"path": name,
+			"theme": theme
 		};
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {

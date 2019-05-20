@@ -12,6 +12,16 @@ class EmptyProject implements ProjectTemplate {
 	public projectType: string = "js";
 	public hasExtraConfiguration: boolean = false;
 	public routesFile = "bs-routes.json";
+	public delimiters = {
+		content: {
+			end: `)`,
+			start: `$(`
+		},
+		path: {
+			end: `__`,
+			start: `__`
+		}
+	};
 
 	public get templatePaths(): string[] {
 		return [path.join(__dirname, "files")];
@@ -29,7 +39,7 @@ class EmptyProject implements ProjectTemplate {
 		fs.writeFileSync(filePath, JSON.stringify(config, null, 4));
 	}
 
-	public generateConfig(name: string, theme: string, ...options: any[]): {[key: string]: any} {
+	public generateConfig(name: string, theme: string, ...options: any[]): { [key: string]: any } {
 		let themePath = "";
 		if (theme.indexOf(".less") !== -1 || theme.indexOf(".scss") !== -1) {
 			themePath = ".themes/" + theme.split(".")[0] + "/infragistics.theme.css";
@@ -37,13 +47,13 @@ class EmptyProject implements ProjectTemplate {
 			themePath = "$(igniteuiSource)/css/themes/" + theme + "/infragistics.theme.css";
 		}
 		return {
-			"$(cliVersion)": Util.version(),
-			"$(dash-name)": Util.lowerDashed(name),
-			"$(description)": this.description,
-			"$(igniteuiSource)": "./node_modules/ignite-ui",
-			"$(name)": name,
-			"$(theme)": theme,
-			"$(themePath)": themePath
+			name,
+			theme,
+			themePath,
+			"cliVersion": Util.version(),
+			"dash-name": Util.lowerDashed(name),
+			"description": this.description,
+			"igniteuiSource": "./node_modules/ignite-ui"
 		};
 	}
 

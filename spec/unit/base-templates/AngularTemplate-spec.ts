@@ -1,6 +1,5 @@
 import * as path from "path";
 import { TypeScriptFileUpdate } from "../../../lib/project-utility/TypeScriptFileUpdate";
-import { TypeScriptUtils } from "../../../lib/project-utility/TypeScriptUtils";
 import { ProjectConfig } from "../../../lib/ProjectConfig";
 import { AngularTemplate } from "../../../lib/templates/AngularTemplate";
 import { Util } from "../../../lib/Util";
@@ -20,15 +19,14 @@ describe("Unit - AngularTemplate Base", () => {
 
 	it("generateConfig call processTemplates with correct path and variables", async done => {
 		const expected = {
-			"$(name)": "my component",
-			"$(ClassName)": "MyComponent",
-			"__name__": "my-component",
-			"__path__": "my-component",
-			"$(filePrefix)": "my-component",
-			"$(description)": "test description",
-			"$(cliVersion)": Util.version(),
-			"$(camelCaseName)": "myComponent",
-			"$(nameMerged)": "TestTemplate"
+			name: "my component",
+			ClassName: "MyComponent",
+			path: "my-component",
+			filePrefix: "my-component",
+			description: "test description",
+			cliVersion: Util.version(),
+			camelCaseName: "myComponent",
+			nameMerged: "TestTemplate"
 		};
 		spyOn(Util, "processTemplates");
 		// const validateSpy = spyOn<any>(Util, "validateTemplate").and.returnValue(true);
@@ -49,27 +47,26 @@ describe("Unit - AngularTemplate Base", () => {
 
 	it("generateConfig merge passed variables", async done => {
 		const expected = {
-			"$(name)": "page",
-			"$(ClassName)": "Page",
-			"__name__": "page",
-			"__path__": "page",
-			"$(filePrefix)": "page",
-			"$(description)": undefined,
+			name: "page",
+			ClassName: "Page",
+			path: "page",
+			filePrefix: "page",
+			description: undefined,
 			// widget
-			"$(widget)": "widget no-process",
+			widget: "widget no-process",
 			// extra
-			"$(extraConfig1)" : "extraConfig1",
-			"$(camelCaseName)": "page",
-			"$(gridFeatures)" : "{ features }",
-			"$(cliVersion)": Util.version()
+			extraConfig1 : "extraConfig1",
+			camelCaseName: "page",
+			gridFeatures : "{ features }",
+			cliVersion: Util.version()
 		};
 		spyOn(Util, "processTemplates");
 		// const validateSpy = spyOn<any>(Util, "validateTemplate").and.returnValue(true);
 
 		const templ = new TestWidgetTemplate("root");
 		const actual = templ.generateConfig("page", { extraConfig : {
-			"$(extraConfig1)" : "extraConfig1",
-			"$(gridFeatures)" : "{ features }"
+			extraConfig1 : "extraConfig1",
+			gridFeatures : "{ features }"
 		} });
 		expect(actual).toEqual(expected);
 		// expect(validateSpy).toHaveBeenCalledWith(

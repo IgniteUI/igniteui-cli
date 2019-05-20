@@ -67,11 +67,11 @@ class IgxMultiColumnHeadersTemplate extends IgniteUIForAngularTemplate {
 			selectedFeatures = features.join(", ");
 		}
 		const extraConfig = {
-			"$(checkBoxBind)": checkBoxBind,
-			"$(columnBoolFeatures)": columnBoolFeatures.join(" "),
-			"$(columnFeatures)": columnFeatures.join(" "),
-			"$(gridFeatures)": gridFeatures.join(" "),
-			"$(selectedFeatures)": selectedFeatures
+			checkBoxBind,
+			selectedFeatures,
+			columnBoolFeatures: columnBoolFeatures.join(" "),
+			columnFeatures: columnFeatures.join(" "),
+			gridFeatures: gridFeatures.join(" ")
 		};
 		return super.generateConfig(name, { extraConfig });
 	}

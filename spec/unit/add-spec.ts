@@ -50,6 +50,8 @@ describe("Unit - Add command", () => {
 		const mockConfig = { test: "test" };
 		mockTemplate.generateConfig.and.returnValue(mockConfig);
 		mockTemplate.templatePaths = ["test"];
+		const mockDelimiters = { mockDelimiter: { start: "test", end: "test" }};
+		mockTemplate.delimiters = mockDelimiters;
 		const errorCombos = [
 			{ name: "name.ts", inError: "name.ts" }, // file extension test
 			{ name: "1 is not valid", inError: "1 is not valid" },
@@ -78,7 +80,7 @@ describe("Unit - Add command", () => {
 		for (const item of validCombos) {
 			await addCmd.addTemplate(item.name, mockTemplate);
 			expect(mockTemplate.generateConfig).toHaveBeenCalledWith(item.valid, {});
-			expect(Util.processTemplates).toHaveBeenCalledWith("test", "Mock directory", mockConfig);
+			expect(Util.processTemplates).toHaveBeenCalledWith("test", "Mock directory", mockConfig, mockDelimiters);
 		}
 
 		done();

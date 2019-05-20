@@ -126,7 +126,7 @@ command = {
 		let fail = false;
 		const templatePaths = template.templatePaths;
 		for (const templatePath of templatePaths) {
-			fail = fail || !await Util.processTemplates(templatePath, process.cwd(), config);
+			fail = fail || !await Util.processTemplates(templatePath, process.cwd(), config, template.delimiters);
 		}
 		if (!fail && templatePaths.length) {
 			template.registerInProject(process.cwd(), fileName, options || {});
