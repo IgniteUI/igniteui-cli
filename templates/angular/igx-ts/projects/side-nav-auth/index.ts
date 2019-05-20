@@ -12,8 +12,8 @@ export class AuthSideProject extends SideNavProject implements ProjectTemplate {
 	public projectType: string = "igx-ts";
 	public hasExtraConfiguration: boolean = false;
 
-	public get templatePath() {
-		return [...super.templatePath, path.join(__dirname, "files")];
+	public get templatePaths() {
+		return [...super.templatePaths, path.join(__dirname, "files")];
 	}
 }
 export default new AuthSideProject();

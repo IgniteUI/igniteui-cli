@@ -13,7 +13,7 @@ class EmptyAngularProject implements ProjectTemplate {
 	public projectType: string = "ig-ts";
 	public hasExtraConfiguration: boolean = false;
 
-	public get templatePath(): string[] {
+	public get templatePaths(): string[] {
 		return [path.join(__dirname, "files")];
 	}
 

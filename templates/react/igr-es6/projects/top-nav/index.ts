@@ -12,8 +12,8 @@ export class TopNavIgrProject extends BaseIgrProject implements ProjectTemplate 
 	public projectType: string = "igr-es6";
 	public hasExtraConfiguration: boolean = false;
 
-	public get templatePath(): string[] {
-		return [...super.templatePath, path.join(__dirname, "files")];
+	public get templatePaths(): string[] {
+		return [...super.templatePaths, path.join(__dirname, "files")];
 	}
 }
 export default new TopNavIgrProject();

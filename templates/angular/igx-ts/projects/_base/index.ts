@@ -27,7 +27,7 @@ $app-palette: igx-palette($primary, $secondary);
 	private DEFAULT_THEME = `,
 			  "node_modules/igniteui-angular/styles/igniteui-angular.css"`;
 
-	public get templatePath(): string[] {
+	public get templatePaths(): string[] {
 		return [path.join(__dirname, "files")];
 	}
 

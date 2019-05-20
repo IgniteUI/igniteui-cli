@@ -1,3 +1,4 @@
+import * as path from "path";
 import { default as newCmd } from "../../lib/commands/new";
 import { GoogleAnalytics } from "../../lib/GoogleAnalytics";
 import { PackageManager } from "../../lib/packages/PackageManager";
@@ -162,9 +163,8 @@ describe("Unit - New command", () => {
 	it("Generates default without project type", async done => {
 		const mockTemplate = {
 			generateConfig: { test: "test" },
-			templatePath: ["test"]
+			templatePaths: ["test"]
 		};
-		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
 		const mockProjLib = {
 			getProject: () => {
 				return mockTemplate;
@@ -179,7 +179,10 @@ describe("Unit - New command", () => {
 		});
 		//spyOn(newCmd.template, "getFrameworkById").and.returnValue({});
 		//spyOn(newCmd.template, "getProjectLibrary").and.returnValue(mockProjLib);
-		spyOn(mockTemplate, "generateConfig");
+		const mockConfig = { test: "test" };
+		spyOn(mockTemplate, "generateConfig").and.returnValue(mockConfig);
+		spyOn(process, "cwd").and.returnValue("Mock dir");
+		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
 
 		await newCmd.execute({ name: "Test", framework: "jq", theme: "ig" });
 
@@ -187,6 +190,7 @@ describe("Unit - New command", () => {
 		expect(newCmd.template.getProjectLibrary).toHaveBeenCalledWith("jq");
 		expect(Util.log).toHaveBeenCalledWith("Project Name: Test, framework jq, type js, theme ig");
 		expect(mockTemplate.generateConfig).toHaveBeenCalledWith("Test", "ig");
+		expect(Util.processTemplates).toHaveBeenCalledWith("test", path.join("Mock dir", "Test"), mockConfig, false);
 		expect(PackageManager.installPackages).toHaveBeenCalled();
 		expect(process.chdir).toHaveBeenCalledWith("Test");
 		expect(process.chdir).toHaveBeenCalledWith("..");
@@ -197,7 +201,7 @@ describe("Unit - New command", () => {
 	it("Correctly generates passed project type", async done => {
 		const mockTemplate = {
 			generateConfig: { test: "test" },
-			templatePath: ["test"]
+			templatePaths: ["test"]
 		};
 		const mockProjLib = {
 			getProject: () => {
@@ -211,13 +215,17 @@ describe("Unit - New command", () => {
 			getFrameworkById: {},
 			getProjectLibrary: mockProjLib
 		});
-		spyOn(mockTemplate, "generateConfig");
+		const mockConfig = { test: "test" };
+		spyOn(mockTemplate, "generateConfig").and.returnValue(mockConfig);
+		spyOn(process, "cwd").and.returnValue("Mock dir");
+		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
 
 		await newCmd.execute({ name: "Test", framework: "jq", type: "type", theme: "ig" });
 
 		expect(newCmd.template.getFrameworkById).toHaveBeenCalledWith("jq");
 		expect(newCmd.template.getProjectLibrary).toHaveBeenCalledWith("jq", "type");
 		expect(mockTemplate.generateConfig).toHaveBeenCalledWith("Test", "ig");
+		expect(Util.processTemplates).toHaveBeenCalledWith("test", path.join("Mock dir", "Test"), mockConfig, false);
 		expect(PackageManager.installPackages).toHaveBeenCalled();
 		expect(process.chdir).toHaveBeenCalledWith("Test");
 		expect(process.chdir).toHaveBeenCalledWith("..");
@@ -231,7 +239,7 @@ describe("Unit - New command", () => {
 
 		const mockTemplate = {
 			generateConfig: { test: "test" },
-			templatePath: ["test"]
+			templatePaths: ["test"]
 		};
 		const mockProjLib = {
 			getProject: () => {
@@ -264,7 +272,7 @@ describe("Unit - New command", () => {
 
 		const mockTemplate = {
 			generateConfig: { test: "test" },
-			templatePath: ["test"]
+			templatePaths: ["test"]
 		};
 		const mockProjLib = {
 			getProject: () => {
@@ -292,7 +300,7 @@ describe("Unit - New command", () => {
 
 		const mockTemplate = {
 			generateConfig: { test: "test" },
-			templatePath: ["test"]
+			templatePaths: ["test"]
 		};
 		const mockProjLib = {
 			getProject: () => {
@@ -319,7 +327,7 @@ describe("Unit - New command", () => {
 	it("Skip package install with command option", async done => {
 		const mockTemplate = {
 			generateConfig: { test: "test" },
-			templatePath: ["test"]
+			templatePaths: ["test"]
 		};
 		const mockProjLib = {
 			getProject: () => {

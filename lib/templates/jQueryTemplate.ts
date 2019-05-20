@@ -31,7 +31,7 @@ export class jQueryTemplate implements Template {
 		this.hasExtraConfiguration = false;
 	}
 
-	public get templatePath(): string[] {
+	public get templatePaths(): string[] {
 		return [path.join(this.rootPath, "files")];
 	}
 

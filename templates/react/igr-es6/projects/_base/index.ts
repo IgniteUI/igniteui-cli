@@ -11,7 +11,7 @@ export class BaseIgrProject implements ProjectTemplate {
 	public dependencies: string[];
 	public hasExtraConfiguration: boolean = false;
 
-	public get templatePath(): string[] {
+	public get templatePaths(): string[] {
 		return [path.join(__dirname, "files")];
 	}
 

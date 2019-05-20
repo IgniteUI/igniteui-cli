@@ -124,7 +124,7 @@ command = {
 		}
 		const config = template.generateConfig(fileName, options || {});
 		let fail = false;
-		const templatePaths = template.templatePath;
+		const templatePaths = template.templatePaths;
 		for (const templatePath of templatePaths) {
 			fail = fail || !await Util.processTemplates(templatePath, process.cwd(), config);
 		}

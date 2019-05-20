@@ -23,7 +23,7 @@ export interface BaseTemplate {
 	/** This property controls if extra configuration is available to the template */
 	hasExtraConfiguration: boolean;
 	/** An array with the physical path to the template files */
-	templatePath: string[];
+	templatePaths: string[];
 
 	/** Generates template config */
 	generateConfig(name: string, ...options: any[]): { [key: string]: any };

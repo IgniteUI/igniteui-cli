@@ -13,7 +13,7 @@ class EmptyProject implements ProjectTemplate {
 	public hasExtraConfiguration: boolean = false;
 	public routesFile = "bs-routes.json";
 
-	public get templatePath(): string[] {
+	public get templatePaths(): string[] {
 		return [path.join(__dirname, "files")];
 	}
 
