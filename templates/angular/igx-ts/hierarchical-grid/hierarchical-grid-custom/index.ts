@@ -41,20 +41,20 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 		const gridFeatures = [];
 		let pinningConfig: {};
 		const extraConfig = {
-			"$(selectedFeatures)": this.getSelectedFeatures(columnFeatures, gridFeatures),
+			selectedFeatures: this.getSelectedFeatures(columnFeatures, gridFeatures),
 			// tslint:disable-next-line: object-literal-sort-keys
-			"$(columnFeatures)": columnFeatures.join(" "),
-			"$(gridFeatures)": gridFeatures.join(" "),
-			"$(rowIslandFeatures)": gridFeatures.join(" ").replace(/Singers/g, "Albums")
+			columnFeatures: columnFeatures.join(" "),
+			gridFeatures: gridFeatures.join(" "),
+			rowIslandFeatures: gridFeatures.join(" ").replace(/Singers/g, "Albums")
 		};
 		if (this.usePinning) {
 			pinningConfig = {
-				"$(album-pin)": this.pinningTemplate("Album"),
-				"$(artist-pin)": this.pinningTemplate("Artist"),
-				"$(awards-pin)": this.pinningTemplate("Awards"),
-				"$(grammy-pin)": this.pinningTemplate("Grammy"),
-				"$(launch-pin)": this.pinningTemplate("Launch"),
-				"$(nominations-pin)": this.pinningTemplate("Nominations")
+				"album-pin": this.pinningTemplate("Album"),
+				"artist-pin": this.pinningTemplate("Artist"),
+				"awards-pin": this.pinningTemplate("Awards"),
+				"grammy-pin": this.pinningTemplate("Grammy"),
+				"launch-pin": this.pinningTemplate("Launch"),
+				"nominations-pin": this.pinningTemplate("Nominations")
 			};
 		}
 

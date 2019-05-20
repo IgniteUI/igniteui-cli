@@ -89,10 +89,11 @@ const command = {
 			projectLib.generateTemplateFolderPath,
 			outDir,
 			{
-				"$(templateFramework)": argv.framework,
-				"$(templateName)": argv.name,
-				"$(templateType)": argv.type
-			});
+				templateFramework: argv.framework,
+				templateName: argv.name,
+				templateType: argv.type
+			},
+			{});
 		if (!res) {
 			return Util.error("Template generation failed!", "red");
 		}

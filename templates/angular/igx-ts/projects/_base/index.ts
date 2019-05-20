@@ -11,6 +11,16 @@ export class BaseIgxProject implements ProjectTemplate {
 	public framework: string = "angular";
 	public projectType: string = "igx-ts";
 	public hasExtraConfiguration: boolean = false;
+	public delimiters = {
+		content: {
+			end: `)`,
+			start: `$(`
+		},
+		path: {
+			end: `__`,
+			start: `__`
+		}
+	};
 
 	private CUSTOM_THEME
 		= `/* See: https://www.infragistics.com/products/ignite-ui-angular/angular/components/themes.html */
@@ -43,23 +53,23 @@ $app-palette: igx-palette($primary, $secondary);
 	public setExtraConfiguration(extraConfigKeys: any[]) { }
 	public generateConfig(name: string, theme: string, ...options: any[]): {[key: string]: any} {
 		const config = {
-			"$(cliVersion)": Util.version(),
-			"$(CustomTheme)": "",
-			"$(dash-name)": Util.lowerDashed(name),
-			"$(DefaultTheme)": "",
-			"$(name)": name,
-			"$(projectTemplate)": this.id,
-			"$(theme)": theme,
-			"__path__": name
+			"cliVersion": Util.version(),
+			"CustomTheme": "",
+			"dash-name": Util.lowerDashed(name),
+			"DefaultTheme": "",
+			"name": name,
+			"path": name,
+			"projectTemplate": this.id,
+			"theme": theme
 		};
 
 		switch (theme) {
 			case "Custom":
-				config["$(CustomTheme)"] = this.CUSTOM_THEME;
+				config["CustomTheme"] = this.CUSTOM_THEME;
 				break;
 			case "Default":
 			default:
-				config["$(DefaultTheme)"] = this.DEFAULT_THEME;
+				config["DefaultTheme"] = this.DEFAULT_THEME;
 				break;
 		}
 

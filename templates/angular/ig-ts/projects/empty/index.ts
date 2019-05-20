@@ -12,6 +12,16 @@ class EmptyAngularProject implements ProjectTemplate {
 	public framework: string = "angular";
 	public projectType: string = "ig-ts";
 	public hasExtraConfiguration: boolean = false;
+	public delimiters = {
+		content: {
+			end: `)`,
+			start: `$(`
+		},
+		path: {
+			end: `__`,
+			start: `__`
+		}
+	};
 
 	public get templatePaths(): string[] {
 		return [path.join(__dirname, "files")];
@@ -39,12 +49,12 @@ class EmptyAngularProject implements ProjectTemplate {
 	public setExtraConfiguration(extraConfigKeys: any[]) { }
 	public generateConfig(name: string, theme: string, ...options: any[]): {[key: string]: any} {
 		return {
-			"$(cliVersion)": Util.version(),
-			"$(dash-name)": Util.lowerDashed(name),
-			"$(description)": this.description,
-			"$(name)": name,
-			"$(theme)": theme,
-			"__path__": name
+			"cliVersion": Util.version(),
+			"dash-name": Util.lowerDashed(name),
+			"description": this.description,
+			"name": name,
+			"path": name,
+			"theme": theme
 		};
 	}
 }

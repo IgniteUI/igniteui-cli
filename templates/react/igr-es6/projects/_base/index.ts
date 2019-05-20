@@ -10,6 +10,16 @@ export class BaseIgrProject implements ProjectTemplate {
 	public projectType: string = "jsx";
 	public dependencies: string[];
 	public hasExtraConfiguration: boolean = false;
+	public delimiters = {
+		content: {
+			end: `)`,
+			start: `$(`
+		},
+		path: {
+			end: `__`,
+			start: `__`
+		}
+	};
 
 	public get templatePaths(): string[] {
 		return [path.join(__dirname, "files")];
@@ -34,13 +44,13 @@ export class BaseIgrProject implements ProjectTemplate {
 
 	protected getVariablesConfig(name: string, theme: string) {
 		return {
-			"$(cliVersion)": Util.version(),
-			"$(dash-name)": Util.lowerDashed(name),
-			"$(description)": this.description,
-			"$(name)": name,
-			"$(projectTemplate)": this.id,
-			"$(theme)": theme,
-			"__path__": name
+			name,
+			theme,
+			"cliVersion": Util.version(),
+			"dash-name": Util.lowerDashed(name),
+			"description": this.description,
+			"path": name,
+			"projectTemplate": this.id
 		};
 	}
 }

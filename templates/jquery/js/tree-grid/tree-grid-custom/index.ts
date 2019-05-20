@@ -39,7 +39,7 @@ class TreeGridCustomTemplate extends jQueryTemplate {
 		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 4);
 
 		const extraConfig = {
-			"$(treeGridFeatures)": features
+			treeGridFeatures: features
 		};
 		return super.generateConfig(name, { extraConfig });
 	}

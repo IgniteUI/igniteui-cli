@@ -7,15 +7,25 @@ import through2 = require("through2");
 import { BaseComponent } from "./BaseComponent";
 import { GoogleAnalytics } from "./GoogleAnalytics";
 import { Component, ComponentGroup, Template } from "./types";
+import {  Delimiter, TemplateDelimiters } from "./types/TemplateReplaceDelimiters";
 const imageExtensions = [".png", ".jpg", ".jpeg", ".gif", ".bmp", ".ico"];
 const applyConfig = (configuration: { [key: string]: string }) => {
 	return through2((data, enc, cb) => {
-		cb(null, new Buffer(Util.applyConfigTransformation(data.toString(), configuration)));
+		cb(null, Buffer.from(Util.applyConfigTransformation(data.toString(), configuration)));
 	});
 };
 
 const noop = () => through2.obj();
-
+const defaultDelimiters: TemplateDelimiters = {
+	content: {
+		start: `$(`,
+		end: `)`
+	},
+	path: {
+		start: `__`,
+		end: `__`
+	}
+};
 class Util {
 	public static getCurrentDirectoryBase() {
 		return path.basename(process.cwd());
@@ -56,12 +66,13 @@ class Util {
 
 	public static async processTemplates(
 		sourcePath: string,
-		destinationPath: string, configuration: { [key: string]: string }, validate = true): Promise<boolean> {
+		destinationPath: string, configuration: { [key: string]: string },
+		delimiters: TemplateDelimiters, validate = true): Promise<boolean> {
 
 		sourcePath = sourcePath.replace(/\\/g, "/");
 		destinationPath = destinationPath.replace(/\\/g, "/");
 
-		if (validate && !this.validateTemplate(sourcePath, destinationPath, configuration)) {
+		if (validate && !this.validateTemplate(sourcePath, destinationPath, configuration, delimiters)) {
 			return false;
 		}
 
@@ -74,7 +85,8 @@ class Util {
 			}
 			for (const filePath of filePaths) {
 				let targetPath = filePath.replace(sourcePath, destinationPath);
-				targetPath = Util.applyConfigTransformation(targetPath, configuration);
+				targetPath = Util.applyConfigTransformation(targetPath, Util.applyDelimiters(configuration,
+					delimiters.path || defaultDelimiters.path));
 				Util.createDirectory(path.dirname(targetPath));
 				if (path.basename(targetPath) === "gitignore") {
 					targetPath = path.join(path.dirname(targetPath), ".gitignore");
@@ -83,7 +95,9 @@ class Util {
 				const isImage = imageExtensions.indexOf(path.extname(targetPath)) !== -1;
 				fs.createReadStream(filePath)
 					// for image files, just copy the content
-					.pipe(!isImage ? applyConfig(configuration) : noop())
+					.pipe(!isImage ?
+						applyConfig(Util.applyDelimiters(configuration, delimiters.content || defaultDelimiters.content))
+						: noop())
 					.pipe(writeStream);
 				writeStream.on("finish", () => {
 					if (--fileCount === 0) {
@@ -481,6 +495,14 @@ class Util {
 		return choiceItems;
 	}
 
+	public static applyDelimiters(config: {[key: string]: string }, delimiter: Delimiter) {
+		const obj = {};
+		for (const key of Object.keys(config)) {
+			obj[`${delimiter.start}${key}${delimiter.end}`] = config[key];
+		}
+		return obj;
+	}
+
 	private static incrementName(name: string, baseLength: number): string {
 		const text: string = name.slice(0, baseLength);
 		const number: number = parseInt(name.slice(baseLength + 1), 10) || 0;
@@ -500,7 +522,8 @@ class Util {
 
 	private static validateTemplate(
 		sourcePath: string,
-		destinationPath: string, configuration: { [key: string]: string }): boolean {
+		destinationPath: string, configuration: { [key: string]: string },
+		delimiters: TemplateDelimiters): boolean {
 
 		sourcePath = sourcePath.replace(/\\/g, "/");
 		destinationPath = destinationPath.replace(/\\/g, "/");
@@ -512,7 +535,8 @@ class Util {
 
 		for (let filePath of paths) {
 			filePath = filePath.replace(sourcePath, destinationPath);
-			filePath = Util.applyConfigTransformation(filePath, configuration);
+			filePath = Util.applyConfigTransformation(filePath, Util.applyDelimiters(configuration,
+				delimiters.path || defaultDelimiters.path));
 			if (fs.existsSync(filePath)) {
 				this.error(path.relative(process.cwd(), filePath) + " already exists!", "red");
 				return false;
@@ -522,4 +546,4 @@ class Util {
 	}
 }
 
-export { Util };
+export { Util, defaultDelimiters };

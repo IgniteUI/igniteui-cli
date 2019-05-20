@@ -1,6 +1,5 @@
 import * as path from "path";
 import { ProjectTemplate } from "../../../../../lib/types/index";
-import { Util } from "../../../../../lib/Util";
 import { BaseIgxProject } from "../_base";
 
 export class EmptyPageTemplate extends BaseIgxProject implements ProjectTemplate {

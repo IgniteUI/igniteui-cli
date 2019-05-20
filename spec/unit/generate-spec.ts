@@ -4,7 +4,6 @@ import * as path from "path";
 import { default as config } from "../../lib/commands/config";
 import { default as generateCmd } from "../../lib/commands/generate";
 import { GoogleAnalytics } from "../../lib/GoogleAnalytics";
-import { ProjectConfig } from "../../lib/ProjectConfig";
 import { Util } from "../../lib/Util";
 import { deleteAll } from "../helpers/utils";
 
@@ -70,10 +69,10 @@ describe("Unit - Generate command", () => {
 			projectLib.generateTemplateFolderPath,
 			outDir,
 			{
-				"$(templateFramework)": "jquery",
-				"$(templateName)": "custom-template",
-				"$(templateType)": "js"
-			});
+				templateFramework: "jquery",
+				templateName: "custom-template",
+				templateType: "js"
+			}, {});
 
 		const addHandlerExpectedParameter = {
 			property: "customTemplates",

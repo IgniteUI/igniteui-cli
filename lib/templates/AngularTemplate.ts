@@ -17,6 +17,17 @@ export class AngularTemplate implements Template {
 	public projectType: string;
 	public hasExtraConfiguration: boolean = false;
 	public packages = [];
+	public delimiters = {
+		content: {
+			end: `)`,
+			start: `$(`
+		},
+		path: {
+			end: `__`,
+			start: `__`
+		}
+	};
+
 	protected widget: string;
 
 	/**
@@ -87,20 +98,19 @@ export class AngularTemplate implements Template {
 
 	protected getBaseVariables(name: string) {
 		const config = {};
-		config["$(name)"] = Util.nameFromPath(name);
-		config["$(ClassName)"] = Util.className(Util.nameFromPath(name));
-		config["__name__"] = this.fileName(name);
-		config["__path__"] = this.folderName(name);
-		config["$(filePrefix)"] = this.fileName(name);
-		config["$(description)"] = this.description;
-		config["$(cliVersion)"] = Util.version();
-		config["$(camelCaseName)"] = Util.camelCase(name);
+		config["name"] = Util.nameFromPath(name);
+		config["ClassName"] = Util.className(Util.nameFromPath(name));
+		config["path"] = this.folderName(name);
+		config["filePrefix"] = this.fileName(name);
+		config["description"] = this.description;
+		config["cliVersion"] = Util.version();
+		config["camelCaseName"] = Util.camelCase(name);
 
 		if (this.widget) {
-			config["$(widget)"] = this.widget;
+			config["widget"] = this.widget;
 		}
 		if (this.name) {
-			config["$(nameMerged)"] = this.name.replace(/ /g, "");
+			config["nameMerged"] = this.name.replace(/ /g, "");
 		}
 		return config;
 	}

@@ -5,7 +5,7 @@ import {
 	IgxGridModule, IgxDatePickerModule, IgxCheckboxModule, IgxDialogModule, IgxHierarchicalGridModule
 } from 'igniteui-angular';
 import { $(ClassName)Component } from './$(filePrefix).component';
-import { HierarchicalGridWithTransactionsComponent } from './__name__-transactions.component';
+import { HierarchicalGridWithTransactionsComponent } from './$(filePrefix)-transactions.component';
 
 describe('$(ClassName)Component', () => {
   let component: $(ClassName)Component;

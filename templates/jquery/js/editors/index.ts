@@ -36,7 +36,7 @@ class EditorsJQueryTemplate extends jQueryTemplate {
 	}
 	public generateConfig(name: string, ...options: any[]): {[key: string]: any} {
 		const extraConfig = {
-			"$(widget)": this.mapItem.widget.toString()
+			widget: this.mapItem.widget.toString()
 		};
 
 		return super.generateConfig(name, { extraConfig });

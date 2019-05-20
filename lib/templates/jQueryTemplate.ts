@@ -21,6 +21,16 @@ export class jQueryTemplate implements Template {
 	public projectType: string;
 	public hasExtraConfiguration: boolean;
 	public packages = [];
+	public delimiters = {
+		content: {
+			end: `)`,
+			start: `$(`
+		},
+		path: {
+			end: `__`,
+			start: `__`
+		}
+	};
 
 	private configFile: string = "ignite-cli-views.js";
 	private replacePattern: RegExp = /\[[\s\S]*\](?=;)/;
@@ -44,16 +54,16 @@ export class jQueryTemplate implements Template {
 		const pathsConfig = {};
 		const projectConfig = ProjectConfig.getConfig();
 		if (projectConfig != null) {
-			pathsConfig["$(igniteuiSource)"] = projectConfig.project.igniteuiSource;
-			pathsConfig["$(themePath)"] = projectConfig.project.themePath;
+			pathsConfig["igniteuiSource"] = projectConfig.project.igniteuiSource;
+			pathsConfig["themePath"] = projectConfig.project.themePath;
 		}
-		config["__path__"] = this.folderName(name);
-		config["$(name)"] = Util.nameFromPath(name);
-		config["$(cssBlock)"] = this.getCssTags();
-		config["$(scriptBlock)"] = this.getScriptTags();
-		config["$(description)"] = this.description;
-		config["$(theme)"] = projectConfig.project.theme;
-		config["$(cliVersion)"] = Util.version();
+		config["path"] = this.folderName(name);
+		config["name"] = Util.nameFromPath(name);
+		config["cssBlock"] = this.getCssTags();
+		config["scriptBlock"] = this.getScriptTags();
+		config["description"] = this.description;
+		config["theme"] = projectConfig.project.theme;
+		config["cliVersion"] = Util.version();
 
 		return config;
 	}

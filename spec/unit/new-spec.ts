@@ -161,7 +161,9 @@ describe("Unit - New command", () => {
 	});
 
 	it("Generates default without project type", async done => {
+		const mockDelimiters = { mockDelimiter: { start: "test", end: "test" }};
 		const mockTemplate = {
+			delimiters: mockDelimiters,
 			generateConfig: { test: "test" },
 			templatePaths: ["test"]
 		};
@@ -190,7 +192,8 @@ describe("Unit - New command", () => {
 		expect(newCmd.template.getProjectLibrary).toHaveBeenCalledWith("jq");
 		expect(Util.log).toHaveBeenCalledWith("Project Name: Test, framework jq, type js, theme ig");
 		expect(mockTemplate.generateConfig).toHaveBeenCalledWith("Test", "ig");
-		expect(Util.processTemplates).toHaveBeenCalledWith("test", path.join("Mock dir", "Test"), mockConfig, false);
+		expect(Util.processTemplates)
+		.toHaveBeenCalledWith("test", path.join("Mock dir", "Test"), mockConfig, mockDelimiters, false);
 		expect(PackageManager.installPackages).toHaveBeenCalled();
 		expect(process.chdir).toHaveBeenCalledWith("Test");
 		expect(process.chdir).toHaveBeenCalledWith("..");
@@ -199,7 +202,9 @@ describe("Unit - New command", () => {
 	});
 
 	it("Correctly generates passed project type", async done => {
+		const mockDelimiters = { mockDelimiter: { start: "test", end: "test" }};
 		const mockTemplate = {
+			delimiters: mockDelimiters,
 			generateConfig: { test: "test" },
 			templatePaths: ["test"]
 		};
@@ -225,7 +230,8 @@ describe("Unit - New command", () => {
 		expect(newCmd.template.getFrameworkById).toHaveBeenCalledWith("jq");
 		expect(newCmd.template.getProjectLibrary).toHaveBeenCalledWith("jq", "type");
 		expect(mockTemplate.generateConfig).toHaveBeenCalledWith("Test", "ig");
-		expect(Util.processTemplates).toHaveBeenCalledWith("test", path.join("Mock dir", "Test"), mockConfig, false);
+		expect(Util.processTemplates)
+		.toHaveBeenCalledWith("test", path.join("Mock dir", "Test"), mockConfig, mockDelimiters, false);
 		expect(PackageManager.installPackages).toHaveBeenCalled();
 		expect(process.chdir).toHaveBeenCalledWith("Test");
 		expect(process.chdir).toHaveBeenCalledWith("..");

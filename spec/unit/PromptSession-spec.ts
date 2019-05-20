@@ -135,6 +135,8 @@ describe("Unit - PromptSession", () => {
 		const mockProject = jasmine.createSpyObj({ generateConfig: mockConfig });
 		mockProject.name = "Project";
 		mockProject.templatePaths = ["test"];
+		const mockDelimiters = { mockDelimiter: { start: "test", end: "test" }};
+		mockProject.delimiters = mockDelimiters;
 		const mockProjectLibrary = {
 			themes: ["infragistics"],
 			projectIds: ["empty"],
@@ -190,8 +192,8 @@ describe("Unit - PromptSession", () => {
 		expect(Util.log).toHaveBeenCalledWith("  Framework: Custom Framework 1");
 		expect(Util.log).toHaveBeenCalledWith("  Project type: Ignite UI for Angular");
 		expect(mockProject.generateConfig).toHaveBeenCalledWith("Test Project", mockProjectLibrary.themes[0]);
-		expect(Util.processTemplates).toHaveBeenCalledWith("test", path.join("Mock", "Test Project") , mockConfig, false);
-
+		expect(Util.processTemplates)
+		.toHaveBeenCalledWith("test", path.join("Mock", "Test Project"), mockConfig, mockDelimiters, false);
 		expect(Util.log).toHaveBeenCalledWith(" Project structure generated.");
 		expect(Util.gitInit).toHaveBeenCalled();
 		expect(mockSession.chooseActionLoop).toHaveBeenCalled();
@@ -645,7 +647,7 @@ describe("Unit - PromptSession", () => {
 		$app-palette: igx-palette($primary, $secondary);
 		@include igx-core();
 		@include igx-theme($app-palette);`;
-		const actualCall = (Util.processTemplates as jasmine.Spy).calls.argsFor(0)[2]["$(CustomTheme)"].replace(/\s/g, "");
+		const actualCall = (Util.processTemplates as jasmine.Spy).calls.argsFor(0)[2]["CustomTheme"].replace(/\s/g, "");
 		const expectedCall = CUSTOM_THEME.replace(/\s/g, "");
 		expect(actualCall).toEqual(expectedCall);
 		done();
@@ -667,7 +669,7 @@ describe("Unit - PromptSession", () => {
 		spyOn(process, "chdir");
 		await mockSession.start();
 		const DEFAULT_THEME = `,"node_modules/igniteui-angular/styles/igniteui-angular.css"`;
-		const actualCall = (Util.processTemplates as jasmine.Spy).calls.argsFor(0)[2]["$(DefaultTheme)"].replace(/\s/g, "");
+		const actualCall = (Util.processTemplates as jasmine.Spy).calls.argsFor(0)[2]["DefaultTheme"].replace(/\s/g, "");
 		const expectedCall = DEFAULT_THEME.replace(/\s/g, "");
 		expect(actualCall).toEqual(expectedCall);
 		done();

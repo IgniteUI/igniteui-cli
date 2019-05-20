@@ -2,6 +2,7 @@ import * as fs from "fs-extra";
 import * as path from "path";
 
 import { AddTemplateArgs, ControlExtraConfiguration, Template } from "../types/index";
+import { Delimiter } from "../types/TemplateReplaceDelimiters";
 import { Util } from "../Util";
 
 export class IgniteUIForReactTemplate implements Template {
@@ -17,7 +18,16 @@ export class IgniteUIForReactTemplate implements Template {
 	public projectType = "igr-es6";
 	public hasExtraConfiguration: boolean = false;
 	public packages = [];
-
+	public delimiters = {
+		content: {
+			end: `)`,
+			start: `$(`
+		},
+		path: {
+			end: `__`,
+			start: `__`
+		}
+	};
 	// non-standard template prop
 	protected widget: string;
 
@@ -39,16 +49,16 @@ export class IgniteUIForReactTemplate implements Template {
 			config = options["extraConfig"];
 		}
 
-		config["__path__"] = this.folderName(name); //folder name allowed spaces, any casing
-		config["$(name)"] = Util.nameFromPath(name); // this name should not have restrictions
-		config["$(ClassName)"] = Util.className(Util.nameFromPath(name)); //first letter capital, no spaces and no dashes,
-		config["$(cliVersion)"] = Util.version();
+		config["path"] = this.folderName(name); //folder name allowed spaces, any casing
+		config["name"] = Util.nameFromPath(name); // this name should not have restrictions
+		config["ClassName"] = Util.className(Util.nameFromPath(name)); //first letter capital, no spaces and no dashes,
+		config["cliVersion"] = Util.version();
 		if (this.widget) {
-			config["$(widget)"] = this.widget;
-			config["$(Control)"] = Util.className(this.widget);
+			config["widget"] = this.widget;
+			config["Control"] = Util.className(this.widget);
 		}
 		if (this.description) {
-			config["$(description)"] = this.description;
+			config["description"] = this.description;
 		}
 
 		return config;

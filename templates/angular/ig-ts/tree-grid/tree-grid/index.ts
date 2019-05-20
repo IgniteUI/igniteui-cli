@@ -38,7 +38,7 @@ class TreeGridTemplate extends AngularTemplate {
 
 	public generateConfig(name: string, ...options: any[]): {[key: string]: any} {
 		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 3);
-		const config = { "$(treeGridFeatures)": features };
+		const config = { treeGridFeatures: features };
 		return super.generateConfig(name, { extraConfig : config });
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {

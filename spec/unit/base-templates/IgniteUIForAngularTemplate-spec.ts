@@ -74,7 +74,7 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			templ.registerInProject("", "");
 			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith(
 				{ import: "test", from: "test" },
-				templ.getBaseVariables("")
+				Util.applyDelimiters(templ.getBaseVariables(""), templ.delimiters.content)
 			);
 			resetSpy(helpers.tsUpdateMock.addNgModuleMeta);
 
@@ -82,10 +82,10 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			templ.registerInProject("", "");
 			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith(
 				{ import: "test", from: "test" },
-				templ.getBaseVariables(""));
+				Util.applyDelimiters(templ.getBaseVariables(""), templ.delimiters.content));
 			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith(
 				{ declare: "test2", provide: "test2" },
-				templ.getBaseVariables(""));
+				Util.applyDelimiters(templ.getBaseVariables(""), templ.delimiters.content));
 
 			done();
 		});

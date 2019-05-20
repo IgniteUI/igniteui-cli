@@ -38,7 +38,7 @@ class GridEditingTemplate extends jQueryTemplate {
 	public generateConfig(name: string, ...options: any[]): {[key: string]: any} {
 		this.gridHelper.addFeature("Updating");
 		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 4);
-		const config = { "$(gridfeatures)": features };
+		const config = { gridfeatures: features };
 		return super.generateConfig(name, { extraConfig : config });
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {

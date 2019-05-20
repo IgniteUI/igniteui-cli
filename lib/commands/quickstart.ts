@@ -47,7 +47,8 @@ const command = {
 		const outDir = path.join(process.cwd(), name);
 
 		if (Util.directoryExists(path.join(__dirname, "../../templates/quickstart", argv.framework))) {
-			await Util.processTemplates(path.join(__dirname, "../../templates/quickstart", argv.framework), outDir, {}, false);
+			await Util.processTemplates(path.join(__dirname, "../../templates/quickstart", argv.framework),
+			outDir, {}, {}, false);
 		}
 		//change folder
 		process.chdir(name);

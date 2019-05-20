@@ -54,8 +54,8 @@ class IgxCalendarTemplate extends IgniteUIForAngularTemplate {
 		}
 
 		const extraConfig = {
-			"$(selectionMode)": selectionMode,
-			"$(selectionType)": selectionType
+			selectionMode,
+			selectionType
 		};
 
 		return super.generateConfig(name, { extraConfig });
