@@ -43,9 +43,9 @@ const command = {
 		}
 
 		if (argv.e2e && project.framework === "angular" && project.projectType === "igx-ts") {
-			Util.exec("npm run e2e", { stdio: "inherit" });
+			Util.execSync("npm run e2e", { stdio: "inherit" });
 		} else {
-			Util.exec("npm test", { stdio: "inherit" });
+			Util.execSync("npm test", { stdio: "inherit" });
 		}
 	}
 };

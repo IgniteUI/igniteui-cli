@@ -1,4 +1,4 @@
-import { exec, execSync, spawnSync } from "child_process";
+import { exec, spawnSync } from "child_process";
 import * as path from "path";
 import { ProjectConfig } from "../ProjectConfig";
 import { Config } from "../types/index";
@@ -88,7 +88,9 @@ export class PackageManager {
 			await this.flushQueue(false);
 			Util.log(`Installing ${managerCommand} packages`);
 			try {
-				const result = execSync(command, { stdio: "pipe", killSignal: "SIGINT" });
+				// inherit the parent process' stdin so we can catch if an attempt to interrupt the process is made
+				// ignore stdout and stderr as they will output unnecessary text onto the console
+				Util.execSync(command, { stdio: ["inherit"], killSignal: "SIGINT" });
 				Util.log(`Packages installed successfully`);
 			} catch (error) {
 				// ^C (SIGINT) produces status:3221225786 https://github.com/sass/node-sass/issues/1283#issuecomment-169450661
@@ -119,7 +121,7 @@ export class PackageManager {
 		}
 		try {
 			// tslint:disable-next-line:object-literal-sort-keys
-			const result = execSync(command, { stdio: "pipe", encoding: "utf8" });
+			Util.execSync(command, { stdio: "pipe", encoding: "utf8" });
 		} catch (error) {
 			Util.log(`Error uninstalling package ${packageName} with ${managerCommand}`);
 			if (verbose) {
@@ -137,7 +139,7 @@ export class PackageManager {
 		const command = this.getInstallCommand(managerCommand, packageName);
 		try {
 			// tslint:disable-next-line:object-literal-sort-keys
-			const result = execSync(command, { stdio: "pipe", encoding: "utf8" });
+			Util.execSync(command, { stdio: "pipe", encoding: "utf8" });
 		} catch (error) {
 			Util.log(`Error installing package ${packageName} with ${managerCommand}`);
 			if (verbose) {
@@ -193,7 +195,7 @@ export class PackageManager {
 		const fullPackageRegistry = config.igPackageRegistry;
 		try {
 			// tslint:disable-next-line:object-literal-sort-keys
-			const user = execSync(`npm whoami --registry=${fullPackageRegistry}`, { stdio: "pipe", encoding: "utf8" });
+			Util.execSync(`npm whoami --registry=${fullPackageRegistry}`, { stdio: "pipe", encoding: "utf8" });
 		} catch (error) {
 			// try registering the user:
 			Util.log(
@@ -216,7 +218,7 @@ export class PackageManager {
 			if (login.status === 0) {
 				//make sure scope is configured:
 				try {
-					execSync(`npm config set @infragistics:registry ${fullPackageRegistry}`);
+					Util.execSync(`npm config set @infragistics:registry ${fullPackageRegistry}`);
 					return true;
 				} catch (error) {
 					return false;

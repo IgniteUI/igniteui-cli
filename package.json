@@ -83,7 +83,6 @@
     "inquirer": "^6.2.2",
     "opn": "^5.3.0",
     "resolve": "^1.6.0",
-    "shelljs": "^0.7.8",
     "through2": "^2.0.3",
     "typescript": "^3.2.1",
     "yargs": "^8.0.2"
@@ -96,7 +95,6 @@
     "@types/inquirer": "0.0.35",
     "@types/jasmine": "^3.3.9",
     "@types/node": "^8.10.0",
-    "@types/shelljs": "^0.7.8",
     "browser-sync": "^2.26.3",
     "coveralls": "^3.0.0",
     "jasmine": "^3.3.1",

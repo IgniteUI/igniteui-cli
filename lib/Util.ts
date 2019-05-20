@@ -296,8 +296,25 @@ class Util {
 	 * @param options Command options
 	 * @throws {Error} On timeout or non-zero exit code. Error has 'status', 'signal', 'output', 'stdout', 'stderr'
 	 */
-	public static exec(command: string, options?: any) {
-		return execSync(command, options);
+	public static execSync(command: string, options?: any) {
+		try {
+			return execSync(command, options);
+		} catch (error) {
+			// execSync may throw an error during process interruption
+			// if this happens - stderr will contain "^C" which was appended in the checkExecSyncError function
+			// this means that a SIGINT was attempted and failed
+			// npm may be involved in this as it works just fine with any other node process
+			if (error.stderr && error.stderr.toString() === "^C") {
+				return process.exit();
+			}
+
+			// if SIGINT killed the process with no errors
+			if (error.status === 3221225786 || error.status > 128) {
+				return process.exit();
+			}
+
+			throw error;
+		}
 	}
 
 	/**
@@ -308,9 +325,9 @@ class Util {
 	public static gitInit(parentRoot, projectName) {
 		try {
 			const options = { cwd: path.join(parentRoot, projectName), stdio: [process.stdin, "ignore", "ignore"] };
-			Util.exec("git init", options);
-			Util.exec("git add .", options);
-			Util.exec("git commit -m " + "\"Initial commit for project: " + projectName + "\"", options);
+			Util.execSync("git init", options);
+			Util.execSync("git add .", options);
+			Util.execSync("git commit -m " + "\"Initial commit for project: " + projectName + "\"", options);
 			Util.log(Util.greenCheck() + " Git Initialized and Project '" + projectName + "' Committed");
 		} catch (error) {
 			Util.error("Git initialization failed. Install Git in order to automatically commit the project.", "yellow");

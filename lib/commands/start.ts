@@ -1,6 +1,5 @@
 import * as path from "path";
 import * as resolve from "resolve";
-import { exec } from "shelljs";
 import { GoogleAnalytics } from "../GoogleAnalytics";
 import { TemplateManager } from "../TemplateManager";
 import { Util } from "../Util";
@@ -82,10 +81,11 @@ command = {
 				}
 				/* falls through */
 			case "angular":
+				const options =  { stdio: ["inherit"], killSignal: "SIGINT" };
 				if (port) {
-					exec(`npm start -- --port=` + port);
+					Util.execSync(`npm start -- --port=` + port, options);
 				} else {
-					exec(`npm start`);
+					Util.execSync(`npm start`, options);
 				}
 				break;
 			default:

@@ -3,9 +3,6 @@ import * as resolve from "resolve";
 import { GoogleAnalytics } from "../GoogleAnalytics";
 import { Util } from "../Util";
 
-// TODO: remove. exec blocks main stdio!
-import shell = require("shelljs");
-
 // tslint:disable:object-literal-sort-keys
 const command = {
 	command: "quickstart",
@@ -66,8 +63,8 @@ const command = {
 
 		if (argv.framework === "react") {
 			Util.log("react-quickstart loaded");
-			shell.exec("npm install");
-			shell.exec("npm run webpack");
+			Util.execSync("npm install");
+			Util.execSync("npm run webpack");
 			// lite-server installed per project
 			const liteServer = require(resolve.sync("lite-server", { basedir: process.cwd() }));
 			liteServer.server();
@@ -75,13 +72,13 @@ const command = {
 
 		if (argv.framework === "angular") {
 			Util.log("angular-quickstart loaded");
-			shell.exec("npm install");
-			shell.exec("npm start");
+			Util.execSync("npm install");
+			Util.execSync("npm start");
 		}
 
 		if (argv.framework === "jquery") {
 			Util.log("jquery-quickstart loaded");
-			shell.exec("npm install");
+			Util.execSync("npm install");
 			// lite-server installed per project
 			const liteServer = require(resolve.sync("lite-server", { basedir: process.cwd() }));
 			liteServer.server();
