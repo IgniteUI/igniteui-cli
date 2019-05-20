@@ -1,6 +1,6 @@
 import * as path from "path";
 import { ControlExtraConfiguration, ProjectTemplate } from "../../../../../lib/types/index";
-import { Util } from "../../../../../lib/Util";
+import { defaultDelimiters, Util } from "../../../../../lib/Util";
 
 export class BaseIgrProject implements ProjectTemplate {
 	public id: string = "base";
@@ -10,16 +10,7 @@ export class BaseIgrProject implements ProjectTemplate {
 	public projectType: string = "jsx";
 	public dependencies: string[];
 	public hasExtraConfiguration: boolean = false;
-	public delimiters = {
-		content: {
-			end: `)`,
-			start: `$(`
-		},
-		path: {
-			end: `__`,
-			start: `__`
-		}
-	};
+	public delimiters = defaultDelimiters;
 
 	public get templatePaths(): string[] {
 		return [path.join(__dirname, "files")];

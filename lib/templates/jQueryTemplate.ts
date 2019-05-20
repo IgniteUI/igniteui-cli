@@ -2,7 +2,7 @@ import * as fs from "fs-extra";
 import * as path from "path";
 import { ProjectConfig } from "../ProjectConfig";
 import { AddTemplateArgs, ControlExtraConfiguration, Template } from "../types/index";
-import { Util } from "../Util";
+import { defaultDelimiters, Util } from "../Util";
 
 /**
  * Template with specific implementation for jQuery projects
@@ -21,16 +21,7 @@ export class jQueryTemplate implements Template {
 	public projectType: string;
 	public hasExtraConfiguration: boolean;
 	public packages = [];
-	public delimiters = {
-		content: {
-			end: `)`,
-			start: `$(`
-		},
-		path: {
-			end: `__`,
-			start: `__`
-		}
-	};
+	public delimiters = defaultDelimiters;
 
 	private configFile: string = "ignite-cli-views.js";
 	private replacePattern: RegExp = /\[[\s\S]*\](?=;)/;

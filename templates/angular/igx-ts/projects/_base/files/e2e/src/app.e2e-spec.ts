@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('$(name) App', () => {
+describe('<%=name%> App', () => {
   let page: AppPage;
 
   beforeEach(() => {
@@ -9,7 +9,7 @@ describe('$(name) App', () => {
 
   it('should display project name in navigation', () => {
     page.navigateTo();
-    expect(page.getNavText()).toEqual('$(name)');
+    expect(page.getNavText()).toEqual('<%=name%>');
   });
 
   it('should display welcome message', () => {

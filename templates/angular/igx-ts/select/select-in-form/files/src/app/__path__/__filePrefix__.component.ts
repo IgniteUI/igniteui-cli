@@ -2,11 +2,11 @@ import { Component, ViewChild } from '@angular/core';
 import { IgxSelectComponent, IgxToastPosition, IgxToastComponent } from 'igniteui-angular';
 
 @Component({
-    selector: 'app-$(filePrefix)',
-    styleUrls: ['$(filePrefix).component.scss'],
-    templateUrl: '$(filePrefix).component.html'
+    selector: 'app-<%=filePrefix%>',
+    styleUrls: ['<%=filePrefix%>.component.scss'],
+    templateUrl: '<%=filePrefix%>.component.html'
 })
-export class $(ClassName)Component {
+export class <%=ClassName%>Component {
     public selected;
     @ViewChild(IgxSelectComponent)
     public igxSelect: IgxSelectComponent;

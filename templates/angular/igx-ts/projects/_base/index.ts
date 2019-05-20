@@ -13,8 +13,8 @@ export class BaseIgxProject implements ProjectTemplate {
 	public hasExtraConfiguration: boolean = false;
 	public delimiters = {
 		content: {
-			end: `)`,
-			start: `$(`
+			end: `%>`,
+			start: `<%=`
 		},
 		path: {
 			end: `__`,

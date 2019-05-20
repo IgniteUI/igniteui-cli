@@ -5,12 +5,12 @@ import {
 import { data } from './local-data';
 
 @Component({
-    selector: 'app-$(filePrefix)',
-    templateUrl: './$(filePrefix).component.html',
-    styleUrls: ['./$(filePrefix).component.scss']
+    selector: 'app-<%=filePrefix%>',
+    templateUrl: './<%=filePrefix%>.component.html',
+    styleUrls: ['./<%=filePrefix%>.component.scss']
 })
 
-export class $(ClassName)Component implements OnInit {
+export class <%=ClassName%>Component implements OnInit {
     @ViewChild(IgxDropDownComponent) public igxDropDown: IgxDropDownComponent;
 
     public items: any[] = [];

@@ -14,8 +14,8 @@ class IgxAutocompleteTemplate extends IgniteUIForAngularTemplate {
 			import: ["IgxAutocompleteModule", "IgxDropDownModule", "IgxInputGroupModule"],
 			from: "igniteui-angular"
 		}, {
-			declare: ["$(ClassName)PipeStartsWith"],
-			from: "./src/app/$(path)/$(filePrefix).component.ts"
+			declare: ["<%=ClassName%>PipeStartsWith"],
+			from: "./src/app/<%=path%>/<%=filePrefix%>.component.ts"
 		}];
 	}
 }

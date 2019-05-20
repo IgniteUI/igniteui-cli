@@ -9,12 +9,12 @@ import { RadialGaugePivotShape } from 'igniteui-angular-gauges/ES5/RadialGaugePi
 import { RadialGaugeScaleOversweepShape } from 'igniteui-angular-gauges/ES5/RadialGaugeScaleOversweepShape';
 
 @Component({
-  selector: 'app-$(filePrefix)',
-  templateUrl: './$(filePrefix).component.html',
-  styleUrls: ['./$(filePrefix).component.scss'],
+  selector: 'app-<%=filePrefix%>',
+  templateUrl: './<%=filePrefix%>.component.html',
+  styleUrls: ['./<%=filePrefix%>.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class $(ClassName)Component implements AfterViewInit {
+export class <%=ClassName%>Component implements AfterViewInit {
 
   @ViewChild('radialGauge')
   public radialGauge: IgxRadialGaugeComponent;

@@ -4,16 +4,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
 	IgxGridModule, IgxDatePickerModule, IgxCheckboxModule, IgxDialogModule, IgxHierarchicalGridModule
 } from 'igniteui-angular';
-import { $(ClassName)Component } from './$(filePrefix).component';
-import { HierarchicalGridWithTransactionsComponent } from './$(filePrefix)-transactions.component';
+import { <%=ClassName%>Component } from './<%=filePrefix%>.component';
+import { HierarchicalGridWithTransactionsComponent } from './<%=filePrefix%>-transactions.component';
 
-describe('$(ClassName)Component', () => {
-  let component: $(ClassName)Component;
-  let fixture: ComponentFixture<$(ClassName)Component>;
+describe('<%=ClassName%>Component', () => {
+  let component: <%=ClassName%>Component;
+  let fixture: ComponentFixture<<%=ClassName%>Component>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ $(ClassName)Component, HierarchicalGridWithTransactionsComponent ],
+      declarations: [ <%=ClassName%>Component, HierarchicalGridWithTransactionsComponent ],
       imports: [ FormsModule, BrowserAnimationsModule, IgxGridModule, IgxHierarchicalGridModule,
          IgxDatePickerModule, IgxCheckboxModule, IgxDialogModule ]
     })
@@ -21,7 +21,7 @@ describe('$(ClassName)Component', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent($(ClassName)Component);
+    fixture = TestBed.createComponent(<%=ClassName%>Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

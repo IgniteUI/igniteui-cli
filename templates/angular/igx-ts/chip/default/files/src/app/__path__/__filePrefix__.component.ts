@@ -4,12 +4,12 @@ import { CloseScrollStrategy, ConnectedPositioningStrategy, HorizontalAlignment,
 } from 'igniteui-angular';
 
 @Component({
- selector: 'app-$(filePrefix)',
- styleUrls: ['./$(filePrefix).component.scss'],
- templateUrl: './$(filePrefix).component.html'
+ selector: 'app-<%=filePrefix%>',
+ styleUrls: ['./<%=filePrefix%>.component.scss'],
+ templateUrl: './<%=filePrefix%>.component.html'
 })
 
-export class $(ClassName)Component {
+export class <%=ClassName%>Component {
  public dropDownList = [
  {
   id: '1',

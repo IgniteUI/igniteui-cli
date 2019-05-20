@@ -4,11 +4,11 @@ import { data } from './data';
 import { IgxDialogComponent, IgxGridComponent, Transaction } from 'igniteui-angular';
 
 @Component({
-  selector: 'app-$(filePrefix)',
-  styleUrls: ['./$(filePrefix).component.scss'],
-  templateUrl: './$(filePrefix).component.html'
+  selector: 'app-<%=filePrefix%>',
+  styleUrls: ['./<%=filePrefix%>.component.scss'],
+  templateUrl: './<%=filePrefix%>.component.html'
 })
-export class $(ClassName)Component implements OnInit {
+export class <%=ClassName%>Component implements OnInit {
   @ViewChild('gridRowEditTransaction', { read: IgxGridComponent }) public grid: IgxGridComponent;
   @ViewChild(IgxDialogComponent) public dialog: IgxDialogComponent;
   @ViewChild('dialogGrid', { read: IgxGridComponent }) public dialogGrid: IgxGridComponent;

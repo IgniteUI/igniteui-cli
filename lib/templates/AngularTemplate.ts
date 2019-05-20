@@ -2,7 +2,7 @@ import * as path from "path";
 import { TypeScriptFileUpdate } from "../project-utility/TypeScriptFileUpdate";
 import { ProjectConfig } from "../ProjectConfig";
 import { AddTemplateArgs, ControlExtraConfiguration, Template } from "../types/index";
-import { Util } from "../Util";
+import { defaultDelimiters, Util } from "../Util";
 
 export class AngularTemplate implements Template {
 	public components: string[];
@@ -17,16 +17,7 @@ export class AngularTemplate implements Template {
 	public projectType: string;
 	public hasExtraConfiguration: boolean = false;
 	public packages = [];
-	public delimiters = {
-		content: {
-			end: `)`,
-			start: `$(`
-		},
-		path: {
-			end: `__`,
-			start: `__`
-		}
-	};
+	public delimiters = defaultDelimiters;
 
 	protected widget: string;
 

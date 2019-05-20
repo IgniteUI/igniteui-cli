@@ -2,8 +2,7 @@ import * as fs from "fs-extra";
 import * as path from "path";
 
 import { AddTemplateArgs, ControlExtraConfiguration, Template } from "../types/index";
-import { Delimiter } from "../types/TemplateReplaceDelimiters";
-import { Util } from "../Util";
+import { defaultDelimiters, Util } from "../Util";
 
 export class IgniteUIForReactTemplate implements Template {
 	public components: string[];
@@ -18,16 +17,7 @@ export class IgniteUIForReactTemplate implements Template {
 	public projectType = "igr-es6";
 	public hasExtraConfiguration: boolean = false;
 	public packages = [];
-	public delimiters = {
-		content: {
-			end: `)`,
-			start: `$(`
-		},
-		path: {
-			end: `__`,
-			start: `__`
-		}
-	};
+	public delimiters = defaultDelimiters;
 	// non-standard template prop
 	protected widget: string;
 
