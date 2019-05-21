@@ -666,7 +666,7 @@ export class TaskRunner<T> {
 			const task = this.taskQueue[i];
 			if (task.done) { continue; }
 
-			const previousTask = this.taskQueue[i - 1];
+			const previousTask = this.taskQueue[i - 1] || task;
 			this.currentTask = task;
 			const result = await task.run(this, this.context);
 			if (this.additions.length) {
