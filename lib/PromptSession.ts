@@ -1,4 +1,3 @@
-import chalk from "chalk";
 import * as inquirer from "inquirer";
 import * as path from "path";
 import { default as add } from "./commands/add";
@@ -11,10 +10,11 @@ import {
 	Component, Config, ControlExtraConfigType, ControlExtraConfiguration, Framework,
 	FrameworkId, ProjectLibrary, ProjectTemplate, Template
 } from "./types/index";
-import { Util } from "./Util";
+import { ChoiceItem, Util } from "./Util";
+
+const WIZARD_BACK_OPTION = "Back";
 
 export class PromptSession {
-	private WIZARD_BACK_OPTION = "Back";
 	private config: Config;
 
 	constructor(private templateManager: TemplateManager) { }
@@ -54,22 +54,13 @@ export class PromptSession {
 			theme = this.config.project.theme;
 		} else {
 			Util.log(""); /* new line */
-
-			let projectName: string;
-			const availableDefaultName = Util.getAvailableName(defaultProjName, true);
-			while (!projectName) {
-				const defaultAppName = availableDefaultName;
-				const nameRes: string = await this.getUserInput({
-					type: "input",
-					name: "projectName",
-					message: "Enter a name for your project:",
-					default: defaultAppName
-				});
-
-				if (this.nameIsValid(nameRes)) {
-					projectName = nameRes;
-				}
-			}
+			const projectName = await this.getUserInput({
+				type: "input",
+				name: "projectName",
+				message: "Enter a name for your project:",
+				default: Util.getAvailableName(defaultProjName, true),
+				validate: this.nameIsValid
+			});
 
 			const frameRes: string = await this.getUserInput({
 				type: "list",
@@ -101,68 +92,24 @@ export class PromptSession {
 			// move cwd to project folder
 			process.chdir(projectName);
 		}
-		await this.chooseActionLoop(projLibrary, theme);
+		await this.chooseActionLoop(projLibrary);
 		//TODO: restore cwd?
 	}
+
 	/**
 	 * Starts a loop of 'Choose an action' questions
 	 * @param projectLibrary The framework to use
 	 * @param theme Theme to use
 	 */
-	public async chooseActionLoop(projectLibrary: ProjectLibrary, theme: string) {
-		let actionIsOver = false;
-		while (!actionIsOver) {
-			const actionChoices: Array<{}> = this.generateActionChoices(projectLibrary);
-			Util.log(""); /* new line */
-			const action: string = await this.getUserInput({
-				type: "list",
-				name: "action",
-				message: "Choose an action:",
-				choices: actionChoices,
-				default: "Complete & Run"
-			});
+	public async chooseActionLoop(projectLibrary: ProjectLibrary) {
+		const taskContext: PromptTaskContext = { projectLibrary };
+		const runner = new TaskRunner(taskContext);
 
-			switch (action) {
-				case "Add component": {
-					actionIsOver = await this.addComponent(projectLibrary, theme);
-					break;
-				}
-				case "Add scenario": {
-					actionIsOver = await this.addView(projectLibrary, theme);
-					break;
-				}
-				case "Complete & Run":
-					const config = ProjectConfig.localConfig();
-					const defaultPort = config.project.defaultPort;
-					let port;
-					let userPort: boolean;
-					while (!userPort) {
-						// tslint:disable-next-line:prefer-const
-						port = (await inquirer.prompt({
-							default: defaultPort,
-							message: "Choose app host port:",
-							name: "port",
-							type: "input"
-						}))["port"];
+		runner.addTask(this.chooseActionTask);
 
-						if (!Number(port)) {
-							Util.log(`port should be a number. Input valid port or use the suggested default port`, "yellow");
-						} else {
-							userPort = true;
-							config.project.defaultPort = port;
-							ProjectConfig.setConfig(config);
-						}
-					}
-				default: {
-					await PackageManager.flushQueue(true);
-					if (true) { // TODO: Make conditional?
-						await start.start({ port });
-						return;
-					}
-				}
-			}
+		while (!runner.done) {
+			await runner.run();
 		}
-		await this.chooseActionLoop(projectLibrary, theme);
 	}
 
 	/**
@@ -221,68 +168,112 @@ export class PromptSession {
 	}
 
 	/**
-	 * Add the component user has selected
+	 * Task to pick action and load consecutive tasks
 	 * @param projectLibrary to add component to
-	 * @param theme to use to style the project
 	 */
-	private async addComponent(projectLibrary: ProjectLibrary, theme: string): Promise<boolean> {
-		let addComponentIsOver = false;
-		while (!addComponentIsOver) {
-			const groups = projectLibrary.getComponentGroupNames();
-			const groupRes: string = await this.getUserInput({
-				type: "list",
-				name: "componentGroup",
-				message: "Choose a group:",
-				choices: Util.formatChoices(projectLibrary.getComponentGroups()),
-				default: groups.find(x => x.includes("Grids")) || groups[0]
-			}, true);
+	private chooseActionTask: Task<PromptTaskContext> = async (runner, context) => {
+		Util.log(""); /* new line */
+		const action: string = await this.getUserInput({
+			type: "list",
+			name: "action",
+			message: "Choose an action:",
+			choices: this.generateActionChoices(context.projectLibrary),
+			default: "Complete & Run"
+		});
 
-			if (groupRes === this.WIZARD_BACK_OPTION) {
-				return false;
+		runner.clearPending();
+		switch (action) {
+		case "Add component":
+			runner.addTask(this.getComponentGroupTask);
+			runner.addTask(this.getComponentTask);
+			runner.addTask(this.getTemplateTask);
+			runner.addTask(this.templateSelectedTask());
+			runner.addTask(run => Promise.resolve(run.resetTasks()));
+			break;
+		case "Add scenario":
+			runner.addTask(this.getCustomViewTask);
+			runner.addTask(this.templateSelectedTask("view"));
+			runner.addTask(run => Promise.resolve(run.resetTasks()));
+			break;
+		case "Complete & Run":
+			const config = ProjectConfig.localConfig();
+			const defaultPort = config.project.defaultPort;
+			const port = await this.getUserInput({
+				type: "input",
+				name: "port",
+				message: "Choose app host port:",
+				default: defaultPort,
+				validate: (input: string) => {
+					if (!Number(input)) {
+						Util.log(""); /* new line */
+						Util.error(`port should be a number. Input valid port or use the suggested default port`, "red");
+						return false;
+					}
+					return true;
+				}
+			});
+
+			config.project.defaultPort = parseInt(port, 10);
+			ProjectConfig.setConfig(config);
+			await PackageManager.flushQueue(true);
+			if (true) { // TODO: Make conditional?
+				await start.start({ port });
 			}
-			addComponentIsOver = await this.choseComponent(projectLibrary, theme, groupRes);
+			break;
 		}
 		return true;
 	}
 
 	/**
-	 * Select the component in the selected components group
+	 * Get component group from user input
 	 * @param projectLibrary to add component to
-	 * @param theme to use to style the project
-	 * @param groupName to chose components from
 	 */
-	private async choseComponent(projectLibrary: ProjectLibrary, theme: string, groupName: string): Promise<boolean> {
-		let choseComponentIsOver = false;
-		while (!choseComponentIsOver) {
-			const componentNameRes = await this.getUserInput({
-				type: "list",
-				name: "component",
-				message: "Choose a component:",
-				choices: Util.formatChoices(projectLibrary.getComponentsByGroup(groupName))
-			}, true);
+	private getComponentGroupTask: Task<PromptTaskContext> = async (_runner, context) => {
+		const groups = context.projectLibrary.getComponentGroupNames();
+		const groupRes: string = await this.getUserInput({
+			type: "list",
+			name: "componentGroup",
+			message: "Choose a group:",
+			choices: Util.formatChoices(context.projectLibrary.getComponentGroups()),
+			default: groups.find(x => x.includes("Grids")) || groups[0]
+		}, true);
 
-			if (componentNameRes === this.WIZARD_BACK_OPTION) {
-				return false;
-			}
-
-			const component = projectLibrary.getComponentByName(componentNameRes);
-			choseComponentIsOver = await this.getTemplate(projectLibrary, theme, groupName, component);
+		if (groupRes === WIZARD_BACK_OPTION) {
+			return WIZARD_BACK_OPTION;
 		}
+		context.group = groupRes;
 		return true;
 	}
 
 	/**
-	 * Select template for provided component and set template's extra configurations if any
+	 * Get component in the selected components group
 	 * @param projectLibrary to add component to
-	 * @param theme to use to style the project
 	 * @param groupName to chose components from
+	 */
+	private getComponentTask: Task<PromptTaskContext> = async (_runner, context) => {
+		const componentNameRes = await this.getUserInput({
+			type: "list",
+			name: "component",
+			message: "Choose a component:",
+			choices: Util.formatChoices(context.projectLibrary.getComponentsByGroup(context.group))
+		}, true);
+
+		if (componentNameRes === WIZARD_BACK_OPTION) {
+			return WIZARD_BACK_OPTION;
+		}
+
+		context.component = context.projectLibrary.getComponentByName(componentNameRes);
+		return true;
+	}
+
+	/**
+	 * Get template for selected component
+	 * @param projectLibrary to add component to
 	 * @param component to get template for
 	 */
-	private async getTemplate(projectLibrary: ProjectLibrary, theme: string, groupName: string, component: Component)
-		: Promise<boolean> {
+	private getTemplateTask: Task<PromptTaskContext> = async (_runner, context) => {
 		let selectedTemplate: Template;
-		const templates: Template[] = component.templates;
-		const config = ProjectConfig.getConfig();
+		const templates: Template[] = context.component.templates;
 
 		const templateRes = await this.getUserInput({
 			type: "list",
@@ -291,8 +282,8 @@ export class PromptSession {
 			choices: Util.formatChoices(templates)
 		}, true);
 
-		if (templateRes === this.WIZARD_BACK_OPTION) {
-			return false;
+		if (templateRes === WIZARD_BACK_OPTION) {
+			return WIZARD_BACK_OPTION;
 		}
 
 		selectedTemplate = templates.find((value, i, obj) => {
@@ -300,76 +291,97 @@ export class PromptSession {
 		});
 
 		if (selectedTemplate) {
-			let success = false;
-			const availableDefaultName = Util.getAvailableName(selectedTemplate.name, false,
-				config.project.framework, config.project.projectType);
-			while (!success) {
-				const templateName = await this.getUserInput({
-					type: "input",
-					name: "componentName",
-					message: "Name your component:",
-					default: availableDefaultName
-				});
-
-				if (selectedTemplate.hasExtraConfiguration) {
-					const extraPrompt: any[] = this.createQuestions(selectedTemplate.getExtraConfiguration());
-					const extraConfigAnswers = await inquirer.prompt(extraPrompt);
-					const extraConfig = this.parseAnswers(extraConfigAnswers);
-
-					GoogleAnalytics.post({
-						t: "event",
-						ec: "$ig wizard",
-						el: "Extra configuration:",
-						ea: `extra configuration: ${JSON.stringify(extraConfig)}`
-					});
-
-					selectedTemplate.setExtraConfiguration(extraConfig);
-				}
-				success = await add.addTemplate(templateName, selectedTemplate);
-			}
+			context.template = selectedTemplate;
+			return true;
 		}
-		return true;
+
+		return false;
 	}
 
 	/**
-	 * Add the view user has selected
+	 * Get user name and set template's extra configurations if any
+	 * @param projectLibrary to add component to
+	 * @param component to get template for
+	 */
+	private templateSelectedTask(type: "component" | "view" = "component"): Task<PromptTaskContext> {
+		return async (_runner, context) => {
+			const name = await this.chooseTemplateName(context.template, type);
+			if (context.template.hasExtraConfiguration) {
+				await this.customizeTemplateTask(context.template);
+			}
+			const res = await add.addTemplate(name, context.template);
+			return res;
+		};
+	}
+
+	/**
+	 * Prompt user for template name with appropriate default
+	 * @param template template to get name for
+	 * @param type type of the name question
+	 */
+	private async chooseTemplateName(template: Template, type: "component" | "view" = "component") {
+		const config = ProjectConfig.getConfig();
+		const availableDefaultName = Util.getAvailableName(template.name, false,
+			config.project.framework, config.project.projectType);
+
+		const templateName = await this.getUserInput({
+			type: "input",
+			name: `${type === "component" ? type : "customView"}Name`,
+			message: `Name your ${type}:`,
+			default: availableDefaultName,
+			validate: (input: string) => {
+				// TODO: GA post?
+				const name = Util.nameFromPath(input);
+				return this.nameIsValid(name, false);
+			}
+		});
+
+		return templateName;
+	}
+
+	/** Create prompts from template extra configuration and assign user answers to the template */
+	private async customizeTemplateTask(template: Template) {
+		const extraPrompt: any[] = this.createQuestions(template.getExtraConfiguration());
+		const extraConfigAnswers = await inquirer.prompt(extraPrompt);
+		const extraConfig = this.parseAnswers(extraConfigAnswers);
+
+		GoogleAnalytics.post({
+			t: "event",
+			ec: "$ig wizard",
+			el: "Extra configuration:",
+			ea: `extra configuration: ${JSON.stringify(extraConfig)}`
+		});
+
+		template.setExtraConfiguration(extraConfig);
+	}
+
+	/**
+	 * Get template for custom view from user input
 	 * @param projectLibrary to add component to
 	 * @param theme to use to style the project
 	 */
-	private async addView(projectLibrary: ProjectLibrary, theme: string): Promise<boolean> {
-		const customTemplates: Template[] = projectLibrary.getCustomTemplates();
-		const formatedOutput = Util.formatChoices(customTemplates);
-		const config = ProjectConfig.getConfig();
+	private getCustomViewTask: Task<PromptTaskContext> = async (_runner, context) => {
+		const customTemplates: Template[] = context.projectLibrary.getCustomTemplates();
+
 		const customTemplateNameRes = await this.getUserInput({
 			type: "list",
 			name: "customTemplate",
 			message: "Choose custom view:",
-			choices: formatedOutput
+			choices: Util.formatChoices(customTemplates)
 		}, true);
 
-		if (customTemplateNameRes === this.WIZARD_BACK_OPTION) {
-			return false;
+		if (customTemplateNameRes === WIZARD_BACK_OPTION) {
+			return WIZARD_BACK_OPTION;
 		}
 		const selectedTemplate = customTemplates.find((value, i, obj) => {
 			return customTemplateNameRes === value.name;
 		});
+
 		if (selectedTemplate) {
-			let success = false;
-			const availableDefaultName = Util.getAvailableName(selectedTemplate.name, false,
-				config.project.framework, config.project.projectType);
-			while (!success) {
-				const customViewNameRes = await this.getUserInput({
-					type: "input",
-					name: "customViewName",
-					message: "Name your view:",
-					default: availableDefaultName
-				});
-
-				success = await add.addTemplate(customViewNameRes, selectedTemplate);
-			}
+			context.template = selectedTemplate;
+			return true;
 		}
-
-		return true;
+		return false;
 	}
 
 	/**
@@ -388,23 +400,17 @@ export class PromptSession {
 				return choice;
 			}
 			if (withBackChoice) {
-				options.choices.push(this.WIZARD_BACK_OPTION);
+				options.choices.push(WIZARD_BACK_OPTION);
 			}
 			options.choices = this.addSeparators(options.choices);
 		}
 
-		const userInput = await inquirer.prompt({
-			choices: options.choices || [],
-			default: options.default || "",
-			message: options.message,
-			name: options.name,
-			type: options.type
-		});
+		const userInput = await inquirer.prompt(options);
 
 		const result = userInput[options.name] as string;
 
 		// post to GA everything but 'Back' user choice
-		if (!withBackChoice || result !== this.WIZARD_BACK_OPTION) {
+		if (!withBackChoice || result !== WIZARD_BACK_OPTION) {
 			GoogleAnalytics.post({
 				t: "event",
 				ec: "$ig wizard",
@@ -454,16 +460,19 @@ export class PromptSession {
 	/**
 	 * Check if provided @param name is valid for project name
 	 * @param name the name to check
+	 * @param checkFolder check if folder with this name already exists
 	 */
-	private nameIsValid(name: string): boolean {
+	private nameIsValid(name: string, checkFolder = true): boolean {
 		if (!Util.isAlphanumericExt(name)) {
+			Util.log(""); /* new line */
 			Util.error(`Name '${name}' is not valid. `
 				+ "Name should start with a letter and can also contain numbers, dashes and spaces.",
 				"red");
 			return false;
 		}
 
-		if (Util.directoryExists(name)) {
+		if (checkFolder && Util.directoryExists(name)) {
+			Util.log(""); /* new line */
 			Util.error(`Folder "${name}" already exists!`, "red");
 			return false;
 		}
@@ -572,37 +581,105 @@ export class PromptSession {
 	 * @param projectLibrary to generate options for
 	 */
 	private generateActionChoices(projectLibrary: ProjectLibrary): Array<{}> {
-		const actionChoices: Array<{}> = [{
-			name: "Complete & Run" + chalk.gray("..........install packages and run in the default browser"),
-			short: "Complete & Run",
-			value: "Complete & Run"
-		}];
+		const actionChoices: ChoiceItem[] = [
+			{ name: "Complete & Run", description: "install packages and run in the default browser" }
+		];
+
 		if (projectLibrary.components.length > 0) {
-			actionChoices.push({
-				name:  "Add component" + chalk.gray("...........add a specific component view (e.g a grid)"),
-				short: "Add component", // displayed result after selection
-				value: "Add component" // actual selection value
-			});
-		}
-		if (projectLibrary.getCustomTemplateNames().length > 0) {
-			actionChoices.push({
-				name: "Add scenario " + chalk.gray("...........add a predefined scenario view (e.g grid or dashboard)"),
-				short: "Add scenario",
-				value: "Add scenario"
-			});
+			actionChoices.push({ name: "Add component", description: "add a specific component view (e.g a grid)" });
 		}
 
-		return actionChoices;
+		if (projectLibrary.getCustomTemplateNames().length > 0) {
+			actionChoices.push({ name: "Add scenario", description: "add a predefined scenario view (e.g grid or dashboard)" });
+		}
+		return Util.formatChoices(actionChoices, 10);
 	}
 }
 
-/**
- * Options for User Input
- */
+/** Options for User Input */
 interface IUserInputOptions {
 	type: string;
 	name: string;
 	message: string;
 	choices?: any[];
-	default?: string;
+	default?: any;
+	validate?: (input: string) => string | boolean;
+}
+
+/** Context type for prompt tasks */
+interface PromptTaskContext {
+	projectLibrary: ProjectLibrary;
+	group?: string;
+	component?: Component;
+	template?: Template;
+	name?: string;
+}
+
+/** TODO: Separate prompt util: */
+interface PromptInputTask<T> {
+	done: boolean;
+	run: Task<T>;
+}
+
+export type PromptInputTaskResult = typeof WIZARD_BACK_OPTION | boolean | void;
+export type Task<T> = (runner: TaskRunner<T>, context: T) => Promise<PromptInputTaskResult>;
+
+export class TaskRunner<T> {
+	protected taskQueue: Array<PromptInputTask<T>> = [];
+	protected additions: Array<PromptInputTask<T>> = [];
+	protected currentTask: PromptInputTask<T>;
+
+	public get done(): boolean {
+		return !this.taskQueue.filter(x => !x.done).length;
+	}
+
+	constructor(protected context: T) {}
+
+	/** Add a task to the queue. Will insert after current if called while running */
+	public addTask(task: Task<T>) {
+		const taskObj = { done: false, run: task };
+		if (this.currentTask) {
+			this.additions.push(taskObj);
+		} else {
+			this.taskQueue.push(taskObj);
+		}
+	}
+
+	/** clear */
+	public clearPending() {
+		if (this.currentTask) {
+			const index = this.taskQueue.indexOf(this.currentTask);
+			this.taskQueue = this.taskQueue.slice(0, index + 1);
+		} else {
+			this.taskQueue = [];
+		}
+	}
+
+	/** mark all tasks as incomplete */
+	public resetTasks() {
+		this.taskQueue.forEach(x => x.done = false);
+	}
+
+	/** run */
+	public async run() {
+		for (let i = 0; i < this.taskQueue.length; i++) {
+			const task = this.taskQueue[i];
+			if (task.done) { continue; }
+
+			const previousTask = this.taskQueue[i - 1] || task;
+			this.currentTask = task;
+			const result = await task.run(this, this.context);
+			if (this.additions.length) {
+				this.taskQueue.splice(i + 1, 0, ...this.additions);
+				this.additions = [];
+			}
+			this.currentTask = null;
+			if (result !== true) {
+				task.done = false;
+				previousTask.done = result === WIZARD_BACK_OPTION ? false : previousTask.done;
+				break;
+			}
+			task.done = result;
+		}
+	}
 }

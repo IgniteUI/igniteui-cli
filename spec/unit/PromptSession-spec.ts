@@ -72,9 +72,8 @@ describe("Unit - PromptSession", () => {
 		};
 		spyOn(Util, "greenCheck").and.callThrough();
 		spyOn(Util, "log");
-		spyOn(Util, "directoryExists").and.returnValue(false);
-		spyOn(Util, "isAlphanumericExt").and.returnValue(true);
 		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
+		spyOn(Util, "getAvailableName").and.returnValue(false);
 		spyOn(Util, "gitInit");
 		spyOn(inquirer, "prompt").and.returnValues(Promise.resolve({ projectName: "Test Project" }),
 			Promise.resolve({ framework: "Custom Framework 1" }),
@@ -88,11 +87,14 @@ describe("Unit - PromptSession", () => {
 		expect(Util.log).toHaveBeenCalledWith("  Generating project structure.");
 		expect(Util.log).toHaveBeenCalledWith("");
 		expect(Util.log).toHaveBeenCalledWith(Util.greenCheck() + " Project structure generated.");
-		expect(Util.isAlphanumericExt).toHaveBeenCalledTimes(1);
-		expect(Util.isAlphanumericExt).toHaveBeenCalledWith("Test Project");
-		//+1 call because of Util.getAvailableName calls directoryExists
-		expect(Util.directoryExists).toHaveBeenCalledTimes(2);
-		expect(Util.directoryExists).toHaveBeenCalledWith("Test Project");
+		expect(inquirer.prompt).toHaveBeenCalledWith(
+			jasmine.objectContaining({
+				type: "input",
+				message: "Enter a name for your project:",
+				validate: jasmine.any(Function)
+			}));
+		expect(Util.getAvailableName).toHaveBeenCalledTimes(1);
+		expect(Util.getAvailableName).toHaveBeenCalledWith("IG Project", true);
 		expect(Util.greenCheck).toHaveBeenCalledTimes(1 + 1);
 		expect(Util.gitInit).toHaveBeenCalled();
 		expect(inquirer.prompt).toHaveBeenCalledTimes(4);
@@ -117,7 +119,7 @@ describe("Unit - PromptSession", () => {
 		expect(ProjectConfig.hasLocalConfig).toHaveBeenCalledTimes(1);
 		expect(mockTemplate.getProjectLibrary).toHaveBeenCalledTimes(1);
 		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(1);
-		expect(mockSession.chooseActionLoop).toHaveBeenCalledWith({}, "");
+		expect(mockSession.chooseActionLoop).toHaveBeenCalledWith({});
 		done();
 	});
 
@@ -254,32 +256,38 @@ describe("Unit - PromptSession", () => {
 		spyOn(Util, "isAlphanumericExt").and.callThrough();
 		spyOn(Util, "gitInit");
 		spyOn(Util, "error");
-		spyOn(inquirer, "prompt").and.returnValues(Promise.resolve({ projectName: "*This will ** not Work *" }),
-			Promise.resolve({ projectName: "Th15 w1ll" }),
-			// incrementing default names will prevent a second error to be thrown
-			Promise.resolve({ projectName: "Th15 w1ll" }),
+		spyOn(inquirer, "prompt").and.returnValues(
+			Promise.resolve({ projectName: "Dummy name" }),
 			Promise.resolve({ framework: "Custom Framework 1" }),
 			Promise.resolve({ project: "jQuery" }),
 			Promise.resolve({ theme: "infragistics" }));
 		spyOn(process, "chdir");
 		spyOn(mockSession, "chooseActionLoop");
 		await mockSession.start();
+
+		expect(inquirer.prompt).toHaveBeenCalledTimes(4);
 		expect(Util.log).toHaveBeenCalledTimes(4);
 		expect(Util.log).toHaveBeenCalledWith("  Proj Template: Project 1");
 		expect(Util.log).toHaveBeenCalledWith("");
 		expect(Util.log).toHaveBeenCalledWith("  Generating project structure.");
-		expect(Util.error).toHaveBeenCalledTimes(1);
 		expect(Util.log).toHaveBeenCalledWith(Util.greenCheck() + " Project structure generated.");
+
+		expect(Util.greenCheck).toHaveBeenCalledTimes(1 + 1);
+		expect(Util.gitInit).toHaveBeenCalledTimes(0);
+		expect(inquirer.prompt).toHaveBeenCalledWith(mockQuestion);
+		expect(mockTemplate.getFrameworkByName).toHaveBeenCalledTimes(1);
+
+		// validate:
+		const firstCallArgs = (inquirer.prompt as jasmine.Spy).calls.first().args[0];
+		expect(firstCallArgs.validate).toEqual(jasmine.any(Function));
+		expect(firstCallArgs.validate("*This will ** not Work *")).toBe(false);
+		expect(Util.error).toHaveBeenCalledTimes(1);
+		expect(firstCallArgs.validate("Th15 w1ll")).toBe(true);
 		expect(Util.isAlphanumericExt).toHaveBeenCalledTimes(2);
 		expect(Util.isAlphanumericExt).toHaveBeenCalledWith("*This will ** not Work *");
 		expect(Util.isAlphanumericExt).toHaveBeenCalledWith("Th15 w1ll");
 		expect(Util.directoryExists).toHaveBeenCalledTimes(3);
 		expect(Util.directoryExists).toHaveBeenCalledWith("Th15 w1ll");
-		expect(Util.greenCheck).toHaveBeenCalledTimes(1 + 1);
-		expect(Util.gitInit).toHaveBeenCalledTimes(0);
-		expect(inquirer.prompt).toHaveBeenCalledTimes(5);
-		expect(inquirer.prompt).toHaveBeenCalledWith(mockQuestion);
-		expect(mockTemplate.getFrameworkByName).toHaveBeenCalledTimes(1);
 		done();
 	});
 	it("chooseActionLoop - should run through properly - Add Component", async done => {
@@ -375,8 +383,8 @@ describe("Unit - PromptSession", () => {
 			Promise.resolve({ port: 7777 })
 		);
 		spyOn(ProjectConfig, "setConfig");
-		await mockSession.chooseActionLoop(mockProjectLibrary, "infragistics");
-		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(2);
+		await mockSession.chooseActionLoop(mockProjectLibrary);
+		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(1);
 		expect(inquirer.prompt).toHaveBeenCalledTimes(12);
 		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
@@ -445,8 +453,8 @@ describe("Unit - PromptSession", () => {
 			Promise.resolve({ port: 7777 })
 		);
 		spyOn(ProjectConfig, "setConfig");
-		await mockSession.chooseActionLoop(mockProjectLibrary, "infragistics");
-		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(2);
+		await mockSession.chooseActionLoop(mockProjectLibrary);
+		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(1);
 		expect(inquirer.prompt).toHaveBeenCalledTimes(7);
 		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
@@ -559,8 +567,8 @@ describe("Unit - PromptSession", () => {
 			Promise.resolve({ port: 7777 })
 		);
 		spyOn(ProjectConfig, "setConfig");
-		await mockSession.chooseActionLoop(mockProjectLibrary, "infragistics");
-		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(2);
+		await mockSession.chooseActionLoop(mockProjectLibrary);
+		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(1);
 		expect(inquirer.prompt).toHaveBeenCalledTimes(12);
 		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
@@ -618,9 +626,23 @@ describe("Unit - PromptSession", () => {
 		spyOn(start, "start");
 		spyOn(ProjectConfig, "setConfig");
 
-		await mockSession.chooseActionLoop(mockProjectLibrary, "");
+		await mockSession.chooseActionLoop(mockProjectLibrary);
 		expect(start.start).toHaveBeenCalledWith({ port: 7777 });
 		expect(ProjectConfig.setConfig).toHaveBeenCalledWith(params);
+
+		// validate:
+		spyOn(Util, "log");
+		spyOn(Util, "error");
+		const lastCallArgs = (inquirer.prompt as jasmine.Spy).calls.mostRecent().args[0];
+		expect(lastCallArgs.validate).toEqual(jasmine.any(Function));
+
+		expect(lastCallArgs.validate("not a number")).toBe(false);
+		expect(lastCallArgs.validate("1a")).toBe(false);
+		expect(Util.error).toHaveBeenCalledWith(
+			"port should be a number. Input valid port or use the suggested default port",
+			"red");
+		expect(lastCallArgs.validate("3210")).toBe(true);
+		expect(Util.error).toHaveBeenCalledTimes(2);
 		done();
 	});
 	it("start - Should fire correctly with Angular Custom theme selected", async done => {

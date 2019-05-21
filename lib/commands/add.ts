@@ -78,7 +78,7 @@ command = {
 
 		if (!argv.template && !argv.name) {
 			const prompts = new PromptSession(command.templateManager);
-			await prompts.chooseActionLoop(frameworkLibrary, config.project.theme);
+			await prompts.chooseActionLoop(frameworkLibrary);
 			return;
 		}
 
@@ -118,7 +118,7 @@ command = {
 		// letter+alphanumeric check
 		if (!Util.isAlphanumericExt(name)) {
 			Util.error(`Name '${name}' is not valid. `
-				+ "Names should start with a letter and can also contain numbers, dashes and spaces.",
+				+ "Name should start with a letter and can also contain numbers, dashes and spaces.",
 				"red");
 			return false;
 		}
