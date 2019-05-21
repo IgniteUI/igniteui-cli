@@ -227,7 +227,7 @@ export class PromptSession {
 	}
 
 	/**
-	 * Return component group user has selected
+	 * Get component group from user input
 	 * @param projectLibrary to add component to
 	 */
 	private getComponentGroupTask = async (_runner: TaskRunner<PromptTaskContext>, context: PromptTaskContext) => {
@@ -248,7 +248,7 @@ export class PromptSession {
 	}
 
 	/**
-	 * Select the component in the selected components group
+	 * Get component in the selected components group
 	 * @param projectLibrary to add component to
 	 * @param groupName to chose components from
 	 */
@@ -269,7 +269,7 @@ export class PromptSession {
 	}
 
 	/**
-	 * Select template for provided component and set template's extra configurations if any
+	 * Get template for selected component
 	 * @param projectLibrary to add component to
 	 * @param component to get template for
 	 */
@@ -301,7 +301,7 @@ export class PromptSession {
 	}
 
 	/**
-	 * Select template for provided component and set template's extra configurations if any
+	 * Get user name and set template's extra configurations if any
 	 * @param projectLibrary to add component to
 	 * @param component to get template for
 	 */
@@ -357,7 +357,7 @@ export class PromptSession {
 	}
 
 	/**
-	 * Add the view user has selected
+	 * Get template for custom view from user input
 	 * @param projectLibrary to add component to
 	 * @param theme to use to style the project
 	 */
@@ -597,12 +597,17 @@ export class PromptSession {
 	}
 }
 
-interface PromptInputTask<T> {
-	done: boolean;
-	run: (runner: TaskRunner<T>, context: T)
-		=> Promise<typeof WIZARD_BACK_OPTION | boolean>;
+/** Options for User Input */
+interface IUserInputOptions {
+	type: string;
+	name: string;
+	message: string;
+	choices?: any[];
+	default?: string;
+	validate?: (input: string) => string | boolean;
 }
 
+/** Context type for prompt tasks */
 interface PromptTaskContext {
 	projectLibrary: ProjectLibrary;
 	group?: string;
@@ -611,7 +616,15 @@ interface PromptTaskContext {
 	name?: string;
 }
 
-class TaskRunner<T> {
+/** TODO: Separate prompt util: */
+interface PromptInputTask<T> {
+	done: boolean;
+	run: (runner: TaskRunner<T>, context: T) => Promise<PromptInputTaskResult>;
+}
+
+export type PromptInputTaskResult = typeof WIZARD_BACK_OPTION | boolean | void;
+
+export class TaskRunner<T> {
 	protected taskQueue: Array<PromptInputTask<T>> = [];
 	protected additions: Array<PromptInputTask<T>> = [];
 	protected currentTask: PromptInputTask<T>;
@@ -623,7 +636,7 @@ class TaskRunner<T> {
 	constructor(protected context: T) {}
 
 	/** Add a task to the queue. Will insert after current if called while running */
-	public addTask(task: (runner: this, context: T) => Promise<"Back" | any>) {
+	public addTask(task: (runner: this, context: T) => Promise<PromptInputTaskResult>) {
 		const taskObj = { done: false, run: task };
 		if (this.currentTask) {
 			this.additions.push(taskObj);
@@ -642,6 +655,7 @@ class TaskRunner<T> {
 		}
 	}
 
+	/** mark all tasks as incomplete */
 	public resetTasks() {
 		this.taskQueue.forEach(x => x.done = false);
 	}
@@ -668,16 +682,4 @@ class TaskRunner<T> {
 			task.done = result;
 		}
 	}
-}
-
-/**
- * Options for User Input
- */
-interface IUserInputOptions {
-	type: string;
-	name: string;
-	message: string;
-	choices?: any[];
-	default?: string;
-	validate?: (input: string) => string | boolean;
 }
