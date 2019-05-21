@@ -171,7 +171,7 @@ export class PromptSession {
 	 * Task to pick action and load consecutive tasks
 	 * @param projectLibrary to add component to
 	 */
-	private chooseActionTask = async (runner: TaskRunner<PromptTaskContext>, context: PromptTaskContext) => {
+	private chooseActionTask: Task<PromptTaskContext> = async (runner, context) => {
 		Util.log(""); /* new line */
 		const action: string = await this.getUserInput({
 			type: "list",
@@ -228,7 +228,7 @@ export class PromptSession {
 	 * Get component group from user input
 	 * @param projectLibrary to add component to
 	 */
-	private getComponentGroupTask = async (_runner: TaskRunner<PromptTaskContext>, context: PromptTaskContext) => {
+	private getComponentGroupTask: Task<PromptTaskContext> = async (_runner, context) => {
 		const groups = context.projectLibrary.getComponentGroupNames();
 		const groupRes: string = await this.getUserInput({
 			type: "list",
@@ -250,7 +250,7 @@ export class PromptSession {
 	 * @param projectLibrary to add component to
 	 * @param groupName to chose components from
 	 */
-	private getComponentTask = async (_runner: TaskRunner<PromptTaskContext>, context: PromptTaskContext) => {
+	private getComponentTask: Task<PromptTaskContext> = async (_runner, context) => {
 		const componentNameRes = await this.getUserInput({
 			type: "list",
 			name: "component",
@@ -271,7 +271,7 @@ export class PromptSession {
 	 * @param projectLibrary to add component to
 	 * @param component to get template for
 	 */
-	private getTemplateTask = async (_runner: TaskRunner<PromptTaskContext>, context: PromptTaskContext) => {
+	private getTemplateTask: Task<PromptTaskContext> = async (_runner, context) => {
 		let selectedTemplate: Template;
 		const templates: Template[] = context.component.templates;
 
@@ -303,8 +303,8 @@ export class PromptSession {
 	 * @param projectLibrary to add component to
 	 * @param component to get template for
 	 */
-	private templateSelectedTask(type: "component" | "view" = "component") {
-		return async (_runner: TaskRunner<PromptTaskContext>, context: PromptTaskContext) => {
+	private templateSelectedTask(type: "component" | "view" = "component"): Task<PromptTaskContext> {
+		return async (_runner, context) => {
 			const name = await this.chooseTemplateName(context.template, type);
 			if (context.template.hasExtraConfiguration) {
 				await this.customizeTemplateTask(context.template);
@@ -360,7 +360,7 @@ export class PromptSession {
 	 * @param projectLibrary to add component to
 	 * @param theme to use to style the project
 	 */
-	private getCustomViewTask = async (_runner: TaskRunner<PromptTaskContext>, context: PromptTaskContext) => {
+	private getCustomViewTask: Task<PromptTaskContext> = async (_runner, context) => {
 		const customTemplates: Template[] = context.projectLibrary.getCustomTemplates();
 
 		const customTemplateNameRes = await this.getUserInput({
@@ -618,10 +618,11 @@ interface PromptTaskContext {
 /** TODO: Separate prompt util: */
 interface PromptInputTask<T> {
 	done: boolean;
-	run: (runner: TaskRunner<T>, context: T) => Promise<PromptInputTaskResult>;
+	run: Task<T>;
 }
 
 export type PromptInputTaskResult = typeof WIZARD_BACK_OPTION | boolean | void;
+export type Task<T> = (runner: TaskRunner<T>, context: T) => Promise<PromptInputTaskResult>;
 
 export class TaskRunner<T> {
 	protected taskQueue: Array<PromptInputTask<T>> = [];
@@ -635,7 +636,7 @@ export class TaskRunner<T> {
 	constructor(protected context: T) {}
 
 	/** Add a task to the queue. Will insert after current if called while running */
-	public addTask(task: (runner: this, context: T) => Promise<PromptInputTaskResult>) {
+	public addTask(task: Task<T>) {
 		const taskObj = { done: false, run: task };
 		if (this.currentTask) {
 			this.additions.push(taskObj);
