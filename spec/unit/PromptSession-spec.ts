@@ -72,9 +72,8 @@ describe("Unit - PromptSession", () => {
 		};
 		spyOn(Util, "greenCheck").and.callThrough();
 		spyOn(Util, "log");
-		spyOn(Util, "directoryExists").and.returnValue(false);
-		spyOn(Util, "isAlphanumericExt").and.returnValue(true);
 		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
+		spyOn(Util, "getAvailableName").and.returnValue(false);
 		spyOn(Util, "gitInit");
 		spyOn(inquirer, "prompt").and.returnValues(Promise.resolve({ projectName: "Test Project" }),
 			Promise.resolve({ framework: "Custom Framework 1" }),
@@ -88,11 +87,14 @@ describe("Unit - PromptSession", () => {
 		expect(Util.log).toHaveBeenCalledWith("  Generating project structure.");
 		expect(Util.log).toHaveBeenCalledWith("");
 		expect(Util.log).toHaveBeenCalledWith(Util.greenCheck() + " Project structure generated.");
-		expect(Util.isAlphanumericExt).toHaveBeenCalledTimes(1);
-		expect(Util.isAlphanumericExt).toHaveBeenCalledWith("Test Project");
-		//+1 call because of Util.getAvailableName calls directoryExists
-		expect(Util.directoryExists).toHaveBeenCalledTimes(2);
-		expect(Util.directoryExists).toHaveBeenCalledWith("Test Project");
+		expect(inquirer.prompt).toHaveBeenCalledWith(
+			jasmine.objectContaining({
+				type: "input",
+				message: "Enter a name for your project:",
+				validate: jasmine.any(Function)
+			}));
+		expect(Util.getAvailableName).toHaveBeenCalledTimes(1);
+		expect(Util.getAvailableName).toHaveBeenCalledWith("IG Project", true);
 		expect(Util.greenCheck).toHaveBeenCalledTimes(1 + 1);
 		expect(Util.gitInit).toHaveBeenCalled();
 		expect(inquirer.prompt).toHaveBeenCalledTimes(4);
@@ -254,32 +256,38 @@ describe("Unit - PromptSession", () => {
 		spyOn(Util, "isAlphanumericExt").and.callThrough();
 		spyOn(Util, "gitInit");
 		spyOn(Util, "error");
-		spyOn(inquirer, "prompt").and.returnValues(Promise.resolve({ projectName: "*This will ** not Work *" }),
-			Promise.resolve({ projectName: "Th15 w1ll" }),
-			// incrementing default names will prevent a second error to be thrown
-			Promise.resolve({ projectName: "Th15 w1ll" }),
+		spyOn(inquirer, "prompt").and.returnValues(
+			Promise.resolve({ projectName: "Dummy name" }),
 			Promise.resolve({ framework: "Custom Framework 1" }),
 			Promise.resolve({ project: "jQuery" }),
 			Promise.resolve({ theme: "infragistics" }));
 		spyOn(process, "chdir");
 		spyOn(mockSession, "chooseActionLoop");
 		await mockSession.start();
+
+		expect(inquirer.prompt).toHaveBeenCalledTimes(4);
 		expect(Util.log).toHaveBeenCalledTimes(4);
 		expect(Util.log).toHaveBeenCalledWith("  Proj Template: Project 1");
 		expect(Util.log).toHaveBeenCalledWith("");
 		expect(Util.log).toHaveBeenCalledWith("  Generating project structure.");
-		expect(Util.error).toHaveBeenCalledTimes(1);
 		expect(Util.log).toHaveBeenCalledWith(Util.greenCheck() + " Project structure generated.");
+
+		expect(Util.greenCheck).toHaveBeenCalledTimes(1 + 1);
+		expect(Util.gitInit).toHaveBeenCalledTimes(0);
+		expect(inquirer.prompt).toHaveBeenCalledWith(mockQuestion);
+		expect(mockTemplate.getFrameworkByName).toHaveBeenCalledTimes(1);
+
+		// validate:
+		const firstCallArgs = (inquirer.prompt as jasmine.Spy).calls.first().args[0];
+		expect(firstCallArgs.validate).toEqual(jasmine.any(Function));
+		expect(firstCallArgs.validate("*This will ** not Work *")).toBe(false);
+		expect(Util.error).toHaveBeenCalledTimes(1);
+		expect(firstCallArgs.validate("Th15 w1ll")).toBe(true);
 		expect(Util.isAlphanumericExt).toHaveBeenCalledTimes(2);
 		expect(Util.isAlphanumericExt).toHaveBeenCalledWith("*This will ** not Work *");
 		expect(Util.isAlphanumericExt).toHaveBeenCalledWith("Th15 w1ll");
 		expect(Util.directoryExists).toHaveBeenCalledTimes(3);
 		expect(Util.directoryExists).toHaveBeenCalledWith("Th15 w1ll");
-		expect(Util.greenCheck).toHaveBeenCalledTimes(1 + 1);
-		expect(Util.gitInit).toHaveBeenCalledTimes(0);
-		expect(inquirer.prompt).toHaveBeenCalledTimes(5);
-		expect(inquirer.prompt).toHaveBeenCalledWith(mockQuestion);
-		expect(mockTemplate.getFrameworkByName).toHaveBeenCalledTimes(1);
 		done();
 	});
 	it("chooseActionLoop - should run through properly - Add Component", async done => {

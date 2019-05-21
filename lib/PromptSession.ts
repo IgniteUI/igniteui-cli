@@ -54,22 +54,13 @@ export class PromptSession {
 			theme = this.config.project.theme;
 		} else {
 			Util.log(""); /* new line */
-
-			let projectName: string;
-			const availableDefaultName = Util.getAvailableName(defaultProjName, true);
-			while (!projectName) {
-				const defaultAppName = availableDefaultName;
-				const nameRes: string = await this.getUserInput({
-					type: "input",
-					name: "projectName",
-					message: "Enter a name for your project:",
-					default: defaultAppName
-				});
-
-				if (this.nameIsValid(nameRes)) {
-					projectName = nameRes;
-				}
-			}
+			const projectName = await this.getUserInput({
+				type: "input",
+				name: "projectName",
+				message: "Enter a name for your project:",
+				default: Util.getAvailableName(defaultProjName, true),
+				validate: this.nameIsValid
+			});
 
 			const frameRes: string = await this.getUserInput({
 				type: "list",
@@ -190,24 +181,21 @@ export class PromptSession {
 			default: "Complete & Run"
 		});
 
+		runner.clearPending();
 		switch (action) {
 			case "Add component":
-				runner.clearPending();
 				runner.addTask(this.getComponentGroupTask);
 				runner.addTask(this.getComponentTask);
 				runner.addTask(this.getTemplateTask);
-				// TODO: on template selected
 				runner.addTask(this.templateSelectedTask());
 				runner.addTask(run => Promise.resolve(run.resetTasks()));
 				break;
 			case "Add scenario":
-				runner.clearPending();
 				runner.addTask(this.getCustomViewTask);
 				runner.addTask(this.templateSelectedTask("view"));
 				runner.addTask(run => Promise.resolve(run.resetTasks()));
 				break;
 			case "Complete & Run":
-				runner.clearPending();
 				const config = ProjectConfig.localConfig();
 				const defaultPort = config.project.defaultPort;
 				const port = (await inquirer.prompt({
@@ -215,9 +203,10 @@ export class PromptSession {
 					message: "Choose app host port:",
 					name: "port",
 					type: "input",
-					validate: (input, _answers) => {
+					validate: (input: string) => {
 						if (!Number(input)) {
-							Util.log(`port should be a number. Input valid port or use the suggested default port`, "yellow");
+							Util.log(""); /* new line */
+							Util.error(`port should be a number. Input valid port or use the suggested default port`, "red");
 							return false;
 						}
 						return true;
@@ -342,19 +331,9 @@ export class PromptSession {
 			name: `${type === "component" ? type : "customView"}Name`,
 			message: `Name your ${type}:`,
 			default: availableDefaultName,
-			validate: (input, _answers) => {
-				// TODO: Util.validateComponentName
+			validate: (input: string) => {
 				const name = Util.nameFromPath(input);
-
-				// letter+alphanumeric check
-				if (!Util.isAlphanumericExt(name)) {
-					Util.log(""); /* new line */
-					Util.error(`Name '${name}' is not valid. `
-						+ "Names should start with a letter and can also contain numbers, dashes and spaces.",
-						"red");
-					return false;
-				}
-				return true;
+				return this.nameIsValid(name, false);
 			}
 		});
 
@@ -482,16 +461,19 @@ export class PromptSession {
 	/**
 	 * Check if provided @param name is valid for project name
 	 * @param name the name to check
+	 * @param checkFolder check if folder with this name already exists
 	 */
-	private nameIsValid(name: string): boolean {
+	private nameIsValid(name: string, checkFolder = true): boolean {
 		if (!Util.isAlphanumericExt(name)) {
+			Util.log(""); /* new line */
 			Util.error(`Name '${name}' is not valid. `
 				+ "Name should start with a letter and can also contain numbers, dashes and spaces.",
 				"red");
 			return false;
 		}
 
-		if (Util.directoryExists(name)) {
+		if (checkFolder && Util.directoryExists(name)) {
+			Util.log(""); /* new line */
 			Util.error(`Folder "${name}" already exists!`, "red");
 			return false;
 		}
@@ -697,5 +679,5 @@ interface IUserInputOptions {
 	message: string;
 	choices?: any[];
 	default?: string;
-	validate?: (input: string, ...args) => string | boolean;
+	validate?: (input: string) => string | boolean;
 }
