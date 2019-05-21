@@ -629,6 +629,20 @@ describe("Unit - PromptSession", () => {
 		await mockSession.chooseActionLoop(mockProjectLibrary);
 		expect(start.start).toHaveBeenCalledWith({ port: 7777 });
 		expect(ProjectConfig.setConfig).toHaveBeenCalledWith(params);
+
+		// validate:
+		spyOn(Util, "log");
+		spyOn(Util, "error");
+		const lastCallArgs = (inquirer.prompt as jasmine.Spy).calls.mostRecent().args[0];
+		expect(lastCallArgs.validate).toEqual(jasmine.any(Function));
+
+		expect(lastCallArgs.validate("not a number")).toBe(false);
+		expect(lastCallArgs.validate("1a")).toBe(false);
+		expect(Util.error).toHaveBeenCalledWith(
+			"port should be a number. Input valid port or use the suggested default port",
+			"red");
+		expect(lastCallArgs.validate("3210")).toBe(true);
+		expect(Util.error).toHaveBeenCalledTimes(2);
 		done();
 	});
 	it("start - Should fire correctly with Angular Custom theme selected", async done => {

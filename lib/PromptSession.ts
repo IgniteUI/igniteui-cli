@@ -183,45 +183,43 @@ export class PromptSession {
 
 		runner.clearPending();
 		switch (action) {
-			case "Add component":
-				runner.addTask(this.getComponentGroupTask);
-				runner.addTask(this.getComponentTask);
-				runner.addTask(this.getTemplateTask);
-				runner.addTask(this.templateSelectedTask());
-				runner.addTask(run => Promise.resolve(run.resetTasks()));
-				break;
-			case "Add scenario":
-				runner.addTask(this.getCustomViewTask);
-				runner.addTask(this.templateSelectedTask("view"));
-				runner.addTask(run => Promise.resolve(run.resetTasks()));
-				break;
-			case "Complete & Run":
-				const config = ProjectConfig.localConfig();
-				const defaultPort = config.project.defaultPort;
-				const port = (await inquirer.prompt({
-					default: defaultPort,
-					message: "Choose app host port:",
-					name: "port",
-					type: "input",
-					validate: (input: string) => {
-						if (!Number(input)) {
-							Util.log(""); /* new line */
-							Util.error(`port should be a number. Input valid port or use the suggested default port`, "red");
-							return false;
-						}
-						return true;
+		case "Add component":
+			runner.addTask(this.getComponentGroupTask);
+			runner.addTask(this.getComponentTask);
+			runner.addTask(this.getTemplateTask);
+			runner.addTask(this.templateSelectedTask());
+			runner.addTask(run => Promise.resolve(run.resetTasks()));
+			break;
+		case "Add scenario":
+			runner.addTask(this.getCustomViewTask);
+			runner.addTask(this.templateSelectedTask("view"));
+			runner.addTask(run => Promise.resolve(run.resetTasks()));
+			break;
+		case "Complete & Run":
+			const config = ProjectConfig.localConfig();
+			const defaultPort = config.project.defaultPort;
+			const port = await this.getUserInput({
+				type: "input",
+				name: "port",
+				message: "Choose app host port:",
+				default: defaultPort,
+				validate: (input: string) => {
+					if (!Number(input)) {
+						Util.log(""); /* new line */
+						Util.error(`port should be a number. Input valid port or use the suggested default port`, "red");
+						return false;
 					}
-				}))["port"];
-
-				config.project.defaultPort = parseInt(port, 10);
-				ProjectConfig.setConfig(config);
-				await PackageManager.flushQueue(true);
-				if (true) { // TODO: Make conditional?
-					await start.start({ port });
+					return true;
 				}
-				break;
-			default:
-				break;
+			});
+
+			config.project.defaultPort = parseInt(port, 10);
+			ProjectConfig.setConfig(config);
+			await PackageManager.flushQueue(true);
+			if (true) { // TODO: Make conditional?
+				await start.start({ port });
+			}
+			break;
 		}
 		return true;
 	}
@@ -332,6 +330,7 @@ export class PromptSession {
 			message: `Name your ${type}:`,
 			default: availableDefaultName,
 			validate: (input: string) => {
+				// TODO: GA post?
 				const name = Util.nameFromPath(input);
 				return this.nameIsValid(name, false);
 			}
@@ -603,7 +602,7 @@ interface IUserInputOptions {
 	name: string;
 	message: string;
 	choices?: any[];
-	default?: string;
+	default?: any;
 	validate?: (input: string) => string | boolean;
 }
 
