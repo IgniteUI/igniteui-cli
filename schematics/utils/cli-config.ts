@@ -2,11 +2,10 @@
 import { WorkspaceSchema } from "@angular-devkit/core/src/workspace";
 // tslint:disable-next-line:no-implicit-dependencies
 import { Rule, SchematicContext, SchematicsException, Tree } from "@angular-devkit/schematics";
+import { Config, Util } from "@igniteui-cli/core";
 // tslint:disable-next-line:no-implicit-dependencies
 import { getWorkspace } from "@schematics/angular/utility/config";
 import chalk from "chalk";
-import { Config } from "../../lib/types/index";
-import { Util } from "../../lib/Util";
 
 export function createCliConfig(): Rule {
 	return (tree: Tree, context: SchematicContext) => {

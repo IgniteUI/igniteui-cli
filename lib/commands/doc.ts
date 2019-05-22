@@ -1,7 +1,7 @@
+import { Util } from "@igniteui-cli/core";
 import * as opn from "opn";
-import { GoogleAnalytics } from "../GoogleAnalytics";
+import { GoogleAnalytics } from "@igniteui-cli/core";
 import { PromptSession } from "../PromptSession";
-import { Util } from "../Util";
 
 let doc: {
 	[term: string]: any,

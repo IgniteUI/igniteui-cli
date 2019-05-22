@@ -1,6 +1,6 @@
 import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 import { AngularTemplate } from "../../../../../lib/templates/AngularTemplate";
-import { ControlExtraConfigType, ControlExtraConfiguration } from "../../../../../lib/types/index";
+import { ControlExtraConfigType, ControlExtraConfiguration } from "@igniteui-cli/core";
 
 class TreeGridTemplate extends AngularTemplate {
 	private gridHelper: GridHelper;

@@ -1,6 +1,6 @@
 import { spawnSync } from "child_process";
 import * as cli from "../../lib/cli";
-import { GoogleAnalytics } from "../../lib/GoogleAnalytics";
+import { GoogleAnalytics } from "@igniteui-cli/core";
 
 describe("Help command", () => {
 

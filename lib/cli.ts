@@ -1,5 +1,4 @@
-import chalk from "chalk";
-import * as inquirer from "inquirer";
+import { Util } from "@igniteui-cli/core";
 import * as yargs from "yargs";
 import { default as add } from "./commands/add";
 import { default as build } from "./commands/build";
@@ -11,10 +10,9 @@ import { default as newCommand } from "./commands/new";
 import { default as quickstart } from "./commands/quickstart";
 import { default as start } from "./commands/start";
 import { default as test } from "./commands/test";
-import { GoogleAnalytics } from "./GoogleAnalytics";
+import { GoogleAnalytics } from "@igniteui-cli/core";
 import { PromptSession } from "./PromptSession";
 import {TemplateManager} from "./TemplateManager";
-import { Util } from "./Util";
 
 process.title = "Ignite UI CLI";
 

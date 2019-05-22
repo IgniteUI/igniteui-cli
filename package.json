@@ -28,7 +28,7 @@
     "jasmine": "node spec/jasmine-runner.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "lint": "tslint --project tsconfig.json",
-    "config-schema": "typescript-json-schema lib/types/Config.ts Config -o lib/config/Config.schema.json"
+    "config-schema": "typescript-json-schema packages/core/types/Config.ts Config -o lib/config/Config.schema.json"
   },
   "files": [
     "ignite-ui-cli.txt",
@@ -90,6 +90,7 @@
   "devDependencies": {
     "@angular-devkit/core": "^7.1.1",
     "@angular-devkit/schematics": "^7.1.1",
+    "@igniteui-cli/core": "file:packages/core",
     "@schematics/angular": "^7.1.1",
     "@types/fs-extra": "^3.0.3",
     "@types/inquirer": "0.0.35",

@@ -3,8 +3,7 @@ import { DependencyNotFoundException } from "@angular-devkit/core";
 import { yellow } from "@angular-devkit/core/src/terminal";
 // tslint:disable-next-line:no-implicit-dependencies
 import { chain, FileDoesNotExistException, Rule, Tree } from "@angular-devkit/schematics";
-import { TypeScriptFileUpdate } from "../../lib/project-utility/TypeScriptFileUpdate";
-import { NgTreeFileSystem } from "../../lib/project-utility/TypeScriptUtils";
+import { NgTreeFileSystem, TypeScriptFileUpdate } from "@igniteui-cli/core";
 import { addTypography } from "../../migrations/update-3/index";
 import { createCliConfig } from "../utils/cli-config";
 import { addFontsToIndexHtml, importDefaultTheme } from "../utils/theme-import";

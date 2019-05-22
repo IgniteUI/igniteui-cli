@@ -1,6 +1,5 @@
-import { GoogleAnalytics } from "../GoogleAnalytics";
-import { Config } from "../types/Config";
-import { Util } from "../Util";
+import { Config, Util } from "@igniteui-cli/core";
+import { GoogleAnalytics } from "@igniteui-cli/core";
 import { ProjectConfig } from "./../ProjectConfig";
 
 const command = {

@@ -1,11 +1,7 @@
-import { GoogleAnalytics } from "../GoogleAnalytics";
+import { Config, Framework, ProjectLibrary, Util } from "@igniteui-cli/core";
+import { GoogleAnalytics } from "@igniteui-cli/core";
 import { ProjectConfig } from "../ProjectConfig";
 import { TemplateManager } from "../TemplateManager";
-import { Config } from "../types/Config";
-import { Framework } from "../types/Framework";
-import { ProjectLibrary } from "../types/ProjectLibrary";
-import { Util } from "../Util";
-import { PromptSession } from "./../PromptSession";
 
 let command: {
 	[name: string]: any,

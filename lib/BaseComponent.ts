@@ -1,6 +1,5 @@
+import { Component, Template, Util} from "@igniteui-cli/core";
 import * as path from "path";
-import { Component, Template } from "./types/index";
-import { Util } from "./Util";
 
 export class BaseComponent implements Component {
 	public templates: Template[];

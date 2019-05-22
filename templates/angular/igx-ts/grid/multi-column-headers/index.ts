@@ -1,5 +1,5 @@
 import { IgniteUIForAngularTemplate } from "../../../../../lib/templates/IgniteUIForAngularTemplate";
-import { ControlExtraConfigType, ControlExtraConfiguration } from "../../../../../lib/types/index";
+import { ControlExtraConfigType, ControlExtraConfiguration } from "@igniteui-cli/core";
 
 class IgxMultiColumnHeadersTemplate extends IgniteUIForAngularTemplate {
 	private userExtraConfiguration: {} = {};

@@ -1,4 +1,4 @@
-import { Framework, ProjectLibrary } from "../../lib/types/index";
+import { Framework, ProjectLibrary } from "@igniteui-cli/core";
 
 class ReactFramework implements Framework {
 	public id: string;

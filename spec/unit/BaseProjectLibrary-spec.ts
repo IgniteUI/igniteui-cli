@@ -1,7 +1,7 @@
+import { Component, Template } from "@igniteui-cli/core";
 import * as path from "path";
 import { BaseProjectLibrary } from "../../lib/BaseProjectLibrary";
-import { Component, Template } from "../../lib/types/index";
-import { Util } from "../../lib/Util";
+import { Util } from "@igniteui-cli/core";
 
 describe("Unit - Base project library ", () => {
 

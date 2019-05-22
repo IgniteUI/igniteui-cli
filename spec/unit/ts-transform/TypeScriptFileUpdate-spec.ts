@@ -1,9 +1,8 @@
+import { FsFileSystem, TypeScriptFileUpdate, TypeScriptUtils } from "@igniteui-cli/core";
 import * as fs from "fs";
 import * as ts from "typescript";
-import { GoogleAnalytics } from "../../../lib/GoogleAnalytics";
-import { TypeScriptFileUpdate } from "../../../lib/project-utility/TypeScriptFileUpdate";
-import { FsFileSystem, TypeScriptUtils } from "../../../lib/project-utility/TypeScriptUtils";
-import { Util } from "../../../lib/Util";
+import { GoogleAnalytics } from "@igniteui-cli/core";
+import { Util } from "@igniteui-cli/core";
 
 describe("Unit - TypeScriptFileUpdate", () => {
 	beforeAll(() => {

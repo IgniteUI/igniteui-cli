@@ -2,8 +2,8 @@ import * as cp from "child_process";
 import * as path from "path";
 import { PackageManager } from "../../lib/packages/PackageManager";
 import { ProjectConfig } from "../../lib/ProjectConfig";
-import { Config } from "../../lib/types/index";
-import { Util } from "../../lib/Util";
+import { Config } from "@igniteui-cli/core";
+import { Util } from "@igniteui-cli/core";
 import { resetSpy } from "../helpers/utils";
 
 describe("Unit - Package Manager", () => {

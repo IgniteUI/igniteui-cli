@@ -3,8 +3,8 @@ import * as os from "os";
 import * as path from "path";
 import { default as config } from "../../lib/commands/config";
 import { default as generateCmd } from "../../lib/commands/generate";
-import { GoogleAnalytics } from "../../lib/GoogleAnalytics";
-import { Util } from "../../lib/Util";
+import { GoogleAnalytics } from "@igniteui-cli/core";
+import { Util } from "@igniteui-cli/core";
 import { deleteAll } from "../helpers/utils";
 
 describe("Unit - Generate command", () => {

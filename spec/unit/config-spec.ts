@@ -1,7 +1,7 @@
 import { default as configCmd } from "../../lib/commands/config";
-import { GoogleAnalytics } from "../../lib/GoogleAnalytics";
+import { GoogleAnalytics } from "@igniteui-cli/core";
 import { ProjectConfig } from "../../lib/ProjectConfig";
-import { Util } from "../../lib/Util";
+import { Util } from "@igniteui-cli/core";
 
 describe("Unit - Config command", () => {
 	beforeAll(() => {

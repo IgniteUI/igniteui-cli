@@ -2,9 +2,9 @@ import * as fs from "fs";
 import * as os from "os";
 import * as path from "path";
 import cli = require("../../lib/cli");
-import { GoogleAnalytics } from "../../lib/GoogleAnalytics";
+import { GoogleAnalytics } from "@igniteui-cli/core";
 import { ProjectConfig } from "../../lib/ProjectConfig";
-import { Config, GoogleAnalyticsParameters, Template } from "../../lib/types/index";
+import { Config, GoogleAnalyticsParameters, Template } from "@igniteui-cli/core";
 import { deleteAll } from "../helpers/utils";
 
 describe("Generate command", () => {

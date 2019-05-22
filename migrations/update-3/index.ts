@@ -1,6 +1,6 @@
 // tslint:disable:no-implicit-dependencies
 import { Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
-import { Config } from "../../lib/types/index";
+import { Config } from "@igniteui-cli/core";
 
 export function addTypography(host: Tree) {
 	const indexHtml = "src/index.html";

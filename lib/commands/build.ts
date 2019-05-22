@@ -1,8 +1,8 @@
+import { Util } from "@igniteui-cli/core";
 import * as fs from "fs-extra";
 import * as path from "path";
-import { GoogleAnalytics } from "../GoogleAnalytics";
+import { GoogleAnalytics } from "@igniteui-cli/core";
 import { TemplateManager } from "../TemplateManager";
-import { Util } from "../Util";
 import { PackageManager } from "./../packages/PackageManager";
 import { ProjectConfig } from "./../ProjectConfig";
 

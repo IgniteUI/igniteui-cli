@@ -1,5 +1,4 @@
-import { Framework } from "../../lib/types/index";
-import { Util } from "../../lib/Util";
+import { Framework, Util } from "@igniteui-cli/core";
 
 describe("React templates", () => {
 

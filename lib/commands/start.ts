@@ -1,8 +1,8 @@
+import { Util } from "@igniteui-cli/core";
 import * as path from "path";
 import * as resolve from "resolve";
-import { GoogleAnalytics } from "../GoogleAnalytics";
+import { GoogleAnalytics } from "@igniteui-cli/core";
 import { TemplateManager } from "../TemplateManager";
-import { Util } from "../Util";
 import { ProjectConfig } from "./../ProjectConfig";
 import { default as build } from "./build";
 

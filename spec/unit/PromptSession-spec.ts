@@ -1,14 +1,13 @@
+import { ControlExtraConfigType, Util } from "@igniteui-cli/core";
 import * as inquirer from "inquirer";
 import * as path from "path";
 import { default as add } from "../../lib/commands/add";
 import { default as start } from "../../lib/commands/start";
-import { GoogleAnalytics } from "../../lib/GoogleAnalytics";
+import { GoogleAnalytics } from "@igniteui-cli/core";
 import { PackageManager } from "../../lib/packages/PackageManager";
 import { ProjectConfig } from "../../lib/ProjectConfig";
 import { PromptSession } from "../../lib/PromptSession";
 import { TemplateManager } from "../../lib/TemplateManager";
-import { ControlExtraConfigType } from "../../lib/types/index";
-import { Util } from "../../lib/Util";
 
 describe("Unit - PromptSession", () => {
 	beforeAll(() => {

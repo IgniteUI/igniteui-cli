@@ -1,4 +1,4 @@
-import { Framework, ProjectLibrary } from "../../lib/types/index";
+import { Framework, ProjectLibrary } from "@igniteui-cli/core";
 
 // tslint:disable-next-line:class-name
 class jQueryFramework implements Framework {

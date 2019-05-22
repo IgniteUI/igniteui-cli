@@ -1,10 +1,7 @@
-import { GoogleAnalytics } from "../GoogleAnalytics";
+import { AddTemplateArgs, ProjectLibrary, Template, Util } from "@igniteui-cli/core";
+import { GoogleAnalytics } from "@igniteui-cli/core";
 import { ProjectConfig } from "../ProjectConfig";
 import { TemplateManager } from "../TemplateManager";
-import { AddTemplateArgs } from "../types/AddTemplateArgs";
-import { ProjectLibrary } from "../types/ProjectLibrary";
-import { Template } from "../types/Template";
-import { Util } from "../Util";
 import { PackageManager } from "./../packages/PackageManager";
 import { PromptSession } from "./../PromptSession";
 

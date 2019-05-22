@@ -1,9 +1,6 @@
-import { utimes } from "fs-extra";
+import { ProjectLibrary, Util } from "@igniteui-cli/core";
 import * as path from "path";
-import { GoogleAnalytics } from "../GoogleAnalytics";
-import { TemplateManager } from "../TemplateManager";
-import { ProjectLibrary } from "../types/ProjectLibrary";
-import { Util } from "../Util";
+import { GoogleAnalytics } from "@igniteui-cli/core";
 import { default as config } from "./config";
 
 const command = {

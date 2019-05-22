@@ -1,3 +1,4 @@
+import { ComponentGroup, Framework } from "@igniteui-cli/core";
 import * as path from "path";
 import { ProjectConfig } from "../../lib/ProjectConfig";
 import { TemplateManager } from "../../lib/TemplateManager";
@@ -5,8 +6,7 @@ import { AngularTemplate } from "../../lib/templates/AngularTemplate";
 import { IgniteUIForAngularTemplate } from "../../lib/templates/IgniteUIForAngularTemplate";
 import { jQueryTemplate } from "../../lib/templates/jQueryTemplate";
 import { ReactTemplate } from "../../lib/templates/ReactTemplate";
-import { ComponentGroup, Framework } from "../../lib/types/index";
-import { Util } from "../../lib/Util";
+import { Util } from "@igniteui-cli/core";
 import { mockProLibFactory } from "../helpers/mocks";
 import { resetSpy } from "../helpers/utils";
 

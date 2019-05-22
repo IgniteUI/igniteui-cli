@@ -1,8 +1,7 @@
+import { AddTemplateArgs, ControlExtraConfiguration, defaultDelimiters, Template, Util } from "@igniteui-cli/core";
 import * as fs from "fs-extra";
 import * as path from "path";
 import { ProjectConfig } from "../ProjectConfig";
-import { AddTemplateArgs, ControlExtraConfiguration, Template } from "../types/index";
-import { defaultDelimiters, Util } from "../Util";
 
 /**
  * Template with specific implementation for jQuery projects

@@ -1,6 +1,6 @@
 import { EOL } from "os";
 import { IgniteUIForAngularTemplate } from "../../../../../lib/templates/IgniteUIForAngularTemplate";
-import { ControlExtraConfigType, ControlExtraConfiguration } from "../../../../../lib/types/index";
+import { ControlExtraConfigType, ControlExtraConfiguration } from "@igniteui-cli/core";
 
 class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 	private userExtraConfiguration: {} = {};

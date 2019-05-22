@@ -1,13 +1,17 @@
 {
     "compilerOptions": {
+		"baseUrl": ".",
         "target": "es6",
         "module": "commonjs",
-        "sourceMap": true
+		"sourceMap": true,
+		"paths": {
+			"@igniteui-cli/core": ["./packages/core"]
+		}
     },
     "exclude": [
         "output",
 		"**/files/*",
 		"templates/quickstart/angular",
         "node_modules"
-    ]
+	]
 }

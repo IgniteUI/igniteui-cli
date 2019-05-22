@@ -3,7 +3,7 @@ import * as fs from "fs";
 import * as https from "https";
 import * as path from "path";
 import * as process from "process";
-import { GoogleAnalytics } from "../../lib/GoogleAnalytics";
+import { GoogleAnalytics } from "@igniteui-cli/core";
 import { ProjectConfig } from "../../lib/ProjectConfig";
 import { deleteAll } from "../helpers/utils";
 

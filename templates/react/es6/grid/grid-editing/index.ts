@@ -1,7 +1,7 @@
 //TODO:
 import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 import { ReactTemplate } from "../../../../../lib/templates/ReactTemplate";
-import { ControlExtraConfigType, ControlExtraConfiguration } from "../../../../../lib/types/index";
+import { ControlExtraConfigType, ControlExtraConfiguration } from "@igniteui-cli/core";
 
 class GridEditingTemplate extends ReactTemplate {
 	public extraConfigurations: ControlExtraConfiguration[] = [];

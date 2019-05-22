@@ -1,4 +1,4 @@
-import { GoogleAnalytics } from "../lib/GoogleAnalytics";
+import { GoogleAnalytics } from "@igniteui-cli/core";
 
 function uninstall() {
 	if (!!process.env.npm_config_global) {

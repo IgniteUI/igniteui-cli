@@ -1,8 +1,8 @@
 import { exec, spawnSync } from "child_process";
 import * as path from "path";
 import { ProjectConfig } from "../ProjectConfig";
-import { Config } from "../types/index";
-import { Util } from "../Util";
+import { Config } from "@igniteui-cli/core";
+import { Util } from "@igniteui-cli/core";
 import { TemplateManager } from "./../TemplateManager";
 
 import componentsConfig = require("./components");

@@ -5,6 +5,8 @@
 /lib/**/*.js.map
 /lib/**/*.js
 /lib/config/Config.schema.json
+/packages/**/*.js.map
+/packages/**/*.js
 /scripts/**/*.js.map
 /scripts/**/*.js
 /spec/**/*.js.map

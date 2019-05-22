@@ -1,7 +1,7 @@
 import { ReactTemplate } from "../../../../../lib/templates/ReactTemplate";
 
 import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
-import { ControlExtraConfigType, ControlExtraConfiguration } from "../../../../../lib/types/index";
+import { ControlExtraConfigType, ControlExtraConfiguration } from "@igniteui-cli/core";
 
 class HierarchicalGridCustomTemplate extends ReactTemplate {
 	public extraConfigurations: ControlExtraConfiguration[] = [];

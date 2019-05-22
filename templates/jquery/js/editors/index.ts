@@ -1,9 +1,5 @@
-import * as fs from "fs-extra";
-import * as path from "path";
 import { MultiTemplateComponent } from "../../../../lib/MultiTemplateComponent";
-import { ProjectConfig } from "../../../../lib/ProjectConfig";
 import { jQueryTemplate } from "../../../../lib/templates/jQueryTemplate";
-import { Util } from "../../../../lib/Util";
 
 const templates = new Map([
 	["text-editor",  {name: "Text Editor", widget: "igTextEditor"}],

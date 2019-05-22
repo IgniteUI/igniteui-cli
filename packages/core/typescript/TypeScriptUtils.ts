@@ -2,7 +2,7 @@
 import { Tree } from "@angular-devkit/schematics/src/tree/interface";
 import * as fs from "fs";
 import * as ts from "typescript";
-import { Util } from "../Util";
+import { Util } from "../util/Util";
 
 export class TypeScriptUtils {
 

@@ -1,7 +1,7 @@
 import * as path from "path";
-import { TypeScriptFileUpdate } from "../project-utility/TypeScriptFileUpdate";
-import { AddTemplateArgs, TemplateDependency } from "../types/index";
-import { Util } from "../Util";
+import { TypeScriptFileUpdate } from "@igniteui-cli/core";
+import { AddTemplateArgs, TemplateDependency } from "@igniteui-cli/core";
+import { Util } from "@igniteui-cli/core";
 import { AngularTemplate } from "./AngularTemplate";
 
 export class IgniteUIForAngularTemplate extends AngularTemplate {

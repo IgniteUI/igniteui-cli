@@ -2,15 +2,15 @@ import * as inquirer from "inquirer";
 import * as path from "path";
 import { default as add } from "./commands/add";
 import { default as start } from "./commands/start";
-import { GoogleAnalytics } from "./GoogleAnalytics";
+import { GoogleAnalytics } from "@igniteui-cli/core";
 import { PackageManager } from "./packages/PackageManager";
 import { ProjectConfig } from "./ProjectConfig";
 import { TemplateManager } from "./TemplateManager";
 import {
 	Component, Config, ControlExtraConfigType, ControlExtraConfiguration, Framework,
 	FrameworkId, ProjectLibrary, ProjectTemplate, Template
-} from "./types/index";
-import { ChoiceItem, Util } from "./Util";
+} from "@igniteui-cli/core";
+import { ChoiceItem, Util } from "@igniteui-cli/core";
 
 const WIZARD_BACK_OPTION = "Back";
 

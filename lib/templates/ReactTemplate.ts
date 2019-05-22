@@ -1,7 +1,6 @@
+import { AddTemplateArgs, ControlExtraConfiguration, defaultDelimiters, Template, Util } from "@igniteui-cli/core";
 import * as fs from "fs-extra";
 import * as path from "path";
-import { AddTemplateArgs, ControlExtraConfiguration, Template } from "../types/index";
-import { defaultDelimiters, Util } from "../Util";
 
 export class ReactTemplate implements Template {
 	public components: string[];

@@ -1,4 +1,4 @@
-import { Component, Template } from "./types/index";
+import { Component, Template } from "@igniteui-cli/core";
 
 export abstract class MultiTemplateComponent<T extends Template> implements Component {
 	public name: string;

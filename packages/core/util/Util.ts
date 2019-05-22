@@ -4,10 +4,10 @@ import * as fs from "fs";
 import * as glob from "glob";
 import * as path from "path";
 import through2 = require("through2");
-import { BaseComponent } from "./BaseComponent";
+import { BaseComponent } from "../../../lib/BaseComponent";
+import { Component, ComponentGroup, Delimiter, Template, TemplateDelimiters } from "../types";
 import { GoogleAnalytics } from "./GoogleAnalytics";
-import { Component, ComponentGroup, Template } from "./types";
-import {  Delimiter, TemplateDelimiters } from "./types/TemplateReplaceDelimiters";
+
 const imageExtensions = [".png", ".jpg", ".jpeg", ".gif", ".bmp", ".ico"];
 const applyConfig = (configuration: { [key: string]: string }) => {
 	return through2((data, enc, cb) => {

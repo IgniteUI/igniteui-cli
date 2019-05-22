@@ -1,9 +1,8 @@
+import { ProjectLibrary, Util } from "@igniteui-cli/core";
 import * as path from "path";
-import { GoogleAnalytics } from "../GoogleAnalytics";
+import { GoogleAnalytics } from "@igniteui-cli/core";
 import { PackageManager } from "../packages/PackageManager";
 import { ProjectConfig } from "../ProjectConfig";
-import { ProjectLibrary } from "../types/ProjectLibrary";
-import { Util } from "../Util";
 import { PromptSession } from "./../PromptSession";
 import { TemplateManager } from "./../TemplateManager";
 

@@ -1,8 +1,8 @@
+import { TypeScriptFileUpdate } from "@igniteui-cli/core";
 import * as path from "path";
-import { TypeScriptFileUpdate } from "../../../lib/project-utility/TypeScriptFileUpdate";
 import { ProjectConfig } from "../../../lib/ProjectConfig";
 import { AngularTemplate } from "../../../lib/templates/AngularTemplate";
-import { Util } from "../../../lib/Util";
+import { Util } from "@igniteui-cli/core";
 
 describe("Unit - AngularTemplate Base", () => {
 	// tslint:disable:object-literal-sort-keys

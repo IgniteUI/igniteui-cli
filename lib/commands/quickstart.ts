@@ -1,7 +1,7 @@
+import { Util } from "@igniteui-cli/core";
 import * as path from "path";
 import * as resolve from "resolve";
-import { GoogleAnalytics } from "../GoogleAnalytics";
-import { Util } from "../Util";
+import { GoogleAnalytics } from "@igniteui-cli/core";
 
 // tslint:disable:object-literal-sort-keys
 const command = {

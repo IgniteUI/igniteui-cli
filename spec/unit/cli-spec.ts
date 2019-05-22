@@ -11,10 +11,10 @@ import { default as newCommand } from "../../lib/commands/new";
 import { default as quickstart } from "../../lib/commands/quickstart";
 import { default as start } from "../../lib/commands/start";
 import { default as test } from "../../lib/commands/test";
-import { GoogleAnalytics } from "../../lib/GoogleAnalytics";
+import { GoogleAnalytics } from "@igniteui-cli/core";
 import { PromptSession } from "../../lib/PromptSession";
 import {TemplateManager} from "../../lib/TemplateManager";
-import { Util } from "../../lib/Util";
+import { Util } from "@igniteui-cli/core";
 import * as yargs from "../../node_modules/yargs";
 
 describe("Unit - Cli.ts", () => {

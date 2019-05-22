@@ -1,6 +1,6 @@
 import * as path from "path";
-import { ProjectTemplate } from "../../../../../lib/types/index";
-import { Util } from "../../../../../lib/Util";
+import { ProjectTemplate } from "@igniteui-cli/core";
+import { Util } from "@igniteui-cli/core";
 import { SideNavProject } from "../side-nav";
 
 export class AuthSideProject extends SideNavProject implements ProjectTemplate {

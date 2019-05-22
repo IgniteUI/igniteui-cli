@@ -1,8 +1,8 @@
 import * as path from "path";
-import { TypeScriptFileUpdate } from "../project-utility/TypeScriptFileUpdate";
+import { TypeScriptFileUpdate } from "@igniteui-cli/core";
 import { ProjectConfig } from "../ProjectConfig";
-import { AddTemplateArgs, ControlExtraConfiguration, Template } from "../types/index";
-import { defaultDelimiters, Util } from "../Util";
+import { AddTemplateArgs, ControlExtraConfiguration, Template } from "@igniteui-cli/core";
+import { defaultDelimiters, Util } from "@igniteui-cli/core";
 
 export class AngularTemplate implements Template {
 	public components: string[];
