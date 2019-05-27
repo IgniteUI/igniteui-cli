@@ -1,4 +1,4 @@
-import { BaseComponent } from "../../../../lib/BaseComponent";
+import { BaseComponent } from "@igniteui-cli/core";
 
 //TODO: rename ComboComponent to IgComboComponent?
 class ComboComponent extends BaseComponent {

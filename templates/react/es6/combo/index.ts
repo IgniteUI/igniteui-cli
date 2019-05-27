@@ -1,4 +1,4 @@
-import { BaseComponent } from "../../../../lib/BaseComponent";
+import { BaseComponent } from "@igniteui-cli/core";
 
 class ComboComponent extends BaseComponent {
 	/**

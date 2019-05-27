@@ -1,5 +1,5 @@
 
-import { BaseComponent } from "../../../../lib/BaseComponent";
+import { BaseComponent } from "@igniteui-cli/core";
 
 class FunnelChartComponent extends BaseComponent {
 	/**

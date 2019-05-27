@@ -4,7 +4,7 @@ import * as fs from "fs";
 import * as glob from "glob";
 import * as path from "path";
 import through2 = require("through2");
-import { BaseComponent } from "../../../lib/BaseComponent";
+import { BaseComponent } from "../templates/BaseComponent";
 import { Component, ComponentGroup, Delimiter, Template, TemplateDelimiters } from "../types";
 import { GoogleAnalytics } from "./GoogleAnalytics";
 
