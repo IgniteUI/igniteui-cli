@@ -1,6 +1,6 @@
 import { Config, Framework, ProjectLibrary, Util } from "@igniteui-cli/core";
 import { GoogleAnalytics } from "@igniteui-cli/core";
-import { ProjectConfig } from "../ProjectConfig";
+import { ProjectConfig } from "@igniteui-cli/core";
 import { TemplateManager } from "../TemplateManager";
 
 let command: {

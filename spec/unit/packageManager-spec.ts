@@ -1,7 +1,7 @@
 import * as cp from "child_process";
 import * as path from "path";
 import { PackageManager } from "../../lib/packages/PackageManager";
-import { ProjectConfig } from "../../lib/ProjectConfig";
+import { ProjectConfig } from "@igniteui-cli/core";
 import { Config } from "@igniteui-cli/core";
 import { Util } from "@igniteui-cli/core";
 import { resetSpy } from "../helpers/utils";

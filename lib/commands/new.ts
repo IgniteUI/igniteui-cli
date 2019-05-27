@@ -2,9 +2,9 @@ import { ProjectLibrary, Util } from "@igniteui-cli/core";
 import * as path from "path";
 import { GoogleAnalytics } from "@igniteui-cli/core";
 import { PackageManager } from "../packages/PackageManager";
-import { ProjectConfig } from "../ProjectConfig";
+import { ProjectConfig } from "@igniteui-cli/core";
 import { PromptSession } from "./../PromptSession";
-import { TemplateManager } from "./../TemplateManager";
+import { TemplateManager } from "../TemplateManager";
 
 let command: {
 	[name: string]: any,

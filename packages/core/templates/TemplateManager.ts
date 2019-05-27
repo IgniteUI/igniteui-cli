@@ -1,12 +1,12 @@
 import { Framework, ProjectLibrary, Template, Util } from "@igniteui-cli/core";
 import * as path from "path";
 import { ProjectConfig } from "@igniteui-cli/core";
-import { AngularTemplate } from "./templates/AngularTemplate";
-import { IgniteUIForAngularTemplate } from "./templates/IgniteUIForAngularTemplate";
-import { jQueryTemplate } from "./templates/jQueryTemplate";
-import { ReactTemplate } from "./templates/ReactTemplate";
+import { AngularTemplate } from "../../../lib/templates/AngularTemplate";
+import { IgniteUIForAngularTemplate } from "../../../lib/templates/IgniteUIForAngularTemplate";
+import { jQueryTemplate } from "../../../lib/templates/jQueryTemplate";
+import { ReactTemplate } from "../../../lib/templates/ReactTemplate";
 
-export class TemplateManager {
+export class BaseTemplateManager {
 
 	private _templatesPath: string = "../templates";
 

@@ -6,8 +6,8 @@ import * as path from "path";
 export class ProjectConfig {
 
 	public static configFile: string = "ignite-ui-cli.json";
-	public static readonly defaults: Config = require("./config/defaults.json");
-	private static schemaPath = "./config/Config.schema.json";
+	public static readonly defaults: Config = require("../config/defaults.json");
+	private static schemaPath = "../config/Config.schema.json";
 
 	/** Returns true if there's a CLI config file in the current working directory */
 	public static hasLocalConfig(): boolean {

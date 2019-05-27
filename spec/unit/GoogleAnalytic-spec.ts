@@ -4,7 +4,7 @@ import * as https from "https";
 import * as path from "path";
 import * as process from "process";
 import { GoogleAnalytics } from "@igniteui-cli/core";
-import { ProjectConfig } from "../../lib/ProjectConfig";
+import { ProjectConfig } from "@igniteui-cli/core";
 import { deleteAll } from "../helpers/utils";
 
 describe("Unit - Google Analytic", () => {

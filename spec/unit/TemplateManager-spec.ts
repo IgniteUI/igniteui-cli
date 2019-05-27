@@ -1,6 +1,6 @@
 import { ComponentGroup, Framework } from "@igniteui-cli/core";
 import * as path from "path";
-import { ProjectConfig } from "../../lib/ProjectConfig";
+import { ProjectConfig } from "@igniteui-cli/core";
 import { TemplateManager } from "../../lib/TemplateManager";
 import { AngularTemplate } from "../../lib/templates/AngularTemplate";
 import { IgniteUIForAngularTemplate } from "../../lib/templates/IgniteUIForAngularTemplate";

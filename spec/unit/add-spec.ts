@@ -4,7 +4,7 @@ import * as ts from "typescript";
 import { default as addCmd } from "../../lib/commands/add";
 import { GoogleAnalytics } from "@igniteui-cli/core";
 import { PackageManager } from "../../lib/packages/PackageManager";
-import { ProjectConfig } from "../../lib/ProjectConfig";
+import { ProjectConfig } from "@igniteui-cli/core";
 import { PromptSession } from "../../lib/PromptSession";
 import { AngularTemplate } from "../../lib/templates/AngularTemplate";
 import { IgniteUIForAngularTemplate } from "../../lib/templates/IgniteUIForAngularTemplate";

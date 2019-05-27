@@ -1,6 +1,6 @@
 import { TypeScriptFileUpdate } from "@igniteui-cli/core";
 import * as path from "path";
-import { ProjectConfig } from "../../../lib/ProjectConfig";
+import { ProjectConfig } from "@igniteui-cli/core";
 import { AngularTemplate } from "../../../lib/templates/AngularTemplate";
 import { Util } from "@igniteui-cli/core";
 

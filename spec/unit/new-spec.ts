@@ -2,7 +2,7 @@ import * as path from "path";
 import { default as newCmd } from "../../lib/commands/new";
 import { GoogleAnalytics } from "@igniteui-cli/core";
 import { PackageManager } from "../../lib/packages/PackageManager";
-import { ProjectConfig } from "../../lib/ProjectConfig";
+import { ProjectConfig } from "@igniteui-cli/core";
 import { PromptSession } from "../../lib/PromptSession";
 import { Util } from "@igniteui-cli/core";
 import { resetSpy } from "../helpers/utils";

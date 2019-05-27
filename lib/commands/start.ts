@@ -3,7 +3,7 @@ import * as path from "path";
 import * as resolve from "resolve";
 import { GoogleAnalytics } from "@igniteui-cli/core";
 import { TemplateManager } from "../TemplateManager";
-import { ProjectConfig } from "./../ProjectConfig";
+import { ProjectConfig } from "@igniteui-cli/core";
 import { default as build } from "./build";
 
 let command: {

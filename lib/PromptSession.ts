@@ -4,13 +4,12 @@ import { default as add } from "./commands/add";
 import { default as start } from "./commands/start";
 import { GoogleAnalytics } from "@igniteui-cli/core";
 import { PackageManager } from "./packages/PackageManager";
-import { ProjectConfig } from "./ProjectConfig";
+import { ProjectConfig } from "@igniteui-cli/core";
 import { TemplateManager } from "./TemplateManager";
 import {
 	Component, Config, ControlExtraConfigType, ControlExtraConfiguration, Framework,
-	FrameworkId, ProjectLibrary, ProjectTemplate, Template
+	FrameworkId, ProjectLibrary, ProjectTemplate, Template, ChoiceItem, Util
 } from "@igniteui-cli/core";
-import { ChoiceItem, Util } from "@igniteui-cli/core";
 
 const WIZARD_BACK_OPTION = "Back";
 

@@ -4,7 +4,7 @@ import * as path from "path";
 import { GoogleAnalytics } from "@igniteui-cli/core";
 import { TemplateManager } from "../TemplateManager";
 import { PackageManager } from "./../packages/PackageManager";
-import { ProjectConfig } from "./../ProjectConfig";
+import { ProjectConfig } from "@igniteui-cli/core";
 
 let command: {
 	command: string,

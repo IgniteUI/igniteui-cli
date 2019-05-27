@@ -1,7 +1,7 @@
 
 import { default as testCmd } from "../../lib/commands/test";
 import { GoogleAnalytics } from "@igniteui-cli/core";
-import { ProjectConfig } from "../../lib/ProjectConfig";
+import { ProjectConfig } from "@igniteui-cli/core";
 import { Util } from "@igniteui-cli/core";
 
 describe("Unit - Test command", () => {

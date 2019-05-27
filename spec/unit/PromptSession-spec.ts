@@ -5,7 +5,7 @@ import { default as add } from "../../lib/commands/add";
 import { default as start } from "../../lib/commands/start";
 import { GoogleAnalytics } from "@igniteui-cli/core";
 import { PackageManager } from "../../lib/packages/PackageManager";
-import { ProjectConfig } from "../../lib/ProjectConfig";
+import { ProjectConfig } from "@igniteui-cli/core";
 import { PromptSession } from "../../lib/PromptSession";
 import { TemplateManager } from "../../lib/TemplateManager";
 
