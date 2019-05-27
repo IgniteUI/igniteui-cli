@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "ng-new": {
+      "description": "New Ignite UI for Angular project",
+      "factory": "./ng-new/index#newProject",
+      "schema": "./ng-new/schema.json"
+    },
+    "app-projects": {
+      "description": "A schematic using a source and a schema to validate options.",
+      "factory": "./app-projects/index"
+    },
+    "component": {
+      "aliases": [ "c" ],
+      "description": "Create an Ignite UI for Angular component.",
+      "factory": "./component/index#component",
+      "schema": "./component/schema.json"
+    }
+  }
+}
