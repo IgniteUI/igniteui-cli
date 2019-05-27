@@ -56,7 +56,7 @@ export class AngularTemplate implements Template {
 		// https://www.typescriptlang.org/docs/handbook/modules.html#dynamic-module-loading-in-nodejs
 		// tslint:disable-next-line:variable-name
 		const TsUpdate: typeof TypeScriptFileUpdate =
-			require("./../project-utility/TypeScriptFileUpdate").TypeScriptFileUpdate;
+			require("@igniteui-cli/core/typescript").TypeScriptFileUpdate;
 
 		if (!(options && options.skipRoute)) {
 			//1) import the component class name,

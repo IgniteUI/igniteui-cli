@@ -1,31 +1,19 @@
-import { Framework, ProjectLibrary, Template, Util } from "@igniteui-cli/core";
 import * as path from "path";
-import { ProjectConfig } from "@igniteui-cli/core";
-import { AngularTemplate } from "../../../lib/templates/AngularTemplate";
-import { IgniteUIForAngularTemplate } from "../../../lib/templates/IgniteUIForAngularTemplate";
-import { jQueryTemplate } from "../../../lib/templates/jQueryTemplate";
-import { ReactTemplate } from "../../../lib/templates/ReactTemplate";
+import { Framework, ProjectLibrary, Template } from "../types";
+import { ProjectConfig, Util } from "../util";
 
-export class BaseTemplateManager {
+export abstract class BaseTemplateManager {
+	protected _quickstartTemplatesPath: string = "quickstart";
+	protected frameworks: Framework[] = [];
 
-	private _templatesPath: string = "../templates";
-
-	private _quickstartTemplatesPath: string = "quickstart";
-
-	private frameworks: Framework[] = [];
-
-	constructor(templatesPath?: string) {
-		if (templatesPath) {
-			this._templatesPath = templatesPath;
-		}
+	constructor(private templatesAbsPath: string) {
 
 		// read dirs and push dir names into frameworks
-		const frameworks = Util.getDirectoryNames(path.join(__dirname, this._templatesPath))
+		const frameworks = Util.getDirectoryNames(this.templatesAbsPath)
 			.filter(x => x !== this._quickstartTemplatesPath);
 		// load and initialize templates
 		for (const framework of frameworks) {
-			this.frameworks.push(require(path.join(__dirname, this._templatesPath, framework)) as Framework);
-
+			this.frameworks.push(require(path.join(this.templatesAbsPath, framework)) as Framework);
 		}
 
 		// load external templates
@@ -107,6 +95,13 @@ export class BaseTemplateManager {
 
 	//#region plugin templates
 
+	/**
+	 * Loads properties from a JSON file and initializes a base Template implementation
+	 * @param filePath Path to a json config file representing a template
+	 * @returns null if no proper file is found
+	 */
+	protected abstract loadFromConfig(filePath: string): Template;
+
 	/** Read config and load custom templates based on type */
 	private loadExternalTemplates() {
 		const config = ProjectConfig.getConfig();
@@ -145,41 +140,6 @@ export class BaseTemplateManager {
 			}
 		}
 		this.addTemplates(customTemplates);
-	}
-
-	/**
-	 * Loads properties from a JSON file and initializes a base Template implementation
-	 * @param filePath Path to a json config file representing a template
-	 * @returns null if no proper file is found
-	 */
-	private loadFromConfig(filePath: string): Template {
-		let template: Template = null;
-		if (Util.fileExists(filePath)) {
-			const rootPath = path.dirname(filePath);
-			const settings = require(filePath) as Template;
-			switch (`${settings.framework}|${settings.projectType}`) {
-				case "jquery|js":
-					template = new jQueryTemplate(rootPath);
-					break;
-				case "react|es6":
-					template = new ReactTemplate(rootPath);
-					break;
-				case "angular|ig-ts":
-					template = new AngularTemplate(rootPath);
-					break;
-				case "angular|igx-ts":
-					template = new IgniteUIForAngularTemplate(rootPath);
-					break;
-				default:
-					Util.error(`The framework/project type for template with id "${settings.id}" is not supported.`);
-					Util.error(`File path: ${filePath}`);
-					break;
-			}
-			if (template !== null) {
-				Object.assign(template, settings);
-			}
-		}
-		return template;
 	}
 
 	private addTemplates(templates: Template[]) {
