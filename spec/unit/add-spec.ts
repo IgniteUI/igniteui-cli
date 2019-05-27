@@ -1,14 +1,14 @@
+import { IgniteUIForAngularTemplate } from "@igniteui-angular/templates";
+import { ProjectConfig } from "@igniteui-cli/core";
+import { Util } from "@igniteui-cli/core";
 import { TypeScriptFileUpdate, TypeScriptUtils } from "@igniteui-cli/core";
+import { GoogleAnalytics } from "@igniteui-cli/core";
 import * as path from "path";
 import * as ts from "typescript";
 import { default as addCmd } from "../../lib/commands/add";
-import { GoogleAnalytics } from "@igniteui-cli/core";
 import { PackageManager } from "../../lib/packages/PackageManager";
-import { ProjectConfig } from "@igniteui-cli/core";
 import { PromptSession } from "../../lib/PromptSession";
 import { AngularTemplate } from "../../lib/templates/AngularTemplate";
-import { IgniteUIForAngularTemplate } from "../../lib/templates/IgniteUIForAngularTemplate";
-import { Util } from "@igniteui-cli/core";
 import { resetSpy } from "../helpers/utils";
 
 describe("Unit - Add command", () => {

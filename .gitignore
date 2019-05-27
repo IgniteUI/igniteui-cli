@@ -8,6 +8,7 @@
 /packages/core/config/Config.schema.json
 /packages/**/*.js.map
 /packages/**/*.js
+!/packages/igx-templates/**/files/**/*
 /scripts/**/*.js.map
 /scripts/**/*.js
 /spec/**/*.js.map

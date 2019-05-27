@@ -3,7 +3,7 @@ import * as path from "path";
 import { ProjectConfig } from "@igniteui-cli/core";
 import { TemplateManager } from "../../lib/TemplateManager";
 import { AngularTemplate } from "../../lib/templates/AngularTemplate";
-import { IgniteUIForAngularTemplate } from "../../lib/templates/IgniteUIForAngularTemplate";
+import { IgniteUIForAngularTemplate } from "@igniteui-angular/templates";
 import { jQueryTemplate } from "../../lib/templates/jQueryTemplate";
 import { ReactTemplate } from "../../lib/templates/ReactTemplate";
 import { Util } from "@igniteui-cli/core";

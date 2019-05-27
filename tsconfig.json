@@ -5,7 +5,8 @@
         "module": "commonjs",
 		"sourceMap": true,
 		"paths": {
-			"@igniteui-cli/core": ["./packages/core"]
+			"@igniteui-cli/core": ["./packages/core"],
+			"@igniteui-angular/templates": ["./packages/igx-templates"]
 		}
     },
     "exclude": [

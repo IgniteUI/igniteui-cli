@@ -1,0 +1,9 @@
+{
+  "name": "@igniteui-angular/templates",
+  "version": "1.0.0",
+  "description": "Templates for Ignite UI for Angular projects and components",
+  "main": "index.js",
+  "typings": "index.d.ts",
+  "author": "Infragistics",
+  "license": "MIT"
+}
