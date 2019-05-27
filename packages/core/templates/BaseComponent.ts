@@ -1,6 +1,8 @@
 import * as path from "path";
 import { Component, Template } from "../types";
-import { Util } from "../util";
+
+// cross-ref, don't use barrel exports
+import { Util } from "../util/Util";
 
 export class BaseComponent implements Component {
 	public templates: Template[];

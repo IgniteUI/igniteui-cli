@@ -1,5 +1,6 @@
-import { Component, ComponentGroup, ProjectLibrary, ProjectTemplate, Template, Util } from "@igniteui-cli/core";
 import * as path from "path";
+import { ProjectLibrary, Template, ProjectTemplate, Component, ComponentGroup } from "../types";
+import { Util } from "../util";
 
 export class BaseProjectLibrary implements ProjectLibrary {
 	public projectType: string;

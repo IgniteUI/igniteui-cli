@@ -1,5 +1,5 @@
 import * as fs from "fs";
-import { BaseProjectLibrary } from "../../../lib/BaseProjectLibrary";
+import { BaseProjectLibrary } from "@igniteui-cli/core";
 
 // tslint:disable-next-line:class-name
 class jQueryJSProjectLibrary extends BaseProjectLibrary {

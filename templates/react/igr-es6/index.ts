@@ -1,4 +1,4 @@
-import { BaseProjectLibrary } from "../../../lib/BaseProjectLibrary";
+import { BaseProjectLibrary } from "@igniteui-cli/core";
 
 class IgrReactProjectLibrary extends BaseProjectLibrary {
 	constructor() {
