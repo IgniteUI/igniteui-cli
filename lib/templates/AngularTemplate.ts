@@ -1,8 +1,8 @@
+import {
+	AddTemplateArgs, ControlExtraConfiguration, defaultDelimiters,
+	ProjectConfig, Template, TypeScriptFileUpdate, Util
+} from "@igniteui-cli/core";
 import * as path from "path";
-import { TypeScriptFileUpdate } from "@igniteui-cli/core";
-import { ProjectConfig } from "@igniteui-cli/core";
-import { AddTemplateArgs, ControlExtraConfiguration, Template } from "@igniteui-cli/core";
-import { defaultDelimiters, Util } from "@igniteui-cli/core";
 
 export class AngularTemplate implements Template {
 	public components: string[];
@@ -30,7 +30,7 @@ export class AngularTemplate implements Template {
 		return [path.join(this.rootPath, "files")];
 	}
 
-	public generateConfig(name: string, options: {}): {[key: string]: any} {
+	public generateConfig(name: string, options: {}): { [key: string]: any } {
 		const config = {};
 		if (options["modulePath"] && !Util.fileExists(path.join(process.cwd(), `src\\app`, options["modulePath"]))) {
 			Util.error(`Wrong module path provided: ${options["modulePath"]}. No components were added!`);

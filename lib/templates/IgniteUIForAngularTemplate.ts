@@ -1,10 +1,21 @@
+import {
+	AddTemplateArgs, ControlExtraConfiguration,
+	TemplateDependency, TypeScriptFileUpdate, Util
+} from "@igniteui-cli/core";
 import * as path from "path";
-import { TypeScriptFileUpdate } from "@igniteui-cli/core";
-import { AddTemplateArgs, TemplateDependency } from "@igniteui-cli/core";
-import { Util } from "@igniteui-cli/core";
-import { AngularTemplate } from "./AngularTemplate";
 
-export class IgniteUIForAngularTemplate extends AngularTemplate {
+export class IgniteUIForAngularTemplate {
+	public components: string[];
+	public controlGroup: string;
+	public listInComponentTemplates: boolean = true;
+	public listInCustomTemplates: boolean = false;
+	public id: string;
+	public name: string;
+	public description: string;
+	public framework: string = "angular";
+	public projectType: string = "igx-ts";
+	public hasExtraConfiguration: boolean = false;
+	public packages = [];
 
 	public dependencies: TemplateDependency[] = [];
 
@@ -19,8 +30,27 @@ export class IgniteUIForAngularTemplate extends AngularTemplate {
 		}
 	};
 
-	constructor(rootPath: string) {
-		super(rootPath);
+	public get templatePaths(): string[] {
+		return [path.join(this.rootPath, "files")];
+	}
+
+	constructor(private rootPath: string) {
+	}
+
+	public generateConfig(name: string, options: {}): { [key: string]: any } {
+		const config = {};
+		if (options["modulePath"] && !Util.fileExists(path.join(process.cwd(), `src\\app`, options["modulePath"]))) {
+			Util.error(`Wrong module path provided: ${options["modulePath"]}. No components were added!`);
+			return Promise.resolve(false);
+		}
+
+		const terms = [];
+		for (const key of Object.keys(options)) {
+			terms.push(options[key]);
+		}
+		Object.assign(config, ...terms, this.getBaseVariables(name));
+
+		return config;
 	}
 
 	//TODO: rename name to fullName for clarity + in all other places fileName to fullName
@@ -83,8 +113,52 @@ export class IgniteUIForAngularTemplate extends AngularTemplate {
 			}
 		}
 		mainModule.finalize();
+	}
 
-		// make sure DV file is added to project if needed:
-		this.ensureSourceFiles();
+	public getExtraConfiguration(): ControlExtraConfiguration[] {
+		return [];
+	}
+	public setExtraConfiguration(extraConfigKeys: {}) { }
+
+	protected getBaseVariables(name: string) {
+		const config = {};
+		config["name"] = Util.nameFromPath(name);
+		config["ClassName"] = Util.className(Util.nameFromPath(name));
+		config["path"] = this.folderName(name);
+		config["filePrefix"] = this.fileName(name);
+		config["description"] = this.description;
+		config["cliVersion"] = Util.version();
+		config["camelCaseName"] = Util.camelCase(name);
+
+		if (this.name) {
+			config["nameMerged"] = this.name.replace(/ /g, "");
+		}
+		return config;
+	}
+
+	protected folderName(pathName: string): string {
+		//TODO: should remove the spaces
+		const parts = path.parse(pathName);
+		let folderName = pathName;
+		if (parts.dir) {
+			folderName = path.join(parts.dir, parts.name);
+			folderName = folderName.replace(/\\/g, "/");
+			// TODO: config-based "src/app"?
+			const relative = path.join(process.cwd(), "src/app", folderName);
+			// path.join will also resolve any '..' segments
+			// so if relative result doesn't start with CWD it's out of project root
+			if (!relative.startsWith(process.cwd())) {
+				Util.error(`Path ${"src/app/" + folderName} is not valid!`, "red");
+				process.exit(1);
+			}
+			//clean up potential leading spaces in folder names (`path/    name`):
+			folderName = folderName.replace(/\/\s+/g, "/");
+		}
+		return Util.lowerDashed(folderName);
+	}
+
+	protected fileName(pathName: string): string {
+		const name = Util.nameFromPath(pathName);
+		return Util.lowerDashed(name);
 	}
 }
