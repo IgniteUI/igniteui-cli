@@ -1,6 +1,3 @@
-import * as path from "path";
-import * as ts from "typescript";
-
 // tslint:disable:no-implicit-dependencies
 import { Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
 
