@@ -1,17 +1,17 @@
 {
-	"name": "@igniteui-cli/core",
-	"version": "1.0.0",
-	"description": "Base types and functionality for Ignite UI CLI",
-	"main": "index.js",
-	"typings": "index.d.ts",
-	"author": "Infragistics",
-	"license": "MIT",
-	"dependencies": {
-		"@angular-devkit/schematics": "^7.1.1",
-		"chalk": "^2.3.2",
-		"glob": "^7.1.2",
-		"inquirer": "^6.2.2",
-		"through2": "^2.0.3",
-		"typescript": "^3.2.1"
-	}
+  "name": "@igniteui-cli/core",
+  "version": "1.0.0",
+  "description": "Base types and functionality for Ignite UI CLI",
+  "main": "index.js",
+  "typings": "index.d.ts",
+  "author": "Infragistics",
+  "license": "MIT",
+  "dependencies": {
+    "@angular-devkit/schematics": "^7.1.1",
+    "chalk": "^2.3.2",
+    "glob": "^7.1.2",
+    "inquirer": "^6.2.2",
+    "through2": "^2.0.3",
+    "typescript": "^3.2.1"
+  }
 }
