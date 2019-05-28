@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "<%=dash-name%>": {
+    "<%=dashName%>": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/<%=dash-name%>",
+            "outputPath": "dist/<%=dashName%>",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -62,18 +62,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "<%=dash-name%>:build"
+            "browserTarget": "<%=dashName%>:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "<%=dash-name%>:build:production"
+              "browserTarget": "<%=dashName%>:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "<%=dash-name%>:build"
+            "browserTarget": "<%=dashName%>:build"
           }
         },
         "test": {
@@ -107,7 +107,7 @@
         }
       }
     },
-    "<%=dash-name%>-e2e": {
+    "<%=dashName%>-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -116,11 +116,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "<%=dash-name%>:serve"
+            "devServerTarget": "<%=dashName%>:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "<%=dash-name%>:serve:production"
+              "devServerTarget": "<%=dashName%>:serve:production"
             }
           }
         },
@@ -136,5 +136,5 @@
       }
     }
   },
-  "defaultProject": "<%=dash-name%>"
+  "defaultProject": "<%=dashName%>"
 }

@@ -1,5 +1,5 @@
-import { IgniteUIForAngularTemplate } from "../../../IgniteUIForAngularTemplate";
 import { ControlExtraConfigType, ControlExtraConfiguration } from "@igniteui-cli/core";
+import { IgniteUIForAngularTemplate } from "../../../IgniteUIForAngularTemplate";
 
 class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 	private userExtraConfiguration: {};
@@ -49,12 +49,12 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 		};
 		if (this.usePinning) {
 			pinningConfig = {
-				"album-pin": this.pinningTemplate("Album"),
-				"artist-pin": this.pinningTemplate("Artist"),
-				"awards-pin": this.pinningTemplate("Awards"),
-				"grammy-pin": this.pinningTemplate("Grammy"),
-				"launch-pin": this.pinningTemplate("Launch"),
-				"nominations-pin": this.pinningTemplate("Nominations")
+				albumPin: this.pinningTemplate("Album"),
+				artistPin: this.pinningTemplate("Artist"),
+				awardsPin: this.pinningTemplate("Awards"),
+				grammyPin: this.pinningTemplate("Grammy"),
+				launchPin: this.pinningTemplate("Launch"),
+				nominationsPin: this.pinningTemplate("Nominations")
 			};
 		}
 

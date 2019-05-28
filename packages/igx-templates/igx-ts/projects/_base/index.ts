@@ -1,7 +1,7 @@
-import * as path from "path";
 import { ControlExtraConfiguration } from "@igniteui-cli/core";
 import { ProjectTemplate } from "@igniteui-cli/core";
 import { Util } from "@igniteui-cli/core";
+import * as path from "path";
 
 export class BaseIgxProject implements ProjectTemplate {
 	public id: string = "base";
@@ -53,23 +53,25 @@ $app-palette: igx-palette($primary, $secondary);
 	public setExtraConfiguration(extraConfigKeys: any[]) { }
 	public generateConfig(name: string, theme: string, ...options: any[]): {[key: string]: any} {
 		const config = {
-			"cliVersion": Util.version(),
-			"CustomTheme": "",
-			"dash-name": Util.lowerDashed(name),
-			"DefaultTheme": "",
-			"name": name,
-			"path": name,
-			"projectTemplate": this.id,
-			"theme": theme
+			name,
+			theme,
+			cliVersion: Util.version(),
+			CustomTheme: "",
+			dashName: Util.lowerDashed(name),
+			DefaultTheme: "",
+			path: name,
+			projectTemplate: this.id
 		};
 
 		switch (theme) {
 			case "Custom":
 				config["CustomTheme"] = this.CUSTOM_THEME;
+				config["themePath"] = "Custom";
 				break;
 			case "Default":
 			default:
 				config["DefaultTheme"] = this.DEFAULT_THEME;
+				config["themePath"] = "node_modules/igniteui-angular/styles/igniteui-angular.css";
 				break;
 		}
 

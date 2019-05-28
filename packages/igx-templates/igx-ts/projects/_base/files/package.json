@@ -1,5 +1,5 @@
 {
-  "name": "<%=dash-name%>",
+  "name": "<%=dashName%>",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
