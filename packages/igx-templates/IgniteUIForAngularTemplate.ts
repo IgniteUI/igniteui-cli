@@ -1,10 +1,10 @@
 import {
-	AddTemplateArgs, ControlExtraConfiguration,
-	TemplateDependency, TypeScriptFileUpdate, Util
+	AddTemplateArgs, ControlExtraConfiguration, FsFileSystem, IFileSystem,
+	Template, TemplateDependency, TypeScriptFileUpdate, Util
 } from "@igniteui-cli/core";
 import * as path from "path";
 
-export class IgniteUIForAngularTemplate {
+export class IgniteUIForAngularTemplate implements Template {
 	public components: string[];
 	public controlGroup: string;
 	public listInComponentTemplates: boolean = true;
@@ -15,7 +15,7 @@ export class IgniteUIForAngularTemplate {
 	public framework: string = "angular";
 	public projectType: string = "igx-ts";
 	public hasExtraConfiguration: boolean = false;
-	public packages = [];
+	public packages: string[] = [];
 
 	public dependencies: TemplateDependency[] = [];
 
@@ -32,6 +32,17 @@ export class IgniteUIForAngularTemplate {
 
 	public get templatePaths(): string[] {
 		return [path.join(this.rootPath, "files")];
+	}
+
+	private _fs: IFileSystem;
+	public get virtFs(): IFileSystem {
+		if (!this._fs) {
+			this._fs = new FsFileSystem();
+		}
+		return this._fs;
+	}
+	public set virtFs(v: IFileSystem) {
+		this._fs = v;
 	}
 
 	constructor(private rootPath: string) {
@@ -78,11 +89,11 @@ export class IgniteUIForAngularTemplate {
 		const TsUpdate: typeof TypeScriptFileUpdate =
 			require("@igniteui-cli/core/typescript").TypeScriptFileUpdate;
 
-		if (!(options && options.skipRoute) && Util.fileExists("src/app/app-routing.module.ts")) {
+		if (!(options && options.skipRoute) && this.virtFs.fileExists("src/app/app-routing.module.ts")) {
 			//1) import the component class name,
 			//2) and populate the Routes array with the path and component
 			//for example: { path: 'combo', component: ComboComponent }
-			const routingModule = new TsUpdate(path.join(projectPath, "src/app/app-routing.module.ts"));
+			const routingModule = new TsUpdate(path.join(projectPath, "src/app/app-routing.module.ts"), this.virtFs);
 			routingModule.addRoute(
 				path.join(projectPath, `src/app/${this.folderName(name)}/${this.fileName(name)}.component.ts`),
 				this.fileName(name),		//path
@@ -93,7 +104,7 @@ export class IgniteUIForAngularTemplate {
 		//3) add an import of the component class from its file location.
 		//4) populate the declarations portion of the @NgModule with the component class name.
 		const mainModulePath = path.join(projectPath, `src/app/${modulePath}`);
-		const mainModule = new TsUpdate(mainModulePath);
+		const mainModule = new TsUpdate(mainModulePath, this.virtFs);
 		mainModule.addDeclaration(
 			path.join(projectPath, `src/app/${this.folderName(name)}/${this.fileName(name)}.component.ts`),
 			modulePath !== "app.module.ts"

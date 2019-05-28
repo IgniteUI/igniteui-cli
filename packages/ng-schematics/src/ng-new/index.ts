@@ -9,6 +9,7 @@ import {
 import { ProjectLibrary, Util } from "@igniteui-cli/core";
 import { defer, Observable } from 'rxjs';
 import { NewProjectOptions } from "../app-projects/schema";
+import { ComponentOptions } from "../component/schema";
 import { SchematicsPromptSession } from "../prompt/SchematicsPromptSession";
 import { SchematicsTemplateManager } from "../SchematicsTemplateManager";
 import { OptionsSchema } from "./schema";
@@ -22,9 +23,10 @@ export function newProject(options: OptionsSchema): Rule {
 	return (_host: Tree, context: IgxSchematicContext) => {
 		context.logger.info(`Generating ${options.name}`);
 
+		let projectName = options.name;
 		let projLibrary: ProjectLibrary;
 		let projectOptions: NewProjectOptions;
-		const addedComponents: any[] = [];
+		const addedComponents: ComponentOptions[] = [];
 		const templateManager = new SchematicsTemplateManager();
 		const prompt = new SchematicsPromptSession(templateManager, addedComponents);
 
@@ -34,7 +36,6 @@ export function newProject(options: OptionsSchema): Rule {
 		return chain([
 			(tree: Tree, context: IgxSchematicContext): Observable<Tree> => {
 				return defer<Tree>(async function() { // TODO rxjs types?
-					let projectName = options.name;
 
 					if (!prompt.nameIsValid(options.name)) {
 						projectName = await prompt.getUserInput({
@@ -89,7 +90,7 @@ export function newProject(options: OptionsSchema): Rule {
 					},
 					(_tree: Tree, _context: IgxSchematicContext) => {
 						if (addedComponents.length) {
-							return chain(addedComponents);
+							return chain(addedComponents.map(x => schematic("component", Object.assign(x, { projectName }))));
 						}
 					},
 					move(options.name)

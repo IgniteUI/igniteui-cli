@@ -1,11 +1,13 @@
-import { Rule, schematic, Tree } from "@angular-devkit/schematics";
+import { Tree } from "@angular-devkit/schematics";
+import { IgniteUIForAngularTemplate } from "@igniteui-angular/templates";
 import {
 	BasePromptSession, BaseTemplateManager, Framework, IUserInputOptions,
-	ProjectLibrary, ProjectTemplate, PromptTaskContext, Task, ProjectConfig, NgTreeFileSystem } from "@igniteui-cli/core";
+	NgTreeFileSystem, ProjectConfig, ProjectLibrary, ProjectTemplate, PromptTaskContext, Task } from "@igniteui-cli/core";
+import { ComponentOptions } from "../component/schema";
 
 export class SchematicsPromptSession extends BasePromptSession {
 
-	constructor(templateManager: BaseTemplateManager, private rulesChain: Rule[]) {
+	constructor(templateManager: BaseTemplateManager, private rulesChain: ComponentOptions[]) {
 		super(templateManager);
 		this.config = ProjectConfig.getConfig();
 	}
@@ -47,10 +49,13 @@ export class SchematicsPromptSession extends BasePromptSession {
 			if (context.template.hasExtraConfiguration) {
 				await this.customizeTemplateTask(context.template);
 			}
-			this.rulesChain.push(schematic("component", {
+
+			const options: ComponentOptions = {
 				name,
-				template: context.template
-			}));
+				projectName: "",
+				templateInst: context.template as IgniteUIForAngularTemplate
+			};
+			this.rulesChain.push(options);
 			return true;
 		};
 	}
