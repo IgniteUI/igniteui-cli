@@ -1,12 +1,12 @@
 import * as inquirer from "inquirer";
 import * as path from "path";
-import { GoogleAnalytics, BaseTemplateManager } from "@igniteui-cli/core";
-import { ProjectConfig } from "@igniteui-cli/core";
 import {
 	Component, Config, ControlExtraConfigType, ControlExtraConfiguration, Framework,
-	FrameworkId, ProjectLibrary, ProjectTemplate, Template, ChoiceItem, Util
-} from "@igniteui-cli/core";
+	FrameworkId, ProjectLibrary, ProjectTemplate, Template
+} from "../types";
+import { ChoiceItem, Util, GoogleAnalytics, ProjectConfig } from "../util";
 import { WIZARD_BACK_OPTION, TaskRunner, Task } from "./TaskRunner";
+import { BaseTemplateManager } from "../templates";
 
 export abstract class BasePromptSession {
 	protected config: Config;

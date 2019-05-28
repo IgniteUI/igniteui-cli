@@ -1,12 +1,26 @@
-import { Config, Util } from "@igniteui-cli/core";
 import * as fs from "fs";
 import * as os from "os";
 import * as path from "path";
+import { Config } from "../types/Config";
+import { FsFileSystem, IFileSystem } from "../typescript/TypeScriptUtils";
+import { Util } from "./Util";
 
 export class ProjectConfig {
 
 	public static configFile: string = "ignite-ui-cli.json";
 	public static readonly defaults: Config = require("../config/defaults.json");
+
+	private static _fs: IFileSystem;
+	public static get virtFs(): IFileSystem {
+		if (!this._fs) {
+			this._fs = new FsFileSystem();
+		}
+		return this._fs;
+	}
+	public static set virtFs(v: IFileSystem) {
+		this._fs = v;
+	}
+
 	private static schemaPath = "../config/Config.schema.json";
 
 	/** Returns true if there's a CLI config file in the current working directory */
@@ -14,8 +28,7 @@ export class ProjectConfig {
 		if (os.homedir() === process.cwd()) {
 			return false;
 		}
-		const filePath = path.join(process.cwd(), this.configFile);
-		return fs.existsSync(filePath);
+		return this.virtFs.fileExists(this.configFile);
 	}
 
 	/**
@@ -23,7 +36,6 @@ export class ProjectConfig {
 	 * @param global return only global values
 	 */
 	public static getConfig(global: boolean = false): Config {
-		const filePath = path.join(process.cwd(), this.configFile);
 		const config = {};
 
 		Util.merge(config, this.defaults);
@@ -42,19 +54,21 @@ export class ProjectConfig {
 	 * @param global Set global values instead
 	 */
 	public static setConfig(config: Config, global: boolean = false) {
-		const basePath = global ? os.homedir() : process.cwd();
-		const filePath = path.join(basePath, this.configFile);
-		fs.writeFileSync(filePath, JSON.stringify(config, null, 4) + "\n");
+		if (global) {
+			const filePath = path.join(os.homedir(), this.configFile);
+			fs.writeFileSync(filePath, JSON.stringify(config, null, 4) + "\n")
+		} else {
+			this.virtFs.writeFile(this.configFile, JSON.stringify(config, null, 4) + "\n");
+		}
 	}
 
 	/*** Get local configuration only */
 	public static localConfig(): Config {
-		const filePath = path.join(process.cwd(), this.configFile);
 		let localConfig = {};
 
-		if (fs.existsSync(filePath)) {
+		if (this.virtFs.fileExists(this.configFile)) {
 			try {
-				localConfig = JSON.parse(fs.readFileSync(filePath, "utf8"));
+				localConfig = JSON.parse(this.virtFs.readFile(this.configFile, "utf8"));
 			} catch (error) {
 				throw new Error(`The ${this.configFile} file is not parsed correctly. ` +
 					`The following error has occurred: ${error.message}`);
@@ -68,7 +82,7 @@ export class ProjectConfig {
 		const globalConfigPath = path.join(os.homedir(), this.configFile);
 		let globalConfig = {};
 
-		if (fs.existsSync(globalConfigPath)) {
+		if (Util.fileExists(globalConfigPath)) {
 			try {
 				globalConfig = require(globalConfigPath);
 			} catch {

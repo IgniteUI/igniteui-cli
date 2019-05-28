@@ -78,22 +78,23 @@ export function newProject(options: OptionsSchema): Rule {
 					},
 					(tree: Tree, context: IgxSchematicContext) => {
 						// extend project entry point:
-						tree.create("ignite-ui-cli.json", JSON.stringify({ theme: context.theme }));
+						// tree.create("ignite-ui-cli.json", JSON.stringify({ theme: context.theme }));
+					},
+					(tree: Tree, _context: IgxSchematicContext) => {
+						return defer<Tree>(async function() {
+							prompt.setTree(tree);
+							await prompt.chooseActionLoop(projLibrary);
+							return tree;
+						});
+					},
+					(_tree: Tree, _context: IgxSchematicContext) => {
+						if (addedComponents.length) {
+							return chain(addedComponents);
+						}
 					},
 					move(options.name)
 				]), MergeStrategy.Overwrite
 			),
-			(tree: Tree, _context: IgxSchematicContext) => {
-				return defer<Tree>(async function() {
-					await prompt.chooseActionLoop(projLibrary);
-					return tree;
-				});
-			},
-			(_tree: Tree, _context: IgxSchematicContext) => {
-				if (addedComponents.length) {
-					return chain(addedComponents);
-				}
-			},
 			(tree: Tree, context: IgxSchematicContext) => {
 				if (false) {
 					const installTask = context.addTask(new NodePackageInstallTask(options.name));

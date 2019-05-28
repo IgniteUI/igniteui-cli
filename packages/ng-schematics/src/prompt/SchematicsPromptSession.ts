@@ -1,10 +1,17 @@
-import { Rule, schematic } from "@angular-devkit/schematics";
-import { BasePromptSession, BaseTemplateManager, IUserInputOptions, PromptTaskContext, Task, Framework, ProjectLibrary, ProjectTemplate } from "@igniteui-cli/core";
+import { Rule, schematic, Tree } from "@angular-devkit/schematics";
+import {
+	BasePromptSession, BaseTemplateManager, Framework, IUserInputOptions,
+	ProjectLibrary, ProjectTemplate, PromptTaskContext, Task, ProjectConfig, NgTreeFileSystem } from "@igniteui-cli/core";
 
 export class SchematicsPromptSession extends BasePromptSession {
 
 	constructor(templateManager: BaseTemplateManager, private rulesChain: Rule[]) {
 		super(templateManager);
+		this.config = ProjectConfig.getConfig();
+	}
+
+	public setTree(tree: Tree) {
+		ProjectConfig.virtFs = new NgTreeFileSystem(tree);
 	}
 
 	public async getUserInput(options: IUserInputOptions, withBackChoice: boolean = false): Promise<string> {

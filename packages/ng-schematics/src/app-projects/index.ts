@@ -1,6 +1,7 @@
 import {
 	apply, chain, MergeStrategy, mergeWith, Rule,
 	SchematicContext, template, Tree, url } from "@angular-devkit/schematics";
+import { Util } from "@igniteui-cli/core";
 import { NewProjectOptions } from "./schema";
 
 export default function(options: NewProjectOptions): Rule {
@@ -8,12 +9,11 @@ export default function(options: NewProjectOptions): Rule {
 		const config = options.projTemplate.generateConfig(options.name, options.theme);
 		return chain([
 			(_tree: Tree, context: SchematicContext) => {
-				// show the options for this Schematics.
-				context.logger.info("Generating project: " + JSON.stringify(options));
+				context.logger.debug(`Project template: ${options.projTemplate.id}`);
 			},
 			...options.projTemplate.templatePaths.map(templatePath =>
 				mergeWith(
-					apply(url(templatePath), [
+					apply(url(Util.relativePath(__filename, templatePath, true)), [
 						template(config)
 					]
 				), MergeStrategy.Overwrite)

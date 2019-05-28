@@ -1,7 +1,7 @@
 import * as ts from "typescript";
-import { TemplateDependency } from "@igniteui-cli/core";
 import { Util } from "../util/Util";
 import { FsFileSystem, IFileSystem, TypeScriptUtils as TsUtils } from "./TypeScriptUtils";
+import { TemplateDependency } from "../types";
 
 /**
  * Apply various updates to typescript files using AST
