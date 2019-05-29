@@ -271,14 +271,14 @@
             "request": "launch",
 			"cwd": "${workspaceRoot}/output",
             "name": "Launch NG CLI Schematic",
-            "program": "C:\\Users\\Dpetev\\AppData\\Roaming\\npm\\node_modules\\@angular\\cli\\bin\\ng",
+            "program": "${env:AppData}/npm/node_modules/@angular/cli/bin/ng",
             "outFiles": [
                 "${workspaceFolder}/packages/ng-schematics/**/*.js"
             ],
             "args": [
                 "new",
                 "test3",
-                "--collection=C:\\Work\\git\\ignite-ui-cli\\packages\\ng-schematics\\src\\collection.json",
+                "--collection=${workspaceFolder}/packages/ng-schematics/src/collection.json",
                 "--dry-run"
             ],
 			"preLaunchTask": "build",
