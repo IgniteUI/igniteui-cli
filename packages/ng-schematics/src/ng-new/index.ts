@@ -73,9 +73,12 @@ export function newProject(options: OptionsSchema): Rule {
 						// extend project entry point:
 						return schematic("app-projects", projectOptions);
 					},
-					(_tree: Tree, _context: IgxSchematicContext) => {
+					(tree: Tree, _context: IgxSchematicContext) => {
 						// extend project entry point:
 						// tree.create("ignite-ui-cli.json", JSON.stringify({ theme: context.theme }));
+						if (tree.exists("gitignore")) {
+							tree.rename("gitignore", ".gitignore");
+						}
 					},
 					(tree: Tree, _context: IgxSchematicContext) => {
 						return defer<Tree>(async () => {
