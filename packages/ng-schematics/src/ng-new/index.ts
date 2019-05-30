@@ -21,9 +21,7 @@ interface IgxSchematicContext extends SchematicContext {
 }
 
 export function newProject(options: OptionsSchema): Rule {
-	return (_host: Tree, context: IgxSchematicContext) => {
-		context.logger.info(`Generating ${options.name}`);
-
+	return (_host: Tree, _hostContext: IgxSchematicContext) => {
 		let projLibrary: ProjectLibrary;
 		let projectOptions: NewProjectOptions;
 		const addedComponents: ComponentOptions[] = [];
@@ -99,14 +97,14 @@ export function newProject(options: OptionsSchema): Rule {
 					move(options.name)
 				]), MergeStrategy.Overwrite
 			),
-			(tree: Tree, ctx: IgxSchematicContext) => {
+			(tree: Tree, context: IgxSchematicContext) => {
 				const installChain = [];
 				if (!options.skipInstall) {
-					const installTask = ctx.addTask(new NodePackageInstallTask(options.name));
+					const installTask = context.addTask(new NodePackageInstallTask(options.name));
 					installChain.push(installTask);
 				}
 				if (!options.skipGit) {
-					const gitTask = ctx.addTask(
+					const gitTask = context.addTask(
 						new RepositoryInitializerTask(options.name, { message: `Initial commit for project: "${options.name}"` }),
 						[...installChain] //copy
 					);
@@ -114,7 +112,7 @@ export function newProject(options: OptionsSchema): Rule {
 				}
 
 				// TODO: Conditional?
-				ctx.addTask(new RunSchematicTask("start", { directory: options.name }), installChain);
+				context.addTask(new RunSchematicTask("start", { directory: options.name }), installChain);
 				return tree;
 			}
 		]);
