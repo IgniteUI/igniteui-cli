@@ -7,12 +7,10 @@
     "name": {
       "description": "The name of the new workspace and initial project.",
       "type": "string",
-      "format": "html-selector",
       "$default": {
         "$source": "argv",
         "index": 0
-      },
-      "x-prompt": "What name would you like to use for the new workspace and initial project?"
+      }
     },
     "version": {
       "type": "string",
@@ -21,6 +19,18 @@
       "$default": {
         "$source": "ng-cli-version"
       }
+    },
+    "skipInstall": {
+      "description": "Do not automatically install packages.",
+      "type": "boolean",
+      "default": false,
+      "alias": "si"
+    },
+    "skipGit": {
+      "description": "Do not automatically initialize repository for the project with Git.",
+      "type": "boolean",
+      "default": false,
+      "alias": "sg"
     }
   },
   "required": [

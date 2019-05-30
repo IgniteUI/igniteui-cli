@@ -9,5 +9,9 @@ export abstract class OptionsSchema {
 	 * The version of the Angular CLI to use.
 	 * @$default {"$source": "ng-cli-version"}
 	 */
-	public  version: string;
+	public version: string;
+
+	public skipGit: boolean;
+
+	public skipInstall: boolean;
 }

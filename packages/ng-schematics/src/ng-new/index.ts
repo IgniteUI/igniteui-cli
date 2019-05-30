@@ -4,7 +4,8 @@ import {
 } from "@angular-devkit/schematics";
 import {
 	NodePackageInstallTask,
-	RepositoryInitializerTask
+	RepositoryInitializerTask,
+	RunSchematicTask
 } from "@angular-devkit/schematics/tasks";
 import { ProjectLibrary, Util } from "@igniteui-cli/core";
 import { defer, Observable } from 'rxjs';
@@ -23,7 +24,6 @@ export function newProject(options: OptionsSchema): Rule {
 	return (_host: Tree, context: IgxSchematicContext) => {
 		context.logger.info(`Generating ${options.name}`);
 
-		let projectName = options.name;
 		let projLibrary: ProjectLibrary;
 		let projectOptions: NewProjectOptions;
 		const addedComponents: ComponentOptions[] = [];
@@ -34,11 +34,11 @@ export function newProject(options: OptionsSchema): Rule {
 		const defaultProjName = "IG Project";
 
 		return chain([
-			(tree: Tree, context: IgxSchematicContext): Observable<Tree> => {
-				return defer<Tree>(async function() { // TODO rxjs types?
+			(tree: Tree, _context: IgxSchematicContext): Observable<Tree> => {
+				return defer<Tree>(async () => { // TODO rxjs types?
 
 					if (!prompt.nameIsValid(options.name)) {
-						projectName = await prompt.getUserInput({
+						options.name = await prompt.getUserInput({
 							type: "input",
 							name: "projectName",
 							message: "Enter a name for your project:",
@@ -59,10 +59,8 @@ export function newProject(options: OptionsSchema): Rule {
 					projectOptions = {
 						projTemplate,
 						theme,
-						name: projectName
+						name: options.name
 					};
-					context.logger.info(projectOptions.projTemplate.projectType);
-					context.logger.info("");
 					return tree;
 				});
 			},
@@ -73,16 +71,16 @@ export function newProject(options: OptionsSchema): Rule {
 					// externalSchematic("@schematics/angular", "application", {
 					// 	projectRoot: "", name: options.name, skipInstall: true, routing: true, style: "scss"
 					// }),
-					(_tree: Tree, context: IgxSchematicContext) => {
+					(_tree: Tree, _context: IgxSchematicContext) => {
 						// extend project entry point:
 						return schematic("app-projects", projectOptions);
 					},
-					(tree: Tree, context: IgxSchematicContext) => {
+					(_tree: Tree, _context: IgxSchematicContext) => {
 						// extend project entry point:
 						// tree.create("ignite-ui-cli.json", JSON.stringify({ theme: context.theme }));
 					},
 					(tree: Tree, _context: IgxSchematicContext) => {
-						return defer<Tree>(async function() {
+						return defer<Tree>(async () => {
 							prompt.setTree(tree);
 							await prompt.chooseActionLoop(projLibrary);
 							return tree;
@@ -90,22 +88,33 @@ export function newProject(options: OptionsSchema): Rule {
 					},
 					(_tree: Tree, _context: IgxSchematicContext) => {
 						if (addedComponents.length) {
-							return chain(addedComponents.map(x => schematic("component", Object.assign(x, { projectName }))));
+							return chain(
+								addedComponents.map(x => schematic(
+									"component",
+									Object.assign(x, { projectName: options.name })
+								))
+							);
 						}
 					},
 					move(options.name)
 				]), MergeStrategy.Overwrite
 			),
-			(tree: Tree, context: IgxSchematicContext) => {
-				if (false) {
-					const installTask = context.addTask(new NodePackageInstallTask(options.name));
-					context.addTask(
-						new RepositoryInitializerTask(options.name),
-						installTask ? [installTask] : []
-					);
+			(tree: Tree, ctx: IgxSchematicContext) => {
+				const installChain = [];
+				if (!options.skipInstall) {
+					const installTask = ctx.addTask(new NodePackageInstallTask(options.name));
+					installChain.push(installTask);
 				}
-				context.addTask(
-					new RepositoryInitializerTask(options.name));
+				if (!options.skipGit) {
+					const gitTask = ctx.addTask(
+						new RepositoryInitializerTask(options.name, { message: `Initial commit for project: "${options.name}"` }),
+						[...installChain] //copy
+					);
+					installChain.push(gitTask);
+				}
+
+				// TODO: Conditional?
+				ctx.addTask(new RunSchematicTask("start", { directory: options.name }), installChain);
 				return tree;
 			}
 		]);
