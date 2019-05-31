@@ -35,7 +35,7 @@ export function newProject(options: OptionsSchema): Rule {
 			(tree: Tree, _context: IgxSchematicContext): Observable<Tree> => {
 				return defer<Tree>(async () => { // TODO rxjs types?
 
-					if (!prompt.nameIsValid(options.name)) {
+					if (!options.name || !prompt.nameIsValid(options.name)) {
 						options.name = await prompt.getUserInput({
 							type: "input",
 							name: "projectName",
@@ -98,7 +98,7 @@ export function newProject(options: OptionsSchema): Rule {
 						}
 					},
 					(_tree: Tree, _context: IgxSchematicContext) => {
-						return move(options.name);
+						return move(options.name!);
 					}
 				]), MergeStrategy.Overwrite
 			),
@@ -110,7 +110,7 @@ export function newProject(options: OptionsSchema): Rule {
 				}
 				if (!options.skipGit) {
 					const gitTask = context.addTask(
-						new RepositoryInitializerTask(options.name, { message: `Initial commit for project: "${options.name}"` }),
+						new RepositoryInitializerTask(options.name, { message: `Initial commit for project: ${options.name}` }),
 						[...installChain] //copy
 					);
 					installChain.push(gitTask);

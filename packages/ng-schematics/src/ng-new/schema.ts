@@ -3,7 +3,7 @@
  * Ignite UI for Angular Ng New Options Schema
  */
 export abstract class OptionsSchema {
-	public name: string;
+	public name?: string;
 
 	/**
 	 * The version of the Angular CLI to use.

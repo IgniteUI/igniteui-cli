@@ -10,7 +10,10 @@ export default function(options: any): Rule {
 			ProjectConfig.virtFs = new NgTreeFileSystem(new ScopedTree(tree, options.directory));
 			const config = ProjectConfig.getConfig();
 			// TODO: call in ng serve directly somehow?
-			await Util.execSync(`npm start -- --port=${config.project.defaultPort}`, { cwd: options.directory });
+			await Util.execSync(
+				`npm start -- --port=${config.project.defaultPort}`,
+				{ cwd: options.directory, stdio: "inherit", killSignal: "SIGINT" }
+			);
 			return tree;
 		});
 	};
