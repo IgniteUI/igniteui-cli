@@ -1,5 +1,5 @@
 import {
-	apply, chain, empty, externalSchematic, MergeStrategy, mergeWith,
+	apply, chain, empty, MergeStrategy, mergeWith,
 	move, Rule, schematic, SchematicContext, Tree
 } from "@angular-devkit/schematics";
 import {
