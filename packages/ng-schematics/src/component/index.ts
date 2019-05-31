@@ -37,7 +37,18 @@ export function component(options: ComponentOptions): Rule {
 			(host: Tree, _context: SchematicContext) => {
 				if (options.templateInst) {
 					for (const packageName of options.templateInst.packages) {
-						context.addTask(new NodePackageInstallTask({ packageName, workingDirectory: options.projectName }));
+						// TODO: Refactor write to packege json
+						const packageJSON = JSON.parse((host.read("package.json") || "").toString());
+						let packageMatch = [];
+						if (packageName[0] === "@") {
+							packageMatch = packageName.split("@");
+							packageMatch.shift();
+						} else {
+							packageMatch = packageName.split("@");
+						}
+						packageJSON.dependencies[packageMatch[0]] = (packageMatch)[1] || "*";
+						host.overwrite("package.json", JSON.stringify(packageJSON));
+						// context.addTask(new NodePackageInstallTask({ packageName, workingDirectory: options.projectName }));
 					}
 					options.templateInst.virtFs = new NgTreeFileSystem(host);
 					options.templateInst.registerInProject("", options.name, { skipRoute: options.skipRoute });
