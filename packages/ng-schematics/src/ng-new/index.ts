@@ -94,7 +94,9 @@ export function newProject(options: OptionsSchema): Rule {
 							);
 						}
 					},
-					move(options.name)
+					(_tree: Tree, _context: IgxSchematicContext) => {
+						return move(options.name);
+					}
 				]), MergeStrategy.Overwrite
 			),
 			(tree: Tree, context: IgxSchematicContext) => {
