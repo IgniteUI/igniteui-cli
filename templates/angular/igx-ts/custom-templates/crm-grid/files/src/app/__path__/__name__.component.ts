@@ -34,14 +34,14 @@ import { data } from './data';
 })
 export class $(ClassName)Component implements OnInit, AfterViewInit {
 
-  @ViewChild('grid1', { read: IgxGridComponent })
+  @ViewChild('grid1', { static: true, read: IgxGridComponent })
   public grid1: IgxGridComponent;
 
-  @ViewChild('toggleRefHiding') public toggleRefHiding: IgxToggleDirective;
-  @ViewChild('toggleRefPinning') public toggleRefPinning: IgxToggleDirective;
+  @ViewChild('toggleRefHiding', { static: true }) public toggleRefHiding: IgxToggleDirective;
+  @ViewChild('toggleRefPinning', { static: true }) public toggleRefPinning: IgxToggleDirective;
 
-  @ViewChild('hidingButton') public hidingButton: ElementRef;
-  @ViewChild('pinningButton') public pinningButton: ElementRef;
+  @ViewChild('hidingButton', { static: true }) public hidingButton: ElementRef;
+  @ViewChild('pinningButton', { static: true }) public pinningButton: ElementRef;
 
   public localData: any[];
   public dealsSummary = DealsSummary;
