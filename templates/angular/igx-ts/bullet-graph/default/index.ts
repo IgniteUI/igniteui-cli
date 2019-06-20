@@ -14,7 +14,7 @@ class IgxBulletGraphTemplate extends IgniteUIForAngularTemplate {
 			import: ["IgxBulletGraphModule"],
 			from: "igniteui-angular-gauges/ES5/igx-bullet-graph-module"
 		}];
-		this.packages = ["tslib@^1.7.1", "igniteui-angular-core@8.0.0-beta.0", "igniteui-angular-gauges@8.0.0-beta.0"];
+		this.packages = ["tslib@^1.7.1", "igniteui-angular-core@~8.0.0-beta.0", "igniteui-angular-gauges@~8.0.0-beta.0"];
 	}
 }
 module.exports = new IgxBulletGraphTemplate();
