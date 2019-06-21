@@ -13,7 +13,7 @@ class IgxFinancialChartTemplate extends IgniteUIForAngularTemplate {
 		this.dependencies = [
 			{ import: "IgxFinancialChartModule", from: "igniteui-angular-charts/ES5/igx-financial-chart-module" }
 		];
-		this.packages = ["tslib@^1.7.1", "igniteui-angular-core@~7.2.0", "igniteui-angular-charts@~7.2.0"];
+		this.packages = ["tslib@^1.7.1", "igniteui-angular-core@8.0.0-beta.0", "igniteui-angular-charts@8.0.0-beta.0"];
 	}
 }
 module.exports = new IgxFinancialChartTemplate();

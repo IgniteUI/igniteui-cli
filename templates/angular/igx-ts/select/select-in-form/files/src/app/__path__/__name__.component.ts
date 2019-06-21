@@ -8,10 +8,10 @@ import { IgxSelectComponent, IgxToastPosition, IgxToastComponent } from 'igniteu
 })
 export class $(ClassName)Component {
     public selected;
-    @ViewChild(IgxSelectComponent)
+    @ViewChild(IgxSelectComponent, { static: true })
     public igxSelect: IgxSelectComponent;
 
-    @ViewChild(IgxToastComponent)
+    @ViewChild(IgxToastComponent, { static: true })
     public output: IgxToastComponent;
 
     public items: string[] = ['Orange', 'Apple', 'Banana', 'Mango'];

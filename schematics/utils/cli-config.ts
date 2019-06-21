@@ -1,8 +1,5 @@
-// tslint:disable-next-line:no-submodule-imports
-import { WorkspaceSchema } from "@angular-devkit/core/src/workspace";
-// tslint:disable-next-line:no-implicit-dependencies
+import { WorkspaceSchema } from "@angular-devkit/core/src/experimental/workspace";
 import { Rule, SchematicContext, SchematicsException, Tree } from "@angular-devkit/schematics";
-// tslint:disable-next-line:no-implicit-dependencies
 import { getWorkspace } from "@schematics/angular/utility/config";
 import chalk from "chalk";
 import { Util } from "../../lib/Util";

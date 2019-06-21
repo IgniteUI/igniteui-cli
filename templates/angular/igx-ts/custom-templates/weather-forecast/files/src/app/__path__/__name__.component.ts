@@ -9,7 +9,7 @@ import { data as weatherData } from './weather-data';
   })
   export class $(ClassName)Component {
 
-    @ViewChild(IgxExpansionPanelComponent)
+    @ViewChild(IgxExpansionPanelComponent, { static: true })
     public panel: IgxExpansionPanelComponent;
     public data = weatherData;
 
