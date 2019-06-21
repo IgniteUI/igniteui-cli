@@ -15,7 +15,7 @@
         <igx-column width="190px" field="ProductName" header="ProductName" [dataType]="'string'"></igx-column>
         <igx-column width="100px" field="UnitsInStock" header="UnitsInStock" [dataType]="'number'">
             <ng-template igxCellEditor let-cell="cell">
-                <input name="units" [(ngModel)]="cell.gridAPI.get_cell_inEditMode(cell.gridID).cell.editValue" [igxFocus]="true" style="color: black; width: 30px;" />
+                <input name="units" [(ngModel)]="cell.editValue" [igxFocus]="true" style="color: black; width: 30px;" />
             </ng-template>
         </igx-column>
         <igx-column width="150px" field="OrderDate" [dataType]="'date'"></igx-column>
