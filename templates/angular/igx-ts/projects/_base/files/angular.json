@@ -33,6 +33,9 @@
             "es5BrowserSupport": true
           },
           "configurations": {
+            "es5": {
+                "tsConfig": "./tsconfig-es5.app.json"
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -67,6 +70,9 @@
           "configurations": {
             "production": {
               "browserTarget": "$(dash-name):build:production"
+            },
+            "es5": {
+                "browserTarget": "$(dash-name):build:es5"
             }
           }
         },
