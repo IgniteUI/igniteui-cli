@@ -72,7 +72,7 @@ describe('Providers', () => {
             expect(FB.login).toHaveBeenCalledTimes(1);
             expect(FB.api).not.toHaveBeenCalled();
             expect(console.log).toHaveBeenCalledWith('User cancelled login or did not fully authorize.');
-            spyOn(FB, 'getAuthResponse').and.returnValue({ accessToken: 'Fake' });
+            spyOn(FB, 'getAuthResponse').and.returnValue({ accessToken: 'Fake' } as any);
             spyOn(mock_router, 'navigate');
             mockResponse = true;
             const mockObj = {
@@ -104,7 +104,7 @@ describe('Providers', () => {
 
         it(`Should properly call 'getUserInfo'`, () => {
             const provider = new FacebookProvider(mock_externalAuthConfig, mock_router);
-            spyOn(Promise, 'resolve').and.returnValue('Mock');
+            spyOn(Promise, 'resolve').and.returnValue('Mock' as any);
             expect(provider.getUserInfo()).toEqual(<any>'Mock');
         });
 
