@@ -4,7 +4,8 @@ import { NgModule } from '@angular/core';
 import { AuthGuard } from './auth.guard';
 import { ProfileComponent } from './profile/profile.component';
 import { RedirectComponent } from './redirect/redirect.component';
-import { ExternalAuthProvider, ExternalAuthRedirectUrl } from './services/external-auth.service';
+import { ExternalAuthProvider } from './services/external-auth-configs';
+import { ExternalAuthRedirectUrl } from './services/external-auth.service';
 
 const authRoutes: Routes = [
     { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
