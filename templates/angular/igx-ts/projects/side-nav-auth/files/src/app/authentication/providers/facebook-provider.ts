@@ -1,8 +1,8 @@
 import { Router } from '@angular/router';
 
 import { AuthProvider } from './auth-provider';
-import { ExternalAuthConfig } from '../services/external-auth.service';
 import { ExternalLogin } from '../models/login';
+import { ExternalAuthConfig } from '../services/external-auth-configs';
 
 export class FacebookProvider implements AuthProvider {
     private user: ExternalLogin;

@@ -6,8 +6,8 @@ import {
     OpenIDImplicitFlowConfiguration
 } from 'angular-auth-oidc-client';
 import { AuthProvider } from './auth-provider';
-import { ExternalAuthConfig } from '../services/external-auth.service';
 import { ExternalLogin } from '../models/login';
+import { ExternalAuthConfig } from '../services/external-auth-configs';
 
 /** Base provider for OpenID Connect (OIDC) https://openid.net/connect/ */
 export abstract class BaseOidcProvider implements AuthProvider {
