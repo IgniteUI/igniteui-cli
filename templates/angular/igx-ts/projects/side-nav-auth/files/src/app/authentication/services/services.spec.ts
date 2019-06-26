@@ -1,6 +1,7 @@
 import { AuthenticationService } from './authentication.service';
 import * as JWTUtil from './jwt-util';
-import { ExternalAuthService, ExternalAuthRedirectUrl, ExternalAuthProvider } from './external-auth.service';
+import { ExternalAuthService, ExternalAuthRedirectUrl } from './external-auth.service';
+import { ExternalAuthProvider } from './external-auth-configs';
 import { GoogleProvider } from '../providers/google-provider';
 import { FacebookProvider } from '../providers/facebook-provider';
 import { MicrosoftProvider } from '../providers/microsoft-provider';
@@ -47,9 +48,9 @@ describe('Services', () => {
             const loginPostSpy = spyOn<any>(authServ, 'loginPost').and.callThrough();
             const dummyData = { email: 'Dummy', password: 'Data' };
             const mockObs = { toPromise: () => { } };
-            spyOn(mockObs, 'toPromise').and.returnValue('TEST DATA');
+            spyOn(mockObs, 'toPromise').and.returnValue('TEST DATA' as any);
             spyOn(mock_httpClient, 'post').and.returnValue(mockObs);
-            spyOn(JWTUtil, 'parseUser').and.returnValue({ user: 'Test' });
+            spyOn(JWTUtil, 'parseUser').and.returnValue({ user: 'Test' } as any);
             await authServ.login(dummyData);
             expect(loginPostSpy).toHaveBeenCalledWith('/login', dummyData);
             expect(mock_httpClient.post).toHaveBeenCalledWith('/login', dummyData);

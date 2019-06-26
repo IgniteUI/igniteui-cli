@@ -8,7 +8,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { IgxInputGroupModule, IgxButtonModule, IgxRippleModule, IgxIconModule } from 'igniteui-angular';
 
 import { LoginComponent } from './login.component';
-import { ExternalAuthService, ExternalAuthProvider } from '../services/external-auth.service';
+import { ExternalAuthService } from '../services/external-auth.service';
+import { ExternalAuthProvider } from '../services/external-auth-configs';
 import { AuthenticationService } from '../services/authentication.service';
 import { UserService } from '../services/user.service';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
