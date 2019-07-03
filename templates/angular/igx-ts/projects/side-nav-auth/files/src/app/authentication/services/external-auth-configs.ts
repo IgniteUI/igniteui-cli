@@ -4,7 +4,7 @@ export enum ExternalAuthProvider {
     Microsoft = 'Microsoft'
 }
 
-export abstract class ExternalAuthConfig {
+export interface ExternalAuthConfig {
     stsServer: string;
     client_id: string;
     scope: string;
