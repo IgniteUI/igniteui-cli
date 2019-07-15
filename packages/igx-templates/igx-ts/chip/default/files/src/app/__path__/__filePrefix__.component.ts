@@ -47,10 +47,10 @@ export class <%=ClassName%>Component {
 
  public chipList = [];
 
- @ViewChild('chipsArea', { read: IgxChipsAreaComponent })
+ @ViewChild('chipsArea', { static: true, read: IgxChipsAreaComponent })
  public chipsArea: IgxChipsAreaComponent;
 
- @ViewChild(IgxDropDownComponent)
+ @ViewChild(IgxDropDownComponent, { static: true })
  public igxDropDown: IgxDropDownComponent;
 
  private dropDownOpened = false;

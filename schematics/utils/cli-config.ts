@@ -1,6 +1,4 @@
-// tslint:disable-next-line:no-submodule-imports
-import { WorkspaceSchema } from "@angular-devkit/core/src/workspace";
-// tslint:disable-next-line:no-implicit-dependencies
+import { WorkspaceSchema } from "@angular-devkit/core/src/experimental/workspace";
 import { Rule, SchematicContext, SchematicsException, Tree } from "@angular-devkit/schematics";
 import { Config, Util } from "@igniteui-cli/core";
 // tslint:disable-next-line:no-implicit-dependencies

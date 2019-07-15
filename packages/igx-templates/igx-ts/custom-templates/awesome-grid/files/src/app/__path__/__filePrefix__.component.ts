@@ -19,7 +19,7 @@ styleUrls: ['./<%=filePrefix%>.component.scss']
 })
 export class <%=ClassName%>Component implements OnInit, OnDestroy {
 
-  @ViewChild('grid1', { read: IgxGridComponent })
+  @ViewChild('grid1', { static: true, read: IgxGridComponent })
   public grid1: IgxGridComponent;
 
   public topSpeedSummary = CustomTopSpeedSummary;

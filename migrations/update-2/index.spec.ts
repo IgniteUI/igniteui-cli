@@ -30,7 +30,7 @@ import { IgxNavigationDrawerComponent } from 'igniteui-angular';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  @ViewChild(IgxNavigationDrawerComponent) public navdrawer: IgxNavigationDrawerComponent;
+  @ViewChild(IgxNavigationDrawerComponent, { static: true }) public navdrawer: IgxNavigationDrawerComponent;
 
   constructor(private router: Router) {}
 
@@ -63,7 +63,7 @@ import { IgxNavigationDrawerComponent } from 'igniteui-angular';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  @ViewChild(IgxNavigationDrawerComponent) public navdrawer: IgxNavigationDrawerComponent;
+  @ViewChild(IgxNavigationDrawerComponent, { static: true }) public navdrawer: IgxNavigationDrawerComponent;
 
   constructor(private router: Router) {}
 

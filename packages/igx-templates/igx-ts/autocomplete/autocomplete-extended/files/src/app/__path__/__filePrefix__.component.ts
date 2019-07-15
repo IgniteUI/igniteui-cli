@@ -13,7 +13,7 @@ export class <%=ClassName%>Component {
     public postalCode: string;
     public messagePosition = IgxToastPosition.Middle;
 
-    @ViewChild(IgxToastComponent)
+    @ViewChild(IgxToastComponent, { static: true })
     public toast: IgxToastComponent;
 
     constructor() {

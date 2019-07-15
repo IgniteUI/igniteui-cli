@@ -9,9 +9,9 @@ import { IgxDialogComponent, IgxGridComponent, Transaction } from 'igniteui-angu
   templateUrl: './<%=filePrefix%>.component.html'
 })
 export class <%=ClassName%>Component implements OnInit {
-  @ViewChild('gridRowEditTransaction', { read: IgxGridComponent }) public grid: IgxGridComponent;
-  @ViewChild(IgxDialogComponent) public dialog: IgxDialogComponent;
-  @ViewChild('dialogGrid', { read: IgxGridComponent }) public dialogGrid: IgxGridComponent;
+  @ViewChild('gridRowEditTransaction', { static: true, read: IgxGridComponent }) public grid: IgxGridComponent;
+  @ViewChild(IgxDialogComponent, { static: true }) public dialog: IgxDialogComponent;
+  @ViewChild('dialogGrid', { static: true, read: IgxGridComponent }) public dialogGrid: IgxGridComponent;
 
   public data: any[];
   public transactionsData: Transaction[] = [];

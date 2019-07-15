@@ -13,7 +13,7 @@ import { employeesData } from './localData';
 
 
 export class <%=ClassName%>Component implements OnInit {
-  @ViewChild('sampleGrid', { read: IgxGridComponent })
+  @ViewChild('sampleGrid', { static: true, read: IgxGridComponent })
   public sampleGrid: IgxGridComponent;
   public customDateSummary = CustomDateSummary;
 

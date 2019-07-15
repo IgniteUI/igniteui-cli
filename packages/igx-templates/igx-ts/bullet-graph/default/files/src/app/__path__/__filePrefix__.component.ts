@@ -11,7 +11,7 @@ import { IgxBulletGraphComponent } from 'igniteui-angular-gauges/ES5/igx-bullet-
 })
 export class <%=ClassName%>Component implements AfterViewInit {
 
-  @ViewChild('bulletGraph')
+  @ViewChild('bulletGraph', { static: true })
   public bulletGraph: IgxBulletGraphComponent;
 
   public ngAfterViewInit(): void {

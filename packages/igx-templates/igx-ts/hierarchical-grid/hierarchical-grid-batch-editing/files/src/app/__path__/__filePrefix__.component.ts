@@ -16,18 +16,18 @@ export class <%=ClassName%>Component implements OnInit {
     public transactionsDataChild: Transaction[] = [];
     public transactionsDataAll: Transaction[] = [];
 
-    @ViewChild('dialogChanges', { read: IgxDialogComponent })
+    @ViewChild('dialogChanges', { static: true, read: IgxDialogComponent })
     public dialogChanges: IgxDialogComponent;
 
-    @ViewChild('dialogGrid', { read: IgxGridComponent }) public dialogGrid: IgxGridComponent;
+    @ViewChild('dialogGrid', { static: true, read: IgxGridComponent }) public dialogGrid: IgxGridComponent;
 
-    @ViewChild('layout1')
+    @ViewChild('layout1', { static: true })
     private layout1: IgxRowIslandComponent;
 
-    @ViewChild('hGrid')
+    @ViewChild('hGrid', { static: true })
     private hierarchicalGrid: IgxHierarchicalGridComponent;
 
-    @ViewChild('dialogAddSinger', { read: IgxDialogComponent })
+    @ViewChild('dialogAddSinger', { static: true, read: IgxDialogComponent })
     private dialogSinger: IgxDialogComponent;
 
     constructor() { }

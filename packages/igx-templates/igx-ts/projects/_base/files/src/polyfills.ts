@@ -22,13 +22,6 @@
 // import 'classlist.js';  // Run `npm install --save classlist.js`.
 
 /**
- * ES7 `Object.entries` needed for igxGrid to render in IE.
- * - https://github.com/IgniteUI/igniteui-cli/issues/344
- */
-import 'core-js/es7/object';
-
-
-/**
  * Web Animations `@angular/platform-browser/animations`
  * Only required if AnimationBuilder is used within the application and using IE/Edge or Safari.
  * Standard animation support in Angular DOES NOT require any polyfills (as of Angular 6.0).
