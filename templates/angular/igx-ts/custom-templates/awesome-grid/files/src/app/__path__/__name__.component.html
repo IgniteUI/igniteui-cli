@@ -89,7 +89,7 @@
 		</igx-grid>
 	
 		<ng-template #pager let-grid>
-			<div *ngIf="grid.paging && grid.totalPages > 0" class="igx-paginator">
+			<div *ngIf="grid.paging && grid.totalPages > 0">
 				<button [disabled]="grid.isFirstPage" (click)="grid.paginate(0)" igxButton="icon" igxRipple igxRippleCentered="true">
 					<igx-icon>first_page</igx-icon>
 				</button>
