@@ -94,7 +94,7 @@
     "chalk": "^2.3.2",
     "fs-extra": "^3.0.1",
     "glob": "^7.1.2",
-    "inquirer": "^6.2.2",
+    "inquirer": "^6.4.1",
     "opn": "^5.3.0",
     "resolve": "^1.6.0",
     "shelljs": "^0.7.8",
@@ -103,9 +103,9 @@
     "yargs": "^8.0.2"
   },
   "devDependencies": {
-    "@angular-devkit/core": "^7.1.1",
-    "@angular-devkit/schematics": "^7.1.1",
-    "@schematics/angular": "^7.1.1",
+    "@angular-devkit/core": "^8.0.3",
+    "@angular-devkit/schematics": "^8.0.3",
+    "@schematics/angular": "^8.0.3",
     "@semantic-release/changelog": "^1.0.1",
     "@semantic-release/git": "^3.0.1",
     "@types/fs-extra": "^3.0.3",

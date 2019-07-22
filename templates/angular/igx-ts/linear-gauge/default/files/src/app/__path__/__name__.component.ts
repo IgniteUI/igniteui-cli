@@ -11,7 +11,7 @@ import { LinearGraphNeedleShape } from "igniteui-angular-gauges/ES5/LinearGraphN
 })
 export class $(ClassName)Component implements AfterViewInit {
 
-  @ViewChild("linearGauge")
+  @ViewChild("linearGauge", { static: true })
   public linearGauge: IgxLinearGaugeComponent;
 
   public ngAfterViewInit(): void {

@@ -38,7 +38,7 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 		const columnFeatures = [];
 		const columnBoolFeatures = [];
 		const treeGridFeatures = [];
-		const featureUrl = "https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid_";
+		const featureUrl = "https://www.infragistics.com/products/ignite-ui-angular/angular/components/treegrid/";
 		const anchorWrapper = {
 			start: `<a href="`,
 			// tslint:disable-next-line:object-literal-sort-keys
@@ -107,7 +107,7 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 						featuresUrls.push(`${featureUrl}column_pinning.html`);
 						break;
 					case "Cell Editing":
-						featuresUrls.push(`${featureUrl}cell_editing.html`);
+						featuresUrls.push(`${featureUrl}editing.html`);
 						break;
 					case "Row Editing":
 						featuresUrls.push(`${featureUrl}row_editing.html`);

@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { $(ClassName)Component } from './$(filePrefix).component';
-import { GridWithTransactionsComponent } from './grid-transaction.component';
+import { $(ClassName)WithTransactionsComponent } from './grid-transaction.component';
 import {
 	IgxButtonModule,
 	IgxDialogModule,
@@ -18,7 +18,7 @@ describe('$(ClassName)Component', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ $(ClassName)Component, GridWithTransactionsComponent ],
+      declarations: [ $(ClassName)Component, $(ClassName)WithTransactionsComponent ],
       imports: [ FormsModule, NoopAnimationsModule, IgxDialogModule, IgxGridModule, IgxFocusModule, IgxButtonModule, IgxRippleModule ]
     })
     .compileComponents();

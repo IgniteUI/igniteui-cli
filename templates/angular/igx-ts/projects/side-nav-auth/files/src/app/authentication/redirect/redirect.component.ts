@@ -3,8 +3,9 @@ import { UserService } from '../services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { AuthenticationService } from '../services/authentication.service';
-import { ExternalAuthProvider, ExternalAuthService } from '../services/external-auth.service';
+import { ExternalAuthProvider } from '../services/external-auth-configs';
 import { ExternalLogin } from '../models/login';
+import { ExternalAuthService } from '../services/external-auth.service';
 
 @Component({
   template: '<p>Signing in...</p>'
