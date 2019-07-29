@@ -12,7 +12,7 @@
 			</igx-input-group>
 		</div>
 	
-		<igx-grid #grid1 [data]="localData" [paging]="true" [perPage]="6" height="513px" (onSelection)="cellSelection($event)" [paginationTemplate]="pager">
+		<igx-grid #grid1 [data]="localData" [paging]="true" [perPage]="6" height="513px" (onSelection)="cellSelection($event)" [paging]="true">
 			<igx-column header="Rank" headerClasses="myClass" width="100px" field="Id" sortable="true">
 					<ng-template igxCell let-cell="cell">
 						<div class="cell__inner">
@@ -87,24 +87,6 @@
 				</ng-template>
 			</igx-column>
 		</igx-grid>
-	
-		<ng-template #pager let-grid>
-			<div *ngIf="grid.paging && grid.totalPages > 0" class="igx-paginator">
-				<button [disabled]="grid.isFirstPage" (click)="grid.paginate(0)" igxButton="icon" igxRipple igxRippleCentered="true">
-					<igx-icon>first_page</igx-icon>
-				</button>
-				<button [disabled]="grid.isFirstPage" (click)="grid.previousPage()" igxButton="icon" igxRipple igxRippleCentered="true">
-					<igx-icon>chevron_left</igx-icon>
-				</button>
-				<span>{{ grid.page + 1 }} of {{ grid.totalPages }}</span>
-				<button [disabled]="grid.isLastPage" (click)="grid.nextPage()" igxRipple igxRippleCentered="true" igxButton="icon">
-					<igx-icon>chevron_right</igx-icon>
-				</button>
-				<button [disabled]="grid.isLastPage" (click)="grid.paginate(grid.totalPages - 1)" igxButton="icon" igxRipple igxRippleCentered="true">
-					<igx-icon>last_page</igx-icon>
-				</button>
-			</div>
-		</ng-template>	
 		</div>
 		</article>
 	</section>
