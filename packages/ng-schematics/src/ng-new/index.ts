@@ -33,7 +33,7 @@ export function newProject(options: OptionsSchema): Rule {
 
 		return chain([
 			(tree: Tree, _context: IgxSchematicContext): Observable<Tree> => {
-				return defer<Tree>(async () => { // TODO rxjs types?
+				return defer<Promise<Tree>>(async () => {
 
 					if (!options.name || !prompt.nameIsValid(options.name)) {
 						options.name = await prompt.getUserInput({
@@ -81,7 +81,7 @@ export function newProject(options: OptionsSchema): Rule {
 						}
 					},
 					(tree: Tree, _context: IgxSchematicContext) => {
-						return defer<Tree>(async () => {
+						return defer<Promise<Tree>>(async () => {
 							prompt.setTree(tree);
 							await prompt.chooseActionLoop(projLibrary);
 							return tree;

@@ -5,7 +5,7 @@ import { defer } from "rxjs";
 
 export default function(options: any): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
-		return defer<Tree>(async () => {
+		return defer<Promise<Tree>>(async () => {
 			// TODO: ScopedTree iffy import
 			ProjectConfig.virtFs = new NgTreeFileSystem(new ScopedTree(tree, options.directory));
 			const config = ProjectConfig.getConfig();

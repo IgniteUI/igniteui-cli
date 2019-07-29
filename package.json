@@ -103,6 +103,7 @@
     "jasmine-spec-reporter": "^4.2.1",
     "lite-server": "^2.4.0",
     "nyc": "^13.1.0",
+    "rxjs": "6.4.0",
     "source-map-support": "^0.5.4",
     "ts-node": "^6.2.0",
     "tslint": "^5.11.0",
