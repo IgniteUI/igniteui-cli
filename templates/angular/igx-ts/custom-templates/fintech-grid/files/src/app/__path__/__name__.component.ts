@@ -23,11 +23,11 @@ export class $(ClassName)Component implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('slider2', { static: true }) public intervalSlider: IgxSliderComponent;
 
   @Output() changeTheme = new EventEmitter<boolean>();
-    public isBlackTheme = false;
-    public volume = 1000;
-    public frequency = 500;
-    public data: Observable<any[]> ;
-    public controls = [
+  public isBlackTheme = false;
+  public volume = 1000;
+  public frequency = 500;
+  public data: Observable<any[]> ;
+  public controls = [
     {
       disabled: false,
       icon: 'update',
@@ -47,18 +47,18 @@ export class $(ClassName)Component implements OnInit, AfterViewInit, OnDestroy {
       selected: false
     }
   ];
-  
-    private subscription;
-    private selectedButton;
-    private _timer;
-    private volumeChanged;
+
+  private subscription;
+  private selectedButton;
+  private timer;
+  private volumeChanged;
 
   constructor(private localService: LocalDataService, private elRef: ElementRef) {
     this.subscription = this.localService.getData(this.volume);
     this.data = this.localService.records;
   }
-  
-    public ngOnInit() {
+
+  public ngOnInit() {
     this.grid1.groupingExpressions = [{
       dir: SortingDirection.Desc,
       fieldName: 'Category',
@@ -85,25 +85,25 @@ export class $(ClassName)Component implements OnInit, AfterViewInit, OnDestroy {
       },
       (err) => console.log('Error: ' + err));
   }
-  
-    public ngAfterViewInit() {
+
+  public ngAfterViewInit() {
     setTimeout(() => {
       this.grid1.reflow();
     }, 0);
   }
-  
-    public onButtonAction(event: any) {
+
+  public onButtonAction(event: any) {
     switch (event.index) {
       case 0: {
         this.disableOtherButtons(event.index, true);
         const currData = this.grid1.data;
-        this._timer = setInterval(() => this.ticker(currData), this.frequency);
+        this.timer = setInterval(() => this.ticker(currData), this.frequency);
         break;
       }
       case 1: {
         this.disableOtherButtons(event.index, true);
         const currData = this.grid1.data;
-        this._timer = setInterval(() => this.tickerAllPrices(currData), this.frequency);
+        this.timer = setInterval(() => this.tickerAllPrices(currData), this.frequency);
         break;
       }
       case 2: {
@@ -117,8 +117,8 @@ export class $(ClassName)Component implements OnInit, AfterViewInit, OnDestroy {
         }
     }
   }
-  
-    public onChange(event: any) {
+
+  public onChange(event: any) {
     if (this.grid1.groupingExpressions.length > 0) {
       this.grid1.groupingExpressions = [];
     } else {
@@ -143,67 +143,67 @@ export class $(ClassName)Component implements OnInit, AfterViewInit, OnDestroy {
       ];
     }
   }
-  
-    public stopFeed() {
-    if (this._timer) {
-      clearInterval(this._timer);
+
+  public stopFeed() {
+    if (this.timer) {
+      clearInterval(this.timer);
     }
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
   }
-  
-    public formatNumber(value: number) {
+
+  public formatNumber(value: number) {
     return value.toFixed(2);
   }
-  
-    public percentage(value: number) {
+
+  public percentage(value: number) {
     return value.toFixed(2) + '%';
   }
-  
-    public formatCurrency(value: number) {
+
+  public formatCurrency(value: number) {
     return '$' + value.toFixed(3);
   }
 
-    /**
-     * the below code is needed when accessing the sample through the navigation
-     * it will style all the space below the sample component element, but not the navigation menu
-     */
-    public onThemeChanged(event: any) {
+  /**
+   * the below code is needed when accessing the sample through the navigation
+   * it will style all the space below the sample component element, but not the navigation menu
+   */
+  public onThemeChanged(event: any) {
     this.isBlackTheme = !this.isBlackTheme;
     this.changeTheme.emit(this.isBlackTheme);
   }
-  
-    public ngOnDestroy() {
+
+  public ngOnDestroy() {
     this.stopFeed();
     this.volumeChanged.unsubscribe();
   }
-  
-    public toggleToolbar(event: any) {
+
+  public toggleToolbar(event: any) {
     this.grid1.showToolbar = !this.grid1.showToolbar;
   }
-  
-    private negative = (rowData: any): boolean => {
+
+  private negative = (rowData: any): boolean => {
     return rowData['Change(%)'] < 0;
   }
-    private positive = (rowData: any): boolean => {
+  private positive = (rowData: any): boolean => {
     return rowData['Change(%)'] > 0;
   }
-    private changeNegative = (rowData: any): boolean => {
+  private changeNegative = (rowData: any): boolean => {
     return rowData['Change(%)'] < 0 && rowData['Change(%)'] > -1;
   }
-    private changePositive = (rowData: any): boolean => {
+  private changePositive = (rowData: any): boolean => {
     return rowData['Change(%)'] > 0 && rowData['Change(%)'] < 1;
   }
-    private strongPositive = (rowData: any): boolean => {
+  private strongPositive = (rowData: any): boolean => {
     return rowData['Change(%)'] >= 1;
   }
-    private strongNegative = (rowData: any, key: string): boolean => {
+  private strongNegative = (rowData: any, key: string): boolean => {
     return rowData['Change(%)'] <= -1;
   }
 
-    // tslint:disable:member-ordering
-    public trends = {
+  // tslint:disable:member-ordering
+  public trends = {
     changeNeg: this.changeNegative,
     changePos: this.changePositive,
     negative: this.negative,
@@ -211,16 +211,16 @@ export class $(ClassName)Component implements OnInit, AfterViewInit, OnDestroy {
     strongNegative: this.strongNegative,
     strongPositive: this.strongPositive
   };
-  
-    public trendsChange = {
+
+  public trendsChange = {
     changeNeg2: this.changeNegative,
     changePos2: this.changePositive,
     strongNegative2: this.strongNegative,
     strongPositive2: this.strongPositive
   };
     // tslint:enable:member-ordering
-  
-    private disableOtherButtons(ind: number, disableButtons: boolean) {
+
+  private disableOtherButtons(ind: number, disableButtons: boolean) {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
@@ -234,26 +234,26 @@ export class $(ClassName)Component implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
-    /**
-     * returns the main div container of the Index Component,
-     * if path is /samples/sample-url, or the appRoot, if path is /sample-url
-     */
-    private parentComponentEl() {
+  /**
+   * returns the main div container of the Index Component,
+   * if path is /samples/sample-url, or the appRoot, if path is /sample-url
+   */
+  private parentComponentEl() {
     return this.elRef.nativeElement.parentElement.parentElement;
   }
-  
-    private ticker(data: any) {
+
+  private ticker(data: any) {
     this.grid1.data = this.updateRandomPrices(data);
   }
-  
-    private tickerAllPrices(data: any) {
+
+  private tickerAllPrices(data: any) {
     this.grid1.data = this.updateAllPrices(data);
   }
 
-    /**
-     * Updates values in every record
-     */
-    private updateAllPrices(data: any[]): any {
+  /**
+   * Updates values in every record
+   */
+  private updateAllPrices(data: any[]): any {
     const newData = data.slice();
     for (const dataRow of newData) {
       this.randomizeObjectData(dataRow);
@@ -261,10 +261,10 @@ export class $(ClassName)Component implements OnInit, AfterViewInit, OnDestroy {
     return newData;
   }
 
-    /**
-     * Updates values in random number of records
-     */
-    private updateRandomPrices(data: any[]): any {
+  /**
+   * Updates values in random number of records
+   */
+  private updateRandomPrices(data: any[]): any {
     const newData = data.slice();
     let y = 0;
     for (let i = Math.round(Math.random() * 10); i < newData.length; i += Math.round(Math.random() * 10)) {
@@ -274,18 +274,18 @@ export class $(ClassName)Component implements OnInit, AfterViewInit, OnDestroy {
     return newData;
   }
 
-    /**
-     * Generates ne values for Change, Price and ChangeP columns
-     */
-    private randomizeObjectData(dataObj) {
+  /**
+   * Generates ne values for Change, Price and ChangeP columns
+   */
+  private randomizeObjectData(dataObj) {
     const changeP = 'Change(%)';
     const res = this.generateNewPrice(dataObj.Price);
     dataObj.Change = res.Price - dataObj.Price;
     dataObj.Price = res.Price;
     dataObj[changeP] = res.ChangePercent;
   }
-  
-    private generateNewPrice(oldPrice): any {
+
+  private generateNewPrice(oldPrice): any {
     let rnd = Math.random();
     rnd = Math.round(rnd * 100) / 100;
     const volatility = 2;
