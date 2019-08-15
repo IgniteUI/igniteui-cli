@@ -1,5 +1,5 @@
 :host ::ng-deep {
-    .finjs-icons {
+    .fintech-icons {
         display: flex;
         align-items: center;
         igx-icon {
@@ -76,7 +76,7 @@
     .igx-grid__td--selected.changePos2,
     .igx-grid__td--selected.changePos {
         background-color: #335e3b !important;
-        .finjs-icons,
+        .fintech-icons,
         .igx-grid__td-text {
             color: #fff;
         }
@@ -85,7 +85,7 @@
     .igx-grid__td--selected.changeNeg2,
     .igx-grid__td--selected.changeNeg {
         background-color: #7a1c32 !important;
-        .finjs-icons,
+        .fintech-icons,
         .igx-grid__td-text {
             color: #fff;
         }
@@ -129,7 +129,7 @@
     .igx-grid__td--selected.strongPositive2,
     .igx-grid__td--selected.strongPositive {
         background-color: #459a55 !important;
-        .finjs-icons,
+        .fintech-icons,
         .igx-grid__td-text {
             color: #fff;
         }
@@ -138,7 +138,7 @@
     .igx-grid__td--selected.strongNegative2,
     .igx-grid__td--selected.strongNegative {
         background-color: #d31642 !important;
-        .finjs-icons,
+        .fintech-icons,
         .igx-grid__td-text {
             color: #fff;
         }
@@ -166,11 +166,11 @@
     .igx-slider--disabled {
         height: 24px;
     }
-    .finjs-slider {
+    .fintech-slider {
         width: 40%;
         min-width: 145px;
     }
-    .finjs-play-controls {
+    .fintech-play-controls {
         width: 45%;
         min-width: 500px;
         margin-top: 20px;
@@ -181,7 +181,7 @@
         line-height: 20px;
     }
     .fin-dark-theme {
-        .finjs-slider,
+        .fintech-slider,
         .sample-toolbar {
             color: rgba(255, 255, 255, 0.87);
         }

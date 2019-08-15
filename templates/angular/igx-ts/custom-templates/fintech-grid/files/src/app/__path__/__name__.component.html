@@ -5,22 +5,22 @@
         <igx-switch [checked]="true" [(ngModel)]="theme" (change)="onThemeChanged($event)">Dark</igx-switch>
       </div>
       <div class="control-item">
-        <igx-switch [checked]="grouped" (change)="onChange($event)" color="blue" cssClass="finjs-sample-switch">Grouped</igx-switch>
+        <igx-switch [checked]="grouped" (change)="onChange($event)" color="blue" cssClass="fintech-sample-switch">Grouped</igx-switch>
       </div>
       <div class="control-item">
-        <igx-switch [checked]="grid1.showToolbar" (change)="toggleToolbar($event)" color="blue" cssClass="finjs-sample-switch">Toolbar</igx-switch>
+        <igx-switch [checked]="grid1.showToolbar" (change)="toggleToolbar($event)" color="blue" cssClass="fintech-sample-switch">Toolbar</igx-switch>
       </div>
-      <div class="finjs-slider control-item">
+      <div class="fintech-slider control-item">
         <label for="slider">Records: {{volume}}</label>
         <igx-slider #slider1 id="slider" [minValue]="0" [maxValue]="10000" [(ngModel)]="volume" [step]="100" thumbLabelVisibilityDuration="250" [isContinuous]="true"></igx-slider>
       </div>
-      <div class="finjs-slider control-item">
+      <div class="fintech-slider control-item">
         <label for="slider">Frequency: {{frequency}} ms</label>
         <igx-slider #slider2 id="slider" [minValue]="100" [maxValue]="3000" [step]="10" [(ngModel)]="frequency" thumbLabelVisibilityDuration="250" [isContinuous]="true"></igx-slider>
       </div>
     </div>
-    <div class="control-item finjs-play-controls">
-      <igx-buttongroup class="finjssample-btn-group" #buttonGroup1 [multiSelection]="false" [values]="controls" (onSelect)="onButtonAction($event)"></igx-buttongroup>
+    <div class="control-item fintech-play-controls">
+      <igx-buttongroup class="fintechsample-btn-group" #buttonGroup1 [multiSelection]="false" [values]="controls" (onSelect)="onButtonAction($event)"></igx-buttongroup>
     </div>
   </div>
   <div class="sample-toolbar">
@@ -49,7 +49,7 @@
     <igx-column [field]="'Open Price'" [width]="'120px'" dataType="number" [formatter]="formatCurrency" [movable]="true" [sortable]="true"></igx-column>
     <igx-column [field]="'Price'" [width]="'110px'" dataType="number" [cellClasses]="trends" [movable]="true" [sortable]="true">
       <ng-template igxCell let-cell="cell">
-        <div class="finjs-icons">
+        <div class="fintech-icons">
           <span>{{cell.value | currency:'USD':'symbol':'1.4-4'}}</span>
           <igx-icon *ngIf="trends.positive(cell.row.rowData)">trending_up</igx-icon>
           <igx-icon *ngIf="trends.negative(cell.row.rowData)">trending_down</igx-icon>

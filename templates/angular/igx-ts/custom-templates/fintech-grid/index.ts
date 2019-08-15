@@ -1,13 +1,13 @@
 import { IgniteUIForAngularTemplate } from "../../../../../lib/templates/IgniteUIForAngularTemplate";
 
-class IgxFinJSGridTemplate extends IgniteUIForAngularTemplate {
+class IgxFinTechGridTemplate extends IgniteUIForAngularTemplate {
 	constructor() {
 		super(__dirname);
-		this.id = "fin-js-grid";
+		this.id = "fintech-grid";
 		this.projectType = "igx-ts";
 		this.listInComponentTemplates = false;
 		this.listInCustomTemplates = true;
-		this.name = "Live Update Grid";
+		this.name = "FinTech Grid";
 		this.description = "Grid with simulated high-frequency data feed";
 		this.dependencies = [
 			{ import: "IgxGridModule", from: "igniteui-angular" },
@@ -25,4 +25,4 @@ class IgxFinJSGridTemplate extends IgniteUIForAngularTemplate {
 		];
 	}
 }
-module.exports = new IgxFinJSGridTemplate();
+module.exports = new IgxFinTechGridTemplate();
