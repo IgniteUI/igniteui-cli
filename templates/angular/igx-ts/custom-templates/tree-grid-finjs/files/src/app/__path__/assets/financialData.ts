@@ -983,27 +983,27 @@ export class FinancialData {
     private randomizeCountry(region: any) {
         let country;
         switch (region.Region) {
-            case "North America": {
+            case 'North America': {
                country = region.Countries[this.generateRandomNumber(0, 2)];
                break;
             }
-            case "South America": {
+            case 'South America': {
                 country = region.Countries[this.generateRandomNumber(0, 11)];
                 break;
             }
-            case "Europe": {
+            case 'Europe': {
                 country = region.Countries[this.generateRandomNumber(0, 26)];
                 break;
             }
-            case "Asia Pacific": {
+            case 'Asia Pacific': {
                 country = region.Countries[this.generateRandomNumber(0, 15)];
                 break;
             }
-            case "Africa": {
+            case 'Africa': {
                 country = region.Countries[this.generateRandomNumber(0, 11)];
                 break;
             }
-            case "Middle East": {
+            case 'Middle East': {
                 country = region.Countries[this.generateRandomNumber(0, 12)];
                 break;
             }

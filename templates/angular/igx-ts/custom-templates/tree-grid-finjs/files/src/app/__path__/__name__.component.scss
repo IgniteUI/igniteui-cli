@@ -215,20 +215,23 @@
 @include igx-core();
 @include igx-theme($default-palette);
 
- @import '../themes/mixins';
-
- @include scrollbar-love();
+ @import './themes/_mixins';
 
  $green-palette: igx-palette($primary: #09f,$secondary: #72da67, $surface: #333);
 
- ::ng-deep {
-	.fin-dark-theme {
-		@include igx-dark-theme($green-palette);
-		@include scrollbar-love(igx-color($green-palette, 'surface'));
-		 background: #333;
+ :host {
+	::ng-deep {
 
- 		 ::-moz-placeholder {
-			 opacity: 1;
-		 }
-	 }
+		@include scrollbar-love();
+
+		.fin-dark-theme {
+			@include igx-dark-theme($green-palette);
+			@include scrollbar-love(igx-color($green-palette, 'surface'));
+			background: #333;
+
+			::-moz-placeholder {
+				opacity: 1;
+			}
+		}
+	}
 }
