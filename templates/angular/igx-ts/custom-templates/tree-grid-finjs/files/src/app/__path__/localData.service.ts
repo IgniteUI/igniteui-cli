@@ -5,15 +5,15 @@ import { FinancialData } from '../../assets/financialData';
 @Injectable()
 export class LocalDataService {
     public records: Observable<any[]>;
-    public _records: BehaviorSubject<any[]>;
+    public records$: BehaviorSubject<any[]>;
 
     constructor() {
-        this._records = new BehaviorSubject([]);
-        this.records = this._records.asObservable();
+        this.records$ = new BehaviorSubject([]);
+        this.records = this.records$.asObservable();
     }
 
     public getData(count: number = 10) {
         const financialData: FinancialData = new FinancialData();
-        this._records.next(financialData.generateData(count));
+        this.records$.next(financialData.generateData(count));
     }
 }

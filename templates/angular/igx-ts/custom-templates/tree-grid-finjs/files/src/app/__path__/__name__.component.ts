@@ -81,22 +81,22 @@ export class GridFinTechComponent implements OnInit, AfterViewInit, OnDestroy {
 
     public items: any[] = [{ field: 'Export native' }, { field: 'Export JS Excel' }];
 
-    public _positionSettings: PositionSettings = {
+    public positionSettings: PositionSettings = {
         horizontalDirection: HorizontalAlignment.Left,
         horizontalStartPoint: HorizontalAlignment.Right,
         verticalStartPoint: VerticalAlignment.Bottom
     };
 
-    public _overlaySettings: OverlaySettings = {
+    public overlaySettings: OverlaySettings = {
         closeOnOutsideClick: true,
         modal: false,
-        positionStrategy: new ConnectedPositioningStrategy(this._positionSettings),
+        positionStrategy: new ConnectedPositioningStrategy(this.positionSettings),
         scrollStrategy: new AbsoluteScrollStrategy()
     };
 
     private subscription;
     private selectedButton;
-    private _timer;
+    private timer;
     private volumeChanged;
 
     constructor(private zone: NgZone, private localService: LocalDataService, private elRef: ElementRef) {
@@ -123,12 +123,12 @@ export class GridFinTechComponent implements OnInit, AfterViewInit, OnDestroy {
         switch (event.index) {
             case 0: {
                 this.disableOtherButtons(event.index, true);
-                this._timer = setInterval(() => this.ticker(this.data), this.frequency);
+                this.timer = setInterval(() => this.ticker(this.data), this.frequency);
                 break;
             }
             case 1: {
                 this.disableOtherButtons(event.index, true);
-                this._timer = setInterval(() => this.tickerAllPrices(this.data), this.frequency);
+                this.timer = setInterval(() => this.tickerAllPrices(this.data), this.frequency);
                 break;
             }
             case 2: {
@@ -144,8 +144,8 @@ export class GridFinTechComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     public stopFeed() {
-        if (this._timer) {
-            clearInterval(this._timer);
+        if (this.timer) {
+            clearInterval(this.timer);
         }
         if (this.subscription) {
             this.subscription.unsubscribe();
