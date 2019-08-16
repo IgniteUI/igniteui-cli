@@ -24,7 +24,7 @@ import { ITreeGridAggregation } from './tree-grid-grouping.pipe';
 	templateUrl: './$(filePrefix).component.html',
 	styleUrls: ['./$(filePrefix).component.scss']
 })
-export class GridFinTechComponent implements OnInit, AfterViewInit, OnDestroy {
+export class $(ClassName)Component implements OnInit, AfterViewInit, OnDestroy {
     @ViewChild('grid1', { static: true }) public grid1: IgxTreeGridComponent;
     @ViewChild('buttonGroup1', { static: true }) public buttonGroup1: IgxButtonGroupComponent;
     @ViewChild('slider1', { static: true }) public volumeSlider: IgxSliderComponent;
