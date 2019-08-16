@@ -16,7 +16,7 @@ describe('$(ClassName)Component', () => {
     .compileComponents();
   }));
 
-   beforeEach(() => {
+  beforeEach(() => {
     fixture = TestBed.createComponent($(ClassName)Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
