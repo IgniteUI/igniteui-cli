@@ -11,7 +11,6 @@ class IgxTreeGridFinTechTemplate extends IgniteUIForAngularTemplate {
 		this.description = "This sample demonstrates the TreeGrid handling thousands of updates per second.";
 		this.dependencies = [
 			{ import: "IgxTreeGridModule", from: "igniteui-angular" },
-			{ provide: "LocalDataService", from: "./src/app/__path__/localData.service.ts"},
 			{ provide: "IgxExcelExporterService", from: "igniteui-angular" },
 			{
 				import: [
@@ -23,7 +22,7 @@ class IgxTreeGridFinTechTemplate extends IgniteUIForAngularTemplate {
 				from: "igniteui-angular"
 			},
 			{ import: "FormsModule", from: "@angular/forms" },
-			{ declare: "TreeGridGroupingPipe", from: "./src/app/__path__/tree-grid-grouping.pipe.ts" }
+			{ declare: "$(ClassName)TreeGridGroupingPipe", from: "./src/app/__path__/tree-grid-grouping.pipe.ts" }
 		];
 	}
 }

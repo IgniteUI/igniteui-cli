@@ -15,7 +15,7 @@ export class ITreeGridAggregation {
     name: 'treeGridGrouping',
     pure: true
 })
-export class TreeGridGroupingPipe implements PipeTransform {
+export class $(ClassName)TreeGridGroupingPipe implements PipeTransform {
 
     public transform(collection: any[],
                      groupColumns: string[],
