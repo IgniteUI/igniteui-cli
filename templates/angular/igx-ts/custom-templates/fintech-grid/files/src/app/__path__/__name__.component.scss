@@ -192,10 +192,14 @@
     .igx-excel-filter input {
         font-size: 0.8125rem;
     }
-    .igx-button--icon {
-        width: 2rem;
-        height: 2rem;
+    
+    igx-grid-cell {
+        .igx-button--icon {
+            width: 2rem;
+            height: 2rem;
+        }
     }
+    
 }
 
 .grid__wrapper {
@@ -211,20 +215,33 @@
 @include igx-core();
 @include igx-theme($default-palette);
 
-@import '../themes/mixins';
+@import './themes/_mixins';
 
 @include scrollbar-love();
 
 $green-palette: igx-palette($primary: #09f,$secondary: #72da67, $surface: #333);
 
-::ng-deep {
-  .fin-dark-theme {
-    @include igx-dark-theme($green-palette);
-    @include scrollbar-love(igx-color($green-palette, 'surface'));
-     background: #333;
-  
-     ::-moz-placeholder {
+:host {
+  ::ng-deep {
+
+    @include scrollbar-love();
+
+    .fin-dark-theme {
+      @include igx-dark-theme($green-palette);
+      @include scrollbar-love(igx-color($green-palette, 'surface'));
+	   background: #333;
+	   
+	   igx-grid-cell {
+			.igx-button--icon {
+				width: 2rem;
+				height: 2rem;
+			}
+		}
+		
+       ::-moz-placeholder {
        opacity: 1;
+       }
      }
-   }
+    }
 }
+
