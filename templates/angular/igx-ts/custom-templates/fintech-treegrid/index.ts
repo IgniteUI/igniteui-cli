@@ -3,11 +3,11 @@ import { IgniteUIForAngularTemplate } from "../../../../../lib/templates/IgniteU
 class IgxTreeGridFinTechTemplate extends IgniteUIForAngularTemplate {
 	constructor() {
 		super(__dirname);
-		this.id = "tree-grid-fintech";
+		this.id = "fintech-treegrid";
 		this.projectType = "igx-ts";
 		this.listInComponentTemplates = false;
 		this.listInCustomTemplates = true;
-		this.name = "Tree Grid FinTech";
+		this.name = "FinTech TreeGrid ";
 		this.description = "This sample demonstrates the TreeGrid handling thousands of updates per second.";
 		this.dependencies = [
 			{ import: "IgxTreeGridModule", from: "igniteui-angular" },
