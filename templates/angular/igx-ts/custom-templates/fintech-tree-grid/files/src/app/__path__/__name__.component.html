@@ -1,0 +1,63 @@
+<div class="grid__wrapper" [class.fin-dark-theme]="theme">
+    <div class="controls-holder">
+        <div class="switches">
+            <div class="control-item">
+                <igx-switch [checked]="true" [(ngModel)]="theme" (change)="onThemeChanged($event)">Dark</igx-switch>
+            </div>
+            <div class="control-item">
+                <igx-switch [checked]="true" (change)="toggleToolbar($event)" color="blue" cssClass="fintech-sample-switch">Toolbar</igx-switch>
+            </div>
+            <div class="fintech-slider control-item">
+                <label for="slider">Records: {{volume}}</label>
+                <igx-slider #slider1 id="slider" [minValue]="0" [maxValue]="10000" [(ngModel)]="volume" [step]="100" thumbLabelVisibilityDuration="250" [isContinuous]="true"></igx-slider>
+            </div>
+            <div class="fintech-slider control-item">
+                <label for="slider">Frequency: {{frequency}} ms</label>
+                <igx-slider #slider2 id="slider" [minValue]="100" [maxValue]="3000" [step]="10" [(ngModel)]="frequency" thumbLabelVisibilityDuration="250" [isContinuous]="true"></igx-slider>
+            </div>
+        </div>
+        <div class="control-item fintech-play-controls">
+            <igx-buttongroup class="fintechsample-btn-group" #buttonGroup1 [multiSelection]="false" [values]="controls" (onSelect)="onButtonAction($event)"></igx-buttongroup>
+        </div>
+    </div>
+    <div class="sample-toolbar">
+        <span *ngIf="buttonSelected === 1">Feeding {{volume}} records every {{frequency / 1000}} sec.
+            {{volume}} records updated. </span>
+        <span *ngIf="buttonSelected === 0">Feeding {{volume}} records every {{frequency / 1000}} sec.
+            ~{{volume/5}} records updated.</span>
+    </div>
+    <igx-tree-grid #grid1 [data]="data | treeGridGrouping:groupColumns:aggregations:groupColumnKey:primaryKey:childDataKey" [height]="'calc(100% - 76px)'" width="100%" [autoGenerate]='false' displayDensity='compact' [primaryKey]="primaryKey" [childDataKey]="childDataKey"
+        columnHidingTitle="Indicators" hiddenColumnsText="Hidden" [rowSelectable]="true" [allowFiltering]="true" [filterMode]="'excelStyleFilter'" [showToolbar]="true" [columnHiding]="true" [exportExcel]="true" exportExcelText="Export to Excel">
+
+        <igx-column [field]="groupColumnKey" [width]="'180px'" [sortable]='true' [resizable]='true' [disableHiding]="true"></igx-column>
+        <igx-column [field]="'Settlement'" [width]="'100px'" [sortable]='true'></igx-column>
+        <igx-column [field]="'Region'" [width]="'110px'" [sortable]='true'></igx-column>
+        <igx-column [field]="'Country'" [width]="'100px'" [sortable]='true'></igx-column>
+        <igx-column [field]="'Open Price'" [width]="'120px'" dataType="number" [formatter]="formatCurrency" [movable]="true" [sortable]="true"></igx-column>
+        <igx-column [field]="'Price'" [width]="'130px'" dataType="number" [cellClasses]="trends" [movable]="true" [sortable]="true" [disableHiding]="true">
+            <ng-template igxCell let-cell="cell">
+                <div class="fintech-icons">
+                    <span>{{cell.value | currency:'USD':'symbol':'1.4-4'}}</span>
+                    <igx-icon *ngIf="trends.positive(cell.row.rowData)">trending_up</igx-icon>
+                    <igx-icon *ngIf="trends.negative(cell.row.rowData)">trending_down</igx-icon>
+                </div>
+            </ng-template>
+        </igx-column>
+
+        <igx-column [field]="'Change'" [width]="'120px'" dataType="number" [headerClasses]="'headerAlignSyle'" [sortable]="true" [cellClasses]="trendsChange" [formatter]="formatNumber" [movable]="true">
+        </igx-column>
+
+        <igx-column [field]="'Change(%)'" [width]="'110px'" dataType="number" [formatter]="percentage" [movable]="true" [sortable]="true" [cellClasses]="trendsChange">
+        </igx-column>
+
+        <igx-column [field]="'Buy'" [width]="'110px'" dataType="number" [formatter]="formatCurrency" [movable]="true" [sortable]="true"></igx-column>
+        <igx-column [field]="'Sell'" [width]="'110px'" dataType="number" [formatter]="formatCurrency" [movable]="true" [sortable]="true"></igx-column>
+        <igx-column [field]="'Spread'" [width]="'110px'" dataType="number" [formatter]="formatNumber" [movable]="true"></igx-column>
+        <igx-column [field]="'Volume'" [width]="'110px'" dataType="number" [formatter]="formatNumber" [movable]="true" [sortable]="true"></igx-column>
+        <igx-column [field]="'High(D)'" [width]="'110px'" dataType="number" [formatter]="formatCurrency" [movable]="true" [sortable]="true"></igx-column>
+        <igx-column [field]="'Low(D)'" [width]="'110px'" dataType="number" [formatter]="formatCurrency" [movable]="true" [sortable]="true"></igx-column>
+        <igx-column [field]="'High(Y)'" [width]="'110px'" dataType="number" [formatter]="formatCurrency" [movable]="true" [sortable]="true"></igx-column>
+        <igx-column [field]="'Low(Y)'" [width]="'110px'" dataType="number" [formatter]="formatCurrency" [movable]="true" [sortable]="true"></igx-column>
+        <igx-column [field]="'Start(Y)'" [width]="'110px'" dataType="number" [formatter]="formatCurrency" [movable]="true" [sortable]="true"></igx-column>
+    </igx-tree-grid>
+</div>
