@@ -3,7 +3,7 @@ import { IgniteUIForAngularTemplate } from "../../../../../lib/templates/IgniteU
 class IgxTreeGridFinTechTemplate extends IgniteUIForAngularTemplate {
 	constructor() {
 		super(__dirname);
-		this.id = "fintech-treegrid";
+		this.id = "fintech-tree-grid";
 		this.projectType = "igx-ts";
 		this.listInComponentTemplates = false;
 		this.listInCustomTemplates = true;
