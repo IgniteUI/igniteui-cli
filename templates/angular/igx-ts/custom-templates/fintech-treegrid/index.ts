@@ -7,7 +7,7 @@ class IgxTreeGridFinTechTemplate extends IgniteUIForAngularTemplate {
 		this.projectType = "igx-ts";
 		this.listInComponentTemplates = false;
 		this.listInCustomTemplates = true;
-		this.name = "FinTech TreeGrid ";
+		this.name = "FinTech Tree Grid ";
 		this.description = "This sample demonstrates the TreeGrid handling thousands of updates per second.";
 		this.dependencies = [
 			{ import: "IgxTreeGridModule", from: "igniteui-angular" },
