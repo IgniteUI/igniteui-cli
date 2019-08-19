@@ -2,7 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { $(ClassName)Component } from './$(filePrefix).component';
-import { IgxTreeGridModule, IgxDatePickerModule, IgxCheckboxModule } from 'igniteui-angular';
+import { $(ClassName)TreeGridGroupingPipe } from './tree-grid-grouping.pipe';
+import { IgxTreeGridModule, IgxCheckboxModule, IgxButtonModule, IgxSliderModule, IgxSwitchModule } from 'igniteui-angular';
 
 describe('$(ClassName)Component', () => {
   let component: $(ClassName)Component;
@@ -10,8 +11,8 @@ describe('$(ClassName)Component', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ $(ClassName)Component ],
-      imports: [ FormsModule, BrowserAnimationsModule, IgxTreeGridModule, IgxDatePickerModule, IgxCheckboxModule ]
+      declarations: [ $(ClassName)Component, $(ClassName)TreeGridGroupingPipe ],
+      imports: [ FormsModule, BrowserAnimationsModule, IgxTreeGridModule, IgxCheckboxModule, IgxButtonModule, IgxSliderModule, IgxSwitchModule ]
     })
     .compileComponents();
   }));
