@@ -1,4 +1,4 @@
-import { IgniteUIForAngularTemplate } from "@igniteui-angular/templates";
+import { IgniteUIForAngularTemplate } from "@igniteui/angular-templates";
 
 export abstract class ComponentOptions {
 	public templateInst?: IgniteUIForAngularTemplate;

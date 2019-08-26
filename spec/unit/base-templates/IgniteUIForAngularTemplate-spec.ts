@@ -1,7 +1,7 @@
-import { IgniteUIForAngularTemplate } from "@igniteui-angular/templates";
-import { TypeScriptFileUpdate } from "@igniteui-cli/core";
-import { ProjectConfig } from "@igniteui-cli/core";
-import { Util } from "@igniteui-cli/core";
+import { IgniteUIForAngularTemplate } from "@igniteui/angular-templates";
+import { TypeScriptFileUpdate } from "@igniteui/cli-core";
+import { ProjectConfig } from "@igniteui/cli-core";
+import { Util } from "@igniteui/cli-core";
 import * as path from "path";
 import { resetSpy } from "../../helpers/utils";
 

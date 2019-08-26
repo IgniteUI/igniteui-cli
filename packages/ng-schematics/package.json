@@ -1,5 +1,5 @@
 {
-  "name": "@igniteui-angular/schematics",
+  "name": "@igniteui/angular-schematics",
   "version": "1.0.0-beta.4",
   "description": "Ignite UI for Angular Schematics for ng new and ng generate",
   "scripts": {
@@ -13,11 +13,14 @@
   "license": "MIT",
   "schematics": "./src/collection.json",
   "dependencies": {
-    "@angular-devkit/core": "^7.3.9",
-    "@angular-devkit/schematics": "^7.3.9",
-    "@igniteui-cli/core": "*",
-    "@igniteui-angular/templates": "*",
-    "@types/jasmine": "^3.0.0",
+    "@angular-devkit/core": "^8.0.3",
+    "@angular-devkit/schematics": "^8.0.3",
+    "@igniteui/angular-templates": "^1.0.0",
+    "@igniteui/cli-core": "^1.0.0-beta.0",
+    "rxjs": "6.4.0"
+  },
+  "devDependencies": {
+    "@types/jasmine": "3.3.9",
     "@types/node": "^8.0.31",
     "jasmine": "^3.0.0",
     "typescript": "~3.2.2"

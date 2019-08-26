@@ -1,4 +1,4 @@
-import {FeatureOutputType, GridHelper} from "../../lib/project-utility/GridHelper";
+import {FeatureOutputType, GridHelper} from "../../packages/cli/lib/project-utility/GridHelper";
 
 describe("Unit Tests - GridHelper", () => {
 	it("Should call generateFeatures properly - AngularJS", async done => {

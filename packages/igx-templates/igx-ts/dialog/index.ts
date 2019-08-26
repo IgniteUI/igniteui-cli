@@ -1,5 +1,5 @@
 
-import { BaseComponent } from "@igniteui-cli/core";
+import { BaseComponent } from "@igniteui/cli-core";
 
 class IgxDialogComponent extends BaseComponent {
 	/**

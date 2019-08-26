@@ -1,10 +1,10 @@
 import * as path from "path";
-import { default as newCmd } from "../../lib/commands/new";
-import { GoogleAnalytics } from "@igniteui-cli/core";
-import { PackageManager } from "../../lib/packages/PackageManager";
-import { ProjectConfig } from "@igniteui-cli/core";
-import { PromptSession } from "../../lib/PromptSession";
-import { Util } from "@igniteui-cli/core";
+import { default as newCmd } from "../../packages/cli/lib/commands/new";
+import { GoogleAnalytics } from "@igniteui/cli-core";
+import { PackageManager } from "../../packages/cli/lib/packages/PackageManager";
+import { ProjectConfig } from "@igniteui/cli-core";
+import { PromptSession } from "../../packages/cli/lib/PromptSession";
+import { Util } from "@igniteui/cli-core";
 import { resetSpy } from "../helpers/utils";
 
 describe("Unit - New command", () => {

@@ -1,10 +1,10 @@
 import * as fs from "fs";
 import * as os from "os";
 import * as path from "path";
-import { default as config } from "../../lib/commands/config";
-import { default as generateCmd } from "../../lib/commands/generate";
-import { GoogleAnalytics } from "@igniteui-cli/core";
-import { Util } from "@igniteui-cli/core";
+import { default as config } from "../../packages/cli/lib/commands/config";
+import { default as generateCmd } from "../../packages/cli/lib/commands/generate";
+import { GoogleAnalytics } from "@igniteui/cli-core";
+import { Util } from "@igniteui/cli-core";
 import { deleteAll } from "../helpers/utils";
 
 describe("Unit - Generate command", () => {

@@ -1,11 +1,11 @@
 import * as path from "path";
 import * as resolve from "resolve";
-import { default as buildCmd } from "../../lib/commands/build";
-import { default as startCmd } from "../../lib/commands/start";
-import { GoogleAnalytics } from "@igniteui-cli/core";
-import { ProjectConfig } from "@igniteui-cli/core";
-import { Config } from "@igniteui-cli/core";
-import { Util } from "@igniteui-cli/core";
+import { default as buildCmd } from "../../packages/cli/lib/commands/build";
+import { default as startCmd } from "../../packages/cli/lib/commands/start";
+import { GoogleAnalytics } from "@igniteui/cli-core";
+import { ProjectConfig } from "@igniteui/cli-core";
+import { Config } from "@igniteui/cli-core";
+import { Util } from "@igniteui/cli-core";
 
 describe("Unit - start command", () => {
 	beforeAll(() => {
