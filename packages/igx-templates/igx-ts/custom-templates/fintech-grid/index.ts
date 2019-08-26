@@ -1,4 +1,4 @@
-import { IgniteUIForAngularTemplate } from "../../../../../lib/templates/IgniteUIForAngularTemplate";
+import { IgniteUIForAngularTemplate } from "../../../IgniteUIForAngularTemplate";
 
 class IgxFinTechGridTemplate extends IgniteUIForAngularTemplate {
 	constructor() {

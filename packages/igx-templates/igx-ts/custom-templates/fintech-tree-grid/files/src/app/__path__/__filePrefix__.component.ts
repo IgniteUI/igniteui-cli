@@ -20,11 +20,11 @@ import { ITreeGridAggregation } from './tree-grid-grouping.pipe';
 
 @Component({
     providers: [LocalDataService],
-    selector: 'app-$(filePrefix)',
-    templateUrl: './$(filePrefix).component.html',
-    styleUrls: ['./$(filePrefix).component.scss']
+    selector: 'app-<%=filePrefix%>',
+    templateUrl: './<%=filePrefix%>.component.html',
+    styleUrls: ['./<%=filePrefix%>.component.scss']
 })
-export class $(ClassName)Component implements OnInit, AfterViewInit, OnDestroy {
+export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy {
     @ViewChild('grid1', { static: true }) public grid1: IgxTreeGridComponent;
     @ViewChild('buttonGroup1', { static: true }) public buttonGroup1: IgxButtonGroupComponent;
     @ViewChild('slider1', { static: true }) public volumeSlider: IgxSliderComponent;
