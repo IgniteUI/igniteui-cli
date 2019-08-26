@@ -1,4 +1,4 @@
-import { IgniteUIForAngularTemplate } from "../../../../../lib/templates/IgniteUIForAngularTemplate";
+import { IgniteUIForAngularTemplate } from "../../../IgniteUIForAngularTemplate";
 
 class IgxTreeGridFinTechTemplate extends IgniteUIForAngularTemplate {
 	constructor() {
@@ -22,7 +22,7 @@ class IgxTreeGridFinTechTemplate extends IgniteUIForAngularTemplate {
 				from: "igniteui-angular"
 			},
 			{ import: "FormsModule", from: "@angular/forms" },
-			{ declare: "$(ClassName)TreeGridGroupingPipe", from: "./src/app/__path__/tree-grid-grouping.pipe.ts" }
+			{ declare: "<%=ClassName%>TreeGridGroupingPipe", from: "./src/app/<%=path%>/tree-grid-grouping.pipe.ts" }
 		];
 	}
 }
