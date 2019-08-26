@@ -1,11 +1,11 @@
 import { Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
 import { ScopedTree } from "@angular-devkit/schematics/src/tree/scoped";
-import { NgTreeFileSystem, ProjectConfig, Util } from "@igniteui-cli/core";
+import { NgTreeFileSystem, ProjectConfig, Util } from "@igniteui/cli-core";
 import { defer } from "rxjs";
 
 export default function(options: any): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
-		return defer<Promise<Tree>>(async () => {
+		return defer(async () => {
 			// TODO: ScopedTree iffy import
 			ProjectConfig.virtFs = new NgTreeFileSystem(new ScopedTree(tree, options.directory));
 			const config = ProjectConfig.getConfig();

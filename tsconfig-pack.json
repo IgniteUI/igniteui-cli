@@ -8,7 +8,7 @@
 		"./spec",
 		"./output",
 		"**/files/*",
-		"templates/quickstart/angular",
+		"packages/cli/templates/quickstart/angular",
 		"node_modules"
 	]
 }

@@ -1,9 +1,9 @@
 
 import * as liteServer from "lite-server";
 import * as path from "path";
-import { default as quickstartCmd } from "../../lib/commands/quickstart";
-import { GoogleAnalytics } from "@igniteui-cli/core";
-import { Util } from "@igniteui-cli/core";
+import { default as quickstartCmd } from "../../packages/cli/lib/commands/quickstart";
+import { GoogleAnalytics } from "@igniteui/cli-core";
+import { Util } from "@igniteui/cli-core";
 
 describe("Unit - Quickstart command", () => {
 	beforeAll(() => {

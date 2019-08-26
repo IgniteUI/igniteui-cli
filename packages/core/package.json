@@ -1,5 +1,5 @@
 {
-  "name": "@igniteui-cli/core",
+  "name": "@igniteui/cli-core",
   "version": "1.0.0-beta.0",
   "description": "Base types and functionality for Ignite UI CLI",
   "main": "index.js",
@@ -7,7 +7,7 @@
   "author": "Infragistics",
   "license": "MIT",
   "dependencies": {
-    "@angular-devkit/schematics": "^7.1.1",
+    "@angular-devkit/schematics": "^8.0.3",
     "chalk": "^2.3.2",
     "glob": "^7.1.2",
     "inquirer": "^6.2.2",

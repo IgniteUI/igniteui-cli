@@ -1,13 +1,13 @@
 {
-	"name": "@igniteui-angular/templates",
-	"version": "1.0.0",
-	"description": "Templates for Ignite UI for Angular projects and components",
-	"main": "index.js",
-	"typings": "index.d.ts",
-	"author": "Infragistics",
-	"license": "MIT",
-	"dependencies": {
-		"@igniteui-cli/core": "*",
-		"typescript": "^3.2.1"
-	}
+  "name": "@igniteui/angular-templates",
+  "version": "1.0.0",
+  "description": "Templates for Ignite UI for Angular projects and components",
+  "main": "index.js",
+  "typings": "index.d.ts",
+  "author": "Infragistics",
+  "license": "MIT",
+  "dependencies": {
+    "@igniteui/cli-core": "^1.0.0-beta.0",
+    "typescript": "^3.2.1"
+  }
 }

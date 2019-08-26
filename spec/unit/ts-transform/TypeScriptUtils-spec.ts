@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as ts from "typescript";
-import { FsFileSystem, TypeScriptUtils } from "@igniteui-cli/core";
+import { FsFileSystem, TypeScriptUtils } from "@igniteui/cli-core";
 
 describe("Unit - TypeScriptUtils", () => {
 	const fileSystem = new FsFileSystem();

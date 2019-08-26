@@ -1,7 +1,7 @@
 import {
 	apply, chain, MergeStrategy, mergeWith, Rule,
 	SchematicContext, template, Tree, url } from "@angular-devkit/schematics";
-import { Util } from "@igniteui-cli/core";
+import { Util } from "@igniteui/cli-core";
 import { NewProjectOptions } from "./schema";
 
 export default function(options: NewProjectOptions): Rule {

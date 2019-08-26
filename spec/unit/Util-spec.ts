@@ -1,4 +1,4 @@
-import { Util } from "@igniteui-cli/core";
+import { Util } from "@igniteui/cli-core";
 
 describe("Unit - Util", () => {
 	it("className should replace dashes and empty spaces", async done => {

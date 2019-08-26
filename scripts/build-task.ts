@@ -6,7 +6,7 @@ const scripts = {
 };
 
 // tslint:disable-next-line:no-var-requires
-const config = require("../package.json");
+const config = require("../packages/cli/package.json");
 config.scripts = scripts;
 
-writeFileSync("package.json", JSON.stringify(config, null, 2));
+writeFileSync("./packages/cli/package.json", JSON.stringify(config, null, 2));

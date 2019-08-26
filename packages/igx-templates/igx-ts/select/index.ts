@@ -1,4 +1,4 @@
-import { BaseComponent } from "@igniteui-cli/core";
+import { BaseComponent } from "@igniteui/cli-core";
 
 class IgxSelectComponent extends BaseComponent {
 	constructor() {

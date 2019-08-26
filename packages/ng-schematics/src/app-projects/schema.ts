@@ -1,4 +1,4 @@
-import { ProjectTemplate } from "@igniteui-cli/core";
+import { ProjectTemplate } from "@igniteui/cli-core";
 
 export abstract class NewProjectOptions {
 	public projTemplate: ProjectTemplate;

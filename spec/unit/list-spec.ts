@@ -1,7 +1,7 @@
-import { GoogleAnalytics } from "@igniteui-cli/core";
-import { ProjectConfig } from "@igniteui-cli/core";
-import { Util } from "@igniteui-cli/core";
-import { default as listCmd } from "../../lib/commands/list";
+import { GoogleAnalytics } from "@igniteui/cli-core";
+import { ProjectConfig } from "@igniteui/cli-core";
+import { Util } from "@igniteui/cli-core";
+import { default as listCmd } from "../../packages/cli/lib/commands/list";
 
 describe("Unit - List command", () => {
 	const mockTemplates = [

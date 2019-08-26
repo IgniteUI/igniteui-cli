@@ -5,14 +5,17 @@
         "module": "commonjs",
 		"sourceMap": true,
 		"paths": {
-			"@igniteui-cli/core": ["./packages/core"],
-			"@igniteui-angular/templates": ["./packages/igx-templates"]
+			"@igniteui/cli-core": ["./packages/core"],
+			"@igniteui/angular-templates": ["./packages/igx-templates"],
+			"@igniteui/angular-schematics": ["./packages/ng-schematics"],
+			"igniteui-cli": ["./packages/cli"]
 		}
     },
     "exclude": [
         "output",
 		"**/files/*",
-		"templates/quickstart/angular",
+		"packages/cli/**/files/*",
+		"packages/cli/templates/quickstart/angular",
         "node_modules"
 	]
 }

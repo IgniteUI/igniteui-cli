@@ -7,7 +7,7 @@ import {
 	RepositoryInitializerTask,
 	RunSchematicTask
 } from "@angular-devkit/schematics/tasks";
-import { ProjectLibrary, Util } from "@igniteui-cli/core";
+import { ProjectLibrary, Util } from "@igniteui/cli-core";
 import { defer, Observable } from 'rxjs';
 import { NewProjectOptions } from "../app-projects/schema";
 import { ComponentOptions } from "../component/schema";
@@ -33,7 +33,7 @@ export function newProject(options: OptionsSchema): Rule {
 
 		return chain([
 			(tree: Tree, _context: IgxSchematicContext): Observable<Tree> => {
-				return defer<Promise<Tree>>(async () => {
+				return defer(async () => {
 
 					if (!options.name || !prompt.nameIsValid(options.name)) {
 						options.name = await prompt.getUserInput({
@@ -81,7 +81,7 @@ export function newProject(options: OptionsSchema): Rule {
 						}
 					},
 					(tree: Tree, _context: IgxSchematicContext) => {
-						return defer<Promise<Tree>>(async () => {
+						return defer(async () => {
 							prompt.setTree(tree);
 							await prompt.chooseActionLoop(projLibrary);
 							return tree;
