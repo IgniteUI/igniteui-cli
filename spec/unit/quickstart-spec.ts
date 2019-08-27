@@ -1,9 +1,8 @@
 
+import { GoogleAnalytics, Util } from "@igniteui/cli-core";
 import * as liteServer from "lite-server";
 import * as path from "path";
 import { default as quickstartCmd } from "../../packages/cli/lib/commands/quickstart";
-import { GoogleAnalytics } from "@igniteui/cli-core";
-import { Util } from "@igniteui/cli-core";
 
 describe("Unit - Quickstart command", () => {
 	beforeAll(() => {
@@ -22,7 +21,7 @@ describe("Unit - Quickstart command", () => {
 
 		await quickstartCmd.execute({ framework: "angular" });
 		const outDir = path.join(process.cwd(), "angular-quickstart");
-		const quickStartFiles = path.join(__dirname, "../../templates/quickstart", "angular");
+		const quickStartFiles = path.join(__dirname, "../../packages/cli/templates/quickstart", "angular");
 
 		expect(Util.processTemplates).toHaveBeenCalledWith(quickStartFiles, outDir, {}, {}, false);
 		expect(Util.execSync).toHaveBeenCalledWith("npm install");
@@ -50,7 +49,7 @@ describe("Unit - Quickstart command", () => {
 		await quickstartCmd.execute({ framework: "jquery" });
 		expect(Util.execSync).toHaveBeenCalledWith("npm install");
 		const outDir = path.join(process.cwd(), "jquery-quickstart");
-		const quickStartFiles = path.join(__dirname, "../../templates/quickstart", "jquery");
+		const quickStartFiles = path.join(__dirname, "../../packages/cli/templates/quickstart", "jquery");
 
 		expect(Util.processTemplates).toHaveBeenCalledWith(quickStartFiles, outDir, {}, {}, false);
 		expect(Util.log).toHaveBeenCalledWith("Quick Start!");
@@ -65,7 +64,7 @@ describe("Unit - Quickstart command", () => {
 
 		await quickstartCmd.execute({ framework: "react" });
 		const outDir = path.join(process.cwd(), "react-quickstart");
-		const quickStartFiles = path.join(__dirname, "../../templates/quickstart", "react");
+		const quickStartFiles = path.join(__dirname, "../../packages/cli/templates/quickstart", "react");
 
 		expect(Util.processTemplates).toHaveBeenCalledWith(quickStartFiles, outDir, {}, {}, false);
 		expect(Util.execSync).toHaveBeenCalledWith("npm install");

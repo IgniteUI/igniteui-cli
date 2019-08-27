@@ -1,6 +1,6 @@
+import { FsFileSystem, TypeScriptUtils } from "@igniteui/cli-core";
 import * as fs from "fs";
 import * as ts from "typescript";
-import { FsFileSystem, TypeScriptUtils } from "@igniteui/cli-core";
 
 describe("Unit - TypeScriptUtils", () => {
 	const fileSystem = new FsFileSystem();
@@ -79,7 +79,11 @@ describe("Unit - TypeScriptUtils", () => {
 
 			const identifierCall = TypeScriptUtils.createIdentifier("Test", "method");
 			expect(identifierCall.kind).toBe(ts.SyntaxKind.CallExpression);
-			const identifierCallText = printer.printNode(ts.EmitHint.Unspecified, identifierCall, null);
+			const identifierCallText = printer.printNode(
+				ts.EmitHint.Unspecified,
+				identifierCall,
+				ts.createSourceFile("", "", ts.ScriptTarget.Latest)
+			);
 			expect(identifierCallText).toBe("Test.method()");
 			done();
 		});

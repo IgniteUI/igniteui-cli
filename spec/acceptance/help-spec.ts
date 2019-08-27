@@ -1,7 +1,8 @@
+import { GoogleAnalytics } from "@igniteui/cli-core";
 import { spawnSync } from "child_process";
 import * as cli from "../../packages/cli/lib/cli";
-import { GoogleAnalytics } from "@igniteui/cli-core";
 
+const execLocation = "packages/cli/bin/execute.js";
 describe("Help command", () => {
 
 	it("should list all available commands", async done => {
@@ -56,7 +57,7 @@ describe("Help command", () => {
 	});
 
 	it("should show help for individual commands", async done => {
-		const child = spawnSync("node", ["bin/execute.js", "new", "--help"], {
+		const child = spawnSync("node", [execLocation, "new", "--help"], {
 			encoding: "utf-8"
 		});
 		const originalNewHelpText: string = `Options:
@@ -80,7 +81,7 @@ describe("Help command", () => {
 	});
 
 	it("should show help config sub-commands", async done => {
-		const child = spawnSync("node", ["bin/execute.js", "config", "--help"], {
+		const child = spawnSync("node", [execLocation, "config", "--help"], {
 			encoding: "utf-8"
 		});
 		const originalNewHelpText: string = `Commands:
@@ -100,7 +101,7 @@ describe("Help command", () => {
 		done();
 	});
 	it("should show help generate sub-commands", async done => {
-		const child = spawnSync("node", ["bin/execute.js", "generate", "--help"], {
+		const child = spawnSync("node", [execLocation, "generate", "--help"], {
 			encoding: "utf-8"
 		});
 		const originalNewHelpText: string = `Commands:
@@ -117,7 +118,7 @@ describe("Help command", () => {
 		done();
 	});
 	it("should show help generate template sub-commands", async done => {
-		const child = spawnSync("node", ["bin/execute.js", "g", "t", "-h"], {
+		const child = spawnSync("node", [execLocation, "g", "t", "-h"], {
 			encoding: "utf-8"
 		});
 		const originalNewHelpText: string = `
@@ -139,7 +140,7 @@ describe("Help command", () => {
 		done();
 	});
 	it("should show help for list command", async done => {
-		const child = spawnSync("node", ["bin/execute.js", "list", "-h"], {
+		const child = spawnSync("node", [execLocation, "list", "-h"], {
 			encoding: "utf-8"
 		});
 		const originalNewHelpText: string = `
