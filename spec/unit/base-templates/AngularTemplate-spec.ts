@@ -1,8 +1,6 @@
-import { TypeScriptFileUpdate } from "@igniteui/cli-core";
+import { ProjectConfig, TypeScriptFileUpdate, Util } from "@igniteui/cli-core";
 import * as path from "path";
-import { ProjectConfig } from "@igniteui/cli-core";
 import { AngularTemplate } from "../../../packages/cli/lib/templates/AngularTemplate";
-import { Util } from "@igniteui/cli-core";
 
 describe("Unit - AngularTemplate Base", () => {
 	// tslint:disable:object-literal-sort-keys
@@ -91,7 +89,7 @@ describe("Unit - AngularTemplate Base", () => {
 			};
 			// spy on require:
 			spyOn(require("module"), "_load").and.callFake((modulePath: string) => {
-				if (modulePath.endsWith("../project-utility/TypeScriptFileUpdate")) {
+				if (modulePath.endsWith("@igniteui/cli-core/typescript")) {
 					return helpers;
 				} else if (modulePath.endsWith("../packages/components")) {
 					return { dv: ["igDvWidget"] };

@@ -1,7 +1,5 @@
 import { IgniteUIForAngularTemplate } from "@igniteui/angular-templates";
-import { TypeScriptFileUpdate } from "@igniteui/cli-core";
-import { ProjectConfig } from "@igniteui/cli-core";
-import { Util } from "@igniteui/cli-core";
+import { ProjectConfig, TypeScriptFileUpdate, Util } from "@igniteui/cli-core";
 import * as path from "path";
 import { resetSpy } from "../../helpers/utils";
 
@@ -23,11 +21,13 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 				requireMock: require,
 				tsUpdateMock: jasmine.createSpyObj(
 					"TypeScriptFileUpdate", ["addRoute", "addDeclaration", "addNgModuleMeta", "finalize"]) as TypeScriptFileUpdate,
-				TypeScriptFileUpdate: () => helpers.tsUpdateMock
+				TypeScriptFileUpdate: (...args) => {
+					return helpers.tsUpdateMock;
+				}
 			};
 			// spy on require:
 			spyOn(require("module"), "_load").and.callFake((modulePath: string) => {
-				if (modulePath.endsWith("../project-utility/TypeScriptFileUpdate")) {
+				if (modulePath.endsWith("@igniteui/cli-core/typescript")) {
 					return helpers;
 				} else if (modulePath.endsWith("../packages/components")) {
 					return { dv: ["igDvWidget"] };
@@ -43,20 +43,22 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 
 		it("registers route and declare component", async done => {
 			const templ = new TestTemplate();
-			spyOn(Util, "fileExists").and.callFake(file => {
+			spyOn(templ.virtFs, "fileExists").and.callFake(file => {
 				if (file === "src/app/app-routing.module.ts") {
 					return true;
 				}
 			});
 			templ.registerInProject("target/path", "view name");
-			expect(helpers.TypeScriptFileUpdate).toHaveBeenCalledWith(path.join("target/path", "src/app/app-routing.module.ts"));
+			expect(helpers.TypeScriptFileUpdate)
+			.toHaveBeenCalledWith(path.join("target/path", "src/app/app-routing.module.ts"),  templ.virtFs);
 			expect(helpers.tsUpdateMock.addRoute).toHaveBeenCalledWith(
 				path.join("target/path", `src/app/view-name/view-name.component.ts`),
 				"view-name", //path
 				"view name" //text
 			);
 
-			expect(helpers.TypeScriptFileUpdate).toHaveBeenCalledWith(path.join("target/path", "src/app/app.module.ts"));
+			expect(helpers.TypeScriptFileUpdate)
+			.toHaveBeenCalledWith(path.join("target/path", "src/app/app.module.ts"), templ.virtFs);
 			expect(helpers.tsUpdateMock.addDeclaration).toHaveBeenCalledWith(
 				path.join("target/path", `src/app/view-name/view-name.component.ts`),
 				false // if added to a custom module => true
@@ -135,7 +137,8 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 
 			// just declare
 			expect(helpers.TypeScriptFileUpdate).toHaveBeenCalledTimes(1);
-			expect(helpers.TypeScriptFileUpdate).toHaveBeenCalledWith(path.join("target/path", "src/app/app.module.ts"));
+			expect(helpers.TypeScriptFileUpdate)
+			.toHaveBeenCalledWith(path.join("target/path", "src/app/app.module.ts"), templ.virtFs);
 			expect(helpers.tsUpdateMock.addDeclaration).toHaveBeenCalledWith(
 				path.join("target/path", `src/app/view-name/view-name.component.ts`),
 				false // if added to a custom module => true
