@@ -283,6 +283,14 @@
             ],
 			"preLaunchTask": "build",
             "console": "externalTerminal"
+		}, {
+            "type": "node",
+            "request": "launch",
+			"cwd": "${workspaceRoot}",
+            "name": "Launch versioning script",
+            "program": "${workspaceRoot}/versionScript.js",
+			"preLaunchTask": "build",
+            "console": "externalTerminal"
         }
 	]
 }
