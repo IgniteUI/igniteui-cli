@@ -17,6 +17,8 @@
     "url": "https://github.com/IgniteUI/igniteui-cli/issues"
   },
   "scripts": {
+    "lerna:publish": "lerna version 5.0.0 --conventional-commits --yes --force-publish --no-push --no-git-tag-version",
+    "version": "node ./scripts/versionScript.js",
     "build": "node ./node_modules/typescript/lib/tsc.js && npm run config-schema",
     "build-pack": "node ./node_modules/typescript/lib/tsc.js -p tsconfig-pack.json && npm run config-schema",
     "pretest": "npm run lint && npm run build",
@@ -51,7 +53,12 @@
     "cache": false,
     "all": true
   },
+  "dependencies": {
+    "fs-extra": "^3.0.1"
+  },
   "devDependencies": {
+    "@igniteui/angular-templates": "^1.0.0-beta.0",
+    "@igniteui/cli-core": "^1.0.0-beta.0",
     "@types/fs-extra": "^3.0.3",
     "@types/inquirer": "0.0.35",
     "@types/jasmine": "3.3.9",
@@ -61,15 +68,14 @@
     "jasmine": "^3.3.1",
     "jasmine-spec-reporter": "^4.2.1",
     "lerna": "^3.16.4",
+    "lerna-changelog": "^0.8.2",
     "lite-server": "^2.4.0",
     "nyc": "^13.1.0",
     "source-map-support": "^0.5.4",
     "ts-node": "^6.2.0",
-	"tslint": "^5.11.0",
-	"typescript": "^3.2.1",
-	"typescript-json-schema": "^0.33.0",
-	"@igniteui/cli-core": "^1.0.0-beta.0",
-	"@igniteui/angular-templates": "^1.0.0-beta.0"
+    "tslint": "^5.11.0",
+    "typescript": "^3.2.1",
+    "typescript-json-schema": "^0.33.0"
   },
   "workspaces": [
     "packages/*"

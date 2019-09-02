@@ -1,31 +1,39 @@
+# ignore local runs output
 /output/**
 !output/.gitkeep
-packages/cli/templates/**/*.js.map
-packages/cli/lib/**/*.js.map
-packages/cli/lib/**/*.js
-packages/cli/lib/config/Config.schema.json
-packages/core/config/Config.schema.json
+
+# test coverage
+/coverage
+/.nyc_output
+
+# base and sub-package installs
+**/node_modules
+
+# ignore compiled files in packages
 packages/**/*.js.map
 packages/**/*.js
-!packages/**/*.config.js
-!packages/**/*.config.extras.js
-!packages/cli/**/src/*.js
-!packages/cli/bin/*.js
-!packages/igx-templates/**/files/**/*
 /scripts/**/*.js.map
 /scripts/**/*.js
 /spec/**/*.js.map
 /spec/**/*.js
-packages/cli/templates/jquery/**/*.js
+
+# compiled config schema
+packages/core/config/Config.schema.json
+
+# unignore cli bin executable
+!packages/cli/bin/*.js
+
+# unignore all template files
+!packages/igx-templates/**/files/**/*
 !packages/cli/templates/jquery/**/files/**/*
-packages/cli/templates/angular/**/*.js
 !packages/cli/templates/angular/**/files/**/*
-packages/cli/templates/react/**/*.js
 !packages/cli/templates/react/**/files/**/*
-packages/cli/migrations/**/*.js.map
-packages/cli/migrations/**/*.js
-packages/cli/schematics/**/*.js.map
-packages/cli/schematics/**/*.js
-**node_modules/
-/coverage
-/.nyc_output
+!packages/cli/templates/quickstart/**/*
+
+# Misc
+npm-debug.log*
+yarn-error.log*
+
+# Mac OSX Finder files.
+**/.DS_Store
+.DS_Store
