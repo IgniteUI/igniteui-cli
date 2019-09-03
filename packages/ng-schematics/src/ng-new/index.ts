@@ -8,7 +8,7 @@ import {
 	RunSchematicTask
 } from "@angular-devkit/schematics/tasks";
 import { ProjectLibrary, Util } from "@igniteui/cli-core";
-import { defer, Observable } from 'rxjs';
+import { defer, Observable } from "rxjs";
 import { NewProjectOptions } from "../app-projects/schema";
 import { ComponentOptions } from "../component/schema";
 import { SchematicsPromptSession } from "../prompt/SchematicsPromptSession";

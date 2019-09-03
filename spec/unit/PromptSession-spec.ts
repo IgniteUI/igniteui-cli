@@ -1,11 +1,9 @@
-import { ControlExtraConfigType, Util } from "@igniteui/cli-core";
+import { ControlExtraConfigType, GoogleAnalytics, ProjectConfig, Util  } from "@igniteui/cli-core";
 import * as inquirer from "inquirer";
 import * as path from "path";
 import { default as add } from "../../packages/cli/lib/commands/add";
 import { default as start } from "../../packages/cli/lib/commands/start";
-import { GoogleAnalytics } from "@igniteui/cli-core";
 import { PackageManager } from "../../packages/cli/lib/packages/PackageManager";
-import { ProjectConfig } from "@igniteui/cli-core";
 import { PromptSession } from "../../packages/cli/lib/PromptSession";
 import { TemplateManager } from "../../packages/cli/lib/TemplateManager";
 

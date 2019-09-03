@@ -1,6 +1,6 @@
+import { ControlExtraConfigType, ControlExtraConfiguration } from "@igniteui/cli-core";
 import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 import { jQueryTemplate } from "../../../../../lib/templates/jQueryTemplate";
-import { ControlExtraConfigType, ControlExtraConfiguration } from "@igniteui/cli-core";
 
 class GridExportTemplate extends jQueryTemplate {
 	public extraConfigurations: ControlExtraConfiguration[];

@@ -1,4 +1,3 @@
-import * as fs from "fs";
 import { BaseProjectLibrary } from "@igniteui/cli-core";
 
 // tslint:disable-next-line:class-name

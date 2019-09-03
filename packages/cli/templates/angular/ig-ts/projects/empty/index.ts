@@ -1,8 +1,5 @@
+import { ControlExtraConfiguration, defaultDelimiters, ProjectConfig, ProjectTemplate, Util} from "@igniteui/cli-core";
 import * as path from "path";
-import { ControlExtraConfiguration } from "@igniteui/cli-core";
-import { ProjectTemplate } from "@igniteui/cli-core";
-import { defaultDelimiters, Util } from "@igniteui/cli-core";
-import { ProjectConfig } from "@igniteui/cli-core";
 
 class EmptyAngularProject implements ProjectTemplate {
 	public id: string = "angular";

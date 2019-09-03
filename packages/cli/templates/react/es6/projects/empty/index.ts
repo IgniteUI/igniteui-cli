@@ -1,7 +1,6 @@
+import { ControlExtraConfiguration, defaultDelimiters, ProjectTemplate, Util } from "@igniteui/cli-core";
 import * as fs from "fs-extra";
 import * as path from "path";
-import { ControlExtraConfiguration, ProjectTemplate } from "@igniteui/cli-core";
-import { defaultDelimiters, Util } from "@igniteui/cli-core";
 
 class EmptyProject implements ProjectTemplate {
 	public _updateFile: string = "webpack.config.js";

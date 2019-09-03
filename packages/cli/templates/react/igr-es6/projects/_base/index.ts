@@ -1,6 +1,5 @@
+import { ControlExtraConfiguration, defaultDelimiters, ProjectTemplate, Util } from "@igniteui/cli-core";
 import * as path from "path";
-import { ControlExtraConfiguration, ProjectTemplate } from "@igniteui/cli-core";
-import { defaultDelimiters, Util } from "@igniteui/cli-core";
 
 export class BaseIgrProject implements ProjectTemplate {
 	public id: string = "base";

@@ -1,7 +1,6 @@
-import { ReactTemplate } from "../../../../../lib/templates/ReactTemplate";
-
-import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 import { ControlExtraConfigType, ControlExtraConfiguration } from "@igniteui/cli-core";
+import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
+import { ReactTemplate } from "../../../../../lib/templates/ReactTemplate";
 
 class TreeGridEditingTemplate extends ReactTemplate {
 

@@ -1,6 +1,4 @@
-import { GoogleAnalytics } from "@igniteui/cli-core";
-import { ProjectConfig } from "@igniteui/cli-core";
-import { Util } from "@igniteui/cli-core";
+import { GoogleAnalytics, ProjectConfig, Util } from "@igniteui/cli-core";
 import { default as listCmd } from "../../packages/cli/lib/commands/list";
 
 describe("Unit - List command", () => {

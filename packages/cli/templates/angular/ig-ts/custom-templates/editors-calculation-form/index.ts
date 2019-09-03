@@ -1,5 +1,5 @@
-import { AngularTemplate } from "../../../../../lib/templates/AngularTemplate";
 import { ControlExtraConfiguration } from "@igniteui/cli-core";
+import { AngularTemplate } from "../../../../../lib/templates/AngularTemplate";
 
 class EditorsCalculationForm extends AngularTemplate {
 	private extraConfigurations: ControlExtraConfiguration[];

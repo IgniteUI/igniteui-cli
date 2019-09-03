@@ -86,7 +86,7 @@ describe("Unit - Package Manager", () => {
 				"ignite-ui": "17.2"
 			}
 		};
-		spyOn(require("module"), "_load").and.returnValue(mockRequire)
+		spyOn(require("module"), "_load").and.returnValue(mockRequire);
 		const mockTemplateMgr = jasmine.createSpyObj("mockTemplateMgr", {
 			getProjectLibrary: {
 				getProject() {

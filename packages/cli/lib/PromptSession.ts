@@ -1,12 +1,10 @@
+import { BasePromptSession, GoogleAnalytics, ProjectConfig, ProjectLibrary, PromptTaskContext, Task, Util } from "@igniteui/cli-core";
 import * as inquirer from "inquirer";
 import * as path from "path";
 import { default as add } from "./commands/add";
 import { default as start } from "./commands/start";
-import { GoogleAnalytics, BasePromptSession, PromptTaskContext, Task } from "@igniteui/cli-core";
 import { PackageManager } from "./packages/PackageManager";
-import { ProjectConfig } from "@igniteui/cli-core";
 import { TemplateManager } from "./TemplateManager";
-import { ProjectLibrary, Util } from "@igniteui/cli-core";
 
 export class PromptSession extends BasePromptSession {
 
@@ -77,7 +75,7 @@ export class PromptSession extends BasePromptSession {
 			const config = projTemplate.generateConfig(projectName, theme);
 			for (const templatePath of projTemplate.templatePaths) {
 				await Util.processTemplates(templatePath, path.join(process.cwd(), projectName),
-				config, projTemplate.delimiters, false);
+					config, projTemplate.delimiters, false);
 			}
 
 			Util.log(Util.greenCheck() + " Project structure generated.");

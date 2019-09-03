@@ -1,6 +1,5 @@
-import * as path from "path";
 import { ProjectTemplate } from "@igniteui/cli-core";
-import { Util } from "@igniteui/cli-core";
+import * as path from "path";
 import { BaseIgxProject } from "../_base";
 
 export class SideNavProject extends BaseIgxProject implements ProjectTemplate {

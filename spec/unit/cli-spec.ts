@@ -1,21 +1,13 @@
-import chalk from "chalk";
-import * as inquirer from "inquirer";
+import { GoogleAnalytics, Util } from "@igniteui/cli-core";
 import * as run from "../../packages/cli/lib/cli";
 import { default as add } from "../../packages/cli/lib/commands/add";
 import { default as build } from "../../packages/cli/lib/commands/build";
-import { default as config } from "../../packages/cli/lib/commands/config";
 import { default as doc } from "../../packages/cli/lib/commands/doc";
-import { default as generate } from "../../packages/cli/lib/commands/generate";
 import { default as list } from "../../packages/cli/lib/commands/list";
-import { default as newCommand } from "../../packages/cli/lib/commands/new";
 import { default as quickstart } from "../../packages/cli/lib/commands/quickstart";
 import { default as start } from "../../packages/cli/lib/commands/start";
 import { default as test } from "../../packages/cli/lib/commands/test";
-import { GoogleAnalytics } from "@igniteui/cli-core";
 import { PromptSession } from "../../packages/cli/lib/PromptSession";
-import {TemplateManager} from "../../packages/cli/lib/TemplateManager";
-import { Util } from "@igniteui/cli-core";
-import * as yargs from "../../node_modules/yargs";
 
 describe("Unit - Cli.ts", () => {
 	beforeEach(() => {
