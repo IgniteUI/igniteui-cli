@@ -1,10 +1,8 @@
+import { GoogleAnalytics, GoogleAnalyticsParameters, ProjectConfig } from "@igniteui/cli-core";
 import * as fs from "fs-extra";
 import { EOL } from "os";
 import { parse } from "path";
 import * as cli from "../../packages/cli/lib/cli";
-import { GoogleAnalytics } from "@igniteui/cli-core";
-import { ProjectConfig } from "@igniteui/cli-core";
-import { GoogleAnalyticsParameters } from "@igniteui/cli-core";
 import { deleteAll, resetSpy } from "../helpers/utils";
 
 describe("Add command", () => {

@@ -1,10 +1,8 @@
-import { Util } from "@igniteui/cli-core";
+import { GoogleAnalytics, ProjectConfig, Util } from "@igniteui/cli-core";
 import * as fs from "fs-extra";
 import * as path from "path";
-import { GoogleAnalytics } from "@igniteui/cli-core";
 import { TemplateManager } from "../TemplateManager";
 import { PackageManager } from "./../packages/PackageManager";
-import { ProjectConfig } from "@igniteui/cli-core";
 
 let command: {
 	command: string,

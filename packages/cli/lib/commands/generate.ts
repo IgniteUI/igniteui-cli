@@ -1,6 +1,5 @@
-import { ProjectLibrary, Util } from "@igniteui/cli-core";
+import { GoogleAnalytics, ProjectLibrary, Util } from "@igniteui/cli-core";
 import * as path from "path";
-import { GoogleAnalytics } from "@igniteui/cli-core";
 import { default as config } from "./config";
 
 const command = {

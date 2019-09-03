@@ -1,3 +1,4 @@
+// tslint:disable-next-line:no-implicit-dependencies
 import { GoogleAnalytics } from "@igniteui/cli-core";
 
 function install() {

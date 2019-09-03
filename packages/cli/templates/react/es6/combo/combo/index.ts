@@ -1,4 +1,3 @@
-import * as path from "path";
 import { ReactTemplate } from "../../../../../lib/templates/ReactTemplate";
 
 class ComboTemplate extends ReactTemplate {

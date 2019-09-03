@@ -1,9 +1,7 @@
-import { Util } from "@igniteui/cli-core";
+import { GoogleAnalytics, ProjectConfig, Util } from "@igniteui/cli-core";
 import * as path from "path";
 import * as resolve from "resolve";
-import { GoogleAnalytics } from "@igniteui/cli-core";
 import { TemplateManager } from "../TemplateManager";
-import { ProjectConfig } from "@igniteui/cli-core";
 import { default as build } from "./build";
 
 let command: {

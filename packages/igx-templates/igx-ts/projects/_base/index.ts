@@ -1,6 +1,4 @@
-import { ControlExtraConfiguration } from "@igniteui/cli-core";
-import { ProjectTemplate } from "@igniteui/cli-core";
-import { Util } from "@igniteui/cli-core";
+import { ControlExtraConfiguration, ProjectTemplate, Util } from "@igniteui/cli-core";
 import * as path from "path";
 
 export class BaseIgxProject implements ProjectTemplate {

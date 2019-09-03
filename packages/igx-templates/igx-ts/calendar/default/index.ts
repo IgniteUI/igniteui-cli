@@ -1,5 +1,5 @@
-import { IgniteUIForAngularTemplate } from "../../../IgniteUIForAngularTemplate";
 import { ControlExtraConfigType, ControlExtraConfiguration } from "@igniteui/cli-core";
+import { IgniteUIForAngularTemplate } from "../../../IgniteUIForAngularTemplate";
 
 class IgxCalendarTemplate extends IgniteUIForAngularTemplate {
 	private userExtraConfiguration: {} = {};

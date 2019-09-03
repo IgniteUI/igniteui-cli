@@ -1,6 +1,4 @@
-import { Util } from "@igniteui/cli-core";
-import { GoogleAnalytics } from "@igniteui/cli-core";
-import { ProjectConfig } from "@igniteui/cli-core";
+import { GoogleAnalytics, ProjectConfig, Util } from "@igniteui/cli-core";
 
 const command = {
 	// tslint:disable:object-literal-sort-keys

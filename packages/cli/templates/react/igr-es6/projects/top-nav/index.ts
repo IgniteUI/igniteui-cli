@@ -1,6 +1,5 @@
-import * as path from "path";
 import { ProjectTemplate } from "@igniteui/cli-core";
-import { Util } from "@igniteui/cli-core";
+import * as path from "path";
 import { BaseIgrProject } from "../_base";
 
 export class TopNavIgrProject extends BaseIgrProject implements ProjectTemplate {

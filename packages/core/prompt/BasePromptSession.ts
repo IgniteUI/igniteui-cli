@@ -1,12 +1,12 @@
 import * as inquirer from "inquirer";
 import * as path from "path";
+import { BaseTemplateManager } from "../templates";
 import {
 	Component, Config, ControlExtraConfigType, ControlExtraConfiguration, Framework,
 	FrameworkId, ProjectLibrary, ProjectTemplate, Template
 } from "../types";
-import { ChoiceItem, Util, GoogleAnalytics, ProjectConfig } from "../util";
-import { WIZARD_BACK_OPTION, TaskRunner, Task } from "./TaskRunner";
-import { BaseTemplateManager } from "../templates";
+import { ChoiceItem, GoogleAnalytics, ProjectConfig, Util } from "../util";
+import { Task, TaskRunner, WIZARD_BACK_OPTION } from "./TaskRunner";
 
 export abstract class BasePromptSession {
 	protected config: Config;

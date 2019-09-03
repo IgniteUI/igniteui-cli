@@ -1,6 +1,6 @@
+import { ControlExtraConfigType, ControlExtraConfiguration } from "@igniteui/cli-core";
 import { GridHelper } from "../../../../../lib/project-utility/GridHelper";
 import { AngularTemplate } from "../../../../../lib/templates/AngularTemplate";
-import { ControlExtraConfigType, ControlExtraConfiguration } from "@igniteui/cli-core";
 
 class GridCustomTemplate extends AngularTemplate {
 	private gridHelper: GridHelper;

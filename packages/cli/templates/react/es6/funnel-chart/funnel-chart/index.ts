@@ -1,6 +1,4 @@
-import * as path from "path";
 import { ReactTemplate } from "../../../../../lib/templates/ReactTemplate";
-import { Util } from "@igniteui/cli-core";
 
 class FunnelChartTemplate extends ReactTemplate {
 	/**

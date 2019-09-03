@@ -1,5 +1,5 @@
 import * as path from "path";
-import { ProjectLibrary, Template, ProjectTemplate, Component, ComponentGroup } from "../types";
+import { Component, ComponentGroup, ProjectLibrary, ProjectTemplate, Template } from "../types";
 import { Util } from "../util";
 
 export class BaseProjectLibrary implements ProjectLibrary {
