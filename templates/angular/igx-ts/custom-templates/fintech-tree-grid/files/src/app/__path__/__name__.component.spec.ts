@@ -7,14 +7,21 @@ import { IgxTreeGridModule, IgxCheckboxModule, IgxButtonModule, IgxSliderModule,
 
 describe('$(ClassName)Component', () => {
   let component: $(ClassName)Component;
-  let fixture: ComponentFixture<$(ClassName)Component>;
+  let fixture: ComponentFixture<$(ClassName)Component >;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ $(ClassName)Component, $(ClassName)TreeGridGroupingPipe ],
-      imports: [ FormsModule, BrowserAnimationsModule, IgxTreeGridModule, IgxCheckboxModule, IgxButtonModule, IgxSliderModule, IgxSwitchModule ]
+      declarations: [$(ClassName)Component, $(ClassName)TreeGridGroupingPipe],
+      imports: [
+        FormsModule,
+        BrowserAnimationsModule,
+        IgxTreeGridModule,
+        IgxCheckboxModule,
+        IgxButtonModule,
+        IgxSliderModule,
+        IgxSwitchModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

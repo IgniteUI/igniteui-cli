@@ -13,7 +13,7 @@ const division = {
     'East South Central 01': ['Alabama', 'Kentucky'],
     'East South Central 02': ['Mississippi', 'Tennessee'],
     'West South Central': ['Arkansas', 'Louisiana', 'Oklahoma', 'Texas'],
-    'Mountain': ['Arizona', 'Colorado', 'Idaho', 'Montana', 'Nevada', 'New Mexico', 'Utah', 'Wyoming'],
+    Mountain: ['Arizona', 'Colorado', 'Idaho', 'Montana', 'Nevada', 'New Mexico', 'Utah', 'Wyoming'],
     'Pacific 01': ['Alaska', 'California'],
     'Pacific 02': ['Hawaii', 'Oregon', 'Washington']
 };

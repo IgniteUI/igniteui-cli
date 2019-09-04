@@ -4,6 +4,13 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { $(ClassName)Component } from './$(filePrefix).component';
 import { IgxInputGroupModule, IgxIconModule, IgxButtonModule, IgxRippleModule } from 'igniteui-angular';
 
+const MAIL_GROUP_NAME = 'email';
+const PASSWORD_GROUP_NAME = 'password';
+const NEW_MAIL_GROUP_NAME = 'newEmail';
+const NEW_PASSWORD_GROUP_NAME = 'newPassword';
+const FIRST_NAME_GROUP_NAME = 'firstName';
+const LAST_NAME_GROUP_NAME = 'lastName';
+
 describe('$(ClassName)Component', () => {
   let component: $(ClassName)Component;
   let fixture: ComponentFixture<$(ClassName)Component>;
@@ -28,21 +35,21 @@ describe('$(ClassName)Component', () => {
 
   it('should not allow login until valid',  async () => {
     expect(component.loginForm.valid).toBeFalsy();
-    component.loginForm.controls['email'].setValue('test@example.com');
+    component.loginForm.controls[MAIL_GROUP_NAME].setValue('test@example.com');
     expect(component.loginForm.valid).toBeFalsy();
-    component.loginForm.controls['password'].setValue('123456');
+    component.loginForm.controls[PASSWORD_GROUP_NAME].setValue('123456');
     expect(component.loginForm.valid).toBeTruthy();
   });
 
   it('should not allow register until valid',  async () => {
     expect(component.registrationForm.valid).toBeFalsy();
-    component.registrationForm.controls['newEmail'].setValue('test@example.com');
+    component.registrationForm.controls[NEW_MAIL_GROUP_NAME].setValue('test@example.com');
     expect(component.registrationForm.valid).toBeFalsy();
-    component.registrationForm.controls['firstName'].setValue('John');
+    component.registrationForm.controls[FIRST_NAME_GROUP_NAME].setValue('John');
     expect(component.registrationForm.valid).toBeFalsy();
-    component.registrationForm.controls['lastName'].setValue('Doe');
+    component.registrationForm.controls[LAST_NAME_GROUP_NAME].setValue('Doe');
     expect(component.registrationForm.valid).toBeFalsy();
-    component.registrationForm.controls['newPassword'].setValue('123456');
+    component.registrationForm.controls[NEW_PASSWORD_GROUP_NAME].setValue('123456');
     expect(component.registrationForm.valid).toBeTruthy();
   });
 });
