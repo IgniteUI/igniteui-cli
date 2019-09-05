@@ -1,10 +1,12 @@
-import { Framework, Util } from "@igniteui-cli/core";
+import { Framework, Util } from "@igniteui/cli-core";
+
+const templatesLocation = "../../packages/cli/templates/angular";
 
 describe("Angular templates", () => {
 
 	// tslint:disable-next-line:only-arrow-functions
 	it("Templates should have IDs", async function(done) {
-		const angularFramework = require("../../templates/angular");
+		const angularFramework = require(templatesLocation);
 		expect(angularFramework.projectLibraries[0]).toBeDefined();
 		expect(angularFramework.projectLibraries[1]).toBeDefined();
 
@@ -18,7 +20,7 @@ describe("Angular templates", () => {
 	});
 
 	it("Ig templates should have no internal collisions", async done => {
-		const angularFramework: Framework = require("../../templates/angular");
+		const angularFramework: Framework = require(templatesLocation);
 		const projLibrary = angularFramework.projectLibraries.find(x => x.projectType === "ig-ts");
 		for (let i = 0; i < projLibrary.templates.length; i++) {
 			const element = projLibrary.templates[i];
@@ -34,7 +36,7 @@ describe("Angular templates", () => {
 	});
 
 	it("Igx templates should have no internal collisions", async done => {
-		const angularFramework: Framework = require("../../templates/angular");
+		const angularFramework: Framework = require(templatesLocation);
 		const projLibrary = angularFramework.projectLibraries.find(x => x.projectType === "igx-ts");
 		for (let i = 0; i < projLibrary.templates.length; i++) {
 			const element = projLibrary.templates[i];

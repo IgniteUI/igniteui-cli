@@ -191,8 +191,8 @@ export class Util {
 		return configuration.version;
 	}
 
-	public static showVersion() {
-		const logo = fs.readFileSync(__dirname + "/../ignite-ui-cli.txt");
+	public static showVersion(filePath) {
+		const logo = fs.readFileSync(filePath);
 		logo.toString().split("\n").forEach(line => {
 			this.log(line);
 		});

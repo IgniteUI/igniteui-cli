@@ -1,21 +1,13 @@
-import chalk from "chalk";
-import * as inquirer from "inquirer";
-import * as run from "../../lib/cli";
-import { default as add } from "../../lib/commands/add";
-import { default as build } from "../../lib/commands/build";
-import { default as config } from "../../lib/commands/config";
-import { default as doc } from "../../lib/commands/doc";
-import { default as generate } from "../../lib/commands/generate";
-import { default as list } from "../../lib/commands/list";
-import { default as newCommand } from "../../lib/commands/new";
-import { default as quickstart } from "../../lib/commands/quickstart";
-import { default as start } from "../../lib/commands/start";
-import { default as test } from "../../lib/commands/test";
-import { GoogleAnalytics } from "@igniteui-cli/core";
-import { PromptSession } from "../../lib/PromptSession";
-import {TemplateManager} from "../../lib/TemplateManager";
-import { Util } from "@igniteui-cli/core";
-import * as yargs from "../../node_modules/yargs";
+import { GoogleAnalytics, Util } from "@igniteui/cli-core";
+import * as run from "../../packages/cli/lib/cli";
+import { default as add } from "../../packages/cli/lib/commands/add";
+import { default as build } from "../../packages/cli/lib/commands/build";
+import { default as doc } from "../../packages/cli/lib/commands/doc";
+import { default as list } from "../../packages/cli/lib/commands/list";
+import { default as quickstart } from "../../packages/cli/lib/commands/quickstart";
+import { default as start } from "../../packages/cli/lib/commands/start";
+import { default as test } from "../../packages/cli/lib/commands/test";
+import { PromptSession } from "../../packages/cli/lib/PromptSession";
 
 describe("Unit - Cli.ts", () => {
 	beforeEach(() => {

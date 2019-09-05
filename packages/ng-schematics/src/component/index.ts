@@ -2,8 +2,8 @@ import {
 	apply, chain, MergeStrategy, mergeWith,
 	Rule, SchematicContext, SchematicsException, template, Tree, url } from "@angular-devkit/schematics";
 import { NodePackageInstallTask } from "@angular-devkit/schematics/tasks";
-import { IgniteUIForAngularTemplate } from "@igniteui-angular/templates";
-import { NgTreeFileSystem, Util } from "@igniteui-cli/core";
+import { IgniteUIForAngularTemplate } from "@igniteui/angular-templates";
+import { NgTreeFileSystem, Util } from "@igniteui/cli-core";
 import { SchematicsTemplateManager } from "../SchematicsTemplateManager";
 import { ComponentOptions } from "./schema";
 

@@ -1,4 +1,4 @@
-import { BaseProjectLibrary } from "@igniteui-cli/core";
+import { BaseProjectLibrary } from "@igniteui/cli-core";
 
 class IgxProjectLibrary extends BaseProjectLibrary {
 	/**

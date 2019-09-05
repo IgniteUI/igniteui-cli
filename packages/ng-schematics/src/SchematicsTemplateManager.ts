@@ -1,5 +1,5 @@
-import { IgniteUIForAngularTemplate } from "@igniteui-angular/templates";
-import { BaseTemplateManager, ProjectLibrary, Template, Util } from "@igniteui-cli/core";
+import { IgniteUIForAngularTemplate } from "@igniteui/angular-templates";
+import { BaseTemplateManager, ProjectLibrary, Template, Util } from "@igniteui/cli-core";
 import * as path from "path";
 
 export class SchematicsTemplateManager extends BaseTemplateManager {
@@ -9,7 +9,7 @@ export class SchematicsTemplateManager extends BaseTemplateManager {
 			id: "angular",
 			name: "angular",
 			projectLibraries: [
-				require("@igniteui-angular/templates").default as ProjectLibrary
+				require("@igniteui/angular-templates").default as ProjectLibrary
 			]
 		});
 	}

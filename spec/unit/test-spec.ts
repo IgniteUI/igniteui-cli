@@ -1,8 +1,6 @@
 
-import { default as testCmd } from "../../lib/commands/test";
-import { GoogleAnalytics } from "@igniteui-cli/core";
-import { ProjectConfig } from "@igniteui-cli/core";
-import { Util } from "@igniteui-cli/core";
+import { GoogleAnalytics, ProjectConfig, Util } from "@igniteui/cli-core";
+import { default as testCmd } from "../../packages/cli/lib/commands/test";
 
 describe("Unit - Test command", () => {
 	beforeAll(() => {

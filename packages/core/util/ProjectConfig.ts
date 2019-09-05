@@ -56,7 +56,7 @@ export class ProjectConfig {
 	public static setConfig(config: Config, global: boolean = false) {
 		if (global) {
 			const filePath = path.join(os.homedir(), this.configFile);
-			fs.writeFileSync(filePath, JSON.stringify(config, null, 4) + "\n")
+			fs.writeFileSync(filePath, JSON.stringify(config, null, 4) + "\n");
 		} else {
 			this.virtFs.writeFile(this.configFile, JSON.stringify(config, null, 4) + "\n");
 		}

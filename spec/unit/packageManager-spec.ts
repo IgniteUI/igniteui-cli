@@ -1,9 +1,7 @@
+import { Config, ProjectConfig, Util } from "@igniteui/cli-core";
 import * as cp from "child_process";
 import * as path from "path";
-import { PackageManager } from "../../lib/packages/PackageManager";
-import { ProjectConfig } from "@igniteui-cli/core";
-import { Config } from "@igniteui-cli/core";
-import { Util } from "@igniteui-cli/core";
+import { PackageManager } from "../../packages/cli/lib/packages/PackageManager";
 import { resetSpy } from "../helpers/utils";
 
 describe("Unit - Package Manager", () => {
@@ -88,6 +86,7 @@ describe("Unit - Package Manager", () => {
 				"ignite-ui": "17.2"
 			}
 		};
+		spyOn(require("module"), "_load").and.returnValue(mockRequire);
 		const mockTemplateMgr = jasmine.createSpyObj("mockTemplateMgr", {
 			getProjectLibrary: {
 				getProject() {

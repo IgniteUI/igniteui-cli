@@ -1,7 +1,7 @@
 import {
 	AddTemplateArgs, ControlExtraConfiguration, FsFileSystem, IFileSystem,
 	Template, TemplateDependency, TypeScriptFileUpdate, Util
-} from "@igniteui-cli/core";
+} from "@igniteui/cli-core";
 import * as path from "path";
 
 export class IgniteUIForAngularTemplate implements Template {
@@ -87,7 +87,8 @@ export class IgniteUIForAngularTemplate implements Template {
 		// https://www.typescriptlang.org/docs/handbook/modules.html#dynamic-module-loading-in-nodejs
 		// tslint:disable-next-line:variable-name
 		const TsUpdate: typeof TypeScriptFileUpdate =
-			require("@igniteui-cli/core/typescript").TypeScriptFileUpdate;
+			// tslint:disable-next-line:no-submodule-imports
+			require("@igniteui/cli-core/typescript").TypeScriptFileUpdate;
 
 		if (!(options && options.skipRoute) && this.virtFs.fileExists("src/app/app-routing.module.ts")) {
 			//1) import the component class name,

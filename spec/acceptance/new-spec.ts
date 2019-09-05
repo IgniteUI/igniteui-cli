@@ -1,8 +1,7 @@
-import { GoogleAnalyticsParameters, Util } from "@igniteui-cli/core";
+import { GoogleAnalytics, GoogleAnalyticsParameters, Util } from "@igniteui/cli-core";
 import * as fs from "fs";
-import cli = require("../../lib/cli");
-import { GoogleAnalytics } from "@igniteui-cli/core";
-import { PackageManager } from "../../lib/packages/PackageManager";
+import * as cli from "../../packages/cli/lib/cli";
+import { PackageManager } from "../../packages/cli/lib/packages/PackageManager";
 import { deleteAll, filesDiff, resetSpy } from "../helpers/utils";
 
 describe("New command", () => {

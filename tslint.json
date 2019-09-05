@@ -3,7 +3,7 @@
 	"exclude": [ 
 		"**/files/**/*.ts",
 		"./output/**/*.ts",
-		"./quickstart/**/*.ts"
+		"./packages/cli/quickstart/**/*.ts"
 	],
 	"rules": {
 		"arrow-parens": [true, "ban-single-arg-parens"],

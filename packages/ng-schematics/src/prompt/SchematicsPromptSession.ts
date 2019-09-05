@@ -1,8 +1,8 @@
 import { Tree } from "@angular-devkit/schematics";
-import { IgniteUIForAngularTemplate } from "@igniteui-angular/templates";
+import { IgniteUIForAngularTemplate } from "@igniteui/angular-templates";
 import {
 	BasePromptSession, BaseTemplateManager, Framework, IUserInputOptions,
-	NgTreeFileSystem, ProjectConfig, ProjectLibrary, ProjectTemplate, PromptTaskContext, Task } from "@igniteui-cli/core";
+	NgTreeFileSystem, ProjectConfig, ProjectLibrary, ProjectTemplate, PromptTaskContext, Task } from "@igniteui/cli-core";
 import { ComponentOptions } from "../component/schema";
 
 export class SchematicsPromptSession extends BasePromptSession {

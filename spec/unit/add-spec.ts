@@ -1,14 +1,11 @@
-import { IgniteUIForAngularTemplate } from "@igniteui-angular/templates";
-import { ProjectConfig } from "@igniteui-cli/core";
-import { Util } from "@igniteui-cli/core";
-import { TypeScriptFileUpdate, TypeScriptUtils } from "@igniteui-cli/core";
-import { GoogleAnalytics } from "@igniteui-cli/core";
+import { IgniteUIForAngularTemplate } from "@igniteui/angular-templates";
+import { GoogleAnalytics, ProjectConfig, TypeScriptFileUpdate, TypeScriptUtils, Util } from "@igniteui/cli-core";
 import * as path from "path";
 import * as ts from "typescript";
-import { default as addCmd } from "../../lib/commands/add";
-import { PackageManager } from "../../lib/packages/PackageManager";
-import { PromptSession } from "../../lib/PromptSession";
-import { AngularTemplate } from "../../lib/templates/AngularTemplate";
+import { default as addCmd } from "../../packages/cli/lib/commands/add";
+import { PackageManager } from "../../packages/cli/lib/packages/PackageManager";
+import { PromptSession } from "../../packages/cli/lib/PromptSession";
+import { AngularTemplate } from "../../packages/cli/lib/templates/AngularTemplate";
 import { resetSpy } from "../helpers/utils";
 
 describe("Unit - Add command", () => {
@@ -148,7 +145,7 @@ describe("Unit - Add command", () => {
 		spyOn(mockTemplate, "generateConfig");
 		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
 		spyOn(mockTemplate, "registerInProject").and.callThrough();
-		const sourceFilesSpy = spyOn<any>(mockTemplate, "ensureSourceFiles");
+		// const sourceFilesSpy = spyOn<any>(mockTemplate, "ensureSourceFiles");
 		const mockLibrary = jasmine.createSpyObj("frameworkLibrary", ["hasTemplate", "getTemplateById"]);
 		mockLibrary.hasTemplate.and.returnValue(true);
 		mockLibrary.getTemplateById.and.returnValue(mockTemplate);
@@ -163,7 +160,7 @@ describe("Unit - Add command", () => {
 		spyOn(PackageManager, "flushQueue").and.returnValue(Promise.resolve());
 		spyOn(PackageManager, "ensureIgniteUISource");
 		spyOn(Util, "directoryExists").and.returnValue(true);
-		spyOn(Util, "fileExists").and.callFake(file => {
+		spyOn(mockTemplate.virtFs, "fileExists").and.callFake(file => {
 			if (file === "src/app/app-routing.module.ts") {
 				return true;
 			}
@@ -188,7 +185,7 @@ describe("Unit - Add command", () => {
 			directoryPath, "test-file-name",
 			jasmine.objectContaining({ modulePath: "myCustomModule/my-custom-module.module.ts" })
 		);
-		expect(sourceFilesSpy).toHaveBeenCalledTimes(1);
+		// expect(sourceFilesSpy).toHaveBeenCalledTimes(1);
 		expect(routeSpy).toHaveBeenCalledTimes(1);
 		expect(declarationSpy).toHaveBeenCalledTimes(1);
 		expect(declarationSpy).toHaveBeenCalledWith(
@@ -229,7 +226,7 @@ describe("Unit - Add command", () => {
 		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
 		spyOn(mockTemplate, "registerInProject").and.callThrough();
 		spyOn(Util, "directoryExists").and.returnValue(true);
-		const sourceFilesSpy = spyOn<any>(mockTemplate, "ensureSourceFiles");
+		// const sourceFilesSpy = spyOn<any>(mockTemplate, "ensureSourceFiles");
 		const mockLibrary = jasmine.createSpyObj("frameworkLibrary", ["hasTemplate", "getTemplateById"]);
 		mockLibrary.hasTemplate.and.returnValue(true);
 		mockLibrary.getTemplateById.and.returnValue(mockTemplate);
@@ -262,7 +259,7 @@ describe("Unit - Add command", () => {
 		expect(mockTemplate.registerInProject).toHaveBeenCalledWith(
 			directoryPath, "test-file-name",
 			jasmine.objectContaining({ modulePath: "myCustomModule/my-custom-module.module.ts" }));
-		expect(sourceFilesSpy).toHaveBeenCalledTimes(1);
+		// expect(sourceFilesSpy).toHaveBeenCalledTimes(1);
 		expect(routeSpy).toHaveBeenCalledTimes(1);
 		expect(declarationSpy).toHaveBeenCalledTimes(1);
 		expect(declarationSpy).toHaveBeenCalledWith(
