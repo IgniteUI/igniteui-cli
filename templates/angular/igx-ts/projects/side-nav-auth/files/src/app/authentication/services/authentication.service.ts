@@ -32,7 +32,7 @@ export class AuthenticationService {
   protected async loginPost(endpoint: string, userData: any): Promise<LoginResult> {
     let data: string;
     try {
-      data = <string> await this.http.post(endpoint, userData).toPromise();
+      data = await this.http.post(endpoint, userData).toPromise() as string;
     } catch (e) {
       return { error: e.message };
     }

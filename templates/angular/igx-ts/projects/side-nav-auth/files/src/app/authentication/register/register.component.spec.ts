@@ -10,6 +10,11 @@ import { UserService } from '../services/user.service';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
 
+const MAIL_GROUP_NAME = 'email';
+const PASSWORD_GROUP_NAME = 'password';
+const USERNAME_GROUP_NAME = 'given_name';
+const FAMILY_NAME_GROUP_NAME = 'family_name';
+
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
   let fixture: ComponentFixture<RegisterComponent>;
@@ -43,13 +48,13 @@ describe('RegisterComponent', () => {
 
   it('should submit login data',  async () => {
     expect(component.registrationForm.valid).toBeFalsy();
-    component.registrationForm.controls['given_name'].setValue('John');
+    component.registrationForm.controls[USERNAME_GROUP_NAME].setValue('John');
     expect(component.registrationForm.valid).toBeFalsy();
-    component.registrationForm.controls['email'].setValue('test@example.com');
+    component.registrationForm.controls[MAIL_GROUP_NAME].setValue('test@example.com');
     expect(component.registrationForm.valid).toBeFalsy();
-    component.registrationForm.controls['password'].setValue('123456');
+    component.registrationForm.controls[PASSWORD_GROUP_NAME].setValue('123456');
     expect(component.registrationForm.valid).toBeTruthy();
-    component.registrationForm.controls['family_name'].setValue('Doe');
+    component.registrationForm.controls[FAMILY_NAME_GROUP_NAME].setValue('Doe');
     spyOn(component.registered, 'emit');
     authSpy.register.and.returnValue(Promise.resolve({
       error: null,
@@ -73,7 +78,7 @@ describe('RegisterComponent', () => {
     await component.tryRegister();
     expect(window.alert).toHaveBeenCalledWith('Reg error');
   });
-  
+
   it(`should properly emit when 'showLoginForm' is called`, () => {
     spyOn(component.viewChange, 'emit');
     component.showLoginForm();

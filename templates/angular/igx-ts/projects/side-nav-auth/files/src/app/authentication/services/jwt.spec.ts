@@ -5,7 +5,7 @@ import { take } from 'rxjs/operators';
 
 describe('JWT Tests', () => {
     describe(`JWT Interceptor`, () => {
-        const mockService = <any>{};
+        const mockService = {} as any;
         const jwtInterceptor = new JwtInterceptor(mockService);
 
         it(`Should properly initialize`, () => {
@@ -13,12 +13,12 @@ describe('JWT Tests', () => {
         });
 
         it(`Should properly handle 'intercept'`, () => {
-            const mockRequest = <any>{
+            const mockRequest = {
                 clone: () => { }
-            };
-            const mockNext = <any>{
+            } as any;
+            const mockNext = {
                 handle: () => new Observable()
-            };
+            } as any;
             spyOn(mockNext, 'handle').and.callThrough();
             mockService.currentUser = false;
             // call w/o current user
@@ -46,7 +46,7 @@ describe('JWT Tests', () => {
 
     describe(`JWT Util`, () => {
         it(`Should properly handle 'decodeBase64Url'`, () => {
-            expect(function () { decodeBase64Url('1'); }).toThrowError('Invalid base64 input');
+            expect(() => { decodeBase64Url('1'); }).toThrowError('Invalid base64 input');
             expect(decodeBase64Url('')).toEqual('');
             expect(decodeBase64Url(`98-1o1-0+31_`)).toEqual(atob(`98+1o1+0+31/`));
             expect(decodeBase64Url(`/----___+-+-+_`)).toEqual(atob(`/++++///+++++/`));
@@ -72,7 +72,7 @@ describe('JWT Tests', () => {
             expect(parseUser('asdad')).toEqual(null);
             expect(console.error).toHaveBeenCalledWith(`The JWT token provided was not valid:\nasdad`);
             spyOn(JSON, 'parse').and.returnValue({ payload: 'Mock payload'});
-            expect(parseUser('123.123')).toEqual(<any>{ payload: 'Mock payload', token: '123.123'});
+            expect(parseUser('123.123')).toEqual({ payload: 'Mock payload', token: '123.123'} as any);
         });
     });
 });

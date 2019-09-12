@@ -1,7 +1,8 @@
 import { AuthGuard } from './auth.guard';
 
 describe('AuthGuard', () =>  {
-    let mockRouter, mockUserService: any;
+    let mockRouter: any;
+    let mockUserService: any;
     beforeEach(() => {
         mockRouter = {
             navigate: () => {}
@@ -19,14 +20,14 @@ describe('AuthGuard', () =>  {
     it(`Should properly call 'canActivate'`, () => {
         const authGuard = new AuthGuard(mockRouter, mockUserService);
         const mockSpy = jasmine.createSpy('mockSpy');
-        expect(authGuard.canActivate(<any>mockSpy, <any>mockSpy)).toEqual(true);
+        expect(authGuard.canActivate(mockSpy as any, mockSpy as any)).toEqual(true);
     });
     it(`Should properly call 'canActivate'`, () => {
         const authGuard = new AuthGuard(mockRouter, mockUserService);
         const mockSpy = jasmine.createSpy('mockSpy');
         mockUserService.currentUser = false;
         spyOn(mockRouter, 'navigate');
-        expect(authGuard.canActivate(<any>mockSpy, <any>{ url: 'test'})).toEqual(false);
+        expect(authGuard.canActivate(mockSpy as any, { url: 'test'} as any)).toEqual(false);
         expect(mockRouter.navigate).toHaveBeenCalled();
         expect(mockRouter.navigate).toHaveBeenCalledWith([''], { queryParams: { returnUrl: 'test' } });
     });
