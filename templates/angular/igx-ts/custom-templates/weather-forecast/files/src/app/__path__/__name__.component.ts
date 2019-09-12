@@ -2,12 +2,13 @@ import { Component, ViewChild } from '@angular/core';
 import { IgxExpansionPanelComponent } from 'igniteui-angular';
 import { data as weatherData } from './weather-data';
 
-  @Component({
+@Component({
   selector: 'app-$(filePrefix)',
   templateUrl: './$(filePrefix).component.html',
   styleUrls: ['./$(filePrefix).component.scss']
-  })
-  export class $(ClassName)Component {
+})
+
+export class $(ClassName)Component {
 
     @ViewChild(IgxExpansionPanelComponent, { static: true })
     public panel: IgxExpansionPanelComponent;

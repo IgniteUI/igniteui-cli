@@ -1,7 +1,7 @@
 import { Component, AfterViewInit, ViewEncapsulation, ViewChild } from '@angular/core';
-import { IgxLinearGaugeComponent } from "igniteui-angular-gauges/ES5/igx-linear-gauge-component";
-import { IgxLinearGraphRangeComponent } from "igniteui-angular-gauges/ES5/igx-linear-graph-range-component";
-import { LinearGraphNeedleShape } from "igniteui-angular-gauges/ES5/LinearGraphNeedleShape";
+import { IgxLinearGaugeComponent } from 'igniteui-angular-gauges/ES5/igx-linear-gauge-component';
+import { IgxLinearGraphRangeComponent } from 'igniteui-angular-gauges/ES5/igx-linear-graph-range-component';
+import { LinearGraphNeedleShape } from 'igniteui-angular-gauges/ES5/LinearGraphNeedleShape';
 
 @Component({
   selector: 'app-$(filePrefix)',
@@ -11,7 +11,7 @@ import { LinearGraphNeedleShape } from "igniteui-angular-gauges/ES5/LinearGraphN
 })
 export class $(ClassName)Component implements AfterViewInit {
 
-  @ViewChild("linearGauge", { static: true })
+  @ViewChild('linearGauge', { static: true })
   public linearGauge: IgxLinearGaugeComponent;
 
   public ngAfterViewInit(): void {
@@ -35,8 +35,8 @@ export class $(ClassName)Component implements AfterViewInit {
     // setting custom appearance of needle
     this.linearGauge.isNeedleDraggingEnabled = true;
     this.linearGauge.needleShape = LinearGraphNeedleShape.Needle;
-    this.linearGauge.needleBrush = "#79797a";
-    this.linearGauge.needleOutline = "#ffffffff";
+    this.linearGauge.needleBrush = '#79797a';
+    this.linearGauge.needleOutline = '#ffffffff';
     this.linearGauge.needleStrokeThickness = 1;
     this.linearGauge.needleOuterExtent = 0.9;
     this.linearGauge.needleInnerExtent = 0.3;
@@ -61,8 +61,8 @@ export class $(ClassName)Component implements AfterViewInit {
     range3.startValue = 70;
     range3.endValue = 100;
 
-    this.linearGauge.rangeBrushes  = [ "#9FB328", "#438C47", "#3F51B5"];
-    this.linearGauge.rangeOutlines = [ "#9FB328", "#438C47", "#3F51B5"];
+    this.linearGauge.rangeBrushes  = [ '#9FB328', '#438C47', '#3F51B5'];
+    this.linearGauge.rangeOutlines = [ '#9FB328', '#438C47', '#3F51B5'];
     this.linearGauge.ranges.clear();
     this.linearGauge.ranges.add(range1);
     this.linearGauge.ranges.add(range2);
@@ -79,16 +79,16 @@ export class $(ClassName)Component implements AfterViewInit {
 
     // setting extent of gauge scale
     this.linearGauge.scaleStrokeThickness = 0;
-    this.linearGauge.scaleBrush = "#ffffff";
-    this.linearGauge.scaleOutline = "#dbdbdb";
+    this.linearGauge.scaleBrush = '#ffffff';
+    this.linearGauge.scaleOutline = '#dbdbdb';
     this.linearGauge.scaleInnerExtent = 0.075;
     this.linearGauge.scaleOuterExtent = 0.85;
     this.linearGauge.scaleStartExtent = 0.05;
     this.linearGauge.scaleEndExtent = 0.95;
 
     // setting appearance of backing fill and outline
-    this.linearGauge.backingBrush = "#ffffff";
-    this.linearGauge.backingOutline = "#d1d1d1";
+    this.linearGauge.backingBrush = '#ffffff';
+    this.linearGauge.backingOutline = '#d1d1d1';
     this.linearGauge.backingStrokeThickness = 0;
 }
 
@@ -106,8 +106,8 @@ export class $(ClassName)Component implements AfterViewInit {
        // setting custom appearance of needle
        this.linearGauge.isNeedleDraggingEnabled = true;
        this.linearGauge.needleShape = LinearGraphNeedleShape.Triangle;
-       this.linearGauge.needleBrush = "#79797a";
-       this.linearGauge.needleOutline = "#ffffffff";
+       this.linearGauge.needleBrush = '#79797a';
+       this.linearGauge.needleOutline = '#ffffffff';
        this.linearGauge.needleStrokeThickness = 1;
        this.linearGauge.needleOuterExtent = 0.9;
        this.linearGauge.needleInnerExtent = 0.3;
@@ -135,8 +135,8 @@ export class $(ClassName)Component implements AfterViewInit {
        range4.startValue = 175;
        range4.endValue = 200;
 
-       this.linearGauge.rangeBrushes  = [ "#0078C8", "#0099FF", "#21A7FF", "#4FB9FF"];
-       this.linearGauge.rangeOutlines = [ "#0078C8", "#0099FF", "#21A7FF", "#4FB9FF"];
+       this.linearGauge.rangeBrushes  = [ '#0078C8', '#0099FF', '#21A7FF', '#4FB9FF'];
+       this.linearGauge.rangeOutlines = [ '#0078C8', '#0099FF', '#21A7FF', '#4FB9FF'];
        this.linearGauge.ranges.clear();
        this.linearGauge.ranges.add(range1);
        this.linearGauge.ranges.add(range2);
@@ -154,16 +154,16 @@ export class $(ClassName)Component implements AfterViewInit {
 
        // setting extent of gauge scale
        this.linearGauge.scaleStrokeThickness = 0;
-       this.linearGauge.scaleBrush = "#ffffff";
-       this.linearGauge.scaleOutline = "#dbdbdb";
+       this.linearGauge.scaleBrush = '#ffffff';
+       this.linearGauge.scaleOutline = '#dbdbdb';
        this.linearGauge.scaleInnerExtent = 0.075;
        this.linearGauge.scaleOuterExtent = 0.85;
        this.linearGauge.scaleStartExtent = 0.05;
        this.linearGauge.scaleEndExtent = 0.95;
 
        // setting appearance of backing fill and outline
-       this.linearGauge.backingBrush = "#ffffff";
-       this.linearGauge.backingOutline = "#d1d1d1";
+       this.linearGauge.backingBrush = '#ffffff';
+       this.linearGauge.backingOutline = '#d1d1d1';
        this.linearGauge.backingStrokeThickness = 0;
   }
 
@@ -181,8 +181,8 @@ export class $(ClassName)Component implements AfterViewInit {
     // setting custom appearance of needle
     this.linearGauge.isNeedleDraggingEnabled = true;
     this.linearGauge.needleShape = LinearGraphNeedleShape.Trapezoid;
-    this.linearGauge.needleBrush = "#79797a";
-    this.linearGauge.needleOutline = "#ffffffff";
+    this.linearGauge.needleBrush = '#79797a';
+    this.linearGauge.needleOutline = '#ffffffff';
     this.linearGauge.needleStrokeThickness = 1;
     this.linearGauge.needleOuterExtent = 0.9;
     this.linearGauge.needleInnerExtent = 0.3;
@@ -204,8 +204,8 @@ export class $(ClassName)Component implements AfterViewInit {
     range2.startValue = 40;
     range2.endValue = 80;
 
-    this.linearGauge.rangeBrushes  = [ "#a4bd29", "#F86232" ];
-    this.linearGauge.rangeOutlines = [ "#a4bd29", "#F86232" ];
+    this.linearGauge.rangeBrushes  = [ '#a4bd29', '#F86232' ];
+    this.linearGauge.rangeOutlines = [ '#a4bd29', '#F86232' ];
     this.linearGauge.ranges.clear();
     this.linearGauge.ranges.add(range1);
     this.linearGauge.ranges.add(range2);
@@ -221,16 +221,16 @@ export class $(ClassName)Component implements AfterViewInit {
 
     // setting extent of gauge scale
     this.linearGauge.scaleStrokeThickness = 0;
-    this.linearGauge.scaleBrush = "#ffffff";
-    this.linearGauge.scaleOutline = "#dbdbdb";
+    this.linearGauge.scaleBrush = '#ffffff';
+    this.linearGauge.scaleOutline = '#dbdbdb';
     this.linearGauge.scaleInnerExtent = 0.075;
     this.linearGauge.scaleOuterExtent = 0.85;
     this.linearGauge.scaleStartExtent = 0.05;
     this.linearGauge.scaleEndExtent = 0.95;
 
     // setting appearance of backing fill and outline
-    this.linearGauge.backingBrush = "#ffffff";
-    this.linearGauge.backingOutline = "#d1d1d1";
+    this.linearGauge.backingBrush = '#ffffff';
+    this.linearGauge.backingOutline = '#d1d1d1';
     this.linearGauge.backingStrokeThickness = 0;
   }
 }

@@ -11,9 +11,9 @@ import { ExternalAuthConfig } from '../services/external-auth-configs';
 
 /** Base provider for OpenID Connect (OIDC) https://openid.net/connect/ */
 export abstract class BaseOidcProvider implements AuthProvider {
-    constructor(protected oidcConfigService: OidcConfigService, protected oidcSecurityService: OidcSecurityService,
-        protected externalStsConfig: ExternalAuthConfig) {
-    }
+    constructor(protected oidcConfigService: OidcConfigService,
+                protected oidcSecurityService: OidcSecurityService,
+                protected externalStsConfig: ExternalAuthConfig) {}
 
     public config() {
         const openIDImplicitFlowConfiguration = new OpenIDImplicitFlowConfiguration();

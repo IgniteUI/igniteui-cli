@@ -7,6 +7,8 @@ import { ExternalAuthProvider } from '../services/external-auth-configs';
 import { ExternalLogin } from '../models/login';
 import { ExternalAuthService } from '../services/external-auth.service';
 
+const routeData = 'value';
+
 @Component({
   template: '<p>Signing in...</p>'
 })
@@ -19,7 +21,7 @@ export class RedirectComponent implements OnInit {
     private user: UserService,
     private authService: AuthenticationService,
     private externalAuthService: ExternalAuthService) {
-    this.provider = route.data['value'].provider as ExternalAuthProvider;
+    this.provider = route.data[routeData].provider as ExternalAuthProvider;
   }
 
   async ngOnInit() {

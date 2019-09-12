@@ -14,6 +14,9 @@ import { AuthenticationService } from '../services/authentication.service';
 import { UserService } from '../services/user.service';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
+const MAIL_GROUP_NAME = 'email';
+const PASSWORD_GROUP_NAME = 'password';
+
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
@@ -49,9 +52,9 @@ describe('LoginComponent', () => {
     const router: Router = TestBed.get(Router);
     spyOn(router, 'navigate');
     expect(component.loginForm.valid).toBeFalsy();
-    component.loginForm.controls['email'].setValue('test@example.com');
+    component.loginForm.controls[MAIL_GROUP_NAME].setValue('test@example.com');
     expect(component.loginForm.valid).toBeFalsy();
-    component.loginForm.controls['password'].setValue('123456');
+    component.loginForm.controls[PASSWORD_GROUP_NAME].setValue('123456');
     expect(component.loginForm.valid).toBeTruthy();
     spyOn(component.loggedIn, 'emit');
     authSpy.login.and.returnValue(Promise.resolve({

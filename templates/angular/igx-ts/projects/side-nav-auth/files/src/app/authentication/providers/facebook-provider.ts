@@ -20,6 +20,7 @@ export class FacebookProvider implements AuthProvider {
     }
 
     public login() {
+        const accessToken = 'accessToken';
         this.config();
         FB.login((response) => {
             if (response.authResponse) {
@@ -33,7 +34,7 @@ export class FacebookProvider implements AuthProvider {
                             family_name: newResponse.last_name,
                             email: newResponse.email,
                             picture: newResponse.picture,
-                            externalToken: FB.getAuthResponse()['accessToken']
+                            externalToken: FB.getAuthResponse()[accessToken]
                         };
                         this.router.navigate([this.externalStsConfig.redirect_url]);
                     });
