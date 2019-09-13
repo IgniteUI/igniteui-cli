@@ -1,3 +1,11 @@
+## [4.2.5](https://github.com/IgniteUI/igniteui-cli/compare/v4.2.4...v4.2.5) (2019-09-13)
+
+
+### Bug Fixes
+
+* **igx-ts:** add missing animation module to some generated spec files [#545](https://github.com/IgniteUI/igniteui-cli/issues/545) ([abfd98e](https://github.com/IgniteUI/igniteui-cli/commit/abfd98e))
+* **igx-ts:** lint errors for generated projects and views [#541](https://github.com/IgniteUI/igniteui-cli/issues/541) (PR [#553](https://github.com/IgniteUI/igniteui-cli/issues/553)) ([b2bbc2e](https://github.com/IgniteUI/igniteui-cli/commit/b2bbc2e))
+
 ## [4.1.5](https://github.com/IgniteUI/igniteui-cli/compare/v4.1.4...v4.1.5) (2019-05-13)
 
 ### Features
