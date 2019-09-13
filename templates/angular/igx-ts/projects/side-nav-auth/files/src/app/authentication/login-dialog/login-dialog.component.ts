@@ -19,7 +19,7 @@ export class LoginDialogComponent {
     this.loginDialog.close();
   }
 
-  onOpen () {
+  onOpen() {
     this.showLogin = true;
   }
 

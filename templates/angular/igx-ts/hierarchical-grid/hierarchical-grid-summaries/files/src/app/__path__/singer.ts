@@ -37,7 +37,7 @@ export class Singer {
     private grammyAwards: number;
 
     constructor() {
-        this.artist = "";
+        this.artist = '';
         this.hasGrammyAward = false;
         this.debut = 2000;
         this.grammyNominations = 0;

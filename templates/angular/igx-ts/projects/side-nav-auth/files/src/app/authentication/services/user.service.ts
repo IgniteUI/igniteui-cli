@@ -4,7 +4,6 @@ import { User } from '../models/user';
 
 const USER_TOKEN = 'currentUser';
 
-
 /**
  * Service used to store and provide the current logged in user in the app.
  *
@@ -17,6 +16,7 @@ const USER_TOKEN = 'currentUser';
   providedIn: 'root'
 })
 export class UserService {
+  // tslint:disable-next-line:variable-name
   private _currentUser: User;
   /** Current logged in user, if any */
   public get currentUser(): User { return this._currentUser; }

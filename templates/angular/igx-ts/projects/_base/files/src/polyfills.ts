@@ -55,7 +55,7 @@
 /***************************************************************************************************
  * Zone JS is required by default for Angular itself.
  */
-import 'zone.js/dist/zone';  // Included with Angular CLI.
+ import 'zone.js/dist/zone';  // Included with Angular CLI.
 
 
 /***************************************************************************************************
@@ -63,9 +63,9 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
  */
 
  /**
- * Date formatting for igxCalendarComponent.
- * Needed for: All but Chrome, Firefox, Edge, IE11 and Safari 10
- */
+  * Date formatting for igxCalendarComponent.
+  * Needed for: All but Chrome, Firefox, Edge, IE11 and Safari 10
+  */
 // import 'intl';  // Run `npm install --save intl`.
 /**
  * Need to import at least one locale-data with intl.

@@ -22,7 +22,9 @@ export class RegisterComponent {
   @Output() registered: EventEmitter<any> = new EventEmitter();
 
   constructor(private authentication: AuthenticationService,
-    private fb: FormBuilder, private userService: UserService, private router: Router) {
+              private fb: FormBuilder,
+              private userService: UserService,
+              private router: Router) {
     this.registrationForm = this.fb.group({
       given_name: ['', Validators.required],
       family_name: ['', Validators.nullValidator],

@@ -42,11 +42,11 @@ export class ExternalAuthService {
     return this.providers.size > 0;
   }
 
-  public addGoogle(client_id: string) {
+  public addGoogle(clientID: string) {
     const googleConfig: ExternalAuthConfig = {
       provider: ExternalAuthProvider.Google,
       stsServer: 'https://accounts.google.com',
-      client_id: client_id,
+      client_id: clientID,
       scope: 'openid email profile',
       redirect_url: this.getAbsoluteUrl(ExternalAuthRedirectUrl.Google),
       response_type: 'id_token token',
@@ -61,9 +61,9 @@ export class ExternalAuthService {
     );
   }
 
-  public addFacebook(client_id: string) {
+  public addFacebook(clientID: string) {
     const fbConfig: ExternalAuthConfig = {
-      client_id: client_id,
+      client_id: clientID,
       redirect_url: ExternalAuthRedirectUrl.Facebook
     } as ExternalAuthConfig;
 
@@ -73,11 +73,11 @@ export class ExternalAuthService {
     );
   }
 
-  public addMicrosoft(client_id: string) {
+  public addMicrosoft(clientID: string) {
     const msConfig: ExternalAuthConfig = {
       provider: ExternalAuthProvider.Microsoft,
       stsServer: 'https://login.microsoftonline.com/consumers/v2.0/',
-      client_id: client_id,
+      client_id: clientID,
       scope: 'openid email profile',
       redirect_url: this.getAbsoluteUrl(ExternalAuthRedirectUrl.Microsoft),
       response_type: 'id_token token',

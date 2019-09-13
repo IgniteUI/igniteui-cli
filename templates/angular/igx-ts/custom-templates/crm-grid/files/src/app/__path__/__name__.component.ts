@@ -55,16 +55,16 @@ export class $(ClassName)Component implements OnInit, AfterViewInit {
   public searchText = '';
   public caseSensitive = false;
 
-  public _positionSettings: PositionSettings = {
+  public positionSettings: PositionSettings = {
     horizontalDirection: HorizontalAlignment.Left,
     horizontalStartPoint: HorizontalAlignment.Right,
     verticalStartPoint: VerticalAlignment.Bottom
   };
 
-  public _overlaySettings: OverlaySettings = {
+  public overlaySettings: OverlaySettings = {
     closeOnOutsideClick: true,
     modal: false,
-    positionStrategy: new ConnectedPositioningStrategy(this._positionSettings),
+    positionStrategy: new ConnectedPositioningStrategy(this.positionSettings),
     scrollStrategy: new CloseScrollStrategy()
   };
 
@@ -75,13 +75,13 @@ export class $(ClassName)Component implements OnInit, AfterViewInit {
   }
 
   public toggleHiding() {
-    this._overlaySettings.positionStrategy.settings.target = this.hidingButton.nativeElement;
-    this.toggleRefHiding.toggle(this._overlaySettings);
+    this.overlaySettings.positionStrategy.settings.target = this.hidingButton.nativeElement;
+    this.toggleRefHiding.toggle(this.overlaySettings);
   }
 
   public togglePinning() {
-    this._overlaySettings.positionStrategy.settings.target = this.pinningButton.nativeElement;
-    this.toggleRefPinning.toggle(this._overlaySettings);
+    this.overlaySettings.positionStrategy.settings.target = this.pinningButton.nativeElement;
+    this.toggleRefPinning.toggle(this.overlaySettings);
   }
 
   public ngAfterViewInit() {
@@ -149,7 +149,7 @@ export class $(ClassName)Component implements OnInit, AfterViewInit {
   }
 }
 
-  function formatDate(val: Date) {
+function formatDate(val: Date) {
     return new Intl.DateTimeFormat('en-US').format(val);
   }
 class DealsSummary extends IgxNumberSummaryOperand {

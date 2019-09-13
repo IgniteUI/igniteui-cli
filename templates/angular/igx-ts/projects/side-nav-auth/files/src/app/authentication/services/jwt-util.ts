@@ -44,7 +44,7 @@ export function decodeBase64Url(base64Url: string) {
 
 export function encodeBase64Url(input: {}) {
   const encodedToURI: string = encodeURI(JSON.stringify(input));
-  let result: string = '';
+  let result = '';
   for (let i = 0; i < encodedToURI.length; i++) {
     const c = encodedToURI[i];
     if (c === '%') {

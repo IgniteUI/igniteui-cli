@@ -15,11 +15,11 @@ import { UserService } from './user.service';
 describe('Services', () => {
 
     describe('Authentication Service', () => {
-        const mock_httpClient = <any>{
+        const MOCK_HTTP_CLIENT = {
             post: () => { }
-        };
+        } as any;
 
-        const authServ = new AuthenticationService(mock_httpClient);
+        const authServ = new AuthenticationService(MOCK_HTTP_CLIENT);
         it('Should properly initialize', async () => {
             expect(authServ).toBeDefined();
         });
@@ -49,11 +49,11 @@ describe('Services', () => {
             const dummyData = { email: 'Dummy', password: 'Data' };
             const mockObs = { toPromise: () => { } };
             spyOn(mockObs, 'toPromise').and.returnValue('TEST DATA' as any);
-            spyOn(mock_httpClient, 'post').and.returnValue(mockObs);
+            spyOn(MOCK_HTTP_CLIENT, 'post').and.returnValue(mockObs);
             spyOn(JWTUtil, 'parseUser').and.returnValue({ user: 'Test' } as any);
             await authServ.login(dummyData);
             expect(loginPostSpy).toHaveBeenCalledWith('/login', dummyData);
-            expect(mock_httpClient.post).toHaveBeenCalledWith('/login', dummyData);
+            expect(MOCK_HTTP_CLIENT.post).toHaveBeenCalledWith('/login', dummyData);
             expect(JWTUtil.parseUser).toHaveBeenCalledWith('TEST DATA');
         });
         it(`Should properly call 'loginPost' and throw error`, async () => {
@@ -62,24 +62,21 @@ describe('Services', () => {
             spyOn(mockObs, 'toPromise').and.callFake(() => {
                 throw new Error('Test Error');
             });
-            spyOn(mock_httpClient, 'post').and.returnValue(mockObs);
-            expect(await (<any>authServ).loginPost(dummyData)).toEqual({ error: 'Test Error' });
-            expect(mock_httpClient.post).toHaveBeenCalled();
+            spyOn(MOCK_HTTP_CLIENT, 'post').and.returnValue(mockObs);
+            expect(await (authServ as any).loginPost(dummyData)).toEqual({ error: 'Test Error' });
+            expect(MOCK_HTTP_CLIENT.post).toHaveBeenCalled();
         });
     });
 
     describe('External Authentication Service', () => {
-        const mock_OIDC_security = <any>{
-        };
-        const mock_OIDC_config = <any>{
-        };
-        const mock_router = <any>{
-        };
-        const mock_location = <any>{
+        const MOCK_OIDC_SECURITY = {} as any;
+        const MOCK_OIDC_CONFIG = {} as any;
+        const MOCK_ROUTER = {} as any;
+        const MOCK_LOCATION = {
             prepareExternalUrl: () => { }
-        };
+        } as any;
 
-        const extAuthServ = new ExternalAuthService(mock_router, mock_OIDC_security, mock_OIDC_config, mock_location);
+        const extAuthServ = new ExternalAuthService(MOCK_ROUTER, MOCK_OIDC_SECURITY, MOCK_OIDC_CONFIG, MOCK_LOCATION);
         it(`Should properly initialize`, () => {
             expect(extAuthServ).toBeDefined();
         });
@@ -90,23 +87,23 @@ describe('Services', () => {
             expect(localStorage.getItem).toHaveBeenCalledWith('extActiveProvider');
             expect(testProvider).toEqual('test');
             spyOn(localStorage, 'setItem');
-            extAuthServ.activeProvider = <any>'ccc';
+            extAuthServ.activeProvider = 'ccc' as any;
             expect(localStorage.setItem).toHaveBeenCalled();
             expect(localStorage.setItem).toHaveBeenCalledWith('extActiveProvider', 'ccc');
         });
 
         it(`Should properly call 'hasProvider'`, () => {
             const providersMap = new Map<any, any>();
-            (<any>extAuthServ).providers = providersMap;
+            (extAuthServ as any).providers = providersMap;
             expect(extAuthServ.hasProvider()).toEqual(false);
             providersMap.set('0', '0');
             expect(extAuthServ.hasProvider()).toEqual(true);
-            expect(extAuthServ.hasProvider(<any>'0')).toEqual(true);
-            expect(extAuthServ.hasProvider(<any>'1')).toEqual(false);
+            expect(extAuthServ.hasProvider('0' as any)).toEqual(true);
+            expect(extAuthServ.hasProvider('1' as any)).toEqual(false);
         });
 
         it(`Should properly call 'addGoogle'`, () => {
-            const providersSpy = spyOn<any>((<any>extAuthServ).providers, 'set');
+            const providersSpy = spyOn<any>((extAuthServ as any).providers, 'set');
             spyOn<any>(extAuthServ, 'getAbsoluteUrl').and.returnValue('testUrl');
             const configParams = {
                 provider: ExternalAuthProvider.Google,
@@ -123,25 +120,25 @@ describe('Services', () => {
             extAuthServ.addGoogle('test');
             expect(providersSpy).toHaveBeenCalled();
             expect(providersSpy).toHaveBeenCalledWith('Google',
-                new GoogleProvider(mock_OIDC_config, mock_OIDC_security, configParams));
+                new GoogleProvider(MOCK_OIDC_CONFIG, MOCK_OIDC_SECURITY, configParams));
         });
 
         it(`Should properly call 'addFacebook'`, () => {
-            const providersSpy = spyOn<any>((<any>extAuthServ).providers, 'set');
-            const configParams = <any>{
+            const providersSpy = spyOn<any>((extAuthServ as any).providers, 'set');
+            const configParams = {
                 client_id: 'test',
                 redirect_url: ExternalAuthRedirectUrl.Facebook
-            };
+            } as any;
             extAuthServ.addFacebook('test');
             expect(providersSpy).toHaveBeenCalled();
             expect(providersSpy).toHaveBeenCalledWith('Facebook',
-                new FacebookProvider(configParams, mock_router));
+                new FacebookProvider(configParams, MOCK_ROUTER));
         });
 
         it(`Should properly call 'addMicrosoft'`, () => {
-            const providersSpy = spyOn<any>((<any>extAuthServ).providers, 'set');
+            const providersSpy = spyOn<any>((extAuthServ as any).providers, 'set');
             spyOn<any>(extAuthServ, 'getAbsoluteUrl').and.returnValue('testUrl');
-            const configParams = <any>{
+            const configParams = {
                 provider: ExternalAuthProvider.Microsoft,
                 stsServer: 'https://login.microsoftonline.com/consumers/v2.0/',
                 client_id: 'test',
@@ -152,11 +149,11 @@ describe('Services', () => {
                 post_login_route: '',
                 auto_userinfo: false,
                 max_id_token_iat_offset_allowed_in_seconds: 1000
-            };
+            } as any;
             extAuthServ.addMicrosoft('test');
             expect(providersSpy).toHaveBeenCalled();
             expect(providersSpy).toHaveBeenCalledWith('Microsoft',
-                new MicrosoftProvider(mock_OIDC_config, mock_OIDC_security, configParams));
+                new MicrosoftProvider(MOCK_OIDC_CONFIG, MOCK_OIDC_SECURITY, configParams));
         });
 
         it(`Should properly call 'getUserInfo'`, async () => {
@@ -169,27 +166,27 @@ describe('Services', () => {
             spyOn(mockObj, 'getUserInfo').and.callThrough();
             const providersGetSpy = spyOn(providersMap, 'get').and.returnValue(false);
             providersMap.set(ExternalAuthProvider.Facebook, mockObj);
-            (<any>extAuthServ).providers = providersMap;
+            (extAuthServ as any).providers = providersMap;
             spyOn(Promise, 'reject').and.returnValue(Promise.resolve(null));
             expect(await extAuthServ.getUserInfo(ExternalAuthProvider.Facebook)).toEqual(null);
             expect(providersGetSpy).toHaveBeenCalledTimes(1);
             providersGetSpy.and.returnValue(mockObj);
-            expect(await extAuthServ.getUserInfo(ExternalAuthProvider.Facebook)).toEqual(<any>{
+            expect(await extAuthServ.getUserInfo(ExternalAuthProvider.Facebook)).toEqual({
                 name: 'test',
                 externalProvider: ExternalAuthProvider.Facebook
-            });
+            } as any);
             expect(providersGetSpy).toHaveBeenCalledTimes(2);
         });
 
         it(`Should properly call 'login'`, () => {
             const providersMap = new Map<any, any>();
-            const mockObj = <any>{
+            const mockObj = {
                 login: () => { }
-            };
+            } as any;
             spyOn(mockObj, 'login');
             const providersGetSpy = spyOn(providersMap, 'get').and.returnValue(false);
             providersMap.set(ExternalAuthProvider.Facebook, mockObj);
-            (<any>extAuthServ).providers = providersMap;
+            (extAuthServ as any).providers = providersMap;
             const setActiveProvider = spyOnProperty(extAuthServ, 'activeProvider', 'set');
             extAuthServ.login(ExternalAuthProvider.Facebook);
             expect(mockObj.login).not.toHaveBeenCalled();
@@ -202,13 +199,13 @@ describe('Services', () => {
 
         it(`Should properly call 'logout'`, () => {
             const providersMap = new Map<any, any>();
-            const mockObj = <any>{
+            const mockObj = {
                 logout: () => { }
-            };
+            } as any;
             spyOn(mockObj, 'logout');
             providersMap.set(ExternalAuthProvider.Facebook, mockObj);
             spyOn(providersMap, 'get').and.returnValue(mockObj);
-            (<any>extAuthServ).providers = providersMap;
+            (extAuthServ as any).providers = providersMap;
             const setActiveProviderSpy = spyOnProperty(extAuthServ, 'activeProvider', 'get').and.returnValue(false);
             extAuthServ.logout();
             expect(mockObj.logout).not.toHaveBeenCalled();
@@ -224,9 +221,9 @@ describe('Services', () => {
 
         it(`Should properly call 'getAbsoluteUrl'`, () => {
             const currentOrigin = window.location.origin;
-            spyOn(mock_location, 'prepareExternalUrl').and.returnValue('test_href_2');
-            expect((<any>extAuthServ).getAbsoluteUrl('mock_path')).toEqual(`${currentOrigin}test_href_2`);
-            expect(mock_location.prepareExternalUrl).toHaveBeenCalledWith('mock_path');
+            spyOn(MOCK_LOCATION, 'prepareExternalUrl').and.returnValue('test_href_2');
+            expect((extAuthServ as any).getAbsoluteUrl('mock_path')).toEqual(`${currentOrigin}test_href_2`);
+            expect(MOCK_LOCATION.prepareExternalUrl).toHaveBeenCalledWith('mock_path');
         });
     });
 
@@ -234,15 +231,15 @@ describe('Services', () => {
         const provider = new BackendInterceptor();
         describe(`public`, () => {
             it(`Should properly call 'intercept'`, () => {
-                const mockRequest = <any>{
+                const mockRequest = {
                     method: 'POST',
                     url: '/login',
                     version: 'test'
-                };
+                } as any;
                 const mockUsers = [];
-                const mockNext = <HttpHandler>{
+                const mockNext = {
                     handle: () => new Observable<any>()
-                };
+                } as HttpHandler;
                 // endpoint /login
 
                 // mocked method in intercept still need to return observable, otherwise rxjs pipe throws
@@ -310,12 +307,12 @@ describe('Services', () => {
             });
 
             it(`Should properly call 'registerHandle'`, () => {
-                const mockUser = <any>{
+                const mockUser = {
                     email: 'test_user'
-                };
+                } as any;
                 provider.users = [mockUser];
                 let output;
-                let expectedOutput = <any>{ error: { message: 'Account with email "test_user" already exists' } };
+                let expectedOutput = { error: { message: 'Account with email "test_user" already exists' } } as any;
                 provider.registerHandle(mockUser, false).pipe(take(1)).subscribe(() => { }, (e) => { output = e; });
                 expect(output).toEqual(expectedOutput);
                 spyOn(localStorage, 'setItem');
@@ -323,7 +320,7 @@ describe('Services', () => {
                 const generateBodySpy = spyOn<any>(provider, 'getUserJWT').and.returnValue('MOCK BODY');
                 const tokenSpy = spyOn<any>(provider, 'generateToken').and.returnValue('MOCK TOKEN');
                 expectedOutput = new HttpResponse({ status: 200, body: 'MOCK TOKEN' });
-                provider.registerHandle(<any>{ email: 'test_user', customProp: 'very_custom ' }, true)
+                provider.registerHandle({ email: 'test_user', customProp: 'very_custom ' } as any, true)
                     .pipe(take(1)).subscribe((e) => { output = e; });
                 expect(output).toEqual(expectedOutput);
                 expect(generateBodySpy).toHaveBeenCalledWith(mockUser);
@@ -334,9 +331,9 @@ describe('Services', () => {
                 expect(localStorage.setItem).toHaveBeenCalledWith('users', 'MOCK OBJ');
                 expect(JSON.stringify).toHaveBeenCalledTimes(1);
                 expect(JSON.stringify).toHaveBeenCalledWith([{ email: 'test_user', customProp: 'very_custom ' }]);
-                expect(provider.users).toEqual(<any>[{ email: 'test_user', customProp: 'very_custom ' }]);
+                expect(provider.users).toEqual([{ email: 'test_user', customProp: 'very_custom ' }] as any);
                 output = '';
-                provider.registerHandle(<any>{ email: 'new_user', customProp: 'test' })
+                provider.registerHandle({ email: 'new_user', customProp: 'test' } as any)
                     .pipe(take(1)).subscribe((e) => { output = e; });
                 expect(output).toEqual(expectedOutput);
                 expect(generateBodySpy).toHaveBeenCalledWith({ email: 'new_user', customProp: 'test' });
@@ -349,19 +346,19 @@ describe('Services', () => {
                 expect(JSON.stringify)
                     .toHaveBeenCalledWith([{ email: 'test_user', customProp: 'very_custom ' }, { email: 'new_user', customProp: 'test' }]);
                 expect(provider.users)
-                    .toEqual(<any>[{ email: 'test_user', customProp: 'very_custom ' }, { email: 'new_user', customProp: 'test' }]);
+                    .toEqual([{ email: 'test_user', customProp: 'very_custom ' }, { email: 'new_user', customProp: 'test' }] as any);
             });
 
             it(`Should properly call 'loginHandle'`, () => {
-                const mockUser = <any>{
+                const mockUser = {
                     email: 'test_email'
-                };
+                } as any;
                 provider.users = [mockUser];
-                const mockRequest = <any>{
+                const mockRequest = {
                     body: {
                         email: 'test_email'
                     }
-                };
+                } as any;
                 spyOn(Array.prototype, 'find').and.callThrough();
                 const jwtSpy = spyOn<any>(provider, 'getUserJWT').and.returnValue('MOCK BODY');
                 const tokenSpy = spyOn<any>(provider, 'generateToken').and.returnValue('MOCK TOKEN');
@@ -374,7 +371,7 @@ describe('Services', () => {
 
                 const expectedError = { status: 401, error: { message: 'User does not exist!' } };
                 let emittedResult;
-                (<any>provider.loginHandle(<any>{ body: { email: 'missing user' } })).pipe(take(1))
+                (provider.loginHandle({ body: { email: 'missing user' } } as any) as any).pipe(take(1))
                     .subscribe(() => { }, (e: any) => { emittedResult = e; }, () => { });
                 expect(emittedResult).toEqual(expectedError);
             });
@@ -391,7 +388,7 @@ describe('Services', () => {
                     }
                 };
                 provider.users = [];
-                expect((<any>provider).getStorageUser(mockInput)).toEqual({
+                expect((provider as any).getStorageUser(mockInput)).toEqual({
                     id: `1`,
                     name: mockInput.body.given_name + ' ' + mockInput.body.family_name,
                     email: mockInput.body.email,
@@ -414,7 +411,7 @@ describe('Services', () => {
                         externalProvider: 'test_externalProvider'
                     }
                 };
-                expect((<any>provider).getStorageExtUser(mockInput)).toEqual({
+                expect((provider as any).getStorageExtUser(mockInput)).toEqual({
                     id: mockInput.body.id,
                     name: mockInput.body.name,
                     email: mockInput.body.email,
@@ -437,7 +434,7 @@ describe('Services', () => {
                 spyOn(Math, 'floor').and.returnValue(1000);
                 spyOn(Date.prototype, 'getTime').and.returnValue(1000);
                 const expectedExp = 1000 + (7 * 24 * 60 * 60);
-                expect((<any>provider).getUserJWT(mockInput)).toEqual({
+                expect((provider as any).getUserJWT(mockInput)).toEqual({
                     exp: expectedExp,
                     name: mockInput.name,
                     given_name: mockInput.given_name,
@@ -457,7 +454,7 @@ describe('Services', () => {
                 });
                 const expectedOutput = btoa(JSON.stringify(headerString)) + '.' + btoa(JSON.stringify(inputString)) + '.mockSignature';
                 spyOn(JSON, 'stringify').and.callThrough();
-                expect((<any>provider).generateToken(inputString)).toEqual(expectedOutput);
+                expect((provider as any).generateToken(inputString)).toEqual(expectedOutput);
                 expect(JSON.stringify).toHaveBeenCalledTimes(3);
             });
         });
