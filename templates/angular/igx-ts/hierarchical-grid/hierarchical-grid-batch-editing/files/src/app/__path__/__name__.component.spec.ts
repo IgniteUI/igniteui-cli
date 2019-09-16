@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {
     IgxGridModule, IgxDatePickerModule, IgxCheckboxModule, IgxDialogModule, IgxHierarchicalGridModule
 } from 'igniteui-angular';
@@ -14,7 +14,7 @@ describe('$(ClassName)Component', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ $(ClassName)Component, HierarchicalGridWithTransactionsComponent ],
-      imports: [ FormsModule, BrowserAnimationsModule, IgxGridModule, IgxHierarchicalGridModule,
+      imports: [ FormsModule, NoopAnimationsModule, IgxGridModule, IgxHierarchicalGridModule,
          IgxDatePickerModule, IgxCheckboxModule, IgxDialogModule ]
     })
     .compileComponents();
