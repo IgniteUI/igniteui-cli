@@ -1,3 +1,10 @@
+## [4.2.6](https://github.com/IgniteUI/igniteui-cli/compare/v4.2.5...v4.2.6) (2019-09-16)
+Updated Ignite UI for Angular projects to ng cli 8.3.4 ([f7c3656](https://github.com/IgniteUI/igniteui-cli/commit/f7c3656))
+
+### Bug Fixes
+
+* **igx-ts:** adjust main container height in no-router scenario ([4ec263a](https://github.com/IgniteUI/igniteui-cli/commit/4ec263a))
+
 ## [4.2.5](https://github.com/IgniteUI/igniteui-cli/compare/v4.2.4...v4.2.5) (2019-09-13)
 
 
