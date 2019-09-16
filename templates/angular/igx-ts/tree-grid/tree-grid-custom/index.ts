@@ -81,7 +81,7 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 						treeGridFeatures.push(`[rowEditable]="true"`);
 						break;
 					case "Row Selection":
-						const gridFeatureText = `[rowSelectable]="true"`;
+						const gridFeatureText = `rowSelection="multiple"`;
 						treeGridFeatures.push(gridFeatureText);
 						break;
 					case "Paging":

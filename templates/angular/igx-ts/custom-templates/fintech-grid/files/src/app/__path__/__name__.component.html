@@ -30,7 +30,7 @@
       ~{{volume/5}} records updated.</span>
   </div>
   
-  <igx-grid #grid1 [data]="data | async" [height]="'calc(100% - 71px)'" width="100%" [autoGenerate]='false' displayDensity='compact' columnHidingTitle="Indicators" hiddenColumnsText="Hidden" primaryKey='ID' [rowSelectable]="true" [allowFiltering]="true"
+  <igx-grid #grid1 [data]="data | async" [height]="'calc(100% - 71px)'" width="100%" [autoGenerate]='false' displayDensity='compact' columnHidingTitle="Indicators" hiddenColumnsText="Hidden" primaryKey='ID' rowSelection="multiple" [allowFiltering]="true"
     [filterMode]="'excelStyleFilter'" [showToolbar]="false" [columnHiding]="true" [columnPinning]="true" [exportExcel]="true" exportExcelText="Export to Excel">
   
     <!-- Empty templates for Sorting,Moving,Hiding, Pinning actions inside ESF dialog -->
