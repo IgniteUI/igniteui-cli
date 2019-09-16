@@ -1,3 +1,7 @@
+:host {
+    display: block;
+    width: 100%;
+}
 :host ::ng-deep {
     .fintech-icons {
         display: flex;
@@ -192,14 +196,10 @@
     .igx-excel-filter input {
         font-size: 0.8125rem;
     }
-    
-    igx-grid-cell {
-        .igx-button--icon {
-            width: 2rem;
-            height: 2rem;
-        }
+    .igx-button--icon {
+        width: 2rem;
+        height: 2rem;
     }
-    
 }
 
 .grid__wrapper {
@@ -207,9 +207,6 @@
     height: 95%;
 }
 
-// Custom Dark Theme
-
-// Import the theme utilities first
 @import '~igniteui-angular/lib/core/styles/themes/utilities';
 @import '~igniteui-angular/lib/core/styles/themes/index';
 @include igx-core();
@@ -229,19 +226,18 @@ $green-palette: igx-palette($primary: #09f,$secondary: #72da67, $surface: #333);
     .fin-dark-theme {
       @include igx-dark-theme($green-palette);
       @include scrollbar-love(igx-color($green-palette, 'surface'));
-	   background: #333;
-	   
-	   igx-grid-cell {
-			.igx-button--icon {
-				width: 2rem;
-				height: 2rem;
-			}
-		}
-		
+       background: #333;
+       
+       igx-grid-cell {
+            .igx-button--icon {
+                width: 2rem;
+                height: 2rem;
+            }
+        }
+        
        ::-moz-placeholder {
-       opacity: 1;
-       }
-     }
+           opacity: 1;
+        }
     }
+  }
 }
-
