@@ -49,8 +49,9 @@ describe('Services', () => {
             const dummyData = { email: 'Dummy', password: 'Data' };
             const mockObs = { toPromise: () => { } };
             spyOn(mockObs, 'toPromise').and.returnValue('TEST DATA' as any);
-            spyOn(MOCK_HTTP_CLIENT, 'post').and.returnValue(mockObs);
-            spyOn(JWTUtil, 'parseUser').and.returnValue({ user: 'Test' } as any);
+			spyOn(MOCK_HTTP_CLIENT, 'post').and.returnValue(mockObs);
+			const parseSpy = jasmine.createSpy('parseUser').and.returnValue({ user: 'Test' });
+			spyOnProperty(JWTUtil, 'parseUser', 'get').and.returnValue(parseSpy);
             await authServ.login(dummyData);
             expect(loginPostSpy).toHaveBeenCalledWith('/login', dummyData);
             expect(MOCK_HTTP_CLIENT.post).toHaveBeenCalledWith('/login', dummyData);
@@ -449,8 +450,8 @@ describe('Services', () => {
             it(`Should properly call 'generateToken'`, () => {
                 const inputString = 'testString1';
                 const expectedOutput = 'g.g.mockSignature';
-                const parseSpy = jasmine.createSpy('encodeBase64Url').and.returnValue('g');
-                spyOnProperty(JWTUtil, 'encodeBase64Url', 'get').and.returnValue(parseSpy);
+                const encodeSpy = jasmine.createSpy('encodeBase64Url').and.returnValue('g');
+                spyOnProperty(JWTUtil, 'encodeBase64Url', 'get').and.returnValue(encodeSpy);
                 expect((provider as any).generateToken(inputString)).toEqual(expectedOutput);
             });
         });
