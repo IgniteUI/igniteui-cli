@@ -49,9 +49,9 @@ describe('Services', () => {
             const dummyData = { email: 'Dummy', password: 'Data' };
             const mockObs = { toPromise: () => { } };
             spyOn(mockObs, 'toPromise').and.returnValue('TEST DATA' as any);
-			spyOn(MOCK_HTTP_CLIENT, 'post').and.returnValue(mockObs);
-			const parseSpy = jasmine.createSpy('parseUser').and.returnValue({ user: 'Test' });
-			spyOnProperty(JWTUtil, 'parseUser', 'get').and.returnValue(parseSpy);
+            spyOn(MOCK_HTTP_CLIENT, 'post').and.returnValue(mockObs);
+            const parseSpy = jasmine.createSpy('parseUser').and.returnValue({ user: 'Test' });
+            spyOnProperty(JWTUtil, 'parseUser', 'get').and.returnValue(parseSpy);
             await authServ.login(dummyData);
             expect(loginPostSpy).toHaveBeenCalledWith('/login', dummyData);
             expect(MOCK_HTTP_CLIENT.post).toHaveBeenCalledWith('/login', dummyData);
