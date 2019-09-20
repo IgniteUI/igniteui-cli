@@ -50,6 +50,10 @@ export class $(ClassName)Component implements OnInit {
     });
   }
 
+  public classFromType(type: string): string {
+    return `transaction--${type.toLowerCase()}`;
+  }
+
   public deleteRow(event, rowID) {
     this.grid.deleteRow(rowID);
   }
@@ -75,10 +79,6 @@ export class $(ClassName)Component implements OnInit {
 
   private getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-
-  private classFromType(type: string): string {
-    return `transaction--${type.toLowerCase()}`;
   }
 
   public get hasTransactions(): boolean {

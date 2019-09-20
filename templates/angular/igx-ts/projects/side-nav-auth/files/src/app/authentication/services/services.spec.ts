@@ -6,7 +6,7 @@ import { GoogleProvider } from '../providers/google-provider';
 import { FacebookProvider } from '../providers/facebook-provider';
 import { MicrosoftProvider } from '../providers/microsoft-provider';
 import { BackendInterceptor } from './fake-backend.service';
-import { HttpResponse, HttpRequest, HttpHandler } from '@angular/common/http';
+import { HttpResponse, HttpHandler } from '@angular/common/http';
 import { take } from 'rxjs/operators';
 import msKeys from './microsoft-keys';
 import { Observable } from 'rxjs';
@@ -50,7 +50,8 @@ describe('Services', () => {
             const mockObs = { toPromise: () => { } };
             spyOn(mockObs, 'toPromise').and.returnValue('TEST DATA' as any);
             spyOn(MOCK_HTTP_CLIENT, 'post').and.returnValue(mockObs);
-            spyOn(JWTUtil, 'parseUser').and.returnValue({ user: 'Test' } as any);
+            const parseSpy = jasmine.createSpy('parseUser').and.returnValue({ user: 'Test' });
+            spyOnProperty(JWTUtil, 'parseUser', 'get').and.returnValue(parseSpy);
             await authServ.login(dummyData);
             expect(loginPostSpy).toHaveBeenCalledWith('/login', dummyData);
             expect(MOCK_HTTP_CLIENT.post).toHaveBeenCalledWith('/login', dummyData);
@@ -448,14 +449,10 @@ describe('Services', () => {
 
             it(`Should properly call 'generateToken'`, () => {
                 const inputString = 'testString1';
-                const headerString = JSON.stringify({
-                    alg: 'Mock',
-                    typ: 'JWT'
-                });
-                const expectedOutput = btoa(JSON.stringify(headerString)) + '.' + btoa(JSON.stringify(inputString)) + '.mockSignature';
-                spyOn(JSON, 'stringify').and.callThrough();
+                const expectedOutput = 'g.g.mockSignature';
+                const encodeSpy = jasmine.createSpy('encodeBase64Url').and.returnValue('g');
+                spyOnProperty(JWTUtil, 'encodeBase64Url', 'get').and.returnValue(encodeSpy);
                 expect((provider as any).generateToken(inputString)).toEqual(expectedOutput);
-                expect(JSON.stringify).toHaveBeenCalledTimes(3);
             });
         });
     });

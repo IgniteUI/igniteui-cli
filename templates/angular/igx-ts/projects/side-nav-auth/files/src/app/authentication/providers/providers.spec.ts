@@ -30,7 +30,7 @@ describe('Providers', () => {
         authorize: () => { },
         getToken: () => { },
         onAuthorizationResult: () => { },
-        authorizedCallback: () => { },
+        authorizedImplicitFlowCallback: () => { },
         getUserData: () => { },
         logoff: () => { }
     } as any;
@@ -186,14 +186,14 @@ describe('Providers', () => {
             spyOn(MOCK_OIDC_CONFIG, 'load_using_stsServer');
             MOCK_OIDC_SECURITY.onAuthorizationResult = mockSub;
             spyOn(MOCK_OIDC_SECURITY, 'getUserData').and.returnValue(mockSub);
-            spyOn(MOCK_OIDC_SECURITY, 'authorizedCallback');
+            spyOn(MOCK_OIDC_SECURITY, 'authorizedImplicitFlowCallback');
             const formatDataSpy = spyOn<any>(provider, 'formatUserData');
             provider.getUserInfo();
             expect(mockSub.subscribe).toHaveBeenCalled();
             expect(mockSub.subscribe).toHaveBeenCalledTimes(3);
             expect(formatDataSpy).toHaveBeenCalled();
             expect(provider.config).toHaveBeenCalled();
-            expect(MOCK_OIDC_SECURITY.authorizedCallback).toHaveBeenCalled();
+            expect(MOCK_OIDC_SECURITY.authorizedImplicitFlowCallback).toHaveBeenCalled();
             expect(MOCK_OIDC_CONFIG.load_using_stsServer).toHaveBeenCalled();
         });
 
@@ -260,7 +260,7 @@ describe('Providers', () => {
             spyOn(MOCK_OIDC_CONFIG.onConfigurationLoaded, 'pipe').and.returnValue(mockSub);
             spyOn(MOCK_OIDC_CONFIG, 'load_using_stsServer');
             spyOn(provider, 'config');
-            spyOn(MOCK_OIDC_SECURITY, 'authorizedCallback');
+            spyOn(MOCK_OIDC_SECURITY, 'authorizedImplicitFlowCallback');
             MOCK_OIDC_SECURITY.onAuthorizationResult = mockSub;
             spyOn(MOCK_OIDC_SECURITY, 'getUserData').and.returnValue(mockSub);
             const formatDataSpy = spyOn<any>(provider, 'formatUserData');
@@ -269,7 +269,7 @@ describe('Providers', () => {
             expect(mockSub.subscribe).toHaveBeenCalledTimes(3);
             expect(formatDataSpy).toHaveBeenCalled();
             expect(provider.config).toHaveBeenCalled();
-            expect(MOCK_OIDC_SECURITY.authorizedCallback).toHaveBeenCalled();
+            expect(MOCK_OIDC_SECURITY.authorizedImplicitFlowCallback).toHaveBeenCalled();
             expect(MOCK_OIDC_CONFIG.load_using_stsServer).toHaveBeenCalled();
         });
 

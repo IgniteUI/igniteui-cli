@@ -2,7 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { $(ClassName)Component } from './$(filePrefix).component';
-import { IgxGridModule, IgxButtonModule, IgxSwitchModule, IgxSliderModule, IgxCheckboxModule } from 'igniteui-angular';
+import { IgxGridModule, IgxButtonModule, IgxSwitchModule, IgxSliderModule, IgxCheckboxModule, IgxDialogModule } from 'igniteui-angular';
+import { IgxCategoryChartModule } from 'igniteui-angular-charts/ES5/igx-category-chart-module';
 
 describe('$(ClassName)Component', () => {
   let component: $(ClassName)Component;
@@ -11,7 +12,7 @@ describe('$(ClassName)Component', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ $(ClassName)Component ],
-      imports: [ FormsModule, BrowserAnimationsModule, IgxGridModule, IgxButtonModule, IgxSwitchModule, IgxSliderModule, IgxCheckboxModule ]
+      imports: [ FormsModule, BrowserAnimationsModule, IgxGridModule, IgxDialogModule, IgxCategoryChartModule, IgxButtonModule, IgxSwitchModule, IgxSliderModule, IgxCheckboxModule ]
     })
     .compileComponents();
   }));
