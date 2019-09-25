@@ -1,12 +1,13 @@
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import {
-  Component, ViewEncapsulation, Renderer2,
-  AfterViewInit, ElementRef, OnDestroy, OnInit, ViewChild, Output, EventEmitter
-} from '@angular/core';
-import {
-  DefaultSortingStrategy, IgxButtonGroupComponent, IgxGridComponent, IgxSliderComponent,
-  SortingDirection
+    DefaultSortingStrategy, IDialogEventArgs, IgxButtonGroupComponent, IgxDialogComponent,
+    IgxGridCellComponent,
+    IgxGridComponent,
+    IgxSliderComponent,
+    SortingDirection
 } from 'igniteui-angular';
-import { Observable, timer } from 'rxjs';
+import { IgxCategoryChartComponent } from 'igniteui-angular-charts/ES5/igx-category-chart-component';
+import { timer } from 'rxjs';
 import { debounce } from 'rxjs/operators';
 import { LocalDataService } from './localData.service';
 
@@ -17,299 +18,401 @@ import { LocalDataService } from './localData.service';
   styleUrls: ['./<%=filePrefix%>.component.scss']
 })
 export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy {
-  @ViewChild('grid1', { static: true }) public grid1: IgxGridComponent;
-  @ViewChild('buttonGroup1', { static: true }) public buttonGroup1: IgxButtonGroupComponent;
-  @ViewChild('slider1', { static: true }) public volumeSlider: IgxSliderComponent;
-  @ViewChild('slider2', { static: true }) public intervalSlider: IgxSliderComponent;
+    @ViewChild('grid1', { static: true }) public grid1: IgxGridComponent;
+    @ViewChild('buttonGroup1', { static: true }) public buttonGroup1: IgxButtonGroupComponent;
+    @ViewChild('buttonGroup2', { static: true }) public buttonGroup2: IgxButtonGroupComponent;
+    @ViewChild('slider1', { static: true }) public volumeSlider: IgxSliderComponent;
+    @ViewChild('slider2', { static: true }) public intervalSlider: IgxSliderComponent;
+    @ViewChild('chart1', { static: true }) public chart1: IgxCategoryChartComponent;
+    @ViewChild('dialog', { static: true }) public dialog: IgxDialogComponent;
 
-  @Output() changeTheme = new EventEmitter<boolean>();
-  public isBlackTheme = false;
-  public volume = 1000;
-  public frequency = 500;
-  public data: Observable<any[]> ;
-  public controls = [
-    {
-      disabled: false,
-      icon: 'update',
-      label: 'LIVE PRICES',
-      selected: false
-    },
-    {
-      disabled: false,
-      icon: 'update',
-      label: 'LIVE ALL PRICES',
-      selected: false
-    },
-    {
-      disabled: true,
-      icon: 'stop',
-      label: 'Stop',
-      selected: false
-    }
-  ];
+    public properties = ['Price', 'Country'];
 
-  private subscription;
-  private selectedButton;
-  private timer;
-  private volumeChanged;
-
-  constructor(private localService: LocalDataService, private elRef: ElementRef) {
-    this.subscription = this.localService.getData(this.volume);
-    this.data = this.localService.records;
-  }
-
-  public ngOnInit() {
-    this.grid1.groupingExpressions = [{
-      dir: SortingDirection.Desc,
-      fieldName: 'Category',
-      ignoreCase: false,
-      strategy: DefaultSortingStrategy.instance()
-    },
-    {
-      dir: SortingDirection.Desc,
-      fieldName: 'Type',
-      ignoreCase: false,
-      strategy: DefaultSortingStrategy.instance()
-    },
-    {
-      dir: SortingDirection.Desc,
-      fieldName: 'Contract',
-      ignoreCase: false,
-      strategy: DefaultSortingStrategy.instance()
-    }
-    ];
-    this.volumeChanged = this.volumeSlider.onValueChange.pipe(debounce(() => timer(200)));
-    this.volumeChanged.subscribe(
-      (x) => {
-        this.localService.getData(this.volume);
-      },
-      (err) => console.log('Error: ' + err));
-  }
-
-  public ngAfterViewInit() {
-    setTimeout(() => {
-      this.grid1.reflow();
-    }, 0);
-  }
-
-  public onButtonAction(event: any) {
-    switch (event.index) {
-      case 0: {
-        this.disableOtherButtons(event.index, true);
-        const currData = this.grid1.data;
-        this.timer = setInterval(() => this.ticker(currData), this.frequency);
-        break;
-      }
-      case 1: {
-        this.disableOtherButtons(event.index, true);
-        const currData = this.grid1.data;
-        this.timer = setInterval(() => this.tickerAllPrices(currData), this.frequency);
-        break;
-      }
-      case 2: {
-        this.disableOtherButtons(event.index, false);
-        this.stopFeed();
-        break;
-      }
-      default:
+    public theme = false;
+    public volume = 1000;
+    public frequency = 500;
+    public data = [];
+    public chartData = [];
+    public multiCellSelection: { data: any[] } = { data: [] };
+    public controls = [
         {
-          break;
+            disabled: false,
+            icon: 'update',
+            label: 'LIVE PRICES',
+            selected: false
+        },
+        {
+            disabled: false,
+            icon: 'update',
+            label: 'LIVE ALL PRICES',
+            selected: false
+        },
+        {
+            disabled: true,
+            icon: 'stop',
+            label: 'Stop',
+            selected: false
+        },
+        {
+            disabled: false,
+            icon: 'insert_chart_outlined',
+            label: 'Chart',
+            selected: false
+        }
+    ];
+    private subscription;
+    private selectedButton;
+    private timer$;
+    private volumeChanged;
+    constructor(private localService: LocalDataService, private elRef: ElementRef) {
+        this.subscription = this.localService.getData(this.volume);
+        this.localService.records.subscribe(x => { this.data = x; });
+    }
+
+    public ngOnInit() {
+        this.grid1.groupingExpressions = [{
+            dir: SortingDirection.Desc,
+            fieldName: 'Category',
+            ignoreCase: false,
+            strategy: DefaultSortingStrategy.instance()
+        },
+        {
+            dir: SortingDirection.Desc,
+            fieldName: 'Type',
+            ignoreCase: false,
+            strategy: DefaultSortingStrategy.instance()
+        },
+        {
+            dir: SortingDirection.Desc,
+            fieldName: 'Contract',
+            ignoreCase: false,
+            strategy: DefaultSortingStrategy.instance()
+        }
+        ];
+        this.volumeChanged = this.volumeSlider.onValueChange.pipe(debounce(() => timer(200)));
+        this.volumeChanged.subscribe(
+            (x) => {
+                this.localService.getData(this.volume);
+            },
+            (err) => console.log('Error: ' + err));
+    }
+
+    public ngAfterViewInit() {
+        this.grid1.reflow();
+        setTimeout(() => {
+            this.selectFirstGroupAndFillChart();
+        }, 0);
+    }
+
+    public selectFirstGroupAndFillChart() {
+        this.setChartConfig('Countries', 'Prices (USD)', 'Data Chart with prices by Category and Country');
+        // tslint:disable-next-line: max-line-length
+        const recordsToBeSelected = this.grid1.selectionService.getRowIDs(this.grid1.groupsRecords[0].groups[0].groups[0].records);
+        recordsToBeSelected.forEach(item => {
+            this.grid1.selectionService.selectRowById(item, false, true);
+        });
+    }
+    public setChartConfig(xAsis, yAxis, title) {
+        // update label interval and angle based on data
+        this.setLabelIntervalAndAngle();
+
+        // this.chart1.yAxisFormatLabel = this.formatYAxisLabel;
+        this.chart1.xAxisTitle = xAsis;
+        this.chart1.yAxisTitle = yAxis;
+        this.chart1.chartTitle = title;
+    }
+
+    public onButtonAction(event: any) {
+        switch (event.index) {
+            case 0: {
+                this.disableOtherButtons(event.index, true);
+                const currData = this.grid1.data;
+                this.timer$ = setInterval(() => this.ticker(currData), this.frequency);
+                break;
+            }
+            case 1: {
+                this.disableOtherButtons(event.index, true);
+                const currData = this.grid1.data;
+                this.timer$ = setInterval(() => this.tickerAllPrices(currData), this.frequency);
+                break;
+            }
+            case 2: {
+                this.disableOtherButtons(event.index, false);
+                this.stopFeed();
+                break;
+            }
+            case 3: {
+                this.disableOtherButtons(event.index, true);
+                this.dialog.open();
+                break;
+            }
+            default:
+                {
+                    break;
+                }
         }
     }
-  }
 
-  public onChange(event: any) {
-    if (this.grid1.groupingExpressions.length > 0) {
-      this.grid1.groupingExpressions = [];
-    } else {
-      this.grid1.groupingExpressions = [{
-        dir: SortingDirection.Desc,
-        fieldName: 'Category',
-        ignoreCase: false,
-        strategy: DefaultSortingStrategy.instance()
-      },
-      {
-        dir: SortingDirection.Desc,
-        fieldName: 'Type',
-        ignoreCase: false,
-        strategy: DefaultSortingStrategy.instance()
-      },
-      {
-        dir: SortingDirection.Desc,
-        fieldName: 'Contract',
-        ignoreCase: false,
-        strategy: DefaultSortingStrategy.instance()
-      }
-      ];
+    public onCloseHandler(evt: IDialogEventArgs) {
+        this.buttonGroup1.selectButton(2);
     }
-  }
 
-  public stopFeed() {
-    if (this.timer) {
-      clearInterval(this.timer);
+    public onChange(event: any) {
+        if (this.grid1.groupingExpressions.length > 0) {
+            this.grid1.groupingExpressions = [];
+        } else {
+            this.grid1.groupingExpressions = [{
+                dir: SortingDirection.Desc,
+                fieldName: 'Category',
+                ignoreCase: false,
+                strategy: DefaultSortingStrategy.instance()
+            },
+            {
+                dir: SortingDirection.Desc,
+                fieldName: 'Type',
+                ignoreCase: false,
+                strategy: DefaultSortingStrategy.instance()
+            },
+            {
+                dir: SortingDirection.Desc,
+                fieldName: 'Contract',
+                ignoreCase: false,
+                strategy: DefaultSortingStrategy.instance()
+            }
+            ];
+        }
     }
-    if (this.subscription) {
-      this.subscription.unsubscribe();
+
+    public rowSelectionChanged(args) {
+        this.grid1.clearCellSelection();
+        this.chartData = [];
+        args.newSelection.forEach(row => {
+            this.chartData.push(this.grid1.data[row]);
+            this.chart1.notifyInsertItem(this.chartData, this.chartData.length - 1,
+                this.grid1.data[row]);
+        });
+        this.setLabelIntervalAndAngle();
+        this.setChartConfig('Countries', 'Prices (USD)', 'Data Chart with prices by Category and Country');
     }
-  }
 
-  public formatNumber(value: number) {
-    return value.toFixed(2);
-  }
+    public openSingleRowChart(cell: IgxGridCellComponent) {
+        this.chartData = [];
+        setTimeout(() => {
+            this.chartData = this.data.filter(item => item.Region === cell.rowData.Region &&
+                item.Category === cell.rowData.Category);
 
-  public percentage(value: number) {
-    return value.toFixed(2) + '%';
-  }
+            this.chart1.notifyInsertItem(this.chartData, this.chartData.length - 1, {});
 
-  public formatCurrency(value: number) {
-    return '$' + value.toFixed(3);
-  }
+            this.setLabelIntervalAndAngle();
+            this.chart1.chartTitle = 'Data Chart with prices of ' + this.chartData[0].Category + ' in ' +
+                this.chartData[0].Region + ' Region';
 
-  /**
-   * the below code is needed when accessing the sample through the navigation
-   * it will style all the space below the sample component element, but not the navigation menu
-   */
-  public onThemeChanged(event: any) {
-    this.isBlackTheme = !this.isBlackTheme;
-    this.changeTheme.emit(this.isBlackTheme);
-  }
+            this.dialog.open();
+        }, 200);
+    }
 
-  public ngOnDestroy() {
-    this.stopFeed();
-    this.volumeChanged.unsubscribe();
-  }
+    public stopFeed() {
+        if (this.timer$) {
+            clearInterval(this.timer$);
+        }
+        if (this.subscription) {
+            this.subscription.unsubscribe();
+        }
+    }
 
-  public toggleToolbar(event: any) {
-    this.grid1.showToolbar = !this.grid1.showToolbar;
-  }
+    public formatNumber(value: number) {
+        return value.toFixed(2);
+    }
 
-  private negative = (rowData: any): boolean => {
-    return rowData['Change(%)'] < 0;
-  }
-  private positive = (rowData: any): boolean => {
-    return rowData['Change(%)'] > 0;
-  }
-  private changeNegative = (rowData: any): boolean => {
-    return rowData['Change(%)'] < 0 && rowData['Change(%)'] > -1;
-  }
-  private changePositive = (rowData: any): boolean => {
-    return rowData['Change(%)'] > 0 && rowData['Change(%)'] < 1;
-  }
-  private strongPositive = (rowData: any): boolean => {
-    return rowData['Change(%)'] >= 1;
-  }
-  private strongNegative = (rowData: any, key: string): boolean => {
-    return rowData['Change(%)'] <= -1;
-  }
+    public percentage(value: number) {
+        return value.toFixed(2) + '%';
+    }
 
-  // tslint:disable:member-ordering
-  public trends = {
-    changeNeg: this.changeNegative,
-    changePos: this.changePositive,
-    negative: this.negative,
-    positive: this.positive,
-    strongNegative: this.strongNegative,
-    strongPositive: this.strongPositive
-  };
+    public formatCurrency(value: number) {
+        return '$' + value.toFixed(3);
+    }
 
-  public trendsChange = {
-    changeNeg2: this.changeNegative,
-    changePos2: this.changePositive,
-    strongNegative2: this.strongNegative,
-    strongPositive2: this.strongPositive
-  };
+    /**
+     * the below code is needed when accessing the sample through the navigation
+     * it will style all the space below the sample component element, but not the navigation menu
+     */
+    public onThemeChanged(event: any) {
+        const parentEl = this.parentComponentEl();
+        if (event.checked && parentEl.classList.contains('main')) {
+            parentEl.classList.add('fin-dark-theme');
+        } else {
+            parentEl.classList.remove('fin-dark-theme');
+        }
+    }
+
+    public ngOnDestroy(): void {
+        this.stopFeed();
+        this.volumeChanged.unsubscribe();
+    }
+
+    public toggleToolbar(event: any) {
+        this.grid1.showToolbar = !this.grid1.showToolbar;
+    }
+
+    private negative = (rowData: any): boolean => {
+        return rowData['Change(%)'] < 0;
+    }
+    private positive = (rowData: any): boolean => {
+        return rowData['Change(%)'] > 0;
+    }
+    private changeNegative = (rowData: any): boolean => {
+        return rowData['Change(%)'] < 0 && rowData['Change(%)'] > -1;
+    }
+    private changePositive = (rowData: any): boolean => {
+        return rowData['Change(%)'] > 0 && rowData['Change(%)'] < 1;
+    }
+    private strongPositive = (rowData: any): boolean => {
+        return rowData['Change(%)'] >= 1;
+    }
+    private strongNegative = (rowData: any, key: string): boolean => {
+        return rowData['Change(%)'] <= -1;
+    }
+
+    // tslint:disable:member-ordering
+    public trends = {
+        changeNeg: this.changeNegative,
+        changePos: this.changePositive,
+        negative: this.negative,
+        positive: this.positive,
+        strongNegative: this.strongNegative,
+        strongPositive: this.strongPositive
+    };
+
+    public trendsChange = {
+        changeNeg2: this.changeNegative,
+        changePos2: this.changePositive,
+        strongNegative2: this.strongNegative,
+        strongPositive2: this.strongPositive
+    };
+
+    public setLabelIntervalAndAngle() {
+        const intervalSet = this.chartData.length;
+        if (intervalSet < 10) {
+            this.chart1.xAxisLabelAngle = 0;
+            this.chart1.xAxisInterval = 1;
+        } else if (intervalSet < 15) {
+            this.chart1.xAxisLabelAngle = 30;
+            this.chart1.xAxisInterval = 1;
+        } else if (intervalSet < 40) {
+            this.chart1.xAxisLabelAngle = 90;
+            this.chart1.xAxisInterval = 1;
+        } else if (intervalSet < 100) {
+            this.chart1.xAxisLabelAngle = 90;
+            this.chart1.xAxisInterval = 3;
+        } else if (intervalSet < 200) {
+            this.chart1.xAxisLabelAngle = 90;
+            this.chart1.xAxisInterval = 5;
+        } else if (intervalSet < 400) {
+            this.chart1.xAxisLabelAngle = 90;
+            this.chart1.xAxisInterval = 7;
+        } else if (intervalSet > 400) {
+            this.chart1.xAxisLabelAngle = 90;
+            this.chart1.xAxisInterval = 10;
+        }
+        this.chart1.yAxisAbbreviateLargeNumbers = true;
+    }
+
+    public formatYAxisLabel(item: any): string {
+        return item + 'test test';
+    }
     // tslint:enable:member-ordering
 
-  private disableOtherButtons(ind: number, disableButtons: boolean) {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
+    private disableOtherButtons(ind: number, disableButtons: boolean) {
+        if (this.subscription) {
+            this.subscription.unsubscribe();
+        }
+        this.volumeSlider.disabled = disableButtons;
+        this.intervalSlider.disabled = disableButtons;
+        this.selectedButton = ind;
+        this.buttonGroup1.buttons.forEach((button, index) => {
+            if (index === 2) { button.disabled = !disableButtons; } else {
+                this.buttonGroup1.buttons[0].disabled = disableButtons;
+                this.buttonGroup1.buttons[1].disabled = disableButtons;
+            }
+        });
     }
-    this.volumeSlider.disabled = disableButtons;
-    this.intervalSlider.disabled = disableButtons;
-    this.selectedButton = ind;
-    this.buttonGroup1.buttons.forEach((button, index) => {
-      if (index === 2) { button.disabled = !disableButtons; } else {
-        button.disabled = disableButtons;
-      }
-    });
-  }
 
-  /**
-   * returns the main div container of the Index Component,
-   * if path is /samples/sample-url, or the appRoot, if path is /sample-url
-   */
-  private parentComponentEl() {
-    return this.elRef.nativeElement.parentElement.parentElement;
-  }
-
-  private ticker(data: any) {
-    this.grid1.data = this.updateRandomPrices(data);
-  }
-
-  private tickerAllPrices(data: any) {
-    this.grid1.data = this.updateAllPrices(data);
-  }
-
-  /**
-   * Updates values in every record
-   */
-  private updateAllPrices(data: any[]): any {
-    const newData = data.slice();
-    for (const dataRow of newData) {
-      this.randomizeObjectData(dataRow);
+    /**
+     * returns the main div container of the Index Component,
+     * if path is /samples/sample-url, or the appRoot, if path is /sample-url
+     */
+    private parentComponentEl() {
+        return this.elRef.nativeElement.parentElement.parentElement;
     }
-    return newData;
-  }
 
-  /**
-   * Updates values in random number of records
-   */
-  private updateRandomPrices(data: any[]): any {
-    const newData = data.slice();
-    let y = 0;
-    for (let i = Math.round(Math.random() * 10); i < newData.length; i += Math.round(Math.random() * 10)) {
-      this.randomizeObjectData(newData[i]);
-      y++;
+    private ticker(data: any) {
+        this.grid1.data = this.updateRandomPrices(data);
     }
-    return newData;
-  }
 
-  /**
-   * Generates ne values for Change, Price and ChangeP columns
-   */
-  private randomizeObjectData(dataObj) {
-    const changeP = 'Change(%)';
-    const res = this.generateNewPrice(dataObj.Price);
-    dataObj.Change = res.Price - dataObj.Price;
-    dataObj.Price = res.Price;
-    dataObj[changeP] = res.ChangePercent;
-  }
-
-  private generateNewPrice(oldPrice): any {
-    let rnd = Math.random();
-    rnd = Math.round(rnd * 100) / 100;
-    const volatility = 2;
-    let newPrice = 0;
-    let changePercent = 2 * volatility * rnd;
-    if (changePercent > volatility) {
-      changePercent -= (2 * volatility);
+    private tickerAllPrices(data: any) {
+        this.grid1.data = this.updateAllPrices(data);
     }
-    const changeAmount = oldPrice * (changePercent / 100);
-    newPrice = oldPrice + changeAmount;
-    newPrice = Math.round(newPrice * 100) / 100;
-    const result = { Price: 0, ChangePercent: 0 };
-    changePercent = Math.round(changePercent * 100) / 100;
-    result.Price = newPrice;
-    result.ChangePercent = changePercent;
 
-    return result;
-  }
+    /**
+     * Updates values in every record
+     */
+    private updateAllPrices(data: any[]): any {
+        const newData = data.slice();
+        for (const dataRow of newData) {
+            this.randomizeObjectData(dataRow);
+        }
+        return newData;
+    }
 
-  get grouped(): boolean {
-    return this.grid1.groupingExpressions.length > 0;
-  }
+    /**
+     * Updates values in random number of records
+     */
+    private updateRandomPrices(data: any[]): any {
+        const newData = data.slice();
+        let y = 0;
+        for (let i = Math.round(Math.random() * 10); i < newData.length; i += Math.round(Math.random() * 10)) {
+            this.randomizeObjectData(newData[i]);
+            y++;
+        }
+        return newData;
+    }
 
-  get buttonSelected(): number {
-    return this.selectedButton || this.selectedButton === 0 ? this.selectedButton : -1;
-  }
+    /**
+     * Generates ne values for Change, Price and ChangeP columns
+     */
+    private randomizeObjectData(dataObj): void {
+        const changeP = 'Change(%)';
+        const res = this.generateNewPrice(dataObj.Price);
+        dataObj.Change = res.Price - dataObj.Price;
+        dataObj.Price = res.Price;
+        dataObj[changeP] = res.ChangePercent;
+    }
+
+    private generateNewPrice(oldPrice): any {
+        let rnd = Math.random();
+        rnd = Math.round(rnd * 100) / 100;
+        const volatility = 2;
+        let newPrice = 0;
+        let changePercent = 2 * volatility * rnd;
+        if (changePercent > volatility) {
+            changePercent -= (2 * volatility);
+        }
+        const changeAmount = oldPrice * (changePercent / 100);
+        newPrice = oldPrice + changeAmount;
+        newPrice = Math.round(newPrice * 100) / 100;
+        const result = { Price: 0, ChangePercent: 0 };
+        changePercent = Math.round(changePercent * 100) / 100;
+        result.Price = newPrice;
+        result.ChangePercent = changePercent;
+
+        return result;
+    }
+
+    get grouped(): boolean {
+        return this.grid1.groupingExpressions.length > 0;
+    }
+
+    get buttonSelected(): number {
+        return this.selectedButton || this.selectedButton === 0 ? this.selectedButton : -1;
+    }
 }

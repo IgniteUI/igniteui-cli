@@ -96,7 +96,7 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 						this.dependencies.push({ import: "IgxDatePickerModule", from: "igniteui-angular" });
 						break;
 					case "Row Selection":
-						const gridFeatureText = `[rowSelectable]="true"`;
+						const gridFeatureText = `rowSelection="multiple"`;
 						gridFeatures.push(gridFeatureText);
 						break;
 					case "Paging":

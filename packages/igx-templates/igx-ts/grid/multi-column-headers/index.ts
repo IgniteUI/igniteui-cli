@@ -56,7 +56,7 @@ class IgxMultiColumnHeadersTemplate extends IgniteUIForAngularTemplate {
 						columnBoolFeatures.push(text);
 						break;
 					case "Row Selection":
-						const gridFeatureText = `[rowSelectable]="true"`;
+						const gridFeatureText = `rowSelection="multiple"`;
 						gridFeatures.push(gridFeatureText);
 						break;
 					case "Paging":

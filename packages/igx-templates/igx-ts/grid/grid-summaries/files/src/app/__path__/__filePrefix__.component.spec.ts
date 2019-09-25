@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { <%=ClassName%>Component } from './<%=filePrefix%>.component';
 import { IgxGridModule } from 'igniteui-angular';
 
@@ -9,7 +10,7 @@ describe('<%=ClassName%>Component', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [<%=ClassName%>Component],
-      imports: [IgxGridModule]
+      imports: [NoopAnimationsModule, IgxGridModule]
     }).compileComponents();
   }));
 

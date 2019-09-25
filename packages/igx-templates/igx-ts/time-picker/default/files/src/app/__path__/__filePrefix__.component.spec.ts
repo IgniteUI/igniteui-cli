@@ -26,7 +26,7 @@ describe('<%=ClassName%>Component', () => {
   });
 
   it('time is correct', () => {
-    expect(component.date.getHours() === hours);
-    expect(component.date.getMinutes() === minutes);
+    expect(component.date.getHours()).toBe(hours);
+    expect(component.date.getMinutes()).toBe(minutes);
   });
 });

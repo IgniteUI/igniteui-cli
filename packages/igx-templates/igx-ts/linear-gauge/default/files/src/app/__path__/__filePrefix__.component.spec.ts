@@ -23,5 +23,7 @@ describe('<%=ClassName%>Component', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+    // disable animation
+    component.linearGauge.transitionDuration = 0;
   });
 });

@@ -55,15 +55,15 @@ export class <%=ClassName%>Component {
 
  private dropDownOpened = false;
 
- private _positionSettings = {
+ private positionSettings = {
   horizontalStartPoint: HorizontalAlignment.Left,
   verticalStartPoint: VerticalAlignment.Bottom
  };
 
- private _overlaySettings = {
+ private overlaySettings = {
   closeOnOutsideClick: true,
   modal: false,
-  positionStrategy: new ConnectedPositioningStrategy(this._positionSettings),
+  positionStrategy: new ConnectedPositioningStrategy(this.positionSettings),
   scrollStrategy: new CloseScrollStrategy()
  };
 
@@ -77,8 +77,8 @@ export class <%=ClassName%>Component {
     }
 
     public toggleDropDown(ev) {
-        this._overlaySettings.positionStrategy.settings.target = ev.target;
-        this.igxDropDown.toggle(this._overlaySettings);
+        this.overlaySettings.positionStrategy.settings.target = ev.target;
+        this.igxDropDown.toggle(this.overlaySettings);
     }
 
     public onDropDownOpen() {

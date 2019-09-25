@@ -7,8 +7,8 @@ import {
   OnInit,
   ViewChild
   } from '@angular/core';
-  import { IgxGridComponent, IgxNumberSummaryOperand, IgxStringFilteringOperand, IgxSummaryResult} from 'igniteui-angular';
-  import { athletesData } from './services/data';
+import { IgxGridComponent, IgxNumberSummaryOperand, IgxStringFilteringOperand, IgxSummaryResult} from 'igniteui-angular';
+import { athletesData } from './services/data';
 
 // tslint:disable:no-use-before-declare
 
@@ -26,20 +26,20 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy {
   public bnpSummary = CustomBPMSummary;
   public localData: any[];
   public isFinished = false;
-  private _live = true;
-  private _timer;
+  private isLive = true;
+  private timer;
   private windowWidth: any;
 
   get live() {
-    return this._live;
+    return this.isLive;
   }
 
   set live(val) {
-    this._live = val;
-    if (this._live) {
-      this._timer = setInterval(() => this.ticker(), 3000);
+    this.isLive = val;
+    if (this.isLive) {
+      this.timer = setInterval(() => this.ticker(), 3000);
     } else {
-      clearInterval(this._timer);
+      clearInterval(this.timer);
     }
   }
 
@@ -55,11 +55,11 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy {
   public ngOnInit() {
     this.localData = athletesData;
     this.windowWidth = window.innerWidth;
-    this._timer = setInterval(() => this.ticker(), 3000);
+    this.timer = setInterval(() => this.ticker(), 3000);
   }
 
   public ngOnDestroy() {
-    clearInterval(this._timer);
+    clearInterval(this.timer);
   }
 
   public isTop3(cell): boolean {

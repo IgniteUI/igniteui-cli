@@ -952,7 +952,7 @@ export class FinancialData {
         return {data: currData, recordsUpdated: y };
       }
     private randomizeObjectData(dataObj) {
-        const changeP = "Change(%)";
+        const changeP = 'Change(%)';
         const res = this.generateNewPrice(dataObj.Price);
         dataObj.Change = res.Price - dataObj.Price;
         dataObj.Price = res.Price;

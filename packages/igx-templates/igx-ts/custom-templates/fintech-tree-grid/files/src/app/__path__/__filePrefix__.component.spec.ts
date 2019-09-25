@@ -12,9 +12,16 @@ describe('<%=ClassName%>Component', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ <%=ClassName%>Component, <%=ClassName%>TreeGridGroupingPipe ],
-      imports: [ FormsModule, BrowserAnimationsModule, IgxTreeGridModule, IgxCheckboxModule, IgxButtonModule, IgxSliderModule, IgxSwitchModule ]
+      imports: [
+        FormsModule,
+        BrowserAnimationsModule,
+        IgxTreeGridModule,
+        IgxCheckboxModule,
+        IgxButtonModule,
+        IgxSliderModule,
+        IgxSwitchModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
