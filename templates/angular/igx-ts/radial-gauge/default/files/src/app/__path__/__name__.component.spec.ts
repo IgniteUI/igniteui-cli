@@ -23,5 +23,7 @@ xdescribe('$(ClassName)Component', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+    // disable animation
+    component.radialGauge.transitionDuration = 0;
   });
 });
