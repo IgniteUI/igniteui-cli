@@ -22,8 +22,7 @@ describe('$(ClassName)Component', () => {
     fixture.detectChanges();
   });
 
-  it('should create', done => {
+  it('should create', () => {
     expect(component).toBeTruthy();
-    fixture.whenStable().then(done);
   });
 });

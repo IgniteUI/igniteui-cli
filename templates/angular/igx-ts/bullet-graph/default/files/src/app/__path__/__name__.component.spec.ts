@@ -3,7 +3,7 @@ import { $(ClassName)Component } from './$(filePrefix).component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { IgxBulletGraphModule } from 'igniteui-angular-gauges/ES5/igx-bullet-graph-module';
 
-xdescribe('$(ClassName)Component', () => {
+describe('$(ClassName)Component', () => {
   let component: $(ClassName)Component;
   let fixture: ComponentFixture<$(ClassName)Component>;
 
@@ -23,5 +23,7 @@ xdescribe('$(ClassName)Component', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+    // disable animation
+    component.bulletGraph.transitionDuration = 0;
   });
 });
