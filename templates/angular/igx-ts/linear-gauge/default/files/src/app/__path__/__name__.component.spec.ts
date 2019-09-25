@@ -3,7 +3,7 @@ import { $(ClassName)Component } from './$(filePrefix).component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { IgxLinearGaugeModule } from 'igniteui-angular-gauges/ES5/igx-linear-gauge-module';
 
-xdescribe('$(ClassName)Component', () => {
+describe('$(ClassName)Component', () => {
   let component: $(ClassName)Component;
   let fixture: ComponentFixture<$(ClassName)Component>;
 
