@@ -12,7 +12,9 @@ describe('$(ClassName)Component', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ $(ClassName)Component ],
-      imports: [ FormsModule, BrowserAnimationsModule, IgxGridModule, IgxDialogModule, IgxCategoryChartModule, IgxButtonModule, IgxSwitchModule, IgxSliderModule, IgxCheckboxModule ]
+      imports: [ FormsModule, BrowserAnimationsModule,
+        IgxGridModule, IgxDialogModule, IgxCategoryChartModule,
+        IgxButtonModule, IgxSwitchModule, IgxSliderModule, IgxCheckboxModule ]
     })
     .compileComponents();
   }));
