@@ -1,13 +1,6 @@
+# igniteui-cli
 
-## Ignite UI CLI
-
-<!-- Badges section here. -->
-[![Build Status](https://travis-ci.org/IgniteUI/igniteui-cli.svg?branch=master)](https://travis-ci.org/IgniteUI/igniteui-cli)
-[![Coverage Status](https://coveralls.io/repos/github/IgniteUI/igniteui-cli/badge.svg)](https://coveralls.io/github/IgniteUI/igniteui-cli)
-[![npm version](https://badge.fury.io/js/igniteui-cli.svg)](https://badge.fury.io/js/igniteui-cli)
-
-
-Quickly create projects including [Ignite UI for Angular](https://www.infragistics.com/products/ignite-ui-angular) and [Ignite UI for JavaScript](https://www.infragistics.com/products/ignite-ui) components for a variety of frameworks.
+The `igniteui-cli` allows you to easily generate projects using `Ignite UI` components in a variety of frameworks - Angular, jQuery, React.
 
 ## Overview
 ### Features:
@@ -34,8 +27,6 @@ Quickly create projects including [Ignite UI for Angular](https://www.infragisti
 	* [Generate Ignite UI for React project](#generate-ignite-ui-for-react-project)
 	* [Adding components](#adding-components)
   * [Build and run](#build-and-run)
-* [Schematics](#schematics)
-  * [Schematic Definitions](#schematic-definitions)
 * [Contribution](#contribution)
 
 ## Installation
@@ -55,7 +46,7 @@ To get a guided experience through the available options, simply run:
 ```bash
 ig
 ```
-![](assets/igniteui-cli.gif)
+![](../assets/igniteui-cli.gif)
 
 
 Upon creation, project will be automatically loaded in the default browser.
@@ -83,6 +74,9 @@ To create a new project with Ignite UI for Angular use [ig new](https://github.c
 ```bash
 ig new "IG Project" --framework=angular --type=igx-ts --template=side-nav
 ```
+
+The `igniteui-cli` makes full use of the component definitions provided by [`igniteui/angular-templates`](../ng-schematics) package. You can find all of the available component templates in the [official documentation](https://www.infragistics.com/products/ignite-ui-angular/angular/components/general/cli/component-templates.html).
+
 #### Generate Ignite UI for React project
 
 To create a new project with Ignite UI for React use [ig new](https://github.com/IgniteUI/igniteui-cli/wiki/New#creating-ignite-ui-for-react-applications-v400) by specifying `react` as framework and `igr-es6` as project type:
@@ -115,9 +109,6 @@ ig build
 ig start
 ```
 
-## Schematics
-You can also add `Ignite UI for Angular` components to your projects by using the `igniteui/angular-schematics` package. It included schematic definitions for most of the logic present in the [`igniteui-cli`](/packages/cli). These can be called in any existing Angular project or even when creating one. You can learn more about the schematics package on from its [readme](/package/ng-schematics).
-
 ## Contribution
 
 See the [Contribution guide](https://github.com/IgniteUI/igniteui-cli/blob/master/.github/CONTRIBUTING.md) to get started.
@@ -140,11 +131,3 @@ ig config set disableAnalytics true -g
 ```
 
 when using the CLI. You can read Infragistics privacy policy at https://www.infragistics.com/legal/privacy.
-
-## Package Definitions
-
-### [igniteui-cli](./packages/cli)
-### [igniteui/cli-core](./packages/core)
-### [igniteui/angular-templates](./packages/igx-templates)
-### [igniteui/angular-schematics](./packages/ng-schematics)
-
