@@ -12,7 +12,13 @@ function getVersion() {
 	const versionIG = igxPackageJson.dependencies["igniteui-angular"].replace(/^[^0-9]+/, "");
 	const majorMinor = versionIG.split(".").slice(0, 2).join(".");
 	const versionCLI = JSON.parse(readFileSync("packages/core/package.json").toString());
-	const patch = versionCLI.version.split(".").join("");
+	let patch = versionCLI.version;
+	if (patch.indexOf("-") > -1) {
+		const prerelease = patch.split("-");
+		patch = `${prerelease[0].split(".").join("")}-${prerelease[1]}`;
+	} else {
+		patch = versionCLI.version.split(".").join("");
+	}
 	return `${majorMinor}.${patch}`;
 
 }
