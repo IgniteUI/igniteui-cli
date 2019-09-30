@@ -1,6 +1,6 @@
 {
 	"extends": "../tslint.json",
 	"rules": {
-		"no-implicit-dependencies": [true, "dev"]
+		"no-implicit-dependencies": [true, "dev", ["@igniteui/cli-core", "@igniteui/angular-templates"]]
 	}
 }

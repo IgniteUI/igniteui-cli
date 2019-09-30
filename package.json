@@ -54,8 +54,6 @@
     "all": true
   },
   "devDependencies": {
-    "@igniteui/angular-templates": "^1.0.0-beta.0",
-    "@igniteui/cli-core": "^1.0.0-beta.0",
     "@types/fs-extra": "^3.0.3",
     "@types/inquirer": "0.0.35",
     "@types/jasmine": "3.3.9",
@@ -64,7 +62,6 @@
     "coveralls": "^3.0.0",
     "fs-extra": "^3.0.1",
     "glob": "^7.1.2",
-    "igniteui-cli": "^1.0.0-beta.0",
     "inquirer": "^6.4.1",
     "jasmine": "^3.3.1",
     "jasmine-spec-reporter": "^4.2.1",
