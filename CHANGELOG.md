@@ -1,3 +1,12 @@
+# 5.0.0-alpha.2
+
+## igniteui/cli-core@5.0.0-alpha.2 (2019-10-02)
+
+#### Bug Fixes
+
+* **schematics:** this package is a dep in new project instead of ignteui-cli ([c04a13c](https://github.com/IgniteUI/igniteui-cli/commit/c04a13c))
+
+
 # 5.0.0-alpha.1
 
 ## igniteui/cli-core@5.0.0-alpha.1 (2019-09-30)
