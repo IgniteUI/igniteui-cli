@@ -186,8 +186,8 @@ export class Util {
 		}
 	}
 
-	public static version(): string {
-		const configuration = require("../package.json");
+	public static version(filePath?: string): string {
+		const configuration = require(filePath || "../package.json");
 		return configuration.version;
 	}
 

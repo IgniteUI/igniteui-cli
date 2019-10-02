@@ -19,6 +19,9 @@ export function component(options: ComponentOptions): Rule {
 			}
 			const templateManager = new SchematicsTemplateManager();
 			const projLib = templateManager.getProjectLibrary("angular", "igx-ts");
+			if (!projLib.hasTemplate(options.template)) {
+				throw new SchematicsException(`template with id '${options.template}' not found`);
+			}
 			options.templateInst = projLib.getTemplateById(options.template) as IgniteUIForAngularTemplate;
 		}
 
