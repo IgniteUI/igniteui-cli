@@ -1,7 +1,6 @@
-import { default as doc } from "../../lib/commands/doc";
-import { GoogleAnalytics } from "../../lib/GoogleAnalytics";
-import { PromptSession } from "../../lib/PromptSession";
-import { Util } from "../../lib/Util";
+import { GoogleAnalytics, Util } from "@igniteui/cli-core";
+import { default as doc } from "../../packages/cli/lib/commands/doc";
+import { PromptSession } from "../../packages/cli/lib/PromptSession";
 
 describe("Unit - Doc command", () => {
 	beforeAll(() => {

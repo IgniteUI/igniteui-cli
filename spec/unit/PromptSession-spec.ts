@@ -1,14 +1,11 @@
-import chalk from "chalk";
+import { ControlExtraConfigType, GoogleAnalytics, ProjectConfig, Util  } from "@igniteui/cli-core";
 import * as inquirer from "inquirer";
 import * as path from "path";
-import { default as add } from "../../lib/commands/add";
-import { default as start } from "../../lib/commands/start";
-import { GoogleAnalytics } from "../../lib/GoogleAnalytics";
-import { PackageManager } from "../../lib/packages/PackageManager";
-import { ProjectConfig } from "../../lib/ProjectConfig";
-import { PromptSession } from "../../lib/PromptSession";
-import { TemplateManager } from "../../lib/TemplateManager";
-import { Util } from "../../lib/Util";
+import { default as add } from "../../packages/cli/lib/commands/add";
+import { default as start } from "../../packages/cli/lib/commands/start";
+import { PackageManager } from "../../packages/cli/lib/packages/PackageManager";
+import { PromptSession } from "../../packages/cli/lib/PromptSession";
+import { TemplateManager } from "../../packages/cli/lib/TemplateManager";
 
 describe("Unit - PromptSession", () => {
 	beforeAll(() => {
@@ -32,7 +29,8 @@ describe("Unit - PromptSession", () => {
 		// tslint:disable:object-literal-sort-keys
 		const mockProject = {
 			name: "Project 1",
-			generateFiles: () => Promise.resolve(true)
+			generateConfig: () => Promise.resolve(true),
+			templatePaths: ["test"]
 		};
 		const mockProjectLibrary = {
 			themes: ["infragistics", "infragistics.less"],
@@ -60,6 +58,7 @@ describe("Unit - PromptSession", () => {
 			getProjectLibraryNames: projectLibraries,
 			getProjectLibraryByName: mockProjectLibrary
 		});
+		mockTemplate.templatePaths = ["test"];
 		const mockSession = new PromptSession(mockTemplate);
 		const mockQuestion: inquirer.Question = {
 			type: "list",
@@ -70,8 +69,8 @@ describe("Unit - PromptSession", () => {
 		};
 		spyOn(Util, "greenCheck").and.callThrough();
 		spyOn(Util, "log");
-		spyOn(Util, "directoryExists").and.returnValue(false);
-		spyOn(Util, "isAlphanumericExt").and.returnValue(true);
+		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
+		spyOn(Util, "getAvailableName").and.returnValue(false);
 		spyOn(Util, "gitInit");
 		spyOn(inquirer, "prompt").and.returnValues(Promise.resolve({ projectName: "Test Project" }),
 			Promise.resolve({ framework: "Custom Framework 1" }),
@@ -85,11 +84,14 @@ describe("Unit - PromptSession", () => {
 		expect(Util.log).toHaveBeenCalledWith("  Generating project structure.");
 		expect(Util.log).toHaveBeenCalledWith("");
 		expect(Util.log).toHaveBeenCalledWith(Util.greenCheck() + " Project structure generated.");
-		expect(Util.isAlphanumericExt).toHaveBeenCalledTimes(1);
-		expect(Util.isAlphanumericExt).toHaveBeenCalledWith("Test Project");
-		//+1 call because of Util.getAvailableName calls directoryExists
-		expect(Util.directoryExists).toHaveBeenCalledTimes(2);
-		expect(Util.directoryExists).toHaveBeenCalledWith("Test Project");
+		expect(inquirer.prompt).toHaveBeenCalledWith(
+			jasmine.objectContaining({
+				type: "input",
+				message: "Enter a name for your project:",
+				validate: jasmine.any(Function)
+			}));
+		expect(Util.getAvailableName).toHaveBeenCalledTimes(1);
+		expect(Util.getAvailableName).toHaveBeenCalledWith("IG Project", true);
 		expect(Util.greenCheck).toHaveBeenCalledTimes(1 + 1);
 		expect(Util.gitInit).toHaveBeenCalled();
 		expect(inquirer.prompt).toHaveBeenCalledTimes(4);
@@ -114,7 +116,7 @@ describe("Unit - PromptSession", () => {
 		expect(ProjectConfig.hasLocalConfig).toHaveBeenCalledTimes(1);
 		expect(mockTemplate.getProjectLibrary).toHaveBeenCalledTimes(1);
 		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(1);
-		expect(mockSession.chooseActionLoop).toHaveBeenCalledWith({}, "");
+		expect(mockSession.chooseActionLoop).toHaveBeenCalledWith({});
 		done();
 	});
 
@@ -128,15 +130,19 @@ describe("Unit - PromptSession", () => {
 			}
 		} /* as Config */);
 		// tslint:disable:object-literal-sort-keys
-		const mockProject = jasmine.createSpyObj({ generateFiles: Promise.resolve(true) });
+		const mockConfig = { test: "test" };
+		const mockProject = jasmine.createSpyObj({ generateConfig: mockConfig });
 		mockProject.name = "Project";
+		mockProject.templatePaths = ["test"];
+		const mockDelimiters = { mockDelimiter: { start: "test", end: "test" }};
+		mockProject.delimiters = mockDelimiters;
 		const mockProjectLibrary = {
 			themes: ["infragistics"],
 			projectIds: ["empty"],
 			projects: [mockProject]
 		};
 		const projectLibraries = [
-			{ projectType: "ig-ts" , name: "Ignite UI Angular Wrappers" },
+			{ projectType: "ig-ts", name: "Ignite UI Angular Wrappers" },
 			{ projectType: "igx-ts", name: "Ignite UI for Angular" }
 		];
 		const mockFramework1 = {
@@ -151,6 +157,7 @@ describe("Unit - PromptSession", () => {
 			getProjectLibraryNames: null,
 			getProjectLibraryByName: mockProjectLibrary
 		});
+		mockTemplate.templatePaths = ["test"];
 		const mockSession = new PromptSession(mockTemplate);
 		spyOn(Util, "greenCheck").and.returnValue("");
 		spyOn(Util, "log");
@@ -162,6 +169,8 @@ describe("Unit - PromptSession", () => {
 		);
 		spyOn(process, "chdir");
 		spyOn(mockSession, "chooseActionLoop");
+		spyOn(process, "cwd").and.returnValue("Mock");
+		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
 		await mockSession.start();
 
 		// prompt only for project name:
@@ -181,8 +190,9 @@ describe("Unit - PromptSession", () => {
 
 		expect(Util.log).toHaveBeenCalledWith("  Framework: Custom Framework 1");
 		expect(Util.log).toHaveBeenCalledWith("  Project type: Ignite UI for Angular");
-		expect(mockProject.generateFiles).toHaveBeenCalledWith(process.cwd(), "Test Project", mockProjectLibrary.themes[0]);
-
+		expect(mockProject.generateConfig).toHaveBeenCalledWith("Test Project", mockProjectLibrary.themes[0]);
+		expect(Util.processTemplates)
+		.toHaveBeenCalledWith("test", path.join("Mock", "Test Project"), mockConfig, mockDelimiters, false);
 		expect(Util.log).toHaveBeenCalledWith(" Project structure generated.");
 		expect(Util.gitInit).toHaveBeenCalled();
 		expect(mockSession.chooseActionLoop).toHaveBeenCalled();
@@ -193,7 +203,8 @@ describe("Unit - PromptSession", () => {
 		// tslint:disable:object-literal-sort-keys
 		const mockProject = {
 			name: "Project 1",
-			generateFiles: () => Promise.resolve(true)
+			generateConfig: () => ({ test: "test" }),
+			templatePaths: ["test"]
 		};
 		const mockProjectLibrary = {
 			projectIds: ["empty"],
@@ -221,6 +232,7 @@ describe("Unit - PromptSession", () => {
 			getProjectLibraryNames: projectLibraries,
 			getProjectLibraryByName: mockProjectLibrary
 		});
+		mockTemplate.templatePaths = ["test"];
 		const mockSession = new PromptSession(mockTemplate);
 		const mockQuestion: inquirer.Question = {
 			type: "list",
@@ -241,32 +253,38 @@ describe("Unit - PromptSession", () => {
 		spyOn(Util, "isAlphanumericExt").and.callThrough();
 		spyOn(Util, "gitInit");
 		spyOn(Util, "error");
-		spyOn(inquirer, "prompt").and.returnValues(Promise.resolve({ projectName: "*This will ** not Work *" }),
-			Promise.resolve({ projectName: "Th15 w1ll" }),
-			// incrementing default names will prevent a second error to be thrown
-			Promise.resolve({ projectName: "Th15 w1ll" }),
+		spyOn(inquirer, "prompt").and.returnValues(
+			Promise.resolve({ projectName: "Dummy name" }),
 			Promise.resolve({ framework: "Custom Framework 1" }),
 			Promise.resolve({ project: "jQuery" }),
 			Promise.resolve({ theme: "infragistics" }));
 		spyOn(process, "chdir");
 		spyOn(mockSession, "chooseActionLoop");
 		await mockSession.start();
+
+		expect(inquirer.prompt).toHaveBeenCalledTimes(4);
 		expect(Util.log).toHaveBeenCalledTimes(4);
 		expect(Util.log).toHaveBeenCalledWith("  Proj Template: Project 1");
 		expect(Util.log).toHaveBeenCalledWith("");
 		expect(Util.log).toHaveBeenCalledWith("  Generating project structure.");
-		expect(Util.error).toHaveBeenCalledTimes(1);
 		expect(Util.log).toHaveBeenCalledWith(Util.greenCheck() + " Project structure generated.");
+
+		expect(Util.greenCheck).toHaveBeenCalledTimes(1 + 1);
+		expect(Util.gitInit).toHaveBeenCalledTimes(0);
+		expect(inquirer.prompt).toHaveBeenCalledWith(mockQuestion);
+		expect(mockTemplate.getFrameworkByName).toHaveBeenCalledTimes(1);
+
+		// validate:
+		const firstCallArgs = (inquirer.prompt as jasmine.Spy).calls.first().args[0];
+		expect(firstCallArgs.validate).toEqual(jasmine.any(Function));
+		expect(firstCallArgs.validate("*This will ** not Work *")).toBe(false);
+		expect(Util.error).toHaveBeenCalledTimes(1);
+		expect(firstCallArgs.validate("Th15 w1ll")).toBe(true);
 		expect(Util.isAlphanumericExt).toHaveBeenCalledTimes(2);
 		expect(Util.isAlphanumericExt).toHaveBeenCalledWith("*This will ** not Work *");
 		expect(Util.isAlphanumericExt).toHaveBeenCalledWith("Th15 w1ll");
 		expect(Util.directoryExists).toHaveBeenCalledTimes(3);
 		expect(Util.directoryExists).toHaveBeenCalledWith("Th15 w1ll");
-		expect(Util.greenCheck).toHaveBeenCalledTimes(1 + 1);
-		expect(Util.gitInit).toHaveBeenCalledTimes(0);
-		expect(inquirer.prompt).toHaveBeenCalledTimes(5);
-		expect(inquirer.prompt).toHaveBeenCalledWith(mockQuestion);
-		expect(mockTemplate.getFrameworkByName).toHaveBeenCalledTimes(1);
 		done();
 	});
 	it("chooseActionLoop - should run through properly - Add Component", async done => {
@@ -276,13 +294,13 @@ describe("Unit - PromptSession", () => {
 			default: "Choice 1",
 			message: "Please enter a value",
 			key: "customValue1",
-			type: Enumerations.ControlExtraConfigType.Value
+			type: ControlExtraConfigType.Value
 		}, {
 			choices: [],
 			default: "Choice 1",
 			message: "Please enter a value",
 			key: "customValue2",
-			type: Enumerations.ControlExtraConfigType.Value
+			type: ControlExtraConfigType.Value
 		}];
 		const mockSelectedTemplate = {
 			name: "Template 1",
@@ -297,14 +315,14 @@ describe("Unit - PromptSession", () => {
 			description: "mockComponent description"
 		};
 		const mockProject = {
-			generateFiles: () => Promise.resolve(true)
+			generateConfig: () => Promise.resolve(true)
 		};
 		const mockProjectLibrary = jasmine.createSpyObj("mockProjectLibrary", {
 			name: "mockProjectLibrary",
 			themes: ["infragistics", "infragistics.less"],
 			getCustomTemplateNames: ["Custom Template 1"],
 			getComponentGroupNames: ["Custom Group 1", "Custom Group 2"],
-			getComponentsByGroup: [{group: "Custom Group 1", name: "Component 1" },
+			getComponentsByGroup: [{ group: "Custom Group 1", name: "Component 1" },
 			{ group: "Custom Group 1", name: "Component 2" }],
 			getComponentGroups: [
 				{ description: "Custom Group 1", name: "Group 1" }, { description: "Custom Group 2", name: "Group 2" }],
@@ -359,11 +377,11 @@ describe("Unit - PromptSession", () => {
 			Promise.resolve({ componentName: "Template 1 Custom Name" }),
 			Promise.resolve({ customValue1: "Test", customValue2: "Test" }),
 			Promise.resolve({ action: "Complete & Run" }),
-			Promise.resolve({ port: 7777})
+			Promise.resolve({ port: 7777 })
 		);
 		spyOn(ProjectConfig, "setConfig");
-		await mockSession.chooseActionLoop(mockProjectLibrary, "infragistics");
-		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(2);
+		await mockSession.chooseActionLoop(mockProjectLibrary);
+		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(1);
 		expect(inquirer.prompt).toHaveBeenCalledTimes(12);
 		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
@@ -388,17 +406,17 @@ describe("Unit - PromptSession", () => {
 		const mockSelectedTemplate = {
 			name: "Custom Template 1",
 			templates: [{
-				description : "description for Template 1"
+				description: "description for Template 1"
 			}]
 		};
 		const mockProject = {
-			generateFiles: () => Promise.resolve(true)
+			generateConfig: () => Promise.resolve(true)
 		};
 		const mockProjectLibrary = jasmine.createSpyObj("mockProjectLibrary", {
 			name: "mockProjectLibrary",
 			getCustomTemplateNames: [mockSelectedTemplate.name, "Custom Template 2"],
 			getTemplateByName: [mockSelectedTemplate],
-			getCustomTemplates: [mockSelectedTemplate, { name: "Not selected"}],
+			getCustomTemplates: [mockSelectedTemplate, { name: "Not selected" }],
 			getProject: () => {
 				return mockProject;
 			}
@@ -429,11 +447,11 @@ describe("Unit - PromptSession", () => {
 			Promise.resolve({ customTemplate: "Custom Template 1" }),
 			Promise.resolve({ customViewName: "Custom Template Name" }),
 			Promise.resolve({ action: "Complete & Run" }),
-			Promise.resolve({ port: 7777})
+			Promise.resolve({ port: 7777 })
 		);
 		spyOn(ProjectConfig, "setConfig");
-		await mockSession.chooseActionLoop(mockProjectLibrary, "infragistics");
-		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(2);
+		await mockSession.chooseActionLoop(mockProjectLibrary);
+		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(1);
 		expect(inquirer.prompt).toHaveBeenCalledTimes(7);
 		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
@@ -450,13 +468,13 @@ describe("Unit - PromptSession", () => {
 			default: "Choice 1",
 			message: "Please select a value",
 			key: "customValue1",
-			type: Enumerations.ControlExtraConfigType.Choice
+			type: ControlExtraConfigType.Choice
 		}, {
 			choices: ["Choice 1", "Choice 2", "Choice 3"],
 			default: "Choice 1",
 			message: "Please select a value",
 			key: "customValue2",
-			type: Enumerations.ControlExtraConfigType.MultiChoice
+			type: ControlExtraConfigType.MultiChoice
 		}];
 		const mockSelectedTemplate = {
 			name: "Template 1",
@@ -466,13 +484,13 @@ describe("Unit - PromptSession", () => {
 			description: "description for Template 1"
 		};
 		const mockComponentTemplates = [mockSelectedTemplate,
-			{ name: "Template 2"}];
+			{ name: "Template 2" }];
 		const mockComponent = {
 			name: "Custom Group 1 Component 2",
 			templates: mockComponentTemplates
 		};
 		const mockProject = {
-			generateFiles: () => Promise.resolve(true)
+			generateConfig: () => Promise.resolve(true)
 		};
 		const mockProjectLibrary = jasmine.createSpyObj("mockProjectLibrary", {
 			name: "mockProjectLibrary",
@@ -482,11 +500,15 @@ describe("Unit - PromptSession", () => {
 				{ description: "Custom Group 1", name: "Group 1" }, { description: "Custom Group 2", name: "Group 2" }],
 			getComponentGroupNames: ["Custom Group 1", "Custom Group 2"],
 			getComponentsByGroup:
-			[{ group: "Custom Group 1", name: "Component 1", description : "description for Component 1",
-				// tslint:disable-next-line:align
-				templates: [{ description : "description for Template 1"}] },
-			{group: "Custom Group 1", name: "Component 2", description : "description for Component 2",
-				templates: [{ description : "description for Template 2"}] }],
+				[{
+					group: "Custom Group 1", name: "Component 1", description: "description for Component 1",
+					// tslint:disable-next-line:align
+					templates: [{ description: "description for Template 1" }]
+				},
+				{
+					group: "Custom Group 1", name: "Component 2", description: "description for Component 2",
+					templates: [{ description: "description for Template 2" }]
+				}],
 			getComponentByName: mockComponent,
 			getProject: () => {
 				return mockProject;
@@ -539,11 +561,11 @@ describe("Unit - PromptSession", () => {
 			Promise.resolve({ name: "Template 1 Custom Name" }),
 			Promise.resolve({ customValue1: "Test", customValue2: "Test" }),
 			Promise.resolve({ action: "Complete & Run" }),
-			Promise.resolve({ port: 7777})
+			Promise.resolve({ port: 7777 })
 		);
 		spyOn(ProjectConfig, "setConfig");
-		await mockSession.chooseActionLoop(mockProjectLibrary, "infragistics");
-		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(2);
+		await mockSession.chooseActionLoop(mockProjectLibrary);
+		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(1);
 		expect(inquirer.prompt).toHaveBeenCalledTimes(12);
 		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
@@ -566,7 +588,7 @@ describe("Unit - PromptSession", () => {
 	});
 	it("chooseActionLoop - Complete and Run should update default port", async done => {
 		const mockProject = {
-			generateFiles: () => Promise.resolve(true)
+			generateConfig: () => Promise.resolve(true)
 		};
 		const mockProjectLibrary = jasmine.createSpyObj("mockProjectLibrary", {
 			name: "mockProjectLibrary",
@@ -595,15 +617,29 @@ describe("Unit - PromptSession", () => {
 		spyOn(mockSession, "chooseActionLoop").and.callThrough();
 		spyOn(inquirer, "prompt").and.returnValues(
 			Promise.resolve({ action: "Complete & Run" }),
-			Promise.resolve({ port: 7777})
+			Promise.resolve({ port: 7777 })
 		);
 		params.project.defaultPort = 7777;
 		spyOn(start, "start");
 		spyOn(ProjectConfig, "setConfig");
 
-		await mockSession.chooseActionLoop(mockProjectLibrary, "");
-		expect(start.start).toHaveBeenCalledWith({port: 7777});
+		await mockSession.chooseActionLoop(mockProjectLibrary);
+		expect(start.start).toHaveBeenCalledWith({ port: 7777 });
 		expect(ProjectConfig.setConfig).toHaveBeenCalledWith(params);
+
+		// validate:
+		spyOn(Util, "log");
+		spyOn(Util, "error");
+		const lastCallArgs = (inquirer.prompt as jasmine.Spy).calls.mostRecent().args[0];
+		expect(lastCallArgs.validate).toEqual(jasmine.any(Function));
+
+		expect(lastCallArgs.validate("not a number")).toBe(false);
+		expect(lastCallArgs.validate("1a")).toBe(false);
+		expect(Util.error).toHaveBeenCalledWith(
+			"port should be a number. Input valid port or use the suggested default port",
+			"red");
+		expect(lastCallArgs.validate("3210")).toBe(true);
+		expect(Util.error).toHaveBeenCalledTimes(2);
 		done();
 	});
 	it("start - Should fire correctly with Angular Custom theme selected", async done => {
@@ -614,11 +650,11 @@ describe("Unit - PromptSession", () => {
 		spyOn(Util, "log");
 		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
 		spyOn(inquirer, "prompt").and.returnValues(
-			Promise.resolve({ projectName: "Test1"}),
-			Promise.resolve({ framework: "Angular"}),
-			Promise.resolve({ projectType: "Ignite UI for Angular"}),
-			Promise.resolve({ projTemplate: "Default side navigation"}),
-			Promise.resolve({ theme: "Custom"}));
+			Promise.resolve({ projectName: "Test1" }),
+			Promise.resolve({ framework: "Angular" }),
+			Promise.resolve({ projectType: "Ignite UI for Angular" }),
+			Promise.resolve({ projTemplate: "Default side navigation" }),
+			Promise.resolve({ theme: "Custom" }));
 		spyOn(mockSession, "chooseActionLoop").and.returnValue(Promise.resolve());
 		spyOn(process, "chdir");
 		await mockSession.start();
@@ -630,7 +666,7 @@ describe("Unit - PromptSession", () => {
 		$app-palette: igx-palette($primary, $secondary);
 		@include igx-core();
 		@include igx-theme($app-palette);`;
-		const actualCall = (Util.processTemplates as jasmine.Spy).calls.argsFor(0)[2]["$(CustomTheme)"].replace(/\s/g, "");
+		const actualCall = (Util.processTemplates as jasmine.Spy).calls.argsFor(0)[2]["CustomTheme"].replace(/\s/g, "");
 		const expectedCall = CUSTOM_THEME.replace(/\s/g, "");
 		expect(actualCall).toEqual(expectedCall);
 		done();
@@ -643,16 +679,16 @@ describe("Unit - PromptSession", () => {
 		spyOn(Util, "log");
 		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
 		spyOn(inquirer, "prompt").and.returnValues(
-			Promise.resolve({ projectName: "Test1"}),
-			Promise.resolve({ framework: "Angular"}),
-			Promise.resolve({ projectType: "Ignite UI for Angular"}),
-			Promise.resolve({ projTemplate: "Default side navigation"}),
-			Promise.resolve({ theme: "Default"}));
+			Promise.resolve({ projectName: "Test1" }),
+			Promise.resolve({ framework: "Angular" }),
+			Promise.resolve({ projectType: "Ignite UI for Angular" }),
+			Promise.resolve({ projTemplate: "Default side navigation" }),
+			Promise.resolve({ theme: "Default" }));
 		spyOn(mockSession, "chooseActionLoop").and.returnValue(Promise.resolve());
 		spyOn(process, "chdir");
 		await mockSession.start();
 		const DEFAULT_THEME = `,"node_modules/igniteui-angular/styles/igniteui-angular.css"`;
-		const actualCall = (Util.processTemplates as jasmine.Spy).calls.argsFor(0)[2]["$(DefaultTheme)"].replace(/\s/g, "");
+		const actualCall = (Util.processTemplates as jasmine.Spy).calls.argsFor(0)[2]["DefaultTheme"].replace(/\s/g, "");
 		const expectedCall = DEFAULT_THEME.replace(/\s/g, "");
 		expect(actualCall).toEqual(expectedCall);
 		done();

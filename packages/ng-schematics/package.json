@@ -1,0 +1,28 @@
+{
+  "name": "@igniteui/angular-schematics",
+  "version": "8.2.500-alpha.2",
+  "description": "Ignite UI for Angular Schematics for ng new and ng generate",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && jasmine src/**/*_spec.js"
+  },
+  "keywords": [
+    "schematics"
+  ],
+  "author": "",
+  "license": "MIT",
+  "schematics": "./src/collection.json",
+  "dependencies": {
+    "@angular-devkit/core": "^8.0.3",
+    "@angular-devkit/schematics": "^8.0.3",
+    "@igniteui/angular-templates": "^8.2.500-alpha.2",
+    "@igniteui/cli-core": "^5.0.0-alpha.2",
+    "rxjs": "6.4.0"
+  },
+  "devDependencies": {
+    "@types/jasmine": "3.3.9",
+    "@types/node": "^8.0.31",
+    "jasmine": "^3.0.0",
+    "typescript": "~3.2.2"
+  }
+}

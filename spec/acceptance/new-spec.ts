@@ -1,8 +1,7 @@
+import { GoogleAnalytics, GoogleAnalyticsParameters, Util } from "@igniteui/cli-core";
 import * as fs from "fs";
-import cli = require("../../lib/cli");
-import { GoogleAnalytics } from "../../lib/GoogleAnalytics";
-import { PackageManager } from "../../lib/packages/PackageManager";
-import { Util } from "../../lib/Util";
+import * as cli from "../../packages/cli/lib/cli";
+import { PackageManager } from "../../packages/cli/lib/packages/PackageManager";
 import { deleteAll, filesDiff, resetSpy } from "../helpers/utils";
 
 describe("New command", () => {
@@ -143,7 +142,7 @@ describe("New command", () => {
 
 		process.chdir(projectName);
 		expect(fs.existsSync(".git")).toBeTruthy();
-		expect(Util.exec("git log -1 --pretty=format:'%s'").toString())
+		expect(Util.execSync("git log -1 --pretty=format:'%s'").toString())
 			.toMatch("Initial commit for project: " + projectName);
 		process.chdir("../");
 		this.testFolder = "./angularProj";

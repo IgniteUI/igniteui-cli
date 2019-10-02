@@ -1,11 +1,10 @@
+import { IgniteUIForAngularTemplate } from "@igniteui/angular-templates";
+import { ComponentGroup, Framework, ProjectConfig, Util } from "@igniteui/cli-core";
 import * as path from "path";
-import { ProjectConfig } from "../../lib/ProjectConfig";
-import { TemplateManager } from "../../lib/TemplateManager";
-import { AngularTemplate } from "../../lib/templates/AngularTemplate";
-import { IgniteUIForAngularTemplate } from "../../lib/templates/IgniteUIForAngularTemplate";
-import { jQueryTemplate } from "../../lib/templates/jQueryTemplate";
-import { ReactTemplate } from "../../lib/templates/ReactTemplate";
-import { Util } from "../../lib/Util";
+import { TemplateManager } from "../../packages/cli/lib/TemplateManager";
+import { AngularTemplate } from "../../packages/cli/lib/templates/AngularTemplate";
+import { jQueryTemplate } from "../../packages/cli/lib/templates/jQueryTemplate";
+import { ReactTemplate } from "../../packages/cli/lib/templates/ReactTemplate";
 import { mockProLibFactory } from "../helpers/mocks";
 import { resetSpy } from "../helpers/utils";
 
@@ -15,7 +14,7 @@ describe("Unit - Template manager", () => {
 		this.customRequire = undefined;
 
 		this.isTemplatesPath = modulePath => {
-			return modulePath.startsWith(path.join(__dirname, "../../templates"));
+			return modulePath.startsWith(path.join(__dirname, "../../packages/cli/templates"));
 		};
 		// spy on require(), https://coderwall.com/p/ck7w6g/spying-on-require-with-jasmine
 		spyOn(require("module"), "_load").and.callFake((modulePath: string) => {
@@ -48,7 +47,7 @@ describe("Unit - Template manager", () => {
 		spyOn(ProjectConfig, "globalConfig").and.returnValue({});
 
 		const manager = new TemplateManager();
-		expect(Util.getDirectoryNames).toHaveBeenCalledWith(path.join(__dirname, "../../templates"));
+		expect(Util.getDirectoryNames).toHaveBeenCalledWith(path.join(__dirname, "../../packages/cli/templates"));
 		expect(manager.getFrameworkNames()).toEqual(frameworkIds);
 
 		expect(manager.getProjectLibraryNames("test-framework")).toEqual([]);

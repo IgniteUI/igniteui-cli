@@ -6,6 +6,8 @@
 	"files.exclude": {
 		"lib/**/*.js.map": true,
 		"lib/**/*.js": {"when": "$(basename).ts"},
+		"packages/**/*.js.map": true,
+		"packages/**/*.js": {"when": "$(basename).ts"},
 		"scripts/**/*.js.map": true,
 		"scripts/**/*.js": {"when": "$(basename).ts"},
 		"spec/**/*.js.map": true,

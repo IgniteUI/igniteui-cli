@@ -34,6 +34,8 @@ Quickly create projects including [Ignite UI for Angular](https://www.infragisti
 	* [Generate Ignite UI for React project](#generate-ignite-ui-for-react-project)
 	* [Adding components](#adding-components)
   * [Build and run](#build-and-run)
+* [Schematics](#schematics)
+  * [Schematic Definitions](#schematic-definitions)
 * [Contribution](#contribution)
 
 ## Installation
@@ -112,6 +114,10 @@ ig list
 ig build
 ig start
 ```
+
+## Schematics
+You can also add `Ignite UI for Angular` components to your projects by using the `igniteui/angular-schematics` package. It included schematic definitions for most of the logic present in the [`igniteui-cli`](/packages/cli). These can be called in any existing Angular project or even when creating one. You can learn more about the schematics package on from its [readme](/package/ng-schematics).
+
 ## Contribution
 
 See the [Contribution guide](https://github.com/IgniteUI/igniteui-cli/blob/master/.github/CONTRIBUTING.md) to get started.
@@ -135,4 +141,10 @@ ig config set disableAnalytics true -g
 
 when using the CLI. You can read Infragistics privacy policy at https://www.infragistics.com/legal/privacy.
 
+## Package Definitions
+
+### [igniteui-cli](./packages/cli)
+### [igniteui/cli-core](./packages/core)
+### [igniteui/angular-templates](./packages/igx-templates)
+### [igniteui/angular-schematics](./packages/ng-schematics)
 

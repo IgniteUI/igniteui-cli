@@ -1,10 +1,8 @@
+import { Config, GoogleAnalytics, GoogleAnalyticsParameters, ProjectConfig, Template } from "@igniteui/cli-core";
 import * as fs from "fs";
 import * as os from "os";
 import * as path from "path";
-import cli = require("../../lib/cli");
-import { GoogleAnalytics } from "../../lib/GoogleAnalytics";
-import { ProjectConfig } from "../../lib/ProjectConfig";
-import { Util } from "../../lib/Util";
+import * as cli from "../../packages/cli/lib/cli";
 import { deleteAll } from "../helpers/utils";
 
 describe("Generate command", () => {
@@ -137,7 +135,7 @@ describe("Generate command", () => {
 
 		const pathDirectory = path.join(templateFolderPath, "files", "src", "app", "components", "__path__");
 		expect(fs.existsSync(pathDirectory)).toBeTruthy();
-		expect(fs.existsSync(path.join(pathDirectory, "__name__.component.ts"))).toBeTruthy();
+		expect(fs.existsSync(path.join(pathDirectory, "__filePrefix__.component.ts"))).toBeTruthy();
 		done();
 	});
 
@@ -178,10 +176,10 @@ describe("Generate command", () => {
 
 		const pathDirectory = path.join(templateFolderPath, "files", "src", "app", "__path__");
 		expect(fs.existsSync(pathDirectory)).toBeTruthy();
-		expect(fs.existsSync(path.join(pathDirectory, "__name__.component.scss"))).toBeTruthy();
-		expect(fs.existsSync(path.join(pathDirectory, "__name__.component.html"))).toBeTruthy();
-		expect(fs.existsSync(path.join(pathDirectory, "__name__.component.spec.ts"))).toBeTruthy();
-		expect(fs.existsSync(path.join(pathDirectory, "__name__.component.ts"))).toBeTruthy();
+		expect(fs.existsSync(path.join(pathDirectory, "__filePrefix__.component.scss"))).toBeTruthy();
+		expect(fs.existsSync(path.join(pathDirectory, "__filePrefix__.component.html"))).toBeTruthy();
+		expect(fs.existsSync(path.join(pathDirectory, "__filePrefix__.component.spec.ts"))).toBeTruthy();
+		expect(fs.existsSync(path.join(pathDirectory, "__filePrefix__.component.ts"))).toBeTruthy();
 		done();
 	});
 

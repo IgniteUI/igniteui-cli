@@ -1,23 +1,39 @@
+# ignore local runs output
 /output/**
 !output/.gitkeep
-/node_modules
-/templates/**/*.js.map
-/lib/**/*.js.map
-/lib/**/*.js
-/lib/config/Config.schema.json
+
+# test coverage
+/coverage
+/.nyc_output
+
+# base and sub-package installs
+**/node_modules
+
+# ignore compiled files in packages
+packages/**/*.js.map
+packages/**/*.js
 /scripts/**/*.js.map
 /scripts/**/*.js
 /spec/**/*.js.map
 /spec/**/*.js
-/templates/jquery/**/*.js
-!/templates/jquery/**/files/**/*
-/templates/angular/**/*.js
-!/templates/angular/**/files/**/*
-/templates/react/**/*.js
-!/templates/react/**/files/**/*
-/migrations/**/*.js.map
-/migrations/**/*.js
-/schematics/**/*.js.map
-/schematics/**/*.js
-/coverage
-/.nyc_output
+
+# compiled config schema
+packages/core/config/Config.schema.json
+
+# unignore cli bin executable
+!packages/cli/bin/*.js
+
+# unignore all template files
+!packages/igx-templates/**/files/**/*
+!packages/cli/templates/jquery/**/files/**/*
+!packages/cli/templates/angular/**/files/**/*
+!packages/cli/templates/react/**/files/**/*
+!packages/cli/templates/quickstart/**/*
+
+# Misc
+npm-debug.log*
+yarn-error.log*
+
+# Mac OSX Finder files.
+**/.DS_Store
+.DS_Store

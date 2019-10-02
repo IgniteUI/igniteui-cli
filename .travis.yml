@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-- '8'
+- '10'
 
 after_success: npm run coverage
 
@@ -10,19 +10,21 @@ before_deploy:
 - git clean  -d  -fX -- "templates"
 # compile files for package
 - npm run build-pack
-# update package version
-- npm version "$TRAVIS_TAG" --no-git-tag-version --save
 - node scripts/build-task.js
-- if [[ "${TRAVIS_TAG}" == *"beta"* ]]; then export NPM_TAG="next"; else export NPM_TAG="latest"; fi
+- if [[ "${TRAVIS_TAG}" == *"beta"* || "${TRAVIS_TAG}" == *"alpha"* || "${TRAVIS_TAG}" == *"rc"* ]]; then export NPM_TAG="next"; else export NPM_TAG="latest"; fi
+# Copy populated .npmrc file to home dir to be used for publish
+- echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
 
 deploy:
-  tag: "${NPM_TAG}"
-  provider: npm
+  provider: script
+  script: lerna exec -- npm publish --tag "${NPM_TAG}"
   skip_cleanup: true
-  email: igniteui@infragistics.com
-  api_key:
-    secure: hrxBzn0NvabRiucr8tUIey4KukijZ8yzN+CI7jNXklVShZq9qQttQ+8LMuW02wP+DcKkV5YojdpSuJ7MUVBP1pe39K2C13Hpw6Zd4qzQPyoLc0ZbQr20mwrgx8Z5J7Nt34dX9dg7wH+hEmn4qcXQAxrOeh6zgHs4HYmcAD6N8nc1rQ6fFO/p+dx4QemsYMQgkI3X319xQhIte2v9Mj6ssTIUWh2BRqXTEURmom7Kra4euCPb1vLDtDstGkKg2YlZ0VXWBXm3CaazmGXtIvyx18dHzf6QOS4lDbDFJ+bhc3Oqgjw1lRElICBEgtiMcRdoWlEvagynCXKLX8fkfi4hAhdH02pz6Dclp/u4hMshzUci3KWx+JQDidYgUcrDfEDmEIf8VO7dUG8rWN4FN3wojcX74rypCv1QLZRPPRcuCeLodx56V5A0kMeV3C4l9MLT5lCi3O5vr45+R35BaXb8J1srUJtwaMWTBCXoHsIYSo7V0utXhegaQNP0CmOMVKRyA00bjVcWzo0Q+Nk759EusGMjWBjv1LtQzAKrIvPVoYDPFPI0PnKHLe4FUirc5hNdiQmgOE0GST0+092t1jXqOzh5eERSc9RA5pjxvElWgO02xcivz9JLjsFYybGvPqan3u0x5U9Tzd0/9uvYPGB7eNP/YmdGvOqORg9zCG59huI=
   on:
     tags: true
     repo: IgniteUI/igniteui-cli
     branch: master
+
+env:
+  global:
+    # NPM_TOKEN=
+    secure: K/ypXHaMu3jEctoNT8tDR/iIDaMyNVNT2CqrYuByzrvceHBgWv7D3R1QnDF78Wx0iGNC/o6yx9uIkRLIpHWYK2qL/2U18lZZbAhrEXN3B5+hTr4eXkOnMrIz/vvkbZGdX/IhR8NII+todCGaUwKf84WVxknWA+BGol/XZ+BC6qhgv+G+EcTFQ1gcjz3poQ+BrEL/yK08SRATwbWelepQnb5fsJDp+/Q/TBuMV0SZI+WuK7/tzeg9kIIoPKRgmtqkkfheAnBJ2EVdH5wav6T79TfjANfzkQgF8WA4epnO3b4/6JXKY5GED6NhL1XwZXbOo/lvuHrH0BFm371xefjcP5xHBN+Yug0J18W8X2g8JSH8MOHysHsZo3GDEPSd0xwwRSfL9u4kQ/ie1VjGMITAu++MOdzO6YmqUUogacW7QFYsXp4zz7bTdsqU8MIt6aGzxh/Y97r4S9jbWYoVZ0AkOpbbs/2uEDgz3nKJSiiWbYfILUKRrZdujaEYLtfBJ9xnqzn9YN1oasnVTlXZFQ2Y9b2B1YLT3hqhAPnvf2Jp9Rfzo4s+3Ebb9HVXaw0iGk90i5VWW0H9WLpXTWn3GIUKG6qQZWgqFQfXzECn4xJgDrIMk6W2nnYBNHZ1REYnOHRn6Qo3AUhnWSx1tDRQPwl/yUenMuKPwnIKPMxAMJYlUwk=

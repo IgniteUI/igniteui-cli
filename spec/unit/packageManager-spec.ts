@@ -1,8 +1,7 @@
+import { Config, ProjectConfig, Util } from "@igniteui/cli-core";
 import * as cp from "child_process";
 import * as path from "path";
-import { PackageManager } from "../../lib/packages/PackageManager";
-import { ProjectConfig } from "../../lib/ProjectConfig";
-import { Util } from "../../lib/Util";
+import { PackageManager } from "../../packages/cli/lib/packages/PackageManager";
 import { resetSpy } from "../helpers/utils";
 
 describe("Unit - Package Manager", () => {
@@ -38,7 +37,7 @@ describe("Unit - Package Manager", () => {
 				return mockRequire;
 			}
 		});
-		spyOn(cp, "execSync").and.callFake((cmd: string, opts) => {
+		spyOn(Util, "execSync").and.callFake((cmd: string, opts) => {
 			if (cmd.includes("whoami")) {
 				throw new Error("");
 			}
@@ -76,7 +75,7 @@ describe("Unit - Package Manager", () => {
 				stdio: "inherit"
 			}
 		);
-		expect(cp.execSync).toHaveBeenCalledWith("npm config set @infragistics:registry trial");
+		expect(Util.execSync).toHaveBeenCalledWith("npm config set @infragistics:registry trial");
 		expect(PackageManager.removePackage).toHaveBeenCalled();
 		expect(PackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@"17.2"`, true);
 		done();
@@ -87,6 +86,7 @@ describe("Unit - Package Manager", () => {
 				"ignite-ui": "17.2"
 			}
 		};
+		spyOn(require("module"), "_load").and.returnValue(mockRequire);
 		const mockTemplateMgr = jasmine.createSpyObj("mockTemplateMgr", {
 			getProjectLibrary: {
 				getProject() {
@@ -106,7 +106,7 @@ describe("Unit - Package Manager", () => {
 		});
 		spyOn(ProjectConfig, "setConfig");
 		spyOn(PackageManager, "addPackage").and.returnValue(true);
-		spyOn(cp, "execSync").and.throwError("no user");
+		spyOn(Util, "execSync").and.throwError("no user");
 		spyOn(cp, "spawnSync").and.returnValues({
 			status: 1
 		});
@@ -154,8 +154,8 @@ describe("Unit - Package Manager", () => {
 				stdio: "inherit"
 			}
 		);
-		expect(cp.execSync).toHaveBeenCalledTimes(1);
-		expect(cp.execSync).toHaveBeenCalledWith(`npm whoami --registry=trial`,  { stdio: "pipe", encoding: "utf8" });
+		expect(Util.execSync).toHaveBeenCalledTimes(1);
+		expect(Util.execSync).toHaveBeenCalledWith(`npm whoami --registry=trial`, { stdio: "pipe", encoding: "utf8" });
 		done();
 	});
 	it("ensureIgniteUISource - Should run through properly when install now is set to false", async done => {
@@ -180,15 +180,15 @@ describe("Unit - Package Manager", () => {
 		PackageManager.ensureIgniteUISource(false, mockTemplateMgr, true);
 		expect(ProjectConfig.localConfig).toHaveBeenCalled();
 		expect(Util.log).toHaveBeenCalledWith(
-		"Template(s) that require the full version of Ignite UI found in the project." +
-		"You might be prompted for credentials on build to install it.", "yellow");
+			"Template(s) that require the full version of Ignite UI found in the project." +
+			"You might be prompted for credentials on build to install it.", "yellow");
 		done();
 	});
 
 	it("ensureIgniteUISource - Should respect oss version when upgrading", async done => {
 		class TestPackageManager extends PackageManager {
 			public static ensureRegistryUser(config: Config): boolean { return true; }
-			public static getPackageJSON(): any {}
+			public static getPackageJSON(): any { }
 		}
 		const mockDeps = {
 			dependencies: {
@@ -198,7 +198,7 @@ describe("Unit - Package Manager", () => {
 		const mockTemplateMgr = jasmine.createSpyObj("mockTemplateMgr", {
 			getProjectLibrary: {
 				getProject() {
-					return { upgradeIgniteUIPackage: () => {} };
+					return { upgradeIgniteUIPackage: () => { } };
 				},
 				projectIds: ["empty"]
 			}
@@ -214,14 +214,14 @@ describe("Unit - Package Manager", () => {
 		});
 		spyOn(ProjectConfig, "setConfig");
 		spyOn(TestPackageManager, "addPackage").and.callThrough();
-		spyOn(cp, "execSync");
+		spyOn(Util, "execSync");
 		spyOn(Util, "log");
 		spyOn(TestPackageManager, "removePackage");
 		spyOn(TestPackageManager, "getPackageJSON").and.callFake(() => mockDeps);
 
 		TestPackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
 		expect(TestPackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@"~17.2"`, true);
-		expect(cp.execSync).toHaveBeenCalledWith(
+		expect(Util.execSync).toHaveBeenCalledWith(
 			`npm install @infragistics/ignite-ui-full@"~17.2" --quiet --save`,
 			jasmine.any(Object)
 		);
@@ -230,7 +230,7 @@ describe("Unit - Package Manager", () => {
 		mockDeps.dependencies["ignite-ui"] = "^17.1";
 		TestPackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
 		expect(TestPackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@"^17.1"`, true);
-		expect(cp.execSync).toHaveBeenCalledWith(
+		expect(Util.execSync).toHaveBeenCalledWith(
 			`npm install @infragistics/ignite-ui-full@"^17.1" --quiet --save`,
 			jasmine.any(Object)
 		);
@@ -238,7 +238,7 @@ describe("Unit - Package Manager", () => {
 		mockDeps.dependencies["ignite-ui"] = ">=0.1.0 <0.2.0";
 		TestPackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
 		expect(TestPackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@">=0.1.0 <0.2.0"`, true);
-		expect(cp.execSync).toHaveBeenCalledWith(
+		expect(Util.execSync).toHaveBeenCalledWith(
 			`npm install @infragistics/ignite-ui-full@">=0.1.0 <0.2.0" --quiet --save`,
 			jasmine.any(Object)
 		);
@@ -250,7 +250,7 @@ describe("Unit - Package Manager", () => {
 			packagesInstalled: false
 		});
 		spyOn(Util, "log");
-		spyOn(cp, "execSync").and.callFake(() => {
+		spyOn(Util, "execSync").and.callFake(() => {
 			const err = new Error("Example");
 			err["status"] = 1;
 			throw err;
@@ -262,8 +262,8 @@ describe("Unit - Package Manager", () => {
 		expect(Util.log).toHaveBeenCalledWith(`Installing npm packages`);
 		expect(Util.log).toHaveBeenCalledWith(`Error installing npm packages.`);
 		expect(Util.log).toHaveBeenCalledWith(`Example`);
-		expect(cp.execSync).toHaveBeenCalledWith(`npm install --quiet`, { stdio: "pipe", killSignal: "SIGINT" });
-		expect(ProjectConfig.setConfig).toHaveBeenCalledWith({ packagesInstalled: true});
+		expect(Util.execSync).toHaveBeenCalledWith(`npm install --quiet`, { stdio: ["inherit"], killSignal: "SIGINT" });
+		expect(ProjectConfig.setConfig).toHaveBeenCalledWith({ packagesInstalled: true });
 		done();
 	});
 	it("Should run installPackages properly without error code", async done => {
@@ -271,15 +271,15 @@ describe("Unit - Package Manager", () => {
 			packagesInstalled: false
 		});
 		spyOn(Util, "log");
-		spyOn(cp, "execSync").and.returnValue("");
+		spyOn(Util, "execSync").and.returnValue("");
 		spyOn(ProjectConfig, "setConfig");
 		await PackageManager.installPackages(true);
 		expect(ProjectConfig.localConfig).toHaveBeenCalledTimes(1);
 		expect(Util.log).toHaveBeenCalledTimes(2);
 		expect(Util.log).toHaveBeenCalledWith(`Installing npm packages`);
 		expect(Util.log).toHaveBeenCalledWith(`Packages installed successfully`);
-		expect(cp.execSync).toHaveBeenCalledWith(`npm install --quiet`, { stdio: "pipe", killSignal: "SIGINT" });
-		expect(ProjectConfig.setConfig).toHaveBeenCalledWith({ packagesInstalled: true});
+		expect(Util.execSync).toHaveBeenCalledWith(`npm install --quiet`, { stdio: ["inherit"], killSignal: "SIGINT" });
+		expect(ProjectConfig.setConfig).toHaveBeenCalledWith({ packagesInstalled: true });
 		done();
 	});
 	it("Should exit on installPackages if child install is terminated", async done => {
@@ -290,7 +290,7 @@ describe("Unit - Package Manager", () => {
 		spyOn(Util, "log");
 		spyOn(ProjectConfig, "setConfig");
 		spyOn(process, "exit");
-		spyOn(cp, "execSync").and.callFake(() => {
+		spyOn(Util, "execSync").and.callFake(() => {
 			const err = new Error("Error");
 			err["status"] = 3221225786; // ctl + c while child install is running
 			throw err;
@@ -298,14 +298,14 @@ describe("Unit - Package Manager", () => {
 		await PackageManager.installPackages(true);
 		expect(Util.log).toHaveBeenCalledTimes(1);
 		expect(Util.log).toHaveBeenCalledWith(`Installing npm packages`);
-		expect(cp.execSync).toHaveBeenCalledWith(`npm install --quiet`, { stdio: "pipe", killSignal: "SIGINT" });
+		expect(Util.execSync).toHaveBeenCalledWith(`npm install --quiet`, { stdio: ["inherit"], killSignal: "SIGINT" });
 		expect(process.exit).toHaveBeenCalled();
 		expect(ProjectConfig.setConfig).toHaveBeenCalledTimes(0);
 		done();
 	});
 	it("Should run removePackage properly with error code", async done => {
 		spyOn(Util, "log");
-		spyOn(cp, "execSync").and.callFake(() => {
+		spyOn(Util, "execSync").and.callFake(() => {
 			const err = new Error("Error");
 			err["status"] = 1;
 			throw err;
@@ -314,24 +314,24 @@ describe("Unit - Package Manager", () => {
 		expect(Util.log).toHaveBeenCalledTimes(2);
 		expect(Util.log).toHaveBeenCalledWith(`Error uninstalling package example-package with npm`);
 		expect(Util.log).toHaveBeenCalledWith(`Error`);
-		expect(cp.execSync).toHaveBeenCalledWith(
+		expect(Util.execSync).toHaveBeenCalledWith(
 			`npm uninstall example-package --quiet --save`, { stdio: "pipe", encoding: "utf8" }
 		);
 		done();
 	});
 	it("Should run removePackage properly without error code", async done => {
 		spyOn(Util, "log");
-		spyOn(cp, "execSync").and.returnValue("");
+		spyOn(Util, "execSync").and.returnValue("");
 		PackageManager.removePackage("example-package");
 		expect(Util.log).toHaveBeenCalledTimes(1);
 		expect(Util.log).toHaveBeenCalledWith(`Package example-package uninstalled successfully`);
-		expect(cp.execSync).toHaveBeenCalledWith(
+		expect(Util.execSync).toHaveBeenCalledWith(
 			`npm uninstall example-package --quiet --save`, { stdio: "pipe", encoding: "utf8" });
 		done();
 	});
 	it("Should run addPackage properly with error code", async done => {
 		spyOn(Util, "log");
-		spyOn(cp, "execSync").and.callFake(() => {
+		spyOn(Util, "execSync").and.callFake(() => {
 			const err = new Error("Error");
 			err["status"] = 1;
 			throw err;
@@ -340,17 +340,17 @@ describe("Unit - Package Manager", () => {
 		expect(Util.log).toHaveBeenCalledTimes(2);
 		expect(Util.log).toHaveBeenCalledWith(`Error installing package example-package with npm`);
 		expect(Util.log).toHaveBeenCalledWith(`Error`);
-		expect(cp.execSync).toHaveBeenCalledWith(
+		expect(Util.execSync).toHaveBeenCalledWith(
 			`npm install example-package --quiet --save`, { stdio: "pipe", encoding: "utf8" });
 		done();
 	});
 	it("Should run addPackage properly without error code", async done => {
 		spyOn(Util, "log");
-		spyOn(cp, "execSync").and.returnValue("");
+		spyOn(Util, "execSync").and.returnValue("");
 		PackageManager.addPackage("example-package", true);
 		expect(Util.log).toHaveBeenCalledTimes(1);
 		expect(Util.log).toHaveBeenCalledWith(`Package example-package installed successfully`);
-		expect(cp.execSync).toHaveBeenCalledWith(
+		expect(Util.execSync).toHaveBeenCalledWith(
 			`npm install example-package --quiet --save`, { stdio: "pipe", encoding: "utf8" });
 		done();
 	});

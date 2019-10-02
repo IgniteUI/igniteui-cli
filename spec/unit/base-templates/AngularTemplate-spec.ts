@@ -1,9 +1,6 @@
+import { ProjectConfig, TypeScriptFileUpdate, Util } from "@igniteui/cli-core";
 import * as path from "path";
-import { TypeScriptFileUpdate } from "../../../lib/project-utility/TypeScriptFileUpdate";
-import { TypeScriptUtils } from "../../../lib/project-utility/TypeScriptUtils";
-import { ProjectConfig } from "../../../lib/ProjectConfig";
-import { AngularTemplate } from "../../../lib/templates/AngularTemplate";
-import { Util } from "../../../lib/Util";
+import { AngularTemplate } from "../../../packages/cli/lib/templates/AngularTemplate";
 
 describe("Unit - AngularTemplate Base", () => {
 	// tslint:disable:object-literal-sort-keys
@@ -18,66 +15,66 @@ describe("Unit - AngularTemplate Base", () => {
 		public widget = "widget no-process";
 	}
 
-	it("generateFiles call processTemplates with correct path and variables", async done => {
+	it("generateConfig call processTemplates with correct path and variables", async done => {
 		const expected = {
-			"$(name)": "my component",
-			"$(ClassName)": "MyComponent",
-			"__name__": "my-component",
-			"__path__": "my-component",
-			"$(filePrefix)": "my-component",
-			"$(description)": "test description",
-			"$(cliVersion)": Util.version(),
-			"$(camelCaseName)": "myComponent",
-			"$(nameMerged)": "TestTemplate"
+			name: "my component",
+			ClassName: "MyComponent",
+			path: "my-component",
+			filePrefix: "my-component",
+			description: "test description",
+			cliVersion: Util.version(),
+			camelCaseName: "myComponent",
+			nameMerged: "TestTemplate"
 		};
 		spyOn(Util, "processTemplates");
-		spyOn(Util, "validateTemplate").and.returnValue(true);
+		// const validateSpy = spyOn<any>(Util, "validateTemplate").and.returnValue(true);
 
 		const templ = new TestTemplate();
-		templ.generateFiles("/target/path", "my component", {});
-		expect(Util.validateTemplate).toHaveBeenCalledWith(
-			path.join("root/path" , "files"),
-			"/target/path",
-			expected, {});
-		expect(Util.processTemplates).toHaveBeenCalledWith(
-			path.join("root/path" , "files"),
-			"/target/path",
-			expected, {});
+		const actual = templ.generateConfig("my component", {});
+		expect(actual).toEqual(expected);
+		// expect(validateSpy).toHaveBeenCalledWith(
+		// 	path.join("root/path" , "files"),
+		// 	"/target/path",
+		// 	expected, {});
+		// expect(Util.processTemplates).toHaveBeenCalledWith(
+		// 	path.join("root/path" , "files"),
+		// 	"/target/path",
+		// 	expected, {});
 		done();
 	});
 
-	it("generateFiles merge passed variables", async done => {
+	it("generateConfig merge passed variables", async done => {
 		const expected = {
-			"$(name)": "page",
-			"$(ClassName)": "Page",
-			"__name__": "page",
-			"__path__": "page",
-			"$(filePrefix)": "page",
-			"$(description)": undefined,
+			name: "page",
+			ClassName: "Page",
+			path: "page",
+			filePrefix: "page",
+			description: undefined,
 			// widget
-			"$(widget)": "widget no-process",
+			widget: "widget no-process",
 			// extra
-			"$(extraConfig1)" : "extraConfig1",
-			"$(camelCaseName)": "page",
-			"$(gridFeatures)" : "{ features }",
-			"$(cliVersion)": Util.version()
+			extraConfig1 : "extraConfig1",
+			camelCaseName: "page",
+			gridFeatures : "{ features }",
+			cliVersion: Util.version()
 		};
 		spyOn(Util, "processTemplates");
-		spyOn(Util, "validateTemplate").and.returnValue(true);
+		// const validateSpy = spyOn<any>(Util, "validateTemplate").and.returnValue(true);
 
 		const templ = new TestWidgetTemplate("root");
-		templ.generateFiles("/target/path", "page", { extraConfig : {
-			"$(extraConfig1)" : "extraConfig1",
-			"$(gridFeatures)" : "{ features }"
+		const actual = templ.generateConfig("page", { extraConfig : {
+			extraConfig1 : "extraConfig1",
+			gridFeatures : "{ features }"
 		} });
-		expect(Util.validateTemplate).toHaveBeenCalledWith(
-			path.join("root" , "files"),
-			"/target/path",
-			expected, {});
-		expect(Util.processTemplates).toHaveBeenCalledWith(
-			path.join("root" , "files"),
-			"/target/path",
-			expected, {});
+		expect(actual).toEqual(expected);
+		// expect(validateSpy).toHaveBeenCalledWith(
+		// 	path.join("root" , "files"),
+		// 	"/target/path",
+		// 	expected, {});
+		// expect(Util.processTemplates).toHaveBeenCalledWith(
+		// 	path.join("root" , "files"),
+		// 	"/target/path",
+		// 	expected, {});
 		done();
 	});
 
@@ -92,7 +89,7 @@ describe("Unit - AngularTemplate Base", () => {
 			};
 			// spy on require:
 			spyOn(require("module"), "_load").and.callFake((modulePath: string) => {
-				if (modulePath.endsWith("../project-utility/TypeScriptFileUpdate")) {
+				if (modulePath.endsWith("@igniteui/cli-core/typescript")) {
 					return helpers;
 				} else if (modulePath.endsWith("../packages/components")) {
 					return { dv: ["igDvWidget"] };
