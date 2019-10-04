@@ -19,8 +19,8 @@ jasmineInst.loadConfig({
 	spec_dir: "",
 	spec_files: [
 		"spec/**/*[sS]pec.js",
-		"migrations/**/*[sS]pec.js",
-		"schematics/**/*[sS]pec.js"
+		"packages/cli/migrations/**/*[sS]pec.js",
+		"packages/cli/schematics/**/*[sS]pec.js"
 	]
 });
 

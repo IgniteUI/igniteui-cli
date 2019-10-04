@@ -34,13 +34,14 @@
       ".tsx"
     ],
     "include": [
-      "lib/"
+      "packages/"
     ],
     "exclude": [
       "**/*.d.ts",
       "output/",
-      "templates/quickstart/",
-      "templates/**/files/"
+	  "packages/cli/templates/quickstart/",
+	  "packages/cli/templates/**/files/",
+	  "packages/igx-templates/"
     ],
     "reporter": [
       "lcov",
@@ -78,5 +79,8 @@
   },
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+    "handlebars": "4.0.14"
+  }
 }
