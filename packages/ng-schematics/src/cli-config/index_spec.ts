@@ -92,8 +92,8 @@ describe("cli-config schematic", () => {
 		const headContentsRegex = /(?:<head>)([\s\S]*)(?:<\/head>)/;
 
 		expect(headContentsRegex.test(content)).toBeTruthy();
-		expect(headContentsRegex.exec(content).pop().includes("family=Titillium+Web")).toBeTruthy();
-		expect(headContentsRegex.exec(content).pop().includes("family=Material+Icons")).toBeTruthy();
+		expect(((headContentsRegex.exec(content) || []).pop() || "").includes("family=Titillium+Web")).toBeTruthy();
+		expect(((headContentsRegex.exec(content) || []).pop() || "").includes("family=Material+Icons")).toBeTruthy();
 	});
 
 	it("should add the default scss theme correctly", () => {
@@ -116,11 +116,13 @@ describe("cli-config schematic", () => {
 		const currentProjectName = workspace.defaultProject;
 
 		expect(
-			workspace.projects[currentProjectName].architect.build.options.styles.filter(s => s.includes(targetImport)).length
+			workspace.projects[currentProjectName].architect.build.options.styles.filter(
+				(s: string) => s.includes(targetImport)).length
 		)
 			.toBeGreaterThan(0);
 		expect(
-			workspace.projects[currentProjectName].architect.test.options.styles.filter(s => s.includes(targetImport)).length
+			workspace.projects[currentProjectName].architect.test.options.styles.filter(
+				(s: string) => s.includes(targetImport)).length
 		)
 			.toBeGreaterThan(0);
 	});
