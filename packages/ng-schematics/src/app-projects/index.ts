@@ -7,6 +7,9 @@ import { NewProjectOptions } from "./schema";
 
 export default function(options: NewProjectOptions): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
+		if (!options.projTemplate) {
+			return tree;
+		}
 		const config = options.projTemplate.generateConfig(options.name, options.theme);
 		// update version with schematics one
 		config.cliVersion = Util.version(join(__dirname, "../../package.json"));

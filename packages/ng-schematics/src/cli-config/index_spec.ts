@@ -4,7 +4,7 @@ import { getWorkspace } from "@schematics/angular/utility/config";
 import * as path from "path";
 
 describe("cli-config schematic", () => {
-	const collectionPath = path.join(__dirname, "../cli-collection.json");
+	const collectionPath = path.join(__dirname, "../collection.json");
 	const runner: SchematicTestRunner = new SchematicTestRunner("cli-schematics", collectionPath);
 	let tree: UnitTestTree;
 	const ngJsonConfig = {
