@@ -3,11 +3,11 @@ import { IgniteUIForAngularTemplate } from "@igniteui/angular-templates";
 import {
 	BasePromptSession, BaseTemplateManager, Framework, IUserInputOptions,
 	NgTreeFileSystem, ProjectConfig, ProjectLibrary, ProjectTemplate, PromptTaskContext, Task } from "@igniteui/cli-core";
-import { ComponentOptions } from "../component/schema";
+import { TemplateOptions } from "../component/schema";
 
 export class SchematicsPromptSession extends BasePromptSession {
 
-	constructor(templateManager: BaseTemplateManager, private rulesChain: ComponentOptions[]) {
+	constructor(templateManager: BaseTemplateManager, private rulesChain: TemplateOptions[]) {
 		super(templateManager);
 		this.config = ProjectConfig.getConfig();
 	}
@@ -50,9 +50,8 @@ export class SchematicsPromptSession extends BasePromptSession {
 				await this.customizeTemplateTask(context.template);
 			}
 
-			const options: ComponentOptions = {
+			const options: TemplateOptions = {
 				name,
-				projectName: "",
 				templateInst: context.template as IgniteUIForAngularTemplate
 			};
 			this.rulesChain.push(options);
