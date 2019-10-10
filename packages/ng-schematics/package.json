@@ -17,6 +17,7 @@
     "@angular-devkit/schematics": "^8.0.3",
     "@igniteui/angular-templates": "^8.2.500-alpha.2",
     "@igniteui/cli-core": "^5.0.0-alpha.2",
+    "@schematics/angular": "^8.0.3",
     "rxjs": "6.4.0"
   },
   "devDependencies": {
@@ -24,5 +25,10 @@
     "@types/node": "^8.0.31",
     "jasmine": "^3.0.0",
     "typescript": "~3.2.2"
+  },
+  "ng-update": {
+    "packageGroup": [
+      "@igniteui/angular-templates"
+    ]
   }
 }

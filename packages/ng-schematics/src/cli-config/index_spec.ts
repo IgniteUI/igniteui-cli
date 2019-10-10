@@ -4,7 +4,7 @@ import { getWorkspace } from "@schematics/angular/utility/config";
 import * as path from "path";
 
 describe("cli-config schematic", () => {
-	const collectionPath = path.join(__dirname, "../cli-collection.json");
+	const collectionPath = path.join(__dirname, "../collection.json");
 	const runner: SchematicTestRunner = new SchematicTestRunner("cli-schematics", collectionPath);
 	let tree: UnitTestTree;
 	const ngJsonConfig = {
@@ -92,8 +92,8 @@ describe("cli-config schematic", () => {
 		const headContentsRegex = /(?:<head>)([\s\S]*)(?:<\/head>)/;
 
 		expect(headContentsRegex.test(content)).toBeTruthy();
-		expect(headContentsRegex.exec(content).pop().includes("family=Titillium+Web")).toBeTruthy();
-		expect(headContentsRegex.exec(content).pop().includes("family=Material+Icons")).toBeTruthy();
+		expect(headContentsRegex.exec(content)!.pop()).toContain("family=Titillium+Web");
+		expect(headContentsRegex.exec(content)!.pop()).toContain("family=Material+Icons");
 	});
 
 	it("should add the default scss theme correctly", () => {
@@ -116,11 +116,13 @@ describe("cli-config schematic", () => {
 		const currentProjectName = workspace.defaultProject;
 
 		expect(
-			workspace.projects[currentProjectName].architect.build.options.styles.filter(s => s.includes(targetImport)).length
+			workspace.projects[currentProjectName].architect.build.options.styles.filter(
+				(s: string) => s.includes(targetImport)).length
 		)
 			.toBeGreaterThan(0);
 		expect(
-			workspace.projects[currentProjectName].architect.test.options.styles.filter(s => s.includes(targetImport)).length
+			workspace.projects[currentProjectName].architect.test.options.styles.filter(
+				(s: string) => s.includes(targetImport)).length
 		)
 			.toBeGreaterThan(0);
 	});

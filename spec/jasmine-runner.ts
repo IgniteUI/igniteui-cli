@@ -20,7 +20,7 @@ jasmineInst.loadConfig({
 	spec_files: [
 		"spec/**/*[sS]pec.js",
 		"packages/cli/migrations/**/*[sS]pec.js",
-		"packages/cli/schematics/**/*[sS]pec.js"
+		"packages/ng-schematics/src/**/**/*[sS]pec.js"
 	]
 });
 
