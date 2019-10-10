@@ -357,6 +357,14 @@ export class Util {
 		return name + chalk.gray(`${separatedDescription}`);
 	}
 
+	/**
+	 * Returns a colored text
+	 */
+	public static color(text: string, colorKeyword: string) {
+		const color = chalk.keyword(colorKeyword);
+		return color(text);
+	}
+
 	public static getAvailableName(
 		defaultName: string, isApp: boolean, framework?: string, projectType?: string): string {
 

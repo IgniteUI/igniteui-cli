@@ -21,6 +21,10 @@
       "description": "Create an Ignite UI for Angular component.",
       "factory": "./component/index#component",
       "schema": "./component/schema.json"
+    },
+    "cli-config": {
+      "description": "Installs the needed dependencies onto the host application.",
+      "factory": "./cli-config/index"
     }
   }
 }

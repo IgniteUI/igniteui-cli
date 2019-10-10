@@ -7,8 +7,22 @@ const collectionPath = path.join(__dirname, "../collection.json");
 describe("app-projects", () => {
 	it("works", () => {
 		const runner = new SchematicTestRunner("schematics", collectionPath);
-		const tree = runner.runSchematic("app-projects", {}, Tree.empty());
+		const tree = Tree.empty();
+		const mockOptions = {
+			name: "mock-name",
+			projTemplate: {
+				generateConfig: jasmine.createSpy("generateConfig").and.returnValue({}),
+				id: "mock-id",
+				templatePaths: ["mock-template"]
+			},
+			theme: "mock-theme"
+		};
+		spyOn(tree, "read").and.returnValue(`Mock package content "igniteui-cli":`);
+		spyOn(tree, "overwrite");
+		runner.runSchematic("app-projects", mockOptions, tree);
 
-		expect(tree.files).toEqual([]);
+		expect(mockOptions.projTemplate.generateConfig).toHaveBeenCalled();
+		expect(tree.read).toHaveBeenCalledWith("./package.json");
+		expect(tree.overwrite).toHaveBeenCalledWith("./package.json", `Mock package content "@igniteui/angular-schematics":`);
 	});
 });

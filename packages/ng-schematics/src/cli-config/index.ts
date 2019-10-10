@@ -1,17 +1,14 @@
 import { DependencyNotFoundException } from "@angular-devkit/core";
-// tslint:disable-next-line:ordered-imports
 import { yellow } from "@angular-devkit/core/src/terminal";
-// tslint:disable-next-line:no-implicit-dependencies
 import { chain, FileDoesNotExistException, Rule, Tree } from "@angular-devkit/schematics";
-import { NgTreeFileSystem, TypeScriptFileUpdate } from "@igniteui/cli-core";
-import { addTypography } from "../../migrations/update-3/index";
+import { addTypography, NgTreeFileSystem, TypeScriptFileUpdate } from "@igniteui/cli-core";
 import { createCliConfig } from "../utils/cli-config";
 import { addFontsToIndexHtml, importDefaultTheme } from "../utils/theme-import";
 
 function getDependencyVersion(pkg: string, tree: Tree): string {
 	const targetFile = "/package.json";
 	if (tree.exists(targetFile)) {
-		const sourceText = tree.read(targetFile).toString();
+		const sourceText = tree.read(targetFile)!.toString();
 		const json = JSON.parse(sourceText);
 
 		let targetDep: any;
@@ -34,7 +31,7 @@ function getDependencyVersion(pkg: string, tree: Tree): string {
 
 function displayVersionMismatch(): Rule {
 	return (tree: Tree) => {
-		const pkgJson = JSON.parse(tree.read("/node_modules/igniteui-angular/package.json").toString());
+		const pkgJson = JSON.parse(tree.read("/node_modules/igniteui-angular/package.json")!.toString());
 		const ngKey = "@angular/core";
 		const ngCommonKey = "@angular/common";
 		const ngCoreProjVer = getDependencyVersion(ngKey, tree);
