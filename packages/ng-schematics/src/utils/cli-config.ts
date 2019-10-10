@@ -10,7 +10,7 @@ export function createCliConfig(): Rule {
 		context.logger.warn(`Ignite UI CLI installed`);
 		context.logger.info(`- try it out in this project by running 'npx ig'`);
 		context.logger.info(`- to run 'ig' everywhere and create new projects run 'npm install -g igniteui-cli'`);
-		context.logger.info(`Learn more: ` + Util.color(`https://github.com/IgniteUI/igniteui-cli#ignite-ui-cli`, "whiteBright"));
+		context.logger.info(`Learn more: ` + Util.color(`https://github.com/IgniteUI/igniteui-cli#ignite-ui-cli`, "white"));
 		context.logger.info(``);
 
 		tree.create("ignite-ui-cli.json", JSON.stringify(GetCliConfig(tree), null, 2) + "\n");
