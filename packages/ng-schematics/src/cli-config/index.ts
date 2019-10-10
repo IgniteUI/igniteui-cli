@@ -8,7 +8,7 @@ import { addFontsToIndexHtml, importDefaultTheme } from "../utils/theme-import";
 function getDependencyVersion(pkg: string, tree: Tree): string {
 	const targetFile = "/package.json";
 	if (tree.exists(targetFile)) {
-		const sourceText = (tree.read(targetFile) || {}).toString();
+		const sourceText = tree.read(targetFile)!.toString();
 		const json = JSON.parse(sourceText);
 
 		let targetDep: any;
@@ -31,7 +31,7 @@ function getDependencyVersion(pkg: string, tree: Tree): string {
 
 function displayVersionMismatch(): Rule {
 	return (tree: Tree) => {
-		const pkgJson = JSON.parse((tree.read("/node_modules/igniteui-angular/package.json") || {}).toString());
+		const pkgJson = JSON.parse(tree.read("/node_modules/igniteui-angular/package.json")!.toString());
 		const ngKey = "@angular/core";
 		const ngCommonKey = "@angular/common";
 		const ngCoreProjVer = getDependencyVersion(ngKey, tree);

@@ -92,8 +92,8 @@ describe("cli-config schematic", () => {
 		const headContentsRegex = /(?:<head>)([\s\S]*)(?:<\/head>)/;
 
 		expect(headContentsRegex.test(content)).toBeTruthy();
-		expect(((headContentsRegex.exec(content) || []).pop() || "").includes("family=Titillium+Web")).toBeTruthy();
-		expect(((headContentsRegex.exec(content) || []).pop() || "").includes("family=Material+Icons")).toBeTruthy();
+		expect(headContentsRegex.exec(content)!.pop()).toContain("family=Titillium+Web");
+		expect(headContentsRegex.exec(content)!.pop()).toContain("family=Material+Icons");
 	});
 
 	it("should add the default scss theme correctly", () => {

@@ -114,8 +114,8 @@
     "packageGroup": [
       "igniteui-cli",
       "igniteui-angular",
-	  "igniteui-angular-charts",
-	  "@igniteui/angular-templates"
+      "igniteui-angular-charts",
+      "@igniteui/angular-templates"
     ]
   }
 }

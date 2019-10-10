@@ -3,7 +3,6 @@ import { Rule, SchematicContext, SchematicsException, Tree } from "@angular-devk
 import { Config, Util } from "@igniteui/cli-core";
 // tslint:disable-next-line:no-implicit-dependencies
 import { getWorkspace } from "@schematics/angular/utility/config";
-import chalk from "chalk";
 
 export function createCliConfig(): Rule {
 	return (tree: Tree, context: SchematicContext) => {
@@ -11,7 +10,7 @@ export function createCliConfig(): Rule {
 		context.logger.warn(`Ignite UI CLI installed`);
 		context.logger.info(`- try it out in this project by running 'npx ig'`);
 		context.logger.info(`- to run 'ig' everywhere and create new projects run 'npm install -g igniteui-cli'`);
-		context.logger.info(`Learn more: ` + chalk.whiteBright(`https://github.com/IgniteUI/igniteui-cli#ignite-ui-cli`));
+		context.logger.info(`Learn more: ` + Util.color(`https://github.com/IgniteUI/igniteui-cli#ignite-ui-cli`, "whiteBright"));
 		context.logger.info(``);
 
 		tree.create("ignite-ui-cli.json", JSON.stringify(GetCliConfig(tree), null, 2) + "\n");

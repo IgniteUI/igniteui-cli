@@ -9,13 +9,13 @@ describe("app-projects", () => {
 		const runner = new SchematicTestRunner("schematics", collectionPath);
 		const tree = Tree.empty();
 		const mockOptions = {
+			name: "mock-name",
 			projTemplate: {
 				generateConfig: jasmine.createSpy("generateConfig").and.returnValue({}),
 				id: "mock-id",
 				templatePaths: ["mock-template"]
 			},
-			theme: "mock-theme",
-			name: "mock-name"
+			theme: "mock-theme"
 		};
 		spyOn(tree, "read").and.returnValue(`Mock package content "igniteui-cli":`);
 		spyOn(tree, "overwrite");
