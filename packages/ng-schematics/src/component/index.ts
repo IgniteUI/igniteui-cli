@@ -2,24 +2,12 @@ import {
 	apply, chain, MergeStrategy, mergeWith,
 	Rule, SchematicContext, SchematicsException, template, Tree, url
 } from "@angular-devkit/schematics";
-import { NodePackageInstallTask } from "@angular-devkit/schematics/tasks";
+import { NodePackageInstallTask, RunSchematicTask } from "@angular-devkit/schematics/tasks";
 import { IgniteUIForAngularTemplate } from "@igniteui/angular-templates";
 import { NgTreeFileSystem, Util } from "@igniteui/cli-core";
 import { SchematicsPromptSession } from "../prompt/SchematicsPromptSession";
 import { SchematicsTemplateManager } from "../SchematicsTemplateManager";
 import { ComponentOptions, TemplateOptions } from "./schema";
-
-function addPackages(missingPackages: Map<string, string>) {
-	return async (host: Tree, context: SchematicContext) => {
-		const packageJSON = JSON.parse((host.read("package.json") || "").toString());
-		missingPackages.forEach((version, name) => {
-			if (!packageJSON.dependencies[name]) {
-				packageJSON.dependencies[name] = version;
-			}
-		});
-		context.addTask(new NodePackageInstallTask());
-	};
-}
 
 export function component(options: ComponentOptions): Rule {
 	return async (_tree: Tree, context: SchematicContext) => {
@@ -47,34 +35,48 @@ export function component(options: ComponentOptions): Rule {
 
 		const missingPackages: Map<string, string> = new Map();
 		// TODO: reuse component schematic?
-		return chain([...addedComponents.map(templateOpts => {
-			const config = templateOpts.templateInst.generateConfig(templateOpts.name, {});
-			context.logger.info(`Generating ${templateOpts.templateInst.name} with name: ${templateOpts.name}`);
-			return chain([
-				...templateOpts.templateInst.templatePaths.map(templatePath =>
-					mergeWith(
-						apply(url(Util.relativePath(__filename, templatePath, true)), [
-							template(config)
-						]
-						), MergeStrategy.Overwrite)
-				),
-				(host: Tree, _context: SchematicContext) => {
-					if (templateOpts.templateInst) {
-						for (const packageName of templateOpts.templateInst.packages) {
-							const packageMatch = packageName.split(/@(?=[^\/]+$)/);
-							missingPackages.set(packageMatch[0], packageMatch[1] || "*");
+		return chain([
+			...addedComponents.map(templateOpts => {
+				const config = templateOpts.templateInst.generateConfig(templateOpts.name, {});
+				context.logger.info(`Generating ${templateOpts.templateInst.name} with name: ${templateOpts.name}`);
+				return chain([
+					...templateOpts.templateInst.templatePaths.map(templatePath =>
+						mergeWith(
+							apply(url(Util.relativePath(__filename, templatePath, true)), [
+								template(config)
+							]
+							), MergeStrategy.Overwrite)
+					),
+					(host: Tree, _context: SchematicContext) => {
+						if (templateOpts.templateInst) {
+							for (const packageName of templateOpts.templateInst.packages) {
+								const packageMatch = packageName.split(/@(?=[^\/]+$)/);
+								missingPackages.set(packageMatch[0], packageMatch[1] || "*");
+							}
+							templateOpts.templateInst.virtFs = new NgTreeFileSystem(host);
+							templateOpts.templateInst.registerInProject("", templateOpts.name, { skipRoute: options.skipRoute });
 						}
-						templateOpts.templateInst.virtFs = new NgTreeFileSystem(host);
-						templateOpts.templateInst.registerInProject("", templateOpts.name, { skipRoute: options.skipRoute });
 					}
+				]);
+			}),
+			(host: Tree, _context: SchematicContext) => {
+				const installChain = [];
+				if (options.skipInstall) {
+					return;
 				}
-			]);
-		}),
-		(_host: Tree, _context: SchematicContext) => {
-			if (missingPackages.size && !options.skipInstall) {
-				return addPackages(missingPackages);
+				if (missingPackages.size) {
+					const packageJSON = JSON.parse((host.read("package.json") || "").toString());
+					missingPackages.forEach((version, name) => {
+						if (!packageJSON.dependencies[name]) {
+							packageJSON.dependencies[name] = version;
+						}
+					});
+					host.overwrite("package.json", JSON.stringify(packageJSON, null, 2));
+					const installTask = context.addTask(new NodePackageInstallTask());
+					installChain.push(installTask);
+				}
+				context.addTask(new RunSchematicTask("start", {}), installChain);
 			}
-		}
 		]);
 	};
 }
