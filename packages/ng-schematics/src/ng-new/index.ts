@@ -92,7 +92,7 @@ export function newProject(options: OptionsSchema): Rule {
 							return chain(
 								addedComponents.map(x => schematic(
 									"component",
-									Object.assign(x, { projectName: options.name })
+									Object.assign(x, { projectName: options.name, skipInstall: true })
 								))
 							);
 						}

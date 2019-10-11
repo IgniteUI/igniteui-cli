@@ -1,12 +1,25 @@
 import {
 	apply, chain, MergeStrategy, mergeWith,
-	Rule, SchematicContext, SchematicsException, template, Tree, url } from "@angular-devkit/schematics";
+	Rule, SchematicContext, SchematicsException, template, Tree, url
+} from "@angular-devkit/schematics";
 import { NodePackageInstallTask } from "@angular-devkit/schematics/tasks";
 import { IgniteUIForAngularTemplate } from "@igniteui/angular-templates";
 import { NgTreeFileSystem, Util } from "@igniteui/cli-core";
 import { SchematicsPromptSession } from "../prompt/SchematicsPromptSession";
 import { SchematicsTemplateManager } from "../SchematicsTemplateManager";
 import { ComponentOptions, TemplateOptions } from "./schema";
+
+function addPackages(missingPackages: Map<string, string>) {
+	return async (host: Tree, context: SchematicContext) => {
+		const packageJSON = JSON.parse((host.read("package.json") || "").toString());
+		missingPackages.forEach((version, name) => {
+			if (!packageJSON.dependencies[name]) {
+				packageJSON.dependencies[name] = version;
+			}
+		});
+		context.addTask(new NodePackageInstallTask());
+	};
+}
 
 export function component(options: ComponentOptions): Rule {
 	return async (_tree: Tree, context: SchematicContext) => {
@@ -32,8 +45,9 @@ export function component(options: ComponentOptions): Rule {
 			addedComponents.push(options as TemplateOptions);
 		}
 
+		const missingPackages: Map<string, string> = new Map();
 		// TODO: reuse component schematic?
-		return chain(addedComponents.map(templateOpts => {
+		return chain([...addedComponents.map(templateOpts => {
 			const config = templateOpts.templateInst.generateConfig(templateOpts.name, {});
 			context.logger.info(`Generating ${templateOpts.templateInst.name} with name: ${templateOpts.name}`);
 			return chain([
@@ -47,27 +61,20 @@ export function component(options: ComponentOptions): Rule {
 				(host: Tree, _context: SchematicContext) => {
 					if (templateOpts.templateInst) {
 						for (const packageName of templateOpts.templateInst.packages) {
-							// TODO: Refactor write to packege json
-							const packageJSON = JSON.parse((host.read("package.json") || "").toString());
-							let packageMatch = [];
-							if (packageName[0] === "@") {
-								packageMatch = packageName.split("@");
-								packageMatch.shift();
-							} else {
-								packageMatch = packageName.split("@");
-							}
-							const currentVersion = packageJSON.dependencies[packageMatch[0]];
-							if (currentVersion !== (packageMatch)[1] && currentVersion !== "*") {
-								packageJSON.dependencies[packageMatch[0]] = (packageMatch)[1] || "*";
-								host.overwrite("package.json", JSON.stringify(packageJSON, null, 2));
-								context.addTask(new NodePackageInstallTask({ packageName, workingDirectory: options.projectName }));
-							}
+							const packageMatch = packageName.split(/@(?=[^\/]+$)/);
+							missingPackages.set(packageMatch[0], packageMatch[1] || "*");
 						}
 						templateOpts.templateInst.virtFs = new NgTreeFileSystem(host);
 						templateOpts.templateInst.registerInProject("", templateOpts.name, { skipRoute: options.skipRoute });
 					}
 				}
 			]);
-		}));
+		}),
+		(_host: Tree, _context: SchematicContext) => {
+			if (missingPackages.size && !options.skipInstall) {
+				return addPackages(missingPackages);
+			}
+		}
+		]);
 	};
 }
