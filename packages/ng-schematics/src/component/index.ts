@@ -66,14 +66,18 @@ export function component(options: ComponentOptions): Rule {
 				}
 				if (missingPackages.size) {
 					const packageJSON = JSON.parse((host.read("package.json") || "").toString());
+					let shouldInstall = false;
 					missingPackages.forEach((version, name) => {
 						if (!packageJSON.dependencies[name]) {
 							packageJSON.dependencies[name] = version;
+							shouldInstall = true;
 						}
 					});
-					host.overwrite("package.json", JSON.stringify(packageJSON, null, 2));
-					const installTask = context.addTask(new NodePackageInstallTask());
-					installChain.push(installTask);
+					if (shouldInstall) {
+						host.overwrite("package.json", JSON.stringify(packageJSON, null, 2));
+						const installTask = context.addTask(new NodePackageInstallTask());
+						installChain.push(installTask);
+					}
 				}
 				context.addTask(new RunSchematicTask("start", {}), installChain);
 			}
