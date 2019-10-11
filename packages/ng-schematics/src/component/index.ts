@@ -1,6 +1,7 @@
 import {
 	apply, chain, MergeStrategy, mergeWith,
 	Rule, SchematicContext, SchematicsException, template, Tree, url } from "@angular-devkit/schematics";
+import { NodePackageInstallTask } from "@angular-devkit/schematics/tasks";
 import { IgniteUIForAngularTemplate } from "@igniteui/angular-templates";
 import { NgTreeFileSystem, Util } from "@igniteui/cli-core";
 import { SchematicsPromptSession } from "../prompt/SchematicsPromptSession";
@@ -12,31 +13,22 @@ export function component(options: ComponentOptions): Rule {
 
 		// TODO: validate template name + nameFromPath, id, modulePath, skipRoute
 		const addedComponents: TemplateOptions[] = [];
-		let singleComponent = true;
+		// if schematic was not called by ng-new
 		if (!options.templateInst) {
 			const templateManager = new SchematicsTemplateManager();
 			const projLib = templateManager.getProjectLibrary("angular", "igx-ts");
-			const prompt = new SchematicsPromptSession(templateManager, addedComponents);
-			if (!options.template) {
-				singleComponent = false;
+			if (!options.template || !options.name) {
+				const prompt = new SchematicsPromptSession(templateManager, addedComponents);
 				await prompt.chooseActionLoop(projLib);
-				options.templateInst = addedComponents[0].templateInst;
-				options.template = addedComponents[0].templateInst.id;
-				options.name = addedComponents[0].name;
+			} else {
+				if (!projLib.hasTemplate(options.template)) {
+					throw new SchematicsException(`template with id '${options.template}' not found`);
+				}
+				options.templateInst = projLib.getTemplateById(options.template) as IgniteUIForAngularTemplate;
 			}
-			if (!projLib.hasTemplate(options.template) && singleComponent) {
-				throw new SchematicsException(`template with id '${options.template}' not found`);
-			}
-			if (!options.name && singleComponent) {
-				options.name = await prompt.getUserInput({
-					type: "input",
-					name: "name",
-					message: "Provide a name for your component"
-				});
-			}
-			options.templateInst = projLib.getTemplateById(options.template) as IgniteUIForAngularTemplate;
 		}
-		if (singleComponent) {
+		// if schematic was called by ng-new OR both name and template were passed
+		if (options.templateInst) {
 			addedComponents.push(options as TemplateOptions);
 		}
 
