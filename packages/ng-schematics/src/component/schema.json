@@ -11,8 +11,7 @@
       "$default": {
         "$source": "argv",
         "index": 1
-      },
-      "x-prompt": "What name would you like to use for the component?"
+      }
     },
     "template": {
       "type": "string",
@@ -22,8 +21,5 @@
         "index": 0
       }
     }
-  },
-  "required": [
-    "name"
-  ]
+  }
 }

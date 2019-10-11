@@ -10,7 +10,7 @@ import {
 import { ProjectLibrary, Util } from "@igniteui/cli-core";
 import { defer, Observable } from "rxjs";
 import { NewProjectOptions } from "../app-projects/schema";
-import { ComponentOptions } from "../component/schema";
+import { TemplateOptions } from "../component/schema";
 import { SchematicsPromptSession } from "../prompt/SchematicsPromptSession";
 import { SchematicsTemplateManager } from "../SchematicsTemplateManager";
 import { OptionsSchema } from "./schema";
@@ -24,7 +24,7 @@ export function newProject(options: OptionsSchema): Rule {
 	return (_host: Tree, _hostContext: IgxSchematicContext) => {
 		let projLibrary: ProjectLibrary;
 		let projectOptions: NewProjectOptions;
-		const addedComponents: ComponentOptions[] = [];
+		const addedComponents: TemplateOptions[] = [];
 		const templateManager = new SchematicsTemplateManager();
 		const prompt = new SchematicsPromptSession(templateManager, addedComponents);
 
@@ -92,7 +92,7 @@ export function newProject(options: OptionsSchema): Rule {
 							return chain(
 								addedComponents.map(x => schematic(
 									"component",
-									Object.assign(x, { projectName: options.name })
+									Object.assign(x, { projectName: options.name, skipInstall: true })
 								))
 							);
 						}
