@@ -1,3 +1,17 @@
+# 5.0.0-alpha.3
+
+## igniteui/angular-schematics@8.2.500-alpha.3 (2019-10-14)
+
+#### Features
+* move schematics from igniteui-cli to @igniteui/angular-templates [#565](https://github.com/IgniteUI/igniteui-cli/issues/565)
+* add prompt session to component schematic, [#566](https://github.com/IgniteUI/igniteui-cli/issues/566) ([#571](https://github.com/IgniteUI/igniteui-cli/issues/571)) ([e25c1ce](https://github.com/IgniteUI/igniteui-cli/commit/e25c1ce))
+
+## igniteui-cli@5.0.0-alpha.3 (2019-10-14)
+
+#### Changes
+* move schematics from igniteui-cli to @igniteui/angular-templates [#565](https://github.com/IgniteUI/igniteui-cli/issues/565)
+
+
 # 5.0.0-alpha.2
 
 ## igniteui/cli-core@5.0.0-alpha.2 (2019-10-02)
