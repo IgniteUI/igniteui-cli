@@ -20,6 +20,22 @@
         "$source": "argv",
         "index": 0
       }
-    }
+    },
+    "skipRoute": {
+      "type": "boolean",
+      "description": "Should the component be added to the routing module",
+      "$default": {
+        "$source": "argv",
+        "index": 2
+      }
+	},
+	"module": {
+      "type": "string",
+      "description": "The module in which the component should be defined",
+      "$default": {
+        "$source": "argv",
+        "index": 3
+      }
+	}
   }
 }
