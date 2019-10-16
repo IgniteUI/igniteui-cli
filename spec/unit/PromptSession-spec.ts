@@ -628,6 +628,7 @@ describe("Unit - PromptSession", () => {
 		$primary: #731963 !default;
 		$secondary: #ce5712 !default;
 		$app-palette: igx-palette($primary, $secondary);
+		/* autoprefixer grid: on */
 		@include igx-core();
 		@include igx-theme($app-palette);`;
 		const actualCall = (Util.processTemplates as jasmine.Spy).calls.argsFor(0)[2]["$(CustomTheme)"].replace(/\s/g, "");
