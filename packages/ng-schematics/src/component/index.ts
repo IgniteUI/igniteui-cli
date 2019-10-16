@@ -9,35 +9,33 @@ import { SchematicsPromptSession } from "../prompt/SchematicsPromptSession";
 import { SchematicsTemplateManager } from "../SchematicsTemplateManager";
 import { ComponentOptions, TemplateOptions } from "./schema";
 
-function registerInProject(
-	templateOpts: TemplateOptions,
-	skipRoute: boolean,
-	modulePath?: string): Rule {
+function registerInProject(templateOpts: TemplateOptions, skipRoute: boolean, modulePath?: string): Rule {
 	return (host: Tree, _context: SchematicContext) => {
 		templateOpts.templateInst.virtFs = new NgTreeFileSystem(host);
 		templateOpts.templateInst.registerInProject("", templateOpts.name, { skipRoute, modulePath });
 	};
 }
 
-function updatePackageJSON(
-	templateOpts: TemplateOptions,
-	packages = new Map<string, string>(),
-	shouldUpdate = false
-): Rule {
-	return (host: Tree, _context: SchematicContext) => {
+function getMissingPackages(templateOpts: TemplateOptions, packages: Map<string, string>): Rule {
+	return (_host: Tree, _context: SchematicContext) => {
 		for (const packageName of templateOpts.templateInst.packages) {
 			const packageMatch = packageName.split(/@(?=[^\/]+$)/);
 			packages.set(packageMatch[0], packageMatch[1] || "*");
 		}
-		if (packages.size) {
+	};
+}
+
+function updatePackageJSON(installContext: { packages: Map<string, string>, shouldInstall?: boolean }): Rule {
+	return (host: Tree, _context: SchematicContext) => {
+		if (installContext.packages.size) {
 			const packageJSON = JSON.parse((host.read("package.json") || "").toString());
-			packages.forEach((version, name) => {
+			installContext.packages.forEach((version, name) => {
 				if (!packageJSON.dependencies[name]) {
 					packageJSON.dependencies[name] = version;
-					shouldUpdate = true;
+					installContext.shouldInstall = true;
 				}
 			});
-			if (shouldUpdate) {
+			if (installContext.shouldInstall) {
 				host.overwrite("package.json", JSON.stringify(packageJSON, null, 2));
 			}
 		}
@@ -56,13 +54,13 @@ function addComponent(options: TemplateOptions, skipRoute = false, modulePath?: 
 		), registerInProject(options, skipRoute, modulePath)]);
 	};
 }
-export function singleComponent(
-	templateOptions: TemplateOptions, skipRoute: boolean, missingPackages?: Map<string, string>
-) {
+export function singleComponent(templateOptions: TemplateOptions, skipRoute: boolean) {
 	return async (_tree: Tree, _context: SchematicContext) => {
+		const packages = new Map<string, string>();
 		return chain([
 			addComponent(templateOptions, skipRoute),
-			updatePackageJSON(templateOptions, missingPackages)
+			getMissingPackages(templateOptions, packages),
+			updatePackageJSON({packages})
 		]);
 	};
 }
@@ -83,22 +81,31 @@ export function component(options: ComponentOptions): Rule {
 			options.templateInst = projLib.getTemplateById(options.template) as IgniteUIForAngularTemplate;
 			addedComponents.push(options as TemplateOptions);
 		}
-		const missingPackages: Map<string, string> = new Map();
-		const shouldUpdate = false;
-		// TODO: reuse component schematic?
+		const installContext = {
+			packages: new Map(),
+			shouldInstall: false
+		};
 		return chain([
 			...addedComponents.map(templateOpts => {
 				context.logger.info(`Generating ${templateOpts.templateInst.name} with name: ${templateOpts.name}`);
 				return chain([
 					addComponent(templateOpts, options.skipRoute, options.module),
-					updatePackageJSON(templateOpts, missingPackages, shouldUpdate)
+					getMissingPackages(templateOpts, installContext.packages)
 				]);
 			}),
+			updatePackageJSON(installContext),
 			(_host: Tree, _context: SchematicContext) => {
-				if (!prompt) { return; }
-				context.addTask(
+				// if called w/ command land arguments, check if dependencies are added and add install task.
+				if (!prompt) {
+					if (installContext.shouldInstall) {
+						_context.addTask(new NodePackageInstallTask());
+						return;
+					}
+					return;
+				}
+				_context.addTask(
 					new RunSchematicTask("start", {}),
-					shouldUpdate ? [_context.addTask(new NodePackageInstallTask())] : []
+					installContext.shouldInstall ? [_context.addTask(new NodePackageInstallTask())] : []
 				);
 			}
 		]);
