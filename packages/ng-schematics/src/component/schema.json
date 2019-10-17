@@ -25,17 +25,15 @@
       "type": "boolean",
       "description": "Should the component be added to the routing module",
       "$default": {
-        "$source": "argv",
-        "index": 2
+        "$source": "argv"
       }
-	},
-	"module": {
+    },
+    "module": {
       "type": "string",
       "description": "The module in which the component should be defined",
       "$default": {
-        "$source": "argv",
-        "index": 3
+        "$source": "argv"
       }
-	}
+    }
   }
 }
