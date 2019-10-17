@@ -8,6 +8,7 @@
     "name": {
       "type": "string",
       "description": "The name of the component.",
+      "alias": "n",
       "$default": {
         "$source": "argv",
         "index": 1
@@ -16,6 +17,7 @@
     "template": {
       "type": "string",
       "description": "Template ID, such as 'grid', 'combo', etc.",
+      "alias": "t",
       "$default": {
         "$source": "argv",
         "index": 0
@@ -24,16 +26,12 @@
     "skipRoute": {
       "type": "boolean",
       "description": "Should the component be added to the routing module",
-      "$default": {
-        "$source": "argv"
-      }
+      "alias": "skr"
     },
     "module": {
       "type": "string",
       "description": "The module in which the component should be defined",
-      "$default": {
-        "$source": "argv"
-      }
+      "alias": "m"
     }
   }
 }
