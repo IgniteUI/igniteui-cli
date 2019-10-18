@@ -1,3 +1,21 @@
+# 5.0.0-beta.0
+
+## igniteui/cli-core@5.0.0-beta.0 (2019-10-18)
+
+**Note:** Version bump only for package igniteui-cli
+
+## igniteui/angular-templates@8.2.500-beta.0 (2019-10-18)
+
+**Note:** Version bump only for package igniteui-cli
+
+## igniteui/angular-schematics@8.2.500-beta.0 (2019-10-18)
+
+**Note:** Version bump only for package igniteui-cli
+
+## igniteui-cli@5.0.0-beta.0 (2019-10-18)
+
+**Note:** Version bump only for package igniteui-cli
+
 # 5.0.0-alpha.3
 
 ## igniteui/angular-schematics@8.2.500-alpha.3 (2019-10-14)
