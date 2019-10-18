@@ -18,9 +18,15 @@
       },
     "component": {
       "aliases": [ "c" ],
-      "description": "Create an Ignite UI for Angular component.",
+      "description": "Create Ignite UI for Angular components and views.",
       "factory": "./component/index#component",
       "schema": "./component/schema.json"
+    },
+    "single-component": {
+      "description": "Create an Ignite UI for Angular component.",
+      "factory": "./component/index#singleComponent",
+      "schema": "./component/schema.json",
+      "hidden": true
     },
     "cli-config": {
       "description": "Installs the needed dependencies onto the host application.",
