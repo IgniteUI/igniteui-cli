@@ -5,15 +5,6 @@
   "type": "object",
   "description": "Creates a new Ignite UI for Angular component in the given or default project.",
   "properties": {
-    "name": {
-      "type": "string",
-      "description": "The name of the component.",
-      "alias": "n",
-      "$default": {
-        "$source": "argv",
-        "index": 1
-      }
-    },
     "template": {
       "type": "string",
       "description": "Template ID, such as 'grid', 'combo', etc.",
@@ -21,6 +12,15 @@
       "$default": {
         "$source": "argv",
         "index": 0
+      }
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the component.",
+      "alias": "n",
+      "$default": {
+        "$source": "argv",
+        "index": 1
       }
     },
     "skipRoute": {

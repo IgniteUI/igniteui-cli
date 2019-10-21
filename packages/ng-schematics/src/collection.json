@@ -4,7 +4,8 @@
     "ng-new": {
       "description": "New Ignite UI for Angular project",
       "factory": "./ng-new/index#newProject",
-      "schema": "./ng-new/schema.json"
+      "schema": "./ng-new/schema.json",
+      "hidden": true
     },
     "app-projects": {
       "description": "A schematic using a source and a schema to validate options.",
@@ -12,10 +13,10 @@
       "hidden": true
     },
     "start": {
-        "description": "Run npm start",
-        "factory": "./start/index",
-        "hidden": true
-      },
+      "description": "Run npm start",
+      "factory": "./start/index",
+      "hidden": true
+    },
     "component": {
       "aliases": [ "c" ],
       "description": "Create Ignite UI for Angular components and views.",
