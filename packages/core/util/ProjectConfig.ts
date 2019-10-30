@@ -2,24 +2,14 @@ import * as fs from "fs";
 import * as os from "os";
 import * as path from "path";
 import { Config } from "../types/Config";
-import { FsFileSystem, IFileSystem } from "../typescript/TypeScriptUtils";
+import { FS_TOKEN, IFileSystem } from "../types/FileSystem";
+import { App } from "./App";
 import { Util } from "./Util";
 
 export class ProjectConfig {
 
 	public static configFile: string = "ignite-ui-cli.json";
 	public static readonly defaults: Config = require("../config/defaults.json");
-
-	private static _fs: IFileSystem;
-	public static get virtFs(): IFileSystem {
-		if (!this._fs) {
-			this._fs = new FsFileSystem();
-		}
-		return this._fs;
-	}
-	public static set virtFs(v: IFileSystem) {
-		this._fs = v;
-	}
 
 	private static schemaPath = "../config/Config.schema.json";
 
@@ -28,7 +18,7 @@ export class ProjectConfig {
 		if (os.homedir() === process.cwd()) {
 			return false;
 		}
-		return this.virtFs.fileExists(this.configFile);
+		return App.container.get<IFileSystem>(FS_TOKEN).fileExists(this.configFile);
 	}
 
 	/**
@@ -58,17 +48,18 @@ export class ProjectConfig {
 			const filePath = path.join(os.homedir(), this.configFile);
 			fs.writeFileSync(filePath, JSON.stringify(config, null, 4) + "\n");
 		} else {
-			this.virtFs.writeFile(this.configFile, JSON.stringify(config, null, 4) + "\n");
+			App.container.get<IFileSystem>(FS_TOKEN).writeFile(this.configFile, JSON.stringify(config, null, 4) + "\n");
 		}
 	}
 
 	/*** Get local configuration only */
 	public static localConfig(): Config {
 		let localConfig = {};
+		const fileSystem = App.container.get<IFileSystem>(FS_TOKEN);
 
-		if (this.virtFs.fileExists(this.configFile)) {
+		if (fileSystem.fileExists(this.configFile)) {
 			try {
-				localConfig = JSON.parse(this.virtFs.readFile(this.configFile, "utf8"));
+				localConfig = JSON.parse(fileSystem.readFile(this.configFile, "utf8"));
 			} catch (error) {
 				throw new Error(`The ${this.configFile} file is not parsed correctly. ` +
 					`The following error has occurred: ${error.message}`);

@@ -1,7 +1,7 @@
 // tslint:disable-next-line:no-implicit-dependencies
-import { Tree } from "@angular-devkit/schematics/src/tree/interface";
-import * as fs from "fs";
 import * as ts from "typescript";
+import { FS_TOKEN, IFileSystem } from "../types/FileSystem";
+import { App } from "../util";
 import { Util } from "../util/Util";
 
 export class TypeScriptUtils {
@@ -98,7 +98,8 @@ export class TypeScriptUtils {
 	 * Returns an source file, adds new line placeholders as the TS parser won't add `SyntaxKind.NewLineTrivia` to the AST.
 	 * @param filePath Path of file to read
 	 */
-	public static getFileSource(filePath: string, fileSystem: IFileSystem): ts.SourceFile {
+	public static getFileSource(filePath: string): ts.SourceFile {
+		const fileSystem = App.container.get<IFileSystem>(FS_TOKEN);
 		let targetFile = fileSystem.readFile(filePath);
 		targetFile = targetFile.replace(/(\r?\n)(\r?\n)/g, `$1${this.newLinePlaceHolder}$2`);
 		const targetSource = ts.createSourceFile(filePath, targetFile, ts.ScriptTarget.Latest, true);
@@ -110,7 +111,8 @@ export class TypeScriptUtils {
 	 * @param filePath File path
 	 * @param source Source AST to print
 	 */
-	public static saveFile(filePath: string, source: ts.SourceFile, fileSystem: IFileSystem) {
+	public static saveFile(filePath: string, source: ts.SourceFile) {
+		const fileSystem = App.container.get<IFileSystem>(FS_TOKEN);
 		// https://github.com/Microsoft/TypeScript/issues/10786#issuecomment-288987738
 		const printer: ts.Printer = ts.createPrinter();
 		let text = printer.printFile(source);
@@ -122,41 +124,4 @@ export class TypeScriptUtils {
 	}
 
 	//#endregion Utility functions
-}
-
-export interface IFileSystem {
-	fileExists(filePath: string): boolean;
-	readFile(filePath: string, encoding?: string): string;
-	writeFile(filePath: string, text: string): void;
-}
-
-export class FsFileSystem implements IFileSystem {
-	public fileExists(filePath: string): boolean {
-		return fs.existsSync(filePath);
-	}
-	public readFile(filePath: string, encoding?: string): string {
-		if (encoding) {
-			return fs.readFileSync(filePath, encoding);
-		}
-		return fs.readFileSync(filePath).toString();
-	}
-	public writeFile(filePath: string, text: string): void {
-		fs.writeFileSync(filePath, text);
-	}
-}
-
-export class NgTreeFileSystem implements IFileSystem {
-	constructor(private tree: Tree) { }
-
-	public fileExists(filePath: string): boolean {
-		return this.tree.exists(filePath);
-	}
-
-	public readFile(filePath: string, encoding?: string): string {
-		return this.tree.read(filePath).toString();
-	}
-
-	public writeFile(filePath: string, text: string): void {
-		return this.tree.overwrite(filePath, text);
-	}
 }

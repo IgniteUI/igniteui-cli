@@ -248,13 +248,10 @@ export abstract class BasePromptSession {
 	 * @param template template to get name for
 	 * @param type type of the name question
 	 */
-	protected async chooseTemplateName(
-			template: Template, type: "component" | "view" = "component",
-			addedComponents?: string[]
-		) {
+	protected async chooseTemplateName(template: Template, type: "component" | "view" = "component") {
 		const config = ProjectConfig.getConfig();
 		const availableDefaultName = Util.getAvailableName(template.name, false,
-			config.project.framework, config.project.projectType, addedComponents);
+			config.project.framework, config.project.projectType);
 
 		const templateName = await this.getUserInput({
 			type: "input",

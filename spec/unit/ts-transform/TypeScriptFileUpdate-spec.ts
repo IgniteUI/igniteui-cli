@@ -17,7 +17,7 @@ describe("Unit - TypeScriptFileUpdate", () => {
 			spyOn(TestTsFileUpdate.prototype, "initState");
 
 			const tsUpdate = new TestTsFileUpdate("/test/file");
-			expect(TypeScriptUtils.getFileSource).toHaveBeenCalledWith("/test/file", jasmine.any(FsFileSystem));
+			expect(TypeScriptUtils.getFileSource).toHaveBeenCalledWith("/test/file");
 			expect(TestTsFileUpdate.prototype.initState).toHaveBeenCalled();
 			done();
 		});
