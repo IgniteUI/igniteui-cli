@@ -380,11 +380,11 @@ export class Util {
 		} else if (framework === "react" && projectType === "igr-es6") {
 			specificPath = path.join("src", "views");
 		}
-		function checkAvailability(path: string): boolean {
+		function checkAvailability(dirPath: string): boolean {
 			if (addedComponents && addedComponents.length) {
 				return addedComponents.includes(Util.lowerDashed(defaultName));
 			} else {
-				return Util.directoryExists(path)
+				return Util.directoryExists(dirPath);
 			}
 		}
 		if (isApp) {
