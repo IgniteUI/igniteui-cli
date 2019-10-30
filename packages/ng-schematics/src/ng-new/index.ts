@@ -26,7 +26,7 @@ export function newProject(options: OptionsSchema): Rule {
 		let projectOptions: NewProjectOptions;
 		const addedComponents: TemplateOptions[] = [];
 		const templateManager = new SchematicsTemplateManager();
-		const prompt = new SchematicsPromptSession(templateManager, addedComponents);
+		const prompt = new SchematicsPromptSession(templateManager, addedComponents, []);
 
 		// TODO:
 		const defaultProjName = "IG Project";

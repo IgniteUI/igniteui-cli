@@ -2,12 +2,16 @@ import { Tree } from "@angular-devkit/schematics";
 import { IgniteUIForAngularTemplate } from "@igniteui/angular-templates";
 import {
 	BasePromptSession, BaseTemplateManager, Framework, IUserInputOptions,
-	NgTreeFileSystem, ProjectConfig, ProjectLibrary, ProjectTemplate, PromptTaskContext, Task } from "@igniteui/cli-core";
+	NgTreeFileSystem, ProjectConfig, ProjectLibrary, ProjectTemplate, PromptTaskContext, Task, Template, Util
+} from "@igniteui/cli-core";
 import { TemplateOptions } from "../component/schema";
 
 export class SchematicsPromptSession extends BasePromptSession {
 
-	constructor(templateManager: BaseTemplateManager, private rulesChain: TemplateOptions[]) {
+	constructor(
+		templateManager: BaseTemplateManager,
+		private rulesChain: TemplateOptions[],
+		private preExisting: string[]) {
 		super(templateManager);
 		this.config = ProjectConfig.getConfig();
 	}
@@ -38,6 +42,11 @@ export class SchematicsPromptSession extends BasePromptSession {
 
 	protected completeAndRun(_port?: number) {
 		// TODO?
+	}
+
+	protected async chooseTemplateName(template: Template, type: "component" | "view" = "component") {
+		return super.chooseTemplateName(template, type,
+			[...this.preExisting, ...this.rulesChain.map(e => Util.lowerDashed(e.name))]);
 	}
 
 	protected templateSelectedTask(type: "component" | "view" = "component"): Task<PromptTaskContext> {
