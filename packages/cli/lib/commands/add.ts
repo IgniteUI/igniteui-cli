@@ -82,6 +82,11 @@ command = {
 			return;
 		}
 
+		if (framework.id === "angular" && frameworkLibrary.projectType === "igx-ts") {
+			Util.warn("Psst! Did you know you can also use our schematics package to modify your Angular project directly, using the ng cli?", "yellow");
+			Util.warn("Read more at: https://www.infragistics.com/products/ignite-ui-angular/angular/components/general/getting_started.html.", "yellow");
+		}
+
 		const selectedTemplate = frameworkLibrary.getTemplateById(argv.template);
 		if (selectedTemplate) {
 

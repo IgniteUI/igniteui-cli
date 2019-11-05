@@ -91,8 +91,8 @@ export function newProject(options: OptionsSchema): Rule {
 						if (addedComponents.length) {
 							return chain(
 								addedComponents.map(x => schematic(
-									"component",
-									Object.assign(x, { projectName: options.name, skipInstall: true })
+									"single-component",
+									Object.assign(x, { projectName: options.name })
 								))
 							);
 						}

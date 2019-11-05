@@ -10,6 +10,7 @@ export abstract class ComponentOptions {
 	public template?: string;
 	public name: string;
 	public skipRoute?: boolean;
+	public module?: string;
 	public skipInstall?: boolean;
 	public projectName: string;
 }
