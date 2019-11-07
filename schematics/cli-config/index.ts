@@ -7,7 +7,7 @@ import { TypeScriptFileUpdate } from "../../lib/project-utility/TypeScriptFileUp
 import { NgTreeFileSystem } from "../../lib/project-utility/TypeScriptUtils";
 import { addTypography } from "../../migrations/update-3/index";
 import { createCliConfig } from "../utils/cli-config";
-import { addFontsToIndexHtml, importDefaultTheme } from "../utils/theme-import";
+import { addFontsToIndexHtml, getDefaultProject, importDefaultTheme } from "../utils/theme-import";
 
 function getDependencyVersion(pkg: string, tree: Tree): string {
 	const targetFile = "/package.json";
@@ -60,7 +60,7 @@ function addTypographyToProj(): Rule {
 
 function importBrowserAnimations(): Rule {
 	return (tree: Tree) => {
-		const moduleFile = "./src/app/app.module.ts";
+		const moduleFile = `${getDefaultProject(tree).sourceRoot}/app/app.module.ts`;
 		if (tree.exists(moduleFile)) {
 			const mainModule = new TypeScriptFileUpdate(moduleFile, new NgTreeFileSystem(tree));
 			mainModule.addNgModuleMeta({ import: "BrowserAnimationsModule", from: "@angular/platform-browser/animations" });
