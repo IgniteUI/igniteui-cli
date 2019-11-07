@@ -1,6 +1,8 @@
-import { WorkspaceSchema } from "@angular-devkit/core/src/experimental/workspace";
+import { SchematicsException } from "@angular-devkit/schematics";
 import { Tree } from "@angular-devkit/schematics/src/tree/interface";
 import { getWorkspace } from "@schematics/angular/utility/config";
+import { WorkspaceProject, WorkspaceSchema, ProjectType } from "@schematics/angular/utility/workspace-models";
+import * as path from "path";
 
 const cssImport = "node_modules/igniteui-angular/styles/igniteui-angular.css";
 const sassImports =
@@ -16,10 +18,11 @@ const sassImports =
 `;
 
 export function importDefaultTheme(tree: Tree): Tree {
-	if (tree.exists("/src/styles.sass")) {
+	const sourceRoot = getDefaultProject(tree).sourceRoot;
+	if (tree.exists(path.join(sourceRoot, "styles.sass"))) {
 		importDefaultThemeSass(tree, "sass");
 		return tree;
-	} else if (tree.exists("/src/styles.scss")) {
+	} else if (tree.exists(path.join(sourceRoot, "styles.scss"))) {
 		importDefaultThemeSass(tree, "scss");
 		return tree;
 	}
@@ -31,7 +34,7 @@ export function importDefaultTheme(tree: Tree): Tree {
 export function addFontsToIndexHtml(tree: Tree) {
 	const titillium = '<link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">';
 	const materialIcons = '<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">';
-	const targetFile = "/src/index.html";
+	const targetFile = getDefaultProjectBuildOptions(tree)["index"];
 	if (tree.exists(targetFile)) {
 		let content = tree.read(targetFile).toString();
 		if (!content.includes(titillium)) {
@@ -48,7 +51,8 @@ export function addFontsToIndexHtml(tree: Tree) {
 }
 
 function importDefaultThemeSass(tree: Tree, ext: string): Tree {
-	const targetFile = `/src/styles.${ext}`;
+	const sourceRoot = getDefaultProject(tree).sourceRoot;
+	const targetFile = `/${sourceRoot}/styles.${ext}`;
 	let content = tree.read(targetFile).toString();
 
 	if (!content.includes(sassImports)) {
@@ -70,6 +74,31 @@ function importIgDefaultTheme(tree: Tree): Tree {
 	}
 
 	return tree;
+}
+
+function getTargetedProjectOptions(project: WorkspaceProject<ProjectType>, target: string) {
+	if (project.targets &&
+		project.targets[target] &&
+		project.targets[target].options) {
+		return project.targets[target].options;
+	}
+
+	if (project.architect &&
+		project.architect[target] &&
+		project.architect[target].options) {
+		return project.architect[target].options;
+	}
+
+	throw new SchematicsException(`Cannot determine the project's configuration for: ${target}`);
+}
+
+export function getDefaultProject(tree: Tree): WorkspaceProject<ProjectType> {
+	const workspace = getWorkspace(tree);
+	return workspace.projects[workspace.defaultProject];
+}
+
+export function getDefaultProjectBuildOptions(tree: Tree) {
+	return getTargetedProjectOptions(getDefaultProject(tree), "build");
 }
 
 function importDefaultThemeToAngularWorkspace(workspace: WorkspaceSchema, key: string) {
