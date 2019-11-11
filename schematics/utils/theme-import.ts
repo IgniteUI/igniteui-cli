@@ -1,7 +1,7 @@
 import { SchematicsException } from "@angular-devkit/schematics";
 import { Tree } from "@angular-devkit/schematics/src/tree/interface";
 import { getWorkspace } from "@schematics/angular/utility/config";
-import { WorkspaceProject, WorkspaceSchema, ProjectType } from "@schematics/angular/utility/workspace-models";
+import { ProjectType, WorkspaceProject, WorkspaceSchema } from "@schematics/angular/utility/workspace-models";
 import * as path from "path";
 
 const cssImport = "node_modules/igniteui-angular/styles/igniteui-angular.css";
