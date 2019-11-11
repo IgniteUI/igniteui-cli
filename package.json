@@ -39,9 +39,9 @@
     "exclude": [
       "**/*.d.ts",
       "output/",
-	  "packages/cli/templates/quickstart/",
-	  "packages/cli/templates/**/files/",
-	  "packages/igx-templates/"
+      "packages/cli/templates/quickstart/",
+      "packages/cli/templates/**/files/",
+      "packages/igx-templates/"
     ],
     "reporter": [
       "lcov",
