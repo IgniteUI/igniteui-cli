@@ -7,11 +7,22 @@ describe("cli-config schematic", () => {
 	const collectionPath = path.join(__dirname, "../cli-collection.json");
 	const runner: SchematicTestRunner = new SchematicTestRunner("cli-schematics", collectionPath);
 	let tree: UnitTestTree;
+	const sourceRoot = "src";
+	// tslint:disable: object-literal-sort-keys
 	const ngJsonConfig = {
 		defaultProject: "testProj",
 		projects: {
 			testProj: {
+				sourceRoot,
 				architect: {
+					build: {
+						options: {
+							main: `${sourceRoot}/main.ts`,
+							polyfills: `${sourceRoot}/polyfills.ts`,
+							scripts: [],
+							index: `${sourceRoot}/index.html`
+						}
+					},
 					serve: {}
 				}
 			}
@@ -138,7 +149,7 @@ describe("cli-config schematic", () => {
 
 		// the schematic creates the hierarchy that leads to the styles object within the workspace,
 		// providing that it is not already present
-		expect(workspace.projects[currentProjectName].architect.build).toBeFalsy();
+		expect(workspace.projects[currentProjectName].architect.build.styles).toBeFalsy();
 		expect(workspace.projects[currentProjectName].architect.test).toBeFalsy();
 	});
 
