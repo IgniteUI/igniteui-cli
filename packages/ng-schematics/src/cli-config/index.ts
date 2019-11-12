@@ -3,7 +3,7 @@ import { yellow } from "@angular-devkit/core/src/terminal";
 import { chain, FileDoesNotExistException, Rule, Tree } from "@angular-devkit/schematics";
 import { addTypography, NgTreeFileSystem, TypeScriptFileUpdate } from "@igniteui/cli-core";
 import { createCliConfig } from "../utils/cli-config";
-import { addFontsToIndexHtml, importDefaultTheme } from "../utils/theme-import";
+import { addFontsToIndexHtml, getDefaultProject, importDefaultTheme } from "../utils/theme-import";
 
 function getDependencyVersion(pkg: string, tree: Tree): string {
 	const targetFile = "/package.json";
@@ -56,7 +56,7 @@ function addTypographyToProj(): Rule {
 
 function importBrowserAnimations(): Rule {
 	return (tree: Tree) => {
-		const moduleFile = "./src/app/app.module.ts";
+		const moduleFile = `${getDefaultProject(tree).sourceRoot}/app/app.module.ts`;
 		if (tree.exists(moduleFile)) {
 			const mainModule = new TypeScriptFileUpdate(moduleFile, new NgTreeFileSystem(tree));
 			mainModule.addNgModuleMeta({ import: "BrowserAnimationsModule", from: "@angular/platform-browser/animations" });
