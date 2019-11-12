@@ -72,7 +72,7 @@ export function component(options: ComponentOptions): Rule {
 		const projLib = templateManager.getProjectLibrary("angular", "igx-ts");
 		let prompt: SchematicsPromptSession;
 		if (!options.template || !options.name) {
-			prompt = new SchematicsPromptSession(templateManager, addedComponents);
+			prompt = new SchematicsPromptSession(templateManager, addedComponents, _tree.getDir("src/app").subdirs);
 			await prompt.chooseActionLoop(projLib);
 		} else {
 			if (!projLib.hasTemplate(options.template)) {
