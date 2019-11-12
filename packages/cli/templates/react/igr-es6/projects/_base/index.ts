@@ -39,6 +39,7 @@ export class BaseIgrProject implements ProjectTemplate {
 			"cliVersion": Util.version(),
 			"dash-name": Util.lowerDashed(name),
 			"description": this.description,
+			"dot": ".",
 			"path": name,
 			"projectTemplate": this.id
 		};

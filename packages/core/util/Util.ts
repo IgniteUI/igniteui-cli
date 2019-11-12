@@ -91,9 +91,6 @@ export class Util {
 				targetPath = Util.applyConfigTransformation(targetPath, Util.applyDelimiters(configuration,
 					delimiters.path || defaultDelimiters.path));
 				Util.createDirectory(path.dirname(targetPath));
-				if (path.basename(targetPath) === "gitignore") {
-					targetPath = path.join(path.dirname(targetPath), ".gitignore");
-				}
 				const writeStream = fs.createWriteStream(targetPath);
 				const isImage = imageExtensions.indexOf(path.extname(targetPath)) !== -1;
 				fs.createReadStream(filePath)
@@ -366,7 +363,7 @@ export class Util {
 	}
 
 	public static getAvailableName(
-		defaultName: string, isApp: boolean, framework?: string, projectType?: string): string {
+		defaultName: string, isApp: boolean, framework?: string, projectType?: string, addedComponents?: string[]): string {
 
 		const baseLength = defaultName.length;
 		let specificPath = "";
@@ -380,12 +377,19 @@ export class Util {
 		} else if (framework === "react" && projectType === "igr-es6") {
 			specificPath = path.join("src", "views");
 		}
+		function checkAvailability(dirPath: string): boolean {
+			if (addedComponents && addedComponents.length) {
+				return addedComponents.includes(Util.lowerDashed(defaultName));
+			} else {
+				return Util.directoryExists(dirPath);
+			}
+		}
 		if (isApp) {
-			while (Util.directoryExists(path.join(process.cwd(), defaultName))) {
+			while (checkAvailability(path.join(process.cwd(), defaultName))) {
 				defaultName = Util.incrementName(defaultName, baseLength);
 			}
 		} else {
-			while (Util.directoryExists(path.join(process.cwd(), specificPath, Util.lowerDashed(defaultName)))) {
+			while (checkAvailability(path.join(process.cwd(), specificPath, Util.lowerDashed(defaultName)))) {
 				defaultName = Util.incrementName(defaultName, baseLength);
 			}
 		}
