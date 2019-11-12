@@ -57,6 +57,7 @@ $app-palette: igx-palette($primary, $secondary);
 			CustomTheme: "",
 			dashName: Util.lowerDashed(name),
 			DefaultTheme: "",
+			dot: ".",
 			path: name,
 			projectTemplate: this.id
 		};

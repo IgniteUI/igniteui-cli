@@ -43,6 +43,7 @@ class EmptyProject implements ProjectTemplate {
 			"cliVersion": Util.version(),
 			"dash-name": Util.lowerDashed(name),
 			"description": this.description,
+			"dot": ".",
 			"igniteuiSource": "./node_modules/ignite-ui"
 		};
 	}

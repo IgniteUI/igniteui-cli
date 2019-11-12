@@ -91,9 +91,6 @@ export class Util {
 				targetPath = Util.applyConfigTransformation(targetPath, Util.applyDelimiters(configuration,
 					delimiters.path || defaultDelimiters.path));
 				Util.createDirectory(path.dirname(targetPath));
-				if (path.basename(targetPath) === "gitignore") {
-					targetPath = path.join(path.dirname(targetPath), ".gitignore");
-				}
 				const writeStream = fs.createWriteStream(targetPath);
 				const isImage = imageExtensions.indexOf(path.extname(targetPath)) !== -1;
 				fs.createReadStream(filePath)
