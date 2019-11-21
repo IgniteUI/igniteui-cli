@@ -1,8 +1,9 @@
 import { DependencyNotFoundException } from "@angular-devkit/core";
 import { yellow } from "@angular-devkit/core/src/terminal";
 import { chain, FileDoesNotExistException, Rule, Tree } from "@angular-devkit/schematics";
-import { addTypography, NgTreeFileSystem, TypeScriptFileUpdate } from "@igniteui/cli-core";
+import { addTypography, TypeScriptFileUpdate } from "@igniteui/cli-core";
 import { createCliConfig } from "../utils/cli-config";
+import { setVirtual } from "../utils/NgFileSystem";
 import { addFontsToIndexHtml, getDefaultProject, importDefaultTheme } from "../utils/theme-import";
 
 function getDependencyVersion(pkg: string, tree: Tree): string {
@@ -58,7 +59,7 @@ function importBrowserAnimations(): Rule {
 	return (tree: Tree) => {
 		const moduleFile = `${getDefaultProject(tree).sourceRoot}/app/app.module.ts`;
 		if (tree.exists(moduleFile)) {
-			const mainModule = new TypeScriptFileUpdate(moduleFile, new NgTreeFileSystem(tree));
+			const mainModule = new TypeScriptFileUpdate(moduleFile);
 			mainModule.addNgModuleMeta({ import: "BrowserAnimationsModule", from: "@angular/platform-browser/animations" });
 			mainModule.finalize();
 		}
@@ -74,11 +75,14 @@ function importStyles(): Rule {
 
 // tslint:disable-next-line:space-before-function-paren
 export default function (): Rule {
-	return chain([
-		importStyles(),
-		addTypographyToProj(),
-		importBrowserAnimations(),
-		createCliConfig(),
-		displayVersionMismatch()
-	]);
+	return (tree: Tree) => {
+		setVirtual(tree);
+		return chain([
+			importStyles(),
+			addTypographyToProj(),
+			importBrowserAnimations(),
+			createCliConfig(),
+			displayVersionMismatch()
+		]);
+	};
 }

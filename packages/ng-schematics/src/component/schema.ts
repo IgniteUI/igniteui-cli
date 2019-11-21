@@ -3,6 +3,7 @@ import { IgniteUIForAngularTemplate } from "@igniteui/angular-templates";
 export abstract class TemplateOptions {
 	public templateInst: IgniteUIForAngularTemplate;
 	public name: string;
+	public projectName?: string;
 }
 
 export abstract class ComponentOptions {

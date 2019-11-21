@@ -1,5 +1,5 @@
 import { IgniteUIForAngularTemplate } from "@igniteui/angular-templates";
-import { ProjectConfig, TypeScriptFileUpdate, Util } from "@igniteui/cli-core";
+import { App, ProjectConfig, TypeScriptFileUpdate, Util } from "@igniteui/cli-core";
 import * as path from "path";
 import { resetSpy } from "../../helpers/utils";
 
@@ -43,14 +43,18 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 
 		it("registers route and declare component", async done => {
 			const templ = new TestTemplate();
-			spyOn(templ.virtFs, "fileExists").and.callFake(file => {
+			const mockFS = {
+				fileExists: () => {}
+			};
+			spyOn(App.container, "get").and.returnValue(mockFS);
+			spyOn(mockFS, "fileExists").and.callFake(file => {
 				if (file === "src/app/app-routing.module.ts") {
 					return true;
 				}
 			});
 			templ.registerInProject("target/path", "view name");
 			expect(helpers.TypeScriptFileUpdate)
-			.toHaveBeenCalledWith(path.join("target/path", "src/app/app-routing.module.ts"),  templ.virtFs);
+			.toHaveBeenCalledWith(path.join("target/path", "src/app/app-routing.module.ts"));
 			expect(helpers.tsUpdateMock.addRoute).toHaveBeenCalledWith(
 				path.join("target/path", `src/app/view-name/view-name.component.ts`),
 				"view-name", //path
@@ -58,7 +62,7 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			);
 
 			expect(helpers.TypeScriptFileUpdate)
-			.toHaveBeenCalledWith(path.join("target/path", "src/app/app.module.ts"), templ.virtFs);
+			.toHaveBeenCalledWith(path.join("target/path", "src/app/app.module.ts"));
 			expect(helpers.tsUpdateMock.addDeclaration).toHaveBeenCalledWith(
 				path.join("target/path", `src/app/view-name/view-name.component.ts`),
 				false // if added to a custom module => true
@@ -138,7 +142,7 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			// just declare
 			expect(helpers.TypeScriptFileUpdate).toHaveBeenCalledTimes(1);
 			expect(helpers.TypeScriptFileUpdate)
-			.toHaveBeenCalledWith(path.join("target/path", "src/app/app.module.ts"), templ.virtFs);
+			.toHaveBeenCalledWith(path.join("target/path", "src/app/app.module.ts"));
 			expect(helpers.tsUpdateMock.addDeclaration).toHaveBeenCalledWith(
 				path.join("target/path", `src/app/view-name/view-name.component.ts`),
 				false // if added to a custom module => true

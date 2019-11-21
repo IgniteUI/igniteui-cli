@@ -5,7 +5,8 @@ import * as glob from "glob";
 import * as path from "path";
 import through2 = require("through2");
 import { BaseComponent } from "../templates/BaseComponent";
-import { Component, ComponentGroup, Delimiter, Template, TemplateDelimiters } from "../types";
+import { Component, ComponentGroup, Delimiter, FS_TOKEN, IFileSystem, Template, TemplateDelimiters } from "../types";
+import { App } from "./App";
 import { GoogleAnalytics } from "./GoogleAnalytics";
 
 const imageExtensions = [".png", ".jpg", ".jpeg", ".gif", ".bmp", ".ico"];
@@ -34,9 +35,9 @@ export class Util {
 		return path.basename(process.cwd());
 	}
 
-	public static directoryExists(filePath) {
+	public static directoryExists(dirPath) {
 		try {
-			return fs.statSync(filePath).isDirectory();
+			return App.container.get<IFileSystem>(FS_TOKEN).directoryExists(dirPath);
 		} catch (err) {
 			return false;
 		}
@@ -44,7 +45,7 @@ export class Util {
 
 	public static fileExists(filePath) {
 		try {
-			return fs.statSync(filePath).isFile();
+			return App.container.get<IFileSystem>(FS_TOKEN).fileExists(filePath);
 		} catch (err) {
 			return false;
 		}
@@ -363,7 +364,7 @@ export class Util {
 	}
 
 	public static getAvailableName(
-		defaultName: string, isApp: boolean, framework?: string, projectType?: string, addedComponents?: string[]): string {
+		defaultName: string, isApp: boolean, framework?: string, projectType?: string): string {
 
 		const baseLength = defaultName.length;
 		let specificPath = "";
@@ -377,19 +378,13 @@ export class Util {
 		} else if (framework === "react" && projectType === "igr-es6") {
 			specificPath = path.join("src", "views");
 		}
-		function checkAvailability(dirPath: string): boolean {
-			if (addedComponents && addedComponents.length) {
-				return addedComponents.includes(Util.lowerDashed(defaultName));
-			} else {
-				return Util.directoryExists(dirPath);
-			}
-		}
+
 		if (isApp) {
-			while (checkAvailability(path.join(process.cwd(), defaultName))) {
+			while (Util.directoryExists(path.join(App.workDir, defaultName))) {
 				defaultName = Util.incrementName(defaultName, baseLength);
 			}
 		} else {
-			while (checkAvailability(path.join(process.cwd(), specificPath, Util.lowerDashed(defaultName)))) {
+			while (Util.directoryExists(path.join(App.workDir, specificPath, Util.lowerDashed(defaultName)))) {
 				defaultName = Util.incrementName(defaultName, baseLength);
 			}
 		}
