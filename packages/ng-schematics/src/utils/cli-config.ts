@@ -48,10 +48,3 @@ function getPort(workspace: WorkspaceSchema) {
 		return projectServe.port;
 	}
 }
-
-function getProjectType(workspace: WorkspaceSchema) {
-	const targetProjectName = workspace.defaultProject;
-	if (targetProjectName) {
-		return workspace.projects[targetProjectName].projectType;
-	}
-}

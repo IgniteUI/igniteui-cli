@@ -13,3 +13,4 @@ export * from "./ProjectTemplate";
 export * from "./TemplateDependency";
 export * from "./enumerations/ControlExtraConfigType";
 export * from "./TemplateReplaceDelimiters";
+export * from "./FileSystem";

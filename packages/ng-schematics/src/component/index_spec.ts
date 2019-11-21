@@ -15,6 +15,7 @@ describe("component",  () => {
 			templatePaths: []
 		};
 		const mockLib = {
+			getCustomTemplates: () => {},
 			getTemplateById: jasmine.createSpy().and.returnValue(mockInst),
 			hasTemplate: jasmine.createSpy().and.returnValue(true)
 		};

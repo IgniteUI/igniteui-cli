@@ -1,23 +1,28 @@
-import { Tree } from "@angular-devkit/schematics";
+import { SchematicContext, Tree } from "@angular-devkit/schematics";
 import { IgniteUIForAngularTemplate } from "@igniteui/angular-templates";
 import {
-	BasePromptSession, BaseTemplateManager, Framework, IUserInputOptions,
-	NgTreeFileSystem, ProjectConfig, ProjectLibrary, ProjectTemplate, PromptTaskContext, Task, Template, Util
+	BasePromptSession, BaseTemplateManager, Framework,
+	IUserInputOptions, ProjectConfig, ProjectLibrary, ProjectTemplate, PromptTaskContext, Task
 } from "@igniteui/cli-core";
+import { of } from "rxjs";
 import { TemplateOptions } from "../component/schema";
 
 export class SchematicsPromptSession extends BasePromptSession {
 
+	public tree: Tree;
+	public context: SchematicContext;
+	public projectName: string;
+
 	constructor(
-		templateManager: BaseTemplateManager,
-		private rulesChain: TemplateOptions[],
-		private preExisting: string[]) {
+		templateManager: BaseTemplateManager) {
 		super(templateManager);
 		this.config = ProjectConfig.getConfig();
 	}
 
-	public setTree(tree: Tree) {
-		ProjectConfig.virtFs = new NgTreeFileSystem(tree);
+	public setContext(context: SchematicContext, tree: Tree, projectName: string) {
+		this.context = context;
+		this.tree = tree;
+		this.projectName = projectName;
 	}
 
 	public async getUserInput(options: IUserInputOptions, withBackChoice: boolean = false): Promise<string> {
@@ -44,11 +49,6 @@ export class SchematicsPromptSession extends BasePromptSession {
 		// TODO?
 	}
 
-	protected async chooseTemplateName(template: Template, type: "component" | "view" = "component") {
-		return super.chooseTemplateName(template, type,
-			[...this.preExisting, ...this.rulesChain.map(e => Util.lowerDashed(e.name))]);
-	}
-
 	protected templateSelectedTask(type: "component" | "view" = "component"): Task<PromptTaskContext> {
 		return async (_runner, context) => {
 			if (!context.template) {
@@ -61,9 +61,11 @@ export class SchematicsPromptSession extends BasePromptSession {
 
 			const options: TemplateOptions = {
 				name,
+				projectName: this.projectName,
 				templateInst: context.template as IgniteUIForAngularTemplate
 			};
-			this.rulesChain.push(options);
+			const schematic = this.context.schematic.collection.createSchematic("single-component");
+			await schematic.call(options, of(this.tree), this.context).toPromise();
 			return true;
 		};
 	}

@@ -27,7 +27,7 @@ describe("Unit - TypeScriptUtils", () => {
 			// tslint:disable-next-line:forin
 			for (const key in newLines) {
 				readFileSpy.and.returnValue(sourceText.join(newLines[key]));
-				const result = TypeScriptUtils.getFileSource(`test/file${key}.ts`, fileSystem);
+				const result = TypeScriptUtils.getFileSource(`test/file${key}.ts`);
 				expect(fs.readFileSync).toHaveBeenCalledWith(`test/file${key}.ts`);
 				expect(ts.createSourceFile).toHaveBeenCalledWith(
 					`test/file${key}.ts`,
@@ -60,7 +60,7 @@ describe("Unit - TypeScriptUtils", () => {
 				const source: ts.SourceFile = {} as any;
 				printerSpy.and.returnValue(printer);
 
-				const result = TypeScriptUtils.saveFile(`test/file${key}.ts`, source, fileSystem);
+				const result = TypeScriptUtils.saveFile(`test/file${key}.ts`, source);
 				expect(printer.printFile).toHaveBeenCalledWith(source);
 				expect(fs.writeFileSync).toHaveBeenCalledWith(`test/file${key}.ts`, expectedText.join(newLines[key]));
 			}
