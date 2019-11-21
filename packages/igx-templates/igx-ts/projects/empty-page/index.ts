@@ -3,7 +3,7 @@ import * as path from "path";
 import { BaseIgxProject } from "../_base";
 
 export class EmptyPageTemplate extends BaseIgxProject implements ProjectTemplate {
-	public id: string = "empty-project";
+	public id: string = "empty-page";
 	public name = "Empty Project";
 	public description = "Project structure with routing and a home page";
 	public dependencies: string[] = [];
