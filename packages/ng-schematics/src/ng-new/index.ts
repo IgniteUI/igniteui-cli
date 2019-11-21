@@ -49,14 +49,28 @@ export function newProject(options: OptionsSchema): Rule {
 					// app name validation???
 					projLibrary = await prompt.getProjectLibrary(framework);
 
-					const projTemplate = await prompt.getProjectTemplate(projLibrary);
+					let projTemplate;
+
+					if (!options.template) {
+						projTemplate = await prompt.getProjectTemplate(projLibrary);
+					} else {
+						const projects = projLibrary.projectIds;
+						const selectedProj = projects.find((i: string) => i === options.template);
+						if (selectedProj !== undefined) {
+							projTemplate = projLibrary.projects.find((i: { id: any; }) => i.id === selectedProj);
+						} else {
+							projTemplate = await prompt.getProjectTemplate(projLibrary);
+						}
+					}
+
+					if (!options.theme) {
+						options.theme = await prompt.getTheme(projLibrary);
+					}
 
 					// project options:
-					const theme = await prompt.getTheme(projLibrary);
-
 					projectOptions = {
 						projTemplate,
-						theme,
+						theme: options.theme,
 						name: options.name
 					};
 					return tree;

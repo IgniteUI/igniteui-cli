@@ -14,4 +14,8 @@ export abstract class OptionsSchema {
 	public skipGit: boolean;
 
 	public skipInstall: boolean;
+
+	public theme: string;
+
+	public template: string;
 }
