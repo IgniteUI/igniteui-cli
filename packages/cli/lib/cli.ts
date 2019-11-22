@@ -1,4 +1,4 @@
-import { GoogleAnalytics, Util } from "@igniteui/cli-core";
+import { App, GoogleAnalytics, Util } from "@igniteui/cli-core";
 import * as yargs from "yargs";
 import { default as add } from "./commands/add";
 import { default as build } from "./commands/build";
@@ -25,6 +25,7 @@ function logHelp() {
 export async function run(args = null) {
 	//	we are subscribing on process.exit to catch when help is executed
 	process.on("exit", logHelp);
+	App.initialize();
 
 	const templateManager = new TemplateManager();
 

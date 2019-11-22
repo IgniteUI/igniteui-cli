@@ -1,5 +1,5 @@
 import { IgniteUIForAngularTemplate } from "@igniteui/angular-templates";
-import { GoogleAnalytics, ProjectConfig, TypeScriptFileUpdate, TypeScriptUtils, Util } from "@igniteui/cli-core";
+import { App, GoogleAnalytics, ProjectConfig, TypeScriptFileUpdate, TypeScriptUtils, Util } from "@igniteui/cli-core";
 import * as path from "path";
 import * as ts from "typescript";
 import { default as addCmd } from "../../packages/cli/lib/commands/add";
@@ -160,7 +160,11 @@ describe("Unit - Add command", () => {
 		spyOn(PackageManager, "flushQueue").and.returnValue(Promise.resolve());
 		spyOn(PackageManager, "ensureIgniteUISource");
 		spyOn(Util, "directoryExists").and.returnValue(true);
-		spyOn(mockTemplate.virtFs, "fileExists").and.callFake(file => {
+		const mockVirtFs = {
+			fileExists: () => {}
+		};
+		spyOn(App.container, "get").and.returnValue(mockVirtFs);
+		spyOn(mockVirtFs, "fileExists").and.callFake(file => {
 			if (file === "src/app/app-routing.module.ts") {
 				return true;
 			}

@@ -184,7 +184,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 export class AppModule {
 }
 `;
-		const targetFile = "/src/app/app.module.ts";
+		const targetFile = "./src/app/app.module.ts";
 		tree.create(targetFile, moduleContent);
 
 		runner.runSchematic("cli-config", {}, tree);

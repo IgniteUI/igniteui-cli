@@ -1,7 +1,9 @@
 import * as ts from "typescript";
+import { App } from "..";
 import { TemplateDependency } from "../types";
+import { FS_TOKEN, IFileSystem } from "../types/FileSystem";
 import { Util } from "../util/Util";
-import { FsFileSystem, IFileSystem, TypeScriptUtils as TsUtils } from "./TypeScriptUtils";
+import { TypeScriptUtils as TsUtils } from "./TypeScriptUtils";
 
 /**
  * Apply various updates to typescript files using AST
@@ -12,7 +14,7 @@ export class TypeScriptFileUpdate {
 	// for AST transformation API List: https://github.com/Microsoft/TypeScript/pull/13940
 
 	protected formatOptions = { spaces: false, indentSize: 4, singleQuotes: false };
-
+	private fileSystem: IFileSystem;
 	private targetSource: ts.SourceFile;
 	private importsMeta: { lastIndex: number, modulePaths: string[] };
 
@@ -27,8 +29,9 @@ export class TypeScriptFileUpdate {
 	private createdStringLiterals: string[];
 
 	/** Create updates for a file. Use `add<X>` methods to add transformations and `finalize` to apply and save them. */
-	constructor(private targetPath: string, private fileSystem: IFileSystem = new FsFileSystem()) {
-		this.targetSource = TsUtils.getFileSource(this.targetPath, this.fileSystem);
+	constructor(private targetPath: string) {
+		this.targetSource = TsUtils.getFileSource(this.targetPath);
+		this.fileSystem = App.container.get<IFileSystem>(FS_TOKEN);
 		this.initState();
 	}
 
@@ -49,7 +52,7 @@ export class TypeScriptFileUpdate {
 		// add new import statements after visitor walks:
 		this.addNewFileImports();
 
-		TsUtils.saveFile(this.targetPath, this.targetSource, this.fileSystem);
+		TsUtils.saveFile(this.targetPath, this.targetSource);
 		this.formatFile(this.targetPath);
 		// reset state in case of further updates
 		this.initState();
@@ -65,7 +68,7 @@ export class TypeScriptFileUpdate {
 	 */
 	public addRoute(filePath: string, linkPath: string, linkText: string, routesVariable = "routes") {
 		let className: string;
-		const fileSource = TsUtils.getFileSource(filePath, this.fileSystem);
+		const fileSource = TsUtils.getFileSource(filePath);
 		const relativePath: string = Util.relativePath(this.targetPath, filePath, true, true);
 
 		className = TsUtils.getClassName(fileSource.getChildren());
@@ -138,7 +141,7 @@ export class TypeScriptFileUpdate {
 	 */
 	public addDeclaration(filePath: string, addToExport?: boolean) {
 		let className: string;
-		const fileSource = TsUtils.getFileSource(filePath, this.fileSystem);
+		const fileSource = TsUtils.getFileSource(filePath);
 		const relativePath: string = Util.relativePath(this.targetPath, filePath, true, true);
 		className = TsUtils.getClassName(fileSource.getChildren());
 		if (addToExport) {

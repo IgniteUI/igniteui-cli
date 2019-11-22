@@ -7,26 +7,26 @@ import {
 	RepositoryInitializerTask,
 	RunSchematicTask
 } from "@angular-devkit/schematics/tasks";
-import { ProjectLibrary, Util } from "@igniteui/cli-core";
+import { App, ProjectLibrary, Util } from "@igniteui/cli-core";
 import { defer, Observable } from "rxjs";
 import { NewProjectOptions } from "../app-projects/schema";
-import { TemplateOptions } from "../component/schema";
 import { SchematicsPromptSession } from "../prompt/SchematicsPromptSession";
 import { SchematicsTemplateManager } from "../SchematicsTemplateManager";
+import { setVirtual } from "../utils/NgFileSystem";
 import { OptionsSchema } from "./schema";
 
 interface IgxSchematicContext extends SchematicContext {
-	projectTpe: string;
+	projectType: string;
 	theme: string;
 }
 
 export function newProject(options: OptionsSchema): Rule {
 	return (_host: Tree, _hostContext: IgxSchematicContext) => {
+		App.initialize();
 		let projLibrary: ProjectLibrary;
 		let projectOptions: NewProjectOptions;
-		const addedComponents: TemplateOptions[] = [];
 		const templateManager = new SchematicsTemplateManager();
-		const prompt = new SchematicsPromptSession(templateManager, addedComponents, []);
+		const prompt = new SchematicsPromptSession(templateManager);
 
 		// TODO:
 		const defaultProjName = "IG Project";
@@ -34,7 +34,6 @@ export function newProject(options: OptionsSchema): Rule {
 		return chain([
 			(tree: Tree, _context: IgxSchematicContext): Observable<Tree> => {
 				return defer(async () => {
-
 					if (!options.name || !prompt.nameIsValid(options.name)) {
 						options.name = await prompt.getUserInput({
 							type: "input",
@@ -62,6 +61,10 @@ export function newProject(options: OptionsSchema): Rule {
 					}
 
 					// project options:
+					// cache available views and components, same as in component Schematic
+					const components = projLibrary.components;
+					const views = (projLibrary as any).customTemplates;
+
 					projectOptions = {
 						projTemplate,
 						theme: options.theme,
@@ -77,7 +80,8 @@ export function newProject(options: OptionsSchema): Rule {
 					// externalSchematic("@schematics/angular", "application", {
 					// 	projectRoot: "", name: options.name, skipInstall: true, routing: true, style: "scss"
 					// }),
-					(_tree: Tree, _context: IgxSchematicContext) => {
+					(tree: Tree, _context: IgxSchematicContext) => {
+						setVirtual(tree);
 						// extend project entry point:
 						return schematic("app-projects", projectOptions);
 					},
@@ -88,22 +92,12 @@ export function newProject(options: OptionsSchema): Rule {
 							tree.rename("gitignore", ".gitignore");
 						}
 					},
-					(tree: Tree, _context: IgxSchematicContext) => {
+					(tree: Tree, context: IgxSchematicContext) => {
 						return defer(async () => {
-							prompt.setTree(tree);
+							prompt.setContext(context, tree, options.name as string);
 							await prompt.chooseActionLoop(projLibrary);
 							return tree;
 						});
-					},
-					(_tree: Tree, _context: IgxSchematicContext) => {
-						if (addedComponents.length) {
-							return chain(
-								addedComponents.map(x => schematic(
-									"single-component",
-									Object.assign(x, { projectName: options.name })
-								))
-							);
-						}
 					},
 					(_tree: Tree, _context: IgxSchematicContext) => {
 						return move(options.name!);

@@ -4,14 +4,14 @@ import {
 } from "@angular-devkit/schematics";
 import { NodePackageInstallTask, RunSchematicTask } from "@angular-devkit/schematics/tasks";
 import { IgniteUIForAngularTemplate } from "@igniteui/angular-templates";
-import { NgTreeFileSystem, Util } from "@igniteui/cli-core";
+import { App, FS_TYPE_TOKEN, FsTypes, Util } from "@igniteui/cli-core";
 import { SchematicsPromptSession } from "../prompt/SchematicsPromptSession";
 import { SchematicsTemplateManager } from "../SchematicsTemplateManager";
+import { setVirtual } from "../utils/NgFileSystem";
 import { ComponentOptions, TemplateOptions } from "./schema";
 
 function registerInProject(templateOpts: TemplateOptions, skipRoute: boolean, modulePath?: string): Rule {
-	return (host: Tree, _context: SchematicContext) => {
-		templateOpts.templateInst.virtFs = new NgTreeFileSystem(host);
+	return (_host: Tree, _context: SchematicContext) => {
 		templateOpts.templateInst.registerInProject("", templateOpts.name, { skipRoute, modulePath });
 	};
 }
@@ -55,24 +55,38 @@ function addComponent(options: TemplateOptions, skipRoute = false, modulePath?: 
 	};
 }
 export function singleComponent(templateOptions: TemplateOptions, skipRoute: boolean) {
-	return async (_tree: Tree, _context: SchematicContext) => {
+	return async (tree: Tree, _context: SchematicContext) => {
 		const packages = new Map<string, string>();
+		setVirtual(tree);
 		return chain([
 			addComponent(templateOptions, skipRoute),
 			getMissingPackages(templateOptions, packages),
-			updatePackageJSON({packages})
+			updatePackageJSON({ packages })
 		]);
 	};
 }
 export function component(options: ComponentOptions): Rule {
-	return async (_tree: Tree, context: SchematicContext) => {
-
+	return async (tree: Tree, context: SchematicContext) => {
+		App.initialize();
 		const addedComponents: TemplateOptions[] = [];
 		const templateManager = new SchematicsTemplateManager();
 		const projLib = templateManager.getProjectLibrary("angular", "igx-ts");
+		/**
+		 * MDNT
+		 * Once inside the chooseActionLoop, the projLibrary cannot properly get
+		 * its templates, as it seems it cannot read outside of the current context
+		 * Since the projLib caches its templates, we make the initial call here so we have
+		 * access to the in the following steps.
+		 */
+		const properties = {
+			component: projLib.components,
+			custom: projLib.getCustomTemplates()
+		};
 		let prompt: SchematicsPromptSession;
 		if (!options.template || !options.name) {
-			prompt = new SchematicsPromptSession(templateManager, addedComponents, _tree.getDir("src/app").subdirs);
+			prompt = new SchematicsPromptSession(templateManager);
+			prompt.setContext(context, tree, options.name as string);
+			setVirtual(tree);
 			await prompt.chooseActionLoop(projLib);
 		} else {
 			if (!projLib.hasTemplate(options.template)) {
@@ -89,13 +103,16 @@ export function component(options: ComponentOptions): Rule {
 			...addedComponents.map(templateOpts => {
 				context.logger.info(`Generating ${templateOpts.templateInst.name} with name: ${templateOpts.name}`);
 				return chain([
-					addComponent(templateOpts, options.skipRoute, options.module),
-					getMissingPackages(templateOpts, installContext.packages)
-				]);
+					(_tree: Tree, _context: SchematicContext) => {
+						return App.container.get(FS_TYPE_TOKEN) === FsTypes.virtual ?
+							_tree :
+							addComponent(templateOpts, options.skipRoute || false, options.module);
+					},
+					getMissingPackages(templateOpts, installContext.packages)]);
 			}),
 			updatePackageJSON(installContext),
 			(_host: Tree, _context: SchematicContext) => {
-				// if called w/ command land arguments, check if dependencies are added and add install task.
+				// if called w/ command line arguments, check if dependencies are added and add install task.
 				if (!prompt) {
 					if (installContext.shouldInstall) {
 						_context.addTask(new NodePackageInstallTask());
