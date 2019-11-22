@@ -41,7 +41,7 @@
     "template": {
       "description": "Project template.",
       "type": "string",
-      "default": "side-nav"
+      "default": "empty-project"
     }
   },
   "required": [

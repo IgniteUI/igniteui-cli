@@ -54,13 +54,7 @@ export function newProject(options: OptionsSchema): Rule {
 					if (!options.template) {
 						projTemplate = await prompt.getProjectTemplate(projLibrary);
 					} else {
-						const projects = projLibrary.projectIds;
-						const selectedProj = projects.find((i: string) => i === options.template);
-						if (selectedProj !== undefined) {
-							projTemplate = projLibrary.projects.find((i: { id: any; }) => i.id === selectedProj);
-						} else {
-							projTemplate = await prompt.getProjectTemplate(projLibrary);
-						}
+						projTemplate = projLibrary.getProject(options.template);
 					}
 
 					if (!options.theme) {
