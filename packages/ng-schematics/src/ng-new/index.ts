@@ -1,6 +1,6 @@
 import {
 	apply, chain, empty, MergeStrategy, mergeWith,
-	move, Rule, schematic, SchematicContext, Tree
+	move, Rule, schematic, SchematicContext, SchematicsException, Tree
 } from "@angular-devkit/schematics";
 import {
 	NodePackageInstallTask,
@@ -54,6 +54,9 @@ export function newProject(options: OptionsSchema): Rule {
 						projTemplate = await prompt.getProjectTemplate(projLibrary);
 					} else {
 						projTemplate = projLibrary.getProject(options.template);
+						if (!projLibrary.hasTemplate(options.template)) {
+							throw new SchematicsException(`template with id '${options.template}' not found`);
+						}
 					}
 
 					if (!options.theme) {
