@@ -54,7 +54,7 @@ export function newProject(options: OptionsSchema): Rule {
 						projTemplate = await prompt.getProjectTemplate(projLibrary);
 					} else {
 						projTemplate = projLibrary.getProject(options.template);
-						if (!projLibrary.hasTemplate(options.template)) {
+						if (!projTemplate) {
 							throw new SchematicsException(`template with id '${options.template}' not found`);
 						}
 					}
