@@ -74,8 +74,8 @@ export function newProject(options: OptionsSchema): Rule {
 
 					projectOptions = {
 						projTemplate,
-						theme: options.theme,
-						name: options.name
+						name: options.name,
+						theme: options.theme
 					};
 					return tree;
 				});
