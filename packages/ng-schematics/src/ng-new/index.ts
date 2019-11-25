@@ -63,6 +63,10 @@ export function newProject(options: OptionsSchema): Rule {
 						options.theme = await prompt.getTheme(projLibrary);
 					}
 
+					if (options.theme && projLibrary.themes.indexOf(options.theme) === -1) {
+						throw new SchematicsException(`Theme not supported`);
+					}
+
 					// project options:
 					// cache available views and components, same as in component Schematic
 					const components = projLibrary.components;
