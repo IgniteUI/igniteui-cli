@@ -12,8 +12,8 @@ import { SchematicsPromptSession } from "../prompt/SchematicsPromptSession";
 
 const collectionPath = path.join(__dirname, "../collection.json");
 
-fdescribe("igniteui-angular-schematics", () => {
-	fit("works", done => {
+describe("igniteui-angular-schematics", () => {
+	it("works", done => {
 		const runner = new SchematicTestRunner("schematics", collectionPath);
 		const myTree = Tree.empty();
 		const workingDirectory = "my-test-project";
