@@ -23,6 +23,9 @@ describe("igniteui-angular-schematics", () => {
 			.and.returnValue(Promise.resolve(true)),
 			getProjectLibrary: spyOn(SchematicsPromptSession.prototype, "getProjectLibrary")
 			.and.returnValue((Promise.resolve(mockLibrary))),
+			getProjectTemplate: spyOn(SchematicsPromptSession.prototype, "getProjectTemplate").and
+			.returnValue((e: ProjectLibrary) => Promise.resolve(e.templates[0])),
+			getTheme: spyOn(SchematicsPromptSession.prototype, "getTheme").and.returnValue(Promise.resolve()),
 			setTree: spyOn(SchematicsPromptSession.prototype, "setContext").and.callThrough()
 		};
 

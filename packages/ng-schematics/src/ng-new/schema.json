@@ -35,13 +35,11 @@
     "theme": {
       "description": "Project theme.",
       "type": "string",
-      "default": "custom",
       "alias": "th"
     },
     "template": {
       "description": "Project template.",
-      "type": "string",
-      "default": "empty-project"
+      "type": "string"
     }
   },
   "required": [
