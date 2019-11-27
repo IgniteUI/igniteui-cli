@@ -31,13 +31,9 @@ export function newProject(options: OptionsSchema): Rule {
 		// TODO:
 		const defaultProjName = "IG Project";
 		let allOptionsProvided: boolean = false;
-		let defaultOptions: boolean = false;
 
 		if (options.name && options.template && options.theme) {
 			allOptionsProvided = true;
-		}
-		if (options.defaults) {
-			defaultOptions = true;
 		}
 
 		return chain([
@@ -58,9 +54,9 @@ export function newProject(options: OptionsSchema): Rule {
 					projLibrary = await prompt.getProjectLibrary(framework);
 
 					let projTemplate;
-					if (defaultOptions) {
-						options.template = "side-nav";
-						options.theme = "Default";
+					if (options.defaults) {
+						options.template = options.template || projLibrary.projectIds[0];
+						options.theme = options.theme || projLibrary.themes[0];
 						projTemplate = projLibrary.getProject(options.template);
 						allOptionsProvided = true;
 					} else {
@@ -116,7 +112,7 @@ export function newProject(options: OptionsSchema): Rule {
 						}
 					},
 					(tree: Tree, context: IgxSchematicContext) => {
-						if (!allOptionsProvided || !defaultOptions) {
+						if (!allOptionsProvided || !options.defaults) {
 							return defer(async () => {
 								prompt.setContext(context, tree, options.name as string);
 								await prompt.chooseActionLoop(projLibrary);
