@@ -31,6 +31,15 @@
       "type": "boolean",
       "default": false,
       "alias": "sg"
+    },
+    "theme": {
+      "description": "Project theme.",
+      "type": "string",
+      "alias": "th"
+    },
+    "template": {
+      "description": "Project template.",
+      "type": "string"
     }
   },
   "required": [

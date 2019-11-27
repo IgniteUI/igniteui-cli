@@ -1,6 +1,6 @@
 import {
 	apply, chain, empty, MergeStrategy, mergeWith,
-	move, Rule, schematic, SchematicContext, Tree
+	move, Rule, schematic, SchematicContext, SchematicsException, Tree
 } from "@angular-devkit/schematics";
 import {
 	NodePackageInstallTask,
@@ -48,19 +48,34 @@ export function newProject(options: OptionsSchema): Rule {
 					// app name validation???
 					projLibrary = await prompt.getProjectLibrary(framework);
 
-					const projTemplate = await prompt.getProjectTemplate(projLibrary);
+					let projTemplate;
+
+					if (!options.template) {
+						projTemplate = await prompt.getProjectTemplate(projLibrary);
+					} else {
+						projTemplate = projLibrary.getProject(options.template);
+						if (!projTemplate) {
+							throw new SchematicsException(`template with id '${options.template}' not found`);
+						}
+					}
+
+					if (!options.theme) {
+						options.theme = await prompt.getTheme(projLibrary);
+					}
+
+					if (options.theme && projLibrary.themes.indexOf(options.theme) === -1) {
+						throw new SchematicsException(`Theme not supported`);
+					}
 
 					// project options:
-					const theme = await prompt.getTheme(projLibrary);
-
 					// cache available views and components, same as in component Schematic
 					const components = projLibrary.components;
 					const views = (projLibrary as any).customTemplates;
 
 					projectOptions = {
 						projTemplate,
-						theme,
-						name: options.name
+						name: options.name,
+						theme: options.theme
 					};
 					return tree;
 				});
