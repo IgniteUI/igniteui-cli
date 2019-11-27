@@ -17,17 +17,6 @@ describe("igniteui-angular-schematics", () => {
 		const runner = new SchematicTestRunner("schematics", collectionPath);
 		const myTree = Tree.empty();
 		const workingDirectory = "my-test-project";
-		const mockLibrary = { getProject: jasmine.createSpy("getProject").and.returnValue(true), themes: ["custom"] };
-		const mockSession = {
-			chooseActionLoop: spyOn(SchematicsPromptSession.prototype, "chooseActionLoop")
-			.and.returnValue(Promise.resolve(true)),
-			getProjectLibrary: spyOn(SchematicsPromptSession.prototype, "getProjectLibrary")
-			.and.returnValue((Promise.resolve(mockLibrary))),
-			getProjectTemplate: spyOn(SchematicsPromptSession.prototype, "getProjectTemplate").and
-			.returnValue((e: ProjectLibrary) => Promise.resolve(e.templates[0])),
-			getTheme: spyOn(SchematicsPromptSession.prototype, "getTheme").and.returnValue(Promise.resolve()),
-			setTree: spyOn(SchematicsPromptSession.prototype, "setContext").and.callThrough()
-		};
 
 		spyOn(AppProjectSchematic, "default").and.returnValue((currentTree: Tree, _context: SchematicContext) => {
 			currentTree.create("gitignore", "");
@@ -37,9 +26,6 @@ describe("igniteui-angular-schematics", () => {
 		runner.runSchematicAsync("ng-new", { version: "8.0.3", name: workingDirectory }, myTree)
 		.pipe(take(1))
 		.subscribe((e: UnitTestTree) => {
-			for (const mockFunc of Object.entries(mockSession)) {
-				expect(mockFunc[1]).toHaveBeenCalled();
-			}
 			expect(AppProjectSchematic.default).toHaveBeenCalled();
 			expect(e.files.length).toEqual(1);
 			expect(e.exists(`${workingDirectory}/.gitignore`)).toBeTruthy();
