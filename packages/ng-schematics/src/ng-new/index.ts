@@ -30,6 +30,15 @@ export function newProject(options: OptionsSchema): Rule {
 
 		// TODO:
 		const defaultProjName = "IG Project";
+		let allOptionsProvided: boolean = false;
+		let defaultOptions: boolean = false;
+
+		if (options.name && options.template && options.theme) {
+			allOptionsProvided = true;
+		}
+		if (options.defaults) {
+			defaultOptions = true;
+		}
 
 		return chain([
 			(tree: Tree, _context: IgxSchematicContext): Observable<Tree> => {
@@ -49,22 +58,29 @@ export function newProject(options: OptionsSchema): Rule {
 					projLibrary = await prompt.getProjectLibrary(framework);
 
 					let projTemplate;
-
-					if (!options.template) {
-						projTemplate = await prompt.getProjectTemplate(projLibrary);
-					} else {
+					if (defaultOptions) {
+						options.template = "side-nav";
+						options.theme = "Default";
 						projTemplate = projLibrary.getProject(options.template);
-						if (!projTemplate) {
-							throw new SchematicsException(`template with id '${options.template}' not found`);
+						allOptionsProvided = true;
+					} else {
+
+						if (!options.template) {
+							projTemplate = await prompt.getProjectTemplate(projLibrary);
+						} else {
+							projTemplate = projLibrary.getProject(options.template);
+							if (!projTemplate) {
+								throw new SchematicsException(`template with id '${options.template}' not found`);
+							}
 						}
-					}
 
-					if (!options.theme) {
-						options.theme = await prompt.getTheme(projLibrary);
-					}
+						if (!options.theme) {
+							options.theme = await prompt.getTheme(projLibrary);
+						}
 
-					if (options.theme && projLibrary.themes.indexOf(options.theme) === -1) {
-						throw new SchematicsException(`Theme not supported`);
+						if (options.theme && projLibrary.themes.indexOf(options.theme) === -1) {
+							throw new SchematicsException(`Theme not supported`);
+						}
 					}
 
 					// project options:
@@ -100,11 +116,13 @@ export function newProject(options: OptionsSchema): Rule {
 						}
 					},
 					(tree: Tree, context: IgxSchematicContext) => {
-						return defer(async () => {
-							prompt.setContext(context, tree, options.name as string);
-							await prompt.chooseActionLoop(projLibrary);
-							return tree;
-						});
+						if (!allOptionsProvided || !defaultOptions) {
+							return defer(async () => {
+								prompt.setContext(context, tree, options.name as string);
+								await prompt.chooseActionLoop(projLibrary);
+								return tree;
+							});
+						}
 					},
 					(_tree: Tree, _context: IgxSchematicContext) => {
 						return move(options.name!);
