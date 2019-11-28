@@ -54,29 +54,21 @@ export function newProject(options: OptionsSchema): Rule {
 					projLibrary = await prompt.getProjectLibrary(framework);
 
 					let projTemplate;
-					if (options.defaults) {
-						options.template = options.template || projLibrary.projectIds[0];
-						options.theme = options.theme || projLibrary.themes[0];
-						projTemplate = projLibrary.getProject(options.template);
-						allOptionsProvided = true;
+					if (!options.template) {
+						projTemplate = await prompt.getProjectTemplate(projLibrary);
 					} else {
-
-						if (!options.template) {
-							projTemplate = await prompt.getProjectTemplate(projLibrary);
-						} else {
-							projTemplate = projLibrary.getProject(options.template);
-							if (!projTemplate) {
-								throw new SchematicsException(`template with id '${options.template}' not found`);
-							}
+						projTemplate = projLibrary.getProject(options.template);
+						if (!projTemplate) {
+							throw new SchematicsException(`template with id '${options.template}' not found`);
 						}
+					}
 
-						if (!options.theme) {
-							options.theme = await prompt.getTheme(projLibrary);
-						}
+					if (!options.theme) {
+						options.theme = await prompt.getTheme(projLibrary);
+					}
 
-						if (options.theme && projLibrary.themes.indexOf(options.theme) === -1) {
-							throw new SchematicsException(`Theme not supported`);
-						}
+					if (options.theme && projLibrary.themes.indexOf(options.theme) === -1) {
+						throw new SchematicsException(`Theme not supported`);
 					}
 
 					// project options:

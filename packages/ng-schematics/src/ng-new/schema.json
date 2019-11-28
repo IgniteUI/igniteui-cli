@@ -40,11 +40,7 @@
     "template": {
       "description": "Project template.",
       "type": "string"
-    },
-	"defaults": {
-		"description": "Create new project using the default options",
-		"type": "boolean"
-	}
+    }
   },
   "required": [
     "version"
