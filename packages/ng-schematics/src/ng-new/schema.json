@@ -43,8 +43,7 @@
     },
 	"defaults": {
 		"description": "Create new project using the default options",
-		"type": "boolean",
-		"default": true
+		"type": "boolean"
 	}
   },
   "required": [
