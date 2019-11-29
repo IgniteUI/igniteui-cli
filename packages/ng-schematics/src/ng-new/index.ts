@@ -22,11 +22,11 @@ interface IgxSchematicContext extends SchematicContext {
 
 export function newProject(options: OptionsSchema): Rule {
 	return (_host: Tree, _hostContext: IgxSchematicContext) => {
+		App.initialize("angular-cli");
 		GoogleAnalytics.post({
 			t: "screenview",
 			cd: "New"
 		});
-		App.initialize("angular-cli");
 		let projLibrary: ProjectLibrary;
 		let projectOptions: NewProjectOptions;
 		const templateManager = new SchematicsTemplateManager();

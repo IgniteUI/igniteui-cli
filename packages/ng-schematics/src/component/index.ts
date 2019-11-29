@@ -67,11 +67,11 @@ export function singleComponent(templateOptions: TemplateOptions, skipRoute: boo
 }
 export function component(options: ComponentOptions): Rule {
 	return async (tree: Tree, context: SchematicContext) => {
+		App.initialize("angular-cli");
 		GoogleAnalytics.post({
 			t: "screenview",
 			cd: "Add"
 		});
-		App.initialize("angular-cli");
 		const addedComponents: TemplateOptions[] = [];
 		const templateManager = new SchematicsTemplateManager();
 		const projLib = templateManager.getProjectLibrary("angular", "igx-ts");
