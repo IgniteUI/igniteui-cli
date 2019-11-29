@@ -4,7 +4,7 @@ import {
 } from "@angular-devkit/schematics";
 import { NodePackageInstallTask, RunSchematicTask } from "@angular-devkit/schematics/tasks";
 import { IgniteUIForAngularTemplate } from "@igniteui/angular-templates";
-import { App, FS_TYPE_TOKEN, FsTypes, Util } from "@igniteui/cli-core";
+import { App, FS_TYPE_TOKEN, FsTypes, GoogleAnalytics, Util } from "@igniteui/cli-core";
 import { SchematicsPromptSession } from "../prompt/SchematicsPromptSession";
 import { SchematicsTemplateManager } from "../SchematicsTemplateManager";
 import { setVirtual } from "../utils/NgFileSystem";
@@ -67,7 +67,11 @@ export function singleComponent(templateOptions: TemplateOptions, skipRoute: boo
 }
 export function component(options: ComponentOptions): Rule {
 	return async (tree: Tree, context: SchematicContext) => {
-		App.initialize();
+		GoogleAnalytics.post({
+			t: "screenview",
+			cd: "Add"
+		});
+		App.initialize("angular-cli");
 		const addedComponents: TemplateOptions[] = [];
 		const templateManager = new SchematicsTemplateManager();
 		const projLib = templateManager.getProjectLibrary("angular", "igx-ts");
