@@ -1,9 +1,9 @@
-import { App } from "./App";
 import { createHash} from "crypto";
 import * as fs from "fs";
 import * as path from "path";
 import * as qs from "querystring";
 import { GoogleAnalyticsParameters } from "../types";
+import { App } from "./App";
 import { ProjectConfig } from "./ProjectConfig";
 import { Util } from "./Util";
 
