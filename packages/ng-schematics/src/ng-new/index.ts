@@ -34,6 +34,7 @@ export function newProject(options: OptionsSchema): Rule {
 
 		// TODO:
 		const defaultProjName = "IG Project";
+		let allOptionsProvided: boolean = false;
 
 		return chain([
 			(tree: Tree, _context: IgxSchematicContext): Observable<Tree> => {
@@ -48,12 +49,15 @@ export function newProject(options: OptionsSchema): Rule {
 						});
 					}
 
+					if (options.name && options.template && options.theme) {
+						allOptionsProvided = true;
+					}
+
 					const framework = templateManager.getFrameworkByName("angular");
 					// app name validation???
 					projLibrary = await prompt.getProjectLibrary(framework);
 
 					let projTemplate;
-
 					if (!options.template) {
 						projTemplate = await prompt.getProjectTemplate(projLibrary);
 					} else {
@@ -105,11 +109,13 @@ export function newProject(options: OptionsSchema): Rule {
 						}
 					},
 					(tree: Tree, context: IgxSchematicContext) => {
-						return defer(async () => {
-							prompt.setContext(context, tree, options.name as string);
-							await prompt.chooseActionLoop(projLibrary);
-							return tree;
-						});
+						if (!allOptionsProvided) {
+							return defer(async () => {
+								prompt.setContext(context, tree, options.name as string);
+								await prompt.chooseActionLoop(projLibrary);
+								return tree;
+							});
+						}
 					},
 					(_tree: Tree, _context: IgxSchematicContext) => {
 						return move(options.name!);
