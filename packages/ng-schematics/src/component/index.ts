@@ -4,7 +4,7 @@ import {
 } from "@angular-devkit/schematics";
 import { NodePackageInstallTask, RunSchematicTask } from "@angular-devkit/schematics/tasks";
 import { IgniteUIForAngularTemplate } from "@igniteui/angular-templates";
-import { App, FS_TYPE_TOKEN, FsTypes, GoogleAnalytics, Util } from "@igniteui/cli-core";
+import { App, FS_TYPE_TOKEN, FsTypes, GoogleAnalytics, ProjectConfig, Util } from "@igniteui/cli-core";
 import { SchematicsPromptSession } from "../prompt/SchematicsPromptSession";
 import { SchematicsTemplateManager } from "../SchematicsTemplateManager";
 import { setVirtual } from "../utils/NgFileSystem";
@@ -99,6 +99,22 @@ export function component(options: ComponentOptions): Rule {
 			options.templateInst = projLib.getTemplateById(options.template) as IgniteUIForAngularTemplate;
 			addedComponents.push(options as TemplateOptions);
 		}
+
+		const config =  ProjectConfig.getConfig();
+		const selectedTemplate = options.templateInst;
+		GoogleAnalytics.post({
+			t: "event",
+			ec: "$ng add",
+			ea: `template id: ${options.template}; file name: ${options.name}`,
+			cd1: selectedTemplate.framework,
+			cd2: selectedTemplate.projectType,
+			cd5: selectedTemplate.controlGroup,
+			cd7: selectedTemplate.id,
+			cd8: selectedTemplate.name,
+			cd11: !!config.skipGit,
+			cd14: config.project.theme
+		});
+
 		const installContext = {
 			packages: new Map(),
 			shouldInstall: false

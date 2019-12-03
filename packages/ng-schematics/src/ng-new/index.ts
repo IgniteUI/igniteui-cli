@@ -86,6 +86,18 @@ export function newProject(options: OptionsSchema): Rule {
 						theme: options.theme
 					};
 
+					GoogleAnalytics.post({
+						t: "event",
+						ec: "$ng new",
+						ea: `project name: ${options.name}; framework: ${projTemplate.framework}; ` +
+							`project type: ${projTemplate.projectType}; theme: ${options.theme}; skip-git: ${!!optionsj.skipGit}`,
+						cd1: projTemplate.framework,
+						cd2: projTemplate.projectType,
+						cd3: options.name,
+						cd11: !!options.skipGit,
+						cd14: options.theme
+					});
+
 					return tree;
 				});
 			},
