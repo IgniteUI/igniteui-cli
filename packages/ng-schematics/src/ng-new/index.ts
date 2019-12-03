@@ -134,7 +134,6 @@ export function newProject(options: OptionsSchema): Rule {
 				if (!options.skipInstall && !allOptionsProvided) {
 					context.addTask(new RunSchematicTask("start", { directory: options.name }), installChain);
 				}
-				// TODO: Conditional?
 				return tree;
 			}
 		]);
