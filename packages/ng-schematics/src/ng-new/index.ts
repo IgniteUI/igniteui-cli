@@ -90,7 +90,7 @@ export function newProject(options: OptionsSchema): Rule {
 						t: "event",
 						ec: "$ng new",
 						ea: `project name: ${options.name}; framework: ${projTemplate.framework}; ` +
-							`project type: ${projTemplate.projectType}; theme: ${options.theme}; skip-git: ${!!optionsj.skipGit}`,
+							`project type: ${projTemplate.projectType}; theme: ${options.theme}; skip-git: ${!!options.skipGit}`,
 						cd1: projTemplate.framework,
 						cd2: projTemplate.projectType,
 						cd3: options.name,
