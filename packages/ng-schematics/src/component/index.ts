@@ -110,7 +110,8 @@ export function component(options: ComponentOptions): Rule {
 				cd5: selectedTemplate.controlGroup,
 				cd7: selectedTemplate.id,
 				cd8: selectedTemplate.name,
-				cd11: !!config.skipGit
+				cd11: !!config.skipGit,
+				cd14: config.project.theme
 			});
 		}
 
