@@ -148,8 +148,9 @@ export function newProject(options: OptionsSchema): Rule {
 					installChain.push(gitTask);
 				}
 
-				// TODO: Conditional?
-				context.addTask(new RunSchematicTask("start", { directory: options.name }), installChain);
+				if (!options.skipInstall && !allOptionsProvided) {
+					context.addTask(new RunSchematicTask("start", { directory: options.name }), installChain);
+				}
 				return tree;
 			}
 		]);
