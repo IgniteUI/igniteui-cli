@@ -3,6 +3,7 @@ import * as fs from "fs";
 import * as path from "path";
 import * as qs from "querystring";
 import { GoogleAnalyticsParameters } from "../types";
+import { App } from "./App";
 import { ProjectConfig } from "./ProjectConfig";
 import { Util } from "./Util";
 
@@ -41,7 +42,7 @@ class GoogleAnalytics {
 		}
 
 		// set application name
-		parameters.an = "igniteui-cli";
+		parameters.an = App.appName;
 
 		//	set user agent string. We are using this for detecting the user's OS.
 		//	as well as node version. The latest is set as browser version.

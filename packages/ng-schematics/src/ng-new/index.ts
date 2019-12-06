@@ -7,7 +7,7 @@ import {
 	RepositoryInitializerTask,
 	RunSchematicTask
 } from "@angular-devkit/schematics/tasks";
-import { App, ProjectLibrary, Util } from "@igniteui/cli-core";
+import { App, GoogleAnalytics, ProjectLibrary, Util } from "@igniteui/cli-core";
 import { defer, Observable } from "rxjs";
 import { NewProjectOptions } from "../app-projects/schema";
 import { SchematicsPromptSession } from "../prompt/SchematicsPromptSession";
@@ -22,7 +22,11 @@ interface IgxSchematicContext extends SchematicContext {
 
 export function newProject(options: OptionsSchema): Rule {
 	return (_host: Tree, _hostContext: IgxSchematicContext) => {
-		App.initialize();
+		App.initialize("angular-cli");
+		GoogleAnalytics.post({
+			t: "screenview",
+			cd: "New"
+		});
 		let projLibrary: ProjectLibrary;
 		let projectOptions: NewProjectOptions;
 		const templateManager = new SchematicsTemplateManager();
@@ -81,6 +85,19 @@ export function newProject(options: OptionsSchema): Rule {
 						name: options.name,
 						theme: options.theme
 					};
+
+					GoogleAnalytics.post({
+						t: "event",
+						ec: "$ng new",
+						ea: `project name: ${options.name}; framework: ${projTemplate.framework}; ` +
+							`project type: ${projTemplate.projectType}; theme: ${options.theme}; skip-git: ${!!options.skipGit}`,
+						cd1: projTemplate.framework,
+						cd2: projTemplate.projectType,
+						cd3: options.name,
+						cd11: !!options.skipGit,
+						cd14: options.theme
+					});
+
 					return tree;
 				});
 			},
