@@ -34,11 +34,15 @@ export function newProject(options: OptionsSchema): Rule {
 
 		// TODO:
 		const defaultProjName = "IG Project";
-		let allOptionsProvided: boolean = false;
+		let nameProvided: boolean = false;
 
 		return chain([
 			(tree: Tree, _context: IgxSchematicContext): Observable<Tree> => {
 				return defer(async () => {
+					if (options.name) {
+						nameProvided = true;
+					}
+
 					if (!options.name || !prompt.nameIsValid(options.name)) {
 						options.name = await prompt.getUserInput({
 							type: "input",
@@ -49,30 +53,19 @@ export function newProject(options: OptionsSchema): Rule {
 						});
 					}
 
-					if (options.name && options.template && options.theme) {
-						allOptionsProvided = true;
-					}
-
 					const framework = templateManager.getFrameworkByName("angular");
 					// app name validation???
 					projLibrary = await prompt.getProjectLibrary(framework);
 
-					let projTemplate;
-					if (!options.template) {
-						projTemplate = await prompt.getProjectTemplate(projLibrary);
-					} else {
-						projTemplate = projLibrary.getProject(options.template);
-						if (!projTemplate) {
-							throw new SchematicsException(`template with id '${options.template}' not found`);
-						}
-					}
-
-					if (!options.theme) {
-						options.theme = await prompt.getTheme(projLibrary);
-					}
-
 					if (options.theme && projLibrary.themes.indexOf(options.theme) === -1) {
 						throw new SchematicsException(`Theme not supported`);
+					}
+					const theme = options.theme || projLibrary.themes[0];
+					const projectTemplate = options.template || projLibrary.projectIds[0];
+					Util.log(`Project Name: ${options.name}, theme ${theme}`);
+					const projTemplate = projLibrary.getProject(projectTemplate);
+					if (!projTemplate) {
+						throw new SchematicsException(`template with id '${options.template}' not found`);
 					}
 
 					// project options:
@@ -82,8 +75,8 @@ export function newProject(options: OptionsSchema): Rule {
 
 					projectOptions = {
 						projTemplate,
-						name: options.name,
-						theme: options.theme
+						theme,
+						name: options.name
 					};
 
 					GoogleAnalytics.post({
@@ -121,7 +114,7 @@ export function newProject(options: OptionsSchema): Rule {
 						}
 					},
 					(tree: Tree, context: IgxSchematicContext) => {
-						if (!allOptionsProvided) {
+						if (!nameProvided) {
 							return defer(async () => {
 								prompt.setContext(context, tree, options.name as string);
 								await prompt.chooseActionLoop(projLibrary);
@@ -148,7 +141,7 @@ export function newProject(options: OptionsSchema): Rule {
 					installChain.push(gitTask);
 				}
 
-				if (!options.skipInstall && !allOptionsProvided) {
+				if (!options.skipInstall) {
 					context.addTask(new RunSchematicTask("start", { directory: options.name }), installChain);
 				}
 				return tree;

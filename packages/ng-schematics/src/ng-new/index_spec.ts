@@ -17,7 +17,9 @@ describe("igniteui-angular-schematics", () => {
 		const runner = new SchematicTestRunner("schematics", collectionPath);
 		const myTree = Tree.empty();
 		const workingDirectory = "my-test-project";
-		const mockLibrary = { getProject: jasmine.createSpy("getProject").and.returnValue(true), themes: ["custom"] };
+		const mockLibrary = {
+			getProject: jasmine.createSpy("getProject").and.returnValue(true), projectIds: ["empty-page"], themes: ["custom"]
+		};
 
 		const mockSession = {
 			chooseActionLoop: spyOn(SchematicsPromptSession.prototype, "chooseActionLoop")
