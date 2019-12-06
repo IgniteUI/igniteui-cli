@@ -121,7 +121,7 @@ export class IgniteUIForAngularTemplate implements Template {
 	}
 	public setExtraConfiguration(extraConfigKeys: {}) { }
 
-	protected getBaseVariables(name: string) {
+	protected getBaseVariables(name: string): { [key: string]: string } {
 		const config = {};
 		config["name"] = Util.nameFromPath(name);
 		config["ClassName"] = Util.className(Util.nameFromPath(name));

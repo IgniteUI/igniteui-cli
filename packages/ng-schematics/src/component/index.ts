@@ -43,7 +43,8 @@ function updatePackageJSON(installContext: { packages: Map<string, string>, shou
 }
 
 function addComponent(options: TemplateOptions, skipRoute = false, modulePath?: string): Rule {
-	return async (_tree, _context) => {
+	return async (tree: Tree, _context: SchematicContext) => {
+		setVirtual(tree);
 		const config = options.templateInst.generateConfig(options.name, {});
 		return chain([...options.templateInst.templatePaths.map(templatePath =>
 			mergeWith(
@@ -55,9 +56,8 @@ function addComponent(options: TemplateOptions, skipRoute = false, modulePath?: 
 	};
 }
 export function singleComponent(templateOptions: TemplateOptions, skipRoute: boolean) {
-	return async (tree: Tree, _context: SchematicContext) => {
+	return async (_tree: Tree, _context: SchematicContext) => {
 		const packages = new Map<string, string>();
-		setVirtual(tree);
 		return chain([
 			addComponent(templateOptions, skipRoute),
 			getMissingPackages(templateOptions, packages),
