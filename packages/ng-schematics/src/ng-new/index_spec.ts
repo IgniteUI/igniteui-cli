@@ -3,6 +3,8 @@ import { NodePackageTaskOptions } from "@angular-devkit/schematics/tasks/node-pa
 import { RepositoryInitializerTaskOptions } from "@angular-devkit/schematics/tasks/repo-init/options";
 import { RunSchematicTaskOptions } from "@angular-devkit/schematics/tasks/run-schematic/options";
 import { SchematicTestRunner, UnitTestTree } from "@angular-devkit/schematics/testing";
+import * as IgxProjectLibrary from "@igniteui/angular-templates";
+import { ProjectLibrary } from "@igniteui/cli-core";
 import * as path from "path";
 import { take } from "rxjs/operators";
 import * as AppProjectSchematic from "../app-projects/index";
@@ -15,13 +17,17 @@ describe("igniteui-angular-schematics", () => {
 		const runner = new SchematicTestRunner("schematics", collectionPath);
 		const myTree = Tree.empty();
 		const workingDirectory = "my-test-project";
-		const mockLibrary = {
-			getProject: jasmine.createSpy("getProject").and.returnValue(true), projectIds: ["empty-project"], themes: ["custom"]
-		};
+		const mockLibrary = { getProject: jasmine.createSpy("getProject").and.returnValue(true), themes: ["custom"] };
 
 		const mockSession = {
+			chooseActionLoop: spyOn(SchematicsPromptSession.prototype, "chooseActionLoop")
+			.and.returnValue(Promise.resolve(true)),
 			getProjectLibrary: spyOn(SchematicsPromptSession.prototype, "getProjectLibrary")
-			.and.returnValue((Promise.resolve(mockLibrary)))
+			.and.returnValue((Promise.resolve(mockLibrary))),
+			getProjectTemplate: spyOn(SchematicsPromptSession.prototype, "getProjectTemplate").and
+			.returnValue((e: ProjectLibrary) => Promise.resolve(e.templates[0])),
+			getTheme: spyOn(SchematicsPromptSession.prototype, "getTheme").and.returnValue(Promise.resolve()),
+			setTree: spyOn(SchematicsPromptSession.prototype, "setContext").and.callThrough()
 		};
 
 		spyOn(AppProjectSchematic, "default").and.returnValue((currentTree: Tree, _context: SchematicContext) => {
