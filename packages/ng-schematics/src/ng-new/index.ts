@@ -34,11 +34,13 @@ export function newProject(options: OptionsSchema): Rule {
 
 		// TODO:
 		const defaultProjName = "IG Project";
-		let allOptionsProvided: boolean = false;
 
 		return chain([
 			(tree: Tree, _context: IgxSchematicContext): Observable<Tree> => {
 				return defer(async () => {
+					const framework = templateManager.getFrameworkByName("angular");
+					// app name validation???
+					projLibrary = await prompt.getProjectLibrary(framework);
 					if (!options.name || !prompt.nameIsValid(options.name)) {
 						options.name = await prompt.getUserInput({
 							type: "input",
@@ -49,26 +51,16 @@ export function newProject(options: OptionsSchema): Rule {
 						});
 					}
 
-					if (options.name && options.template && options.theme) {
-						allOptionsProvided = true;
-					}
-
-					const framework = templateManager.getFrameworkByName("angular");
-					// app name validation???
-					projLibrary = await prompt.getProjectLibrary(framework);
-
-					let projTemplate;
 					if (!options.template) {
-						projTemplate = await prompt.getProjectTemplate(projLibrary);
-					} else {
-						projTemplate = projLibrary.getProject(options.template);
-						if (!projTemplate) {
-							throw new SchematicsException(`template with id '${options.template}' not found`);
-						}
+						options.template = projLibrary.projectIds[0];
+					}
+					if (!options.theme) {
+						options.theme = options.theme = projLibrary.themes[0];
 					}
 
-					if (!options.theme) {
-						options.theme = await prompt.getTheme(projLibrary);
+					const projTemplate = projLibrary.getProject(options.template);
+					if (!projTemplate) {
+						throw new SchematicsException(`template with id '${options.template}' not found`);
 					}
 
 					if (options.theme && projLibrary.themes.indexOf(options.theme) === -1) {
@@ -120,15 +112,6 @@ export function newProject(options: OptionsSchema): Rule {
 							tree.rename("gitignore", ".gitignore");
 						}
 					},
-					(tree: Tree, context: IgxSchematicContext) => {
-						if (!allOptionsProvided) {
-							return defer(async () => {
-								prompt.setContext(context, tree, options.name as string);
-								await prompt.chooseActionLoop(projLibrary);
-								return tree;
-							});
-						}
-					},
 					(_tree: Tree, _context: IgxSchematicContext) => {
 						return move(options.name!);
 					}
@@ -148,7 +131,7 @@ export function newProject(options: OptionsSchema): Rule {
 					installChain.push(gitTask);
 				}
 
-				if (!options.skipInstall && !allOptionsProvided) {
+				if (!options.skipInstall) {
 					context.addTask(new RunSchematicTask("start", { directory: options.name }), installChain);
 				}
 				return tree;
