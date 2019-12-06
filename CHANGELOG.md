@@ -1,3 +1,30 @@
+# 5.0.0-beta.2
+
+## igniteui/cli-core@5.0.0-beta.2 (2019-12-06)
+
+#### Features
+
+* **schematics:** adding a name for schematics projects (GA post) [#587](https://github.com/IgniteUI/igniteui-cli/issues/587) ([#602](https://github.com/IgniteUI/igniteui-cli/issues/602)) ([19409d0](https://github.com/IgniteUI/igniteui-cli/commit/19409d0))
+
+## igniteui/angular-templates@9.0.500-beta.2 (2019-12-06)
+
+**Note:** Version bump only for package igniteui-cli
+
+## igniteui/angular-schematics@9.0.500-beta.2 (2019-12-06)
+
+#### Bug Fixes
+
+* **schematics:** set virtual FS in proper stage ([2102464](https://github.com/IgniteUI/igniteui-cli/commit/2102464))
+
+#### Features
+
+* **schematics:** skip start task if skipInstall === true ([#603](https://github.com/IgniteUI/igniteui-cli/issues/603)) ([fc38d65](https://github.com/IgniteUI/igniteui-cli/commit/fc38d65))
+
+## igniteui-cli@5.0.0-beta.2 (2019-12-06)
+
+**Note:** Version bump only for package igniteui-cli
+
+
 # 5.0.0-beta.1
 
 ## igniteui/cli-core@5.0.0-beta.1 (2019-11-28)
