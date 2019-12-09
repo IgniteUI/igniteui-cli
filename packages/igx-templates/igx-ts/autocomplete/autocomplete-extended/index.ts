@@ -6,7 +6,7 @@ class IgxAutocompleteTemplate extends IgniteUIForAngularTemplate {
 		this.components = ["Autocomplete"];
 		this.controlGroup = "Data Entry & Display";
 		this.listInComponentTemplates = true;
-		this.id = "autocomplete";
+		this.id = "extended-autocomplete";
 		this.projectType = "igx-ts";
 		this.name = "Enhanced Autocomplete";
 		this.description = "IgxAutocomplete with enhanced groups";
