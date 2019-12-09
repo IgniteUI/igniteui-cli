@@ -86,7 +86,7 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 			end: `</a>`
 		};
 
-		if (this.userExtraConfiguration["columnFeatures"]) {
+		if (this.userExtraConfiguration && this.userExtraConfiguration["columnFeatures"]) {
 			const features = this.userExtraConfiguration["columnFeatures"] as string[];
 			const featuresUrls = [];
 			for (const feature of this.userExtraConfiguration["columnFeatures"] as string[]) {
