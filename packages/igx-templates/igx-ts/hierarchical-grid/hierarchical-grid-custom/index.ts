@@ -2,7 +2,7 @@ import { ControlExtraConfigType, ControlExtraConfiguration } from "@igniteui/cli
 import { IgniteUIForAngularTemplate } from "../../../IgniteUIForAngularTemplate";
 
 class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
-	private userExtraConfiguration: {};
+	private userExtraConfiguration = {};
 	private usePinning: boolean;
 
 	constructor() {
@@ -87,7 +87,7 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 			end: `</a>`
 		};
 
-		if (this.userExtraConfiguration && this.userExtraConfiguration["columnFeatures"]) {
+		if (this.userExtraConfiguration["columnFeatures"]) {
 			const features = this.userExtraConfiguration["columnFeatures"] as string[];
 			const featuresUrls = [];
 			for (const feature of this.userExtraConfiguration["columnFeatures"] as string[]) {
