@@ -122,14 +122,22 @@ You can also add `Ignite UI for Angular` components to your projects by using th
 
 See the [Contribution guide](https://github.com/IgniteUI/igniteui-cli/blob/master/.github/CONTRIBUTING.md) to get started.
 
+### Prerequisites
+The repository houses multiple packages and orchestrates building and publishing them with [lerna](https://github.com/lerna/lerna) and [yarn](https://yarnpkg.com/).
+In order to build the repository locally, you need to have `yarn` installed on your machine.
+For installation instructions, please visit their [official page](https://yarnpkg.com/lang/en/docs/install/)
+
 ### Run locally
 1. Clone the repository
-2. Install dependencies with `npm install`
-3. Open in Visual Studio Code
+2. Install dependencies with `yarn install`
+3. To build the packages, run `yarn build` in the project `root`.
+    To `pack` any individual package, navigate to the package definition and run `yarn pack`
+
+4. Open in Visual Studio Code
     
     There is a predefined launch.config file for VS Code in the root folder, so you can use VS Code View/Debug window and choose one of the predefined actions. These include launching the step by step guide, quickstart project, create new project for a particular framework or add components.
 
-4. Hit Start Debugging/F5
+5. Hit Start Debugging/F5
 
 ## Data Collection
 
