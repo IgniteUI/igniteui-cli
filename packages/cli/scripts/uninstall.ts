@@ -8,7 +8,7 @@ function uninstall() {
 			t: "screenview",
 			cd: `uninstall`
 		});
-		}
+	}
 }
 
 uninstall();
