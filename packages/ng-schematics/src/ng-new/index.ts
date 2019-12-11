@@ -40,7 +40,14 @@ export function newProject(options: OptionsSchema): Rule {
 			(tree: Tree, _context: IgxSchematicContext): Observable<Tree> => {
 				return defer(async () => {
 					if (options.name) {
+						options.name = options.name.trim();
 						nameProvided = true;
+
+						// letter+alphanumeric check
+						if (!Util.isAlphanumericExt(options.name)) {
+							throw new SchematicsException(`Name '${options.name}' is not valid. `
+								+ "Name should start with a letter and can also contain numbers, dashes and spaces.");
+						}
 					}
 
 					if (!options.name || !prompt.nameIsValid(options.name)) {
