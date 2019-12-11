@@ -51,6 +51,7 @@ export function newProject(options: OptionsSchema): Rule {
 							default: Util.getAvailableName(defaultProjName, true),
 							validate: prompt.nameIsValid
 						});
+						nameProvided = false;
 					}
 
 					const framework = templateManager.getFrameworkByName("angular");
@@ -60,13 +61,14 @@ export function newProject(options: OptionsSchema): Rule {
 					if (options.theme && projLibrary.themes.indexOf(options.theme) === -1) {
 						throw new SchematicsException(`Theme not supported`);
 					}
-					const theme = options.theme || projLibrary.themes[0];
+
 					const projectTemplate = options.template || projLibrary.projectIds[0];
-					Util.log(`Project Name: ${options.name}, theme ${theme}`);
 					const projTemplate = projLibrary.getProject(projectTemplate);
 					if (!projTemplate) {
 						throw new SchematicsException(`template with id '${options.template}' not found`);
 					}
+					const theme = options.theme || projLibrary.themes[0];
+					Util.log(`Project Name: ${options.name}, theme ${theme}`);
 
 					// project options:
 					// cache available views and components, same as in component Schematic
@@ -141,7 +143,7 @@ export function newProject(options: OptionsSchema): Rule {
 					installChain.push(gitTask);
 				}
 
-				if (!options.skipInstall) {
+				if (!options.skipInstall && options.name) {
 					context.addTask(new RunSchematicTask("start", { directory: options.name }), installChain);
 				}
 				return tree;
