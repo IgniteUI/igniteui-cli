@@ -50,6 +50,10 @@ export function newProject(options: OptionsSchema): Rule {
 						}
 					}
 
+					if (Util.directoryExists(options.name)) {
+						throw new SchematicsException(`Folder "${options.name}" already exists!`);
+					}
+
 					if (!options.name || !prompt.nameIsValid(options.name)) {
 						options.name = await prompt.getUserInput({
 							type: "input",
@@ -150,7 +154,7 @@ export function newProject(options: OptionsSchema): Rule {
 					installChain.push(gitTask);
 				}
 
-				if (!options.skipInstall && options.name) {
+				if (!options.skipInstall && !nameProvided) {
 					context.addTask(new RunSchematicTask("start", { directory: options.name }), installChain);
 				}
 				return tree;
