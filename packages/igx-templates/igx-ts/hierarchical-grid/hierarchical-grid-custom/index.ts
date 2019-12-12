@@ -2,7 +2,7 @@ import { ControlExtraConfigType, ControlExtraConfiguration } from "@igniteui/cli
 import { IgniteUIForAngularTemplate } from "../../../IgniteUIForAngularTemplate";
 
 class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
-	private userExtraConfiguration: {};
+	private userExtraConfiguration = {};
 	private usePinning: boolean;
 
 	constructor() {
