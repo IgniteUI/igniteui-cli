@@ -23,6 +23,22 @@ Quickly create projects including [Ignite UI for Angular](https://www.infragisti
  * Angular
  * React
 
+### Prerequisites
+The repository houses multiple packages and orchestrates building and publishing them with [lerna](https://github.com/lerna/lerna) and [yarn workspaces](https://yarnpkg.com/lang/en/docs/workspaces/).
+
+In order to build the repository locally, you need to have `yarn` installed on your machine.
+For installation instructions, please visit their [official page](https://yarnpkg.com/lang/en/docs/install/)
+
+### Packages
+This monorepo contains several packages that combine into the `igniteui-cli`:
+
+| Package | Description | Location |
+|-----|-----|-----|
+| [@igniteui/cli-core](https://www.npmjs.com/package/@igniteui/cli-core) | Contains the core functionality of the cli tool | [packages/core](./packages/core) |
+| [@igniteui/angular-templates](https://www.npmjs.com/package/@igniteui/angular-templates) | Contains the template definitions for Angular components | [packages/igx-templates](./packages/igx-templates) |
+| [@igniteui/angular-schematics](https://www.npmjs.com/package/@igniteui/angular-schematics) | IgniteUI CLI implementation to be used with Angular CLI's schematics engine | [packages/ng-schematics](./packages/ng-schematics) |
+| [igniteui-cli](https://www.npmjs.com/package/igniteui-cli) | Standalone IgniteUI CLI tool for React, jQuery and Angular | [packages/cli](./packages/cli) |
+
 ## Table of Contents
 
 * [Installation](#installation)
@@ -124,12 +140,13 @@ See the [Contribution guide](https://github.com/IgniteUI/igniteui-cli/blob/maste
 
 ### Run locally
 1. Clone the repository
-2. Install dependencies with `npm install`
-3. Open in Visual Studio Code
+2. Install dependencies with `yarn install`
+3. To build the packages, run `yarn build` in the project `root`.
+4. Open in Visual Studio Code
     
     There is a predefined launch.config file for VS Code in the root folder, so you can use VS Code View/Debug window and choose one of the predefined actions. These include launching the step by step guide, quickstart project, create new project for a particular framework or add components.
 
-4. Hit Start Debugging/F5
+5. Hit Start Debugging/F5
 
 ## Data Collection
 
@@ -140,11 +157,4 @@ ig config set disableAnalytics true -g
 ```
 
 when using the CLI. You can read Infragistics privacy policy at https://www.infragistics.com/legal/privacy.
-
-## Package Definitions
-
-### [igniteui-cli](./packages/cli)
-### [igniteui/cli-core](./packages/core)
-### [igniteui/angular-templates](./packages/igx-templates)
-### [igniteui/angular-schematics](./packages/ng-schematics)
 
