@@ -116,16 +116,8 @@ describe("igniteui-angular-schematics", () => {
 				authorName: undefined,
 				authorEmail: undefined
 			};
-			const expectedStart: RunSchematicTaskOptions<any> = {
-				collection: null,
-				name: "start",
-				options: {
-					directory: "my-test-project"
-				}
-			};
 			expect(taskOptions).toContain(expectedInstall);
 			expect(taskOptions).toContain(expectedInit);
-			expect(taskOptions).toContain(expectedStart);
 			done();
 		});
 	});
