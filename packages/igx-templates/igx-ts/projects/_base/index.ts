@@ -29,6 +29,8 @@ $secondary: #ce5712 !default;
 
 $app-palette: igx-palette($primary, $secondary);
 
+/* autoprefixer grid: on */
+
 @include igx-core();
 @include igx-theme($app-palette);
 `;
