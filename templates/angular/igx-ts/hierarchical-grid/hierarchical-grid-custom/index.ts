@@ -1,7 +1,7 @@
 import { IgniteUIForAngularTemplate } from "../../../../../lib/templates/IgniteUIForAngularTemplate";
 
 class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
-	private userExtraConfiguration: {};
+	private userExtraConfiguration = {};
 	private usePinning: boolean;
 
 	constructor() {
