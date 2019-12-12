@@ -34,11 +34,26 @@ export function newProject(options: OptionsSchema): Rule {
 
 		// TODO:
 		const defaultProjName = "IG Project";
-		let allOptionsProvided: boolean = false;
+		let nameProvided: boolean = false;
 
 		return chain([
 			(tree: Tree, _context: IgxSchematicContext): Observable<Tree> => {
 				return defer(async () => {
+					if (options.name) {
+						options.name = options.name.trim();
+						nameProvided = true;
+
+						// letter+alphanumeric check
+						if (!Util.isAlphanumericExt(options.name)) {
+							throw new SchematicsException(`Name '${options.name}' is not valid. `
+								+ "Name should start with a letter and can also contain numbers, dashes and spaces.");
+						}
+					}
+
+					if (Util.directoryExists(options.name)) {
+						throw new SchematicsException(`Folder "${options.name}" already exists!`);
+					}
+
 					if (!options.name || !prompt.nameIsValid(options.name)) {
 						options.name = await prompt.getUserInput({
 							type: "input",
@@ -47,33 +62,24 @@ export function newProject(options: OptionsSchema): Rule {
 							default: Util.getAvailableName(defaultProjName, true),
 							validate: prompt.nameIsValid
 						});
-					}
-
-					if (options.name && options.template && options.theme) {
-						allOptionsProvided = true;
+						nameProvided = false;
 					}
 
 					const framework = templateManager.getFrameworkByName("angular");
 					// app name validation???
 					projLibrary = await prompt.getProjectLibrary(framework);
 
-					let projTemplate;
-					if (!options.template) {
-						projTemplate = await prompt.getProjectTemplate(projLibrary);
-					} else {
-						projTemplate = projLibrary.getProject(options.template);
-						if (!projTemplate) {
-							throw new SchematicsException(`template with id '${options.template}' not found`);
-						}
-					}
-
-					if (!options.theme) {
-						options.theme = await prompt.getTheme(projLibrary);
-					}
-
 					if (options.theme && projLibrary.themes.indexOf(options.theme) === -1) {
 						throw new SchematicsException(`Theme not supported`);
 					}
+
+					const projectTemplate = options.template || projLibrary.projectIds[0];
+					const projTemplate = projLibrary.getProject(projectTemplate);
+					if (!projTemplate) {
+						throw new SchematicsException(`template with id '${options.template}' not found`);
+					}
+					const theme = options.theme || projLibrary.themes[0];
+					Util.log(`Project Name: ${options.name}, theme ${theme}`);
 
 					// project options:
 					// cache available views and components, same as in component Schematic
@@ -82,8 +88,8 @@ export function newProject(options: OptionsSchema): Rule {
 
 					projectOptions = {
 						projTemplate,
-						name: options.name,
-						theme: options.theme
+						theme,
+						name: options.name
 					};
 
 					GoogleAnalytics.post({
@@ -121,7 +127,7 @@ export function newProject(options: OptionsSchema): Rule {
 						}
 					},
 					(tree: Tree, context: IgxSchematicContext) => {
-						if (!allOptionsProvided) {
+						if (!nameProvided) {
 							return defer(async () => {
 								prompt.setContext(context, tree, options.name as string);
 								await prompt.chooseActionLoop(projLibrary);
@@ -148,7 +154,7 @@ export function newProject(options: OptionsSchema): Rule {
 					installChain.push(gitTask);
 				}
 
-				if (!options.skipInstall && !allOptionsProvided) {
+				if (!options.skipInstall && !nameProvided) {
 					context.addTask(new RunSchematicTask("start", { directory: options.name }), installChain);
 				}
 				return tree;
