@@ -15,9 +15,6 @@
 
 # 5.0.0-beta.2
 
-
-# 5.0.0-beta.2
-
 ## igniteui/cli-core@5.0.0-beta.2 (2019-12-06)
 
 #### Features
