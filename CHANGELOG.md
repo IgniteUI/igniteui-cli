@@ -1,3 +1,27 @@
+# 5.0.0-beta.3
+
+## igniteui/cli-core@5.0.0-beta.3 (2019-12-12)
+
+**Note:** Version bump only for package igniteui-cli
+
+## igniteui/angular-templates@9.0.500-beta.3 (2019-12-12)
+
+**Note:** Version bump only for package igniteui-cli
+
+## igniteui/angular-schematics@9.0.500-beta.3 (2019-12-12)
+
+#### Bug Fixes
+
+* **cli, schematics:** check for fileSystem on post install [#612](https://github.com/IgniteUI/igniteui-cli/issues/612) ([#613](https://github.com/IgniteUI/igniteui-cli/issues/613)) ([0a6a878](https://github.com/IgniteUI/igniteui-cli/commit/0a6a878))
+* **new, schematics:** no prompts when "name" is provided [#595](https://github.com/IgniteUI/igniteui-cli/issues/595) ([#609](https://github.com/IgniteUI/igniteui-cli/issues/609)) ([0ed45ba](https://github.com/IgniteUI/igniteui-cli/commit/0ed45ba))
+
+## igniteui-cli@5.0.0-beta.3 (2019-12-12)
+
+#### Bug Fixes
+
+* **cli, schematics:** check for fileSystem on post install [#612](https://github.com/IgniteUI/igniteui-cli/issues/612) ([#613](https://github.com/IgniteUI/igniteui-cli/issues/613)) ([0a6a878](https://github.com/IgniteUI/igniteui-cli/commit/0a6a878))
+
+
 # 5.0.0-beta.2
 
 ## igniteui/cli-core@5.0.0-beta.2 (2019-12-06)
