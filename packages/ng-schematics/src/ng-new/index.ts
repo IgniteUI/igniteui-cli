@@ -69,8 +69,14 @@ export function newProject(options: OptionsSchema): Rule {
 					// app name validation???
 					projLibrary = await prompt.getProjectLibrary(framework);
 
-					if (options.theme && projLibrary.themes.indexOf(options.theme) === -1) {
+					if (options.theme && projLibrary.themes.findIndex(item =>
+						options.theme.toLowerCase() === item.toLocaleLowerCase()) === -1) {
 						throw new SchematicsException(`Theme not supported`);
+					}
+
+					// check if the theme name starts with a capital letter
+					if (options.theme[0] !== options.theme[0].toUpperCase()) {
+						options.theme = options.theme.charAt(0).toUpperCase() + options.theme.slice(1);
 					}
 
 					const projectTemplate = options.template || projLibrary.projectIds[0];
