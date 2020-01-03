@@ -24,7 +24,7 @@ describe("New command", () => {
 
 	it("Creates jQuery project", async done => {
 
-		await cli.run(["new", "jQuery Proj", "--framework=jquery"]);
+		await cli.run(["new", "jQuery Proj", "--framework=jquery", "--theme=default"]);
 
 		expect(fs.existsSync("./jQuery Proj")).toBeTruthy();
 		expect(filesDiff("../templates/jquery/js/projects/empty/files", "./jQuery Proj")).toEqual([]);
@@ -59,7 +59,7 @@ describe("New command", () => {
 	it("Creates React project", async done => {
 		// process.argv = ["new", "reactProj", "--framework=react"];
 
-		await cli.run(["new", "React Proj", "--framework=react"]);
+		await cli.run(["new", "React Proj", "--framework=react", "--theme=default"]);
 
 		expect(fs.existsSync("./React Proj")).toBeTruthy();
 		expect(filesDiff("../templates/react/es6/projects/empty/files", "./React Proj")).toEqual([]);
@@ -73,7 +73,7 @@ describe("New command", () => {
 	it("Creates Angular project", async done => {
 		// process.argv = ["new", "reactProj", "--framework=react"];
 
-		await cli.run(["new", "ngx Proj", "--framework=angular", "--type=igx-ts"]);
+		await cli.run(["new", "ngx Proj", "--framework=angular", "--type=igx-ts", "--theme=default"]);
 
 		expect(fs.existsSync("./ngx Proj")).toBeTruthy();
 		expect(filesDiff("../templates/angular/ig-ts/projects/empty/files", "./ngx Proj")).toEqual([]);
@@ -86,7 +86,7 @@ describe("New command", () => {
 
 	it("Creates Ignite UI for Angular project", async done => {
 
-		await cli.run(["new", "Ignite UI for Angular", "--framework=angular", "--type=igx-ts"]);
+		await cli.run(["new", "Ignite UI for Angular", "--framework=angular", "--type=igx-ts", "--theme=default"]);
 
 		expect(fs.existsSync("./Ignite UI for Angular")).toBeTruthy();
 		expect(filesDiff("../templates/angular/igx-ts/projects/empty/files", "./Ignite UI for Angular")).toEqual([]);
@@ -138,7 +138,7 @@ describe("New command", () => {
 
 	it("Git Status", async done => {
 		const projectName = "angularProj";
-		await cli.run(["new", projectName, "--framework=angular", "--type=igx-ts"]);
+		await cli.run(["new", projectName, "--framework=angular", "--type=igx-ts", "--theme=default"]);
 
 		process.chdir(projectName);
 		expect(fs.existsSync(".git")).toBeTruthy();
@@ -151,7 +151,7 @@ describe("New command", () => {
 
 	it("Skip Git/Install with command option", async done => {
 		const projectName = "angularProj";
-		await cli.run(["new", projectName, "--framework=angular", "--type=igx-ts", "--skip-git", "--skip-install"]);
+		await cli.run(["new", projectName, "--framework=angular", "--type=igx-ts", "--skip-git", "--skip-install", "--theme=default"]);
 
 		expect(fs.existsSync("./" + projectName + "/.git")).not.toBeTruthy();
 		expect(PackageManager.installPackages).not.toHaveBeenCalled();
@@ -162,7 +162,7 @@ describe("New command", () => {
 
 	it("Creates project with single word name", async done => {
 		const projectName = "a";
-		await cli.run(["new", projectName, "--framework=jquery"]);
+		await cli.run(["new", projectName, "--framework=jquery", "--theme=default"]);
 
 		//TODO: read entire structure from ./templates and verify everything is copied over
 		expect(fs.existsSync("./a")).toBeTruthy();
