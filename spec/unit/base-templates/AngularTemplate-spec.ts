@@ -66,7 +66,7 @@ describe("Unit - AngularTemplate Base", () => {
 		spyOn(Util, "validateTemplate").and.returnValue(true);
 
 		const templ = new TestWidgetTemplate("root");
-		templ.generateFiles("/target/path", "page", { 
+		templ.generateFiles("/target/path", "page", {
 			extraConfig : {
 				"$(extraConfig1)" : "extraConfig1",
 				"$(gridFeatures)" : "{ features }"
