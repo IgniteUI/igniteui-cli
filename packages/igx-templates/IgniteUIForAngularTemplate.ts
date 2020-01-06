@@ -43,7 +43,7 @@ export class IgniteUIForAngularTemplate implements Template {
 			return Promise.resolve(false);
 		}
 
-		return  Object.assign({}, options['extraConfig'], this.getBaseVariables(name));;
+		return  Object.assign({}, options["extraConfig"], this.getBaseVariables(name));
 	}
 
 	//TODO: rename name to fullName for clarity + in all other places fileName to fullName

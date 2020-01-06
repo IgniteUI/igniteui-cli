@@ -154,18 +154,18 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 
 		it("generateConfig merges variables passed under extraConfig", async done => {
 			const expected = {
-				name: "test",
+				camelCaseName: "test",
 				ClassName: "Test",
-				path: "test",
-				filePrefix: "test",
+				cliVersion: Util.version(),
 				description: undefined,
-				// widget
-				widget: "widget no-process",
 				// extra
 				extraConfig1 : "extraConfig1",
-				camelCaseName: "test",
+				filePrefix: "test",
 				gridFeatures : "{ features }",
-				cliVersion: Util.version()
+				name: "test",
+				path: "test",
+				// widget
+				widget: "widget no-process"
 			};
 			spyOn(Util, "processTemplates");
 
