@@ -77,7 +77,6 @@ export function newProject(options: OptionsSchema): Rule {
 						}
 					}
 
-
 					const projectTemplate = options.template || projLibrary.projectIds[0];
 					const projTemplate = projLibrary.getProject(projectTemplate);
 					if (!projTemplate) {
