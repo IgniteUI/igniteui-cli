@@ -104,12 +104,12 @@ command = {
 			return Util.error("Theme not supported");
 		}
 
-		// check if the theme name starts with a lower letter
-		if (argv.theme && argv.theme[0] !== argv.theme[0].toLowerCase()) {
-			argv.theme = argv.theme.charAt(0).toLowerCase() + argv.theme.slice(1);
+		let theme = projectLib.themes[0];
+		if (argv.theme) {
+			const themeIndex = projectLib.themes.findIndex(item => argv.theme.toLowerCase() === item.toLocaleLowerCase());
+			theme = projectLib.themes[themeIndex];
 		}
 
-		const theme = argv.theme || projectLib.themes[0];
 		const projectTemplate = argv.template || projectLib.projectIds[0];
 		Util.log(`Project Name: ${argv.name}, framework ${argv.framework}, type ${projectLib.projectType}, theme ${theme}`);
 		const projTemplate = projectLib.getProject(projectTemplate);
