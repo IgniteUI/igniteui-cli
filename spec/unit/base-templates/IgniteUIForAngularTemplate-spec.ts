@@ -151,5 +151,35 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			expect(helpers.tsUpdateMock.finalize).toHaveBeenCalled();
 			done();
 		});
+
+		it("generateConfig merges variables passed under extraConfig", async done => {
+			const expected = {
+				name: "test",
+				ClassName: "Test",
+				path: "test",
+				filePrefix: "test",
+				description: undefined,
+				// widget
+				widget: "widget no-process",
+				// extra
+				extraConfig1 : "extraConfig1",
+				camelCaseName: "test",
+				gridFeatures : "{ features }",
+				cliVersion: Util.version()
+			};
+			spyOn(Util, "processTemplates");
+
+			const templ = new TestTemplate();
+			const actual = templ.generateConfig("test", {
+				extraConfig : {
+					extraConfig1 : "extraConfig1",
+					gridFeatures : "{ features }"
+				},
+				modulePath: "something/something.module.ts",
+				skipRoute: false
+			});
+			expect(actual).toEqual(expected);
+			done();
+		});
 	});
 });
