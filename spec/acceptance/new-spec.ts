@@ -24,7 +24,7 @@ describe("New command", () => {
 
 	it("Creates jQuery project", async done => {
 
-		await cli.run(["new", "jQuery Proj", "--framework=jquery", "--theme=default"]);
+		await cli.run(["new", "jQuery Proj", "--framework=jquery"]);
 
 		expect(fs.existsSync("./jQuery Proj")).toBeTruthy();
 		expect(filesDiff("../templates/jquery/js/projects/empty/files", "./jQuery Proj")).toEqual([]);
@@ -59,7 +59,7 @@ describe("New command", () => {
 	it("Creates React project", async done => {
 		// process.argv = ["new", "reactProj", "--framework=react"];
 
-		await cli.run(["new", "React Proj", "--framework=react", "--theme=default"]);
+		await cli.run(["new", "React Proj", "--framework=react"]);
 
 		expect(fs.existsSync("./React Proj")).toBeTruthy();
 		expect(filesDiff("../templates/react/es6/projects/empty/files", "./React Proj")).toEqual([]);
@@ -73,7 +73,7 @@ describe("New command", () => {
 	it("Creates Angular project", async done => {
 		// process.argv = ["new", "reactProj", "--framework=react"];
 
-		await cli.run(["new", "ngx Proj", "--framework=angular", "--type=igx-ts", "--theme=default"]);
+		await cli.run(["new", "ngx Proj", "--framework=angular", "--type=igx-ts"]);
 
 		expect(fs.existsSync("./ngx Proj")).toBeTruthy();
 		expect(filesDiff("../templates/angular/ig-ts/projects/empty/files", "./ngx Proj")).toEqual([]);
@@ -162,7 +162,7 @@ describe("New command", () => {
 
 	it("Creates project with single word name", async done => {
 		const projectName = "a";
-		await cli.run(["new", projectName, "--framework=jquery", "--theme=default"]);
+		await cli.run(["new", projectName, "--framework=jquery"]);
 
 		//TODO: read entire structure from ./templates and verify everything is copied over
 		expect(fs.existsSync("./a")).toBeTruthy();

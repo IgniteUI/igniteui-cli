@@ -26,7 +26,7 @@ describe("component",  () => {
 		const mockConfig = {
 			customTemplates: ["path:C:\work\GitHub\ignite-ui-cli\output\custom-templ"],
 			project: {
-				theme: "Custom"
+				theme: "custom"
 			}
 		};
 		const projConfigSpy = spyOn(ProjectConfig, "getConfig");

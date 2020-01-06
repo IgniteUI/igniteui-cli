@@ -8,7 +8,7 @@ class IgxProjectLibrary extends BaseProjectLibrary {
 		super(__dirname);
 		this.name = "Ignite UI for Angular";
 		this.projectType = "igx-ts";
-		this.themes = ["Custom", "Default"];
+		this.themes = ["custom", "default"];
 
 		const groups = require("./groups.json");
 		// tslint:disable-next-line:forin

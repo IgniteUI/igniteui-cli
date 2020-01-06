@@ -70,13 +70,13 @@ export function newProject(options: OptionsSchema): Rule {
 					projLibrary = await prompt.getProjectLibrary(framework);
 
 					if (options.theme && projLibrary.themes.findIndex(item =>
-						options.theme.toLowerCase() === item.toLocaleLowerCase()) === -1) {
+						options.theme.toLowerCase() === item) === -1) {
 						throw new SchematicsException(`Theme not supported`);
 					}
 
-					// check if the theme name starts with a capital letter
-					if (options.theme[0] !== options.theme[0].toUpperCase()) {
-						options.theme = options.theme.charAt(0).toUpperCase() + options.theme.slice(1);
+					// check if the theme name starts with a lower letter
+					if (options.theme && options.theme[0] !== options.theme[0].toLowerCase()) {
+						options.theme = options.theme.charAt(0).toLowerCase() + options.theme.slice(1);
 					}
 
 					const projectTemplate = options.template || projLibrary.projectIds[0];

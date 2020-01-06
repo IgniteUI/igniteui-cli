@@ -100,13 +100,13 @@ command = {
 			Util.warn("Read more at: https://www.infragistics.com/products/ignite-ui-angular/angular/components/general/getting_started.html.", "yellow");
 		}
 
-		if (argv.theme && projectLib.themes.findIndex(item => argv.theme.toLowerCase() === item.toLocaleLowerCase()) === -1) {
+		if (argv.theme && projectLib.themes.findIndex(item => argv.theme.toLowerCase() === item) === -1) {
 			return Util.error("Theme not supported");
 		}
 
-		// check if the theme name starts with a capital letter
-		if (argv.theme[0] !== argv.theme[0].toUpperCase()) {
-			argv.theme = argv.theme.charAt(0).toUpperCase() + argv.theme.slice(1);
+		// check if the theme name starts with a lower letter
+		if (argv.theme && argv.theme[0] !== argv.theme[0].toLowerCase()) {
+			argv.theme = argv.theme.charAt(0).toLowerCase() + argv.theme.slice(1);
 		}
 
 		const theme = argv.theme || projectLib.themes[0];

@@ -65,11 +65,11 @@ $app-palette: igx-palette($primary, $secondary);
 		};
 
 		switch (theme) {
-			case "Custom":
+			case "custom":
 				config["CustomTheme"] = this.CUSTOM_THEME;
-				config["themePath"] = "Custom";
+				config["themePath"] = "custom";
 				break;
-			case "Default":
+			case "default":
 			default:
 				config["DefaultTheme"] = this.DEFAULT_THEME;
 				config["themePath"] = "node_modules/igniteui-angular/styles/igniteui-angular.css";
