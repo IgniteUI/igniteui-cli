@@ -100,15 +100,15 @@ command = {
 			Util.warn("Read more at: https://www.infragistics.com/products/ignite-ui-angular/angular/components/general/getting_started.html.", "yellow");
 		}
 
-		if (argv.theme && projectLib.themes.findIndex(item => argv.theme.toLowerCase() === item) === -1) {
-			return Util.error("Theme not supported");
+		let themeIndex = 0;
+		if (argv.theme) {
+			themeIndex = projectLib.themes.findIndex(item => argv.theme.toLowerCase() === item.toLowerCase());
+			if (themeIndex === -1) {
+				return Util.error("Theme not supported");
+			}
 		}
 
-		let theme = projectLib.themes[0];
-		if (argv.theme) {
-			const themeIndex = projectLib.themes.findIndex(item => argv.theme.toLowerCase() === item.toLocaleLowerCase());
-			theme = projectLib.themes[themeIndex];
-		}
+		const theme = projectLib.themes[themeIndex];
 
 		const projectTemplate = argv.template || projectLib.projectIds[0];
 		Util.log(`Project Name: ${argv.name}, framework ${argv.framework}, type ${projectLib.projectType}, theme ${theme}`);

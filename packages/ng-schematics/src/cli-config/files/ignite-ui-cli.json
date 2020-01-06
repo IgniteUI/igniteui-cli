@@ -5,7 +5,7 @@
 		"framework": "angular",
 		"projectType": "igx-ts",
 		"projectTemplate": "ng-cli",
-		"theme": "custom",
+		"theme": "Custom",
 		"isBundle": false,
 		"bundleFilePath": "",
 		"igniteuiSource": "",

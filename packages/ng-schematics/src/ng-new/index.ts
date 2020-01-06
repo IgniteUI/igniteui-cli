@@ -69,22 +69,21 @@ export function newProject(options: OptionsSchema): Rule {
 					// app name validation???
 					projLibrary = await prompt.getProjectLibrary(framework);
 
-					if (options.theme && projLibrary.themes.findIndex(item =>
-						options.theme.toLowerCase() === item) === -1) {
-						throw new SchematicsException(`Theme not supported`);
+					let themeIndex = 0;
+					if (options.theme) {
+						themeIndex = projLibrary.themes.findIndex(item => options.theme.toLowerCase() === item.toLowerCase());
+						if (themeIndex === -1) {
+							throw new SchematicsException(`Theme not supported`);
+						}
 					}
 
-					// check if the theme name starts with a lower letter
-					if (options.theme && options.theme[0] !== options.theme[0].toLowerCase()) {
-						options.theme = options.theme.charAt(0).toLowerCase() + options.theme.slice(1);
-					}
 
 					const projectTemplate = options.template || projLibrary.projectIds[0];
 					const projTemplate = projLibrary.getProject(projectTemplate);
 					if (!projTemplate) {
 						throw new SchematicsException(`template with id '${options.template}' not found`);
 					}
-					const theme = options.theme || projLibrary.themes[0];
+					const theme = projLibrary.themes[themeIndex];
 					Util.log(`Project Name: ${options.name}, theme ${theme}`);
 
 					// project options:
