@@ -157,17 +157,14 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 				camelCaseName: "test",
 				ClassName: "Test",
 				cliVersion: Util.version(),
-				description: undefined,
+				description: "test description",
 				// extra
 				extraConfig1 : "extraConfig1",
 				filePrefix: "test",
 				gridFeatures : "{ features }",
 				name: "test",
-				path: "test",
-				// widget
-				widget: "widget no-process"
+				path: "test"
 			};
-			spyOn(Util, "processTemplates");
 
 			const templ = new TestTemplate();
 			const actual = templ.generateConfig("test", {
@@ -175,8 +172,8 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 					extraConfig1 : "extraConfig1",
 					gridFeatures : "{ features }"
 				},
-				modulePath: "something/something.module.ts",
-				skipRoute: false
+				someOtherVar: false,
+				someVar: "something/something.module.ts"
 			});
 			expect(actual).toEqual(expected);
 			done();

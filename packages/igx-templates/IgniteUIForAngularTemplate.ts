@@ -124,9 +124,7 @@ export class IgniteUIForAngularTemplate implements Template {
 		config["cliVersion"] = Util.version();
 		config["camelCaseName"] = Util.camelCase(name);
 
-		if (this.name) {
-			config["nameMerged"] = this.name.replace(/ /g, "");
-		}
+		/** 'nameMerged' is never used igx templates, removed */
 		return config;
 	}
 
