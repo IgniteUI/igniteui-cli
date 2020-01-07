@@ -71,8 +71,8 @@ describe("Unit - AngularTemplate Base", () => {
 				"$(extraConfig1)" : "extraConfig1",
 				"$(gridFeatures)" : "{ features }"
 			},
-			modulePath: "some/some.module.ts",
-			skipRoute: false
+			someOtherVar: "some/some.module.ts",
+			someThirdVar: false
 		});
 		expect(Util.validateTemplate).toHaveBeenCalledWith(
 			path.join("root" , "files"),
