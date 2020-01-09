@@ -26,6 +26,10 @@ describe("igniteui-angular-schematics", () => {
 			.and.returnValue(Promise.resolve(true)),
 			getProjectLibrary: spyOn(SchematicsPromptSession.prototype, "getProjectLibrary")
 			.and.returnValue((Promise.resolve(mockLibrary))),
+			getProjectTemplate: spyOn(SchematicsPromptSession.prototype, "getProjectTemplate")
+			.and.returnValue(Promise.resolve("empty-page")),
+			getTheme: spyOn(SchematicsPromptSession.prototype, "getTheme")
+			.and.returnValue(Promise.resolve("custom")),
 			getUserInput: spyOn(SchematicsPromptSession.prototype, "getUserInput")
 			.and.returnValue(Promise.resolve(workingDirectory)),
 			setTree: spyOn(SchematicsPromptSession.prototype, "setContext").and.callThrough()
