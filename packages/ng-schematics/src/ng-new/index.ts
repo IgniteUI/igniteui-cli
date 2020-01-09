@@ -7,7 +7,7 @@ import {
 	RepositoryInitializerTask,
 	RunSchematicTask
 } from "@angular-devkit/schematics/tasks";
-import { App, GoogleAnalytics, ProjectLibrary, Util } from "@igniteui/cli-core";
+import { App, GoogleAnalytics, ProjectLibrary,  ProjectTemplate, Util } from "@igniteui/cli-core";
 import { defer, Observable } from "rxjs";
 import { NewProjectOptions } from "../app-projects/schema";
 import { SchematicsPromptSession } from "../prompt/SchematicsPromptSession";
@@ -35,6 +35,7 @@ export function newProject(options: OptionsSchema): Rule {
 		// TODO:
 		const defaultProjName = "IG Project";
 		let nameProvided: boolean = false;
+		let projTemplate: ProjectTemplate;
 
 		return chain([
 			(tree: Tree, _context: IgxSchematicContext): Observable<Tree> => {
@@ -53,6 +54,8 @@ export function newProject(options: OptionsSchema): Rule {
 					if (Util.directoryExists(options.name)) {
 						throw new SchematicsException(`Folder "${options.name}" already exists!`);
 					}
+					const framework = templateManager.getFrameworkByName("angular");
+					projLibrary = await prompt.getProjectLibrary(framework);
 
 					if (!options.name || !prompt.nameIsValid(options.name)) {
 						options.name = await prompt.getUserInput({
@@ -63,11 +66,11 @@ export function newProject(options: OptionsSchema): Rule {
 							validate: prompt.nameIsValid
 						});
 						nameProvided = false;
-					}
 
-					const framework = templateManager.getFrameworkByName("angular");
-					// app name validation???
-					projLibrary = await prompt.getProjectLibrary(framework);
+						projTemplate = await prompt.getProjectTemplate(projLibrary);
+
+						options.theme = await prompt.getTheme(projLibrary);
+					}
 
 					let themeIndex = 0;
 					if (options.theme) {
@@ -77,10 +80,12 @@ export function newProject(options: OptionsSchema): Rule {
 						}
 					}
 
-					const projectTemplate = options.template || projLibrary.projectIds[0];
-					const projTemplate = projLibrary.getProject(projectTemplate);
-					if (!projTemplate) {
-						throw new SchematicsException(`template with id '${options.template}' not found`);
+					if (projTemplate === undefined) {
+						const projectTemplate = options.template || projLibrary.projectIds[0];
+						projTemplate = projLibrary.getProject(projectTemplate);
+						if (!projTemplate) {
+							throw new SchematicsException(`template with id '${options.template}' not found`);
+						}
 					}
 					const theme = projLibrary.themes[themeIndex];
 					Util.log(`Project Name: ${options.name}, theme ${theme}`);
