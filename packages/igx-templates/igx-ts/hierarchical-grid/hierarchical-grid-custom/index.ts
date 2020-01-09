@@ -39,7 +39,6 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 	public generateConfig(name: string, ...options: any[]): {[key: string]: any} {
 		const columnFeatures = [];
 		const gridFeatures = [];
-		let pinningConfig: {};
 		const extraConfig = {
 			selectedFeatures: this.getSelectedFeatures(columnFeatures, gridFeatures),
 			// tslint:disable-next-line: object-literal-sort-keys
@@ -48,17 +47,17 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 			rowIslandFeatures: gridFeatures.join(" ").replace(/Singers/g, "Albums")
 		};
 		if (this.usePinning) {
-			pinningConfig = {
+			Object.assign(extraConfig, {
 				albumPin: this.pinningTemplate("Album"),
 				artistPin: this.pinningTemplate("Artist"),
 				awardsPin: this.pinningTemplate("Awards"),
 				grammyPin: this.pinningTemplate("Grammy"),
 				launchPin: this.pinningTemplate("Launch"),
 				nominationsPin: this.pinningTemplate("Nominations")
-			};
+			});
 		}
 
-		return super.generateConfig(name, { extraConfig, pinningConfig });
+		return super.generateConfig(name, { extraConfig });
 	}
 
 	//tslint:disable

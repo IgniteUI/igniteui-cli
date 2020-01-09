@@ -72,8 +72,12 @@ export function newProject(options: OptionsSchema): Rule {
 						options.theme = await prompt.getTheme(projLibrary);
 					}
 
-					if (options.theme && projLibrary.themes.indexOf(options.theme) === -1) {
-						throw new SchematicsException(`Theme not supported`);
+					let themeIndex = 0;
+					if (options.theme) {
+						themeIndex = projLibrary.themes.findIndex(item => options.theme.toLowerCase() === item.toLowerCase());
+						if (themeIndex === -1) {
+							throw new SchematicsException(`Theme not supported`);
+						}
 					}
 
 					if (projTemplate === undefined) {
@@ -83,7 +87,7 @@ export function newProject(options: OptionsSchema): Rule {
 							throw new SchematicsException(`template with id '${options.template}' not found`);
 						}
 					}
-					const theme = options.theme || projLibrary.themes[0];
+					const theme = projLibrary.themes[themeIndex];
 					Util.log(`Project Name: ${options.name}, theme ${theme}`);
 
 					// project options:
@@ -101,12 +105,12 @@ export function newProject(options: OptionsSchema): Rule {
 						t: "event",
 						ec: "$ng new",
 						ea: `project name: ${options.name}; framework: ${projTemplate.framework}; ` +
-							`project type: ${projTemplate.projectType}; theme: ${options.theme}; skip-git: ${!!options.skipGit}`,
+							`project type: ${projTemplate.projectType}; theme: ${theme}; skip-git: ${!!options.skipGit}`,
 						cd1: projTemplate.framework,
 						cd2: projTemplate.projectType,
 						cd3: options.name,
 						cd11: !!options.skipGit,
-						cd14: options.theme
+						cd14: theme
 					});
 
 					return tree;
