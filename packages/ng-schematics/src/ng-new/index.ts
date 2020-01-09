@@ -7,7 +7,7 @@ import {
 	RepositoryInitializerTask,
 	RunSchematicTask
 } from "@angular-devkit/schematics/tasks";
-import { App, GoogleAnalytics, ProjectLibrary, Util, ProjectTemplate } from "@igniteui/cli-core";
+import { App, GoogleAnalytics, ProjectLibrary,  ProjectTemplate, Util } from "@igniteui/cli-core";
 import { defer, Observable } from "rxjs";
 import { NewProjectOptions } from "../app-projects/schema";
 import { SchematicsPromptSession } from "../prompt/SchematicsPromptSession";
