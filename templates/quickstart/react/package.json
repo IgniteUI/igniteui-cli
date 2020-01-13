@@ -15,7 +15,7 @@
   "bin": {
   },
   "dependencies": {
-    "ignite-ui": "~18.1",
+    "ignite-ui": "~19.2",
     "lite-server": "^2.3.0",
     "babel-runtime": "6.22.0",
     "react": "15.4.2",
