@@ -31,7 +31,7 @@
 	  "core-js": "^2.5.4",
 	  "jquery": ">=1.9.1",
 	  "jquery-ui": ">=1.10.5",
-	  "igniteui-angular-wrappers": "~7.0.0",
+	  "igniteui-angular-wrappers": "~8.0.1",
 	  "ignite-ui": "~18.2",
 	  "rxjs": "~6.3.3",
 	  "rxjs-compat": "~6.3.3",

@@ -28,7 +28,7 @@
     "core-js": "^2.4.1",
     "rxjs": "^5.5.6",
     "zone.js": "^0.8.19",
-    "igniteui-angular-wrappers": "^5.1.1"
+    "igniteui-angular-wrappers": "^8.0.1"
   },
   "devDependencies": {
     "concurrently": "^3.1.0",
