@@ -69,7 +69,9 @@ export function newProject(options: OptionsSchema): Rule {
 
 						projTemplate = await prompt.getProjectTemplate(projLibrary);
 
-						options.theme = await prompt.getTheme(projLibrary);
+						if (!options.theme) {
+							options.theme = await prompt.getTheme(projLibrary);
+						}
 					}
 
 					let themeIndex = 0;

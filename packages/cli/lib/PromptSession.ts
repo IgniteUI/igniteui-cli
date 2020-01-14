@@ -30,7 +30,7 @@ export class PromptSession extends BasePromptSession {
 	/**
 	 * Start questions session for project creation
 	 */
-	public async start() {
+	public async start(themeProvided?) {
 		GoogleAnalytics.post({
 			t: "screenview",
 			cd: "Wizard"
@@ -42,7 +42,7 @@ export class PromptSession extends BasePromptSession {
 		this.config = ProjectConfig.getConfig();
 		const defaultProjName = "IG Project";
 
-		if (ProjectConfig.hasLocalConfig() && !this.config.project.isShowcase) {
+		if (ProjectConfig.hasLocalConfig() && !this.config.project.isShowcase && !themeProvided) {
 			projLibrary = this.templateManager.getProjectLibrary(this.config.project.framework, this.config.project.projectType);
 			theme = this.config.project.theme;
 		} else {
@@ -72,7 +72,7 @@ export class PromptSession extends BasePromptSession {
 			}
 			const projTemplate = await this.getProjectTemplate(projLibrary);
 			// project options:
-			theme = await this.getTheme(projLibrary);
+			theme = themeProvided ? themeProvided : await this.getTheme(projLibrary);
 
 			Util.log("  Generating project structure.");
 			const config = projTemplate.generateConfig(projectName, theme);
