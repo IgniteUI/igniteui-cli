@@ -24,7 +24,6 @@
     "bootstrap": "^3.3.7",
     "systemjs": "0.19.39",
     "core-js": "^2.4.1",
-    "reflect-metadata": "0.1.13",
     "rxjs": "^6.4.0",
     "zone.js": "^0.9.1",
     "igniteui-angular-wrappers": "^8.0.1"
