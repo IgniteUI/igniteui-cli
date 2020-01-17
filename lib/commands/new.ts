@@ -62,7 +62,7 @@ command = {
 		if (ProjectConfig.hasLocalConfig()) {
 			return Util.error("There is already an existing project.", "red");
 		}
-		if (!argv.name && !argv.type && !argv.theme) {
+		if (!argv.name) {
 			const prompts = new PromptSession(command.template);
 			await prompts.start();
 			return;
