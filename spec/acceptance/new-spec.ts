@@ -86,7 +86,7 @@ describe("New command", () => {
 
 	it("Creates Ignite UI for Angular project", async done => {
 
-		await cli.run(["new", "Ignite UI for Angular", "--framework=angular", "--type=igx-ts"]);
+		await cli.run(["new", "Ignite UI for Angular", "--framework=angular", "--type=igx-ts", "--theme=default"]);
 
 		expect(fs.existsSync("./Ignite UI for Angular")).toBeTruthy();
 		expect(filesDiff("../templates/angular/igx-ts/projects/empty/files", "./Ignite UI for Angular")).toEqual([]);
@@ -138,7 +138,7 @@ describe("New command", () => {
 
 	it("Git Status", async done => {
 		const projectName = "angularProj";
-		await cli.run(["new", projectName, "--framework=angular", "--type=igx-ts"]);
+		await cli.run(["new", projectName, "--framework=angular", "--type=igx-ts", "--theme=default"]);
 
 		process.chdir(projectName);
 		expect(fs.existsSync(".git")).toBeTruthy();
@@ -151,7 +151,7 @@ describe("New command", () => {
 
 	it("Skip Git/Install with command option", async done => {
 		const projectName = "angularProj";
-		await cli.run(["new", projectName, "--framework=angular", "--type=igx-ts", "--skip-git", "--skip-install"]);
+		await cli.run(["new", projectName, "--framework=angular", "--type=igx-ts", "--skip-git", "--skip-install", "--theme=default"]);
 
 		expect(fs.existsSync("./" + projectName + "/.git")).not.toBeTruthy();
 		expect(PackageManager.installPackages).not.toHaveBeenCalled();

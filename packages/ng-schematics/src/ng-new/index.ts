@@ -7,7 +7,7 @@ import {
 	RepositoryInitializerTask,
 	RunSchematicTask
 } from "@angular-devkit/schematics/tasks";
-import { App, GoogleAnalytics, ProjectLibrary, Util } from "@igniteui/cli-core";
+import { App, GoogleAnalytics, ProjectLibrary,  ProjectTemplate, Util } from "@igniteui/cli-core";
 import { defer, Observable } from "rxjs";
 import { NewProjectOptions } from "../app-projects/schema";
 import { SchematicsPromptSession } from "../prompt/SchematicsPromptSession";
@@ -35,6 +35,7 @@ export function newProject(options: OptionsSchema): Rule {
 		// TODO:
 		const defaultProjName = "IG Project";
 		let nameProvided: boolean = false;
+		let projTemplate: ProjectTemplate;
 
 		return chain([
 			(tree: Tree, _context: IgxSchematicContext): Observable<Tree> => {
@@ -53,6 +54,8 @@ export function newProject(options: OptionsSchema): Rule {
 					if (Util.directoryExists(options.name)) {
 						throw new SchematicsException(`Folder "${options.name}" already exists!`);
 					}
+					const framework = templateManager.getFrameworkByName("angular");
+					projLibrary = await prompt.getProjectLibrary(framework);
 
 					if (!options.name || !prompt.nameIsValid(options.name)) {
 						options.name = await prompt.getUserInput({
@@ -63,22 +66,28 @@ export function newProject(options: OptionsSchema): Rule {
 							validate: prompt.nameIsValid
 						});
 						nameProvided = false;
+
+						projTemplate = await prompt.getProjectTemplate(projLibrary);
+
+						options.theme = await prompt.getTheme(projLibrary);
 					}
 
-					const framework = templateManager.getFrameworkByName("angular");
-					// app name validation???
-					projLibrary = await prompt.getProjectLibrary(framework);
-
-					if (options.theme && projLibrary.themes.indexOf(options.theme) === -1) {
-						throw new SchematicsException(`Theme not supported`);
+					let themeIndex = 0;
+					if (options.theme) {
+						themeIndex = projLibrary.themes.findIndex(item => options.theme.toLowerCase() === item.toLowerCase());
+						if (themeIndex === -1) {
+							throw new SchematicsException(`Theme not supported`);
+						}
 					}
 
-					const projectTemplate = options.template || projLibrary.projectIds[0];
-					const projTemplate = projLibrary.getProject(projectTemplate);
-					if (!projTemplate) {
-						throw new SchematicsException(`template with id '${options.template}' not found`);
+					if (projTemplate === undefined) {
+						const projectTemplate = options.template || projLibrary.projectIds[0];
+						projTemplate = projLibrary.getProject(projectTemplate);
+						if (!projTemplate) {
+							throw new SchematicsException(`template with id '${options.template}' not found`);
+						}
 					}
-					const theme = options.theme || projLibrary.themes[0];
+					const theme = projLibrary.themes[themeIndex];
 					Util.log(`Project Name: ${options.name}, theme ${theme}`);
 
 					// project options:
@@ -96,12 +105,12 @@ export function newProject(options: OptionsSchema): Rule {
 						t: "event",
 						ec: "$ng new",
 						ea: `project name: ${options.name}; framework: ${projTemplate.framework}; ` +
-							`project type: ${projTemplate.projectType}; theme: ${options.theme}; skip-git: ${!!options.skipGit}`,
+							`project type: ${projTemplate.projectType}; theme: ${theme}; skip-git: ${!!options.skipGit}`,
 						cd1: projTemplate.framework,
 						cd2: projTemplate.projectType,
 						cd3: options.name,
 						cd11: !!options.skipGit,
-						cd14: options.theme
+						cd14: theme
 					});
 
 					return tree;

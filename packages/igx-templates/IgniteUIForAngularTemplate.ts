@@ -38,19 +38,12 @@ export class IgniteUIForAngularTemplate implements Template {
 	}
 
 	public generateConfig(name: string, options: {}): { [key: string]: any } {
-		const config = {};
 		if (options["modulePath"] && !Util.fileExists(path.join(process.cwd(), `src\\app`, options["modulePath"]))) {
 			Util.error(`Wrong module path provided: ${options["modulePath"]}. No components were added!`);
 			return Promise.resolve(false);
 		}
 
-		const terms = [];
-		for (const key of Object.keys(options)) {
-			terms.push(options[key]);
-		}
-		Object.assign(config, ...terms, this.getBaseVariables(name));
-
-		return config;
+		return  Object.assign({}, options["extraConfig"], this.getBaseVariables(name));
 	}
 
 	//TODO: rename name to fullName for clarity + in all other places fileName to fullName
@@ -131,9 +124,7 @@ export class IgniteUIForAngularTemplate implements Template {
 		config["cliVersion"] = Util.version();
 		config["camelCaseName"] = Util.camelCase(name);
 
-		if (this.name) {
-			config["nameMerged"] = this.name.replace(/ /g, "");
-		}
+		/** 'nameMerged' is never used igx templates, removed */
 		return config;
 	}
 
