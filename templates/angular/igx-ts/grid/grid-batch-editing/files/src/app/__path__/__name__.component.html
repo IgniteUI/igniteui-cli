@@ -7,7 +7,7 @@
         [rowEditable]="true">
         <igx-column width="135px">
             <ng-template igxCell let-cell="cell" let-val>
-                <button igxButton (click)="deleteRow($event, cell.cellID.rowID)">Delete</button>
+                <button igxButton (click)="deleteRow($event, cell.cellID.rowID)" [disabled]="cell.row.deleted">Delete</button>
             </ng-template>
         </igx-column>
         <igx-column width="60px" field="ProductID" header="Product ID"></igx-column>
