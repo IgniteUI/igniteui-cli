@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { <%=ClassName%>Component } from './<%=filePrefix%>.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { IgxBulletGraphModule } from 'igniteui-angular-gauges/ES5/igx-bullet-graph-module';
+import { IgxBulletGraphModule } from 'igniteui-angular-gauges';
 
 describe('<%=ClassName%>Component', () => {
   let component: <%=ClassName%>Component;
