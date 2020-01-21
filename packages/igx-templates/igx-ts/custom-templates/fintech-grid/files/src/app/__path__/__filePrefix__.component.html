@@ -38,7 +38,7 @@
     <igx-grid #grid1
         (onRowSelectionChange)="rowSelectionChanged($event)" [data]="data"
         [height]="'calc(100% - 71px)'" width="100%" [autoGenerate]='false' displayDensity='compact'
-        columnHidingTitle="Indicators" hiddenColumnsText="Hidden" primaryKey='ID' [rowSelection]="'multiple'"
+        columnHidingTitle="Indicators" hiddenColumnsText="Hidden" primaryKey='ID' [rowSelectable]="true"
         [allowFiltering]="true" [filterMode]="'excelStyleFilter'" [showToolbar]="false" [columnHiding]="true"
         [columnPinning]="true" [exportExcel]="true" exportExcelText="Export to Excel">
 
