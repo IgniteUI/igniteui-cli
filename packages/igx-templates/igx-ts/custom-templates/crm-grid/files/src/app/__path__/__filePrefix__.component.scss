@@ -1,16 +1,17 @@
 @import url("https://unpkg.com/@fortawesome/fontawesome-free-webfonts@^1.0.9/css/fontawesome.css");
 @import url("https://unpkg.com/@fortawesome/fontawesome-free-webfonts@^1.0.9/css/fa-regular.css");
 @import url("https://unpkg.com/@fortawesome/fontawesome-free-webfonts@^1.0.9/css/fa-solid.css");
-
 @import '~igniteui-angular/lib/core/styles/themes/index';
-@import '~igniteui-angular/lib/core/styles/themes/utilities';
 
-$crm-grid-palette: igx-palette(
-    $primary: #09f,
-    $secondary: #ffc800
-);
+:host ::ng-deep {
 
-$checkbox-theme: igx-checkbox-theme(
+    $crm-grid-palette: igx-palette(
+        $primary: #09f,
+        $secondary: #ffbf00
+    );
+    @include igx-theme($crm-grid-palette);
+
+    $checkbox-theme: igx-checkbox-theme(
         $fill-color: igx-color($crm-grid-palette, "secondary", 500),
         $tick-color: black
     );
@@ -347,6 +348,8 @@ $checkbox-theme: igx-checkbox-theme(
         width: 1rem;
         height: 1rem;
     }
+}
+
 
 .animated-fan {
     width: 28px;
@@ -374,4 +377,5 @@ $checkbox-theme: igx-checkbox-theme(
         opacity: 1;
         transform: translateX(0);
     }
-  }
+
+}
