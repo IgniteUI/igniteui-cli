@@ -9,7 +9,7 @@ describe("Unit - Package Manager", () => {
 	it("ensureIgniteUISource - Should run through properly when install now is set to true", async done => {
 		const mockRequire = {
 			dependencies: {
-				"ignite-ui": "17.2"
+				"ignite-ui": "19.2"
 			}
 		};
 		const mockTemplateMgr = jasmine.createSpyObj("mockTemplateMgr", {
@@ -78,13 +78,13 @@ describe("Unit - Package Manager", () => {
 		);
 		expect(cp.execSync).toHaveBeenCalledWith("npm config set @infragistics:registry trial");
 		expect(PackageManager.removePackage).toHaveBeenCalled();
-		expect(PackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@"17.2"`, true);
+		expect(PackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@"19.2"`, true);
 		done();
 	});
 	it("ensureIgniteUISource - Should run through properly when install = true && package error", async done => {
 		const mockRequire = {
 			dependencies: {
-				"ignite-ui": "17.2"
+				"ignite-ui": "19.2"
 			}
 		};
 		const mockTemplateMgr = jasmine.createSpyObj("mockTemplateMgr", {
@@ -192,7 +192,7 @@ describe("Unit - Package Manager", () => {
 		}
 		const mockDeps = {
 			dependencies: {
-				"ignite-ui": "~17.2"
+				"ignite-ui": "~19.2"
 			}
 		};
 		const mockTemplateMgr = jasmine.createSpyObj("mockTemplateMgr", {
@@ -220,9 +220,9 @@ describe("Unit - Package Manager", () => {
 		spyOn(TestPackageManager, "getPackageJSON").and.callFake(() => mockDeps);
 
 		TestPackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
-		expect(TestPackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@"~17.2"`, true);
+		expect(TestPackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@"~19.2"`, true);
 		expect(cp.execSync).toHaveBeenCalledWith(
-			`npm install @infragistics/ignite-ui-full@"~17.2" --quiet --save`,
+			`npm install @infragistics/ignite-ui-full@"~19.2" --quiet --save`,
 			jasmine.any(Object)
 		);
 		expect(TestPackageManager.removePackage).toHaveBeenCalledWith("ignite-ui", true);
@@ -373,7 +373,7 @@ describe("Unit - Package Manager", () => {
 	it("queuePackage should ignore existing package installs", async done => {
 		const mockRequire = {
 			dependencies: {
-				"test-pack": "17.2"
+				"test-pack": "19.2"
 			}
 		};
 		// should ignore already installed
