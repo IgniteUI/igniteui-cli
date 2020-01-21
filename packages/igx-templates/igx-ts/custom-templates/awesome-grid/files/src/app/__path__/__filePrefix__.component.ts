@@ -19,27 +19,28 @@ styleUrls: ['./<%=filePrefix%>.component.scss']
 })
 export class <%=ClassName%>Component implements OnInit, OnDestroy {
 
-  @ViewChild('grid1', { static: true, read: IgxGridComponent })
+  @ViewChild('grid1', { read: IgxGridComponent, static: true })
   public grid1: IgxGridComponent;
 
   public topSpeedSummary = CustomTopSpeedSummary;
   public bnpSummary = CustomBPMSummary;
   public localData: any[];
   public isFinished = false;
-  private isLive = true;
-  private timer;
+  private 
+  _live = true;
+  private _timer;
   private windowWidth: any;
 
   get live() {
-    return this.isLive;
+    return this._live;
   }
 
   set live(val) {
-    this.isLive = val;
-    if (this.isLive) {
-      this.timer = setInterval(() => this.ticker(), 3000);
+    this._live = val;
+    if (this._live) {
+      this._timer = setInterval(() => this.ticker(), 3000);
     } else {
-      clearInterval(this.timer);
+      clearInterval(this._timer);
     }
   }
 
@@ -53,13 +54,19 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy {
   constructor(private zone: NgZone) { }
 
   public ngOnInit() {
-    this.localData = athletesData;
-    this.windowWidth = window.innerWidth;
-    this.timer = setInterval(() => this.ticker(), 3000);
+    const athletes = athletesData;
+
+        for (const athlete of athletes) {
+            this.getSpeed(athlete);
+        }
+
+        this.localData = athletes;
+        this.windowWidth = window.innerWidth;
+        this._timer = setInterval(() => this.ticker(), 3000);
   }
 
   public ngOnDestroy() {
-    clearInterval(this.timer);
+    clearInterval(this._timer);
   }
 
   public isTop3(cell): boolean {
@@ -97,6 +104,26 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy {
       case 'down':
         return 'error';
     }
+  }
+
+  public getSpeed(athlete: any): any {
+    athlete['Speed'] = this.getSpeedeData(40);
+  }
+
+  public getSpeedeData(minutes?: number): any[] {
+    if (minutes === undefined) {
+        minutes = 20;
+    }
+    const speed: any[] = [];
+    for (let m = 0; m < minutes; m += 3) {
+        const value = this.getRandomNumber(17, 20);
+        speed.push({Speed: value, Minute: m});
+    }
+    return speed;
+  }
+
+  public getRandomNumber(min: number, max: number): number {
+    return Math.round(min + Math.random() * (max - min));
   }
 
   @HostListener('window:resize', ['$event'])
@@ -180,7 +207,7 @@ class CustomTopSpeedSummary extends IgxNumberSummaryOperand {
     result.push({
       key: 'average',
       label: 'average',
-      summaryResult: IgxNumberSummaryOperand.average(data).toFixed(2)
+      summaryResult: data.length ? IgxNumberSummaryOperand.average(data).toFixed(2) : null
     });
 
     return result;
@@ -207,7 +234,7 @@ export class CustomBPMSummary extends IgxNumberSummaryOperand {
       }, {
         key: 'average',
         label: 'average',
-        summaryResult: IgxNumberSummaryOperand.average(data).toFixed(2)
+        summaryResult: data.length ? IgxNumberSummaryOperand.average(data).toFixed(2) : null
       });
 
     return result;

@@ -23,6 +23,13 @@ class IgxGridAwesomeTemplate extends IgniteUIForAngularTemplate {
 				],
 				from: "igniteui-angular"
 			},
+			{
+				import: [
+					"IgxSparklineModule",
+					"IgxSparklineCoreModule"
+				],
+				from: "igniteui-angular-charts"
+			},
 			{ import: "FormsModule", from: "@angular/forms" }
 		];
 	}
