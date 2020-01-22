@@ -1,5 +1,5 @@
 :host ::ng-deep {
-    .fintech-icons {
+    .finjs-icons {
         display: flex;
         align-items: center;
         igx-icon {
@@ -76,7 +76,7 @@
     .igx-grid__td--selected.changePos2,
     .igx-grid__td--selected.changePos {
         background-color: #335e3b !important;
-        .fintech-icons,
+        .finjs-icons,
         .igx-grid__td-text {
             color: #fff;
         }
@@ -85,7 +85,7 @@
     .igx-grid__td--selected.changeNeg2,
     .igx-grid__td--selected.changeNeg {
         background-color: #7a1c32 !important;
-        .fintech-icons,
+        .finjs-icons,
         .igx-grid__td-text {
             color: #fff;
         }
@@ -129,7 +129,7 @@
     .igx-grid__td--selected.strongPositive2,
     .igx-grid__td--selected.strongPositive {
         background-color: #459a55 !important;
-        .fintech-icons,
+        .finjs-icons,
         .igx-grid__td-text {
             color: #fff;
         }
@@ -138,7 +138,7 @@
     .igx-grid__td--selected.strongNegative2,
     .igx-grid__td--selected.strongNegative {
         background-color: #d31642 !important;
-        .fintech-icons,
+        .finjs-icons,
         .igx-grid__td-text {
             color: #fff;
         }
@@ -166,11 +166,11 @@
     .igx-slider--disabled {
         height: 24px;
     }
-    .fintech-slider {
+    .finjs-slider {
         width: 40%;
         min-width: 145px;
     }
-    .fintech-play-controls {
+    .finjs-play-controls {
         width: 45%;
         min-width: 500px;
         margin-top: 20px;
@@ -181,7 +181,7 @@
         line-height: 20px;
     }
     .fin-dark-theme {
-        .fintech-slider,
+        .finjs-slider,
         .sample-toolbar {
             color: rgba(255, 255, 255, 0.87);
         }
@@ -192,46 +192,38 @@
     .igx-excel-filter input {
         font-size: 0.8125rem;
     }
-    // .igx-button-group > .igx-button--compact {
-    //     height: 1rem;
-    //     min-height: 1.5rem;
-    // }
-    // .igx-button-group > .igx-button--cosy {
-    //     height: 1rem;
-    //     min-height: 1.875rem;
-    // }
 }
 
 .grid__wrapper {
     padding: 5px 15px;
-    height: 100%;
+    height: 95%;
 }
 
- // Custom Dark Theme
+// Custom Dark Theme	
 
- // Import the theme utilities first
-@import '~igniteui-angular/lib/core/styles/themes/utilities';
-@import '~igniteui-angular/lib/core/styles/themes/index';
-@include igx-core();
-@include igx-theme($default-palette);
+// Import the theme utilities first	
+@import '~igniteui-angular/lib/core/styles/themes/utilities';	
+@import '~igniteui-angular/lib/core/styles/themes/index';	
+@include igx-core();	
+@include igx-theme($default-palette);	
 
- @import './themes/_mixins';
+@import './themes/_mixins';	
 
- $green-palette: igx-palette($primary: #09f,$secondary: #72da67, $surface: #333);
+$green-palette: igx-palette($primary: #09f,$secondary: #72da67, $surface: #333);	
 
- :host {
-	::ng-deep {
+:host {
+    ::ng-deep {
 
-		@include scrollbar-love();
+        @include scrollbar-love();
 
-		.fin-dark-theme {
-			@include igx-dark-theme($green-palette);
-			@include scrollbar-love(igx-color($green-palette, 'surface'));
-			background: #333;
+        .fin-dark-theme {
+            @include igx-dark-theme($green-palette);
+            @include scrollbar-love(igx-color($green-palette, 'surface'));
+            background: #333;
 
-			::-moz-placeholder {
-				opacity: 1;
-			}
-		}
-	}
+            ::-moz-placeholder {
+                opacity: 1;
+            }
+        }
+    }
 }

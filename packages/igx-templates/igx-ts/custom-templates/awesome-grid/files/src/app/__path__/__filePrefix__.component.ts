@@ -19,7 +19,7 @@ styleUrls: ['./<%=filePrefix%>.component.scss']
 })
 export class <%=ClassName%>Component implements OnInit, OnDestroy {
 
-  @ViewChild('grid1', { static: true, read: IgxGridComponent })
+  @ViewChild('grid1', { read: IgxGridComponent, static: true })
   public grid1: IgxGridComponent;
 
   public topSpeedSummary = CustomTopSpeedSummary;
@@ -53,7 +53,12 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy {
   constructor(private zone: NgZone) { }
 
   public ngOnInit() {
-    this.localData = athletesData;
+    const athletes = athletesData;
+    for (const athlete of athletes) {
+        this.getSpeed(athlete);
+    }
+
+    this.localData = athletes;
     this.windowWidth = window.innerWidth;
     this.timer = setInterval(() => this.ticker(), 3000);
   }
@@ -97,6 +102,26 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy {
       case 'down':
         return 'error';
     }
+  }
+
+  public getSpeed(athlete: any): any {
+    athlete.Speed = this.getSpeedData(40);
+  }
+
+  public getSpeedData(minutes?: number): any[] {
+    if (minutes === undefined) {
+        minutes = 20;
+    }
+    const speed: any[] = [];
+    for (let m = 0; m < minutes; m += 3) {
+        const value = this.getRandomNumber(17, 20);
+        speed.push({Speed: value, Minute: m});
+    }
+    return speed;
+  }
+
+  public getRandomNumber(min: number, max: number): number {
+    return Math.round(min + Math.random() * (max - min));
   }
 
   @HostListener('window:resize', ['$event'])
@@ -163,7 +188,7 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy {
     }
 
     if (this.localData[0].TrackProgress >= 100) {
-      this.live = false;
+      this.isLive = false;
       this.isFinished = true;
     }
   }
@@ -180,7 +205,7 @@ class CustomTopSpeedSummary extends IgxNumberSummaryOperand {
     result.push({
       key: 'average',
       label: 'average',
-      summaryResult: IgxNumberSummaryOperand.average(data).toFixed(2)
+      summaryResult: data.length ? IgxNumberSummaryOperand.average(data).toFixed(2) : null
     });
 
     return result;
@@ -207,7 +232,7 @@ export class CustomBPMSummary extends IgxNumberSummaryOperand {
       }, {
         key: 'average',
         label: 'average',
-        summaryResult: IgxNumberSummaryOperand.average(data).toFixed(2)
+        summaryResult: data.length ? IgxNumberSummaryOperand.average(data).toFixed(2) : null
       });
 
     return result;
