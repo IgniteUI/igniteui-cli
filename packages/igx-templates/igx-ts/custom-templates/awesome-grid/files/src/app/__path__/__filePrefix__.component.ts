@@ -26,17 +26,17 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy {
   public bnpSummary = CustomBPMSummary;
   public localData: any[];
   public isFinished = false;
-  private live = true;
+  private isLive = true;
   private timer;
   private windowWidth: any;
 
   get live() {
-    return this.live;
+    return this.isLive;
   }
 
   set live(val) {
-    this.live = val;
-    if (this.live) {
+    this.isLive = val;
+    if (this.isLive) {
       this.timer = setInterval(() => this.ticker(), 3000);
     } else {
       clearInterval(this.timer);
@@ -188,7 +188,7 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy {
     }
 
     if (this.localData[0].TrackProgress >= 100) {
-      this.live = false;
+      this.isLive = false;
       this.isFinished = true;
     }
   }
