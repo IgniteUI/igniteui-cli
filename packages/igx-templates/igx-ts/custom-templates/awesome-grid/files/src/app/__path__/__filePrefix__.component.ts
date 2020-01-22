@@ -107,7 +107,7 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy {
   }
 
   public getSpeed(athlete: any): any {
-    athlete['Speed'] = this.getSpeedeData(40);
+    athlete.Speed = this.getSpeedeData(40);
   }
 
   public getSpeedeData(minutes?: number): any[] {
