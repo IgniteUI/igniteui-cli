@@ -26,10 +26,10 @@ import { ITreeGridAggregation } from './tree-grid-grouping.pipe';
     styleUrls: ['./<%=filePrefix%>.component.scss']
 })
 export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy {
-	@ViewChild("grid1", { static: true }) public grid1: IgxTreeGridComponent;
-    @ViewChild("buttonGroup1", { static: true }) public buttonGroup1: IgxButtonGroupComponent;
-    @ViewChild("slider1", { static: true }) public volumeSlider: IgxSliderComponent;
-    @ViewChild("slider2", { static: true }) public intervalSlider: IgxSliderComponent;
+    @ViewChild('grid1', { static: true }) public grid1: IgxTreeGridComponent;
+    @ViewChild('buttonGroup1', { static: true }) public buttonGroup1: IgxButtonGroupComponent;
+    @ViewChild('slider1', { static: true }) public volumeSlider: IgxSliderComponent;
+    @ViewChild('slider2', { static: true }) public intervalSlider: IgxSliderComponent;
 
     public theme = false;
     public volume = 1000;
@@ -38,66 +38,66 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
     public controls = [
         {
             disabled: false,
-            icon: "update",
-            label: "LIVE PRICES",
+            icon: 'update',
+            label: 'LIVE PRICES',
             selected: false
         },
         {
             disabled: false,
-            icon: "update",
-            label: "LIVE ALL PRICES",
+            icon: 'update',
+            label: 'LIVE ALL PRICES',
             selected: false
         },
         {
             disabled: true,
-            icon: "stop",
-            label: "Stop",
+            icon: 'stop',
+            label: 'Stop',
             selected: false
         }
     ];
-    public groupColumns = ["Category", "Type", "Contract"];
+    public groupColumns = ['Category', 'Type', 'Contract'];
     public aggregations: ITreeGridAggregation[] = [
         {
             aggregate: (parent: any, data: any[]) => {
                 return data.map((r) => r.Change).reduce((ty, u) => ty + u, 0);
             },
-            field: "Change"
+            field: 'Change'
         },
         {
             aggregate: (parent: any, data: any[]) => {
                 return data.map((r) => r.Price).reduce((ty, u) => ty + u, 0);
             },
-            field: "Price"
+            field: 'Price'
         },
         {
             aggregate: (parent: any, data: any[]) => {
                 return parent.Change / (parent.Price - parent.Change) * 100;
             },
-            field: "Change(%)"
+            field: 'Change(%)'
         }
     ];
-    public primaryKey = "ID";
-    public childDataKey = "Children";
-    public groupColumnKey = "Categories";
+    public primaryKey = 'ID';
+    public childDataKey = 'Children';
+    public groupColumnKey = 'Categories';
 
-    public items: any[] = [{field: "Export native"}, { field: "Export JS Excel"}];
+    public items: any[] = [{field: 'Export native'}, { field: 'Export JS Excel'}];
 
-    public _positionSettings: PositionSettings = {
+    public positionSettings: PositionSettings = {
         horizontalDirection: HorizontalAlignment.Left,
         horizontalStartPoint: HorizontalAlignment.Right,
         verticalStartPoint: VerticalAlignment.Bottom
     };
 
-    public _overlaySettings: OverlaySettings = {
+    public overlaySettings: OverlaySettings = {
         closeOnOutsideClick: true,
         modal: false,
-        positionStrategy: new ConnectedPositioningStrategy(this._positionSettings),
+        positionStrategy: new ConnectedPositioningStrategy(this.positionSettings),
         scrollStrategy: new AbsoluteScrollStrategy()
     };
 
     private subscription;
     private selectedButton;
-    private _timer;
+    private timer;
     private volumeChanged;
 
     constructor(private zone: NgZone, private localService: LocalDataService, private elRef: ElementRef) {
@@ -112,7 +112,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
             (x) => {
                 this.localService.getData(this.volume);
             },
-            (err) => console.log("Error: " + err));
+            (err) => console.log('Error: ' + err));
     }
 
     public ngAfterViewInit() {
@@ -122,12 +122,12 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
         switch (event.index) {
             case 0: {
                     this.disableOtherButtons(event.index, true);
-                    this._timer = setInterval(() => this.ticker(this.data), this.frequency);
+                    this.timer = setInterval(() => this.ticker(this.data), this.frequency);
                     break;
                 }
             case 1: {
                     this.disableOtherButtons(event.index, true);
-                    this._timer = setInterval(() => this.tickerAllPrices(this.data), this.frequency);
+                    this.timer = setInterval(() => this.tickerAllPrices(this.data), this.frequency);
                     break;
                 }
                 case 2: {
@@ -143,8 +143,8 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
     }
 
     public stopFeed() {
-        if (this._timer) {
-            clearInterval(this._timer);
+        if (this.timer) {
+            clearInterval(this.timer);
         }
         if (this.subscription) {
             this.subscription.unsubscribe();
@@ -152,15 +152,15 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
     }
 
     public formatNumber(value: number) {
-        return value ? value.toFixed(2) : "";
+        return value ? value.toFixed(2) : '';
     }
 
     public percentage(value: number) {
-        return value ? value.toFixed(2) + "%" : "";
+        return value ? value.toFixed(2) + '%' : '';
     }
 
     public formatCurrency(value: number) {
-        return value ? "$" + value.toFixed(3) : "";
+        return value ? '$' + value.toFixed(3) : '';
     }
 
     /**
@@ -169,10 +169,10 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
      */
     public onThemeChanged(event: any) {
         const parentEl = this.parentComponentEl();
-        if (event.checked && parentEl.classList.contains("main")) {
-            parentEl.classList.add("fin-dark-theme");
+        if (event.checked && parentEl.classList.contains('main')) {
+            parentEl.classList.add('fin-dark-theme');
         } else {
-            parentEl.classList.remove("fin-dark-theme");
+            parentEl.classList.remove('fin-dark-theme');
         }
     }
 
@@ -186,22 +186,22 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
     }
 
     private negative = (rowData: any): boolean => {
-        return rowData["Change(%)"] < 0;
+        return rowData['Change(%)'] < 0;
     }
     private positive = (rowData: any): boolean => {
-        return rowData["Change(%)"] > 0;
+        return rowData['Change(%)'] > 0;
     }
     private changeNegative = (rowData: any): boolean => {
-        return rowData["Change(%)"] < 0 && rowData["Change(%)"] > -1;
+        return rowData['Change(%)'] < 0 && rowData['Change(%)'] > -1;
     }
     private changePositive = (rowData: any): boolean => {
-        return rowData["Change(%)"] > 0 && rowData["Change(%)"] < 1;
+        return rowData['Change(%)'] > 0 && rowData['Change(%)'] < 1;
     }
     private strongPositive = (rowData: any): boolean => {
-        return rowData["Change(%)"] >= 1;
+        return rowData['Change(%)'] >= 1;
     }
     private strongNegative = (rowData: any, key: string): boolean => {
-        return rowData["Change(%)"] <= -1;
+        return rowData['Change(%)'] <= -1;
     }
 
     // tslint:disable:member-ordering
@@ -279,7 +279,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
      * Generates ne values for Change, Price and ChangeP columns
      */
     private randomizeObjectData(dataObj) {
-        const changeP = "Change(%)";
+        const changeP = 'Change(%)';
         const res = this.generateNewPrice(dataObj.Price);
         dataObj.Change = res.Price - dataObj.Price;
         dataObj.Price = res.Price;
