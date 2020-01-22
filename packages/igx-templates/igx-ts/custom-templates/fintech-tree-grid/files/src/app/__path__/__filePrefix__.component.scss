@@ -198,3 +198,32 @@
     padding: 5px 15px;
     height: 95%;
 }
+
+// Custom Dark Theme	
+
+// Import the theme utilities first	
+@import '~igniteui-angular/lib/core/styles/themes/utilities';	
+@import '~igniteui-angular/lib/core/styles/themes/index';	
+@include igx-core();	
+@include igx-theme($default-palette);	
+
+@import './themes/_mixins';	
+
+$green-palette: igx-palette($primary: #09f,$secondary: #72da67, $surface: #333);	
+
+:host {
+    ::ng-deep {
+
+        @include scrollbar-love();
+
+        .fin-dark-theme {
+            @include igx-dark-theme($green-palette);
+            @include scrollbar-love(igx-color($green-palette, 'surface'));
+            background: #333;
+
+            ::-moz-placeholder {
+                opacity: 1;
+            }
+        }
+    }
+}
