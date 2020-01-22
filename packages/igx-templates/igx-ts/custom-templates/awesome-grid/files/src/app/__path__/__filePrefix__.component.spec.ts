@@ -28,7 +28,9 @@ describe('<%=ClassName%>Component', () => {
         IgxBadgeModule,
         IgxIconModule,
         IgxSwitchModule,
-        IgxInputGroupModule
+        IgxInputGroupModule,
+        IgxSparklineModule,
+        IgxSparklineCoreModule
       ]
     })
     .compileComponents();
