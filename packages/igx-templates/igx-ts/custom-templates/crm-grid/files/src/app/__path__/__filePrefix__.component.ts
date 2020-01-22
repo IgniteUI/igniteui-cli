@@ -166,7 +166,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit {
     }
 
     public getDeals(employee: any): any {
-        employee["Deals"] = this.getDealsData();
+        employee.Deals = this.getDealsData();
     }
 
     public getDealsData(months?: number): any[] {
