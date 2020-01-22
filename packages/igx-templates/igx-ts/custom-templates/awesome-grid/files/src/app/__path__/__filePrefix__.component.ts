@@ -54,13 +54,13 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy {
 
   public ngOnInit() {
     const athletes = athletesData;
-        for (const athlete of athletes) {
-            this.getSpeed(athlete);
-        }
+    for (const athlete of athletes) {
+        this.getSpeed(athlete);
+    }
 
-        this.localData = athletes;
-        this.windowWidth = window.innerWidth;
-        this.timer = setInterval(() => this.ticker(), 3000);
+    this.localData = athletes;
+    this.windowWidth = window.innerWidth;
+    this.timer = setInterval(() => this.ticker(), 3000);
   }
 
   public ngOnDestroy() {
