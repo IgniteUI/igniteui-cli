@@ -26,21 +26,20 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy {
   public bnpSummary = CustomBPMSummary;
   public localData: any[];
   public isFinished = false;
-  private 
-  _live = true;
-  private _timer;
+  private live = true;
+  private timer;
   private windowWidth: any;
 
   get live() {
-    return this._live;
+    return this.live;
   }
 
   set live(val) {
-    this._live = val;
-    if (this._live) {
-      this._timer = setInterval(() => this.ticker(), 3000);
+    this.live = val;
+    if (this.live) {
+      this.timer = setInterval(() => this.ticker(), 3000);
     } else {
-      clearInterval(this._timer);
+      clearInterval(this.timer);
     }
   }
 
@@ -55,18 +54,17 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy {
 
   public ngOnInit() {
     const athletes = athletesData;
-
         for (const athlete of athletes) {
             this.getSpeed(athlete);
         }
 
         this.localData = athletes;
         this.windowWidth = window.innerWidth;
-        this._timer = setInterval(() => this.ticker(), 3000);
+        this.timer = setInterval(() => this.ticker(), 3000);
   }
 
   public ngOnDestroy() {
-    clearInterval(this._timer);
+    clearInterval(this.timer);
   }
 
   public isTop3(cell): boolean {
@@ -107,10 +105,10 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy {
   }
 
   public getSpeed(athlete: any): any {
-    athlete['Speed'] = this.getSpeedeData(40);
+    athlete.Speed = this.getSpeedData(40);
   }
 
-  public getSpeedeData(minutes?: number): any[] {
+  public getSpeedData(minutes?: number): any[] {
     if (minutes === undefined) {
         minutes = 20;
     }

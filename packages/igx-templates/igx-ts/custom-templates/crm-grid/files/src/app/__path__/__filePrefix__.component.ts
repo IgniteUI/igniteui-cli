@@ -36,14 +36,14 @@ function formatDate(val: Date) {
 })
 export class <%=ClassName%>Component implements OnInit, AfterViewInit {
 
-	@ViewChild("grid1", { read: IgxGridComponent, static: true })
+    @ViewChild('grid1', { read: IgxGridComponent, static: true })
     public grid1: IgxGridComponent;
 
-    @ViewChild("toggleRefHiding", { static: false }) public toggleRefHiding: IgxToggleDirective;
-    @ViewChild("toggleRefPinning", { static: false }) public toggleRefPinning: IgxToggleDirective;
+    @ViewChild('toggleRefHiding', { static: false }) public toggleRefHiding: IgxToggleDirective;
+    @ViewChild('toggleRefPinning', { static: false }) public toggleRefPinning: IgxToggleDirective;
 
-    @ViewChild("hidingButton", { static: false }) public hidingButton: ElementRef;
-    @ViewChild("pinningButton", { static: false }) public pinningButton: ElementRef;
+    @ViewChild('hidingButton', { static: false }) public hidingButton: ElementRef;
+    @ViewChild('pinningButton', { static: false }) public pinningButton: ElementRef;
 
     public localData: any[];
     public dealsSummary = DealsSummary;
@@ -54,19 +54,19 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit {
     public hiddenColsLength: number;
     public pinnedColsLength: number;
 
-    public searchText: string = "";
-    public caseSensitive: boolean = false;
+    public searchText = '';
+    public caseSensitive = false;
 
-    public _positionSettings: PositionSettings = {
+    public positionSettings: PositionSettings = {
         horizontalDirection: HorizontalAlignment.Left,
         horizontalStartPoint: HorizontalAlignment.Right,
         verticalStartPoint: VerticalAlignment.Bottom
     };
 
-    public _overlaySettings: OverlaySettings = {
+    public overlaySettings: OverlaySettings = {
         closeOnOutsideClick: true,
         modal: false,
-        positionStrategy: new ConnectedPositioningStrategy(this._positionSettings),
+        positionStrategy: new ConnectedPositioningStrategy(this.positionSettings),
         scrollStrategy: new CloseScrollStrategy()
     };
 
@@ -83,29 +83,29 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit {
     }
 
     public toggleHiding() {
-        this._overlaySettings.positionStrategy.settings.target = this.hidingButton.nativeElement;
-        this.toggleRefHiding.toggle(this._overlaySettings);
+        this.overlaySettings.positionStrategy.settings.target = this.hidingButton.nativeElement;
+        this.toggleRefHiding.toggle(this.overlaySettings);
     }
 
     public togglePinning() {
-        this._overlaySettings.positionStrategy.settings.target = this.pinningButton.nativeElement;
-        this.toggleRefPinning.toggle(this._overlaySettings);
+        this.overlaySettings.positionStrategy.settings.target = this.pinningButton.nativeElement;
+        this.toggleRefPinning.toggle(this.overlaySettings);
     }
 
     public ngAfterViewInit() {
         this.cols = this.grid1.columnList;
         this.hiddenColsLength = this.cols.filter((col) => col.hidden).length;
         this.pinnedColsLength = this.cols.filter((col) => col.pinned).length;
-        this.grid1.toolbar.columnPinningDropdown.width = "250px";
+        this.grid1.toolbar.columnPinningDropdown.width = '250px';
 
         this.grid1.toolbar.excelExporter.onColumnExport.subscribe((args: IColumnExportingEventArgs) => {
-            if (args.field === "Deals") {
+            if (args.field === 'Deals') {
                 args.cancel = true;
             }
         });
 
         this.grid1.toolbar.csvExporter.onColumnExport.subscribe((args: IColumnExportingEventArgs) => {
-            if (args.field === "Deals") {
+            if (args.field === 'Deals') {
                 args.cancel = true;
             }
         });
@@ -136,16 +136,16 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit {
 
     public formatDate(val: Date) {
         if (!this.frmt) {
-            this.frmt = new Intl.DateTimeFormat("en-US");
+            this.frmt = new Intl.DateTimeFormat('en-US');
         }
         return this.frmt.format(val);
     }
 
     public searchKeyDown(ev) {
-        if (ev.key === "Enter" || ev.key === "ArrowDown" || ev.key === "ArrowRight") {
+        if (ev.key === 'Enter' || ev.key === 'ArrowDown' || ev.key === 'ArrowRight') {
             ev.preventDefault();
             this.grid1.findNext(this.searchText, this.caseSensitive);
-        } else if (ev.key === "ArrowUp" || ev.key === "ArrowLeft") {
+        } else if (ev.key === 'ArrowUp' || ev.key === 'ArrowLeft') {
             ev.preventDefault();
             this.grid1.findPrev(this.searchText, this.caseSensitive);
         }
@@ -157,16 +157,16 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit {
     }
 
     public clearSearch() {
-        this.searchText = "";
+        this.searchText = '';
         this.grid1.clearSearch();
     }
 
     public formatValue(val: any): string {
-        return val.toLocaleString("en-us", { maximumFractionDigits: 2 });
+        return val.toLocaleString('en-us', { maximumFractionDigits: 2 });
     }
 
     public getDeals(employee: any): any {
-        employee["Deals"] = this.getDealsData();
+        employee.Deals = this.getDealsData();
     }
 
     public getDealsData(months?: number): any[] {
@@ -193,11 +193,11 @@ class DealsSummary extends IgxNumberSummaryOperand {
 
     public operate(summaries?: any[]): IgxSummaryResult[] {
         const result = super.operate(summaries).filter((obj) => {
-            if (obj.key === "average" || obj.key === "sum") {
+            if (obj.key === 'average' || obj.key === 'sum') {
                 const summaryResult = obj.summaryResult;
                 // apply formatting to float numbers
                 if (Number(summaryResult) === summaryResult) {
-                    obj.summaryResult = summaryResult.toLocaleString("en-us", { maximumFractionDigits: 2 });
+                    obj.summaryResult = summaryResult.toLocaleString('en-us', { maximumFractionDigits: 2 });
                 }
                 return obj;
             }
@@ -213,7 +213,7 @@ class EarliestSummary extends IgxDateSummaryOperand {
 
     public operate(summaries?: any[]): IgxSummaryResult[] {
         const result = super.operate(summaries).filter((obj) => {
-            if (obj.key === "earliest") {
+            if (obj.key === 'earliest') {
                 obj.summaryResult = formatDate(obj.summaryResult);
                 return obj;
             }
@@ -229,8 +229,8 @@ class SoonSummary extends IgxDateSummaryOperand {
 
     public operate(summaries?: any[]): IgxSummaryResult[] {
         const result = super.operate(summaries).filter((obj) => {
-            if (obj.key === "latest") {
-                obj.label = "Soon";
+            if (obj.key === 'latest') {
+                obj.label = 'Soon';
                 obj.summaryResult = formatDate(obj.summaryResult);
                 return obj;
             }
