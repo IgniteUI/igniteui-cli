@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { $(ClassName)Component } from './$(filePrefix).component';
-import { IgxFinancialChartModule } from 'igniteui-angular-charts/ES5/igx-financial-chart-module';
+import { IgxFinancialChartModule } from 'igniteui-angular-charts';
 
 describe('$(ClassName)Component', () => {
   let component: $(ClassName)Component;
