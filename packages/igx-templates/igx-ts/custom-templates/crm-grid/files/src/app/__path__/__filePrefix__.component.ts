@@ -54,7 +54,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit {
     public hiddenColsLength: number;
     public pinnedColsLength: number;
 
-    public searchText: string = "";
+    public searchText:= '';
     public caseSensitive: boolean = false;
 
     public _positionSettings: PositionSettings = {
