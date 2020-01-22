@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IgxExcelExporterService } from 'igniteui-angular';
+import { IgxSparklineModule, IgxSparklineCoreModule } from 'igniteui-angular-charts';
 
 import { <%=ClassName%>Component } from './<%=filePrefix%>.component';
 
@@ -38,7 +39,9 @@ describe('<%=ClassName%>Component', () => {
         IgxRippleModule,
         IgxSwitchModule,
         IgxToggleModule,
-        IgxCheckboxModule
+		IgxCheckboxModule,
+		IgxSparklineModule,
+		IgxSparklineCoreModule
       ],
       providers: [IgxExcelExporterService]
     })

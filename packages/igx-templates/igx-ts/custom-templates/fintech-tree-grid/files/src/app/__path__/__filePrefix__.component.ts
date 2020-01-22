@@ -3,7 +3,8 @@ import {
     AfterViewInit, ElementRef, OnDestroy, OnInit, ViewChild, NgZone
 } from '@angular/core';
 import {
-    IgxButtonGroupComponent, IgxSliderComponent,
+    IgxButtonGroupComponent,
+    IgxSliderComponent,
     SortingDirection,
     IgxTreeGridComponent,
     PositionSettings,
@@ -79,7 +80,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
     public childDataKey = 'Children';
     public groupColumnKey = 'Categories';
 
-    public items: any[] = [{ field: 'Export native' }, { field: 'Export JS Excel' }];
+    public items: any[] = [{field: 'Export native'}, { field: 'Export JS Excel'}];
 
     public positionSettings: PositionSettings = {
         horizontalDirection: HorizontalAlignment.Left,
@@ -115,27 +116,25 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
     }
 
     public ngAfterViewInit() {
-        setTimeout(() => {
-            this.grid1.reflow();
-        }, 0);
+        this.grid1.reflow();
     }
     public onButtonAction(event: any) {
         switch (event.index) {
             case 0: {
-                this.disableOtherButtons(event.index, true);
-                this.timer = setInterval(() => this.ticker(this.data), this.frequency);
-                break;
-            }
+                    this.disableOtherButtons(event.index, true);
+                    this.timer = setInterval(() => this.ticker(this.data), this.frequency);
+                    break;
+                }
             case 1: {
-                this.disableOtherButtons(event.index, true);
-                this.timer = setInterval(() => this.tickerAllPrices(this.data), this.frequency);
-                break;
-            }
-            case 2: {
-                this.disableOtherButtons(event.index, false);
-                this.stopFeed();
-                break;
-            }
+                    this.disableOtherButtons(event.index, true);
+                    this.timer = setInterval(() => this.tickerAllPrices(this.data), this.frequency);
+                    break;
+                }
+                case 2: {
+                    this.disableOtherButtons(event.index, false);
+                    this.stopFeed();
+                    break;
+                }
             default:
                 {
                     break;
@@ -250,18 +249,17 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
     }
 
     private tickerAllPrices(data: any) {
-        this.data = this.updateAllPrices(data);
+        this.updateAllPrices(data);
     }
 
     /**
      * Updates values in every record
      */
     private updateAllPrices(data: any[]): any {
-        const newData = data.slice();
-        for (const dataRow of newData) {
+        for (const dataRow of data) {
             this.randomizeObjectData(dataRow);
         }
-        return newData;
+        (this.grid1 as any).notifyChanges();
     }
 
     /**
@@ -300,7 +298,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
         const changeAmount = oldPrice * (changePercent / 100);
         newPrice = oldPrice + changeAmount;
         newPrice = Math.round(newPrice * 100) / 100;
-        const result = { Price: 0, ChangePercent: 0 };
+        const result = {Price: 0, ChangePercent: 0};
         changePercent = Math.round(changePercent * 100) / 100;
         result.Price = newPrice;
         result.ChangePercent = changePercent;

@@ -11,6 +11,7 @@ import {
   IgxSwitchModule,
   IgxInputGroupModule
 } from 'igniteui-angular';
+import { IgxSparklineModule, IgxSparklineCoreModule } from 'igniteui-angular-charts';
 describe('<%=ClassName%>Component', () => {
   let component: <%=ClassName%>Component;
   let fixture: ComponentFixture<<%=ClassName%>Component>;
@@ -27,7 +28,9 @@ describe('<%=ClassName%>Component', () => {
         IgxBadgeModule,
         IgxIconModule,
         IgxSwitchModule,
-        IgxInputGroupModule
+        IgxInputGroupModule,
+        IgxSparklineModule,
+        IgxSparklineCoreModule
       ]
     })
     .compileComponents();
