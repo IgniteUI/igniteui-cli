@@ -31,17 +31,12 @@ export class AngularTemplate implements Template {
 	}
 
 	public generateConfig(name: string, options: {}): { [key: string]: any } {
-		const config = {};
 		if (options["modulePath"] && !Util.fileExists(path.join(process.cwd(), `src\\app`, options["modulePath"]))) {
 			Util.error(`Wrong module path provided: ${options["modulePath"]}. No components were added!`);
 			return Promise.resolve(false);
 		}
 
-		const terms = [];
-		for (const key of Object.keys(options)) {
-			terms.push(options[key]);
-		}
-		Object.assign(config, ...terms, this.getBaseVariables(name));
+		const config = Object.assign({}, options["extraConfig"], this.getBaseVariables(name));
 
 		return config;
 	}

@@ -43,7 +43,7 @@ describe("Unit - AngularTemplate Base", () => {
 		done();
 	});
 
-	it("generateConfig merge passed variables", async done => {
+	it("generateConfig merge passed variables under extraConfig (only)", async done => {
 		const expected = {
 			name: "page",
 			ClassName: "Page",
@@ -62,7 +62,7 @@ describe("Unit - AngularTemplate Base", () => {
 		// const validateSpy = spyOn<any>(Util, "validateTemplate").and.returnValue(true);
 
 		const templ = new TestWidgetTemplate("root");
-		const actual = templ.generateConfig("page", { extraConfig : {
+		let actual = templ.generateConfig("page", { extraConfig : {
 			extraConfig1 : "extraConfig1",
 			gridFeatures : "{ features }"
 		} });
@@ -75,6 +75,15 @@ describe("Unit - AngularTemplate Base", () => {
 		// 	path.join("root" , "files"),
 		// 	"/target/path",
 		// 	expected, {});
+		actual = templ.generateConfig("page", {
+			extraConfig : {
+				extraConfig1 : "extraConfig1",
+				gridFeatures : "{ features }"
+			},
+			someOtherVar: "some/some.module.ts",
+			someThirdVar: false
+		});
+		expect(actual).toEqual(expected);
 		done();
 	});
 
