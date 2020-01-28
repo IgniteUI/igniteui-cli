@@ -27,7 +27,7 @@
       // other libraries
       'rxjs':                      'npm:rxjs',
       'angular-in-memory-web-api': 'npm:angular-in-memory-web-api',
-      
+
       //Ignite UI Angular wrappers library
       'igniteui-angular-wrappers': 'npm:igniteui-angular-wrappers'
     },
@@ -38,6 +38,11 @@
         defaultExtension: 'js'
       },
       rxjs: {
+        main: './index.js',
+        defaultExtension: 'js'
+      },
+      'rxjs/operators': {
+        main: './index.js',
         defaultExtension: 'js'
       },
       'angular-in-memory-web-api': {
@@ -45,7 +50,7 @@
         defaultExtension: 'js'
       },
       'igniteui-angular-wrappers': {
-          main: 'igniteui.angular2.js',
+          main: 'bundles/igniteui-angular-wrappers.umd.js',
           defaultExtension: 'js'
       }
     }
