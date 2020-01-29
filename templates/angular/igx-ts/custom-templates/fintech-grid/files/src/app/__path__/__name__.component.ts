@@ -6,7 +6,7 @@ import {
     IgxSliderComponent,
     SortingDirection
 } from 'igniteui-angular';
-import { IgxCategoryChartComponent } from 'igniteui-angular-charts/ES5/igx-category-chart-component';
+import { IgxCategoryChartComponent } from 'igniteui-angular-charts';
 import { timer } from 'rxjs';
 import { debounce } from 'rxjs/operators';
 import { LocalDataService } from './localData.service';

@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { $(ClassName)Component } from './$(filePrefix).component';
 import { IgxGridModule, IgxButtonModule, IgxSwitchModule, IgxSliderModule, IgxCheckboxModule, IgxDialogModule } from 'igniteui-angular';
-import { IgxCategoryChartModule } from 'igniteui-angular-charts/ES5/igx-category-chart-module';
+import { IgxCategoryChartModule } from 'igniteui-angular-charts';
 
 describe('$(ClassName)Component', () => {
   let component: $(ClassName)Component;

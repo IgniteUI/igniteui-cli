@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 
 import { $(ClassName)Component } from './$(filePrefix).component';
-import { IgxCategoryChartModule } from 'igniteui-angular-charts/ES5/igx-category-chart-module';
+import { IgxCategoryChartModule } from 'igniteui-angular-charts';
 
 describe('$(ClassName)Component', () => {
   let component: $(ClassName)Component;
