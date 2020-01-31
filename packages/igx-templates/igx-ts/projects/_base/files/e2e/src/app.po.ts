@@ -1,15 +1,15 @@
 import { browser, by, element } from 'protractor';
 
 export class AppPage {
-  navigateTo() {
+  navigateTo(): Promise<any> {
     return browser.get(browser.baseUrl) as Promise<any>;
   }
 
-  getNavText() {
+  getNavText(): Promise<string>  {
     return element(by.css('app-root h1')).getText() as Promise<string>;
   }
 
-  getWelcomeText() {
+  getWelcomeText(): Promise<string>  {
     return element(by.css('app-home h1')).getText() as Promise<string>;
   }
 }
