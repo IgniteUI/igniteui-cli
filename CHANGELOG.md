@@ -1,12 +1,41 @@
+# 5.0.0-rc.0
+
+## igniteui/cli-core@5.0.0-rc.0 (2020-01-31)
+
+#### Features
+
+* **schematics:** adding a name for schematics projects [#587](https://github.com/IgniteUI/igniteui-cli/issues/587) ([#602](https://github.com/IgniteUI/igniteui-cli/issues/602)) ([19409d0](https://github.com/IgniteUI/igniteui-cli/commit/19409d0))
+
+## igniteui/angular-templates@9.0.500-rc.0 (2020-01-31)
+
+#### Bug Fixes
+
+* **ig-add:** only take into account 'extraConfig' in generateConfig [#618](https://github.com/IgniteUI/igniteui-cli/issues/618) ([#621](https://github.com/IgniteUI/igniteui-cli/issues/621)) ([d8d7db8](https://github.com/IgniteUI/igniteui-cli/commit/d8d7db8))
+* **igx-ts:** update scenario templates [#628](https://github.com/IgniteUI/igniteui-cli/issues/628) ([#643](https://github.com/IgniteUI/igniteui-cli/issues/643)) ([ecda4d7](https://github.com/IgniteUI/igniteui-cli/commit/ecda4d7))
+* **templates:** update angular charts packages to v8.2.12 ([3ed3013](https://github.com/IgniteUI/igniteui-cli/commit/3ed3013))
+
+## igniteui/angular-schematics@9.0.500-rc.0 (2020-01-31)
+
+#### Bug Fixes
+
+* new project accepts lower case theme name [#600](https://github.com/IgniteUI/igniteui-cli/issues/600) ([#619](https://github.com/IgniteUI/igniteui-cli/issues/619)) ([d6eedea](https://github.com/IgniteUI/igniteui-cli/commit/d6eedea))
+* prompt for template and theme if no name provided [#622](https://github.com/IgniteUI/igniteui-cli/issues/622) ([#626](https://github.com/IgniteUI/igniteui-cli/issues/626)) ([44621e9](https://github.com/IgniteUI/igniteui-cli/commit/44621e9))
+
+## igniteui-cli@5.0.0-rc.0 (2020-01-31)
+
+#### Bug Fixes
+
+* new project accepts lower case theme name [#600](https://github.com/IgniteUI/igniteui-cli/issues/600) ([#619](https://github.com/IgniteUI/igniteui-cli/issues/619)) ([d6eedea](https://github.com/IgniteUI/igniteui-cli/commit/d6eedea))
+
 # 5.0.0-beta.3
 
 ## igniteui/cli-core@5.0.0-beta.3 (2019-12-12)
 
-**Note:** Version bump only for package igniteui-cli
+**Note:** Version bump only for package igniteui/cli-core
 
 ## igniteui/angular-templates@9.0.500-beta.3 (2019-12-12)
 
-**Note:** Version bump only for package igniteui-cli
+**Note:** Version bump only for package igniteui/angular-templates
 
 ## igniteui/angular-schematics@9.0.500-beta.3 (2019-12-12)
 
@@ -32,7 +61,7 @@
 
 ## igniteui/angular-templates@9.0.500-beta.2 (2019-12-06)
 
-**Note:** Version bump only for package igniteui-cli
+**Note:** Version bump only for package igniteui/angular-templates
 
 ## igniteui/angular-schematics@9.0.500-beta.2 (2019-12-06)
 
@@ -114,8 +143,6 @@
 
 ## igniteui-cli@5.0.0-beta.1 (2019-11-28)
 
-
-
 # 5.0.0-alpha.1 (2019-10-02)
 
 **Note:** Version bump only for package igniteui-cli
@@ -125,15 +152,15 @@
 
 ## igniteui/cli-core@5.0.0-beta.0 (2019-10-18)
 
-**Note:** Version bump only for package igniteui-cli
+**Note:** Version bump only for package igniteui/cli-core
 
 ## igniteui/angular-templates@8.2.500-beta.0 (2019-10-18)
 
-**Note:** Version bump only for package igniteui-cli
+**Note:** Version bump only for package igniteui/angular-templates
 
 ## igniteui/angular-schematics@8.2.500-beta.0 (2019-10-18)
 
-**Note:** Version bump only for package igniteui-cli
+**Note:** Version bump only for package igniteui/angular-schematics
 
 ## igniteui-cli@5.0.0-beta.0 (2019-10-18)
 
