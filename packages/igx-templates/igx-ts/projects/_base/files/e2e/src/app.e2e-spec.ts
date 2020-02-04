@@ -1,4 +1,5 @@
 import { AppPage } from './app.po';
+import { browser, logging } from 'protractor';
 
 describe('<%=name%> App', () => {
   let page: AppPage;
