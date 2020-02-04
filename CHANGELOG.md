@@ -19,7 +19,7 @@
 
 #### Features
 
-* **ix-ts:** Update ig-ts projects [#647](https://github.com/IgniteUI/igniteui-cli/issues/647) ([a6204d8](https://github.com/IgniteUI/igniteui-cli/commit/a6204d8))
+* **ig-ts:** Update ig-ts projects [#647](https://github.com/IgniteUI/igniteui-cli/issues/647) ([a6204d8](https://github.com/IgniteUI/igniteui-cli/commit/a6204d8))
 
 # 5.0.0-rc.0
 
@@ -241,5 +241,4 @@
 ## igniteui-cli@5.0.0-alpha.1 (2019-09-30)
 
 **Note:** Version bump only for package igniteui-cli
-
 
