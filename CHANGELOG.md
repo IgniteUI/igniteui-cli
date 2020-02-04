@@ -1,3 +1,26 @@
+# 5.0.0-rc.1
+
+## igniteui/cli-core@5.0.0-rc.1 (2020-02-04)
+
+**Note:** Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@9.0.500-rc.1 (2020-02-04)
+
+#### Features
+
+* **igx-ts:** Update projects [#647](https://github.com/IgniteUI/igniteui-cli/issues/647) ([e0a738a](https://github.com/IgniteUI/igniteui-cli/commit/e0a738a))
+
+
+## igniteui/angular-schematics@9.0.500-rc.1 (2020-02-04)
+
+**Note:** Version bump only for package igniteui/angular-schematics
+
+## igniteui-cli@5.0.0-rc.1 (2020-02-04)
+
+#### Features
+
+* **ix-ts:** Update ig-ts projects [#647](https://github.com/IgniteUI/igniteui-cli/issues/647) ([a6204d8](https://github.com/IgniteUI/igniteui-cli/commit/a6204d8))
+
 # 5.0.0-rc.0
 
 ## igniteui/cli-core@5.0.0-rc.0 (2020-01-31)
