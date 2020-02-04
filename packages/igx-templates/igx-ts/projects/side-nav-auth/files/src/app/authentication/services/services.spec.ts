@@ -50,12 +50,11 @@ describe('Services', () => {
             const mockObs = { toPromise: () => { } };
             spyOn(mockObs, 'toPromise').and.returnValue('TEST DATA' as any);
             spyOn(MOCK_HTTP_CLIENT, 'post').and.returnValue(mockObs);
-            const parseSpy = jasmine.createSpy('parseUser').and.returnValue({ user: 'Test' });
-            spyOnProperty(JWTUtil, 'parseUser', 'get').and.returnValue(parseSpy);
+            const parseSpy = spyOn(JWTUtil, 'parseUser').and.returnValue({ user: 'Test' } as any);
             await authServ.login(dummyData);
             expect(loginPostSpy).toHaveBeenCalledWith('/login', dummyData);
             expect(MOCK_HTTP_CLIENT.post).toHaveBeenCalledWith('/login', dummyData);
-            expect(JWTUtil.parseUser).toHaveBeenCalledWith('TEST DATA');
+            expect(parseSpy).toHaveBeenCalledWith('TEST DATA');
         });
         it(`Should properly call 'loginPost' and throw error`, async () => {
             const dummyData = { email: 'Dummy', password: 'Data' };
@@ -259,7 +258,7 @@ describe('Services', () => {
                 expect(JSON.parse).toHaveBeenCalledTimes(2);
                 expect(getStorageUserSpy).toHaveBeenCalledWith(mockRequest);
                 expect(getStorageUserSpy).toHaveBeenCalledTimes(1);
-                expect(provider.registerHandle).toHaveBeenCalledWith({ name: 'Mock user' });
+                expect(provider.registerHandle).toHaveBeenCalledWith({ name: 'Mock user' } as any);
                 expect(provider.registerHandle).toHaveBeenCalledTimes(1);
                 // endpoint /register
                 mockRequest.url = '/extlogin';
@@ -268,7 +267,7 @@ describe('Services', () => {
                 expect(JSON.parse).toHaveBeenCalledTimes(3);
                 expect(getStorageExtUserSpy).toHaveBeenCalledWith(mockRequest);
                 expect(getStorageExtUserSpy).toHaveBeenCalledTimes(1);
-                expect(provider.registerHandle).toHaveBeenCalledWith({ name: 'Mock user' }, true);
+                expect(provider.registerHandle).toHaveBeenCalledWith({ name: 'Mock user' } as any, true);
                 expect(provider.registerHandle).toHaveBeenCalledTimes(2);
                 // microsoft keys
                 mockRequest.method = 'GET';
@@ -450,8 +449,7 @@ describe('Services', () => {
             it(`Should properly call 'generateToken'`, () => {
                 const inputString = 'testString1';
                 const expectedOutput = 'g.g.mockSignature';
-                const encodeSpy = jasmine.createSpy('encodeBase64Url').and.returnValue('g');
-                spyOnProperty(JWTUtil, 'encodeBase64Url', 'get').and.returnValue(encodeSpy);
+                spyOn(JWTUtil, 'encodeBase64Url').and.returnValue('g');
                 expect((provider as any).generateToken(inputString)).toEqual(expectedOutput);
             });
         });
