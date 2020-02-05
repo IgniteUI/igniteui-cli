@@ -7,11 +7,6 @@ describe('$(name) App', () => {
     page = new AppPage();
   });
 
-  it('should display project name in navigation', () => {
-    page.navigateTo();
-    expect(page.getNavText()).toEqual('$(name)');
-  });
-
   it('should display welcome message', () => {
     page.navigateTo();
     expect(page.getWelcomeText()).toEqual('Welcome to Ignite UI for Angular!');
