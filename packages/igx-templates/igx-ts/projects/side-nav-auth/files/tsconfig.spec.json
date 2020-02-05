@@ -6,7 +6,8 @@
       "jasmine",
       "node",
       "facebook-js-sdk"
-    ]
+	],
+	"module": "commonjs"
   },
   "files": [
     "src/test.ts",

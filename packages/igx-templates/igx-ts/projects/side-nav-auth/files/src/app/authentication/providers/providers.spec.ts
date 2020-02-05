@@ -223,10 +223,10 @@ describe('Providers', () => {
             const provider = new MicrosoftProvider(MOCK_OIDC_CONFIG, MOCK_OIDC_SECURITY, MOCK_EXTERNAL_AUTH_CONFIG);
             provider.tenant = 'test';
             provider.tenantID = 'test_id';
-            spyOn(String.prototype, 'replace');
+            const replaceSpy = spyOn<any>(String.prototype, 'replace');
             spyOn(MOCK_OIDC_SECURITY, 'setupModule').and.callThrough();
             provider.config();
-            expect(String.prototype.replace).toHaveBeenCalledWith('{tenantid}', 'test_id');
+            expect(replaceSpy).toHaveBeenCalledWith('{tenantid}', 'test_id');
             expect(MOCK_OIDC_SECURITY.setupModule).toHaveBeenCalled();
         });
 
