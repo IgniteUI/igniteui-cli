@@ -14,7 +14,7 @@
                </igx-chips-area>
           </div>
           <div class="chips">
-               <button #openButton igxButton="raised" (click)="toggleDropDown($event)" [igxDropDownItemNavigation]="dropdown2">Talks</button>
+               <button #openButton igxButton="raised" (click)="toggleDropDown($event)" [igxDropDownItemNavigation]="dropdown">Talks</button>
                <igx-drop-down #dropdown (onSelection)="itemSelection($event)" (onOpened)="onDropDownOpen()" (onClosed)="onDropDownClose()">
                     <igx-drop-down-item *ngFor="let item of dropDownList">
                          <div class="igx-drop-down__item-template">
