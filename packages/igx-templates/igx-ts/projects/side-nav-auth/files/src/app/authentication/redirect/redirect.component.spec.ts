@@ -27,7 +27,7 @@ describe('RedirectComponent', () => {
   }));
 
   it('should try external login on init', async () => {
-    const router: Router = TestBed.get(Router);
+    const router: Router = TestBed.inject(Router);
     spyOn(router, 'navigate');
     extAuthSpy.getUserInfo.and.returnValue(Promise.resolve({ test: '1' }));
     authSpy.loginWith.and.returnValue(Promise.resolve({
@@ -44,7 +44,7 @@ describe('RedirectComponent', () => {
   });
 
   it('should show err on external login', async () => {
-    const router: Router = TestBed.get(Router);
+    const router: Router = TestBed.inject(Router);
     spyOn(router, 'navigate');
     extAuthSpy.getUserInfo.and.returnValue(Promise.resolve({ test: '1' }));
     authSpy.loginWith.and.returnValue(Promise.resolve({

@@ -1,3 +1,49 @@
+# 5.0.0-rc.2
+
+## igniteui/cli-core@5.0.0-rc.2 (2020-02-07)
+
+**Note:** Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@9.0.500-rc.2 (2020-02-07)
+
+#### Bug Fixes
+
+* **igx-ts:** change tsconfig module for spec files to avoid errors, [#660](https://github.com/IgniteUI/igniteui-cli/issues/660) ([3d6b987](https://github.com/IgniteUI/igniteui-cli/commit/3d6b987))
+* **igx-ts:** update auth providers tests, [#660](https://github.com/IgniteUI/igniteui-cli/issues/660) ([4c15c8b](https://github.com/IgniteUI/igniteui-cli/commit/4c15c8b))
+* **templates, igx:** add chart packages [#679](https://github.com/IgniteUI/igniteui-cli/issues/679) ([75f4dcd](https://github.com/IgniteUI/igniteui-cli/commit/75f4dcd))
+* **templates, igx:** add chart packages [#684](https://github.com/IgniteUI/igniteui-cli/issues/684) ([dd7bfb7](https://github.com/IgniteUI/igniteui-cli/commit/dd7bfb7))
+
+## igniteui/angular-schematics@9.0.500-rc.2 (2020-02-07)
+
+**Note:** Version bump only for package igniteui/angular-schematics
+
+## igniteui-cli@5.0.0-rc.2 (2020-02-07)
+
+**Note:** Version bump only for package igniteui-cli
+
+# 5.0.0-rc.1
+
+## igniteui/cli-core@5.0.0-rc.1 (2020-02-04)
+
+**Note:** Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@9.0.500-rc.1 (2020-02-04)
+
+#### Features
+
+* **igx-ts:** Update projects [#647](https://github.com/IgniteUI/igniteui-cli/issues/647) ([e0a738a](https://github.com/IgniteUI/igniteui-cli/commit/e0a738a))
+
+
+## igniteui/angular-schematics@9.0.500-rc.1 (2020-02-04)
+
+**Note:** Version bump only for package igniteui/angular-schematics
+
+## igniteui-cli@5.0.0-rc.1 (2020-02-04)
+
+#### Features
+
+* **ig-ts:** Update ig-ts projects [#647](https://github.com/IgniteUI/igniteui-cli/issues/647) ([a6204d8](https://github.com/IgniteUI/igniteui-cli/commit/a6204d8))
+
 # 5.0.0-rc.0
 
 ## igniteui/cli-core@5.0.0-rc.0 (2020-01-31)
@@ -218,5 +264,4 @@
 ## igniteui-cli@5.0.0-alpha.1 (2019-09-30)
 
 **Note:** Version bump only for package igniteui-cli
-
 

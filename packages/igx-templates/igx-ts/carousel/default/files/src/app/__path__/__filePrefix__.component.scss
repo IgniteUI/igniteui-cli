@@ -5,7 +5,15 @@
   align-items: center;
 }
 .carousel-container {
-  width: 80%;
+	width: 80%;
+	min-height:50%;
+  
+	img {
+		width: auto;
+		margin: 0 auto;
+		display: flex;
+	}
+  
 }
 @media only screen and (max-width: 768px) {
   .carousel-container {
