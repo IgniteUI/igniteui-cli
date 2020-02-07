@@ -1,3 +1,23 @@
+# 5.0.0-rc.3
+
+## igniteui/cli-core@5.0.0-rc.3 (2020-02-07)
+
+**Note:** Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@9.0.500-rc.3 (2020-02-07)
+
+#### Bug Fixes
+
+* **igx-ts, igx-ts:** Update ng templates to 9.0.0
+
+## igniteui/angular-schematics@9.0.500-rc.3 (2020-02-07)
+
+**Note:** Version bump only for package igniteui/angular-schematics
+
+## igniteui-cli@5.0.0-rc.3 (2020-02-07)
+
+**Note:** Version bump only for package igniteui-cli
+
 # 5.0.0-rc.2
 
 ## igniteui/cli-core@5.0.0-rc.2 (2020-02-07)
