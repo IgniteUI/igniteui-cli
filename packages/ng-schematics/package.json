@@ -13,18 +13,18 @@
   "license": "MIT",
   "schematics": "./src/collection.json",
   "dependencies": {
-    "@angular-devkit/core": "^8.0.3",
-    "@angular-devkit/schematics": "^8.0.3",
+    "@angular-devkit/core": "^9.0.1",
+    "@angular-devkit/schematics": "^9.0.1",
     "@igniteui/angular-templates": "^9.0.500-rc.3",
     "@igniteui/cli-core": "^5.0.0-rc.3",
-    "@schematics/angular": "^8.0.3",
-    "rxjs": "6.4.0"
+    "@schematics/angular": "^9.0.1",
+    "rxjs": "6.5.3"
   },
   "devDependencies": {
     "@types/jasmine": "3.3.9",
     "@types/node": "^8.0.31",
     "jasmine": "^3.0.0",
-    "typescript": "~3.2.2"
+    "typescript": "~3.7.5"
   },
   "ng-update": {
     "packageGroup": [
