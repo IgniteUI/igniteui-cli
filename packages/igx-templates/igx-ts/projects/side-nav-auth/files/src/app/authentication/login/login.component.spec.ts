@@ -49,7 +49,7 @@ describe('LoginComponent', () => {
   });
 
   it('should submit login data',  async () => {
-    const router: Router = TestBed.get(Router);
+    const router: Router = TestBed.inject(Router);
     spyOn(router, 'navigate');
     expect(component.loginForm.valid).toBeFalsy();
     component.loginForm.controls[MAIL_GROUP_NAME].setValue('test@example.com');

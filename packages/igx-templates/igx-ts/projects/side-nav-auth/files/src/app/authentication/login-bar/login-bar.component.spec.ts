@@ -80,7 +80,7 @@ describe('LoginBarComponent', () => {
     let buttons = fixture.debugElement.queryAll(By.css('button'));
     expect(buttons.length).toBe(1);
     expect(buttons[0].nativeElement.innerText).toBe('Log In');
-    const userServ = TestBed.get(UserService);
+    const userServ = TestBed.inject(UserService);
     spyOnProperty(userServ, 'currentUser', 'get').and.returnValue({
       picture: 'picture'
     });
@@ -103,7 +103,7 @@ describe('LoginBarComponent', () => {
   });
 
   it('should open drop down on button click (logged in)', async () => {
-    const userServ = TestBed.get(UserService);
+    const userServ = TestBed.inject(UserService);
     spyOnProperty(userServ, 'currentUser', 'get').and.returnValue({
       picture: 'picture'
     });
@@ -116,9 +116,9 @@ describe('LoginBarComponent', () => {
   });
 
   it('should handle user menu items', async () => {
-    const userServ = TestBed.get(UserService);
-    const authServ = TestBed.get(ExternalAuthService);
-    const router: Router = TestBed.get(Router);
+    const userServ = TestBed.inject(UserService);
+    const authServ = TestBed.inject(ExternalAuthService);
+    const router: Router = TestBed.inject(Router);
     spyOn(router, 'navigate');
     spyOn(userServ, 'clearCurrentUser');
     spyOn(authServ, 'logout');
