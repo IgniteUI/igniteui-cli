@@ -67,8 +67,8 @@ export class PromptSession extends BasePromptSession {
 			// app name validation???
 			projLibrary = await this.getProjectLibrary(framework);
 			if (frameRes === "Angular" && projLibrary.projectType === "igx-ts") {
-				Util.log("Psst! Did you know you can also use our schematics package to modify your Angular project directly, using the ng cli?", "yellow");
-				Util.log("Read more at: https://www.infragistics.com/products/ignite-ui-angular/angular/components/general/getting_started.html", "yellow");
+				Util.log("Psst! Did you know you can also use our schematics package with Angular CLI to create and modify your projects?", "yellow");
+				Util.log("Read more at: https://www.infragistics.com/products/ignite-ui-angular/angular/components/general/cli-overview.html", "yellow");
 			}
 			const projTemplate = await this.getProjectTemplate(projLibrary);
 			// project options:
