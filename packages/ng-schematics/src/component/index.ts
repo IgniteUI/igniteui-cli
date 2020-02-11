@@ -1,3 +1,4 @@
+import { normalize } from "@angular-devkit/core";
 import {
 	apply, chain, MergeStrategy, mergeWith,
 	Rule, SchematicContext, SchematicsException, template, Tree, url
@@ -139,6 +140,9 @@ export function component(options: ComponentOptions): Rule {
 						return;
 					}
 					return;
+				} else if (_host.actions.find(x => x.path === normalize("/package.json") && x.kind === "o")) {
+					// prompt added components with extra packages
+					installContext.shouldInstall = true;
 				}
 				_context.addTask(
 					new RunSchematicTask("start", {}),
