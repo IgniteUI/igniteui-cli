@@ -1,3 +1,25 @@
+# 5.0.0-rc.4
+
+## igniteui/cli-core@5.0.0-rc.4 (2020-02-11)
+
+**Note:** Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@9.0.500-rc.4 (2020-02-11)
+
+#### Bug Fixes
+
+* **carousel:** Add noop animations module ([c696124](https://github.com/IgniteUI/igniteui-cli/commit/c696124))
+
+## igniteui/angular-schematics@9.0.500-rc.4 (2020-02-11)
+
+#### Bug Fixes
+
+* **schematics:** ensure component prompt installs packages [#695](https://github.com/IgniteUI/igniteui-cli/issues/695) ([16e55d4](https://github.com/IgniteUI/igniteui-cli/commit/16e55d4))
+
+## igniteui-cli@5.0.0-rc.4 (2020-02-11)
+
+**Note:** Version bump only for package igniteui-cli
+
 # 5.0.0-rc.3
 
 ## igniteui/cli-core@5.0.0-rc.3 (2020-02-07)
