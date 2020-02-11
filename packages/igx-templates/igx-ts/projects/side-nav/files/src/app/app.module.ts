@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, HammerModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IgxNavigationDrawerModule, IgxNavbarModule, IgxLayoutModule, IgxRippleModule } from 'igniteui-angular';
 
@@ -16,6 +16,7 @@ import { HomeComponent } from './home/home.component';
 imports: [
     FormsModule,
     BrowserModule,
+    HammerModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     IgxNavigationDrawerModule,

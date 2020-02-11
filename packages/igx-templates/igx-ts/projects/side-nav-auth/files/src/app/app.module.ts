@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, HammerModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {
@@ -21,6 +21,7 @@ import { AuthenticationModule, ExternalAuthService } from './authentication';
   imports: [
     FormsModule,
     BrowserModule,
+    HammerModule,
     BrowserAnimationsModule,
     // NOTE: `AuthenticationModule` defines child routes, must be imported before root `AppRoutingModule`
     AuthenticationModule,
