@@ -12,7 +12,7 @@ import { SchematicsPromptSession } from "../prompt/SchematicsPromptSession";
 
 const collectionPath = path.join(__dirname, "../collection.json");
 
-describe("igniteui-angular-schematics", () => {
+describe("Schematics ng-new", () => {
 	it("works with no name provided", done => {
 		const runner = new SchematicTestRunner("schematics", collectionPath);
 		const myTree = Tree.empty();
@@ -71,7 +71,7 @@ describe("igniteui-angular-schematics", () => {
 					directory: "my-test-project"
 				}
 			};
-			expect(taskOptions).toContain(expectedInstall);
+			expect(taskOptions).toContain(jasmine.objectContaining(expectedInstall));
 			expect(taskOptions).toContain(expectedInit);
 			expect(taskOptions).toContain(expectedStart);
 			done();
@@ -120,7 +120,7 @@ describe("igniteui-angular-schematics", () => {
 				authorName: undefined,
 				authorEmail: undefined
 			};
-			expect(taskOptions).toContain(expectedInstall);
+			expect(taskOptions).toContain(jasmine.objectContaining(expectedInstall));
 			expect(taskOptions).toContain(expectedInit);
 			done();
 		});
