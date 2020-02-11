@@ -1,15 +1,13 @@
 {
   "name": "<%=dashName%>",
   "version": "0.0.0",
-  "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve -o",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
@@ -53,6 +51,6 @@
     "protractor": "~5.4.3",
     "ts-node": "~8.3.0",
     "tslint": "~5.18.0",
-    "typescript": "~3.7.4"
+    "typescript": "~3.7.5"
   }
 }

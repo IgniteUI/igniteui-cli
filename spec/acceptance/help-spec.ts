@@ -74,7 +74,7 @@ describe("Help command", () => {
 		--template            Project template                                [string]`;
 
 		const replacedNewHelpText: string = originalNewHelpText.replace(/\s/g, "");
-		const actualNewText: string = (child.stdout.toString("utf-8")).replace(/\s/g, "");
+		const actualNewText: string = (child.stdout.toString()).replace(/\s/g, "");
 
 		expect(actualNewText).toContain(replacedNewHelpText);
 		done();
@@ -95,7 +95,7 @@ describe("Help command", () => {
 		--global, -g   Specify if the global configuration should be used    [boolean]`;
 
 		const replacedNewHelpText: string = originalNewHelpText.replace(/\s/g, "");
-		const actualNewText: string = (child.stdout.toString("utf-8")).replace(/\s/g, "");
+		const actualNewText: string = (child.stdout.toString()).replace(/\s/g, "");
 
 		expect(actualNewText).toContain(replacedNewHelpText);
 		done();
@@ -112,7 +112,7 @@ describe("Help command", () => {
 		--help,		-h	Show help							[boolean]`;
 
 		const replacedNewHelpText: string = originalNewHelpText.replace(/\s/g, "");
-		const actualNewText: string = (child.stdout.toString("utf-8")).replace(/\s/g, "");
+		const actualNewText: string = (child.stdout.toString()).replace(/\s/g, "");
 
 		expect(actualNewText).toContain(replacedNewHelpText);
 		done();
@@ -134,7 +134,7 @@ describe("Help command", () => {
 		`;
 
 		const replacedNewHelpText: string = originalNewHelpText.replace(/\s/g, "");
-		const actualNewText: string = (child.stdout.toString("utf-8")).replace(/\s/g, "");
+		const actualNewText: string = (child.stdout.toString()).replace(/\s/g, "");
 
 		expect(actualNewText).toContain(replacedNewHelpText);
 		done();
@@ -152,7 +152,7 @@ describe("Help command", () => {
 		`;
 
 		const replacedNewHelpText: string = originalNewHelpText.replace(/\s/g, "");
-		const actualNewText: string = (child.stdout.toString("utf-8")).replace(/\s/g, "");
+		const actualNewText: string = (child.stdout.toString()).replace(/\s/g, "");
 
 		expect(actualNewText).toContain(replacedNewHelpText);
 		done();

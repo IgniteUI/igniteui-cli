@@ -9,25 +9,27 @@ import { mockProLibFactory } from "../helpers/mocks";
 import { resetSpy } from "../helpers/utils";
 
 describe("Unit - Template manager", () => {
+	let mockProjLibs;
+	let customRequire;
 	beforeEach(() => {
-		this.mockProjLibs = {};
-		this.customRequire = undefined;
+		mockProjLibs = {};
+		customRequire = undefined;
 
-		this.isTemplatesPath = modulePath => {
+		const isTemplatesPath = modulePath => {
 			return modulePath.startsWith(path.join(__dirname, "../../packages/cli/templates"));
 		};
 		// spy on require(), https://coderwall.com/p/ck7w6g/spying-on-require-with-jasmine
 		spyOn(require("module"), "_load").and.callFake((modulePath: string) => {
-			if (this.isTemplatesPath(modulePath)) {
+			if (isTemplatesPath(modulePath)) {
 				const folder = path.basename(modulePath);
 				// tslint:disable-next-line:no-object-literal-type-assertion
 				return {
 					id: folder,
 					name: folder,
-					projectLibraries: this.mockProjLibs[folder]
+					projectLibraries: mockProjLibs[folder]
 				} as Framework;
-			} else if (this.customRequire && this.customRequire.test(modulePath)) {
-				return this.customRequire.require(modulePath);
+			} else if (customRequire && customRequire.test(modulePath)) {
+				return customRequire.require(modulePath);
 			} else {
 				fail(`unexpected require: ${modulePath}`);
 			}
@@ -36,7 +38,7 @@ describe("Unit - Template manager", () => {
 
 	it("Returns correct framework and projects", async done => {
 		const frameworkIds = ["react", "angular"];
-		this.mockProjLibs = frameworkIds.reduce((obj, folder) => {
+		mockProjLibs = frameworkIds.reduce((obj, folder) => {
 			obj[folder] = [
 				{ projectType: folder + "type1",  name: folder + 1 },
 				{ projectType: folder + "type2",  name: folder + 2 }
@@ -79,10 +81,10 @@ describe("Unit - Template manager", () => {
 		spyOn(Util, "directoryExists").and.returnValue(true);
 		spyOn(Util, "fileExists").and.returnValue(true);
 		const mockProj =  mockProLibFactory("js");
-		this.mockProjLibs = { jquery: [ mockProj ] };
+		mockProjLibs = { jquery: [ mockProj ] };
 		const group: ComponentGroup = { name: "Grids", description: "Grids Description" };
 		let type = "js";
-		this.customRequire = {
+		customRequire = {
 			require: modulePath => {
 				return {
 					components: ["Grid"],
@@ -136,8 +138,8 @@ describe("Unit - Template manager", () => {
 		spyOn(ProjectConfig, "getConfig").and.returnValue({ customTemplates: [template] });
 		spyOn(Util, "directoryExists").and.returnValue(true);
 		spyOn(Util, "fileExists").and.returnValues(false, true, true);
-		this.mockProjLibs = { jquery: [ mockProLibFactory("js") ] };
-		this.customRequire = {
+		mockProjLibs = { jquery: [ mockProLibFactory("js") ] };
+		customRequire = {
 			require: modulePath => {
 				return {
 					components: ["Grid"],
@@ -153,11 +155,11 @@ describe("Unit - Template manager", () => {
 		const manager = new TemplateManager();
 		expect(Util.fileExists).toHaveBeenCalledTimes(3);
 		expect(Util.fileExists).toHaveBeenCalledWith("rootFolder/template.json".replace(/\//g, path.sep));
-		expect(this.mockProjLibs.jquery[0].registerTemplate).toHaveBeenCalledTimes(2);
-		expect(this.mockProjLibs.jquery[0].registerTemplate).toHaveBeenCalledWith(
+		expect(mockProjLibs.jquery[0].registerTemplate).toHaveBeenCalledTimes(2);
+		expect(mockProjLibs.jquery[0].registerTemplate).toHaveBeenCalledWith(
 			jasmine.objectContaining({ id: "rootFolder/template1/template.json".replace(/\//g, path.sep) })
 		);
-		expect(this.mockProjLibs.jquery[0].registerTemplate).toHaveBeenCalledWith(
+		expect(mockProjLibs.jquery[0].registerTemplate).toHaveBeenCalledWith(
 			jasmine.objectContaining({ id: "rootFolder/template2/template.json".replace(/\//g, path.sep) })
 		);
 
@@ -175,12 +177,12 @@ describe("Unit - Template manager", () => {
 		spyOn(ProjectConfig, "getConfig").and.returnValue({ customTemplates: templates });
 		spyOn(Util, "directoryExists").and.returnValue(true);
 		spyOn(Util, "fileExists").and.returnValue(true);
-		const mockProjLibs = this.mockProjLibs = {
+		mockProjLibs = {
 			angular: [ mockProLibFactory("ig-ts"), mockProLibFactory("igx-ts")],
 			jquery: [ mockProLibFactory("js") ],
 			react: [ mockProLibFactory("es6") ]
 		};
-		this.customRequire = {
+		customRequire = {
 			require: modulePath => {
 				const [ frameworkId, proj ] = modulePath.split(path.sep).filter(x => x && !x.includes("template"));
 				return {
