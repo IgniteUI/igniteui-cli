@@ -7,10 +7,10 @@ import { getWorkspace } from "@schematics/angular/utility/config";
 export function createCliConfig(): Rule {
 	return (tree: Tree, context: SchematicContext) => {
 		context.logger.info(``);
-		context.logger.warn(`Ignite UI CLI installed`);
-		context.logger.info(`- try it out in this project by running 'npx ig'`);
-		context.logger.info(`- to run 'ig' everywhere and create new projects run 'npm install -g igniteui-cli'`);
-		context.logger.info(`Learn more: ` + Util.color(`https://github.com/IgniteUI/igniteui-cli#ignite-ui-cli`, "white"));
+		context.logger.warn(`Ignite UI for Angular Schematics installed`);
+		context.logger.info(`- generate components using 'ng g @igniteui/angular-schematics:c'`);
+		context.logger.info(`- to use as 'ng new' collection install globally 'npm i -g @igniteui/angular-schematics'`);
+		context.logger.info(`Learn more: ` + Util.color(`https://www.infragistics.com/products/ignite-ui-angular/angular/components/general/cli-overview.html`, "white"));
 		context.logger.info(``);
 
 		tree.create("ignite-ui-cli.json", JSON.stringify(GetCliConfig(tree), null, 2) + "\n");
