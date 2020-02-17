@@ -295,10 +295,10 @@ export class Util {
 			return execSync(command, options);
 		} catch (error) {
 			// execSync may throw an error during process interruption
-			// if this happens - stderr will contain "^C" which was appended in the checkExecSyncError function
+			// if this happens - stderr will ends with "^C" which was appended in the checkExecSyncError function
 			// this means that a SIGINT was attempted and failed
 			// npm may be involved in this as it works just fine with any other node process
-			if (error.stderr && error.stderr.toString() === "^C") {
+			if (error.stderr && error.stderr.toString().endsWith() === "^C") {
 				return process.exit();
 			}
 
