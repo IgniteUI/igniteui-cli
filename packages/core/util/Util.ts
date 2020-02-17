@@ -298,7 +298,7 @@ export class Util {
 			// if this happens - stderr will contain "^C" which was appended in the checkExecSyncError function
 			// this means that a SIGINT was attempted and failed
 			// npm may be involved in this as it works just fine with any other node process
-			if (error.stderr && error.stderr.toString() === "^C") {
+			if (error.stderr && error.stderr.toString().endsWith() === "^C") {
 				return process.exit();
 			}
 
