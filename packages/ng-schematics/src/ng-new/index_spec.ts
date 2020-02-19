@@ -3,8 +3,7 @@ import { NodePackageTaskOptions } from "@angular-devkit/schematics/tasks/node-pa
 import { RepositoryInitializerTaskOptions } from "@angular-devkit/schematics/tasks/repo-init/options";
 import { RunSchematicTaskOptions } from "@angular-devkit/schematics/tasks/run-schematic/options";
 import { SchematicTestRunner, UnitTestTree } from "@angular-devkit/schematics/testing";
-import * as IgxProjectLibrary from "@igniteui/angular-templates";
-import { ProjectLibrary } from "@igniteui/cli-core";
+import { GoogleAnalytics } from "@igniteui/cli-core";
 import * as path from "path";
 import { take } from "rxjs/operators";
 import * as AppProjectSchematic from "../app-projects/index";
@@ -13,6 +12,11 @@ import { SchematicsPromptSession } from "../prompt/SchematicsPromptSession";
 const collectionPath = path.join(__dirname, "../collection.json");
 
 describe("Schematics ng-new", () => {
+
+	beforeAll(() => {
+		spyOn(GoogleAnalytics, "post");
+	});
+
 	it("works with no name provided", done => {
 		const runner = new SchematicTestRunner("schematics", collectionPath);
 		const myTree = Tree.empty();
