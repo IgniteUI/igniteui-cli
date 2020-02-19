@@ -41,7 +41,7 @@ class HierarchicalGridCustomTemplate extends AngularTemplate {
 
 	public generateConfig(name: string, ...options: any[]): {[key: string]: any} {
 		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 3);
-		const config = { "$(gridFeatures)": features };
+		const config = { gridFeatures: features };
 		return super.generateConfig(name, { extraConfig : config });
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
