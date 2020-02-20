@@ -1,3 +1,26 @@
+# 5.0.1 (2020-02-20)
+
+## igniteui/cli-core@#5.0.1 (2020-02-20)
+
+#### Bug Fixes
+
+* **start:** inherit all stdio, not just input [#699](https://github.com/IgniteUI/igniteui-cli/issues/699) ([1c03891](https://github.com/IgniteUI/igniteui-cli/commit/1c03891))
+
+## igniteui/angular-templates@#9.0.501 (2020-02-20)
+
+**Note:** Version bump only for package igniteui/angular-templates
+
+## igniteui/angular-schematics@#9.0.501 (2020-02-20)
+
+**Note:** Version bump only for package igniteui/angular-schematics
+
+## igniteui-cli@#5.0.1 (2020-02-20)
+
+#### Bug Fixes
+
+* **ig-ts:** correct grid features template variable [#702](https://github.com/IgniteUI/igniteui-cli/issues/702) ([3f09bd9](https://github.com/IgniteUI/igniteui-cli/commit/3f09bd9))
+* **start:** inherit all stdio, not just input [#699](https://github.com/IgniteUI/igniteui-cli/issues/699) ([1c03891](https://github.com/IgniteUI/igniteui-cli/commit/1c03891))
+
 # [5.0.0](https://github.com/IgniteUI/igniteui-cli/compare/v4.4.0...v5.0.0) (2020-02-11)
 
 New year, new versions, new packages 🎉
