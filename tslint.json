@@ -3,7 +3,7 @@
 	"exclude": [ 
 		"**/files/**/*.ts",
 		"./output/**/*.ts",
-		"./quickstart/**/*.ts"
+		"./packages/cli/quickstart/**/*.ts"
 	],
 	"rules": {
 		"arrow-parens": [true, "ban-single-arg-parens"],
@@ -30,6 +30,7 @@
 			true,
 			"@angular-devkit/schematics"
 		],
+		"interface-name": false,
 		"max-classes-per-file": false,
 		"prefer-object-spread": false,
 		"prefer-conditional-expression": false,

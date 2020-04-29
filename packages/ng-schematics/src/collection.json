@@ -1,0 +1,37 @@
+{
+  "$schema": "../../../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "ng-new": {
+      "description": "New Ignite UI for Angular project",
+      "factory": "./ng-new/index#newProject",
+      "schema": "./ng-new/schema.json",
+      "hidden": true
+    },
+    "app-projects": {
+      "description": "A schematic using a source and a schema to validate options.",
+      "factory": "./app-projects/index",
+      "hidden": true
+    },
+    "start": {
+      "description": "Run npm start",
+      "factory": "./start/index",
+      "hidden": true
+    },
+    "component": {
+      "aliases": [ "c" ],
+      "description": "Create Ignite UI for Angular components and views.",
+      "factory": "./component/index#component",
+      "schema": "./component/schema.json"
+    },
+    "single-component": {
+      "description": "Create an Ignite UI for Angular component.",
+      "factory": "./component/index#singleComponent",
+      "schema": "./component/schema.json",
+      "hidden": true
+    },
+    "cli-config": {
+      "description": "Installs the needed dependencies onto the host application.",
+      "factory": "./cli-config/index"
+    }
+  }
+}

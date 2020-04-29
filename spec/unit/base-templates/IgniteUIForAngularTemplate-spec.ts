@@ -1,9 +1,6 @@
+import { IgniteUIForAngularTemplate } from "@igniteui/angular-templates";
+import { App, ProjectConfig, TypeScriptFileUpdate, Util } from "@igniteui/cli-core";
 import * as path from "path";
-import { TypeScriptFileUpdate } from "../../../lib/project-utility/TypeScriptFileUpdate";
-import { TypeScriptUtils } from "../../../lib/project-utility/TypeScriptUtils";
-import { ProjectConfig } from "../../../lib/ProjectConfig";
-import { IgniteUIForAngularTemplate } from "../../../lib/templates/IgniteUIForAngularTemplate";
-import { Util } from "../../../lib/Util";
 import { resetSpy } from "../../helpers/utils";
 
 describe("Unit - IgniteUIForAngularTemplate Base", () => {
@@ -24,11 +21,13 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 				requireMock: require,
 				tsUpdateMock: jasmine.createSpyObj(
 					"TypeScriptFileUpdate", ["addRoute", "addDeclaration", "addNgModuleMeta", "finalize"]) as TypeScriptFileUpdate,
-				TypeScriptFileUpdate: () => helpers.tsUpdateMock
+				TypeScriptFileUpdate: (...args) => {
+					return helpers.tsUpdateMock;
+				}
 			};
 			// spy on require:
 			spyOn(require("module"), "_load").and.callFake((modulePath: string) => {
-				if (modulePath.endsWith("../project-utility/TypeScriptFileUpdate")) {
+				if (modulePath.endsWith("@igniteui/cli-core/typescript")) {
 					return helpers;
 				} else if (modulePath.endsWith("../packages/components")) {
 					return { dv: ["igDvWidget"] };
@@ -44,20 +43,26 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 
 		it("registers route and declare component", async done => {
 			const templ = new TestTemplate();
-			spyOn(Util, "fileExists").and.callFake(file => {
+			const mockFS = {
+				fileExists: () => {}
+			};
+			spyOn(App.container, "get").and.returnValue(mockFS);
+			spyOn(mockFS, "fileExists").and.callFake(file => {
 				if (file === "src/app/app-routing.module.ts") {
 					return true;
 				}
 			});
 			templ.registerInProject("target/path", "view name");
-			expect(helpers.TypeScriptFileUpdate).toHaveBeenCalledWith(path.join("target/path", "src/app/app-routing.module.ts"));
+			expect(helpers.TypeScriptFileUpdate)
+			.toHaveBeenCalledWith(path.join("target/path", "src/app/app-routing.module.ts"));
 			expect(helpers.tsUpdateMock.addRoute).toHaveBeenCalledWith(
 				path.join("target/path", `src/app/view-name/view-name.component.ts`),
 				"view-name", //path
 				"view name" //text
 			);
 
-			expect(helpers.TypeScriptFileUpdate).toHaveBeenCalledWith(path.join("target/path", "src/app/app.module.ts"));
+			expect(helpers.TypeScriptFileUpdate)
+			.toHaveBeenCalledWith(path.join("target/path", "src/app/app.module.ts"));
 			expect(helpers.tsUpdateMock.addDeclaration).toHaveBeenCalledWith(
 				path.join("target/path", `src/app/view-name/view-name.component.ts`),
 				false // if added to a custom module => true
@@ -74,7 +79,7 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			templ.registerInProject("", "");
 			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith(
 				{ import: "test", from: "test" },
-				templ.getBaseVariables("")
+				Util.applyDelimiters(templ.getBaseVariables(""), templ.delimiters.content)
 			);
 			resetSpy(helpers.tsUpdateMock.addNgModuleMeta);
 
@@ -82,16 +87,16 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			templ.registerInProject("", "");
 			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith(
 				{ import: "test", from: "test" },
-				templ.getBaseVariables(""));
+				Util.applyDelimiters(templ.getBaseVariables(""), templ.delimiters.content));
 			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith(
 				{ declare: "test2", provide: "test2" },
-				templ.getBaseVariables(""));
+				Util.applyDelimiters(templ.getBaseVariables(""), templ.delimiters.content));
 
 			done();
 		});
 		it("formats relative imports", async done => {
 			spyOn(TestTemplate.prototype, "getBaseVariables").and.returnValue({});
-			spyOn(TypeScriptUtils, "relativePath").and.returnValue("./relative/result/test");
+			spyOn(Util, "relativePath").and.returnValue("./relative/result/test");
 			const mainPath = path.join("target", "src/app/app.module.ts");
 			const filePath = path.join("target", "./test.ts");
 
@@ -99,7 +104,7 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			templ.dependencies = [{ from: "./test.ts" }];
 			templ.registerInProject("target", "name");
 
-			expect(TypeScriptUtils.relativePath).toHaveBeenCalledWith(mainPath, filePath, true, true);
+			expect(Util.relativePath).toHaveBeenCalledWith(mainPath, filePath, true, true);
 			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith({ from: "./relative/result/test" }, {});
 
 			done();
@@ -136,13 +141,41 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 
 			// just declare
 			expect(helpers.TypeScriptFileUpdate).toHaveBeenCalledTimes(1);
-			expect(helpers.TypeScriptFileUpdate).toHaveBeenCalledWith(path.join("target/path", "src/app/app.module.ts"));
+			expect(helpers.TypeScriptFileUpdate)
+			.toHaveBeenCalledWith(path.join("target/path", "src/app/app.module.ts"));
 			expect(helpers.tsUpdateMock.addDeclaration).toHaveBeenCalledWith(
 				path.join("target/path", `src/app/view-name/view-name.component.ts`),
 				false // if added to a custom module => true
 			);
 			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledTimes(0);
 			expect(helpers.tsUpdateMock.finalize).toHaveBeenCalled();
+			done();
+		});
+
+		it("generateConfig merges variables passed under extraConfig", async done => {
+			const expected = {
+				camelCaseName: "test",
+				ClassName: "Test",
+				cliVersion: Util.version(),
+				description: "test description",
+				// extra
+				extraConfig1 : "extraConfig1",
+				filePrefix: "test",
+				gridFeatures : "{ features }",
+				name: "test",
+				path: "test"
+			};
+
+			const templ = new TestTemplate();
+			const actual = templ.generateConfig("test", {
+				extraConfig : {
+					extraConfig1 : "extraConfig1",
+					gridFeatures : "{ features }"
+				},
+				someOtherVar: false,
+				someVar: "something/something.module.ts"
+			});
+			expect(actual).toEqual(expected);
 			done();
 		});
 	});

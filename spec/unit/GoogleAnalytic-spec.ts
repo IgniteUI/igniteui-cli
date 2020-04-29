@@ -1,10 +1,9 @@
+import { GoogleAnalytics, ProjectConfig } from "@igniteui/cli-core";
 import * as childProcess from "child_process";
 import * as fs from "fs";
 import * as https from "https";
 import * as path from "path";
 import * as process from "process";
-import { GoogleAnalytics } from "../../lib/GoogleAnalytics";
-import { ProjectConfig } from "../../lib/ProjectConfig";
 import { deleteAll } from "../helpers/utils";
 
 describe("Unit - Google Analytic", () => {

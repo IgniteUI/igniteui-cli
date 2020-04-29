@@ -1,0 +1,381 @@
+@import url("https://unpkg.com/@fortawesome/fontawesome-free-webfonts@^1.0.9/css/fontawesome.css");
+@import url("https://unpkg.com/@fortawesome/fontawesome-free-webfonts@^1.0.9/css/fa-regular.css");
+@import url("https://unpkg.com/@fortawesome/fontawesome-free-webfonts@^1.0.9/css/fa-solid.css");
+@import '~igniteui-angular/lib/core/styles/themes/index';
+
+:host ::ng-deep {
+
+    $crm-grid-palette: igx-palette(
+        $primary: #09f,
+        $secondary: #ffbf00
+    );
+    @include igx-theme($crm-grid-palette);
+
+    $checkbox-theme: igx-checkbox-theme(
+        $fill-color: igx-color($crm-grid-palette, "secondary", 500),
+        $tick-color: black
+    );
+
+    $summary-theme: igx-grid-summary-theme(
+        $background-color: #f0f8fe,
+        $result-color: igx-color($crm-grid-palette, "primary", 500)
+    );
+
+    $search-theme: igx-input-group-theme(
+        $search-background: igx-color($crm-grid-palette, "primary", 600),
+        $idle-text-color: igx-color($crm-grid-palette, "primary", 100),
+        $filled-text-color: igx-color($crm-grid-palette, "grays", 600),
+        $focused-text-color: igx-color($crm-grid-palette, "grays", 600)
+    );
+
+    $crm-grid-theme: igx-grid-theme(
+        $header-background: #f0f8fe,
+        $header-border-color: #dde5eb
+    );
+
+    $crm-grid-toolbar: igx-grid-toolbar-theme(
+        $background-color: igx-color($crm-grid-palette, "primary", 500)
+    );
+
+    $crm-grid-toolbar-button: igx-button-theme(
+        $outlined-background: igx-color($crm-grid-palette, "primary", 800),
+        $outlined-hover-background: igx-color($crm-grid-palette, "primary", 900),
+        $outlined-focus-text-color: #fff
+    );
+
+    $crm-grid-search-button: igx-button-theme(
+        $flat-background: transparent,
+        $flat-focus-background: igx-color($crm-grid-palette, "grays", 200),
+        $flat-hover-background: igx-color($crm-grid-palette, "grays", 200)
+    );
+
+    $crm-input-drop-down: igx-input-group-theme(
+        $placeholder-color: igx-color($crm-grid-palette, "grays", 500),
+        $idle-text-color: igx-color($crm-grid-palette, "grays", 900)
+    );
+
+    @include igx-grid-toolbar($crm-grid-toolbar);
+
+    @include igx-grid($crm-grid-theme);
+
+    @include igx-grid-summary($summary-theme);
+
+    @include igx-input-group($search-theme);
+
+    @include igx-grid-toolbar($crm-grid-toolbar);
+
+    .igx-drop-down__list {
+        @include igx-input-group($crm-input-drop-down)
+    }
+
+    .igx-grid__summaries-patch {
+        background: #f0f8fe;
+    }
+
+    .grid__wrapper {
+        width: inherit;
+        position: relative;
+        height: 100%;
+        margin: 1px;
+        padding: 1px;
+        background: transparent;
+    }
+
+    .avatar-cell {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    // grid caption styling
+
+    .crm-toolbar-template {
+        justify-content: space-between;
+        display: flex;
+        flex: 1 0 0%;
+        align-items: center;
+        padding-right: rem(24px);
+        border-radius: 2px;
+
+        & span {
+            margin-right: auto;
+        }
+
+        .igx-button--flat {
+            flex-wrap: nowrap;
+            white-space: nowrap;
+        }
+
+        .igx-button--icon {
+            border-radius: 0;
+        }
+
+        .logo-propeller {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+        }
+    }
+
+    .igx-grid-toolbar__button-space {
+        .igx-icon {
+            font-size: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    .sample-flex-container {
+        display: flex;
+        align-self: center;
+        justify-content: flex-end;
+        width: 500px;
+    }
+
+    .crm-sample-toolbar__title {
+        margin-right: rem(16px);
+        display: flex;
+        align-items: center;
+        justify-self: flex-start;
+    }
+
+    .crm-sample-toolbar__ellipsis {
+        @include ellipsis();
+        opacity: 0;
+        animation: slide-fade 1.25s .25s ease-out forwards;
+    }
+
+    .igx-grid-toolbar__custom-content {
+        flex: 1 0 0%;
+    }
+
+    .igx-grid-toolbar__actions {
+        @include igx-button($crm-grid-toolbar-button);
+
+        .igx-button--outlined {
+            margin-left: 0.5rem;
+            border: none;
+        }
+    }
+
+    .igx-input-group--search .igx-input-group__bundle {
+        height: rem(36px);
+        width: 500px;
+        overflow: hidden;
+        background-color: igx-color($crm-grid-palette, "primary", 800);
+
+        .igx-input-group__bundle-main {
+            padding-top: 0.6rem;
+            height: 36px;
+        }
+
+        @include igx-button($crm-grid-search-button);
+    }
+
+    .igx-input-group--search .igx-input-group__bundle,
+    .igx-input-group--search .igx-input-group__bundle:hover {
+        box-shadow: none;
+    }
+
+    .sample-flex-container {
+        .igx-input-group,
+        .igx-input-group--focused {
+            .igx-input-group__bundle {
+                transition: background 500ms ease-in-out;
+            }
+
+            font-size: 13px;
+            overflow: hidden;
+
+            igx-icon {
+                font-size: 1rem;
+                width: 1rem;
+                height: 1rem;
+                color: igx-color($crm-grid-palette, "primary", 200);
+            }
+        }
+
+        .igx-input-group {
+            igx-icon {
+                color: white;
+            }
+        }
+
+        .igx-input-group__textarea,
+        .igx-input-group__input {
+            color: igx-color($crm-grid-palette, "primary", 100);
+        }
+
+        .igx-input-group__input {
+            &::placeholder {
+                color: white;
+                opacity: 1;
+            }
+        }
+
+        .igx-input-group {
+            &:hover,
+            &:focus,
+            &.igx-input-group--focused {
+                igx-icon {
+                    color: igx-color($crm-grid-palette, 'grays', 600);
+                }
+
+                .igx-input-group__bundle {
+                    background: #fff;
+                    color: igx-color($crm-grid-palette, 'grays', 600);
+                }
+
+                .igx-input-group__input {
+                    &::placeholder {
+                        color: igx-color($crm-grid-palette, 'grays', 600);
+                        opacity: 1;
+                    }
+                }
+
+                .igx-input-group__textarea,
+                .igx-input-group__input {
+                    color: igx-color($crm-grid-palette, 'grays', 600);
+                }
+
+                .igx-button--icon {
+                    &:focus,
+                    &:active {
+                        color: igx-color($crm-grid-palette, 'grays', 600);
+                    }
+                }
+            }
+        }
+
+        .igx-button--icon {
+            &:focus,
+            &:active {
+                color: igx-color($crm-grid-palette, "primary", 100);
+                background: transparent;
+            }
+        }
+    }
+
+    .igx-grid-summary__item {
+        font-size: 0.8rem;
+    }
+
+    .operationsContainer {
+        display: flex;
+
+        .igx-button--flat {
+            -webkit-tap-highlight-color: transparent;
+        }
+    }
+
+    .caseSensitiveButton {
+        margin-left: 8px;
+    }
+
+    .igx-input-group--search .igx-input-group__bundle .igx-button--icon {
+        border-radius: 0;
+    }
+
+    .caseSensitiveIcon {
+        width: 1.25rem;
+        height: 1.25rem;
+        font-size: 1.25rem;
+    }
+
+    .searchButtons {
+        margin-left: 4px;
+
+    }
+
+    //resize handle
+
+    .igx-grid__th-resize-line {
+        background: igx-color($crm-grid-palette, "secondary", 500);
+    }
+
+
+    .toggle-content {
+        display: flex;
+        width: 240px;
+        height: 300px;
+        position: absolute;
+        z-index: 3;
+        background-color: white;
+        overflow: auto;
+        box-shadow: igx-elevation($elevations, 4);
+    }
+
+    .toggle-section {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        font-size: 0.8em;
+    }
+
+    .dd-title {
+        color: igx-color($crm-grid-palette, "primary", 600);
+        margin: 0;
+        padding: 16px;
+        font-size: 14px;
+    }
+
+    .dd-list {
+        list-style-type: none;
+    }
+
+    .dd-list__item {
+        display: flex;
+        align-items: center;
+        padding: 16px;
+
+        ::ng-deep {
+            @include igx-checkbox($checkbox-theme);
+        }
+
+        &:hover {
+            background: lighten(igx-color($crm-grid-palette, "primary", 100), 10);
+        }
+    }
+
+    .pin-icon {
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 1rem;
+        height: 1rem;
+    }
+}
+
+
+.animated-fan {
+    width: 28px;
+    height: 28px;
+    animation: spin-fade 1.5s cubic-bezier(0.21, 1.07, 0.99, 1) forwards;
+}
+
+@keyframes spin-fade {
+    0% {
+        opacity: 0;
+        tranform: rotate(0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: rotate(270deg);
+    }
+}
+
+@keyframes slide-fade {
+    0% {
+        transform: translateX(-5%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+}

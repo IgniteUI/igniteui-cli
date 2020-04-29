@@ -1,7 +1,6 @@
+import { BaseProjectLibrary, Component, Template, Util } from "@igniteui/cli-core";
 import * as path from "path";
-import { BaseProjectLibrary } from "../../lib/BaseProjectLibrary";
-import { TemplateManager } from "../../lib/TemplateManager";
-import { Util } from "../../lib/Util";
+
 describe("Unit - Base project library ", () => {
 
 	it("has correct projects.", async done => {

@@ -1,11 +1,9 @@
+import { GoogleAnalytics, Util } from "@igniteui/cli-core";
 import * as fs from "fs";
 import * as os from "os";
 import * as path from "path";
-import { default as config } from "../../lib/commands/config";
-import { default as generateCmd } from "../../lib/commands/generate";
-import { GoogleAnalytics } from "../../lib/GoogleAnalytics";
-import { ProjectConfig } from "../../lib/ProjectConfig";
-import { Util } from "../../lib/Util";
+import { default as config } from "../../packages/cli/lib/commands/config";
+import { default as generateCmd } from "../../packages/cli/lib/commands/generate";
 import { deleteAll } from "../helpers/utils";
 
 describe("Unit - Generate command", () => {
@@ -70,11 +68,10 @@ describe("Unit - Generate command", () => {
 			projectLib.generateTemplateFolderPath,
 			outDir,
 			{
-				"$(templateFramework)": "jquery",
-				"$(templateName)": "custom-template",
-				"$(templateType)": "js"
-			},
-			null);
+				templateFramework: "jquery",
+				templateName: "custom-template",
+				templateType: "js"
+			}, {});
 
 		const addHandlerExpectedParameter = {
 			property: "customTemplates",

@@ -1,11 +1,11 @@
+import { GoogleAnalytics, GoogleAnalyticsParameters, Util } from "@igniteui/cli-core";
 import * as fs from "fs";
-import cli = require("../../lib/cli");
-import { GoogleAnalytics } from "../../lib/GoogleAnalytics";
-import { PackageManager } from "../../lib/packages/PackageManager";
-import { Util } from "../../lib/Util";
+import * as cli from "../../packages/cli/lib/cli";
+import { PackageManager } from "../../packages/cli/lib/packages/PackageManager";
 import { deleteAll, filesDiff, resetSpy } from "../helpers/utils";
 
 describe("New command", () => {
+	let testFolder;
 
 	// tslint:disable:no-console
 	beforeEach(() => {
@@ -18,8 +18,8 @@ describe("New command", () => {
 
 	afterEach(() => {
 		// clean test folder:
-		deleteAll(this.testFolder);
-		fs.rmdirSync(this.testFolder);
+		deleteAll(testFolder);
+		fs.rmdirSync(testFolder);
 		process.chdir("../");
 	});
 
@@ -32,7 +32,7 @@ describe("New command", () => {
 		const packageText = fs.readFileSync("./jQuery Proj/package.json", "utf-8");
 		expect(JSON.parse(packageText).name).toEqual("jquery-proj");
 		expect(fs.existsSync("./jQuery Proj/.gitignore")).toBeTruthy();
-		this.testFolder = "./jQuery Proj";
+		testFolder = "./jQuery Proj";
 
 		let expectedPrams: GoogleAnalyticsParameters = {
 			t: "screenview",
@@ -67,7 +67,7 @@ describe("New command", () => {
 		const packageText = fs.readFileSync("./React Proj/package.json", "utf-8");
 		expect(JSON.parse(packageText).name).toEqual("react-proj");
 		expect(fs.existsSync("./React Proj/.gitignore")).toBeTruthy();
-		this.testFolder = "./React Proj";
+		testFolder = "./React Proj";
 		done();
 	});
 
@@ -81,20 +81,20 @@ describe("New command", () => {
 		const packageText = fs.readFileSync("./ngx Proj/package.json", "utf-8");
 		expect(JSON.parse(packageText).name).toEqual("ngx-proj");
 		expect(fs.existsSync("./ngx Proj/.gitignore")).toBeTruthy();
-		this.testFolder = "./ngx Proj";
+		testFolder = "./ngx Proj";
 		done();
 	});
 
 	it("Creates Ignite UI for Angular project", async done => {
 
-		await cli.run(["new", "Ignite UI for Angular", "--framework=angular", "--type=igx-ts"]);
+		await cli.run(["new", "Ignite UI for Angular", "--framework=angular", "--type=igx-ts", "--theme=default"]);
 
 		expect(fs.existsSync("./Ignite UI for Angular")).toBeTruthy();
 		expect(filesDiff("../templates/angular/igx-ts/projects/empty/files", "./Ignite UI for Angular")).toEqual([]);
 		const packageText = fs.readFileSync("./Ignite UI for Angular/package.json", "utf-8");
 		expect(JSON.parse(packageText).name).toEqual("ignite-ui-for-angular");
 		expect(fs.existsSync("./Ignite UI for Angular/.gitignore")).toBeTruthy();
-		this.testFolder = "./Ignite UI for Angular";
+		testFolder = "./Ignite UI for Angular";
 		done();
 	});
 
@@ -133,31 +133,31 @@ describe("New command", () => {
 		expect(fs.readFileSync("./testProj2/ignite-cli-views.js").toString())
 			.toEqual("text", "Shouldn't overwrite existing project files!");
 
-		this.testFolder = "./testProj2";
+		testFolder = "./testProj2";
 		done();
 	});
 
 	it("Git Status", async done => {
 		const projectName = "angularProj";
-		await cli.run(["new", projectName, "--framework=angular", "--type=igx-ts"]);
+		await cli.run(["new", projectName, "--framework=angular", "--type=igx-ts", "--theme=default"]);
 
 		process.chdir(projectName);
 		expect(fs.existsSync(".git")).toBeTruthy();
-		expect(Util.exec("git log -1 --pretty=format:'%s'").toString())
+		expect(Util.execSync("git log -1 --pretty=format:'%s'").toString())
 			.toMatch("Initial commit for project: " + projectName);
 		process.chdir("../");
-		this.testFolder = "./angularProj";
+		testFolder = "./angularProj";
 		done();
 	});
 
 	it("Skip Git/Install with command option", async done => {
 		const projectName = "angularProj";
-		await cli.run(["new", projectName, "--framework=angular", "--type=igx-ts", "--skip-git", "--skip-install"]);
+		await cli.run(["new", projectName, "--framework=angular", "--type=igx-ts", "--skip-git", "--skip-install", "--theme=default"]);
 
 		expect(fs.existsSync("./" + projectName + "/.git")).not.toBeTruthy();
 		expect(PackageManager.installPackages).not.toHaveBeenCalled();
 
-		this.testFolder = projectName;
+		testFolder = projectName;
 		done();
 	});
 
@@ -168,7 +168,7 @@ describe("New command", () => {
 		//TODO: read entire structure from ./templates and verify everything is copied over
 		expect(fs.existsSync("./a")).toBeTruthy();
 
-		this.testFolder = "./a";
+		testFolder = "./a";
 		done();
 	});
 });

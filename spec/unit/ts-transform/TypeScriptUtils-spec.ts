@@ -1,75 +1,9 @@
+import { FsFileSystem, TypeScriptUtils } from "@igniteui/cli-core";
 import * as fs from "fs";
 import * as ts from "typescript";
-import { FsFileSystem, TypeScriptUtils } from "../../../lib/project-utility/TypeScriptUtils";
 
 describe("Unit - TypeScriptUtils", () => {
 	const fileSystem = new FsFileSystem();
-
-	describe("Relative paths", () => {
-		it("Creates correct relative path for child structure", async done => {
-
-			// default use, shared root
-			expect(TypeScriptUtils.relativePath(
-				"C:\\src\\app\\app-routing.module.ts",
-				"C:\\src\\app\\carousel\\carousel.component.ts", true, true
-			))
-			.toBe("./carousel/carousel.component", "Shared Win root, file to file => posix ");
-			expect(TypeScriptUtils.relativePath(
-				"/home/app/app.module.ts",
-				"/home/app/grid/grid.component.ts", true, true
-			))
-			.toBe("./grid/grid.component", "Shared posix root, file to file => posix ");
-
-			expect(TypeScriptUtils.relativePath(
-				"C:\\home\\app-routing.module.ts",
-				"C:/home/app/grid/grid.component.ts", true, false
-			))
-			.toBe("./app/grid/grid.component.ts", "Win style to posix file, keep ext => posix");
-			done();
-		});
-
-		it("Creates correct relative path for parent dir", async done => {
-			// going up levels
-			expect(TypeScriptUtils.relativePath(
-				"C:\\common\\folder1\\folder2\\folder3\\file.ts",
-				"C:\\common\\dir1\\dir2\\target.ts", false
-			))
-			.toBe("..\\..\\..\\dir1\\dir2\\target", "Win style, file to file => win");
-
-			expect(TypeScriptUtils.relativePath(
-				"C:\\Work\\git\\Ignite-UI-CLI\\spec\\unit\\ts-transforms\\TypeScriptUtils-spec.ts",
-				"C:\\Work\\git\\Ignite-UI-CLI\\lib\\project-utility\\TypeScriptUtils.ts", true
-			))
-			// same as top level import above
-			.toBe("../../../lib/project-utility/TypeScriptUtils", "Win style, file to file => posix");
-
-			expect(TypeScriptUtils.relativePath(
-				"C:\\common\\folder1\\folder2\\folder3\\",
-				"C:\\common\\dir1\\dir2\\target.ts", true
-			))
-			.toBe("../../../dir1/dir2/target", "Win style, folder to file => posix");
-
-			expect(TypeScriptUtils.relativePath(
-				"C:\\common\\folder1\\folder2\\folder3\\",
-				"C:\\common\\dir1\\dir2\\target", true
-			))
-			.toBe("../../../dir1/dir2/target", "Win style, folder to file w/o ext => posix");
-
-			expect(TypeScriptUtils.relativePath(
-				"C:/common/folder1/folder2/folder3/",
-				"C:\\common\\dir1\\dir2\\target.ts", true
-			))
-			.toBe("../../../dir1/dir2/target", "posix folder to Win style file => posix");
-
-			expect(TypeScriptUtils.relativePath(
-				"C:/common/folder1/folder2/folder3/",
-				"C:\\common\\dir1\\dir2\\target.ts", true, false
-			))
-			.toBe("../../../dir1/dir2/target.ts", "posix folder to Win style file, keep ext => posix");
-
-			done();
-		});
-	});
 
 	describe("File read/write", () => {
 		const newLines = {
@@ -93,7 +27,7 @@ describe("Unit - TypeScriptUtils", () => {
 			// tslint:disable-next-line:forin
 			for (const key in newLines) {
 				readFileSpy.and.returnValue(sourceText.join(newLines[key]));
-				const result = TypeScriptUtils.getFileSource(`test/file${key}.ts`, fileSystem);
+				const result = TypeScriptUtils.getFileSource(`test/file${key}.ts`);
 				expect(fs.readFileSync).toHaveBeenCalledWith(`test/file${key}.ts`);
 				expect(ts.createSourceFile).toHaveBeenCalledWith(
 					`test/file${key}.ts`,
@@ -126,7 +60,7 @@ describe("Unit - TypeScriptUtils", () => {
 				const source: ts.SourceFile = {} as any;
 				printerSpy.and.returnValue(printer);
 
-				const result = TypeScriptUtils.saveFile(`test/file${key}.ts`, source, fileSystem);
+				const result = TypeScriptUtils.saveFile(`test/file${key}.ts`, source);
 				expect(printer.printFile).toHaveBeenCalledWith(source);
 				expect(fs.writeFileSync).toHaveBeenCalledWith(`test/file${key}.ts`, expectedText.join(newLines[key]));
 			}
@@ -145,7 +79,11 @@ describe("Unit - TypeScriptUtils", () => {
 
 			const identifierCall = TypeScriptUtils.createIdentifier("Test", "method");
 			expect(identifierCall.kind).toBe(ts.SyntaxKind.CallExpression);
-			const identifierCallText = printer.printNode(ts.EmitHint.Unspecified, identifierCall, null);
+			const identifierCallText = printer.printNode(
+				ts.EmitHint.Unspecified,
+				identifierCall,
+				ts.createSourceFile("", "", ts.ScriptTarget.Latest)
+			);
 			expect(identifierCallText).toBe("Test.method()");
 			done();
 		});

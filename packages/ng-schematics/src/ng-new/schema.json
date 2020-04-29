@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "SchematicsAngularNgNew",
+  "title": "Ignite UI for Angular Ng New Options Schema",
+  "type": "object",
+  "properties": {
+    "name": {
+      "description": "The name of the new workspace and initial project.",
+      "type": "string",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      }
+    },
+    "version": {
+      "type": "string",
+      "description": "The version of the Angular CLI to use.",
+      "visible": false,
+      "$default": {
+        "$source": "ng-cli-version"
+      }
+    },
+    "skipInstall": {
+      "description": "Do not automatically install packages.",
+      "type": "boolean",
+      "default": false,
+      "alias": "si"
+    },
+    "skipGit": {
+      "description": "Do not automatically initialize repository for the project with Git.",
+      "type": "boolean",
+      "default": false,
+      "alias": "sg"
+    },
+    "theme": {
+      "description": "Project theme.",
+      "type": "string",
+      "alias": "th"
+    },
+    "template": {
+      "description": "Project template.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "version"
+  ]
+}

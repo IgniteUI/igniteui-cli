@@ -1,6 +1,7 @@
 {
-  "name": "igniteui-cli",
+  "name": "igniteui-cli-repo",
   "version": "1.0.0",
+  "private": true,
   "description": "CLI tool for creating Ignite UI projects",
   "keywords": [
     "CLI",
@@ -8,10 +9,6 @@
   ],
   "author": "Infragistics",
   "license": "MIT",
-  "bin": {
-    "igniteui": "bin/execute.js",
-    "ig": "bin/execute.js"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/IgniteUI/igniteui-cli"
@@ -19,8 +16,9 @@
   "bugs": {
     "url": "https://github.com/IgniteUI/igniteui-cli/issues"
   },
-  "main": "lib/cli.js",
   "scripts": {
+    "release": "lerna version --conventional-commits --yes --force-publish --no-push --no-git-tag-version",
+    "version": "node ./scripts/versionScript.js",
     "build": "node ./node_modules/typescript/lib/tsc.js && npm run config-schema",
     "build-pack": "node ./node_modules/typescript/lib/tsc.js -p tsconfig-pack.json && npm run config-schema",
     "pretest": "npm run lint && npm run build",
@@ -28,42 +26,22 @@
     "jasmine": "node spec/jasmine-runner.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "lint": "tslint --project tsconfig.json",
-    "config-schema": "typescript-json-schema lib/types/Config.d.ts Config -o lib/config/Config.schema.json"
+    "config-schema": "typescript-json-schema packages/core/types/Config.ts Config -o packages/core/config/Config.schema.json"
   },
-  "files": [
-    "ignite-ui-cli.txt",
-    "bin/*",
-    "lib/**/*.d.ts",
-    "lib/**/*.js",
-    "lib/config/defaults.json",
-    "lib/config/Config.schema.json",
-    "scripts/**/*.js",
-    "templates/**/*.d.ts",
-    "templates/**/*.js",
-    "templates/**/files/**/*",
-    "templates/**/generate/**/*",
-    "templates/quickstart/**/*",
-    "templates/**/*.json",
-    "migrations/**/*.d.ts",
-    "migrations/**/*.js",
-    "migrations/**/*.json",
-    "schematics/**/*.d.ts",
-    "schematics/**/*.js",
-    "schematics/**/*.json"
-  ],
   "nyc": {
     "extension": [
       ".ts",
       ".tsx"
     ],
     "include": [
-      "lib/"
+      "packages/"
     ],
     "exclude": [
       "**/*.d.ts",
       "output/",
-      "templates/quickstart/",
-      "templates/**/files/"
+      "packages/cli/templates/quickstart/",
+      "packages/cli/templates/**/files/",
+      "packages/igx-templates/"
     ],
     "reporter": [
       "lcov",
@@ -76,45 +54,33 @@
     "cache": false,
     "all": true
   },
-  "dependencies": {
-    "chalk": "^2.3.2",
+  "devDependencies": {
+    "@types/fs-extra": "^3.0.3",
+    "@types/inquirer": "0.0.35",
+    "@types/jasmine": "3.3.9",
+    "@types/node": "^8.10.0",
+    "browser-sync": "^2.26.3",
+    "coveralls": "^3.0.0",
     "fs-extra": "^3.0.1",
     "glob": "^7.1.2",
     "inquirer": "^6.4.1",
-    "opn": "^5.3.0",
-    "resolve": "^1.6.0",
-    "shelljs": "^0.7.8",
-    "through2": "^2.0.3",
-    "typescript": "^3.2.1",
-    "yargs": "^8.0.2"
-  },
-  "devDependencies": {
-    "@angular-devkit/core": "^8.0.3",
-    "@angular-devkit/schematics": "^8.0.3",
-    "@schematics/angular": "^8.0.3",
-    "@types/fs-extra": "^3.0.3",
-    "@types/inquirer": "0.0.35",
-    "@types/jasmine": "^3.3.9",
-    "@types/node": "^8.10.0",
-    "@types/shelljs": "^0.7.8",
-    "browser-sync": "^2.26.3",
-    "coveralls": "^3.0.0",
     "jasmine": "^3.3.1",
     "jasmine-spec-reporter": "^4.2.1",
+    "lerna": "^3.16.4",
+    "lerna-changelog": "^0.8.2",
     "lite-server": "^2.4.0",
     "nyc": "^13.1.0",
+    "resolve": "^1.6.0",
     "source-map-support": "^0.5.4",
     "ts-node": "^6.2.0",
     "tslint": "^5.11.0",
-    "typescript-json-schema": "^0.33.0"
+    "typescript": "^3.7.5",
+    "typescript-json-schema": "^0.42.0"
   },
-  "ng-update": {
-    "migrations": "./migrations/migration-collection.json",
-    "packageGroup": [
-      "igniteui-cli",
-      "igniteui-angular",
-      "igniteui-angular-charts"
-    ]
-  },
-  "schematics": "./schematics/cli-collection.json"
+  "workspaces": [
+    "packages/*"
+  ],
+  "dependencies": {
+    "handlebars": "4.0.14"
+  }
 }
