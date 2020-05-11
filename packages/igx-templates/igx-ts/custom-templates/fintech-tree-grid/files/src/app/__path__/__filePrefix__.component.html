@@ -27,7 +27,7 @@
             ~{{volume/5}} records updated.</span>
     </div>
     <igx-tree-grid #grid1 [data]="data | treeGridGrouping:groupColumns:aggregations:groupColumnKey:primaryKey:childDataKey" [height]="'calc(100% - 76px)'" width="100%" [autoGenerate]='false' displayDensity='compact' [primaryKey]="primaryKey" [childDataKey]="childDataKey"
-        columnHidingTitle="Indicators" hiddenColumnsText="Hidden" [rowSelectable]="true" [allowFiltering]="true" [filterMode]="'excelStyleFilter'" [showToolbar]="true" [columnHiding]="true" [exportExcel]="true" exportExcelText="Export to Excel">
+        columnHidingTitle="Indicators" hiddenColumnsText="Hidden" [rowSelection]="'multiple'" [allowFiltering]="true" [filterMode]="'excelStyleFilter'" [showToolbar]="true" [columnHiding]="true" [exportExcel]="true" exportExcelText="Export to Excel">
 
         <igx-column [field]="groupColumnKey" [width]="'180px'" [sortable]='true' [resizable]='true' [disableHiding]="true"></igx-column>
         <igx-column [field]="'Settlement'" [width]="'100px'" [sortable]='true'></igx-column>
