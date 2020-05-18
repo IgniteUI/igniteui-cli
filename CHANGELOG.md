@@ -1,42 +1,64 @@
-# 5.0.2
+# [5.0.3](https://github.com/IgniteUI/igniteui-cli/compare/v5.0.2...v5.0.3) (2020-05-18)
 
-## igniteui/cli-core@#5.0.2 (2020-05-04)
+## igniteui/cli-core@5.0.3
+
+**Note:** Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@9.0.503
+
+#### Bug Fixes
+
+* **igx:** proj template error handler log instead throw, register only in prod ([270addd](https://github.com/IgniteUI/igniteui-cli/commit/270addd))
+
+## igniteui/angular-schematics@9.0.503
 
 **Note:** Version bump only for package igniteui/angular-schematics
 
-## igniteui/angular-templates@#9.0.502 (2020-05-04)
+## igniteui-cli@5.0.3
+
+#### Bug Fixes
+
+* **igx:** proj template error handler log instead throw, register only in prod ([270addd](https://github.com/IgniteUI/igniteui-cli/commit/270addd))
+
+# [5.0.2](https://github.com/IgniteUI/igniteui-cli/compare/v5.0.1...v5.0.2) (2020-05-04)
+
+## igniteui/cli-core@5.0.2
+
+**Note:** Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@9.0.502
 
 #### Bug Fixes
 
 * **igx-ts:** Update references for DV components to 9.0.1 [#713](https://github.com/IgniteUI/igniteui-cli/issues/713) ([704146a](https://github.com/IgniteUI/igniteui-cli/commit/704146a83a9cd52443ed9ae2b343b03de5a7426e))
 
-## igniteui/angular-schematics@#9.0.502 (2020-05-04)
+## igniteui/angular-schematics@9.0.502
 
 **Note:** Version bump only for package igniteui/angular-schematics
 
-## igniteui-cli@#5.0.2 (2020-05-04)
+## igniteui-cli@5.0.2
 
 #### Bug Fixes
 
 * **igx-ts:** Update references for DV components to 9.0.1 [#713](https://github.com/IgniteUI/igniteui-cli/issues/713) ([704146a](https://github.com/IgniteUI/igniteui-cli/commit/704146a83a9cd52443ed9ae2b343b03de5a7426e))
 
-# 5.0.1 (2020-02-20)
+# [5.0.1](https://github.com/IgniteUI/igniteui-cli/compare/v5.0.0...v5.0.1) (2020-02-20)
 
-## igniteui/cli-core@#5.0.1 (2020-02-20)
+## igniteui/cli-core@5.0.1
 
 #### Bug Fixes
 
 * **start:** inherit all stdio, not just input [#699](https://github.com/IgniteUI/igniteui-cli/issues/699) ([1c03891](https://github.com/IgniteUI/igniteui-cli/commit/1c03891))
 
-## igniteui/angular-templates@#9.0.501 (2020-02-20)
+## igniteui/angular-templates@9.0.501
 
 **Note:** Version bump only for package igniteui/angular-templates
 
-## igniteui/angular-schematics@#9.0.501 (2020-02-20)
+## igniteui/angular-schematics@9.0.501
 
 **Note:** Version bump only for package igniteui/angular-schematics
 
-## igniteui-cli@#5.0.1 (2020-02-20)
+## igniteui-cli@5.0.1
 
 #### Bug Fixes
 
