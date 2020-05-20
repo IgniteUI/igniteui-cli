@@ -3,7 +3,6 @@ import { App, FS_TOKEN, FS_TYPE_TOKEN, FsTypes, IFileSystem } from "@igniteui/cl
 
 export class NgTreeFileSystem implements IFileSystem {
 	constructor(private tree: Tree) { }
-
 	public fileExists(filePath: string): boolean {
 		return this.tree.exists(filePath);
 	}
@@ -19,6 +18,25 @@ export class NgTreeFileSystem implements IFileSystem {
 	public directoryExists(dirPath: string): boolean {
 		const dir = this.tree.getDir(dirPath);
 		return dir.subdirs.length || dir.subfiles.length ? true : false;
+	}
+
+	/**
+	 * Returns a list of file paths under a directory based on a match pattern
+	 * @param dirPath Root dir to search in
+	 * @param pattern Supports only recursive wildcard '\*\*\/\*'
+	 */
+	public glob(dirPath: string, pattern: string): string[] {
+		const dir = this.tree.getDir(dirPath);
+		const entries: string[] = [];
+		pattern = pattern.split("**/*").pop() || pattern;
+
+		dir.visit((fullPath, entry) => {
+			if (entry?.path.endsWith(pattern)) {
+				entries.push(entry.path);
+			}
+		});
+
+		return entries;
 	}
 }
 

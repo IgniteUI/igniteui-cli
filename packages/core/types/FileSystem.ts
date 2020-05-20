@@ -3,7 +3,13 @@ export interface IFileSystem {
 	readFile(filePath: string, encoding?: string): string;
 	writeFile(filePath: string, text: string): void;
 	directoryExists(dirPath: string): boolean;
-	listDirectoryEntries(dirPath: string): string[];
+
+	/**
+	 * Returns a list of file paths under a directory based on a match pattern
+	 * @param dirPath Root dir to search in
+	 * @param pattern Pattern to match
+	 */
+	glob(dirPath: string, pattern: string): string[];
 }
 
 export const FS_TOKEN: string = "fs";

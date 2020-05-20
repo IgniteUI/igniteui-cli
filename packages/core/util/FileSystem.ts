@@ -1,5 +1,7 @@
 
 import * as fs from "fs";
+import * as glob from "glob";
+import * as path from "path";
 import { IFileSystem } from "../types/FileSystem";
 
 export class FsFileSystem implements IFileSystem {
@@ -18,7 +20,8 @@ export class FsFileSystem implements IFileSystem {
 	public directoryExists(dirPath: string): boolean {
 		return fs.statSync(dirPath).isDirectory();
 	}
-	public listDirectoryEntries(dirPath: string): string[] {
-		return fs.
+
+	public glob(dirPath: string, pattern: string): string[] {
+		return glob.sync(path.join(dirPath, pattern), { nodir: true });
 	}
 }
