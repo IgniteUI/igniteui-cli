@@ -114,6 +114,7 @@
     "packageGroup": [
       "igniteui-cli",
       "igniteui-angular",
+      "@infragistics/igniteui-angular",
       "igniteui-angular-charts",
       "@igniteui/angular-templates"
     ]
