@@ -18,4 +18,7 @@ export class FsFileSystem implements IFileSystem {
 	public directoryExists(dirPath: string): boolean {
 		return fs.statSync(dirPath).isDirectory();
 	}
+	public listDirectoryEntries(dirPath: string): string[] {
+		return fs.
+	}
 }

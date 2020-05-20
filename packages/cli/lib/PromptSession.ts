@@ -1,9 +1,8 @@
-import { BasePromptSession, GoogleAnalytics, ProjectConfig, ProjectLibrary, PromptTaskContext, Task, Util } from "@igniteui/cli-core";
+import { BasePromptSession, GoogleAnalytics, ProjectConfig, ProjectLibrary, PromptTaskContext, Task, Util, PackageManager } from "@igniteui/cli-core";
 import * as inquirer from "inquirer";
 import * as path from "path";
 import { default as add } from "./commands/add";
 import { default as start } from "./commands/start";
-import { PackageManager } from "./packages/PackageManager";
 import { TemplateManager } from "./TemplateManager";
 
 export class PromptSession extends BasePromptSession {

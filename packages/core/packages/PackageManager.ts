@@ -1,7 +1,8 @@
-import { Config, ProjectConfig, Util } from "@igniteui/cli-core";
 import { exec, spawnSync } from "child_process";
 import * as path from "path";
-import { TemplateManager } from "../TemplateManager";
+import { TemplateManager } from "../../cli/lib/TemplateManager";
+import { Config } from "../types/config";
+import { ProjectConfig, Util } from "../util";
 
 import componentsConfig = require("./components");
 
@@ -189,7 +190,7 @@ export class PackageManager {
 		}
 	}
 
-	protected static ensureRegistryUser(config: Config): boolean {
+	public static ensureRegistryUser(config: Config): boolean {
 		const fullPackageRegistry = config.igPackageRegistry;
 		try {
 			// tslint:disable-next-line:object-literal-sort-keys

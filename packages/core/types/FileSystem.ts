@@ -3,6 +3,7 @@ export interface IFileSystem {
 	readFile(filePath: string, encoding?: string): string;
 	writeFile(filePath: string, text: string): void;
 	directoryExists(dirPath: string): boolean;
+	listDirectoryEntries(dirPath: string): string[];
 }
 
 export const FS_TOKEN: string = "fs";

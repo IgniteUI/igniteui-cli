@@ -32,6 +32,10 @@
     "cli-config": {
       "description": "Installs the needed dependencies onto the host application.",
       "factory": "./cli-config/index"
-    }
+	},
+	"update-package": {
+		"description": "Upgrades to the licensed igniteui-angular packages",
+		"factory": "./update"
+	}
   }
 }
