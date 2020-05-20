@@ -207,8 +207,8 @@
     height: 95%;
 }
 
-@import '~igniteui-angular/lib/core/styles/themes/utilities';
-@import '~igniteui-angular/lib/core/styles/themes/index';
+@import '~<%=igxPackage%>/lib/core/styles/themes/utilities';
+@import '~<%=igxPackage%>/lib/core/styles/themes/index';
 @include igx-core();
 @include igx-theme($default-palette);
 

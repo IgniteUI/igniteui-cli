@@ -1,6 +1,6 @@
 import { Component, Pipe, PipeTransform, ViewChild } from '@angular/core';
 import { townsExtended } from './towns-data-extended';
-import { IgxToastComponent, IgxToastPosition } from 'igniteui-angular';
+import { IgxToastComponent, IgxToastPosition } from '<%=igxPackage%>';
 
 @Component({
     selector: 'app-<%=filePrefix%>',

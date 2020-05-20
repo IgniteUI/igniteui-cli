@@ -5,7 +5,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { <%=ClassName%>Component } from './<%=filePrefix%>.component';
 import {
     IgxSelectModule, IgxToggleModule, IgxButtonModule, IgxToastModule
-} from 'igniteui-angular';
+} from '<%=igxPackage%>';
 
 describe('<%=ClassName%>Component', () => {
     let component: <%=ClassName%>Component;

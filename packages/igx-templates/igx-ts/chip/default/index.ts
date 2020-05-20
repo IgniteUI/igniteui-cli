@@ -12,7 +12,7 @@ class IgxChipTemplate extends IgniteUIForAngularTemplate {
 		this.description = "basic IgxChip";
 		this.dependencies = [{
 			import: ["IgxButtonModule", "IgxChipsModule", "IgxDropDownModule"],
-			from: "igniteui-angular"
+			from: "<%=igxPackage%>"
 		}];
 	}
 }

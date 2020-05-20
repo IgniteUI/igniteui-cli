@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IgxExpansionPanelComponent } from 'igniteui-angular';
+import { IgxExpansionPanelComponent } from '<%=igxPackage%>';
 import { data as weatherData } from './weather-data';
 
 @Component({

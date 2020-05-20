@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { data } from './data';
 
-import { IgxDialogComponent, IgxGridComponent, Transaction } from 'igniteui-angular';
+import { IgxDialogComponent, IgxGridComponent, Transaction } from '<%=igxPackage%>';
 
 @Component({
   selector: 'app-<%=filePrefix%>',

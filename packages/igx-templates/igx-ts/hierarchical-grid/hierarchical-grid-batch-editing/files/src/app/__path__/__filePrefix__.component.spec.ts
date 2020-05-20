@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {
     IgxGridModule, IgxDatePickerModule, IgxCheckboxModule, IgxDialogModule, IgxHierarchicalGridModule
-} from 'igniteui-angular';
+} from '<%=igxPackage%>';
 import { <%=ClassName%>Component } from './<%=filePrefix%>.component';
 import { HierarchicalGridWithTransactionsComponent } from './<%=filePrefix%>-transactions.component';
 

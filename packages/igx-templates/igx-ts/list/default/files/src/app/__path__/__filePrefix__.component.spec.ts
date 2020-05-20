@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { <%=ClassName%>Component } from './<%=filePrefix%>.component';
-import { IgxListModule, IgxAvatarModule, IgxIconModule, IgxFilterModule, IgxInputGroupModule } from 'igniteui-angular';
+import { IgxListModule, IgxAvatarModule, IgxIconModule, IgxFilterModule, IgxInputGroupModule } from '<%=igxPackage%>';
 
 describe('<%=ClassName%>Component', () => {
   let component: <%=ClassName%>Component;

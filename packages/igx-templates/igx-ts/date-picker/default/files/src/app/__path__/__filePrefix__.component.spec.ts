@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { <%=ClassName%>Component } from './<%=filePrefix%>.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { IgxDatePickerModule } from 'igniteui-angular';
+import { IgxDatePickerModule } from '<%=igxPackage%>';
 
 describe('<%=ClassName%>Component', () => {
   let component: <%=ClassName%>Component;

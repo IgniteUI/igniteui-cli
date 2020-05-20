@@ -10,7 +10,7 @@ import {
     IgxFocusModule,
     IgxGridModule,
     IgxRippleModule
-} from 'igniteui-angular';
+} from '<%=igxPackage%>';
 
 describe('<%=ClassName%>Component', () => {
   let component: <%=ClassName%>Component;

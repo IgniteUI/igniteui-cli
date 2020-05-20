@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IgxDialogComponent } from 'igniteui-angular';
+import { IgxDialogComponent } from '<%=igxPackage%>';
 
 @Component({
   selector: 'app-<%=filePrefix%>',

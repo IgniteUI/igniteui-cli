@@ -10,7 +10,7 @@ class IgxGridAwesomeTemplate extends IgniteUIForAngularTemplate {
 		this.name = "Awesome Grid";
 		this.description = "Awesome IgxGrid";
 		this.dependencies = [
-			{ import: "IgxGridModule", from: "igniteui-angular" },
+			{ import: "IgxGridModule", from: "<%=igxPackage%>" },
 			{
 				import: [
 					"IgxProgressBarModule",
@@ -21,7 +21,7 @@ class IgxGridAwesomeTemplate extends IgniteUIForAngularTemplate {
 					"IgxInputGroupModule",
 					"IgxButtonModule"
 				],
-				from: "igniteui-angular"
+				from: "<%=igxPackage%>"
 			},
 			{
 				import: [

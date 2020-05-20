@@ -11,7 +11,7 @@ class IgxFinTechGridTemplate extends IgniteUIForAngularTemplate {
 		this.description = "Grid with simulated high-frequency data feed";
 		this.dependencies = [
 			{ import: "IgxCategoryChartModule", from: "igniteui-angular-charts" },
-			{ provide: "IgxExcelExporterService", from: "igniteui-angular" },
+			{ provide: "IgxExcelExporterService", from: "<%=igxPackage%>" },
 			{
 				import: [
 					"IgxButtonGroupModule",
@@ -24,7 +24,7 @@ class IgxFinTechGridTemplate extends IgniteUIForAngularTemplate {
 					"IgxSwitchModule",
 					"IgxToggleModule"
 				],
-				from: "igniteui-angular"
+				from: "<%=igxPackage%>"
 			},
 			{ import: "FormsModule", from: "@angular/forms" }
 		];

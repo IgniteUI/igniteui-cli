@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IgxComboComponent  } from 'igniteui-angular';
+import { IgxComboComponent  } from '<%=igxPackage%>';
 import { localData  } from './local-data';
 
 @Component({

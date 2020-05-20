@@ -12,7 +12,7 @@ class IgxDialogTemplate extends IgniteUIForAngularTemplate {
 		this.description = "Standart dialog template";
 		this.dependencies = [{
 			import: ["IgxDialogModule", "IgxButtonModule"],
-			from: "igniteui-angular"
+			from: "<%=igxPackage%>"
 		}];
 	}
 }
