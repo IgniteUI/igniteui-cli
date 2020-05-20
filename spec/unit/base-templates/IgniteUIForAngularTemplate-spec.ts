@@ -109,31 +109,7 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 
 			done();
 		});
-		it("[@deprecate] converts deprecated string imports", async done => {
-			spyOn(TestTemplate.prototype, "getBaseVariables").and.returnValue({});
-			spyOn(Util, "warn");
 
-			const templ = new TestTemplate();
-			templ.dependencies = ["igxGridModule"] as any;
-			templ.registerInProject("", "");
-			expect(Util.warn).toHaveBeenCalledWith("String dependencies are deprecated, use object descriptions.", "yellow");
-			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith(
-				{ import: "igxGridModule", from: "igniteui-angular/main" }, {}
-			);
-			resetSpy(helpers.tsUpdateMock.addNgModuleMeta);
-			resetSpy(Util.warn);
-
-			templ.dependencies = ["igxModule1", { import: "igxModule2", from: "igniteui-angular/component" }] as any;
-			templ.registerInProject("", "");
-			expect(Util.warn).toHaveBeenCalledWith("String dependencies are deprecated, use object descriptions.", "yellow");
-			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith(
-				{ import: "igxModule1", from: "igniteui-angular/main" }, {}
-			);
-			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith(
-				{ import: "igxModule2", from: "igniteui-angular/component" }, {}
-			);
-			done();
-		});
 		it("should skip route if skipRoute is passed", async done => {
 			const templ = new TestTemplate();
 			templ.registerInProject("target/path", "view name", { skipRoute: true });

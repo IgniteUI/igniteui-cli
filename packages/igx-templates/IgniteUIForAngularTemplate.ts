@@ -52,17 +52,6 @@ export class IgniteUIForAngularTemplate implements Template {
 		if (options && options.modulePath) {
 			modulePath = options.modulePath;
 		}
-		const stringDeps = this.dependencies.filter(x => typeof x === "string");
-		if (stringDeps.length) {
-			/** @deprecate */
-			Util.warn("String dependencies are deprecated, use object descriptions.", "yellow");
-			this.dependencies = this.dependencies.map(x => {
-				if (typeof x === "string") {
-					return { import: x, from: "igniteui-angular/main" };
-				}
-				return x;
-			});
-		}
 
 		// D.P. Don't use the top-level import as that chains import of typescript
 		// which slows down execution of the entire component noticeably (template loading)
