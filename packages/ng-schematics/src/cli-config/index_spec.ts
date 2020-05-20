@@ -1,5 +1,6 @@
 import { EmptyTree } from "@angular-devkit/schematics";
 import { SchematicTestRunner, UnitTestTree } from "@angular-devkit/schematics/testing";
+import { FEED_PACKAGE, NPM_PACKAGE } from "@igniteui/angular-templates";
 import { getWorkspace } from "@schematics/angular/utility/config";
 import * as path from "path";
 
@@ -35,8 +36,8 @@ describe("cli-config schematic", () => {
 		peerDependencies: {}
 	};
 
-	function createIgPkgJson() {
-		const filePath = "node_modules/igniteui-angular/package.json";
+	function createIgPkgJson(igxPkg = NPM_PACKAGE) {
+		const filePath = `node_modules/${igxPkg}/package.json`;
 		tree.create(filePath, JSON.stringify(pkgJsonConfig));
 		const pkgJson = JSON.parse(tree.readContent(filePath));
 		const angularCommon = "@angular/common";
@@ -48,7 +49,7 @@ describe("cli-config schematic", () => {
 		tree.overwrite(filePath, JSON.stringify(pkgJson));
 	}
 
-	function populatePkgJson() {
+	function populatePkgJson(igxPkg = NPM_PACKAGE) {
 		const targetFile = "/package.json";
 		const angularCore = "@angular/core";
 		const angularCommon = "@angular/common";
@@ -56,7 +57,19 @@ describe("cli-config schematic", () => {
 		const pkgJson = JSON.parse(tree.readContent(targetFile));
 		pkgJson.dependencies[angularCore] = version;
 		pkgJson.dependencies[angularCommon] = version;
+		pkgJson.dependencies[igxPkg] = "~7.0.0";
 		tree.overwrite(targetFile, JSON.stringify(pkgJson));
+	}
+
+	function resetTree() {
+		tree.overwrite("/angular.json", JSON.stringify(ngJsonConfig));
+		tree.overwrite("/package.json", JSON.stringify(pkgJsonConfig));
+		tree.overwrite("/src/index.html",
+			`<head>
+			 </head>
+			 <body>
+			 </body>`);
+		tree.delete("/ignite-ui-cli.json");
 	}
 
 	beforeEach(() => {
@@ -113,18 +126,47 @@ describe("cli-config schematic", () => {
 
 		runner.runSchematic("cli-config", {}, tree);
 
-		const content = tree.readContent(targetFile);
-		expect(content.includes("@import")).toBeTruthy();
+		let content = tree.readContent(targetFile);
+		expect(content.includes(`@import "~${NPM_PACKAGE}`)).toBeTruthy();
+
+		tree.overwrite(targetFile, "");
+		resetTree();
+		createIgPkgJson(FEED_PACKAGE);
+		populatePkgJson(FEED_PACKAGE);
+
+		runner.runSchematic("cli-config", {}, tree);
+		content = tree.readContent(targetFile);
+		expect(content.includes(`@import "~${FEED_PACKAGE}`)).toBeTruthy();
 	});
 
 	it("should add the default css theme to the workspace", () => {
 		const targetFile = "/angular.json";
 		expect(tree.exists(targetFile)).toBeTruthy();
 
-		const targetImport = "node_modules/igniteui-angular/styles/igniteui-angular.css";
+		let targetImport = `node_modules/${NPM_PACKAGE}/styles/igniteui-angular.css`;
 		runner.runSchematic("cli-config", {}, tree);
-		const workspace = getWorkspace(tree) as any;
-		const currentProjectName = workspace.defaultProject;
+		let workspace = getWorkspace(tree) as any;
+		let currentProjectName = workspace.defaultProject;
+
+		expect(
+			workspace.projects[currentProjectName].architect.build.options.styles.filter(
+				(s: string) => s.includes(targetImport)).length
+		)
+			.toBeGreaterThan(0);
+		expect(
+			workspace.projects[currentProjectName].architect.test.options.styles.filter(
+				(s: string) => s.includes(targetImport)).length
+		)
+			.toBeGreaterThan(0);
+
+		resetTree();
+		createIgPkgJson(FEED_PACKAGE);
+		populatePkgJson(FEED_PACKAGE);
+		targetImport = `node_modules/${FEED_PACKAGE}/styles/igniteui-angular.css`;
+
+		runner.runSchematic("cli-config", {}, tree);
+		workspace = getWorkspace(tree) as any;
+		currentProjectName = workspace.defaultProject;
 
 		expect(
 			workspace.projects[currentProjectName].architect.build.options.styles.filter(
@@ -161,8 +203,17 @@ describe("cli-config schematic", () => {
 
 		runner.runSchematic("cli-config", {}, tree);
 
-		const content = tree.readContent(targetFile);
-		expect(content.includes("@import")).toBeTruthy();
+		let content = tree.readContent(targetFile);
+		expect(content.includes(`@import "~${NPM_PACKAGE}`)).toBeTruthy();
+
+		tree.overwrite(targetFile, "");
+		resetTree();
+		createIgPkgJson(FEED_PACKAGE);
+		populatePkgJson(FEED_PACKAGE);
+
+		runner.runSchematic("cli-config", {}, tree);
+		content = tree.readContent(targetFile);
+		expect(content.includes(`@import "~${FEED_PACKAGE}`)).toBeTruthy();
 	});
 
 	it("should add BrowserAnimationsModule to app.module.ts", () => {
@@ -195,7 +246,17 @@ export class AppModule {
 	it("should properly display the dependency mismatch warning", () => {
 		spyOn(console, "warn");
 		runner.runSchematic("cli-config", {}, tree);
+		let pattern = new RegExp(`WARNING Version mismatch detected - ${NPM_PACKAGE}`);
 		// tslint:disable-next-line:no-console
-		expect(console.warn).toHaveBeenCalledWith(jasmine.stringMatching(/WARNING */));
+		expect(console.warn).toHaveBeenCalledWith(jasmine.stringMatching(pattern));
+
+		resetTree();
+		createIgPkgJson(FEED_PACKAGE);
+		populatePkgJson(FEED_PACKAGE);
+		pattern = new RegExp(`WARNING Version mismatch detected - ${FEED_PACKAGE}`);
+
+		runner.runSchematic("cli-config", {}, tree);
+		// tslint:disable-next-line:no-console
+		expect(console.warn).toHaveBeenCalledWith(jasmine.stringMatching(pattern));
 	});
 });
