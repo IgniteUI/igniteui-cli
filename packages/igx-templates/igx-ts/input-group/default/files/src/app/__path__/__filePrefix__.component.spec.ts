@@ -12,7 +12,7 @@ import {
   IgxDatePickerModule,
   IgxTimePickerModule,
   IgxSelectModule
-} from 'igniteui-angular';
+} from '<%=igxPackage%>';
 
 describe('<%=ClassName%>Component', () => {
   let component: <%=ClassName%>Component;

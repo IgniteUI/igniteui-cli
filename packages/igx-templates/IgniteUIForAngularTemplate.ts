@@ -3,6 +3,7 @@ import {
 	ControlExtraConfiguration, FS_TOKEN, IFileSystem, Template, TemplateDependency, TypeScriptFileUpdate, Util
 } from "@igniteui/cli-core";
 import * as path from "path";
+import { resolvePackage } from "./package-resolve";
 
 export class IgniteUIForAngularTemplate implements Template {
 	public components: string[];
@@ -51,17 +52,6 @@ export class IgniteUIForAngularTemplate implements Template {
 		let modulePath = "app.module.ts";
 		if (options && options.modulePath) {
 			modulePath = options.modulePath;
-		}
-		const stringDeps = this.dependencies.filter(x => typeof x === "string");
-		if (stringDeps.length) {
-			/** @deprecate */
-			Util.warn("String dependencies are deprecated, use object descriptions.", "yellow");
-			this.dependencies = this.dependencies.map(x => {
-				if (typeof x === "string") {
-					return { import: x, from: "igniteui-angular/main" };
-				}
-				return x;
-			});
 		}
 
 		// D.P. Don't use the top-level import as that chains import of typescript
@@ -123,6 +113,7 @@ export class IgniteUIForAngularTemplate implements Template {
 		config["description"] = this.description;
 		config["cliVersion"] = Util.version();
 		config["camelCaseName"] = Util.camelCase(name);
+		config["igxPackage"] = resolvePackage();
 
 		/** 'nameMerged' is never used igx templates, removed */
 		return config;

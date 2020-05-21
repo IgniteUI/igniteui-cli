@@ -10,8 +10,8 @@ class IgxTreeGridFinTechTemplate extends IgniteUIForAngularTemplate {
 		this.name = "FinTech Tree Grid";
 		this.description = "This sample demonstrates the TreeGrid handling thousands of updates per second.";
 		this.dependencies = [
-			{ import: "IgxTreeGridModule", from: "igniteui-angular" },
-			{ provide: "IgxExcelExporterService", from: "igniteui-angular" },
+			{ import: "IgxTreeGridModule", from: "<%=igxPackage%>" },
+			{ provide: "IgxExcelExporterService", from: "<%=igxPackage%>" },
 			{
 				import: [
 					"IgxCheckboxModule",
@@ -19,7 +19,7 @@ class IgxTreeGridFinTechTemplate extends IgniteUIForAngularTemplate {
 					"IgxSwitchModule",
 					"IgxSliderModule"
 				],
-				from: "igniteui-angular"
+				from: "<%=igxPackage%>"
 			},
 			{ import: "FormsModule", from: "@angular/forms" },
 			{ declare: "<%=ClassName%>TreeGridGroupingPipe", from: "./src/app/<%=path%>/tree-grid-grouping.pipe.ts" }

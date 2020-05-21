@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
 import { CloseScrollStrategy, ConnectedPositioningStrategy, HorizontalAlignment, IBaseChipEventArgs, IgxChipsAreaComponent,
  IgxDropDownComponent, VerticalAlignment
-} from 'igniteui-angular';
+} from '<%=igxPackage%>';
 
 @Component({
  selector: 'app-<%=filePrefix%>',

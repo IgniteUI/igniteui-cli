@@ -21,7 +21,7 @@ class IgxInputGroupTemplate extends IgniteUIForAngularTemplate {
 					"IgxTimePickerModule",
 					"IgxSelectModule"
 				],
-				from: "igniteui-angular"
+				from: "<%=igxPackage%>"
 			},
 			{ import: "FormsModule", from: "@angular/forms" }
 		];

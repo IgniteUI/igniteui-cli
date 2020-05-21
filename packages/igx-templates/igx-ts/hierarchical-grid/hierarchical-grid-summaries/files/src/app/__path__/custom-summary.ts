@@ -1,4 +1,4 @@
-import { IgxNumberSummaryOperand, IgxSummaryResult } from 'igniteui-angular';
+import { IgxNumberSummaryOperand, IgxSummaryResult } from '<%=igxPackage%>';
 
 export class CustomSummary extends IgxNumberSummaryOperand {
     constructor() {

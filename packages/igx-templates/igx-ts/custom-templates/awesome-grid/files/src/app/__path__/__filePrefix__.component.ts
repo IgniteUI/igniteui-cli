@@ -7,7 +7,7 @@ import {
   OnInit,
   ViewChild
   } from '@angular/core';
-import { IgxGridComponent, IgxNumberSummaryOperand, IgxStringFilteringOperand, IgxSummaryResult} from 'igniteui-angular';
+import { IgxGridComponent, IgxNumberSummaryOperand, IgxStringFilteringOperand, IgxSummaryResult} from '<%=igxPackage%>';
 import { athletesData } from './services/data';
 
 // tslint:disable:no-use-before-declare

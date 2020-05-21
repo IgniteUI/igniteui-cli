@@ -10,7 +10,7 @@ import {
   IgxIconModule,
   IgxSwitchModule,
   IgxInputGroupModule
-} from 'igniteui-angular';
+} from '<%=igxPackage%>';
 import { IgxSparklineModule, IgxSparklineCoreModule } from 'igniteui-angular-charts';
 describe('<%=ClassName%>Component', () => {
   let component: <%=ClassName%>Component;
