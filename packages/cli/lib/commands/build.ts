@@ -1,4 +1,4 @@
-import { GoogleAnalytics, ProjectConfig, Util, PackageManager } from "@igniteui/cli-core";
+import { GoogleAnalytics, PackageManager, ProjectConfig, Util } from "@igniteui/cli-core";
 import * as fs from "fs-extra";
 import * as path from "path";
 import { TemplateManager } from "../TemplateManager";
@@ -50,7 +50,7 @@ command = {
 			fs.mkdirSync("./themes");
 			const source = path.join(config.project.igniteuiSource, "/css/themes/", config.project.theme.split(".")[0]);
 			const destination = path.join(config.project.sourceRoot, "themes");
-			fs.copySync(source,  destination, {recursive: true});
+			fs.copySync(source, destination, { recursive: true });
 		}
 	}
 };

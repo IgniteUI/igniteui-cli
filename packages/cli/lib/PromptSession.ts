@@ -1,4 +1,7 @@
-import { BasePromptSession, GoogleAnalytics, ProjectConfig, ProjectLibrary, PromptTaskContext, Task, Util, PackageManager } from "@igniteui/cli-core";
+import {
+	BasePromptSession, GoogleAnalytics, PackageManager, ProjectConfig,
+	ProjectLibrary, PromptTaskContext, Task, Util
+} from "@igniteui/cli-core";
 import * as inquirer from "inquirer";
 import * as path from "path";
 import { default as add } from "./commands/add";

@@ -1,5 +1,6 @@
 import { ControlExtraConfiguration, ProjectTemplate, Util } from "@igniteui/cli-core";
 import * as path from "path";
+import { updateWorkspace } from "../../../Update";
 
 export class BaseIgxProject implements ProjectTemplate {
 	public id: string = "base";
@@ -46,6 +47,9 @@ $app-palette: igx-palette($primary, $secondary);
 	}
 	public upgradeIgniteUIPackage(projectPath: string, packagePath: string): void {
 		// noop
+	}
+	public async upgradeIgniteUIPackages(projectPath: string, packagePath: string): Promise<boolean> {
+		return updateWorkspace();
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return [];

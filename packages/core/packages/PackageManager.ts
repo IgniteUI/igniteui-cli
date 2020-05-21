@@ -36,7 +36,9 @@ export class PackageManager {
 		if (installNow) {
 			const ossVersion = this.getPackageJSON().dependencies[this.ossPackage];
 			const version = ossVersion ? `@"${ossVersion}"` : "";
-			if (this.ensureRegistryUser(config) && this.addPackage(this.fullPackage + version, verbose)) {
+			const errorMsg = "Something went wrong, " +
+			"please follow the steps in this guide: https://www.igniteui.com/help/using-ignite-ui-npm-packages";
+			if (this.ensureRegistryUser(config, errorMsg) && this.addPackage(this.fullPackage + version, verbose)) {
 				if (ossVersion) {
 					// TODO: Check if OSS package uninstalled successfully?
 					this.removePackage(this.ossPackage, verbose);
@@ -190,7 +192,7 @@ export class PackageManager {
 		}
 	}
 
-	public static ensureRegistryUser(config: Config): boolean {
+	public static ensureRegistryUser(config: Config, message: string): boolean {
 		const fullPackageRegistry = config.igPackageRegistry;
 		try {
 			// tslint:disable-next-line:object-literal-sort-keys
@@ -223,8 +225,7 @@ export class PackageManager {
 					return false;
 				}
 			} else {
-				Util.log("Something went wrong, " +
-					"please follow the steps in this guide: https://www.igniteui.com/help/using-ignite-ui-npm-packages", "red");
+				Util.log(message, "red");
 				return false;
 			}
 		}

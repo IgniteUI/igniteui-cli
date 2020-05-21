@@ -30,7 +30,7 @@ export class NgTreeFileSystem implements IFileSystem {
 		const entries: string[] = [];
 		pattern = pattern.split("**/*").pop() || pattern;
 
-		dir.visit((fullPath, entry) => {
+		dir.visit((_fullPath, entry) => {
 			if (entry?.path.endsWith(pattern)) {
 				entries.push(entry.path);
 			}
