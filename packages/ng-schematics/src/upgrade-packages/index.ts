@@ -5,12 +5,12 @@ import { defer } from "rxjs";
 import { SchematicsTemplateManager } from "../SchematicsTemplateManager";
 import { setVirtual } from "../utils/NgFileSystem";
 
-export default function update(_options: any): Rule {
+export default function(_options: any): Rule {
 	return (tree: Tree, context: SchematicContext) => {
 		App.initialize("angular-cli");
 		GoogleAnalytics.post({
 			t: "screenview",
-			cd: "Update"
+			cd: "Upgrade packages"
 		});
 		const templateManager = new SchematicsTemplateManager();
 		const config = ProjectConfig.getConfig();

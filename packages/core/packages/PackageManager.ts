@@ -1,8 +1,7 @@
 import { exec, spawnSync } from "child_process";
 import * as path from "path";
 import { TemplateManager } from "../../cli/lib/TemplateManager";
-import { ProjectTemplate } from "../types";
-import { Config } from "../types/config";
+import { Config, ProjectTemplate } from "../types";
 import { ProjectConfig, Util } from "../util";
 
 import componentsConfig = require("./components");
