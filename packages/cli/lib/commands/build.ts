@@ -26,7 +26,7 @@ command = {
 	},
 	async build(argv?) {
 		Util.log("Build started.");
-		PackageManager.ensureIgniteUISource(true, command.templateManager);
+		await PackageManager.ensureIgniteUISource(true, command.templateManager);
 
 		if (!ProjectConfig.hasLocalConfig()) {
 			Util.error("Add command is supported only on existing project created with igniteui-cli", "red");

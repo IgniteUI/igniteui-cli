@@ -11,7 +11,7 @@ export interface ProjectTemplate extends BaseTemplate {
 	 * @param projectPath The project root folder
 	 * @param packagePath The relative path to the new package folder
 	 */
-	upgradeIgniteUIPackage(projectPath: string, packagePath: string): void;
+	upgradeIgniteUIPackages(projectPath: string, packagePath: string): Promise<boolean>;
 
 	/** Generates template files. */
 	generateConfig(name: string, theme: string, ...options: any[]): {[key: string]: any};

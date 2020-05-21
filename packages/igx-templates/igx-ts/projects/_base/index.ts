@@ -45,9 +45,7 @@ $app-palette: igx-palette($primary, $secondary);
 	public installModules(): void {
 		throw new Error("Method not implemented.");
 	}
-	public upgradeIgniteUIPackage(projectPath: string, packagePath: string): void {
-		// noop
-	}
+
 	public async upgradeIgniteUIPackages(projectPath: string, packagePath: string): Promise<boolean> {
 		return updateWorkspace();
 	}

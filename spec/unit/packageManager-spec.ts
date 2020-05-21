@@ -14,7 +14,7 @@ describe("Unit - Package Manager", () => {
 			getProjectLibrary: {
 				getProject() {
 					return {
-						upgradeIgniteUIPackage: () => false
+						upgradeIgniteUIPackages: () => Promise.resolve(false)
 					};
 				},
 				projectIds: ["empty"]
@@ -47,7 +47,7 @@ describe("Unit - Package Manager", () => {
 		});
 		spyOn(Util, "log");
 		spyOn(PackageManager, "removePackage");
-		PackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
+		await PackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
 		expect(Util.log).toHaveBeenCalledTimes(4);
 		expect(Util.log).toHaveBeenCalledWith(
 			"The project you've created requires the full version of Ignite UI from Infragistics private feed.",
@@ -90,7 +90,7 @@ describe("Unit - Package Manager", () => {
 			getProjectLibrary: {
 				getProject() {
 					return {
-						upgradeIgniteUIPackage: () => false
+						upgradeIgniteUIPackages: () => Promise.resolve(false)
 					};
 				}
 			}
@@ -111,7 +111,7 @@ describe("Unit - Package Manager", () => {
 		});
 		spyOn(Util, "log");
 		spyOn(PackageManager, "removePackage");
-		PackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
+		await PackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
 		expect(ProjectConfig.localConfig).toHaveBeenCalled();
 		expect(Util.log).toHaveBeenCalledTimes(7);
 		expect(Util.log).toHaveBeenCalledWith(
@@ -163,7 +163,7 @@ describe("Unit - Package Manager", () => {
 			getProjectLibrary: {
 				getProject() {
 					return {
-						upgradeIgniteUIPackage: () => false
+						upgradeIgniteUIPackages: () => Promise.resolve(false)
 					};
 				}
 			}
@@ -176,7 +176,7 @@ describe("Unit - Package Manager", () => {
 				isBundle: false
 			}
 		});
-		PackageManager.ensureIgniteUISource(false, mockTemplateMgr, true);
+		await PackageManager.ensureIgniteUISource(false, mockTemplateMgr, true);
 		expect(ProjectConfig.localConfig).toHaveBeenCalled();
 		expect(Util.log).toHaveBeenCalledWith(
 			"Template(s) that require the full version of Ignite UI found in the project." +
@@ -197,7 +197,7 @@ describe("Unit - Package Manager", () => {
 		const mockTemplateMgr = jasmine.createSpyObj("mockTemplateMgr", {
 			getProjectLibrary: {
 				getProject() {
-					return { upgradeIgniteUIPackage: () => { } };
+					return { upgradeIgniteUIPackages: () => Promise.resolve(true) };
 				},
 				projectIds: ["empty"]
 			}
@@ -218,7 +218,7 @@ describe("Unit - Package Manager", () => {
 		spyOn(TestPackageManager, "removePackage");
 		spyOn(TestPackageManager, "getPackageJSON").and.callFake(() => mockDeps);
 
-		TestPackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
+		await TestPackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
 		expect(TestPackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@"~19.2"`, true);
 		expect(Util.execSync).toHaveBeenCalledWith(
 			`npm install @infragistics/ignite-ui-full@"~19.2" --quiet --save`,
@@ -227,7 +227,7 @@ describe("Unit - Package Manager", () => {
 		expect(TestPackageManager.removePackage).toHaveBeenCalledWith("ignite-ui", true);
 
 		mockDeps.dependencies["ignite-ui"] = "^17.1";
-		TestPackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
+		await TestPackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
 		expect(TestPackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@"^17.1"`, true);
 		expect(Util.execSync).toHaveBeenCalledWith(
 			`npm install @infragistics/ignite-ui-full@"^17.1" --quiet --save`,
@@ -235,7 +235,7 @@ describe("Unit - Package Manager", () => {
 		);
 
 		mockDeps.dependencies["ignite-ui"] = ">=0.1.0 <0.2.0";
-		TestPackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
+		await TestPackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
 		expect(TestPackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@">=0.1.0 <0.2.0"`, true);
 		expect(Util.execSync).toHaveBeenCalledWith(
 			`npm install @infragistics/ignite-ui-full@">=0.1.0 <0.2.0" --quiet --save`,

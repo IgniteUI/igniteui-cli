@@ -20,13 +20,14 @@ class EmptyProject implements ProjectTemplate {
 	public installModules(): void {
 		throw new Error("Method not implemented.");
 	}
-	public upgradeIgniteUIPackage(projectPath: string, packagePath: string): void {
+	public async upgradeIgniteUIPackages(projectPath: string, packagePath: string): Promise<boolean> {
 		const filePath = path.join(projectPath, this._updateFile);
 		let configFile = fs.readFileSync(filePath, "utf8");
 		//comment out core + lob redirects
 		configFile = configFile.replace(`"ignite-ui/js/infragistics.core.js$"`, `//$&`);
 		configFile = configFile.replace(`"ignite-ui/js/infragistics.lob.js$"`, `//$&`);
 		fs.writeFileSync(filePath, configFile);
+		return true;
 	}
 	public generateConfig(name: string, theme: string, ...options: any[]): {[key: string]: any} {
 

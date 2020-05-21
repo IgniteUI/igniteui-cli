@@ -1,6 +1,7 @@
 import { exec, spawnSync } from "child_process";
 import * as path from "path";
 import { TemplateManager } from "../../cli/lib/TemplateManager";
+import { ProjectTemplate } from "../types";
 import { Config } from "../types/config";
 import { ProjectConfig, Util } from "../util";
 
@@ -19,7 +20,7 @@ export class PackageManager {
 	 * and swaps the OSS package for the full version.
 	 * @param installNow Allow the check to also try installing required Ignite UI package
 	 */
-	public static ensureIgniteUISource(
+	public static async ensureIgniteUISource(
 		installNow: boolean = false,
 		templateManager: TemplateManager,
 		verbose: boolean = false
@@ -50,14 +51,14 @@ export class PackageManager {
 					const projectLibrary = templateManager.getProjectLibrary(config.project.framework, config.project.projectType);
 					if (projectLibrary) {
 						// TODO multiple projects?
-						let project;
+						let project: ProjectTemplate;
 						if (!config.project.projectTemplate) {
 							// in case project tempale is missing from the config we provide backward.
 							project = projectLibrary.getProject(projectLibrary.projectIds[0]);
 						} else {
 							project = projectLibrary.getProject(config.project.projectTemplate);
 						}
-						project.upgradeIgniteUIPackage(process.cwd(), `./node_modules/${this.fullPackage}/en`);
+						await project.upgradeIgniteUIPackages(process.cwd(), `./node_modules/${this.fullPackage}/en`);
 					}
 				}
 			} else {

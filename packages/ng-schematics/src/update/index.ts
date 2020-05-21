@@ -18,7 +18,7 @@ export default function update(_options: any): Rule {
 		const project = library.getProject(config.project.projectTemplate);
 		setVirtual(tree);
 		return defer(async () => {
-			const success = await (project as any).upgradeIgniteUIPackages();
+			const success = await project.upgradeIgniteUIPackages("", "");
 			if (success) {
 				context.addTask(new NodePackageInstallTask());
 			}

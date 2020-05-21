@@ -110,7 +110,7 @@ command = {
 				skipRoute: argv.skipRoute
 			});
 			await PackageManager.flushQueue(true);
-			PackageManager.ensureIgniteUISource(config.packagesInstalled, command.templateManager);
+			await PackageManager.ensureIgniteUISource(config.packagesInstalled, command.templateManager);
 		}
 	},
 	async addTemplate(fileName: string, template: Template, options?: AddTemplateArgs): Promise<boolean> {
