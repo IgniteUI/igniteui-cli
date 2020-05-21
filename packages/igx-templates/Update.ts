@@ -19,7 +19,7 @@ export async function updateWorkspace(): Promise<boolean> {
 	}
 
 	// check for registry user in npm
-	const config = ProjectConfig.localConfig();
+	const config = ProjectConfig.globalConfig();
 	if (fileString) {
 		const pkgJSON = JSON.parse(fileString);
 		const errorMsg = "Something went wrong, " +
