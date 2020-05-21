@@ -103,7 +103,8 @@ export class AngularTemplate implements Template {
 	}
 
 	protected ensureSourceFiles() {
-		const components = require("../packages/components");
+		// tslint:disable-next-line:no-submodule-imports
+		const components = require("@igniteui/cli-core/packages/components");
 		const config = ProjectConfig.getConfig();
 		const files: string[] = config.project.sourceFiles;
 		const dvDependencies = this.dependencies.filter(x => components.dv.indexOf(x) !== -1);

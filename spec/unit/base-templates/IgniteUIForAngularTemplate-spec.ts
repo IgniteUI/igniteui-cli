@@ -30,7 +30,7 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			spyOn(require("module"), "_load").and.callFake((modulePath: string) => {
 				if (modulePath.endsWith("@igniteui/cli-core/typescript")) {
 					return helpers;
-				} else if (modulePath.endsWith("../packages/components")) {
+				} else if (modulePath.endsWith("@igniteui/cli-core/packages/components")) {
 					return { dv: ["igDvWidget"] };
 				}
 			});
