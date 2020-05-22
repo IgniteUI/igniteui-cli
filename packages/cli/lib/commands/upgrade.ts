@@ -43,17 +43,22 @@ command = {
 				Util.log("Upgrading packages for React projects is currently not supported!");
 				return;
 			case "angular":
-				const projectLibrary = this.templateManager.getProjectLibrary(framework, projectType);
-				let project;
-				if (!config.project.projectTemplate) {
-					// in case project template is missing from the config we provide backward.
-					project = projectLibrary.getProject(projectLibrary.projectIds[0]);
-				} else {
-					project = projectLibrary.getProject(config.project.projectTemplate);
-				}
-				const success = await project.upgradeIgniteUIPackages(process.cwd(), `./node_modules/${this.fullPackage}/en`);
-				if (success && !argv["skip-install"]) {
-					Util.execSync("npm install");
+				if (projectType === "igx-ts") {
+					const projectLibrary = this.templateManager.getProjectLibrary(framework, projectType);
+					let project;
+					if (!config.project.projectTemplate) {
+						// in case project template is missing from the config we provide backward.
+						project = projectLibrary.getProject(projectLibrary.projectIds[0]);
+					} else {
+						project = projectLibrary.getProject(config.project.projectTemplate);
+					}
+					const success = await project.upgradeIgniteUIPackages(process.cwd(), `./node_modules/${this.fullPackage}/en`);
+					if (success && !argv["skip-install"]) {
+						Util.execSync("npm install");
+					} else {
+						Util.log("Upgrading packages for Angular Wrappers projects is currently not supported!");
+						return;
+					}
 				}
 				break;
 			default:
