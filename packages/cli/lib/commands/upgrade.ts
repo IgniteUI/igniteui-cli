@@ -33,7 +33,7 @@ command = {
 	async upgrade(argv) {
 		const config = ProjectConfig.getConfig();
 		const framework = config.project.framework;
-		const projectType = config.project.projectType;]
+		const projectType = config.project.projectType;
 
 		switch (framework.toLowerCase()) {
 			case "jquery":
@@ -69,6 +69,6 @@ command = {
 			cd2: projectType
 		});
 	}
-}
+};
 
 export default command;
