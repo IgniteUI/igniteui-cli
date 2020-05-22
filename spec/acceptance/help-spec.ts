@@ -45,6 +45,7 @@ describe("Help command", () => {
 		doc [term]             opens the Infragistics search for the given term
 		test                   executes project tests
 		list				   list all templates                           [aliases: l]
+		upgrade                Upgrades IgniteUI Packages
 	  Options:
 		--version, -v  Show current Ignite UI CLI version                    [boolean]
 		--help, -h     Show help                                             [boolean]`.replace(/\s/g, "");
