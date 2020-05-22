@@ -1,6 +1,8 @@
-import { AddTemplateArgs, GoogleAnalytics, ProjectConfig, ProjectLibrary, Template, Util } from "@igniteui/cli-core";
+import {
+	AddTemplateArgs, GoogleAnalytics, PackageManager,
+	ProjectConfig, ProjectLibrary, Template, Util
+} from "@igniteui/cli-core";
 import { TemplateManager } from "../TemplateManager";
-import { PackageManager } from "./../packages/PackageManager";
 import { PromptSession } from "./../PromptSession";
 
 let command: {
@@ -41,7 +43,7 @@ command = {
 		}
 	},
 	check: argv => {
-		if ((!argv.name && argv.template) || (argv.name  && !argv.template)) {
+		if ((!argv.name && argv.template) || (argv.name && !argv.template)) {
 			return false;
 		}
 		return true;
@@ -56,7 +58,7 @@ command = {
 			Util.error("Add command is supported only on existing project created with igniteui-cli", "red");
 			return;
 		}
-		const config =  ProjectConfig.getConfig();
+		const config = ProjectConfig.getConfig();
 		if (config.project.isShowcase) {
 			Util.error("Showcases and quickstart projects don't support the add command", "red");
 			return;
@@ -108,7 +110,7 @@ command = {
 				skipRoute: argv.skipRoute
 			});
 			await PackageManager.flushQueue(true);
-			PackageManager.ensureIgniteUISource(config.packagesInstalled, command.templateManager);
+			await PackageManager.ensureIgniteUISource(config.packagesInstalled, command.templateManager);
 		}
 	},
 	async addTemplate(fileName: string, template: Template, options?: AddTemplateArgs): Promise<boolean> {

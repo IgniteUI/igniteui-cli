@@ -17,7 +17,7 @@ class EmptyProject implements ProjectTemplate {
 		return [path.join(__dirname, "files")];
 	}
 
-	public upgradeIgniteUIPackage(projectPath: string, packagePath: string): void {
+	public async upgradeIgniteUIPackages(projectPath: string, packagePath: string): Promise<boolean> {
 		const filePath = path.join(projectPath, this.routesFile);
 		const routes = fs.readFileSync(path.join(projectPath, this.routesFile), "utf8");
 		const config = JSON.parse(routes);
@@ -27,6 +27,7 @@ class EmptyProject implements ProjectTemplate {
 		config.routes["/ignite-ui"] = packagePath;
 
 		fs.writeFileSync(filePath, JSON.stringify(config, null, 4));
+		return true;
 	}
 
 	public generateConfig(name: string, theme: string, ...options: any[]): { [key: string]: any } {

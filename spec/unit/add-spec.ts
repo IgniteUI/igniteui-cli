@@ -1,9 +1,8 @@
 import { IgniteUIForAngularTemplate } from "@igniteui/angular-templates";
-import { App, GoogleAnalytics, ProjectConfig, TypeScriptFileUpdate, TypeScriptUtils, Util } from "@igniteui/cli-core";
+import { App, GoogleAnalytics, PackageManager, ProjectConfig, TypeScriptFileUpdate, TypeScriptUtils, Util } from "@igniteui/cli-core";
 import * as path from "path";
 import * as ts from "typescript";
 import { default as addCmd } from "../../packages/cli/lib/commands/add";
-import { PackageManager } from "../../packages/cli/lib/packages/PackageManager";
 import { PromptSession } from "../../packages/cli/lib/PromptSession";
 import { AngularTemplate } from "../../packages/cli/lib/templates/AngularTemplate";
 import { resetSpy } from "../helpers/utils";

@@ -23,6 +23,10 @@ export class NgTreeFileSystem implements IFileSystem {
 	public directoryExists(dirPath: string): boolean {
 		return this.tree.exists(dirPath);
 	}
+
+	public glob(dirPath: string, pattern: string): string[] {
+		return [];
+	}
 }
 
 export function setVirtual(tree: Tree) {

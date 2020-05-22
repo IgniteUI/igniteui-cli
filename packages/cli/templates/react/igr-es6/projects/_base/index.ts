@@ -22,7 +22,7 @@ export class BaseIgrProject implements ProjectTemplate {
 	public installModules(): void {
 		throw new Error("Method not implemented.");
 	}
-	public upgradeIgniteUIPackage(projectPath: string, packagePath: string): void {
+	public async upgradeIgniteUIPackages(projectPath: string, packagePath: string): Promise<boolean> {
 		throw new Error("Method not implemented.");
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
