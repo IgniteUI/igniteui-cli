@@ -54,13 +54,20 @@ command = {
 					project = projectLibrary.getProject(config.project.projectTemplate);
 				}
 				const success = await project.upgradeIgniteUIPackages(process.cwd(), `./node_modules/${this.fullPackage}/en`);
-				if (!argv["skip-install"]) {
+				if (success && !argv["skip-install"]) {
 					Util.execSync("npm install");
 				}
 				break;
 			default:
 				break;
 		}
+
+		GoogleAnalytics.post({
+			t: "event",
+			ec: "$ig upgrade",
+			cd1: framework,
+			cd2: projectType
+		});
 	}
 }
 
