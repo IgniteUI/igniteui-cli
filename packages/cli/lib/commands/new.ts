@@ -1,6 +1,5 @@
-import { GoogleAnalytics, ProjectConfig, ProjectLibrary, Util } from "@igniteui/cli-core";
+import { GoogleAnalytics, PackageManager, ProjectConfig, ProjectLibrary, Util } from "@igniteui/cli-core";
 import * as path from "path";
-import { PackageManager } from "../packages/PackageManager";
 import { TemplateManager } from "../TemplateManager";
 import { PromptSession } from "./../PromptSession";
 
@@ -133,7 +132,7 @@ command = {
 		const config = projTemplate.generateConfig(argv.name, theme);
 		for (const templatePath of projTemplate.templatePaths) {
 			await Util.processTemplates(templatePath, path.join(process.cwd(), argv.name),
-			config, projTemplate.delimiters, false);
+				config, projTemplate.delimiters, false);
 		}
 
 		Util.log(Util.greenCheck() + " Project Created");

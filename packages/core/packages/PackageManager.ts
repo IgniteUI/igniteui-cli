@@ -1,7 +1,8 @@
-import { Config, ProjectConfig, Util } from "@igniteui/cli-core";
 import { exec, spawnSync } from "child_process";
 import * as path from "path";
-import { TemplateManager } from "../TemplateManager";
+import { TemplateManager } from "../../cli/lib/TemplateManager";
+import { Config, ProjectTemplate } from "../types";
+import { ProjectConfig, Util } from "../util";
 
 import componentsConfig = require("./components");
 
@@ -18,7 +19,7 @@ export class PackageManager {
 	 * and swaps the OSS package for the full version.
 	 * @param installNow Allow the check to also try installing required Ignite UI package
 	 */
-	public static ensureIgniteUISource(
+	public static async ensureIgniteUISource(
 		installNow: boolean = false,
 		templateManager: TemplateManager,
 		verbose: boolean = false
@@ -35,7 +36,9 @@ export class PackageManager {
 		if (installNow) {
 			const ossVersion = this.getPackageJSON().dependencies[this.ossPackage];
 			const version = ossVersion ? `@"${ossVersion}"` : "";
-			if (this.ensureRegistryUser(config) && this.addPackage(this.fullPackage + version, verbose)) {
+			const errorMsg = "Something went wrong, " +
+			"please follow the steps in this guide: https://www.igniteui.com/help/using-ignite-ui-npm-packages";
+			if (this.ensureRegistryUser(config, errorMsg) && this.addPackage(this.fullPackage + version, verbose)) {
 				if (ossVersion) {
 					// TODO: Check if OSS package uninstalled successfully?
 					this.removePackage(this.ossPackage, verbose);
@@ -47,14 +50,14 @@ export class PackageManager {
 					const projectLibrary = templateManager.getProjectLibrary(config.project.framework, config.project.projectType);
 					if (projectLibrary) {
 						// TODO multiple projects?
-						let project;
+						let project: ProjectTemplate;
 						if (!config.project.projectTemplate) {
 							// in case project tempale is missing from the config we provide backward.
 							project = projectLibrary.getProject(projectLibrary.projectIds[0]);
 						} else {
 							project = projectLibrary.getProject(config.project.projectTemplate);
 						}
-						project.upgradeIgniteUIPackage(process.cwd(), `./node_modules/${this.fullPackage}/en`);
+						await project.upgradeIgniteUIPackages(process.cwd(), `./node_modules/${this.fullPackage}/en`);
 					}
 				}
 			} else {
@@ -189,7 +192,7 @@ export class PackageManager {
 		}
 	}
 
-	protected static ensureRegistryUser(config: Config): boolean {
+	public static ensureRegistryUser(config: Config, message: string): boolean {
 		const fullPackageRegistry = config.igPackageRegistry;
 		try {
 			// tslint:disable-next-line:object-literal-sort-keys
@@ -222,8 +225,7 @@ export class PackageManager {
 					return false;
 				}
 			} else {
-				Util.log("Something went wrong, " +
-					"please follow the steps in this guide: https://www.igniteui.com/help/using-ignite-ui-npm-packages", "red");
+				Util.log(message, "red");
 				return false;
 			}
 		}
