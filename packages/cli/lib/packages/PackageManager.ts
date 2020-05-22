@@ -49,7 +49,7 @@ export class PackageManager {
 						// TODO multiple projects?
 						let project;
 						if (!config.project.projectTemplate) {
-							// in case project tempale is missing from the config we provide backward.
+							// in case project template is missing from the config we provide backward.
 							project = projectLibrary.getProject(projectLibrary.projectIds[0]);
 						} else {
 							project = projectLibrary.getProject(config.project.projectTemplate);

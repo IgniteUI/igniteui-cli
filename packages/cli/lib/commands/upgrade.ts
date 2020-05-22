@@ -25,7 +25,7 @@ command = {
 
 		GoogleAnalytics.post({
 			t: "screenview",
-			cd: "Upgrade"
+			cd: "Upgrade packages"
 		});
 
 		command.upgrade(argv);
@@ -39,16 +39,14 @@ command = {
 			case "jquery":
 				Util.log("Upgrading packages for jQuery projects is currently not supported!");
 				return;
-				break;
 			case "react":
 				Util.log("Upgrading packages for React projects is currently not supported!");
 				return;
-				break;
 			case "angular":
 				const projectLibrary = this.templateManager.getProjectLibrary(framework, projectType);
 				let project;
 				if (!config.project.projectTemplate) {
-					// in case project tempale is missing from the config we provide backward.
+					// in case project template is missing from the config we provide backward.
 					project = projectLibrary.getProject(projectLibrary.projectIds[0]);
 				} else {
 					project = projectLibrary.getProject(config.project.projectTemplate);
