@@ -111,7 +111,7 @@ export async function run(args = null) {
 			list.execute(argv);
 			break;
 		case "upgrade":
-			upgrade.execute(argv);
+			await upgrade.execute(argv);
 			break;
 		default:
 			Util.log("Starting Step by step mode.", "green");

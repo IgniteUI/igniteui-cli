@@ -55,10 +55,10 @@ command = {
 					const success = await project.upgradeIgniteUIPackages(process.cwd(), `./node_modules/${this.fullPackage}/en`);
 					if (success && !argv["skip-install"]) {
 						Util.execSync("npm install");
-					} else {
-						Util.log("Upgrading packages for Angular Wrappers projects is currently not supported!");
-						return;
 					}
+				} else {
+					Util.log("Upgrading packages for Angular Wrappers projects is currently not supported!");
+					return;
 				}
 				break;
 			default:
