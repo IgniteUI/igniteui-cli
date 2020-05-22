@@ -1,7 +1,6 @@
-import { GoogleAnalytics, ProjectConfig, Util } from "@igniteui/cli-core";
+import { GoogleAnalytics, PackageManager, Util } from "@igniteui/cli-core";
 import * as path from "path";
 import { default as upgradeCmd } from "../../packages/cli/lib/commands/upgrade";
-import { PackageManager } from "../../packages/cli/lib/packages/PackageManager";
 import { resetSpy } from "../helpers/utils";
 
 describe("Unit - Upgrade command", () => {
@@ -21,7 +20,7 @@ describe("Unit - Upgrade command", () => {
 		process.chdir("../../");
 	});
 
-	it("Upgrade an Angular project", async done => {
+	it("Upgrade an Angular project", async () => {
 		// TODO
 	});
 });
