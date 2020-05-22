@@ -7,12 +7,12 @@ const styleExpression = String.raw`(node_modules\/|~)${NPM_PACKAGE}(\/)`;
 const logicExpression = String.raw`(from ["'])${NPM_PACKAGE}(["'])`;
 
 export async function updateWorkspace(): Promise<boolean> {
-	const fs: IFileSystem = App.container.get(FS_TOKEN);
-
-	const fileString = fs.readFile("package.json");
 	if (resolvePackage() === FEED_PACKAGE) {
 		return false;
 	}
+	const fs: IFileSystem = App.container.get(FS_TOKEN);
+
+	const fileString = fs.readFile("package.json");
 	if (fs.directoryExists(path.join(App.workDir, "node_modules", "@infragistics"))) {
 		Util.log("@infragistics module already exists. Nothing to do here.");
 		return false;
