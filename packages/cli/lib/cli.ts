@@ -37,6 +37,7 @@ export async function run(args = null) {
 	start.templateManager = templateManager;
 	generate.templateManager = templateManager;
 	list.templateManager = templateManager;
+	upgrade.templateManager = templateManager;
 
 	const yargsModule = args ? yargs(args) : yargs;
 
