@@ -14,7 +14,7 @@ export class FsFileSystem implements IFileSystem {
 	}
 	public readFile(filePath: string, encoding?: string): string {
 		if (encoding) {
-		return fs.readFileSync(filePath, encoding);
+			return fs.readFileSync(filePath, encoding);
 		}
 		return fs.readFileSync(filePath).toString();
 	}
