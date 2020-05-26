@@ -145,8 +145,26 @@ export class HomeComponent {
 			]
 		}
 	}
+}`}, {
+	path: "src/app.module.ts",
+	content:
+`import { something } from 'module';
+import { bait } from 'igniteui-angular-core';
+import { IgxGridComponent } from 'igniteui-angular';
+
+export class HomeComponent {
+title = 'igniteui-angular example';
+}`,
+	expected:
+`import { something } from 'module';
+import { bait } from 'igniteui-angular-core';
+import { IgxGridComponent } from '@infragistics/igniteui-angular';
+
+export class HomeComponent {
+title = 'igniteui-angular example';
 }`}];
-		(fsSpy.glob as jasmine.Spy).and.returnValue(["src/home.component.ts", "src/home.component.scss"]);
+		(fsSpy.glob as jasmine.Spy).and.returnValue(
+			["src/home.component.ts", "src/home.component.scss", "src/app.module.ts"]);
 		(fsSpy.readFile as jasmine.Spy).and.callFake((filePath: string) => {
 			if (filePath.indexOf("package.json") > -1) {
 				return JSON.stringify(mockPackageJSON);
