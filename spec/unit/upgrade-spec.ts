@@ -16,11 +16,6 @@ describe("Unit - Upgrade command", () => {
 		spyOn(PackageManager, "installPackages");
 	});
 
-	afterEach(() => {
-		// clean test folder:
-		process.chdir("../../");
-	});
-
 	it("Upgrade an Ignite UI for Angular project", async done => {
 		// tslint:disable-next-line: no-object-literal-type-assertion
 		const config: Config = {

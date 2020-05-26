@@ -28,7 +28,7 @@ command = {
 			cd: "Upgrade packages"
 		});
 
-		command.upgrade(argv);
+		return command.upgrade(argv);
 	},
 	async upgrade(argv) {
 		const config = ProjectConfig.getConfig();
@@ -67,7 +67,7 @@ command = {
 
 		GoogleAnalytics.post({
 			t: "event",
-			ec: "$ig upgrade",
+			ec: "$ig upgrade-packages",
 			cd1: framework,
 			cd2: projectType
 		});
