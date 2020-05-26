@@ -10,6 +10,7 @@ import { default as newCommand } from "./commands/new";
 import { default as quickstart } from "./commands/quickstart";
 import { default as start } from "./commands/start";
 import { default as test } from "./commands/test";
+import { default as upgrade } from "./commands/upgrade";
 import { PromptSession } from "./PromptSession";
 import {TemplateManager} from "./TemplateManager";
 
@@ -36,6 +37,7 @@ export async function run(args = null) {
 	start.templateManager = templateManager;
 	generate.templateManager = templateManager;
 	list.templateManager = templateManager;
+	upgrade.templateManager = templateManager;
 
 	const yargsModule = args ? yargs(args) : yargs;
 
@@ -50,6 +52,7 @@ export async function run(args = null) {
 	.command(doc)
 	.command(test)
 	.command(list)
+	.command(upgrade)
 	.options({
 		version: {
 			alias: "v",
@@ -107,6 +110,9 @@ export async function run(args = null) {
 		case "l":
 		case "list":
 			list.execute(argv);
+			break;
+		case "upgrade-packages":
+			await upgrade.execute(argv);
 			break;
 		default:
 			Util.log("Starting Step by step mode.", "green");
