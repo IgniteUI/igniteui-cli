@@ -52,7 +52,7 @@ export async function updateWorkspace(): Promise<boolean> {
 	const logicFiles = [];
 	const styleFiles = [];
 	for (const workspace of workspaces) {
-		logicFiles.push(...fs.glob(workspace, "**/*.component.ts"));
+		logicFiles.push(...fs.glob(workspace, "**/*.ts"));
 		for (const extension of styleExtension) {
 			styleFiles.push(...fs.glob(workspace, `**/*.${extension}`));
 		}
