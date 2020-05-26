@@ -54,7 +54,13 @@ command = {
 					}
 					const success = await project.upgradeIgniteUIPackages(process.cwd(), "");
 					if (success && !argv.skipInstall) {
-						Util.execSync("npm install");
+						Util.log("Please wait while the upgraded npm packages are being installed!");
+						try {
+							Util.execSync("npm install --quiet");
+						} catch (error) {
+							Util.log(`Error installing the upgraded npm packages.`);
+							Util.log(error.message);
+						}
 					}
 				} else {
 					Util.log("Upgrading packages for Angular Wrappers projects is currently not supported!");
