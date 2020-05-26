@@ -1,7 +1,7 @@
 {
   "name": "angular-quickstart",
   "version": "1.0.0",
-  "description": "Ignite UI for JavaScript Angular Wrappers quick start",
+  "description": "Ignite UI for jQuery Angular Wrappers quick start",
   "scripts": {
     "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
     "lint": "tslint ./app/**/*.ts -t verbose",
