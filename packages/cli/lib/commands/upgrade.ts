@@ -10,14 +10,14 @@ let command: {
 
 // tslint:disable:object-literal-sort-keys
 command = {
-	command: "upgrade",
-	desc: "Upgrades Ignite UI Packages",
+	command: "upgrade-packages",
+	desc: "upgrades Ignite UI Packages",
 	templateManager: null,
 	builder: {
 		"skip-install": {
-			alias: "s",
+			alias: "si",
 			default: false,
-			describe: "Runs upgrade command without calling `npm install`",
+			describe: "Runs upgrade command without performing install",
 			type: "boolean"
 		}
 	},
@@ -44,7 +44,7 @@ command = {
 				return;
 			case "angular":
 				if (projectType === "igx-ts") {
-					const projectLibrary = this.templateManager.getProjectLibrary(framework, projectType);
+					const projectLibrary = command.templateManager.getProjectLibrary(framework, projectType);
 					let project;
 					if (!config.project.projectTemplate) {
 						// in case project template is missing from the config we provide backward.
@@ -52,8 +52,8 @@ command = {
 					} else {
 						project = projectLibrary.getProject(config.project.projectTemplate);
 					}
-					const success = await project.upgradeIgniteUIPackages(process.cwd(), `./node_modules/${this.fullPackage}/en`);
-					if (success && !argv["skip-install"]) {
+					const success = await project.upgradeIgniteUIPackages(process.cwd(), "");
+					if (success && !argv.skipInstall) {
 						Util.execSync("npm install");
 					}
 				} else {
