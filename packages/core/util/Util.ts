@@ -36,19 +36,11 @@ export class Util {
 	}
 
 	public static directoryExists(dirPath) {
-		try {
-			return App.container.get<IFileSystem>(FS_TOKEN).directoryExists(dirPath);
-		} catch (err) {
-			return false;
-		}
+		return App.container.get<IFileSystem>(FS_TOKEN).directoryExists(dirPath);
 	}
 
 	public static fileExists(filePath) {
-		try {
-			return App.container.get<IFileSystem>(FS_TOKEN).fileExists(filePath);
-		} catch (err) {
-			return false;
-		}
+		return App.container.get<IFileSystem>(FS_TOKEN).fileExists(filePath);
 	}
 
 	public static isDirectory(dirPath): boolean {
