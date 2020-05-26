@@ -16,7 +16,7 @@ describe("updateWorkspace - Unit tests", () => {
 		fsSpy = jasmine.createSpyObj("fsSpy", ["fileExists", "directoryExists", "readFile", "writeFile", "glob"]);
 		spyOn(App.container, "get").and.returnValue(fsSpy);
 		spyOnProperty(App, "workDir", "get").and.returnValue("mockDir");
-		spyOn(ProjectConfig, "globalConfig").and.returnValue({});
+		spyOn(ProjectConfig, "getConfig").and.returnValue({});
 	});
 	it("Should fail if current used package is registry package", async () => {
 		spyOn(pkgResolve, "resolvePackage").and.returnValue(pkgResolve.FEED_PACKAGE);
