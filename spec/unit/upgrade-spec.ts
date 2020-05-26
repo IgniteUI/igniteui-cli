@@ -12,6 +12,7 @@ describe("Unit - Upgrade command", () => {
 	beforeEach(() => {
 		spyOn(Util, "log");
 		spyOn(process, "chdir");
+		spyOn(Util, "execSync");
 		spyOn(PackageManager, "installPackages");
 	});
 
