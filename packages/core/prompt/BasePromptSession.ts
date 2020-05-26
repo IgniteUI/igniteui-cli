@@ -93,6 +93,9 @@ export abstract class BasePromptSession {
 	/** Install packages and run project */
 	protected abstract async completeAndRun(port?: number);
 
+	/** Upgrade packages to use private Infragistics feed */
+	protected abstract async upgradePackages();
+
 	/**
 	 * Get user name and set template's extra configurations if any
 	 * @param projectLibrary to add component to
@@ -369,6 +372,29 @@ export abstract class BasePromptSession {
 			break;
 		case "Complete & Run":
 			const config = ProjectConfig.localConfig();
+
+			if (config.project.framework === "angular" &&
+				config.project.projectType === "igx-ts" &&
+				!config.packagesInstalled) {
+				// TODO: should we add check if there are paid components at all
+				Util.log("The project will be created using a Trial version of Ignite UI for Angular.");
+				Util.log("You can always run the upgrade-packages command once it's created.");
+				const shouldUpgrade = await this.getUserInput({
+					type: "list",
+					name: "shouldUpgrade",
+					message: "Would you like to upgrade to the licensed feed now?",
+					choices: [
+						{ value: "yes", name: "Yes (requires active subscription)", short: "Yes" },
+						{ value: "no", name: "Skip for now", short: "Skip" }
+					],
+					default: "yes"
+				});
+
+				if (shouldUpgrade === "yes") {
+					await this.upgradePackages();
+				}
+			}
+
 			const defaultPort = config.project.defaultPort;
 			const port = await this.getUserInput({
 				type: "input",
@@ -386,6 +412,7 @@ export abstract class BasePromptSession {
 			});
 			config.project.defaultPort = parseInt(port, 10);
 			ProjectConfig.setConfig(config);
+
 			await this.completeAndRun(config.project.defaultPort);
 			break;
 		}

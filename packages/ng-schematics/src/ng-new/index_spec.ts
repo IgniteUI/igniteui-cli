@@ -27,17 +27,24 @@ describe("Schematics ng-new", () => {
 
 		const mockSession = {
 			chooseActionLoop: spyOn(SchematicsPromptSession.prototype, "chooseActionLoop")
-			.and.returnValue(Promise.resolve(true)),
+				.and.returnValue(Promise.resolve(true)),
 			getProjectLibrary: spyOn(SchematicsPromptSession.prototype, "getProjectLibrary")
-			.and.returnValue((Promise.resolve(mockLibrary))),
+				.and.returnValue((Promise.resolve(mockLibrary))),
 			getProjectTemplate: spyOn(SchematicsPromptSession.prototype, "getProjectTemplate")
-			.and.returnValue(Promise.resolve("empty-page")),
+				.and.returnValue(Promise.resolve("empty-page")),
 			getTheme: spyOn(SchematicsPromptSession.prototype, "getTheme")
-			.and.returnValue(Promise.resolve("custom")),
+				.and.returnValue(Promise.resolve("custom")),
 			getUserInput: spyOn(SchematicsPromptSession.prototype, "getUserInput")
-			.and.returnValue(Promise.resolve(workingDirectory)),
-			setTree: spyOn(SchematicsPromptSession.prototype, "setContext").and.callThrough()
+				.and.returnValue(Promise.resolve(workingDirectory))
 		};
+
+		const userAnswers = new Map<string, any>();
+		userAnswers.set("upgradePackages", true);
+		Object.defineProperty(SchematicsPromptSession.prototype, "userAnswers", {
+			configurable: true,
+			get: () => userAnswers,
+			set: () => void 0
+		});
 
 		spyOn(AppProjectSchematic, "default").and.returnValue((currentTree: Tree, _context: SchematicContext) => {
 			currentTree.create("gitignore", "");
@@ -54,6 +61,11 @@ describe("Schematics ng-new", () => {
 			expect(e.files.length).toEqual(1);
 			expect(e.exists(`${workingDirectory}/.gitignore`)).toBeTruthy();
 			const taskOptions = runner.tasks.map(task => task.options);
+			const expectedUpgrade = {
+				collection: null,
+				name: "upgrade-packages",
+				options: { skipInstall: true }
+			};
 			const expectedInstall: NodePackageTaskOptions = {
 				command: "install",
 				quiet: true,
@@ -75,6 +87,8 @@ describe("Schematics ng-new", () => {
 					directory: "my-test-project"
 				}
 			};
+			expect(taskOptions.length).toBe(4);
+			expect(taskOptions).toContain(expectedUpgrade);
 			expect(taskOptions).toContain(jasmine.objectContaining(expectedInstall));
 			expect(taskOptions).toContain(expectedInit);
 			expect(taskOptions).toContain(expectedStart);
@@ -95,6 +109,10 @@ describe("Schematics ng-new", () => {
 			.and.returnValue((Promise.resolve(mockLibrary)))
 		};
 
+		const userAnswers = new Map<string, any>();
+		userAnswers.set("upgradePackages", true);
+		spyOnProperty(SchematicsPromptSession.prototype, "userAnswers", "get").and.returnValue(userAnswers);
+
 		spyOn(AppProjectSchematic, "default").and.returnValue((currentTree: Tree, _context: SchematicContext) => {
 			currentTree.create("gitignore", "");
 			return currentTree;
@@ -110,6 +128,11 @@ describe("Schematics ng-new", () => {
 			expect(e.files.length).toEqual(1);
 			expect(e.exists(`${workingDirectory}/.gitignore`)).toBeTruthy();
 			const taskOptions = runner.tasks.map(task => task.options);
+			const expectedUpgrade = {
+				collection: null,
+				name: "upgrade-packages",
+				options: { skipInstall: true }
+			};
 			const expectedInstall: NodePackageTaskOptions = {
 				command: "install",
 				quiet: true,
@@ -124,6 +147,8 @@ describe("Schematics ng-new", () => {
 				authorName: undefined,
 				authorEmail: undefined
 			};
+			expect(taskOptions.length).toBe(3);
+			expect(taskOptions).toContain(expectedUpgrade);
 			expect(taskOptions).toContain(jasmine.objectContaining(expectedInstall));
 			expect(taskOptions).toContain(expectedInit);
 			done();

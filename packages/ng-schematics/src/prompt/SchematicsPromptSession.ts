@@ -12,6 +12,7 @@ export class SchematicsPromptSession extends BasePromptSession {
 	public tree: Tree;
 	public context: SchematicContext;
 	public projectName: string;
+	public userAnswers: Map<string, any>;
 
 	constructor(
 		templateManager: BaseTemplateManager) {
@@ -23,6 +24,7 @@ export class SchematicsPromptSession extends BasePromptSession {
 		this.context = context;
 		this.tree = tree;
 		this.projectName = projectName;
+		this.userAnswers = new Map<string, any>();
 	}
 
 	public async getUserInput(options: IUserInputOptions, withBackChoice: boolean = false): Promise<string> {
@@ -47,6 +49,10 @@ export class SchematicsPromptSession extends BasePromptSession {
 
 	protected completeAndRun(_port?: number) {
 		// TODO?
+	}
+
+	protected async upgradePackages() {
+		this.userAnswers.set("upgradePackages", true);
 	}
 
 	protected templateSelectedTask(type: "component" | "view" = "component"): Task<PromptTaskContext> {

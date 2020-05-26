@@ -1,8 +1,9 @@
-import { ControlExtraConfigType, GoogleAnalytics, PackageManager, ProjectConfig, Util  } from "@igniteui/cli-core";
+import { ControlExtraConfigType, GoogleAnalytics, PackageManager, ProjectConfig, Util } from "@igniteui/cli-core";
 import * as inquirer from "inquirer";
 import * as path from "path";
 import { default as add } from "../../packages/cli/lib/commands/add";
 import { default as start } from "../../packages/cli/lib/commands/start";
+import { default as upgrade } from "../../packages/cli/lib/commands/upgrade";
 import { PromptSession } from "../../packages/cli/lib/PromptSession";
 import { TemplateManager } from "../../packages/cli/lib/TemplateManager";
 
@@ -11,6 +12,7 @@ describe("Unit - PromptSession", () => {
 		spyOn(GoogleAnalytics, "post");
 	});
 
+	// TODO: most of the tests use same setup - move the setup to beforeAll call
 	it("chooseTerm - Should call itself if no term is passed.", async done => {
 		spyOn(PromptSession, "chooseTerm").and.callThrough();
 		spyOn(inquirer, "prompt").and.returnValues(Promise.resolve({ term: "" }),
@@ -118,7 +120,6 @@ describe("Unit - PromptSession", () => {
 		expect(mockSession.chooseActionLoop).toHaveBeenCalledWith({});
 		done();
 	});
-
 	it("start - Should skip framework/projType input w/ restricted config", async done => {
 		spyOn(ProjectConfig, "getConfig").and.returnValue({
 			stepByStep: {
@@ -133,7 +134,7 @@ describe("Unit - PromptSession", () => {
 		const mockProject = jasmine.createSpyObj({ generateConfig: mockConfig });
 		mockProject.name = "Project";
 		mockProject.templatePaths = ["test"];
-		const mockDelimiters = { mockDelimiter: { start: "test", end: "test" }};
+		const mockDelimiters = { mockDelimiter: { start: "test", end: "test" } };
 		mockProject.delimiters = mockDelimiters;
 		const mockProjectLibrary = {
 			themes: ["infragistics"],
@@ -191,13 +192,12 @@ describe("Unit - PromptSession", () => {
 		expect(Util.log).toHaveBeenCalledWith("  Project type: Ignite UI for Angular");
 		expect(mockProject.generateConfig).toHaveBeenCalledWith("Test Project", mockProjectLibrary.themes[0]);
 		expect(Util.processTemplates)
-		.toHaveBeenCalledWith("test", path.join("Mock", "Test Project"), mockConfig, mockDelimiters, false);
+			.toHaveBeenCalledWith("test", path.join("Mock", "Test Project"), mockConfig, mockDelimiters, false);
 		expect(Util.log).toHaveBeenCalledWith(" Project structure generated.");
 		expect(Util.gitInit).toHaveBeenCalled();
 		expect(mockSession.chooseActionLoop).toHaveBeenCalled();
 		done();
 	});
-
 	it("start - New project - missing IFs", async done => {
 		// tslint:disable:object-literal-sort-keys
 		const mockProject = {
@@ -446,13 +446,14 @@ describe("Unit - PromptSession", () => {
 			Promise.resolve({ customTemplate: "Custom Template 1" }),
 			Promise.resolve({ customViewName: "Custom Template Name" }),
 			Promise.resolve({ action: "Complete & Run" }),
+			Promise.resolve({ usePaidAngular: "yes" }),
 			Promise.resolve({ port: 7777 })
 		);
 		spyOn(ProjectConfig, "setConfig");
 		await mockSession.chooseActionLoop(mockProjectLibrary);
 		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(1);
-		expect(inquirer.prompt).toHaveBeenCalledTimes(7);
-		expect(Util.log).toHaveBeenCalledTimes(3);
+		expect(inquirer.prompt).toHaveBeenCalledTimes(8);
+		expect(Util.log).toHaveBeenCalledTimes(5);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
 		expect(start.start).toHaveBeenCalledTimes(1);
 		expect(Util.getAvailableName).toHaveBeenCalledTimes(1);
@@ -608,7 +609,8 @@ describe("Unit - PromptSession", () => {
 				defaultPort: 4200,
 				framework: "angular",
 				projectType: "igx-ts"
-			}
+			},
+			packagesInstalled: true
 		};
 		spyOn(ProjectConfig, "localConfig").and.returnValue(params);
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
@@ -639,6 +641,35 @@ describe("Unit - PromptSession", () => {
 			"red");
 		expect(lastCallArgs.validate("3210")).toBe(true);
 		expect(Util.error).toHaveBeenCalledTimes(2);
+		done();
+	});
+	it("chooseActionLoop - should call `upgradePackages` when update angular is true", async done => {
+		const params = {
+			project: {
+				defaultPort: 4200,
+				framework: "angular",
+				projectType: "igx-ts"
+			},
+			packagesInstalled: false
+		};
+		spyOn(ProjectConfig, "localConfig").and.returnValue(params);
+		spyOn(ProjectConfig, "setConfig");
+
+		const mockSession = new PromptSession({} as any);
+		spyOn(mockSession as any, "generateActionChoices").and.returnValues([]);
+		spyOn(mockSession as any, "getUserInput").and.returnValues(
+			Promise.resolve("Complete & Run"),
+			Promise.resolve("yes"),
+			Promise.resolve(4200)
+			);
+		spyOn(mockSession as any, "completeAndRun").and.returnValues(Promise.resolve());
+		spyOn(upgrade, "upgrade").and.returnValue(Promise.resolve());
+
+		await mockSession.chooseActionLoop({} as any);
+
+		expect(upgrade.upgrade).toHaveBeenCalledTimes(1);
+		expect(upgrade.upgrade).toHaveBeenCalledWith({ skipInstall: true });
+
 		done();
 	});
 	it("start - Should fire correctly with Angular Custom theme selected", async done => {
