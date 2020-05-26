@@ -111,7 +111,7 @@ export async function run(args = null) {
 		case "list":
 			list.execute(argv);
 			break;
-		case "upgrade":
+		case "upgrade-packages":
 			await upgrade.execute(argv);
 			break;
 		default:
