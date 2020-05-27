@@ -1,4 +1,22 @@
-# 5.1.0-alpha.0 (2020-05-20)
+# [5.0.4](https://github.com/IgniteUI/igniteui-cli/compare/v5.0.3...v5.0.4) (2020-05-27)
+
+## igniteui/cli-core@5.0.4
+
+Note: Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@9.0.504
+
+#### Bug Fixes
+
+* **igx,templates:** correct empty project template id ([2d0b385](https://github.com/IgniteUI/igniteui-cli/commit/2d0b385))
+
+## igniteui/angular-schematics@9.0.504
+
+Note: Version bump only for package igniteui/angular-schematics
+
+## igniteui-cli@5.0.4
+
+Note: Version bump only for package igniteui-cli
 
 # [5.0.3](https://github.com/IgniteUI/igniteui-cli/compare/v5.0.2...v5.0.3) (2020-05-18)
 

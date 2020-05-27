@@ -5,7 +5,11 @@ import { defer } from "rxjs";
 import { SchematicsTemplateManager } from "../SchematicsTemplateManager";
 import { setVirtual } from "../utils/NgFileSystem";
 
-export default function(_options: any): Rule {
+interface UpgradeOptions {
+	skipInstall?: boolean;
+}
+
+export default function(options: UpgradeOptions): Rule {
 	return (tree: Tree, context: SchematicContext) => {
 		App.initialize("angular-cli");
 		GoogleAnalytics.post({
@@ -19,7 +23,7 @@ export default function(_options: any): Rule {
 		setVirtual(tree);
 		return defer(async () => {
 			const success = await project.upgradeIgniteUIPackages("", "");
-			if (success) {
+			if (success && !options.skipInstall) {
 				context.addTask(new NodePackageInstallTask());
 			}
 			return tree;

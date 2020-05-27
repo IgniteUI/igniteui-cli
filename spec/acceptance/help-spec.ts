@@ -44,7 +44,8 @@ describe("Help command", () => {
 		config                 gets, sets or adds a configuration property
 		doc [term]             opens the Infragistics search for the given term
 		test                   executes project tests
-		list				   list all templates                           [aliases: l]
+		list                   list all templates                           [aliases: l]
+		upgrade-packages        upgrades Ignite UI Packages
 	  Options:
 		--version, -v  Show current Ignite UI CLI version                    [boolean]
 		--help, -h     Show help                                             [boolean]`.replace(/\s/g, "");
