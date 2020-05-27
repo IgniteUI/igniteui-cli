@@ -58,7 +58,7 @@ command = {
 						try {
 							Util.execSync("npm install --quiet");
 						} catch (error) {
-							Util.log(`Error installing the upgraded npm packages.`);
+							Util.error(`Error installing the upgraded npm packages.`);
 							Util.log(error.message);
 						}
 					}
