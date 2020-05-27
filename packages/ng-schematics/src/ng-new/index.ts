@@ -154,13 +154,17 @@ export function newProject(options: OptionsSchema): Rule {
 					}
 				]), MergeStrategy.Overwrite
 			),
+			(tree: Tree, _context: IgxSchematicContext) => {
+				if (prompt.userAnswers && prompt.userAnswers.get("upgradePackages")) {
+					return defer(async () => {
+						setVirtual(tree);
+						await projectOptions.projTemplate.upgradeIgniteUIPackages(options.name || "", "");
+						return tree;
+					});
+				}
+			},
 			(tree: Tree, context: IgxSchematicContext) => {
 				const installChain: TaskId[] = [];
-				if (prompt.userAnswers && prompt.userAnswers.get("upgradePackages")) {
-					const upgradeTaskId = context.addTask(
-						new RunSchematicTask("upgrade-packages", { skipInstall: true }));
-					installChain.push(upgradeTaskId);
-				}
 				if (!options.skipInstall) {
 					const installTask = context.addTask(
 						new NodePackageInstallTask(options.name),

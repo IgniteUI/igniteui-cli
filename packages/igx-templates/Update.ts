@@ -6,14 +6,15 @@ const styleExtension = ["css", "scss", "sass"];
 const styleExpression = String.raw`(node_modules\/|~)${NPM_PACKAGE}(\/)`;
 const logicExpression = String.raw`(from ["'])${NPM_PACKAGE}(["'])`;
 
-export async function updateWorkspace(): Promise<boolean> {
+export async function updateWorkspace(rootPath: string): Promise<boolean> {
 	if (resolvePackage() === FEED_PACKAGE) {
 		return false;
 	}
 	const fs: IFileSystem = App.container.get(FS_TOKEN);
 
-	const fileString = fs.readFile("package.json");
-	if (fs.directoryExists(path.join(App.workDir, "node_modules", "@infragistics"))) {
+	const packageJsonPath = path.join(rootPath, "package.json");
+	const fileString = fs.readFile(packageJsonPath);
+	if (fs.directoryExists(path.join(App.workDir, rootPath, "node_modules", "@infragistics"))) {
 		Util.log("@infragistics module already exists. Nothing to do here.");
 		return false;
 	}
@@ -27,7 +28,7 @@ export async function updateWorkspace(): Promise<boolean> {
 		if (PackageManager.ensureRegistryUser(config, errorMsg)) {
 			pkgJSON.dependencies[FEED_PACKAGE] = pkgJSON.dependencies[NPM_PACKAGE];
 			delete pkgJSON.dependencies[NPM_PACKAGE];
-			fs.writeFile("package.json", JSON.stringify(pkgJSON, null, 2));
+			fs.writeFile(packageJsonPath, JSON.stringify(pkgJSON, null, 2));
 		} else {
 			return false;
 		}
@@ -39,14 +40,16 @@ export async function updateWorkspace(): Promise<boolean> {
 	// get all workspace roots
 	const workspaces = [];
 	let workspaceConfig = null;
-	if (fs.fileExists("angular.json")) {
-		workspaceConfig = JSON.parse(fs.readFile("angular.json"));
+	const workspacePath = path.join(rootPath, "angular.json");
+	if (fs.fileExists(workspacePath)) {
+		workspaceConfig = JSON.parse(fs.readFile(workspacePath));
 	} else {
 		Util.log("No angular.json file found! Aborting.");
 		return false;
 	}
+
 	for (const entry of Object.keys(workspaceConfig.projects)) {
-		workspaces.push(workspaceConfig.projects[entry].sourceRoot);
+		workspaces.push(path.join(rootPath, workspaceConfig.projects[entry].sourceRoot));
 	}
 	// once all workspace are gotten, get all files for all workspaces
 	const logicFiles = [];
@@ -57,7 +60,7 @@ export async function updateWorkspace(): Promise<boolean> {
 			styleFiles.push(...fs.glob(workspace, `**/*.${extension}`));
 		}
 	}
-	styleFiles.push("angular.json");
+	styleFiles.push(workspacePath);
 
 	for (const file of logicFiles) {
 		rewriteFile(fs, file, logicExpression);

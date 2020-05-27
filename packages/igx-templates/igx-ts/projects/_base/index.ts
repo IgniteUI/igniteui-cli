@@ -47,7 +47,7 @@ $app-palette: igx-palette($primary, $secondary);
 	}
 
 	public async upgradeIgniteUIPackages(projectPath: string, packagePath: string): Promise<boolean> {
-		return updateWorkspace();
+		return updateWorkspace(projectPath);
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return [];

@@ -3,7 +3,7 @@ import { NodePackageTaskOptions } from "@angular-devkit/schematics/tasks/node-pa
 import { RepositoryInitializerTaskOptions } from "@angular-devkit/schematics/tasks/repo-init/options";
 import { RunSchematicTaskOptions } from "@angular-devkit/schematics/tasks/run-schematic/options";
 import { SchematicTestRunner, UnitTestTree } from "@angular-devkit/schematics/testing";
-import { GoogleAnalytics } from "@igniteui/cli-core";
+import { GoogleAnalytics, ProjectTemplate } from "@igniteui/cli-core";
 import * as path from "path";
 import { take } from "rxjs/operators";
 import * as AppProjectSchematic from "../app-projects/index";
@@ -25,13 +25,18 @@ describe("Schematics ng-new", () => {
 			getProject: jasmine.createSpy("getProject").and.returnValue(true), projectIds: ["empty-page"], themes: ["custom"]
 		};
 
+		const mockProject: Partial<ProjectTemplate> = {
+			upgradeIgniteUIPackages: () => Promise.resolve(true)
+		};
+		spyOn(mockProject, "upgradeIgniteUIPackages").and.callThrough();
+
 		const mockSession = {
 			chooseActionLoop: spyOn(SchematicsPromptSession.prototype, "chooseActionLoop")
 				.and.returnValue(Promise.resolve(true)),
 			getProjectLibrary: spyOn(SchematicsPromptSession.prototype, "getProjectLibrary")
 				.and.returnValue((Promise.resolve(mockLibrary))),
 			getProjectTemplate: spyOn(SchematicsPromptSession.prototype, "getProjectTemplate")
-				.and.returnValue(Promise.resolve("empty-page")),
+				.and.returnValue(Promise.resolve(mockProject)),
 			getTheme: spyOn(SchematicsPromptSession.prototype, "getTheme")
 				.and.returnValue(Promise.resolve("custom")),
 			getUserInput: spyOn(SchematicsPromptSession.prototype, "getUserInput")
@@ -61,11 +66,6 @@ describe("Schematics ng-new", () => {
 			expect(e.files.length).toEqual(1);
 			expect(e.exists(`${workingDirectory}/.gitignore`)).toBeTruthy();
 			const taskOptions = runner.tasks.map(task => task.options);
-			const expectedUpgrade = {
-				collection: null,
-				name: "upgrade-packages",
-				options: { skipInstall: true }
-			};
 			const expectedInstall: NodePackageTaskOptions = {
 				command: "install",
 				quiet: true,
@@ -87,8 +87,8 @@ describe("Schematics ng-new", () => {
 					directory: "my-test-project"
 				}
 			};
-			expect(taskOptions.length).toBe(4);
-			expect(taskOptions).toContain(expectedUpgrade);
+			expect(taskOptions.length).toBe(3);
+			expect(mockProject.upgradeIgniteUIPackages).toHaveBeenCalled();
 			expect(taskOptions).toContain(jasmine.objectContaining(expectedInstall));
 			expect(taskOptions).toContain(expectedInit);
 			expect(taskOptions).toContain(expectedStart);
@@ -100,8 +100,14 @@ describe("Schematics ng-new", () => {
 		const runner = new SchematicTestRunner("schematics", collectionPath);
 		const myTree = Tree.empty();
 		const workingDirectory = "my-test-project";
+		const mockProject: Partial<ProjectTemplate> = {
+			upgradeIgniteUIPackages: () => Promise.resolve(true)
+		};
+		spyOn(mockProject, "upgradeIgniteUIPackages").and.callThrough();
 		const mockLibrary = {
-			getProject: jasmine.createSpy("getProject").and.returnValue(true), projectIds: ["empty-page"], themes: ["custom"]
+			getProject: jasmine.createSpy("getProject").and.returnValue(mockProject),
+			projectIds: ["empty-page"],
+			themes: ["custom"]
 		};
 
 		const mockSession = {
@@ -128,11 +134,6 @@ describe("Schematics ng-new", () => {
 			expect(e.files.length).toEqual(1);
 			expect(e.exists(`${workingDirectory}/.gitignore`)).toBeTruthy();
 			const taskOptions = runner.tasks.map(task => task.options);
-			const expectedUpgrade = {
-				collection: null,
-				name: "upgrade-packages",
-				options: { skipInstall: true }
-			};
 			const expectedInstall: NodePackageTaskOptions = {
 				command: "install",
 				quiet: true,
@@ -147,8 +148,8 @@ describe("Schematics ng-new", () => {
 				authorName: undefined,
 				authorEmail: undefined
 			};
-			expect(taskOptions.length).toBe(3);
-			expect(taskOptions).toContain(expectedUpgrade);
+			expect(taskOptions.length).toBe(2);
+			expect(mockProject.upgradeIgniteUIPackages).toHaveBeenCalled();
 			expect(taskOptions).toContain(jasmine.objectContaining(expectedInstall));
 			expect(taskOptions).toContain(expectedInit);
 			done();
