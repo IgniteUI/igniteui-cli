@@ -24,10 +24,14 @@ export async function updateWorkspace(rootPath: string): Promise<boolean> {
 	if (fileString) {
 		const pkgJSON = JSON.parse(fileString);
 		const errorMsg = "Something went wrong, " +
-		"please follow the steps in this guide: https://www.infragistics.com/products/ignite-ui-angular/angular/components/general/ignite-ui-licensing.html";
+			"please follow the steps in this guide: https://www.infragistics.com/products/ignite-ui-angular/angular/components/general/ignite-ui-licensing.html";
 		if (PackageManager.ensureRegistryUser(config, errorMsg)) {
 			pkgJSON.dependencies[FEED_PACKAGE] = pkgJSON.dependencies[NPM_PACKAGE];
 			delete pkgJSON.dependencies[NPM_PACKAGE];
+			pkgJSON.dependencies =
+				Object.keys(pkgJSON.dependencies)
+					.sort()
+					.reduce((result, key) => (result[key] = pkgJSON.dependencies[key]) && result, {});
 			fs.writeFile(packageJsonPath, JSON.stringify(pkgJSON, null, 2));
 		} else {
 			return false;
