@@ -55,6 +55,8 @@ describe("updateWorkspace - Unit tests", () => {
 	it("Should update package.json file, removing non-scoped igniteui-angular packages", async () => {
 		const mockPackageJSON = {
 			dependencies: {
+				"@alphabetically-sorted-scope/package": "^0.0.0",
+				"alphabetically-second-package": "^0.0.0",
 				"igniteui-angular": "^9.1.0",
 				"some-package": "^0.0.0"
 			}
@@ -75,8 +77,10 @@ describe("updateWorkspace - Unit tests", () => {
 		expect(await updateWorkspace()).toEqual(false);
 		expect(fsSpy.writeFile).toHaveBeenCalledWith("package.json", JSON.stringify({
 			dependencies: {
-				"some-package": "^0.0.0",
-				"@infragistics/igniteui-angular": "^9.1.0"
+				"@alphabetically-sorted-scope/package": "^0.0.0",
+				"@infragistics/igniteui-angular": "^9.1.0",
+				"alphabetically-second-package": "^0.0.0",
+				"some-package": "^0.0.0"
 			}
 		}, null, 2));
 	});
