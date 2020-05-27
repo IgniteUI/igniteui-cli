@@ -16,19 +16,19 @@ describe("updateWorkspace - Unit tests", () => {
 		fsSpy = jasmine.createSpyObj("fsSpy", ["fileExists", "directoryExists", "readFile", "writeFile", "glob"]);
 		spyOn(App.container, "get").and.returnValue(fsSpy);
 		spyOnProperty(App, "workDir", "get").and.returnValue("mockDir");
-		spyOn(ProjectConfig, "globalConfig").and.returnValue({});
+		spyOn(ProjectConfig, "getConfig").and.returnValue({});
 	});
 	it("Should fail if current used package is registry package", async () => {
 		spyOn(pkgResolve, "resolvePackage").and.returnValue(pkgResolve.FEED_PACKAGE);
-		expect(await updateWorkspace()).toEqual(false);
+		expect(await updateWorkspace("")).toEqual(false);
 	});
 
 	it("Should fail if '@infragistics' node modules are installed", async () => {
 		spyOn(pkgResolve, "resolvePackage").and.returnValue(pkgResolve.NPM_PACKAGE);
 		(fsSpy.directoryExists as jasmine.Spy).and.returnValue(true);
 		spyOn(Util, "log");
-		expect(await updateWorkspace()).toEqual(false);
-		expect(fsSpy.directoryExists).toHaveBeenCalledWith(path.join("mockDir", "node_modules", "@infragistics"));
+		expect(await updateWorkspace("root")).toEqual(false);
+		expect(fsSpy.directoryExists).toHaveBeenCalledWith(path.join("mockDir", "root", "node_modules", "@infragistics"));
 		expect(Util.log).toHaveBeenCalledWith("@infragistics module already exists. Nothing to do here.");
 	});
 
@@ -37,7 +37,7 @@ describe("updateWorkspace - Unit tests", () => {
 		(fsSpy.directoryExists as jasmine.Spy).and.returnValue(false);
 		(fsSpy.readFile as jasmine.Spy).and.returnValue("");
 		spyOn(Util, "log");
-		expect(await updateWorkspace()).toEqual(false);
+		expect(await updateWorkspace("")).toEqual(false);
 		expect(Util.log).toHaveBeenCalledWith("Package.json not found!");
 	});
 
@@ -49,7 +49,7 @@ describe("updateWorkspace - Unit tests", () => {
 		(fsSpy.directoryExists as jasmine.Spy).and.returnValue(false);
 		(fsSpy.readFile as jasmine.Spy).and.returnValue(JSON.stringify(mockJSONInput, null, 4));
 		spyOn(PackageManager, "ensureRegistryUser").and.returnValue(false);
-		expect(await updateWorkspace()).toEqual(false);
+		expect(await updateWorkspace("")).toEqual(false);
 	});
 
 	it("Should update package.json file, removing non-scoped igniteui-angular packages", async () => {
@@ -74,7 +74,7 @@ describe("updateWorkspace - Unit tests", () => {
 		});
 		spyOn(PackageManager, "ensureRegistryUser").and.returnValue(true);
 		spyOn(Util, "log");
-		expect(await updateWorkspace()).toEqual(false);
+		expect(await updateWorkspace("")).toEqual(false);
 		expect(fsSpy.writeFile).toHaveBeenCalledWith("package.json", JSON.stringify({
 			dependencies: {
 				"@alphabetically-sorted-scope/package": "^0.0.0",
@@ -178,7 +178,7 @@ title = 'igniteui-angular example';
 		});
 		(fsSpy.fileExists as jasmine.Spy).and.returnValue(true);
 		spyOn(PackageManager, "ensureRegistryUser").and.returnValue(true);
-		expect(await updateWorkspace()).toEqual(true);
+		expect(await updateWorkspace("")).toEqual(true);
 		for (const fileEntry of mockFileArray) {
 			expect(fsSpy.writeFile).toHaveBeenCalledWith(fileEntry.path, fileEntry.expected);
 		}

@@ -1,13 +1,18 @@
 import {
-	apply, chain, empty, MergeStrategy, mergeWith,
-	move, Rule, schematic, SchematicContext, SchematicsException, Tree
-} from "@angular-devkit/schematics";
-import {
-	NodePackageInstallTask,
-	RepositoryInitializerTask,
-	RunSchematicTask
-} from "@angular-devkit/schematics/tasks";
-import { App, GoogleAnalytics, ProjectLibrary,  ProjectTemplate, Util } from "@igniteui/cli-core";
+	apply,
+	chain,
+	empty,
+	MergeStrategy,
+	mergeWith,
+	move,
+	Rule,
+	schematic,
+	SchematicContext,
+	SchematicsException,
+	TaskId,
+	Tree } from "@angular-devkit/schematics";
+import { NodePackageInstallTask, RepositoryInitializerTask, RunSchematicTask } from "@angular-devkit/schematics/tasks";
+import { App, GoogleAnalytics, ProjectLibrary, ProjectTemplate, Util } from "@igniteui/cli-core";
 import { defer, Observable } from "rxjs";
 import { NewProjectOptions } from "../app-projects/schema";
 import { SchematicsPromptSession } from "../prompt/SchematicsPromptSession";
@@ -149,10 +154,21 @@ export function newProject(options: OptionsSchema): Rule {
 					}
 				]), MergeStrategy.Overwrite
 			),
+			(tree: Tree, _context: IgxSchematicContext) => {
+				if (prompt.userAnswers && prompt.userAnswers.get("upgradePackages")) {
+					return defer(async () => {
+						setVirtual(tree);
+						await projectOptions.projTemplate.upgradeIgniteUIPackages(options.name || "", "");
+						return tree;
+					});
+				}
+			},
 			(tree: Tree, context: IgxSchematicContext) => {
-				const installChain = [];
+				const installChain: TaskId[] = [];
 				if (!options.skipInstall) {
-					const installTask = context.addTask(new NodePackageInstallTask(options.name));
+					const installTask = context.addTask(
+						new NodePackageInstallTask(options.name),
+						[...installChain]);
 					installChain.push(installTask);
 				}
 				if (!options.skipGit) {

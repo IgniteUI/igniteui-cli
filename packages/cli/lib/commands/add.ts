@@ -37,7 +37,7 @@ command = {
 		},
 		"skip-route": {
 			alias: "skr",
-			describe: "Don't auto-generate am app navigation route for the new component",
+			describe: "Don't auto-generate an app navigation route for the new component",
 			type: "boolean",
 			global: true
 		}
