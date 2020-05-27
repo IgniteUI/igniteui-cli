@@ -58,6 +58,7 @@ describe("updateWorkspace - Unit tests", () => {
 				"@alphabetically-sorted-scope/package": "^0.0.0",
 				"alphabetically-second-package": "^0.0.0",
 				"igniteui-angular": "^9.1.0",
+				"igniteui-dockmanager": "^1.0.0",
 				"some-package": "^0.0.0"
 			}
 		};
@@ -79,6 +80,7 @@ describe("updateWorkspace - Unit tests", () => {
 			dependencies: {
 				"@alphabetically-sorted-scope/package": "^0.0.0",
 				"@infragistics/igniteui-angular": "^9.1.0",
+				"@infragistics/igniteui-dockmanager": "^1.0.0",
 				"alphabetically-second-package": "^0.0.0",
 				"some-package": "^0.0.0"
 			}
@@ -98,6 +100,7 @@ describe("updateWorkspace - Unit tests", () => {
 `import { something } from 'module';
 import { bait } from 'igniteui-angular-core';
 import { IgxGridComponent } from 'igniteui-angular';
+import { IgcDockManager } from 'igniteui-dockmanager';
 
 export class HomeComponent {
 	title = 'igniteui-angular example';
@@ -106,6 +109,7 @@ export class HomeComponent {
 `import { something } from 'module';
 import { bait } from 'igniteui-angular-core';
 import { IgxGridComponent } from '@infragistics/igniteui-angular';
+import { IgcDockManager } from '@infragistics/igniteui-dockmanager';
 
 export class HomeComponent {
 	title = 'igniteui-angular example';
@@ -114,11 +118,13 @@ export class HomeComponent {
 			content:
 `@import '~igniteui-angular/lib/core/styles/themes/utilities';
 @import '~igniteui-angular/lib/core/styles/themes/index';
+@import '~igniteui-dockmanager/styles/themes/test';
 @include igx-core();
 `,
 			expected:
 `@import '~@infragistics/igniteui-angular/lib/core/styles/themes/utilities';
 @import '~@infragistics/igniteui-angular/lib/core/styles/themes/index';
+@import '~@infragistics/igniteui-dockmanager/styles/themes/test';
 @include igx-core();
 `}, {
 			path: "angular.json",
@@ -131,7 +137,8 @@ export class HomeComponent {
 			"root": "",
 			"styles": [
 				"src/styles.scss",
-				"node_modules/igniteui-angular/styles/igniteui-angular.css"
+				"node_modules/igniteui-angular/styles/igniteui-angular.css",
+				"node_modules/igniteui-dockmanager/styles/themes/test"
 			]
 		}
 	}
@@ -145,7 +152,8 @@ export class HomeComponent {
 			"root": "",
 			"styles": [
 				"src/styles.scss",
-				"node_modules/@infragistics/igniteui-angular/styles/igniteui-angular.css"
+				"node_modules/@infragistics/igniteui-angular/styles/igniteui-angular.css",
+				"node_modules/@infragistics/igniteui-dockmanager/styles/themes/test"
 			]
 		}
 	}
@@ -155,6 +163,7 @@ export class HomeComponent {
 `import { something } from 'module';
 import { bait } from 'igniteui-angular-core';
 import { IgxGridComponent } from 'igniteui-angular';
+import { dockManagerLoader } from 'igniteui-dockmanager/loader';
 
 export class HomeComponent {
 title = 'igniteui-angular example';
@@ -163,6 +172,7 @@ title = 'igniteui-angular example';
 `import { something } from 'module';
 import { bait } from 'igniteui-angular-core';
 import { IgxGridComponent } from '@infragistics/igniteui-angular';
+import { dockManagerLoader } from '@infragistics/igniteui-dockmanager/loader';
 
 export class HomeComponent {
 title = 'igniteui-angular example';
