@@ -1,5 +1,3 @@
-# 5.1.0-alpha.0 (2020-05-20)
-
 # [5.0.3](https://github.com/IgniteUI/igniteui-cli/compare/v5.0.2...v5.0.3) (2020-05-18)
 
 ## igniteui/cli-core@5.0.3
