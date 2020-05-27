@@ -54,11 +54,12 @@ command = {
 					}
 					const success = await project.upgradeIgniteUIPackages(process.cwd(), "");
 					if (success && !argv.skipInstall) {
-						Util.log("Please wait while the upgraded npm packages are being installed!");
+						Util.log("Installing npm packages.");
 						try {
 							Util.execSync("npm install --quiet");
+							Util.log("npm packages installed.");
 						} catch (error) {
-							Util.error(`Error installing the upgraded npm packages.`);
+							Util.error(`Error installing npm packages.`);
 							Util.log(error.message);
 						}
 					}
