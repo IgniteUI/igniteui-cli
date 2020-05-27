@@ -1,10 +1,36 @@
 import { App, FS_TOKEN, IFileSystem, PackageManager, ProjectConfig, Util } from "@igniteui/cli-core";
 import * as path from "path";
-import { FEED_PACKAGE, NPM_PACKAGE, resolvePackage } from "./package-resolve";
+import { FEED_DOCK_MANAGER, FEED_PACKAGE, NPM_DOCK_MANAGER, NPM_PACKAGE, resolvePackage } from "./package-resolve";
 
 const styleExtension = ["css", "scss", "sass"];
-const styleExpression = String.raw`(node_modules\/|~)${NPM_PACKAGE}(\/)`;
-const logicExpression = String.raw`(from ["'])${NPM_PACKAGE}(["'])`;
+enum RegularExpressionType {
+	STYLE,
+	LOGIC
+}
+
+// tslint:disable: object-literal-sort-keys
+const packages: { [key: string]: { trial: string, licensed: string, styleExp: string, logicExp: string } } = {
+	base: {
+		trial: NPM_PACKAGE,
+		licensed: FEED_PACKAGE,
+		styleExp: createExpression(RegularExpressionType.STYLE, NPM_PACKAGE),
+		logicExp: createExpression(RegularExpressionType.LOGIC, NPM_PACKAGE)
+	},
+	dockManager: {
+		trial: NPM_DOCK_MANAGER,
+		licensed: FEED_DOCK_MANAGER,
+		styleExp: createExpression(RegularExpressionType.STYLE, NPM_DOCK_MANAGER),
+		logicExp: createExpression(RegularExpressionType.LOGIC, NPM_DOCK_MANAGER)
+	}
+};
+
+function createExpression(expressionType: RegularExpressionType, packageName: string): string {
+	if (expressionType === RegularExpressionType.LOGIC) {
+		return String.raw`(from ["'])${packageName}(?<submodules>\/.*?)?(["'])`;
+	} else if (expressionType === RegularExpressionType.STYLE) {
+		return String.raw`(node_modules\/|~)${packageName}(\/)`;
+	}
+}
 
 export async function updateWorkspace(rootPath: string): Promise<boolean> {
 	if (resolvePackage() === FEED_PACKAGE) {
@@ -26,12 +52,8 @@ export async function updateWorkspace(rootPath: string): Promise<boolean> {
 		const errorMsg = "Something went wrong, " +
 			"please follow the steps in this guide: https://www.infragistics.com/products/ignite-ui-angular/angular/components/general/ignite-ui-licensing.html";
 		if (PackageManager.ensureRegistryUser(config, errorMsg)) {
-			pkgJSON.dependencies[FEED_PACKAGE] = pkgJSON.dependencies[NPM_PACKAGE];
-			delete pkgJSON.dependencies[NPM_PACKAGE];
-			pkgJSON.dependencies =
-				Object.keys(pkgJSON.dependencies)
-					.sort()
-					.reduce((result, key) => (result[key] = pkgJSON.dependencies[key]) && result, {});
+			updatePackageJSON(NPM_PACKAGE, FEED_PACKAGE, pkgJSON);
+			updatePackageJSON(NPM_DOCK_MANAGER, FEED_DOCK_MANAGER, pkgJSON);
 			fs.writeFile(packageJsonPath, JSON.stringify(pkgJSON, null, 2));
 		} else {
 			return false;
@@ -66,24 +88,56 @@ export async function updateWorkspace(rootPath: string): Promise<boolean> {
 	}
 	styleFiles.push(workspacePath);
 
-	for (const file of logicFiles) {
-		rewriteFile(fs, file, logicExpression);
-	}
-	for (const file of styleFiles) {
-		rewriteFile(fs, file, styleExpression);
-	}
+	updateFileImports(logicFiles, styleFiles, fs);
 
 	return true;
 }
 
-function rewriteFile(fs: IFileSystem, fileLocation: string, regexString: string) {
-	let fileContent = fs.readFile(fileLocation);
-	if (fileContent.match(new RegExp(regexString))) {
-		fileContent = transformFile(fileContent, regexString);
-		fs.writeFile(fileLocation, fileContent);
+function updateFileContent(fileContent: string, regexString: string, replaceWith: string): string {
+	const match = fileContent.match(new RegExp(regexString));
+	if (match) {
+		fileContent = fileContent.replace(new RegExp(regexString, "g"),
+			`$1${replaceWith}$2${match.length === 4 ? "$3" : ""}`);
+	}
+	return fileContent;
+}
+
+function updateFileImports(
+	logicFiles: string[],
+	styleFiles: string[],
+	fs: IFileSystem
+): void {
+
+	for (const file of logicFiles) {
+		let fileContent = fs.readFile(file);
+		// tslint:disable-next-line: forin
+		for (const key in packages) {
+			fileContent = updateFileContent(fileContent, packages[key].logicExp, packages[key].licensed);
+		}
+		fs.writeFile(file, fileContent);
+	}
+	for (const file of styleFiles) {
+		let fileContent = fs.readFile(file);
+		// tslint:disable-next-line: forin
+		for (const key in packages) {
+			fileContent = updateFileContent(fileContent, packages[key].styleExp, packages[key].licensed);
+		}
+		fs.writeFile(file, fileContent);
 	}
 }
-function transformFile(fileContent: string, regexString: string) {
-	fileContent = fileContent.replace(new RegExp(regexString, "g"), `$1${FEED_PACKAGE}$2`);
-	return fileContent;
+
+function updatePackageJSON(
+	initName: string,
+	replaceWith: string,
+	pkgJSON: { dependencies: { [key: string]: string } }
+): void {
+	if (!pkgJSON.dependencies.hasOwnProperty(initName)) {
+		return;
+	}
+	pkgJSON.dependencies[replaceWith] = pkgJSON.dependencies[initName];
+	delete pkgJSON.dependencies[initName];
+	pkgJSON.dependencies =
+		Object.keys(pkgJSON.dependencies)
+			.sort()
+			.reduce((result, key) => (result[key] = pkgJSON.dependencies[key]) && result, {});
 }
