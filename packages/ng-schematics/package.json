@@ -27,7 +27,11 @@
     "typescript": "~3.7.5"
   },
   "ng-update": {
+    "migrations": "./src/migrations/migration-collection.json",
     "packageGroup": [
+      "igniteui-angular",
+      "@infragistics/igniteui-angular",
+      "igniteui-angular-charts",
       "@igniteui/angular-templates"
     ]
   }
