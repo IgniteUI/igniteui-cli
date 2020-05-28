@@ -1,6 +1,6 @@
 import { Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
 import { NodePackageInstallTask } from "@angular-devkit/schematics/tasks";
-import { App, GoogleAnalytics, ProjectConfig } from "@igniteui/cli-core";
+import { App, GoogleAnalytics, ProjectConfig, ProjectTemplate } from "@igniteui/cli-core";
 import { defer } from "rxjs";
 import { SchematicsTemplateManager } from "../SchematicsTemplateManager";
 import { setVirtual } from "../utils/NgFileSystem";
@@ -19,7 +19,13 @@ export default function(options: UpgradeOptions): Rule {
 		const templateManager = new SchematicsTemplateManager();
 		const config = ProjectConfig.getConfig();
 		const library = templateManager.getProjectLibrary(config.project.framework, config.project.projectType);
-		const project = library.getProject(config.project.projectTemplate);
+		let project: ProjectTemplate;
+		if (!config.project.projectTemplate || !library.hasProject(config.project.projectTemplate)) {
+			// in case project template is missing from the config we provide backward.
+			project = library.getProject(library.projectIds[0]);
+		} else {
+			project = library.getProject(config.project.projectTemplate);
+		}
 		setVirtual(tree);
 		return defer(async () => {
 			const success = await project.upgradeIgniteUIPackages("", "");
