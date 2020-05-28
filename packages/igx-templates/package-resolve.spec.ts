@@ -1,5 +1,5 @@
 import { App, FS_TOKEN, IFileSystem } from "@igniteui/cli-core";
-import { FEED_PACKAGE, NPM_PACKAGE, resolvePackage } from "./package-resolve";
+import { FEED_PACKAGE, NPM_PACKAGE, resolveIgxPackage } from "./package-resolve";
 
 class MockFileSystem implements IFileSystem {
 	public fileExists(filePath: string): boolean {
@@ -25,7 +25,7 @@ describe("cli-config schematic", () => {
 		spyOn(mockFs, "fileExists").and.returnValue(false);
 		App.container.set(FS_TOKEN, mockFs);
 
-		const result = resolvePackage();
+		const result = resolveIgxPackage();
 		expect(result).toEqual(NPM_PACKAGE);
 		expect(mockFs.fileExists).toHaveBeenCalledWith("./package.json");
 	});
@@ -36,7 +36,7 @@ describe("cli-config schematic", () => {
 		spyOn(mockFs, "readFile").and.returnValue(`{ "dependencies": { "${NPM_PACKAGE}": "*" } }`);
 		App.container.set(FS_TOKEN, mockFs);
 
-		const result = resolvePackage();
+		const result = resolveIgxPackage();
 		expect(result).toEqual(NPM_PACKAGE);
 		expect(mockFs.fileExists).toHaveBeenCalledWith("./package.json");
 		expect(mockFs.readFile).toHaveBeenCalledWith("./package.json");
@@ -48,7 +48,7 @@ describe("cli-config schematic", () => {
 		spyOn(mockFs, "readFile").and.returnValue(`{ "dependencies": { "${FEED_PACKAGE}": "*" } }`);
 		App.container.set(FS_TOKEN, mockFs);
 
-		const result = resolvePackage();
+		const result = resolveIgxPackage();
 		expect(result).toEqual(FEED_PACKAGE);
 		expect(mockFs.fileExists).toHaveBeenCalledWith("./package.json");
 		expect(mockFs.readFile).toHaveBeenCalledWith("./package.json");
