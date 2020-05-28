@@ -46,7 +46,7 @@ command = {
 				if (projectType === "igx-ts") {
 					const projectLibrary = command.templateManager.getProjectLibrary(framework, projectType);
 					let project;
-					if (!config.project.projectTemplate) {
+					if (!config.project.projectTemplate || !projectLibrary.hasProject(config.project.projectTemplate)) {
 						// in case project template is missing from the config we provide backward.
 						project = projectLibrary.getProject(projectLibrary.projectIds[0]);
 					} else {
