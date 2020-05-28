@@ -35,7 +35,8 @@
     },
     "upgrade-packages": {
       "description": "Upgrades to the licensed Ignite UI for Angular packages",
-      "factory": "./upgrade-packages/index"
+      "factory": "./upgrade-packages/index",
+      "schema": "./upgrade-packages/schema.json"
     }
   }
 }
