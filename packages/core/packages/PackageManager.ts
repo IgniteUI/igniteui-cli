@@ -211,6 +211,9 @@ export class PackageManager {
 			Util.log(`Use you Infragistics account credentials. "@" is not supported,` +
 				`use "!!", so "username@infragistics.com" should be entered as "username!!infragistics.com"`, "yellow");
 
+			// TODO: Delete this
+			// fix for the stdin steam when using inquirer/readline
+			process.stdin.setRawMode(true);
 			const cmd = /^win/.test(process.platform) ? "npm.cmd" : "npm"; //https://github.com/nodejs/node/issues/3675
 			const login = spawnSync(cmd,
 				["adduser", `--registry=${fullPackageRegistry}`, `--scope=@infragistics`, `--always-auth`],
