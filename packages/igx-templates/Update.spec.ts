@@ -19,7 +19,9 @@ describe("updateWorkspace - Unit tests", () => {
 	});
 	it("Should fail if current used package is registry package", async () => {
 		spyOn(pkgResolve, "getUpgradeablePackages").and.returnValue([]);
+		spyOn(Util, "log");
 		expect(await updateWorkspace("")).toEqual(false);
+		expect(Util.log).toHaveBeenCalledWith("Your app is already using packages from the Infragistics registry. You are good to go.", "green");
 	});
 
 	it("Should fail if no packages.json is found", async () => {
