@@ -1,14 +1,21 @@
 import { exec, spawnSync } from "child_process";
 import * as path from "path";
 import { TemplateManager } from "../../cli/lib/TemplateManager";
-import { Config, ProjectTemplate } from "../types";
-import { ProjectConfig, Util } from "../util";
+import { Config, FS_TOKEN, IFileSystem, ProjectTemplate } from "../types";
+import { App, ProjectConfig, Util } from "../util";
 
 import componentsConfig = require("./components");
 
 export class PackageManager {
 	private static ossPackage: string = "ignite-ui";
 	private static fullPackage: string = "@infragistics/ignite-ui-full";
+	private static get fs(): IFileSystem {
+		return App.container.get<IFileSystem>(FS_TOKEN);
+	}
+
+	private static get jsonPath(): string {
+		return path.join(process.cwd(), "package.json");
+	}
 
 	private static installQueue: Array<Promise<{ packageName, error, stdout, stderr }>> = [];
 
@@ -153,11 +160,17 @@ export class PackageManager {
 	}
 
 	public static async queuePackage(packageName: string, verbose = false) {
-		const command = this.getInstallCommand(this.getManager(), packageName);
-		const packName = packageName.split(/@[^\/]+$/)[0];
-		if (this.getPackageJSON().dependencies[packName] || this.installQueue.find(x => x["packageName"] === packName)) {
+		const command = this.getInstallCommand(this.getManager(), packageName).replace("--save", "--no-save");
+		const [ packName, version ] = packageName.split(/@(?=[^\/]+$)/);
+		const packageJSON = this.getPackageJSON();
+		if (!packageJSON.dependencies) {
+			packageJSON.dependencies = {};
+		}
+		if (packageJSON.dependencies[packName] || this.installQueue.find(x => x["packageName"] === packName)) {
 			return;
 		}
+		packageJSON.dependencies[packName] = version;
+		this.fs.writeFile(this.jsonPath, Util.formatPackageJson(packageJSON));
 		// D.P. Concurrent install runs should be supported
 		// https://github.com/npm/npm/issues/5948
 		// https://github.com/npm/npm/issues/2500
@@ -236,8 +249,8 @@ export class PackageManager {
 	}
 
 	protected static getPackageJSON(): { "dependencies": { [x: string]: string } } {
-		const filePath = path.join(process.cwd(), "package.json");
-		return require(filePath);
+		const content = this.fs.readFile(this.jsonPath);
+		return JSON.parse(content);
 	}
 
 	private static getInstallCommand(managerCommand: string, packageName: string): string {
