@@ -183,7 +183,7 @@ title = 'igniteui-angular example';
 		(fsSpy.fileExists as jasmine.Spy).and.returnValue(true);
 		spyOn(PackageManager, "ensureRegistryUser").and.returnValue(true);
 		expect(await updateWorkspace("")).toEqual(true);
-		for (const fileEntry of [mockFileArray[0]]) {
+		for (const fileEntry of mockFileArray) {
 			expect((fsSpy.writeFile as jasmine.Spy)).toHaveBeenCalledWith(fileEntry.path, fileEntry.expected);
 		}
 		expect(fsSpy.glob).toHaveBeenCalledTimes(4);
