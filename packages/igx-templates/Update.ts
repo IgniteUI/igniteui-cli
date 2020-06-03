@@ -20,7 +20,7 @@ export async function updateWorkspace(rootPath: string): Promise<boolean> {
 	const fs: IFileSystem = App.container.get(FS_TOKEN);
 	const upgradeable = getUpgradeablePackages();
 	if (!upgradeable.length) {
-		// log "no change needed"
+		Util.log("Your app is already using packages from the Infragistics registry. You are good to go.", "green");
 		return false;
 	}
 
