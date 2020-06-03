@@ -176,6 +176,16 @@ export class Util {
 		}
 	}
 
+	public static formatPackageJson(json: { dependencies: { [key: string]: string } }, sort = true): string {
+		if (sort) {
+			json.dependencies =
+			Object.keys(json.dependencies)
+				.sort()
+				.reduce((result, key) => (result[key] = json.dependencies[key]) && result, {});
+		}
+		return JSON.stringify(json, null, 2) + "\n";
+	}
+
 	public static version(filePath?: string): string {
 		const configuration = require(filePath || "../package.json");
 		return configuration.version;

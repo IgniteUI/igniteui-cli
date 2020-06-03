@@ -140,7 +140,8 @@ export class HomeComponent {
 				"node_modules/igniteui-angular/styles/igniteui-angular.css",
 				"node_modules/igniteui-dockmanager/styles/themes/test"
 			]
-		}
+		},
+		"test-e2e": {}
 	}
 }`,
 			expected:
@@ -155,7 +156,8 @@ export class HomeComponent {
 				"node_modules/@infragistics/igniteui-angular/styles/igniteui-angular.css",
 				"node_modules/@infragistics/igniteui-dockmanager/styles/themes/test"
 			]
-		}
+		},
+		"test-e2e": {}
 	}
 }`}, {
 	path: "src/app.module.ts",

@@ -1,4 +1,4 @@
-import { Config, PackageManager, ProjectConfig, Util } from "@igniteui/cli-core";
+import { App, Config, IFileSystem, PackageManager, ProjectConfig, Util } from "@igniteui/cli-core";
 import * as cp from "child_process";
 import * as path from "path";
 import { resetSpy } from "../helpers/utils";
@@ -31,11 +31,12 @@ describe("Unit - Package Manager", () => {
 		spyOn(ProjectConfig, "setConfig");
 		spyOn(PackageManager, "addPackage").and.returnValue(true);
 		spyOn(path, "join").and.returnValue("fakemodule.json");
-		spyOn(require("module"), "_load").and.callFake((modulePath: string) => {
-			if (modulePath === "fakemodule.json") {
-				return mockRequire;
-			}
-		});
+		const mockFs: Partial<IFileSystem> = {
+			readFile: jasmine.createSpy().and.returnValue(JSON.stringify(mockRequire)),
+			writeFile: jasmine.createSpy()
+		};
+		// should ignore already installed
+		spyOn(App.container, "get").and.returnValue(mockFs);
 		spyOn(Util, "execSync").and.callFake((cmd: string, opts) => {
 			if (cmd.includes("whoami")) {
 				throw new Error("");
@@ -365,7 +366,7 @@ describe("Unit - Package Manager", () => {
 		expect(Util.log).toHaveBeenCalledTimes(0);
 		expect(cp.exec).toHaveBeenCalledTimes(1);
 		expect(cp.exec).toHaveBeenCalledWith(
-			`npm install test-pack --quiet --save`, {}, jasmine.any(Function));
+			`npm install test-pack --quiet --no-save`, {}, jasmine.any(Function));
 		done();
 	});
 
@@ -375,8 +376,12 @@ describe("Unit - Package Manager", () => {
 				"test-pack": "20.1"
 			}
 		};
+		const mockFs: Partial<IFileSystem> = {
+			readFile: jasmine.createSpy().and.returnValue(JSON.stringify(mockRequire)),
+			writeFile: jasmine.createSpy()
+		};
 		// should ignore already installed
-		spyOn(require("module"), "_load").and.returnValue(mockRequire);
+		spyOn(App.container, "get").and.returnValue(mockFs);
 		spyOn(Util, "log");
 		const execSpy = spyOn(cp, "exec");
 		PackageManager.queuePackage("test-pack");
@@ -396,8 +401,13 @@ describe("Unit - Package Manager", () => {
 			dependencies: {}
 		};
 		// should ignore already installed
-		spyOn(require("module"), "_load").and.returnValue(mockRequire);
+		const mockFs: Partial<IFileSystem> = {
+			readFile: jasmine.createSpy().and.returnValue(JSON.stringify(mockRequire)),
+			writeFile: jasmine.createSpy()
+		};
+		// spyOn(require("module"), "_load").and.returnValue(mockRequire);
 		spyOn(Util, "log");
+		spyOn(App.container, "get").and.returnValue(mockFs);
 		const execSpy = spyOn(cp, "exec").and.callFake((cmd, opts, callback) => {
 			setTimeout(() => callback(null, [1], [2]), 20);
 		});

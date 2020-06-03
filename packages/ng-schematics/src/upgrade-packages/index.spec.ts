@@ -36,7 +36,9 @@ describe("Schematics upgrade-packages", () => {
 		};
 		const upgradeSpy = spyOn(mockProjTemplate, "upgradeIgniteUIPackages");
 		const mockLib: Partial<ProjectLibrary> = {
-			getProject: jasmine.createSpy().and.returnValue(mockProjTemplate)
+			getProject: jasmine.createSpy().and.returnValue(mockProjTemplate),
+			hasProject: jasmine.createSpy().and.returnValue(false),
+			projectIds: ["another-mock"]
 		};
 		const projLibSpy = spyOn(SchematicsTemplateManager.prototype, "getProjectLibrary");
 		projLibSpy.and.returnValue(mockLib);
@@ -48,7 +50,8 @@ describe("Schematics upgrade-packages", () => {
 			cd: "Upgrade packages"
 		});
 		expect(projLibSpy).toHaveBeenCalledWith("mock-ng", "mock-igx-ts");
-		expect(mockLib.getProject).toHaveBeenCalledWith("mock-side-nav");
+		expect(mockLib.hasProject).toHaveBeenCalledWith("mock-side-nav");
+		expect(mockLib.getProject).toHaveBeenCalledWith("another-mock");
 		expect(App.container.get(FS_TYPE_TOKEN)).toEqual(FsTypes.virtual, "setVirtual not called");
 		expect(App.container.get(FS_TOKEN)).toEqual(jasmine.any(NgTreeFileSystem));
 
