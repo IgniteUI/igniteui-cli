@@ -20,7 +20,7 @@ export async function updateWorkspace(rootPath: string): Promise<boolean> {
 	const fs: IFileSystem = App.container.get(FS_TOKEN);
 	const upgradeable = getUpgradeablePackages();
 	if (!upgradeable.length) {
-		// Log "no change needed"
+		// log "no change needed"
 		return false;
 	}
 
