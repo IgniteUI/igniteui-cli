@@ -1,3 +1,24 @@
+# [5.1.1](https://github.com/IgniteUI/igniteui-cli/compare/v5.1.0...v5.1.1) (2020-06-03)
+
+## igniteui/angular-templates@9.1.511
+Updated packages upgrade handling to better detect and handle multiple Ignite UI for Angular packages. ([3ab63f9](https://github.com/IgniteUI/igniteui-cli/commit/3ab63f9))
+
+#### Bug Fixes
+
+* **igx,upgrade:** ignore projects without sourceRoot [#754](https://github.com/IgniteUI/igniteui-cli/issues/754) ([6d64d30](https://github.com/IgniteUI/igniteui-cli/commit/6d64d30))
+* **upgrade:** Logging a message that licensed packages are already installed [#747](https://github.com/IgniteUI/igniteui-cli/issues/747) ([63df30d](https://github.com/IgniteUI/igniteui-cli/commit/63df30d))
+
+
+## igniteui/angular-schematics@9.1.511
+
+Note: Version bump only for package igniteui/angular-templates
+
+
+## igniteui-cli@5.1.1
+
+Note: Version bump only for package igniteui/angular-templates
+
+
 # [5.1.0](https://github.com/IgniteUI/igniteui-cli/compare/v5.0.4...v5.1.0) (2020-06-01)
 This release brings updates to Angular projects with support for Ignite UI for Angular 9.1.0, product packages from different origin (e.g. our private feed) and misc project dependencies updates from Angular CLI. To ease change of the product packages, `upgrade-packages` comes in both command and schematic flavor - it can automate the login setup, project changes and will even handle our new Dock Manager package 🎉
 
