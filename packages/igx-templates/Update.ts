@@ -75,7 +75,10 @@ export async function updateWorkspace(rootPath: string): Promise<boolean> {
 	}
 
 	for (const entry of Object.keys(workspaceConfig.projects)) {
-		workspaces.push(path.join(rootPath, workspaceConfig.projects[entry].sourceRoot));
+		if (workspaceConfig.projects[entry].sourceRoot) {
+			// ignore projects without sourceRoot (likely older e2e proj)
+			workspaces.push(path.join(rootPath, workspaceConfig.projects[entry].sourceRoot));
+		}
 	}
 	// once all workspace are gotten, get all files for all workspaces
 	const logicFiles = [];
