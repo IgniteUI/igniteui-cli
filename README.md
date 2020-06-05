@@ -7,7 +7,7 @@
 [![npm version](https://badge.fury.io/js/igniteui-cli.svg)](https://badge.fury.io/js/igniteui-cli)
 
 
-Quickly create projects including [Ignite UI for Angular](https://www.infragistics.com/products/ignite-ui-angular) and [Ignite UI for JavaScript](https://www.infragistics.com/products/ignite-ui) components for a variety of frameworks.
+Quickly create projects including [Ignite UI for Angular](https://www.infragistics.com/products/ignite-ui-angular) and [Ignite UI for jQuery](https://www.infragistics.com/products/ignite-ui) components for a variety of frameworks.
 
 ## Overview
 ### Features:
