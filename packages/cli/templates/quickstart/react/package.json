@@ -1,7 +1,7 @@
 {
   "name": "ignite-ui-cli",
   "version": "1.0.0",
-  "description": "Ignite UI for JavaScript React Wrappers quick start",
+  "description": "Ignite UI for jQuery React Wrappers quick start",
   "keywords": [
     "CLI",
     "Ignite UI"
@@ -15,7 +15,7 @@
   "bin": {
   },
   "dependencies": {
-    "ignite-ui": "~19.2",
+    "ignite-ui": "~20.1",
     "lite-server": "^2.3.0",
     "babel-runtime": "6.22.0",
     "react": "15.4.2",

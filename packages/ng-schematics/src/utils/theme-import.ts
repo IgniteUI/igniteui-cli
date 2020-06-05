@@ -1,6 +1,6 @@
 import { SchematicsException } from "@angular-devkit/schematics";
 import { Tree } from "@angular-devkit/schematics/src/tree/interface";
-import { resolvePackage } from "@igniteui/angular-templates";
+import { resolveIgxPackage } from "@igniteui/angular-templates";
 import { getWorkspace } from "@schematics/angular/utility/config";
 import { ProjectType, WorkspaceProject, WorkspaceSchema } from "@schematics/angular/utility/workspace-models";
 import * as path from "path";
@@ -39,7 +39,7 @@ export function addFontsToIndexHtml(tree: Tree) {
 }
 
 function importDefaultThemeSass(tree: Tree, ext: string): Tree {
-	const igxPackage = resolvePackage();
+	const igxPackage = resolveIgxPackage();
 	const sassImports =
 	`
 @import "~${igxPackage}/lib/core/styles/themes/index";
@@ -104,7 +104,7 @@ export function getDefaultProjectBuildOptions(tree: Tree) {
 }
 
 function importDefaultThemeToAngularWorkspace(workspace: WorkspaceSchema, key: string) {
-	const igxPackage = resolvePackage();
+	const igxPackage = resolveIgxPackage();
 	const cssImport = `node_modules/${igxPackage}/styles/igniteui-angular.css`;
 	const projectName = workspace.defaultProject;
 	if (projectName) {

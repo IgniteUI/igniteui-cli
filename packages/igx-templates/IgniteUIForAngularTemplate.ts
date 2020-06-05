@@ -3,7 +3,7 @@ import {
 	ControlExtraConfiguration, FS_TOKEN, IFileSystem, Template, TemplateDependency, TypeScriptFileUpdate, Util
 } from "@igniteui/cli-core";
 import * as path from "path";
-import { resolvePackage } from "./package-resolve";
+import { resolveIgxPackage } from "./package-resolve";
 
 export class IgniteUIForAngularTemplate implements Template {
 	public components: string[];
@@ -113,7 +113,7 @@ export class IgniteUIForAngularTemplate implements Template {
 		config["description"] = this.description;
 		config["cliVersion"] = Util.version();
 		config["camelCaseName"] = Util.camelCase(name);
-		config["igxPackage"] = resolvePackage();
+		config["igxPackage"] = resolveIgxPackage();
 
 		/** 'nameMerged' is never used igx templates, removed */
 		return config;
