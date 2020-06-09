@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import style from './style.css';
-import { IgrLinearGaugeModule } from 'igniteui-react-gauges/ES5/igr-linear-gauge-module';
-import { IgrLinearGauge } from 'igniteui-react-gauges/ES5/igr-linear-gauge';
+import { IgrLinearGaugeModule } from 'igniteui-react-gauges';
+import { IgrLinearGauge } from 'igniteui-react-gauges';
 
 IgrLinearGaugeModule.register();
 
