@@ -78,10 +78,7 @@ export class IgniteUIForAngularTemplate implements Template {
 		//4) populate the declarations portion of the @NgModule with the component class name.
 		const mainModulePath = path.join(projectPath, `src/app/${modulePath}`);
 		const mainModule = new TsUpdate(mainModulePath);
-		mainModule.addDeclaration(
-			path.join(projectPath, `src/app/${this.folderName(name)}/${this.fileName(name)}.component.ts`),
-			modulePath !== "app.module.ts"
-		);
+		this.addClassDeclaration(mainModule, projectPath, name, modulePath);
 
 		// import IgxModules and other dependencies
 		for (const dep of this.dependencies) {
@@ -103,6 +100,12 @@ export class IgniteUIForAngularTemplate implements Template {
 		return [];
 	}
 	public setExtraConfiguration(extraConfigKeys: {}) { }
+
+	protected addClassDeclaration(mainModule: TypeScriptFileUpdate, projPath: string, name: string, modulePath: string) {
+		mainModule.addDeclaration(
+			path.join(projPath, `src/app/${this.folderName(name)}/${this.fileName(name)}.component.ts`),
+			modulePath !== "app.module.ts");
+	}
 
 	protected getBaseVariables(name: string): { [key: string]: string } {
 		const config = {};
