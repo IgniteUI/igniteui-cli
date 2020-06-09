@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { IgrDoughnutChartModule } from 'igniteui-react-charts/ES5/igr-doughnut-chart-module';
-import { IgrDoughnutChart } from 'igniteui-react-charts/ES5/igr-doughnut-chart';
-import { IgrRingSeriesModule } from 'igniteui-react-charts/ES5/igr-ring-series-module';
-import { IgrRingSeries } from 'igniteui-react-charts/ES5/igr-ring-series';
-import { IgrItemLegendModule } from 'igniteui-react-charts/ES5/igr-item-legend-module';
-import { IgrItemLegend } from 'igniteui-react-charts/ES5/igr-item-legend';
+import { IgrDoughnutChartModule } from 'igniteui-react-charts';
+import { IgrDoughnutChart } from 'igniteui-react-charts';
+import { IgrRingSeriesModule } from 'igniteui-react-charts';
+import { IgrRingSeries } from 'igniteui-react-charts';
+import { IgrItemLegendModule } from 'igniteui-react-charts';
+import { IgrItemLegend } from 'igniteui-react-charts';
 
 import style from './style.css';
 
