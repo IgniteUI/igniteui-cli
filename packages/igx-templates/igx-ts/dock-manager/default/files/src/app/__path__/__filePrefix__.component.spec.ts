@@ -1,7 +1,10 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CommonModule } from '@angular/common';
 import { <%=ClassName%>Component } from './<%=filePrefix%>.component';
+
+import { defineCustomElements } from 'igniteui-dockmanager/loader';
+defineCustomElements();
 
 describe('<%=ClassName%>Component', () => {
   let component: <%=ClassName%>Component;
@@ -24,5 +27,6 @@ describe('<%=ClassName%>Component', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+    expect(document.querySelector('igc-dockmanager').constructor).toBe(customElements.get('igc-dockmanager'));
   });
 });
