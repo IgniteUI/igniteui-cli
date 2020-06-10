@@ -5,7 +5,7 @@ import {
 	Component, Config, ControlExtraConfigType, ControlExtraConfiguration, Framework,
 	FrameworkId, ProjectLibrary, ProjectTemplate, Template
 } from "../types";
-import { ChoiceItem, GoogleAnalytics, ProjectConfig, Util } from "../util";
+import { App, ChoiceItem, GoogleAnalytics, ProjectConfig, Util } from "../util";
 import { Task, TaskRunner, WIZARD_BACK_OPTION } from "./TaskRunner";
 
 export abstract class BasePromptSession {
@@ -358,6 +358,18 @@ export abstract class BasePromptSession {
 
 		runner.clearPending();
 		switch (action) {
+		case "Add all":
+			// internal testing only
+			runner.addTask(async (_runner, _context) => {
+				const templateTask = this.templateSelectedTask();
+				for (const template of _context.projectLibrary.templates) {
+					_context.template = template;
+					await templateTask(_runner, _context);
+				}
+				return true;
+			});
+			runner.addTask(run => Promise.resolve(run.resetTasks()));
+			break;
 		case "Add component":
 			runner.addTask(this.getComponentGroupTask);
 			runner.addTask(this.getComponentTask);
@@ -579,6 +591,11 @@ export abstract class BasePromptSession {
 		const actionChoices: ChoiceItem[] = [
 			{ name: "Complete & Run", description: "install packages and run in the default browser" }
 		];
+
+		if (App.testMode) {
+			// internal testing only
+			actionChoices.push({ name: "Add all", description: "add all components/views" });
+		}
 
 		if (projectLibrary.components.length > 0) {
 			actionChoices.push({ name: "Add component", description: "add a specific component view (e.g a grid)" });
