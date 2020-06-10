@@ -358,6 +358,7 @@ export abstract class BasePromptSession {
 
 		runner.clearPending();
 		switch (action) {
+		/* istanbul ignore next */
 		case "Add all":
 			// internal testing only
 			runner.addTask(async (_runner, _context) => {
@@ -592,6 +593,7 @@ export abstract class BasePromptSession {
 			{ name: "Complete & Run", description: "install packages and run in the default browser" }
 		];
 
+		/* istanbul ignore next */
 		if (App.testMode) {
 			// internal testing only
 			actionChoices.push({ name: "Add all", description: "add all components/views" });

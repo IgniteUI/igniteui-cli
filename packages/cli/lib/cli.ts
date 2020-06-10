@@ -75,6 +75,7 @@ export async function run(args = null) {
 	const command = argv._[0];
 
 	// internal testing only
+	/* istanbul ignore next */
 	App.testMode = !!argv.testMode;
 
 	switch (command) {
