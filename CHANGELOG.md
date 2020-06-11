@@ -1,3 +1,27 @@
+# [5.2.0](https://github.com/IgniteUI/igniteui-cli/compare/v5.1.1...v5.2.0) (2020-06-11)
+
+## @igniteui/angular-templates@9.1.520
+
+#### Features
+
+* **igx-ts:** add Dock Manager template for Angular ([#763](https://github.com/IgniteUI/igniteui-cli/issues/763)) ([63acfdf](https://github.com/IgniteUI/igniteui-cli/commit/63acfdf))
+* **igx,side-nav:**  move content padding so views can override ([36f9964](https://github.com/IgniteUI/igniteui-cli/commit/36f9964))
+* **igx-ts:** update Data Visualization components to 9.1.x ([#757](https://github.com/IgniteUI/igniteui-cli/issues/757)) ([29fd5d9](https://github.com/IgniteUI/igniteui-cli/commit/29fd5d9))
+
+
+## @igniteui/angular-schematics@9.1.520
+
+Note: Version bump only for package igniteui/angular-templates
+
+
+## igniteui-cli@5.2.0
+
+#### Features
+
+* **igr:** update Ignite UI for React version to 16.12.0 and rename LiveGrid to DataGrid [#726](https://github.com/IgniteUI/igniteui-cli/issues/726) ([2c17f50](https://github.com/IgniteUI/igniteui-cli/commit/2c17f50))
+* update Ignite UI for jQuery, Angular and React wrapper projects to 20.1 [#756](https://github.com/IgniteUI/igniteui-cli/issues/756) ([156f8d6](https://github.com/IgniteUI/igniteui-cli/commit/156f8d6))
+
+
 # [5.1.1](https://github.com/IgniteUI/igniteui-cli/compare/v5.1.0...v5.1.1) (2020-06-03)
 
 ## igniteui/angular-templates@9.1.511
