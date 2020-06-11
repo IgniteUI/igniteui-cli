@@ -69,7 +69,8 @@
 			"console": "externalTerminal",
 			"preLaunchTask": "build",
 			"outFiles": [ "${workspaceRoot}/packages/**/*.js",
-				"${workspaceRoot}/spec/**/*.js" ]
+				"${workspaceRoot}/spec/**/*.js" ],
+			"args": ["--test-mode"]
 		},
 		{
 			"type": "node",

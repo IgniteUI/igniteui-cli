@@ -196,7 +196,7 @@
 
 .grid__wrapper {
     padding: 5px 15px;
-    height: 95%;
+    height: 100%;
 }
 
 // Custom Dark Theme	
@@ -212,6 +212,9 @@
 $green-palette: igx-palette($primary: #09f,$secondary: #72da67, $surface: #333);	
 
 :host {
+    padding: 0 !important;
+    width: 100%;
+
     ::ng-deep {
 
         @include scrollbar-love();
