@@ -1,6 +1,7 @@
 :host {
     display: block;
     width: 100%;
+    padding: 0 !important;
 }
 :host ::ng-deep {
     .fintech-icons {
@@ -204,7 +205,7 @@
 
 .grid__wrapper {
     padding: 5px 15px;
-    height: 95%;
+    height: 100%;
 }
 
 @import '~<%=igxPackage%>/lib/core/styles/themes/utilities';
