@@ -1,13 +1,21 @@
-import { Config, ProjectConfig, Util } from "@igniteui/cli-core";
 import { exec, spawnSync } from "child_process";
 import * as path from "path";
-import { TemplateManager } from "../TemplateManager";
+import { TemplateManager } from "../../cli/lib/TemplateManager";
+import { Config, FS_TOKEN, IFileSystem, ProjectTemplate } from "../types";
+import { App, ProjectConfig, Util } from "../util";
 
 import componentsConfig = require("./components");
 
 export class PackageManager {
 	private static ossPackage: string = "ignite-ui";
 	private static fullPackage: string = "@infragistics/ignite-ui-full";
+	private static get fs(): IFileSystem {
+		return App.container.get<IFileSystem>(FS_TOKEN);
+	}
+
+	private static get jsonPath(): string {
+		return path.join(process.cwd(), "package.json");
+	}
 
 	private static installQueue: Array<Promise<{ packageName, error, stdout, stderr }>> = [];
 
@@ -18,7 +26,7 @@ export class PackageManager {
 	 * and swaps the OSS package for the full version.
 	 * @param installNow Allow the check to also try installing required Ignite UI package
 	 */
-	public static ensureIgniteUISource(
+	public static async ensureIgniteUISource(
 		installNow: boolean = false,
 		templateManager: TemplateManager,
 		verbose: boolean = false
@@ -35,7 +43,9 @@ export class PackageManager {
 		if (installNow) {
 			const ossVersion = this.getPackageJSON().dependencies[this.ossPackage];
 			const version = ossVersion ? `@"${ossVersion}"` : "";
-			if (this.ensureRegistryUser(config) && this.addPackage(this.fullPackage + version, verbose)) {
+			const errorMsg = "Something went wrong, " +
+			"please follow the steps in this guide: https://www.igniteui.com/help/using-ignite-ui-npm-packages";
+			if (this.ensureRegistryUser(config, errorMsg) && this.addPackage(this.fullPackage + version, verbose)) {
 				if (ossVersion) {
 					// TODO: Check if OSS package uninstalled successfully?
 					this.removePackage(this.ossPackage, verbose);
@@ -47,14 +57,14 @@ export class PackageManager {
 					const projectLibrary = templateManager.getProjectLibrary(config.project.framework, config.project.projectType);
 					if (projectLibrary) {
 						// TODO multiple projects?
-						let project;
+						let project: ProjectTemplate;
 						if (!config.project.projectTemplate) {
-							// in case project tempale is missing from the config we provide backward.
+							// in case project template is missing from the config we provide backward.
 							project = projectLibrary.getProject(projectLibrary.projectIds[0]);
 						} else {
 							project = projectLibrary.getProject(config.project.projectTemplate);
 						}
-						project.upgradeIgniteUIPackage(process.cwd(), `./node_modules/${this.fullPackage}/en`);
+						await project.upgradeIgniteUIPackages(process.cwd(), `./node_modules/${this.fullPackage}/en`);
 					}
 				}
 			} else {
@@ -150,11 +160,17 @@ export class PackageManager {
 	}
 
 	public static async queuePackage(packageName: string, verbose = false) {
-		const command = this.getInstallCommand(this.getManager(), packageName);
-		const packName = packageName.split(/@[^\/]+$/)[0];
-		if (this.getPackageJSON().dependencies[packName] || this.installQueue.find(x => x["packageName"] === packName)) {
+		const command = this.getInstallCommand(this.getManager(), packageName).replace("--save", "--no-save");
+		const [ packName, version ] = packageName.split(/@(?=[^\/]+$)/);
+		const packageJSON = this.getPackageJSON();
+		if (!packageJSON.dependencies) {
+			packageJSON.dependencies = {};
+		}
+		if (packageJSON.dependencies[packName] || this.installQueue.find(x => x["packageName"] === packName)) {
 			return;
 		}
+		packageJSON.dependencies[packName] = version;
+		this.fs.writeFile(this.jsonPath, Util.formatPackageJson(packageJSON));
 		// D.P. Concurrent install runs should be supported
 		// https://github.com/npm/npm/issues/5948
 		// https://github.com/npm/npm/issues/2500
@@ -189,7 +205,7 @@ export class PackageManager {
 		}
 	}
 
-	protected static ensureRegistryUser(config: Config): boolean {
+	public static ensureRegistryUser(config: Config, message: string): boolean {
 		const fullPackageRegistry = config.igPackageRegistry;
 		try {
 			// tslint:disable-next-line:object-literal-sort-keys
@@ -208,6 +224,9 @@ export class PackageManager {
 			Util.log(`Use you Infragistics account credentials. "@" is not supported,` +
 				`use "!!", so "username@infragistics.com" should be entered as "username!!infragistics.com"`, "yellow");
 
+			// TODO: Delete this
+			// fix for the stdin steam when using inquirer/readline
+			process.stdin.setRawMode(true);
 			const cmd = /^win/.test(process.platform) ? "npm.cmd" : "npm"; //https://github.com/nodejs/node/issues/3675
 			const login = spawnSync(cmd,
 				["adduser", `--registry=${fullPackageRegistry}`, `--scope=@infragistics`, `--always-auth`],
@@ -222,8 +241,7 @@ export class PackageManager {
 					return false;
 				}
 			} else {
-				Util.log("Something went wrong, " +
-					"please follow the steps in this guide: https://www.igniteui.com/help/using-ignite-ui-npm-packages", "red");
+				Util.log(message, "red");
 				return false;
 			}
 		}
@@ -231,8 +249,8 @@ export class PackageManager {
 	}
 
 	protected static getPackageJSON(): { "dependencies": { [x: string]: string } } {
-		const filePath = path.join(process.cwd(), "package.json");
-		return require(filePath);
+		const content = this.fs.readFile(this.jsonPath);
+		return JSON.parse(content);
 	}
 
 	private static getInstallCommand(managerCommand: string, packageName: string): string {

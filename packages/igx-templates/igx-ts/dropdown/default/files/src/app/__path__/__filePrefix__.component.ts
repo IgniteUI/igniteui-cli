@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {
     IgxDropDownComponent
-} from 'igniteui-angular';
+} from '<%=igxPackage%>';
 import { data } from './local-data';
 
 @Component({

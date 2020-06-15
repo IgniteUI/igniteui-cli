@@ -20,7 +20,7 @@ class IgxGridBatchEditingTemplate extends IgniteUIForAngularTemplate {
 				"IgxDialogModule",
 				"IgxRippleModule"
 				],
-				from: "igniteui-angular"
+				from: "<%=igxPackage%>"
 			},
 			{ import: "FormsModule", from: "@angular/forms" }
 		];

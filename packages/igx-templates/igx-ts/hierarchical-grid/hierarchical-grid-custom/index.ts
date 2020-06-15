@@ -15,7 +15,7 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 		this.name = "Custom Hierarchical Grid";
 		this.description = "a customizable IgxHierarchicalGrid";
 		this.dependencies = [
-			{ import: ["IgxGridModule", "IgxHierarchicalGridModule"], from: "igniteui-angular" }
+			{ import: ["IgxGridModule", "IgxHierarchicalGridModule"], from: "<%=igxPackage%>" }
 		];
 
 		this.hasExtraConfiguration = true;

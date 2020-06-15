@@ -1,10 +1,16 @@
 
 import * as fs from "fs";
+import * as glob from "glob";
+import * as path from "path";
 import { IFileSystem } from "../types/FileSystem";
 
 export class FsFileSystem implements IFileSystem {
 	public fileExists(filePath: string): boolean {
-		return fs.existsSync(filePath);
+		try {
+			return fs.statSync(filePath).isFile();
+		} catch (err) {
+			return false;
+		}
 	}
 	public readFile(filePath: string, encoding?: string): string {
 		if (encoding) {
@@ -16,6 +22,14 @@ export class FsFileSystem implements IFileSystem {
 		fs.writeFileSync(filePath, text);
 	}
 	public directoryExists(dirPath: string): boolean {
-		return fs.statSync(dirPath).isDirectory();
+		try {
+			return fs.statSync(dirPath).isDirectory();
+		} catch (e) {
+			return false;
+		}
+	}
+
+	public glob(dirPath: string, pattern: string): string[] {
+		return glob.sync(path.join(dirPath, pattern), { nodir: true });
 	}
 }

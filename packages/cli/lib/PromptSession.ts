@@ -1,9 +1,12 @@
-import { BasePromptSession, GoogleAnalytics, ProjectConfig, ProjectLibrary, PromptTaskContext, Task, Util } from "@igniteui/cli-core";
+import {
+	BasePromptSession, GoogleAnalytics, PackageManager, ProjectConfig,
+	ProjectLibrary, PromptTaskContext, Task, Util
+} from "@igniteui/cli-core";
 import * as inquirer from "inquirer";
 import * as path from "path";
 import { default as add } from "./commands/add";
 import { default as start } from "./commands/start";
-import { PackageManager } from "./packages/PackageManager";
+import { default as upgrade } from "./commands/upgrade";
 import { TemplateManager } from "./TemplateManager";
 
 export class PromptSession extends BasePromptSession {
@@ -97,6 +100,11 @@ export class PromptSession extends BasePromptSession {
 		if (true) { // TODO: Make conditional?
 			await start.start({ port });
 		}
+	}
+
+	protected async upgradePackages() {
+		upgrade.templateManager = this.templateManager as TemplateManager;
+		await upgrade.upgrade({ skipInstall: true });
 	}
 
 	/**

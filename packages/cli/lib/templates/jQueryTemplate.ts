@@ -90,7 +90,8 @@ export class jQueryTemplate implements Template {
 		return builder;
 	}
 	protected getScriptTags(): string {
-		const config = require("../packages/components");
+		// tslint:disable-next-line:no-submodule-imports
+		const config = require("@igniteui/cli-core/packages/components");
 		let builder = "";
 		builder += this.getJqueryDependenciesScriptTag();
 		builder += "\n\n";

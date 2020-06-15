@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IgxDialogComponent, IgxGridComponent, IgxHierarchicalGridComponent,
-    IgxRowIslandComponent, Transaction } from 'igniteui-angular';
+    IgxRowIslandComponent, Transaction } from '<%=igxPackage%>';
 import { SINGERS } from './data';
 import { Singer } from './singer';
 

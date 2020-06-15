@@ -18,7 +18,7 @@ class EmptyAngularProject implements ProjectTemplate {
 	public installModules(): void {
 		throw new Error("Method not implemented.");
 	}
-	public upgradeIgniteUIPackage(projectPath: string, packagePath: string): void {
+	public async upgradeIgniteUIPackages(projectPath: string, packagePath: string): Promise<boolean> {
 		const config = ProjectConfig.getConfig();
 		const files: string[] = config.project.sourceFiles;
 		config.project.sourceFiles = files.map(x => {
@@ -30,6 +30,7 @@ class EmptyAngularProject implements ProjectTemplate {
 			return x;
 		});
 		ProjectConfig.setConfig(config);
+		return true;
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return [];

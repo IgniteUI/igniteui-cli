@@ -13,7 +13,7 @@ import {
     AbsoluteScrollStrategy,
     VerticalAlignment,
     HorizontalAlignment
-} from 'igniteui-angular';
+} from '<%=igxPackage%>';
 import { timer } from 'rxjs';
 import { debounce } from 'rxjs/operators';
 import { LocalDataService } from './localData.service';

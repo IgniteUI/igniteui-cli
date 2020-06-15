@@ -3,6 +3,8 @@ import { Container } from "./Container";
 import { FsFileSystem } from "./FileSystem";
 
 export class App {
+	/** @internal testing only */
+	public static testMode = false;
 	public static container: Container = new Container();
 	public static appName = "igniteui-cli";
 	public static initialize(name?: string) {

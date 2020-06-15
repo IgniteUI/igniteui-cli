@@ -12,7 +12,7 @@ class IgxComboTemplate extends IgniteUIForAngularTemplate {
 		this.description = "basic IgxCombo with templating";
 		this.dependencies = [{
 			import: ["IgxComboModule"],
-			from: "igniteui-angular"
+			from: "<%=igxPackage%>"
 		}];
 	}
 }

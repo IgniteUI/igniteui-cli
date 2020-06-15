@@ -24,8 +24,7 @@ export class SchematicsTemplateManager extends BaseTemplateManager {
 					template = new IgniteUIForAngularTemplate(rootPath);
 					break;
 				default:
-					Util.error(`The framework/project type for template with id "${settings.id}" is not supported.`);
-					Util.error(`File path: ${filePath}`);
+					// not supported in schematics, ignore
 					break;
 			}
 			if (template !== null) {

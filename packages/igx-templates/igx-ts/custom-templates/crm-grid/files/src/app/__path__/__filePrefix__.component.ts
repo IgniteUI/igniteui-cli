@@ -22,7 +22,7 @@ import {
   IgxToggleDirective,
   OverlaySettings,
   PositionSettings,
-  VerticalAlignment} from 'igniteui-angular';
+  VerticalAlignment} from '<%=igxPackage%>';
 import { data } from './data';
 
 function formatDate(val: Date) {

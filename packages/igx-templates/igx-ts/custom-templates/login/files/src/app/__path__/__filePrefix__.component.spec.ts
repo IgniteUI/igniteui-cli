@@ -2,7 +2,7 @@ import { async, TestBed, ComponentFixture } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { <%=ClassName%>Component } from './<%=filePrefix%>.component';
-import { IgxInputGroupModule, IgxIconModule, IgxButtonModule, IgxRippleModule } from 'igniteui-angular';
+import { IgxInputGroupModule, IgxIconModule, IgxButtonModule, IgxRippleModule } from '<%=igxPackage%>';
 
 const MAIL_GROUP_NAME = 'email';
 const PASSWORD_GROUP_NAME = 'password';

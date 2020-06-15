@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { IgrFinancialChartModule } from 'igniteui-react-charts/ES5/igr-financial-chart-module';
-import { IgrFinancialChart } from 'igniteui-react-charts/ES5/igr-financial-chart';
+import { IgrFinancialChartModule } from 'igniteui-react-charts';
+import { IgrFinancialChart } from 'igniteui-react-charts';
 import style from './style.css';
 
 IgrFinancialChartModule.register();

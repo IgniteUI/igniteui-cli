@@ -36,19 +36,11 @@ export class Util {
 	}
 
 	public static directoryExists(dirPath) {
-		try {
-			return App.container.get<IFileSystem>(FS_TOKEN).directoryExists(dirPath);
-		} catch (err) {
-			return false;
-		}
+		return App.container.get<IFileSystem>(FS_TOKEN).directoryExists(dirPath);
 	}
 
 	public static fileExists(filePath) {
-		try {
-			return App.container.get<IFileSystem>(FS_TOKEN).fileExists(filePath);
-		} catch (err) {
-			return false;
-		}
+		return App.container.get<IFileSystem>(FS_TOKEN).fileExists(filePath);
 	}
 
 	public static isDirectory(dirPath): boolean {
@@ -182,6 +174,16 @@ export class Util {
 		} else {
 			return chalk.green("✔");
 		}
+	}
+
+	public static formatPackageJson(json: { dependencies: { [key: string]: string } }, sort = true): string {
+		if (sort) {
+			json.dependencies =
+			Object.keys(json.dependencies)
+				.sort()
+				.reduce((result, key) => (result[key] = json.dependencies[key]) && result, {});
+		}
+		return JSON.stringify(json, null, 2) + "\n";
 	}
 
 	public static version(filePath?: string): string {

@@ -1,4 +1,4 @@
-import { FsFileSystem, GoogleAnalytics, TypeScriptFileUpdate, TypeScriptUtils, Util } from "@igniteui/cli-core";
+import { GoogleAnalytics, TypeScriptFileUpdate, TypeScriptUtils, Util } from "@igniteui/cli-core";
 import * as fs from "fs";
 import * as ts from "typescript";
 
@@ -435,12 +435,12 @@ describe("Unit - TypeScriptFileUpdate", () => {
 				super.readFormatConfigs();
 			}
 		}
-		const existsSpy = spyOn(fs, "existsSync");
+		const existsSpy = spyOn(fs, "statSync");
 		existsSpy.and.callFake(filePath => {
 			if (filePath !== "tslint.json") {
 				// "spec/unit/ts-transform/unformatted.ts-template":
 				// ".editorconfig":
-					return true;
+				return { isFile: () => true };
 			}
 			return false;
 		});
@@ -474,7 +474,7 @@ describe("Unit - TypeScriptFileUpdate", () => {
 		expect(tsUpdate.getFormatting().singleQuotes).toEqual(false);
 
 		// with tslint
-		existsSpy.and.returnValue(true);
+		existsSpy.and.returnValue({ isFile: () => true });
 		testTslint = {
 			rules: {
 				"prefer-const": true,

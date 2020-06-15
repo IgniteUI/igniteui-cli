@@ -1,23 +1,9 @@
 import { SchematicsException } from "@angular-devkit/schematics";
 import { Tree } from "@angular-devkit/schematics/src/tree/interface";
+import { resolveIgxPackage } from "@igniteui/angular-templates";
 import { getWorkspace } from "@schematics/angular/utility/config";
 import { ProjectType, WorkspaceProject, WorkspaceSchema } from "@schematics/angular/utility/workspace-models";
 import * as path from "path";
-
-const cssImport = "node_modules/igniteui-angular/styles/igniteui-angular.css";
-const sassImports =
-	`
-@import "~igniteui-angular/lib/core/styles/themes/index";
-// Uncomment the following lines if you want to add a custom palette:
-// $primary: #731963 !default;
-// $secondary: #ce5712 !default;
-// $app-palette: igx-palette($primary, $secondary);
-
-/* autoprefixer grid: on */
-
-@include igx-core();
-@include igx-theme($default-palette);
-`;
 
 export function importDefaultTheme(tree: Tree): Tree {
 	const sourceRoot = getDefaultProject(tree).sourceRoot;
@@ -53,6 +39,20 @@ export function addFontsToIndexHtml(tree: Tree) {
 }
 
 function importDefaultThemeSass(tree: Tree, ext: string): Tree {
+	const igxPackage = resolveIgxPackage();
+	const sassImports =
+	`
+@import "~${igxPackage}/lib/core/styles/themes/index";
+// Uncomment the following lines if you want to add a custom palette:
+// $primary: #731963 !default;
+// $secondary: #ce5712 !default;
+// $app-palette: igx-palette($primary, $secondary);
+
+/* autoprefixer grid: on */
+
+@include igx-core();
+@include igx-theme($default-palette);
+`;
 	const sourceRoot = getDefaultProject(tree).sourceRoot;
 	const targetFile = `/${sourceRoot}/styles.${ext}`;
 	let content = tree.read(targetFile).toString();
@@ -104,6 +104,8 @@ export function getDefaultProjectBuildOptions(tree: Tree) {
 }
 
 function importDefaultThemeToAngularWorkspace(workspace: WorkspaceSchema, key: string) {
+	const igxPackage = resolveIgxPackage();
+	const cssImport = `node_modules/${igxPackage}/styles/igniteui-angular.css`;
 	const projectName = workspace.defaultProject;
 	if (projectName) {
 		if (!workspace.projects[projectName].architect) {

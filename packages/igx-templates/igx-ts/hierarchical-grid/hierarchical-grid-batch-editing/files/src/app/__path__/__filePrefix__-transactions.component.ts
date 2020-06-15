@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IgxHierarchicalTransactionServiceFactory } from 'igniteui-angular';
+import { IgxHierarchicalTransactionServiceFactory } from '<%=igxPackage%>';
 
 @Component({
     providers: [ IgxHierarchicalTransactionServiceFactory ],

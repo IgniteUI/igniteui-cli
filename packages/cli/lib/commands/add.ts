@@ -1,6 +1,8 @@
-import { AddTemplateArgs, GoogleAnalytics, ProjectConfig, ProjectLibrary, Template, Util } from "@igniteui/cli-core";
+import {
+	AddTemplateArgs, GoogleAnalytics, PackageManager,
+	ProjectConfig, ProjectLibrary, Template, Util
+} from "@igniteui/cli-core";
 import { TemplateManager } from "../TemplateManager";
-import { PackageManager } from "./../packages/PackageManager";
 import { PromptSession } from "./../PromptSession";
 
 let command: {
@@ -35,13 +37,13 @@ command = {
 		},
 		"skip-route": {
 			alias: "skr",
-			describe: "Don't auto-generate am app navigation route for the new component",
+			describe: "Don't auto-generate an app navigation route for the new component",
 			type: "boolean",
 			global: true
 		}
 	},
 	check: argv => {
-		if ((!argv.name && argv.template) || (argv.name  && !argv.template)) {
+		if ((!argv.name && argv.template) || (argv.name && !argv.template)) {
 			return false;
 		}
 		return true;
@@ -56,7 +58,7 @@ command = {
 			Util.error("Add command is supported only on existing project created with igniteui-cli", "red");
 			return;
 		}
-		const config =  ProjectConfig.getConfig();
+		const config = ProjectConfig.getConfig();
 		if (config.project.isShowcase) {
 			Util.error("Showcases and quickstart projects don't support the add command", "red");
 			return;
@@ -108,7 +110,7 @@ command = {
 				skipRoute: argv.skipRoute
 			});
 			await PackageManager.flushQueue(true);
-			PackageManager.ensureIgniteUISource(config.packagesInstalled, command.templateManager);
+			await PackageManager.ensureIgniteUISource(config.packagesInstalled, command.templateManager);
 		}
 	},
 	async addTemplate(fileName: string, template: Template, options?: AddTemplateArgs): Promise<boolean> {
