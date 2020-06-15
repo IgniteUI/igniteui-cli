@@ -81,6 +81,6 @@
     "packages/*"
   ],
   "dependencies": {
-    "handlebars": "4.0.14"
+    "handlebars": "4.3.0"
   }
 }
