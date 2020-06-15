@@ -5,7 +5,7 @@ import {
     IgxGridComponent,
     IgxSliderComponent,
     SortingDirection
-} from 'igniteui-angular';
+} from '<%=igxPackage%>';
 import { IgxCategoryChartComponent } from 'igniteui-angular-charts';
 import { timer } from 'rxjs';
 import { debounce } from 'rxjs/operators';

@@ -6,7 +6,7 @@ import {
     IgxCardModule,
     IgxExpansionPanelModule,
     IgxIconModule
-} from 'igniteui-angular';
+} from '<%=igxPackage%>';
 describe('<%=ClassName%>Component', () => {
   let component: <%=ClassName%>Component;
   let fixture: ComponentFixture<<%=ClassName%>Component>;

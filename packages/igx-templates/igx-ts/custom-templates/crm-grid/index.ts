@@ -10,13 +10,13 @@ class IgxGridCRMTemplate extends IgniteUIForAngularTemplate {
 		this.name = "CRM Grid";
 		this.description = "CRM IgxGrid";
 		this.dependencies = [
-			{ import: "IgxGridModule", from: "igniteui-angular" },
+			{ import: "IgxGridModule", from: "<%=igxPackage%>" },
 			{
 				provide: [
 				"IgxCsvExporterService",
 				"IgxExcelExporterService"
 			],
-				from: "igniteui-angular" },
+				from: "<%=igxPackage%>" },
 			{
 				import: [
 					"IgxAvatarModule",
@@ -30,7 +30,7 @@ class IgxGridCRMTemplate extends IgniteUIForAngularTemplate {
 					"IgxToggleModule",
 					"IgxCheckboxModule"
 				],
-				from: "igniteui-angular"
+				from: "<%=igxPackage%>"
 			},
 			{
 				import: [
@@ -41,7 +41,7 @@ class IgxGridCRMTemplate extends IgniteUIForAngularTemplate {
 			},
 			{ import: "FormsModule", from: "@angular/forms" }
 		];
-		this.packages = ["tslib@^1.7.1", "igniteui-angular-core@~8.2.12", "igniteui-angular-charts@~8.2.12"];
+		this.packages = ["tslib@^1.7.1", "igniteui-angular-core@~9.1.2", "igniteui-angular-charts@~9.1.2"];
 	}
 }
 module.exports = new IgxGridCRMTemplate();

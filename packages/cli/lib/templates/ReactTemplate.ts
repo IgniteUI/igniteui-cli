@@ -77,7 +77,8 @@ export class ReactTemplate implements Template {
 	}
 
 	protected getImports(): string {
-		const config = require("../packages/components");
+		// tslint:disable-next-line:no-submodule-imports
+		const config = require("@igniteui/cli-core/packages/components");
 		let builder = "";
 		builder += "\r\n";
 		builder += "// Ignite UI Required Combined JavaScript Files\r\n";

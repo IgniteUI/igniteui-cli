@@ -196,14 +196,14 @@
 
 .grid__wrapper {
     padding: 5px 15px;
-    height: 95%;
+    height: 100%;
 }
 
 // Custom Dark Theme	
 
 // Import the theme utilities first	
-@import '~igniteui-angular/lib/core/styles/themes/utilities';	
-@import '~igniteui-angular/lib/core/styles/themes/index';	
+@import '~<%=igxPackage%>/lib/core/styles/themes/utilities';	
+@import '~<%=igxPackage%>/lib/core/styles/themes/index';	
 @include igx-core();	
 @include igx-theme($default-palette);	
 
@@ -212,6 +212,9 @@
 $green-palette: igx-palette($primary: #09f,$secondary: #72da67, $surface: #333);	
 
 :host {
+    padding: 0 !important;
+    width: 100%;
+
     ::ng-deep {
 
         @include scrollbar-love();

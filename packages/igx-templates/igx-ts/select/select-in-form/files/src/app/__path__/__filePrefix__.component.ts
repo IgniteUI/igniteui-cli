@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IgxSelectComponent, IgxToastPosition, IgxToastComponent } from 'igniteui-angular';
+import { IgxSelectComponent, IgxToastPosition, IgxToastComponent } from '<%=igxPackage%>';
 
 @Component({
     selector: 'app-<%=filePrefix%>',

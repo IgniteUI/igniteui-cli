@@ -5,7 +5,7 @@ import {
 	Component, Config, ControlExtraConfigType, ControlExtraConfiguration, Framework,
 	FrameworkId, ProjectLibrary, ProjectTemplate, Template
 } from "../types";
-import { ChoiceItem, GoogleAnalytics, ProjectConfig, Util } from "../util";
+import { App, ChoiceItem, GoogleAnalytics, ProjectConfig, Util } from "../util";
 import { Task, TaskRunner, WIZARD_BACK_OPTION } from "./TaskRunner";
 
 export abstract class BasePromptSession {
@@ -92,6 +92,9 @@ export abstract class BasePromptSession {
 
 	/** Install packages and run project */
 	protected abstract async completeAndRun(port?: number);
+
+	/** Upgrade packages to use private Infragistics feed */
+	protected abstract async upgradePackages();
 
 	/**
 	 * Get user name and set template's extra configurations if any
@@ -355,6 +358,19 @@ export abstract class BasePromptSession {
 
 		runner.clearPending();
 		switch (action) {
+		/* istanbul ignore next */
+		case "Add all":
+			// internal testing only
+			runner.addTask(async (_runner, _context) => {
+				const templateTask = this.templateSelectedTask();
+				for (const template of _context.projectLibrary.templates) {
+					_context.template = template;
+					await templateTask(_runner, _context);
+				}
+				return true;
+			});
+			runner.addTask(run => Promise.resolve(run.resetTasks()));
+			break;
 		case "Add component":
 			runner.addTask(this.getComponentGroupTask);
 			runner.addTask(this.getComponentTask);
@@ -369,6 +385,29 @@ export abstract class BasePromptSession {
 			break;
 		case "Complete & Run":
 			const config = ProjectConfig.localConfig();
+
+			if (config.project.framework === "angular" &&
+				config.project.projectType === "igx-ts" &&
+				!config.packagesInstalled) {
+				// TODO: should we add check if there are paid components at all
+				Util.log("The project will be created using a Trial version of Ignite UI for Angular.");
+				Util.log("You can always run the upgrade-packages command once it's created.");
+				const shouldUpgrade = await this.getUserInput({
+					type: "list",
+					name: "shouldUpgrade",
+					message: "Would you like to upgrade to the licensed feed now?",
+					choices: [
+						{ value: "yes", name: "Yes (requires active subscription)", short: "Yes" },
+						{ value: "no", name: "Skip for now", short: "Skip" }
+					],
+					default: "yes"
+				});
+
+				if (shouldUpgrade === "yes") {
+					await this.upgradePackages();
+				}
+			}
+
 			const defaultPort = config.project.defaultPort;
 			const port = await this.getUserInput({
 				type: "input",
@@ -386,6 +425,7 @@ export abstract class BasePromptSession {
 			});
 			config.project.defaultPort = parseInt(port, 10);
 			ProjectConfig.setConfig(config);
+
 			await this.completeAndRun(config.project.defaultPort);
 			break;
 		}
@@ -552,6 +592,12 @@ export abstract class BasePromptSession {
 		const actionChoices: ChoiceItem[] = [
 			{ name: "Complete & Run", description: "install packages and run in the default browser" }
 		];
+
+		/* istanbul ignore next */
+		if (App.testMode) {
+			// internal testing only
+			actionChoices.push({ name: "Add all", description: "add all components/views" });
+		}
 
 		if (projectLibrary.components.length > 0) {
 			actionChoices.push({ name: "Add component", description: "add a specific component view (e.g a grid)" });

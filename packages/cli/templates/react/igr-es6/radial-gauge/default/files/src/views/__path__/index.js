@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import style from './style.css';
-import { IgrRadialGaugeModule } from 'igniteui-react-gauges/ES5/igr-radial-gauge-module';
-import { IgrRadialGauge } from 'igniteui-react-gauges/ES5/igr-radial-gauge';
+import { IgrRadialGaugeModule } from 'igniteui-react-gauges';
+import { IgrRadialGauge } from 'igniteui-react-gauges';
 
 IgrRadialGaugeModule.register();
 

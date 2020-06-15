@@ -1,21 +1,20 @@
-import { Config, ProjectConfig, Util } from "@igniteui/cli-core";
+import { App, Config, IFileSystem, PackageManager, ProjectConfig, Util } from "@igniteui/cli-core";
 import * as cp from "child_process";
 import * as path from "path";
-import { PackageManager } from "../../packages/cli/lib/packages/PackageManager";
 import { resetSpy } from "../helpers/utils";
 
 describe("Unit - Package Manager", () => {
 	it("ensureIgniteUISource - Should run through properly when install now is set to true", async done => {
 		const mockRequire = {
 			dependencies: {
-				"ignite-ui": "19.2"
+				"ignite-ui": "20.1"
 			}
 		};
 		const mockTemplateMgr = jasmine.createSpyObj("mockTemplateMgr", {
 			getProjectLibrary: {
 				getProject() {
 					return {
-						upgradeIgniteUIPackage: () => false
+						upgradeIgniteUIPackages: () => Promise.resolve(false)
 					};
 				},
 				projectIds: ["empty"]
@@ -32,11 +31,12 @@ describe("Unit - Package Manager", () => {
 		spyOn(ProjectConfig, "setConfig");
 		spyOn(PackageManager, "addPackage").and.returnValue(true);
 		spyOn(path, "join").and.returnValue("fakemodule.json");
-		spyOn(require("module"), "_load").and.callFake((modulePath: string) => {
-			if (modulePath === "fakemodule.json") {
-				return mockRequire;
-			}
-		});
+		const mockFs: Partial<IFileSystem> = {
+			readFile: jasmine.createSpy().and.returnValue(JSON.stringify(mockRequire)),
+			writeFile: jasmine.createSpy()
+		};
+		// should ignore already installed
+		spyOn(App.container, "get").and.returnValue(mockFs);
 		spyOn(Util, "execSync").and.callFake((cmd: string, opts) => {
 			if (cmd.includes("whoami")) {
 				throw new Error("");
@@ -48,7 +48,7 @@ describe("Unit - Package Manager", () => {
 		});
 		spyOn(Util, "log");
 		spyOn(PackageManager, "removePackage");
-		PackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
+		await PackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
 		expect(Util.log).toHaveBeenCalledTimes(4);
 		expect(Util.log).toHaveBeenCalledWith(
 			"The project you've created requires the full version of Ignite UI from Infragistics private feed.",
@@ -77,13 +77,13 @@ describe("Unit - Package Manager", () => {
 		);
 		expect(Util.execSync).toHaveBeenCalledWith("npm config set @infragistics:registry trial");
 		expect(PackageManager.removePackage).toHaveBeenCalled();
-		expect(PackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@"19.2"`, true);
+		expect(PackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@"20.1"`, true);
 		done();
 	});
 	it("ensureIgniteUISource - Should run through properly when install = true && package error", async done => {
 		const mockRequire = {
 			dependencies: {
-				"ignite-ui": "19.2"
+				"ignite-ui": "20.1"
 			}
 		};
 		spyOn(require("module"), "_load").and.returnValue(mockRequire);
@@ -91,7 +91,7 @@ describe("Unit - Package Manager", () => {
 			getProjectLibrary: {
 				getProject() {
 					return {
-						upgradeIgniteUIPackage: () => false
+						upgradeIgniteUIPackages: () => Promise.resolve(false)
 					};
 				}
 			}
@@ -112,7 +112,7 @@ describe("Unit - Package Manager", () => {
 		});
 		spyOn(Util, "log");
 		spyOn(PackageManager, "removePackage");
-		PackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
+		await PackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
 		expect(ProjectConfig.localConfig).toHaveBeenCalled();
 		expect(Util.log).toHaveBeenCalledTimes(7);
 		expect(Util.log).toHaveBeenCalledWith(
@@ -164,7 +164,7 @@ describe("Unit - Package Manager", () => {
 			getProjectLibrary: {
 				getProject() {
 					return {
-						upgradeIgniteUIPackage: () => false
+						upgradeIgniteUIPackages: () => Promise.resolve(false)
 					};
 				}
 			}
@@ -177,7 +177,7 @@ describe("Unit - Package Manager", () => {
 				isBundle: false
 			}
 		});
-		PackageManager.ensureIgniteUISource(false, mockTemplateMgr, true);
+		await PackageManager.ensureIgniteUISource(false, mockTemplateMgr, true);
 		expect(ProjectConfig.localConfig).toHaveBeenCalled();
 		expect(Util.log).toHaveBeenCalledWith(
 			"Template(s) that require the full version of Ignite UI found in the project." +
@@ -192,13 +192,13 @@ describe("Unit - Package Manager", () => {
 		}
 		const mockDeps = {
 			dependencies: {
-				"ignite-ui": "~19.2"
+				"ignite-ui": "~20.1"
 			}
 		};
 		const mockTemplateMgr = jasmine.createSpyObj("mockTemplateMgr", {
 			getProjectLibrary: {
 				getProject() {
-					return { upgradeIgniteUIPackage: () => { } };
+					return { upgradeIgniteUIPackages: () => Promise.resolve(true) };
 				},
 				projectIds: ["empty"]
 			}
@@ -219,16 +219,16 @@ describe("Unit - Package Manager", () => {
 		spyOn(TestPackageManager, "removePackage");
 		spyOn(TestPackageManager, "getPackageJSON").and.callFake(() => mockDeps);
 
-		TestPackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
-		expect(TestPackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@"~19.2"`, true);
+		await TestPackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
+		expect(TestPackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@"~20.1"`, true);
 		expect(Util.execSync).toHaveBeenCalledWith(
-			`npm install @infragistics/ignite-ui-full@"~19.2" --quiet --save`,
+			`npm install @infragistics/ignite-ui-full@"~20.1" --quiet --save`,
 			jasmine.any(Object)
 		);
 		expect(TestPackageManager.removePackage).toHaveBeenCalledWith("ignite-ui", true);
 
 		mockDeps.dependencies["ignite-ui"] = "^17.1";
-		TestPackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
+		await TestPackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
 		expect(TestPackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@"^17.1"`, true);
 		expect(Util.execSync).toHaveBeenCalledWith(
 			`npm install @infragistics/ignite-ui-full@"^17.1" --quiet --save`,
@@ -236,7 +236,7 @@ describe("Unit - Package Manager", () => {
 		);
 
 		mockDeps.dependencies["ignite-ui"] = ">=0.1.0 <0.2.0";
-		TestPackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
+		await TestPackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
 		expect(TestPackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@">=0.1.0 <0.2.0"`, true);
 		expect(Util.execSync).toHaveBeenCalledWith(
 			`npm install @infragistics/ignite-ui-full@">=0.1.0 <0.2.0" --quiet --save`,
@@ -366,18 +366,22 @@ describe("Unit - Package Manager", () => {
 		expect(Util.log).toHaveBeenCalledTimes(0);
 		expect(cp.exec).toHaveBeenCalledTimes(1);
 		expect(cp.exec).toHaveBeenCalledWith(
-			`npm install test-pack --quiet --save`, {}, jasmine.any(Function));
+			`npm install test-pack --quiet --no-save`, {}, jasmine.any(Function));
 		done();
 	});
 
 	it("queuePackage should ignore existing package installs", async done => {
 		const mockRequire = {
 			dependencies: {
-				"test-pack": "19.2"
+				"test-pack": "20.1"
 			}
 		};
+		const mockFs: Partial<IFileSystem> = {
+			readFile: jasmine.createSpy().and.returnValue(JSON.stringify(mockRequire)),
+			writeFile: jasmine.createSpy()
+		};
 		// should ignore already installed
-		spyOn(require("module"), "_load").and.returnValue(mockRequire);
+		spyOn(App.container, "get").and.returnValue(mockFs);
 		spyOn(Util, "log");
 		const execSpy = spyOn(cp, "exec");
 		PackageManager.queuePackage("test-pack");
@@ -397,8 +401,13 @@ describe("Unit - Package Manager", () => {
 			dependencies: {}
 		};
 		// should ignore already installed
-		spyOn(require("module"), "_load").and.returnValue(mockRequire);
+		const mockFs: Partial<IFileSystem> = {
+			readFile: jasmine.createSpy().and.returnValue(JSON.stringify(mockRequire)),
+			writeFile: jasmine.createSpy()
+		};
+		// spyOn(require("module"), "_load").and.returnValue(mockRequire);
 		spyOn(Util, "log");
+		spyOn(App.container, "get").and.returnValue(mockFs);
 		const execSpy = spyOn(cp, "exec").and.callFake((cmd, opts, callback) => {
 			setTimeout(() => callback(null, [1], [2]), 20);
 		});

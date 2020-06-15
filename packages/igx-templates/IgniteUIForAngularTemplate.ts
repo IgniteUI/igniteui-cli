@@ -3,6 +3,7 @@ import {
 	ControlExtraConfiguration, FS_TOKEN, IFileSystem, Template, TemplateDependency, TypeScriptFileUpdate, Util
 } from "@igniteui/cli-core";
 import * as path from "path";
+import { resolveIgxPackage } from "./package-resolve";
 
 export class IgniteUIForAngularTemplate implements Template {
 	public components: string[];
@@ -52,17 +53,6 @@ export class IgniteUIForAngularTemplate implements Template {
 		if (options && options.modulePath) {
 			modulePath = options.modulePath;
 		}
-		const stringDeps = this.dependencies.filter(x => typeof x === "string");
-		if (stringDeps.length) {
-			/** @deprecate */
-			Util.warn("String dependencies are deprecated, use object descriptions.", "yellow");
-			this.dependencies = this.dependencies.map(x => {
-				if (typeof x === "string") {
-					return { import: x, from: "igniteui-angular/main" };
-				}
-				return x;
-			});
-		}
 
 		// D.P. Don't use the top-level import as that chains import of typescript
 		// which slows down execution of the entire component noticeably (template loading)
@@ -88,10 +78,7 @@ export class IgniteUIForAngularTemplate implements Template {
 		//4) populate the declarations portion of the @NgModule with the component class name.
 		const mainModulePath = path.join(projectPath, `src/app/${modulePath}`);
 		const mainModule = new TsUpdate(mainModulePath);
-		mainModule.addDeclaration(
-			path.join(projectPath, `src/app/${this.folderName(name)}/${this.fileName(name)}.component.ts`),
-			modulePath !== "app.module.ts"
-		);
+		this.addClassDeclaration(mainModule, projectPath, name, modulePath);
 
 		// import IgxModules and other dependencies
 		for (const dep of this.dependencies) {
@@ -114,6 +101,12 @@ export class IgniteUIForAngularTemplate implements Template {
 	}
 	public setExtraConfiguration(extraConfigKeys: {}) { }
 
+	protected addClassDeclaration(mainModule: TypeScriptFileUpdate, projPath: string, name: string, modulePath: string) {
+		mainModule.addDeclaration(
+			path.join(projPath, `src/app/${this.folderName(name)}/${this.fileName(name)}.component.ts`),
+			modulePath !== "app.module.ts");
+	}
+
 	protected getBaseVariables(name: string): { [key: string]: string } {
 		const config = {};
 		config["name"] = Util.nameFromPath(name);
@@ -123,6 +116,7 @@ export class IgniteUIForAngularTemplate implements Template {
 		config["description"] = this.description;
 		config["cliVersion"] = Util.version();
 		config["camelCaseName"] = Util.camelCase(name);
+		config["igxPackage"] = resolveIgxPackage();
 
 		/** 'nameMerged' is never used igx templates, removed */
 		return config;

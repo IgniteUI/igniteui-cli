@@ -16,7 +16,7 @@ class IgxSelectTemplate extends IgniteUIForAngularTemplate {
 				"IgxButtonModule",
 				"IgxToggleModule"
 			],
-			from: "igniteui-angular"
+			from: "<%=igxPackage%>"
 		}];
 	}
 }

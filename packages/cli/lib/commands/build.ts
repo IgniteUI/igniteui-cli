@@ -1,8 +1,7 @@
-import { GoogleAnalytics, ProjectConfig, Util } from "@igniteui/cli-core";
+import { GoogleAnalytics, PackageManager, ProjectConfig, Util } from "@igniteui/cli-core";
 import * as fs from "fs-extra";
 import * as path from "path";
 import { TemplateManager } from "../TemplateManager";
-import { PackageManager } from "./../packages/PackageManager";
 
 let command: {
 	command: string,
@@ -27,7 +26,7 @@ command = {
 	},
 	async build(argv?) {
 		Util.log("Build started.");
-		PackageManager.ensureIgniteUISource(true, command.templateManager);
+		await PackageManager.ensureIgniteUISource(true, command.templateManager);
 
 		if (!ProjectConfig.hasLocalConfig()) {
 			Util.error("Add command is supported only on existing project created with igniteui-cli", "red");
@@ -51,7 +50,7 @@ command = {
 			fs.mkdirSync("./themes");
 			const source = path.join(config.project.igniteuiSource, "/css/themes/", config.project.theme.split(".")[0]);
 			const destination = path.join(config.project.sourceRoot, "themes");
-			fs.copySync(source,  destination, {recursive: true});
+			fs.copySync(source, destination, { recursive: true });
 		}
 	}
 };

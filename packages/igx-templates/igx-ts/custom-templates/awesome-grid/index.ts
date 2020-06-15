@@ -10,7 +10,7 @@ class IgxGridAwesomeTemplate extends IgniteUIForAngularTemplate {
 		this.name = "Awesome Grid";
 		this.description = "Awesome IgxGrid";
 		this.dependencies = [
-			{ import: "IgxGridModule", from: "igniteui-angular" },
+			{ import: "IgxGridModule", from: "<%=igxPackage%>" },
 			{
 				import: [
 					"IgxProgressBarModule",
@@ -21,7 +21,7 @@ class IgxGridAwesomeTemplate extends IgniteUIForAngularTemplate {
 					"IgxInputGroupModule",
 					"IgxButtonModule"
 				],
-				from: "igniteui-angular"
+				from: "<%=igxPackage%>"
 			},
 			{
 				import: [
@@ -32,7 +32,7 @@ class IgxGridAwesomeTemplate extends IgniteUIForAngularTemplate {
 			},
 			{ import: "FormsModule", from: "@angular/forms" }
 		];
-		this.packages = ["tslib@^1.7.1", "igniteui-angular-core@~8.2.12", "igniteui-angular-charts@~8.2.12"];
+		this.packages = ["tslib@^1.7.1", "igniteui-angular-core@~9.1.2", "igniteui-angular-charts@~9.1.2"];
 	}
 }
 module.exports = new IgxGridAwesomeTemplate();

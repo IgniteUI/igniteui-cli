@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import { IgxGridComponent, IgxSummaryResult, IgxDateSummaryOperand } from 'igniteui-angular';
+import { IgxGridComponent, IgxSummaryResult, IgxDateSummaryOperand } from '<%=igxPackage%>';
 import { employeesData } from './localData';
 
 // tslint:disable:no-use-before-declare

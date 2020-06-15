@@ -17,7 +17,7 @@ class IgxWeatherForecastTemplate extends IgniteUIForAngularTemplate {
 					"IgxExpansionPanelModule",
 					"IgxIconModule"
 				],
-				from: "igniteui-angular"
+				from: "<%=igxPackage%>"
 			}
 		];
 	}

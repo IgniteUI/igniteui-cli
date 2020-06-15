@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IgxColumnComponent } from 'igniteui-angular';
+import { IgxColumnComponent } from '<%=igxPackage%>';
 import { SINGERS } from './data';
 
 @Component({

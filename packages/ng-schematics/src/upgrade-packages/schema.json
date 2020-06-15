@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "SchematicsAngularNgNew",
+  "title": "Ignite UI for Angular Upgrade packages Options Schema",
+  "type": "object",
+  "properties": {
+    "skipInstall": {
+      "description": "Do not automatically install packages.",
+      "type": "boolean",
+      "default": false,
+      "alias": "si"
+    }
+  }
+}
