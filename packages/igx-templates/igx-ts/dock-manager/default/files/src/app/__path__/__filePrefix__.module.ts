@@ -2,7 +2,7 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { <%=ClassName%>Component } from './<%=filePrefix%>.component';
 
-import { defineCustomElements } from 'igniteui-dockmanager/loader';
+import { defineCustomElements } from '<%=dockManagerPackage%>/loader';
 defineCustomElements();
 
 @NgModule({
