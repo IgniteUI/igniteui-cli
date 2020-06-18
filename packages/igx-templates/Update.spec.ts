@@ -9,7 +9,7 @@ interface MockFile {
 }
 
 // tslint:disable: object-literal-sort-keys
-describe("updateWorkspace - Unit tests", () => {
+describe("Igx templates - updateWorkspace", () => {
 	let fsSpy: IFileSystem;
 	beforeAll(() => {
 		fsSpy = jasmine.createSpyObj("fsSpy", ["fileExists", "directoryExists", "readFile", "writeFile", "glob"]);
@@ -25,7 +25,11 @@ describe("updateWorkspace - Unit tests", () => {
 	});
 
 	it("Should fail if no packages.json is found", async () => {
-		spyOn(pkgResolve, "getUpgradeablePackages").and.returnValue([pkgResolve.UPGRADEABLE_PACKAGES[0]]);
+		const upgradable: pkgResolve.PackageDefinition = {
+			trial: pkgResolve.NPM_PACKAGE,
+			licensed: pkgResolve.FEED_PACKAGE
+		};
+		spyOn(pkgResolve, "getUpgradeablePackages").and.returnValue([upgradable]);
 		(fsSpy.directoryExists as jasmine.Spy).and.returnValue(false);
 		(fsSpy.readFile as jasmine.Spy).and.returnValue("");
 		spyOn(Util, "log");
@@ -37,7 +41,11 @@ describe("updateWorkspace - Unit tests", () => {
 		const mockJSONInput = {
 			someName: "testValue"
 		};
-		spyOn(pkgResolve, "getUpgradeablePackages").and.returnValue([pkgResolve.UPGRADEABLE_PACKAGES[0]]);
+		const upgradable: pkgResolve.PackageDefinition = {
+			trial: pkgResolve.NPM_PACKAGE,
+			licensed: pkgResolve.FEED_PACKAGE
+		};
+		spyOn(pkgResolve, "getUpgradeablePackages").and.returnValue([upgradable]);
 		(fsSpy.directoryExists as jasmine.Spy).and.returnValue(false);
 		(fsSpy.readFile as jasmine.Spy).and.returnValue(JSON.stringify(mockJSONInput, null, 4));
 		spyOn(PackageManager, "ensureRegistryUser").and.returnValue(false);
