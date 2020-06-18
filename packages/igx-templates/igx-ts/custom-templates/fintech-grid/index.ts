@@ -28,7 +28,7 @@ class IgxFinTechGridTemplate extends IgniteUIForAngularTemplate {
 			},
 			{ import: "FormsModule", from: "@angular/forms" }
 		];
-		this.packages = ["tslib@^2.0.0", "igniteui-angular-core@~9.1.2", "igniteui-angular-charts@~9.0.1"];
+		this.packages = ["igniteui-angular-core@~9.1.2", "igniteui-angular-charts@~9.0.1"];
 	}
 }
 module.exports = new IgxFinTechGridTemplate();
