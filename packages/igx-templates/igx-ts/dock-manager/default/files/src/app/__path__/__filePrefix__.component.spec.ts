@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CommonModule } from '@angular/common';
 import { <%=ClassName%>Component } from './<%=filePrefix%>.component';
 
-import { defineCustomElements } from 'igniteui-dockmanager/loader';
+import { defineCustomElements } from '<%=dockManagerPackage%>/loader';
 defineCustomElements();
 
 describe('<%=ClassName%>Component', () => {

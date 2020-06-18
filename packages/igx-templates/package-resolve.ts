@@ -10,31 +10,26 @@ export interface PackageDefinition {
 	licensed: string;
 }
 
-// packages that have both a trial AND licensed definition
-export const UPGRADEABLE_PACKAGES: PackageDefinition[] = [
-	{
-		trial: NPM_PACKAGE,
-		licensed: FEED_PACKAGE
-	},
-	{
-		trial: NPM_DOCK_MANAGER,
-		licensed: FEED_DOCK_MANAGER
-	}
-];
+/** packages map of `trial: licensed` names */
+export const UPGRADEABLE_PACKAGES = {
+	[NPM_PACKAGE]: FEED_PACKAGE,
+	[NPM_DOCK_MANAGER]: FEED_DOCK_MANAGER
+};
 
-export function resolveIgxPackage() {
+export function resolveIgxPackage(packageName: keyof typeof UPGRADEABLE_PACKAGES) {
 	const fs = App.container.get<IFileSystem>(FS_TOKEN);
 
 	// read project package JSON
 	if (fs.fileExists("./package.json")) {
 		const packageJson = JSON.parse(fs.readFile("./package.json"));
 		const dependencies = packageJson["dependencies"];
-		if (dependencies[FEED_PACKAGE]) {
-			return FEED_PACKAGE;
+		const licensed = UPGRADEABLE_PACKAGES[packageName];
+		if (dependencies[licensed]) {
+			return licensed;
 		}
 	}
 
-	return NPM_PACKAGE;
+	return packageName;
 }
 
 export function getUpgradeablePackages(): PackageDefinition[] {
@@ -44,9 +39,12 @@ export function getUpgradeablePackages(): PackageDefinition[] {
 	if (fs.fileExists("./package.json")) {
 		const packageJson = JSON.parse(fs.readFile("./package.json"));
 		const dependencies = packageJson["dependencies"];
-		for (const packageEntry of UPGRADEABLE_PACKAGES) {
-			if (dependencies[packageEntry.trial]) {
-				upgradeable.push(packageEntry);
+		for (const packageEntry in UPGRADEABLE_PACKAGES) {
+			if (dependencies[packageEntry]) {
+				upgradeable.push({
+					trial: packageEntry,
+					licensed: UPGRADEABLE_PACKAGES[packageEntry]
+				});
 			}
 		}
 	}
