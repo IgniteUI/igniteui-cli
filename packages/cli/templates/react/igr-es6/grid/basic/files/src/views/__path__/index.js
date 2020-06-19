@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import style from './style.css';
-import { IgrLiveGridModule } from 'igniteui-react-grids/ES5/igr-live-grid-module';
-import { IgrLiveGrid } from 'igniteui-react-grids/ES5/igr-live-grid';
-import { IgrNumericColumn } from 'igniteui-react-grids/ES5/igr-numeric-column';
-import { IgrTextColumn } from 'igniteui-react-grids/ES5/igr-text-column';
-import { IgrDateTimeColumn } from 'igniteui-react-grids/ES5/igr-date-time-column';
+import { IgrDataGridModule  } from 'igniteui-react-grids';
+import { IgrDataGrid } from 'igniteui-react-grids';
+import { IgrNumericColumn } from 'igniteui-react-grids';
+import { IgrTextColumn } from 'igniteui-react-grids';
+import { IgrDateTimeColumn } from 'igniteui-react-grids';
 
 import data from './data';
 
-IgrLiveGridModule.register();
+IgrDataGridModule.register();
 
 export default class $(ClassName) extends Component {
 	title = 'Grid';
@@ -28,7 +28,7 @@ export default class $(ClassName) extends Component {
 				</div>
 				<div className={style.container}>
 				<div className={style.grid}>
-					<IgrLiveGrid
+					<IgrDataGrid
 						height="100%"
 						autoGenerateColumns="false"
 						dataSource={this.data}>
@@ -37,10 +37,10 @@ export default class $(ClassName) extends Component {
 						<IgrTextColumn propertyPath="QuantityPerUnit" headerText="Quantity Per Unit" />
 						<IgrNumericColumn propertyPath="UnitsInStock" headerText="Units In Stock" />
 						<IgrDateTimeColumn propertyPath="OrderDate" headerText="Order Date" />
-					</IgrLiveGrid>
+					</IgrDataGrid>
 				</div>
 				<div className={style.grid}>
-					<IgrLiveGrid
+					<IgrDataGrid
 						height="100%"
 						width="100%"
 						autoGenerateColumns="true"

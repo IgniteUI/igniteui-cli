@@ -6,7 +6,7 @@ class ReactProjectLibrary extends BaseProjectLibrary {
 	 */
 	constructor() {
 		super(__dirname);
-		this.name = "Ignite UI for JavaScript React Wrappers";
+		this.name = "Ignite UI for jQuery React Wrappers";
 		this.projectType = "es6";
 		this.themes = ["infragistics", "infragistics.less", "infragistics.sass", "metro"];
 

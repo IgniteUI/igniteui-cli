@@ -1,6 +1,6 @@
 import { BaseComponent } from "@igniteui/cli-core";
 
-class IgrLiveGridComponent extends BaseComponent {
+class IgrDataGridComponent extends BaseComponent {
 	/**
 	 *
 	 */
@@ -11,4 +11,4 @@ class IgrLiveGridComponent extends BaseComponent {
 		this.description = "pick from grids: basic, sorting, templating.";
 	}
 }
-module.exports = new IgrLiveGridComponent();
+module.exports = new IgrDataGridComponent();

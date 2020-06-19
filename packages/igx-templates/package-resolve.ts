@@ -5,17 +5,48 @@ export const FEED_PACKAGE = "@infragistics/igniteui-angular";
 export const NPM_DOCK_MANAGER = "igniteui-dockmanager";
 export const FEED_DOCK_MANAGER = "@infragistics/igniteui-dockmanager";
 
-export function resolvePackage() {
+export interface PackageDefinition {
+	trial: string;
+	licensed: string;
+}
+
+/** packages map of `trial: licensed` names */
+export const UPGRADEABLE_PACKAGES = {
+	[NPM_PACKAGE]: FEED_PACKAGE,
+	[NPM_DOCK_MANAGER]: FEED_DOCK_MANAGER
+};
+
+export function resolveIgxPackage(packageName: keyof typeof UPGRADEABLE_PACKAGES) {
 	const fs = App.container.get<IFileSystem>(FS_TOKEN);
 
 	// read project package JSON
 	if (fs.fileExists("./package.json")) {
 		const packageJson = JSON.parse(fs.readFile("./package.json"));
 		const dependencies = packageJson["dependencies"];
-		if (dependencies[FEED_PACKAGE]) {
-			return FEED_PACKAGE;
+		const licensed = UPGRADEABLE_PACKAGES[packageName];
+		if (dependencies[licensed]) {
+			return licensed;
 		}
 	}
 
-	return NPM_PACKAGE;
+	return packageName;
+}
+
+export function getUpgradeablePackages(): PackageDefinition[] {
+	const fs = App.container.get<IFileSystem>(FS_TOKEN);
+	const upgradeable: PackageDefinition[] = [];
+
+	if (fs.fileExists("./package.json")) {
+		const packageJson = JSON.parse(fs.readFile("./package.json"));
+		const dependencies = packageJson["dependencies"];
+		for (const packageEntry in UPGRADEABLE_PACKAGES) {
+			if (dependencies[packageEntry]) {
+				upgradeable.push({
+					trial: packageEntry,
+					licensed: UPGRADEABLE_PACKAGES[packageEntry]
+				});
+			}
+		}
+	}
+	return upgradeable;
 }

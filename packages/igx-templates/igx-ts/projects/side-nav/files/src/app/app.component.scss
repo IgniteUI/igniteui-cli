@@ -1,5 +1,4 @@
-
-:host > div {
+.outer-wrapper {
   height: 100%;
 }
 
@@ -9,13 +8,23 @@
   flex-flow: row nowrap;
   justify-content: center;
   align-items: stretch;
-  padding: 0 24px;
   overflow: auto;
+
+  > *:not(router-outlet) {
+    padding: 0 24px;
+  }
+
+  p {
+    margin: 15px;
+  }
 }
 
 @media only screen and (max-width: 1024px) {
   .content {
-    padding: 0 15px;
     justify-content: flex-start;
+
+    > *:not(router-outlet) {
+      padding: 0 15px;
+    }
   }
 }

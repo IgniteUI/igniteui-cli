@@ -1,4 +1,4 @@
-import { FEED_PACKAGE, IgniteUIForAngularTemplate, NPM_PACKAGE } from "@igniteui/angular-templates";
+import { FEED_PACKAGE, IgniteUIForAngularTemplate, NPM_DOCK_MANAGER, NPM_PACKAGE } from "@igniteui/angular-templates";
 import { App, FS_TOKEN, IFileSystem, ProjectConfig, TypeScriptFileUpdate, Util } from "@igniteui/cli-core";
 import * as path from "path";
 import { resetSpy } from "../../helpers/utils";
@@ -135,14 +135,17 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 				ClassName: "Test",
 				cliVersion: Util.version(),
 				description: "test description",
+				dockManagerPackage: `${NPM_DOCK_MANAGER}`,
+				igxPackage: `${NPM_PACKAGE}`
+			};
+			Object.assign(expected, {
 				// extra
 				extraConfig1 : "extraConfig1",
 				filePrefix: "test",
 				gridFeatures : "{ features }",
-				igxPackage: `${NPM_PACKAGE}`,
 				name: "test",
 				path: "test"
-			};
+			});
 
 			const options = {
 				extraConfig : {

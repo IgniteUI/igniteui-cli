@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { IgrCategoryChartModule } from 'igniteui-react-charts/ES5/igr-category-chart-module';
-import { IgrCategoryChart } from 'igniteui-react-charts/ES5/igr-category-chart';
+import { IgrCategoryChartModule } from 'igniteui-react-charts';
+import { IgrCategoryChart } from 'igniteui-react-charts';
 import style from './style.css';
 
 IgrCategoryChartModule.register();

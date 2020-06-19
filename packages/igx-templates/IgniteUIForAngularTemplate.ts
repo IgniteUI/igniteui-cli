@@ -3,7 +3,7 @@ import {
 	ControlExtraConfiguration, FS_TOKEN, IFileSystem, Template, TemplateDependency, TypeScriptFileUpdate, Util
 } from "@igniteui/cli-core";
 import * as path from "path";
-import { resolvePackage } from "./package-resolve";
+import { NPM_DOCK_MANAGER, NPM_PACKAGE, resolveIgxPackage } from "./package-resolve";
 
 export class IgniteUIForAngularTemplate implements Template {
 	public components: string[];
@@ -78,10 +78,7 @@ export class IgniteUIForAngularTemplate implements Template {
 		//4) populate the declarations portion of the @NgModule with the component class name.
 		const mainModulePath = path.join(projectPath, `src/app/${modulePath}`);
 		const mainModule = new TsUpdate(mainModulePath);
-		mainModule.addDeclaration(
-			path.join(projectPath, `src/app/${this.folderName(name)}/${this.fileName(name)}.component.ts`),
-			modulePath !== "app.module.ts"
-		);
+		this.addClassDeclaration(mainModule, projectPath, name, modulePath);
 
 		// import IgxModules and other dependencies
 		for (const dep of this.dependencies) {
@@ -104,6 +101,12 @@ export class IgniteUIForAngularTemplate implements Template {
 	}
 	public setExtraConfiguration(extraConfigKeys: {}) { }
 
+	protected addClassDeclaration(mainModule: TypeScriptFileUpdate, projPath: string, name: string, modulePath: string) {
+		mainModule.addDeclaration(
+			path.join(projPath, `src/app/${this.folderName(name)}/${this.fileName(name)}.component.ts`),
+			modulePath !== "app.module.ts");
+	}
+
 	protected getBaseVariables(name: string): { [key: string]: string } {
 		const config = {};
 		config["name"] = Util.nameFromPath(name);
@@ -113,7 +116,8 @@ export class IgniteUIForAngularTemplate implements Template {
 		config["description"] = this.description;
 		config["cliVersion"] = Util.version();
 		config["camelCaseName"] = Util.camelCase(name);
-		config["igxPackage"] = resolvePackage();
+		config["igxPackage"] = resolveIgxPackage(NPM_PACKAGE);
+		config["dockManagerPackage"] = resolveIgxPackage(NPM_DOCK_MANAGER);
 
 		/** 'nameMerged' is never used igx templates, removed */
 		return config;

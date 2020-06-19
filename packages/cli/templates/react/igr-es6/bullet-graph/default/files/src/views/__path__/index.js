@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { IgrBulletGraphModule } from 'igniteui-react-gauges/ES5/igr-bullet-graph-module';
-import { IgrBulletGraph } from 'igniteui-react-gauges/ES5/igr-bullet-graph';
+import { IgrBulletGraphModule } from 'igniteui-react-gauges';
+import { IgrBulletGraph } from 'igniteui-react-gauges';
 import style from './style.css';
 
 IgrBulletGraphModule.register();

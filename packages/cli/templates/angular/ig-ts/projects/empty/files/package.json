@@ -30,8 +30,8 @@
     "core-js": "^3.6.5",
     "jquery": ">=1.9.1",
     "jquery-ui": ">=1.10.5",
-    "igniteui-angular-wrappers": "~10.0.0-beta.0",
-    "ignite-ui": "~19.2",
+    "igniteui-angular-wrappers": "~9.1.0",
+    "ignite-ui": "~20.1",
     "rxjs": "~6.5.5",
     "zone.js": "~0.10.3"
   },
