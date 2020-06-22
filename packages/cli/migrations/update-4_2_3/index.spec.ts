@@ -42,7 +42,7 @@ describe("Update 4.2.3", () => {
 `
 		);
 
-		schematicRunner.runSchematicAsync("migration-04", {}, appTree).toPromise();
+		await schematicRunner.runSchematicAsync("migration-04", {}, appTree).toPromise();
 		expect(appTree.readContent(stylesFile).replace(/\r\n/g, "\n"))
 			.toEqual(
 `@import '~igniteui-angular/lib/core/styles/themes/index';

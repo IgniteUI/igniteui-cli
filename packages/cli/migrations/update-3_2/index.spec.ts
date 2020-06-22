@@ -46,7 +46,7 @@ describe("Update 3.2.0", () => {
  }`
 		);
 
-		schematicRunner.runSchematicAsync("migration-03", {}, appTree).toPromise();
+		await schematicRunner.runSchematicAsync("migration-03", {}, appTree).toPromise();
 		expect(appTree.readContent(summaryFile))
 			.toEqual(
 `class CustomDateSummary extends IgxDateSummaryOperand {

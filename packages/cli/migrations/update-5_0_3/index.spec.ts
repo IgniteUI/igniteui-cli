@@ -39,7 +39,7 @@ export class GlobalErrorHandlerService implements ErrorHandler {
 `
 		);
 
-		schematicRunner.runSchematicAsync("migration-06", {}, appTree).toPromise();
+		await schematicRunner.runSchematicAsync("migration-06", {}, appTree).toPromise();
 		expect(appTree.readContent(errorService).replace(/\r\n/g, "\n"))
 			.toEqual(
 `import { ErrorHandler, Injectable, isDevMode } from '@angular/core';

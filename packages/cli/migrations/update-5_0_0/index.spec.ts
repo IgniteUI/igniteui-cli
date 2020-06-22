@@ -44,7 +44,7 @@ export class AppModule {
 `
 		);
 
-		schematicRunner.runSchematicAsync("migration-05", {}, appTree).toPromise();
+		await schematicRunner.runSchematicAsync("migration-05", {}, appTree).toPromise();
 		expect(appTree.readContent(indexFile).replace(/\r\n/g, "\n"))
 			.toEqual(
 `import { BrowserModule, HammerModule } from '@angular/platform-browser';
