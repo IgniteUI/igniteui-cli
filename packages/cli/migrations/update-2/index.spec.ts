@@ -14,7 +14,7 @@ describe("Update 2.0.0", () => {
 		appTree = new UnitTestTree(new EmptyTree());
 	});
 
-	it("should update router event rxjs subscription", done => {
+	fit("should update router event rxjs subscription", async done => {
 		appTree.create(
 			"/src/app/app.component.ts",
 `import { Component, OnInit, ViewChild } from '@angular/core';
@@ -47,7 +47,7 @@ export class AppComponent implements OnInit {
 `
 		);
 
-		const tree = schematicRunner.runSchematic("migration-01", {}, appTree);
+		const tree = await schematicRunner.runSchematicAsync("migration-01", {}, appTree).toPromise();
 		expect(tree.readContent("/src/app/app.component.ts"))
 			.toEqual(
 `import { Component, OnInit, ViewChild } from '@angular/core';
