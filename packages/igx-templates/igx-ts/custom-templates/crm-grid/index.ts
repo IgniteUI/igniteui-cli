@@ -41,7 +41,7 @@ class IgxGridCRMTemplate extends IgniteUIForAngularTemplate {
 			},
 			{ import: "FormsModule", from: "@angular/forms" }
 		];
-		this.packages = ["igniteui-angular-core@~9.1.2", "igniteui-angular-charts@~9.0.1"];
+		this.packages = ["igniteui-angular-core@~9.1.2", "igniteui-angular-charts@~9.1.2"];
 	}
 }
 module.exports = new IgxGridCRMTemplate();
