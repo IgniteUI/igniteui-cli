@@ -14,7 +14,7 @@ describe("Update 2.0.0", () => {
 		appTree = new UnitTestTree(new EmptyTree());
 	});
 
-	fit("should update router event rxjs subscription", async done => {
+	it("should update router event rxjs subscription", async done => {
 		appTree.create(
 			"/src/app/app.component.ts",
 `import { Component, OnInit, ViewChild } from '@angular/core';

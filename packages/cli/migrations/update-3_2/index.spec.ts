@@ -22,7 +22,7 @@ describe("Update 3.2.0", () => {
 		appTree.create("/angular.json", JSON.stringify(configJson));
 	});
 
-	it("should update CustomDateSummary summaryResult assignment", done => {
+	it("should update CustomDateSummary summaryResult assignment", async done => {
 		const summaryFile = "/src/app/grid-summaries/grid-summaries.component.ts";
 		appTree.create(summaryFile,
 `class CustomDateSummary extends IgxDateSummaryOperand {
@@ -46,7 +46,7 @@ describe("Update 3.2.0", () => {
  }`
 		);
 
-		schematicRunner.runSchematic("migration-03", {}, appTree);
+		schematicRunner.runSchematicAsync("migration-03", {}, appTree);
 		expect(appTree.readContent(summaryFile))
 			.toEqual(
 `class CustomDateSummary extends IgxDateSummaryOperand {
