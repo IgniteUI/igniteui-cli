@@ -22,7 +22,7 @@ describe("Update 3.0.0", () => {
 </body>`
 		);
 
-		schematicRunner.runSchematicAsync("migration-02", {}, appTree);
+		schematicRunner.runSchematicAsync("migration-02", {}, appTree).toPromise();
 		expect(appTree.readContent(indexFile))
 			.toEqual(
 `<body class="igx-typography">
@@ -30,15 +30,15 @@ describe("Update 3.0.0", () => {
 </body>`
 			);
 		appTree.overwrite(indexFile, `<body class="">`);
-		schematicRunner.runSchematicAsync("migration-02", {}, appTree);
+		schematicRunner.runSchematicAsync("migration-02", {}, appTree).toPromise();
 		expect(appTree.readContent(indexFile)).toEqual(`<body class="igx-typography">`);
 
 		appTree.overwrite(indexFile, `<body class="test class">`);
-		schematicRunner.runSchematicAsync("migration-02", {}, appTree);
+		schematicRunner.runSchematicAsync("migration-02", {}, appTree).toPromise();
 		expect(appTree.readContent(indexFile)).toEqual(`<body class="test class igx-typography">`);
 
 		appTree.overwrite(indexFile, `<body class="test igx-typography">`);
-		schematicRunner.runSchematicAsync("migration-02", {}, appTree);
+		schematicRunner.runSchematicAsync("migration-02", {}, appTree).toPromise();
 		expect(appTree.readContent(indexFile)).toEqual(`<body class="test igx-typography">`);
 		done();
 	});
@@ -52,7 +52,7 @@ describe("Update 3.0.0", () => {
 `
 		);
 
-		schematicRunner.runSchematicAsync("migration-02", {}, appTree);
+		schematicRunner.runSchematicAsync("migration-02", {}, appTree).toPromise();
 		expect(appTree.readContent(cssFile))
 			.toEqual(
 `body {
@@ -85,7 +85,7 @@ h3 {
 })`
 		);
 
-		schematicRunner.runSchematicAsync("migration-02", {}, appTree);
+		schematicRunner.runSchematicAsync("migration-02", {}, appTree).toPromise();
 		expect(appTree.readContent(indexFile))
 			.toEqual(
 `@NgModule({
@@ -112,7 +112,7 @@ h3 {
 }`
 		);
 
-		schematicRunner.runSchematicAsync("migration-02", {}, appTree);
+		schematicRunner.runSchematicAsync("migration-02", {}, appTree).toPromise();
 		expect(appTree.readContent(indexFile))
 			.toEqual(
 `{
