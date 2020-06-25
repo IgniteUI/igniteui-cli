@@ -13,20 +13,20 @@
   "keywords": [],
   "author": "",
   "dependencies": {
-    "@angular/common": "10.0.0-rc.4",
-    "@angular/compiler": "10.0.0-rc.4",
-    "@angular/core": "10.0.0-rc.4",
-    "@angular/forms": "10.0.0-rc.4",
-    "@angular/platform-browser": "10.0.0-rc.4",
-    "@angular/platform-browser-dynamic": "10.0.0-rc.4",
-    "@angular/router": "10.0.0-rc.4",
+    "@angular/common": "~10.0.0",
+    "@angular/compiler": "~10.0.0",
+    "@angular/core": "~10.0.0",
+    "@angular/forms": "~10.0.0",
+    "@angular/platform-browser": "~10.0.0",
+    "@angular/platform-browser-dynamic": "~10.0.0",
+    "@angular/router": "~10.0.0",
     "angular-in-memory-web-api": "~0.9.0",
     "bootstrap": "^3.3.7",
     "systemjs": "0.19.39",
     "core-js": "^2.4.1",
     "rxjs": "~6.5.5",
     "zone.js": "~0.10.3",
-    "igniteui-angular-wrappers": "~10.0.0-beta.0"
+    "igniteui-angular-wrappers": "~10.0.0"
   },
   "devDependencies": {
     "concurrently": "^3.1.0",
