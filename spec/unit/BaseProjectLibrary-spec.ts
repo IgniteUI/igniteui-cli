@@ -227,7 +227,7 @@ describe("Unit - Base project library ", () => {
 	});
 
 	it("gets correct component groups", async done => {
-		spyOn(Util, "getDirectoryNames").and.returnValues(["myChart", "myCombo", "myGrid"]);
+		spyOn(Util, "getDirectoryNames").and.returnValues(["Charts", "Maps", "Gauges", "Data Entry & Display"]);
 
 		spyOn(require("module"), "_load").and.callFake((modulePath: string) => {
 			if (modulePath.startsWith(__dirname)) {
