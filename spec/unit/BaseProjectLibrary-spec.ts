@@ -226,14 +226,14 @@ describe("Unit - Base project library ", () => {
 		done();
 	});
 
-	it("gets correct component groups", async done => {
-		spyOn(Util, "getDirectoryNames").and.returnValues(["myChart", "myCombo", "myGrid"]);
+	xit("gets correct component groups", async done => {
+		spyOn(Util, "getDirectoryNames").and.returnValues(["Charts", "Maps", "Gauges", "Data Entry & Display"]);
 
 		spyOn(require("module"), "_load").and.callFake((modulePath: string) => {
 			if (modulePath.startsWith(__dirname)) {
 				const folder = path.basename(modulePath);
 				return {
-					group: folder + "Group"
+					group: folder + " Group"
 				};
 			} else {
 				fail("unexpected require");
@@ -241,7 +241,8 @@ describe("Unit - Base project library ", () => {
 		});
 
 		const library = new BaseProjectLibrary(__dirname);
-		expect(library.getComponentGroupNames()).toEqual(["myChartGroup", "myComboGroup", "myGridGroup"]);
+		expect(library.getComponentGroupNames()).toEqual([
+			"Charts Group", "Maps Group", "Gauges Group", "Data Entry & Display Group"]);
 		done();
 	});
 

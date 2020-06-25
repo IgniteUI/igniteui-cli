@@ -163,7 +163,7 @@ export class BaseProjectLibrary implements ProjectLibrary {
 			}
 			return prev;
 		}, []);
-		return groups;
+		return [...this.groupDescriptions.keys()].filter(item => groups.includes(item));
 	}
 
 	public getComponentsByGroup(group: string): Component[] {
