@@ -1,0 +1,33 @@
+<div class="info">
+  <p>You can read more about configuring the map component in the
+    <a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/geo-map.html" target="_blank">official documentation page
+    </a>.
+  </p>
+</div>
+<igx-geographic-map #map
+  width="100%"
+  height="calc(100% - 60px)"
+  zoomable="true" >
+</igx-geographic-map>
+
+<ng-template let-series="series" let-item="item" #template>
+  <div>
+    <div *ngIf="item.org;then hasOrg; else notOrg" ></div>
+    <span [style.color]="series.brush">
+      {{item.name}}
+    </span>
+    <span>
+      {{item.pop}} M
+    </span>
+  </div>
+  <ng-template #hasOrg>
+    <span>
+      {{item.org}}
+    </span>
+    <br />
+  </ng-template>
+  <ng-template #notOrg>
+    <span>
+    </span>
+  </ng-template>
+</ng-template>

@@ -1,10 +1,7 @@
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { CommonModule } from '@angular/common';
 import { <%=ClassName%>Component } from './<%=filePrefix%>.component';
-
-import { defineCustomElements } from '<%=dockManagerPackage%>/loader';
-defineCustomElements();
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { IgxGeographicMapModule } from 'igniteui-angular-maps';
 
 describe('<%=ClassName%>Component', () => {
   let component: <%=ClassName%>Component;
@@ -13,8 +10,7 @@ describe('<%=ClassName%>Component', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [<%=ClassName%>Component],
-      imports: [CommonModule],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+      imports: [IgxGeographicMapModule, NoopAnimationsModule]
     })
       .compileComponents();
   }));
@@ -27,6 +23,5 @@ describe('<%=ClassName%>Component', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-    expect(document.querySelector('igc-dockmanager').constructor).toBe(customElements.get('igc-dockmanager'));
   });
 });

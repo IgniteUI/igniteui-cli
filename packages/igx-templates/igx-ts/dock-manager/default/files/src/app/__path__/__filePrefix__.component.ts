@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IgcDockManagerLayout,
   IgcDockManagerPaneType,
   IgcSplitPaneOrientation
-} from 'igniteui-dockmanager';
+} from '<%=dockManagerPackage%>';
 
 @Component({
   selector: 'app-<%=filePrefix%>',
