@@ -1,6 +1,6 @@
 {
   "name": "@igniteui/cli-core",
-  "version": "5.2.0",
+  "version": "5.2.1",
   "description": "Base types and functionality for Ignite UI CLI",
   "main": "index.js",
   "typings": "index.d.ts",
