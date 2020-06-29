@@ -226,9 +226,14 @@ describe("Unit - Base project library ", () => {
 		done();
 	});
 
-	xit("gets correct component groups", async done => {
-		spyOn(Util, "getDirectoryNames").and.returnValues(["Charts", "Maps", "Gauges", "Data Entry & Display"]);
+	it("gets correct component groups", async done => {
+		const hash = ["Grids & Lists Group", "Charts Group", "Maps Group", "Gauges Group", "Data Entry & Display Group"];
+		spyOn(Util, "getDirectoryNames").and.returnValues
+		(["Grids & Lists", "Charts", "Maps", "Gauges", "Data Entry & Display"]);
 
+		const library = new BaseProjectLibrary(__dirname);
+		spyOn(library.groupDescriptions, "keys")
+			.and.returnValue(hash);
 		spyOn(require("module"), "_load").and.callFake((modulePath: string) => {
 			if (modulePath.startsWith(__dirname)) {
 				const folder = path.basename(modulePath);
@@ -239,10 +244,11 @@ describe("Unit - Base project library ", () => {
 				fail("unexpected require");
 			}
 		});
+		spyOn(library, "components")
+			.and.returnValues(["IgxAutocompleteComponent", "IgxBulletGraphAnimationComponent", "IgxCalendarComponent", "IgxCarouselComponent"]);
 
-		const library = new BaseProjectLibrary(__dirname);
 		expect(library.getComponentGroupNames()).toEqual([
-			"Charts Group", "Maps Group", "Gauges Group", "Data Entry & Display Group"]);
+			"Grids & Lists Group", "Charts Group", "Maps Group", "Gauges Group", "Data Entry & Display Group"]);
 		done();
 	});
 
