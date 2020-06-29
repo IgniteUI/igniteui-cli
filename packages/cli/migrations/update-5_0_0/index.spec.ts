@@ -29,7 +29,7 @@ indent_size = 2
 `);
 	});
 
-	it("should add HammerModule", () => {
+	it("should add HammerModule", async done => {
 		const indexFile = "/src/app/app.module.ts";
 		appTree.create(indexFile,
 `import { BrowserModule } from '@angular/platform-browser';
@@ -44,7 +44,7 @@ export class AppModule {
 `
 		);
 
-		schematicRunner.runSchematic("migration-05", {}, appTree);
+		await schematicRunner.runSchematicAsync("migration-05", {}, appTree).toPromise();
 		expect(appTree.readContent(indexFile).replace(/\r\n/g, "\n"))
 			.toEqual(
 `import { BrowserModule, HammerModule } from '@angular/platform-browser';
@@ -59,5 +59,6 @@ export class AppModule {
 }
 `.replace(/\r\n/g, "\n")
 			);
+		done();
 	});
 });

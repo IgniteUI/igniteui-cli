@@ -30,8 +30,7 @@
             "styles": [
               "src/styles.scss"<%=DefaultTheme%>
             ],
-            "scripts": ["./node_modules/hammerjs/hammer.min.js"],
-            "es5BrowserSupport": true
+            "scripts": ["./node_modules/hammerjs/hammer.min.js"]
           },
           "configurations": {
             "es5": {

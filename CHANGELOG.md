@@ -1,3 +1,59 @@
+# [6.0.0](https://github.com/IgniteUI/igniteui-cli/compare/v5.2.1...v6.0.0) (2020-06-25)
+
+🎉 This update brings Angular 10 updates including igniteui-angular version [10.0.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/10.0.0).
+
+🌟 When using Step By Step mode of the CLI you can choose one of the frameworks - Angular, React or jQuery.  
+When creating and modifying Angular projects we recommend using our [Ignite UI Angular Schematics](https://www.infragistics.com/products/ignite-ui-angular/angular/components/general/cli-overview.html).
+
+## igniteui/cli-core@6.0.0
+
+#### Features
+ - Restore original entry selection with all frameworks after Angular Schematics are available [#579](https://github.com/IgniteUI/igniteui-cli/issues/579)
+
+## igniteui/angular-templates@10.0.600
+
+#### Features
+ - Add Angular 10 support [#767](https://github.com/IgniteUI/igniteui-cli/issues/767)
+
+## igniteui/angular-schematics@10.0.600
+
+#### Features
+ - Add Angular 10 support [#767](https://github.com/IgniteUI/igniteui-cli/issues/767)
+
+## igniteui-cli@6.0.0
+
+#### Features
+ - Restore original entry selection with all frameworks after Angular Schematics are available [#579](https://github.com/IgniteUI/igniteui-cli/issues/579)
+ - Add Angular 10 support [#767](https://github.com/IgniteUI/igniteui-cli/issues/767)
+
+# [5.2.1](https://github.com/IgniteUI/igniteui-cli/compare/v5.2.0...v5.2.1) (2020-06-25)
+
+## igniteui/cli-core@5.2.1
+
+#### Bug Fixes
+
+* use group.json for step by step groups [#707](https://github.com/IgniteUI/igniteui-cli/issues/707) ([adf562c](https://github.com/IgniteUI/igniteui-cli/commit/adf562c))
+
+## igniteui/angular-templates@9.1.521
+
+#### Bug Fixes
+
+* **igx,dock-manager:** resolve package name from project ([ac66d8e](https://github.com/IgniteUI/igniteui-cli/commit/ac66d8e))
+
+#### Features
+
+* Adding a Map template for Angular ([7cbddeb](https://github.com/IgniteUI/igniteui-cli/commit/7cbddeb))
+
+## igniteui/angular-schematics@9.1.521
+
+#### Bug Fixes
+
+* **igx,dock-manager:** resolve package name from project ([ac66d8e](https://github.com/IgniteUI/igniteui-cli/commit/ac66d8e))
+
+## igniteui-cli@5.2.1 (2020-06-25)
+
+Note: Version bump only for package igniteui-cli
+
 # [5.2.0](https://github.com/IgniteUI/igniteui-cli/compare/v5.1.1...v5.2.0) (2020-06-11)
 
 ## @igniteui/angular-templates@9.1.520
@@ -35,12 +91,11 @@ Updated packages upgrade handling to better detect and handle multiple Ignite UI
 
 ## igniteui/angular-schematics@9.1.511
 
-Note: Version bump only for package igniteui/angular-templates
-
+Note: Version bump only for package igniteui/angular-schematics
 
 ## igniteui-cli@5.1.1
 
-Note: Version bump only for package igniteui/angular-templates
+Note: Version bump only for package igniteui-cli
 
 
 # [5.1.0](https://github.com/IgniteUI/igniteui-cli/compare/v5.0.4...v5.1.0) (2020-06-01)
