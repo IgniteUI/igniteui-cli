@@ -66,7 +66,7 @@ describe("Help command", () => {
 		--help, -h            Show help                                      [boolean]
 		--name, -n            Project name                                    [string]
 		--framework, -f       Framework to setup project for
-				  [string] [choices: "angular", "jquery", "react"] [default: "jquery"]
+				  [string] [choices: "angular", "jquery", "react"] [default: "angular"]
 		--type, -t            Project type (depends on framework)             [string]
 		--theme, --th         Project theme (depends on project type)         [string]
 		--skip-git, --sg      Do not automatically initialize repository for the
@@ -127,7 +127,7 @@ describe("Help command", () => {
 		--version, -v      Show current Ignite UI CLI version                [boolean]
 		--help, -h         Show help                                         [boolean]
 		--framework, -f    Framework to generate template for
-											              [string] [default: "jquery"]
+											              [string] [default: "angular"]
 		--name, -n         Template name         [string] [default: "custom-template"]
 		--skip-config, -s  Runs generate command without updating the cli config
 															[boolean] [default: false]
@@ -148,7 +148,7 @@ describe("Help command", () => {
 		Options:
 		--version, -v    Show current Ignite UI CLI version                  [boolean]
 		--help, -h       Show help                                           [boolean]
-		--framework, -f  Framework to list templates for  [string] [default: "jquery"]
+		--framework, -f  Framework to list templates for  [string] [default: "angular"]
 		--type, -t       Project type (depends on framework)                  [string]
 		`;
 

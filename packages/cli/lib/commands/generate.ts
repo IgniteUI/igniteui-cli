@@ -17,7 +17,7 @@ const command = {
 				builder: {
 					"framework": {
 						alias: "f",
-						default: "jquery",
+						default: "angular",
 						describe: "Framework to generate template for",
 						type: "string"
 					},

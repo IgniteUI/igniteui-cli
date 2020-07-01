@@ -9,7 +9,7 @@ const command = {
 	builder: {
 		framework: {
 			alias: "f",
-			default: "jquery",
+			default: "angular",
 			describe: "Framework to setup quickstart for",
 			type: "string",
 			choices: ["jquery", "react", "angular"]

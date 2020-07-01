@@ -16,7 +16,7 @@ command = {
 	builder: {
 		framework: {
 			alias: "f",
-			default: "jquery",
+			default: "angular",
 			describe: "Framework to list templates for",
 			type: "string"
 		},

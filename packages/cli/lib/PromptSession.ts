@@ -63,7 +63,7 @@ export class PromptSession extends BasePromptSession {
 				name: "framework",
 				message: "Choose framework:",
 				choices: this.getFrameworkNames(),
-				default: "jQuery"
+				default: "Angular"
 			});
 
 			const framework = this.templateManager.getFrameworkByName(frameRes);
