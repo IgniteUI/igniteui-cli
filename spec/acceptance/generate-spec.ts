@@ -64,7 +64,7 @@ describe("Generate command", () => {
 			components: [],
 			controlGroup: "",
 			dependencies: [],
-			description: "Ignite UI for jQuery template created with Ignite UI CLI",
+			description: "Ignite UI for Angular template created with Ignite UI CLI",
 			framework: "jquery",
 			id: "custom-template",
 			listInComponentTemplates: false,
