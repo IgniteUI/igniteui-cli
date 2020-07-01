@@ -146,8 +146,7 @@ describe("Unit - TypeScriptFileUpdate", () => {
 		});
 	});
 
-	fit("Adds routes", async done => {
-		App.initialize();
+	it("Adds routes", async done => {
 		spyOn(TypeScriptUtils, "getFileSource").and.returnValues(
 			ts.createSourceFile("route-module.ts", `
 				const routes: Routes = [
@@ -198,10 +197,11 @@ describe("Unit - TypeScriptFileUpdate", () => {
 	});
 
 	fit("Adds child routes", async done => {
+		App.initialize();
 		spyOn(TypeScriptUtils, "getFileSource").and.returnValues(
 			ts.createSourceFile("route-module.ts", `
 				const routes: Routes = [
-					{ path: 'parent', component: ParentComponent }
+					{ path: 'parent', exising }
 				];
 			`, ts.ScriptTarget.Latest, true),
 			{ getChildren: () => ["component1"] },
@@ -222,7 +222,7 @@ describe("Unit - TypeScriptFileUpdate", () => {
 			"route-module.ts",
 			jasmine.stringMatching(`import { Component1 } from "./to/component";\\s*` +
 				`const routes: Routes = \\[\\s*` +
-				`{ path: 'parent', component: ParentComponent, children:\\s*` +
+				`{ path: 'parent', exising, children:\\s*` +
 				`\\[\\{ path: "child-1", component: Component1 }\\]\\ }\\s*` +
 				`\\];\\s*`
 			)
@@ -238,7 +238,7 @@ describe("Unit - TypeScriptFileUpdate", () => {
 			jasmine.stringMatching(`import { Component1 } from "./to/component";\\s*` +
 				`import { Component2 } from "./to/component2";\\s*` +
 				`const routes: Routes = \\[\\s*` +
-				`{ path: 'parent', component: ParentComponent, children:\\s*` +
+				`{ path: 'parent', exising, children:\\s*` +
 				`\\[\\{ path: "child-1", component: Component1 }, { path: "child-2", component: Component2 }\\]\\ }\\s*` +
 				`\\];\\s*`
 			)

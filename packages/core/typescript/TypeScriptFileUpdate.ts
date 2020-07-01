@@ -121,7 +121,7 @@ export class TypeScriptFileUpdate {
 						}
 						// Get all property assignements from SyntaxList
 						let existingProperties = syntaxList.getChildren()
-							.filter(element => element.kind === ts.SyntaxKind.PropertyAssignment) as ts.ObjectLiteralElementLike[];
+							.filter(element => element.kind !== ts.SyntaxKind["CommaToken"]) as ts.ObjectLiteralElementLike[];
 						const newArrayValues = childrenArray.elements.concat(newObject);
 						if (!childrenProperty) {
 							const propertyName = "children";
