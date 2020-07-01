@@ -65,13 +65,13 @@ describe("Generate command", () => {
 			controlGroup: "",
 			dependencies: [],
 			description: "Ignite UI for Angular template created with Ignite UI CLI",
-			framework: "jquery",
+			framework: "angular",
 			id: "custom-template",
 			listInComponentTemplates: false,
 			listInCustomTemplates: true,
 			name: "custom-template",
 			packages: [],
-			projectType: "js"
+			projectType: "igx-ts"
 		};
 		expect(expectedTemplate).toEqual(actualTemplate);
 
@@ -85,9 +85,9 @@ describe("Generate command", () => {
 			t: "event",
 			ec: "$ig generate",
 			el: "subcommand: template",
-			ea: "template name: custom-template; framework: jquery;project type: js; skip-config: false",
-			cd1: "jquery",
-			cd2: "js",
+			ea: "template name: custom-template; framework: angular;project type: igx-ts; skip-config: false",
+			cd1: "angular",
+			cd2: "igx-ts",
 			cd7: "custom-template",
 			cd9: "template",
 			cd10: false
