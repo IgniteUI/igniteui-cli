@@ -11,14 +11,21 @@ describe("Unit - TypeScriptFileUpdate", () => {
 		it("Create with source file", async done => {
 			class TestTsFileUpdate extends TypeScriptFileUpdate {
 				public initState() {
+					super.initState();
+				}
+
+				public loadImportsMeta() {
+					return null;
 				}
 			}
 			spyOn(TypeScriptUtils, "getFileSource");
-			spyOn(TestTsFileUpdate.prototype, "initState");
-
+			spyOn(TestTsFileUpdate.prototype, "loadImportsMeta");
+			spyOn(TestTsFileUpdate.prototype, "initState").and.callThrough();
 			const tsUpdate = new TestTsFileUpdate("/test/file");
+
 			expect(TypeScriptUtils.getFileSource).toHaveBeenCalledWith("/test/file");
 			expect(TestTsFileUpdate.prototype.initState).toHaveBeenCalled();
+			expect(TestTsFileUpdate.prototype.loadImportsMeta).toHaveBeenCalled();
 			done();
 		});
 
