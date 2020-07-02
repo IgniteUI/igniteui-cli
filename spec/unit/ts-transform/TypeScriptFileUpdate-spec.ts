@@ -214,7 +214,7 @@ describe("Unit - TypeScriptFileUpdate", () => {
 		done();
 	});
 
-	fit("Adds child routes", async done => {
+	it("Adds child routes", async done => {
 		let sourceCalls = 0;
 		spyOn(TypeScriptUtils, "getFileSource").and.callFake((input: string) => {
 			if (input === "route-module.ts") {

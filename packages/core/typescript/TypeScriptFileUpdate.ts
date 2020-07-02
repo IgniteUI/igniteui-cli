@@ -5,7 +5,7 @@ import { FS_TOKEN, IFileSystem } from "../types/FileSystem";
 import { Util } from "../util/Util";
 import { TypeScriptUtils as TsUtils } from "./TypeScriptUtils";
 
-const ROUTES_VARIABLE = "routes";
+const DEFAULT_ROUTES_VARIABLE = "routes";
 declare type NodeVisitor = (node: ts.Node) => ts.Node;
 /**
  * Apply various updates to typescript files using AST
@@ -69,11 +69,16 @@ export class TypeScriptFileUpdate {
 	 * @param parentRoutePath __Optional__ If passed, will include the new route as a **child** of the specified route path
 	 */
 	public addRoute(
-		filePath: string, linkPath: string, linkText: string, routesVariable = ROUTES_VARIABLE, parentRoutePath?: string) {
+		filePath: string,
+		linkPath: string,
+		linkText: string,
+		routesVariable = DEFAULT_ROUTES_VARIABLE,
+		parentRoutePath?: string
+	) {
 		let className: string;
 		const fileSource = TsUtils.getFileSource(filePath);
 		const relativePath: string = Util.relativePath(this.targetPath, filePath, true, true);
-		routesVariable = routesVariable || ROUTES_VARIABLE;
+		routesVariable = routesVariable || DEFAULT_ROUTES_VARIABLE;
 		className = TsUtils.getClassName(fileSource.getChildren());
 		this.requestImport([className], relativePath);
 
@@ -131,6 +136,9 @@ export class TypeScriptFileUpdate {
 							let childrenProperty: ts.PropertyAssignment = syntaxList
 								.getChildren().filter(filterForChildren)[0] as ts.PropertyAssignment;
 							let childrenArray: ts.ArrayLiteralExpression = null;
+
+							// if the target parent route already has child routes - get them
+							// if not - create an empty 'chuldren' array
 							if (childrenProperty) {
 								childrenArray = childrenProperty.getChildren()
 									.filter(element => element.kind === ts.SyntaxKind.ArrayLiteralExpression)[0] as ts.ArrayLiteralExpression
@@ -138,7 +146,7 @@ export class TypeScriptFileUpdate {
 							} else {
 								childrenArray = ts.createArrayLiteral();
 							}
-							// get all property assignements from SyntaxList
+
 							let existingProperties = syntaxList.getChildren()
 								.filter(element => element.kind !== ts.SyntaxKind["CommaToken"]) as ts.ObjectLiteralElementLike[];
 							const newArrayValues = childrenArray.elements.concat(newObject);
@@ -152,12 +160,14 @@ export class TypeScriptFileUpdate {
 								const index = existingProperties.indexOf(childrenProperty);
 								const childrenPropertyName = childrenProperty.name;
 								childrenProperty =
-								ts.updatePropertyAssignment(childrenProperty, childrenPropertyName, ts.createArrayLiteral([...newArrayValues]));
-								//  ts.updatePropertyAssignment(childrenProperty, "children", newArray)
+									ts.updatePropertyAssignment(
+										childrenProperty,
+										childrenPropertyName,
+										ts.createArrayLiteral([...newArrayValues])
+									);
 								existingProperties
 									.splice(index, 1, childrenProperty);
 							}
-							// create new object literal by creating one w/ all existing property assignments + children
 							return ts.updateObjectLiteral(currentNode, existingProperties) as ts.Node;
 						} else {
 							return ts.visitEachChild(node, conditionalVisitor, context);
@@ -361,19 +371,7 @@ export class TypeScriptFileUpdate {
 	/** Transformation to apply `this.ngMetaEdits` to `NgModule` metadata properties */
 	protected ngModuleTransformer: ts.TransformerFactory<ts.Node> =
 		<T extends ts.Node>(context: ts.TransformationContext) => (rootNode: T) => {
-			const visitor = (node: ts.Node): ts.Node => {
-				if (node.kind === ts.SyntaxKind.CallExpression &&
-					node.parent && node.parent.kind === ts.SyntaxKind.Decorator &&
-					(node as ts.CallExpression).expression.getText() === "NgModule") {
-					// found module declaration
-					// expression: NgModule(arguments)
-					node = ts.visitEachChild(node, visitNgModule, context);
-				} else {
-					node = ts.visitEachChild(node, visitor, context);
-				}
-				return node;
-			};
-			const visitNgModule = (node: ts.Node): ts.Node => {
+			const visitNgModule: NodeVisitor = (node: ts.Node): ts.Node => {
 				const properties: string[] = []; // "declarations", "imports", "providers"
 				for (const key in this.ngMetaEdits) {
 					if (this.ngMetaEdits[key].length) {
@@ -458,6 +456,12 @@ export class TypeScriptFileUpdate {
 				}
 				return node;
 			};
+			const visitCondition: (node: ts.Node) => boolean = (node: ts.Node) => {
+				return node.kind === ts.SyntaxKind.CallExpression &&
+					node.parent && node.parent.kind === ts.SyntaxKind.Decorator &&
+					(node as ts.CallExpression).expression.getText() === "NgModule";
+			};
+			const visitor = this.createVisitor(visitNgModule, visitCondition, context);
 			return ts.visitNode(rootNode, visitor);
 		}
 
