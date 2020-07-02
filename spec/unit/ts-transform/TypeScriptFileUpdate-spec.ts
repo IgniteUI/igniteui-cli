@@ -147,16 +147,34 @@ describe("Unit - TypeScriptFileUpdate", () => {
 	});
 
 	it("Adds routes", async done => {
-		spyOn(TypeScriptUtils, "getFileSource").and.returnValues(
-			ts.createSourceFile("route-module.ts", `
+
+		let sourceCalls = 0;
+		spyOn(TypeScriptUtils, "getFileSource").and.callFake((input: string) => {
+			if (input === "route-module.ts") {
+				const fileContent = sourceCalls === 0 ? `
 				const routes: Routes = [
 					{ existing }
 				];
-				const routes2: Routes = [];
-			`, ts.ScriptTarget.Latest, true),
-			{ getChildren: () => ["component1"] },
-			{ getChildren: () => ["component2"] }
-		);
+				const routes2: Routes = [];` :
+				`import { Component1 } from "./to/component";
+				const routes: Routes = [
+					{ existing },
+					{ path: "href", component: Component1, data: { text: "text" } }
+				];
+				const routes2: Routes = [];`;
+				sourceCalls++;
+				return ts.createSourceFile("route-module.ts", fileContent, ts.ScriptTarget.Latest, true);
+			} else {
+				switch (input) {
+					case ("path/to/component"):
+						return { getChildren: () => ["component1"] };
+					case ("path/to/component2"):
+						return { getChildren: () => ["component2"] };
+					default:
+						return;
+				}
+			}
+		});
 		spyOn(fs, "writeFileSync");
 		const formatSpy = spyOn(TypeScriptFileUpdate.prototype as any, "formatFile");
 		spyOn(TypeScriptUtils, "getClassName").and.returnValues("Component1", "Component2");
@@ -196,17 +214,31 @@ describe("Unit - TypeScriptFileUpdate", () => {
 		done();
 	});
 
-	it("Adds child routes", async done => {
-		App.initialize();
-		spyOn(TypeScriptUtils, "getFileSource").and.returnValues(
-			ts.createSourceFile("route-module.ts", `
+	fit("Adds child routes", async done => {
+		let sourceCalls = 0;
+		spyOn(TypeScriptUtils, "getFileSource").and.callFake((input: string) => {
+			if (input === "route-module.ts") {
+				const fileContent = sourceCalls === 0 ? `
 				const routes: Routes = [
 					{ path: 'parent', exising }
-				];
-			`, ts.ScriptTarget.Latest, true),
-			{ getChildren: () => ["component1"] },
-			{ getChildren: () => ["component2"] }
-		);
+				];` :
+				`import { Component1 } from "./to/component";
+				const routes: Routes = [
+					{ path: 'parent', exising, children: [{ path: "child-1", component: Component1, data: { text: "child one" } }] }
+				];`;
+				sourceCalls++;
+				return ts.createSourceFile("route-module.ts", fileContent, ts.ScriptTarget.Latest, true);
+			} else {
+				switch (input) {
+					case ("path/to/component"):
+						return { getChildren: () => ["component1"] };
+					case ("path/to/component2"):
+						return { getChildren: () => ["component2"] };
+					default:
+						return;
+				}
+			}
+		});
 		spyOn(fs, "writeFileSync");
 		const formatSpy = spyOn(TypeScriptFileUpdate.prototype as any, "formatFile");
 		spyOn(TypeScriptUtils, "getClassName").and.returnValues("Component1", "Component2");

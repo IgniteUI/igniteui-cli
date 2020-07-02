@@ -32,7 +32,6 @@ export class TypeScriptFileUpdate {
 
 	/** Create updates for a file. Use `add<X>` methods to add transformations and `finalize` to apply and save them. */
 	constructor(private targetPath: string) {
-		this.targetSource = TsUtils.getFileSource(this.targetPath);
 		this.fileSystem = App.container.get<IFileSystem>(FS_TOKEN);
 		this.initState();
 	}
@@ -238,6 +237,7 @@ export class TypeScriptFileUpdate {
 
 	/** Initializes existing imports info, [re]sets import and `NgModule` edits */
 	protected initState() {
+		this.targetSource = TsUtils.getFileSource(this.targetPath);
 		this.importsMeta = this.loadImportsMeta();
 		this.requestedImports = [];
 		this.ngMetaEdits = {
