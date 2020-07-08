@@ -6,7 +6,6 @@ import { Util } from "../util/Util";
 import { TypeScriptUtils as TsUtils } from "./TypeScriptUtils";
 
 const DEFAULT_ROUTES_VARIABLE = "routes";
-declare type NodeVisitor = (node: ts.Node) => ts.Node;
 /**
  * Apply various updates to typescript files using AST
  */
@@ -65,130 +64,25 @@ export class TypeScriptFileUpdate {
 	 * @param filePath Path to the component file to import
 	 * @param linkPath Routing `path` to add
 	 * @param linkText Text of the route to add as `data.text`
+	 * @param parentRoutePath Will include the new route as a **child** of the specified route path
 	 * @param routesVariable Name of the array variable holding routes
-	 * @param parentRoutePath __Optional__ If passed, will include the new route as a **child** of the specified route path
 	 */
-	public addRoute(
-		filePath: string,
-		linkPath: string,
-		linkText: string,
-		routesVariable = DEFAULT_ROUTES_VARIABLE,
-		parentRoutePath?: string
-	) {
-		let className: string;
-		const fileSource = TsUtils.getFileSource(filePath);
-		const relativePath: string = Util.relativePath(this.targetPath, filePath, true, true);
-		routesVariable = routesVariable || DEFAULT_ROUTES_VARIABLE;
-		className = TsUtils.getClassName(fileSource.getChildren());
-		this.requestImport([className], relativePath);
+	public addChildRoute(
+		filePath: string, linkPath: string, linkText: string, parentRoutePath: string,
+		routesVariable = DEFAULT_ROUTES_VARIABLE) {
+		this.addRouteModuleEntry(filePath, linkPath, linkText, routesVariable, parentRoutePath);
+	}
 
-		// https://github.com/Microsoft/TypeScript/issues/14419#issuecomment-307256171
-		const transformer: ts.TransformerFactory<ts.Node> = <T extends ts.Node>(context: ts.TransformationContext) =>
-			(rootNode: T) => {
-				let conditionalVisitor: NodeVisitor;
-				if (parentRoutePath === undefined) {
-					conditionalVisitor = (node: ts.Node): ts.Node => {
-						if (node.kind === ts.SyntaxKind.ArrayLiteralExpression) {
-							const newObject = this.createRouteEntry(linkPath, className, linkText);
-							const array = (node as ts.ArrayLiteralExpression);
-							this.createdStringLiterals.push(linkPath, linkText);
-							const notFoundWildCard = "**";
-							const nodes = ts.visitNodes(array.elements, visitor);
-							const errorRouteNode = nodes.filter(element => element.getText().includes(notFoundWildCard))[0];
-							let resultNodes = null;
-							if (errorRouteNode) {
-								resultNodes = nodes
-									.slice(0, nodes.indexOf(errorRouteNode))
-									.concat(newObject)
-									.concat(errorRouteNode);
-							} else {
-								resultNodes = nodes
-									.concat(newObject);
-							}
-
-							const elements = ts.createNodeArray([
-								...resultNodes
-							]);
-
-							return ts.updateArrayLiteral(array, elements);
-						} else {
-							return ts.visitEachChild(node, conditionalVisitor, context);
-						}
-					};
-				} else {
-					conditionalVisitor = (node: ts.Node): ts.Node => {
-						if (node.kind === ts.SyntaxKind.ObjectLiteralExpression) {
-							if (!node.getText().includes(parentRoutePath)) {
-								return node;
-							}
-							function filterForChildren(element: ts.Node): boolean {
-								if (element.kind === ts.SyntaxKind.PropertyAssignment) {
-									const identifier = element.getChildren()[0];
-									return identifier.kind === ts.SyntaxKind.Identifier && identifier.getText().trim() === "children";
-								}
-								return false;
-							}
-							const newObject = this.createRouteEntry(linkPath, className, linkText);
-							const currentNode = node as ts.ObjectLiteralExpression;
-							this.createdStringLiterals.push(linkPath, linkText);
-							const syntaxList: ts.SyntaxList = node.getChildren()
-								.filter(element => element.kind === ts.SyntaxKind.SyntaxList)[0] as ts.SyntaxList;
-							let childrenProperty: ts.PropertyAssignment = syntaxList
-								.getChildren().filter(filterForChildren)[0] as ts.PropertyAssignment;
-							let childrenArray: ts.ArrayLiteralExpression = null;
-
-							// if the target parent route already has child routes - get them
-							// if not - create an empty 'chuldren' array
-							if (childrenProperty) {
-								childrenArray = childrenProperty.getChildren()
-									.filter(element => element.kind === ts.SyntaxKind.ArrayLiteralExpression)[0] as ts.ArrayLiteralExpression
-									|| ts.createArrayLiteral();
-							} else {
-								childrenArray = ts.createArrayLiteral();
-							}
-
-							let existingProperties = syntaxList.getChildren()
-								.filter(element => element.kind !== ts.SyntaxKind["CommaToken"]) as ts.ObjectLiteralElementLike[];
-							const newArrayValues = childrenArray.elements.concat(newObject);
-							if (!childrenProperty) {
-								const propertyName = "children";
-								const propertyValue = ts.createArrayLiteral([...newArrayValues]);
-								childrenProperty = ts.createPropertyAssignment(propertyName, propertyValue);
-								existingProperties = existingProperties
-									.concat(childrenProperty);
-							} else {
-								const index = existingProperties.indexOf(childrenProperty);
-								const childrenPropertyName = childrenProperty.name;
-								childrenProperty =
-									ts.updatePropertyAssignment(
-										childrenProperty,
-										childrenPropertyName,
-										ts.createArrayLiteral([...newArrayValues])
-									);
-								existingProperties
-									.splice(index, 1, childrenProperty);
-							}
-							return ts.updateObjectLiteral(currentNode, existingProperties) as ts.Node;
-						} else {
-							return ts.visitEachChild(node, conditionalVisitor, context);
-						}
-					};
-				}
-				const visitCondition = (node: ts.Node): boolean => {
-					return node.kind === ts.SyntaxKind.VariableDeclaration &&
-						(node as ts.VariableDeclaration).name.getText() === routesVariable &&
-						(node as ts.VariableDeclaration).type.getText() === "Routes";
-				};
-				const visitor: NodeVisitor = this.createVisitor(conditionalVisitor, visitCondition, context);
-				context.enableSubstitution(ts.SyntaxKind.ClassDeclaration);
-				return ts.visitNode(rootNode, visitor);
-			};
-
-		this.targetSource = ts.transform(this.targetSource, [transformer], {
-			pretty: true // oh well..
-		}).transformed[0] as ts.SourceFile;
-
-		this.finalize();
+	/**
+	 * Create configuration object for a component and add it to the `Routes` array variable.
+	 * Imports the first exported class and finalizes the file update (see `.finalize()`).
+	 * @param filePath Path to the component file to import
+	 * @param linkPath Routing `path` to add
+	 * @param linkText Text of the route to add as `data.text`
+	 * @param routesVariable Name of the array variable holding routes
+	 */
+	public addRoute(filePath: string, linkPath: string, linkText: string, routesVariable = DEFAULT_ROUTES_VARIABLE) {
+		this.addRouteModuleEntry(filePath, linkPath, linkText, routesVariable);
 	}
 
 	/**
@@ -290,6 +184,143 @@ export class TypeScriptFileUpdate {
 
 	//#endregion File state
 
+	protected addRouteModuleEntry(
+		filePath: string,
+		linkPath: string,
+		linkText: string,
+		routesVariable = DEFAULT_ROUTES_VARIABLE,
+		parentRoutePath?: string
+	) {
+		let className: string;
+		const fileSource = TsUtils.getFileSource(filePath);
+		const relativePath: string = Util.relativePath(this.targetPath, filePath, true, true);
+		className = TsUtils.getClassName(fileSource.getChildren());
+		this.requestImport([className], relativePath);
+
+		// https://github.com/Microsoft/TypeScript/issues/14419#issuecomment-307256171
+		const transformer: ts.TransformerFactory<ts.Node> = <T extends ts.Node>(context: ts.TransformationContext) =>
+			(rootNode: T) => {
+				let conditionalVisitor: ts.Visitor;
+				// the visitor that should be used when adding routes to the main route array
+				const routeArrayVisitor = (node: ts.Node): ts.Node => {
+					if (node.kind === ts.SyntaxKind.ArrayLiteralExpression) {
+						const newObject = this.createRouteEntry(linkPath, className, linkText);
+						const array = (node as ts.ArrayLiteralExpression);
+						this.createdStringLiterals.push(linkPath, linkText);
+						const notFoundWildCard = "**";
+						const nodes = ts.visitNodes(array.elements, visitor);
+						const errorRouteNode = nodes.filter(element => element.getText().includes(notFoundWildCard))[0];
+						let resultNodes = null;
+						if (errorRouteNode) {
+							resultNodes = nodes
+								.slice(0, nodes.indexOf(errorRouteNode))
+								.concat(newObject)
+								.concat(errorRouteNode);
+						} else {
+							resultNodes = nodes
+								.concat(newObject);
+						}
+
+						const elements = ts.createNodeArray([
+							...resultNodes
+						]);
+
+						return ts.updateArrayLiteral(array, elements);
+					} else {
+						return ts.visitEachChild(node, conditionalVisitor, context);
+					}
+				};
+				// the visitor that should be used when adding child routes to a specified parent
+				const parentRouteVisitor = (node: ts.Node): ts.Node => {
+					if (node.kind === ts.SyntaxKind.ObjectLiteralExpression) {
+						if (!node.getText().includes(parentRoutePath)) {
+							return node;
+						}
+						const nodeProperties = (node as ts.ObjectLiteralExpression).properties;
+						const parentPropertyCheck = (element: ts.PropertyAssignment) => {
+							return element.name.kind === ts.SyntaxKind.Identifier && element.name.text === "path"
+								&& element.initializer.kind === ts.SyntaxKind.StringLiteral
+								&& (element.initializer as ts.StringLiteral).text === parentRoutePath;
+						};
+						const parentProperty = nodeProperties.filter(parentPropertyCheck)[0];
+						if (!parentProperty) {
+							return node;
+						}
+						function filterForChildren(element: ts.Node): boolean {
+							if (element.kind === ts.SyntaxKind.PropertyAssignment) {
+								const identifier = element.getChildren()[0];
+								return identifier.kind === ts.SyntaxKind.Identifier && identifier.getText().trim() === "children";
+							}
+							return false;
+						}
+						const newObject = this.createRouteEntry(linkPath, className, linkText);
+						const currentNode = node as ts.ObjectLiteralExpression;
+						this.createdStringLiterals.push(linkPath, linkText);
+						const syntaxList: ts.SyntaxList = node.getChildren()
+							.filter(element => element.kind === ts.SyntaxKind.SyntaxList)[0] as ts.SyntaxList;
+						let childrenProperty: ts.PropertyAssignment = syntaxList
+							.getChildren().filter(filterForChildren)[0] as ts.PropertyAssignment;
+						let childrenArray: ts.ArrayLiteralExpression = null;
+
+						// if the target parent route already has child routes - get them
+						// if not - create an empty 'chuldren' array
+						if (childrenProperty) {
+							childrenArray = childrenProperty.getChildren()
+								.filter(element => element.kind === ts.SyntaxKind.ArrayLiteralExpression)[0] as ts.ArrayLiteralExpression
+								|| ts.createArrayLiteral();
+						} else {
+							childrenArray = ts.createArrayLiteral();
+						}
+
+						let existingProperties = syntaxList.getChildren()
+							.filter(element => element.kind !== ts.SyntaxKind["CommaToken"]) as ts.ObjectLiteralElementLike[];
+						const newArrayValues = childrenArray.elements.concat(newObject);
+						if (!childrenProperty) {
+							const propertyName = "children";
+							const propertyValue = ts.createArrayLiteral([...newArrayValues]);
+							childrenProperty = ts.createPropertyAssignment(propertyName, propertyValue);
+							existingProperties = existingProperties
+								.concat(childrenProperty);
+						} else {
+							const index = existingProperties.indexOf(childrenProperty);
+							const childrenPropertyName = childrenProperty.name;
+							childrenProperty =
+								ts.updatePropertyAssignment(
+									childrenProperty,
+									childrenPropertyName,
+									ts.createArrayLiteral([...newArrayValues])
+								);
+							existingProperties
+								.splice(index, 1, childrenProperty);
+						}
+						return ts.updateObjectLiteral(currentNode, existingProperties) as ts.Node;
+					} else {
+						return ts.visitEachChild(node, conditionalVisitor, context);
+					}
+				};
+
+				if (parentRoutePath === undefined) {
+					conditionalVisitor = routeArrayVisitor;
+				} else {
+					conditionalVisitor = parentRouteVisitor;
+				}
+				const visitCondition = (node: ts.Node): boolean => {
+					return node.kind === ts.SyntaxKind.VariableDeclaration &&
+						(node as ts.VariableDeclaration).name.getText() === routesVariable &&
+						(node as ts.VariableDeclaration).type.getText() === "Routes";
+				};
+				const visitor: ts.Visitor = this.createVisitor(conditionalVisitor, visitCondition, context);
+				context.enableSubstitution(ts.SyntaxKind.ClassDeclaration);
+				return ts.visitNode(rootNode, visitor);
+			};
+
+		this.targetSource = ts.transform(this.targetSource, [transformer], {
+			pretty: true // oh well..
+		}).transformed[0] as ts.SourceFile;
+
+		this.finalize();
+	}
+
 	/**
 	 * Add named imports from a path/package.
 	 * @param identifiers Strings to create named import from ("Module" => `import { Module }`)
@@ -371,7 +402,7 @@ export class TypeScriptFileUpdate {
 	/** Transformation to apply `this.ngMetaEdits` to `NgModule` metadata properties */
 	protected ngModuleTransformer: ts.TransformerFactory<ts.Node> =
 		<T extends ts.Node>(context: ts.TransformationContext) => (rootNode: T) => {
-			const visitNgModule: NodeVisitor = (node: ts.Node): ts.Node => {
+			const visitNgModule: ts.Visitor = (node: ts.Node): ts.Node => {
 				const properties: string[] = []; // "declarations", "imports", "providers"
 				for (const key in this.ngMetaEdits) {
 					if (this.ngMetaEdits[key].length) {
@@ -601,10 +632,10 @@ export class TypeScriptFileUpdate {
 	}
 
 	private createVisitor(
-		conditionalVisitor: NodeVisitor,
+		conditionalVisitor: ts.Visitor,
 		visitCondition: (node: ts.Node) => boolean,
 		nodeContext: ts.TransformationContext
-	): NodeVisitor {
+	): ts.Visitor {
 		return function visitor(node: ts.Node): ts.Node {
 			if (visitCondition(node)) {
 				node = ts.visitEachChild(node, conditionalVisitor, nodeContext);

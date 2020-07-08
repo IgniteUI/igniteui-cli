@@ -1,4 +1,4 @@
-import { App, GoogleAnalytics, TypeScriptFileUpdate, TypeScriptUtils, Util } from "@igniteui/cli-core";
+import { GoogleAnalytics, TypeScriptFileUpdate, TypeScriptUtils, Util } from "@igniteui/cli-core";
 import * as fs from "fs";
 import * as ts from "typescript";
 
@@ -254,7 +254,7 @@ describe("Unit - TypeScriptFileUpdate", () => {
 		const tsUpdate = new TypeScriptFileUpdate("route-module.ts");
 
 		// call when parent route has no child routes
-		tsUpdate.addRoute("path/to/component", "child-1", "child one", "", "parent");
+		tsUpdate.addChildRoute("path/to/component", "child-1", "child one", "parent");
 		expect(Util.relativePath).toHaveBeenCalledWith("route-module.ts", "path/to/component", true, true);
 		expect(TypeScriptUtils.getClassName).toHaveBeenCalledWith(["component1"]);
 		expect(fs.writeFileSync).toHaveBeenCalledWith(
@@ -269,7 +269,7 @@ describe("Unit - TypeScriptFileUpdate", () => {
 		expect(formatSpy).toHaveBeenCalled();
 
 		// call when parent route has child routes
-		tsUpdate.addRoute("path/to/component2", "child-2", "child two", "", "parent");
+		tsUpdate.addChildRoute("path/to/component2", "child-2", "child two", "parent");
 		expect(Util.relativePath).toHaveBeenCalledWith("route-module.ts", "path/to/component2", true, true);
 		expect(TypeScriptUtils.getClassName).toHaveBeenCalledWith(["component2"]);
 		expect(fs.writeFileSync).toHaveBeenCalledWith(
