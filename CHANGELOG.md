@@ -1,3 +1,28 @@
+# [6.1.0](https://github.com/IgniteUI/igniteui-cli/compare/v6.0.0...v6.1.0) (2020-08-12)
+
+🎉 This update includes igniteui-angular version [10.1.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/10.1.0).
+
+## igniteui/cli-core@6.1.0
+
+#### Features
+
+* **tsutil:** add optional parent route to `TsFileUpdateUtil.addRoute` method ([#777](https://github.com/IgniteUI/igniteui-cli/issues/777)) ([2df694a](https://github.com/IgniteUI/igniteui-cli/commit/2df694a))
+
+## igniteui/angular-templates@10.1.610
+
+#### Features
+
+* Add support for igniteui-angular v10.1.0 ([dd24abc](https://github.com/IgniteUI/igniteui-cli/commit/dd24abc6f07de41866314053949c50e05566aba9)) 
+
+## igniteui/angular-schematics@10.1.610
+
+Note: Version bump only for package igniteui/angular-schematics
+
+## igniteui-cli@6.1.0
+
+Note: Version bump only for package igniteui-cli
+
+
 # [6.0.0](https://github.com/IgniteUI/igniteui-cli/compare/v5.2.1...v6.0.0) (2020-06-25)
 
 🎉 This update brings Angular 10 updates including igniteui-angular version [10.0.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/10.0.0).
