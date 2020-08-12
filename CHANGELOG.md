@@ -12,7 +12,9 @@
 
 #### Features
 
-* Add support for igniteui-angular v10.1.0 ([dd24abc](https://github.com/IgniteUI/igniteui-cli/commit/dd24abc6f07de41866314053949c50e05566aba9)) 
+* Add support for igniteui-angular v10.1.0 ([dd24abc](https://github.com/IgniteUI/igniteui-cli/commit/dd24abc6f07de41866314053949c50e05566aba9))
+
+* Update jszip to v.3.5.0 ([#781](https://github.com/IgniteUI/igniteui-cli/issues/781)) ([f55677e](https://github.com/IgniteUI/igniteui-cli/commit/f55677e16407ef0e6d8ff06511d42a9402ca374e))
 
 ## igniteui/angular-schematics@10.1.610
 
