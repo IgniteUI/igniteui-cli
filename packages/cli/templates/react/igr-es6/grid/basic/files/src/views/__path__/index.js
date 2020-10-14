@@ -32,11 +32,11 @@ export default class $(ClassName) extends Component {
 						height="100%"
 						autoGenerateColumns="false"
 						dataSource={this.data}>
-						<IgrNumericColumn propertyPath="ProductID" headerText="Product ID" />
-						<IgrTextColumn propertyPath="ProductName" headerText="Product Name" />
-						<IgrTextColumn propertyPath="QuantityPerUnit" headerText="Quantity Per Unit" />
-						<IgrNumericColumn propertyPath="UnitsInStock" headerText="Units In Stock" />
-						<IgrDateTimeColumn propertyPath="OrderDate" headerText="Order Date" />
+						<IgrNumericColumn field="ProductID" headerText="Product ID" />
+						<IgrTextColumn field="ProductName" headerText="Product Name" />
+						<IgrTextColumn field="QuantityPerUnit" headerText="Quantity Per Unit" />
+						<IgrNumericColumn field="UnitsInStock" headerText="Units In Stock" />
+						<IgrDateTimeColumn field="OrderDate" headerText="Order Date" />
 					</IgrDataGrid>
 				</div>
 				<div className={style.grid}>
