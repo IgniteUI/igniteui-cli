@@ -1,6 +1,6 @@
 {
   "name": "@igniteui/angular-schematics",
-  "version": "10.1.610",
+  "version": "10.2.620-beta.0",
   "description": "Ignite UI for Angular Schematics for ng new and ng generate",
   "scripts": {
     "build": "tsc -p tsconfig.json",
@@ -15,8 +15,8 @@
   "dependencies": {
     "@angular-devkit/core": "^9.0.1",
     "@angular-devkit/schematics": "^9.0.1",
-    "@igniteui/angular-templates": "~10.1.610",
-    "@igniteui/cli-core": "~6.1.0",
+    "@igniteui/angular-templates": "~10.2.620-beta.0",
+    "@igniteui/cli-core": "~6.2.0-beta.0",
     "@schematics/angular": "^9.0.1",
     "rxjs": "6.5.3"
   },
