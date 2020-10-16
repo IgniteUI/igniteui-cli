@@ -56,7 +56,6 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit {
 
     public searchText = '';
 	public caseSensitive = false;
-	public selectionMode = "multiple";
 
     public _positionSettings: PositionSettings = {
         horizontalDirection: HorizontalAlignment.Left,
