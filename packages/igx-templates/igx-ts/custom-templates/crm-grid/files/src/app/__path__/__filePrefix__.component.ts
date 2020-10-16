@@ -55,23 +55,21 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit {
     public pinnedColsLength: number;
 
     public searchText = '';
-    public caseSensitive = false;
+	public caseSensitive = false;
 
-    public positionSettings: PositionSettings = {
+    public _positionSettings: PositionSettings = {
         horizontalDirection: HorizontalAlignment.Left,
         horizontalStartPoint: HorizontalAlignment.Right,
         verticalStartPoint: VerticalAlignment.Bottom
     };
 
-    public overlaySettings: OverlaySettings = {
+    public _overlaySettings: OverlaySettings = {
         closeOnOutsideClick: true,
         modal: false,
-        positionStrategy: new ConnectedPositioningStrategy(this.positionSettings),
+        positionStrategy: new ConnectedPositioningStrategy(this._positionSettings),
         scrollStrategy: new CloseScrollStrategy()
-    };
-
-    private frmt: Intl.DateTimeFormat;
-
+	};
+	
     constructor(private excelExporterService: IgxExcelExporterService) { }
 
     public ngOnInit() {
@@ -83,13 +81,13 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit {
     }
 
     public toggleHiding() {
-        this.overlaySettings.positionStrategy.settings.target = this.hidingButton.nativeElement;
-        this.toggleRefHiding.toggle(this.overlaySettings);
+        this._overlaySettings.target = this.hidingButton.nativeElement;
+        this.toggleRefHiding.toggle(this._overlaySettings);
     }
 
     public togglePinning() {
-        this.overlaySettings.positionStrategy.settings.target = this.pinningButton.nativeElement;
-        this.toggleRefPinning.toggle(this.overlaySettings);
+        this._overlaySettings.target = this.pinningButton.nativeElement;
+        this.toggleRefPinning.toggle(this._overlaySettings);
     }
 
     public ngAfterViewInit() {
@@ -135,12 +133,9 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit {
     }
 
     public formatDate(val: Date) {
-        if (!this.frmt) {
-            this.frmt = new Intl.DateTimeFormat('en-US');
-        }
-        return this.frmt.format(val);
+        return new Intl.DateTimeFormat("en-US").format(val);
     }
-
+	
     public searchKeyDown(ev) {
         if (ev.key === 'Enter' || ev.key === 'ArrowDown' || ev.key === 'ArrowRight') {
             ev.preventDefault();
@@ -166,7 +161,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit {
     }
 
     public getDeals(employee: any): any {
-        employee.Deals = this.getDealsData();
+        employee['Deals'] = this.getDealsData();
     }
 
     public getDealsData(months?: number): any[] {
