@@ -1,3 +1,29 @@
+# [5.2.2](https://github.com/IgniteUI/igniteui-cli/compare/v5.2.1...v5.2.2) (2020-10-19)
+
+## igniteui/cli-core@5.2.2
+
+Note: Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@9.1.522
+
+#### Bug Fixes
+
+* Hosting an app generated with the cli will not load because of an error [#793](https://github.com/IgniteUI/igniteui-cli/issues/793) ([aa7f7e8](https://github.com/IgniteUI/igniteui-cli/commit/aa7f7e8dd9a9fccd31452dc30df55b311c9aaf2c))
+
+* Add Component - Grid/Lists breaks React app [#791](https://github.com/IgniteUI/igniteui-cli/issues/791) ([68e2b81](https://github.com/IgniteUI/igniteui-cli/commit/68e2b81e297a5b4279f53e5bb9dff80126cc08b6))
+
+## igniteui/angular-schematics@9.1.522
+
+Note: Version bump only for package igniteui/angular-schematics
+
+## igniteui-cli@5.2.2
+
+#### Bug Fixes
+
+* Hosting an app generated with the cli will not load because of an error [#793](https://github.com/IgniteUI/igniteui-cli/issues/793) ([aa7f7e8](https://github.com/IgniteUI/igniteui-cli/commit/aa7f7e8dd9a9fccd31452dc30df55b311c9aaf2c))
+
+* Add Component - Grid/Lists breaks React app [#791](https://github.com/IgniteUI/igniteui-cli/issues/791) ([68e2b81](https://github.com/IgniteUI/igniteui-cli/commit/68e2b81e297a5b4279f53e5bb9dff80126cc08b6))
+
 # [5.2.1](https://github.com/IgniteUI/igniteui-cli/compare/v5.2.0...v5.2.1) (2020-06-25)
 
 ## igniteui/cli-core@5.2.1
