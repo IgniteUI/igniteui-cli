@@ -8,6 +8,8 @@ Note: Version bump only for package igniteui/cli-core
 
 #### Bug Fixes
 
+* Update DV components to 10.0.x [#768](https://github.com/IgniteUI/igniteui-cli/issues/768) ([667495d](https://github.com/IgniteUI/igniteui-cli/commit/667495ded3802906cc28f85d3e8e27068a9f0fff))
+
 * Hosting an app generated with the cli will not load because of an error [#793](https://github.com/IgniteUI/igniteui-cli/issues/793) ([aa7f7e8](https://github.com/IgniteUI/igniteui-cli/commit/aa7f7e8dd9a9fccd31452dc30df55b311c9aaf2c))
 
 * Add Component - Grid/Lists breaks React app [#791](https://github.com/IgniteUI/igniteui-cli/issues/791) ([68e2b81](https://github.com/IgniteUI/igniteui-cli/commit/68e2b81e297a5b4279f53e5bb9dff80126cc08b6))
@@ -19,6 +21,8 @@ Note: Version bump only for package igniteui/angular-schematics
 ## igniteui-cli@6.1.1
 
 #### Bug Fixes
+
+* Update DV components to 10.0.x [#768](https://github.com/IgniteUI/igniteui-cli/issues/768) ([667495d](https://github.com/IgniteUI/igniteui-cli/commit/667495ded3802906cc28f85d3e8e27068a9f0fff))
 
 * Hosting an app generated with the cli will not load because of an error [#793](https://github.com/IgniteUI/igniteui-cli/issues/793) ([aa7f7e8](https://github.com/IgniteUI/igniteui-cli/commit/aa7f7e8dd9a9fccd31452dc30df55b311c9aaf2c))
 
