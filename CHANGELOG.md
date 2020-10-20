@@ -1,3 +1,27 @@
+# [6.2.0](https://github.com/IgniteUI/igniteui-cli/compare/v6.1.1...v6.2.0) (2020-10-20)
+
+🎉 This update includes igniteui-angular version [10.2.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/10.2.0).
+
+## igniteui/cli-core@6.2.0
+
+Note: Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@10.2.620
+
+#### Features
+
+* Update igniteui-angular components to [10.2.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/10.2.0).
+
+## igniteui/angular-schematics@10.2.620
+
+Note: Version bump only for package igniteui/angular-schematics
+
+## igniteui-cli@6.2.0
+
+#### Features
+
+* Update igniteui-angular components to [10.2.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/10.2.0).
+
 # [6.1.1](https://github.com/IgniteUI/igniteui-cli/compare/v6.1.0...v6.1.1) (2020-10-19)
 
 ## igniteui/cli-core@6.1.1
