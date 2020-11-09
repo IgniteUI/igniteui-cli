@@ -36,7 +36,7 @@ export async function updateWorkspace(rootPath: string): Promise<boolean> {
 	const pkgJSON = JSON.parse(fileString);
 
 	const errorMsg = "Something went wrong, " +
-		"please follow the steps in this guide: https://www.infragistics.com/products/ignite-ui-angular/angular/components/general/ignite-ui-licensing.html";
+		"please follow the steps in this guide: https://www.infragistics.com/products/ignite-ui-angular/angular/components/general/ignite-ui-licensing";
 	if (!PackageManager.ensureRegistryUser(config, errorMsg)) {
 		return false;
 	}
