@@ -259,7 +259,7 @@ You can install the Ignite UI for Angular Schematics globally and use them to cr
 	```bash
 	ng g @igniteui/angular-schematics:component
 	```
-	Read more in our [official Angular Schematics & Ignite UI CLI documentation](https://www.infragistics.com/products/ignite-ui-angular/angular/components/general/cli-overview.html).
+	Read more in our [official Angular Schematics & Ignite UI CLI documentation](https://www.infragistics.com/products/ignite-ui-angular/angular/components/general/cli-overview).
 
 - `igniteui-cli` And the Ignite UI CLI package as we know it, though it now carries a bit less dependencies baggage and we'll continue its diet.
 
