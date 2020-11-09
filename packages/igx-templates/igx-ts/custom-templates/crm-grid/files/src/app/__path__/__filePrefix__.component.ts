@@ -26,7 +26,7 @@ import {
 import { data } from './data';
 
 function formatDate(val: Date) {
-    return new Intl.DateTimeFormat("en-US").format(val);
+    return new Intl.DateTimeFormat('en-US').format(val);
 }
 
 @Component({
@@ -120,8 +120,8 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit {
     }
 
     public formatDate(val: Date) {
-        return new Intl.DateTimeFormat("en-US").format(val);
-    }
+        return new Intl.DateTimeFormat('en-US').format(val);
+    
 	
     public searchKeyDown(ev) {
         if (ev.key === 'Enter' || ev.key === 'ArrowDown' || ev.key === 'ArrowRight') {

@@ -1,5 +1,5 @@
 import { Component, AfterViewInit, ViewEncapsulation, ViewChild } from '@angular/core';
-import { 
+import {
 	IgxLinearGaugeComponent, IgxLinearGraphRangeComponent,
 	LinearGraphNeedleShape
 } from 'igniteui-angular-gauges';
