@@ -13,9 +13,9 @@ describe('<%=name%> App', () => {
     expect(page.getNavText()).toEqual('<%=name%>');
   });
 
-  it('should display welcome message', () => {
-    page.navigateTo();
-    expect(page.getWelcomeText()).toEqual('Welcome to Ignite UI for Angular!');
+  it('should display welcome message', async () => {
+    await page.navigateTo();
+    expect(await page.getWelcomeText()).toEqual('Welcome to Ignite UI for Angular!');
   });
 
   afterEach(async () => {

@@ -94,19 +94,6 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit {
         this.cols = this.grid1.columnList;
         this.hiddenColsLength = this.cols.filter((col) => col.hidden).length;
         this.pinnedColsLength = this.cols.filter((col) => col.pinned).length;
-        this.grid1.toolbar.columnPinningDropdown.width = '250px';
-
-        this.grid1.toolbar.excelExporter.onColumnExport.subscribe((args: IColumnExportingEventArgs) => {
-            if (args.field === 'Deals') {
-                args.cancel = true;
-            }
-        });
-
-        this.grid1.toolbar.csvExporter.onColumnExport.subscribe((args: IColumnExportingEventArgs) => {
-            if (args.field === 'Deals') {
-                args.cancel = true;
-            }
-        });
     }
 
     public toggleVisibility(col: IgxColumnComponent) {
