@@ -1,5 +1,5 @@
 import { EventEmitter, Component, Output, DebugElement } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -27,7 +27,7 @@ describe('LoginDialogComponent', () => {
     expect(registerView).toEqual(register);
   };
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ LoginDialogComponent, TestSignViewComponent ],
       imports: [ NoopAnimationsModule, IgxDialogModule ]

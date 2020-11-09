@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { <%=ClassName%>Component } from './<%=filePrefix%>.component';
 import { IgxListModule, IgxAvatarModule, IgxIconModule, IgxFilterModule, IgxInputGroupModule } from '<%=igxPackage%>';
@@ -7,7 +7,7 @@ describe('<%=ClassName%>Component', () => {
   let component: <%=ClassName%>Component;
   let fixture: ComponentFixture<<%=ClassName%>Component>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [<%=ClassName%>Component],
       imports: [ FormsModule, IgxListModule, IgxAvatarModule, IgxIconModule, IgxFilterModule, IgxInputGroupModule ]

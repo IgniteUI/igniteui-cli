@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 
@@ -22,7 +22,7 @@ describe('RegisterComponent', () => {
   const userServSpy = jasmine.createSpyObj('UserService', ['setCurrentUser']);
   const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [ ReactiveFormsModule, NoopAnimationsModule, RouterTestingModule,
         IgxInputGroupModule, IgxButtonModule, IgxIconModule, IgxRippleModule ],
