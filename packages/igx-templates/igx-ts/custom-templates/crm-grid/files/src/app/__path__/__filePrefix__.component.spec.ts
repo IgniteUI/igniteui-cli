@@ -39,9 +39,9 @@ describe('<%=ClassName%>Component', () => {
         IgxRippleModule,
         IgxSwitchModule,
         IgxToggleModule,
-		IgxCheckboxModule,
-		IgxSparklineModule,
-		IgxSparklineCoreModule
+        IgxCheckboxModule,
+        IgxSparklineModule,
+        IgxSparklineCoreModule
       ],
       providers: [IgxExcelExporterService]
     })

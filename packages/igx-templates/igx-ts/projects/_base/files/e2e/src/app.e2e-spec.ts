@@ -10,7 +10,9 @@ describe('<%=name%> App', () => {
 
   it('should display project name in navigation', () => {
     page.navigateTo();
-    expect(page.getNavText()).toEqual('<%=name%>');
+    page.getNavText().then((result) => {
+      expect(result).toEqual('<%=name%>');
+    });
   });
 
   it('should display welcome message', async () => {
