@@ -75,7 +75,7 @@ To create a new project with Ignite UI for Angular use [ig new](https://github.c
 ig new "IG Project" --framework=angular --type=igx-ts --template=side-nav
 ```
 
-The `igniteui-cli` makes full use of the component definitions provided by [`igniteui/angular-templates`](../ng-schematics) package. You can find all of the available component templates in the [official documentation](https://www.infragistics.com/products/ignite-ui-angular/angular/components/general/cli/component-templates.html).
+The `igniteui-cli` makes full use of the component definitions provided by [`igniteui/angular-templates`](../ng-schematics) package. You can find all of the available component templates in the [official documentation](https://www.infragistics.com/products/ignite-ui-angular/angular/components/general/cli/component-templates).
 
 #### Generate Ignite UI for React project
 
