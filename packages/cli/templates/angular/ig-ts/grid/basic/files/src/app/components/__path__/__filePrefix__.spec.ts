@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { $(ClassName)Component } from './$(filePrefix).component';
 import { IgniteUIModule } from 'igniteui-angular-wrappers';
@@ -10,7 +10,7 @@ describe('$(ClassName)Component', () => {
   let component: $(ClassName)Component;
   let fixture: ComponentFixture<$(ClassName)Component>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [$(ClassName)Component],
       imports: [IgniteUIModule, FormsModule]

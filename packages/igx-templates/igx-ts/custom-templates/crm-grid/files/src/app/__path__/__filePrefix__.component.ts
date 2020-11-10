@@ -26,7 +26,7 @@ import {
 import { data } from './data';
 
 function formatDate(val: Date) {
-    return new Intl.DateTimeFormat("en-US").format(val);
+    return new Intl.DateTimeFormat('en-US').format(val);
 }
 
 @Component({
@@ -55,21 +55,21 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit {
     public pinnedColsLength: number;
 
     public searchText = '';
-	public caseSensitive = false;
+    public caseSensitive = false;
 
-    public _positionSettings: PositionSettings = {
+    public positionSettings: PositionSettings = {
         horizontalDirection: HorizontalAlignment.Left,
         horizontalStartPoint: HorizontalAlignment.Right,
         verticalStartPoint: VerticalAlignment.Bottom
     };
 
-    public _overlaySettings: OverlaySettings = {
+    public overlaySettings: OverlaySettings = {
         closeOnOutsideClick: true,
         modal: false,
-        positionStrategy: new ConnectedPositioningStrategy(this._positionSettings),
+        positionStrategy: new ConnectedPositioningStrategy(this.positionSettings),
         scrollStrategy: new CloseScrollStrategy()
-	};
-	
+    };
+
     constructor(private excelExporterService: IgxExcelExporterService) { }
 
     public ngOnInit() {
@@ -81,32 +81,19 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit {
     }
 
     public toggleHiding() {
-        this._overlaySettings.target = this.hidingButton.nativeElement;
-        this.toggleRefHiding.toggle(this._overlaySettings);
+        this.overlaySettings.target = this.hidingButton.nativeElement;
+        this.toggleRefHiding.toggle(this.overlaySettings);
     }
 
     public togglePinning() {
-        this._overlaySettings.target = this.pinningButton.nativeElement;
-        this.toggleRefPinning.toggle(this._overlaySettings);
+        this.overlaySettings.target = this.pinningButton.nativeElement;
+        this.toggleRefPinning.toggle(this.overlaySettings);
     }
 
     public ngAfterViewInit() {
         this.cols = this.grid1.columnList;
         this.hiddenColsLength = this.cols.filter((col) => col.hidden).length;
         this.pinnedColsLength = this.cols.filter((col) => col.pinned).length;
-        this.grid1.toolbar.columnPinningDropdown.width = '250px';
-
-        this.grid1.toolbar.excelExporter.onColumnExport.subscribe((args: IColumnExportingEventArgs) => {
-            if (args.field === 'Deals') {
-                args.cancel = true;
-            }
-        });
-
-        this.grid1.toolbar.csvExporter.onColumnExport.subscribe((args: IColumnExportingEventArgs) => {
-            if (args.field === 'Deals') {
-                args.cancel = true;
-            }
-        });
     }
 
     public toggleVisibility(col: IgxColumnComponent) {
@@ -133,9 +120,9 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit {
     }
 
     public formatDate(val: Date) {
-        return new Intl.DateTimeFormat("en-US").format(val);
+        return new Intl.DateTimeFormat('en-US').format(val);
     }
-	
+
     public searchKeyDown(ev) {
         if (ev.key === 'Enter' || ev.key === 'ArrowDown' || ev.key === 'ArrowRight') {
             ev.preventDefault();
@@ -161,7 +148,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit {
     }
 
     public getDeals(employee: any): any {
-        employee['Deals'] = this.getDealsData();
+        employee.Deals = this.getDealsData();
     }
 
     public getDealsData(months?: number): any[] {

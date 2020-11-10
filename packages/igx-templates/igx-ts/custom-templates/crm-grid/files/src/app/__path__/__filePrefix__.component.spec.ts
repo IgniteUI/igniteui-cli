@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IgxExcelExporterService } from '<%=igxPackage%>';
@@ -23,7 +23,7 @@ describe('<%=ClassName%>Component', () => {
   let component: <%=ClassName%>Component;
   let fixture: ComponentFixture<<%=ClassName%>Component>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ <%=ClassName%>Component ],
       imports: [
@@ -39,9 +39,9 @@ describe('<%=ClassName%>Component', () => {
         IgxRippleModule,
         IgxSwitchModule,
         IgxToggleModule,
-		IgxCheckboxModule,
-		IgxSparklineModule,
-		IgxSparklineCoreModule
+        IgxCheckboxModule,
+        IgxSparklineModule,
+        IgxSparklineCoreModule
       ],
       providers: [IgxExcelExporterService]
     })

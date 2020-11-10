@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 
@@ -13,7 +13,7 @@ describe('RedirectComponent', () => {
   const authSpy = jasmine.createSpyObj('AuthenticationService', ['loginWith']);
   const userServSpy = jasmine.createSpyObj('UserService', ['setCurrentUser']);
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [ RouterTestingModule ],
       declarations: [ RedirectComponent ],

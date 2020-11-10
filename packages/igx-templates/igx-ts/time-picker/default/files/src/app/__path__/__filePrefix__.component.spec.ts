@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { <%=ClassName%>Component } from './<%=filePrefix%>.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,7 +11,7 @@ describe('<%=ClassName%>Component', () => {
   const hours: number = date.getHours();
   const minutes: number =  date.getMinutes();
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [<%=ClassName%>Component],
       imports: [IgxTimePickerModule, NoopAnimationsModule]
