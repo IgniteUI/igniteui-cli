@@ -72,4 +72,4 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
  */
 // import 'intl/locale-data/jsonp/en';
 
-import 'core-js/es7/array'; // for Array.includes()
+import 'core-js/es/array'; // for Array.includes()
