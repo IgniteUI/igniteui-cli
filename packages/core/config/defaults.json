@@ -2,11 +2,5 @@
 	"igPackageRegistry": "https://packages.infragistics.com/npm/js-licensed/",
 	"customTemplates": [],
 	"skipGit": false,
-	"skipAnalytic": false,
-	"stepByStep": {
-		"frameworks": ["angular"],
-		"angular": {
-			"projTypes": ["igx-ts"]
-		}
-	}
+	"skipAnalytic": false
 }

@@ -1,3 +1,113 @@
+# [6.2.0](https://github.com/IgniteUI/igniteui-cli/compare/v6.1.1...v6.2.0) (2020-10-20)
+
+🎉 This update includes igniteui-angular version [10.2.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/10.2.0).
+
+## igniteui/cli-core@6.2.0
+
+Note: Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@10.2.620
+
+#### Features
+
+* Update igniteui-angular components to [10.2.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/10.2.0).
+
+## igniteui/angular-schematics@10.2.620
+
+Note: Version bump only for package igniteui/angular-schematics
+
+## igniteui-cli@6.2.0
+
+#### Features
+
+* Update igniteui-angular components to [10.2.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/10.2.0).
+
+# [6.1.1](https://github.com/IgniteUI/igniteui-cli/compare/v6.1.0...v6.1.1) (2020-10-19)
+
+## igniteui/cli-core@6.1.1
+
+Note: Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@10.1.611
+
+#### Bug Fixes
+
+* Update DV components to 10.0.x [#768](https://github.com/IgniteUI/igniteui-cli/issues/768) ([667495d](https://github.com/IgniteUI/igniteui-cli/commit/667495ded3802906cc28f85d3e8e27068a9f0fff))
+
+* Hosting an app generated with the cli will not load because of an error [#793](https://github.com/IgniteUI/igniteui-cli/issues/793) ([aa7f7e8](https://github.com/IgniteUI/igniteui-cli/commit/aa7f7e8dd9a9fccd31452dc30df55b311c9aaf2c))
+
+* Add Component - Grid/Lists breaks React app [#791](https://github.com/IgniteUI/igniteui-cli/issues/791) ([68e2b81](https://github.com/IgniteUI/igniteui-cli/commit/68e2b81e297a5b4279f53e5bb9dff80126cc08b6))
+
+## igniteui/angular-schematics@10.1.611
+
+Note: Version bump only for package igniteui/angular-schematics
+
+## igniteui-cli@6.1.1
+
+#### Bug Fixes
+
+* Update DV components to 10.0.x [#768](https://github.com/IgniteUI/igniteui-cli/issues/768) ([667495d](https://github.com/IgniteUI/igniteui-cli/commit/667495ded3802906cc28f85d3e8e27068a9f0fff))
+
+* Hosting an app generated with the cli will not load because of an error [#793](https://github.com/IgniteUI/igniteui-cli/issues/793) ([aa7f7e8](https://github.com/IgniteUI/igniteui-cli/commit/aa7f7e8dd9a9fccd31452dc30df55b311c9aaf2c))
+
+* Add Component - Grid/Lists breaks React app [#791](https://github.com/IgniteUI/igniteui-cli/issues/791) ([68e2b81](https://github.com/IgniteUI/igniteui-cli/commit/68e2b81e297a5b4279f53e5bb9dff80126cc08b6))
+
+# [6.1.0](https://github.com/IgniteUI/igniteui-cli/compare/v6.0.0...v6.1.0) (2020-08-12)
+
+🎉 This update includes igniteui-angular version [10.1.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/10.1.0).
+
+## igniteui/cli-core@6.1.0
+
+#### Features
+
+* **tsutil:** add optional parent route to `TsFileUpdateUtil.addRoute` method ([#777](https://github.com/IgniteUI/igniteui-cli/issues/777)) ([2df694a](https://github.com/IgniteUI/igniteui-cli/commit/2df694a))
+
+## igniteui/angular-templates@10.1.610
+
+#### Features
+
+* Add support for igniteui-angular v10.1.0 ([dd24abc](https://github.com/IgniteUI/igniteui-cli/commit/dd24abc6f07de41866314053949c50e05566aba9))
+
+* Update jszip to v.3.5.0 ([#781](https://github.com/IgniteUI/igniteui-cli/issues/781)) ([f55677e](https://github.com/IgniteUI/igniteui-cli/commit/f55677e16407ef0e6d8ff06511d42a9402ca374e))
+
+## igniteui/angular-schematics@10.1.610
+
+Note: Version bump only for package igniteui/angular-schematics
+
+## igniteui-cli@6.1.0
+
+Note: Version bump only for package igniteui-cli
+
+
+# [6.0.0](https://github.com/IgniteUI/igniteui-cli/compare/v5.2.1...v6.0.0) (2020-06-25)
+
+🎉 This update brings Angular 10 updates including igniteui-angular version [10.0.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/10.0.0).
+
+🌟 When using Step By Step mode of the CLI you can choose one of the frameworks - Angular, React or jQuery.  
+When creating and modifying Angular projects we recommend using our [Ignite UI Angular Schematics](https://www.infragistics.com/products/ignite-ui-angular/angular/components/general/cli-overview.html).
+
+## igniteui/cli-core@6.0.0
+
+#### Features
+ - Restore original entry selection with all frameworks after Angular Schematics are available [#579](https://github.com/IgniteUI/igniteui-cli/issues/579)
+
+## igniteui/angular-templates@10.0.600
+
+#### Features
+ - Add Angular 10 support [#767](https://github.com/IgniteUI/igniteui-cli/issues/767)
+
+## igniteui/angular-schematics@10.0.600
+
+#### Features
+ - Add Angular 10 support [#767](https://github.com/IgniteUI/igniteui-cli/issues/767)
+
+## igniteui-cli@6.0.0
+
+#### Features
+ - Restore original entry selection with all frameworks after Angular Schematics are available [#579](https://github.com/IgniteUI/igniteui-cli/issues/579)
+ - Add Angular 10 support [#767](https://github.com/IgniteUI/igniteui-cli/issues/767)
+
+
 # [5.2.2](https://github.com/IgniteUI/igniteui-cli/compare/v5.2.1...v5.2.2) (2020-10-19)
 
 ## igniteui/cli-core@5.2.2
@@ -23,6 +133,7 @@ Note: Version bump only for package igniteui/angular-schematics
 * Hosting an app generated with the cli will not load because of an error [#793](https://github.com/IgniteUI/igniteui-cli/issues/793) ([aa7f7e8](https://github.com/IgniteUI/igniteui-cli/commit/aa7f7e8dd9a9fccd31452dc30df55b311c9aaf2c))
 
 * Add Component - Grid/Lists breaks React app [#791](https://github.com/IgniteUI/igniteui-cli/issues/791) ([68e2b81](https://github.com/IgniteUI/igniteui-cli/commit/68e2b81e297a5b4279f53e5bb9dff80126cc08b6))
+
 
 # [5.2.1](https://github.com/IgniteUI/igniteui-cli/compare/v5.2.0...v5.2.1) (2020-06-25)
 

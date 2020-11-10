@@ -1,7 +1,6 @@
 import * as path from "path";
 
 // tslint:disable:no-implicit-dependencies
-import { virtualFs } from "@angular-devkit/core";
 import { EmptyTree } from "@angular-devkit/schematics";
 // tslint:disable-next-line:no-submodule-imports
 import { SchematicTestRunner, UnitTestTree } from "@angular-devkit/schematics/testing";
@@ -14,7 +13,7 @@ describe("Update 3.0.0", () => {
 		appTree = new UnitTestTree(new EmptyTree());
 	});
 
-	it("should add igx-typography class to body if needed", done => {
+	it("should add igx-typography class to body if needed", async done => {
 		const indexFile = "/src/index.html";
 		appTree.create(indexFile,
 `<body>
@@ -22,7 +21,7 @@ describe("Update 3.0.0", () => {
 </body>`
 		);
 
-		schematicRunner.runSchematic("migration-02", {}, appTree);
+		await schematicRunner.runSchematicAsync("migration-02", {}, appTree).toPromise();
 		expect(appTree.readContent(indexFile))
 			.toEqual(
 `<body class="igx-typography">
@@ -30,20 +29,20 @@ describe("Update 3.0.0", () => {
 </body>`
 			);
 		appTree.overwrite(indexFile, `<body class="">`);
-		schematicRunner.runSchematic("migration-02", {}, appTree);
+		await schematicRunner.runSchematicAsync("migration-02", {}, appTree).toPromise();
 		expect(appTree.readContent(indexFile)).toEqual(`<body class="igx-typography">`);
 
 		appTree.overwrite(indexFile, `<body class="test class">`);
-		schematicRunner.runSchematic("migration-02", {}, appTree);
+		await schematicRunner.runSchematicAsync("migration-02", {}, appTree).toPromise();
 		expect(appTree.readContent(indexFile)).toEqual(`<body class="test class igx-typography">`);
 
 		appTree.overwrite(indexFile, `<body class="test igx-typography">`);
-		schematicRunner.runSchematic("migration-02", {}, appTree);
+		await schematicRunner.runSchematicAsync("migration-02", {}, appTree).toPromise();
 		expect(appTree.readContent(indexFile)).toEqual(`<body class="test igx-typography">`);
 		done();
 	});
 
-	it("should add additional header styles to home css", done => {
+	it("should add additional header styles to home css", async done => {
 		const cssFile = "/src/app/home/home.component.css";
 		appTree.create(cssFile,
 `body {
@@ -52,7 +51,7 @@ describe("Update 3.0.0", () => {
 `
 		);
 
-		schematicRunner.runSchematic("migration-02", {}, appTree);
+		await schematicRunner.runSchematicAsync("migration-02", {}, appTree).toPromise();
 		expect(appTree.readContent(cssFile))
 			.toEqual(
 `body {
@@ -74,7 +73,7 @@ h3 {
 		done();
 	});
 
-	it("should remove forRoot() from IgxGridModule", done => {
+	it("should remove forRoot() from IgxGridModule", async done => {
 		const indexFile = "/src/app/app.module.ts";
 		appTree.create(indexFile,
 `@NgModule({
@@ -85,7 +84,7 @@ h3 {
 })`
 		);
 
-		schematicRunner.runSchematic("migration-02", {}, appTree);
+		await schematicRunner.runSchematicAsync("migration-02", {}, appTree).toPromise();
 		expect(appTree.readContent(indexFile))
 			.toEqual(
 `@NgModule({
@@ -98,7 +97,7 @@ h3 {
 		done();
 	});
 
-	it("should update config", done => {
+	it("should update config", async done => {
 		const indexFile = "ignite-ui-cli.json";
 		appTree.create(indexFile,
 `{
@@ -112,7 +111,7 @@ h3 {
 }`
 		);
 
-		schematicRunner.runSchematic("migration-02", {}, appTree);
+		await schematicRunner.runSchematicAsync("migration-02", {}, appTree).toPromise();
 		expect(appTree.readContent(indexFile))
 			.toEqual(
 `{

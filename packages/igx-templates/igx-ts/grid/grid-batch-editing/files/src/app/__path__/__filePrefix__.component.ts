@@ -37,8 +37,7 @@ export class <%=ClassName%>Component implements OnInit {
     this.grid.addRow({
       CategoryID: this.getRandomInt(1, 10),
       Discontinued: this.getRandomInt(1, 10) % 2 === 0,
-      OrderDate: new Date(this.getRandomInt(2000, 2050), this.getRandomInt(0, 11), this.getRandomInt(1, 25))
-      .toISOString().slice(0, 10),
+      OrderDate: new Date(this.getRandomInt(2000, 2050), this.getRandomInt(0, 11), this.getRandomInt(1, 25)),
       ProductID: this.addProductId++,
       ProductName: 'Product with index ' + this.getRandomInt(0, 20),
       QuantityPerUnit: (this.getRandomInt(1, 10) * 10).toString() + ' pcs.',

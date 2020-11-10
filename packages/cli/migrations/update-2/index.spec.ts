@@ -1,7 +1,6 @@
 import * as path from "path";
 
 // tslint:disable:no-implicit-dependencies
-import { virtualFs } from "@angular-devkit/core";
 import { EmptyTree } from "@angular-devkit/schematics";
 // tslint:disable-next-line:no-submodule-imports
 import { SchematicTestRunner, UnitTestTree } from "@angular-devkit/schematics/testing";
@@ -14,7 +13,7 @@ describe("Update 2.0.0", () => {
 		appTree = new UnitTestTree(new EmptyTree());
 	});
 
-	it("should update router event rxjs subscription", done => {
+	it("should update router event rxjs subscription", async done => {
 		appTree.create(
 			"/src/app/app.component.ts",
 `import { Component, OnInit, ViewChild } from '@angular/core';
@@ -47,7 +46,7 @@ export class AppComponent implements OnInit {
 `
 		);
 
-		const tree = schematicRunner.runSchematic("migration-01", {}, appTree);
+		const tree = await schematicRunner.runSchematicAsync("migration-01", {}, appTree).toPromise();
 		expect(tree.readContent("/src/app/app.component.ts"))
 			.toEqual(
 `import { Component, OnInit, ViewChild } from '@angular/core';
