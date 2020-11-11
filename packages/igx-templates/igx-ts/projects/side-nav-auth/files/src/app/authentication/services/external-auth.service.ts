@@ -9,6 +9,7 @@ import { MicrosoftProvider } from '../providers/microsoft-provider';
 import { Location } from '@angular/common';
 import { ExternalLogin } from '../models/login';
 import { ExternalAuthProvider, ExternalAuthConfig } from './external-auth-configs';
+import { LocalStorageService } from './local-storage';
 
 export enum ExternalAuthRedirectUrl {
   Facebook = 'redirect-facebook',
@@ -22,17 +23,18 @@ export enum ExternalAuthRedirectUrl {
 export class ExternalAuthService {
   protected providers: Map<ExternalAuthProvider, AuthProvider> = new Map();
   public get activeProvider(): ExternalAuthProvider {
-    return localStorage.getItem('extActiveProvider') as ExternalAuthProvider;
+    return this.localStorage.getItem('extActiveProvider') as ExternalAuthProvider;
   }
   public set activeProvider(provider: ExternalAuthProvider) {
-    localStorage.setItem('extActiveProvider', provider);
+    this.localStorage.setItem('extActiveProvider', provider);
   }
 
   constructor(
-      private router: Router,
-      private oidcSecurityService: OidcSecurityService,
-      private oidcConfigService: OidcConfigService,
-      private location: Location) {
+    private router: Router,
+    private oidcSecurityService: OidcSecurityService,
+    private oidcConfigService: OidcConfigService,
+    private location: Location,
+    private localStorage: LocalStorageService) {
   }
 
   public hasProvider(provider?: ExternalAuthProvider) {
