@@ -1,3 +1,29 @@
+# [5.2.3](https://github.com/IgniteUI/igniteui-cli/compare/v5.2.2...v5.2.3) (2020-11-11))
+
+## igniteui/cli-core@5.2.3
+
+Note: Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@9.1.523
+
+#### Bug Fixes
+
+* **dock-manager:** Use correct module name in app.module import [#792](https://github.com/IgniteUI/igniteui-cli/issues/792) ([86bf8cb](https://github.com/IgniteUI/igniteui-cli/commit/86bf8cb))
+* **dock-manager:** Remove unnecessary quotes ([befe0ae](https://github.com/IgniteUI/igniteui-cli/commit/befe0ae))
+* **igx-ts, ig-ts:** Add core-js module and array polyfill ([10f958b](https://github.com/IgniteUI/igniteui-cli/commit/10f958b))
+
+## igniteui/angular-schematics@9.1.523
+
+Note: Version bump only for package igniteui/angular-schematics
+
+## igniteui-cli@5.2.3
+
+#### Bug Fixes
+
+* **dock-manager:** Use correct module name in app.module import [#792](https://github.com/IgniteUI/igniteui-cli/issues/792) ([86bf8cb](https://github.com/IgniteUI/igniteui-cli/commit/86bf8cb))
+* **dock-manager:** remove unnecessary quotes ([befe0ae](https://github.com/IgniteUI/igniteui-cli/commit/befe0ae))
+* **igx-ts, ig-ts:** Add core-js module and array polyfill ([10f958b](https://github.com/IgniteUI/igniteui-cli/commit/10f958b))
+
 # [5.2.2](https://github.com/IgniteUI/igniteui-cli/compare/v5.2.1...v5.2.2) (2020-10-19)
 
 ## igniteui/cli-core@5.2.2
