@@ -1,4 +1,4 @@
-# [5.2.3](https://github.com/IgniteUI/igniteui-cli/compare/v5.2.2...v5.2.3) (2020-11-11))
+# [5.2.3](https://github.com/IgniteUI/igniteui-cli/compare/v5.2.2...v5.2.3) (2020-11-11)
 
 ## igniteui/cli-core@5.2.3
 
