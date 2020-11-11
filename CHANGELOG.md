@@ -1,3 +1,33 @@
+# [6.2.1](https://github.com/IgniteUI/igniteui-cli/compare/v6.2.0...v6.2.1) (2020-11-11)
+
+## igniteui/cli-core@6.2.1
+
+Note: Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@10.2.621
+
+#### Bug Fixes
+
+* **dock-manager:** Use correct module name in app.module import [#792](https://github.com/IgniteUI/igniteui-cli/issues/792) ([86bf8cb](https://github.com/IgniteUI/igniteui-cli/commit/86bf8cb))
+* **dock-manager:** Remove unnecessary quotes ([befe0ae](https://github.com/IgniteUI/igniteui-cli/commit/befe0ae))
+* **igx-ts, ig-ts:** Add core-js module and array polyfill ([10f958b](https://github.com/IgniteUI/igniteui-cli/commit/10f958b))
+* **igx-ts, side-auth:** add SSR-friendly local storage service ([8db27be](https://github.com/IgniteUI/igniteui-cli/commit/8db27be))
+* **igx-ts, side-auth:** add proper wrapper class so layout is 100% ([508df9d](https://github.com/IgniteUI/igniteui-cli/commit/508df9d))
+
+## igniteui/angular-schematics@10.2.621
+
+Note: Version bump only for package igniteui/angular-schematics
+
+## igniteui-cli@6.2.1
+
+#### Bug Fixes
+
+* **dock-manager:** Use correct module name in app.module import [#792](https://github.com/IgniteUI/igniteui-cli/issues/792) ([86bf8cb](https://github.com/IgniteUI/igniteui-cli/commit/86bf8cb))
+* **dock-manager:** remove unnecessary quotes ([befe0ae](https://github.com/IgniteUI/igniteui-cli/commit/befe0ae))
+* **igx-ts, ig-ts:** Add core-js module and array polyfill ([10f958b](https://github.com/IgniteUI/igniteui-cli/commit/10f958b))
+* **igx-ts, side-auth:** add SSR-friendly local storage service ([8db27be](https://github.com/IgniteUI/igniteui-cli/commit/8db27be))
+* **igx-ts, side-auth:** add proper wrapper class so layout is 100% ([508df9d](https://github.com/IgniteUI/igniteui-cli/commit/508df9d))
+
 # [6.2.0](https://github.com/IgniteUI/igniteui-cli/compare/v6.1.1...v6.2.0) (2020-10-20)
 
 🎉 This update includes igniteui-angular version [10.2.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/10.2.0).
