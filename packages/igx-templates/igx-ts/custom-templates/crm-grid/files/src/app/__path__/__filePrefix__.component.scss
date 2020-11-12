@@ -139,6 +139,7 @@
         display: flex;
         align-items: center;
         justify-self: flex-start;
+        width: 50%;
     }
 
     .crm-sample-toolbar__ellipsis {
@@ -149,6 +150,10 @@
 
     .igx-grid-toolbar__custom-content {
         flex: 1 0 0%;
+   }
+
+    igx-grid-toolbar-actions {
+      min-width: 350px;
     }
 
     .igx-grid-toolbar__actions {
@@ -159,10 +164,12 @@
             border: none;
         }
     }
-
+    .igx-input-group--search{
+        width: 100%;
+    }
     .igx-input-group--search .igx-input-group__bundle {
         height: rem(36px);
-        width: 500px;
+        width: 100%;
         overflow: hidden;
         background-color: igx-color($crm-grid-palette, "primary", 800);
 
@@ -347,6 +354,10 @@
         justify-content: center;
         width: 1rem;
         height: 1rem;
+    }
+
+    .igx-grid-toolbar__title {
+        max-width: 68ch;
     }
 }
 

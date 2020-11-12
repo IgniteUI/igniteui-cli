@@ -15,6 +15,7 @@ import {
   IColumnExportingEventArgs,
   IgxColumnComponent,
   IgxDateSummaryOperand,
+  IgxCsvExporterService,
   IgxExcelExporterService,
   IgxGridComponent,
   IgxNumberSummaryOperand,
@@ -39,11 +40,11 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit {
     @ViewChild('grid1', { read: IgxGridComponent, static: true })
     public grid1: IgxGridComponent;
 
-    @ViewChild('toggleRefHiding', { static: false }) public toggleRefHiding: IgxToggleDirective;
-    @ViewChild('toggleRefPinning', { static: false }) public toggleRefPinning: IgxToggleDirective;
+    @ViewChild('toggleRefHiding') public toggleRefHiding: IgxToggleDirective;
+    @ViewChild('toggleRefPinning') public toggleRefPinning: IgxToggleDirective;
 
-    @ViewChild('hidingButton', { static: false }) public hidingButton: ElementRef;
-    @ViewChild('pinningButton', { static: false }) public pinningButton: ElementRef;
+    @ViewChild('hidingButton') public hidingButton: ElementRef;
+    @ViewChild('pinningButton') public pinningButton: ElementRef;
 
     public localData: any[];
     public dealsSummary = DealsSummary;
@@ -56,6 +57,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit {
 
     public searchText = '';
     public caseSensitive = false;
+    public selectionMode = 'multiple';
 
     public positionSettings: PositionSettings = {
         horizontalDirection: HorizontalAlignment.Left,
@@ -70,7 +72,17 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit {
         scrollStrategy: new CloseScrollStrategy()
     };
 
-    constructor(private excelExporterService: IgxExcelExporterService) { }
+    constructor(
+        private csvExporter: IgxCsvExporterService,
+        private excelExporter: IgxExcelExporterService) {
+
+        const exporterCb = (args: IColumnExportingEventArgs) => {
+            if (args.field === 'Deals') { args.cancel = true; }
+        };
+
+        this.excelExporter.onColumnExport.subscribe(exporterCb);
+        this.csvExporter.onColumnExport.subscribe(exporterCb);
+    }
 
     public ngOnInit() {
         const employees = data;

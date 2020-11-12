@@ -4,6 +4,13 @@
     padding: 0 !important;
 }
 :host ::ng-deep {
+    .fin-dark-theme {
+        .fintech-slider,
+        .sample-toolbar {
+            color: rgba(255, 255, 255, 0.87);
+        }
+    }
+
     .fintech-icons {
         display: flex;
         align-items: center;
@@ -153,19 +160,23 @@
         justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
+        width: 100%;
+        padding-bottom: 15px;
     }
+
     .switches {
         display: flex;
         justify-content: space-between;
         align-items: center;
         flex: 1 0 0%;
-        min-width: 500px;
         padding-right: 20px;
         font-size: 0.9rem;
-        margin-bottom: -20px;
     }
     .control-item {
         padding-right: 20px;
+        label {
+            color: var(--igx-surface-500-contrast);
+        }
     }
     .igx-slider,
     .igx-slider--disabled {
@@ -177,13 +188,17 @@
     }
     .fintech-play-controls {
         width: 45%;
-        min-width: 500px;
-        margin-top: 20px;
+        min-width: 620px;
+        margin-top: 10px;
     }
     .sample-toolbar {
         height: 20px;
         font-size: 0.8rem;
         line-height: 20px;
+        /* position: absolute; */
+        /* bottom: 10px; */
+        /* left: 10px; */
+        margin-top: 11px;
     }
     .fin-dark-theme {
         .fintech-slider,
@@ -197,6 +212,7 @@
     .igx-excel-filter input {
         font-size: 0.8125rem;
     }
+
     .igx-button--icon {
         width: 2rem;
         height: 2rem;
