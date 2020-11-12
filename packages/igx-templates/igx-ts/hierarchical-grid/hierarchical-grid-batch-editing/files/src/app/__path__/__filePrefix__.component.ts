@@ -10,41 +10,6 @@ import { Singer } from './singer';
     styleUrls: ['./<%=filePrefix%>.component.scss']
 })
 export class <%=ClassName%>Component implements OnInit {
-    public localdata;
-    public singer;
-    public transactionsDataParent: Transaction[] = [];
-    public transactionsDataChild: Transaction[] = [];
-    public transactionsDataAll: Transaction[] = [];
-
-    @ViewChild('dialogChanges', { static: true, read: IgxDialogComponent })
-    public dialogChanges: IgxDialogComponent;
-
-    @ViewChild('dialogGrid', { static: true, read: IgxGridComponent }) public dialogGrid: IgxGridComponent;
-
-    @ViewChild('layout1', { static: true })
-    private layout1: IgxRowIslandComponent;
-
-    @ViewChild('hGrid', { static: true })
-    private hierarchicalGrid: IgxHierarchicalGridComponent;
-
-    @ViewChild('dialogAddSinger', { static: true, read: IgxDialogComponent })
-    private dialogSinger: IgxDialogComponent;
-
-    constructor() { }
-
-    public ngOnInit(): void {
-        this.localdata = SINGERS;
-        this.singer = new Singer();
-        this.transactionsDataParent = this.hierarchicalGrid.transactions.getAggregatedChanges(true);
-        this.hierarchicalGrid.transactions.onStateUpdate.subscribe(() => {
-            this.transactionsDataParent = this.hierarchicalGrid.transactions.getAggregatedChanges(true);
-        });
-        this.transactionsDataChild = this.layout1.transactions.getAggregatedChanges(true);
-        this.layout1.transactions.onStateUpdate.subscribe(() => {
-            this.transactionsDataChild = this.layout1.transactions.getAggregatedChanges(true);
-        });
-    }
-
     public get undoEnabledParent(): boolean {
         return this.hierarchicalGrid.transactions.canUndo;
     }
@@ -53,33 +18,58 @@ export class <%=ClassName%>Component implements OnInit {
         return this.hierarchicalGrid.transactions.canRedo;
     }
 
-    public get undoEnabledChild(): boolean {
-        return this.layout1.transactions.canUndo;
-    }
-
-    public get redoEnabledChild(): boolean {
-        return this.layout1.transactions.canRedo;
-    }
-
     public get hasTransactions(): boolean {
-        return (this.hierarchicalGrid.transactions.getAggregatedChanges(false).length > 0) ||
-            (this.layout1.transactions.getAggregatedChanges(false).length > 0);
+        return this.hierarchicalGrid.transactions.getAggregatedChanges(false).length > 0 || this.hasChildTransactions;
     }
 
-    public undoParent() {
-        this.hierarchicalGrid.transactions.undo();
+    public get hasChildTransactions(): boolean {
+        return this.layout1.hgridAPI.getChildGrids()
+            .find(c => c.transactions.getAggregatedChanges(false).length > 0) !== undefined;
     }
 
-    public redoParent() {
-        this.hierarchicalGrid.transactions.redo();
+    public localdata: Singer[];
+    public singer: Singer;
+    public transactionsDataAll: Transaction[] = [];
+    private id = 14;
+
+    @ViewChild('dialogChanges', { read: IgxDialogComponent, static: true })
+    public dialogChanges: IgxDialogComponent;
+
+    @ViewChild('dialogGrid', { read: IgxGridComponent, static: true }) public dialogGrid: IgxGridComponent;
+
+    @ViewChild('layout1', { static: true })
+    private layout1: IgxRowIslandComponent;
+
+    @ViewChild('hierarchicalGrid', { static: true })
+    private hierarchicalGrid: IgxHierarchicalGridComponent;
+
+    @ViewChild('dialogAddSinger', { read: IgxDialogComponent, static: true })
+    private dialogSinger: IgxDialogComponent;
+
+    constructor() {}
+
+    public ngOnInit(): void {
+        this.localdata = SINGERS;
+        this.singer = {
+            ID: this.id,
+            Artist: 'Mock Jagger',
+            Debut: 2005,
+            GrammyAwards: 4,
+            GrammyNominations: 7,
+            HasGrammyAward: false
+        };
     }
 
-    public undoChild() {
-        this.layout1.transactions.undo();
+    public formatter = a => a;
+
+    public undo(grid: IgxHierarchicalGridComponent) {
+        /* exit edit mode */
+        grid.endEdit(/* commit the edit transaction */ false);
+        grid.transactions.undo();
     }
 
-    public redoChild() {
-        this.layout1.transactions.redo();
+    public redo(grid: IgxHierarchicalGridComponent) {
+        grid.transactions.redo();
     }
 
     public commit() {
@@ -92,19 +82,25 @@ export class <%=ClassName%>Component implements OnInit {
 
     public discard() {
         this.hierarchicalGrid.transactions.clear();
-        this.layout1.transactions.clear();
+        this.layout1.hgridAPI.getChildGrids().forEach((grid) => {
+            grid.transactions.clear();
+        });
         this.dialogChanges.close();
     }
 
     public openCommitDialog() {
-        this.transactionsDataAll = this.transactionsDataParent.concat(this.transactionsDataChild);
+        this.transactionsDataAll = [...this.hierarchicalGrid.transactions.getAggregatedChanges(true)];
+        this.layout1.hgridAPI.getChildGrids().forEach((grid) => {
+            this.transactionsDataAll = this.transactionsDataAll.concat(grid.transactions.getAggregatedChanges(true));
+        });
         this.dialogChanges.open();
         this.dialogGrid.reflow();
     }
 
     public addSinger() {
         this.hierarchicalGrid.addRow(this.singer);
-        this.closeDialog();
+        ++this.id;
+        this.cancel();
     }
 
     public removeRow(rowIndex) {
@@ -124,9 +120,16 @@ export class <%=ClassName%>Component implements OnInit {
         return `transaction--${type.toLowerCase()}`;
     }
 
-    public closeDialog() {
+    public cancel() {
         this.dialogChanges.close();
         this.dialogSinger.close();
-        this.singer = new Singer();
+        this.singer = {
+            ID: this.id,
+            Artist: 'Mock Jagger',
+            Debut: 2005,
+            GrammyAwards: 4,
+            GrammyNominations: 7,
+            HasGrammyAward: false
+        };
     }
 }
