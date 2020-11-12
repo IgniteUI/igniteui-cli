@@ -148,8 +148,12 @@
         animation: slide-fade 1.25s .25s ease-out forwards;
     }
 
+    .igx-grid-toolbar__custom-content {
+        flex: 1 0 0%;
+   }
+
     igx-grid-toolbar-actions {
-        min-width: 350px;
+      min-width: 350px;
     }
 
     .igx-grid-toolbar__actions {
@@ -350,6 +354,10 @@
         justify-content: center;
         width: 1rem;
         height: 1rem;
+    }
+
+    .igx-grid-toolbar__title {
+        max-width: 68ch;
     }
 }
 
