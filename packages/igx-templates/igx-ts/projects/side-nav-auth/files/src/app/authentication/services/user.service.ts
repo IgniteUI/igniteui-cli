@@ -1,6 +1,7 @@
 import { Injectable, isDevMode } from '@angular/core';
 
 import { User } from '../models/user';
+import { LocalStorageService } from './local-storage';
 
 const USER_TOKEN = 'currentUser';
 
@@ -33,14 +34,14 @@ export class UserService {
     return initials;
   }
 
-  constructor() {
-    this._currentUser = JSON.parse(localStorage.getItem(USER_TOKEN));
+  constructor(private localStorage: LocalStorageService) {
+    this._currentUser = JSON.parse(this.localStorage.getItem(USER_TOKEN));
   }
 
   /** Save new login as current user */
   public setCurrentUser(user: User) {
     if (isDevMode()) {
-      localStorage.setItem(USER_TOKEN, JSON.stringify(user));
+      this.localStorage.setItem(USER_TOKEN, JSON.stringify(user));
     }
     this._currentUser = user;
   }
@@ -48,6 +49,6 @@ export class UserService {
   /** Clear current user */
   public clearCurrentUser() {
     this._currentUser = null;
-    localStorage.removeItem(USER_TOKEN);
+    this.localStorage.removeItem(USER_TOKEN);
   }
 }
