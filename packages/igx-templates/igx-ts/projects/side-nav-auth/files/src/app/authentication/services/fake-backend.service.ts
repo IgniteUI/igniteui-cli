@@ -15,6 +15,7 @@ import { Register } from '../models/register';
 import { ExternalLogin } from '../models/login';
 import { UserJWT } from '../models/user';
 import { encodeBase64Url } from './jwt-util';
+import { LocalStorageService } from './local-storage';
 
 @Injectable({
     providedIn: 'root'
@@ -22,8 +23,10 @@ import { encodeBase64Url } from './jwt-util';
 export class BackendInterceptor implements HttpInterceptor {
     users: StorageUser[];
 
+    constructor(private localStorage: LocalStorageService) {}
+
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        this.users = JSON.parse(localStorage.getItem('users')) || [];
+        this.users = JSON.parse(this.localStorage.getItem('users')) || [];
         return of(null).pipe(mergeMap(() => {
             // login user
             if (request.url.endsWith('/login') && request.method === 'POST') {
@@ -63,7 +66,7 @@ export class BackendInterceptor implements HttpInterceptor {
         } else {
             this.users.push(newUser);
         }
-        localStorage.setItem('users', JSON.stringify(this.users));
+        this.localStorage.setItem('users', JSON.stringify(this.users));
 
         const body = this.getUserJWT(newUser);
 
