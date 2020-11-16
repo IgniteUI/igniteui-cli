@@ -1,3 +1,25 @@
+# [6.2.2](https://github.com/IgniteUI/igniteui-cli/compare/v6.2.1...v6.2.2) (2020-11-16)
+
+## igniteui/cli-core@6.2.2
+
+Note: Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@10.2.622
+
+#### Bug Fixes
+
+* **igx-ts:** SSR breaks because of localStorage ref ([b750d9d](https://github.com/IgniteUI/igniteui-cli/commit/b750d9d))
+
+## igniteui/angular-schematics@10.2.622
+
+Note: Version bump only for package igniteui/angular-schematics
+
+## igniteui-cli@6.2.2
+
+#### Bug Fixes
+
+* **igx-ts:** SSR breaks because of localStorage ref ([b750d9d](https://github.com/IgniteUI/igniteui-cli/commit/b750d9d))
+
 # [6.2.1](https://github.com/IgniteUI/igniteui-cli/compare/v6.2.0...v6.2.1) (2020-11-11)
 
 ## igniteui/cli-core@6.2.1
