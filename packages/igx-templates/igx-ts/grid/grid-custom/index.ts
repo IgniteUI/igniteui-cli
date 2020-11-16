@@ -64,6 +64,7 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 				switch (feature) {
 					case "Sorting":
 					case "Filtering":
+						gridFeatures.push(`[allowFiltering]="true"`);
 					case "Resizing":
 						const text = `[${feature.toLowerCase().replace("ing", "able")}]="true"`;
 						columnFeatures.push(text);
