@@ -1,4 +1,30 @@
-# [7.0.0](https://github.com/IgniteUI/igniteui-cli/compare/6.2.x...v7.0.0) (2020-13-11)
+# [7.0.1](https://github.com/IgniteUI/igniteui-cli/compare/v7.0.0...v7.0.1) (2020-11-16)
+
+## igniteui/cli-core@7.0.1
+
+Note: Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@11.0.701
+
+#### Bug Fixes
+
+* **igx-ts:** SSR breaks because of localStorage ref ([dc9410f](https://github.com/IgniteUI/igniteui-cli/commit/dc9410f)), ([3056a97](https://github.com/IgniteUI/igniteui-cli/commit/3056a97))
+* **igx,custom-grid:** Assign allowFiltering when selected as option ([7534c5f](https://github.com/IgniteUI/igniteui-cli/commit/7534c5f))
+* **igx,custom-grid:** Update toolbar to new declarative setup ([35d274c](https://github.com/IgniteUI/igniteui-cli/commit/35d274c))
+
+## igniteui/angular-schematics@11.0.701
+
+Note: Version bump only for package igniteui/angular-schematics
+
+## igniteui-cli@7.0.1
+
+#### Bug Fixes
+
+* **igx-ts:** SSR breaks because of localStorage ref ([dc9410f](https://github.com/IgniteUI/igniteui-cli/commit/dc9410f)), ([3056a97](https://github.com/IgniteUI/igniteui-cli/commit/3056a97))
+* **igx,custom-grid:** Assign allowFiltering when selected as option ([7534c5f](https://github.com/IgniteUI/igniteui-cli/commit/7534c5f))
+* **igx,custom-grid:** Update toolbar to new declarative setup ([35d274c](https://github.com/IgniteUI/igniteui-cli/commit/35d274c))
+
+# [7.0.0](https://github.com/IgniteUI/igniteui-cli/compare/6.2.x...v7.0.0) (2020-11-13)
 
 🎉 This update includes igniteui-angular version [11.0.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/11.0.0).
 
