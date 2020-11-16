@@ -1,3 +1,4 @@
+import { PLATFORM_ID } from '@angular/core';
 import { AuthenticationService } from './authentication.service';
 import * as JWTUtil from './jwt-util';
 import { ExternalAuthService, ExternalAuthRedirectUrl } from './external-auth.service';
@@ -11,6 +12,7 @@ import { take } from 'rxjs/operators';
 import msKeys from './microsoft-keys';
 import { Observable } from 'rxjs';
 import { UserService } from './user.service';
+import { LocalStorageService } from './local-storage';
 
 describe('Services', () => {
 
@@ -76,7 +78,8 @@ describe('Services', () => {
             prepareExternalUrl: () => { }
         } as any;
 
-        const extAuthServ = new ExternalAuthService(MOCK_ROUTER, MOCK_OIDC_SECURITY, MOCK_OIDC_CONFIG, MOCK_LOCATION);
+        const localStorage = new LocalStorageService(PLATFORM_ID);
+        const extAuthServ = new ExternalAuthService(MOCK_ROUTER, MOCK_OIDC_SECURITY, MOCK_OIDC_CONFIG, MOCK_LOCATION, localStorage);
         it(`Should properly initialize`, () => {
             expect(extAuthServ).toBeDefined();
         });
@@ -466,6 +469,7 @@ describe('Services', () => {
             token: `mock token`,
             externalToken: `mock token`
         };
+        const localStorage = new LocalStorageService(PLATFORM_ID);
 
         beforeEach(() => {
             spyOn(JSON, 'parse').and.returnValue(mockUser);
@@ -473,7 +477,7 @@ describe('Services', () => {
         });
 
         it(`Should properly initialize`, () => {
-            const userServ = new UserService();
+            const userServ = new UserService(localStorage);
             expect(userServ).toBeDefined();
             expect(localStorage.getItem).toHaveBeenCalledWith('currentUser');
             expect(JSON.parse).toHaveBeenCalledWith('MOCK JSON');
@@ -482,7 +486,7 @@ describe('Services', () => {
         });
 
         it(`Should properly get 'initials'`, () => {
-            const userServ = new UserService();
+            const userServ = new UserService(localStorage);
             const currentUserSpy = spyOnProperty(userServ, 'currentUser', 'get').and.returnValue(null);
             expect(userServ.initials).toEqual(null);
             currentUserSpy.and.returnValue({ given_name: '' });
@@ -500,7 +504,7 @@ describe('Services', () => {
         });
 
         it(`Should properly 'setCurrentUser'`, () => {
-            const userServ = new UserService();
+            const userServ = new UserService(localStorage);
             const mockUser2 = {
                 exp: 111,
                 name: 'Qually T',
@@ -522,7 +526,7 @@ describe('Services', () => {
         });
 
         it(`Should properly call 'clearCurrentUser'`, () => {
-            const userServ = new UserService();
+            const userServ = new UserService(localStorage);
             spyOn(localStorage, 'removeItem');
             expect(userServ.currentUser).toBeTruthy();
             userServ.clearCurrentUser();
