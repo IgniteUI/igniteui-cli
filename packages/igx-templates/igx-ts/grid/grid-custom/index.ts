@@ -54,7 +54,8 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 		let selectedFeatures = "";
 		let columnPinning = "";
 		let groupByColumn = "";
-		let addGridToolbar = false;
+		let toolbar = "";
+		const toolbarActions = [];
 
 		if (this.userExtraConfiguration["columnFeatures"]) {
 			const features = this.userExtraConfiguration["columnFeatures"] as string[];
@@ -73,8 +74,7 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 						columnBoolFeatures.push('[movable]="true"');
 						break;
 					case "Column Hiding":
-						gridFeatures.push('[columnHiding]="true"');
-						addGridToolbar = true;
+						toolbarActions.push("      <igx-grid-toolbar-hiding></igx-grid-toolbar-hiding>");
 						break;
 					case "Cell Editing":
 						columnFeatures.push(`[editable]="true"`);
@@ -104,8 +104,7 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 						break;
 					case "Column Pinning":
 						columnPinning = '[pinned]="true"';
-						gridFeatures.push('[columnPinning]="true"');
-						addGridToolbar = true;
+						toolbarActions.push("      <igx-grid-toolbar-pinning></igx-grid-toolbar-pinning>");
 						break;
 					case "Group By":
 						groupByColumn = '[groupable]="true"';
@@ -152,8 +151,17 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 			if (selectedFeatures.length > 0) {
 				selectedFeatures = `<p>Active Features: ${selectedFeatures}</p>`;
 			}
-			if (addGridToolbar) {
-				gridFeatures.push('[showToolbar]="true" toolbarTitle="Employees"');
+			if (toolbarActions.length) {
+				const parts = [
+					"",
+					"  <igx-grid-toolbar>",
+					"    <igx-grid-toolbar-title>Employees</igx-grid-toolbar-title>",
+					"    <igx-grid-toolbar-actions>",
+					...toolbarActions,
+					"    </igx-grid-toolbar-actions>",
+					"  </igx-grid-toolbar>"
+				];
+				toolbar = parts.join("\n");
 			}
 		}
 		const extraConfig = {
@@ -162,6 +170,7 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 			datePickerEditor,
 			groupByColumn,
 			selectedFeatures,
+			toolbar,
 			columnBoolFeatures: columnBoolFeatures.join(" "),
 			columnFeatures: columnFeatures.join(" "),
 			gridFeatures: gridFeatures.join(" ")
