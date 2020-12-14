@@ -6,7 +6,7 @@ import { temperature } from "../../assets/temperature";
 	template: `
 		<h1>$(description)</h1>
 		<div style="float: left">
-			<ig-data-chart [(options)]="options" widgetId='radialChart'></ig-data-chart>
+			<ig-data-chart [(options)]="options" widgetId="radialChart"></ig-data-chart>
 		</div>
 		<div id="radialLegend" style="float: left"></div>`
 })

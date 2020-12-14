@@ -6,7 +6,7 @@ import { population } from "../../assets/data";
 	template: `
 		<h1>$(description)</h1>
 		<div style="float: left">
-			<ig-pie-chart [(options)]="options" widgetId='pieChart'></ig-pie-chart>
+			<ig-pie-chart [(options)]="options" widgetId="pieChart"></ig-pie-chart>
 		</div>
 	`
 })

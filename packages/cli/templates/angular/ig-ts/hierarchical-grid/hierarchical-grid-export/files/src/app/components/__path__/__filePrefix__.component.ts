@@ -12,7 +12,7 @@ declare var $;
 			<ig-combo [(options)]="comboOptions" widgetId="combo" [(ngModel)]="comboOptions.value" (selectionChanged)="selectionChanged($event)"></ig-combo>
 			<input type="button" id="exportBtn" value="Export grid" (click)="export($event)" />
 		</div>
-		<ig-hierarchical-grid [(options)]="gridOptions" widgetId='hierarchical-grid-export'></ig-hierarchical-grid>
+		<ig-hierarchical-grid [(options)]="gridOptions" widgetId="hierarchical-grid-export"></ig-hierarchical-grid>
 		`,
 		styles: [`
 		.ui-igcombo-wrapper {

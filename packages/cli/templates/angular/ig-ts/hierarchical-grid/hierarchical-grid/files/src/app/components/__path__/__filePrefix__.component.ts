@@ -5,7 +5,7 @@ import { northwind } from "../../assets/northwind";
 	selector: "$(filePrefix)",
 	template: `
 		<h1>$(description)</h1>
-		<ig-hierarchical-grid [(options)]="gridOptions" widgetId='hierarchical-grid'></ig-hierarchical-grid>
+		<ig-hierarchical-grid [(options)]="gridOptions" widgetId="hierarchical-grid"></ig-hierarchical-grid>
 	`
 })
 export class $(ClassName)Component {

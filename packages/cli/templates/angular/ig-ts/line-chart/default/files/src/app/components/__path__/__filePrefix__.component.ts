@@ -17,7 +17,7 @@ import { data } from "../../assets/line-chart-data";
 		<br>
 	</div>
 	<div style="float: left">
-		<ig-data-chart [(options)]="options" widgetId='lineChart'></ig-data-chart>
+		<ig-data-chart [(options)]="options" widgetId="lineChart"></ig-data-chart>
 	</div>
 	<div id="lineLegend" style="float: left"></div>`
 })

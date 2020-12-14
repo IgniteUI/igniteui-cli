@@ -5,7 +5,7 @@ import { products } from "../../assets/northwindProducts";
 	selector: "$(filePrefix)",
 	template: `
 		<h1>$(description)</h1>
-		<ig-grid [(options)]="gridOptions" widgetId='grid-editing'></ig-grid>
+		<ig-grid [(options)]="gridOptions" widgetId="grid-editing"></ig-grid>
 	`
 })
 export class $(ClassName)Component {
