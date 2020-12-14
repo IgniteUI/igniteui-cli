@@ -6,12 +6,12 @@ import { financialData } from "../../assets/financial-data";
 	template: `
 		<h1>$(description)</h1>
 		<div style="float: left">
-			<ig-data-chart [(options)]="candleOptions" widgetId='candlestickChart'>
+			<ig-data-chart [(options)]="candleOptions" widgetId="candlestickChart">
 			</ig-data-chart>
 		</div>
 	
 		<div style="float: left; width: 500px; height: 500px;">
-			<ig-data-chart [(options)]="ohlcOptions" widgetId='ohlcChart'>
+			<ig-data-chart [(options)]="ohlcOptions" widgetId="ohlcChart">
 			</ig-data-chart>
 		</div>
 	`

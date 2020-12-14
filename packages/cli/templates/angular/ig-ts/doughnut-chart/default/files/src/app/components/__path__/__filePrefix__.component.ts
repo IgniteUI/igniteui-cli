@@ -6,7 +6,7 @@ import { doughnutData } from "../../assets/doughnut-data";
 	template: `
 		<h1>$(description)</h1>
 		<div style="float: left">
-		<ig-doughnut-chart [(options)]="doughnutOptions" widgetId='doughnutChart'></ig-doughnut-chart>
+		<ig-doughnut-chart [(options)]="doughnutOptions" widgetId="doughnutChart"></ig-doughnut-chart>
 		</div>
 	`
 })

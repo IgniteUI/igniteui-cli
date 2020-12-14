@@ -6,7 +6,7 @@ import { lastFiveYears } from "../../assets/world-energy-production";
 	template: `
 		<h1>$(description)</h1>
 		<div style="float: left">
-			<ig-data-chart [(options)]="options" widgetId='barChart'></ig-data-chart>
+			<ig-data-chart [(options)]="options" widgetId="barChart"></ig-data-chart>
 		</div>
 		<div id="barLegend" style="float: left"></div>`
 })
