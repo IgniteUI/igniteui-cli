@@ -1,5 +1,5 @@
 <div class="outer-wrapper" igxLayout>
-  <igx-nav-drawer #nav id="project-menu" isOpen="true" [enableGestures]='true' width="280px">
+  <igx-nav-drawer #nav id="project-menu" isOpen="true" [enableGestures]="true" width="280px">
     <ng-template igxDrawer>
       <span igxDrawerItem [isHeader]="true">Views</span>
       <span *ngFor="let route of topNavLinks" igxDrawerItem igxRipple routerLinkActive="igx-nav-drawer__item--active" routerLink="{{route.path}}">{{route.name}}</span>
