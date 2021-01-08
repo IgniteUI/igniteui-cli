@@ -19,7 +19,7 @@
     </igx-column>
     <igx-column #awards field="GrammyAwards" [dataType]="'number'">
         <%=awardsPin%>
-    </igx-column>
+    </igx-column><%=toolbar%>
     <igx-row-island [key]="'Albums'" [autoGenerate]="false" <%=rowIslandFeatures%>>
         <igx-column #album field="Album" [dataType]="'string'" <%=columnFeatures%>>
             <%=albumPin%>

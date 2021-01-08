@@ -36,6 +36,8 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 	}
 
 	public generateConfig(name: string, ...options: any[]): {[key: string]: any} {
+		let toolbar = "";
+		const toolbarActions = [];
 		const columnFeatures = [];
 		const columnBoolFeatures = [];
 		const treeGridFeatures = [];
@@ -50,7 +52,6 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 		};
 		let selectedFeatures = "";
 		let columnPinning = "";
-		let addGridToolbar = false;
 
 		if (this.userExtraConfiguration["columnFeatures"]) {
 			const features = this.userExtraConfiguration["columnFeatures"] as string[];
@@ -72,8 +73,7 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 						columnBoolFeatures.push('[movable]="true"');
 						break;
 					case "Column Hiding":
-						treeGridFeatures.push('[columnHiding]="true"');
-						addGridToolbar = true;
+						toolbarActions.push("      <igx-grid-toolbar-hiding></igx-grid-toolbar-hiding>");
 						break;
 					case "Cell Editing":
 						columnFeatures.push(`[editable]="true"`);
@@ -90,8 +90,7 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 						break;
 					case "Column Pinning":
 						columnPinning = '[pinned]="true"';
-						treeGridFeatures.push('[columnPinning]="true"');
-						addGridToolbar = true;
+						toolbarActions.push("      <igx-grid-toolbar-pinning></igx-grid-toolbar-pinning>");
 						break;
 				}
 				switch (feature) {
@@ -133,11 +132,21 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 			if (selectedFeatures.length > 0) {
 				selectedFeatures = `<p>Active Features:<br />${selectedFeatures}</p>`;
 			}
-			if (addGridToolbar) {
-				treeGridFeatures.push('[showToolbar]="true" toolbarTitle="Employees"');
+			if (toolbarActions.length) {
+				const parts = [
+					"",
+					"  <igx-grid-toolbar>",
+					"    <igx-grid-toolbar-title>Employees</igx-grid-toolbar-title>",
+					"    <igx-grid-toolbar-actions>",
+					...toolbarActions,
+					"    </igx-grid-toolbar-actions>",
+					"  </igx-grid-toolbar>"
+				];
+				toolbar = parts.join("\n");
 			}
 		}
 		const extraConfig = {
+			toolbar,
 			columnPinning,
 			selectedFeatures,
 			columnBoolFeatures: columnBoolFeatures.join(" "),
