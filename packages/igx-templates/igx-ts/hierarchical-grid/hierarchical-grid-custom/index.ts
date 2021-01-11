@@ -41,7 +41,8 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 		const gridFeatures = [];
 		const extraConfig = {
 			selectedFeatures: this.getSelectedFeatures(columnFeatures, gridFeatures),
-			toolbar: this.toolbar,     
+			toolbar: this.toolbar,
+
 			// tslint:disable-next-line: object-literal-sort-keys
 			columnFeatures: columnFeatures.join(" "),
 			gridFeatures: gridFeatures.join(" "),

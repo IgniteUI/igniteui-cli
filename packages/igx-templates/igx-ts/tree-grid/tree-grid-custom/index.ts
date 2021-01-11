@@ -146,9 +146,9 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 			}
 		}
 		const extraConfig = {
-			toolbar,
 			columnPinning,
 			selectedFeatures,
+			toolbar,
 			columnBoolFeatures: columnBoolFeatures.join(" "),
 			columnFeatures: columnFeatures.join(" "),
 			treeGridFeatures: treeGridFeatures.join(" ")
