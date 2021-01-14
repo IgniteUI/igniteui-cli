@@ -4,7 +4,7 @@ import { IgniteUIForAngularTemplate } from "../../../IgniteUIForAngularTemplate"
 class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 	private userExtraConfiguration = {};
 	private usePinning: boolean;
-
+	private toolbar = "";
 	constructor() {
 		super(__dirname);
 		this.components = ["Hierarchical Grid"];
@@ -41,6 +41,8 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 		const gridFeatures = [];
 		const extraConfig = {
 			selectedFeatures: this.getSelectedFeatures(columnFeatures, gridFeatures),
+			toolbar: this.toolbar,
+
 			// tslint:disable-next-line: object-literal-sort-keys
 			columnFeatures: columnFeatures.join(" "),
 			gridFeatures: gridFeatures.join(" "),
@@ -74,8 +76,8 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 	}
 
 	private getSelectedFeatures(columnFeatures: string[], gridFeatures: string[]) {
+		const toolbarActions = [];
 		const columnBoolFeatures = [];
-		let addGridToolbar = false;
 		let selectedFeatures = "";
 		const featureUrl = "https://www.infragistics.com/products/ignite-ui-angular/angular/components/hierarchicalgrid/";
 		const anchorWrapper = {
@@ -102,9 +104,7 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 						columnFeatures.push('[movable]="true"');
 						break;
 					case "Column Hiding":
-						gridFeatures.push('[showToolbar]="true" [columnHiding]="true" toolbarTitle="Singers"' +
-							' columnHidingTitle="Column Hiding" hiddenColumnText="Hidden"');
-						addGridToolbar = true;
+						toolbarActions.push("      <igx-grid-toolbar-hiding title='Column Hiding'></igx-grid-toolbar-hiding>");
 						break;
 					case "Cell Editing":
 						columnFeatures.push(`[editable]="true"`);
@@ -132,8 +132,17 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 				if (selectedFeatures.length > 0) {
 					selectedFeatures = `<p>Active Features: ${selectedFeatures}</p>`;
 				}
-				if (addGridToolbar) {
-					gridFeatures.push('[showToolbar]="true" toolbarTitle="Singers"');
+				if (toolbarActions.length) {
+					const parts = [
+						"",
+						"  <igx-grid-toolbar>",
+						"    <igx-grid-toolbar-title>Singers</igx-grid-toolbar-title>",
+						"    <igx-grid-toolbar-actions>",
+						...toolbarActions,
+						"    </igx-grid-toolbar-actions>",
+						"  </igx-grid-toolbar>"
+					];
+					this.toolbar = parts.join("\n");
 				}
 			}
 		}
