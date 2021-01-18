@@ -28,7 +28,7 @@
     </div>
     <igx-tree-grid #grid1 igxPreventDocumentScroll
         [data]="data | treeGridGrouping:groupColumns:aggregations:groupColumnKey:primaryKey:childDataKey"
-        height="90%" width="100%" [autoGenerate]='false' displayDensity='compact'
+        height="90%" width="100%" [autoGenerate]="false" displayDensity="compact"
         [primaryKey]="primaryKey" [childDataKey]="childDataKey" hiddenColumnsText="Hidden"
         [rowSelection]="selectionMode" [allowFiltering]="true" [filterMode]="'excelStyleFilter'">
         <igx-grid-toolbar *ngIf="showToolbar">
@@ -44,10 +44,10 @@
         <ng-template igxExcelStyleHiding></ng-template>
         <ng-template igxExcelStylePinning></ng-template> -->
 
-        <igx-column [field]="groupColumnKey" [width]="'180px'" [sortable]='true' [resizable]='true' [disableHiding]="true"></igx-column>
-        <igx-column [field]="'Settlement'" [width]="'100px'" [sortable]='true'></igx-column>
-        <igx-column [field]="'Region'" [width]="'110px'" [sortable]='true'></igx-column>
-        <igx-column [field]="'Country'" [width]="'100px'" [sortable]='true'></igx-column>
+        <igx-column [field]="groupColumnKey" [width]="'180px'" [sortable]="true" [resizable]="true" [disableHiding]="true"></igx-column>
+        <igx-column [field]="'Settlement'" [width]="'100px'" [sortable]="true"></igx-column>
+        <igx-column [field]="'Region'" [width]="'110px'" [sortable]="true"></igx-column>
+        <igx-column [field]="'Country'" [width]="'100px'" [sortable]="true"></igx-column>
         <igx-column [field]="'Open Price'" [width]="'120px'" dataType="number" [formatter]="formatCurrency" [movable]="true" [sortable]="true"></igx-column>
         <igx-column [field]="'Price'" [width]="'130px'" dataType="number" [cellClasses]="trends" [movable]="true" [sortable]="true" [disableHiding]="true">
             <ng-template igxCell let-cell="cell">

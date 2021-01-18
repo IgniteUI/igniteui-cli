@@ -2,43 +2,43 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: 'my-app',
-    template: `<h1 id='mainheader'>My IgniteUI Angular App</h1>
+    template: `<h1 id="mainheader">My IgniteUI Angular App</h1>
     <h2>igGrid</h2>
         <ig-grid
-        widgetId='grid1'
-        [autoCommit]='true'
-        [dataSource]='data'
-        [autoGenerateColumns]='true'
+        widgetId="grid1"
+        [autoCommit]="true"
+        [dataSource]="data"
+        [autoGenerateColumns]="true"
         >
     </ig-grid>
 
     <h2>igEditors</h2>
     <ig-text-editor value="John"></ig-text-editor>
     <br/>
-    <ig-date-editor value='{{currDate | date}}'></ig-date-editor>
+    <ig-date-editor value="{{currDate | date}}"></ig-date-editor>
      <br/>
-     <ig-mask-editor value='mask edit'></ig-mask-editor>
+     <ig-mask-editor value="mask edit"></ig-mask-editor>
      <br/>
-     <ig-currency-editor value='40'></ig-currency-editor>
+     <ig-currency-editor value="40"></ig-currency-editor>
      <br/>
-     <ig-numeric-editor value='40'></ig-numeric-editor>
+     <ig-numeric-editor value="40"></ig-numeric-editor>
       <br/>
-     <ig-percent-editor value='40'></ig-percent-editor>
+     <ig-percent-editor value="40"></ig-percent-editor>
       <br/>
-     <ig-date-picker value='{{currDate | date}}'></ig-date-picker>
+     <ig-date-picker value="{{currDate | date}}"></ig-date-picker>
 
      <h2>igCombo</h2>
-     <ig-combo [dataSource]='data' textKey='Name' valueKey='ProductID' [(ngModel)]="value"></ig-combo >
+     <ig-combo [dataSource]="data" textKey="Name" valueKey="ProductID" [(ngModel)]="value"></ig-combo >
 
      <h2>igTree</h2>
-     <ig-tree widgetId='tree1' [dataSource]='treeData' [bindings]="treeBinding"></ig-tree>
+     <ig-tree widgetId="tree1" [dataSource]="treeData" [bindings]="treeBinding"></ig-tree>
 
      <h2>igDialog</h2>
-     <ig-dialog [(state)]='dialogState' (stateChanged)='stateChanged()'></ig-dialog>
-     <button (click)='btnClicked()'>Open Dialog</button>
+     <ig-dialog [(state)]="dialogState" (stateChanged)="stateChanged()"></ig-dialog>
+     <button (click)="btnClicked()">Open Dialog</button>
 
      <h2>igDataChart</h2>
-     <ig-data-chart [(options)]="chartOptions" widgetId='datachart1'></ig-data-chart>
+     <ig-data-chart [(options)]="chartOptions" widgetId="datachart1"></ig-data-chart>
     `
 })
 export class AppComponent {

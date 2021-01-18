@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 	selector: "$(filePrefix)",
 	template: `
 		<h1>$(description)</h1>
-		<$(widget) [(options)]="options" widgetId='$(widget)'></$(widget)>
+		<$(widget) [(options)]="options" widgetId="$(widget)"></$(widget)>
 	`
 })
 export class $(ClassName)Component {

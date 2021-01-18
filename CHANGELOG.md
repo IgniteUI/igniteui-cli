@@ -1,3 +1,102 @@
+# [7.0.2](https://github.com/IgniteUI/igniteui-cli/compare/v7.0.1...v7.0.2) (2021-01-18)
+
+🎉 This version includes Ignite UI for Angular DV components update to version 11.1.0:
+* [igniteui-angular-core](https://www.npmjs.com/package/igniteui-angular-core/v/11.1.0)
+* [igniteui-angular-charts](https://www.npmjs.com/package/igniteui-angular-charts/v/11.1.0)
+* [igniteui-angular-gauges](https://www.npmjs.com/package/igniteui-angular-gauges/v/11.1.0)
+* [igniteui-angular-maps](https://www.npmjs.com/package/igniteui-angular-maps/v/11.1.0)
+
+## igniteui/cli-core@7.0.2
+
+Note: Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@11.0.702
+* **igx-ts:** Update DV components to version 11.1.0 ([cb16f13](https://github.com/IgniteUI/igniteui-cli/commit/cb16f13))
+
+#### Bug Fixes
+
+* **igx-ts:** Update hierarchical grid & tree grid custom templates to declarative toolbar ([7a78df4](https://github.com/IgniteUI/igniteui-cli/commit/7a78df4))
+
+## igniteui/angular-schematics@11.0.702
+
+Note: Version bump only for package igniteui/angular-schematics
+
+## igniteui-cli@7.0.2
+
+* **igx-ts:** Update DV components to version 11.1.0 ([cb16f13](https://github.com/IgniteUI/igniteui-cli/commit/cb16f13))
+
+#### Bug Fixes
+
+* **igx-ts:** Update hierarchical grid & tree grid custom templates to declarative toolbar ([7a78df4](https://github.com/IgniteUI/igniteui-cli/commit/7a78df4))
+
+# [7.0.1](https://github.com/IgniteUI/igniteui-cli/compare/v7.0.0...v7.0.1) (2020-11-16)
+
+## igniteui/cli-core@7.0.1
+
+Note: Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@11.0.701
+
+#### Bug Fixes
+
+* **igx-ts:** SSR breaks because of localStorage ref ([dc9410f](https://github.com/IgniteUI/igniteui-cli/commit/dc9410f)), ([3056a97](https://github.com/IgniteUI/igniteui-cli/commit/3056a97))
+* **igx,custom-grid:** Assign allowFiltering when selected as option ([7534c5f](https://github.com/IgniteUI/igniteui-cli/commit/7534c5f))
+* **igx,custom-grid:** Update toolbar to new declarative setup ([35d274c](https://github.com/IgniteUI/igniteui-cli/commit/35d274c))
+
+## igniteui/angular-schematics@11.0.701
+
+Note: Version bump only for package igniteui/angular-schematics
+
+## igniteui-cli@7.0.1
+
+#### Bug Fixes
+
+* **igx-ts:** SSR breaks because of localStorage ref ([dc9410f](https://github.com/IgniteUI/igniteui-cli/commit/dc9410f)), ([3056a97](https://github.com/IgniteUI/igniteui-cli/commit/3056a97))
+* **igx,custom-grid:** Assign allowFiltering when selected as option ([7534c5f](https://github.com/IgniteUI/igniteui-cli/commit/7534c5f))
+* **igx,custom-grid:** Update toolbar to new declarative setup ([35d274c](https://github.com/IgniteUI/igniteui-cli/commit/35d274c))
+
+# [7.0.0](https://github.com/IgniteUI/igniteui-cli/compare/6.2.x...v7.0.0) (2020-11-13)
+
+🎉 This update includes igniteui-angular version [11.0.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/11.0.0).
+
+## igniteui/cli-core@7.0.0
+
+Note: Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@11.0.700
+
+* Add support for igniteui-angular v11.0.0 [#802](https://github.com/IgniteUI/igniteui-cli/issues/802) ([5922d15](https://github.com/IgniteUI/igniteui-cli/commit/5922d15))
+
+## igniteui/angular-schematics@11.0.700
+
+Note: Version bump only for package igniteui/angular-schematics
+
+## igniteui-cli@7.0.0
+
+* Add support for igniteui-angular v11.0.0 [#802](https://github.com/IgniteUI/igniteui-cli/issues/802) ([5922d15](https://github.com/IgniteUI/igniteui-cli/commit/5922d15))
+
+# [6.2.2](https://github.com/IgniteUI/igniteui-cli/compare/v6.2.1...v6.2.2) (2020-11-16)
+
+## igniteui/cli-core@6.2.2
+
+Note: Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@10.2.622
+
+#### Bug Fixes
+
+* **igx-ts:** SSR breaks because of localStorage ref ([b750d9d](https://github.com/IgniteUI/igniteui-cli/commit/b750d9d))
+
+## igniteui/angular-schematics@10.2.622
+
+Note: Version bump only for package igniteui/angular-schematics
+
+## igniteui-cli@6.2.2
+
+#### Bug Fixes
+
+* **igx-ts:** SSR breaks because of localStorage ref ([b750d9d](https://github.com/IgniteUI/igniteui-cli/commit/b750d9d))
+
 # [6.2.1](https://github.com/IgniteUI/igniteui-cli/compare/v6.2.0...v6.2.1) (2020-11-11)
 
 ## igniteui/cli-core@6.2.1
