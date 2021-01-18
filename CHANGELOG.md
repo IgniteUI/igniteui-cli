@@ -1,8 +1,8 @@
 # [7.0.2](https://github.com/IgniteUI/igniteui-cli/compare/v7.0.1...v7.0.2) (2021-01-18)
 
 🎉 This version includes Ignite UI for Angular DV components update to version 11.1.0:
-* [igniteui-angular-charts](https://www.npmjs.com/package/igniteui-angular-charts/v/11.1.0)
 * [igniteui-angular-core](https://www.npmjs.com/package/igniteui-angular-core/v/11.1.0)
+* [igniteui-angular-charts](https://www.npmjs.com/package/igniteui-angular-charts/v/11.1.0)
 * [igniteui-angular-gauges](https://www.npmjs.com/package/igniteui-angular-gauges/v/11.1.0)
 * [igniteui-angular-maps](https://www.npmjs.com/package/igniteui-angular-maps/v/11.1.0)
 
