@@ -1,3 +1,34 @@
+# [7.0.2](https://github.com/IgniteUI/igniteui-cli/compare/v7.0.1...v7.0.2) (2021-01-18)
+
+🎉 This version includes Ignite UI for Angular DV components update to version 11.1.0:
+* [igniteui-angular-core](https://www.npmjs.com/package/igniteui-angular-core/v/11.1.0)
+* [igniteui-angular-charts](https://www.npmjs.com/package/igniteui-angular-charts/v/11.1.0)
+* [igniteui-angular-gauges](https://www.npmjs.com/package/igniteui-angular-gauges/v/11.1.0)
+* [igniteui-angular-maps](https://www.npmjs.com/package/igniteui-angular-maps/v/11.1.0)
+
+## igniteui/cli-core@7.0.2
+
+Note: Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@11.0.702
+* **igx-ts:** Update DV components to version 11.1.0 ([cb16f13](https://github.com/IgniteUI/igniteui-cli/commit/cb16f13))
+
+#### Bug Fixes
+
+* **igx-ts:** Update hierarchical grid & tree grid custom templates to declarative toolbar ([7a78df4](https://github.com/IgniteUI/igniteui-cli/commit/7a78df4))
+
+## igniteui/angular-schematics@11.0.702
+
+Note: Version bump only for package igniteui/angular-schematics
+
+## igniteui-cli@7.0.2
+
+* **igx-ts:** Update DV components to version 11.1.0 ([cb16f13](https://github.com/IgniteUI/igniteui-cli/commit/cb16f13))
+
+#### Bug Fixes
+
+* **igx-ts:** Update hierarchical grid & tree grid custom templates to declarative toolbar ([7a78df4](https://github.com/IgniteUI/igniteui-cli/commit/7a78df4))
+
 # [7.0.1](https://github.com/IgniteUI/igniteui-cli/compare/v7.0.0...v7.0.1) (2020-11-16)
 
 ## igniteui/cli-core@7.0.1
