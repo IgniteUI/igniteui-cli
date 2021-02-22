@@ -1,3 +1,23 @@
+# [7.1.0](https://github.com/IgniteUI/igniteui-cli/compare/v7.0.2...v7.1.0) (2021-02-22)
+
+🎉 This update includes Ignite UI for Angular version [11.1.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/11.1.0) and Angular version [11.2.0](https://github.com/angular/angular/releases/tag/11.2.0).
+
+## igniteui/cli-core@7.1.0
+
+Note: Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@11.1.710
+
+* Add support for Ignite UI for Angular v11.1.0 [#826](https://github.com/IgniteUI/igniteui-cli/pull/826) ([4f5fb7f](https://github.com/IgniteUI/igniteui-cli/commit/4f5fb7f))
+
+## igniteui/angular-schematics@11.1.710
+
+Note: Version bump only for package igniteui/angular-schematics
+
+## igniteui-cli@7.1.0
+
+* Add support for Ignite UI for Angular v11.1.0 [#826](https://github.com/IgniteUI/igniteui-cli/pull/826) ([4f5fb7f](https://github.com/IgniteUI/igniteui-cli/commit/4f5fb7f))
+
 # [7.0.2](https://github.com/IgniteUI/igniteui-cli/compare/v7.0.1...v7.0.2) (2021-01-18)
 
 🎉 This version includes Ignite UI for Angular DV components update to version 11.1.0:
