@@ -1,30 +1,32 @@
-import { SchematicsException } from "@angular-devkit/schematics";
+import { JsonArray, workspaces } from "@angular-devkit/core";
 import { Tree } from "@angular-devkit/schematics/src/tree/interface";
 import { NPM_PACKAGE, resolveIgxPackage } from "@igniteui/angular-templates";
-import { getWorkspace } from "@schematics/angular/utility/config";
-import { ProjectType, WorkspaceProject, WorkspaceSchema } from "@schematics/angular/utility/workspace-models";
+import { createWorkspaceHost } from "@igniteui/cli-core";
 import * as path from "path";
 
-export function importDefaultTheme(tree: Tree): Tree {
-	const sourceRoot = getDefaultProject(tree).sourceRoot;
-	if (tree.exists(path.join(sourceRoot, "styles.sass"))) {
-		importDefaultThemeSass(tree, "sass");
-		return tree;
-	} else if (tree.exists(path.join(sourceRoot, "styles.scss"))) {
-		importDefaultThemeSass(tree, "scss");
-		return tree;
+export async function importDefaultTheme(tree: Tree): Promise<void> {
+	const sourceRoot = (await getDefaultProject(tree)).sourceRoot;
+	const pathWithoutExt = path.join(sourceRoot, "styles");
+	if (tree.exists(`${pathWithoutExt}.sass`)) {
+		importDefaultThemeSass(tree, `${pathWithoutExt}.sass`);
+		return;
+	} else if (tree.exists(`${pathWithoutExt}.scss`)) {
+		importDefaultThemeSass(tree, `${pathWithoutExt}.scss`);
+		return;
 	}
 
-	importIgDefaultTheme(tree);
-	return tree;
+	await importIgDefaultTheme(tree);
+	return;
 }
 
-export function addFontsToIndexHtml(tree: Tree) {
+export async function addFontsToIndexHtml(tree: Tree) {
 	const titillium = '<link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">';
 	const materialIcons = '<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">';
-	const targetFile = getDefaultProjectBuildOptions(tree)["index"];
-	if (tree.exists(targetFile)) {
-		let content = tree.read(targetFile).toString();
+	const project = await getDefaultProject(tree);
+	const targetFile = project.targets.get("build")?.options?.index as string;
+
+	if (targetFile && tree.exists(targetFile)) {
+		let content = tree.read(targetFile)!.toString();
 		if (!content.includes(titillium)) {
 			content = content.replace("</head>", `  ${titillium}\n</head>`);
 		}
@@ -34,11 +36,9 @@ export function addFontsToIndexHtml(tree: Tree) {
 
 		tree.overwrite(targetFile, content);
 	}
-
-	return tree;
 }
 
-function importDefaultThemeSass(tree: Tree, ext: string): Tree {
+function importDefaultThemeSass(tree: Tree, filePath: string) {
 	const igxPackage = resolveIgxPackage(NPM_PACKAGE);
 	const sassImports =
 	`
@@ -53,78 +53,52 @@ function importDefaultThemeSass(tree: Tree, ext: string): Tree {
 @include igx-core();
 @include igx-theme($default-palette);
 `;
-	const sourceRoot = getDefaultProject(tree).sourceRoot;
-	const targetFile = `/${sourceRoot}/styles.${ext}`;
-	let content = tree.read(targetFile).toString();
+
+	let content = tree.read(filePath)!.toString();
 
 	if (!content.includes(sassImports)) {
 		content += sassImports;
 	}
 
-	tree.overwrite(targetFile, content);
-	return tree;
+	tree.overwrite(filePath, content);
 }
 
-function importIgDefaultTheme(tree: Tree): Tree {
-	const targetFile = "/angular.json";
-	const workspace = getWorkspace(tree);
-	const importedStylesToBuild = importDefaultThemeToAngularWorkspace(workspace, "build");
-	const importedStylesToTest = importDefaultThemeToAngularWorkspace(workspace, "test");
+async function importIgDefaultTheme(tree: Tree): Promise<void> {
+	const host = createWorkspaceHost(tree);
+	const { workspace } = await workspaces.readWorkspace("/", host);
 
-	if (importedStylesToBuild || importedStylesToTest) {
-		tree.overwrite(targetFile, JSON.stringify(workspace, null, 2) + "\n");
-	}
+	importDefaultThemeToAngularWorkspace(workspace, "build");
+	importDefaultThemeToAngularWorkspace(workspace, "test");
 
-	return tree;
+	// workspace tracks changes internally:
+	await workspaces.writeWorkspace(workspace, host);
 }
 
-function getTargetedProjectOptions(project: WorkspaceProject<ProjectType>, target: string) {
-	if (project.targets &&
-		project.targets[target] &&
-		project.targets[target].options) {
-		return project.targets[target].options;
-	}
-
-	if (project.architect &&
-		project.architect[target] &&
-		project.architect[target].options) {
-		return project.architect[target].options;
-	}
-
-	throw new SchematicsException(`Cannot determine the project's configuration for: ${target}`);
+export async function getDefaultProject(tree: Tree): Promise<workspaces.ProjectDefinition> {
+	const { workspace } = await workspaces.readWorkspace("/", createWorkspaceHost(tree));
+	const project = workspace.extensions.defaultProject ?
+			workspace.projects.get(workspace.extensions.defaultProject as string)! :
+			workspace.projects.values().next().value as workspaces.ProjectDefinition;
+	return project;
 }
 
-export function getDefaultProject(tree: Tree): WorkspaceProject<ProjectType> {
-	const workspace = getWorkspace(tree);
-	return workspace.projects[workspace.defaultProject];
-}
-
-export function getDefaultProjectBuildOptions(tree: Tree) {
-	return getTargetedProjectOptions(getDefaultProject(tree), "build");
-}
-
-function importDefaultThemeToAngularWorkspace(workspace: WorkspaceSchema, key: string) {
+function importDefaultThemeToAngularWorkspace(workspace: workspaces.WorkspaceDefinition, key: string) {
 	const igxPackage = resolveIgxPackage(NPM_PACKAGE);
 	const cssImport = `node_modules/${igxPackage}/styles/igniteui-angular.css`;
-	const projectName = workspace.defaultProject;
-	if (projectName) {
-		if (!workspace.projects[projectName].architect) {
-			workspace.projects[projectName].architect = {};
-		}
-		if (!workspace.projects[projectName].architect[key]) {
-			workspace.projects[projectName].architect[key] = {};
-		}
-		if (!workspace.projects[projectName].architect[key].options) {
-			workspace.projects[projectName].architect[key].options = {};
-		}
-		if (!workspace.projects[projectName].architect[key].options.styles) {
-			workspace.projects[projectName].architect[key].options.styles = [];
-		}
-		if (!workspace.projects[projectName].architect[key].options.styles.includes(cssImport)) {
-			workspace.projects[projectName].architect[key].options.styles.push(cssImport);
-			return true;
-		}
+	const project = workspace.extensions.defaultProject ?
+		workspace.projects.get(workspace.extensions.defaultProject as string) :
+		workspace.projects.values().next().value as workspaces.ProjectDefinition;
 
-		return false;
+	const target = project?.targets.get(key);
+	if (!target) {
+		// TODO: Log target not found
+		return;
+	}
+
+	target.options = target.options || {};
+	target.options.styles = target.options.styles || [];
+	const styles = target.options.styles as JsonArray;
+	if (!styles.includes(cssImport)) {
+		styles.push(cssImport);
 	}
 }

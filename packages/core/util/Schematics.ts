@@ -1,4 +1,10 @@
+// tslint:disable: no-implicit-dependencies
+import { workspaces } from "@angular-devkit/core";
 import { Tree } from "@angular-devkit/schematics";
+
+// TODO: Better place for these?
+// current code transpiles to clean functions without imports from packages
+// that core doesn't depend on, but still not the best option.
 
 export function addTypography(host: Tree) {
 	const indexHtml = "src/index.html";
@@ -32,3 +38,20 @@ export function addTypography(host: Tree) {
 		host.overwrite(indexHtml, content);
 	}
 }
+
+/** Creates a schematics tree workspace host. */
+export const createWorkspaceHost = (tree: Tree): workspaces.WorkspaceHost => ({
+	readFile: async (path: string): Promise<string> => {
+		const data = tree.read(path);
+		// can use fileBufferToString
+		return data?.toString();
+	},
+	writeFile: async (path: string, data: string): Promise<void> => {
+		tree.overwrite(path, data);
+	},
+
+	isDirectory: async (path: string): Promise<boolean> =>
+		!tree.exists(path) && tree.getDir(path).subfiles.length > 0,
+
+	isFile: async (path: string): Promise<boolean> => tree.exists(path)
+});

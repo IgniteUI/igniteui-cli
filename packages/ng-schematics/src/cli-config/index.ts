@@ -58,8 +58,9 @@ function addTypographyToProj(): Rule {
 }
 
 function importBrowserAnimations(): Rule {
-	return (tree: Tree) => {
-		const moduleFile = `${getDefaultProject(tree).sourceRoot}/app/app.module.ts`;
+	return async (tree: Tree) => {
+		const project = await getDefaultProject(tree);
+		const moduleFile = `${project.sourceRoot}/app/app.module.ts`;
 		if (tree.exists(moduleFile)) {
 			const mainModule = new TypeScriptFileUpdate(moduleFile);
 			mainModule.addNgModuleMeta({ import: "BrowserAnimationsModule", from: "@angular/platform-browser/animations" });
@@ -69,9 +70,9 @@ function importBrowserAnimations(): Rule {
 }
 
 function importStyles(): Rule {
-	return (tree: Tree) => {
-		addFontsToIndexHtml(tree);
-		importDefaultTheme(tree);
+	return async (tree: Tree) => {
+		await addFontsToIndexHtml(tree);
+		await importDefaultTheme(tree);
 	};
 }
 

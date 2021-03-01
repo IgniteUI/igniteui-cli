@@ -5,7 +5,7 @@ import * as path from "path";
 const collectionPath = path.join(__dirname, "../collection.json");
 
 describe("app-projects", () => {
-	it("works", () => {
+	it("works", async () => {
 		const runner = new SchematicTestRunner("schematics", collectionPath);
 		const tree = Tree.empty();
 		const mockOptions = {
@@ -19,7 +19,7 @@ describe("app-projects", () => {
 		};
 		spyOn(tree, "read").and.returnValue(`Mock package content "igniteui-cli":`);
 		spyOn(tree, "overwrite");
-		runner.runSchematic("app-projects", mockOptions, tree);
+		await runner.runSchematicAsync("app-projects", mockOptions, tree).toPromise();
 
 		expect(mockOptions.projTemplate.generateConfig).toHaveBeenCalled();
 		expect(tree.read).toHaveBeenCalledWith("./package.json");

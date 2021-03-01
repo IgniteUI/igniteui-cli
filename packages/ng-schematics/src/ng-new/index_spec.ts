@@ -67,11 +67,11 @@ describe("Schematics ng-new", () => {
 			expect(e.exists(`${workingDirectory}/.gitignore`)).toBeTruthy();
 			const taskOptions = runner.tasks.map(task => task.options);
 			const expectedInstall: NodePackageTaskOptions = {
-				command: "install",
-				quiet: true,
 				workingDirectory,
+				command: "install",
+				packageManager: undefined,
 				packageName: undefined,
-				packageManager: undefined
+				quiet: true
 			};
 			const expectedInit: RepositoryInitializerTaskOptions = {
 				workingDirectory,
@@ -135,11 +135,11 @@ describe("Schematics ng-new", () => {
 			expect(e.exists(`${workingDirectory}/.gitignore`)).toBeTruthy();
 			const taskOptions = runner.tasks.map(task => task.options);
 			const expectedInstall: NodePackageTaskOptions = {
-				command: "install",
-				quiet: true,
 				workingDirectory,
+				command: "install",
+				packageManager: undefined,
 				packageName: undefined,
-				packageManager: undefined
+				quiet: true
 			};
 			const expectedInit: RepositoryInitializerTaskOptions = {
 				workingDirectory,

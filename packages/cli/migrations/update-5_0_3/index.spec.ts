@@ -15,7 +15,8 @@ describe("Update 5.0.0", () => {
 				prefix: "app",
 				sourceRoot: "src"
 			}
-		}
+		},
+		version: 1
 	};
 
 	beforeEach(() => {

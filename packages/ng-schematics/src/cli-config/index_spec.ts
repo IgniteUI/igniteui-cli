@@ -1,8 +1,8 @@
+import * as path from "path";
+
 import { EmptyTree } from "@angular-devkit/schematics";
 import { SchematicTestRunner, UnitTestTree } from "@angular-devkit/schematics/testing";
 import { FEED_PACKAGE, NPM_PACKAGE } from "@igniteui/angular-templates";
-import { getWorkspace } from "@schematics/angular/utility/config";
-import * as path from "path";
 
 describe("cli-config schematic", () => {
 	const collectionPath = path.join(__dirname, "../collection.json");
@@ -24,10 +24,12 @@ describe("cli-config schematic", () => {
 							index: `${sourceRoot}/index.html`
 						}
 					},
-					serve: {}
+					serve: {},
+					test: {}
 				}
 			}
-		}
+		},
+		version: 1
 	};
 
 	const pkgJsonConfig = {
@@ -92,25 +94,25 @@ describe("cli-config schematic", () => {
 		expect(tree.exists("/src/index.html"));
 	});
 
-	it("should create an ignite-ui-cli.json file correctly", () => {
-		runner.runSchematic("cli-config", {}, tree);
+	it("should create an ignite-ui-cli.json file correctly", async () => {
+		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
 		expect(tree.exists("ignite-ui-cli.json")).toBeTruthy();
 
 		const cliJsonData = JSON.parse(tree.readContent("/ignite-ui-cli.json"));
 		expect(cliJsonData.project.projectTemplate).toEqual("ng-cli");
 	});
 
-	it("should add typography correctly", () => {
+	it("should add typography correctly", async () => {
 		const targetFile = "/src/index.html";
-		runner.runSchematic("cli-config", {}, tree);
+		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
 
 		const content = tree.readContent(targetFile);
 		expect(content.includes("<body class=\"igx-typography\">")).toBeTruthy();
 	});
 
-	it("should add Titillium and Material Icons stylesheets correctly", () => {
+	it("should add Titillium and Material Icons stylesheets correctly", async () => {
 		const targetFile = "/src/index.html";
-		runner.runSchematic("cli-config", {}, tree);
+		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
 
 		const content = tree.readContent(targetFile);
 		const headContentsRegex = /(?:<head>)([\s\S]*)(?:<\/head>)/;
@@ -120,11 +122,11 @@ describe("cli-config schematic", () => {
 		expect(headContentsRegex.exec(content)!.pop()).toContain("family=Material+Icons");
 	});
 
-	it("should add the default scss theme correctly", () => {
+	it("should add the default scss theme correctly", async () => {
 		const targetFile = "/src/styles.scss";
 		tree.create(targetFile, "");
 
-		runner.runSchematic("cli-config", {}, tree);
+		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
 
 		let content = tree.readContent(targetFile);
 		expect(content.includes(`@import "~${NPM_PACKAGE}`)).toBeTruthy();
@@ -134,18 +136,18 @@ describe("cli-config schematic", () => {
 		createIgPkgJson(FEED_PACKAGE);
 		populatePkgJson(FEED_PACKAGE);
 
-		runner.runSchematic("cli-config", {}, tree);
+		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
 		content = tree.readContent(targetFile);
 		expect(content.includes(`@import "~${FEED_PACKAGE}`)).toBeTruthy();
 	});
 
-	it("should add the default css theme to the workspace", () => {
+	it("should add the default css theme to the workspace", async () => {
 		const targetFile = "/angular.json";
 		expect(tree.exists(targetFile)).toBeTruthy();
 
 		let targetImport = `node_modules/${NPM_PACKAGE}/styles/igniteui-angular.css`;
-		runner.runSchematic("cli-config", {}, tree);
-		let workspace = getWorkspace(tree) as any;
+		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
+		let workspace = JSON.parse(tree.read("/angular.json")!.toString());
 		let currentProjectName = workspace.defaultProject;
 
 		expect(
@@ -164,8 +166,8 @@ describe("cli-config schematic", () => {
 		populatePkgJson(FEED_PACKAGE);
 		targetImport = `node_modules/${FEED_PACKAGE}/styles/igniteui-angular.css`;
 
-		runner.runSchematic("cli-config", {}, tree);
-		workspace = getWorkspace(tree) as any;
+		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
+		workspace = JSON.parse(tree.read("/angular.json")!.toString());
 		currentProjectName = workspace.defaultProject;
 
 		expect(
@@ -180,28 +182,28 @@ describe("cli-config schematic", () => {
 			.toBeGreaterThan(0);
 	});
 
-	it("should not add the default css theme to the workspace if the global styles file is scss", () => {
+	it("should not add the default css theme to the workspace if the global styles file is scss", async () => {
 		// if the global styles file is scss or sass - the default theme is imported there
 		const stylesheet = "/src/styles.scss";
 		tree.create(stylesheet, "");
 		const targetFile = "/angular.json";
 		expect(tree.exists(targetFile)).toBeTruthy();
 
-		runner.runSchematic("cli-config", {}, tree);
-		const workspace = getWorkspace(tree) as any;
+		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
+		const workspace = JSON.parse(tree.read("/angular.json")!.toString());
 		const currentProjectName = workspace.defaultProject;
 
 		// the schematic creates the hierarchy that leads to the styles object within the workspace,
 		// providing that it is not already present
-		expect(workspace.projects[currentProjectName].architect.build.styles).toBeFalsy();
-		expect(workspace.projects[currentProjectName].architect.test).toBeFalsy();
+		expect(workspace.projects[currentProjectName].architect.build.styles).toBeUndefined();
+		expect(workspace.projects[currentProjectName].architect.test.styles).toBeUndefined();
 	});
 
-	it("should add the default sass theme correctly", () => {
+	it("should add the default sass theme correctly", async () => {
 		const targetFile = "/src/styles.sass";
 		tree.create(targetFile, "");
 
-		runner.runSchematic("cli-config", {}, tree);
+		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
 
 		let content = tree.readContent(targetFile);
 		expect(content.includes(`@import "~${NPM_PACKAGE}`)).toBeTruthy();
@@ -211,12 +213,12 @@ describe("cli-config schematic", () => {
 		createIgPkgJson(FEED_PACKAGE);
 		populatePkgJson(FEED_PACKAGE);
 
-		runner.runSchematic("cli-config", {}, tree);
+		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
 		content = tree.readContent(targetFile);
 		expect(content.includes(`@import "~${FEED_PACKAGE}`)).toBeTruthy();
 	});
 
-	it("should add BrowserAnimationsModule to app.module.ts", () => {
+	it("should add BrowserAnimationsModule to app.module.ts", async () => {
 		const moduleContent =
 `import { NgModule } from '@angular/core';
 @NgModule({
@@ -238,14 +240,14 @@ export class AppModule {
 		const targetFile = "./src/app/app.module.ts";
 		tree.create(targetFile, moduleContent);
 
-		runner.runSchematic("cli-config", {}, tree);
+		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
 		const content = tree.readContent(targetFile);
 		expect(content.replace(/\r\n/g, "\n")).toEqual(moduleContentAfterSchematic.replace(/\r\n/g, "\n"));
 	});
 
-	it("should properly display the dependency mismatch warning", () => {
+	it("should properly display the dependency mismatch warning", async () => {
 		spyOn(console, "warn");
-		runner.runSchematic("cli-config", {}, tree);
+		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
 		let pattern = new RegExp(`WARNING Version mismatch detected - ${NPM_PACKAGE}`);
 		// tslint:disable-next-line:no-console
 		expect(console.warn).toHaveBeenCalledWith(jasmine.stringMatching(pattern));
@@ -255,7 +257,7 @@ export class AppModule {
 		populatePkgJson(FEED_PACKAGE);
 		pattern = new RegExp(`WARNING Version mismatch detected - ${FEED_PACKAGE}`);
 
-		runner.runSchematic("cli-config", {}, tree);
+		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
 		// tslint:disable-next-line:no-console
 		expect(console.warn).toHaveBeenCalledWith(jasmine.stringMatching(pattern));
 	});
