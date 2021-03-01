@@ -172,7 +172,7 @@
 			"name": "Launch Test",
 			"program": "${workspaceFolder}/spec/jasmine-runner.js",
 			"preLaunchTask": "build",
-			"outFiles": [ "${workspaceRoot}/lib/**/*.js",
+			"outFiles": [ "${workspaceRoot}/packages/**/*.js",
 				"${workspaceRoot}/spec/**/*.js" ]
 		},
 		{

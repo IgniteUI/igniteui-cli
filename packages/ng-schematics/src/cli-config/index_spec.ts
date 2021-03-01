@@ -246,11 +246,15 @@ export class AppModule {
 	});
 
 	it("should properly display the dependency mismatch warning", async () => {
-		spyOn(console, "warn");
+		const warns: string[] = [];
+		runner.logger.subscribe(entry => {
+			if (entry.level === "warn") {
+				warns.push(entry.message);
+			}
+		});
 		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
 		let pattern = new RegExp(`WARNING Version mismatch detected - ${NPM_PACKAGE}`);
-		// tslint:disable-next-line:no-console
-		expect(console.warn).toHaveBeenCalledWith(jasmine.stringMatching(pattern));
+		expect(warns).toContain(jasmine.stringMatching(pattern));
 
 		resetTree();
 		createIgPkgJson(FEED_PACKAGE);
@@ -258,7 +262,6 @@ export class AppModule {
 		pattern = new RegExp(`WARNING Version mismatch detected - ${FEED_PACKAGE}`);
 
 		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
-		// tslint:disable-next-line:no-console
-		expect(console.warn).toHaveBeenCalledWith(jasmine.stringMatching(pattern));
+		expect(warns).toContain(jasmine.stringMatching(pattern));
 	});
 });

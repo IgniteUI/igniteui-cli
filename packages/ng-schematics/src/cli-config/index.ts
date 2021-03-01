@@ -1,6 +1,5 @@
 import { DependencyNotFoundException } from "@angular-devkit/core";
-import { yellow } from "@angular-devkit/core/src/terminal";
-import { chain, FileDoesNotExistException, Rule, Tree } from "@angular-devkit/schematics";
+import { chain, FileDoesNotExistException, Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
 import { NPM_PACKAGE, resolveIgxPackage } from "@igniteui/angular-templates";
 import { addTypography, TypeScriptFileUpdate } from "@igniteui/cli-core";
 import { createCliConfig } from "../utils/cli-config";
@@ -32,7 +31,7 @@ function getDependencyVersion(pkg: string, tree: Tree): string {
 }
 
 function displayVersionMismatch(): Rule {
-	return (tree: Tree) => {
+	return (tree: Tree, context: SchematicContext) => {
 		const igxPackage = resolveIgxPackage(NPM_PACKAGE);
 		const pkgJson = JSON.parse(tree.read(`/node_modules/${igxPackage}/package.json`)!.toString());
 		const ngKey = "@angular/core";
@@ -43,10 +42,9 @@ function displayVersionMismatch(): Rule {
 		const ngCommonVer = pkgJson.peerDependencies[ngCommonKey];
 
 		if (ngCoreProjVer < ngCoreVer || ngCommonProjVer < ngCommonVer) {
-			// tslint:disable-next-line:no-console
-			console.warn(yellow(`
+			context.logger.warn(`
 WARNING Version mismatch detected - ${igxPackage} is built against a newer version of @angular/core (${ngCoreVer}).
-Running 'ng update' will prevent potential version conflicts.\n`));
+Running 'ng update' will prevent potential version conflicts.\n`);
 		}
 	};
 }

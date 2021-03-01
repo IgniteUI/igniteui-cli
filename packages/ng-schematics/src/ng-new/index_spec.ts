@@ -1,5 +1,5 @@
 import { SchematicContext, Tree } from "@angular-devkit/schematics";
-import { NodePackageTaskOptions } from "@angular-devkit/schematics/tasks/node-package/options";
+import { NodePackageTaskOptions } from "@angular-devkit/schematics/tasks/package-manager/options";
 import { RepositoryInitializerTaskOptions } from "@angular-devkit/schematics/tasks/repo-init/options";
 import { RunSchematicTaskOptions } from "@angular-devkit/schematics/tasks/run-schematic/options";
 import { SchematicTestRunner, UnitTestTree } from "@angular-devkit/schematics/testing";
@@ -67,11 +67,11 @@ describe("Schematics ng-new", () => {
 			expect(e.exists(`${workingDirectory}/.gitignore`)).toBeTruthy();
 			const taskOptions = runner.tasks.map(task => task.options);
 			const expectedInstall: NodePackageTaskOptions = {
-				workingDirectory,
 				command: "install",
-				packageManager: undefined,
+				quiet: true,
+				workingDirectory,
 				packageName: undefined,
-				quiet: true
+				packageManager: undefined
 			};
 			const expectedInit: RepositoryInitializerTaskOptions = {
 				workingDirectory,
@@ -135,11 +135,11 @@ describe("Schematics ng-new", () => {
 			expect(e.exists(`${workingDirectory}/.gitignore`)).toBeTruthy();
 			const taskOptions = runner.tasks.map(task => task.options);
 			const expectedInstall: NodePackageTaskOptions = {
-				workingDirectory,
 				command: "install",
-				packageManager: undefined,
+				quiet: true,
+				workingDirectory,
 				packageName: undefined,
-				quiet: true
+				packageManager: undefined
 			};
 			const expectedInit: RepositoryInitializerTaskOptions = {
 				workingDirectory,

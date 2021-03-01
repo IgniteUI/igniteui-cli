@@ -18,7 +18,7 @@
     "@igniteui/angular-templates": "~11.1.710",
     "@igniteui/cli-core": "~7.1.0",
     "@schematics/angular": "^11.0.0",
-    "rxjs": "6.5.3"
+    "rxjs": "6.6.3"
   },
   "devDependencies": {
     "@types/jasmine": "3.3.9",
