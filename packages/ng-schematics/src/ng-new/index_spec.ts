@@ -1,5 +1,5 @@
 import { SchematicContext, Tree } from "@angular-devkit/schematics";
-import { NodePackageTaskOptions } from "@angular-devkit/schematics/tasks/node-package/options";
+import { NodePackageTaskOptions } from "@angular-devkit/schematics/tasks/package-manager/options";
 import { RepositoryInitializerTaskOptions } from "@angular-devkit/schematics/tasks/repo-init/options";
 import { RunSchematicTaskOptions } from "@angular-devkit/schematics/tasks/run-schematic/options";
 import { SchematicTestRunner, UnitTestTree } from "@angular-devkit/schematics/testing";

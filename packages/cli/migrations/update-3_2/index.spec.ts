@@ -14,7 +14,8 @@ describe("Update 3.2.0", () => {
 			testProj: {
 				sourceRoot: "/src"
 			}
-		}
+		},
+		version: 1
 	};
 
 	beforeEach(() => {

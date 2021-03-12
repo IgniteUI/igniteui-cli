@@ -1,8 +1,7 @@
 // tslint:disable:no-implicit-dependencies
+import { workspaces } from "@angular-devkit/core";
 import { Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
-import { App, FS_TOKEN, FS_TYPE_TOKEN, FsTypes, IFileSystem, TypeScriptFileUpdate } from "@igniteui/cli-core";
-// tslint:disable-next-line:no-submodule-imports
-import { getWorkspace } from "@schematics/angular/utility/config";
+import { App, createWorkspaceHost, FS_TOKEN, FS_TYPE_TOKEN, FsTypes, IFileSystem, TypeScriptFileUpdate } from "@igniteui/cli-core";
 
 //#region Temp duplicate of schematics pack fs
 export class NgTreeFileSystem implements IFileSystem {
@@ -36,18 +35,18 @@ export function setVirtual(tree: Tree) {
 //#endregion
 
 export default function(): Rule {
-	return (host: Tree, context: SchematicContext) => {
-		const workspace = getWorkspace(host);
-		const project = workspace.defaultProject ?
-			workspace.projects[workspace.defaultProject] :
-			workspace.projects[0];
+	return async (tree: Tree, context: SchematicContext) => {
+		const { workspace } = await workspaces.readWorkspace("/", createWorkspaceHost(tree));
+		const project = workspace.extensions.defaultProject ?
+			workspace.projects.get(workspace.extensions.defaultProject as string) :
+			workspace.projects.values().next().value as workspaces.ProjectDefinition;
 
 		const moduleFile = `${project.sourceRoot}/${project.prefix}/app.module.ts`;
 
 		context.logger.info(`Applying migration for Ignite UI CLI 5.0.0`);
 
-		if (host.exists(moduleFile)) {
-			setVirtual(host);
+		if (tree.exists(moduleFile)) {
+			setVirtual(tree);
 			const mainModule = new TypeScriptFileUpdate(moduleFile);
 			mainModule.addNgModuleMeta({ import: "HammerModule", from: "@angular/platform-browser" });
 			mainModule.finalize();

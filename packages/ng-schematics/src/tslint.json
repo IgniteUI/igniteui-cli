@@ -6,7 +6,6 @@
 			true,
 			"@angular-devkit/core",
 			"@angular-devkit/schematics",
-			"@schematics/angular",
 			"rxjs"
 		]
 	}
