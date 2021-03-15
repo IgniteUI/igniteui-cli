@@ -1,3 +1,21 @@
+# [7.1.1](https://github.com/IgniteUI/igniteui-cli/compare/v7.1.0...v7.1.1) (2021-03-15)
+
+## igniteui/cli-core@7.1.1
+
+* refactor schematics workspace API [#829](https://github.com/IgniteUI/igniteui-cli/pull/829) ([fb1d1fd](https://github.com/IgniteUI/igniteui-cli/commit/fb1d1fd))
+
+## igniteui/angular-templates@11.1.711
+
+Note: Version bump only for package igniteui/angular-templates
+
+## igniteui/angular-schematics@11.1.711
+
+* refactor schematics workspace API [#829](https://github.com/IgniteUI/igniteui-cli/pull/829) ([fb1d1fd](https://github.com/IgniteUI/igniteui-cli/commit/fb1d1fd))
+
+## igniteui-cli@7.1.1
+
+* refactor schematics workspace API [#829](https://github.com/IgniteUI/igniteui-cli/pull/829) ([fb1d1fd](https://github.com/IgniteUI/igniteui-cli/commit/fb1d1fd))
+
 # [7.1.0](https://github.com/IgniteUI/igniteui-cli/compare/v7.0.2...v7.1.0) (2021-02-22)
 
 🎉 This update includes Ignite UI for Angular version [11.1.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/11.1.0) and Angular version [11.2.0](https://github.com/angular/angular/releases/tag/11.2.0).
