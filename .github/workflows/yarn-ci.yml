@@ -31,5 +31,6 @@ jobs:
            node-version: ${{ matrix.node-version }}
       - run: rm -rf node_modules && yarn install --frozen-lockfile # yarn install #sort of a match to "npm ci"--> rm -rf node_modules && yarn install --frozen-lockfile
       - run: yarn build
+      - run: yarn test
 
 
