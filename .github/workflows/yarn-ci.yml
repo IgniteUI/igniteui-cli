@@ -1,4 +1,4 @@
-name: Yarn.js CI
+name: Yarn CI
 
 # Controls when the action will run.
 on:
@@ -17,7 +17,7 @@ jobs:
     strategy:
       matrix:
         # TODO: Can we bump node version above the current set in travis.yml 10 --> 14 for example?
-        node-version: [12.x]
+        node-version: [10.x]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -30,5 +30,3 @@ jobs:
       - run: yarn --frozen-lockfile # yarn install #sort of a match to "npm ci"--> rm -rf node_modules && yarn install --frozen-lockfile
       - run: yarn build
       - run: yarn test
-
-
