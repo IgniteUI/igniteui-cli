@@ -17,7 +17,7 @@ jobs:
     strategy:
       matrix:
         # TODO: Can we bump node version above the current set in travis.yml 10 --> 14 for example?
-        node-version: [10.x]
+        node-version: [14.x]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -27,6 +27,6 @@ jobs:
         uses: actions/setup-node@v1
         with:
            node-version: ${{ matrix.node-version }}
-      - run: yarn --frozen-lockfile # yarn install #sort of a match to "npm ci"--> rm -rf node_modules && yarn install --frozen-lockfile
+      - run: yarn --frozen-lockfile
       - run: yarn build
       - run: yarn test

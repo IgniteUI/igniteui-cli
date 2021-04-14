@@ -1,0 +1,38 @@
+name: Node.js Deploy
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 10
+          registry-url: 'https://registry.npmjs.org'
+      - run: echo "VERSION=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
+      - run: echo ${VERSION}
+
+      # Skipping coverage and cleanup
+      # after_success: npm run coverage
+      # clean up compiled files
+
+      # compile files for package
+      - run: build-pack #npm run
+      - node: scripts/build-task.js #npm run
+
+      # define npm tag
+      # - if [[ "${TRAVIS_TAG}" == *"beta"* || "${TRAVIS_TAG}" == *"alpha"* || "${TRAVIS_TAG}" == *"rc"* ]]; then export NPM_TAG="next"; else export NPM_TAG="latest"; fi
+      # Updated from Travis to Actions
+      - run: if [[ "${VERSION}" == *"alpha"* || "${VERSION}" == *"beta"* || "${VERSION}" == *"rc"* ]]; then echo "NPM_TAG=next"; else echo "NPM_TAG=latest"; fi >> $GITHUB_ENV
+      # Copy populated .npmrc file to home dir to be used for publish
+      # - echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc  #TODO: This config may no longer be needed???
+      - run: echo ${NPM_TAG}
+      # create version and publish it to npmjs
+      - run: npm version ${VERSION} --no-git-tag-version --save --verbose
+      - script: lerna exec -- npm publish --tag "${NPM_TAG}" # - run: npm publish --tag ${NPM_TAG}
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
