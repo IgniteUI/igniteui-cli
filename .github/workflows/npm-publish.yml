@@ -1,8 +1,8 @@
 name: Node.js Deploy
 
 on:
-  # push:
-  #   branches: [ iganchev/ig-gh-actions-vNext ]
+  push:
+    branches: [ iganchev/ig-gh-actions-vNext ]
   release:
     types: [created]
 
