@@ -33,7 +33,7 @@ jobs:
       - name: Compile files for package
         run: build-pack #npm run
         shell: bash # Try fix the environment bash fail
-        run: build-task #node: scripts/build-task.js #npm run yarn build-task
+      -run: build-task #node: scripts/build-task.js #npm run yarn build-task
 
       # define npm tag
       # - if [[ "${TRAVIS_TAG}" == *"beta"* || "${TRAVIS_TAG}" == *"alpha"* || "${TRAVIS_TAG}" == *"rc"* ]]; then export NPM_TAG="next"; else export NPM_TAG="latest"; fi
