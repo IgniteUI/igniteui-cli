@@ -17,7 +17,7 @@ jobs:
     strategy:
       matrix:
         # TODO: Can we bump node version above the current set in travis.yml 10 --> 14 for example?
-        node-version: 10 # TODO: Set matrix last [12.x, 14.x, 15.x]
+        node-version: [12.x] # TODO: Set matrix last [12.x, 14.x, 15.x]
 
     steps:
       - name: Checkout
