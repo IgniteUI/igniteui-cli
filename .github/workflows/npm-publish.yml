@@ -33,8 +33,8 @@ jobs:
       - name: Compile files for package
         run: npm run build-pack #npm run
       - name: Build Task
-        run: npm run build-task #node: scripts/build-task.js #npm run yarn build-task
-        working-directory: scripts
+        run: yarn build-task # run: npm run build-task #node: scripts/build-task.js #npm run yarn build-task
+        # working-directory: scripts
 
       # define npm tag
       # - if [[ "${TRAVIS_TAG}" == *"beta"* || "${TRAVIS_TAG}" == *"alpha"* || "${TRAVIS_TAG}" == *"rc"* ]]; then export NPM_TAG="next"; else export NPM_TAG="latest"; fi
