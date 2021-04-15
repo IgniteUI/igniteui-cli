@@ -27,6 +27,7 @@ jobs:
 
       - name: Compile files for package
         run: build-pack #npm run
+        shell: node # Try fix the environment bash fail - /home/runner/work/_temp/0e2c5fc6-74fe-4570-8439-96eb2fcdc23f.sh: line 1: build-pack: command not found
       - name: Build Task
         run: build-task #node: scripts/build-task.js #npm run yarn build-task
 
