@@ -1,5 +1,3 @@
-delete
-
 # [7.1.1](https://github.com/IgniteUI/igniteui-cli/compare/v7.1.0...v7.1.1) (2021-03-15)
 
 ## igniteui/cli-core@7.1.1
