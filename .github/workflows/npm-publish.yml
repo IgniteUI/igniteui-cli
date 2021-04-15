@@ -45,6 +45,6 @@ jobs:
       - run: echo ${NPM_TAG}
       # create version and publish it to npmjs
       - run: npm version ${VERSION} --no-git-tag-version --save --verbose
-      - run: publish #lerna exec -- npm publish --tag "${NPM_TAG}" # - run: npm publish --tag ${NPM_TAG}  #run: yarn publish
+      - run: yarn publish #lerna exec -- npm publish --tag "${NPM_TAG}" # - run: npm publish --tag ${NPM_TAG}  #run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
