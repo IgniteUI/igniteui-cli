@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 15.x]
+        node-version: [10.x, 12.x, 14.x]
 
     steps:
       - name: Checkout
@@ -30,4 +30,5 @@ jobs:
       - name: Test
         run: yarn test
       - name: Coverage
-        run: yarn coverage
+        if: matrix.node-version == '14.x'
+        run: yarn coverage # uses: coverallsapp/github-action@v1.1.2
