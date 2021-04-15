@@ -9,6 +9,12 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # # Try fix the environment bash fail
+    # defaults:
+    # run:
+    #   shell: bash
+      # working-directory: scripts
+
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
@@ -24,9 +30,11 @@ jobs:
       # after_success: npm run coverage
       # clean up compiled files
 
-      # compile files for package
-      - run: build-pack #npm run
-      - run: build-task #node: scripts/build-task.js #npm run yarn build-task
+      - name: Compile files for package
+        run: build-pack #npm run
+        shell: bash # Try fix the environment bash fail
+        run: build-task #node: scripts/build-task.js #npm run yarn build-task
+        shell: bash # Try fix the environment bash fail
 
       # define npm tag
       # - if [[ "${TRAVIS_TAG}" == *"beta"* || "${TRAVIS_TAG}" == *"alpha"* || "${TRAVIS_TAG}" == *"rc"* ]]; then export NPM_TAG="next"; else export NPM_TAG="latest"; fi
