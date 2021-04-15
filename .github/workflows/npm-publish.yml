@@ -26,10 +26,10 @@ jobs:
       # clean up compiled files
 
       - name: Compile files for package
-        run: build-pack #npm run
-        shell: node # Try fix the environment bash fail - /home/runner/work/_temp/0e2c5fc6-74fe-4570-8439-96eb2fcdc23f.sh: line 1: build-pack: command not found
+        run: npm run build-pack #npm run
       - name: Build Task
         run: build-task #node: scripts/build-task.js #npm run yarn build-task
+        working-directory: scripts
 
       # define npm tag
       # - if [[ "${TRAVIS_TAG}" == *"beta"* || "${TRAVIS_TAG}" == *"alpha"* || "${TRAVIS_TAG}" == *"rc"* ]]; then export NPM_TAG="next"; else export NPM_TAG="latest"; fi
