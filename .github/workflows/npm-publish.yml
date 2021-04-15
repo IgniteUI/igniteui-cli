@@ -31,12 +31,9 @@ jobs:
         run: yarn build
 
       - name: Compile files for package
-       # run: npm run build-pack #npm run#
         run: npm run build-pack
-      - name: Build Task        
-       # run: yarn build-task # run: npm run build-task #node: scripts/build-task.js #npm run yarn build-task
-       run: node scripts/build-task.js
-       # working-directory: scripts
+      - name: Build Task
+        run: node scripts/build-task.js
 
       # define npm tag
       # - if [[ "${TRAVIS_TAG}" == *"beta"* || "${TRAVIS_TAG}" == *"alpha"* || "${TRAVIS_TAG}" == *"rc"* ]]; then export NPM_TAG="next"; else export NPM_TAG="latest"; fi
