@@ -27,8 +27,9 @@ jobs:
           node scripts/build-task.js
 
       - name: Define npm tag
-        run: if [[ "${VERSION}" == *"alpha"* || "${VERSION}" == *"beta"* || "${VERSION}" == *"rc"* ]]; then echo "NPM_TAG=next"; else echo "NPM_TAG=latest"; fi >> $GITHUB_ENV
-        run: echo ${NPM_TAG}
+        run: |
+          if [[ "${VERSION}" == *"alpha"* || "${VERSION}" == *"beta"* || "${VERSION}" == *"rc"* ]]; then echo "NPM_TAG=next"; else echo "NPM_TAG=latest"; fi >> $GITHUB_ENV
+          echo ${NPM_TAG}
 
       - name: Publish
         run: npm version ${VERSION} --no-git-tag-version --save --verbose
