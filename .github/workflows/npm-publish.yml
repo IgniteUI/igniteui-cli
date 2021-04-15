@@ -32,7 +32,8 @@ jobs:
           echo ${NPM_TAG}
 
       - name: Publish
-        run: npm version ${VERSION} --no-git-tag-version --save --verbose
-        run: lerna exec -- npm publish --tag "${NPM_TAG}"
+        run: |
+          npm version ${VERSION} --no-git-tag-version --save --verbose
+          lerna exec -- npm publish --tag "${NPM_TAG}"
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
