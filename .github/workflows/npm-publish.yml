@@ -1,8 +1,6 @@
 name: Node.js Deploy
 
 on:
-  push:
-    branches: [ iganchev/ig-gh-actions-vNext ]
   release:
     types: [created]
 
@@ -14,36 +12,26 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          # always-auth: true         # if using a private registry and creating the .npmrc file
-          # scope: '@infragistics'    # if using a private registry and creating the .npmrc file
-          node-version: 10
+          node-version: [14.x]
           registry-url: "https://registry.npmjs.org"
+
       - run: echo "VERSION=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
       - run: echo ${VERSION}
 
-      # Skipping coverage and cleanup
-      # after_success: npm run coverage
-      # clean up compiled files
-
       - name: Install packages
         run: yarn --frozen-lockfile
+
       - name: Build
-        run: yarn build
+        run: |
+          npm run build-pack
+          node scripts/build-task.js
 
-      - name: Compile files for package
-        run: npm run build-pack
-      - name: Build Task
-        run: node scripts/build-task.js
+      - name: Define npm tag
+        run: if [[ "${VERSION}" == *"alpha"* || "${VERSION}" == *"beta"* || "${VERSION}" == *"rc"* ]]; then echo "NPM_TAG=next"; else echo "NPM_TAG=latest"; fi >> $GITHUB_ENV
+        run: echo ${NPM_TAG}
 
-      # define npm tag
-      # - if [[ "${TRAVIS_TAG}" == *"beta"* || "${TRAVIS_TAG}" == *"alpha"* || "${TRAVIS_TAG}" == *"rc"* ]]; then export NPM_TAG="next"; else export NPM_TAG="latest"; fi
-      # Updated from Travis to Actions
-      - run: if [[ "${VERSION}" == *"alpha"* || "${VERSION}" == *"beta"* || "${VERSION}" == *"rc"* ]]; then echo "NPM_TAG=next"; else echo "NPM_TAG=latest"; fi >> $GITHUB_ENV
-      # Copy populated .npmrc file to home dir to be used for publish
-      # - echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc  #TODO: This config may no longer be needed???
-      - run: echo ${NPM_TAG}
-      # create version and publish it to npmjs
-      - run: npm version ${VERSION} --no-git-tag-version --save --verbose
-      - run: yarn publish #lerna exec -- npm publish --tag "${NPM_TAG}" # - run: npm publish --tag ${NPM_TAG}  #run: yarn publish
+      - name: Publish
+        run: npm version ${VERSION} --no-git-tag-version --save --verbose
+        run: lerna exec -- npm publish --tag "${NPM_TAG}"
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
