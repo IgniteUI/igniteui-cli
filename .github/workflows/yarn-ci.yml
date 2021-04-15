@@ -1,38 +1,38 @@
-name: Yarn CI
+# name: Yarn CI
 
-# Controls when the action will run.
-on:
-  # Triggers the workflow on push or pull request events but only for the master branch
-  push:
-    branches: [ iganchev/ig-gh-actions-vNext ]
-  pull_request:
-    branches: [ iganchev/ig-gh-actions-vNext ]
+# # Controls when the action will run.
+# on:
+#   # Triggers the workflow on push or pull request events but only for the master branch
+#   push:
+#     branches: [ iganchev/ig-gh-actions-vNext ]
+#   pull_request:
+#     branches: [ iganchev/ig-gh-actions-vNext ]
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
-jobs:
-  run-tests:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+# # A workflow run is made up of one or more jobs that can run sequentially or in parallel
+# jobs:
+#   run-tests:
+#     # The type of runner that the job will run on
+#     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        # TODO: Can we bump node version above the current set in travis.yml 10 --> 14 for example?
-        node-version: [12.x] # TODO: Set matrix last [12.x, 14.x, 15.x]
+#     strategy:
+#       matrix:
+#         # TODO: Can we bump node version above the current set in travis.yml 10 --> 14 for example?
+#         node-version: [12.x] # TODO: Set matrix last [12.x, 14.x, 15.x]
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-           node-version: ${{ matrix.node-version }}
-      - name: Install packages
-        run: yarn --frozen-lockfile
-      - name: Lint
-        run: yarn lint
-      - name: Build
-        run: yarn build
-      - name: Test
-        run: yarn test
-      - name: Coverage
-        run: coverage
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v2
+#       - name: Use Node.js ${{ matrix.node-version }}
+#         uses: actions/setup-node@v1
+#         with:
+#            node-version: ${{ matrix.node-version }}
+#       - name: Install packages
+#         run: yarn --frozen-lockfile
+#       - name: Lint
+#         run: yarn lint
+#       - name: Build
+#         run: yarn build
+#       - name: Test
+#         run: yarn test
+#       - name: Coverage
+#         run: coverage

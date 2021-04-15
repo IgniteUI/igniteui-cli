@@ -25,10 +25,15 @@ jobs:
       # after_success: npm run coverage
       # clean up compiled files
 
+      - name: Install packages
+        run: yarn --frozen-lockfile
+      - name: Build
+        run: yarn build
+
       - name: Compile files for package
         run: npm run build-pack #npm run
       - name: Build Task
-        run: build-task #node: scripts/build-task.js #npm run yarn build-task
+        run: npm run build-task #node: scripts/build-task.js #npm run yarn build-task
         working-directory: scripts
 
       # define npm tag
