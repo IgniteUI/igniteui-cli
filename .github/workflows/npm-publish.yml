@@ -11,8 +11,10 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
+          # always-auth: true         # if using a private registry and creating the .npmrc file
+          # scope: '@infragistics'    # if using a private registry and creating the .npmrc file
           node-version: 10
-          registry-url: 'https://registry.npmjs.org'
+          registry-url: "https://registry.npmjs.org"
       - run: echo "VERSION=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
       - run: echo ${VERSION}
 
