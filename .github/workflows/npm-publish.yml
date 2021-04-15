@@ -13,7 +13,7 @@ jobs:
         with:
           # always-auth: true         # if using a private registry and creating the .npmrc file
           # scope: '@infragistics'    # if using a private registry and creating the .npmrc file
-          node-version: 10
+          node-version: [12.x]
           registry-url: "https://registry.npmjs.org"
       - run: echo "VERSION=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
       - run: echo ${VERSION}
