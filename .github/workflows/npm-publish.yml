@@ -24,7 +24,7 @@ jobs:
 
       # compile files for package
       - run: build-pack #npm run
-      - node: scripts/build-task.js #npm run
+      - run: node: scripts/build-task.js #npm run
 
       # define npm tag
       # - if [[ "${TRAVIS_TAG}" == *"beta"* || "${TRAVIS_TAG}" == *"alpha"* || "${TRAVIS_TAG}" == *"rc"* ]]; then export NPM_TAG="next"; else export NPM_TAG="latest"; fi
@@ -35,6 +35,6 @@ jobs:
       - run: echo ${NPM_TAG}
       # create version and publish it to npmjs
       - run: npm version ${VERSION} --no-git-tag-version --save --verbose
-      - script: lerna exec -- npm publish --tag "${NPM_TAG}" # - run: npm publish --tag ${NPM_TAG}
+      - run: script: lerna exec -- npm publish --tag "${NPM_TAG}" # - run: npm publish --tag ${NPM_TAG}
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
