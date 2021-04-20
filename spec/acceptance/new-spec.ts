@@ -22,7 +22,7 @@ describe("New command", () => {
 		process.chdir("../");
 	});
 
-	it("Creates jQuery project", async done => {
+	fit("Creates jQuery project", async done => {
 
 		await cli.run(["new", "jQuery Proj", "--framework=jquery"]);
 
@@ -136,12 +136,13 @@ describe("New command", () => {
 		done();
 	});
 
-	it("Git Status", async done => {
+	fit("Git Status", async done => {
 		const projectName = "angularProj";
 		await cli.run(["new", projectName, "--framework=angular", "--type=igx-ts", "--theme=default"]);
 
 		process.chdir(projectName);
 		expect(fs.existsSync(".git")).toBeTruthy();
+		expect(Util.gitInit).toHaveBeenCalled();
 		expect(Util.execSync("git log -1 --pretty=format:'%s'").toString())
 			.toMatch("Initial commit for project: " + projectName);
 		process.chdir("../");
@@ -149,10 +150,10 @@ describe("New command", () => {
 		done();
 	});
 
-	it("Skip Git/Install with command option", async done => {
+	fit("Skip Git/Install with command option", async done => {
 		const projectName = "angularProj";
 		await cli.run(["new", projectName, "--framework=angular", "--type=igx-ts", "--skip-git", "--skip-install", "--theme=default"]);
-
+		expect(Util.gitInit).not.toHaveBeenCalled();
 		expect(fs.existsSync("./" + projectName + "/.git")).not.toBeTruthy();
 		expect(PackageManager.installPackages).not.toHaveBeenCalled();
 
@@ -160,10 +161,11 @@ describe("New command", () => {
 		done();
 	});
 
-	it("Creates project with single word name", async done => {
+	fit("Creates project with single word name", async done => {
 		const projectName = "a";
 		await cli.run(["new", projectName, "--framework=jquery"]);
 
+		expect(Util.gitInit).toHaveBeenCalled();
 		//TODO: read entire structure from ./templates and verify everything is copied over
 		expect(fs.existsSync("./a")).toBeTruthy();
 
