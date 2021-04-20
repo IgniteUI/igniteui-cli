@@ -21,16 +21,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          persist-credentials: false
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
            node-version: ${{ matrix.node-version }}
       - name: Install packages
-        run: yarn #run: yarn --frozen-lockfile
+        run: yarn --frozen-lockfile
       - name: Test
-        run: yarn test
+        run: |
+          npm config set scripts-prepend-node-path true
+          yarn test
       - name: Coverage
         if: matrix.node-version == '14.x'
         run: yarn coverage # uses: coverallsapp/github-action@v1.1.2
