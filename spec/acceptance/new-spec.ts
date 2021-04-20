@@ -142,7 +142,6 @@ describe("New command", () => {
 
 		process.chdir(projectName);
 		expect(fs.existsSync(".git")).toBeTruthy();
-		expect(Util.gitInit).toHaveBeenCalled();
 		expect(Util.execSync("git log -1 --pretty=format:'%s'").toString())
 			.toMatch("Initial commit for project: " + projectName);
 		process.chdir("../");
@@ -151,6 +150,7 @@ describe("New command", () => {
 	});
 
 	fit("Skip Git/Install with command option", async done => {
+		spyOn(Util, "gitInit");
 		const projectName = "angularProj";
 		await cli.run(["new", projectName, "--framework=angular", "--type=igx-ts", "--skip-git", "--skip-install", "--theme=default"]);
 		expect(Util.gitInit).not.toHaveBeenCalled();
@@ -162,6 +162,7 @@ describe("New command", () => {
 	});
 
 	fit("Creates project with single word name", async done => {
+		spyOn(Util, "gitInit");
 		const projectName = "a";
 		await cli.run(["new", projectName, "--framework=jquery"]);
 
