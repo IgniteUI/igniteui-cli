@@ -31,6 +31,8 @@ jobs:
           if [[ "${VERSION}" == *"alpha"* || "${VERSION}" == *"beta"* || "${VERSION}" == *"rc"* ]]; then echo "NPM_TAG=next"; else echo "NPM_TAG=latest"; fi >> $GITHUB_ENV
           echo ${NPM_TAG}
 
+      # - name: Prepare changelog file
+      #   run: yarn release ${VERSION}
       - name: Publish
         run: |
           npm version ${VERSION} --no-git-tag-version --save --verbose
