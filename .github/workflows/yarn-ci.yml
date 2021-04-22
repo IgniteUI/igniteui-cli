@@ -30,7 +30,7 @@ jobs:
         run: yarn --frozen-lockfile
       - name: Test
         run: |
-          npm config set scripts-prepend-node-path auto
+          yarn config set scripts-prepend-node-path auto
           yarn test
       - name: Coverage
         if: matrix.node-version == '14.x'

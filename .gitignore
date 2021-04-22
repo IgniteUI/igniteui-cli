@@ -1,6 +1,6 @@
 # ignore local runs output
-/output/**
-!output/.gitkeep
+# /output/**
+# !output/.gitkeep
 
 # test coverage
 /coverage
