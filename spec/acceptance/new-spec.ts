@@ -52,8 +52,6 @@ describe("New command", () => {
 		};
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith(expectedPrams);
 		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);
-
-
 		console.log((GoogleAnalytics.post as jasmine.Spy).calls.allArgs());
 		done();
 	});
