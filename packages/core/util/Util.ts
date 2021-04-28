@@ -320,7 +320,7 @@ export class Util {
 	 */
 	public static gitInit(parentRoot, projectName) {
 		try {
-			const options = { cwd: path.join(parentRoot, projectName), stdio: ["inherit"] };
+			const options = { cwd: path.join(parentRoot, projectName)};
 			Util.execSync("git init", options);
 			Util.execSync("git add .", options);
 			Util.execSync("git commit -m " + "\"Initial commit for project: " + projectName + "\"", options);
