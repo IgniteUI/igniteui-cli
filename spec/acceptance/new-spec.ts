@@ -8,8 +8,8 @@ describe("New command", () => {
 
 	// tslint:disable:no-console
 	beforeEach(() => {
-		// spyOn(console, "log");
-		// spyOn(console, "error");
+		spyOn(console, "log");
+		spyOn(console, "error");
 		spyOn(GoogleAnalytics, "post");
 		spyOn(PackageManager, "installPackages");
 		process.chdir("./output");
@@ -22,7 +22,7 @@ describe("New command", () => {
 		process.chdir("../");
 	});
 
-	fit("Creates jQuery project", async done => {
+	it("Creates jQuery project", async done => {
 
 		await cli.run(["new", "jQuery Proj", "--framework=jquery"]);
 
@@ -52,7 +52,6 @@ describe("New command", () => {
 		};
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith(expectedPrams);
 		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);
-		console.log((GoogleAnalytics.post as jasmine.Spy).calls.allArgs());
 		done();
 	});
 
@@ -136,7 +135,7 @@ describe("New command", () => {
 		done();
 	});
 
-	fit("Git Status", async done => {
+	it("Git Status", async done => {
 		const projectName = "angularProj";
 		await cli.run(["new", projectName, "--framework=angular", "--type=igx-ts", "--theme=default"]);
 
@@ -149,7 +148,7 @@ describe("New command", () => {
 		done();
 	});
 
-	fit("Skip Git/Install with command option", async done => {
+	it("Skip Git/Install with command option", async done => {
 		spyOn(Util, "gitInit");
 		const projectName = "angularProj";
 		await cli.run(["new", projectName, "--framework=angular", "--type=igx-ts", "--skip-git", "--skip-install", "--theme=default"]);
@@ -161,7 +160,7 @@ describe("New command", () => {
 		done();
 	});
 
-	fit("Creates project with single word name", async done => {
+	it("Creates project with single word name", async done => {
 		spyOn(Util, "gitInit");
 		const projectName = "a";
 		await cli.run(["new", projectName, "--framework=jquery"]);
