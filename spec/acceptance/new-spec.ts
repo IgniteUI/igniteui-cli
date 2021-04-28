@@ -8,8 +8,8 @@ describe("New command", () => {
 
 	// tslint:disable:no-console
 	beforeEach(() => {
-		spyOn(console, "log");
-		spyOn(console, "error");
+		// spyOn(console, "log");
+		// spyOn(console, "error");
 		spyOn(GoogleAnalytics, "post");
 		spyOn(PackageManager, "installPackages");
 		process.chdir("./output");
@@ -53,6 +53,8 @@ describe("New command", () => {
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith(expectedPrams);
 		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);
 
+
+		console.log((GoogleAnalytics.post as jasmine.Spy).calls.allArgs());
 		done();
 	});
 
