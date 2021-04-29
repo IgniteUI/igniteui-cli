@@ -8,7 +8,6 @@ const collectionPath = path.join(__dirname, "../collection.json");
 
 describe("component",  () => {
 	xit("works", done => {
-		// Uncaught exception: Error: ENOENT: no such file or directory, mkdir '/home/runner/.npm/igniteui-cli'
 		const runner = new SchematicTestRunner("schematics", collectionPath);
 		const mockInst = {
 			generateConfig: jasmine.createSpy(),
