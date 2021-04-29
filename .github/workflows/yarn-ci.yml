@@ -26,7 +26,7 @@ jobs:
         with:
            node-version: ${{ matrix.node-version }}
       - name: Install packages
-        run: yarn --frozen-lockfile
+        run: yarn #run: yarn --frozen-lockfile 
       - name: Test
         run: |
           yarn config set scripts-prepend-node-path auto
