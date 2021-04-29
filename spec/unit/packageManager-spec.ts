@@ -4,7 +4,7 @@ import * as path from "path";
 import { resetSpy } from "../helpers/utils";
 
 describe("Unit - Package Manager", () => {
-	xit("ensureIgniteUISource - Should run through properly when install now is set to true", async done => {
+	it("ensureIgniteUISource - Should run through properly when install now is set to true", async done => {
 		const mockRequire = {
 			dependencies: {
 				"ignite-ui": "20.1"
@@ -80,7 +80,7 @@ describe("Unit - Package Manager", () => {
 		expect(PackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@"20.1"`, true);
 		done();
 	});
-	xit("ensureIgniteUISource - Should run through properly when install = true && package error", async done => {
+	it("ensureIgniteUISource - Should run through properly when install = true && package error", async done => {
 		const mockRequire = {
 			dependencies: {
 				"ignite-ui": "20.1"
