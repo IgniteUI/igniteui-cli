@@ -7,7 +7,7 @@ import { SchematicsTemplateManager } from "../SchematicsTemplateManager";
 const collectionPath = path.join(__dirname, "../collection.json");
 
 describe("component",  () => {
-	xit("works", done => {
+	it("works", done => {
 		const runner = new SchematicTestRunner("schematics", collectionPath);
 		const mockInst = {
 			generateConfig: jasmine.createSpy(),

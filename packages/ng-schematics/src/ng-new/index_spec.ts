@@ -69,9 +69,9 @@ describe("Schematics ng-new", () => {
 			const expectedInstall: NodePackageTaskOptions = {
 				workingDirectory,
 				command: "install",
-				quiet: true,
+				packageManager: undefined,
 				packageName: undefined,
-				packageManager: undefined
+				quiet: true
 			};
 			const expectedInit: RepositoryInitializerTaskOptions = {
 				workingDirectory,
@@ -137,9 +137,9 @@ describe("Schematics ng-new", () => {
 			const expectedInstall: NodePackageTaskOptions = {
 				workingDirectory,
 				command: "install",
-				quiet: true,
+				packageManager: undefined,
 				packageName: undefined,
-				packageManager: undefined
+				quiet: true
 			};
 			const expectedInit: RepositoryInitializerTaskOptions = {
 				workingDirectory,
