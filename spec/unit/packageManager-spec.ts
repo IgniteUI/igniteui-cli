@@ -4,7 +4,7 @@ import * as path from "path";
 import { resetSpy } from "../helpers/utils";
 
 describe("Unit - Package Manager", () => {
-	it("ensureIgniteUISource - Should run through properly when install now is set to true", async done => {
+	fit("ensureIgniteUISource - Should run through properly when install now is set to true", async done => {
 		const mockRequire = {
 			dependencies: {
 				"ignite-ui": "20.1"
@@ -48,7 +48,9 @@ describe("Unit - Package Manager", () => {
 		});
 		spyOn(Util, "log");
 		spyOn(PackageManager, "removePackage");
+		console.log("Prior to call-->  mockTemplateMgr");
 		await PackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
+		console.log("After call-->  mockTemplateMgr");
 		expect(Util.log).toHaveBeenCalledTimes(4);
 		expect(Util.log).toHaveBeenCalledWith(
 			"The project you've created requires the full version of Ignite UI from Infragistics private feed.",
@@ -80,13 +82,14 @@ describe("Unit - Package Manager", () => {
 		expect(PackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@"20.1"`, true);
 		done();
 	});
-	it("ensureIgniteUISource - Should run through properly when install = true && package error", async done => {
+	fit("ensureIgniteUISource - Should run through properly when install = true && package error", async done => {
 		const mockRequire = {
 			dependencies: {
 				"ignite-ui": "20.1"
 			}
 		};
 		spyOn(require("module"), "_load").and.returnValue(mockRequire);
+		console.log("Prior to mock-->  mockTemplateMgr");
 		const mockTemplateMgr = jasmine.createSpyObj("mockTemplateMgr", {
 			getProjectLibrary: {
 				getProject() {
@@ -112,7 +115,9 @@ describe("Unit - Package Manager", () => {
 		});
 		spyOn(Util, "log");
 		spyOn(PackageManager, "removePackage");
+		console.log("Prior to call-->  mockTemplateMgr");
 		await PackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
+		console.log("After call-->  mockTemplateMgr");
 		expect(ProjectConfig.localConfig).toHaveBeenCalled();
 		expect(Util.log).toHaveBeenCalledTimes(7);
 		expect(Util.log).toHaveBeenCalledWith(
