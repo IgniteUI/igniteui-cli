@@ -66,12 +66,13 @@ describe("Schematics ng-new", () => {
 			expect(e.files.length).toEqual(1);
 			expect(e.exists(`${workingDirectory}/.gitignore`)).toBeTruthy();
 			const taskOptions = runner.tasks.map(task => task.options);
+			// tslint:disable:object-literal-sort-keys
 			const expectedInstall: NodePackageTaskOptions = {
-				workingDirectory,
 				command: "install",
-				packageManager: undefined,
+				quiet: true,
+				workingDirectory,
 				packageName: undefined,
-				quiet: true
+				packageManager: undefined
 			};
 			const expectedInit: RepositoryInitializerTaskOptions = {
 				workingDirectory,
@@ -134,12 +135,13 @@ describe("Schematics ng-new", () => {
 			expect(e.files.length).toEqual(1);
 			expect(e.exists(`${workingDirectory}/.gitignore`)).toBeTruthy();
 			const taskOptions = runner.tasks.map(task => task.options);
+			// tslint:disable:object-literal-sort-keys
 			const expectedInstall: NodePackageTaskOptions = {
-				workingDirectory,
 				command: "install",
-				packageManager: undefined,
+				quiet: true,
+				workingDirectory,
 				packageName: undefined,
-				quiet: true
+				packageManager: undefined
 			};
 			const expectedInit: RepositoryInitializerTaskOptions = {
 				workingDirectory,
