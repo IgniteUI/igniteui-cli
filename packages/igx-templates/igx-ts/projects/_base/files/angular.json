@@ -30,7 +30,7 @@
               "src/styles.scss"<%=DefaultTheme%>
             ],
             "scripts": ["./node_modules/hammerjs/hammer.min.js"],
-			"vendorChunk": true,
+            "vendorChunk": true,
             "extractLicenses": false,
             "buildOptimizer": false,
             "sourceMap": true,
