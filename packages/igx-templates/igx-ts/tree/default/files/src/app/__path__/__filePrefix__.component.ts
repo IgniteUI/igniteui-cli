@@ -7,7 +7,8 @@ import { DataService } from './services/data.service';
 @Component({
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.component.html',
-  styleUrls: ['./<%=filePrefix%>.component.scss']
+  styleUrls: ['./<%=filePrefix%>.component.scss'],
+  providers: [DataService]
 })
 
 export class <%=ClassName%>Component implements OnDestroy {
@@ -17,7 +18,7 @@ export class <%=ClassName%>Component implements OnDestroy {
     public remoteRoot = REMOTE_ROOT;
     public remoteData: SelectableNodeData[] = [];
     private destroy$ = new Subject<void>();
-    constructor(private iconService: IgxIconService, private dataService: DataService) {
+    constructor(private dataService: DataService) {
         this.dataService.data.pipe(takeUntil(this.destroy$)).subscribe((data) => {
             this.loading = false;
             this.remoteData = data;

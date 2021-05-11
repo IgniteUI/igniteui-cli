@@ -4,6 +4,11 @@
     vertical-align: middle;
 }
 
+igx-tree {
+	max-height: 560px;
+	overflow-y: auto;
+}
+
 .node-refresh {
     cursor: pointer;
     padding: 0px 4px;
