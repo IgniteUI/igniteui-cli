@@ -90,9 +90,9 @@
     "yargs": "^8.0.2"
   },
   "devDependencies": {
-    "@angular-devkit/core": "^12.0.0-rc.2",
-    "@angular-devkit/schematics": "^12.0.0-rc.2",
-    "@schematics/angular": "^12.0.0-rc.2",
+    "@angular-devkit/core": "^12.0.0-rc.3",
+    "@angular-devkit/schematics": "^12.0.0-rc.3",
+    "@schematics/angular": "^12.0.0-rc.3",
     "@types/fs-extra": "^3.0.3",
     "@types/inquirer": "0.0.35",
     "@types/jasmine": "~3.5.0",
