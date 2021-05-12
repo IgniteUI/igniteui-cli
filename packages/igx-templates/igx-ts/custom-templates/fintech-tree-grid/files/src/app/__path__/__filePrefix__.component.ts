@@ -109,7 +109,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
 
     public ngOnInit() {
         this.grid1.sortingExpressions = [{ fieldName: this.groupColumnKey, dir: SortingDirection.Desc }];
-        this.volumeChanged = this.volumeSlider.onValueChange.pipe(debounce(() => timer(200)));
+        this.volumeChanged = this.volumeSlider.valueChange.pipe(debounce(() => timer(200)));
         this.volumeChanged.subscribe(
             (x) => {
                 this.localService.getData(this.volume);

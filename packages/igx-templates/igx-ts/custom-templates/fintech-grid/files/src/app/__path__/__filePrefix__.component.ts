@@ -95,7 +95,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
             strategy: DefaultSortingStrategy.instance()
         }
         ];
-        this.volumeChanged = this.volumeSlider.onValueChange.pipe(debounce(() => timer(200)));
+        this.volumeChanged = this.volumeSlider.valueChange.pipe(debounce(() => timer(200)));
         this.volumeChanged.subscribe(
             (x) => {
                 this.localService.getData(this.volume);
