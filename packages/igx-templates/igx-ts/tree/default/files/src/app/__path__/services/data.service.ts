@@ -6,9 +6,9 @@ import { NodeData, REMOTE_DATA, SelectableNodeData } from '../local-data';
 @Injectable()
 export class DataService {
 
-    private _data: SelectableNodeData[] = [];
-    private _selected: Set<string> = new Set<string>();
-    private _deselected: Set<string> = new Set<string>();
+    private nodeData: SelectableNodeData[] = [];
+    private selectedNode: Set<string> = new Set<string>();
+    private deselectedNode: Set<string> = new Set<string>();
     private data$: ReplaySubject<SelectableNodeData[]> = new ReplaySubject();
     public get data(): Observable<SelectableNodeData[]> {
         return this.data$;
@@ -16,13 +16,13 @@ export class DataService {
 
     public getData() {
         setTimeout(() => {
-            this._data = REMOTE_DATA;
-            const passed = this._data.map(e => {
+            this.nodeData = REMOTE_DATA;
+            const passed = this.nodeData.map(e => {
                 const selectionState: Partial<SelectableNodeData> = {};
-                if (this._selected.has(e.Name)) {
+                if (this.selectedNode.has(e.Name)) {
                     selectionState.Selected = true;
                 }
-                if (this._deselected.has(e.Name)) {
+                if (this.deselectedNode.has(e.Name)) {
                     selectionState.Selected = false;
                 }
                 return Object.assign({}, e, selectionState);
@@ -32,22 +32,22 @@ export class DataService {
     }
 
     public clearData() {
-        this._data = [];
-        this.data$.next(this._data);
+        this.nodeData = [];
+        this.data$.next(this.nodeData);
     }
 
     public clearSelect() {
-        this._selected = new Set<string>();
-        this._deselected = new Set<string>();
+        this.selectedNode = new Set<string>();
+        this.deselectedNode = new Set<string>();
     }
 
     public toggleSelected(node: NodeData, state: boolean) {
         if (state) {
-            this._selected.add(node.Name);
-            this._deselected.delete(node.Name);
+            this.selectedNode.add(node.Name);
+            this.deselectedNode.delete(node.Name);
         } else {
-            this._deselected.add(node.Name);
-            this._selected.delete(node.Name);
+            this.deselectedNode.add(node.Name);
+            this.selectedNode.delete(node.Name);
         }
     }
 
