@@ -20,7 +20,7 @@ export class <%=ClassName%>Component {
 
     public onSubmit() {
         this.value = this.igxSelect.value;
-        this.output.show();
+        this.output.open();
     }
 
     public handleSelection(event) {

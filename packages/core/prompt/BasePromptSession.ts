@@ -91,10 +91,10 @@ export abstract class BasePromptSession {
 	}
 
 	/** Install packages and run project */
-	protected abstract async completeAndRun(port?: number);
+	protected abstract completeAndRun(port?: number);
 
 	/** Upgrade packages to use private Infragistics feed */
-	protected abstract async upgradePackages();
+	protected abstract upgradePackages();
 
 	/**
 	 * Get user name and set template's extra configurations if any
