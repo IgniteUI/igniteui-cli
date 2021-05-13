@@ -70,7 +70,7 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 		return `<ng-template igxHeader let-columnRef>
 			<div class="title-inner">
 				<span style="float:left">${columnName}</span>
-				<igx-icon class="pin-icon" fontSet="fas" name="fa-thumbtack" (click)="toggleColumn(columnRef, $event)"></igx-icon>
+				<igx-icon class="pin-icon" family="fas" name="fa-thumbtack" (click)="toggleColumn(columnRef, $event)"></igx-icon>
 			</div>
 		</ng-template>`;
 	}
