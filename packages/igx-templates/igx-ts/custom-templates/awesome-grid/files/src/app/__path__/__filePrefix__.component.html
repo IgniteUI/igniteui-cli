@@ -14,7 +14,7 @@
 			</igx-input-group>
 		</div>
 
-		<igx-grid #grid1 [data]="localData" [paging]="true" [perPage]="10" height="600px" (onSelection)="cellSelection($event)" [allowFiltering]="true">
+		<igx-grid #grid1 [data]="localData" [paging]="true" [perPage]="10" height="600px" (selected)="cellSelection($event)" [allowFiltering]="true">
 			<igx-column header="Rank" headerClasses="myClass" width="115px" field="Id" sortable="true" [filterable]="false">
 					<ng-template igxCell let-cell="cell">
 						<div class="cell__inner">
