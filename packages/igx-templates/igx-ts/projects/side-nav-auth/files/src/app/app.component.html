@@ -6,7 +6,7 @@
     </ng-template>
   </igx-nav-drawer>
   <div class="main" igxFlex igxLayout igxLayoutDir="columns">
-    <igx-navbar title="<%=name%>" actionButtonIcon="menu" (onAction)="nav.toggle()">
+    <igx-navbar title="<%=name%>" actionButtonIcon="menu" (action)="nav.toggle()">
       <app-login-bar></app-login-bar>
   </igx-navbar>
     <div class="content" igxFlex>

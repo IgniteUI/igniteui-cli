@@ -26,7 +26,7 @@
         </div>
         <div class="control-item fintech-play-controls">
             <igx-buttongroup class="finjssample-btn-group" #buttonGroup1 [multiSelection]="false"
-                [values]="controls" (onSelect)="onButtonAction($event)"></igx-buttongroup>
+                [values]="controls" (selected)="onButtonAction($event)"></igx-buttongroup>
         </div>
     </div>
     <div class="sample-toolbar">
@@ -35,10 +35,10 @@
         <span *ngIf="buttonSelected === 0">Feeding {{volume}} records every {{frequency / 1000}} sec.
             ~{{volume/5}} records updated.</span>
     </div>
-    <igx-grid #grid1 igxPreventDocumentScroll (onRowSelectionChange)="rowSelectionChanged($event)" [data]="data"
+    <igx-grid #grid1 igxPreventDocumentScroll (rowSelected)="rowSelectionChanged($event)" [data]="data"
         width="100%" height="90%" [autoGenerate]="false" displayDensity="compact" primaryKey="ID" hiddenColumnsText="Hidden"
         [rowSelection]="selectionMode" [allowFiltering]="true" [filterMode]="'excelStyleFilter'"
-        (keydown)="gridKeydown($event)" (onGridKeydown)="customKeydown($event)">
+        (keydown)="gridKeydown($event)" (gridKeydown)="customKeydown($event)">
         <igx-grid-toolbar *ngIf="showToolbar">
             <igx-grid-toolbar-actions>
                 <igx-grid-toolbar-hiding title="Indicators"></igx-grid-toolbar-hiding>
@@ -92,7 +92,7 @@
         <igx-column [field]="'Chart'" [width]="'60px'" [hidden]="false" [filterable]="false">
             <ng-template igxCell let-cell="cell" class="center-text">
                 <button class="button-icon" igxButton="icon" igxRippleCentered="true" tabindex="-1">
-                    <igx-icon fontSet="material" (click)="openSingleRowChart(cell)">insert_chart_outlined</igx-icon>
+                    <igx-icon family="material" (click)="openSingleRowChart(cell)">insert_chart_outlined</igx-icon>
                 </button>
             </ng-template>
         </igx-column>
@@ -126,7 +126,7 @@
         <!-- <igx-column [field]="'Grid'" [width]="'80px'" [hidden]="false" [filterable]="false">
             <ng-template igxCell let-cell="cell" class="center-text">
                 <button class="button-icon" igxButton="icon" igxRippleCentered="true">
-                    <igx-icon (click)="chartClick(cell)" fontSet="material">table_charttable_chart</igx-icon>
+                    <igx-icon (click)="chartClick(cell)" family="material">table_charttable_chart</igx-icon>
                 </button>
             </ng-template>
         </igx-column> -->

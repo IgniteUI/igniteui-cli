@@ -38,15 +38,15 @@
     );
 
     $crm-grid-toolbar-button: igx-button-theme(
-        $outlined-background: igx-color($crm-grid-palette, "primary", 800),
-        $outlined-hover-background: igx-color($crm-grid-palette, "primary", 900),
-        $outlined-focus-text-color: #fff
+        $background: igx-color($crm-grid-palette, "primary", 800),
+        $hover-background: igx-color($crm-grid-palette, "primary", 900),
+        $focus-foreground: #fff
     );
 
     $crm-grid-search-button: igx-button-theme(
-        $flat-background: transparent,
-        $flat-focus-background: igx-color($crm-grid-palette, "grays", 200),
-        $flat-hover-background: igx-color($crm-grid-palette, "grays", 200)
+        $background: transparent,
+        $focus-background: igx-color($crm-grid-palette, "grays", 200),
+        $hover-background: igx-color($crm-grid-palette, "grays", 200)
     );
 
     $crm-input-drop-down: igx-input-group-theme(
@@ -311,7 +311,6 @@
         z-index: 3;
         background-color: white;
         overflow: auto;
-        box-shadow: igx-elevation($elevations, 4);
     }
 
     .toggle-section {

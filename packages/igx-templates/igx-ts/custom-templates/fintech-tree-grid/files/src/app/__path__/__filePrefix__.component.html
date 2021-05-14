@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="control-item finjs-play-controls">
-            <igx-buttongroup class="finjssample-btn-group" #buttonGroup1 [multiSelection]="false" [values]="controls" (onSelect)="onButtonAction($event)"></igx-buttongroup>
+            <igx-buttongroup class="finjssample-btn-group" #buttonGroup1 [multiSelection]="false" [values]="controls" (selected)="onButtonAction($event)"></igx-buttongroup>
         </div>
     </div>
     <div class="sample-toolbar">
