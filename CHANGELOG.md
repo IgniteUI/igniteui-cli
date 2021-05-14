@@ -1,3 +1,23 @@
+# [8.0.0](https://github.com/IgniteUI/igniteui-cli/compare/v7.1.1...v8.0.0)  (2021-05-14)
+
+🎉 This update includes igniteui-angular version [12.0.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/12.0.0) and angular version [12.0.0](https://github.com/angular/angular/releases/tag/12.0.0).
+
+## igniteui/cli-core@8.0.0
+
+Note: Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@12.0.800
+
+* Update to angular 12 and igniteui-angular 12 [#833](https://github.com/IgniteUI/igniteui-cli/issues/833)
+
+## igniteui/angular-schematics@12.0.800
+
+* Update to angular 12 and igniteui-angular 12 [#833](https://github.com/IgniteUI/igniteui-cli/issues/833)
+
+## igniteui-cli@8.0.0
+
+* Update to angular 12 and igniteui-angular 12 [#833](https://github.com/IgniteUI/igniteui-cli/issues/833)
+
 # [7.1.1](https://github.com/IgniteUI/igniteui-cli/compare/v7.1.0...v7.1.1) (2021-03-15)
 
 ## igniteui/cli-core@7.1.1
