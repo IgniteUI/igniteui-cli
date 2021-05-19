@@ -21,9 +21,8 @@ jobs:
       - run: echo ${VERSION}
 
       - name: Install packages
-        # run: yarn --frozen-lockfile
         run: |
-          yarn policies set-version 1.22.5
+          yarn policies set-version
           yarn install --frozen-lockfile
 
       - name: Build
