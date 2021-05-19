@@ -17,7 +17,7 @@
     "url": "https://github.com/IgniteUI/igniteui-cli/issues"
   },
   "scripts": {
-    "release": "lerna version --conventional-commits --yes --force-publish --no-push --no-git-tag-version",
+    "release": "lerna version --conventional-commits --yes --force-publish=* --no-push --no-git-tag-version",
     "version": "node ./scripts/versionScript.js",
     "build": "node ./node_modules/typescript/lib/tsc.js && npm run config-schema",
     "build-pack": "node ./node_modules/typescript/lib/tsc.js -p tsconfig-pack.json && npm run config-schema",
