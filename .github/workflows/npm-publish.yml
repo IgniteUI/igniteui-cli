@@ -2,7 +2,7 @@ name: Node.js Deploy
 
 on:
   # push: #For Testing only
-  #   branches: [ iganchev/ig-gh-actions-vNext ]
+    branches: [ iganchev/ig-gh-actions-vNext ]
   release:
     types: [created]
 
