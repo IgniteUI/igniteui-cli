@@ -29,6 +29,11 @@ jobs:
         run: |
           yarn config set scripts-prepend-node-path auto
           yarn test
-      - name: Coverage
+      - name: Generate coverage
         if: matrix.node-version == '14.x'
-        run: yarn coverage
+        run: nyc report --dir coverage lcov    
+      - name: Publish to coveralls.io
+        if: matrix.node-version == '14.x'
+        uses: coverallsapp/github-action@v1.1.2
+        with:
+            github-token: ${{ github.token }}
