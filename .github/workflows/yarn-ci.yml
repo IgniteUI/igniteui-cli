@@ -31,7 +31,8 @@ jobs:
           yarn test
       - name: Generate coverage
         if: matrix.node-version == '14.x'
-        run: nyc report --dir coverage lcov    
+        # run: nyc report --reporter=text-lcov --dir coverage lcov   
+        run: yarn coverage
       - name: Publish to coveralls.io
         if: matrix.node-version == '14.x'
         uses: coverallsapp/github-action@v1.1.2

@@ -24,7 +24,7 @@
     "pretest": "npm run lint && npm run build",
     "test": "nyc npm run jasmine",
     "jasmine": "node spec/jasmine-runner.js",
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "coverage": "nyc report --dir coverage lcov",
     "lint": "tslint --project tsconfig.json",
     "config-schema": "typescript-json-schema packages/core/types/Config.ts Config -o packages/core/config/Config.schema.json"
   },
