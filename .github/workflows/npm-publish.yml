@@ -16,6 +16,8 @@ jobs:
         with:
           node-version: 14
           registry-url: "https://registry.npmjs.org"
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
       - run: echo "VERSION=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
       - run: echo ${VERSION}
@@ -40,5 +42,3 @@ jobs:
 
       - name: Publish
         run: lerna exec -- npm publish --tag "${NPM_TAG}"
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
