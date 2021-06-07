@@ -99,7 +99,7 @@
 		<igx-column field="Deals" header="Ratio per month" [width]="'160px'" [filterable]="false">
 			<ng-template igxCell let-val>
 				<igx-sparkline height="40px" width="160px" [dataSource]="val" valueMemberPath="Deals"
-					displayType="Column" brush="rgb(21, 190, 6)" negativeBrush="rgb(211, 17, 3)">
+					[displayType]="displayType.Column" brush="rgb(21, 190, 6)" negativeBrush="rgb(211, 17, 3)">
 				</igx-sparkline>
 			</ng-template>
 		</igx-column>

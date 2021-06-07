@@ -1,4 +1,4 @@
-@import '~@infragistics/igniteui-angular/lib/core/styles/themes/index';
+@import '~<%=igxPackage%>/lib/core/styles/themes/index';
 
 $grid-sample-theme: igx-grid-theme(
     $row-selected-background: #333,

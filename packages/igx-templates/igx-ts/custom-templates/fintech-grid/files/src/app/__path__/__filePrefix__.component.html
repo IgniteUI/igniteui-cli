@@ -16,12 +16,12 @@
             <div class="fintech-slider control-item">
                 <label for="slider">Records: {{volume}}</label>
                 <igx-slider #slider1 id="slider" [minValue]="0" [maxValue]="10000" [(ngModel)]="volume" [step]="100"
-                    thumbLabelVisibilityDuration="250" [continuous]="true"></igx-slider>
+                    [thumbLabelVisibilityDuration]="250" [continuous]="true"></igx-slider>
             </div>
             <div class="fintech-slider control-item">
                 <label for="slider">Frequency: {{frequency}} ms</label>
                 <igx-slider #slider2 id="slider" [minValue]="100" [maxValue]="3000" [step]="10"
-                    [(ngModel)]="frequency" thumbLabelVisibilityDuration="250" [continuous]="true"></igx-slider>
+                    [(ngModel)]="frequency" [thumbLabelVisibilityDuration]="250" [continuous]="true"></igx-slider>
             </div>
         </div>
         <div class="control-item fintech-play-controls">
@@ -208,13 +208,13 @@
     </igx-grid>
 </div>
 
-<igx-dialog #dialog closeOnOutsideSelect="true" (onClose)="onCloseHandler($event)">
+<igx-dialog #dialog [closeOnOutsideSelect]="true" (onClose)="onCloseHandler($event)">
     <div (keydown)="closeDialog($event)">
         <igx-dialog-title> Chart </igx-dialog-title>
 
         <div style="padding: 20px">
-            <igx-category-chart #chart1 [dataSource]="chartData" width="900px" chartType="column" xAxisInterval="20"
-                xAxisLabelAngle="90" [includedProperties]="properties" height="400px" [tooltipTemplate]="seriesTooltip">
+            <igx-category-chart #chart1 [dataSource]="chartData" width="900px" [chartType]="chartType.Column" [xAxisInterval]="20"
+                [xAxisLabelAngle]="90" [includedProperties]="properties" height="400px" [tooltipTemplate]="seriesTooltip">
             </igx-category-chart>
         </div>
 

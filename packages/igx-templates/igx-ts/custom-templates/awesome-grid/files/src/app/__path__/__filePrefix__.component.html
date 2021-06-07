@@ -6,13 +6,16 @@
 			</igx-switch>
 		</div>
 		<igx-input-group>
-			<input class="gridSample__filter" igxInput type="text" placeholder="Filter by country" (input)="filter($event.target.value)">
+			<input class="gridSample__filter"
+			igxInput type="text"
+			placeholder="Filter by country"
+			(input)="filter($event)">
 		</igx-input-group>
 	</div>
 	<div class="grid__wrapper__inner">
 		<igx-grid #grid1 igxPreventDocumentScroll [data]="localData" [paging]="true" [perPage]="10" height="600px" displayDensity="cosy" [allowFiltering]="true" [filterMode]="'excelStyleFilter'" [allowAdvancedFiltering]="true">
   
-			<igx-column header="Rank" [width]="'12%'" field="Id" sortable="true" [filterable]="false">
+			<igx-column header="Rank" [width]="'12%'" field="Id" [sortable]="true" [filterable]="false">
 				<ng-template igxCell let-cell="cell">
 					<div class="cell__inner">
 						<div>{{ grid1.page * grid1.perPage + cell.row.index + 1 }}</div>
@@ -34,7 +37,7 @@
 			<igx-column field="Name" header="Athlete" [width]="athleteColumnWidth" [hasSummary]="true">
 				<ng-template igxCell let-cell="cell">
 					<div class="cell__inner">
-						<igx-avatar [src]="cell.row.rowData.Avatar" roundShape="true" size="small"> </igx-avatar><span class="athlete_name">{{ cell.value }}</span>
+						<igx-avatar [src]="cell.row.rowData.Avatar" [roundShape]="true" size="small"> </igx-avatar><span class="athlete_name">{{ cell.value }}</span>
 						<igx-badge *ngIf="live" [type]="getBadgeType(cell)" [icon]="getIconType(cell)"></igx-badge>
 					</div>
   
@@ -43,7 +46,8 @@
   
 			<igx-column field="Speed" header="Speed" [width]="'23%'" [filterable]="false" [hasSummary]="true" [summaries]="speedSummary">
 				<ng-template igxCell let-val>
-					<igx-sparkline height="40px" width="190px" [dataSource]="val" valueMemberPath="Speed" displayType="Line" minimum="0" lineThickness="2" brush="rgb(0, 153, 255)">
+					<igx-sparkline height="40px" width="190px" [dataSource]="val" valueMemberPath="Speed" [displayType]="displayType.Line" [minimum]="0"
+					[lineThickness]="2" brush="rgb(0, 153, 255)">
 					</igx-sparkline>
 				</ng-template>
 			</igx-column>

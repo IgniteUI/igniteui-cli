@@ -3,16 +3,17 @@ import {
     AfterViewInit, ElementRef, OnDestroy, OnInit, ViewChild, NgZone
 } from '@angular/core';
 import {
+    AbsoluteScrollStrategy,
+    ConnectedPositioningStrategy,
+	GridSelectionMode,
+    HorizontalAlignment,
     IgxButtonGroupComponent,
     IgxSliderComponent,
-    SortingDirection,
     IgxTreeGridComponent,
-    PositionSettings,
     OverlaySettings,
-    ConnectedPositioningStrategy,
-    AbsoluteScrollStrategy,
-    VerticalAlignment,
-    HorizontalAlignment
+    PositionSettings,
+    SortingDirection,
+    VerticalAlignment
 } from '<%=igxPackage%>';
 import { timer } from 'rxjs';
 import { debounce } from 'rxjs/operators';
@@ -32,7 +33,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
     @ViewChild('slider2', { static: true }) public intervalSlider: IgxSliderComponent;
 
     public showToolbar = true;
-    public selectionMode = 'multiple';
+    public selectionMode: GridSelectionMode = 'multiple';
     public theme = false;
     public volume = 1000;
     public frequency = 500;

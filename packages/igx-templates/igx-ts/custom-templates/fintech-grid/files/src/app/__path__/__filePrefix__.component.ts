@@ -1,13 +1,17 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import {
-    DefaultSortingStrategy, IDialogEventArgs, IgxButtonGroupComponent, IgxDialogComponent,
+    GridSelectionMode,
+	DefaultSortingStrategy,
+	IDialogEventArgs,
+	IgxButtonGroupComponent,
+	IgxDialogComponent,
     IgxGridCellComponent,
     IgxGridComponent,
     IgxSliderComponent,
     SortingDirection,
     IGridKeydownEventArgs
 } from '<%=igxPackage%>';
-import { IgxCategoryChartComponent } from 'igniteui-angular-charts';
+import { CategoryChartType, IgxCategoryChartComponent } from 'igniteui-angular-charts';
 import { timer } from 'rxjs';
 import { debounce } from 'rxjs/operators';
 import { Contract, REGIONS } from './localData/financialData';
@@ -30,7 +34,8 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
 
     public showToolbar = false;
     public properties;
-    public selectionMode = 'multiple';
+    public selectionMode: GridSelectionMode = 'multiple';
+	public chartType = CategoryChartType;
     public theme = false;
     public volume = 1000;
     public frequency = 500;

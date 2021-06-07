@@ -6,8 +6,8 @@ You can read more about configuring the igx-grid component in the
 
 <igx-tree-grid #treeGrid [data]="localData" primaryKey="ID" childDataKey="Employees" width="990px" height="700px" 
 <%=treeGridFeatures%>>
-	<igx-column field="Name" dataType="string" [minWidth]="200" width="500px" <%=columnFeatures%> <%=columnPinning%>></igx-column>
+	<igx-column field="Name" dataType="string" minWidth="200px" width="500px" <%=columnFeatures%> <%=columnPinning%>></igx-column>
 	<igx-column field="Location" dataType="string" <%=columnFeatures%>></igx-column>
-	<igx-column field="HireDate" header="Hire Date" dataType="date" [minWidth]="100" <%=columnFeatures%>></igx-column>
-	<igx-column field="Age" dataType="number" [minWidth]="100" <%=columnFeatures%>></igx-column><%=toolbar%>
+	<igx-column field="HireDate" header="Hire Date" dataType="date" minWidth="100px" <%=columnFeatures%>></igx-column>
+	<igx-column field="Age" dataType="number" minWidth="100px" <%=columnFeatures%>></igx-column><%=toolbar%>
 </igx-tree-grid>

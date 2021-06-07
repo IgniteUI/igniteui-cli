@@ -4,13 +4,13 @@ import {
   AfterViewInit,
   QueryList,
   ViewChild,
-  ChangeDetectorRef,
   ElementRef
 } from '@angular/core';
 
 import {
   CloseScrollStrategy,
   ConnectedPositioningStrategy,
+  GridSelectionMode,
   HorizontalAlignment,
   IColumnExportingEventArgs,
   IgxColumnComponent,
@@ -24,6 +24,7 @@ import {
   OverlaySettings,
   PositionSettings,
   VerticalAlignment} from '<%=igxPackage%>';
+import { SparklineDisplayType } from 'igniteui-angular-charts';
 import { data } from './data';
 
 function formatDate(val: Date) {
@@ -57,7 +58,8 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit {
 
     public searchText = '';
     public caseSensitive = false;
-    public selectionMode = 'multiple';
+    public selectionMode: GridSelectionMode = 'multiple';
+    public displayType = SparklineDisplayType;
 
     public positionSettings: PositionSettings = {
         horizontalDirection: HorizontalAlignment.Left,
