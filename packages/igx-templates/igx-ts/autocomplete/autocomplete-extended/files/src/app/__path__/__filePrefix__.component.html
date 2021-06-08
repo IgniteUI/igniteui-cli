@@ -23,10 +23,10 @@
 		</igx-input-group>
 		<igx-drop-down #townsEnhancedPanel maxHeight="300px" (onSelection)="getPostalCode($event)">
 			<igx-drop-down-item-group
-				*ngFor="let eRegion of extendedTowns.regions | <%=camelCaseName%>RegionContains:townSelected"
+				*ngFor="let eRegion of regions | <%=camelCaseName%>RegionContains:townSelected"
 				[label]="eRegion.name">
 				<igx-drop-down-item *ngFor="let town of eRegion.towns | <%=camelCaseName%>StartsWith:townSelected"
-					[value]="town.name">
+					[value]="{ name: town.name, region: eRegion.name }">
 					{{town.name}}
 				</igx-drop-down-item>
 			</igx-drop-down-item-group>

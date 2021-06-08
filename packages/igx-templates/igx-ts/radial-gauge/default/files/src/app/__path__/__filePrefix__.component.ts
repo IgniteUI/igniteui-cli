@@ -18,7 +18,7 @@ export class <%=ClassName%>Component implements AfterViewInit {
   public pivotShape = RadialGaugePivotShape;
 
   @ViewChild('radialGauge', { static: true })
-  public radialGauge: IgxRadialGaugeComponent;
+  public radialGauge!: IgxRadialGaugeComponent;
 
   public ngAfterViewInit(): void {
 

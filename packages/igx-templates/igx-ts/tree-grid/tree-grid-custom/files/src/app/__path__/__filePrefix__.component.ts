@@ -7,7 +7,7 @@ import { EMPLOYEE_DATA } from './localData';
   styleUrls: ['./<%=filePrefix%>.component.scss']
 })
 export class <%=ClassName%>Component implements OnInit {
-  public localData: any[];
+  public localData: any[] = [];
   title = '<%=name%>';
 
   ngOnInit() {

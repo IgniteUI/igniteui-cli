@@ -14,10 +14,10 @@ import { employeesData } from './localData';
 
 export class <%=ClassName%>Component implements OnInit {
   @ViewChild('sampleGrid', { static: true, read: IgxGridComponent })
-  public sampleGrid: IgxGridComponent;
+  public sampleGrid!: IgxGridComponent;
   public customDateSummary = CustomDateSummary;
 
-  public localData: any[];
+  public localData!: any[];
   title = 'Grid Summaries';
 
   constructor() { }
@@ -30,7 +30,7 @@ export class <%=ClassName%>Component implements OnInit {
     return value.toLocaleDateString();
   }
 
-  public toggleSummary(name) {
+  public toggleSummary(name: string) {
     if (this.sampleGrid.getColumnByName(name).hasSummary) {
       this.sampleGrid.disableSummaries(name);
     } else {
@@ -45,7 +45,10 @@ class CustomDateSummary extends IgxDateSummaryOperand {
     super();
   }
   public operate(data?: any[]): IgxSummaryResult[] {
-    const result = [];
+    const result: IgxSummaryResult[] = [];
+    if (!data) {
+        return result;
+    }
     result.push({
       key: 'earliest',
       label: 'Earliest Date',

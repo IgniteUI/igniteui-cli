@@ -8,7 +8,7 @@ import { Towns } from './towns-data';
 })
 export class <%=ClassName%>Component {
     public towns: any;
-    public townSelected;
+    public townSelected = '';
 
     constructor() {
         this.towns = Towns;

@@ -11,7 +11,8 @@ import { data } from './local-data';
 })
 
 export class <%=ClassName%>Component implements OnInit {
-    @ViewChild(IgxDropDownComponent, { static: true }) public igxDropDown: IgxDropDownComponent;
+    @ViewChild(IgxDropDownComponent, { static: true })
+    public igxDropDown!: IgxDropDownComponent;
 
     public items: any[] = [];
 

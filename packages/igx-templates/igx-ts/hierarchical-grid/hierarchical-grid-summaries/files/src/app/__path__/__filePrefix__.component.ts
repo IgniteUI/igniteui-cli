@@ -8,7 +8,7 @@ import { CustomSummary } from './custom-summary';
     styleUrls: ['./<%=filePrefix%>.component.scss']
 })
 export class <%=ClassName%>Component implements OnInit {
-    public localData;
+    public localData: any[] = [];
     public customSummary = CustomSummary;
 
     public ngOnInit(): void {

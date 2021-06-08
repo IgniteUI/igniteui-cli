@@ -1,6 +1,6 @@
 import { Component, Pipe, PipeTransform, ViewChild } from '@angular/core';
-import { townsExtended } from './towns-data-extended';
-import { IgxToastComponent, IgxToastPosition } from '<%=igxPackage%>';
+import { townsExtended, Region } from './towns-data-extended';
+import { IgxToastComponent, IgxToastPosition, ISelectionEventArgs } from '<%=igxPackage%>';
 
 @Component({
     selector: 'app-<%=filePrefix%>',
@@ -8,21 +8,28 @@ import { IgxToastComponent, IgxToastPosition } from '<%=igxPackage%>';
     styleUrls: ['./<%=filePrefix%>.component.scss']
 })
 export class <%=ClassName%>Component {
-    public extendedTowns: any;
-    public townSelected: string;
-    public postalCode: string;
+    public regions!: Region[];
+    public townSelected!: string;
+    public postalCode!: number | 'none';
     public messagePosition = IgxToastPosition.Middle;
 
     @ViewChild(IgxToastComponent, { static: true })
-    public toast: IgxToastComponent;
+    public toast!: IgxToastComponent;
 
     constructor() {
-        this.extendedTowns = townsExtended;
+        this.regions = townsExtended;
     }
 
-    public getPostalCode(event) {
-        const targetRegion = this.extendedTowns.regions.filter((r) => r.name === event.newSelection.group.label)[0];
-        this.postalCode = targetRegion.towns.filter(t => t.name === event.newSelection.value)[0].postalCode;
+    public getPostalCode(event: ISelectionEventArgs) {
+        const targetRegion = this.regions.find((r) => r.name === event.newSelection.value.region);
+        if (!targetRegion) {
+            return;
+        }
+        const townEntry = targetRegion.towns.find(t => t.name === event.newSelection.value);
+        if (!townEntry) {
+            return;
+        }
+        this.postalCode = townEntry.postalCode;
         this.toast.open();
     }
 }
@@ -36,11 +43,11 @@ export class  <%=ClassName%>PipeStartsWith implements PipeTransform {
 
 @Pipe({ name: '<%=camelCaseName%>RegionContains' })
 export class <%=ClassName%>RegionContains implements PipeTransform {
-    transform(regions: any[], term = '') {
+    transform(regions: Region[], term = '') {
         return this.filterRegions(regions, term);
     }
 
-    private filterRegions(regions: any[], term: string) {
+    private filterRegions(regions: Region[], term: string) {
         return regions.filter((region: any) => this.filterTowns(region.towns, term.toLowerCase()).length > 0);
     }
 

@@ -14,11 +14,12 @@ import { IgxNavigationDrawerComponent } from 'igniteui-angular';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit {
-  public topNavLinks: Array<{
+  public topNavLinks: {
     path: string,
     name: string
-  }> = [];
-  @ViewChild(IgxNavigationDrawerComponent, { static: true }) public navdrawer: IgxNavigationDrawerComponent;
+  }[] = [];
+  @ViewChild(IgxNavigationDrawerComponent, { static: true })
+  public navdrawer!: IgxNavigationDrawerComponent;
 
   constructor(private router: Router) {
     for (const route of routes) {

@@ -18,8 +18,10 @@ export class RegisterComponent {
 
   public registrationForm: FormGroup;
 
-  @Output() viewChange: EventEmitter<any> = new EventEmitter();
-  @Output() registered: EventEmitter<any> = new EventEmitter();
+  @Output()
+  viewChange: EventEmitter<any> = new EventEmitter();
+  @Output()
+  registered: EventEmitter<any> = new EventEmitter();
 
   constructor(private authentication: AuthenticationService,
               private fb: FormBuilder,

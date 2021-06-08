@@ -27,24 +27,24 @@ export class <%=ClassName%>Component implements OnInit {
             .find(c => c.transactions.getAggregatedChanges(false).length > 0) !== undefined;
     }
 
-    public localdata: Singer[];
-    public singer: Singer;
+    public localdata!: Singer[];
+    public singer!: Singer;
     public transactionsDataAll: Transaction[] = [];
     private id = 14;
 
     @ViewChild('dialogChanges', { read: IgxDialogComponent, static: true })
-    public dialogChanges: IgxDialogComponent;
+    public dialogChanges!: IgxDialogComponent;
 
-    @ViewChild('dialogGrid', { read: IgxGridComponent, static: true }) public dialogGrid: IgxGridComponent;
+    @ViewChild('dialogGrid', { read: IgxGridComponent, static: true }) public dialogGrid!: IgxGridComponent;
 
     @ViewChild('layout1', { static: true })
-    private layout1: IgxRowIslandComponent;
+    private layout1!: IgxRowIslandComponent;
 
     @ViewChild('hierarchicalGrid', { static: true })
-    private hierarchicalGrid: IgxHierarchicalGridComponent;
+    private hierarchicalGrid!: IgxHierarchicalGridComponent;
 
     @ViewChild('dialogAddSinger', { read: IgxDialogComponent, static: true })
-    private dialogSinger: IgxDialogComponent;
+    private dialogSinger!: IgxDialogComponent;
 
     constructor() {}
 
@@ -60,7 +60,7 @@ export class <%=ClassName%>Component implements OnInit {
         };
     }
 
-    public formatter = a => a;
+    public formatter = (a: any) => a;
 
     public undo(grid: IgxHierarchicalGridComponent) {
         /* exit edit mode */
@@ -103,9 +103,11 @@ export class <%=ClassName%>Component implements OnInit {
         this.cancel();
     }
 
-    public removeRow(rowIndex) {
+    public removeRow(rowIndex: number) {
         const row = this.hierarchicalGrid.getRowByIndex(rowIndex);
-        row.delete();
+        if (row && row.delete) {
+            row.delete();
+        }
     }
 
     public stateFormatter(value: string) {

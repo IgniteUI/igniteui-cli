@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IgxSelectComponent, IgxToastPosition, IgxToastComponent } from '<%=igxPackage%>';
+import { IgxSelectComponent, IgxToastPosition, IgxToastComponent, ISelectionEventArgs } from '<%=igxPackage%>';
 
 @Component({
     selector: 'app-<%=filePrefix%>',
@@ -7,15 +7,15 @@ import { IgxSelectComponent, IgxToastPosition, IgxToastComponent } from '<%=igxP
     templateUrl: '<%=filePrefix%>.component.html'
 })
 export class <%=ClassName%>Component {
-    public selected;
+    public selected!: any;
     @ViewChild(IgxSelectComponent, { static: true })
-    public igxSelect: IgxSelectComponent;
+    public igxSelect!: IgxSelectComponent;
 
     @ViewChild(IgxToastComponent, { static: true })
-    public output: IgxToastComponent;
+    public output!: IgxToastComponent;
 
     public items: string[] = ['Orange', 'Apple', 'Banana', 'Mango'];
-    public value: string;
+    public value!: string;
     public outputPosition = IgxToastPosition.Middle;
 
     public onSubmit() {
@@ -23,7 +23,7 @@ export class <%=ClassName%>Component {
         this.output.open();
     }
 
-    public handleSelection(event) {
+    public handleSelection(event: ISelectionEventArgs) {
         this.value = event.newSelection.value;
     }
 }

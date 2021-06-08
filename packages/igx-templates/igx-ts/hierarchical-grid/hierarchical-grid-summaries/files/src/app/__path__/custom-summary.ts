@@ -6,7 +6,10 @@ export class CustomSummary extends IgxNumberSummaryOperand {
     }
 
     public operate(data?: any[]): IgxSummaryResult[] {
-        const result = [];
+        const result: IgxSummaryResult[] = [];
+        if (!data) {
+            return result;
+        }
         result.push(
             {
                 key: 'min',

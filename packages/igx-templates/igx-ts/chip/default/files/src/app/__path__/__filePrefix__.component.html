@@ -16,7 +16,7 @@
           <div class="chips">
                <button #openButton igxButton="raised" (click)="toggleDropDown($event)" [igxDropDownItemNavigation]="dropdown">Talks</button>
                <igx-drop-down #dropdown (onSelection)="itemSelection($event)" (onOpened)="onDropDownOpen()" (onClosed)="onDropDownClose()">
-                    <igx-drop-down-item *ngFor="let item of dropDownList">
+                    <igx-drop-down-item *ngFor="let item of dropDownList" [value]="item.name">
                          <div class="igx-drop-down__item-template">
                               <span>{{item.name}}</span>
                          </div>
