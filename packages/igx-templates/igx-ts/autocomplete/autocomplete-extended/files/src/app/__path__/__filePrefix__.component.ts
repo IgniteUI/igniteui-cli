@@ -20,15 +20,15 @@ export class <%=ClassName%>Component {
         this.regions = townsExtended;
     }
 
-    public getPostalCode(event: ISelectionEventArgs) {
-        const targetRegion = this.regions.find((r) => r.name === event.newSelection.value.region);
-        if (!targetRegion) {
-            return;
-        }
-        const townEntry = targetRegion.towns.find(t => t.name === event.newSelection.value);
-        if (!townEntry) {
-            return;
-        }
+    public getPostalCode(e: ISelectionEventArgs) {
+
+        // Flatten the structure of the regions array
+        const arr = this.regions;
+        const allTowns = arr.map(region =>
+          region.towns.map(town => ({name: town.name, postalCode: town.postalCode}))).flat();
+
+        const townEntry = allTowns.find(t => t.name === e.newSelection.value);
+
         this.postalCode = townEntry.postalCode;
         this.toast.open();
     }

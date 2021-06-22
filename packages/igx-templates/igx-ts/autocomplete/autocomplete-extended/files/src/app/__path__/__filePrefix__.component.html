@@ -26,7 +26,7 @@
 				*ngFor="let eRegion of regions | <%=camelCaseName%>RegionContains:townSelected"
 				[label]="eRegion.name">
 				<igx-drop-down-item *ngFor="let town of eRegion.towns | <%=camelCaseName%>StartsWith:townSelected"
-					[value]="{ name: town.name, region: eRegion.name }">
+					[value]="{ name: town.name }">
 					{{town.name}}
 				</igx-drop-down-item>
 			</igx-drop-down-item-group>
