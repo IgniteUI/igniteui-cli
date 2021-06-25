@@ -4,7 +4,7 @@ on:
   push: #For Testing only
     branches: [ iganchev/ig-gh-actions-vNext ]
   release:
-    types: [created]
+    types: [created, published, edited]
 
 jobs:
   build:
