@@ -38,7 +38,7 @@ jobs:
           echo ${NPM_TAG}
 
       - name: Prepare changelog file
-        run: yarn release #--${VERSION}
+        run: yarn release
 
       - name: Publish
         run: lerna exec -- npm publish --tag "${NPM_TAG}"
