@@ -2,9 +2,9 @@ name: Yarn CI
 
 on:
   push:
-    branches: [ iganchev/ig-gh-actions-vNext ] #master, vNext, '[0-9]+.[0-9]+.x'
+    branches:  [ master, vNext, '[0-9]+.[0-9]+.x' ]
   pull_request:
-    branches: [ iganchev/ig-gh-actions-vNext ] #master, vNext, '[0-9]+.[0-9]+.x'
+    branches: [ master, vNext, '[0-9]+.[0-9]+.x' ]
 
 jobs:
   run-tests:
