@@ -8,7 +8,7 @@
           <span class="header">Selected Events</span>
           <div class="chipsArea">
                <igx-chips-area #chipsArea class="chiparea">
-                    <igx-chip class="chipStyle" *ngFor="let chip of chipList" [id]="chip.id" [removable]="true" (onRemove)="chipRemoved($event)">
+                    <igx-chip class="chipStyle" *ngFor="let chip of chipList" [id]="chip.id" [removable]="true" (remove)="chipRemoved($event)">
                          <span #label [class]="'igx-chip__text'">{{chip.name}}</span>
                     </igx-chip>
                </igx-chips-area>

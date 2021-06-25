@@ -204,7 +204,8 @@
 // Import the theme utilities first	
 @import '~<%=igxPackage%>/lib/core/styles/themes/utilities';	
 @import '~<%=igxPackage%>/lib/core/styles/themes/index';	
-@include igx-core();	
+@include igx-core();
+@include igx-typography($font-family: $material-typeface, $type-scale: $material-type-scale);	
 @include igx-theme($default-palette);	
 
 @import './themes/_mixins';	

@@ -25,7 +25,7 @@
                             </igx-select-item>
                         </igx-select-item-group>
                         <label igxLabel for="movies">Movie</label>
-                        <ng-template igxSelectToggleIcon><igx-icon fontSet="material">local_movies</igx-icon></ng-template>
+                        <ng-template igxSelectToggleIcon><igx-icon family="material">local_movies</igx-icon></ng-template>
                     </igx-select>
                 </div>
                 <igx-input-group>
@@ -58,10 +58,10 @@
                     </igx-combo>
                 </div>
                 <div class="component-container">
-                    <igx-date-picker name="date" (onSelection)="onDateSelection($event)"></igx-date-picker>
+                    <igx-date-picker name="date" (valueChange)="onDateSelection($event)"></igx-date-picker>
                 </div>
                 <div class="component-container">
-                    <igx-time-picker name="dateTime" (onValueChanged)="onTimeSelection($event)"></igx-time-picker>
+                    <igx-time-picker name="dateTime" (valueChange)="onTimeSelection($event)"></igx-time-picker>
                 </div>
                 <div class="component-container">
                     <button igxButton="raised" igxRipple>Book</button>
