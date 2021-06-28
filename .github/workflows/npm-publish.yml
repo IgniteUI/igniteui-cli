@@ -36,7 +36,7 @@ jobs:
           echo ${NPM_TAG}
 
       - name: Bump packages versions and generate a changelog file
-        run: yarn release
+        run: yarn release --${VERSION}
 
       - name: Publish
         run: lerna exec -- npm publish --tag "${NPM_TAG}"
