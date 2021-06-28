@@ -20,6 +20,9 @@ jobs:
       - run: echo "VERSION=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
       - run: echo ${VERSION}
 
+      - run: echo "BRANCH_NAME=${GITHUB_REF/refs\/heads\//}" >> $GITHUB_ENV
+      - run: echo ${BRANCH_NAME}
+
       - name: Install packages
         run: |
           yarn policies set-version
