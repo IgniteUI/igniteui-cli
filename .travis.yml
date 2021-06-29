@@ -1,6 +1,9 @@
-# language: node_js
-# node_js:
-# - '12'
+language: node_js
+node_js:
+- '12'
+
+script: node ./test.js -- npm publish --tag "${NPM_TAG}"
+
 
 # after_success: npm run coverage
 
@@ -28,3 +31,4 @@
 #   global:
 #     # NPM_TOKEN=
 #     secure: K/ypXHaMu3jEctoNT8tDR/iIDaMyNVNT2CqrYuByzrvceHBgWv7D3R1QnDF78Wx0iGNC/o6yx9uIkRLIpHWYK2qL/2U18lZZbAhrEXN3B5+hTr4eXkOnMrIz/vvkbZGdX/IhR8NII+todCGaUwKf84WVxknWA+BGol/XZ+BC6qhgv+G+EcTFQ1gcjz3poQ+BrEL/yK08SRATwbWelepQnb5fsJDp+/Q/TBuMV0SZI+WuK7/tzeg9kIIoPKRgmtqkkfheAnBJ2EVdH5wav6T79TfjANfzkQgF8WA4epnO3b4/6JXKY5GED6NhL1XwZXbOo/lvuHrH0BFm371xefjcP5xHBN+Yug0J18W8X2g8JSH8MOHysHsZo3GDEPSd0xwwRSfL9u4kQ/ie1VjGMITAu++MOdzO6YmqUUogacW7QFYsXp4zz7bTdsqU8MIt6aGzxh/Y97r4S9jbWYoVZ0AkOpbbs/2uEDgz3nKJSiiWbYfILUKRrZdujaEYLtfBJ9xnqzn9YN1oasnVTlXZFQ2Y9b2B1YLT3hqhAPnvf2Jp9Rfzo4s+3Ebb9HVXaw0iGk90i5VWW0H9WLpXTWn3GIUKG6qQZWgqFQfXzECn4xJgDrIMk6W2nnYBNHZ1REYnOHRn6Qo3AUhnWSx1tDRQPwl/yUenMuKPwnIKPMxAMJYlUwk=
+
