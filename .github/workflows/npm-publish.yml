@@ -40,8 +40,8 @@ jobs:
           if [[ "${VERSION}" == *"alpha"* || "${VERSION}" == *"beta"* || "${VERSION}" == *"rc"* ]]; then echo "NPM_TAG=next"; else echo "NPM_TAG=latest"; fi >> $GITHUB_ENV
           echo ${NPM_TAG}
 
-      - name: Bump packages versions and generate a changelog file
-        run: yarn release --${BRANCH_NAME}
+      # - name: Bump packages versions and generate a changelog file
+        # run: yarn release --${BRANCH_NAME}
 
       - name: Publish
         run: lerna exec -- npm publish --tag "${NPM_TAG}"
