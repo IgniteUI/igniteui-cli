@@ -1,13 +1,13 @@
 {
   "name": "@igniteui/angular-templates",
-  "version": "12.0.801-alpha.12",
+  "version": "12.0.801-alpha.13",
   "description": "Templates for Ignite UI for Angular projects and components",
   "main": "index.js",
   "typings": "index.d.ts",
   "author": "Infragistics",
   "license": "MIT",
   "dependencies": {
-    "@igniteui/cli-core": "^8.0.1-alpha.12",
+    "@igniteui/cli-core": "^8.0.1-alpha.13",
     "typescript": "^3.7.5"
   }
 }

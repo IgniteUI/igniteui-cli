@@ -20,9 +20,6 @@ jobs:
       - run: echo "VERSION=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
       - run: echo ${VERSION}
 
-      - run: echo "BRANCH_NAME=${GITHUB_REF/refs\/heads\//}" >> $GITHUB_ENV
-      - run: echo ${BRANCH_NAME}
-
       - name: Install packages
         run: |
           yarn policies set-version
@@ -35,8 +32,9 @@ jobs:
 
       - name: Define npm tag
         run: |
-          if [[ "${VERSION}" == *"alpha"* || "${VERSION}" == *"beta"* || "${VERSION}" == *"rc"* ]]; then echo "NPM_TAG=next"; else echo "NPM_TAG=latest"; fi >> $GITHUB_ENV
+          if [[ ${VERSION} == *"alpha"* || ${VERSION} == *"beta"* || ${VERSION} == *"rc"* ]]; then echo "NPM_TAG=next"; else echo "NPM_TAG=latest"; fi >> $GITHUB_ENV
           echo ${NPM_TAG}
 
       - name: Publish
-        run: lerna exec -- npm publish --npm-tag="${NPM_TAG}"
+        run: lerna exec --npm publish --tag ${NPM_TAG}
+
