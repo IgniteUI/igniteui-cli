@@ -20,6 +20,11 @@ jobs:
       - run: echo "VERSION=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
       - run: echo ${VERSION}
 
+      - run: echo "BRANCH_NAME=${GITHUB_REF/refs\/heads\//}" >> $GITHUB_ENV
+      - run: echo ${BRANCH_NAME}
+
+      - run: echo git branch --contains tags/<${VERSION}>
+
       - name: Install packages
         run: |
           yarn policies set-version
@@ -36,8 +41,7 @@ jobs:
           echo ${NPM_TAG}
 
       - name: Bump packages versions and generate a changelog file
-        # run: yarn release --${VERSION}
-        run: lerna version ${VERSION} --conventional-commits --force-publish=* --yes --no-git-tag-version --no-push
+        run: yarn release
 
       - name: Publish
         run: lerna exec -- npm publish --tag "${NPM_TAG}"
