@@ -36,5 +36,5 @@ jobs:
           echo ${NPM_TAG}
 
       - name: Publish
-        run: lerna exec 'npm publish --tag=${NPM_TAG}'
+        run: lerna exec 'npm publish --tag='${NPM_TAG}
 
