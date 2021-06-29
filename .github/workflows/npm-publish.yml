@@ -23,7 +23,7 @@ jobs:
       - run: echo "BRANCH_NAME=${GITHUB_REF/refs\/heads\//}" >> $GITHUB_ENV
       - run: echo ${BRANCH_NAME}
 
-      - run: echo git branch --contains tags/<${VERSION}>
+      # - run: echo git branch --contains tags/<${VERSION}>
 
       - name: Install packages
         run: |
@@ -41,7 +41,7 @@ jobs:
           echo ${NPM_TAG}
 
       - name: Bump packages versions and generate a changelog file
-        run: yarn release
+        run: yarn release --${BRANCH_NAME}
 
       - name: Publish
         run: lerna exec -- npm publish --tag "${NPM_TAG}"
