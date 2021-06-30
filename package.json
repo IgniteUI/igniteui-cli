@@ -18,7 +18,7 @@
   },
   "scripts": {
     "release": "lerna version --conventional-commits --force-publish=* --yes --no-git-tag-version --no-push",
-	"deploy": "lerna exec 'npm publish --tag'",
+	"deploy": "lerna exec -- npm publish --tag",
     "version": "node ./scripts/versionScript.js",
     "build": "node ./node_modules/typescript/lib/tsc.js && npm run config-schema",
     "build-pack": "node ./node_modules/typescript/lib/tsc.js -p tsconfig-pack.json && npm run config-schema",
