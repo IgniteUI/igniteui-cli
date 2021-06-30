@@ -28,8 +28,8 @@ jobs:
 
       - name: Define npm tag
         run: |
-        if [[ ${VERSION} == *'alpha'* || ${VERSION} == *'beta'* || ${VERSION} == *'rc'* ]]; then echo 'NPM_TAG=next'; else echo 'NPM_TAG=latest'; fi >> $GITHUB_ENV
-        echo ${NPM_TAG}
+          if [[ ${VERSION} == *'alpha'* || ${VERSION} == *'beta'* || ${VERSION} == *'rc'* ]]; then echo 'NPM_TAG=next'; else echo 'NPM_TAG=latest'; fi >> $GITHUB_ENV
+          echo ${NPM_TAG}
 
       - name: Publish
         # use npm run as yarn run changes the registry and publishes to https://registry.yarnpkg.com
