@@ -37,6 +37,6 @@ jobs:
 
       - name: Publish
         # run: lerna exec 'npm publish --tag '${NPM_TAG}
-        run: yarn publish ${NPM_TAG}
+        run: yarn deploy ${NPM_TAG}
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
