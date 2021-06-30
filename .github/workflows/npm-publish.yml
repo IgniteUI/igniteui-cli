@@ -21,7 +21,7 @@ jobs:
       - name: Install packages
         run: yarn install --frozen-lockfile
 
-      - name: Build
+      - name: Build packages
         run: |
           npm run build-pack
           node scripts/build-task.js
@@ -31,7 +31,7 @@ jobs:
           if [[ ${VERSION} == *"alpha"* || ${VERSION} == *"beta"* || ${VERSION} == *"rc"* ]]; then echo "NPM_TAG=next"; else echo "NPM_TAG=latest"; fi >> $GITHUB_ENV
           echo ${NPM_TAG}
 
-      - name: Publish
+      - name: Publish packages
         # use npm run as yarn run changes the registry and publishes to https://registry.yarnpkg.com
         run: npm run deploy ${NPM_TAG}
         # define env variable for the specific run
