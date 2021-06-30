@@ -10,23 +10,23 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2
         with:
           node-version: 14
-          registry-url: "https://registry.npmjs.org"
+          registry-url: 'https://registry.npmjs.org'
 
-      - run: echo "VERSION=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
+      - run: echo 'VERSION=${GITHUB_REF/refs\/tags\//}' >> $GITHUB_ENV
       - run: echo ${VERSION}
 
-      - run: yarn policies set-version
+      # - run: yarn policies set-version
       - run: yarn install --frozen-lockfile
 
       - run: npm run build-pack
       - run: node scripts/build-task.js
 
-      - run: if [[ ${VERSION} == *"alpha"* || ${VERSION} == *"beta"* || ${VERSION} == *"rc"* ]]; then echo "NPM_TAG=next"; else echo "NPM_TAG=latest"; fi >> $GITHUB_ENV
+      - run: if [[ ${VERSION} == *'alpha'* || ${VERSION} == *'beta'* || ${VERSION} == *'rc'* ]]; then echo 'NPM_TAG=next'; else echo 'NPM_TAG=latest'; fi >> $GITHUB_ENV
       - run: echo ${NPM_TAG}
 
-      - run: yarn deploy ${NPM_TAG}
+      - run: npm run deploy ${NPM_TAG}
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
