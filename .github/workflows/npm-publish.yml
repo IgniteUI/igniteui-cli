@@ -18,15 +18,15 @@ jobs:
       - run: echo "VERSION=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
       - run: echo ${VERSION}
 
-        run: yarn policies set-version
-        run: yarn install --frozen-lockfile
+      - run: yarn policies set-version
+      - run: yarn install --frozen-lockfile
 
-        run: npm run build-pack
-        run: node scripts/build-task.js
+      - run: npm run build-pack
+      - run: node scripts/build-task.js
 
-        run: if [[ ${VERSION} == *"alpha"* || ${VERSION} == *"beta"* || ${VERSION} == *"rc"* ]]; then echo "NPM_TAG=next"; else echo "NPM_TAG=latest"; fi >> $GITHUB_ENV
-        run: echo ${NPM_TAG}
+      - run: if [[ ${VERSION} == *"alpha"* || ${VERSION} == *"beta"* || ${VERSION} == *"rc"* ]]; then echo "NPM_TAG=next"; else echo "NPM_TAG=latest"; fi >> $GITHUB_ENV
+      - run: echo ${NPM_TAG}
 
-        run: yarn deploy ${NPM_TAG}
+      - run: yarn deploy ${NPM_TAG}
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
