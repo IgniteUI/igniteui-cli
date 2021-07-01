@@ -32,7 +32,7 @@ styleUrls: ['./<%=filePrefix%>.component.scss']
 })
 export class <%=ClassName%>Component implements OnInit, OnDestroy, AfterViewInit {
 
- @ViewChild('grid1', { read: IgxGridComponent, static: true })
+  @ViewChild('grid1', { read: IgxGridComponent, static: true })
   public grid1: IgxGridComponent;
 
   @ViewChild('winnerAlert', { static: true })

@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
     path: string,
     name: string
   }[] = [];
+
   @ViewChild(IgxNavigationDrawerComponent, { static: true })
   public navdrawer!: IgxNavigationDrawerComponent;
 

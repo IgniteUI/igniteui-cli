@@ -13,52 +13,52 @@ import { DataService } from './services/data.service';
 })
 
 export class <%=ClassName%>Component implements OnDestroy {
-    public data = DATA;
-    public loading = false;
-    public showRefresh = false;
-    public remoteRoot = REMOTE_ROOT;
-    public remoteData: SelectableNodeData[] = [];
-    private destroy$ = new Subject<void>();
-    constructor(private dataService: DataService) {
-        this.dataService.data.pipe(takeUntil(this.destroy$)).subscribe((data) => {
-            this.loading = false;
-            this.remoteData = data;
-        });
-    }
+  public data = DATA;
+  public loading = false;
+  public showRefresh = false;
+  public remoteRoot = REMOTE_ROOT;
+  public remoteData: SelectableNodeData[] = [];
+  private destroy$ = new Subject<void>();
+  constructor(private dataService: DataService) {
+    this.dataService.data.pipe(takeUntil(this.destroy$)).subscribe((data) => {
+      this.loading = false;
+      this.remoteData = data;
+    });
+  }
 
-    public refreshData(node: IgxTreeNodeComponent<NodeData>) {
-        this.dataService.clearData();
-        this.remoteData = [];
-        this.getNodeData(node, true);
-        this.dataService.getData();
-    }
+  public refreshData(node: IgxTreeNodeComponent<NodeData>) {
+    this.dataService.clearData();
+    this.remoteData = [];
+    this.getNodeData(node, true);
+    this.dataService.getData();
+  }
 
-    public getNodeData(node: IgxTreeNodeComponent<any>, evt: boolean) {
-        if (this.remoteData?.length) {
-            return;
+  public getNodeData(node: IgxTreeNodeComponent<any>, evt: boolean) {
+    if (this.remoteData?.length) {
+      return;
+    }
+    if (evt) {
+      this.showRefresh = true;
+      this.loading = true;
+      this.dataService.getData();
+      this.dataService.data.pipe(take(1)).subscribe((data) => {
+        if (node.selected) {
+          data.forEach(e => {
+            if (e.Selected === undefined) {
+              e.Selected = true;
+            }
+          });
         }
-        if (evt) {
-            this.showRefresh = true;
-            this.loading = true;
-            this.dataService.getData();
-            this.dataService.data.pipe(take(1)).subscribe((data) => {
-                if (node.selected) {
-                    data.forEach(e => {
-                        if (e.Selected === undefined) {
-                            e.Selected = true;
-                        }
-                    });
-                }
-            });
-        }
+      });
     }
+  }
 
-    public handleSelection(node: NodeData, selected: boolean) {
-        this.dataService.toggleSelected(node, selected);
-    }
+  public handleSelection(node: NodeData, selected: boolean) {
+    this.dataService.toggleSelected(node, selected);
+  }
 
-    public ngOnDestroy() {
-        this.destroy$.next();
-        this.destroy$.complete();
-    }
+  public ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 }

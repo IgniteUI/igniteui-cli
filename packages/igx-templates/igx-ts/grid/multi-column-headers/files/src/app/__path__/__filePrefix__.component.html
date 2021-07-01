@@ -5,25 +5,25 @@
 
 <p>Active features: <%=selectedFeatures%></p>
 <igx-grid #grid1 [data]="localData" width="960px" height="550px" <%=gridFeatures%> >
-    <igx-column <%=columnFeatures%> field="ID"></igx-column> 
-    <igx-column-group <%=columnFeatures%> header="General Information">
-        <igx-column <%=columnFeatures%> field="CompanyName"></igx-column>
-        <igx-column-group <%=columnFeatures%> header="Person Details">
-            <igx-column <%=columnFeatures%> field="ContactName"></igx-column>
-            <igx-column <%=columnFeatures%> field="ContactTitle"></igx-column>
-        </igx-column-group>
+  <igx-column <%=columnFeatures%> field="ID"></igx-column> 
+  <igx-column-group <%=columnFeatures%> header="General Information">
+    <igx-column <%=columnFeatures%> field="CompanyName"></igx-column>
+    <igx-column-group <%=columnFeatures%> header="Person Details">
+      <igx-column <%=columnFeatures%> field="ContactName"></igx-column>
+      <igx-column <%=columnFeatures%> field="ContactTitle"></igx-column>
     </igx-column-group>
-    <igx-column-group header="Address Information">
-        <igx-column-group <%=columnFeatures%> header="Location">
-            <igx-column <%=columnFeatures%> field="Country"></igx-column>
-            <igx-column <%=columnFeatures%> field="Region"></igx-column>
-            <igx-column <%=columnFeatures%> field="City"></igx-column>
-            <igx-column <%=columnFeatures%> field="Address"></igx-column>
-        </igx-column-group>
-        <igx-column-group <%=columnFeatures%> header="Contact Information">
-                <igx-column <%=columnFeatures%> field="Phone"></igx-column>            
-                <igx-column <%=columnFeatures%> [resizable]="true" field="Fax"></igx-column>            
-                <igx-column <%=columnFeatures%> [resizable]="true" field="PostalCode"></igx-column>            
-        </igx-column-group>
+  </igx-column-group>
+  <igx-column-group header="Address Information">
+    <igx-column-group <%=columnFeatures%> header="Location">
+      <igx-column <%=columnFeatures%> field="Country"></igx-column>
+      <igx-column <%=columnFeatures%> field="Region"></igx-column>
+      <igx-column <%=columnFeatures%> field="City"></igx-column>
+      <igx-column <%=columnFeatures%> field="Address"></igx-column>
     </igx-column-group>
+    <igx-column-group <%=columnFeatures%> header="Contact Information">
+        <igx-column <%=columnFeatures%> field="Phone"></igx-column>
+        <igx-column <%=columnFeatures%> [resizable]="true" field="Fax"></igx-column>
+        <igx-column <%=columnFeatures%> [resizable]="true" field="PostalCode"></igx-column>
+    </igx-column-group>
+  </igx-column-group>
 </igx-grid>
