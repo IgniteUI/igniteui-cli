@@ -15,6 +15,42 @@ interface NamedEntry {
 })
 
 export class <%=ClassName%>Component {
+
+  public dropDownList: NamedEntry[] = [
+    {
+     id: '1',
+     name: 'Bug fixing for smart devices'
+    },
+    {
+     id: '2',
+     name: 'The True Purpose of Design Systems'
+    },
+    {
+     id: '3',
+     name: 'The IoT is dead, long live the internet'
+    },
+    {
+     id: '4',
+     name: 'Micro frontends in practice'
+    },
+    {
+     id: '5',
+     name: 'Lessons about API testing'
+    },
+    {
+     id: '6',
+     name: 'Scaling big with Apache Kafka'
+    },
+    {
+     id: '7',
+     name: 'Last minute performance testing'
+    },
+    {
+     id: '8',
+     name: 'Sales Skillz for IT People'
+    }
+  ];
+
   public chipList: NamedEntry[] = [];
 
   @ViewChild('chipsArea', { static: true, read: IgxChipsAreaComponent })
