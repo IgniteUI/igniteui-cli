@@ -1,5 +1,4 @@
-name: Node.js Deploy
-
+name: Npm.js publish
 on:
   release:
     types: [created]
