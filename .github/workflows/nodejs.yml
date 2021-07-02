@@ -2,9 +2,9 @@ name: Node.js CI
 
 on:
   push:
-    branches:  [ master, vNext, '[0-9]+.[0-9]+.x', ig-gh-actions-vNext ]
+    branches:  [ master, vNext, '[0-9]+.[0-9]+.x' ]
   pull_request:
-    branches: [ master, vNext, '[0-9]+.[0-9]+.x', ig-gh-actions-vNext ]
+    branches: [ master, vNext, '[0-9]+.[0-9]+.x' ]
 
 jobs:
   run-tests:
