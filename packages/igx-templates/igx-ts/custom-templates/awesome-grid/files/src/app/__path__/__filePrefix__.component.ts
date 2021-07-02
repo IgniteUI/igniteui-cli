@@ -20,7 +20,8 @@ import {
   AbsolutePosition,
   OverlayClosingEventArgs
   } from '<%=igxPackage%>';
-  import { athletesData } from './services/data';
+import { SparklineDisplayType } from 'igniteui-angular-charts';
+import { athletesData } from './services/data';
 
 // tslint:disable:no-use-before-declare
 
@@ -31,7 +32,7 @@ styleUrls: ['./<%=filePrefix%>.component.scss']
 })
 export class <%=ClassName%>Component implements OnInit, OnDestroy, AfterViewInit {
 
- @ViewChild('grid1', { read: IgxGridComponent, static: true })
+  @ViewChild('grid1', { read: IgxGridComponent, static: true })
   public grid1: IgxGridComponent;
 
   @ViewChild('winnerAlert', { static: true })
@@ -40,6 +41,7 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy, AfterViewInit
   @ViewChild('finishedAlert', { static: true })
   public finishedAlert: ElementRef;
 
+  public displayType = SparklineDisplayType;
   public topSpeedSummary = CustomTopSpeedSummary;
   public bnpSummary = CustomBPMSummary;
   public speedSummary = CustomSpeedSummary;
@@ -197,7 +199,9 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy, AfterViewInit
     this.windowWidth = event.target.innerWidth;
   }
 
-  public filter(term) {
+  public filter(event: Event) {
+	const target = event.target as HTMLInputElement;
+	const term = target.value;
     this.grid1.filter('CountryName', term, IgxStringFilteringOperand.instance().condition('contains'), true);
     this.grid1.markForCheck();
   }

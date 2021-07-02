@@ -12,8 +12,10 @@ import {
 })
 export class <%=ClassName%>Component implements AfterViewInit {
 
+  public needleShape = LinearGraphNeedleShape
+
   @ViewChild('linearGauge', { static: true })
-  public linearGauge: IgxLinearGaugeComponent;
+  public linearGauge!: IgxLinearGaugeComponent;
 
   public ngAfterViewInit(): void {
 

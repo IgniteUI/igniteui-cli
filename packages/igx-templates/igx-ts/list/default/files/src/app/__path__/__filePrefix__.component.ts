@@ -9,7 +9,7 @@ import { IgxFilterOptions, IgxListItemComponent } from '<%=igxPackage%>';
 })
 export class <%=ClassName%>Component implements OnInit {
   title = '<%=name%>';
-  public searchContact: string;
+  public searchContact = '';
   public contacts = [
     {
       isFavorite: false,

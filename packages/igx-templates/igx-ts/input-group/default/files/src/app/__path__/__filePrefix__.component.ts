@@ -32,11 +32,11 @@ export class <%=ClassName%>Component {
     { type: 'Thriller' , movies: ['The Usual Suspects']},
     { type: 'Western' , movies: ['Django Unchained']}];
 
-  public onDateSelection(value) {
+  public onDateSelection(value: Date) {
     this.user.dateTime.setDate((value as Date).getDate());
   }
 
-  public onTimeSelection(value) {
+  public onTimeSelection(value: string | Date) {
     this.user.dateTime.setTime((value as Date).getTime());
   }
 }

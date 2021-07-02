@@ -9,7 +9,7 @@ import { IgxGeographicMapComponent } from 'igniteui-angular-maps';
 export class <%=ClassName%>Component implements AfterViewInit {
 
   @ViewChild('map', {static: true})
-  public map: IgxGeographicMapComponent;
+  public map!: IgxGeographicMapComponent;
   constructor() {
   }
 
