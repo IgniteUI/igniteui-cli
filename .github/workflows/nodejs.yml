@@ -15,14 +15,15 @@ jobs:
         node-version: [12.x, 14.x]
     steps:
       - name: Checkout
-        uses: actions/checkout@v2 #make sure credentials are --global, so `New command` CLI tests pass
+        uses: actions/checkout@v2 #set credentials for every repository on the computer --global, so `New command` CLI tests pass
       - run: |
           git config --global user.name github-actions
           git config --global user.email github-actions@github.com
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2 # Inbuilt cache for npm and yarn packages installation
         with:
            node-version: ${{ matrix.node-version }}
+           cache: 'yarn'
       - name: Install packages
         run: yarn --frozen-lockfile
       - name: Test
