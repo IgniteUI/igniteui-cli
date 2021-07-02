@@ -1,12 +1,17 @@
 import { Tree } from "@angular-devkit/schematics";
 import { SchematicTestRunner } from "@angular-devkit/schematics/testing";
-import { ProjectConfig } from "@igniteui/cli-core";
+import { GoogleAnalytics, ProjectConfig } from "@igniteui/cli-core";
 import * as path from "path";
 import { SchematicsTemplateManager } from "../SchematicsTemplateManager";
 
 const collectionPath = path.join(__dirname, "../collection.json");
 
 describe("component",  () => {
+
+	beforeAll(() => {
+		spyOn(GoogleAnalytics, "post");
+	});
+
 	it("works", done => {
 		const runner = new SchematicTestRunner("schematics", collectionPath);
 		const mockInst = {

@@ -2,7 +2,7 @@
 ## Ignite UI CLI
 
 <!-- Badges section here. -->
-[![Build Status](https://travis-ci.org/IgniteUI/igniteui-cli.svg?branch=master)](https://travis-ci.org/IgniteUI/igniteui-cli)
+![Node.js CI](https://github.com/IgniteUI/igniteui-cli/workflows/Node.js%20CI/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/IgniteUI/igniteui-cli/badge.svg)](https://coveralls.io/github/IgniteUI/igniteui-cli)
 [![npm version](https://badge.fury.io/js/igniteui-cli.svg)](https://badge.fury.io/js/igniteui-cli)
 

@@ -66,6 +66,7 @@ describe("Schematics ng-new", () => {
 			expect(e.files.length).toEqual(1);
 			expect(e.exists(`${workingDirectory}/.gitignore`)).toBeTruthy();
 			const taskOptions = runner.tasks.map(task => task.options);
+			// tslint:disable:object-literal-sort-keys
 			const expectedInstall: NodePackageTaskOptions = {
 				command: "install",
 				quiet: true,
@@ -75,10 +76,10 @@ describe("Schematics ng-new", () => {
 			};
 			const expectedInit: RepositoryInitializerTaskOptions = {
 				workingDirectory,
-				commit: true,
-				message: `Initial commit for project: ${workingDirectory}`,
+				authorEmail: undefined,
 				authorName: undefined,
-				authorEmail: undefined
+				commit: true,
+				message: `Initial commit for project: ${workingDirectory}`
 			};
 			const expectedStart: RunSchematicTaskOptions<any> = {
 				collection: null,
@@ -134,6 +135,7 @@ describe("Schematics ng-new", () => {
 			expect(e.files.length).toEqual(1);
 			expect(e.exists(`${workingDirectory}/.gitignore`)).toBeTruthy();
 			const taskOptions = runner.tasks.map(task => task.options);
+			// tslint:disable:object-literal-sort-keys
 			const expectedInstall: NodePackageTaskOptions = {
 				command: "install",
 				quiet: true,
@@ -143,10 +145,10 @@ describe("Schematics ng-new", () => {
 			};
 			const expectedInit: RepositoryInitializerTaskOptions = {
 				workingDirectory,
-				commit: true,
-				message: `Initial commit for project: ${workingDirectory}`,
+				authorEmail: undefined,
 				authorName: undefined,
-				authorEmail: undefined
+				commit: true,
+				message: `Initial commit for project: ${workingDirectory}`
 			};
 			expect(taskOptions.length).toBe(2);
 			expect(mockProject.upgradeIgniteUIPackages).toHaveBeenCalled();

@@ -52,7 +52,6 @@ describe("New command", () => {
 		};
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith(expectedPrams);
 		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);
-
 		done();
 	});
 
@@ -150,9 +149,10 @@ describe("New command", () => {
 	});
 
 	it("Skip Git/Install with command option", async done => {
+		spyOn(Util, "gitInit");
 		const projectName = "angularProj";
 		await cli.run(["new", projectName, "--framework=angular", "--type=igx-ts", "--skip-git", "--skip-install", "--theme=default"]);
-
+		expect(Util.gitInit).not.toHaveBeenCalled();
 		expect(fs.existsSync("./" + projectName + "/.git")).not.toBeTruthy();
 		expect(PackageManager.installPackages).not.toHaveBeenCalled();
 
@@ -161,9 +161,11 @@ describe("New command", () => {
 	});
 
 	it("Creates project with single word name", async done => {
+		spyOn(Util, "gitInit");
 		const projectName = "a";
 		await cli.run(["new", projectName, "--framework=jquery"]);
 
+		expect(Util.gitInit).toHaveBeenCalled();
 		//TODO: read entire structure from ./templates and verify everything is copied over
 		expect(fs.existsSync("./a")).toBeTruthy();
 

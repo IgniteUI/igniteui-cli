@@ -226,7 +226,10 @@ export class PackageManager {
 
 			// TODO: Delete this
 			// fix for the stdin steam when using inquirer/readline
-			process.stdin.setRawMode(true);
+			// add isTTY check for CI
+			if (process.stdin.isTTY) {
+				process.stdin.setRawMode(true);
+			}
 			const cmd = /^win/.test(process.platform) ? "npm.cmd" : "npm"; //https://github.com/nodejs/node/issues/3675
 			const login = spawnSync(cmd,
 				["adduser", `--registry=${fullPackageRegistry}`, `--scope=@infragistics`, `--always-auth`],
