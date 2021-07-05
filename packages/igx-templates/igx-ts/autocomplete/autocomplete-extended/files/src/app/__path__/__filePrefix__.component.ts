@@ -20,13 +20,16 @@ export class <%=ClassName%>Component {
     this.regions = townsExtended;
   }
 
-  public getPostalCode(e: ISelectionEventArgs) {
+  public getPostalCode(e: ISelectionEventArgs): void {
 
     // Flatten the structure of the regions array
-    const allTowns = this.regions.map(region =>
-      region.towns).flat();
+    const allTowns = this.regions.map(region => region.towns).reduce((prev, curr) => curr.concat(...prev), []);
 
     const townEntry = allTowns.find(t => t.name === e.newSelection.value);
+
+    if (!townEntry) {
+        return;
+    } 
 
     this.postalCode = townEntry.postalCode;
     this.toast.open();

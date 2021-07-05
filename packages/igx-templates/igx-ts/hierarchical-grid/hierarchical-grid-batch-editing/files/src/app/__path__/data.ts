@@ -93,7 +93,6 @@ export const SINGERS: Singer[] = [
         Songs: [{
           Number: 1,
           Title: "Intro",
-          Released: null,
           Genre: "*",
           Album: "Dream Driven"
         },
@@ -114,7 +113,6 @@ export const SINGERS: Singer[] = [
         {
           Number: 4,
           Title: "Future past",
-          Released: null,
           Genre: "*",
           Album: "Dream Driven"
         },
@@ -135,14 +133,12 @@ export const SINGERS: Singer[] = [
         {
           Number: 7,
           Title: "Stay where you are",
-          Released: null,
           Genre: "*",
           Album: "Dream Driven"
         },
         {
           Number: 8,
           Title: "Imaginarium",
-          Released: null,
           Genre: "*",
           Album: "Dream Driven"
         },
@@ -156,21 +152,18 @@ export const SINGERS: Singer[] = [
         {
           Number: 10,
           Title: "Shredded into pieces",
-          Released: null,
           Genre: "*",
           Album: "Dream Driven"
         },
         {
           Number: 11,
           Title: "Capture this moment",
-          Released: null,
           Genre: "*",
           Album: "Dream Driven"
         },
         {
           Number: 12,
           Title: "Dream Driven",
-          Released: null,
           Genre: "*",
           Album: "Dream Driven"
         }]

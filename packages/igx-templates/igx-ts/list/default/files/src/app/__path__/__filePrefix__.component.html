@@ -8,7 +8,7 @@
     <igx-icon>search</igx-icon>
   </igx-prefix>
   <input #search igxInput placeholder="Search Contacts" [(ngModel)]="searchContact">
-  <igx-suffix *ngIf="search.value.length > 0" (click)="searchContact = null">
+  <igx-suffix *ngIf="search.value.length > 0" (click)="searchContact = ''">
     <igx-icon>clear</igx-icon>
   </igx-suffix>
 </igx-input-group>
