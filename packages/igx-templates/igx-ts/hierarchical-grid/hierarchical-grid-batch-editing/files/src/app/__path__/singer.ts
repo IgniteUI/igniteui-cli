@@ -2,7 +2,7 @@
 export interface Song {
   Number: number;
   Title: string;
-  Released: Date;
+  Released?: Date;
   Genre: string;
   Album: string;
 }

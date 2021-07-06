@@ -1,5 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { IgxComboComponent  } from '<%=igxPackage%>';
+import { Component, OnInit } from '@angular/core';
 import { localData  } from './local-data';
 
 @Component({

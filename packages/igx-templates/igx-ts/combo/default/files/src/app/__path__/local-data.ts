@@ -1,4 +1,4 @@
-const division = {
+const division: { [key: string]: string[] } = {
     'New England 01': ['Connecticut', 'Maine', 'Massachusetts'],
     'New England 02': ['New Hampshire', 'Rhode Island', 'Vermont'],
     'Mid-Atlantic': ['New Jersey', 'New York', 'Pennsylvania'],
