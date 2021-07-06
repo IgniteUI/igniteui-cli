@@ -10,7 +10,7 @@ import { IgxToastComponent, IgxToastPosition, ISelectionEventArgs } from '<%=igx
 export class <%=ClassName%>Component {
   public regions!: Region[];
   public townSelected!: string;
-  public postalCode!: number | 'none';
+  public postalCode?: number;
   public messagePosition = IgxToastPosition.Middle;
 
   @ViewChild(IgxToastComponent, { static: true })
@@ -23,15 +23,11 @@ export class <%=ClassName%>Component {
   public getPostalCode(e: ISelectionEventArgs): void {
 
     // Flatten the structure of the regions array
-    const allTowns = this.regions.map(region => region.towns).reduce((prev, curr) => curr.concat(...prev), []);
+    const allTowns = this.regions.map(region => region.towns).reduce((prev, curr) => prev.concat(curr), []);
 
     const townEntry = allTowns.find(t => t.name === e.newSelection.value);
 
-    if (!townEntry) {
-        return;
-    } 
-
-    this.postalCode = townEntry.postalCode;
+    this.postalCode = townEntry?.postalCode;
     this.toast.open();
   }
 }
