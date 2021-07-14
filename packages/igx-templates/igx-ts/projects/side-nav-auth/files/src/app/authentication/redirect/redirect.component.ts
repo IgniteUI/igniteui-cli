@@ -21,14 +21,14 @@ export class RedirectComponent implements OnInit {
     private user: UserService,
     private authService: AuthenticationService,
     private externalAuthService: ExternalAuthService) {
-    this.provider = route.data[routeData].provider as ExternalAuthProvider;
+    this.provider = route.snapshot.data[routeData].provider as ExternalAuthProvider;
   }
 
   async ngOnInit() {
     const userInfo: ExternalLogin = await this.externalAuthService.getUserInfo(this.provider);
     const result = await this.authService.loginWith(userInfo);
     if (!result.error) {
-        this.user.setCurrentUser(result.user);
+        this.user.setCurrentUser(result.user!);
         this.router.navigate(['/profile']);
     } else {
       alert(result.error);

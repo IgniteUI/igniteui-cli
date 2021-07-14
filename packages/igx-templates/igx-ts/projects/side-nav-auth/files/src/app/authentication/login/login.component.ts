@@ -45,7 +45,7 @@ export class LoginComponent {
   async tryLogin() {
     const response = await this.authentication.login(this.loginForm.value);
     if (!response.error) {
-      this.userService.setCurrentUser(response.user);
+      this.userService.setCurrentUser(response.user!);
       this.router.navigate(['/profile']);
       this.loginForm.reset();
       // https://github.com/angular/angular/issues/15741

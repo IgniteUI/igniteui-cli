@@ -6,7 +6,7 @@ export class GlobalErrorHandlerService implements ErrorHandler {
 
   constructor(private injector: Injector, private zone: NgZone) { }
 
-  handleError(error) {
+  handleError(error: any) {
     // handle and/or log error, for example:
     console.error(error);
 
