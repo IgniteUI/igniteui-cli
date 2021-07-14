@@ -1,3 +1,26 @@
+# [8.0.3](https://github.com/IgniteUI/igniteui-cli/compare/v8.0.2...v8.0.3)  (2021-07-14)
+
+## igniteui/cli-core@#8.0.3
+
+Note: Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@#12.0.803
+
+#### Bug Fixes
+
+* **igx-ts:** fix strict errors in base and side-nav projects ([963d23d](https://github.com/IgniteUI/igniteui-cli/commit/963d23d))
+* **igx-ts:** fix strict errors in side-nav-auth project ([695f430](https://github.com/IgniteUI/igniteui-cli/commit/695f430))
+
+
+## igniteui/angular-schematics@12.0.803
+
+Note: Version bump only for package igniteui/cli-schematics
+
+## igniteui-cli@8.0.3
+
+Note: Version bump only for package igniteui-cli
+
+
 # [8.0.2](https://github.com/IgniteUI/igniteui-cli/compare/v8.0.1...v8.0.2)  (2021-07-07)
 
 ## igniteui/cli-core@#8.0.2 (2021-07-07)
