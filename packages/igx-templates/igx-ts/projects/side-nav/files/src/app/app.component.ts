@@ -35,13 +35,13 @@ export class AppComponent implements OnInit {
 
   public ngOnInit(): void {
     this.router.events.pipe(
-      filter((x) => x instanceof NavigationStart)
+      filter((x): x is NavigationStart => x instanceof NavigationStart)
     )
-      .subscribe((event: NavigationStart) => {
-          if (event.url !== '/' && !this.navdrawer.pin) {
-              // Close drawer when selecting a view on mobile (unpinned)
-              this.navdrawer.close();
-          }
-      });
+    .subscribe((event: NavigationStart) => {
+      if (event.url !== '/' && !this.navdrawer.pin) {
+        // Close drawer when selecting a view on mobile (unpinned)
+        this.navdrawer.close();
+      }
+    });
   }
 }
