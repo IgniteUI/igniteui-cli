@@ -5,7 +5,7 @@ import { ExternalLogin } from '../models/login';
 import { ExternalAuthConfig } from '../services/external-auth-configs';
 
 export class FacebookProvider implements AuthProvider {
-    private user: ExternalLogin;
+    private user?: ExternalLogin;
 
     constructor(private externalStsConfig: ExternalAuthConfig, private router: Router) { }
 
@@ -26,7 +26,7 @@ export class FacebookProvider implements AuthProvider {
             if (response.authResponse) {
                 FB.api(
                     '/me?fields=id,email,name,first_name,last_name,picture',
-                    (newResponse) => {
+                    (newResponse: { [key: string]: any; }) => {
                         this.user = {
                             id: newResponse.id,
                             name: newResponse.name,
@@ -45,6 +45,9 @@ export class FacebookProvider implements AuthProvider {
     }
 
     public getUserInfo(): Promise<ExternalLogin> {
+        if (!this.user) {
+          throw "User not logged in";
+        }
         return Promise.resolve(this.user);
     }
 

@@ -1,8 +1,8 @@
 import { ExternalLogin } from '../models/login';
 
 export interface AuthProvider {
-  config();
-  login();
+  config(): void;
+  login(): void;
   getUserInfo(): Promise<ExternalLogin>;
-  logout();
+  logout(): void;
 }

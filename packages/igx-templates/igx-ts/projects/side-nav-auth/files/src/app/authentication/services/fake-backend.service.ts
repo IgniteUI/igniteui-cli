@@ -21,12 +21,13 @@ import { LocalStorageService } from './local-storage';
     providedIn: 'root'
 })
 export class BackendInterceptor implements HttpInterceptor {
-    users: StorageUser[];
+    users: StorageUser[] = [];
 
     constructor(private localStorage: LocalStorageService) {}
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        this.users = JSON.parse(this.localStorage.getItem('users')) || [];
+        const storedUsers = this.localStorage.getItem('users');
+        this.users = storedUsers ? JSON.parse(storedUsers) : [];
         return of(null).pipe(mergeMap(() => {
             // login user
             if (request.url.endsWith('/login') && request.method === 'POST') {
@@ -107,8 +108,8 @@ export class BackendInterceptor implements HttpInterceptor {
             id: user.id,
             name: user.name,
             email: user.email,
-            given_name: user.given_name || user.name.split(' ').shift(),
-            family_name: user.family_name || user.name.split(' ').pop(),
+            given_name: user.given_name || user.name.split(' ').shift()!,
+            family_name: user.family_name || user.name.split(' ').pop()!,
             picture: user.picture,
             externalToken: user.externalToken,
             externalProvider: user.externalProvider

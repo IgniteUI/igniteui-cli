@@ -231,7 +231,7 @@ describe('Services', () => {
     });
 
     describe(`MOCK Backend Service`, () => {
-        const provider = new BackendInterceptor();
+        const provider = new BackendInterceptor(new LocalStorageService({}));
         describe(`public`, () => {
             it(`Should properly call 'intercept'`, () => {
                 const mockRequest = {
@@ -239,7 +239,7 @@ describe('Services', () => {
                     url: '/login',
                     version: 'test'
                 } as any;
-                const mockUsers = [];
+                const mockUsers: any[] = [];
                 const mockNext = {
                     handle: () => new Observable<any>()
                 } as HttpHandler;
