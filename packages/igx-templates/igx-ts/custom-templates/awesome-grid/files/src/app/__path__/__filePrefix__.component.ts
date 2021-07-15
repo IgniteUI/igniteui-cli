@@ -21,9 +21,7 @@ import {
   OverlayClosingEventArgs
   } from '<%=igxPackage%>';
 import { SparklineDisplayType } from 'igniteui-angular-charts';
-import { athletesData } from './services/data';
-
-// tslint:disable:no-use-before-declare
+import { Athlete, athletesData } from './services/data';
 
 @Component({
 selector: 'app-<%=filePrefix%>',
@@ -33,31 +31,31 @@ styleUrls: ['./<%=filePrefix%>.component.scss']
 export class <%=ClassName%>Component implements OnInit, OnDestroy, AfterViewInit {
 
   @ViewChild('grid1', { read: IgxGridComponent, static: true })
-  public grid1: IgxGridComponent;
+  public grid1!: IgxGridComponent;
 
   @ViewChild('winnerAlert', { static: true })
-  public winnerAlert: ElementRef;
+  public winnerAlert!: ElementRef;
 
   @ViewChild('finishedAlert', { static: true })
-  public finishedAlert: ElementRef;
+  public finishedAlert!: ElementRef;
 
   public displayType = SparklineDisplayType;
   public topSpeedSummary = CustomTopSpeedSummary;
   public bnpSummary = CustomBPMSummary;
   public speedSummary = CustomSpeedSummary;
-  public localData: any[];
+  public localData: : Athlete[] = [];
   public isFinished = false;
   public hasWinner = false;
   public athleteColumnWidth = '30%';
   public showOverlay = false;
-  public overlaySettings: OverlaySettings;
+  public overlaySettings!: OverlaySettings;
   // eslint-disable-next-line @typescript-eslint/naming-convention
-  public winner = { Avatar: null, Name: null };
-  public top3 = [];
+  public winner: Athlete = { Avatar: '', Name: '' } as Athlete;
+  public top3: Athlete[] = [];
   private _live = true;
-  private _timer;
+  private _timer: any;
   private windowWidth: any;
-  private _overlayId: string;
+  private _overlayId: string = '';
 
   get live() {
     return this._live;
@@ -114,7 +112,7 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy, AfterViewInit
     clearInterval(this._timer);
   }
 
-  public isTop3(cell): boolean {
+  public isTop3(cell: IgxGridCellComponent): boolean {
     const top = this.grid1.page === 0 && cell.row.index < 4;
     return top;
   }
@@ -131,34 +129,31 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy, AfterViewInit
     }
   }
 
-  public cellSelection(evt) {
-    const cell = evt.cell;
-    this.grid1.selectRows([cell.row.rowID], true);
-  }
-
-  public getIconType(cell) {
+  public getIconType(cell: IgxGridCellComponent): string {
     switch (cell.row.rowData.Position) {
-      case 'up':
-        return 'arrow_upward';
       case 'current':
         return 'arrow_forward';
       case 'down':
         return 'arrow_downward';
+	  case 'up':
+	  default:
+        return 'arrow_upward';
     }
   }
 
-  public getBadgeType(cell) {
+  public getBadgeType(cell: IgxGridCellComponent): string {
     switch (cell.row.rowData.Position) {
-      case 'up':
-        return 'success';
       case 'current':
         return 'warning';
       case 'down':
         return 'error';
+	  case 'up':
+	  default:
+		return 'success';
     }
   }
 
-  public getSpeed(athlete: any): any {
+  public getSpeed((athlete: Athlete): void {
     athlete['Speed'] = this.addSpeedeData(athlete, 40);
   }
 
@@ -169,13 +164,12 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy, AfterViewInit
     const speed: any[] = [];
     for (let m = 0; m < minutes; m += 3) {
       const value = this.getRandomNumber(17, 20);
-      // eslint-disable-next-line @typescript-eslint/naming-convention
       speed.push({ Speed: value, Minute: m });
     }
     return speed;
   }
 
-  public addSpeedeData(athlete, minutes?: number): any[] {
+  public addSpeedeData(athlete: Athlete, minutes?: number): any[] {
     if (minutes === undefined) {
       minutes = 20;
     }
@@ -322,16 +316,16 @@ export class CustomBPMSummary {
 
 export class CustomSpeedSummary {
 
-  public operate(data?: any[]): IgxSummaryResult[] {
-    data = data.reduce((acc, val) => acc.concat(val), []).map(rec => rec.Speed);
-    const result = [];
-    result.push(
-      {
-        key: 'average',
-        label: 'average',
-        summaryResult: data.length ? IgxNumberSummaryOperand.average(data).toFixed(2) : null
-      });
-
-    return result;
+	public operate(data: Athlete[]): IgxSummaryResult[] {
+		const speedData = data.reduce((acc, val) => acc.concat(val), [] as Athlete[]).map(rec => rec.Speed);
+		const result = [];
+		result.push(
+			{
+				key: 'average',
+				label: 'average',
+				summaryResult: speedData.length ? IgxNumberSummaryOperand.average(speedData).toFixed(2) : null
+			});
+  
+		return result;
+	}
   }
-}

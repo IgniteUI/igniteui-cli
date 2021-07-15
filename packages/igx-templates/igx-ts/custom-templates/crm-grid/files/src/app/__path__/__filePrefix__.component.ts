@@ -25,7 +25,8 @@ import {
   PositionSettings,
   VerticalAlignment} from '<%=igxPackage%>';
 import { SparklineDisplayType } from 'igniteui-angular-charts';
-import { data } from './data';
+import { data, Employee } from './data';
+import { emptyDir } from 'fs-extra';
 
 function formatDate(val: Date) {
   return new Intl.DateTimeFormat('en-US').format(val);
@@ -39,22 +40,22 @@ function formatDate(val: Date) {
 export class <%=ClassName%>Component implements OnInit, AfterViewInit {
 
   @ViewChild('grid1', { read: IgxGridComponent, static: true })
-  public grid1: IgxGridComponent;
+  public grid1!: IgxGridComponent;
 
-  @ViewChild('toggleRefHiding') public toggleRefHiding: IgxToggleDirective;
-  @ViewChild('toggleRefPinning') public toggleRefPinning: IgxToggleDirective;
+  @ViewChild('toggleRefHiding') public toggleRefHiding!: IgxToggleDirective;
+  @ViewChild('toggleRefPinning') public toggleRefPinning!: IgxToggleDirective;
 
-  @ViewChild('hidingButton') public hidingButton: ElementRef;
-  @ViewChild('pinningButton') public pinningButton: ElementRef;
+  @ViewChild('hidingButton') public hidingButton!: ElementRef;
+  @ViewChild('pinningButton') public pinningButton!: ElementRef;
 
-  public localData: any[];
+  public localData: Employee[] = [];
   public dealsSummary = DealsSummary;
   public earliestSummary = EarliestSummary;
   public soonSummary = SoonSummary;
 
-  public cols: QueryList<IgxColumnComponent>;
-  public hiddenColsLength: number;
-  public pinnedColsLength: number;
+  public cols!: QueryList<IgxColumnComponent>;
+  public hiddenColsLength: number = 0;
+  public pinnedColsLength: number = 0;
 
   public searchText = '';
   public caseSensitive = false;
@@ -87,7 +88,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit {
   }
 
   public ngOnInit() {
-    const employees = data;
+    const employees: Employee[] = data;
     for (const employee of employees) {
       this.getDeals(employee);
     }
@@ -119,7 +120,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit {
     col.hidden = !col.hidden;
   }
 
-  public togglePin(col: IgxColumnComponent, evt) {
+  public togglePin(col: IgxColumnComponent, evt: any) {
     if (col.pinned) {
       this.grid1.unpinColumn(col.field);
       this.pinnedColsLength--;
@@ -137,7 +138,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit {
     return new Intl.DateTimeFormat('en-US').format(val);
   }
 
-  public searchKeyDown(ev) {
+  public searchKeyDown(ev: KeyboardEvent) {
     if (ev.key === 'Enter' || ev.key === 'ArrowDown' || ev.key === 'ArrowRight') {
       ev.preventDefault();
       this.grid1.findNext(this.searchText, this.caseSensitive);
@@ -161,8 +162,8 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit {
     return val.toLocaleString('en-us', { maximumFractionDigits: 2 });
   }
 
-  public getDeals(employee: any): any {
-    employee.Deals = this.getDealsData();
+  public getDeals(employee: Employee): any {
+    employee.deals = this.getDealsData();
   }
 
   public getDealsData(months?: number): any[] {
