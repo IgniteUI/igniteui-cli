@@ -118,17 +118,19 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
   public selectFirstGroupAndFillChart() {
     this.properties = ['Price', 'Country'];
     this.setChartConfig('Countries', 'Prices (USD)', 'Data Chart with prices by Category and Country');
-    // tslint:disable-next-line: max-line-length
-    const recordsToBeSelected = this.grid1.selectionService.getRowIDs(this.grid1.groupsRecords[0].groups[0].groups[0].records);
-    recordsToBeSelected.forEach(item => {
-      this.grid1.selectionService.selectRowById(item, false, true);
-    });
+
+	if (this.grid1.groupsRecords[0].groups && this.grid1.groupsRecords[0]?.groups[0]?.groups) {
+        const recordsToBeSelected = this.grid1.selectionService.getRowIDs(this.grid1.groupsRecords[0].groups[0].groups[0].records);
+        recordsToBeSelected.forEach(item => {
+          this.grid1.selectionService.selectRowById(item, false, true);
+        });
+      }
   }
+
   public setChartConfig(xAsis: string, yAxis: string, title: string) {
     // update label interval and angle based on data
     this.setLabelIntervalAndAngle();
 
-    // this.chart1.yAxisFormatLabel = this.formatYAxisLabel;
     this.chart1.xAxisTitle = xAsis;
     this.chart1.yAxisTitle = yAxis;
     this.chart1.chartTitle = title;
@@ -344,10 +346,6 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
       this.chart1.xAxisInterval = 10;
     }
     this.chart1.yAxisAbbreviateLargeNumbers = true;
-  }
-
-  public formatYAxisLabel(item: any): string {
-    return item + 'test test';
   }
 
   public gridKeydown(evt: any) {
