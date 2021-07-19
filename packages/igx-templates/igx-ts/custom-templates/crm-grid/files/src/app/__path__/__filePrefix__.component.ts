@@ -26,7 +26,6 @@ import {
   VerticalAlignment} from '<%=igxPackage%>';
 import { SparklineDisplayType } from 'igniteui-angular-charts';
 import { data, Employee } from './data';
-import { emptyDir } from 'fs-extra';
 
 function formatDate(val: Date) {
   return new Intl.DateTimeFormat('en-US').format(val);
