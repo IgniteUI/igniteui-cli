@@ -1,3 +1,8 @@
+export interface SpeedDescriptor {
+	Speed: number;
+	Minute: number;
+  }
+
 export interface Athlete {
 	Id: number;
 	Avatar: string;
@@ -11,11 +16,11 @@ export interface Athlete {
 	CountryFlag: string;
 	CountryName: string;
 	LastPosition?: number;
-	Speed?: { Speed: number, Minute: number }[];
+	Speed?: SpeedDescriptor;
 }
 
 /* tslint:disable */
-export const athletesData = [{
+export const AthletesData = [{
   "Id": 84,
   "Avatar": "https://randomuser.me/api/portraits/men/12.jpg",
   "Position": "current",
