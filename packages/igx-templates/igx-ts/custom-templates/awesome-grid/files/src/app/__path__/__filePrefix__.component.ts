@@ -169,7 +169,7 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy, AfterViewInit
 	  return speed;
 	}
   
-	public addSpeedeData(athlete: Athlete, minutes?: number): any[] {
+	public addSpeedData(athlete: Athlete, minutes?: number): any[] {
 	  if (minutes === undefined) {
 		minutes = 20;
 	  }
