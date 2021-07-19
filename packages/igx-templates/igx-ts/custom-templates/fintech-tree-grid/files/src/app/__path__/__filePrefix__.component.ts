@@ -5,7 +5,7 @@ import {
 import {
   AbsoluteScrollStrategy,
   ConnectedPositioningStrategy,
-	GridSelectionMode,
+    GridSelectionMode,
   HorizontalAlignment,
   IgxButtonGroupComponent,
   IgxSliderComponent,

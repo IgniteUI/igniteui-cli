@@ -1,22 +1,22 @@
 export interface SpeedDescriptor {
-	Speed: number;
-	Minute: number;
+    Speed: number;
+    Minute: number;
   }
 
 export interface Athlete {
-	Id: number;
-	Avatar: string;
-	Position: string;
-	Name: string;
-	AthleteNumber: number;
-	BeatsPerMinute: number;
-	TopSpeed: number;
-	Registered: string;
-	TrackProgress: number;
-	CountryFlag: string;
-	CountryName: string;
-	LastPosition?: number;
-	Speed?: SpeedDescriptor;
+    Id: number;
+    Avatar: string;
+    Position: string;
+    Name: string;
+    AthleteNumber: number;
+    BeatsPerMinute: number;
+    TopSpeed: number;
+    Registered: string;
+    TrackProgress: number;
+    CountryFlag: string;
+    CountryName: string;
+    LastPosition?: number;
+    Speed?: SpeedDescriptor;
 }
 
 /* tslint:disable */

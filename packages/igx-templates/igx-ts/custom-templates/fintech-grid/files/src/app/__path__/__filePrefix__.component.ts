@@ -119,7 +119,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
     this.properties = ['Price', 'Country'];
     this.setChartConfig('Countries', 'Prices (USD)', 'Data Chart with prices by Category and Country');
 
-	if (this.grid1.groupsRecords[0].groups && this.grid1.groupsRecords[0]?.groups[0]?.groups) {
+    if (this.grid1.groupsRecords[0].groups && this.grid1.groupsRecords[0]?.groups[0]?.groups) {
         const recordsToBeSelected = this.grid1.selectionService.getRowIDs(this.grid1.groupsRecords[0].groups[0].groups[0].records);
         recordsToBeSelected.forEach(item => {
           this.grid1.selectionService.selectRowById(item, false, true);
@@ -216,11 +216,11 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
     this.grid1.clearCellSelection();
     this.chartData = [];
     args.newSelection.forEach(row => {
-		if (this.grid1.data) {
-			this.chartData.push(this.grid1.data[row]);
-			this.chart1.notifyInsertItem(this.chartData, this.chartData.length - 1,
-			  this.grid1.data[row]);
-		}
+        if (this.grid1.data) {
+            this.chartData.push(this.grid1.data[row]);
+            this.chart1.notifyInsertItem(this.chartData, this.chartData.length - 1,
+              this.grid1.data[row]);
+        }
     });
     this.setLabelIntervalAndAngle();
     this.setChartConfig('Countries', 'Prices (USD)', 'Data Chart with prices by Category and Country');
