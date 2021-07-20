@@ -25,11 +25,7 @@ import {
   PositionSettings,
   VerticalAlignment} from '<%=igxPackage%>';
 import { SparklineDisplayType } from 'igniteui-angular-charts';
-import { data, Employee } from './data';
-
-function formatDate(val: Date) {
-  return new Intl.DateTimeFormat('en-US').format(val);
-}
+import { data, DealsDescriptor, Employee } from './data';
 
 @Component({
   selector: 'app-<%=filePrefix%>',
@@ -78,7 +74,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit {
     private csvExporter: IgxCsvExporterService,
     private excelExporter: IgxExcelExporterService) {
 
-    const exporterCb = (args: IColumnExportingEventArgs) => {
+    const exporterCb = (args: IColumnExportingEventArgs): void => {
       if (args.field === 'Deals') { args.cancel = true; }
     };
 
@@ -86,7 +82,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit {
     this.csvExporter.columnExporting.subscribe(exporterCb);
   }
 
-  public ngOnInit() {
+  public ngOnInit(): void {
     const employees: Employee[] = data;
     for (const employee of employees) {
       this.getDeals(employee);
@@ -94,23 +90,23 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit {
     this.localData = employees;
   }
 
-  public toggleHiding() {
+  public toggleHiding(): void {
     this.overlaySettings.target = this.hidingButton.nativeElement;
     this.toggleRefHiding.toggle(this.overlaySettings);
   }
 
-  public togglePinning() {
+  public togglePinning(): void {
     this.overlaySettings.target = this.pinningButton.nativeElement;
     this.toggleRefPinning.toggle(this.overlaySettings);
   }
 
-  public ngAfterViewInit() {
+  public ngAfterViewInit(): void {
     this.cols = this.grid1.columnList;
     this.hiddenColsLength = this.cols.filter((col) => col.hidden).length;
     this.pinnedColsLength = this.cols.filter((col) => col.pinned).length;
   }
 
-  public toggleVisibility(col: IgxColumnComponent) {
+  public toggleVisibility(col: IgxColumnComponent): void {
     if (col.hidden) {
       this.hiddenColsLength--;
     } else {
@@ -119,7 +115,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit {
     col.hidden = !col.hidden;
   }
 
-  public togglePin(col: IgxColumnComponent, evt: any) {
+  public togglePin(col: IgxColumnComponent, evt: any): void {
     if (col.pinned) {
       this.grid1.unpinColumn(col.field);
       this.pinnedColsLength--;
@@ -132,12 +128,12 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit {
       }
     }
   }
-
+  
   public formatDate(val: Date) {
     return new Intl.DateTimeFormat('en-US').format(val);
   }
 
-  public searchKeyDown(ev: KeyboardEvent) {
+  public searchKeyDown(ev: KeyboardEvent): void {
     if (ev.key === 'Enter' || ev.key === 'ArrowDown' || ev.key === 'ArrowRight') {
       ev.preventDefault();
       this.grid1.findNext(this.searchText, this.caseSensitive);
@@ -147,12 +143,12 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit {
     }
   }
 
-  public updateSearch() {
+  public updateSearch(): void {
     this.caseSensitive = !this.caseSensitive;
     this.grid1.findNext(this.searchText, this.caseSensitive);
   }
 
-  public clearSearch() {
+  public clearSearch(): void {
     this.searchText = '';
     this.grid1.clearSearch();
   }
@@ -161,15 +157,15 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit {
     return val.toLocaleString('en-us', { maximumFractionDigits: 2 });
   }
 
-  public getDeals(employee: Employee): any {
+  public getDeals(employee: Employee): void {
     employee.deals = this.getDealsData();
   }
 
-  public getDealsData(months?: number): any[] {
+  public getDealsData(months?: number): DealsDescriptor[] {
     if (months === undefined) {
       months = 12;
     }
-    const deals: any[] = [];
+    const deals: DealsDescriptor[] = [];
     for (let m = 0; m < months; m++) {
       const value = this.getRandomNumber(-20, 30);
       deals.push({ Deals: value, Month: m });
@@ -200,6 +196,10 @@ class DealsSummary extends IgxNumberSummaryOperand {
     });
     return result;
   }
+}
+
+function formatDate(val: Date) {
+    return new Intl.DateTimeFormat('en-US').format(val);
 }
 
 class EarliestSummary extends IgxDateSummaryOperand {

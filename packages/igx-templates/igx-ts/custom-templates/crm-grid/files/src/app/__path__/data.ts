@@ -1,3 +1,8 @@
+export interface DealsDescriptor {
+    Deals: number;
+    Month: number
+}
+
 export interface Employee {
     id: number;
     avatar: string;
@@ -18,7 +23,7 @@ export interface Employee {
     birthday: Date;
     last_activity: Date;
     next_activity: Date;
-    deals?: { Deals: number, Month: number }[];
+    deals?: DealsDescriptor[];
     deals_won: number;
     deals_lost: number;
     deals_pending: number;
