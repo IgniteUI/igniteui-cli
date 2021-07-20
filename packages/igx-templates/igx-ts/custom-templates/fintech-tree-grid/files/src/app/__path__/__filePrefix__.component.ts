@@ -122,7 +122,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
     this.grid1.reflow();
   }
   public onButtonAction(evt: any): void {
-    switch (event.index) {
+    switch (evt.index) {
       case 0: {
           this.disableOtherButtons(evt.index, true);
           this.timer = setInterval(() => this.ticker(this.data), this.frequency);
