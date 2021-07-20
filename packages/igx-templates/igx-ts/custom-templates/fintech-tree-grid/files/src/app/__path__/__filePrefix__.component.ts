@@ -5,8 +5,10 @@ import {
 import {
   AbsoluteScrollStrategy,
   ConnectedPositioningStrategy,
-    GridSelectionMode,
+  GridSelectionMode,
   HorizontalAlignment,
+  IButtonGroupEventArgs,
+  IChangeSwitchEventArgs,
   IgxButtonGroupComponent,
   IgxSliderComponent,
   IgxTreeGridComponent,
@@ -121,7 +123,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
   public ngAfterViewInit(): void {
     this.grid1.reflow();
   }
-  public onButtonAction(evt: any): void {
+  public onButtonAction(evt: IButtonGroupEventArgs): void {
     switch (evt.index) {
       case 0: {
           this.disableOtherButtons(evt.index, true);
@@ -154,7 +156,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
     }
   }
 
-  public formatNumber(value: number) {
+  public formatNumber(value: number): string {
     return value ? value.toFixed(2) : '';
   }
 
@@ -170,7 +172,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
    * the below code is needed when accessing the sample through the navigation
    * it will style all the space below the sample component element, but not the navigation menu
    */
-  public onThemeChanged(evt: any): void {
+  public onThemeChanged(evt: IChangeSwitchEventArgs): void {
     const parentEl = this.parentComponentEl();
     if (evt.checked && parentEl.classList.contains('main')) {
       parentEl.classList.add('fin-dark-theme');

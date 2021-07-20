@@ -10,7 +10,9 @@ import {
   IgxSliderComponent,
   SortingDirection,
   IGridKeydownEventArgs,
-  IRowSelectionEventArgs
+  IRowSelectionEventArgs,
+  IButtonGroupEventArgs,
+  IChangeSwitchEventArgs
 } from '<%=igxPackage%>';
 import { CategoryChartType, IgxCategoryChartComponent } from 'igniteui-angular-charts';
 import { timer } from 'rxjs';
@@ -136,7 +138,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
     this.chart1.chartTitle = title;
   }
 
-  public onButtonAction(evt: any): void {
+  public onButtonAction(evt: IButtonGroupEventArgs): void {
     switch (evt.index) {
       case 0: {
         this.disableOtherButtons(evt.index, true);
@@ -178,7 +180,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
     }
   }
 
-  public closeDialog(evt: any): void {
+  public closeDialog(evt: KeyboardEvent): void {
     if (this.dialog.isOpen &&
       evt.shiftKey === true && evt.ctrlKey === true && evt.key.toLowerCase() === 'd') {
       evt.preventDefault();
@@ -186,7 +188,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
     }
   }
 
-  public onChange(event: any): void {
+  public onChange(event: IChangeSwitchEventArgs): void {
     if (this.grid1.groupingExpressions.length > 0) {
       this.grid1.groupingExpressions = [];
     } else {
@@ -267,7 +269,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
    * the below code is needed when accessing the sample through the navigation
    * it will style all the space below the sample component element, but not the navigation menu
    */
-  public onThemeChanged(event: any): void {
+  public onThemeChanged(event: IChangeSwitchEventArgs): void {
     const parentEl = this.parentComponentEl();
     if (event.checked && parentEl.classList.contains('main')) {
       parentEl.classList.add('fin-dark-theme');
@@ -348,7 +350,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
     this.chart1.yAxisAbbreviateLargeNumbers = true;
   }
 
-  public gridKeydown(evt: any): void {
+  public gridKeydown(evt: KeyboardEvent): void {
     if (this.grid1.selectedRows.length > 0 &&
       evt.shiftKey === true && evt.ctrlKey === true && evt.key.toLowerCase() === 'd') {
       evt.preventDefault();

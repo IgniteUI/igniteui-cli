@@ -25,7 +25,7 @@ import {
   PositionSettings,
   VerticalAlignment} from '<%=igxPackage%>';
 import { SparklineDisplayType } from 'igniteui-angular-charts';
-import { data, DealsDescriptor, Employee } from './data';
+import { DATA, DealsDescriptor, Employee } from './data';
 
 @Component({
   selector: 'app-<%=filePrefix%>',
@@ -83,7 +83,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit {
   }
 
   public ngOnInit(): void {
-    const employees: Employee[] = data;
+    const employees: Employee[] = DATA;
     for (const employee of employees) {
       this.getDeals(employee);
     }
@@ -129,7 +129,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit {
     }
   }
   
-  public formatDate(val: Date) {
+  public formatDate(val: Date): string {
     return new Intl.DateTimeFormat('en-US').format(val);
   }
 
@@ -183,7 +183,7 @@ class DealsSummary extends IgxNumberSummaryOperand {
     super();
   }
 
-  public operate(summaries?: any[]): IgxSummaryResult[] {
+  public operate(summaries?: number[]): IgxSummaryResult[] {
     const result = super.operate(summaries).filter((obj) => {
       if (obj.key === 'average' || obj.key === 'sum') {
         const summaryResult = obj.summaryResult;
@@ -207,7 +207,7 @@ class EarliestSummary extends IgxDateSummaryOperand {
     super();
   }
 
-  public operate(summaries?: any[]): IgxSummaryResult[] {
+  public operate(summaries?: Date[]): IgxSummaryResult[] {
     const result = super.operate(summaries).filter((obj) => {
       if (obj.key === 'earliest') {
         obj.summaryResult = formatDate(obj.summaryResult);
@@ -223,7 +223,7 @@ class SoonSummary extends IgxDateSummaryOperand {
     super();
   }
 
-  public operate(summaries?: any[]): IgxSummaryResult[] {
+  public operate(summaries?: Date[]): IgxSummaryResult[] {
     const result = super.operate(summaries).filter((obj) => {
       if (obj.key === 'latest') {
         obj.label = 'Soon';
