@@ -1,19 +1,20 @@
-import { take } from 'rxjs/operators';
 import {
+    AuthWellKnownEndpoints,
     OidcConfigService,
     OidcSecurityService,
-    AuthWellKnownEndpoints,
     OpenIDImplicitFlowConfiguration
 } from 'angular-auth-oidc-client';
-import { AuthProvider } from './auth-provider';
+import { take } from 'rxjs/operators';
 import { ExternalLogin } from '../models/login';
 import { ExternalAuthConfig } from '../services/external-auth-configs';
+import { AuthProvider } from './auth-provider';
 
 /** Base provider for OpenID Connect (OIDC) https://openid.net/connect/ */
 export abstract class BaseOidcProvider implements AuthProvider {
-    constructor(protected oidcConfigService: OidcConfigService,
-                protected oidcSecurityService: OidcSecurityService,
-                protected externalStsConfig: ExternalAuthConfig) {}
+    constructor(
+        protected oidcConfigService: OidcConfigService,
+        protected oidcSecurityService: OidcSecurityService,
+        protected externalStsConfig: ExternalAuthConfig) { }
 
     public config() {
         const openIDImplicitFlowConfiguration = new OpenIDImplicitFlowConfiguration();

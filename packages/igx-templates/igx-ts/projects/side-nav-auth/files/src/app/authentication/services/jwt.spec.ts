@@ -1,7 +1,7 @@
-import { JwtInterceptor } from './jwt.interceptor';
-import { decodeBase64Url, parseUser, decodeJWT } from './jwt-util';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
+import { decodeBase64Url, decodeJWT, parseUser } from './jwt-util';
+import { JwtInterceptor } from './jwt.interceptor';
 
 describe('JWT Tests', () => {
     describe(`JWT Interceptor`, () => {
@@ -69,8 +69,8 @@ describe('JWT Tests', () => {
 
         it(`Should properly handle 'parseUser'`, () => {
             expect(() => parseUser('asdad')).toThrow(`The JWT token provided was not valid:\nasdad`);
-            spyOn(JSON, 'parse').and.returnValue({ payload: 'Mock payload'});
-            expect(parseUser('123.123')).toEqual({ payload: 'Mock payload', token: '123.123'} as any);
+            spyOn(JSON, 'parse').and.returnValue({ payload: 'Mock payload' });
+            expect(parseUser('123.123')).toEqual({ payload: 'Mock payload', token: '123.123' } as any);
         });
     });
 });

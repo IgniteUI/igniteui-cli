@@ -1,14 +1,14 @@
+import { Location } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { OidcSecurityService, OidcConfigService } from 'angular-auth-oidc-client';
+import { OidcConfigService, OidcSecurityService } from 'angular-auth-oidc-client';
 
-import { AuthProvider } from '../providers/auth-provider';
-import { GoogleProvider } from '../providers/google-provider';
-import { FacebookProvider } from '../providers/facebook-provider';
-import { MicrosoftProvider } from '../providers/microsoft-provider';
-import { Location } from '@angular/common';
 import { ExternalLogin } from '../models/login';
-import { ExternalAuthProvider, ExternalAuthConfig } from './external-auth-configs';
+import { AuthProvider } from '../providers/auth-provider';
+import { FacebookProvider } from '../providers/facebook-provider';
+import { GoogleProvider } from '../providers/google-provider';
+import { MicrosoftProvider } from '../providers/microsoft-provider';
+import { ExternalAuthConfig, ExternalAuthProvider } from './external-auth-configs';
 import { LocalStorageService } from './local-storage';
 
 export enum ExternalAuthRedirectUrl {
@@ -124,6 +124,6 @@ export class ExternalAuthService {
 
   /** Returns an absolute URL like <app root URL>/path */
   protected getAbsoluteUrl(path: string) {
-    return window.location.origin	+ this.location.prepareExternalUrl(path);
+    return window.location.origin + this.location.prepareExternalUrl(path);
   }
 }

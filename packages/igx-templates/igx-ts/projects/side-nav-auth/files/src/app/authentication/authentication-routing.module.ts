@@ -1,5 +1,5 @@
-import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AuthGuard } from './auth.guard';
 import { ProfileComponent } from './profile/profile.component';
@@ -22,4 +22,4 @@ const authRoutes: Routes = [
       RouterModule
     ]
   })
-export class AuthenticationRoutingModule {}
+export class AuthenticationRoutingModule { }

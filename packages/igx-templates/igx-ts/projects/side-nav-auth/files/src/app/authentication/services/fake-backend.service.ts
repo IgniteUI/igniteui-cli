@@ -1,18 +1,18 @@
-import { Injectable } from '@angular/core';
-import { Observable, of, throwError } from 'rxjs';
-import { mergeMap, materialize, dematerialize } from 'rxjs/operators';
 import {
     HttpEvent,
     HttpHandler,
+    HttpInterceptor,
     HttpRequest,
     HttpResponse,
-    HttpInterceptor,
     HTTP_INTERCEPTORS
 } from '@angular/common/http';
-
+import { Injectable } from '@angular/core';
+import { Observable, of, throwError } from 'rxjs';
+import { dematerialize, materialize, mergeMap } from 'rxjs/operators';
 import msKeys from './microsoft-keys';
-import { Register } from '../models/register';
+
 import { ExternalLogin } from '../models/login';
+import { Register } from '../models/register';
 import { UserJWT } from '../models/user';
 import { encodeBase64Url } from './jwt-util';
 import { LocalStorageService } from './local-storage';
@@ -23,7 +23,7 @@ import { LocalStorageService } from './local-storage';
 export class BackendInterceptor implements HttpInterceptor {
     users: StorageUser[] = [];
 
-    constructor(private localStorage: LocalStorageService) {}
+    constructor(private localStorage: LocalStorageService) { }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const storedUsers = this.localStorage.getItem('users');

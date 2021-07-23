@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
+import { ExternalLogin } from '../models/login';
 import { AuthenticationService } from '../services/authentication.service';
 import { ExternalAuthProvider } from '../services/external-auth-configs';
-import { ExternalLogin } from '../models/login';
 import { ExternalAuthService } from '../services/external-auth.service';
+import { UserService } from '../services/user.service';
 
 const routeData = 'value';
 

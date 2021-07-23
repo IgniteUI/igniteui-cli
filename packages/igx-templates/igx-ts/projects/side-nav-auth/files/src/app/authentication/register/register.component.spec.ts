@@ -1,14 +1,14 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
-
-import { IgxInputGroupModule, IgxButtonModule, IgxRippleModule, IgxIconModule } from 'igniteui-angular';
-
-import { RegisterComponent } from './register.component';
-import { AuthenticationService } from '../services/authentication.service';
-import { UserService } from '../services/user.service';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
+
+import { IgxButtonModule, IgxIconModule, IgxInputGroupModule, IgxRippleModule } from 'igniteui-angular';
+
+import { AuthenticationService } from '../services/authentication.service';
+import { UserService } from '../services/user.service';
+import { RegisterComponent } from './register.component';
 
 const MAIL_GROUP_NAME = 'email';
 const PASSWORD_GROUP_NAME = 'password';
@@ -24,9 +24,16 @@ describe('RegisterComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [ ReactiveFormsModule, NoopAnimationsModule, RouterTestingModule,
-        IgxInputGroupModule, IgxButtonModule, IgxIconModule, IgxRippleModule ],
-      declarations: [ RegisterComponent ],
+      imports: [
+        NoopAnimationsModule,
+        ReactiveFormsModule,
+        RouterTestingModule,
+        IgxButtonModule,
+        IgxIconModule,
+        IgxInputGroupModule,
+        IgxRippleModule
+      ],
+      declarations: [RegisterComponent],
       providers: [
         { provide: AuthenticationService, useValue: authSpy },
         { provide: UserService, useValue: userServSpy },
@@ -46,7 +53,7 @@ describe('RegisterComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should submit login data',  async () => {
+  it('should submit login data', async () => {
     expect(component.registrationForm.valid).toBeFalsy();
     component.registrationForm.controls[USERNAME_GROUP_NAME].setValue('John');
     expect(component.registrationForm.valid).toBeFalsy();
@@ -68,7 +75,7 @@ describe('RegisterComponent', () => {
       email: 'test@example.com',
       password: '123456'
     });
-    expect(userServSpy.setCurrentUser).toHaveBeenCalledWith({name: 'John Doe'});
+    expect(userServSpy.setCurrentUser).toHaveBeenCalledWith({ name: 'John Doe' });
     expect(component.registered.emit).toHaveBeenCalled();
     expect(routerSpy.navigate).toHaveBeenCalledWith(['/profile']);
     authSpy.register.and.returnValue(Promise.resolve({

@@ -2,24 +2,29 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AuthModule, OidcConfigService, } from 'angular-auth-oidc-client';
+
+import {
+  IgxAvatarModule,
+  IgxButtonModule,
+  IgxDialogModule,
+  IgxDropDownModule,
+  IgxIconModule,
+  IgxInputGroupModule,
+  IgxRippleModule,
+  IgxToggleModule
+} from 'igniteui-angular';
 
 import { AuthGuard } from './auth.guard';
-import { LoginComponent } from './login/login.component';
-import { JwtInterceptor } from './services/jwt.interceptor';
-import { BackendProvider } from './services/fake-backend.service';
-import { LoginBarComponent } from './login-bar/login-bar.component';
-import { ProfileComponent } from './profile/profile.component';
-import { RegisterComponent } from './register/register.component';
-import { RedirectComponent } from './redirect/redirect.component';
-import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 import { AuthenticationRoutingModule } from './authentication-routing.module';
-
-import { AuthModule, OidcConfigService, } from 'angular-auth-oidc-client';
-import {
-  IgxDialogModule, IgxIconModule,
-  IgxInputGroupModule, IgxButtonModule,
-  IgxAvatarModule, IgxToggleModule, IgxDropDownModule, IgxRippleModule
-} from 'igniteui-angular';
+import { LoginBarComponent } from './login-bar/login-bar.component';
+import { LoginDialogComponent } from './login-dialog/login-dialog.component';
+import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
+import { RedirectComponent } from './redirect/redirect.component';
+import { RegisterComponent } from './register/register.component';
+import { BackendProvider } from './services/fake-backend.service';
+import { JwtInterceptor } from './services/jwt.interceptor';
 
 @NgModule({
   imports: [
@@ -28,22 +33,22 @@ import {
     ReactiveFormsModule,
     AuthModule.forRoot(),
     AuthenticationRoutingModule,
-    IgxToggleModule,
-    IgxRippleModule,
-    IgxDialogModule,
-    IgxInputGroupModule,
-    IgxIconModule,
     IgxAvatarModule,
     IgxButtonModule,
-    IgxDropDownModule
+    IgxDialogModule,
+    IgxDropDownModule,
+    IgxIconModule,
+    IgxInputGroupModule,
+    IgxRippleModule,
+    IgxToggleModule
   ],
   declarations: [
     LoginBarComponent,
     LoginComponent,
-    RedirectComponent,
-    RegisterComponent,
     LoginDialogComponent,
-    ProfileComponent
+    ProfileComponent,
+    RedirectComponent,
+    RegisterComponent
   ],
   providers: [
     AuthGuard,

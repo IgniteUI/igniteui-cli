@@ -1,11 +1,11 @@
 import { AuthGuard } from './auth.guard';
 
-describe('AuthGuard', () =>  {
+describe('AuthGuard', () => {
     let mockRouter: any;
     let mockUserService: any;
     beforeEach(() => {
         mockRouter = {
-            navigate: () => {}
+            navigate: () => { }
         };
         mockUserService = {
             currentUser: true
@@ -27,7 +27,7 @@ describe('AuthGuard', () =>  {
         const mockSpy = jasmine.createSpy('mockSpy');
         mockUserService.currentUser = false;
         spyOn(mockRouter, 'navigate');
-        expect(authGuard.canActivate(mockSpy as any, { url: 'test'} as any)).toEqual(false);
+        expect(authGuard.canActivate(mockSpy as any, { url: 'test' } as any)).toEqual(false);
         expect(mockRouter.navigate).toHaveBeenCalled();
         expect(mockRouter.navigate).toHaveBeenCalledWith([''], { queryParams: { returnUrl: 'test' } });
     });

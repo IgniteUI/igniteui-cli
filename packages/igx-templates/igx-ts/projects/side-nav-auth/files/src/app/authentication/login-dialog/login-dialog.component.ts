@@ -1,5 +1,5 @@
-import { IgxDialogComponent } from 'igniteui-angular';
 import { Component, ViewChild } from '@angular/core';
+import { IgxDialogComponent } from 'igniteui-angular';
 
 @Component({
   selector: 'app-login-dialog',

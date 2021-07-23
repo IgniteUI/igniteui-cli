@@ -1,18 +1,18 @@
+import { HttpHandler, HttpResponse } from '@angular/common/http';
 import { PLATFORM_ID } from '@angular/core';
-import { AuthenticationService } from './authentication.service';
-import * as JWTUtil from './jwt-util';
-import { ExternalAuthService, ExternalAuthRedirectUrl } from './external-auth.service';
-import { ExternalAuthProvider } from './external-auth-configs';
-import { GoogleProvider } from '../providers/google-provider';
-import { FacebookProvider } from '../providers/facebook-provider';
-import { MicrosoftProvider } from '../providers/microsoft-provider';
-import { BackendInterceptor } from './fake-backend.service';
-import { HttpResponse, HttpHandler } from '@angular/common/http';
-import { take } from 'rxjs/operators';
-import msKeys from './microsoft-keys';
 import { Observable } from 'rxjs';
-import { UserService } from './user.service';
+import { take } from 'rxjs/operators';
+import { FacebookProvider } from '../providers/facebook-provider';
+import { GoogleProvider } from '../providers/google-provider';
+import { MicrosoftProvider } from '../providers/microsoft-provider';
+import { AuthenticationService } from './authentication.service';
+import { ExternalAuthProvider } from './external-auth-configs';
+import { ExternalAuthRedirectUrl, ExternalAuthService } from './external-auth.service';
+import { BackendInterceptor } from './fake-backend.service';
+import * as JWTUtil from './jwt-util';
 import { LocalStorageService } from './local-storage';
+import msKeys from './microsoft-keys';
+import { UserService } from './user.service';
 
 describe('Services', () => {
 

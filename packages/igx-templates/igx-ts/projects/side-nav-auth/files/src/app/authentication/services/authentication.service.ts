@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { User, LoginResult } from '../models/user';
-import { Login, ExternalLogin } from '../models/login';
+import { ExternalLogin, Login } from '../models/login';
 import { Register } from '../models/register';
+import { LoginResult, User } from '../models/user';
 import { parseUser } from './jwt-util';
 
 /** Authentication API Service */
@@ -12,7 +12,7 @@ import { parseUser } from './jwt-util';
 })
 export class AuthenticationService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   /** Send basic credentials to login endpoint. */
   public async login(userData: Login): Promise<LoginResult> {
