@@ -55,6 +55,9 @@
     "cache": false,
     "all": true
   },
+  "dependencies": {
+    "handlebars": "4.7.7"
+  },
   "devDependencies": {
     "@types/fs-extra": "^3.0.3",
     "@types/inquirer": "0.0.35",
@@ -65,7 +68,7 @@
     "fs-extra": "^3.0.1",
     "glob": "^7.1.2",
     "inquirer": "^6.4.1",
-    "jasmine": "^3.3.1",
+    "jasmine": "3.5.0",
     "jasmine-spec-reporter": "^4.2.1",
     "lerna": "^3.16.4",
     "lerna-changelog": "^0.8.2",
@@ -80,8 +83,5 @@
   },
   "workspaces": [
     "packages/*"
-  ],
-  "dependencies": {
-    "handlebars": "4.7.7"
-  }
+  ]
 }
