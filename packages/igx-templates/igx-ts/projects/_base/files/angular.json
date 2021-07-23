@@ -32,7 +32,9 @@
             "styles": [
               "src/styles.scss"<%=DefaultTheme%>
             ],
-            "scripts": ["./node_modules/hammerjs/hammer.min.js"]
+            "scripts": [
+        "./node_modules/hammerjs/hammer.min.js"
+      ]
           },
           "configurations": {
             "es5": {
@@ -100,15 +102,29 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": ["./node_modules/hammerjs/hammer.min.js"],
+            "scripts": [
+        "./node_modules/hammerjs/hammer.min.js"
+      ],
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ]
           }
-        }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
+    }
       }
     }
   },
-  "defaultProject": "<%=dashName%>"
+  "defaultProject": "<%=dashName%>",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }
