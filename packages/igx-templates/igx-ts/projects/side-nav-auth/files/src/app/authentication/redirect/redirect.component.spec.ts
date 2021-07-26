@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { AuthenticationService } from '../services/authentication.service';
@@ -9,6 +9,7 @@ import { RedirectComponent } from './redirect.component';
 
 describe('RedirectComponent', () => {
   let fixture: ComponentFixture<RedirectComponent>;
+  const activeRouteSpy: any = { snapshot: { data: { value: { provider: {} } } } };
   const extAuthSpy = jasmine.createSpyObj('ExternalAuthService', ['getUserInfo']);
   const authSpy = jasmine.createSpyObj('AuthenticationService', ['loginWith']);
   const userServSpy = jasmine.createSpyObj('UserService', ['setCurrentUser']);
@@ -18,12 +19,13 @@ describe('RedirectComponent', () => {
       imports: [RouterTestingModule],
       declarations: [RedirectComponent],
       providers: [
+        { provide: ActivatedRoute, useValue: activeRouteSpy },
         { provide: ExternalAuthService, useValue: extAuthSpy },
         { provide: AuthenticationService, useValue: authSpy },
         { provide: UserService, useValue: userServSpy }
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   it('should try external login on init', async () => {

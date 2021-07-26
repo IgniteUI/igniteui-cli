@@ -1,5 +1,5 @@
 import { Component, DebugElement, EventEmitter, Output } from '@angular/core';
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -20,11 +20,10 @@ describe('LoginDialogComponent', () => {
   let component: LoginDialogComponent;
   let fixture: ComponentFixture<LoginDialogComponent>;
 
-  const checkViews = (login, register) => {
+  const checkViews = (): { loginView: DebugElement, registerView: DebugElement} => {
     const loginView = fixture.debugElement.query(By.css('app-login'));
     const registerView = fixture.debugElement.query(By.css('app-register'));
-    expect(loginView).toEqual(login);
-    expect(registerView).toEqual(register);
+    return { loginView, registerView};
   };
 
   beforeEach(waitForAsync(() => {
@@ -32,7 +31,7 @@ describe('LoginDialogComponent', () => {
       declarations: [LoginDialogComponent, TestSignViewComponent],
       imports: [NoopAnimationsModule, IgxDialogModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -45,18 +44,27 @@ describe('LoginDialogComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should switch views, show login on open', () => {
-    checkViews(jasmine.any(DebugElement), null);
+  it('should switch views, show login on open', fakeAsync(() => {
+    let result = checkViews();
+    expect(result.loginView).not.toBeNull();
+    expect(result.registerView).toBeNull();
+
     component.showLogin = false;
     fixture.detectChanges();
-    checkViews(null, jasmine.any(DebugElement));
+    result = checkViews();
+    expect(result.loginView).toBeNull();
+    expect(result.registerView).not.toBeNull();
     expect(component.loginDialog.title).toEqual('Register');
+
     component.open();
+    tick();
     fixture.detectChanges();
-    checkViews(jasmine.any(DebugElement), null);
+    result = checkViews();
+    expect(result.loginView).not.toBeNull();
+    expect(result.registerView).toBeNull();
     expect(component.showLogin).toBeTruthy();
     expect(component.loginDialog.title).toEqual('Login');
-  });
+  }));
 
   it('should switch views, close on events', () => {
     let view: TestSignViewComponent = fixture.debugElement.query(By.css('app-login')).componentInstance;
