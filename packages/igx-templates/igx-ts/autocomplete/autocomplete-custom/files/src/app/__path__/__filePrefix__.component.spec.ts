@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { <%=ClassName%>Component, <%=ClassName%>PipeStartsWith } from './<%=filePrefix%>.component';
-import { IgxDropDownModule, IgxAutocompleteModule, IgxInputGroupModule } from '<%=igxPackage%>';
 import { FormsModule } from '@angular/forms';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { IgxAutocompleteModule, IgxDropDownModule, IgxInputGroupModule } from '<%=igxPackage%>';
+import { <%=ClassName%>Component, <%=ClassName%>PipeStartsWith } from './<%=filePrefix%>.component';
 
 describe('<%=ClassName%>Component', () => {
     let component: <%=ClassName%>Component;

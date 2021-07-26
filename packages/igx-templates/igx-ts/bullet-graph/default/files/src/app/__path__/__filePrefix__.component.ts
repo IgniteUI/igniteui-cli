@@ -1,6 +1,6 @@
 
 import { AfterViewInit, Component, ViewEncapsulation, ViewChild } from '@angular/core';
-import { IgxLinearGraphRangeComponent, IgxBulletGraphComponent } from 'igniteui-angular-gauges';
+import { IgxBulletGraphComponent, IgxLinearGraphRangeComponent } from 'igniteui-angular-gauges';
 
 @Component({
   selector: 'app-<%=filePrefix%>',
@@ -9,19 +9,16 @@ import { IgxLinearGraphRangeComponent, IgxBulletGraphComponent } from 'igniteui-
   encapsulation: ViewEncapsulation.None
 })
 export class <%=ClassName%>Component implements AfterViewInit {
-
   @ViewChild('bulletGraph', { static: true })
   public bulletGraph!: IgxBulletGraphComponent;
 
   public ngAfterViewInit(): void {
-
     // enabling animation duration (in milliseconds)
     this.bulletGraph.transitionDuration = 500;
     this.AnimateToGauge3();
   }
 
   public AnimateToGauge3(): void {
-
     this.bulletGraph.minimumValue = 0;
     this.bulletGraph.maximumValue = 120;
     this.bulletGraph.value = 70;
@@ -92,7 +89,6 @@ export class <%=ClassName%>Component implements AfterViewInit {
   }
 
   public AnimateToGauge2(): void {
-
     this.bulletGraph.minimumValue = 100;
     this.bulletGraph.maximumValue = 200;
     this.bulletGraph.value = 120;
@@ -166,7 +162,6 @@ export class <%=ClassName%>Component implements AfterViewInit {
   }
 
   public AnimateToGauge1(): void {
-
     this.bulletGraph.minimumValue = 0;
     this.bulletGraph.maximumValue = 80;
     this.bulletGraph.value = 70;
@@ -229,6 +224,5 @@ export class <%=ClassName%>Component implements AfterViewInit {
     this.bulletGraph.backingBrush = '#f7f7f7';
     this.bulletGraph.backingOutline = '#d1d1d1';
     this.bulletGraph.backingStrokeThickness = 0;
-
   }
 }
