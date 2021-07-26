@@ -171,7 +171,7 @@ describe('Services', () => {
             providersMap.set(ExternalAuthProvider.Facebook, mockObj);
             (extAuthServ as any).providers = providersMap;
             spyOn(Promise, 'reject').and.returnValue(Promise.resolve(null));
-            expect(await extAuthServ.getUserInfo(ExternalAuthProvider.Facebook)).toEqual(null);
+            expect(await extAuthServ.getUserInfo(ExternalAuthProvider.Facebook)).toBeNull();
             expect(providersGetSpy).toHaveBeenCalledTimes(1);
             providersGetSpy.and.returnValue(mockObj);
             expect(await extAuthServ.getUserInfo(ExternalAuthProvider.Facebook)).toEqual({
@@ -231,9 +231,10 @@ describe('Services', () => {
     });
 
     describe(`MOCK Backend Service`, () => {
-        const provider = new BackendInterceptor(new LocalStorageService({}));
         describe(`public`, () => {
             it(`Should properly call 'intercept'`, () => {
+                const mockLocalStorage: LocalStorageService = new LocalStorageService({});
+                const provider = new BackendInterceptor(mockLocalStorage);
                 const mockRequest = {
                     method: 'POST',
                     url: '/login',
@@ -248,8 +249,9 @@ describe('Services', () => {
                 // mocked method in intercept still need to return observable, otherwise rxjs pipe throws
                 spyOn(provider, 'loginHandle').and.returnValue(new Observable());
                 spyOn(JSON, 'parse').and.returnValue(mockUsers);
+                spyOn(mockLocalStorage, 'getItem').and.returnValue('[]');
                 provider.intercept(mockRequest, mockNext).pipe(take(1)).subscribe(() => { });
-                expect(JSON.parse).toHaveBeenCalledWith(null);
+                expect(JSON.parse).toHaveBeenCalledWith('[]');
                 expect(JSON.parse).toHaveBeenCalledTimes(1);
                 expect(provider.loginHandle).toHaveBeenCalledWith(mockRequest);
                 expect(provider.loginHandle).toHaveBeenCalledTimes(1);
@@ -310,6 +312,8 @@ describe('Services', () => {
             });
 
             it(`Should properly call 'registerHandle'`, () => {
+                const provider = new BackendInterceptor(new LocalStorageService({}));
+                const localStorage =(provider as any).localStorage;
                 const mockUser = {
                     email: 'test_user'
                 } as any;
@@ -318,6 +322,7 @@ describe('Services', () => {
                 let expectedOutput = { error: { message: 'Account with email "test_user" already exists' } } as any;
                 provider.registerHandle(mockUser, false).pipe(take(1)).subscribe(() => { }, (e) => { output = e; });
                 expect(output).toEqual(expectedOutput);
+
                 spyOn(localStorage, 'setItem');
                 spyOn(JSON, 'stringify').and.returnValue('MOCK OBJ');
                 const generateBodySpy = spyOn<any>(provider, 'getUserJWT').and.returnValue('MOCK BODY');
@@ -335,6 +340,7 @@ describe('Services', () => {
                 expect(JSON.stringify).toHaveBeenCalledTimes(1);
                 expect(JSON.stringify).toHaveBeenCalledWith([{ email: 'test_user', customProp: 'very_custom ' }]);
                 expect(provider.users).toEqual([{ email: 'test_user', customProp: 'very_custom ' }] as any);
+
                 output = '';
                 provider.registerHandle({ email: 'new_user', customProp: 'test' } as any)
                     .pipe(take(1)).subscribe((e) => { output = e; });
@@ -353,6 +359,7 @@ describe('Services', () => {
             });
 
             it(`Should properly call 'loginHandle'`, () => {
+                const provider = new BackendInterceptor(new LocalStorageService({}));
                 const mockUser = {
                     email: 'test_email'
                 } as any;
@@ -366,22 +373,23 @@ describe('Services', () => {
                 const jwtSpy = spyOn<any>(provider, 'getUserJWT').and.returnValue('MOCK BODY');
                 const tokenSpy = spyOn<any>(provider, 'generateToken').and.returnValue('MOCK TOKEN');
                 const expectedOutput = new HttpResponse({ status: 200, body: 'MOCK TOKEN' });
-                let output;
-                provider.loginHandle(mockRequest).pipe(take(1)).subscribe((e) => { output = e; });
-                expect(output).toEqual(expectedOutput);
+                provider.loginHandle(mockRequest).pipe(take(1)).subscribe((e) => {
+                    expect(e).toEqual(expectedOutput);
+                });
                 expect(jwtSpy).toHaveBeenCalledWith(mockUser);
                 expect(tokenSpy).toHaveBeenCalledWith('MOCK BODY');
 
                 const expectedError = { status: 401, error: { message: 'User does not exist!' } };
-                let emittedResult;
                 (provider.loginHandle({ body: { email: 'missing user' } } as any) as any).pipe(take(1))
-                    .subscribe(() => { }, (e: any) => { emittedResult = e; }, () => { });
-                expect(emittedResult).toEqual(expectedError);
+                    .subscribe(() => { }, (e: any) => {
+                        expect(e).toEqual(expectedError);
+                    }, () => { });
             });
         });
 
         describe(`private`, () => {
             it(`Should properly call 'getStorageUser'`, () => {
+                const provider = new BackendInterceptor(new LocalStorageService({}));
                 const mockInput = {
                     body: {
                         name: 'test_name',
@@ -402,6 +410,7 @@ describe('Services', () => {
             });
 
             it(`Should properly call 'getStorageExtUser'`, () => {
+                const provider = new BackendInterceptor(new LocalStorageService({}));
                 const mockInput = {
                     body: {
                         id: 'test_id',
@@ -427,6 +436,7 @@ describe('Services', () => {
             });
 
             it(`Should properly call 'getUserJWT'`, () => {
+                const provider = new BackendInterceptor(new LocalStorageService({}));
                 const mockInput = {
                     name: 'test_name',
                     given_name: 'test_given_name',
@@ -450,6 +460,7 @@ describe('Services', () => {
             });
 
             it(`Should properly call 'generateToken'`, () => {
+                const provider = new BackendInterceptor(new LocalStorageService({}));
                 const inputString = 'testString1';
                 const expectedOutput = 'g.g.mockSignature';
                 spyOn(JWTUtil, 'encodeBase64Url').and.returnValue('g');

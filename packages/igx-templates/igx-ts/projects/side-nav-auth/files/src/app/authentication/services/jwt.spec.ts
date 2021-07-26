@@ -53,22 +53,20 @@ describe('JWT Tests', () => {
         });
 
         it(`Should properly handle 'decodeJWT'`, () => {
-            expect(decodeJWT('')).toEqual(null);
-            expect(decodeJWT('893sdh9a8df')).toEqual(null);
-            expect(decodeJWT('132.321')).toEqual({
-                header: decodeBase64Url(`132`),
-                payload: decodeBase64Url(`321`),
-                signature: undefined
-            });
-            expect(decodeJWT('aSD.d112.13213')).toEqual({
-                header: decodeBase64Url(`aSD`),
-                payload: decodeBase64Url(`d112`),
-                signature: `13213`
-            });
+            expect(decodeJWT('')).toBeNull();
+            expect(decodeJWT('893sdh9a8df')).toBeNull();
+            let result = decodeJWT('132.321');
+            expect(result?.header).toEqual(decodeBase64Url('132'));
+            expect(result?.payload).toEqual(decodeBase64Url('321'));
+            expect(result?.signature).toBeUndefined();
+            result = decodeJWT('aSD.d112.13213');
+            expect(result?.header).toEqual(decodeBase64Url('aSD'));
+            expect(result?.payload).toEqual(decodeBase64Url('d112'));
+            expect(result?.signature).toEqual('13213');
         });
 
         it(`Should properly handle 'parseUser'`, () => {
-            expect(() => parseUser('asdad')).toThrow(`The JWT token provided was not valid:\nasdad`);
+            expect(() => parseUser('not valid user name')).toThrow();
             spyOn(JSON, 'parse').and.returnValue({ payload: 'Mock payload' });
             expect(parseUser('123.123')).toEqual({ payload: 'Mock payload', token: '123.123' } as any);
         });

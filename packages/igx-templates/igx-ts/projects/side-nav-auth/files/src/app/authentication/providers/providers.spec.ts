@@ -36,14 +36,27 @@ describe('Providers', () => {
     } as any;
     describe('Facebook Provider', () => {
         const facebookProviderName = 'FB';
-        let mockResponse: any;
-        let mockAPIObj: any;
+        let mockResponse: any = { };
+        let mockAPIObj = {
+            id: 'mock-id',
+            name: 'mock-name',
+            first_name: 'mock-first_name',
+            last_name: 'mock_last_name',
+            email: 'mock_email',
+            picture: 'mock_picture'
+        };
         global[facebookProviderName] = {
             login: (callback: (obj: any) => void, scope: { scope: string }) => { callback({ authResponse: mockResponse }); },
             init: () => { },
             api: (params: string, callback: (obj: any) => void) => { callback(mockAPIObj); },
-            getAuthResponse: () => { },
-            logout: () => { }
+            getAuthResponse: (): any => { return {accessToken: 'mockAccessToken'} },
+            logout: () => { },
+            AppEvents: null,
+            Canvas: null,
+            Event: null,
+            getLoginStatus: (): any => null,
+            ui: (params: any, callback: (response: any) => void): void => {},
+            XFBML: null
         };
         it('Should properly initialize', () => {
             const provider = new FacebookProvider(MOCK_EXTERNAL_AUTH_CONFIG, MOCK_ROUTER);
@@ -83,8 +96,7 @@ describe('Providers', () => {
                 first_name: 'test first name',
                 last_name: 'test family name',
                 email: 'test email',
-                picture: 'test picture',
-                externalToken: 'Fake'
+                picture: 'test picture'
             };
             const expectedObject = {
                 id: 'test id',
@@ -106,6 +118,7 @@ describe('Providers', () => {
 
         it(`Should properly call 'getUserInfo'`, () => {
             const provider = new FacebookProvider(MOCK_EXTERNAL_AUTH_CONFIG, MOCK_ROUTER);
+            provider.login();
             spyOn(Promise, 'resolve').and.returnValue('Mock' as any);
             expect(provider.getUserInfo()).toEqual('Mock' as any);
         });
