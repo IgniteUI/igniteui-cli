@@ -5,8 +5,8 @@
 
 <div class="sample-wrapper drop-down-wrapper">
   <button #button igxButton="raised" igxRipple [igxToggleAction]="dropdown" [igxDropDownItemNavigation]="dropdown">Toggle dropdown</button>
-  <igx-drop-down #dropdown>
-    <igx-drop-down-item *ngFor="let item of items" [disabled]="item.disabled" [isHeader]="item.header">
+  <igx-drop-down width="200px" #dropdown>
+    <igx-drop-down-item *ngFor="let item of items" [disabled]="!!item.disabled" [isHeader]="!!item.header">
       {{ item.field }}
     </igx-drop-down-item>
   </igx-drop-down>
