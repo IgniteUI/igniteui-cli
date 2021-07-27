@@ -7,7 +7,7 @@ import { CategoryChartType } from 'igniteui-angular-charts';
   styleUrls: ['./<%=filePrefix%>.component.scss']
 })
 export class <%=ClassName%>Component {
-  public chartType = CategoryChartType;
+  public chartType = CategoryChartType.Auto;
 
   data = [
     { CountryName: 'China', Pop1995: 1216, Pop2005: 1297, },
@@ -16,5 +16,4 @@ export class <%=ClassName%>Component {
     { CountryName: 'Indonesia', Pop1995: 197, Pop2005: 229, },
     { CountryName: 'Brazil', Pop1995: 161, Pop2005: 186, }
   ];
-
 }

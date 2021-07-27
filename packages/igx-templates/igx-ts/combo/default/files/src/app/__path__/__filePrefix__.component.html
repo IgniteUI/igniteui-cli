@@ -5,7 +5,7 @@
 
 <igx-combo #combo3 class="input-container" width="300px"
   [data]="localData"
-  [valueKey]="'field'"
+  [valueKey]="'name'"
   [groupKey]="'region'"
   placeholder="Location(s)"
   [itemsMaxHeight]="250"
@@ -15,7 +15,7 @@
 
   <ng-template igxComboItem let-display let-key="valueKey">
     <div class="item">
-      <span class="state">{{ display[key] }} - </span>
+      <span class="state">{{ display.name }} - </span>
       <span class="region">{{ display.region }}</span>
     </div>
   </ng-template>
