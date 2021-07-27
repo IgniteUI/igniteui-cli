@@ -1,8 +1,8 @@
 import { Component, OnDestroy } from '@angular/core';
 import { IgxTreeNodeComponent  } from '<%=igxPackage%>';
-import { DATA, NodeData, REMOTE_ROOT, SelectableNodeData } from './local-data';
 import { Subject } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
+import { DATA, NodeData, REMOTE_ROOT, SelectableNodeData } from './local-data';
 import { DataService } from './services/data.service';
 
 @Component({
