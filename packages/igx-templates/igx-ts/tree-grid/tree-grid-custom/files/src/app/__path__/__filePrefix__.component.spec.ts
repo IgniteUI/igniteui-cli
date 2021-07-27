@@ -10,9 +10,9 @@ describe('<%=ClassName%>Component', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ <%=ClassName%>Component ],
-      imports: [ BrowserAnimationsModule, IgxTreeGridModule, IgxDatePickerModule, IgxCheckboxModule ]
+      imports: [BrowserAnimationsModule, IgxTreeGridModule, IgxDatePickerModule, IgxCheckboxModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
