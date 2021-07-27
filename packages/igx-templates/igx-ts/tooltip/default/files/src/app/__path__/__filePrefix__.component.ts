@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component} from '@angular/core';
 
 @Component({
   selector: 'app-<%=filePrefix%>',
@@ -6,10 +6,5 @@ import { Component, OnInit, ViewChild } from '@angular/core';
   templateUrl: './<%=filePrefix%>.component.html'
 })
 
-export class <%=ClassName%>Component implements OnInit {
-
-  constructor() { }
-
-  public ngOnInit() {
-  }
+export class <%=ClassName%>Component {
 }
