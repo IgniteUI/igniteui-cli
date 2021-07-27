@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class <%=ClassName%>Component implements OnInit {
 
-  public slides: any[] = [];
+  public slides: Slide[] = [];
   public interval = 3000;
   public pause = true;
   public loop = true;
@@ -25,4 +25,9 @@ export class <%=ClassName%>Component implements OnInit {
       { image: 'assets/slide4@x2.jpg' }
     );
   }
+}
+
+interface Slide {
+  image: string;
+  active?: boolean;
 }
