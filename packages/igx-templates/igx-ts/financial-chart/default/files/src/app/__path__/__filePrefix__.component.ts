@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AMZNData } from './data';
+import { AMZNData, Stock } from './data';
 
 @Component({
   selector: 'app-<%=filePrefix%>',
@@ -7,7 +7,5 @@ import { AMZNData } from './data';
   styleUrls: ['./<%=filePrefix%>.component.scss']
 })
 export class <%=ClassName%>Component {
-
-  public data = AMZNData;
-
+  public data: Stock[] = AMZNData;
 }
