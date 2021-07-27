@@ -44,7 +44,7 @@
         </ng-template>
       </igx-column>
   
-      <igx-column field="Speed" header="Speed" [width]="'23%'" [filterable]="false" [hasSummary]="true" [summaries]="speedSummary">
+      <igx-column field="SpeedEntries" header="Speed" [width]="'23%'" [filterable]="false" [hasSummary]="true" [summaries]="speedSummary">
         <ng-template igxCell let-val>
           <igx-sparkline height="40px" width="190px" [dataSource]="val" valueMemberPath="Speed" [displayType]="displayType.Line" [minimum]="0"
           [lineThickness]="2" brush="rgb(0, 153, 255)">

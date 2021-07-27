@@ -1,4 +1,4 @@
-export interface SpeedDescriptor {
+export interface SpeedEntry {
     Speed: number;
     Minute: number;
   }
@@ -16,7 +16,7 @@ export interface Athlete {
     CountryFlag: string;
     CountryName: string;
     LastPosition?: number;
-    Speed?: SpeedDescriptor;
+    SpeedEntries?: SpeedEntry[];
 }
 
 /* tslint:disable */

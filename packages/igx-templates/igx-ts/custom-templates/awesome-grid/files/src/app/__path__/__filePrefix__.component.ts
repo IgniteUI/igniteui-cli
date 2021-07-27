@@ -20,7 +20,7 @@ import {
   OverlayClosingEventArgs
   } from '<%=igxPackage%>';
 import { SparklineDisplayType } from 'igniteui-angular-charts';
-import { Athlete, AthletesData, SpeedDescriptor } from './services/data';
+import { Athlete, AthletesData, SpeedEntry } from './services/data';
 
 @Component({
 selector: 'app-<%=filePrefix%>',
@@ -153,14 +153,14 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy, AfterViewInit
     }
   
     public getSpeed(athlete: Athlete): void {
-      athlete['Speed'] = this.addSpeedeData(athlete, 40);
+		athlete.SpeedEntries = this.addSpeedData(athlete, 40);
     }
   
-    public getSpeedeData(minutes?: number): SpeedDescriptor[] {
+    public getSpeedeData(minutes?: number): SpeedEntry[] {
       if (minutes === undefined) {
         minutes = 20;
       }
-      const speed: SpeedDescriptor[] = [];
+      const speed: SpeedEntry[] = [];
       for (let m = 0; m < minutes; m += 3) {
         const value = this.getRandomNumber(17, 20);
         speed.push({ Speed: value, Minute: m });
@@ -168,11 +168,11 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy, AfterViewInit
       return speed;
     }
   
-    public addSpeedData(athlete: Athlete, minutes?: number): SpeedDescriptor[] {
+    public addSpeedData(athlete: Athlete, minutes?: number): SpeedEntry[] {
       if (minutes === undefined) {
         minutes = 20;
       }
-      const speedCollection = athlete.Speed ? athlete.Speed : [];
+      const speedCollection:SpeedEntry[] = athlete.SpeedEntries || [];
       for (let m = 3; m <= minutes; m += 3) {
         const value = this.getRandomNumber(16, 20);
         const speed = speedCollection[speedCollection.length - 1];
@@ -260,7 +260,7 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy, AfterViewInit
       this.localData.forEach((rec, index) => {
         rec.LastPosition = index;
         if ((rec.TrackProgress !== undefined) && rec.TrackProgress < 100) {
-          rec.Speed = this.addSpeedeData(rec, 3);
+          rec.SpeedEntries = this.addSpeedData(rec, 3);
           if (rec.BeatsPerMinute !== undefined) {
             rec.BeatsPerMinute += this.generateRandomNumber(-5, 5);
           }
@@ -327,8 +327,8 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy, AfterViewInit
   
   export class CustomSpeedSummary {
   
-    public operate(data: Athlete[]): IgxSummaryResult[] {
-        const speedData = data.reduce((acc, val) => acc.concat(val), [] as Athlete[]).map(rec => rec.Speed);
+    public operate(data: SpeedEntry[][]): IgxSummaryResult[] {
+        const speedData = data.reduce((acc, val) => acc.concat(val), []).map(rec => rec.Speed);
         const result = [];
         result.push(
             {
