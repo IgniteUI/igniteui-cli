@@ -1,8 +1,12 @@
-:host {
+.container{
     height: 100%;
-    display: flex;
-    flex-direction: column;
+    overflow: auto;
 }
+
+.container > * {
+    margin-top: 32px;
+}
+
 .sample-wrapper {
     width: 70%;
 	height: 100%;
@@ -11,26 +15,13 @@
 	background: transparent;
 	margin-top: 30px;
 }
-.input-group-form{
-	border: 2px solid #731963;
-	padding: 15px;
-}
-.sample-title {
-    color: #731963;
-    margin-bottom: 24px;
-}
-.sample-title .light {
-    font-weight: 400;
+
+.input-group-form {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
+    padding: 24px;
+    margin-bottom: 48px;
 }
 
-.igx-input-group, .component-container {
-	margin-top: 32px;
-}
-button{
-    background-color:#731963;
-    border-color:#731963;
-    color: white;
-}
 .description-container {
     width: 70%;
     display: flex;

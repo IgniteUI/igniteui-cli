@@ -1,4 +1,4 @@
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -23,6 +23,7 @@ describe('<%=ClassName%>Component', () => {
       declarations: [<%=ClassName%>Component],
       imports: [
         FormsModule,
+		ReactiveFormsModule,
         NoopAnimationsModule,
         IgxInputGroupModule,
         IgxButtonModule,

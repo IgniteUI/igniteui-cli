@@ -1,42 +1,54 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+interface Genre {
+	type: string;
+	movies: string[];
+}
 
 @Component({
-  selector: 'app-<%=filePrefix%>',
-  templateUrl: './<%=filePrefix%>.component.html',
-  styleUrls: ['./<%=filePrefix%>.component.scss']
+	selector: 'app-<%=filePrefix%>',
+	templateUrl: './<%=filePrefix%>.component.html',
+	styleUrls: ['./<%=filePrefix%>.component.scss']
 })
+export class <%=ClassName%>Component implements OnInit {
+	public genres!: Genre[];
+	public user!: FormGroup;
+	public minTime = '06:15:30';
+    public maxTime = '09:15:30';
+    public minDate = new Date();
+    public maxDate = new Date(new Date(this.minDate.getFullYear(), this.minDate.getMonth(), this.minDate.getDate() + 14));
 
-export class <%=ClassName%>Component {
-  public user = {
-    dateTime: new Date(),
-    email: '',
-    fullName: '',
-    genres: '',
-    movie: '',
-    phone: ''
-  };
+	constructor(private fb: FormBuilder) { }
 
-  public genres = [
-    { type: 'Action' , movies: ['The Matrix', 'Kill Bill: Vol.1', 'The Dark Knight Rises']},
-    { type: 'Adventure' , movies: ['Interstellar', 'Inglourious Basterds', 'Inception']},
-    // tslint:disable-next-line:object-literal-sort-keys
-    { type: 'Comedy' , movies: ['Wild Tales', 'In Bruges', 'Three Billboards Outside Ebbing, Missouri',
-         'Untouchable', '3 idiots']},
-    { type: 'Crime' , movies: ['Training Day', 'Heat', 'American Gangster']},
-    { type: 'Drama' , movies: ['Fight Club', 'A Beautiful Mind', 'Good Will Hunting', 'City of God']},
-    { type: 'Biography' , movies: ['Amadeus', 'Bohemian Rhapsody']},
-    { type: 'Mystery' , movies: ['The Prestige', 'Memento', 'Cloud Atlas']},
-    { type: 'Musical' , movies: ['All That Jazz']},
-    { type: 'Romance' , movies: ['Love Actually', 'In The Mood for Love']},
-    { type: 'Sci-Fi' , movies: ['The Fifth Element']},
-    { type: 'Thriller' , movies: ['The Usual Suspects']},
-    { type: 'Western' , movies: ['Django Unchained']}];
+	public ngOnInit(): void {
+		this.genres = [
+			{ type: 'Action', movies: ['The Matrix', 'Kill Bill: Vol.1', 'The Dark Knight Rises'] },
+			{ type: 'Adventure', movies: ['Interstellar', 'Inglourious Basterds', 'Inception'] },
+			{ type: 'Comedy', movies: ['Wild Tales', 'In Bruges', 'Three Billboards Outside Ebbing, Missouri', 'Untouchable', '3 idiots'] },
+			{ type: 'Crime', movies: ['Training Day', 'Heat', 'American Gangster'] },
+			{ type: 'Drama', movies: ['Fight Club', 'A Beautiful Mind', 'Good Will Hunting', 'City of God'] },
+			{ type: 'Biography', movies: ['Amadeus', 'Bohemian Rhapsody'] },
+			{ type: 'Mystery', movies: ['The Prestige', 'Memento', 'Cloud Atlas'] },
+			{ type: 'Musical', movies: ['All That Jazz'] },
+			{ type: 'Romance', movies: ['Love Actually', 'In The Mood for Love'] },
+			{ type: 'Sci-Fi', movies: ['The Fifth Element'] },
+			{ type: 'Thriller', movies: ['The Usual Suspects'] },
+			{ type: 'Western', movies: ['Django Unchained'] }
+		];
 
-  public onDateSelection(value: Date) {
-    this.user.dateTime.setDate((value as Date).getDate());
-  }
+		this.user = this.fb.group({
+			date: ['', Validators.required],
+            time: ['', Validators.required],
+            email: ['', Validators.required],
+            fullName: ['', Validators.required],
+            genres: [''],
+            movie: ['', Validators.required],
+            phone: ['']
+		});
+	}
 
-  public onTimeSelection(value: string | Date) {
-    this.user.dateTime.setTime((value as Date).getTime());
-  }
+	public onSubmit() {
+        console.log(this.user);
+    }
 }
