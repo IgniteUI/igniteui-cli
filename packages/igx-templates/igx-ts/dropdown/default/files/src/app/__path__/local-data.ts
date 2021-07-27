@@ -1,4 +1,4 @@
-const data: any[] = [
+const data: { field: string, header?: boolean, disabled?: boolean }[] = [
 { field: 'EU', header: true },
 { field: 'Germany' },
 { field: 'Bulgaria' },

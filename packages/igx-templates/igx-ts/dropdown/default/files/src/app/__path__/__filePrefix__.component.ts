@@ -1,7 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import {
-  IgxDropDownComponent
-} from '<%=igxPackage%>';
+import { Component } from '@angular/core';
 import { data } from './local-data';
 
 @Component({
@@ -10,16 +7,8 @@ import { data } from './local-data';
   styleUrls: ['./<%=filePrefix%>.component.scss']
 })
 
-export class <%=ClassName%>Component implements OnInit {
-  @ViewChild(IgxDropDownComponent, { static: true })
-  public igxDropDown!: IgxDropDownComponent;
+export class <%=ClassName%>Component {
 
-  public items: any[] = [];
+  public items = data;
 
-  constructor() { }
-
-  public ngOnInit() {
-    this.items = data;
-    this.igxDropDown.width = '200px';
-  }
 }
