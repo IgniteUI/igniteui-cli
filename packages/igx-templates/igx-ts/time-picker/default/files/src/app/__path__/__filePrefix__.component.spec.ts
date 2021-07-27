@@ -1,15 +1,14 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-
-import { <%=ClassName%>Component } from './<%=filePrefix%>.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { IgxTimePickerModule } from '<%=igxPackage%>';
+import { <%=ClassName%>Component } from './<%=filePrefix%>.component';
 
 describe('<%=ClassName%>Component', () => {
   let component: <%=ClassName%>Component;
   let fixture: ComponentFixture<<%=ClassName%>Component>;
   const date: Date = new Date();
   const hours: number = date.getHours();
-  const minutes: number =  date.getMinutes();
+  const minutes: number = date.getMinutes();
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
