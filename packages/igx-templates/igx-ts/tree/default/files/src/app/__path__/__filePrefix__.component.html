@@ -1,6 +1,6 @@
 <p>igx-tree component with selection and load on demand.</p>
-<p>You can read more about configuring the igx-tree component in the 
-  <a href="https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/src/lib/tree/README.md" target="_blank">README</a> or the 
+<p>You can read more about configuring the igx-tree component in the
+  <a href="https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/src/lib/tree/README.md" target="_blank">README</a> or the
   <a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/tree" target="_blank">official documentation</a>.
 </p>
 
@@ -20,8 +20,8 @@
       <div class="node">
         <igx-icon class="tree-node-icon">{{ remoteRoot.Icon }}</igx-icon>
         <span class="node-title">{{ remoteRoot.Name }}</span>
-        <igx-icon *ngIf="showRefresh" class="tree-node-icon node-refresh" (click)="refreshData(remote)" #target="tooltipTarget"
-          [showDelay]="600" [hideDelay]="100" [igxTooltipTarget]="tooltipRef">refresh</igx-icon>
+        <igx-icon *ngIf="showRefresh" class="tree-node-icon node-refresh" (click)="refreshData(remote)"
+          [showDelay]="600" [hideDelay]="100" igxTooltipTarget="tooltipRef">refresh</igx-icon>
       </div>
       <igx-tree-node #dummyNode *ngIf="!remoteData?.length && !remote.loading" [data]="{}" [disabled]="true">
       </igx-tree-node>
