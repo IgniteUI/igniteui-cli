@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IgcDockManagerLayout,
+import {
+  IgcDockManagerLayout,
   IgcDockManagerPaneType,
   IgcSplitPaneOrientation
 } from '<%=dockManagerPackage%>';
