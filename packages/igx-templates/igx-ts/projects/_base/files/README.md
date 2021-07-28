@@ -44,4 +44,3 @@ To get more help on the IgniteUI CLI go check out the [IgniteUI CLI Wiki](https:
 
 ## Angular CLI compatibility
 You can run all of the supported Angular CLI commands. More details at [Angular CLI](https://github.com/angular/angular-cli).
-

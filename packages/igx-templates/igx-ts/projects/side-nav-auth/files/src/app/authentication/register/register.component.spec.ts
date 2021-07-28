@@ -1,11 +1,9 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
-import { RouterTestingModule } from '@angular/router/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
-
+import { RouterTestingModule } from '@angular/router/testing';
 import { IgxButtonModule, IgxIconModule, IgxInputGroupModule, IgxRippleModule } from 'igniteui-angular';
-
 import { AuthenticationService } from '../services/authentication.service';
 import { UserService } from '../services/user.service';
 import { RegisterComponent } from './register.component';
@@ -40,7 +38,7 @@ describe('RegisterComponent', () => {
         { provide: Router, useValue: routerSpy }
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-
 import { AuthenticationService } from '../services/authentication.service';
 import { ExternalAuthService } from '../services/external-auth.service';
 import { UserService } from '../services/user.service';
@@ -58,5 +57,4 @@ describe('RedirectComponent', () => {
     await fixture.whenStable();
     expect(window.alert).toHaveBeenCalledWith('Err');
   });
-
 });

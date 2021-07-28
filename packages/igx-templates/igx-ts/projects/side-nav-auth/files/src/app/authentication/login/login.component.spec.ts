@@ -33,7 +33,7 @@ describe('LoginComponent', () => {
         { provide: UserService, useValue: userServSpy }
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -65,7 +65,7 @@ describe('LoginComponent', () => {
       email: 'test@example.com',
       password: '123456'
     });
-    expect(userServSpy.setCurrentUser).toHaveBeenCalledWith({ name: 'TEST'});
+    expect(userServSpy.setCurrentUser).toHaveBeenCalledWith({ name: 'TEST' });
     expect(component.loggedIn.emit).toHaveBeenCalled();
     expect(router.navigate).toHaveBeenCalledWith(['/profile']);
 

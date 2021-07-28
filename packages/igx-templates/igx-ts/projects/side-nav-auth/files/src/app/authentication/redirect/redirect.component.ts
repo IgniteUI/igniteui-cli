@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-
 import { ExternalLogin } from '../models/login';
 import { AuthenticationService } from '../services/authentication.service';
 import { ExternalAuthProvider } from '../services/external-auth-configs';
@@ -28,8 +27,8 @@ export class RedirectComponent implements OnInit {
     const userInfo: ExternalLogin = await this.externalAuthService.getUserInfo(this.provider);
     const result = await this.authService.loginWith(userInfo);
     if (!result.error) {
-        this.user.setCurrentUser(result.user!);
-        this.router.navigate(['/profile']);
+      this.user.setCurrentUser(result.user!);
+      this.router.navigate(['/profile']);
     } else {
       alert(result.error);
     }

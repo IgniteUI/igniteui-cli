@@ -2,8 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AuthModule, OidcConfigService, } from 'angular-auth-oidc-client';
-
+import { AuthModule, OidcConfigService } from 'angular-auth-oidc-client';
 import {
   IgxAvatarModule,
   IgxButtonModule,
@@ -14,7 +13,6 @@ import {
   IgxRippleModule,
   IgxToggleModule
 } from 'igniteui-angular';
-
 import { AuthGuard } from './auth.guard';
 import { AuthenticationRoutingModule } from './authentication-routing.module';
 import { LoginBarComponent } from './login-bar/login-bar.component';

@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-
 import { UserService } from '../services/user.service';
 import { ProfileComponent } from './profile.component';
 
@@ -14,7 +13,7 @@ describe('ProfileComponent', () => {
         { provide: UserService, useValue: { currentUser: { name: 'test' } } }
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -2,7 +2,6 @@ import { Location } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { OidcConfigService, OidcSecurityService } from 'angular-auth-oidc-client';
-
 import { ExternalLogin } from '../models/login';
 import { AuthProvider } from '../providers/auth-provider';
 import { FacebookProvider } from '../providers/facebook-provider';
@@ -18,7 +17,7 @@ export enum ExternalAuthRedirectUrl {
 }
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class ExternalAuthService {
   protected providers: Map<ExternalAuthProvider, AuthProvider> = new Map();
@@ -95,22 +94,22 @@ export class ExternalAuthService {
   }
 
   public login(provider: ExternalAuthProvider) {
-      const extProvider = this.providers.get(provider);
-      if (extProvider) {
-        this.activeProvider = provider;
-        extProvider.login();
-      }
+    const extProvider = this.providers.get(provider);
+    if (extProvider) {
+      this.activeProvider = provider;
+      extProvider.login();
+    }
   }
 
   /** TODO, use setActiveProvider only? */
   public async getUserInfo(provider: ExternalAuthProvider): Promise<ExternalLogin> {
-      const extProvider = this.providers.get(provider);
-      if (extProvider) {
-        const userInfo = await extProvider.getUserInfo();
-        userInfo.externalProvider = provider;
-        return userInfo;
-      }
-      return Promise.reject(null); // TODO ?
+    const extProvider = this.providers.get(provider);
+    if (extProvider) {
+      const userInfo = await extProvider.getUserInfo();
+      userInfo.externalProvider = provider;
+      return userInfo;
+    }
+    return Promise.reject(null); // TODO ?
   }
 
   /**

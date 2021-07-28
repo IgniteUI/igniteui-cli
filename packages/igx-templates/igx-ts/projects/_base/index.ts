@@ -54,7 +54,7 @@ $app-palette: igx-palette($primary, $secondary);
 		return [];
 	}
 	public setExtraConfiguration(extraConfigKeys: any[]) { }
-	public generateConfig(name: string, theme: string, ...options: any[]): {[key: string]: any} {
+	public generateConfig(name: string, theme: string, ...options: any[]): { [key: string]: any } {
 		const config = {
 			name,
 			theme,

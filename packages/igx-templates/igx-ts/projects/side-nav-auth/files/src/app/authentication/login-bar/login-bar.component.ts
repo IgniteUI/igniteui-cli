@@ -1,8 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-
 import { IgxDropDownComponent, ISelectionEventArgs } from 'igniteui-angular';
-
 import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
 import { ExternalAuthService } from '../services/external-auth.service';
 import { UserService } from '../services/user.service';

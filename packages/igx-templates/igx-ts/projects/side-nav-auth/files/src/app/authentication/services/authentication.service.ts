@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
 import { ExternalLogin, Login } from '../models/login';
 import { Register } from '../models/register';
 import { LoginResult, User } from '../models/user';

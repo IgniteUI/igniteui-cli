@@ -4,18 +4,18 @@
   "newProjectRoot": "projects",
   "projects": {
     "<%=dashName%>": {
-    "projectType": "application",
-    "schematics": {
-      "@schematics/angular:component": {
-      "style": "scss"
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
       },
-      "@schematics/angular:application": {
-        "strict": true
-      }
-    },
-    "root": "",
-    "sourceRoot": "src",
-    "prefix": "app",
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -38,10 +38,10 @@
           },
           "configurations": {
             "es5": {
-                "tsConfig": "tsconfig-es5.app.json"
+              "tsConfig": "tsconfig-es5.app.json"
             },
             "production": {
-                "budgets": [
+              "budgets": [
                 {
                   "type": "initial",
                   "maximumWarning": "5mb",
@@ -62,12 +62,12 @@
               "outputHashing": "all"
             },
             "development": {
-                 "buildOptimizer": false,
-                 "optimization": false,
-                 "vendorChunk": true,
-                 "extractLicenses": false,
-                 "sourceMap": true,
-                 "namedChunks": true
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
             },
             "defaultConfiguration": "production"
           }

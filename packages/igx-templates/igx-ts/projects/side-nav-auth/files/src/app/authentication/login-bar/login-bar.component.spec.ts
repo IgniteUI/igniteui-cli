@@ -5,7 +5,6 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AuthModule } from 'angular-auth-oidc-client';
-
 import {
   IgxAvatarComponent,
   IgxAvatarModule,
@@ -16,7 +15,6 @@ import {
   IgxRippleModule,
   IgxToggleModule
 } from 'igniteui-angular';
-
 import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
 import { ExternalAuthService } from '../services/external-auth.service';
 import { UserService } from '../services/user.service';
@@ -63,7 +61,7 @@ describe('LoginBarComponent', () => {
         { provide: ExternalAuthService, useClass: TestAuthService }
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -2,7 +2,6 @@ import { Component, DebugElement, EventEmitter, Output } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-
 import { IgxDialogModule } from 'igniteui-angular';
 import { LoginDialogComponent } from './login-dialog.component';
 
@@ -20,10 +19,10 @@ describe('LoginDialogComponent', () => {
   let component: LoginDialogComponent;
   let fixture: ComponentFixture<LoginDialogComponent>;
 
-  const checkViews = (): { loginView: DebugElement, registerView: DebugElement} => {
+  const checkViews = (): { loginView: DebugElement, registerView: DebugElement } => {
     const loginView = fixture.debugElement.query(By.css('app-login'));
     const registerView = fixture.debugElement.query(By.css('app-register'));
-    return { loginView, registerView};
+    return { loginView, registerView };
   };
 
   beforeEach(waitForAsync(() => {

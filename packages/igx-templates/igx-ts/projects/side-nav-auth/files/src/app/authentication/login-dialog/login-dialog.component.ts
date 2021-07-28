@@ -9,7 +9,7 @@ import { IgxDialogComponent } from 'igniteui-angular';
 export class LoginDialogComponent {
   public showLogin = true;
   public get title() { return this.showLogin ? 'Login' : 'Register'; }
-  @ViewChild(IgxDialogComponent, { static: true }) 
+  @ViewChild(IgxDialogComponent, { static: true })
   public loginDialog!: IgxDialogComponent;
 
   open() {
