@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { <%=ClassName%>Component } from './<%=filePrefix%>.component';
-import { IgxAccordionModule } from '<%=igxPackage%>';
+import { IgxAccordionModule, IgxSwitchModule } from '<%=igxPackage%>';
 
 describe('<%=ClassName%>Component', () => {
   let component: <%=ClassName%>Component;
@@ -9,7 +9,7 @@ describe('<%=ClassName%>Component', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [<%=ClassName%>Component],
-      imports: [ IgxAccordionModule ]
+      imports: [ IgxAccordionModule, IgxSwitchModule ]
     })
       .compileComponents();
   }));

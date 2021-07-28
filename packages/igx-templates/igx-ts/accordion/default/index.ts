@@ -11,7 +11,7 @@ class IgxAccordionTemplate extends IgniteUIForAngularTemplate {
 		this.name = "Accordion";
 		this.description = "Basic IgxAccordion sample";
 		this.dependencies = [{
-			import: ["IgxAccordionModule"],
+			import: ["IgxAccordionModule", "IgxSwitchModule"],
 			from: "<%=igxPackage%>"
 		}];
 	}
