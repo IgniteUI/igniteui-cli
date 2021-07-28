@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-<%=filePrefix%>',
@@ -6,11 +6,6 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./<%=filePrefix%>.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class <%=ClassName%>Component implements OnInit {
-
+export class <%=ClassName%>Component {
   public date: Date = new Date(Date.now());
-
-  constructor() { }
-
-  public ngOnInit(): void {}
 }

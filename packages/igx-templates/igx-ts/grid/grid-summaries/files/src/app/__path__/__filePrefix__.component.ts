@@ -1,8 +1,6 @@
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import { IgxGridComponent, IgxSummaryResult, IgxDateSummaryOperand } from '<%=igxPackage%>';
-import { employeesData } from './localData';
-
-// tslint:disable:no-use-before-declare
+import { IgxDateSummaryOperand, IgxGridComponent, IgxSummaryResult } from '<%=igxPackage%>';
+import { Employee, employeesData } from './localData';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -10,27 +8,23 @@ import { employeesData } from './localData';
   templateUrl: './<%=filePrefix%>.component.html',
   styleUrls: ['./<%=filePrefix%>.component.scss']
 })
-
-
 export class <%=ClassName%>Component implements OnInit {
   @ViewChild('sampleGrid', { static: true, read: IgxGridComponent })
   public sampleGrid!: IgxGridComponent;
   public customDateSummary = CustomDateSummary;
 
-  public localData!: any[];
+  public localData!: Employee[];
   title = 'Grid Summaries';
 
-  constructor() { }
-
-  ngOnInit() {
+  ngOnInit(): void {
     this.localData = employeesData;
   }
 
-  public formatDate(value: Date) {
+  public formatDate(value: Date): string {
     return value.toLocaleDateString();
   }
 
-  public toggleSummary(name: string) {
+  public toggleSummary(name: string): void {
     if (this.sampleGrid.getColumnByName(name).hasSummary) {
       this.sampleGrid.disableSummaries(name);
     } else {
@@ -39,12 +33,11 @@ export class <%=ClassName%>Component implements OnInit {
   }
 }
 
-
 class CustomDateSummary extends IgxDateSummaryOperand {
   constructor() {
     super();
   }
-  public operate(data?: any[]): IgxSummaryResult[] {
+  public operate(data?: Date[]): IgxSummaryResult[] {
     const result: IgxSummaryResult[] = [];
     if (!data) {
         return result;

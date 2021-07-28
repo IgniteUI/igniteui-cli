@@ -1,9 +1,6 @@
-import { FormsModule } from '@angular/forms';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-
-import { <%=ClassName%>Component } from './<%=filePrefix%>.component';
-import { <%=ClassName%>WithTransactionsComponent } from './grid-transaction.component';
 import {
   IgxButtonModule,
   IgxDialogModule,
@@ -11,6 +8,7 @@ import {
   IgxGridModule,
   IgxRippleModule
 } from '<%=igxPackage%>';
+import { <%=ClassName%>Component } from './<%=filePrefix%>.component';
 
 describe('<%=ClassName%>Component', () => {
   let component: <%=ClassName%>Component;
@@ -18,7 +16,7 @@ describe('<%=ClassName%>Component', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ <%=ClassName%>Component, <%=ClassName%>WithTransactionsComponent ],
+      declarations: [<%=ClassName%>Component],
       imports: [ FormsModule, NoopAnimationsModule, IgxDialogModule, IgxGridModule, IgxFocusModule, IgxButtonModule, IgxRippleModule ]
     })
     .compileComponents();

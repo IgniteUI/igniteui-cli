@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule, HammerModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { IgxNavigationDrawerModule, IgxNavbarModule, IgxLayoutModule, IgxRippleModule } from 'igniteui-angular';
-
+import { IgxLayoutModule, IgxNavbarModule, IgxNavigationDrawerModule, IgxRippleModule } from 'igniteui-angular';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 
@@ -12,16 +11,16 @@ import { HomeComponent } from './home/home.component';
   declarations: [
     AppComponent,
     HomeComponent
-],
-imports: [
+  ],
+  imports: [
     FormsModule,
     BrowserModule,
-    HammerModule,
     BrowserAnimationsModule,
+    HammerModule,
     AppRoutingModule,
-    IgxNavigationDrawerModule,
-    IgxNavbarModule,
     IgxLayoutModule,
+    IgxNavbarModule,
+    IgxNavigationDrawerModule,
     IgxRippleModule
   ],
   providers: [],

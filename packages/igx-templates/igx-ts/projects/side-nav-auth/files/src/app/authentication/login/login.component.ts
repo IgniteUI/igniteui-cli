@@ -1,11 +1,10 @@
-import { Router } from '@angular/router';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Component, EventEmitter, Output } from '@angular/core';
-
-import { UserService } from '../services/user.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
 import { ExternalAuthProvider } from '../services/external-auth-configs';
 import { ExternalAuthService } from '../services/external-auth.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-login',

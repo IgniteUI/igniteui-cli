@@ -1,46 +1,44 @@
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { NoopAnimationsModule, BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-
+import { AuthModule } from 'angular-auth-oidc-client';
 import {
+  IgxAvatarComponent,
+  IgxAvatarModule,
   IgxButtonModule,
+  IgxDialogModule,
+  IgxDropDownModule,
   IgxIconModule,
   IgxRippleModule,
-  IgxAvatarModule,
-  IgxDropDownModule,
-  IgxToggleModule,
-  IgxDialogModule,
-  IgxAvatarComponent
+  IgxToggleModule
 } from 'igniteui-angular';
-
 import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
-import { LoginBarComponent } from './login-bar.component';
-import { UserService } from '../services/user.service';
-import { AuthModule } from 'angular-auth-oidc-client';
 import { ExternalAuthService } from '../services/external-auth.service';
+import { UserService } from '../services/user.service';
+import { LoginBarComponent } from './login-bar.component';
 
 @Component({
   selector: 'app-login-dialog',
   template: ''
 })
 class TestLoginDialogComponent extends LoginDialogComponent {
-  open() {  }
+  open() { }
 }
 
 describe('LoginBarComponent', () => {
   let component: LoginBarComponent;
   let fixture: ComponentFixture<LoginBarComponent>;
   class TestUserServSpy {
-    logout() {}
+    logout() { }
     get currentUser() { return null; }
     clearCurrentUser() { return null; }
   }
 
   class TestAuthService {
-    logout() {}
+    logout() { }
   }
 
   beforeEach(waitForAsync(() => {
@@ -49,21 +47,21 @@ describe('LoginBarComponent', () => {
         RouterTestingModule,
         NoopAnimationsModule,
         AuthModule.forRoot(),
+        IgxAvatarModule,
         IgxButtonModule,
-        IgxToggleModule,
+        IgxDialogModule,
+        IgxDropDownModule,
         IgxIconModule,
         IgxRippleModule,
-        IgxAvatarModule,
-        IgxDropDownModule,
-        IgxDialogModule
+        IgxToggleModule
       ],
-      declarations: [ LoginBarComponent, TestLoginDialogComponent ],
+      declarations: [LoginBarComponent, TestLoginDialogComponent],
       providers: [
         { provide: UserService, useClass: TestUserServSpy },
         { provide: ExternalAuthService, useClass: TestAuthService }
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

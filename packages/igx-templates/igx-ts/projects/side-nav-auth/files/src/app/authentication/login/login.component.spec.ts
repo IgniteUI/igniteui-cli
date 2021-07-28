@@ -2,17 +2,15 @@ import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-
-import { IgxInputGroupModule, IgxButtonModule, IgxRippleModule, IgxIconModule } from 'igniteui-angular';
-
-import { LoginComponent } from './login.component';
-import { ExternalAuthService } from '../services/external-auth.service';
-import { ExternalAuthProvider } from '../services/external-auth-configs';
+import { IgxButtonModule, IgxIconModule, IgxInputGroupModule, IgxRippleModule } from 'igniteui-angular';
 import { AuthenticationService } from '../services/authentication.service';
+import { ExternalAuthProvider } from '../services/external-auth-configs';
+import { ExternalAuthService } from '../services/external-auth.service';
 import { UserService } from '../services/user.service';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginComponent } from './login.component';
 
 const MAIL_GROUP_NAME = 'email';
 const PASSWORD_GROUP_NAME = 'password';
@@ -26,16 +24,16 @@ describe('LoginComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [ ReactiveFormsModule, RouterTestingModule, NoopAnimationsModule,
-        IgxInputGroupModule, IgxButtonModule, IgxIconModule, IgxRippleModule ],
-      declarations: [ LoginComponent ],
+      imports: [ReactiveFormsModule, RouterTestingModule, NoopAnimationsModule,
+        IgxInputGroupModule, IgxButtonModule, IgxIconModule, IgxRippleModule],
+      declarations: [LoginComponent],
       providers: [
         { provide: ExternalAuthService, useValue: extAuthSpy },
         { provide: AuthenticationService, useValue: authSpy },
         { provide: UserService, useValue: userServSpy }
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -48,7 +46,7 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should submit login data',  async () => {
+  it('should submit login data', async () => {
     const router: Router = TestBed.inject(Router);
     spyOn(router, 'navigate');
     expect(component.loginForm.valid).toBeFalsy();
@@ -67,7 +65,7 @@ describe('LoginComponent', () => {
       email: 'test@example.com',
       password: '123456'
     });
-    expect(userServSpy.setCurrentUser).toHaveBeenCalledWith({name: 'TEST'});
+    expect(userServSpy.setCurrentUser).toHaveBeenCalledWith({ name: 'TEST' });
     expect(component.loggedIn.emit).toHaveBeenCalled();
     expect(router.navigate).toHaveBeenCalledWith(['/profile']);
 

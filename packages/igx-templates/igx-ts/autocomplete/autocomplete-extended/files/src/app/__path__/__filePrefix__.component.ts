@@ -1,6 +1,6 @@
 import { Component, Pipe, PipeTransform, ViewChild } from '@angular/core';
-import { townsExtended, Region } from './towns-data-extended';
 import { IgxToastComponent, IgxToastPosition, ISelectionEventArgs } from '<%=igxPackage%>';
+import { Region, Town, townsExtended } from './towns-data-extended';
 
 @Component({
   selector: 'app-<%=filePrefix%>',
@@ -34,8 +34,8 @@ export class <%=ClassName%>Component {
 
 @Pipe({ name: '<%=camelCaseName%>StartsWith' })
 export class  <%=ClassName%>PipeStartsWith implements PipeTransform {
-  public transform(collection: any[], term = '') {
-    return collection.filter((item) => item.name.toString().toLowerCase().startsWith(term.trim().toLowerCase()));
+  public transform(collection: Town[], term = '') {
+    return collection.filter(item => item.name.toLowerCase().startsWith(term.trim().toLowerCase()));
   }
 }
 
@@ -46,10 +46,10 @@ export class <%=ClassName%>RegionContains implements PipeTransform {
   }
 
   private filterRegions(regions: Region[], term: string) {
-    return regions.filter((region: any) => this.filterTowns(region.towns, term.toLowerCase()).length > 0);
+    return regions.filter(region => this.filterTowns(region.towns, term.toLowerCase()).length > 0);
   }
 
-  private filterTowns(towns: any[], term: string) {
-    return towns.filter((town: any) => town.name.toLowerCase().startsWith(term));
+  private filterTowns(towns: Town[], term: string) {
+    return towns.filter(town => town.name.toLowerCase().startsWith(term));
   }
 }

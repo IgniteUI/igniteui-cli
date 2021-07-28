@@ -37,7 +37,7 @@ $app-palette: igx-palette($primary, $secondary);
 @include igx-theme($app-palette);
 `;
 	private DEFAULT_THEME = `,
-			  "node_modules/igniteui-angular/styles/igniteui-angular.css"`;
+              "node_modules/igniteui-angular/styles/igniteui-angular.css"`;
 
 	public get templatePaths(): string[] {
 		return [path.join(__dirname, "files")];
@@ -54,7 +54,7 @@ $app-palette: igx-palette($primary, $secondary);
 		return [];
 	}
 	public setExtraConfiguration(extraConfigKeys: any[]) { }
-	public generateConfig(name: string, theme: string, ...options: any[]): {[key: string]: any} {
+	public generateConfig(name: string, theme: string, ...options: any[]): { [key: string]: any } {
 		const config = {
 			name,
 			theme,

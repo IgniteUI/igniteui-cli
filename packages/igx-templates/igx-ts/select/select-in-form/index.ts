@@ -18,6 +18,9 @@ class IgxSelectTemplate extends IgniteUIForAngularTemplate {
 				"IgxToastModule"
 			],
 			from: "<%=igxPackage%>"
+		}, {
+			import: ["FormsModule"],
+			from: "@angular/forms"
 		}];
 	}
 }

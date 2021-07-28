@@ -1,6 +1,14 @@
 import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
-import { CloseScrollStrategy, ConnectedPositioningStrategy, HorizontalAlignment, IBaseChipEventArgs, IgxChipsAreaComponent,
-  IgxDropDownComponent, ISelectionEventArgs, OverlaySettings, VerticalAlignment
+import {
+  CloseScrollStrategy,
+  ConnectedPositioningStrategy,
+  HorizontalAlignment,
+  IBaseChipEventArgs,
+  IgxChipsAreaComponent,
+  IgxDropDownComponent,
+  ISelectionEventArgs,
+  OverlaySettings,
+  VerticalAlignment
 } from '<%=igxPackage%>';
 
 interface NamedEntry {

@@ -1,5 +1,5 @@
-import { IgxDialogComponent } from 'igniteui-angular';
 import { Component, ViewChild } from '@angular/core';
+import { IgxDialogComponent } from 'igniteui-angular';
 
 @Component({
   selector: 'app-login-dialog',
@@ -9,7 +9,7 @@ import { Component, ViewChild } from '@angular/core';
 export class LoginDialogComponent {
   public showLogin = true;
   public get title() { return this.showLogin ? 'Login' : 'Register'; }
-  @ViewChild(IgxDialogComponent, { static: true }) 
+  @ViewChild(IgxDialogComponent, { static: true })
   public loginDialog!: IgxDialogComponent;
 
   open() {

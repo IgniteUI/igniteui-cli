@@ -1,16 +1,22 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
 import { IgxFilterOptions, IgxListItemComponent } from '<%=igxPackage%>';
+
+interface Contact {
+  isFavorite: boolean;
+  name: string;
+  phone: string;
+  photo: string;
+}
 
 @Component({
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.component.html',
-  styleUrls: ['./<%=filePrefix%>.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./<%=filePrefix%>.component.scss']
 })
-export class <%=ClassName%>Component implements OnInit {
-  title = '<%=name%>';
+export class <%=ClassName%>Component {
+  public title = '<%=name%>';
   public searchContact = '';
-  public contacts = [
+  public contacts: Contact[] = [
     {
       isFavorite: false,
       name: 'Terrance Orta',
@@ -43,19 +49,15 @@ export class <%=ClassName%>Component implements OnInit {
     }
   ];
 
-  constructor() { }
-
-  ngOnInit() { }
-
-  public toggleFavorite(item: IgxListItemComponent) {
-    const contact = this.contacts[item.index - 1];
-    contact.isFavorite = !contact.isFavorite;
-  }
-
-  get filterContacts() {
+  public get filterContacts(): IgxFilterOptions {
     const fo = new IgxFilterOptions();
     fo.key = 'name';
     fo.inputValue = this.searchContact;
     return fo;
+  }
+
+  public toggleFavorite(item: IgxListItemComponent): void {
+    const contact = this.contacts[item.index - 1];
+    contact.isFavorite = !contact.isFavorite;
   }
 }

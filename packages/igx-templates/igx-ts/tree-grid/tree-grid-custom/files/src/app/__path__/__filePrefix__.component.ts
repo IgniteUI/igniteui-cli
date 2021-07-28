@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EMPLOYEE_DATA } from './localData';
+import { Employee, EMPLOYEE_DATA } from './localData';
 
 @Component({
   selector: 'app-<%=filePrefix%>',
@@ -7,7 +7,7 @@ import { EMPLOYEE_DATA } from './localData';
   styleUrls: ['./<%=filePrefix%>.component.scss']
 })
 export class <%=ClassName%>Component implements OnInit {
-  public localData: any[] = [];
+  public localData: Employee[] = [];
   title = '<%=name%>';
 
   ngOnInit() {

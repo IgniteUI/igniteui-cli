@@ -4,18 +4,18 @@
   "newProjectRoot": "projects",
   "projects": {
     "<%=dashName%>": {
-    "projectType": "application",
-    "schematics": {
-      "@schematics/angular:component": {
-      "style": "scss"
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
       },
-      "@schematics/angular:application": {
-        "strict": true
-      }
-    },
-    "root": "",
-    "sourceRoot": "src",
-    "prefix": "app",
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -32,14 +32,16 @@
             "styles": [
               "src/styles.scss"<%=DefaultTheme%>
             ],
-            "scripts": ["./node_modules/hammerjs/hammer.min.js"]
+            "scripts": [
+              "./node_modules/hammerjs/hammer.min.js"
+            ]
           },
           "configurations": {
             "es5": {
-                "tsConfig": "tsconfig-es5.app.json"
+              "tsConfig": "tsconfig-es5.app.json"
             },
             "production": {
-                "budgets": [
+              "budgets": [
                 {
                   "type": "initial",
                   "maximumWarning": "5mb",
@@ -60,12 +62,12 @@
               "outputHashing": "all"
             },
             "development": {
-                 "buildOptimizer": false,
-                 "optimization": false,
-                 "vendorChunk": true,
-                 "extractLicenses": false,
-                 "sourceMap": true,
-                 "namedChunks": true
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
             },
             "defaultConfiguration": "production"
           }
@@ -80,7 +82,7 @@
               "browserTarget": "<%=dashName%>:build:production"
             },
             "es5": {
-                "browserTarget": "<%=dashName%>:build:es5"
+              "browserTarget": "<%=dashName%>:build:es5"
             }
           }
         },
@@ -100,7 +102,9 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": ["./node_modules/hammerjs/hammer.min.js"],
+            "scripts": [
+              "./node_modules/hammerjs/hammer.min.js"
+            ],
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -108,32 +112,19 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
             ]
-          }
-        },
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "<%=dashName%>:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "<%=dashName%>:serve:production"
-            }
           }
         }
       }
     }
   },
-  "defaultProject": "<%=dashName%>"
+  "defaultProject": "<%=dashName%>",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }

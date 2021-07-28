@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { IgxAvatarModule, IgxSwitchModule, IgxTooltipModule } from '<%=igxPackage%>';
 import { <%=ClassName%>Component } from './<%=filePrefix%>.component';
-import { IgxTooltipModule, IgxAvatarModule, IgxSwitchModule } from '<%=igxPackage%>';
 
 describe('<%=ClassName%>Component', () => {
   let component: <%=ClassName%>Component;
@@ -13,7 +13,7 @@ describe('<%=ClassName%>Component', () => {
       declarations: [<%=ClassName%>Component],
       imports: [NoopAnimationsModule, FormsModule, IgxTooltipModule, IgxAvatarModule, IgxSwitchModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -23,6 +23,6 @@ describe('<%=ClassName%>Component', () => {
   });
 
   it('should create', () => {
-      expect(component).toBeTruthy();
+    expect(component).toBeTruthy();
   });
 });

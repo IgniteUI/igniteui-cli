@@ -2,10 +2,9 @@ import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } fr
 import {
   GridSelectionMode,
   DefaultSortingStrategy,
-  IDialogEventArgs,
   IgxButtonGroupComponent,
   IgxDialogComponent,
-  IgxGridCellComponent,
+  CellType,
   IgxGridComponent,
   IgxSliderComponent,
   SortingDirection,
@@ -169,7 +168,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
     }
   }
 
-  public onCloseHandler(evt: IDialogEventArgs): void {
+  public onCloseHandler(): void {
     this.buttonGroup1.selectButton(2);
     if (this.grid1.navigation.activeNode) {
       if (this.grid1.navigation.activeNode.row === -1) {
@@ -228,11 +227,11 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
     this.setChartConfig('Countries', 'Prices (USD)', 'Data Chart with prices by Category and Country');
   }
 
-  public openSingleRowChart(cell: IgxGridCellComponent): void {
+  public openSingleRowChart(cell: CellType): void {
     this.chartData = [];
     setTimeout(() => {
-      this.chartData = this.data.filter(item => item.Region === cell.rowData.Region &&
-        item.Category === cell.rowData.Category);
+      this.chartData = this.data.filter(item => item.Region === cell.row.data.Region &&
+        item.Category === cell.row.data.Category);
 
       this.chart1.notifyInsertItem(this.chartData, this.chartData.length - 1, {});
 
@@ -359,7 +358,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
   }
 
   public customKeydown(args: IGridKeydownEventArgs): void {
-    const target: IgxGridCellComponent = args.target as IgxGridCellComponent;
+    const target: CellType = args.target as CellType;
     const evt: KeyboardEvent = args.event as KeyboardEvent;
     const type = args.targetType;
 

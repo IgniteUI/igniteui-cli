@@ -1,8 +1,8 @@
-import { NgModule, ErrorHandler, Provider } from '@angular/core';
-import { PageNotFoundComponent } from './not-found/not-found.component';
-import { UncaughtErrorComponent } from './error/uncaught-error.component';
-import { GlobalErrorHandlerService } from './error/global-error-handler.service';
+import { ErrorHandler, NgModule, Provider } from '@angular/core';
 import { environment } from '../../environments/environment';
+import { GlobalErrorHandlerService } from './error/global-error-handler.service';
+import { UncaughtErrorComponent } from './error/uncaught-error.component';
+import { PageNotFoundComponent } from './not-found/not-found.component';
 
 const providers: Provider[] = [];
 

@@ -1,15 +1,17 @@
-import { FormsModule } from '@angular/forms';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-
-import { <%=ClassName%>Component } from './<%=filePrefix%>.component';
 import {
-  IgxSelectModule, IgxToggleModule, IgxButtonModule, IgxToastModule
+  IgxButtonModule,
+  IgxSelectModule,
+  IgxToastModule,
+  IgxToggleModule
 } from '<%=igxPackage%>';
+import { <%=ClassName%>Component } from './<%=filePrefix%>.component';
 
 describe('<%=ClassName%>Component', () => {
   let component: <%=ClassName%>Component;
-  let fixture: ComponentFixture<<%=ClassName%>Component >;
+  let fixture: ComponentFixture<<%=ClassName%>Component>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
