@@ -2,7 +2,6 @@ import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } fr
 import {
   GridSelectionMode,
   DefaultSortingStrategy,
-  IDialogEventArgs,
   IgxButtonGroupComponent,
   IgxDialogComponent,
   CellType,
@@ -169,7 +168,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
     }
   }
 
-  public onCloseHandler(evt: IDialogEventArgs): void {
+  public onCloseHandler(): void {
     this.buttonGroup1.selectButton(2);
     if (this.grid1.navigation.activeNode) {
       if (this.grid1.navigation.activeNode.row === -1) {
