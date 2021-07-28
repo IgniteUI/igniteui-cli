@@ -13,7 +13,7 @@
           <div class="sample-flex-container">
             <igx-input-group type="search" class="searchInputGroup">
               <igx-prefix>
-                <igx-icon class="prefixIcon" *ngIf="searchText.length == 0">search</igx-icon>
+                <igx-icon class="prefixIcon" *ngIf="searchText.length === 0">search</igx-icon>
                 <igx-icon class="prefixIcon" *ngIf="searchText.length > 0" (click)="clearSearch()">clear</igx-icon>
               </igx-prefix>
   
@@ -27,7 +27,7 @@
                     {{ grid1.lastSearchInfo.activeMatchIndex + 1 }} of {{
                     grid1.lastSearchInfo.matchInfoCache.length }} results
                   </span>
-                  <span *ngIf="grid1.lastSearchInfo.matchInfoCache.length == 0">
+                  <span *ngIf="grid1.lastSearchInfo.matchInfoCache.length === 0">
                     No results
                   </span>
                 </div>

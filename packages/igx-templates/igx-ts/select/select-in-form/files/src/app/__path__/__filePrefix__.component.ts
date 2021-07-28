@@ -6,7 +6,7 @@ import { IgxSelectComponent, IgxToastPosition, IgxToastComponent } from '<%=igxP
   styleUrls: ['<%=filePrefix%>.component.scss'],
   templateUrl: '<%=filePrefix%>.component.html'
 })
-export class <%=ClassName%> Component {
+export class <%=ClassName%>Component {
   @ViewChild(IgxSelectComponent, { static: true })
   public igxSelect!: IgxSelectComponent;
   @ViewChild(IgxToastComponent, { static: true })
