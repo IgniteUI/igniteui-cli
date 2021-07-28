@@ -1,21 +1,29 @@
 {
-    "compilerOptions": {
+	"compilerOptions": {
 		"baseUrl": ".",
-        "target": "es6",
-        "module": "commonjs",
+		"target": "es6",
+		"module": "commonjs",
 		"sourceMap": true,
 		"paths": {
-			"@igniteui/cli-core": ["./packages/core"],
-			"@igniteui/angular-templates": ["./packages/igx-templates"],
-			"@igniteui/angular-schematics": ["./packages/ng-schematics"],
-			"igniteui-cli": ["./packages/cli"]
+			"@igniteui/cli-core": [
+				"./packages/core"
+			],
+			"@igniteui/angular-templates": [
+				"./packages/igx-templates"
+			],
+			"@igniteui/angular-schematics": [
+				"./packages/ng-schematics"
+			],
+			"igniteui-cli": [
+				"./packages/cli"
+			]
 		}
-    },
-    "exclude": [
-        "output",
+	},
+	"exclude": [
+		"output",
 		"**/files/*",
 		"packages/cli/**/files/*",
 		"packages/cli/templates/quickstart/angular",
-        "node_modules"
+		"node_modules"
 	]
 }

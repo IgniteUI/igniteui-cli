@@ -1,21 +1,36 @@
 {
 	"extends": "tslint:latest",
-	"exclude": [ 
+	"exclude": [
 		"**/files/**/*.ts",
 		"./output/**/*.ts",
 		"./packages/cli/quickstart/**/*.ts"
 	],
 	"rules": {
-		"arrow-parens": [true, "ban-single-arg-parens"],
-		"indent": [ true, "tabs" ],
-		"comment-format": [ true,
+		"arrow-parens": [
+			true,
+			"ban-single-arg-parens"
+		],
+		"indent": [
+			true,
+			"tabs"
+		],
+		"comment-format": [
+			true,
 			"check-lowercase",
 			{
 				"ignore-pattern": "TODO|\\w\\.\\w"
 			}
 		],
-		"member-ordering": [true, {"order": "fields-first"}],
-		"variable-name": [ true, "allow-leading-underscore" ],
+		"member-ordering": [
+			true,
+			{
+				"order": "fields-first"
+			}
+		],
+		"variable-name": [
+			true,
+			"allow-leading-underscore"
+		],
 		"trailing-comma": [
 			true,
 			{
@@ -34,6 +49,11 @@
 		"max-classes-per-file": false,
 		"prefer-object-spread": false,
 		"prefer-conditional-expression": false,
-		"object-literal-sort-keys": [ true, "ignore-case", "match-declaration-order", "shorthand-first" ]
+		"object-literal-sort-keys": [
+			true,
+			"ignore-case",
+			"match-declaration-order",
+			"shorthand-first"
+		]
 	}
 }
