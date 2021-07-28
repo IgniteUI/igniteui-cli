@@ -16,11 +16,10 @@
                 <igx-icon class="prefixIcon" *ngIf="searchText.length === 0">search</igx-icon>
                 <igx-icon class="prefixIcon" *ngIf="searchText.length > 0" (click)="clearSearch()">clear</igx-icon>
               </igx-prefix>
-  
-              <input #search1 id="search1" class="searchInput" igxInput placeholder="Search"
-                [(ngModel)]="searchText" (ngModelChange)="grid1.findNext(searchText, caseSensitive)"
-                (keydown)="searchKeyDown($event)" />
-  
+
+              <input #search1 id="search1" class="searchInput" igxInput placeholder="Search" [(ngModel)]="searchText"
+                (ngModelChange)="grid1.findNext(searchText, caseSensitive)" (keydown)="searchKeyDown($event)" />
+
               <igx-suffix *ngIf="searchText.length > 0">
                 <div class="resultsText" *ngIf="grid1.lastSearchInfo">
                   <span *ngIf="grid1.lastSearchInfo.matchInfoCache.length > 0">
@@ -62,8 +61,8 @@
 
 
 
-    <igx-column field="id" header="Customer Number" width="172" [pinned]="true" [hasSummary]="false"
-      [resizable]="true" [hidden]="true" [movable]="true">
+    <igx-column field="id" header="Customer Number" width="172" [pinned]="true" [hasSummary]="false" [resizable]="true"
+      [hidden]="true" [movable]="true">
     </igx-column>
 
     <igx-column field="avatar" header="Photo" width="88" [pinned]="true" [resizable]="true" [searchable]="false"
@@ -115,8 +114,8 @@
     <igx-column field="position" header="Position" width="200" [resizable]="true" [movable]="true">
     </igx-column>
 
-    <igx-column field="company" header="Company" [sortable]="true" width="130" [hasSummary]="false"
-      [resizable]="true" [movable]="true">
+    <igx-column field="company" header="Company" [sortable]="true" width="130" [hasSummary]="false" [resizable]="true"
+      [movable]="true">
     </igx-column>
 
     <igx-column field="email" header="Email" width="240" [resizable]="true" [movable]="true" [filterable]="false">
