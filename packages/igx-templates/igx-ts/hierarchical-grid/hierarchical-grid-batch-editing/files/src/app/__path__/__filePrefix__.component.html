@@ -4,7 +4,7 @@
     target="_blank">README</a> or the
   <a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/hierarchicalgrid/batch-editing"
     target="_blank">official documentation</a>.</p>
-<br />    
+<br />
 <button igxButton="raised" (click)="dialogAddSinger.open()" class="addSingerBtn">Add Singer</button>
 
 <igx-hierarchical-grid igxPreventDocumentScroll  #hierarchicalGrid class="hgrid" [batchEditing]="true" [data]="localdata" primaryKey="Artist"
@@ -26,10 +26,8 @@
 
   <igx-row-island key="Albums" #layout1 primaryKey="Album" [rowEditable]="true">
   <igx-grid-toolbar [grid]="grid" *igxGridToolbar="let grid">
-
       <button igxButton [disabled]="!grid.transactions.canUndo" (click)="undo(grid)">Undo</button>
       <button igxButton [disabled]="!grid.transactions.canRedo" (click)="redo(grid)">Redo</button>
-
   </igx-grid-toolbar>
 
     <igx-column field="Album" [editable]="false" dataType="string"></igx-column>
@@ -41,6 +39,7 @@
 
   </igx-row-island>
 </igx-hierarchical-grid>
+
 <div class="buttons-row">
   <div class="buttons-wrapper">
     <button igxButton [disabled]="!hasTransactions" (click)="openCommitDialog()">Commit</button>
@@ -48,6 +47,7 @@
     <button igxButton [disabled]="!redoEnabledParent" (click)="redo(hierarchicalGrid)">Redo Parent</button>
   </div>
 </div>
+
 <igx-dialog #dialogAddSinger title="New Singer" rightButtonLabel="Add" leftButtonLabel="Cancel"
   (onLeftButtonSelect)="cancel()" (onRightButtonSelect)="addSinger()">
   <div class="dialogNewSinger">
@@ -70,6 +70,7 @@
     </igx-input-group>
   </div>
 </igx-dialog>
+
 <igx-dialog #dialogChanges title="Submit the following transactions?">
   <igx-grid igxPreventDocumentScroll #dialogGrid [data]="transactionsDataAll" [rowHeight]="64" primaryKey="id" width="650px" height="300px"
     emptyGridMessage="No available transactions">
@@ -91,4 +92,3 @@
     <button igxButton (click)="cancel()">Cancel</button>
   </div>
 </igx-dialog>
-

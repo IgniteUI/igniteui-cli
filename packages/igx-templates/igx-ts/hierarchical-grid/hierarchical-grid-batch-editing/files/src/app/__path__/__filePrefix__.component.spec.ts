@@ -5,7 +5,6 @@ import {
   IgxGridModule, IgxDatePickerModule, IgxCheckboxModule, IgxDialogModule, IgxHierarchicalGridModule
 } from '<%=igxPackage%>';
 import { <%=ClassName%>Component } from './<%=filePrefix%>.component';
-import { HierarchicalGridWithTransactionsComponent } from './<%=filePrefix%>-transactions.component';
 
 describe('<%=ClassName%>Component', () => {
   let component: <%=ClassName%>Component;
@@ -13,9 +12,16 @@ describe('<%=ClassName%>Component', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ <%=ClassName%>Component, HierarchicalGridWithTransactionsComponent ],
-      imports: [ FormsModule, NoopAnimationsModule, IgxGridModule, IgxHierarchicalGridModule,
-         IgxDatePickerModule, IgxCheckboxModule, IgxDialogModule ]
+      declarations: [<%=ClassName%>Component],
+      imports: [
+        FormsModule,
+        NoopAnimationsModule,
+        IgxGridModule,
+        IgxHierarchicalGridModule,
+        IgxDatePickerModule,
+        IgxCheckboxModule,
+        IgxDialogModule
+      ]
     })
     .compileComponents();
   }));

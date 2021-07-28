@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { IgxGridModule, IgxDatePickerModule, IgxCheckboxModule } from '<%=igxPackage%>';
+import { IgxCheckboxModule, IgxDatePickerModule, IgxGridModule } from '<%=igxPackage%>';
 import { <%=ClassName%>Component } from './<%=filePrefix%>.component';
 
 describe('<%=ClassName%>Component', () => {

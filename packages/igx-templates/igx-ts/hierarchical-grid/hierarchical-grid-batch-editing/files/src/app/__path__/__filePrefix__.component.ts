@@ -31,12 +31,12 @@ export class <%=ClassName%>Component {
   public transactionsDataAll: Transaction[] = [];
   private id = 14;
   public singer: Singer = {
-	ID: this.id,
-	Artist: 'Mock Jagger',
-	Debut: 2005,
-	GrammyAwards: 4,
-	GrammyNominations: 7,
-	HasGrammyAward: false
+    ID: this.id,
+    Artist: 'Mock Jagger',
+    Debut: 2005,
+    GrammyAwards: 4,
+    GrammyNominations: 7,
+    HasGrammyAward: false
   };
 
   @ViewChild('dialogChanges', { read: IgxDialogComponent, static: true })
@@ -54,7 +54,7 @@ export class <%=ClassName%>Component {
   @ViewChild('dialogAddSinger', { read: IgxDialogComponent, static: true })
   private dialogSinger!: IgxDialogComponent;
 
-  public formatter = (a: any) => a;
+  public formatter = (a: number): number => a;
 
   public undo(grid: IgxHierarchicalGridComponent): void {
     /* exit edit mode */

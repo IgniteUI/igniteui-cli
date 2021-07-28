@@ -1,15 +1,21 @@
-const data: { field: string, header?: boolean, disabled?: boolean }[] = [
-{ field: 'EU', header: true },
-{ field: 'Germany' },
-{ field: 'Bulgaria' },
-{ field: 'UK', disabled: true },
-{ field: 'NA', header: true },
-{ field: 'Canada' },
-{ field: 'USA' },
-{ field: 'Mexico' },
-{ field: 'SA', header: true },
-{ field: 'Brazil' },
-{ field: 'Colombia', disabled: true },
-{ field: 'Argentina' }];
+export interface Country {
+  name: string;
+  header?: boolean;
+  disabled?: boolean;
+}
+
+const data: Country[] = [
+  { name: 'EU', header: true },
+  { name: 'Germany' },
+  { name: 'Bulgaria' },
+  { name: 'UK', disabled: true },
+  { name: 'NA', header: true },
+  { name: 'Canada' },
+  { name: 'USA' },
+  { name: 'Mexico' },
+  { name: 'SA', header: true },
+  { name: 'Brazil' },
+  { name: 'Colombia', disabled: true },
+  { name: 'Argentina' }];
 
 export { data };

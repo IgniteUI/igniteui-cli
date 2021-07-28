@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { data } from './local-data';
+import { Country, data } from './local-data';
 
 @Component({
   selector: 'app-<%=filePrefix%>',
@@ -8,7 +8,5 @@ import { data } from './local-data';
 })
 
 export class <%=ClassName%>Component {
-
-  public items = data;
-
+  public items: Country[] = data;
 }
