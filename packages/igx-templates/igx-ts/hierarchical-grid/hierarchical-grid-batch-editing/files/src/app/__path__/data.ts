@@ -1,7 +1,5 @@
-/* tslint:disable */
 import { Singer } from "./singer";
 
-// tslint:disable:object-literal-sort-keys
 export const SINGERS: Singer[] = [
   {
     ID: 0,
@@ -91,78 +89,78 @@ export const SINGERS: Singer[] = [
         USBillboard200: 1,
         Artist: "Naomí Yepes",
         Songs: [{
-          Number: 1,
+          TrackNumber: 1,
           Title: "Intro",
           Genre: "*",
           Album: "Dream Driven"
         },
         {
-          Number: 2,
+          TrackNumber: 2,
           Title: "Ferocious",
           Released: new Date("28 Apr 2014"),
           Genre: "Dance-pop R&B",
           Album: "Dream Driven"
         },
         {
-          Number: 3,
+          TrackNumber: 3,
           Title: "Going crazy",
           Released: new Date("10 Feb 2015"),
           Genre: "Dance-pop EDM",
           Album: "Dream Driven"
         },
         {
-          Number: 4,
+          TrackNumber: 4,
           Title: "Future past",
           Genre: "*",
           Album: "Dream Driven"
         },
         {
-          Number: 5,
+          TrackNumber: 5,
           Title: "Roaming like them",
           Released: new Date("2 Jul 2014"),
           Genre: "Electro house Electropop",
           Album: "Dream Driven"
         },
         {
-          Number: 6,
+          TrackNumber: 6,
           Title: "Last Wishes",
           Released: new Date("12 Aug 2014"),
           Genre: "R&B",
           Album: "Dream Driven"
         },
         {
-          Number: 7,
+          TrackNumber: 7,
           Title: "Stay where you are",
           Genre: "*",
           Album: "Dream Driven"
         },
         {
-          Number: 8,
+          TrackNumber: 8,
           Title: "Imaginarium",
           Genre: "*",
           Album: "Dream Driven"
         },
         {
-          Number: 9,
+          TrackNumber: 9,
           Title: "Tell me",
           Released: new Date("30 Sep 2014"),
           Genre: "Synth-pop R&B",
           Album: "Dream Driven"
         },
         {
-          Number: 10,
+          TrackNumber: 10,
           Title: "Shredded into pieces",
           Genre: "*",
           Album: "Dream Driven"
         },
         {
-          Number: 11,
+          TrackNumber: 11,
           Title: "Capture this moment",
           Genre: "*",
           Album: "Dream Driven"
         },
         {
-          Number: 12,
+          TrackNumber: 12,
           Title: "Dream Driven",
           Genre: "*",
           Album: "Dream Driven"
@@ -182,77 +180,77 @@ export const SINGERS: Singer[] = [
         USBillboard200: 1,
         Artist: "Naomí Yepes",
         Songs: [{
-          Number: 1,
+          TrackNumber: 1,
           Title: "I Love",
           Released: new Date("11 May 2019"),
           Genre: "Crunk reggaeton",
           Album: "Organic me"
         },
         {
-          Number: 2,
+          TrackNumber: 2,
           Title: "Early Morning Compass",
           Released: new Date("15 Jan 2020"),
           Genre: "mystical parody-bap ",
           Album: "Organic me"
         },
         {
-          Number: 3,
+          TrackNumber: 3,
           Title: "Key Fields Forever",
           Released: new Date("2 Jan 2020"),
           Genre: "Dance-pop EDM",
           Album: "Organic me"
         },
         {
-          Number: 4,
+          TrackNumber: 4,
           Title: "Stand by Your Goblins",
           Released: new Date("20 Nov 2019"),
           Genre: "*",
           Album: "Organic me"
         },
         {
-          Number: 5,
+          TrackNumber: 5,
           Title: "Mad to Walk",
           Released: new Date("12 May 2019"),
           Genre: "Electro house Electropop",
           Album: "Organic me"
         },
         {
-          Number: 6,
+          TrackNumber: 6,
           Title: "Alice's Waiting",
           Released: new Date("28 Jan 2020"),
           Genre: "R&B",
           Album: "Organic me"
         },
         {
-          Number: 7,
+          TrackNumber: 7,
           Title: "We Shall Kiss",
           Released: new Date("30 Oct 2019"),
           Genre: "*",
           Album: "Organic me"
         },
         {
-          Number: 8,
+          TrackNumber: 8,
           Title: "Behind Single Ants",
           Released: new Date("2 Oct 2019"),
           Genre: "*",
           Album: "Organic me"
         },
         {
-          Number: 9,
+          TrackNumber: 9,
           Title: "Soap Autopsy",
           Released: new Date("8 Aug 2019"),
           Genre: "Synth-pop R&B",
           Album: "Organic me"
         },
         {
-          Number: 10,
+          TrackNumber: 10,
           Title: "Have You Met Rich?",
           Released: new Date("1 Jul 2019"),
           Genre: "ethno-tunes",
           Album: "Organic me"
         },
         {
-          Number: 11,
+          TrackNumber: 11,
           Title: "Livin' on a Banana",
           Released: new Date("22 Nov 2019"),
           Genre: "Crunk reggaeton",
@@ -320,70 +318,70 @@ export const SINGERS: Singer[] = [
         USBillboard200: 42,
         Artist: "Babila Ebwélé",
         Songs: [{
-          Number: 1,
+          TrackNumber: 1,
           Title: "Wood Shavings Forever",
           Released: new Date("9 Jun 2019"),
           Genre: "*",
           Album: "Pushing up daisies"
         },
         {
-          Number: 2,
+          TrackNumber: 2,
           Title: "Early Morning Drive",
           Released: new Date("20 May 2019"),
           Genre: "*",
           Album: "Pushing up daisies"
         },
         {
-          Number: 3,
+          TrackNumber: 3,
           Title: "Don't Natter",
           Released: new Date("10 Jun 2019"),
           Genre: "adult calypso-industrial",
           Album: "Pushing up daisies"
         },
         {
-          Number: 4,
+          TrackNumber: 4,
           Title: "Stairway to Balloons",
           Released: new Date("18 Jun 2019"),
           Genre: "calypso and mariachi",
           Album: "Pushing up daisies"
         },
         {
-          Number: 5,
+          TrackNumber: 5,
           Title: "The Number of your Apple",
           Released: new Date("29 Oct 2019"),
           Genre: "*",
           Album: "Pushing up daisies"
         },
         {
-          Number: 6,
+          TrackNumber: 6,
           Title: "Your Delightful Heart",
           Released: new Date("24 Feb 2019"),
           Genre: "*",
           Album: "Pushing up daisies"
         },
         {
-          Number: 7,
+          TrackNumber: 7,
           Title: "Nice Weather For Balloons",
           Released: new Date("1 Aug 2019"),
           Genre: "rap-hop",
           Album: "Pushing up daisies"
         },
         {
-          Number: 8,
+          TrackNumber: 8,
           Title: "The Girl From Cornwall",
           Released: new Date("4 May 2019"),
           Genre: "enigmatic rock-and-roll",
           Album: "Pushing up daisies"
         },
         {
-          Number: 9,
+          TrackNumber: 9,
           Title: "Here Without Jack",
           Released: new Date("24 Oct 2019"),
           Genre: "*",
           Album: "Pushing up daisies"
         },
         {
-          Number: 10,
+          TrackNumber: 10,
           Title: "Born Rancid",
           Released: new Date("19 Mar 2019"),
           Genre: "*",
@@ -397,77 +395,77 @@ export const SINGERS: Singer[] = [
         USBillboard200: 95,
         Artist: "Babila Ebwélé",
         Songs: [{
-          Number: 1,
+          TrackNumber: 1,
           Title: "Men Sound Better With You",
           Released: new Date("20 Oct 2019"),
           Genre: "rap-hop",
           Album: "Death's dead"
         },
         {
-          Number: 2,
+          TrackNumber: 2,
           Title: "Ghost in My Rod",
           Released: new Date("5 Oct 2019"),
           Genre: "enigmatic rock-and-roll",
           Album: "Death's dead"
         },
         {
-          Number: 3,
+          TrackNumber: 3,
           Title: "Bed of Men",
           Released: new Date("14 Nov 2019"),
           Genre: "whimsical comedy-grass ",
           Album: "Death's dead"
         },
         {
-          Number: 4,
+          TrackNumber: 4,
           Title: "Don't Push",
           Released: new Date("2 Jan 2020"),
           Genre: "unblack electronic-trip-hop",
           Album: "Death's dead"
         },
         {
-          Number: 5,
+          TrackNumber: 5,
           Title: "Nice Weather For Men",
           Released: new Date("18 Dec 2019"),
           Genre: "*",
           Album: "Death's dead"
         },
         {
-          Number: 6,
+          TrackNumber: 6,
           Title: "Rancid Rhapsody",
           Released: new Date("10 Mar 2019"),
           Genre: "*",
           Album: "Death's dead"
         },
         {
-          Number: 7,
+          TrackNumber: 7,
           Title: "Push, Push, Push!",
           Released: new Date("21 Feb 2019"),
           Genre: "*",
           Album: "Death's dead"
         },
         {
-          Number: 8,
+          TrackNumber: 8,
           Title: "My Name is Sarah",
           Released: new Date("15 Nov 2019"),
           Genre: "*",
           Album: "Death's dead"
         },
         {
-          Number: 9,
+          TrackNumber: 9,
           Title: "The Girl From My Hotel",
           Released: new Date("6 Nov 2019"),
           Genre: "*",
           Album: "Death's dead"
         },
         {
-          Number: 10,
+          TrackNumber: 10,
           Title: "Free Box",
           Released: new Date("18 Apr 2019"),
           Genre: "splitter-funk",
           Album: "Death's dead"
         },
         {
-          Number: 11,
+          TrackNumber: 11,
           Title: "Hotel Cardiff",
           Released: new Date("30 Dec 2019"),
           Genre: "guilty pleasure ebm",
@@ -574,70 +572,70 @@ export const SINGERS: Singer[] = [
         USBillboard200: 53,
         Artist: "Izabella Tabakova",
         Songs: [{
-          Number: 1,
+          TrackNumber: 1,
           Title: "Whole Lotta Super Cats",
           Released: new Date("21 May 2019"),
           Genre: "*",
           Album: "Once bitten"
         },
         {
-          Number: 2,
+          TrackNumber: 2,
           Title: "Enter Becky",
           Released: new Date("16 Jan 2020"),
           Genre: "*",
           Album: "Once bitten"
         },
         {
-          Number: 3,
+          TrackNumber: 3,
           Title: "Your Cheatin' Flamingo",
           Released: new Date("14 Jan 2020"),
           Genre: "*",
           Album: "Once bitten"
         },
         {
-          Number: 4,
+          TrackNumber: 4,
           Title: "Mad to Kiss",
           Released: new Date("6 Nov 2019"),
           Genre: "Synth-pop R&B",
           Album: "Once bitten"
         },
         {
-          Number: 5,
+          TrackNumber: 5,
           Title: "Hotel Prague",
           Released: new Date("20 Oct 2019"),
           Genre: "ethno-tunes",
           Album: "Once bitten"
         },
         {
-          Number: 6,
+          TrackNumber: 6,
           Title: "Jail on My Mind",
           Released: new Date("31 May 2019"),
           Genre: "Crunk reggaeton",
           Album: "Once bitten"
         },
         {
-          Number: 7,
+          TrackNumber: 7,
           Title: "Amazing Blues",
           Released: new Date("29 May 2019"),
           Genre: "mystical parody-bap ",
           Album: "Once bitten"
         },
         {
-          Number: 8,
+          TrackNumber: 8,
           Title: "Goody Two Iron Filings",
           Released: new Date("4 Jul 2019"),
           Genre: "Electro house Electropop",
           Album: "Once bitten"
         },
         {
-          Number: 9,
+          TrackNumber: 9,
           Title: "I Love in Your Arms",
           Released: new Date("7 Jun 2019"),
           Genre: "R&B",
           Album: "Once bitten"
         },
         {
-          Number: 10,
+          TrackNumber: 10,
           Title: "Truly Madly Amazing",
           Released: new Date("12 Sep 2019"),
           Genre: "ethno-tunes",
@@ -653,70 +651,70 @@ export const SINGERS: Singer[] = [
         Artist: "Izabella Tabakova",
         Songs: [
           {
-            Number: 1,
+            TrackNumber: 1,
             Title: "We Shall Tickle",
             Released: new Date("31 Aug 2019"),
             Genre: "old emo-garage ",
             Album: "Your graciousness"
           },
           {
-            Number: 2,
+            TrackNumber: 2,
             Title: "Snail Boogie",
             Released: new Date("14 Jun 2019"),
             Genre: "*",
             Album: "Your graciousness"
           },
           {
-            Number: 3,
+            TrackNumber: 3,
             Title: "Amazing Liz",
             Released: new Date("15 Oct 2019"),
             Genre: "*",
             Album: "Your graciousness"
           },
           {
-            Number: 4,
+            TrackNumber: 4,
             Title: "When Sexy Aardvarks Cry",
             Released: new Date("1 Oct 2019"),
             Genre: "whimsical comedy-grass ",
             Album: "Your graciousness"
           },
           {
-            Number: 5,
+            TrackNumber: 5,
             Title: "Stand By Dave",
             Released: new Date("18 Aug 2019"),
             Genre: "unblack electronic-trip-hop",
             Album: "Your graciousness"
           },
           {
-            Number: 6,
+            TrackNumber: 6,
             Title: "The Golf Course is Your Land",
             Released: new Date("2 Apr 2019"),
             Genre: "*",
             Album: "Your graciousness"
           },
           {
-            Number: 7,
+            TrackNumber: 7,
             Title: "Where Have All the Men Gone?",
             Released: new Date("29 Apr 2019"),
             Genre: "*",
             Album: "Your graciousness"
           },
           {
-            Number: 8,
+            TrackNumber: 8,
             Title: "Rhythm of the Leg",
             Released: new Date("5 Aug 2019"),
             Genre: "ethno-tunes",
             Album: "Your graciousness"
           },
           {
-            Number: 9,
+            TrackNumber: 9,
             Title: "Baby, I Need Your Hats",
             Released: new Date("5 Dec 2019"),
             Genre: "neuro-tunes",
             Album: "Your graciousness"
           },
           {
-            Number: 10,
+            TrackNumber: 10,
             Title: "Stand by Your Cat",
             Released: new Date("25 Jul 2019"),
             Genre: "*",
@@ -822,98 +820,98 @@ export const SINGERS: Singer[] = [
         Artist: "Siri Jakobsson",
         Songs: [
           {
-            Number: 1,
+            TrackNumber: 1,
             Title: "Jack Broke My Heart At Tesco's",
             Released: new Date("19 Jan 2020"),
             Genre: "*",
             Album: "Under the bus"
           },
           {
-            Number: 2,
+            TrackNumber: 2,
             Title: "Cat Deep, Hats High",
             Released: new Date("5 Dec 2019"),
             Genre: "*",
             Album: "Under the bus"
           },
           {
-            Number: 3,
+            TrackNumber: 3,
             Title: "In Snail We Trust",
             Released: new Date("31 May 2019"),
             Genre: "hardcore opera",
             Album: "Under the bus"
           },
           {
-            Number: 4,
+            TrackNumber: 4,
             Title: "Liz's Waiting",
             Released: new Date("22 Jul 2019"),
             Genre: "emotional C-jam ",
             Album: "Under the bus"
           },
           {
-            Number: 5,
+            TrackNumber: 5,
             Title: "Lifeless Blues",
             Released: new Date("14 Jun 2019"),
             Genre: "*",
             Album: "Under the bus"
           },
           {
-            Number: 6,
+            TrackNumber: 6,
             Title: "I Spin",
             Released: new Date("26 Mar 2019"),
             Genre: "*",
             Album: "Under the bus"
           },
           {
-            Number: 7,
+            TrackNumber: 7,
             Title: "Ring of Rock",
             Released: new Date("12 Dec 2019"),
             Genre: "*",
             Album: "Under the bus"
           },
           {
-            Number: 8,
+            TrackNumber: 8,
             Title: "Livin' on a Rock",
             Released: new Date("17 Apr 2019"),
             Genre: "*",
             Album: "Under the bus"
           },
           {
-            Number: 9,
+            TrackNumber: 9,
             Title: "Your Lifeless Heart",
             Released: new Date("15 Sep 2019"),
             Genre: "adult calypso-industrial",
             Album: "Under the bus"
           },
           {
-            Number: 10,
+            TrackNumber: 10,
             Title: "The High Street on My Mind",
             Released: new Date("11 Nov 2019"),
             Genre: "calypso and mariachi",
             Album: "Under the bus"
           },
           {
-            Number: 11,
+            TrackNumber: 11,
             Title: "Behind Ugly Curtains",
             Released: new Date("8 May 2019"),
             Genre: "*",
             Album: "Under the bus"
           },
           {
-            Number: 12,
+            TrackNumber: 12,
             Title: "Where Have All the Curtains Gone?",
             Released: new Date("28 Jun 2019"),
             Genre: "*",
             Album: "Under the bus"
           },
           {
-            Number: 13,
+            TrackNumber: 13,
             Title: "Ghost in My Apple",
             Released: new Date("14 Dec 2019"),
             Genre: "*",
             Album: "Under the bus"
           },
           {
-            Number: 14,
+            TrackNumber: 14,
             Title: "I Chatter",
             Released: new Date("30 Nov 2019"),
             Genre: "*",
@@ -997,63 +995,63 @@ export const SINGERS: Singer[] = [
         USBillboard200: 84,
         Artist: "Pablo Cambeiro",
         Songs: [{
-          Number: 1,
+          TrackNumber: 1,
           Title: "My Bed on My Mind",
           Released: new Date("25 Mar 2019"),
           Genre: "ethno-tunes",
           Album: "Crowd control"
         },
         {
-          Number: 2,
+          TrackNumber: 2,
           Title: "Bright Blues",
           Released: new Date("28 Sep 2019"),
           Genre: "neuro-tunes",
           Album: "Crowd control"
         },
         {
-          Number: 3,
+          TrackNumber: 3,
           Title: "Sail, Sail, Sail!",
           Released: new Date("5 Mar 2019"),
           Genre: "*",
           Album: "Crowd control"
         },
         {
-          Number: 4,
+          TrackNumber: 4,
           Title: "Hotel My Bed",
           Released: new Date("22 Mar 2019"),
           Genre: "*",
           Album: "Crowd control"
         },
         {
-          Number: 5,
+          TrackNumber: 5,
           Title: "Gonna Make You Mash",
           Released: new Date("18 May 2019"),
           Genre: "*",
           Album: "Crowd control"
         },
         {
-          Number: 6,
+          TrackNumber: 6,
           Title: "Straight Outta America",
           Released: new Date("16 Jan 2020"),
           Genre: "hardcore opera",
           Album: "Crowd control"
         },
         {
-          Number: 7,
+          TrackNumber: 7,
           Title: "I Drive",
           Released: new Date("23 Feb 2019"),
           Genre: "emotional C-jam ",
           Album: "Crowd control"
         },
         {
-          Number: 8,
+          TrackNumber: 8,
           Title: "Like a Teddy",
           Released: new Date("31 Aug 2019"),
           Genre: "*",
           Album: "Crowd control"
         },
         {
-          Number: 9,
+          TrackNumber: 9,
           Title: "Teddy Boogie",
           Released: new Date("30 Nov 2019"),
           Genre: "*",
@@ -1117,84 +1115,84 @@ export const SINGERS: Singer[] = [
         USBillboard200: 19,
         Artist: "Marti Valencia",
         Songs: [{
-          Number: 1,
+          TrackNumber: 1,
           Title: "My Name is Jason",
           Released: new Date("12 Jul 2019"),
           Genre: "*",
           Album: "First chance"
         },
         {
-          Number: 2,
+          TrackNumber: 2,
           Title: "Amazing Andy",
           Released: new Date("5 Mar 2019"),
           Genre: "*",
           Album: "First chance"
         },
         {
-          Number: 3,
+          TrackNumber: 3,
           Title: "The Number of your Knight",
           Released: new Date("4 Dec 2019"),
           Genre: "*",
           Album: "First chance"
         },
         {
-          Number: 4,
+          TrackNumber: 4,
           Title: "I Sail",
           Released: new Date("3 Mar 2019"),
           Genre: "*",
           Album: "First chance"
         },
         {
-          Number: 5,
+          TrackNumber: 5,
           Title: "Goody Two Hands",
           Released: new Date("11 Oct 2019"),
           Genre: "Electro house Electropop",
           Album: "First chance"
         },
         {
-          Number: 6,
+          TrackNumber: 6,
           Title: "Careful With That Knife",
           Released: new Date("18 Dec 2019"),
           Genre: "R&B",
           Album: "First chance"
         },
         {
-          Number: 7,
+          TrackNumber: 7,
           Title: "Four Single Ants",
           Released: new Date("18 Jan 2020"),
           Genre: "*",
           Album: "First chance"
         },
         {
-          Number: 8,
+          TrackNumber: 8,
           Title: "Kiss Forever",
           Released: new Date("10 Aug 2019"),
           Genre: "*",
           Album: "First chance"
         },
         {
-          Number: 9,
+          TrackNumber: 9,
           Title: "Rich's Waiting",
           Released: new Date("15 Mar 2019"),
           Genre: "Synth-pop R&B",
           Album: "First chance"
         },
         {
-          Number: 10,
+          TrackNumber: 10,
           Title: "Japan is Your Land",
           Released: new Date("7 Mar 2019"),
           Genre: "ethno-tunes",
           Album: "First chance"
         },
         {
-          Number: 11,
+          TrackNumber: 11,
           Title: "Pencils in My Banana",
           Released: new Date("21 Jun 2019"),
           Genre: "Crunk reggaeton",
           Album: "First chance"
         },
         {
-          Number: 12,
+          TrackNumber: 12,
           Title: "I Sail in Your Arms",
           Released: new Date("30 Apr 2019"),
           Genre: "Synth-pop R&B",
