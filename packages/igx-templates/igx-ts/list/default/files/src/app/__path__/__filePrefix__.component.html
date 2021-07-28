@@ -23,7 +23,9 @@
       <span class="phone">{{ contact.phone }}</span>
     </div>
     </div>
-    <igx-icon [color]="contact.isFavorite ? 'orange' : 'lightgray'" (click)="toggleFavorite(item)">star</igx-icon>
+    <igx-icon class="icon" [ngClass]="{ 'icon--favorite': contact.isFavorite }"
+      (click)="toggleFavorite(item)">star
+    </igx-icon>
   </div>
   </igx-list-item>
 </igx-list>
