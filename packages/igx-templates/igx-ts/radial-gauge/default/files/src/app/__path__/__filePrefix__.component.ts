@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ViewEncapsulation, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild, ViewEncapsulation } from '@angular/core';
 // radial gauge imports
 import { SweepDirection } from 'igniteui-angular-core';
 import {
@@ -147,8 +147,8 @@ export class <%=ClassName%>Component implements AfterViewInit {
     const range3 = new IgxRadialGaugeRangeComponent();
     range3.startValue = 35;
     range3.endValue = 45;
-    this.radialGauge.rangeBrushes  = [ '#F86232', '#DC3F76', '#7446B9'];
-    this.radialGauge.rangeOutlines = [ '#F86232', '#DC3F76', '#7446B9'];
+    this.radialGauge.rangeBrushes = ['#F86232', '#DC3F76', '#7446B9'];
+    this.radialGauge.rangeOutlines = ['#F86232', '#DC3F76', '#7446B9'];
     this.radialGauge.ranges.clear();
     this.radialGauge.ranges.add(range1);
     this.radialGauge.ranges.add(range2);
@@ -207,8 +207,8 @@ export class <%=ClassName%>Component implements AfterViewInit {
     range2.startValue = 150;
     range2.endValue = 200;
 
-    this.radialGauge.rangeBrushes  = [ '#32f845', '#bf32f8' ];
-    this.radialGauge.rangeOutlines = [ '#32f845', '#bf32f8' ];
+    this.radialGauge.rangeBrushes = ['#32f845', '#bf32f8'];
+    this.radialGauge.rangeOutlines = ['#32f845', '#bf32f8'];
     this.radialGauge.ranges.clear();
     this.radialGauge.ranges.add(range1);
     this.radialGauge.ranges.add(range2);
@@ -267,8 +267,8 @@ export class <%=ClassName%>Component implements AfterViewInit {
     range2.startValue = 5;
     range2.endValue = 10;
 
-    this.radialGauge.rangeBrushes  = [ '#a4bd29', '#F86232' ];
-    this.radialGauge.rangeOutlines = [ '#a4bd29', '#F86232' ];
+    this.radialGauge.rangeBrushes = ['#a4bd29', '#F86232'];
+    this.radialGauge.rangeOutlines = ['#a4bd29', '#F86232'];
     this.radialGauge.ranges.clear();
     this.radialGauge.ranges.add(range1);
     this.radialGauge.ranges.add(range2);

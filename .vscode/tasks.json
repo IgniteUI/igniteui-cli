@@ -5,8 +5,8 @@
 	"command": "npm",
 	"tasks": [
 		{
-		// Build task, Ctrl+Shift+B
-        // "npm run build"
+			// Build task, Ctrl+Shift+B
+			// "npm run build"
 			"label": "build",
 			"type": "shell",
 			"args": [
