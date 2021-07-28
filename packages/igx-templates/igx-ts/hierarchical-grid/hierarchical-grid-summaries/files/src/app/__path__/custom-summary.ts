@@ -5,7 +5,7 @@ export class CustomSummary extends IgxNumberSummaryOperand {
     super();
   }
 
-  public operate(data?: any[]): IgxSummaryResult[] {
+  public operate(data?: number[]): IgxSummaryResult[] {
     const result: IgxSummaryResult[] = [];
     if (!data) {
       return result;

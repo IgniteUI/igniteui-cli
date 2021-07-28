@@ -5,8 +5,10 @@ import {
 import {
   AbsoluteScrollStrategy,
   ConnectedPositioningStrategy,
-	GridSelectionMode,
+  GridSelectionMode,
   HorizontalAlignment,
+  IButtonGroupEventArgs,
+  IChangeSwitchEventArgs,
   IgxButtonGroupComponent,
   IgxSliderComponent,
   IgxTreeGridComponent,
@@ -27,16 +29,16 @@ import { ITreeGridAggregation } from './tree-grid-grouping.pipe';
   styleUrls: ['./<%=filePrefix%>.component.scss']
 })
 export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy {
-  @ViewChild('grid1', { static: true }) public grid1: IgxTreeGridComponent;
-  @ViewChild('buttonGroup1', { static: true }) public buttonGroup1: IgxButtonGroupComponent;
-  @ViewChild('slider1', { static: true }) public volumeSlider: IgxSliderComponent;
-  @ViewChild('slider2', { static: true }) public intervalSlider: IgxSliderComponent;
+  @ViewChild('grid1', { static: true }) public grid1!: IgxTreeGridComponent;
+  @ViewChild('buttonGroup1', { static: true }) public buttonGroup1!: IgxButtonGroupComponent;
+  @ViewChild('slider1', { static: true }) public volumeSlider!: IgxSliderComponent;
+  @ViewChild('slider2', { static: true }) public intervalSlider!: IgxSliderComponent;
 
-  public showToolbar = true;
+  public showToolbar: boolean = true;
   public selectionMode: GridSelectionMode = 'multiple';
-  public theme = false;
-  public volume = 1000;
-  public frequency = 500;
+  public theme: boolean = false;
+  public volume: number = 1000;
+  public frequency: number = 500;
   public data: any[] = [];
   public controls = [
     {
@@ -98,43 +100,43 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
     scrollStrategy: new AbsoluteScrollStrategy()
   };
 
-  private subscription;
-  private selectedButton;
-  private timer;
-  private volumeChanged;
+  private subscription: any;
+  private selectedButton: number = -1;
+  private timer: any;
+  private volumeChanged: any;
 
   constructor(private zone: NgZone, private localService: LocalDataService, private elRef: ElementRef) {
     this.subscription = this.localService.getData(this.volume);
     this.localService.records.subscribe((d) => this.data = d);
   }
 
-  public ngOnInit() {
+  public ngOnInit(): void {
     this.grid1.sortingExpressions = [{ fieldName: this.groupColumnKey, dir: SortingDirection.Desc }];
     this.volumeChanged = this.volumeSlider.valueChange.pipe(debounce(() => timer(200)));
     this.volumeChanged.subscribe(
-      (x) => {
+      (x: any) => {
         this.localService.getData(this.volume);
       },
-      (err) => console.log('Error: ' + err));
+      (err: string) => console.log('Error: ' + err));
   }
 
-  public ngAfterViewInit() {
+  public ngAfterViewInit(): void {
     this.grid1.reflow();
   }
-  public onButtonAction(event: any) {
-    switch (event.index) {
+  public onButtonAction(evt: IButtonGroupEventArgs): void {
+    switch (evt.index) {
       case 0: {
-          this.disableOtherButtons(event.index, true);
+          this.disableOtherButtons(evt.index, true);
           this.timer = setInterval(() => this.ticker(this.data), this.frequency);
           break;
         }
       case 1: {
-          this.disableOtherButtons(event.index, true);
+          this.disableOtherButtons(evt.index, true);
           this.timer = setInterval(() => this.tickerAllPrices(this.data), this.frequency);
           break;
         }
         case 2: {
-          this.disableOtherButtons(event.index, false);
+          this.disableOtherButtons(evt.index, false);
           this.stopFeed();
           break;
         }
@@ -145,7 +147,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
     }
   }
 
-  public stopFeed() {
+  public stopFeed(): void {
     if (this.timer) {
       clearInterval(this.timer);
     }
@@ -154,15 +156,15 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
     }
   }
 
-  public formatNumber(value: number) {
+  public formatNumber(value: number): string {
     return value ? value.toFixed(2) : '';
   }
 
-  public percentage(value: number) {
+  public percentage(value: number): string {
     return value ? value.toFixed(2) + '%' : '';
   }
 
-  public formatCurrency(value: number) {
+  public formatCurrency(value: number): string {
     return value ? '$' + value.toFixed(3) : '';
   }
 
@@ -170,21 +172,21 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
    * the below code is needed when accessing the sample through the navigation
    * it will style all the space below the sample component element, but not the navigation menu
    */
-  public onThemeChanged(event: any) {
+  public onThemeChanged(evt: IChangeSwitchEventArgs): void {
     const parentEl = this.parentComponentEl();
-    if (event.checked && parentEl.classList.contains('main')) {
+    if (evt.checked && parentEl.classList.contains('main')) {
       parentEl.classList.add('fin-dark-theme');
     } else {
       parentEl.classList.remove('fin-dark-theme');
     }
   }
 
-  public ngOnDestroy() {
+  public ngOnDestroy(): void {
     this.stopFeed();
     this.volumeChanged.unsubscribe();
   }
 
-  public toggleToolbar() {
+  public toggleToolbar(): void {
     this.showToolbar = !this.showToolbar;
   }
 
@@ -225,7 +227,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
   };
   // tslint:enable:member-ordering
 
-  private disableOtherButtons(ind: number, disableButtons: boolean) {
+  private disableOtherButtons(ind: number, disableButtons: boolean): void {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
@@ -243,22 +245,22 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
    * returns the main div container of the Index Component,
    * if path is /samples/sample-url, or the appRoot, if path is /sample-url
    */
-  private parentComponentEl() {
+  private parentComponentEl(): HTMLElement {
     return this.elRef.nativeElement.parentElement.parentElement;
   }
 
-  private ticker(data: any) {
+  private ticker(data: any): void {
     this.data = this.updateRandomPrices(data);
   }
 
-  private tickerAllPrices(data: any) {
+  private tickerAllPrices(data: any): void {
     this.updateAllPrices(data);
   }
 
   /**
    * Updates values in every record
    */
-  private updateAllPrices(data: any[]): any {
+  private updateAllPrices(data: any[]): void {
     for (const dataRow of data) {
       this.randomizeObjectData(dataRow);
     }
@@ -281,7 +283,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
   /**
    * Generates ne values for Change, Price and ChangeP columns
    */
-  private randomizeObjectData(dataObj) {
+  private randomizeObjectData(dataObj: any): void {
     const changeP = 'Change(%)';
     const res = this.generateNewPrice(dataObj.Price);
     dataObj.Change = res.Price - dataObj.Price;
@@ -289,7 +291,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
     dataObj[changeP] = res.ChangePercent;
   }
 
-  private generateNewPrice(oldPrice): any {
+  private generateNewPrice(oldPrice: number): any {
     let rnd = Math.random();
     rnd = Math.round(rnd * 100) / 100;
     const volatility = 2;

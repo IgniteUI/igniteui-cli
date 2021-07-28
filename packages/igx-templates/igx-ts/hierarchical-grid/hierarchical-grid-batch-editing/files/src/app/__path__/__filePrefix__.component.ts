@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IgxDialogComponent, IgxGridComponent, IgxHierarchicalGridComponent,
   IgxRowIslandComponent, Transaction } from '<%=igxPackage%>';
 import { SINGERS } from './data';
@@ -9,7 +9,7 @@ import { Singer } from './singer';
   templateUrl: './<%=filePrefix%>.component.html',
   styleUrls: ['./<%=filePrefix%>.component.scss']
 })
-export class <%=ClassName%>Component implements OnInit {
+export class <%=ClassName%>Component {
   public get undoEnabledParent(): boolean {
     return this.hierarchicalGrid.transactions.canUndo;
   }
@@ -27,15 +27,23 @@ export class <%=ClassName%>Component implements OnInit {
       .find(c => c.transactions.getAggregatedChanges(false).length > 0) !== undefined;
   }
 
-  public localdata!: Singer[];
-  public singer!: Singer;
+  public localdata: Singer[] = SINGERS;
   public transactionsDataAll: Transaction[] = [];
   private id = 14;
+  public singer: Singer = {
+	ID: this.id,
+	Artist: 'Mock Jagger',
+	Debut: 2005,
+	GrammyAwards: 4,
+	GrammyNominations: 7,
+	HasGrammyAward: false
+  };
 
   @ViewChild('dialogChanges', { read: IgxDialogComponent, static: true })
   public dialogChanges!: IgxDialogComponent;
 
-  @ViewChild('dialogGrid', { read: IgxGridComponent, static: true }) public dialogGrid!: IgxGridComponent;
+  @ViewChild('dialogGrid', { read: IgxGridComponent, static: true })
+  public dialogGrid!: IgxGridComponent;
 
   @ViewChild('layout1', { static: true })
   private layout1!: IgxRowIslandComponent;
@@ -46,33 +54,19 @@ export class <%=ClassName%>Component implements OnInit {
   @ViewChild('dialogAddSinger', { read: IgxDialogComponent, static: true })
   private dialogSinger!: IgxDialogComponent;
 
-  constructor() {}
-
-  public ngOnInit(): void {
-    this.localdata = SINGERS;
-    this.singer = {
-      ID: this.id,
-      Artist: 'Mock Jagger',
-      Debut: 2005,
-      GrammyAwards: 4,
-      GrammyNominations: 7,
-      HasGrammyAward: false
-    };
-  }
-
   public formatter = (a: any) => a;
 
-  public undo(grid: IgxHierarchicalGridComponent) {
+  public undo(grid: IgxHierarchicalGridComponent): void {
     /* exit edit mode */
     grid.endEdit(/* commit the edit transaction */ false);
     grid.transactions.undo();
   }
 
-  public redo(grid: IgxHierarchicalGridComponent) {
+  public redo(grid: IgxHierarchicalGridComponent): void {
     grid.transactions.redo();
   }
 
-  public commit() {
+  public commit(): void {
     this.hierarchicalGrid.transactions.commit(this.localdata);
     this.layout1.hgridAPI.getChildGrids().forEach((grid) => {
       grid.transactions.commit(grid.data);
@@ -80,7 +74,7 @@ export class <%=ClassName%>Component implements OnInit {
     this.dialogChanges.close();
   }
 
-  public discard() {
+  public discard(): void {
     this.hierarchicalGrid.transactions.clear();
     this.layout1.hgridAPI.getChildGrids().forEach((grid) => {
       grid.transactions.clear();
@@ -88,7 +82,7 @@ export class <%=ClassName%>Component implements OnInit {
     this.dialogChanges.close();
   }
 
-  public openCommitDialog() {
+  public openCommitDialog(): void {
     this.transactionsDataAll = [...this.hierarchicalGrid.transactions.getAggregatedChanges(true)];
     this.layout1.hgridAPI.getChildGrids().forEach((grid) => {
       this.transactionsDataAll = this.transactionsDataAll.concat(grid.transactions.getAggregatedChanges(true));
@@ -97,24 +91,24 @@ export class <%=ClassName%>Component implements OnInit {
     this.dialogGrid.reflow();
   }
 
-  public addSinger() {
+  public addSinger(): void {
     this.hierarchicalGrid.addRow(this.singer);
     ++this.id;
     this.cancel();
   }
 
-  public removeRow(rowIndex: number) {
+  public removeRow(rowIndex: number): void {
     const row = this.hierarchicalGrid.getRowByIndex(rowIndex);
     if (row && row.delete) {
       row.delete();
     }
   }
 
-  public stateFormatter(value: string) {
+  public stateFormatter(value: string): string {
     return JSON.stringify(value);
   }
 
-  public typeFormatter(value: string) {
+  public typeFormatter(value: string): string {
     return value.toUpperCase();
   }
 
@@ -122,7 +116,7 @@ export class <%=ClassName%>Component implements OnInit {
     return `transaction--${type.toLowerCase()}`;
   }
 
-  public cancel() {
+  public cancel(): void {
     this.dialogChanges.close();
     this.dialogSinger.close();
     this.singer = {
