@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 export interface NodeData {
   Name: string;
   Icon: string;
@@ -20,6 +19,7 @@ export const REMOTE_DATA: NodeData[] = [
   { Name: 'TABLET-ABC', Icon: 'tablet' },
   { Name: 'PHONE-123', Icon: 'smartphone' }
 ];
+
 export const DATA: NodeData[] = [
   {
     Name: 'Computer', Icon: 'computer', Files: [

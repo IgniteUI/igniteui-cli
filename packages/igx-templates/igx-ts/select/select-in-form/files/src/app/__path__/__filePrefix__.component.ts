@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IgxSelectComponent, IgxToastPosition, IgxToastComponent } from '<%=igxPackage%>';
+import { IgxSelectComponent, IgxToastComponent, IgxToastPosition } from '<%=igxPackage%>';
 
 @Component({
   selector: 'app-<%=filePrefix%>',
@@ -9,8 +9,10 @@ import { IgxSelectComponent, IgxToastPosition, IgxToastComponent } from '<%=igxP
 export class <%=ClassName%>Component {
   @ViewChild(IgxSelectComponent, { static: true })
   public igxSelect!: IgxSelectComponent;
+
   @ViewChild(IgxToastComponent, { static: true })
   public output!: IgxToastComponent;
+
   public selected!: string;
   public fruits: string[] = ['Orange', 'Apple', 'Banana', 'Mango'];
   public outputPosition = IgxToastPosition.Middle;

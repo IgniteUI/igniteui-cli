@@ -35,7 +35,7 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 		}];
 	}
 
-	public generateConfig(name: string, ...options: any[]): {[key: string]: any} {
+	public generateConfig(name: string, ...options: any[]): { [key: string]: any } {
 		let toolbar = "";
 		const toolbarActions = [];
 		const columnFeatures = [];
@@ -59,12 +59,12 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 			for (const feature of this.userExtraConfiguration["columnFeatures"] as string[]) {
 				switch (feature) {
 					case "Sorting":
-					this.formatTreeGridFeatures(feature, columnFeatures, columnBoolFeatures);
-					break;
+						this.formatTreeGridFeatures(feature, columnFeatures, columnBoolFeatures);
+						break;
 					case "Filtering":
-					this.formatTreeGridFeatures(feature, columnFeatures, columnBoolFeatures);
-					treeGridFeatures.push('[allowFiltering]="true"');
-					break;
+						this.formatTreeGridFeatures(feature, columnFeatures, columnBoolFeatures);
+						treeGridFeatures.push('[allowFiltering]="true"');
+						break;
 					case "Resizing":
 						this.formatTreeGridFeatures(feature, columnFeatures, columnBoolFeatures);
 						break;
@@ -127,7 +127,7 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 				anchorWrapper.href = featuresUrls[i];
 				anchorWrapper.text = e;
 				return ` ${anchorWrapper.start}${anchorWrapper.href}${anchorWrapper.middle}` +
-				`${anchorWrapper.text}${anchorWrapper.end}`;
+					`${anchorWrapper.text}${anchorWrapper.end}`;
 			}).toString();
 			if (selectedFeatures.length > 0) {
 				selectedFeatures = `<p>Active Features:<br />${selectedFeatures}</p>`;

@@ -1,4 +1,13 @@
-export const EMPLOYEE_DATA = [
+export interface Employee {
+  Age: number;
+  Employees?: Employee[];
+  HireDate: Date;
+  ID: number;
+  Name: string;
+  Location: string;
+}
+
+export const EMPLOYEE_DATA: Employee[] = [
   {
     Age: 55,
     Employees: [
@@ -40,7 +49,8 @@ export const EMPLOYEE_DATA = [
         ID: 11,
         Name: 'Monica Reyes',
         Location: 'London'
-      }],
+      }
+    ],
     HireDate: new Date(2008, 3, 20),
     ID: 1,
     Name: 'Johnathan Winchester',
@@ -71,7 +81,8 @@ export const EMPLOYEE_DATA = [
         ID: 5,
         Name: 'Elizabeth Richards',
         Location: 'New Jersey'
-      }],
+      }
+    ],
     HireDate: new Date(2014, 1, 22),
     ID: 4,
     Name: 'Ana Sanders',
@@ -87,7 +98,8 @@ export const EMPLOYEE_DATA = [
         ID: 17,
         Name: 'Antonio Moreno',
         Location: 'New Jersey'
-      }],
+      }
+    ],
     HireDate: new Date(2014, 1, 22),
     ID: 18,
     Name: 'Victoria Lincoln',
@@ -133,7 +145,8 @@ export const EMPLOYEE_DATA = [
         ID: 8,
         Name: 'Casey Harper',
         Location: 'Tokyo'
-      }],
+      }
+    ],
     HireDate: new Date(2010, 1, 1),
     ID: 10,
     Name: 'Yuki Onna',
