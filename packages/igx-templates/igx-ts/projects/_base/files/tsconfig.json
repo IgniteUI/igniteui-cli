@@ -7,6 +7,7 @@
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
+    "strict": true,
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
@@ -20,6 +21,7 @@
     ]
   },
   "angularCompilerOptions": {
-    "enableI18nLegacyMessageIdFormat": false
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictTemplates": true
   }
 }

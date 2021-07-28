@@ -9,9 +9,9 @@ import { IgxDialogComponent, IgxGridComponent, Transaction } from '<%=igxPackage
   templateUrl: './<%=filePrefix%>.component.html'
 })
 export class <%=ClassName%>Component implements OnInit {
-  @ViewChild('gridRowEditTransaction', { static: true, read: IgxGridComponent }) public grid: IgxGridComponent;
-  @ViewChild(IgxDialogComponent, { static: true }) public dialog: IgxDialogComponent;
-  @ViewChild('dialogGrid', { static: true, read: IgxGridComponent }) public dialogGrid: IgxGridComponent;
+  @ViewChild('gridRowEditTransaction', { static: true, read: IgxGridComponent }) public grid!: IgxGridComponent;
+  @ViewChild(IgxDialogComponent, { static: true }) public dialog!: IgxDialogComponent;
+  @ViewChild('dialogGrid', { static: true, read: IgxGridComponent }) public dialogGrid!: IgxGridComponent;
 
   public data: any[];
   public transactionsData: Transaction[] = [];
@@ -28,9 +28,12 @@ export class <%=ClassName%>Component implements OnInit {
 
   public ngOnInit(): void {
     this.transactionsData = this.transactions.getAggregatedChanges(true);
-    this.transactions.onStateUpdate.subscribe(() => {
+    const statusUpdate = this.transactions.onStateUpdate;
+    if (statusUpdate) {
+      statusUpdate.subscribe(() => {
         this.transactionsData = this.transactions.getAggregatedChanges(true);
     });
+    }
   }
 
   public addRow() {
@@ -53,7 +56,7 @@ export class <%=ClassName%>Component implements OnInit {
     return `transaction--${type.toLowerCase()}`;
   }
 
-  public deleteRow(event, rowID) {
+  public deleteRow(_event: Event, rowID: any) {
     this.grid.deleteRow(rowID);
   }
 
@@ -76,7 +79,7 @@ export class <%=ClassName%>Component implements OnInit {
     this.dialog.close();
   }
 
-  private getRandomInt(min, max) {
+  private getRandomInt(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 

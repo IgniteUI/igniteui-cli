@@ -118,7 +118,7 @@ export class ExternalAuthService {
    */
   public logout() {
     if (this.activeProvider) {
-      this.providers.get(this.activeProvider).logout();
+      this.providers.get(this.activeProvider)!.logout();
     }
   }
 

@@ -27,6 +27,6 @@ describe('<%=ClassName%>Component', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-    expect(document.querySelector('igc-dockmanager').constructor).toBe(customElements.get('igc-dockmanager'));
+    expect(document.querySelector('igc-dockmanager')?.constructor).toBe(customElements.get('igc-dockmanager'));
   });
 });

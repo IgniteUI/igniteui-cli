@@ -1,5 +1,6 @@
 <div igxLayout igxLayoutDir="columns" igxLayoutItemAlign="center">
-  <p>You can read more about configuring the bullet graph component in the
+  <p>
+    You can read more about configuring the bullet graph component in the
     <a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/bulletgraph.html" target="_blank"> official documentation page.
     </a>
   </p>
@@ -28,19 +29,19 @@
         #bulletGraph
         height="80px"
         width="100%"
-        minimumValue=0
-        maximumValue=120
+        [minimumValue]="0"
+        [maximumValue]="120"
         valueBrush="#4286f4"
-        value=70
+        [value]="70"
         targetValueBrush="#4286f4"
-        targetValue=90
-        targetValueBreadth=10
-        interval=10
-        labelInterval=10
-        labelExtent=0.02
-        rangeBrushes ="#FF9800, #F96232, #C62828"
-        rangeOutlines="#FF9800, #F96232, #C62828"
-        scaleBackgroundThickness=0
+        [targetValue]="90"
+        [targetValueBreadth]="10"
+        [interval]="10"
+        [labelInterval]="10"
+        [labelExtent]="0.02"
+        [rangeBrushes] ="['#FF9800', '#F96232', '#C62828']"
+        [rangeOutlines]="['#FF9800', '#F96232', '#C62828']"
+        [scaleBackgroundThickness]=0
         scaleBackgroundBrush="#dbdbdb"
         scaleBackgroundOutline="gray">
       </igx-bullet-graph>

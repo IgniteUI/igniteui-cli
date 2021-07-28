@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IgxDialogComponent } from '<%=igxPackage%>';
+import { IDialogEventArgs } from '<%=igxPackage%>';
 
 @Component({
   selector: 'app-<%=filePrefix%>',
@@ -8,8 +8,7 @@ import { IgxDialogComponent } from '<%=igxPackage%>';
 })
 
 export class <%=ClassName%>Component {
-  onDialogOKSelected(args) {
-    const dialog = args.dialog as IgxDialogComponent;
-    dialog.close();
+  onDialogOKSelected(args: IDialogEventArgs) {
+    args.dialog.close();
   }
 }

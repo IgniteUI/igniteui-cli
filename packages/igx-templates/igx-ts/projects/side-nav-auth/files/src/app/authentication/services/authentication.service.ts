@@ -30,13 +30,14 @@ export class AuthenticationService {
   }
 
   protected async loginPost(endpoint: string, userData: any): Promise<LoginResult> {
-    let data: string;
+    let user: User;
     try {
-      data = await this.http.post(endpoint, userData).toPromise() as string;
+      const data = await this.http.post(endpoint, userData).toPromise() as string;
+      user = parseUser(data);
     } catch (e) {
       return { error: e.message };
     }
-    const user: User = parseUser(data);
+
     return { user };
   }
 }

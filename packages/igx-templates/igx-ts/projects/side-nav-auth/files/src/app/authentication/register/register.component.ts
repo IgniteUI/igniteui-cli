@@ -12,14 +12,13 @@ import { Register } from '../models/register';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
-  name: string;
-  email: string;
-  password: string;
 
   public registrationForm: FormGroup;
 
-  @Output() viewChange: EventEmitter<any> = new EventEmitter();
-  @Output() registered: EventEmitter<any> = new EventEmitter();
+  @Output()
+  viewChange: EventEmitter<any> = new EventEmitter();
+  @Output()
+  registered: EventEmitter<any> = new EventEmitter();
 
   constructor(private authentication: AuthenticationService,
               private fb: FormBuilder,
@@ -36,7 +35,7 @@ export class RegisterComponent {
   async tryRegister() {
     const response = await this.authentication.register(this.registrationForm.value as Register);
     if (!response.error) {
-      this.userService.setCurrentUser(response.user);
+      this.userService.setCurrentUser(response.user!);
       this.router.navigate(['/profile']);
       this.registered.emit();
     } else {

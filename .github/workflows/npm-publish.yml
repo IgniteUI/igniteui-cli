@@ -1,0 +1,38 @@
+name: Npm.js publish
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+          registry-url: "https://registry.npmjs.org"
+
+      - run: echo "VERSION=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
+      - run: echo ${VERSION}
+
+      - name: Install packages
+        run: yarn install --frozen-lockfile
+
+      - name: Build packages
+        run: |
+          npm run build-pack
+          node scripts/build-task.js
+
+      - name: Define npm tag
+        run: |
+          if [[ ${VERSION} == *"alpha"* || ${VERSION} == *"beta"* || ${VERSION} == *"rc"* ]]; then echo "NPM_TAG=next"; else echo "NPM_TAG=latest"; fi >> $GITHUB_ENV
+          echo ${NPM_TAG}
+
+      - name: Publish packages
+        # use npm run as yarn run changes the registry and publishes to https://registry.yarnpkg.com
+        run: npm run deploy ${NPM_TAG}
+        # define env variable for the specific run
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}

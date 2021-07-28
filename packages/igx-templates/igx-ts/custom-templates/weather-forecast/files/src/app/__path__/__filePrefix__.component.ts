@@ -9,11 +9,11 @@ import { data as weatherData } from './weather-data';
 })
 export class <%=ClassName%>Component {
 
-    @ViewChild(IgxExpansionPanelComponent, { static: true })
-    public panel: IgxExpansionPanelComponent;
-    public data = weatherData;
+  @ViewChild(IgxExpansionPanelComponent, { static: true })
+  public panel!: IgxExpansionPanelComponent;
+  public data = weatherData;
 
-    public toggleDetails() {
-        this.panel.toggle();
-    }
+  public toggleDetails() {
+    this.panel.toggle();
+  }
 }

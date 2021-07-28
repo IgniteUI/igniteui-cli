@@ -4,35 +4,35 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { <%=ClassName%>Component } from './<%=filePrefix%>.component';
 import {
-    IgxSelectModule, IgxToggleModule, IgxButtonModule, IgxToastModule
+  IgxSelectModule, IgxToggleModule, IgxButtonModule, IgxToastModule
 } from '<%=igxPackage%>';
 
 describe('<%=ClassName%>Component', () => {
-    let component: <%=ClassName%>Component;
-    let fixture: ComponentFixture<<%=ClassName%>Component >;
+  let component: <%=ClassName%>Component;
+  let fixture: ComponentFixture<<%=ClassName%>Component >;
 
-    beforeEach(waitForAsync(() => {
-        TestBed.configureTestingModule({
-            declarations: [<%=ClassName%>Component],
-            imports: [
-                FormsModule,
-                IgxSelectModule,
-                IgxToggleModule,
-                IgxButtonModule,
-                IgxToastModule,
-                NoopAnimationsModule,
-            ]
-        })
-            .compileComponents();
-    }));
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [<%=ClassName%>Component],
+      imports: [
+        FormsModule,
+        IgxSelectModule,
+        IgxToggleModule,
+        IgxButtonModule,
+        IgxToastModule,
+        NoopAnimationsModule,
+      ]
+    })
+      .compileComponents();
+  }));
 
-    beforeEach(() => {
-        fixture = TestBed.createComponent(<%=ClassName%>Component);
-        component = fixture.componentInstance;
-        fixture.detectChanges();
-    });
+  beforeEach(() => {
+    fixture = TestBed.createComponent(<%=ClassName%>Component);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
-    it('should create', () => {
-        expect(component).toBeTruthy();
-    });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 });

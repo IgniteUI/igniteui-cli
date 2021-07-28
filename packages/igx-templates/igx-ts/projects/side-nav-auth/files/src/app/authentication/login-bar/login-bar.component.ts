@@ -13,8 +13,10 @@ import { ExternalAuthService } from '../services/external-auth.service';
 })
 export class LoginBarComponent {
 
-  @ViewChild(LoginDialogComponent, { static: true }) loginDialog: LoginDialogComponent;
-  @ViewChild(IgxDropDownComponent, { static: true }) igxDropDown: IgxDropDownComponent;
+  @ViewChild(LoginDialogComponent, { static: true })
+  loginDialog!: LoginDialogComponent;
+  @ViewChild(IgxDropDownComponent, { static: true })
+  igxDropDown!: IgxDropDownComponent;
 
   constructor(public userService: UserService, private authService: ExternalAuthService, private router: Router) {
   }

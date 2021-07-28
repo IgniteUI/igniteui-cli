@@ -18,12 +18,12 @@ const USER_TOKEN = 'currentUser';
 })
 export class UserService {
   // tslint:disable-next-line:variable-name
-  private _currentUser: User;
+  private _currentUser: User | null;
   /** Current logged in user, if any */
-  public get currentUser(): User { return this._currentUser; }
+  public get currentUser() { return this._currentUser; }
 
   /** Initials of the current user, if any */
-  public get initials(): string {
+  public get initials(): string | null {
     if (!this.currentUser) {
       return null;
     }
@@ -35,7 +35,8 @@ export class UserService {
   }
 
   constructor(private localStorage: LocalStorageService) {
-    this._currentUser = JSON.parse(this.localStorage.getItem(USER_TOKEN));
+    const storedUser = this.localStorage.getItem(USER_TOKEN);
+    this._currentUser = storedUser ? JSON.parse(storedUser) : null;
   }
 
   /** Save new login as current user */
