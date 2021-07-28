@@ -13,7 +13,7 @@ import {
   IgxNumberSummaryOperand,
   IgxStringFilteringOperand,
   IgxSummaryResult,
-  IgxGridCellComponent,
+  CellType,
   OverlaySettings,
   IgxOverlayService,
   AbsolutePosition,
@@ -58,7 +58,7 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy, AfterViewInit
     get live(): boolean {
       return this._live;
     }
-  
+
     set live(val: boolean) {
       this._live = val;
       if (this._live) {
@@ -67,22 +67,22 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy, AfterViewInit
         clearInterval(this._timer);
       }
     }
-  
+
     get showWinnerOverlay(): boolean {
       return this.showOverlay && this.hasWinner && !this.isFinished;
     }
-  
+
     get showFinishedOverlay(): boolean {
       return this.showOverlay && this.isFinished;
     }
-  
+
     get hideAthleteNumber(): boolean {
       return this.windowWidth && this.windowWidth < 960;
     }
     get hideBeatsPerMinute(): boolean {
       return (this.windowWidth && this.windowWidth < 860) || !this.live;
     }
-  
+
     constructor(@Inject(IgxOverlayService) public overlayService: IgxOverlayService) { }
     public ngOnInit(): void {
       this.localData = AthletesData.slice(0, 30).sort((a, b) => b.TrackProgress - a.TrackProgress);
@@ -93,7 +93,7 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy, AfterViewInit
         this.showOverlay = false;
       });
     }
-  
+
     public ngAfterViewInit(): void {
       this.overlaySettings = IgxOverlayService.createAbsoluteOverlaySettings(
         AbsolutePosition.Center,
@@ -101,20 +101,20 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy, AfterViewInit
       );
       this.overlaySettings.modal = true;
     }
-  
-    public getValue(cell: IgxGridCellComponent): number {
+
+    public getValue(cell: CellType): number {
       const val = cell.value;
       return val;
     }
     public ngOnDestroy(): void {
       clearInterval(this._timer);
     }
-  
-    public isTop3(cell: IgxGridCellComponent): boolean {
+
+    public isTop3(cell: CellType): boolean {
       const top = this.grid1.page === 0 && cell.row.index < 4;
       return top;
     }
-  
+
     public getTrophyUrl(index: number): string {
       if (index === 0) {
         return 'assets/images/trophy_gold.svg';
@@ -127,8 +127,8 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy, AfterViewInit
       }
       return '';
     }
-  
-    public getIconType(cell: IgxGridCellComponent): string {
+
+    public getIconType(cell: CellType): string {
       switch (cell.row.rowData.Position) {
         case 'current':
           return 'arrow_forward';
@@ -139,8 +139,8 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy, AfterViewInit
           return 'arrow_upward';
       }
     }
-  
-    public getBadgeType(cell: IgxGridCellComponent): string {
+
+    public getBadgeType(cell: CellType): string {
       switch (cell.row.rowData.Position) {
         case 'current':
           return 'warning';
@@ -151,11 +151,11 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy, AfterViewInit
           return 'success';
       }
     }
-  
+
     public getSpeed(athlete: Athlete): void {
 		athlete.SpeedEntries = this.addSpeedData(athlete, 40);
     }
-  
+
     public getSpeedeData(minutes?: number): SpeedEntry[] {
       if (minutes === undefined) {
         minutes = 20;
@@ -167,7 +167,7 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy, AfterViewInit
       }
       return speed;
     }
-  
+
     public addSpeedData(athlete: Athlete, minutes?: number): SpeedEntry[] {
       if (minutes === undefined) {
         minutes = 20;
@@ -185,35 +185,35 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy, AfterViewInit
       }
       return speedCollection;
     }
-  
+
     // eslint-disable-next-line @typescript-eslint/member-ordering
     @HostListener('window:resize', ['$event'])
     public onResize(event: any): void {
       this.windowWidth = event.target.innerWidth;
     }
-  
+
     public filter(event: Event): void {
       const target = event.target as HTMLInputElement;
       const term = target.value;
       this.grid1.filter('CountryName', term, IgxStringFilteringOperand.instance().condition('contains'), true);
       this.grid1.markForCheck();
     }
-  
+
     public showAlert(element: ElementRef): void {
       this.showOverlay = true;
       this._overlayId = this.overlayService.attach(element, this.overlaySettings);
       this.overlayService.show(this._overlayId);
     }
-  
+
     public hideAlert(): void {
       this.showOverlay = false;
       this.overlayService.hide(this._overlayId);
     }
-  
+
     private generateRandomNumber(min: number, max: number): number {
       return Math.floor(Math.random() * (max - min + 1)) + min;
     }
-  
+
     private ticker(): void {
       if (this.showWinnerOverlay) {
         this.hideAlert();
@@ -226,11 +226,11 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy, AfterViewInit
       this.updateData();
       this.manageRace();
     }
-  
+
     private getRandomNumber(min: number, max: number): number {
       return Math.round(min + Math.random() * (max - min));
     }
-  
+
     private manageRace(): void {
       // show winner alert
       if (this.localData[0].TrackProgress) {
@@ -240,13 +240,13 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy, AfterViewInit
           this.showAlert(this.winnerAlert);
         }
       }
-  
+
       // move grid to next page to monitor players who still run
       const firstOnPage = this.grid1.getCellByColumn(0, 'TrackProgress');
       if (firstOnPage && firstOnPage.value === 100) {
         this.grid1.page = this.grid1.page + 1;
       }
-  
+
       // show Top 3 players after race has finished
       if (this.localData[this.localData.length - 1].TrackProgress === 100) {
         this.top3 = this.localData.slice(0, 3);
@@ -254,7 +254,7 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy, AfterViewInit
         this.showAlert(this.finishedAlert);
       }
     }
-  
+
     private updateData(): void {
       const newData: Athlete[] = [];
       this.localData.forEach((rec, index) => {
@@ -269,11 +269,11 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy, AfterViewInit
           } else {
             rec.TrackProgress = Math.min(rec.TrackProgress + this.generateRandomNumber(7, 12), 100);
           }
-  
+
         }
         newData.push({ ...rec });
       });
-  
+
       this.localData = newData.sort((a, b) => b.TrackProgress - a.TrackProgress);
       this.localData.forEach((elem, ind) => {
           if (elem.LastPosition) {
@@ -289,9 +289,9 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy, AfterViewInit
       });
     }
   }
-  
+
   class CustomTopSpeedSummary {
-  
+
     public operate(data?: number[]): IgxSummaryResult[] {
       const result: IgxSummaryResult[] = [];
       if (!data){
@@ -302,13 +302,13 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy, AfterViewInit
         label: 'max',
         summaryResult: data.length ? IgxNumberSummaryOperand.max(data).toFixed(0) : null
       });
-  
+
       return result;
     }
   }
-  
+
   export class CustomBPMSummary {
-  
+
     public operate(data?: number[]): IgxSummaryResult[] {
       const result: IgxSummaryResult[] = [];
       if (!data){
@@ -320,13 +320,13 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy, AfterViewInit
           label: 'average',
           summaryResult: data.length ? IgxNumberSummaryOperand.average(data).toFixed(2) : null
         });
-  
+
       return result;
     }
   }
-  
+
   export class CustomSpeedSummary {
-  
+
     public operate(data: SpeedEntry[][]): IgxSummaryResult[] {
         const speedData = data.reduce((acc, val) => acc.concat(val), []).map(rec => rec.Speed);
         const result = [];
@@ -336,8 +336,8 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy, AfterViewInit
                 label: 'average',
                 summaryResult: speedData.length ? IgxNumberSummaryOperand.average(speedData).toFixed(2) : null
             });
-  
+
         return result;
     }
   }
-  
+
