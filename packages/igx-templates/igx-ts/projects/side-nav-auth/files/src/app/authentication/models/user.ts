@@ -14,7 +14,6 @@ export interface User extends UserJWT {
   token: string;
 }
 
-
 export interface LoginResult {
   user?: User;
   error?: string;
