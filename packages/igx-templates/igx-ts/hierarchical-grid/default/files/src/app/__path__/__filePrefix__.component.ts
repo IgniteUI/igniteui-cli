@@ -7,5 +7,5 @@ import { ARTISTS, Artist } from './data';
   styleUrls: ['./<%=filePrefix%>.component.scss']
 })
 export class <%=ClassName%>Component {
-  public localData: Artist[] = SINGERS;
+  public localData: Artist[] = ARTISTS;
 }
