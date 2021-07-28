@@ -191,8 +191,9 @@ class DealsSummary extends IgxNumberSummaryOperand {
         if (Number(summaryResult) === summaryResult) {
           obj.summaryResult = summaryResult.toLocaleString('en-us', { maximumFractionDigits: 2 });
         }
-        return obj;
+        return true;
       }
+      return false;
     });
     return result;
   }
@@ -211,8 +212,9 @@ class EarliestSummary extends IgxDateSummaryOperand {
     const result = super.operate(summaries).filter((obj) => {
       if (obj.key === 'earliest') {
         obj.summaryResult = formatDate(obj.summaryResult);
-        return obj;
+        return true;
       }
+      return false;
     });
     return result;
   }
@@ -228,8 +230,9 @@ class SoonSummary extends IgxDateSummaryOperand {
       if (obj.key === 'latest') {
         obj.label = 'Soon';
         obj.summaryResult = formatDate(obj.summaryResult);
-        return obj;
+        return true;
       }
+      return false;
     });
     return result;
   }

@@ -208,7 +208,7 @@
   </igx-grid>
 </div>
 
-<igx-dialog #dialog [closeOnOutsideSelect]="true" (onClose)="onCloseHandler($event)">
+<igx-dialog #dialog [closeOnOutsideSelect]="true" (closed)="onCloseHandler()">
   <div (keydown)="closeDialog($event)">
     <igx-dialog-title> Chart </igx-dialog-title>
 
