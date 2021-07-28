@@ -1,5 +1,5 @@
 <div class="grid__wrapper">
-  <igx-grid #grid1 igxPreventDocumentScroll id="grid1" [data]="localData" [height]="'430px'" [width]="'100%'"
+  <igx-grid #grid1 igxPreventDocumentScroll id="grid1" [data]="localData" height="430px" width="100%"
     [rowSelection]="selectionMode" displayDensity="cosy" rowHeight="50" [allowFiltering]="true">
     <igx-grid-toolbar>
       <igx-grid-toolbar-title>
@@ -92,7 +92,7 @@
       </ng-template>
     </igx-column>
 
-    <igx-column field="Deals" header="Ratio per month" [width]="'160px'" [filterable]="false">
+    <igx-column field="Deals" header="Ratio per month" width="160px" [filterable]="false">
       <ng-template igxCell let-val>
         <igx-sparkline height="40px" width="160px" [dataSource]="val" valueMemberPath="Deals"
           [displayType]="displayType.Column" brush="rgb(21, 190, 6)" negativeBrush="rgb(211, 17, 3)">
