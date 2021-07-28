@@ -1,5 +1,4 @@
 import { Injectable, isDevMode } from '@angular/core';
-
 import { User } from '../models/user';
 import { LocalStorageService } from './local-storage';
 

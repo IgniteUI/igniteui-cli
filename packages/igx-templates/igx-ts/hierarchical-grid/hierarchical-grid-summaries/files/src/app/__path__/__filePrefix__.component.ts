@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { SINGERS } from './data';
+import { Component } from '@angular/core';
+import { ARTISTS, Artist } from './data';
 import { CustomSummary } from './custom-summary';
 
 @Component({
@@ -7,11 +7,7 @@ import { CustomSummary } from './custom-summary';
   templateUrl: './<%=filePrefix%>.component.html',
   styleUrls: ['./<%=filePrefix%>.component.scss']
 })
-export class <%=ClassName%>Component implements OnInit {
-  public localData: any[] = [];
+export class <%=ClassName%>Component {
+  public localData: Artist[] = ARTISTS;
   public customSummary = CustomSummary;
-
-  public ngOnInit(): void {
-    this.localData = SINGERS;
-  }
 }

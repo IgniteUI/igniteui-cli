@@ -1,8 +1,8 @@
 import { Component, OnDestroy } from '@angular/core';
-import { IgxTreeNodeComponent  } from '<%=igxPackage%>';
-import { DATA, NodeData, REMOTE_ROOT, SelectableNodeData } from './local-data';
+import { IgxTreeNodeComponent } from '<%=igxPackage%>';
 import { Subject } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
+import { DATA, NodeData, REMOTE_ROOT, SelectableNodeData } from './local-data';
 import { DataService } from './services/data.service';
 
 @Component({
@@ -19,6 +19,7 @@ export class <%=ClassName%>Component implements OnDestroy {
   public remoteRoot = REMOTE_ROOT;
   public remoteData: SelectableNodeData[] = [];
   private destroy$ = new Subject<void>();
+
   constructor(private dataService: DataService) {
     this.dataService.data.pipe(takeUntil(this.destroy$)).subscribe((data) => {
       this.loading = false;
@@ -26,14 +27,14 @@ export class <%=ClassName%>Component implements OnDestroy {
     });
   }
 
-  public refreshData(node: IgxTreeNodeComponent<NodeData>) {
+  public refreshData(node: IgxTreeNodeComponent<NodeData>): void {
     this.dataService.clearData();
     this.remoteData = [];
     this.getNodeData(node, true);
     this.dataService.getData();
   }
 
-  public getNodeData(node: IgxTreeNodeComponent<any>, evt: boolean) {
+  public getNodeData(node: IgxTreeNodeComponent<any>, evt: boolean): void {
     if (this.remoteData?.length) {
       return;
     }
@@ -53,11 +54,11 @@ export class <%=ClassName%>Component implements OnDestroy {
     }
   }
 
-  public handleSelection(node: NodeData, selected: boolean) {
+  public handleSelection(node: NodeData, selected: boolean): void {
     this.dataService.toggleSelected(node, selected);
   }
 
-  public ngOnDestroy() {
+  public ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
   }

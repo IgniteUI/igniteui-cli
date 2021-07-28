@@ -2,16 +2,13 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule, HammerModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import {
-  IgxLayoutModule, IgxRippleModule,
-  IgxNavigationDrawerModule, IgxNavbarModule
+  IgxLayoutModule, IgxNavbarModule, IgxNavigationDrawerModule, IgxRippleModule
 } from 'igniteui-angular';
-
-import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 import { AuthenticationModule, ExternalAuthService } from './authentication';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +28,7 @@ import { AuthenticationModule, ExternalAuthService } from './authentication';
     IgxLayoutModule,
     IgxRippleModule
   ],
-  providers: [ ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

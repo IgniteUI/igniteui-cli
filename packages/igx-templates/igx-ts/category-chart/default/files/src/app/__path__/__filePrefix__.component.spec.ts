@@ -1,8 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-
-import { <%=ClassName%>Component } from './<%=filePrefix%>.component';
 import { IgxCategoryChartModule } from 'igniteui-angular-charts';
+import { <%=ClassName%>Component } from './<%=filePrefix%>.component';
 
 describe('<%=ClassName%>Component', () => {
   let component: <%=ClassName%>Component;

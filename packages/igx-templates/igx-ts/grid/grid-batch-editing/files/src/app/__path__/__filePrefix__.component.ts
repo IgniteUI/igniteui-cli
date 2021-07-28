@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { data } from './data';
-
-import { IgxDialogComponent, IgxGridComponent, Transaction } from '<%=igxPackage%>';
+import { IgxDialogComponent, IgxGridComponent, State, Transaction, TransactionService } from '<%=igxPackage%>';
+import { data, Product } from './data';
 
 @Component({
   selector: 'app-<%=filePrefix%>',
@@ -13,11 +12,11 @@ export class <%=ClassName%>Component implements OnInit {
   @ViewChild(IgxDialogComponent, { static: true }) public dialog!: IgxDialogComponent;
   @ViewChild('dialogGrid', { static: true, read: IgxGridComponent }) public dialogGrid!: IgxGridComponent;
 
-  public data: any[];
+  public data: Product[];
   public transactionsData: Transaction[] = [];
   private addProductId: number;
 
-  public get transactions() {
+  public get transactions(): TransactionService<Transaction, State> {
     return this.grid.transactions;
   }
 
@@ -28,15 +27,14 @@ export class <%=ClassName%>Component implements OnInit {
 
   public ngOnInit(): void {
     this.transactionsData = this.transactions.getAggregatedChanges(true);
-    const statusUpdate = this.transactions.onStateUpdate;
-    if (statusUpdate) {
-      statusUpdate.subscribe(() => {
+    this.grid.rendered$.subscribe(() => {
+      this.transactions.onStateUpdate?.subscribe(() => {
         this.transactionsData = this.transactions.getAggregatedChanges(true);
-    });
-    }
+      })
+    })
   }
 
-  public addRow() {
+  public addRow(): void {
     this.grid.addRow({
       CategoryID: this.getRandomInt(1, 10),
       Discontinued: this.getRandomInt(1, 10) % 2 === 0,
@@ -56,30 +54,30 @@ export class <%=ClassName%>Component implements OnInit {
     return `transaction--${type.toLowerCase()}`;
   }
 
-  public deleteRow(_event: Event, rowID: any) {
+  public deleteRow(rowID: any): void {
     this.grid.deleteRow(rowID);
   }
 
-  public openCommitDialog() {
+  public openCommitDialog(): void {
     this.dialog.open();
     this.dialogGrid.reflow();
   }
 
-  public commit() {
+  public commit(): void {
     this.grid.transactions.commit(this.data);
     this.dialog.close();
   }
 
-  public cancel() {
+  public cancel(): void {
     this.dialog.close();
   }
 
-  public discard() {
+  public discard(): void {
     this.grid.transactions.clear();
     this.dialog.close();
   }
 
-  private getRandomInt(min: number, max: number) {
+  private getRandomInt(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
@@ -87,11 +85,11 @@ export class <%=ClassName%>Component implements OnInit {
     return this.grid.transactions.getAggregatedChanges(false).length > 0;
   }
 
-  public stateFormatter(value: string) {
+  public stateFormatter(value: string): string {
     return JSON.stringify(value);
   }
 
-  public typeFormatter(value: string) {
+  public typeFormatter(value: string): string {
     return value.toUpperCase();
   }
 }

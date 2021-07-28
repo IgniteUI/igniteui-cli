@@ -1,24 +1,25 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { <%=ClassName%>Component } from './<%=filePrefix%>.component';
 import {
-  IgxGridModule,
-  IgxProgressBarModule,
   IgxAvatarModule,
   IgxBadgeModule,
+  IgxGridModule,
   IgxIconModule,
-  IgxSwitchModule,
-  IgxInputGroupModule
+  IgxInputGroupModule,
+  IgxProgressBarModule,
+  IgxSwitchModule
 } from '<%=igxPackage%>';
-import { IgxSparklineModule, IgxSparklineCoreModule } from 'igniteui-angular-charts';
+import { IgxSparklineCoreModule, IgxSparklineModule } from 'igniteui-angular-charts';
+import { <%=ClassName%>Component } from './<%=filePrefix%>.component';
+
 describe('<%=ClassName%>Component', () => {
   let component: <%=ClassName%>Component;
   let fixture: ComponentFixture<<%=ClassName%>Component>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ <%=ClassName%>Component ],
+      declarations: [<%=ClassName%>Component],
       imports: [
         FormsModule,
         BrowserAnimationsModule,

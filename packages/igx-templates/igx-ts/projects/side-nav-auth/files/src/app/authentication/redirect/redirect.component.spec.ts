@@ -1,29 +1,30 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-
-import { RedirectComponent } from './redirect.component';
-import { UserService } from '../services/user.service';
-import { ExternalAuthService } from '../services/external-auth.service';
 import { AuthenticationService } from '../services/authentication.service';
+import { ExternalAuthService } from '../services/external-auth.service';
+import { UserService } from '../services/user.service';
+import { RedirectComponent } from './redirect.component';
 
 describe('RedirectComponent', () => {
   let fixture: ComponentFixture<RedirectComponent>;
+  const activeRouteSpy: any = { snapshot: { data: { value: { provider: {} } } } };
   const extAuthSpy = jasmine.createSpyObj('ExternalAuthService', ['getUserInfo']);
   const authSpy = jasmine.createSpyObj('AuthenticationService', ['loginWith']);
   const userServSpy = jasmine.createSpyObj('UserService', ['setCurrentUser']);
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [ RouterTestingModule ],
-      declarations: [ RedirectComponent ],
+      imports: [RouterTestingModule],
+      declarations: [RedirectComponent],
       providers: [
+        { provide: ActivatedRoute, useValue: activeRouteSpy },
         { provide: ExternalAuthService, useValue: extAuthSpy },
         { provide: AuthenticationService, useValue: authSpy },
         { provide: UserService, useValue: userServSpy }
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   it('should try external login on init', async () => {
@@ -39,7 +40,7 @@ describe('RedirectComponent', () => {
     await fixture.whenStable();
     expect(extAuthSpy.getUserInfo).toHaveBeenCalled();
     expect(authSpy.loginWith).toHaveBeenCalledWith({ test: '1' });
-    expect(userServSpy.setCurrentUser).toHaveBeenCalledWith({name: 'TEST'});
+    expect(userServSpy.setCurrentUser).toHaveBeenCalledWith({ name: 'TEST' });
     expect(router.navigate).toHaveBeenCalledWith(['/profile']);
   });
 
@@ -56,5 +57,4 @@ describe('RedirectComponent', () => {
     await fixture.whenStable();
     expect(window.alert).toHaveBeenCalledWith('Err');
   });
-
 });

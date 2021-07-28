@@ -23,7 +23,7 @@ class IgxInputGroupTemplate extends IgniteUIForAngularTemplate {
 				],
 				from: "<%=igxPackage%>"
 			},
-			{ import: "FormsModule", from: "@angular/forms" }
+			{ import: "FormsModule, ReactiveFormsModule", from: "@angular/forms" }
 		];
 	}
 }

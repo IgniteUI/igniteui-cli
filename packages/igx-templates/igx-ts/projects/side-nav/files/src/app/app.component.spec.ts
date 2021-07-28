@@ -1,15 +1,15 @@
 import { TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { IgxLayoutModule, IgxNavbarModule, IgxNavigationDrawerModule, IgxRippleModule } from 'igniteui-angular';
 import { AppComponent } from './app.component';
-import { IgxNavigationDrawerModule, IgxNavbarModule, IgxLayoutModule, IgxRippleModule } from 'igniteui-angular';
 describe('AppComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
-        IgxNavigationDrawerModule,
-        IgxNavbarModule,
         IgxLayoutModule,
+        IgxNavbarModule,
+        IgxNavigationDrawerModule,
         IgxRippleModule
       ],
       declarations: [

@@ -7,7 +7,7 @@ import { Towns } from './towns-data';
   styleUrls: ['./<%=filePrefix%>.component.scss']
 })
 export class <%=ClassName%>Component {
-  public towns: any;
+  public towns: string[];
   public townSelected = '';
 
   constructor() {
@@ -17,7 +17,7 @@ export class <%=ClassName%>Component {
 
 @Pipe({ name: '<%=camelCaseName%>StartsWith' })
 export class <%=ClassName%>PipeStartsWith implements PipeTransform {
-  public transform(collection: any[], term = '') {
-    return collection.filter((item) => item.toString().toLowerCase().startsWith(term.trim().toLowerCase()));
+  public transform(collection: string[], term = '') {
+    return collection.filter(item => item.toLowerCase().startsWith(term.trim().toLowerCase()));
   }
 }

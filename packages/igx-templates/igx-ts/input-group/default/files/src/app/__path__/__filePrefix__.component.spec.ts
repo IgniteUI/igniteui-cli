@@ -1,18 +1,17 @@
-import { FormsModule } from '@angular/forms';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-
-import { <%=ClassName%>Component } from './<%=filePrefix%>.component';
 import {
-  IgxInputGroupModule,
   IgxButtonModule,
-  IgxRippleModule,
-  IgxIconModule,
   IgxComboModule,
   IgxDatePickerModule,
-  IgxTimePickerModule,
-  IgxSelectModule
+  IgxIconModule,
+  IgxInputGroupModule,
+  IgxRippleModule,
+  IgxSelectModule,
+  IgxTimePickerModule
 } from '<%=igxPackage%>';
+import { <%=ClassName%>Component } from './<%=filePrefix%>.component';
 
 describe('<%=ClassName%>Component', () => {
   let component: <%=ClassName%>Component;
@@ -23,6 +22,7 @@ describe('<%=ClassName%>Component', () => {
       declarations: [<%=ClassName%>Component],
       imports: [
         FormsModule,
+		ReactiveFormsModule,
         NoopAnimationsModule,
         IgxInputGroupModule,
         IgxButtonModule,
