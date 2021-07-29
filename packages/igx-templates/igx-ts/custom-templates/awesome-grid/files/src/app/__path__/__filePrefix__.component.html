@@ -38,7 +38,7 @@
       <igx-column field="Name" header="Athlete" [width]="athleteColumnWidth" [hasSummary]="true">
         <ng-template igxCell let-cell="cell">
           <div class="cell__inner">
-            <igx-avatar [src]="cell.row.rowData.Avatar" [roundShape]="true" size="small"> </igx-avatar><span
+            <igx-avatar [src]="cell.row.data.Avatar" [roundShape]="true" size="small"> </igx-avatar><span
               class="athlete_name">{{ cell.value }}</span>
             <igx-badge *ngIf="live" [type]="getBadgeType(cell)" [icon]="getIconType(cell)"></igx-badge>
           </div>
