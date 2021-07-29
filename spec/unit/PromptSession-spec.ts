@@ -689,7 +689,7 @@ describe("Unit - PromptSession", () => {
 		spyOn(process, "chdir");
 		await mockSession.start();
 		const CUSTOM_THEME = `
-		/* See: https://www.infragistics.com/products/ignite-ui-angular/angular/components/themes.html */
+		/* See: https://www.infragistics.com/products/ignite-ui-angular/angular/components/themes/sass/index */
 		@import "~igniteui-angular/lib/core/styles/themes/index";
 		$primary: #731963 !default;
 		$secondary: #ce5712 !default;

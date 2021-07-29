@@ -36,7 +36,9 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 	}
 
 	public generateConfig(name: string, ...options: any[]): { [key: string]: any } {
-		let toolbar = "";
+		let additionalMarkup = "";
+		/** starts with empty string to create a new line on join when something else is added */
+		const additionalElements = [""];
 		const toolbarActions = [];
 		const columnFeatures = [];
 		const columnBoolFeatures = [];
@@ -86,7 +88,7 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 						treeGridFeatures.push(gridFeatureText);
 						break;
 					case "Paging":
-						treeGridFeatures.push(`[paging]="true"`);
+						additionalElements.push(`  <igx-paginator></igx-paginator>`);
 						break;
 					case "Column Pinning":
 						columnPinning = '[pinned]="true"';
@@ -98,28 +100,28 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 					case "Filtering":
 					case "Editing":
 					case "Paging":
-						featuresUrls.push(`${featureUrl}${feature}.html`);
+						featuresUrls.push(`${featureUrl}${feature.toLocaleLowerCase()}`);
 						break;
 					case "Resizing":
-						featuresUrls.push(`${featureUrl}column_resizing.html`);
+						featuresUrls.push(`${featureUrl}column-resizing`);
 						break;
 					case "Column Pinning":
-						featuresUrls.push(`${featureUrl}column_pinning.html`);
+						featuresUrls.push(`${featureUrl}column-pinning`);
 						break;
 					case "Cell Editing":
-						featuresUrls.push(`${featureUrl}editing.html`);
+						featuresUrls.push(`${featureUrl}editing`);
 						break;
 					case "Row Editing":
-						featuresUrls.push(`${featureUrl}row_editing.html`);
+						featuresUrls.push(`${featureUrl}row-editing`);
 						break;
 					case "Column Moving":
-						featuresUrls.push(`${featureUrl}column_moving.html`);
+						featuresUrls.push(`${featureUrl}column-moving`);
 						break;
 					case "Column Hiding":
-						featuresUrls.push(`${featureUrl}column_hiding.html`);
+						featuresUrls.push(`${featureUrl}column-hiding`);
 						break;
 					case "Row Selection":
-						featuresUrls.push(`${featureUrl}selection.html`);
+						featuresUrls.push(`${featureUrl}selection`);
 						break;
 				}
 			}
@@ -134,7 +136,6 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 			}
 			if (toolbarActions.length) {
 				const parts = [
-					"",
 					"  <igx-grid-toolbar>",
 					"    <igx-grid-toolbar-title>Employees</igx-grid-toolbar-title>",
 					"    <igx-grid-toolbar-actions>",
@@ -142,13 +143,15 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 					"    </igx-grid-toolbar-actions>",
 					"  </igx-grid-toolbar>"
 				];
-				toolbar = parts.join("\n");
+				additionalElements.splice(1, 0, parts.join("\n"));
 			}
+			additionalMarkup = additionalElements.join("\n");
 		}
+
 		const extraConfig = {
+			additionalMarkup,
 			columnPinning,
 			selectedFeatures,
-			toolbar,
 			columnBoolFeatures: columnBoolFeatures.join(" "),
 			columnFeatures: columnFeatures.join(" "),
 			treeGridFeatures: treeGridFeatures.join(" ")

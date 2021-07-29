@@ -14,12 +14,12 @@
     <igx-grid #grid1 igxPreventDocumentScroll [data]="localData" height="600px" displayDensity="cosy"
       [allowFiltering]="true" filterMode="excelStyleFilter" [allowAdvancedFiltering]="true">
 
-      <igx-paginator [perPage]="10"></igx-paginator>
+      <igx-paginator #paginator [perPage]="10"></igx-paginator>
 
       <igx-column header="Rank" width="12%" field="Id" [sortable]="true" [filterable]="false">
         <ng-template igxCell let-cell="cell">
           <div class="cell__inner">
-            <div>{{ grid1.page * grid1.perPage + cell.row.index + 1 }}</div>
+            <div>{{ paginator.page * paginator.perPage + cell.row.index + 1 }}</div>
             <ng-container *ngIf="isTop3(cell)">
               <span class="cup" *ngIf="cell.row.index === 0">
                 <img src="assets/images/trophy_gold.svg" alt="First place Trophy image" />

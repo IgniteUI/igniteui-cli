@@ -26,12 +26,6 @@ $progressBar-sample-theme: igx-progress-linear-theme(
 
 :host {
   ::ng-deep {
-    .igx-paginator > * {
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-    }
-
     .igx-sparkline {
       margin-top: 20px;
       margin-bottom: -10px;

@@ -40,6 +40,9 @@ class IgxMultiColumnHeadersTemplate extends IgniteUIForAngularTemplate {
 		const columnFeatures = [];
 		const columnBoolFeatures = [];
 		const gridFeatures = [];
+		/** starts with empty string to create a new line on join when something else is added */
+		const additionalElements = [""];
+		let additionalMarkup = "";
 		const checkBoxBind = `[checked]="cell.value" [disabled]="true"`;
 		let selectedFeatures = "";
 
@@ -60,13 +63,16 @@ class IgxMultiColumnHeadersTemplate extends IgniteUIForAngularTemplate {
 						gridFeatures.push(gridFeatureText);
 						break;
 					case "Paging":
-						gridFeatures.push(`[paging]="true"`);
+						additionalElements.push(`  <igx-paginator></igx-paginator>`);
 						break;
 				}
 			}
 			selectedFeatures = features.join(", ");
+			additionalMarkup = additionalElements.join("\n");
 		}
+
 		const extraConfig = {
+			additionalMarkup,
 			checkBoxBind,
 			selectedFeatures,
 			columnBoolFeatures: columnBoolFeatures.join(" "),
