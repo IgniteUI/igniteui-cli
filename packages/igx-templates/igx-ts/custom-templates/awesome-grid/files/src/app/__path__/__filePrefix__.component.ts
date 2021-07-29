@@ -12,6 +12,7 @@ import {
   AbsolutePosition,
   CellType,
   IgxGridComponent,
+  IgxPaginatorComponent,
   IgxNumberSummaryOperand,
   IgxOverlayService,
   IgxStringFilteringOperand,
@@ -30,6 +31,9 @@ import { Athlete, AthletesData, SpeedEntry } from './services/data';
 export class <%=ClassName%>Component implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('grid1', { read: IgxGridComponent, static: true })
   public grid1!: IgxGridComponent;
+
+  @ViewChild('paginator', { read: IgxPaginatorComponent, static: true })
+  public paginator!: IgxPaginatorComponent;
 
   @ViewChild('winnerAlert', { static: true })
   public winnerAlert!: ElementRef;
@@ -113,7 +117,7 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy, AfterViewInit
   }
 
   public isTop3(cell: CellType): boolean {
-    const top = this.grid1.page === 0 && cell.row.index < 4;
+    const top = this.paginator.page === 0 && cell.row.index < 4;
     return top;
   }
 
@@ -220,7 +224,7 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy, AfterViewInit
     }
     if (this.isFinished) {
       this.live = false;
-      this.grid1.page = 0;
+      this.paginator.page = 0;
       return;
     }
     this.updateData();
@@ -240,7 +244,7 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy, AfterViewInit
     // move grid to next page to monitor players who still run
     const firstOnPage = this.grid1.getCellByColumn(0, 'TrackProgress');
     if (firstOnPage && firstOnPage.value === 100) {
-      this.grid1.paginator.page = this.grid1.paginator.page + 1;
+      this.paginator.page = this.paginator.page + 1;
     }
 
     // show Top 3 players after race has finished
@@ -260,7 +264,7 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy, AfterViewInit
         if (rec.BeatsPerMinute !== undefined) {
           rec.BeatsPerMinute += this.generateRandomNumber(-5, 5);
         }
-        if (rec.Id !== undefined && rec.Id < this.grid1.paginator.perPage + 1) {
+        if (rec.Id !== undefined && rec.Id < this.paginator.perPage + 1) {
           rec.TrackProgress = Math.min(rec.TrackProgress + this.generateRandomNumber(15, 20), 100);
         } else {
           rec.TrackProgress = Math.min(rec.TrackProgress + this.generateRandomNumber(7, 12), 100);
