@@ -4,7 +4,7 @@
   <a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid/summaries" target="_blank">official documentation</a>.
 </p>
 
-<igx-grid #sampleGrid [data]="localData" [autoGenerate]="false" width="900px" height="600px" [paging]="true">
+<igx-grid #sampleGrid [data]="localData" [autoGenerate]="false" width="900px" height="600px">
   <igx-column field="FirstName" header="First Name" [resizable]="true" [hasSummary]="true">
     <ng-template igxHeader let-col>
       <span style="float:left">{{col.field}}</span>
@@ -42,4 +42,5 @@
       <igx-icon class="header-icon" color="{{ col.hasSummary ? '#731963' : '' }}" (click)="toggleSummary(col.field)">functions</igx-icon>
     </ng-template>
   </igx-column>
+  <igx-paginator></igx-paginator>
 </igx-grid>

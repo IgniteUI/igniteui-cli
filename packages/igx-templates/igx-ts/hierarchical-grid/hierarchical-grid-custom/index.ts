@@ -4,7 +4,8 @@ import { IgniteUIForAngularTemplate } from "../../../IgniteUIForAngularTemplate"
 class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 	private userExtraConfiguration = {};
 	private usePinning: boolean;
-	private toolbar = "";
+	/** starts with empty string to create a new line on join when something else is added */
+	private additionalElements = [""];
 	constructor() {
 		super(__dirname);
 		this.components = ["Hierarchical Grid"];
@@ -40,8 +41,8 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 		const columnFeatures = [];
 		const gridFeatures = [];
 		const extraConfig = {
+			additionalMarkup: this.additionalElements.join("\n"),
 			selectedFeatures: this.getSelectedFeatures(columnFeatures, gridFeatures),
-			toolbar: this.toolbar,
 
 			// tslint:disable-next-line: object-literal-sort-keys
 			columnFeatures: columnFeatures.join(" "),
@@ -115,7 +116,7 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 						gridFeatures.push(gridFeatureText);
 						break;
 					case "Paging":
-						gridFeatures.push(`[paging]="true" [perPage]="5"`);
+						this.additionalElements.push(`  <igx-paginator [perPage]="5"></igx-paginator>`);
 						break;
 					case "Column Pinning":
 						this.usePinning = true;
@@ -134,7 +135,6 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 				}
 				if (toolbarActions.length) {
 					const parts = [
-						"",
 						"  <igx-grid-toolbar>",
 						"    <igx-grid-toolbar-title>Singers</igx-grid-toolbar-title>",
 						"    <igx-grid-toolbar-actions>",
@@ -142,7 +142,7 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 						"    </igx-grid-toolbar-actions>",
 						"  </igx-grid-toolbar>"
 					];
-					this.toolbar = parts.join("\n");
+					this.additionalElements.splice(1, 0, parts.join("\n"));
 				}
 			}
 		}

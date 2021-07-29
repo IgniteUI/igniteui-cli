@@ -54,7 +54,9 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 		let selectedFeatures = "";
 		let columnPinning = "";
 		let groupByColumn = "";
-		let toolbar = "";
+		let additionalMarkup = "";
+		/** starts with empty string to create a new line on join when something else is added */
+		const additionalElements = [""];
 		const toolbarActions = [];
 
 		if (this.userExtraConfiguration["columnFeatures"]) {
@@ -101,7 +103,7 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 						gridFeatures.push(gridFeatureText);
 						break;
 					case "Paging":
-						gridFeatures.push(`[paging]="true"`);
+						additionalElements.push(`  <igx-paginator></igx-paginator>`);
 						break;
 					case "Column Pinning":
 						columnPinning = '[pinned]="true"';
@@ -154,7 +156,6 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 			}
 			if (toolbarActions.length) {
 				const parts = [
-					"",
 					"  <igx-grid-toolbar>",
 					"    <igx-grid-toolbar-title>Employees</igx-grid-toolbar-title>",
 					"    <igx-grid-toolbar-actions>",
@@ -162,16 +163,18 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 					"    </igx-grid-toolbar-actions>",
 					"  </igx-grid-toolbar>"
 				];
-				toolbar = parts.join("\n");
+				additionalElements.splice(1, 0, parts.join("\n"));
 			}
+			additionalMarkup = additionalElements.join("\n");
 		}
+
 		const extraConfig = {
+			additionalMarkup,
 			checkBoxBind,
 			columnPinning,
 			datePickerEditor,
 			groupByColumn,
 			selectedFeatures,
-			toolbar,
 			columnBoolFeatures: columnBoolFeatures.join(" "),
 			columnFeatures: columnFeatures.join(" "),
 			gridFeatures: gridFeatures.join(" ")
