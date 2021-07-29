@@ -23,9 +23,9 @@ import { SparklineDisplayType } from 'igniteui-angular-charts';
 import { Athlete, AthletesData, SpeedEntry } from './services/data';
 
 @Component({
-selector: 'app-<%=filePrefix%>',
-templateUrl: './<%=filePrefix%>.component.html',
-styleUrls: ['./<%=filePrefix%>.component.scss']
+  selector: 'app-<%=filePrefix%>',
+  templateUrl: './<%=filePrefix%>.component.html',
+  styleUrls: ['./<%=filePrefix%>.component.scss']
 })
 export class <%=ClassName%>Component implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('grid1', { read: IgxGridComponent, static: true })
@@ -131,7 +131,7 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy, AfterViewInit
   }
 
   public getIconType(cell: CellType): string {
-    switch (cell.row.rowData.Position) {
+    switch (cell.row.data.Position) {
       case 'current':
         return 'arrow_forward';
       case 'down':
@@ -143,7 +143,7 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy, AfterViewInit
   }
 
   public getBadgeType(cell: CellType): string {
-    switch (cell.row.rowData.Position) {
+    switch (cell.row.data.Position) {
       case 'current':
         return 'warning';
       case 'down':
@@ -296,7 +296,6 @@ class CustomTopSpeedSummary {
       label: 'max',
       summaryResult: data.length ? IgxNumberSummaryOperand.max(data).toFixed(0) : null
     });
-
     return result;
   }
 }
@@ -327,7 +326,6 @@ export class CustomSpeedSummary {
         label: 'average',
         summaryResult: speedData.length ? IgxNumberSummaryOperand.average(speedData).toFixed(2) : null
       });
-
     return result;
   }
 }

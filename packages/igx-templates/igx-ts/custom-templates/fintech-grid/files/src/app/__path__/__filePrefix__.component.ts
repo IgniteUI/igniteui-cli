@@ -437,7 +437,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
     dataObj.Change = res.Price - dataObj.Price;
     dataObj.Price = res.Price;
     dataObj[changeP] = res.ChangePercent;
-    return { ...dataObj} ;
+    return { ...dataObj };
   }
 
   private generateNewPrice(oldPrice: number): any {
