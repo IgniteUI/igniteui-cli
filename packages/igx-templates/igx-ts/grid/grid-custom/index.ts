@@ -40,7 +40,7 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 		const columnFeatures = [];
 		const columnBoolFeatures = [];
 		const gridFeatures = [];
-		const featureUrl = "https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid_";
+		const featureUrl = "https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid/";
 		const anchorWrapper = {
 			start: `<a href="`,
 			// tslint:disable-next-line:object-literal-sort-keys
@@ -117,31 +117,31 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 					case "Sorting":
 					case "Filtering":
 					case "Paging":
-						featuresUrls.push(`${featureUrl}${feature}.html`);
+						featuresUrls.push(`${featureUrl}${feature.toLocaleLowerCase()}`);
 						break;
 					case "Resizing":
-						featuresUrls.push(`${featureUrl}column_resizing.html`);
+						featuresUrls.push(`${featureUrl}column-resizing`);
 						break;
 					case "Column Pinning":
-						featuresUrls.push(`${featureUrl}column_pinning.html`);
+						featuresUrls.push(`${featureUrl}column-pinning`);
 						break;
 					case "Cell Editing":
-						featuresUrls.push(`${featureUrl}editing.html`);
+						featuresUrls.push(`${featureUrl}editing`);
 						break;
 					case "Row Editing":
-						featuresUrls.push(`${featureUrl}row_editing.html`);
+						featuresUrls.push(`${featureUrl}row-editing`);
 						break;
 					case "Column Moving":
-						featuresUrls.push(`${featureUrl}column_moving.html`);
+						featuresUrls.push(`${featureUrl}column-moving`);
 						break;
 					case "Column Hiding":
-						featuresUrls.push(`${featureUrl}column_hiding.html`);
+						featuresUrls.push(`${featureUrl}column-hiding`);
 						break;
 					case "Row Selection":
-						featuresUrls.push(`${featureUrl}selection.html`);
+						featuresUrls.push(`${featureUrl}selection`);
 						break;
 					case "Group By":
-						featuresUrls.push(`${featureUrl}groupby.html`);
+						featuresUrls.push(`${featureUrl}groupby`);
 						break;
 				}
 			}

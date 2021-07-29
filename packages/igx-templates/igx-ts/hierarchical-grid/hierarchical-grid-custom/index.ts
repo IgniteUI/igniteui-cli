@@ -155,19 +155,19 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 			case "Sorting":
 			case "Filtering":
 			case "Paging":
-				return `${featureUrl}${feature}.html`;
+				return `${featureUrl}${feature.toLocaleLowerCase()}`;
 			case "Resizing":
-				return `${featureUrl}column_resizing.html`;
+				return `${featureUrl}column-resizing`;
 			case "Column Pinning":
-				return `${featureUrl}column_pinning.html`;
+				return `${featureUrl}column-pinning`;
 			case "Cell Editing":
-				return `${featureUrl}editing.html`;
+				return `${featureUrl}editing`;
 			case "Column Moving":
-				return `${featureUrl}column_moving.html`;
+				return `${featureUrl}column-moving`;
 			case "Column Hiding":
-				return `${featureUrl}column_hiding.html`;
+				return `${featureUrl}column-hiding`;
 			case "Row Selection":
-				return `${featureUrl}selection.html`;
+				return `${featureUrl}selection`;
 		}
 	}
 }
