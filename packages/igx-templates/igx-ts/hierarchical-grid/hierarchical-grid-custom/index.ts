@@ -41,8 +41,10 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 		const columnFeatures = [];
 		const gridFeatures = [];
 		const extraConfig = {
-			additionalMarkup: this.additionalElements.join("\n"),
 			selectedFeatures: this.getSelectedFeatures(columnFeatures, gridFeatures),
+
+			// must be assigned after getSelectedFeatures evaluates, TODO: refactor method
+			additionalMarkup: this.additionalElements.join("\n"),
 
 			// tslint:disable-next-line: object-literal-sort-keys
 			columnFeatures: columnFeatures.join(" "),
@@ -73,7 +75,7 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 				<span style="float:left">${columnName}</span>
 				<igx-icon class="pin-icon" family="fas" name="fa-thumbtack" (click)="toggleColumn(columnRef, $event)"></igx-icon>
 			</div>
-		</ng-template>`;
+		</ng-template>`.replace(/\t/g, "  ");
 	}
 
 	private getSelectedFeatures(columnFeatures: string[], gridFeatures: string[]) {
