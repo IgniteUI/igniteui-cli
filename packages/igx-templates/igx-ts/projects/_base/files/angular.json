@@ -25,6 +25,7 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -68,23 +69,24 @@
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
-            },
-            "defaultConfiguration": "production"
-          }
+            }
+          },
+          "defaultConfiguration": "production"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "<%=dashName%>:build"
-          },
           "configurations": {
             "production": {
               "browserTarget": "<%=dashName%>:build:production"
             },
+            "development": {
+              "browserTarget": "<%=dashName%>:build:development"
+            },
             "es5": {
               "browserTarget": "<%=dashName%>:build:es5"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
@@ -99,6 +101,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
+            "inlineStyleLanguage": "scss",
             "styles": [
               "src/styles.scss"
             ],
