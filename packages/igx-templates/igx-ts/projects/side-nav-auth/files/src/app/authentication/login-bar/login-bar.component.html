@@ -10,8 +10,8 @@
 </button>
 
 <igx-drop-down #options (selectionChanging)="menuSelect($event)">
-  <igx-drop-down-item igxRipple>Profile</igx-drop-down-item>
-  <igx-drop-down-item igxRipple>Log Out</igx-drop-down-item>
+  <igx-drop-down-item [index]="0" igxRipple>Profile</igx-drop-down-item>
+  <igx-drop-down-item [index]="1" igxRipple>Log Out</igx-drop-down-item>
 </igx-drop-down>
 
 <app-login-dialog></app-login-dialog>
