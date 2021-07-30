@@ -27,6 +27,21 @@
     text-align: right;
 }
 
+igx-icon.weather-icon {
+    &--gray {
+        color: gray;
+    }
+    &--blue {
+        color: blue;
+    }
+    &--orange {
+        color: orange;
+    }
+    &--skyblue {
+        color: skyblue;
+    }
+}
+
 .weather__main-temp {
     @extend %columnDisplay;
     font-size: 4rem;
