@@ -9,7 +9,7 @@ import { routes } from "../app-routing.module";
 		<h1>$(name)</h1>
 		<div class="nav-menu-item" *ngFor="let route of topNavLinks">
 			<!-- only top bav links generated -->
-			<a routerLink="{{route.path}}" routerLinkActive="active">{{route.name}}</a>
+			<a [routerLink]="route.path" routerLinkActive="active">{{route.name}}</a>
 		</div>
 	</nav>`
 })
