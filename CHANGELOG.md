@@ -1,3 +1,25 @@
+# [8.0.4](https://github.com/IgniteUI/igniteui-cli/compare/v8.0.3...v8.0.4)  (2021-08-02)
+
+## @igniteui/cli-core@#8.0.4
+
+Note: Version bump only for package @igniteui/cli-core
+
+
+## @igniteui/angular-templates@#12.0.804 (2021-08-02)
+
+Note: Version bump only for package @igniteui/angular-templates
+
+
+## @igniteui/angular-schematics@#12.0.804 (2021-08-02)
+
+#### Bug Fixes
+
+* **schematics:** resolve schema id deprecation warning ([#870](https://github.com/IgniteUI/igniteui-cli/pull/870)) ([17d7016](https://github.com/IgniteUI/igniteui-cli/commit/17d7016))
+## igniteui-cli@8.0.3
+
+Note: Version bump only for package igniteui-cli
+
+
 # [8.0.3](https://github.com/IgniteUI/igniteui-cli/compare/v8.0.2...v8.0.3)  (2021-07-14)
 
 ## igniteui/cli-core@#8.0.3
