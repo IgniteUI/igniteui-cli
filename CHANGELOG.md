@@ -1,4 +1,4 @@
-# [8.1.0](https://github.com/IgniteUI/igniteui-cli/compare/v8.0.3...v8.1.0) (2021-08-02)
+# [8.1.0](https://github.com/IgniteUI/igniteui-cli/compare/v8.0.4...v8.1.0) (2021-08-02)
 
 ## igniteui/cli-core@8.1.0
 
@@ -18,8 +18,7 @@ Note: Version bump only for package igniteui/cli-core
 ## igniteui/angular-schematics@12.1.810
 #### Features
 
-* update angular to v12.1 [#856](https://github.com/IgniteUI/igniteui-cli/issues/856) ([#857](https://github.com/IgniteUI/igniteui-cli/issues/857)) ([971822e](https://github.com/IgniteUI/igniteui-cli/commit/971822e343158bd107ef5b07bf60773509bd928c))
-
+Note: Version bump only for package @igniteui/angular-schematics
 
 
 ## igniteui-cli@8.1.0
