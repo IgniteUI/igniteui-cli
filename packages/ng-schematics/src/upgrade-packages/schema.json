@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "id": "SchematicsAngularNgNew",
+  "$id": "SchematicsAngularNgNew",
   "title": "Ignite UI for Angular Upgrade packages Options Schema",
   "type": "object",
   "properties": {
