@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
+import { IgxAvatarModule, IgxFilterModule, IgxIconModule, IgxInputGroupModule, IgxListModule } from '<%=igxPackage%>';
 import { <%=ClassName%>Component } from './<%=filePrefix%>.component';
-import { IgxListModule, IgxAvatarModule, IgxIconModule, IgxFilterModule, IgxInputGroupModule } from '<%=igxPackage%>';
 
 describe('<%=ClassName%>Component', () => {
   let component: <%=ClassName%>Component;
@@ -10,7 +10,7 @@ describe('<%=ClassName%>Component', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [<%=ClassName%>Component],
-      imports: [ FormsModule, IgxListModule, IgxAvatarModule, IgxIconModule, IgxFilterModule, IgxInputGroupModule ]
+      imports: [FormsModule, IgxAvatarModule, IgxFilterModule, IgxIconModule, IgxInputGroupModule, IgxListModule]
     })
       .compileComponents();
   }));

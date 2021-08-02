@@ -1,24 +1,23 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import {
-  GridSelectionMode,
+  CellType,
   DefaultSortingStrategy,
-  IDialogEventArgs,
+  GridSelectionMode,
+  IButtonGroupEventArgs,
+  IChangeSwitchEventArgs,
+  IGridKeydownEventArgs,
   IgxButtonGroupComponent,
   IgxDialogComponent,
-  IgxGridCellComponent,
   IgxGridComponent,
   IgxSliderComponent,
-  SortingDirection,
-  IGridKeydownEventArgs,
   IRowSelectionEventArgs,
-  IButtonGroupEventArgs,
-  IChangeSwitchEventArgs
+  SortingDirection
 } from '<%=igxPackage%>';
 import { CategoryChartType, IgxCategoryChartComponent } from 'igniteui-angular-charts';
 import { timer } from 'rxjs';
 import { debounce } from 'rxjs/operators';
-import { Contract, REGIONS } from './localData/financialData';
 import { LocalDataService } from './localData.service';
+import { Contract, REGIONS } from './localData/financialData';
 
 @Component({
   providers: [LocalDataService],
@@ -78,7 +77,10 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
   private selectedButton: number = -1;
   private timer: any;
   private volumeChanged: any;
-  constructor(private localService: LocalDataService, private elRef: ElementRef) {
+  constructor(
+    private localService: LocalDataService,
+    private elRef: ElementRef,
+    private cdr: ChangeDetectorRef) {
     this.subscription = this.localService.getData(this.volume);
     this.localService.records.subscribe(x => { this.data = x; });
   }
@@ -115,6 +117,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
     this.grid1.hideGroupedColumns = true;
     this.grid1.reflow();
     this.selectFirstGroupAndFillChart();
+    this.cdr.detectChanges();
   }
 
   public selectFirstGroupAndFillChart(): void {
@@ -122,11 +125,11 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
     this.setChartConfig('Countries', 'Prices (USD)', 'Data Chart with prices by Category and Country');
 
     if (this.grid1.groupsRecords[0].groups && this.grid1.groupsRecords[0]?.groups[0]?.groups) {
-        const recordsToBeSelected = this.grid1.selectionService.getRowIDs(this.grid1.groupsRecords[0].groups[0].groups[0].records);
-        recordsToBeSelected.forEach(item => {
-          this.grid1.selectionService.selectRowById(item, false, true);
-        });
-      }
+      const recordsToBeSelected = this.grid1.selectionService.getRowIDs(this.grid1.groupsRecords[0].groups[0].groups[0].records);
+      recordsToBeSelected.forEach(item => {
+        this.grid1.selectionService.selectRowById(item, false, true);
+      });
+    }
   }
 
   public setChartConfig(xAsis: string, yAxis: string, title: string): void {
@@ -169,7 +172,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
     }
   }
 
-  public onCloseHandler(evt: IDialogEventArgs): void {
+  public onCloseHandler(): void {
     this.buttonGroup1.selectButton(2);
     if (this.grid1.navigation.activeNode) {
       if (this.grid1.navigation.activeNode.row === -1) {
@@ -228,11 +231,11 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
     this.setChartConfig('Countries', 'Prices (USD)', 'Data Chart with prices by Category and Country');
   }
 
-  public openSingleRowChart(cell: IgxGridCellComponent): void {
+  public openSingleRowChart(cell: CellType): void {
     this.chartData = [];
     setTimeout(() => {
-      this.chartData = this.data.filter(item => item.Region === cell.rowData.Region &&
-        item.Category === cell.rowData.Category);
+      this.chartData = this.data.filter(item => item.Region === cell.row.data.Region &&
+        item.Category === cell.row.data.Category);
 
       this.chart1.notifyInsertItem(this.chartData, this.chartData.length - 1, {});
 
@@ -359,7 +362,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
   }
 
   public customKeydown(args: IGridKeydownEventArgs): void {
-    const target: IgxGridCellComponent = args.target as IgxGridCellComponent;
+    const target: CellType = args.target as CellType;
     const evt: KeyboardEvent = args.event as KeyboardEvent;
     const type = args.targetType;
 
@@ -434,7 +437,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
     dataObj.Change = res.Price - dataObj.Price;
     dataObj.Price = res.Price;
     dataObj[changeP] = res.ChangePercent;
-    return {...dataObj};
+    return { ...dataObj };
   }
 
   private generateNewPrice(oldPrice: number): any {

@@ -1,4 +1,18 @@
-export const data = [
+export interface Product {
+  CategoryID: number;
+  Discontinued: boolean;
+  OrderDate: Date;
+  ProductID: number;
+  ProductName: string;
+  QuantityPerUnit: string;
+  ReorderLevel: number;
+  SupplierID: number;
+  UnitPrice: string;
+  UnitsInStock: number;
+  UnitsOnOrder: number;
+}
+
+export const data: Product[] = [
   {
     CategoryID: 1,
     Discontinued: false,

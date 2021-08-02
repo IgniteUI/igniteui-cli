@@ -1,9 +1,9 @@
+import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { CommonModule } from '@angular/common';
+import { defineCustomElements } from '<%=dockManagerPackage%>/loader';
 import { <%=ClassName%>Component } from './<%=filePrefix%>.component';
 
-import { defineCustomElements } from '<%=dockManagerPackage%>/loader';
 defineCustomElements();
 
 describe('<%=ClassName%>Component', () => {

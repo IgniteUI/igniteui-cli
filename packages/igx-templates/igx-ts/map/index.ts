@@ -1,4 +1,3 @@
-
 import { BaseComponent } from "@igniteui/cli-core";
 
 class IgxGeographicMapComponent extends BaseComponent {

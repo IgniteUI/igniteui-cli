@@ -13,6 +13,14 @@ igx-icon {
   align-items: center;
 }
 
+.icon {
+  color: lightgray;
+}
+
+.icon.icon--favorite {
+  color: orange;
+}
+
 .contact {
   display: flex;
   flex: 1 0 240px;

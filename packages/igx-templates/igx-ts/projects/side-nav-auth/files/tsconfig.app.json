@@ -7,7 +7,9 @@
       "dom"
     ],
     "outDir": "./out-tsc/app",
-    "types": [ "facebook-js-sdk" ]
+    "types": [
+      "facebook-js-sdk"
+    ]
   },
   "files": [
     "src/main.ts",

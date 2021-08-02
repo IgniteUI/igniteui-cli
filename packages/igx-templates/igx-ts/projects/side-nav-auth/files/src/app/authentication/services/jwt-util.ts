@@ -54,4 +54,3 @@ export function encodeBase64Url(input: {}) {
   }
   return btoa(result);
 }
-

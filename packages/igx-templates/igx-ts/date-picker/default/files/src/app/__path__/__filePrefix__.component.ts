@@ -7,7 +7,5 @@ import { Component, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.Emulated,
 })
 export class <%=ClassName%>Component {
-
   public today: Date = new Date(Date.now());
-
 }

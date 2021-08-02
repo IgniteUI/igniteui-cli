@@ -1,5 +1,5 @@
 <div class="grid__wrapper">
-  <igx-grid #grid1 igxPreventDocumentScroll id="grid1" [data]="localData" [height]="'430px'" [width]="'100%'"
+  <igx-grid #grid1 igxPreventDocumentScroll id="grid1" [data]="localData" height="430px" width="100%"
     [rowSelection]="selectionMode" displayDensity="cosy" rowHeight="50" [allowFiltering]="true">
     <igx-grid-toolbar>
       <igx-grid-toolbar-title>
@@ -13,21 +13,20 @@
           <div class="sample-flex-container">
             <igx-input-group type="search" class="searchInputGroup">
               <igx-prefix>
-                <igx-icon class="prefixIcon" *ngIf="searchText.length == 0">search</igx-icon>
+                <igx-icon class="prefixIcon" *ngIf="searchText.length === 0">search</igx-icon>
                 <igx-icon class="prefixIcon" *ngIf="searchText.length > 0" (click)="clearSearch()">clear</igx-icon>
               </igx-prefix>
-  
-              <input #search1 id="search1" class="searchInput" igxInput placeholder="Search"
-                [(ngModel)]="searchText" (ngModelChange)="grid1.findNext(searchText, caseSensitive)"
-                (keydown)="searchKeyDown($event)" />
-  
+
+              <input #search1 id="search1" class="searchInput" igxInput placeholder="Search" [(ngModel)]="searchText"
+                (ngModelChange)="grid1.findNext(searchText, caseSensitive)" (keydown)="searchKeyDown($event)" />
+
               <igx-suffix *ngIf="searchText.length > 0">
                 <div class="resultsText" *ngIf="grid1.lastSearchInfo">
                   <span *ngIf="grid1.lastSearchInfo.matchInfoCache.length > 0">
                     {{ grid1.lastSearchInfo.activeMatchIndex + 1 }} of {{
                     grid1.lastSearchInfo.matchInfoCache.length }} results
                   </span>
-                  <span *ngIf="grid1.lastSearchInfo.matchInfoCache.length == 0">
+                  <span *ngIf="grid1.lastSearchInfo.matchInfoCache.length === 0">
                     No results
                   </span>
                 </div>
@@ -59,18 +58,15 @@
       </igx-grid-toolbar-actions>
     </igx-grid-toolbar>
 
-
-
-
-    <igx-column field="id" header="Customer Number" width="172" [pinned]="true" [hasSummary]="false"
-      [resizable]="true" [hidden]="true" [movable]="true">
+    <igx-column field="id" header="Customer Number" width="172" [pinned]="true" [hasSummary]="false" [resizable]="true"
+      [hidden]="true" [movable]="true">
     </igx-column>
 
     <igx-column field="avatar" header="Photo" width="88" [pinned]="true" [resizable]="true" [searchable]="false"
       [movable]="true" [filterable]="false">
       <ng-template igxCell let-cell="cell">
         <div class="cell__inner avatar-cell">
-          <igx-avatar [src]="cell.row.rowData.avatar" [roundShape]="true" size="small"></igx-avatar>
+          <igx-avatar [src]="cell.row.data.avatar" [roundShape]="true" size="small"></igx-avatar>
         </div>
       </ng-template>
     </igx-column>
@@ -96,7 +92,7 @@
       </ng-template>
     </igx-column>
 
-    <igx-column field="Deals" header="Ratio per month" [width]="'160px'" [filterable]="false">
+    <igx-column field="Deals" header="Ratio per month" width="160px" [filterable]="false">
       <ng-template igxCell let-val>
         <igx-sparkline height="40px" width="160px" [dataSource]="val" valueMemberPath="Deals"
           [displayType]="displayType.Column" brush="rgb(21, 190, 6)" negativeBrush="rgb(211, 17, 3)">
@@ -115,8 +111,8 @@
     <igx-column field="position" header="Position" width="200" [resizable]="true" [movable]="true">
     </igx-column>
 
-    <igx-column field="company" header="Company" [sortable]="true" width="130" [hasSummary]="false"
-      [resizable]="true" [movable]="true">
+    <igx-column field="company" header="Company" [sortable]="true" width="130" [hasSummary]="false" [resizable]="true"
+      [movable]="true">
     </igx-column>
 
     <igx-column field="email" header="Email" width="240" [resizable]="true" [movable]="true" [filterable]="false">

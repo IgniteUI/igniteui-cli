@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { localData  } from './local-data';
+import { Component } from '@angular/core';
+import { localData, State } from './local-data';
 
 @Component({
   selector: 'app-<%=filePrefix%>',
@@ -7,11 +7,6 @@ import { localData  } from './local-data';
   styleUrls: ['./<%=filePrefix%>.component.scss']
 })
 
-export class <%=ClassName%>Component implements OnInit {
-
-  public localData = localData;
-
-  constructor() { }
-
-  public ngOnInit() { }
+export class <%=ClassName%>Component {
+  public localData: State[] = localData;
 }

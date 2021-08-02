@@ -1,3 +1,30 @@
+# [8.1.0](https://github.com/IgniteUI/igniteui-cli/compare/v8.0.4...v8.1.0) (2021-08-02)
+
+## igniteui/cli-core@8.1.0
+
+Note: Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@12.1.810
+#### Bug Fixes
+
+* **igx-ts:** fix strict templates and lint errors ([b122ae9](https://github.com/IgniteUI/igniteui-cli/commit/b122ae9b70d5910c8632a696dd5ce2227950f186)) ([91a8ab4](https://github.com/IgniteUI/igniteui-cli/commit/91a8ab488c00780856f50e9ccd5a52d668df8eae)) ([949ef95](https://github.com/IgniteUI/igniteui-cli/commit/949ef95a7bc563961115f33fc2f2e9783c3264d9)) ([8665b02](https://github.com/IgniteUI/igniteui-cli/commit/8665b026f05a239aa9e2de3159c8d840e554aafe)) ([971822e](https://github.com/IgniteUI/igniteui-cli/commit/971822e343158bd107ef5b07bf60773509bd928c))
+* **igx-ts:** Update angular.json ([c038c70](https://github.com/IgniteUI/igniteui-cli/commit/c038c708c5d2476e819071fd6c9defe29915b904))
+#### Features
+
+* **igx-templates:** add igx-accordion template ([#851](https://github.com/IgniteUI/igniteui-cli/issues/851)) ([03e74cd](https://github.com/IgniteUI/igniteui-cli/commit/03e74cd194184b629ea09ec3cfa5218943d0feef))
+* update angular to v12.1 [#856](https://github.com/IgniteUI/igniteui-cli/issues/856) ([#857](https://github.com/IgniteUI/igniteui-cli/issues/857)) ([971822e](https://github.com/IgniteUI/igniteui-cli/commit/971822e343158bd107ef5b07bf60773509bd928c))
+
+
+## igniteui/angular-schematics@12.1.810
+#### Features
+
+Note: Version bump only for package @igniteui/angular-schematics
+
+
+## igniteui-cli@8.1.0
+Note: Version bump only for package igniteui-cli
+
+
 # [8.0.4](https://github.com/IgniteUI/igniteui-cli/compare/v8.0.3...v8.0.4)  (2021-08-02)
 
 ## @igniteui/cli-core@#8.0.4

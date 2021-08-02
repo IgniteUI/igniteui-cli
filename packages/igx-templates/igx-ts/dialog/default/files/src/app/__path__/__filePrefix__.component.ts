@@ -8,7 +8,7 @@ import { IDialogEventArgs } from '<%=igxPackage%>';
 })
 
 export class <%=ClassName%>Component {
-  onDialogOKSelected(args: IDialogEventArgs) {
+  dialogOKSelected(args: IDialogEventArgs) {
     args.dialog.close();
   }
 }

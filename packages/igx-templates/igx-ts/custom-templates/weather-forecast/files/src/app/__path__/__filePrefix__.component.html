@@ -8,11 +8,11 @@
     <div class="weather__main" *ngIf=data>
       <div class="weather__main-temp">
       <div>{{data.today.tempMax}}°<sup>C</sup></div>
-      <div class="right"><igx-icon color="orange" family="fas" name="fa-sun"></igx-icon></div>
+      <div class="right"><igx-icon class="weather-icon--orange" family="fas" name="fa-sun"></igx-icon></div>
       </div>
       <div class="weather__main-hum">
-      <div><igx-icon color="blue" family="fas" name="fa-umbrella"></igx-icon>{{data.precipitation}} Precipitation </div>
-      <div class="right"><igx-icon color="aqua-blue" family="fas" name="fa-tint"></igx-icon>{{data.humidity}} Humidity </div>
+      <div><igx-icon class="weather-icon--blue" family="fas" name="fa-umbrella"></igx-icon>{{data.precipitation}} Precipitation </div>
+      <div class="right"><igx-icon class="weather-icon--skyblue" family="fas" name="fa-tint"></igx-icon>{{data.humidity}} Humidity </div>
       </div>
     </div>
     <button igxButton igxRipple (click)="toggleDetails()">Forecast Details</button>
@@ -22,7 +22,7 @@
         <div *ngFor="let day of data.daysOfWeek" class="forecast__day">
         <div>{{day.name}}</div>
         <div class="right">
-          <igx-icon [color]="day.iconColor" family="fas" [name]="day.iconName" font-size="1em"></igx-icon>
+          <igx-icon [ngClass]="'weather-icon--' + day.iconColor" family="fas" [name]="day.iconName" font-size="1em"></igx-icon>
           {{day.tempMin}}°/{{day.tempMax}}°
         </div>
         </div>

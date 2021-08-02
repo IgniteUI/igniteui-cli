@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { IgxExcelExporterService } from '<%=igxPackage%>';
+import { IgxExcelExporterService, IgxCsvExporterService } from '<%=igxPackage%>';
 import { IgxSparklineModule, IgxSparklineCoreModule } from 'igniteui-angular-charts';
 
 import { <%=ClassName%>Component } from './<%=filePrefix%>.component';
@@ -43,7 +43,7 @@ describe('<%=ClassName%>Component', () => {
         IgxSparklineModule,
         IgxSparklineCoreModule
       ],
-      providers: [IgxExcelExporterService]
+      providers: [IgxExcelExporterService, IgxCsvExporterService]
     })
     .compileComponents();
   }));

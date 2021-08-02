@@ -21,9 +21,9 @@
       <input igxInput name="townEhanced" type="text" [igxAutocomplete]="townsEnhancedPanel"
         [(ngModel)]="townSelected"/>
     </igx-input-group>
-    <igx-drop-down #townsEnhancedPanel maxHeight="300px" (onSelection)="getPostalCode($event)">
+    <igx-drop-down #townsEnhancedPanel maxHeight="300px" (selectionChanging)="getPostalCode($event)">
       <igx-drop-down-item-group
-        *ngFor="let eRegion of regions | <%=camelCaseName%>RegionContains:townSelected"
+	  *ngFor="let eRegion of regions | <%=camelCaseName%>RegionContains:townSelected"
         [label]="eRegion.name">
         <igx-drop-down-item *ngFor="let town of eRegion.towns | <%=camelCaseName%>StartsWith:townSelected"
           [value]="town.name">
@@ -32,6 +32,6 @@
       </igx-drop-down-item-group>
     </igx-drop-down>
 
-    <igx-toast #message message="Postal Code: {{postalCode}}" [position]="messagePosition"></igx-toast>
+    <igx-toast #message [position]="messagePosition">Postal Code: {{postalCode}}"</igx-toast>
   </div>
 </div>

@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { <%=ClassName%>Component } from './<%=filePrefix%>.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { IgxRadialGaugeModule } from 'igniteui-angular-gauges';
+import { <%=ClassName%>Component } from './<%=filePrefix%>.component';
 
 describe('<%=ClassName%>Component', () => {
   let component: <%=ClassName%>Component;

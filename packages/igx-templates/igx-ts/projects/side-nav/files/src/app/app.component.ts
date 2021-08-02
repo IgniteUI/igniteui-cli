@@ -1,11 +1,8 @@
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
-import { filter } from 'rxjs/operators';
-
-import { routes } from './app-routing.module';
-
 import { IgxNavigationDrawerComponent } from 'igniteui-angular';
-
+import { filter } from 'rxjs/operators';
+import { routes } from './app-routing.module';
 
 @Component({
   selector: 'app-root',
@@ -37,11 +34,11 @@ export class AppComponent implements OnInit {
     this.router.events.pipe(
       filter((x): x is NavigationStart => x instanceof NavigationStart)
     )
-    .subscribe((event: NavigationStart) => {
-      if (event.url !== '/' && !this.navdrawer.pin) {
-        // Close drawer when selecting a view on mobile (unpinned)
-        this.navdrawer.close();
-      }
-    });
+      .subscribe((event: NavigationStart) => {
+        if (event.url !== '/' && !this.navdrawer.pin) {
+          // Close drawer when selecting a view on mobile (unpinned)
+          this.navdrawer.close();
+        }
+      });
   }
 }

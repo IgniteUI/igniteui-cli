@@ -4,7 +4,8 @@ import { IgniteUIForAngularTemplate } from "../../../IgniteUIForAngularTemplate"
 class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 	private userExtraConfiguration = {};
 	private usePinning: boolean;
-	private toolbar = "";
+	/** starts with empty string to create a new line on join when something else is added */
+	private additionalElements = [""];
 	constructor() {
 		super(__dirname);
 		this.components = ["Hierarchical Grid"];
@@ -41,7 +42,9 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 		const gridFeatures = [];
 		const extraConfig = {
 			selectedFeatures: this.getSelectedFeatures(columnFeatures, gridFeatures),
-			toolbar: this.toolbar,
+
+			// must be assigned after getSelectedFeatures evaluates, TODO: refactor method
+			additionalMarkup: this.additionalElements.join("\n"),
 
 			// tslint:disable-next-line: object-literal-sort-keys
 			columnFeatures: columnFeatures.join(" "),
@@ -72,7 +75,7 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 				<span style="float:left">${columnName}</span>
 				<igx-icon class="pin-icon" family="fas" name="fa-thumbtack" (click)="toggleColumn(columnRef, $event)"></igx-icon>
 			</div>
-		</ng-template>`;
+		</ng-template>`.replace(/\t/g, "  ");
 	}
 
 	private getSelectedFeatures(columnFeatures: string[], gridFeatures: string[]) {
@@ -115,7 +118,7 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 						gridFeatures.push(gridFeatureText);
 						break;
 					case "Paging":
-						gridFeatures.push(`[paging]="true" [perPage]="5"`);
+						this.additionalElements.push(`  <igx-paginator [perPage]="5"></igx-paginator>`);
 						break;
 					case "Column Pinning":
 						this.usePinning = true;
@@ -134,7 +137,6 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 				}
 				if (toolbarActions.length) {
 					const parts = [
-						"",
 						"  <igx-grid-toolbar>",
 						"    <igx-grid-toolbar-title>Singers</igx-grid-toolbar-title>",
 						"    <igx-grid-toolbar-actions>",
@@ -142,7 +144,7 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 						"    </igx-grid-toolbar-actions>",
 						"  </igx-grid-toolbar>"
 					];
-					this.toolbar = parts.join("\n");
+					this.additionalElements.splice(1, 0, parts.join("\n"));
 				}
 			}
 		}
@@ -155,19 +157,19 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 			case "Sorting":
 			case "Filtering":
 			case "Paging":
-				return `${featureUrl}${feature}.html`;
+				return `${featureUrl}${feature.toLocaleLowerCase()}`;
 			case "Resizing":
-				return `${featureUrl}column_resizing.html`;
+				return `${featureUrl}column-resizing`;
 			case "Column Pinning":
-				return `${featureUrl}column_pinning.html`;
+				return `${featureUrl}column-pinning`;
 			case "Cell Editing":
-				return `${featureUrl}editing.html`;
+				return `${featureUrl}editing`;
 			case "Column Moving":
-				return `${featureUrl}column_moving.html`;
+				return `${featureUrl}column-moving`;
 			case "Column Hiding":
-				return `${featureUrl}column_hiding.html`;
+				return `${featureUrl}column-hiding`;
 			case "Row Selection":
-				return `${featureUrl}selection.html`;
+				return `${featureUrl}selection`;
 		}
 	}
 }

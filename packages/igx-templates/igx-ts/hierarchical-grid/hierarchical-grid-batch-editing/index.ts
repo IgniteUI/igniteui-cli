@@ -14,10 +14,6 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 			{
 				import: ["IgxGridModule", "IgxHierarchicalGridModule", "IgxDialogModule"],
 				from: "<%=igxPackage%>"
-			},
-			{
-				declare: ["HierarchicalGridWithTransactionsComponent"],
-				from: "./src/app/<%=path%>/<%=filePrefix%>-transactions.component.ts"
 			}
 		];
 	}
