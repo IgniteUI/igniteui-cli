@@ -1,0 +1,6 @@
+:host {
+  display: flex;
+  background: url(../assets/lines-bottom-right.svg) right bottom;
+  background-repeat: no-repeat;
+  height:  100%;
+}
