@@ -1,6 +1,6 @@
 import {
-	AddTemplateArgs, ControlExtraConfiguration, defaultDelimiters,
-	ProjectConfig, Template, TypeScriptFileUpdate, Util
+	AddTemplateArgs, App, Config, ControlExtraConfiguration, defaultDelimiters,
+	FsFileSystem, FS_TOKEN, IFileSystem, ProjectConfig, Template, TypeScriptFileUpdate, Util
 } from "@igniteui/cli-core";
 import * as path from "path";
 
@@ -20,6 +20,7 @@ export class AngularTemplate implements Template {
 	public delimiters = defaultDelimiters;
 
 	protected widget: string;
+	protected fileSystem = new FsFileSystem();
 
 	/**
 	 * Creates a new AngularTemplate for a root path (pass in __dirname)
@@ -75,8 +76,7 @@ export class AngularTemplate implements Template {
 		);
 		mainModule.finalize();
 
-		// make sure DV file is added to project if needed:
-		this.ensureSourceFiles();
+		this.ensureSourceFiles(projectPath);
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return [];
@@ -102,7 +102,7 @@ export class AngularTemplate implements Template {
 		return config;
 	}
 
-	protected ensureSourceFiles() {
+	protected ensureSourceFiles(projectPath: string) {
 		// tslint:disable-next-line:no-submodule-imports
 		const components = require("@igniteui/cli-core/packages/components");
 		const config = ProjectConfig.getConfig();
@@ -123,6 +123,48 @@ export class AngularTemplate implements Template {
 			&& files.indexOf("modules/infragistics.gridexcelexporter.js") === -1) {
 			files.push("modules/infragistics.gridexcelexporter.js");
 			ProjectConfig.setConfig(config);
+		}
+		
+		// Ensure ig-ts resource files registration
+		if (this.projectType === "ig-ts") this.registerSourceFiles(config, projectPath);
+	}
+
+	/**
+	 * Register igniteui-angular-wrappers(ig-ts) resources under the project's angular.json scripts and styles collections,
+	 * so these are picked by Angular's internal webpack to build and serve
+	 */
+	protected registerSourceFiles(config: Config, projectPath: string) {
+		const fs: IFileSystem = App.container.get(FS_TOKEN);
+		const sourceFiles: string[] = config.project.sourceFiles;
+		const igniteuiSource: string = config.project.igniteuiSource;
+		let themeCSS = "en/css/themes/infragistics/infragistics.theme.css";
+		let infragisticsCSS = "en/css/structure/infragistics.css";
+		let workspaceConfigObj;
+		let updateFile = false;
+
+		const workspacePath = path.join(projectPath, 'angular.json');
+		if (this.fileSystem.fileExists(workspacePath)) {
+			workspaceConfigObj = JSON.parse(this.fileSystem.readFile(workspacePath));
+			let scripts = workspaceConfigObj.projects[Object.keys(workspaceConfigObj.projects)[0]].architect.build.options.scripts;
+			let styles = workspaceConfigObj.projects[Object.keys(workspaceConfigObj.projects)[0]].architect.build.options.styles;
+
+			if (!styles.find(x => x.input?.includes(themeCSS)) || !styles.find(x => x.input?.includes(infragisticsCSS))) {
+				styles = igniteuiSource === '@infragistics/ignite-ui-full/en' ?
+					styles.push({ input: `${"@infragistics/ignite-ui-full/" + themeCSS}` }, { input: `${"@infragistics/ignite-ui-full/" + infragisticsCSS}` }) :
+					styles.push({ input: `${"ignite-ui/" + themeCSS}` }, { input: `${"ignite-ui/" + infragisticsCSS}` });
+				updateFile = true
+			}
+
+			for (const fileName of sourceFiles) {
+				if (!scripts.find(x => x.bundleName === fileName)) {
+					scripts.push({ input: `${igniteuiSource + "/en/js/" + fileName}`, bundleName: fileName });
+					updateFile = true
+				}
+			}
+			if (updateFile) fs.writeFile(workspacePath, Util.formatAngularJsonOptions(workspaceConfigObj));
+		} else {
+			Util.log(`No angular.json file found! May have to manually add igniteui-angular-wrappers styles and scripts
+							(infragistics.core.js, infragistics.lob.js, etc.) to the corresponding angular.json styles and scripts collections`);
 		}
 	}
 

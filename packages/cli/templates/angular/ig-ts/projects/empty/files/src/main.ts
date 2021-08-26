@@ -1,9 +1,11 @@
-// Note: In order to have a working app, should either import zone.js and core-js shim in the module.ts OR ref these scripts from the index.html.
-import 'core-js';
-import 'zone.js';
-
+import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
 import { AppModule } from './app/app.module';
+import { environment } from './environments/environment';
 
-platformBrowserDynamic().bootstrapModule(AppModule);
+if (environment.production) {
+  enableProdMode();
+}
+
+platformBrowserDynamic().bootstrapModule(AppModule)
+  .catch(err => console.error(err));

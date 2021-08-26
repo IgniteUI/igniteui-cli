@@ -186,6 +186,11 @@ export class Util {
 		return JSON.stringify(json, null, 2) + "\n";
 	}
 
+	public static formatAngularJsonOptions(json:
+		{ projects: { architect: { build: { options: { styles: any[], scripts: { input: string, bundleName: string }[] } } } } }): string {
+		return JSON.stringify(json, null, 2) + "\n";
+	}
+
 	public static version(filePath?: string): string {
 		const configuration = require(filePath || "../package.json");
 		return configuration.version;

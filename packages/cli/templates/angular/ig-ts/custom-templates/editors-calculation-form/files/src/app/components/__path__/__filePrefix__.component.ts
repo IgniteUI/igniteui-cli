@@ -202,12 +202,12 @@ export class $(ClassName)Component {
 	public editorsEnabled = true;
 	public listData = ["EUR", "USD", "GBP"];
 
-	public doOnLoad;
-	public getResult;
-	public reset;
-	public onSubmit;
-	public disableEditors;
-	public checkboxClicked;
+	public doOnLoad: any;
+	public getResult: any;
+	public reset: any;
+	public onSubmit: any;
+	public disableEditors: any;
+	public checkboxClicked: any;
 
 	public firstNameOptions: IgTextEditor;
 	public lastNameOptions: IgTextEditor;
@@ -330,7 +330,7 @@ export class $(ClassName)Component {
 			this.show = false;
 		};
 
-		this.disableEditors = (disable) => {
+    this.disableEditors = (disable: boolean) => {
 			this.editorsEnabled = !disable;
 			this.btnEnabled = disable;
 
@@ -341,7 +341,7 @@ export class $(ClassName)Component {
 			}
 		};
 
-		this.getResult = (creditAmount, getSumToReceive, getMonthlyPaymentInterestRate) => {
+		this.getResult = (creditAmount: any, getSumToReceive: any, getMonthlyPaymentInterestRate: any) => {
 			this.showValuesContainer = true;
 			let currencySymbol;
 			const selectedCurrency = this.currencyOptions.value;

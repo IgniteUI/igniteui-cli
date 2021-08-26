@@ -4,7 +4,7 @@ import { $(ClassName)Component } from './$(filePrefix).component';
 import { IgniteUIModule } from 'igniteui-angular-wrappers';
 import { FormsModule } from '@angular/forms';
 
-declare var $;
+declare var $: any;
 
 describe('$(ClassName)Component', () => {
   let component: $(ClassName)Component;
