@@ -4,15 +4,15 @@ import { lastFiveYears } from "../../assets/world-energy-production";
 @Component({
   selector: "$(filePrefix)",
   template: `
-		<h1>$(description)</h1>
-		<div style="float: left">
-			<ig-data-chart [options]="options" widgetId="barChart"></ig-data-chart>
-		</div>
-		<div id="barLegend" style="float: left"></div>`
+    <h1>$(description)</h1>
+    <div style="float: left">
+      <ig-data-chart [options]="options" widgetId="barChart"></ig-data-chart>
+      </div>
+    <div id="barLegend" style="float: left"></div>`
 })
 export class $(ClassName)Component {
-	public options: IgDataChart;
-	public data: any[];
+  public options: IgDataChart;
+  public data: any[];
 
   constructor() {
     this.data = lastFiveYears;

@@ -12,8 +12,8 @@ import { lastFiveYears } from "../../assets/world-energy-production";
 	`
 })
 export class $(ClassName)Component {
-	public options: IgDataChart;
-	public data: any[];
+  public options: IgDataChart;
+  public data: any[];
 
   constructor() {
     this.data = lastFiveYears;

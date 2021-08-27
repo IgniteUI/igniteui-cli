@@ -11,9 +11,9 @@ import { Component } from "@angular/core";
 		`
 })
 export class $(ClassName)Component {
-	public options: IgCombo;
-	public platforms: any;
-	public combo: any;
+  public options: IgCombo;
+  public platforms: any;
+  public combo: any;
 
   constructor() {
     this.platforms = [
