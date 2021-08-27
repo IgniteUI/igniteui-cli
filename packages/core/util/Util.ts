@@ -187,7 +187,18 @@ export class Util {
 	}
 
 	public static formatAngularJsonOptions(json:
-		{ projects: { architect: { build: { options: { styles: any[], scripts: { input: string, bundleName: string }[] } } } } }): string {
+		{
+			projects: {
+				architect: {
+					build: {
+						options: {
+							styles: any[],
+							scripts: Array<{ input: string, bundleName: string }>
+						}
+					}
+				}
+			}
+		}): string {
 		return JSON.stringify(json, null, 2) + "\n";
 	}
 

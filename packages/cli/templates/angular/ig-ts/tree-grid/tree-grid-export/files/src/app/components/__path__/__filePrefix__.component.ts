@@ -19,15 +19,15 @@ declare var $: any;
     <ig-tree-grid [options]="gridOptions2" widgetId="treegrid2"></ig-tree-grid>
     <br />
     <input type="button" id="exportHierarchicalDS" value="Export Hierarchical Data" (click)="exportHierarchicalDS($event)" />
-  `
+`
 })
 export class $(ClassName)Component {
-  public gridOptions1: IgTreeGrid;
-  public gridOptions2: IgTreeGrid;
-  public employees: any[];
-  public tasks: any[];
-  public exportFlatDS: any;
-  public exportHierarchicalDS: any;
+    public gridOptions1: IgTreeGrid;
+    public gridOptions2: IgTreeGrid;
+    public employees: any[];
+    public tasks: any[];
+    public exportFlatDS: any;
+    public exportHierarchicalDS: any;
 
   constructor() {
     this.employees = flatDS;

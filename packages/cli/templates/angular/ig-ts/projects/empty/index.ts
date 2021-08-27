@@ -36,35 +36,50 @@ class EmptyAngularProject implements ProjectTemplate {
 		});
 		ProjectConfig.setConfig(config);
 
-		// Update angular.json to use and refer to the installed @ignite-ui-full package
-		let workspaceConfigObj: { projects: { architect: { build: { options: { styles: any[], scripts: { input: string, bundleName: string }[] } } } } };
-		const workspacePath = path.join(projectPath, 'angular.json');
+		// update angular.json to use and refer to the installed @ignite-ui-full package
+		let workspaceConfigObj:
+			{
+				projects: {
+					architect: {
+						build: {
+							options: {
+								styles: any[],
+								scripts: Array<{ input: string, bundleName: string }>
+							}
+						}
+					}
+				}
+			};
+
+		const workspacePath = path.join(projectPath, "angular.json");
 		if (this.fileSystem.fileExists(workspacePath)) {
 			workspaceConfigObj = JSON.parse(this.fileSystem.readFile(workspacePath));
-			let workspace = workspaceConfigObj.projects[Object.keys(workspaceConfigObj.projects)[0]];
-			let styles = workspace.architect.build.options.styles;
-			let scripts = workspace.architect.build.options.scripts;
-			let freeVersionPath = 'ignite-ui';
-			let fullVersionPath = '@infragistics/ignite-ui-full';
-			// Update free to full packages - resource location + resource name (if it is different for the full version)
-			// Optionally: can safely strip ./node_modules/ from path
-			for (let script of scripts) {
+			const workspace = workspaceConfigObj.projects[Object.keys(workspaceConfigObj.projects)[0]];
+			const styles = workspace.architect.build.options.styles;
+			const scripts = workspace.architect.build.options.scripts;
+			const freeVersionPath = "ignite-ui";
+			const fullVersionPath = "@infragistics/ignite-ui-full";
+
+			// update free to full packages - resource location + resource name (if it is different for the full version)
+			// optionally: can safely strip ./node_modules/ from path
+			for (const script of scripts) {
 				if (!!script.input && script.input?.includes(freeVersionPath)) {
-					script.input = script.input.replace(freeVersionPath, fullVersionPath)
+					script.input = script.input.replace(freeVersionPath, fullVersionPath);
 					script.input = script.input.replace("-lite", "");
 				}
 				if (!!script.bundleName && script.bundleName?.includes("-lite")) {
 					script.bundleName = script.bundleName.replace("-lite", "");
 				}
-				// Edge case: Strip modules/ path from "bundleName": "modules/infragistics.gridexcelexporter.js"
+
+				// edge case: Strip modules/ path from "bundleName": "modules/infragistics.gridexcelexporter.js"
 				if (!!script.bundleName && script.bundleName?.includes("modules/")) {
 					script.bundleName = script.bundleName.replace("modules/", "");
 				}
 			}
 
-			for (let style of styles) {
+			for (const style of styles) {
 				if (!!style.input && style.input?.includes(freeVersionPath)) {
-					style.input = style.input.replace(freeVersionPath, fullVersionPath)
+					style.input = style.input.replace(freeVersionPath, fullVersionPath);
 				}
 			}
 			this.fileSystem.writeFile(workspacePath, Util.formatAngularJsonOptions(workspaceConfigObj));
