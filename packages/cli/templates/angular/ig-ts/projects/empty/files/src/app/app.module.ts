@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,7 +9,7 @@ import { HomeComponent } from './home.component';
 import { IgniteUIModule } from 'igniteui-angular-wrappers';
 
 @NgModule({
-  imports: [BrowserModule, AppRoutingModule, IgniteUIModule],
+  imports: [BrowserModule, AppRoutingModule, IgniteUIModule, FormsModule],
   declarations: [
     HomeComponent,
     AppComponent,
