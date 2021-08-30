@@ -58,7 +58,7 @@ class EmptyAngularProject implements ProjectTemplate {
 			const styles = workspace.architect.build.options.styles;
 			const scripts = workspace.architect.build.options.scripts;
 			const freeVersionPath = "ignite-ui";
-			const fullVersionPath = "@infragistics/ignite-ui-full";
+			const fullVersionPath = "@infragistics/ignite-ui-full/en";
 
 			// update free to full packages - resource location + resource name (if it is different for the full version)
 			// optionally: can safely strip ./node_modules/ from path

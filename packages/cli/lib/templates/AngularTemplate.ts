@@ -137,8 +137,8 @@ export class AngularTemplate implements Template {
 		const fs: IFileSystem = App.container.get(FS_TOKEN);
 		const sourceFiles: string[] = config.project.sourceFiles;
 		const igniteuiSource: string = config.project.igniteuiSource;
-		const themeCSS = "en/css/themes/infragistics/infragistics.theme.css";
-		const infragisticsCSS = "en/css/structure/infragistics.css";
+		const themeCSS = "css/themes/infragistics/infragistics.theme.css";
+		const infragisticsCSS = "css/structure/infragistics.css";
 		let workspaceConfigObj;
 		let updateFile = false;
 
@@ -151,15 +151,15 @@ export class AngularTemplate implements Template {
 				workspaceConfigObj.projects[Object.keys(workspaceConfigObj.projects)[0]].architect.build.options.styles;
 
 			if (!styles.find(x => x.input?.includes(themeCSS)) || !styles.find(x => x.input?.includes(infragisticsCSS))) {
-				styles = igniteuiSource === "@infragistics/ignite-ui-full/en" ?
-					styles.push({ input: `${"@infragistics/ignite-ui-full/" + themeCSS}` }, { input: `${"@infragistics/ignite-ui-full/" + infragisticsCSS}` }) :
+				styles = igniteuiSource === "@infragistics/ignite-ui-full/en/" ?
+					styles.push({ input: `${"@infragistics/ignite-ui-full/en/" + themeCSS}` }, { input: `${"@infragistics/ignite-ui-full/en/" + infragisticsCSS}` }) :
 					styles.push({ input: `${"ignite-ui/" + themeCSS}` }, { input: `${"ignite-ui/" + infragisticsCSS}` });
 				updateFile = true;
 			}
 
 			for (const fileName of sourceFiles) {
 				if (!scripts.find(x => x.bundleName === fileName)) {
-					scripts.push({ input: `${igniteuiSource + "/en/js/" + fileName}`, bundleName: fileName });
+					scripts.push({ input: `${igniteuiSource + "/js/" + fileName}`, bundleName: fileName });
 					updateFile = true;
 				}
 			}
