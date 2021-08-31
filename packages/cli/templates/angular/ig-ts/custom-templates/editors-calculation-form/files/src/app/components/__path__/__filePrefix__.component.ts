@@ -1,13 +1,4 @@
-import { Component, ViewChild } from "@angular/core";
-import {
-  IgCheckboxEditorComponent,
-  IgCurrencyEditorComponent,
-  IgDatePickerComponent,
-  IgMaskEditorComponent,
-  IgNumericEditorComponent,
-  IgPercentEditorComponent,
-  IgTextEditorComponent
-} from "igniteui-angular-wrappers";
+import { Component } from "@angular/core";
 
 @Component({
   selector: "$(filePrefix)",
@@ -83,7 +74,7 @@ import {
 					</tr>
 					<tr>
 						<td>
-							<ig-checkbox-editor class="divHeight" [checked]="salaryInBankOptions.checked" [disabled]="!editorsEnabled" [(ngModel)]="salaryInBankOptions.value"
+							<ig-checkbox-editor class="divHeight" [options]="salaryInBankOptions" [disabled]="!editorsEnabled" [(ngModel)]="salaryInBankOptions.value"
 							[ngModelOptions]="{standalone: true}" widgetId="salaryInBank" (click)="checkboxClicked()"></ig-checkbox-editor>
 							<label> Is your salary transferred in the bank</label>
 						</td>
@@ -116,7 +107,7 @@ import {
 					</td>
 					<td>
 						<div class="divHeight">
-							<ig-currency-editor [options]="resultOptions" [currencySymbol]="resultOptions.currencySymbol" [(ngModel)]="resultOptions.value"
+							<ig-currency-editor [options]="resultOptions" [(ngModel)]="resultOptions.value"
 							[ngModelOptions]="{standalone: true}" widgetId="resultCredit" ></ig-currency-editor>
 						</div>
 					</td>
@@ -127,7 +118,7 @@ import {
 					</td>
 					<td>
 						<div class="divHeight">
-							<ig-currency-editor [options]="returnValueOptions" [currencySymbol]="returnValueOptions.currencySymbol" [(ngModel)]="returnValueOptions.value"
+							<ig-currency-editor [options]="returnValueOptions" [(ngModel)]="returnValueOptions.value"
 							[ngModelOptions]="{standalone: true}" widgetId="returnValue"></ig-currency-editor>
 						</div>
 					</td>
@@ -138,7 +129,7 @@ import {
 					</td>
 					<td>
 						<div class="divHeight">
-							<ig-currency-editor [options]="monthlyPaymentOptions" [currencySymbol]="monthlyPaymentOptions.currencySymbol" [(ngModel)]="monthlyPaymentOptions.value"
+							<ig-currency-editor [options]="monthlyPaymentOptions" [(ngModel)]="monthlyPaymentOptions.value"
 							[ngModelOptions]="{standalone: true}" widgetId="monthlyPaymentValue"></ig-currency-editor>
 						</div>
 					</td>
@@ -275,15 +266,18 @@ export class $(ClassName)Component {
     };
     this.resultOptions = {
       readOnly: true,
-      width: 150
+      width: 150,
+      currencySymbol: "€"
     };
     this.returnValueOptions = {
       readOnly: true,
-      width: 150
+      width: 150,
+      currencySymbol: "€"
     };
     this.monthlyPaymentOptions = {
       readOnly: true,
-      width: 150
+      width: 150,
+      currencySymbol: "€"
     };
 
     this.checkboxClicked = () => {
@@ -310,7 +304,6 @@ export class $(ClassName)Component {
       const monthlyInterestRate = monthlyPaymentNoInterestRate * interestRate;
       const monthlyPaymentInterestRate = monthlyPaymentNoInterestRate + monthlyInterestRate;
       const sumToReceive = monthlyPaymentInterestRate * loanPeriod;
-      const bankDividend = sumToReceive - sumToGive;
 
       this.getResult(sumToGive, sumToReceive, monthlyPaymentInterestRate);
       this.disableEditors(true);

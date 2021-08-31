@@ -9,7 +9,7 @@ declare var $: any;
     <h1>$(description)</h1>
     <h2>Select columns to ignore</h2>
     <div>
-      <ig-combo [options]="comboOptions" widgetId="combo" (selectionChanged)="selectionChanged($event)"></ig-combo>
+      <ig-combo [options]="comboOptions" widgetId="combo"></ig-combo>
       <input type="button" id="exportBtn" value="Export grid" (click)="export($event)" />
     </div>
     <ig-grid [options]="gridOptions" widgetId="grid-export"></ig-grid>
@@ -33,7 +33,6 @@ export class $(ClassName)Component {
   public export: any;
   public keys: any[];
   public columnsToSkip: any[];
-  public selectionChanged: any;
 
   constructor() {
     this.keys = ["EmployeeID", "LastName", "Country", "Age", "IsActive", "Company", "RegistererDate"];
@@ -45,6 +44,13 @@ export class $(ClassName)Component {
       multiSelection: {
         enabled: true,
         showCheckboxes: true
+      },
+      selectionChanged: function (evt, ui) {
+        this.columnsToSkip = [];
+        let selection = ui.items;
+        for (let entry of selection) {
+          this.columnsToSkip.push(entry.data.text);
+        }
       }
     };
     this.columnsToSkip = [];
@@ -76,14 +82,6 @@ export class $(ClassName)Component {
         gridStyling: "none",
         columnsToSkip: this.columnsToSkip
       });
-    }
-
-    this.selectionChanged = (ev: any) => {
-      this.columnsToSkip = [];
-      let selection = ev.ui.items;
-      for (let entry of selection) {
-        this.columnsToSkip.push(entry.data.text);
-      }
     }
   }
 }

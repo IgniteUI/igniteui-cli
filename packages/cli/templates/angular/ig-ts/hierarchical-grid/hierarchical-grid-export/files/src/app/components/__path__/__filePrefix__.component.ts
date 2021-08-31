@@ -9,7 +9,7 @@ declare var $: any;
     <h1>$(description)</h1>
     <h2>Data Export Mode</h2>
     <div>
-      <ig-combo [options]="comboOptions" widgetId="combo" [(ngModel)]="comboOptions.value" (selectionChanged)="selectionChanged($event)"></ig-combo>
+      <ig-combo [options]="comboOptions" widgetId="combo" [(ngModel)]="comboOptions.value"></ig-combo>
       <input type="button" id="exportBtn" value="Export grid" (click)="export($event)" />
     </div>
     <ig-hierarchical-grid [options]="gridOptions" widgetId="hierarchical-grid-export"></ig-hierarchical-grid>
@@ -32,7 +32,6 @@ export class $(ClassName)Component {
   public data: any[];
   public export: any;
   public exportMode: string;
-  public selectionChanged: any;
 
   constructor() {
     this.exportMode = "allRows";
@@ -40,7 +39,10 @@ export class $(ClassName)Component {
       width: "200px",
       height: "30px",
       mode: "dropdown",
-      dataSource: [{ text: "All Rows", value: "allRows" }, { "text": "Expanded Rows", "value": "expandedRows" }]
+      dataSource: [{ text: "All Rows", value: "allRows" }, { "text": "Expanded Rows", "value": "expandedRows" }],
+      selectionChanged: function (evt, ui) {
+        this.exportMode = ui.items[0].data.value;
+      }
     };
 
     this.data = northwind.results;
@@ -91,10 +93,6 @@ export class $(ClassName)Component {
         gridStyling: "none",
         dataExportMode: this.exportMode
       });
-    };
-
-    this.selectionChanged = (ev: any) => {
-      this.exportMode = ev.ui.items[0].data.value;
     };
   }
 }
