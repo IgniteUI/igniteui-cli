@@ -159,7 +159,7 @@ export class AngularTemplate implements Template {
 
 			for (const fileName of sourceFiles) {
 				if (!scripts.find(x => x.bundleName === fileName)) {
-					scripts.push({ input: `${igniteuiSource + "/js/" + fileName}`, bundleName: fileName });
+					scripts.push({ input: `${igniteuiSource + "/js/" + fileName}`, bundleName: fileName.includes(".js") ? fileName.replace(".js", "") : fileName});
 					updateFile = true;
 				}
 			}
