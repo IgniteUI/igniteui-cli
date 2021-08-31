@@ -152,14 +152,19 @@ export class AngularTemplate implements Template {
 
 			if (!styles.find(x => x.input?.includes(themeCSS)) || !styles.find(x => x.input?.includes(infragisticsCSS))) {
 				styles = igniteuiSource === "@infragistics/ignite-ui-full/en/" ?
-					styles.push({ input: `${"@infragistics/ignite-ui-full/en/" + themeCSS}` }, { input: `${"@infragistics/ignite-ui-full/en/" + infragisticsCSS}` }) :
+					styles.push(
+						{ input: `${"@infragistics/ignite-ui-full/en/" + themeCSS}` },
+						{ input: `${"@infragistics/ignite-ui-full/en/" + infragisticsCSS}` }) :
 					styles.push({ input: `${"ignite-ui/" + themeCSS}` }, { input: `${"ignite-ui/" + infragisticsCSS}` });
 				updateFile = true;
 			}
 
 			for (const fileName of sourceFiles) {
 				if (!scripts.find(x => x.bundleName === fileName)) {
-					scripts.push({ input: `${igniteuiSource + "/js/" + fileName}`, bundleName: fileName.includes(".js") ? fileName.replace(".js", "") : fileName});
+					scripts.push({
+						bundleName: fileName.includes(".js") ? fileName.replace(".js", "") : fileName,
+						input: `${igniteuiSource + "/js/" + fileName}`
+					});
 					updateFile = true;
 				}
 			}
@@ -185,7 +190,7 @@ export class AngularTemplate implements Template {
 				Util.error(`Path ${"src/app/" + folderName} is not valid!`, "red");
 				process.exit(1);
 			}
-			//clean up potential leading spaces in folder names (`path/    name`):
+			//clean up potential leading spaces in folder names (`path/	name`):
 			folderName = folderName.replace(/\/\s+/g, "/");
 		}
 		return Util.lowerDashed(folderName);
