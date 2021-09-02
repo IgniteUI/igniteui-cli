@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { northwind } from "../../assets/northwind";
+import 'file-saver';
 
 declare var $: any;
 

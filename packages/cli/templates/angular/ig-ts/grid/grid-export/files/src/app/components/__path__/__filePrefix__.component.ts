@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { employees } from "../../assets/employees";
+import 'file-saver';
 
 declare var $: any;
 
