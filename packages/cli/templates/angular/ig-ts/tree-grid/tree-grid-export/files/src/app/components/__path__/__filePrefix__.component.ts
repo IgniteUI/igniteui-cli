@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { hierarchicalDS } from "../../assets/data-hierarchical";
 import { flatDS } from "../../assets/data-flat";
+import 'file-saver';
 
 declare var $: any;
 

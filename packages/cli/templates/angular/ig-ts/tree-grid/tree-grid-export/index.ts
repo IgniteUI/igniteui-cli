@@ -19,6 +19,7 @@ class TreeGridExportTemplate extends AngularTemplate {
 		this.listInComponentTemplates = true;
 		this.hasExtraConfiguration = true;
 		this.extraConfigurations = [];
+		this.packages = ["file-saver@^2.0.5"];
 
 		this.gridHelper = new GridHelper();
 		this.gridHelper.tree = true;

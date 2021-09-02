@@ -19,6 +19,7 @@ class GridExportTemplate extends AngularTemplate {
 		this.extraConfigurations = [];
 		this.hasExtraConfiguration = true;
 		this.listInComponentTemplates = true;
+		this.packages = ["file-saver@^2.0.5"];
 
 		this.gridHelper = new GridHelper();
 		const featureConfiguration: ControlExtraConfiguration = {

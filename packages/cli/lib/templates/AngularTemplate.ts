@@ -159,10 +159,12 @@ export class AngularTemplate implements Template {
 				updateFile = true;
 			}
 
-			for (const fileName of sourceFiles) {
+			for (let fileName of sourceFiles) {
+				// strip .js file extension from bundle names, as webpack serves these files as .js.js
+				fileName = fileName.includes(".js") ? fileName.replace(".js", "") : fileName;
 				if (!scripts.find(x => x.bundleName === fileName)) {
 					scripts.push({
-						bundleName: fileName.includes(".js") ? fileName.replace(".js", "") : fileName,
+						bundleName: fileName,
 						input: `${igniteuiSource + "/js/" + fileName}`
 					});
 					updateFile = true;

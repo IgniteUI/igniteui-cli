@@ -86,7 +86,7 @@ class EmptyAngularProject implements ProjectTemplate {
 			return true;
 		} else {
 			Util.log(`No angular.json file found! May have to manually add igniteui-angular-wrappers styles and scripts
-           (infragistics.core.js, infragistics.lob.js, etc.) to the corresponding angular.json styles and scripts collections`);
+				(infragistics.core.js, infragistics.lob.js, etc.) to the corresponding angular.json styles and scripts collections`);
 			return false;
 		}
 	}
