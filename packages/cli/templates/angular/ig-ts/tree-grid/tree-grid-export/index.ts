@@ -19,6 +19,7 @@ class TreeGridExportTemplate extends AngularTemplate {
 		this.listInComponentTemplates = true;
 		this.hasExtraConfiguration = true;
 		this.extraConfigurations = [];
+		this.packages = ["file-saver@^2.0.5"];
 
 		this.gridHelper = new GridHelper();
 		this.gridHelper.tree = true;
@@ -36,10 +37,10 @@ class TreeGridExportTemplate extends AngularTemplate {
 		this.userExtraConfiguration = extraConfigKeys;
 	}
 
-	public generateConfig(name: string, ...options: any[]): {[key: string]: any} {
+	public generateConfig(name: string, ...options: any[]): { [key: string]: any } {
 		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 3);
 		const config = { treeGridFeatures: features };
-		return super.generateConfig(name, { extraConfig : config });
+		return super.generateConfig(name, { extraConfig: config });
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return this.extraConfigurations;

@@ -25,7 +25,7 @@ class GridCustomTemplate extends AngularTemplate {
 			choices: [
 				"Sorting", "Selection", "Updating", "Filtering", "ColumnMoving",
 				"Summaries", "GroupBy", "Resizing", "Hiding"
-		],
+			],
 			default: "",
 			key: "features",
 			message: "Select features for the igGrid",
@@ -38,11 +38,11 @@ class GridCustomTemplate extends AngularTemplate {
 		this.userExtraConfiguration = extraConfigKeys;
 	}
 
-	public generateConfig(name: string, ...options: any[]): {[key: string]: any} {
+	public generateConfig(name: string, ...options: any[]): { [key: string]: any } {
 		this.gridHelper.addFeature("Updating");
 		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 3);
 		const config = { gridFeatures: features };
-		return super.generateConfig(name, { extraConfig : config });
+		return super.generateConfig(name, { extraConfig: config });
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return this.extraConfigurations;
