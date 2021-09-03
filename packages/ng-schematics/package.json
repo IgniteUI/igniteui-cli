@@ -13,11 +13,11 @@
   "license": "MIT",
   "schematics": "./src/collection.json",
   "dependencies": {
-    "@angular-devkit/core": "~12.1.2",
-    "@angular-devkit/schematics": "~12.1.2",
-    "@igniteui/angular-templates": "~12.1.811",
-    "@igniteui/cli-core": "~8.1.1",
-    "@schematics/angular": "~12.1.2",
+    "@angular-devkit/core": "~12.2.0",
+    "@angular-devkit/schematics": "~12.2.0",
+    "@igniteui/angular-templates": "~12.1.810",
+    "@igniteui/cli-core": "~8.1.0",
+    "@schematics/angular": "~12.2.0",
     "rxjs": "^6.6.3"
   },
   "devDependencies": {
