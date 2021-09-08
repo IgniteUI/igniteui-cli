@@ -14,4 +14,4 @@ class AngularFramework extends BaseProjectLibrary {
 		}
 	}
 }
-module.exports =  new AngularFramework();
+module.exports = new AngularFramework();

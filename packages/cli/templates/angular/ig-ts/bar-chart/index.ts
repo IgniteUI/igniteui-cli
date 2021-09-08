@@ -6,7 +6,7 @@ class BarChartComponent extends BaseComponent {
 	 */
 	constructor() {
 		super(__dirname);
-		this.name  = "Bar Chart";
+		this.name = "Bar Chart";
 		this.group = "Charts";
 		this.description = "visualizes categorized data with horizontal bars.";
 	}

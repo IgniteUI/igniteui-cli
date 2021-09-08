@@ -1,22 +1,22 @@
 {
-	"version": "$(cliVersion)",
-	"project": {
-		"defaultPort": 3001,
-		"framework": "angular",
-		"projectType": "ig-ts",
-		"theme": "$(theme)",
-		"themePath": "$(themePath)",
-		"isBundle": false,
-		"bundleFilePath": "/igniteui/dist/ignite.js",
-		"igniteuiSource": "./node_modules/ignite-ui",
-		"components": [],
-		"projectTemplate": "empty",
-		"sourceFiles": [
-			"infragistics.core-lite.js",
-			"infragistics.lob-lite.js"
-		],
-		"isShowcase": false,
-		"version": ""
-	},
-	"build": {}
+  "version": "$(cliVersion)",
+  "project": {
+    "defaultPort": 3001,
+    "framework": "angular",
+    "projectType": "ig-ts",
+    "theme": "$(theme)",
+    "themePath": "$(themePath)",
+    "isBundle": false,
+    "bundleFilePath": "/igniteui/dist/ignite.js",
+    "igniteuiSource": "./node_modules/ignite-ui",
+    "components": [],
+    "projectTemplate": "empty",
+    "sourceFiles": [
+      "infragistics.core-lite.js",
+      "infragistics.lob-lite.js"
+    ],
+    "isShowcase": false,
+    "version": ""
+  },
+  "build": {}
 }

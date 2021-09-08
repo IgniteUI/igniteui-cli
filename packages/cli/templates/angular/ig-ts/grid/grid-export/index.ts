@@ -19,6 +19,7 @@ class GridExportTemplate extends AngularTemplate {
 		this.extraConfigurations = [];
 		this.hasExtraConfiguration = true;
 		this.listInComponentTemplates = true;
+		this.packages = ["file-saver@^2.0.5"];
 
 		this.gridHelper = new GridHelper();
 		const featureConfiguration: ControlExtraConfiguration = {
@@ -35,10 +36,10 @@ class GridExportTemplate extends AngularTemplate {
 		this.userExtraConfiguration = extraConfigKeys;
 	}
 
-	public generateConfig(name: string, ...options: any[]): {[key: string]: any} {
+	public generateConfig(name: string, ...options: any[]): { [key: string]: any } {
 		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 3);
 		const config = { gridFeatures: features };
-		return super.generateConfig(name, { extraConfig : config });
+		return super.generateConfig(name, { extraConfig: config });
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return this.extraConfigurations;

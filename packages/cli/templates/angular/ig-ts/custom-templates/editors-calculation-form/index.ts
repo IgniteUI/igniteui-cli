@@ -13,7 +13,7 @@ class EditorsCalculationForm extends AngularTemplate {
 		this.listInCustomTemplates = true;
 		this.name = "Editors Data Calculation Form";
 		this.description = "shows basic options of the igNumericEditor, igTextEditor, igCheckbox, " +
-		"igPercentEditor, igMaskEditor and igDateEditor, demonstrated with a loan calculator.";
+			"igPercentEditor, igMaskEditor and igDateEditor, demonstrated with a loan calculator.";
 		this.dependencies = ["igEditors", "igCombo", "igValidator"];
 	}
 }
