@@ -1,4 +1,4 @@
-import { 
+import {
 	AddTemplateArgs, ControlExtraConfiguration, defaultDelimiters,
 	Template, TemplateDependency } from "@igniteui/cli-core";
 import * as fs from "fs-extra";
