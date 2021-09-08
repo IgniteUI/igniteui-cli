@@ -1,4 +1,8 @@
-import { ControlExtraConfiguration, defaultDelimiters, ProjectConfig, ProjectTemplate, Util} from "@igniteui/cli-core";
+import {
+	ControlExtraConfiguration, defaultDelimiters,
+	FsFileSystem, ProjectConfig, ProjectTemplate, Util
+} from "@igniteui/cli-core";
+
 import * as path from "path";
 
 class EmptyAngularProject implements ProjectTemplate {
@@ -10,6 +14,7 @@ class EmptyAngularProject implements ProjectTemplate {
 	public projectType: string = "ig-ts";
 	public hasExtraConfiguration: boolean = false;
 	public delimiters = defaultDelimiters;
+	protected fileSystem = new FsFileSystem();
 
 	public get templatePaths(): string[] {
 		return [path.join(__dirname, "files")];
@@ -30,13 +35,66 @@ class EmptyAngularProject implements ProjectTemplate {
 			return x;
 		});
 		ProjectConfig.setConfig(config);
-		return true;
+
+		// update angular.json to use and refer to the installed @ignite-ui-full package
+		let workspaceConfigObj:
+			{
+				projects: {
+					architect: {
+						build: {
+							options: {
+								styles: any[],
+								scripts: Array<{ input: string, bundleName: string }>
+							}
+						}
+					}
+				}
+			};
+
+		const workspacePath = path.join(projectPath, "angular.json");
+		if (this.fileSystem.fileExists(workspacePath)) {
+			workspaceConfigObj = JSON.parse(this.fileSystem.readFile(workspacePath));
+			const workspace = workspaceConfigObj.projects[Object.keys(workspaceConfigObj.projects)[0]];
+			const styles = workspace.architect.build.options.styles;
+			const scripts = workspace.architect.build.options.scripts;
+			const freeVersionPath = "ignite-ui";
+			const fullVersionPath = "@infragistics/ignite-ui-full/en";
+
+			// update free to full packages - resource location + resource name (if it is different for the full version)
+			// optionally: can safely strip ./node_modules/ from path
+			for (const script of scripts) {
+				if (!!script.input && script.input?.includes(freeVersionPath)) {
+					script.input = script.input.replace(freeVersionPath, fullVersionPath);
+					script.input = script.input.replace("-lite", "");
+				}
+				if (!!script.bundleName && script.bundleName?.includes("-lite")) {
+					script.bundleName = script.bundleName.replace("-lite", "");
+				}
+
+				// edge case: Strip modules/ path from "bundleName": "modules/infragistics.gridexcelexporter.js"
+				if (!!script.bundleName && script.bundleName?.includes("modules/")) {
+					script.bundleName = script.bundleName.replace("modules/", "");
+				}
+			}
+
+			for (const style of styles) {
+				if (!!style.input && style.input?.includes(freeVersionPath)) {
+					style.input = style.input.replace(freeVersionPath, fullVersionPath);
+				}
+			}
+			this.fileSystem.writeFile(workspacePath, Util.formatAngularJsonOptions(workspaceConfigObj));
+			return true;
+		} else {
+			Util.log(`No angular.json file found! May have to manually add igniteui-angular-wrappers styles and scripts
+			(infragistics.core.js, infragistics.lob.js, etc.) to the corresponding angular.json styles and scripts collections`);
+			return false;
+		}
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return [];
 	}
 	public setExtraConfiguration(extraConfigKeys: any[]) { }
-	public generateConfig(name: string, theme: string, ...options: any[]): {[key: string]: any} {
+	public generateConfig(name: string, theme: string, ...options: any[]): { [key: string]: any } {
 		return {
 			"cliVersion": Util.version(),
 			"dash-name": Util.lowerDashed(name),

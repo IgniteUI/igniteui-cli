@@ -37,7 +37,7 @@ class TreeGridFileExplorerTemplate extends AngularTemplate {
 		this.userExtraConfiguration = extraConfigKeys;
 	}
 
-	public generateConfig(name: string, ...options: any[]): {[key: string]: any} {
+	public generateConfig(name: string, ...options: any[]): { [key: string]: any } {
 		this.gridHelper.addFeature("Selection", { multipleSelection: true });
 		this.gridHelper.updateFeature("RowSelectors", {
 			checkBoxMode: "biState",
@@ -59,7 +59,7 @@ class TreeGridFileExplorerTemplate extends AngularTemplate {
 		this.gridHelper.addFeature("Paging", { pageSize: 4, mode: "rootLevelOnly" });
 		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 3);
 		const config = { treeGridFeatures: features };
-		return super.generateConfig(name, { extraConfig : config });
+		return super.generateConfig(name, { extraConfig: config });
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return this.extraConfigurations;

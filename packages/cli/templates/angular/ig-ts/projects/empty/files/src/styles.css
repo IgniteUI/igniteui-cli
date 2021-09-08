@@ -1,22 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
-html, body {
-	margin: 0;
-	padding: 0;
+html,
+body {
+  margin: 0;
+  padding: 0;
 }
 
 body {
-	font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	color: #4d4d4d;
-	margin: 0 auto;
-	-webkit-font-smoothing: antialiased;
-	-moz-font-smoothing: antialiased;
-	-ms-font-smoothing: antialiased;
-	/* font-smoothing: antialiased; */
-	text-rendering: optimizeLegibility;
+  font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #4d4d4d;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -ms-font-smoothing: antialiased;
+  /* font-smoothing: antialiased; */
+  text-rendering: optimizeLegibility;
 }
 
 .content {
-	flex: 1 1 auto;
-	padding: 15px;
-	overflow-y: auto;
+  flex: 1 1 auto;
+  padding: 15px;
+  overflow-y: auto;
 }

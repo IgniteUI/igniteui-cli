@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { $(ClassName)Component } from './$(filePrefix).component';
 import { IgniteUIModule } from 'igniteui-angular-wrappers';
 
-declare var $;
+declare var $: any;
 
 describe('$(ClassName)Component', () => {
   let component: $(ClassName)Component;
