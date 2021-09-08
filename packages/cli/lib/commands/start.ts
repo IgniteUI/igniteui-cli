@@ -87,7 +87,7 @@ command = {
 				}
 				break;
 				case "webcomponents":
-					Util.execSync('npm start');
+					Util.execSync(`npm start`);
 			default:
 				break;
 		}

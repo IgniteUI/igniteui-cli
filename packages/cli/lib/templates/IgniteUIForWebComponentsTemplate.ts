@@ -1,4 +1,6 @@
-import { AddTemplateArgs, ControlExtraConfiguration, defaultDelimiters, Template, TemplateDependency, TypeScriptFileUpdate, Util } from "@igniteui/cli-core";
+import { 
+	AddTemplateArgs, ControlExtraConfiguration, defaultDelimiters,
+	Template, TemplateDependency } from "@igniteui/cli-core";
 import * as fs from "fs-extra";
 import * as path from "path";
 
