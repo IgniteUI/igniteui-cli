@@ -42,7 +42,8 @@
 			"output/",
 			"packages/cli/templates/quickstart/",
 			"packages/cli/templates/**/files/",
-			"packages/igx-templates/"
+			"packages/igx-templates/",
+			"packages/igc-templates/"
 		],
 		"reporter": [
 			"lcov",
