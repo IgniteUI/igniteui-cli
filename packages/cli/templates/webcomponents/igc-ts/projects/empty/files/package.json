@@ -18,10 +18,10 @@
 	  "test": "tsc && wtr"
 	},
 	"dependencies": {
-	  "lit": "^2.0.0-rc.3"
+	  "lit": "^2.0.0-rc.3",
+	  "@open-wc/testing": "^2.5.33"
 	},
 	"devDependencies": {
-		"@open-wc/testing": "^2.5.33",
 		"@open-wc/eslint-config": "^4.3.0",
 		"@typescript-eslint/eslint-plugin": "^4.30.0",
 		"@typescript-eslint/parser": "^4.30.0",

@@ -8,26 +8,26 @@ export class HomeComponent extends LitElement {
       color: var(--test-component-test-text-color, #000);
     }
 
-	.content {
-		width: 100%;
-		display: flex;
-		text-align: center;
-		flex-flow: column nowrap;
-		justify-content: stretch;
-		align-items: center;
-		padding: 40px 24px 40px 24px;
-		overflow: inherit;
-	}
+    .content {
+      width: 100%;
+      display: flex;
+      text-align: center;
+      flex-flow: column nowrap;
+      justify-content: stretch;
+      align-items: center;
+      padding: 40px 24px 40px 24px;
+      overflow: inherit;
+    }
 
-	.content p {
-		margin: 0px 0px 8px 0px;
-	}
+    .content p {
+      margin: 0px 0px 8px 0px;
+    }
 
-	.content img {
-		margin-bottom: 48px;
-		max-height: 480px;
-		max-width: 100%;
-	}
+    .content img {
+      margin-bottom: 48px;
+      max-height: 480px;
+      max-width: 100%;
+    }
   `;
 
   render() {
