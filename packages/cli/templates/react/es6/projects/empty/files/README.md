@@ -1,10 +1,11 @@
 # $(name)
 
 This project was generated with [IgniteUI CLI](https://github.com/IgniteUI/igniteui-cli) version $(cliVersion).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Development server
 
-Run `ig start` to build the application, start a web server and open the application in the default browser. Then navigate to `http://localhost:3002/`. Default serving port can be configured in `ignite-ui-cli.json` via `defaultPort` property.
+Run `ig start` to build the application, start a web server and open the application in the default browser. Then navigate to `http://localhost:3002/`. Default serving port can be configured in `.env` via `PORT` property.
 
 ## Build
 
@@ -28,7 +29,7 @@ The ID matches either a component ("grid", "combo", etc) or a predefined templat
 
 ## Running unit tests
 
-Run `ig test` to execute the illustrative tests via [Jest](https://jestjs.io/) and [Enzyme](https://github.com/airbnb/enzyme) test setup. Runs all `.spec.js/jsx` and `.test.js/jsx` files under `__tests__` folder.
+Run `ig test` to execute the illustrative App test.
 
 ## Help
 

@@ -2,51 +2,50 @@
   "name": "$(dash-name)",
   "version": "0.0.0",
   "private": true,
-  "description": "React project for Ignite UI CLI",
+  "description": "React wrappers project for Ignite UI CLI",
   "author": "PwnJS",
   "main": "index.js",
-  "scripts": {
-    "start": "webpack-dev-server --config webpack.config.js",
-    "prod": "node build.js production server",
-    "build": "node build.js production filesystem",
-    "test": "jest"
-  },
-  "jest": {
-    "testMatch": [
-      "<rootDir>/__tests__/**/?(*.)(spec|test).{js,jsx}"
-    ],
-    "testURL": "http://localhost/"
-  },
   "license": "MIT",
   "devDependencies": {
-    "babel-core": "6.16.0",
-    "babel-loader": "6.2.7",
-    "babel-plugin-transform-runtime": "6.15.0",
-    "babel-preset-es2015": "6.18.0",
-    "babel-preset-react": "6.22.0",
-    "css-loader": "0.14.5",
-    "enzyme": "^3.3.0",
-    "enzyme-adapter-react-15": "^1.0.5",
-    "extract-text-webpack-plugin": "2.0.0-beta.5",
     "file-loader": "0.8.5",
-    "html-webpack-plugin": "2.26.0",
-    "igniteui-cli": "^$(cliVersion)",
-    "jest": "^22.4.2",
-    "node-sass": "^4.9.0",
-    "react-test-renderer": "^15.6.2",
-    "sass-loader": "3.2.3",
-    "style-loader": "0.13.1",
-    "webpack": "2.2.0",
-    "webpack-dev-server": "3.10.3"
+    "igniteui-cli": "^$(cliVersion)"
   },
   "dependencies": {
-    "babel-runtime": "6.22.0",
-    "react": "15.6.2",
-    "react-dom": "15.6.2",
-    "react-router": "2.8.0",
-    "ignite-ui": "~20.1",
-    "jquery": ">=1.9.1",
-    "jquery-ui": ">=1.10.5",
-    "igniteui-react": "^1.3.0"
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "ignite-ui": "^21.1.11",
+    "igniteui-react": "^1.3.2",
+    "jquery": "^3.6.0",
+    "jquery-ui": "^1.12.1",
+    "react": "^16.8.2",
+    "react-dom": "^16.8.2",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "4.0.3",
+    "web-vitals": "^1.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts --max_old_space_size=9192 start",
+    "build": "react-scripts --max_old_space_size=9192 build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

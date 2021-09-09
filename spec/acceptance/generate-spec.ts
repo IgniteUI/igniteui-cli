@@ -217,7 +217,7 @@ describe("Generate command", () => {
 		};
 		expect(expectedTemplate).toEqual(actualTemplate);
 
-		const clientDirectory = path.join(templateFolderPath, "files", "client");
+		const clientDirectory = path.join(templateFolderPath, "files", "src");
 		expect(fs.existsSync(clientDirectory)).toBeTruthy();
 		expect(fs.existsSync(path.join(clientDirectory, "components", "__path__", "index.js"))).toBeTruthy();
 		expect(fs.existsSync(path.join(clientDirectory, "pages", "__path__", "index.js"))).toBeTruthy();

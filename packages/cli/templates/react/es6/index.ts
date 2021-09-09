@@ -8,7 +8,7 @@ class ReactProjectLibrary extends BaseProjectLibrary {
 		super(__dirname);
 		this.name = "Ignite UI for jQuery React Wrappers";
 		this.projectType = "es6";
-		this.themes = ["infragistics", "infragistics.less", "infragistics.sass", "metro"];
+		this.themes = ["default"];
 
 		const groups = require("../../jquery/js/groups.json");
 		// tslint:disable-next-line:forin

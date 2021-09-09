@@ -18,7 +18,7 @@ class GridExportTemplate extends ReactTemplate {
 		this.widget = "igGrid";
 		this.controlGroup = "Data Grids";
 		this.dependencies = ["igGrid"];
-
+		this.packages = ["file-saver@^2.0.5"];
 		this.gridHelper = new GridHelper();
 		this.hasExtraConfiguration = true;
 		this.extraConfigurations.push({

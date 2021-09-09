@@ -72,9 +72,12 @@ command = {
 			browserSync.init(bsConfig);
 			break;
 			case "react":
-				if (projectType === "igr-es6" && port) {
+				if (port) {
 					// https://facebook.github.io/create-react-app/docs/advanced-configuration
-					process.env.PORT = `${port}`;
+					// react-scripts start "--port=dafaultPort" is not a valid command for all environments.
+					// .env file is included and used by both igr-es6 and es6 now,
+					// to specify the port for all environments (Windows, Mac, etc)
+					process.env.PORT = `${port}`; 
 					port = null;
 				}
 				/* falls through */
