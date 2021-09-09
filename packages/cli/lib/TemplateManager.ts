@@ -2,6 +2,7 @@ import { IgniteUIForAngularTemplate } from "@igniteui/angular-templates";
 import { BaseTemplateManager, Template, Util } from "@igniteui/cli-core";
 import * as path from "path";
 import { AngularTemplate } from "./templates/AngularTemplate";
+import { IgniteUIForWebComponentsTemplate } from "./templates/IgniteUIForWebComponentsTemplate";
 import { jQueryTemplate } from "./templates/jQueryTemplate";
 import { ReactTemplate } from "./templates/ReactTemplate";
 
@@ -36,6 +37,9 @@ export class TemplateManager extends BaseTemplateManager {
 				case "angular|igx-ts":
 					template = new IgniteUIForAngularTemplate(rootPath);
 					break;
+					case "webcomponents|igc-ts":
+						template = new IgniteUIForWebComponentsTemplate(rootPath);
+						break;
 				default:
 					Util.error(`The framework/project type for template with id "${settings.id}" is not supported.`);
 					Util.error(`File path: ${filePath}`);

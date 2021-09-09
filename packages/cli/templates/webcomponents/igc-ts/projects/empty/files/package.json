@@ -1,0 +1,58 @@
+{
+	"name": "$(dash-name)",
+	"version": "0.0.0",
+	"private": true,
+	"description": "WebComponents project for Ignite UI CLI",
+	"license": "MIT",
+	"author": "Infragistics",
+	"main": "dist/src/index.js",
+	"module": "dist/src/index.js",
+	"exports": {
+	  ".": "./dist/src/index.js",
+	  "./$(dash-name).js": "./dist/src/$(dash-name).js"
+	},
+	"scripts": {
+	  "start": "tsc && wds",
+	  "build": "tsc",
+	  "lint": "eslint --ext .js,.ts,.html . --ignore-path .gitignore",
+	  "test": "tsc && wtr"
+	},
+	"dependencies": {
+	  "lit": "^2.0.0-rc.3",
+	  "@open-wc/testing": "^2.5.33"
+	},
+	"devDependencies": {
+		"@open-wc/eslint-config": "^4.3.0",
+		"@typescript-eslint/eslint-plugin": "^4.30.0",
+		"@typescript-eslint/parser": "^4.30.0",
+		"@web/dev-server": "^0.1.22",
+		"@web/test-runner": "next",
+		"eslint": "^7.32.0",
+		"tslib": "^2.3.1",
+		"typescript": "^4.4.2"
+	},
+	"eslintConfig": {
+		"parser": "@typescript-eslint/parser",
+		"extends": [
+			"@open-wc"
+		  ],
+		"plugins": [
+			"@typescript-eslint"
+		],
+		"rules": {
+			"linebreak-style": "off",
+			"no-unused-vars": "off",
+			"@typescript-eslint/no-unused-vars": [
+				"error"
+			],
+		  "import/no-unresolved": "off",
+			"import/extensions": [
+				"error",
+				"always",
+				{
+					"ignorePackages": true
+				}
+			]
+		}
+	}
+}

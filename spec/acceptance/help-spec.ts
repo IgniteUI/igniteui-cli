@@ -66,7 +66,7 @@ describe("Help command", () => {
 		--help, -h            Show help                                      [boolean]
 		--name, -n            Project name                                    [string]
 		--framework, -f       Framework to setup project for
-				  [string] [choices: "angular", "jquery", "react"] [default: "jquery"]
+				  [string] [choices: "angular", "jquery", "react", "webcomponents"] [default: "jquery"]
 		--type, -t            Project type (depends on framework)             [string]
 		--theme, --th         Project theme (depends on project type)         [string]
 		--skip-git, --sg      Do not automatically initialize repository for the
