@@ -8,10 +8,11 @@ class IgcWebComponentsProjectLibrary extends BaseProjectLibrary {
 		this.themes = ["default"];
 
 		const groups = require("./groups.json");
-		// tslint:disable-next-line:forin
 		for (const key in groups) {
-			this.groupDescriptions.set(key, groups[key]);
+			if (groups.hasOwnProperty(key)) {
+				this.groupDescriptions.set(key, groups[key]);
+			}
 		}
 	}
 }
-module.exports =  new IgcWebComponentsProjectLibrary();
+module.exports = new IgcWebComponentsProjectLibrary();

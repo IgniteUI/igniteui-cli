@@ -8,18 +8,18 @@
 	"main": "dist/src/index.js",
 	"module": "dist/src/index.js",
 	"exports": {
-	  ".": "./dist/src/index.js",
-	  "./$(dash-name).js": "./dist/src/$(dash-name).js"
+		".": "./dist/src/index.js",
+		"./$(dash-name).js": "./dist/src/$(dash-name).js"
 	},
 	"scripts": {
-	  "start": "tsc && wds",
-	  "build": "tsc",
-	  "lint": "eslint --ext .js,.ts,.html . --ignore-path .gitignore",
-	  "test": "tsc && wtr"
+		"start": "tsc && wds",
+		"build": "tsc",
+		"lint": "eslint --ext .js,.ts,.html . --ignore-path .gitignore",
+		"test": "tsc && wtr"
 	},
 	"dependencies": {
-	  "lit": "^2.0.0-rc.3",
-	  "@open-wc/testing": "^2.5.33"
+		"lit": "^2.0.0-rc.3",
+		"@open-wc/testing": "^2.5.33"
 	},
 	"devDependencies": {
 		"@open-wc/eslint-config": "^4.3.0",
@@ -35,7 +35,7 @@
 		"parser": "@typescript-eslint/parser",
 		"extends": [
 			"@open-wc"
-		  ],
+		],
 		"plugins": [
 			"@typescript-eslint"
 		],
@@ -45,7 +45,7 @@
 			"@typescript-eslint/no-unused-vars": [
 				"error"
 			],
-		  "import/no-unresolved": "off",
+			"import/no-unresolved": "off",
 			"import/extensions": [
 				"error",
 				"always",

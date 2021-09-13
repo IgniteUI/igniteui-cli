@@ -1,14 +1,12 @@
 import { ControlExtraConfiguration, defaultDelimiters, ProjectTemplate, Util } from "@igniteui/cli-core";
-import * as fs from "fs-extra";
 import * as path from "path";
 
 class EmptyProject implements ProjectTemplate {
-	public _updateFile: string = "webpack.config.js";
 	public id: string = "webcomponent";
 	public name = "empty";
 	public description = "Ignite UI CLI project for Web Components";
 	public framework: string = "webcomponents";
-	public projectType: string = "igc";
+	public projectType: string = "igc-ts";
 	public dependencies: string[];
 	public hasExtraConfiguration: boolean = false;
 	public delimiters = defaultDelimiters;
@@ -23,7 +21,7 @@ class EmptyProject implements ProjectTemplate {
 	public async upgradeIgniteUIPackages(projectPath: string, packagePath: string): Promise<boolean> {
 		throw new Error("Method not implemented.");
 	}
-	public generateConfig(name: string, theme: string, ...options: any[]): {[key: string]: any} {
+	public generateConfig(name: string, theme: string, ...options: any[]): { [key: string]: any } {
 
 		//TODO update the config with [{key: "keyname", "value"}]
 		return {
