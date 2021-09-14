@@ -37,9 +37,9 @@ export class TemplateManager extends BaseTemplateManager {
 				case "angular|igx-ts":
 					template = new IgniteUIForAngularTemplate(rootPath);
 					break;
-					case "webcomponents|igc-ts":
-						template = new IgniteUIForWebComponentsTemplate(rootPath);
-						break;
+				case "webcomponents|igc-ts":
+					template = new IgniteUIForWebComponentsTemplate(rootPath);
+					break;
 				default:
 					Util.error(`The framework/project type for template with id "${settings.id}" is not supported.`);
 					Util.error(`File path: ${filePath}`);

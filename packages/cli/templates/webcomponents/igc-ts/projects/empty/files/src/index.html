@@ -17,11 +17,10 @@
     import { html, render } from 'lit';
     import '../dist/src/app/home/home-component.js';
 
-    const title = 'Hello owc World!';
     render(
       html`
-            <home-component .title=${title}>
-            some light-dom
+            <home-component>
+              Your Home component is missing!
             </home-component>
       `,
       document.querySelector('#home'),
