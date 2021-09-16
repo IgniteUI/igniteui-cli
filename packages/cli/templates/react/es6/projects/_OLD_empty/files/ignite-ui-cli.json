@@ -1,0 +1,22 @@
+{
+	"version" : "$(cliVersion)",
+	"project": {
+		"defaultPort": 3002,
+		"framework" : "react",
+		"projectType": "es6",
+		"projectTemplate": "empty",
+		"theme": "$(theme)",
+		"themePath": "$(themePath)",
+		"cssPath": "$(cssPath)",
+		"jsPath": "$(jsPath)",
+		"isBundle": false,
+		"bundleFilePath": "/igniteui/dist/ignite.js",
+		"igniteuiSource": "./node_modules/ignite-ui",
+		"components": [],
+		"isShowcase": false,
+		"version": "",
+		"sourceRoot": "./client"
+	},
+	"build" : {
+	}
+}

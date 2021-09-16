@@ -1,7 +1,6 @@
 # $(name)
 
 This project was generated with [IgniteUI CLI](https://github.com/IgniteUI/igniteui-cli) version $(cliVersion).
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Development server
 

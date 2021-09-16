@@ -3,7 +3,7 @@ import * as fs from "fs-extra";
 import * as path from "path";
 
 class EmptyProject implements ProjectTemplate {
-	// public _updateFile: string = "webpack.config.js";
+	public _updateFile: string = "webpack.config.js";
 	public id: string = "react";
 	public name = "empty";
 	public description = "Ignite UI CLI project for React";
@@ -21,22 +21,15 @@ class EmptyProject implements ProjectTemplate {
 		throw new Error("Method not implemented.");
 	}
 	public async upgradeIgniteUIPackages(projectPath: string, packagePath: string): Promise<boolean> {
-		// HERE IT USED TO REPLACE THE FREE WITH FULL IGNITEUI PACKAGES< MODING THE PATHS inside the WEBPACK.config.ts
-		// TODO: TEST THIS FUNCTIONALITY AND FIX PACKAGES PATHS AND REGISTERING UPDATED PACKAGE
-		// const filePath = path.join(projectPath, this._updateFile);
-		// let configFile = fs.readFileSync(filePath, "utf8");
-		// //comment out core + lob redirects
-		// configFile = configFile.replace(`"ignite-ui/js/infragistics.core.js$"`, `//$&`);
-		// configFile = configFile.replace(`"ignite-ui/js/infragistics.lob.js$"`, `//$&`);
-		// fs.writeFileSync(filePath, configFile);
-		console.log("PASS DUMMY upgradeIgniteUIPackages"); // AT THIS POINT $(igniteImports) is still not replaced in App.js
-
-		// TODO Obtain App.js and update the string where required
-		// 1) ignite-ui/  replace with @infragistics/ignite-ui-full/en/
-		// 2) -lite replace with ""
+		const filePath = path.join(projectPath, this._updateFile);
+		let configFile = fs.readFileSync(filePath, "utf8");
+		//comment out core + lob redirects
+		configFile = configFile.replace(`"ignite-ui/js/infragistics.core.js$"`, `//$&`);
+		configFile = configFile.replace(`"ignite-ui/js/infragistics.lob.js$"`, `//$&`);
+		fs.writeFileSync(filePath, configFile);
 		return true;
 	}
-	public generateConfig(name: string, theme: string, ...options: any[]): { [key: string]: any } {
+	public generateConfig(name: string, theme: string, ...options: any[]): {[key: string]: any} {
 
 		//TODO update the config with [{key: "keyname", "value"}]
 		return {

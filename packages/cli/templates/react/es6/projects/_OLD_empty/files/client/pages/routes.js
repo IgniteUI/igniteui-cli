@@ -2,7 +2,7 @@ import React from 'react';
 import { Router, browserHistory } from 'react-router/es6';
 import App from 'containers/App';
 //import { default as createdRoutes } from './routesComponent';
-import data from './routesTemplate.js';
+import data from './routesTemplate.js.js';
 
 function errorLoading(err) {
   console.error('Dynamic page loading failed', err);
@@ -14,9 +14,9 @@ var p = [];
 for (var i = 0; i < data.length; i++) {
     var element = data[i];
     var folder = element["folder"];
-   
-     
-   var currentObj = { 
+
+
+   var currentObj = {
       "path": element["path"],
       "folder": element["folder"],
       "getComponent":  function(location, cb) {
@@ -28,7 +28,7 @@ for (var i = 0; i < data.length; i++) {
         .catch(errorLoading);
       }
     };
-  
+
     p.push(currentObj);
 }
 

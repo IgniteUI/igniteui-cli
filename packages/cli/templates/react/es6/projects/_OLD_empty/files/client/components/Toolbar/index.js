@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router/es6';
 import './toolbar.scss';
-import data from '../../pages/routesTemplate.js';
+import data from '../../pages/routesTemplate.js.js';
 
 var links = [];
 for (var i = 0; i < data.length; i++) {
