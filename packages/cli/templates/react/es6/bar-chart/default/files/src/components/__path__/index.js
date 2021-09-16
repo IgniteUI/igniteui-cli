@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import 'jquery';
-import 'jquery-ui';
-$(igniteImports)
+
 import $(Control) from "igniteui-react/ui/$(widget).js";
 
 import { data } from "../../data/world-energy-production.js";
