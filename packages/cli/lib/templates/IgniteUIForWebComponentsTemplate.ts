@@ -1,7 +1,10 @@
 import {
-	AddTemplateArgs, ControlExtraConfiguration, defaultDelimiters,
-	Template, TemplateDependency } from "@igniteui/cli-core";
+	AddTemplateArgs, App, ControlExtraConfiguration, FS_TOKEN, IFileSystem,
+	defaultDelimiters, Template, TemplateDependency, Util } from "@igniteui/cli-core";
+import * as fs from "fs-extra";
 import * as path from "path";
+import { NPM_DOCK_MANAGER, resolveIgcPackage } from "../../templates/webcomponents/package-resolve";
+import { TypeScriptFileUpdate } from "../../../cli/templates/webcomponents/TypeScriptFileUpdate";
 
 export class IgniteUIForWebComponentsTemplate implements Template {
 	public components: string[];
@@ -24,13 +27,25 @@ export class IgniteUIForWebComponentsTemplate implements Template {
 
 	constructor(private rootPath: string) {
 	}
-
+	
 	public generateConfig(name: string, options: {}): { [key: string]: any } {
-		throw new Error("Method not implemented.");
+		if (options["modulePath"] && !Util.fileExists(path.join(process.cwd(), `src\\app`, options["modulePath"]))) {
+			Util.error(`Wrong module path provided: ${options["modulePath"]}. No components were added!`);
+			return Promise.resolve(false);
+		}
+
+		return  Object.assign({}, options["extraConfig"], this.getBaseVariables(name));
 	}
 
-	public registerInProject(projectPath: string, name: string, options?: AddTemplateArgs) {
-		throw new Error("Method not implemented.");
+	public registerInProject(projectPath: string, fullName: string, options?: AddTemplateArgs) {
+		if (!(options && options.skipRoute) && App.container.get<IFileSystem>(FS_TOKEN).fileExists("src/index.ts")) { 
+			const routingModule = new TypeScriptFileUpdate(path.join(projectPath, "src/index.ts"));
+			routingModule.addRoute(
+				path.join(projectPath, `src/app/${this.folderName(fullName)}/${this.fileName(fullName)}.component.ts`),
+				this.fileName(fullName),
+				Util.nameFromPath(fullName)
+			);
+		}
 	}
 
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
@@ -38,5 +53,45 @@ export class IgniteUIForWebComponentsTemplate implements Template {
 	}
 	public setExtraConfiguration(extraConfigKeys: {}) {
 		throw new Error("Method not implemented.");
+	}
+
+	protected getBaseVariables(name: string): { [key: string]: string } {
+		const config = {};
+		config["name"] = Util.nameFromPath(name);
+		config["ClassName"] = Util.className(Util.nameFromPath(name));
+		config["path"] = this.folderName(name);
+		config["filePrefix"] = this.fileName(name);
+		config["description"] = this.description;
+		config["cliVersion"] = Util.version();
+		config["camelCaseName"] = Util.camelCase(name);
+		config["dockManagerPackage"] = resolveIgcPackage(NPM_DOCK_MANAGER);
+
+		return config;
+	}
+
+	protected folderName(pathName: string): string {
+		//TODO: should remove the spaces
+		const parts = path.parse(pathName);
+		let folderName = pathName;
+		if (parts.dir) {
+			folderName = path.join(parts.dir, parts.name);
+			folderName = folderName.replace(/\\/g, "/");
+			// TODO: config-based "src/app"?
+			const relative = path.join(process.cwd(), "src/app", folderName);
+			// path.join will also resolve any '..' segments
+			// so if relative result doesn't start with CWD it's out of project root
+			if (!relative.startsWith(process.cwd())) {
+				Util.error(`Path ${"src/app/" + folderName} is not valid!`, "red");
+				process.exit(1);
+			}
+			//clean up potential leading spaces in folder names (`path/    name`):
+			folderName = folderName.replace(/\/\s+/g, "/");
+		}
+		return Util.lowerDashed(folderName);
+	}
+
+	protected fileName(pathName: string): string {
+		const name = Util.nameFromPath(pathName);
+		return Util.lowerDashed(name);
 	}
 }
