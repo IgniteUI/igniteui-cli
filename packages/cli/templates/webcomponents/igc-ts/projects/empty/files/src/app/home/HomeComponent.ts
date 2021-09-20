@@ -1,5 +1,6 @@
-import { html, css, LitElement } from 'lit';
+import { LitElement, html, css, customElement } from 'lit-element';
 
+@customElement('lit-home')
 export class HomeComponent extends LitElement {
   static styles = css`
     :host {
@@ -29,10 +30,11 @@ export class HomeComponent extends LitElement {
 
   render() {
     return html`
+    <div id="outlet"></div>
     <div class="content">
       <h1>Welcome to Ignite UI for Web Components!</h1>
       <h4>A complete library of UI components, giving you the ability to build modern web applications using encapsulation and the concept of reusable components in a dependency-free approach.</h4>
-      <img src="./assets/astronaut-components.svg" alt="indigoDesign">
+      <img src="./src/assets/astronaut-components.svg" alt="indigoDesign">
       <p class="igx-typography__subtitle-1">Discover more at</p>
       <p>
         <a href="https://www.infragistics.com/products/ignite-ui-web-components" target="_blank">
