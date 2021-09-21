@@ -17,6 +17,7 @@ class TreeGridExportTemplate extends ReactTemplate {
 		this.widget = "igTreeGrid";
 		this.controlGroup = "Data Grids";
 		this.dependencies = ["igTreeGrid"];
+		this.packages = ["file-saver@^2.0.5"];
 
 		this.gridHelper = new GridHelper();
 		this.gridHelper.tree = true;

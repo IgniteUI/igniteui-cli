@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
-
+import { Component } from 'react';
 import $(Control) from "igniteui-react/ui/$(widget).js";
 
-export default class App extends Component {
+export default class  $(ClassName) extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -27,8 +26,10 @@ export default class App extends Component {
 				</div>
 				<div style={{display: "flex", flexFlow: "column", alignItems: "center"}}>
 					<$(Control)
-						id="grid"
+						id="grid-custom"
+						primaryKey="ProductID"
 						width="700px"
+						autoCommit={true}
 						dataSource={this.state.products}
 						features={$(gridfeatures)}
 					/>

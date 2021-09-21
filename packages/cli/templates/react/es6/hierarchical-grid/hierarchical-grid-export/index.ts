@@ -17,6 +17,7 @@ class HierarchicalGridExportTemplate extends ReactTemplate {
 		this.components = ["Hierarchical Grid"];
 		this.controlGroup = "Data Grids";
 		this.dependencies = ["igHierarchicalGrid"];
+		this.packages = ["file-saver@^2.0.5"];
 
 		this.gridHelper = new GridHelper();
 		this.gridHelper.hierarchical = true;

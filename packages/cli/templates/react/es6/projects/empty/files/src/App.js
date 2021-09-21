@@ -9,7 +9,7 @@ import "jquery";
 import "jquery-ui";
 import "./igniteuiResources.js";
 
-const name = "igr-es66";
+const name = "React ig-es6 App";
 
 function App() {
   return (

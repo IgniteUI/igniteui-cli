@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-
+import { Component } from 'react';
+import 'jquery-ui/ui/effects/effect-blind';
 import $(Control) from "igniteui-react/ui/$(widget).js";
 
-export default class App extends Component {
+export default class  $(ClassName) extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -27,13 +27,21 @@ export default class App extends Component {
 				</div>
 				<div style={{display: "flex", flexFlow: "column", alignItems: "center"}}>
 					<$(Control)
-						id="grid"
+						id="grid-editing"
+						primaryKey="ProductID"
 						width="700px"
+						autoCommit={true}
 						dataSource={this.state.products}
+						autoGenerateColumns={false}
+						columns={[
+							{ headerText: "Product ID", key: "ProductID", dataType: "number" },
+							{ headerText: "Product Name", key: "Name", dataType: "string" },
+							{ headerText: "Product Number", key: "ProductNumber", dataType: "string" }
+						]}
 						features={$(gridfeatures)}
 					/>
 				</div>
-      </div>
+			</div>
 		);
 	}
 }
