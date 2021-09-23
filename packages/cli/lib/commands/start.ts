@@ -74,9 +74,9 @@ command = {
 			case "react":
 				if (port) {
 					// https://facebook.github.io/create-react-app/docs/advanced-configuration
-					// react-scripts start "--port=3002" is not a valid command (used by both igr-es6 and es6 now),
-					// TODO: Optionally: Will be better to use .env file for igr-es6 as well,
-					// to specify the port for all environments (Windows, Mac, etc.)
+					// react-scripts start "--port=dafaultPort" is not a valid command for all environments.
+					// .env file is included and used by both igr-es6 and es6 now,
+					// to specify the port for all environments (Windows, Mac, etc)
 					process.env.PORT = `${port}`; 
 					port = null;
 				}
