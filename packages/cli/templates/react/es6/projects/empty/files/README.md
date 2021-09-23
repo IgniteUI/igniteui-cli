@@ -5,7 +5,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Development server
 
-Run `ig start` to build the application, start a web server and open the application in the default browser. Then navigate to `http://localhost:3002/`. Default serving port can be configured in `ignite-ui-cli.json` via `defaultPort` property.
+Run `ig start` to build the application, start a web server and open the application in the default browser. Then navigate to `http://localhost:3002/`. Default serving port can be configured in `.env` via `PORT` property.
 
 ## Build
 

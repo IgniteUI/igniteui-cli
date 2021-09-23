@@ -6,7 +6,7 @@ import "@infragistics/ignite-ui-full/en/js/modules/infragistics.ext_text.js";
 import "@infragistics/ignite-ui-full/en/js/modules/infragistics.ext_io.js";
 import "@infragistics/ignite-ui-full/en/js/modules/infragistics.ext_ui.js";
 import "@infragistics/ignite-ui-full/en/js/modules/infragistics.documents.core_core.js";
-import "@infragistics/ignite-ui-full/en/js/modules/infragistics.ext_collectionsExtended.js";
+import "@infragistics/ignite-ui-full/en/js/modules/infragistics.ext_collectionsextended.js";
 import "@infragistics/ignite-ui-full/en/js/modules/infragistics.excel_core.js";
 import "@infragistics/ignite-ui-full/en/js/modules/infragistics.ext_threading.js";
 import "@infragistics/ignite-ui-full/en/js/modules/infragistics.ext_web.js";
