@@ -2,7 +2,7 @@
 Data from U.S. Energy Information Administration (2012)
 */
 var data = {
-	lastFiveYears: [
+  lastFiveYears: [
     {
         "Year": 2005,
         "Canada": 18.8932,

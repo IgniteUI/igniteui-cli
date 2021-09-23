@@ -3,11 +3,11 @@ import { MultiTemplateComponent } from "../../../../lib/MultiTemplateComponent";
 import { ReactTemplate } from "../../../../lib/templates/ReactTemplate";
 
 const templates = new Map([
-	["text-editor",  {name: "Text Editor", widget: "igTextEditor"}],
-	["numeric-editor",  {name: "Numeric Editor", widget: "igNumericEditor"}],
-	["currency-editor",  {name: "Currency Editor", widget: "igCurrencyEditor"}],
-	["mask-editor",  {name: "Mask Editor", widget: "igMaskEditor"}],
-	["date-picker",  {name: "Date Picker", widget: "igDatePicker"}]
+	["text-editor", { name: "Text Editor", widget: "igTextEditor" }],
+	["numeric-editor", { name: "Numeric Editor", widget: "igNumericEditor" }],
+	["currency-editor", { name: "Currency Editor", widget: "igCurrencyEditor" }],
+	["mask-editor", { name: "Mask Editor", widget: "igMaskEditor" }],
+	["date-picker", { name: "Date Picker", widget: "igDatePicker" }]
 ]);
 
 class EditorsComponent extends MultiTemplateComponent<EditorsReactTemplate> {
@@ -29,7 +29,7 @@ class EditorsReactTemplate extends ReactTemplate {
 		this.dependencies = ["igEditors"];
 		this.hasExtraConfiguration = false;
 	}
-	public generateConfig(name: string, ...options: any[]): {[key: string]: any} {
+	public generateConfig(name: string, ...options: any[]): { [key: string]: any } {
 		this.widget = this.mapItem.widget;
 		return super.generateConfig(name, options);
 	}

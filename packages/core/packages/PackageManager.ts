@@ -46,8 +46,8 @@ export class PackageManager {
 			const errorMsg = "Something went wrong, " +
 				"please follow the steps in this guide: https://www.igniteui.com/help/using-ignite-ui-npm-packages";
 			if (this.ensureRegistryUser(config, errorMsg) && this.addPackage(this.fullPackage + version, verbose) ||
-			 	// Fallback to @latest, in case when igniteui-full does not have a matching version to ossVersion
-				// Ex: "ignite-ui": "^21.1.13" BUT  --> ignite-ui-full": "^21.1.11" (no 21.1.13 released).
+				// fallback to @latest, in case when igniteui-full does not have a matching version to ossVersion
+				// ex: "ignite-ui": "^21.1.13" BUT  --> ignite-ui-full": "^21.1.11" (no 21.1.13 released).
 				(this.ensureRegistryUser(config, errorMsg) && this.addPackage(this.fullPackage + "@latest", verbose))) {
 				if (ossVersion) {
 					// TODO: Check if OSS package uninstalled successfully?

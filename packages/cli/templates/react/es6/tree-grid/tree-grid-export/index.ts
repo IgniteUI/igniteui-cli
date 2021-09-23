@@ -23,7 +23,7 @@ class TreeGridExportTemplate extends ReactTemplate {
 		this.gridHelper.tree = true;
 		this.hasExtraConfiguration = true;
 		this.extraConfigurations.push({
-			choices: ["Filtering", "Hiding"],
+			choices: ["Paging", "Hiding"],
 			default: "",
 			key: "features",
 			message: "Select features for the igTreeGrid",
@@ -31,10 +31,10 @@ class TreeGridExportTemplate extends ReactTemplate {
 		});
 	}
 
-	public generateConfig(name: string, ...options: any[]): {[key: string]: any} {
+	public generateConfig(name: string, ...options: any[]): { [key: string]: any } {
 		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 5);
 		const config = { treeGridFeatures: features };
-		return super.generateConfig(name, { extraConfig : config });
+		return super.generateConfig(name, { extraConfig: config });
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return this.extraConfigurations;

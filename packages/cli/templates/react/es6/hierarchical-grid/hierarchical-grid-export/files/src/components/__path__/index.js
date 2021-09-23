@@ -22,90 +22,91 @@ import { northwind } from './northwind.js';
 import "./styles.css";
 
 export default class $(ClassName) extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			northwind,
-			exportOptions:[{"text": "All Rows", "value": "allRows"}, {"text":"Expanded Rows", "value":"expandedRows"}],
-			exportOption: []
-		};
+  constructor(props) {
+    super(props);
+    this.state = {
+      northwind,
+      exportOptions:[{"text": "All Rows", "value": "allRows"}, {"text":"Expanded Rows", "value":"expandedRows"}],
+      exportOption: []
+    };
 
-		this.export = () => {
-			// export
-			$.ig.GridExcelExporter.exportGrid($("#hierarchicalGrid"), {
-				fileName: "igHierarchicalGrid",
-				worksheetName: 'Sheet1',
-				exportOption: this.state.exportOption
-			});
-		}
-		this.selectionChanged = (ev, ui) => {
-			this.setState({exportOption: ui.items[0].data.value});
-		}
-	}
-	render() {
-		return (
-			<div className="App">
-				<div className="App-header">
-					<h2 style={{textAlign: "center"}}>$(description)</h2>
-				</div>
-				<div style={{textAlign: "center"}}>
-					<IgCombo
-						id="combo"
-						width="200px"
-						mode="dropdown"
-						responseDataKey="exportOptions"
-						dataSource={this.state}
-						selectionChanged={this.selectionChanged}
-						 />
+    this.export = () => {
+      // export
+      $.ig.GridExcelExporter.exportGrid($("#hierarchicalGrid"), {
+        fileName: "igHierarchicalGrid",
+        worksheetName: 'Sheet1',
+        exportOption: this.state.exportOption
+      });
+    }
+    this.selectionChanged = (ev, ui) => {
+      this.setState({exportOption: ui.items[0]?.data.value || "allRows"}); //Export allRows as combo value can be cleared
+    }
+  }
+  render() {
+    return (
+      <div className="App">
+        <div className="App-header">
+          <h2 style={{textAlign: "center"}}>$(description)</h2>
+        </div>
+        <div style={{textAlign: "center"}}>
+          <IgCombo
+            id="combo"
+            width="200px"
+            mode="dropdown"
+            responseDataKey="exportOptions"
+            dataSource={this.state}
+            selectionChanged={this.selectionChanged}
+             />
 
-					<IgButton
-						onClick={this.export}
-						labelText="Export"
-					/>
-				</div>
+          <IgButton
+            click={this.export}
+            onClick={this.export}
+            labelText="Export"
+          />
+        </div>
 
-				<$(Control)
-					id="hierarchicalGrid"
-					features={$(gridfeatures)}
-					width="100%"
-					autoCommit={true}
-					autoGenerateColumns={false}
-					autofitLastColumn={false}
-					dataSource={this.state.northwind}
-					responseDataKey="results"
-					dataSourceType="json"
-					columns={[
-						{ key: "EmployeeID", headerText: "Employee ID", dataType: "number", width: "0%", hidden: true },
-						{ key: "LastName", headerText: "Last Name", dataType: "string", width: "20%" },
-						{ key: "FirstName", headerText: "First Name", dataType: "string", width: "20%" },
-						{ key: "Title", headerText: "Title", dataType: "string", width: "20%" },
-						{ key: "City", headerText: "City", dataType: "string", width: "15%" },
-						{ key: "Region", headerText: "Region", dataType: "string", width: "10%" },
-						{ key: "Country", headerText: "Country", dataType: "string", width: "0%", hidden: true }
-					]}
-					childrenDataProperty="Orders"
-					autoGenerateLayouts={false}
-					columnLayouts={[
-						{
-							key: "Orders",
-							autoCommit: true,
-							autoGenerateColumns: false,
-							autofitLastColumn: false,
-							primaryKey: "OrderID",
-							width: "100%",
-							columns: [
-								{ key: "OrderID", headerText: "Order ID", dataType: "number", width: "10%", hidden: true },
-								{ key: "Freight", headerText: "Freight", dataType: "string", width: "15%" },
-								{ key: "ShipName", headerText: "Ship Name", dataType: "string", width: "20%" },
-								{ key: "ShipAddress", headerText: "Ship Address", dataType: "string", width: "25%" },
-								{ key: "ShipCity", headerText: "Ship City", dataType: "string", width: "20%" },
-								{ key: "ShipCountry", headerText: "Ship Country", dataType: "string", width: "20%" }
-							],
-						}
-					]}
-				/>
+        <$(Control)
+          id="hierarchicalGrid"
+          features={$(gridfeatures)}
+          width="100%"
+          autoCommit={true}
+          autoGenerateColumns={false}
+          autofitLastColumn={false}
+          dataSource={this.state.northwind}
+          responseDataKey="results"
+          dataSourceType="json"
+          columns={[
+            { key: "EmployeeID", headerText: "Employee ID", dataType: "number", width: "0%", hidden: true },
+            { key: "LastName", headerText: "Last Name", dataType: "string", width: "20%" },
+            { key: "FirstName", headerText: "First Name", dataType: "string", width: "20%" },
+            { key: "Title", headerText: "Title", dataType: "string", width: "20%" },
+            { key: "City", headerText: "City", dataType: "string", width: "15%" },
+            { key: "Region", headerText: "Region", dataType: "string", width: "10%" },
+            { key: "Country", headerText: "Country", dataType: "string", width: "0%", hidden: true }
+          ]}
+          childrenDataProperty="Orders"
+          autoGenerateLayouts={false}
+          columnLayouts={[
+            {
+              key: "Orders",
+              autoCommit: true,
+              autoGenerateColumns: false,
+              autofitLastColumn: false,
+              primaryKey: "OrderID",
+              width: "100%",
+              columns: [
+                { key: "OrderID", headerText: "Order ID", dataType: "number", width: "10%", hidden: true },
+                { key: "Freight", headerText: "Freight", dataType: "string", width: "15%" },
+                { key: "ShipName", headerText: "Ship Name", dataType: "string", width: "20%" },
+                { key: "ShipAddress", headerText: "Ship Address", dataType: "string", width: "25%" },
+                { key: "ShipCity", headerText: "Ship City", dataType: "string", width: "20%" },
+                { key: "ShipCountry", headerText: "Ship Country", dataType: "string", width: "20%" }
+              ],
+            }
+          ]}
+        />
 
       </div>
-		);
-	}
+    );
+  }
 }

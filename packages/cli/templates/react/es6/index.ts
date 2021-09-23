@@ -17,4 +17,4 @@ class ReactProjectLibrary extends BaseProjectLibrary {
 		}
 	}
 }
-module.exports =  new ReactProjectLibrary();
+module.exports = new ReactProjectLibrary();

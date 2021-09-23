@@ -60,29 +60,29 @@ command = {
 
 		switch (framework.toLowerCase()) {
 			case "jquery":
-			// browser-sync installed per project
-			const bs = require(resolve.sync("browser-sync", { basedir: process.cwd() }));
-			const browserSync = bs.create("igniteui-cli");
-			const filePath = path.join(process.cwd(), "bs-config.js");
-			const bsConfig = require(filePath);
-			if (port) {
-				bsConfig.port = port;
-			}
+				// browser-sync installed per project
+				const bs = require(resolve.sync("browser-sync", { basedir: process.cwd() }));
+				const browserSync = bs.create("igniteui-cli");
+				const filePath = path.join(process.cwd(), "bs-config.js");
+				const bsConfig = require(filePath);
+				if (port) {
+					bsConfig.port = port;
+				}
 
-			browserSync.init(bsConfig);
-			break;
+				browserSync.init(bsConfig);
+				break;
 			case "react":
 				if (port) {
 					// https://facebook.github.io/create-react-app/docs/advanced-configuration
 					// react-scripts start "--port=dafaultPort" is not a valid command for all environments.
 					// .env file is included and used by both igr-es6 and es6 now,
 					// to specify the port for all environments (Windows, Mac, etc)
-					process.env.PORT = `${port}`; 
+					process.env.PORT = `${port}`;
 					port = null;
 				}
-				/* falls through */
+			/* falls through */
 			case "angular":
-				const options =  { stdio: "inherit", killSignal: "SIGINT" };
+				const options = { stdio: "inherit", killSignal: "SIGINT" };
 				if (port) {
 					Util.execSync(`npm start -- --port=` + port, options);
 				} else {

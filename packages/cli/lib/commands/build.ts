@@ -45,7 +45,7 @@ command = {
 		});
 
 		await PackageManager.installPackages();
-		if (config.project.projectType === "es6" ) {
+		if (config.project.projectType === "es6") {
 			return;
 		}
 		if (config.project.theme.includes(".less") || config.project.theme.includes(".sass")) {

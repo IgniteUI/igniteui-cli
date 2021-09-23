@@ -19,11 +19,11 @@ import $(Control) from "igniteui-react/ui/$(widget).js";
 import IgButton from "igniteui-react/ui/igButton.js"
 
 export default class  $(ClassName) extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			flatDS  : [
-				{ "employeeID": 0, "PID": -1, "firstName": "Andrew", "lastName": "Fuller", "reportsTo": null },
+  constructor(props) {
+    super(props);
+    this.state = {
+      flatDS  : [
+        { "employeeID": 0, "PID": -1, "firstName": "Andrew", "lastName": "Fuller", "reportsTo": null },
                 { "employeeID": 1, "PID": -1, "firstName": "Jonathan", "lastName": "Smith", "reportsTo": null },
                 { "employeeID": 2, "PID": -1, "firstName": "Nancy", "lastName": "Davolio", "reportsTo": null },
                 { "employeeID": 3, "PID": -1, "firstName": "Steven", "lastName": "Buchanan", "reportsTo": null },
@@ -52,9 +52,9 @@ export default class  $(ClassName) extends Component {
                 { "employeeID": 20, "PID": 18, "firstName": "Bernard", "lastName": "Jarvis", "reportsTo": 19 },
                                 // sub of ID 20
                 { "employeeID": 21, "PID": 20, "firstName": "Jeremy", "lastName": "Donaldson", "reportsTo": 2 }
-			],
-			hierarchicalDS : [
-				{
+      ],
+      hierarchicalDS : [
+        {
                     "id": 0, "tasks": "Project Plan", "start": "6/2/2014", "finish": "8/22/2014", "duration": "60d", "progress": "32%", "products": [
                         { "id": 1, "tasks": "Planning", "start": "6/2/2014", "finish": "6/4/2014", "duration": "3d", "progress": "100%" },
                         { "id": 2, "tasks": "Write a specification", "start": "6/5/2014", "finish": "6/6/2014", "duration": "2d", "progress": "100%" },
@@ -78,84 +78,84 @@ export default class  $(ClassName) extends Component {
                         { "id": 7, "tasks": "Project Complete", "start": "8/21/2014", "finish": "8/22/2014", "duration": "2d", "progress": "0%" }
                     ]
                 }
-			]
-		};
+      ]
+    };
 
-		this.exportFlatDS = () => {
-			$.ig.GridExcelExporter.exportGrid($("#treegrid1"), {
-				fileName: "igTreeGrid1",
-				worksheetName: 'Sheet1',
-				gridStyling: "none"
-			});
-		}
+    this.exportFlatDS = () => {
+      $.ig.GridExcelExporter.exportGrid($("#treegrid1"), {
+        fileName: "igTreeGrid1",
+        worksheetName: 'Sheet1',
+        gridStyling: "none"
+      });
+    }
 
-		this.exportHierarchicalDS = () => {
-			$.ig.GridExcelExporter.exportGrid($("#treegrid2"), {
-				fileName: "igTreeGrid2",
-				worksheetName: 'Sheet1',
-				gridStyling: "none"
-			});
-		}
-	}
+    this.exportHierarchicalDS = () => {
+      $.ig.GridExcelExporter.exportGrid($("#treegrid2"), {
+        fileName: "igTreeGrid2",
+        worksheetName: 'Sheet1',
+        gridStyling: "none"
+      });
+    }
+  }
 
-	render() {
-		return (
-			<div className="App">
-				<div className="App-header">
-					<h2 style={{textAlign: "center"}}>$(description)</h2>
-				</div>
-				<div style={{display: "flex", flexFlow: "column", alignItems: "center", marginBottom: "1vw"}}>
-					<$(Control)
-						id="treegrid1"
-						width="100%"
-						dataSource={this.state.flatDS}
-						autoGenerateColumns={false}
-						primaryKey="employeeID"
-						foreignKey="PID"
-						initialExpandDepth="1"
-						columns={[
-							{ headerText: "Employee ID", key: "employeeID", width: "200px", dataType: "number" },
-							{ headerText: "First Name", key: "firstName", width: "220px", dataType: "string" },
-							{ headerText: "Last Name", key: "lastName", width: "220px", dataType: "string" },
-							{ headerText: "Reports To", key: "reportsTo", width: "130px", dataType: "number" }
-						]}
-						features={$(treeGridFeatures)}
-					/>
+  render() {
+    return (
+      <div className="App">
+        <div className="App-header">
+          <h2 style={{textAlign: "center"}}>$(description)</h2>
+        </div>
+        <div style={{display: "flex", flexFlow: "column", alignItems: "center", marginBottom: "1vw"}}>
+          <$(Control)
+            id="treegrid1"
+            width="100%"
+            dataSource={this.state.flatDS}
+            autoGenerateColumns={false}
+            primaryKey="employeeID"
+            foreignKey="PID"
+            initialExpandDepth="1"
+            columns={[
+              { headerText: "Employee ID", key: "employeeID", width: "200px", dataType: "number" },
+              { headerText: "First Name", key: "firstName", width: "220px", dataType: "string" },
+              { headerText: "Last Name", key: "lastName", width: "220px", dataType: "string" },
+              { headerText: "Reports To", key: "reportsTo", width: "130px", dataType: "number" }
+            ]}
+            features={$(treeGridFeatures)}
+          />
 
-					<IgButton
-						click={this.exportFlatDS}
-						onClick={this.exportFlatDS}
-						labelText="Export Flat Data"
-						/>
-				</div>
-				<div style={{display: "flex", flexFlow: "column", alignItems: "center"}}>
-					<$(Control)
-					id="treegrid2"
-					width="100%"
-					dataSource={this.state.hierarchicalDS}
-					autoGenerateColumns={false}
-					primaryKey="id"
-					columns={[
-						{ headerText: "ID", key: "id", width: "120px", dataType: "number" },
-						{ headerText: "Tasks", key: "tasks", width: "250px", dataType: "string" },
-						{ headerText: "Start", key: "start", width: "130px", dataType: "string" },
-						{ headerText: "Finish", key: "finish", width: "130px", dataType: "string" },
-						{ headerText: "Duration", key: "duration", width: "100px", dataType: "string" },
-						{ headerText: "Progress", key: "progress", width: "130px", dataType: "string" }
-					]}
-					childDataKey="products"
-					initialExpandDepth="1"
-					renderExpansionIndicatorColumn={true}
-					features={$(treeGridFeatures)}
-					/>
+          <IgButton
+            click={this.exportFlatDS}
+            onClick={this.exportFlatDS}
+            labelText="Export Flat Data"
+            />
+        </div>
+        <div style={{display: "flex", flexFlow: "column", alignItems: "center"}}>
+          <$(Control)
+          id="treegrid2"
+          width="100%"
+          dataSource={this.state.hierarchicalDS}
+          autoGenerateColumns={false}
+          primaryKey="id"
+          columns={[
+            { headerText: "ID", key: "id", width: "120px", dataType: "number" },
+            { headerText: "Tasks", key: "tasks", width: "250px", dataType: "string" },
+            { headerText: "Start", key: "start", width: "130px", dataType: "string" },
+            { headerText: "Finish", key: "finish", width: "130px", dataType: "string" },
+            { headerText: "Duration", key: "duration", width: "100px", dataType: "string" },
+            { headerText: "Progress", key: "progress", width: "130px", dataType: "string" }
+          ]}
+          childDataKey="products"
+          initialExpandDepth="1"
+          renderExpansionIndicatorColumn={true}
+          features={$(treeGridFeatures)}
+          />
 
-					<IgButton
-						click={this.exportHierarchicalDS}
-						onClick={this.exportHierarchicalDS}
-						labelText="Export Hierarchical Data"
-						/>
-				</div>
-			</div>
-		);
-	}
+          <IgButton
+            click={this.exportHierarchicalDS}
+            onClick={this.exportHierarchicalDS}
+            labelText="Export Hierarchical Data"
+            />
+        </div>
+      </div>
+    );
+  }
 }

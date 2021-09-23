@@ -1,5 +1,5 @@
 var data = {
-	temperature: [
+  temperature: [
 { "Date": "2013.07.16", "Time": "1:00", "NewYorkCityTemp": 85.46, "PhiladelphiaTemp": 86.72 },
 { "Date": "2013.07.16", "Time": "3:00", "NewYorkCityTemp": 82.76, "PhiladelphiaTemp": 84.74 },
 { "Date": "2013.07.16", "Time": "5:00", "NewYorkCityTemp": 80.6, "PhiladelphiaTemp": 82.94 },
