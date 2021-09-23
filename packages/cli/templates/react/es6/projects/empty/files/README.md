@@ -29,7 +29,7 @@ The ID matches either a component ("grid", "combo", etc) or a predefined templat
 
 ## Running unit tests
 
-Run `ig test` to execute the illustrative tests via [Jest](https://jestjs.io/) and [Enzyme](https://github.com/airbnb/enzyme) test setup. Runs all `.spec.js/jsx` and `.test.js/jsx` files under `__tests__` folder.
+Run `ig test` to execute the illustrative App test.
 
 ## Help
 
