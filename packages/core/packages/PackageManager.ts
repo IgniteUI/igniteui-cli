@@ -48,7 +48,10 @@ export class PackageManager {
 			if (this.ensureRegistryUser(config, errorMsg) && this.addPackage(this.fullPackage + version, verbose) ||
 				// fallback to @latest, in case when igniteui-full does not have a matching version to ossVersion
 				// ex: "ignite-ui": "^21.1.13" BUT  --> ignite-ui-full": "^21.1.11" (no 21.1.13 released).
-				(this.ensureRegistryUser(config, errorMsg) && this.addPackage(this.fullPackage + "@latest", verbose))) {
+				// TODO: update temp fix - only working in 21.1.11 without errors
+				// use "@latest" instead of "@21.1.11"
+				// TODO: Update empty proj's package.json --> "ignite-ui": "^21.1.11" or newer
+					(this.ensureRegistryUser(config, errorMsg) && this.addPackage(this.fullPackage + "@21.1.11", verbose))) {
 				if (ossVersion) {
 					// TODO: Check if OSS package uninstalled successfully?
 					this.removePackage(this.ossPackage, verbose);

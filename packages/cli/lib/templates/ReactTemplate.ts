@@ -22,7 +22,6 @@ export class ReactTemplate implements Template {
 
 	private appRoutsPath: string = "./src/routes.json";
 	private igniteResources: string = "src/igniteuiResources.js";
-	private replacePattern: RegExp = /\[[\s\S]*\](?=;)/;
 
 	/**
 	 * Base ReactTemplate constructor

@@ -403,20 +403,17 @@ export class AppModule {
 		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
 			project: { framework: "react", projectType: "es6", components: [] }
 		}));
-		fs.mkdirSync(`./client`);
-		fs.mkdirSync(`./client/pages`);
-		fs.writeFileSync("client/pages/routesTemplate.js", "[];");
-		fs.writeFileSync("client/pages/routes.js", "[];");
+		fs.mkdirSync(`./src`);
+		fs.writeFileSync("src/routes.json", "[]");
 		await cli.run(["add", "grid", "My grid"]);
 
 		expect(console.error).toHaveBeenCalledTimes(0);
 		expect(console.log).toHaveBeenCalledWith(jasmine.stringMatching(/View 'My grid' added\s*/));
 
-		expect(fs.existsSync("./client/components/my-grid")).toBeTruthy();
-		expect(fs.existsSync("./client/components/my-grid/index.js")).toBeTruthy();
-		expect(fs.existsSync("./client/pages/my-grid/index.js")).toBeTruthy();
-		fs.unlinkSync("./client/components/my-grid/index.js");
-		fs.removeSync("./client");
+		expect(fs.existsSync("./src/components/my-grid")).toBeTruthy();
+		expect(fs.existsSync("./src/components/my-grid/index.js")).toBeTruthy();
+		fs.unlinkSync("./src/components/my-grid/index.js");
+		fs.removeSync("./src");
 
 		fs.unlinkSync(ProjectConfig.configFile);
 		done();
