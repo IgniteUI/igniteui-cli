@@ -8,11 +8,40 @@
     body {
       background: #fafafa;
     }
+
+    .topnav {
+      background-color: #4f4c4c;
+      overflow: hidden;
+    }
+
+    .topnav a {
+      float: left;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+    }
+
+    .topnav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    .topnav a.active {
+      background-color: #008cba;
+      color: white;
+    }
   </style>
 </head>
 
 <body>
-  <div id="outlet"></div>
+  <div id="navigation-outlet">
+    <div class="topnav">
+      <a class="active" href="/">Home</a>
+    </div>
+    <div id="outlet"></div>
+  </div>
 
   <script type="module" src="./dist/src/index.js"></script>
 </body>
