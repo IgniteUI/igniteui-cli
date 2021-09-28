@@ -536,22 +536,22 @@ describe("Unit - TypeScriptFileUpdate", () => {
 			return false;
 		});
 		let testTslint = null;
+		let editorConfig = `# Editor configuration, see http://editorconfig.org
+			root = true
+
+			[*]
+			charset = utf-8
+			indent_style = space
+			indent_size = 4
+
+			[*.comments]
+			#nothing in this section
+
+			[*.ts]
+			indent_size = 2`;
 		const readsSpy = spyOn(fs, "readFileSync").and.callFake((filePath, opt) => {
 			if (filePath === ".editorconfig") {
-				return `# Editor configuration, see http://editorconfig.org
-				root = true
-
-				[*]
-				charset = utf-8
-				indent_style = space
-				indent_size = 4
-
-				[*.comments]
-				#nothing in this section
-
-				[*.ts]
-				indent_size = 2
-				`;
+				return editorConfig;
 			} else if (testTslint && filePath === "tslint.json") {
 				return JSON.stringify(testTslint);
 			}
@@ -563,6 +563,10 @@ describe("Unit - TypeScriptFileUpdate", () => {
 		expect(tsUpdate.getFormatting().indentSize).toEqual(2);
 		expect(tsUpdate.getFormatting().spaces).toEqual(true);
 		expect(tsUpdate.getFormatting().singleQuotes).toEqual(false);
+
+		editorConfig = editorConfig + "\nquote_type = single";
+		tsUpdate.readFormatConfigs();
+		expect(tsUpdate.getFormatting().singleQuotes).toEqual(true);
 
 		// with tslint
 		existsSpy.and.returnValue({ isFile: () => true });
