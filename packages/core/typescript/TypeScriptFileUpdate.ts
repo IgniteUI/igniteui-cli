@@ -544,6 +544,9 @@ export class TypeScriptFileUpdate {
 			if (options["indent_size"]) {
 				this.formatOptions.indentSize = parseInt(options["indent_size"], 10) || this.formatOptions.indentSize;
 			}
+			if (options["quote_type"]) {
+				this.formatOptions.singleQuotes = options["quote_type"] === "single";
+			}
 		}
 		if (this.fileSystem.fileExists("tslint.json")) {
 			// tslint prio - overrides other settings
