@@ -1,10 +1,32 @@
-# 8.1.1
+# [8.1.2](https://github.com/IgniteUI/igniteui-cli/compare/v8.1.1...v8.1.2) (2021-09-28)
 
-## igniteui/cli-core@#8.1.1 (2021-09-02)
+## igniteui/cli-core@8.1.2
+
+#### Bug Fixes
+
+* **ts-transform:** respect quote type from editorconfig [#886](https://github.com/IgniteUI/igniteui-cli/pull/886) ([a97bdf4](https://github.com/IgniteUI/igniteui-cli/commit/a97bdf4b78f15a1a9c9d2e752e5af75760ab91f3))
+
+## igniteui/angular-templates@12.1.812
+
+Note: Version bump only for package igniteui/angular-templates
+
+## igniteui/angular-schematics@12.1.812
+
+Note: Version bump only for package igniteui/angular-schematics
+
+## igniteui-cli@8.1.2
+
+#### Bug Fixes
+
+* **ts-transform:** respect quote type from editorconfig [#886](https://github.com/IgniteUI/igniteui-cli/pull/886) ([a97bdf4](https://github.com/IgniteUI/igniteui-cli/commit/a97bdf4b78f15a1a9c9d2e752e5af75760ab91f3))
+
+# [8.1.1]((https://github.com/IgniteUI/igniteui-cli/compare/v8.1.0...v8.1.1)) (2021-09-02)
+
+## igniteui/cli-core@8.1.1 
 
 Note: Version bump only for package @igniteui/cli-core
 
-## igniteui/angular-templates@#12.1.811 (2021-09-02)
+## igniteui/angular-templates@12.1.811
 
 #### Bug Fixes
 * **igx-ts:** Update dv component packages [#859](https://github.com/IgniteUI/igniteui-cli/issues/859)
@@ -13,13 +35,13 @@ Note: Version bump only for package @igniteui/cli-core
 
  **igx-ts:** Updating to angular 12.2 [#873](https://github.com/IgniteUI/igniteui-cli/pull/873)
 
-## igniteui/angular-schematics@#12.1.811 (2021-09-02)
+## igniteui/angular-schematics@12.1.811
 
 #### Bug Fixes
 
 * **schematics:** resolve schema id deprecation warning ([#870](https://github.com/IgniteUI/igniteui-cli/issues/870)) ([17d7016](https://github.com/IgniteUI/igniteui-cli/commit/17d70164de93a5162ba4a02b44b571de318a37c7))
 
-## igniteui-cli@#8.1.1 (2021-09-02)
+## igniteui-cli@8.1.1
 
 #### Features
 
