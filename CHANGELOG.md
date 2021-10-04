@@ -16,7 +16,7 @@ Note: Version bump only for package igniteui/cli-core
 
 ## igniteui-cli@8.2.0
 
-* Note: Version bump only for package igniteui/igniteui-cli
+* Update to igniteui-angular 12.2 [#888](https://github.com/IgniteUI/igniteui-cli/pull/888)
 # [8.1.2](https://github.com/IgniteUI/igniteui-cli/compare/v8.1.1...v8.1.2) (2021-09-28)
 
 ## igniteui/cli-core@8.1.2
