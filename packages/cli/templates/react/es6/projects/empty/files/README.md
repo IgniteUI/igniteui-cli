@@ -27,10 +27,6 @@ Add a new component or template to the project passing component ID and choosing
 
 The ID matches either a component ("grid", "combo", etc) or a predefined template. Predefined templates can provide either multiple components or fulfilling a specific use case like "form-validation", "master-detail" and so on.
 
-## Running unit tests
-
-Run `ig test` to execute the illustrative App test.
-
 ## Help
 
 `ig help` lists the available commands and provides a brief description of what they do.
