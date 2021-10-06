@@ -10,7 +10,7 @@
     "cssPath": "$(cssPath)",
     "jsPath": "$(jsPath)",
     "isBundle": false,
-    "bundleFilePath": "/igniteui/dist/ignite.js",
+    "bundleFilePath": "",
     "igniteuiSource": "./node_modules/ignite-ui",
     "components": [],
     "isShowcase": false,
