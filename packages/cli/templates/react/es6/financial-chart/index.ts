@@ -6,7 +6,7 @@ class FinancialChartComponent extends BaseComponent {
 	 */
 	constructor() {
 		super(__dirname);
-		this.name  = "Financial Chart";
+		this.name = "Financial Chart";
 		this.group = "Charts";
 		this.description = "lightweight, high-performance chart.";
 	}

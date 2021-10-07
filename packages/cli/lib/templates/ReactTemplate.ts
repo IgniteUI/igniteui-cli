@@ -20,8 +20,8 @@ export class ReactTemplate implements Template {
 	// non-standard template prop
 	protected widget: string;
 
-	private configFile: string = "./client/pages/routesTemplate.js";
-	private replacePattern: RegExp = /\[[\s\S]*\](?=;)/;
+	private appRoutsPath: string = "./src/routes.json";
+	private igniteResources: string = "src/igniteuiResources.js";
 
 	/**
 	 * Base ReactTemplate constructor
@@ -33,7 +33,7 @@ export class ReactTemplate implements Template {
 		return [path.join(this.rootPath, "files")];
 	}
 
-	public generateConfig(name: string, options: {}): {[key: string]: any} {
+	public generateConfig(name: string, options: {}): { [key: string]: any } {
 		let config = {};
 		if (options["extraConfig"]) {
 			config = options["extraConfig"];
@@ -47,11 +47,9 @@ export class ReactTemplate implements Template {
 			config["widget"] = this.widget;
 			config["Control"] = Util.className(this.widget);
 		}
-		config["igniteImports"] = this.getImports();
 		if (this.description) {
 			config["description"] = this.description;
 		}
-
 		return config;
 	}
 
@@ -59,35 +57,26 @@ export class ReactTemplate implements Template {
 		if (options && options.skipRoute) {
 			return;
 		}
-		let configFile = fs.readFileSync(path.join(projectPath, this.configFile), "utf8");
-		const viewsArr = JSON.parse(this.replacePattern.exec(configFile)[0]);
+		// add Routing config for each added component
+		const appRoutsFile = fs.readFileSync(path.join(projectPath, this.appRoutsPath), "utf8");
+		const viewsArr = JSON.parse(appRoutsFile);
 		viewsArr.push({
-			folder: this.getViewLink(name),
+			// tslint:disable:object-literal-sort-keys
 			path: "/" + this.folderName(Util.nameFromPath(name)),
-			text: this.getToolbarLink(name)
+			componentPath: this.getViewLink(name),
+			text: this.getNavText(name)
 		});
-		configFile = configFile.replace(this.replacePattern, JSON.stringify(viewsArr, null, 4));
-		fs.writeFileSync(path.join(projectPath, this.configFile), configFile);
+
+		fs.writeFileSync(path.join(projectPath, this.appRoutsPath), JSON.stringify(viewsArr, null, 4));
+		this.registerSourceFiles(projectPath);
 	}
+
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		throw new Error("Method not implemented.");
 	}
+
 	public setExtraConfiguration(extraConfigKeys: {}) {
 		throw new Error("Method not implemented.");
-	}
-
-	protected getImports(): string {
-		// tslint:disable-next-line:no-submodule-imports
-		const config = require("@igniteui/cli-core/packages/components");
-		let builder = "";
-		builder += "\r\n";
-		builder += "// Ignite UI Required Combined JavaScript Files\r\n";
-		builder += `import "ignite-ui/js/infragistics.core.js";\r\n`;
-		builder += `import "ignite-ui/js/infragistics.lob.js";\r\n`;
-		if (this.dependencies.filter(x => config.dv.indexOf(x) !== -1).length) {
-			builder += `import "ignite-ui/js/infragistics.dv.js";\r\n`;
-		}
-		return builder;
 	}
 
 	protected folderName(pathName: string): string {
@@ -98,11 +87,11 @@ export class ReactTemplate implements Template {
 			folderName = path.join(parts.dir, parts.name);
 			folderName = folderName.replace(/\\/g, "/");
 			// TODO: config-based "src/app"?
-			const relative = path.join(process.cwd(), "client/components", folderName);
+			const relative = path.join(process.cwd(), "components", folderName);
 			// path.join will also resolve any '..' segments
 			// so if relative result doesn't start with CWD it's out of project root
 			if (!relative.startsWith(process.cwd())) {
-				Util.error(`Path ${"client/components/" + folderName} is not valid!`, "red");
+				Util.error(`Path ${"components/" + folderName} is not valid!`, "red");
 				process.exit(1);
 			}
 			//clean up potential leading spaces in folder names (`path/    name`):
@@ -110,14 +99,45 @@ export class ReactTemplate implements Template {
 		}
 		return Util.lowerDashed(folderName);
 	}
+
 	protected getViewLink(name: string): string {
-		const filePath = this.folderName(name) + "/index.js";
-		return filePath;
+		return "./components/" + this.folderName(name);
 	}
 
-	protected getToolbarLink(name: string): string {
+	protected registerSourceFiles(projectPath: string) {
+		// tslint:disable:no-submodule-imports
+		const components = require("@igniteui/cli-core/packages/components");
+		const igResPath = path.join(projectPath, this.igniteResources);
+
+		if (fs.existsSync(igResPath)) {
+			let igniteuiResFile = fs.readFileSync(igResPath, "utf8");
+			const freeVersionPath = "ignite-ui/";
+			const fullVersionPath = "@infragistics/ignite-ui-full/en/";
+			const dvPath = "@infragistics/ignite-ui-full/en/js/infragistics.dv.js";
+
+			const dvDep = this.dependencies.filter(x => components.dv.indexOf(x) !== -1).length !== 0;
+			const fullDep = this.dependencies.filter(x => components.full.indexOf(x) !== -1).length !== 0;
+
+			if (fullDep) {
+				while (igniteuiResFile.includes(freeVersionPath)) {
+					igniteuiResFile = igniteuiResFile.replace(freeVersionPath, fullVersionPath);
+					igniteuiResFile = igniteuiResFile.replace("-lite", "");
+				}
+				fs.writeFileSync(igResPath, igniteuiResFile);
+			}
+
+			if (dvDep && !igniteuiResFile.includes(dvPath)) {
+				fs.appendFileSync(igResPath, `${'\r\n// Ignite UI Charts Required JavaScript File\r\nimport "'
+					+ dvPath + '";\r\n'}`);
+			}
+
+		} else {
+			Util.log(`igniteuiResources.js file NOT found!`);
+		}
+	}
+
+	protected getNavText(name: string): string {
 		name = Util.nameFromPath(name);
-		const toolbarLink = name.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
-		return toolbarLink;
+		return name.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
 	}
 }

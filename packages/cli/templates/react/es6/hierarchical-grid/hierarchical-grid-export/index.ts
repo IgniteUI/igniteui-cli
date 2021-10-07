@@ -17,12 +17,13 @@ class HierarchicalGridExportTemplate extends ReactTemplate {
 		this.components = ["Hierarchical Grid"];
 		this.controlGroup = "Data Grids";
 		this.dependencies = ["igHierarchicalGrid"];
+		this.packages = ["file-saver@^2.0.5"];
 
 		this.gridHelper = new GridHelper();
 		this.gridHelper.hierarchical = true;
 		this.hasExtraConfiguration = true;
 		this.extraConfigurations.push({
-			choices: ["Summaries", "Hiding"],
+			choices: ["Paging", "Hiding"],
 			default: "",
 			key: "features",
 			message: "Select features for the igHierarchicalGrid",
@@ -30,10 +31,10 @@ class HierarchicalGridExportTemplate extends ReactTemplate {
 		});
 	}
 
-	public generateConfig(name: string, ...options: any[]): {[key: string]: any} {
+	public generateConfig(name: string, ...options: any[]): { [key: string]: any } {
 		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 5);
 		const config = { gridfeatures: features };
-		return super.generateConfig(name, { extraConfig : config });
+		return super.generateConfig(name, { extraConfig: config });
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return this.extraConfigurations;

@@ -74,15 +74,15 @@ describe("Unit - start command", () => {
 		expect(Util.execSync).toHaveBeenCalledWith("npm start", { stdio: "inherit", killSignal: "SIGINT" });
 		expect(Util.log).toHaveBeenCalledWith(`Starting project.`, "green");
 
-		config.project.defaultPort = 3567;
-		await startCmd.execute({});
-		// tslint:disable-next-line: max-line-length
-		expect(Util.execSync).toHaveBeenCalledWith("npm start -- --port=3567", { stdio: "inherit", killSignal: "SIGINT" });
-
-		await startCmd.execute({ port: 1234 });
-		// tslint:disable-next-line: max-line-length
-		expect(Util.execSync).toHaveBeenCalledWith("npm start -- --port=1234", { stdio: "inherit", killSignal: "SIGINT" });
-
+		/* the following checks are no longer valid, as `config.project.defaultPort` is deprecated for react projects
+			 in favor of using an .env file on project root lv, containing default variables like port. Ex: PORT=3002
+			 this change is required by how `react scripts` work, and to ensure passing a PORT via a platform agnostic approach.
+			 config.project.defaultPort = 3567;
+			 await startCmd.execute({});
+			 expect(Util.execSync).toHaveBeenCalledWith("npm start -- --port=3567", { stdio: "inherit", killSignal: "SIGINT" });
+			 await startCmd.execute({ port: 1234 });
+			 expect(Util.execSync).toHaveBeenCalledWith("npm start -- --port=1234", { stdio: "inherit", killSignal: "SIGINT" });
+			*/
 		expect(Util.error).not.toHaveBeenCalled();
 		done();
 	});
