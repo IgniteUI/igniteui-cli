@@ -63,7 +63,7 @@ describe("Unit - Package Manager", () => {
 			"yellow"
 		);
 		expect(Util.log).toHaveBeenCalledWith(
-			`Use you Infragistics account credentials. "@" is not supported,` +
+			`Use your Infragistics account credentials. "@" is not supported, ` +
 			`use "!!", so "username@infragistics.com" should be entered as "username!!infragistics.com"`,
 			"yellow"
 		);
@@ -80,7 +80,10 @@ describe("Unit - Package Manager", () => {
 		expect(PackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@"20.1"`, true);
 		done();
 	});
-	xit("ensureIgniteUISource - Should run through properly when install = true && package error", async done => {
+	it("ensureIgniteUISource - Should run through properly when install = true && package error", async done => {
+		class TestPackageManager extends PackageManager {
+			public static getPackageJSON(): any { }
+		}
 		const mockRequire = {
 			dependencies: {
 				"ignite-ui": "20.1"
@@ -90,10 +93,9 @@ describe("Unit - Package Manager", () => {
 		const mockTemplateMgr = jasmine.createSpyObj("mockTemplateMgr", {
 			getProjectLibrary: {
 				getProject() {
-					return {
-						upgradeIgniteUIPackages: () => Promise.resolve(false)
-					};
-				}
+					return { upgradeIgniteUIPackages: () => Promise.resolve(false) };
+				},
+				projectIds: ["empty"]
 			}
 		});
 		spyOn(ProjectConfig, "localConfig").and.returnValue({
@@ -105,48 +107,47 @@ describe("Unit - Package Manager", () => {
 			}
 		});
 		spyOn(ProjectConfig, "setConfig");
-		spyOn(PackageManager, "addPackage").and.returnValue(true);
+		spyOn(TestPackageManager, "addPackage").and.returnValue(true);
 		spyOn(Util, "execSync").and.throwError("no user");
-		spyOn(cp, "spawnSync").and.returnValues({
-			status: 1
-		});
 		spyOn(Util, "log");
-		spyOn(PackageManager, "removePackage");
-		await PackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
+		spyOn(TestPackageManager, "removePackage");
+		spyOn(TestPackageManager, "getPackageJSON").and.callFake(() => mockRequire);
+		spyOn(cp, "spawnSync").and.returnValues({ status: 1 });
+		await TestPackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
 		expect(ProjectConfig.localConfig).toHaveBeenCalled();
-		expect(Util.log).toHaveBeenCalledTimes(7);
+		expect(Util.log).toHaveBeenCalledTimes(12);
 		expect(Util.log).toHaveBeenCalledWith(
 			"The project you've created requires the full version of Ignite UI from Infragistics private feed.",
 			"gray"
-		);
+		); // x2
 		expect(Util.log).toHaveBeenCalledWith(
 			"We are initiating the login process for you. This will be required only once per environment.",
 			"gray"
-		);
+		); // x2
 		expect(Util.log).toHaveBeenCalledWith(
 			"Adding a registry user account for trial",
 			"yellow"
-		);
+		); // x2
 		expect(Util.log).toHaveBeenCalledWith(
-			`Use you Infragistics account credentials. "@" is not supported,` +
+			`Use your Infragistics account credentials. "@" is not supported, ` +
 			`use "!!", so "username@infragistics.com" should be entered as "username!!infragistics.com"`,
 			"yellow"
-		);
+		); // x2
 		expect(Util.log).toHaveBeenCalledWith(
 			"Something went wrong, " +
 			"please follow the steps in this guide: https://www.igniteui.com/help/using-ignite-ui-npm-packages",
 			"red"
-		);
+		); // x2
 		expect(Util.log).toHaveBeenCalledWith(
-			"Something went wrong with upgrading Ignite UI to the full version." +
+			"Something went wrong with upgrading Ignite UI to the full version. " +
 			`As a result only views using OSS components will run correctly.`,
 			"yellow"
-		);
+		); // x1
 		expect(Util.log).toHaveBeenCalledWith(
-			"Please visit https://www.igniteui.com/help/using-ignite-ui-npm-packages" +
+			"Please visit https://www.igniteui.com/help/using-ignite-ui-npm-packages " +
 			`for instructions on how to install the full package.`,
 			"yellow"
-		);
+		); // x1
 		expect(cp.spawnSync).toHaveBeenCalledWith(
 			/^win/.test(process.platform) ? "npm.cmd" : "npm",
 			["adduser", `--registry=trial`, `--scope=@infragistics`, `--always-auth`],
@@ -154,7 +155,7 @@ describe("Unit - Package Manager", () => {
 				stdio: "inherit"
 			}
 		);
-		expect(Util.execSync).toHaveBeenCalledTimes(1);
+		expect(Util.execSync).toHaveBeenCalledTimes(2);
 		expect(Util.execSync).toHaveBeenCalledWith(`npm whoami --registry=trial`, { stdio: "pipe", encoding: "utf8" });
 		done();
 	});
@@ -180,7 +181,7 @@ describe("Unit - Package Manager", () => {
 		await PackageManager.ensureIgniteUISource(false, mockTemplateMgr, true);
 		expect(ProjectConfig.localConfig).toHaveBeenCalled();
 		expect(Util.log).toHaveBeenCalledWith(
-			"Template(s) that require the full version of Ignite UI found in the project." +
+			"Template(s) that require the full version of Ignite UI found in the project. " +
 			"You might be prompted for credentials on build to install it.", "yellow");
 		done();
 	});

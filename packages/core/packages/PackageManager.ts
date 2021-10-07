@@ -45,13 +45,12 @@ export class PackageManager {
 			const version = ossVersion ? `@"${ossVersion}"` : "";
 			const errorMsg = "Something went wrong, " +
 				"please follow the steps in this guide: https://www.igniteui.com/help/using-ignite-ui-npm-packages";
+			// fallback to @latest, in case when igniteui-full does not have a matching version to ossVersion
+			// ex: "ignite-ui": "^21.1.13" BUT  --> ignite-ui-full": "^21.1.11" (no 21.1.13 released).
+			// TODO: update temp fix - only working in 21.1.11 without errors
+			// match the version if possible, then fallback to "@latest" instead of "@21.1.11"
 			if (this.ensureRegistryUser(config, errorMsg) && this.addPackage(this.fullPackage + version, verbose) ||
-				// fallback to @latest, in case when igniteui-full does not have a matching version to ossVersion
-				// ex: "ignite-ui": "^21.1.13" BUT  --> ignite-ui-full": "^21.1.11" (no 21.1.13 released).
-				// TODO: update temp fix - only working in 21.1.11 without errors
-				// use "@latest" instead of "@21.1.11"
-				// TODO: Update empty proj's package.json --> "ignite-ui": "^21.1.11" or newer
-					(this.ensureRegistryUser(config, errorMsg) && this.addPackage(this.fullPackage + "@21.1.11", verbose))) {
+				(this.ensureRegistryUser(config, errorMsg) && this.addPackage(this.fullPackage + "@21.1.11", verbose))) {
 				if (ossVersion) {
 					// TODO: Check if OSS package uninstalled successfully?
 					this.removePackage(this.ossPackage, verbose);
@@ -74,13 +73,13 @@ export class PackageManager {
 					}
 				}
 			} else {
-				Util.log("Something went wrong with upgrading Ignite UI to the full version." +
+				Util.log("Something went wrong with upgrading Ignite UI to the full version. " +
 					`As a result only views using OSS components will run correctly.`, "yellow");
-				Util.log("Please visit https://www.igniteui.com/help/using-ignite-ui-npm-packages" +
+				Util.log("Please visit https://www.igniteui.com/help/using-ignite-ui-npm-packages " +
 					`for instructions on how to install the full package.`, "yellow");
 			}
 		} else {
-			Util.log("Template(s) that require the full version of Ignite UI found in the project." +
+			Util.log("Template(s) that require the full version of Ignite UI found in the project. " +
 				"You might be prompted for credentials on build to install it.", "yellow");
 		}
 	}
@@ -227,7 +226,7 @@ export class PackageManager {
 				"gray"
 			);
 			Util.log(`Adding a registry user account for ${fullPackageRegistry}`, "yellow");
-			Util.log(`Use you Infragistics account credentials. "@" is not supported,` +
+			Util.log(`Use your Infragistics account credentials. "@" is not supported, ` +
 				`use "!!", so "username@infragistics.com" should be entered as "username!!infragistics.com"`, "yellow");
 
 			// TODO: Delete this
@@ -241,7 +240,7 @@ export class PackageManager {
 				["adduser", `--registry=${fullPackageRegistry}`, `--scope=@infragistics`, `--always-auth`],
 				{ stdio: "inherit" }
 			);
-			if (login.status === 0) {
+			if (login?.status === 0) {
 				//make sure scope is configured:
 				try {
 					Util.execSync(`npm config set @infragistics:registry ${fullPackageRegistry}`);
