@@ -24,7 +24,7 @@ export function resolveIgxPackage(packageName: keyof typeof UPGRADEABLE_PACKAGES
 		const packageJson = JSON.parse(fs.readFile("./package.json"));
 		const dependencies = packageJson["dependencies"];
 		const licensed = UPGRADEABLE_PACKAGES[packageName];
-		if (dependencies[licensed]) {
+		if (dependencies?.licensed) {
 			return licensed;
 		}
 	}
