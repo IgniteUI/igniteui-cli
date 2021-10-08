@@ -1,3 +1,23 @@
+# [8.2.1](https://github.com/IgniteUI/igniteui-cli/compare/v8.2.0...v8.2.1)  (2021-10-08)
+
+🎉 This update includes new react wrappers (ig-es6) project template, as well as updates and fixes to the samples.
+
+## igniteui/cli-core@8.2.1
+
+* Note: Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@12.2.821
+
+* Note: Version bump only for package angular-templates
+
+## igniteui/angular-schematics@12.2.821
+
+* Note: Version bump only for package igniteui/angular-schematics
+
+## igniteui-cli@8.2.1
+
+* Update React Wrappers project template to Create React App project [#874](https://github.com/IgniteUI/igniteui-cli/issues/874)
+
 # [8.2.0](https://github.com/IgniteUI/igniteui-cli/compare/v8.1.2...v8.2.0)  (2021-10-04)
 
 🎉 This update includes igniteui-angular version [12.2.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/12.2.0).
