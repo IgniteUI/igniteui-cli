@@ -3,6 +3,11 @@
   "version": "8.2.1",
   "description": "Base types and functionality for Ignite UI CLI",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IgniteUI/igniteui-cli.git",
+    "directory":"packages/core"
+  },
   "typings": "index.d.ts",
   "author": "Infragistics",
   "license": "MIT",
