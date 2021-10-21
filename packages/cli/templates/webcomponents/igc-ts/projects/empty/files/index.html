@@ -4,46 +4,39 @@
 <head>
   <meta charset="utf-8">
   <base href="/">
+  <link rel="stylesheet" href="./node_modules/igniteui-webcomponents/src/styles/themes/material.css">
   <style>
     body {
       background: #fafafa;
     }
 
-    .topnav {
-      background-color: #4f4c4c;
-      overflow: hidden;
+    :host {
+      display: block;
+      padding: 25px;
+      color: var(--test-component-test-text-color, #000);
     }
 
-    .topnav a {
-      float: left;
-      color: #f2f2f2;
+    #outlet {
+      width: 100%;
+      display: flex;
       text-align: center;
-      padding: 14px 16px;
-      text-decoration: none;
-      font-size: 17px;
-    }
-
-    .topnav a:hover {
-      background-color: #ddd;
-      color: black;
-    }
-
-    .topnav a.active {
-      background-color: #008cba;
-      color: white;
+      flex-flow: column nowrap;
+      justify-content: stretch;
+      align-items: center;
+      padding: 40px 24px 40px 24px;
+      overflow: inherit;
     }
   </style>
 </head>
 
 <body>
-  <div id="navigation-outlet">
-    <div class="topnav">
-      <a class="active" href="/">Home</a>
-    </div>
-    <div id="outlet"></div>
-  </div>
+  <lit-app></lit-app>
+  <main id="outlet"></main>
 
   <script type="module" src="./dist/src/index.js"></script>
+  <script type="module">
+    import './dist/src/app.js';
+  </script>
 </body>
 
 </html>

@@ -1,7 +1,8 @@
-import { LitElement, html, customElement } from 'lit-element';
+import { LitElement, html } from 'lit';
+import { customElement } from 'lit/decorators.js';
 
 @customElement('lit-not-found')
-export class HomeComponent extends LitElement {
+export default class NotFound extends LitElement {
   render() {
     return html`
     <h2>Error 404: Page not found</h2>
