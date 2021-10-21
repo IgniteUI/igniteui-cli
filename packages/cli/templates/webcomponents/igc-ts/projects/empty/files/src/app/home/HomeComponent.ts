@@ -3,25 +3,10 @@ import { LitElement, html, css, customElement } from 'lit-element';
 @customElement('lit-home')
 export class HomeComponent extends LitElement {
   static styles = css`
-    :host {
-      display: block;
-      padding: 25px;
-      color: var(--test-component-test-text-color, #000);
-    }
-    .content {
-      width: 100%;
-      display: flex;
-      text-align: center;
-      flex-flow: column nowrap;
-      justify-content: stretch;
-      align-items: center;
-      padding: 40px 24px 40px 24px;
-      overflow: inherit;
-    }
-    .content p {
+    p {
       margin: 0px 0px 8px 0px;
     }
-    .content img {
+    img {
       margin-bottom: 48px;
       max-height: 480px;
       max-width: 100%;
@@ -30,8 +15,6 @@ export class HomeComponent extends LitElement {
 
   render() {
     return html`
-    <div id="outlet"></div>
-    <div class="content">
       <h1>Welcome to Ignite UI for Web Components!</h1>
       <h4>A complete library of UI components, giving you the ability to build modern web applications using encapsulation and the concept of reusable components in a dependency-free approach.</h4>
       <img src="./src/assets/astronaut-components.svg" alt="indigoDesign">
@@ -52,7 +35,6 @@ export class HomeComponent extends LitElement {
           <span class="content__link-image"></span>Ignite UI CLI
         </a>
       </p>
-    </div>
     `;
   }
 }

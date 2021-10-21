@@ -1,7 +1,7 @@
 import {
 	AddTemplateArgs, App, ControlExtraConfiguration, FS_TOKEN, IFileSystem,
-	defaultDelimiters, Template, TemplateDependency, Util } from "@igniteui/cli-core";
-import * as fs from "fs-extra";
+	defaultDelimiters, Template, TemplateDependency, Util
+} from "@igniteui/cli-core";
 import * as path from "path";
 import { NPM_DOCK_MANAGER, resolveIgcPackage } from "../../templates/webcomponents/package-resolve";
 import { TypeScriptFileUpdate } from "../../../cli/templates/webcomponents/TypeScriptFileUpdate";
@@ -27,18 +27,18 @@ export class IgniteUIForWebComponentsTemplate implements Template {
 
 	constructor(private rootPath: string) {
 	}
-	
+
 	public generateConfig(name: string, options: {}): { [key: string]: any } {
 		if (options["modulePath"] && !Util.fileExists(path.join(process.cwd(), `src\\app`, options["modulePath"]))) {
 			Util.error(`Wrong module path provided: ${options["modulePath"]}. No components were added!`);
 			return Promise.resolve(false);
 		}
 
-		return  Object.assign({}, options["extraConfig"], this.getBaseVariables(name));
+		return Object.assign({}, options["extraConfig"], this.getBaseVariables(name));
 	}
 
 	public registerInProject(projectPath: string, fullName: string, options?: AddTemplateArgs) {
-		if (!(options && options.skipRoute) && App.container.get<IFileSystem>(FS_TOKEN).fileExists("src/index.ts")) { 
+		if (!(options && options.skipRoute) && App.container.get<IFileSystem>(FS_TOKEN).fileExists("src/index.ts")) {
 			const routingModule = new TypeScriptFileUpdate(path.join(projectPath, "src/index.ts"));
 			routingModule.addRoute(
 				path.join(projectPath, `src/app/${this.folderName(fullName)}/${this.fileName(fullName)}.component.ts`),

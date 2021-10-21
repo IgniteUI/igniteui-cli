@@ -1,5 +1,4 @@
 import * as ts from "typescript";
-import * as path from "path";
 import { App, FS_TOKEN, IFileSystem, TemplateDependency, TypeScriptUtils, Util } from "@igniteui/cli-core";
 
 const DEFAULT_ROUTES_VARIABLE = "routes";
