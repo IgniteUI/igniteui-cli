@@ -1,10 +1,10 @@
 import { expect } from '@open-wc/testing';
-import { HomeComponent } from './HomeComponent.js';
+import { HomeComponent } from './home-component.js';
 import './home-component.js';
 
 describe('HomeComponent', () => {
   it('<my-element> is an instance of MyElement', async () => {
-    const element = document.createElement('home-component');
+    const element = document.createElement('lit-home');
     expect(element).to.be.instanceOf(HomeComponent);
   });
 });

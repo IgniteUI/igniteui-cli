@@ -7,7 +7,7 @@ export default class $(ClassName) extends LitElement {
   render() {
     return html`
         <igc-button
-            .size='large'>
+            size='large'>
             Large button
         </igc-button>
     `;

@@ -33,8 +33,8 @@ export class TypeScriptFileUpdate {
     this.initState();
   }
 
-  public addRoute(targetPath: string, filePath: string, linkPath: string, routesVariable = DEFAULT_ROUTES_VARIABLE) {
-    this.addRouteModuleEntry(targetPath, filePath, linkPath, routesVariable);
+  public addRoute(filePath: string, linkPath: string, linkText: string, routesVariable = DEFAULT_ROUTES_VARIABLE) {
+    this.addRouteModuleEntry(filePath, linkPath, linkText, routesVariable);
   }
 
   //#region File state
@@ -81,6 +81,7 @@ export class TypeScriptFileUpdate {
   protected addRouteModuleEntry(
     targetPath: string,
     filePath: string,
+    linkText: string,
     linkPath: string,
     routesVariable = DEFAULT_ROUTES_VARIABLE,
     parentRoutePath?: string
@@ -96,9 +97,9 @@ export class TypeScriptFileUpdate {
         // the visitor that should be used when adding routes to the main route array
         const conditionalVisitor: ts.Visitor = (node: ts.Node): ts.Node => {
           if (node.kind === ts.SyntaxKind.ArrayLiteralExpression) {
-            const newObject = this.createRouteEntry(filePath, className);
+            const newObject = this.createRouteEntry(filePath, className, linkText);
             const array = (node as ts.ArrayLiteralExpression);
-            this.createdStringLiterals.push(filePath);
+            this.createdStringLiterals.push(filePath, linkText);
             const notFoundWildCard = ".*";
             const nodes = ts.visitNodes(array.elements, visitor);
             const errorRouteNode = nodes.filter(element => element.getText().includes(notFoundWildCard))[0];
@@ -356,9 +357,10 @@ export class TypeScriptFileUpdate {
     };
   }
 
-  private createRouteEntry(filePath: string, className: string): ts.ObjectLiteralExpression {
+  private createRouteEntry(filePath: string, className: string, linkText: string): ts.ObjectLiteralExpression {
     const routePath = ts.createPropertyAssignment("path", ts.createLiteral(filePath));
     const routeComponent = ts.createPropertyAssignment("component", ts.createLiteral(className));
-    return ts.createObjectLiteral([routePath, routeComponent]);
+		const routeData = ts.createPropertyAssignment("name", ts.createLiteral(linkText));
+    return ts.createObjectLiteral([routePath, routeComponent, routeData]);
   }
 }

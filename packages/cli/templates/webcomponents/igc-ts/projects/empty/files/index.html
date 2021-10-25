@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <base href="/">
-  <link rel="stylesheet" href="./node_modules/igniteui-webcomponents/dist/src/styles/themes/material.css">
+  <link rel="stylesheet" href="./node_modules/igniteui-webcomponents/src/styles/themes/material.css">
   <style>
     body {
       background: #fafafa;
@@ -30,26 +30,13 @@
 </head>
 
 <body>
-  <div id="navigation-outlet">
-    <igc-nav-drawer open=true>
-      <igc-nav-drawer-header-item>Ignite UI CLI</igc-nav-drawer-header-item>
-
-      <igc-nav-drawer-item>
-        <span slot="content">
-          <a href="/">Home</a>
-        </span>
-      </igc-nav-drawer-item>
-
-      <igc-nav-drawer-item>
-        <span slot="content">
-          <a href="/button">Button</a>
-        </span>
-      </igc-nav-drawer-item>
-    </igc-nav-drawer>
-  </div>
-  <div id="outlet"></div>
+  <lit-app></lit-app>
+  <main id="outlet"></main>
 
   <script type="module" src="./dist/src/index.js"></script>
+  <script type="module">
+    import './dist/src/app.js';
+  </script>
 </body>
 
 </html>
