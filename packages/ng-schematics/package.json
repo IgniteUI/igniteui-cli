@@ -2,6 +2,11 @@
   "name": "@igniteui/angular-schematics",
   "version": "12.2.821",
   "description": "Ignite UI for Angular Schematics for ng new and ng generate",
+  "repository": {
+	"type": "git",
+	"url": "https://github.com/IgniteUI/igniteui-cli.git",
+	"directory": "packages/ng-schematics"
+},
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "test": "npm run build && jasmine src/**/*_spec.js"
