@@ -1,6 +1,5 @@
 import { expect } from '@open-wc/testing';
-import { HomeComponent } from './home-component.js';
-import './home-component.js';
+import { HomeComponent } from './home.component.js';
 
 describe('HomeComponent', () => {
   it('<my-element> is an instance of MyElement', async () => {

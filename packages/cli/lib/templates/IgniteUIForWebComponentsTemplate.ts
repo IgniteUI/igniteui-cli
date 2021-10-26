@@ -1,10 +1,10 @@
 import {
-	AddTemplateArgs, App, ControlExtraConfiguration, FS_TOKEN, IFileSystem,
-	defaultDelimiters, Template, TemplateDependency, Util
+	AddTemplateArgs, App, ControlExtraConfiguration, defaultDelimiters, FS_TOKEN,
+	IFileSystem, Template, TemplateDependency, Util
 } from "@igniteui/cli-core";
 import * as path from "path";
-import { NPM_DOCK_MANAGER, resolveIgcPackage } from "../../templates/webcomponents/package-resolve";
 import { TypeScriptFileUpdate } from "../../../cli/templates/webcomponents/TypeScriptFileUpdate";
+import { NPM_DOCK_MANAGER, resolveIgcPackage } from "../../templates/webcomponents/package-resolve";
 
 export class IgniteUIForWebComponentsTemplate implements Template {
 	public components: string[];

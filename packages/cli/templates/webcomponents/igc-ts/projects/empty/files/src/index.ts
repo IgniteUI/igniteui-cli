@@ -1,5 +1,5 @@
 import { Commands, Context, Route, Router } from '@vaadin/router';
-import './app/home/home-component';
+import './app/home/home.component';
 
 export const routes: Route[] = [
   { path: '/', component: 'lit-home', name: 'Home' },
