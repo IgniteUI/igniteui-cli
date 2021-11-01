@@ -1,6 +1,6 @@
 import { BaseComponent } from "@igniteui/cli-core";
 
-class IgcBadgeTemplate extends BaseComponent {
+class IgcBadgeComponent extends BaseComponent {
 	/**
 	 *
 	 */
@@ -11,4 +11,4 @@ class IgcBadgeTemplate extends BaseComponent {
 		this.description = `Customizable badge component`;
 	}
 }
-module.exports = new IgcBadgeTemplate();
+module.exports = new IgcBadgeComponent();

@@ -7,8 +7,6 @@ export default class $(ClassName) extends LitElement {
   render() {
     return html`
     <igc-badge
-      shape="rounded"
-      variant="primary"
       > </igc-badge
     >
     `;
