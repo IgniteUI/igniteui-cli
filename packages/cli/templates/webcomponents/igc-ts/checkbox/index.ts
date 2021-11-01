@@ -1,14 +1,14 @@
 import { BaseComponent } from "@igniteui/cli-core";
 
-class IgcButtonComponent extends BaseComponent {
+class IgcCheckboxComponent extends BaseComponent {
 	/**
 	 *
 	 */
 	constructor() {
 		super(__dirname);
-		this.name  = "Button";
+		this.name  = "Checkbox";
 		this.group = "Data Entry & Display";
-		this.description = `Customizable button component`;
+		this.description = `Customizable checkbox component`;
 	}
 }
-module.exports = new IgcButtonComponent();
+module.exports = new IgcCheckboxComponent();
