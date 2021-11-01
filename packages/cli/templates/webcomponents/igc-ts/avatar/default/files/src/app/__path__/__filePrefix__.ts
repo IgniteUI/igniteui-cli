@@ -6,10 +6,12 @@ import 'igniteui-webcomponents';
 export default class $(ClassName) extends LitElement {
   render() {
     return html`
-        <igc-button
-            size='large'>
-            Large button
-        </igc-button>
+    <igc-avatar
+    size="circle"
+    shape="large"
+    src="../../assets/avatar1.jpg"
+  >
+  </igc-avatar>
     `;
   }
 }
