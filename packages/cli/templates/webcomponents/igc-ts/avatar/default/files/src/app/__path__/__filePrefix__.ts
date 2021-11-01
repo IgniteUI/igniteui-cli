@@ -7,9 +7,10 @@ export default class $(ClassName) extends LitElement {
   render() {
     return html`
     <igc-avatar
-    size="circle"
-    shape="large"
-    src="../../assets/avatar1.jpg"
+    size="large"
+    shape="circle"
+    src="./src/assets/avatar1.jpg"
+    alt="My avatar"
   >
   </igc-avatar>
     `;
