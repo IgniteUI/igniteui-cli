@@ -6,10 +6,11 @@ import 'igniteui-webcomponents';
 export default class $(ClassName) extends LitElement {
   render() {
     return html`
-        <igc-button
-            size='large'>
-            Large button
-        </igc-button>
+    <igc-calendar
+      week-start="monday"
+    >
+      My Calendar
+    </igc-calendar>
     `;
   }
 }
