@@ -1,14 +1,14 @@
 import { BaseComponent } from "@igniteui/cli-core";
 
-class IgcButtonComponent extends BaseComponent {
+class IgcNavbarComponent extends BaseComponent {
 	/**
 	 *
 	 */
 	constructor() {
 		super(__dirname);
-		this.name  = "Button";
-		this.group = "Data Entry & Display";
-		this.description = `Customizable button component`;
+		this.name  = "Navbar";
+		this.group = "Menus";
+		this.description = `Customizable navbar component`;
 	}
 }
-module.exports = new IgcButtonComponent();
+module.exports = new IgcNavbarComponent();
