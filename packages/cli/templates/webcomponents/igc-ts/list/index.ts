@@ -6,9 +6,9 @@ class IgcButtonComponent extends BaseComponent {
 	 */
 	constructor() {
 		super(__dirname);
-		this.name  = "Button";
-		this.group = "Data Entry & Display";
-		this.description = `Customizable button component`;
+		this.name  = "List";
+		this.group = "Grids & Lists";
+		this.description = `Customizable list component`;
 	}
 }
 module.exports = new IgcButtonComponent();

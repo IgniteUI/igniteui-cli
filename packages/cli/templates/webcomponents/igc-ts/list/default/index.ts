@@ -1,19 +1,19 @@
 import { TypeScriptFileUpdate } from "@igniteui/cli-core";
 import { IgniteUIForWebComponentsTemplate } from "../../../../../lib/templates/IgniteUIForWebComponentsTemplate";
 
-class IgcBButtonTemplate extends IgniteUIForWebComponentsTemplate {
+class IgcListTemplate extends IgniteUIForWebComponentsTemplate {
 	constructor() {
 		super(__dirname);
-		this.components = ["Button"];
-		this.controlGroup = "Data Entry & Display";
+		this.components = ["List"];
+		this.controlGroup = "Grids & Lists";
 		this.listInComponentTemplates = true;
-		this.id = "button";
+		this.id = "list";
 		this.projectType = "igc-ts";
-		this.name = "Button";
-		this.description = "basic IgcButton";
+		this.name = "List";
+		this.description = "basic IgcList";
 	}
 	protected addClassDeclaration(mainModule: TypeScriptFileUpdate, projPath: string, name: string, modulePath: string) {
 		// not applicable with custom module
 	}
 }
-module.exports = new IgcBButtonTemplate();
+module.exports = new IgcListTemplate();
