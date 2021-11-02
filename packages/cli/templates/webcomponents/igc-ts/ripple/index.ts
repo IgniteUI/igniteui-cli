@@ -1,14 +1,14 @@
 import { BaseComponent } from "@igniteui/cli-core";
 
-class IgcButtonComponent extends BaseComponent {
+class IgcRippleComponent extends BaseComponent {
 	/**
 	 *
 	 */
 	constructor() {
 		super(__dirname);
-		this.name  = "Button";
-		this.group = "Data Entry & Display";
-		this.description = `Customizable button component`;
+		this.name  = "Ripple";
+		this.group = "Interactions";
+		this.description = `Customizable ripple component`;
 	}
 }
-module.exports = new IgcButtonComponent();
+module.exports = new IgcRippleComponent();
