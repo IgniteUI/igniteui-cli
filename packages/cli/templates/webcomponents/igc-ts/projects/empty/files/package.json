@@ -20,7 +20,7 @@
   "dependencies": {
     "@open-wc/testing": "^2.5.33",
     "@vaadin/router": "^1.7.4",
-    "igniteui-webcomponents": "1.0.0-alpha",
+    "igniteui-webcomponents": "1.0.0-beta",
     "lit": "^2.0.2"
   },
   "devDependencies": {
