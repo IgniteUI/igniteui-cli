@@ -88,7 +88,7 @@ export class TypeScriptFileUpdate {
 	) {
 		let className: string;
 		const relativePath: string = "./app/" + filePath + "/" + filePath;
-		className = "lit-" + filePath;
+		className = "app-" + filePath;
 		this.requestImport(relativePath);
 
 		// https://github.com/Microsoft/TypeScript/issues/14419#issuecomment-307256171

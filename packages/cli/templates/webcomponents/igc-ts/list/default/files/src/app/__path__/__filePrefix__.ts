@@ -33,4 +33,4 @@ export default class $(ClassName) extends HTMLElement {
   }
 }
 
-customElements.define('lit-$(path)', $(ClassName));
+customElements.define('app-$(path)', $(ClassName));
