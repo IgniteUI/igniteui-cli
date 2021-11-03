@@ -1,11 +1,8 @@
-import { html, LitElement } from 'lit';
-import { customElement } from 'lit/decorators.js';
 import 'igniteui-webcomponents';
 
-@customElement('lit-$(path)')
-export default class $(ClassName) extends LitElement {
-  render() {
-    return html`
+export default class $(ClassName) extends HTMLElement {
+  connectedCallback() {
+    this.innerHTML = `
     <igc-checkbox
       checked="true"
     >
@@ -14,3 +11,5 @@ export default class $(ClassName) extends LitElement {
     `;
   }
 }
+
+customElements.define('lit-$(path)', $(ClassName));

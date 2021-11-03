@@ -1,13 +1,12 @@
-import { html, LitElement } from 'lit';
-import { customElement } from 'lit/decorators.js';
 import 'igniteui-webcomponents';
 
-@customElement('lit-$(path)')
-export default class $(ClassName) extends LitElement {
-  render() {
-    return html`
-      <igc-icon>
+export default class $(ClassName) extends HTMLElement {
+  connectedCallback() {
+    this.innerHTML = `
+      <igc-icon name="github" slot="suffix">
       </igc-icon>
     `;
   }
 }
+
+customElements.define('lit-$(path)', $(ClassName));

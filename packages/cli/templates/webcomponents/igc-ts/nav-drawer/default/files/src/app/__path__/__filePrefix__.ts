@@ -1,32 +1,8 @@
-import { html, LitElement } from 'lit';
-import { customElement } from 'lit/decorators.js';
 import 'igniteui-webcomponents';
 
-@customElement('lit-$(path)')
-export default class $(ClassName) extends LitElement {
-  const handleOpen = () => {
-    const drawer = document.querySelector(
-      'igc-nav-drawer'
-    ) as IgcNavDrawerComponent;
-    drawer?.show();
-  };
-
-  const handleClose = () => {
-    const drawer = document.querySelector(
-      'igc-nav-drawer'
-    ) as IgcNavDrawerComponent;
-    drawer?.hide();
-  };
-
-  const handleToggle = () => {
-    const drawer = document.querySelector(
-      'igc-nav-drawer'
-    ) as IgcNavDrawerComponent;
-    drawer?.toggle();
-  };
-
-  render() {
-    return html`
+export default class $(ClassName) extends HTMLElement {
+  connectedCallback() {
+    this.innerHTML = `
     <div style="display: flex;">
       <igc-nav-drawer>
         <igc-nav-drawer-header-item>Sample Drawer</igc-nav-drawer-header-item>
@@ -47,13 +23,9 @@ export default class $(ClassName) extends LitElement {
           </igc-nav-drawer-item>
         </div>
       </igc-nav-drawer>
-      <div>
-        <p>Sample page content</p>
-        <igc-button @click="${handleOpen}">Open</igc-button>
-        <igc-button @click="${handleClose}">Close</igc-button>
-        <igc-button @click="${handleToggle}">Toggle</igc-button>
-      </div>
     </div>
     `;
   }
 }
+
+customElements.define('lit-$(path)', $(ClassName));
