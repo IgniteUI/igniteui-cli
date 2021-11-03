@@ -5,27 +5,27 @@ import 'igniteui-webcomponents';
 @customElement('lit-$(path)')
 export default class $(ClassName) extends LitElement {
 
-  const employeeData = [
-    {
-      name: 'John Smith',
-      position: 'Software Developer',
-      avatar:
-        'https://www.infragistics.com/angular-demos/assets/images/men/1.jpg',
-    },
-    {
-      name: 'Abraham Lee',
-      position: 'Team Lead',
-      avatar:
-        'https://www.infragistics.com/angular-demos/assets/images/men/2.jpg',
-    },
-    {
-      name: 'Jonathan Deberkow',
-      position: 'UX Designer',
-      avatar:
-        'https://www.infragistics.com/angular-demos/assets/images/men/3.jpg',
-    },
-  ];
   render() {
+    const employeeData = [
+      {
+        name: 'John Smith',
+        position: 'Software Developer',
+        avatar:
+          'https://www.infragistics.com/angular-demos/assets/images/men/1.jpg',
+      },
+      {
+        name: 'Abraham Lee',
+        position: 'Team Lead',
+        avatar:
+          'https://www.infragistics.com/angular-demos/assets/images/men/2.jpg',
+      },
+      {
+        name: 'Jonathan Deberkow',
+        position: 'UX Designer',
+        avatar:
+          'https://www.infragistics.com/angular-demos/assets/images/men/3.jpg',
+      },
+    ];
     return html`
     <igc-list>
       <igc-list-header>

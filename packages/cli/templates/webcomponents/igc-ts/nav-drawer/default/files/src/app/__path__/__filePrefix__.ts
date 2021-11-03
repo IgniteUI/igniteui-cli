@@ -1,31 +1,31 @@
 import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import 'igniteui-webcomponents';
-
+import { IgcNavDrawerComponent } from 'igniteui-webcomponents';
 @customElement('lit-$(path)')
 export default class $(ClassName) extends LitElement {
-  const handleOpen = () => {
-    const drawer = document.querySelector(
-      'igc-nav-drawer'
-    ) as IgcNavDrawerComponent;
-    drawer?.show();
-  };
-
-  const handleClose = () => {
-    const drawer = document.querySelector(
-      'igc-nav-drawer'
-    ) as IgcNavDrawerComponent;
-    drawer?.hide();
-  };
-
-  const handleToggle = () => {
-    const drawer = document.querySelector(
-      'igc-nav-drawer'
-    ) as IgcNavDrawerComponent;
-    drawer?.toggle();
-  };
 
   render() {
+    const handleOpen = () => {
+      const drawer = document.querySelector(
+        'igc-nav-drawer'
+      ) as IgcNavDrawerComponent;
+      drawer?.show();
+    };
+
+    const handleClose = () => {
+      const drawer = document.querySelector(
+        'igc-nav-drawer'
+      ) as IgcNavDrawerComponent;
+      drawer?.hide();
+    };
+
+    const handleToggle = () => {
+      const drawer = document.querySelector(
+        'igc-nav-drawer'
+      ) as IgcNavDrawerComponent;
+      drawer?.toggle();
+    };
     return html`
     <div style="display: flex;">
       <igc-nav-drawer>
