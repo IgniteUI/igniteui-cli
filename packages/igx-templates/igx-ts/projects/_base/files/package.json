@@ -25,7 +25,6 @@
     "minireset.css": "~0.0.4",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
-    "web-animations-js": "^2.3.2",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
