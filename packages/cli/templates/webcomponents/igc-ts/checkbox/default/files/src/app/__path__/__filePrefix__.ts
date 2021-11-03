@@ -7,7 +7,7 @@ export default class $(ClassName) extends LitElement {
   render() {
     return html`
     <igc-checkbox
-      checked=${checked}
+      checked="true"
     >
       Label
     </igc-checkbox>
