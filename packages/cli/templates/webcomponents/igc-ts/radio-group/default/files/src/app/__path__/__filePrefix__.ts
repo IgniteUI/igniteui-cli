@@ -3,6 +3,9 @@ import 'igniteui-webcomponents';
 export default class $(ClassName) extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
+      <div class="description">
+        <p>igc-radio-group component</p>
+      </div>
       <igc-radio-group>
         <igc-radio name="fruit" value="banana">
           Banana
