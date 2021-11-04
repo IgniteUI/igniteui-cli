@@ -9,7 +9,7 @@ class IgcIconButtonTemplate extends IgniteUIForWebComponentsTemplate {
 		this.listInComponentTemplates = true;
 		this.id = "Icon button";
 		this.projectType = "igc-ts";
-		this.name = "IconButton";
+		this.name = "Icon Button";
 		this.description = "basic IgcIconButton";
 	}
 	protected addClassDeclaration(mainModule: TypeScriptFileUpdate, projPath: string, name: string, modulePath: string) {
