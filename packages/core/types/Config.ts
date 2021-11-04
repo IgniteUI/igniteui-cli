@@ -1,7 +1,8 @@
 export enum FrameworkId {
 	angular = "angular",
 	react = "react",
-	jquery = "jquery"
+	jquery = "jquery",
+	webComponents = "web components"
 }
 
 export interface StepFrameworkConfig {
@@ -71,6 +72,7 @@ export interface Config {
 		[FrameworkId.angular]: StepFrameworkConfig;
 		[FrameworkId.react]: StepFrameworkConfig;
 		[FrameworkId.jquery]: StepFrameworkConfig;
+		[FrameworkId.webComponents]: StepFrameworkConfig;
 	};
 
 	/** An array of paths to read custom templates from */
