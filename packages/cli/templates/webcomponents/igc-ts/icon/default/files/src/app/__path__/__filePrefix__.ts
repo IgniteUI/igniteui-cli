@@ -17,6 +17,9 @@ registerIcon(
 export default class Icon extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
+      <div class="description">
+        <p>igc-icon component</p>
+      </div>
       <div>
         <label>Search icon: </label>
         <igc-icon

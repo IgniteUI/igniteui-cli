@@ -3,6 +3,9 @@ import 'igniteui-webcomponents';
 export default class $(ClassName) extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
+    <div class="description">
+      <p>igc-card component</p>
+    </div>
     <igc-card>
     <igc-card-media style="max-height: 194px">
       <img

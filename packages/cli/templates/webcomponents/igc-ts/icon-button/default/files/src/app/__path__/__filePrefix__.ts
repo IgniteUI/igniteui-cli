@@ -12,7 +12,10 @@ registerIcon(
 export default class IconButton extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
-    <label>Contact Infragistics support: </label>
+      <div class="description">
+        <p>igc-icon-button component</p>
+      </div>
+      <label>Contact Infragistics support: </label>
       <igc-icon-button
         name="build"
         collection="material"
@@ -20,7 +23,7 @@ export default class IconButton extends HTMLElement {
         target="_blank"
         variant="flat"
         size="large"
-        >
+      >
       </igc-icon-button>
     `;
   }
