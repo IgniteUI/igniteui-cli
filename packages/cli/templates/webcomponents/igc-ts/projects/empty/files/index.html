@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en-GB">
+
+<head>
+  <meta charset="utf-8">
+  <base href="/">
+  <link rel="stylesheet" href="./node_modules/igniteui-webcomponents/src/styles/themes/material.css">
+  <style>
+    body {
+      background: #fafafa;
+    }
+
+    :host {
+      display: block;
+      padding: 25px;
+      color: var(--test-component-test-text-color, #000);
+    }
+
+    #outlet {
+      width: 100%;
+      display: flex;
+      text-align: center;
+      flex-flow: column nowrap;
+      justify-content: stretch;
+      align-items: center;
+      padding: 40px 24px 40px 24px;
+      overflow: inherit;
+    }
+  </style>
+</head>
+
+<body>
+  <app-navigation></app-navigation>
+  <main id="outlet"></main>
+
+  <script type="module" src="./dist/src/index.js"></script>
+  <script type="module">
+    import './dist/src/app.js';
+  </script>
+</body>
+
+</html>

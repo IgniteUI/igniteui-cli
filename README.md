@@ -105,6 +105,12 @@ To create a new project with Ignite UI for React use [ig new](https://github.com
 ```bash
 ig new "IG Project" --framework=react --type=igr-es6
 ```
+#### Generate Ignite UI for Web Components project
+
+To create a new project with Ignite UI for Web Components use [ig new](https://github.com/IgniteUI/igniteui-cli/wiki/New#creating-ignite-ui-for-web-components-applications) by specifying `webcomponents` as framework:
+```bash
+ig new "IG Project" --framework=webcomponents
+```
 
 #### Adding components
 Once you have created a project, at any point you can add additional component templates using [ig add](https://github.com/IgniteUI/igniteui-cli/wiki/Add). Running the command without parameters will guide you through the available templates:
