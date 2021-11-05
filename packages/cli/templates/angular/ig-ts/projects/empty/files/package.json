@@ -20,7 +20,7 @@
     "@angular/router": "~13.0.0",
     "jquery": ">=1.9.1",
     "jquery-ui": ">=1.10.5",
-    "igniteui-angular-wrappers": "^12.0.0",
+    "igniteui-angular-wrappers": "^13.0.1",
     "ignite-ui": "~20.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
