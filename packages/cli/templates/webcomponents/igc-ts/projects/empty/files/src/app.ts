@@ -13,7 +13,7 @@ export class App extends HTMLElement {
         ${routes.filter((element, index) => index < routes.length - 1).map(i => this.innerHTML = `
           <igc-nav-drawer-item>
             <span slot="content">
-              <a href="${i.path}">${i.name}</a>
+              <a style="text-decoration: none;" href="${i.path}">${i.name}<igc-ripple></igc-ripple></a>
             </span>
           </igc-nav-drawer-item>
         `)}
