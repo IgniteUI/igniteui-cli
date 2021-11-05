@@ -6,7 +6,7 @@ export default class $(ClassName) extends HTMLElement {
       <div class="description">
         <p>igc-navbar component</p>
       </div>
-      <igc-navbar style="height:30px">
+      <igc-navbar style="height:30px; width:1300px">
         <igc-icon slot="start" name="home"></igc-icon>
         <h2>Title</h2>
         <igc-icon slot="end" name="search"></igc-icon>
