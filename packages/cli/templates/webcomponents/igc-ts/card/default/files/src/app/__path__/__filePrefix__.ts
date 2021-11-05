@@ -6,6 +6,11 @@ export default class $(ClassName) extends HTMLElement {
     <div class="description">
       <p>igc-card component</p>
     </div>
+    <style>
+      igc-card {
+        width: 400px
+      }
+    </style>
     <igc-card>
     <igc-card-media style="max-height: 194px">
       <img
