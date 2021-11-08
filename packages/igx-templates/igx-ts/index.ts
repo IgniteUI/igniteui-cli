@@ -1,4 +1,5 @@
 import { BaseProjectLibrary } from "@igniteui/cli-core";
+import * as groups from "./groups.json";
 
 class IgxProjectLibrary extends BaseProjectLibrary {
 	/**
@@ -10,7 +11,6 @@ class IgxProjectLibrary extends BaseProjectLibrary {
 		this.projectType = "igx-ts";
 		this.themes = ["Custom", "Default"];
 
-		const groups = require("./groups.json");
 		// tslint:disable-next-line:forin
 		for (const key in groups) {
 			this.groupDescriptions.set(key, groups[key]);
