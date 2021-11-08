@@ -1,4 +1,5 @@
 import { BaseProjectLibrary } from "@igniteui/cli-core";
+import * as groups from "./groups.json";
 
 // tslint:disable-next-line:class-name
 class jQueryJSProjectLibrary extends BaseProjectLibrary {
@@ -13,7 +14,6 @@ class jQueryJSProjectLibrary extends BaseProjectLibrary {
 		this._projectsPath = "projects";
 		this._customTemplatesPath = "custom-templates";
 
-		const groups = require("./groups.json");
 		// tslint:disable-next-line:forin
 		for (const key in groups) {
 			this.groupDescriptions.set(key, groups[key]);

@@ -1,4 +1,5 @@
 import { BaseProjectLibrary } from "@igniteui/cli-core";
+import * as groups from "../../jquery/js/groups.json";
 
 class AngularFramework extends BaseProjectLibrary {
 	constructor() {
@@ -7,7 +8,6 @@ class AngularFramework extends BaseProjectLibrary {
 		this.projectType = "ig-ts";
 		this.themes = ["infragistics"];
 
-		const groups = require("../../jquery/js/groups.json");
 		// tslint:disable-next-line:forin
 		for (const key in groups) {
 			this.groupDescriptions.set(key, groups[key]);
