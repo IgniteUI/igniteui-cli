@@ -1,7 +1,12 @@
-import "igniteui-webcomponents";
+import {
+  defineComponents,
+  IgcIconButtonComponent,
+} from 'igniteui-webcomponents';
 import {
   registerIcon,
-} from "igniteui-webcomponents/src/components/icon/icon.registry";
+} from "igniteui-webcomponents/components/icon/icon.registry";
+
+defineComponents(IgcIconButtonComponent);
 
 registerIcon(
   "build",

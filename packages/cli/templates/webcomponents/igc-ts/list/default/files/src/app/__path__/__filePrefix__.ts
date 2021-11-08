@@ -1,4 +1,15 @@
-import 'igniteui-webcomponents';
+import {
+  defineComponents,
+  IgcListComponent,
+  IgcListHeaderComponent,
+  IgcListItemComponent,
+} from 'igniteui-webcomponents';
+
+defineComponents(
+  IgcListComponent,
+  IgcListHeaderComponent,
+  IgcListItemComponent
+);
 
 export default class $(ClassName) extends HTMLElement {
   connectedCallback() {

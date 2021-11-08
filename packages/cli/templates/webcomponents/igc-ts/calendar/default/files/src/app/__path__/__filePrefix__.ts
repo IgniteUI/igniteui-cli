@@ -1,4 +1,9 @@
-import 'igniteui-webcomponents';
+import {
+  defineComponents,
+  IgcCalendarComponent,
+} from 'igniteui-webcomponents';
+
+defineComponents(IgcCalendarComponent);
 
 export default class $(ClassName) extends HTMLElement {
   connectedCallback() {

@@ -1,7 +1,14 @@
-import 'igniteui-webcomponents';
+import {
+  defineComponents,
+  IgcNavDrawerComponent,
+  IgcNavDrawerItemComponent,
+  IgcNavDrawerHeaderItemComponent,
+} from 'igniteui-webcomponents';
 import { routes } from './index.js';
 import './app/home/home.component';
 import './app/not-found/not-found.component';
+
+defineComponents(IgcNavDrawerComponent, IgcNavDrawerItemComponent, IgcNavDrawerHeaderItemComponent);
 
 export class App extends HTMLElement {
   connectedCallback() {

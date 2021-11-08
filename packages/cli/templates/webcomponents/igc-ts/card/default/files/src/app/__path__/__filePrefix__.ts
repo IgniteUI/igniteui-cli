@@ -1,4 +1,19 @@
-import 'igniteui-webcomponents';
+import {
+  defineComponents,
+  IgcCardActionsComponent,
+  IgcCardContentComponent,
+  IgcCardHeaderComponent,
+  IgcCardMediaComponent,
+  IgcCardComponent,
+} from 'igniteui-webcomponents';
+
+defineComponents(
+  IgcCardComponent,
+  IgcCardActionsComponent,
+  IgcCardContentComponent,
+  IgcCardHeaderComponent,
+  IgcCardMediaComponent
+);
 
 export default class $(ClassName) extends HTMLElement {
   connectedCallback() {
