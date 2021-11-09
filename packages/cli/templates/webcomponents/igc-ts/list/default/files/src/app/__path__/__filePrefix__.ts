@@ -1,11 +1,23 @@
-import 'igniteui-webcomponents';
+import {
+  defineComponents,
+  IgcAvatarComponent,
+  IgcButtonComponent,
+  IgcListComponent,
+  IgcListHeaderComponent,
+  IgcListItemComponent,
+} from 'igniteui-webcomponents';
+
+defineComponents(
+  IgcAvatarComponent,
+  IgcButtonComponent,
+  IgcListComponent,
+  IgcListHeaderComponent,
+  IgcListItemComponent
+);
 
 export default class $(ClassName) extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
-      <div class="description">
-        <p>igc-list component</p>
-      </div>
       <igc-list>
         <igc-list-header>
           <h1>Job Positions</h1>
