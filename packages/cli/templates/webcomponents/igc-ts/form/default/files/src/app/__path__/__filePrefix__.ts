@@ -10,9 +10,6 @@ defineComponents(IgcFormComponent, IgcRadioComponent, IgcRadioGroupComponent);
 export default class $(ClassName) extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
-      <div class="description">
-        <p>igc-form component</p>
-      </div>
       <style>
         #form {
           flex-grow: 1;
