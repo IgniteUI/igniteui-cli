@@ -19,7 +19,8 @@
 		"inlineSources": true,
 		"rootDir": "./",
 		"declaration": true,
-		"incremental": true
+		"incremental": true,
+    "resolveJsonModule": true
 	},
 	"exclude": [
 		"dist"

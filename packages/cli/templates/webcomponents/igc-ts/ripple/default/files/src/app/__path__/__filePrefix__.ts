@@ -1,4 +1,9 @@
-import 'igniteui-webcomponents';
+import {
+  defineComponents,
+  IgcRippleComponent,
+} from 'igniteui-webcomponents';
+
+defineComponents(IgcRippleComponent);
 
 export default class $(ClassName) extends HTMLElement {
   connectedCallback() {

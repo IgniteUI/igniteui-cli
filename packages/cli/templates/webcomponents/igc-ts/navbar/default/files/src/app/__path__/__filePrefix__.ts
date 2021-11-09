@@ -1,4 +1,9 @@
-import 'igniteui-webcomponents';
+import {
+  defineComponents,
+  IgcNavbarComponent,
+} from 'igniteui-webcomponents';
+
+defineComponents(IgcNavbarComponent);
 
 export default class $(ClassName) extends HTMLElement {
   connectedCallback() {

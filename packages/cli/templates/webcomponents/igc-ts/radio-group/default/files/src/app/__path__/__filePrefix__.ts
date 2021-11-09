@@ -1,4 +1,10 @@
-import 'igniteui-webcomponents';
+import {
+  defineComponents,
+  IgcRadioComponent,
+  IgcRadioGroupComponent,
+} from 'igniteui-webcomponents';
+
+defineComponents(IgcRadioComponent, IgcRadioGroupComponent);
 
 export default class $(ClassName) extends HTMLElement {
   connectedCallback() {

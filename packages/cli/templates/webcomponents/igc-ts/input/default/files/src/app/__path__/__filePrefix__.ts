@@ -1,4 +1,9 @@
-import 'igniteui-webcomponents';
+import {
+  defineComponents,
+  IgcInputComponent,
+} from 'igniteui-webcomponents';
+
+defineComponents(IgcInputComponent);
 
 export default class $(ClassName) extends HTMLElement {
   connectedCallback() {
