@@ -17,8 +17,7 @@
 			"igniteui-cli": [
 				"./packages/cli"
 			]
-		},
-		"resolveJsonModule": true
+		}
 	},
 	"exclude": [
 		"output",

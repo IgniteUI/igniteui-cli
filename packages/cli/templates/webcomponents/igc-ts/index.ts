@@ -1,5 +1,4 @@
 import { BaseProjectLibrary } from "@igniteui/cli-core";
-import * as groups from "./groups.json";
 
 class IgcWebComponentsProjectLibrary extends BaseProjectLibrary {
 	constructor() {
@@ -7,9 +6,12 @@ class IgcWebComponentsProjectLibrary extends BaseProjectLibrary {
 		this.name = "Ignite UI for Web Components";
 		this.projectType = "igc-ts";
 		this.themes = ["default"];
-		// tslint:disable-next-line:forin
+
+		const groups = require("./groups.json");
 		for (const key in groups) {
-			this.groupDescriptions.set(key, groups[key]);
+			if (groups.hasOwnProperty(key)) {
+				this.groupDescriptions.set(key, groups[key]);
+			}
 		}
 	}
 }

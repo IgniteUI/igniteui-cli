@@ -1,5 +1,4 @@
 import { BaseProjectLibrary } from "@igniteui/cli-core";
-import * as groups from "./groups.json";
 
 class IgrReactProjectLibrary extends BaseProjectLibrary {
 	constructor() {
@@ -8,6 +7,7 @@ class IgrReactProjectLibrary extends BaseProjectLibrary {
 		this.projectType = "igr-es6";
 		this.themes = ["default"];
 
+		const groups = require("./groups.json");
 		// tslint:disable-next-line:forin
 		for (const key in groups) {
 			this.groupDescriptions.set(key, groups[key]);
