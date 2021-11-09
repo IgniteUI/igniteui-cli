@@ -23,8 +23,7 @@
     "types": [
       "jasmine",
       "node"
-    ],
-	"resolveJsonModule": true
+    ]
   },
   "include": [
     "src/**/*"

@@ -1,5 +1,4 @@
 import { BaseProjectLibrary } from "@igniteui/cli-core";
-import * as groups from "../../jquery/js/groups.json";
 
 class ReactProjectLibrary extends BaseProjectLibrary {
 	/**
@@ -11,6 +10,7 @@ class ReactProjectLibrary extends BaseProjectLibrary {
 		this.projectType = "es6";
 		this.themes = ["default"];
 
+		const groups = require("../../jquery/js/groups.json");
 		// tslint:disable-next-line:forin
 		for (const key in groups) {
 			this.groupDescriptions.set(key, groups[key]);
