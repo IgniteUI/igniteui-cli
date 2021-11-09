@@ -14,6 +14,12 @@ defineComponents(IgcNavDrawerComponent, IgcNavDrawerItemComponent, IgcNavDrawerH
 export class App extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
+    <style>
+      igc-nav-drawer-header-item {
+        text-align: center;
+        font-weight: bold;
+      }
+    </style>
     <div id="navigation-outlet">
       <igc-nav-drawer open=true>
         <igc-nav-drawer-header-item>Ignite UI CLI</igc-nav-drawer-header-item>

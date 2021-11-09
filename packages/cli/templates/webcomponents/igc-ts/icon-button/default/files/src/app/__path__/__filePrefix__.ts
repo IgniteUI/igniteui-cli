@@ -17,9 +17,6 @@ registerIcon(
 export default class IconButton extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
-      <div class="description">
-        <p>igc-icon-button component</p>
-      </div>
       <label>Contact Infragistics support: </label>
       <igc-icon-button
         name="build"

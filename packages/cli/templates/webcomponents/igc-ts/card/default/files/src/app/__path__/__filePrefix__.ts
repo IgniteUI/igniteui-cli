@@ -18,9 +18,6 @@ defineComponents(
 export default class $(ClassName) extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
-    <div class="description">
-      <p>igc-card component</p>
-    </div>
     <style>
       igc-card {
         width: 400px
