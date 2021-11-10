@@ -1,7 +1,12 @@
-import "igniteui-webcomponents";
+import {
+  defineComponents,
+  IgcIconButtonComponent,
+} from 'igniteui-webcomponents';
 import {
   registerIcon,
-} from "igniteui-webcomponents/src/components/icon/icon.registry";
+} from "igniteui-webcomponents/components/icon/icon.registry";
+
+defineComponents(IgcIconButtonComponent);
 
 registerIcon(
   "build",
@@ -12,9 +17,6 @@ registerIcon(
 export default class IconButton extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
-      <div class="description">
-        <p>igc-icon-button component</p>
-      </div>
       <label>Contact Infragistics support: </label>
       <igc-icon-button
         name="build"

@@ -1,6 +1,6 @@
 {
   "name": "@igniteui/angular-schematics",
-  "version": "12.2.830-beta.1",
+  "version": "12.2.830-beta.7",
   "description": "Ignite UI for Angular Schematics for ng new and ng generate",
   "repository": {
 	"type": "git",
