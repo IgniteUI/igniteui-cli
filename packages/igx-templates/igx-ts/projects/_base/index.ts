@@ -23,7 +23,7 @@ export class BaseIgxProject implements ProjectTemplate {
 
 	private CUSTOM_THEME
 		= `/* See: https://www.infragistics.com/products/ignite-ui-angular/angular/components/themes/sass/index */
-@import "~igniteui-angular/lib/core/styles/themes/index";
+@import "~igniteui-angular/theming";
 
 $primary: #731963 !default;
 $secondary: #ce5712 !default;
