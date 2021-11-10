@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { <%=ClassName%>Component } from './<%=filePrefix%>.component';
 import { IgxStepperModule, IgxButtonModule, IgxButtonGroupModule } from '<%=igxPackage%>';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('<%=ClassName%>Component', () => {
   let component: <%=ClassName%>Component;
@@ -9,7 +10,7 @@ describe('<%=ClassName%>Component', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [<%=ClassName%>Component],
-      imports: [ IgxStepperModule, IgxButtonModule, IgxButtonGroupModule ]
+      imports: [ NoopAnimationsModule, IgxStepperModule, IgxButtonModule, IgxButtonGroupModule ]
     })
       .compileComponents();
   }));
