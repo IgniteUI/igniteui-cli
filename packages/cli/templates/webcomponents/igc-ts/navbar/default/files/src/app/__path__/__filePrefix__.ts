@@ -1,16 +1,30 @@
 import {
   defineComponents,
+  IgcIconComponent,
   IgcNavbarComponent,
 } from 'igniteui-webcomponents';
+import {
+  registerIcon,
+} from "igniteui-webcomponents/components/icon/icon.registry";
 
-defineComponents(IgcNavbarComponent);
+defineComponents(IgcIconComponent, IgcNavbarComponent);
+
+registerIcon(
+  'home',
+  'https://unpkg.com/material-design-icons@3.0.1/action/svg/production/ic_home_24px.svg'
+);
+
+registerIcon(
+  'search',
+  'https://unpkg.com/material-design-icons@3.0.1/action/svg/production/ic_search_24px.svg'
+);
 
 export default class $(ClassName) extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
-      <igc-navbar style="height:30px; width:1300px">
+      <igc-navbar style="height:30px; width:800px">
         <igc-icon slot="start" name="home"></igc-icon>
-        <h2>Title</h2>
+        <h2>Home</h2>
         <igc-icon slot="end" name="search"></igc-icon>
       </igc-navbar>
     `;
