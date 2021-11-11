@@ -1,12 +1,12 @@
 {
   "name": "@igniteui/angular-schematics",
-  "version": "12.2.830-rc.0",
+  "version": "13.0.900-beta.0",
   "description": "Ignite UI for Angular Schematics for ng new and ng generate",
   "repository": {
-	"type": "git",
-	"url": "https://github.com/IgniteUI/igniteui-cli.git",
-	"directory": "packages/ng-schematics"
-},
+    "type": "git",
+    "url": "https://github.com/IgniteUI/igniteui-cli.git",
+    "directory": "packages/ng-schematics"
+  },
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "test": "npm run build && jasmine src/**/*_spec.js"
@@ -20,8 +20,8 @@
   "dependencies": {
     "@angular-devkit/core": "~13.0.0",
     "@angular-devkit/schematics": "~13.0.0",
-    "@igniteui/angular-templates": "~12.2.830-beta.1",
-    "@igniteui/cli-core": "~8.3.0-beta.1",
+    "@igniteui/angular-templates": "~13.0.900-beta.0",
+    "@igniteui/cli-core": "~9.0.0-beta.0",
     "@schematics/angular": "~13.0.0",
     "rxjs": "^6.6.3"
   },
