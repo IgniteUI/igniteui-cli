@@ -46,4 +46,4 @@ export default class Icon extends HTMLElement {
   }
 }
 
-customElements.define('app-icon', Icon);
+customElements.define('app-$(path)', $(ClassName));
