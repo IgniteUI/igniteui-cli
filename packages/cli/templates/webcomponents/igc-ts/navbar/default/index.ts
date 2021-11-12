@@ -7,7 +7,7 @@ class IgcNavbarTemplate extends IgniteUIForWebComponentsTemplate {
 		this.components = ["Navbar"];
 		this.controlGroup = "Menus";
 		this.listInComponentTemplates = true;
-		this.id = "button";
+		this.id = "navbar";
 		this.projectType = "igc-ts";
 		this.name = "Navbar";
 		this.description = "basic IgcNavbar";
