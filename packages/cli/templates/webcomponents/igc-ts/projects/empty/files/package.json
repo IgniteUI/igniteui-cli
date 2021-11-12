@@ -30,6 +30,7 @@
     "@typescript-eslint/parser": "^4.30.0",
     "@web/dev-server": "^0.1.22",
     "@web/test-runner": "next",
+    "igniteui-cli": "~<%=cliVersion%>",
     "eslint": "^7.32.0",
     "tslib": "^2.3.1",
     "typescript": "^4.4.2"
