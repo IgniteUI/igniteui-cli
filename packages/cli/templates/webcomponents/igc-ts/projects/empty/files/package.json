@@ -21,6 +21,10 @@
     "@open-wc/testing": "^2.5.33",
     "@vaadin/router": "^1.7.4",
     "igniteui-webcomponents": "1.0.0-beta.2",
+    "igniteui-webcomponents-grids": "~1.3.3",
+    "igniteui-webcomponents-core": "~1.3.3",
+    "igniteui-webcomponents-layouts": "~1.3.3",
+    "igniteui-webcomponents-inputs": "~1.3.3",
     "@igniteui/material-icons-extended": "^2.10.0",
     "lit": "^2.0.2"
   },
