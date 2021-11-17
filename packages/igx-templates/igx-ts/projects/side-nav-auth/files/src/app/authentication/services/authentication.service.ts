@@ -33,7 +33,7 @@ export class AuthenticationService {
     try {
       const data = await this.http.post(endpoint, userData).toPromise() as string;
       user = parseUser(data);
-    } catch (e) {
+    } catch (e: any) {
       return { error: e.message };
     }
 

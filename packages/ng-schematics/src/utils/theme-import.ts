@@ -42,7 +42,7 @@ function importDefaultThemeSass(tree: Tree, filePath: string) {
 	const igxPackage = resolveIgxPackage(NPM_PACKAGE);
 	const sassImports =
 	`
-@import "~${igxPackage}/lib/core/styles/themes/index";
+@import "~${igxPackage}/theming";
 // Uncomment the following lines if you want to add a custom palette:
 // $primary: #731963 !default;
 // $secondary: #ce5712 !default;

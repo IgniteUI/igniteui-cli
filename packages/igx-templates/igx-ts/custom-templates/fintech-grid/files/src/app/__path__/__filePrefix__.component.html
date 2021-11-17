@@ -35,7 +35,7 @@
     <span *ngIf="buttonSelected === 0">Feeding {{volume}} records every {{frequency / 1000}} sec.
       ~{{volume/5}} records updated.</span>
   </div>
-  <igx-grid #grid1 igxPreventDocumentScroll (rowSelected)="rowSelectionChanged($event)" [data]="data"
+  <igx-grid #grid1 igxPreventDocumentScroll (rowSelectionChanging)="rowSelectionChanging($event)" [data]="data"
     width="100%" height="90%" [autoGenerate]="false" displayDensity="compact" primaryKey="ID" hiddenColumnsText="Hidden"
     [rowSelection]="selectionMode" [allowFiltering]="true" filterMode="excelStyleFilter"
     (keydown)="gridKeydown($event)" (gridKeydown)="customKeydown($event)">

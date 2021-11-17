@@ -1,7 +1,12 @@
 {
   "name": "@igniteui/cli-core",
-  "version": "8.3.0-rc.0",
+  "version": "9.0.0-beta.0",
   "description": "Base types and functionality for Ignite UI CLI",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IgniteUI/igniteui-cli.git",
+    "directory": "packages/core"
+  },
   "main": "index.js",
   "typings": "index.d.ts",
   "author": "Infragistics",
@@ -11,9 +16,9 @@
     "glob": "^7.1.2",
     "inquirer": "^6.2.2",
     "through2": "^2.0.3",
-    "typescript": "^4.3.2"
+    "typescript": "^4.4.4"
   },
   "devDependencies": {
-    "@angular-devkit/schematics": "~12.2.0"
+    "@angular-devkit/schematics": "~13.0.0"
   }
 }

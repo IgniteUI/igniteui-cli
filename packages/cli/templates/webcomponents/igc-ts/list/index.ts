@@ -7,7 +7,7 @@ class IgcListComponent extends BaseComponent {
 	constructor() {
 		super(__dirname);
 		this.name  = "List";
-		this.group = "Lists";
+		this.group = "Grids & Lists";
 		this.description = `Customizable list component`;
 	}
 }

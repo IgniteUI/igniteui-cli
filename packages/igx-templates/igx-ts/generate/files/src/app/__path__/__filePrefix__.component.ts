@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './<%=filePrefix%>.component.html',
   styleUrls: ['./<%=filePrefix%>.component.scss'],
 })
-export class <%=ClassName%> Component {
+export class <%=ClassName%>Component {
   title = '<%=name%>';
   constructor() { }
 }
