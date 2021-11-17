@@ -26,7 +26,7 @@ describe("Update 4.2.3", () => {
 	it("should add Awesome Grid extra paginator style", async done => {
 		const stylesFile = "/src/app/awesome-grid/awesome-grid.component.scss";
 		appTree.create(stylesFile,
-`@import '~igniteui-angular/lib/core/styles/themes/index';
+`@import '~igniteui-angular/theming';
 
 :host ::ng-deep {
 
@@ -46,7 +46,7 @@ describe("Update 4.2.3", () => {
 		await schematicRunner.runSchematicAsync("migration-04", {}, appTree).toPromise();
 		expect(appTree.readContent(stylesFile).replace(/\r\n/g, "\n"))
 			.toEqual(
-`@import '~igniteui-angular/lib/core/styles/themes/index';
+`@import '~igniteui-angular/theming';
 
 :host ::ng-deep {
 

@@ -1,0 +1,39 @@
+<p>igx-stepper component sample.</p>
+<p>You can read more about configuring the igx-stepper component in the
+  <a href="https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/src/lib/stepper/README.md"
+    target="_blank">README</a> or the
+  <a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/stepper" target="_blank">official
+    documentation</a>.
+</p>
+<div class="sample-split">
+  <igx-buttongroup [values]="stepperOrientations" (selected)="toggleOrientation($event)">
+  </igx-buttongroup>
+</div>
+<igx-stepper #stepper [orientation]="orientation">
+  <igx-step>
+    <span igxStepTitle>Order</span>
+    <div igxStepContent>
+      <div class="sample-step-actions">
+        <button igxButton="raised" (click)="stepper.next()">NEXT</button>
+      </div>
+    </div>
+  </igx-step>
+  <igx-step>
+    <span igxStepTitle>Payment</span>
+    <div igxStepContent>
+      <div class="sample-step-actions">
+        <button igxButton="raised" (click)="stepper.prev()">PREVIOUS</button>
+        <button igxButton="raised" (click)="stepper.next()">NEXT</button>
+      </div>
+    </div>
+  </igx-step>
+  <igx-step>
+    <span igxStepTitle>Confirmation</span>
+    <div igxStepContent>
+      <div class="sample-step-actions">
+        <button igxButton="raised" (click)="stepper.prev()">PREVIOUS</button>
+        <button igxButton="raised" (click)="stepper.reset()">RESET</button>
+      </div>
+    </div>
+  </igx-step>
+</igx-stepper>

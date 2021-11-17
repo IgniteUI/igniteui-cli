@@ -1,13 +1,18 @@
 {
   "name": "@igniteui/angular-templates",
-  "version": "12.2.830-rc.0",
+  "version": "13.0.900-beta.0",
   "description": "Templates for Ignite UI for Angular projects and components",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IgniteUI/igniteui-cli.git",
+    "directory": "packages/igx-templates"
+  },
   "main": "index.js",
   "typings": "index.d.ts",
   "author": "Infragistics",
   "license": "MIT",
   "dependencies": {
-    "@igniteui/cli-core": "~8.3.0-rc.0",
-    "typescript": "^4.2.3"
+    "@igniteui/cli-core": "~9.0.0-beta.0",
+    "typescript": "^4.4.4"
   }
 }

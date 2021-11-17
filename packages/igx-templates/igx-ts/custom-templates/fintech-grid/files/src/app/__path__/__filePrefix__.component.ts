@@ -217,7 +217,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
     }
   }
 
-  public rowSelectionChanged(args: IRowSelectionEventArgs): void {
+  public rowSelectionChanging(args: IRowSelectionEventArgs): void {
     this.grid1.clearCellSelection();
     this.chartData = [];
     args.newSelection.forEach(row => {

@@ -38,9 +38,6 @@
             ]
           },
           "configurations": {
-            "es5": {
-              "tsConfig": "tsconfig-es5.app.json"
-            },
             "production": {
               "budgets": [
                 {
@@ -81,9 +78,6 @@
             },
             "development": {
               "browserTarget": "<%=dashName%>:build:development"
-            },
-            "es5": {
-              "browserTarget": "<%=dashName%>:build:es5"
             }
           },
           "defaultConfiguration": "development"
