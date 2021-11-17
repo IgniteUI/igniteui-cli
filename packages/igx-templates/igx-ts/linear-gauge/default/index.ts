@@ -16,7 +16,7 @@ class IgxLinearGaugeTemplate extends IgniteUIForAngularTemplate {
 				from: "igniteui-angular-gauges"
 			}
 		];
-		this.packages = ["igniteui-angular-core@~12.1.0", "igniteui-angular-gauges@~12.1.0"];
+		this.packages = ["igniteui-angular-core@~12.1.2", "igniteui-angular-gauges@~12.1.2"];
 	}
 }
 module.exports = new IgxLinearGaugeTemplate();

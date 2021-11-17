@@ -1,4 +1,4 @@
-@import "~<%=igxPackage%>/lib/core/styles/themes/index";
+@import '~<%=igxPackage%>/theming';
 
 $grid-sample-theme: igx-grid-theme(
   $row-selected-background: #333,
