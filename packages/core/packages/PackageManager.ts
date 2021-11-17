@@ -95,7 +95,7 @@ export class PackageManager {
 				case "npm":
 				/* passes through */
 				default:
-					command = `${managerCommand} install --quiet`;
+					command = `${managerCommand} install --quiet --legacy-peer-deps`;
 					break;
 			}
 			await this.flushQueue(false);
@@ -266,7 +266,7 @@ export class PackageManager {
 			case "npm":
 			/* passes through */
 			default:
-				return `${managerCommand} install ${packageName} --quiet --save`;
+				return `${managerCommand} install ${packageName} --quiet --save --legacy-peer-deps`;
 		}
 	}
 
