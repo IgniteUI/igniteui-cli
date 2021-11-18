@@ -1,6 +1,6 @@
 // tslint:disable:no-implicit-dependencies
 import { Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
-import { addTypography, Config } from "@igniteui/cli-core";
+import { addClassToBody, Config } from "@igniteui/cli-core";
 
 function addHomeHeaderStyles(host: Tree) {
 	const homeCss = "src/app/home/home.component.css";
@@ -65,7 +65,7 @@ export default function(): Rule {
 	return (host: Tree, context: SchematicContext) => {
 		context.logger.info("Updating project to Ignite UI CLI 3.0.0");
 
-		addTypography(host);
+		addClassToBody(host, "igx-typography");
 		addHomeHeaderStyles(host);
 		removeGridForRoot(host);
 		updateConfig(host);

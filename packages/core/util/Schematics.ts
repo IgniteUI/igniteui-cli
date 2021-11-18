@@ -6,7 +6,7 @@ import { Tree } from "@angular-devkit/schematics";
 // current code transpiles to clean functions without imports from packages
 // that core doesn't depend on, but still not the best option.
 
-export function addTypography(host: Tree) {
+export function addClassToBody(host: Tree, className: string) {
 	const indexHtml = "src/index.html";
 	const bodyTagRegex = /<body[^>]*?>/;
 	const classRegex = /class=["']([^"']*?)["']/;
@@ -21,15 +21,15 @@ export function addTypography(host: Tree) {
 		if (!classRegex.test(bodyTag)) {
 			content = content.replace(
 				bodyTag,
-				bodyTag.replace(/>$/, ` class="igx-typography">`)
+				bodyTag.replace(/>$/, ` class="${className}">`)
 			);
 		} else {
 			const classes = classRegex.exec(bodyTag).pop();
 			const classList = classes ? classes.split(" ") : [];
-			if (classList.indexOf("igx-typography") !== -1) {
+			if (classList.indexOf(className) !== -1) {
 				return;
 			}
-			classList.push("igx-typography");
+			classList.push(className);
 			content = content.replace(
 				bodyTag,
 				bodyTag.replace(classRegex, `class="${classList.join(" ")}"`)

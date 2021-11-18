@@ -30,6 +30,11 @@
             "version": "5.0.3",
             "description": "Updates Ignite UI for Angular project from CLI 5.0.x to 5.0.3",
             "factory": "./update-5_0_3"
+        },
+        "migration-07": {
+            "version": "9.0.0",
+            "description": "Updates Ignite UI for Angular project from CLI 5.0.3 to 9.0.0",
+            "factory": "./update-9_0_0"
         }
     }
 }
