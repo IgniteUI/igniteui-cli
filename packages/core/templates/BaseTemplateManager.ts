@@ -25,7 +25,7 @@ export abstract class BaseTemplateManager {
 	}
 	public getFrameworkNames(): string[] {
 		// еxclude WebComponents from the Step-By-Step wizard
-		return this.frameworks.filter(f => f.name !== "WebComponents").map(f => f.name);
+		return this.frameworks.map(f => f.name);
 	}
 	/**  Returns framework found by its name or undefined. */
 	public getFrameworkByName(name: string): Framework {
