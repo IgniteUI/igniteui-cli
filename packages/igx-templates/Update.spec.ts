@@ -120,11 +120,15 @@ export class HomeComponent {
 			content:
 `@import '~igniteui-angular/theming';
 @import '~igniteui-dockmanager/styles/themes/test';
+@use 'igniteui-angular/theming';
+@forward 'igniteui-angular/theming';
 @include igx-core();
 `,
 			expected:
 `@import '~@infragistics/igniteui-angular/theming';
 @import '~@infragistics/igniteui-dockmanager/styles/themes/test';
+@use '@infragistics/igniteui-angular/theming';
+@forward '@infragistics/igniteui-angular/theming';
 @include igx-core();
 `}, {
 			path: "angular.json",
