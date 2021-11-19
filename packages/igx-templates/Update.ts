@@ -12,7 +12,7 @@ function createExpression(expressionType: RegularExpressionType, packageName: st
 	if (expressionType === RegularExpressionType.LOGIC) {
 		return String.raw`(from ["'])${packageName}(?<submodules>\/.*?)?(["'])`;
 	} else if (expressionType === RegularExpressionType.STYLE) {
-		return String.raw`(node_modules\/|~)${packageName}(\/)`;
+		return String.raw`(node_modules\/|[~"'])${packageName}(\/)`;
 	}
 }
 
