@@ -107,7 +107,7 @@ describe("cli-config schematic", () => {
 		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
 
 		const content = tree.readContent(targetFile);
-		expect(content.includes("<body class=\"igx-typography igx-scrollbar\">")).toBeTruthy();
+		expect(content.includes("<body class=\"igx-typography\">")).toBeTruthy();
 	});
 
 	it("should add Titillium and Material Icons stylesheets correctly", async () => {
