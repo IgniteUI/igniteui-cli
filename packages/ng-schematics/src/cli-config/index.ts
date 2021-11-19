@@ -1,7 +1,7 @@
 import { DependencyNotFoundException } from "@angular-devkit/core";
 import { chain, FileDoesNotExistException, Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
 import { NPM_PACKAGE, resolveIgxPackage } from "@igniteui/angular-templates";
-import { addTypography, TypeScriptFileUpdate } from "@igniteui/cli-core";
+import { addClassToBody, TypeScriptFileUpdate } from "@igniteui/cli-core";
 import { createCliConfig } from "../utils/cli-config";
 import { setVirtual } from "../utils/NgFileSystem";
 import { addFontsToIndexHtml, getDefaultProject, importDefaultTheme } from "../utils/theme-import";
@@ -51,7 +51,8 @@ Running 'ng update' will prevent potential version conflicts.\n`);
 
 function addTypographyToProj(): Rule {
 	return (tree: Tree) => {
-		addTypography(tree);
+		addClassToBody(tree, "igx-typography");
+		addClassToBody(tree, "igx-scrollbar");
 	};
 }
 
