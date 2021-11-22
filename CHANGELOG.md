@@ -1,3 +1,27 @@
+# [9.0.0](https://github.com/IgniteUI/igniteui-cli/compare/v8.2.1...v9.0.0)  (2021-11-22)
+
+🎉 This update includes:
+
+- `igniteui-webcomponents` version [1.0.0](https://github.com/IgniteUI/igniteui-webcomponents/releases/tag/1.0.0). Read how to easily setup a project with them in the [Ignite UI CLI for Web Components](https://infragistics.com/products/ignite-ui-web-components/web-components/components/general-cli-overview) topic.
+- `igniteui-angular` version [13.0.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/13.0.0) and angular version [13.0.0](https://github.com/angular/angular/releases/tag/13.0.0).
+
+## igniteui/cli-core@9.0.0
+
+Note: Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@13.0.900
+
+* Update to angular 13 and `igniteui-angular` 13 [PR #896](https://github.com/IgniteUI/igniteui-cli/pull/896)
+
+## igniteui/angular-schematics@13.0.900
+
+* Update to angular 13 and `igniteui-angular` 13 [PR #896](https://github.com/IgniteUI/igniteui-cli/pull/896)
+
+## igniteui-cli@9.0.0
+
+* Create Web Components project [#877](https://github.com/IgniteUI/igniteui-cli/issues/877)
+* Update to angular 13 and `igniteui-angular` 13 [PR #896](https://github.com/IgniteUI/igniteui-cli/pull/896)
+
 # [8.2.1](https://github.com/IgniteUI/igniteui-cli/compare/v8.2.0...v8.2.1)  (2021-10-08)
 
 🎉 This update includes new react wrappers (ig-es6) project template, as well as updates and fixes to the samples.
