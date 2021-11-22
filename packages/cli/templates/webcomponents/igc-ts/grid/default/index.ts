@@ -5,7 +5,7 @@ class IgcGridTemplate extends IgniteUIForWebComponentsTemplate {
 	constructor() {
 		super(__dirname);
 		this.components = ["Grid"];
-		this.controlGroup = "Grids & Lists";
+		this.controlGroup = "Hidden";
 		this.listInComponentTemplates = true;
 		this.id = "grid";
 		this.projectType = "igc-ts";
