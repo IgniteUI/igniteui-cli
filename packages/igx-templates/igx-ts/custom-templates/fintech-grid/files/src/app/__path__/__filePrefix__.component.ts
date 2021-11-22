@@ -367,7 +367,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
     const type = args.targetType;
 
     if (type === 'dataCell' && target.column.field === 'Chart' && evt.key.toLowerCase() === 'enter') {
-      this.grid1.selectRows([target.row.rowID], true);
+      this.grid1.selectRows([target.row.key], true);
       this.openSingleRowChart(target);
     }
   }
