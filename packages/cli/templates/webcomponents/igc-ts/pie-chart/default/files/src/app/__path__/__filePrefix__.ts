@@ -49,9 +49,9 @@ export default class $(ClassName) extends HTMLElement {
   }
 
   connectedCallback() {
-    const chart = document.getElementsByTagName('app-pie-chart')[0].shadowRoot!.getElementById('chart') as IgcPieChartComponent;
+    const chart = document.getElementsByTagName('app-$(path)')[0].shadowRoot!.getElementById('chart') as IgcPieChartComponent;
     chart.dataSource = new Data();
-    chart.legend = document.getElementsByTagName('app-pie-chart')[0].shadowRoot!.getElementById('legend') as IgcItemLegendComponent;
+    chart.legend = document.getElementsByTagName('app-$(path)')[0].shadowRoot!.getElementById('legend') as IgcItemLegendComponent;
   }
 }
 
