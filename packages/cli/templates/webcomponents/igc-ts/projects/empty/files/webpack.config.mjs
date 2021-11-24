@@ -18,6 +18,16 @@ export default ({
   },
   module: {
     rules: [{
+      test: /\.m?js/,
+      type: "javascript/auto",
+    },
+    {
+      test: /\.m?js/,
+      resolve: {
+        fullySpecified: false,
+      },
+    },
+    {
       test: /\.(ts|js)$/,
       loader: 'babel-loader',
       options: {
