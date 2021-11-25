@@ -1,3 +1,7 @@
+# [8.2.2](https://github.com/IgniteUI/igniteui-cli/compare/v8.2.1...v8.2.2)  (2021-11-25)
+
+All packages are configured to use `typescript` version, lower than `4.5.x`, until there is a compatibility with the later `typescript` version.
+
 # [8.2.1](https://github.com/IgniteUI/igniteui-cli/compare/v8.2.0...v8.2.1)  (2021-10-08)
 
 🎉 This update includes new react wrappers (ig-es6) project template, as well as updates and fixes to the samples.
