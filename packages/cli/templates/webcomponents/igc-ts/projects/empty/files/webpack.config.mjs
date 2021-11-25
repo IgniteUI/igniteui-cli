@@ -29,6 +29,7 @@ export default ({
     },
     {
       test: /\.(ts|js)$/,
+      exclude: /node_modules/,
       loader: 'babel-loader',
       options: {
         "compact": true,
@@ -53,12 +54,6 @@ export default ({
           "@babel/plugin-transform-runtime"
         ]
       },
-      exclude:
-        function(modulePath) {
-          return /node_modules/.test(modulePath) &&
-            !/igniteui-webcomponents/.test(modulePath) &&
-            !/lit-html/.test(modulePath);
-        }
     }],
   },
 
