@@ -1,19 +1,19 @@
 import { TypeScriptFileUpdate } from "@igniteui/cli-core";
 import { IgniteUIForWebComponentsTemplate } from "../../../../../lib/templates/IgniteUIForWebComponentsTemplate";
 
-class IgcListTemplate extends IgniteUIForWebComponentsTemplate {
+class IgcradialGaugeTemplate extends IgniteUIForWebComponentsTemplate {
 	constructor() {
 		super(__dirname);
-		this.components = ["List"];
-		this.controlGroup = "Grids & Lists";
+		this.components = ["RadialGauge"];
+		this.controlGroup = "Gauges";
 		this.listInComponentTemplates = true;
-		this.id = "list";
+		this.id = "radial-gauge";
 		this.projectType = "igc-ts";
-		this.name = "List";
-		this.description = "basic IgcList";
+		this.name = "Radial Gauge";
+		this.description = "IgcRadialGauge";
 	}
 	protected addClassDeclaration(mainModule: TypeScriptFileUpdate, projPath: string, name: string, modulePath: string) {
 		// not applicable with custom module
 	}
 }
-module.exports = new IgcListTemplate();
+module.exports = new IgcradialGaugeTemplate();
