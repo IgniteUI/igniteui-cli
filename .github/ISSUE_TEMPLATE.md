@@ -2,7 +2,7 @@
 Describe the issue.
 
 - Ignite UI CLI version: x.x.x
-- Framework: Angular|React|jQuery
+- Framework: Angular|React|jQuery|Web Components
 - Project type: ig-ts|igx-ts
 
 ### Steps to reproduce  
