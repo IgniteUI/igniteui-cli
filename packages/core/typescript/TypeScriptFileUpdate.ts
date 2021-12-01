@@ -389,7 +389,7 @@ export class TypeScriptFileUpdate {
 
 					node = ts.updateNamedImports(namedImports, [
 						...existing,
-						...newImports.map(x => ts.factory.createImportSpecifier(undefined, ts.factory.createIdentifier(x), undefined)) // typescript 4.5.2  expect 3 arguments
+						...newImports.map(x => ts.factory.createImportSpecifier(undefined, ts.factory.createIdentifier(x), undefined))
 					]);
 				} else {
 					node = ts.visitEachChild(node, visitImport, context);
@@ -653,7 +653,8 @@ export class TypeScriptFileUpdate {
 		const routePath = ts.factory.createPropertyAssignment("path", ts.factory.createStringLiteral(linkPath));
 		const routeComponent = ts.factory.createPropertyAssignment("component", ts.factory.createIdentifier(className));
 		const routeDataInner = ts.factory.createPropertyAssignment("text", ts.factory.createStringLiteral(linkText));
-		const routeData = ts.factory.createPropertyAssignment("data", ts.factory.createObjectLiteralExpression([routeDataInner]));
+		const routeData = ts.factory.createPropertyAssignment(
+			"data", ts.factory.createObjectLiteralExpression([routeDataInner]));
 		return ts.factory.createObjectLiteralExpression([routePath, routeComponent, routeData]);
 	}
 
