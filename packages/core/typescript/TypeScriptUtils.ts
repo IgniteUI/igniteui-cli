@@ -17,15 +17,15 @@ export class TypeScriptUtils {
 	 */
 	public static createIdentifierImport(identifierNames: string[], importPath: string): ts.ImportDeclaration {
 		// started from createImportDeclaration, now we here...
-		const namedImport = ts.createNamedImports(
-			identifierNames.map(x => ts.createImportSpecifier(undefined, ts.createIdentifier(x)))
+		const namedImport = ts.factory.createNamedImports(
+			identifierNames.map(x => ts.factory.createImportSpecifier(false, undefined, ts.factory.createIdentifier(x)))
 		);
-		const importClause = ts.createImportClause(undefined, namedImport);
-		const importDeclaration = ts.createImportDeclaration(
+		const importClause = ts.factory.createImportClause(false, undefined, namedImport);
+		const importDeclaration = ts.factory.createImportDeclaration(
 			undefined,
 			undefined,
 			importClause,
-			ts.createLiteral(importPath));
+			ts.factory.createStringLiteral(importPath));
 		return importDeclaration;
 	}
 
@@ -36,16 +36,16 @@ export class TypeScriptUtils {
 	 */
 	public static createIdentifier(x: string, call?: string) {
 		if (call) {
-			return ts.createCall(
-				ts.createPropertyAccess(
-					ts.createIdentifier(x),
+			return ts.factory.createCallExpression(
+				ts.factory.createPropertyAccessExpression(
+					ts.factory.createIdentifier(x),
 					call
 				),
 				/*typeArgs*/undefined,
 				/*argsArgs*/[]
 			);
 		} else {
-			return ts.createIdentifier(x);
+			return ts.factory.createIdentifier(x);
 		}
 	}
 
