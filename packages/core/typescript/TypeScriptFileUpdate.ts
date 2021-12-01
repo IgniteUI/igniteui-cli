@@ -387,9 +387,9 @@ export class TypeScriptFileUpdate {
 					const editImport = editImports.find(x => x.from === moduleSpecifier);
 					const newImports = editImport.imports.filter(x => alreadyImported.indexOf(x) === -1);
 
-					node = ts.updateNamedImports(namedImports, [
+					node = ts.factory.updateNamedImports(namedImports, [
 						...existing,
-						...newImports.map(x => ts.factory.createImportSpecifier(undefined, ts.factory.createIdentifier(x), undefined))
+						...newImports.map(x => ts.factory.createImportSpecifier(false, undefined, ts.factory.createIdentifier(x)))
 					]);
 				} else {
 					node = ts.visitEachChild(node, visitImport, context);
