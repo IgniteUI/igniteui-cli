@@ -6,7 +6,8 @@
 		"noEmitOnError": true,
 		"lib": [
 			"es2017",
-			"dom"
+			"dom",
+      "dom.iterable"
 		],
 		"strict": true,
 		"skipLibCheck": true,
