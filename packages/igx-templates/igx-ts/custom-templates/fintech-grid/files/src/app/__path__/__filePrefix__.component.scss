@@ -1,3 +1,6 @@
+@use '<%=igxPackage%>/theming' as *;
+@use './themes/_mixins' as *;
+
 :host {
     display: block;
     width: 100%;
@@ -175,7 +178,7 @@
     .control-item {
         padding-right: 20px;
         label {
-            color: var(--igx-surface-500-contrast);
+            color: hsla(var(--igx-surface-500-contrast));
         }
     }
     .igx-slider,
@@ -224,12 +227,10 @@
     height: 100%;
 }
 
-@import '~<%=igxPackage%>/theming';
 @include igx-core();
 @include igx-typography($font-family: $material-typeface, $type-scale: $material-type-scale);
 @include igx-theme($default-palette);
 
-@import './themes/_mixins';
 
 @include scrollbar-love();
 

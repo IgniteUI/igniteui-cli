@@ -1,5 +1,4 @@
-@import '~<%=igxPackage%>/theming';
-
+@use '<%=igxPackage%>/theming' as *;
 $grid-sample-theme: igx-grid-theme(
   $row-selected-background: #333,
   $row-selected-text-color: #ddd,

@@ -1,7 +1,7 @@
+@use '<%=igxPackage%>/theming' as *;
 @import url("https://unpkg.com/@fortawesome/fontawesome-free-webfonts@^1.0.9/css/fontawesome.css");
 @import url("https://unpkg.com/@fortawesome/fontawesome-free-webfonts@^1.0.9/css/fa-regular.css");
 @import url("https://unpkg.com/@fortawesome/fontawesome-free-webfonts@^1.0.9/css/fa-solid.css");
-@import '~<%=igxPackage%>/theming';
 
 :host ::ng-deep {
 

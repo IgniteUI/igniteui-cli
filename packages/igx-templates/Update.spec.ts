@@ -118,17 +118,13 @@ export class HomeComponent {
 }`}, {
 			path: "src/home.component.scss",
 			content:
-`@import '~igniteui-angular/theming';
-@import '~igniteui-dockmanager/styles/themes/test';
-@use 'igniteui-angular/theming';
-@forward 'igniteui-angular/theming';
+`@use 'igniteui-angular/theming' as *;
+@use 'igniteui-dockmanager/styles/themes/test' as *;
 @include igx-core();
 `,
 			expected:
-`@import '~@infragistics/igniteui-angular/theming';
-@import '~@infragistics/igniteui-dockmanager/styles/themes/test';
-@use '@infragistics/igniteui-angular/theming';
-@forward '@infragistics/igniteui-angular/theming';
+`@use '@infragistics/igniteui-angular/theming' as *;
+@use '@infragistics/igniteui-dockmanager/styles/themes/test' as *;
 @include igx-core();
 `}, {
 			path: "angular.json",
