@@ -1,3 +1,7 @@
+# [9.0.1](https://github.com/IgniteUI/igniteui-cli/compare/v9.0.0...v9.0.1)  (2021-11-25)
+
+All packages are configured to use `typescript` version, lower than `4.5.x`, until there is a compatibility with the later `typescript` version.
+
 # [9.0.0](https://github.com/IgniteUI/igniteui-cli/compare/v8.2.1...v9.0.0)  (2021-11-22)
 
 🎉 This update includes:
