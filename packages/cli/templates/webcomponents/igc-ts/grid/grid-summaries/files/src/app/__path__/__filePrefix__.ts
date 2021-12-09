@@ -1,17 +1,19 @@
-import { DataGridSharedData } from './DataGridSharedData';
 import {
   IgcDataGridModule,
   IgcGridColumnOptionsModule,
   IgcDataGridComponent,
   IgcColumnGroupDescription,
-  IgcColumnSummaryDescription
+  IgcColumnSummaryDescription,
 } from 'igniteui-webcomponents-grids';
-import { ModuleManager, IgcProvideCalculatorEventArgs,SummaryOperand, SummaryCalculator, DefaultSummaryResult,
-  IDataSource, ISummaryResult } from 'igniteui-webcomponents-core';
+import {
+  ModuleManager, IgcProvideCalculatorEventArgs, SummaryOperand, SummaryCalculator,
+  DefaultSummaryResult, IDataSource, ISummaryResult,
+} from 'igniteui-webcomponents-core';
+import { DataGridSharedData } from './DataGridSharedData';
 
 ModuleManager.register(
   IgcDataGridModule,
-  IgcGridColumnOptionsModule
+  IgcGridColumnOptionsModule,
 );
 
 export default class $(ClassName) extends HTMLElement {
@@ -19,13 +21,14 @@ export default class $(ClassName) extends HTMLElement {
 
   constructor() {
     super();
-    this.attachShadow({mode: 'open'});
+    this.attachShadow({ mode: 'open' });
     this.shadowRoot!.innerHTML = `
     <style>
       :host {
         height: 80%;
         margin: 0px;
         padding-left: 275px;
+        padding-right: 20px;
         width: calc(100% - 275px);
       }
       .container {
@@ -59,34 +62,33 @@ export default class $(ClassName) extends HTMLElement {
   }
 
   connectedCallback() {
+    // Custom Calculator - calculates the count for all USA.
+    class CustomDomestic extends SummaryCalculator {
+      get displayName(): string {
+        return 'USA';
+      }
 
-  // Custom Calculator - calculates the count for all USA.
-  class CustomDomestic extends SummaryCalculator {
-    get displayName(): string {
-      return 'USA';
-    }
+      public usCountries: number = 0;
 
-    public usCountries: number = 0;
+      public beginCalculation(a: IDataSource, b: string): void {
+        super.beginCalculation(a, b);
+        this.usCountries = 0;
+      }
 
-    public beginCalculation(a: IDataSource, b: string): void {
-      super.beginCalculation(a, b);
-      this.usCountries = 0;
-    }
+      public endCalculation(): ISummaryResult {
+        return new DefaultSummaryResult(this.propertyName, SummaryOperand.Custom, this.usCountries);
+      }
 
-    public endCalculation(): ISummaryResult {
-      return new DefaultSummaryResult(this.propertyName, SummaryOperand.Custom, this.usCountries)
-    }
-
-    public aggregate(a: any): void {
-      if (a.Countries === 'USA') {
-          this.usCountries++;
+      public aggregate(a: any): void {
+        if (a.Countries === 'USA') {
+            this.usCountries++;
+        }
       }
     }
-  }
 
     const onProvideCalculator = (s: IgcColumnSummaryDescription, e: IgcProvideCalculatorEventArgs) => {
-      e.calculator = new CustomDomestic();
-    }
+        e.calculator = new CustomDomestic();
+    };
 
     const onLoad = () => {
       const productGroup = new IgcColumnGroupDescription();
@@ -102,13 +104,17 @@ export default class $(ClassName) extends HTMLElement {
       const priceMin = new IgcColumnSummaryDescription();
       priceMin.field = 'BundlePrice';
       priceMin.operand = SummaryOperand.Min;
-      priceMin.formatOverride = new Intl.NumberFormat('en-EN', { style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0 });
+      priceMin.formatOverride = new Intl.NumberFormat('en-EN', {
+        style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0,
+      });
       grid.summaryDescriptions.add(priceMin);
 
       const priceMax = new IgcColumnSummaryDescription();
       priceMax.field = 'BundlePrice';
       priceMax.operand = SummaryOperand.Max;
-      priceMax.formatOverride = new Intl.NumberFormat('en-EN', { style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0 });
+      priceMax.formatOverride = new Intl.NumberFormat('en-EN', {
+        style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0,
+      });
       grid.summaryDescriptions.add(priceMax);
 
       const orderSum = new IgcColumnSummaryDescription();
@@ -119,39 +125,47 @@ export default class $(ClassName) extends HTMLElement {
       const orderValueSum = new IgcColumnSummaryDescription();
       orderValueSum.field = 'OrderValue';
       orderValueSum.operand = SummaryOperand.Sum;
-      orderValueSum.formatOverride = new Intl.NumberFormat('en-EN', { style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0});
+      orderValueSum.formatOverride = new Intl.NumberFormat('en-EN', {
+        style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0,
+      });
       grid.summaryDescriptions.add(orderValueSum);
 
       const orderValueAvg = new IgcColumnSummaryDescription();
       orderValueAvg.field = 'OrderValue';
       orderValueAvg.operand = SummaryOperand.Average;
-      orderValueAvg.formatOverride = new Intl.NumberFormat('en-EN', { style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0 });
+      orderValueAvg.formatOverride = new Intl.NumberFormat('en-EN', {
+        style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0,
+      });
       grid.summaryDescriptions.add(orderValueAvg);
 
       const orderDateMin = new IgcColumnSummaryDescription();
       orderDateMin.field = 'OrderDate';
       orderDateMin.operand = SummaryOperand.Min;
-      orderDateMin.calculatorDisplayName = 'First'
+      orderDateMin.calculatorDisplayName = 'First';
       orderDateMin.formatOverride = new Intl.DateTimeFormat('en-EN');
       grid.summaryDescriptions.add(orderDateMin);
 
       const orderDateMax = new IgcColumnSummaryDescription();
       orderDateMax.field = 'OrderDate';
       orderDateMax.operand = SummaryOperand.Max;
-      orderDateMax.calculatorDisplayName = 'Last'
+      orderDateMax.calculatorDisplayName = 'Last';
       orderDateMax.formatOverride = new Intl.DateTimeFormat('en-EN');
       grid.summaryDescriptions.add(orderDateMax);
 
       const sum1 = new IgcColumnSummaryDescription();
       sum1.field = 'Profit';
       sum1.operand = SummaryOperand.Sum;
-      sum1.formatOverride = new Intl.NumberFormat('en-EN', { style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0 });
+      sum1.formatOverride = new Intl.NumberFormat('en-EN', {
+        style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0,
+      });
       grid.summaryDescriptions.add(sum1);
 
       const avg2 = new IgcColumnSummaryDescription();
       avg2.field = 'Profit';
       avg2.operand = SummaryOperand.Average;
-      avg2.formatOverride = new Intl.NumberFormat('en-EN', { style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0 });
+      avg2.formatOverride = new Intl.NumberFormat('en-EN', {
+        style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0,
+      });
       grid.summaryDescriptions.add(avg2);
 
       const countries = new IgcColumnSummaryDescription();
@@ -159,7 +173,7 @@ export default class $(ClassName) extends HTMLElement {
       countries.operand = SummaryOperand.Custom;
       countries.provideCalculator = onProvideCalculator;
       grid.summaryDescriptions.add(countries);
-    }
+    };
 
     const grid = document.getElementsByTagName('app-grid-summaries')[0].shadowRoot!.getElementById('grid') as IgcDataGridComponent;
     grid.dataSource = DataGridSharedData.getSales();

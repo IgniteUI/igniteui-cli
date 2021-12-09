@@ -1,5 +1,4 @@
 export class DataGridSharedData {
-
   public static getEmployees(count?: number): any[] {
     if (count === undefined) {
       count = 250;
@@ -16,28 +15,27 @@ export class DataGridSharedData {
       const street: string = this.getRandomStreet();
       const country: string = this.getRandomItem(this.countries);
       const city: string = this.getRandomCity(country);
-      const generation = Math.floor(age / 10) * 10 + "s";
-      const email: string = firstName.toLowerCase() + "@" + this.getRandomItem(this.emails);
-      const website: string = firstName.toLowerCase() + "-" + this.getRandomItem(this.websites);
+      const generation = `${Math.floor(age / 10) * 10}s`;
+      const email: string = `${firstName.toLowerCase()}@${this.getRandomItem(this.emails)}`;
+      const website: string = `${firstName.toLowerCase()}-${this.getRandomItem(this.websites)}`;
       let photoPath: any;
 
-      if (gender === "male") {
-          maleCount++;
-          if (maleCount > 26) {
-              maleCount = 1;
-          }
-          photoPath = this.getPhotoMale(maleCount);
-      }
-      else {
-          femaleCount++;
-          if (femaleCount > 24) {
-              femaleCount = 1;
-          }
-          photoPath = this.getPhotoFemale(femaleCount);
+      if (gender === 'male') {
+        maleCount++;
+        if (maleCount > 26) {
+          maleCount = 1;
+        }
+        photoPath = this.getPhotoMale(maleCount);
+      } else {
+        femaleCount++;
+        if (femaleCount > 24) {
+          femaleCount = 1;
+        }
+        photoPath = this.getPhotoFemale(femaleCount);
       }
 
-      let person: any = {};
-      person.Address = street + "," + city;
+      const person: any = {};
+      person.Address = `${street},${city}`;
       person.Age = age;
       person.Birthday = this.getBirthday(age);
       person.City = city;
@@ -49,7 +47,7 @@ export class DataGridSharedData {
       person.Generation = generation;
       person.ID = this.pad(i + 1, 5);
       person.LastName = lastName;
-      person.Name = firstName + " " + lastName;
+      person.Name = `${firstName} ${lastName}`;
       person.Phone = this.getRandomPhone();
       person.Photo = photoPath;
       person.Street = street;
@@ -59,11 +57,11 @@ export class DataGridSharedData {
       person.Productivity = this.getProductivity();
 
       if (person.Salary < 50000) {
-          person.Income = "Low";
+        person.Income = 'Low';
       } else if (person.Salary < 100000) {
-          person.Income = "Average";
+        person.Income = 'Average';
       } else {
-          person.Income = "High";
+        person.Income = 'High';
       }
 
       employees.push(person);
@@ -78,7 +76,7 @@ export class DataGridSharedData {
     const productivity: any[] = [];
     for (let w = 0; w < weekCount; w++) {
       const value = this.getRandomNumber(-50, 50);
-      productivity.push({Value: value, Week: w});
+      productivity.push({ Value: value, Week: w });
     }
     return productivity;
   }
@@ -89,51 +87,51 @@ export class DataGridSharedData {
     }
 
     const names: string[] = [
-      "Intel CPU", "AMD CPU",
-      "Intel Motherboard", "AMD Motherboard", "NVIDIA Motherboard",
-      "NVIDIA GPU", "GIGABYTE GPU", "Asus GPU", "AMD GPU", "MSI GPU",
-      "Corsair Memory", "Patriot Memory", "Skill Memory",
-      "Samsung HDD", "WD HDD", "Seagate HDD", "Intel HDD",
-      "Samsung SSD", "WD SSD", "Seagate SSD", "Intel SSD",
-      "Samsung Monitor", "Asus Monitor", "LG Monitor", "HP Monitor" ];
-    const countries: string[] = ["USA", "UK", "France", "Canada", "Poland", "Japan", "Germany"];
-    const status: string[] = ["Packing", "Shipped", "Delivered"];
+      'Intel CPU', 'AMD CPU',
+      'Intel Motherboard', 'AMD Motherboard', 'NVIDIA Motherboard',
+      'NVIDIA GPU', 'GIGABYTE GPU', 'Asus GPU', 'AMD GPU', 'MSI GPU',
+      'Corsair Memory', 'Patriot Memory', 'Skill Memory',
+      'Samsung HDD', 'WD HDD', 'Seagate HDD', 'Intel HDD',
+      'Samsung SSD', 'WD SSD', 'Seagate SSD', 'Intel SSD',
+      'Samsung Monitor', 'Asus Monitor', 'LG Monitor', 'HP Monitor'];
+    const countries: string[] = ['USA', 'UK', 'France', 'Canada', 'Poland', 'Japan', 'Germany'];
+    const status: string[] = ['Packing', 'Shipped', 'Delivered'];
     const sales: any[] = [];
 
     for (let i = 0; i < count; i++) {
-        const price = this.getRandomNumber(100, 900);
-        const items = this.getRandomNumber(10, 80);
-        const value = price * items;
-        const margin = this.getRandomNumber(3, 10);
-        const profit = Math.round((price * margin / 100) * items);
-        const country = this.getRandomItem(countries);
-        sales.push({
-          BundlePrice: price,
-          ProductPrice: price,
-          Margin: margin,
-          OrderDate: this.getRandomDate(new Date(2012, 0, 1), new Date()),
-          OrderItems: items,
-          OrderValue: value, //  Math.round(value / 1000) + "," + Math.round(value % 1000),
-          ProductID: 1001 + i,
-          ProductName: this.getRandomItem(names),
-          Profit: profit,
-          Countries: country,
-          CountryFlag: this.getCountryFlag(country),
-          Status: this.getRandomItem(status)
-        });
-      }
+      const price = this.getRandomNumber(100, 900);
+      const items = this.getRandomNumber(10, 80);
+      const value = price * items;
+      const margin = this.getRandomNumber(3, 10);
+      const profit = Math.round((price * margin / 100) * items);
+      const country = this.getRandomItem(countries);
+      sales.push({
+        BundlePrice: price,
+        ProductPrice: price,
+        Margin: margin,
+        OrderDate: this.getRandomDate(new Date(2012, 0, 1), new Date()),
+        OrderItems: items,
+        OrderValue: value, //  Math.round(value / 1000) + ',' + Math.round(value % 1000),
+        ProductID: 1001 + i,
+        ProductName: this.getRandomItem(names),
+        Profit: profit,
+        Countries: country,
+        CountryFlag: this.getCountryFlag(country),
+        Status: this.getRandomItem(status),
+      });
+    }
     return sales;
   }
 
   public static getHouses(count?: number): any[] {
     if (count === undefined) {
-        count = 250;
+      count = 250;
     }
 
     const houses: any[] = [];
-    const property: string[] = [ "Townhouse", "Single", "Condo", "Villa"];
-    const emails: string[] = [ "estates.com", "remax.com", "zillow.com", "realtor.com", "coldwell.com"];
-    const countries: string[] = ["USA", "UK", "France", "Canada", "Poland", "Japan", "Germany"];
+    const property: string[] = ['Townhouse', 'Single', 'Condo', 'Villa'];
+    const emails: string[] = ['estates.com', 'remax.com', 'zillow.com', 'realtor.com', 'coldwell.com'];
+    const countries: string[] = ['USA', 'UK', 'France', 'Canada', 'Poland', 'Japan', 'Germany'];
 
     for (let i = 0; i < count; i++) {
       const year: number = this.getRandomNumber(1950, 2015);
@@ -143,51 +141,66 @@ export class DataGridSharedData {
       const firstName: string = this.getRandomNameFirst(gender);
       const lastName: string = this.getRandomNameLast();
       const initials = firstName.substr(0, 1).toLowerCase();
-      const email: string = initials + lastName.toLowerCase() + "@" + this.getRandomItem(emails);
+      const email: string = `${initials + lastName.toLowerCase()}@${this.getRandomItem(emails)}`;
 
       const street: string = this.getRandomStreet();
       const country: string = this.getRandomItem(countries);
       const city: string = this.getRandomCity(country);
 
       houses.push({
-          Address: street + "," + city,
-          Age: age,
-          Agent: firstName + " " + lastName,
-          Area: this.getRandomNumber(50, 300),
-          Baths: this.getRandomNumber(1, 3),
-          Built: year,
-          City: city,
-          Country: country,
-          CountryFlag: this.getCountryFlag(country),
-          Email: email,
-          ID: this.pad(i + 1, 5),
-          Phone: this.getRandomPhone(),
-          Price: this.getRandomNumber(210, 900) * 1000,
-          Property: this.getRandomItem(property),
-          Rooms: this.getRandomNumber(2, 5),
-          SaleDate: this.getRandomDate(new Date(2015, 0, 1), new Date()),
-          Street: street,
+        Address: `${street},${city}`,
+        Age: age,
+        Agent: `${firstName} ${lastName}`,
+        Area: this.getRandomNumber(50, 300),
+        Baths: this.getRandomNumber(1, 3),
+        Built: year,
+        City: city,
+        Country: country,
+        CountryFlag: this.getCountryFlag(country),
+        Email: email,
+        ID: this.pad(i + 1, 5),
+        Phone: this.getRandomPhone(),
+        Price: this.getRandomNumber(210, 900) * 1000,
+        Property: this.getRandomItem(property),
+        Rooms: this.getRandomNumber(2, 5),
+        SaleDate: this.getRandomDate(new Date(2015, 0, 1), new Date()),
+        Street: street,
       });
     }
     return houses;
   }
 
-  private static websites: string[] = [ ".com", ".gov", ".edu", ".org"];
-  private static emails: string[] = [ "gmail.com", "yahoo.com", "twitter.com"];
-  private static genders: string[] = ["male", "female"];
-  private static maleNames: string[] = ["Kyle", "Oscar", "Ralph", "Mike", "Bill", "Frank", "Howard", "Jack", "Larry", "Pete", "Steve", "Vince", "Mark", "Alex", "Max", "Brian", "Chris", "Andrew", "Martin", "Mike", "Steve", "Glenn", "Bruce"];
-  private static femaleNames: string[] = ["Gina", "Irene", "Katie", "Brenda", "Casey", "Fiona", "Holly", "Kate", "Liz", "Pamela", "Nelly", "Marisa", "Monica", "Anna", "Jessica", "Sofia", "Isabella", "Margo", "Jane", "Audrey", "Sally", "Melanie", "Greta", "Aurora", "Sally"];
-  private static lastNames: string[] = ["Adams", "Crowley", "Ellis", "Martinez", "Irvine", "Maxwell", "Clark", "Owens", "Rooney", "Lincoln", "Thomas", "Spacey", "MOrgan", "King", "Newton", "Fitzgerald", "Holmes", "Jefferson", "Landry", "Berry", "Perez", "Spencer", "Starr", "Carter", "Edwards", "Stark", "Johnson", "Fitz", "Chief", "Blanc", "Perry", "Stone", "Williams", "Lane", "Jobs", "Adams", "Power", "Tesla"];
-  private static countries: string[] = ["USA", "UK", "France", "Canada", "Poland"];
-  private static citiesUS: string[] = ["New York", "Los Angeles", "Miami", "San Francisco", "San Diego", "Las Vegas"];
-  private static citiesUK: string[] = ["London", "Liverpool", "Manchester"];
-  private static citiesFR: string[] = ["Paris", "Marseille", "Lyon"];
-  private static citiesCA: string[] = ["Toronto", "Vancouver", "Montreal"];
-  private static citiesPL: string[] = ["Krakow", "Warsaw", "Wroclaw", "Gdansk"];
-  private static citiesJP: string[] = ["Tokyo", "Osaka", "Kyoto", "Yokohama"];
-  private static citiesGR: string[] = ["Berlin", "Bonn", "Cologne", "Munich", "Hamburg"];
-  private static roadSuffixes: string[] = ["Road", "Street", "Way"];
-  private static roadNames: string[] = ["Main", "Garden", "Broad", "Oak", "Cedar", "Park", "Pine", "Elm", "Market", "Hill"];
+  private static websites: string[] = ['.com', '.gov', '.edu', '.org'];
+
+  private static emails: string[] = ['gmail.com', 'yahoo.com', 'twitter.com'];
+
+  private static genders: string[] = ['male', 'female'];
+
+  private static maleNames: string[] = ['Kyle', 'Oscar', 'Ralph', 'Mike', 'Bill', 'Frank', 'Howard', 'Jack', 'Larry', 'Pete', 'Steve', 'Vince', 'Mark', 'Alex', 'Max', 'Brian', 'Chris', 'Andrew', 'Martin', 'Mike', 'Steve', 'Glenn', 'Bruce'];
+
+  private static femaleNames: string[] = ['Gina', 'Irene', 'Katie', 'Brenda', 'Casey', 'Fiona', 'Holly', 'Kate', 'Liz', 'Pamela', 'Nelly', 'Marisa', 'Monica', 'Anna', 'Jessica', 'Sofia', 'Isabella', 'Margo', 'Jane', 'Audrey', 'Sally', 'Melanie', 'Greta', 'Aurora', 'Sally'];
+
+  private static lastNames: string[] = ['Adams', 'Crowley', 'Ellis', 'Martinez', 'Irvine', 'Maxwell', 'Clark', 'Owens', 'Rooney', 'Lincoln', 'Thomas', 'Spacey', 'MOrgan', 'King', 'Newton', 'Fitzgerald', 'Holmes', 'Jefferson', 'Landry', 'Berry', 'Perez', 'Spencer', 'Starr', 'Carter', 'Edwards', 'Stark', 'Johnson', 'Fitz', 'Chief', 'Blanc', 'Perry', 'Stone', 'Williams', 'Lane', 'Jobs', 'Adams', 'Power', 'Tesla'];
+
+  private static countries: string[] = ['USA', 'UK', 'France', 'Canada', 'Poland'];
+
+  private static citiesUS: string[] = ['New York', 'Los Angeles', 'Miami', 'San Francisco', 'San Diego', 'Las Vegas'];
+
+  private static citiesUK: string[] = ['London', 'Liverpool', 'Manchester'];
+
+  private static citiesFR: string[] = ['Paris', 'Marseille', 'Lyon'];
+
+  private static citiesCA: string[] = ['Toronto', 'Vancouver', 'Montreal'];
+
+  private static citiesPL: string[] = ['Krakow', 'Warsaw', 'Wroclaw', 'Gdansk'];
+
+  private static citiesJP: string[] = ['Tokyo', 'Osaka', 'Kyoto', 'Yokohama'];
+
+  private static citiesGR: string[] = ['Berlin', 'Bonn', 'Cologne', 'Munich', 'Hamburg'];
+
+  private static roadSuffixes: string[] = ['Road', 'Street', 'Way'];
+
+  private static roadNames: string[] = ['Main', 'Garden', 'Broad', 'Oak', 'Cedar', 'Park', 'Pine', 'Elm', 'Market', 'Hill'];
 
   private static getRandomNumber(min: number, max: number): number {
       return Math.round(min + Math.random() * (max - min));
@@ -206,7 +219,7 @@ export class DataGridSharedData {
     const phoneCode = this.getRandomNumber(100, 900);
     const phoneNum1 = this.getRandomNumber(100, 900);
     const phoneNum2 = this.getRandomNumber(1000, 9000);
-    const phone = phoneCode + "-" + phoneNum1 + "-" + phoneNum2;
+    const phone = `${phoneCode}-${phoneNum1}-${phoneNum2}`;
     return phone;
   }
 
@@ -219,29 +232,27 @@ export class DataGridSharedData {
   }
 
   private static getRandomNameFirst(gender: string): string {
-    if (gender === "male") {
+    if (gender === 'male') {
       return this.getRandomItem(this.maleNames);
     }
-    else {
-      return this.getRandomItem(this.femaleNames);
-    }
+    return this.getRandomItem(this.femaleNames);
   }
 
   private static getRandomCity(country: string): string {
-    if (country === "Canada") {
-        return this.getRandomItem(this.citiesCA);
-    } else if (country === "France") {
-        return this.getRandomItem(this.citiesFR);
-    } else if (country === "Poland") {
-        return this.getRandomItem(this.citiesPL);
-    } else if (country === "USA") {
-        return this.getRandomItem(this.citiesUS);
-    } else if (country === "Japan") {
-        return this.getRandomItem(this.citiesJP);
-    } else if (country === "Germany") {
-        return this.getRandomItem(this.citiesGR);
-    } else { // if (country === "United Kingdom") {
-        return this.getRandomItem(this.citiesUK);
+    if (country === 'Canada') {
+      return this.getRandomItem(this.citiesCA);
+    } if (country === 'France') {
+      return this.getRandomItem(this.citiesFR);
+    } if (country === 'Poland') {
+      return this.getRandomItem(this.citiesPL);
+    } if (country === 'USA') {
+      return this.getRandomItem(this.citiesUS);
+    } if (country === 'Japan') {
+      return this.getRandomItem(this.citiesJP);
+    } if (country === 'Germany') {
+      return this.getRandomItem(this.citiesGR);
+    } // if (country === 'United Kingdom')
+      return this.getRandomItem(this.citiesUK);
     }
   }
 
@@ -249,7 +260,7 @@ export class DataGridSharedData {
     const num = Math.round(this.getRandomNumber(100, 300)).toString();
     const road = this.getRandomItem(this.roadNames);
     const suffix = this.getRandomItem(this.roadSuffixes);
-    return num + " " + road + " " + suffix;
+    return `${num} ${road} ${suffix}`;
   }
 
   private static getBirthday(age: number): Date {
@@ -261,25 +272,25 @@ export class DataGridSharedData {
   }
 
   private static getPhotoMale(id: number): string {
-    return 'https://static.infragistics.com/xplatform/images/people//GUY' + this.pad(id, 2) + '.png';
+    return `https://static.infragistics.com/xplatform/images/people//GUY${this.pad(id, 2)}.png`;
   }
 
   private static getPhotoFemale(id: number): string {
-    return 'https://static.infragistics.com/xplatform/images/people/GIRL' + this.pad(id, 2) + '.png';
+    return `https://static.infragistics.com/xplatform/images/people/GIRL${this.pad(id, 2)}.png`;
   }
 
   private static getGenderPhoto(gender: string): string {
-    return 'https://static.infragistics.com/xplatform/images/genders/' + gender + '.png';
+    return `https://static.infragistics.com/xplatform/images/genders/${gender}.png`;
   }
 
   private static getCountryFlag(country: string): string {
-    return 'https://static.infragistics.com/xplatform/images/flags/' + country + '.png';
+    return `https://static.infragistics.com/xplatform/images/flags/${country}.png`;
   }
 
   private static pad(num: number, size: number) {
-    let s = num + "";
+    let s = `${num}`;
     while (s.length < size) {
-      s = "0" + s;
+      s = `0${s}`;
     }
     return s;
   }
