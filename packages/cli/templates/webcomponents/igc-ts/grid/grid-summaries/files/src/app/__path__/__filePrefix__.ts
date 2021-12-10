@@ -62,6 +62,8 @@ export default class $(ClassName) extends HTMLElement {
   }
 
   connectedCallback() {
+    const grid = document.getElementsByTagName('app-grid-summaries')[0].shadowRoot!.getElementById('grid') as IgcDataGridComponent;
+
     // Custom Calculator - calculates the count for all USA.
     class CustomDomestic extends SummaryCalculator {
       get displayName(): string {
@@ -81,13 +83,13 @@ export default class $(ClassName) extends HTMLElement {
 
       public aggregate(a: any): void {
         if (a.Countries === 'USA') {
-            this.usCountries += 1;
+          this.usCountries += 1;
         }
       }
     }
 
     const onProvideCalculator = (s: IgcColumnSummaryDescription, e: IgcProvideCalculatorEventArgs) => {
-        e.calculator = new CustomDomestic();
+      e.calculator = new CustomDomestic();
     };
 
     const onLoad = () => {
@@ -175,7 +177,6 @@ export default class $(ClassName) extends HTMLElement {
       grid.summaryDescriptions.add(countries);
     };
 
-    const grid = document.getElementsByTagName('app-grid-summaries')[0].shadowRoot!.getElementById('grid') as IgcDataGridComponent;
     grid.dataSource = DataGridSharedData.getSales();
 
     onLoad();

@@ -80,6 +80,8 @@ export default class $(ClassName) extends HTMLElement {
   }
 
   connectedCallback() {
+    const grid = document.getElementsByTagName('app-$(path)')[0].shadowRoot!.getElementById('grid') as IgcDataGridComponent;
+
     const onCommitClick = () => {
       grid.commitEdits();
       commitButton.disabled = true;
@@ -154,7 +156,7 @@ export default class $(ClassName) extends HTMLElement {
         redoButton.disabled = !grid.canRedo;
         undoButton.disabled = !grid.canUndo;
       } else if (grid.editMode === EditModeType.Cell) {
-        //delete grid row immediately
+        // delete grid row immediately
         grid.removeItem(rowItem);
       }
     };
@@ -172,7 +174,6 @@ export default class $(ClassName) extends HTMLElement {
       }
   };
 
-    const grid = document.getElementsByTagName('app-$(path)')[0].shadowRoot!.getElementById('grid') as IgcDataGridComponent;
     if (grid !== null) {
       grid.dataSource = this.data;
       grid.activationMode = GridActivationMode.Cell;
