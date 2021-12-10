@@ -88,7 +88,6 @@ export class DataGridSharedData {
 
     const names: string[] = [
       'Intel CPU', 'AMD CPU',
-      'Intel Motherboard', 'AMD Motherboard', 'NVIDIA Motherboard',
       'NVIDIA GPU', 'GIGABYTE GPU', 'Asus GPU', 'AMD GPU', 'MSI GPU',
       'Corsair Memory', 'Patriot Memory', 'Skill Memory',
       'Samsung HDD', 'WD HDD', 'Seagate HDD', 'Intel HDD',
@@ -203,16 +202,16 @@ export class DataGridSharedData {
   private static roadNames: string[] = ['Main', 'Garden', 'Broad', 'Oak', 'Cedar', 'Park', 'Pine', 'Elm', 'Market', 'Hill'];
 
   private static getRandomNumber(min: number, max: number): number {
-      return Math.round(min + Math.random() * (max - min));
+    return Math.round(min + Math.random() * (max - min));
   }
 
   private static getRandomItem(array: any[]): any {
-      const index = Math.round(this.getRandomNumber(0, array.length - 1));
-      return array[index];
+    const index = Math.round(this.getRandomNumber(0, array.length - 1));
+    return array[index];
   }
 
   private static getRandomDate(start: Date, end: Date) {
-      return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+    return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
   }
 
   private static getRandomPhone(): string {
@@ -235,6 +234,7 @@ export class DataGridSharedData {
     if (gender === 'male') {
       return this.getRandomItem(this.maleNames);
     }
+
     return this.getRandomItem(this.femaleNames);
   }
 
@@ -252,8 +252,7 @@ export class DataGridSharedData {
     } if (country === 'Germany') {
       return this.getRandomItem(this.citiesGR);
     } // if (country === 'United Kingdom')
-      return this.getRandomItem(this.citiesUK);
-    }
+    return this.getRandomItem(this.citiesUK);
   }
 
   private static getRandomStreet(): string {
