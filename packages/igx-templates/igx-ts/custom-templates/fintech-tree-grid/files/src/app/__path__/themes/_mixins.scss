@@ -1,4 +1,4 @@
-@use '@infragistics/igniteui-angular/theming' as *;
+@use '<%=igxPackage%>/theming' as *;
 
 @mixin scrollbar-love($scrollbar-color: null) {
     $scrollbar-track: hexrgba(igx-color($default-palette, 'grays', 200));
