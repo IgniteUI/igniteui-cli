@@ -1,3 +1,6 @@
+@use '<%=igxPackage%>/theming' as *;
+@use './themes/_mixins' as *;
+
 :host {
     display: block;
     width: 100%;
@@ -224,12 +227,10 @@
     height: 100%;
 }
 
-@import '~<%=igxPackage%>/theming';
 @include igx-core();
 @include igx-typography($font-family: $material-typeface, $type-scale: $material-type-scale);
 @include igx-theme($default-palette);
 
-@import './themes/_mixins';
 
 @include scrollbar-love();
 
