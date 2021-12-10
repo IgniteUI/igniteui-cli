@@ -7,7 +7,7 @@ export class DataGridSharedData {
     const employees: any[] = [];
     let maleCount: number = 0;
     let femaleCount: number = 0;
-    for (let i = 0; i < count; i++) {
+    for (let i = 0; i < count; i += 1) {
       const age: number = Math.round(this.getRandomNumber(20, 40));
       const gender: string = this.getRandomGender();
       const firstName: string = this.getRandomNameFirst(gender);
@@ -21,13 +21,13 @@ export class DataGridSharedData {
       let photoPath: any;
 
       if (gender === 'male') {
-        maleCount++;
+        maleCount += 1;
         if (maleCount > 26) {
           maleCount = 1;
         }
         photoPath = this.getPhotoMale(maleCount);
       } else {
-        femaleCount++;
+        femaleCount += 1;
         if (femaleCount > 24) {
           femaleCount = 1;
         }
@@ -74,7 +74,7 @@ export class DataGridSharedData {
       weekCount = 52;
     }
     const productivity: any[] = [];
-    for (let w = 0; w < weekCount; w++) {
+    for (let w = 0; w < weekCount; w += 1) {
       const value = this.getRandomNumber(-50, 50);
       productivity.push({ Value: value, Week: w });
     }
@@ -97,7 +97,7 @@ export class DataGridSharedData {
     const status: string[] = ['Packing', 'Shipped', 'Delivered'];
     const sales: any[] = [];
 
-    for (let i = 0; i < count; i++) {
+    for (let i = 0; i < count; i += 1) {
       const price = this.getRandomNumber(100, 900);
       const items = this.getRandomNumber(10, 80);
       const value = price * items;
@@ -132,7 +132,7 @@ export class DataGridSharedData {
     const emails: string[] = ['estates.com', 'remax.com', 'zillow.com', 'realtor.com', 'coldwell.com'];
     const countries: string[] = ['USA', 'UK', 'France', 'Canada', 'Poland', 'Japan', 'Germany'];
 
-    for (let i = 0; i < count; i++) {
+    for (let i = 0; i < count; i += 1) {
       const year: number = this.getRandomNumber(1950, 2015);
       const age: number = 2020 - year;
 

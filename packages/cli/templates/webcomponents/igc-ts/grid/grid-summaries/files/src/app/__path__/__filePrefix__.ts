@@ -81,7 +81,7 @@ export default class $(ClassName) extends HTMLElement {
 
       public aggregate(a: any): void {
         if (a.Countries === 'USA') {
-            this.usCountries++;
+            this.usCountries += 1;
         }
       }
     }
