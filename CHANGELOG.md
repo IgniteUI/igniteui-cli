@@ -1,3 +1,6 @@
+# [8.2.3](https://github.com/IgniteUI/igniteui-cli/compare/v8.2.2...v8.2.3)  (2021-12-10)
+yarn.lock update to use `typescript` version, lower than `4.5.x`, until there is a compatibility with the later `typescript` version.
+
 # [8.2.2](https://github.com/IgniteUI/igniteui-cli/compare/v8.2.1...v8.2.2)  (2021-11-25)
 
 All packages are configured to use `typescript` version, lower than `4.5.x`, until there is a compatibility with the later `typescript` version.
