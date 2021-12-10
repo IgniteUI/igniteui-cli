@@ -1,3 +1,20 @@
+# [9.0.2](https://github.com/IgniteUI/igniteui-cli/compare/v9.0.1...v9.0.2)  
+## igniteui/cli-core@9.0.2 (2021-12-10)
+
+- `igniteui-webcomponents` - adding more Web components templates & bundling [PR #954](https://github.com/IgniteUI/igniteui-cli/pull/954)
+
+## igniteui/angular-templates@13.0.902
+
+* Update @imports to @use for scss modules [PR #961](https://github.com/IgniteUI/igniteui-cli/pull/961)
+
+## igniteui/angular-schematics@13.0.902
+
+* Note: Version bump only for package igniteui/angular-schematics
+
+## igniteui-cli@9.0.2
+
+* Note: Version bump only for package igniteui-cli@9.0.2
+
 # [9.0.1](https://github.com/IgniteUI/igniteui-cli/compare/v9.0.0...v9.0.1)  (2021-11-25)
 
 All packages are configured to use `typescript` version, lower than `4.5.x`, until there is a compatibility with the later `typescript` version.
