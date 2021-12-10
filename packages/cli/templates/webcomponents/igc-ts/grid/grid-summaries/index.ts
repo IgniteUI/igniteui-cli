@@ -1,19 +1,19 @@
 import { TypeScriptFileUpdate } from "@igniteui/cli-core";
 import { IgniteUIForWebComponentsTemplate } from "../../../../../lib/templates/IgniteUIForWebComponentsTemplate";
 
-class IgcListTemplate extends IgniteUIForWebComponentsTemplate {
+class IgcGridSummariesTemplate extends IgniteUIForWebComponentsTemplate {
 	constructor() {
 		super(__dirname);
-		this.components = ["List"];
+		this.components = ["Grid"];
 		this.controlGroup = "Grids & Lists";
 		this.listInComponentTemplates = true;
-		this.id = "list";
+		this.id = "grid-summaries";
 		this.projectType = "igc-ts";
-		this.name = "List";
-		this.description = "basic IgcList";
+		this.name = "Grid Summaries";
+		this.description = "IgcGrid with column summaries";
 	}
 	protected addClassDeclaration(mainModule: TypeScriptFileUpdate, projPath: string, name: string, modulePath: string) {
 		// not applicable with custom module
 	}
 }
-module.exports = new IgcListTemplate();
+module.exports = new IgcGridSummariesTemplate();
