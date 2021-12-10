@@ -30,7 +30,7 @@ export default class $(ClassName) extends HTMLElement {
         margin: 0px;
         padding-left: 275px;
         padding-right: 20px;
-        width: calc(100% - 275px);
+        width: calc(100% - 300px);
       }
     </style>
     <div class="container sample">
