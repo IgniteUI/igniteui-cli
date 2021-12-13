@@ -1,3 +1,20 @@
+# [9.0.3](https://github.com/IgniteUI/igniteui-cli/compare/v9.0.2...v9.0.3)  
+## igniteui/cli-core@9.0.3 (2021-12-13)
+
+* Note: Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@13.0.903
+
+* Fix home import without placeholder [PR #966](https://github.com/IgniteUI/igniteui-cli/pull/966)
+
+## igniteui/angular-schematics@13.0.903
+
+* Note: Version bump only for package igniteui/angular-schematics
+
+## igniteui-cli@9.0.3
+
+* Note: Version bump only for package igniteui-cli
+
 # [9.0.2](https://github.com/IgniteUI/igniteui-cli/compare/v9.0.1...v9.0.2)  
 ## igniteui/cli-core@9.0.2 (2021-12-10)
 
