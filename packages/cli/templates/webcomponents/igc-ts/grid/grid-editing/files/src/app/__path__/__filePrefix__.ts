@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import {
   IgcDataGridModule,
   IgcGridColumnOptionsModule,
@@ -80,6 +81,11 @@ export default class $(ClassName) extends HTMLElement {
   }
 
   connectedCallback() {
+    const grid = document.getElementsByTagName('app-grid-editing')[0].shadowRoot!.getElementById('grid') as IgcDataGridComponent;
+    const commitButton = document.getElementsByTagName('app-grid-editing')[0].shadowRoot!.getElementById('commitClick') as HTMLButtonElement;
+    const undoButton = document.getElementsByTagName('app-grid-editing')[0].shadowRoot!.getElementById('undoClick') as HTMLButtonElement;
+    const redoButton = document.getElementsByTagName('app-grid-editing')[0].shadowRoot!.getElementById('redoClick') as HTMLButtonElement;
+
     const onCommitClick = () => {
       grid.commitEdits();
       commitButton.disabled = true;
@@ -115,7 +121,35 @@ export default class $(ClassName) extends HTMLElement {
       }
     };
 
-    const onDeleteCellUpdating = (s: IgcTemplateColumnComponent, e: IgcTemplateCellUpdatingEventArgs) => {
+    if (commitButton !== null) {
+      commitButton.onclick = onCommitClick;
+    }
+    if (undoButton !== null) {
+      undoButton.onclick = onUndoClick;
+    }
+
+    if (redoButton !== null) {
+      redoButton.onclick = onRedoClick;
+    }
+
+    const onDeleteRowClick = (e: MouseEvent) => {
+      const button = e.srcElement as HTMLButtonElement;
+      const viewIndex = parseInt(button.id, 10);
+      const rowItem = grid.actualDataSource.getItemAtIndex(viewIndex);
+
+      if (grid.editMode === EditModeType.CellBatch || grid.editMode === EditModeType.Row) {
+        grid.removeItem(rowItem);
+        commitButton.disabled = !grid.canCommit;
+        redoButton.disabled = !grid.canRedo;
+        undoButton.disabled = !grid.canUndo;
+      } else if (grid.editMode === EditModeType.Cell) {
+        // delete grid row immediately
+        grid.removeItem(rowItem);
+      }
+    };
+
+    const onDeleteCellUpdating = (s: IgcTemplateColumnComponent,
+      e: IgcTemplateCellUpdatingEventArgs) => {
       const content = e.content as HTMLDivElement;
       if (content.childElementCount === 0) {
         const button = document.createElement('button') as HTMLButtonElement;
@@ -143,22 +177,6 @@ export default class $(ClassName) extends HTMLElement {
       grid.editModeClickAction = event.target.value;
     };
 
-    const onDeleteRowClick = (e: MouseEvent) => {
-      const button = e.srcElement as HTMLButtonElement;
-      const viewIndex = parseInt(button.id);
-      const rowItem = grid.actualDataSource.getItemAtIndex(viewIndex);
-
-      if (grid.editMode === EditModeType.CellBatch || grid.editMode === EditModeType.Row) {
-        grid.removeItem(rowItem);
-        commitButton.disabled = !grid.canCommit;
-        redoButton.disabled = !grid.canRedo;
-        undoButton.disabled = !grid.canUndo;
-      } else if (grid.editMode === EditModeType.Cell) {
-        //delete grid row immediately
-        grid.removeItem(rowItem);
-      }
-    };
-
     const onCellValueChanging = (s: IgcDataGridComponent, e: IgcGridCellValueChangingEventArgs) => {
       if (s.editMode === EditModeType.CellBatch || grid.editMode === EditModeType.Row) {
         commitButton.disabled = !grid.canCommit;
@@ -170,9 +188,8 @@ export default class $(ClassName) extends HTMLElement {
         commitButton.disabled = true;
         s.setEditError(e.editID, 'Error, cell is empty');
       }
-  };
+    };
 
-    const grid = document.getElementsByTagName('app-$(path)')[0].shadowRoot!.getElementById('grid') as IgcDataGridComponent;
     if (grid !== null) {
       grid.dataSource = this.data;
       grid.activationMode = GridActivationMode.Cell;
@@ -181,32 +198,17 @@ export default class $(ClassName) extends HTMLElement {
       grid.cellValueChanging = onCellValueChanging;
     }
 
-    const dropDown = document.getElementsByTagName('app-$(path)')[0].shadowRoot!.getElementById('editModeDropBox');
+    const dropDown = document.getElementsByTagName('app-grid-editing')[0].shadowRoot!.getElementById('editModeDropBox');
     if (dropDown !== null) {
       dropDown.onchange = editModeChanged;
     }
 
-    const dropDown2 = document.getElementsByTagName('app-$(path)')[0].shadowRoot!.getElementById('editModeClickActionDropBox');
+    const dropDown2 = document.getElementsByTagName('app-grid-editing')[0].shadowRoot!.getElementById('editModeClickActionDropBox');
     if (dropDown2 !== null) {
       dropDown2.onchange = editModeClickActionChanged;
     }
 
-    let commitButton = document.getElementsByTagName('app-$(path)')[0].shadowRoot!.getElementById('commitClick') as HTMLButtonElement;
-    if (commitButton !== null) {
-      commitButton.onclick = onCommitClick;
-    }
-
-    let undoButton = document.getElementsByTagName('app-$(path)')[0].shadowRoot!.getElementById('undoClick') as HTMLButtonElement;
-    if (undoButton !== null) {
-      undoButton.onclick = onUndoClick;
-    }
-
-    let redoButton = document.getElementsByTagName('app-$(path)')[0].shadowRoot!.getElementById('redoClick') as HTMLButtonElement;
-    if (redoButton !== null) {
-      redoButton.onclick = onRedoClick;
-    }
-
-    const deleteRowColumn = document.getElementsByTagName('app-$(path)')[0].shadowRoot!.getElementById('deleteRowColumn') as IgcTemplateColumnComponent;
+    const deleteRowColumn = document.getElementsByTagName('app-grid-editing')[0].shadowRoot!.getElementById('deleteRowColumn') as IgcTemplateColumnComponent;
     if (deleteRowColumn !== null) {
       deleteRowColumn.cellUpdating = onDeleteCellUpdating;
     }
