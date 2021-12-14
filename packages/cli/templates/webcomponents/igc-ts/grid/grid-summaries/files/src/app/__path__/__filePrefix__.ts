@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions, max-classes-per-file, class-methods-use-this */
 import {
   IgcDataGridModule,
   IgcGridColumnOptionsModule,
@@ -88,7 +89,8 @@ export default class $(ClassName) extends HTMLElement {
       }
     }
 
-    const onProvideCalculator = (s: IgcColumnSummaryDescription, e: IgcProvideCalculatorEventArgs) => {
+    const onProvideCalculator = (s: IgcColumnSummaryDescription,
+      e: IgcProvideCalculatorEventArgs) => {
       e.calculator = new CustomDomestic();
     };
 

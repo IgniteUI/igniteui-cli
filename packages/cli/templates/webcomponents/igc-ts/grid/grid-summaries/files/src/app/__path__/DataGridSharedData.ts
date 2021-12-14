@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 export class DataGridSharedData {
   public static getEmployees(count?: number): any[] {
     if (count === undefined) {
@@ -102,7 +103,7 @@ export class DataGridSharedData {
       const items = this.getRandomNumber(10, 80);
       const value = price * items;
       const margin = this.getRandomNumber(3, 10);
-      const profit = Math.round((price * margin / 100) * items);
+      const profit = Math.round((price * (margin / 100)) * items);
       const country = this.getRandomItem(countries);
       sales.push({
         BundlePrice: price,

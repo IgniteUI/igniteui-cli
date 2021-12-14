@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions, quotes, no-tabs, indent, comma-dangle */
 import {
   Route,
   Router
