@@ -1,5 +1,22 @@
-# [9.0.3](https://github.com/IgniteUI/igniteui-cli/compare/v9.0.2...v9.0.3)  
-## igniteui/cli-core@9.0.3 (2021-12-13)
+# [9.0.4](https://github.com/IgniteUI/igniteui-cli/compare/v9.0.3...v9.0.4)  (2021-12-15)
+## igniteui/cli-core@9.0.4
+
+* Note: Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@13.0.904
+
+* Note: Version bump only for package igniteui/angular-templates
+
+## igniteui/angular-schematics@13.0.904
+
+* Note: Version bump only for package igniteui/angular-schematics
+
+## igniteui-cli@9.0.4
+
+- `igniteui-webcomponents` - Fix lint for grid templates [PR #965](https://github.com/IgniteUI/igniteui-cli/pull/965)
+
+# [9.0.3](https://github.com/IgniteUI/igniteui-cli/compare/v9.0.2...v9.0.3)  (2021-12-13)
+## igniteui/cli-core@9.0.3 
 
 * Note: Version bump only for package igniteui/cli-core
 
@@ -15,8 +32,8 @@
 
 * Note: Version bump only for package igniteui-cli
 
-# [9.0.2](https://github.com/IgniteUI/igniteui-cli/compare/v9.0.1...v9.0.2)  
-## igniteui/cli-core@9.0.2 (2021-12-10)
+# [9.0.2](https://github.com/IgniteUI/igniteui-cli/compare/v9.0.1...v9.0.2)  (2021-12-10)
+## igniteui/cli-core@9.0.2
 
 - `igniteui-webcomponents` - adding more Web components templates & bundling [PR #954](https://github.com/IgniteUI/igniteui-cli/pull/954)
 
