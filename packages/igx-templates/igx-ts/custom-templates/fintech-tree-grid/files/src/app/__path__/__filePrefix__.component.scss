@@ -1,3 +1,6 @@
+@use '<%=igxPackage%>/theming' as *;
+@use './themes/_mixins' as *;
+
 :host ::ng-deep {
     .finjs-icons {
         display: flex;
@@ -202,12 +205,10 @@
 // Custom Dark Theme
 
 // Import the theme utilities first
-@import '~<%=igxPackage%>/theming';
 @include igx-core();
 @include igx-typography($font-family: $material-typeface, $type-scale: $material-type-scale);
 @include igx-theme($default-palette);
 
-@import './themes/_mixins';
 
 $green-palette: igx-palette($primary: #09f,$secondary: #72da67, $surface: #333);
 
