@@ -5,7 +5,7 @@ class IgcListTemplate extends IgniteUIForWebComponentsTemplate {
 	constructor() {
 		super(__dirname);
 		this.components = ["List"];
-		this.controlGroup = "Lists";
+		this.controlGroup = "Grids & Lists";
 		this.listInComponentTemplates = true;
 		this.id = "list";
 		this.projectType = "igc-ts";

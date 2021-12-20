@@ -2,17 +2,13 @@ import {
   IgcDataGridModule,
   IgcGridColumnOptionsModule,
   IgcDataGridComponent,
-  IgcImageColumnComponent,
-  IgcTextColumnComponent,
-  IgcNumericColumnComponent,
-  IgcDateTimeColumnComponent,
-  IgcColumnGroupDescription
+  IgcColumnGroupDescription,
 } from 'igniteui-webcomponents-grids';
 import { ModuleManager } from 'igniteui-webcomponents-core';
 
 ModuleManager.register(
   IgcDataGridModule,
-  IgcGridColumnOptionsModule
+  IgcGridColumnOptionsModule,
 );
 
 export default class $(ClassName) extends HTMLElement {
@@ -43,13 +39,14 @@ export default class $(ClassName) extends HTMLElement {
 
   constructor() {
     super();
-    this.attachShadow({mode: 'open'});
+    this.attachShadow({ mode: 'open' });
     this.shadowRoot!.innerHTML = `
     <style>
       :host {
         height: 100%;
         margin: 0px;
         padding-left: 275px;
+        padding-right: 20px;
         width: calc(100% - 275px);
       }
     </style>

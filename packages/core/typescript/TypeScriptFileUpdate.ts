@@ -221,11 +221,11 @@ export class TypeScriptFileUpdate {
 								.concat(newObject);
 						}
 
-						const elements = ts.createNodeArray([
+						const elements = ts.factory.createNodeArray([
 							...resultNodes
 						]);
 
-						return ts.updateArrayLiteral(array, elements);
+						return ts.factory.updateArrayLiteralExpression(array, elements);
 					} else {
 						return ts.visitEachChild(node, conditionalVisitor, context);
 					}
@@ -267,9 +267,9 @@ export class TypeScriptFileUpdate {
 						if (childrenProperty) {
 							childrenArray = childrenProperty.getChildren()
 								.filter(element => element.kind === ts.SyntaxKind.ArrayLiteralExpression)[0] as ts.ArrayLiteralExpression
-								|| ts.createArrayLiteral();
+								|| ts.factory.createArrayLiteralExpression();
 						} else {
-							childrenArray = ts.createArrayLiteral();
+							childrenArray = ts.factory.createArrayLiteralExpression();
 						}
 
 						let existingProperties = syntaxList.getChildren()
@@ -277,8 +277,8 @@ export class TypeScriptFileUpdate {
 						const newArrayValues = childrenArray.elements.concat(newObject);
 						if (!childrenProperty) {
 							const propertyName = "children";
-							const propertyValue = ts.createArrayLiteral([...newArrayValues]);
-							childrenProperty = ts.createPropertyAssignment(propertyName, propertyValue);
+							const propertyValue = ts.factory.createArrayLiteralExpression([...newArrayValues]);
+							childrenProperty = ts.factory.createPropertyAssignment(propertyName, propertyValue);
 							existingProperties = existingProperties
 								.concat(childrenProperty);
 						} else {
@@ -288,7 +288,7 @@ export class TypeScriptFileUpdate {
 								ts.updatePropertyAssignment(
 									childrenProperty,
 									childrenPropertyName,
-									ts.createArrayLiteral([...newArrayValues])
+									ts.factory.createArrayLiteralExpression([...newArrayValues])
 								);
 							existingProperties
 								.splice(index, 1, childrenProperty);
@@ -347,14 +347,14 @@ export class TypeScriptFileUpdate {
 			return;
 		}
 
-		const newStatements = ts.createNodeArray([
+		const newStatements = ts.factory.createNodeArray([
 			...this.targetSource.statements.slice(0, this.importsMeta.lastIndex),
 			...newImports.map(x => TsUtils.createIdentifierImport(x.imports, x.from)),
 			...this.targetSource.statements.slice(this.importsMeta.lastIndex)
 		]);
 		newImports.forEach(x => this.createdStringLiterals.push(x.from));
 
-		this.targetSource = ts.updateSourceFileNode(this.targetSource, newStatements);
+		this.targetSource = ts.factory.updateSourceFile(this.targetSource, newStatements);
 	}
 
 	//#region ts.TransformerFactory
@@ -387,9 +387,9 @@ export class TypeScriptFileUpdate {
 					const editImport = editImports.find(x => x.from === moduleSpecifier);
 					const newImports = editImport.imports.filter(x => alreadyImported.indexOf(x) === -1);
 
-					node = ts.updateNamedImports(namedImports, [
+					node = ts.factory.updateNamedImports(namedImports, [
 						...existing,
-						...newImports.map(x => ts.createImportSpecifier(undefined, ts.createIdentifier(x)))
+						...newImports.map(x => ts.factory.createImportSpecifier(false, undefined, ts.factory.createIdentifier(x)))
 					]);
 				} else {
 					node = ts.visitEachChild(node, visitImport, context);
@@ -434,19 +434,19 @@ export class TypeScriptFileUpdate {
 						switch (prop) {
 							case "imports":
 								const importDeps = this.ngMetaEdits.imports;
-								arrayExpr = ts.createArrayLiteral(
+								arrayExpr = ts.factory.createArrayLiteralExpression(
 									importDeps.map(x => TsUtils.createIdentifier(x.name, x.root ? "forRoot" : ""))
 								);
 								break;
 							case "declarations":
 							case "providers":
 							case "exports":
-								arrayExpr = ts.createArrayLiteral(
-									this.ngMetaEdits[prop].map(x => ts.createIdentifier(x))
+								arrayExpr = ts.factory.createArrayLiteralExpression(
+									this.ngMetaEdits[prop].map(x => ts.factory.createIdentifier(x))
 								);
 								break;
 						}
-						newProps.push(ts.createPropertyAssignment(prop, arrayExpr));
+						newProps.push(ts.factory.createPropertyAssignment(prop, arrayExpr));
 					}
 
 					return ts.updateObjectLiteral(obj, [
@@ -473,15 +473,15 @@ export class TypeScriptFileUpdate {
 						case "exports":
 							identifiers = this.ngMetaEdits[prop]
 								.filter(x => alreadyImported.indexOf(x) === -1)
-								.map(x => ts.createIdentifier(x));
+								.map(x => ts.factory.createIdentifier(x));
 							break;
 					}
-					const elements = ts.createNodeArray([
+					const elements = ts.factory.createNodeArray([
 						...props,
 						...identifiers
 					]);
 
-					return ts.updateArrayLiteral(initializer, elements);
+					return ts.factory.updateArrayLiteralExpression(initializer, elements);
 				} else {
 					node = ts.visitEachChild(node, visitNgModule, context);
 				}
@@ -650,11 +650,12 @@ export class TypeScriptFileUpdate {
 	}
 
 	private createRouteEntry(linkPath: string, className: string, linkText: string): ts.ObjectLiteralExpression {
-		const routePath = ts.createPropertyAssignment("path", ts.createLiteral(linkPath));
-		const routeComponent = ts.createPropertyAssignment("component", ts.createIdentifier(className));
-		const routeDataInner = ts.createPropertyAssignment("text", ts.createLiteral(linkText));
-		const routeData = ts.createPropertyAssignment("data", ts.createObjectLiteral([routeDataInner]));
-		return ts.createObjectLiteral([routePath, routeComponent, routeData]);
+		const routePath = ts.factory.createPropertyAssignment("path", ts.factory.createStringLiteral(linkPath));
+		const routeComponent = ts.factory.createPropertyAssignment("component", ts.factory.createIdentifier(className));
+		const routeDataInner = ts.factory.createPropertyAssignment("text", ts.factory.createStringLiteral(linkText));
+		const routeData = ts.factory.createPropertyAssignment(
+			"data", ts.factory.createObjectLiteralExpression([routeDataInner]));
+		return ts.factory.createObjectLiteralExpression([routePath, routeComponent, routeData]);
 	}
 
 }
