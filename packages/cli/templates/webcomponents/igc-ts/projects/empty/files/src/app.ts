@@ -1,3 +1,4 @@
+/* eslint-disable no-return-assign */
 import {
   defineComponents,
   IgcNavDrawerComponent,
@@ -9,7 +10,12 @@ import { routes } from './index.js';
 import './app/home/home.component';
 import './app/not-found/not-found.component';
 
-defineComponents(IgcNavDrawerComponent, IgcNavDrawerItemComponent, IgcNavDrawerHeaderItemComponent, IgcRippleComponent);
+defineComponents(
+  IgcNavDrawerComponent,
+  IgcNavDrawerItemComponent,
+  IgcNavDrawerHeaderItemComponent,
+  IgcRippleComponent,
+);
 
 export class App extends HTMLElement {
   connectedCallback() {

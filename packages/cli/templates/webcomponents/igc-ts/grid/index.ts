@@ -4,7 +4,7 @@ class IgcGridComponent extends BaseComponent {
 	constructor() {
 		super(__dirname);
 		this.name  = "Grid";
-		this.group = "Hidden";
+		this.group = "Grids & Lists";
 		this.description = "pick from different grid views";
 		//this.groupPriority = 10;
 	}

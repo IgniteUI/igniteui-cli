@@ -1,4 +1,8 @@
-import { Commands, Context, Route, Router } from '@vaadin/router';
+/* eslint-disable import/extensions, quotes, no-tabs, indent, comma-dangle */
+import {
+  Route,
+  Router
+} from '@vaadin/router';
 import './app/home/home.component';
 
 export const routes: Route[] = [
