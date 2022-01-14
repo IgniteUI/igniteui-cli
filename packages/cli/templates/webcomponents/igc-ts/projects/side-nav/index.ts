@@ -1,10 +1,10 @@
 import { ControlExtraConfiguration, defaultDelimiters, ProjectTemplate, Util } from "@igniteui/cli-core";
 import * as path from "path";
 
-class EmptyProject implements ProjectTemplate {
+class SideNavProject implements ProjectTemplate {
 	public id: string = "webcomponent";
-	public name = "Empty Project";
-	public description = "Project structure with routing and a home page";
+	public name = "Default side navigation";
+	public description = "Project structure with side navigation drawer";
 	public framework: string = "webcomponents";
 	public projectType: string = "igc-ts";
 	public dependencies: string[];
@@ -41,4 +41,4 @@ class EmptyProject implements ProjectTemplate {
 		throw new Error("Method not implemented.");
 	}
 }
-module.exports = new EmptyProject();
+module.exports = new SideNavProject();
