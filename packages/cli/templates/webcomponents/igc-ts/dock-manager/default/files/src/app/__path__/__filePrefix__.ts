@@ -91,15 +91,15 @@ export default class $(ClassName) extends HTMLElement {
               {
                 type: IgcDockManagerPaneType.contentPane,
                 contentId: 'content1',
-                header: 'Content Pane 1'
+                header: 'Content Pane 1',
               },
               {
                 type: IgcDockManagerPaneType.contentPane,
                 contentId: 'content2',
                 header: 'Unpinned Pane 1',
-                isPinned: false
-              }
-            ]
+                isPinned: false,
+              },
+            ],
           },
           {
             type: IgcDockManagerPaneType.splitPane,
@@ -119,25 +119,25 @@ export default class $(ClassName) extends HTMLElement {
                         {
                           type: IgcDockManagerPaneType.contentPane,
                           header: 'Document 1',
-                          contentId: 'content3'
+                          contentId: 'content3',
                         },
                         {
                           type: IgcDockManagerPaneType.contentPane,
                           header: 'Document 2',
-                          contentId: 'content4'
-                        }
-                      ]
-                    }
-                  ]
-                }
+                          contentId: 'content4',
+                        },
+                      ],
+                    },
+                  ],
+                },
               },
               {
                 type: IgcDockManagerPaneType.contentPane,
                 contentId: 'content5',
                 header: 'Unpinned Pane 2',
-                isPinned: false
-              }
-            ]
+                isPinned: false,
+              },
+            ],
           },
           {
             type: IgcDockManagerPaneType.splitPane,
@@ -150,38 +150,38 @@ export default class $(ClassName) extends HTMLElement {
                   {
                     type: IgcDockManagerPaneType.contentPane,
                     contentId: 'content6',
-                    header: 'Tab 1'
+                    header: 'Tab 1',
                   },
                   {
                     type: IgcDockManagerPaneType.contentPane,
                     contentId: 'content7',
-                    header: 'Tab 2'
+                    header: 'Tab 2',
                   },
                   {
                     type: IgcDockManagerPaneType.contentPane,
                     contentId: 'content8',
-                    header: 'Tab 3'
+                    header: 'Tab 3',
                   },
                   {
                     type: IgcDockManagerPaneType.contentPane,
                     contentId: 'content9',
-                    header: 'Tab 4'
+                    header: 'Tab 4',
                   },
                   {
                     type: IgcDockManagerPaneType.contentPane,
                     contentId: 'content10',
-                    header: 'Tab 5'
-                  }
-                ]
+                    header: 'Tab 5',
+                  },
+                ],
               },
               {
                 type: IgcDockManagerPaneType.contentPane,
                 contentId: 'content11',
-                header: 'Content Pane 2'
-              }
-            ]
-          }
-        ]
+                header: 'Content Pane 2',
+              },
+            ],
+          },
+        ],
       },
       floatingPanes: [
         {
@@ -194,11 +194,11 @@ export default class $(ClassName) extends HTMLElement {
             {
               type: IgcDockManagerPaneType.contentPane,
               contentId: 'content12',
-              header: 'Floating Pane'
-            }
-          ]
-        }
-      ]
+              header: 'Floating Pane',
+            },
+          ],
+        },
+      ],
     };
   }
 }
