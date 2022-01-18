@@ -22,7 +22,7 @@ registerIcon(
 export default class $(ClassName) extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
-      <igc-navbar style="height:30px; width:800px">
+      <igc-navbar style="height:10% width:100%">
         <igc-icon slot="start" name="home"></igc-icon>
         <h2>Home</h2>
         <igc-icon slot="end" name="search"></igc-icon>
