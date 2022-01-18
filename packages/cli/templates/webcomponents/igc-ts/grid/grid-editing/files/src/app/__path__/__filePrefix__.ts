@@ -29,7 +29,6 @@ export default class $(ClassName) extends HTMLElement {
       :host {
         height: 100%;
         margin: 0px;
-        padding-left: 275px;
         padding-right: 20px;
         width: calc(100% - 300px);
       }

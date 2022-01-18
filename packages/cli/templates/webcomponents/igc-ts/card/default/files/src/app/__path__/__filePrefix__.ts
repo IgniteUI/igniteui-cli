@@ -20,7 +20,7 @@ export default class $(ClassName) extends HTMLElement {
     this.innerHTML = `
     <style>
       igc-card {
-        width: 400px
+        width: 40%
       }
     </style>
     <igc-card>
