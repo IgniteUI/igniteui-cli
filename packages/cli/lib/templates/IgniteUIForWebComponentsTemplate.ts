@@ -38,8 +38,8 @@ export class IgniteUIForWebComponentsTemplate implements Template {
 	}
 
 	public registerInProject(projectPath: string, fullName: string, options?: AddTemplateArgs) {
-		if (!(options && options.skipRoute) && App.container.get<IFileSystem>(FS_TOKEN).fileExists("src/index.ts")) {
-			const routingModule = new TypeScriptFileUpdate(path.join(projectPath, "src/index.ts"));
+		if (!(options && options.skipRoute) && App.container.get<IFileSystem>(FS_TOKEN).fileExists("src/app/app-routing.ts")) {
+			const routingModule = new TypeScriptFileUpdate(path.join(projectPath, "src/app/app-routing.ts"));
 			routingModule.addRoute(
 				path.join(projectPath, `src/app/${this.folderName(fullName)}/${this.fileName(fullName)}.component.ts`),
 				this.fileName(fullName),

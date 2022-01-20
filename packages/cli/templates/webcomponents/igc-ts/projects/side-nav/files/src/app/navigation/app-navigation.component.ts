@@ -6,9 +6,7 @@ import {
   IgcNavDrawerHeaderItemComponent,
   IgcRippleComponent,
 } from 'igniteui-webcomponents';
-import { routes } from './index.js';
-import './app/home/home.component';
-import './app/not-found/not-found.component';
+import { routes } from '../app-routing.js';
 
 defineComponents(
   IgcNavDrawerComponent,

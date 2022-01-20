@@ -1,9 +1,8 @@
-/* eslint-disable import/extensions, quotes, no-tabs, indent, comma-dangle */
 import {
   Route,
-  Router
+  Router,
 } from '@vaadin/router';
-import './app/home/home.component';
+import './home/home.component';
 
 export const routes: Route[] = [
   { path: '/', component: 'app-home', name: 'Home' },
@@ -11,6 +10,6 @@ export const routes: Route[] = [
   { path: '(.*)', component: 'app-not-found' },
 ];
 
-const outlet = document.getElementById('outlet');
+const outlet = document.getElementsByTagName('router-outlet')[0];
 export const router = new Router(outlet);
 router.setRoutes(routes);

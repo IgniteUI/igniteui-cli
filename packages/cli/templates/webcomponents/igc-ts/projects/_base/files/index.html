@@ -12,12 +12,7 @@
       background: #fafafa;
     }
 
-    :host {
-      display: block;
-      padding: 25px;
-    }
-
-    #outlet {
+    app-root {
       width: 100%;
       height: 100%;
       display: flex;
@@ -27,18 +22,13 @@
       align-items: center;
       overflow: inherit;
       margin: 0px;
-      padding-left: 275px;
-      padding-right: 20px;
-      width: calc(100% - 275px);
     }
   </style>
 </head>
 
 <body>
-  <app-navigation></app-navigation>
-  <main id="outlet"></main>
+  <app-root></app-root>
 
   <script type="module" src="./dist/src/index.js"></script>
 </body>
-
 </html>
