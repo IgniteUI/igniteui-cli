@@ -256,8 +256,8 @@ export class TypeScriptFileUpdate {
 			}
 
 			if (options["quote_type"]) {
-        this.formatOptions.singleQuotes = options["quote_type"] === "single";
-      }
+				this.formatOptions.singleQuotes = options["quote_type"] === "single";
+			}
 		}
 		if (this.fileSystem.fileExists("tslint.json")) {
 			// tslint prio - overrides other settings
