@@ -7,7 +7,7 @@ class IgcSliderComponent extends IgniteUIForWebComponentsTemplate {
 		this.components = ["Slider"];
 		this.controlGroup = "Interactions";
 		this.listInComponentTemplates = true;
-		this.id = "slider"
+		this.id = "slider";
 		this.projectType = "igc-ts";
 		this.name  = "Slider";
 		this.description = `Basic slider component`;
