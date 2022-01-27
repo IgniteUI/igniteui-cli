@@ -1,5 +1,5 @@
 import { expect } from '@open-wc/testing';
-import { IgcSliderComponent } from './slider.component.ts';
+import { IgcSliderComponent } from 'igniteui-webcomponents';
 
 describe('IgcSliderComponent', () => {
   it('<my-element> is an instance of MyElement', async () => {

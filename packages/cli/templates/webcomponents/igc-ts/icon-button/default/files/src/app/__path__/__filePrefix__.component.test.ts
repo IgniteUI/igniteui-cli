@@ -1,5 +1,5 @@
 import { expect } from '@open-wc/testing';
-import { IgcIconButtonComponent } from './icon-button.component.ts';
+import { IgcIconButtonComponent } from 'igniteui-webcomponents';
 
 describe('IgcIconButtonComponent', () => {
   it('<my-element> is an instance of MyElement', async () => {

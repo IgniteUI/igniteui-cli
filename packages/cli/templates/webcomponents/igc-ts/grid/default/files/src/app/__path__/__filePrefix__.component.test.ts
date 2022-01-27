@@ -1,5 +1,5 @@
 import { expect } from '@open-wc/testing';
-import { IgcDataGridComponent } from './grid.component.ts';
+import { IgcDataGridComponent } from 'igniteui-webcomponents-grids';
 
 describe('IgcDataGridComponent', () => {
   it('<my-element> is an instance of MyElement', async () => {

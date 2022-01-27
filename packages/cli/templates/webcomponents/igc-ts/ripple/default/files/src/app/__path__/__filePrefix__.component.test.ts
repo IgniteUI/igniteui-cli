@@ -1,5 +1,5 @@
 import { expect } from '@open-wc/testing';
-import { IgcRippleComponent } from './ripple.component.ts';
+import { IgcRippleComponent } from 'igniteui-webcomponents';
 
 describe('IgcRippleComponent', () => {
   it('<my-element> is an instance of MyElement', async () => {

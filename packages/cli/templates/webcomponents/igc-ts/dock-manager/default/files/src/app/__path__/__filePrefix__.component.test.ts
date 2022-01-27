@@ -1,5 +1,5 @@
 import { expect } from '@open-wc/testing';
-import { IgcDockManagerComponent } from './dock-manager.component.ts';
+import { IgcDockManagerComponent } from 'igniteui-dockmanager';
 
 describe('IgcDockManagerComponent', () => {
   it('<my-element> is an instance of MyElement', async () => {

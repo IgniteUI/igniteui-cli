@@ -1,5 +1,5 @@
 import { expect } from '@open-wc/testing';
-import { IgcBadgeComponent } from './badge.component.ts';
+import { IgcBadgeComponent } from 'igniteui-webcomponents';
 
 describe('IgcBadgeComponent', () => {
   it('<my-element> is an instance of MyElement', async () => {

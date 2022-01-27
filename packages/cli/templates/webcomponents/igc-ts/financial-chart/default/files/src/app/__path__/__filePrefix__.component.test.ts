@@ -1,5 +1,5 @@
 import { expect } from '@open-wc/testing';
-import { IgcFinancialChartComponent } from './financial-chart.component.ts';
+import { IgcFinancialChartComponent } from 'igniteui-webcomponents-charts';
 
 describe('IgcFinancialChartComponent', () => {
   it('<my-element> is an instance of MyElement', async () => {

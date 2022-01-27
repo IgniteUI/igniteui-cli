@@ -1,5 +1,5 @@
 import { expect } from '@open-wc/testing';
-import { IgcSwitchComponent } from './switch.component.ts';
+import { IgcSwitchComponent } from 'igniteui-webcomponents';
 
 describe('IgcSwitchComponent', () => {
   it('<my-element> is an instance of MyElement', async () => {

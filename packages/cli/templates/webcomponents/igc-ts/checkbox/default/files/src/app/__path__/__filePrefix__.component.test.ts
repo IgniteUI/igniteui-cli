@@ -1,5 +1,5 @@
 import { expect } from '@open-wc/testing';
-import { IgcCheckboxComponent } from './checkbox.component.ts';
+import { IgcCheckboxComponent } from 'igniteui-webcomponents';
 
 describe('IgcCheckboxComponent', () => {
   it('<my-element> is an instance of MyElement', async () => {
