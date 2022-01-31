@@ -1,9 +1,9 @@
 import { expect } from '@open-wc/testing';
-import { IgcRadialGaugeComponent } from 'igniteui-webcomponents-gauges';
+import $(ClassName) from './$(path)';
 
 describe('IgcRadialGaugeComponent', () => {
-  it('<my-element> is an instance of MyElement', async () => {
-    const element = document.createElement('radial-gauge');
-    expect(element).to.be.instanceOf(IgcRadialGaugeComponent);
+  it('<app-$(path)> is an instance of $(ClassName)', async () => {
+    const element = document.createElement('app-$(path)');
+    expect(element).to.be.instanceOf($(ClassName));
   });
 });

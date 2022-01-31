@@ -1,9 +1,9 @@
 import { expect } from '@open-wc/testing';
-import { IgcPieChartComponent } from 'igniteui-webcomponents-charts';
+import $(ClassName) from './$(path)';
 
 describe('IgcPieChartComponent', () => {
-  it('<my-element> is an instance of MyElement', async () => {
-    const element = document.createElement('pie-chart');
-    expect(element).to.be.instanceOf(IgcPieChartComponent);
+  it('<app-$(path)> is an instance of $(ClassName)', async () => {
+    const element = document.createElement('app-$(path)');
+    expect(element).to.be.instanceOf($(ClassName));
   });
 });

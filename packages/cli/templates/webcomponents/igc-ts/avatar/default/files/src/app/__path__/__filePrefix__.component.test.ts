@@ -1,9 +1,9 @@
 import { expect } from '@open-wc/testing';
-import { IgcAvatarComponent } from 'igniteui-webcomponents';
+import $(ClassName) from './$(path)';
 
 describe('IgcAvatarComponent', () => {
-  it('<my-element> is an instance of MyElement', async () => {
-    const element = document.createElement('avatar');
-    expect(element).to.be.instanceOf(IgcAvatarComponent);
+  it('<app-$(path)> is an instance of $(ClassName)', async () => {
+    const element = document.createElement('app-$(path)');
+    expect(element).to.be.instanceOf($(ClassName));
   });
 });

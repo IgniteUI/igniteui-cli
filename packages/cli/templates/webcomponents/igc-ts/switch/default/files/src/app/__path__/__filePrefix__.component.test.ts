@@ -1,9 +1,9 @@
 import { expect } from '@open-wc/testing';
-import { IgcSwitchComponent } from 'igniteui-webcomponents';
+import $(ClassName) from './$(path)';
 
 describe('IgcSwitchComponent', () => {
-  it('<my-element> is an instance of MyElement', async () => {
-    const element = document.createElement('switch');
-    expect(element).to.be.instanceOf(IgcSwitchComponent);
+  it('<app-$(path)> is an instance of $(ClassName)', async () => {
+    const element = document.createElement('app-$(path)');
+    expect(element).to.be.instanceOf($(ClassName));
   });
 });

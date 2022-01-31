@@ -1,9 +1,9 @@
 import { expect } from '@open-wc/testing';
-import { IgcDockManagerComponent } from 'igniteui-dockmanager';
+import $(ClassName) from './$(path)';
 
 describe('IgcDockManagerComponent', () => {
-  it('<my-element> is an instance of MyElement', async () => {
-    const element = document.createElement('dock-manager');
-    expect(element).to.be.instanceOf(IgcDockManagerComponent);
+  it('<app-$(path)> is an instance of $(ClassName)', async () => {
+    const element = document.createElement('app-$(path)');
+    expect(element).to.be.instanceOf($(ClassName));
   });
 });

@@ -1,9 +1,10 @@
 import { expect } from '@open-wc/testing';
-import { IgcButtonComponent } from 'igniteui-webcomponents';
+import $(ClassName) from './$(path)';
 
 describe('IgcButtonComponent', () => {
-  it('<my-element> is an instance of MyElement', async () => {
-    const element = document.createElement('button');
-    expect(element).to.be.instanceOf(IgcButtonComponent);
+  it('<app-$(path)> is an instance of $(ClassName)', async () => {
+    const element = document.createElement('app-$(path)');
+    expect(element).to.be.instanceOf($(ClassName));
   });
 });
+

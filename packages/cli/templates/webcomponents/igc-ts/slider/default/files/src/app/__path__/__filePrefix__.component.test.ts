@@ -1,9 +1,9 @@
 import { expect } from '@open-wc/testing';
-import { IgcSliderComponent } from 'igniteui-webcomponents';
+import $(ClassName) from './$(path)';
 
 describe('IgcSliderComponent', () => {
-  it('<my-element> is an instance of MyElement', async () => {
-    const element = document.createElement('slider');
-    expect(element).to.be.instanceOf(IgcSliderComponent);
+  it('<app-$(path)> is an instance of $(ClassName)', async () => {
+    const element = document.createElement('app-$(path)');
+    expect(element).to.be.instanceOf($(ClassName));
   });
 });

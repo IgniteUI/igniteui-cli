@@ -1,9 +1,9 @@
 import { expect } from '@open-wc/testing';
-import { IgcFormComponent } from 'igniteui-webcomponents';
+import $(ClassName) from './$(path)';
 
 describe('IgcFormComponent', () => {
-  it('<my-element> is an instance of MyElement', async () => {
-    const element = document.createElement('form');
-    expect(element).to.be.instanceOf(IgcFormComponent);
+  it('<app-$(path)> is an instance of $(ClassName)', async () => {
+    const element = document.createElement('app-$(path)');
+    expect(element).to.be.instanceOf($(ClassName));
   });
 });

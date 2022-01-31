@@ -1,9 +1,9 @@
 import { expect } from '@open-wc/testing';
-import { IgcDataGridComponent } from 'igniteui-webcomponents-grids';
+import $(ClassName) from './$(path)';
 
-describe('IgcDataGridComponent', () => {
-  it('<my-element> is an instance of MyElement', async () => {
-    const element = document.createElement('grid-editing');
-    expect(element).to.be.instanceOf(IgcDataGridComponent);
+describe('IgcGridEditingComponent', () => {
+  it('<app-$(path)> is an instance of $(ClassName)', async () => {
+    const element = document.createElement('app-$(path)');
+    expect(element).to.be.instanceOf($(ClassName));
   });
 });
