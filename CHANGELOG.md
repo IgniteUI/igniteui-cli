@@ -1,3 +1,30 @@
+# [9.0.5](https://github.com/IgniteUI/igniteui-cli/compare/v9.0.4...v9.0.5)  (2022-02-04)
+
+🎉 This update includes:
+
+- `igniteui-webcomponents` version [2.0.0](https://github.com/IgniteUI/igniteui-webcomponents/releases/tag/2.0.0). Read how to easily setup a project with them in the [Ignite UI CLI for Web Components](https://infragistics.com/products/ignite-ui-web-components/web-components/components/general-cli-overview) topic.
+
+## igniteui/cli-core@9.0.5
+
+* Note: Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@13.0.905
+
+* Add support for typescript 4.5.x by @IvayloG in https://github.com/IgniteUI/igniteui-cli/pull/960
+
+## igniteui/angular-schematics@13.0.905
+
+* Note: Version bump only for package igniteui/angular-schematics
+
+## igniteui-cli@9.0.5
+
+- `igniteui-webcomponents` version [2.0.0](https://github.com/IgniteUI/igniteui-webcomponents/releases/tag/2.0.0).
+* Updating path to bootstrap light theme by @dafo in https://github.com/IgniteUI/igniteui-cli/pull/963
+* Adding Slider web component by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/986
+* Adding tests for the web components by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/991
+* Fixing web-components navigation issues by @dafo in https://github.com/IgniteUI/igniteui-cli/pull/977
+* Add support for typescript 4.5.x by @IvayloG in https://github.com/IgniteUI/igniteui-cli/pull/960
+
 # [9.0.4](https://github.com/IgniteUI/igniteui-cli/compare/v9.0.3...v9.0.4)  (2021-12-15)
 ## igniteui/cli-core@9.0.4
 
