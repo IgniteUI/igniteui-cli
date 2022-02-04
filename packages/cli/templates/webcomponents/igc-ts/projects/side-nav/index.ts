@@ -3,7 +3,7 @@ import * as path from "path";
 import { BaseIgcProject } from "../_base";
 
 export class SideNavProject extends BaseIgcProject implements ProjectTemplate {
-	public id: string = "webcomponent";
+	public id: string = "side-nav";
 	public name = "Default side navigation";
 	public description = "Project structure with side navigation drawer";
 	public framework: string = "webcomponents";
