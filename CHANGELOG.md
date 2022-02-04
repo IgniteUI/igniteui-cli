@@ -1,3 +1,22 @@
+# [9.0.6](https://github.com/IgniteUI/igniteui-cli/compare/v9.0.5...v9.0.6)  (2022-02-04)
+
+## igniteui/cli-core@9.0.6
+
+* Note: Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@13.0.906
+
+* Note: Version bump only for package igniteui/angular-templates
+
+## igniteui/angular-schematics@13.0.906
+
+* Note: Version bump only for package igniteui/angular-schematics
+
+## igniteui-cli@9.0.6
+
+* Use 'concurrently' in start script by @dafo in https://github.com/IgniteUI/igniteui-cli/pull/995
+* Set correct quote_type to web components project by @dafo in https://github.com/IgniteUI/igniteui-cli/pull/982
+
 # [9.0.5](https://github.com/IgniteUI/igniteui-cli/compare/v9.0.4...v9.0.5)  (2022-02-04)
 
 🎉 This update includes:
