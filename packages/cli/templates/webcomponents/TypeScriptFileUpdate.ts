@@ -114,11 +114,11 @@ export class TypeScriptFileUpdate {
 								.concat(newObject);
 						}
 
-						const elements = ts.createNodeArray([
+						const elements = ts.factory.createNodeArray([
 							...resultNodes
 						]);
 
-						return ts.updateArrayLiteral(array, elements);
+						return ts.factory.updateArrayLiteralExpression(array, elements);
 					} else {
 						return ts.visitEachChild(node, conditionalVisitor, context);
 					}
@@ -161,22 +161,22 @@ export class TypeScriptFileUpdate {
 			return;
 		}
 
-		const newStatements = ts.createNodeArray([
+		const newStatements = ts.factory.createNodeArray([
 			...this.targetSource.statements.slice(0, this.importsMeta.lastIndex),
 			...newImports.map(x => this.createIdentifierImport(x.from)),
 			...this.targetSource.statements.slice(this.importsMeta.lastIndex)
 		]);
 		newImports.forEach(x => this.createdStringLiterals.push(x.from));
 
-		this.targetSource = ts.updateSourceFileNode(this.targetSource, newStatements);
+		this.targetSource = ts.factory.updateSourceFile(this.targetSource, newStatements);
 	}
 
 	protected createIdentifierImport(importPath: string): ts.ImportDeclaration {
-		const importDeclaration = ts.createImportDeclaration(
+		const importDeclaration = ts.factory.createImportDeclaration(
 			undefined,
 			undefined,
 			undefined,
-			ts.createLiteral(importPath));
+			ts.factory.createStringLiteral(importPath));
 		return importDeclaration;
 	}
 
@@ -361,9 +361,9 @@ export class TypeScriptFileUpdate {
 	}
 
 	private createRouteEntry(filePath: string, className: string, linkText: string): ts.ObjectLiteralExpression {
-		const routePath = ts.createPropertyAssignment("path", ts.createLiteral(filePath));
-		const routeComponent = ts.createPropertyAssignment("component", ts.createLiteral(className));
-		const routeData = ts.createPropertyAssignment("name", ts.createLiteral(linkText));
-		return ts.createObjectLiteral([routePath, routeComponent, routeData]);
+		const routePath = ts.factory.createPropertyAssignment("path", ts.factory.createStringLiteral(filePath));
+		const routeComponent = ts.factory.createPropertyAssignment("component", ts.factory.createStringLiteral(className));
+		const routeData = ts.factory.createPropertyAssignment("name", ts.factory.createStringLiteral(linkText));
+		return ts.factory.createObjectLiteralExpression([routePath, routeComponent, routeData]);
 	}
 }

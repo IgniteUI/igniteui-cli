@@ -21,7 +21,7 @@
   "dependencies": {
     "@open-wc/testing": "^2.5.33",
     "@vaadin/router": "^1.7.4",
-    "igniteui-webcomponents": "1.0.0",
+    "igniteui-webcomponents": "2.0.0",
     "igniteui-webcomponents-grids": "~1.4.1",
     "igniteui-webcomponents-core": "~1.4.1",
     "igniteui-webcomponents-layouts": "~1.4.1",
@@ -42,7 +42,7 @@
     "igniteui-cli": "$(cliVersion)",
     "eslint": "^7.32.0",
     "tslib": "^2.3.1",
-    "typescript": "^4.4.2",
+    "typescript": "^4.5.2",
     "@babel/cli": "^7.16.0",
     "@babel/core": "^7.16.0",
     "@babel/plugin-proposal-class-properties": "^7.16.0",
