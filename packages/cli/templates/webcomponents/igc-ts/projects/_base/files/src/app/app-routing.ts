@@ -1,7 +1,8 @@
 import {
   Route,
 } from '@vaadin/router';
-import './home/home.component';
+import './home/home.js';
+import './not-found/not-found.js';
 
 export const routes: Route[] = [
   { path: '/', component: 'app-home', name: 'Home' },

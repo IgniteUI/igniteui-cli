@@ -19,20 +19,30 @@ defineComponents(
 export class App extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
-      <div class="outer-wrapper">
-        <igc-nav-drawer open=true>
-          <igc-nav-drawer-header-item>Ignite UI CLI</igc-nav-drawer-header-item>
+      <style>
+        router-outlet {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          text-align: center;
+          flex-flow: column nowrap;
+          justify-content: stretch;
+          align-items: center;
+          overflow: inherit;
+        }
+      </style>
+      <igc-nav-drawer open=true>
+        <igc-nav-drawer-header-item>Ignite UI CLI</igc-nav-drawer-header-item>
 
-          ${routes.filter((element, index) => index < routes.length - 1).map(i => `
-            <igc-nav-drawer-item>
-              <span slot="content">
-                <a style="text-decoration: none;" href="${i.path}">${i.name}<igc-ripple></igc-ripple></a>
-              </span>
-            </igc-nav-drawer-item>
-          `).join('')}
-        </igc-nav-drawer>
-        <router-outlet></router-outlet>
-      </div>
+        ${routes.filter((element, index) => index < routes.length - 1).map(i => `
+          <igc-nav-drawer-item>
+            <span slot="content">
+              <a style="text-decoration: none;" href="${i.path}">${i.name}<igc-ripple></igc-ripple></a>
+            </span>
+          </igc-nav-drawer-item>
+        `).join('')}
+      </igc-nav-drawer>
+      <router-outlet></router-outlet>
     `;
 
     const outlet = document.getElementsByTagName('router-outlet')[0];

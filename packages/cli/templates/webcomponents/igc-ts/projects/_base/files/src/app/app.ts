@@ -4,9 +4,19 @@ import { routes } from './app-routing.js';
 export class App extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
-      <div class="outer-wrapper">
-        <router-outlet></router-outlet>
-      </div>
+      <style>
+        router-outlet {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          text-align: center;
+          flex-flow: column nowrap;
+          justify-content: stretch;
+          align-items: center;
+          overflow: inherit;
+        }
+      </style>
+      <router-outlet></router-outlet>
     `;
 
     const outlet = document.getElementsByTagName('router-outlet')[0];
