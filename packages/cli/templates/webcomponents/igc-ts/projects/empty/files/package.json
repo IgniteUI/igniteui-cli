@@ -13,7 +13,7 @@
     "./$(dash-name).js": "./dist/src/$(dash-name).js"
   },
   "scripts": {
-    "start": "tsc && wds",
+    "start": "tsc && concurrently --kill-others \"tsc -w\" \"wds\"",
     "build": "webpack --mode production",
     "lint": "eslint --ext .js,.ts,.html . --ignore-path .gitignore",
     "test": "tsc && wtr"
@@ -31,6 +31,7 @@
     "igniteui-dockmanager": "~1.6.0",
     "@igniteui/material-icons-extended": "^2.10.0",
     "lit": "^2.0.2",
+    "typescript": "^4.5.2",
     "babel-runtime": "^6.26.0"
   },
   "devDependencies": {
@@ -40,9 +41,9 @@
     "@web/dev-server": "^0.1.22",
     "@web/test-runner": "next",
     "igniteui-cli": "$(cliVersion)",
+    "concurrently": "^6.3.0",
     "eslint": "^7.32.0",
     "tslib": "^2.3.1",
-    "typescript": "^4.5.2",
     "@babel/cli": "^7.16.0",
     "@babel/core": "^7.16.0",
     "@babel/plugin-proposal-class-properties": "^7.16.0",
