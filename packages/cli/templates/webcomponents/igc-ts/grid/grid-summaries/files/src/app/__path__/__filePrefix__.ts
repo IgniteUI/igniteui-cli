@@ -29,7 +29,7 @@ export default class $(ClassName) extends HTMLElement {
         height: 80%;
         margin: 0px;
         padding-right: 20px;
-        width: calc(100% - 275px);
+        width: calc(100% - 600px);
       }
       .container {
         height: 100%;

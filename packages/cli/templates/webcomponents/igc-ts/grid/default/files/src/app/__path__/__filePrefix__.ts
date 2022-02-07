@@ -46,7 +46,7 @@ export default class $(ClassName) extends HTMLElement {
         height: 100%;
         margin: 0px;
         padding-right: 20px;
-        width: calc(100% - 275px);
+        width: calc(100% - 600px);
       }
     </style>
     <igc-data-grid
