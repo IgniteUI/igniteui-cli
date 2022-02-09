@@ -4,14 +4,14 @@ import {
 } from 'igniteui-webcomponents';
 import {
   registerIcon,
-} from "igniteui-webcomponents/components/icon/icon.registry";
+} from 'igniteui-webcomponents/components/icon/icon.registry';
 
 defineComponents(IgcIconButtonComponent);
 
 registerIcon(
-  "build",
-  "https://unpkg.com/material-design-icons@3.0.1/action/svg/production/ic_build_24px.svg",
-  "material"
+  'build',
+  'https://unpkg.com/material-design-icons@3.0.1/action/svg/production/ic_build_24px.svg',
+  'material',
 );
 
 export default class IconButton extends HTMLElement {

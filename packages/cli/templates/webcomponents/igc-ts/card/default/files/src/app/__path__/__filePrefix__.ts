@@ -12,7 +12,7 @@ defineComponents(
   IgcCardActionsComponent,
   IgcCardContentComponent,
   IgcCardHeaderComponent,
-  IgcCardMediaComponent
+  IgcCardMediaComponent,
 );
 
 export default class $(ClassName) extends HTMLElement {

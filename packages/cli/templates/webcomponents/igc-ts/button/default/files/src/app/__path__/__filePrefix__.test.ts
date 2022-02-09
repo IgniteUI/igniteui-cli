@@ -7,4 +7,3 @@ describe('IgcButtonComponent', () => {
     expect(element).to.be.instanceOf($(ClassName));
   });
 });
-

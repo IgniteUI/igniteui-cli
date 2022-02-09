@@ -3,7 +3,7 @@ import {
   IgcFormComponent,
   IgcInputComponent,
   IgcCheckboxComponent,
-  IgcButtonComponent
+  IgcButtonComponent,
 } from 'igniteui-webcomponents';
 
 defineComponents(IgcFormComponent, IgcInputComponent, IgcCheckboxComponent, IgcButtonComponent);
@@ -47,12 +47,11 @@ export default class $(ClassName) extends HTMLElement {
       const formEntries = formData.entries();
       let result = '';
       do {
-          const pair = formEntries.next().value;
-          if (pair) {
-              result += pair[0] + '=' + pair[1] + ';';
-          }
-        } while (!formKeys.next().done)
-      console.log(result);
+        const pair = formEntries.next().value;
+        if (pair) {
+          result += pair[0] + '=' + pair[1] + ';';
+        }
+      } while (!formKeys.next().done);
       alert(result);
     });
   }

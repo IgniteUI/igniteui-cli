@@ -1,5 +1,5 @@
 import {
-  Route,
+  Route
 } from '@vaadin/router';
 import './home/home.js';
 import './not-found/not-found.js';

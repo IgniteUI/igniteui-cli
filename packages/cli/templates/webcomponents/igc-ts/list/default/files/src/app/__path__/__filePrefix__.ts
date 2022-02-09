@@ -12,7 +12,7 @@ defineComponents(
   IgcButtonComponent,
   IgcListComponent,
   IgcListHeaderComponent,
-  IgcListItemComponent
+  IgcListItemComponent,
 );
 
 export default class $(ClassName) extends HTMLElement {
