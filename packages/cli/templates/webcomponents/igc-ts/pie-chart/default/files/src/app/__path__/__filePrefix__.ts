@@ -1,4 +1,4 @@
-import { Data } from './sampleData';
+import { Data } from './sampleData.js';
 import {
   IgcItemLegendComponent,
   IgcItemLegendModule,

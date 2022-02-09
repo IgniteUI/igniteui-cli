@@ -1,0 +1,88 @@
+{
+  "name": "$(dash-name)",
+  "version": "0.0.0",
+  "private": true,
+  "description": "WebComponents project for Ignite UI CLI",
+  "license": "MIT",
+  "author": "Infragistics",
+  "main": "dist/src/index.js",
+  "module": "dist/src/index.js",
+  "type": "module",
+  "exports": {
+    ".": "./dist/src/index.js",
+    "./$(dash-name).js": "./dist/src/$(dash-name).js"
+  },
+  "scripts": {
+    "start": "tsc && concurrently -k -r \"tsc --watch\" \"wds\"",
+    "build": "rimraf dist && tsc && rollup -c rollup.config.mjs",
+    "start:build": "web-dev-server --root-dir dist --app-index index.html --open",
+    "lint": "eslint --ext .js,.ts,.html . --ignore-path .gitignore",
+    "test": "tsc && wtr"
+  },
+  "dependencies": {
+    "@open-wc/testing": "^2.5.33",
+    "@vaadin/router": "^1.7.4",
+    "igniteui-webcomponents": "2.0.0",
+    "igniteui-webcomponents-grids": "~1.4.1",
+    "igniteui-webcomponents-core": "~1.4.1",
+    "igniteui-webcomponents-layouts": "~1.4.1",
+    "igniteui-webcomponents-inputs": "~1.4.1",
+    "igniteui-webcomponents-charts": "~1.4.1",
+    "igniteui-webcomponents-gauges": "~1.4.1",
+    "igniteui-dockmanager": "~1.6.0",
+    "@igniteui/material-icons-extended": "^2.10.0",
+    "lit": "^2.0.2",
+    "typescript": "^4.5.2"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.16.4",
+    "@open-wc/building-rollup": "^2.0.1",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-node-resolve": "^13.0.6",
+    "rollup-plugin-copy-assets": "^2.0.3",
+    "@open-wc/eslint-config": "^4.3.0",
+    "@typescript-eslint/eslint-plugin": "^4.30.0",
+    "@typescript-eslint/parser": "^4.30.0",
+    "@web/dev-server": "^0.1.22",
+    "@web/rollup-plugin-html": "^1.10.1",
+    "@web/rollup-plugin-import-meta-assets": "^1.0.7",
+    "babel-plugin-template-html-minifier": "^4.1.0",
+    "@web/test-runner": "next",
+    "igniteui-cli": "~$(cliVersion)",
+    "concurrently": "^6.3.0",
+    "deepmerge": "^4.2.2",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.60.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-workbox": "^6.2.0",
+    "eslint": "^7.32.0",
+    "tslib": "^2.3.1",
+    "fork-ts-checker-webpack-plugin": "^6.4.2",
+    "html-webpack-plugin": "^5.5.0",
+    "source-map": "^0.7.3"
+  },
+  "eslintConfig": {
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+      "@open-wc"
+    ],
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "rules": {
+      "linebreak-style": "off",
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": [
+        "error"
+      ],
+      "import/no-unresolved": "off",
+      "import/extensions": [
+        "error",
+        "always",
+        {
+          "ignorePackages": true
+        }
+      ]
+    }
+  }
+}
