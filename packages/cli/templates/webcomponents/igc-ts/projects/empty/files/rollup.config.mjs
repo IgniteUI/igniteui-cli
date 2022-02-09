@@ -1,7 +1,7 @@
 import nodeResolve from '@rollup/plugin-node-resolve';
 import babel from '@rollup/plugin-babel';
-import copy from "rollup-plugin-copy-assets";
-import html from '@web/rollup-plugin-html';
+import copy from 'rollup-plugin-copy-assets';
+import { rollupPluginHTML as html } from '@web/rollup-plugin-html';
 import { importMetaAssets } from '@web/rollup-plugin-import-meta-assets';
 import { terser } from 'rollup-plugin-terser';
 import { generateSW } from 'rollup-plugin-workbox';
@@ -21,7 +21,7 @@ export default {
   plugins: [
     copy({
       assets: [
-        "src/assets",
+        'src/assets',
       ],
     }),
     /** Enable using HTML as rollup entrypoint */
@@ -37,11 +37,11 @@ export default {
     /** Bundle assets references via import.meta.url */
     importMetaAssets(),
     /** Compile JS to a lower language target */
-    babel({
+    babel.babel({
       babelHelpers: 'bundled',
       presets: [
         [
-          require.resolve('@babel/preset-env'),
+          '@babel/preset-env',
           {
             targets: [
               'last 3 Chrome major versions',
@@ -56,7 +56,7 @@ export default {
       ],
       plugins: [
         [
-          require.resolve('babel-plugin-template-html-minifier'),
+          'babel-plugin-template-html-minifier',
           {
             modules: { lit: ['html', { name: 'css', encapsulation: 'style' }] },
             failOnError: false,

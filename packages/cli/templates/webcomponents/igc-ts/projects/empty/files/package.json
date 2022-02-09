@@ -14,7 +14,7 @@
   },
   "scripts": {
     "start": "tsc && concurrently -k -r \"tsc --watch\" \"wds\"",
-    "build": "rimraf dist && tsc && rollup -c rollup.config.js",
+    "build": "rimraf dist && tsc && rollup -c rollup.config.mjs",
     "start:build": "web-dev-server --root-dir dist --app-index index.html --open",
     "lint": "eslint --ext .js,.ts,.html . --ignore-path .gitignore",
     "test": "tsc && wtr"
