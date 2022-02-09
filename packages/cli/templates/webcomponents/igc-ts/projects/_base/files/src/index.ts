@@ -1,2 +1,2 @@
-import './app/app';
-import './app/app-routing';
+import './app/app.js';
+import './app/app-routing.js';

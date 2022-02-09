@@ -1,11 +1,10 @@
-import { StockIndexData } from './StockIndexData';
 import {
-  IgcFinancialChartComponent ,
+  IgcFinancialChartComponent,
   IgcFinancialChartModule,
-  FinancialChartXAxisMode,
-  FinancialChartYAxisMode ,
+  FinancialChartYAxisMode,
 } from 'igniteui-webcomponents-charts';
 import { ModuleManager } from 'igniteui-webcomponents-core';
+import { StockIndexData } from './StockIndexData.js';
 
 ModuleManager.register(IgcFinancialChartModule);
 

@@ -5,18 +5,18 @@ import {
 } from 'igniteui-webcomponents';
 import {
   registerIcon,
-} from "igniteui-webcomponents/components/icon/icon.registry";
+} from 'igniteui-webcomponents/components/icon/icon.registry';
 
 defineComponents(IgcIconComponent, IgcNavbarComponent);
 
 registerIcon(
   'home',
-  'https://unpkg.com/material-design-icons@3.0.1/action/svg/production/ic_home_24px.svg'
+  'https://unpkg.com/material-design-icons@3.0.1/action/svg/production/ic_home_24px.svg',
 );
 
 registerIcon(
   'search',
-  'https://unpkg.com/material-design-icons@3.0.1/action/svg/production/ic_search_24px.svg'
+  'https://unpkg.com/material-design-icons@3.0.1/action/svg/production/ic_search_24px.svg',
 );
 
 export default class $(ClassName) extends HTMLElement {

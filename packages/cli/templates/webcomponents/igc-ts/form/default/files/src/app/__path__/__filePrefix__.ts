@@ -2,7 +2,7 @@ import {
   defineComponents,
   IgcFormComponent,
   IgcRadioComponent,
-  IgcRadioGroupComponent
+  IgcRadioGroupComponent,
 } from 'igniteui-webcomponents';
 
 defineComponents(IgcFormComponent, IgcRadioComponent, IgcRadioGroupComponent);

@@ -7,4 +7,3 @@ describe('IgcBadgeComponent', () => {
     expect(element).to.be.instanceOf($(ClassName));
   });
 });
-

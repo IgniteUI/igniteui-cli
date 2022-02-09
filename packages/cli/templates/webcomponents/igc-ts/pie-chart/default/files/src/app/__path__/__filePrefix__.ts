@@ -1,4 +1,3 @@
-import { Data } from './sampleData.js';
 import {
   IgcItemLegendComponent,
   IgcItemLegendModule,
@@ -6,6 +5,7 @@ import {
   IgcPieChartModule,
 } from 'igniteui-webcomponents-charts';
 import { ModuleManager } from 'igniteui-webcomponents-core';
+import { Data } from './sampleData.js';
 
 ModuleManager.register(
   IgcItemLegendModule,
