@@ -87,7 +87,7 @@ export class TypeScriptFileUpdate {
 		parentRoutePath?: string
 	) {
 		let className: string;
-		const relativePath: string = "./app/" + filePath + "/" + filePath;
+		const relativePath: string = "./" + filePath + "/" + filePath;
 		className = "app-" + filePath;
 		this.requestImport(relativePath);
 
