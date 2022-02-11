@@ -1,5 +1,5 @@
 import chalk from "chalk";
-import { execSync } from "child_process";
+import { execSync, ExecSyncOptions } from "child_process";
 import * as fs from "fs";
 import * as glob from "glob";
 import * as path from "path";
@@ -308,7 +308,7 @@ export class Util {
 	 * @param options Command options
 	 * @throws {Error} On timeout or non-zero exit code. Error has 'status', 'signal', 'output', 'stdout', 'stderr'
 	 */
-	public static execSync(command: string, options?: any) {
+	public static execSync(command: string, options?: ExecSyncOptions) {
 		try {
 			return execSync(command, options);
 		} catch (error) {
