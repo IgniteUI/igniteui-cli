@@ -5,7 +5,7 @@ import * as resolve from "resolve";
 import { TemplateManager } from "../TemplateManager";
 import { default as build } from "./build";
 
-const execSyncNpmStart = (port: number, options: any): void => {
+const execSyncNpmStart = (port: number, options: ExecSyncOptions): void => {
 	if (port) {
 		Util.execSync(`npm start -- --port=${port}`, options);
 		return;
