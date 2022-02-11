@@ -1,3 +1,5 @@
+import { html, css, LitElement } from 'lit';
+import { customElement } from 'lit/decorators.js';
 import {
   defineComponents,
   IgcFormComponent,
@@ -7,17 +9,18 @@ import {
 
 defineComponents(IgcFormComponent, IgcRadioComponent, IgcRadioGroupComponent);
 
-export default class $(ClassName) extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `
-      <style>
-        #form {
-          flex-grow: 1;
-          display: flex;
-          flex-direction: column;
-        }
-      </style>
+@customElement('app-$(path)')
+export default class $(ClassName) extends LitElement {
+  static styles = css`
+    #form {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+  `;
 
+  render() {
+    return html`
       <igc-form id="form" novalidate="true">
         <label for="full-name">Full name:</label>
         <input type="text" id="full-name" name="full-name" value="Your name" />
@@ -34,5 +37,3 @@ export default class $(ClassName) extends HTMLElement {
     `;
   }
 }
-
-customElements.define('app-$(path)', $(ClassName));

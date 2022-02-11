@@ -1,4 +1,6 @@
 /* eslint-disable no-return-assign */
+import { html, css, LitElement } from 'lit';
+import { customElement } from 'lit/decorators.js';
 import {
   defineComponents,
   IgcNavDrawerComponent,
@@ -16,39 +18,40 @@ defineComponents(
   IgcRippleComponent,
 );
 
-export class App extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `
-      <style>
-        router-outlet {
-          width: 100%;
-          height: 100%;
-          display: flex;
-          text-align: center;
-          flex-flow: column nowrap;
-          justify-content: stretch;
-          align-items: center;
-          overflow: inherit;
-        }
-      </style>
+@customElement('app-root')
+export class App extends LitElement {
+  static styles = css`
+    router-outlet {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      text-align: center;
+      flex-flow: column nowrap;
+      justify-content: stretch;
+      align-items: center;
+      overflow: inherit;
+    }
+  `;
+
+  render() {
+    return html`
       <igc-nav-drawer open=true>
         <igc-nav-drawer-header-item>Ignite UI CLI</igc-nav-drawer-header-item>
-
-        ${routes.filter((element, index) => index < routes.length - 1).map(i => `
+        ${routes.filter((element, index) => index < routes.length - 1).map(i => html`
           <igc-nav-drawer-item>
             <span slot="content">
-              <a style="text-decoration: none;" href="${i.path}">${i.name}<igc-ripple></igc-ripple></a>
+              <a href="${i.path}">${i.name}<igc-ripple></igc-ripple></a>
             </span>
           </igc-nav-drawer-item>
-        `).join('')}
+        `)}
       </igc-nav-drawer>
       <router-outlet></router-outlet>
     `;
+  }
 
-    const outlet = document.getElementsByTagName('router-outlet')[0];
+  updated() {
+    const outlet = this.shadowRoot?.querySelector('router-outlet');
     const router = new Router(outlet);
     router.setRoutes(routes);
   }
 }
-
-customElements.define('app-root', App);
