@@ -1,5 +1,5 @@
 import { GoogleAnalytics, ProjectConfig, Util } from "@igniteui/cli-core";
-import { ExecSyncOptions, spawnSync, SpawnSyncOptions } from "child_process";
+import { ExecSyncOptions } from "child_process";
 import * as path from "path";
 import * as resolve from "resolve";
 import { TemplateManager } from "../TemplateManager";
