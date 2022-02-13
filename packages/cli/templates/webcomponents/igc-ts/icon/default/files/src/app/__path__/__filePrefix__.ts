@@ -1,3 +1,5 @@
+import { html, LitElement } from 'lit';
+import { customElement } from 'lit/decorators.js';
 import {
   defineComponents,
   IgcIconComponent,
@@ -19,9 +21,10 @@ registerIcon(
   'material',
 );
 
-export default class Icon extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `
+@customElement('app-$(path)')
+export default class Icon extends LitElement {
+  render() {
+    return html`
       <div>
         <label>Search icon: </label>
         <igc-icon
@@ -45,5 +48,3 @@ export default class Icon extends HTMLElement {
     `;
   }
 }
-
-customElements.define('app-$(path)', $(ClassName));

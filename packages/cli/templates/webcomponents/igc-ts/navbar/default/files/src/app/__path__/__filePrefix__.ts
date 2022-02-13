@@ -1,3 +1,5 @@
+import { html, css, LitElement } from 'lit';
+import { customElement } from 'lit/decorators.js';
 import {
   defineComponents,
   IgcIconComponent,
@@ -19,15 +21,17 @@ registerIcon(
   'https://unpkg.com/material-design-icons@3.0.1/action/svg/production/ic_search_24px.svg',
 );
 
-export default class $(ClassName) extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `
-      <style>
-        igc-navbar {
-          width:100%;
-        }
-      </style>
 
+@customElement('app-$(path)')
+export default class $(ClassName) extends LitElement {
+  static styles = css`
+    igc-navbar {
+      width:100%;
+    }
+  `;
+
+  render() {
+    return html`
       <igc-navbar>
         <igc-icon slot="start" name="home"></igc-icon>
         <h2>Home</h2>
@@ -36,5 +40,3 @@ export default class $(ClassName) extends HTMLElement {
     `;
   }
 }
-
-customElements.define('app-$(path)', $(ClassName));

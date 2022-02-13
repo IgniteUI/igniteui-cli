@@ -1,3 +1,5 @@
+import { html, css, LitElement } from 'lit';
+import { customElement } from 'lit/decorators.js';
 import {
   IgcItemLegendComponent,
   IgcItemLegendModule,
@@ -12,19 +14,19 @@ ModuleManager.register(
   IgcPieChartModule,
 );
 
-export default class $(ClassName) extends HTMLElement {
-  constructor() {
-    super();
-    this.attachShadow({ mode: 'open' });
-    this.shadowRoot!.innerHTML = `
-    <style>
-      :host, igc-pie-chart {
-        height: 100%;
-      }
-      .container {
-        height: 60%;
-      }
-    </style>
+@customElement('app-$(path)')
+export default class $(ClassName) extends LitElement {
+  static styles = css`
+    :host, igc-pie-chart {
+      height: 100%;
+    }
+    .container {
+      height: 60%;
+    }
+  `;
+
+  render() {
+    return html`
     <div class="legend-title">
       Global Electricity Demand by Energy Use
     </div>
@@ -48,11 +50,9 @@ export default class $(ClassName) extends HTMLElement {
   `;
   }
 
-  connectedCallback() {
-    const chart = document.getElementsByTagName('app-$(path)')[0].shadowRoot!.getElementById('chart') as IgcPieChartComponent;
+  updated() {
+    const chart = this.shadowRoot?.getElementById('chart') as IgcPieChartComponent;
     chart.dataSource = new Data();
-    chart.legend = document.getElementsByTagName('app-$(path)')[0].shadowRoot!.getElementById('legend') as IgcItemLegendComponent;
+    chart.legend = this.shadowRoot?.getElementById('legend') as IgcItemLegendComponent;
   }
 }
-
-customElements.define('app-$(path)', $(ClassName));

@@ -1,4 +1,6 @@
 /* eslint-disable import/extensions, max-classes-per-file, class-methods-use-this */
+import { html, css, LitElement } from 'lit';
+import { customElement } from 'lit/decorators.js';
 import {
   IgcDataGridModule,
   IgcGridColumnOptionsModule,
@@ -17,24 +19,21 @@ ModuleManager.register(
   IgcGridColumnOptionsModule,
 );
 
-export default class $(ClassName) extends HTMLElement {
+@customElement('app-$(path)')
+export default class $(ClassName) extends LitElement {
   data: any[] = DataGridSharedData.getEmployees();
 
-  constructor() {
-    super();
-    this.attachShadow({ mode: 'open' });
-    this.shadowRoot!.innerHTML = `
-    <style>
-      :host {
-        height: 80%;
-        margin: 0px;
-        padding-right: 20px;
-        width: calc(100% - 600px);
-      }
-      .container {
-        height: 100%;
-      }
-    </style>
+  static styles = css`
+    :host {
+      height: 80%;
+      margin: 0px;
+      padding-right: 20px;
+      width: calc(100% - 600px);
+  }
+  `;
+
+  render() {
+    return html`
     <div class="container sample">
       <igc-data-grid
         id="grid"
@@ -61,8 +60,8 @@ export default class $(ClassName) extends HTMLElement {
   `;
   }
 
-  connectedCallback() {
-    const grid = document.getElementsByTagName('app-grid-summaries')[0].shadowRoot!.getElementById('grid') as IgcDataGridComponent;
+  updated() {
+    const grid = this.shadowRoot?.getElementById('grid') as IgcDataGridComponent;
 
     // Custom Calculator - calculates the count for all USA.
     class CustomDomestic extends SummaryCalculator {
@@ -183,5 +182,3 @@ export default class $(ClassName) extends HTMLElement {
     onLoad();
   }
 }
-
-customElements.define('app-$(path)', $(ClassName));

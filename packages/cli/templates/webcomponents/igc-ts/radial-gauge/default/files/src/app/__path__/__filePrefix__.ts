@@ -1,3 +1,5 @@
+import { html, css, LitElement } from 'lit';
+import { customElement } from 'lit/decorators.js';
 import {
   IgcRadialGaugeModule,
 } from 'igniteui-webcomponents-gauges';
@@ -7,17 +9,17 @@ ModuleManager.register(
   IgcRadialGaugeModule,
 );
 
-export default class $(ClassName) extends HTMLElement {
-  constructor() {
-    super();
-    this.attachShadow({ mode: 'open' });
-    this.shadowRoot!.innerHTML = `
-    <style>
-      :host{
-        height: 50%;
-        width: 50%;
-      }
-    </style>
+@customElement('app-$(path)')
+export default class $(ClassName) extends LitElement {
+  static styles = css`
+    :host{
+      height: 50%;
+      width: 50%;
+    }
+  `;
+
+  render() {
+    return html`
     <igc-radial-gauge
       height="100%"
       width="50%"
@@ -39,5 +41,3 @@ export default class $(ClassName) extends HTMLElement {
   `;
   }
 }
-
-customElements.define('app-$(path)', $(ClassName));
