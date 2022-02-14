@@ -1,4 +1,6 @@
 /* eslint-disable import/extensions */
+import { html, css, LitElement } from 'lit';
+import { customElement } from 'lit/decorators.js';
 import {
   IgcDataGridModule,
   IgcGridColumnOptionsModule,
@@ -79,7 +81,7 @@ export default class $(ClassName) extends LitElement {
   `;
   }
 
-  updated() {
+  firstUpdated() {
     const grid = this.shadowRoot?.getElementById('grid') as IgcDataGridComponent;
     const commitButton = this.shadowRoot?.getElementById('commitClick') as HTMLButtonElement;
     const undoButton = this.shadowRoot?.getElementById('undoClick') as HTMLButtonElement;

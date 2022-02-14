@@ -60,7 +60,7 @@ export default class $(ClassName) extends LitElement {
   `;
   }
 
-  updated() {
+  firstUpdated() {
     const grid = this.shadowRoot?.getElementById('grid') as IgcDataGridComponent;
 
     // Custom Calculator - calculates the count for all USA.

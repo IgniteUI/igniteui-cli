@@ -49,7 +49,7 @@ export class App extends LitElement {
     `;
   }
 
-  updated() {
+  firstUpdated() {
     const outlet = this.shadowRoot?.querySelector('router-outlet');
     const router = new Router(outlet);
     router.setRoutes(routes);

@@ -79,7 +79,7 @@ export default class $(ClassName) extends LitElement {
   `;
   }
 
-  updated() {
+  firstUpdated() {
     const dockManager = this.shadowRoot?.getElementById('dockManager') as IgcDockManagerComponent;
     dockManager.layout = {
       rootPane: {

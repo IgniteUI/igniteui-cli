@@ -50,7 +50,7 @@ export default class $(ClassName) extends LitElement {
   `;
   }
 
-  updated() {
+  firstUpdated() {
     const chart = this.shadowRoot?.getElementById('chart') as IgcPieChartComponent;
     chart.dataSource = new Data();
     chart.legend = this.shadowRoot?.getElementById('legend') as IgcItemLegendComponent;

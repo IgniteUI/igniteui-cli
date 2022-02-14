@@ -44,7 +44,7 @@ export default class $(ClassName) extends LitElement {
   `;
   }
 
-  updated() {
+  firstUpdated() {
     const chart = this.shadowRoot?.getElementById('chart') as IgcFinancialChartComponent;
     chart.dataSource = StockIndexData.getData();
     chart.yAxisMode = FinancialChartYAxisMode.Numeric;
