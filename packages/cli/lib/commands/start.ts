@@ -1,8 +1,17 @@
 import { GoogleAnalytics, ProjectConfig, Util } from "@igniteui/cli-core";
+import { ExecSyncOptions } from "child_process";
 import * as path from "path";
 import * as resolve from "resolve";
 import { TemplateManager } from "../TemplateManager";
 import { default as build } from "./build";
+
+const execSyncNpmStart = (port: number, options: ExecSyncOptions): void => {
+	if (port) {
+		Util.execSync(`npm start -- --port=${port}`, options);
+		return;
+	}
+	Util.execSync(`npm start`, options);
+};
 
 let command: {
 	[name: string]: any,
@@ -57,7 +66,9 @@ command = {
 		});
 
 		let port = Number(argv.port) || defaultPort;
-
+		// TODO: consider piping the stdin so that we handle the cp's termination
+		// this may require additional logic to be implemented if the cp asks for input
+		const options: ExecSyncOptions = { stdio: "inherit", killSignal: "SIGINT" };
 		switch (framework.toLowerCase()) {
 			case "jquery":
 				// browser-sync installed per project
@@ -82,15 +93,8 @@ command = {
 				}
 			/* falls through */
 			case "angular":
-				const options = { stdio: "inherit", killSignal: "SIGINT" };
-				if (port) {
-					Util.execSync(`npm start -- --port=` + port, options);
-				} else {
-					Util.execSync(`npm start`, options);
-				}
-				break;
 			case "webcomponents":
-				Util.execSync(`npm start`);
+				execSyncNpmStart(port, options);
 			default:
 				break;
 		}
