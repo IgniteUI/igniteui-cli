@@ -1,5 +1,5 @@
 import chalk from "chalk";
-import { execSync } from "child_process";
+import { execSync, ExecSyncOptions } from "child_process";
 import * as fs from "fs";
 import * as glob from "glob";
 import * as path from "path";
@@ -308,12 +308,12 @@ export class Util {
 	 * @param options Command options
 	 * @throws {Error} On timeout or non-zero exit code. Error has 'status', 'signal', 'output', 'stdout', 'stderr'
 	 */
-	public static execSync(command: string, options?: any) {
+	public static execSync(command: string, options?: ExecSyncOptions) {
 		try {
 			return execSync(command, options);
 		} catch (error) {
 			// execSync may throw an error during process interruption
-			// if this happens - stderr will ends with "^C" which was appended in the checkExecSyncError function
+			// if this happens - stderr will end with "^C" which was appended in the checkExecSyncError function
 			// this means that a SIGINT was attempted and failed
 			// npm may be involved in this as it works just fine with any other node process
 			if (error.stderr && error.stderr.toString().endsWith() === "^C") {
@@ -321,6 +321,10 @@ export class Util {
 			}
 
 			// if SIGINT killed the process with no errors
+			// 3221225786 - cmd- Ctrl+C
+			// 128 - bash - invalid argument to exit
+			// 130 - bash - Ctrl+C
+			// 255 - bash - exit status out of range
 			if (error.status === 3221225786 || error.status > 128) {
 				return process.exit();
 			}
