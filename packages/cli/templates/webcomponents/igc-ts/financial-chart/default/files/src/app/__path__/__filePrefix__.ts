@@ -24,7 +24,7 @@ export default class $(ClassName) extends LitElement {
     <igc-financial-chart id="chart" width="100%" height="100%"
       is-toolbar-visible="false"
       chart-type="Candle"
-      chart-title="S&P 500"
+      chart-title="Standard and Poor's 500"
       title-alignment="Left"
       title-left-margin="25"
       title-top-margin="10"

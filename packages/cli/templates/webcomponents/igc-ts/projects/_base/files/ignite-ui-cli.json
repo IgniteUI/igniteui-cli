@@ -3,6 +3,7 @@
 	"project": {
 		"defaultPort": 8000,
 		"framework": "webcomponents",
+    "projectTemplate": "$(projectTemplate)",
 		"projectType": "igc-ts",
 		"theme": "$(theme)",
 		"isBundle": false,
