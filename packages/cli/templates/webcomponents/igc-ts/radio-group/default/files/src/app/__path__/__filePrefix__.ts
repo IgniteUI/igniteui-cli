@@ -1,3 +1,5 @@
+import { html, LitElement } from 'lit';
+import { customElement } from 'lit/decorators.js';
 import {
   defineComponents,
   IgcRadioComponent,
@@ -6,9 +8,10 @@ import {
 
 defineComponents(IgcRadioComponent, IgcRadioGroupComponent);
 
-export default class $(ClassName) extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `
+@customElement('app-$(path)')
+export default class $(ClassName) extends LitElement {
+  render() {
+    return html`
       <igc-radio-group>
         <igc-radio name="fruit" value="banana">
           Banana
@@ -23,5 +26,3 @@ export default class $(ClassName) extends HTMLElement {
     `;
   }
 }
-
-customElements.define('app-$(path)', $(ClassName));

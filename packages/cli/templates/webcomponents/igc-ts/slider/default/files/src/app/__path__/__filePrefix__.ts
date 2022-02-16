@@ -1,3 +1,5 @@
+import { html, LitElement } from 'lit';
+import { customElement } from 'lit/decorators.js';
 import {
   defineComponents,
   IgcSliderComponent,
@@ -5,9 +7,10 @@ import {
 
 defineComponents(IgcSliderComponent);
 
-export default class $(ClassName) extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `
+@customElement('app-$(path)')
+export default class $(ClassName) extends LitElement {
+  render() {
+    return html`
     <igc-slider
       style="margin: 40px 20px; width: 200px;"
       min="0"
@@ -19,5 +22,3 @@ export default class $(ClassName) extends HTMLElement {
     `;
   }
 }
-
-customElements.define('app-$(path)', $(ClassName));

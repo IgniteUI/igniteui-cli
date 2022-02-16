@@ -1,4 +1,6 @@
 /* eslint-disable import/extensions */
+import { html, css, LitElement } from 'lit';
+import { customElement } from 'lit/decorators.js';
 import {
   IgcDataGridModule,
   IgcGridColumnOptionsModule,
@@ -18,21 +20,21 @@ ModuleManager.register(
   IgcGridColumnOptionsModule,
 );
 
-export default class $(ClassName) extends HTMLElement {
+@customElement('app-$(path)')
+export default class $(ClassName) extends LitElement {
   data: any[] = DataGridSharedData.getEmployees();
 
-  constructor() {
-    super();
-    this.attachShadow({ mode: 'open' });
-    this.shadowRoot!.innerHTML = `
-    <style>
-      :host {
-        height: 100%;
-        margin: 0px;
-        padding-right: 20px;
-        width: calc(100% - 600px);
-      }
-    </style>
+  static styles = css`
+    :host {
+      height: 100%;
+      margin: 0px;
+      padding-right: 20px;
+      width: calc(100% - 600px);
+  }
+  `;
+
+  render() {
+    return html`
     <div class="container sample">
     <div class="options horizontal">
       <button id="commitClick" disabled="true">Commit</button>
@@ -79,11 +81,11 @@ export default class $(ClassName) extends HTMLElement {
   `;
   }
 
-  connectedCallback() {
-    const grid = document.getElementsByTagName('app-grid-editing')[0].shadowRoot!.getElementById('grid') as IgcDataGridComponent;
-    const commitButton = document.getElementsByTagName('app-grid-editing')[0].shadowRoot!.getElementById('commitClick') as HTMLButtonElement;
-    const undoButton = document.getElementsByTagName('app-grid-editing')[0].shadowRoot!.getElementById('undoClick') as HTMLButtonElement;
-    const redoButton = document.getElementsByTagName('app-grid-editing')[0].shadowRoot!.getElementById('redoClick') as HTMLButtonElement;
+  firstUpdated() {
+    const grid = this.shadowRoot?.getElementById('grid') as IgcDataGridComponent;
+    const commitButton = this.shadowRoot?.getElementById('commitClick') as HTMLButtonElement;
+    const undoButton = this.shadowRoot?.getElementById('undoClick') as HTMLButtonElement;
+    const redoButton = this.shadowRoot?.getElementById('redoClick') as HTMLButtonElement;
 
     const onCommitClick = () => {
       grid.commitEdits();
@@ -197,21 +199,19 @@ export default class $(ClassName) extends HTMLElement {
       grid.cellValueChanging = onCellValueChanging;
     }
 
-    const dropDown = document.getElementsByTagName('app-grid-editing')[0].shadowRoot!.getElementById('editModeDropBox');
+    const dropDown = this.shadowRoot?.getElementById('editModeDropBox');
     if (dropDown !== null) {
-      dropDown.onchange = editModeChanged;
+      dropDown!.onchange = editModeChanged;
     }
 
-    const dropDown2 = document.getElementsByTagName('app-grid-editing')[0].shadowRoot!.getElementById('editModeClickActionDropBox');
+    const dropDown2 = this.shadowRoot?.getElementById('editModeClickActionDropBox');
     if (dropDown2 !== null) {
-      dropDown2.onchange = editModeClickActionChanged;
+      dropDown2!.onchange = editModeClickActionChanged;
     }
 
-    const deleteRowColumn = document.getElementsByTagName('app-grid-editing')[0].shadowRoot!.getElementById('deleteRowColumn') as IgcTemplateColumnComponent;
+    const deleteRowColumn = this.shadowRoot?.getElementById('deleteRowColumn') as IgcTemplateColumnComponent;
     if (deleteRowColumn !== null) {
       deleteRowColumn.cellUpdating = onDeleteCellUpdating;
     }
   }
 }
-
-customElements.define('app-$(path)', $(ClassName));

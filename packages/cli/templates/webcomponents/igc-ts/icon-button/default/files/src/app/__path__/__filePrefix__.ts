@@ -1,3 +1,5 @@
+import { html, LitElement } from 'lit';
+import { customElement } from 'lit/decorators.js';
 import {
   defineComponents,
   IgcIconButtonComponent,
@@ -14,9 +16,10 @@ registerIcon(
   'material',
 );
 
-export default class IconButton extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `
+@customElement('app-$(path)')
+export default class IconButton extends LitElement {
+  render() {
+    return html`
       <label>Contact Infragistics support: </label>
       <igc-icon-button
         name="build"
@@ -30,5 +33,3 @@ export default class IconButton extends HTMLElement {
     `;
   }
 }
-
-customElements.define('app-icon-button', IconButton);

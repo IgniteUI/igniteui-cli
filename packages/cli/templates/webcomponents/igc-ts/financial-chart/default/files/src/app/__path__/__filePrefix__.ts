@@ -1,3 +1,5 @@
+import { html, css, LitElement } from 'lit';
+import { customElement } from 'lit/decorators.js';
 import {
   IgcFinancialChartComponent,
   IgcFinancialChartModule,
@@ -8,21 +10,21 @@ import { StockIndexData } from './StockIndexData.js';
 
 ModuleManager.register(IgcFinancialChartModule);
 
-export default class $(ClassName) extends HTMLElement {
-  constructor() {
-    super();
-    this.attachShadow({ mode: 'open' });
-    this.shadowRoot!.innerHTML = `
-    <style>
-      :host{
-        height: 50%;
-        width: 50%;
-      }
-    </style>
+@customElement('app-$(path)')
+export default class $(ClassName) extends LitElement {
+  static styles = css`
+    :host{
+      height: 50%;
+      width: 50%;
+    }
+  `;
+
+  render() {
+    return html`
     <igc-financial-chart id="chart" width="100%" height="100%"
       is-toolbar-visible="false"
       chart-type="Candle"
-      chart-title="S&P 500"
+      chart-title="Standard and Poor's 500"
       title-alignment="Left"
       title-left-margin="25"
       title-top-margin="10"
@@ -42,11 +44,9 @@ export default class $(ClassName) extends HTMLElement {
   `;
   }
 
-  connectedCallback() {
-    const chart = document.getElementsByTagName('app-$(path)')[0].shadowRoot!.getElementById('chart') as IgcFinancialChartComponent;
+  firstUpdated() {
+    const chart = this.shadowRoot?.getElementById('chart') as IgcFinancialChartComponent;
     chart.dataSource = StockIndexData.getData();
     chart.yAxisMode = FinancialChartYAxisMode.Numeric;
   }
 }
-
-customElements.define('app-$(path)', $(ClassName));

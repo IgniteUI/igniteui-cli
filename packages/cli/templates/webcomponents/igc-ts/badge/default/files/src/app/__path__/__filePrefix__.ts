@@ -1,3 +1,5 @@
+import { html, css, LitElement } from 'lit';
+import { customElement } from 'lit/decorators.js';
 import {
   defineComponents,
   IgcBadgeComponent,
@@ -5,23 +7,25 @@ import {
 
 defineComponents(IgcBadgeComponent);
 
-export default class $(ClassName) extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `
-      <style>
-        #labels {
-          flex-grow: 1;
-          display: flex;
-          flex-direction: column;
-          border-style: groove;
-        }
-        igc-badge {
-          padding: 3px;
-        }
-        label {
-          padding: 5px;
-        }
-      </style>
+@customElement('app-$(path)')
+export default class $(ClassName) extends LitElement {
+  static styles = css`
+    #labels {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      border-style: groove;
+    }
+    igc-badge {
+      padding: 3px;
+    }
+    label {
+      padding: 5px;
+    }
+  `;
+
+  render() {
+    return html`
       <div id='labels'>
         <label>Labels</label>
         <igc-badge
@@ -42,5 +46,3 @@ export default class $(ClassName) extends HTMLElement {
     `;
   }
 }
-
-customElements.define('app-$(path)', $(ClassName));

@@ -1,5 +1,5 @@
 {
-  "name": "$(dash-name)",
+  "name": "$(dashName)",
   "version": "0.0.0",
   "private": true,
   "description": "WebComponents project for Ignite UI CLI",
@@ -10,7 +10,7 @@
   "type": "module",
   "exports": {
     ".": "./dist/src/index.js",
-    "./$(dash-name).js": "./dist/src/$(dash-name).js"
+    "./$(dashName).js": "./dist/src/$(dashName).js"
   },
   "scripts": {
     "start": "tsc && concurrently -k -r \"tsc --watch\" \"wds\"",

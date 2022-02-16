@@ -1,3 +1,5 @@
+import { html, css, LitElement } from 'lit';
+import { customElement } from 'lit/decorators.js';
 import {
   IgcDockManagerComponent,
   IgcDockManagerPaneType,
@@ -7,59 +9,59 @@ import { defineCustomElements } from 'igniteui-dockmanager/loader';
 
 defineCustomElements();
 
-export default class $(ClassName) extends HTMLElement {
-  constructor() {
-    super();
-    this.attachShadow({ mode: 'open' });
-    this.shadowRoot!.innerHTML = `
-    <style>
-      :host, igc-dockmanager {
-        height: 100%;
-        margin: 0px;
-        padding-left: 275px;
-        width: calc(100% - 275px);
-      }
+@customElement('app-$(path)')
+export default class $(ClassName) extends LitElement {
+  static styles = css`
+    :host, igc-dockmanager {
+      height: 100%;
+      margin: 0px;
+      padding-left: 275px;
+      width: calc(100% - 275px);
+    }
 
-      .dockManagerContent {
-        padding: 0.5rem;
-        height: calc(100% - 1rem);
-        width: calc(100% - 1rem);
-        display: flex;
-        flex-direction: column;
-        /* background: orange; */
-      }
+    .dockManagerContent {
+      padding: 0.5rem;
+      height: calc(100% - 1rem);
+      width: calc(100% - 1rem);
+      display: flex;
+      flex-direction: column;
+      /* background: orange; */
+    }
 
-      .dockManagerFull {
-        padding: 0rem;
-        margin: 0rem;
-        height: 100%;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
-      }
+    .dockManagerFull {
+      padding: 0rem;
+      margin: 0rem;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
 
-      .dockManagerFrame {
-        padding: 0rem;
-        margin: 0rem;
-        height: 100%;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
-      }
+    .dockManagerFrame {
+      padding: 0rem;
+      margin: 0rem;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
 
-      .employeesDetailsRow {
-        height: 4rem;
-        display: flex;
-        flex-direction: row;
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
-        padding-top: 0.5rem;
-        padding-bottom: 0.5rem;
-        align-items: center;
-      }
-    </style>
+    .employeesDetailsRow {
+      height: 4rem;
+      display: flex;
+      flex-direction: row;
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      align-items: center;
+    }
+  `;
+
+  render() {
+    return html`
     <igc-dockmanager id="dockManager">
       <div slot="content1" class="dockManagerContent">Content 1</div>
       <div slot="content2" class="dockManagerContent">Content 2</div>
@@ -77,8 +79,8 @@ export default class $(ClassName) extends HTMLElement {
   `;
   }
 
-  connectedCallback() {
-    const dockManager = document.getElementsByTagName('app-$(path)')[0].shadowRoot!.getElementById('dockManager') as IgcDockManagerComponent;
+  firstUpdated() {
+    const dockManager = this.shadowRoot?.getElementById('dockManager') as IgcDockManagerComponent;
     dockManager.layout = {
       rootPane: {
         type: IgcDockManagerPaneType.splitPane,
@@ -202,5 +204,3 @@ export default class $(ClassName) extends HTMLElement {
     };
   }
 }
-
-customElements.define('app-$(path)', $(ClassName));
