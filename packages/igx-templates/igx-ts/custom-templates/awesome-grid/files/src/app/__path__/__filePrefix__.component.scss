@@ -5,7 +5,7 @@ $grid-sample-theme: igx-grid-theme(
   $row-hover-background: #f8f8f8,
   $row-border-color: #f8f8f8,
   $cell-selected-background:
-    igx-color(
+    color(
       $color: "grays",
       $variant: 800,
     ),
@@ -137,7 +137,7 @@ $progressBar-sample-theme: igx-progress-linear-theme(
       }
 
       &__player-name {
-        color: igx-color($color: "primary", $variant: 800);
+        color: color($color: "primary", $variant: 800);
         font-size: 18px;
         margin: 0;
         white-space: nowrap;

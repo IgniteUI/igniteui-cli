@@ -229,12 +229,12 @@
 
 @include igx-core();
 @include igx-typography($font-family: $material-typeface, $type-scale: $material-type-scale);
-@include igx-theme($default-palette);
+@include theme($default-palette);
 
 
 @include scrollbar-love();
 
-$green-palette: igx-palette($primary: #09f,$secondary: #72da67, $surface: #333);
+$green-palette: palette($primary: #09f,$secondary: #72da67, $surface: #333);
 
 :host {
   ::ng-deep {
@@ -243,7 +243,7 @@ $green-palette: igx-palette($primary: #09f,$secondary: #72da67, $surface: #333);
 
     .fin-dark-theme {
       @include igx-dark-theme($green-palette);
-      @include scrollbar-love(igx-color($green-palette, 'surface'));
+      @include scrollbar-love(color($green-palette, 'surface'));
        background: #333;
 
        igx-grid-cell {

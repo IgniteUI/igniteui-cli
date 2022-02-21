@@ -71,8 +71,7 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 						this.formatTreeGridFeatures(feature, columnFeatures, columnBoolFeatures);
 						break;
 					case "Column Moving":
-						columnFeatures.push('[movable]="true"');
-						columnBoolFeatures.push('[movable]="true"');
+						treeGridFeatures.push('[moving]="true"');
 						break;
 					case "Column Hiding":
 						toolbarActions.push("      <igx-grid-toolbar-hiding></igx-grid-toolbar-hiding>");

@@ -46,13 +46,13 @@ function importDefaultThemeSass(tree: Tree, filePath: string) {
 // Uncomment the following lines if you want to add a custom palette:
 // $primary: #731963 !default;
 // $secondary: #ce5712 !default;
-// $app-palette: igx-palette($primary, $secondary);
+// $app-palette: palette($primary, $secondary);
 
 /* autoprefixer grid: on */
 
 @include igx-core();
 @include igx-typography($font-family: $material-typeface, $type-scale: $material-type-scale);
-@include igx-theme($default-palette);
+@include theme($default-palette);
 `;
 
 	let content = tree.read(filePath)!.toString();

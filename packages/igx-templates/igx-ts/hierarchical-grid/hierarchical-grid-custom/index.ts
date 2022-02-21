@@ -104,7 +104,7 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 						columnBoolFeatures.push(text);
 						break;
 					case "Column Moving":
-						columnFeatures.push('[movable]="true"');
+						gridFeatures.push('[moving]="true"');
 						break;
 					case "Column Hiding":
 						toolbarActions.push("      <igx-grid-toolbar-hiding title='Column Hiding'></igx-grid-toolbar-hiding>");
