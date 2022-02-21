@@ -1,22 +1,9 @@
 /* eslint-disable no-return-assign */
 import { html, css, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import {
-  defineComponents,
-  IgcNavDrawerComponent,
-  IgcNavDrawerItemComponent,
-  IgcNavDrawerHeaderItemComponent,
-  IgcRippleComponent,
-} from 'igniteui-webcomponents';
 import { Router } from '@vaadin/router';
 import { routes } from './app-routing.js';
-
-defineComponents(
-  IgcNavDrawerComponent,
-  IgcNavDrawerItemComponent,
-  IgcNavDrawerHeaderItemComponent,
-  IgcRippleComponent,
-);
+import './app-module';
 
 @customElement('app-root')
 export class App extends LitElement {
