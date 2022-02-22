@@ -11,7 +11,6 @@ export class <%=ClassName%>Component {
   public regions!: Region[];
   public townSelected!: string;
   public postalCode?: number;
-  public messagePosition = IgxToastPosition.Middle;
   private messagePositionSettings: PositionSettings = {
     horizontalDirection: HorizontalAlignment.Center,
     verticalDirection: VerticalAlignment.Middle
