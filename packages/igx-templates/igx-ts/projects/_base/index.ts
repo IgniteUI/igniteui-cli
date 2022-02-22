@@ -32,8 +32,8 @@ $app-palette: palette($primary, $secondary);
 
 /* autoprefixer grid: on */
 
-@include igx-core();
-@include igx-typography($font-family: $material-typeface, $type-scale: $material-type-scale);
+@include core();
+@include typography($font-family: $material-typeface, $type-scale: $material-type-scale);
 @include theme($app-palette);
 `;
 	private DEFAULT_THEME = `,

@@ -205,8 +205,8 @@
 // Custom Dark Theme
 
 // Import the theme utilities first
-@include igx-core();
-@include igx-typography($font-family: $material-typeface, $type-scale: $material-type-scale);
+@include core();
+@include typography($font-family: $material-typeface, $type-scale: $material-type-scale);
 @include theme($default-palette);
 
 
@@ -221,7 +221,7 @@ $green-palette: palette($primary: #09f,$secondary: #72da67, $surface: #333);
         @include scrollbar-love();
 
         .fin-dark-theme {
-            @include igx-dark-theme($green-palette);
+            @include dark-theme($green-palette);
             @include scrollbar-love(color($green-palette, 'surface'));
             background: #333;
 

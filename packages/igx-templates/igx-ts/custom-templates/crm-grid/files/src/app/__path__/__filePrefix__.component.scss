@@ -53,18 +53,18 @@
         $idle-text-color: color($crm-grid-palette, "grays", 900)
     );
 
-    @include igx-grid-toolbar($crm-grid-toolbar);
+    @include grid-toolbar($crm-grid-toolbar);
 
-    @include igx-grid($crm-grid-theme);
+    @include grid($crm-grid-theme);
 
-    @include igx-grid-summary($summary-theme);
+    @include grid-summary($summary-theme);
 
-    @include igx-input-group($search-theme);
+    @include input-group($search-theme);
 
-    @include igx-grid-toolbar($crm-grid-toolbar);
+    @include grid-toolbar($crm-grid-toolbar);
 
     .igx-drop-down__list {
-        @include igx-input-group($crm-input-drop-down)
+        @include input-group($crm-input-drop-down)
     }
 
     .igx-grid__summaries-patch {
@@ -156,7 +156,7 @@
     }
 
     .igx-grid-toolbar__actions {
-        @include igx-button($crm-grid-toolbar-button);
+        @include button($crm-grid-toolbar-button);
 
         .igx-button--outlined {
             margin-left: 0.5rem;
@@ -177,7 +177,7 @@
             height: 36px;
         }
 
-        @include igx-button($crm-grid-search-button);
+        @include button($crm-grid-search-button);
     }
 
     .igx-input-group--search .igx-input-group__bundle,
@@ -337,7 +337,7 @@
         padding: 16px;
 
         ::ng-deep {
-            @include igx-checkbox($checkbox-theme);
+            @include checkbox($checkbox-theme);
         }
 
         &:hover {
