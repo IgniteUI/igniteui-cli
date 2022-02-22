@@ -1,5 +1,5 @@
 import { Component, Pipe, PipeTransform, ViewChild } from '@angular/core';
-import { IgxToastComponent, IgxToastPosition, ISelectionEventArgs } from '<%=igxPackage%>';
+import { IgxToastComponent, ISelectionEventArgs, PositionSettings, HorizontalAlignment, VerticalAlignment } from '<%=igxPackage%>';
 import { Region, Town, townsExtended } from './towns-data-extended';
 
 @Component({
@@ -12,6 +12,10 @@ export class <%=ClassName%>Component {
   public townSelected!: string;
   public postalCode?: number;
   public messagePosition = IgxToastPosition.Middle;
+  private messagePositionSettings: PositionSettings = {
+    horizontalDirection: HorizontalAlignment.Center,
+    verticalDirection: VerticalAlignment.Middle
+  };
 
   @ViewChild(IgxToastComponent, { static: true })
   public toast!: IgxToastComponent;
@@ -28,7 +32,7 @@ export class <%=ClassName%>Component {
     const townEntry = allTowns.find(t => t.name === e.newSelection.value);
 
     this.postalCode = townEntry?.postalCode;
-    this.toast.open();
+    this.toast.open(undefined, this.messagePositionSettings);
   }
 }
 

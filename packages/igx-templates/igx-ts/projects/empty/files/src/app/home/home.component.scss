@@ -23,7 +23,7 @@
   }
 
   @include e(header) {
-    color: igx-color($default-palette, "primary");
+    color: color($default-palette, "primary");
   }
 
   @include e(subject) {
