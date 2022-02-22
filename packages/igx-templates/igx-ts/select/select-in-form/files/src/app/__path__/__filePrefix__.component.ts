@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IgxSelectComponent, IgxToastComponent, IgxToastPosition } from '<%=igxPackage%>';
+import { HorizontalAlignment, IgxSelectComponent, IgxToastComponent, PositionSettings, VerticalAlignment } from '<%=igxPackage%>';
 
 @Component({
   selector: 'app-<%=filePrefix%>',
@@ -15,9 +15,12 @@ export class <%=ClassName%>Component {
 
   public selected!: string;
   public fruits: string[] = ['Orange', 'Apple', 'Banana', 'Mango'];
-  public outputPosition = IgxToastPosition.Middle;
+  private messagePositionSettings: PositionSettings = {
+    horizontalDirection: HorizontalAlignment.Center,
+    verticalDirection: VerticalAlignment.Middle
+  };
 
   public onSubmit() {
-    this.output.open();
+    this.output.open(undefined, this.messagePositionSettings);
   }
 }

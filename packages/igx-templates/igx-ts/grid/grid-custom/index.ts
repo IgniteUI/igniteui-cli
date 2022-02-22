@@ -73,8 +73,7 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 						columnBoolFeatures.push(text);
 						break;
 					case "Column Moving":
-						columnFeatures.push('[movable]="true"');
-						columnBoolFeatures.push('[movable]="true"');
+						gridFeatures.push('[moving]="true"');
 						break;
 					case "Column Hiding":
 						toolbarActions.push("      <igx-grid-toolbar-hiding></igx-grid-toolbar-hiding>");
