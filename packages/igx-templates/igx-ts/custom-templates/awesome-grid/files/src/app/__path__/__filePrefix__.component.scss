@@ -1,5 +1,5 @@
 @use '<%=igxPackage%>/theming' as *;
-$grid-sample-theme: igx-grid-theme(
+$grid-sample-theme: grid-theme(
   $row-selected-background: #333,
   $row-selected-text-color: #ddd,
   $row-hover-background: #f8f8f8,
@@ -12,7 +12,7 @@ $grid-sample-theme: igx-grid-theme(
   $cell-selected-text-color: #fff,
 );
 
-$progressBar-sample-theme: igx-progress-linear-theme(
+$progressBar-sample-theme: progress-linear-theme(
   $track-color: rgba(181, 181, 181, 0.5),
   $fill-color-default: orange,
 );
