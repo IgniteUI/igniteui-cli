@@ -2,17 +2,10 @@ import { html, css, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import {
   IgcItemLegendComponent,
-  IgcItemLegendModule,
   IgcPieChartComponent,
-  IgcPieChartModule,
 } from 'igniteui-webcomponents-charts';
-import { ModuleManager } from 'igniteui-webcomponents-core';
 import { Data } from './sampleData.js';
 
-ModuleManager.register(
-  IgcItemLegendModule,
-  IgcPieChartModule,
-);
 
 @customElement('app-$(path)')
 export default class $(ClassName) extends LitElement {

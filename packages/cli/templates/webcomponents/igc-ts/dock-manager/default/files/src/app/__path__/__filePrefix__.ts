@@ -5,9 +5,6 @@ import {
   IgcDockManagerPaneType,
   IgcSplitPaneOrientation,
 } from 'igniteui-dockmanager';
-import { defineCustomElements } from 'igniteui-dockmanager/loader';
-
-defineCustomElements();
 
 @customElement('app-$(path)')
 export default class $(ClassName) extends LitElement {

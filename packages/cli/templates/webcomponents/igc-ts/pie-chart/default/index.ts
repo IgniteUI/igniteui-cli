@@ -11,6 +11,15 @@ class IgcPieChartTemplate extends IgniteUIForWebComponentsTemplate {
 		this.projectType = "igc-ts";
 		this.name = "Pie Chart";
 		this.description = "IgcPieChart with local data";
+		this.dependencies = [{
+			import: ["IgcItemLegendModule", "IgcPieChartModule"],
+			from: "igniteui-webcomponents-charts"
+		}, {
+			import: ["ModuleManager"],
+			from: "igniteui-webcomponents-core"
+		}];
+		this.packages = ["igniteui-webcomponents-core@~1.4.1", "igniteui-webcomponents-charts@~1.4.1"];
+
 	}
 	protected addClassDeclaration(mainModule: TypeScriptFileUpdate, projPath: string, name: string, modulePath: string) {
 		// not applicable with custom module

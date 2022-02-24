@@ -22,13 +22,6 @@
   "dependencies": {
     "@vaadin/router": "^1.7.4",
     "igniteui-webcomponents": "2.0.0",
-    "igniteui-webcomponents-grids": "~1.4.1",
-    "igniteui-webcomponents-core": "~1.4.1",
-    "igniteui-webcomponents-layouts": "~1.4.1",
-    "igniteui-webcomponents-inputs": "~1.4.1",
-    "igniteui-webcomponents-charts": "~1.4.1",
-    "igniteui-webcomponents-gauges": "~1.4.1",
-    "igniteui-dockmanager": "~1.6.0",
     "@igniteui/material-icons-extended": "^2.10.0",
     "lit": "^2.0.2",
     "typescript": "^4.5.2"

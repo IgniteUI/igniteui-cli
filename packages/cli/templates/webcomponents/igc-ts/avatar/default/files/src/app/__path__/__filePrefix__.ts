@@ -1,11 +1,5 @@
 import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import {
-  defineComponents,
-  IgcAvatarComponent,
-} from 'igniteui-webcomponents';
-
-defineComponents(IgcAvatarComponent);
 
 @customElement('app-$(path)')
 export default class $(ClassName) extends LitElement {

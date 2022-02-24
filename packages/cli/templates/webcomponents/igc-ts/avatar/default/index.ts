@@ -11,6 +11,10 @@ class IgcAvatarTemplate extends IgniteUIForWebComponentsTemplate {
 		this.projectType = "igc-ts";
 		this.name = "Avatar";
 		this.description = "basic IgcAvatar";
+		this.dependencies = [{
+			import: ["defineComponents", "IgcAvatarComponent"],
+			from: "igniteui-webcomponents" // use <%=igcPackage%>???
+		}];
 	}
 	protected addClassDeclaration(mainModule: TypeScriptFileUpdate, projPath: string, name: string, modulePath: string) {
 		// not applicable with custom module
