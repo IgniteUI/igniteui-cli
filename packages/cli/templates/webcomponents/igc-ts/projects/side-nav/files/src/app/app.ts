@@ -3,7 +3,7 @@ import { html, css, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import { Router } from '@vaadin/router';
 import { routes } from './app-routing.js';
-import './app-module';
+import './app.module';
 
 @customElement('app-root')
 export class App extends LitElement {
