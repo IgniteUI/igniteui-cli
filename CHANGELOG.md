@@ -1,3 +1,29 @@
+# [9.1.0](https://github.com/IgniteUI/igniteui-cli/compare/v9.0.6...v9.1.0)  (2022-03-02)
+
+🎉 This update includes:
+
+- `igniteui-angular` version [13.1.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/13.1.0).
+
+## igniteui/cli-core@9.1.0
+
+* Note: Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@13.1.910
+
+* Update the templates in accordance with the latest migrations for 13.1 by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1006
+
+## igniteui/angular-schematics@13.1.910
+
+* Note: Version bump only for package igniteui/angular-schematics
+
+## igniteui-cli@9.1.0
+
+* Adding Empty view for WC project by @dafo in https://github.com/IgniteUI/igniteui-cli/pull/979
+* Using rollup as building tool in Web components projects by @dafo in https://github.com/IgniteUI/igniteui-cli/pull/999
+* Pass in options for wc child process by @jackofdiamond5 in https://github.com/IgniteUI/igniteui-cli/pull/1000
+* Web Components templates use LitElement by @dafo in https://github.com/IgniteUI/igniteui-cli/pull/1001
+* Update the templates in accordance with the latest migrations for 13.1 by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1006
+
 # [9.0.6](https://github.com/IgniteUI/igniteui-cli/compare/v9.0.5...v9.0.6)  (2022-02-04)
 
 ## igniteui/cli-core@9.0.6
