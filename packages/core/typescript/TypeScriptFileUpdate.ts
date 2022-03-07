@@ -6,6 +6,13 @@ import { Util } from "../util/Util";
 import { TypeScriptUtils as TsUtils } from "./TypeScriptUtils";
 
 const DEFAULT_ROUTES_VARIABLE = "routes";
+
+export interface RequestedImport {
+		from: string;
+		imports: string[];
+		edit: boolean;
+}
+
 /**
  * Apply various updates to typescript files using AST
  */
@@ -15,11 +22,13 @@ export class TypeScriptFileUpdate {
 	// for AST transformation API List: https://github.com/Microsoft/TypeScript/pull/13940
 
 	protected formatOptions = { spaces: false, indentSize: 4, singleQuotes: false };
+	protected readonly notFoundWildCard: string = "**";
+	protected readonly routesIdentifier: string = "Routes";
 	private fileSystem: IFileSystem;
 	private targetSource: ts.SourceFile;
 	private importsMeta: { lastIndex: number, modulePaths: string[] };
 
-	private requestedImports: Array<{ from: string, imports: string[], edit: boolean }>;
+	private requestedImports: RequestedImport[];
 	private ngMetaEdits: {
 		declarations: string[],
 		imports: Array<{ name: string, root: boolean }>,
@@ -207,9 +216,8 @@ export class TypeScriptFileUpdate {
 						const newObject = this.createRouteEntry(linkPath, className, linkText);
 						const array = (node as ts.ArrayLiteralExpression);
 						this.createdStringLiterals.push(linkPath, linkText);
-						const notFoundWildCard = "**";
 						const nodes = ts.visitNodes(array.elements, visitor);
-						const errorRouteNode = nodes.filter(element => element.getText().includes(notFoundWildCard))[0];
+						const errorRouteNode = nodes.filter(element => element.getText().includes(this.notFoundWildCard))[0];
 						let resultNodes = null;
 						if (errorRouteNode) {
 							resultNodes = nodes
@@ -307,7 +315,7 @@ export class TypeScriptFileUpdate {
 				const visitCondition = (node: ts.Node): boolean => {
 					return node.kind === ts.SyntaxKind.VariableDeclaration &&
 						(node as ts.VariableDeclaration).name.getText() === routesVariable &&
-						(node as ts.VariableDeclaration).type.getText() === "Routes";
+						(node as ts.VariableDeclaration).type.getText() === this.routesIdentifier;
 				};
 				const visitor: ts.Visitor = this.createVisitor(conditionalVisitor, visitCondition, context);
 				context.enableSubstitution(ts.SyntaxKind.ClassDeclaration);
@@ -349,12 +357,35 @@ export class TypeScriptFileUpdate {
 
 		const newStatements = ts.factory.createNodeArray([
 			...this.targetSource.statements.slice(0, this.importsMeta.lastIndex),
-			...newImports.map(x => TsUtils.createIdentifierImport(x.imports, x.from)),
+			...newImports.map(x => this.createRouteImport(x)),
 			...this.targetSource.statements.slice(this.importsMeta.lastIndex)
 		]);
 		newImports.forEach(x => this.createdStringLiterals.push(x.from));
 
 		this.targetSource = ts.factory.updateSourceFile(this.targetSource, newStatements);
+	}
+
+	protected createRouteImport(imp: RequestedImport): ts.ImportDeclaration {
+		return TsUtils.createIdentifierImport(imp.imports, imp.from);
+	}
+
+	protected createRouteEntry(linkPath: string, className: string, linkText: string): ts.ObjectLiteralExpression {
+		const routePath = ts.factory.createPropertyAssignment("path", ts.factory.createStringLiteral(linkPath));
+		const routeComponent = this.createComponentForRouteEntry(className);
+		const routeData = this.createDataForRouteEntry(linkText);
+		return ts.factory.createObjectLiteralExpression([routePath, routeComponent, routeData]);
+	}
+
+	protected createComponentForRouteEntry(className: string) {
+		// called by createRouteEntry()
+		return ts.factory.createPropertyAssignment("component", ts.factory.createIdentifier(className));
+	}
+
+	protected createDataForRouteEntry(linkText: string) {
+		// called by createRouteEntry()
+		const routeDataInner = ts.factory.createPropertyAssignment("text", ts.factory.createStringLiteral(linkText));
+		return ts.factory.createPropertyAssignment(
+			"data", ts.factory.createObjectLiteralExpression([routeDataInner]));
 	}
 
 	//#region ts.TransformerFactory
@@ -648,14 +679,4 @@ export class TypeScriptFileUpdate {
 			return node;
 		};
 	}
-
-	private createRouteEntry(linkPath: string, className: string, linkText: string): ts.ObjectLiteralExpression {
-		const routePath = ts.factory.createPropertyAssignment("path", ts.factory.createStringLiteral(linkPath));
-		const routeComponent = ts.factory.createPropertyAssignment("component", ts.factory.createIdentifier(className));
-		const routeDataInner = ts.factory.createPropertyAssignment("text", ts.factory.createStringLiteral(linkText));
-		const routeData = ts.factory.createPropertyAssignment(
-			"data", ts.factory.createObjectLiteralExpression([routeDataInner]));
-		return ts.factory.createObjectLiteralExpression([routePath, routeComponent, routeData]);
-	}
-
 }

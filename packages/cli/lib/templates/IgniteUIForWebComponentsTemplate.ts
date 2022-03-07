@@ -4,7 +4,7 @@ import {
 } from "@igniteui/cli-core";
 import * as path from "path";
 import { NPM_DOCK_MANAGER, resolveIgcPackage } from "../../templates/webcomponents/package-resolve";
-import { TypeScriptFileUpdate } from "../../templates/webcomponents/TypeScriptFileUpdate";
+import { TypeScriptFileUpdateWC } from "../../templates/webcomponents/TypeScriptFileUpdate";
 
 export class IgniteUIForWebComponentsTemplate implements Template {
 	public components: string[];
@@ -40,7 +40,7 @@ export class IgniteUIForWebComponentsTemplate implements Template {
 	public registerInProject(projectPath: string, fullName: string, options?: AddTemplateArgs) {
 		if (!(options && options.skipRoute) && App.container.get<IFileSystem>(FS_TOKEN)
 			.fileExists("src/app/app-routing.ts")) {
-			const routingModule = new TypeScriptFileUpdate(path.join(projectPath, "src/app/app-routing.ts"));
+			const routingModule = new TypeScriptFileUpdateWC(path.join(projectPath, "src/app/app-routing.ts"));
 			routingModule.addRoute(
 				path.join(projectPath, `src/app/${this.folderName(fullName)}/${this.fileName(fullName)}.component.ts`),
 				this.fileName(fullName),
