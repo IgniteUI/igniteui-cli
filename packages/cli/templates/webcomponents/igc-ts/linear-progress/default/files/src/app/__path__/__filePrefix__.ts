@@ -2,7 +2,7 @@ import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import {
   defineComponents,
-  IgcLinearProgressComponent
+  IgcLinearProgressComponent,
 } from 'igniteui-webcomponents';
 
 defineComponents(IgcLinearProgressComponent);

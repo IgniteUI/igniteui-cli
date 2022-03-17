@@ -2,7 +2,7 @@ import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import {
   defineComponents,
-  IgcCircularProgressComponent
+  IgcCircularProgressComponent,
 } from 'igniteui-webcomponents';
 
 defineComponents(IgcCircularProgressComponent);
@@ -21,13 +21,13 @@ export default class $(ClassName) extends LitElement {
       <igc-circular-progress
         style="--diameter: 96px; --stroke-thickness: 12px;"
         value="92"
-        animation-duration="500"></igc-circular-progress>
+        animation-duration="500">
+      </igc-circular-progress>
       <igc-circular-progress
         style="--diameter: 96px; --stroke-thickness: 12px;"
         value="92"
         animation-duration="1500"
-        variant="success"
-        >
+        variant="success">
       </igc-circular-progress>
     </div>
     `;
