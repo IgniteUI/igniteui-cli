@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { SALES_DATA_NEW } from './data';
-import { IPivotConfiguration, IgxPivotDateDimension } from '<%=igxPackage%>';
+import { DATA } from './data';
+import { IPivotConfiguration, IgxPivotNumericAggregate } from '<%=igxPackage%>';
 
 @Component({
   selector: 'app-<%=filePrefix%>',
@@ -8,7 +8,37 @@ import { IPivotConfiguration, IgxPivotDateDimension } from '<%=igxPackage%>';
   styleUrls: ['./<%=filePrefix%>.component.scss']
 })
 export class <%=ClassName%>Component {
-  public data = SALES_DATA_NEW;
-  public pivotConfigHierarchy: IPivotConfiguration;
-  public dateDimension: IgxPivotDateDimension;
+  public data = DATA;
+  public pivotConfigHierarchy: IPivotConfiguration = {
+      columns: [
+          {
+
+              memberName: 'Product',
+              memberFunction: (data) => data.Product.Name,
+              enabled: true
+          }
+
+      ],
+      rows: [
+          {
+              memberName: 'Seller',
+              memberFunction: (data) => data.Seller.Name,
+              enabled: true
+          }
+      ],
+      values: [
+          {
+              member: 'NumberOfUnits',
+              aggregate: {
+                  aggregator: IgxPivotNumericAggregate.sum,
+                  key: 'sum',
+                  label: 'Sum'
+              },
+              enabled: true
+
+          }
+      ],
+      filters: null
+  };
 }
+

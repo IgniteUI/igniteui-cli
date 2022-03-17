@@ -12,5 +12,6 @@ class IgxPivotGridTemplate extends IgniteUIForAngularTemplate {
 		this.dependencies = [
 			{ import: "IgxPivotGridModule", from: "<%=igxPackage%>" }
 		];
+	}
 }
 module.exports = new IgxPivotGridTemplate();

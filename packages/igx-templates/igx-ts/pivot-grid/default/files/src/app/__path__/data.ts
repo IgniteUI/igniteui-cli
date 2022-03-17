@@ -1,15639 +1,6502 @@
-export const SALES_DATA_NEW =
-    [
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "501",
-            "Manufacturing Price": 15,
-            "Sale Price": 23,
-            "Gross Sales": 26440,
-            "Discounts": null,
-            "Sales": 26440,
-            "COGS": 16185,
-            "Profit": 11255,
-            "Date": "1/1/20",
-            "Month Name": "January",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Kensington",
-            "Units Sold": "1372",
-            "Manufacturing Price": 3,
-            "Sale Price": 20,
-            "Gross Sales": 27440,
-            "Discounts": null,
-            "Sales": 27440,
-            "COGS": 16185,
-            "Profit": 11255,
-            "Date": "1/1/20",
-            "Month Name": "January",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Kensington",
-            "Units Sold": "2762",
-            "Manufacturing Price": 3,
-            "Sale Price": 20,
-            "Gross Sales": 55240,
-            "Discounts": null,
-            "Sales": 55240,
-            "COGS": 13210,
-            "Profit": 42030,
-            "Date": "1/1/20",
-            "Month Name": "January",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Kensington",
-            "Units Sold": "1464",
-            "Manufacturing Price": 3,
-            "Sale Price": 15,
-            "Gross Sales": 21960,
-            "Discounts": null,
-            "Sales": 21960,
-            "COGS": 21780,
-            "Profit": 180,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Kensington",
-            "Units Sold": "719",
-            "Manufacturing Price": 3,
-            "Sale Price": 15,
-            "Gross Sales": 10785,
-            "Discounts": null,
-            "Sales": 10785,
-            "COGS": 8880,
-            "Profit": 1905,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Kensington",
-            "Units Sold": "3576",
-            "Manufacturing Price": 3,
-            "Sale Price": 15,
-            "Gross Sales": 53640,
-            "Discounts": null,
-            "Sales": 53640,
-            "COGS": 24700,
-            "Profit": 28940,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Kensington",
-            "Units Sold": "4422",
-            "Manufacturing Price": 3,
-            "Sale Price": 350,
-            "Gross Sales": 1547700,
-            "Discounts": null,
-            "Sales": 1547700,
-            "COGS": 393380,
-            "Profit": 1154320,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Royal Oak",
-            "Units Sold": "3649",
-            "Manufacturing Price": 5,
-            "Sale Price": 15,
-            "Gross Sales": 54735,
-            "Discounts": null,
-            "Sales": 54735,
-            "COGS": 9210,
-            "Profit": 45525,
-            "Date": "3/1/20",
-            "Month Name": "March",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Royal Oak",
-            "Units Sold": "4172",
-            "Manufacturing Price": 5,
-            "Sale Price": 12,
-            "Gross Sales": 50064,
-            "Discounts": null,
-            "Sales": 50064,
-            "COGS": 7554,
-            "Profit": 42510,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Royal Oak",
-            "Units Sold": "3841",
-            "Manufacturing Price": 5,
-            "Sale Price": 20,
-            "Gross Sales": 76820,
-            "Discounts": null,
-            "Sales": 76820,
-            "COGS": 18990,
-            "Profit": 57830,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Royal Oak",
-            "Units Sold": "3726",
-            "Manufacturing Price": 5,
-            "Sale Price": 12,
-            "Gross Sales": 44712,
-            "Discounts": null,
-            "Sales": 44712,
-            "COGS": 4635,
-            "Profit": 40077,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020",
-            "undefined": "Total"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Royal Oak",
-            "Units Sold": "2625",
-            "Manufacturing Price": 5,
-            "Sale Price": 15,
-            "Gross Sales": 39375,
-            "Discounts": null,
-            "Sales": 39375,
-            "COGS": 24700,
-            "Profit": 14675,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020",
-            "undefined": "10"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Royal Oak",
-            "Units Sold": "1958",
-            "Manufacturing Price": 5,
-            "Sale Price": 125,
-            "Gross Sales": 244750,
-            "Discounts": null,
-            "Sales": 244750,
-            "COGS": 319860,
-            "Profit": 75110,
-            "Date": "7/1/20",
-            "Month Name": "July",
-            "Year": "2020",
-            "undefined": "20"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Royal Oak",
-            "Units Sold": "3271",
-            "Manufacturing Price": 5,
-            "Sale Price": 300,
-            "Gross Sales": 981300,
-            "Discounts": null,
-            "Sales": 981300,
-            "COGS": 239500,
-            "Profit": 741800,
-            "Date": "8/1/20",
-            "Month Name": "August",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Royal Oak",
-            "Units Sold": "2091",
-            "Manufacturing Price": 5,
-            "Sale Price": 7,
-            "Gross Sales": 14637,
-            "Discounts": null,
-            "Sales": 14637,
-            "COGS": 10730,
-            "Profit": 3907,
-            "Date": "9/1/20",
-            "Month Name": "September",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Royal Oak",
-            "Units Sold": "2825",
-            "Manufacturing Price": 5,
-            "Sale Price": 15,
-            "Gross Sales": 42375,
-            "Discounts": null,
-            "Sales": 42375,
-            "COGS": 6150,
-            "Profit": 36225,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "2513",
-            "Manufacturing Price": 10,
-            "Sale Price": 20,
-            "Gross Sales": 50260,
-            "Discounts": null,
-            "Sales": 50260,
-            "COGS": 2920,
-            "Profit": 47340,
-            "Date": "2/1/20",
-            "Month Name": "February",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "883",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 13245,
-            "Discounts": null,
-            "Sales": 13245,
-            "COGS": 9740,
-            "Profit": 3505,
-            "Date": "2/1/20",
-            "Month Name": "February",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "2087",
-            "Manufacturing Price": 10,
-            "Sale Price": 12,
-            "Gross Sales": 25044,
-            "Discounts": null,
-            "Sales": 25044,
-            "COGS": 7554,
-            "Profit": 17490,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "2563",
-            "Manufacturing Price": 10,
-            "Sale Price": 350,
-            "Gross Sales": 897050,
-            "Discounts": null,
-            "Sales": 897050,
-            "COGS": 261560,
-            "Profit": 635490,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "2846",
-            "Manufacturing Price": 10,
-            "Sale Price": 12,
-            "Gross Sales": 34152,
-            "Discounts": null,
-            "Sales": 34152,
-            "COGS": 1101,
-            "Profit": 33051,
-            "Date": "7/1/20",
-            "Month Name": "July",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "997",
-            "Manufacturing Price": 10,
-            "Sale Price": 7,
-            "Gross Sales": 6979,
-            "Discounts": null,
-            "Sales": 6979,
-            "COGS": 4415,
-            "Profit": 2564,
-            "Date": "8/1/20",
-            "Month Name": "August",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "2290",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 34350,
-            "Discounts": null,
-            "Sales": 34350,
-            "COGS": 24720,
-            "Profit": 9630,
-            "Date": "9/1/20",
-            "Month Name": "September",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "2133",
-            "Manufacturing Price": 10,
-            "Sale Price": 7,
-            "Gross Sales": 14931,
-            "Discounts": null,
-            "Sales": 14931,
-            "COGS": 5715,
-            "Profit": 9216,
-            "Date": "10/1/20",
-            "Month Name": "October",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "3617",
-            "Manufacturing Price": 10,
-            "Sale Price": 20,
-            "Gross Sales": 72340,
-            "Discounts": null,
-            "Sales": 72340,
-            "COGS": 18170,
-            "Profit": 54170,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "1266",
-            "Manufacturing Price": 10,
-            "Sale Price": 350,
-            "Gross Sales": 443100,
-            "Discounts": null,
-            "Sales": 443100,
-            "COGS": 393380,
-            "Profit": 49720,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Burlington",
-            "Units Sold": "894",
-            "Manufacturing Price": 120,
-            "Sale Price": 7,
-            "Gross Sales": 6258,
-            "Discounts": null,
-            "Sales": 6258,
-            "COGS": 7465,
-            "Profit": 1207,
-            "Date": "1/1/20",
-            "Month Name": "January",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Burlington",
-            "Units Sold": "2725",
-            "Manufacturing Price": 120,
-            "Sale Price": 125,
-            "Gross Sales": 340625,
-            "Discounts": null,
-            "Sales": 340625,
-            "COGS": 216480,
-            "Profit": 124145,
-            "Date": "2/1/20",
-            "Month Name": "February",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Burlington",
-            "Units Sold": "3061",
-            "Manufacturing Price": 120,
-            "Sale Price": 12,
-            "Gross Sales": 36732,
-            "Discounts": null,
-            "Sales": 36732,
-            "COGS": 6483,
-            "Profit": 30249,
-            "Date": "3/1/20",
-            "Month Name": "March",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Burlington",
-            "Units Sold": "3958",
-            "Manufacturing Price": 120,
-            "Sale Price": 350,
-            "Gross Sales": 1385300,
-            "Discounts": null,
-            "Sales": 1385300,
-            "COGS": 261560,
-            "Profit": 1123740,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Burlington",
-            "Units Sold": "3920",
-            "Manufacturing Price": 120,
-            "Sale Price": 12,
-            "Gross Sales": 47040,
-            "Discounts": null,
-            "Sales": 47040,
-            "COGS": 4635,
-            "Profit": 42405,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Burlington",
-            "Units Sold": "3381",
-            "Manufacturing Price": 120,
-            "Sale Price": 125,
-            "Gross Sales": 422625,
-            "Discounts": null,
-            "Sales": 422625,
-            "COGS": 338520,
-            "Profit": 84105,
-            "Date": "8/1/20",
-            "Month Name": "August",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Mandarin",
-            "Units Sold": "4307",
-            "Manufacturing Price": 250,
-            "Sale Price": 300,
-            "Gross Sales": 1292100,
-            "Discounts": null,
-            "Sales": 1292100,
-            "COGS": 500250,
-            "Profit": 791850,
-            "Date": "2/1/20",
-            "Month Name": "February",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Mandarin",
-            "Units Sold": "878",
-            "Manufacturing Price": 250,
-            "Sale Price": 12,
-            "Gross Sales": 10536,
-            "Discounts": null,
-            "Sales": 10536,
-            "COGS": 8514,
-            "Profit": 2022,
-            "Date": "4/1/20",
-            "Month Name": "April",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Mandarin",
-            "Units Sold": "496",
-            "Manufacturing Price": 250,
-            "Sale Price": 15,
-            "Gross Sales": 7440,
-            "Discounts": null,
-            "Sales": 7440,
-            "COGS": 21780,
-            "Profit": 14340,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Mandarin",
-            "Units Sold": "3367",
-            "Manufacturing Price": 250,
-            "Sale Price": 15,
-            "Gross Sales": 50505,
-            "Discounts": null,
-            "Sales": 50505,
-            "COGS": 8880,
-            "Profit": 41625,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Mandarin",
-            "Units Sold": "2055",
-            "Manufacturing Price": 250,
-            "Sale Price": 300,
-            "Gross Sales": 616500,
-            "Discounts": null,
-            "Sales": 616500,
-            "COGS": 537750,
-            "Profit": 78750,
-            "Date": "9/1/20",
-            "Month Name": "September",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Mandarin",
-            "Units Sold": "4041",
-            "Manufacturing Price": 250,
-            "Sale Price": 20,
-            "Gross Sales": 80820,
-            "Discounts": null,
-            "Sales": 80820,
-            "COGS": 18170,
-            "Profit": 62650,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Luxe",
-            "Units Sold": "3237",
-            "Manufacturing Price": 260,
-            "Sale Price": 350,
-            "Gross Sales": 1132950,
-            "Discounts": null,
-            "Sales": 1132950,
-            "COGS": 715000,
-            "Profit": 417950,
-            "Date": "2/1/20",
-            "Month Name": "February",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Luxe",
-            "Units Sold": "630",
-            "Manufacturing Price": 260,
-            "Sale Price": 12,
-            "Gross Sales": 7560,
-            "Discounts": null,
-            "Sales": 7560,
-            "COGS": 5859,
-            "Profit": 1701,
-            "Date": "4/1/20",
-            "Month Name": "April",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Luxe",
-            "Units Sold": "4210",
-            "Manufacturing Price": 260,
-            "Sale Price": 125,
-            "Gross Sales": 526250,
-            "Discounts": null,
-            "Sales": 526250,
-            "COGS": 506340,
-            "Profit": 19910,
-            "Date": "4/1/20",
-            "Month Name": "April",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Luxe",
-            "Units Sold": "1127",
-            "Manufacturing Price": 260,
-            "Sale Price": 20,
-            "Gross Sales": 22540,
-            "Discounts": null,
-            "Sales": 22540,
-            "COGS": 18990,
-            "Profit": 3550,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Luxe",
-            "Units Sold": "3438",
-            "Manufacturing Price": 260,
-            "Sale Price": 7,
-            "Gross Sales": 24066,
-            "Discounts": null,
-            "Sales": 24066,
-            "COGS": 8430,
-            "Profit": 15636,
-            "Date": "7/1/20",
-            "Month Name": "July",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Luxe",
-            "Units Sold": "2015",
-            "Manufacturing Price": 260,
-            "Sale Price": 12,
-            "Gross Sales": 24180,
-            "Discounts": null,
-            "Sales": 24180,
-            "COGS": 6423,
-            "Profit": 17757,
-            "Date": "8/1/20",
-            "Month Name": "August",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Luxe",
-            "Units Sold": "2534",
-            "Manufacturing Price": 260,
-            "Sale Price": 7,
-            "Gross Sales": 17738,
-            "Discounts": null,
-            "Sales": 17738,
-            "COGS": 5715,
-            "Profit": 12023,
-            "Date": "10/1/20",
-            "Month Name": "October",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Luxe",
-            "Units Sold": "1384",
-            "Manufacturing Price": 260,
-            "Sale Price": 15,
-            "Gross Sales": 20760,
-            "Discounts": null,
-            "Sales": 20760,
-            "COGS": 6150,
-            "Profit": 14610,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "3561",
-            "Manufacturing Price": 10,
-            "Sale Price": 7,
-            "Gross Sales": 24927,
-            "Discounts": 276.15,
-            "Sales": 24650.85,
-            "COGS": 19725,
-            "Profit": 4925.85,
-            "Date": "1/1/20",
-            "Month Name": "January",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "1823",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 27345,
-            "Discounts": 344.4,
-            "Sales": 27000.6,
-            "COGS": 22960,
-            "Profit": 4040.6,
-            "Date": "2/1/20",
-            "Month Name": "February",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "2795",
-            "Manufacturing Price": 10,
-            "Sale Price": 7,
-            "Gross Sales": 19565,
-            "Discounts": 72.1,
-            "Sales": 19492.9,
-            "COGS": 5150,
-            "Profit": 14342.9,
-            "Date": "5/1/20",
-            "Month Name": "May",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Burlington",
-            "Units Sold": "457",
-            "Manufacturing Price": 120,
-            "Sale Price": 7,
-            "Gross Sales": 3199,
-            "Discounts": 44.73,
-            "Sales": 3154.27,
-            "COGS": 3195,
-            "Profit": 40.73,
-            "Date": "11/1/20",
-            "Month Name": "November",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Mandarin",
-            "Units Sold": "3785",
-            "Manufacturing Price": 250,
-            "Sale Price": 7,
-            "Gross Sales": 26495,
-            "Discounts": 92.82,
-            "Sales": 26402.18,
-            "COGS": 6630,
-            "Profit": 19772.18,
-            "Date": "3/1/20",
-            "Month Name": "March",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Kensington",
-            "Units Sold": "748",
-            "Manufacturing Price": 3,
-            "Sale Price": 12,
-            "Gross Sales": 8976,
-            "Discounts": 222.96,
-            "Sales": 8753.04,
-            "COGS": 5574,
-            "Profit": 3179.04,
-            "Date": "2/1/20",
-            "Month Name": "February",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Kensington",
-            "Units Sold": "1021",
-            "Manufacturing Price": 3,
-            "Sale Price": 350,
-            "Gross Sales": 357350,
-            "Discounts": 4235,
-            "Sales": 353115,
-            "COGS": 314600,
-            "Profit": 38515,
-            "Date": "3/1/20",
-            "Month Name": "March",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Kensington",
-            "Units Sold": "2076",
-            "Manufacturing Price": 3,
-            "Sale Price": 7,
-            "Gross Sales": 14532,
-            "Discounts": 177.03,
-            "Sales": 14354.97,
-            "COGS": 12645,
-            "Profit": 1709.97,
-            "Date": "7/1/20",
-            "Month Name": "July",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Kensington",
-            "Units Sold": "4316",
-            "Manufacturing Price": 3,
-            "Sale Price": 12,
-            "Gross Sales": 51792,
-            "Discounts": 173.4,
-            "Sales": 51618.6,
-            "COGS": 4335,
-            "Profit": 47283.6,
-            "Date": "9/1/20",
-            "Month Name": "September",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Kensington",
-            "Units Sold": "4174",
-            "Manufacturing Price": 3,
-            "Sale Price": 12,
-            "Gross Sales": 50088,
-            "Discounts": 320.52,
-            "Sales": 49767.48,
-            "COGS": 8013,
-            "Profit": 41754.48,
-            "Date": "9/1/20",
-            "Month Name": "September",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Kensington",
-            "Units Sold": "3736",
-            "Manufacturing Price": 3,
-            "Sale Price": 350,
-            "Gross Sales": 1307600,
-            "Discounts": 4889.5,
-            "Sales": 1302710.5,
-            "COGS": 363220,
-            "Profit": 939490.5,
-            "Date": "10/1/20",
-            "Month Name": "October",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Kensington",
-            "Units Sold": "1914",
-            "Manufacturing Price": 3,
-            "Sale Price": 350,
-            "Gross Sales": 669900,
-            "Discounts": 7542.5,
-            "Sales": 662357.5,
-            "COGS": 560300,
-            "Profit": 102057.5,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Royal Oak",
-            "Units Sold": "2742",
-            "Manufacturing Price": 5,
-            "Sale Price": 15,
-            "Gross Sales": 41130,
-            "Discounts": 332.1,
-            "Sales": 40797.9,
-            "COGS": 22140,
-            "Profit": 18657.9,
-            "Date": "3/1/20",
-            "Month Name": "March",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Royal Oak",
-            "Units Sold": "1499",
-            "Manufacturing Price": 5,
-            "Sale Price": 300,
-            "Gross Sales": 449700,
-            "Discounts": 6903,
-            "Sales": 442797,
-            "COGS": 575250,
-            "Profit": 132453,
-            "Date": "4/1/20",
-            "Month Name": "April",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Royal Oak",
-            "Units Sold": "3772",
-            "Manufacturing Price": 5,
-            "Sale Price": 20,
-            "Gross Sales": 75440,
-            "Discounts": 275.1,
-            "Sales": 75164.9,
-            "COGS": 13755,
-            "Profit": 61409.9,
-            "Date": "7/1/20",
-            "Month Name": "July",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Royal Oak",
-            "Units Sold": "1112",
-            "Manufacturing Price": 5,
-            "Sale Price": 7,
-            "Gross Sales": 7784,
-            "Discounts": 128.1,
-            "Sales": 7655.9,
-            "COGS": 9150,
-            "Profit": 1494.1,
-            "Date": "8/1/20",
-            "Month Name": "August",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "2368",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 35520,
-            "Discounts": 227.1,
-            "Sales": 35292.9,
-            "COGS": 15140,
-            "Profit": 20152.9,
-            "Date": "2/1/20",
-            "Month Name": "February",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "1586",
-            "Manufacturing Price": 10,
-            "Sale Price": 7,
-            "Gross Sales": 11102,
-            "Discounts": 314.48,
-            "Sales": 10787.52,
-            "COGS": 22462.5,
-            "Profit": 11674.98,
-            "Date": "4/1/20",
-            "Month Name": "April",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "3386",
-            "Manufacturing Price": 10,
-            "Sale Price": 125,
-            "Gross Sales": 423250,
-            "Discounts": 908.75,
-            "Sales": 422341.25,
-            "COGS": 87240,
-            "Profit": 335101.25,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "852",
-            "Manufacturing Price": 10,
-            "Sale Price": 125,
-            "Gross Sales": 106500,
-            "Discounts": 983.75,
-            "Sales": 105516.25,
-            "COGS": 94440,
-            "Profit": 11076.25,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "2783",
-            "Manufacturing Price": 10,
-            "Sale Price": 125,
-            "Gross Sales": 347875,
-            "Discounts": 2278.75,
-            "Sales": 345596.25,
-            "COGS": 218760,
-            "Profit": 126836.25,
-            "Date": "7/1/20",
-            "Month Name": "July",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "2684",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 40260,
-            "Discounts": 112.05,
-            "Sales": 40147.95,
-            "COGS": 7470,
-            "Profit": 32677.95,
-            "Date": "9/1/20",
-            "Month Name": "September",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "4083",
-            "Manufacturing Price": 10,
-            "Sale Price": 300,
-            "Gross Sales": 1224900,
-            "Discounts": 8715,
-            "Sales": 1216185,
-            "COGS": 726250,
-            "Profit": 489935,
-            "Date": "11/1/20",
-            "Month Name": "November",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "2816",
-            "Manufacturing Price": 10,
-            "Sale Price": 350,
-            "Gross Sales": 985600,
-            "Discounts": 7542.5,
-            "Sales": 978057.5,
-            "COGS": 560300,
-            "Profit": 417757.5,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Burlington",
-            "Units Sold": "4294",
-            "Manufacturing Price": 120,
-            "Sale Price": 20,
-            "Gross Sales": 85880,
-            "Discounts": 772.8,
-            "Sales": 85107.2,
-            "COGS": 38640,
-            "Profit": 46467.2,
-            "Date": "4/1/20",
-            "Month Name": "April",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Burlington",
-            "Units Sold": "2856",
-            "Manufacturing Price": 120,
-            "Sale Price": 7,
-            "Gross Sales": 19992,
-            "Discounts": 25.34,
-            "Sales": 19966.66,
-            "COGS": 1810,
-            "Profit": 18156.66,
-            "Date": "5/1/20",
-            "Month Name": "May",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Burlington",
-            "Units Sold": "1407",
-            "Manufacturing Price": 120,
-            "Sale Price": 125,
-            "Gross Sales": 175875,
-            "Discounts": 1153.75,
-            "Sales": 174721.25,
-            "COGS": 110760,
-            "Profit": 63961.25,
-            "Date": "8/1/20",
-            "Month Name": "August",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Mandarin",
-            "Units Sold": "1265",
-            "Manufacturing Price": 250,
-            "Sale Price": 7,
-            "Gross Sales": 8855,
-            "Discounts": 18.41,
-            "Sales": 8836.59,
-            "COGS": 1315,
-            "Profit": 7521.59,
-            "Date": "3/1/20",
-            "Month Name": "March",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Mandarin",
-            "Units Sold": "3892",
-            "Manufacturing Price": 250,
-            "Sale Price": 350,
-            "Gross Sales": 1362200,
-            "Discounts": 3302.25,
-            "Sales": 1358897.75,
-            "COGS": 245310,
-            "Profit": 1113587.75,
-            "Date": "4/1/20",
-            "Month Name": "April",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Mandarin",
-            "Units Sold": "3068",
-            "Manufacturing Price": 250,
-            "Sale Price": 125,
-            "Gross Sales": 383500,
-            "Discounts": 908.75,
-            "Sales": 382591.25,
-            "COGS": 87240,
-            "Profit": 295351.25,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Mandarin",
-            "Units Sold": "2181",
-            "Manufacturing Price": 250,
-            "Sale Price": 125,
-            "Gross Sales": 272625,
-            "Discounts": 983.75,
-            "Sales": 271641.25,
-            "COGS": 94440,
-            "Profit": 177201.25,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Mandarin",
-            "Units Sold": "1356",
-            "Manufacturing Price": 250,
-            "Sale Price": 300,
-            "Gross Sales": 406800,
-            "Discounts": 2958,
-            "Sales": 403842,
-            "COGS": 246500,
-            "Profit": 177201.25,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Mandarin",
-            "Units Sold": "1814",
-            "Manufacturing Price": 250,
-            "Sale Price": 350,
-            "Gross Sales": 634900,
-            "Discounts": 4889.5,
-            "Sales": 630010.5,
-            "COGS": 363220,
-            "Profit": 266790.5,
-            "Date": "10/1/20",
-            "Month Name": "October",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Mandarin",
-            "Units Sold": "1495",
-            "Manufacturing Price": 250,
-            "Sale Price": 125,
-            "Gross Sales": 186875,
-            "Discounts": 2180,
-            "Sales": 184695,
-            "COGS": 209280,
-            "Profit": 24585,
-            "Date": "11/1/20",
-            "Month Name": "November",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Kensington",
-            "Units Sold": "1463",
-            "Manufacturing Price": 3,
-            "Sale Price": 125,
-            "Gross Sales": 182875,
-            "Discounts": 1856.25,
-            "Sales": 181018.75,
-            "COGS": 89100,
-            "Profit": 91918.75,
-            "Date": "4/1/20",
-            "Month Name": "April",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Kensington",
-            "Units Sold": "215",
-            "Manufacturing Price": 3,
-            "Sale Price": 12,
-            "Gross Sales": 2580,
-            "Discounts": 310.8,
-            "Sales": 2269.2,
-            "COGS": 3885,
-            "Profit": 1615.8,
-            "Date": "10/1/20",
-            "Month Name": "October",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Kensington",
-            "Units Sold": "566",
-            "Manufacturing Price": 3,
-            "Sale Price": 350,
-            "Gross Sales": 198100,
-            "Discounts": 19964,
-            "Sales": 178136,
-            "COGS": 741520,
-            "Profit": 563384,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Royal Oak",
-            "Units Sold": "3255",
-            "Manufacturing Price": 5,
-            "Sale Price": 12,
-            "Gross Sales": 39060,
-            "Discounts": 274.08,
-            "Sales": 38785.92,
-            "COGS": 3426,
-            "Profit": 35359.92,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Royal Oak",
-            "Units Sold": "772",
-            "Manufacturing Price": 5,
-            "Sale Price": 20,
-            "Gross Sales": 15440,
-            "Discounts": 626.4,
-            "Sales": 14813.6,
-            "COGS": 15660,
-            "Profit": 846.4,
-            "Date": "10/1/20",
-            "Month Name": "October",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Royal Oak",
-            "Units Sold": "1135",
-            "Manufacturing Price": 5,
-            "Sale Price": 12,
-            "Gross Sales": 13620,
-            "Discounts": 165.6,
-            "Sales": 13454.4,
-            "COGS": 2070,
-            "Profit": 11384.4,
-            "Date": "11/1/20",
-            "Month Name": "November",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "1193",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 17895,
-            "Discounts": 708.9,
-            "Sales": 17186.1,
-            "COGS": 23630,
-            "Profit": 6443.9,
-            "Date": "2/1/20",
-            "Month Name": "February",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "2530",
-            "Manufacturing Price": 10,
-            "Sale Price": 300,
-            "Gross Sales": 759000,
-            "Discounts": 5508,
-            "Sales": 753492,
-            "COGS": 229500,
-            "Profit": 523992,
-            "Date": "5/1/20",
-            "Month Name": "May",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "3451",
-            "Manufacturing Price": 10,
-            "Sale Price": 300,
-            "Gross Sales": 1035300,
-            "Discounts": 10368,
-            "Sales": 1024932,
-            "COGS": 432000,
-            "Profit": 592932,
-            "Date": "5/1/20",
-            "Month Name": "May",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "3059",
-            "Manufacturing Price": 10,
-            "Sale Price": 12,
-            "Gross Sales": 36708,
-            "Discounts": 274.08,
-            "Sales": 36433.92,
-            "COGS": 3426,
-            "Profit": 33007.92,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "3957",
-            "Manufacturing Price": 10,
-            "Sale Price": 125,
-            "Gross Sales": 494625,
-            "Discounts": 1655,
-            "Sales": 492970,
-            "COGS": 79440,
-            "Profit": 413530,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "3444",
-            "Manufacturing Price": 10,
-            "Sale Price": 12,
-            "Gross Sales": 41328,
-            "Discounts": 310.8,
-            "Sales": 41017.2,
-            "COGS": 3885,
-            "Profit": 37132.2,
-            "Date": "10/1/20",
-            "Month Name": "October",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "3154",
-            "Manufacturing Price": 10,
-            "Sale Price": 300,
-            "Gross Sales": 946200,
-            "Discounts": 11496,
-            "Sales": 934704,
-            "COGS": 479000,
-            "Profit": 455704,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "4108",
-            "Manufacturing Price": 10,
-            "Sale Price": 350,
-            "Gross Sales": 1437800,
-            "Discounts": 19964,
-            "Sales": 1417836,
-            "COGS": 741520,
-            "Profit": 676316,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "3760",
-            "Manufacturing Price": 10,
-            "Sale Price": 125,
-            "Gross Sales": 470000,
-            "Discounts": 6822.5,
-            "Sales": 463177.5,
-            "COGS": 327480,
-            "Profit": 135697.5,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "2334",
-            "Manufacturing Price": 10,
-            "Sale Price": 12,
-            "Gross Sales": 28008,
-            "Discounts": 253.2,
-            "Sales": 27754.8,
-            "COGS": 3165,
-            "Profit": 24589.8,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "580",
-            "Manufacturing Price": 10,
-            "Sale Price": 12,
-            "Gross Sales": 6960,
-            "Discounts": 260.16,
-            "Sales": 6699.84,
-            "COGS": 3252,
-            "Profit": 3447.84,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Burlington",
-            "Units Sold": "2610",
-            "Manufacturing Price": 120,
-            "Sale Price": 20,
-            "Gross Sales": 52200,
-            "Discounts": 626.4,
-            "Sales": 51573.6,
-            "COGS": 15660,
-            "Profit": 35913.6,
-            "Date": "10/1/20",
-            "Month Name": "October",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Burlington",
-            "Units Sold": "1459",
-            "Manufacturing Price": 120,
-            "Sale Price": 350,
-            "Gross Sales": 510650,
-            "Discounts": 20139,
-            "Sales": 490511,
-            "COGS": 748020,
-            "Profit": 257509,
-            "Date": "10/1/20",
-            "Month Name": "October",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Burlington",
-            "Units Sold": "3774",
-            "Manufacturing Price": 120,
-            "Sale Price": 12,
-            "Gross Sales": 45288,
-            "Discounts": 253.2,
-            "Sales": 45034.8,
-            "COGS": 3165,
-            "Profit": 41869.8,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Burlington",
-            "Units Sold": "2572",
-            "Manufacturing Price": 120,
-            "Sale Price": 12,
-            "Gross Sales": 30864,
-            "Discounts": 260.16,
-            "Sales": 30603.84,
-            "COGS": 3252,
-            "Profit": 27351.84,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Mandarin",
-            "Units Sold": "320",
-            "Manufacturing Price": 250,
-            "Sale Price": 125,
-            "Gross Sales": 40000,
-            "Discounts": 1655,
-            "Sales": 38345,
-            "COGS": 79440,
-            "Profit": 41095,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Mandarin",
-            "Units Sold": "3275",
-            "Manufacturing Price": 250,
-            "Sale Price": 350,
-            "Gross Sales": 1146250,
-            "Discounts": 20139,
-            "Sales": 1126111,
-            "COGS": 748020,
-            "Profit": 378091,
-            "Date": "10/1/20",
-            "Month Name": "October",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Mandarin",
-            "Units Sold": "3582",
-            "Manufacturing Price": 250,
-            "Sale Price": 125,
-            "Gross Sales": 447750,
-            "Discounts": 6822.5,
-            "Sales": 440927.5,
-            "COGS": 327480,
-            "Profit": 113447.5,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Luxe",
-            "Units Sold": "4056",
-            "Manufacturing Price": 260,
-            "Sale Price": 300,
-            "Gross Sales": 1216800,
-            "Discounts": 1554,
-            "Sales": 1215246,
-            "COGS": 64750,
-            "Profit": 1150496,
-            "Date": "3/1/20",
-            "Month Name": "March",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Luxe",
-            "Units Sold": "2144",
-            "Manufacturing Price": 260,
-            "Sale Price": 300,
-            "Gross Sales": 643200,
-            "Discounts": 6606,
-            "Sales": 636594,
-            "COGS": 275250,
-            "Profit": 361344,
-            "Date": "3/1/20",
-            "Month Name": "March",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Luxe",
-            "Units Sold": "3502",
-            "Manufacturing Price": 260,
-            "Sale Price": 125,
-            "Gross Sales": 437750,
-            "Discounts": 5690,
-            "Sales": 432060,
-            "COGS": 273120,
-            "Profit": 158940,
-            "Date": "5/1/20",
-            "Month Name": "May",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Luxe",
-            "Units Sold": "679",
-            "Manufacturing Price": 260,
-            "Sale Price": 20,
-            "Gross Sales": 13580,
-            "Discounts": 494.4,
-            "Sales": 13085.6,
-            "COGS": 12360,
-            "Profit": 725.6,
-            "Date": "11/1/20",
-            "Month Name": "November",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Luxe",
-            "Units Sold": "2351",
-            "Manufacturing Price": 260,
-            "Sale Price": 20,
-            "Gross Sales": 47020,
-            "Discounts": 376.4,
-            "Sales": 46643.6,
-            "COGS": 9410,
-            "Profit": 37233.6,
-            "Date": "11/1/20",
-            "Month Name": "November",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Luxe",
-            "Units Sold": "2043",
-            "Manufacturing Price": 260,
-            "Sale Price": 300,
-            "Gross Sales": 612900,
-            "Discounts": 11496,
-            "Sales": 601404,
-            "COGS": 479000,
-            "Profit": 122404,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Kensington",
-            "Units Sold": "3565",
-            "Manufacturing Price": 3,
-            "Sale Price": 125,
-            "Gross Sales": 445625,
-            "Discounts": 15913.13,
-            "Sales": 429711.88,
-            "COGS": 509220,
-            "Profit": 79508.13,
-            "Date": "4/1/20",
-            "Month Name": "April",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Kensington",
-            "Units Sold": "1401",
-            "Manufacturing Price": 3,
-            "Sale Price": 20,
-            "Gross Sales": 28020,
-            "Discounts": 1548,
-            "Sales": 26472,
-            "COGS": 25800,
-            "Profit": 672,
-            "Date": "4/1/20",
-            "Month Name": "April",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Kensington",
-            "Units Sold": "2077",
-            "Manufacturing Price": 3,
-            "Sale Price": 300,
-            "Gross Sales": 623100,
-            "Discounts": 6201,
-            "Sales": 616899,
-            "COGS": 172250,
-            "Profit": 444649,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Kensington",
-            "Units Sold": "3643",
-            "Manufacturing Price": 3,
-            "Sale Price": 12,
-            "Gross Sales": 43716,
-            "Discounts": 700.92,
-            "Sales": 43015.08,
-            "COGS": 5841,
-            "Profit": 37174.08,
-            "Date": "9/1/20",
-            "Month Name": "September",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Royal Oak",
-            "Units Sold": "2960",
-            "Manufacturing Price": 5,
-            "Sale Price": 7,
-            "Gross Sales": 20720,
-            "Discounts": 411.18,
-            "Sales": 20308.82,
-            "COGS": 9790,
-            "Profit": 10518.82,
-            "Date": "2/1/20",
-            "Month Name": "February",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Royal Oak",
-            "Units Sold": "1201",
-            "Manufacturing Price": 5,
-            "Sale Price": 12,
-            "Gross Sales": 14412,
-            "Discounts": 684.36,
-            "Sales": 13727.64,
-            "COGS": 5703,
-            "Profit": 8024.64,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Royal Oak",
-            "Units Sold": "2321",
-            "Manufacturing Price": 5,
-            "Sale Price": 7,
-            "Gross Sales": 16247,
-            "Discounts": 114.24,
-            "Sales": 16132.76,
-            "COGS": 2720,
-            "Profit": 13412.76,
-            "Date": "9/1/20",
-            "Month Name": "September",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Royal Oak",
-            "Units Sold": "3972",
-            "Manufacturing Price": 5,
-            "Sale Price": 125,
-            "Gross Sales": 496500,
-            "Discounts": 4826.25,
-            "Sales": 491673.75,
-            "COGS": 154440,
-            "Profit": 337233.75,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Royal Oak",
-            "Units Sold": "3878",
-            "Manufacturing Price": 5,
-            "Sale Price": 125,
-            "Gross Sales": 484750,
-            "Discounts": 6397.5,
-            "Sales": 478352.5,
-            "COGS": 204720,
-            "Profit": 273632.5,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "2278",
-            "Manufacturing Price": 10,
-            "Sale Price": 300,
-            "Gross Sales": 683400,
-            "Discounts": 21910.5,
-            "Sales": 661489.5,
-            "COGS": 608625,
-            "Profit": 52864.5,
-            "Date": "1/1/20",
-            "Month Name": "January",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "1075",
-            "Manufacturing Price": 10,
-            "Sale Price": 125,
-            "Gross Sales": 134375,
-            "Discounts": 6652.5,
-            "Sales": 127722.5,
-            "COGS": 212880,
-            "Profit": 85157.5,
-            "Date": "3/1/20",
-            "Month Name": "March",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "4050",
-            "Manufacturing Price": 10,
-            "Sale Price": 12,
-            "Gross Sales": 48600,
-            "Discounts": 684.36,
-            "Sales": 47915.64,
-            "COGS": 5703,
-            "Profit": 42212.64,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "3035",
-            "Manufacturing Price": 10,
-            "Sale Price": 300,
-            "Gross Sales": 910500,
-            "Discounts": 6201,
-            "Sales": 904299,
-            "COGS": 172250,
-            "Profit": 732049,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "3636",
-            "Manufacturing Price": 10,
-            "Sale Price": 125,
-            "Gross Sales": 454500,
-            "Discounts": 5887.5,
-            "Sales": 448612.5,
-            "COGS": 188400,
-            "Profit": 260212.5,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "1379",
-            "Manufacturing Price": 10,
-            "Sale Price": 12,
-            "Gross Sales": 16548,
-            "Discounts": 493.02,
-            "Sales": 16054.98,
-            "COGS": 4108.5,
-            "Profit": 11946.48,
-            "Date": "7/1/20",
-            "Month Name": "July",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "4492",
-            "Manufacturing Price": 10,
-            "Sale Price": 125,
-            "Gross Sales": 561500,
-            "Discounts": 7533.75,
-            "Sales": 553966.25,
-            "COGS": 241080,
-            "Profit": 312886.25,
-            "Date": "10/1/20",
-            "Month Name": "October",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "1744",
-            "Manufacturing Price": 10,
-            "Sale Price": 125,
-            "Gross Sales": 218000,
-            "Discounts": 4826.25,
-            "Sales": 213173.75,
-            "COGS": 154440,
-            "Profit": 58733.75,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "2341",
-            "Manufacturing Price": 10,
-            "Sale Price": 125,
-            "Gross Sales": 292625,
-            "Discounts": 6397.5,
-            "Sales": 286227.5,
-            "COGS": 204720,
-            "Profit": 81507.5,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Burlington",
-            "Units Sold": "3835",
-            "Manufacturing Price": 120,
-            "Sale Price": 125,
-            "Gross Sales": 479375,
-            "Discounts": 7533.75,
-            "Sales": 471841.25,
-            "COGS": 241080,
-            "Profit": 230761.25,
-            "Date": "10/1/20",
-            "Month Name": "October",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Mandarin",
-            "Units Sold": "1161",
-            "Manufacturing Price": 250,
-            "Sale Price": 300,
-            "Gross Sales": 348300,
-            "Discounts": 25596,
-            "Sales": 322704,
-            "COGS": 711000,
-            "Profit": 388296,
-            "Date": "2/1/20",
-            "Month Name": "February",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Mandarin",
-            "Units Sold": "876",
-            "Manufacturing Price": 250,
-            "Sale Price": 12,
-            "Gross Sales": 10512,
-            "Discounts": 689.76,
-            "Sales": 9822.24,
-            "COGS": 5748,
-            "Profit": 4074.24,
-            "Date": "4/1/20",
-            "Month Name": "April",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Mandarin",
-            "Units Sold": "1705",
-            "Manufacturing Price": 250,
-            "Sale Price": 125,
-            "Gross Sales": 213125,
-            "Discounts": 5887.5,
-            "Sales": 207237.5,
-            "COGS": 188400,
-            "Profit": 18837.5,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Mandarin",
-            "Units Sold": "1805",
-            "Manufacturing Price": 250,
-            "Sale Price": 300,
-            "Gross Sales": 541500,
-            "Discounts": 16866,
-            "Sales": 524634,
-            "COGS": 468500,
-            "Profit": 56134,
-            "Date": "8/1/20",
-            "Month Name": "August",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Mandarin",
-            "Units Sold": "389",
-            "Manufacturing Price": 250,
-            "Sale Price": 350,
-            "Gross Sales": 136150,
-            "Discounts": 17241,
-            "Sales": 118909,
-            "COGS": 426920,
-            "Profit": 308011,
-            "Date": "8/1/20",
-            "Month Name": "August",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Kensington",
-            "Units Sold": "1459",
-            "Manufacturing Price": 3,
-            "Sale Price": 20,
-            "Gross Sales": 29180,
-            "Discounts": 498.6,
-            "Sales": 28681.4,
-            "COGS": 8310,
-            "Profit": 20371.4,
-            "Date": "5/1/20",
-            "Month Name": "May",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Burlington",
-            "Units Sold": "4236",
-            "Manufacturing Price": 120,
-            "Sale Price": 20,
-            "Gross Sales": 84720,
-            "Discounts": 2310.3,
-            "Sales": 82409.7,
-            "COGS": 38505,
-            "Profit": 43904.7,
-            "Date": "4/1/20",
-            "Month Name": "April",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Mandarin",
-            "Units Sold": "3627",
-            "Manufacturing Price": 250,
-            "Sale Price": 12,
-            "Gross Sales": 43524,
-            "Discounts": 892.44,
-            "Sales": 42631.56,
-            "COGS": 7437,
-            "Profit": 35194.56,
-            "Date": "1/1/20",
-            "Month Name": "January",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Royal Oak",
-            "Units Sold": "1756",
-            "Manufacturing Price": 5,
-            "Sale Price": 15,
-            "Gross Sales": 26340,
-            "Discounts": 1218.6,
-            "Sales": 25121.4,
-            "COGS": 20310,
-            "Profit": 4811.4,
-            "Date": "10/1/20",
-            "Month Name": "October",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "307",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 4605,
-            "Discounts": 1218.6,
-            "Sales": 3386.4,
-            "COGS": 20310,
-            "Profit": 16923.6,
-            "Date": "10/1/20",
-            "Month Name": "October",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Kensington",
-            "Units Sold": "1222",
-            "Manufacturing Price": 3,
-            "Sale Price": 300,
-            "Gross Sales": 366600,
-            "Discounts": 24252,
-            "Sales": 342348,
-            "COGS": 505250,
-            "Profit": 162902,
-            "Date": "10/1/20",
-            "Month Name": "October",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Kensington",
-            "Units Sold": "489",
-            "Manufacturing Price": 3,
-            "Sale Price": 350,
-            "Gross Sales": 171150,
-            "Discounts": 3836,
-            "Sales": 167314,
-            "COGS": 71240,
-            "Profit": 96074,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Royal Oak",
-            "Units Sold": "4133",
-            "Manufacturing Price": 5,
-            "Sale Price": 15,
-            "Gross Sales": 61995,
-            "Discounts": 1180.2,
-            "Sales": 60814.8,
-            "COGS": 19670,
-            "Profit": 41144.8,
-            "Date": "3/1/20",
-            "Month Name": "March",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Royal Oak",
-            "Units Sold": "2743",
-            "Manufacturing Price": 5,
-            "Sale Price": 300,
-            "Gross Sales": 822900,
-            "Discounts": 22308,
-            "Sales": 800592,
-            "COGS": 464750,
-            "Profit": 335842,
-            "Date": "8/1/20",
-            "Month Name": "August",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Royal Oak",
-            "Units Sold": "4460",
-            "Manufacturing Price": 5,
-            "Sale Price": 300,
-            "Gross Sales": 1338000,
-            "Discounts": 24252,
-            "Sales": 1313748,
-            "COGS": 505250,
-            "Profit": 808498,
-            "Date": "10/1/20",
-            "Month Name": "October",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Royal Oak",
-            "Units Sold": "1232",
-            "Manufacturing Price": 5,
-            "Sale Price": 125,
-            "Gross Sales": 154000,
-            "Discounts": 5690,
-            "Sales": 148310,
-            "COGS": 136560,
-            "Profit": 11750,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "2586",
-            "Manufacturing Price": 10,
-            "Sale Price": 7,
-            "Gross Sales": 18102,
-            "Discounts": 1190.28,
-            "Sales": 16911.72,
-            "COGS": 21255,
-            "Profit": 4343.28,
-            "Date": "1/1/20",
-            "Month Name": "January",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "1332",
-            "Manufacturing Price": 10,
-            "Sale Price": 125,
-            "Gross Sales": 166500,
-            "Discounts": 3975,
-            "Sales": 162525,
-            "COGS": 95400,
-            "Profit": 67125,
-            "Date": "3/1/20",
-            "Month Name": "March",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "4487",
-            "Manufacturing Price": 10,
-            "Sale Price": 300,
-            "Gross Sales": 1346100,
-            "Discounts": 16974,
-            "Sales": 1329126,
-            "COGS": 353625,
-            "Profit": 975501,
-            "Date": "4/1/20",
-            "Month Name": "April",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "3862",
-            "Manufacturing Price": 10,
-            "Sale Price": 300,
-            "Gross Sales": 1158600,
-            "Discounts": 35016,
-            "Sales": 1123584,
-            "COGS": 729500,
-            "Profit": 394084,
-            "Date": "5/1/20",
-            "Month Name": "May",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "1765",
-            "Manufacturing Price": 10,
-            "Sale Price": 350,
-            "Gross Sales": 617750,
-            "Discounts": 48300,
-            "Sales": 569450,
-            "COGS": 897000,
-            "Profit": 327550,
-            "Date": "7/1/20",
-            "Month Name": "July",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "3533",
-            "Manufacturing Price": 10,
-            "Sale Price": 125,
-            "Gross Sales": 441625,
-            "Discounts": 14940,
-            "Sales": 426685,
-            "COGS": 358560,
-            "Profit": 68125,
-            "Date": "7/1/20",
-            "Month Name": "July",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "2016",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 30240,
-            "Discounts": 130.8,
-            "Sales": 30109.2,
-            "COGS": 2180,
-            "Profit": 27929.2,
-            "Date": "9/1/20",
-            "Month Name": "September",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "2938",
-            "Manufacturing Price": 10,
-            "Sale Price": 20,
-            "Gross Sales": 58760,
-            "Discounts": 1659.2,
-            "Sales": 57100.8,
-            "COGS": 20740,
-            "Profit": 36360.8,
-            "Date": "9/1/20",
-            "Month Name": "September",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "3352",
-            "Manufacturing Price": 10,
-            "Sale Price": 20,
-            "Gross Sales": 67040,
-            "Discounts": 844.8,
-            "Sales": 66195.2,
-            "COGS": 10560,
-            "Profit": 55635.2,
-            "Date": "9/1/20",
-            "Month Name": "September",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "2430",
-            "Manufacturing Price": 10,
-            "Sale Price": 350,
-            "Gross Sales": 850500,
-            "Discounts": 3836,
-            "Sales": 846664,
-            "COGS": 71240,
-            "Profit": 775424,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "535",
-            "Manufacturing Price": 10,
-            "Sale Price": 125,
-            "Gross Sales": 66875,
-            "Discounts": 5690,
-            "Sales": 61185,
-            "COGS": 136560,
-            "Profit": 75375,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Burlington",
-            "Units Sold": "1523",
-            "Manufacturing Price": 120,
-            "Sale Price": 12,
-            "Gross Sales": 18276,
-            "Discounts": 703.2,
-            "Sales": 17572.8,
-            "COGS": 4395,
-            "Profit": 13177.8,
-            "Date": "3/1/20",
-            "Month Name": "March",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Burlington",
-            "Units Sold": "1782",
-            "Manufacturing Price": 120,
-            "Sale Price": 350,
-            "Gross Sales": 623700,
-            "Discounts": 30478,
-            "Sales": 593222,
-            "COGS": 566020,
-            "Profit": 27202,
-            "Date": "10/1/20",
-            "Month Name": "October",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Mandarin",
-            "Units Sold": "347",
-            "Manufacturing Price": 250,
-            "Sale Price": 12,
-            "Gross Sales": 4164,
-            "Discounts": 415.68,
-            "Sales": 3748.32,
-            "COGS": 2598,
-            "Profit": 1150.32,
-            "Date": "5/1/20",
-            "Month Name": "May",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Mandarin",
-            "Units Sold": "3509",
-            "Manufacturing Price": 250,
-            "Sale Price": 350,
-            "Gross Sales": 1228150,
-            "Discounts": 30478,
-            "Sales": 1197672,
-            "COGS": 566020,
-            "Profit": 631652,
-            "Date": "10/1/20",
-            "Month Name": "October",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Luxe",
-            "Units Sold": "2943",
-            "Manufacturing Price": 260,
-            "Sale Price": 350,
-            "Gross Sales": 1030050,
-            "Discounts": 26110,
-            "Sales": 1003940,
-            "COGS": 484900,
-            "Profit": 519040,
-            "Date": "2/1/20",
-            "Month Name": "February",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Luxe",
-            "Units Sold": "4037",
-            "Manufacturing Price": 260,
-            "Sale Price": 125,
-            "Gross Sales": 504625,
-            "Discounts": 5370,
-            "Sales": 499255,
-            "COGS": 128880,
-            "Profit": 370375,
-            "Date": "4/1/20",
-            "Month Name": "April",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Luxe",
-            "Units Sold": "4146",
-            "Manufacturing Price": 260,
-            "Sale Price": 350,
-            "Gross Sales": 1451100,
-            "Discounts": 26698,
-            "Sales": 1424402,
-            "COGS": 495820,
-            "Profit": 928582,
-            "Date": "9/1/20",
-            "Month Name": "September",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "725",
-            "Manufacturing Price": 10,
-            "Sale Price": 7,
-            "Gross Sales": 5075,
-            "Discounts": 480.2,
-            "Sales": 4594.8,
-            "COGS": 6860,
-            "Profit": 2265.2,
-            "Date": "1/1/20",
-            "Month Name": "January",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "2325",
-            "Manufacturing Price": 10,
-            "Sale Price": 7,
-            "Gross Sales": 16275,
-            "Discounts": 941.15,
-            "Sales": 15333.85,
-            "COGS": 13445,
-            "Profit": 1888.85,
-            "Date": "10/1/20",
-            "Month Name": "October",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "675",
-            "Manufacturing Price": 10,
-            "Sale Price": 12,
-            "Gross Sales": 8100,
-            "Discounts": 1458.6,
-            "Sales": 6641.4,
-            "COGS": 7293,
-            "Profit": 651.6,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Burlington",
-            "Units Sold": "2990",
-            "Manufacturing Price": 120,
-            "Sale Price": 12,
-            "Gross Sales": 35880,
-            "Discounts": 1458.6,
-            "Sales": 34421.4,
-            "COGS": 7293,
-            "Profit": 27128.4,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Mandarin",
-            "Units Sold": "1072",
-            "Manufacturing Price": 250,
-            "Sale Price": 7,
-            "Gross Sales": 7504,
-            "Discounts": 941.15,
-            "Sales": 6562.85,
-            "COGS": 13445,
-            "Profit": 6882.15,
-            "Date": "10/1/20",
-            "Month Name": "October",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Luxe",
-            "Units Sold": "1048",
-            "Manufacturing Price": 260,
-            "Sale Price": 7,
-            "Gross Sales": 7336,
-            "Discounts": 589.05,
-            "Sales": 6746.95,
-            "COGS": 8415,
-            "Profit": 1668.05,
-            "Date": "7/1/20",
-            "Month Name": "July",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Luxe",
-            "Units Sold": "469",
-            "Manufacturing Price": 260,
-            "Sale Price": 12,
-            "Gross Sales": 5628,
-            "Discounts": 673.8,
-            "Sales": 4954.2,
-            "COGS": 3369,
-            "Profit": 1585.2,
-            "Date": "8/1/20",
-            "Month Name": "August",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Kensington",
-            "Units Sold": "4240",
-            "Manufacturing Price": 3,
-            "Sale Price": 12,
-            "Gross Sales": 50880,
-            "Discounts": 1119,
-            "Sales": 49761,
-            "COGS": 5595,
-            "Profit": 44166,
-            "Date": "2/1/20",
-            "Month Name": "February",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Kensington",
-            "Units Sold": "1976",
-            "Manufacturing Price": 3,
-            "Sale Price": 12,
-            "Gross Sales": 23712,
-            "Discounts": 669.6,
-            "Sales": 23042.4,
-            "COGS": 3348,
-            "Profit": 19694.4,
-            "Date": "2/1/20",
-            "Month Name": "February",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Kensington",
-            "Units Sold": "1984",
-            "Manufacturing Price": 3,
-            "Sale Price": 20,
-            "Gross Sales": 39680,
-            "Discounts": 1563,
-            "Sales": 38117,
-            "COGS": 15630,
-            "Profit": 22487,
-            "Date": "5/1/20",
-            "Month Name": "May",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Kensington",
-            "Units Sold": "480",
-            "Manufacturing Price": 3,
-            "Sale Price": 300,
-            "Gross Sales": 144000,
-            "Discounts": 14865,
-            "Sales": 129135,
-            "COGS": 247750,
-            "Profit": 118615,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Kensington",
-            "Units Sold": "1205",
-            "Manufacturing Price": 3,
-            "Sale Price": 15,
-            "Gross Sales": 18075,
-            "Discounts": 2093.25,
-            "Sales": 15981.75,
-            "COGS": 27910,
-            "Profit": 11928.25,
-            "Date": "11/1/20",
-            "Month Name": "November",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Kensington",
-            "Units Sold": "2480",
-            "Manufacturing Price": 3,
-            "Sale Price": 7,
-            "Gross Sales": 17360,
-            "Discounts": 199.5,
-            "Sales": 17160.5,
-            "COGS": 2850,
-            "Profit": 14310.5,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Kensington",
-            "Units Sold": "2926",
-            "Manufacturing Price": 3,
-            "Sale Price": 7,
-            "Gross Sales": 20482,
-            "Discounts": 870.45,
-            "Sales": 19611.55,
-            "COGS": 12435,
-            "Profit": 7176.55,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Royal Oak",
-            "Units Sold": "3210",
-            "Manufacturing Price": 5,
-            "Sale Price": 350,
-            "Gross Sales": 1123500,
-            "Discounts": 24228.75,
-            "Sales": 1099271.25,
-            "COGS": 359970,
-            "Profit": 739301.25,
-            "Date": "1/1/20",
-            "Month Name": "January",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Royal Oak",
-            "Units Sold": "3221",
-            "Manufacturing Price": 5,
-            "Sale Price": 125,
-            "Gross Sales": 402625,
-            "Discounts": 22668.75,
-            "Sales": 379956.25,
-            "COGS": 435240,
-            "Profit": 55283.75,
-            "Date": "7/1/20",
-            "Month Name": "July",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Royal Oak",
-            "Units Sold": "1127",
-            "Manufacturing Price": 5,
-            "Sale Price": 12,
-            "Gross Sales": 13524,
-            "Discounts": 1405.2,
-            "Sales": 12118.8,
-            "COGS": 7026,
-            "Profit": 5092.8,
-            "Date": "11/1/20",
-            "Month Name": "November",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "1610",
-            "Manufacturing Price": 10,
-            "Sale Price": 20,
-            "Gross Sales": 32200,
-            "Discounts": 1303,
-            "Sales": 30897,
-            "COGS": 13030,
-            "Profit": 17867,
-            "Date": "2/1/20",
-            "Month Name": "February",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "4100",
-            "Manufacturing Price": 10,
-            "Sale Price": 125,
-            "Gross Sales": 512500,
-            "Discounts": 18700,
-            "Sales": 493800,
-            "COGS": 359040,
-            "Profit": 134760,
-            "Date": "3/1/20",
-            "Month Name": "March",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "1012",
-            "Manufacturing Price": 10,
-            "Sale Price": 125,
-            "Gross Sales": 126500,
-            "Discounts": 14906.25,
-            "Sales": 111593.75,
-            "COGS": 286200,
-            "Profit": 174606.25,
-            "Date": "3/1/20",
-            "Month Name": "March",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "3337",
-            "Manufacturing Price": 10,
-            "Sale Price": 300,
-            "Gross Sales": 1001100,
-            "Discounts": 24105,
-            "Sales": 976995,
-            "COGS": 401750,
-            "Profit": 575245,
-            "Date": "4/1/20",
-            "Month Name": "April",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "3955",
-            "Manufacturing Price": 10,
-            "Sale Price": 7,
-            "Gross Sales": 27685,
-            "Discounts": 814.45,
-            "Sales": 26870.55,
-            "COGS": 11635,
-            "Profit": 15235.55,
-            "Date": "5/1/20",
-            "Month Name": "May",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "4347",
-            "Manufacturing Price": 10,
-            "Sale Price": 300,
-            "Gross Sales": 1304100,
-            "Discounts": 14865,
-            "Sales": 1289235,
-            "COGS": 247750,
-            "Profit": 1041485,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "1548",
-            "Manufacturing Price": 10,
-            "Sale Price": 350,
-            "Gross Sales": 541800,
-            "Discounts": 10535,
-            "Sales": 531265,
-            "COGS": 156520,
-            "Profit": 374745,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "2153",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 32295,
-            "Discounts": 1965,
-            "Sales": 30330,
-            "COGS": 26200,
-            "Profit": 4130,
-            "Date": "9/1/20",
-            "Month Name": "September",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "4126",
-            "Manufacturing Price": 10,
-            "Sale Price": 125,
-            "Gross Sales": 515750,
-            "Discounts": 5381.25,
-            "Sales": 510368.75,
-            "COGS": 103320,
-            "Profit": 407048.75,
-            "Date": "10/1/20",
-            "Month Name": "October",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "3376",
-            "Manufacturing Price": 10,
-            "Sale Price": 20,
-            "Gross Sales": 67520,
-            "Discounts": 2663,
-            "Sales": 64857,
-            "COGS": 26630,
-            "Profit": 38227,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Burlington",
-            "Units Sold": "2244",
-            "Manufacturing Price": 120,
-            "Sale Price": 15,
-            "Gross Sales": 33660,
-            "Discounts": 416.25,
-            "Sales": 33243.75,
-            "COGS": 5550,
-            "Profit": 27693.75,
-            "Date": "1/1/20",
-            "Month Name": "January",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Burlington",
-            "Units Sold": "1360",
-            "Manufacturing Price": 120,
-            "Sale Price": 15,
-            "Gross Sales": 20400,
-            "Discounts": 2145.75,
-            "Sales": 18254.25,
-            "COGS": 28610,
-            "Profit": 10355.75,
-            "Date": "1/1/20",
-            "Month Name": "January",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Burlington",
-            "Units Sold": "279",
-            "Manufacturing Price": 120,
-            "Sale Price": 125,
-            "Gross Sales": 34875,
-            "Discounts": 5043.75,
-            "Sales": 29831.25,
-            "COGS": 96840,
-            "Profit": 67008.75,
-            "Date": "2/1/20",
-            "Month Name": "February",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Burlington",
-            "Units Sold": "2521",
-            "Manufacturing Price": 120,
-            "Sale Price": 350,
-            "Gross Sales": 882350,
-            "Discounts": 10535,
-            "Sales": 871815,
-            "COGS": 156520,
-            "Profit": 715295,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Burlington",
-            "Units Sold": "2433",
-            "Manufacturing Price": 120,
-            "Sale Price": 20,
-            "Gross Sales": 48660,
-            "Discounts": 2832,
-            "Sales": 45828,
-            "COGS": 28320,
-            "Profit": 17508,
-            "Date": "8/1/20",
-            "Month Name": "August",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Burlington",
-            "Units Sold": "1738",
-            "Manufacturing Price": 120,
-            "Sale Price": 20,
-            "Gross Sales": 34760,
-            "Discounts": 1579,
-            "Sales": 33181,
-            "COGS": 15790,
-            "Profit": 17391,
-            "Date": "8/1/20",
-            "Month Name": "August",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Burlington",
-            "Units Sold": "1106",
-            "Manufacturing Price": 120,
-            "Sale Price": 125,
-            "Gross Sales": 138250,
-            "Discounts": 5381.25,
-            "Sales": 132868.75,
-            "COGS": 103320,
-            "Profit": 29548.75,
-            "Date": "10/1/20",
-            "Month Name": "October",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Burlington",
-            "Units Sold": "213",
-            "Manufacturing Price": 120,
-            "Sale Price": 300,
-            "Gross Sales": 63900,
-            "Discounts": 18750,
-            "Sales": 45150,
-            "COGS": 312500,
-            "Profit": 267350,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Mandarin",
-            "Units Sold": "2929",
-            "Manufacturing Price": 250,
-            "Sale Price": 20,
-            "Gross Sales": 58580,
-            "Discounts": 2663,
-            "Sales": 55917,
-            "COGS": 26630,
-            "Profit": 29287,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Mandarin",
-            "Units Sold": "2389",
-            "Manufacturing Price": 250,
-            "Sale Price": 7,
-            "Gross Sales": 16723,
-            "Discounts": 199.5,
-            "Sales": 16523.5,
-            "COGS": 2850,
-            "Profit": 13673.5,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Mandarin",
-            "Units Sold": "3086",
-            "Manufacturing Price": 250,
-            "Sale Price": 7,
-            "Gross Sales": 21602,
-            "Discounts": 870.45,
-            "Sales": 20731.55,
-            "COGS": 12435,
-            "Profit": 8296.55,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Luxe",
-            "Units Sold": "745",
-            "Manufacturing Price": 260,
-            "Sale Price": 350,
-            "Gross Sales": 260750,
-            "Discounts": 23625,
-            "Sales": 237125,
-            "COGS": 351000,
-            "Profit": 113875,
-            "Date": "2/1/20",
-            "Month Name": "February",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Luxe",
-            "Units Sold": "1266",
-            "Manufacturing Price": 260,
-            "Sale Price": 350,
-            "Gross Sales": 443100,
-            "Discounts": 9660,
-            "Sales": 433440,
-            "COGS": 143520,
-            "Profit": 289920,
-            "Date": "8/1/20",
-            "Month Name": "August",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Luxe",
-            "Units Sold": "4287",
-            "Manufacturing Price": 260,
-            "Sale Price": 300,
-            "Gross Sales": 1286100,
-            "Discounts": 18750,
-            "Sales": 1267350,
-            "COGS": 312500,
-            "Profit": 954850,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "3193",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 47895,
-            "Discounts": 3420.9,
-            "Sales": 44474.1,
-            "COGS": 38010,
-            "Profit": 6464.1,
-            "Date": "4/1/20",
-            "Month Name": "April",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Kensington",
-            "Units Sold": "1967",
-            "Manufacturing Price": 3,
-            "Sale Price": 20,
-            "Gross Sales": 39340,
-            "Discounts": 1341,
-            "Sales": 37999,
-            "COGS": 11175,
-            "Profit": 26824,
-            "Date": "1/1/20",
-            "Month Name": "January",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Kensington",
-            "Units Sold": "631",
-            "Manufacturing Price": 3,
-            "Sale Price": 15,
-            "Gross Sales": 9465,
-            "Discounts": 2559.6,
-            "Sales": 6905.4,
-            "COGS": 28440,
-            "Profit": 21534.6,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Kensington",
-            "Units Sold": "3469",
-            "Manufacturing Price": 3,
-            "Sale Price": 12,
-            "Gross Sales": 41628,
-            "Discounts": 404.64,
-            "Sales": 41223.36,
-            "COGS": 1686,
-            "Profit": 39537.36,
-            "Date": "9/1/20",
-            "Month Name": "September",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Kensington",
-            "Units Sold": "3215",
-            "Manufacturing Price": 3,
-            "Sale Price": 15,
-            "Gross Sales": 48225,
-            "Discounts": 1827,
-            "Sales": 46398,
-            "COGS": 20300,
-            "Profit": 26098,
-            "Date": "11/1/20",
-            "Month Name": "November",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Royal Oak",
-            "Units Sold": "1959",
-            "Manufacturing Price": 5,
-            "Sale Price": 350,
-            "Gross Sales": 685650,
-            "Discounts": 20580,
-            "Sales": 665070,
-            "COGS": 254800,
-            "Profit": 410270,
-            "Date": "4/1/20",
-            "Month Name": "April",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Royal Oak",
-            "Units Sold": "2181",
-            "Manufacturing Price": 5,
-            "Sale Price": 350,
-            "Gross Sales": 763350,
-            "Discounts": 30660,
-            "Sales": 732690,
-            "COGS": 379600,
-            "Profit": 353090,
-            "Date": "5/1/20",
-            "Month Name": "May",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Royal Oak",
-            "Units Sold": "2205",
-            "Manufacturing Price": 5,
-            "Sale Price": 12,
-            "Gross Sales": 26460,
-            "Discounts": 1960.56,
-            "Sales": 24499.44,
-            "COGS": 8169,
-            "Profit": 16330.44,
-            "Date": "11/1/20",
-            "Month Name": "November",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "1890",
-            "Manufacturing Price": 10,
-            "Sale Price": 350,
-            "Gross Sales": 661500,
-            "Discounts": 31416,
-            "Sales": 630084,
-            "COGS": 388960,
-            "Profit": 241124,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Burlington",
-            "Units Sold": "2417",
-            "Manufacturing Price": 120,
-            "Sale Price": 125,
-            "Gross Sales": 302125,
-            "Discounts": 7140,
-            "Sales": 294985,
-            "COGS": 114240,
-            "Profit": 180745,
-            "Date": "2/1/20",
-            "Month Name": "February",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Burlington",
-            "Units Sold": "1158",
-            "Manufacturing Price": 120,
-            "Sale Price": 125,
-            "Gross Sales": 144750,
-            "Discounts": 20662.5,
-            "Sales": 124087.5,
-            "COGS": 330600,
-            "Profit": 206512.5,
-            "Date": "2/1/20",
-            "Month Name": "February",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Burlington",
-            "Units Sold": "803",
-            "Manufacturing Price": 120,
-            "Sale Price": 15,
-            "Gross Sales": 12045,
-            "Discounts": 1377,
-            "Sales": 10668,
-            "COGS": 15300,
-            "Profit": 4632,
-            "Date": "5/1/20",
-            "Month Name": "May",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Burlington",
-            "Units Sold": "3705",
-            "Manufacturing Price": 120,
-            "Sale Price": 350,
-            "Gross Sales": 1296750,
-            "Discounts": 31416,
-            "Sales": 1265334,
-            "COGS": 388960,
-            "Profit": 876374,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Burlington",
-            "Units Sold": "589",
-            "Manufacturing Price": 120,
-            "Sale Price": 7,
-            "Gross Sales": 4123,
-            "Discounts": 629.16,
-            "Sales": 3493.84,
-            "COGS": 7490,
-            "Profit": 3996.16,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Mandarin",
-            "Units Sold": "3999",
-            "Manufacturing Price": 250,
-            "Sale Price": 15,
-            "Gross Sales": 59985,
-            "Discounts": 2559.6,
-            "Sales": 57425.4,
-            "COGS": 28440,
-            "Profit": 28985.4,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Mandarin",
-            "Units Sold": "4256",
-            "Manufacturing Price": 250,
-            "Sale Price": 7,
-            "Gross Sales": 29792,
-            "Discounts": 629.16,
-            "Sales": 29162.84,
-            "COGS": 7490,
-            "Profit": 21672.84,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Luxe",
-            "Units Sold": "2160",
-            "Manufacturing Price": 260,
-            "Sale Price": 125,
-            "Gross Sales": 270000,
-            "Discounts": 14906.25,
-            "Sales": 255093.75,
-            "COGS": 238500,
-            "Profit": 16593.75,
-            "Date": "1/1/20",
-            "Month Name": "January",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Luxe",
-            "Units Sold": "466",
-            "Manufacturing Price": 260,
-            "Sale Price": 350,
-            "Gross Sales": 163100,
-            "Discounts": 35259,
-            "Sales": 127841,
-            "COGS": 436540,
-            "Profit": 308699,
-            "Date": "9/1/20",
-            "Month Name": "September",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "1478",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 22170,
-            "Discounts": 1978.2,
-            "Sales": 20191.8,
-            "COGS": 21980,
-            "Profit": 1788.2,
-            "Date": "8/1/20",
-            "Month Name": "August",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "3798",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 56970,
-            "Discounts": 1568.7,
-            "Sales": 55401.3,
-            "COGS": 17430,
-            "Profit": 37971.3,
-            "Date": "8/1/20",
-            "Month Name": "August",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "447",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 6705,
-            "Discounts": 1037.7,
-            "Sales": 5667.3,
-            "COGS": 11530,
-            "Profit": 5862.7,
-            "Date": "10/1/20",
-            "Month Name": "October",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Burlington",
-            "Units Sold": "745",
-            "Manufacturing Price": 120,
-            "Sale Price": 20,
-            "Gross Sales": 14900,
-            "Discounts": 1201.2,
-            "Sales": 13698.8,
-            "COGS": 10010,
-            "Profit": 3688.8,
-            "Date": "8/1/20",
-            "Month Name": "August",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Burlington",
-            "Units Sold": "1732",
-            "Manufacturing Price": 120,
-            "Sale Price": 7,
-            "Gross Sales": 12124,
-            "Discounts": 559.86,
-            "Sales": 11564.14,
-            "COGS": 6665,
-            "Profit": 4899.14,
-            "Date": "11/1/20",
-            "Month Name": "November",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Mandarin",
-            "Units Sold": "1759",
-            "Manufacturing Price": 250,
-            "Sale Price": 15,
-            "Gross Sales": 26385,
-            "Discounts": 1037.7,
-            "Sales": 25347.3,
-            "COGS": 11530,
-            "Profit": 13817.3,
-            "Date": "10/1/20",
-            "Month Name": "October",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Kensington",
-            "Units Sold": "338",
-            "Manufacturing Price": 3,
-            "Sale Price": 12,
-            "Gross Sales": 4056,
-            "Discounts": 610.68,
-            "Sales": 3445.32,
-            "COGS": 2181,
-            "Profit": 1264.32,
-            "Date": "2/1/20",
-            "Month Name": "February",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Kensington",
-            "Units Sold": "3911",
-            "Manufacturing Price": 3,
-            "Sale Price": 12,
-            "Gross Sales": 46932,
-            "Discounts": 1582.56,
-            "Sales": 45349.44,
-            "COGS": 5652,
-            "Profit": 39697.44,
-            "Date": "8/1/20",
-            "Month Name": "August",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Royal Oak",
-            "Units Sold": "4473",
-            "Manufacturing Price": 5,
-            "Sale Price": 12,
-            "Gross Sales": 53676,
-            "Discounts": 1965.6,
-            "Sales": 51710.4,
-            "COGS": 7020,
-            "Profit": 44690.4,
-            "Date": "1/1/20",
-            "Month Name": "January",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Royal Oak",
-            "Units Sold": "383",
-            "Manufacturing Price": 5,
-            "Sale Price": 12,
-            "Gross Sales": 4596,
-            "Discounts": 1967.28,
-            "Sales": 2628.72,
-            "COGS": 7026,
-            "Profit": 4397.28,
-            "Date": "11/1/20",
-            "Month Name": "November",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Burlington",
-            "Units Sold": "1062",
-            "Manufacturing Price": 120,
-            "Sale Price": 15,
-            "Gross Sales": 15930,
-            "Discounts": 1325.1,
-            "Sales": 14604.9,
-            "COGS": 12620,
-            "Profit": 1984.9,
-            "Date": "5/1/20",
-            "Month Name": "May",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Burlington",
-            "Units Sold": "4083",
-            "Manufacturing Price": 120,
-            "Sale Price": 7,
-            "Gross Sales": 28581,
-            "Discounts": 556.15,
-            "Sales": 28024.85,
-            "COGS": 5675,
-            "Profit": 22349.85,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Burlington",
-            "Units Sold": "3974",
-            "Manufacturing Price": 120,
-            "Sale Price": 7,
-            "Gross Sales": 27818,
-            "Discounts": 268.03,
-            "Sales": 27549.97,
-            "COGS": 2735,
-            "Profit": 24814.97,
-            "Date": "11/1/20",
-            "Month Name": "November",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Burlington",
-            "Units Sold": "3723",
-            "Manufacturing Price": 120,
-            "Sale Price": 7,
-            "Gross Sales": 26061,
-            "Discounts": 775.18,
-            "Sales": 25285.82,
-            "COGS": 7910,
-            "Profit": 17375.82,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Mandarin",
-            "Units Sold": "2435",
-            "Manufacturing Price": 250,
-            "Sale Price": 12,
-            "Gross Sales": 29220,
-            "Discounts": 1460.34,
-            "Sales": 27759.66,
-            "COGS": 5215.5,
-            "Profit": 22544.16,
-            "Date": "4/1/20",
-            "Month Name": "April",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Mandarin",
-            "Units Sold": "1763",
-            "Manufacturing Price": 250,
-            "Sale Price": 7,
-            "Gross Sales": 12341,
-            "Discounts": 775.18,
-            "Sales": 11565.82,
-            "COGS": 7910,
-            "Profit": 3655.82,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Luxe",
-            "Units Sold": "4473",
-            "Manufacturing Price": 260,
-            "Sale Price": 7,
-            "Gross Sales": 31311,
-            "Discounts": 556.15,
-            "Sales": 30754.85,
-            "COGS": 5675,
-            "Profit": 25079.85,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Kensington",
-            "Units Sold": "1246",
-            "Manufacturing Price": 3,
-            "Sale Price": 350,
-            "Gross Sales": 436100,
-            "Discounts": 43144.5,
-            "Sales": 392955.5,
-            "COGS": 457860,
-            "Profit": 64904.5,
-            "Date": "3/1/20",
-            "Month Name": "March",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Kensington",
-            "Units Sold": "1615",
-            "Manufacturing Price": 3,
-            "Sale Price": 300,
-            "Gross Sales": 484500,
-            "Discounts": 9408,
-            "Sales": 475092,
-            "COGS": 112000,
-            "Profit": 363092,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Kensington",
-            "Units Sold": "749",
-            "Manufacturing Price": 3,
-            "Sale Price": 300,
-            "Gross Sales": 224700,
-            "Discounts": 45801,
-            "Sales": 178899,
-            "COGS": 545250,
-            "Profit": 366351,
-            "Date": "10/1/20",
-            "Month Name": "October",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Royal Oak",
-            "Units Sold": "1318",
-            "Manufacturing Price": 5,
-            "Sale Price": 20,
-            "Gross Sales": 26360,
-            "Discounts": 2766.4,
-            "Sales": 23593.6,
-            "COGS": 19760,
-            "Profit": 3833.6,
-            "Date": "10/1/20",
-            "Month Name": "October",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Royal Oak",
-            "Units Sold": "2882",
-            "Manufacturing Price": 5,
-            "Sale Price": 300,
-            "Gross Sales": 864600,
-            "Discounts": 45801,
-            "Sales": 818799,
-            "COGS": 545250,
-            "Profit": 273549,
-            "Date": "10/1/20",
-            "Month Name": "October",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "2484",
-            "Manufacturing Price": 10,
-            "Sale Price": 300,
-            "Gross Sales": 745200,
-            "Discounts": 35742,
-            "Sales": 709458,
-            "COGS": 425500,
-            "Profit": 283958,
-            "Date": "5/1/20",
-            "Month Name": "May",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "3169",
-            "Manufacturing Price": 10,
-            "Sale Price": 300,
-            "Gross Sales": 950700,
-            "Discounts": 9408,
-            "Sales": 941292,
-            "COGS": 112000,
-            "Profit": 829292,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "4080",
-            "Manufacturing Price": 10,
-            "Sale Price": 125,
-            "Gross Sales": 510000,
-            "Discounts": 30738.75,
-            "Sales": 479261.25,
-            "COGS": 421560,
-            "Profit": 57701.25,
-            "Date": "7/1/20",
-            "Month Name": "July",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "3943",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 59145,
-            "Discounts": 2206.05,
-            "Sales": 56938.95,
-            "COGS": 21010,
-            "Profit": 35928.95,
-            "Date": "8/1/20",
-            "Month Name": "August",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "253",
-            "Manufacturing Price": 10,
-            "Sale Price": 20,
-            "Gross Sales": 5060,
-            "Discounts": 2149,
-            "Sales": 2911,
-            "COGS": 15350,
-            "Profit": 12439,
-            "Date": "9/1/20",
-            "Month Name": "September",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Burlington",
-            "Units Sold": "799",
-            "Manufacturing Price": 120,
-            "Sale Price": 300,
-            "Gross Sales": 239700,
-            "Discounts": 34839,
-            "Sales": 204861,
-            "COGS": 414750,
-            "Profit": 209889,
-            "Date": "7/1/20",
-            "Month Name": "July",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Burlington",
-            "Units Sold": "3942",
-            "Manufacturing Price": 120,
-            "Sale Price": 20,
-            "Gross Sales": 78840,
-            "Discounts": 852.6,
-            "Sales": 77987.4,
-            "COGS": 6090,
-            "Profit": 71897.4,
-            "Date": "8/1/20",
-            "Month Name": "August",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Burlington",
-            "Units Sold": "2498",
-            "Manufacturing Price": 120,
-            "Sale Price": 125,
-            "Gross Sales": 312250,
-            "Discounts": 18261.25,
-            "Sales": 293988.75,
-            "COGS": 250440,
-            "Profit": 43548.75,
-            "Date": "9/1/20",
-            "Month Name": "September",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Burlington",
-            "Units Sold": "2517",
-            "Manufacturing Price": 120,
-            "Sale Price": 20,
-            "Gross Sales": 50340,
-            "Discounts": 2766.4,
-            "Sales": 47573.6,
-            "COGS": 19760,
-            "Profit": 27813.6,
-            "Date": "10/1/20",
-            "Month Name": "October",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Burlington",
-            "Units Sold": "1145",
-            "Manufacturing Price": 120,
-            "Sale Price": 300,
-            "Gross Sales": 343500,
-            "Discounts": 28812,
-            "Sales": 314688,
-            "COGS": 343000,
-            "Profit": 28312,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Mandarin",
-            "Units Sold": "3814",
-            "Manufacturing Price": 250,
-            "Sale Price": 12,
-            "Gross Sales": 45768,
-            "Discounts": 2725.38,
-            "Sales": 43042.62,
-            "COGS": 9733.5,
-            "Profit": 33309.12,
-            "Date": "1/1/20",
-            "Month Name": "January",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Mandarin",
-            "Units Sold": "1188",
-            "Manufacturing Price": 250,
-            "Sale Price": 300,
-            "Gross Sales": 356400,
-            "Discounts": 20139,
-            "Sales": 336261,
-            "COGS": 239750,
-            "Profit": 96511,
-            "Date": "2/1/20",
-            "Month Name": "February",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Mandarin",
-            "Units Sold": "2233",
-            "Manufacturing Price": 250,
-            "Sale Price": 300,
-            "Gross Sales": 669900,
-            "Discounts": 57687,
-            "Sales": 612213,
-            "COGS": 686750,
-            "Profit": 74537,
-            "Date": "2/1/20",
-            "Month Name": "February",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Luxe",
-            "Units Sold": "421",
-            "Manufacturing Price": 260,
-            "Sale Price": 125,
-            "Gross Sales": 52625,
-            "Discounts": 14393.75,
-            "Sales": 38231.25,
-            "COGS": 197400,
-            "Profit": 159168.75,
-            "Date": "5/1/20",
-            "Month Name": "May",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Luxe",
-            "Units Sold": "269",
-            "Manufacturing Price": 260,
-            "Sale Price": 350,
-            "Gross Sales": 94150,
-            "Discounts": 70462,
-            "Sales": 23688,
-            "COGS": 747760,
-            "Profit": 724072,
-            "Date": "9/1/20",
-            "Month Name": "September",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Luxe",
-            "Units Sold": "952",
-            "Manufacturing Price": 260,
-            "Sale Price": 20,
-            "Gross Sales": 19040,
-            "Discounts": 1565.2,
-            "Sales": 17474.8,
-            "COGS": 11180,
-            "Profit": 6294.8,
-            "Date": "11/1/20",
-            "Month Name": "November",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Luxe",
-            "Units Sold": "2964",
-            "Manufacturing Price": 260,
-            "Sale Price": 300,
-            "Gross Sales": 889200,
-            "Discounts": 28812,
-            "Sales": 860388,
-            "COGS": 343000,
-            "Profit": 517388,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Royal Oak",
-            "Units Sold": "1505",
-            "Manufacturing Price": 5,
-            "Sale Price": 7,
-            "Gross Sales": 10535,
-            "Discounts": 273.28,
-            "Sales": 10261.72,
-            "COGS": 2440,
-            "Profit": 7821.72,
-            "Date": "2/1/20",
-            "Month Name": "February",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Royal Oak",
-            "Units Sold": "1678",
-            "Manufacturing Price": 5,
-            "Sale Price": 20,
-            "Gross Sales": 33560,
-            "Discounts": 2051.2,
-            "Sales": 31508.8,
-            "COGS": 12820,
-            "Profit": 18688.8,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "4249",
-            "Manufacturing Price": 10,
-            "Sale Price": 7,
-            "Gross Sales": 29743,
-            "Discounts": 143.92,
-            "Sales": 29599.08,
-            "COGS": 1285,
-            "Profit": 28314.08,
-            "Date": "5/1/20",
-            "Month Name": "May",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Luxe",
-            "Units Sold": "1677",
-            "Manufacturing Price": 260,
-            "Sale Price": 20,
-            "Gross Sales": 33540,
-            "Discounts": 2051.2,
-            "Sales": 31488.8,
-            "COGS": 12820,
-            "Profit": 18668.8,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Kensington",
-            "Units Sold": "3051",
-            "Manufacturing Price": 3,
-            "Sale Price": 125,
-            "Gross Sales": 381375,
-            "Discounts": 15400,
-            "Sales": 365975,
-            "COGS": 184800,
-            "Profit": 181175,
-            "Date": "8/1/20",
-            "Month Name": "August",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Kensington",
-            "Units Sold": "3372",
-            "Manufacturing Price": 3,
-            "Sale Price": 15,
-            "Gross Sales": 50580,
-            "Discounts": 588,
-            "Sales": 49992,
-            "COGS": 4900,
-            "Profit": 45092,
-            "Date": "11/1/20",
-            "Month Name": "November",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Kensington",
-            "Units Sold": "1686",
-            "Manufacturing Price": 3,
-            "Sale Price": 350,
-            "Gross Sales": 590100,
-            "Discounts": 38136,
-            "Sales": 551964,
-            "COGS": 354120,
-            "Profit": 197844,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Royal Oak",
-            "Units Sold": "3086",
-            "Manufacturing Price": 5,
-            "Sale Price": 15,
-            "Gross Sales": 46290,
-            "Discounts": 3001.2,
-            "Sales": 43288.8,
-            "COGS": 25010,
-            "Profit": 18278.8,
-            "Date": "3/1/20",
-            "Month Name": "March",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Royal Oak",
-            "Units Sold": "4150",
-            "Manufacturing Price": 5,
-            "Sale Price": 20,
-            "Gross Sales": 83000,
-            "Discounts": 1132.8,
-            "Sales": 81867.2,
-            "COGS": 7080,
-            "Profit": 74787.2,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Royal Oak",
-            "Units Sold": "3027",
-            "Manufacturing Price": 5,
-            "Sale Price": 20,
-            "Gross Sales": 60540,
-            "Discounts": 1032,
-            "Sales": 59508,
-            "COGS": 6450,
-            "Profit": 53058,
-            "Date": "7/1/20",
-            "Month Name": "July",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Royal Oak",
-            "Units Sold": "4359",
-            "Manufacturing Price": 5,
-            "Sale Price": 300,
-            "Gross Sales": 1307700,
-            "Discounts": 37488,
-            "Sales": 1270212,
-            "COGS": 390500,
-            "Profit": 879712,
-            "Date": "8/1/20",
-            "Month Name": "August",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Royal Oak",
-            "Units Sold": "1589",
-            "Manufacturing Price": 5,
-            "Sale Price": 15,
-            "Gross Sales": 23835,
-            "Discounts": 853.2,
-            "Sales": 22981.8,
-            "COGS": 7110,
-            "Profit": 15871.8,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "2679",
-            "Manufacturing Price": 10,
-            "Sale Price": 125,
-            "Gross Sales": 334875,
-            "Discounts": 11140,
-            "Sales": 323735,
-            "COGS": 133680,
-            "Profit": 190055,
-            "Date": "3/1/20",
-            "Month Name": "March",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "3401",
-            "Manufacturing Price": 10,
-            "Sale Price": 7,
-            "Gross Sales": 23807,
-            "Discounts": 705.04,
-            "Sales": 23101.96,
-            "COGS": 6295,
-            "Profit": 16806.96,
-            "Date": "4/1/20",
-            "Month Name": "April",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "2815",
-            "Manufacturing Price": 10,
-            "Sale Price": 7,
-            "Gross Sales": 19705,
-            "Discounts": 613.2,
-            "Sales": 19091.8,
-            "COGS": 5475,
-            "Profit": 13616.8,
-            "Date": "5/1/20",
-            "Month Name": "May",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "2964",
-            "Manufacturing Price": 10,
-            "Sale Price": 20,
-            "Gross Sales": 59280,
-            "Discounts": 2185.6,
-            "Sales": 57094.4,
-            "COGS": 13660,
-            "Profit": 43434.4,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "4173",
-            "Manufacturing Price": 10,
-            "Sale Price": 300,
-            "Gross Sales": 1251900,
-            "Discounts": 59040,
-            "Sales": 1192860,
-            "COGS": 615000,
-            "Profit": 577860,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "1157",
-            "Manufacturing Price": 10,
-            "Sale Price": 7,
-            "Gross Sales": 8099,
-            "Discounts": 379.68,
-            "Sales": 7719.32,
-            "COGS": 3390,
-            "Profit": 4329.32,
-            "Date": "8/1/20",
-            "Month Name": "August",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "3065",
-            "Manufacturing Price": 10,
-            "Sale Price": 7,
-            "Gross Sales": 21455,
-            "Discounts": 894.88,
-            "Sales": 20560.12,
-            "COGS": 7990,
-            "Profit": 12570.12,
-            "Date": "8/1/20",
-            "Month Name": "August",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "4080",
-            "Manufacturing Price": 10,
-            "Sale Price": 20,
-            "Gross Sales": 81600,
-            "Discounts": 3094.4,
-            "Sales": 78505.6,
-            "COGS": 19340,
-            "Profit": 59165.6,
-            "Date": "9/1/20",
-            "Month Name": "September",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "1713",
-            "Manufacturing Price": 10,
-            "Sale Price": 20,
-            "Gross Sales": 34260,
-            "Discounts": 4788.8,
-            "Sales": 29471.2,
-            "COGS": 29930,
-            "Profit": 458.8,
-            "Date": "9/1/20",
-            "Month Name": "September",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "1691",
-            "Manufacturing Price": 10,
-            "Sale Price": 350,
-            "Gross Sales": 591850,
-            "Discounts": 38136,
-            "Sales": 553714,
-            "COGS": 354120,
-            "Profit": 199594,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Burlington",
-            "Units Sold": "2305",
-            "Manufacturing Price": 120,
-            "Sale Price": 12,
-            "Gross Sales": 27660,
-            "Discounts": 574.08,
-            "Sales": 27085.92,
-            "COGS": 1794,
-            "Profit": 25291.92,
-            "Date": "3/1/20",
-            "Month Name": "March",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Burlington",
-            "Units Sold": "3401",
-            "Manufacturing Price": 120,
-            "Sale Price": 7,
-            "Gross Sales": 23807,
-            "Discounts": 1627.92,
-            "Sales": 22179.08,
-            "COGS": 14535,
-            "Profit": 7644.08,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Burlington",
-            "Units Sold": "2288",
-            "Manufacturing Price": 120,
-            "Sale Price": 7,
-            "Gross Sales": 16016,
-            "Discounts": 1309.28,
-            "Sales": 14706.72,
-            "COGS": 11690,
-            "Profit": 3016.72,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Burlington",
-            "Units Sold": "4086",
-            "Manufacturing Price": 120,
-            "Sale Price": 300,
-            "Gross Sales": 1225800,
-            "Discounts": 15240,
-            "Sales": 1210560,
-            "COGS": 158750,
-            "Profit": 1051810,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Mandarin",
-            "Units Sold": "2651",
-            "Manufacturing Price": 250,
-            "Sale Price": 350,
-            "Gross Sales": 927850,
-            "Discounts": 16086,
-            "Sales": 911764,
-            "COGS": 149370,
-            "Profit": 762394,
-            "Date": "4/1/20",
-            "Month Name": "April",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Mandarin",
-            "Units Sold": "3971",
-            "Manufacturing Price": 250,
-            "Sale Price": 7,
-            "Gross Sales": 27797,
-            "Discounts": 1309.28,
-            "Sales": 26487.72,
-            "COGS": 11690,
-            "Profit": 14797.72,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Mandarin",
-            "Units Sold": "2512",
-            "Manufacturing Price": 250,
-            "Sale Price": 350,
-            "Gross Sales": 879200,
-            "Discounts": 10668,
-            "Sales": 868532,
-            "COGS": 99060,
-            "Profit": 769472,
-            "Date": "8/1/20",
-            "Month Name": "August",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Mandarin",
-            "Units Sold": "2745",
-            "Manufacturing Price": 250,
-            "Sale Price": 350,
-            "Gross Sales": 960750,
-            "Discounts": 11816,
-            "Sales": 948934,
-            "COGS": 109720,
-            "Profit": 839214,
-            "Date": "8/1/20",
-            "Month Name": "August",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Mandarin",
-            "Units Sold": "1903",
-            "Manufacturing Price": 250,
-            "Sale Price": 300,
-            "Gross Sales": 570900,
-            "Discounts": 51216,
-            "Sales": 519684,
-            "COGS": 533500,
-            "Profit": 13816,
-            "Date": "9/1/20",
-            "Month Name": "September",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Luxe",
-            "Units Sold": "2914",
-            "Manufacturing Price": 260,
-            "Sale Price": 20,
-            "Gross Sales": 58280,
-            "Discounts": 1132.8,
-            "Sales": 57147.2,
-            "COGS": 7080,
-            "Profit": 50067.2,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Luxe",
-            "Units Sold": "1889",
-            "Manufacturing Price": 260,
-            "Sale Price": 7,
-            "Gross Sales": 13223,
-            "Discounts": 1627.92,
-            "Sales": 11595.08,
-            "COGS": 14535,
-            "Profit": 2939.92,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Luxe",
-            "Units Sold": "1466",
-            "Manufacturing Price": 260,
-            "Sale Price": 20,
-            "Gross Sales": 29320,
-            "Discounts": 2185.6,
-            "Sales": 27134.4,
-            "COGS": 13660,
-            "Profit": 13474.4,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Luxe",
-            "Units Sold": "887",
-            "Manufacturing Price": 260,
-            "Sale Price": 300,
-            "Gross Sales": 266100,
-            "Discounts": 59040,
-            "Sales": 207060,
-            "COGS": 615000,
-            "Profit": 407940,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Luxe",
-            "Units Sold": "395",
-            "Manufacturing Price": 260,
-            "Sale Price": 20,
-            "Gross Sales": 7900,
-            "Discounts": 2432,
-            "Sales": 5468,
-            "COGS": 15200,
-            "Profit": 9732,
-            "Date": "11/1/20",
-            "Month Name": "November",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Luxe",
-            "Units Sold": "1693",
-            "Manufacturing Price": 260,
-            "Sale Price": 15,
-            "Gross Sales": 25395,
-            "Discounts": 853.2,
-            "Sales": 24541.8,
-            "COGS": 7110,
-            "Profit": 17431.8,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Luxe",
-            "Units Sold": "2649",
-            "Manufacturing Price": 260,
-            "Sale Price": 300,
-            "Gross Sales": 794700,
-            "Discounts": 15240,
-            "Sales": 779460,
-            "COGS": 158750,
-            "Profit": 620710,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Mandarin",
-            "Units Sold": "3608",
-            "Manufacturing Price": 250,
-            "Sale Price": 20,
-            "Gross Sales": 72160,
-            "Discounts": 698.4,
-            "Sales": 71461.6,
-            "COGS": 4365,
-            "Profit": 67096.6,
-            "Date": "7/1/20",
-            "Month Name": "July",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Kensington",
-            "Units Sold": "1073",
-            "Manufacturing Price": 3,
-            "Sale Price": 300,
-            "Gross Sales": 321900,
-            "Discounts": 29538,
-            "Sales": 292362,
-            "COGS": 273500,
-            "Profit": 18862,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Royal Oak",
-            "Units Sold": "2167",
-            "Manufacturing Price": 5,
-            "Sale Price": 300,
-            "Gross Sales": 650100,
-            "Discounts": 102667.5,
-            "Sales": 547432.5,
-            "COGS": 950625,
-            "Profit": 403192.5,
-            "Date": "4/1/20",
-            "Month Name": "April",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Royal Oak",
-            "Units Sold": "1319",
-            "Manufacturing Price": 5,
-            "Sale Price": 350,
-            "Gross Sales": 461650,
-            "Discounts": 52479,
-            "Sales": 409171,
-            "COGS": 433160,
-            "Profit": 23989,
-            "Date": "5/1/20",
-            "Month Name": "May",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Royal Oak",
-            "Units Sold": "1252",
-            "Manufacturing Price": 5,
-            "Sale Price": 12,
-            "Gross Sales": 15024,
-            "Discounts": 2506.68,
-            "Sales": 12517.32,
-            "COGS": 6963,
-            "Profit": 5554.32,
-            "Date": "11/1/20",
-            "Month Name": "November",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Royal Oak",
-            "Units Sold": "1156",
-            "Manufacturing Price": 5,
-            "Sale Price": 125,
-            "Gross Sales": 144500,
-            "Discounts": 31466.25,
-            "Sales": 113033.75,
-            "COGS": 335640,
-            "Profit": 222606.25,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "1153",
-            "Manufacturing Price": 10,
-            "Sale Price": 300,
-            "Gross Sales": 345900,
-            "Discounts": 69255,
-            "Sales": 276645,
-            "COGS": 641250,
-            "Profit": 364605,
-            "Date": "1/1/20",
-            "Month Name": "January",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "2720",
-            "Manufacturing Price": 10,
-            "Sale Price": 350,
-            "Gross Sales": 952000,
-            "Discounts": 76135.5,
-            "Sales": 875864.5,
-            "COGS": 628420,
-            "Profit": 247444.5,
-            "Date": "1/1/20",
-            "Month Name": "January",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "3658",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 54870,
-            "Discounts": 4961.25,
-            "Sales": 49908.75,
-            "COGS": 36750,
-            "Profit": 13158.75,
-            "Date": "4/1/20",
-            "Month Name": "April",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "2950",
-            "Manufacturing Price": 10,
-            "Sale Price": 300,
-            "Gross Sales": 885000,
-            "Discounts": 29538,
-            "Sales": 855462,
-            "COGS": 273500,
-            "Profit": 581962,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "1821",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 27315,
-            "Discounts": 1656.45,
-            "Sales": 25658.55,
-            "COGS": 12270,
-            "Profit": 13388.55,
-            "Date": "10/1/20",
-            "Month Name": "October",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "1127",
-            "Manufacturing Price": 10,
-            "Sale Price": 300,
-            "Gross Sales": 338100,
-            "Discounts": 35748,
-            "Sales": 302352,
-            "COGS": 331000,
-            "Profit": 28648,
-            "Date": "11/1/20",
-            "Month Name": "November",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "862",
-            "Manufacturing Price": 10,
-            "Sale Price": 125,
-            "Gross Sales": 107750,
-            "Discounts": 31466.25,
-            "Sales": 76283.75,
-            "COGS": 335640,
-            "Profit": 259356.25,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Burlington",
-            "Units Sold": "3805",
-            "Manufacturing Price": 120,
-            "Sale Price": 15,
-            "Gross Sales": 57075,
-            "Discounts": 330.75,
-            "Sales": 56744.25,
-            "COGS": 2450,
-            "Profit": 54294.25,
-            "Date": "5/1/20",
-            "Month Name": "May",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Burlington",
-            "Units Sold": "1415",
-            "Manufacturing Price": 120,
-            "Sale Price": 300,
-            "Gross Sales": 424500,
-            "Discounts": 102424.5,
-            "Sales": 322075.5,
-            "COGS": 948375,
-            "Profit": 626299.5,
-            "Date": "7/1/20",
-            "Month Name": "July",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Burlington",
-            "Units Sold": "2231",
-            "Manufacturing Price": 120,
-            "Sale Price": 350,
-            "Gross Sales": 780850,
-            "Discounts": 41170.5,
-            "Sales": 739679.5,
-            "COGS": 339820,
-            "Profit": 399859.5,
-            "Date": "7/1/20",
-            "Month Name": "July",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Burlington",
-            "Units Sold": "3649",
-            "Manufacturing Price": 120,
-            "Sale Price": 125,
-            "Gross Sales": 456125,
-            "Discounts": 6378.75,
-            "Sales": 449746.25,
-            "COGS": 68040,
-            "Profit": 381706.25,
-            "Date": "9/1/20",
-            "Month Name": "September",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Burlington",
-            "Units Sold": "2948",
-            "Manufacturing Price": 120,
-            "Sale Price": 125,
-            "Gross Sales": 368500,
-            "Discounts": 23737.5,
-            "Sales": 344762.5,
-            "COGS": 253200,
-            "Profit": 91562.5,
-            "Date": "9/1/20",
-            "Month Name": "September",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Burlington",
-            "Units Sold": "3395",
-            "Manufacturing Price": 120,
-            "Sale Price": 350,
-            "Gross Sales": 1188250,
-            "Discounts": 39973.5,
-            "Sales": 1148276.5,
-            "COGS": 329940,
-            "Profit": 818336.5,
-            "Date": "10/1/20",
-            "Month Name": "October",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Mandarin",
-            "Units Sold": "2650",
-            "Manufacturing Price": 250,
-            "Sale Price": 12,
-            "Gross Sales": 31800,
-            "Discounts": 2112.48,
-            "Sales": 29687.52,
-            "COGS": 5868,
-            "Profit": 23819.52,
-            "Date": "1/1/20",
-            "Month Name": "January",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Mandarin",
-            "Units Sold": "585",
-            "Manufacturing Price": 250,
-            "Sale Price": 300,
-            "Gross Sales": 175500,
-            "Discounts": 71793,
-            "Sales": 103707,
-            "COGS": 664750,
-            "Profit": 561043,
-            "Date": "2/1/20",
-            "Month Name": "February",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Mandarin",
-            "Units Sold": "1316",
-            "Manufacturing Price": 250,
-            "Sale Price": 350,
-            "Gross Sales": 460600,
-            "Discounts": 42572.25,
-            "Sales": 418027.75,
-            "COGS": 351390,
-            "Profit": 66637.75,
-            "Date": "4/1/20",
-            "Month Name": "April",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Mandarin",
-            "Units Sold": "4459",
-            "Manufacturing Price": 250,
-            "Sale Price": 12,
-            "Gross Sales": 53508,
-            "Discounts": 950.4,
-            "Sales": 52557.6,
-            "COGS": 2640,
-            "Profit": 49917.6,
-            "Date": "5/1/20",
-            "Month Name": "May",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Mandarin",
-            "Units Sold": "2711",
-            "Manufacturing Price": 250,
-            "Sale Price": 300,
-            "Gross Sales": 813300,
-            "Discounts": 50409,
-            "Sales": 762891,
-            "COGS": 466750,
-            "Profit": 296141,
-            "Date": "9/1/20",
-            "Month Name": "September",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Mandarin",
-            "Units Sold": "3613",
-            "Manufacturing Price": 250,
-            "Sale Price": 15,
-            "Gross Sales": 54195,
-            "Discounts": 1656.45,
-            "Sales": 52538.55,
-            "COGS": 12270,
-            "Profit": 40268.55,
-            "Date": "10/1/20",
-            "Month Name": "October",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Mandarin",
-            "Units Sold": "1847",
-            "Manufacturing Price": 250,
-            "Sale Price": 125,
-            "Gross Sales": 230875,
-            "Discounts": 9866.25,
-            "Sales": 221008.75,
-            "COGS": 105240,
-            "Profit": 115768.75,
-            "Date": "11/1/20",
-            "Month Name": "November",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Luxe",
-            "Units Sold": "2996",
-            "Manufacturing Price": 260,
-            "Sale Price": 350,
-            "Gross Sales": 1048600,
-            "Discounts": 65236.5,
-            "Sales": 983363.5,
-            "COGS": 538460,
-            "Profit": 444903.5,
-            "Date": "9/1/20",
-            "Month Name": "September",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Luxe",
-            "Units Sold": "2838",
-            "Manufacturing Price": 260,
-            "Sale Price": 350,
-            "Gross Sales": 993300,
-            "Discounts": 39973.5,
-            "Sales": 953326.5,
-            "COGS": 329940,
-            "Profit": 623386.5,
-            "Date": "10/1/20",
-            "Month Name": "October",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Luxe",
-            "Units Sold": "1536",
-            "Manufacturing Price": 260,
-            "Sale Price": 20,
-            "Gross Sales": 30720,
-            "Discounts": 3049.2,
-            "Sales": 27670.8,
-            "COGS": 16940,
-            "Profit": 10730.8,
-            "Date": "11/1/20",
-            "Month Name": "November",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Kensington",
-            "Units Sold": "1291",
-            "Manufacturing Price": 3,
-            "Sale Price": 20,
-            "Gross Sales": 25820,
-            "Discounts": 1193.4,
-            "Sales": 24626.6,
-            "COGS": 6630,
-            "Profit": 17996.6,
-            "Date": "5/1/20",
-            "Month Name": "May",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Kensington",
-            "Units Sold": "1213",
-            "Manufacturing Price": 3,
-            "Sale Price": 7,
-            "Gross Sales": 8491,
-            "Discounts": 515.97,
-            "Sales": 7975.03,
-            "COGS": 4095,
-            "Profit": 3880.03,
-            "Date": "7/1/20",
-            "Month Name": "July",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Kensington",
-            "Units Sold": "2370",
-            "Manufacturing Price": 3,
-            "Sale Price": 12,
-            "Gross Sales": 28440,
-            "Discounts": 1706.4,
-            "Sales": 26733.6,
-            "COGS": 4740,
-            "Profit": 21993.6,
-            "Date": "9/1/20",
-            "Month Name": "September",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Kensington",
-            "Units Sold": "1979",
-            "Manufacturing Price": 3,
-            "Sale Price": 7,
-            "Gross Sales": 13853,
-            "Discounts": 328.23,
-            "Sales": 13524.77,
-            "COGS": 2605,
-            "Profit": 10919.77,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "2879",
-            "Manufacturing Price": 10,
-            "Sale Price": 20,
-            "Gross Sales": 57580,
-            "Discounts": 1751.4,
-            "Sales": 55828.6,
-            "COGS": 9730,
-            "Profit": 46098.6,
-            "Date": "3/1/20",
-            "Month Name": "March",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "1707",
-            "Manufacturing Price": 10,
-            "Sale Price": 20,
-            "Gross Sales": 34140,
-            "Discounts": 1868.4,
-            "Sales": 32271.6,
-            "COGS": 10380,
-            "Profit": 21891.6,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "2933",
-            "Manufacturing Price": 10,
-            "Sale Price": 7,
-            "Gross Sales": 20531,
-            "Discounts": 226.8,
-            "Sales": 20304.2,
-            "COGS": 1800,
-            "Profit": 18504.2,
-            "Date": "10/1/20",
-            "Month Name": "October",
-            "Year": "2020"
-        },
-        {
-            "Country": "UK",
-            "Product": "Burlington",
-            "Units Sold": "1014",
-            "Manufacturing Price": 120,
-            "Sale Price": 12,
-            "Gross Sales": 12168,
-            "Discounts": 2124.36,
-            "Sales": 10043.64,
-            "COGS": 5901,
-            "Profit": 4142.64,
-            "Date": "3/1/20",
-            "Month Name": "March",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Burlington",
-            "Units Sold": "693",
-            "Manufacturing Price": 120,
-            "Sale Price": 15,
-            "Gross Sales": 10395,
-            "Discounts": 3547.8,
-            "Sales": 6847.2,
-            "COGS": 26280,
-            "Profit": 19432.8,
-            "Date": "4/1/20",
-            "Month Name": "April",
-            "Year": "2020"
-        },
-        {
-            "Country": "India",
-            "Product": "Mandarin",
-            "Units Sold": "3741",
-            "Manufacturing Price": 250,
-            "Sale Price": 7,
-            "Gross Sales": 26187,
-            "Discounts": 226.8,
-            "Sales": 25960.2,
-            "COGS": 1800,
-            "Profit": 24160.2,
-            "Date": "10/1/20",
-            "Month Name": "October",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Mandarin",
-            "Units Sold": "3995",
-            "Manufacturing Price": 250,
-            "Sale Price": 7,
-            "Gross Sales": 27965,
-            "Discounts": 328.23,
-            "Sales": 27636.77,
-            "COGS": 2605,
-            "Profit": 25031.77,
-            "Date": "12/1/20",
-            "Month Name": "December",
-            "Year": "2020"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Luxe",
-            "Units Sold": "953",
-            "Manufacturing Price": 260,
-            "Sale Price": 20,
-            "Gross Sales": 19060,
-            "Discounts": 1868.4,
-            "Sales": 17191.6,
-            "COGS": 10380,
-            "Profit": 6811.6,
-            "Date": "6/1/20",
-            "Month Name": "June",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Luxe",
-            "Units Sold": "2530",
-            "Manufacturing Price": 260,
-            "Sale Price": 15,
-            "Gross Sales": 37950,
-            "Discounts": 2201.18,
-            "Sales": 35748.82,
-            "COGS": 16305,
-            "Profit": 19443.82,
-            "Date": "7/1/20",
-            "Month Name": "July",
-            "Year": "2020"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Kensington",
-            "Units Sold": "1372",
-            "Manufacturing Price": 3,
-            "Sale Price": 20,
-            "Gross Sales": 27440,
-            "Discounts": null,
-            "Sales": 27440,
-            "COGS": 16185,
-            "Profit": 11255,
-            "Date": "1/1/19",
-            "Month Name": "January",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Kensington",
-            "Units Sold": "2762",
-            "Manufacturing Price": 3,
-            "Sale Price": 20,
-            "Gross Sales": 55240,
-            "Discounts": null,
-            "Sales": 55240,
-            "COGS": 13210,
-            "Profit": 42030,
-            "Date": "1/1/19",
-            "Month Name": "January",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Kensington",
-            "Units Sold": "1464",
-            "Manufacturing Price": 3,
-            "Sale Price": 15,
-            "Gross Sales": 21960,
-            "Discounts": null,
-            "Sales": 21960,
-            "COGS": 21780,
-            "Profit": 180,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Kensington",
-            "Units Sold": "719",
-            "Manufacturing Price": 3,
-            "Sale Price": 15,
-            "Gross Sales": 10785,
-            "Discounts": null,
-            "Sales": 10785,
-            "COGS": 8880,
-            "Profit": 1905,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Kensington",
-            "Units Sold": "3576",
-            "Manufacturing Price": 3,
-            "Sale Price": 15,
-            "Gross Sales": 53640,
-            "Discounts": null,
-            "Sales": 53640,
-            "COGS": 24700,
-            "Profit": 28940,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Kensington",
-            "Units Sold": "4422",
-            "Manufacturing Price": 3,
-            "Sale Price": 350,
-            "Gross Sales": 1547700,
-            "Discounts": null,
-            "Sales": 1547700,
-            "COGS": 393380,
-            "Profit": 1154320,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Royal Oak",
-            "Units Sold": "3649",
-            "Manufacturing Price": 5,
-            "Sale Price": 15,
-            "Gross Sales": 54735,
-            "Discounts": null,
-            "Sales": 54735,
-            "COGS": 9210,
-            "Profit": 45525,
-            "Date": "3/1/19",
-            "Month Name": "March",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Royal Oak",
-            "Units Sold": "4172",
-            "Manufacturing Price": 5,
-            "Sale Price": 12,
-            "Gross Sales": 50064,
-            "Discounts": null,
-            "Sales": 50064,
-            "COGS": 7554,
-            "Profit": 42510,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Royal Oak",
-            "Units Sold": "3841",
-            "Manufacturing Price": 5,
-            "Sale Price": 20,
-            "Gross Sales": 76820,
-            "Discounts": null,
-            "Sales": 76820,
-            "COGS": 18990,
-            "Profit": 57830,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Royal Oak",
-            "Units Sold": "3726",
-            "Manufacturing Price": 5,
-            "Sale Price": 12,
-            "Gross Sales": 44712,
-            "Discounts": null,
-            "Sales": 44712,
-            "COGS": 4635,
-            "Profit": 40077,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019",
-            "undefined": "Total"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Royal Oak",
-            "Units Sold": "2625",
-            "Manufacturing Price": 5,
-            "Sale Price": 15,
-            "Gross Sales": 39375,
-            "Discounts": null,
-            "Sales": 39375,
-            "COGS": 24700,
-            "Profit": 14675,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019",
-            "undefined": "10"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Royal Oak",
-            "Units Sold": "1958",
-            "Manufacturing Price": 5,
-            "Sale Price": 125,
-            "Gross Sales": 244750,
-            "Discounts": null,
-            "Sales": 244750,
-            "COGS": 319860,
-            "Profit": 75110,
-            "Date": "7/1/19",
-            "Month Name": "July",
-            "Year": "2019",
-            "undefined": "20"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Royal Oak",
-            "Units Sold": "3271",
-            "Manufacturing Price": 5,
-            "Sale Price": 300,
-            "Gross Sales": 981300,
-            "Discounts": null,
-            "Sales": 981300,
-            "COGS": 239500,
-            "Profit": 741800,
-            "Date": "8/1/19",
-            "Month Name": "August",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Royal Oak",
-            "Units Sold": "2091",
-            "Manufacturing Price": 5,
-            "Sale Price": 7,
-            "Gross Sales": 14637,
-            "Discounts": null,
-            "Sales": 14637,
-            "COGS": 10730,
-            "Profit": 3907,
-            "Date": "9/1/19",
-            "Month Name": "September",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Royal Oak",
-            "Units Sold": "2530",
-            "Manufacturing Price": 5,
-            "Sale Price": 125,
-            "Gross Sales": 316250,
-            "Discounts": null,
-            "Sales": 316250,
-            "COGS": 41400,
-            "Profit": 274850,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "USA",
-            "Product": "Royal Oak",
-            "Units Sold": "2825",
-            "Manufacturing Price": 5,
-            "Sale Price": 15,
-            "Gross Sales": 42375,
-            "Discounts": null,
-            "Sales": 42375,
-            "COGS": 6150,
-            "Profit": 36225,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "2513",
-            "Manufacturing Price": 10,
-            "Sale Price": 20,
-            "Gross Sales": 50260,
-            "Discounts": null,
-            "Sales": 50260,
-            "COGS": 2920,
-            "Profit": 47340,
-            "Date": "2/1/19",
-            "Month Name": "February",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "883",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 13245,
-            "Discounts": null,
-            "Sales": 13245,
-            "COGS": 9740,
-            "Profit": 3505,
-            "Date": "2/1/19",
-            "Month Name": "February",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "2087",
-            "Manufacturing Price": 10,
-            "Sale Price": 12,
-            "Gross Sales": 25044,
-            "Discounts": null,
-            "Sales": 25044,
-            "COGS": 7554,
-            "Profit": 17490,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "2563",
-            "Manufacturing Price": 10,
-            "Sale Price": 350,
-            "Gross Sales": 897050,
-            "Discounts": null,
-            "Sales": 897050,
-            "COGS": 261560,
-            "Profit": 635490,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "2846",
-            "Manufacturing Price": 10,
-            "Sale Price": 12,
-            "Gross Sales": 34152,
-            "Discounts": null,
-            "Sales": 34152,
-            "COGS": 1101,
-            "Profit": 33051,
-            "Date": "7/1/19",
-            "Month Name": "July",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "997",
-            "Manufacturing Price": 10,
-            "Sale Price": 7,
-            "Gross Sales": 6979,
-            "Discounts": null,
-            "Sales": 6979,
-            "COGS": 4415,
-            "Profit": 2564,
-            "Date": "8/1/19",
-            "Month Name": "August",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "3421",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 51315,
-            "Discounts": null,
-            "Sales": 51315,
-            "COGS": 5490,
-            "Profit": 45825,
-            "Date": "9/1/18",
-            "Month Name": "September",
-            "Year": "2018"
-        },
-        {
-            "Country": "UK",
-            "Product": "Marchesa",
-            "Units Sold": "70000",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 1050000,
-            "Discounts": null,
-            "Sales": 1050000,
-            "COGS": 5490,
-            "Profit": 1044510,
-            "Date": "9/1/18",
-            "Month Name": "September",
-            "Year": "2018"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "2291",
-            "Manufacturing Price": 10,
-            "Sale Price": 300,
-            "Gross Sales": 687300,
-            "Discounts": null,
-            "Sales": 687300,
-            "COGS": 197000,
-            "Profit": 490300,
-            "Date": "9/1/18",
-            "Month Name": "September",
-            "Year": "2018"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "2290",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 34350,
-            "Discounts": null,
-            "Sales": 34350,
-            "COGS": 24720,
-            "Profit": 9630,
-            "Date": "9/1/19",
-            "Month Name": "September",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "2133",
-            "Manufacturing Price": 10,
-            "Sale Price": 7,
-            "Gross Sales": 14931,
-            "Discounts": null,
-            "Sales": 14931,
-            "COGS": 5715,
-            "Profit": 9216,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "3475",
-            "Manufacturing Price": 10,
-            "Sale Price": 350,
-            "Gross Sales": 1216250,
-            "Discounts": null,
-            "Sales": 1216250,
-            "COGS": 448500,
-            "Profit": 767750,
-            "Date": "11/1/18",
-            "Month Name": "November",
-            "Year": "2018"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "3686",
-            "Manufacturing Price": 10,
-            "Sale Price": 12,
-            "Gross Sales": 44232,
-            "Discounts": null,
-            "Sales": 44232,
-            "COGS": 2736,
-            "Profit": 41496,
-            "Date": "11/1/18",
-            "Month Name": "November",
-            "Year": "2018"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "3319",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 49785,
-            "Discounts": null,
-            "Sales": 49785,
-            "COGS": 21520,
-            "Profit": 28265,
-            "Date": "12/1/18",
-            "Month Name": "December",
-            "Year": "2018"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "3617",
-            "Manufacturing Price": 10,
-            "Sale Price": 20,
-            "Gross Sales": 72340,
-            "Discounts": null,
-            "Sales": 72340,
-            "COGS": 18170,
-            "Profit": 54170,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "1266",
-            "Manufacturing Price": 10,
-            "Sale Price": 350,
-            "Gross Sales": 443100,
-            "Discounts": null,
-            "Sales": 443100,
-            "COGS": 393380,
-            "Profit": 49720,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Burlington",
-            "Units Sold": "894",
-            "Manufacturing Price": 120,
-            "Sale Price": 7,
-            "Gross Sales": 6258,
-            "Discounts": null,
-            "Sales": 6258,
-            "COGS": 7465,
-            "Profit": 1207,
-            "Date": "1/1/19",
-            "Month Name": "January",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Burlington",
-            "Units Sold": "2725",
-            "Manufacturing Price": 120,
-            "Sale Price": 125,
-            "Gross Sales": 340625,
-            "Discounts": null,
-            "Sales": 340625,
-            "COGS": 216480,
-            "Profit": 124145,
-            "Date": "2/1/19",
-            "Month Name": "February",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Burlington",
-            "Units Sold": "3061",
-            "Manufacturing Price": 120,
-            "Sale Price": 12,
-            "Gross Sales": 36732,
-            "Discounts": null,
-            "Sales": 36732,
-            "COGS": 6483,
-            "Profit": 30249,
-            "Date": "3/1/19",
-            "Month Name": "March",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Burlington",
-            "Units Sold": "3958",
-            "Manufacturing Price": 120,
-            "Sale Price": 350,
-            "Gross Sales": 1385300,
-            "Discounts": null,
-            "Sales": 1385300,
-            "COGS": 261560,
-            "Profit": 1123740,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Burlington",
-            "Units Sold": "3920",
-            "Manufacturing Price": 120,
-            "Sale Price": 12,
-            "Gross Sales": 47040,
-            "Discounts": null,
-            "Sales": 47040,
-            "COGS": 4635,
-            "Profit": 42405,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Burlington",
-            "Units Sold": "3381",
-            "Manufacturing Price": 120,
-            "Sale Price": 125,
-            "Gross Sales": 422625,
-            "Discounts": null,
-            "Sales": 422625,
-            "COGS": 338520,
-            "Profit": 84105,
-            "Date": "8/1/19",
-            "Month Name": "August",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Burlington",
-            "Units Sold": "1094",
-            "Manufacturing Price": 120,
-            "Sale Price": 125,
-            "Gross Sales": 136750,
-            "Discounts": null,
-            "Sales": 136750,
-            "COGS": 41400,
-            "Profit": 95350,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Mandarin",
-            "Units Sold": "4307",
-            "Manufacturing Price": 250,
-            "Sale Price": 300,
-            "Gross Sales": 1292100,
-            "Discounts": null,
-            "Sales": 1292100,
-            "COGS": 500250,
-            "Profit": 791850,
-            "Date": "2/1/19",
-            "Month Name": "February",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Mandarin",
-            "Units Sold": "878",
-            "Manufacturing Price": 250,
-            "Sale Price": 12,
-            "Gross Sales": 10536,
-            "Discounts": null,
-            "Sales": 10536,
-            "COGS": 8514,
-            "Profit": 2022,
-            "Date": "4/1/19",
-            "Month Name": "April",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Mandarin",
-            "Units Sold": "496",
-            "Manufacturing Price": 250,
-            "Sale Price": 15,
-            "Gross Sales": 7440,
-            "Discounts": null,
-            "Sales": 7440,
-            "COGS": 21780,
-            "Profit": 14340,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Mandarin",
-            "Units Sold": "3367",
-            "Manufacturing Price": 250,
-            "Sale Price": 15,
-            "Gross Sales": 50505,
-            "Discounts": null,
-            "Sales": 50505,
-            "COGS": 8880,
-            "Profit": 41625,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Mandarin",
-            "Units Sold": "3880",
-            "Manufacturing Price": 250,
-            "Sale Price": 350,
-            "Gross Sales": 1358000,
-            "Discounts": null,
-            "Sales": 1358000,
-            "COGS": 397020,
-            "Profit": 960980,
-            "Date": "9/1/18",
-            "Month Name": "September",
-            "Year": "2018"
-        },
-        {
-            "Country": "UK",
-            "Product": "Mandarin",
-            "Units Sold": "2055",
-            "Manufacturing Price": 250,
-            "Sale Price": 300,
-            "Gross Sales": 616500,
-            "Discounts": null,
-            "Sales": 616500,
-            "COGS": 537750,
-            "Profit": 78750,
-            "Date": "9/1/19",
-            "Month Name": "September",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Mandarin",
-            "Units Sold": "4041",
-            "Manufacturing Price": 250,
-            "Sale Price": 20,
-            "Gross Sales": 80820,
-            "Discounts": null,
-            "Sales": 80820,
-            "COGS": 18170,
-            "Profit": 62650,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Luxe",
-            "Units Sold": "3237",
-            "Manufacturing Price": 260,
-            "Sale Price": 350,
-            "Gross Sales": 1132950,
-            "Discounts": null,
-            "Sales": 1132950,
-            "COGS": 715000,
-            "Profit": 417950,
-            "Date": "2/1/19",
-            "Month Name": "February",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Luxe",
-            "Units Sold": "630",
-            "Manufacturing Price": 260,
-            "Sale Price": 12,
-            "Gross Sales": 7560,
-            "Discounts": null,
-            "Sales": 7560,
-            "COGS": 5859,
-            "Profit": 1701,
-            "Date": "4/1/19",
-            "Month Name": "April",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Luxe",
-            "Units Sold": "4210",
-            "Manufacturing Price": 260,
-            "Sale Price": 125,
-            "Gross Sales": 526250,
-            "Discounts": null,
-            "Sales": 526250,
-            "COGS": 506340,
-            "Profit": 19910,
-            "Date": "4/1/19",
-            "Month Name": "April",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Luxe",
-            "Units Sold": "1127",
-            "Manufacturing Price": 260,
-            "Sale Price": 20,
-            "Gross Sales": 22540,
-            "Discounts": null,
-            "Sales": 22540,
-            "COGS": 18990,
-            "Profit": 3550,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Luxe",
-            "Units Sold": "3438",
-            "Manufacturing Price": 260,
-            "Sale Price": 7,
-            "Gross Sales": 24066,
-            "Discounts": null,
-            "Sales": 24066,
-            "COGS": 8430,
-            "Profit": 15636,
-            "Date": "7/1/19",
-            "Month Name": "July",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Luxe",
-            "Units Sold": "2015",
-            "Manufacturing Price": 260,
-            "Sale Price": 12,
-            "Gross Sales": 24180,
-            "Discounts": null,
-            "Sales": 24180,
-            "COGS": 6423,
-            "Profit": 17757,
-            "Date": "8/1/19",
-            "Month Name": "August",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Luxe",
-            "Units Sold": "2534",
-            "Manufacturing Price": 260,
-            "Sale Price": 7,
-            "Gross Sales": 17738,
-            "Discounts": null,
-            "Sales": 17738,
-            "COGS": 5715,
-            "Profit": 12023,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Luxe",
-            "Units Sold": "1384",
-            "Manufacturing Price": 260,
-            "Sale Price": 15,
-            "Gross Sales": 20760,
-            "Discounts": null,
-            "Sales": 20760,
-            "COGS": 6150,
-            "Profit": 14610,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "3561",
-            "Manufacturing Price": 10,
-            "Sale Price": 7,
-            "Gross Sales": 24927,
-            "Discounts": 276.15,
-            "Sales": 24650.85,
-            "COGS": 19725,
-            "Profit": 4925.85,
-            "Date": "1/1/19",
-            "Month Name": "January",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "1823",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 27345,
-            "Discounts": 344.4,
-            "Sales": 27000.6,
-            "COGS": 22960,
-            "Profit": 4040.6,
-            "Date": "2/1/19",
-            "Month Name": "February",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "2795",
-            "Manufacturing Price": 10,
-            "Sale Price": 7,
-            "Gross Sales": 19565,
-            "Discounts": 72.1,
-            "Sales": 19492.9,
-            "COGS": 5150,
-            "Profit": 14342.9,
-            "Date": "5/1/19",
-            "Month Name": "May",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Burlington",
-            "Units Sold": "457",
-            "Manufacturing Price": 120,
-            "Sale Price": 7,
-            "Gross Sales": 3199,
-            "Discounts": 44.73,
-            "Sales": 3154.27,
-            "COGS": 3195,
-            "Profit": 40.73,
-            "Date": "11/1/19",
-            "Month Name": "November",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Mandarin",
-            "Units Sold": "3785",
-            "Manufacturing Price": 250,
-            "Sale Price": 7,
-            "Gross Sales": 26495,
-            "Discounts": 92.82,
-            "Sales": 26402.18,
-            "COGS": 6630,
-            "Profit": 19772.18,
-            "Date": "3/1/19",
-            "Month Name": "March",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Kensington",
-            "Units Sold": "748",
-            "Manufacturing Price": 3,
-            "Sale Price": 12,
-            "Gross Sales": 8976,
-            "Discounts": 222.96,
-            "Sales": 8753.04,
-            "COGS": 5574,
-            "Profit": 3179.04,
-            "Date": "2/1/19",
-            "Month Name": "February",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Kensington",
-            "Units Sold": "1021",
-            "Manufacturing Price": 3,
-            "Sale Price": 350,
-            "Gross Sales": 357350,
-            "Discounts": 4235,
-            "Sales": 353115,
-            "COGS": 314600,
-            "Profit": 38515,
-            "Date": "3/1/19",
-            "Month Name": "March",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Kensington",
-            "Units Sold": "2076",
-            "Manufacturing Price": 3,
-            "Sale Price": 7,
-            "Gross Sales": 14532,
-            "Discounts": 177.03,
-            "Sales": 14354.97,
-            "COGS": 12645,
-            "Profit": 1709.97,
-            "Date": "7/1/19",
-            "Month Name": "July",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Kensington",
-            "Units Sold": "4316",
-            "Manufacturing Price": 3,
-            "Sale Price": 12,
-            "Gross Sales": 51792,
-            "Discounts": 173.4,
-            "Sales": 51618.6,
-            "COGS": 4335,
-            "Profit": 47283.6,
-            "Date": "9/1/19",
-            "Month Name": "September",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Kensington",
-            "Units Sold": "2654",
-            "Manufacturing Price": 3,
-            "Sale Price": 125,
-            "Gross Sales": 331750,
-            "Discounts": 412.5,
-            "Sales": 331337.5,
-            "COGS": 39600,
-            "Profit": 291737.5,
-            "Date": "9/1/18",
-            "Month Name": "September",
-            "Year": "2018"
-        },
-        {
-            "Country": "UK",
-            "Product": "Kensington",
-            "Units Sold": "4174",
-            "Manufacturing Price": 3,
-            "Sale Price": 12,
-            "Gross Sales": 50088,
-            "Discounts": 320.52,
-            "Sales": 49767.48,
-            "COGS": 8013,
-            "Profit": 41754.48,
-            "Date": "9/1/19",
-            "Month Name": "September",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Kensington",
-            "Units Sold": "1675",
-            "Manufacturing Price": 3,
-            "Sale Price": 12,
-            "Gross Sales": 20100,
-            "Discounts": 91.92,
-            "Sales": 20008.08,
-            "COGS": 2298,
-            "Profit": 17710.08,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Kensington",
-            "Units Sold": "1572",
-            "Manufacturing Price": 3,
-            "Sale Price": 300,
-            "Gross Sales": 471600,
-            "Discounts": 1482,
-            "Sales": 470118,
-            "COGS": 123500,
-            "Profit": 346618,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Kensington",
-            "Units Sold": "3736",
-            "Manufacturing Price": 3,
-            "Sale Price": 350,
-            "Gross Sales": 1307600,
-            "Discounts": 4889.5,
-            "Sales": 1302710.5,
-            "COGS": 363220,
-            "Profit": 939490.5,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Kensington",
-            "Units Sold": "1914",
-            "Manufacturing Price": 3,
-            "Sale Price": 350,
-            "Gross Sales": 669900,
-            "Discounts": 7542.5,
-            "Sales": 662357.5,
-            "COGS": 560300,
-            "Profit": 102057.5,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Royal Oak",
-            "Units Sold": "2742",
-            "Manufacturing Price": 5,
-            "Sale Price": 15,
-            "Gross Sales": 41130,
-            "Discounts": 332.1,
-            "Sales": 40797.9,
-            "COGS": 22140,
-            "Profit": 18657.9,
-            "Date": "3/1/19",
-            "Month Name": "March",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Royal Oak",
-            "Units Sold": "1499",
-            "Manufacturing Price": 5,
-            "Sale Price": 300,
-            "Gross Sales": 449700,
-            "Discounts": 6903,
-            "Sales": 442797,
-            "COGS": 575250,
-            "Profit": 132453,
-            "Date": "4/1/19",
-            "Month Name": "April",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Royal Oak",
-            "Units Sold": "3772",
-            "Manufacturing Price": 5,
-            "Sale Price": 20,
-            "Gross Sales": 75440,
-            "Discounts": 275.1,
-            "Sales": 75164.9,
-            "COGS": 13755,
-            "Profit": 61409.9,
-            "Date": "7/1/19",
-            "Month Name": "July",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Royal Oak",
-            "Units Sold": "1112",
-            "Manufacturing Price": 5,
-            "Sale Price": 7,
-            "Gross Sales": 7784,
-            "Discounts": 128.1,
-            "Sales": 7655.9,
-            "COGS": 9150,
-            "Profit": 1494.1,
-            "Date": "8/1/19",
-            "Month Name": "August",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Royal Oak",
-            "Units Sold": "1723",
-            "Manufacturing Price": 5,
-            "Sale Price": 300,
-            "Gross Sales": 516900,
-            "Discounts": 7494,
-            "Sales": 509406,
-            "COGS": 624500,
-            "Profit": 115094,
-            "Date": "9/1/18",
-            "Month Name": "September",
-            "Year": "2018"
-        },
-        {
-            "Country": "USA",
-            "Product": "Royal Oak",
-            "Units Sold": "423",
-            "Manufacturing Price": 5,
-            "Sale Price": 125,
-            "Gross Sales": 52875,
-            "Discounts": 828.75,
-            "Sales": 52046.25,
-            "COGS": 79560,
-            "Profit": 27513.75,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "2368",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 35520,
-            "Discounts": 227.1,
-            "Sales": 35292.9,
-            "COGS": 15140,
-            "Profit": 20152.9,
-            "Date": "2/1/19",
-            "Month Name": "February",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "1586",
-            "Manufacturing Price": 10,
-            "Sale Price": 7,
-            "Gross Sales": 11102,
-            "Discounts": 314.48,
-            "Sales": 10787.52,
-            "COGS": 22462.5,
-            "Profit": 11674.98,
-            "Date": "4/1/19",
-            "Month Name": "April",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "3386",
-            "Manufacturing Price": 10,
-            "Sale Price": 125,
-            "Gross Sales": 423250,
-            "Discounts": 908.75,
-            "Sales": 422341.25,
-            "COGS": 87240,
-            "Profit": 335101.25,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "852",
-            "Manufacturing Price": 10,
-            "Sale Price": 125,
-            "Gross Sales": 106500,
-            "Discounts": 983.75,
-            "Sales": 105516.25,
-            "COGS": 94440,
-            "Profit": 11076.25,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "2783",
-            "Manufacturing Price": 10,
-            "Sale Price": 125,
-            "Gross Sales": 347875,
-            "Discounts": 2278.75,
-            "Sales": 345596.25,
-            "COGS": 218760,
-            "Profit": 126836.25,
-            "Date": "7/1/19",
-            "Month Name": "July",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "2684",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 40260,
-            "Discounts": 112.05,
-            "Sales": 40147.95,
-            "COGS": 7470,
-            "Profit": 32677.95,
-            "Date": "9/1/19",
-            "Month Name": "September",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "4393",
-            "Manufacturing Price": 10,
-            "Sale Price": 12,
-            "Gross Sales": 52716,
-            "Discounts": 91.92,
-            "Sales": 52624.08,
-            "COGS": 2298,
-            "Profit": 50326.08,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "4083",
-            "Manufacturing Price": 10,
-            "Sale Price": 300,
-            "Gross Sales": 1224900,
-            "Discounts": 8715,
-            "Sales": 1216185,
-            "COGS": 726250,
-            "Profit": 489935,
-            "Date": "11/1/19",
-            "Month Name": "November",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "2816",
-            "Manufacturing Price": 10,
-            "Sale Price": 350,
-            "Gross Sales": 985600,
-            "Discounts": 7542.5,
-            "Sales": 978057.5,
-            "COGS": 560300,
-            "Profit": 417757.5,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Burlington",
-            "Units Sold": "4294",
-            "Manufacturing Price": 120,
-            "Sale Price": 20,
-            "Gross Sales": 85880,
-            "Discounts": 772.8,
-            "Sales": 85107.2,
-            "COGS": 38640,
-            "Profit": 46467.2,
-            "Date": "4/1/19",
-            "Month Name": "April",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Burlington",
-            "Units Sold": "2856",
-            "Manufacturing Price": 120,
-            "Sale Price": 7,
-            "Gross Sales": 19992,
-            "Discounts": 25.34,
-            "Sales": 19966.66,
-            "COGS": 1810,
-            "Profit": 18156.66,
-            "Date": "5/1/19",
-            "Month Name": "May",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Burlington",
-            "Units Sold": "1407",
-            "Manufacturing Price": 120,
-            "Sale Price": 125,
-            "Gross Sales": 175875,
-            "Discounts": 1153.75,
-            "Sales": 174721.25,
-            "COGS": 110760,
-            "Profit": 63961.25,
-            "Date": "8/1/19",
-            "Month Name": "August",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Burlington",
-            "Units Sold": "3850",
-            "Manufacturing Price": 120,
-            "Sale Price": 125,
-            "Gross Sales": 481250,
-            "Discounts": 828.75,
-            "Sales": 480421.25,
-            "COGS": 79560,
-            "Profit": 400861.25,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Burlington",
-            "Units Sold": "2856",
-            "Manufacturing Price": 120,
-            "Sale Price": 7,
-            "Gross Sales": 19992,
-            "Discounts": 146.44,
-            "Sales": 19845.56,
-            "COGS": 10460,
-            "Profit": 9385.56,
-            "Date": "11/1/18",
-            "Month Name": "November",
-            "Year": "2018"
-        },
-        {
-            "Country": "India",
-            "Product": "Mandarin",
-            "Units Sold": "1265",
-            "Manufacturing Price": 250,
-            "Sale Price": 7,
-            "Gross Sales": 8855,
-            "Discounts": 18.41,
-            "Sales": 8836.59,
-            "COGS": 1315,
-            "Profit": 7521.59,
-            "Date": "3/1/19",
-            "Month Name": "March",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Mandarin",
-            "Units Sold": "3892",
-            "Manufacturing Price": 250,
-            "Sale Price": 350,
-            "Gross Sales": 1362200,
-            "Discounts": 3302.25,
-            "Sales": 1358897.75,
-            "COGS": 245310,
-            "Profit": 1113587.75,
-            "Date": "4/1/19",
-            "Month Name": "April",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Mandarin",
-            "Units Sold": "3068",
-            "Manufacturing Price": 250,
-            "Sale Price": 125,
-            "Gross Sales": 383500,
-            "Discounts": 908.75,
-            "Sales": 382591.25,
-            "COGS": 87240,
-            "Profit": 295351.25,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Mandarin",
-            "Units Sold": "2181",
-            "Manufacturing Price": 250,
-            "Sale Price": 125,
-            "Gross Sales": 272625,
-            "Discounts": 983.75,
-            "Sales": 271641.25,
-            "COGS": 94440,
-            "Profit": 177201.25,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Mandarin",
-            "Units Sold": "1356",
-            "Manufacturing Price": 250,
-            "Sale Price": 300,
-            "Gross Sales": 406800,
-            "Discounts": 2958,
-            "Sales": 403842,
-            "COGS": 246500,
-            "Profit": 157342,
-            "Date": "9/1/19",
-            "Month Name": "September",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Mandarin",
-            "Units Sold": "2545",
-            "Manufacturing Price": 250,
-            "Sale Price": 300,
-            "Gross Sales": 763500,
-            "Discounts": 1482,
-            "Sales": 762018,
-            "COGS": 123500,
-            "Profit": 638518,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Mandarin",
-            "Units Sold": "1814",
-            "Manufacturing Price": 250,
-            "Sale Price": 350,
-            "Gross Sales": 634900,
-            "Discounts": 4889.5,
-            "Sales": 630010.5,
-            "COGS": 363220,
-            "Profit": 266790.5,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Mandarin",
-            "Units Sold": "1495",
-            "Manufacturing Price": 250,
-            "Sale Price": 125,
-            "Gross Sales": 186875,
-            "Discounts": 2180,
-            "Sales": 184695,
-            "COGS": 209280,
-            "Profit": 24585,
-            "Date": "11/1/19",
-            "Month Name": "November",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Luxe",
-            "Units Sold": "1154",
-            "Manufacturing Price": 260,
-            "Sale Price": 12,
-            "Gross Sales": 13848,
-            "Discounts": 238.68,
-            "Sales": 13609.32,
-            "COGS": 5967,
-            "Profit": 7642.32,
-            "Date": "9/1/18",
-            "Month Name": "September",
-            "Year": "2018"
-        },
-        {
-            "Country": "UK",
-            "Product": "Luxe",
-            "Units Sold": "4180",
-            "Manufacturing Price": 260,
-            "Sale Price": 15,
-            "Gross Sales": 62700,
-            "Discounts": 48.15,
-            "Sales": 62651.85,
-            "COGS": 3210,
-            "Profit": 59441.85,
-            "Date": "11/1/18",
-            "Month Name": "November",
-            "Year": "2018"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Kensington",
-            "Units Sold": "1463",
-            "Manufacturing Price": 3,
-            "Sale Price": 125,
-            "Gross Sales": 182875,
-            "Discounts": 1856.25,
-            "Sales": 181018.75,
-            "COGS": 89100,
-            "Profit": 91918.75,
-            "Date": "4/1/19",
-            "Month Name": "April",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Kensington",
-            "Units Sold": "215",
-            "Manufacturing Price": 3,
-            "Sale Price": 12,
-            "Gross Sales": 2580,
-            "Discounts": 310.8,
-            "Sales": 2269.2,
-            "COGS": 3885,
-            "Profit": 1615.8,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Kensington",
-            "Units Sold": "4099",
-            "Manufacturing Price": 3,
-            "Sale Price": 300,
-            "Gross Sales": 1229700,
-            "Discounts": 1284,
-            "Sales": 1228416,
-            "COGS": 53500,
-            "Profit": 1174916,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "UK",
-            "Product": "Kensington",
-            "Units Sold": "2660",
-            "Manufacturing Price": 3,
-            "Sale Price": 7,
-            "Gross Sales": 18620,
-            "Discounts": 300.3,
-            "Sales": 18319.7,
-            "COGS": 10725,
-            "Profit": 7594.7,
-            "Date": "11/1/18",
-            "Month Name": "November",
-            "Year": "2018"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Kensington",
-            "Units Sold": "566",
-            "Manufacturing Price": 3,
-            "Sale Price": 350,
-            "Gross Sales": 198100,
-            "Discounts": 19964,
-            "Sales": 178136,
-            "COGS": 741520,
-            "Profit": 563384,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Royal Oak",
-            "Units Sold": "3255",
-            "Manufacturing Price": 5,
-            "Sale Price": 12,
-            "Gross Sales": 39060,
-            "Discounts": 274.08,
-            "Sales": 38785.92,
-            "COGS": 3426,
-            "Profit": 35359.92,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Royal Oak",
-            "Units Sold": "772",
-            "Manufacturing Price": 5,
-            "Sale Price": 20,
-            "Gross Sales": 15440,
-            "Discounts": 626.4,
-            "Sales": 14813.6,
-            "COGS": 15660,
-            "Profit": 846.4,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Royal Oak",
-            "Units Sold": "1135",
-            "Manufacturing Price": 5,
-            "Sale Price": 12,
-            "Gross Sales": 13620,
-            "Discounts": 165.6,
-            "Sales": 13454.4,
-            "COGS": 2070,
-            "Profit": 11384.4,
-            "Date": "11/1/19",
-            "Month Name": "November",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Royal Oak",
-            "Units Sold": "3826",
-            "Manufacturing Price": 5,
-            "Sale Price": 125,
-            "Gross Sales": 478250,
-            "Discounts": 4150,
-            "Sales": 474100,
-            "COGS": 199200,
-            "Profit": 274900,
-            "Date": "11/1/18",
-            "Month Name": "November",
-            "Year": "2018"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "1193",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 17895,
-            "Discounts": 708.9,
-            "Sales": 17186.1,
-            "COGS": 23630,
-            "Profit": 6443.9,
-            "Date": "2/1/19",
-            "Month Name": "February",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "2530",
-            "Manufacturing Price": 10,
-            "Sale Price": 300,
-            "Gross Sales": 759000,
-            "Discounts": 5508,
-            "Sales": 753492,
-            "COGS": 229500,
-            "Profit": 523992,
-            "Date": "5/1/19",
-            "Month Name": "May",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "3451",
-            "Manufacturing Price": 10,
-            "Sale Price": 300,
-            "Gross Sales": 1035300,
-            "Discounts": 10368,
-            "Sales": 1024932,
-            "COGS": 432000,
-            "Profit": 592932,
-            "Date": "5/1/19",
-            "Month Name": "May",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "3059",
-            "Manufacturing Price": 10,
-            "Sale Price": 12,
-            "Gross Sales": 36708,
-            "Discounts": 274.08,
-            "Sales": 36433.92,
-            "COGS": 3426,
-            "Profit": 33007.92,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "3957",
-            "Manufacturing Price": 10,
-            "Sale Price": 125,
-            "Gross Sales": 494625,
-            "Discounts": 1655,
-            "Sales": 492970,
-            "COGS": 79440,
-            "Profit": 413530,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "3444",
-            "Manufacturing Price": 10,
-            "Sale Price": 12,
-            "Gross Sales": 41328,
-            "Discounts": 310.8,
-            "Sales": 41017.2,
-            "COGS": 3885,
-            "Profit": 37132.2,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "4388",
-            "Manufacturing Price": 10,
-            "Sale Price": 125,
-            "Gross Sales": 548500,
-            "Discounts": 2022.5,
-            "Sales": 546477.5,
-            "COGS": 97080,
-            "Profit": 449397.5,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "2106",
-            "Manufacturing Price": 10,
-            "Sale Price": 125,
-            "Gross Sales": 263250,
-            "Discounts": 5362.5,
-            "Sales": 257887.5,
-            "COGS": 257400,
-            "Profit": 487.5,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "799",
-            "Manufacturing Price": 10,
-            "Sale Price": 12,
-            "Gross Sales": 9588,
-            "Discounts": 428.4,
-            "Sales": 9159.6,
-            "COGS": 5355,
-            "Profit": 3804.6,
-            "Date": "11/1/18",
-            "Month Name": "November",
-            "Year": "2018"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "3154",
-            "Manufacturing Price": 10,
-            "Sale Price": 300,
-            "Gross Sales": 946200,
-            "Discounts": 11496,
-            "Sales": 934704,
-            "COGS": 479000,
-            "Profit": 455704,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "4108",
-            "Manufacturing Price": 10,
-            "Sale Price": 350,
-            "Gross Sales": 1437800,
-            "Discounts": 19964,
-            "Sales": 1417836,
-            "COGS": 741520,
-            "Profit": 676316,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "3760",
-            "Manufacturing Price": 10,
-            "Sale Price": 125,
-            "Gross Sales": 470000,
-            "Discounts": 6822.5,
-            "Sales": 463177.5,
-            "COGS": 327480,
-            "Profit": 135697.5,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "377",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 5655,
-            "Discounts": 577.5,
-            "Sales": 5077.5,
-            "COGS": 19250,
-            "Profit": 14172.5,
-            "Date": "12/1/18",
-            "Month Name": "December",
-            "Year": "2018"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "2110",
-            "Manufacturing Price": 10,
-            "Sale Price": 7,
-            "Gross Sales": 14770,
-            "Discounts": 281.82,
-            "Sales": 14488.18,
-            "COGS": 10065,
-            "Profit": 4423.18,
-            "Date": "12/1/18",
-            "Month Name": "December",
-            "Year": "2018"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "2334",
-            "Manufacturing Price": 10,
-            "Sale Price": 12,
-            "Gross Sales": 28008,
-            "Discounts": 253.2,
-            "Sales": 27754.8,
-            "COGS": 3165,
-            "Profit": 24589.8,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "580",
-            "Manufacturing Price": 10,
-            "Sale Price": 12,
-            "Gross Sales": 6960,
-            "Discounts": 260.16,
-            "Sales": 6699.84,
-            "COGS": 3252,
-            "Profit": 3447.84,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Burlington",
-            "Units Sold": "2610",
-            "Manufacturing Price": 120,
-            "Sale Price": 20,
-            "Gross Sales": 52200,
-            "Discounts": 626.4,
-            "Sales": 51573.6,
-            "COGS": 15660,
-            "Profit": 35913.6,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Burlington",
-            "Units Sold": "1598",
-            "Manufacturing Price": 120,
-            "Sale Price": 350,
-            "Gross Sales": 559300,
-            "Discounts": 20762,
-            "Sales": 538538,
-            "COGS": 771160,
-            "Profit": 232622,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "India",
-            "Product": "Burlington",
-            "Units Sold": "1459",
-            "Manufacturing Price": 120,
-            "Sale Price": 350,
-            "Gross Sales": 510650,
-            "Discounts": 20139,
-            "Sales": 490511,
-            "COGS": 748020,
-            "Profit": 257509,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Burlington",
-            "Units Sold": "3284",
-            "Manufacturing Price": 120,
-            "Sale Price": 125,
-            "Gross Sales": 410500,
-            "Discounts": 2022.5,
-            "Sales": 408477.5,
-            "COGS": 97080,
-            "Profit": 311397.5,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Burlington",
-            "Units Sold": "1197",
-            "Manufacturing Price": 120,
-            "Sale Price": 125,
-            "Gross Sales": 149625,
-            "Discounts": 5362.5,
-            "Sales": 144262.5,
-            "COGS": 257400,
-            "Profit": 113137.5,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "UK",
-            "Product": "Burlington",
-            "Units Sold": "3774",
-            "Manufacturing Price": 120,
-            "Sale Price": 12,
-            "Gross Sales": 45288,
-            "Discounts": 253.2,
-            "Sales": 45034.8,
-            "COGS": 3165,
-            "Profit": 41869.8,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Burlington",
-            "Units Sold": "2303",
-            "Manufacturing Price": 120,
-            "Sale Price": 20,
-            "Gross Sales": 46060,
-            "Discounts": 217.6,
-            "Sales": 45842.4,
-            "COGS": 5440,
-            "Profit": 40402.4,
-            "Date": "12/1/18",
-            "Month Name": "December",
-            "Year": "2018"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Burlington",
-            "Units Sold": "2572",
-            "Manufacturing Price": 120,
-            "Sale Price": 12,
-            "Gross Sales": 30864,
-            "Discounts": 260.16,
-            "Sales": 30603.84,
-            "COGS": 3252,
-            "Profit": 27351.84,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Mandarin",
-            "Units Sold": "320",
-            "Manufacturing Price": 250,
-            "Sale Price": 125,
-            "Gross Sales": 40000,
-            "Discounts": 1655,
-            "Sales": 38345,
-            "COGS": 79440,
-            "Profit": 41095,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Mandarin",
-            "Units Sold": "2126",
-            "Manufacturing Price": 250,
-            "Sale Price": 300,
-            "Gross Sales": 637800,
-            "Discounts": 1284,
-            "Sales": 636516,
-            "COGS": 53500,
-            "Profit": 583016,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "India",
-            "Product": "Mandarin",
-            "Units Sold": "3275",
-            "Manufacturing Price": 250,
-            "Sale Price": 350,
-            "Gross Sales": 1146250,
-            "Discounts": 20139,
-            "Sales": 1126111,
-            "COGS": 748020,
-            "Profit": 378091,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Mandarin",
-            "Units Sold": "3582",
-            "Manufacturing Price": 250,
-            "Sale Price": 125,
-            "Gross Sales": 447750,
-            "Discounts": 6822.5,
-            "Sales": 440927.5,
-            "COGS": 327480,
-            "Profit": 113447.5,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Mandarin",
-            "Units Sold": "783",
-            "Manufacturing Price": 250,
-            "Sale Price": 350,
-            "Gross Sales": 274050,
-            "Discounts": 1862,
-            "Sales": 272188,
-            "COGS": 69160,
-            "Profit": 203028,
-            "Date": "12/1/18",
-            "Month Name": "December",
-            "Year": "2018"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Mandarin",
-            "Units Sold": "1202",
-            "Manufacturing Price": 250,
-            "Sale Price": 350,
-            "Gross Sales": 420700,
-            "Discounts": 13580,
-            "Sales": 407120,
-            "COGS": 504400,
-            "Profit": 97280,
-            "Date": "12/1/18",
-            "Month Name": "December",
-            "Year": "2018"
-        },
-        {
-            "Country": "India",
-            "Product": "Luxe",
-            "Units Sold": "4056",
-            "Manufacturing Price": 260,
-            "Sale Price": 300,
-            "Gross Sales": 1216800,
-            "Discounts": 1554,
-            "Sales": 1215246,
-            "COGS": 64750,
-            "Profit": 1150496,
-            "Date": "3/1/19",
-            "Month Name": "March",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Luxe",
-            "Units Sold": "2144",
-            "Manufacturing Price": 260,
-            "Sale Price": 300,
-            "Gross Sales": 643200,
-            "Discounts": 6606,
-            "Sales": 636594,
-            "COGS": 275250,
-            "Profit": 361344,
-            "Date": "3/1/19",
-            "Month Name": "March",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Luxe",
-            "Units Sold": "3502",
-            "Manufacturing Price": 260,
-            "Sale Price": 125,
-            "Gross Sales": 437750,
-            "Discounts": 5690,
-            "Sales": 432060,
-            "COGS": 273120,
-            "Profit": 158940,
-            "Date": "5/1/19",
-            "Month Name": "May",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Luxe",
-            "Units Sold": "1397",
-            "Manufacturing Price": 260,
-            "Sale Price": 350,
-            "Gross Sales": 488950,
-            "Discounts": 20762,
-            "Sales": 468188,
-            "COGS": 771160,
-            "Profit": 302972,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "USA",
-            "Product": "Luxe",
-            "Units Sold": "679",
-            "Manufacturing Price": 260,
-            "Sale Price": 20,
-            "Gross Sales": 13580,
-            "Discounts": 494.4,
-            "Sales": 13085.6,
-            "COGS": 12360,
-            "Profit": 725.6,
-            "Date": "11/1/19",
-            "Month Name": "November",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Luxe",
-            "Units Sold": "2351",
-            "Manufacturing Price": 260,
-            "Sale Price": 20,
-            "Gross Sales": 47020,
-            "Discounts": 376.4,
-            "Sales": 46643.6,
-            "COGS": 9410,
-            "Profit": 37233.6,
-            "Date": "11/1/19",
-            "Month Name": "November",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Luxe",
-            "Units Sold": "2043",
-            "Manufacturing Price": 260,
-            "Sale Price": 300,
-            "Gross Sales": 612900,
-            "Discounts": 11496,
-            "Sales": 601404,
-            "COGS": 479000,
-            "Profit": 122404,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Kensington",
-            "Units Sold": "3565",
-            "Manufacturing Price": 3,
-            "Sale Price": 125,
-            "Gross Sales": 445625,
-            "Discounts": 15913.13,
-            "Sales": 429711.88,
-            "COGS": 509220,
-            "Profit": 79508.13,
-            "Date": "4/1/19",
-            "Month Name": "April",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Kensington",
-            "Units Sold": "1401",
-            "Manufacturing Price": 3,
-            "Sale Price": 20,
-            "Gross Sales": 28020,
-            "Discounts": 1548,
-            "Sales": 26472,
-            "COGS": 25800,
-            "Profit": 672,
-            "Date": "4/1/19",
-            "Month Name": "April",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Kensington",
-            "Units Sold": "2077",
-            "Manufacturing Price": 3,
-            "Sale Price": 300,
-            "Gross Sales": 623100,
-            "Discounts": 6201,
-            "Sales": 616899,
-            "COGS": 172250,
-            "Profit": 444649,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Kensington",
-            "Units Sold": "3643",
-            "Manufacturing Price": 3,
-            "Sale Price": 12,
-            "Gross Sales": 43716,
-            "Discounts": 700.92,
-            "Sales": 43015.08,
-            "COGS": 5841,
-            "Profit": 37174.08,
-            "Date": "9/1/19",
-            "Month Name": "September",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Kensington",
-            "Units Sold": "1105",
-            "Manufacturing Price": 3,
-            "Sale Price": 12,
-            "Gross Sales": 13260,
-            "Discounts": 326.88,
-            "Sales": 12933.12,
-            "COGS": 2724,
-            "Profit": 10209.12,
-            "Date": "12/1/18",
-            "Month Name": "December",
-            "Year": "2018"
-        },
-        {
-            "Country": "India",
-            "Product": "Royal Oak",
-            "Units Sold": "2960",
-            "Manufacturing Price": 5,
-            "Sale Price": 7,
-            "Gross Sales": 20720,
-            "Discounts": 411.18,
-            "Sales": 20308.82,
-            "COGS": 9790,
-            "Profit": 10518.82,
-            "Date": "2/1/19",
-            "Month Name": "February",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Royal Oak",
-            "Units Sold": "1201",
-            "Manufacturing Price": 5,
-            "Sale Price": 12,
-            "Gross Sales": 14412,
-            "Discounts": 684.36,
-            "Sales": 13727.64,
-            "COGS": 5703,
-            "Profit": 8024.64,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Royal Oak",
-            "Units Sold": "2321",
-            "Manufacturing Price": 5,
-            "Sale Price": 7,
-            "Gross Sales": 16247,
-            "Discounts": 114.24,
-            "Sales": 16132.76,
-            "COGS": 2720,
-            "Profit": 13412.76,
-            "Date": "9/1/19",
-            "Month Name": "September",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Royal Oak",
-            "Units Sold": "3640",
-            "Manufacturing Price": 5,
-            "Sale Price": 350,
-            "Gross Sales": 1274000,
-            "Discounts": 18868.5,
-            "Sales": 1255131.5,
-            "COGS": 467220,
-            "Profit": 787911.5,
-            "Date": "9/1/18",
-            "Month Name": "September",
-            "Year": "2018"
-        },
-        {
-            "Country": "UK",
-            "Product": "Royal Oak",
-            "Units Sold": "3972",
-            "Manufacturing Price": 5,
-            "Sale Price": 125,
-            "Gross Sales": 496500,
-            "Discounts": 4826.25,
-            "Sales": 491673.75,
-            "COGS": 154440,
-            "Profit": 337233.75,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Royal Oak",
-            "Units Sold": "3878",
-            "Manufacturing Price": 5,
-            "Sale Price": 125,
-            "Gross Sales": 484750,
-            "Discounts": 6397.5,
-            "Sales": 478352.5,
-            "COGS": 204720,
-            "Profit": 273632.5,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "2278",
-            "Manufacturing Price": 10,
-            "Sale Price": 300,
-            "Gross Sales": 683400,
-            "Discounts": 21910.5,
-            "Sales": 661489.5,
-            "COGS": 608625,
-            "Profit": 52864.5,
-            "Date": "1/1/19",
-            "Month Name": "January",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "1075",
-            "Manufacturing Price": 10,
-            "Sale Price": 125,
-            "Gross Sales": 134375,
-            "Discounts": 6652.5,
-            "Sales": 127722.5,
-            "COGS": 212880,
-            "Profit": 85157.5,
-            "Date": "3/1/19",
-            "Month Name": "March",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "4050",
-            "Manufacturing Price": 10,
-            "Sale Price": 12,
-            "Gross Sales": 48600,
-            "Discounts": 684.36,
-            "Sales": 47915.64,
-            "COGS": 5703,
-            "Profit": 42212.64,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "3035",
-            "Manufacturing Price": 10,
-            "Sale Price": 300,
-            "Gross Sales": 910500,
-            "Discounts": 6201,
-            "Sales": 904299,
-            "COGS": 172250,
-            "Profit": 732049,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "3636",
-            "Manufacturing Price": 10,
-            "Sale Price": 125,
-            "Gross Sales": 454500,
-            "Discounts": 5887.5,
-            "Sales": 448612.5,
-            "COGS": 188400,
-            "Profit": 260212.5,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "1379",
-            "Manufacturing Price": 10,
-            "Sale Price": 12,
-            "Gross Sales": 16548,
-            "Discounts": 493.02,
-            "Sales": 16054.98,
-            "COGS": 4108.5,
-            "Profit": 11946.48,
-            "Date": "7/1/19",
-            "Month Name": "July",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "4492",
-            "Manufacturing Price": 10,
-            "Sale Price": 125,
-            "Gross Sales": 561500,
-            "Discounts": 7533.75,
-            "Sales": 553966.25,
-            "COGS": 241080,
-            "Profit": 312886.25,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "764",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 11460,
-            "Discounts": 875.25,
-            "Sales": 10584.75,
-            "COGS": 19450,
-            "Profit": 8865.25,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "1744",
-            "Manufacturing Price": 10,
-            "Sale Price": 125,
-            "Gross Sales": 218000,
-            "Discounts": 4826.25,
-            "Sales": 213173.75,
-            "COGS": 154440,
-            "Profit": 58733.75,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "2341",
-            "Manufacturing Price": 10,
-            "Sale Price": 125,
-            "Gross Sales": 292625,
-            "Discounts": 6397.5,
-            "Sales": 286227.5,
-            "COGS": 204720,
-            "Profit": 81507.5,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Burlington",
-            "Units Sold": "3835",
-            "Manufacturing Price": 120,
-            "Sale Price": 125,
-            "Gross Sales": 479375,
-            "Discounts": 7533.75,
-            "Sales": 471841.25,
-            "COGS": 241080,
-            "Profit": 230761.25,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Mandarin",
-            "Units Sold": "1161",
-            "Manufacturing Price": 250,
-            "Sale Price": 300,
-            "Gross Sales": 348300,
-            "Discounts": 25596,
-            "Sales": 322704,
-            "COGS": 711000,
-            "Profit": 388296,
-            "Date": "2/1/19",
-            "Month Name": "February",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Mandarin",
-            "Units Sold": "876",
-            "Manufacturing Price": 250,
-            "Sale Price": 12,
-            "Gross Sales": 10512,
-            "Discounts": 689.76,
-            "Sales": 9822.24,
-            "COGS": 5748,
-            "Profit": 4074.24,
-            "Date": "4/1/19",
-            "Month Name": "April",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Mandarin",
-            "Units Sold": "1705",
-            "Manufacturing Price": 250,
-            "Sale Price": 125,
-            "Gross Sales": 213125,
-            "Discounts": 5887.5,
-            "Sales": 207237.5,
-            "COGS": 188400,
-            "Profit": 18837.5,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Mandarin",
-            "Units Sold": "1805",
-            "Manufacturing Price": 250,
-            "Sale Price": 300,
-            "Gross Sales": 541500,
-            "Discounts": 16866,
-            "Sales": 524634,
-            "COGS": 468500,
-            "Profit": 56134,
-            "Date": "8/1/19",
-            "Month Name": "August",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Mandarin",
-            "Units Sold": "389",
-            "Manufacturing Price": 250,
-            "Sale Price": 350,
-            "Gross Sales": 136150,
-            "Discounts": 17241,
-            "Sales": 118909,
-            "COGS": 426920,
-            "Profit": 308011,
-            "Date": "8/1/19",
-            "Month Name": "August",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Mandarin",
-            "Units Sold": "2745",
-            "Manufacturing Price": 250,
-            "Sale Price": 15,
-            "Gross Sales": 41175,
-            "Discounts": 875.25,
-            "Sales": 40299.75,
-            "COGS": 19450,
-            "Profit": 20849.75,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Kensington",
-            "Units Sold": "1459",
-            "Manufacturing Price": 3,
-            "Sale Price": 20,
-            "Gross Sales": 29180,
-            "Discounts": 498.6,
-            "Sales": 28681.4,
-            "COGS": 8310,
-            "Profit": 20371.4,
-            "Date": "5/1/19",
-            "Month Name": "May",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "3938",
-            "Manufacturing Price": 10,
-            "Sale Price": 7,
-            "Gross Sales": 27566,
-            "Discounts": 369.6,
-            "Sales": 27196.4,
-            "COGS": 8800,
-            "Profit": 18396.4,
-            "Date": "9/1/18",
-            "Month Name": "September",
-            "Year": "2018"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Burlington",
-            "Units Sold": "4236",
-            "Manufacturing Price": 120,
-            "Sale Price": 20,
-            "Gross Sales": 84720,
-            "Discounts": 2310.3,
-            "Sales": 82409.7,
-            "COGS": 38505,
-            "Profit": 43904.7,
-            "Date": "4/1/19",
-            "Month Name": "April",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Mandarin",
-            "Units Sold": "3627",
-            "Manufacturing Price": 250,
-            "Sale Price": 12,
-            "Gross Sales": 43524,
-            "Discounts": 892.44,
-            "Sales": 42631.56,
-            "COGS": 7437,
-            "Profit": 35194.56,
-            "Date": "1/1/19",
-            "Month Name": "January",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Royal Oak",
-            "Units Sold": "1756",
-            "Manufacturing Price": 5,
-            "Sale Price": 15,
-            "Gross Sales": 26340,
-            "Discounts": 1218.6,
-            "Sales": 25121.4,
-            "COGS": 20310,
-            "Profit": 4811.4,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "307",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 4605,
-            "Discounts": 1218.6,
-            "Sales": 3386.4,
-            "COGS": 20310,
-            "Profit": 16923.6,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "4489",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 67335,
-            "Discounts": 1356.6,
-            "Sales": 65978.4,
-            "COGS": 22610,
-            "Profit": 43368.4,
-            "Date": "12/1/18",
-            "Month Name": "December",
-            "Year": "2018"
-        },
-        {
-            "Country": "USA",
-            "Product": "Burlington",
-            "Units Sold": "2167",
-            "Manufacturing Price": 120,
-            "Sale Price": 20,
-            "Gross Sales": 43340,
-            "Discounts": 588.8,
-            "Sales": 42751.2,
-            "COGS": 7360,
-            "Profit": 35391.2,
-            "Date": "9/1/18",
-            "Month Name": "September",
-            "Year": "2018"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Kensington",
-            "Units Sold": "1137",
-            "Manufacturing Price": 3,
-            "Sale Price": 7,
-            "Gross Sales": 7959,
-            "Discounts": 798.28,
-            "Sales": 7160.72,
-            "COGS": 14255,
-            "Profit": 7094.28,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "India",
-            "Product": "Kensington",
-            "Units Sold": "1222",
-            "Manufacturing Price": 3,
-            "Sale Price": 300,
-            "Gross Sales": 366600,
-            "Discounts": 24252,
-            "Sales": 342348,
-            "COGS": 505250,
-            "Profit": 162902,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Kensington",
-            "Units Sold": "489",
-            "Manufacturing Price": 3,
-            "Sale Price": 350,
-            "Gross Sales": 171150,
-            "Discounts": 3836,
-            "Sales": 167314,
-            "COGS": 71240,
-            "Profit": 96074,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Royal Oak",
-            "Units Sold": "4133",
-            "Manufacturing Price": 5,
-            "Sale Price": 15,
-            "Gross Sales": 61995,
-            "Discounts": 1180.2,
-            "Sales": 60814.8,
-            "COGS": 19670,
-            "Profit": 41144.8,
-            "Date": "3/1/19",
-            "Month Name": "March",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Royal Oak",
-            "Units Sold": "2743",
-            "Manufacturing Price": 5,
-            "Sale Price": 300,
-            "Gross Sales": 822900,
-            "Discounts": 22308,
-            "Sales": 800592,
-            "COGS": 464750,
-            "Profit": 335842,
-            "Date": "8/1/19",
-            "Month Name": "August",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Royal Oak",
-            "Units Sold": "3699",
-            "Manufacturing Price": 5,
-            "Sale Price": 7,
-            "Gross Sales": 25893,
-            "Discounts": 798.28,
-            "Sales": 25094.72,
-            "COGS": 14255,
-            "Profit": 10839.72,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "India",
-            "Product": "Royal Oak",
-            "Units Sold": "4460",
-            "Manufacturing Price": 5,
-            "Sale Price": 300,
-            "Gross Sales": 1338000,
-            "Discounts": 24252,
-            "Sales": 1313748,
-            "COGS": 505250,
-            "Profit": 808498,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Royal Oak",
-            "Units Sold": "1232",
-            "Manufacturing Price": 5,
-            "Sale Price": 125,
-            "Gross Sales": 154000,
-            "Discounts": 5690,
-            "Sales": 148310,
-            "COGS": 136560,
-            "Profit": 11750,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "2586",
-            "Manufacturing Price": 10,
-            "Sale Price": 7,
-            "Gross Sales": 18102,
-            "Discounts": 1190.28,
-            "Sales": 16911.72,
-            "COGS": 21255,
-            "Profit": 4343.28,
-            "Date": "1/1/19",
-            "Month Name": "January",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "1332",
-            "Manufacturing Price": 10,
-            "Sale Price": 125,
-            "Gross Sales": 166500,
-            "Discounts": 3975,
-            "Sales": 162525,
-            "COGS": 95400,
-            "Profit": 67125,
-            "Date": "3/1/19",
-            "Month Name": "March",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "4487",
-            "Manufacturing Price": 10,
-            "Sale Price": 300,
-            "Gross Sales": 1346100,
-            "Discounts": 16974,
-            "Sales": 1329126,
-            "COGS": 353625,
-            "Profit": 975501,
-            "Date": "4/1/19",
-            "Month Name": "April",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "3862",
-            "Manufacturing Price": 10,
-            "Sale Price": 300,
-            "Gross Sales": 1158600,
-            "Discounts": 35016,
-            "Sales": 1123584,
-            "COGS": 729500,
-            "Profit": 394084,
-            "Date": "5/1/19",
-            "Month Name": "May",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "1765",
-            "Manufacturing Price": 10,
-            "Sale Price": 350,
-            "Gross Sales": 617750,
-            "Discounts": 48300,
-            "Sales": 569450,
-            "COGS": 897000,
-            "Profit": 327550,
-            "Date": "7/1/19",
-            "Month Name": "July",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "3533",
-            "Manufacturing Price": 10,
-            "Sale Price": 125,
-            "Gross Sales": 441625,
-            "Discounts": 14940,
-            "Sales": 426685,
-            "COGS": 358560,
-            "Profit": 68125,
-            "Date": "7/1/19",
-            "Month Name": "July",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "2016",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 30240,
-            "Discounts": 130.8,
-            "Sales": 30109.2,
-            "COGS": 2180,
-            "Profit": 27929.2,
-            "Date": "9/1/19",
-            "Month Name": "September",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "2938",
-            "Manufacturing Price": 10,
-            "Sale Price": 20,
-            "Gross Sales": 58760,
-            "Discounts": 1659.2,
-            "Sales": 57100.8,
-            "COGS": 20740,
-            "Profit": 36360.8,
-            "Date": "9/1/19",
-            "Month Name": "September",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "3352",
-            "Manufacturing Price": 10,
-            "Sale Price": 20,
-            "Gross Sales": 67040,
-            "Discounts": 844.8,
-            "Sales": 66195.2,
-            "COGS": 10560,
-            "Profit": 55635.2,
-            "Date": "9/1/19",
-            "Month Name": "September",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "4409",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 66135,
-            "Discounts": 402.6,
-            "Sales": 65732.4,
-            "COGS": 6710,
-            "Profit": 59022.4,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "3323",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 49845,
-            "Discounts": 908.4,
-            "Sales": 48936.6,
-            "COGS": 15140,
-            "Profit": 33796.6,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "2430",
-            "Manufacturing Price": 10,
-            "Sale Price": 350,
-            "Gross Sales": 850500,
-            "Discounts": 3836,
-            "Sales": 846664,
-            "COGS": 71240,
-            "Profit": 775424,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "535",
-            "Manufacturing Price": 10,
-            "Sale Price": 125,
-            "Gross Sales": 66875,
-            "Discounts": 5690,
-            "Sales": 61185,
-            "COGS": 136560,
-            "Profit": 75375,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Burlington",
-            "Units Sold": "1523",
-            "Manufacturing Price": 120,
-            "Sale Price": 12,
-            "Gross Sales": 18276,
-            "Discounts": 703.2,
-            "Sales": 17572.8,
-            "COGS": 4395,
-            "Profit": 13177.8,
-            "Date": "3/1/19",
-            "Month Name": "March",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Burlington",
-            "Units Sold": "3631",
-            "Manufacturing Price": 120,
-            "Sale Price": 20,
-            "Gross Sales": 72620,
-            "Discounts": 2116.8,
-            "Sales": 70503.2,
-            "COGS": 26460,
-            "Profit": 44043.2,
-            "Date": "9/1/18",
-            "Month Name": "September",
-            "Year": "2018"
-        },
-        {
-            "Country": "UK",
-            "Product": "Burlington",
-            "Units Sold": "1782",
-            "Manufacturing Price": 120,
-            "Sale Price": 350,
-            "Gross Sales": 623700,
-            "Discounts": 30478,
-            "Sales": 593222,
-            "COGS": 566020,
-            "Profit": 27202,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Mandarin",
-            "Units Sold": "347",
-            "Manufacturing Price": 250,
-            "Sale Price": 12,
-            "Gross Sales": 4164,
-            "Discounts": 415.68,
-            "Sales": 3748.32,
-            "COGS": 2598,
-            "Profit": 1150.32,
-            "Date": "5/1/19",
-            "Month Name": "May",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Mandarin",
-            "Units Sold": "4147",
-            "Manufacturing Price": 250,
-            "Sale Price": 350,
-            "Gross Sales": 1451450,
-            "Discounts": 4886,
-            "Sales": 1446564,
-            "COGS": 90740,
-            "Profit": 1355824,
-            "Date": "9/1/18",
-            "Month Name": "September",
-            "Year": "2018"
-        },
-        {
-            "Country": "UK",
-            "Product": "Mandarin",
-            "Units Sold": "3509",
-            "Manufacturing Price": 250,
-            "Sale Price": 350,
-            "Gross Sales": 1228150,
-            "Discounts": 30478,
-            "Sales": 1197672,
-            "COGS": 566020,
-            "Profit": 631652,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Mandarin",
-            "Units Sold": "2774",
-            "Manufacturing Price": 250,
-            "Sale Price": 15,
-            "Gross Sales": 41610,
-            "Discounts": 908.4,
-            "Sales": 40701.6,
-            "COGS": 15140,
-            "Profit": 25561.6,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Luxe",
-            "Units Sold": "2943",
-            "Manufacturing Price": 260,
-            "Sale Price": 350,
-            "Gross Sales": 1030050,
-            "Discounts": 26110,
-            "Sales": 1003940,
-            "COGS": 484900,
-            "Profit": 519040,
-            "Date": "2/1/19",
-            "Month Name": "February",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Luxe",
-            "Units Sold": "4037",
-            "Manufacturing Price": 260,
-            "Sale Price": 125,
-            "Gross Sales": 504625,
-            "Discounts": 5370,
-            "Sales": 499255,
-            "COGS": 128880,
-            "Profit": 370375,
-            "Date": "4/1/19",
-            "Month Name": "April",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Luxe",
-            "Units Sold": "4146",
-            "Manufacturing Price": 260,
-            "Sale Price": 350,
-            "Gross Sales": 1451100,
-            "Discounts": 26698,
-            "Sales": 1424402,
-            "COGS": 495820,
-            "Profit": 928582,
-            "Date": "9/1/19",
-            "Month Name": "September",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Luxe",
-            "Units Sold": "4123",
-            "Manufacturing Price": 260,
-            "Sale Price": 15,
-            "Gross Sales": 61845,
-            "Discounts": 402.6,
-            "Sales": 61442.4,
-            "COGS": 6710,
-            "Profit": 54732.4,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Luxe",
-            "Units Sold": "1337",
-            "Manufacturing Price": 260,
-            "Sale Price": 350,
-            "Gross Sales": 467950,
-            "Discounts": 24892,
-            "Sales": 443058,
-            "COGS": 462280,
-            "Profit": 19222,
-            "Date": "12/1/18",
-            "Month Name": "December",
-            "Year": "2018"
-        },
-        {
-            "Country": "India",
-            "Product": "Royal Oak",
-            "Units Sold": "599",
-            "Manufacturing Price": 5,
-            "Sale Price": 7,
-            "Gross Sales": 4193,
-            "Discounts": 405.65,
-            "Sales": 3787.35,
-            "COGS": 5795,
-            "Profit": 2007.65,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "725",
-            "Manufacturing Price": 10,
-            "Sale Price": 7,
-            "Gross Sales": 5075,
-            "Discounts": 480.2,
-            "Sales": 4594.8,
-            "COGS": 6860,
-            "Profit": 2265.2,
-            "Date": "1/1/19",
-            "Month Name": "January",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "477",
-            "Manufacturing Price": 10,
-            "Sale Price": 7,
-            "Gross Sales": 3339,
-            "Discounts": 822.15,
-            "Sales": 2516.85,
-            "COGS": 11745,
-            "Profit": 9228.15,
-            "Date": "9/1/18",
-            "Month Name": "September",
-            "Year": "2018"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "2325",
-            "Manufacturing Price": 10,
-            "Sale Price": 7,
-            "Gross Sales": 16275,
-            "Discounts": 941.15,
-            "Sales": 15333.85,
-            "COGS": 13445,
-            "Profit": 1888.85,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "675",
-            "Manufacturing Price": 10,
-            "Sale Price": 12,
-            "Gross Sales": 8100,
-            "Discounts": 1458.6,
-            "Sales": 6641.4,
-            "COGS": 7293,
-            "Profit": 651.6,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Burlington",
-            "Units Sold": "2990",
-            "Manufacturing Price": 120,
-            "Sale Price": 12,
-            "Gross Sales": 35880,
-            "Discounts": 1458.6,
-            "Sales": 34421.4,
-            "COGS": 7293,
-            "Profit": 27128.4,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Mandarin",
-            "Units Sold": "1072",
-            "Manufacturing Price": 250,
-            "Sale Price": 7,
-            "Gross Sales": 7504,
-            "Discounts": 941.15,
-            "Sales": 6562.85,
-            "COGS": 13445,
-            "Profit": 6882.15,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Luxe",
-            "Units Sold": "1048",
-            "Manufacturing Price": 260,
-            "Sale Price": 7,
-            "Gross Sales": 7336,
-            "Discounts": 589.05,
-            "Sales": 6746.95,
-            "COGS": 8415,
-            "Profit": 1668.05,
-            "Date": "7/1/19",
-            "Month Name": "July",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Luxe",
-            "Units Sold": "469",
-            "Manufacturing Price": 260,
-            "Sale Price": 12,
-            "Gross Sales": 5628,
-            "Discounts": 673.8,
-            "Sales": 4954.2,
-            "COGS": 3369,
-            "Profit": 1585.2,
-            "Date": "8/1/19",
-            "Month Name": "August",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Luxe",
-            "Units Sold": "804",
-            "Manufacturing Price": 260,
-            "Sale Price": 7,
-            "Gross Sales": 5628,
-            "Discounts": 405.65,
-            "Sales": 5222.35,
-            "COGS": 5795,
-            "Profit": 572.65,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "UK",
-            "Product": "Kensington",
-            "Units Sold": "4240",
-            "Manufacturing Price": 3,
-            "Sale Price": 12,
-            "Gross Sales": 50880,
-            "Discounts": 1119,
-            "Sales": 49761,
-            "COGS": 5595,
-            "Profit": 44166,
-            "Date": "2/1/19",
-            "Month Name": "February",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Kensington",
-            "Units Sold": "1976",
-            "Manufacturing Price": 3,
-            "Sale Price": 12,
-            "Gross Sales": 23712,
-            "Discounts": 669.6,
-            "Sales": 23042.4,
-            "COGS": 3348,
-            "Profit": 19694.4,
-            "Date": "2/1/19",
-            "Month Name": "February",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Kensington",
-            "Units Sold": "1984",
-            "Manufacturing Price": 3,
-            "Sale Price": 20,
-            "Gross Sales": 39680,
-            "Discounts": 1563,
-            "Sales": 38117,
-            "COGS": 15630,
-            "Profit": 22487,
-            "Date": "5/1/19",
-            "Month Name": "May",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Kensington",
-            "Units Sold": "480",
-            "Manufacturing Price": 3,
-            "Sale Price": 300,
-            "Gross Sales": 144000,
-            "Discounts": 14865,
-            "Sales": 129135,
-            "COGS": 247750,
-            "Profit": 118615,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Kensington",
-            "Units Sold": "3551",
-            "Manufacturing Price": 3,
-            "Sale Price": 7,
-            "Gross Sales": 24857,
-            "Discounts": 355.6,
-            "Sales": 24501.4,
-            "COGS": 5080,
-            "Profit": 19421.4,
-            "Date": "11/1/18",
-            "Month Name": "November",
-            "Year": "2018"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Kensington",
-            "Units Sold": "1205",
-            "Manufacturing Price": 3,
-            "Sale Price": 15,
-            "Gross Sales": 18075,
-            "Discounts": 2093.25,
-            "Sales": 15981.75,
-            "COGS": 27910,
-            "Profit": 11928.25,
-            "Date": "11/1/19",
-            "Month Name": "November",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Kensington",
-            "Units Sold": "2480",
-            "Manufacturing Price": 3,
-            "Sale Price": 7,
-            "Gross Sales": 17360,
-            "Discounts": 199.5,
-            "Sales": 17160.5,
-            "COGS": 2850,
-            "Profit": 14310.5,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Kensington",
-            "Units Sold": "2926",
-            "Manufacturing Price": 3,
-            "Sale Price": 7,
-            "Gross Sales": 20482,
-            "Discounts": 870.45,
-            "Sales": 19611.55,
-            "COGS": 12435,
-            "Profit": 7176.55,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Royal Oak",
-            "Units Sold": "3210",
-            "Manufacturing Price": 5,
-            "Sale Price": 350,
-            "Gross Sales": 1123500,
-            "Discounts": 24228.75,
-            "Sales": 1099271.25,
-            "COGS": 359970,
-            "Profit": 739301.25,
-            "Date": "1/1/19",
-            "Month Name": "January",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Royal Oak",
-            "Units Sold": "3221",
-            "Manufacturing Price": 5,
-            "Sale Price": 125,
-            "Gross Sales": 402625,
-            "Discounts": 22668.75,
-            "Sales": 379956.25,
-            "COGS": 435240,
-            "Profit": 55283.75,
-            "Date": "7/1/19",
-            "Month Name": "July",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Royal Oak",
-            "Units Sold": "2389",
-            "Manufacturing Price": 5,
-            "Sale Price": 350,
-            "Gross Sales": 836150,
-            "Discounts": 12600,
-            "Sales": 823550,
-            "COGS": 187200,
-            "Profit": 636350,
-            "Date": "9/1/18",
-            "Month Name": "September",
-            "Year": "2018"
-        },
-        {
-            "Country": "India",
-            "Product": "Royal Oak",
-            "Units Sold": "1127",
-            "Manufacturing Price": 5,
-            "Sale Price": 12,
-            "Gross Sales": 13524,
-            "Discounts": 1405.2,
-            "Sales": 12118.8,
-            "COGS": 7026,
-            "Profit": 5092.8,
-            "Date": "11/1/19",
-            "Month Name": "November",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Royal Oak",
-            "Units Sold": "319",
-            "Manufacturing Price": 5,
-            "Sale Price": 300,
-            "Gross Sales": 95700,
-            "Discounts": 16500,
-            "Sales": 79200,
-            "COGS": 275000,
-            "Profit": 195800,
-            "Date": "12/1/18",
-            "Month Name": "December",
-            "Year": "2018"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "1610",
-            "Manufacturing Price": 10,
-            "Sale Price": 20,
-            "Gross Sales": 32200,
-            "Discounts": 1303,
-            "Sales": 30897,
-            "COGS": 13030,
-            "Profit": 17867,
-            "Date": "2/1/19",
-            "Month Name": "February",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "4100",
-            "Manufacturing Price": 10,
-            "Sale Price": 125,
-            "Gross Sales": 512500,
-            "Discounts": 18700,
-            "Sales": 493800,
-            "COGS": 359040,
-            "Profit": 134760,
-            "Date": "3/1/19",
-            "Month Name": "March",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "1012",
-            "Manufacturing Price": 10,
-            "Sale Price": 125,
-            "Gross Sales": 126500,
-            "Discounts": 14906.25,
-            "Sales": 111593.75,
-            "COGS": 286200,
-            "Profit": 174606.25,
-            "Date": "3/1/19",
-            "Month Name": "March",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "3337",
-            "Manufacturing Price": 10,
-            "Sale Price": 300,
-            "Gross Sales": 1001100,
-            "Discounts": 24105,
-            "Sales": 976995,
-            "COGS": 401750,
-            "Profit": 575245,
-            "Date": "4/1/19",
-            "Month Name": "April",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "3955",
-            "Manufacturing Price": 10,
-            "Sale Price": 7,
-            "Gross Sales": 27685,
-            "Discounts": 814.45,
-            "Sales": 26870.55,
-            "COGS": 11635,
-            "Profit": 15235.55,
-            "Date": "5/1/19",
-            "Month Name": "May",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "4347",
-            "Manufacturing Price": 10,
-            "Sale Price": 300,
-            "Gross Sales": 1304100,
-            "Discounts": 14865,
-            "Sales": 1289235,
-            "COGS": 247750,
-            "Profit": 1041485,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "1548",
-            "Manufacturing Price": 10,
-            "Sale Price": 350,
-            "Gross Sales": 541800,
-            "Discounts": 10535,
-            "Sales": 531265,
-            "COGS": 156520,
-            "Profit": 374745,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "2153",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 32295,
-            "Discounts": 1965,
-            "Sales": 30330,
-            "COGS": 26200,
-            "Profit": 4130,
-            "Date": "9/1/19",
-            "Month Name": "September",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "3789",
-            "Manufacturing Price": 10,
-            "Sale Price": 350,
-            "Gross Sales": 1326150,
-            "Discounts": 21490,
-            "Sales": 1304660,
-            "COGS": 319280,
-            "Profit": 985380,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "4364",
-            "Manufacturing Price": 10,
-            "Sale Price": 20,
-            "Gross Sales": 87280,
-            "Discounts": 1389,
-            "Sales": 85891,
-            "COGS": 13890,
-            "Profit": 72001,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "4126",
-            "Manufacturing Price": 10,
-            "Sale Price": 125,
-            "Gross Sales": 515750,
-            "Discounts": 5381.25,
-            "Sales": 510368.75,
-            "COGS": 103320,
-            "Profit": 407048.75,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "1343",
-            "Manufacturing Price": 10,
-            "Sale Price": 125,
-            "Gross Sales": 167875,
-            "Discounts": 4400,
-            "Sales": 163475,
-            "COGS": 84480,
-            "Profit": 78995,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "245",
-            "Manufacturing Price": 10,
-            "Sale Price": 20,
-            "Gross Sales": 4900,
-            "Discounts": 1802,
-            "Sales": 3098,
-            "COGS": 18020,
-            "Profit": 14922,
-            "Date": "12/1/18",
-            "Month Name": "December",
-            "Year": "2018"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "3376",
-            "Manufacturing Price": 10,
-            "Sale Price": 20,
-            "Gross Sales": 67520,
-            "Discounts": 2663,
-            "Sales": 64857,
-            "COGS": 26630,
-            "Profit": 38227,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "1401",
-            "Manufacturing Price": 10,
-            "Sale Price": 7,
-            "Gross Sales": 9807,
-            "Discounts": 747.6,
-            "Sales": 9059.4,
-            "COGS": 10680,
-            "Profit": 1620.6,
-            "Date": "12/1/18",
-            "Month Name": "December",
-            "Year": "2018"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "3483",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 52245,
-            "Discounts": 1587,
-            "Sales": 50658,
-            "COGS": 21160,
-            "Profit": 29498,
-            "Date": "12/1/18",
-            "Month Name": "December",
-            "Year": "2018"
-        },
-        {
-            "Country": "USA",
-            "Product": "Burlington",
-            "Units Sold": "2244",
-            "Manufacturing Price": 120,
-            "Sale Price": 15,
-            "Gross Sales": 33660,
-            "Discounts": 416.25,
-            "Sales": 33243.75,
-            "COGS": 5550,
-            "Profit": 27693.75,
-            "Date": "1/1/19",
-            "Month Name": "January",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Burlington",
-            "Units Sold": "1360",
-            "Manufacturing Price": 120,
-            "Sale Price": 15,
-            "Gross Sales": 20400,
-            "Discounts": 2145.75,
-            "Sales": 18254.25,
-            "COGS": 28610,
-            "Profit": 10355.75,
-            "Date": "1/1/19",
-            "Month Name": "January",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Burlington",
-            "Units Sold": "279",
-            "Manufacturing Price": 120,
-            "Sale Price": 125,
-            "Gross Sales": 34875,
-            "Discounts": 5043.75,
-            "Sales": 29831.25,
-            "COGS": 96840,
-            "Profit": 67008.75,
-            "Date": "2/1/19",
-            "Month Name": "February",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Burlington",
-            "Units Sold": "2521",
-            "Manufacturing Price": 120,
-            "Sale Price": 350,
-            "Gross Sales": 882350,
-            "Discounts": 10535,
-            "Sales": 871815,
-            "COGS": 156520,
-            "Profit": 715295,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Burlington",
-            "Units Sold": "2433",
-            "Manufacturing Price": 120,
-            "Sale Price": 20,
-            "Gross Sales": 48660,
-            "Discounts": 2832,
-            "Sales": 45828,
-            "COGS": 28320,
-            "Profit": 17508,
-            "Date": "8/1/19",
-            "Month Name": "August",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Burlington",
-            "Units Sold": "1738",
-            "Manufacturing Price": 120,
-            "Sale Price": 20,
-            "Gross Sales": 34760,
-            "Discounts": 1579,
-            "Sales": 33181,
-            "COGS": 15790,
-            "Profit": 17391,
-            "Date": "8/1/19",
-            "Month Name": "August",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Burlington",
-            "Units Sold": "1106",
-            "Manufacturing Price": 120,
-            "Sale Price": 125,
-            "Gross Sales": 138250,
-            "Discounts": 5381.25,
-            "Sales": 132868.75,
-            "COGS": 103320,
-            "Profit": 29548.75,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Burlington",
-            "Units Sold": "3379",
-            "Manufacturing Price": 120,
-            "Sale Price": 125,
-            "Gross Sales": 422375,
-            "Discounts": 4400,
-            "Sales": 417975,
-            "COGS": 84480,
-            "Profit": 333495,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "UK",
-            "Product": "Burlington",
-            "Units Sold": "1221",
-            "Manufacturing Price": 120,
-            "Sale Price": 20,
-            "Gross Sales": 24420,
-            "Discounts": 1033,
-            "Sales": 23387,
-            "COGS": 10330,
-            "Profit": 13057,
-            "Date": "12/1/18",
-            "Month Name": "December",
-            "Year": "2018"
-        },
-        {
-            "Country": "India",
-            "Product": "Burlington",
-            "Units Sold": "213",
-            "Manufacturing Price": 120,
-            "Sale Price": 300,
-            "Gross Sales": 63900,
-            "Discounts": 18750,
-            "Sales": 45150,
-            "COGS": 312500,
-            "Profit": 267350,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Mandarin",
-            "Units Sold": "3335",
-            "Manufacturing Price": 250,
-            "Sale Price": 20,
-            "Gross Sales": 66700,
-            "Discounts": 1389,
-            "Sales": 65311,
-            "COGS": 13890,
-            "Profit": 51421,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "USA",
-            "Product": "Mandarin",
-            "Units Sold": "1260",
-            "Manufacturing Price": 250,
-            "Sale Price": 20,
-            "Gross Sales": 25200,
-            "Discounts": 1265,
-            "Sales": 23935,
-            "COGS": 12650,
-            "Profit": 11285,
-            "Date": "11/1/18",
-            "Month Name": "November",
-            "Year": "2018"
-        },
-        {
-            "Country": "India",
-            "Product": "Mandarin",
-            "Units Sold": "3034",
-            "Manufacturing Price": 250,
-            "Sale Price": 20,
-            "Gross Sales": 60680,
-            "Discounts": 2297,
-            "Sales": 58383,
-            "COGS": 22970,
-            "Profit": 35413,
-            "Date": "11/1/18",
-            "Month Name": "November",
-            "Year": "2018"
-        },
-        {
-            "Country": "USA",
-            "Product": "Mandarin",
-            "Units Sold": "2929",
-            "Manufacturing Price": 250,
-            "Sale Price": 20,
-            "Gross Sales": 58580,
-            "Discounts": 2663,
-            "Sales": 55917,
-            "COGS": 26630,
-            "Profit": 29287,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Mandarin",
-            "Units Sold": "2389",
-            "Manufacturing Price": 250,
-            "Sale Price": 7,
-            "Gross Sales": 16723,
-            "Discounts": 199.5,
-            "Sales": 16523.5,
-            "COGS": 2850,
-            "Profit": 13673.5,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Mandarin",
-            "Units Sold": "3086",
-            "Manufacturing Price": 250,
-            "Sale Price": 7,
-            "Gross Sales": 21602,
-            "Discounts": 870.45,
-            "Sales": 20731.55,
-            "COGS": 12435,
-            "Profit": 8296.55,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Luxe",
-            "Units Sold": "745",
-            "Manufacturing Price": 260,
-            "Sale Price": 350,
-            "Gross Sales": 260750,
-            "Discounts": 23625,
-            "Sales": 237125,
-            "COGS": 351000,
-            "Profit": 113875,
-            "Date": "2/1/19",
-            "Month Name": "February",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Luxe",
-            "Units Sold": "1266",
-            "Manufacturing Price": 260,
-            "Sale Price": 350,
-            "Gross Sales": 443100,
-            "Discounts": 9660,
-            "Sales": 433440,
-            "COGS": 143520,
-            "Profit": 289920,
-            "Date": "8/1/19",
-            "Month Name": "August",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Luxe",
-            "Units Sold": "3790",
-            "Manufacturing Price": 260,
-            "Sale Price": 350,
-            "Gross Sales": 1326500,
-            "Discounts": 21490,
-            "Sales": 1305010,
-            "COGS": 319280,
-            "Profit": 985730,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "India",
-            "Product": "Luxe",
-            "Units Sold": "4287",
-            "Manufacturing Price": 260,
-            "Sale Price": 300,
-            "Gross Sales": 1286100,
-            "Discounts": 18750,
-            "Sales": 1267350,
-            "COGS": 312500,
-            "Profit": 954850,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "3193",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 47895,
-            "Discounts": 3420.9,
-            "Sales": 44474.1,
-            "COGS": 38010,
-            "Profit": 6464.1,
-            "Date": "4/1/19",
-            "Month Name": "April",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Kensington",
-            "Units Sold": "1967",
-            "Manufacturing Price": 3,
-            "Sale Price": 20,
-            "Gross Sales": 39340,
-            "Discounts": 1341,
-            "Sales": 37999,
-            "COGS": 11175,
-            "Profit": 26824,
-            "Date": "1/1/19",
-            "Month Name": "January",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Kensington",
-            "Units Sold": "631",
-            "Manufacturing Price": 3,
-            "Sale Price": 15,
-            "Gross Sales": 9465,
-            "Discounts": 2559.6,
-            "Sales": 6905.4,
-            "COGS": 28440,
-            "Profit": 21534.6,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Kensington",
-            "Units Sold": "3469",
-            "Manufacturing Price": 3,
-            "Sale Price": 12,
-            "Gross Sales": 41628,
-            "Discounts": 404.64,
-            "Sales": 41223.36,
-            "COGS": 1686,
-            "Profit": 39537.36,
-            "Date": "9/1/19",
-            "Month Name": "September",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Kensington",
-            "Units Sold": "570",
-            "Manufacturing Price": 3,
-            "Sale Price": 12,
-            "Gross Sales": 6840,
-            "Discounts": 1655.28,
-            "Sales": 5184.72,
-            "COGS": 6897,
-            "Profit": 1712.28,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "USA",
-            "Product": "Kensington",
-            "Units Sold": "3215",
-            "Manufacturing Price": 3,
-            "Sale Price": 15,
-            "Gross Sales": 48225,
-            "Discounts": 1827,
-            "Sales": 46398,
-            "COGS": 20300,
-            "Profit": 26098,
-            "Date": "11/1/19",
-            "Month Name": "November",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Kensington",
-            "Units Sold": "3754",
-            "Manufacturing Price": 3,
-            "Sale Price": 7,
-            "Gross Sales": 26278,
-            "Discounts": 110.46,
-            "Sales": 26167.54,
-            "COGS": 1315,
-            "Profit": 24852.54,
-            "Date": "11/1/18",
-            "Month Name": "November",
-            "Year": "2018"
-        },
-        {
-            "Country": "India",
-            "Product": "Kensington",
-            "Units Sold": "2187",
-            "Manufacturing Price": 3,
-            "Sale Price": 125,
-            "Gross Sales": 273375,
-            "Discounts": 6652.5,
-            "Sales": 266722.5,
-            "COGS": 106440,
-            "Profit": 160282.5,
-            "Date": "12/1/18",
-            "Month Name": "December",
-            "Year": "2018"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Royal Oak",
-            "Units Sold": "1959",
-            "Manufacturing Price": 5,
-            "Sale Price": 350,
-            "Gross Sales": 685650,
-            "Discounts": 20580,
-            "Sales": 665070,
-            "COGS": 254800,
-            "Profit": 410270,
-            "Date": "4/1/19",
-            "Month Name": "April",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Royal Oak",
-            "Units Sold": "2181",
-            "Manufacturing Price": 5,
-            "Sale Price": 350,
-            "Gross Sales": 763350,
-            "Discounts": 30660,
-            "Sales": 732690,
-            "COGS": 379600,
-            "Profit": 353090,
-            "Date": "5/1/19",
-            "Month Name": "May",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Royal Oak",
-            "Units Sold": "3559",
-            "Manufacturing Price": 5,
-            "Sale Price": 7,
-            "Gross Sales": 24913,
-            "Discounts": 589.26,
-            "Sales": 24323.74,
-            "COGS": 7015,
-            "Profit": 17308.74,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "USA",
-            "Product": "Royal Oak",
-            "Units Sold": "2205",
-            "Manufacturing Price": 5,
-            "Sale Price": 12,
-            "Gross Sales": 26460,
-            "Discounts": 1960.56,
-            "Sales": 24499.44,
-            "COGS": 8169,
-            "Profit": 16330.44,
-            "Date": "11/1/19",
-            "Month Name": "November",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "1890",
-            "Manufacturing Price": 10,
-            "Sale Price": 350,
-            "Gross Sales": 661500,
-            "Discounts": 31416,
-            "Sales": 630084,
-            "COGS": 388960,
-            "Profit": 241124,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "1296",
-            "Manufacturing Price": 10,
-            "Sale Price": 12,
-            "Gross Sales": 15552,
-            "Discounts": 1655.28,
-            "Sales": 13896.72,
-            "COGS": 6897,
-            "Profit": 6999.72,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "775",
-            "Manufacturing Price": 10,
-            "Sale Price": 350,
-            "Gross Sales": 271250,
-            "Discounts": 15267,
-            "Sales": 255983,
-            "COGS": 189020,
-            "Profit": 66963,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Burlington",
-            "Units Sold": "2417",
-            "Manufacturing Price": 120,
-            "Sale Price": 125,
-            "Gross Sales": 302125,
-            "Discounts": 7140,
-            "Sales": 294985,
-            "COGS": 114240,
-            "Profit": 180745,
-            "Date": "2/1/19",
-            "Month Name": "February",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Burlington",
-            "Units Sold": "1158",
-            "Manufacturing Price": 120,
-            "Sale Price": 125,
-            "Gross Sales": 144750,
-            "Discounts": 20662.5,
-            "Sales": 124087.5,
-            "COGS": 330600,
-            "Profit": 206512.5,
-            "Date": "2/1/19",
-            "Month Name": "February",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Burlington",
-            "Units Sold": "803",
-            "Manufacturing Price": 120,
-            "Sale Price": 15,
-            "Gross Sales": 12045,
-            "Discounts": 1377,
-            "Sales": 10668,
-            "COGS": 15300,
-            "Profit": 4632,
-            "Date": "5/1/19",
-            "Month Name": "May",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Burlington",
-            "Units Sold": "3705",
-            "Manufacturing Price": 120,
-            "Sale Price": 350,
-            "Gross Sales": 1296750,
-            "Discounts": 31416,
-            "Sales": 1265334,
-            "COGS": 388960,
-            "Profit": 876374,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Burlington",
-            "Units Sold": "589",
-            "Manufacturing Price": 120,
-            "Sale Price": 7,
-            "Gross Sales": 4123,
-            "Discounts": 629.16,
-            "Sales": 3493.84,
-            "COGS": 7490,
-            "Profit": 3996.16,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Burlington",
-            "Units Sold": "3797",
-            "Manufacturing Price": 120,
-            "Sale Price": 300,
-            "Gross Sales": 1139100,
-            "Discounts": 21978,
-            "Sales": 1117122,
-            "COGS": 305250,
-            "Profit": 811872,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "UK",
-            "Product": "Burlington",
-            "Units Sold": "1321",
-            "Manufacturing Price": 120,
-            "Sale Price": 350,
-            "Gross Sales": 462350,
-            "Discounts": 43596,
-            "Sales": 418754,
-            "COGS": 539760,
-            "Profit": 121006,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Mandarin",
-            "Units Sold": "3999",
-            "Manufacturing Price": 250,
-            "Sale Price": 15,
-            "Gross Sales": 59985,
-            "Discounts": 2559.6,
-            "Sales": 57425.4,
-            "COGS": 28440,
-            "Profit": 28985.4,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Mandarin",
-            "Units Sold": "4256",
-            "Manufacturing Price": 250,
-            "Sale Price": 7,
-            "Gross Sales": 29792,
-            "Discounts": 629.16,
-            "Sales": 29162.84,
-            "COGS": 7490,
-            "Profit": 21672.84,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Mandarin",
-            "Units Sold": "1643",
-            "Manufacturing Price": 250,
-            "Sale Price": 300,
-            "Gross Sales": 492900,
-            "Discounts": 21978,
-            "Sales": 470922,
-            "COGS": 305250,
-            "Profit": 165672,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Mandarin",
-            "Units Sold": "1912",
-            "Manufacturing Price": 250,
-            "Sale Price": 20,
-            "Gross Sales": 38240,
-            "Discounts": 1347.6,
-            "Sales": 36892.4,
-            "COGS": 11230,
-            "Profit": 25662.4,
-            "Date": "11/1/18",
-            "Month Name": "November",
-            "Year": "2018"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Mandarin",
-            "Units Sold": "1610",
-            "Manufacturing Price": 250,
-            "Sale Price": 300,
-            "Gross Sales": 483000,
-            "Discounts": 43848,
-            "Sales": 439152,
-            "COGS": 609000,
-            "Profit": 169848,
-            "Date": "12/1/18",
-            "Month Name": "December",
-            "Year": "2018"
-        },
-        {
-            "Country": "UK",
-            "Product": "Luxe",
-            "Units Sold": "2160",
-            "Manufacturing Price": 260,
-            "Sale Price": 125,
-            "Gross Sales": 270000,
-            "Discounts": 14906.25,
-            "Sales": 255093.75,
-            "COGS": 238500,
-            "Profit": 16593.75,
-            "Date": "1/1/19",
-            "Month Name": "January",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Luxe",
-            "Units Sold": "466",
-            "Manufacturing Price": 260,
-            "Sale Price": 350,
-            "Gross Sales": 163100,
-            "Discounts": 35259,
-            "Sales": 127841,
-            "COGS": 436540,
-            "Profit": 308699,
-            "Date": "9/1/19",
-            "Month Name": "September",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Luxe",
-            "Units Sold": "328",
-            "Manufacturing Price": 260,
-            "Sale Price": 350,
-            "Gross Sales": 114800,
-            "Discounts": 15267,
-            "Sales": 99533,
-            "COGS": 189020,
-            "Profit": 89487,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "UK",
-            "Product": "Luxe",
-            "Units Sold": "4099",
-            "Manufacturing Price": 260,
-            "Sale Price": 7,
-            "Gross Sales": 28693,
-            "Discounts": 589.26,
-            "Sales": 28103.74,
-            "COGS": 7015,
-            "Profit": 21088.74,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "UK",
-            "Product": "Luxe",
-            "Units Sold": "990",
-            "Manufacturing Price": 260,
-            "Sale Price": 350,
-            "Gross Sales": 346500,
-            "Discounts": 43596,
-            "Sales": 302904,
-            "COGS": 539760,
-            "Profit": 236856,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "UK",
-            "Product": "Royal Oak",
-            "Units Sold": "1433",
-            "Manufacturing Price": 5,
-            "Sale Price": 20,
-            "Gross Sales": 28660,
-            "Discounts": 2108.4,
-            "Sales": 26551.6,
-            "COGS": 17570,
-            "Profit": 8981.6,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "1478",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 22170,
-            "Discounts": 1978.2,
-            "Sales": 20191.8,
-            "COGS": 21980,
-            "Profit": 1788.2,
-            "Date": "8/1/19",
-            "Month Name": "August",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "3798",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 56970,
-            "Discounts": 1568.7,
-            "Sales": 55401.3,
-            "COGS": 17430,
-            "Profit": 37971.3,
-            "Date": "8/1/19",
-            "Month Name": "August",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "447",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 6705,
-            "Discounts": 1037.7,
-            "Sales": 5667.3,
-            "COGS": 11530,
-            "Profit": 5862.7,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "1711",
-            "Manufacturing Price": 10,
-            "Sale Price": 20,
-            "Gross Sales": 34220,
-            "Discounts": 2108.4,
-            "Sales": 32111.6,
-            "COGS": 17570,
-            "Profit": 14541.6,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "India",
-            "Product": "Burlington",
-            "Units Sold": "745",
-            "Manufacturing Price": 120,
-            "Sale Price": 20,
-            "Gross Sales": 14900,
-            "Discounts": 1201.2,
-            "Sales": 13698.8,
-            "COGS": 10010,
-            "Profit": 3688.8,
-            "Date": "8/1/19",
-            "Month Name": "August",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Burlington",
-            "Units Sold": "1732",
-            "Manufacturing Price": 120,
-            "Sale Price": 7,
-            "Gross Sales": 12124,
-            "Discounts": 559.86,
-            "Sales": 11564.14,
-            "COGS": 6665,
-            "Profit": 4899.14,
-            "Date": "11/1/19",
-            "Month Name": "November",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Mandarin",
-            "Units Sold": "1759",
-            "Manufacturing Price": 250,
-            "Sale Price": 15,
-            "Gross Sales": 26385,
-            "Discounts": 1037.7,
-            "Sales": 25347.3,
-            "COGS": 11530,
-            "Profit": 13817.3,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Kensington",
-            "Units Sold": "338",
-            "Manufacturing Price": 3,
-            "Sale Price": 12,
-            "Gross Sales": 4056,
-            "Discounts": 610.68,
-            "Sales": 3445.32,
-            "COGS": 2181,
-            "Profit": 1264.32,
-            "Date": "2/1/19",
-            "Month Name": "February",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Kensington",
-            "Units Sold": "3911",
-            "Manufacturing Price": 3,
-            "Sale Price": 12,
-            "Gross Sales": 46932,
-            "Discounts": 1582.56,
-            "Sales": 45349.44,
-            "COGS": 5652,
-            "Profit": 39697.44,
-            "Date": "8/1/19",
-            "Month Name": "August",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Kensington",
-            "Units Sold": "3691",
-            "Manufacturing Price": 3,
-            "Sale Price": 20,
-            "Gross Sales": 73820,
-            "Discounts": 2567.6,
-            "Sales": 71252.4,
-            "COGS": 18340,
-            "Profit": 52912.4,
-            "Date": "9/1/18",
-            "Month Name": "September",
-            "Year": "2018"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Royal Oak",
-            "Units Sold": "4473",
-            "Manufacturing Price": 5,
-            "Sale Price": 12,
-            "Gross Sales": 53676,
-            "Discounts": 1965.6,
-            "Sales": 51710.4,
-            "COGS": 7020,
-            "Profit": 44690.4,
-            "Date": "1/1/19",
-            "Month Name": "January",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Royal Oak",
-            "Units Sold": "383",
-            "Manufacturing Price": 5,
-            "Sale Price": 12,
-            "Gross Sales": 4596,
-            "Discounts": 1967.28,
-            "Sales": 2628.72,
-            "COGS": 7026,
-            "Profit": 4397.28,
-            "Date": "11/1/19",
-            "Month Name": "November",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "3105",
-            "Manufacturing Price": 10,
-            "Sale Price": 7,
-            "Gross Sales": 21735,
-            "Discounts": 505.19,
-            "Sales": 21229.81,
-            "COGS": 5155,
-            "Profit": 16074.81,
-            "Date": "9/1/18",
-            "Month Name": "September",
-            "Year": "2018"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Burlington",
-            "Units Sold": "1062",
-            "Manufacturing Price": 120,
-            "Sale Price": 15,
-            "Gross Sales": 15930,
-            "Discounts": 1325.1,
-            "Sales": 14604.9,
-            "COGS": 12620,
-            "Profit": 1984.9,
-            "Date": "5/1/19",
-            "Month Name": "May",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Burlington",
-            "Units Sold": "4083",
-            "Manufacturing Price": 120,
-            "Sale Price": 7,
-            "Gross Sales": 28581,
-            "Discounts": 556.15,
-            "Sales": 28024.85,
-            "COGS": 5675,
-            "Profit": 22349.85,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Burlington",
-            "Units Sold": "3974",
-            "Manufacturing Price": 120,
-            "Sale Price": 7,
-            "Gross Sales": 27818,
-            "Discounts": 268.03,
-            "Sales": 27549.97,
-            "COGS": 2735,
-            "Profit": 24814.97,
-            "Date": "11/1/19",
-            "Month Name": "November",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Burlington",
-            "Units Sold": "3723",
-            "Manufacturing Price": 120,
-            "Sale Price": 7,
-            "Gross Sales": 26061,
-            "Discounts": 775.18,
-            "Sales": 25285.82,
-            "COGS": 7910,
-            "Profit": 17375.82,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Mandarin",
-            "Units Sold": "2435",
-            "Manufacturing Price": 250,
-            "Sale Price": 12,
-            "Gross Sales": 29220,
-            "Discounts": 1460.34,
-            "Sales": 27759.66,
-            "COGS": 5215.5,
-            "Profit": 22544.16,
-            "Date": "4/1/19",
-            "Month Name": "April",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Mandarin",
-            "Units Sold": "1678",
-            "Manufacturing Price": 250,
-            "Sale Price": 12,
-            "Gross Sales": 20136,
-            "Discounts": 1860.6,
-            "Sales": 18275.4,
-            "COGS": 6645,
-            "Profit": 11630.4,
-            "Date": "9/1/18",
-            "Month Name": "September",
-            "Year": "2018"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Mandarin",
-            "Units Sold": "1763",
-            "Manufacturing Price": 250,
-            "Sale Price": 7,
-            "Gross Sales": 12341,
-            "Discounts": 775.18,
-            "Sales": 11565.82,
-            "COGS": 7910,
-            "Profit": 3655.82,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Luxe",
-            "Units Sold": "4473",
-            "Manufacturing Price": 260,
-            "Sale Price": 7,
-            "Gross Sales": 31311,
-            "Discounts": 556.15,
-            "Sales": 30754.85,
-            "COGS": 5675,
-            "Profit": 25079.85,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Kensington",
-            "Units Sold": "1246",
-            "Manufacturing Price": 3,
-            "Sale Price": 350,
-            "Gross Sales": 436100,
-            "Discounts": 43144.5,
-            "Sales": 392955.5,
-            "COGS": 457860,
-            "Profit": 64904.5,
-            "Date": "3/1/19",
-            "Month Name": "March",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Kensington",
-            "Units Sold": "1615",
-            "Manufacturing Price": 3,
-            "Sale Price": 300,
-            "Gross Sales": 484500,
-            "Discounts": 9408,
-            "Sales": 475092,
-            "COGS": 112000,
-            "Profit": 363092,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Kensington",
-            "Units Sold": "749",
-            "Manufacturing Price": 3,
-            "Sale Price": 300,
-            "Gross Sales": 224700,
-            "Discounts": 45801,
-            "Sales": 178899,
-            "COGS": 545250,
-            "Profit": 366351,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Royal Oak",
-            "Units Sold": "1318",
-            "Manufacturing Price": 5,
-            "Sale Price": 20,
-            "Gross Sales": 26360,
-            "Discounts": 2766.4,
-            "Sales": 23593.6,
-            "COGS": 19760,
-            "Profit": 3833.6,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Royal Oak",
-            "Units Sold": "2882",
-            "Manufacturing Price": 5,
-            "Sale Price": 300,
-            "Gross Sales": 864600,
-            "Discounts": 45801,
-            "Sales": 818799,
-            "COGS": 545250,
-            "Profit": 273549,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Royal Oak",
-            "Units Sold": "3039",
-            "Manufacturing Price": 5,
-            "Sale Price": 125,
-            "Gross Sales": 379875,
-            "Discounts": 21875,
-            "Sales": 358000,
-            "COGS": 300000,
-            "Profit": 58000,
-            "Date": "11/1/18",
-            "Month Name": "November",
-            "Year": "2018"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "2484",
-            "Manufacturing Price": 10,
-            "Sale Price": 300,
-            "Gross Sales": 745200,
-            "Discounts": 35742,
-            "Sales": 709458,
-            "COGS": 425500,
-            "Profit": 283958,
-            "Date": "5/1/19",
-            "Month Name": "May",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "3169",
-            "Manufacturing Price": 10,
-            "Sale Price": 300,
-            "Gross Sales": 950700,
-            "Discounts": 9408,
-            "Sales": 941292,
-            "COGS": 112000,
-            "Profit": 829292,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "4080",
-            "Manufacturing Price": 10,
-            "Sale Price": 125,
-            "Gross Sales": 510000,
-            "Discounts": 30738.75,
-            "Sales": 479261.25,
-            "COGS": 421560,
-            "Profit": 57701.25,
-            "Date": "7/1/19",
-            "Month Name": "July",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "3943",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 59145,
-            "Discounts": 2206.05,
-            "Sales": 56938.95,
-            "COGS": 21010,
-            "Profit": 35928.95,
-            "Date": "8/1/19",
-            "Month Name": "August",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "784",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 11760,
-            "Discounts": 3077.55,
-            "Sales": 8682.45,
-            "COGS": 29310,
-            "Profit": 20627.55,
-            "Date": "9/1/18",
-            "Month Name": "September",
-            "Year": "2018"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "253",
-            "Manufacturing Price": 10,
-            "Sale Price": 20,
-            "Gross Sales": 5060,
-            "Discounts": 2149,
-            "Sales": 2911,
-            "COGS": 15350,
-            "Profit": 12439,
-            "Date": "9/1/19",
-            "Month Name": "September",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "1316",
-            "Manufacturing Price": 10,
-            "Sale Price": 300,
-            "Gross Sales": 394800,
-            "Discounts": 23583,
-            "Sales": 371217,
-            "COGS": 280750,
-            "Profit": 90467,
-            "Date": "9/1/18",
-            "Month Name": "September",
-            "Year": "2018"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "808",
-            "Manufacturing Price": 10,
-            "Sale Price": 300,
-            "Gross Sales": 242400,
-            "Discounts": 29484,
-            "Sales": 212916,
-            "COGS": 351000,
-            "Profit": 138084,
-            "Date": "11/1/18",
-            "Month Name": "November",
-            "Year": "2018"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "3295",
-            "Manufacturing Price": 10,
-            "Sale Price": 12,
-            "Gross Sales": 39540,
-            "Discounts": 2320.92,
-            "Sales": 37219.08,
-            "COGS": 8289,
-            "Profit": 28930.08,
-            "Date": "11/1/18",
-            "Month Name": "November",
-            "Year": "2018"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "520",
-            "Manufacturing Price": 10,
-            "Sale Price": 7,
-            "Gross Sales": 3640,
-            "Discounts": 1041.25,
-            "Sales": 2598.75,
-            "COGS": 10625,
-            "Profit": 8026.25,
-            "Date": "12/1/18",
-            "Month Name": "December",
-            "Year": "2018"
-        },
-        {
-            "Country": "UK",
-            "Product": "Burlington",
-            "Units Sold": "799",
-            "Manufacturing Price": 120,
-            "Sale Price": 300,
-            "Gross Sales": 239700,
-            "Discounts": 34839,
-            "Sales": 204861,
-            "COGS": 414750,
-            "Profit": 209889,
-            "Date": "7/1/19",
-            "Month Name": "July",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Burlington",
-            "Units Sold": "3942",
-            "Manufacturing Price": 120,
-            "Sale Price": 20,
-            "Gross Sales": 78840,
-            "Discounts": 852.6,
-            "Sales": 77987.4,
-            "COGS": 6090,
-            "Profit": 71897.4,
-            "Date": "8/1/19",
-            "Month Name": "August",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Burlington",
-            "Units Sold": "2498",
-            "Manufacturing Price": 120,
-            "Sale Price": 125,
-            "Gross Sales": 312250,
-            "Discounts": 18261.25,
-            "Sales": 293988.75,
-            "COGS": 250440,
-            "Profit": 43548.75,
-            "Date": "9/1/19",
-            "Month Name": "September",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Burlington",
-            "Units Sold": "2517",
-            "Manufacturing Price": 120,
-            "Sale Price": 20,
-            "Gross Sales": 50340,
-            "Discounts": 2766.4,
-            "Sales": 47573.6,
-            "COGS": 19760,
-            "Profit": 27813.6,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Burlington",
-            "Units Sold": "3182",
-            "Manufacturing Price": 120,
-            "Sale Price": 20,
-            "Gross Sales": 63640,
-            "Discounts": 1989.4,
-            "Sales": 61650.6,
-            "COGS": 14210,
-            "Profit": 47440.6,
-            "Date": "12/1/18",
-            "Month Name": "December",
-            "Year": "2018"
-        },
-        {
-            "Country": "USA",
-            "Product": "Burlington",
-            "Units Sold": "1145",
-            "Manufacturing Price": 120,
-            "Sale Price": 300,
-            "Gross Sales": 343500,
-            "Discounts": 28812,
-            "Sales": 314688,
-            "COGS": 343000,
-            "Profit": 28312,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Burlington",
-            "Units Sold": "895",
-            "Manufacturing Price": 120,
-            "Sale Price": 20,
-            "Gross Sales": 17900,
-            "Discounts": 823.2,
-            "Sales": 17076.8,
-            "COGS": 5880,
-            "Profit": 11196.8,
-            "Date": "12/1/18",
-            "Month Name": "December",
-            "Year": "2018"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Mandarin",
-            "Units Sold": "3814",
-            "Manufacturing Price": 250,
-            "Sale Price": 12,
-            "Gross Sales": 45768,
-            "Discounts": 2725.38,
-            "Sales": 43042.62,
-            "COGS": 9733.5,
-            "Profit": 33309.12,
-            "Date": "1/1/19",
-            "Month Name": "January",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Mandarin",
-            "Units Sold": "1188",
-            "Manufacturing Price": 250,
-            "Sale Price": 300,
-            "Gross Sales": 356400,
-            "Discounts": 20139,
-            "Sales": 336261,
-            "COGS": 239750,
-            "Profit": 96511,
-            "Date": "2/1/19",
-            "Month Name": "February",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Mandarin",
-            "Units Sold": "2233",
-            "Manufacturing Price": 250,
-            "Sale Price": 300,
-            "Gross Sales": 669900,
-            "Discounts": 57687,
-            "Sales": 612213,
-            "COGS": 686750,
-            "Profit": 74537,
-            "Date": "2/1/19",
-            "Month Name": "February",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Luxe",
-            "Units Sold": "421",
-            "Manufacturing Price": 260,
-            "Sale Price": 125,
-            "Gross Sales": 52625,
-            "Discounts": 14393.75,
-            "Sales": 38231.25,
-            "COGS": 197400,
-            "Profit": 159168.75,
-            "Date": "5/1/19",
-            "Month Name": "May",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Luxe",
-            "Units Sold": "269",
-            "Manufacturing Price": 260,
-            "Sale Price": 350,
-            "Gross Sales": 94150,
-            "Discounts": 70462,
-            "Sales": 23688,
-            "COGS": 747760,
-            "Profit": 724072,
-            "Date": "9/1/19",
-            "Month Name": "September",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Luxe",
-            "Units Sold": "3766",
-            "Manufacturing Price": 260,
-            "Sale Price": 125,
-            "Gross Sales": 470750,
-            "Discounts": 8697.5,
-            "Sales": 462052.5,
-            "COGS": 119280,
-            "Profit": 342772.5,
-            "Date": "9/1/18",
-            "Month Name": "September",
-            "Year": "2018"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Luxe",
-            "Units Sold": "952",
-            "Manufacturing Price": 260,
-            "Sale Price": 20,
-            "Gross Sales": 19040,
-            "Discounts": 1565.2,
-            "Sales": 17474.8,
-            "COGS": 11180,
-            "Profit": 6294.8,
-            "Date": "11/1/19",
-            "Month Name": "November",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Luxe",
-            "Units Sold": "2964",
-            "Manufacturing Price": 260,
-            "Sale Price": 300,
-            "Gross Sales": 889200,
-            "Discounts": 28812,
-            "Sales": 860388,
-            "COGS": 343000,
-            "Profit": 517388,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Royal Oak",
-            "Units Sold": "1505",
-            "Manufacturing Price": 5,
-            "Sale Price": 7,
-            "Gross Sales": 10535,
-            "Discounts": 273.28,
-            "Sales": 10261.72,
-            "COGS": 2440,
-            "Profit": 7821.72,
-            "Date": "2/1/19",
-            "Month Name": "February",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Royal Oak",
-            "Units Sold": "1678",
-            "Manufacturing Price": 5,
-            "Sale Price": 20,
-            "Gross Sales": 33560,
-            "Discounts": 2051.2,
-            "Sales": 31508.8,
-            "COGS": 12820,
-            "Profit": 18688.8,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "4249",
-            "Manufacturing Price": 10,
-            "Sale Price": 7,
-            "Gross Sales": 29743,
-            "Discounts": 143.92,
-            "Sales": 29599.08,
-            "COGS": 1285,
-            "Profit": 28314.08,
-            "Date": "5/1/19",
-            "Month Name": "May",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Luxe",
-            "Units Sold": "1677",
-            "Manufacturing Price": 260,
-            "Sale Price": 20,
-            "Gross Sales": 33540,
-            "Discounts": 2051.2,
-            "Sales": 31488.8,
-            "COGS": 12820,
-            "Profit": 18668.8,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Kensington",
-            "Units Sold": "3051",
-            "Manufacturing Price": 3,
-            "Sale Price": 125,
-            "Gross Sales": 381375,
-            "Discounts": 15400,
-            "Sales": 365975,
-            "COGS": 184800,
-            "Profit": 181175,
-            "Date": "8/1/19",
-            "Month Name": "August",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Kensington",
-            "Units Sold": "3372",
-            "Manufacturing Price": 3,
-            "Sale Price": 15,
-            "Gross Sales": 50580,
-            "Discounts": 588,
-            "Sales": 49992,
-            "COGS": 4900,
-            "Profit": 45092,
-            "Date": "11/1/19",
-            "Month Name": "November",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Kensington",
-            "Units Sold": "1686",
-            "Manufacturing Price": 3,
-            "Sale Price": 350,
-            "Gross Sales": 590100,
-            "Discounts": 38136,
-            "Sales": 551964,
-            "COGS": 354120,
-            "Profit": 197844,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Royal Oak",
-            "Units Sold": "3086",
-            "Manufacturing Price": 5,
-            "Sale Price": 15,
-            "Gross Sales": 46290,
-            "Discounts": 3001.2,
-            "Sales": 43288.8,
-            "COGS": 25010,
-            "Profit": 18278.8,
-            "Date": "3/1/19",
-            "Month Name": "March",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Royal Oak",
-            "Units Sold": "4150",
-            "Manufacturing Price": 5,
-            "Sale Price": 20,
-            "Gross Sales": 83000,
-            "Discounts": 1132.8,
-            "Sales": 81867.2,
-            "COGS": 7080,
-            "Profit": 74787.2,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Royal Oak",
-            "Units Sold": "3027",
-            "Manufacturing Price": 5,
-            "Sale Price": 20,
-            "Gross Sales": 60540,
-            "Discounts": 1032,
-            "Sales": 59508,
-            "COGS": 6450,
-            "Profit": 53058,
-            "Date": "7/1/19",
-            "Month Name": "July",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Royal Oak",
-            "Units Sold": "4359",
-            "Manufacturing Price": 5,
-            "Sale Price": 300,
-            "Gross Sales": 1307700,
-            "Discounts": 37488,
-            "Sales": 1270212,
-            "COGS": 390500,
-            "Profit": 879712,
-            "Date": "8/1/19",
-            "Month Name": "August",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Royal Oak",
-            "Units Sold": "3628",
-            "Manufacturing Price": 5,
-            "Sale Price": 300,
-            "Gross Sales": 1088400,
-            "Discounts": 30792,
-            "Sales": 1057608,
-            "COGS": 320750,
-            "Profit": 736858,
-            "Date": "9/1/18",
-            "Month Name": "September",
-            "Year": "2018"
-        },
-        {
-            "Country": "India",
-            "Product": "Royal Oak",
-            "Units Sold": "1589",
-            "Manufacturing Price": 5,
-            "Sale Price": 15,
-            "Gross Sales": 23835,
-            "Discounts": 853.2,
-            "Sales": 22981.8,
-            "COGS": 7110,
-            "Profit": 15871.8,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "2679",
-            "Manufacturing Price": 10,
-            "Sale Price": 125,
-            "Gross Sales": 334875,
-            "Discounts": 11140,
-            "Sales": 323735,
-            "COGS": 133680,
-            "Profit": 190055,
-            "Date": "3/1/19",
-            "Month Name": "March",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "3401",
-            "Manufacturing Price": 10,
-            "Sale Price": 7,
-            "Gross Sales": 23807,
-            "Discounts": 705.04,
-            "Sales": 23101.96,
-            "COGS": 6295,
-            "Profit": 16806.96,
-            "Date": "4/1/19",
-            "Month Name": "April",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "2815",
-            "Manufacturing Price": 10,
-            "Sale Price": 7,
-            "Gross Sales": 19705,
-            "Discounts": 613.2,
-            "Sales": 19091.8,
-            "COGS": 5475,
-            "Profit": 13616.8,
-            "Date": "5/1/19",
-            "Month Name": "May",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "2964",
-            "Manufacturing Price": 10,
-            "Sale Price": 20,
-            "Gross Sales": 59280,
-            "Discounts": 2185.6,
-            "Sales": 57094.4,
-            "COGS": 13660,
-            "Profit": 43434.4,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "4173",
-            "Manufacturing Price": 10,
-            "Sale Price": 300,
-            "Gross Sales": 1251900,
-            "Discounts": 59040,
-            "Sales": 1192860,
-            "COGS": 615000,
-            "Profit": 577860,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "1157",
-            "Manufacturing Price": 10,
-            "Sale Price": 7,
-            "Gross Sales": 8099,
-            "Discounts": 379.68,
-            "Sales": 7719.32,
-            "COGS": 3390,
-            "Profit": 4329.32,
-            "Date": "8/1/19",
-            "Month Name": "August",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "3065",
-            "Manufacturing Price": 10,
-            "Sale Price": 7,
-            "Gross Sales": 21455,
-            "Discounts": 894.88,
-            "Sales": 20560.12,
-            "COGS": 7990,
-            "Profit": 12570.12,
-            "Date": "8/1/19",
-            "Month Name": "August",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "1962",
-            "Manufacturing Price": 10,
-            "Sale Price": 7,
-            "Gross Sales": 13734,
-            "Discounts": 1349.04,
-            "Sales": 12384.96,
-            "COGS": 12045,
-            "Profit": 339.96,
-            "Date": "9/1/18",
-            "Month Name": "September",
-            "Year": "2018"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "4080",
-            "Manufacturing Price": 10,
-            "Sale Price": 20,
-            "Gross Sales": 81600,
-            "Discounts": 3094.4,
-            "Sales": 78505.6,
-            "COGS": 19340,
-            "Profit": 59165.6,
-            "Date": "9/1/19",
-            "Month Name": "September",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "1713",
-            "Manufacturing Price": 10,
-            "Sale Price": 20,
-            "Gross Sales": 34260,
-            "Discounts": 4788.8,
-            "Sales": 29471.2,
-            "COGS": 29930,
-            "Profit": 458.8,
-            "Date": "9/1/19",
-            "Month Name": "September",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "2795",
-            "Manufacturing Price": 10,
-            "Sale Price": 350,
-            "Gross Sales": 978250,
-            "Discounts": 60088,
-            "Sales": 918162,
-            "COGS": 557960,
-            "Profit": 360202,
-            "Date": "11/1/18",
-            "Month Name": "November",
-            "Year": "2018"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "4082",
-            "Manufacturing Price": 10,
-            "Sale Price": 7,
-            "Gross Sales": 28574,
-            "Discounts": 1089.76,
-            "Sales": 27484.24,
-            "COGS": 9730,
-            "Profit": 17754.24,
-            "Date": "12/1/18",
-            "Month Name": "December",
-            "Year": "2018"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "1691",
-            "Manufacturing Price": 10,
-            "Sale Price": 350,
-            "Gross Sales": 591850,
-            "Discounts": 38136,
-            "Sales": 553714,
-            "COGS": 354120,
-            "Profit": 199594,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Burlington",
-            "Units Sold": "2305",
-            "Manufacturing Price": 120,
-            "Sale Price": 12,
-            "Gross Sales": 27660,
-            "Discounts": 574.08,
-            "Sales": 27085.92,
-            "COGS": 1794,
-            "Profit": 25291.92,
-            "Date": "3/1/19",
-            "Month Name": "March",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Burlington",
-            "Units Sold": "3401",
-            "Manufacturing Price": 120,
-            "Sale Price": 7,
-            "Gross Sales": 23807,
-            "Discounts": 1627.92,
-            "Sales": 22179.08,
-            "COGS": 14535,
-            "Profit": 7644.08,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Burlington",
-            "Units Sold": "2288",
-            "Manufacturing Price": 120,
-            "Sale Price": 7,
-            "Gross Sales": 16016,
-            "Discounts": 1309.28,
-            "Sales": 14706.72,
-            "COGS": 11690,
-            "Profit": 3016.72,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Burlington",
-            "Units Sold": "2399",
-            "Manufacturing Price": 120,
-            "Sale Price": 300,
-            "Gross Sales": 719700,
-            "Discounts": 9264,
-            "Sales": 710436,
-            "COGS": 96500,
-            "Profit": 613936,
-            "Date": "11/1/18",
-            "Month Name": "November",
-            "Year": "2018"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Burlington",
-            "Units Sold": "4086",
-            "Manufacturing Price": 120,
-            "Sale Price": 300,
-            "Gross Sales": 1225800,
-            "Discounts": 15240,
-            "Sales": 1210560,
-            "COGS": 158750,
-            "Profit": 1051810,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Mandarin",
-            "Units Sold": "2651",
-            "Manufacturing Price": 250,
-            "Sale Price": 350,
-            "Gross Sales": 927850,
-            "Discounts": 16086,
-            "Sales": 911764,
-            "COGS": 149370,
-            "Profit": 762394,
-            "Date": "4/1/19",
-            "Month Name": "April",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Mandarin",
-            "Units Sold": "3971",
-            "Manufacturing Price": 250,
-            "Sale Price": 7,
-            "Gross Sales": 27797,
-            "Discounts": 1309.28,
-            "Sales": 26487.72,
-            "COGS": 11690,
-            "Profit": 14797.72,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Mandarin",
-            "Units Sold": "2512",
-            "Manufacturing Price": 250,
-            "Sale Price": 350,
-            "Gross Sales": 879200,
-            "Discounts": 10668,
-            "Sales": 868532,
-            "COGS": 99060,
-            "Profit": 769472,
-            "Date": "8/1/19",
-            "Month Name": "August",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Mandarin",
-            "Units Sold": "2745",
-            "Manufacturing Price": 250,
-            "Sale Price": 350,
-            "Gross Sales": 960750,
-            "Discounts": 11816,
-            "Sales": 948934,
-            "COGS": 109720,
-            "Profit": 839214,
-            "Date": "8/1/19",
-            "Month Name": "August",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Mandarin",
-            "Units Sold": "1903",
-            "Manufacturing Price": 250,
-            "Sale Price": 300,
-            "Gross Sales": 570900,
-            "Discounts": 51216,
-            "Sales": 519684,
-            "COGS": 533500,
-            "Profit": 13816,
-            "Date": "9/1/19",
-            "Month Name": "September",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Mandarin",
-            "Units Sold": "647",
-            "Manufacturing Price": 250,
-            "Sale Price": 300,
-            "Gross Sales": 194100,
-            "Discounts": 19392,
-            "Sales": 174708,
-            "COGS": 202000,
-            "Profit": 27292,
-            "Date": "12/1/18",
-            "Month Name": "December",
-            "Year": "2018"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Luxe",
-            "Units Sold": "2914",
-            "Manufacturing Price": 260,
-            "Sale Price": 20,
-            "Gross Sales": 58280,
-            "Discounts": 1132.8,
-            "Sales": 57147.2,
-            "COGS": 7080,
-            "Profit": 50067.2,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Luxe",
-            "Units Sold": "1889",
-            "Manufacturing Price": 260,
-            "Sale Price": 7,
-            "Gross Sales": 13223,
-            "Discounts": 1627.92,
-            "Sales": 11595.08,
-            "COGS": 14535,
-            "Profit": 2939.92,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Luxe",
-            "Units Sold": "1466",
-            "Manufacturing Price": 260,
-            "Sale Price": 20,
-            "Gross Sales": 29320,
-            "Discounts": 2185.6,
-            "Sales": 27134.4,
-            "COGS": 13660,
-            "Profit": 13474.4,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Luxe",
-            "Units Sold": "887",
-            "Manufacturing Price": 260,
-            "Sale Price": 300,
-            "Gross Sales": 266100,
-            "Discounts": 59040,
-            "Sales": 207060,
-            "COGS": 615000,
-            "Profit": 407940,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Luxe",
-            "Units Sold": "395",
-            "Manufacturing Price": 260,
-            "Sale Price": 20,
-            "Gross Sales": 7900,
-            "Discounts": 2432,
-            "Sales": 5468,
-            "COGS": 15200,
-            "Profit": 9732,
-            "Date": "11/1/19",
-            "Month Name": "November",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Luxe",
-            "Units Sold": "1693",
-            "Manufacturing Price": 260,
-            "Sale Price": 15,
-            "Gross Sales": 25395,
-            "Discounts": 853.2,
-            "Sales": 24541.8,
-            "COGS": 7110,
-            "Profit": 17431.8,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Luxe",
-            "Units Sold": "2459",
-            "Manufacturing Price": 260,
-            "Sale Price": 12,
-            "Gross Sales": 29508,
-            "Discounts": 1320,
-            "Sales": 28188,
-            "COGS": 4125,
-            "Profit": 24063,
-            "Date": "12/1/18",
-            "Month Name": "December",
-            "Year": "2018"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Luxe",
-            "Units Sold": "2649",
-            "Manufacturing Price": 260,
-            "Sale Price": 300,
-            "Gross Sales": 794700,
-            "Discounts": 15240,
-            "Sales": 779460,
-            "COGS": 158750,
-            "Profit": 620710,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Mandarin",
-            "Units Sold": "3608",
-            "Manufacturing Price": 250,
-            "Sale Price": 20,
-            "Gross Sales": 72160,
-            "Discounts": 698.4,
-            "Sales": 71461.6,
-            "COGS": 4365,
-            "Profit": 67096.6,
-            "Date": "7/1/19",
-            "Month Name": "July",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Kensington",
-            "Units Sold": "1073",
-            "Manufacturing Price": 3,
-            "Sale Price": 300,
-            "Gross Sales": 321900,
-            "Discounts": 29538,
-            "Sales": 292362,
-            "COGS": 273500,
-            "Profit": 18862,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Kensington",
-            "Units Sold": "1754",
-            "Manufacturing Price": 3,
-            "Sale Price": 12,
-            "Gross Sales": 21048,
-            "Discounts": 396.36,
-            "Sales": 20651.64,
-            "COGS": 1101,
-            "Profit": 19550.64,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Royal Oak",
-            "Units Sold": "2167",
-            "Manufacturing Price": 5,
-            "Sale Price": 300,
-            "Gross Sales": 650100,
-            "Discounts": 102667.5,
-            "Sales": 547432.5,
-            "COGS": 950625,
-            "Profit": 403192.5,
-            "Date": "4/1/19",
-            "Month Name": "April",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Royal Oak",
-            "Units Sold": "1319",
-            "Manufacturing Price": 5,
-            "Sale Price": 350,
-            "Gross Sales": 461650,
-            "Discounts": 52479,
-            "Sales": 409171,
-            "COGS": 433160,
-            "Profit": 23989,
-            "Date": "5/1/19",
-            "Month Name": "May",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Royal Oak",
-            "Units Sold": "1679",
-            "Manufacturing Price": 5,
-            "Sale Price": 300,
-            "Gross Sales": 503700,
-            "Discounts": 8694,
-            "Sales": 495006,
-            "COGS": 80500,
-            "Profit": 414506,
-            "Date": "9/1/18",
-            "Month Name": "September",
-            "Year": "2018"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Royal Oak",
-            "Units Sold": "1252",
-            "Manufacturing Price": 5,
-            "Sale Price": 12,
-            "Gross Sales": 15024,
-            "Discounts": 2506.68,
-            "Sales": 12517.32,
-            "COGS": 6963,
-            "Profit": 5554.32,
-            "Date": "11/1/19",
-            "Month Name": "November",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Royal Oak",
-            "Units Sold": "3493",
-            "Manufacturing Price": 5,
-            "Sale Price": 125,
-            "Gross Sales": 436625,
-            "Discounts": 20891.25,
-            "Sales": 415733.75,
-            "COGS": 222840,
-            "Profit": 192893.75,
-            "Date": "11/1/18",
-            "Month Name": "November",
-            "Year": "2018"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Royal Oak",
-            "Units Sold": "1697",
-            "Manufacturing Price": 5,
-            "Sale Price": 7,
-            "Gross Sales": 11879,
-            "Discounts": 1014.93,
-            "Sales": 10864.07,
-            "COGS": 8055,
-            "Profit": 2809.07,
-            "Date": "12/1/18",
-            "Month Name": "December",
-            "Year": "2018"
-        },
-        {
-            "Country": "USA",
-            "Product": "Royal Oak",
-            "Units Sold": "1156",
-            "Manufacturing Price": 5,
-            "Sale Price": 125,
-            "Gross Sales": 144500,
-            "Discounts": 31466.25,
-            "Sales": 113033.75,
-            "COGS": 335640,
-            "Profit": 222606.25,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Royal Oak",
-            "Units Sold": "726",
-            "Manufacturing Price": 5,
-            "Sale Price": 300,
-            "Gross Sales": 217800,
-            "Discounts": 9018,
-            "Sales": 208782,
-            "COGS": 83500,
-            "Profit": 125282,
-            "Date": "12/1/18",
-            "Month Name": "December",
-            "Year": "2018"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "1153",
-            "Manufacturing Price": 10,
-            "Sale Price": 300,
-            "Gross Sales": 345900,
-            "Discounts": 69255,
-            "Sales": 276645,
-            "COGS": 641250,
-            "Profit": 364605,
-            "Date": "1/1/19",
-            "Month Name": "January",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "2720",
-            "Manufacturing Price": 10,
-            "Sale Price": 350,
-            "Gross Sales": 952000,
-            "Discounts": 76135.5,
-            "Sales": 875864.5,
-            "COGS": 628420,
-            "Profit": 247444.5,
-            "Date": "1/1/19",
-            "Month Name": "January",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "3658",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 54870,
-            "Discounts": 4961.25,
-            "Sales": 49908.75,
-            "COGS": 36750,
-            "Profit": 13158.75,
-            "Date": "4/1/19",
-            "Month Name": "April",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "2950",
-            "Manufacturing Price": 10,
-            "Sale Price": 300,
-            "Gross Sales": 885000,
-            "Discounts": 29538,
-            "Sales": 855462,
-            "COGS": 273500,
-            "Profit": 581962,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "1821",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 27315,
-            "Discounts": 1656.45,
-            "Sales": 25658.55,
-            "COGS": 12270,
-            "Profit": 13388.55,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "4174",
-            "Manufacturing Price": 10,
-            "Sale Price": 12,
-            "Gross Sales": 50088,
-            "Discounts": 396.36,
-            "Sales": 49691.64,
-            "COGS": 1101,
-            "Profit": 48590.64,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "1127",
-            "Manufacturing Price": 10,
-            "Sale Price": 300,
-            "Gross Sales": 338100,
-            "Discounts": 35748,
-            "Sales": 302352,
-            "COGS": 331000,
-            "Profit": 28648,
-            "Date": "11/1/19",
-            "Month Name": "November",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "2209",
-            "Manufacturing Price": 10,
-            "Sale Price": 12,
-            "Gross Sales": 26508,
-            "Discounts": 1917,
-            "Sales": 24591,
-            "COGS": 5325,
-            "Profit": 19266,
-            "Date": "11/1/18",
-            "Month Name": "November",
-            "Year": "2018"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "862",
-            "Manufacturing Price": 10,
-            "Sale Price": 125,
-            "Gross Sales": 107750,
-            "Discounts": 31466.25,
-            "Sales": 76283.75,
-            "COGS": 335640,
-            "Profit": 259356.25,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Burlington",
-            "Units Sold": "3805",
-            "Manufacturing Price": 120,
-            "Sale Price": 15,
-            "Gross Sales": 57075,
-            "Discounts": 330.75,
-            "Sales": 56744.25,
-            "COGS": 2450,
-            "Profit": 54294.25,
-            "Date": "5/1/19",
-            "Month Name": "May",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Burlington",
-            "Units Sold": "1415",
-            "Manufacturing Price": 120,
-            "Sale Price": 300,
-            "Gross Sales": 424500,
-            "Discounts": 102424.5,
-            "Sales": 322075.5,
-            "COGS": 948375,
-            "Profit": 626299.5,
-            "Date": "7/1/19",
-            "Month Name": "July",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Burlington",
-            "Units Sold": "2231",
-            "Manufacturing Price": 120,
-            "Sale Price": 350,
-            "Gross Sales": 780850,
-            "Discounts": 41170.5,
-            "Sales": 739679.5,
-            "COGS": 339820,
-            "Profit": 399859.5,
-            "Date": "7/1/19",
-            "Month Name": "July",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Burlington",
-            "Units Sold": "3649",
-            "Manufacturing Price": 120,
-            "Sale Price": 125,
-            "Gross Sales": 456125,
-            "Discounts": 6378.75,
-            "Sales": 449746.25,
-            "COGS": 68040,
-            "Profit": 381706.25,
-            "Date": "9/1/19",
-            "Month Name": "September",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Burlington",
-            "Units Sold": "2948",
-            "Manufacturing Price": 120,
-            "Sale Price": 125,
-            "Gross Sales": 368500,
-            "Discounts": 23737.5,
-            "Sales": 344762.5,
-            "COGS": 253200,
-            "Profit": 91562.5,
-            "Date": "9/1/19",
-            "Month Name": "September",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Burlington",
-            "Units Sold": "3395",
-            "Manufacturing Price": 120,
-            "Sale Price": 350,
-            "Gross Sales": 1188250,
-            "Discounts": 39973.5,
-            "Sales": 1148276.5,
-            "COGS": 329940,
-            "Profit": 818336.5,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Mandarin",
-            "Units Sold": "2650",
-            "Manufacturing Price": 250,
-            "Sale Price": 12,
-            "Gross Sales": 31800,
-            "Discounts": 2112.48,
-            "Sales": 29687.52,
-            "COGS": 5868,
-            "Profit": 23819.52,
-            "Date": "1/1/19",
-            "Month Name": "January",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Mandarin",
-            "Units Sold": "585",
-            "Manufacturing Price": 250,
-            "Sale Price": 300,
-            "Gross Sales": 175500,
-            "Discounts": 71793,
-            "Sales": 103707,
-            "COGS": 664750,
-            "Profit": 561043,
-            "Date": "2/1/19",
-            "Month Name": "February",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Mandarin",
-            "Units Sold": "1316",
-            "Manufacturing Price": 250,
-            "Sale Price": 350,
-            "Gross Sales": 460600,
-            "Discounts": 42572.25,
-            "Sales": 418027.75,
-            "COGS": 351390,
-            "Profit": 66637.75,
-            "Date": "4/1/19",
-            "Month Name": "April",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Mandarin",
-            "Units Sold": "4459",
-            "Manufacturing Price": 250,
-            "Sale Price": 12,
-            "Gross Sales": 53508,
-            "Discounts": 950.4,
-            "Sales": 52557.6,
-            "COGS": 2640,
-            "Profit": 49917.6,
-            "Date": "5/1/19",
-            "Month Name": "May",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Mandarin",
-            "Units Sold": "2711",
-            "Manufacturing Price": 250,
-            "Sale Price": 300,
-            "Gross Sales": 813300,
-            "Discounts": 50409,
-            "Sales": 762891,
-            "COGS": 466750,
-            "Profit": 296141,
-            "Date": "9/1/19",
-            "Month Name": "September",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Mandarin",
-            "Units Sold": "2621",
-            "Manufacturing Price": 250,
-            "Sale Price": 12,
-            "Gross Sales": 31452,
-            "Discounts": 2412.72,
-            "Sales": 29039.28,
-            "COGS": 6702,
-            "Profit": 22337.28,
-            "Date": "9/1/18",
-            "Month Name": "September",
-            "Year": "2018"
-        },
-        {
-            "Country": "UK",
-            "Product": "Mandarin",
-            "Units Sold": "3613",
-            "Manufacturing Price": 250,
-            "Sale Price": 15,
-            "Gross Sales": 54195,
-            "Discounts": 1656.45,
-            "Sales": 52538.55,
-            "COGS": 12270,
-            "Profit": 40268.55,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Mandarin",
-            "Units Sold": "1847",
-            "Manufacturing Price": 250,
-            "Sale Price": 125,
-            "Gross Sales": 230875,
-            "Discounts": 9866.25,
-            "Sales": 221008.75,
-            "COGS": 105240,
-            "Profit": 115768.75,
-            "Date": "11/1/19",
-            "Month Name": "November",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Luxe",
-            "Units Sold": "2996",
-            "Manufacturing Price": 260,
-            "Sale Price": 350,
-            "Gross Sales": 1048600,
-            "Discounts": 65236.5,
-            "Sales": 983363.5,
-            "COGS": 538460,
-            "Profit": 444903.5,
-            "Date": "9/1/19",
-            "Month Name": "September",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Luxe",
-            "Units Sold": "2838",
-            "Manufacturing Price": 260,
-            "Sale Price": 350,
-            "Gross Sales": 993300,
-            "Discounts": 39973.5,
-            "Sales": 953326.5,
-            "COGS": 329940,
-            "Profit": 623386.5,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Luxe",
-            "Units Sold": "1302",
-            "Manufacturing Price": 260,
-            "Sale Price": 15,
-            "Gross Sales": 19530,
-            "Discounts": 1309.5,
-            "Sales": 18220.5,
-            "COGS": 9700,
-            "Profit": 8520.5,
-            "Date": "11/1/18",
-            "Month Name": "November",
-            "Year": "2018"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Luxe",
-            "Units Sold": "1536",
-            "Manufacturing Price": 260,
-            "Sale Price": 20,
-            "Gross Sales": 30720,
-            "Discounts": 3049.2,
-            "Sales": 27670.8,
-            "COGS": 16940,
-            "Profit": 10730.8,
-            "Date": "11/1/19",
-            "Month Name": "November",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Kensington",
-            "Units Sold": "1291",
-            "Manufacturing Price": 3,
-            "Sale Price": 20,
-            "Gross Sales": 25820,
-            "Discounts": 1193.4,
-            "Sales": 24626.6,
-            "COGS": 6630,
-            "Profit": 17996.6,
-            "Date": "5/1/19",
-            "Month Name": "May",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Kensington",
-            "Units Sold": "1213",
-            "Manufacturing Price": 3,
-            "Sale Price": 7,
-            "Gross Sales": 8491,
-            "Discounts": 515.97,
-            "Sales": 7975.03,
-            "COGS": 4095,
-            "Profit": 3880.03,
-            "Date": "7/1/19",
-            "Month Name": "July",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Kensington",
-            "Units Sold": "2370",
-            "Manufacturing Price": 3,
-            "Sale Price": 12,
-            "Gross Sales": 28440,
-            "Discounts": 1706.4,
-            "Sales": 26733.6,
-            "COGS": 4740,
-            "Profit": 21993.6,
-            "Date": "9/1/19",
-            "Month Name": "September",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Kensington",
-            "Units Sold": "1979",
-            "Manufacturing Price": 3,
-            "Sale Price": 7,
-            "Gross Sales": 13853,
-            "Discounts": 328.23,
-            "Sales": 13524.77,
-            "COGS": 2605,
-            "Profit": 10919.77,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "2879",
-            "Manufacturing Price": 10,
-            "Sale Price": 20,
-            "Gross Sales": 57580,
-            "Discounts": 1751.4,
-            "Sales": 55828.6,
-            "COGS": 9730,
-            "Profit": 46098.6,
-            "Date": "3/1/19",
-            "Month Name": "March",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "1707",
-            "Manufacturing Price": 10,
-            "Sale Price": 20,
-            "Gross Sales": 34140,
-            "Discounts": 1868.4,
-            "Sales": 32271.6,
-            "COGS": 10380,
-            "Profit": 21891.6,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "2933",
-            "Manufacturing Price": 10,
-            "Sale Price": 7,
-            "Gross Sales": 20531,
-            "Discounts": 226.8,
-            "Sales": 20304.2,
-            "COGS": 1800,
-            "Profit": 18504.2,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Burlington",
-            "Units Sold": "1014",
-            "Manufacturing Price": 120,
-            "Sale Price": 12,
-            "Gross Sales": 12168,
-            "Discounts": 2124.36,
-            "Sales": 10043.64,
-            "COGS": 5901,
-            "Profit": 4142.64,
-            "Date": "3/1/19",
-            "Month Name": "March",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Burlington",
-            "Units Sold": "693",
-            "Manufacturing Price": 120,
-            "Sale Price": 15,
-            "Gross Sales": 10395,
-            "Discounts": 3547.8,
-            "Sales": 6847.2,
-            "COGS": 26280,
-            "Profit": 19432.8,
-            "Date": "4/1/19",
-            "Month Name": "April",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Mandarin",
-            "Units Sold": "3741",
-            "Manufacturing Price": 250,
-            "Sale Price": 7,
-            "Gross Sales": 26187,
-            "Discounts": 226.8,
-            "Sales": 25960.2,
-            "COGS": 1800,
-            "Profit": 24160.2,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Mandarin",
-            "Units Sold": "3116",
-            "Manufacturing Price": 250,
-            "Sale Price": 20,
-            "Gross Sales": 62320,
-            "Discounts": 4827.6,
-            "Sales": 57492.4,
-            "COGS": 26820,
-            "Profit": 30672.4,
-            "Date": "11/1/18",
-            "Month Name": "November",
-            "Year": "2018"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Mandarin",
-            "Units Sold": "3995",
-            "Manufacturing Price": 250,
-            "Sale Price": 7,
-            "Gross Sales": 27965,
-            "Discounts": 328.23,
-            "Sales": 27636.77,
-            "COGS": 2605,
-            "Profit": 25031.77,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Luxe",
-            "Units Sold": "953",
-            "Manufacturing Price": 260,
-            "Sale Price": 20,
-            "Gross Sales": 19060,
-            "Discounts": 1868.4,
-            "Sales": 17191.6,
-            "COGS": 10380,
-            "Profit": 6811.6,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Luxe",
-            "Units Sold": "2530",
-            "Manufacturing Price": 260,
-            "Sale Price": 15,
-            "Gross Sales": 37950,
-            "Discounts": 2201.18,
-            "Sales": 35748.82,
-            "COGS": 16305,
-            "Profit": 19443.82,
-            "Date": "7/1/19",
-            "Month Name": "July",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Luxe",
-            "Units Sold": "2565",
-            "Manufacturing Price": 260,
-            "Sale Price": 12,
-            "Gross Sales": 30780,
-            "Discounts": 330.48,
-            "Sales": 30449.52,
-            "COGS": 918,
-            "Profit": 29531.52,
-            "Date": "12/1/18",
-            "Month Name": "December",
-            "Year": "2018"
-        },
-        {
-            "Country": "USA",
-            "Product": "Kensington",
-            "Units Sold": "4297",
-            "Manufacturing Price": 3,
-            "Sale Price": 12,
-            "Gross Sales": 51564,
-            "Discounts": 463.2,
-            "Sales": 51100.8,
-            "COGS": 1158,
-            "Profit": 49942.8,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "USA",
-            "Product": "Royal Oak",
-            "Units Sold": "2871",
-            "Manufacturing Price": 5,
-            "Sale Price": 7,
-            "Gross Sales": 20097,
-            "Discounts": 1629.6,
-            "Sales": 18467.4,
-            "COGS": 11640,
-            "Profit": 6827.4,
-            "Date": "9/1/19",
-            "Month Name": "September",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "3537",
-            "Manufacturing Price": 10,
-            "Sale Price": 12,
-            "Gross Sales": 42444,
-            "Discounts": 463.2,
-            "Sales": 41980.8,
-            "COGS": 1158,
-            "Profit": 40822.8,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "USA",
-            "Product": "Kensington",
-            "Units Sold": "1598",
-            "Manufacturing Price": 3,
-            "Sale Price": 125,
-            "Gross Sales": 199750,
-            "Discounts": 43068.75,
-            "Sales": 156681.25,
-            "COGS": 413460,
-            "Profit": 256778.75,
-            "Date": "4/1/19",
-            "Month Name": "April",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Kensington",
-            "Units Sold": "2616",
-            "Manufacturing Price": 3,
-            "Sale Price": 125,
-            "Gross Sales": 327000,
-            "Discounts": 18525,
-            "Sales": 308475,
-            "COGS": 177840,
-            "Profit": 130635,
-            "Date": "12/1/18",
-            "Month Name": "December",
-            "Year": "2018"
-        },
-        {
-            "Country": "USA",
-            "Product": "Royal Oak",
-            "Units Sold": "2836",
-            "Manufacturing Price": 5,
-            "Sale Price": 350,
-            "Gross Sales": 992600,
-            "Discounts": 80955,
-            "Sales": 911645,
-            "COGS": 601380,
-            "Profit": 310265,
-            "Date": "5/1/19",
-            "Month Name": "May",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Royal Oak",
-            "Units Sold": "4023",
-            "Manufacturing Price": 5,
-            "Sale Price": 125,
-            "Gross Sales": 502875,
-            "Discounts": 22550,
-            "Sales": 480325,
-            "COGS": 216480,
-            "Profit": 263845,
-            "Date": "11/1/18",
-            "Month Name": "November",
-            "Year": "2018"
-        },
-        {
-            "Country": "UK",
-            "Product": "Royal Oak",
-            "Units Sold": "3994",
-            "Manufacturing Price": 5,
-            "Sale Price": 15,
-            "Gross Sales": 59910,
-            "Discounts": 3108,
-            "Sales": 56802,
-            "COGS": 20720,
-            "Profit": 36082,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "2928",
-            "Manufacturing Price": 10,
-            "Sale Price": 20,
-            "Gross Sales": 58560,
-            "Discounts": 3908,
-            "Sales": 54652,
-            "COGS": 19540,
-            "Profit": 35112,
-            "Date": "3/1/19",
-            "Month Name": "March",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "2912",
-            "Manufacturing Price": 10,
-            "Sale Price": 300,
-            "Gross Sales": 873600,
-            "Discounts": 17730,
-            "Sales": 855870,
-            "COGS": 147750,
-            "Profit": 708120,
-            "Date": "5/1/19",
-            "Month Name": "May",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "3671",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 55065,
-            "Discounts": 3250.5,
-            "Sales": 51814.5,
-            "COGS": 21670,
-            "Profit": 30144.5,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "2778",
-            "Manufacturing Price": 10,
-            "Sale Price": 20,
-            "Gross Sales": 55560,
-            "Discounts": 482,
-            "Sales": 55078,
-            "COGS": 2410,
-            "Profit": 52668,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Burlington",
-            "Units Sold": "405",
-            "Manufacturing Price": 120,
-            "Sale Price": 15,
-            "Gross Sales": 6075,
-            "Discounts": 1021.5,
-            "Sales": 5053.5,
-            "COGS": 6810,
-            "Profit": 1756.5,
-            "Date": "1/1/19",
-            "Month Name": "January",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Burlington",
-            "Units Sold": "2013",
-            "Manufacturing Price": 120,
-            "Sale Price": 15,
-            "Gross Sales": 30195,
-            "Discounts": 765,
-            "Sales": 29430,
-            "COGS": 5100,
-            "Profit": 24330,
-            "Date": "4/1/19",
-            "Month Name": "April",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Burlington",
-            "Units Sold": "2634",
-            "Manufacturing Price": 120,
-            "Sale Price": 15,
-            "Gross Sales": 39510,
-            "Discounts": 1185,
-            "Sales": 38325,
-            "COGS": 7900,
-            "Profit": 30425,
-            "Date": "5/1/19",
-            "Month Name": "May",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Burlington",
-            "Units Sold": "4166",
-            "Manufacturing Price": 120,
-            "Sale Price": 350,
-            "Gross Sales": 1458100,
-            "Discounts": 22365,
-            "Sales": 1435735,
-            "COGS": 166140,
-            "Profit": 1269595,
-            "Date": "7/1/19",
-            "Month Name": "July",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Burlington",
-            "Units Sold": "355",
-            "Manufacturing Price": 120,
-            "Sale Price": 125,
-            "Gross Sales": 44375,
-            "Discounts": 19950,
-            "Sales": 24425,
-            "COGS": 191520,
-            "Profit": 167095,
-            "Date": "9/1/19",
-            "Month Name": "September",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Burlington",
-            "Units Sold": "2382",
-            "Manufacturing Price": 120,
-            "Sale Price": 300,
-            "Gross Sales": 714600,
-            "Discounts": 68820,
-            "Sales": 645780,
-            "COGS": 573500,
-            "Profit": 72280,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "India",
-            "Product": "Burlington",
-            "Units Sold": "4170",
-            "Manufacturing Price": 120,
-            "Sale Price": 20,
-            "Gross Sales": 83400,
-            "Discounts": 482,
-            "Sales": 82918,
-            "COGS": 2410,
-            "Profit": 80508,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Burlington",
-            "Units Sold": "892",
-            "Manufacturing Price": 120,
-            "Sale Price": 7,
-            "Gross Sales": 6244,
-            "Discounts": 1865.5,
-            "Sales": 4378.5,
-            "COGS": 13325,
-            "Profit": 8946.5,
-            "Date": "11/1/19",
-            "Month Name": "November",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Burlington",
-            "Units Sold": "2200",
-            "Manufacturing Price": 120,
-            "Sale Price": 125,
-            "Gross Sales": 275000,
-            "Discounts": 23950,
-            "Sales": 251050,
-            "COGS": 229920,
-            "Profit": 21130,
-            "Date": "12/1/18",
-            "Month Name": "December",
-            "Year": "2018"
-        },
-        {
-            "Country": "UK",
-            "Product": "Burlington",
-            "Units Sold": "3389",
-            "Manufacturing Price": 120,
-            "Sale Price": 300,
-            "Gross Sales": 1016700,
-            "Discounts": 25590,
-            "Sales": 991110,
-            "COGS": 213250,
-            "Profit": 777860,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Mandarin",
-            "Units Sold": "2990",
-            "Manufacturing Price": 250,
-            "Sale Price": 125,
-            "Gross Sales": 373750,
-            "Discounts": 4262.5,
-            "Sales": 369487.5,
-            "COGS": 40920,
-            "Profit": 328567.5,
-            "Date": "5/1/19",
-            "Month Name": "May",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Mandarin",
-            "Units Sold": "4013",
-            "Manufacturing Price": 250,
-            "Sale Price": 15,
-            "Gross Sales": 60195,
-            "Discounts": 961.5,
-            "Sales": 59233.5,
-            "COGS": 6410,
-            "Profit": 52823.5,
-            "Date": "7/1/19",
-            "Month Name": "July",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Mandarin",
-            "Units Sold": "739",
-            "Manufacturing Price": 250,
-            "Sale Price": 350,
-            "Gross Sales": 258650,
-            "Discounts": 98245,
-            "Sales": 160405,
-            "COGS": 729820,
-            "Profit": 569415,
-            "Date": "8/1/19",
-            "Month Name": "August",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Mandarin",
-            "Units Sold": "1989",
-            "Manufacturing Price": 250,
-            "Sale Price": 300,
-            "Gross Sales": 596700,
-            "Discounts": 12960,
-            "Sales": 583740,
-            "COGS": 108000,
-            "Profit": 475740,
-            "Date": "9/1/19",
-            "Month Name": "September",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Mandarin",
-            "Units Sold": "2991",
-            "Manufacturing Price": 250,
-            "Sale Price": 300,
-            "Gross Sales": 897300,
-            "Discounts": 68820,
-            "Sales": 828480,
-            "COGS": 573500,
-            "Profit": 254980,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "UK",
-            "Product": "Mandarin",
-            "Units Sold": "4237",
-            "Manufacturing Price": 250,
-            "Sale Price": 15,
-            "Gross Sales": 63555,
-            "Discounts": 3250.5,
-            "Sales": 60304.5,
-            "COGS": 21670,
-            "Profit": 38634.5,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Mandarin",
-            "Units Sold": "1442",
-            "Manufacturing Price": 250,
-            "Sale Price": 125,
-            "Gross Sales": 180250,
-            "Discounts": 31612.5,
-            "Sales": 148637.5,
-            "COGS": 303480,
-            "Profit": 154842.5,
-            "Date": "11/1/19",
-            "Month Name": "November",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Mandarin",
-            "Units Sold": "2712",
-            "Manufacturing Price": 250,
-            "Sale Price": 350,
-            "Gross Sales": 949200,
-            "Discounts": 65450,
-            "Sales": 883750,
-            "COGS": 486200,
-            "Profit": 397550,
-            "Date": "12/1/18",
-            "Month Name": "December",
-            "Year": "2018"
-        },
-        {
-            "Country": "USA",
-            "Product": "Luxe",
-            "Units Sold": "1508",
-            "Manufacturing Price": 260,
-            "Sale Price": 125,
-            "Gross Sales": 188500,
-            "Discounts": 7237.5,
-            "Sales": 181262.5,
-            "COGS": 69480,
-            "Profit": 111782.5,
-            "Date": "1/1/19",
-            "Month Name": "January",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Luxe",
-            "Units Sold": "4245",
-            "Manufacturing Price": 260,
-            "Sale Price": 350,
-            "Gross Sales": 1485750,
-            "Discounts": 78400,
-            "Sales": 1407350,
-            "COGS": 582400,
-            "Profit": 824950,
-            "Date": "2/1/19",
-            "Month Name": "February",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Luxe",
-            "Units Sold": "2630",
-            "Manufacturing Price": 260,
-            "Sale Price": 300,
-            "Gross Sales": 789000,
-            "Discounts": 89790,
-            "Sales": 699210,
-            "COGS": 748250,
-            "Profit": 49040,
-            "Date": "3/1/19",
-            "Month Name": "March",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Luxe",
-            "Units Sold": "1182",
-            "Manufacturing Price": 260,
-            "Sale Price": 12,
-            "Gross Sales": 14184,
-            "Discounts": 4224.6,
-            "Sales": 9959.4,
-            "COGS": 10561.5,
-            "Profit": 602.1,
-            "Date": "4/1/19",
-            "Month Name": "April",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Luxe",
-            "Units Sold": "1221",
-            "Manufacturing Price": 260,
-            "Sale Price": 20,
-            "Gross Sales": 24420,
-            "Discounts": 4078,
-            "Sales": 20342,
-            "COGS": 20390,
-            "Profit": 48,
-            "Date": "5/1/19",
-            "Month Name": "May",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Luxe",
-            "Units Sold": "963",
-            "Manufacturing Price": 260,
-            "Sale Price": 12,
-            "Gross Sales": 11556,
-            "Discounts": 3088.8,
-            "Sales": 8467.2,
-            "COGS": 7722,
-            "Profit": 745.2,
-            "Date": "8/1/19",
-            "Month Name": "August",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Luxe",
-            "Units Sold": "3243",
-            "Manufacturing Price": 260,
-            "Sale Price": 350,
-            "Gross Sales": 1135050,
-            "Discounts": 24745,
-            "Sales": 1110305,
-            "COGS": 183820,
-            "Profit": 926485,
-            "Date": "9/1/19",
-            "Month Name": "September",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Luxe",
-            "Units Sold": "1120",
-            "Manufacturing Price": 260,
-            "Sale Price": 15,
-            "Gross Sales": 16800,
-            "Discounts": 3108,
-            "Sales": 13692,
-            "COGS": 20720,
-            "Profit": 7028,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Luxe",
-            "Units Sold": "1174",
-            "Manufacturing Price": 260,
-            "Sale Price": 300,
-            "Gross Sales": 352200,
-            "Discounts": 25590,
-            "Sales": 326610,
-            "COGS": 213250,
-            "Profit": 113360,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Kensington",
-            "Units Sold": "2541",
-            "Manufacturing Price": 3,
-            "Sale Price": 12,
-            "Gross Sales": 30492,
-            "Discounts": 1581.36,
-            "Sales": 28910.64,
-            "COGS": 3594,
-            "Profit": 25316.64,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "3246",
-            "Manufacturing Price": 10,
-            "Sale Price": 7,
-            "Gross Sales": 22722,
-            "Discounts": 1949.64,
-            "Sales": 20772.36,
-            "COGS": 12660,
-            "Profit": 8112.36,
-            "Date": "4/1/19",
-            "Month Name": "April",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "1531",
-            "Manufacturing Price": 10,
-            "Sale Price": 12,
-            "Gross Sales": 18372,
-            "Discounts": 1581.36,
-            "Sales": 16790.64,
-            "COGS": 3594,
-            "Profit": 13196.64,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Burlington",
-            "Units Sold": "2526",
-            "Manufacturing Price": 120,
-            "Sale Price": 15,
-            "Gross Sales": 37890,
-            "Discounts": 633.6,
-            "Sales": 37256.4,
-            "COGS": 3840,
-            "Profit": 33416.4,
-            "Date": "1/1/19",
-            "Month Name": "January",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Burlington",
-            "Units Sold": "1136",
-            "Manufacturing Price": 120,
-            "Sale Price": 12,
-            "Gross Sales": 13632,
-            "Discounts": 623.04,
-            "Sales": 13008.96,
-            "COGS": 1416,
-            "Profit": 11592.96,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Mandarin",
-            "Units Sold": "1983",
-            "Manufacturing Price": 250,
-            "Sale Price": 7,
-            "Gross Sales": 13881,
-            "Discounts": 1215.83,
-            "Sales": 12665.17,
-            "COGS": 7895,
-            "Profit": 4770.17,
-            "Date": "3/1/19",
-            "Month Name": "March",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Mandarin",
-            "Units Sold": "3259",
-            "Manufacturing Price": 250,
-            "Sale Price": 12,
-            "Gross Sales": 39108,
-            "Discounts": 1326.6,
-            "Sales": 37781.4,
-            "COGS": 3015,
-            "Profit": 34766.4,
-            "Date": "9/1/18",
-            "Month Name": "September",
-            "Year": "2018"
-        },
-        {
-            "Country": "USA",
-            "Product": "Luxe",
-            "Units Sold": "3267",
-            "Manufacturing Price": 260,
-            "Sale Price": 15,
-            "Gross Sales": 49005,
-            "Discounts": 5279.17,
-            "Sales": 43725.82,
-            "COGS": 31995,
-            "Profit": 11730.82,
-            "Date": "7/1/19",
-            "Month Name": "July",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Luxe",
-            "Units Sold": "2454",
-            "Manufacturing Price": 260,
-            "Sale Price": 12,
-            "Gross Sales": 29448,
-            "Discounts": 623.04,
-            "Sales": 28824.96,
-            "COGS": 1416,
-            "Profit": 27408.96,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Kensington",
-            "Units Sold": "2643",
-            "Manufacturing Price": 3,
-            "Sale Price": 12,
-            "Gross Sales": 31716,
-            "Discounts": 2556.84,
-            "Sales": 29159.16,
-            "COGS": 5811,
-            "Profit": 23348.16,
-            "Date": "2/1/19",
-            "Month Name": "February",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Kensington",
-            "Units Sold": "383",
-            "Manufacturing Price": 3,
-            "Sale Price": 350,
-            "Gross Sales": 134050,
-            "Discounts": 30492,
-            "Sales": 103558,
-            "COGS": 205920,
-            "Profit": 102362,
-            "Date": "3/1/19",
-            "Month Name": "March",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Kensington",
-            "Units Sold": "2801",
-            "Manufacturing Price": 3,
-            "Sale Price": 300,
-            "Gross Sales": 840300,
-            "Discounts": 92763,
-            "Sales": 747537,
-            "COGS": 702750,
-            "Profit": 44787,
-            "Date": "7/1/19",
-            "Month Name": "July",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Kensington",
-            "Units Sold": "1667",
-            "Manufacturing Price": 3,
-            "Sale Price": 125,
-            "Gross Sales": 208375,
-            "Discounts": 33563.75,
-            "Sales": 174811.25,
-            "COGS": 292920,
-            "Profit": 118108.75,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Kensington",
-            "Units Sold": "3539",
-            "Manufacturing Price": 3,
-            "Sale Price": 15,
-            "Gross Sales": 53085,
-            "Discounts": 2574,
-            "Sales": 50511,
-            "COGS": 15600,
-            "Profit": 34911,
-            "Date": "11/1/18",
-            "Month Name": "November",
-            "Year": "2018"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Kensington",
-            "Units Sold": "4226",
-            "Manufacturing Price": 3,
-            "Sale Price": 7,
-            "Gross Sales": 29582,
-            "Discounts": 2083.62,
-            "Sales": 27498.38,
-            "COGS": 13530,
-            "Profit": 13968.38,
-            "Date": "11/1/18",
-            "Month Name": "November",
-            "Year": "2018"
-        },
-        {
-            "Country": "India",
-            "Product": "Royal Oak",
-            "Units Sold": "2220",
-            "Manufacturing Price": 5,
-            "Sale Price": 350,
-            "Gross Sales": 777000,
-            "Discounts": 29491,
-            "Sales": 747509,
-            "COGS": 199160,
-            "Profit": 548349,
-            "Date": "1/1/19",
-            "Month Name": "January",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Royal Oak",
-            "Units Sold": "776",
-            "Manufacturing Price": 5,
-            "Sale Price": 20,
-            "Gross Sales": 15520,
-            "Discounts": 6582.4,
-            "Sales": 8937.6,
-            "COGS": 29920,
-            "Profit": 20982.4,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Royal Oak",
-            "Units Sold": "553",
-            "Manufacturing Price": 5,
-            "Sale Price": 15,
-            "Gross Sales": 8295,
-            "Discounts": 3559.05,
-            "Sales": 4735.95,
-            "COGS": 21570,
-            "Profit": 16834.05,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "2107",
-            "Manufacturing Price": 10,
-            "Sale Price": 300,
-            "Gross Sales": 632100,
-            "Discounts": 28809,
-            "Sales": 603291,
-            "COGS": 218250,
-            "Profit": 385041,
-            "Date": "1/1/19",
-            "Month Name": "January",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "2468",
-            "Manufacturing Price": 10,
-            "Sale Price": 20,
-            "Gross Sales": 49360,
-            "Discounts": 2468.4,
-            "Sales": 46891.6,
-            "COGS": 11220,
-            "Profit": 35671.6,
-            "Date": "3/1/19",
-            "Month Name": "March",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "1905",
-            "Manufacturing Price": 10,
-            "Sale Price": 350,
-            "Gross Sales": 666750,
-            "Discounts": 81023.25,
-            "Sales": 585726.75,
-            "COGS": 547170,
-            "Profit": 38556.75,
-            "Date": "7/1/19",
-            "Month Name": "July",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "3658",
-            "Manufacturing Price": 10,
-            "Sale Price": 12,
-            "Gross Sales": 43896,
-            "Discounts": 5314.32,
-            "Sales": 38581.68,
-            "COGS": 12078,
-            "Profit": 26503.68,
-            "Date": "7/1/19",
-            "Month Name": "July",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "4301",
-            "Manufacturing Price": 10,
-            "Sale Price": 12,
-            "Gross Sales": 51612,
-            "Discounts": 3201.66,
-            "Sales": 48410.34,
-            "COGS": 7276.5,
-            "Profit": 41133.84,
-            "Date": "7/1/19",
-            "Month Name": "July",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "2446",
-            "Manufacturing Price": 10,
-            "Sale Price": 20,
-            "Gross Sales": 48920,
-            "Discounts": 5266.8,
-            "Sales": 43653.2,
-            "COGS": 23940,
-            "Profit": 19713.2,
-            "Date": "8/1/19",
-            "Month Name": "August",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "4209",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 63135,
-            "Discounts": 3273.6,
-            "Sales": 59861.4,
-            "COGS": 19840,
-            "Profit": 40021.4,
-            "Date": "8/1/19",
-            "Month Name": "August",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "3353",
-            "Manufacturing Price": 10,
-            "Sale Price": 125,
-            "Gross Sales": 419125,
-            "Discounts": 33563.75,
-            "Sales": 385561.25,
-            "COGS": 292920,
-            "Profit": 92641.25,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "1401",
-            "Manufacturing Price": 10,
-            "Sale Price": 20,
-            "Gross Sales": 28020,
-            "Discounts": 6582.4,
-            "Sales": 21437.6,
-            "COGS": 29920,
-            "Profit": 8482.4,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "1865",
-            "Manufacturing Price": 10,
-            "Sale Price": 300,
-            "Gross Sales": 559500,
-            "Discounts": 45078,
-            "Sales": 514422,
-            "COGS": 341500,
-            "Profit": 172922,
-            "Date": "11/1/19",
-            "Month Name": "November",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Burlington",
-            "Units Sold": "463",
-            "Manufacturing Price": 120,
-            "Sale Price": 20,
-            "Gross Sales": 9260,
-            "Discounts": 6171,
-            "Sales": 3089,
-            "COGS": 28050,
-            "Profit": 24961,
-            "Date": "9/1/18",
-            "Month Name": "September",
-            "Year": "2018"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Burlington",
-            "Units Sold": "4177",
-            "Manufacturing Price": 120,
-            "Sale Price": 15,
-            "Gross Sales": 62655,
-            "Discounts": 1080.75,
-            "Sales": 61574.25,
-            "COGS": 6550,
-            "Profit": 55024.25,
-            "Date": "9/1/18",
-            "Month Name": "September",
-            "Year": "2018"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Burlington",
-            "Units Sold": "2523",
-            "Manufacturing Price": 120,
-            "Sale Price": 350,
-            "Gross Sales": 883050,
-            "Discounts": 13244,
-            "Sales": 869806,
-            "COGS": 89440,
-            "Profit": 780366,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Burlington",
-            "Units Sold": "1930",
-            "Manufacturing Price": 120,
-            "Sale Price": 7,
-            "Gross Sales": 13510,
-            "Discounts": 1392.16,
-            "Sales": 12117.84,
-            "COGS": 9040,
-            "Profit": 3077.84,
-            "Date": "11/1/19",
-            "Month Name": "November",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Mandarin",
-            "Units Sold": "1301",
-            "Manufacturing Price": 250,
-            "Sale Price": 12,
-            "Gross Sales": 15612,
-            "Discounts": 2288.88,
-            "Sales": 13323.12,
-            "COGS": 5202,
-            "Profit": 8121.12,
-            "Date": "1/1/19",
-            "Month Name": "January",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Mandarin",
-            "Units Sold": "4125",
-            "Manufacturing Price": 250,
-            "Sale Price": 125,
-            "Gross Sales": 515625,
-            "Discounts": 7617.5,
-            "Sales": 508007.5,
-            "COGS": 66480,
-            "Profit": 441527.5,
-            "Date": "1/1/19",
-            "Month Name": "January",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Mandarin",
-            "Units Sold": "607",
-            "Manufacturing Price": 250,
-            "Sale Price": 20,
-            "Gross Sales": 12140,
-            "Discounts": 6457,
-            "Sales": 5683,
-            "COGS": 29350,
-            "Profit": 23667,
-            "Date": "11/1/18",
-            "Month Name": "November",
-            "Year": "2018"
-        },
-        {
-            "Country": "India",
-            "Product": "Luxe",
-            "Units Sold": "478",
-            "Manufacturing Price": 260,
-            "Sale Price": 125,
-            "Gross Sales": 59750,
-            "Discounts": 43518.75,
-            "Sales": 16231.25,
-            "COGS": 379800,
-            "Profit": 363568.75,
-            "Date": "1/1/19",
-            "Month Name": "January",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Luxe",
-            "Units Sold": "4489",
-            "Manufacturing Price": 260,
-            "Sale Price": 20,
-            "Gross Sales": 89780,
-            "Discounts": 5783.8,
-            "Sales": 83996.2,
-            "COGS": 26290,
-            "Profit": 57706.2,
-            "Date": "1/1/19",
-            "Month Name": "January",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Luxe",
-            "Units Sold": "1504",
-            "Manufacturing Price": 260,
-            "Sale Price": 125,
-            "Gross Sales": 188000,
-            "Discounts": 19703.75,
-            "Sales": 168296.25,
-            "COGS": 171960,
-            "Profit": 3663.75,
-            "Date": "5/1/19",
-            "Month Name": "May",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Luxe",
-            "Units Sold": "3763",
-            "Manufacturing Price": 260,
-            "Sale Price": 125,
-            "Gross Sales": 470375,
-            "Discounts": 13021.25,
-            "Sales": 457353.75,
-            "COGS": 113640,
-            "Profit": 343713.75,
-            "Date": "9/1/18",
-            "Month Name": "September",
-            "Year": "2018"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Luxe",
-            "Units Sold": "2412",
-            "Manufacturing Price": 260,
-            "Sale Price": 350,
-            "Gross Sales": 844200,
-            "Discounts": 13244,
-            "Sales": 830956,
-            "COGS": 89440,
-            "Profit": 741516,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Luxe",
-            "Units Sold": "2342",
-            "Manufacturing Price": 260,
-            "Sale Price": 15,
-            "Gross Sales": 35130,
-            "Discounts": 3559.05,
-            "Sales": 31570.95,
-            "COGS": 21570,
-            "Profit": 10000.95,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "4451",
-            "Manufacturing Price": 10,
-            "Sale Price": 7,
-            "Gross Sales": 31157,
-            "Discounts": 292.6,
-            "Sales": 30864.4,
-            "COGS": 1900,
-            "Profit": 28964.4,
-            "Date": "9/1/18",
-            "Month Name": "September",
-            "Year": "2018"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Kensington",
-            "Units Sold": "3796",
-            "Manufacturing Price": 3,
-            "Sale Price": 350,
-            "Gross Sales": 1328600,
-            "Discounts": 37212,
-            "Sales": 1291388,
-            "COGS": 230360,
-            "Profit": 1061028,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Kensington",
-            "Units Sold": "2286",
-            "Manufacturing Price": 3,
-            "Sale Price": 125,
-            "Gross Sales": 285750,
-            "Discounts": 36240,
-            "Sales": 249510,
-            "COGS": 289920,
-            "Profit": 40410,
-            "Date": "9/1/18",
-            "Month Name": "September",
-            "Year": "2018"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Kensington",
-            "Units Sold": "3614",
-            "Manufacturing Price": 3,
-            "Sale Price": 125,
-            "Gross Sales": 451750,
-            "Discounts": 32340,
-            "Sales": 419410,
-            "COGS": 258720,
-            "Profit": 160690,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Kensington",
-            "Units Sold": "1716",
-            "Manufacturing Price": 3,
-            "Sale Price": 15,
-            "Gross Sales": 25740,
-            "Discounts": 4840.2,
-            "Sales": 20899.8,
-            "COGS": 26890,
-            "Profit": 5990.2,
-            "Date": "11/1/19",
-            "Month Name": "November",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Royal Oak",
-            "Units Sold": "1301",
-            "Manufacturing Price": 5,
-            "Sale Price": 15,
-            "Gross Sales": 19515,
-            "Discounts": 1218.6,
-            "Sales": 18296.4,
-            "COGS": 6770,
-            "Profit": 11526.4,
-            "Date": "3/1/19",
-            "Month Name": "March",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Royal Oak",
-            "Units Sold": "4175",
-            "Manufacturing Price": 5,
-            "Sale Price": 300,
-            "Gross Sales": 1252500,
-            "Discounts": 63828,
-            "Sales": 1188672,
-            "COGS": 443250,
-            "Profit": 745422,
-            "Date": "4/1/19",
-            "Month Name": "April",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Royal Oak",
-            "Units Sold": "975",
-            "Manufacturing Price": 5,
-            "Sale Price": 7,
-            "Gross Sales": 6825,
-            "Discounts": 2032.8,
-            "Sales": 4792.2,
-            "COGS": 12100,
-            "Profit": 7307.8,
-            "Date": "9/1/19",
-            "Month Name": "September",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Royal Oak",
-            "Units Sold": "1154",
-            "Manufacturing Price": 5,
-            "Sale Price": 7,
-            "Gross Sales": 8078,
-            "Discounts": 2296.56,
-            "Sales": 5781.44,
-            "COGS": 13670,
-            "Profit": 7888.56,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Royal Oak",
-            "Units Sold": "1873",
-            "Manufacturing Price": 5,
-            "Sale Price": 20,
-            "Gross Sales": 37460,
-            "Discounts": 4116,
-            "Sales": 33344,
-            "COGS": 17150,
-            "Profit": 16194,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "UK",
-            "Product": "Royal Oak",
-            "Units Sold": "3766",
-            "Manufacturing Price": 5,
-            "Sale Price": 300,
-            "Gross Sales": 1129800,
-            "Discounts": 42696,
-            "Sales": 1087104,
-            "COGS": 296500,
-            "Profit": 790604,
-            "Date": "12/1/18",
-            "Month Name": "December",
-            "Year": "2018"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "3558",
-            "Manufacturing Price": 10,
-            "Sale Price": 300,
-            "Gross Sales": 1067400,
-            "Discounts": 125820,
-            "Sales": 941580,
-            "COGS": 873750,
-            "Profit": 67830,
-            "Date": "1/1/19",
-            "Month Name": "January",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "3156",
-            "Manufacturing Price": 10,
-            "Sale Price": 350,
-            "Gross Sales": 1104600,
-            "Discounts": 37212,
-            "Sales": 1067388,
-            "COGS": 230360,
-            "Profit": 837028,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "2994",
-            "Manufacturing Price": 10,
-            "Sale Price": 125,
-            "Gross Sales": 374250,
-            "Discounts": 32340,
-            "Sales": 341910,
-            "COGS": 258720,
-            "Profit": 83190,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "2087",
-            "Manufacturing Price": 10,
-            "Sale Price": 20,
-            "Gross Sales": 41740,
-            "Discounts": 2172,
-            "Sales": 39568,
-            "COGS": 9050,
-            "Profit": 30518,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "1056",
-            "Manufacturing Price": 10,
-            "Sale Price": 20,
-            "Gross Sales": 21120,
-            "Discounts": 4116,
-            "Sales": 17004,
-            "COGS": 17150,
-            "Profit": 146,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "1353",
-            "Manufacturing Price": 10,
-            "Sale Price": 350,
-            "Gross Sales": 473550,
-            "Discounts": 66948,
-            "Sales": 406602,
-            "COGS": 414440,
-            "Profit": 7838,
-            "Date": "11/1/19",
-            "Month Name": "November",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "416",
-            "Manufacturing Price": 10,
-            "Sale Price": 300,
-            "Gross Sales": 124800,
-            "Discounts": 48924,
-            "Sales": 75876,
-            "COGS": 339750,
-            "Profit": 263874,
-            "Date": "11/1/19",
-            "Month Name": "November",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "3880",
-            "Manufacturing Price": 10,
-            "Sale Price": 300,
-            "Gross Sales": 1164000,
-            "Discounts": 77400,
-            "Sales": 1086600,
-            "COGS": 537500,
-            "Profit": 549100,
-            "Date": "11/1/19",
-            "Month Name": "November",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "809",
-            "Manufacturing Price": 10,
-            "Sale Price": 350,
-            "Gross Sales": 283150,
-            "Discounts": 50274,
-            "Sales": 232876,
-            "COGS": 311220,
-            "Profit": 78344,
-            "Date": "11/1/19",
-            "Month Name": "November",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "1892",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 28380,
-            "Discounts": 684,
-            "Sales": 27696,
-            "COGS": 3800,
-            "Profit": 23896,
-            "Date": "12/1/18",
-            "Month Name": "December",
-            "Year": "2018"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "2072",
-            "Manufacturing Price": 10,
-            "Sale Price": 20,
-            "Gross Sales": 41440,
-            "Discounts": 2959.2,
-            "Sales": 38480.8,
-            "COGS": 12330,
-            "Profit": 26150.8,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Burlington",
-            "Units Sold": "3052",
-            "Manufacturing Price": 120,
-            "Sale Price": 350,
-            "Gross Sales": 1068200,
-            "Discounts": 58590,
-            "Sales": 1009610,
-            "COGS": 362700,
-            "Profit": 646910,
-            "Date": "7/1/19",
-            "Month Name": "July",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Burlington",
-            "Units Sold": "3121",
-            "Manufacturing Price": 120,
-            "Sale Price": 350,
-            "Gross Sales": 1092350,
-            "Discounts": 41412,
-            "Sales": 1050938,
-            "COGS": 256360,
-            "Profit": 794578,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Burlington",
-            "Units Sold": "2059",
-            "Manufacturing Price": 120,
-            "Sale Price": 20,
-            "Gross Sales": 41180,
-            "Discounts": 2172,
-            "Sales": 39008,
-            "COGS": 9050,
-            "Profit": 29958,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Mandarin",
-            "Units Sold": "4254",
-            "Manufacturing Price": 250,
-            "Sale Price": 12,
-            "Gross Sales": 51048,
-            "Discounts": 3036.96,
-            "Sales": 48011.04,
-            "COGS": 6327,
-            "Profit": 41684.04,
-            "Date": "5/1/19",
-            "Month Name": "May",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Mandarin",
-            "Units Sold": "1293",
-            "Manufacturing Price": 250,
-            "Sale Price": 15,
-            "Gross Sales": 19395,
-            "Discounts": 6974.1,
-            "Sales": 12420.9,
-            "COGS": 38745,
-            "Profit": 26324.1,
-            "Date": "7/1/19",
-            "Month Name": "July",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Mandarin",
-            "Units Sold": "1293",
-            "Manufacturing Price": 250,
-            "Sale Price": 350,
-            "Gross Sales": 452550,
-            "Discounts": 26166,
-            "Sales": 426384,
-            "COGS": 161980,
-            "Profit": 264404,
-            "Date": "9/1/18",
-            "Month Name": "September",
-            "Year": "2018"
-        },
-        {
-            "Country": "USA",
-            "Product": "Mandarin",
-            "Units Sold": "230",
-            "Manufacturing Price": 250,
-            "Sale Price": 350,
-            "Gross Sales": 80500,
-            "Discounts": 41412,
-            "Sales": 39088,
-            "COGS": 256360,
-            "Profit": 217272,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Mandarin",
-            "Units Sold": "1723",
-            "Manufacturing Price": 250,
-            "Sale Price": 125,
-            "Gross Sales": 215375,
-            "Discounts": 35805,
-            "Sales": 179570,
-            "COGS": 286440,
-            "Profit": 106870,
-            "Date": "11/1/19",
-            "Month Name": "November",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Mandarin",
-            "Units Sold": "240",
-            "Manufacturing Price": 250,
-            "Sale Price": 20,
-            "Gross Sales": 4800,
-            "Discounts": 2959.2,
-            "Sales": 1840.8,
-            "COGS": 12330,
-            "Profit": 10489.2,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Luxe",
-            "Units Sold": "2571",
-            "Manufacturing Price": 260,
-            "Sale Price": 350,
-            "Gross Sales": 899850,
-            "Discounts": 11340,
-            "Sales": 888510,
-            "COGS": 70200,
-            "Profit": 818310,
-            "Date": "2/1/19",
-            "Month Name": "February",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Luxe",
-            "Units Sold": "1661",
-            "Manufacturing Price": 260,
-            "Sale Price": 7,
-            "Gross Sales": 11627,
-            "Discounts": 2874.06,
-            "Sales": 8752.94,
-            "COGS": 17107.5,
-            "Profit": 8354.56,
-            "Date": "7/1/19",
-            "Month Name": "July",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Luxe",
-            "Units Sold": "4474",
-            "Manufacturing Price": 260,
-            "Sale Price": 7,
-            "Gross Sales": 31318,
-            "Discounts": 2296.56,
-            "Sales": 29021.44,
-            "COGS": 13670,
-            "Profit": 15351.44,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Luxe",
-            "Units Sold": "833",
-            "Manufacturing Price": 260,
-            "Sale Price": 15,
-            "Gross Sales": 12495,
-            "Discounts": 4586.4,
-            "Sales": 7908.6,
-            "COGS": 25480,
-            "Profit": 17571.4,
-            "Date": "11/1/18",
-            "Month Name": "November",
-            "Year": "2018"
-        },
-        {
-            "Country": "UK",
-            "Product": "Kensington",
-            "Units Sold": "674",
-            "Manufacturing Price": 3,
-            "Sale Price": 20,
-            "Gross Sales": 13480,
-            "Discounts": 6051.6,
-            "Sales": 7428.4,
-            "COGS": 25215,
-            "Profit": 17786.6,
-            "Date": "1/1/19",
-            "Month Name": "January",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Royal Oak",
-            "Units Sold": "778",
-            "Manufacturing Price": 5,
-            "Sale Price": 12,
-            "Gross Sales": 9336,
-            "Discounts": 3831.84,
-            "Sales": 5504.16,
-            "COGS": 7983,
-            "Profit": 2478.84,
-            "Date": "5/1/19",
-            "Month Name": "May",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "1457",
-            "Manufacturing Price": 10,
-            "Sale Price": 20,
-            "Gross Sales": 29140,
-            "Discounts": 3674.4,
-            "Sales": 25465.6,
-            "COGS": 15310,
-            "Profit": 10155.6,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Mandarin",
-            "Units Sold": "3158",
-            "Manufacturing Price": 250,
-            "Sale Price": 7,
-            "Gross Sales": 22106,
-            "Discounts": 1252.44,
-            "Sales": 20853.56,
-            "COGS": 7455,
-            "Profit": 13398.56,
-            "Date": "3/1/19",
-            "Month Name": "March",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Mandarin",
-            "Units Sold": "4095",
-            "Manufacturing Price": 250,
-            "Sale Price": 20,
-            "Gross Sales": 81900,
-            "Discounts": 3674.4,
-            "Sales": 78225.6,
-            "COGS": 15310,
-            "Profit": 62915.6,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Luxe",
-            "Units Sold": "3170",
-            "Manufacturing Price": 260,
-            "Sale Price": 12,
-            "Gross Sales": 38040,
-            "Discounts": 3975.84,
-            "Sales": 34064.16,
-            "COGS": 8283,
-            "Profit": 25781.16,
-            "Date": "9/1/18",
-            "Month Name": "September",
-            "Year": "2018"
-        },
-        {
-            "Country": "USA",
-            "Product": "Kensington",
-            "Units Sold": "493",
-            "Manufacturing Price": 3,
-            "Sale Price": 15,
-            "Gross Sales": 7395,
-            "Discounts": 5005.65,
-            "Sales": 2389.35,
-            "COGS": 25670,
-            "Profit": 23280.65,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Mandarin",
-            "Units Sold": "3286",
-            "Manufacturing Price": 250,
-            "Sale Price": 15,
-            "Gross Sales": 49290,
-            "Discounts": 5005.65,
-            "Sales": 44284.35,
-            "COGS": 25670,
-            "Profit": 18614.35,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Kensington",
-            "Units Sold": "3563",
-            "Manufacturing Price": 3,
-            "Sale Price": 350,
-            "Gross Sales": 1247050,
-            "Discounts": 41996.5,
-            "Sales": 1205053.5,
-            "COGS": 239980,
-            "Profit": 965073.5,
-            "Date": "3/1/19",
-            "Month Name": "March",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Kensington",
-            "Units Sold": "4109",
-            "Manufacturing Price": 3,
-            "Sale Price": 350,
-            "Gross Sales": 1438150,
-            "Discounts": 81445,
-            "Sales": 1356705,
-            "COGS": 465400,
-            "Profit": 891305,
-            "Date": "3/1/19",
-            "Month Name": "March",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Kensington",
-            "Units Sold": "3653",
-            "Manufacturing Price": 3,
-            "Sale Price": 20,
-            "Gross Sales": 73060,
-            "Discounts": 1149.2,
-            "Sales": 71910.8,
-            "COGS": 4420,
-            "Profit": 67490.8,
-            "Date": "9/1/18",
-            "Month Name": "September",
-            "Year": "2018"
-        },
-        {
-            "Country": "USA",
-            "Product": "Royal Oak",
-            "Units Sold": "2203",
-            "Manufacturing Price": 5,
-            "Sale Price": 350,
-            "Gross Sales": 771050,
-            "Discounts": 44703.75,
-            "Sales": 726346.25,
-            "COGS": 255450,
-            "Profit": 470896.25,
-            "Date": "1/1/19",
-            "Month Name": "January",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Royal Oak",
-            "Units Sold": "2924",
-            "Manufacturing Price": 5,
-            "Sale Price": 7,
-            "Gross Sales": 20468,
-            "Discounts": 1181.18,
-            "Sales": 19286.82,
-            "COGS": 6490,
-            "Profit": 12796.82,
-            "Date": "2/1/19",
-            "Month Name": "February",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Royal Oak",
-            "Units Sold": "2650",
-            "Manufacturing Price": 5,
-            "Sale Price": 12,
-            "Gross Sales": 31800,
-            "Discounts": 942.24,
-            "Sales": 30857.76,
-            "COGS": 1812,
-            "Profit": 29045.76,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Royal Oak",
-            "Units Sold": "1194",
-            "Manufacturing Price": 5,
-            "Sale Price": 20,
-            "Gross Sales": 23880,
-            "Discounts": 5863,
-            "Sales": 18017,
-            "COGS": 22550,
-            "Profit": 4533,
-            "Date": "7/1/19",
-            "Month Name": "July",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Royal Oak",
-            "Units Sold": "3366",
-            "Manufacturing Price": 5,
-            "Sale Price": 20,
-            "Gross Sales": 67320,
-            "Discounts": 3247.4,
-            "Sales": 64072.6,
-            "COGS": 12490,
-            "Profit": 51582.6,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "1325",
-            "Manufacturing Price": 10,
-            "Sale Price": 7,
-            "Gross Sales": 9275,
-            "Discounts": 1309.04,
-            "Sales": 7965.97,
-            "COGS": 7192.5,
-            "Profit": 773.47,
-            "Date": "1/1/19",
-            "Month Name": "January",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "4243",
-            "Manufacturing Price": 10,
-            "Sale Price": 300,
-            "Gross Sales": 1272900,
-            "Discounts": 31473,
-            "Sales": 1241427,
-            "COGS": 201750,
-            "Profit": 1039677,
-            "Date": "1/1/19",
-            "Month Name": "January",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "2887",
-            "Manufacturing Price": 10,
-            "Sale Price": 20,
-            "Gross Sales": 57740,
-            "Discounts": 6866.6,
-            "Sales": 50873.4,
-            "COGS": 26410,
-            "Profit": 24463.4,
-            "Date": "2/1/19",
-            "Month Name": "February",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "3839",
-            "Manufacturing Price": 10,
-            "Sale Price": 20,
-            "Gross Sales": 76780,
-            "Discounts": 7040.8,
-            "Sales": 69739.2,
-            "COGS": 27080,
-            "Profit": 42659.2,
-            "Date": "2/1/19",
-            "Month Name": "February",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "1863",
-            "Manufacturing Price": 10,
-            "Sale Price": 350,
-            "Gross Sales": 652050,
-            "Discounts": 119756,
-            "Sales": 532294,
-            "COGS": 684320,
-            "Profit": 152026,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "2858",
-            "Manufacturing Price": 10,
-            "Sale Price": 125,
-            "Gross Sales": 357250,
-            "Discounts": 25723.75,
-            "Sales": 331526.25,
-            "COGS": 189960,
-            "Profit": 141566.25,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "2868",
-            "Manufacturing Price": 10,
-            "Sale Price": 12,
-            "Gross Sales": 34416,
-            "Discounts": 890.76,
-            "Sales": 33525.24,
-            "COGS": 1713,
-            "Profit": 31812.24,
-            "Date": "7/1/19",
-            "Month Name": "July",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "3805",
-            "Manufacturing Price": 10,
-            "Sale Price": 7,
-            "Gross Sales": 26635,
-            "Discounts": 2453.36,
-            "Sales": 24181.64,
-            "COGS": 13480,
-            "Profit": 10701.64,
-            "Date": "8/1/19",
-            "Month Name": "August",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "3914",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 58710,
-            "Discounts": 3051.75,
-            "Sales": 55658.25,
-            "COGS": 15650,
-            "Profit": 40008.25,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "524",
-            "Manufacturing Price": 10,
-            "Sale Price": 20,
-            "Gross Sales": 10480,
-            "Discounts": 3247.4,
-            "Sales": 7232.6,
-            "COGS": 12490,
-            "Profit": 5257.4,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "3095",
-            "Manufacturing Price": 10,
-            "Sale Price": 350,
-            "Gross Sales": 1083250,
-            "Discounts": 16243.5,
-            "Sales": 1067006.5,
-            "COGS": 92820,
-            "Profit": 974186.5,
-            "Date": "11/1/19",
-            "Month Name": "November",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "2410",
-            "Manufacturing Price": 10,
-            "Sale Price": 12,
-            "Gross Sales": 28920,
-            "Discounts": 1580.28,
-            "Sales": 27339.72,
-            "COGS": 3039,
-            "Profit": 24300.72,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Burlington",
-            "Units Sold": "4263",
-            "Manufacturing Price": 120,
-            "Sale Price": 15,
-            "Gross Sales": 63945,
-            "Discounts": 7795.13,
-            "Sales": 56149.88,
-            "COGS": 39975,
-            "Profit": 16174.88,
-            "Date": "1/1/19",
-            "Month Name": "January",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Burlington",
-            "Units Sold": "2239",
-            "Manufacturing Price": 120,
-            "Sale Price": 350,
-            "Gross Sales": 783650,
-            "Discounts": 119756,
-            "Sales": 663894,
-            "COGS": 684320,
-            "Profit": 20426,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Burlington",
-            "Units Sold": "569",
-            "Manufacturing Price": 120,
-            "Sale Price": 7,
-            "Gross Sales": 3983,
-            "Discounts": 1082.9,
-            "Sales": 2900.1,
-            "COGS": 5950,
-            "Profit": 3049.9,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Burlington",
-            "Units Sold": "3889",
-            "Manufacturing Price": 120,
-            "Sale Price": 12,
-            "Gross Sales": 46668,
-            "Discounts": 942.24,
-            "Sales": 45725.76,
-            "COGS": 1812,
-            "Profit": 43913.76,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Burlington",
-            "Units Sold": "1378",
-            "Manufacturing Price": 120,
-            "Sale Price": 15,
-            "Gross Sales": 20670,
-            "Discounts": 1287,
-            "Sales": 19383,
-            "COGS": 6600,
-            "Profit": 12783,
-            "Date": "9/1/18",
-            "Month Name": "September",
-            "Year": "2018"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Burlington",
-            "Units Sold": "2253",
-            "Manufacturing Price": 120,
-            "Sale Price": 12,
-            "Gross Sales": 27036,
-            "Discounts": 639.6,
-            "Sales": 26396.4,
-            "COGS": 1230,
-            "Profit": 25166.4,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Burlington",
-            "Units Sold": "3202",
-            "Manufacturing Price": 120,
-            "Sale Price": 300,
-            "Gross Sales": 960600,
-            "Discounts": 101595,
-            "Sales": 859005,
-            "COGS": 651250,
-            "Profit": 207755,
-            "Date": "11/1/18",
-            "Month Name": "November",
-            "Year": "2018"
-        },
-        {
-            "Country": "India",
-            "Product": "Burlington",
-            "Units Sold": "3835",
-            "Manufacturing Price": 120,
-            "Sale Price": 12,
-            "Gross Sales": 46020,
-            "Discounts": 1580.28,
-            "Sales": 44439.72,
-            "COGS": 3039,
-            "Profit": 41400.72,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Mandarin",
-            "Units Sold": "2487",
-            "Manufacturing Price": 250,
-            "Sale Price": 125,
-            "Gross Sales": 310875,
-            "Discounts": 25723.75,
-            "Sales": 285151.25,
-            "COGS": 189960,
-            "Profit": 95191.25,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Mandarin",
-            "Units Sold": "4428",
-            "Manufacturing Price": 250,
-            "Sale Price": 15,
-            "Gross Sales": 66420,
-            "Discounts": 3051.75,
-            "Sales": 63368.25,
-            "COGS": 15650,
-            "Profit": 47718.25,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Luxe",
-            "Units Sold": "1200",
-            "Manufacturing Price": 260,
-            "Sale Price": 125,
-            "Gross Sales": 150000,
-            "Discounts": 26958.75,
-            "Sales": 123041.25,
-            "COGS": 199080,
-            "Profit": 76038.75,
-            "Date": "1/1/19",
-            "Month Name": "January",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Luxe",
-            "Units Sold": "2953",
-            "Manufacturing Price": 260,
-            "Sale Price": 7,
-            "Gross Sales": 20671,
-            "Discounts": 1082.9,
-            "Sales": 19588.1,
-            "COGS": 5950,
-            "Profit": 13638.1,
-            "Date": "6/1/19",
-            "Month Name": "June",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Luxe",
-            "Units Sold": "1453",
-            "Manufacturing Price": 260,
-            "Sale Price": 12,
-            "Gross Sales": 17436,
-            "Discounts": 639.6,
-            "Sales": 16796.4,
-            "COGS": 1230,
-            "Profit": 15566.4,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Luxe",
-            "Units Sold": "865",
-            "Manufacturing Price": 260,
-            "Sale Price": 12,
-            "Gross Sales": 10380,
-            "Discounts": 2761.2,
-            "Sales": 7618.8,
-            "COGS": 5310,
-            "Profit": 2308.8,
-            "Date": "12/1/18",
-            "Month Name": "December",
-            "Year": "2018"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Kensington",
-            "Units Sold": "1072",
-            "Manufacturing Price": 3,
-            "Sale Price": 20,
-            "Gross Sales": 21440,
-            "Discounts": 7221.2,
-            "Sales": 14218.8,
-            "COGS": 25790,
-            "Profit": 11571.2,
-            "Date": "4/1/19",
-            "Month Name": "April",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Kensington",
-            "Units Sold": "1737",
-            "Manufacturing Price": 3,
-            "Sale Price": 20,
-            "Gross Sales": 34740,
-            "Discounts": 4880.4,
-            "Sales": 29859.6,
-            "COGS": 17430,
-            "Profit": 12429.6,
-            "Date": "5/1/19",
-            "Month Name": "May",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Kensington",
-            "Units Sold": "1535",
-            "Manufacturing Price": 3,
-            "Sale Price": 7,
-            "Gross Sales": 10745,
-            "Discounts": 2936.08,
-            "Sales": 7808.92,
-            "COGS": 14980,
-            "Profit": 7171.08,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "India",
-            "Product": "Kensington",
-            "Units Sold": "2532",
-            "Manufacturing Price": 3,
-            "Sale Price": 7,
-            "Gross Sales": 17724,
-            "Discounts": 274.4,
-            "Sales": 17449.6,
-            "COGS": 1400,
-            "Profit": 16049.6,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Royal Oak",
-            "Units Sold": "1765",
-            "Manufacturing Price": 5,
-            "Sale Price": 7,
-            "Gross Sales": 12355,
-            "Discounts": 287.14,
-            "Sales": 12067.86,
-            "COGS": 1465,
-            "Profit": 10602.86,
-            "Date": "2/1/19",
-            "Month Name": "February",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Royal Oak",
-            "Units Sold": "1567",
-            "Manufacturing Price": 5,
-            "Sale Price": 7,
-            "Gross Sales": 10969,
-            "Discounts": 2936.08,
-            "Sales": 8032.92,
-            "COGS": 14980,
-            "Profit": 6947.08,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "2640",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 39600,
-            "Discounts": 583.8,
-            "Sales": 39016.2,
-            "COGS": 2780,
-            "Profit": 36236.2,
-            "Date": "2/1/19",
-            "Month Name": "February",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "3079",
-            "Manufacturing Price": 10,
-            "Sale Price": 20,
-            "Gross Sales": 61580,
-            "Discounts": 6798.4,
-            "Sales": 54781.6,
-            "COGS": 24280,
-            "Profit": 30501.6,
-            "Date": "3/1/19",
-            "Month Name": "March",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "4130",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 61950,
-            "Discounts": 3710.7,
-            "Sales": 58239.3,
-            "COGS": 17670,
-            "Profit": 40569.3,
-            "Date": "9/1/19",
-            "Month Name": "September",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "2938",
-            "Manufacturing Price": 10,
-            "Sale Price": 12,
-            "Gross Sales": 35256,
-            "Discounts": 2340.24,
-            "Sales": 32915.76,
-            "COGS": 4179,
-            "Profit": 28736.76,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Mandarin",
-            "Units Sold": "3080",
-            "Manufacturing Price": 250,
-            "Sale Price": 7,
-            "Gross Sales": 21560,
-            "Discounts": 274.4,
-            "Sales": 21285.6,
-            "COGS": 1400,
-            "Profit": 19885.6,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Luxe",
-            "Units Sold": "1530",
-            "Manufacturing Price": 260,
-            "Sale Price": 12,
-            "Gross Sales": 18360,
-            "Discounts": 2340.24,
-            "Sales": 16019.76,
-            "COGS": 4179,
-            "Profit": 11840.76,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Luxe",
-            "Units Sold": "3537",
-            "Manufacturing Price": 260,
-            "Sale Price": 12,
-            "Gross Sales": 42444,
-            "Discounts": 3385.2,
-            "Sales": 39058.8,
-            "COGS": 6045,
-            "Profit": 33013.8,
-            "Date": "12/1/18",
-            "Month Name": "December",
-            "Year": "2018"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Kensington",
-            "Units Sold": "2021",
-            "Manufacturing Price": 3,
-            "Sale Price": 300,
-            "Gross Sales": 606300,
-            "Discounts": 33642,
-            "Sales": 572658,
-            "COGS": 200250,
-            "Profit": 372408,
-            "Date": "7/1/19",
-            "Month Name": "July",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Kensington",
-            "Units Sold": "1804",
-            "Manufacturing Price": 3,
-            "Sale Price": 125,
-            "Gross Sales": 225500,
-            "Discounts": 17902.5,
-            "Sales": 207597.5,
-            "COGS": 122760,
-            "Profit": 84837.5,
-            "Date": "9/1/18",
-            "Month Name": "September",
-            "Year": "2018"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Kensington",
-            "Units Sold": "1014",
-            "Manufacturing Price": 3,
-            "Sale Price": 300,
-            "Gross Sales": 304200,
-            "Discounts": 62832,
-            "Sales": 241368,
-            "COGS": 374000,
-            "Profit": 132632,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Kensington",
-            "Units Sold": "2913",
-            "Manufacturing Price": 3,
-            "Sale Price": 300,
-            "Gross Sales": 873900,
-            "Discounts": 42420,
-            "Sales": 831480,
-            "COGS": 252500,
-            "Profit": 578980,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Kensington",
-            "Units Sold": "763",
-            "Manufacturing Price": 3,
-            "Sale Price": 15,
-            "Gross Sales": 11445,
-            "Discounts": 3177.3,
-            "Sales": 8267.7,
-            "COGS": 15130,
-            "Profit": 6862.3,
-            "Date": "11/1/19",
-            "Month Name": "November",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Kensington",
-            "Units Sold": "1425",
-            "Manufacturing Price": 3,
-            "Sale Price": 15,
-            "Gross Sales": 21375,
-            "Discounts": 4830,
-            "Sales": 16545,
-            "COGS": 23000,
-            "Profit": 6455,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Kensington",
-            "Units Sold": "4357",
-            "Manufacturing Price": 3,
-            "Sale Price": 125,
-            "Gross Sales": 544625,
-            "Discounts": 49367.5,
-            "Sales": 495257.5,
-            "COGS": 338520,
-            "Profit": 156737.5,
-            "Date": "12/1/18",
-            "Month Name": "December",
-            "Year": "2018"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Royal Oak",
-            "Units Sold": "2138",
-            "Manufacturing Price": 5,
-            "Sale Price": 350,
-            "Gross Sales": 748300,
-            "Discounts": 109147.5,
-            "Sales": 639152.5,
-            "COGS": 579150,
-            "Profit": 60002.5,
-            "Date": "1/1/19",
-            "Month Name": "January",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Royal Oak",
-            "Units Sold": "3825",
-            "Manufacturing Price": 5,
-            "Sale Price": 350,
-            "Gross Sales": 1338750,
-            "Discounts": 58751,
-            "Sales": 1279999,
-            "COGS": 311740,
-            "Profit": 968259,
-            "Date": "4/1/19",
-            "Month Name": "April",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Royal Oak",
-            "Units Sold": "3393",
-            "Manufacturing Price": 5,
-            "Sale Price": 350,
-            "Gross Sales": 1187550,
-            "Discounts": 9800,
-            "Sales": 1177750,
-            "COGS": 52000,
-            "Profit": 1125750,
-            "Date": "5/1/19",
-            "Month Name": "May",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Royal Oak",
-            "Units Sold": "2215",
-            "Manufacturing Price": 5,
-            "Sale Price": 7,
-            "Gross Sales": 15505,
-            "Discounts": 380.24,
-            "Sales": 15124.76,
-            "COGS": 1940,
-            "Profit": 13184.76,
-            "Date": "9/1/19",
-            "Month Name": "September",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Royal Oak",
-            "Units Sold": "2278",
-            "Manufacturing Price": 5,
-            "Sale Price": 7,
-            "Gross Sales": 15946,
-            "Discounts": 1692.46,
-            "Sales": 14253.54,
-            "COGS": 8635,
-            "Profit": 5618.54,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Royal Oak",
-            "Units Sold": "403",
-            "Manufacturing Price": 5,
-            "Sale Price": 15,
-            "Gross Sales": 6045,
-            "Discounts": 4830,
-            "Sales": 1215,
-            "COGS": 23000,
-            "Profit": 21785,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "289",
-            "Manufacturing Price": 10,
-            "Sale Price": 20,
-            "Gross Sales": 5780,
-            "Discounts": 728,
-            "Sales": 5052,
-            "COGS": 2600,
-            "Profit": 2452,
-            "Date": "2/1/19",
-            "Month Name": "February",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "749",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 11235,
-            "Discounts": 5187,
-            "Sales": 6048,
-            "COGS": 24700,
-            "Profit": 18652,
-            "Date": "9/1/18",
-            "Month Name": "September",
-            "Year": "2018"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "372",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 5580,
-            "Discounts": 3660.3,
-            "Sales": 1919.7,
-            "COGS": 17430,
-            "Profit": 15510.3,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "3781",
-            "Manufacturing Price": 10,
-            "Sale Price": 12,
-            "Gross Sales": 45372,
-            "Discounts": 4895.52,
-            "Sales": 40476.48,
-            "COGS": 8742,
-            "Profit": 31734.48,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "1785",
-            "Manufacturing Price": 10,
-            "Sale Price": 7,
-            "Gross Sales": 12495,
-            "Discounts": 1696.38,
-            "Sales": 10798.62,
-            "COGS": 8655,
-            "Profit": 2143.62,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "4029",
-            "Manufacturing Price": 10,
-            "Sale Price": 350,
-            "Gross Sales": 1410150,
-            "Discounts": 34300,
-            "Sales": 1375850,
-            "COGS": 182000,
-            "Profit": 1193850,
-            "Date": "11/1/19",
-            "Month Name": "November",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "2813",
-            "Manufacturing Price": 10,
-            "Sale Price": 12,
-            "Gross Sales": 33756,
-            "Discounts": 3732.96,
-            "Sales": 30023.04,
-            "COGS": 6666,
-            "Profit": 23357.04,
-            "Date": "11/1/18",
-            "Month Name": "November",
-            "Year": "2018"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "2150",
-            "Manufacturing Price": 10,
-            "Sale Price": 350,
-            "Gross Sales": 752500,
-            "Discounts": 57673,
-            "Sales": 694827,
-            "COGS": 306020,
-            "Profit": 388807,
-            "Date": "11/1/19",
-            "Month Name": "November",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "2093",
-            "Manufacturing Price": 10,
-            "Sale Price": 350,
-            "Gross Sales": 732550,
-            "Discounts": 94178,
-            "Sales": 638372,
-            "COGS": 499720,
-            "Profit": 138652,
-            "Date": "11/1/18",
-            "Month Name": "November",
-            "Year": "2018"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Burlington",
-            "Units Sold": "4391",
-            "Manufacturing Price": 120,
-            "Sale Price": 125,
-            "Gross Sales": 548875,
-            "Discounts": 27562.5,
-            "Sales": 521312.5,
-            "COGS": 189000,
-            "Profit": 332312.5,
-            "Date": "2/1/19",
-            "Month Name": "February",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Burlington",
-            "Units Sold": "2695",
-            "Manufacturing Price": 120,
-            "Sale Price": 20,
-            "Gross Sales": 53900,
-            "Discounts": 1696.8,
-            "Sales": 52203.2,
-            "COGS": 6060,
-            "Profit": 46143.2,
-            "Date": "4/1/19",
-            "Month Name": "April",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Burlington",
-            "Units Sold": "1337",
-            "Manufacturing Price": 120,
-            "Sale Price": 300,
-            "Gross Sales": 401100,
-            "Discounts": 103320,
-            "Sales": 297780,
-            "COGS": 615000,
-            "Profit": 317220,
-            "Date": "7/1/19",
-            "Month Name": "July",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Burlington",
-            "Units Sold": "2621",
-            "Manufacturing Price": 120,
-            "Sale Price": 300,
-            "Gross Sales": 786300,
-            "Discounts": 11298,
-            "Sales": 775002,
-            "COGS": 67250,
-            "Profit": 707752,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "India",
-            "Product": "Burlington",
-            "Units Sold": "3735",
-            "Manufacturing Price": 120,
-            "Sale Price": 300,
-            "Gross Sales": 1120500,
-            "Discounts": 106512,
-            "Sales": 1013988,
-            "COGS": 634000,
-            "Profit": 379988,
-            "Date": "11/1/18",
-            "Month Name": "November",
-            "Year": "2018"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Mandarin",
-            "Units Sold": "4320",
-            "Manufacturing Price": 250,
-            "Sale Price": 7,
-            "Gross Sales": 30240,
-            "Discounts": 2844.94,
-            "Sales": 27395.06,
-            "COGS": 14515,
-            "Profit": 12880.06,
-            "Date": "3/1/19",
-            "Month Name": "March",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Mandarin",
-            "Units Sold": "2828",
-            "Manufacturing Price": 250,
-            "Sale Price": 300,
-            "Gross Sales": 848400,
-            "Discounts": 106722,
-            "Sales": 741678,
-            "COGS": 635250,
-            "Profit": 106428,
-            "Date": "8/1/19",
-            "Month Name": "August",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Mandarin",
-            "Units Sold": "2586",
-            "Manufacturing Price": 250,
-            "Sale Price": 300,
-            "Gross Sales": 775800,
-            "Discounts": 11298,
-            "Sales": 764502,
-            "COGS": 67250,
-            "Profit": 697252,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Mandarin",
-            "Units Sold": "1248",
-            "Manufacturing Price": 250,
-            "Sale Price": 300,
-            "Gross Sales": 374400,
-            "Discounts": 62832,
-            "Sales": 311568,
-            "COGS": 374000,
-            "Profit": 62432,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Mandarin",
-            "Units Sold": "4035",
-            "Manufacturing Price": 250,
-            "Sale Price": 300,
-            "Gross Sales": 1210500,
-            "Discounts": 42420,
-            "Sales": 1168080,
-            "COGS": 252500,
-            "Profit": 915580,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Mandarin",
-            "Units Sold": "359",
-            "Manufacturing Price": 250,
-            "Sale Price": 350,
-            "Gross Sales": 125650,
-            "Discounts": 62769,
-            "Sales": 62881,
-            "COGS": 333060,
-            "Profit": 270179,
-            "Date": "12/1/18",
-            "Month Name": "December",
-            "Year": "2018"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Luxe",
-            "Units Sold": "3926",
-            "Manufacturing Price": 260,
-            "Sale Price": 300,
-            "Gross Sales": 1177800,
-            "Discounts": 37296,
-            "Sales": 1140504,
-            "COGS": 222000,
-            "Profit": 918504,
-            "Date": "3/1/19",
-            "Month Name": "March",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Luxe",
-            "Units Sold": "4247",
-            "Manufacturing Price": 260,
-            "Sale Price": 125,
-            "Gross Sales": 530875,
-            "Discounts": 49770,
-            "Sales": 481105,
-            "COGS": 341280,
-            "Profit": 139825,
-            "Date": "5/1/19",
-            "Month Name": "May",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Luxe",
-            "Units Sold": "2695",
-            "Manufacturing Price": 260,
-            "Sale Price": 12,
-            "Gross Sales": 32340,
-            "Discounts": 4158,
-            "Sales": 28182,
-            "COGS": 7425,
-            "Profit": 20757,
-            "Date": "8/1/19",
-            "Month Name": "August",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Luxe",
-            "Units Sold": "1104",
-            "Manufacturing Price": 260,
-            "Sale Price": 15,
-            "Gross Sales": 16560,
-            "Discounts": 3660.3,
-            "Sales": 12899.7,
-            "COGS": 17430,
-            "Profit": 4530.3,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "USA",
-            "Product": "Luxe",
-            "Units Sold": "1449",
-            "Manufacturing Price": 260,
-            "Sale Price": 12,
-            "Gross Sales": 17388,
-            "Discounts": 4895.52,
-            "Sales": 12492.48,
-            "COGS": 8742,
-            "Profit": 3750.48,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Luxe",
-            "Units Sold": "1131",
-            "Manufacturing Price": 260,
-            "Sale Price": 7,
-            "Gross Sales": 7917,
-            "Discounts": 1696.38,
-            "Sales": 6220.62,
-            "COGS": 8655,
-            "Profit": 2434.38,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Luxe",
-            "Units Sold": "1468",
-            "Manufacturing Price": 260,
-            "Sale Price": 7,
-            "Gross Sales": 10276,
-            "Discounts": 1692.46,
-            "Sales": 8583.54,
-            "COGS": 8635,
-            "Profit": 51.46,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Luxe",
-            "Units Sold": "1272",
-            "Manufacturing Price": 260,
-            "Sale Price": 15,
-            "Gross Sales": 19080,
-            "Discounts": 3927,
-            "Sales": 15153,
-            "COGS": 18700,
-            "Profit": 3547,
-            "Date": "11/1/18",
-            "Month Name": "November",
-            "Year": "2018"
-        },
-        {
-            "Country": "UK",
-            "Product": "Kensington",
-            "Units Sold": "1403",
-            "Manufacturing Price": 3,
-            "Sale Price": 125,
-            "Gross Sales": 175375,
-            "Discounts": 22012.5,
-            "Sales": 153362.5,
-            "COGS": 140880,
-            "Profit": 12482.5,
-            "Date": "8/1/19",
-            "Month Name": "August",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Kensington",
-            "Units Sold": "2161",
-            "Manufacturing Price": 3,
-            "Sale Price": 125,
-            "Gross Sales": 270125,
-            "Discounts": 51881.25,
-            "Sales": 218243.75,
-            "COGS": 332040,
-            "Profit": 113796.25,
-            "Date": "8/1/19",
-            "Month Name": "August",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Kensington",
-            "Units Sold": "1937",
-            "Manufacturing Price": 3,
-            "Sale Price": 125,
-            "Gross Sales": 242125,
-            "Discounts": 20343.75,
-            "Sales": 221781.25,
-            "COGS": 130200,
-            "Profit": 91581.25,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Royal Oak",
-            "Units Sold": "2879",
-            "Manufacturing Price": 5,
-            "Sale Price": 300,
-            "Gross Sales": 863700,
-            "Discounts": 24570,
-            "Sales": 839130,
-            "COGS": 136500,
-            "Profit": 702630,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "1330",
-            "Manufacturing Price": 10,
-            "Sale Price": 20,
-            "Gross Sales": 26600,
-            "Discounts": 3474,
-            "Sales": 23126,
-            "COGS": 11580,
-            "Profit": 11546,
-            "Date": "3/1/19",
-            "Month Name": "March",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "2426",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 36390,
-            "Discounts": 3631.5,
-            "Sales": 32758.5,
-            "COGS": 16140,
-            "Profit": 16618.5,
-            "Date": "4/1/19",
-            "Month Name": "April",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "2033",
-            "Manufacturing Price": 10,
-            "Sale Price": 7,
-            "Gross Sales": 14231,
-            "Discounts": 2661.75,
-            "Sales": 11569.25,
-            "COGS": 12675,
-            "Profit": 1105.75,
-            "Date": "4/1/19",
-            "Month Name": "April",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "2029",
-            "Manufacturing Price": 10,
-            "Sale Price": 350,
-            "Gross Sales": 710150,
-            "Discounts": 149677.5,
-            "Sales": 560472.5,
-            "COGS": 741260,
-            "Profit": 180787.5,
-            "Date": "5/1/19",
-            "Month Name": "May",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "1049",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 15735,
-            "Discounts": 5757.75,
-            "Sales": 9977.25,
-            "COGS": 25590,
-            "Profit": 15612.75,
-            "Date": "8/1/19",
-            "Month Name": "August",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "1062",
-            "Manufacturing Price": 10,
-            "Sale Price": 20,
-            "Gross Sales": 21240,
-            "Discounts": 801,
-            "Sales": 20439,
-            "COGS": 2670,
-            "Profit": 17769,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "2509",
-            "Manufacturing Price": 10,
-            "Sale Price": 125,
-            "Gross Sales": 313625,
-            "Discounts": 20343.75,
-            "Sales": 293281.25,
-            "COGS": 130200,
-            "Profit": 163081.25,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Vermont",
-            "Units Sold": "1743",
-            "Manufacturing Price": 10,
-            "Sale Price": 15,
-            "Gross Sales": 26145,
-            "Discounts": 2643.75,
-            "Sales": 23501.25,
-            "COGS": 11750,
-            "Profit": 11751.25,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "3418",
-            "Manufacturing Price": 10,
-            "Sale Price": 350,
-            "Gross Sales": 1196300,
-            "Discounts": 105367.5,
-            "Sales": 1090932.5,
-            "COGS": 521820,
-            "Profit": 569112.5,
-            "Date": "11/1/18",
-            "Month Name": "November",
-            "Year": "2018"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Vermont",
-            "Units Sold": "1751",
-            "Manufacturing Price": 10,
-            "Sale Price": 350,
-            "Gross Sales": 612850,
-            "Discounts": 112927.5,
-            "Sales": 499922.5,
-            "COGS": 559260,
-            "Profit": 59337.5,
-            "Date": "11/1/18",
-            "Month Name": "November",
-            "Year": "2018"
-        },
-        {
-            "Country": "USA",
-            "Product": "Vermont",
-            "Units Sold": "3228",
-            "Manufacturing Price": 10,
-            "Sale Price": 12,
-            "Gross Sales": 38736,
-            "Discounts": 1645.2,
-            "Sales": 37090.8,
-            "COGS": 2742,
-            "Profit": 34348.8,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Vermont",
-            "Units Sold": "1105",
-            "Manufacturing Price": 10,
-            "Sale Price": 20,
-            "Gross Sales": 22100,
-            "Discounts": 879,
-            "Sales": 21221,
-            "COGS": 2930,
-            "Profit": 18291,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Burlington",
-            "Units Sold": "2778",
-            "Manufacturing Price": 120,
-            "Sale Price": 12,
-            "Gross Sales": 33336,
-            "Discounts": 900,
-            "Sales": 32436,
-            "COGS": 1500,
-            "Profit": 30936,
-            "Date": "3/1/19",
-            "Month Name": "March",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Burlington",
-            "Units Sold": "1173",
-            "Manufacturing Price": 120,
-            "Sale Price": 15,
-            "Gross Sales": 17595,
-            "Discounts": 6358.5,
-            "Sales": 11236.5,
-            "COGS": 28260,
-            "Profit": 17023.5,
-            "Date": "5/1/19",
-            "Month Name": "May",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Burlington",
-            "Units Sold": "3160",
-            "Manufacturing Price": 120,
-            "Sale Price": 125,
-            "Gross Sales": 395000,
-            "Discounts": 12431.25,
-            "Sales": 382568.75,
-            "COGS": 79560,
-            "Profit": 303008.75,
-            "Date": "9/1/19",
-            "Month Name": "September",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Burlington",
-            "Units Sold": "4322",
-            "Manufacturing Price": 120,
-            "Sale Price": 300,
-            "Gross Sales": 1296600,
-            "Discounts": 115830,
-            "Sales": 1180770,
-            "COGS": 643500,
-            "Profit": 537270,
-            "Date": "11/1/18",
-            "Month Name": "November",
-            "Year": "2018"
-        },
-        {
-            "Country": "USA",
-            "Product": "Burlington",
-            "Units Sold": "1901",
-            "Manufacturing Price": 120,
-            "Sale Price": 125,
-            "Gross Sales": 237625,
-            "Discounts": 45712.5,
-            "Sales": 191912.5,
-            "COGS": 292560,
-            "Profit": 100647.5,
-            "Date": "12/1/18",
-            "Month Name": "December",
-            "Year": "2018"
-        },
-        {
-            "Country": "USA",
-            "Product": "Burlington",
-            "Units Sold": "2980",
-            "Manufacturing Price": 120,
-            "Sale Price": 12,
-            "Gross Sales": 35760,
-            "Discounts": 1645.2,
-            "Sales": 34114.8,
-            "COGS": 2742,
-            "Profit": 31372.8,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Mandarin",
-            "Units Sold": "4068",
-            "Manufacturing Price": 250,
-            "Sale Price": 20,
-            "Gross Sales": 81360,
-            "Discounts": 2596.5,
-            "Sales": 78763.5,
-            "COGS": 8655,
-            "Profit": 70108.5,
-            "Date": "7/1/19",
-            "Month Name": "July",
-            "Year": "2019"
-        },
-        {
-            "Country": "India",
-            "Product": "Mandarin",
-            "Units Sold": "2105",
-            "Manufacturing Price": 250,
-            "Sale Price": 15,
-            "Gross Sales": 31575,
-            "Discounts": 1107,
-            "Sales": 30468,
-            "COGS": 4920,
-            "Profit": 25548,
-            "Date": "7/1/19",
-            "Month Name": "July",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Mandarin",
-            "Units Sold": "1647",
-            "Manufacturing Price": 250,
-            "Sale Price": 20,
-            "Gross Sales": 32940,
-            "Discounts": 801,
-            "Sales": 32139,
-            "COGS": 2670,
-            "Profit": 29469,
-            "Date": "10/1/18",
-            "Month Name": "October",
-            "Year": "2018"
-        },
-        {
-            "Country": "India",
-            "Product": "Mandarin",
-            "Units Sold": "235",
-            "Manufacturing Price": 250,
-            "Sale Price": 15,
-            "Gross Sales": 3525,
-            "Discounts": 2643.75,
-            "Sales": 881.25,
-            "COGS": 11750,
-            "Profit": 10868.75,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Mandarin",
-            "Units Sold": "3617",
-            "Manufacturing Price": 250,
-            "Sale Price": 125,
-            "Gross Sales": 452125,
-            "Discounts": 55387.5,
-            "Sales": 396737.5,
-            "COGS": 354480,
-            "Profit": 42257.5,
-            "Date": "11/1/18",
-            "Month Name": "November",
-            "Year": "2018"
-        },
-        {
-            "Country": "India",
-            "Product": "Mandarin",
-            "Units Sold": "2106",
-            "Manufacturing Price": 250,
-            "Sale Price": 125,
-            "Gross Sales": 263250,
-            "Discounts": 10350,
-            "Sales": 252900,
-            "COGS": 66240,
-            "Profit": 186660,
-            "Date": "11/1/19",
-            "Month Name": "November",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Mandarin",
-            "Units Sold": "2351",
-            "Manufacturing Price": 250,
-            "Sale Price": 20,
-            "Gross Sales": 47020,
-            "Discounts": 879,
-            "Sales": 46141,
-            "COGS": 2930,
-            "Profit": 43211,
-            "Date": "12/1/19",
-            "Month Name": "December",
-            "Year": "2019"
-        },
-        {
-            "Country": "UK",
-            "Product": "Luxe",
-            "Units Sold": "1897",
-            "Manufacturing Price": 260,
-            "Sale Price": 300,
-            "Gross Sales": 569100,
-            "Discounts": 111375,
-            "Sales": 457725,
-            "COGS": 618750,
-            "Profit": 161025,
-            "Date": "3/1/19",
-            "Month Name": "March",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Luxe",
-            "Units Sold": "647",
-            "Manufacturing Price": 260,
-            "Sale Price": 300,
-            "Gross Sales": 194100,
-            "Discounts": 24570,
-            "Sales": 169530,
-            "COGS": 136500,
-            "Profit": 33030,
-            "Date": "10/1/19",
-            "Month Name": "October",
-            "Year": "2019"
-        },
-        {
-            "Country": "Brazil",
-            "Product": "Royal Oak",
-            "Units Sold": "3621",
-            "Manufacturing Price": 5,
-            "Sale Price": 7,
-            "Gross Sales": 25347,
-            "Discounts": 1436.4,
-            "Sales": 23910.6,
-            "COGS": 6840,
-            "Profit": 17070.6,
-            "Date": "2/1/19",
-            "Month Name": "February",
-            "Year": "2019"
-        },
-        {
-            "Country": "Japan",
-            "Product": "Vermont",
-            "Units Sold": "3221",
-            "Manufacturing Price": 10,
-            "Sale Price": 7,
-            "Gross Sales": 22547,
-            "Discounts": 759.15,
-            "Sales": 21787.85,
-            "COGS": 3615,
-            "Profit": 18172.85,
-            "Date": "4/1/19",
-            "Month Name": "April",
-            "Year": "2019"
-        },
-        {
-            "Country": "USA",
-            "Product": "Mandarin",
-            "Units Sold": "493",
-            "Manufacturing Price": 250,
-            "Sale Price": 12,
-            "Gross Sales": 5916,
-            "Discounts": 3250.8,
-            "Sales": 2665.2,
-            "COGS": 5418,
-            "Profit": 2752.8,
-            "Date": "5/1/19",
-            "Month Name": "May",
-            "Year": "2019"
-        }
-    ];
+export const DATA = [
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '12.814860936633712'
+      },
+      Seller: {
+          Name: 'Stanley Brooker',
+          City: 'Seattle'
+      },
+      Date: '2007-01-01T00:00:00',
+      Value: '94.2652032683907',
+      NumberOfUnits: '282'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '49.579375120615296'
+      },
+      Seller: {
+          Name: 'Elisa Longbottom',
+          City: 'Sofia'
+      },
+      Date: '2007-01-05T00:00:00',
+      Value: '70.798922689072285',
+      NumberOfUnits: '296'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '3.5653273591610266'
+      },
+      Seller: {
+          Name: 'Lydia Burson',
+          City: 'Tokyo'
+      },
+      Date: '2007-01-06T00:00:00',
+      Value: '35.799331607203619',
+      NumberOfUnits: '68'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '85.581758145979492'
+      },
+      Seller: {
+          Name: 'David Haley',
+          City: 'London'
+      },
+      Date: '2007-01-07T00:00:00',
+      Value: '41.411331268684627',
+      NumberOfUnits: '293'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '18.137625846144569'
+      },
+      Seller: {
+          Name: 'John Smith',
+          City: 'Seattle'
+      },
+      Date: '2007-01-08T00:00:00',
+      Value: '60.474313730594851',
+      NumberOfUnits: '240'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '68.330973139186852'
+      },
+      Seller: {
+          Name: 'Larry Lieb',
+          City: 'Tokyo'
+      },
+      Date: '2007-01-12T00:00:00',
+      Value: '37.920727319047195',
+      NumberOfUnits: '456'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '16.056252511244384'
+      },
+      Seller: {
+          Name: 'Walter Pang',
+          City: 'Sofia'
+      },
+      Date: '2007-02-09T00:00:00',
+      Value: '89.1950179306767',
+      NumberOfUnits: '492'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '35.235206612960994'
+      },
+      Seller: {
+          Name: 'Benjamin Dupree',
+          City: 'Tokyo'
+      },
+      Date: '2007-02-16T00:00:00',
+      Value: '1.8611075365269125',
+      NumberOfUnits: '78'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '73.215433663323253'
+      },
+      Seller: {
+          Name: 'Nicholas Carmona',
+          City: 'Mellvile'
+      },
+      Date: '2007-02-17T00:00:00',
+      Value: '4.611142726899657',
+      NumberOfUnits: '150'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '73.614934400476017'
+      },
+      Seller: {
+          Name: 'Nicholas Carmona',
+          City: 'London'
+      },
+      Date: '2007-02-19T00:00:00',
+      Value: '36.1731772013815',
+      NumberOfUnits: '262'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '47.080544683654111'
+      },
+      Seller: {
+          Name: 'Monica Freitag',
+          City: 'Sofia'
+      },
+      Date: '2007-02-21T00:00:00',
+      Value: '18.699740766873461',
+      NumberOfUnits: '125'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '51.298256382019382'
+      },
+      Seller: {
+          Name: 'Kathe Pettel',
+          City: 'Sofia'
+      },
+      Date: '2007-03-04T00:00:00',
+      Value: '11.600706917979151',
+      NumberOfUnits: '42'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '27.466344333936622'
+      },
+      Seller: {
+          Name: 'David Haley',
+          City: 'Tokyo'
+      },
+      Date: '2007-03-04T00:00:00',
+      Value: '41.252478603856865',
+      NumberOfUnits: '282'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '22.374118083330856'
+      },
+      Seller: {
+          Name: 'Antonio Charbonneau',
+          City: 'Berlin'
+      },
+      Date: '2007-03-17T00:00:00',
+      Value: '59.82648998490837',
+      NumberOfUnits: '305'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '85.292836504659078'
+      },
+      Seller: {
+          Name: 'Glenn Landeros',
+          City: 'Tokyo'
+      },
+      Date: '2007-03-23T00:00:00',
+      Value: '31.430979925874148',
+      NumberOfUnits: '265'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '80.675564091967217'
+      },
+      Seller: {
+          Name: 'Elisa Longbottom',
+          City: 'Mellvile'
+      },
+      Date: '2007-03-25T00:00:00',
+      Value: '90.425077402230855',
+      NumberOfUnits: '350'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '64.613919642108456'
+      },
+      Seller: {
+          Name: 'Glenn Landeros',
+          City: 'Mellvile'
+      },
+      Date: '2007-03-27T00:00:00',
+      Value: '95.393439147338938',
+      NumberOfUnits: '82'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '50.041336636078235'
+      },
+      Seller: {
+          Name: 'Harry Tyler',
+          City: 'New York'
+      },
+      Date: '2007-04-02T00:00:00',
+      Value: '1.2766330043210803',
+      NumberOfUnits: '67'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '16.311566166724809'
+      },
+      Seller: {
+          Name: 'Brandon Mckim',
+          City: 'Mellvile'
+      },
+      Date: '2007-04-04T00:00:00',
+      Value: '25.354673632120097',
+      NumberOfUnits: '370'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '49.852171563474542'
+      },
+      Seller: {
+          Name: 'Monica Freitag',
+          City: 'Berlin'
+      },
+      Date: '2007-04-12T00:00:00',
+      Value: '46.315344491189045',
+      NumberOfUnits: '228'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '44.761602042597531'
+      },
+      Seller: {
+          Name: 'Bryan Culver',
+          City: 'Tokyo'
+      },
+      Date: '2007-04-15T00:00:00',
+      Value: '82.180273524569472',
+      NumberOfUnits: '272'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '44.395412618478488'
+      },
+      Seller: {
+          Name: 'Russell Shorter',
+          City: 'Berlin'
+      },
+      Date: '2007-04-18T00:00:00',
+      Value: '83.970713701085515',
+      NumberOfUnits: '227'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '39.287860616709978'
+      },
+      Seller: {
+          Name: 'Stanley Brooker',
+          City: 'Mellvile'
+      },
+      Date: '2007-04-18T00:00:00',
+      Value: '94.261160769621455',
+      NumberOfUnits: '248'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '36.581183335083153'
+      },
+      Seller: {
+          Name: 'Benjamin Meekins',
+          City: 'Tokyo'
+      },
+      Date: '2007-04-21T00:00:00',
+      Value: '45.74127162142716',
+      NumberOfUnits: '414'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '75.8285212217963'
+      },
+      Seller: {
+          Name: 'Walter Pang',
+          City: 'London'
+      },
+      Date: '2007-04-25T00:00:00',
+      Value: '97.593172917884388',
+      NumberOfUnits: '43'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '57.757038929386553'
+      },
+      Seller: {
+          Name: 'Antonio Charbonneau',
+          City: 'Mellvile'
+      },
+      Date: '2007-04-26T00:00:00',
+      Value: '20.936109088797174',
+      NumberOfUnits: '71'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '40.231876140568346'
+      },
+      Seller: {
+          Name: 'Stanley Brooker',
+          City: 'New York'
+      },
+      Date: '2007-05-14T00:00:00',
+      Value: '71.862645294453316',
+      NumberOfUnits: '321'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '49.525128002057379'
+      },
+      Seller: {
+          Name: 'Elisa Longbottom',
+          City: 'London'
+      },
+      Date: '2007-05-17T00:00:00',
+      Value: '49.451349419286174',
+      NumberOfUnits: '329'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '56.460825706115379'
+      },
+      Seller: {
+          Name: 'Benjamin Dupree',
+          City: 'London'
+      },
+      Date: '2007-05-17T00:00:00',
+      Value: '72.704781020388381',
+      NumberOfUnits: '88'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '67.129778008502811'
+      },
+      Seller: {
+          Name: 'Glenn Landeros',
+          City: 'New York'
+      },
+      Date: '2007-05-26T00:00:00',
+      Value: '56.169638576065019',
+      NumberOfUnits: '366'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '14.628920431541708'
+      },
+      Seller: {
+          Name: 'Walter Pang',
+          City: 'Sofia'
+      },
+      Date: '2007-06-02T00:00:00',
+      Value: '81.322212508563979',
+      NumberOfUnits: '450'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '89.2609520299644'
+      },
+      Seller: {
+          Name: 'Howard Sprouse',
+          City: 'Seattle'
+      },
+      Date: '2007-06-06T00:00:00',
+      Value: '18.962721814849751',
+      NumberOfUnits: '475'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '33.752368871938607'
+      },
+      Seller: {
+          Name: 'Nicholas Carmona',
+          City: 'Seattle'
+      },
+      Date: '2007-06-11T00:00:00',
+      Value: '54.870849966477067',
+      NumberOfUnits: '195'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '54.101630511740986'
+      },
+      Seller: {
+          Name: 'Harold Garvin',
+          City: 'Sofia'
+      },
+      Date: '2007-06-17T00:00:00',
+      Value: '71.630847021765462',
+      NumberOfUnits: '458'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '18.437854628282533'
+      },
+      Seller: {
+          Name: 'Benjamin Dupree',
+          City: 'Sofia'
+      },
+      Date: '2007-07-04T00:00:00',
+      Value: '24.16097206257329',
+      NumberOfUnits: '7'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '96.142818264729726'
+      },
+      Seller: {
+          Name: 'Elisa Longbottom',
+          City: 'New York'
+      },
+      Date: '2007-07-08T00:00:00',
+      Value: '57.497908062067772',
+      NumberOfUnits: '158'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '22.990409435234223'
+      },
+      Seller: {
+          Name: 'Benjamin Meekins',
+          City: 'Tokyo'
+      },
+      Date: '2007-07-09T00:00:00',
+      Value: '58.795889168417027',
+      NumberOfUnits: '34'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '52.664019145380713'
+      },
+      Seller: {
+          Name: 'Larry Lieb',
+          City: 'Seattle'
+      },
+      Date: '2007-07-10T00:00:00',
+      Value: '32.396441061234306',
+      NumberOfUnits: '412'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '62.127701128892468'
+      },
+      Seller: {
+          Name: 'John Smith',
+          City: 'Sofia'
+      },
+      Date: '2007-07-15T00:00:00',
+      Value: '84.924038818536346',
+      NumberOfUnits: '10'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '10.722568543033008'
+      },
+      Seller: {
+          Name: 'Antonio Charbonneau',
+          City: 'New York'
+      },
+      Date: '2007-07-16T00:00:00',
+      Value: '52.205748228452052',
+      NumberOfUnits: '466'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '4.6933130848656006'
+      },
+      Seller: {
+          Name: 'Stanley Brooker',
+          City: 'London'
+      },
+      Date: '2007-07-20T00:00:00',
+      Value: '34.224967395060212',
+      NumberOfUnits: '248'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '43.724528301378953'
+      },
+      Seller: {
+          Name: 'Brandon Mckim',
+          City: 'Mellvile'
+      },
+      Date: '2007-07-24T00:00:00',
+      Value: '45.460345011884506',
+      NumberOfUnits: '307'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '76.440263947677'
+      },
+      Seller: {
+          Name: 'Glenn Landeros',
+          City: 'London'
+      },
+      Date: '2007-07-26T00:00:00',
+      Value: '26.061410608730007',
+      NumberOfUnits: '445'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '34.278292178305932'
+      },
+      Seller: {
+          Name: 'Bryan Culver',
+          City: 'New York'
+      },
+      Date: '2007-08-01T00:00:00',
+      Value: '89.2379715522928',
+      NumberOfUnits: '480'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '68.573393890901187'
+      },
+      Seller: {
+          Name: 'Howard Sprouse',
+          City: 'Berlin'
+      },
+      Date: '2007-08-02T00:00:00',
+      Value: '38.090129912872861',
+      NumberOfUnits: '390'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '65.068199003612719'
+      },
+      Seller: {
+          Name: 'Larry Lieb',
+          City: 'Mellvile'
+      },
+      Date: '2007-08-05T00:00:00',
+      Value: '23.047295037213384',
+      NumberOfUnits: '388'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '44.938480036770216'
+      },
+      Seller: {
+          Name: 'Russell Shorter',
+          City: 'Seattle'
+      },
+      Date: '2007-08-19T00:00:00',
+      Value: '23.370492376093981',
+      NumberOfUnits: '37'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '93.468684653504141'
+      },
+      Seller: {
+          Name: 'John Smith',
+          City: 'New York'
+      },
+      Date: '2007-08-24T00:00:00',
+      Value: '17.307506789130862',
+      NumberOfUnits: '237'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '94.365085472522807'
+      },
+      Seller: {
+          Name: 'Harry Tyler',
+          City: 'Seattle'
+      },
+      Date: '2007-08-26T00:00:00',
+      Value: '54.621032604305555',
+      NumberOfUnits: '396'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '72.4087734112557'
+      },
+      Seller: {
+          Name: 'David Haley',
+          City: 'Tokyo'
+      },
+      Date: '2007-08-26T00:00:00',
+      Value: '60.920718014669006',
+      NumberOfUnits: '3'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '80.5917513932063'
+      },
+      Seller: {
+          Name: 'Russell Shorter',
+          City: 'New York'
+      },
+      Date: '2007-09-02T00:00:00',
+      Value: '85.134478139288021',
+      NumberOfUnits: '330'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '65.4044602836503'
+      },
+      Seller: {
+          Name: 'Benjamin Dupree',
+          City: 'London'
+      },
+      Date: '2007-09-04T00:00:00',
+      Value: '51.209239359576827',
+      NumberOfUnits: '143'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '30.638690912462163'
+      },
+      Seller: {
+          Name: 'Bryan Culver',
+          City: 'Seattle'
+      },
+      Date: '2007-09-05T00:00:00',
+      Value: '55.2145366348394',
+      NumberOfUnits: '318'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '7.6167185826304928'
+      },
+      Seller: {
+          Name: 'Alfredo Fetuchini',
+          City: 'Seattle'
+      },
+      Date: '2007-09-06T00:00:00',
+      Value: '41.804668093940556',
+      NumberOfUnits: '393'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '46.946888019771727'
+      },
+      Seller: {
+          Name: 'Harold Garvin',
+          City: 'Seattle'
+      },
+      Date: '2007-09-10T00:00:00',
+      Value: '9.0849790764436964',
+      NumberOfUnits: '129'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '38.017715484843457'
+      },
+      Seller: {
+          Name: 'Glenn Landeros',
+          City: 'London'
+      },
+      Date: '2007-09-17T00:00:00',
+      Value: '25.578551518534564',
+      NumberOfUnits: '426'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '2.48126508783608'
+      },
+      Seller: {
+          Name: 'Harry Tyler',
+          City: 'London'
+      },
+      Date: '2007-09-18T00:00:00',
+      Value: '36.332240158846716',
+      NumberOfUnits: '217'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '77.58936000875633'
+      },
+      Seller: {
+          Name: 'John Smith',
+          City: 'New York'
+      },
+      Date: '2007-09-20T00:00:00',
+      Value: '27.885909670910756',
+      NumberOfUnits: '152'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '97.145493420374336'
+      },
+      Seller: {
+          Name: 'Benjamin Meekins',
+          City: 'Seattle'
+      },
+      Date: '2007-09-25T00:00:00',
+      Value: '21.834250782539254',
+      NumberOfUnits: '452'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '19.697441309549585'
+      },
+      Seller: {
+          Name: 'Carl Costello',
+          City: 'Seattle'
+      },
+      Date: '2007-10-02T00:00:00',
+      Value: '98.261060238937418',
+      NumberOfUnits: '499'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '32.775894986826877'
+      },
+      Seller: {
+          Name: 'Mark Slater',
+          City: 'Seattle'
+      },
+      Date: '2007-10-06T00:00:00',
+      Value: '79.624117389146292',
+      NumberOfUnits: '169'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '21.953632739350958'
+      },
+      Seller: {
+          Name: 'Nicholas Carmona',
+          City: 'Berlin'
+      },
+      Date: '2007-10-14T00:00:00',
+      Value: '69.497183183905292',
+      NumberOfUnits: '386'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '35.591812029290857'
+      },
+      Seller: {
+          Name: 'Russell Shorter',
+          City: 'Sofia'
+      },
+      Date: '2007-10-14T00:00:00',
+      Value: '27.775967413455234',
+      NumberOfUnits: '454'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '46.950088509800885'
+      },
+      Seller: {
+          Name: 'Elisa Longbottom',
+          City: 'New York'
+      },
+      Date: '2007-10-25T00:00:00',
+      Value: '82.136559757467623',
+      NumberOfUnits: '334'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '41.134977406419338'
+      },
+      Seller: {
+          Name: 'Lydia Burson',
+          City: 'Tokyo'
+      },
+      Date: '2007-10-26T00:00:00',
+      Value: '54.425787531969036',
+      NumberOfUnits: '107'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '13.837097405380149'
+      },
+      Seller: {
+          Name: 'Mark Slater',
+          City: 'Sofia'
+      },
+      Date: '2007-11-07T00:00:00',
+      Value: '86.212293890403728',
+      NumberOfUnits: '275'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '64.159993810653688'
+      },
+      Seller: {
+          Name: 'Monica Freitag',
+          City: 'London'
+      },
+      Date: '2007-11-09T00:00:00',
+      Value: '37.720342091154471',
+      NumberOfUnits: '241'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '1.2072517076540981'
+      },
+      Seller: {
+          Name: 'Larry Lieb',
+          City: 'London'
+      },
+      Date: '2007-11-11T00:00:00',
+      Value: '75.227352033940775',
+      NumberOfUnits: '177'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '57.8050364078046'
+      },
+      Seller: {
+          Name: 'Monica Freitag',
+          City: 'Sofia'
+      },
+      Date: '2007-11-13T00:00:00',
+      Value: '58.445235415569151',
+      NumberOfUnits: '494'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '39.492234559493248'
+      },
+      Seller: {
+          Name: 'Lydia Burson',
+          City: 'Mellvile'
+      },
+      Date: '2007-11-19T00:00:00',
+      Value: '40.710543394419616',
+      NumberOfUnits: '451'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '5.21720713247415'
+      },
+      Seller: {
+          Name: 'Stanley Brooker',
+          City: 'Tokyo'
+      },
+      Date: '2008-01-01T00:00:00',
+      Value: '91.820002250289548',
+      NumberOfUnits: '125'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '53.42944141171381'
+      },
+      Seller: {
+          Name: 'Kathe Pettel',
+          City: 'London'
+      },
+      Date: '2008-01-02T00:00:00',
+      Value: '30.892902720204045',
+      NumberOfUnits: '103'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '52.157351957707363'
+      },
+      Seller: {
+          Name: 'Larry Lieb',
+          City: 'New York'
+      },
+      Date: '2008-01-03T00:00:00',
+      Value: '42.964697369823554',
+      NumberOfUnits: '224'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '17.694580656334097'
+      },
+      Seller: {
+          Name: 'Nicholas Carmona',
+          City: 'Mellvile'
+      },
+      Date: '2008-01-07T00:00:00',
+      Value: '47.573478262672893',
+      NumberOfUnits: '498'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '80.741111925216913'
+      },
+      Seller: {
+          Name: 'Benjamin Dupree',
+          City: 'London'
+      },
+      Date: '2008-01-08T00:00:00',
+      Value: '15.613263806148089',
+      NumberOfUnits: '142'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '95.439666973166013'
+      },
+      Seller: {
+          Name: 'Larry Lieb',
+          City: 'Berlin'
+      },
+      Date: '2008-01-21T00:00:00',
+      Value: '87.2099365513818',
+      NumberOfUnits: '487'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '21.778967427918204'
+      },
+      Seller: {
+          Name: 'David Haley',
+          City: 'Mellvile'
+      },
+      Date: '2008-01-27T00:00:00',
+      Value: '14.448109741531365',
+      NumberOfUnits: '331'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '29.907407625535225'
+      },
+      Seller: {
+          Name: 'Glenn Landeros',
+          City: 'London'
+      },
+      Date: '2008-02-03T00:00:00',
+      Value: '99.235560325549713',
+      NumberOfUnits: '418'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '39.839772945195328'
+      },
+      Seller: {
+          Name: 'Benjamin Meekins',
+          City: 'New York'
+      },
+      Date: '2008-02-04T00:00:00',
+      Value: '61.018408397686862',
+      NumberOfUnits: '214'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '40.366990370846814'
+      },
+      Seller: {
+          Name: 'Elisa Longbottom',
+          City: 'Mellvile'
+      },
+      Date: '2008-02-05T00:00:00',
+      Value: '81.740158694675273',
+      NumberOfUnits: '229'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '35.198273153602273'
+      },
+      Seller: {
+          Name: 'Alfredo Fetuchini',
+          City: 'London'
+      },
+      Date: '2008-02-05T00:00:00',
+      Value: '54.246561859849173',
+      NumberOfUnits: '16'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '41.75500964827603'
+      },
+      Seller: {
+          Name: 'Harry Tyler',
+          City: 'Sofia'
+      },
+      Date: '2008-02-08T00:00:00',
+      Value: '17.860554632665849',
+      NumberOfUnits: '216'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '0.687878998316768'
+      },
+      Seller: {
+          Name: 'Harry Tyler',
+          City: 'Sofia'
+      },
+      Date: '2008-02-09T00:00:00',
+      Value: '84.92055874547016',
+      NumberOfUnits: '486'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '37.556058092767394'
+      },
+      Seller: {
+          Name: 'Elisa Longbottom',
+          City: 'Tokyo'
+      },
+      Date: '2008-02-13T00:00:00',
+      Value: '45.0776737858903',
+      NumberOfUnits: '172'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '20.804581568019735'
+      },
+      Seller: {
+          Name: 'Antonio Charbonneau',
+          City: 'New York'
+      },
+      Date: '2008-02-21T00:00:00',
+      Value: '60.542486123993285',
+      NumberOfUnits: '102'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '70.646779691170337'
+      },
+      Seller: {
+          Name: 'Kathe Pettel',
+          City: 'Seattle'
+      },
+      Date: '2008-02-24T00:00:00',
+      Value: '42.896613079540721',
+      NumberOfUnits: '36'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '53.290544102569356'
+      },
+      Seller: {
+          Name: 'Alfredo Fetuchini',
+          City: 'Mellvile'
+      },
+      Date: '2008-02-25T00:00:00',
+      Value: '11.017731628854634',
+      NumberOfUnits: '71'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '24.854228983099681'
+      },
+      Seller: {
+          Name: 'Alfredo Fetuchini',
+          City: 'Mellvile'
+      },
+      Date: '2008-02-25T00:00:00',
+      Value: '16.975014478422242',
+      NumberOfUnits: '53'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '64.6324524025584'
+      },
+      Seller: {
+          Name: 'Antonio Charbonneau',
+          City: 'Tokyo'
+      },
+      Date: '2008-02-25T00:00:00',
+      Value: '98.961504315473832',
+      NumberOfUnits: '104'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '9.6438375346566723'
+      },
+      Seller: {
+          Name: 'Brandon Mckim',
+          City: 'Tokyo'
+      },
+      Date: '2008-02-26T00:00:00',
+      Value: '96.234209880341865',
+      NumberOfUnits: '294'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '41.077790568153276'
+      },
+      Seller: {
+          Name: 'Antonio Charbonneau',
+          City: 'Sofia'
+      },
+      Date: '2008-03-03T00:00:00',
+      Value: '93.68367497515105',
+      NumberOfUnits: '454'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '36.977834551119173'
+      },
+      Seller: {
+          Name: 'Stanley Brooker',
+          City: 'Berlin'
+      },
+      Date: '2008-03-05T00:00:00',
+      Value: '82.816526006356128',
+      NumberOfUnits: '492'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '16.830879969909265'
+      },
+      Seller: {
+          Name: 'Harry Tyler',
+          City: 'New York'
+      },
+      Date: '2008-03-08T00:00:00',
+      Value: '0.654079998216629',
+      NumberOfUnits: '132'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '24.716882512307205'
+      },
+      Seller: {
+          Name: 'Alfredo Fetuchini',
+          City: 'New York'
+      },
+      Date: '2008-03-09T00:00:00',
+      Value: '88.519476162511609',
+      NumberOfUnits: '225'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '65.64449792059348'
+      },
+      Seller: {
+          Name: 'David Haley',
+          City: 'Tokyo'
+      },
+      Date: '2008-03-10T00:00:00',
+      Value: '69.0674314131343',
+      NumberOfUnits: '422'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '70.470670270952709'
+      },
+      Seller: {
+          Name: 'Glenn Landeros',
+          City: 'London'
+      },
+      Date: '2008-03-12T00:00:00',
+      Value: '97.0884484691026',
+      NumberOfUnits: '303'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '65.1173483417916'
+      },
+      Seller: {
+          Name: 'Carl Costello',
+          City: 'London'
+      },
+      Date: '2008-03-13T00:00:00',
+      Value: '46.4407860983353',
+      NumberOfUnits: '319'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '39.577671764221819'
+      },
+      Seller: {
+          Name: 'Harold Garvin',
+          City: 'London'
+      },
+      Date: '2008-03-14T00:00:00',
+      Value: '48.544153733432367',
+      NumberOfUnits: '262'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '50.714457570907875'
+      },
+      Seller: {
+          Name: 'Harold Garvin',
+          City: 'Berlin'
+      },
+      Date: '2008-03-23T00:00:00',
+      Value: '91.7152666448221',
+      NumberOfUnits: '345'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '88.2468002793597'
+      },
+      Seller: {
+          Name: 'David Haley',
+          City: 'Tokyo'
+      },
+      Date: '2008-04-03T00:00:00',
+      Value: '87.275520939042579',
+      NumberOfUnits: '407'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '47.252974541509978'
+      },
+      Seller: {
+          Name: 'Walter Pang',
+          City: 'Berlin'
+      },
+      Date: '2008-04-04T00:00:00',
+      Value: '15.127723903920373',
+      NumberOfUnits: '121'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '30.427555660916283'
+      },
+      Seller: {
+          Name: 'Larry Lieb',
+          City: 'Seattle'
+      },
+      Date: '2008-04-06T00:00:00',
+      Value: '44.425472405005934',
+      NumberOfUnits: '30'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '88.243144186326845'
+      },
+      Seller: {
+          Name: 'Harold Garvin',
+          City: 'Berlin'
+      },
+      Date: '2008-04-11T00:00:00',
+      Value: '25.280987110585436',
+      NumberOfUnits: '293'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '16.463555962063165'
+      },
+      Seller: {
+          Name: 'David Haley',
+          City: 'Sofia'
+      },
+      Date: '2008-04-12T00:00:00',
+      Value: '55.071955618947719',
+      NumberOfUnits: '271'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '95.208247981596855'
+      },
+      Seller: {
+          Name: 'Howard Sprouse',
+          City: 'Sofia'
+      },
+      Date: '2008-04-18T00:00:00',
+      Value: '25.773858011594907',
+      NumberOfUnits: '107'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '7.7514979558771'
+      },
+      Seller: {
+          Name: 'Bryan Culver',
+          City: 'Mellvile'
+      },
+      Date: '2008-04-18T00:00:00',
+      Value: '54.484538247103117',
+      NumberOfUnits: '87'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '94.826276877348434'
+      },
+      Seller: {
+          Name: 'David Haley',
+          City: 'Tokyo'
+      },
+      Date: '2008-04-23T00:00:00',
+      Value: '78.9546419768383',
+      NumberOfUnits: '319'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '37.211896543024061'
+      },
+      Seller: {
+          Name: 'Lydia Burson',
+          City: 'New York'
+      },
+      Date: '2008-04-24T00:00:00',
+      Value: '21.612914242601448',
+      NumberOfUnits: '346'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '99.308858159607666'
+      },
+      Seller: {
+          Name: 'Benjamin Dupree',
+          City: 'London'
+      },
+      Date: '2008-05-07T00:00:00',
+      Value: '77.780686075697034',
+      NumberOfUnits: '382'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '96.081492582374011'
+      },
+      Seller: {
+          Name: 'Larry Lieb',
+          City: 'New York'
+      },
+      Date: '2008-05-11T00:00:00',
+      Value: '35.351181326131886',
+      NumberOfUnits: '334'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '26.152281568456569'
+      },
+      Seller: {
+          Name: 'Harold Garvin',
+          City: 'Tokyo'
+      },
+      Date: '2008-05-13T00:00:00',
+      Value: '28.839570995811176',
+      NumberOfUnits: '176'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '80.816311985634414'
+      },
+      Seller: {
+          Name: 'Mark Slater',
+          City: 'Berlin'
+      },
+      Date: '2008-05-19T00:00:00',
+      Value: '8.3833388091918728',
+      NumberOfUnits: '125'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '78.320334701948028'
+      },
+      Seller: {
+          Name: 'Russell Shorter',
+          City: 'Mellvile'
+      },
+      Date: '2008-05-19T00:00:00',
+      Value: '15.037549294083169',
+      NumberOfUnits: '458'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '93.996538219040517'
+      },
+      Seller: {
+          Name: 'Benjamin Meekins',
+          City: 'Berlin'
+      },
+      Date: '2008-05-25T00:00:00',
+      Value: '68.472067345153576',
+      NumberOfUnits: '331'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '96.600178441312252'
+      },
+      Seller: {
+          Name: 'Stanley Brooker',
+          City: 'Mellvile'
+      },
+      Date: '2008-05-27T00:00:00',
+      Value: '70.953166331608386',
+      NumberOfUnits: '39'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '37.643226812427507'
+      },
+      Seller: {
+          Name: 'Claudia Kobayashi',
+          City: 'London'
+      },
+      Date: '2008-06-06T00:00:00',
+      Value: '97.089249918744542',
+      NumberOfUnits: '238'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '46.977469579771849'
+      },
+      Seller: {
+          Name: 'Walter Pang',
+          City: 'London'
+      },
+      Date: '2008-06-07T00:00:00',
+      Value: '5.6769712854535186',
+      NumberOfUnits: '84'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '80.151598053123621'
+      },
+      Seller: {
+          Name: 'Mark Slater',
+          City: 'Tokyo'
+      },
+      Date: '2008-06-08T00:00:00',
+      Value: '24.8368413303219',
+      NumberOfUnits: '363'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '43.5199616679549'
+      },
+      Seller: {
+          Name: 'Harry Tyler',
+          City: 'New York'
+      },
+      Date: '2008-06-08T00:00:00',
+      Value: '58.973721162869467',
+      NumberOfUnits: '479'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '56.316017851380643'
+      },
+      Seller: {
+          Name: 'Kathe Pettel',
+          City: 'Sofia'
+      },
+      Date: '2008-06-11T00:00:00',
+      Value: '87.466286116962451',
+      NumberOfUnits: '404'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '81.685168194437935'
+      },
+      Seller: {
+          Name: 'Glenn Landeros',
+          City: 'London'
+      },
+      Date: '2008-06-18T00:00:00',
+      Value: '80.283416472507369',
+      NumberOfUnits: '478'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '90.111846611887145'
+      },
+      Seller: {
+          Name: 'Benjamin Meekins',
+          City: 'Sofia'
+      },
+      Date: '2008-06-19T00:00:00',
+      Value: '2.328636451777367',
+      NumberOfUnits: '285'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '99.342426471105966'
+      },
+      Seller: {
+          Name: 'Kathe Pettel',
+          City: 'Sofia'
+      },
+      Date: '2008-06-22T00:00:00',
+      Value: '82.489029449638466',
+      NumberOfUnits: '15'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '30.834545442291788'
+      },
+      Seller: {
+          Name: 'Brandon Mckim',
+          City: 'Berlin'
+      },
+      Date: '2008-06-26T00:00:00',
+      Value: '77.825110767886557',
+      NumberOfUnits: '245'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '99.386958358523884'
+      },
+      Seller: {
+          Name: 'Nicholas Carmona',
+          City: 'Mellvile'
+      },
+      Date: '2008-07-01T00:00:00',
+      Value: '8.1397687588537888',
+      NumberOfUnits: '376'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '73.34977298665315'
+      },
+      Seller: {
+          Name: 'Claudia Kobayashi',
+          City: 'New York'
+      },
+      Date: '2008-07-02T00:00:00',
+      Value: '48.44682516923492',
+      NumberOfUnits: '40'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '43.496660489354589'
+      },
+      Seller: {
+          Name: 'Larry Lieb',
+          City: 'London'
+      },
+      Date: '2008-07-10T00:00:00',
+      Value: '37.8727404577065',
+      NumberOfUnits: '112'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '16.394280649905223'
+      },
+      Seller: {
+          Name: 'Antonio Charbonneau',
+          City: 'New York'
+      },
+      Date: '2008-07-15T00:00:00',
+      Value: '9.7406020433365388',
+      NumberOfUnits: '224'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '71.402299390827437'
+      },
+      Seller: {
+          Name: 'Stanley Brooker',
+          City: 'Tokyo'
+      },
+      Date: '2008-07-16T00:00:00',
+      Value: '66.4204306278473',
+      NumberOfUnits: '145'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '94.61881909268854'
+      },
+      Seller: {
+          Name: 'Stanley Brooker',
+          City: 'Mellvile'
+      },
+      Date: '2008-07-21T00:00:00',
+      Value: '46.491464388785637',
+      NumberOfUnits: '272'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '50.753261684790843'
+      },
+      Seller: {
+          Name: 'Claudia Kobayashi',
+          City: 'London'
+      },
+      Date: '2008-07-27T00:00:00',
+      Value: '90.114484676213223',
+      NumberOfUnits: '278'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '12.782123597702999'
+      },
+      Seller: {
+          Name: 'Harry Tyler',
+          City: 'Seattle'
+      },
+      Date: '2008-07-27T00:00:00',
+      Value: '89.137324080400788',
+      NumberOfUnits: '253'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '35.780031064422815'
+      },
+      Seller: {
+          Name: 'Nicholas Carmona',
+          City: 'New York'
+      },
+      Date: '2008-08-01T00:00:00',
+      Value: '28.40646618437323',
+      NumberOfUnits: '255'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '17.133888051441819'
+      },
+      Seller: {
+          Name: 'David Haley',
+          City: 'Seattle'
+      },
+      Date: '2008-08-02T00:00:00',
+      Value: '0.455726543653629',
+      NumberOfUnits: '46'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '22.126638806484006'
+      },
+      Seller: {
+          Name: 'Benjamin Dupree',
+          City: 'Tokyo'
+      },
+      Date: '2008-08-08T00:00:00',
+      Value: '58.445409852287455',
+      NumberOfUnits: '279'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '62.986888765816992'
+      },
+      Seller: {
+          Name: 'Russell Shorter',
+          City: 'Sofia'
+      },
+      Date: '2008-08-08T00:00:00',
+      Value: '91.802758533415741',
+      NumberOfUnits: '89'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '83.838022585882825'
+      },
+      Seller: {
+          Name: 'Larry Lieb',
+          City: 'Sofia'
+      },
+      Date: '2008-08-14T00:00:00',
+      Value: '52.590476420051637',
+      NumberOfUnits: '17'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '14.075806277839376'
+      },
+      Seller: {
+          Name: 'Lydia Burson',
+          City: 'Sofia'
+      },
+      Date: '2008-08-21T00:00:00',
+      Value: '53.912139196839249',
+      NumberOfUnits: '470'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '34.591086923420008'
+      },
+      Seller: {
+          Name: 'Elisa Longbottom',
+          City: 'Mellvile'
+      },
+      Date: '2008-08-25T00:00:00',
+      Value: '1.7413051341387',
+      NumberOfUnits: '195'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '86.727353691462127'
+      },
+      Seller: {
+          Name: 'Lydia Burson',
+          City: 'New York'
+      },
+      Date: '2008-08-27T00:00:00',
+      Value: '23.782985947925127',
+      NumberOfUnits: '173'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '42.2365329890682'
+      },
+      Seller: {
+          Name: 'Benjamin Dupree',
+          City: 'New York'
+      },
+      Date: '2008-09-01T00:00:00',
+      Value: '51.1229278292148',
+      NumberOfUnits: '472'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '25.687071413587347'
+      },
+      Seller: {
+          Name: 'Larry Lieb',
+          City: 'Seattle'
+      },
+      Date: '2008-09-06T00:00:00',
+      Value: '88.372170640328974',
+      NumberOfUnits: '148'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '23.20858027004105'
+      },
+      Seller: {
+          Name: 'Walter Pang',
+          City: 'Mellvile'
+      },
+      Date: '2008-09-06T00:00:00',
+      Value: '94.485007689560291',
+      NumberOfUnits: '314'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '83.763652752974835'
+      },
+      Seller: {
+          Name: 'Nicholas Carmona',
+          City: 'Seattle'
+      },
+      Date: '2008-09-07T00:00:00',
+      Value: '66.778043828335612',
+      NumberOfUnits: '431'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '84.414287882118629'
+      },
+      Seller: {
+          Name: 'Walter Pang',
+          City: 'Mellvile'
+      },
+      Date: '2008-09-07T00:00:00',
+      Value: '27.639171773399774',
+      NumberOfUnits: '347'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '7.3291354846810624'
+      },
+      Seller: {
+          Name: 'Harry Tyler',
+          City: 'Berlin'
+      },
+      Date: '2008-09-11T00:00:00',
+      Value: '2.7723569435870075',
+      NumberOfUnits: '27'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '9.5534944019995134'
+      },
+      Seller: {
+          Name: 'Elisa Longbottom',
+          City: 'Berlin'
+      },
+      Date: '2008-09-12T00:00:00',
+      Value: '11.851146077667897',
+      NumberOfUnits: '5'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '50.820872164713627'
+      },
+      Seller: {
+          Name: 'Larry Lieb',
+          City: 'Mellvile'
+      },
+      Date: '2008-09-19T00:00:00',
+      Value: '16.46975079386949',
+      NumberOfUnits: '191'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '79.869313901229447'
+      },
+      Seller: {
+          Name: 'Bryan Culver',
+          City: 'New York'
+      },
+      Date: '2008-09-25T00:00:00',
+      Value: '84.273458730556754',
+      NumberOfUnits: '421'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '62.238494475483193'
+      },
+      Seller: {
+          Name: 'Carl Costello',
+          City: 'Seattle'
+      },
+      Date: '2008-10-03T00:00:00',
+      Value: '28.857351992678527',
+      NumberOfUnits: '297'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '96.094717130109075'
+      },
+      Seller: {
+          Name: 'Glenn Landeros',
+          City: 'New York'
+      },
+      Date: '2008-10-04T00:00:00',
+      Value: '15.797333380113047',
+      NumberOfUnits: '128'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '47.009710244373281'
+      },
+      Seller: {
+          Name: 'Howard Sprouse',
+          City: 'Mellvile'
+      },
+      Date: '2008-10-13T00:00:00',
+      Value: '37.30084394910412',
+      NumberOfUnits: '210'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '35.7560529074427'
+      },
+      Seller: {
+          Name: 'Russell Shorter',
+          City: 'London'
+      },
+      Date: '2008-10-14T00:00:00',
+      Value: '26.942082646741571',
+      NumberOfUnits: '315'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '78.989432462951839'
+      },
+      Seller: {
+          Name: 'Benjamin Meekins',
+          City: 'New York'
+      },
+      Date: '2008-10-19T00:00:00',
+      Value: '69.838245990610787',
+      NumberOfUnits: '489'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '84.320317201465514'
+      },
+      Seller: {
+          Name: 'Walter Pang',
+          City: 'Mellvile'
+      },
+      Date: '2008-10-21T00:00:00',
+      Value: '61.3185628137172',
+      NumberOfUnits: '47'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '25.52848226648219'
+      },
+      Seller: {
+          Name: 'John Smith',
+          City: 'Mellvile'
+      },
+      Date: '2008-10-22T00:00:00',
+      Value: '69.33637818756344',
+      NumberOfUnits: '92'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '23.874032927618376'
+      },
+      Seller: {
+          Name: 'Alfredo Fetuchini',
+          City: 'Mellvile'
+      },
+      Date: '2008-11-01T00:00:00',
+      Value: '81.091924282299317',
+      NumberOfUnits: '30'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '53.634575919077996'
+      },
+      Seller: {
+          Name: 'Stanley Brooker',
+          City: 'Berlin'
+      },
+      Date: '2008-11-01T00:00:00',
+      Value: '15.006514738782547',
+      NumberOfUnits: '132'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '68.152902074229388'
+      },
+      Seller: {
+          Name: 'Bryan Culver',
+          City: 'London'
+      },
+      Date: '2008-11-10T00:00:00',
+      Value: '6.0539431898174536',
+      NumberOfUnits: '368'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '59.880471210871114'
+      },
+      Seller: {
+          Name: 'Kathe Pettel',
+          City: 'New York'
+      },
+      Date: '2008-11-11T00:00:00',
+      Value: '39.091290505179806',
+      NumberOfUnits: '482'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '5.754821284559938'
+      },
+      Seller: {
+          Name: 'Antonio Charbonneau',
+          City: 'Mellvile'
+      },
+      Date: '2008-11-11T00:00:00',
+      Value: '48.663099086220889',
+      NumberOfUnits: '22'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '95.84922096498741'
+      },
+      Seller: {
+          Name: 'Claudia Kobayashi',
+          City: 'London'
+      },
+      Date: '2008-11-20T00:00:00',
+      Value: '87.1416628300872',
+      NumberOfUnits: '159'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '59.066441729230078'
+      },
+      Seller: {
+          Name: 'Alfredo Fetuchini',
+          City: 'Berlin'
+      },
+      Date: '2008-11-25T00:00:00',
+      Value: '88.637168141378623',
+      NumberOfUnits: '52'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '94.029234626344049'
+      },
+      Seller: {
+          Name: 'Harry Tyler',
+          City: 'Tokyo'
+      },
+      Date: '2009-01-05T00:00:00',
+      Value: '79.830559240575212',
+      NumberOfUnits: '194'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '12.794803135467136'
+      },
+      Seller: {
+          Name: 'David Haley',
+          City: 'Berlin'
+      },
+      Date: '2009-01-08T00:00:00',
+      Value: '42.869858277435348',
+      NumberOfUnits: '100'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '37.852128705872282'
+      },
+      Seller: {
+          Name: 'Benjamin Meekins',
+          City: 'Berlin'
+      },
+      Date: '2009-01-10T00:00:00',
+      Value: '48.256240528196209',
+      NumberOfUnits: '252'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '79.434888241549444'
+      },
+      Seller: {
+          Name: 'Kathe Pettel',
+          City: 'Tokyo'
+      },
+      Date: '2009-01-13T00:00:00',
+      Value: '68.505005337533078',
+      NumberOfUnits: '116'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '90.91811845587479'
+      },
+      Seller: {
+          Name: 'Elisa Longbottom',
+          City: 'London'
+      },
+      Date: '2009-01-14T00:00:00',
+      Value: '27.461436776193526',
+      NumberOfUnits: '259'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '99.848602618951631'
+      },
+      Seller: {
+          Name: 'Glenn Landeros',
+          City: 'London'
+      },
+      Date: '2009-01-19T00:00:00',
+      Value: '56.725358290935567',
+      NumberOfUnits: '217'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '43.273846266453084'
+      },
+      Seller: {
+          Name: 'Bryan Culver',
+          City: 'Seattle'
+      },
+      Date: '2009-01-22T00:00:00',
+      Value: '36.4720197098665',
+      NumberOfUnits: '48'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '0.65436926700843923'
+      },
+      Seller: {
+          Name: 'Stanley Brooker',
+          City: 'New York'
+      },
+      Date: '2009-02-02T00:00:00',
+      Value: '71.425742549554329',
+      NumberOfUnits: '445'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '60.464150859259135'
+      },
+      Seller: {
+          Name: 'Kathe Pettel',
+          City: 'Mellvile'
+      },
+      Date: '2009-02-03T00:00:00',
+      Value: '44.63498086884384',
+      NumberOfUnits: '90'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '13.659154862938056'
+      },
+      Seller: {
+          Name: 'Harry Tyler',
+          City: 'Sofia'
+      },
+      Date: '2009-02-07T00:00:00',
+      Value: '36.151584394346727',
+      NumberOfUnits: '453'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '44.160772694349646'
+      },
+      Seller: {
+          Name: 'Harry Tyler',
+          City: 'Mellvile'
+      },
+      Date: '2009-02-07T00:00:00',
+      Value: '85.6432799648695',
+      NumberOfUnits: '450'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '94.330096614700793'
+      },
+      Seller: {
+          Name: 'Lydia Burson',
+          City: 'Sofia'
+      },
+      Date: '2009-02-07T00:00:00',
+      Value: '48.103636479053478',
+      NumberOfUnits: '152'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '8.7838492862805033'
+      },
+      Seller: {
+          Name: 'Harry Tyler',
+          City: 'Berlin'
+      },
+      Date: '2009-02-16T00:00:00',
+      Value: '46.49472713772893',
+      NumberOfUnits: '119'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '79.235950894298014'
+      },
+      Seller: {
+          Name: 'Kathe Pettel',
+          City: 'Tokyo'
+      },
+      Date: '2009-02-16T00:00:00',
+      Value: '29.240355281736868',
+      NumberOfUnits: '463'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '18.588924276916742'
+      },
+      Seller: {
+          Name: 'Howard Sprouse',
+          City: 'Tokyo'
+      },
+      Date: '2009-02-17T00:00:00',
+      Value: '19.761605616547914',
+      NumberOfUnits: '150'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '27.901109833224265'
+      },
+      Seller: {
+          Name: 'Walter Pang',
+          City: 'Berlin'
+      },
+      Date: '2009-02-19T00:00:00',
+      Value: '17.557824644054204',
+      NumberOfUnits: '210'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '67.192088797312266'
+      },
+      Seller: {
+          Name: 'Kathe Pettel',
+          City: 'Tokyo'
+      },
+      Date: '2009-02-20T00:00:00',
+      Value: '36.321839986518881',
+      NumberOfUnits: '150'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '35.849487937916763'
+      },
+      Seller: {
+          Name: 'Benjamin Meekins',
+          City: 'London'
+      },
+      Date: '2009-02-21T00:00:00',
+      Value: '73.888651083171681',
+      NumberOfUnits: '97'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '34.073729130473794'
+      },
+      Seller: {
+          Name: 'Stanley Brooker',
+          City: 'Berlin'
+      },
+      Date: '2009-02-22T00:00:00',
+      Value: '86.417150211714741',
+      NumberOfUnits: '256'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '66.299910734547268'
+      },
+      Seller: {
+          Name: 'Russell Shorter',
+          City: 'London'
+      },
+      Date: '2009-02-24T00:00:00',
+      Value: '52.847915213949939',
+      NumberOfUnits: '172'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '14.901878412301596'
+      },
+      Seller: {
+          Name: 'Monica Freitag',
+          City: 'Mellvile'
+      },
+      Date: '2009-02-24T00:00:00',
+      Value: '5.1081647188906389',
+      NumberOfUnits: '489'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '51.915620757227586'
+      },
+      Seller: {
+          Name: 'Claudia Kobayashi',
+          City: 'Sofia'
+      },
+      Date: '2009-02-27T00:00:00',
+      Value: '9.0917529580610577',
+      NumberOfUnits: '222'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '98.30828662882945'
+      },
+      Seller: {
+          Name: 'Nicholas Carmona',
+          City: 'Berlin'
+      },
+      Date: '2009-03-03T00:00:00',
+      Value: '81.314004157350411',
+      NumberOfUnits: '300'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '72.820251282686485'
+      },
+      Seller: {
+          Name: 'Harry Tyler',
+          City: 'London'
+      },
+      Date: '2009-03-03T00:00:00',
+      Value: '1.3068364007895981',
+      NumberOfUnits: '270'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '16.260613881172898'
+      },
+      Seller: {
+          Name: 'Claudia Kobayashi',
+          City: 'London'
+      },
+      Date: '2009-03-07T00:00:00',
+      Value: '81.4439182083327',
+      NumberOfUnits: '263'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '93.446688537228241'
+      },
+      Seller: {
+          Name: 'Elisa Longbottom',
+          City: 'Mellvile'
+      },
+      Date: '2009-03-10T00:00:00',
+      Value: '22.661844046163303',
+      NumberOfUnits: '28'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '42.142761425181646'
+      },
+      Seller: {
+          Name: 'Howard Sprouse',
+          City: 'London'
+      },
+      Date: '2009-03-15T00:00:00',
+      Value: '20.388415884407433',
+      NumberOfUnits: '237'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '54.983897719059094'
+      },
+      Seller: {
+          Name: 'Claudia Kobayashi',
+          City: 'Tokyo'
+      },
+      Date: '2009-03-16T00:00:00',
+      Value: '64.043450431918473',
+      NumberOfUnits: '171'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '97.311258221655734'
+      },
+      Seller: {
+          Name: 'Kathe Pettel',
+          City: 'New York'
+      },
+      Date: '2009-03-27T00:00:00',
+      Value: '23.9032197389301',
+      NumberOfUnits: '251'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '50.889893039544063'
+      },
+      Seller: {
+          Name: 'Antonio Charbonneau',
+          City: 'London'
+      },
+      Date: '2009-04-01T00:00:00',
+      Value: '32.324041068704815',
+      NumberOfUnits: '275'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '4.7144460513789417'
+      },
+      Seller: {
+          Name: 'Brandon Mckim',
+          City: 'London'
+      },
+      Date: '2009-04-06T00:00:00',
+      Value: '41.960918783192021',
+      NumberOfUnits: '311'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '70.850547156692727'
+      },
+      Seller: {
+          Name: 'Monica Freitag',
+          City: 'New York'
+      },
+      Date: '2009-04-07T00:00:00',
+      Value: '82.811493604821848',
+      NumberOfUnits: '217'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '96.778652489547923'
+      },
+      Seller: {
+          Name: 'Claudia Kobayashi',
+          City: 'London'
+      },
+      Date: '2009-04-09T00:00:00',
+      Value: '62.226076034002972',
+      NumberOfUnits: '360'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '83.5057999396258'
+      },
+      Seller: {
+          Name: 'Howard Sprouse',
+          City: 'Berlin'
+      },
+      Date: '2009-04-12T00:00:00',
+      Value: '51.587959589244782',
+      NumberOfUnits: '35'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '96.413802446990189'
+      },
+      Seller: {
+          Name: 'Nicholas Carmona',
+          City: 'New York'
+      },
+      Date: '2009-04-15T00:00:00',
+      Value: '80.986556122538886',
+      NumberOfUnits: '294'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '70.80258972514541'
+      },
+      Seller: {
+          Name: 'Howard Sprouse',
+          City: 'Seattle'
+      },
+      Date: '2009-04-16T00:00:00',
+      Value: '35.866933425826453',
+      NumberOfUnits: '436'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '94.524064517824016'
+      },
+      Seller: {
+          Name: 'Kathe Pettel',
+          City: 'London'
+      },
+      Date: '2009-04-20T00:00:00',
+      Value: '82.488713498454871',
+      NumberOfUnits: '78'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '29.603658024968421'
+      },
+      Seller: {
+          Name: 'David Haley',
+          City: 'Tokyo'
+      },
+      Date: '2009-04-22T00:00:00',
+      Value: '94.02309180890353',
+      NumberOfUnits: '301'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '70.59798216009419'
+      },
+      Seller: {
+          Name: 'Mark Slater',
+          City: 'New York'
+      },
+      Date: '2009-05-02T00:00:00',
+      Value: '92.598087011183651',
+      NumberOfUnits: '24'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '71.666997145706318'
+      },
+      Seller: {
+          Name: 'Howard Sprouse',
+          City: 'Seattle'
+      },
+      Date: '2009-05-04T00:00:00',
+      Value: '19.282113676556438',
+      NumberOfUnits: '332'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '14.552707418125452'
+      },
+      Seller: {
+          Name: 'Mark Slater',
+          City: 'Berlin'
+      },
+      Date: '2009-05-11T00:00:00',
+      Value: '56.428837429931775',
+      NumberOfUnits: '307'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '36.712927202094782'
+      },
+      Seller: {
+          Name: 'Harold Garvin',
+          City: 'Seattle'
+      },
+      Date: '2009-05-11T00:00:00',
+      Value: '34.265398902010823',
+      NumberOfUnits: '375'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '62.74587812961353'
+      },
+      Seller: {
+          Name: 'Benjamin Dupree',
+          City: 'Mellvile'
+      },
+      Date: '2009-05-12T00:00:00',
+      Value: '1.9744442785039749',
+      NumberOfUnits: '499'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '13.699630607710981'
+      },
+      Seller: {
+          Name: 'Russell Shorter',
+          City: 'London'
+      },
+      Date: '2009-05-21T00:00:00',
+      Value: '42.514021341928292',
+      NumberOfUnits: '337'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '46.090274558444634'
+      },
+      Seller: {
+          Name: 'Larry Lieb',
+          City: 'London'
+      },
+      Date: '2009-05-24T00:00:00',
+      Value: '55.25077774899583',
+      NumberOfUnits: '284'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '95.33687676085944'
+      },
+      Seller: {
+          Name: 'Howard Sprouse',
+          City: 'Berlin'
+      },
+      Date: '2009-05-26T00:00:00',
+      Value: '94.764131631126688',
+      NumberOfUnits: '292'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '78.090784828220862'
+      },
+      Seller: {
+          Name: 'Howard Sprouse',
+          City: 'Sofia'
+      },
+      Date: '2009-05-26T00:00:00',
+      Value: '60.153313800763954',
+      NumberOfUnits: '424'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '99.392229132071236'
+      },
+      Seller: {
+          Name: 'Mark Slater',
+          City: 'Mellvile'
+      },
+      Date: '2009-06-05T00:00:00',
+      Value: '28.99414483876626',
+      NumberOfUnits: '271'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '86.944918514669368'
+      },
+      Seller: {
+          Name: 'Howard Sprouse',
+          City: 'Mellvile'
+      },
+      Date: '2009-06-10T00:00:00',
+      Value: '94.041974653509428',
+      NumberOfUnits: '6'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '13.495747797887656'
+      },
+      Seller: {
+          Name: 'Elisa Longbottom',
+          City: 'Sofia'
+      },
+      Date: '2009-06-12T00:00:00',
+      Value: '94.892294562837236',
+      NumberOfUnits: '44'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '99.648592900321162'
+      },
+      Seller: {
+          Name: 'Nicholas Carmona',
+          City: 'Seattle'
+      },
+      Date: '2009-06-12T00:00:00',
+      Value: '74.204946949242128',
+      NumberOfUnits: '277'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '16.877442187106908'
+      },
+      Seller: {
+          Name: 'Brandon Mckim',
+          City: 'Seattle'
+      },
+      Date: '2009-06-13T00:00:00',
+      Value: '65.121114330888318',
+      NumberOfUnits: '98'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '42.376991707075852'
+      },
+      Seller: {
+          Name: 'Elisa Longbottom',
+          City: 'Mellvile'
+      },
+      Date: '2009-06-22T00:00:00',
+      Value: '68.602847060469372',
+      NumberOfUnits: '443'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '79.539957074234252'
+      },
+      Seller: {
+          Name: 'Benjamin Dupree',
+          City: 'Seattle'
+      },
+      Date: '2009-06-26T00:00:00',
+      Value: '81.434181044546037',
+      NumberOfUnits: '409'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '26.25291264907127'
+      },
+      Seller: {
+          Name: 'Walter Pang',
+          City: 'New York'
+      },
+      Date: '2009-07-02T00:00:00',
+      Value: '68.128146216332979',
+      NumberOfUnits: '240'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '34.046156627147532'
+      },
+      Seller: {
+          Name: 'Kathe Pettel',
+          City: 'Seattle'
+      },
+      Date: '2009-07-10T00:00:00',
+      Value: '95.570359656387168',
+      NumberOfUnits: '23'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '29.379817577721468'
+      },
+      Seller: {
+          Name: 'Larry Lieb',
+          City: 'Mellvile'
+      },
+      Date: '2009-07-12T00:00:00',
+      Value: '35.889505099453736',
+      NumberOfUnits: '109'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '86.650452430662909'
+      },
+      Seller: {
+          Name: 'Nicholas Carmona',
+          City: 'Berlin'
+      },
+      Date: '2009-07-13T00:00:00',
+      Value: '29.856805424139278',
+      NumberOfUnits: '117'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '58.386603816592419'
+      },
+      Seller: {
+          Name: 'Mark Slater',
+          City: 'New York'
+      },
+      Date: '2009-07-15T00:00:00',
+      Value: '34.369692268953514',
+      NumberOfUnits: '336'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '39.759629797078496'
+      },
+      Seller: {
+          Name: 'Antonio Charbonneau',
+          City: 'Seattle'
+      },
+      Date: '2009-07-18T00:00:00',
+      Value: '92.39610121231344',
+      NumberOfUnits: '372'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '10.11000248142984'
+      },
+      Seller: {
+          Name: 'Larry Lieb',
+          City: 'Berlin'
+      },
+      Date: '2009-07-19T00:00:00',
+      Value: '90.408865451071819',
+      NumberOfUnits: '403'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '17.772769098064288'
+      },
+      Seller: {
+          Name: 'Harry Tyler',
+          City: 'Seattle'
+      },
+      Date: '2009-07-19T00:00:00',
+      Value: '66.145469558492991',
+      NumberOfUnits: '144'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '21.54340814870941'
+      },
+      Seller: {
+          Name: 'Lydia Burson',
+          City: 'Seattle'
+      },
+      Date: '2009-07-19T00:00:00',
+      Value: '41.712649465404752',
+      NumberOfUnits: '395'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '33.561278383043259'
+      },
+      Seller: {
+          Name: 'Nicholas Carmona',
+          City: 'New York'
+      },
+      Date: '2009-07-20T00:00:00',
+      Value: '16.61004327079749',
+      NumberOfUnits: '236'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '48.76308178005884'
+      },
+      Seller: {
+          Name: 'Larry Lieb',
+          City: 'Seattle'
+      },
+      Date: '2009-07-20T00:00:00',
+      Value: '86.7044968934285',
+      NumberOfUnits: '160'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '81.79705179380116'
+      },
+      Seller: {
+          Name: 'David Haley',
+          City: 'Sofia'
+      },
+      Date: '2009-07-20T00:00:00',
+      Value: '65.782062134604',
+      NumberOfUnits: '157'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '9.6737010449514251'
+      },
+      Seller: {
+          Name: 'Glenn Landeros',
+          City: 'Sofia'
+      },
+      Date: '2009-07-25T00:00:00',
+      Value: '0.062564946740197455',
+      NumberOfUnits: '255'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '88.575547462597285'
+      },
+      Seller: {
+          Name: 'Mark Slater',
+          City: 'London'
+      },
+      Date: '2009-08-16T00:00:00',
+      Value: '42.973863865702349',
+      NumberOfUnits: '284'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '89.335742634411787'
+      },
+      Seller: {
+          Name: 'Walter Pang',
+          City: 'Tokyo'
+      },
+      Date: '2009-08-17T00:00:00',
+      Value: '15.731296835342096',
+      NumberOfUnits: '333'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '23.987651161843747'
+      },
+      Seller: {
+          Name: 'Monica Freitag',
+          City: 'Seattle'
+      },
+      Date: '2009-08-17T00:00:00',
+      Value: '51.5363990569191',
+      NumberOfUnits: '48'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '19.359730239659424'
+      },
+      Seller: {
+          Name: 'Kathe Pettel',
+          City: 'New York'
+      },
+      Date: '2009-08-18T00:00:00',
+      Value: '82.547955160284388',
+      NumberOfUnits: '399'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '9.30053084590497'
+      },
+      Seller: {
+          Name: 'Mark Slater',
+          City: 'Berlin'
+      },
+      Date: '2009-08-24T00:00:00',
+      Value: '68.607750753223783',
+      NumberOfUnits: '413'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '1.1489816946671259'
+      },
+      Seller: {
+          Name: 'Monica Freitag',
+          City: 'Sofia'
+      },
+      Date: '2009-09-06T00:00:00',
+      Value: '71.909978693309228',
+      NumberOfUnits: '182'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '76.9795825597735'
+      },
+      Seller: {
+          Name: 'Russell Shorter',
+          City: 'Mellvile'
+      },
+      Date: '2009-09-06T00:00:00',
+      Value: '44.89029713202747',
+      NumberOfUnits: '156'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '80.664513344254587'
+      },
+      Seller: {
+          Name: 'Antonio Charbonneau',
+          City: 'Mellvile'
+      },
+      Date: '2009-09-09T00:00:00',
+      Value: '92.268023962279784',
+      NumberOfUnits: '293'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '22.788886131154786'
+      },
+      Seller: {
+          Name: 'Benjamin Dupree',
+          City: 'Berlin'
+      },
+      Date: '2009-10-01T00:00:00',
+      Value: '99.883927823921638',
+      NumberOfUnits: '16'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '78.05361020288133'
+      },
+      Seller: {
+          Name: 'Benjamin Meekins',
+          City: 'Seattle'
+      },
+      Date: '2009-10-01T00:00:00',
+      Value: '16.01294182055301',
+      NumberOfUnits: '106'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '72.974514808959569'
+      },
+      Seller: {
+          Name: 'Glenn Landeros',
+          City: 'Tokyo'
+      },
+      Date: '2009-10-06T00:00:00',
+      Value: '91.593776918758536',
+      NumberOfUnits: '16'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '22.058241871212722'
+      },
+      Seller: {
+          Name: 'John Smith',
+          City: 'Tokyo'
+      },
+      Date: '2009-10-07T00:00:00',
+      Value: '1.8308585983844747',
+      NumberOfUnits: '187'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '42.79186979066202'
+      },
+      Seller: {
+          Name: 'Harry Tyler',
+          City: 'Seattle'
+      },
+      Date: '2009-10-10T00:00:00',
+      Value: '21.78986469367047',
+      NumberOfUnits: '137'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '46.231171277459325'
+      },
+      Seller: {
+          Name: 'Mark Slater',
+          City: 'Seattle'
+      },
+      Date: '2009-10-14T00:00:00',
+      Value: '14.979823871971956',
+      NumberOfUnits: '138'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '14.350185037753633'
+      },
+      Seller: {
+          Name: 'Mark Slater',
+          City: 'Seattle'
+      },
+      Date: '2009-10-24T00:00:00',
+      Value: '65.044616239631836',
+      NumberOfUnits: '256'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '40.100955655845326'
+      },
+      Seller: {
+          Name: 'Antonio Charbonneau',
+          City: 'London'
+      },
+      Date: '2009-10-24T00:00:00',
+      Value: '11.059040581369326',
+      NumberOfUnits: '353'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '17.189097831579435'
+      },
+      Seller: {
+          Name: 'Lydia Burson',
+          City: 'Tokyo'
+      },
+      Date: '2009-11-01T00:00:00',
+      Value: '94.950034746411276',
+      NumberOfUnits: '359'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '52.031028155251882'
+      },
+      Seller: {
+          Name: 'Walter Pang',
+          City: 'Tokyo'
+      },
+      Date: '2009-11-04T00:00:00',
+      Value: '43.162881835905317',
+      NumberOfUnits: '134'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '90.993871954732526'
+      },
+      Seller: {
+          Name: 'Larry Lieb',
+          City: 'Seattle'
+      },
+      Date: '2009-11-09T00:00:00',
+      Value: '25.162065972183861',
+      NumberOfUnits: '263'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '88.538379077119'
+      },
+      Seller: {
+          Name: 'Monica Freitag',
+          City: 'Seattle'
+      },
+      Date: '2009-11-11T00:00:00',
+      Value: '40.935293185028847',
+      NumberOfUnits: '313'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '46.481523265355044'
+      },
+      Seller: {
+          Name: 'Stanley Brooker',
+          City: 'Mellvile'
+      },
+      Date: '2009-11-16T00:00:00',
+      Value: '20.430096527761822',
+      NumberOfUnits: '115'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '20.418462399588183'
+      },
+      Seller: {
+          Name: 'Claudia Kobayashi',
+          City: 'Berlin'
+      },
+      Date: '2009-11-17T00:00:00',
+      Value: '33.038645299635192',
+      NumberOfUnits: '414'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '70.830144114247588'
+      },
+      Seller: {
+          Name: 'Kathe Pettel',
+          City: 'New York'
+      },
+      Date: '2009-11-21T00:00:00',
+      Value: '2.98972730664058',
+      NumberOfUnits: '53'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '81.628889023153533'
+      },
+      Seller: {
+          Name: 'John Smith',
+          City: 'New York'
+      },
+      Date: '2009-11-22T00:00:00',
+      Value: '86.668779555088264',
+      NumberOfUnits: '472'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '9.714081422292665'
+      },
+      Seller: {
+          Name: 'Harry Tyler',
+          City: 'Mellvile'
+      },
+      Date: '2009-11-23T00:00:00',
+      Value: '53.591187323253223',
+      NumberOfUnits: '199'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '29.755140482334021'
+      },
+      Seller: {
+          Name: 'Harold Garvin',
+          City: 'Sofia'
+      },
+      Date: '2009-11-24T00:00:00',
+      Value: '27.388797945989669',
+      NumberOfUnits: '241'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '33.118537689148695'
+      },
+      Seller: {
+          Name: 'Glenn Landeros',
+          City: 'New York'
+      },
+      Date: '2009-11-24T00:00:00',
+      Value: '1.2120309291463489',
+      NumberOfUnits: '320'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '65.6359763655979'
+      },
+      Seller: {
+          Name: 'David Haley',
+          City: 'London'
+      },
+      Date: '2010-01-02T00:00:00',
+      Value: '20.522539420296688',
+      NumberOfUnits: '299'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '62.085259967523285'
+      },
+      Seller: {
+          Name: 'Benjamin Dupree',
+          City: 'London'
+      },
+      Date: '2010-01-08T00:00:00',
+      Value: '35.256934368636891',
+      NumberOfUnits: '366'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '78.474462068860646'
+      },
+      Seller: {
+          Name: 'John Smith',
+          City: 'New York'
+      },
+      Date: '2010-01-10T00:00:00',
+      Value: '27.762093407922467',
+      NumberOfUnits: '290'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '11.587155103491226'
+      },
+      Seller: {
+          Name: 'Lydia Burson',
+          City: 'Sofia'
+      },
+      Date: '2010-01-11T00:00:00',
+      Value: '61.712525906838721',
+      NumberOfUnits: '350'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '33.427815853351639'
+      },
+      Seller: {
+          Name: 'Russell Shorter',
+          City: 'Sofia'
+      },
+      Date: '2010-01-14T00:00:00',
+      Value: '33.686906720365819',
+      NumberOfUnits: '469'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '96.141296949303381'
+      },
+      Seller: {
+          Name: 'Nicholas Carmona',
+          City: 'Sofia'
+      },
+      Date: '2010-01-21T00:00:00',
+      Value: '75.607716606747218',
+      NumberOfUnits: '352'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '92.171847676938327'
+      },
+      Seller: {
+          Name: 'Larry Lieb',
+          City: 'Seattle'
+      },
+      Date: '2010-01-25T00:00:00',
+      Value: '38.822024473371926',
+      NumberOfUnits: '47'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '93.045955893139336'
+      },
+      Seller: {
+          Name: 'Russell Shorter',
+          City: 'Tokyo'
+      },
+      Date: '2010-02-02T00:00:00',
+      Value: '66.397165863959657',
+      NumberOfUnits: '153'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '38.888418506313307'
+      },
+      Seller: {
+          Name: 'Antonio Charbonneau',
+          City: 'Berlin'
+      },
+      Date: '2010-02-02T00:00:00',
+      Value: '28.472216533716871',
+      NumberOfUnits: '211'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '99.255040660153625'
+      },
+      Seller: {
+          Name: 'Russell Shorter',
+          City: 'Sofia'
+      },
+      Date: '2010-02-04T00:00:00',
+      Value: '66.975509546220067',
+      NumberOfUnits: '267'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '94.418360057481735'
+      },
+      Seller: {
+          Name: 'Antonio Charbonneau',
+          City: 'New York'
+      },
+      Date: '2010-02-04T00:00:00',
+      Value: '71.271966803479927',
+      NumberOfUnits: '91'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '19.770187707510864'
+      },
+      Seller: {
+          Name: 'Claudia Kobayashi',
+          City: 'Tokyo'
+      },
+      Date: '2010-02-05T00:00:00',
+      Value: '45.86024901171227',
+      NumberOfUnits: '84'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '87.127108633111746'
+      },
+      Seller: {
+          Name: 'Howard Sprouse',
+          City: 'Mellvile'
+      },
+      Date: '2010-02-11T00:00:00',
+      Value: '66.746746220973662',
+      NumberOfUnits: '270'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '76.21922282326'
+      },
+      Seller: {
+          Name: 'Alfredo Fetuchini',
+          City: 'Berlin'
+      },
+      Date: '2010-02-12T00:00:00',
+      Value: '86.961047717817621',
+      NumberOfUnits: '496'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '51.935532154485365'
+      },
+      Seller: {
+          Name: 'John Smith',
+          City: 'Seattle'
+      },
+      Date: '2010-02-16T00:00:00',
+      Value: '47.325407875387654',
+      NumberOfUnits: '24'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '21.709201215630959'
+      },
+      Seller: {
+          Name: 'Walter Pang',
+          City: 'Mellvile'
+      },
+      Date: '2010-02-17T00:00:00',
+      Value: '72.656378696046943',
+      NumberOfUnits: '41'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '15.665925860249402'
+      },
+      Seller: {
+          Name: 'John Smith',
+          City: 'Mellvile'
+      },
+      Date: '2010-02-22T00:00:00',
+      Value: '65.636205098422337',
+      NumberOfUnits: '365'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '2.6773556613723541'
+      },
+      Seller: {
+          Name: 'Brandon Mckim',
+          City: 'Sofia'
+      },
+      Date: '2010-03-01T00:00:00',
+      Value: '68.629750361959324',
+      NumberOfUnits: '202'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '52.256432619065251'
+      },
+      Seller: {
+          Name: 'Howard Sprouse',
+          City: 'Seattle'
+      },
+      Date: '2010-03-01T00:00:00',
+      Value: '79.248901540063741',
+      NumberOfUnits: '225'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '0.30659986674161621'
+      },
+      Seller: {
+          Name: 'Stanley Brooker',
+          City: 'Mellvile'
+      },
+      Date: '2010-03-03T00:00:00',
+      Value: '70.065212654911548',
+      NumberOfUnits: '206'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '22.362647448835265'
+      },
+      Seller: {
+          Name: 'Larry Lieb',
+          City: 'Sofia'
+      },
+      Date: '2010-03-11T00:00:00',
+      Value: '54.673684646689189',
+      NumberOfUnits: '158'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '94.7514695090947'
+      },
+      Seller: {
+          Name: 'Benjamin Meekins',
+          City: 'London'
+      },
+      Date: '2010-03-14T00:00:00',
+      Value: '70.422226083661528',
+      NumberOfUnits: '169'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '1.1244290979227185'
+      },
+      Seller: {
+          Name: 'John Smith',
+          City: 'New York'
+      },
+      Date: '2010-03-15T00:00:00',
+      Value: '18.868440258721094',
+      NumberOfUnits: '4'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '12.168197199780586'
+      },
+      Seller: {
+          Name: 'Monica Freitag',
+          City: 'New York'
+      },
+      Date: '2010-03-15T00:00:00',
+      Value: '12.660750706056481',
+      NumberOfUnits: '232'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '58.754820636825087'
+      },
+      Seller: {
+          Name: 'Mark Slater',
+          City: 'Berlin'
+      },
+      Date: '2010-03-16T00:00:00',
+      Value: '78.751323967590608',
+      NumberOfUnits: '421'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '43.950277959904767'
+      },
+      Seller: {
+          Name: 'David Haley',
+          City: 'Seattle'
+      },
+      Date: '2010-03-25T00:00:00',
+      Value: '89.636901900934475',
+      NumberOfUnits: '260'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '54.451138970652188'
+      },
+      Seller: {
+          Name: 'Brandon Mckim',
+          City: 'Seattle'
+      },
+      Date: '2010-04-02T00:00:00',
+      Value: '91.929945113104736',
+      NumberOfUnits: '194'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '94.565373749735471'
+      },
+      Seller: {
+          Name: 'Walter Pang',
+          City: 'Tokyo'
+      },
+      Date: '2010-04-05T00:00:00',
+      Value: '35.415237739409896',
+      NumberOfUnits: '491'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '11.121100052781916'
+      },
+      Seller: {
+          Name: 'Harold Garvin',
+          City: 'London'
+      },
+      Date: '2010-04-14T00:00:00',
+      Value: '29.986905041144652',
+      NumberOfUnits: '256'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '18.092416607817828'
+      },
+      Seller: {
+          Name: 'Alfredo Fetuchini',
+          City: 'Mellvile'
+      },
+      Date: '2010-04-15T00:00:00',
+      Value: '84.457366813187193',
+      NumberOfUnits: '279'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '8.277599657083675'
+      },
+      Seller: {
+          Name: 'Carl Costello',
+          City: 'Berlin'
+      },
+      Date: '2010-04-15T00:00:00',
+      Value: '99.568976647951175',
+      NumberOfUnits: '287'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '77.894294018807955'
+      },
+      Seller: {
+          Name: 'Carl Costello',
+          City: 'New York'
+      },
+      Date: '2010-04-22T00:00:00',
+      Value: '58.9137158165284',
+      NumberOfUnits: '363'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '55.624015888024125'
+      },
+      Seller: {
+          Name: 'Mark Slater',
+          City: 'Berlin'
+      },
+      Date: '2010-04-22T00:00:00',
+      Value: '16.317631032465783',
+      NumberOfUnits: '499'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '39.338956605335213'
+      },
+      Seller: {
+          Name: 'Lydia Burson',
+          City: 'Berlin'
+      },
+      Date: '2010-04-24T00:00:00',
+      Value: '0.092080421788655414',
+      NumberOfUnits: '109'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '7.7389456833428447'
+      },
+      Seller: {
+          Name: 'Benjamin Dupree',
+          City: 'Berlin'
+      },
+      Date: '2010-05-04T00:00:00',
+      Value: '99.529428733293628',
+      NumberOfUnits: '25'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '62.437906005623709'
+      },
+      Seller: {
+          Name: 'Alfredo Fetuchini',
+          City: 'Mellvile'
+      },
+      Date: '2010-05-05T00:00:00',
+      Value: '47.953826816731052',
+      NumberOfUnits: '64'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '38.696093037117322'
+      },
+      Seller: {
+          Name: 'Howard Sprouse',
+          City: 'London'
+      },
+      Date: '2010-05-06T00:00:00',
+      Value: '57.667695059286281',
+      NumberOfUnits: '256'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '17.764891412930979'
+      },
+      Seller: {
+          Name: 'Benjamin Meekins',
+          City: 'Mellvile'
+      },
+      Date: '2010-05-07T00:00:00',
+      Value: '15.271079826760609',
+      NumberOfUnits: '50'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '57.771539901276839'
+      },
+      Seller: {
+          Name: 'Bryan Culver',
+          City: 'Berlin'
+      },
+      Date: '2010-05-07T00:00:00',
+      Value: '58.617693865028066',
+      NumberOfUnits: '437'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '21.412746897625155'
+      },
+      Seller: {
+          Name: 'Bryan Culver',
+          City: 'Sofia'
+      },
+      Date: '2010-05-19T00:00:00',
+      Value: '40.952016665112232',
+      NumberOfUnits: '253'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '10.10051225782396'
+      },
+      Seller: {
+          Name: 'Monica Freitag',
+          City: 'London'
+      },
+      Date: '2010-05-22T00:00:00',
+      Value: '24.04263714516658',
+      NumberOfUnits: '312'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '87.649551167920961'
+      },
+      Seller: {
+          Name: 'Claudia Kobayashi',
+          City: 'London'
+      },
+      Date: '2010-05-24T00:00:00',
+      Value: '12.452408304648664',
+      NumberOfUnits: '82'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '42.552965526726545'
+      },
+      Seller: {
+          Name: 'Harold Garvin',
+          City: 'New York'
+      },
+      Date: '2010-06-01T00:00:00',
+      Value: '32.21886932487547',
+      NumberOfUnits: '467'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '79.772670743881108'
+      },
+      Seller: {
+          Name: 'Alfredo Fetuchini',
+          City: 'Sofia'
+      },
+      Date: '2010-06-05T00:00:00',
+      Value: '69.47704109804566',
+      NumberOfUnits: '74'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '1.8354761888438258'
+      },
+      Seller: {
+          Name: 'Nicholas Carmona',
+          City: 'Seattle'
+      },
+      Date: '2010-06-10T00:00:00',
+      Value: '14.711501968424534',
+      NumberOfUnits: '81'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '15.038684017508608'
+      },
+      Seller: {
+          Name: 'Kathe Pettel',
+          City: 'Berlin'
+      },
+      Date: '2010-06-25T00:00:00',
+      Value: '18.710408228780334',
+      NumberOfUnits: '88'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '43.393069851860908'
+      },
+      Seller: {
+          Name: 'Antonio Charbonneau',
+          City: 'Mellvile'
+      },
+      Date: '2010-06-26T00:00:00',
+      Value: '44.323160147444881',
+      NumberOfUnits: '126'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '16.236492486780737'
+      },
+      Seller: {
+          Name: 'Elisa Longbottom',
+          City: 'Sofia'
+      },
+      Date: '2010-06-27T00:00:00',
+      Value: '77.721635707524442',
+      NumberOfUnits: '112'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '59.192252885174121'
+      },
+      Seller: {
+          Name: 'Antonio Charbonneau',
+          City: 'Sofia'
+      },
+      Date: '2010-06-27T00:00:00',
+      Value: '15.444951837623936',
+      NumberOfUnits: '47'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '39.858141839438183'
+      },
+      Seller: {
+          Name: 'Claudia Kobayashi',
+          City: 'Sofia'
+      },
+      Date: '2010-07-05T00:00:00',
+      Value: '29.309184630079749',
+      NumberOfUnits: '218'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '27.044425637947594'
+      },
+      Seller: {
+          Name: 'Nicholas Carmona',
+          City: 'New York'
+      },
+      Date: '2010-07-05T00:00:00',
+      Value: '29.84750439871452',
+      NumberOfUnits: '34'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '14.269145072563152'
+      },
+      Seller: {
+          Name: 'Bryan Culver',
+          City: 'Sofia'
+      },
+      Date: '2010-07-13T00:00:00',
+      Value: '83.42096804800488',
+      NumberOfUnits: '492'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '53.378611455382128'
+      },
+      Seller: {
+          Name: 'Harry Tyler',
+          City: 'Sofia'
+      },
+      Date: '2010-07-16T00:00:00',
+      Value: '41.53844534491116',
+      NumberOfUnits: '464'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '21.432887213971881'
+      },
+      Seller: {
+          Name: 'Harry Tyler',
+          City: 'Seattle'
+      },
+      Date: '2010-07-17T00:00:00',
+      Value: '83.285907275642217',
+      NumberOfUnits: '118'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '23.970818670452953'
+      },
+      Seller: {
+          Name: 'Nicholas Carmona',
+          City: 'Seattle'
+      },
+      Date: '2010-07-18T00:00:00',
+      Value: '94.1482592346837',
+      NumberOfUnits: '442'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '37.523097888344481'
+      },
+      Seller: {
+          Name: 'Benjamin Meekins',
+          City: 'London'
+      },
+      Date: '2010-07-23T00:00:00',
+      Value: '59.59416039269145',
+      NumberOfUnits: '248'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '60.678681014421713'
+      },
+      Seller: {
+          Name: 'Lydia Burson',
+          City: 'London'
+      },
+      Date: '2010-07-23T00:00:00',
+      Value: '83.499601801624337',
+      NumberOfUnits: '472'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '78.0230887131873'
+      },
+      Seller: {
+          Name: 'Alfredo Fetuchini',
+          City: 'New York'
+      },
+      Date: '2010-07-24T00:00:00',
+      Value: '83.86764092550969',
+      NumberOfUnits: '140'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '47.635253308171059'
+      },
+      Seller: {
+          Name: 'Lydia Burson',
+          City: 'Tokyo'
+      },
+      Date: '2010-07-26T00:00:00',
+      Value: '86.612572747567938',
+      NumberOfUnits: '118'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '58.201980291959821'
+      },
+      Seller: {
+          Name: 'Harry Tyler',
+          City: 'Sofia'
+      },
+      Date: '2010-07-27T00:00:00',
+      Value: '63.959779713284128',
+      NumberOfUnits: '176'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '98.375331656250779'
+      },
+      Seller: {
+          Name: 'Russell Shorter',
+          City: 'Mellvile'
+      },
+      Date: '2010-08-01T00:00:00',
+      Value: '23.277100465855142',
+      NumberOfUnits: '77'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '2.9185969396115263'
+      },
+      Seller: {
+          Name: 'Glenn Landeros',
+          City: 'Sofia'
+      },
+      Date: '2010-08-08T00:00:00',
+      Value: '74.269686627327317',
+      NumberOfUnits: '105'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '98.157584806046259'
+      },
+      Seller: {
+          Name: 'Alfredo Fetuchini',
+          City: 'Tokyo'
+      },
+      Date: '2010-08-21T00:00:00',
+      Value: '60.648173215169543',
+      NumberOfUnits: '160'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '79.036749144567537'
+      },
+      Seller: {
+          Name: 'Stanley Brooker',
+          City: 'Seattle'
+      },
+      Date: '2010-08-26T00:00:00',
+      Value: '66.923503934835779',
+      NumberOfUnits: '186'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '17.790103991418192'
+      },
+      Seller: {
+          Name: 'Harold Garvin',
+          City: 'Seattle'
+      },
+      Date: '2010-09-04T00:00:00',
+      Value: '28.990831612139395',
+      NumberOfUnits: '380'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '38.68470799116637'
+      },
+      Seller: {
+          Name: 'John Smith',
+          City: 'Tokyo'
+      },
+      Date: '2010-09-11T00:00:00',
+      Value: '41.4628619986879',
+      NumberOfUnits: '470'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '75.233120366573857'
+      },
+      Seller: {
+          Name: 'Benjamin Dupree',
+          City: 'Mellvile'
+      },
+      Date: '2010-09-13T00:00:00',
+      Value: '42.688516267895935',
+      NumberOfUnits: '348'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '55.30159308356307'
+      },
+      Seller: {
+          Name: 'Carl Costello',
+          City: 'London'
+      },
+      Date: '2010-09-14T00:00:00',
+      Value: '29.383467570591471',
+      NumberOfUnits: '151'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '51.315049571597505'
+      },
+      Seller: {
+          Name: 'Kathe Pettel',
+          City: 'New York'
+      },
+      Date: '2010-09-24T00:00:00',
+      Value: '86.581237654472346',
+      NumberOfUnits: '7'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '31.307030995985041'
+      },
+      Seller: {
+          Name: 'Monica Freitag',
+          City: 'New York'
+      },
+      Date: '2010-10-07T00:00:00',
+      Value: '38.936872425925394',
+      NumberOfUnits: '123'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '79.959242362510068'
+      },
+      Seller: {
+          Name: 'Mark Slater',
+          City: 'Seattle'
+      },
+      Date: '2010-10-08T00:00:00',
+      Value: '8.676337175386184',
+      NumberOfUnits: '374'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '94.65782241647031'
+      },
+      Seller: {
+          Name: 'Kathe Pettel',
+          City: 'Mellvile'
+      },
+      Date: '2010-10-11T00:00:00',
+      Value: '96.669988984554067',
+      NumberOfUnits: '178'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '41.967610009930844'
+      },
+      Seller: {
+          Name: 'Bryan Culver',
+          City: 'Sofia'
+      },
+      Date: '2010-10-22T00:00:00',
+      Value: '31.412678645650239',
+      NumberOfUnits: '354'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '46.564729067759927'
+      },
+      Seller: {
+          Name: 'Elisa Longbottom',
+          City: 'New York'
+      },
+      Date: '2010-10-25T00:00:00',
+      Value: '85.540413197847272',
+      NumberOfUnits: '459'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '27.142422565791019'
+      },
+      Seller: {
+          Name: 'Mark Slater',
+          City: 'London'
+      },
+      Date: '2010-11-02T00:00:00',
+      Value: '46.424968795117444',
+      NumberOfUnits: '78'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '30.232361531924624'
+      },
+      Seller: {
+          Name: 'Walter Pang',
+          City: 'Berlin'
+      },
+      Date: '2010-11-03T00:00:00',
+      Value: '52.08322599161567',
+      NumberOfUnits: '417'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '82.166215769092659'
+      },
+      Seller: {
+          Name: 'Walter Pang',
+          City: 'Seattle'
+      },
+      Date: '2010-11-12T00:00:00',
+      Value: '15.3999604356475',
+      NumberOfUnits: '208'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '13.240201125498954'
+      },
+      Seller: {
+          Name: 'Harold Garvin',
+          City: 'Seattle'
+      },
+      Date: '2010-11-19T00:00:00',
+      Value: '48.614451078984168',
+      NumberOfUnits: '359'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '8.82965918110202'
+      },
+      Seller: {
+          Name: 'Russell Shorter',
+          City: 'New York'
+      },
+      Date: '2010-11-25T00:00:00',
+      Value: '24.490439856653307',
+      NumberOfUnits: '392'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '78.426081770298111'
+      },
+      Seller: {
+          Name: 'John Smith',
+          City: 'London'
+      },
+      Date: '2011-01-01T00:00:00',
+      Value: '37.596409040315265',
+      NumberOfUnits: '241'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '50.590050290613462'
+      },
+      Seller: {
+          Name: 'Claudia Kobayashi',
+          City: 'Seattle'
+      },
+      Date: '2011-01-04T00:00:00',
+      Value: '27.185391135134452',
+      NumberOfUnits: '62'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '6.3079299900252046'
+      },
+      Seller: {
+          Name: 'Elisa Longbottom',
+          City: 'Tokyo'
+      },
+      Date: '2011-01-06T00:00:00',
+      Value: '89.615617641068809',
+      NumberOfUnits: '485'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '47.444027544671677'
+      },
+      Seller: {
+          Name: 'Bryan Culver',
+          City: 'Sofia'
+      },
+      Date: '2011-01-14T00:00:00',
+      Value: '4.8948556207562124',
+      NumberOfUnits: '470'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '6.14731172385966'
+      },
+      Seller: {
+          Name: 'Harry Tyler',
+          City: 'Seattle'
+      },
+      Date: '2011-01-23T00:00:00',
+      Value: '78.523330706415379',
+      NumberOfUnits: '197'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '57.598939471691359'
+      },
+      Seller: {
+          Name: 'Larry Lieb',
+          City: 'Berlin'
+      },
+      Date: '2011-01-26T00:00:00',
+      Value: '59.748959848540352',
+      NumberOfUnits: '353'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '37.619407911607723'
+      },
+      Seller: {
+          Name: 'Benjamin Meekins',
+          City: 'Mellvile'
+      },
+      Date: '2011-02-01T00:00:00',
+      Value: '39.591191541213163',
+      NumberOfUnits: '338'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '20.995826982425445'
+      },
+      Seller: {
+          Name: 'Claudia Kobayashi',
+          City: 'New York'
+      },
+      Date: '2011-02-08T00:00:00',
+      Value: '92.874936197360483',
+      NumberOfUnits: '17'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '11.776900390059176'
+      },
+      Seller: {
+          Name: 'Antonio Charbonneau',
+          City: 'Berlin'
+      },
+      Date: '2011-02-12T00:00:00',
+      Value: '61.288865125406936',
+      NumberOfUnits: '429'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '64.996284649239982'
+      },
+      Seller: {
+          Name: 'Alfredo Fetuchini',
+          City: 'Tokyo'
+      },
+      Date: '2011-02-14T00:00:00',
+      Value: '24.293736985090067',
+      NumberOfUnits: '385'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '19.89953691135139'
+      },
+      Seller: {
+          Name: 'Claudia Kobayashi',
+          City: 'New York'
+      },
+      Date: '2011-02-20T00:00:00',
+      Value: '35.271121391687132',
+      NumberOfUnits: '166'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '3.2431666288725873'
+      },
+      Seller: {
+          Name: 'Lydia Burson',
+          City: 'Seattle'
+      },
+      Date: '2011-02-20T00:00:00',
+      Value: '52.569142939787895',
+      NumberOfUnits: '137'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '18.180364006282932'
+      },
+      Seller: {
+          Name: 'Russell Shorter',
+          City: 'New York'
+      },
+      Date: '2011-02-24T00:00:00',
+      Value: '8.2438002378883759',
+      NumberOfUnits: '443'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '20.442789662835555'
+      },
+      Seller: {
+          Name: 'Carl Costello',
+          City: 'Seattle'
+      },
+      Date: '2011-02-26T00:00:00',
+      Value: '87.327797658428452',
+      NumberOfUnits: '40'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '20.547325592742919'
+      },
+      Seller: {
+          Name: 'Glenn Landeros',
+          City: 'London'
+      },
+      Date: '2011-03-05T00:00:00',
+      Value: '7.2753519319348747',
+      NumberOfUnits: '138'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '23.766470804701779'
+      },
+      Seller: {
+          Name: 'Lydia Burson',
+          City: 'Tokyo'
+      },
+      Date: '2011-03-09T00:00:00',
+      Value: '18.243170770929741',
+      NumberOfUnits: '15'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '76.253175817547913'
+      },
+      Seller: {
+          Name: 'Antonio Charbonneau',
+          City: 'Mellvile'
+      },
+      Date: '2011-03-09T00:00:00',
+      Value: '74.498488369629939',
+      NumberOfUnits: '469'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '93.2519404651839'
+      },
+      Seller: {
+          Name: 'Russell Shorter',
+          City: 'London'
+      },
+      Date: '2011-03-11T00:00:00',
+      Value: '88.996454276608517',
+      NumberOfUnits: '426'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '62.99248866876237'
+      },
+      Seller: {
+          Name: 'Benjamin Dupree',
+          City: 'Seattle'
+      },
+      Date: '2011-03-16T00:00:00',
+      Value: '32.470836971174386',
+      NumberOfUnits: '208'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '58.4988099795295'
+      },
+      Seller: {
+          Name: 'Brandon Mckim',
+          City: 'Seattle'
+      },
+      Date: '2011-03-21T00:00:00',
+      Value: '50.8492368044561',
+      NumberOfUnits: '155'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '82.3833047795963'
+      },
+      Seller: {
+          Name: 'Stanley Brooker',
+          City: 'Seattle'
+      },
+      Date: '2011-03-23T00:00:00',
+      Value: '33.369716877755579',
+      NumberOfUnits: '381'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '19.168732231095774'
+      },
+      Seller: {
+          Name: 'Nicholas Carmona',
+          City: 'Tokyo'
+      },
+      Date: '2011-04-12T00:00:00',
+      Value: '75.166610896199288',
+      NumberOfUnits: '5'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '53.516463960295759'
+      },
+      Seller: {
+          Name: 'Walter Pang',
+          City: 'London'
+      },
+      Date: '2011-04-12T00:00:00',
+      Value: '14.533374232488395',
+      NumberOfUnits: '221'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '97.407401445045792'
+      },
+      Seller: {
+          Name: 'Howard Sprouse',
+          City: 'Sofia'
+      },
+      Date: '2011-04-14T00:00:00',
+      Value: '84.691367803463407',
+      NumberOfUnits: '39'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '74.054133600580556'
+      },
+      Seller: {
+          Name: 'Mark Slater',
+          City: 'New York'
+      },
+      Date: '2011-04-16T00:00:00',
+      Value: '51.295898599222255',
+      NumberOfUnits: '468'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '8.1049134061229022'
+      },
+      Seller: {
+          Name: 'Claudia Kobayashi',
+          City: 'Seattle'
+      },
+      Date: '2011-04-17T00:00:00',
+      Value: '0.70214751209232373',
+      NumberOfUnits: '44'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '59.055603649027468'
+      },
+      Seller: {
+          Name: 'John Smith',
+          City: 'Mellvile'
+      },
+      Date: '2011-04-22T00:00:00',
+      Value: '47.532910968890839',
+      NumberOfUnits: '287'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '96.816727750383663'
+      },
+      Seller: {
+          Name: 'Russell Shorter',
+          City: 'Sofia'
+      },
+      Date: '2011-04-24T00:00:00',
+      Value: '78.545733857222714',
+      NumberOfUnits: '463'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '76.712912356812936'
+      },
+      Seller: {
+          Name: 'Walter Pang',
+          City: 'Seattle'
+      },
+      Date: '2011-04-24T00:00:00',
+      Value: '62.920035218317082',
+      NumberOfUnits: '335'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '73.424536862142631'
+      },
+      Seller: {
+          Name: 'Walter Pang',
+          City: 'Berlin'
+      },
+      Date: '2011-04-24T00:00:00',
+      Value: '30.569536113445434',
+      NumberOfUnits: '211'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '66.398487550392034'
+      },
+      Seller: {
+          Name: 'Benjamin Dupree',
+          City: 'Seattle'
+      },
+      Date: '2011-05-03T00:00:00',
+      Value: '87.37479121767673',
+      NumberOfUnits: '291'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '37.014730059082964'
+      },
+      Seller: {
+          Name: 'John Smith',
+          City: 'Sofia'
+      },
+      Date: '2011-05-05T00:00:00',
+      Value: '40.137041145999468',
+      NumberOfUnits: '1'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '21.30724839927035'
+      },
+      Seller: {
+          Name: 'Alfredo Fetuchini',
+          City: 'Seattle'
+      },
+      Date: '2011-05-06T00:00:00',
+      Value: '46.005596521313116',
+      NumberOfUnits: '120'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '19.893941804717269'
+      },
+      Seller: {
+          Name: 'Benjamin Dupree',
+          City: 'Berlin'
+      },
+      Date: '2011-05-06T00:00:00',
+      Value: '72.609930798695387',
+      NumberOfUnits: '382'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '16.486758420470522'
+      },
+      Seller: {
+          Name: 'Harry Tyler',
+          City: 'Seattle'
+      },
+      Date: '2011-05-07T00:00:00',
+      Value: '7.763772973680763',
+      NumberOfUnits: '63'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '41.660496658487475'
+      },
+      Seller: {
+          Name: 'Stanley Brooker',
+          City: 'Seattle'
+      },
+      Date: '2011-05-12T00:00:00',
+      Value: '94.318148397988708',
+      NumberOfUnits: '230'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '4.9773660045943062'
+      },
+      Seller: {
+          Name: 'Larry Lieb',
+          City: 'Tokyo'
+      },
+      Date: '2011-05-13T00:00:00',
+      Value: '30.891342056398909',
+      NumberOfUnits: '362'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '10.7490869289027'
+      },
+      Seller: {
+          Name: 'Monica Freitag',
+          City: 'New York'
+      },
+      Date: '2011-05-17T00:00:00',
+      Value: '59.668867131540956',
+      NumberOfUnits: '430'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '66.047576147153777'
+      },
+      Seller: {
+          Name: 'Nicholas Carmona',
+          City: 'Seattle'
+      },
+      Date: '2011-05-23T00:00:00',
+      Value: '91.139627616451875',
+      NumberOfUnits: '204'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '60.848456370108039'
+      },
+      Seller: {
+          Name: 'Antonio Charbonneau',
+          City: 'Berlin'
+      },
+      Date: '2011-05-24T00:00:00',
+      Value: '86.097605566539613',
+      NumberOfUnits: '118'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '68.7086188088677'
+      },
+      Seller: {
+          Name: 'Walter Pang',
+          City: 'Sofia'
+      },
+      Date: '2011-06-01T00:00:00',
+      Value: '14.562893060298121',
+      NumberOfUnits: '17'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '40.680891247783265'
+      },
+      Seller: {
+          Name: 'Walter Pang',
+          City: 'New York'
+      },
+      Date: '2011-06-03T00:00:00',
+      Value: '9.0439965990576887',
+      NumberOfUnits: '312'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '96.900314277457227'
+      },
+      Seller: {
+          Name: 'Lydia Burson',
+          City: 'Seattle'
+      },
+      Date: '2011-06-12T00:00:00',
+      Value: '95.038356676249933',
+      NumberOfUnits: '283'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '67.031210179920876'
+      },
+      Seller: {
+          Name: 'Benjamin Dupree',
+          City: 'Seattle'
+      },
+      Date: '2011-06-13T00:00:00',
+      Value: '27.587484674336149',
+      NumberOfUnits: '460'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '67.092374324375939'
+      },
+      Seller: {
+          Name: 'Howard Sprouse',
+          City: 'New York'
+      },
+      Date: '2011-06-14T00:00:00',
+      Value: '66.230523523981915',
+      NumberOfUnits: '295'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '28.048040265239791'
+      },
+      Seller: {
+          Name: 'Alfredo Fetuchini',
+          City: 'Mellvile'
+      },
+      Date: '2011-06-15T00:00:00',
+      Value: '50.504170614529478',
+      NumberOfUnits: '49'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '7.3837493580690348'
+      },
+      Seller: {
+          Name: 'Russell Shorter',
+          City: 'Tokyo'
+      },
+      Date: '2011-06-24T00:00:00',
+      Value: '7.8716053664086409',
+      NumberOfUnits: '127'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '39.219759003827235'
+      },
+      Seller: {
+          Name: 'Mark Slater',
+          City: 'Seattle'
+      },
+      Date: '2011-06-27T00:00:00',
+      Value: '98.71029462605263',
+      NumberOfUnits: '244'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '53.418671131794646'
+      },
+      Seller: {
+          Name: 'Harold Garvin',
+          City: 'Tokyo'
+      },
+      Date: '2011-07-01T00:00:00',
+      Value: '11.231885622829145',
+      NumberOfUnits: '188'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '25.523898576164573'
+      },
+      Seller: {
+          Name: 'Benjamin Dupree',
+          City: 'Seattle'
+      },
+      Date: '2011-07-06T00:00:00',
+      Value: '56.126590052678523',
+      NumberOfUnits: '458'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '70.257199169256353'
+      },
+      Seller: {
+          Name: 'Nicholas Carmona',
+          City: 'Mellvile'
+      },
+      Date: '2011-07-08T00:00:00',
+      Value: '82.339177505271124',
+      NumberOfUnits: '448'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '7.6365943567997752'
+      },
+      Seller: {
+          Name: 'Harold Garvin',
+          City: 'Berlin'
+      },
+      Date: '2011-07-27T00:00:00',
+      Value: '30.461937203287114',
+      NumberOfUnits: '226'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '21.512323069159091'
+      },
+      Seller: {
+          Name: 'Benjamin Dupree',
+          City: 'London'
+      },
+      Date: '2011-08-01T00:00:00',
+      Value: '69.618271463372878',
+      NumberOfUnits: '474'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '37.596370343862276'
+      },
+      Seller: {
+          Name: 'David Haley',
+          City: 'Sofia'
+      },
+      Date: '2011-08-02T00:00:00',
+      Value: '62.767845142058952',
+      NumberOfUnits: '338'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '99.364743102046077'
+      },
+      Seller: {
+          Name: 'Benjamin Meekins',
+          City: 'London'
+      },
+      Date: '2011-08-02T00:00:00',
+      Value: '75.243962125500659',
+      NumberOfUnits: '88'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '72.232945669550887'
+      },
+      Seller: {
+          Name: 'Carl Costello',
+          City: 'Berlin'
+      },
+      Date: '2011-08-04T00:00:00',
+      Value: '86.276501736732442',
+      NumberOfUnits: '436'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '34.253647892854012'
+      },
+      Seller: {
+          Name: 'Nicholas Carmona',
+          City: 'Mellvile'
+      },
+      Date: '2011-08-06T00:00:00',
+      Value: '9.2189299451275417',
+      NumberOfUnits: '297'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '46.885990699234412'
+      },
+      Seller: {
+          Name: 'Russell Shorter',
+          City: 'London'
+      },
+      Date: '2011-08-07T00:00:00',
+      Value: '5.0874681701359652',
+      NumberOfUnits: '240'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '26.369197352961265'
+      },
+      Seller: {
+          Name: 'Stanley Brooker',
+          City: 'Sofia'
+      },
+      Date: '2011-08-07T00:00:00',
+      Value: '80.241307141371678',
+      NumberOfUnits: '415'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '49.072841112070179'
+      },
+      Seller: {
+          Name: 'David Haley',
+          City: 'Mellvile'
+      },
+      Date: '2011-08-08T00:00:00',
+      Value: '61.200517444499084',
+      NumberOfUnits: '435'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '95.058612569728211'
+      },
+      Seller: {
+          Name: 'Monica Freitag',
+          City: 'Berlin'
+      },
+      Date: '2011-08-16T00:00:00',
+      Value: '73.751322260942',
+      NumberOfUnits: '64'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '74.181983375075262'
+      },
+      Seller: {
+          Name: 'John Smith',
+          City: 'Seattle'
+      },
+      Date: '2011-08-23T00:00:00',
+      Value: '40.736002680256966',
+      NumberOfUnits: '21'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '82.506200011124'
+      },
+      Seller: {
+          Name: 'Benjamin Dupree',
+          City: 'London'
+      },
+      Date: '2011-08-25T00:00:00',
+      Value: '54.907956605268623',
+      NumberOfUnits: '467'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '42.773367531026416'
+      },
+      Seller: {
+          Name: 'Lydia Burson',
+          City: 'Sofia'
+      },
+      Date: '2011-09-02T00:00:00',
+      Value: '28.230239091548249',
+      NumberOfUnits: '98'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '83.472341757022008'
+      },
+      Seller: {
+          Name: 'Russell Shorter',
+          City: 'Mellvile'
+      },
+      Date: '2011-09-04T00:00:00',
+      Value: '72.482020534799446',
+      NumberOfUnits: '370'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '41.552912276961337'
+      },
+      Seller: {
+          Name: 'Walter Pang',
+          City: 'Berlin'
+      },
+      Date: '2011-09-05T00:00:00',
+      Value: '80.9870070223636',
+      NumberOfUnits: '94'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '74.118408409002427'
+      },
+      Seller: {
+          Name: 'Benjamin Dupree',
+          City: 'London'
+      },
+      Date: '2011-09-09T00:00:00',
+      Value: '94.847531102061055',
+      NumberOfUnits: '106'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '75.404483999779671'
+      },
+      Seller: {
+          Name: 'Claudia Kobayashi',
+          City: 'Sofia'
+      },
+      Date: '2011-09-11T00:00:00',
+      Value: '9.8866479051702889',
+      NumberOfUnits: '261'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '10.227189357498283'
+      },
+      Seller: {
+          Name: 'Howard Sprouse',
+          City: 'Seattle'
+      },
+      Date: '2011-09-17T00:00:00',
+      Value: '29.3933310217193',
+      NumberOfUnits: '307'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '72.929749578670481'
+      },
+      Seller: {
+          Name: 'Harry Tyler',
+          City: 'New York'
+      },
+      Date: '2011-09-17T00:00:00',
+      Value: '56.902403923171761',
+      NumberOfUnits: '362'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '85.133693080923379'
+      },
+      Seller: {
+          Name: 'Benjamin Meekins',
+          City: 'Tokyo'
+      },
+      Date: '2011-09-24T00:00:00',
+      Value: '23.863435408036892',
+      NumberOfUnits: '330'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '77.595880943162314'
+      },
+      Seller: {
+          Name: 'Walter Pang',
+          City: 'New York'
+      },
+      Date: '2011-09-26T00:00:00',
+      Value: '91.821283424189915',
+      NumberOfUnits: '23'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '50.362954591569931'
+      },
+      Seller: {
+          Name: 'David Haley',
+          City: 'Berlin'
+      },
+      Date: '2011-09-27T00:00:00',
+      Value: '66.76641896682159',
+      NumberOfUnits: '392'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '32.290426563606793'
+      },
+      Seller: {
+          Name: 'Larry Lieb',
+          City: 'Seattle'
+      },
+      Date: '2011-10-13T00:00:00',
+      Value: '81.508681122916144',
+      NumberOfUnits: '16'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '62.986913725262006'
+      },
+      Seller: {
+          Name: 'Lydia Burson',
+          City: 'New York'
+      },
+      Date: '2011-10-13T00:00:00',
+      Value: '30.91040301644728',
+      NumberOfUnits: '100'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '13.441150036380231'
+      },
+      Seller: {
+          Name: 'Carl Costello',
+          City: 'Berlin'
+      },
+      Date: '2011-10-22T00:00:00',
+      Value: '85.46632834964727',
+      NumberOfUnits: '132'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '0.36166957596394683'
+      },
+      Seller: {
+          Name: 'Nicholas Carmona',
+          City: 'Seattle'
+      },
+      Date: '2011-10-22T00:00:00',
+      Value: '74.401750589907991',
+      NumberOfUnits: '22'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '66.237839621602475'
+      },
+      Seller: {
+          Name: 'Walter Pang',
+          City: 'New York'
+      },
+      Date: '2011-11-02T00:00:00',
+      Value: '88.135134283516152',
+      NumberOfUnits: '96'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '50.146415294216204'
+      },
+      Seller: {
+          Name: 'Elisa Longbottom',
+          City: 'Berlin'
+      },
+      Date: '2011-11-03T00:00:00',
+      Value: '31.431514877561256',
+      NumberOfUnits: '76'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '67.8830748274378'
+      },
+      Seller: {
+          Name: 'Stanley Brooker',
+          City: 'Mellvile'
+      },
+      Date: '2011-11-04T00:00:00',
+      Value: '91.074618506745722',
+      NumberOfUnits: '492'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '6.5537001036823268'
+      },
+      Seller: {
+          Name: 'Harry Tyler',
+          City: 'Berlin'
+      },
+      Date: '2011-11-08T00:00:00',
+      Value: '51.458535926164373',
+      NumberOfUnits: '49'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '35.5539850124875'
+      },
+      Seller: {
+          Name: 'Russell Shorter',
+          City: 'Mellvile'
+      },
+      Date: '2011-11-12T00:00:00',
+      Value: '20.849885521852357',
+      NumberOfUnits: '197'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '59.927390962805319'
+      },
+      Seller: {
+          Name: 'Howard Sprouse',
+          City: 'Tokyo'
+      },
+      Date: '2011-11-12T00:00:00',
+      Value: '70.322697409578922',
+      NumberOfUnits: '484'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '67.355707039756567'
+      },
+      Seller: {
+          Name: 'Russell Shorter',
+          City: 'Tokyo'
+      },
+      Date: '2011-11-13T00:00:00',
+      Value: '14.268465300215624',
+      NumberOfUnits: '182'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '51.975681005034446'
+      },
+      Seller: {
+          Name: 'Alfredo Fetuchini',
+          City: 'London'
+      },
+      Date: '2011-11-15T00:00:00',
+      Value: '18.371498919265111',
+      NumberOfUnits: '42'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '66.674518802517341'
+      },
+      Seller: {
+          Name: 'Brandon Mckim',
+          City: 'New York'
+      },
+      Date: '2011-11-19T00:00:00',
+      Value: '52.755486291253696',
+      NumberOfUnits: '109'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '56.137722244550346'
+      },
+      Seller: {
+          Name: 'Harold Garvin',
+          City: 'Mellvile'
+      },
+      Date: '2011-11-23T00:00:00',
+      Value: '40.171580035319352',
+      NumberOfUnits: '310'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '93.530705568162119'
+      },
+      Seller: {
+          Name: 'Monica Freitag',
+          City: 'Sofia'
+      },
+      Date: '2012-01-03T00:00:00',
+      Value: '53.305936117333331',
+      NumberOfUnits: '306'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '9.5339146487107111'
+      },
+      Seller: {
+          Name: 'Harold Garvin',
+          City: 'Seattle'
+      },
+      Date: '2012-01-06T00:00:00',
+      Value: '82.952573375288665',
+      NumberOfUnits: '290'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '41.1171674454199'
+      },
+      Seller: {
+          Name: 'Monica Freitag',
+          City: 'Tokyo'
+      },
+      Date: '2012-01-10T00:00:00',
+      Value: '29.765262841137712',
+      NumberOfUnits: '499'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '9.7998786297626239'
+      },
+      Seller: {
+          Name: 'Kathe Pettel',
+          City: 'Berlin'
+      },
+      Date: '2012-01-11T00:00:00',
+      Value: '10.743231471042721',
+      NumberOfUnits: '7'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '64.580562228607278'
+      },
+      Seller: {
+          Name: 'Nicholas Carmona',
+          City: 'Sofia'
+      },
+      Date: '2012-01-14T00:00:00',
+      Value: '34.949488535034234',
+      NumberOfUnits: '220'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '47.282745012679484'
+      },
+      Seller: {
+          Name: 'Elisa Longbottom',
+          City: 'New York'
+      },
+      Date: '2012-01-15T00:00:00',
+      Value: '50.185166276146262',
+      NumberOfUnits: '395'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '14.609382960297811'
+      },
+      Seller: {
+          Name: 'Lydia Burson',
+          City: 'Sofia'
+      },
+      Date: '2012-01-18T00:00:00',
+      Value: '99.998364085330792',
+      NumberOfUnits: '219'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '10.681285248455259'
+      },
+      Seller: {
+          Name: 'Larry Lieb',
+          City: 'Mellvile'
+      },
+      Date: '2012-01-18T00:00:00',
+      Value: '91.928496859934413',
+      NumberOfUnits: '229'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '64.914608125069464'
+      },
+      Seller: {
+          Name: 'Nicholas Carmona',
+          City: 'Mellvile'
+      },
+      Date: '2012-01-22T00:00:00',
+      Value: '55.807345246806442',
+      NumberOfUnits: '111'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '47.909127244683511'
+      },
+      Seller: {
+          Name: 'Alfredo Fetuchini',
+          City: 'London'
+      },
+      Date: '2012-02-01T00:00:00',
+      Value: '20.473314877819881',
+      NumberOfUnits: '237'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '87.815776368517334'
+      },
+      Seller: {
+          Name: 'Claudia Kobayashi',
+          City: 'Berlin'
+      },
+      Date: '2012-02-13T00:00:00',
+      Value: '17.170676690140123',
+      NumberOfUnits: '114'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '55.404070883711832'
+      },
+      Seller: {
+          Name: 'Bryan Culver',
+          City: 'London'
+      },
+      Date: '2012-02-23T00:00:00',
+      Value: '76.743488422009847',
+      NumberOfUnits: '329'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '40.75572231819654'
+      },
+      Seller: {
+          Name: 'Howard Sprouse',
+          City: 'Seattle'
+      },
+      Date: '2012-02-24T00:00:00',
+      Value: '1.1660674592322051',
+      NumberOfUnits: '135'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '57.827554530383807'
+      },
+      Seller: {
+          Name: 'Harold Garvin',
+          City: 'New York'
+      },
+      Date: '2012-03-02T00:00:00',
+      Value: '46.816691358954039',
+      NumberOfUnits: '187'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '14.764199040254672'
+      },
+      Seller: {
+          Name: 'David Haley',
+          City: 'Tokyo'
+      },
+      Date: '2012-03-10T00:00:00',
+      Value: '17.629321207119766',
+      NumberOfUnits: '286'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '12.991917372211775'
+      },
+      Seller: {
+          Name: 'Antonio Charbonneau',
+          City: 'Mellvile'
+      },
+      Date: '2012-03-11T00:00:00',
+      Value: '18.210936299623427',
+      NumberOfUnits: '468'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '26.013292989699771'
+      },
+      Seller: {
+          Name: 'Monica Freitag',
+          City: 'Tokyo'
+      },
+      Date: '2012-03-18T00:00:00',
+      Value: '93.230797952614168',
+      NumberOfUnits: '71'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '72.623922989062933'
+      },
+      Seller: {
+          Name: 'Bryan Culver',
+          City: 'Mellvile'
+      },
+      Date: '2012-03-21T00:00:00',
+      Value: '61.974642454634719',
+      NumberOfUnits: '251'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '44.430002777106132'
+      },
+      Seller: {
+          Name: 'Monica Freitag',
+          City: 'Berlin'
+      },
+      Date: '2012-03-25T00:00:00',
+      Value: '57.137854004808631',
+      NumberOfUnits: '297'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '68.192056365400575'
+      },
+      Seller: {
+          Name: 'Alfredo Fetuchini',
+          City: 'Berlin'
+      },
+      Date: '2012-03-25T00:00:00',
+      Value: '4.1927576550248808',
+      NumberOfUnits: '248'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '35.301038918691241'
+      },
+      Seller: {
+          Name: 'Elisa Longbottom',
+          City: 'Sofia'
+      },
+      Date: '2012-03-26T00:00:00',
+      Value: '45.234568391570157',
+      NumberOfUnits: '488'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '41.07974113015446'
+      },
+      Seller: {
+          Name: 'Alfredo Fetuchini',
+          City: 'Sofia'
+      },
+      Date: '2012-04-06T00:00:00',
+      Value: '59.4756415856423',
+      NumberOfUnits: '211'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '29.287349586043206'
+      },
+      Seller: {
+          Name: 'Stanley Brooker',
+          City: 'Seattle'
+      },
+      Date: '2012-04-14T00:00:00',
+      Value: '3.1218397911274058',
+      NumberOfUnits: '149'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '51.960718329977574'
+      },
+      Seller: {
+          Name: 'Lydia Burson',
+          City: 'Berlin'
+      },
+      Date: '2012-04-14T00:00:00',
+      Value: '9.8109557804702572',
+      NumberOfUnits: '99'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '57.838875082246432'
+      },
+      Seller: {
+          Name: 'Benjamin Meekins',
+          City: 'Seattle'
+      },
+      Date: '2012-04-16T00:00:00',
+      Value: '14.041336026993271',
+      NumberOfUnits: '225'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '25.879090337957759'
+      },
+      Seller: {
+          Name: 'Nicholas Carmona',
+          City: 'Seattle'
+      },
+      Date: '2012-04-27T00:00:00',
+      Value: '95.393374001324815',
+      NumberOfUnits: '408'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '4.9307178263229865'
+      },
+      Seller: {
+          Name: 'Benjamin Meekins',
+          City: 'Sofia'
+      },
+      Date: '2012-05-09T00:00:00',
+      Value: '40.24019778717318',
+      NumberOfUnits: '417'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '3.0351963839657587'
+      },
+      Seller: {
+          Name: 'Alfredo Fetuchini',
+          City: 'London'
+      },
+      Date: '2012-05-24T00:00:00',
+      Value: '67.743256719663393',
+      NumberOfUnits: '221'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '57.525798798317929'
+      },
+      Seller: {
+          Name: 'Mark Slater',
+          City: 'New York'
+      },
+      Date: '2012-06-02T00:00:00',
+      Value: '45.347840592892766',
+      NumberOfUnits: '288'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '72.260475471737081'
+      },
+      Seller: {
+          Name: 'Bryan Culver',
+          City: 'Berlin'
+      },
+      Date: '2012-06-03T00:00:00',
+      Value: '92.767570816337866',
+      NumberOfUnits: '372'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '82.533464665773067'
+      },
+      Seller: {
+          Name: 'Kathe Pettel',
+          City: 'Seattle'
+      },
+      Date: '2012-06-03T00:00:00',
+      Value: '51.32937051883404',
+      NumberOfUnits: '408'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '91.596571026182076'
+      },
+      Seller: {
+          Name: 'Benjamin Dupree',
+          City: 'Mellvile'
+      },
+      Date: '2012-06-04T00:00:00',
+      Value: '28.526107281691441',
+      NumberOfUnits: '13'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '94.668206756314362'
+      },
+      Seller: {
+          Name: 'Benjamin Dupree',
+          City: 'Mellvile'
+      },
+      Date: '2012-06-05T00:00:00',
+      Value: '31.552386019170463',
+      NumberOfUnits: '487'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '46.269657903476457'
+      },
+      Seller: {
+          Name: 'Benjamin Dupree',
+          City: 'Sofia'
+      },
+      Date: '2012-06-11T00:00:00',
+      Value: '85.914963570383833',
+      NumberOfUnits: '276'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '18.243998018207026'
+      },
+      Seller: {
+          Name: 'Howard Sprouse',
+          City: 'New York'
+      },
+      Date: '2012-06-16T00:00:00',
+      Value: '40.241414001323939',
+      NumberOfUnits: '490'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '48.753350437038272'
+      },
+      Seller: {
+          Name: 'Harold Garvin',
+          City: 'London'
+      },
+      Date: '2012-06-18T00:00:00',
+      Value: '55.616326516315496',
+      NumberOfUnits: '238'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '94.427641199169514'
+      },
+      Seller: {
+          Name: 'David Haley',
+          City: 'Tokyo'
+      },
+      Date: '2012-06-23T00:00:00',
+      Value: '91.982604512936717',
+      NumberOfUnits: '170'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '48.675857367308744'
+      },
+      Seller: {
+          Name: 'Brandon Mckim',
+          City: 'Mellvile'
+      },
+      Date: '2012-07-04T00:00:00',
+      Value: '72.766442491098516',
+      NumberOfUnits: '132'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '82.68037088340165'
+      },
+      Seller: {
+          Name: 'Mark Slater',
+          City: 'Mellvile'
+      },
+      Date: '2012-07-05T00:00:00',
+      Value: '56.774197684961457',
+      NumberOfUnits: '443'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '38.192183821551588'
+      },
+      Seller: {
+          Name: 'Benjamin Dupree',
+          City: 'New York'
+      },
+      Date: '2012-07-05T00:00:00',
+      Value: '27.482847276834232',
+      NumberOfUnits: '368'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '24.194019718186009'
+      },
+      Seller: {
+          Name: 'Harold Garvin',
+          City: 'New York'
+      },
+      Date: '2012-07-11T00:00:00',
+      Value: '38.517737592811571',
+      NumberOfUnits: '39'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '3.9898014180314729'
+      },
+      Seller: {
+          Name: 'Alfredo Fetuchini',
+          City: 'Tokyo'
+      },
+      Date: '2012-07-13T00:00:00',
+      Value: '43.237088873627172',
+      NumberOfUnits: '95'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '81.770755481799483'
+      },
+      Seller: {
+          Name: 'Benjamin Meekins',
+          City: 'Berlin'
+      },
+      Date: '2012-07-14T00:00:00',
+      Value: '42.55512666076195',
+      NumberOfUnits: '42'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '74.867355951511939'
+      },
+      Seller: {
+          Name: 'Brandon Mckim',
+          City: 'Seattle'
+      },
+      Date: '2012-07-16T00:00:00',
+      Value: '61.42802050403693',
+      NumberOfUnits: '200'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '85.467303630647862'
+      },
+      Seller: {
+          Name: 'Monica Freitag',
+          City: 'Seattle'
+      },
+      Date: '2012-07-16T00:00:00',
+      Value: '10.45830762500796',
+      NumberOfUnits: '221'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '96.415402692004761'
+      },
+      Seller: {
+          Name: 'Larry Lieb',
+          City: 'New York'
+      },
+      Date: '2012-07-21T00:00:00',
+      Value: '99.639215692709769',
+      NumberOfUnits: '54'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '46.199419370945272'
+      },
+      Seller: {
+          Name: 'Lydia Burson',
+          City: 'Tokyo'
+      },
+      Date: '2012-07-21T00:00:00',
+      Value: '55.958572614918737',
+      NumberOfUnits: '173'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '99.843983026148749'
+      },
+      Seller: {
+          Name: 'Lydia Burson',
+          City: 'London'
+      },
+      Date: '2012-07-23T00:00:00',
+      Value: '10.833150712229847',
+      NumberOfUnits: '47'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '42.35462483128282'
+      },
+      Seller: {
+          Name: 'Kathe Pettel',
+          City: 'Mellvile'
+      },
+      Date: '2012-07-26T00:00:00',
+      Value: '91.545096361797818',
+      NumberOfUnits: '173'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '52.198385052475324'
+      },
+      Seller: {
+          Name: 'Claudia Kobayashi',
+          City: 'Mellvile'
+      },
+      Date: '2012-08-05T00:00:00',
+      Value: '98.8178437570193',
+      NumberOfUnits: '323'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '45.456700048156407'
+      },
+      Seller: {
+          Name: 'Russell Shorter',
+          City: 'Sofia'
+      },
+      Date: '2012-08-07T00:00:00',
+      Value: '26.029428060180244',
+      NumberOfUnits: '264'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '56.771143552274971'
+      },
+      Seller: {
+          Name: 'Mark Slater',
+          City: 'Sofia'
+      },
+      Date: '2012-08-09T00:00:00',
+      Value: '11.488629929483231',
+      NumberOfUnits: '385'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '3.5650837251753935'
+      },
+      Seller: {
+          Name: 'Harry Tyler',
+          City: 'London'
+      },
+      Date: '2012-08-10T00:00:00',
+      Value: '25.95193755158779',
+      NumberOfUnits: '56'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '34.601844071690849'
+      },
+      Seller: {
+          Name: 'Benjamin Dupree',
+          City: 'Berlin'
+      },
+      Date: '2012-08-12T00:00:00',
+      Value: '96.15096314630982',
+      NumberOfUnits: '267'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '92.402922963911166'
+      },
+      Seller: {
+          Name: 'Monica Freitag',
+          City: 'Seattle'
+      },
+      Date: '2012-08-14T00:00:00',
+      Value: '94.912259883672121',
+      NumberOfUnits: '109'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '34.719441707581019'
+      },
+      Seller: {
+          Name: 'Mark Slater',
+          City: 'Berlin'
+      },
+      Date: '2012-08-17T00:00:00',
+      Value: '62.383219023413595',
+      NumberOfUnits: '478'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '23.335559257928075'
+      },
+      Seller: {
+          Name: 'Claudia Kobayashi',
+          City: 'Berlin'
+      },
+      Date: '2012-08-21T00:00:00',
+      Value: '57.657432163906023',
+      NumberOfUnits: '184'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '79.522237963751991'
+      },
+      Seller: {
+          Name: 'Brandon Mckim',
+          City: 'Seattle'
+      },
+      Date: '2012-08-21T00:00:00',
+      Value: '35.349668718571621',
+      NumberOfUnits: '132'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '30.645626285414036'
+      },
+      Seller: {
+          Name: 'Nicholas Carmona',
+          City: 'Sofia'
+      },
+      Date: '2012-08-22T00:00:00',
+      Value: '95.940469715716532',
+      NumberOfUnits: '142'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '89.887765138357764'
+      },
+      Seller: {
+          Name: 'Carl Costello',
+          City: 'Seattle'
+      },
+      Date: '2012-08-27T00:00:00',
+      Value: '27.453476901842972',
+      NumberOfUnits: '46'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '83.189849035437149'
+      },
+      Seller: {
+          Name: 'Walter Pang',
+          City: 'Seattle'
+      },
+      Date: '2012-09-03T00:00:00',
+      Value: '68.605291316567588',
+      NumberOfUnits: '102'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '0.10354146366172538'
+      },
+      Seller: {
+          Name: 'Russell Shorter',
+          City: 'Berlin'
+      },
+      Date: '2012-09-09T00:00:00',
+      Value: '96.593755668305676',
+      NumberOfUnits: '21'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '36.629343143026041'
+      },
+      Seller: {
+          Name: 'Monica Freitag',
+          City: 'Sofia'
+      },
+      Date: '2012-09-10T00:00:00',
+      Value: '4.9306348920476788',
+      NumberOfUnits: '442'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '92.3085672279394'
+      },
+      Seller: {
+          Name: 'Harry Tyler',
+          City: 'New York'
+      },
+      Date: '2012-09-13T00:00:00',
+      Value: '99.215311091027843',
+      NumberOfUnits: '254'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '28.009415291254136'
+      },
+      Seller: {
+          Name: 'Nicholas Carmona',
+          City: 'Sofia'
+      },
+      Date: '2012-09-13T00:00:00',
+      Value: '49.9100303509785',
+      NumberOfUnits: '251'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '60.30177895925091'
+      },
+      Seller: {
+          Name: 'Antonio Charbonneau',
+          City: 'New York'
+      },
+      Date: '2012-09-15T00:00:00',
+      Value: '43.926440898294764',
+      NumberOfUnits: '119'
+  },
+  {
+      Product: {
+          Name: 'Bikes',
+          UnitPrice: '33.007745320446666'
+      },
+      Seller: {
+          Name: 'Claudia Kobayashi',
+          City: 'New York'
+      },
+      Date: '2012-09-19T00:00:00',
+      Value: '32.426872864564352',
+      NumberOfUnits: '256'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '99.002955760342516'
+      },
+      Seller: {
+          Name: 'John Smith',
+          City: 'New York'
+      },
+      Date: '2012-09-23T00:00:00',
+      Value: '35.80295570930604',
+      NumberOfUnits: '456'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '16.174323817796225'
+      },
+      Seller: {
+          Name: 'Kathe Pettel',
+          City: 'London'
+      },
+      Date: '2012-10-01T00:00:00',
+      Value: '16.358145333993317',
+      NumberOfUnits: '430'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '72.899271488608449'
+      },
+      Seller: {
+          Name: 'David Haley',
+          City: 'Berlin'
+      },
+      Date: '2012-10-02T00:00:00',
+      Value: '57.0288074934058',
+      NumberOfUnits: '248'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '21.662706984981291'
+      },
+      Seller: {
+          Name: 'Harold Garvin',
+          City: 'Berlin'
+      },
+      Date: '2012-10-18T00:00:00',
+      Value: '28.238128790742778',
+      NumberOfUnits: '440'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '28.342247115607488'
+      },
+      Seller: {
+          Name: 'Howard Sprouse',
+          City: 'New York'
+      },
+      Date: '2012-10-19T00:00:00',
+      Value: '66.64152637433331',
+      NumberOfUnits: '234'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '80.468710223431088'
+      },
+      Seller: {
+          Name: 'Benjamin Meekins',
+          City: 'New York'
+      },
+      Date: '2012-10-25T00:00:00',
+      Value: '5.2594607254767141',
+      NumberOfUnits: '36'
+  },
+  {
+      Product: {
+          Name: 'Accessories',
+          UnitPrice: '97.686087618435764'
+      },
+      Seller: {
+          Name: 'Harry Tyler',
+          City: 'London'
+      },
+      Date: '2012-10-26T00:00:00',
+      Value: '41.233811686389991',
+      NumberOfUnits: '46'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '88.700193301169293'
+      },
+      Seller: {
+          Name: 'Elisa Longbottom',
+          City: 'London'
+      },
+      Date: '2012-11-02T00:00:00',
+      Value: '64.566657210032758',
+      NumberOfUnits: '211'
+  },
+  {
+      Product: {
+          Name: 'Clothing',
+          UnitPrice: '67.261227205051682'
+      },
+      Seller: {
+          Name: 'Walter Pang',
+          City: 'New York'
+      },
+      Date: '2012-11-17T00:00:00',
+      Value: '14.189396572387498',
+      NumberOfUnits: '408'
+  },
+  {
+      Product: {
+          Name: 'Components',
+          UnitPrice: '7.1456905022010631'
+      },
+      Seller: {
+          Name: 'Walter Pang',
+          City: 'New York'
+      },
+      Date: '2012-11-20T00:00:00',
+      Value: '72.779385965680419',
+      NumberOfUnits: '376'
+  }
+];
