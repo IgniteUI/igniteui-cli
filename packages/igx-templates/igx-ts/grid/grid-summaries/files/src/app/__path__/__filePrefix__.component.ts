@@ -37,7 +37,7 @@ class CustomDateSummary extends IgxDateSummaryOperand {
   constructor() {
     super();
   }
-  public operate(data?: Date[]): IgxSummaryResult[] {
+  public override operate(data?: Date[]): IgxSummaryResult[] {
     const result: IgxSummaryResult[] = [];
     if (!data) {
         return result;

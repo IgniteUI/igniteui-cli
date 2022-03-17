@@ -23,7 +23,7 @@ export class <%=ClassName%>Component {
   }
 
   public get hasChildTransactions(): boolean {
-    return this.layout1.hgridAPI.getChildGrids()
+    return this.layout1.gridAPI.getChildGrids()
       .find(c => c.transactions.getAggregatedChanges(false).length > 0) !== undefined;
   }
 
@@ -68,7 +68,7 @@ export class <%=ClassName%>Component {
 
   public commit(): void {
     this.hierarchicalGrid.transactions.commit(this.localdata);
-    this.layout1.hgridAPI.getChildGrids().forEach((grid) => {
+    this.layout1.gridAPI.getChildGrids().forEach((grid) => {
       grid.transactions.commit(grid.data);
     });
     this.dialogChanges.close();
@@ -76,7 +76,7 @@ export class <%=ClassName%>Component {
 
   public discard(): void {
     this.hierarchicalGrid.transactions.clear();
-    this.layout1.hgridAPI.getChildGrids().forEach((grid) => {
+    this.layout1.gridAPI.getChildGrids().forEach((grid) => {
       grid.transactions.clear();
     });
     this.dialogChanges.close();
@@ -84,7 +84,7 @@ export class <%=ClassName%>Component {
 
   public openCommitDialog(): void {
     this.transactionsDataAll = [...this.hierarchicalGrid.transactions.getAggregatedChanges(true)];
-    this.layout1.hgridAPI.getChildGrids().forEach((grid) => {
+    this.layout1.gridAPI.getChildGrids().forEach((grid) => {
       this.transactionsDataAll = this.transactionsDataAll.concat(grid.transactions.getAggregatedChanges(true));
     });
     this.dialogChanges.open();
