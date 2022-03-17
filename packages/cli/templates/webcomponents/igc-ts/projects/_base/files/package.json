@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@vaadin/router": "^1.7.4",
-    "igniteui-webcomponents": "2.0.0",
+    "igniteui-webcomponents": "2.1.0",
     "igniteui-webcomponents-grids": "~1.4.1",
     "igniteui-webcomponents-core": "~1.4.1",
     "igniteui-webcomponents-layouts": "~1.4.1",
@@ -73,6 +73,7 @@
       "@typescript-eslint/no-unused-vars": [
         "error"
       ],
+      "import/no-extraneous-dependencies": "off",
       "import/no-unresolved": "off",
       "import/extensions": [
         "error",
