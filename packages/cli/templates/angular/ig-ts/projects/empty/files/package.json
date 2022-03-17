@@ -22,7 +22,7 @@
     "jquery-ui": ">=1.10.5",
     "igniteui-angular-wrappers": "^13.1.0",
     "ignite-ui": "~21.2",
-    "rxjs": "~6.6.0",
+    "rxjs": "~7.5.0",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"
   },
