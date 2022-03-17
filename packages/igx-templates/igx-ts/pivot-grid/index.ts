@@ -8,6 +8,7 @@ class IgxPivotGridComponent extends BaseComponent {
 		super(__dirname);
 		this.name  = "Pivot Grid";
 		this.group = "Grids & Lists";
+		this.description = "basic IgxPivotGrid";
 	}
 }
 module.exports = new IgxPivotGridComponent();
