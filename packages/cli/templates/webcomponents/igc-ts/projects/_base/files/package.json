@@ -73,6 +73,7 @@
       "@typescript-eslint/no-unused-vars": [
         "error"
       ],
+      "import/no-extraneous-dependencies": "off",
       "import/no-unresolved": "off",
       "import/extensions": [
         "error",
