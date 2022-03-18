@@ -1,3 +1,28 @@
+# [9.1.1](https://github.com/IgniteUI/igniteui-cli/compare/v9.1.0...v9.1.1)  (2022-03-18)
+
+🎉 This update includes:
+
+- `igniteui-webcomponents` version [2.1.0](https://github.com/IgniteUI/igniteui-webcomponents/releases/tag/2.1.0).
+
+## igniteui/cli-core@9.1.1
+
+* Note: Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@13.1.911
+
+* update with @angular@13.3 by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1015
+* Template for the pivot grid by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1013
+
+## igniteui/angular-schematics@13.1.911
+
+* Note: Version bump only for package igniteui/angular-schematics
+
+## igniteui-cli@9.1.1
+
+* feat(wc): add new 2.1.0 components by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1014
+* update with @angular@13.3 by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1015
+* Template for the pivot grid by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1013
+
 # [9.1.0](https://github.com/IgniteUI/igniteui-cli/compare/v9.0.6...v9.1.0)  (2022-03-02)
 
 🎉 This update includes:
