@@ -1,3 +1,23 @@
+# [9.1.2](https://github.com/IgniteUI/igniteui-cli/compare/v9.1.1...v9.1.2)  (2022-05-16)
+
+## igniteui/cli-core@9.1.2
+
+* Note: Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@13.1.912
+
+#### Bug Fixes
+
+* **igx(fintech grid):** fix slow grid [#1020](https://github.com/IgniteUI/igniteui-cli/issues/1020) ([4f888dc](https://github.com/IgniteUI/igniteui-cli/commit/4f888dc3c2b1fd6ad896b197634d3aa0c3ef57cd))
+
+## igniteui/angular-schematics@13.1.912
+
+* Note: Version bump only for package igniteui/angular-schematics
+
+## igniteui-cli@9.1.2
+
+* **igx(fintech grid):** fix slow grid [#1020](https://github.com/IgniteUI/igniteui-cli/issues/1020) ([4f888dc](https://github.com/IgniteUI/igniteui-cli/commit/4f888dc3c2b1fd6ad896b197634d3aa0c3ef57cd))
+
 # [9.1.1](https://github.com/IgniteUI/igniteui-cli/compare/v9.1.0...v9.1.1)  (2022-03-18)
 
 🎉 This update includes:
