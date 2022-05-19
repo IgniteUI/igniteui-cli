@@ -6,6 +6,7 @@ import * as path from "path";
 
 export async function importDefaultTheme(tree: Tree): Promise<void> {
 	const sourceRoot = (await getDefaultProject(tree)).sourceRoot;
+	if (!sourceRoot) { return; }
 	const pathWithoutExt = path.join(sourceRoot, "styles");
 	if (tree.exists(`${pathWithoutExt}.sass`)) {
 		importDefaultThemeSass(tree, `${pathWithoutExt}.sass`);
@@ -42,7 +43,7 @@ function importDefaultThemeSass(tree: Tree, filePath: string) {
 	const igxPackage = resolveIgxPackage(NPM_PACKAGE);
 	const sassImports =
 	`
-@import "~${igxPackage}/theming";
+@use "~${igxPackage}/theming";
 // Uncomment the following lines if you want to add a custom palette:
 // $primary: #731963 !default;
 // $secondary: #ce5712 !default;
