@@ -1,3 +1,25 @@
+# [9.1.3](https://github.com/IgniteUI/igniteui-cli/compare/v9.1.2...v9.1.3)  (2022-05-19)
+
+## igniteui/cli-core@9.1.3
+
+* Note: Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@13.1.913
+
+* Note: Version bump only for package igniteui/angular-templates
+
+## igniteui/angular-schematics@13.1.913
+
+#### Bug Fixes
+
+* **schematics:** Use @use rule to add default theming module [#1023](https://github.com/IgniteUI/igniteui-cli/issues/1023) ([fc16535](https://github.com/IgniteUI/igniteui-cli/commit/fc165358d0aa368e592195ae0666511d095b5d0c))
+
+## igniteui-cli@9.1.3
+
+#### Bug Fixes
+
+* **schematics:** Use @use rule to add default theming module [#1023](https://github.com/IgniteUI/igniteui-cli/issues/1023) ([fc16535](https://github.com/IgniteUI/igniteui-cli/commit/fc165358d0aa368e592195ae0666511d095b5d0c))
+
 # [9.1.2](https://github.com/IgniteUI/igniteui-cli/compare/v9.1.1...v9.1.2)  (2022-05-16)
 
 ## igniteui/cli-core@9.1.2
