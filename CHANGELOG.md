@@ -1,3 +1,27 @@
+# [9.1.4](https://github.com/IgniteUI/igniteui-cli/compare/v9.1.3...v9.1.4)  (2022-05-20)
+
+## igniteui/cli-core@9.1.4
+
+* Note: Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@13.1.914
+
+* Note: Version bump only for package igniteui/angular-templates
+
+## igniteui/angular-schematics@13.1.914
+
+#### Bug Fixes
+
+* **schematics:** refactor(theme-import): Place sass/scss imports before content.
+ ([fb5e4d3](https://github.com/IgniteUI/igniteui-cli/commit/fb5e4d3c217c68f815afa753120fa3673cf79a06))
+
+## igniteui-cli@9.1.4
+
+#### Bug Fixes
+
+* **schematics:** refactor(theme-import): Place sass/scss imports before content.
+ ([fb5e4d3](https://github.com/IgniteUI/igniteui-cli/commit/fb5e4d3c217c68f815afa753120fa3673cf79a06))
+
 # [9.1.3](https://github.com/IgniteUI/igniteui-cli/compare/v9.1.2...v9.1.3)  (2022-05-19)
 
 ## igniteui/cli-core@9.1.3
