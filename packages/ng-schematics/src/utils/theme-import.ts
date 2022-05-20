@@ -43,7 +43,7 @@ function importDefaultThemeSass(tree: Tree, filePath: string) {
 	const igxPackage = resolveIgxPackage(NPM_PACKAGE);
 	const sassImports =
 	`
-@use "~${igxPackage}/theming";
+@use "~${igxPackage}/theming" as *;
 // Uncomment the following lines if you want to add a custom palette:
 // $primary: #731963 !default;
 // $secondary: #ce5712 !default;
@@ -59,7 +59,7 @@ function importDefaultThemeSass(tree: Tree, filePath: string) {
 	let content = tree.read(filePath)!.toString();
 
 	if (!content.includes(sassImports)) {
-		content += sassImports;
+		content = sassImports + content;
 	}
 
 	tree.overwrite(filePath, content);
