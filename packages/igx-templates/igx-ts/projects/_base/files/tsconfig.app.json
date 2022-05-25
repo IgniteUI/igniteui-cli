@@ -3,7 +3,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "lib": [
-      "es2020",
+      "es2019",
       "dom"
     ],
     "outDir": "./out-tsc/app",
