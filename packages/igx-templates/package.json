@@ -13,6 +13,6 @@
   "license": "MIT",
   "dependencies": {
     "@igniteui/cli-core": "~9.1.4",
-    "typescript": "~4.4.4"
+    "typescript": "~4.7.2"
   }
 }
