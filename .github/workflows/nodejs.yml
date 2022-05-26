@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x, 14.x]
+        node-version: [14.x, 16.x]
     steps:
       - name: Checkout
         uses: actions/checkout@v2 #set credentials for every repository on the computer --global, so `New command` CLI tests pass
