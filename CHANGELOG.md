@@ -1,3 +1,25 @@
+# [9.2.0](https://github.com/IgniteUI/igniteui-cli/compare/v9.1.4...v9.2.0)  (2022-05-26)
+
+🎉 This update includes:
+
+- `igniteui-angular` version [13.2.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/13.2.0).
+
+## igniteui/cli-core@9.2.0
+
+* Note: Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@13.2.920
+
+* Update to igniteui-angular 13.2.0 by @dafo in https://github.com/IgniteUI/igniteui-cli/pull/1026
+
+## igniteui/angular-schematics@13.2.920
+
+* Note: Version bump only for package igniteui/angular-schematics
+
+## igniteui-cli@9.2.0
+
+* Update to igniteui-angular 13.2.0 by @dafo in https://github.com/IgniteUI/igniteui-cli/pull/1026
+
 # [9.1.4](https://github.com/IgniteUI/igniteui-cli/compare/v9.1.3...v9.1.4)  (2022-05-20)
 
 ## igniteui/cli-core@9.1.4
