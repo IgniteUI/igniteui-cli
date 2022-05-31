@@ -20,7 +20,7 @@
     "@angular/router": "~14.0.0-rc.2",
     "angular-auth-oidc-client": "^9.0.3",
     "hammerjs": "^2.0.8",
-    "igniteui-angular": "~13.2.0",
+    "igniteui-angular": "~14.0.0-alpha.0",
     "core-js": "^3.6.5",
     "jszip": "^3.5.0",
     "minireset.css": "~0.0.4",
