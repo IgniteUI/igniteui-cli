@@ -193,6 +193,25 @@
     unique-filename "^1.1.1"
     which "^1.3.1"
 
+"@igniteui/angular-templates@~13.1.914":
+  version "13.1.914"
+  resolved "https://registry.yarnpkg.com/@igniteui/angular-templates/-/angular-templates-13.1.914.tgz#ec8f78d45a8cf4641ccbba9d12eee5e25ed268f6"
+  integrity sha512-dydbIXHfMbDXHxCtXDmaaH47jl1k2xvwfA3u9vY5YSxqk0obegZ5zVFm6UjynbCwann7piDy8QeKH17hYeAfJg==
+  dependencies:
+    "@igniteui/cli-core" "~9.1.4"
+    typescript "~4.4.4"
+
+"@igniteui/cli-core@~9.1.4":
+  version "9.1.4"
+  resolved "https://registry.yarnpkg.com/@igniteui/cli-core/-/cli-core-9.1.4.tgz#7ea3838efd673c3826654ffee6088526822496dd"
+  integrity sha512-hkmmN4anZZLfdV+xtNX4W+2Rs2jo2zGa948+dQi3CSJhTrZBWNLFHCAYwXkIw1IkLtIZFSloXjDs3Nd60si+pA==
+  dependencies:
+    chalk "^2.3.2"
+    glob "^7.1.2"
+    inquirer "^6.2.2"
+    through2 "^2.0.3"
+    typescript "~4.5.2"
+
 "@jridgewell/gen-mapping@^0.3.0":
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/@jridgewell/gen-mapping/-/gen-mapping-0.3.1.tgz#cf92a983c83466b8c0ce9124fadeaf09f7c66ea9"
@@ -6064,13 +6083,6 @@ rx@4.1.0:
   resolved "https://registry.yarnpkg.com/rx/-/rx-4.1.0.tgz#a5f13ff79ef3b740fe30aa803fb09f98805d4782"
   integrity sha1-pfE/957zt0D+MKqAP7CfmIBdR4I=
 
-rxjs@6.6.3:
-  version "6.6.3"
-  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.6.3.tgz#8ca84635c4daa900c0d3967a6ee7ac60271ee552"
-  integrity sha512-trsQc+xYYXZ3urjOiJOuCOa5N3jAZ3eiSpQB5hIT8zGlL2QfnHLJ2r7GMkBGuIausdJN1OneaI6gQlsqNHHmZQ==
-  dependencies:
-    tslib "^1.9.0"
-
 rxjs@6.6.7, rxjs@^6.4.0:
   version "6.6.7"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.6.7.tgz#90ac018acabf491bf65044235d5863c4dab804c9"
@@ -7036,6 +7048,11 @@ typescript@^4.6.2, typescript@~4.7.2:
   version "4.7.2"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.7.2.tgz#1f9aa2ceb9af87cca227813b4310fff0b51593c4"
   integrity sha512-Mamb1iX2FDUpcTRzltPxgWMKy3fhg0TN378ylbktPGPK/99KbDtMQ4W1hwgsbPAsG3a0xKa1vmw4VKZQbkvz5A==
+
+typescript@~4.4.4:
+  version "4.4.4"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.4.4.tgz#2cd01a1a1f160704d3101fd5a58ff0f9fcb8030c"
+  integrity sha512-DqGhF5IKoBl8WNf8C1gu8q0xZSInh9j1kJJMqT3a94w1JzVaBU4EXOSMrz9yDqMT0xt3selp83fuFMQ0uzv6qA==
 
 typescript@~4.5.2:
   version "4.5.5"
