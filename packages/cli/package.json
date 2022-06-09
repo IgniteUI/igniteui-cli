@@ -1,6 +1,6 @@
 {
   "name": "igniteui-cli",
-  "version": "9.2.0",
+  "version": "10.0.0",
   "description": "CLI tool for creating Ignite UI projects",
   "keywords": [
     "CLI",
@@ -78,8 +78,8 @@
     "all": true
   },
   "dependencies": {
-    "@igniteui/angular-templates": "~13.2.920",
-    "@igniteui/cli-core": "~9.2.0",
+    "@igniteui/angular-templates": "~14.0.1000",
+    "@igniteui/cli-core": "~10.0.0",
     "chalk": "^2.3.2",
     "fs-extra": "^3.0.1",
     "glob": "^7.1.2",
@@ -104,7 +104,7 @@
     "jasmine-spec-reporter": "~5.0.0",
     "lite-server": "^2.4.0",
     "nyc": "^13.1.0",
-    "rxjs": "6.6.3",
+    "rxjs": "^6.6.3",
     "source-map-support": "^0.5.4",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",

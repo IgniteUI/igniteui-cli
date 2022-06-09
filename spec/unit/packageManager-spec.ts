@@ -367,7 +367,7 @@ describe("Unit - Package Manager", () => {
 		expect(Util.log).toHaveBeenCalledTimes(0);
 		expect(cp.exec).toHaveBeenCalledTimes(1);
 		expect(cp.exec).toHaveBeenCalledWith(
-			`npm install test-pack --quiet --no-save`, {}, jasmine.any(Function));
+			`npm install test-pack --quiet --no-save --legacy-peer-dep`, {}, jasmine.any(Function));
 		done();
 	});
 
