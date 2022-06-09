@@ -165,7 +165,7 @@ export class PackageManager {
 	}
 
 	public static async queuePackage(packageName: string, verbose = false) {
-		const command = this.getInstallCommand(this.getManager(), packageName).replace("--save", "--no-save");
+		const command = this.getInstallCommand(this.getManager(), packageName).replace("--save", "--no-save").concat(" --legacy-peer-dep");
 		const [packName, version] = packageName.split(/@(?=[^\/]+$)/);
 		const packageJSON = this.getPackageJSON();
 		if (!packageJSON.dependencies) {
@@ -192,7 +192,7 @@ export class PackageManager {
 	}
 
 	/** Waits for queued installs to finish, optionally log results and clear queue */
-	public static async flushQueue(logSuccess: boolean, verbose = false) {
+	public static async flushQueue(logSuccess: boolean, verbose = true) {
 		if (this.installQueue.length) {
 			Util.log(`Waiting for additional packages to install`);
 			const results = await Promise.all(this.installQueue);
