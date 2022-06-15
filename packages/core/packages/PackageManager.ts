@@ -165,7 +165,7 @@ export class PackageManager {
 	}
 
 	public static async queuePackage(packageName: string, verbose = false) {
-		const command = this.getInstallCommand(this.getManager(), packageName).replace("--save", "--no-save").concat(" --legacy-peer-dep");
+		const command = this.getInstallCommand(this.getManager(), packageName).replace("--save", "--no-save").concat(" --legacy-peer-deps");
 		const [packName, version] = packageName.split(/@(?=[^\/]+$)/);
 		const packageJSON = this.getPackageJSON();
 		if (!packageJSON.dependencies) {
