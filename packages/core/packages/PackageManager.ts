@@ -103,6 +103,7 @@ export class PackageManager {
 			try {
 				// inherit the parent process' stdin so we can catch if an attempt to interrupt the process is made
 				// ignore stdout and stderr as they will output unnecessary text onto the console
+				// TODO: remove --legacy-peer-deps flag igniteui-cli#1035 once new DV package is available
 				Util.execSync(command + " --legacy-peer-deps", { stdio: ["inherit"], killSignal: "SIGINT" });
 				Util.log(`Packages installed successfully`);
 			} catch (error) {
@@ -165,6 +166,7 @@ export class PackageManager {
 	}
 
 	public static async queuePackage(packageName: string, verbose = false) {
+		// TODO: remove --legacy-peer-deps flag igniteui-cli#1035 once new DV package is available
 		const command = this.getInstallCommand(this.getManager(), packageName).replace("--save", "--no-save").concat(" --legacy-peer-deps");
 		const [packName, version] = packageName.split(/@(?=[^\/]+$)/);
 		const packageJSON = this.getPackageJSON();
