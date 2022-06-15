@@ -103,7 +103,7 @@ export class PackageManager {
 			try {
 				// inherit the parent process' stdin so we can catch if an attempt to interrupt the process is made
 				// ignore stdout and stderr as they will output unnecessary text onto the console
-				Util.execSync(command, { stdio: ["inherit"], killSignal: "SIGINT" });
+				Util.execSync(command + " --legacy-peer-deps", { stdio: ["inherit"], killSignal: "SIGINT" });
 				Util.log(`Packages installed successfully`);
 			} catch (error) {
 				// ^C (SIGINT) produces status:3221225786 https://github.com/sass/node-sass/issues/1283#issuecomment-169450661
@@ -176,6 +176,17 @@ export class PackageManager {
 		}
 		packageJSON.dependencies[packName] = version;
 		this.fs.writeFile(this.jsonPath, Util.formatPackageJson(packageJSON));
+		// B.P. Temporarily (hopefully) skip creating install child processes for new projects
+		// since npm have removed the ability to add a single package and now `npm i <pkg>`
+		// will also cause all deps in package.json to be installed
+		// this initially causes problems with the install tasks that we set up for DV components
+		// where the package.json and the installed dependencies get mashed up so npm fails
+		// to resolve some dependencies in the tree and the task dies with a random error
+		// https://github.com/npm/cli/issues/3023
+		const config = ProjectConfig.localConfig();
+		if (!config.packagesInstalled) {
+			return;
+		}
 		// D.P. Concurrent install runs should be supported
 		// https://github.com/npm/npm/issues/5948
 		// https://github.com/npm/npm/issues/2500
