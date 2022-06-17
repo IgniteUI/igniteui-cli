@@ -263,7 +263,7 @@ describe("Unit - Package Manager", () => {
 		expect(Util.log).toHaveBeenCalledWith(`Installing npm packages`);
 		expect(Util.log).toHaveBeenCalledWith(`Error installing npm packages.`);
 		expect(Util.log).toHaveBeenCalledWith(`Example`);
-		expect(Util.execSync).toHaveBeenCalledWith(`npm install --quiet`, { stdio: ["inherit"], killSignal: "SIGINT" });
+		expect(Util.execSync).toHaveBeenCalledWith(`npm install --quiet --legacy-peer-deps`, { stdio: ["inherit"], killSignal: "SIGINT" });
 		expect(ProjectConfig.setConfig).toHaveBeenCalledWith({ packagesInstalled: true });
 		done();
 	});
@@ -279,7 +279,7 @@ describe("Unit - Package Manager", () => {
 		expect(Util.log).toHaveBeenCalledTimes(2);
 		expect(Util.log).toHaveBeenCalledWith(`Installing npm packages`);
 		expect(Util.log).toHaveBeenCalledWith(`Packages installed successfully`);
-		expect(Util.execSync).toHaveBeenCalledWith(`npm install --quiet`, { stdio: ["inherit"], killSignal: "SIGINT" });
+		expect(Util.execSync).toHaveBeenCalledWith(`npm install --quiet --legacy-peer-deps`, { stdio: ["inherit"], killSignal: "SIGINT" });
 		expect(ProjectConfig.setConfig).toHaveBeenCalledWith({ packagesInstalled: true });
 		done();
 	});
@@ -299,7 +299,7 @@ describe("Unit - Package Manager", () => {
 		await PackageManager.installPackages(true);
 		expect(Util.log).toHaveBeenCalledTimes(1);
 		expect(Util.log).toHaveBeenCalledWith(`Installing npm packages`);
-		expect(Util.execSync).toHaveBeenCalledWith(`npm install --quiet`, { stdio: ["inherit"], killSignal: "SIGINT" });
+		expect(Util.execSync).toHaveBeenCalledWith(`npm install --quiet --legacy-peer-deps`, { stdio: ["inherit"], killSignal: "SIGINT" });
 		expect(process.exit).toHaveBeenCalled();
 		expect(ProjectConfig.setConfig).toHaveBeenCalledTimes(0);
 		done();
@@ -360,14 +360,24 @@ describe("Unit - Package Manager", () => {
 		const mockRequire = {
 			dependencies: {}
 		};
+		const mockConfig = {
+			packagesInstalled: true
+		};
 		spyOn(require("module"), "_load").and.returnValue(mockRequire);
+		spyOn(ProjectConfig, "localConfig").and.returnValue(mockConfig);
 		spyOn(Util, "log");
+		const mockFs: Partial<IFileSystem> = {
+			readFile: jasmine.createSpy().and.returnValue(JSON.stringify(mockRequire)),
+			writeFile: jasmine.createSpy()
+		};
+		// should ignore already installed
+		spyOn(App.container, "get").and.returnValue(mockFs);
 		const execSpy = spyOn(cp, "exec");
 		PackageManager.queuePackage("test-pack");
 		expect(Util.log).toHaveBeenCalledTimes(0);
 		expect(cp.exec).toHaveBeenCalledTimes(1);
 		expect(cp.exec).toHaveBeenCalledWith(
-			`npm install test-pack --quiet --no-save --legacy-peer-dep`, {}, jasmine.any(Function));
+			`npm install test-pack --quiet --no-save --legacy-peer-deps`, {}, jasmine.any(Function));
 		done();
 	});
 
@@ -381,6 +391,10 @@ describe("Unit - Package Manager", () => {
 			readFile: jasmine.createSpy().and.returnValue(JSON.stringify(mockRequire)),
 			writeFile: jasmine.createSpy()
 		};
+		const mockConfig = {
+			packagesInstalled: true
+		};
+		spyOn(ProjectConfig, "localConfig").and.returnValue(mockConfig);
 		// should ignore already installed
 		spyOn(App.container, "get").and.returnValue(mockFs);
 		spyOn(Util, "log");
@@ -406,6 +420,10 @@ describe("Unit - Package Manager", () => {
 			readFile: jasmine.createSpy().and.returnValue(JSON.stringify(mockRequire)),
 			writeFile: jasmine.createSpy()
 		};
+		const mockConfig = {
+			packagesInstalled: true
+		};
+		spyOn(ProjectConfig, "localConfig").and.returnValue(mockConfig);
 		// spyOn(require("module"), "_load").and.returnValue(mockRequire);
 		spyOn(Util, "log");
 		spyOn(App.container, "get").and.returnValue(mockFs);
