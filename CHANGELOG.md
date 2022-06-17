@@ -1,3 +1,22 @@
+# [10.0.1](https://github.com/IgniteUI/igniteui-cli/compare/v10.0.0...v10.0.1) (2022-06-17)
+
+## igniteui/cli-core@10.0.1
+
+#### Bug Fixes
+
+* **package-manager:** skip setting up child install tasks for new projects ([de2a134](https://github.com/IgniteUI/igniteui-cli/commit/de2a1341e13ba20635a5ed94c5cc7e4c79c7ca46))
+
+## igniteui/angular-templates@14.0.1001
+
+* Note: Version bump only for package igniteui/cli-core
+
+## igniteui/angular-schematics@14.0.1001
+* Note: Version bump only for package igniteui/cli-core
+
+## igniteui-cli@10.0.1
+* Note: Version bump only for package igniteui/cli-core
+
+
 # [10.0.0](https://github.com/IgniteUI/igniteui-cli/compare/v9.2.0...v10.0.0)  (2022-06-09)
 
 🎉 This update includes:
