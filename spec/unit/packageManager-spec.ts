@@ -263,7 +263,7 @@ describe("Unit - Package Manager", () => {
 		expect(Util.log).toHaveBeenCalledWith(`Installing npm packages`);
 		expect(Util.log).toHaveBeenCalledWith(`Error installing npm packages.`);
 		expect(Util.log).toHaveBeenCalledWith(`Example`);
-		expect(Util.execSync).toHaveBeenCalledWith(`npm install --quiet --legacy-peer-deps`, { stdio: ["inherit"], killSignal: "SIGINT" });
+		expect(Util.execSync).toHaveBeenCalledWith(`npm install --quiet`, { stdio: ["inherit"], killSignal: "SIGINT" });
 		expect(ProjectConfig.setConfig).toHaveBeenCalledWith({ packagesInstalled: true });
 		done();
 	});
@@ -279,7 +279,7 @@ describe("Unit - Package Manager", () => {
 		expect(Util.log).toHaveBeenCalledTimes(2);
 		expect(Util.log).toHaveBeenCalledWith(`Installing npm packages`);
 		expect(Util.log).toHaveBeenCalledWith(`Packages installed successfully`);
-		expect(Util.execSync).toHaveBeenCalledWith(`npm install --quiet --legacy-peer-deps`, { stdio: ["inherit"], killSignal: "SIGINT" });
+		expect(Util.execSync).toHaveBeenCalledWith(`npm install --quiet`, { stdio: ["inherit"], killSignal: "SIGINT" });
 		expect(ProjectConfig.setConfig).toHaveBeenCalledWith({ packagesInstalled: true });
 		done();
 	});
@@ -299,7 +299,7 @@ describe("Unit - Package Manager", () => {
 		await PackageManager.installPackages(true);
 		expect(Util.log).toHaveBeenCalledTimes(1);
 		expect(Util.log).toHaveBeenCalledWith(`Installing npm packages`);
-		expect(Util.execSync).toHaveBeenCalledWith(`npm install --quiet --legacy-peer-deps`, { stdio: ["inherit"], killSignal: "SIGINT" });
+		expect(Util.execSync).toHaveBeenCalledWith(`npm install --quiet`, { stdio: ["inherit"], killSignal: "SIGINT" });
 		expect(process.exit).toHaveBeenCalled();
 		expect(ProjectConfig.setConfig).toHaveBeenCalledTimes(0);
 		done();
@@ -377,7 +377,7 @@ describe("Unit - Package Manager", () => {
 		expect(Util.log).toHaveBeenCalledTimes(0);
 		expect(cp.exec).toHaveBeenCalledTimes(1);
 		expect(cp.exec).toHaveBeenCalledWith(
-			`npm install test-pack --quiet --no-save --legacy-peer-deps`, {}, jasmine.any(Function));
+			`npm install test-pack --quiet --no-save`, {}, jasmine.any(Function));
 		done();
 	});
 

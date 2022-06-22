@@ -7,7 +7,6 @@ import { routes } from './app-routing.js';
 export class App extends LitElement {
   static styles = css`
     router-outlet {
-      width: 100%;
       height: 100%;
       display: flex;
       text-align: center;
