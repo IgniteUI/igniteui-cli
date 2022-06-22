@@ -22,7 +22,6 @@ defineComponents(
 export class App extends LitElement {
   static styles = css`
     router-outlet {
-      width: 100%;
       height: 100%;
       display: flex;
       text-align: center;
@@ -31,11 +30,15 @@ export class App extends LitElement {
       align-items: center;
       overflow: inherit;
     }
+
+    igc-nav-drawer {
+      float: left;
+    }
   `;
 
   render() {
     return html`
-      <igc-nav-drawer open=true>
+      <igc-nav-drawer open="true" position="relative">
         <igc-nav-drawer-header-item>Ignite UI CLI</igc-nav-drawer-header-item>
         ${routes.filter((element, index) => index < routes.length - 1).map(i => html`
           <igc-nav-drawer-item>
