@@ -103,8 +103,7 @@ export class PackageManager {
 			try {
 				// inherit the parent process' stdin so we can catch if an attempt to interrupt the process is made
 				// ignore stdout and stderr as they will output unnecessary text onto the console
-				// TODO: remove --legacy-peer-deps flag igniteui-cli#1035 once new DV package is available
-				Util.execSync(command + " --legacy-peer-deps", { stdio: ["inherit"], killSignal: "SIGINT" });
+				Util.execSync(command, { stdio: ["inherit"], killSignal: "SIGINT" });
 				Util.log(`Packages installed successfully`);
 			} catch (error) {
 				// ^C (SIGINT) produces status:3221225786 https://github.com/sass/node-sass/issues/1283#issuecomment-169450661
@@ -166,8 +165,7 @@ export class PackageManager {
 	}
 
 	public static async queuePackage(packageName: string, verbose = false) {
-		// TODO: remove --legacy-peer-deps flag igniteui-cli#1035 once new DV package is available
-		const command = this.getInstallCommand(this.getManager(), packageName).replace("--save", "--no-save").concat(" --legacy-peer-deps");
+		const command = this.getInstallCommand(this.getManager(), packageName).replace("--save", "--no-save");
 		const [packName, version] = packageName.split(/@(?=[^\/]+$)/);
 		const packageJSON = this.getPackageJSON();
 		if (!packageJSON.dependencies) {

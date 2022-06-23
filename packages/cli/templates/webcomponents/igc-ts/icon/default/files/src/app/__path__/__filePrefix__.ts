@@ -3,11 +3,9 @@ import { customElement } from 'lit/decorators.js';
 import {
   defineComponents,
   IgcIconComponent,
-} from 'igniteui-webcomponents';
-import {
   registerIcon,
   registerIconFromText,
-} from 'igniteui-webcomponents/components/icon/icon.registry';
+} from 'igniteui-webcomponents';
 
 defineComponents(IgcIconComponent);
 
