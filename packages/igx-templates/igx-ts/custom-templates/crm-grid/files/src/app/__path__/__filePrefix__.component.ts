@@ -128,7 +128,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit {
       }
     }
   }
-  
+
   public formatDate(val: Date): string {
     return new Intl.DateTimeFormat('en-US').format(val);
   }
@@ -183,7 +183,7 @@ class DealsSummary extends IgxNumberSummaryOperand {
     super();
   }
 
-  public operate(summaries?: number[]): IgxSummaryResult[] {
+  public override operate(summaries?: number[]): IgxSummaryResult[] {
     const result = super.operate(summaries).filter((obj) => {
       if (obj.key === 'average' || obj.key === 'sum') {
         const summaryResult = obj.summaryResult;
@@ -208,7 +208,7 @@ class EarliestSummary extends IgxDateSummaryOperand {
     super();
   }
 
-  public operate(summaries?: Date[]): IgxSummaryResult[] {
+  public override operate(summaries?: Date[]): IgxSummaryResult[] {
     const result = super.operate(summaries).filter((obj) => {
       if (obj.key === 'earliest') {
         obj.summaryResult = formatDate(obj.summaryResult);
@@ -225,7 +225,7 @@ class SoonSummary extends IgxDateSummaryOperand {
     super();
   }
 
-  public operate(summaries?: Date[]): IgxSummaryResult[] {
+  public override operate(summaries?: Date[]): IgxSummaryResult[] {
     const result = super.operate(summaries).filter((obj) => {
       if (obj.key === 'latest') {
         obj.label = 'Soon';

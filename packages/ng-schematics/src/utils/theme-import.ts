@@ -6,6 +6,7 @@ import * as path from "path";
 
 export async function importDefaultTheme(tree: Tree): Promise<void> {
 	const sourceRoot = (await getDefaultProject(tree)).sourceRoot;
+	if (!sourceRoot) { return; }
 	const pathWithoutExt = path.join(sourceRoot, "styles");
 	if (tree.exists(`${pathWithoutExt}.sass`)) {
 		importDefaultThemeSass(tree, `${pathWithoutExt}.sass`);
@@ -42,23 +43,23 @@ function importDefaultThemeSass(tree: Tree, filePath: string) {
 	const igxPackage = resolveIgxPackage(NPM_PACKAGE);
 	const sassImports =
 	`
-@import "~${igxPackage}/theming";
+@use "~${igxPackage}/theming" as *;
 // Uncomment the following lines if you want to add a custom palette:
 // $primary: #731963 !default;
 // $secondary: #ce5712 !default;
-// $app-palette: igx-palette($primary, $secondary);
+// $app-palette: palette($primary, $secondary);
 
 /* autoprefixer grid: on */
 
-@include igx-core();
-@include igx-typography($font-family: $material-typeface, $type-scale: $material-type-scale);
-@include igx-theme($default-palette);
+@include core();
+@include typography($font-family: $material-typeface, $type-scale: $material-type-scale);
+@include theme($default-palette);
 `;
 
 	let content = tree.read(filePath)!.toString();
 
 	if (!content.includes(sassImports)) {
-		content += sassImports;
+		content = sassImports + content;
 	}
 
 	tree.overwrite(filePath, content);

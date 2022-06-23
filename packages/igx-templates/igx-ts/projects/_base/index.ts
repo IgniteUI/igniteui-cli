@@ -28,13 +28,13 @@ export class BaseIgxProject implements ProjectTemplate {
 $primary: #731963 !default;
 $secondary: #ce5712 !default;
 
-$app-palette: igx-palette($primary, $secondary);
+$app-palette: palette($primary, $secondary);
 
 /* autoprefixer grid: on */
 
-@include igx-core();
-@include igx-typography($font-family: $material-typeface, $type-scale: $material-type-scale);
-@include igx-theme($app-palette);
+@include core();
+@include typography($font-family: $material-typeface, $type-scale: $material-type-scale);
+@include theme($app-palette);
 `;
 	private DEFAULT_THEME = `,
               "node_modules/igniteui-angular/styles/igniteui-angular.css"`;

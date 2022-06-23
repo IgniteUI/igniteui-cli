@@ -360,8 +360,18 @@ describe("Unit - Package Manager", () => {
 		const mockRequire = {
 			dependencies: {}
 		};
+		const mockConfig = {
+			packagesInstalled: true
+		};
 		spyOn(require("module"), "_load").and.returnValue(mockRequire);
+		spyOn(ProjectConfig, "localConfig").and.returnValue(mockConfig);
 		spyOn(Util, "log");
+		const mockFs: Partial<IFileSystem> = {
+			readFile: jasmine.createSpy().and.returnValue(JSON.stringify(mockRequire)),
+			writeFile: jasmine.createSpy()
+		};
+		// should ignore already installed
+		spyOn(App.container, "get").and.returnValue(mockFs);
 		const execSpy = spyOn(cp, "exec");
 		PackageManager.queuePackage("test-pack");
 		expect(Util.log).toHaveBeenCalledTimes(0);
@@ -381,6 +391,10 @@ describe("Unit - Package Manager", () => {
 			readFile: jasmine.createSpy().and.returnValue(JSON.stringify(mockRequire)),
 			writeFile: jasmine.createSpy()
 		};
+		const mockConfig = {
+			packagesInstalled: true
+		};
+		spyOn(ProjectConfig, "localConfig").and.returnValue(mockConfig);
 		// should ignore already installed
 		spyOn(App.container, "get").and.returnValue(mockFs);
 		spyOn(Util, "log");
@@ -406,6 +420,10 @@ describe("Unit - Package Manager", () => {
 			readFile: jasmine.createSpy().and.returnValue(JSON.stringify(mockRequire)),
 			writeFile: jasmine.createSpy()
 		};
+		const mockConfig = {
+			packagesInstalled: true
+		};
+		spyOn(ProjectConfig, "localConfig").and.returnValue(mockConfig);
 		// spyOn(require("module"), "_load").and.returnValue(mockRequire);
 		spyOn(Util, "log");
 		spyOn(App.container, "get").and.returnValue(mockFs);
