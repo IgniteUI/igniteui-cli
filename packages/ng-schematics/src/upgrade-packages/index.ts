@@ -30,7 +30,7 @@ export default function(options: UpgradeOptions): Rule {
 		return defer(async () => {
 			const success = await project.upgradeIgniteUIPackages("", "");
 			if (success && !options.skipInstall) {
-				context.addTask(new NodePackageInstallTask({ allowScripts: true }));
+				context.addTask(new NodePackageInstallTask());
 			}
 			return tree;
 		});

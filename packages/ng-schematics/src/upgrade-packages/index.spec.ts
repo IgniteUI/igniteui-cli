@@ -66,7 +66,7 @@ describe("Schematics upgrade-packages", () => {
 
 		await runner.runSchematicAsync(schematicName, { }, appTree).toPromise();
 		expect(upgradeSpy).toHaveBeenCalledTimes(3);
-		const installTaskOptions = new NodePackageInstallTask({ allowScripts: true }).toConfiguration();
+		const installTaskOptions = new NodePackageInstallTask().toConfiguration();
 		expect(runner.tasks).toContain(jasmine.objectContaining(installTaskOptions));
 
 		done();

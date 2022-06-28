@@ -136,7 +136,7 @@ export function component(options: ComponentOptions): Rule {
 				// if called w/ command line arguments, check if dependencies are added and add install task.
 				if (!prompt) {
 					if (installContext.shouldInstall) {
-						_context.addTask(new NodePackageInstallTask({ allowScripts: true }));
+						_context.addTask(new NodePackageInstallTask());
 						return;
 					}
 					return;
@@ -146,7 +146,7 @@ export function component(options: ComponentOptions): Rule {
 				}
 				_context.addTask(
 					new RunSchematicTask("start", {}),
-					installContext.shouldInstall ? [_context.addTask(new NodePackageInstallTask({ allowScripts: true }))] : []
+					installContext.shouldInstall ? [_context.addTask(new NodePackageInstallTask())] : []
 				);
 			}
 		]);
