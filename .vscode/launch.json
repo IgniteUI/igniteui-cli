@@ -327,7 +327,7 @@
             "console": "externalTerminal"
 		},
 		{
-      // in order to test schematics, you need to have ignitui-angular package already installed in the test project
+		// in order to test schematics, you need to have ignitui-angular package already installed in the test project
 			"name": "Run schematics:ng-new",
 			"request": "launch",
 			"type": "node",
@@ -349,7 +349,7 @@
 			}
 		},
 		{
-      // in order to test schematics, you need to have ignitui-angular package already installed in the test project
+		// in order to test schematics, you need to have ignitui-angular package already installed in the test project
 			"name": "Run schematics:cli-config",
 			"request": "launch",
 			"type": "node",
