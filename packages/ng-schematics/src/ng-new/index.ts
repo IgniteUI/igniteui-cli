@@ -166,10 +166,8 @@ export function newProject(options: OptionsSchema): Rule {
 			(tree: Tree, context: IgxSchematicContext) => {
 				const installChain: TaskId[] = [];
 				if (!options.skipInstall) {
-					const installTaskConfig = new NodePackageInstallTask(options.name);
-					installTaskConfig.allowScripts = true;
 					const installTask = context.addTask(
-						installTaskConfig,
+						new NodePackageInstallTask(options.name),
 						[...installChain]);
 					installChain.push(installTask);
 				}
