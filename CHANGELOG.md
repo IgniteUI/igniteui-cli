@@ -1,3 +1,30 @@
+# [10.0.2](https://github.com/IgniteUI/igniteui-cli/compare/v10.0.1...v10.0.2) (2022-06-29)
+
+🎉 This update includes:
+
+- `igniteui-webcomponents` version [3.2.0](https://github.com/IgniteUI/igniteui-webcomponents/releases/tag/3.2.0).
+* `igniteui-angular-core` version [14.0.0](https://www.npmjs.com/package/igniteui-angular-core/v/14.0.0)
+* `igniteui-angular-charts` version [14.0.0](https://www.npmjs.com/package/igniteui-angular-charts/v/14.0.0)
+* `igniteui-angular-gauges` version [14.0.0](https://www.npmjs.com/package/igniteui-angular-gauges/v/14.0.0)
+* `igniteui-angular-maps` version [14.0.0](https://www.npmjs.com/package/igniteui-angular-maps/v/14.0.0)
+
+
+## igniteui/cli-core@10.0.2
+
+* **package-manager:** remove the skip, setting up child install tasks for new projects ([f85d7b4](https://github.com/IgniteUI/igniteui-cli/commit/f85d7b4dd8bdffaf9bc730650526a9b592ea8da5))
+
+## igniteui/angular-templates@14.0.1002
+
+ - * **igx-ts:** Updating DV components to 14 by @dafo in https://github.com/IgniteUI/igniteui-cli/pull/1037
+
+## igniteui/angular-schematics@14.0.1002
+* Note: Version bump only for package igniteui/angular-schematics
+
+## igniteui-cli@10.0.2
+* Update Webcomponents projects to use ignite UI forWebcomponents 3.2.0 #1029 by dafo in https://github.com/IgniteUI/igniteui-cli/pull/1038
+* Add new Web Components: drop-down, expansion panel, tree #1039 by @dafo in https://github.com/IgniteUI/igniteui-cli/pull/1040
+ * **igx-ts:** Updating DV components to 14 by @dafo in https://github.com/IgniteUI/igniteui-cli/pull/1037
+
 # [10.0.1](https://github.com/IgniteUI/igniteui-cli/compare/v10.0.0...v10.0.1) (2022-06-17)
 
 ## igniteui/cli-core@10.0.1
@@ -8,13 +35,13 @@
 
 ## igniteui/angular-templates@14.0.1001
 
-* Note: Version bump only for package igniteui/cli-core
+* Note: Version bump only for package igniteui/angular-templates
 
 ## igniteui/angular-schematics@14.0.1001
-* Note: Version bump only for package igniteui/cli-core
+* Note: Version bump only for package igniteui/angular-schematics
 
 ## igniteui-cli@10.0.1
-* Note: Version bump only for package igniteui/cli-core
+* Note: Version bump only for package igniteui-cli
 
 
 # [10.0.0](https://github.com/IgniteUI/igniteui-cli/compare/v9.2.0...v10.0.0)  (2022-06-09)
