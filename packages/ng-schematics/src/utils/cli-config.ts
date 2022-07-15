@@ -1,6 +1,8 @@
 import { workspaces } from "@angular-devkit/core";
+import { ProjectDefinition } from "@angular-devkit/core/src/workspace";
 import { Rule, SchematicContext, SchematicsException, Tree } from "@angular-devkit/schematics";
 import { Config, createWorkspaceHost, Util } from "@igniteui/cli-core";
+import { getProjects } from "./theme-import";
 
 export function createCliConfig(): Rule {
 	return async (tree: Tree, context: SchematicContext) => {
@@ -28,17 +30,15 @@ async function GetCliConfig(tree: Tree): Promise<Config> {
 	}
 	const cliConfig: Config = require("../cli-config/files/ignite-ui-cli.json");
 	cliConfig.version = Util.version();
-	const userPort = getPort(workspace);
+	const projects = await getProjects(tree);
+	const userPort = getPort(projects.values().next().value);
 	if (userPort) {
 		cliConfig.project.defaultPort = userPort;
 	}
 	return cliConfig;
 }
 
-function getPort(workspace: workspaces.WorkspaceDefinition) {
-	const project = workspace.extensions.defaultProject ?
-		workspace.projects.get(workspace.extensions.defaultProject as string) :
-		workspace.projects.values().next().value as workspaces.ProjectDefinition;
+function getPort(project: ProjectDefinition) {
 	const projectServe = project?.targets.get("serve")?.options;
 
 	if (projectServe) {
