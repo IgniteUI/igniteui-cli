@@ -4,7 +4,7 @@ import { NPM_PACKAGE, resolveIgxPackage } from "@igniteui/angular-templates";
 import { addClassToBody, TypeScriptFileUpdate } from "@igniteui/cli-core";
 import { createCliConfig } from "../utils/cli-config";
 import { setVirtual } from "../utils/NgFileSystem";
-import { addFontsToIndexHtml, getDefaultProject, importDefaultTheme } from "../utils/theme-import";
+import { addFontsToIndexHtml, getProjects, importDefaultTheme } from "../utils/theme-import";
 
 function getDependencyVersion(pkg: string, tree: Tree): string {
 	const targetFile = "/package.json";
@@ -58,13 +58,15 @@ function addTypographyToProj(): Rule {
 
 function importBrowserAnimations(): Rule {
 	return async (tree: Tree) => {
-		const project = await getDefaultProject(tree);
-		const moduleFile = `${project.sourceRoot}/app/app.module.ts`;
-		if (tree.exists(moduleFile)) {
-			const mainModule = new TypeScriptFileUpdate(moduleFile);
-			mainModule.addNgModuleMeta({ import: "BrowserAnimationsModule", from: "@angular/platform-browser/animations" });
-			mainModule.finalize();
-		}
+		const projects = await getProjects(tree);
+		projects.forEach(project => {
+			const moduleFile = `${project.sourceRoot}/app/app.module.ts`;
+			if (tree.exists(moduleFile)) {
+				const mainModule = new TypeScriptFileUpdate(moduleFile);
+				mainModule.addNgModuleMeta({ import: "BrowserAnimationsModule", from: "@angular/platform-browser/animations" });
+				mainModule.finalize();
+			}
+		});
 	};
 }
 
