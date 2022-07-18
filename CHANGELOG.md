@@ -1,3 +1,20 @@
+# [10.0.4](https://github.com/IgniteUI/igniteui-cli/compare/v10.0.3...v10.0.4) (2022-07-18)
+
+# igniteui/cli-core@10.0.4
+* Note: Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@14.0.1004
+
+* Note: Version bump only for package igniteui/angular-templates
+
+## igniteui/angular-schematics@14.0.1004
+
+* fix(schematics): `cli-config` and `ng add` schematics applied for all the projects https://github.com/IgniteUI/igniteui-cli/pull/1048
+
+## igniteui-cli@10.0.4
+
+* Note: Version bump only for package igniteui-cli
+
 # [10.0.3](https://github.com/IgniteUI/igniteui-cli/compare/v10.0.2...v10.0.3) (2022-06-30)
 
 # igniteui/cli-core@10.0.3
