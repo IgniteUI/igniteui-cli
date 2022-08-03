@@ -4,15 +4,11 @@ import {
   defineComponents,
   IgcButtonComponent,
   IgcDropdownComponent,
-  IgcDropdownItemComponent,
-  IgcDropdownGroupComponent,
 } from 'igniteui-webcomponents';
 
 defineComponents(
   IgcButtonComponent,
   IgcDropdownComponent,
-  IgcDropdownItemComponent,
-  IgcDropdownGroupComponent,
 );
 
 @customElement('app-$(path)')

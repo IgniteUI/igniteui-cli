@@ -3,11 +3,13 @@ import { customElement } from 'lit/decorators.js';
 import {
   defineComponents,
   IgcFormComponent,
-  IgcRadioComponent,
   IgcRadioGroupComponent,
 } from 'igniteui-webcomponents';
 
-defineComponents(IgcFormComponent, IgcRadioComponent, IgcRadioGroupComponent);
+defineComponents(
+  IgcFormComponent,
+  IgcRadioGroupComponent,
+);
 
 @customElement('app-$(path)')
 export default class $(ClassName) extends LitElement {
