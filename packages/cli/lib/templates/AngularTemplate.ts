@@ -42,7 +42,7 @@ export class AngularTemplate implements Template {
 		return config;
 	}
 
-	public registerInProject(projectPath: string, name: string, options?: AddTemplateArgs) {
+	public registerInProject(projectPath: string, name: string, parentName?: string, options?: AddTemplateArgs) {
 		let modulePath = "app.module.ts";
 		if (options && options.modulePath) {
 			modulePath = options.modulePath;

@@ -131,7 +131,7 @@ command = {
 			fail = fail || !await Util.processTemplates(templatePath, process.cwd(), config, template.delimiters);
 		}
 		if (!fail && templatePaths.length) {
-			template.registerInProject(process.cwd(), fileName, options || {});
+			template.registerInProject(process.cwd(), fileName, undefined, options || {});
 			command.templateManager.updateProjectConfiguration(template);
 			template.packages.forEach(x => PackageManager.queuePackage(x));
 			Util.log(`${Util.greenCheck()} View '${name}' added.`);

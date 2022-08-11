@@ -185,7 +185,7 @@ describe("Unit - Add command", () => {
 		);
 		expect(mockTemplate.registerInProject).toHaveBeenCalledTimes(1);
 		expect(mockTemplate.registerInProject).toHaveBeenCalledWith(
-			directoryPath, "test-file-name",
+			directoryPath, "test-file-name", undefined,
 			jasmine.objectContaining({ modulePath: "myCustomModule/my-custom-module.module.ts" })
 		);
 		// expect(sourceFilesSpy).toHaveBeenCalledTimes(1);
@@ -260,7 +260,7 @@ describe("Unit - Add command", () => {
 		);
 		expect(mockTemplate.registerInProject).toHaveBeenCalledTimes(1);
 		expect(mockTemplate.registerInProject).toHaveBeenCalledWith(
-			directoryPath, "test-file-name",
+			directoryPath, "test-file-name", undefined,
 			jasmine.objectContaining({ modulePath: "myCustomModule/my-custom-module.module.ts" }));
 		// expect(sourceFilesSpy).toHaveBeenCalledTimes(1);
 		expect(routeSpy).toHaveBeenCalledTimes(1);
@@ -327,7 +327,7 @@ describe("Unit - Add command", () => {
 		);
 		expect(mockTemplate.registerInProject).toHaveBeenCalledTimes(1);
 		expect(mockTemplate.registerInProject).toHaveBeenCalledWith(
-			directoryPath, "test-file-name",
+			directoryPath, "test-file-name", undefined,
 			jasmine.objectContaining({ skipRoute: true })
 		);
 		expect(addCmd.templateManager.updateProjectConfiguration).toHaveBeenCalledWith(mockTemplate);

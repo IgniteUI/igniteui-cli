@@ -41,7 +41,8 @@ describe("component",  () => {
 			{ name: "my-combo", template: "combo", templateInst: mockInst, skipRoute: false }, Tree.empty());
 		tree.subscribe(state => {
 			expect(mockInst.generateConfig).toHaveBeenCalledWith("my-combo", {});
-			expect(mockInst.registerInProject).toHaveBeenCalledWith("", "my-combo", { skipRoute: false, modulePath: undefined });
+			expect(mockInst.registerInProject).toHaveBeenCalledWith(
+				"", "my-combo", undefined, { skipRoute: false, modulePath: undefined });
 			expect(projLibSpy).toHaveBeenCalledWith("angular", "igx-ts");
 			expect(mockLib.hasTemplate).toHaveBeenCalledWith("combo");
 			expect(mockLib.getTemplateById).toHaveBeenCalledWith("combo");

@@ -37,14 +37,18 @@ export class IgniteUIForWebComponentsTemplate implements Template {
 		return Object.assign({}, options["extraConfig"], this.getBaseVariables(name));
 	}
 
-	public registerInProject(projectPath: string, fullName: string, options?: AddTemplateArgs) {
+	public registerInProject(projectPath: string, fullName: string, parentName?: string, options?: AddTemplateArgs) {
 		if (!(options && options.skipRoute) && App.container.get<IFileSystem>(FS_TOKEN)
 			.fileExists("src/app/app-routing.ts")) {
+			if (parentName === undefined) {
+				parentName = "";
+			}
 			const routingModule = new TypeScriptFileUpdate(path.join(projectPath, "src/app/app-routing.ts"));
 			routingModule.addRoute(
-				path.join(projectPath, `src/app/${this.folderName(fullName)}/${this.fileName(fullName)}.component.ts`),
+				path.join(projectPath, `src/app/${this.folderName(fullName)}/${this.fileName(fullName)}.ts`),
 				this.fileName(fullName),
-				Util.nameFromPath(fullName)
+				Util.nameFromPath(fullName),
+				this.fileName(parentName)
 			);
 		}
 	}

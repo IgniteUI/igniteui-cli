@@ -133,7 +133,7 @@ describe("Unit - AngularTemplate Base", () => {
 		});
 		it("should skip route if skipRoute is passed", async done => {
 			const templ = new TestTemplate();
-			templ.registerInProject("target/path", "view name", { skipRoute: true });
+			templ.registerInProject("target/path", "view name", undefined, { skipRoute: true });
 			expect(helpers.tsUpdateMock.addRoute).toHaveBeenCalledTimes(0);
 
 			// just declare

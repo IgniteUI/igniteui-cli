@@ -33,8 +33,9 @@ export class TypeScriptFileUpdate {
 		this.initState();
 	}
 
-	public addRoute(filePath: string, linkPath: string, linkText: string, routesVariable = DEFAULT_ROUTES_VARIABLE) {
-		this.addRouteModuleEntry(filePath, linkPath, linkText, routesVariable);
+	public addRoute(
+		filePath: string, linkPath: string, linkText: string, parentPath?: string, routesVariable = DEFAULT_ROUTES_VARIABLE) {
+		this.addRouteModuleEntry(filePath, linkPath, linkText, parentPath, routesVariable);
 	}
 
 	//#region File state
@@ -82,12 +83,19 @@ export class TypeScriptFileUpdate {
 		targetPath: string,
 		filePath: string,
 		linkText: string,
-		linkPath: string,
-		routesVariable = DEFAULT_ROUTES_VARIABLE,
-		parentRoutePath?: string
+		parentRoutePath?: string,
+		routesVariable = DEFAULT_ROUTES_VARIABLE
 	) {
+		if (filePath === "app") {
+			return;
+		}
 		let className: string;
-		const relativePath: string = "./" + filePath + "/" + filePath;
+		let relativePath: string;
+		if (parentRoutePath) {
+			relativePath = "./" + parentRoutePath + "/" + filePath + "/" + filePath;
+		}	else {
+			relativePath = "./" + filePath + "/" + filePath;
+		}
 		className = "app-" + filePath;
 		this.requestImport(relativePath);
 

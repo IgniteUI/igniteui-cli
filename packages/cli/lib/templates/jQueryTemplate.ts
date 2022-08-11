@@ -62,7 +62,7 @@ export class jQueryTemplate implements Template {
 	 * @param projectPath
 	 * @param name The name of the view
 	 */
-	public registerInProject(projectPath: string, name: string, options?: AddTemplateArgs) {
+	public registerInProject(projectPath: string, name: string, parentName?: string, options?: AddTemplateArgs) {
 		if (options && options.skipRoute) {
 			return;
 		}

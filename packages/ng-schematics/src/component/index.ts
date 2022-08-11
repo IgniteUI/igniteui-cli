@@ -13,7 +13,7 @@ import { ComponentOptions, TemplateOptions } from "./schema";
 
 function registerInProject(templateOpts: TemplateOptions, skipRoute: boolean, modulePath?: string): Rule {
 	return (_host: Tree, _context: SchematicContext) => {
-		templateOpts.templateInst.registerInProject("", templateOpts.name, { skipRoute, modulePath });
+		templateOpts.templateInst.registerInProject("", templateOpts.name, undefined, { skipRoute, modulePath });
 	};
 }
 

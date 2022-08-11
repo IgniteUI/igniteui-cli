@@ -21,5 +21,5 @@ export interface Template extends BaseTemplate {
 	/** Generates template files. */
 	generateConfig(name: string, options?: {[key: string]: any}): {[key: string]: any};
 	/** Called when the template is added to a project */
-	registerInProject(projectPath: string, name: string, options?: AddTemplateArgs);
+	registerInProject(projectPath: string, name: string, parentName?: string, options?: AddTemplateArgs);
 }
