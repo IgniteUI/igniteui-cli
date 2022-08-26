@@ -2,20 +2,10 @@ import { html, css, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import {
   defineComponents,
-  IgcCardActionsComponent,
-  IgcCardContentComponent,
-  IgcCardHeaderComponent,
-  IgcCardMediaComponent,
   IgcCardComponent,
 } from 'igniteui-webcomponents';
 
-defineComponents(
-  IgcCardComponent,
-  IgcCardActionsComponent,
-  IgcCardContentComponent,
-  IgcCardHeaderComponent,
-  IgcCardMediaComponent,
-);
+defineComponents(IgcCardComponent);
 
 @customElement('app-$(path)')
 export default class $(ClassName) extends LitElement {
