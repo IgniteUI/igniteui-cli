@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@vaadin/router": "^1.7.4",
-    "igniteui-webcomponents": "~3.2.0",
+    "igniteui-webcomponents": "~3.3.0",
     "igniteui-webcomponents-grids": "~3.2.1",
     "igniteui-webcomponents-core": "~3.2.1",
     "igniteui-webcomponents-layouts": "~3.2.1",

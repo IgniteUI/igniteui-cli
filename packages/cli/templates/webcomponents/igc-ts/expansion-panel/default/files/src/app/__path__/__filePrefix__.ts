@@ -5,9 +5,7 @@ import {
   IgcExpansionPanelComponent,
 } from 'igniteui-webcomponents';
 
-defineComponents(
-  IgcExpansionPanelComponent,
-);
+defineComponents(IgcExpansionPanelComponent);
 
 @customElement('app-$(path)')
 export default class $(ClassName) extends LitElement {

@@ -3,10 +3,9 @@ import { customElement } from 'lit/decorators.js';
 import {
   defineComponents,
   IgcTreeComponent,
-  IgcTreeItemComponent,
 } from 'igniteui-webcomponents';
 
-defineComponents(IgcTreeComponent, IgcTreeItemComponent);
+defineComponents(IgcTreeComponent);
 
 @customElement('app-$(path)')
 export default class $(ClassName) extends LitElement {
