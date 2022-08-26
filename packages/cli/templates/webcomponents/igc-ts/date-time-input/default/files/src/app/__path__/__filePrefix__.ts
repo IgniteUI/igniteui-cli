@@ -26,7 +26,7 @@ export default class $(ClassName) extends LitElement {
     .minValue=${new Date(2022, 6, 2, 7, 30, 0)}
     .maxValue=${new Date(2022, 6, 27, 7, 30, 0)}
     .spinDelta={date: 2, year: 10,}>
-        <igc-icon name="clear" collection='material' size='large' slot="suffix" @click=${handleClear}></igc-icon>
+        <igc-icon name="clear" collection='material' size='large' slot="suffix" @click=${this.handleClear}></igc-icon>
         <span slot="helper-text">This is some helper text</span>
     </igc-date-time-input>
         `;
