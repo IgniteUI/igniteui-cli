@@ -27,15 +27,23 @@ export default class $(ClassName) extends LitElement {
         <igc-tabs alignment="start">
             <igc-tab panel="first">
                 <igc-icon name="home" collection='material' size='large'></igc-icon>
+                Ignite UI for Web Components
             </igc-tab>
             <igc-tab panel="second">
-                <igc-icon name="search" collection='material' size='large'></igc-icon>
+                <igc-icon name="favorite" collection='material' size='large'></igc-icon>
+                Categories
             </igc-tab>
             <igc-tab panel="third" disabled>
-                <igc-icon name="favorite" collection='material' size='large'></igc-icon>
+                <igc-icon name="search" collection='material' size='large'></igc-icon>
             </igc-tab>
-            <igc-tab-panel id="first">Content 1</igc-tab-panel>
-            <igc-tab-panel id="second">Content 2</igc-tab-panel>
+            <igc-tab-panel id="first">Ignite UI for Web Components is a complete library of UI components, giving you the ability to build modern web applications using encapsulation and the concept of reusable components in a dependency-free approach.</igc-tab-panel>
+            <igc-tab-panel id="second">
+                <igc-checkbox>Data Entry & Display</igc-checkbox>
+                <igc-checkbox>Interactions</igc-checkbox>
+                <igc-checkbox>Menus</igc-checkbox>
+                <igc-checkbox>Layouts</igc-checkbox>
+                <igc-checkbox>Scheduling</igc-checkbox>
+            </igc-tab-panel>
         </igc-tabs>
         `;
       }
