@@ -5,16 +5,12 @@ import {
   IgcAvatarComponent,
   IgcButtonComponent,
   IgcListComponent,
-  IgcListHeaderComponent,
-  IgcListItemComponent,
 } from 'igniteui-webcomponents';
 
 defineComponents(
   IgcAvatarComponent,
   IgcButtonComponent,
   IgcListComponent,
-  IgcListHeaderComponent,
-  IgcListItemComponent,
 );
 
 @customElement('app-$(path)')

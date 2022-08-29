@@ -8,7 +8,12 @@ import {
   IgcButtonComponent,
 } from 'igniteui-webcomponents';
 
-defineComponents(IgcFormComponent, IgcInputComponent, IgcCheckboxComponent, IgcButtonComponent);
+defineComponents(
+  IgcFormComponent,
+  IgcInputComponent,
+  IgcCheckboxComponent,
+  IgcButtonComponent,
+);
 
 @customElement('app-$(path)')
 export default class $(ClassName) extends LitElement {

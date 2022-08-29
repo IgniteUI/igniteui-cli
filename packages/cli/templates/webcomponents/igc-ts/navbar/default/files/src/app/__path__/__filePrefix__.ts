@@ -9,7 +9,10 @@ import {
   registerIcon,
 } from 'igniteui-webcomponents/components/icon/icon.registry';
 
-defineComponents(IgcIconComponent, IgcNavbarComponent);
+defineComponents(
+  IgcIconComponent,
+  IgcNavbarComponent,
+);
 
 registerIcon(
   'home',
