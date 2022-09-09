@@ -178,6 +178,22 @@
 		{
 			"type": "node",
 			"request": "launch",
+			"name": "Launch Update",
+			"program": "${workspaceRoot}/packages/cli/bin/execute.js",
+			"console": "externalTerminal",
+			"preLaunchTask": "build",
+			"outFiles": ["${workspaceFolder}/**/*.js"],
+			// make sure to npm link igniteui-cli to the project that is cwd
+			// otherwise the command will be executed from project/node_modules/igniteui-cli
+			"cwd": "${workspaceRoot}/output/IG-Project",
+			"args": [
+				"update",
+				// "igniteui-webcomponents@^13",
+			]
+		},
+		{
+			"type": "node",
+			"request": "launch",
 			"name": "Add Combo to Jquery",
 			"cwd": "${workspaceRoot}/output/jqueryproj",
 			"program": "${workspaceRoot}/packages/cli/bin/execute.js",
