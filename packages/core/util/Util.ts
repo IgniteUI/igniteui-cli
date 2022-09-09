@@ -1,13 +1,18 @@
+//tslint:disable:ordered-imports
 import chalk from "chalk";
-import { execSync, ExecSyncOptions } from "child_process";
 import * as fs from "fs";
 import * as glob from "glob";
 import * as path from "path";
+import * as axios from "axios";
+import * as semver from "semver";
+import * as pkgResolve from "resolve";
+import { execSync, ExecSyncOptions } from "child_process";
 import through2 = require("through2");
 import { BaseComponent } from "../templates/BaseComponent";
-import { Component, ComponentGroup, Delimiter, FS_TOKEN, IFileSystem, Template, TemplateDelimiters } from "../types";
+import { Component, ComponentGroup, Config, Delimiter, FS_TOKEN, IFileSystem, Template, TemplateDelimiters } from "../types";
 import { App } from "./App";
 import { GoogleAnalytics } from "./GoogleAnalytics";
+import { Package, PackageJsonExt } from "./Typings";
 
 const imageExtensions = [".png", ".jpg", ".jpeg", ".gif", ".bmp", ".ico"];
 const applyConfig = (configuration: { [key: string]: string }) => {
@@ -45,6 +50,10 @@ export class Util {
 
 	public static isDirectory(dirPath): boolean {
 		return fs.lstatSync(dirPath).isDirectory();
+	}
+
+	public static readFile(filePath: string): string {
+		return App.container.get<IFileSystem>(FS_TOKEN).readFile(filePath);
 	}
 
 	public static isFile(filePath): boolean {
@@ -179,9 +188,9 @@ export class Util {
 	public static formatPackageJson(json: { dependencies: { [key: string]: string } }, sort = true): string {
 		if (sort) {
 			json.dependencies =
-			Object.keys(json.dependencies)
-				.sort()
-				.reduce((result, key) => (result[key] = json.dependencies[key]) && result, {});
+				Object.keys(json.dependencies)
+					.sort()
+					.reduce((result, key) => (result[key] = json.dependencies[key]) && result, {});
 		}
 		return JSON.stringify(json, null, 2) + "\n";
 	}
@@ -496,7 +505,7 @@ export class Util {
 		return relativePath;
 	}
 
-	public static formatChoices(items: ChoiceItem[], padding = 3): Array<{name: string, value: string, short: string}> {
+	public static formatChoices(items: ChoiceItem[], padding = 3): Array<{ name: string, value: string, short: string }> {
 		const choiceItems = [];
 		const leftPadding = 2;
 		const rightPadding = 1;
@@ -517,7 +526,7 @@ export class Util {
 				description = item.description || "";
 			}
 			if (description !== "") {
-				choiceItem.name = item.name  +  Util.addColor(".".repeat(targetNameLength - item.name.length), 0);
+				choiceItem.name = item.name + Util.addColor(".".repeat(targetNameLength - item.name.length), 0);
 				const max = process.stdout.columns - targetNameLength - leftPadding - rightPadding;
 				description = Util.truncate(description, max, 3, ".");
 				description = Util.addColor(description, 0);
@@ -528,12 +537,131 @@ export class Util {
 		return choiceItems;
 	}
 
-	public static applyDelimiters(config: {[key: string]: string }, delimiter: Delimiter) {
+	public static applyDelimiters(config: { [key: string]: string }, delimiter: Delimiter) {
 		const obj = {};
 		for (const key of Object.keys(config)) {
 			obj[`${delimiter.start}${key}${delimiter.end}`] = config[key];
 		}
 		return obj;
+	}
+
+	public static checkWorkingTreeIsClean(): boolean {
+		try {
+			const result = Util.execSync("git diff --quiet || echo 'dirty'");
+			if (result) {
+				return !result.toString().includes("dirty");
+			}
+		} catch (ex) {
+			// if git diff throws then it's not installed
+			// we should not have a case where we check for diff with HEAD in a non-git dir
+			return true;
+		}
+	}
+
+	public static getPackageJsonForPackage(dir: string, packageName: string): string | null {
+		try {
+			// more or less equivalent to require.resolve(`${packageName}/package.json`, { paths: [dir] });
+			// though require.resolve throws for missing "exports" on some packages
+			const packageJsonPath = pkgResolve.sync(`${packageName}/package.json`, { basedir: dir });
+			return packageJsonPath;
+		} catch (err) {
+			this.error(`Failed to locate package.json in ${packageName}`);
+			this.error(err.message, "red");
+			return null;
+		}
+	}
+
+	public static readPackageJson(filePath: string): PackageJsonExt | null {
+		try {
+			return JSON.parse(this.readFile(filePath));
+		} catch (err) {
+			this.error(`Failed to parse package.json for path ${filePath}`, "red");
+			this.error(err.message, "red");
+			return null;
+		}
+	}
+
+	public static getProjectDependencies(dir: string): Map<string, Package> | null {
+		this.log("\nCollecting dependencies... \n");
+		const pkgJson = this.readPackageJson(path.join(dir, "package.json"));
+		if (!pkgJson) {
+			return null;
+		}
+
+		const projDependencies = new Map<string, Package>();
+		const allDeps = this.getAllDependencies(pkgJson);
+		for (const [name, version] of allDeps) {
+			const pkgJsonPath = this.getPackageJsonForPackage(dir, name);
+			if (!pkgJsonPath) {
+				continue;
+			}
+
+			projDependencies.set(name, {
+				name,
+				version,
+				path: path.dirname(pkgJsonPath),
+				package: this.readPackageJson(pkgJsonPath)
+			});
+		}
+
+		return projDependencies;
+	}
+
+	public static async lookUpPackagesForUpdate(config: Config): Promise<Package[]> {
+		const projDeps = Util.getProjectDependencies(config.project.sourceRoot);
+		const packagesForUpdate: Package[] = [];
+		for (const dep of projDeps) {
+			if (dep[1].package.igCli?.migrations) {
+				try {
+					const response = await axios.default.get(`https://registry.npmjs.org/${dep[0]}`);
+					const projPkgVersion = semver.coerce(dep[1].version);
+					const remotePkgVersion = semver.coerce(response.data["dist-tags"]?.latest);
+					if (semver.valid(projPkgVersion) && semver.lt(projPkgVersion, remotePkgVersion)) {
+						dep[1].versionAfterUpdate = remotePkgVersion;
+						dep[1].version = semver.coerce(dep[1].version);
+						packagesForUpdate.push(dep[1]);
+					}
+				} catch (ex) {
+					Util.error(`Could not fetch data from npm registry for package ${dep[0]}`);
+				}
+			}
+		}
+
+		return packagesForUpdate;
+	}
+
+	public static async listPackagesForUpdate(pkgsToUpdate: Package[]) {
+		if (!pkgsToUpdate.length) {
+			return;
+		}
+		const multiple = pkgsToUpdate.length > 1 || pkgsToUpdate.length === 0;
+		Util.log(`${" ".repeat(3)}${pkgsToUpdate.length} ${multiple ? "dependencies" : "dependency"}` + " that " +
+			`${multiple ? "need" : "needs"} to be updated ${multiple ? "were" : "was"} found\n`);
+
+		const longestPkgNameLength = pkgsToUpdate.sort((p1, p2) => p2.name.length - p1.name.length)[0].name.length;
+		const frontMargin = " ".repeat(6);
+		Util.log(`${frontMargin}Name${" ".repeat(longestPkgNameLength)}Version${" ".repeat(16)}Command to update`);
+		Util.log(" ".repeat(5) + "-".repeat(76));
+
+		pkgsToUpdate.forEach(pkg => {
+			const offset = longestPkgNameLength - pkg.name.length;
+			Util.log(`${frontMargin}${pkg.name}${" ".repeat(4 + offset)}${pkg.version} -> ${pkg.versionAfterUpdate}${" ".repeat(9)}ig update ${pkg.name}`);
+		});
+
+		Util.log("\n");
+	}
+
+	private static getAllDependencies(pkgJson: PackageJsonExt): Set<[string, string]> {
+		if (!pkgJson) {
+			return new Set();
+		}
+
+		return new Set([
+			...Object.entries(pkgJson.dependencies || []),
+			...Object.entries(pkgJson.devDependencies || []),
+			...Object.entries(pkgJson.peerDependencies || []),
+			...Object.entries(pkgJson.optionalDependencies || [])
+		]);
 	}
 
 	private static incrementName(name: string, baseLength: number): string {

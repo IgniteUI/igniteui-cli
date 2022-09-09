@@ -10,7 +10,8 @@
 		"components": [],
 		"sourceFiles": [],
 		"isShowcase": false,
-		"version": ""
+		"version": "",
+		"sourceRoot": "./"
 	},
 	"build": {}
 }

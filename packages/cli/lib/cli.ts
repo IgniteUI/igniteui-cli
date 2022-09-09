@@ -10,9 +10,10 @@ import { default as newCommand } from "./commands/new";
 import { default as quickstart } from "./commands/quickstart";
 import { default as start } from "./commands/start";
 import { default as test } from "./commands/test";
+import { default as update } from "./commands/update";
 import { default as upgrade } from "./commands/upgrade";
 import { PromptSession } from "./PromptSession";
-import {TemplateManager} from "./TemplateManager";
+import { TemplateManager } from "./TemplateManager";
 
 process.title = "Ignite UI CLI";
 
@@ -38,6 +39,7 @@ export async function run(args = null) {
 	generate.templateManager = templateManager;
 	list.templateManager = templateManager;
 	upgrade.templateManager = templateManager;
+	update.templateManager = templateManager;
 
 	const yargsModule = args ? yargs(args) : yargs;
 
@@ -53,6 +55,7 @@ export async function run(args = null) {
 	.command(test)
 	.command(list)
 	.command(upgrade)
+	.command(update)
 	.options({
 		version: {
 			alias: "v",
@@ -118,6 +121,9 @@ export async function run(args = null) {
 			break;
 		case "upgrade-packages":
 			await upgrade.execute(argv);
+			break;
+		case "update":
+			await update.execute(argv);
 			break;
 		default:
 			Util.log("Starting Step by step mode.", "green");
