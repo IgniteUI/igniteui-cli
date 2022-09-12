@@ -1,6 +1,6 @@
 export interface IFileSystem {
 	fileExists(filePath: string): boolean;
-	readFile(filePath: string, encoding?: string): string;
+	readFile(filePath: string, encoding?: BufferEncoding): string;
 	writeFile(filePath: string, text: string): void;
 	directoryExists(dirPath: string): boolean;
 
