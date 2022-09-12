@@ -188,7 +188,7 @@
 			"cwd": "${workspaceRoot}/output/IG-Project",
 			"args": [
 				"update",
-				// "igniteui-webcomponents@^13",
+				"igniteui-webcomponents",
 			]
 		},
 		{

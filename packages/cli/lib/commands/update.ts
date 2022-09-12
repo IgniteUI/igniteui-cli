@@ -1,4 +1,5 @@
 //tslint:disable:ordered-imports
+import * as semver from "semver";
 import { GoogleAnalytics, ProjectConfig, Util } from "@igniteui/cli-core";
 
 // tslint:disable:object-literal-sort-keys
@@ -47,11 +48,38 @@ const command = {
 		// ig update <package>[@<version>]
 		const [name, version] = argv.package.split("@");
 		if (!version) {
-			// TODO
+			const installedPackage = Util.locatePackageFromDependencies(config, name);
+			if (!installedPackage) {
+				Util.error(`${name} is not a dependency of the project`);
+				return;
+			}
+
+			const pkgData = await Util.getPackageMetadata(name);
+			const remotePkgLatest = semver.coerce(pkgData["dist-tags"].latest);
+			if (remotePkgLatest === installedPackage.version) {
+				Util.error(`Package ${name} is already up to date`);
+				return;
+			}
+
+			// update to latest version of package
+			let success = Util.cleanNodeModules() && await Util.installAllDeps();
+			if (!success) {
+				return;
+			}
+
+			success = Util.tryInstallPackage(Util.getPackageManager(), `${name}@latest`);
+			if (!success) {
+				return;
+			}
+
+			// invoke migrations from current pkg ver to latest
+
 			return;
 		}
 
 		// TODO
+		// update to specific version of package
+		// if package@version === remote.version - log package already upto date
 	}
 };
 

@@ -56,6 +56,10 @@ export class Util {
 		return App.container.get<IFileSystem>(FS_TOKEN).readFile(filePath);
 	}
 
+	public static deleteDirectory(dirPath: string, force = false): boolean {
+		return App.container.get<IFileSystem>(FS_TOKEN).removeDir(dirPath, force);
+	}
+
 	public static isFile(filePath): boolean {
 		return fs.lstatSync(filePath).isFile();
 	}
@@ -349,7 +353,9 @@ export class Util {
 	 */
 	public static gitInit(parentRoot, projectName) {
 		try {
-			const options = { cwd: path.join(parentRoot, projectName), stdio: [process.stdin, "ignore", "ignore"] };
+			const options: ExecSyncOptions = {
+				cwd: path.join(parentRoot, projectName), stdio: [process.stdin, "ignore", "ignore"]
+			};
 			Util.execSync("git init", options);
 			Util.execSync("git add .", options);
 			Util.execSync("git commit -m " + "\"Initial commit for project: " + projectName + "\"", options);
@@ -565,33 +571,33 @@ export class Util {
 			const packageJsonPath = pkgResolve.sync(`${packageName}/package.json`, { basedir: dir });
 			return packageJsonPath;
 		} catch (err) {
-			this.error(`Failed to locate package.json in ${packageName}`);
-			this.error(err.message, "red");
+			Util.error(`Failed to locate package.json in ${packageName}`);
+			Util.error(err.message, "red");
 			return null;
 		}
 	}
 
 	public static readPackageJson(filePath: string): PackageJsonExt | null {
 		try {
-			return JSON.parse(this.readFile(filePath));
+			return JSON.parse(Util.readFile(filePath));
 		} catch (err) {
-			this.error(`Failed to parse package.json for path ${filePath}`, "red");
-			this.error(err.message, "red");
+			Util.error(`Failed to parse package.json for path ${filePath}`, "red");
+			Util.error(err.message, "red");
 			return null;
 		}
 	}
 
 	public static getProjectDependencies(dir: string): Map<string, Package> | null {
-		this.log("\nCollecting dependencies... \n");
-		const pkgJson = this.readPackageJson(path.join(dir, "package.json"));
+		Util.log("\nCollecting dependencies... \n");
+		const pkgJson = Util.readPackageJson(path.join(dir, "package.json"));
 		if (!pkgJson) {
 			return null;
 		}
 
 		const projDependencies = new Map<string, Package>();
-		const allDeps = this.getAllDependencies(pkgJson);
+		const allDeps = Util.getAllDependencies(pkgJson);
 		for (const [name, version] of allDeps) {
-			const pkgJsonPath = this.getPackageJsonForPackage(dir, name);
+			const pkgJsonPath = Util.getPackageJsonForPackage(dir, name);
 			if (!pkgJsonPath) {
 				continue;
 			}
@@ -600,11 +606,22 @@ export class Util {
 				name,
 				version,
 				path: path.dirname(pkgJsonPath),
-				package: this.readPackageJson(pkgJsonPath)
+				package: Util.readPackageJson(pkgJsonPath)
 			});
 		}
 
 		return projDependencies;
+	}
+
+	public static locatePackageFromDependencies(config: Config, pkgName: string): Package | null {
+		const projDeps = Util.getProjectDependencies(config.project.sourceRoot);
+		for (const pkg of projDeps) {
+			if (pkg[0] === pkgName) {
+				return pkg[1];
+			}
+		}
+
+		return null;
 	}
 
 	public static async lookUpPackagesForUpdate(config: Config): Promise<Package[]> {
@@ -613,16 +630,16 @@ export class Util {
 		for (const dep of projDeps) {
 			if (dep[1].package.igCli?.migrations) {
 				try {
-					const response = await axios.default.get(`https://registry.npmjs.org/${dep[0]}`);
+					const pkgData = await Util.getPackageMetadata(dep[0]);
 					const projPkgVersion = semver.coerce(dep[1].version);
-					const remotePkgVersion = semver.coerce(response.data["dist-tags"]?.latest);
-					if (semver.valid(projPkgVersion) && semver.lt(projPkgVersion, remotePkgVersion)) {
-						dep[1].versionAfterUpdate = remotePkgVersion;
+					const remotePkgLatest = semver.coerce(pkgData["dist-tags"].latest);
+					if (semver.valid(projPkgVersion) && semver.lt(projPkgVersion, remotePkgLatest)) {
+						dep[1].versionAfterUpdate = remotePkgLatest;
 						dep[1].version = semver.coerce(dep[1].version);
 						packagesForUpdate.push(dep[1]);
 					}
-				} catch (ex) {
-					Util.error(`Could not fetch data from npm registry for package ${dep[0]}`);
+				} catch (err) {
+					Util.error(err.message);
 				}
 			}
 		}
@@ -630,13 +647,70 @@ export class Util {
 		return packagesForUpdate;
 	}
 
-	public static async listPackagesForUpdate(pkgsToUpdate: Package[]) {
-		if (!pkgsToUpdate.length) {
-			return;
+	public static async installAllDeps(): Promise<boolean> {
+		const pkgManager = Util.getPackageManager();
+		const command = `${pkgManager} install`;
+		try {
+			// TODO: separate logic for multiple package managers in PackageManager
+			Util.execSync(command);
+			return true;
+		} catch (err) {
+			Util.error(`Failed at ${command}`);
+			Util.error(JSON.parse(err));
+			return false;
 		}
+	}
+
+	public static getPackageManager() {
+		const hasYarn = Util.supports("yarn");
+		const hasYarnLock = fs.existsSync("yarn.lock");
+		if (hasYarn && hasYarnLock) {
+			return "yarn";
+		}
+		return "npm";
+	}
+
+	public static tryInstallPackage(packageManager: string, pkg: string, temp = false): boolean {
+		try {
+			Util.log(`Installing ${pkg} via ${packageManager}.`);
+			switch (packageManager) {
+				case "yarn":
+					Util.execSync(
+						`${packageManager} add ${pkg} ${temp ? "--no-lock-file" : ""}`, { stdio: "pipe" }
+					);
+					break;
+				case "npm":
+					Util.execSync(`${packageManager} i ${pkg} ${temp ? "--no-save --no-audit" : ""}`, { stdio: "pipe" });
+					break;
+			}
+			Util.log(`${pkg} installed successfully.`);
+			return true;
+		} catch (err) {
+			Util.warn(`Could not install ${pkg}`);
+			Util.warn(JSON.parse(err));
+			return false;
+		}
+	}
+
+	// TODO: string typing
+	public static async getPackageMetadata(pkgName: string): Promise<any> {
+		try {
+			const response = await axios.default.get(`https://registry.npmjs.org/${pkgName}`);
+			return response.data;
+		} catch (err) {
+			Util.error(`Could not fetch data from npm registry for package ${pkgName}`);
+			Util.error(JSON.parse(err));
+		}
+	}
+
+	public static async listPackagesForUpdate(pkgsToUpdate: Package[]) {
 		const multiple = pkgsToUpdate.length > 1 || pkgsToUpdate.length === 0;
 		Util.log(`${" ".repeat(3)}${pkgsToUpdate.length} ${multiple ? "dependencies" : "dependency"}` + " that " +
 			`${multiple ? "need" : "needs"} to be updated ${multiple ? "were" : "was"} found\n`);
+
+		if (!pkgsToUpdate.length) {
+			return;
+		}
 
 		const longestPkgNameLength = pkgsToUpdate.sort((p1, p2) => p2.name.length - p1.name.length)[0].name.length;
 		const frontMargin = " ".repeat(6);
@@ -651,6 +725,15 @@ export class Util {
 		Util.log("\n");
 	}
 
+	public static cleanNodeModules(): boolean {
+		try {
+			return Util.deleteDirectory("./node_modules", true);
+		} catch (err) {
+			Util.error(err.message);
+			return false;
+		}
+	}
+
 	private static getAllDependencies(pkgJson: PackageJsonExt): Set<[string, string]> {
 		if (!pkgJson) {
 			return new Set();
@@ -662,6 +745,15 @@ export class Util {
 			...Object.entries(pkgJson.peerDependencies || []),
 			...Object.entries(pkgJson.optionalDependencies || [])
 		]);
+	}
+
+	private static supports(name: string): boolean {
+		try {
+			Util.execSync(`${name} --version`, { stdio: "ignore" });
+			return true;
+		} catch {
+			return false;
+		}
 	}
 
 	private static incrementName(name: string, baseLength: number): string {
