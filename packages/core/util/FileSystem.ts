@@ -28,6 +28,18 @@ export class FsFileSystem implements IFileSystem {
 			return false;
 		}
 	}
+	public removeDir(dirPath: string, force: boolean, recursive = true): boolean {
+		try {
+			fs.rmSync(dirPath, {
+				force: force,
+				recursive: recursive,
+				maxRetries: 3
+			});
+			return true;
+		} catch (err) {
+			return false;
+		}
+	}
 
 	public glob(dirPath: string, pattern: string): string[] {
 		return glob.sync(path.join(dirPath, pattern), { nodir: true });

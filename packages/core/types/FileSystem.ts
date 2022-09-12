@@ -3,7 +3,7 @@ export interface IFileSystem {
 	readFile(filePath: string, encoding?: BufferEncoding): string;
 	writeFile(filePath: string, text: string): void;
 	directoryExists(dirPath: string): boolean;
-
+	removeDir?(dirPath: string, force: boolean, recursive?: boolean): boolean;
 	/**
 	 * Returns a list of file paths under a directory based on a match pattern
 	 * @param dirPath Root dir to search in
