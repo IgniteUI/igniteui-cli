@@ -12,9 +12,9 @@ export class FsFileSystem implements IFileSystem {
 			return false;
 		}
 	}
-	public readFile(filePath: string, encoding?: string): string {
+	public readFile(filePath: string, encoding?: BufferEncoding): string {
 		if (encoding) {
-			return fs.readFileSync(filePath, encoding);
+			return fs.readFileSync(filePath, { encoding });
 		}
 		return fs.readFileSync(filePath).toString();
 	}
