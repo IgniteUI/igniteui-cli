@@ -31,8 +31,8 @@ export class FsFileSystem implements IFileSystem {
 	public removeDir(dirPath: string, force: boolean, recursive = true): boolean {
 		try {
 			fs.rmSync(dirPath, {
-				force: force,
-				recursive: recursive,
+				force,
+				recursive,
 				maxRetries: 3
 			});
 			return true;
