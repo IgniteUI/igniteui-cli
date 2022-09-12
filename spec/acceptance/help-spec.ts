@@ -46,6 +46,7 @@ describe("Help command", () => {
 		test                   executes project tests
 		list                   list all templates                           [aliases: l]
 		upgrade-packages        upgrades Ignite UI Packages
+		update [package] [version] updates a package or lists packages for update
 	  Options:
 		--version, -v  Show current Ignite UI CLI version                    [boolean]
 		--help, -h     Show help                                             [boolean]`.replace(/\s/g, "");
