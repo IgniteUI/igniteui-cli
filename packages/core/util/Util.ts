@@ -6,13 +6,15 @@ import * as path from "path";
 import * as axios from "axios";
 import * as semver from "semver";
 import * as pkgResolve from "resolve";
-import { execSync, ExecSyncOptions } from "child_process";
-import through2 = require("through2");
+import * as util from "util";
+import { exec, execFile, execSync, ExecSyncOptions, spawn } from "child_process";
+import { default as through2 } from "through2";
 import { BaseComponent } from "../templates/BaseComponent";
 import { Component, ComponentGroup, Config, Delimiter, FS_TOKEN, IFileSystem, Template, TemplateDelimiters } from "../types";
 import { App } from "./App";
 import { GoogleAnalytics } from "./GoogleAnalytics";
 import { Package, PackageJsonExt } from "./Typings";
+import { MigrationCollection } from "../types/schema";
 
 const imageExtensions = [".png", ".jpg", ".jpeg", ".gif", ".bmp", ".ico"];
 const applyConfig = (configuration: { [key: string]: string }) => {
@@ -604,7 +606,7 @@ export class Util {
 
 			projDependencies.set(name, {
 				name,
-				version,
+				version: semver.coerce(version),
 				path: path.dirname(pkgJsonPath),
 				package: Util.readPackageJson(pkgJsonPath)
 			});
@@ -668,6 +670,27 @@ export class Util {
 			return "yarn";
 		}
 		return "npm";
+	}
+
+	public static async invokeMigrationsBetweenVersions(installedPkg: Package, remotePkgVersion: string): Promise<void> {
+		let migColPath = path.normalize(`${installedPkg.path}/migrations/migration-collection.json`);
+		if (Util.fileExists(migColPath)) {
+			const contents: MigrationCollection = JSON.parse(Util.readFile(migColPath));
+			const migrations = contents
+				.migrations
+				.filter(mig => semver.gt(semver.coerce(mig.version), semver.coerce(installedPkg.version))
+					&& semver.satisfies(semver.coerce(mig.version), `<=${remotePkgVersion}`));
+			for (const migration of migrations) {
+				try {
+					const factoryPath = path.normalize(path.join(migColPath.substring(0, migColPath.lastIndexOf("\\")), migration.factory)).replace(/\\/g, "/");
+					const { default: func } = await import(`${process.platform === "win32" ? "file://" : ""}${factoryPath}`);
+					// TODO
+				} catch (err) {
+					Util.error(`Migration ${migration.name} failed`);
+					Util.error(err.message);
+				}
+			}
+		}
 	}
 
 	public static tryInstallPackage(packageManager: string, pkg: string, temp = false): boolean {

@@ -1,5 +1,7 @@
 import { PackageJson } from "type-fest";
 
+// TODO: move to core/types
+
 /**
  * Meant to contain configurations for the igniteui-cli
  * runtime operations

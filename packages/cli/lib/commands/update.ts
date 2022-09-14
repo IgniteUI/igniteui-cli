@@ -47,6 +47,12 @@ const command = {
 
 		// ig update <package>[@<version>]
 		const [name, version] = argv.package.split("@");
+		if (framework === "angular") {
+			// proxy to ng update for angular projects
+			Util.execSync(`ng update ${name}${version ? `@${version}` : ""}`);
+			return;
+		}
+
 		if (!version) {
 			const installedPackage = Util.locatePackageFromDependencies(config, name);
 			if (!installedPackage) {
@@ -54,26 +60,27 @@ const command = {
 				return;
 			}
 
-			const pkgData = await Util.getPackageMetadata(name);
-			const remotePkgLatest = semver.coerce(pkgData["dist-tags"].latest);
-			if (remotePkgLatest === installedPackage.version) {
-				Util.error(`Package ${name} is already up to date`);
-				return;
-			}
+			const remotePkgLatest = semver.coerce("6.0.0"); // TODO: remove
+			// const pkgData = await Util.getPackageMetadata(name);
+			// const remotePkgLatest = semver.coerce(pkgData["dist-tags"].latest);
+			// if (remotePkgLatest === installedPackage.version) {
+			// 	Util.error(`Package ${name} is already up to date`);
+			// 	return;
+			// }
 
-			// update to latest version of package
-			let success = Util.cleanNodeModules() && await Util.installAllDeps();
-			if (!success) {
-				return;
-			}
+			// // update to latest version of package
+			// let success = Util.cleanNodeModules() && await Util.installAllDeps();
+			// if (!success) {
+			// 	return;
+			// }
 
-			success = Util.tryInstallPackage(Util.getPackageManager(), `${name}@latest`);
-			if (!success) {
-				return;
-			}
+			// success = Util.tryInstallPackage(Util.getPackageManager(), `${name}@latest`);
+			// if (!success) {
+			// 	return;
+			// }
 
 			// invoke migrations from current pkg ver to latest
-
+			await Util.invokeMigrationsBetweenVersions(installedPackage, remotePkgLatest);
 			return;
 		}
 
