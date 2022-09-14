@@ -1,4 +1,4 @@
-import Jasmine = require("jasmine");
+import { default as Jasmine  } from "jasmine";
 import { DisplayProcessor, SpecReporter } from "jasmine-spec-reporter";
 
 class CustomProcessor extends DisplayProcessor {

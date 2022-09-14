@@ -13,4 +13,5 @@ class ReactFramework implements Framework {
 		this.projectLibraries.push(require("./igr-es6") as ProjectLibrary);
 	}
 }
-export = new ReactFramework() as Framework;
+
+export const factory = () => new ReactFramework() as Framework;
