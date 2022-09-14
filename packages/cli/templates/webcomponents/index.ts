@@ -12,4 +12,5 @@ class WebComponentsFramework implements Framework {
 		this.projectLibraries.push(require("./igc-ts") as ProjectLibrary);
 	}
 }
-export = new WebComponentsFramework() as Framework;
+
+export const factory = () => new WebComponentsFramework() as Framework;
