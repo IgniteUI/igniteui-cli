@@ -1,5 +1,5 @@
 export interface MigrationCollection {
-	migrations: Migration[]
+	migrations: Migration[];
 }
 
 export interface Migration {

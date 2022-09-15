@@ -673,7 +673,7 @@ export class Util {
 	}
 
 	public static async invokeMigrationsBetweenVersions(installedPkg: Package, remotePkgVersion: string): Promise<void> {
-		let migColPath = path.normalize(`${installedPkg.path}/migrations/migration-collection.json`);
+		const migColPath = path.normalize(`${installedPkg.path}/migrations/migration-collection.json`);
 		if (Util.fileExists(migColPath)) {
 			const contents: MigrationCollection = JSON.parse(Util.readFile(migColPath));
 			const migrations = contents
@@ -682,9 +682,11 @@ export class Util {
 					&& semver.satisfies(semver.coerce(mig.version), `<=${remotePkgVersion}`));
 			for (const migration of migrations) {
 				try {
-					const factoryPath = path.normalize(path.join(migColPath.substring(0, migColPath.lastIndexOf("\\")), migration.factory)).replace(/\\/g, "/");
+					const factoryPath = path
+						.normalize(path.join(migColPath.substring(0, migColPath.lastIndexOf("\\")), migration.factory))
+						.replace(/\\/g, "/");
 					const { default: func } = await import(`${process.platform === "win32" ? "file://" : ""}${factoryPath}`);
-					// TODO
+					await func();
 				} catch (err) {
 					Util.error(`Migration ${migration.name} failed`);
 					Util.error(err.message);

@@ -53,40 +53,45 @@ const command = {
 			return;
 		}
 
+		const installedPackage = Util.locatePackageFromDependencies(config, name);
+		const installedVersion = semver.coerce(installedPackage.version);
 		if (!version) {
-			const installedPackage = Util.locatePackageFromDependencies(config, name);
 			if (!installedPackage) {
 				Util.error(`${name} is not a dependency of the project`);
 				return;
 			}
 
-			const remotePkgLatest = semver.coerce("6.0.0"); // TODO: remove
-			// const pkgData = await Util.getPackageMetadata(name);
-			// const remotePkgLatest = semver.coerce(pkgData["dist-tags"].latest);
-			// if (remotePkgLatest === installedPackage.version) {
-			// 	Util.error(`Package ${name} is already up to date`);
-			// 	return;
-			// }
+			const pkgData = await Util.getPackageMetadata(name);
+			const remotePkgLatest = semver.coerce(pkgData["dist-tags"].latest);
+			if (remotePkgLatest === installedVersion) {
+				Util.error(`Package ${name} is already up to date`);
+				return;
+			}
 
-			// // update to latest version of package
-			// let success = Util.cleanNodeModules() && await Util.installAllDeps();
-			// if (!success) {
-			// 	return;
-			// }
+			// update to latest version of package
+			let success = Util.cleanNodeModules() && await Util.installAllDeps();
+			if (!success) {
+				return;
+			}
 
-			// success = Util.tryInstallPackage(Util.getPackageManager(), `${name}@latest`);
-			// if (!success) {
-			// 	return;
-			// }
+			success = Util.tryInstallPackage(Util.getPackageManager(), `${name}@latest`);
+			if (!success) {
+				return;
+			}
 
 			// invoke migrations from current pkg ver to latest
 			await Util.invokeMigrationsBetweenVersions(installedPackage, remotePkgLatest);
 			return;
 		}
 
-		// TODO
 		// update to specific version of package
-		// if package@version === remote.version - log package already upto date
+		const requestedVersion = semver.coerce(version);
+		if (requestedVersion === installedVersion) {
+			Util.error(`Package ${name} is already up to date`);
+			return;
+		}
+
+		await Util.invokeMigrationsBetweenVersions(installedPackage, requestedVersion);
 	}
 };
 
