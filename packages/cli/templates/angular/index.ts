@@ -9,8 +9,8 @@ class AngularFramework implements Framework {
 		this.id = "angular";
 		this.name = "Angular";
 		this.projectLibraries = [];
-		this.projectLibraries.push(require("@igniteui/angular-templates").default as ProjectLibrary);
-		this.projectLibraries.push(require("./ig-ts") as ProjectLibrary);
+		this.projectLibraries.push(require("@igniteui/angular-templates").default.factory() as ProjectLibrary);
+		this.projectLibraries.push(require("./ig-ts").factory() as ProjectLibrary);
 	}
 }
 

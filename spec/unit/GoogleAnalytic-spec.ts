@@ -1,15 +1,15 @@
 import { GoogleAnalytics, ProjectConfig } from "@igniteui/cli-core";
-import * as childProcess from "child_process";
 import * as fs from "fs";
 import * as https from "https";
 import * as path from "path";
 import * as process from "process";
 import { deleteAll } from "../helpers/utils";
 
-describe("Unit - Google Analytic", () => {
+fdescribe("Unit - Google Analytic", () => {
 	let request;
 	let testFolder = path.parse(__filename).name;
 	let serviceSpy;
+	let cpMock;
 
 	class GATestClass extends GoogleAnalytics {
 		public static userDataFolder = path.join(process.cwd(), `./output/${testFolder}`);
@@ -18,9 +18,13 @@ describe("Unit - Google Analytic", () => {
 
 	beforeEach(() => {
 		request = jasmine.createSpyObj("request", ["on", "end"]);
-		spyOn(https, "request").and.returnValue(request);
-		serviceSpy =
-			spyOn(childProcess, "execSync").and.returnValue("some string which contains REG_SZ so we can get Machine Key");
+		cpMock = {
+			execSync: (...args: any) => { }
+		};
+		GATestClass.https = { request };
+		spyOn(GATestClass.https, "request").and.callThrough();
+		serviceSpy = spyOn(cpMock, "execSync").and.returnValue("some string which contains REG_SZ so we can get Machine Key");
+
 		while (fs.existsSync(`./output/${testFolder}`)) {
 			testFolder += 1;
 		}
@@ -32,7 +36,7 @@ describe("Unit - Google Analytic", () => {
 		fs.rmdirSync(`./output/${testFolder}`);
 	});
 
-	it("Calling post should create post request to 'www.google-analytics.com", async done => {
+	fit("Calling post should create post request to 'www.google-analytics.com", async () => {
 		spyOn(ProjectConfig, "getConfig").and.returnValue({});
 
 		GATestClass.post({});
@@ -47,10 +51,9 @@ describe("Unit - Google Analytic", () => {
 		expect(request.on).toHaveBeenCalledWith("error", jasmine.any(Function));
 
 		expect(request.end).toHaveBeenCalledTimes(1);
-		done();
 	});
 
-	it("Calling post with custom parameters should create post request to 'www.google-analytics.com", async done => {
+	it("Calling post with custom parameters should create post request to 'www.google-analytics.com", async () => {
 		spyOn(ProjectConfig, "getConfig").and.returnValue({});
 
 		GATestClass.post({ av: "1.2.3" });
@@ -65,10 +68,9 @@ describe("Unit - Google Analytic", () => {
 		expect(request.on).toHaveBeenCalledWith("error", jasmine.any(Function));
 
 		expect(request.end).toHaveBeenCalledTimes(1);
-		done();
 	});
 
-	it("Should not post if 'disableAnalytics' is set to true", async done => {
+	it("Should not post if 'disableAnalytics' is set to true", async () => {
 		spyOn(ProjectConfig, "getConfig").and.returnValue({ disableAnalytics: true });
 
 		GATestClass.post({});
@@ -77,16 +79,14 @@ describe("Unit - Google Analytic", () => {
 		expect(request.on).toHaveBeenCalledTimes(0);
 		expect(request.end).toHaveBeenCalledTimes(0);
 
-		done();
 	});
 
-	it("Random Guid is generated if the platform check fails", done => {
+	it("Random Guid is generated if the platform check fails", async () => {
 		serviceSpy.and.throwError("Error!");
 		const value = GATestClass.getUserID();
 
 		expect(value).toBeDefined();
 		expect(value).toMatch(/\d{1,}/);
 
-		done();
 	});
 });

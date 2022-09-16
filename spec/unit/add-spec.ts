@@ -13,7 +13,7 @@ describe("Unit - Add command", () => {
 		spyOn(GoogleAnalytics, "post");
 	});
 
-	it("Should start prompt session with missing arg", async done => {
+	it("Should start prompt session with missing arg", async () => {
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 		spyOn(ProjectConfig, "getConfig").and.returnValue({ project: {
 			framework: "angular",
@@ -30,10 +30,9 @@ describe("Unit - Add command", () => {
 
 		await addCmd.execute({});
 		expect(promptSession.chooseActionLoop).toHaveBeenCalledWith(mockProjLib);
-		done();
 	});
 
-	it("Should validate and trim name", async done => {
+	it("Should validate and trim name", async () => {
 		spyOn(ProjectConfig, "getConfig").and.returnValue({ project: {
 			framework: "angular",
 			theme: "infragistics"}});
@@ -78,10 +77,9 @@ describe("Unit - Add command", () => {
 			expect(Util.processTemplates).toHaveBeenCalledWith("test", "Mock directory", mockConfig, mockDelimiters);
 		}
 
-		done();
 	});
 
-	it("Should queue package dependencies and wait for install", async done => {
+	it("Should queue package dependencies and wait for install", async () => {
 		spyOn(ProjectConfig, "getConfig").and.returnValue({ project: {
 			framework: "angular",
 			theme: "infragistics"}});
@@ -119,10 +117,9 @@ describe("Unit - Add command", () => {
 		expect(addCmd.addTemplate).toHaveBeenCalledWith("template with packages", {}, jasmine.any(Object));
 		expect(PackageManager.flushQueue).toHaveBeenCalled();
 
-		done();
 	});
 
-	it("Should properly accept module args when passed - IgniteUI for Angular", async done => {
+	it("Should properly accept module args when passed - IgniteUI for Angular", async () => {
 		const mockProjectConfig = {project: {
 			framework: "angular",
 			theme: "infragistics"
@@ -203,10 +200,9 @@ describe("Unit - Add command", () => {
 		});
 		expect(finalizeSpy).toHaveBeenCalledTimes(1);
 		expect(addCmd.templateManager.updateProjectConfiguration).toHaveBeenCalledTimes(1);
-		done();
 	});
 
-	it("Should properly accept module args when passed - Angular Wrappers", async done => {
+	it("Should properly accept module args when passed - Angular Wrappers", async () => {
 		const mockProjectConfig = {project: {
 			framework: "angular",
 			theme: "infragistics"
@@ -277,10 +273,9 @@ describe("Unit - Add command", () => {
 		});
 		expect(finalizeSpy).toHaveBeenCalledTimes(1);
 		expect(addCmd.templateManager.updateProjectConfiguration).toHaveBeenCalledTimes(1);
-		done();
 	});
 
-	it("Should properly accept skip-route args when passed", async done => {
+	it("Should properly accept skip-route args when passed", async () => {
 		const mockProjectConfig = {project: {
 			framework: "angular",
 			theme: "infragistics"
@@ -331,10 +326,9 @@ describe("Unit - Add command", () => {
 			jasmine.objectContaining({ skipRoute: true })
 		);
 		expect(addCmd.templateManager.updateProjectConfiguration).toHaveBeenCalledWith(mockTemplate);
-		done();
 	});
 
-	it("Should not add component and should log error if wrong path is passed to module", async done => {
+	it("Should not add component and should log error if wrong path is passed to module", async () => {
 		spyOn(Util, "fileExists").and.returnValue(false);
 		spyOn(Util, "error");
 		const wrongPath = "myCustomModule/my-custom-module.module.ts";
@@ -342,6 +336,5 @@ describe("Unit - Add command", () => {
 		expect(Util.fileExists).toHaveBeenCalledTimes(1);
 		expect(Util.error).toHaveBeenCalledTimes(1);
 		expect(Util.error).toHaveBeenCalledWith(`Wrong module path provided: ${wrongPath}. No components were added!`);
-		done();
 	});
 });

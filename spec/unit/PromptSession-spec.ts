@@ -13,7 +13,7 @@ describe("Unit - PromptSession", () => {
 	});
 
 	// TODO: most of the tests use same setup - move the setup to beforeAll call
-	it("chooseTerm - Should call itself if no term is passed.", async done => {
+	it("chooseTerm - Should call itself if no term is passed.", async () => {
 		spyOn(PromptSession, "chooseTerm").and.callThrough();
 		spyOn(inquirer, "prompt").and.returnValues(Promise.resolve({ term: "" }),
 			Promise.resolve({ term: "" }), Promise.resolve({ term: "" }),
@@ -23,9 +23,8 @@ describe("Unit - PromptSession", () => {
 		expect(PromptSession.chooseTerm).toHaveBeenCalledTimes(5);
 		expect(testVar).toBe("Test");
 		expect(inquirer.prompt).toHaveBeenCalledTimes(5);
-		done();
 	});
-	it("start - Should create new project correctly", async done => {
+	it("start - Should create new project correctly", async () => {
 		spyOn(ProjectConfig, "getConfig").and.returnValue({});
 		// tslint:disable:object-literal-sort-keys
 		const mockProject = {
@@ -98,9 +97,8 @@ describe("Unit - PromptSession", () => {
 		expect(inquirer.prompt).toHaveBeenCalledTimes(4);
 		expect(inquirer.prompt).toHaveBeenCalledWith(mockQuestion);
 		expect(mockTemplate.getFrameworkByName).toHaveBeenCalledTimes(1);
-		done();
 	});
-	it("start - Should go into chooseActionLoop if project has local config", async done => {
+	it("start - Should go into chooseActionLoop if project has local config", async () => {
 		const mockTemplate = jasmine.createSpyObj("mockTemplate", {
 			getProjectLibrary: {}
 		});
@@ -118,9 +116,8 @@ describe("Unit - PromptSession", () => {
 		expect(mockTemplate.getProjectLibrary).toHaveBeenCalledTimes(1);
 		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(1);
 		expect(mockSession.chooseActionLoop).toHaveBeenCalledWith({});
-		done();
 	});
-	it("start - Should skip framework/projType input w/ restricted config", async done => {
+	it("start - Should skip framework/projType input w/ restricted config", async () => {
 		spyOn(ProjectConfig, "getConfig").and.returnValue({
 			stepByStep: {
 				frameworks: ["angular"],
@@ -196,9 +193,8 @@ describe("Unit - PromptSession", () => {
 		expect(Util.log).toHaveBeenCalledWith(" Project structure generated.");
 		expect(Util.gitInit).toHaveBeenCalled();
 		expect(mockSession.chooseActionLoop).toHaveBeenCalled();
-		done();
 	});
-	it("start - New project - missing IFs", async done => {
+	it("start - New project - missing IFs", async () => {
 		// tslint:disable:object-literal-sort-keys
 		const mockProject = {
 			name: "Project 1",
@@ -284,9 +280,8 @@ describe("Unit - PromptSession", () => {
 		expect(Util.isAlphanumericExt).toHaveBeenCalledWith("Th15 w1ll");
 		expect(Util.directoryExists).toHaveBeenCalledTimes(3);
 		expect(Util.directoryExists).toHaveBeenCalledWith("Th15 w1ll");
-		done();
 	});
-	it("chooseActionLoop - should run through properly - Add Component", async done => {
+	it("chooseActionLoop - should run through properly - Add Component", async () => {
 		// tslint:disable:object-literal-sort-keys
 		const mockExtraConfigurations = [{
 			choices: [],
@@ -399,9 +394,8 @@ describe("Unit - PromptSession", () => {
 			name: "customValue2",
 			choices: []
 		}]);
-		done();
 	});
-	it("chooseActionLoop - should run through properly - Add scenario", async done => {
+	it("chooseActionLoop - should run through properly - Add scenario", async () => {
 		const mockSelectedTemplate = {
 			name: "Custom Template 1",
 			templates: [{
@@ -459,9 +453,8 @@ describe("Unit - PromptSession", () => {
 		expect(Util.getAvailableName).toHaveBeenCalledTimes(1);
 		expect(add.addTemplate).toHaveBeenCalledTimes(1);
 		expect(add.addTemplate).toHaveBeenCalledWith("Custom Template Name", mockSelectedTemplate);
-		done();
 	});
-	it("chooseActionLoop - should run through properly - Add Component", async done => {
+	it("chooseActionLoop - should run through properly - Add Component", async () => {
 		// tslint:disable:object-literal-sort-keys
 		const mockExtraConfigurations = [{
 			choices: ["Choice 1", "Choice 2", "Choice 3"],
@@ -584,9 +577,8 @@ describe("Unit - PromptSession", () => {
 			name: "customValue2",
 			choices: ["Choice 1", "Choice 2", "Choice 3"]
 		}]);
-		done();
 	});
-	it("chooseActionLoop - Complete and Run should update default port", async done => {
+	it("chooseActionLoop - Complete and Run should update default port", async () => {
 		const mockProject = {
 			generateConfig: () => Promise.resolve(true)
 		};
@@ -641,9 +633,8 @@ describe("Unit - PromptSession", () => {
 			"red");
 		expect(lastCallArgs.validate("3210")).toBe(true);
 		expect(Util.error).toHaveBeenCalledTimes(2);
-		done();
 	});
-	it("chooseActionLoop - should call `upgradePackages` when update angular is true", async done => {
+	it("chooseActionLoop - should call `upgradePackages` when update angular is true", async () => {
 		const params = {
 			project: {
 				defaultPort: 4200,
@@ -670,9 +661,8 @@ describe("Unit - PromptSession", () => {
 		expect(upgrade.upgrade).toHaveBeenCalledTimes(1);
 		expect(upgrade.upgrade).toHaveBeenCalledWith({ skipInstall: true });
 
-		done();
 	});
-	it("start - Should fire correctly with Angular Custom theme selected", async done => {
+	it("start - Should fire correctly with Angular Custom theme selected", async () => {
 		spyOn(ProjectConfig, "getConfig").and.returnValue({ customTemplates: [] });
 		const mockSession = new PromptSession(new TemplateManager());
 		spyOn(Util, "isAlphanumericExt").and.callThrough();
@@ -701,9 +691,8 @@ describe("Unit - PromptSession", () => {
 		const actualCall = (Util.processTemplates as jasmine.Spy).calls.argsFor(0)[2]["CustomTheme"].replace(/\s/g, "");
 		const expectedCall = CUSTOM_THEME.replace(/\s/g, "");
 		expect(actualCall).toEqual(expectedCall);
-		done();
 	});
-	it("start - Should fire correctly with Angular Default theme selected", async done => {
+	it("start - Should fire correctly with Angular Default theme selected", async () => {
 		spyOn(ProjectConfig, "getConfig").and.returnValue({ customTemplates: [] });
 		const mockSession = new PromptSession(new TemplateManager());
 		spyOn(Util, "isAlphanumericExt").and.callThrough();
@@ -723,6 +712,5 @@ describe("Unit - PromptSession", () => {
 		const actualCall = (Util.processTemplates as jasmine.Spy).calls.argsFor(0)[2]["DefaultTheme"].replace(/\s/g, "");
 		const expectedCall = DEFAULT_THEME.replace(/\s/g, "");
 		expect(actualCall).toEqual(expectedCall);
-		done();
 	});
 });

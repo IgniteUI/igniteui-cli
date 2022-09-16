@@ -1,3 +1,4 @@
+import { App } from "@igniteui/cli-core";
 import { default as Jasmine  } from "jasmine";
 import { DisplayProcessor, SpecReporter } from "jasmine-spec-reporter";
 
@@ -25,4 +26,5 @@ jasmineInst.loadConfig({
 	]
 });
 
+App.initialize();
 jasmineInst.execute([], null);

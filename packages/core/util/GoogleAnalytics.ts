@@ -8,6 +8,7 @@ import { ProjectConfig } from "./ProjectConfig";
 import { Util } from "./Util";
 
 class GoogleAnalytics {
+	public static https;
 	protected static userDataFolder: string = process.env.APPDATA ||
 		(process.platform === "darwin" ? "/Users/Shared" : process.env.HOME + "/.npm/");
 	protected static appFolder = "igniteui-cli";
@@ -58,7 +59,7 @@ class GoogleAnalytics {
 		const queryString = qs.stringify(parameters as {});
 		const fullPath = "/collect?" + queryString;
 		const options = { host: "www.google-analytics.com", path: fullPath, method: "POST" };
-		const https = require("https");
+		const https = this.https || require("https");
 		const req = https.request(options);
 		req.on("error", e => {
 			// TODO: save all the logs and send them later

@@ -104,7 +104,8 @@ export class AngularTemplate implements Template {
 
 	protected ensureSourceFiles(projectPath: string) {
 		// tslint:disable-next-line:no-submodule-imports
-		const components = require("@igniteui/cli-core/packages/components");
+		const module = require("@igniteui/cli-core/packages/components");
+		const components = module.dv ? module : module.default;
 		const config = ProjectConfig.getConfig();
 		const files: string[] = config.project.sourceFiles;
 		const dvDependencies = this.dependencies.filter(x => components.dv.indexOf(x) !== -1);

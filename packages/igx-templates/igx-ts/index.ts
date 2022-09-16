@@ -17,4 +17,5 @@ class IgxProjectLibrary extends BaseProjectLibrary {
 		}
 	}
 }
-module.exports = new IgxProjectLibrary();
+
+export const factory = () => new IgxProjectLibrary();

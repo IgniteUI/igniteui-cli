@@ -21,9 +21,13 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 				requireMock: require,
 				tsUpdateMock: jasmine.createSpyObj(
 					"TypeScriptFileUpdate", ["addRoute", "addDeclaration", "addNgModuleMeta", "finalize"]) as TypeScriptFileUpdate,
-				TypeScriptFileUpdate: (...args) => {
-					return helpers.tsUpdateMock;
-				}
+				//tslint:disable
+				TypeScriptFileUpdate: function (_a) {
+					this.addRoute = (...args: any) => { };
+					this.addDeclaration = (...args: any) => { };
+					this.finalize = (...args: any) => { };
+					this.addNgModuleMeta = (...args: any) => { };
+				},
 			};
 			App.initialize();
 			// spy on require:
@@ -36,13 +40,13 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			});
 			// spy on version due to require override
 			spyOn(Util, "version").and.returnValue("1.0.0");
-			spyOn(helpers, "TypeScriptFileUpdate").and.callThrough();
+			spyOn(helpers, "TypeScriptFileUpdate").and.returnValue(helpers.tsUpdateMock);
 			// return through function to get new obj ref each time
 			spyOn(ProjectConfig, "getConfig").and.callFake(() => ({ project: { sourceFiles: ["existing"] } }));
 			spyOn(ProjectConfig, "setConfig");
 		});
 
-		it("registers route and declare component", async done => {
+		it("registers route and declare component", async () => {
 			const templ = new TestTemplate();
 			const mockFS = {
 				fileExists: () => {}
@@ -72,9 +76,8 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			expect(helpers.tsUpdateMock.finalize).toHaveBeenCalled();
 			//config update:
 			expect(ProjectConfig.setConfig).toHaveBeenCalledTimes(0);
-			done();
 		});
-		it("updates NgModule metadata", async done => {
+		it("updates NgModule metadata", async () => {
 			const templ = new TestTemplate();
 			templ.dependencies.push({ import: "test", from: "test" });
 			templ.registerInProject("", "");
@@ -93,9 +96,8 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 				{ declare: "test2", provide: "test2" },
 				Util.applyDelimiters(templ.getBaseVariables(""), templ.delimiters.content));
 
-			done();
 		});
-		it("formats relative imports", async done => {
+		it("formats relative imports", async () => {
 			spyOn(TestTemplate.prototype, "getBaseVariables").and.returnValue({});
 			spyOn(Util, "relativePath").and.returnValue("./relative/result/test");
 			const mainPath = path.join("target", "src/app/app.module.ts");
@@ -108,10 +110,9 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			expect(Util.relativePath).toHaveBeenCalledWith(mainPath, filePath, true, true);
 			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith({ from: "./relative/result/test" }, {});
 
-			done();
 		});
 
-		it("should skip route if skipRoute is passed", async done => {
+		it("should skip route if skipRoute is passed", async () => {
 			const templ = new TestTemplate();
 			templ.registerInProject("target/path", "view name", { skipRoute: true });
 			expect(helpers.tsUpdateMock.addRoute).toHaveBeenCalledTimes(0);
@@ -126,10 +127,9 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			);
 			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledTimes(0);
 			expect(helpers.tsUpdateMock.finalize).toHaveBeenCalled();
-			done();
 		});
 
-		it("generateConfig merges variables passed under extraConfig", async done => {
+		it("generateConfig merges variables passed under extraConfig", async () => {
 			const expected = {
 				camelCaseName: "test",
 				ClassName: "Test",
@@ -168,7 +168,6 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			expected.igxPackage = FEED_PACKAGE;
 			actual = templ.generateConfig("test", options);
 			expect(actual).toEqual(expected);
-			done();
 		});
 	});
 });

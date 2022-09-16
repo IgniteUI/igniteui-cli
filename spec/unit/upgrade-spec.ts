@@ -16,7 +16,7 @@ describe("Unit - Upgrade command", () => {
 		spyOn(PackageManager, "installPackages");
 	});
 
-	it("Upgrade an Ignite UI for Angular project", async done => {
+	it("Upgrade an Ignite UI for Angular project", async () => {
 		// tslint:disable-next-line: no-object-literal-type-assertion
 		const config: Config = {
 			project: {
@@ -56,11 +56,9 @@ describe("Unit - Upgrade command", () => {
 		await upgradeCmd.execute({ skipInstall: false });
 		expect(mockProject.upgradeIgniteUIPackages).toHaveBeenCalledTimes(3);
 		expect(Util.execSync).toHaveBeenCalledWith("npm install --quiet");
-
-		done();
 	});
 
-	it("Logs error for not supported framework", async done => {
+	it("Logs error for not supported framework", async () => {
 		// tslint:disable-next-line: no-object-literal-type-assertion
 		const config: Config = {
 			project: {
@@ -71,6 +69,5 @@ describe("Unit - Upgrade command", () => {
 
 		await upgradeCmd.execute({});
 		expect(Util.log).toHaveBeenCalledTimes(1);
-		done();
 	});
 });
