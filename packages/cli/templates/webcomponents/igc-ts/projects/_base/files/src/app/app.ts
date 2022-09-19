@@ -1,6 +1,6 @@
-import { html, css, LitElement } from 'lit';
+import { Router } from '@vaadin/router';
+import { css, html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import { Router, } from '@vaadin/router';
 import { routes } from './app-routing.js';
 
 @customElement('app-root')
