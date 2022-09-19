@@ -1,4 +1,4 @@
-import { App, FS_TOKEN, IFileSystem, TypeScriptUtils, Util } from "@igniteui/cli-core";
+import { AddTemplateArgs, App, FS_TOKEN, IFileSystem, TypeScriptUtils, Util } from "@igniteui/cli-core";
 import * as ts from "typescript";
 
 const DEFAULT_ROUTES_VARIABLE = "routes";
@@ -12,7 +12,7 @@ export class TypeScriptFileUpdate {
 	private targetSource: ts.SourceFile;
 	private importsMeta: { lastIndex: number, modulePaths: string[] };
 
-	private requestedImports: Array<{ from: string, edit: boolean }>;
+	private requestedImports: Array<{ as: string | undefined, from: string, edit: boolean }>;
 
 	private createdStringLiterals: string[];
 
@@ -33,8 +33,8 @@ export class TypeScriptFileUpdate {
 		this.initState();
 	}
 
-	public addRoute(filePath: string, linkPath: string, linkText: string, routesVariable = DEFAULT_ROUTES_VARIABLE) {
-		this.addRouteModuleEntry(filePath, linkPath, linkText, routesVariable);
+	public addRoute(filePath: string, linkPath: string, linkText: string, options: AddTemplateArgs, parentName: string, routesVariable = DEFAULT_ROUTES_VARIABLE) {
+		this.addRouteModuleEntry(filePath, linkPath, linkText, routesVariable, options, parentName);
 	}
 
 	//#region File state
@@ -82,14 +82,24 @@ export class TypeScriptFileUpdate {
 		targetPath: string,
 		filePath: string,
 		linkText: string,
-		linkPath: string,
 		routesVariable = DEFAULT_ROUTES_VARIABLE,
-		parentRoutePath?: string
+		options,
+		parentName?: string
 	) {
+		const isRouting: boolean = filePath.indexOf("routing") >= 0;
+
+		if (isRouting && this.targetSource.text.indexOf(filePath.slice(0, -3)) > 0) {
+			return;
+		}
+
 		let className: string;
-		const relativePath: string = "./" + filePath + "/" + filePath;
+		const moduleName = filePath.substring(0, filePath.indexOf('-routing'));
+		const relativePath: string = isRouting ? "./" + moduleName + "/" + filePath.slice(0, -3) : "./" + filePath + "/" + filePath;
+		const hasParent = parentName ? true : false;
+		const hasChildren = options.hasChildren ? true : false;
+		const hasNestedModule: boolean = (!hasParent && hasChildren) ? true : false;
 		className = "app-" + filePath;
-		this.requestImport(relativePath);
+		this.requestImport(relativePath, parentName);
 
 		// https://github.com/Microsoft/TypeScript/issues/14419#issuecomment-307256171
 		const transformer: ts.TransformerFactory<ts.Node> = <T extends ts.Node>(context: ts.TransformationContext) =>
@@ -97,7 +107,7 @@ export class TypeScriptFileUpdate {
 				// the visitor that should be used when adding routes to the main route array
 				const conditionalVisitor: ts.Visitor = (node: ts.Node): ts.Node => {
 					if (node.kind === ts.SyntaxKind.ArrayLiteralExpression) {
-						const newObject = this.createRouteEntry(filePath, className, linkText);
+						const newObject = this.createRouteEntry(filePath, className, linkText, hasNestedModule);
 						const array = (node as ts.ArrayLiteralExpression);
 						this.createdStringLiterals.push(filePath, linkText);
 						const notFoundWildCard = ".*";
@@ -124,11 +134,20 @@ export class TypeScriptFileUpdate {
 					}
 				};
 
-				const visitCondition = (node: ts.Node): boolean => {
-					return node.kind === ts.SyntaxKind.VariableDeclaration &&
-						(node as ts.VariableDeclaration).name.getText() === routesVariable &&
-						(node as ts.VariableDeclaration).type.getText() === "Route[]";
-				};
+				let visitCondition;
+
+				if (!isRouting) {
+					visitCondition = (node: ts.Node): boolean => {
+						return node.kind === ts.SyntaxKind.VariableDeclaration &&
+							(node as ts.VariableDeclaration).name.getText() === routesVariable &&
+							(node as ts.VariableDeclaration).type.getText() === "Route[]";
+					};
+				} else {
+						visitCondition  = (node: ts.Node): boolean => {
+							return undefined;
+						}
+				}
+
 				const visitor: ts.Visitor = this.createVisitor(conditionalVisitor, visitCondition, context);
 				context.enableSubstitution(ts.SyntaxKind.ClassDeclaration);
 				return ts.visitNode(rootNode, visitor);
@@ -141,11 +160,13 @@ export class TypeScriptFileUpdate {
 		this.finalize();
 	}
 
-	protected requestImport(modulePath: string) {
+	protected requestImport(modulePath: string, parentName: string) {
 		const existing = this.requestedImports.find(x => x.from === modulePath);
 		if (!existing) {
+			const exportedObject = parentName ? parentName : undefined;
 			// new imports, check if already exists in file
 			this.requestedImports.push({
+				as: exportedObject,
 				from: modulePath,
 				edit: this.importsMeta.modulePaths.indexOf(modulePath) !== -1
 			});
@@ -163,7 +184,7 @@ export class TypeScriptFileUpdate {
 
 		const newStatements = ts.factory.createNodeArray([
 			...this.targetSource.statements.slice(0, this.importsMeta.lastIndex),
-			...newImports.map(x => this.createIdentifierImport(x.from)),
+			...newImports.map(x => this.createIdentifierImport(x.from, x.as)),
 			...this.targetSource.statements.slice(this.importsMeta.lastIndex)
 		]);
 		newImports.forEach(x => this.createdStringLiterals.push(x.from));
@@ -171,11 +192,27 @@ export class TypeScriptFileUpdate {
 		this.targetSource = ts.factory.updateSourceFile(this.targetSource, newStatements);
 	}
 
-	protected createIdentifierImport(importPath: string): ts.ImportDeclaration {
+	protected createIdentifierImport(importPath: string, as: string): ts.ImportDeclaration {
+		let exportedObject: string | undefined = undefined;
+		let exportedObjectName: string | undefined = undefined;
+		let importClause: ts.ImportClause | undefined;
+		if (as) {
+			exportedObject = "routes";
+			exportedObjectName = as.replace(/\s/g, "");
+			importClause = ts.factory.createImportClause(
+				false,
+				undefined,
+				ts.factory.createNamedImports([
+					ts.factory.createImportSpecifier(false, ts.factory.createIdentifier(exportedObject), ts.factory.createIdentifier(exportedObjectName))
+				])
+			)
+		} else {
+			importClause = undefined;
+		}
 		const importDeclaration = ts.factory.createImportDeclaration(
 			undefined,
 			undefined,
-			undefined,
+			importClause,
 			ts.factory.createStringLiteral(importPath));
 		return importDeclaration;
 	}
@@ -360,10 +397,15 @@ export class TypeScriptFileUpdate {
 		};
 	}
 
-	private createRouteEntry(filePath: string, className: string, linkText: string): ts.ObjectLiteralExpression {
+	private createRouteEntry(filePath: string, className: string, linkText: string, hasNestedModule: boolean): ts.ObjectLiteralExpression {
 		const routePath = ts.factory.createPropertyAssignment("path", ts.factory.createStringLiteral(filePath));
 		const routeComponent = ts.factory.createPropertyAssignment("component", ts.factory.createStringLiteral(className));
 		const routeData = ts.factory.createPropertyAssignment("name", ts.factory.createStringLiteral(linkText));
-		return ts.factory.createObjectLiteralExpression([routePath, routeComponent, routeData]);
+		const childrenData = ts.factory.createPropertyAssignment("children", ts.factory.createStringLiteral(linkText.replace(/\s/g, "")));
+		if (hasNestedModule) {
+			return ts.factory.createObjectLiteralExpression([routePath, routeComponent, routeData, childrenData]);
+		} else {
+			return ts.factory.createObjectLiteralExpression([routePath, routeComponent, routeData]);
+		}
 	}
 }
