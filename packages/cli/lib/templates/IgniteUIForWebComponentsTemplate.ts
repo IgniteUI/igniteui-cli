@@ -52,18 +52,18 @@ export class IgniteUIForWebComponentsTemplate implements Template {
 			);
 		}
 
-		if (options.routingModulePath != "app") {
-			routingModule = new TypeScriptFileUpdate(path.join(projectPath, 'src/app/app-routing.ts'));
+		if (options.routingModulePath !== "app") {
+			routingModule = new TypeScriptFileUpdate(path.join(projectPath, "src/app/app-routing.ts"));
 			const routingModuleText: string = routingModule.targetSource.text;
-			const moduleName = options.routingModulePath.split('/')[1];
-			if (routingModuleText.indexOf(moduleName + '-routing') < 0) {
+			const moduleName = options.routingModulePath.split("/")[1];
+			if (routingModuleText.indexOf(moduleName + "-routing") < 0) {
 				routingModule.addRoute(
 					path.join(projectPath, `src/app/${options.routingModulePath}-routing.ts`),
 					this.fileName(`${options.routingModulePath}-routing.ts`),
 					Util.nameFromPath(`${options.routingModulePath}-routing.ts`),
 					options,
 					options.parentName
-				)
+				);
 			}
 		}
 	}

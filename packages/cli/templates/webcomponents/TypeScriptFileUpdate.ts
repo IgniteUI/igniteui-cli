@@ -33,7 +33,14 @@ export class TypeScriptFileUpdate {
 		this.initState();
 	}
 
-	public addRoute(filePath: string, linkPath: string, linkText: string, options: AddTemplateArgs, parentName: string, routesVariable = DEFAULT_ROUTES_VARIABLE) {
+	public addRoute(
+			filePath: string,
+			linkPath: string,
+			linkText: string,
+			options: AddTemplateArgs,
+			parentName: string,
+			routesVariable = DEFAULT_ROUTES_VARIABLE
+		) {
 		this.addRouteModuleEntry(filePath, linkPath, linkText, routesVariable, options, parentName);
 	}
 
@@ -93,8 +100,9 @@ export class TypeScriptFileUpdate {
 		}
 
 		let className: string;
-		const moduleName = filePath.substring(0, filePath.indexOf('-routing'));
-		const relativePath: string = isRouting ? "./" + moduleName + "/" + filePath.slice(0, -3) : "./" + filePath + "/" + filePath;
+		const moduleName = filePath.substring(0, filePath.indexOf("-routing"));
+		const relativePath: string = isRouting ?
+			"./" + moduleName + "/" + filePath.slice(0, -3) : "./" + filePath + "/" + filePath;
 		const hasParent = parentName ? true : false;
 		const hasChildren = options.hasChildren ? true : false;
 		const hasNestedModule: boolean = (!hasParent && hasChildren) ? true : false;
@@ -145,7 +153,7 @@ export class TypeScriptFileUpdate {
 				} else {
 						visitCondition  = (node: ts.Node): boolean => {
 							return undefined;
-						}
+						};
 				}
 
 				const visitor: ts.Visitor = this.createVisitor(conditionalVisitor, visitCondition, context);
@@ -193,8 +201,8 @@ export class TypeScriptFileUpdate {
 	}
 
 	protected createIdentifierImport(importPath: string, as: string): ts.ImportDeclaration {
-		let exportedObject: string | undefined = undefined;
-		let exportedObjectName: string | undefined = undefined;
+		let exportedObject: string | undefined;
+		let exportedObjectName: string | undefined;
 		let importClause: ts.ImportClause | undefined;
 		if (as) {
 			exportedObject = "routes";
@@ -203,9 +211,10 @@ export class TypeScriptFileUpdate {
 				false,
 				undefined,
 				ts.factory.createNamedImports([
-					ts.factory.createImportSpecifier(false, ts.factory.createIdentifier(exportedObject), ts.factory.createIdentifier(exportedObjectName))
+					ts.factory.createImportSpecifier(false, ts.factory.createIdentifier(exportedObject),
+						ts.factory.createIdentifier(exportedObjectName))
 				])
-			)
+			);
 		} else {
 			importClause = undefined;
 		}
@@ -397,7 +406,12 @@ export class TypeScriptFileUpdate {
 		};
 	}
 
-	private createRouteEntry(filePath: string, className: string, linkText: string, hasNestedModule: boolean): ts.ObjectLiteralExpression {
+	private createRouteEntry(
+			filePath: string,
+			className: string,
+			linkText: string,
+			hasNestedModule: boolean
+		): ts.ObjectLiteralExpression {
 		const routePath = ts.factory.createPropertyAssignment("path", ts.factory.createStringLiteral(filePath));
 		const routeComponent = ts.factory.createPropertyAssignment("component", ts.factory.createStringLiteral(className));
 		const routeData = ts.factory.createPropertyAssignment("name", ts.factory.createStringLiteral(linkText));
