@@ -1,8 +1,8 @@
 import { ProjectTemplate } from "@igniteui/cli-core";
 import * as path from "path";
-import { BaseIgcProject } from "../_base";
+import { BaseWithHomeIgcProject } from "../_base_with_home";
 
-export class SideNavProject extends BaseIgcProject implements ProjectTemplate {
+export class SideNavProject extends BaseWithHomeIgcProject implements ProjectTemplate {
 	public id: string = "side-nav";
 	public name = "Default side navigation";
 	public description = "Project structure with side navigation drawer";

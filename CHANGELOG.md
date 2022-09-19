@@ -1,3 +1,30 @@
+# [10.0.5](https://github.com/IgniteUI/igniteui-cli/compare/v10.0.4...v10.0.5) (2022-09-19)
+
+🎉 This update includes:
+
+- `igniteui-webcomponents` version [3.4.0](https://github.com/IgniteUI/igniteui-webcomponents/releases/tag/3.4.0), including templates for `igc-tabs`, `igc-accordion`, `igc-date-time-input`, `igc-rating`.
+
+- `igniteui-angular` version [14.1.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/14.1.0).
+- `igniteui-angular-core` version [14.1.0](https://www.npmjs.com/package/igniteui-angular-core/v/14.1.0)
+- `igniteui-angular-charts` version [14.1.0](https://www.npmjs.com/package/igniteui-angular-charts/v/14.1.0)
+- `igniteui-angular-gauges` version [14.1.0](https://www.npmjs.com/package/igniteui-angular-gauges/v/14.1.0)
+- `igniteui-angular-maps` version [14.1.0](https://www.npmjs.com/package/igniteui-angular-maps/v/14.1.0)
+
+# igniteui/cli-core@10.0.5
+* Note: Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@14.1.1005
+
+* All Angular 14.1.0 changes, listed above.
+
+## igniteui/angular-schematics@14.1.1005
+
+* Note: Version bump only for package igniteui/angular-schematics
+
+## igniteui-cli@10.0.5
+
+* All `igniteui-angular` 14.1.0 & `igniteui-webcomponents` 3.4.0 changes, listed above.
+
 # [10.0.4](https://github.com/IgniteUI/igniteui-cli/compare/v10.0.3...v10.0.4) (2022-07-18)
 
 # igniteui/cli-core@10.0.4
