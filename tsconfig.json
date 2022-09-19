@@ -1,8 +1,10 @@
 {
 	"compilerOptions": {
 		"baseUrl": ".",
-		"target": "es6",
-		"module": "commonjs",
+		"target": "ES6",
+		"module": "CommonJS",
+		"esModuleInterop": true,
+		"moduleResolution": "Node16",
 		"sourceMap": true,
 		"paths": {
 			"@igniteui/cli-core": [

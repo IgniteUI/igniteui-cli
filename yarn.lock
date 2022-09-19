@@ -1005,7 +1005,7 @@
   version "1.2.2"
   resolved "https://registry.npmjs.org/@types/minimist/-/minimist-1.2.2.tgz"
 
-"@types/node@*", "@types/node@>= 8", "@types/node@^8.0.31", "@types/node@^8.10.0":
+"@types/node@*", "@types/node@>= 8", "@types/node@^8.0.31":
   version "8.10.66"
   resolved "https://registry.npmjs.org/@types/node/-/node-8.10.66.tgz"
 
@@ -1016,6 +1016,11 @@
 "@types/node@^12.11.1":
   version "12.20.52"
   resolved "https://registry.npmjs.org/@types/node/-/node-12.20.52.tgz"
+
+"@types/node@^14.18.27":
+  version "14.18.28"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.18.28.tgz#ddb82da2fff476a8e827e8773c84c19d9c235278"
+  integrity sha512-CK2fnrQlIgKlCV3N2kM+Gznb5USlwA1KFX3rJVHmgVk6NJxFPuQ86pAcvKnu37IA4BGlSRz7sEE1lHL1aLZ/eQ==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.1"
@@ -1375,7 +1380,7 @@ aws4@^1.8.0:
   version "1.11.0"
   resolved "https://registry.npmjs.org/aws4/-/aws4-1.11.0.tgz"
 
-axios@0.21.4:
+axios@0.21.4, axios@~0.21.4:
   version "0.21.4"
   resolved "https://registry.npmjs.org/axios/-/axios-0.21.4.tgz"
   dependencies:
@@ -2946,7 +2951,7 @@ glob-to-regexp@^0.3.0:
   resolved "https://registry.npmjs.org/glob-to-regexp/-/glob-to-regexp-0.3.0.tgz"
   integrity "sha1-jFoUlNIGbFcMw7/kSWF1rMTVAqs= sha512-Iozmtbqv0noj0uDDqoL0zNq0VBEfK2YFoMAZoxJe4cwphvLR+JskfF30QhXHOR4m3KrE6NLRYw+U9MRXvifyig=="
 
-glob@^7.1.1, glob@^7.1.2, glob@^7.1.3, glob@^7.1.4:
+glob@^7.1.1, glob@^7.1.2, glob@^7.1.3, glob@^7.1.4, glob@^7.1.6:
   version "7.2.3"
   resolved "https://registry.npmjs.org/glob/-/glob-7.2.3.tgz"
   dependencies:
@@ -3389,6 +3394,13 @@ is-core-module@^2.5.0, is-core-module@^2.8.1:
   dependencies:
     has "^1.0.3"
 
+is-core-module@^2.9.0:
+  version "2.10.0"
+  resolved "https://registry.yarnpkg.com/is-core-module/-/is-core-module-2.10.0.tgz#9012ede0a91c69587e647514e1d5277019e728ed"
+  integrity sha512-Erxj2n/LDAZ7H8WNJXd9tw38GYM3dv8rk8Zcs+jJuxYTW7sozH+SS8NtrSjVL1/vpLvWi1hxy96IzjJ3EHTJJg==
+  dependencies:
+    has "^1.0.3"
+
 is-data-descriptor@^0.1.4:
   version "0.1.4"
   resolved "https://registry.npmjs.org/is-data-descriptor/-/is-data-descriptor-0.1.4.tgz"
@@ -3678,6 +3690,11 @@ istanbul-reports@^2.1.1:
   dependencies:
     html-escaper "^2.0.0"
 
+jasmine-core@^4.4.0:
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/jasmine-core/-/jasmine-core-4.4.0.tgz#848fe45c1839cacaf1f2429d400d1d4f85d2856a"
+  integrity sha512-+l482uImx5BVd6brJYlaHe2UwfKoZBqQfNp20ZmdNfsjGFTemGfqHLsXjKEW23w9R/m8WYeFc9JmIgjj6dUtAA==
+
 jasmine-core@~3.5.0:
   version "3.5.0"
   resolved "https://registry.npmjs.org/jasmine-core/-/jasmine-core-3.5.0.tgz"
@@ -3700,6 +3717,14 @@ jasmine@3.5.0:
   dependencies:
     glob "^7.1.4"
     jasmine-core "~3.5.0"
+
+jasmine@^4.4.0:
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/jasmine/-/jasmine-4.4.0.tgz#e3e359723d9679993b70de3e0441517c154b9647"
+  integrity sha512-xrbOyYkkCvgduNw7CKktDtNb+BwwBv/zvQeHpTkbxqQ37AJL5V4sY3jHoMIJPP/hTc3QxLVwOyxc87AqA+kw5g==
+  dependencies:
+    glob "^7.1.6"
+    jasmine-core "^4.4.0"
 
 js-tokens@^4.0.0:
   version "4.0.0"
@@ -5414,6 +5439,15 @@ resolve@^1.10.0, resolve@^1.3.2, resolve@^1.6.0:
     path-parse "^1.0.7"
     supports-preserve-symlinks-flag "^1.0.0"
 
+resolve@~1.22.0:
+  version "1.22.1"
+  resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.22.1.tgz#27cb2ebb53f91abb49470a928bba7558066ac177"
+  integrity sha512-nBpuuYuY5jFsli/JIs1oldw6fOQCBioohqWZg/2hiaOybXOft4lonv85uDOKXdf8rhyK159cxU5cDcK/NKk8zw==
+  dependencies:
+    is-core-module "^2.9.0"
+    path-parse "^1.0.7"
+    supports-preserve-symlinks-flag "^1.0.0"
+
 resp-modifier@6.0.2:
   version "6.0.2"
   resolved "https://registry.npmjs.org/resp-modifier/-/resp-modifier-6.0.2.tgz"
@@ -5493,7 +5527,7 @@ safe-regex@^1.1.0:
   version "2.1.2"
   resolved "https://registry.npmjs.org/safer-buffer/-/safer-buffer-2.1.2.tgz"
 
-"semver@2 || 3 || 4 || 5", "semver@2.x || 3.x || 4 || 5", semver@^5.3.0, semver@^5.4.1, semver@^5.5.0, semver@^5.5.1, semver@^5.6.0, semver@^5.7.0, semver@^5.7.1:
+"semver@2 || 3 || 4 || 5", "semver@2.x || 3.x || 4 || 5", semver@^5.3.0, semver@^5.4.1, semver@^5.5.0, semver@^5.5.1, semver@^5.6.0, semver@^5.7.0, semver@^5.7.1, semver@~5.7.1:
   version "5.7.1"
   resolved "https://registry.npmjs.org/semver/-/semver-5.7.1.tgz"
 
@@ -6251,7 +6285,7 @@ type-fest@^0.18.0:
   version "0.18.1"
   resolved "https://registry.npmjs.org/type-fest/-/type-fest-0.18.1.tgz"
 
-type-fest@^0.3.0:
+type-fest@^0.3.0, type-fest@~0.3.1:
   version "0.3.1"
   resolved "https://registry.npmjs.org/type-fest/-/type-fest-0.3.1.tgz"
 
@@ -6284,6 +6318,11 @@ typescript@^3.5.3:
 typescript@^4.6.2, typescript@~4.7.2:
   version "4.7.2"
   resolved "https://registry.npmjs.org/typescript/-/typescript-4.7.2.tgz"
+
+typescript@^4.9.0-dev.20220914:
+  version "4.9.0-dev.20220914"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.9.0-dev.20220914.tgz#16b3253d784cb0739dba362cc55adeebd9c8fd50"
+  integrity sha512-U1GcTQISGDyNlwr/OUTQVKFGMjL5eYrzT4nTptRn6lcaiRwO0+zmdHD3FMf6ZdiV5wZMMU706GH08EgiBufIqw==
 
 typescript@~4.5.2:
   version "4.5.5"

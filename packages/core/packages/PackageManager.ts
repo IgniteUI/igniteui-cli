@@ -4,7 +4,7 @@ import { TemplateManager } from "../../cli/lib/TemplateManager";
 import { Config, FS_TOKEN, IFileSystem, ProjectTemplate } from "../types";
 import { App, ProjectConfig, Util } from "../util";
 
-import componentsConfig = require("./components");
+import componentsConfig from "./components";
 
 export class PackageManager {
 	private static ossPackage: string = "ignite-ui";

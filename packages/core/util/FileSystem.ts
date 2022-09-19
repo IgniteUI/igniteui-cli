@@ -12,9 +12,9 @@ export class FsFileSystem implements IFileSystem {
 			return false;
 		}
 	}
-	public readFile(filePath: string, encoding?: string): string {
+	public readFile(filePath: string, encoding?: BufferEncoding): string {
 		if (encoding) {
-			return fs.readFileSync(filePath, encoding);
+			return fs.readFileSync(filePath, { encoding });
 		}
 		return fs.readFileSync(filePath).toString();
 	}
@@ -25,6 +25,18 @@ export class FsFileSystem implements IFileSystem {
 		try {
 			return fs.statSync(dirPath).isDirectory();
 		} catch (e) {
+			return false;
+		}
+	}
+	public removeDir(dirPath: string, force: boolean, recursive = true): boolean {
+		try {
+			fs.rmSync(dirPath, {
+				force,
+				recursive,
+				maxRetries: 3
+			});
+			return true;
+		} catch (err) {
 			return false;
 		}
 	}

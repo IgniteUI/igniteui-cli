@@ -13,4 +13,5 @@ class AngularFramework implements Framework {
 		this.projectLibraries.push(require("./ig-ts") as ProjectLibrary);
 	}
 }
-export = new AngularFramework() as Framework;
+
+export const factory = () => new AngularFramework() as Framework;

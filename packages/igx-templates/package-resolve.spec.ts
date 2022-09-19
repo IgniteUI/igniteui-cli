@@ -17,6 +17,9 @@ class MockFileSystem implements IFileSystem {
 	public directoryExists(dirPath: string): boolean {
 		throw new Error("Method not implemented.");
 	}
+	public removeDir(dirPath: string, force: boolean): boolean {
+		throw new Error("Method not implemented.");
+	}
 	public glob(dirPath: string, pattern: string): string[] {
 		throw new Error("Method not implemented.");
 	}
