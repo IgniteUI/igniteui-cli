@@ -16,7 +16,7 @@ class IgxRadialGaugeTemplate extends IgniteUIForAngularTemplate {
 				from: "igniteui-angular-gauges"
 			}
 		];
-		this.packages = ["igniteui-angular-core@~14.0.0", "igniteui-angular-gauges@~14.0.0"];
+		this.packages = ["igniteui-angular-core@~14.1.0", "igniteui-angular-gauges@~14.1.0"];
 	}
 }
 module.exports = new IgxRadialGaugeTemplate();
