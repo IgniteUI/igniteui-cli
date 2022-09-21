@@ -34,13 +34,14 @@ export class TypeScriptFileUpdate {
 	}
 
 	public addRoute(
-			linkPath: string,
-			linkText: string,
+			path: string,
+			component: string,
+			name: string,
 			routerChildren: string,
 			importAlias: string,
 			routesVariable = DEFAULT_ROUTES_VARIABLE
 		) {
-		this.addRouteModuleEntry(linkPath, linkText, routerChildren, importAlias, routesVariable);
+		this.addRouteModuleEntry(path, component, name, routerChildren, importAlias, routesVariable);
 	}
 
 	//#region File state
@@ -85,24 +86,26 @@ export class TypeScriptFileUpdate {
 	//#endregion File state
 
 	protected addRouteModuleEntry(
-		filePath: string,
-		linkText: string,
+		path: string,
+		component: string,
+		name: string,
 		routerChildren: string,
 		importAlias: string,
 		routesVariable = DEFAULT_ROUTES_VARIABLE
 	) {
-		const isRouting: boolean = filePath.indexOf("routing") >= 0;
+		const isRouting: boolean = path.indexOf("routing") >= 0;
 
-		if (isRouting && this.targetSource.text.indexOf(filePath.slice(0, -3)) > 0) {
+		if (isRouting && this.targetSource.text.indexOf(path.slice(0, -3)) > 0) {
 			return;
 		}
 
-		let className: string;
-		const moduleName = filePath.substring(0, filePath.indexOf("-routing"));
-		const relativePath: string = isRouting ?
-			"./" + moduleName + "/" + filePath.slice(0, -3) : "./" + filePath + "/" + filePath;
-		className = "app-" + filePath;
-		this.requestImport(relativePath, importAlias);
+		const moduleName = path.substring(0, path.indexOf("-routing"));
+		if (path) {
+			const relativePath: string = isRouting ?
+			"./" + moduleName + "/" + path.slice(0, -3) : "./" + path + "/" + path;
+
+			this.requestImport(relativePath, importAlias);
+		}
 
 		// https://github.com/Microsoft/TypeScript/issues/14419#issuecomment-307256171
 		const transformer: ts.TransformerFactory<ts.Node> = <T extends ts.Node>(context: ts.TransformationContext) =>
@@ -110,9 +113,9 @@ export class TypeScriptFileUpdate {
 				// the visitor that should be used when adding routes to the main route array
 				const conditionalVisitor: ts.Visitor = (node: ts.Node): ts.Node => {
 					if (node.kind === ts.SyntaxKind.ArrayLiteralExpression) {
-						const newObject = this.createRouteEntry(filePath, className, linkText, routerChildren);
+						const newObject = this.createRouteEntry(path, component, name, routerChildren);
 						const array = (node as ts.ArrayLiteralExpression);
-						this.createdStringLiterals.push(filePath, linkText);
+						this.createdStringLiterals.push(path, name);
 						const notFoundWildCard = ".*";
 						const nodes = ts.visitNodes(array.elements, visitor);
 						const errorRouteNode = nodes.filter(element => element.getText().includes(notFoundWildCard))[0];

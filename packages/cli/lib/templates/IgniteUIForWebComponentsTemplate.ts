@@ -37,7 +37,7 @@ export class IgniteUIForWebComponentsTemplate implements Template {
 		return Object.assign({}, options["extraConfig"], this.getBaseVariables(name));
 	}
 
-	public registerInProject(projectPath: string, fullName: string, options?: AddTemplateArgs) {
+	public registerInProject(projectPath: string, fullName: string, options?: AddTemplateArgs, defaultPath = false) {
 		App.initialize(); // remove after POC
 		if (!options.parentName) {
 			return;
@@ -48,8 +48,19 @@ export class IgniteUIForWebComponentsTemplate implements Template {
 		if (!(options && options.skipRoute) && App.container.get<IFileSystem>(FS_TOKEN)
 			.fileExists(routeModulePath)) {
 
+			if (defaultPath) {
+				routingModule.addRoute(
+					"",
+					options.selector,
+					Util.nameFromPath(fullName),
+					options.routerChildren,
+					undefined
+				);
+			}
+
 			routingModule.addRoute(
 				this.fileName(fullName),
+				options.selector,
 				Util.nameFromPath(fullName),
 				options.routerChildren,
 				undefined
@@ -58,6 +69,7 @@ export class IgniteUIForWebComponentsTemplate implements Template {
 			if (options.hasChildren) {
 				routingModule.addRoute(
 					this.fileName(`${options.modulePath}-routing.ts`),
+					options.selector,
 					Util.nameFromPath(`${options.modulePath}-routing.ts`),
 					options.routerChildren,
 					options.importAlias
