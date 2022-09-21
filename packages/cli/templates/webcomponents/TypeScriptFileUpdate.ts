@@ -34,14 +34,13 @@ export class TypeScriptFileUpdate {
 	}
 
 	public addRoute(
-			filePath: string,
 			linkPath: string,
 			linkText: string,
-			options: AddTemplateArgs,
-			parentName: string,
+			routerChildren: string,
+			importAlias: string,
 			routesVariable = DEFAULT_ROUTES_VARIABLE
 		) {
-		this.addRouteModuleEntry(filePath, linkPath, linkText, routesVariable, options, parentName);
+		this.addRouteModuleEntry(linkPath, linkText, routerChildren, importAlias, routesVariable);
 	}
 
 	//#region File state
@@ -86,12 +85,11 @@ export class TypeScriptFileUpdate {
 	//#endregion File state
 
 	protected addRouteModuleEntry(
-		targetPath: string,
 		filePath: string,
 		linkText: string,
-		routesVariable = DEFAULT_ROUTES_VARIABLE,
-		options,
-		parentName?: string
+		routerChildren: string,
+		importAlias: string,
+		routesVariable = DEFAULT_ROUTES_VARIABLE
 	) {
 		const isRouting: boolean = filePath.indexOf("routing") >= 0;
 
@@ -103,11 +101,8 @@ export class TypeScriptFileUpdate {
 		const moduleName = filePath.substring(0, filePath.indexOf("-routing"));
 		const relativePath: string = isRouting ?
 			"./" + moduleName + "/" + filePath.slice(0, -3) : "./" + filePath + "/" + filePath;
-		const hasParent = parentName ? true : false;
-		const hasChildren = options.hasChildren ? true : false;
-		const hasNestedModule: boolean = (!hasParent && hasChildren) ? true : false;
 		className = "app-" + filePath;
-		this.requestImport(relativePath, parentName);
+		this.requestImport(relativePath, importAlias);
 
 		// https://github.com/Microsoft/TypeScript/issues/14419#issuecomment-307256171
 		const transformer: ts.TransformerFactory<ts.Node> = <T extends ts.Node>(context: ts.TransformationContext) =>
@@ -115,7 +110,7 @@ export class TypeScriptFileUpdate {
 				// the visitor that should be used when adding routes to the main route array
 				const conditionalVisitor: ts.Visitor = (node: ts.Node): ts.Node => {
 					if (node.kind === ts.SyntaxKind.ArrayLiteralExpression) {
-						const newObject = this.createRouteEntry(filePath, className, linkText, hasNestedModule);
+						const newObject = this.createRouteEntry(filePath, className, linkText, routerChildren);
 						const array = (node as ts.ArrayLiteralExpression);
 						this.createdStringLiterals.push(filePath, linkText);
 						const notFoundWildCard = ".*";
@@ -168,13 +163,12 @@ export class TypeScriptFileUpdate {
 		this.finalize();
 	}
 
-	protected requestImport(modulePath: string, parentName: string) {
+	protected requestImport(modulePath: string, routerAlias: string) {
 		const existing = this.requestedImports.find(x => x.from === modulePath);
 		if (!existing) {
-			const exportedObject = parentName ? parentName : undefined;
 			// new imports, check if already exists in file
 			this.requestedImports.push({
-				as: exportedObject,
+				as: routerAlias,
 				from: modulePath,
 				edit: this.importsMeta.modulePaths.indexOf(modulePath) !== -1
 			});
@@ -410,13 +404,13 @@ export class TypeScriptFileUpdate {
 			filePath: string,
 			className: string,
 			linkText: string,
-			hasNestedModule: boolean
+			routerAlias: string
 		): ts.ObjectLiteralExpression {
 		const routePath = ts.factory.createPropertyAssignment("path", ts.factory.createStringLiteral(filePath));
 		const routeComponent = ts.factory.createPropertyAssignment("component", ts.factory.createStringLiteral(className));
 		const routeData = ts.factory.createPropertyAssignment("name", ts.factory.createStringLiteral(linkText));
-		const childrenData = ts.factory.createPropertyAssignment("children", ts.factory.createStringLiteral(linkText.replace(/\s/g, "")));
-		if (hasNestedModule) {
+		if (routerAlias) {
+			const childrenData = ts.factory.createPropertyAssignment("children", ts.factory.createIdentifier(routerAlias));
 			return ts.factory.createObjectLiteralExpression([routePath, routeComponent, routeData, childrenData]);
 		} else {
 			return ts.factory.createObjectLiteralExpression([routePath, routeComponent, routeData]);
