@@ -42,7 +42,7 @@ export class IgniteUIForWebComponentsTemplate implements Template {
 			return;
 		}
 		const routeModulePath: string = options.parentRoutingModulePath;
-		let routingModule = new TypeScriptFileUpdate(path.join(projectPath, routeModulePath));
+		const routingModule = new TypeScriptFileUpdate(path.join(projectPath, routeModulePath));
 
 		if (!(options && options.skipRoute) && App.container.get<IFileSystem>(FS_TOKEN)
 			.fileExists(routeModulePath)) {
