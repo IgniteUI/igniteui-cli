@@ -38,7 +38,6 @@ export class IgniteUIForWebComponentsTemplate implements Template {
 	}
 
 	public registerInProject(projectPath: string, fullName: string, options?: AddTemplateArgs, defaultPath = false) {
-		App.initialize(); // remove after POC
 		if (!options.parentName) {
 			return;
 		}
