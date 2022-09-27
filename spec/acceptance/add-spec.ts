@@ -6,6 +6,7 @@ import { parse } from "path";
 import * as cli from "../../packages/cli/lib/cli";
 import { deleteAll, resetSpy } from "../helpers/utils";
 
+// tslint:disable:object-literal-sort-keys
 describe("Add command", () => {
 	let testFolder = parse(__filename).name;
 	// tslint:disable:no-console

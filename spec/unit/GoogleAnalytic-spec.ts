@@ -5,7 +5,7 @@ import * as path from "path";
 import * as process from "process";
 import { deleteAll } from "../helpers/utils";
 
-fdescribe("Unit - Google Analytic", () => {
+describe("Unit - Google Analytic", () => {
 	let request;
 	let testFolder = path.parse(__filename).name;
 	let serviceSpy;
@@ -36,7 +36,7 @@ fdescribe("Unit - Google Analytic", () => {
 		fs.rmdirSync(`./output/${testFolder}`);
 	});
 
-	fit("Calling post should create post request to 'www.google-analytics.com", async () => {
+	it("Calling post should create post request to 'www.google-analytics.com", async () => {
 		spyOn(ProjectConfig, "getConfig").and.returnValue({});
 
 		GATestClass.post({});
