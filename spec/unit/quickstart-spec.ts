@@ -16,7 +16,7 @@ describe("Unit - Quickstart command", () => {
 		spyOn(process, "chdir");
 	});
 
-	it("Creates quickstart for the specified framework", async done => {
+	it("Creates quickstart for the specified framework", async () => {
 		spyOn(Util, "execSync");
 
 		await quickstartCmd.execute({ framework: "angular" });
@@ -29,10 +29,9 @@ describe("Unit - Quickstart command", () => {
 		expect(Util.log).toHaveBeenCalledWith("Quick Start!");
 		expect(Util.log).toHaveBeenCalledWith("angular-quickstart loaded");
 		expect(Util.log).toHaveBeenCalledTimes(2);
-		done();
 	});
 
-	it("Logs error for wrong framework", async done => {
+	it("Logs error for wrong framework", async () => {
 		spyOn(Util, "error");
 
 		await quickstartCmd.execute({ framework: "lottery" });
@@ -40,10 +39,9 @@ describe("Unit - Quickstart command", () => {
 		expect(Util.error).toHaveBeenCalledWith("The framework is not supported!", "red");
 		expect(Util.log).toHaveBeenCalledWith("Quick Start!");
 		expect(Util.log).toHaveBeenCalledTimes(1);
-		done();
 	});
 
-	it("Creates default jquery quickstart when no framework is specified", async done => {
+	it("Creates default jquery quickstart when no framework is specified", async () => {
 		spyOn(Util, "execSync");
 		spyOn(liteServer, "server");
 		await quickstartCmd.execute({ framework: "jquery" });
@@ -55,10 +53,9 @@ describe("Unit - Quickstart command", () => {
 		expect(Util.log).toHaveBeenCalledWith("Quick Start!");
 		expect(Util.log).toHaveBeenCalledWith("jquery-quickstart loaded");
 		expect(Util.log).toHaveBeenCalledTimes(2);
-		done();
 	});
 
-	it("Creates quickstart for React framework", async done => {
+	it("Creates quickstart for React framework", async () => {
 		spyOn(Util, "execSync");
 		spyOn(liteServer, "server");
 
@@ -72,6 +69,5 @@ describe("Unit - Quickstart command", () => {
 		expect(Util.log).toHaveBeenCalledWith("Quick Start!");
 		expect(Util.log).toHaveBeenCalledWith("react-quickstart loaded");
 		expect(Util.log).toHaveBeenCalledTimes(2);
-		done();
 	});
 });

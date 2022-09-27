@@ -1,3 +1,4 @@
+// tslint:disable:object-literal-sort-keys
 import { Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
 import { ScopedTree } from "@angular-devkit/schematics/src/tree/scoped";
 import { ProjectConfig, Util } from "@igniteui/cli-core";

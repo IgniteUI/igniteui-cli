@@ -1,4 +1,5 @@
-import Jasmine = require("jasmine");
+import { App } from "@igniteui/cli-core";
+import { default as Jasmine  } from "jasmine";
 import { DisplayProcessor, SpecReporter } from "jasmine-spec-reporter";
 
 class CustomProcessor extends DisplayProcessor {
@@ -25,4 +26,5 @@ jasmineInst.loadConfig({
 	]
 });
 
+App.initialize();
 jasmineInst.execute([], null);

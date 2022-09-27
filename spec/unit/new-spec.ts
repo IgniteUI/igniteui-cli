@@ -21,16 +21,15 @@ describe("Unit - New command", () => {
 		process.chdir("../../");
 	});
 
-	it("New command in existing project", async done => {
+	it("New command in existing project", async () => {
 		spyOn(Util, "error");
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 
 		await newCmd.execute({});
 		expect(Util.error).toHaveBeenCalledWith("There is already an existing project.", "red");
-		done();
 	});
 
-	it("Should validate and trim name", async done => {
+	it("Should validate and trim name", async () => {
 		spyOn(Util, "error");
 		spyOn(ProjectConfig, "getConfig").and.returnValue(null);
 
@@ -52,10 +51,9 @@ describe("Unit - New command", () => {
 				"red");
 		}
 
-		done();
 	});
 
-	it("Logs error for wrong framework", async done => {
+	it("Logs error for wrong framework", async () => {
 		spyOn(Util, "error");
 		//spied getFrameworkById won't return anything, i.e. not found
 		newCmd.template = jasmine.createSpyObj("TemplateManager", ["getFrameworkById", "getProjectLibrary"]);
@@ -67,10 +65,9 @@ describe("Unit - New command", () => {
 		//no further attempts to get project:
 		expect(newCmd.template.getProjectLibrary).toHaveBeenCalledTimes(0);
 		expect(Util.log).toHaveBeenCalledTimes(0);
-		done();
 	});
 
-	it("Logs error for wrong project type", async done => {
+	it("Logs error for wrong project type", async () => {
 		spyOn(Util, "error");
 		newCmd.template = jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: {},
@@ -85,10 +82,9 @@ describe("Unit - New command", () => {
 		expect(Util.error).toHaveBeenCalledWith(`Project type "js" not found in framework 'jq'`);
 		//no further attempts to get project:
 		expect(Util.log).toHaveBeenCalledTimes(0);
-		done();
 	});
 
-	it("Logs error for wrong project theme", async done => {
+	it("Logs error for wrong project theme", async () => {
 		spyOn(Util, "error");
 
 		const mockProjLib = {
@@ -110,10 +106,9 @@ describe("Unit - New command", () => {
 		//no further attempts to get project:
 		expect(Util.log).toHaveBeenCalledTimes(0);
 		expect(mockProjLib.getProject).toHaveBeenCalledTimes(0);
-		done();
 	});
 
-	it("Should start prompt session with missing arg", async done => {
+	it("Should start prompt session with missing arg", async () => {
 		spyOn(ProjectConfig, "getConfig").and.returnValue(null);
 
 		const mockProjLib = {};
@@ -128,10 +123,9 @@ describe("Unit - New command", () => {
 
 		await newCmd.execute({});
 		expect(promptSession.start).toHaveBeenCalled();
-		done();
 	});
 
-	it("Logs error for unavailable project", async done => {
+	it("Logs error for unavailable project", async () => {
 		spyOn(Util, "error");
 
 		const mockProjLib = {
@@ -154,10 +148,9 @@ describe("Unit - New command", () => {
 		expect(Util.error).toHaveBeenCalledWith("Project template not found");
 		//no other logs:
 		expect(Util.log).toHaveBeenCalledTimes(1);
-		done();
 	});
 
-	it("Generates default without project type", async done => {
+	it("Generates default without project type", async () => {
 		const mockDelimiters = { mockDelimiter: { start: "test", end: "test" }};
 		const mockTemplate = {
 			delimiters: mockDelimiters,
@@ -195,10 +188,9 @@ describe("Unit - New command", () => {
 		expect(process.chdir).toHaveBeenCalledWith("Test");
 		expect(process.chdir).toHaveBeenCalledWith("..");
 		expect(Util.log).toHaveBeenCalledWith(jasmine.stringMatching("Project Created"));
-		done();
 	});
 
-	it("Correctly generates passed project type", async done => {
+	it("Correctly generates passed project type", async () => {
 		const mockDelimiters = { mockDelimiter: { start: "test", end: "test" }};
 		const mockTemplate = {
 			delimiters: mockDelimiters,
@@ -234,10 +226,9 @@ describe("Unit - New command", () => {
 		expect(process.chdir).toHaveBeenCalledWith("..");
 		expect(Util.log).toHaveBeenCalledWith("Project Name: Test, framework jq, type type, theme ig");
 		expect(Util.log).toHaveBeenCalledWith(jasmine.stringMatching("Project Created"));
-		done();
 	});
 
-	it("Git initialization", async done => {
+	it("Git initialization", async () => {
 		const projectName = "projTitle";
 
 		const mockTemplate = {
@@ -267,10 +258,9 @@ describe("Unit - New command", () => {
 		expect(Util.log).toHaveBeenCalledWith(
 			jasmine.stringMatching("Git Initialized and Project '" + projectName + "' Committed")
 		);
-		done();
 	});
 
-	it("Skip Git initialization with command option", async done => {
+	it("Skip Git initialization with command option", async () => {
 		const projectName = "projTitle";
 
 		const mockTemplate = {
@@ -295,10 +285,9 @@ describe("Unit - New command", () => {
 		await newCmd.execute({ "name": projectName, "framework": "jq", "skip-git": true });
 
 		expect(Util.gitInit).not.toHaveBeenCalled();
-		done();
 	});
 
-	it("Skip Git initialization with configuration option", async done => {
+	it("Skip Git initialization with configuration option", async () => {
 		const projectName = "projTitle";
 
 		const mockTemplate = {
@@ -324,10 +313,9 @@ describe("Unit - New command", () => {
 		await newCmd.execute({ name: projectName, framework: "jq" });
 
 		expect(Util.gitInit).not.toHaveBeenCalled();
-		done();
 	});
 
-	it("Skip package install with command option", async done => {
+	it("Skip package install with command option", async () => {
 		const mockTemplate = {
 			generateConfig: { test: "test" },
 			templatePaths: ["test"]
@@ -351,6 +339,5 @@ describe("Unit - New command", () => {
 
 		expect(PackageManager.installPackages).not.toHaveBeenCalled();
 		expect(process.chdir).not.toHaveBeenCalled();
-		done();
 	});
 });

@@ -1,5 +1,5 @@
 import * as fs from "fs";
-import * as os from "os";
+import * as _os from "os";
 import * as path from "path";
 import { Config } from "../types/Config";
 import { FS_TOKEN, IFileSystem } from "../types/FileSystem";
@@ -10,12 +10,13 @@ export class ProjectConfig {
 
 	public static configFile: string = "ignite-ui-cli.json";
 	public static readonly defaults: Config = require("../config/defaults.json");
+	public static os = _os;
 
 	private static schemaPath = "../config/Config.schema.json";
 
 	/** Returns true if there's a CLI config file in the current working directory */
 	public static hasLocalConfig(): boolean {
-		if (os.homedir() === process.cwd()) {
+		if (this.os.homedir() === process.cwd()) {
 			return false;
 		}
 		return App.container.get<IFileSystem>(FS_TOKEN).fileExists(this.configFile);
@@ -45,7 +46,7 @@ export class ProjectConfig {
 	 */
 	public static setConfig(config: Config, global: boolean = false) {
 		if (global) {
-			const filePath = path.join(os.homedir(), this.configFile);
+			const filePath = path.join(this.os.homedir(), this.configFile);
 			fs.writeFileSync(filePath, JSON.stringify(config, null, 4) + "\n");
 		} else {
 			App.container.get<IFileSystem>(FS_TOKEN).writeFile(this.configFile, JSON.stringify(config, null, 4) + "\n");
@@ -70,7 +71,7 @@ export class ProjectConfig {
 
 	/*** Get global configuration only */
 	public static globalConfig(): Config {
-		const globalConfigPath = path.join(os.homedir(), this.configFile);
+		const globalConfigPath = path.join(this.os.homedir(), this.configFile);
 		let globalConfig = {};
 
 		if (Util.fileExists(globalConfigPath)) {

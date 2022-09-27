@@ -23,7 +23,7 @@ describe("Update 4.2.3", () => {
 		appTree.create("/angular.json", JSON.stringify(configJson));
 	});
 
-	it("should add Awesome Grid extra paginator style", async done => {
+	it("should add Awesome Grid extra paginator style", async () => {
 		const stylesFile = "/src/app/awesome-grid/awesome-grid.component.scss";
 		appTree.create(stylesFile,
 `@use 'igniteui-angular/theming' as *;
@@ -69,6 +69,5 @@ describe("Update 4.2.3", () => {
 }
 `.replace(/\r\n/g, "\n")
 			);
-		done();
 	});
 });

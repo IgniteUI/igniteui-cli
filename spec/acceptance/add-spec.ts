@@ -6,6 +6,7 @@ import { parse } from "path";
 import * as cli from "../../packages/cli/lib/cli";
 import { deleteAll, resetSpy } from "../helpers/utils";
 
+// tslint:disable:object-literal-sort-keys
 describe("Add command", () => {
 	let testFolder = parse(__filename).name;
 	// tslint:disable:no-console
@@ -25,10 +26,10 @@ describe("Add command", () => {
 	afterEach(() => {
 		// clean test folder:
 		process.chdir("../../");
-		fs.rmdirSync(`./output/${testFolder}`);
+		fs.rmSync(`./output/${testFolder}`, { recursive: true, force: true });
 	});
 
-	it("Should not work without a project", async done => {
+	it("Should not work without a project", async () => {
 		await cli.run(["add", "grid", "name"]);
 
 		expect(console.error).toHaveBeenCalledWith(
@@ -54,11 +55,9 @@ describe("Add command", () => {
 			jasmine.stringMatching(/Add command is supported only on existing project created with igniteui-cli\s*/)
 		);
 		expect(console.log).toHaveBeenCalledTimes(0);
-
-		done();
 	});
 
-	it("Should not work quickstart project", async done => {
+	it("Should not work quickstart project", async () => {
 		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({ project: { isShowcase: true } }));
 		await cli.run(["add", "grid", "name"]);
 
@@ -68,10 +67,9 @@ describe("Add command", () => {
 		expect(console.log).toHaveBeenCalledTimes(0);
 
 		fs.unlinkSync(ProjectConfig.configFile);
-		done();
 	});
 
-	it("Should not work with wrong framework", async done => {
+	it("Should not work with wrong framework", async () => {
 		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({ project: { framework: "angular2" } }));
 		await cli.run(["add", "grid", "name"]);
 
@@ -79,10 +77,9 @@ describe("Add command", () => {
 		expect(console.log).toHaveBeenCalledTimes(0);
 
 		fs.unlinkSync(ProjectConfig.configFile);
-		done();
 	});
 
-	it("Should not work with wrong template", async done => {
+	it("Should not work with wrong template", async () => {
 		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({ project: { framework: "jquery" } }));
 		await cli.run(["add", "wrong", "name"]);
 
@@ -92,10 +89,9 @@ describe("Add command", () => {
 		expect(console.log).toHaveBeenCalledTimes(0);
 
 		fs.unlinkSync(ProjectConfig.configFile);
-		done();
 	});
 
-	it("Should correctly add jQuery template", async done => {
+	it("Should correctly add jQuery template", async () => {
 		// TODO: Mock out template manager and project register
 		spyOn(ProjectConfig, "globalConfig").and.returnValue({});
 
@@ -112,14 +108,13 @@ describe("Add command", () => {
 		expect(fs.existsSync("./test-view/index.html")).toBeTruthy();
 		fs.unlinkSync("./test-view/index.html");
 		fs.unlinkSync("./test-view/style.css");
-		fs.rmdirSync("./test-view");
+		fs.rmSync("./test-view", { recursive: true, force: true });
 
 		fs.unlinkSync("ignite-cli-views.js");
 		fs.unlinkSync(ProjectConfig.configFile);
-		done();
 	});
 
-	it("Should not duplicate add jq Grid template", async done => {
+	it("Should not duplicate add jq Grid template", async () => {
 		spyOn(ProjectConfig, "globalConfig").and.returnValue({});
 
 		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
@@ -162,13 +157,12 @@ describe("Add command", () => {
 
 		fs.unlinkSync("./test-view/index.html");
 		fs.unlinkSync("./test-view/style.css");
-		fs.rmdirSync("./test-view");
+		fs.rmSync("./test-view", { recursive: true, force: true });
 		fs.unlinkSync("ignite-cli-views.js");
 		fs.unlinkSync(ProjectConfig.configFile);
-		done();
 	});
 
-	it("Should correctly add Angular template", async done => {
+	it("Should correctly add Angular template", async () => {
 		spyOn(ProjectConfig, "globalConfig").and.returnValue({});
 
 		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
@@ -242,11 +236,10 @@ describe("Add command", () => {
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith(expectedPrams);
 		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);
 
-		done();
 	});
 
 	for (const igxPackage of [NPM_PACKAGE, FEED_PACKAGE]) {
-		it(`Should correctly add Ignite UI for Angular template - ${igxPackage}`, async done => {
+		it(`Should correctly add Ignite UI for Angular template - ${igxPackage}`, async () => {
 			spyOn(ProjectConfig, "globalConfig").and.returnValue({});
 
 			fs.writeFileSync("package.json", JSON.stringify({
@@ -319,12 +312,11 @@ export class AppModule {
 			fs.unlinkSync(ProjectConfig.configFile);
 			fs.unlinkSync("tslint.json");
 			fs.unlinkSync("package.json");
-			done();
 		});
 	}
 
 	it("Should correctly add Ignite UI for Angular template passing folders path and spaces/tabs in name arg"
-		, async done => {
+		, async () => {
 			spyOn(ProjectConfig, "globalConfig").and.returnValue({});
 
 			fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
@@ -390,13 +382,12 @@ export class AppModule {
 			);
 
 			deleteAll("./src");
-			fs.rmdirSync("./src");
+			fs.rmSync("./src", { recursive: true, force: true });
 			fs.unlinkSync(ProjectConfig.configFile);
 			fs.unlinkSync("tslint.json");
-			done();
 		});
 
-	it("Should correctly add React template", async done => {
+	it("Should correctly add React template", async () => {
 		// TODO: Mock out template manager and project register
 		spyOn(ProjectConfig, "globalConfig").and.returnValue({});
 
@@ -416,6 +407,5 @@ export class AppModule {
 		fs.removeSync("./src");
 
 		fs.unlinkSync(ProjectConfig.configFile);
-		done();
 	});
 });

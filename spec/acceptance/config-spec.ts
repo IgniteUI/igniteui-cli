@@ -1,4 +1,4 @@
-import { GoogleAnalytics, GoogleAnalyticsParameters } from "@igniteui/cli-core";
+import { GoogleAnalytics, GoogleAnalyticsParameters, ProjectConfig } from "@igniteui/cli-core";
 import * as fs from "fs";
 import * as os from "os";
 import * as path from "path";
@@ -23,7 +23,7 @@ describe("Config command", () => {
 
 		// ~/.global/ homedir for global files:
 		fs.mkdirSync(`.global`);
-		spyOn(os, "homedir").and.returnValue(path.join(process.cwd(), ".global"));
+		ProjectConfig.os = { homedir: () => path.join(process.cwd(), ".global") } as any;
 	});
 
 	afterEach(() => {
@@ -33,7 +33,7 @@ describe("Config command", () => {
 		fs.rmdirSync(`./output/${testFolder}`);
 	});
 
-	it("Should not work without a project & global flag", async done => {
+	it("Should not work without a project & global flag", async () => {
 		await cli.run(["config", "get", "igPackageRegistry"]);
 		expect(console.error).toHaveBeenCalledWith(jasmine.stringMatching(/No configuration file found in this folder!\s*/));
 
@@ -58,10 +58,9 @@ describe("Config command", () => {
 		await cli.run(["config", "add", "igPackageRegistry", "maybe"]);
 		expect(console.error).toHaveBeenCalledWith(jasmine.stringMatching(/No configuration file found in this folder!\s*/));
 		expect(console.log).toHaveBeenCalledTimes(0);
-		done();
 	});
 
-	it("Should correctly read and update global values", async done => {
+	it("Should correctly read and update global values", async () => {
 		await cli.run(["config", "get", "igPackageRegistry", "--global"]);
 		expect(console.log).toHaveBeenCalledWith(
 			jasmine.stringMatching("https://packages.infragistics.com/npm/js-licensed/")
@@ -77,10 +76,9 @@ describe("Config command", () => {
 		expect(console.log).toHaveBeenCalledWith(jasmine.stringMatching("https://example.com"));
 
 		expect(console.error).toHaveBeenCalledTimes(0);
-		done();
 	});
 
-	it("Should correctly read and update local values", async done => {
+	it("Should correctly read and update local values", async () => {
 		fs.writeFileSync("ignite-ui-cli.json", JSON.stringify({ igPackageRegistry: "https://example.com" }));
 		await cli.run(["config", "get", "igPackageRegistry", "--global"]);
 		expect(console.log).toHaveBeenCalledWith(
@@ -102,6 +100,5 @@ describe("Config command", () => {
 		expect(console.log).toHaveBeenCalledWith(["path:C:\\Test"]);
 
 		expect(console.error).toHaveBeenCalledTimes(0);
-		done();
 	});
 });

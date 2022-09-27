@@ -12,8 +12,9 @@ export abstract class BaseTemplateManager {
 		const frameworks = Util.getDirectoryNames(this.templatesAbsPath)
 			.filter(x => x !== this._quickstartTemplatesPath);
 		// load and initialize templates
-		for (const framework of frameworks) {
-			this.frameworks.push(require(path.join(this.templatesAbsPath, framework)) as Framework);
+		for (const frameworkName of frameworks) {
+			const framework = require(path.join(this.templatesAbsPath, frameworkName));
+			this.frameworks.push(framework.factory());
 		}
 
 		// load external templates

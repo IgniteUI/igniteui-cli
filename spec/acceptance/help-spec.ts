@@ -5,7 +5,7 @@ import * as cli from "../../packages/cli/lib/cli";
 const execLocation = "packages/cli/bin/execute.js";
 describe("Help command", () => {
 
-	it("should list all available commands", async done => {
+	it("should list all available commands", async () => {
 		const exitError = Error("exit");
 		let thrownError;
 		const listeners = []/* process.listeners("exit") */;
@@ -54,10 +54,9 @@ describe("Help command", () => {
 		expect(consoleSpy).toHaveBeenCalledTimes(1);
 		const actualText: string = (consoleSpy.calls.mostRecent().args[0] + "").replace(/\s/g, "");
 		expect(originalHelpText).toEqual(actualText);
-		done();
 	});
 
-	it("should show help for individual commands", async done => {
+	it("should show help for individual commands", async () => {
 		const child = spawnSync("node", [execLocation, "new", "--help"], {
 			encoding: "utf-8"
 		});
@@ -78,10 +77,9 @@ describe("Help command", () => {
 		const actualNewText: string = (child.stdout.toString()).replace(/\s/g, "");
 
 		expect(actualNewText).toContain(replacedNewHelpText);
-		done();
 	});
 
-	it("should show help config sub-commands", async done => {
+	it("should show help config sub-commands", async () => {
 		const child = spawnSync("node", [execLocation, "config", "--help"], {
 			encoding: "utf-8"
 		});
@@ -99,9 +97,8 @@ describe("Help command", () => {
 		const actualNewText: string = (child.stdout.toString()).replace(/\s/g, "");
 
 		expect(actualNewText).toContain(replacedNewHelpText);
-		done();
 	});
-	it("should show help generate sub-commands", async done => {
+	it("should show help generate sub-commands", async () => {
 		const child = spawnSync("node", [execLocation, "generate", "--help"], {
 			encoding: "utf-8"
 		});
@@ -116,9 +113,8 @@ describe("Help command", () => {
 		const actualNewText: string = (child.stdout.toString()).replace(/\s/g, "");
 
 		expect(actualNewText).toContain(replacedNewHelpText);
-		done();
 	});
-	it("should show help generate template sub-commands", async done => {
+	it("should show help generate template sub-commands", async () => {
 		const child = spawnSync("node", [execLocation, "g", "t", "-h"], {
 			encoding: "utf-8"
 		});
@@ -138,9 +134,8 @@ describe("Help command", () => {
 		const actualNewText: string = (child.stdout.toString()).replace(/\s/g, "");
 
 		expect(actualNewText).toContain(replacedNewHelpText);
-		done();
 	});
-	it("should show help for list command", async done => {
+	it("should show help for list command", async () => {
 		const child = spawnSync("node", [execLocation, "list", "-h"], {
 			encoding: "utf-8"
 		});
@@ -156,6 +151,5 @@ describe("Help command", () => {
 		const actualNewText: string = (child.stdout.toString()).replace(/\s/g, "");
 
 		expect(actualNewText).toContain(replacedNewHelpText);
-		done();
 	});
 });

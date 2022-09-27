@@ -30,7 +30,7 @@ indent_size = 2
 `);
 	});
 
-	it("should add HammerModule", async done => {
+	it("should add HammerModule", async () => {
 		const indexFile = "/src/app/app.module.ts";
 		appTree.create(indexFile,
 `import { BrowserModule } from '@angular/platform-browser';
@@ -60,6 +60,5 @@ export class AppModule {
 }
 `.replace(/\r\n/g, "\n")
 			);
-		done();
 	});
 });

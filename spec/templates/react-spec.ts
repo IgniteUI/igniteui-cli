@@ -4,18 +4,17 @@ const templatesLocation = "../../packages/cli/templates/react";
 describe("React templates", () => {
 
 	// tslint:disable-next-line:only-arrow-functions
-	it("Templates should have IDs", async function(done) {
-		const reactFramework = require(templatesLocation);
+	it("Templates should have IDs", async function() {
+		const reactFramework = require(templatesLocation).factory();
 		expect(reactFramework.projectLibraries[0]).toBeDefined();
 
 		for (const template of reactFramework.projectLibraries[0].templates) {
 			expect(template.id).toBeDefined("No ID: " + template.name + " type: " + template.projectType);
 		}
-		done();
 	});
 
-	it("Templates should have no internal collisions", async done => {
-		const reactFramework: Framework = require(templatesLocation);
+	it("Templates should have no internal collisions", async () => {
+		const reactFramework: Framework = require(templatesLocation).factory();
 		const projLibrary = reactFramework.projectLibraries.find(x => x.projectType === "es6");
 		for (let i = 0; i < projLibrary.templates.length; i++) {
 			const element = projLibrary.templates[i];
@@ -27,6 +26,5 @@ describe("React templates", () => {
 				).toBeTruthy(`Template ${element.id} can overwrite ${target.id}`);
 			}
 		}
-		done();
 	});
 });

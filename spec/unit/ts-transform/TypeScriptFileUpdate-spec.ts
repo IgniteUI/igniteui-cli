@@ -8,7 +8,7 @@ describe("Unit - TypeScriptFileUpdate", () => {
 	});
 
 	describe("Initialization", () => {
-		it("Create with source file", async done => {
+		it("Create with source file", async () => {
 			class TestTsFileUpdate extends TypeScriptFileUpdate {
 				public initState() {
 					super.initState();
@@ -26,10 +26,9 @@ describe("Unit - TypeScriptFileUpdate", () => {
 			expect(TypeScriptUtils.getFileSource).toHaveBeenCalledWith("/test/file");
 			expect(TestTsFileUpdate.prototype.initState).toHaveBeenCalled();
 			expect(TestTsFileUpdate.prototype.loadImportsMeta).toHaveBeenCalled();
-			done();
 		});
 
-		it("Properly initialize imports info", async done => {
+		it("Properly initialize imports info", async () => {
 			spyOn(TypeScriptUtils, "getFileSource").and.returnValue(
 				ts.createSourceFile("/test/file", `
 					import { Named } from "package"; //normal named import
@@ -60,7 +59,6 @@ describe("Unit - TypeScriptFileUpdate", () => {
 				jasmine.objectContaining({ lastIndex: 7, modulePaths: ["package", "another/package", "./this/file"] }),
 				"Should collect all imports count and filter the editable paths"
 			);
-			done();
 		});
 	});
 
@@ -74,7 +72,7 @@ describe("Unit - TypeScriptFileUpdate", () => {
 			}
 		}
 
-		it("Creates new imports", async done => {
+		it("Creates new imports", async () => {
 			spyOn(TypeScriptUtils, "getFileSource").and.returnValue(
 				ts.createSourceFile("/test/file", `
 					import { Named } from "package";
@@ -101,10 +99,9 @@ describe("Unit - TypeScriptFileUpdate", () => {
 				)
 			);
 			expect(TestTsFileUpdate.prototype.formatFile).toHaveBeenCalled();
-			done();
 		});
 
-		it("Create and edit imports", async done => {
+		it("Create and edit imports", async () => {
 			spyOn(TypeScriptUtils, "getFileSource").and.returnValue(
 				ts.createSourceFile("/test/file", `
 					import { Named } from "package";
@@ -128,10 +125,9 @@ describe("Unit - TypeScriptFileUpdate", () => {
 				)
 			);
 			expect(TestTsFileUpdate.prototype.formatFile).toHaveBeenCalled();
-			done();
 		});
 
-		it("Register imports for meta edits", async done => {
+		it("Register imports for meta edits", async () => {
 			spyOn(TypeScriptUtils, "getFileSource").and.returnValue(
 				ts.createSourceFile("/test/file", "", ts.ScriptTarget.Latest, true)
 			);
@@ -149,11 +145,10 @@ describe("Unit - TypeScriptFileUpdate", () => {
 			//combine
 			tsUpdate.addNgModuleMeta({import: "import1", declare: ["declare1", "declare2"], provide: "prov1", from: "package"});
 			expect(requestImportSpy).toHaveBeenCalledWith(["import1", "declare1", "declare2", "prov1"], "package");
-			done();
 		});
 	});
 
-	it("Adds routes", async done => {
+	it("Adds routes", async () => {
 
 		let sourceCalls = 0;
 		spyOn(TypeScriptUtils, "getFileSource").and.callFake((input: string) => {
@@ -218,10 +213,9 @@ describe("Unit - TypeScriptFileUpdate", () => {
 			)
 		);
 		expect(formatSpy).toHaveBeenCalledTimes(2);
-		done();
 	});
 
-	it("Adds child routes", async done => {
+	it("Adds child routes", async () => {
 		let sourceCalls = 0;
 		spyOn(TypeScriptUtils, "getFileSource").and.callFake((input: string) => {
 			if (input === "route-module.ts") {
@@ -284,10 +278,9 @@ describe("Unit - TypeScriptFileUpdate", () => {
 			)
 		);
 		expect(formatSpy).toHaveBeenCalledTimes(2);
-		done();
 	});
 
-	it("Adds declaration creates NgModule edit", async done => {
+	it("Adds declaration creates NgModule edit", async () => {
 		spyOn(TypeScriptUtils, "getFileSource").and.returnValues(
 			ts.createSourceFile("app.module.ts", "", ts.ScriptTarget.Latest, true),
 			{ getChildren: () => ["component1"] }
@@ -302,7 +295,6 @@ describe("Unit - TypeScriptFileUpdate", () => {
 		expect(Util.relativePath).toHaveBeenCalledWith("app.module.ts", "relative/path", true, true);
 		expect(TypeScriptUtils.getClassName).toHaveBeenCalledWith(["component1"]);
 		expect(addMetaSpy).toHaveBeenCalledWith({ declare: "DeclareComponent", from: "./to/component" });
-		done();
 	});
 
 	describe("NgModule meta edits", () => {
@@ -315,7 +307,7 @@ describe("Unit - TypeScriptFileUpdate", () => {
 			}
 		}
 
-		it("Adds to imports and calls forRoot()", async done => {
+		it("Adds to imports and calls forRoot()", async () => {
 			spyOn(TypeScriptUtils, "getFileSource").and.returnValue(
 				ts.createSourceFile("/test/file", `
 					import { Named } from "package";
@@ -354,10 +346,9 @@ describe("Unit - TypeScriptFileUpdate", () => {
 				].join("\\s*").replace(/([\[\]\(\)])/g, "\\$1"))
 			);
 			expect(TestTsFileUpdate.prototype.formatFile).toHaveBeenCalled();
-			done();
 		});
 
-		it("Adds to declarations/imports/provides", async done => {
+		it("Adds to declarations/imports/provides", async () => {
 			spyOn(TypeScriptUtils, "getFileSource").and.returnValue(
 				ts.createSourceFile("/test/file", `
 					import { Named } from "package";
@@ -404,10 +395,9 @@ describe("Unit - TypeScriptFileUpdate", () => {
 				].join("\\s*").replace(/([\[\]\(\)])/g, "\\$1"))
 			);
 			expect(TestTsFileUpdate.prototype.formatFile).toHaveBeenCalled();
-			done();
 		});
 
-		it("Creates NgModule properties if not found", async done => {
+		it("Creates NgModule properties if not found", async () => {
 			spyOn(TypeScriptUtils, "getFileSource").and.returnValue(
 				ts.createSourceFile("/test/file", `
 					@NgModule({
@@ -445,10 +435,9 @@ describe("Unit - TypeScriptFileUpdate", () => {
 				].join("\\s*").replace(/([\[\]\(\)])/g, "\\$1"))
 			);
 			expect(TestTsFileUpdate.prototype.formatFile).toHaveBeenCalled();
-			done();
 		});
 
-		it("Formats dependency properties", async done => {
+		it("Formats dependency properties", async () => {
 			spyOn(TypeScriptUtils, "getFileSource").and.returnValue(
 				ts.createSourceFile("/test/file", "", ts.ScriptTarget.Latest, true)
 			);
@@ -485,11 +474,10 @@ describe("Unit - TypeScriptFileUpdate", () => {
 				"./src/replace4/replace5.service"
 			);
 			// tslint:enable:object-literal-sort-keys
-			done();
 		});
 	});
 
-	it("Formats on finalize, preserves empty lines", async done => {
+	it("Formats on finalize, preserves empty lines", async () => {
 		// process is in root folder!
 		const unformattedSource = fs.readFileSync("spec/unit/ts-transform/unformatted.ts-template", "utf-8");
 		const formattedSource = fs.readFileSync("spec/unit/ts-transform/formatted.ts-template", "utf-8");
@@ -514,10 +502,9 @@ describe("Unit - TypeScriptFileUpdate", () => {
 		// 	formattedSource
 		// );
 		expect(writeSpy.calls.mostRecent().args[1]).toEqual(formattedSource);
-		done();
 	});
 
-	it("Format applies editorconfig/tslint settings", async done => {
+	it("Format applies editorconfig/tslint settings", async () => {
 		class TestTsFileUpdate extends TypeScriptFileUpdate {
 			public getFormatting() {
 				return this.formatOptions;
@@ -589,7 +576,6 @@ describe("Unit - TypeScriptFileUpdate", () => {
 		expect(tsUpdate.getFormatting().indentSize).toEqual(2);
 		expect(tsUpdate.getFormatting().spaces).toEqual(false);
 
-		done();
 	});
 
 });

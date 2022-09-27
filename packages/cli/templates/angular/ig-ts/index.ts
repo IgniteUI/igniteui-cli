@@ -1,6 +1,6 @@
 import { BaseProjectLibrary } from "@igniteui/cli-core";
 
-class AngularFramework extends BaseProjectLibrary {
+class AngularProjectLibrary extends BaseProjectLibrary {
 	constructor() {
 		super(__dirname);
 		this.name = "Ignite UI Angular Wrappers";
@@ -14,4 +14,5 @@ class AngularFramework extends BaseProjectLibrary {
 		}
 	}
 }
-module.exports = new AngularFramework();
+
+export const factory = () => new AngularProjectLibrary();

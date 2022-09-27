@@ -1,5 +1,5 @@
 import { App, GoogleAnalytics, Util } from "@igniteui/cli-core";
-import * as yargs from "yargs";
+import { default as yargs } from "yargs";
 import { default as add } from "./commands/add";
 import { default as build } from "./commands/build";
 import { default as config } from "./commands/config";

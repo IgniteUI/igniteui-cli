@@ -34,7 +34,7 @@ export class jQueryTemplate implements Template {
 		return [path.join(this.rootPath, "files")];
 	}
 
-	public generateConfig(name: string, options: {}): {[key: string]: any} {
+	public generateConfig(name: string, options: {}): { [key: string]: any } {
 		let config = {};
 		if (options["extraConfig"]) {
 			config = options["extraConfig"];
@@ -91,7 +91,7 @@ export class jQueryTemplate implements Template {
 	}
 	protected getScriptTags(): string {
 		// tslint:disable-next-line:no-submodule-imports
-		const config = require("@igniteui/cli-core/packages/components");
+		const config = require("@igniteui/cli-core/packages/components").default;
 		let builder = "";
 		builder += this.getJqueryDependenciesScriptTag();
 		builder += "\n\n";
