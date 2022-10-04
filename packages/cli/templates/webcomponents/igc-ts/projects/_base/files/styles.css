@@ -1,6 +1,9 @@
+body {
+  background: hsla(var(--igc-surface-500), white);
+  color: var(--igc-surface-500-contrast, black);
+}
+
 html,
 body {
   height: 100%;
-  margin: 0px;
-  background: #fafafa;
 }
