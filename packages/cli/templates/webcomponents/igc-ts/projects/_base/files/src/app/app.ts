@@ -6,6 +6,10 @@ import { routes } from './app-routing.js';
 @customElement('app-root')
 export class App extends LitElement {
   static styles = css`
+    router-outlet {
+      width: 100%;
+    }
+
     .outer-wrapper {
       display: flex;
       justify-content: center;
