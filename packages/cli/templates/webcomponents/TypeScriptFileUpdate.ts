@@ -1,4 +1,4 @@
-import { App, FS_TOKEN, IFileSystem, TypeScriptUtils, Util } from "@igniteui/cli-core";
+import { AddTemplateArgs, App, FS_TOKEN, IFileSystem, TypeScriptUtils, Util } from "@igniteui/cli-core";
 import * as ts from "typescript";
 
 const DEFAULT_ROUTES_VARIABLE = "routes";
@@ -12,7 +12,7 @@ export class TypeScriptFileUpdate {
 	private targetSource: ts.SourceFile;
 	private importsMeta: { lastIndex: number, modulePaths: string[] };
 
-	private requestedImports: Array<{ from: string, edit: boolean }>;
+	private requestedImports: Array<{ as: string | undefined, from: string, edit: boolean }>;
 
 	private createdStringLiterals: string[];
 
@@ -33,8 +33,15 @@ export class TypeScriptFileUpdate {
 		this.initState();
 	}
 
-	public addRoute(filePath: string, linkPath: string, linkText: string, routesVariable = DEFAULT_ROUTES_VARIABLE) {
-		this.addRouteModuleEntry(filePath, linkPath, linkText, routesVariable);
+	public addRoute(
+			path: string,
+			component: string,
+			name: string,
+			routerChildren: string,
+			importAlias: string,
+			routesVariable = DEFAULT_ROUTES_VARIABLE
+		) {
+		this.addRouteModuleEntry(path, component, name, routerChildren, importAlias, routesVariable);
 	}
 
 	//#region File state
@@ -79,17 +86,26 @@ export class TypeScriptFileUpdate {
 	//#endregion File state
 
 	protected addRouteModuleEntry(
-		targetPath: string,
-		filePath: string,
-		linkText: string,
-		linkPath: string,
-		routesVariable = DEFAULT_ROUTES_VARIABLE,
-		parentRoutePath?: string
+		path: string,
+		component: string,
+		name: string,
+		routerChildren: string,
+		importAlias: string,
+		routesVariable = DEFAULT_ROUTES_VARIABLE
 	) {
-		let className: string;
-		const relativePath: string = "./" + filePath + "/" + filePath;
-		className = "app-" + filePath;
-		this.requestImport(relativePath);
+		const isRouting: boolean = path.indexOf("routing") >= 0;
+
+		if (isRouting && this.targetSource.text.indexOf(path.slice(0, -3)) > 0) {
+			return;
+		}
+
+		const moduleName = path.substring(0, path.indexOf("-routing"));
+		if (path) {
+			const relativePath: string = isRouting ?
+			"./" + moduleName + "/" + path.slice(0, -3) : "./" + path + "/" + path;
+
+			this.requestImport(relativePath, importAlias);
+		}
 
 		// https://github.com/Microsoft/TypeScript/issues/14419#issuecomment-307256171
 		const transformer: ts.TransformerFactory<ts.Node> = <T extends ts.Node>(context: ts.TransformationContext) =>
@@ -97,9 +113,9 @@ export class TypeScriptFileUpdate {
 				// the visitor that should be used when adding routes to the main route array
 				const conditionalVisitor: ts.Visitor = (node: ts.Node): ts.Node => {
 					if (node.kind === ts.SyntaxKind.ArrayLiteralExpression) {
-						const newObject = this.createRouteEntry(filePath, className, linkText);
+						const newObject = this.createRouteEntry(path, component, name, routerChildren);
 						const array = (node as ts.ArrayLiteralExpression);
-						this.createdStringLiterals.push(filePath, linkText);
+						this.createdStringLiterals.push(path, name);
 						const notFoundWildCard = ".*";
 						const nodes = ts.visitNodes(array.elements, visitor);
 						const errorRouteNode = nodes.filter(element => element.getText().includes(notFoundWildCard))[0];
@@ -124,11 +140,20 @@ export class TypeScriptFileUpdate {
 					}
 				};
 
-				const visitCondition = (node: ts.Node): boolean => {
-					return node.kind === ts.SyntaxKind.VariableDeclaration &&
-						(node as ts.VariableDeclaration).name.getText() === routesVariable &&
-						(node as ts.VariableDeclaration).type.getText() === "Route[]";
-				};
+				let visitCondition;
+
+				if (!isRouting) {
+					visitCondition = (node: ts.Node): boolean => {
+						return node.kind === ts.SyntaxKind.VariableDeclaration &&
+							(node as ts.VariableDeclaration).name.getText() === routesVariable &&
+							(node as ts.VariableDeclaration).type.getText() === "Route[]";
+					};
+				} else {
+						visitCondition  = (node: ts.Node): boolean => {
+							return undefined;
+						};
+				}
+
 				const visitor: ts.Visitor = this.createVisitor(conditionalVisitor, visitCondition, context);
 				context.enableSubstitution(ts.SyntaxKind.ClassDeclaration);
 				return ts.visitNode(rootNode, visitor);
@@ -141,11 +166,12 @@ export class TypeScriptFileUpdate {
 		this.finalize();
 	}
 
-	protected requestImport(modulePath: string) {
+	protected requestImport(modulePath: string, routerAlias: string) {
 		const existing = this.requestedImports.find(x => x.from === modulePath);
 		if (!existing) {
 			// new imports, check if already exists in file
 			this.requestedImports.push({
+				as: routerAlias,
 				from: modulePath,
 				edit: this.importsMeta.modulePaths.indexOf(modulePath) !== -1
 			});
@@ -163,7 +189,7 @@ export class TypeScriptFileUpdate {
 
 		const newStatements = ts.factory.createNodeArray([
 			...this.targetSource.statements.slice(0, this.importsMeta.lastIndex),
-			...newImports.map(x => this.createIdentifierImport(x.from)),
+			...newImports.map(x => this.createIdentifierImport(x.from, x.as)),
 			...this.targetSource.statements.slice(this.importsMeta.lastIndex)
 		]);
 		newImports.forEach(x => this.createdStringLiterals.push(x.from));
@@ -171,11 +197,28 @@ export class TypeScriptFileUpdate {
 		this.targetSource = ts.factory.updateSourceFile(this.targetSource, newStatements);
 	}
 
-	protected createIdentifierImport(importPath: string): ts.ImportDeclaration {
+	protected createIdentifierImport(importPath: string, as: string): ts.ImportDeclaration {
+		let exportedObject: string | undefined;
+		let exportedObjectName: string | undefined;
+		let importClause: ts.ImportClause | undefined;
+		if (as) {
+			exportedObject = "routes";
+			exportedObjectName = as.replace(/\s/g, "");
+			importClause = ts.factory.createImportClause(
+				false,
+				undefined,
+				ts.factory.createNamedImports([
+					ts.factory.createImportSpecifier(false, ts.factory.createIdentifier(exportedObject),
+						ts.factory.createIdentifier(exportedObjectName))
+				])
+			);
+		} else {
+			importClause = undefined;
+		}
 		const importDeclaration = ts.factory.createImportDeclaration(
 			undefined,
 			undefined,
-			undefined,
+			importClause,
 			ts.factory.createStringLiteral(importPath));
 		return importDeclaration;
 	}
@@ -360,10 +403,20 @@ export class TypeScriptFileUpdate {
 		};
 	}
 
-	private createRouteEntry(filePath: string, className: string, linkText: string): ts.ObjectLiteralExpression {
+	private createRouteEntry(
+			filePath: string,
+			className: string,
+			linkText: string,
+			routerAlias: string
+		): ts.ObjectLiteralExpression {
 		const routePath = ts.factory.createPropertyAssignment("path", ts.factory.createStringLiteral(filePath));
 		const routeComponent = ts.factory.createPropertyAssignment("component", ts.factory.createStringLiteral(className));
 		const routeData = ts.factory.createPropertyAssignment("name", ts.factory.createStringLiteral(linkText));
-		return ts.factory.createObjectLiteralExpression([routePath, routeComponent, routeData]);
+		if (routerAlias) {
+			const childrenData = ts.factory.createPropertyAssignment("children", ts.factory.createIdentifier(routerAlias));
+			return ts.factory.createObjectLiteralExpression([routePath, routeComponent, routeData, childrenData]);
+		} else {
+			return ts.factory.createObjectLiteralExpression([routePath, routeComponent, routeData]);
+		}
 	}
 }
