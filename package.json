@@ -1,5 +1,5 @@
 {
-	"name": "igniteui-cli",
+	"name": "igniteui-cli-repo",
 	"version": "1.0.0",
 	"private": true,
 	"description": "CLI tool for creating Ignite UI projects",
