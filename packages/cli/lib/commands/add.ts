@@ -114,6 +114,13 @@ command = {
 		}
 	},
 	async addTemplate(fileName: string, template: Template, options?: AddTemplateArgs): Promise<boolean> {
+		if (!options) {
+			options = new Object;
+			options.parentName = "app";
+			options.parentRoutingModulePath = "src/app/app-routing.ts";
+			options.selector = "app-" + template.id;
+		}
+
 		fileName = fileName.trim();
 		const name = Util.nameFromPath(fileName);
 
