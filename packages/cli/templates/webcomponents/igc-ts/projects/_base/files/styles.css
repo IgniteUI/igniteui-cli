@@ -2,3 +2,8 @@ body {
   background: hsla(var(--igc-surface-500, 0 0% 100%));
   color: var(--igc-surface-500-contrast, black);
 }
+
+html,
+body {
+  height: 100%;
+}
