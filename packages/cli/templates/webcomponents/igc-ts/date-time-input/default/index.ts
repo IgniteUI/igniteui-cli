@@ -9,7 +9,7 @@ class IgcDateTimeInputTemplate extends IgniteUIForWebComponentsTemplate {
 		this.listInComponentTemplates = true;
 		this.id = "date-time-input";
 		this.projectType = "igc-ts";
-		this.name = "DateTime Input";
+		this.name = "Date Time Input";
 		this.description = "basic IgcDateTimeInput";
 	}
 	protected addClassDeclaration(mainModule: TypeScriptFileUpdate, projPath: string, name: string, modulePath: string) {
