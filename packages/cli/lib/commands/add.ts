@@ -116,10 +116,10 @@ command = {
 	async addTemplate(fileName: string, template: Template, options?: AddTemplateArgs): Promise<boolean> {
 		if (!options) {
 			options = {
-				"parentName": "app",
-				"parentRoutingModulePath": "src/app/app-routing.ts",
-				"selector": "app-" + template.id
-			  }
+				parentName: "app",
+				parentRoutingModulePath: "src/app/app-routing.ts",
+				selector: "app-" + template.id
+			};
 		}
 
 		fileName = fileName.trim();
