@@ -16,3 +16,8 @@ body, h1, h2, h3, h4, h5, h6, p {
 html {
   box-sizing: border-box
 }
+
+img, video {
+  height: auto;
+  max-width: 100%;
+}
