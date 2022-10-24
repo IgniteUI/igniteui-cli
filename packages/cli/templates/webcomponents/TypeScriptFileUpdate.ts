@@ -209,7 +209,7 @@ export class TypeScriptFileUpdate {
 				undefined,
 				ts.factory.createNamedImports([
 					ts.factory.createImportSpecifier(false, ts.factory.createIdentifier(exportedObject),
-						ts.factory.createIdentifier(exportedObjectName))
+					ts.factory.createIdentifier(exportedObjectName))
 				])
 			);
 		} else {
@@ -219,7 +219,7 @@ export class TypeScriptFileUpdate {
 			undefined,
 			undefined,
 			importClause,
-			ts.factory.createStringLiteral(importPath));
+			ts.factory.createStringLiteral(importPath, true));
 		return importDeclaration;
 	}
 
@@ -409,9 +409,9 @@ export class TypeScriptFileUpdate {
 			linkText: string,
 			routerAlias: string
 		): ts.ObjectLiteralExpression {
-		const routePath = ts.factory.createPropertyAssignment("path", ts.factory.createStringLiteral(filePath));
-		const routeComponent = ts.factory.createPropertyAssignment("component", ts.factory.createStringLiteral(className));
-		const routeData = ts.factory.createPropertyAssignment("name", ts.factory.createStringLiteral(linkText));
+		const routePath = ts.factory.createPropertyAssignment("path", ts.factory.createStringLiteral(filePath, true));
+		const routeComponent = ts.factory.createPropertyAssignment("component", ts.factory.createStringLiteral(className, true));
+		const routeData = ts.factory.createPropertyAssignment("name", ts.factory.createStringLiteral(linkText, true));
 		if (routerAlias) {
 			const childrenData = ts.factory.createPropertyAssignment("children", ts.factory.createIdentifier(routerAlias));
 			return ts.factory.createObjectLiteralExpression([routePath, routeComponent, routeData, childrenData]);
