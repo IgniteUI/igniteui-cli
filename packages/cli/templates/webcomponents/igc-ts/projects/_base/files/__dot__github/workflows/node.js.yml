@@ -26,8 +26,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm ci
+    - run: npm i # replace with 'npm ci' after committing lock file from first install
 #    - run: npm run lint
     - run: npm run build
     - run: npm run test
-    
+
