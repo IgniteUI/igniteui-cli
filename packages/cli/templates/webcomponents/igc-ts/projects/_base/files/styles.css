@@ -1,6 +1,7 @@
 body {
-  background: hsla(var(--igc-surface-500, 0 0% 100%));
-  color: var(--igc-surface-500-contrast, black);
+  background: hsla(var(--ig-surface-500, 0 0% 100%));
+  color: var(--ig-surface-500-contrast, black);
+  font-family: var(--ig-font-family);
 }
 
 html,
@@ -14,7 +15,7 @@ body, h1, h2, h3, h4, h5, h6, p {
 }
 
 html {
-  box-sizing: border-box
+  box-sizing: border-box;
 }
 
 img, video {
