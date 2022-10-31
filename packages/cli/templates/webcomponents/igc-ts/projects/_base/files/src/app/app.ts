@@ -1,25 +1,27 @@
-import { html, css, LitElement } from 'lit';
+import { Router } from '@vaadin/router';
+import { css, html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import { Router, } from '@vaadin/router';
 import { routes } from './app-routing.js';
 
 @customElement('app-root')
 export class App extends LitElement {
   static styles = css`
     router-outlet {
-      height: 100%;
+      width: 100%;
+    }
+
+    .outer-wrapper {
       display: flex;
-      text-align: center;
-      flex-flow: column nowrap;
-      justify-content: stretch;
-      align-items: center;
-      overflow: inherit;
+      justify-content: center;
+      height: 100%;
     }
   `;
 
   render() {
     return html`
-      <router-outlet></router-outlet>
+      <div class="outer-wrapper">
+        <router-outlet></router-outlet>
+      </div>
     `;
   }
 

@@ -7,29 +7,20 @@ import {
 } from 'igniteui-webcomponents';
 
 defineComponents(IgcIconButtonComponent);
-const buildIcon =
-  '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>';
+const thumbUpIcon =
+    '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-1.91l-.01-.01L23 10z"/></svg>';
 
 registerIconFromText(
-  'build',
-  buildIcon,
-  'material',
+  "thumb-up",
+  thumbUpIcon,
+  "material"
 );
 
 @customElement('app-$(path)')
 export default class IconButton extends LitElement {
   render() {
     return html`
-      <label>Contact Infragistics support: </label>
-      <igc-icon-button
-        name="build"
-        collection="material"
-        href="https://www.infragistics.com/support"
-        target="_blank"
-        variant="flat"
-        size="large"
-      >
-      </igc-icon-button>
+    <igc-icon-button name="thumb-up" collection="material" href="https://www.infragistics.com/support" variant="contained" size="large"></igc-icon-button>
     `;
   }
 }

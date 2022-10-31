@@ -37,15 +37,43 @@ export class IgniteUIForWebComponentsTemplate implements Template {
 		return Object.assign({}, options["extraConfig"], this.getBaseVariables(name));
 	}
 
-	public registerInProject(projectPath: string, fullName: string, options?: AddTemplateArgs) {
+	public registerInProject(projectPath: string, fullName: string, options?: AddTemplateArgs, defaultPath = false) {
+		if (!options.parentName) {
+			return;
+		}
+		const routeModulePath: string = options.parentRoutingModulePath;
+		const routingModule = new TypeScriptFileUpdate(path.join(projectPath, routeModulePath));
+
 		if (!(options && options.skipRoute) && App.container.get<IFileSystem>(FS_TOKEN)
-			.fileExists("src/app/app-routing.ts")) {
-			const routingModule = new TypeScriptFileUpdate(path.join(projectPath, "src/app/app-routing.ts"));
+			.fileExists(routeModulePath)) {
+
+			if (defaultPath) {
+				routingModule.addRoute(
+					"",
+					options.selector,
+					Util.nameFromPath(fullName),
+					options.routerChildren,
+					undefined
+				);
+			}
+
 			routingModule.addRoute(
-				path.join(projectPath, `src/app/${this.folderName(fullName)}/${this.fileName(fullName)}.component.ts`),
 				this.fileName(fullName),
-				Util.nameFromPath(fullName)
+				options.selector,
+				Util.nameFromPath(fullName),
+				options.routerChildren,
+				undefined
 			);
+
+			if (options.hasChildren) {
+				routingModule.addRoute(
+					this.fileName(`${options.modulePath}-routing.ts`),
+					options.selector,
+					Util.nameFromPath(`${options.modulePath}-routing.ts`),
+					options.routerChildren,
+					options.importAlias
+				);
+			}
 		}
 	}
 

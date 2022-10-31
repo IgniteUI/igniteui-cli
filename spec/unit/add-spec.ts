@@ -74,7 +74,7 @@ describe("Unit - Add command", () => {
 
 		for (const item of validCombos) {
 			await addCmd.addTemplate(item.name, mockTemplate);
-			expect(mockTemplate.generateConfig).toHaveBeenCalledWith(item.valid, {});
+			expect(mockTemplate.generateConfig).toHaveBeenCalledWith(item.valid, { parentName: "app", parentRoutingModulePath: "src/app/app-routing.ts", selector: "app-undefined" });
 			expect(Util.processTemplates).toHaveBeenCalledWith("test", "Mock directory", mockConfig, mockDelimiters);
 		}
 
@@ -289,7 +289,7 @@ describe("Unit - Add command", () => {
 		spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
 
 		const mockTemplate = jasmine.createSpyObj("Template", {
-			generateConfig: { test: "test" }, registerInProject: null
+			generateConfig: { test: "test", parentName: "app", parentRoutingModulePath: "src/app/app-routing.ts", selector: "app-test" }, registerInProject: null
 		});
 		mockTemplate.templatePaths = ["test"];
 		mockTemplate.packages = [];
