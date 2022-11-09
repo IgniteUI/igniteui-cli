@@ -1,3 +1,290 @@
+
+# [10.1.0](https://github.com/IgniteUI/igniteui-cli/compare/v10.0.5...v10.1.0) (2022-11-02)
+
+🎉 This update includes:
+
+`igniteui-webcomponents` version [4.0.0](https://github.com/IgniteUI/igniteui-webcomponents/releases/tag/3.4.0), and several improvements for the web-components generation.
+
+## What's Changed
+* Add base template for Web Components by @wnvko in https://github.com/IgniteUI/igniteui-cli/pull/1058
+* Fix global styles by @wnvko in https://github.com/IgniteUI/igniteui-cli/pull/1064
+* Fix background fallback color by @wnvko in https://github.com/IgniteUI/igniteui-cli/pull/1065
+* Support for nested routing modules by @dafo in https://github.com/IgniteUI/igniteui-cli/pull/1060
+* Adding width: 100% to router-outlet elements by @dafo in https://github.com/IgniteUI/igniteui-cli/pull/1066
+* Provide default options when adding a template by @dafo in https://github.com/IgniteUI/igniteui-cli/pull/1070
+* Adding styles to base project by @dafo in https://github.com/IgniteUI/igniteui-cli/pull/1072
+* Updating icon-button template by @dafo in https://github.com/IgniteUI/igniteui-cli/pull/1073
+* Set styles for img and video elements by @dafo in https://github.com/IgniteUI/igniteui-cli/pull/1074
+* GitHub actions for Web Components by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1075
+* Generate single quotes in paths by @wnvko in https://github.com/IgniteUI/igniteui-cli/pull/1076
+* Updating the GitHub yml file for Web Components by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1077
+* Updating the yml file for the Web Components GitHub by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1078
+* Add .npmrc to wc proj template by @jackofdiamond5 in https://github.com/IgniteUI/igniteui-cli/pull/1079
+* chore: update ig-scrollbar according to 4.0.0 by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1081
+
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/10.0.5...v10.1.0
+
+# igniteui/cli-core@10.1.0
+* Note: Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@14.1.1010
+
+* Note: Version bump only for package igniteui/angular-templates
+
+## igniteui/angular-schematics@14.1.1010
+
+* Note: Version bump only for package igniteui/angular-schematics
+
+## igniteui-cli@10.1.0
+
+* All `igniteui-webcomponents` 4.0.0 changes, listed above.
+
+# [10.0.5](https://github.com/IgniteUI/igniteui-cli/compare/v10.0.4...v10.0.5) (2022-09-19)
+
+🎉 This update includes:
+
+- `igniteui-webcomponents` version [3.4.0](https://github.com/IgniteUI/igniteui-webcomponents/releases/tag/3.4.0), including templates for `igc-tabs`, `igc-accordion`, `igc-date-time-input`, `igc-rating`.
+
+- `igniteui-angular` version [14.1.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/14.1.0).
+- `igniteui-angular-core` version [14.1.0](https://www.npmjs.com/package/igniteui-angular-core/v/14.1.0)
+- `igniteui-angular-charts` version [14.1.0](https://www.npmjs.com/package/igniteui-angular-charts/v/14.1.0)
+- `igniteui-angular-gauges` version [14.1.0](https://www.npmjs.com/package/igniteui-angular-gauges/v/14.1.0)
+- `igniteui-angular-maps` version [14.1.0](https://www.npmjs.com/package/igniteui-angular-maps/v/14.1.0)
+
+# igniteui/cli-core@10.0.5
+* Note: Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@14.1.1005
+
+* All Angular 14.1.0 changes, listed above.
+
+## igniteui/angular-schematics@14.1.1005
+
+* Note: Version bump only for package igniteui/angular-schematics
+
+## igniteui-cli@10.0.5
+
+* All `igniteui-angular` 14.1.0 & `igniteui-webcomponents` 3.4.0 changes, listed above.
+
+# [10.0.4](https://github.com/IgniteUI/igniteui-cli/compare/v10.0.3...v10.0.4) (2022-07-18)
+
+# igniteui/cli-core@10.0.4
+* Note: Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@14.0.1004
+
+* Note: Version bump only for package igniteui/angular-templates
+
+## igniteui/angular-schematics@14.0.1004
+
+* fix(schematics): `cli-config` and `ng add` schematics applied for all the projects https://github.com/IgniteUI/igniteui-cli/pull/1048
+
+## igniteui-cli@10.0.4
+
+* Note: Version bump only for package igniteui-cli
+
+# [10.0.3](https://github.com/IgniteUI/igniteui-cli/compare/v10.0.2...v10.0.3) (2022-06-30)
+
+# igniteui/cli-core@10.0.3
+* Note: Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@14.0.1003
+
+#### Bug Fixes:
+
+ - fix(igx-templates) - do not use strict version of 'igniteui-angular' package
+
+## igniteui/angular-schematics@14.0.1003
+* Note: Version bump only for package igniteui/angular-schematics
+
+## igniteui-cli@10.0.3
+
+#### Bug Fixes:
+
+ - fix(igx-templates) - do not use strict version of 'igniteui-angular' package
+
+# [10.0.2](https://github.com/IgniteUI/igniteui-cli/compare/v10.0.1...v10.0.2) (2022-06-29)
+
+🎉 This update includes:
+
+- `igniteui-webcomponents` version [3.2.0](https://github.com/IgniteUI/igniteui-webcomponents/releases/tag/3.2.0).
+* `igniteui-angular-core` version [14.0.0](https://www.npmjs.com/package/igniteui-angular-core/v/14.0.0)
+* `igniteui-angular-charts` version [14.0.0](https://www.npmjs.com/package/igniteui-angular-charts/v/14.0.0)
+* `igniteui-angular-gauges` version [14.0.0](https://www.npmjs.com/package/igniteui-angular-gauges/v/14.0.0)
+* `igniteui-angular-maps` version [14.0.0](https://www.npmjs.com/package/igniteui-angular-maps/v/14.0.0)
+
+
+## igniteui/cli-core@10.0.2
+
+* **package-manager:** remove the skip, setting up child install tasks for new projects ([f85d7b4](https://github.com/IgniteUI/igniteui-cli/commit/f85d7b4dd8bdffaf9bc730650526a9b592ea8da5))
+
+## igniteui/angular-templates@14.0.1002
+
+ - * **igx-ts:** Updating DV components to 14 by @dafo in https://github.com/IgniteUI/igniteui-cli/pull/1037
+
+## igniteui/angular-schematics@14.0.1002
+* Note: Version bump only for package igniteui/angular-schematics
+
+## igniteui-cli@10.0.2
+* Update Webcomponents projects to use ignite UI forWebcomponents 3.2.0 #1029 by dafo in https://github.com/IgniteUI/igniteui-cli/pull/1038
+* Add new Web Components: drop-down, expansion panel, tree #1039 by @dafo in https://github.com/IgniteUI/igniteui-cli/pull/1040
+ * **igx-ts:** Updating DV components to 14 by @dafo in https://github.com/IgniteUI/igniteui-cli/pull/1037
+
+# [10.0.1](https://github.com/IgniteUI/igniteui-cli/compare/v10.0.0...v10.0.1) (2022-06-17)
+
+## igniteui/cli-core@10.0.1
+
+#### Bug Fixes
+
+* **package-manager:** skip setting up child install tasks for new projects ([de2a134](https://github.com/IgniteUI/igniteui-cli/commit/de2a1341e13ba20635a5ed94c5cc7e4c79c7ca46))
+
+## igniteui/angular-templates@14.0.1001
+
+* Note: Version bump only for package igniteui/angular-templates
+
+## igniteui/angular-schematics@14.0.1001
+* Note: Version bump only for package igniteui/angular-schematics
+
+## igniteui-cli@10.0.1
+* Note: Version bump only for package igniteui-cli
+
+
+# [10.0.0](https://github.com/IgniteUI/igniteui-cli/compare/v9.2.0...v10.0.0)  (2022-06-09)
+
+🎉 This update includes:
+
+- `igniteui-angular` version [14.0.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/14.0.0).
+
+## igniteui/cli-core@10.0.0
+
+* Note: Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@14.0.1000
+
+* Update to igniteui-angular 14.0.0 by @dafo in https://github.com/IgniteUI/igniteui-cli/pull/1025
+
+## igniteui/angular-schematics@14.0.1000
+
+* Note: Version bump only for package igniteui/angular-schematics
+
+## igniteui-cli@10.0.0
+
+* Update to igniteui-angular 14.0.0 by @dafo in https://github.com/IgniteUI/igniteui-cli/pull/1025
+
+# [9.2.0](https://github.com/IgniteUI/igniteui-cli/compare/v9.1.4...v9.2.0)  (2022-05-26)
+
+🎉 This update includes:
+
+- `igniteui-angular` version [13.2.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/13.2.0).
+
+## igniteui/cli-core@9.2.0
+
+* Note: Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@13.2.920
+
+* Update to igniteui-angular 13.2.0 by @dafo in https://github.com/IgniteUI/igniteui-cli/pull/1026
+
+## igniteui/angular-schematics@13.2.920
+
+* Note: Version bump only for package igniteui/angular-schematics
+
+## igniteui-cli@9.2.0
+
+* Update to igniteui-angular 13.2.0 by @dafo in https://github.com/IgniteUI/igniteui-cli/pull/1026
+
+# [9.1.4](https://github.com/IgniteUI/igniteui-cli/compare/v9.1.3...v9.1.4)  (2022-05-20)
+
+## igniteui/cli-core@9.1.4
+
+* Note: Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@13.1.914
+
+* Note: Version bump only for package igniteui/angular-templates
+
+## igniteui/angular-schematics@13.1.914
+
+#### Bug Fixes
+
+* **schematics:** refactor(theme-import): Place sass/scss imports before content.
+ ([fb5e4d3](https://github.com/IgniteUI/igniteui-cli/commit/fb5e4d3c217c68f815afa753120fa3673cf79a06))
+
+## igniteui-cli@9.1.4
+
+#### Bug Fixes
+
+* **schematics:** refactor(theme-import): Place sass/scss imports before content.
+ ([fb5e4d3](https://github.com/IgniteUI/igniteui-cli/commit/fb5e4d3c217c68f815afa753120fa3673cf79a06))
+
+# [9.1.3](https://github.com/IgniteUI/igniteui-cli/compare/v9.1.2...v9.1.3)  (2022-05-19)
+
+## igniteui/cli-core@9.1.3
+
+* Note: Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@13.1.913
+
+* Note: Version bump only for package igniteui/angular-templates
+
+## igniteui/angular-schematics@13.1.913
+
+#### Bug Fixes
+
+* **schematics:** Use @use rule to add default theming module [#1023](https://github.com/IgniteUI/igniteui-cli/issues/1023) ([fc16535](https://github.com/IgniteUI/igniteui-cli/commit/fc165358d0aa368e592195ae0666511d095b5d0c))
+
+## igniteui-cli@9.1.3
+
+#### Bug Fixes
+
+* **schematics:** Use @use rule to add default theming module [#1023](https://github.com/IgniteUI/igniteui-cli/issues/1023) ([fc16535](https://github.com/IgniteUI/igniteui-cli/commit/fc165358d0aa368e592195ae0666511d095b5d0c))
+
+# [9.1.2](https://github.com/IgniteUI/igniteui-cli/compare/v9.1.1...v9.1.2)  (2022-05-16)
+
+## igniteui/cli-core@9.1.2
+
+* Note: Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@13.1.912
+
+#### Bug Fixes
+
+* **igx(fintech grid):** fix slow grid [#1020](https://github.com/IgniteUI/igniteui-cli/issues/1020) ([4f888dc](https://github.com/IgniteUI/igniteui-cli/commit/4f888dc3c2b1fd6ad896b197634d3aa0c3ef57cd))
+
+## igniteui/angular-schematics@13.1.912
+
+* Note: Version bump only for package igniteui/angular-schematics
+
+## igniteui-cli@9.1.2
+
+* **igx(fintech grid):** fix slow grid [#1020](https://github.com/IgniteUI/igniteui-cli/issues/1020) ([4f888dc](https://github.com/IgniteUI/igniteui-cli/commit/4f888dc3c2b1fd6ad896b197634d3aa0c3ef57cd))
+
+# [9.1.1](https://github.com/IgniteUI/igniteui-cli/compare/v9.1.0...v9.1.1)  (2022-03-18)
+
+🎉 This update includes:
+
+- `igniteui-webcomponents` version [2.1.0](https://github.com/IgniteUI/igniteui-webcomponents/releases/tag/2.1.0).
+
+## igniteui/cli-core@9.1.1
+
+* Note: Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@13.1.911
+
+* update with @angular@13.3 by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1015
+* Template for the pivot grid by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1013
+
+## igniteui/angular-schematics@13.1.911
+
+* Note: Version bump only for package igniteui/angular-schematics
+
+## igniteui-cli@9.1.1
+
+* feat(wc): add new 2.1.0 components by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1014
+* update with @angular@13.3 by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1015
+* Template for the pivot grid by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1013
+
 # [9.1.0](https://github.com/IgniteUI/igniteui-cli/compare/v9.0.6...v9.1.0)  (2022-03-02)
 
 🎉 This update includes:

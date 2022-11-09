@@ -21,43 +21,34 @@
   },
   "dependencies": {
     "@vaadin/router": "^1.7.4",
-    "igniteui-webcomponents": "2.1.0",
-    "igniteui-webcomponents-grids": "~1.4.1",
-    "igniteui-webcomponents-core": "~1.4.1",
-    "igniteui-webcomponents-layouts": "~1.4.1",
-    "igniteui-webcomponents-inputs": "~1.4.1",
-    "igniteui-webcomponents-charts": "~1.4.1",
-    "igniteui-webcomponents-gauges": "~1.4.1",
-    "igniteui-dockmanager": "~1.6.0",
-    "@igniteui/material-icons-extended": "^2.10.0",
     "lit": "^2.0.2",
     "typescript": "^4.5.2"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.16.4",
-    "@open-wc/testing": "^2.5.33",
     "@open-wc/building-rollup": "^2.0.1",
+    "@open-wc/eslint-config": "^4.3.0",
+    "@open-wc/testing": "^2.5.33",
     "@rollup/plugin-babel": "^5.3.0",
     "@rollup/plugin-node-resolve": "^13.0.6",
-    "rollup-plugin-copy-assets": "^2.0.3",
-    "@open-wc/eslint-config": "^4.3.0",
     "@typescript-eslint/eslint-plugin": "^4.30.0",
     "@typescript-eslint/parser": "^4.30.0",
     "@web/dev-server": "^0.1.22",
     "@web/rollup-plugin-html": "^1.10.1",
     "@web/rollup-plugin-import-meta-assets": "^1.0.7",
-    "babel-plugin-template-html-minifier": "^4.1.0",
     "@web/test-runner": "next",
-    "igniteui-cli": "~$(cliVersion)",
+    "babel-plugin-template-html-minifier": "^4.1.0",
     "concurrently": "^6.3.0",
     "deepmerge": "^4.2.2",
+    "eslint": "^7.32.0",
+    "igniteui-cli": "10.1.0",
     "rimraf": "^3.0.2",
     "rollup": "^2.60.0",
+    "rollup-plugin-copy-assets": "^2.0.3",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-workbox": "^6.2.0",
-    "eslint": "^7.32.0",
-    "tslib": "^2.3.1",
-    "source-map": "^0.7.3"
+    "source-map": "^0.7.3",
+    "tslib": "^2.3.1"
   },
   "eslintConfig": {
     "parser": "@typescript-eslint/parser",
@@ -68,20 +59,9 @@
       "@typescript-eslint"
     ],
     "rules": {
-      "linebreak-style": "off",
       "no-unused-vars": "off",
-      "@typescript-eslint/no-unused-vars": [
-        "error"
-      ],
-      "import/no-extraneous-dependencies": "off",
       "import/no-unresolved": "off",
-      "import/extensions": [
-        "error",
-        "always",
-        {
-          "ignorePackages": true
-        }
-      ]
+      "linebreak-style": "off"
     }
   }
 }

@@ -1,5 +1,24 @@
-html, body {
+body {
+  background: hsla(var(--ig-surface-500, 0 0% 100%));
+  color: var(--ig-surface-500-contrast, black);
+  font-family: var(--ig-font-family);
+}
+
+html,
+body {
   height: 100%;
-  margin: 0px;
-  background: #fafafa;
+}
+
+/* minor CSS reset */
+body, h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+img, video {
+  height: auto;
+  max-width: 100%;
 }

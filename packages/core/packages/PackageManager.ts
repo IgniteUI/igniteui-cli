@@ -176,6 +176,17 @@ export class PackageManager {
 		}
 		packageJSON.dependencies[packName] = version;
 		this.fs.writeFile(this.jsonPath, Util.formatPackageJson(packageJSON));
+		// B.P. Temporarily (hopefully) skip creating install child processes for new projects
+		// since npm have removed the ability to add a single package and now `npm i <pkg>`
+		// will also cause all deps in package.json to be installed
+		// this initially causes problems with the install tasks that we set up for DV components
+		// where the package.json and the installed dependencies get mashed up so npm fails
+		// to resolve some dependencies in the tree and the task dies with a random error
+		// https://github.com/npm/cli/issues/3023
+		const config = ProjectConfig.localConfig();
+		if (!config.packagesInstalled) {
+			return;
+		}
 		// D.P. Concurrent install runs should be supported
 		// https://github.com/npm/npm/issues/5948
 		// https://github.com/npm/npm/issues/2500
@@ -192,7 +203,7 @@ export class PackageManager {
 	}
 
 	/** Waits for queued installs to finish, optionally log results and clear queue */
-	public static async flushQueue(logSuccess: boolean, verbose = false) {
+	public static async flushQueue(logSuccess: boolean, verbose = true) {
 		if (this.installQueue.length) {
 			Util.log(`Waiting for additional packages to install`);
 			const results = await Promise.all(this.installQueue);
