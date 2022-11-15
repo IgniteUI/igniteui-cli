@@ -85,8 +85,8 @@ export class jQueryTemplate implements Template {
 
 		// builder += "<script src=\"http://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.8.3.js\"></script>\n";
 
-		builder += "<script src=\"http://code.jquery.com/jquery-1.11.3.min.js\"></script>\n";
-		builder += "<script src=\"http://code.jquery.com/ui/1.11.1/jquery-ui.min.js\"></script>\n";
+		builder += "<script src=\"https://code.jquery.com/jquery-1.12.4.min.js\" integrity=\"sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=\" crossorigin=\"anonymous\"></script>\n";
+		builder += "<script src=\"https://code.jquery.com/ui/1.12.1/jquery-ui.min.js\" integrity=\"sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=\" crossorigin=\"anonymous\"></script>\n";
 		return builder;
 	}
 	protected getScriptTags(): string {
