@@ -297,7 +297,7 @@ export class Util {
 				}
 			} else {
 				// primitive value:
-				if (source.hasOwnProperty(key)) {
+				if (source.hasOwnProperty(key) && target.hasOwnProperty(key)) {
 					target[key] = source[key];
 				}
 			}
