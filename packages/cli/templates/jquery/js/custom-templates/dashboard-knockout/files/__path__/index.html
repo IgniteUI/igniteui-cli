@@ -167,8 +167,8 @@
         }
 		</style>
 	$(scriptBlock)
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout.mapping/2.4.1/knockout.mapping.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.min.js" integrity="sha512-vs7+jbztHoMto5Yd/yinM4/y2DOkPLt0fATcN+j+G4ANY2z4faIzZIOMkpBmWdcxt+596FemCh9M18NUJTZwvw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout.mapping/2.4.1/knockout.mapping.min.js" integrity="sha512-1LyBPWtezbX0LO4X4QzhfZd9jSetVu5W0IFpMV9ecq4lJUQBR6hx8uiNfUI2Aoe7LCF4rK1NV3rY+uil4VJ3QQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="../ignite-ui/js/extensions/infragistics.ui.combo.knockout-extensions.js"></script>
 	<script src="../ignite-ui/js/extensions/infragistics.ui.editors.knockout-extensions.js"></script>
 	<script src="../ignite-ui/js/extensions/infragistics.ui.datachart.knockout-extensions.js"></script>
@@ -282,7 +282,7 @@
 		<div class="grid-holder">
 			<table id="grid" data-bind="igGrid: {
 				dataSource: data,
-				
+
 				height: 250,
 				autoCommit: true,
 				autoGenerateColumns: false,
@@ -335,8 +335,8 @@
 					}
 				]
 			}"></table>
-	
-	
+
+
 		</div>
 		<div class="sample-bar-chart-holder" style="">
 			<div id="barColumnChart" data-bind='igDataChart: {
@@ -409,14 +409,14 @@
 					interval: chartIntervalX,
 					label: "month",
 					labelLocation: "outsideTop"
-	
+
 				}, {
 					name: "yAxis",
 					type: "numericY",
 					interval: 10,
 					minimumValue: -50,
 					maximumValue: 50
-	
+
 				}],
 				series: [{
 					name: "line1",
@@ -457,7 +457,7 @@
 		</div>
 		<div id="legendLineChart"></div>
 	</div>
-				
+
 				<div class="sample-polar-chart-holder">
 					<div id="polarSplineChartRevenue" data-bind='igDataChart: {
 						width: "97%",
@@ -554,7 +554,7 @@
 					</div>
 					<div id="legendPolarChartProfit" class="polar-chart-legend"></div>
 				</div>
-			
+
 			</div>
 		</div>
 	</div>
