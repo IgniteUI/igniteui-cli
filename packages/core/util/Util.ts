@@ -297,7 +297,9 @@ export class Util {
 				}
 			} else {
 				// primitive value:
-				target[key] = source[key];
+				if (source.hasOwnProperty(key)) {
+					target[key] = source[key];
+				}
 			}
 		}
 	}
