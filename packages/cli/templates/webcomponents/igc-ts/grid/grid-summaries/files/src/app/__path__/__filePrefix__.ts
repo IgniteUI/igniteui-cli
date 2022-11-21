@@ -1,12 +1,11 @@
-/* eslint-disable import/extensions, max-classes-per-file, class-methods-use-this */
-import { html, css, LitElement } from 'lit';
+import { css, html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import {
-  IgcDataGridModule,
-  IgcGridColumnOptionsModule,
   IgcDataGridComponent,
+  IgcDataGridModule,
   IgcColumnGroupDescription,
   IgcColumnSummaryDescription,
+  IgcGridColumnOptionsModule
 } from 'igniteui-webcomponents-grids';
 import {
   ModuleManager, IgcProvideCalculatorEventArgs, SummaryOperand, SummaryCalculator,
