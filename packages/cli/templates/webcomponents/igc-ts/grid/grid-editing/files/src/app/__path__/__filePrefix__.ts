@@ -1,16 +1,15 @@
-/* eslint-disable import/extensions */
-import { html, css, LitElement } from 'lit';
+import { css, html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import {
-  IgcDataGridModule,
-  IgcGridColumnOptionsModule,
-  IgcDataGridComponent,
-  IgcGridCellValueChangingEventArgs,
-  IgcTemplateCellUpdatingEventArgs,
-  IgcTemplateColumnComponent,
+  EditModeType,
   GridActivationMode,
   GridSelectionMode,
-  EditModeType,
+  IgcDataGridComponent,
+  IgcDataGridModule,
+  IgcGridCellValueChangingEventArgs,
+  IgcGridColumnOptionsModule,
+  IgcTemplateCellUpdatingEventArgs,
+  IgcTemplateColumnComponent
 } from 'igniteui-webcomponents-grids';
 import { ModuleManager } from 'igniteui-webcomponents-core';
 import { DataGridSharedData } from './DataGridSharedData';

@@ -18,7 +18,7 @@ export default class $(ClassName) extends LitElement {
         </igc-expansion-panel>
         <igc-expansion-panel>
             <div slot="title">Ignite UI for Angular</div>
-            <p>Ignite UI for Angular is a complete set of Material-based UI Widgets, Components & Sketch, Adobe XD and Figma UI kits by Infragistics. Ignite UI for Angular is designed to enable developers to build enterprise-ready, high-performance HTML5 & JavaScript apps for modern desktop browsers.</p>
+            <p>Ignite UI for Angular is a complete set of Material-based UI Widgets, Components & Sketch, Adobe XD and Figma UI kits by Infragistics. Ignite UI for Angular is designed to enable developers to build enterprise-ready, high-performance HTML5 & JavaScript apps for modern desktop browsers.</p>
         </igc-expansion-panel>
         <igc-expansion-panel>
             <div slot="title">Ignite UI for jQuery</div>
