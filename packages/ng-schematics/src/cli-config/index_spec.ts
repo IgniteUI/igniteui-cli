@@ -107,7 +107,7 @@ describe("cli-config schematic", () => {
 		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
 
 		const content = tree.readContent(targetFile);
-		expect(content.includes("<body class=\"igx-typography igx-scrollbar\">")).toBeTruthy();
+		expect(content.includes("<body class=\"ig-typography ig-scrollbar\">")).toBeTruthy();
 	});
 
 	it("should add Titillium and Material Icons stylesheets correctly", async () => {
@@ -129,7 +129,7 @@ describe("cli-config schematic", () => {
 		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
 
 		let content = tree.readContent(targetFile);
-		expect(content.includes(`@use "~${NPM_PACKAGE}`)).toBeTruthy();
+		expect(content.includes(`@use "${NPM_PACKAGE}`)).toBeTruthy();
 
 		tree.overwrite(targetFile, "");
 		resetTree();
@@ -138,7 +138,7 @@ describe("cli-config schematic", () => {
 
 		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
 		content = tree.readContent(targetFile);
-		expect(content.includes(`@use "~${FEED_PACKAGE}`)).toBeTruthy();
+		expect(content.includes(`@use "${FEED_PACKAGE}`)).toBeTruthy();
 	});
 
 	it("should add the default css theme to the workspace", async () => {
@@ -206,7 +206,7 @@ describe("cli-config schematic", () => {
 		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
 
 		let content = tree.readContent(targetFile);
-		expect(content.includes(`@use "~${NPM_PACKAGE}`)).toBeTruthy();
+		expect(content.includes(`@use "${NPM_PACKAGE}`)).toBeTruthy();
 
 		tree.overwrite(targetFile, "");
 		resetTree();
@@ -215,7 +215,7 @@ describe("cli-config schematic", () => {
 
 		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
 		content = tree.readContent(targetFile);
-		expect(content.includes(`@use "~${FEED_PACKAGE}`)).toBeTruthy();
+		expect(content.includes(`@use "${FEED_PACKAGE}`)).toBeTruthy();
 	});
 
 	it("should add BrowserAnimationsModule to app.module.ts", async () => {

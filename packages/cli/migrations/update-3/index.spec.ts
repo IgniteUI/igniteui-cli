@@ -13,7 +13,7 @@ describe("Update 3.0.0", () => {
 		appTree = new UnitTestTree(new EmptyTree());
 	});
 
-	it("should add igx-typography class to body if needed", async done => {
+	it("should add ig-typography class to body if needed", async done => {
 		const indexFile = "/src/index.html";
 		appTree.create(indexFile,
 `<body>
@@ -24,21 +24,21 @@ describe("Update 3.0.0", () => {
 		await schematicRunner.runSchematicAsync("migration-02", {}, appTree).toPromise();
 		expect(appTree.readContent(indexFile))
 			.toEqual(
-`<body class="igx-typography">
+`<body class="ig-typography">
 <app-root></app-root>
 </body>`
 			);
 		appTree.overwrite(indexFile, `<body class="">`);
 		await schematicRunner.runSchematicAsync("migration-02", {}, appTree).toPromise();
-		expect(appTree.readContent(indexFile)).toEqual(`<body class="igx-typography">`);
+		expect(appTree.readContent(indexFile)).toEqual(`<body class="ig-typography">`);
 
 		appTree.overwrite(indexFile, `<body class="test class">`);
 		await schematicRunner.runSchematicAsync("migration-02", {}, appTree).toPromise();
-		expect(appTree.readContent(indexFile)).toEqual(`<body class="test class igx-typography">`);
+		expect(appTree.readContent(indexFile)).toEqual(`<body class="test class ig-typography">`);
 
-		appTree.overwrite(indexFile, `<body class="test igx-typography">`);
+		appTree.overwrite(indexFile, `<body class="test ig-typography">`);
 		await schematicRunner.runSchematicAsync("migration-02", {}, appTree).toPromise();
-		expect(appTree.readContent(indexFile)).toEqual(`<body class="test igx-typography">`);
+		expect(appTree.readContent(indexFile)).toEqual(`<body class="test ig-typography">`);
 		done();
 	});
 

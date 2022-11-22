@@ -65,7 +65,7 @@ export default function(): Rule {
 	return (host: Tree, context: SchematicContext) => {
 		context.logger.info("Updating project to Ignite UI CLI 3.0.0");
 
-		addClassToBody(host, "igx-typography");
+		addClassToBody(host, "ig-typography");
 		addHomeHeaderStyles(host);
 		removeGridForRoot(host);
 		updateConfig(host);

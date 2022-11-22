@@ -169,7 +169,7 @@
 
     <igx-column field="estimated_sales" header="Possible Sales ($)" [sortable]="true" width="150" dataType="number"
       [hasSummary]="false" [summaries]="dealsSummary" [resizable]="true" [filterable]="false">
-      <ng-template igxCell let-cell="call" let-val>
+      <ng-template igxCell let-cell="cell" let-val>
         {{ formatValue(val) }}
       </ng-template>
     </igx-column>
