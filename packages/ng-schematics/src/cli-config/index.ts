@@ -51,8 +51,8 @@ Running 'ng update' will prevent potential version conflicts.\n`);
 
 function addTypographyToProj(): Rule {
 	return (tree: Tree) => {
-		addClassToBody(tree, "igx-typography");
-		addClassToBody(tree, "igx-scrollbar");
+		addClassToBody(tree, "ig-typography");
+		addClassToBody(tree, "ig-scrollbar");
 	};
 }
 
