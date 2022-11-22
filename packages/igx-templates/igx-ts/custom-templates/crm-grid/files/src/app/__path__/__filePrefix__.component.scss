@@ -6,7 +6,8 @@
 
     $crm-grid-palette: palette(
         $primary: #09f,
-        $secondary: #ffbf00
+        $secondary: #ffbf00,
+        $surface: #333
     );
     @include theme($crm-grid-palette);
 
@@ -23,8 +24,8 @@
     $search-theme: input-group-theme(
         $search-background: color($crm-grid-palette, "primary", 600),
         $idle-text-color: color($crm-grid-palette, "primary", 100),
-        $filled-text-color: color($crm-grid-palette, "grays", 600),
-        $focused-text-color: color($crm-grid-palette, "grays", 600)
+        $filled-text-color: color($crm-grid-palette, "gray", 600),
+        $focused-text-color: color($crm-grid-palette, "gray", 600)
     );
 
     $crm-grid-theme: grid-theme(
@@ -44,13 +45,13 @@
 
     $crm-grid-search-button: button-theme(
         $background: transparent,
-        $focus-background: color($crm-grid-palette, "grays", 200),
-        $hover-background: color($crm-grid-palette, "grays", 200)
+        $focus-background: color($crm-grid-palette, "gray", 200),
+        $hover-background: color($crm-grid-palette, "gray", 200)
     );
 
     $crm-input-drop-down: input-group-theme(
-        $placeholder-color: color($crm-grid-palette, "grays", 500),
-        $idle-text-color: color($crm-grid-palette, "grays", 900)
+        $placeholder-color: color($crm-grid-palette, "gray", 500),
+        $idle-text-color: color($crm-grid-palette, "gray", 900)
     );
 
     @include grid-toolbar($crm-grid-toolbar);
@@ -226,30 +227,30 @@
             &:focus,
             &.igx-input-group--focused {
                 igx-icon {
-                    color: color($crm-grid-palette, 'grays', 600);
+                    color: color($crm-grid-palette, 'gray', 600);
                 }
 
                 .igx-input-group__bundle {
                     background: #fff;
-                    color: color($crm-grid-palette, 'grays', 600);
+                    color: color($crm-grid-palette, 'gray', 600);
                 }
 
                 .igx-input-group__input {
                     &::placeholder {
-                        color: color($crm-grid-palette, 'grays', 600);
+                        color: color($crm-grid-palette, 'gray', 600);
                         opacity: 1;
                     }
                 }
 
                 .igx-input-group__textarea,
                 .igx-input-group__input {
-                    color: color($crm-grid-palette, 'grays', 600);
+                    color: color($crm-grid-palette, 'gray', 600);
                 }
 
                 .igx-button--icon {
                     &:focus,
                     &:active {
-                        color: color($crm-grid-palette, 'grays', 600);
+                        color: color($crm-grid-palette, 'gray', 600);
                     }
                 }
             }

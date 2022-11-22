@@ -13,7 +13,7 @@ import {
   GridSelectionMode,
   HorizontalAlignment,
   IColumnExportingEventArgs,
-  IgxColumnComponent,
+  ColumnType,
   IgxDateSummaryOperand,
   IgxCsvExporterService,
   IgxExcelExporterService,
@@ -48,7 +48,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit {
   public earliestSummary = EarliestSummary;
   public soonSummary = SoonSummary;
 
-  public cols!: QueryList<IgxColumnComponent>;
+  public cols!: QueryList<ColumnType>;
   public hiddenColsLength: number = 0;
   public pinnedColsLength: number = 0;
 
@@ -106,7 +106,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit {
     this.pinnedColsLength = this.cols.filter((col) => col.pinned).length;
   }
 
-  public toggleVisibility(col: IgxColumnComponent): void {
+  public toggleVisibility(col: ColumnType): void {
     if (col.hidden) {
       this.hiddenColsLength--;
     } else {
@@ -115,7 +115,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit {
     col.hidden = !col.hidden;
   }
 
-  public togglePin(col: IgxColumnComponent, evt: any): void {
+  public togglePin(col: ColumnType, evt: any): void {
     if (col.pinned) {
       this.grid1.unpinColumn(col.field);
       this.pinnedColsLength--;

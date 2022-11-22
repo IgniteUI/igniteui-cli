@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IgxColumnComponent } from '<%=igxPackage%>';
+import { ColumnType } from '<%=igxPackage%>';
 import { ARTISTS, Artist } from './data';
 
 @Component({
@@ -10,7 +10,7 @@ import { ARTISTS, Artist } from './data';
 export class <%=ClassName%>Component {
   public localData: Artist[] = ARTISTS;
 
-  public toggleColumn(col: IgxColumnComponent, event: MouseEvent): void {
+  public toggleColumn(col: ColumnType, event: MouseEvent): void {
     col.pinned ? col.unpin() : col.pin();
     event.stopPropagation();
   }
