@@ -263,7 +263,7 @@ describe("Unit - Package Manager", () => {
 		expect(Util.log).toHaveBeenCalledWith(`Installing npm packages`);
 		expect(Util.log).toHaveBeenCalledWith(`Error installing npm packages.`);
 		expect(Util.log).toHaveBeenCalledWith(`Example`);
-		expect(Util.execSync).toHaveBeenCalledWith(`npm install --quiet`, { stdio: ["inherit"], killSignal: "SIGINT" });
+		expect(Util.execSync).toHaveBeenCalledWith(`npm install --force --quiet`, { stdio: ["inherit"], killSignal: "SIGINT" });
 		expect(ProjectConfig.setConfig).toHaveBeenCalledWith({ packagesInstalled: true });
 		done();
 	});
@@ -279,7 +279,7 @@ describe("Unit - Package Manager", () => {
 		expect(Util.log).toHaveBeenCalledTimes(2);
 		expect(Util.log).toHaveBeenCalledWith(`Installing npm packages`);
 		expect(Util.log).toHaveBeenCalledWith(`Packages installed successfully`);
-		expect(Util.execSync).toHaveBeenCalledWith(`npm install --quiet`, { stdio: ["inherit"], killSignal: "SIGINT" });
+		expect(Util.execSync).toHaveBeenCalledWith(`npm install --force --quiet`, { stdio: ["inherit"], killSignal: "SIGINT" });
 		expect(ProjectConfig.setConfig).toHaveBeenCalledWith({ packagesInstalled: true });
 		done();
 	});
@@ -299,7 +299,7 @@ describe("Unit - Package Manager", () => {
 		await PackageManager.installPackages(true);
 		expect(Util.log).toHaveBeenCalledTimes(1);
 		expect(Util.log).toHaveBeenCalledWith(`Installing npm packages`);
-		expect(Util.execSync).toHaveBeenCalledWith(`npm install --quiet`, { stdio: ["inherit"], killSignal: "SIGINT" });
+		expect(Util.execSync).toHaveBeenCalledWith(`npm install --force --quiet`, { stdio: ["inherit"], killSignal: "SIGINT" });
 		expect(process.exit).toHaveBeenCalled();
 		expect(ProjectConfig.setConfig).toHaveBeenCalledTimes(0);
 		done();
@@ -316,7 +316,7 @@ describe("Unit - Package Manager", () => {
 		expect(Util.log).toHaveBeenCalledWith(`Error uninstalling package example-package with npm`);
 		expect(Util.log).toHaveBeenCalledWith(`Error`);
 		expect(Util.execSync).toHaveBeenCalledWith(
-			`npm uninstall example-package --force --quiet --save`, { stdio: "pipe", encoding: "utf8" }
+			`npm uninstall example-package --quiet --save`, { stdio: "pipe", encoding: "utf8" }
 		);
 		done();
 	});
@@ -327,7 +327,7 @@ describe("Unit - Package Manager", () => {
 		expect(Util.log).toHaveBeenCalledTimes(1);
 		expect(Util.log).toHaveBeenCalledWith(`Package example-package uninstalled successfully`);
 		expect(Util.execSync).toHaveBeenCalledWith(
-			`npm uninstall example-package --force --quiet --save`, { stdio: "pipe", encoding: "utf8" });
+			`npm uninstall example-package --quiet --save`, { stdio: "pipe", encoding: "utf8" });
 		done();
 	});
 	it("Should run addPackage properly with error code", async done => {
@@ -377,7 +377,7 @@ describe("Unit - Package Manager", () => {
 		expect(Util.log).toHaveBeenCalledTimes(0);
 		expect(cp.exec).toHaveBeenCalledTimes(1);
 		expect(cp.exec).toHaveBeenCalledWith(
-			`npm install test-pack --quiet --no-save`, {}, jasmine.any(Function));
+			`npm install test-pack --force --quiet --no-save`, {}, jasmine.any(Function));
 		done();
 	});
 
