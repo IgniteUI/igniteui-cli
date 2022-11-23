@@ -1,5 +1,4 @@
 @use '<%=igxPackage%>/theming' as *;
-@use './themes/_mixins' as *;
 
 :host ::ng-deep {
     .finjs-icons {
@@ -210,7 +209,7 @@
 @include theme($default-palette);
 
 
-$green-palette: palette($primary: #09f,$secondary: #72da67, $surface: #333);
+$green-palette: palette($primary: #09f, $secondary: #72da67, $surface: #333);
 
 :host {
     padding: 0 !important;
@@ -218,11 +217,8 @@ $green-palette: palette($primary: #09f,$secondary: #72da67, $surface: #333);
 
     ::ng-deep {
 
-        @include scrollbar-love();
-
         .fin-dark-theme {
-            @include dark-theme($green-palette);
-            @include scrollbar-love(color($green-palette, 'surface'));
+            @include dark-theme($dark-palette);
             background: #333;
 
             ::-moz-placeholder {

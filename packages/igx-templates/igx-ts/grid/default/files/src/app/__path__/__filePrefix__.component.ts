@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IgxColumnComponent } from '<%=igxPackage%>';
+import { ColumnType } from '<%=igxPackage%>';
 import { Employee, employeesData } from './localData';
 
 @Component({
@@ -15,7 +15,7 @@ export class <%=ClassName%>Component implements OnInit {
     this.localData = employeesData;
   }
 
-  public onColumnInit(column: IgxColumnComponent): void {
+  public onColumnInit(column: ColumnType): void {
     if (column.field === 'RegistererDate') {
       column.formatter = (date => date.toLocaleDateString());
     }
