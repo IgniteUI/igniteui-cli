@@ -1,3 +1,43 @@
+# [11.0.1](https://github.com/IgniteUI/igniteui-cli/compare/v11.0.0...v11.0.1) (2022-12-16)
+
+🎉 This update includes:
+
+* `igniteui-angular-core` version [15.0.0](https://www.npmjs.com/package/igniteui-angular-core/v/15.0.0)
+* `igniteui-angular-charts` version [15.0.0](https://www.npmjs.com/package/igniteui-angular-charts/v/15.0.0)
+* `igniteui-angular-gauges` version [15.0.0](https://www.npmjs.com/package/igniteui-angular-gauges/v/15.0.0)
+* `igniteui-angular-maps` version [15.0.0](https://www.npmjs.com/package/igniteui-angular-maps/v/15.0.0)
+
+# [11.0.0](https://github.com/IgniteUI/igniteui-cli/compare/v10.1.0...v11.0.0) (2022-11-22)
+
+🎉 This update includes:
+
+- `igniteui-angular` version [15.0.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/15.0.0).
+
+## What's Changed
+
+* chore: update wtih agnular 15.0.0-rc.3 by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1086
+* Create codeql-analysis.yml by @kdinev in https://github.com/IgniteUI/igniteui-cli/pull/1005
+* Add lint file for web components by @PlamenaMiteva in https://github.com/IgniteUI/igniteui-cli/pull/1085
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v10.1.0...v11.0.0
+
+## igniteui/cli-core@11.0.0
+* Note: Version bump only for package igniteui/cli-core
+
+## igniteui/angular-templates@15.0.1100
+
+* chore: update wtih agnular 15.0.0-rc.3 by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1086
+* Create codeql-analysis.yml by @kdinev in https://github.com/IgniteUI/igniteui-cli/pull/1005
+
+## igniteui/angular-schematics@15.0.1100
+
+* chore: update wtih agnular 15.0.0-rc.3 by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1086
+
+## igniteui-cli@11.0.0
+
+* chore: update wtih agnular 15.0.0-rc.3 by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1086
+* Create codeql-analysis.yml by @kdinev in https://github.com/IgniteUI/igniteui-cli/pull/1005
+* Add lint file for web components by @PlamenaMiteva in https://github.com/IgniteUI/igniteui-cli/pull/1085
 
 # [10.1.0](https://github.com/IgniteUI/igniteui-cli/compare/v10.0.5...v10.1.0) (2022-11-02)
 
