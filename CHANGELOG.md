@@ -1,3 +1,12 @@
+# [11.0.1](https://github.com/IgniteUI/igniteui-cli/compare/v11.0.0...v11.0.1) (2022-12-16)
+
+🎉 This update includes:
+
+* `igniteui-angular-core` version [15.0.0](https://www.npmjs.com/package/igniteui-angular-core/v/15.0.0)
+* `igniteui-angular-charts` version [15.0.0](https://www.npmjs.com/package/igniteui-angular-charts/v/15.0.0)
+* `igniteui-angular-gauges` version [15.0.0](https://www.npmjs.com/package/igniteui-angular-gauges/v/15.0.0)
+* `igniteui-angular-maps` version [15.0.0](https://www.npmjs.com/package/igniteui-angular-maps/v/15.0.0)
+
 # [11.0.0](https://github.com/IgniteUI/igniteui-cli/compare/v10.1.0...v11.0.0) (2022-11-22)
 
 🎉 This update includes:
