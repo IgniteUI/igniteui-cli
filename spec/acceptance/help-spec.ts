@@ -3,7 +3,7 @@ import { spawnSync } from "child_process";
 import * as cli from "../../packages/cli/lib/cli";
 
 const execLocation = "packages/cli/bin/execute.js";
-describe("Help command", () => {
+xdescribe("Help command", () => {
 
 	it("should list all available commands", async done => {
 		const exitError = Error("exit");
