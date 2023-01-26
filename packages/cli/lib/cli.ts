@@ -42,17 +42,17 @@ export async function run(args = null) {
 	const yargsModule = args ? yargs(args) : yargs;
 
 	const argv = yargsModule
-	.command(quickstart)
-	.command(newCommand)
-	.command(add)
-	.command(build)
-	.command(start)
-	.command(generate)
-	.command(config)
-	.command(doc)
-	.command(test)
-	.command(list)
-	.command(upgrade)
+	.command(quickstart as any)
+	.command(newCommand as any)
+	.command(add as any)
+	.command(build as any)
+	.command(start as any)
+	.command(generate as any)
+	.command(config as any)
+	.command(doc as any)
+	.command(test as any)
+	.command(list as any)
+	.command(upgrade as any)
 	.options({
 		version: {
 			alias: "v",
@@ -62,7 +62,7 @@ export async function run(args = null) {
 		}
 	})
 	.help().alias("help", "h")
-	.argv;
+	.parseSync();
 
 	//	unsubscribing from process.exit. If `help` was executed we should not reach here
 	process.removeListener("exit", logHelp);
