@@ -109,7 +109,7 @@
     "source-map-support": "^0.5.4",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript-json-schema": "^0.42.0"
+    "typescript-json-schema": "^0.55.0"
   },
   "ng-update": {
     "migrations": "./migrations/migration-collection.json",
