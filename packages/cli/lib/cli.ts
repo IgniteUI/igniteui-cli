@@ -53,6 +53,12 @@ export async function run(args = null) {
 	.command(test as any)
 	.command(list as any)
 	.command(upgrade as any)
+	// TODO: Please do one of the following:
+	// - Disable version with `yargs.version(false)` if using "version" as an option
+	// - Use the built-in `yargs.version` method instead (if applicable)
+	// - Use a different option key
+	// https://yargs.js.org/docs/#api-reference-version
+	.version(false)
 	.options({
 		version: {
 			alias: "v",
