@@ -1,6 +1,6 @@
 {
   "name": "@igniteui/cli-core",
-  "version": "11.0.1",
+  "version": "11.0.2-alpha.0",
   "description": "Base types and functionality for Ignite UI CLI",
   "repository": {
     "type": "git",
