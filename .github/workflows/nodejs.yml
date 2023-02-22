@@ -12,15 +12,15 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x]
+        node-version: [16.x, 18.x]
     steps:
       - name: Checkout
-        uses: actions/checkout@v2 #set credentials for every repository on the computer --global, so `New command` CLI tests pass
+        uses: actions/checkout@v3 #set credentials for every repository on the computer --global, so `New command` CLI tests pass
       - run: |
           git config --global user.name github-actions
           git config --global user.email github-actions@github.com
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2 # Inbuilt cache for npm and yarn packages installation
+        uses: actions/setup-node@v3 # Inbuilt cache for npm and yarn packages installation
         with:
            node-version: ${{ matrix.node-version }}
            cache: 'yarn'
@@ -31,10 +31,10 @@ jobs:
           yarn config set scripts-prepend-node-path auto
           yarn test
       - name: Generate coverage
-        if: matrix.node-version == '14.x'
+        if: matrix.node-version == '16.x'
         run: yarn coverage
       - name: Publish to coveralls.io
-        if: matrix.node-version == '14.x'
+        if: matrix.node-version == '16.x'
         uses: coverallsapp/github-action@v1.1.2
         with:
             github-token: ${{ github.token }}
