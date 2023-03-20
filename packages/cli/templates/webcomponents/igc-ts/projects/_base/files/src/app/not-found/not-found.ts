@@ -1,5 +1,5 @@
 import { html, LitElement } from 'lit';
-import { customElement } from 'lit/decorators.js';
+import { customElement } from 'lit/decorators.ts';
 
 @customElement('app-not-found')
 export default class NotFound extends LitElement {

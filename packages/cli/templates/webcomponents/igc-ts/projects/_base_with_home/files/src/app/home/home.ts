@@ -1,5 +1,5 @@
 import { html, css, LitElement } from 'lit';
-import { customElement } from 'lit/decorators.js';
+import { customElement } from 'lit/decorators.ts';
 
 @customElement('app-home')
 export class HomeComponent extends LitElement {

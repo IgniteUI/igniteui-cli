@@ -1,2 +1,2 @@
-import './app/app.js';
-import './app/app-routing.js';
+import './app/app.ts';
+import './app/app-routing.ts';
