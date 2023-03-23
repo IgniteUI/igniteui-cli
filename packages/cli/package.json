@@ -1,6 +1,6 @@
 {
   "name": "igniteui-cli",
-  "version": "11.0.2",
+  "version": "11.1.0",
   "description": "CLI tool for creating Ignite UI projects",
   "keywords": [
     "CLI",
@@ -78,8 +78,8 @@
     "all": true
   },
   "dependencies": {
-    "@igniteui/angular-templates": "~15.0.1102",
-    "@igniteui/cli-core": "~11.0.2",
+    "@igniteui/angular-templates": "~15.1.1110",
+    "@igniteui/cli-core": "~11.1.0",
     "chalk": "^2.3.2",
     "fs-extra": "^3.0.1",
     "glob": "^7.1.2",

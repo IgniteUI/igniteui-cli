@@ -1,3 +1,14 @@
+# [11.1.0](https://github.com/IgniteUI/igniteui-cli/compare/v11.0.2...v11.1.0) (2023-03-23)
+
+🎉 This update includes:
+
+- `igniteui-angular` version [15.1.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/15.1.0).
+
+## What's Changed
+
+* fix(igx-ts): updating dependencies #1099 by @kdinev in https://github.com/IgniteUI/igniteui-cli/pull/1102
+* Update angular packages to 15.2 by @IvayloG in https://github.com/IgniteUI/igniteui-cli/pull/1106
+
 # [11.0.2](https://github.com/IgniteUI/igniteui-cli/compare/v11.0.1...v11.0.2) (2022-12-16)
 
 * Update packages in the web components project by @PlamenaMiteva in https://github.com/IgniteUI/igniteui-cli/pull/1097
