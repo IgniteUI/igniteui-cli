@@ -1,3 +1,4 @@
+
 {
   "compilerOptions": {
     "target": "es2018",
@@ -15,7 +16,7 @@
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "outDir": "dist",
+    "outDir": "test",
     "sourceMap": true,
     "inlineSources": true,
     "rootDir": "./",
@@ -30,6 +31,6 @@
     "src/index.ts"
   ],
   "include": [
-    "src/**/*.d.ts"
+    "**/*.ts"
   ]
 }
