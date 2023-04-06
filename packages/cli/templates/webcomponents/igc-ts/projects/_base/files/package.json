@@ -17,7 +17,7 @@
     "build": "rimraf dist && tsc && rollup -c rollup.config.mjs",
     "start:build": "web-dev-server --root-dir dist --app-index index.html --open",
     "lint": "eslint \"**/*.{js,ts}\" --ignore-path .gitignore",
-    "test": "tsc --project tsconfig.spec.json && wtr"
+    "test": "tsc --project tsconfig.test.json && wtr"
   },
   "dependencies": {
     "@vaadin/router": "^1.7.4",
