@@ -37,7 +37,7 @@ export default {
     /** Bundle assets references via import.meta.url */
     importMetaAssets(),
     /** Compile JS to a lower language target */
-    babel.babel({
+    babel({
       babelHelpers: 'bundled',
       presets: [
         [
