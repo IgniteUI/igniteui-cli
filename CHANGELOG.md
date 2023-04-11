@@ -1,3 +1,10 @@
+# [11.1.1](https://github.com/IgniteUI/igniteui-cli/compare/v11.1.0...v11.1.1) (2023-04-11)
+
+* Changing the babel function call by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1113
+* Adding the $surface argument by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1114
+* Separate config files for the WebComponents application and the tests by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1111
+
+
 # [11.1.0](https://github.com/IgniteUI/igniteui-cli/compare/v11.0.2...v11.1.0) (2023-03-23)
 
 🎉 This update includes:
