@@ -4,7 +4,7 @@ const filteredLogs = ['Running in dev mode', 'lit-html is in dev mode'];
 
 export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
   /** Test files to run */
-  files: 'dist/src/app/**/*.test.js',
+  files: 'test/src/app/**/*.test.js',
 
   /** Resolve bare module imports */
   nodeResolve: {
