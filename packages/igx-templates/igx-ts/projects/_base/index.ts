@@ -25,10 +25,11 @@ export class BaseIgxProject implements ProjectTemplate {
 		= `/* See: https://www.infragistics.com/products/ignite-ui-angular/angular/components/themes/sass/index */
 @use "igniteui-angular/theming" as *;
 
-$primary: #731963 !default;
-$secondary: #ce5712 !default;
+$primary: #09f !default;
+$secondary: #ffbf00 !default;
+$surface: #fff !default;
 
-$app-palette: palette($primary, $secondary);
+$app-palette: palette($primary, $secondary, $surface);
 
 /* autoprefixer grid: on */
 

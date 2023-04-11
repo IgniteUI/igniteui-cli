@@ -52,7 +52,7 @@ function importDefaultThemeSass(tree: Tree, filePath: string) {
 // Uncomment the following lines if you want to add a custom palette:
 // $primary: #731963 !default;
 // $secondary: #ce5712 !default;
-// $app-palette: palette($primary, $secondary);
+// $app-palette: palette($primary, $secondary, $surface);
 
 /* autoprefixer grid: on */
 
