@@ -691,9 +691,10 @@ describe("Unit - PromptSession", () => {
 		const CUSTOM_THEME = `
 		/* See: https://www.infragistics.com/products/ignite-ui-angular/angular/components/themes/sass/index */
 		@use "igniteui-angular/theming" as *;
-		$primary: #731963 !default;
-		$secondary: #ce5712 !default;
-		$app-palette: palette($primary, $secondary);
+		$primary: #09f !default;
+		$secondary: #ffbf00 !default;
+		$surface: #fff !default;
+		$app-palette: palette($primary, $secondary, $surface);
 		/* autoprefixer grid: on */
 		@include core();
 		@include typography($font-family: $material-typeface, $type-scale: $material-type-scale);
