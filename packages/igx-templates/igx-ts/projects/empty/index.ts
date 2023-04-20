@@ -1,8 +1,8 @@
 import { ProjectTemplate } from "@igniteui/cli-core";
 import * as path from "path";
-import { BaseIgxProject } from "../_base";
+import { BaseWithHomeProject } from "../_base_with_home";
 
-export class EmptyPageTemplate extends BaseIgxProject implements ProjectTemplate {
+export class EmptyPageTemplate extends BaseWithHomeProject implements ProjectTemplate {
 	public id: string = "empty";
 	public name = "Empty Project";
 	public description = "Project structure with routing and a home page";
