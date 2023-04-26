@@ -5,9 +5,9 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ <%=yaml-default-branch%> ]
+    branches: [ <<yml-default-branch>> ]
   pull_request:
-    branches: [ <%=yaml-default-branch%> ]
+    branches: [ <<yml-default-branch>> ]
 
 jobs:
   build:
