@@ -11,6 +11,7 @@ class IgcDockManagerTemplate extends IgniteUIForWebComponentsTemplate {
 		this.projectType = "igc-ts";
 		this.name = "Dock Manager";
 		this.description = "Dock Manager with most functionalities and docking options";
+		this.packages = ["igniteui-dockmanager@~1.12.4"];
 	}
 	protected addClassDeclaration(mainModule: TypeScriptFileUpdate, projPath: string, name: string, modulePath: string) {
 		// not applicable with custom module
