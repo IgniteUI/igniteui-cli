@@ -9,7 +9,7 @@
   [batchEditing]="true" [rowEditable]="true">
   <igx-column width="135px">
     <ng-template igxCell let-cell="cell" let-val>
-      <button igxButton (click)="deleteRow(cell.id.rowID)" [disabled]="cell.row.deleted">Delete</button>
+      <button igxButton (click)="deleteRow(cell.id?.rowID)" [disabled]="cell.row.deleted">Delete</button>
     </ng-template>
   </igx-column>
   <igx-column width="60px" field="ProductID" header="Product ID"></igx-column>
