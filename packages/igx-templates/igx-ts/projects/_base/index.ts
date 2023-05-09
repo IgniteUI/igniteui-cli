@@ -65,7 +65,8 @@ $app-palette: palette($primary, $secondary, $surface);
 			DefaultTheme: "",
 			dot: ".",
 			path: name,
-			projectTemplate: this.id
+			projectTemplate: this.id,
+			yamlDefaultBranch: "<%=yaml-default-branch%>" // the placeholder will be evaluated by CodeGen
 		};
 
 		switch (theme) {
