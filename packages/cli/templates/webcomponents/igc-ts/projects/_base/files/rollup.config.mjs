@@ -16,6 +16,10 @@ export default {
     format: 'es',
     dir: 'dist',
   },
+  onwarn: function(warning) {
+    // Skip https://rollupjs.org/troubleshooting/#error-this-is-undefined
+    if ( warning.code === 'THIS_IS_UNDEFINED' ) { return; }
+  },
   preserveEntrySignatures: false,
 
   plugins: [
@@ -38,6 +42,7 @@ export default {
     importMetaAssets(),
     /** Compile JS to a lower language target */
     babel({
+      compact: true,
       babelHelpers: 'bundled',
       presets: [
         [
