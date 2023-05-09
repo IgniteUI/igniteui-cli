@@ -8,7 +8,7 @@ import {
   IgcGridColumnOptionsModule
 } from 'igniteui-webcomponents-grids';
 import {
-  ModuleManager, IgcProvideCalculatorEventArgs, SummaryOperand, SummaryCalculator,
+  ModuleManager, IgcProvideCalculatorEventArgs, DataSourceSummaryOperand, SummaryCalculator,
   DefaultSummaryResult, IDataSource, ISummaryResult,
 } from 'igniteui-webcomponents-core';
 import { DataGridSharedData } from './DataGridSharedData';
@@ -76,7 +76,7 @@ export default class $(ClassName) extends LitElement {
       }
 
       public endCalculation(): ISummaryResult {
-        return new DefaultSummaryResult(this.propertyName, SummaryOperand.Custom, this.usCountries);
+        return new DefaultSummaryResult(this.propertyName, DataSourceSummaryOperand.Custom, this.usCountries);
       }
 
       public aggregate(a: any): void {
@@ -99,12 +99,12 @@ export default class $(ClassName) extends LitElement {
 
       const productCount = new IgcColumnSummaryDescription();
       productCount.field = 'ProductName';
-      productCount.operand = SummaryOperand.Count;
+      productCount.operand = DataSourceSummaryOperand.Count;
       grid.summaryDescriptions.add(productCount);
 
       const priceMin = new IgcColumnSummaryDescription();
       priceMin.field = 'BundlePrice';
-      priceMin.operand = SummaryOperand.Min;
+      priceMin.operand = DataSourceSummaryOperand.Min;
       priceMin.formatOverride = new Intl.NumberFormat('en-EN', {
         style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0,
       });
@@ -112,7 +112,7 @@ export default class $(ClassName) extends LitElement {
 
       const priceMax = new IgcColumnSummaryDescription();
       priceMax.field = 'BundlePrice';
-      priceMax.operand = SummaryOperand.Max;
+      priceMax.operand = DataSourceSummaryOperand.Max;
       priceMax.formatOverride = new Intl.NumberFormat('en-EN', {
         style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0,
       });
@@ -120,12 +120,12 @@ export default class $(ClassName) extends LitElement {
 
       const orderSum = new IgcColumnSummaryDescription();
       orderSum.field = 'OrderItems';
-      orderSum.operand = SummaryOperand.Sum;
+      orderSum.operand = DataSourceSummaryOperand.Sum;
       grid.summaryDescriptions.add(orderSum);
 
       const orderValueSum = new IgcColumnSummaryDescription();
       orderValueSum.field = 'OrderValue';
-      orderValueSum.operand = SummaryOperand.Sum;
+      orderValueSum.operand = DataSourceSummaryOperand.Sum;
       orderValueSum.formatOverride = new Intl.NumberFormat('en-EN', {
         style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0,
       });
@@ -133,7 +133,7 @@ export default class $(ClassName) extends LitElement {
 
       const orderValueAvg = new IgcColumnSummaryDescription();
       orderValueAvg.field = 'OrderValue';
-      orderValueAvg.operand = SummaryOperand.Average;
+      orderValueAvg.operand = DataSourceSummaryOperand.Average;
       orderValueAvg.formatOverride = new Intl.NumberFormat('en-EN', {
         style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0,
       });
@@ -141,21 +141,21 @@ export default class $(ClassName) extends LitElement {
 
       const orderDateMin = new IgcColumnSummaryDescription();
       orderDateMin.field = 'OrderDate';
-      orderDateMin.operand = SummaryOperand.Min;
+      orderDateMin.operand = DataSourceSummaryOperand.Min;
       orderDateMin.calculatorDisplayName = 'First';
       orderDateMin.formatOverride = new Intl.DateTimeFormat('en-EN');
       grid.summaryDescriptions.add(orderDateMin);
 
       const orderDateMax = new IgcColumnSummaryDescription();
       orderDateMax.field = 'OrderDate';
-      orderDateMax.operand = SummaryOperand.Max;
+      orderDateMax.operand = DataSourceSummaryOperand.Max;
       orderDateMax.calculatorDisplayName = 'Last';
       orderDateMax.formatOverride = new Intl.DateTimeFormat('en-EN');
       grid.summaryDescriptions.add(orderDateMax);
 
       const sum1 = new IgcColumnSummaryDescription();
       sum1.field = 'Profit';
-      sum1.operand = SummaryOperand.Sum;
+      sum1.operand = DataSourceSummaryOperand.Sum;
       sum1.formatOverride = new Intl.NumberFormat('en-EN', {
         style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0,
       });
@@ -163,7 +163,7 @@ export default class $(ClassName) extends LitElement {
 
       const avg2 = new IgcColumnSummaryDescription();
       avg2.field = 'Profit';
-      avg2.operand = SummaryOperand.Average;
+      avg2.operand = DataSourceSummaryOperand.Average;
       avg2.formatOverride = new Intl.NumberFormat('en-EN', {
         style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0,
       });
@@ -171,7 +171,7 @@ export default class $(ClassName) extends LitElement {
 
       const countries = new IgcColumnSummaryDescription();
       countries.field = 'Countries';
-      countries.operand = SummaryOperand.Custom;
+      countries.operand = DataSourceSummaryOperand.Custom;
       countries.provideCalculator = onProvideCalculator;
       grid.summaryDescriptions.add(countries);
     };

@@ -5,7 +5,7 @@ import {
 import {
   AbsoluteScrollStrategy,
   ConnectedPositioningStrategy,
-  GridSelectionMode,
+  DataGridSelectionMode,
   HorizontalAlignment,
   IButtonGroupEventArgs,
   IChangeSwitchEventArgs,
@@ -35,7 +35,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
   @ViewChild('slider2', { static: true }) public intervalSlider!: IgxSliderComponent;
 
   public showToolbar: boolean = true;
-  public selectionMode: GridSelectionMode = 'multiple';
+  public selectionMode: DataGridSelectionMode = 'multiple';
   public theme: boolean = false;
   public volume: number = 1000;
   public frequency: number = 500;
