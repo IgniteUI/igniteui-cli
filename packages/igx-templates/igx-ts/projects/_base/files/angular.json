@@ -126,7 +126,6 @@
       }
     }
   },
-  "defaultProject": "<%=dashName%>",
   "cli": {
     "schematicCollections": ["@angular-eslint/schematics"]
   }
