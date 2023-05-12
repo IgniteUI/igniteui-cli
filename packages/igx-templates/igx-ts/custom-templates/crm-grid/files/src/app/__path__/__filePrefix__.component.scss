@@ -6,7 +6,7 @@
 
     $crm-grid-palette: palette(
         $primary: #09f,
-        $secondary: #ffbf00,
+        $secondary: #4db8ff,
         $surface: #333
     );
     @include theme($crm-grid-palette);
@@ -370,7 +370,7 @@
 @keyframes spin-fade {
     0% {
         opacity: 0;
-        tranform: rotate(0);
+        tranfsorm: rotate(0);
     }
 
     100% {
