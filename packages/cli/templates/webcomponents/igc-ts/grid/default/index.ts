@@ -15,7 +15,7 @@ class IgcGridTemplate extends IgniteUIForWebComponentsTemplate {
 			"igniteui-webcomponents-core@~4.2.5",
 			"igniteui-webcomponents-grids@~4.2.5",
 			"igniteui-webcomponents-inputs@~4.2.5",
-			"igniteui-webcomponents-layouts@~4.2.5",
+			"igniteui-webcomponents-layouts@~4.2.5"
 		];
 	}
 	protected addClassDeclaration(mainModule: TypeScriptFileUpdate, projPath: string, name: string, modulePath: string) {
