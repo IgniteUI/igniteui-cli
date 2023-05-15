@@ -1,11 +1,11 @@
 import { ProjectTemplate } from "@igniteui/cli-core";
 import * as path from "path";
-import { BaseWithHomeProject } from "../_base_with_home";
+import { BaseIgxProject } from "../_base";
 
-export class SideNavProject extends BaseWithHomeProject implements ProjectTemplate {
-	public id: string = "side-nav";
-	public name = "Default side navigation";
-	public description = "Project structure with side navigation drawer";
+export class BaseWithHomeProject extends BaseIgxProject implements ProjectTemplate {
+	public id: string = "base-with-home";
+	public name = "Base with home";
+	public description = "Empty project layout structure for Ignite UI for Angular with home page";
 	public dependencies: string[] = [];
 	public framework: string = "angular";
 	public projectType: string = "igx-ts";
@@ -16,4 +16,4 @@ export class SideNavProject extends BaseWithHomeProject implements ProjectTempla
 	}
 }
 
-export default new SideNavProject();
+export default new BaseWithHomeProject();

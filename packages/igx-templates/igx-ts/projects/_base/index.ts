@@ -26,7 +26,7 @@ export class BaseIgxProject implements ProjectTemplate {
 @use "igniteui-angular/theming" as *;
 
 $primary: #09f !default;
-$secondary: #ffbf00 !default;
+$secondary: #4db8ff !default;
 $surface: #fff !default;
 
 $app-palette: palette($primary, $secondary, $surface);
@@ -65,7 +65,8 @@ $app-palette: palette($primary, $secondary, $surface);
 			DefaultTheme: "",
 			dot: ".",
 			path: name,
-			projectTemplate: this.id
+			projectTemplate: this.id,
+			yamlDefaultBranch: "<%=yaml-default-branch%>" // the placeholder will be evaluated by CodeGen
 		};
 
 		switch (theme) {

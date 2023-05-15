@@ -19,7 +19,7 @@
   <igx-column field="GrammyAwards" header="Grammy Awards" [editable]="true" dataType="number"></igx-column>
   <igx-column width="150px" [editable]="false">
     <ng-template igxCell let-cell="cell" let-val>
-      <button igxButton (click)="removeRow(cell.id.rowIndex)"
+      <button igxButton (click)="removeRow(cell.id ? cell.id.rowIndex : -1)"
         [disabled]="cell.row.deleted">Delete</button>
     </ng-template>
   </igx-column>
