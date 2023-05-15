@@ -26,7 +26,7 @@ export class BaseIgxProject implements ProjectTemplate {
 @use "igniteui-angular/theming" as *;
 
 $primary: #09f !default;
-$secondary: #ffbf00 !default;
+$secondary: #4db8ff !default;
 $surface: #fff !default;
 
 $app-palette: palette($primary, $secondary, $surface);

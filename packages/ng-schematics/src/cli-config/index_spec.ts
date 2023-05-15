@@ -11,7 +11,6 @@ describe("cli-config schematic", () => {
 	const sourceRoot = "src";
 	// tslint:disable: object-literal-sort-keys
 	const ngJsonConfig = {
-		defaultProject: "testProj",
 		projects: {
 			testProj: {
 				sourceRoot,
@@ -148,15 +147,14 @@ describe("cli-config schematic", () => {
 		let targetImport = `node_modules/${NPM_PACKAGE}/styles/igniteui-angular.css`;
 		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
 		let workspace = JSON.parse(tree.read("/angular.json")!.toString());
-		let currentProjectName = workspace.defaultProject;
 
 		expect(
-			workspace.projects[currentProjectName].architect.build.options.styles.filter(
+			workspace.projects.testProj.architect.build.options.styles.filter(
 				(s: string) => s.includes(targetImport)).length
 		)
 			.toBeGreaterThan(0);
 		expect(
-			workspace.projects[currentProjectName].architect.test.options.styles.filter(
+			workspace.projects.testProj.architect.test.options.styles.filter(
 				(s: string) => s.includes(targetImport)).length
 		)
 			.toBeGreaterThan(0);
@@ -168,15 +166,14 @@ describe("cli-config schematic", () => {
 
 		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
 		workspace = JSON.parse(tree.read("/angular.json")!.toString());
-		currentProjectName = workspace.defaultProject;
 
 		expect(
-			workspace.projects[currentProjectName].architect.build.options.styles.filter(
+			workspace.projects.testProj.architect.build.options.styles.filter(
 				(s: string) => s.includes(targetImport)).length
 		)
 			.toBeGreaterThan(0);
 		expect(
-			workspace.projects[currentProjectName].architect.test.options.styles.filter(
+			workspace.projects.testProj.architect.test.options.styles.filter(
 				(s: string) => s.includes(targetImport)).length
 		)
 			.toBeGreaterThan(0);
@@ -191,12 +188,11 @@ describe("cli-config schematic", () => {
 
 		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
 		const workspace = JSON.parse(tree.read("/angular.json")!.toString());
-		const currentProjectName = workspace.defaultProject;
 
 		// the schematic creates the hierarchy that leads to the styles object within the workspace,
 		// providing that it is not already present
-		expect(workspace.projects[currentProjectName].architect.build.styles).toBeUndefined();
-		expect(workspace.projects[currentProjectName].architect.test.styles).toBeUndefined();
+		expect(workspace.projects.testProj.architect.build.styles).toBeUndefined();
+		expect(workspace.projects.testProj.architect.test.styles).toBeUndefined();
 	});
 
 	it("should add the default sass theme correctly", async () => {
