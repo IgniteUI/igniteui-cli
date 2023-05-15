@@ -1,3 +1,17 @@
+# [12.0.0](https://github.com/IgniteUI/igniteui-cli/compare/v11.1.1...v12.0.0) (2023-05-15)
+
+🎉 This update includes:
+
+- `igniteui-angular` version [16.0.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/16.0.0).
+
+## What's Changed
+
+* add base_with_home proj to igx-templates by @onlyexeption in https://github.com/IgniteUI/igniteui-cli/pull/1118
+* update to 16 by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1120
+* Suppress rollup and babel warnings by @dafo in https://github.com/IgniteUI/igniteui-cli/pull/1123
+* fix(grid): Adding missing packages to the grid template #1109 by @valadzhov & @dafo in https://github.com/IgniteUI/igniteui-cli/pull/1119
+* Removing the context method which caused the Angular project tests to fail by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1124
+
 # [11.1.1](https://github.com/IgniteUI/igniteui-cli/compare/v11.1.0...v11.1.1) (2023-04-11)
 
 * Changing the babel function call by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1113
