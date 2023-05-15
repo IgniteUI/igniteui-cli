@@ -11,6 +11,10 @@ class IgcLinearGaugeTemplate extends IgniteUIForWebComponentsTemplate {
 		this.projectType = "igc-ts";
 		this.name = "Linear Gauge";
 		this.description = "IgcLinearGauge";
+		this.packages = [
+			"igniteui-webcomponents-core@~4.2.5",
+			"igniteui-webcomponents-gauges@~4.2.5"
+		];
 	}
 	protected addClassDeclaration(mainModule: TypeScriptFileUpdate, projPath: string, name: string, modulePath: string) {
 		// not applicable with custom module

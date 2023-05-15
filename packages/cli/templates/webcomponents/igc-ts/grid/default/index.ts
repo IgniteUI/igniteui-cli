@@ -11,6 +11,12 @@ class IgcGridTemplate extends IgniteUIForWebComponentsTemplate {
 		this.projectType = "igc-ts";
 		this.name = "Grid";
 		this.description = "IgcGrid with local data";
+		this.packages = [
+			"igniteui-webcomponents-core@~4.2.5",
+			"igniteui-webcomponents-grids@~4.2.5",
+			"igniteui-webcomponents-inputs@~4.2.5",
+			"igniteui-webcomponents-layouts@~4.2.5"
+		];
 	}
 	protected addClassDeclaration(mainModule: TypeScriptFileUpdate, projPath: string, name: string, modulePath: string) {
 		// not applicable with custom module
