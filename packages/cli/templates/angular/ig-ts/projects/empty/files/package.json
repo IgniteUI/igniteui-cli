@@ -18,6 +18,7 @@
     "@angular/platform-browser": "~14.1.0",
     "@angular/platform-browser-dynamic": "~14.1.0",
     "@angular/router": "~14.1.0",
+    "@igniteui/material-icons-extended": "^3.0.0",
     "jquery": ">=1.9.1",
     "jquery-ui": ">=1.10.5",
     "igniteui-angular-wrappers": "~14.1.0",
