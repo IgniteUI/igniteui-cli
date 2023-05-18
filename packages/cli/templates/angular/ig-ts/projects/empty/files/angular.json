@@ -28,7 +28,7 @@
             ],
             "styles": [
               "src/styles.css",
-			  "./node_modules/@igniteui/material-icons-extended/styles/sprite.css"
+              "./node_modules/@igniteui/material-icons-extended/styles/sprite.css"
             ],
             "scripts": []
           },
