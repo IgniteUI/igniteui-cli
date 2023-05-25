@@ -1,3 +1,7 @@
+# [11.1.2](https://github.com/IgniteUI/igniteui-cli/compare/v11.1.1...v11.1.2) (2023-05-25)
+
+* chore(igx): add explicitely igniteui-theming package by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1132
+
 # [11.1.1](https://github.com/IgniteUI/igniteui-cli/compare/v11.1.0...v11.1.1) (2023-04-11)
 
 * Changing the babel function call by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1113
