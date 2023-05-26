@@ -1,3 +1,54 @@
+# [12.0.1](https://github.com/IgniteUI/igniteui-cli/compare/v12.0.0...v12.0.1) (2023-05-25)
+
+* Adding NoopAnimationsModule and removing FormsModule. by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1125
+* Removing "on" prefix from event names. by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1128
+* chore(igx): add explicitely igniteui-theming package by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1132
+* Аngular problems by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1115
+
+# [12.0.0](https://github.com/IgniteUI/igniteui-cli/compare/v11.1.1...v12.0.0) (2023-05-15)
+
+🎉 This update includes:
+
+- `igniteui-angular` version [16.0.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/16.0.0).
+
+## What's Changed
+
+* add base_with_home proj to igx-templates by @onlyexeption in https://github.com/IgniteUI/igniteui-cli/pull/1118
+* update to 16 by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1120
+* Suppress rollup and babel warnings by @dafo in https://github.com/IgniteUI/igniteui-cli/pull/1123
+* fix(grid): Adding missing packages to the grid template #1109 by @valadzhov & @dafo in https://github.com/IgniteUI/igniteui-cli/pull/1119
+* Removing the context method which caused the Angular project tests to fail by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1124
+
+# [11.1.2](https://github.com/IgniteUI/igniteui-cli/compare/v11.1.1...v11.1.2) (2023-05-25)
+
+* chore(igx): add explicitely igniteui-theming package by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1132
+
+# [11.1.1](https://github.com/IgniteUI/igniteui-cli/compare/v11.1.0...v11.1.1) (2023-04-11)
+
+* Changing the babel function call by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1113
+* Adding the $surface argument by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1114
+* Separate config files for the WebComponents application and the tests by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1111
+
+
+# [11.1.0](https://github.com/IgniteUI/igniteui-cli/compare/v11.0.2...v11.1.0) (2023-03-23)
+
+🎉 This update includes:
+
+- `igniteui-angular` version [15.1.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/15.1.0).
+
+## What's Changed
+
+* fix(igx-ts): updating dependencies #1099 by @kdinev in https://github.com/IgniteUI/igniteui-cli/pull/1102
+* Update angular packages to 15.2 by @IvayloG in https://github.com/IgniteUI/igniteui-cli/pull/1106
+# [11.0.3](https://github.com/IgniteUI/igniteui-cli/compare/v11.0.2...v11.0.3) (2023-04-11)
+
+* Adding the $surface argument by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1114
+
+# [11.0.2](https://github.com/IgniteUI/igniteui-cli/compare/v11.0.1...v11.0.2) (2022-12-16)
+
+* Update packages in the web components project by @PlamenaMiteva in https://github.com/IgniteUI/igniteui-cli/pull/1097
+* chore: remove igniteui-theming reference by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1101
+
 # [11.0.1](https://github.com/IgniteUI/igniteui-cli/compare/v11.0.0...v11.0.1) (2022-12-16)
 
 🎉 This update includes:

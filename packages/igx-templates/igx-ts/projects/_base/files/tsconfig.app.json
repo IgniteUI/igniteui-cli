@@ -2,10 +2,6 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "lib": [
-      "es2019",
-      "dom"
-    ],
     "outDir": "./out-tsc/app",
     "types": []
   },

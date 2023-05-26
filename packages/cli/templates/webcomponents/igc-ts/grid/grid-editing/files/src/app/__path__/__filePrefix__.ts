@@ -3,7 +3,7 @@ import { customElement } from 'lit/decorators.js';
 import {
   EditModeType,
   GridActivationMode,
-  GridSelectionMode,
+  DataGridSelectionMode,
   IgcDataGridComponent,
   IgcDataGridModule,
   IgcGridCellValueChangingEventArgs,
@@ -193,7 +193,7 @@ export default class $(ClassName) extends LitElement {
     if (grid !== null) {
       grid.dataSource = this.data;
       grid.activationMode = GridActivationMode.Cell;
-      grid.selectionMode = GridSelectionMode.SingleCell;
+      grid.selectionMode = DataGridSelectionMode.SingleCell;
       grid.editMode = EditModeType.Cell;
       grid.cellValueChanging = onCellValueChanging;
     }

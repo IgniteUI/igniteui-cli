@@ -25,10 +25,11 @@ export class BaseIgxProject implements ProjectTemplate {
 		= `/* See: https://www.infragistics.com/products/ignite-ui-angular/angular/components/themes/sass/index */
 @use "igniteui-angular/theming" as *;
 
-$primary: #731963 !default;
-$secondary: #ce5712 !default;
+$primary: #09f !default;
+$secondary: #4db8ff !default;
+$surface: #fff !default;
 
-$app-palette: palette($primary, $secondary);
+$app-palette: palette($primary, $secondary, $surface);
 
 /* autoprefixer grid: on */
 
@@ -64,7 +65,8 @@ $app-palette: palette($primary, $secondary);
 			DefaultTheme: "",
 			dot: ".",
 			path: name,
-			projectTemplate: this.id
+			projectTemplate: this.id,
+			yamlDefaultBranch: "<%=yaml-default-branch%>" // the placeholder will be evaluated by CodeGen
 		};
 
 		switch (theme) {

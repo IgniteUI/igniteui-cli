@@ -70,7 +70,7 @@ export class <%=ClassName%>Component {
   public commit(): void {
     this.hierarchicalGrid.transactions.commit(this.localdata);
     this.layout1.gridAPI.getChildGrids().forEach((grid) => {
-      grid.transactions.commit(grid.data);
+      grid.transactions.commit(grid.data as any[]);
     });
     this.dialogChanges.close();
   }

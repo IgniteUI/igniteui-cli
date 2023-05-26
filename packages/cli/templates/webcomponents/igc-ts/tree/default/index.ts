@@ -11,6 +11,12 @@ class IgcTreeTemplate extends IgniteUIForWebComponentsTemplate {
 		this.projectType = "igc-ts";
 		this.name = "Tree";
 		this.description = "basic IgcTree";
+		this.packages = [
+			"igniteui-webcomponents-core@~4.2.5",
+			"igniteui-webcomponents-grids@~4.2.5",
+			"igniteui-webcomponents-inputs@~4.2.5",
+			"igniteui-webcomponents-layouts@~4.2.5"
+		];
 	}
 	protected addClassDeclaration(mainModule: TypeScriptFileUpdate, projPath: string, name: string, modulePath: string) {
 		// not applicable with custom module

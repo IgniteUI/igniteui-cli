@@ -108,7 +108,10 @@
             "assets": [
               "src/favicon.ico",
               "src/assets"
-            ]
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["node_modules"]
+            }
           }
         },
         "lint": {
@@ -123,7 +126,6 @@
       }
     }
   },
-  "defaultProject": "<%=dashName%>",
   "cli": {
     "schematicCollections": ["@angular-eslint/schematics"]
   }
