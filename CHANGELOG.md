@@ -19,6 +19,9 @@
 
 * fix(igx-ts): updating dependencies #1099 by @kdinev in https://github.com/IgniteUI/igniteui-cli/pull/1102
 * Update angular packages to 15.2 by @IvayloG in https://github.com/IgniteUI/igniteui-cli/pull/1106
+# [11.0.3](https://github.com/IgniteUI/igniteui-cli/compare/v11.0.2...v11.0.3) (2023-04-11)
+
+* Adding the $surface argument by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1114
 
 # [11.0.2](https://github.com/IgniteUI/igniteui-cli/compare/v11.0.1...v11.0.2) (2022-12-16)
 
