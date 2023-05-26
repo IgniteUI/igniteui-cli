@@ -1,3 +1,10 @@
+# [12.0.1](https://github.com/IgniteUI/igniteui-cli/compare/v12.0.0...v12.0.1) (2023-05-25)
+
+* Adding NoopAnimationsModule and removing FormsModule. by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1125
+* Removing "on" prefix from event names. by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1128
+* chore(igx): add explicitely igniteui-theming package by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1132
+* Аngular problems by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1115
+
 # [12.0.0](https://github.com/IgniteUI/igniteui-cli/compare/v11.1.1...v12.0.0) (2023-05-15)
 
 🎉 This update includes:
