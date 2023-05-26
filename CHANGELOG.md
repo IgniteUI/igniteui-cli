@@ -12,6 +12,10 @@
 * fix(grid): Adding missing packages to the grid template #1109 by @valadzhov & @dafo in https://github.com/IgniteUI/igniteui-cli/pull/1119
 * Removing the context method which caused the Angular project tests to fail by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1124
 
+# [11.1.2](https://github.com/IgniteUI/igniteui-cli/compare/v11.1.1...v11.1.2) (2023-05-25)
+
+* chore(igx): add explicitely igniteui-theming package by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1132
+
 # [11.1.1](https://github.com/IgniteUI/igniteui-cli/compare/v11.1.0...v11.1.1) (2023-04-11)
 
 * Changing the babel function call by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1113
@@ -29,6 +33,9 @@
 
 * fix(igx-ts): updating dependencies #1099 by @kdinev in https://github.com/IgniteUI/igniteui-cli/pull/1102
 * Update angular packages to 15.2 by @IvayloG in https://github.com/IgniteUI/igniteui-cli/pull/1106
+# [11.0.3](https://github.com/IgniteUI/igniteui-cli/compare/v11.0.2...v11.0.3) (2023-04-11)
+
+* Adding the $surface argument by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1114
 
 # [11.0.2](https://github.com/IgniteUI/igniteui-cli/compare/v11.0.1...v11.0.2) (2022-12-16)
 
