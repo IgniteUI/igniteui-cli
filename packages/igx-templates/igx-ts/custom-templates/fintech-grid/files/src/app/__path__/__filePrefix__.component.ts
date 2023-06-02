@@ -2,7 +2,7 @@ import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnDestroy, OnI
 import {
   CellType,
   DefaultSortingStrategy,
-  DataGridSelectionMode,
+  GridSelectionMode,
   IButtonGroupEventArgs,
   IChangeSwitchEventArgs,
   IGridKeydownEventArgs,
@@ -36,7 +36,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
 
   public showToolbar: boolean = false;
   public properties: string[] = [];
-  public selectionMode: DataGridSelectionMode = 'multiple';
+  public selectionMode: GridSelectionMode = 'multiple';
   public chartType = CategoryChartType;
   public theme: boolean = false;
   public volume: number = 1000;

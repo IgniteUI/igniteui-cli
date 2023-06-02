@@ -159,9 +159,7 @@ export class AngularTemplate implements Template {
 				updateFile = true;
 			}
 
-			for (let fileName of sourceFiles) {
-				// strip .js file extension from bundle names, as webpack serves these files as .js.js
-				fileName = fileName.includes(".js") ? fileName.replace(".js", "") : fileName;
+			for (const fileName of sourceFiles) {
 				if (!scripts.find(x => x.bundleName === fileName)) {
 					scripts.push({
 						bundleName: fileName,
