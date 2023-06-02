@@ -10,7 +10,7 @@ import {
 import {
   CloseScrollStrategy,
   ConnectedPositioningStrategy,
-  DataGridSelectionMode,
+  GridSelectionMode,
   HorizontalAlignment,
   IColumnExportingEventArgs,
   ColumnType,
@@ -54,7 +54,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit {
 
   public searchText = '';
   public caseSensitive = false;
-  public selectionMode: DataGridSelectionMode = 'multiple';
+  public selectionMode: GridSelectionMode = 'multiple';
   public displayType = SparklineDisplayType;
 
   public positionSettings: PositionSettings = {
