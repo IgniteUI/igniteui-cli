@@ -15,11 +15,12 @@ class IgxFinTechGridTemplate extends IgniteUIForAngularTemplate {
 			{
 				import: [
 					"IgxButtonGroupModule",
-					"IgxButtonModule",
 					"IgxDialogModule",
+					"IgxFocusModule",
 					"IgxGridModule",
 					"IgxIconModule",
 					"IgxRippleModule",
+					"IgxSelectModule",
 					"IgxSliderModule",
 					"IgxSwitchModule",
 					"IgxToggleModule"
