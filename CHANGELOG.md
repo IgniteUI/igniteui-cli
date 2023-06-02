@@ -1,3 +1,12 @@
+# [12.0.2](https://github.com/IgniteUI/igniteui-cli/compare/v12.0.1...v12.0.2) (2023-06-02)
+
+## What's Changed
+
+* Angular Wrappers package.json update by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1130
+* chore(igx): update DV 16 by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1136
+* chore(igx-ts): remove igniteui-theming package by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1134
+* chore(igx): enable back strict true by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1090
+
 # [12.0.1](https://github.com/IgniteUI/igniteui-cli/compare/v12.0.0...v12.0.1) (2023-05-25)
 
 * Adding NoopAnimationsModule and removing FormsModule. by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1125
