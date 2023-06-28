@@ -1,3 +1,10 @@
+# [12.0.3](https://github.com/IgniteUI/igniteui-cli/compare/v12.0.2...v12.0.3) (2023-06-28)
+
+## What's Changed
+
+* update web components' libraries to 4.3.0 by @lipata in https://github.com/IgniteUI/igniteui-cli/pull/1137
+* Removing ts-node from Angular proj by @dafo in https://github.com/IgniteUI/igniteui-cli/pull/1138
+
 # [12.0.2](https://github.com/IgniteUI/igniteui-cli/compare/v12.0.1...v12.0.2) (2023-06-02)
 
 ## What's Changed
