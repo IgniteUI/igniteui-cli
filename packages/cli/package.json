@@ -14,8 +14,8 @@
     "directory": "packages/cli"
   },
   "bin": {
-    "igniteui": "bin/execute.js",
-    "ig": "bin/execute.js"
+    "ig": "bin/execute.js",
+    "igniteui": "bin/execute.js"
   },
   "bugs": {
     "url": "https://github.com/IgniteUI/igniteui-cli/issues"
