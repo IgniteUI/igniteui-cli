@@ -17,6 +17,7 @@ packages/**/*.js
 /spec/**/*.js.map
 /spec/**/*.js
 
+
 # compiled config schema
 packages/core/config/Config.schema.json
 
@@ -37,3 +38,6 @@ yarn-error.log*
 # Mac OSX Finder files.
 **/.DS_Store
 .DS_Store
+
+# Yarn Berry cache
+/.yarn/
