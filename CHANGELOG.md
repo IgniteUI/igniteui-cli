@@ -1,3 +1,10 @@
+# [12.0.5](https://github.com/IgniteUI/igniteui-cli/compare/v12.0.4...v12.0.5) (2023-07-18)
+
+## What's Changed
+
+* Fix memory allocation issue during build of webComponent app that uses igc-category-chart by @dkalinovInfra in https://github.com/IgniteUI/igniteui-cli/pull/1143
+
+
 # [12.0.4](https://github.com/IgniteUI/igniteui-cli/compare/v12.0.3...v12.0.4) (2023-07-18)
 
 ## What's Changed
