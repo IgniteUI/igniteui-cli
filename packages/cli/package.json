@@ -97,7 +97,7 @@
     "@types/fs-extra": "^3.0.3",
     "@types/inquirer": "0.0.35",
     "@types/jasmine": "~3.5.0",
-    "@types/node": "^12.11.1",
+    "@types/node": "^20.4.2",
     "browser-sync": "^2.26.3",
     "coveralls": "^3.0.0",
     "jasmine": "^5.0.2",

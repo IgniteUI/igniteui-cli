@@ -206,7 +206,7 @@ __metadata:
     "@igniteui/cli-core": ~12.0.0
     "@schematics/angular": ~14.0.0
     "@types/jasmine": 3.3.9
-    "@types/node": ^8.0.31
+    "@types/node": ^20.4.2
     jasmine: ^5.0.2
     rxjs: ^7.8.1
     typescript: ~4.5.2
@@ -876,17 +876,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^12.11.1":
-  version: 12.20.52
-  resolution: "@types/node@npm:12.20.52"
-  checksum: b720ee939a43f1427baf1606deee97e50892ff482bf3d64ab8a1eda3a50802a80866a232aeab337621f6ea4fdc4515147d7829337653e9e99d97c3aaeec3615d
-  languageName: node
-  linkType: hard
-
-"@types/node@npm:^8.0.31, @types/node@npm:^8.10.0":
-  version: 8.10.66
-  resolution: "@types/node@npm:8.10.66"
-  checksum: c52039de862654a139abdc6a51de532a69dd80516ac35a959c3b3a2831ecbaaf065b0df5f9db943f5e28b544ebb9a891730d52b52f7a169b86a82bc060210000
+"@types/node@npm:^20.4.2":
+  version: 20.4.2
+  resolution: "@types/node@npm:20.4.2"
+  checksum: 99e544ea7560d51f01f95627fc40394c24a13da8f041121a0da13e4ef0a2aa332932eaf9a5e8d0e30d1c07106e96a183be392cbba62e8cf0bf6a085d5c0f4149
   languageName: node
   linkType: hard
 
@@ -3734,7 +3727,7 @@ __metadata:
     "@types/fs-extra": ^3.0.3
     "@types/inquirer": 0.0.35
     "@types/jasmine": 3.3.9
-    "@types/node": ^8.10.0
+    "@types/node": ^20.4.2
     browser-sync: ^2.26.3
     coveralls: ^3.0.0
     fs-extra: ^11.1.1
@@ -3768,7 +3761,7 @@ __metadata:
     "@types/fs-extra": ^3.0.3
     "@types/inquirer": 0.0.35
     "@types/jasmine": ~3.5.0
-    "@types/node": ^12.11.1
+    "@types/node": ^20.4.2
     browser-sync: ^2.26.3
     chalk: ^4.1.2
     coveralls: ^3.0.0
