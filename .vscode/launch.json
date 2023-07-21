@@ -339,10 +339,10 @@
 					"new",
 					"test_new",
 					"--collection=${workspaceFolder}/packages/ng-schematics/src/collection.json",
-					//"--skipGit=true",
-					//"--skipInstall=true",
-					//"--template=empty",
-					//"--theme=Default"
+					"--skip-git=true",
+					"--skip-install=true",
+					"--template=empty",
+					"--theme=Default"
 			],
 			"env": {
 					"TS_NODE_PROJECT": "${workspaceFolder}/packages/ng-schematics/tsconfig.json"
@@ -371,6 +371,34 @@
 			"env": {
 					"TS_NODE_PROJECT": "${workspaceFolder}/packages/ng-schematics/tsconfig.json"
 			}
-		}
+		},
+		{
+			// in order to test schematics, you need to have ignitui-angular package already installed in the test project
+				"name": "Run schematics:component",
+				"request": "launch",
+				"type": "node",
+	
+				// "cwd": "<absolute directory of the project, created with ng cli, on which the 'ng' schematic is applied>"
+				"cwd": "C:\\Users\\User\\Desktop\\ng_test\\test_proj",
+				"args": [
+						"-r",
+	
+						// you need to install ts-node for the test project
+						"ts-node/register",
+	
+						// "<path/to/ng>", "g",
+						"${env:AppData}/npm/node_modules/@angular/cli/bin/ng", "g",
+	
+						// "<../../relative/path/from/cwd/to>/igniteui-cli/packages/ng-schematics/src/collection.json:cli-config"
+						"../../../../../work/git/igniteui-cli/packages/ng-schematics/src/collection.json:c",
+						"--template=grid",
+						"--name=newGrid",
+						"--skip-route",
+						// "--help"
+				],
+				"env": {
+						"TS_NODE_PROJECT": "${workspaceFolder}/packages/ng-schematics/tsconfig.json"
+				}
+			}
 	]
 }

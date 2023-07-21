@@ -14,8 +14,9 @@ class IgxTreeGridFinTechTemplate extends IgniteUIForAngularTemplate {
 			{ provide: "IgxExcelExporterService", from: "<%=igxPackage%>" },
 			{
 				import: [
+					"IgxButtonGroupModule",
 					"IgxCheckboxModule",
-					"IgxButtonModule",
+					"IgxIconModule",
 					"IgxSwitchModule",
 					"IgxSliderModule"
 				],
