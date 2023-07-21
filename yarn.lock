@@ -202,8 +202,8 @@ __metadata:
   dependencies:
     "@angular-devkit/core": ~14.0.0
     "@angular-devkit/schematics": ~14.0.0
-    "@igniteui/angular-templates": ~16.0.1200
-    "@igniteui/cli-core": ~12.0.0
+    "@igniteui/angular-templates": ~16.0.1205
+    "@igniteui/cli-core": ~12.0.5
     "@schematics/angular": ~14.0.0
     "@types/jasmine": 3.3.9
     "@types/node": ^20.4.2
@@ -213,16 +213,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@igniteui/angular-templates@workspace:packages/igx-templates, @igniteui/angular-templates@~16.0.1200":
+"@igniteui/angular-templates@workspace:packages/igx-templates, @igniteui/angular-templates@~16.0.1205":
   version: 0.0.0-use.local
   resolution: "@igniteui/angular-templates@workspace:packages/igx-templates"
   dependencies:
-    "@igniteui/cli-core": ~12.0.0
+    "@igniteui/cli-core": ~12.0.5
     typescript: ~4.7.2
   languageName: unknown
   linkType: soft
 
-"@igniteui/cli-core@workspace:packages/core, @igniteui/cli-core@~12.0.0":
+"@igniteui/cli-core@workspace:packages/core, @igniteui/cli-core@~12.0.5":
   version: 0.0.0-use.local
   resolution: "@igniteui/cli-core@workspace:packages/core"
   dependencies:
@@ -3755,8 +3755,8 @@ __metadata:
   dependencies:
     "@angular-devkit/core": ~14.0.0
     "@angular-devkit/schematics": ~14.0.0
-    "@igniteui/angular-templates": ~16.0.1200
-    "@igniteui/cli-core": ~12.0.0
+    "@igniteui/angular-templates": ~16.0.1205
+    "@igniteui/cli-core": ~12.0.5
     "@schematics/angular": ~14.0.0
     "@types/fs-extra": ^3.0.3
     "@types/inquirer": 0.0.35
