@@ -20,7 +20,7 @@ class IgxGeographicMapTemplate extends IgniteUIForAngularTemplate {
 				from: "igniteui-angular-charts"
 			}
 		];
-		this.packages = ["igniteui-angular-core@~15.0.0", "igniteui-angular-charts@~15.0.0", "igniteui-angular-maps@~15.0.0"];
+		this.packages = ["igniteui-angular-core@~16.0.0", "igniteui-angular-charts@~16.0.0", "igniteui-angular-maps@~16.0.0"];
 	}
 }
 module.exports = new IgxGeographicMapTemplate();

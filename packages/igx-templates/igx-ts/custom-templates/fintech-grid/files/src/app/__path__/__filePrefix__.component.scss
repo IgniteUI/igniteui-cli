@@ -236,7 +236,7 @@ $green-palette: palette($primary: #09f, $secondary: #72da67, $surface: #333);
   ::ng-deep {
 
     .fin-dark-theme {
-      @include dark-theme($dark-palette);
+      @include dark-theme($green-palette);
        background: #333;
 
        igx-grid-cell {
