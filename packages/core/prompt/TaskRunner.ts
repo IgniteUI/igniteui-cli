@@ -9,14 +9,15 @@ export type PromptInputTaskResult = typeof WIZARD_BACK_OPTION | boolean | void;
 export type Task<T> = (runner: TaskRunner<T>, context: T) => Promise<PromptInputTaskResult>;
 
 export class TaskRunner<T> {
-	protected taskQueue: Array<PromptInputTask<T>> = [];
-	protected additions: Array<PromptInputTask<T>> = [];
+	protected taskQueue: (PromptInputTask<T>)[] = [];
+	protected additions: (PromptInputTask<T>)[] = [];
 	protected currentTask: PromptInputTask<T>;
 
 	public get done(): boolean {
 		return !this.taskQueue.filter(x => !x.done).length;
 	}
 
+	// tslint:disable:member-ordering
 	constructor(protected context: T) {}
 
 	/** Add a task to the queue. Will insert after current if called while running */

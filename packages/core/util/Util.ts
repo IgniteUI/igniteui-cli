@@ -1,4 +1,4 @@
-import chalk from "chalk";
+import * as chalk from "chalk";
 import { execSync, ExecSyncOptions } from "child_process";
 import * as fs from "fs";
 import * as glob from "glob";
@@ -193,7 +193,7 @@ export class Util {
 					build: {
 						options: {
 							styles: any[],
-							scripts: Array<{ input: string, bundleName: string }>
+							scripts: ({ input: string, bundleName: string })[]
 						}
 					}
 				}
@@ -343,9 +343,9 @@ export class Util {
 	public static gitInit(parentRoot, projectName) {
 		try {
 			const options = { cwd: path.join(parentRoot, projectName), stdio: [process.stdin, "ignore", "ignore"] };
-			Util.execSync("git init", options);
-			Util.execSync("git add .", options);
-			Util.execSync("git commit -m " + "\"Initial commit for project: " + projectName + "\"", options);
+			Util.execSync("git init", options as ExecSyncOptions);
+			Util.execSync("git add .", options as ExecSyncOptions);
+			Util.execSync("git commit -m " + "\"Initial commit for project: " + projectName + "\"", options as ExecSyncOptions);
 			Util.log(Util.greenCheck() + " Git Initialized and Project '" + projectName + "' Committed");
 		} catch (error) {
 			Util.error("Git initialization failed. Install Git in order to automatically commit the project.", "yellow");
@@ -498,7 +498,7 @@ export class Util {
 		return relativePath;
 	}
 
-	public static formatChoices(items: ChoiceItem[], padding = 3): Array<{name: string, value: string, short: string}> {
+	public static formatChoices(items: ChoiceItem[], padding = 3): ({name: string, value: string, short: string})[] {
 		const choiceItems = [];
 		const leftPadding = 2;
 		const rightPadding = 1;

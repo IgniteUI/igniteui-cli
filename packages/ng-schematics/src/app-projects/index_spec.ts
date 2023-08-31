@@ -17,7 +17,7 @@ describe("app-projects", () => {
 			},
 			theme: "mock-theme"
 		};
-		spyOn(tree, "read").and.returnValue(`Mock package content "igniteui-cli":`);
+		spyOn(tree, "read").and.returnValue(Buffer.from(`Mock package content "igniteui-cli":`, "utf-8"));
 		spyOn(tree, "overwrite");
 		await runner.runSchematicAsync("app-projects", mockOptions, tree).toPromise();
 

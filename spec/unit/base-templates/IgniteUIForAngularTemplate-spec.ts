@@ -1,5 +1,5 @@
 import { FEED_PACKAGE, IgniteUIForAngularTemplate, NPM_DOCK_MANAGER, NPM_PACKAGE } from "@igniteui/angular-templates";
-import { App, FS_TOKEN, IFileSystem, ProjectConfig, TypeScriptFileUpdate, Util } from "@igniteui/cli-core";
+import { App, Config, FS_TOKEN, IFileSystem, Project, ProjectConfig, TypeScriptFileUpdate, Util } from "@igniteui/cli-core";
 import * as path from "path";
 import { resetSpy } from "../../helpers/utils";
 
@@ -11,17 +11,18 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			this.description = "test description";
 			this.dependencies = [];
 		}
-		public getBaseVariables(name) { return super.getBaseVariables(name); }
+		public getBaseVariables(name: string) { return super.getBaseVariables(name); }
 	}
 
 	describe("registerInProject", () => {
-		let helpers;
+		let helpers: { tsUpdateMock: any; TypeScriptFileUpdate: any; requireMock?: NodeRequire; };
 		beforeEach(() => {
 			helpers = {
 				requireMock: require,
+				// tslint:disable:object-literal-sort-keys
 				tsUpdateMock: jasmine.createSpyObj(
-					"TypeScriptFileUpdate", ["addRoute", "addDeclaration", "addNgModuleMeta", "finalize"]) as TypeScriptFileUpdate,
-				TypeScriptFileUpdate: (...args) => {
+					"TypeScriptFileUpdate", ["finalize", "addRoute", "addDeclaration", "addNgModuleMeta" ]) as TypeScriptFileUpdate,
+				TypeScriptFileUpdate: (...args: any) => {
 					return helpers.tsUpdateMock;
 				}
 			};
@@ -38,14 +39,17 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			spyOn(Util, "version").and.returnValue("1.0.0");
 			spyOn(helpers, "TypeScriptFileUpdate").and.callThrough();
 			// return through function to get new obj ref each time
-			spyOn(ProjectConfig, "getConfig").and.callFake(() => ({ project: { sourceFiles: ["existing"] } }));
+
+			const mockProject: Partial<Project> = { project: { sourceFiles: ["existing"] }}
+			const mockConfig: Partial<Config> = mockProject;
+			spyOn(ProjectConfig, "getConfig").and.callFake(() => (mockConfig as Config));
 			spyOn(ProjectConfig, "setConfig");
 		});
 
 		it("registers route and declare component", async done => {
 			const templ = new TestTemplate();
 			const mockFS = {
-				fileExists: () => {}
+				fileExists: file => true
 			};
 			spyOn(App.container, "get").and.returnValue(mockFS);
 			spyOn(mockFS, "fileExists").and.callFake(file => {

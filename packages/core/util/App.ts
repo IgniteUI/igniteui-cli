@@ -15,6 +15,7 @@ export class App {
 		}
 	}
 
+	// tslint:disable:member-ordering
 	public static get workDir() {
 		return this.container.get<FsTypes>(FS_TYPE_TOKEN) ? process.cwd() : "";
 	}

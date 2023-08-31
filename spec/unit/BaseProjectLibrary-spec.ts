@@ -68,7 +68,7 @@ describe("Unit - Base project library ", () => {
 		});
 
 		const library = new BaseProjectLibrary(__dirname);
-		spyOn(library, "customTemplates");
+		spyOn(library, "getCustomTemplates");
 		expect(library.templates.length).toEqual(3);
 		expect(library.templates[2].name).toEqual("comboCustomName");
 		expect(library.components.length).toEqual(1);
@@ -227,13 +227,13 @@ describe("Unit - Base project library ", () => {
 	});
 
 	it("gets correct component groups", async done => {
-		const hash = ["Grids & Lists Group", "Charts Group", "Maps Group", "Gauges Group", "Data Entry & Display Group"];
+		const hash: Partial<IterableIterator<string>> = ["Grids & Lists Group", "Charts Group", "Maps Group", "Gauges Group", "Data Entry & Display Group"];
 		spyOn(Util, "getDirectoryNames").and.returnValues
 		(["Grids & Lists", "Charts", "Maps", "Gauges", "Data Entry & Display"]);
 
 		const library = new BaseProjectLibrary(__dirname);
 		spyOn(library.groupDescriptions, "keys")
-			.and.returnValue(hash);
+			.and.returnValue(hash as IterableIterator<string>);
 		spyOn(require("module"), "_load").and.callFake((modulePath: string) => {
 			if (modulePath.startsWith(__dirname)) {
 				const folder = path.basename(modulePath);
@@ -244,7 +244,7 @@ describe("Unit - Base project library ", () => {
 				fail("unexpected require");
 			}
 		});
-		spyOn(library, "components")
+		spyOnProperty<any>(library, "components")
 			.and.returnValues(["IgxAutocompleteComponent", "IgxBulletGraphAnimationComponent", "IgxCalendarComponent", "IgxCarouselComponent"]);
 
 		expect(library.getComponentGroupNames()).toEqual([

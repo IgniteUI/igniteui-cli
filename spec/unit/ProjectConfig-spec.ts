@@ -6,7 +6,8 @@ describe("Unit - ProjectConfig", () => {
 	it("hasLocalConfig returns correct values", async done => {
 		const cwdSpy = spyOn(process, "cwd");
 		spyOn(os, "homedir").and.returnValues("rootDir");
-		spyOn(fs, "statSync").and.returnValue({ isFile: () => true });
+		// tslint:disable:no-object-literal-type-assertion
+		spyOn(fs, "statSync").and.returnValue({ isFile: () => true } as fs.Stats | fs.BigIntStats);
 
 		// cwd matches homedir
 		cwdSpy.and.returnValue("rootDir");

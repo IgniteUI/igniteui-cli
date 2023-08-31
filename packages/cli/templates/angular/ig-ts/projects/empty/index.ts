@@ -44,7 +44,7 @@ class EmptyAngularProject implements ProjectTemplate {
 						build: {
 							options: {
 								styles: any[],
-								scripts: Array<{ input: string, bundleName: string }>
+								scripts: ({ input: string, bundleName: string })[]
 							}
 						}
 					}

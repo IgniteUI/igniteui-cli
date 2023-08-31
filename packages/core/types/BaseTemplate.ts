@@ -16,7 +16,7 @@ export interface BaseTemplate {
 	delimiters: TemplateDelimiters;
 
 	/** List of dependencies needed to load components. */
-	dependencies: Array<(string | object)>;
+	dependencies: ((string | object))[];
 
 	/** jquery, react, angular */
 	framework: string;

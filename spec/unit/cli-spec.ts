@@ -28,7 +28,7 @@ describe("Unit - Cli.ts", () => {
 		done();
 	});
 	it("Should fire properly - quickstart", async done => {
-		spyOn(quickstart , "execute").and.returnValue(Promise.resolve(true));
+		spyOn(quickstart , "execute").and.returnValue(undefined);
 		spyOn(Util , "log");
 		await run.run("quickstart");
 		expect(quickstart.execute).toHaveBeenCalled();
@@ -36,37 +36,37 @@ describe("Unit - Cli.ts", () => {
 		done();
 	});
 	it("Should fire properly - add", async done => {
-		spyOn(add , "check").and.returnValue(false);
+		spyOn(add , "check").and.returnValue(undefined);
 		await run.run("add");
 		expect(add.check).toHaveBeenCalled();
 		done();
 	});
 	it("Should fire properly - build", async done => {
-		spyOn(build , "execute").and.returnValue(true);
+		spyOn(build , "execute").and.returnValue(undefined);
 		await run.run("build");
 		expect(build.execute).toHaveBeenCalled();
 		done();
 	});
 	it("Should fire properly - doc", async done => {
-		spyOn(doc , "execute").and.returnValue(true);
+		spyOn(doc , "execute").and.returnValue(undefined);
 		await run.run("doc");
 		expect(doc.execute).toHaveBeenCalled();
 		done();
 	});
 	it("Should fire properly - test", async done => {
-		spyOn(test , "execute").and.returnValue(true);
+		spyOn(test , "execute").and.returnValue(undefined);
 		await run.run("test");
 		expect(test.execute).toHaveBeenCalled();
 		done();
 	});
 	it("Should fire properly - start", async done => {
-		spyOn(start , "execute").and.returnValue(true);
+		spyOn(start , "execute").and.returnValue(undefined);
 		await run.run("start");
 		expect(start.execute).toHaveBeenCalled();
 		done();
 	});
 	it("Should fire properly - list", async done => {
-		spyOn(list , "execute").and.returnValue(true);
+		spyOn(list , "execute").and.returnValue(undefined);
 		await run.run("list");
 		expect(list.execute).toHaveBeenCalled();
 		done();

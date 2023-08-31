@@ -25,6 +25,7 @@ export class IgniteUIForWebComponentsTemplate implements Template {
 		return [path.join(this.rootPath, "files")];
 	}
 
+	// tslint:disable:member-ordering
 	constructor(private rootPath: string) {
 	}
 

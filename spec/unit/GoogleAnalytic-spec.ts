@@ -1,4 +1,4 @@
-import { GoogleAnalytics, ProjectConfig } from "@igniteui/cli-core";
+import { Config, GoogleAnalytics, ProjectConfig } from "@igniteui/cli-core";
 import * as childProcess from "child_process";
 import * as fs from "fs";
 import * as https from "https";
@@ -33,16 +33,21 @@ describe("Unit - Google Analytic", () => {
 	});
 
 	it("Calling post should create post request to 'www.google-analytics.com", async done => {
-		spyOn(ProjectConfig, "getConfig").and.returnValue({});
+		// tslint:disable:no-object-literal-type-assertion
+		spyOn(ProjectConfig, "getConfig").and.returnValue({} as Config);
 
 		GATestClass.post({});
 		expect(https.request).toHaveBeenCalledTimes(1);
+		const expectedArguments: Partial<https.RequestOptions> = {
+			host: "www.google-analytics.com",
+			method: "POST",
+			path: ""
+		}
 		expect(https.request).toHaveBeenCalledWith(
-			{
-				host: "www.google-analytics.com",
-				method: "POST",
-				path: jasmine.any(String)
-			});
+			null,
+			expectedArguments as https.RequestOptions,
+			null
+		);
 		expect(request.on).toHaveBeenCalledTimes(1);
 		expect(request.on).toHaveBeenCalledWith("error", jasmine.any(Function));
 
@@ -51,11 +56,13 @@ describe("Unit - Google Analytic", () => {
 	});
 
 	it("Calling post with custom parameters should create post request to 'www.google-analytics.com", async done => {
-		spyOn(ProjectConfig, "getConfig").and.returnValue({});
+		// tslint:disable:no-object-literal-type-assertion
+		spyOn(ProjectConfig, "getConfig").and.returnValue({} as Config);
 
 		GATestClass.post({ av: "1.2.3" });
 		expect(https.request).toHaveBeenCalledTimes(1);
 		expect(https.request).toHaveBeenCalledWith(
+			null,
 			{
 				host: "www.google-analytics.com",
 				method: "POST",
@@ -69,7 +76,7 @@ describe("Unit - Google Analytic", () => {
 	});
 
 	it("Should not post if 'disableAnalytics' is set to true", async done => {
-		spyOn(ProjectConfig, "getConfig").and.returnValue({ disableAnalytics: true });
+		spyOn(ProjectConfig, "getConfig").and.returnValue({ disableAnalytics: true } as Config);
 
 		GATestClass.post({});
 

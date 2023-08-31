@@ -1,4 +1,4 @@
-import { ProjectConfig, TypeScriptFileUpdate, Util } from "@igniteui/cli-core";
+import { Config, ProjectConfig, TypeScriptFileUpdate, Util } from "@igniteui/cli-core";
 import * as path from "path";
 import { AngularTemplate } from "../../../packages/cli/lib/templates/AngularTemplate";
 
@@ -106,7 +106,10 @@ describe("Unit - AngularTemplate Base", () => {
 			});
 			spyOn(helpers, "TypeScriptFileUpdate").and.callThrough();
 			// return through function to get new obj ref each time
-			spyOn(ProjectConfig, "getConfig").and.callFake(() => ({ project: { sourceFiles: ["existing"] } }));
+			const mockConfig: Partial<ProjectConfig> = {
+				project: { sourceFiles: ["existing"] }
+			}
+			spyOn(ProjectConfig, "getConfig").and.callFake(() => (mockConfig as Config));
 			spyOn(ProjectConfig, "setConfig");
 		});
 
@@ -153,26 +156,29 @@ describe("Unit - AngularTemplate Base", () => {
 			const templ = new TestTemplate();
 			templ.dependencies.push("igDvWidget");
 			templ.registerInProject("", "");
-			expect(ProjectConfig.setConfig).toHaveBeenCalledWith({ project: {
-				sourceFiles: ["existing", "infragistics.dv.js"]
-			} });
+			let mockProject: Partial<ProjectConfig> = {
+				project: { sourceFiles: ["existing", "infragistics.dv.js"]}
+			}
+			expect(ProjectConfig.setConfig).toHaveBeenCalledWith(mockProject as Config);
 
 			templ.dependencies.push("igExcel");
 			templ.registerInProject("", "");
-			expect(ProjectConfig.setConfig).toHaveBeenCalledWith({ project: {
+			mockProject = { project: {
 				sourceFiles: ["existing", "infragistics.dv.js", "infragistics.excel-bundled.js"]
-			} });
+			}}
+			expect(ProjectConfig.setConfig).toHaveBeenCalledWith(mockProject as Config);
 
 			templ.dependencies.push("igGridExcelExporter");
 			templ.registerInProject("", "");
-			expect(ProjectConfig.setConfig).toHaveBeenCalledWith({ project: {
+			mockProject = { project: {
 				sourceFiles: [
 					"existing",
 					"infragistics.dv.js",
 					"infragistics.excel-bundled.js",
 					"modules/infragistics.gridexcelexporter.js"
 				]
-			} });
+			}}
+			expect(ProjectConfig.setConfig).toHaveBeenCalledWith(mockProject as Config);
 			done();
 		});
 	});

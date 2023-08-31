@@ -33,8 +33,8 @@ describe("Unit - Upgrade command", () => {
 		const mockProjLib: Partial<ProjectLibrary> = { getProject: () => null, hasProject: () => true };
 		const mockTemplateManager: Partial<BaseTemplateManager> = { getProjectLibrary: () => null };
 		upgradeCmd.templateManager = mockTemplateManager as any;
-		spyOn(mockTemplateManager, "getProjectLibrary").and.returnValue(mockProjLib);
-		spyOn(mockProjLib, "getProject").and.returnValue(mockProject);
+		spyOn(mockTemplateManager, "getProjectLibrary").and.returnValue(mockProjLib as ProjectLibrary);
+		spyOn(mockProjLib, "getProject").and.returnValue(mockProject as ProjectTemplate);
 		const upgradeIgniteUIPackagesSpy = spyOn(mockProject, "upgradeIgniteUIPackages");
 
 		upgradeIgniteUIPackagesSpy.and.returnValue(Promise.resolve(true));

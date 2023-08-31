@@ -588,7 +588,7 @@ export abstract class BasePromptSession {
 	 * Generates a list of options for chooseActionLoop
 	 * @param projectLibrary to generate options for
 	 */
-	private generateActionChoices(projectLibrary: ProjectLibrary): Array<{}> {
+	private generateActionChoices(projectLibrary: ProjectLibrary): ({})[] {
 		const actionChoices: ChoiceItem[] = [
 			{ name: "Complete & Run", description: "install packages and run in the default browser" }
 		];

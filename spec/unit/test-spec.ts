@@ -1,5 +1,5 @@
 
-import { GoogleAnalytics, ProjectConfig, Util } from "@igniteui/cli-core";
+import { Config, GoogleAnalytics, ProjectConfig, Util } from "@igniteui/cli-core";
 import { default as testCmd } from "../../packages/cli/lib/commands/test";
 
 describe("Unit - Test command", () => {
@@ -20,9 +20,10 @@ describe("Unit - Test command", () => {
 	});
 
 	it("Run e2e tests for igx-ts Angular project type", async done => {
+		// tslint:disable:no-object-literal-type-assertion
 		spyOn(ProjectConfig, "getConfig").and.returnValue({ project: {
 			framework: "angular",
-			projectType: "igx-ts"}});
+			projectType: "igx-ts"}} as Config);
 
 		await testCmd.test({e2e: true, skipAnalytics: true});
 		expect (Util.execSync).toHaveBeenCalledWith("npm run e2e", { stdio: "inherit" });
@@ -31,9 +32,10 @@ describe("Unit - Test command", () => {
 	});
 
 	it("e2e command for ig-ts Angular project type runs test command instead", async done => {
+		// tslint:disable:no-object-literal-type-assertion
 		spyOn(ProjectConfig, "getConfig").and.returnValue({ project: {
 			framework: "angular",
-			projectType: "ig-ts"}});
+			projectType: "ig-ts"}} as Config);
 
 		await testCmd.test({e2e: true, skipAnalytics: true});
 		expect (Util.execSync).toHaveBeenCalledWith("npm test", { stdio: "inherit" });
@@ -42,8 +44,9 @@ describe("Unit - Test command", () => {
 	});
 
 	it("e2e command for jQuery project runs test command instead", async done => {
+		// tslint:disable:no-object-literal-type-assertion
 		spyOn(ProjectConfig, "getConfig").and.returnValue({ project: {
-			framework: "jquery"}});
+			framework: "jquery"}} as Config);
 
 		await testCmd.test({e2e: true, skipAnalytics: true});
 		expect (Util.execSync).toHaveBeenCalledWith("npm test", { stdio: "inherit" });
@@ -52,8 +55,9 @@ describe("Unit - Test command", () => {
 	});
 
 	it("e2e command for React project runs test command instead", async done => {
+		// tslint:disable:no-object-literal-type-assertion
 		spyOn(ProjectConfig, "getConfig").and.returnValue({ project: {
-			framework: "react"}});
+			framework: "react"}} as Config);
 
 		await testCmd.test({e2e: true, skipAnalytics: true});
 		expect (Util.execSync).toHaveBeenCalledWith("npm test", { stdio: "inherit" });

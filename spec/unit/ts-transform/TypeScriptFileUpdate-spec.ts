@@ -154,8 +154,17 @@ describe("Unit - TypeScriptFileUpdate", () => {
 	});
 
 	it("Adds routes", async done => {
-
 		let sourceCalls = 0;
+		const mockNode1: Partial<ts.Node> = {
+			flags: ts.NodeFlags.Const,
+			kind: ts.SyntaxKind.SyntaxList,
+			parent: null
+		};
+		const mockNode2: Partial<ts.Node> = {
+			flags: ts.NodeFlags.Const,
+			kind: ts.SyntaxKind.SyntaxList,
+			parent: null
+		};
 		spyOn(TypeScriptUtils, "getFileSource").and.callFake((input: string) => {
 			if (input === "route-module.ts") {
 				const fileContent = sourceCalls === 0 ? `
@@ -174,9 +183,11 @@ describe("Unit - TypeScriptFileUpdate", () => {
 			} else {
 				switch (input) {
 					case ("path/to/component"):
-						return { getChildren: () => ["component1"] };
+						// tslint:disable:no-object-literal-type-assertion
+						return { getChildren: () => [mockNode1 as ts.Node] } as ts.SourceFile;
 					case ("path/to/component2"):
-						return { getChildren: () => ["component2"] };
+						// tslint:disable:no-object-literal-type-assertion
+						return { getChildren: () => [mockNode2 as ts.Node] } as ts.SourceFile;
 					default:
 						return;
 				}
@@ -190,7 +201,7 @@ describe("Unit - TypeScriptFileUpdate", () => {
 		const tsUpdate = new TypeScriptFileUpdate("route-module.ts");
 		tsUpdate.addRoute("path/to/component", "href", "text");
 		expect(Util.relativePath).toHaveBeenCalledWith("route-module.ts", "path/to/component", true, true);
-		expect(TypeScriptUtils.getClassName).toHaveBeenCalledWith(["component1"]);
+		expect(TypeScriptUtils.getClassName).toHaveBeenCalledWith([mockNode1 as ts.Node]);
 		expect(fs.writeFileSync).toHaveBeenCalledWith(
 			"route-module.ts",
 			jasmine.stringMatching(`import { Component1 } from "./to/component";\\s*` +
@@ -205,7 +216,7 @@ describe("Unit - TypeScriptFileUpdate", () => {
 
 		tsUpdate.addRoute("path/to/component2", "href2", "text2", "routes2");
 		expect(Util.relativePath).toHaveBeenCalledWith("route-module.ts", "path/to/component2", true, true);
-		expect(TypeScriptUtils.getClassName).toHaveBeenCalledWith(["component2"]);
+		expect(TypeScriptUtils.getClassName).toHaveBeenCalledWith([mockNode2 as ts.Node]);
 		expect(fs.writeFileSync).toHaveBeenCalledWith(
 			"route-module.ts",
 			jasmine.stringMatching(`import { Component1 } from "./to/component";\\s*` +
@@ -223,6 +234,16 @@ describe("Unit - TypeScriptFileUpdate", () => {
 
 	it("Adds child routes", async done => {
 		let sourceCalls = 0;
+		const mockNode1: Partial<ts.Node> = {
+			flags: ts.NodeFlags.Const,
+			kind: ts.SyntaxKind.SyntaxList,
+			parent: null
+		};
+		const mockNode2: Partial<ts.Node> = {
+			flags: ts.NodeFlags.Const,
+			kind: ts.SyntaxKind.SyntaxList,
+			parent: null
+		};
 		spyOn(TypeScriptUtils, "getFileSource").and.callFake((input: string) => {
 			if (input === "route-module.ts") {
 				const fileContent = sourceCalls === 0 ? `
@@ -238,9 +259,9 @@ describe("Unit - TypeScriptFileUpdate", () => {
 			} else {
 				switch (input) {
 					case ("path/to/component"):
-						return { getChildren: () => ["component1"] };
+						return { getChildren: () => [mockNode1 as ts.Node] } as ts.SourceFile;
 					case ("path/to/component2"):
-						return { getChildren: () => ["component2"] };
+						return { getChildren: () => [mockNode2 as ts.Node] } as ts.SourceFile;
 					default:
 						return;
 				}
@@ -256,7 +277,7 @@ describe("Unit - TypeScriptFileUpdate", () => {
 		// call when parent route has no child routes
 		tsUpdate.addChildRoute("path/to/component", "child-1", "child one", "parent");
 		expect(Util.relativePath).toHaveBeenCalledWith("route-module.ts", "path/to/component", true, true);
-		expect(TypeScriptUtils.getClassName).toHaveBeenCalledWith(["component1"]);
+		expect(TypeScriptUtils.getClassName).toHaveBeenCalledWith([mockNode1  as ts.Node]);
 		expect(fs.writeFileSync).toHaveBeenCalledWith(
 			"route-module.ts",
 			jasmine.stringMatching(`import { Component1 } from "./to/component";\\s*` +
@@ -271,7 +292,7 @@ describe("Unit - TypeScriptFileUpdate", () => {
 		// call when parent route has child routes
 		tsUpdate.addChildRoute("path/to/component2", "child-2", "child two", "parent");
 		expect(Util.relativePath).toHaveBeenCalledWith("route-module.ts", "path/to/component2", true, true);
-		expect(TypeScriptUtils.getClassName).toHaveBeenCalledWith(["component2"]);
+		expect(TypeScriptUtils.getClassName).toHaveBeenCalledWith([mockNode2 as ts.Node]);
 		expect(fs.writeFileSync).toHaveBeenCalledWith(
 			"route-module.ts",
 			jasmine.stringMatching(`import { Component1 } from "./to/component";\\s*` +
@@ -288,9 +309,14 @@ describe("Unit - TypeScriptFileUpdate", () => {
 	});
 
 	it("Adds declaration creates NgModule edit", async done => {
+		const mockNode1: Partial<ts.Node> = {
+			flags: ts.NodeFlags.Const,
+			kind: ts.SyntaxKind.SyntaxList,
+			parent: null
+		};
 		spyOn(TypeScriptUtils, "getFileSource").and.returnValues(
 			ts.createSourceFile("app.module.ts", "", ts.ScriptTarget.Latest, true),
-			{ getChildren: () => ["component1"] }
+			{ getChildren: () => [mockNode1 as ts.Node] } as ts.SourceFile
 		);
 
 		spyOn(TypeScriptUtils, "getClassName").and.returnValue("DeclareComponent");
@@ -300,7 +326,7 @@ describe("Unit - TypeScriptFileUpdate", () => {
 		const tsUpdate = new TypeScriptFileUpdate("app.module.ts");
 		tsUpdate.addDeclaration("relative/path");
 		expect(Util.relativePath).toHaveBeenCalledWith("app.module.ts", "relative/path", true, true);
-		expect(TypeScriptUtils.getClassName).toHaveBeenCalledWith(["component1"]);
+		expect(TypeScriptUtils.getClassName).toHaveBeenCalledWith([mockNode1 as ts.Node]);
 		expect(addMetaSpy).toHaveBeenCalledWith({ declare: "DeclareComponent", from: "./to/component" });
 		done();
 	});
@@ -531,9 +557,9 @@ describe("Unit - TypeScriptFileUpdate", () => {
 			if (filePath !== "tslint.json") {
 				// "spec/unit/ts-transform/unformatted.ts-template":
 				// ".editorconfig":
-				return { isFile: () => true };
+				return { isFile: () => true } as (fs.StatsBase<number> & fs.BigIntStats);
 			}
-			return false;
+			return { isFile: () => false } as (fs.StatsBase<number> & fs.BigIntStats);
 		});
 		let testTslint = null;
 		let editorConfig = `# Editor configuration, see http://editorconfig.org
@@ -549,14 +575,6 @@ describe("Unit - TypeScriptFileUpdate", () => {
 
 			[*.ts]
 			indent_size = 2`;
-		const readsSpy = spyOn(fs, "readFileSync").and.callFake((filePath, opt) => {
-			if (filePath === ".editorconfig") {
-				return editorConfig;
-			} else if (testTslint && filePath === "tslint.json") {
-				return JSON.stringify(testTslint);
-			}
-			return "";
-		});
 
 		const tsUpdate = new TestTsFileUpdate("spec/unit/ts-transform/unformatted.ts-template");
 		tsUpdate.readFormatConfigs();
@@ -569,7 +587,7 @@ describe("Unit - TypeScriptFileUpdate", () => {
 		expect(tsUpdate.getFormatting().singleQuotes).toEqual(true);
 
 		// with tslint
-		existsSpy.and.returnValue({ isFile: () => true });
+		existsSpy.and.returnValue({ isFile: () => true } as fs.BigIntStats);
 		testTslint = {
 			rules: {
 				"prefer-const": true,

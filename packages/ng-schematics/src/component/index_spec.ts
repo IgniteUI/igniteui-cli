@@ -1,6 +1,6 @@
 import { Tree } from "@angular-devkit/schematics";
 import { SchematicTestRunner } from "@angular-devkit/schematics/testing";
-import { GoogleAnalytics, ProjectConfig } from "@igniteui/cli-core";
+import { Config, GoogleAnalytics, ProjectConfig, ProjectLibrary, Template } from "@igniteui/cli-core";
 import * as path from "path";
 import { SchematicsTemplateManager } from "../SchematicsTemplateManager";
 
@@ -20,13 +20,13 @@ describe("component",  () => {
 			registerInProject: jasmine.createSpy(),
 			templatePaths: []
 		};
-		const mockLib = {
-			getCustomTemplates: () => {},
+		const mockLib: Partial<ProjectLibrary> = {
+			getCustomTemplates: (): Template[] => [],
 			getTemplateById: jasmine.createSpy().and.returnValue(mockInst),
 			hasTemplate: jasmine.createSpy().and.returnValue(true)
 		};
 		const projLibSpy = spyOn(SchematicsTemplateManager.prototype, "getProjectLibrary");
-		projLibSpy.and.returnValue(mockLib);
+		projLibSpy.and.returnValue(mockLib as ProjectLibrary);
 
 		const mockConfig = {
 			customTemplates: ["path:C:\work\GitHub\ignite-ui-cli\output\custom-templ"],
@@ -35,7 +35,7 @@ describe("component",  () => {
 			}
 		};
 		const projConfigSpy = spyOn(ProjectConfig, "getConfig");
-		projConfigSpy.and.returnValue(mockConfig);
+		projConfigSpy.and.returnValue(mockConfig as Config);
 
 		const tree = runner.runSchematicAsync("component",
 			{ name: "my-combo", template: "combo", templateInst: mockInst, skipRoute: false }, Tree.empty());

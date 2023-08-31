@@ -3,7 +3,7 @@ import { NodePackageTaskOptions } from "@angular-devkit/schematics/tasks/package
 import { RepositoryInitializerTaskOptions } from "@angular-devkit/schematics/tasks/repo-init/options";
 import { RunSchematicTaskOptions } from "@angular-devkit/schematics/tasks/run-schematic/options";
 import { SchematicTestRunner, UnitTestTree } from "@angular-devkit/schematics/testing";
-import { GoogleAnalytics, ProjectTemplate } from "@igniteui/cli-core";
+import { GoogleAnalytics, ProjectLibrary, ProjectTemplate } from "@igniteui/cli-core";
 import * as path from "path";
 import { take } from "rxjs/operators";
 import * as AppProjectSchematic from "../app-projects/index";
@@ -21,22 +21,23 @@ describe("Schematics ng-new", () => {
 		const runner = new SchematicTestRunner("schematics", collectionPath);
 		const myTree = Tree.empty();
 		const workingDirectory = "my-test-project";
-		const mockLibrary = {
+		const mockLibrary: Partial<ProjectLibrary> = {
 			getProject: jasmine.createSpy("getProject").and.returnValue(true), projectIds: ["empty-page"], themes: ["custom"]
 		};
 
 		const mockProject: Partial<ProjectTemplate> = {
 			upgradeIgniteUIPackages: () => Promise.resolve(true)
 		};
-		spyOn(mockProject, "upgradeIgniteUIPackages").and.callThrough();
+
+		spyOn(mockProject as ProjectTemplate, "upgradeIgniteUIPackages").and.callThrough();
 
 		const mockSession = {
 			chooseActionLoop: spyOn(SchematicsPromptSession.prototype, "chooseActionLoop")
-				.and.returnValue(Promise.resolve(true)),
+				.and.returnValue(Promise.resolve()),
 			getProjectLibrary: spyOn(SchematicsPromptSession.prototype, "getProjectLibrary")
-				.and.returnValue((Promise.resolve(mockLibrary))),
+				.and.returnValue((Promise.resolve(mockLibrary as ProjectLibrary))),
 			getProjectTemplate: spyOn(SchematicsPromptSession.prototype, "getProjectTemplate")
-				.and.returnValue(Promise.resolve(mockProject)),
+				.and.returnValue(Promise.resolve(mockProject as ProjectTemplate)),
 			getTheme: spyOn(SchematicsPromptSession.prototype, "getTheme")
 				.and.returnValue(Promise.resolve("custom")),
 			getUserInput: spyOn(SchematicsPromptSession.prototype, "getUserInput")
@@ -104,8 +105,8 @@ describe("Schematics ng-new", () => {
 		const mockProject: Partial<ProjectTemplate> = {
 			upgradeIgniteUIPackages: () => Promise.resolve(true)
 		};
-		spyOn(mockProject, "upgradeIgniteUIPackages").and.callThrough();
-		const mockLibrary = {
+		spyOn(mockProject as ProjectTemplate, "upgradeIgniteUIPackages").and.callThrough();
+		const mockLibrary: Partial<ProjectLibrary> = {
 			getProject: jasmine.createSpy("getProject").and.returnValue(mockProject),
 			projectIds: ["empty-page"],
 			themes: ["custom"]
@@ -113,7 +114,7 @@ describe("Schematics ng-new", () => {
 
 		const mockSession = {
 			getProjectLibrary: spyOn(SchematicsPromptSession.prototype, "getProjectLibrary")
-			.and.returnValue((Promise.resolve(mockLibrary)))
+			.and.returnValue((Promise.resolve(mockLibrary as ProjectLibrary)))
 		};
 
 		const userAnswers = new Map<string, any>();

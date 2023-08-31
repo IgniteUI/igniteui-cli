@@ -10,6 +10,44 @@ export interface StepFrameworkConfig {
 	projTypes: string[];
 }
 
+export interface Project {
+	/** default project serve port */
+	defaultPort: number;
+
+	framework: string;
+
+	/** Stands for js, ts, es6 */
+	projectType: string;
+
+	/** Stands for the project template from which it has been generated  */
+	projectTemplate: string;
+
+	/** Theme of the project */
+	theme: string;
+
+	themePath: string;
+
+	/** An array of dependencies  */
+	components: string[];
+
+	/** Flag if the project should be using bundled file */
+	isBundle?: boolean;
+
+	/** optional. showcase flag? */
+	isShowcase?: boolean,
+
+	/** Project template version */
+	version: string;
+
+	/** Project root source directory */
+	sourceRoot: string;
+
+	/** Temp */
+	igniteuiSource: string;
+
+	[key: string]: any;
+}
+
 /**
  * Schema for project config files.
  */
@@ -20,43 +58,8 @@ export interface Config {
 	packagesInstalled: boolean;
 
 	/** Project options */
-	project: {
-		/** default project serve port */
-		defaultPort: number;
+	project: Project;
 
-		framework: string;
-
-		/** Stands for js, ts, es6 */
-		projectType: string;
-
-		/** Stands for the project template from which it has been generated  */
-		projectTemplate: string;
-
-		/** Theme of the project */
-		theme: string;
-
-		themePath: string;
-
-		/** An array of dependencies  */
-		components: string[];
-
-		/** Flag if the project should be using bundled file */
-		isBundle?: boolean;
-
-		/** optional. showcase flag? */
-		isShowcase?: boolean,
-
-		/** Project template version */
-		version: string;
-
-		/** Project root source directory */
-		sourceRoot: string;
-
-		/** Temp */
-		igniteuiSource: string;
-
-		[key: string]: any;
-	};
 	build: {
 		/**
 		 * This object contains information related to the build configuration

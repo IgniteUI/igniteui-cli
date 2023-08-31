@@ -1,5 +1,5 @@
 import { FEED_PACKAGE, NPM_PACKAGE } from "@igniteui/angular-templates";
-import { GoogleAnalytics, GoogleAnalyticsParameters, ProjectConfig } from "@igniteui/cli-core";
+import { Config, GoogleAnalytics, GoogleAnalyticsParameters, ProjectConfig } from "@igniteui/cli-core";
 import * as fs from "fs-extra";
 import { EOL } from "os";
 import { parse } from "path";
@@ -97,7 +97,7 @@ describe("Add command", () => {
 
 	it("Should correctly add jQuery template", async done => {
 		// TODO: Mock out template manager and project register
-		spyOn(ProjectConfig, "globalConfig").and.returnValue({});
+		spyOn(ProjectConfig, "globalConfig").and.returnValue(new Object() as Config);
 
 		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
 			project: { framework: "jquery", projectType: "js", components: [], igniteuiSource: "", themePath: "" }
@@ -120,7 +120,8 @@ describe("Add command", () => {
 	});
 
 	it("Should not duplicate add jq Grid template", async done => {
-		spyOn(ProjectConfig, "globalConfig").and.returnValue({});
+		// tslint:disable:no-object-literal-type-assertion
+		spyOn(ProjectConfig, "globalConfig").and.returnValue({} as Config);
 
 		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
 			project: { framework: "jquery", projectType: "js", components: [], igniteuiSource: "", themePath: "" }
@@ -169,7 +170,8 @@ describe("Add command", () => {
 	});
 
 	it("Should correctly add Angular template", async done => {
-		spyOn(ProjectConfig, "globalConfig").and.returnValue({});
+		// tslint:disable:no-object-literal-type-assertion
+		spyOn(ProjectConfig, "globalConfig").and.returnValue({} as Config);
 
 		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
 			project: { framework: "angular", projectType: "ig-ts", components: [] }
@@ -247,7 +249,7 @@ describe("Add command", () => {
 
 	for (const igxPackage of [NPM_PACKAGE, FEED_PACKAGE]) {
 		it(`Should correctly add Ignite UI for Angular template - ${igxPackage}`, async done => {
-			spyOn(ProjectConfig, "globalConfig").and.returnValue({});
+			spyOn(ProjectConfig, "globalConfig").and.returnValue({} as Config);
 
 			fs.writeFileSync("package.json", JSON.stringify({
 				dependencies: { [igxPackage]: "9.0.0" }
@@ -325,7 +327,8 @@ export class AppModule {
 
 	it("Should correctly add Ignite UI for Angular template passing folders path and spaces/tabs in name arg"
 		, async done => {
-			spyOn(ProjectConfig, "globalConfig").and.returnValue({});
+			// tslint:disable:no-object-literal-type-assertion
+			spyOn(ProjectConfig, "globalConfig").and.returnValue({} as Config);
 
 			fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
 				project: { framework: "angular", projectType: "igx-ts", components: [] }
@@ -398,7 +401,8 @@ export class AppModule {
 
 	it("Should correctly add React template", async done => {
 		// TODO: Mock out template manager and project register
-		spyOn(ProjectConfig, "globalConfig").and.returnValue({});
+		// tslint:disable:no-object-literal-type-assertion
+		spyOn(ProjectConfig, "globalConfig").and.returnValue({} as Config);
 
 		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
 			project: { framework: "react", projectType: "es6", components: [] }

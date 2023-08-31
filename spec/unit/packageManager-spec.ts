@@ -20,14 +20,15 @@ describe("Unit - Package Manager", () => {
 				projectIds: ["empty"]
 			}
 		});
+		// tslint:disable:no-object-literal-type-assertion object-literal-sort-keys
 		spyOn(ProjectConfig, "localConfig").and.returnValue({
 			igPackageRegistry: "trial",
 			project: {
 				components: ["igGrid", "igExcel"],
-				igniteuiSource: `./node_modules/ignite-ui`,
-				isBundle: false
+				isBundle: false,
+				igniteuiSource: `./node_modules/ignite-ui`
 			}
-		});
+		} as Config);
 		spyOn(ProjectConfig, "setConfig");
 		spyOn(PackageManager, "addPackage").and.returnValue(true);
 		spyOn(path, "join").and.returnValue("fakemodule.json");
@@ -45,7 +46,8 @@ describe("Unit - Package Manager", () => {
 		});
 		spyOn(cp, "spawnSync").and.returnValues({
 			status: 0
-		});
+		// tslint:disable:no-object-literal-type-assertion
+		} as cp.SpawnSyncReturns<string | Buffer>);
 		spyOn(Util, "log");
 		spyOn(PackageManager, "removePackage");
 		await PackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
@@ -100,19 +102,20 @@ describe("Unit - Package Manager", () => {
 		});
 		spyOn(ProjectConfig, "localConfig").and.returnValue({
 			igPackageRegistry: "trial",
+			// tslint:disable:no-object-literal-type-assertion, object-literal-sort-keys
 			project: {
 				components: ["igGrid", "igExcel"],
-				igniteuiSource: `./node_modules/ignite-ui`,
-				isBundle: false
+				isBundle: false,
+				igniteuiSource: `./node_modules/ignite-ui`
 			}
-		});
+		} as Config);
 		spyOn(ProjectConfig, "setConfig");
 		spyOn(TestPackageManager, "addPackage").and.returnValue(true);
 		spyOn(Util, "execSync").and.throwError("no user");
 		spyOn(Util, "log");
 		spyOn(TestPackageManager, "removePackage");
 		spyOn(TestPackageManager, "getPackageJSON").and.callFake(() => mockRequire);
-		spyOn(cp, "spawnSync").and.returnValues({ status: 1 });
+		spyOn(cp, "spawnSync").and.returnValues({ status: 1 } as cp.SpawnSyncReturns<string | Buffer>);
 		await TestPackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
 		expect(ProjectConfig.localConfig).toHaveBeenCalled();
 		expect(Util.log).toHaveBeenCalledTimes(12);
@@ -172,12 +175,13 @@ describe("Unit - Package Manager", () => {
 		});
 		spyOn(ProjectConfig, "localConfig").and.returnValue({
 			igPackageRegistry: "trial",
+			// tslint:disable:object-literal-sort-keys
 			project: {
 				components: ["igGrid", "igExcel"],
-				igniteuiSource: `./node_modules/ignite-ui`,
-				isBundle: false
+				isBundle: false,
+				igniteuiSource: `./node_modules/ignite-ui`
 			}
-		});
+		} as Config);
 		await PackageManager.ensureIgniteUISource(false, mockTemplateMgr, true);
 		expect(ProjectConfig.localConfig).toHaveBeenCalled();
 		expect(Util.log).toHaveBeenCalledWith(
@@ -208,10 +212,10 @@ describe("Unit - Package Manager", () => {
 			return {
 				project: {
 					components: ["igGrid", "igExcel"],
-					igniteuiSource: `./node_modules/ignite-ui`,
-					isBundle: false
+					isBundle: false,
+					igniteuiSource: `./node_modules/ignite-ui`
 				}
-			};
+			} as Config;
 		});
 		spyOn(ProjectConfig, "setConfig");
 		spyOn(TestPackageManager, "addPackage").and.callThrough();
@@ -249,7 +253,7 @@ describe("Unit - Package Manager", () => {
 	it("Should run installPackages properly with error code", async done => {
 		spyOn(ProjectConfig, "localConfig").and.returnValue({
 			packagesInstalled: false
-		});
+		} as Config);
 		spyOn(Util, "log");
 		spyOn(Util, "execSync").and.callFake(() => {
 			const err = new Error("Example");
@@ -265,13 +269,13 @@ describe("Unit - Package Manager", () => {
 		expect(Util.log).toHaveBeenCalledWith(`Example`);
 		expect(Util.execSync).toHaveBeenCalledWith(`npm install --quiet`,
 			{ stdio: ["inherit"], killSignal: "SIGINT" });
-		expect(ProjectConfig.setConfig).toHaveBeenCalledWith({ packagesInstalled: true });
+		expect(ProjectConfig.setConfig).toHaveBeenCalledWith({ packagesInstalled: true } as Config);
 		done();
 	});
 	it("Should run installPackages properly without error code", async done => {
 		spyOn(ProjectConfig, "localConfig").and.returnValue({
 			packagesInstalled: false
-		});
+		} as Config);
 		spyOn(Util, "log");
 		spyOn(Util, "execSync").and.returnValue("");
 		spyOn(ProjectConfig, "setConfig");
@@ -282,14 +286,15 @@ describe("Unit - Package Manager", () => {
 		expect(Util.log).toHaveBeenCalledWith(`Packages installed successfully`);
 		expect(Util.execSync).toHaveBeenCalledWith(`npm install --quiet`,
 			{ stdio: ["inherit"], killSignal: "SIGINT" });
-		expect(ProjectConfig.setConfig).toHaveBeenCalledWith({ packagesInstalled: true });
+		expect(ProjectConfig.setConfig).toHaveBeenCalledWith({ packagesInstalled: true } as Config);
 		done();
 	});
 	it("Should exit on installPackages if child install is terminated", async done => {
-		spyOn(ProjectConfig, "localConfig").and.returnValue({
+		const mockProjectConfig: Partial<ProjectConfig> = {
 			packagesInstalled: false,
 			skipAnalytic: true
-		});
+		}
+		spyOn(ProjectConfig, "localConfig").and.returnValue(mockProjectConfig as Config);
 		spyOn(Util, "log");
 		spyOn(ProjectConfig, "setConfig");
 		spyOn(process, "exit");
@@ -363,11 +368,11 @@ describe("Unit - Package Manager", () => {
 		const mockRequire = {
 			dependencies: {}
 		};
-		const mockConfig = {
+		const mockConfig: Partial<Config> = {
 			packagesInstalled: true
 		};
 		spyOn(require("module"), "_load").and.returnValue(mockRequire);
-		spyOn(ProjectConfig, "localConfig").and.returnValue(mockConfig);
+		spyOn(ProjectConfig, "localConfig").and.returnValue(mockConfig as Config);
 		spyOn(Util, "log");
 		const mockFs: Partial<IFileSystem> = {
 			readFile: jasmine.createSpy().and.returnValue(JSON.stringify(mockRequire)),
@@ -397,7 +402,7 @@ describe("Unit - Package Manager", () => {
 		const mockConfig = {
 			packagesInstalled: true
 		};
-		spyOn(ProjectConfig, "localConfig").and.returnValue(mockConfig);
+		spyOn(ProjectConfig, "localConfig").and.returnValue(mockConfig as Config);
 		// should ignore already installed
 		spyOn(App.container, "get").and.returnValue(mockFs);
 		spyOn(Util, "log");
@@ -426,13 +431,16 @@ describe("Unit - Package Manager", () => {
 		const mockConfig = {
 			packagesInstalled: true
 		};
-		spyOn(ProjectConfig, "localConfig").and.returnValue(mockConfig);
+		spyOn(ProjectConfig, "localConfig").and.returnValue(mockConfig as Config);
 		// spyOn(require("module"), "_load").and.returnValue(mockRequire);
 		spyOn(Util, "log");
 		spyOn(App.container, "get").and.returnValue(mockFs);
-		const execSpy = spyOn(cp, "exec").and.callFake((cmd, opts, callback) => {
+		type mockOptions = {encoding: 'buffer' | null} & cp.ExecOptions;
+		const mockHandler1 = (_cmd: string, _opts: mockOptions, callback: any) => {
 			setTimeout(() => callback(null, [1], [2]), 20);
-		});
+		};
+		const execSpy = spyOn(cp, "exec").and.callFake(mockHandler1 as any);
+
 		PackageManager.queuePackage("test-pack");
 		PackageManager.queuePackage("test-pack2");
 
@@ -444,9 +452,10 @@ describe("Unit - Package Manager", () => {
 		resetSpy(Util.log);
 
 		// on error
-		execSpy.and.callFake((cmd, opts, callback) => {
-			setTimeout(() => callback(new Error(), [1], ["stderr"]), 20);
-		});
+		const mockHandler2 = (_cmd: string, _opts: mockOptions, callback: any) => {
+			setTimeout(() => callback(null, [1], [2]), 20);
+		};
+		execSpy.and.callFake(mockHandler2 as any);
 		PackageManager.queuePackage("test-pack3");
 		await PackageManager.flushQueue(true, true);
 

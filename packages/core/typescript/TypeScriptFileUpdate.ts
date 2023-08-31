@@ -19,10 +19,10 @@ export class TypeScriptFileUpdate {
 	private targetSource: ts.SourceFile;
 	private importsMeta: { lastIndex: number, modulePaths: string[] };
 
-	private requestedImports: Array<{ from: string, imports: string[], edit: boolean }>;
+	private requestedImports: ({ from: string, imports: string[], edit: boolean })[];
 	private ngMetaEdits: {
 		declarations: string[],
-		imports: Array<{ name: string, root: boolean }>,
+		imports: ({ name: string, root: boolean })[],
 		providers: string[],
 		exports: string[]
 	};

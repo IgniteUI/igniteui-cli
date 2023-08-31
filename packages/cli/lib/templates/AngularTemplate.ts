@@ -12,7 +12,7 @@ export class AngularTemplate implements Template {
 	public id: string;
 	public name: string;
 	public description: string;
-	public dependencies: Array<string | object> = [];
+	public dependencies: (string | object)[] = [];
 	public framework: string = "angular";
 	public projectType: string;
 	public hasExtraConfiguration: boolean = false;

@@ -1,7 +1,7 @@
 import { EmptyTree } from "@angular-devkit/schematics";
 import { NodePackageInstallTask } from "@angular-devkit/schematics/tasks";
 import { SchematicTestRunner, UnitTestTree } from "@angular-devkit/schematics/testing";
-import { App, FS_TOKEN, FS_TYPE_TOKEN, FsTypes, GoogleAnalytics, ProjectConfig, ProjectLibrary, ProjectTemplate } from "@igniteui/cli-core";
+import { App, Config, FS_TOKEN, FS_TYPE_TOKEN, FsTypes, GoogleAnalytics, Project, ProjectConfig, ProjectLibrary, ProjectTemplate } from "@igniteui/cli-core";
 import * as path from "path";
 import { SchematicsTemplateManager } from "../SchematicsTemplateManager";
 import { NgTreeFileSystem } from "../utils/NgFileSystem";
@@ -21,27 +21,32 @@ describe("Schematics upgrade-packages", () => {
 	it("calls project template upgradeIgniteUIPackages and schedules install accordingly", async done => {
 		const runner = new SchematicTestRunner("schematics", collectionPath);
 
-		const mockConfig = {
-			customTemplates: [],
-			project: {
-				framework: "mock-ng",
-				projectType: "mock-igx-ts",
-				projectTemplate: "mock-side-nav"
-			}
+		type DeepPartial<T> = Partial<{ [P in keyof T]: DeepPartial<T[P]> }>;
+
+		const mockProject: Partial<Project> = {
+			framework: "mock-ng",
+			projectType: "mock-igx-ts",
+			projectTemplate: "mock-side-nav"
 		};
-		spyOn(ProjectConfig, "getConfig").and.returnValue(mockConfig);
+
+		const mockConfig: DeepPartial<Config> = {
+			customTemplates: [],
+			project: mockProject
+		};
+
+		spyOn(ProjectConfig, "getConfig").and.returnValue(mockConfig as Config);
 
 		const mockProjTemplate: Partial<ProjectTemplate> = {
 			upgradeIgniteUIPackages: async () => true
 		};
-		const upgradeSpy = spyOn(mockProjTemplate, "upgradeIgniteUIPackages");
+		const upgradeSpy = spyOn(mockProjTemplate as ProjectTemplate, "upgradeIgniteUIPackages");
 		const mockLib: Partial<ProjectLibrary> = {
 			getProject: jasmine.createSpy().and.returnValue(mockProjTemplate),
 			hasProject: jasmine.createSpy().and.returnValue(false),
 			projectIds: ["another-mock"]
 		};
 		const projLibSpy = spyOn(SchematicsTemplateManager.prototype, "getProjectLibrary");
-		projLibSpy.and.returnValue(mockLib);
+		projLibSpy.and.returnValue(mockLib as ProjectLibrary);
 		upgradeSpy.and.returnValue(Promise.resolve(false));
 
 		await runner.runSchematicAsync(schematicName, { }, appTree).toPromise();

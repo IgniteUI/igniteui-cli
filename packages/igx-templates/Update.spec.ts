@@ -1,4 +1,4 @@
-import { App, IFileSystem, PackageManager, ProjectConfig, Util } from "@igniteui/cli-core";
+import { App, Config, IFileSystem, PackageManager, ProjectConfig, Util } from "@igniteui/cli-core";
 import * as pkgResolve from "./package-resolve";
 import { updateWorkspace } from "./Update";
 
@@ -15,7 +15,7 @@ describe("Igx templates - updateWorkspace", () => {
 		fsSpy = jasmine.createSpyObj("fsSpy", ["fileExists", "directoryExists", "readFile", "writeFile", "glob"]);
 		spyOn(App.container, "get").and.returnValue(fsSpy);
 		spyOnProperty(App, "workDir", "get").and.returnValue("mockDir");
-		spyOn(ProjectConfig, "getConfig").and.returnValue({});
+		spyOn(ProjectConfig, "getConfig").and.returnValue(new Object() as Config);
 	});
 	it("Should fail if current used package is registry package", async () => {
 		spyOn(pkgResolve, "getUpgradeablePackages").and.returnValue([]);

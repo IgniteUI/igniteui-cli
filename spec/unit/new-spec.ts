@@ -1,8 +1,14 @@
-import { GoogleAnalytics, PackageManager, ProjectConfig, Util } from "@igniteui/cli-core";
+import { Config, Delimiter, GoogleAnalytics, PackageManager, ProjectConfig, Template, TemplateDelimiters, Util } from "@igniteui/cli-core";
 import * as path from "path";
 import { default as newCmd } from "../../packages/cli/lib/commands/new";
 import { PromptSession } from "../../packages/cli/lib/PromptSession";
 import { resetSpy } from "../helpers/utils";
+
+class MockTemplateType  {
+	delimiters?: any;
+	generateConfig: any;
+	templatePaths: any;
+}
 
 describe("Unit - New command", () => {
 	beforeAll(() => {
@@ -158,10 +164,13 @@ describe("Unit - New command", () => {
 	});
 
 	it("Generates default without project type", async done => {
-		const mockDelimiters = { mockDelimiter: { start: "test", end: "test" }};
-		const mockTemplate = {
-			delimiters: mockDelimiters,
-			generateConfig: { test: "test" },
+		const mockDelimiters: Delimiter = { start: "test", end: "test" };
+		const templateDelimiter: TemplateDelimiters = { content: mockDelimiters, path: mockDelimiters }
+		const mockTemplate: Partial<Template> = {
+			delimiters: templateDelimiter,
+			generateConfig(param1: string, ...args: any[]) {
+				return { test: "test" };
+			},
 			templatePaths: ["test"]
 		};
 		const mockProjLib = {
@@ -188,9 +197,9 @@ describe("Unit - New command", () => {
 		expect(newCmd.template.getFrameworkById).toHaveBeenCalledWith("jq");
 		expect(newCmd.template.getProjectLibrary).toHaveBeenCalledWith("jq");
 		expect(Util.log).toHaveBeenCalledWith("Project Name: Test, framework jq, type js, theme ig");
-		expect(mockTemplate.generateConfig).toHaveBeenCalledWith("Test", "ig");
+		expect(mockTemplate.generateConfig).toHaveBeenCalledWith("Test", ["ig"]);
 		expect(Util.processTemplates)
-		.toHaveBeenCalledWith("test", path.join("Mock dir", "Test"), mockConfig, mockDelimiters, false);
+		.toHaveBeenCalledWith("test", path.join("Mock dir", "Test"), mockConfig, mockDelimiters as TemplateDelimiters, false);
 		expect(PackageManager.installPackages).toHaveBeenCalled();
 		expect(process.chdir).toHaveBeenCalledWith("Test");
 		expect(process.chdir).toHaveBeenCalledWith("..");
@@ -200,7 +209,7 @@ describe("Unit - New command", () => {
 
 	it("Correctly generates passed project type", async done => {
 		const mockDelimiters = { mockDelimiter: { start: "test", end: "test" }};
-		const mockTemplate = {
+		const mockTemplate: MockTemplateType = {
 			delimiters: mockDelimiters,
 			generateConfig: { test: "test" },
 			templatePaths: ["test"]
@@ -228,7 +237,7 @@ describe("Unit - New command", () => {
 		expect(newCmd.template.getProjectLibrary).toHaveBeenCalledWith("jq", "type");
 		expect(mockTemplate.generateConfig).toHaveBeenCalledWith("Test", "ig");
 		expect(Util.processTemplates)
-		.toHaveBeenCalledWith("test", path.join("Mock dir", "Test"), mockConfig, mockDelimiters, false);
+		.toHaveBeenCalledWith("test", path.join("Mock dir", "Test"), mockConfig, mockDelimiters as TemplateDelimiters, false);
 		expect(PackageManager.installPackages).toHaveBeenCalled();
 		expect(process.chdir).toHaveBeenCalledWith("Test");
 		expect(process.chdir).toHaveBeenCalledWith("..");
@@ -240,7 +249,7 @@ describe("Unit - New command", () => {
 	it("Git initialization", async done => {
 		const projectName = "projTitle";
 
-		const mockTemplate = {
+		const mockTemplate: MockTemplateType = {
 			generateConfig: { test: "test" },
 			templatePaths: ["test"]
 		};
@@ -273,7 +282,7 @@ describe("Unit - New command", () => {
 	it("Skip Git initialization with command option", async done => {
 		const projectName = "projTitle";
 
-		const mockTemplate = {
+		const mockTemplate: MockTemplateType = {
 			generateConfig: { test: "test" },
 			templatePaths: ["test"]
 		};
@@ -301,7 +310,7 @@ describe("Unit - New command", () => {
 	it("Skip Git initialization with configuration option", async done => {
 		const projectName = "projTitle";
 
-		const mockTemplate = {
+		const mockTemplate: MockTemplateType = {
 			generateConfig: { test: "test" },
 			templatePaths: ["test"]
 		};
@@ -318,7 +327,8 @@ describe("Unit - New command", () => {
 			getProjectLibrary: mockProjLib
 		});
 		spyOn(mockTemplate, "generateConfig");
-		spyOn(ProjectConfig, "getConfig").and.returnValue({ skipGit: true });
+		// tslint:disable:no-object-literal-type-assertion
+		spyOn(ProjectConfig, "getConfig").and.returnValue({ skipGit: true } as Config);
 		spyOn(Util, "gitInit");
 
 		await newCmd.execute({ name: projectName, framework: "jq" });
@@ -328,7 +338,7 @@ describe("Unit - New command", () => {
 	});
 
 	it("Skip package install with command option", async done => {
-		const mockTemplate = {
+		const mockTemplate: MockTemplateType = {
 			generateConfig: { test: "test" },
 			templatePaths: ["test"]
 		};

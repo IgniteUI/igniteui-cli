@@ -1,5 +1,5 @@
 import { IgniteUIForAngularTemplate } from "@igniteui/angular-templates";
-import { ComponentGroup, Framework, ProjectConfig, Util } from "@igniteui/cli-core";
+import { ComponentGroup, Config, Framework, ProjectConfig, Util } from "@igniteui/cli-core";
 import * as path from "path";
 import { TemplateManager } from "../../packages/cli/lib/TemplateManager";
 import { AngularTemplate } from "../../packages/cli/lib/templates/AngularTemplate";
@@ -46,7 +46,7 @@ describe("Unit - Template manager", () => {
 			return obj;
 		}, {});
 		spyOn(Util, "getDirectoryNames").and.returnValue(frameworkIds);
-		spyOn(ProjectConfig, "globalConfig").and.returnValue({});
+		spyOn(ProjectConfig, "globalConfig").and.returnValue(new Object() as Config);
 
 		const manager = new TemplateManager();
 		expect(Util.getDirectoryNames).toHaveBeenCalledWith(path.join(__dirname, "../../packages/cli/templates"));
@@ -77,7 +77,8 @@ describe("Unit - Template manager", () => {
 		spyOn(Util, "error");
 		spyOn(Util, "getDirectoryNames").and.returnValue(["jquery"]);
 		const template = "existing/template/";
-		spyOn(ProjectConfig, "getConfig").and.returnValue({ customTemplates: [template] });
+		// tslint:disable:no-object-literal-type-assertion
+		spyOn(ProjectConfig, "getConfig").and.returnValue({ customTemplates: [template] } as Config);
 		spyOn(Util, "directoryExists").and.returnValue(true);
 		spyOn(Util, "fileExists").and.returnValue(true);
 		const mockProj =  mockProLibFactory("js");
@@ -135,7 +136,8 @@ describe("Unit - Template manager", () => {
 			["template1", "template2"] //templates load
 		);
 		const template = "rootFolder/";
-		spyOn(ProjectConfig, "getConfig").and.returnValue({ customTemplates: [template] });
+		// tslint:disable:no-object-literal-type-assertion
+		spyOn(ProjectConfig, "getConfig").and.returnValue({ customTemplates: [template] } as Config);
 		spyOn(Util, "directoryExists").and.returnValue(true);
 		spyOn(Util, "fileExists").and.returnValues(false, true, true);
 		mockProjLibs = { jquery: [ mockProLibFactory("js") ] };
@@ -174,7 +176,8 @@ describe("Unit - Template manager", () => {
 			"path:/template/angular/ig-ts",
 			"/template/angular/igx-ts"
 		];
-		spyOn(ProjectConfig, "getConfig").and.returnValue({ customTemplates: templates });
+		// tslint:disable:no-object-literal-type-assertion
+		spyOn(ProjectConfig, "getConfig").and.returnValue({ customTemplates: templates } as Config);
 		spyOn(Util, "directoryExists").and.returnValue(true);
 		spyOn(Util, "fileExists").and.returnValue(true);
 		mockProjLibs = {

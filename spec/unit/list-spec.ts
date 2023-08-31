@@ -1,4 +1,4 @@
-import { GoogleAnalytics, ProjectConfig, Util } from "@igniteui/cli-core";
+import { Config, GoogleAnalytics, ProjectConfig, Util } from "@igniteui/cli-core";
 import { default as listCmd } from "../../packages/cli/lib/commands/list";
 
 describe("Unit - List command", () => {
@@ -53,12 +53,13 @@ describe("Unit - List command", () => {
 
 	it("Should list templates for framework specified in local config if any", async done => {
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
+		// tslint:disable:no-object-literal-type-assertion
 		spyOn(ProjectConfig, "getConfig").and.returnValue({
 			project: {
 				framework: "angular",
 				projectType: "igx-ts"
 			}
-		});
+		} as Config);
 
 		const framework = { name: "Angular" };
 		const projectLib = {

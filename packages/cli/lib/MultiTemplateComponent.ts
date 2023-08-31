@@ -17,6 +17,7 @@ export abstract class MultiTemplateComponent<T extends Template> implements Comp
 		return templates;
 	}
 
+	// tslint:disable:member-ordering
 	constructor(private testType, private templatesMap: Map<string, { name: string, widget: string }>) {
 	}
 

@@ -1,5 +1,5 @@
 import { IgniteUIForAngularTemplate } from "@igniteui/angular-templates";
-import { App, GoogleAnalytics, PackageManager, ProjectConfig, TypeScriptFileUpdate, TypeScriptUtils, Util } from "@igniteui/cli-core";
+import { App, Config, GoogleAnalytics, PackageManager, ProjectConfig, ProjectLibrary, TemplateDelimiters, TypeScriptFileUpdate, TypeScriptUtils, Util } from "@igniteui/cli-core";
 import * as path from "path";
 import * as ts from "typescript";
 import { default as addCmd } from "../../packages/cli/lib/commands/add";
@@ -15,11 +15,16 @@ describe("Unit - Add command", () => {
 
 	it("Should start prompt session with missing arg", async done => {
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
-		spyOn(ProjectConfig, "getConfig").and.returnValue({ project: {
-			framework: "angular",
-			theme: "infragistics"}});
+		// tslint:disable:no-object-literal-type-assertion
+		const config = {
+			project: {
+				framework: "angular",
+				theme: "infragistics"
+			}
+		};
+		spyOn(ProjectConfig, "getConfig").and.returnValue(config as Config);
 
-		const mockProjLib = {};
+		const mockProjLib = {} as ProjectLibrary;
 		addCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: {},
 			getProjectLibrary: mockProjLib
@@ -36,7 +41,7 @@ describe("Unit - Add command", () => {
 	it("Should validate and trim name", async done => {
 		spyOn(ProjectConfig, "getConfig").and.returnValue({ project: {
 			framework: "angular",
-			theme: "infragistics"}});
+			theme: "infragistics"}} as Config);
 		spyOn(Util, "error");
 		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(false));
 		spyOn(process, "cwd").and.returnValue("Mock directory");
@@ -45,7 +50,7 @@ describe("Unit - Add command", () => {
 		const mockConfig = { test: "test" };
 		mockTemplate.generateConfig.and.returnValue(mockConfig);
 		mockTemplate.templatePaths = ["test"];
-		const mockDelimiters = { mockDelimiter: { start: "test", end: "test" }};
+		const mockDelimiters = { mockDelimiter: { start: "test", end: "test" }} as TemplateDelimiters;
 		mockTemplate.delimiters = mockDelimiters;
 		const errorCombos = [
 			{ name: "name.ts", inError: "name.ts" }, // file extension test
@@ -84,7 +89,7 @@ describe("Unit - Add command", () => {
 	it("Should queue package dependencies and wait for install", async done => {
 		spyOn(ProjectConfig, "getConfig").and.returnValue({ project: {
 			framework: "angular",
-			theme: "infragistics"}});
+			theme: "infragistics"}} as Config);
 		spyOn(Util, "log");
 		spyOn(PackageManager, "queuePackage");
 		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
@@ -116,7 +121,7 @@ describe("Unit - Add command", () => {
 		spyOn(PackageManager, "flushQueue").and.returnValue(Promise.resolve());
 		spyOn(PackageManager, "ensureIgniteUISource");
 		await addCmd.execute({name: "template with packages", template: "test-id"});
-		expect(addCmd.addTemplate).toHaveBeenCalledWith("template with packages", {}, jasmine.any(Object));
+		expect(addCmd.addTemplate).toHaveBeenCalledWith("template with packages", {} as any, jasmine.any(Object));
 		expect(PackageManager.flushQueue).toHaveBeenCalled();
 
 		done();
@@ -126,7 +131,7 @@ describe("Unit - Add command", () => {
 		const mockProjectConfig = {project: {
 			framework: "angular",
 			theme: "infragistics"
-		}};
+		}} as Config;
 
 		spyOn(TypeScriptUtils, "getFileSource").and.returnValue(
 			ts.createSourceFile("test-file-name", ``, ts.ScriptTarget.Latest, true)
@@ -160,7 +165,7 @@ describe("Unit - Add command", () => {
 		spyOn(PackageManager, "ensureIgniteUISource");
 		spyOn(Util, "directoryExists").and.returnValue(true);
 		const mockVirtFs = {
-			fileExists: () => {}
+			fileExists: (file: string) => {}
 		};
 		spyOn(App.container, "get").and.returnValue(mockVirtFs);
 		spyOn(mockVirtFs, "fileExists").and.callFake(file => {
@@ -210,7 +215,7 @@ describe("Unit - Add command", () => {
 		const mockProjectConfig = {project: {
 			framework: "angular",
 			theme: "infragistics"
-		}};
+		}} as Config;
 
 		spyOn(TypeScriptUtils, "getFileSource").and.returnValue(
 			ts.createSourceFile("test-file-name", ``, ts.ScriptTarget.Latest, true)
@@ -284,7 +289,7 @@ describe("Unit - Add command", () => {
 		const mockProjectConfig = {project: {
 			framework: "angular",
 			theme: "infragistics"
-		}};
+		}} as Config;
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 		spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
 

@@ -27,6 +27,7 @@ export class BaseProjectLibrary implements ProjectLibrary {
 		list = list.concat(this.customTemplates);
 		return list;
 	}
+	// tslint:disable:member-ordering
 	private _projectIds: string[] = [];
 	public get projectIds(): string[] {
 		//read projects list
@@ -37,6 +38,7 @@ export class BaseProjectLibrary implements ProjectLibrary {
 		return this._projectIds;
 	}
 
+	// tslint:disable:member-ordering
 	private _projects: ProjectTemplate[] = [];
 	public get projects(): ProjectTemplate[] {
 		if (!this._projects.length) {
@@ -53,6 +55,7 @@ export class BaseProjectLibrary implements ProjectLibrary {
 			return this._customTemplates;
 		}*/
 
+	// tslint:disable:member-ordering
 	private _customTemplates: Template[] = [];
 	public get customTemplates(): Template[] {
 		if (!this._customTemplates.length) {
@@ -68,6 +71,7 @@ export class BaseProjectLibrary implements ProjectLibrary {
 		return this._customTemplates;
 	}
 
+	// tslint:disable:member-ordering
 	private _components: Component[] = [];
 	public get components(): Component[] {
 		if (!this._components.length) {
@@ -87,6 +91,7 @@ export class BaseProjectLibrary implements ProjectLibrary {
 		return this._components;
 	}
 
+	// tslint:disable:member-ordering
 	private _generateTemplateFolderPath: string = "";
 	public get generateTemplateFolderPath(): string {
 		if (this._generateTemplateFolderPath === "") {
@@ -95,9 +100,7 @@ export class BaseProjectLibrary implements ProjectLibrary {
 		return this._generateTemplateFolderPath;
 	}
 
-	/**
-	 *
-	 */
+	// tslint:disable:member-ordering
 	constructor(private rootPath: string) { }
 
 	public getTemplateById(id: string): Template {

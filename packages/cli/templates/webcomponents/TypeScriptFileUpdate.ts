@@ -12,7 +12,7 @@ export class TypeScriptFileUpdate {
 	private targetSource: ts.SourceFile;
 	private importsMeta: { lastIndex: number, modulePaths: string[] };
 
-	private requestedImports: Array<{ as: string | undefined, from: string, edit: boolean }>;
+	private requestedImports: ({ as: string | undefined, from: string, edit: boolean })[];
 
 	private createdStringLiterals: string[];
 

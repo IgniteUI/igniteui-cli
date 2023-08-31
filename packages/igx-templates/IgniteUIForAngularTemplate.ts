@@ -35,6 +35,7 @@ export class IgniteUIForAngularTemplate implements Template {
 		return [path.join(this.rootPath, "files")];
 	}
 
+	// tslint:disable:member-ordering
 	constructor(private rootPath: string) {
 	}
 

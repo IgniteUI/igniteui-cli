@@ -17,7 +17,8 @@ export class PackageManager {
 		return path.join(process.cwd(), "package.json");
 	}
 
-	private static installQueue: Array<Promise<{ packageName, error, stdout, stderr }>> = [];
+	//tslint:disable:member-ordering
+	private static installQueue: (Promise<{ packageName, error, stdout, stderr }>)[] = [];
 
 	/**
 	 * Specific for Ignite UI packages handling:
@@ -103,6 +104,7 @@ export class PackageManager {
 			try {
 				// inherit the parent process' stdin so we can catch if an attempt to interrupt the process is made
 				// ignore stdout and stderr as they will output unnecessary text onto the console
+				// tslint:disable:object-literal-sort-keys
 				Util.execSync(command, { stdio: ["inherit"], killSignal: "SIGINT" });
 				Util.log(`Packages installed successfully`);
 			} catch (error) {

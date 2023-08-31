@@ -1,6 +1,7 @@
 import { GoogleAnalytics } from "@igniteui/cli-core";
 import { spawnSync } from "child_process";
 import * as cli from "../../packages/cli/lib/cli";
+import { Worker } from "worker_threads";
 
 const execLocation = "packages/cli/bin/execute.js";
 describe("Help command", () => {
@@ -10,12 +11,14 @@ describe("Help command", () => {
 		let thrownError;
 		const listeners = []/* process.listeners("exit") */;
 
-		spyOn(process, "on").and.callFake((type, handler) => {
+		const mockProcess: Partial<NodeJS.Process> = {};
+		spyOn(process, "on").and.callFake((type: string, handler: unknown)  => {
 			if (type === "exit") {
 				listeners.push(handler);
 			} else {
 				throw Error("wrong event type");
 			}
+			return mockProcess as NodeJS.Process;
 		});
 		spyOn(process, "exit").and.callFake(() => {
 			// still terminate execution, but not the whole process
