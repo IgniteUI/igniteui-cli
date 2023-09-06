@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useEffect, useState } from 'react'
 import { IgrFinancialChartModule } from 'igniteui-react-charts';
 import { IgrFinancialChart } from 'igniteui-react-charts';
 import style from './style.css';
@@ -20,36 +20,30 @@ const data = [
 ];
 
 
-export default class $(ClassName) extends Component {
-    title = 'Financial Chart';
-    state = {
-        data: []
-    }
+export default function $(ClassName)() {
+    const title = 'Financial Chart';
+	const [chartData, setChartData] = useState([]);
+    
+	useEffect(() => {
+		setChartData(data);
+	}, []);
 
-    componentWillMount() {
-        this.setState({
-            data
-        });
-    }
-
-    render() {
-        return (
-            <div>
-                <h1 className={style.title}>{this.title}</h1>
-                <div>
-                    Read more on the&nbsp;
-                    <a href="https://www.infragistics.com/products/ignite-ui-react/react/components/financialchart.html">
-                        official documentation page
-                    </a>
-                </div>
-                <div className={style.container}>
-                    <IgrFinancialChart
-                        width="700px"
-                        height="500px"
-                        dataSource={this.state.data}>
-                    </IgrFinancialChart>
-                </div>
-            </div >
-        )
-    }
+	return (
+		<div>
+			<h1 className={style.title}>{title}</h1>
+			<div>
+				Read more on the&nbsp;
+				<a href="https://www.infragistics.com/products/ignite-ui-react/react/components/financialchart.html">
+					official documentation page
+				</a>
+			</div>
+			<div className={style.container}>
+				<IgrFinancialChart
+					width="700px"
+					height="500px"
+					dataSource={chartData}>
+				</IgrFinancialChart>
+			</div>
+		</div>
+	)
 }
