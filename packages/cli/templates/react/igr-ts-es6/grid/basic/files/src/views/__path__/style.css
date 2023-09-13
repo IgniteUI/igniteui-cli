@@ -1,0 +1,17 @@
+:local(.container) {
+	padding-top: 24px;
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+}
+
+:local(.title) {
+	color: rgb(0, 153, 255);
+}
+
+:local(.grid) {
+	width: 80%;
+	margin-bottom: 24px;
+	border: 1px solid rgb(0, 153, 255);
+}
