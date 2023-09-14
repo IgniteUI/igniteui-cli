@@ -1,29 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
-export default function NavigationHeader({ routes }) {
-	const [state, setState] = useState({ activeItem: null });
-
-	function handleClick(index) {
-		setState({ activeItem: index });
+export default class NavigationHeader extends Component {
+	state = {
+		activeItem: null
 	}
 
-	useEffect(() => {
+	handleClick(index) {
+		this.setState({
+			activeItem: index
+		})
+	}
+
+	componentWillMount() {
 		let currentRoute = window.location.href.split(window.location.origin)[1];
 		if (!currentRoute) {
 			currentRoute = '/'
 		}
-		const activeItem = routes.findIndex((route) => route.path === currentRoute);
-		setState({ activeItem });
-	}, [routes]);
-	
-	return (
-		<nav>
-			<ul>
-				{routes.map(
-					(route, i) => <li key={i} className={state.activeItem === i ? 'active' : ''}><NavLink onClick={() => handleClick(i)} exact to={route.path}>{route.text}</NavLink></li>
-				)}
-			</ul>
-		</nav>
-	)
-}
+		const activeItem = this.props.routes.findIndex((route) => route.path === currentRoute);
+		this.setState({
+			activeItem
+		});
+	}
+
+	render() {
+		return (
+			<nav>
+				<ul>
+					{this.props.routes.map(
+						(route, i) => <li key={i} className={this.state.activeItem === i ? 'active' : ''}><NavLink onClick={() => this.handleClick(i)} exact to={route.path}>{route.text}</NavLink></li>
+					)}
+				</ul>
+			</nav>
+		)
+	}
+} 
