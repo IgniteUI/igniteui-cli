@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { IgrCategoryChartModule } from 'igniteui-react-charts';
 import { IgrCategoryChart } from 'igniteui-react-charts';
-import style from './style.css';
+import style from './style.module.css';
 
 IgrCategoryChartModule.register();
 
@@ -16,7 +16,7 @@ var data = [
 export default class $(ClassName)() {
     const title = 'Category Chart';
 	const [chartData, setChartData] = useState([]);
-    
+
 	useEffect(() => {
 		setChartData(data);
 	}, []);

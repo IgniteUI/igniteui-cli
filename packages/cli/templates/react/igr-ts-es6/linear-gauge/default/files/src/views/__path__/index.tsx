@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './style.css';
+import style from './style.module.css';
 import { IgrLinearGaugeModule } from 'igniteui-react-gauges';
 import { IgrLinearGauge } from 'igniteui-react-gauges';
 

@@ -4,7 +4,7 @@ import { IgrPieChart } from 'igniteui-react-charts';
 import { IgrItemLegend } from 'igniteui-react-charts';
 import { IgrItemLegendModule } from 'igniteui-react-charts';
 
-import style from './style.css';
+import style from './style.module.css';
 
 IgrPieChartModule.register();
 IgrItemLegendModule.register();
@@ -22,7 +22,7 @@ export default function $(ClassName)() {
     const [chartData, setChartData] = useState([]);
 	let legendRef = useRef();
     let chartRef = useRef();
-    
+
 	useEffect(() => {
 		setChartData(data);
 	}, []);

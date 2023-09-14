@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
-import styles from './style.css';
+import styles from './style.module.css';
 
 export default function Home() {
 	return (

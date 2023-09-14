@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './style.css';
+import style from './style.module.css';
 import { IgrDataGridModule  } from 'igniteui-react-grids';
 import { IgrDataGrid } from 'igniteui-react-grids';
 import { IgrNumericColumn } from 'igniteui-react-grids';
@@ -44,5 +44,5 @@ export default function $(ClassName)() {
 				</div>
 			</div>
 		</div>
-	)	
+	)
 }

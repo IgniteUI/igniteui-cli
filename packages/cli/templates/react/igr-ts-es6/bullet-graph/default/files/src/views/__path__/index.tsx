@@ -1,7 +1,7 @@
 import React from 'react';
 import { IgrBulletGraphModule } from 'igniteui-react-gauges';
 import { IgrBulletGraph } from 'igniteui-react-gauges';
-import style from './style.css';
+import style from './style.module.css';
 
 IgrBulletGraphModule.register();
 

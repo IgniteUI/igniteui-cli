@@ -6,7 +6,7 @@ import { IgrRingSeries } from 'igniteui-react-charts';
 import { IgrItemLegendModule } from 'igniteui-react-charts';
 import { IgrItemLegend } from 'igniteui-react-charts';
 
-import style from './style.css';
+import style from './style.module.css';
 
 IgrItemLegendModule.register();
 
@@ -23,7 +23,7 @@ const data = [
 ];
 
 export default function $(ClassName)() {
-    const title = 'Doughnut Chart';    
+    const title = 'Doughnut Chart';
     const [chartData, setChartData] = useState([]);
     let legendRef = useRef();
     let chartRef = useRef();
