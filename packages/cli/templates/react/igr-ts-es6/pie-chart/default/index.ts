@@ -1,6 +1,6 @@
 import { IgniteUIForReactTemplate } from "../../../../../lib/templates/IgniteUIForReactTemplate";
 
-class IgrPieChartTemplate extends IgniteUIForReactTemplate {
+class IgrTsPieChartTemplate extends IgniteUIForReactTemplate {
 	constructor() {
 		super(__dirname);
 		this.components = ["Pie Chart"];
@@ -13,4 +13,4 @@ class IgrPieChartTemplate extends IgniteUIForReactTemplate {
 		this.packages = ["igniteui-react-charts@~16.15.0"]; // TODO: read version from igniteui-react-core in package.json
 	}
 }
-module.exports = new IgrPieChartTemplate();
+module.exports = new IgrTsPieChartTemplate();

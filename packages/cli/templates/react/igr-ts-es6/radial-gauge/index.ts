@@ -1,7 +1,7 @@
 
 import { BaseComponent } from "@igniteui/cli-core";
 
-class IgrRadialGaugeComponent extends BaseComponent {
+class IgrTsRadialGaugeComponent extends BaseComponent {
 	/**
 	 *
 	 */
@@ -13,4 +13,4 @@ class IgrRadialGaugeComponent extends BaseComponent {
 							and labels, in order to create a predefined shape and scale.`;
 	}
 }
-module.exports = new IgrRadialGaugeComponent();
+module.exports = new IgrTsRadialGaugeComponent();
