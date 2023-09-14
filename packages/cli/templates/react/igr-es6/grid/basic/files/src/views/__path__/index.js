@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import style from './style.css';
 import { IgrDataGridModule  } from 'igniteui-react-grids';
 import { IgrDataGrid } from 'igniteui-react-grids';
@@ -10,24 +10,28 @@ import data from './data';
 
 IgrDataGridModule.register();
 
-export default function $(ClassName)() {
-	const title = 'Grid';
+export default class $(ClassName) extends Component {
+	title = 'Grid';
+	state = {
+	}
 
-	return (
-		<div>
-			<h1 className={style.title}>{title}</h1>
+	render() {
+		this.data = data;
+		return (
 			<div>
-				Read more on the&nbsp;
-				<a href="https://www.infragistics.com/products/ignite-ui-react/react/components/grid.html">
-					official documentation page
-				</a>
-			</div>
-			<div className={style.container}>
+				<h1 className={style.title}>{this.title}</h1>
+				<div>
+					Read more on the&nbsp;
+                    <a href="https://www.infragistics.com/products/ignite-ui-react/react/components/grid.html">
+						official documentation page
+                    </a>
+				</div>
+				<div className={style.container}>
 				<div className={style.grid}>
 					<IgrDataGrid
 						height="100%"
 						autoGenerateColumns="false"
-						dataSource={data}>
+						dataSource={this.data}>
 						<IgrNumericColumn field="ProductID" headerText="Product ID" />
 						<IgrTextColumn field="ProductName" headerText="Product Name" />
 						<IgrTextColumn field="QuantityPerUnit" headerText="Quantity Per Unit" />
@@ -40,9 +44,10 @@ export default function $(ClassName)() {
 						height="100%"
 						width="100%"
 						autoGenerateColumns="true"
-						dataSource={data} />
+						dataSource={this.data} />
+				</div>
 				</div>
 			</div>
-		</div>
-	)	
+		)
+	}
 }

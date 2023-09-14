@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { Component } from 'react';
 import { IgrCategoryChartModule } from 'igniteui-react-charts';
 import { IgrCategoryChart } from 'igniteui-react-charts';
 import style from './style.css';
@@ -13,29 +13,33 @@ var data = [
     { 'CountryName': 'Brazil', 'Pop1995': 161, 'Pop2005': 186, 'Pop2015': 204, 'Pop2025': 218 }
 ];
 
-export default class $(ClassName)() {
-    const title = 'Category Chart';
-	const [chartData, setChartData] = useState([]);
-    
-	useEffect(() => {
-		setChartData(data);
-	}, []);
+export default class $(ClassName) extends Component {
+    title = 'Category Chart'
+    state = {
+        data: []
+    }
 
-	return (
-		<div>
-			<h1 className={style.title}>{title}</h1>
-			<div>
-				Read more on the&nbsp;
-				<a href="https://www.infragistics.com/products/ignite-ui-react/react/components/categorychart.html">
-					official documentation page
-				</a>
-			</div>
-			<div className={style.container}>
-				<IgrCategoryChart dataSource={chartData}
-					width="100%"
-					height="500px">
-				</IgrCategoryChart>
-			</div>
-		</div>
-	)
+    componentDidMount() {
+        this.setState({ data });
+    }
+
+    render() {
+        return (
+            <div>
+                <h1 className={style.title}>{this.title}</h1>
+                <div>
+                    Read more on the&nbsp;
+                    <a href="https://www.infragistics.com/products/ignite-ui-react/react/components/categorychart.html">
+                        official documentation page
+                    </a>
+                </div>
+                <div className={style.container}>
+                    <IgrCategoryChart dataSource={this.state.data}
+                        width="100%"
+                        height="500px">
+                    </IgrCategoryChart>
+                </div>
+            </div >
+        )
+    }
 }
