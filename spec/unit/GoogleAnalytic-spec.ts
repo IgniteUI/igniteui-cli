@@ -1,4 +1,4 @@
-import { Config, GoogleAnalytics, ProjectConfig } from "@igniteui/cli-core";
+import { App, Config, GoogleAnalytics, ProjectConfig } from "@igniteui/cli-core";
 import * as childProcess from "child_process";
 import * as fs from "fs";
 import * as https from "https";
@@ -17,6 +17,7 @@ describe("Unit - Google Analytic", () => {
 	}
 
 	beforeEach(() => {
+		App.initialize();
 		request = jasmine.createSpyObj("request", ["on", "end"]);
 		spyOn(https, "request").and.returnValue(request);
 		serviceSpy =

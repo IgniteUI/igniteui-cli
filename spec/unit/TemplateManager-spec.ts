@@ -36,7 +36,7 @@ describe("Unit - Template manager", () => {
 		});
 	});
 
-	it("Returns correct framework and projects", async done => {
+	it("Returns correct framework and projects", async () => {
 		const frameworkIds = ["react", "angular"];
 		mockProjLibs = frameworkIds.reduce((obj, folder) => {
 			obj[folder] = [
@@ -70,10 +70,9 @@ describe("Unit - Template manager", () => {
 		expect(manager.getProjectLibrary(frameworkIds[1], "test")).toBeUndefined();
 		expect(manager.getProjectLibrary(frameworkIds[1], frameworkIds[1] + "type1")).toBe(framework.projectLibraries[0]);
 		expect(manager.getProjectLibrary(frameworkIds[1], frameworkIds[1] + "type2")).toBe(framework.projectLibraries[1]);
-		done();
 	});
 
-	it("Shows warnings for incorrect custom templates", async done => {
+	it("Shows warnings for incorrect custom templates", async () => {
 		spyOn(Util, "error");
 		spyOn(Util, "getDirectoryNames").and.returnValue(["jquery"]);
 		const template = "existing/template/";
@@ -127,10 +126,9 @@ describe("Unit - Template manager", () => {
 			`The framework/project type for template with id "existing" is not supported.`);
 		expect(Util.error).toHaveBeenCalledWith(`File path: ${(template + "template.json").replace(/\//g, path.sep)}`);
 
-		done();
 	});
 
-	it("Loads custom templates from sub folders", async done => {
+	it("Loads custom templates from sub folders", async () => {
 		spyOn(Util, "getDirectoryNames").and.returnValues(
 			["jquery"], //frameworks load
 			["template1", "template2"] //templates load
@@ -165,10 +163,9 @@ describe("Unit - Template manager", () => {
 			jasmine.objectContaining({ id: "rootFolder/template2/template.json".replace(/\//g, path.sep) })
 		);
 
-		done();
 	});
 
-	it("Should load/create/register diff types of external custom Templates", async done => {
+	it("Should load/create/register diff types of external custom Templates", async () => {
 		spyOn(Util, "getDirectoryNames").and.returnValue(["jquery", "react", "angular"]);
 		const templates = [
 			"file:/template/jquery/js",
@@ -228,6 +225,5 @@ describe("Unit - Template manager", () => {
 		expect(mockProjLibs.angular[1].registerTemplate).toHaveBeenCalledWith(
 			jasmine.objectContaining(template("angular", "igx-ts"))
 		);
-		done();
 	});
 });

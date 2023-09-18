@@ -1,5 +1,4 @@
 import { Config, ControlExtraConfigType, GoogleAnalytics, PackageManager, ProjectConfig, ProjectLibrary, Template, TemplateDelimiters, Util } from "@igniteui/cli-core";
-import * as inquirer from "inquirer";
 import * as path from "path";
 import { default as add } from "../../packages/cli/lib/commands/add";
 import { default as start } from "../../packages/cli/lib/commands/start";
@@ -13,8 +12,9 @@ describe("Unit - PromptSession", () => {
 	});
 
 	// TODO: most of the tests use same setup - move the setup to beforeAll call
-	it("chooseTerm - Should call itself if no term is passed.", async done => {
+	it("chooseTerm - Should call itself if no term is passed.", async () => {
 		spyOn(PromptSession, "chooseTerm").and.callThrough();
+		const inquirer = await import("inquirer");
 		spyOn(inquirer, "prompt").and.returnValues(Promise.resolve({ term: "" }),
 			Promise.resolve({ term: "" }), Promise.resolve({ term: "" }),
 			Promise.resolve({ term: "" }), Promise.resolve({ term: "Test" }));
@@ -23,9 +23,8 @@ describe("Unit - PromptSession", () => {
 		expect(PromptSession.chooseTerm).toHaveBeenCalledTimes(5);
 		expect(testVar).toBe("Test");
 		expect(inquirer.prompt).toHaveBeenCalledTimes(5);
-		done();
 	});
-	it("start - Should create new project correctly", async done => {
+	it("start - Should create new project correctly", async () => {
 		spyOn(ProjectConfig, "getConfig").and.returnValue(new Object() as Config);
 		// tslint:disable:object-literal-sort-keys
 		const mockProject = {
@@ -61,7 +60,8 @@ describe("Unit - PromptSession", () => {
 		});
 		mockTemplate.templatePaths = ["test"];
 		const mockSession = new PromptSession(mockTemplate);
-		const mockQuestion: inquirer.Question = {
+		const inquirer = await import("inquirer");
+		const mockQuestion = {
 			type: "list",
 			name: "theme",
 			message: "Choose the theme for the project:",
@@ -98,9 +98,8 @@ describe("Unit - PromptSession", () => {
 		expect(inquirer.prompt).toHaveBeenCalledTimes(4);
 		expect(inquirer.prompt).toHaveBeenCalledWith(mockQuestion);
 		expect(mockTemplate.getFrameworkByName).toHaveBeenCalledTimes(1);
-		done();
 	});
-	it("start - Should go into chooseActionLoop if project has local config", async done => {
+	it("start - Should go into chooseActionLoop if project has local config", async () => {
 		const mockTemplate = jasmine.createSpyObj("mockTemplate", {
 			getProjectLibrary: {}
 		});
@@ -119,9 +118,8 @@ describe("Unit - PromptSession", () => {
 		expect(mockTemplate.getProjectLibrary).toHaveBeenCalledTimes(1);
 		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(1);
 		expect(mockSession.chooseActionLoop).toHaveBeenCalledWith(new Object() as ProjectLibrary);
-		done();
 	});
-	it("start - Should skip framework/projType input w/ restricted config", async done => {
+	it("start - Should skip framework/projType input w/ restricted config", async () => {
 		// tslint:disable:no-object-literal-type-assertion
 		spyOn(ProjectConfig, "getConfig").and.returnValue({
 			stepByStep: {
@@ -166,6 +164,7 @@ describe("Unit - PromptSession", () => {
 		spyOn(Util, "directoryExists").and.returnValue(false);
 		spyOn(Util, "isAlphanumericExt").and.returnValue(true);
 		spyOn(Util, "gitInit");
+		const inquirer = await import("inquirer");
 		spyOn(inquirer, "prompt").and.returnValues(
 			Promise.resolve({ projectName: "Test Project" })
 		);
@@ -198,9 +197,8 @@ describe("Unit - PromptSession", () => {
 		expect(Util.log).toHaveBeenCalledWith(" Project structure generated.");
 		expect(Util.gitInit).toHaveBeenCalled();
 		expect(mockSession.chooseActionLoop).toHaveBeenCalled();
-		done();
 	});
-	it("start - New project - missing IFs", async done => {
+	it("start - New project - missing IFs", async () => {
 		// tslint:disable:object-literal-sort-keys
 		const mockProject = {
 			name: "Project 1",
@@ -235,7 +233,8 @@ describe("Unit - PromptSession", () => {
 		});
 		mockTemplate.templatePaths = ["test"];
 		const mockSession = new PromptSession(mockTemplate);
-		const mockQuestion: inquirer.Question = {
+		const inquirer = await import("inquirer");
+		const mockQuestion = {
 			type: "list",
 			name: "theme",
 			message: "Choose the theme for the project:",
@@ -287,9 +286,8 @@ describe("Unit - PromptSession", () => {
 		expect(Util.isAlphanumericExt).toHaveBeenCalledWith("Th15 w1ll");
 		expect(Util.directoryExists).toHaveBeenCalledTimes(3);
 		expect(Util.directoryExists).toHaveBeenCalledWith("Th15 w1ll");
-		done();
 	});
-	it("chooseActionLoop - should run through properly - Add Component", async done => {
+	it("chooseActionLoop - should run through properly - Add Component", async () => {
 		// tslint:disable:object-literal-sort-keys
 		const mockExtraConfigurations = [{
 			choices: [],
@@ -368,6 +366,7 @@ describe("Unit - PromptSession", () => {
 		spyOn(add, "addTemplate").and.returnValue(Promise.resolve(true));
 		spyOn(PackageManager, "flushQueue").and.returnValue(null);
 		spyOn(start, "start").and.returnValue(null);
+		const inquirer = await import("inquirer");
 		spyOnProperty(inquirer, "prompt").and.returnValues(
 			Promise.resolve({ action: "Add component" }),
 			Promise.resolve({ componentGroup: "Back" }),
@@ -403,9 +402,8 @@ describe("Unit - PromptSession", () => {
 			name: "customValue2",
 			choices: []
 		}]);
-		done();
 	});
-	it("chooseActionLoop - should run through properly - Add scenario", async done => {
+	it("chooseActionLoop - should run through properly - Add scenario", async () => {
 		const mockSelectedTemplate: Partial<Template> = {
 			name: "Custom Template 1"
 		};
@@ -441,6 +439,7 @@ describe("Unit - PromptSession", () => {
 		spyOn(PackageManager, "flushQueue").and.returnValue(null);
 		spyOn(start, "start").and.returnValue(null);
 		spyOn(Util, "getAvailableName").and.callThrough();
+		const inquirer = await import("inquirer");
 		spyOn(inquirer, "prompt").and.returnValues(
 			Promise.resolve({ action: "Add scenario" }),
 			Promise.resolve({ customTemplate: "Back" }),
@@ -461,9 +460,8 @@ describe("Unit - PromptSession", () => {
 		expect(Util.getAvailableName).toHaveBeenCalledTimes(1);
 		expect(add.addTemplate).toHaveBeenCalledTimes(1);
 		expect(add.addTemplate).toHaveBeenCalledWith("Custom Template Name", mockSelectedTemplate as Template);
-		done();
 	});
-	it("chooseActionLoop - should run through properly - Add Component", async done => {
+	it("chooseActionLoop - should run through properly - Add Component", async () => {
 		// tslint:disable:object-literal-sort-keys
 		const mockExtraConfigurations = [{
 			choices: ["Choice 1", "Choice 2", "Choice 3"],
@@ -551,6 +549,7 @@ describe("Unit - PromptSession", () => {
 		spyOn(PackageManager, "flushQueue").and.returnValue(null);
 		//spyOn(start, "start").and.returnValue(Promise.resolve({port: 3333 }));
 		spyOn(start, "start").and.returnValue(null);
+		const inquirer = await import("inquirer");
 		spyOn(inquirer, "prompt").and.returnValues(
 			Promise.resolve({ action: "Add component" }),
 			Promise.resolve({ componentGroup: "Back" }),
@@ -586,9 +585,8 @@ describe("Unit - PromptSession", () => {
 			name: "customValue2",
 			choices: ["Choice 1", "Choice 2", "Choice 3"]
 		}]);
-		done();
 	});
-	it("chooseActionLoop - Complete and Run should update default port", async done => {
+	it("chooseActionLoop - Complete and Run should update default port", async () => {
 		const mockProject = {
 			generateConfig: () => Promise.resolve(true)
 		};
@@ -618,6 +616,7 @@ describe("Unit - PromptSession", () => {
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 		const mockSession = new PromptSession(mockTemplate);
 		spyOn(mockSession, "chooseActionLoop").and.callThrough();
+		const inquirer = await import("inquirer");
 		spyOn(inquirer, "prompt").and.returnValues(
 			Promise.resolve({ action: "Complete & Run" }),
 			Promise.resolve({ port: 7777 })
@@ -643,9 +642,8 @@ describe("Unit - PromptSession", () => {
 			"red");
 		expect(lastCallArgs.validate("3210")).toBe(true);
 		expect(Util.error).toHaveBeenCalledTimes(2);
-		done();
 	});
-	it("chooseActionLoop - should call `upgradePackages` when update angular is true", async done => {
+	it("chooseActionLoop - should call `upgradePackages` when update angular is true", async () => {
 		const params = {
 			project: {
 				defaultPort: 4200,
@@ -671,16 +669,15 @@ describe("Unit - PromptSession", () => {
 
 		expect(upgrade.upgrade).toHaveBeenCalledTimes(1);
 		expect(upgrade.upgrade).toHaveBeenCalledWith({ skipInstall: true });
-
-		done();
 	});
-	it("start - Should fire correctly with Angular Custom theme selected", async done => {
+	it("start - Should fire correctly with Angular Custom theme selected", async () => {
 		spyOn(ProjectConfig, "getConfig").and.returnValue({ customTemplates: [] } as Config);
 		const mockSession = new PromptSession(new TemplateManager());
 		spyOn(Util, "isAlphanumericExt").and.callThrough();
 		spyOn(Util, "gitInit");
 		spyOn(Util, "log");
 		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
+		const inquirer = await import("inquirer");
 		spyOn(inquirer, "prompt").and.returnValues(
 			Promise.resolve({ projectName: "Test1" }),
 			Promise.resolve({ framework: "Angular" }),
@@ -704,15 +701,15 @@ describe("Unit - PromptSession", () => {
 		const actualCall = (Util.processTemplates as jasmine.Spy).calls.argsFor(0)[2]["CustomTheme"].replace(/\s/g, "");
 		const expectedCall = CUSTOM_THEME.replace(/\s/g, "");
 		expect(actualCall).toEqual(expectedCall);
-		done();
 	});
-	it("start - Should fire correctly with Angular Default theme selected", async done => {
+	it("start - Should fire correctly with Angular Default theme selected", async () => {
 		spyOn(ProjectConfig, "getConfig").and.returnValue({ customTemplates: [] } as Config);
 		const mockSession = new PromptSession(new TemplateManager());
 		spyOn(Util, "isAlphanumericExt").and.callThrough();
 		spyOn(Util, "gitInit");
 		spyOn(Util, "log");
 		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
+		const inquirer = await import("inquirer");
 		spyOn(inquirer, "prompt").and.returnValues(
 			Promise.resolve({ projectName: "Test1" }),
 			Promise.resolve({ framework: "Angular" }),
@@ -726,6 +723,5 @@ describe("Unit - PromptSession", () => {
 		const actualCall = (Util.processTemplates as jasmine.Spy).calls.argsFor(0)[2]["DefaultTheme"].replace(/\s/g, "");
 		const expectedCall = DEFAULT_THEME.replace(/\s/g, "");
 		expect(actualCall).toEqual(expectedCall);
-		done();
 	});
 });

@@ -1,4 +1,3 @@
-import * as inquirer from "inquirer";
 import * as path from "path";
 import { BaseTemplateManager } from "../templates";
 import {
@@ -109,7 +108,7 @@ export abstract class BasePromptSession {
 	 * @param withBackChoice Add a "Back" option to choices list
 	 */
 	protected async getUserInput(options: IUserInputOptions, withBackChoice: boolean = false): Promise<string> {
-
+		const inquirer = await import("inquirer");
 		if (options.choices) {
 			if (options.choices.length < 2) {
 				// single choice to return:
@@ -121,7 +120,7 @@ export abstract class BasePromptSession {
 			if (withBackChoice) {
 				options.choices.push(WIZARD_BACK_OPTION);
 			}
-			options.choices = this.addSeparators(options.choices);
+			options.choices = this.addSeparators(options.choices, inquirer);
 		}
 
 		const userInput = await inquirer.prompt(options);
@@ -274,6 +273,7 @@ export abstract class BasePromptSession {
 	/** Create prompts from template extra configuration and assign user answers to the template */
 	protected async customizeTemplateTask(template: Template) {
 		const extraPrompt: any[] = this.createQuestions(template.getExtraConfiguration());
+		const inquirer = await import("inquirer");
 		const extraConfigAnswers = await inquirer.prompt(extraPrompt);
 		const extraConfig = this.parseAnswers(extraConfigAnswers);
 
@@ -291,7 +291,7 @@ export abstract class BasePromptSession {
 	 * Returns a new array with inquirer.Separator() added between items
 	 * @param array The original array to add separator to
 	 */
-	private addSeparators(array: any[]): any[] {
+	private addSeparators(array: any[], inquirer: any): any[] {
 		const newArray = [];
 		for (let i = 0; i < array.length; i++) {
 			newArray.push(array[i]);

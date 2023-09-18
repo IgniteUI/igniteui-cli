@@ -5,11 +5,11 @@ import * as glob from "glob";
  * Deletes all files and folders under a given path
  * @param folderPath Folder path
  */
-export function deleteAll(folderPath: string) {
-	const files: string[] = glob.sync(folderPath + "/**/*", { dot: true, nodir: true });
-	files.forEach(x => fs.unlinkSync(x));
-	const folders: string[] = glob.sync(folderPath + "/**/*", { dot: true });
-	folders.reverse().forEach(x => fs.rmdirSync(x));
+export async function deleteAll(folderPath: string) {
+	const files: string[] = await glob.sync(folderPath + "/**/*", { dot: true, nodir: true });
+	await files.forEach(x => fs.unlinkSync(x));
+	const folders: string[] = await glob.sync(folderPath + "/**/*", { dot: true });
+	await folders.reverse().forEach(x => fs.rmdirSync(x));
 }
 
 /**

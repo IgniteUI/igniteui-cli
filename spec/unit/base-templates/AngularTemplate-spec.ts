@@ -15,7 +15,7 @@ describe("Unit - AngularTemplate Base", () => {
 		public widget = "widget no-process";
 	}
 
-	it("generateConfig call processTemplates with correct path and variables", async done => {
+	it("generateConfig call processTemplates with correct path and variables", async () => {
 		const expected = {
 			name: "my component",
 			ClassName: "MyComponent",
@@ -40,10 +40,9 @@ describe("Unit - AngularTemplate Base", () => {
 		// 	path.join("root/path" , "files"),
 		// 	"/target/path",
 		// 	expected, {});
-		done();
 	});
 
-	it("generateConfig merge passed variables under extraConfig (only)", async done => {
+	it("generateConfig merge passed variables under extraConfig (only)", async () => {
 		const expected = {
 			name: "page",
 			ClassName: "Page",
@@ -84,7 +83,6 @@ describe("Unit - AngularTemplate Base", () => {
 			someThirdVar: false
 		});
 		expect(actual).toEqual(expected);
-		done();
 	});
 
 	describe("registerInProject", () => {
@@ -93,7 +91,7 @@ describe("Unit - AngularTemplate Base", () => {
 			helpers = {
 				tsUpdateMock: jasmine.createSpyObj(
 					"TypeScriptFileUpdate", ["addRoute", "addDeclaration", "finalize"]) as TypeScriptFileUpdate,
-				TypeScriptFileUpdate: () => helpers.tsUpdateMock,
+				TypeScriptFileUpdate: function () { return helpers.tsUpdateMock },
 				requireMock: require
 			};
 			// spy on require:
@@ -113,7 +111,7 @@ describe("Unit - AngularTemplate Base", () => {
 			spyOn(ProjectConfig, "setConfig");
 		});
 
-		it("registers route and declare component", async done => {
+		it("registers route and declare component", async () => {
 			const templ = new TestTemplate();
 			templ.registerInProject("target/path", "view name");
 			expect(helpers.TypeScriptFileUpdate).toHaveBeenCalledWith(path.join("target/path", "src/app/app-routing.module.ts"));
@@ -132,9 +130,8 @@ describe("Unit - AngularTemplate Base", () => {
 
 			//config update:
 			expect(ProjectConfig.setConfig).toHaveBeenCalledTimes(0);
-			done();
 		});
-		it("should skip route if skipRoute is passed", async done => {
+		it("should skip route if skipRoute is passed", async () => {
 			const templ = new TestTemplate();
 			templ.registerInProject("target/path", "view name", { skipRoute: true });
 			expect(helpers.tsUpdateMock.addRoute).toHaveBeenCalledTimes(0);
@@ -150,9 +147,8 @@ describe("Unit - AngularTemplate Base", () => {
 
 			//config update:
 			expect(ProjectConfig.setConfig).toHaveBeenCalledTimes(0);
-			done();
 		});
-		it("updates project config", async done => {
+		it("updates project config", async () => {
 			const templ = new TestTemplate();
 			templ.dependencies.push("igDvWidget");
 			templ.registerInProject("", "");
@@ -179,7 +175,6 @@ describe("Unit - AngularTemplate Base", () => {
 				]
 			}}
 			expect(ProjectConfig.setConfig).toHaveBeenCalledWith(mockProject as Config);
-			done();
 		});
 	});
 });

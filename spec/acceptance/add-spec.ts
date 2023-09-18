@@ -28,7 +28,7 @@ describe("Add command", () => {
 		fs.rmdirSync(`./output/${testFolder}`);
 	});
 
-	it("Should not work without a project", async done => {
+	it("Should not work without a project", async () => {
 		await cli.run(["add", "grid", "name"]);
 
 		expect(console.error).toHaveBeenCalledWith(
@@ -54,11 +54,9 @@ describe("Add command", () => {
 			jasmine.stringMatching(/Add command is supported only on existing project created with igniteui-cli\s*/)
 		);
 		expect(console.log).toHaveBeenCalledTimes(0);
-
-		done();
 	});
 
-	it("Should not work quickstart project", async done => {
+	it("Should not work quickstart project", async () => {
 		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({ project: { isShowcase: true } }));
 		await cli.run(["add", "grid", "name"]);
 
@@ -68,10 +66,9 @@ describe("Add command", () => {
 		expect(console.log).toHaveBeenCalledTimes(0);
 
 		fs.unlinkSync(ProjectConfig.configFile);
-		done();
 	});
 
-	it("Should not work with wrong framework", async done => {
+	it("Should not work with wrong framework", async () => {
 		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({ project: { framework: "angular2" } }));
 		await cli.run(["add", "grid", "name"]);
 
@@ -79,10 +76,9 @@ describe("Add command", () => {
 		expect(console.log).toHaveBeenCalledTimes(0);
 
 		fs.unlinkSync(ProjectConfig.configFile);
-		done();
 	});
 
-	it("Should not work with wrong template", async done => {
+	it("Should not work with wrong template", async () => {
 		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({ project: { framework: "jquery" } }));
 		await cli.run(["add", "wrong", "name"]);
 
@@ -92,10 +88,9 @@ describe("Add command", () => {
 		expect(console.log).toHaveBeenCalledTimes(0);
 
 		fs.unlinkSync(ProjectConfig.configFile);
-		done();
 	});
 
-	it("Should correctly add jQuery template", async done => {
+	it("Should correctly add jQuery template", async () => {
 		// TODO: Mock out template manager and project register
 		spyOn(ProjectConfig, "globalConfig").and.returnValue(new Object() as Config);
 
@@ -116,10 +111,9 @@ describe("Add command", () => {
 
 		fs.unlinkSync("ignite-cli-views.js");
 		fs.unlinkSync(ProjectConfig.configFile);
-		done();
 	});
 
-	it("Should not duplicate add jq Grid template", async done => {
+	it("Should not duplicate add jq Grid template", async () => {
 		// tslint:disable:no-object-literal-type-assertion
 		spyOn(ProjectConfig, "globalConfig").and.returnValue({} as Config);
 
@@ -166,10 +160,9 @@ describe("Add command", () => {
 		fs.rmdirSync("./test-view");
 		fs.unlinkSync("ignite-cli-views.js");
 		fs.unlinkSync(ProjectConfig.configFile);
-		done();
 	});
 
-	it("Should correctly add Angular template", async done => {
+	it("Should correctly add Angular template", async () => {
 		// tslint:disable:no-object-literal-type-assertion
 		spyOn(ProjectConfig, "globalConfig").and.returnValue({} as Config);
 
@@ -243,12 +236,10 @@ describe("Add command", () => {
 		};
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith(expectedPrams);
 		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);
-
-		done();
 	});
 
 	for (const igxPackage of [NPM_PACKAGE, FEED_PACKAGE]) {
-		it(`Should correctly add Ignite UI for Angular template - ${igxPackage}`, async done => {
+		it(`Should correctly add Ignite UI for Angular template - ${igxPackage}`, async () => {
 			spyOn(ProjectConfig, "globalConfig").and.returnValue({} as Config);
 
 			fs.writeFileSync("package.json", JSON.stringify({
@@ -321,12 +312,11 @@ export class AppModule {
 			fs.unlinkSync(ProjectConfig.configFile);
 			fs.unlinkSync("tslint.json");
 			fs.unlinkSync("package.json");
-			done();
 		});
 	}
 
 	it("Should correctly add Ignite UI for Angular template passing folders path and spaces/tabs in name arg"
-		, async done => {
+		, async () => {
 			// tslint:disable:no-object-literal-type-assertion
 			spyOn(ProjectConfig, "globalConfig").and.returnValue({} as Config);
 
@@ -396,10 +386,9 @@ export class AppModule {
 			fs.rmdirSync("./src");
 			fs.unlinkSync(ProjectConfig.configFile);
 			fs.unlinkSync("tslint.json");
-			done();
 		});
 
-	it("Should correctly add React template", async done => {
+	it("Should correctly add React template", async () => {
 		// TODO: Mock out template manager and project register
 		// tslint:disable:no-object-literal-type-assertion
 		spyOn(ProjectConfig, "globalConfig").and.returnValue({} as Config);
@@ -420,6 +409,5 @@ export class AppModule {
 		fs.removeSync("./src");
 
 		fs.unlinkSync(ProjectConfig.configFile);
-		done();
 	});
 });
