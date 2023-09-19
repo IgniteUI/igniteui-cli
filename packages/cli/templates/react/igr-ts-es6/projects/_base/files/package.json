@@ -28,6 +28,7 @@
 	"jsdom": "^22.1.0",
     "typescript": "^5.0.2",
     "vite": "^4.4.9",
+	"vitest-canvas-mock": "^0.3.3",
     "igniteui-cli": "~$(cliVersion)"
   },
   "scripts": {

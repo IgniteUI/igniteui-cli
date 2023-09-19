@@ -3,7 +3,6 @@ import { IgrPieChartModule } from 'igniteui-react-charts';
 import { IgrPieChart } from 'igniteui-react-charts';
 import { IgrItemLegend } from 'igniteui-react-charts';
 import { IgrItemLegendModule } from 'igniteui-react-charts';
-
 import style from './style.module.css';
 
 IgrPieChartModule.register();
