@@ -7,11 +7,11 @@ class IgrTsReactProjectLibrary extends BaseProjectLibrary {
 		this.projectType = "igr-ts-es6";
 		this.themes = ["default"];
 
-		// const groups = require("./groups.json");
-		// // tslint:disable-next-line:forin
-		// for (const key in groups) {
-		// 	this.groupDescriptions.set(key, groups[key]);
-		// }
+		const groups = require("./groups.json");
+		// tslint:disable-next-line:forin
+		for (const key in groups) {
+			this.groupDescriptions.set(key, groups[key]);
+		}
 	}
 }
 module.exports =  new IgrTsReactProjectLibrary();
