@@ -3,7 +3,7 @@ import { BaseProjectLibrary } from "@igniteui/cli-core";
 class IgrTsReactProjectLibrary extends BaseProjectLibrary {
 	constructor() {
 		super(__dirname);
-		this.name = "Ignite UI for React";
+		this.name = "Ignite UI for React TS";
 		this.projectType = "igr-ts-es6";
 		this.themes = ["default"];
 

@@ -1,9 +1,12 @@
 import React from 'react';
-import logo from './logo.svg';
-import styles from './style.module.css';
+import logo from '/logo.svg';
+import styles from './App.module.css';
 
-export default function Home() {
+export default function App() {
+  const name = "$(name)";
 	return (
+    <div className="app">
+			<div className={styles.app__name}>{name}</div>
 		<header className={styles.header}>
 			<img src={logo} className={styles.logo} alt="logo" />
 			<p>
@@ -18,5 +21,6 @@ export default function Home() {
 			Learn More
 			</a>
 		</header>
+    </div>
 	)
 }
