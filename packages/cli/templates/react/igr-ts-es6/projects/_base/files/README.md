@@ -1,7 +1,7 @@
 # $(name)
 
 This project was generated with [Ignite UI CLI](https://github.com/IgniteUI/igniteui-cli) version $(cliVersion).<br>
-The template builds upon a project bootstrapped with [Create React App](https://github.com/facebook/create-react-app), so all CRA features are available in this project.
+The template builds upon a project bootstrapped with [Vite](https://vitejs.dev/).
 
 ## Development server
 
@@ -40,7 +40,7 @@ Run `ig test` to execute the unit tests.
 
 To get more help on the IgniteUI CLI go check out the [IgniteUI CLI Wiki](https://github.com/IgniteUI/igniteui-cli/wiki).
 
-Learn more about CRA features in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Learn more about Vite features in the [Vite documentation](https://vitejs.dev/guide/).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
