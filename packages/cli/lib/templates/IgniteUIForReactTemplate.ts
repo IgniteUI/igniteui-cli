@@ -12,7 +12,7 @@ export class IgniteUIForReactTemplate implements Template {
 	public description: string;
 	public dependencies: string[] = [];
 	public framework: string = "react";
-	public projectType = "igr-ts-es6"; // temp
+	public projectType = "igr-ts"; // temp
 	public hasExtraConfiguration: boolean = false;
 	public packages = [];
 	public delimiters = defaultDelimiters;
