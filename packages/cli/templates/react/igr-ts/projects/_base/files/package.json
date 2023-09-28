@@ -4,17 +4,19 @@
   "private": true,
   "type": "module",
   "dependencies": {
-	"@testing-library/jest-dom": "^6.1.3",
+    "@testing-library/jest-dom": "^6.1.3",
     "@testing-library/react": "^14.0.0",
     "functions-have-names": "^1.2.3",
+    "igniteui-react": "18.2.2-beta.0",
     "igniteui-react-core": "18.2.2-beta.0",
     "react": "^18.2.0",
     "react-app-polyfill": "^0.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "5.3.4",
-	"react-native-get-random-values": "^1.9.0",
+    "react-native-get-random-values": "^1.9.0",
     "resize-observer-polyfill": "^1.5.1",
-	"vitest": "^0.34.4"
+    "vitest": "^0.34.4",
+    "igniteui-dockmanager": "^1.13.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
@@ -25,10 +27,10 @@
     "eslint": "^8.46.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
-	"jsdom": "^22.1.0",
+    "jsdom": "^22.1.0",
     "typescript": "^5.0.2",
     "vite": "^4.4.9",
-	"vitest-canvas-mock": "^0.3.3",
+    "vitest-canvas-mock": "^0.3.3",
     "igniteui-cli": "~$(cliVersion)"
   },
   "scripts": {
@@ -36,7 +38,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-	"test": "vitest"
+    "test": "vitest"
   },
   "eslintConfig": {
     "extends": "react-app"

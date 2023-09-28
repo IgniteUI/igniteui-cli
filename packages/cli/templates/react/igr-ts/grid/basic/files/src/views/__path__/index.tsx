@@ -1,48 +1,63 @@
-import React from 'react';
+import { React } from 'react';
 import style from './style.module.css';
-import { IgrDataGridModule  } from 'igniteui-react-grids';
-import { IgrDataGrid } from 'igniteui-react-grids';
-import { IgrNumericColumn } from 'igniteui-react-grids';
-import { IgrTextColumn } from 'igniteui-react-grids';
-import { IgrDateTimeColumn } from 'igniteui-react-grids';
+import 'igniteui-react-grids/grids';
+import { IgrGridModule, IgrGrid, IgrColumn } from 'igniteui-react-grids';
+import 'igniteui-react-grids/grids/themes/light/bootstrap.css'
 
 import data from './data';
 
-IgrDataGridModule.register();
+IgrGridModule.register();
 
 export default function $(ClassName)() {
 	const title = 'Grid';
 
 	return (
-		<div>
-			<h1 className={style.title}>{title}</h1>
-			<div>
-				Read more on the&nbsp;
-				<a href="https://www.infragistics.com/products/ignite-ui-react/react/components/grid.html">
-					official documentation page
-				</a>
-			</div>
-			<div className={style.container}>
-				<div className={style.grid}>
-					<IgrDataGrid
-						height="100%"
-						autoGenerateColumns="false"
-						dataSource={data}>
-						<IgrNumericColumn field="ProductID" headerText="Product ID" />
-						<IgrTextColumn field="ProductName" headerText="Product Name" />
-						<IgrTextColumn field="QuantityPerUnit" headerText="Quantity Per Unit" />
-						<IgrNumericColumn field="UnitsInStock" headerText="Units In Stock" />
-						<IgrDateTimeColumn field="OrderDate" headerText="Order Date" />
-					</IgrDataGrid>
-				</div>
-				<div className={style.grid}>
-					<IgrDataGrid
-						height="100%"
-						width="100%"
-						autoGenerateColumns="true"
-						dataSource={data} />
-				</div>
-			</div>
-		</div>
+      <div>
+        <h1 className={style.title}>{title}</h1>
+        <div>
+          Read more on the&nbsp;
+          <a href="https://www.infragistics.com/products/ignite-ui-react/react/components/grid.html">
+            official documentation page
+          </a>
+        </div>
+        <div className={style.container}>
+          <div className={style.grid}>
+            <IgrGrid
+              autoGenerate="false"
+              data={data}>
+              <IgrColumn
+                  field="ProductID"
+                  header="Product ID"
+                  dataType="Number">
+              </IgrColumn>
+              <IgrColumn
+                  field="ProductName"
+                  header="Product Name"
+                  dataType="String">
+              </IgrColumn>
+              <IgrColumn
+                  field="QuantityPerUnit"
+                  header="Quantity Per Unit"
+                  dataType="String">
+              </IgrColumn>
+              <IgrColumn
+                  field="UnitsInStock"
+                  header="Units In Stock"
+                  dataType="Number">
+              </IgrColumn>
+              <IgrColumn
+                  field="OrderDate"
+                  header="Order Date"
+                  dataType="Date">
+              </IgrColumn>
+            </IgrGrid>
+          </div>
+          <div className={style.grid}>
+            <IgrGrid
+              autoGenerate="true"
+              data={data} />
+          </div>
+        </div>
+      </div>
 	)
 }
