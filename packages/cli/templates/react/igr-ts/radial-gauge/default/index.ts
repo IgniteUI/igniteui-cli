@@ -11,7 +11,8 @@ class IgrTsRadialGaugeTemplate extends IgniteUIForReactTemplate {
 		this.name = "Radial Gauge";
 		this.description = `provides a number of visual elements, like a needle, tick marks, ranges
 							and labels, in order to create a predefined shape and scale.`;
-		this.packages = ["igniteui-react-gauges@18.2.2-beta.0"]; // TODO: read version from igniteui-react-core in package.json
+		// TODO: read version from igniteui-react-core in package.json
+		this.packages = ["igniteui-react-gauges@18.2.2-beta.0"];
 	}
 }
 module.exports = new IgrTsRadialGaugeTemplate();
