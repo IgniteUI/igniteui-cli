@@ -1,3 +1,9 @@
+# [12.0.6](https://github.com/IgniteUI/igniteui-cli/compare/v12.0.5...v12.0.6) (2023-10-02)
+
+## What's Changed
+
+* remove ng update package groups by @lipata in https://github.com/IgniteUI/igniteui-cli/pull/1151
+
 # [12.0.5](https://github.com/IgniteUI/igniteui-cli/compare/v12.0.4...v12.0.5) (2023-07-18)
 
 ## What's Changed
