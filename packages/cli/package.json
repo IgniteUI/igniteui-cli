@@ -111,13 +111,6 @@
     "typescript-json-schema": "^0.42.0"
   },
   "ng-update": {
-    "migrations": "./migrations/migration-collection.json",
-    "packageGroup": [
-      "igniteui-cli",
-      "igniteui-angular",
-      "@infragistics/igniteui-angular",
-      "igniteui-angular-charts",
-      "@igniteui/angular-templates"
-    ]
+    "migrations": "./migrations/migration-collection.json"
   }
 }
