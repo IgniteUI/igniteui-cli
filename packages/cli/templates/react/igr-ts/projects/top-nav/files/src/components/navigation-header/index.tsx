@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 
 export default function NavigationHeader({ routes }) {
@@ -16,7 +16,7 @@ export default function NavigationHeader({ routes }) {
 		const activeItem = routes.findIndex((route) => route.path === currentRoute);
 		setState({ activeItem });
 	}, [routes]);
-	
+
 	return (
 		<nav>
 			<ul>
