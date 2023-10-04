@@ -84,7 +84,7 @@ command = {
 				break;
 			case "react":
 				if (port) {
-					if (projectType === 'igr-ts') {
+					if (projectType === "igr-ts") {
 						execSyncNpmStart(port, options);
 					} else {
 						// https://facebook.github.io/create-react-app/docs/advanced-configuration

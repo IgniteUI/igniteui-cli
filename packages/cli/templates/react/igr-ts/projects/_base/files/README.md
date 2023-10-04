@@ -6,7 +6,7 @@ The template builds upon a project bootstrapped with [Vite](https://vitejs.dev/)
 ## Development server
 
 Run `ig start` to build the application, start a web server and open the application in the default browser. <br>
-The default serving port is `http://localhost:3003/`. Default serving port can be configured in `.env` via `PORT` property.
+The default serving port is `http://localhost:3003/`. Default serving port can be configured in `ignite-ui-cli.json` via `defaultProp` property.
 
 ## Build
 
