@@ -84,12 +84,16 @@ command = {
 				break;
 			case "react":
 				if (port) {
-					// https://facebook.github.io/create-react-app/docs/advanced-configuration
-					// react-scripts start "--port=dafaultPort" is not a valid command for all environments.
-					// .env file is included and used by both igr-es6 and es6 now,
-					// to specify the port for all environments (Windows, Mac, etc)
-					process.env.PORT = `${port}`;
-					port = null;
+					if (projectType === 'igr-ts') {
+						execSyncNpmStart(port, options);
+					} else {
+						// https://facebook.github.io/create-react-app/docs/advanced-configuration
+						// react-scripts start "--port=dafaultPort" is not a valid command for all environments.
+						// .env file is included and used by both igr-es6 and es6 now,
+						// to specify the port for all environments (Windows, Mac, etc)
+						process.env.PORT = `${port}`;
+						port = null;
+					}
 				}
 			/* falls through */
 			case "angular":

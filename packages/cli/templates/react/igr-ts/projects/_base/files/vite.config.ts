@@ -16,5 +16,8 @@ export default defineConfig({
 	},
 	resolve: {
 		mainFields: ['module'],
+	},
+	server: {
+		port: 3003
 	}
 })
