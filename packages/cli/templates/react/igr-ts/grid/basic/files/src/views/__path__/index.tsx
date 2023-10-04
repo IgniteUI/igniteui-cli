@@ -1,4 +1,3 @@
-import { React } from 'react';
 import style from './style.module.css';
 import 'igniteui-react-grids/grids';
 import { IgrGridModule, IgrGrid, IgrColumn } from 'igniteui-react-grids';

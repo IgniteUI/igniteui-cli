@@ -1,4 +1,3 @@
-import React from 'react';
 import { IgrRadialGaugeModule } from 'igniteui-react-gauges';
 import { IgrRadialGauge } from 'igniteui-react-gauges';
 import style from './style.module.css';
@@ -16,7 +15,7 @@ export default function $(ClassName)() {
 				Read more on the&nbsp;
 				<a href="https://www.infragistics.com/products/ignite-ui-react/react/components/radialgauge.html">
 				official documentation page
-				</a>                
+				</a>
 			</div>
 			<div className={style.container}>
 				<div className={style.gauge}>

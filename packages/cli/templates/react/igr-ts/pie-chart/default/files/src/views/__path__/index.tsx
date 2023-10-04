@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { IgrPieChartModule } from 'igniteui-react-charts';
 import { IgrPieChart } from 'igniteui-react-charts';
 import { IgrItemLegend } from 'igniteui-react-charts';

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { IgrFinancialChartModule } from 'igniteui-react-charts';
 import { IgrFinancialChart } from 'igniteui-react-charts';
 import style from './style.module.css';
