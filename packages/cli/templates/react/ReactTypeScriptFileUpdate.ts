@@ -141,13 +141,13 @@ export class ReactTypeScriptFileUpdate {
 				};
 
 				let visitCondition;
-				
+
 				if (!isRouting) {
 					visitCondition = (node: ts.Node): boolean => {
 						return node.kind === ts.SyntaxKind.VariableDeclaration &&
 							(node as ts.VariableDeclaration).name.getText() === routesVariable;
 							// no type currently
-							//(node as ts.VariableDeclaration).type.getText() === "Route[]"; 
+							//(node as ts.VariableDeclaration).type.getText() === "Route[]";
 					};
 				} else {
 					visitCondition = (node: ts.Node): boolean => {
@@ -417,8 +417,7 @@ export class ReactTypeScriptFileUpdate {
 		const routePath = ts.factory.createPropertyAssignment("path", ts.factory.createStringLiteral(className, true));
 		const jsxElement = ts.factory.createJsxSelfClosingElement(
 			ts.factory.createIdentifier(linkText), [], undefined
-		  );
-		  
+		);
 		const routeComponent =
 			ts.factory.createPropertyAssignment("element", jsxElement);
 		const routeData = ts.factory.createPropertyAssignment("text", ts.factory.createStringLiteral(linkText, true));

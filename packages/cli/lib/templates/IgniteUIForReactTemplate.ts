@@ -1,7 +1,6 @@
 import { AddTemplateArgs, ControlExtraConfiguration, defaultDelimiters, Template, Util } from "@igniteui/cli-core";
-import * as fs from "fs-extra";
-import { ReactTypeScriptFileUpdate } from "../../templates/react/ReactTypeScriptFileUpdate";
 import * as path from "path";
+import { ReactTypeScriptFileUpdate } from "../../templates/react/ReactTypeScriptFileUpdate";
 
 export class IgniteUIForReactTemplate implements Template {
 	public components: string[];
@@ -58,7 +57,7 @@ export class IgniteUIForReactTemplate implements Template {
 			return;
 		}
 
-		const routeModulePath: string = 'src/routes.tsx';
+		const routeModulePath: string = "src/routes.tsx";
 		const routingModule = new ReactTypeScriptFileUpdate(path.join(projectPath, routeModulePath));
 
 		routingModule.addRoute(
