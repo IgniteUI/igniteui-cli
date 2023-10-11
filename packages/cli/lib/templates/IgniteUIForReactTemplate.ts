@@ -1,5 +1,6 @@
 import { AddTemplateArgs, ControlExtraConfiguration, defaultDelimiters, Template, Util } from "@igniteui/cli-core";
 import * as fs from "fs-extra";
+import { ReactTypeScriptFileUpdate } from "../../templates/react/ReactTypeScriptFileUpdate";
 import * as path from "path";
 
 export class IgniteUIForReactTemplate implements Template {
@@ -19,7 +20,7 @@ export class IgniteUIForReactTemplate implements Template {
 	// non-standard template prop
 	protected widget: string;
 
-	private configFile: string = "./src/routes.json";
+	private configFile: string = "./src/routes.tsx";
 
 	/**
 	 * Base ReactTemplate constructor
@@ -56,15 +57,17 @@ export class IgniteUIForReactTemplate implements Template {
 		if (options && options.skipRoute) {
 			return;
 		}
-		const configFile = fs.readFileSync(path.join(projectPath, this.configFile), "utf8");
-		const viewsArr = JSON.parse(configFile);
-		viewsArr.push({
-			componentPath: this.getViewLink(name),
-			path: "/" + this.folderName(Util.nameFromPath(name)),
-			text: this.getToolbarLink(name)
-		});
 
-		fs.writeFileSync(path.join(projectPath, this.configFile), JSON.stringify(viewsArr, null, 4));
+		const routeModulePath: string = 'src/routes.tsx';
+		const routingModule = new ReactTypeScriptFileUpdate(path.join(projectPath, routeModulePath));
+
+		routingModule.addRoute(
+			path.join(projectPath, `src/views/${this.folderName(name)}`),
+			Util.lowerDashed(Util.nameFromPath(name)),
+			Util.className(Util.nameFromPath(name)),
+			options.routerChildren,
+			undefined
+		);
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		throw new Error("Method not implemented.");

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function NavigationHeader({ routes }) {
 	const [state, setState] = useState({ activeItem: null });
@@ -21,7 +21,7 @@ export default function NavigationHeader({ routes }) {
 		<nav>
 			<ul>
 				{routes.map(
-					(route, i) => <li key={i} className={state.activeItem === i ? 'active' : ''}><NavLink onClick={() => handleClick(i)} exact to={route.path}>{route.text}</NavLink></li>
+					(route, i) => <li key={i} className={state.activeItem === i ? 'active' : ''}><Link onClick={() => handleClick(i)} to={route.path}>{route.text}</Link></li>
 				)}
 			</ul>
 		</nav>
