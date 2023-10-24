@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
-import NavigationHeader from "./components/navigation-header/index";
-import { routes } from './routes';
+import NavigationHeader from "../components/navigation-header";
+import { routes } from './app-routes';
 import "./App.css";
 
 export default function App() {
