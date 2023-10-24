@@ -399,8 +399,10 @@ export class Util {
 			specificPath = path.join("src", "app", "components");
 		} else if (framework === "react" && projectType === "es6") {
 			specificPath = path.join("src", "components");
-		} else if (framework === "react" && (projectType === "igr-es6" || projectType === "igr-ts")) {
+		} else if (framework === "react" && projectType === "igr-es6") {
 			specificPath = path.join("src", "views");
+		} else if (framework === "react" && projectType === "igr-ts") {
+			specificPath = path.join("src", "app");
 		} else if (framework === "webcomponents" && projectType === "igc-ts") {
 			specificPath = path.join("src", "app");
 		}
