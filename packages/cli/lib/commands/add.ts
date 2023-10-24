@@ -115,11 +115,20 @@ command = {
 	},
 	async addTemplate(fileName: string, template: Template, options?: AddTemplateArgs): Promise<boolean> {
 		if (!options) {
-			options = {
-				parentName: "app",
-				parentRoutingModulePath: "src/app/app-routing.ts",
-				selector: "app-" + template.id
-			};
+			if (template.framework === 'react') {
+				options = {
+					parentName: "app",
+					parentRoutingModulePath: "src/app/app-routes.tsx",
+					className: Util.className(fileName),
+					modulePath: `src/app/${Util.lowerDashed(fileName)}`
+				}
+			} else {
+				options = {
+					parentName: "app",
+					parentRoutingModulePath: "src/app/app-routing.ts",
+					selector: "app-" + template.id
+				};
+			}
 		}
 
 		fileName = fileName.trim();

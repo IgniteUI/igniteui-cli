@@ -1,4 +1,4 @@
-import { AddTemplateArgs, ControlExtraConfiguration, defaultDelimiters, Template, Util } from "@igniteui/cli-core";
+import { AddTemplateArgs, App, ControlExtraConfiguration, defaultDelimiters, FS_TOKEN, IFileSystem, Template, Util } from "@igniteui/cli-core";
 import * as path from "path";
 import { ReactTypeScriptFileUpdate } from "../../templates/react/ReactTypeScriptFileUpdate";
 
@@ -19,8 +19,6 @@ export class IgniteUIForReactTemplate implements Template {
 	// non-standard template prop
 	protected widget: string;
 
-	private configFile: string = "./src/routes.tsx";
-
 	/**
 	 * Base ReactTemplate constructor
 	 * @param rootPath The template folder path. Pass in `__dirname`
@@ -40,6 +38,7 @@ export class IgniteUIForReactTemplate implements Template {
 		config["path"] = this.folderName(name); //folder name allowed spaces, any casing
 		config["name"] = Util.nameFromPath(name); // this name should not have restrictions
 		config["ClassName"] = Util.className(Util.nameFromPath(name)); //first letter capital, no spaces and no dashes,
+		config["filePrefix"] = Util.lowerDashed(Util.nameFromPath(name));
 		config["cliVersion"] = Util.version();
 		if (this.widget) {
 			config["widget"] = this.widget;
@@ -52,21 +51,50 @@ export class IgniteUIForReactTemplate implements Template {
 		return config;
 	}
 
-	public registerInProject(projectPath: string, name: string, options?: AddTemplateArgs) {
-		if (options && options.skipRoute) {
-			return;
-		}
+	public registerInProject(projectPath: string, name: string, options?: AddTemplateArgs, defaultPath = false) {
+		if (!options.parentName) {
+            return;
+        }
 
-		const routeModulePath: string = "src/routes.tsx";
+		const routeModulePath: string = options.parentRoutingModulePath;
 		const routingModule = new ReactTypeScriptFileUpdate(path.join(projectPath, routeModulePath));
 
-		routingModule.addRoute(
-			path.join(projectPath, `src/views/${this.folderName(name)}`),
-			Util.lowerDashed(Util.nameFromPath(name)),
-			Util.className(Util.nameFromPath(name)),
-			options.routerChildren,
-			undefined
-		);
+		if (!(options && options.skipRoute) && App.container.get<IFileSystem>(FS_TOKEN)
+			.fileExists(routeModulePath)) {
+			let nameFromPath = Util.nameFromPath(name);
+			let lowerDashed = Util.lowerDashed(nameFromPath);
+			let filePath = path.posix.join(projectPath, options.modulePath, `${lowerDashed}.tsx`);
+
+			if (defaultPath) {
+				routingModule.addRoute("", options.className, nameFromPath, filePath, options.routerChildren, undefined);
+			}
+
+			routingModule.addRoute(
+				lowerDashed,
+				options.className,
+				nameFromPath,
+				filePath,
+				options.routerChildren,
+				undefined
+			);
+
+			if (options.hasChildren) {
+				nameFromPath = Util.nameFromPath(`${options.modulePath}-routes.tsx`);
+				lowerDashed = Util.lowerDashed(nameFromPath);
+				filePath = path.posix.join(projectPath, options.modulePath, nameFromPath);
+
+				routingModule.addRoute(
+					lowerDashed,
+					options.className,
+					nameFromPath,
+					filePath,
+					options.routerChildren, 
+					options.importAlias
+				);
+			}
+		}
+
+		
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		throw new Error("Method not implemented.");
@@ -94,15 +122,5 @@ export class IgniteUIForReactTemplate implements Template {
 			folderName = folderName.replace(/\/\s+/g, "/");
 		}
 		return Util.lowerDashed(folderName);
-	}
-	protected getViewLink(name: string): string {
-		const filePath = "./views/" + this.folderName(name);
-		return filePath;
-	}
-
-	protected getToolbarLink(name: string): string {
-		name = Util.nameFromPath(name);
-		const toolbarLink = name.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
-		return toolbarLink;
 	}
 }

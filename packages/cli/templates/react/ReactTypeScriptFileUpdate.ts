@@ -37,11 +37,12 @@ export class ReactTypeScriptFileUpdate {
 		path: string,
 		component: string,
 		name: string,
+		filePath: string,
 		routerChildren: string,
 		importAlias: string,
 		routesVariable = DEFAULT_ROUTES_VARIABLE
 	) {
-		this.addRouteModuleEntry(path, component, name, routerChildren, importAlias, routesVariable);
+		this.addRouteModuleEntry(path, component, name, filePath, routerChildren, importAlias, routesVariable);
 	}
 
 	//#region File state
@@ -89,22 +90,21 @@ export class ReactTypeScriptFileUpdate {
 		path: string,
 		component: string,
 		name: string,
+		filePath: string,
 		routerChildren: string,
 		importAlias: string,
 		routesVariable = DEFAULT_ROUTES_VARIABLE
 	) {
-		const isRouting: boolean = path.indexOf("routing") >= 0;
+		const isRouting: boolean = path.indexOf("routes") >= 0;
 
-		if (isRouting && this.targetSource.text.indexOf(path.slice(0, -3)) > 0) {
+		if (isRouting && this.targetSource.text.indexOf(path.slice(0, -4)) > 0) {
 			return;
 		}
 
-		const moduleName = path.substring(0, path.indexOf("-routing"));
 		if (path) {
-			const relativePath: string = isRouting ?
-				"./views/" + moduleName + "/" + path.slice(0, -3) : Util.relativePath(this.targetPath, path, true, true);
+			const relativePath: string = Util.relativePath(this.targetPath, filePath, true, true);
 
-			this.requestImport(relativePath, importAlias, name);
+			this.requestImport(relativePath, importAlias, component);
 		}
 
 		// https://github.com/Microsoft/TypeScript/issues/14419#issuecomment-307256171
@@ -113,7 +113,7 @@ export class ReactTypeScriptFileUpdate {
 				// the visitor that should be used when adding routes to the main route array
 				const conditionalVisitor: ts.Visitor = (node: ts.Node): ts.Node => {
 					if (node.kind === ts.SyntaxKind.ArrayLiteralExpression) {
-						const newObject = this.createRouteEntry(component, name, routerChildren);
+						const newObject = this.createRouteEntry(path, component, name, routerChildren);
 						const array = (node as ts.ArrayLiteralExpression);
 						this.createdStringLiterals.push(path, name);
 						const notFoundWildCard = ".*";
@@ -410,17 +410,18 @@ export class ReactTypeScriptFileUpdate {
 	}
 
 	private createRouteEntry(
-		className: string,
-		linkText: string,
+		path: string,
+		component: string,
+		name: string,
 		routerAlias: string
 	): ts.ObjectLiteralExpression {
-		const routePath = ts.factory.createPropertyAssignment("path", ts.factory.createStringLiteral(className, true));
+		const routePath = ts.factory.createPropertyAssignment("path", ts.factory.createStringLiteral(path, true));
 		const jsxElement = ts.factory.createJsxSelfClosingElement(
-			ts.factory.createIdentifier(linkText), [], undefined
+			ts.factory.createIdentifier(component), [], undefined
 		);
 		const routeComponent =
 			ts.factory.createPropertyAssignment("element", jsxElement);
-		const routeData = ts.factory.createPropertyAssignment("text", ts.factory.createStringLiteral(linkText, true));
+		const routeData = ts.factory.createPropertyAssignment("text", ts.factory.createStringLiteral(name, true));
 		if (routerAlias) {
 			const childrenData = ts.factory.createPropertyAssignment("children", ts.factory.createIdentifier(routerAlias));
 			return ts.factory.createObjectLiteralExpression([routePath, routeComponent, routeData, childrenData]);
