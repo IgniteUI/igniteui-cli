@@ -1,8 +1,8 @@
 import { ProjectTemplate } from "@igniteui/cli-core";
 import * as path from "path";
-import { BaseIgrTsProject } from "../_base";
+import { BaseWithHomeIgrTsProject } from "../_base_with_home";
 
-export class TopNavIgrTsProject extends BaseIgrTsProject implements ProjectTemplate {
+export class TopNavIgrTsProject extends BaseWithHomeIgrTsProject implements ProjectTemplate {
 	public id: string = "top-nav";
 	public name = "Default top navigation";
 	public description = "Project structure with top navigation menu";

@@ -1,5 +1,5 @@
 import logo from '/logo.svg';
-import styles from './App.module.css';
+import styles from './style.module.css';
 
 export default function App() {
   const name = "$(name)";
