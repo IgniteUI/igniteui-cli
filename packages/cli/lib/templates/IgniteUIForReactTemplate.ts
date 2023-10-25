@@ -1,4 +1,13 @@
-import { AddTemplateArgs, App, ControlExtraConfiguration, defaultDelimiters, FS_TOKEN, IFileSystem, Template, Util } from "@igniteui/cli-core";
+import {
+	AddTemplateArgs,
+	App,
+	ControlExtraConfiguration,
+	defaultDelimiters,
+	FS_TOKEN,
+	IFileSystem,
+	Template,
+	Util
+} from "@igniteui/cli-core";
 import * as path from "path";
 import { ReactTypeScriptFileUpdate } from "../../templates/react/ReactTypeScriptFileUpdate";
 
@@ -53,8 +62,8 @@ export class IgniteUIForReactTemplate implements Template {
 
 	public registerInProject(projectPath: string, name: string, options?: AddTemplateArgs, defaultPath = false) {
 		if (!options.parentName) {
-            return;
-        }
+			return;
+		}
 
 		const routeModulePath: string = options.parentRoutingModulePath;
 		const routingModule = new ReactTypeScriptFileUpdate(path.join(projectPath, routeModulePath));
@@ -88,13 +97,11 @@ export class IgniteUIForReactTemplate implements Template {
 					options.className,
 					nameFromPath,
 					filePath,
-					options.routerChildren, 
+					options.routerChildren,
 					options.importAlias
 				);
 			}
 		}
-
-		
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		throw new Error("Method not implemented.");
