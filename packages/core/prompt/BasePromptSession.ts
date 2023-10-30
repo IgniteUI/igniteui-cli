@@ -108,7 +108,8 @@ export abstract class BasePromptSession {
 	 * @param withBackChoice Add a "Back" option to choices list
 	 */
 	protected async getUserInput(options: IUserInputOptions, withBackChoice: boolean = false): Promise<string> {
-		const inquirer = await import("inquirer");
+		const dynamicImport = new Function("specifier", "return import(specifier)");
+		const inquirer = await dynamicImport("inquirer");
 		if (options.choices) {
 			if (options.choices.length < 2) {
 				// single choice to return:
@@ -273,7 +274,8 @@ export abstract class BasePromptSession {
 	/** Create prompts from template extra configuration and assign user answers to the template */
 	protected async customizeTemplateTask(template: Template) {
 		const extraPrompt: any[] = this.createQuestions(template.getExtraConfiguration());
-		const inquirer = await import("inquirer");
+		const dynamicImport = new Function("specifier", "return import(specifier)");
+		const inquirer = await dynamicImport("inquirer");
 		const extraConfigAnswers = await inquirer.prompt(extraPrompt);
 		const extraConfig = this.parseAnswers(extraConfigAnswers);
 

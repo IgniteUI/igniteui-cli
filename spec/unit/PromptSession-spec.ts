@@ -14,15 +14,23 @@ describe("Unit - PromptSession", () => {
 	// TODO: most of the tests use same setup - move the setup to beforeAll call
 	it("chooseTerm - Should call itself if no term is passed.", async () => {
 		spyOn(PromptSession, "chooseTerm").and.callThrough();
-		const inquirer = await import("inquirer");
-		spyOn(inquirer, "prompt").and.returnValues(Promise.resolve({ term: "" }),
+		// const inquirer = await import("inquirer");
+		const dynamicImport = new Function("specifier", "return import(specifier)");
+		const inquirer = await dynamicImport("inquirer");
+		// const modulePath = '../../node_modules/inquirer/lib/inquirer.js';
+		// const inquirer = await eval('import("inquirer")');
+		// const moduleName = '@inquirer/input';
+		// const inquirer = await eval('import(moduleName)');
+		// const inquirer = eval('import("inquirer")') as Promise<typeof import("inquirer")>;
+
+		spyOn(inquirer, "createPromptModule").and.returnValues(Promise.resolve({ term: "" }),
 			Promise.resolve({ term: "" }), Promise.resolve({ term: "" }),
 			Promise.resolve({ term: "" }), Promise.resolve({ term: "Test" }));
 		const testVar = await PromptSession.chooseTerm();
 		expect(PromptSession.chooseTerm).toHaveBeenCalled();
 		expect(PromptSession.chooseTerm).toHaveBeenCalledTimes(5);
 		expect(testVar).toBe("Test");
-		expect(inquirer.prompt).toHaveBeenCalledTimes(5);
+		expect(inquirer.input).toHaveBeenCalledTimes(5);
 	});
 	it("start - Should create new project correctly", async () => {
 		spyOn(ProjectConfig, "getConfig").and.returnValue(new Object() as Config);
@@ -60,7 +68,9 @@ describe("Unit - PromptSession", () => {
 		});
 		mockTemplate.templatePaths = ["test"];
 		const mockSession = new PromptSession(mockTemplate);
-		const inquirer = await import("inquirer");
+		// const inquirer = await import("inquirer");
+		const dynamicImport = new Function("specifier", "return import(specifier)");
+		const inquirer = await dynamicImport("inquirer");
 		const mockQuestion = {
 			type: "list",
 			name: "theme",
@@ -164,7 +174,9 @@ describe("Unit - PromptSession", () => {
 		spyOn(Util, "directoryExists").and.returnValue(false);
 		spyOn(Util, "isAlphanumericExt").and.returnValue(true);
 		spyOn(Util, "gitInit");
-		const inquirer = await import("inquirer");
+		// const inquirer = await import("inquirer");
+		const dynamicImport = new Function("specifier", "return import(specifier)");
+		const inquirer = await dynamicImport("inquirer");
 		spyOn(inquirer, "prompt").and.returnValues(
 			Promise.resolve({ projectName: "Test Project" })
 		);
@@ -233,7 +245,8 @@ describe("Unit - PromptSession", () => {
 		});
 		mockTemplate.templatePaths = ["test"];
 		const mockSession = new PromptSession(mockTemplate);
-		const inquirer = await import("inquirer");
+		const dynamicImport = new Function("specifier", "return import(specifier)");
+		const inquirer = await dynamicImport("inquirer");
 		const mockQuestion = {
 			type: "list",
 			name: "theme",
@@ -366,7 +379,8 @@ describe("Unit - PromptSession", () => {
 		spyOn(add, "addTemplate").and.returnValue(Promise.resolve(true));
 		spyOn(PackageManager, "flushQueue").and.returnValue(null);
 		spyOn(start, "start").and.returnValue(null);
-		const inquirer = await import("inquirer");
+		const dynamicImport = new Function("specifier", "return import(specifier)");
+		const inquirer = await dynamicImport("inquirer");
 		spyOnProperty(inquirer, "prompt").and.returnValues(
 			Promise.resolve({ action: "Add component" }),
 			Promise.resolve({ componentGroup: "Back" }),
@@ -439,7 +453,8 @@ describe("Unit - PromptSession", () => {
 		spyOn(PackageManager, "flushQueue").and.returnValue(null);
 		spyOn(start, "start").and.returnValue(null);
 		spyOn(Util, "getAvailableName").and.callThrough();
-		const inquirer = await import("inquirer");
+		const dynamicImport = new Function("specifier", "return import(specifier)");
+		const inquirer = await dynamicImport("inquirer");
 		spyOn(inquirer, "prompt").and.returnValues(
 			Promise.resolve({ action: "Add scenario" }),
 			Promise.resolve({ customTemplate: "Back" }),
@@ -549,7 +564,8 @@ describe("Unit - PromptSession", () => {
 		spyOn(PackageManager, "flushQueue").and.returnValue(null);
 		//spyOn(start, "start").and.returnValue(Promise.resolve({port: 3333 }));
 		spyOn(start, "start").and.returnValue(null);
-		const inquirer = await import("inquirer");
+		const dynamicImport = new Function("specifier", "return import(specifier)");
+		const inquirer = await dynamicImport("inquirer");
 		spyOn(inquirer, "prompt").and.returnValues(
 			Promise.resolve({ action: "Add component" }),
 			Promise.resolve({ componentGroup: "Back" }),
@@ -616,7 +632,8 @@ describe("Unit - PromptSession", () => {
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 		const mockSession = new PromptSession(mockTemplate);
 		spyOn(mockSession, "chooseActionLoop").and.callThrough();
-		const inquirer = await import("inquirer");
+		const dynamicImport = new Function("specifier", "return import(specifier)");
+		const inquirer = await dynamicImport("inquirer");
 		spyOn(inquirer, "prompt").and.returnValues(
 			Promise.resolve({ action: "Complete & Run" }),
 			Promise.resolve({ port: 7777 })
@@ -677,7 +694,8 @@ describe("Unit - PromptSession", () => {
 		spyOn(Util, "gitInit");
 		spyOn(Util, "log");
 		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
-		const inquirer = await import("inquirer");
+		const dynamicImport = new Function("specifier", "return import(specifier)");
+		const inquirer = await dynamicImport("inquirer");
 		spyOn(inquirer, "prompt").and.returnValues(
 			Promise.resolve({ projectName: "Test1" }),
 			Promise.resolve({ framework: "Angular" }),
@@ -709,7 +727,8 @@ describe("Unit - PromptSession", () => {
 		spyOn(Util, "gitInit");
 		spyOn(Util, "log");
 		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
-		const inquirer = await import("inquirer");
+		const dynamicImport = new Function("specifier", "return import(specifier)");
+		const inquirer = await dynamicImport("inquirer");
 		spyOn(inquirer, "prompt").and.returnValues(
 			Promise.resolve({ projectName: "Test1" }),
 			Promise.resolve({ framework: "Angular" }),

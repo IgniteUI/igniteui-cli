@@ -15,7 +15,8 @@ export class PromptSession extends BasePromptSession {
 	}
 
 	public static async chooseTerm() {
-		const inquirer = await import("inquirer");
+		const dynamicImport = new Function("specifier", "return import(specifier)");
+		const inquirer = await dynamicImport("inquirer");
 		const answers = await inquirer.prompt({
 			default: null,
 			message: "Enter a search term",
