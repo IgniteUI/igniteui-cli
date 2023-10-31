@@ -2,8 +2,8 @@ import {
 	AddTemplateArgs, GoogleAnalytics, PackageManager,
 	ProjectConfig, ProjectLibrary, Template, Util
 } from "@igniteui/cli-core";
-import { TemplateManager } from "../TemplateManager";
-import { PromptSession } from "./../PromptSession";
+import { TemplateManager } from "../TemplateManager.js";
+import { PromptSession } from "./../PromptSession.js";
 
 let command: {
 	[name: string]: any,

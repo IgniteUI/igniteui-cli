@@ -1,5 +1,5 @@
-import { AddTemplateArgs } from "./AddTemplateArgs";
-import { BaseTemplate } from "./BaseTemplate";
+import { AddTemplateArgs } from "./AddTemplateArgs.js";
+import { BaseTemplate } from "./BaseTemplate.js";
 
 /** Template interface for views/components */
 export interface Template extends BaseTemplate {

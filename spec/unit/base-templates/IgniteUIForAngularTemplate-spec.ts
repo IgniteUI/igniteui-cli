@@ -22,9 +22,7 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 				// tslint:disable:object-literal-sort-keys
 				tsUpdateMock: jasmine.createSpyObj(
 					"TypeScriptFileUpdate", ["finalize", "addRoute", "addDeclaration", "addNgModuleMeta" ]) as TypeScriptFileUpdate,
-				TypeScriptFileUpdate: function (...args: any) {
-					return helpers.tsUpdateMock;
-				}
+				TypeScriptFileUpdate: (...args: any) => helpers.tsUpdateMock
 			};
 			App.initialize();
 			// spy on require:

@@ -1,6 +1,6 @@
 import { GoogleAnalytics, ProjectLibrary, Util } from "@igniteui/cli-core";
 import * as path from "path";
-import { default as config } from "./config";
+import { default as config } from "./config.js";
 
 const command = {
 	aliases: ["g"],

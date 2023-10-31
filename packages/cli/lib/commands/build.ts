@@ -1,7 +1,7 @@
 import { GoogleAnalytics, PackageManager, ProjectConfig, Util } from "@igniteui/cli-core";
 import * as fs from "fs-extra";
 import * as path from "path";
-import { TemplateManager } from "../TemplateManager";
+import { TemplateManager } from "../TemplateManager.js";
 
 let command: {
 	command: string,

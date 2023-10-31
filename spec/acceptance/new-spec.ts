@@ -12,7 +12,7 @@ describe("New command", () => {
 		spyOn(console, "error");
 		spyOn(GoogleAnalytics, "post");
 		spyOn(PackageManager, "installPackages");
-		await process.chdir("./output"); 
+		await process.chdir("./output");
 	});
 
 	afterEach(async () => {
@@ -70,7 +70,7 @@ describe("New command", () => {
 	xit("Creates Angular project", async () => {
 		// process.argv = ["new", "reactProj", "--framework=react"];
 		await cli.run(["new", "ngx Proj", "--framework=angular", "--type=igx-ts"]);
-		
+
 		expect(fs.existsSync("./ngx Proj")).toBeTruthy();
 		expect(filesDiff("../../packages/cli/templates/angular/ig-ts/projects/empty/files", "./ngx Proj")).toEqual([]);
 		const packageText = await fs.readFileSync("./ngx Proj/package.json", "utf-8");

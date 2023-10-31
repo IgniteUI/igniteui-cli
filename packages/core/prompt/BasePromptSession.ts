@@ -1,11 +1,12 @@
 import * as path from "path";
-import { BaseTemplateManager } from "../templates";
+import { BaseTemplateManager } from "../templates/index.js";
 import {
 	Component, Config, ControlExtraConfigType, ControlExtraConfiguration, Framework,
 	FrameworkId, ProjectLibrary, ProjectTemplate, Template
-} from "../types";
-import { App, ChoiceItem, GoogleAnalytics, ProjectConfig, Util } from "../util";
-import { Task, TaskRunner, WIZARD_BACK_OPTION } from "./TaskRunner";
+} from "../types/index.js";
+import { App, ChoiceItem, GoogleAnalytics, ProjectConfig, Util } from "../util/index.js";
+import { Task, TaskRunner, WIZARD_BACK_OPTION } from "./TaskRunner.js";
+import { Inquirer } from "inquirer";
 
 export abstract class BasePromptSession {
 	protected config: Config;
@@ -108,8 +109,7 @@ export abstract class BasePromptSession {
 	 * @param withBackChoice Add a "Back" option to choices list
 	 */
 	protected async getUserInput(options: IUserInputOptions, withBackChoice: boolean = false): Promise<string> {
-		const dynamicImport = new Function("specifier", "return import(specifier)");
-		const inquirer = await dynamicImport("inquirer");
+		const inquirer: Inquirer = await import("inquirer");
 		if (options.choices) {
 			if (options.choices.length < 2) {
 				// single choice to return:
@@ -124,7 +124,7 @@ export abstract class BasePromptSession {
 			options.choices = this.addSeparators(options.choices, inquirer);
 		}
 
-		const userInput = await inquirer.prompt(options);
+		const userInput = await inquirer.prompt([options]);
 
 		const result = userInput[options.name] as string;
 
@@ -274,8 +274,7 @@ export abstract class BasePromptSession {
 	/** Create prompts from template extra configuration and assign user answers to the template */
 	protected async customizeTemplateTask(template: Template) {
 		const extraPrompt: any[] = this.createQuestions(template.getExtraConfiguration());
-		const dynamicImport = new Function("specifier", "return import(specifier)");
-		const inquirer = await dynamicImport("inquirer");
+		const inquirer = await import("inquirer");
 		const extraConfigAnswers = await inquirer.prompt(extraPrompt);
 		const extraConfig = this.parseAnswers(extraConfigAnswers);
 

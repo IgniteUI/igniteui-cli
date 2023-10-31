@@ -1,13 +1,13 @@
-import * as chalk from "chalk";
+import { default as chalk } from "chalk";
 import { execSync, ExecSyncOptions } from "child_process";
-import * as fs from "fs";
-import * as glob from "glob";
-import * as path from "path";
+import { default as fs } from "fs";
+import { default as glob } from "glob";
+import { default as path } from "path";
 import through2 = require("through2");
-import { BaseComponent } from "../templates/BaseComponent";
-import { Component, ComponentGroup, Delimiter, FS_TOKEN, IFileSystem, Template, TemplateDelimiters } from "../types";
-import { App } from "./App";
-import { GoogleAnalytics } from "./GoogleAnalytics";
+import { BaseComponent } from "../templates/BaseComponent.js";
+import { Component, ComponentGroup, Delimiter, FS_TOKEN, IFileSystem, Template, TemplateDelimiters } from "../types/index.js";
+import { App } from "./App.js";
+import { GoogleAnalytics } from "./GoogleAnalytics.js";
 
 const imageExtensions = [".png", ".jpg", ".jpeg", ".gif", ".bmp", ".ico"];
 const applyConfig = (configuration: { [key: string]: string }) => {
@@ -28,7 +28,7 @@ export const defaultDelimiters: TemplateDelimiters = {
 	}
 };
 
-export type ChoiceItem = Pick<Template | ComponentGroup, "name" | "description"> | Component;
+export type ChoiceItem = Pick<Template & ComponentGroup, "name" | "description"> | Component;
 
 export class Util {
 	public static getCurrentDirectoryBase() {
@@ -179,9 +179,9 @@ export class Util {
 	public static formatPackageJson(json: { dependencies: { [key: string]: string } }, sort = true): string {
 		if (sort) {
 			json.dependencies =
-			Object.keys(json.dependencies)
-				.sort()
-				.reduce((result, key) => (result[key] = json.dependencies[key]) && result, {});
+				Object.keys(json.dependencies)
+					.sort()
+					.reduce((result, key) => (result[key] = json.dependencies[key]) && result, {});
 		}
 		return JSON.stringify(json, null, 2) + "\n";
 	}
@@ -498,7 +498,7 @@ export class Util {
 		return relativePath;
 	}
 
-	public static formatChoices(items: ChoiceItem[], padding = 3): ({name: string, value: string, short: string})[] {
+	public static formatChoices(items: ChoiceItem[], padding = 3): ({ name: string, value: string, short: string })[] {
 		const choiceItems = [];
 		const leftPadding = 2;
 		const rightPadding = 1;
@@ -519,7 +519,7 @@ export class Util {
 				description = item.description || "";
 			}
 			if (description !== "") {
-				choiceItem.name = item.name  +  Util.addColor(".".repeat(targetNameLength - item.name.length), 0);
+				choiceItem.name = item.name + Util.addColor(".".repeat(targetNameLength - item.name.length), 0);
 				const max = process.stdout.columns - targetNameLength - leftPadding - rightPadding;
 				description = Util.truncate(description, max, 3, ".");
 				description = Util.addColor(description, 0);
@@ -530,7 +530,7 @@ export class Util {
 		return choiceItems;
 	}
 
-	public static applyDelimiters(config: {[key: string]: string }, delimiter: Delimiter) {
+	public static applyDelimiters(config: { [key: string]: string }, delimiter: Delimiter) {
 		const obj = {};
 		for (const key of Object.keys(config)) {
 			obj[`${delimiter.start}${key}${delimiter.end}`] = config[key];

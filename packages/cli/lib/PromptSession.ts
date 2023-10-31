@@ -3,10 +3,10 @@ import {
 	ProjectLibrary, PromptTaskContext, Task, Util
 } from "@igniteui/cli-core";
 import * as path from "path";
-import { default as add } from "./commands/add";
-import { default as start } from "./commands/start";
-import { default as upgrade } from "./commands/upgrade";
-import { TemplateManager } from "./TemplateManager";
+import { default as add } from "./commands/add.js";
+import { default as start } from "./commands/start.js";
+import { default as upgrade } from "./commands/upgrade.js";
+import { TemplateManager } from "./TemplateManager.js";
 
 export class PromptSession extends BasePromptSession {
 
@@ -15,8 +15,7 @@ export class PromptSession extends BasePromptSession {
 	}
 
 	public static async chooseTerm() {
-		const dynamicImport = new Function("specifier", "return import(specifier)");
-		const inquirer = await dynamicImport("inquirer");
+		const inquirer = await import("inquirer");
 		const answers = await inquirer.prompt({
 			default: null,
 			message: "Enter a search term",

@@ -1,5 +1,5 @@
 import { Config, Framework, GoogleAnalytics, ProjectConfig, ProjectLibrary, Util } from "@igniteui/cli-core";
-import { TemplateManager } from "../TemplateManager";
+import { TemplateManager } from "../TemplateManager.js";
 
 let command: {
 	[name: string]: any,

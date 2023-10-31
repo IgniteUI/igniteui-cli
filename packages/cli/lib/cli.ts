@@ -1,18 +1,18 @@
-import { App, GoogleAnalytics, Util } from "@igniteui/cli-core";
+import { App, GoogleAnalytics, Util } from "@igniteui/cli-core/index.js";
 import * as yargs from "yargs";
-import { default as add } from "./commands/add";
-import { default as build } from "./commands/build";
-import { default as config } from "./commands/config";
-import { default as doc } from "./commands/doc";
-import { default as generate } from "./commands/generate";
-import { default as list } from "./commands/list";
-import { default as newCommand } from "./commands/new";
-import { default as quickstart } from "./commands/quickstart";
-import { default as start } from "./commands/start";
-import { default as test } from "./commands/test";
-import { default as upgrade } from "./commands/upgrade";
-import { PromptSession } from "./PromptSession";
-import {TemplateManager} from "./TemplateManager";
+import { default as add } from "./commands/add.js";
+import { default as build } from "./commands/build.js";
+import { default as config } from "./commands/config.js";
+import { default as doc } from "./commands/doc.js";
+import { default as generate } from "./commands/generate.js";
+import { default as list } from "./commands/list.js";
+import { default as newCommand } from "./commands/new.js";
+import { default as quickstart } from "./commands/quickstart.js";
+import { default as start } from "./commands/start.js";
+import { default as test } from "./commands/test.js";
+import { default as upgrade } from "./commands/upgrade.js";
+import { PromptSession } from "./PromptSession.js";
+import { TemplateManager } from "./TemplateManager.js";
 
 process.title = "Ignite UI CLI";
 
@@ -39,30 +39,31 @@ export async function run(args = null) {
 	list.templateManager = templateManager;
 	upgrade.templateManager = templateManager;
 
+	yargs.version(false); // disable 'version' as a global option to prevent conflicts with provided options below
 	const yargsModule = args ? yargs(args) : yargs;
 
 	const argv = yargsModule
-	.command(quickstart)
-	.command(newCommand)
-	.command(add)
-	.command(build)
-	.command(start)
-	.command(generate)
-	.command(config)
-	.command(doc)
-	.command(test)
-	.command(list)
-	.command(upgrade)
-	.options({
-		version: {
-			alias: "v",
-			description: "Show current Ignite UI CLI version",
-			global: true,
-			type: "boolean"
-		}
-	})
-	.help().alias("help", "h")
-	.argv;
+		.command(quickstart)
+		.command(newCommand)
+		.command(add)
+		.command(build)
+		.command(start)
+		.command(generate)
+		.command(config)
+		.command(doc)
+		.command(test)
+		.command(list)
+		.command(upgrade)
+		.options({
+			version: {
+				alias: "v",
+				description: "Show current Ignite UI CLI version",
+				global: true,
+				type: "boolean"
+			}
+		})
+		.help().alias("help", "h")
+		.argv;
 
 	//	unsubscribing from process.exit. If `help` was executed we should not reach here
 	process.removeListener("exit", logHelp);

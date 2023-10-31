@@ -1,2 +1,2 @@
-export * from "./TaskRunner";
-export * from "./BasePromptSession";
+export * from "./TaskRunner.js";
+export * from "./BasePromptSession.js";

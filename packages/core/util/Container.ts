@@ -8,4 +8,8 @@ export class Container {
 	public set(token: any, value: any) {
 		return this.properties.set(token, value);
 	}
+
+	public get length(): number {
+		return this.properties.size;
+	}
 }

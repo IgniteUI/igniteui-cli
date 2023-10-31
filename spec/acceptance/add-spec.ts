@@ -3,8 +3,8 @@ import { Config, GoogleAnalytics, GoogleAnalyticsParameters, ProjectConfig } fro
 import * as fs from "fs-extra";
 import { EOL } from "os";
 import { parse } from "path";
-import * as cli from "../../packages/cli/lib/cli";
-import { deleteAll, resetSpy } from "../helpers/utils";
+import * as cli from "../../packages/cli/lib/cli.js";
+import { deleteAll, resetSpy } from "../helpers/utils.js";
 
 describe("Add command", () => {
 	let testFolder = parse(__filename).name;

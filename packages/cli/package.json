@@ -1,5 +1,6 @@
 {
   "name": "igniteui-cli",
+  "type": "module",
   "version": "12.0.5",
   "description": "CLI tool for creating Ignite UI projects",
   "keywords": [
@@ -95,11 +96,11 @@
     "@angular-devkit/schematics": "^16.1.5",
     "@schematics/angular": "^16.1.5",
     "@types/fs-extra": "^11.0.1",
-    "@types/jasmine": "^4.3.5",
+    "@types/jasmine": "^5.1.1",
     "@types/node": "^20.4.2",
     "browser-sync": "^2.29.3",
     "coveralls": "^3.1.1",
-    "jasmine": "^5.0.2",
+    "jasmine": "^5.1.0",
     "jasmine-spec-reporter": "^7.0.0",
     "lite-server": "^2.6.1",
     "nyc": "^15.1.0",

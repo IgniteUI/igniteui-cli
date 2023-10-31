@@ -1,2 +1,2 @@
-export * from "./TypeScriptUtils";
-export * from "./TypeScriptFileUpdate";
+export * from "./TypeScriptUtils.js";
+export * from "./TypeScriptFileUpdate.js";

@@ -1,9 +1,9 @@
 import * as ts from "typescript";
-import { App } from "..";
-import { TemplateDependency } from "../types";
-import { FS_TOKEN, IFileSystem } from "../types/FileSystem";
-import { Util } from "../util/Util";
-import { TypeScriptUtils as TsUtils } from "./TypeScriptUtils";
+import { App } from "../index.js";
+import { TemplateDependency } from "../types/index.js";
+import { FS_TOKEN, IFileSystem } from "../types/FileSystem.js";
+import { Util } from "../util/Util.js";
+import { TypeScriptUtils as TsUtils } from "./TypeScriptUtils.js";
 
 const DEFAULT_ROUTES_VARIABLE = "routes";
 /**

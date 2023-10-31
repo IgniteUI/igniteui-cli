@@ -8,7 +8,7 @@ export class BasePageTemplate extends BaseIgcProject implements ProjectTemplate 
 	public description = "Project structure with routing";
 	public framework: string = "webcomponents";
 	public projectType: string = "igc-ts";
-	public dependencies: string[];
+	public dependencies: string[] = [];
 	public hasExtraConfiguration: boolean = false;
 
 	public get templatePaths(): string[] {

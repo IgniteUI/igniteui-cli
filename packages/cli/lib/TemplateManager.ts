@@ -1,10 +1,10 @@
 import { IgniteUIForAngularTemplate } from "@igniteui/angular-templates";
 import { BaseTemplateManager, Template, Util } from "@igniteui/cli-core";
 import * as path from "path";
-import { AngularTemplate } from "./templates/AngularTemplate";
-import { IgniteUIForWebComponentsTemplate } from "./templates/IgniteUIForWebComponentsTemplate";
-import { jQueryTemplate } from "./templates/jQueryTemplate";
-import { ReactTemplate } from "./templates/ReactTemplate";
+import { AngularTemplate } from "./templates/AngularTemplate.js";
+import { IgniteUIForWebComponentsTemplate } from "./templates/IgniteUIForWebComponentsTemplate.js";
+import { jQueryTemplate } from "./templates/jQueryTemplate.js";
+import { ReactTemplate } from "./templates/ReactTemplate.js";
 
 const TEMPLATES_PATH = "../templates";
 

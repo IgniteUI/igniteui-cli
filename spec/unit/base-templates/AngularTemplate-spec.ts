@@ -91,7 +91,7 @@ describe("Unit - AngularTemplate Base", () => {
 			helpers = {
 				tsUpdateMock: jasmine.createSpyObj(
 					"TypeScriptFileUpdate", ["addRoute", "addDeclaration", "finalize"]) as TypeScriptFileUpdate,
-				TypeScriptFileUpdate: function () { return helpers.tsUpdateMock },
+				TypeScriptFileUpdate: () => helpers.tsUpdateMock,
 				requireMock: require
 			};
 			// spy on require:

@@ -1,10 +1,10 @@
 import * as fs from "fs";
 import * as os from "os";
 import * as path from "path";
-import { Config } from "../types/Config";
-import { FS_TOKEN, IFileSystem } from "../types/FileSystem";
-import { App } from "./App";
-import { Util } from "./Util";
+import { Config } from "../types/Config.js";
+import { FS_TOKEN, IFileSystem } from "../types/FileSystem.js";
+import { App } from "./App.js";
+import { Util } from "./Util.js";
 
 export class ProjectConfig {
 

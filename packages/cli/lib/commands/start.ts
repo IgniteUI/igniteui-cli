@@ -2,8 +2,8 @@ import { GoogleAnalytics, ProjectConfig, Util } from "@igniteui/cli-core";
 import { ExecSyncOptions } from "child_process";
 import * as path from "path";
 import * as resolve from "resolve";
-import { TemplateManager } from "../TemplateManager";
-import { default as build } from "./build";
+import { TemplateManager } from "../TemplateManager.js";
+import { default as build } from "./build.js";
 
 const execSyncNpmStart = (port: number, options: ExecSyncOptions): void => {
 	if (port) {

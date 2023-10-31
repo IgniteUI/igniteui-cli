@@ -3,8 +3,8 @@ import {
 	IFileSystem, Template, TemplateDependency, Util
 } from "@igniteui/cli-core";
 import * as path from "path";
-import { NPM_DOCK_MANAGER, resolveIgcPackage } from "../../templates/webcomponents/package-resolve";
-import { TypeScriptFileUpdate } from "../../templates/webcomponents/TypeScriptFileUpdate";
+import { NPM_DOCK_MANAGER, resolveIgcPackage } from "../../templates/webcomponents/package-resolve.js";
+import { TypeScriptFileUpdate } from "../../templates/webcomponents/TypeScriptFileUpdate.js";
 
 export class IgniteUIForWebComponentsTemplate implements Template {
 	public components: string[];

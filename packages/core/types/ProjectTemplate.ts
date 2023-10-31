@@ -1,4 +1,4 @@
-import { BaseTemplate } from "./BaseTemplate";
+import { BaseTemplate } from "./BaseTemplate.js";
 
 /** Interface for project templates */
 export interface ProjectTemplate extends BaseTemplate {

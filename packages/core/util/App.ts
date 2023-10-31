@@ -1,6 +1,6 @@
-import { FS_TOKEN, FS_TYPE_TOKEN, FsTypes } from "../types";
-import { Container } from "./Container";
-import { FsFileSystem } from "./FileSystem";
+import { FS_TOKEN, FS_TYPE_TOKEN, FsTypes } from "../types/index.js";
+import { Container } from "./Container.js";
+import { FsFileSystem } from "./FileSystem.js";
 
 export class App {
 	/** @internal testing only */

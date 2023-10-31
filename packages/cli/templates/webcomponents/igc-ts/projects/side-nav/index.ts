@@ -8,7 +8,7 @@ export class SideNavProject extends BaseWithHomeIgcProject implements ProjectTem
 	public description = "Project structure with side navigation drawer";
 	public framework: string = "webcomponents";
 	public projectType: string = "igc-ts";
-	public dependencies: string[];
+	public dependencies: string[] = [];
 	public hasExtraConfiguration: boolean = false;
 
 	public get templatePaths() {

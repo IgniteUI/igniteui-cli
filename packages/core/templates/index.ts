@@ -1,3 +1,3 @@
-export * from "./BaseComponent";
-export * from "./BaseTemplateManager";
-export * from "./BaseProjectLibrary";
+export * from "./BaseComponent.js";
+export * from "./BaseTemplateManager.js";
+export * from "./BaseProjectLibrary.js";

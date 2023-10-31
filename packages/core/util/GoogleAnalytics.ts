@@ -2,10 +2,10 @@ import { createHash} from "crypto";
 import * as fs from "fs";
 import * as path from "path";
 import * as qs from "querystring";
-import { GoogleAnalyticsParameters } from "../types";
-import { App } from "./App";
-import { ProjectConfig } from "./ProjectConfig";
-import { Util } from "./Util";
+import { GoogleAnalyticsParameters } from "../types/index.js";
+import { App } from "./App.js";
+import { ProjectConfig } from "./ProjectConfig.js";
+import { Util } from "./Util.js";
 
 class GoogleAnalytics {
 	protected static userDataFolder: string = process.env.APPDATA ||
@@ -21,6 +21,10 @@ class GoogleAnalytics {
 	 * @param parameters Object containing all the parameters to send
 	 */
 	public static post(parameters: GoogleAnalyticsParameters) {
+		if (!App.container.length) {
+			App.initialize();
+		}
+
 		const config = ProjectConfig.getConfig();
 		if (config.disableAnalytics) {
 			return;
