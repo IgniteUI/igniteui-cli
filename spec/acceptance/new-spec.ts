@@ -34,21 +34,21 @@ describe("New command", () => {
 		testFolder = "./jQuery Proj";
 
 		let expectedPrams: GoogleAnalyticsParameters = {
-			t: "screenview",
-			cd: "New"
+			cd: "New",
+			t: "screenview"
 		};
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith(expectedPrams);
 		expect(PackageManager.installPackages).toHaveBeenCalled();
 
 		expectedPrams = {
-			t: "event",
-			ec: "$ig new",
-			ea: "project name: jQuery Proj; framework: jquery; project type: js; theme: infragistics; skip-git: false",
 			cd1: "jquery",
 			cd2: "js",
 			cd3: "jQuery Proj",
 			cd11: false,
-			cd14: "infragistics"
+			cd14: "infragistics",
+			ec: "$ig new",
+			ea: "project name: jQuery Proj; framework: jquery; project type: js; theme: infragistics; skip-git: false",
+			t: "event",
 		};
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith(expectedPrams);
 		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);
@@ -97,8 +97,8 @@ describe("New command", () => {
 		expect(console.error).toHaveBeenCalledWith(jasmine.stringMatching(/Folder "testProj" already exists!/));
 
 		let expectedPrams: GoogleAnalyticsParameters = {
-			t: "screenview",
-			cd: "New"
+			cd: "New",
+			t: "screenview"
 		};
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith(expectedPrams);
 

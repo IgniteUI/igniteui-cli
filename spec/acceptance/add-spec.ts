@@ -36,14 +36,14 @@ describe("Add command", () => {
 		);
 		expect(console.log).toHaveBeenCalledTimes(0);
 		let expectedPrams: GoogleAnalyticsParameters = {
-			t: "screenview",
-			cd: "Add"
+			cd: "Add",
+			t: "screenview"
 		};
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith(expectedPrams);
 
 		expectedPrams = {
-			t: "screenview",
-			cd: "error: Add command is supported only on existing project created with igniteui-cli"
+			cd: "error: Add command is supported only on existing project created with igniteui-cli",
+			t: "screenview"
 		};
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith(expectedPrams);
 		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);
@@ -217,22 +217,22 @@ describe("Add command", () => {
 		fs.unlinkSync(ProjectConfig.configFile);
 
 		let expectedPrams: GoogleAnalyticsParameters = {
-			t: "screenview",
-			cd: "Add"
+			cd: "Add",
+			t: "screenview"
 		};
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith(expectedPrams);
 
 		expectedPrams = {
-			t: "event",
-			ec: "$ig add",
-			ea: "template id: grid; file name: Test view",
 			cd1: "angular",
 			cd2: "ig-ts",
 			cd5: "Data Grids",
 			cd7: "grid",
 			cd8: "Grid",
 			cd11: false,
-			cd14: undefined
+			cd14: undefined,
+			ec: "$ig add",
+			ea: "template id: grid; file name: Test view",
+			t: "event",
 		};
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith(expectedPrams);
 		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);

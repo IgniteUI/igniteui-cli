@@ -19,8 +19,8 @@ command = {
 	async execute(argv?) {
 
 		GoogleAnalytics.post({
-			t: "screenview",
-			cd: "Build"
+			cd: "Build",
+			t: "screenview"
 		});
 		command.build(argv);
 	},
@@ -36,12 +36,12 @@ command = {
 		const config = ProjectConfig.getConfig();
 
 		GoogleAnalytics.post({
-			t: "event",
-			ec: "$ig build",
 			cd1: config.project.framework,
 			cd2: config.project.projectType,
 			cd11: !!config.skipGit,
-			cd14: config.project.theme
+			cd14: config.project.theme,
+			ec: "$ig build",
+			t: "event"
 		});
 
 		await PackageManager.installPackages();

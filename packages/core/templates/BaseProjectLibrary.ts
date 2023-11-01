@@ -116,10 +116,10 @@ export class BaseProjectLibrary implements ProjectLibrary {
 			const newComponents = template.components.filter(x => !this.components.find(f => f.name === x));
 			for (const newComponent of newComponents) {
 				const component: Component = {
-					name: newComponent,
 					description: "",
 					group: template.controlGroup,
 					groupPriority: 0,
+					name: newComponent,
 					templates: []
 				};
 				this.components.push(component);
@@ -182,8 +182,8 @@ export class BaseProjectLibrary implements ProjectLibrary {
 
 		for (const groupName of this.getComponentGroupNames()) {
 			groups.push({
-				name: groupName,
-				description: this.groupDescriptions.get(groupName) || ""
+				description: this.groupDescriptions.get(groupName) || "",
+				name: groupName
 			});
 		}
 		return groups;

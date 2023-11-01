@@ -5,8 +5,8 @@ function uninstall() {
 	if (!!process.env.npm_config_global) {
 		App.initialize();
 		GoogleAnalytics.post({
-			t: "screenview",
-			cd: `uninstall`
+			cd: `uninstall`,
+			t: "screenview"
 		});
 	}
 }

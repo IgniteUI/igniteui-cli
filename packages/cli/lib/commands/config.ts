@@ -57,8 +57,8 @@ const command = {
 	// tslint:enable:object-literal-sort-keys
 	getHandler(argv) {
 		GoogleAnalytics.post({
-			t: "screenview",
-			cd: "Config"
+			cd: "Config",
+			t: "screenview"
 		});
 
 		if (!argv.global && !ProjectConfig.hasLocalConfig()) {
@@ -68,13 +68,13 @@ const command = {
 		const config = ProjectConfig.getConfig(argv.global);
 
 		GoogleAnalytics.post({
-			t: "event",
+			cd9: "get",
+			cd11: !!config.skipGit,
+			cd12: !!argv.global,
 			ec: "$ig config",
 			el: "subcommand: get",
 			ea: `property to get: ${argv.property}, is global: ${argv.global}`,
-			cd9: "get",
-			cd11: !!config.skipGit,
-			cd12: !!argv.global
+			t: "event"
 		});
 
 		if (config[argv.property] !== undefined) {
@@ -85,8 +85,8 @@ const command = {
 	},
 	setHandler(argv) {
 		GoogleAnalytics.post({
+			cd: "Config",
 			t: "screenview",
-			cd: "Config"
 		});
 
 		let config;
@@ -107,13 +107,13 @@ const command = {
 		}
 
 		GoogleAnalytics.post({
-			t: "event",
+			cd9: "set",
+			cd11: !!config.skipGit,
+			cd12: !!argv.global,
 			ec: "$ig config",
 			el: "subcommand: set",
 			ea: `property to set: ${argv.property}, value to set: ${argv.value}, is global: ${argv.global}`,
-			cd9: "set",
-			cd11: !!config.skipGit,
-			cd12: !!argv.global
+			t: "event"
 		});
 
 		config[argv.property] = validationResult.value;
@@ -123,8 +123,8 @@ const command = {
 	addHandler(argv) {
 		if (!argv.skipAnalytics) {
 			GoogleAnalytics.post({
-				t: "screenview",
-				cd: "Config"
+				cd: "Config",
+				t: "screenview"
 			});
 		}
 
@@ -157,13 +157,13 @@ const command = {
 
 		if (!argv.skipAnalytics) {
 			GoogleAnalytics.post({
-				t: "event",
+				cd9: "add",
+				cd11: !!config.skipGit,
+				cd12: !!argv.global,
 				ec: "$ig config",
 				el: "subcommand: add",
 				ea: `property to add: ${argv.property}, value to add: ${argv.value}, is global: ${argv.global}`,
-				cd9: "add",
-				cd11: !!config.skipGit,
-				cd12: !!argv.global
+				t: "event"
 			});
 		}
 

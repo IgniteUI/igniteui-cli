@@ -16,8 +16,8 @@ describe("Unit - PromptSession", () => {
 		spyOn(ProjectConfig, "getConfig").and.returnValue(new Object() as Config);
 		// tslint:disable:object-literal-sort-keys
 		const mockProject = {
-			name: "Project 1",
 			generateConfig: () => Promise.resolve(true),
+			name: "Project 1",
 			templatePaths: ["test"]
 		};
 		const mockProjectLibrary = {

@@ -76,21 +76,21 @@ describe("Generate command", () => {
 		expect(expectedTemplate).toEqual(actualTemplate);
 
 		let expectedParams: GoogleAnalyticsParameters = {
-			t: "screenview",
-			cd: "Generate"
+			cd: "Generate",
+			t: "screenview"
 		};
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith(expectedParams);
 
 		expectedParams = {
-			t: "event",
-			ec: "$ig generate",
-			el: "subcommand: template",
-			ea: "template name: custom-template; framework: jquery;project type: js; skip-config: false",
 			cd1: "jquery",
 			cd2: "js",
 			cd7: "custom-template",
 			cd9: "template",
-			cd10: false
+			cd10: false,
+			ec: "$ig generate",
+			el: "subcommand: template",
+			ea: "template name: custom-template; framework: jquery;project type: js; skip-config: false",
+			t: "event"
 		};
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith(expectedParams);
 

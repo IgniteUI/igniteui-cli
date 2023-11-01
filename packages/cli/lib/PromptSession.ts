@@ -35,8 +35,8 @@ export class PromptSession extends BasePromptSession {
 	 */
 	public async start() {
 		GoogleAnalytics.post({
-			t: "screenview",
-			cd: "Wizard"
+			cd: "Wizard",
+			t: "screenview"
 		});
 
 		let projLibrary: ProjectLibrary;
@@ -51,19 +51,19 @@ export class PromptSession extends BasePromptSession {
 		} else {
 			Util.log(""); /* new line */
 			const projectName = await this.getUserInput({
-				type: "input",
+				default: Util.getAvailableName(defaultProjName, true),
 				name: "projectName",
 				message: "Enter a name for your project:",
-				default: Util.getAvailableName(defaultProjName, true),
+				type: "input",
 				validate: this.nameIsValid
 			});
 
 			const frameRes: string = await this.getUserInput({
-				type: "list",
+				choices: this.getFrameworkNames(),
+				default: "jQuery",
 				name: "framework",
 				message: "Choose framework:",
-				choices: this.getFrameworkNames(),
-				default: "jQuery"
+				type: "list"
 			});
 
 			const framework = this.templateManager.getFrameworkByName(frameRes);

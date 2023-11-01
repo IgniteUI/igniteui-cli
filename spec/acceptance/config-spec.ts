@@ -38,14 +38,14 @@ describe("Config command", () => {
 		expect(console.error).toHaveBeenCalledWith(jasmine.stringMatching(/No configuration file found in this folder!\s*/));
 
 		let expectedParams: GoogleAnalyticsParameters = {
-			t: "screenview",
-			cd: "Config"
+			cd: "Config",
+			t: "screenview"
 		};
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith(expectedParams);
 
 		expectedParams = {
-			t: "screenview",
-			cd: "error: No configuration file found in this folder!"
+			cd: "error: No configuration file found in this folder!",
+			t: "screenview"
 		};
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith(expectedParams);
 		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);
