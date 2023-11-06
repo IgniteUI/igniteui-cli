@@ -384,16 +384,6 @@ export class ReactTypeScriptFileUpdate {
 
 	//#endregion Formatting
 
-	/** Convert a string or string array union to array. Splits strings as comma delimited */
-	private asArray(value: string | string[], variables: { [key: string]: string }): string[] {
-		let result: string[] = [];
-		if (value) {
-			result = typeof value === "string" ? value.split(/\s*,\s*/) : value;
-			result = result.map(x => Util.applyConfigTransformation(x, variables));
-		}
-		return result;
-	}
-
 	private createVisitor(
 		conditionalVisitor: ts.Visitor,
 		visitCondition: (node: ts.Node) => boolean,
