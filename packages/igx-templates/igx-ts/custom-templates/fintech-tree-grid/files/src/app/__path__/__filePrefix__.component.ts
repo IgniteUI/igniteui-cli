@@ -8,7 +8,7 @@ import {
   GridSelectionMode,
   HorizontalAlignment,
   IButtonGroupEventArgs,
-  IChangeSwitchEventArgs,
+  IChangeCheckboxEventArgs,
   IgxButtonGroupComponent,
   IgxSliderComponent,
   IgxTreeGridComponent,
@@ -172,7 +172,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
    * the below code is needed when accessing the sample through the navigation
    * it will style all the space below the sample component element, but not the navigation menu
    */
-  public onThemeChanged(evt: IChangeSwitchEventArgs): void {
+  public onThemeChanged(evt: IChangeCheckboxEventArgs): void {
     const parentEl = this.parentComponentEl();
     if (evt.checked && parentEl.classList.contains('main')) {
       parentEl.classList.add('fin-dark-theme');
