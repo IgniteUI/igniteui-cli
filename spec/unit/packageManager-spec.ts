@@ -223,7 +223,7 @@ describe("Unit - Package Manager", () => {
 		await TestPackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
 		expect(TestPackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@"~20.1"`, true);
 		expect(Util.execSync).toHaveBeenCalledWith(
-			`npm install @infragistics/ignite-ui-full@"~20.1" --force --quiet --save`,
+			`npm install @infragistics/ignite-ui-full@"~20.1" --quiet --save`,
 			jasmine.any(Object)
 		);
 		expect(TestPackageManager.removePackage).toHaveBeenCalledWith("ignite-ui", true);
@@ -232,7 +232,7 @@ describe("Unit - Package Manager", () => {
 		await TestPackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
 		expect(TestPackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@"^17.1"`, true);
 		expect(Util.execSync).toHaveBeenCalledWith(
-			`npm install @infragistics/ignite-ui-full@"^17.1" --force --quiet --save`,
+			`npm install @infragistics/ignite-ui-full@"^17.1" --quiet --save`,
 			jasmine.any(Object)
 		);
 
@@ -240,7 +240,7 @@ describe("Unit - Package Manager", () => {
 		await TestPackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
 		expect(TestPackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@">=0.1.0 <0.2.0"`, true);
 		expect(Util.execSync).toHaveBeenCalledWith(
-			`npm install @infragistics/ignite-ui-full@">=0.1.0 <0.2.0" --force --quiet --save`,
+			`npm install @infragistics/ignite-ui-full@">=0.1.0 <0.2.0" --quiet --save`,
 			jasmine.any(Object)
 		);
 		done();
@@ -263,7 +263,7 @@ describe("Unit - Package Manager", () => {
 		expect(Util.log).toHaveBeenCalledWith(`Installing npm packages`);
 		expect(Util.log).toHaveBeenCalledWith(`Error installing npm packages.`);
 		expect(Util.log).toHaveBeenCalledWith(`Example`);
-		expect(Util.execSync).toHaveBeenCalledWith(`npm install --force --quiet`,
+		expect(Util.execSync).toHaveBeenCalledWith(`npm install --quiet`,
 			{ stdio: ["inherit"], killSignal: "SIGINT" });
 		expect(ProjectConfig.setConfig).toHaveBeenCalledWith({ packagesInstalled: true });
 		done();
@@ -280,7 +280,7 @@ describe("Unit - Package Manager", () => {
 		expect(Util.log).toHaveBeenCalledTimes(2);
 		expect(Util.log).toHaveBeenCalledWith(`Installing npm packages`);
 		expect(Util.log).toHaveBeenCalledWith(`Packages installed successfully`);
-		expect(Util.execSync).toHaveBeenCalledWith(`npm install --force --quiet`,
+		expect(Util.execSync).toHaveBeenCalledWith(`npm install --quiet`,
 			{ stdio: ["inherit"], killSignal: "SIGINT" });
 		expect(ProjectConfig.setConfig).toHaveBeenCalledWith({ packagesInstalled: true });
 		done();
@@ -301,7 +301,7 @@ describe("Unit - Package Manager", () => {
 		await PackageManager.installPackages(true);
 		expect(Util.log).toHaveBeenCalledTimes(1);
 		expect(Util.log).toHaveBeenCalledWith(`Installing npm packages`);
-		expect(Util.execSync).toHaveBeenCalledWith(`npm install --force --quiet`,
+		expect(Util.execSync).toHaveBeenCalledWith(`npm install --quiet`,
 			{ stdio: ["inherit"], killSignal: "SIGINT" });
 		expect(process.exit).toHaveBeenCalled();
 		expect(ProjectConfig.setConfig).toHaveBeenCalledTimes(0);
@@ -345,7 +345,7 @@ describe("Unit - Package Manager", () => {
 		expect(Util.log).toHaveBeenCalledWith(`Error installing package example-package with npm`);
 		expect(Util.log).toHaveBeenCalledWith(`Error`);
 		expect(Util.execSync).toHaveBeenCalledWith(
-			`npm install example-package --force --quiet --save`, { stdio: "pipe", encoding: "utf8" });
+			`npm install example-package --quiet --save`, { stdio: "pipe", encoding: "utf8" });
 		done();
 	});
 	it("Should run addPackage properly without error code", async done => {
@@ -355,7 +355,7 @@ describe("Unit - Package Manager", () => {
 		expect(Util.log).toHaveBeenCalledTimes(1);
 		expect(Util.log).toHaveBeenCalledWith(`Package example-package installed successfully`);
 		expect(Util.execSync).toHaveBeenCalledWith(
-			`npm install example-package --force --quiet --save`, { stdio: "pipe", encoding: "utf8" });
+			`npm install example-package --quiet --save`, { stdio: "pipe", encoding: "utf8" });
 		done();
 	});
 
@@ -380,7 +380,7 @@ describe("Unit - Package Manager", () => {
 		expect(Util.log).toHaveBeenCalledTimes(0);
 		expect(cp.exec).toHaveBeenCalledTimes(1);
 		expect(cp.exec).toHaveBeenCalledWith(
-			`npm install test-pack --force --quiet --no-save`, {}, jasmine.any(Function));
+			`npm install test-pack --quiet --no-save`, {}, jasmine.any(Function));
 		done();
 	});
 
