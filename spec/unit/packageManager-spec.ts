@@ -330,7 +330,7 @@ describe("Unit - Package Manager", () => {
 		expect(Util.log).toHaveBeenCalledTimes(1);
 		expect(Util.log).toHaveBeenCalledWith(`Package example-package uninstalled successfully`);
 		expect(Util.execSync).toHaveBeenCalledWith(
-			`npm uninstall example-package --force --quiet --save`, { stdio: "pipe", encoding: "utf8" });
+			`npm uninstall example-package --quiet --save`, { stdio: "pipe", encoding: "utf8" });
 		done();
 	});
 	it("Should run addPackage properly with error code", async done => {
@@ -380,7 +380,7 @@ describe("Unit - Package Manager", () => {
 		expect(Util.log).toHaveBeenCalledTimes(0);
 		expect(cp.exec).toHaveBeenCalledTimes(1);
 		expect(cp.exec).toHaveBeenCalledWith(
-			`npm install test-pack --quiet --no-save`, {}, jasmine.any(Function));
+			`npm install test-pack --force --quiet --no-save`, {}, jasmine.any(Function));
 		done();
 	});
 
