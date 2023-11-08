@@ -100,7 +100,7 @@
 				"new",
 				"reactproj",
 				"--framework=react",
-				"--type=igr-ts-es6"
+				"--type=igr-ts"
 			]
 		},
 		{
