@@ -1,3 +1,9 @@
+# [12.0.7](https://github.com/IgniteUI/igniteui-cli/compare/v12.0.6...v12.0.7) (2023-11-14)
+
+## What's Changed
+
+* Update Utils.LowerDashed function by @wnvko in https://github.com/IgniteUI/igniteui-cli/pull/1171
+
 # [12.0.6](https://github.com/IgniteUI/igniteui-cli/compare/v12.0.5...v12.0.6) (2023-10-02)
 
 ## What's Changed
