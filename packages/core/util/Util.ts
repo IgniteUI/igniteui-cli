@@ -239,7 +239,11 @@ export class Util {
 	 * lower-dashed string
 	 */
 	public static lowerDashed(text: string) {
-		return text.replace(/\s+/g, "-").toLowerCase();
+		const regex = new RegExp("[\\s]+|([\\p{Ll}](?=[\\p{Lu}\\p{Nd}]))", "gu");
+		const result = text.trim()
+				.replace(regex, "$1-")
+				.toLowerCase();
+		return result;
 	}
 
 	/**

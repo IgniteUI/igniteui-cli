@@ -29,7 +29,7 @@ describe("New command", () => {
 		expect(fs.existsSync("./jQuery Proj")).toBeTruthy();
 		expect(filesDiff("../templates/jquery/js/projects/empty/files", "./jQuery Proj")).toEqual([]);
 		const packageText = fs.readFileSync("./jQuery Proj/package.json", "utf-8");
-		expect(JSON.parse(packageText).name).toEqual("jquery-proj");
+		expect(JSON.parse(packageText).name).toEqual("j-query-proj");
 		expect(fs.existsSync("./jQuery Proj/.gitignore")).toBeTruthy();
 		testFolder = "./jQuery Proj";
 
