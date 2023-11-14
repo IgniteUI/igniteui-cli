@@ -35,7 +35,7 @@
     "@angular-eslint/template-parser": "^17.0.0",
     "@angular/cli": "~17.0.0",
     "@angular/compiler-cli": "~17.0.0",
-    "@angular/language-service": "~17.0.0-rc.1",
+    "@angular/language-service": "~17.0.0",
     "@types/facebook-js-sdk": "^3.3.6",
     "@types/hammerjs": "^2.0.41",
     "@types/jasmine": "~5.1.1",
