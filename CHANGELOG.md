@@ -1,3 +1,12 @@
+# [13.0.1](https://github.com/IgniteUI/igniteui-cli/compare/v13.0.0...v13.0.1) (2023-11-15)
+
+## What's Changed
+* chore(igx): update DV components by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1173
+* Update Utils.LowerDashed function by @wnvko in https://github.com/IgniteUI/igniteui-cli/pull/1171
+
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.0.0...v13.0.1
+
 # [13.0.0](https://github.com/IgniteUI/igniteui-cli/compare/v12.0.6...v13.0.0) (2023-11-09)
 
 🎉 This update includes:
