@@ -1,4 +1,4 @@
-import { IgniteUIForAngularTemplate } from "../../../IgniteUIForAngularTemplate";
+import { IgniteUIForAngularTemplate } from "../../../../IgniteUIForAngularTemplate";
 
 class IgxAccordionTemplate extends IgniteUIForAngularTemplate {
 	constructor() {
