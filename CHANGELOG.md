@@ -1,3 +1,10 @@
+# [13.0.2](https://github.com/IgniteUI/igniteui-cli/compare/v13.0.1...v13.0.2) (2023-11-21)
+
+## What's Changed
+* chore: Update IgniteUI Angular Wrappers and Karma Jasmine HTML Reporter by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1175
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.0.1...v13.0.2
+
 # [13.0.1](https://github.com/IgniteUI/igniteui-cli/compare/v13.0.0...v13.0.1) (2023-11-15)
 
 ## What's Changed
