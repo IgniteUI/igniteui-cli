@@ -1,6 +1,6 @@
 import { ControlExtraConfiguration, ProjectTemplate, Util } from "@igniteui/cli-core";
 import * as path from "path";
-import { updateWorkspace } from "..././../../Update";
+import { updateWorkspace } from "../.././../../Update";
 
 export class BaseIgxProject implements ProjectTemplate {
 	public id: string = "base";
