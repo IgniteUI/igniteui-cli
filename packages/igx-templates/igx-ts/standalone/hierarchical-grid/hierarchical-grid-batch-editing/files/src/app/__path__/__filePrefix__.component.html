@@ -1,0 +1,94 @@
+<p>IgxHierarchicalGrid with enabled batch editing. You can edit parent as well as child layout records. You can also add a record on root level using Add singer button.  <br />
+  You can read more about configuring the igx-hierarchical-grid component in the
+  <a href="https://github.com/IgniteUI/igniteui-angular/tree/master/projects/igniteui-angular/src/lib/grids/hierarchical-grid/README.md"
+    target="_blank">README</a> or the
+  <a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/hierarchicalgrid/batch-editing"
+    target="_blank">official documentation</a>.</p>
+<br />
+<button igxButton="raised" (click)="dialogAddSinger.open()" class="addSingerBtn">Add Singer</button>
+
+<igx-hierarchical-grid igxPreventDocumentScroll  #hierarchicalGrid class="hgrid" [batchEditing]="true" [data]="localdata" primaryKey="Artist"
+  [rowEditable]="true" height="580px" width="100%">
+  <igx-column field="Artist" header="Artist" [editable]="false" dataType="string"></igx-column>
+  <igx-column field="HasGrammyAward" header="Has Grammy Award?" [editable]="true" dataType="boolean">
+  </igx-column>
+  <igx-column field="Debut" header="Debut" [editable]="true" dataType="number" [formatter]="formatter">
+  </igx-column>
+  <igx-column field="GrammyNominations" header="Grammy Nominations" [editable]="true" dataType="number">
+  </igx-column>
+  <igx-column field="GrammyAwards" header="Grammy Awards" [editable]="true" dataType="number"></igx-column>
+  <igx-column width="150px" [editable]="false">
+    <ng-template igxCell let-cell="cell" let-val>
+      <button igxButton (click)="removeRow(cell.id ? cell.id.rowIndex : -1)"
+        [disabled]="cell.row.deleted">Delete</button>
+    </ng-template>
+  </igx-column>
+
+  <igx-row-island key="Albums" #layout1 primaryKey="Album" [rowEditable]="true">
+  <igx-grid-toolbar [grid]="grid" *igxGridToolbar="let grid">
+      <button igxButton [disabled]="!grid.transactions.canUndo" (click)="undo(grid)">Undo</button>
+      <button igxButton [disabled]="!grid.transactions.canRedo" (click)="redo(grid)">Redo</button>
+  </igx-grid-toolbar>
+
+    <igx-column field="Album" [editable]="false" dataType="string"></igx-column>
+    <igx-column field="LaunchDate" header="Launch Date" [editable]="true" dataType="date"></igx-column>
+    <igx-column field="BillboardReview" header="BillboardReview" [editable]="true" dataType="number">
+    </igx-column>
+    <igx-column field="USBillboard200" header="USBillboard200" [editable]="true" dataType="number">
+    </igx-column>
+
+  </igx-row-island>
+</igx-hierarchical-grid>
+
+<div class="buttons-row">
+  <div class="buttons-wrapper">
+    <button igxButton [disabled]="!hasTransactions" (click)="openCommitDialog()">Commit</button>
+    <button igxButton [disabled]="!undoEnabledParent" (click)="undo(hierarchicalGrid)">Undo Parent</button>
+    <button igxButton [disabled]="!redoEnabledParent" (click)="redo(hierarchicalGrid)">Redo Parent</button>
+  </div>
+</div>
+
+<igx-dialog #dialogAddSinger title="New Singer" rightButtonLabel="Add" leftButtonLabel="Cancel"
+  (leftButtonSelect)="cancel()" (rightButtonSelect)="addSinger()">
+  <div class="dialogNewSinger">
+    <igx-input-group>
+      <label igxLabel for="artist">Artist</label>
+      <input igxInput id="artist" type="text" [(ngModel)]="singer.Artist" />
+    </igx-input-group>
+    <igx-checkbox id="hasGrammyAward" [(ngModel)]="singer.HasGrammyAward">Has Grammy Award</igx-checkbox>
+    <igx-input-group>
+      <label igxLabel for="debut">Debut</label>
+      <input igxInput id="debut" type="number" [(ngModel)]="singer.Debut" />
+    </igx-input-group>
+    <igx-input-group>
+      <label igxLabel for="grammyNominations">Grammy Nominations</label>
+      <input igxInput id="grammyNominations" type="number" [(ngModel)]="singer.GrammyNominations" />
+    </igx-input-group>
+    <igx-input-group>
+      <label igxLabel for="grammyAwards">Grammy Awards</label>
+      <input igxInput id="grammyAwards" type="number" [(ngModel)]="singer.GrammyAwards" />
+    </igx-input-group>
+  </div>
+</igx-dialog>
+
+<igx-dialog #dialogChanges title="Submit the following transactions?">
+  <igx-grid igxPreventDocumentScroll #dialogGrid [data]="transactionsDataAll" [rowHeight]="64" primaryKey="id" width="650px" height="300px"
+    emptyGridMessage="No available transactions">
+    <igx-column field="id" header="ID" dataType="string" width="150px"></igx-column>
+    <igx-column field="type" header="Type" width="150px" [sortable]="true">
+      <ng-template igxCell let-cell="cell" let-val>
+        <span [class]="classFromType(val)">{{ typeFormatter(val) }}</span>
+      </ng-template>
+    </igx-column>
+    <igx-column field="newValue" header="Value" width="900px">
+      <ng-template igxCell let-cell="cell" let-val>
+        <span class="transaction-log">{{ stateFormatter(val) }}</span>
+      </ng-template>
+    </igx-column>
+  </igx-grid>
+  <div class="buttons-wrapper">
+    <button igxButton (click)="commit()">Commit</button>
+    <button igxButton (click)="discard()">Discard</button>
+    <button igxButton (click)="cancel()">Cancel</button>
+  </div>
+</igx-dialog>

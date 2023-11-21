@@ -1,0 +1,8 @@
+/* You can add global styles to this file, and also import other style files */
+// Standard CSS normalize, comment out if not required or using a different module
+@use "minireset.css/minireset";
+
+<%=CustomTheme%>
+html, body {
+  height: 100%;
+}

@@ -1,0 +1,28 @@
+<div class="content">
+  <p>The <b>igx-select</b> allows you to select a single item from a drop-down list.<br />
+    The following sample demonstrates the component inside a form.</p>
+  <p>You can read more about how to configure <b>igx-select</b> in the
+    <a href="https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/src/lib/select/README.md"
+      target="_blank">README</a> or the
+    <a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/select" target="_blank">official
+      documentation</a>.
+  </p>
+
+  <form>
+    <div class="select-wrapper">
+      <igx-select #model="ngModel" [(ngModel)]="selected" [ngModelOptions]="{standalone: true}"
+        [placeholder]="'Pick One'">
+        <label igxLabel>Favorite fruit</label>
+        <igx-prefix>Fruit</igx-prefix>
+        <igx-select-item> None </igx-select-item>
+        <igx-select-item *ngFor="let fruit of fruits" [value]="fruit">
+          {{fruit}}
+        </igx-select-item>
+      </igx-select>
+    </div>
+    <div class="actions">
+      <button igxButton (click)="onSubmit()">Submit</button>
+    </div>
+    <igx-toast #output>Selected {{selected ? selected : "None"}} </igx-toast>
+  </form>
+</div>

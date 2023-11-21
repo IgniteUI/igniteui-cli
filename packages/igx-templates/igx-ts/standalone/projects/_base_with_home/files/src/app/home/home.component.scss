@@ -1,0 +1,35 @@
+a {
+  color: #731963;
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 600;
+  color: rgba(0, 0, 0, .74);
+}
+
+h3 {
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+.links{
+  text-align: center;
+  padding: 0 35px;
+}
+
+#linksContainer {
+  flex-flow: row wrap;
+  display: flex;
+  justify-content: center;
+}
+
+:host{
+  width: 100%;
+  text-align:center;
+}
+
+img {
+  max-width:100%;
+}

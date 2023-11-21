@@ -1,0 +1,13 @@
+<p>igx-dropdown component.</p>
+<p>You can read more about configuring the igx-dropdown component in the
+<a href="https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/src/lib/drop-down/README.md" target="_blank">README</a> or the
+<a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/drop-down" target="_blank">official documentation</a>.</p>
+
+<div class="sample-wrapper drop-down-wrapper">
+  <button #button igxButton="raised" igxRipple [igxToggleAction]="dropdown" [igxDropDownItemNavigation]="dropdown">Toggle dropdown</button>
+  <igx-drop-down width="200px" #dropdown>
+    <igx-drop-down-item *ngFor="let item of items" [disabled]="!!item.disabled" [isHeader]="!!item.header">
+      {{ item.name }}
+    </igx-drop-down-item>
+  </igx-drop-down>
+</div>
