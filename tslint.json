@@ -21,12 +21,6 @@
 				"ignore-pattern": "TODO|\\w\\.\\w"
 			}
 		],
-		"member-ordering": [
-			true,
-			{
-				"order": "fields-first"
-			}
-		],
 		"variable-name": [
 			true,
 			"allow-leading-underscore"
@@ -45,15 +39,12 @@
 			true,
 			"@angular-devkit/schematics"
 		],
+		"array-type": false,
+		"member-ordering": false,
 		"interface-name": false,
 		"max-classes-per-file": false,
 		"prefer-object-spread": false,
 		"prefer-conditional-expression": false,
-		"object-literal-sort-keys": [
-			true,
-			"ignore-case",
-			"match-declaration-order",
-			"shorthand-first"
-		]
+		"object-literal-sort-keys": false
 	}
 }
