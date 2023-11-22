@@ -1,11 +1,10 @@
+import * as path from "path";
+
 import { BaseProjectLibrary } from "@igniteui/cli-core";
 
 class IgxProjectLibrary extends BaseProjectLibrary {
-	/**
-	 *
-	 */
 	constructor() {
-		super(__dirname);
+		super(path.join(__dirname, "module-based")); // TODO: should be modified based on the project type (standalone or not)
 		this.name = "Ignite UI for Angular";
 		this.projectType = "igx-ts";
 		this.themes = ["Custom", "Default"];
