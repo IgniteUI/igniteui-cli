@@ -29,9 +29,9 @@ describe('RegisterComponent', () => {
         IgxButtonModule,
         IgxIconModule,
         IgxInputGroupModule,
-        IgxRippleModule
+        IgxRippleModule,
+		RegisterComponent
       ],
-      declarations: [RegisterComponent],
       providers: [
         { provide: AuthenticationService, useValue: authSpy },
         { provide: UserService, useValue: userServSpy },
