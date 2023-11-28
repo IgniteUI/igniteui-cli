@@ -3,7 +3,7 @@ import { BaseProjectLibrary } from "@igniteui/cli-core";
 class IgxProjectLibrary extends BaseProjectLibrary {
 	constructor() {
 		super(__dirname);
-		this.name = "Ignite UI for Angular";
+		this.name = "Ignite UI for Angular NgModules (legacy)";
 		this.projectType = "igx-ts";
 		this.themes = ["Custom", "Default"];
 
