@@ -10,18 +10,6 @@ class IgxSelectTemplate extends IgniteUIForAngularTemplate {
 		this.projectType = "igx-ts";
 		this.name = "Select In Form";
 		this.description = "IgxSelect in a form";
-		this.dependencies = [{
-			import: [
-				"IgxSelectModule",
-				"IgxButtonModule",
-				"IgxToggleModule",
-				"IgxToastModule"
-			],
-			from: "<%=igxPackage%>"
-		}, {
-			import: ["FormsModule"],
-			from: "@angular/forms"
-		}];
 	}
 }
 module.exports = new IgxSelectTemplate();

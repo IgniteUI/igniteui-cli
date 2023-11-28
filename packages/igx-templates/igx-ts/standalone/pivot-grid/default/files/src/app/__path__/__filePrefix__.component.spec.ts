@@ -9,9 +9,7 @@ describe('<%=ClassName%>Component', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [<%=ClassName%>Component],
-      imports: [IgxPivotGridModule,
-        NoopAnimationsModule]
+	  imports: [IgxPivotGridModule, NoopAnimationsModule, <%=ClassName%>Component]
     })
       .compileComponents();
   }));

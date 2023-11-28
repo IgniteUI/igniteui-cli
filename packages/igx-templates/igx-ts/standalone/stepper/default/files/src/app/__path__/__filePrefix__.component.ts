@@ -1,10 +1,15 @@
 import { Component } from '@angular/core';
-import { IButtonGroupEventArgs, IgxStepperOrientation } from '<%=igxPackage%>';
+
+import { IButtonGroupEventArgs, IgxStepperOrientation, IgxButtonGroupComponent, IgxStepperComponent,
+	IgxStepComponent, IgxStepTitleDirective, IgxStepContentDirective, IgxButtonDirective } from '<%=igxPackage%>';
 
 @Component({
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.component.html',
-  styleUrls: ['./<%=filePrefix%>.component.scss']
+  styleUrls: ['./<%=filePrefix%>.component.scss'],
+  standalone: true,
+  imports: [IgxButtonGroupComponent, IgxStepperComponent, IgxStepComponent,
+	IgxStepTitleDirective, IgxStepContentDirective, IgxButtonDirective]
 })
 export class <%=ClassName%>Component {
     public orientation: IgxStepperOrientation = 'horizontal';

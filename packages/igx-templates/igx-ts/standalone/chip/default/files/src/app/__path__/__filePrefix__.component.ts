@@ -1,15 +1,20 @@
 import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
 import {
-  CloseScrollStrategy,
-  ConnectedPositioningStrategy,
-  HorizontalAlignment,
-  IBaseChipEventArgs,
-  IgxChipsAreaComponent,
-  IgxDropDownComponent,
-  ISelectionEventArgs,
-  OverlaySettings,
-  VerticalAlignment
-} from '<%=igxPackage%>';
+	CloseScrollStrategy,
+	ConnectedPositioningStrategy,
+	HorizontalAlignment,
+	IBaseChipEventArgs,
+	IgxChipsAreaComponent,
+	IgxDropDownComponent,
+	ISelectionEventArgs,
+	OverlaySettings,
+	VerticalAlignment,
+	IgxLayoutDirective,
+	IgxChipComponent,
+	IgxButtonDirective,
+	IgxDropDownItemNavigationDirective,
+	IgxDropDownItemComponent } from '<%=igxPackage%>';
+import { NgFor } from '@angular/common';
 
 interface NamedEntry {
   id: string;
@@ -19,7 +24,10 @@ interface NamedEntry {
 @Component({
  selector: 'app-<%=filePrefix%>',
  styleUrls: ['./<%=filePrefix%>.component.scss'],
- templateUrl: './<%=filePrefix%>.component.html'
+ templateUrl: './<%=filePrefix%>.component.html',
+ standalone: true,
+ imports: [IgxLayoutDirective, IgxChipsAreaComponent, NgFor, IgxChipComponent, IgxButtonDirective,
+	IgxDropDownItemNavigationDirective, IgxDropDownComponent, IgxDropDownItemComponent]
 })
 
 export class <%=ClassName%>Component {

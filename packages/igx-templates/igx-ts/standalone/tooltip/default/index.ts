@@ -10,13 +10,6 @@ class IgxTooltipTemplate extends IgniteUIForAngularTemplate {
 		this.projectType = "igx-ts";
 		this.name = "Tooltip";
 		this.description = "A fully customizable tooltip";
-		this.dependencies = [
-			{
-				import: ["IgxAvatarModule", "IgxTooltipModule", "IgxSwitchModule"],
-				from: "<%=igxPackage%>"
-			},
-			{ import: "FormsModule", from: "@angular/forms" }
-		];
 	}
 }
 module.exports = new IgxTooltipTemplate();

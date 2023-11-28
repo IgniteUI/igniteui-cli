@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { DATA } from './data';
-import { IPivotConfiguration, IgxPivotNumericAggregate } from '<%=igxPackage%>';
+import { IPivotConfiguration, IgxPivotNumericAggregate, IgxPivotGridComponent } from '<%=igxPackage%>';
 
 @Component({
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.component.html',
-  styleUrls: ['./<%=filePrefix%>.component.scss']
+  styleUrls: ['./<%=filePrefix%>.component.scss'],
+  standalone: true,
+  imports: [IgxPivotGridComponent]
 })
 export class <%=ClassName%>Component {
   public data = DATA;

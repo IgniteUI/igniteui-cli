@@ -5,7 +5,11 @@ import { Region, Town, townsExtended } from './towns-data-extended';
 @Component({
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.component.html',
-  styleUrls: ['./<%=filePrefix%>.component.scss']
+  styleUrls: ['./<%=filePrefix%>.component.scss'],
+  standalone: true,
+  imports: [IgxInputGroupComponent, IgxLabelDirective, ReactiveFormsModule, IgxInputDirective, IgxAutocompleteDirective, 
+	FormsModule, IgxDropDownComponent, NgFor, IgxDropDownGroupComponent, IgxDropDownItemComponent, IgxToastComponent, 
+	forwardRef(() => EnhancedAutocompletePipeStartsWith), forwardRef(() => EnhancedAutocompleteRegionContains)]
 })
 export class <%=ClassName%>Component {
   public regions!: Region[];

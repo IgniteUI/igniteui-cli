@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { IgxSelectComponent, IgxSelectGroupComponent, IgxSelectItemComponent, IgxLabelDirective,
+	IgxSelectToggleIconDirective, IgxIconComponent, IgxInputGroupComponent, IgxInputDirective,
+	IgxSuffixDirective, IgxPrefixDirective, IgxHintDirective, IgxComboComponent, IgxDatePickerComponent,
+	IgxPickerToggleComponent, IgxTimePickerComponent, IgxButtonDirective, IgxRippleDirective } from '<%=igxPackage%>';
+import { NgFor } from '@angular/common';
 
 interface Genre {
   type: string;
@@ -9,7 +14,12 @@ interface Genre {
 @Component({
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.component.html',
-  styleUrls: ['./<%=filePrefix%>.component.scss']
+  styleUrls: ['./<%=filePrefix%>.component.scss'],
+  standalone: true,
+  imports: [ReactiveFormsModule, IgxSelectComponent, NgFor, IgxSelectGroupComponent,
+	IgxSelectItemComponent, IgxLabelDirective, IgxSelectToggleIconDirective, IgxIconComponent,
+	IgxInputGroupComponent, IgxInputDirective, IgxSuffixDirective, IgxPrefixDirective, IgxHintDirective,
+	IgxComboComponent, IgxDatePickerComponent, IgxPickerToggleComponent, IgxTimePickerComponent, IgxButtonDirective, IgxRippleDirective]
 })
 export class <%=ClassName%>Component implements OnInit {
   public genres!: Genre[];

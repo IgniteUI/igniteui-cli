@@ -10,12 +10,6 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 		this.projectType = "igx-ts";
 		this.name = "Hierarchical Grid With Batch Editing";
 		this.description = "IgxHierarchicalGrid with batch editing";
-		this.dependencies = [
-			{
-				import: ["IgxGridModule", "IgxHierarchicalGridModule", "IgxDialogModule"],
-				from: "<%=igxPackage%>"
-			}
-		];
 	}
 }
 module.exports = new IgxHierarchicalGridTemplate();

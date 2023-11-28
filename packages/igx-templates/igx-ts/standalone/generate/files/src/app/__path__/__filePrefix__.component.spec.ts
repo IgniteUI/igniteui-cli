@@ -7,8 +7,7 @@ describe('<%=ClassName%>Component', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [<%=ClassName%>Component],
-      imports: [IgxCarouselModule]
+      imports: [IgxCarouselModule, <%=ClassName%>Component]
     })
       .compileComponents();
   }));

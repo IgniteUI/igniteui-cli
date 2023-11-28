@@ -10,9 +10,6 @@ class IgxTimePickerTemplate extends IgniteUIForAngularTemplate {
 		this.projectType = "igx-ts";
 		this.name = "Time Picker";
 		this.description = "IgxTimePicker with initial value";
-		this.dependencies = [
-			{ import: "IgxTimePickerModule", from: "<%=igxPackage%>" }
-		];
 	}
 }
 module.exports = new IgxTimePickerTemplate();

@@ -1,15 +1,14 @@
 import { AfterViewInit, Component, ViewChild, ViewEncapsulation } from '@angular/core';
-import {
-  IgxLinearGaugeComponent,
-  IgxLinearGraphRangeComponent,
-  LinearGraphNeedleShape
-} from 'igniteui-angular-gauges';
+import { IgxLinearGaugeComponent, IgxLinearGraphRangeComponent,
+	LinearGraphNeedleShape, IgxLinearGaugeCoreModule } from 'igniteui-angular-gauges';
 
 @Component({
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.component.html',
   styleUrls: ['./<%=filePrefix%>.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  standalone: true,
+  imports: [IgxLayoutDirective, IgxButtonDirective, IgxLinearGaugeCoreModule]
 })
 export class <%=ClassName%>Component implements AfterViewInit {
   public needleShape = LinearGraphNeedleShape

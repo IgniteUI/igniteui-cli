@@ -1,20 +1,17 @@
 import { AfterViewInit, Component, ViewChild, ViewEncapsulation } from '@angular/core';
 // radial gauge imports
 import { SweepDirection } from 'igniteui-angular-core';
-import {
-  IgxRadialGaugeComponent,
-  IgxRadialGaugeRangeComponent,
-  RadialGaugeBackingShape,
-  RadialGaugeNeedleShape,
-  RadialGaugePivotShape,
-  RadialGaugeScaleOversweepShape
-} from 'igniteui-angular-gauges';
+import { IgxRadialGaugeComponent, IgxRadialGaugeRangeComponent, RadialGaugeBackingShape,
+	RadialGaugeNeedleShape, RadialGaugePivotShape, RadialGaugeScaleOversweepShape, IgxRadialGaugeCoreModule } from 'igniteui-angular-gauges';
+import { IgxLayoutDirective, IgxButtonDirective } from '<%=igxPackage%>';
 
 @Component({
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.component.html',
   styleUrls: ['./<%=filePrefix%>.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  standalone: true,
+  imports: [IgxLayoutDirective, IgxButtonDirective, IgxRadialGaugeCoreModule]
 })
 export class <%=ClassName%>Component implements AfterViewInit {
 

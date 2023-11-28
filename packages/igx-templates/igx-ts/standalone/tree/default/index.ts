@@ -10,10 +10,6 @@ class IgxComboTemplate extends IgniteUIForAngularTemplate {
 		this.projectType = "igx-ts";
 		this.name = "Tree";
 		this.description = "IgxTree sample with selection and load-on-demand node";
-		this.dependencies = [{
-			import: ["IgxTreeModule", "IgxIconModule", "IgxTooltipModule"],
-			from: "<%=igxPackage%>"
-		}];
 	}
 }
 module.exports = new IgxComboTemplate();

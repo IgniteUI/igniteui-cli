@@ -12,9 +12,6 @@ class IgxCalendarTemplate extends IgniteUIForAngularTemplate {
 		this.projectType = "igx-ts";
 		this.name = "Calendar";
 		this.description = "IgxCalendar with single selection";
-		this.dependencies = [
-			{ import: "IgxCalendarModule", from: "<%=igxPackage%>" }
-		];
 
 		this.hasExtraConfiguration = true;
 	}

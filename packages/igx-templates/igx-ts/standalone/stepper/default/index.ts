@@ -10,10 +10,6 @@ class IgxStepperTemplate extends IgniteUIForAngularTemplate {
 		this.projectType = "igx-ts";
 		this.name = "Stepper";
 		this.description = "Basic IgxStepper sample";
-		this.dependencies = [{
-			import: ["IgxStepperModule", "IgxButtonModule", "IgxButtonGroupModule"],
-			from: "<%=igxPackage%>"
-		}];
 	}
 }
 module.exports = new IgxStepperTemplate();

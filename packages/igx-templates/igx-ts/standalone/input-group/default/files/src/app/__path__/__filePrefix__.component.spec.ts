@@ -19,20 +19,20 @@ describe('<%=ClassName%>Component', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [<%=ClassName%>Component],
-      imports: [
-        FormsModule,
-		ReactiveFormsModule,
-        NoopAnimationsModule,
-        IgxInputGroupModule,
-        IgxButtonModule,
-        IgxRippleModule,
-        IgxIconModule,
-        IgxComboModule,
-        IgxDatePickerModule,
-        IgxTimePickerModule,
-        IgxSelectModule
-      ]
+	  imports: [
+	    FormsModule,
+	    ReactiveFormsModule,
+	    NoopAnimationsModule,
+	    IgxInputGroupModule,
+	    IgxButtonModule,
+	    IgxRippleModule,
+	    IgxIconModule,
+	    IgxComboModule,
+	    IgxDatePickerModule,
+	    IgxTimePickerModule,
+	    IgxSelectModule,
+	    <%=ClassName%>Component
+	  ]
     })
       .compileComponents();
   }));

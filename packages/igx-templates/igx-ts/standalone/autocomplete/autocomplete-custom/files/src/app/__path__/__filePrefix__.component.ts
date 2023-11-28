@@ -1,10 +1,13 @@
-import { Component, Pipe, PipeTransform } from '@angular/core';
+import { Component, Pipe, PipeTransform, forwardRef } from '@angular/core';
 import { Towns } from './towns-data';
 
 @Component({
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.component.html',
-  styleUrls: ['./<%=filePrefix%>.component.scss']
+  styleUrls: ['./<%=filePrefix%>.component.scss'],
+  standalone: true,
+  imports: [ReactiveFormsModule, FormsModule, IgxInputGroupComponent, IgxLabelDirective, IgxInputDirective, 
+	IgxAutocompleteDirective, IgxDropDownComponent, NgFor, IgxDropDownItemComponent, forwardRef(() => SimpleAutocompletePipeStartsWith)]
 })
 export class <%=ClassName%>Component {
   public towns: string[];
