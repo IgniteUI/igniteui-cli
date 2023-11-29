@@ -1,3 +1,4 @@
+import { IGNITEUI_ANGULAR_PACKAGE } from "../../../constants";
 import { IgniteUIForAngularTemplate } from "../../../IgniteUIForAngularTemplate";
 
 class IgxAutocompleteTemplate extends IgniteUIForAngularTemplate {
@@ -10,6 +11,7 @@ class IgxAutocompleteTemplate extends IgniteUIForAngularTemplate {
 		this.projectType = "igx-ts";
 		this.name = "Enhanced Autocomplete";
 		this.description = "IgxAutocomplete with enhanced groups";
+		this.packages = [IGNITEUI_ANGULAR_PACKAGE];
 	}
 }
 module.exports = new IgxAutocompleteTemplate();

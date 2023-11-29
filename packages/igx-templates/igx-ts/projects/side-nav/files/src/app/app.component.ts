@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
     for (const route of routes) {
       if (route.path && route.data && route.path.indexOf('*') === -1) {
         this.topNavLinks.push({
-          name: route.data.text,
+          name: route.data['text'],
           path: '/' + route.path
         });
       }

@@ -1,5 +1,6 @@
 import { ControlExtraConfigType, ControlExtraConfiguration } from "@igniteui/cli-core";
 import { IgniteUIForAngularTemplate } from "../../../IgniteUIForAngularTemplate";
+import { IGNITEUI_ANGULAR_PACKAGE } from "../../../constants";
 
 class IgxMultiColumnHeadersTemplate extends IgniteUIForAngularTemplate {
 	private userExtraConfiguration: {} = {};
@@ -13,6 +14,7 @@ class IgxMultiColumnHeadersTemplate extends IgniteUIForAngularTemplate {
 		this.projectType = "igx-ts";
 		this.name = "Multi Column Headers";
 		this.description = "IgxGrid with multiple header columns.";
+		this.packages = [IGNITEUI_ANGULAR_PACKAGE];
 		this.hasExtraConfiguration = true;
 	}
 

@@ -1,5 +1,6 @@
 import { ControlExtraConfigType, ControlExtraConfiguration } from "@igniteui/cli-core";
 import { IgniteUIForAngularTemplate } from "../../../IgniteUIForAngularTemplate";
+import { IGNITEUI_ANGULAR_PACKAGE } from "../../../constants";
 
 class IgxCalendarTemplate extends IgniteUIForAngularTemplate {
 	private userExtraConfiguration: {} = {};
@@ -12,7 +13,7 @@ class IgxCalendarTemplate extends IgniteUIForAngularTemplate {
 		this.projectType = "igx-ts";
 		this.name = "Calendar";
 		this.description = "IgxCalendar with single selection";
-
+		this.packages = [IGNITEUI_ANGULAR_PACKAGE];
 		this.hasExtraConfiguration = true;
 	}
 

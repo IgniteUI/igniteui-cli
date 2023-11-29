@@ -1,3 +1,4 @@
+import { IGNITEUI_ANGULAR_PACKAGE } from "../../../constants";
 import { IgniteUIForAngularTemplate } from "../../../IgniteUIForAngularTemplate";
 
 class IgxBottomNavTemplate extends IgniteUIForAngularTemplate {
@@ -10,6 +11,7 @@ class IgxBottomNavTemplate extends IgniteUIForAngularTemplate {
 		this.projectType = "igx-ts";
 		this.name = "Bottom Navigation";
 		this.description = "three item bottom navigation template";
+		this.packages = [IGNITEUI_ANGULAR_PACKAGE];
 	}
 }
 module.exports = new IgxBottomNavTemplate();

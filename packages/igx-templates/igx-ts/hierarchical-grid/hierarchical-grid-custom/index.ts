@@ -1,5 +1,6 @@
 import { ControlExtraConfigType, ControlExtraConfiguration } from "@igniteui/cli-core";
 import { IgniteUIForAngularTemplate } from "../../../IgniteUIForAngularTemplate";
+import { IGNITEUI_ANGULAR_PACKAGE } from "../../../constants";
 
 class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 	private userExtraConfiguration = {};
@@ -18,7 +19,7 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 		this.dependencies = [
 			{ import: ["IgxGridModule", "IgxHierarchicalGridModule"], from: "<%=igxPackage%>" }
 		];
-
+		this.packages = [IGNITEUI_ANGULAR_PACKAGE];
 		this.hasExtraConfiguration = true;
 	}
 

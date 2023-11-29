@@ -54,6 +54,11 @@ export class IgniteUIForAngularTemplate implements Template {
 			modulePath = options.modulePath;
 		}
 
+		const mainModulePath = path.join(projectPath, `src/app/${modulePath}`);
+		if (!App.container.get<IFileSystem>(FS_TOKEN).fileExists(mainModulePath)) {
+			return;
+		}
+
 		// D.P. Don't use the top-level import as that chains import of typescript
 		// which slows down execution of the entire component noticeably (template loading)
 		// https://www.typescriptlang.org/docs/handbook/modules.html#dynamic-module-loading-in-nodejs
@@ -76,7 +81,6 @@ export class IgniteUIForAngularTemplate implements Template {
 
 		//3) add an import of the component class from its file location.
 		//4) populate the declarations portion of the @NgModule with the component class name.
-		const mainModulePath = path.join(projectPath, `src/app/${modulePath}`);
 		const mainModule = new TsUpdate(mainModulePath);
 		this.addClassDeclaration(mainModule, projectPath, name, modulePath);
 
