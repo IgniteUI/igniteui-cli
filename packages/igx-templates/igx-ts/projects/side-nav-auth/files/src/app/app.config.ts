@@ -18,8 +18,8 @@ export const appConfig: ApplicationConfig = {
 	  IgxNavigationDrawerModule,
 	  IgxRippleModule,
 	  AuthenticationModule),
-	  provideAnimations(),
-	  ExternalAuthService
+	provideAnimations(),
+	ExternalAuthService
 	// provide the HAMMER_GESTURE_CONFIG token
 	// to override the default settings of the HammerModule
     // { provide: HAMMER_GESTURE_CONFIG, useClass: MyHammerConfig }
