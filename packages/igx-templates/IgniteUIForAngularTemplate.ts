@@ -44,7 +44,7 @@ export class IgniteUIForAngularTemplate implements Template {
 			return Promise.resolve(false);
 		}
 
-		return  Object.assign({}, options["extraConfig"], this.getBaseVariables(name));
+		return Object.assign({}, options["extraConfig"], this.getBaseVariables(name));
 	}
 
 	//TODO: rename name to fullName for clarity + in all other places fileName to fullName
@@ -54,11 +54,6 @@ export class IgniteUIForAngularTemplate implements Template {
 			modulePath = options.modulePath;
 		}
 
-		const mainModulePath = path.join(projectPath, `src/app/${modulePath}`);
-		if (!App.container.get<IFileSystem>(FS_TOKEN).fileExists(mainModulePath)) {
-			return;
-		}
-
 		// D.P. Don't use the top-level import as that chains import of typescript
 		// which slows down execution of the entire component noticeably (template loading)
 		// https://www.typescriptlang.org/docs/handbook/modules.html#dynamic-module-loading-in-nodejs
@@ -66,6 +61,21 @@ export class IgniteUIForAngularTemplate implements Template {
 		const TsUpdate: typeof TypeScriptFileUpdate =
 			// tslint:disable-next-line:no-submodule-imports
 			require("@igniteui/cli-core/typescript").TypeScriptFileUpdate;
+
+		const mainModulePath = path.join(projectPath, `src/app/${modulePath}`);
+		if (!App.container.get<IFileSystem>(FS_TOKEN).fileExists(mainModulePath)) {
+			const appRoutesPath = "src/app/app.routes.ts";
+			if (!(options && options.skipRoute) && App.container.get<IFileSystem>(FS_TOKEN).fileExists(appRoutesPath)) {
+				const rountesConfig = new TsUpdate(path.join(projectPath, appRoutesPath));
+				rountesConfig.addRoute(
+					path.join(projectPath, `src/app/${this.folderName(name)}/${this.fileName(name)}.component.ts`),
+					this.fileName(name),		//path
+					Util.nameFromPath(name)		//text
+				);
+			}
+
+			return;
+		}
 
 		if (!(options && options.skipRoute) && App.container.get<IFileSystem>(FS_TOKEN).fileExists("src/app/app-routing.module.ts")) {
 			//1) import the component class name,
