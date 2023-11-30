@@ -4,7 +4,7 @@ import {
   DefaultSortingStrategy,
   GridSelectionMode,
   IButtonGroupEventArgs,
-  IChangeSwitchEventArgs,
+  IChangeCheckboxEventArgs,
   IGridKeydownEventArgs,
   IgxButtonGroupComponent,
   IgxDialogComponent,
@@ -191,7 +191,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
     }
   }
 
-  public onChange(event: IChangeSwitchEventArgs): void {
+  public onChange(event: IChangeCheckboxEventArgs): void {
     if (this.grid1.groupingExpressions.length > 0) {
       this.grid1.groupingExpressions = [];
     } else {
@@ -272,7 +272,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
    * the below code is needed when accessing the sample through the navigation
    * it will style all the space below the sample component element, but not the navigation menu
    */
-  public onThemeChanged(event: IChangeSwitchEventArgs): void {
+  public onThemeChanged(event: IChangeCheckboxEventArgs): void {
     const parentEl = this.parentComponentEl();
     if (event.checked && parentEl.classList.contains('main')) {
       parentEl.classList.add('fin-dark-theme');

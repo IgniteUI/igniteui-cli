@@ -1,3 +1,33 @@
+# [13.0.2](https://github.com/IgniteUI/igniteui-cli/compare/v13.0.1...v13.0.2) (2023-11-21)
+
+## What's Changed
+* chore: Update IgniteUI Angular Wrappers and Karma Jasmine HTML Reporter by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1175
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.0.1...v13.0.2
+
+# [13.0.1](https://github.com/IgniteUI/igniteui-cli/compare/v13.0.0...v13.0.1) (2023-11-15)
+
+## What's Changed
+* chore(igx): update DV components by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1173
+* Update Utils.LowerDashed function by @wnvko in https://github.com/IgniteUI/igniteui-cli/pull/1171
+
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.0.0...v13.0.1
+
+# [13.0.0](https://github.com/IgniteUI/igniteui-cli/compare/v12.0.6...v13.0.0) (2023-11-09)
+
+🎉 This update includes:
+
+- `igniteui-angular` version [17.0.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/17.0.0).
+
+## What's Changed
+
+* CLI templates update for Angular 17 by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1169
+* mass merge from 12.0.x to master by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1126
+* build(deps): bump @babel/traverse from 7.18.2 to 7.23.2 by @dependabot in https://github.com/IgniteUI/igniteui-cli/pull/1160
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v12.0.6...v13.0.0
+
 # [12.0.6](https://github.com/IgniteUI/igniteui-cli/compare/v12.0.5...v12.0.6) (2023-10-02)
 
 ## What's Changed
