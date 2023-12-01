@@ -41,6 +41,7 @@
 		],
 		"array-type": false,
 		"member-ordering": false,
+		"ordered-imports": false,
 		"interface-name": false,
 		"max-classes-per-file": false,
 		"prefer-object-spread": false,
