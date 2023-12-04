@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgFor } from '@angular/common';
-import { IgxCarouselComponent, IgxSlideComponent } from '<%=igxPackage%>';;
+import { IgxCarouselComponent, IgxSlideComponent } from '<%=igxPackage%>';
 
 @Component({
   selector: 'app-<%=filePrefix%>',
@@ -10,7 +10,6 @@ import { IgxCarouselComponent, IgxSlideComponent } from '<%=igxPackage%>';;
   imports: [IgxCarouselComponent, NgFor, IgxSlideComponent]
 })
 export class <%=ClassName%>Component implements OnInit {
-
   public slides: Slide[] = [];
   public interval = 3000;
   public pause = true;

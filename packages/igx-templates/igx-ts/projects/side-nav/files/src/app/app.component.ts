@@ -1,7 +1,14 @@
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { NavigationStart, Router, RouterLinkActive, RouterLink, RouterOutlet } from '@angular/router';
-import { IgxNavigationDrawerComponent, IgxLayoutDirective, IgxNavDrawerTemplateDirective, IgxNavDrawerItemDirective,
-  IgxRippleDirective, IgxFlexDirective, IgxNavbarComponent } from 'igniteui-angular';
+import {
+  IgxNavigationDrawerComponent,
+  IgxLayoutDirective,
+  IgxNavDrawerTemplateDirective,
+  IgxNavDrawerItemDirective,
+  IgxRippleDirective,
+  IgxFlexDirective,
+  IgxNavbarComponent,
+} from 'igniteui-angular';
 import { filter } from 'rxjs/operators';
 import { NgFor } from '@angular/common';
 import { routes } from './app.routes';
@@ -12,8 +19,19 @@ import { routes } from './app.routes';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  imports: [IgxLayoutDirective, IgxNavigationDrawerComponent, IgxNavDrawerTemplateDirective, IgxNavDrawerItemDirective,
-    NgFor, IgxRippleDirective, RouterLinkActive, RouterLink, IgxFlexDirective, IgxNavbarComponent, RouterOutlet]
+  imports: [
+    IgxLayoutDirective,
+    IgxNavigationDrawerComponent,
+    IgxNavDrawerTemplateDirective,
+    IgxNavDrawerItemDirective,
+    NgFor,
+    IgxRippleDirective,
+    RouterLinkActive,
+    RouterLink,
+    IgxFlexDirective,
+    IgxNavbarComponent,
+    RouterOutlet
+  ]
 })
 export class AppComponent implements OnInit {
   public topNavLinks: {

@@ -8,7 +8,6 @@ import { IDialogEventArgs, IgxButtonDirective, IgxDialogComponent } from '<%=igx
   standalone: true,
   imports: [IgxButtonDirective, IgxDialogComponent]
 })
-
 export class <%=ClassName%>Component {
   dialogOKSelected(args: IDialogEventArgs) {
     args.dialog.close();

@@ -1,6 +1,15 @@
-
-import { AfterViewInit, Component, ViewEncapsulation, ViewChild } from '@angular/core';
-import { IgxBulletGraphComponent, IgxLinearGraphRangeComponent, IgxBulletGraphCoreModule } from 'igniteui-angular-gauges';
+import {
+	AfterViewInit,
+	Component,
+	ViewEncapsulation,
+	ViewChild,
+  } from '@angular/core';
+  import { IgxButtonDirective, IgxLayoutDirective } from '<%=igxPackage%>';
+  import {
+	IgxBulletGraphComponent,
+	IgxLinearGraphRangeComponent,
+	IgxBulletGraphCoreModule,
+  } from 'igniteui-angular-gauges';
 
 @Component({
   selector: 'app-<%=filePrefix%>',

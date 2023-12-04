@@ -1,6 +1,17 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IgxDialogComponent, IgxGridComponent, State, Transaction, TransactionService, IgxColumnComponent, IgxCellTemplateDirective,
-	IgxButtonDirective, IgxCellEditorTemplateDirective, IgxFocusDirective, IgxRippleDirective }from '<%=igxPackage%>';
+import {
+  IgxDialogComponent,
+  IgxGridComponent,
+  State,
+  Transaction,
+  TransactionService,
+  IgxColumnComponent,
+  IgxCellTemplateDirective,
+  IgxButtonDirective,
+  IgxCellEditorTemplateDirective,
+  IgxFocusDirective,
+  IgxRippleDirective,
+} from '<%=igxPackage%>';
 import { data, Product } from './data';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
@@ -9,8 +20,18 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
   styleUrls: ['./<%=filePrefix%>.component.scss'],
   templateUrl: './<%=filePrefix%>.component.html',
   standalone: true,
-  imports: [IgxGridComponent, IgxColumnComponent, IgxCellTemplateDirective,IgxButtonDirective,
-	IgxCellEditorTemplateDirective, ReactiveFormsModule, FormsModule, IgxFocusDirective, IgxRippleDirective, IgxDialogComponent]
+  imports: [
+    IgxGridComponent,
+    IgxColumnComponent,
+    IgxCellTemplateDirective,
+    IgxButtonDirective,
+    IgxCellEditorTemplateDirective,
+    ReactiveFormsModule,
+    FormsModule,
+    IgxFocusDirective,
+    IgxRippleDirective,
+    IgxDialogComponent
+  ]
 })
 export class <%=ClassName%>Component implements OnInit {
   @ViewChild('gridRowEditTransaction', { static: true, read: IgxGridComponent }) public grid!: IgxGridComponent;

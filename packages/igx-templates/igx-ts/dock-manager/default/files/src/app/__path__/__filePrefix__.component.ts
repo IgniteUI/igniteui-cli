@@ -12,7 +12,6 @@ import {
   standalone: true
 })
 export class <%=ClassName%>Component {
-
   public layout: IgcDockManagerLayout = {
     rootPane: {
       type: IgcDockManagerPaneType.splitPane,

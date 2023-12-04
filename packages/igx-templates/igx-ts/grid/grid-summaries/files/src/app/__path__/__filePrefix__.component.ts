@@ -1,6 +1,13 @@
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import { IgxDateSummaryOperand, IgxGridComponent, IgxSummaryResult, IgxColumnComponent,
-	IgxCellHeaderTemplateDirective, IgxIconComponent, IgxPaginatorComponent } from '<%=igxPackage%>';
+import {
+  IgxDateSummaryOperand,
+  IgxGridComponent,
+  IgxSummaryResult,
+  IgxColumnComponent,
+  IgxCellHeaderTemplateDirective,
+  IgxIconComponent,
+  IgxPaginatorComponent,
+} from '<%=igxPackage%>';
 import { Employee, employeesData } from './localData';
 
 @Component({
@@ -9,7 +16,13 @@ import { Employee, employeesData } from './localData';
   templateUrl: './<%=filePrefix%>.component.html',
   styleUrls: ['./<%=filePrefix%>.component.scss'],
   standalone: true,
-  imports: [IgxGridComponent, IgxColumnComponent, IgxCellHeaderTemplateDirective, IgxIconComponent, IgxPaginatorComponent]
+  imports: [
+    IgxGridComponent,
+    IgxColumnComponent,
+    IgxCellHeaderTemplateDirective,
+    IgxIconComponent,
+    IgxPaginatorComponent,
+  ]
 })
 export class <%=ClassName%>Component implements OnInit {
   @ViewChild('sampleGrid', { static: true, read: IgxGridComponent })

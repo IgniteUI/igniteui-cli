@@ -1,7 +1,20 @@
 import { Component, ViewChild } from '@angular/core';
-import { IgxDialogComponent, IgxGridComponent, IgxHierarchicalGridComponent, IgxRowIslandComponent,
-	Transaction, IgxButtonDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxGridToolbarDirective,
-	IgxGridToolbarComponent, IgxInputGroupComponent, IgxLabelDirective, IgxInputDirective, IgxCheckboxComponent } from '<%=igxPackage%>';
+import {
+  IgxDialogComponent,
+  IgxGridComponent,
+  IgxHierarchicalGridComponent,
+  IgxRowIslandComponent,
+  Transaction,
+  IgxButtonDirective,
+  IgxColumnComponent,
+  IgxCellTemplateDirective,
+  IgxGridToolbarDirective,
+  IgxGridToolbarComponent,
+  IgxInputGroupComponent,
+  IgxLabelDirective,
+  IgxInputDirective,
+  IgxCheckboxComponent,
+} from '<%=igxPackage%>';
 import { GridType } from '<%=igxPackage%>/lib/grids/common/grid.interface';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SINGERS } from './data';
@@ -12,9 +25,23 @@ import { Singer } from './singer';
   templateUrl: './<%=filePrefix%>.component.html',
   styleUrls: ['./<%=filePrefix%>.component.scss'],
   standalone: true,
-  imports: [IgxButtonDirective, IgxHierarchicalGridComponent, IgxColumnComponent, IgxCellTemplateDirective,
-	IgxRowIslandComponent, IgxGridToolbarDirective, IgxGridToolbarComponent, IgxDialogComponent, IgxInputGroupComponent,
-	IgxLabelDirective, ReactiveFormsModule, IgxInputDirective, FormsModule, IgxCheckboxComponent, IgxGridComponent]
+  imports: [
+    IgxButtonDirective,
+    IgxHierarchicalGridComponent,
+    IgxColumnComponent,
+    IgxCellTemplateDirective,
+    IgxRowIslandComponent,
+    IgxGridToolbarDirective,
+    IgxGridToolbarComponent,
+    IgxDialogComponent,
+    IgxInputGroupComponent,
+    IgxLabelDirective,
+    ReactiveFormsModule,
+    IgxInputDirective,
+    FormsModule,
+    IgxCheckboxComponent,
+    IgxGridComponent
+  ]
 })
 export class <%=ClassName%>Component {
   public get undoEnabledParent(): boolean {

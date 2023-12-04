@@ -1,13 +1,39 @@
-import {Component} from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { Component, EventEmitter, Output } from '@angular/core';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
+import { NgIf } from '@angular/common';
+import {
+  IgxInputGroupComponent,
+  IgxPrefixDirective,
+  IgxIconComponent,
+  IgxLabelDirective,
+  IgxInputDirective,
+  IgxButtonDirective,
+  IgxRippleDirective,
+} from '<%=igxPackage%>';
 
 @Component({
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.component.html',
-  styleUrls: ['./<%=filePrefix%>.component.scss']
+  styleUrls: ['./<%=filePrefix%>.component.scss'],
+  standalone: true,
+  imports: [
+    ReactiveFormsModule,
+    IgxInputGroupComponent,
+    IgxPrefixDirective,
+    IgxIconComponent,
+    IgxLabelDirective,
+    IgxInputDirective,
+    IgxButtonDirective,
+    IgxRippleDirective,
+    NgIf
+  ]
 })
-
-  export class <%=ClassName%>Component {
+export class <%=ClassName%>Component {
   public loginForm: FormGroup;
   public registrationForm: FormGroup;
   public showLogin = true;

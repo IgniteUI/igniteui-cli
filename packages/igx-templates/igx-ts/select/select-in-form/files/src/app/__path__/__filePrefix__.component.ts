@@ -1,6 +1,15 @@
 import { Component, ViewChild } from '@angular/core';
-import { HorizontalAlignment, IgxSelectComponent, IgxToastComponent, PositionSettings,
-	VerticalAlignment, IgxLabelDirective, IgxPrefixDirective, IgxSelectItemComponent, IgxButtonDirective } from '<%=igxPackage%>';
+import {
+  HorizontalAlignment,
+  IgxSelectComponent,
+  IgxToastComponent,
+  PositionSettings,
+  VerticalAlignment,
+  IgxLabelDirective,
+  IgxPrefixDirective,
+  IgxSelectItemComponent,
+  IgxButtonDirective,
+} from '<%=igxPackage%>';
 import { NgFor } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
@@ -9,8 +18,17 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
   styleUrls: ['<%=filePrefix%>.component.scss'],
   templateUrl: '<%=filePrefix%>.component.html',
   standalone: true,
-  imports: [ReactiveFormsModule, FormsModule, IgxSelectComponent, IgxLabelDirective, IgxPrefixDirective,
-	IgxSelectItemComponent, NgFor, IgxButtonDirective, IgxToastComponent]
+  imports: [
+    ReactiveFormsModule,
+    FormsModule,
+    IgxSelectComponent,
+    IgxLabelDirective,
+    IgxPrefixDirective,
+    IgxSelectItemComponent,
+    NgFor,
+    IgxButtonDirective,
+    IgxToastComponent
+  ]
 })
 export class <%=ClassName%>Component {
   @ViewChild(IgxSelectComponent, { static: true })

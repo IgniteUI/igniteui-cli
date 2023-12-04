@@ -1,19 +1,20 @@
 import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
 import {
-	CloseScrollStrategy,
-	ConnectedPositioningStrategy,
-	HorizontalAlignment,
-	IBaseChipEventArgs,
-	IgxChipsAreaComponent,
-	IgxDropDownComponent,
-	ISelectionEventArgs,
-	OverlaySettings,
-	VerticalAlignment,
-	IgxLayoutDirective,
-	IgxChipComponent,
-	IgxButtonDirective,
-	IgxDropDownItemNavigationDirective,
-	IgxDropDownItemComponent } from '<%=igxPackage%>';
+  CloseScrollStrategy,
+  ConnectedPositioningStrategy,
+  HorizontalAlignment,
+  IBaseChipEventArgs,
+  IgxChipsAreaComponent,
+  IgxDropDownComponent,
+  ISelectionEventArgs,
+  OverlaySettings,
+  VerticalAlignment,
+  IgxLayoutDirective,
+  IgxChipComponent,
+  IgxButtonDirective,
+  IgxDropDownItemNavigationDirective,
+  IgxDropDownItemComponent,
+} from '<%=igxPackage%>';
 import { NgFor } from '@angular/common';
 
 interface NamedEntry {
@@ -26,12 +27,18 @@ interface NamedEntry {
  styleUrls: ['./<%=filePrefix%>.component.scss'],
  templateUrl: './<%=filePrefix%>.component.html',
  standalone: true,
- imports: [IgxLayoutDirective, IgxChipsAreaComponent, NgFor, IgxChipComponent, IgxButtonDirective,
-	IgxDropDownItemNavigationDirective, IgxDropDownComponent, IgxDropDownItemComponent]
+ imports: [
+    IgxLayoutDirective,
+    IgxChipsAreaComponent,
+    NgFor,
+    IgxChipComponent,
+    IgxButtonDirective,
+    IgxDropDownItemNavigationDirective,
+    IgxDropDownComponent,
+    IgxDropDownItemComponent,
+  ]
 })
-
 export class <%=ClassName%>Component {
-
   public dropDownList: NamedEntry[] = [
     {
      id: '1',

@@ -13,13 +13,13 @@ describe('<%=ClassName%>Component', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [<%=ClassName%>Component],
       imports: [
         BrowserAnimationsModule,
         IgxButtonModule,
         IgxCardModule,
         IgxExpansionPanelModule,
-        IgxIconModule
+        IgxIconModule,
+        <%=ClassName%>Component
       ]
     })
     .compileComponents();

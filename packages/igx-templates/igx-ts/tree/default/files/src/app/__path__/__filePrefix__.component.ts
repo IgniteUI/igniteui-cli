@@ -1,6 +1,12 @@
 import { Component, OnDestroy } from '@angular/core';
 import { NgFor, NgTemplateOutlet, NgIf } from '@angular/common';
-import { IgxTreeNodeComponent, IgxTreeComponent, IgxIconComponent, IgxTooltipTargetDirective, IgxTooltipDirective } from '<%=igxPackage%>';
+import {
+  IgxTreeNodeComponent,
+  IgxTreeComponent,
+  IgxIconComponent,
+  IgxTooltipTargetDirective,
+  IgxTooltipDirective,
+} from '<%=igxPackage%>';
 import { Subject } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
 import { DATA, NodeData, REMOTE_ROOT, SelectableNodeData } from './local-data';
@@ -12,8 +18,16 @@ import { DataService } from './services/data.service';
   styleUrls: ['./<%=filePrefix%>.component.scss'],
   providers: [DataService],
   standalone: true,
-  imports: [IgxTreeComponent, NgFor, IgxTreeNodeComponent, NgTemplateOutlet,
-	IgxIconComponent, NgIf,IgxTooltipTargetDirective, IgxTooltipDirective]
+  imports: [
+    IgxTreeComponent,
+    NgFor,
+    IgxTreeNodeComponent,
+    NgTemplateOutlet,
+    IgxIconComponent,
+    NgIf,
+    IgxTooltipTargetDirective,
+    IgxTooltipDirective
+  ]
 })
 
 export class <%=ClassName%>Component implements OnDestroy {

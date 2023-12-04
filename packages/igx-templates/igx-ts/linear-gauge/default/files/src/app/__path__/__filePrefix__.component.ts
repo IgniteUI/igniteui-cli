@@ -1,6 +1,11 @@
 import { AfterViewInit, Component, ViewChild, ViewEncapsulation } from '@angular/core';
-import { IgxLinearGaugeComponent, IgxLinearGraphRangeComponent,
-	LinearGraphNeedleShape, IgxLinearGaugeCoreModule } from 'igniteui-angular-gauges';
+import { IgxLayoutDirective, IgxButtonDirective } from '<%=igxPackage%>';
+import {
+  IgxLinearGaugeComponent,
+  IgxLinearGraphRangeComponent,
+  LinearGraphNeedleShape,
+  IgxLinearGaugeCoreModule,
+} from 'igniteui-angular-gauges';
 
 @Component({
   selector: 'app-<%=filePrefix%>',

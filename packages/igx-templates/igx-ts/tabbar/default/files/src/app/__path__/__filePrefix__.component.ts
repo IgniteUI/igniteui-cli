@@ -1,5 +1,11 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { IgxBottomNavComponent, IgxBottomNavItemComponent, IgxBottomNavHeaderComponent, IgxIconComponent, IgxBottomNavContentComponent } from '<%=igxPackage%>';
+import {
+	IgxBottomNavComponent,
+	IgxBottomNavItemComponent,
+	IgxBottomNavHeaderComponent,
+	IgxIconComponent,
+	IgxBottomNavContentComponent,
+  } from 'igniteui-angular';
 
 @Component({
   selector: 'app-<%=filePrefix%>',
@@ -7,7 +13,13 @@ import { IgxBottomNavComponent, IgxBottomNavItemComponent, IgxBottomNavHeaderCom
   styleUrls: ['./<%=filePrefix%>.component.scss'],
   encapsulation: ViewEncapsulation.None,
   standalone: true,
-  imports: [IgxBottomNavComponent, IgxBottomNavItemComponent, IgxBottomNavHeaderComponent, IgxIconComponent, IgxBottomNavContentComponent]
+  imports: [
+    IgxBottomNavComponent,
+    IgxBottomNavItemComponent,
+    IgxBottomNavHeaderComponent,
+    IgxIconComponent,
+    IgxBottomNavContentComponent,
+  ],
 })
 export class <%=ClassName%>Component {
 }

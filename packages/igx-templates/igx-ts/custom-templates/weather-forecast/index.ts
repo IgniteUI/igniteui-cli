@@ -9,17 +9,6 @@ class IgxWeatherForecastTemplate extends IgniteUIForAngularTemplate {
 		this.listInCustomTemplates = true;
 		this.name = "Weather Forecast";
 		this.description = "Weather Forecast";
-		this.dependencies = [
-			{
-				import: [
-					"IgxButtonModule",
-					"IgxCardModule",
-					"IgxExpansionPanelModule",
-					"IgxIconModule"
-				],
-				from: "<%=igxPackage%>"
-			}
-		];
 	}
 }
 module.exports = new IgxWeatherForecastTemplate();

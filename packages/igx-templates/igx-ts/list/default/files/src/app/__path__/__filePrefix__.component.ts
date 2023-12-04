@@ -1,6 +1,16 @@
 import { Component } from '@angular/core';
-import { IgxFilterOptions, IgxListItemComponent, IgxInputGroupComponent, IgxPrefixDirective,
-	IgxIconComponent, IgxInputDirective, IgxSuffixDirective, IgxListComponent, IgxAvatarComponent, IgxFilterPipe } from '<%=igxPackage%>';
+import {
+  IgxFilterOptions,
+  IgxListItemComponent,
+  IgxInputGroupComponent,
+  IgxPrefixDirective,
+  IgxIconComponent,
+  IgxInputDirective,
+  IgxSuffixDirective,
+  IgxListComponent,
+  IgxAvatarComponent,
+  IgxFilterPipe,
+} from '<%=igxPackage%>';
 import { NgIf, NgFor, NgClass } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
@@ -16,8 +26,22 @@ interface Contact {
   templateUrl: './<%=filePrefix%>.component.html',
   styleUrls: ['./<%=filePrefix%>.component.scss'],
   standalone: true,
-  imports: [IgxInputGroupComponent, IgxPrefixDirective, IgxIconComponent, ReactiveFormsModule, IgxInputDirective,
-	FormsModule, NgIf, IgxSuffixDirective, IgxListComponent, IgxListItemComponent, NgFor, IgxAvatarComponent, NgClass, IgxFilterPipe]
+  imports: [
+    IgxFilterPipe,
+    IgxListItemComponent,
+    IgxInputGroupComponent,
+    IgxPrefixDirective,
+    IgxIconComponent,
+    IgxInputDirective,
+    IgxSuffixDirective,
+    IgxListComponent,
+    IgxAvatarComponent,
+    NgIf,
+    NgFor,
+    NgClass,
+    ReactiveFormsModule,
+    FormsModule
+  ]
 })
 export class <%=ClassName%>Component {
   public title = '<%=name%>';
