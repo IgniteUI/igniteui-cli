@@ -4,7 +4,7 @@ class IgxProjectLibrary extends BaseProjectLibrary {
 	constructor() {
 		super(__dirname);
 		this.name = "Ignite UI for Angular NgModules (legacy)";
-		this.projectType = "igx-ts";
+		this.projectType = "igx-ts-legacy";
 		this.themes = ["Custom", "Default"];
 
 		const groups = require("./groups.json");
