@@ -32,7 +32,12 @@
 			  "styles": [
 				"src/styles.scss"<%=DefaultTheme%>
 			  ],
-			  "scripts": []
+			  "scripts": [
+				"./node_modules/hammerjs/hammer.min.js"
+			  ],
+			  "stylePreprocessorOptions": {
+				"includePaths": ["node_modules"]
+			  }
 			},
 			"configurations": {
 			  "production": {
