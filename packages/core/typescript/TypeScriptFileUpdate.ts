@@ -22,7 +22,7 @@ export class TypeScriptFileUpdate {
 	private requestedImports: Array<{ from: string, imports: string[], edit: boolean }>;
 	private ngMetaEdits: {
 		declarations: string[],
-		imports: Array<{ name: string, root: boolean }>,
+		imports: Array<{ name: string, root: boolean, standalone?: boolean }>,
 		providers: string[],
 		exports: string[]
 	};
@@ -42,9 +42,14 @@ export class TypeScriptFileUpdate {
 		if (this.requestedImports.filter(x => x.edit).length) {
 			transforms.push(this.importsTransformer);
 		}
-		if (Object.keys(this.ngMetaEdits).filter(x => this.ngMetaEdits[x].length).length) {
+		
+		// should we support both standalone and module-based components in the same app?
+		if (this.ngMetaEdits.imports.some(x => x.standalone)) {
+			transforms.push(this.componentMetaTransformer);
+		} else if (Object.keys(this.ngMetaEdits).filter(x => this.ngMetaEdits[x].length).length) {
 			transforms.push(this.ngModuleTransformer);
 		}
+
 		if (transforms.length) {
 			this.targetSource = ts.transform(this.targetSource, transforms).transformed[0];
 		}
@@ -135,6 +140,26 @@ export class TypeScriptFileUpdate {
 		const exportsArr = copy.export
 			.filter(x => !this.ngMetaEdits.exports.find(p => p === x));
 		this.ngMetaEdits.exports.push(...exportsArr);
+	}
+
+	/**
+	 * Updates a standalone component's imports metadata.
+	 */
+	public addStandaloneImport(dep: TemplateDependency, variables?: { [key: string]: string }) {
+		const copy = {
+			import: this.asArray(dep.import, variables),
+			provide: this.asArray(dep.provide, variables)
+		};
+		if (dep.from) {
+			// request import
+			const identifiers = [...copy.import, ...copy.provide];
+			this.requestImport(identifiers, Util.applyConfigTransformation(dep.from, variables));
+		}
+
+		const imports = copy.import
+			.map(x => ({ name: x, root: dep.root, standalone: true }))
+			.filter(x => !this.ngMetaEdits.imports.find(i => i.name === x.name));
+		this.ngMetaEdits.imports.push(...imports);
 	}
 
 	//#region File state
@@ -493,6 +518,43 @@ export class TypeScriptFileUpdate {
 					(node as ts.CallExpression).expression.getText() === "NgModule";
 			};
 			const visitor = this.createVisitor(visitNgModule, visitCondition, context);
+			return ts.visitNode(rootNode, visitor);
+		}
+
+	// TODO: extend to allow the modification of multiple metadata properties
+	/** Transformation to apply `this.ngMetaEdits` to a standalone `Component` metadata imports */
+	protected componentMetaTransformer: ts.TransformerFactory<ts.Node> =
+		<T extends ts.Node>(context: ts.TransformationContext) => (rootNode: T) => {
+			const visitComponent: ts.Visitor = (node: ts.Node): ts.Node => {
+				let importsExpr = null;
+				const prop = "imports";
+				if (node.kind === ts.SyntaxKind.ObjectLiteralExpression &&
+					node.parent &&
+					node.parent.kind === ts.SyntaxKind.CallExpression) {
+						const obj = (node as ts.ObjectLiteralExpression);
+						const objProperties = ts.visitNodes(obj.properties, visitor);
+						const newProps = [];
+						const importDeps = this.ngMetaEdits.imports;
+						importsExpr = ts.factory.createArrayLiteralExpression(
+							importDeps.map(x => TsUtils.createIdentifier(x.name))
+						);
+						newProps.push(ts.factory.createPropertyAssignment(prop, importsExpr));
+						return context.factory.updateObjectLiteralExpression(obj, [
+							...objProperties,
+							...newProps
+						]);
+				} else {
+					node = ts.visitEachChild(node, visitComponent, context);
+				}
+
+				return node;
+			}
+			const visitCondition: (node: ts.Node) => boolean = (node: ts.Node) => {
+				return node.kind === ts.SyntaxKind.CallExpression &&
+					node.parent && node.parent.kind === ts.SyntaxKind.Decorator &&
+					(node as ts.CallExpression).expression.getText() === "Component";
+			};
+			const visitor = this.createVisitor(visitComponent, visitCondition, context);
 			return ts.visitNode(rootNode, visitor);
 		}
 

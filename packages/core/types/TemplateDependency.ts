@@ -17,4 +17,7 @@ export interface TemplateDependency {
 
 	/** Add an identifier into `ngModule` exports metadata */
 	export?: string | string[];
+
+	/** Describes a dependency for a standalone component's meta */
+	standalone?: boolean;
 }
