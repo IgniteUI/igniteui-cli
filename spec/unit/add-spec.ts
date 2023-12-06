@@ -1,5 +1,8 @@
 import { IgniteUIForAngularTemplate } from "@igniteui/angular-templates";
-import { App, GoogleAnalytics, PackageManager, ProjectConfig, TypeScriptFileUpdate, TypeScriptUtils, Util } from "@igniteui/cli-core";
+import {
+	App, FS_TOKEN, GoogleAnalytics, IFileSystem, PackageManager, ProjectConfig,
+	TypeScriptFileUpdate, TypeScriptUtils, Util
+} from "@igniteui/cli-core";
 import * as path from "path";
 import * as ts from "typescript";
 import { default as addCmd } from "../../packages/cli/lib/commands/add";
@@ -138,6 +141,7 @@ describe("Unit - Add command", () => {
 		const mockTemplate = new IgniteUIForAngularTemplate("test");
 		mockTemplate.packages = [];
 		mockTemplate.dependencies = [];
+		spyOn(mockTemplate, "fileExists").and.returnValue(true);
 
 		const directoryPath = path.join("My/Example/Path");
 		spyOn(process, "cwd").and.returnValue(directoryPath);

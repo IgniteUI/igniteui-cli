@@ -64,11 +64,11 @@ export class IgniteUIForAngularTemplate implements Template {
 
 		// standalone components
 		const mainModulePath = path.join(projectPath, `src/app/${modulePath}`);
-		if (!App.container.get<IFileSystem>(FS_TOKEN).fileExists(mainModulePath)) {
+		if (!this.fileExists(mainModulePath)) {
 			const appRoutesPath = "src/app/app.routes.ts";
 			const folderName = this.folderName(name);
 			const fileName = this.fileName(name);
-			if (!(options && options.skipRoute) && App.container.get<IFileSystem>(FS_TOKEN).fileExists(appRoutesPath)) {
+			if (!(options && options.skipRoute) && this.fileExists(appRoutesPath)) {
 				const rountesConfig = new TsUpdate(path.join(projectPath, appRoutesPath));
 				rountesConfig.addRoute(
 					path.join(projectPath, `src/app/${folderName}/${fileName}.component.ts`),
@@ -102,7 +102,7 @@ export class IgniteUIForAngularTemplate implements Template {
 		}
 
 		// ngModule based components
-		if (!(options && options.skipRoute) && App.container.get<IFileSystem>(FS_TOKEN).fileExists("src/app/app-routing.module.ts")) {
+		if (!(options && options.skipRoute) && this.fileExists("src/app/app-routing.module.ts")) {
 			//1) import the component class name,
 			//2) and populate the Routes array with the path and component
 			//for example: { path: 'combo', component: ComboComponent }
@@ -139,6 +139,10 @@ export class IgniteUIForAngularTemplate implements Template {
 		return [];
 	}
 	public setExtraConfiguration(extraConfigKeys: {}) { }
+
+	public fileExists(filePath: string): boolean {
+		return App.container.get<IFileSystem>(FS_TOKEN).fileExists(filePath);
+	}
 
 	protected addClassDeclaration(mainModule: TypeScriptFileUpdate, projPath: string, name: string, modulePath: string) {
 		mainModule.addDeclaration(
