@@ -98,7 +98,7 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 						additionalElements.push(`  <igx-paginator></igx-paginator>`);
 						this.dependencies.push({
 							standalone: true,
-							import: 'IgxPaginatorComponent',
+							import: "IgxPaginatorComponent",
 							from: "<%=igxPackage%>"
 						});
 						break;
@@ -175,8 +175,8 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 							standalone: true,
 							import: "IgxGridToolbarHidingComponent",
 							from: "<%=igxPackage%>"
-						},
-					],
+						}
+					]
 				];
 
 				const parts = [

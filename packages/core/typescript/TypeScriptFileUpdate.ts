@@ -42,7 +42,7 @@ export class TypeScriptFileUpdate {
 		if (this.requestedImports.filter(x => x.edit).length) {
 			transforms.push(this.importsTransformer);
 		}
-		
+
 		// should we support both standalone and module-based components in the same app?
 		if (this.ngMetaEdits.imports.some(x => x.standalone)) {
 			transforms.push(this.componentMetaTransformer);
@@ -548,7 +548,7 @@ export class TypeScriptFileUpdate {
 				}
 
 				return node;
-			}
+			};
 			const visitCondition: (node: ts.Node) => boolean = (node: ts.Node) => {
 				return node.kind === ts.SyntaxKind.CallExpression &&
 					node.parent && node.parent.kind === ts.SyntaxKind.Decorator &&

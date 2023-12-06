@@ -14,26 +14,26 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 		this.name = "Custom Grid";
 		this.description = "IgxGrid with optional features like sorting, filtering, editing, etc.";
 		this.dependencies = [
-			{ 
-				import: 'IgxGridComponent',
-				from: '<%=igxPackage%>',
+			{
+				import: "IgxGridComponent",
+				from: "<%=igxPackage%>",
 				standalone: true
 			},
 			{
-				import: 'IgxCheckboxComponent',
-				from: '<%=igxPackage%>',
-				standalone: true,
+				import: "IgxCheckboxComponent",
+				from: "<%=igxPackage%>",
+				standalone: true
 			},
 			{
-				import: 'IgxColumnComponent',
-				from: '<%=igxPackage%>',
-				standalone: true,
+				import: "IgxColumnComponent",
+				from: "<%=igxPackage%>",
+				standalone: true
 			},
 			{
-				import: 'DatePipe',
-				from: '@angular/common',
-				standalone: true,
-			},
+				import: "DatePipe",
+				from: "@angular/common",
+				standalone: true
+			}
 		];
 
 		this.hasExtraConfiguration = true;
@@ -123,7 +123,7 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 						additionalElements.push(`  <igx-paginator></igx-paginator>`);
 						this.dependencies.push({
 							standalone: true,
-							import: 'IgxPaginatorComponent',
+							import: "IgxPaginatorComponent",
 							from: "<%=igxPackage%>"
 						});
 						break;
@@ -204,8 +204,8 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 							standalone: true,
 							import: "IgxGridToolbarHidingComponent",
 							from: "<%=igxPackage%>"
-						},
-					],
+						}
+					]
 				];
 
 				const parts = [
