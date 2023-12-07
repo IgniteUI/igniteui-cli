@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { CategoryChartType, IgxCategoryChartCoreModule } from 'igniteui-angular-charts';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { CategoryChartType, IgxCategoryChartModule } from 'igniteui-angular-charts';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.component.html',
   styleUrls: ['./<%=filePrefix%>.component.scss'],
   standalone: true,
-  imports: [ReactiveFormsModule, FormsModule, IgxCategoryChartCoreModule]
+  imports: [FormsModule, IgxCategoryChartModule]
 })
 export class <%=ClassName%>Component {
   public chartType = CategoryChartType.Auto;
