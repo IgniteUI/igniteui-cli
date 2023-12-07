@@ -14,7 +14,7 @@ Run `ig build` to build the application into an output directory.
 
 ## Step by step mode
 
-If you want to get a guided experience through the available options, you can initialize the step by step mode that will help you to create and setup your new application, as well as update project previously created with the Ignite UI CLI. To start the guide, simply run the `ig` command.
+If you want to get a guided experience through the available options, you can initialize the step by step mode that will help you to create and setup your new application, as well as update a project previously created with the Ignite UI CLI. To start the guide, simply run the `ig` command.
 
 ## List templates
 

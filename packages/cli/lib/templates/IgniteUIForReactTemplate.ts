@@ -66,13 +66,13 @@ export class IgniteUIForReactTemplate implements Template {
 		}
 
 		const routeModulePath: string = options.parentRoutingModulePath;
-		const routingModule = new ReactTypeScriptFileUpdate(path.join(projectPath, routeModulePath));
 
-		if (!(options && options.skipRoute) && App.container.get<IFileSystem>(FS_TOKEN)
-			.fileExists(routeModulePath)) {
+		if (!(options && options.skipRoute)
+			&& App.container.get<IFileSystem>(FS_TOKEN).fileExists(routeModulePath)) {
 			let nameFromPath = Util.nameFromPath(name);
 			let lowerDashed = Util.lowerDashed(nameFromPath);
 			let filePath = path.posix.join(projectPath, options.modulePath, `${lowerDashed}.tsx`);
+			const routingModule = new ReactTypeScriptFileUpdate(path.join(projectPath, routeModulePath));
 
 			if (defaultPath) {
 				routingModule.addRoute("", options.className, nameFromPath, filePath, options.routerChildren, undefined);

@@ -109,9 +109,9 @@ command = {
 
 		const theme = projectLib.themes[themeIndex];
 
-		const indexOfEmptyOrFirst = projectLib.projectIds.indexOf("empty") !== -1 ?
-			projectLib.projectIds.indexOf("empty") :
-			0;
+		const indexOfEmptyOrFirst = projectLib.projectIds.indexOf("empty") !== -1
+			? projectLib.projectIds.indexOf("empty")
+			: 0;
 
 		const projectTemplate = argv.template || projectLib.projectIds[indexOfEmptyOrFirst];
 		Util.log(`Project Name: ${argv.name}, framework ${argv.framework}, type ${projectLib.projectType}, theme ${theme}`);
