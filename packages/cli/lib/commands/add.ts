@@ -118,10 +118,13 @@ command = {
 			if (template.framework === "react") {
 				options = {
 					parentName: "app",
-					parentRoutingModulePath: "src/app/app-routes.tsx",
 					className: Util.className(fileName),
 					modulePath: `src/app/${Util.lowerDashed(fileName)}`
 				};
+
+				options["parentRoutingModulePath"] = template.projectType === 'igr-ts'
+					? "src/app/app-routes.tsx"
+					: "./src/routes.json";
 			} else {
 				options = {
 					parentName: "app",

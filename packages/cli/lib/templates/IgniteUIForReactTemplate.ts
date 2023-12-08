@@ -9,6 +9,7 @@ import {
 	Util
 } from "@igniteui/cli-core";
 import * as path from "path";
+import * as fs from "fs-extra";
 import { ReactTypeScriptFileUpdate } from "../../templates/react/ReactTypeScriptFileUpdate";
 
 export class IgniteUIForReactTemplate implements Template {
@@ -62,6 +63,11 @@ export class IgniteUIForReactTemplate implements Template {
 
 	public registerInProject(projectPath: string, name: string, options?: AddTemplateArgs, defaultPath = false) {
 		if (!options.parentName) {
+			return;
+		}
+
+		if (this.projectType == 'igr-es6') {
+			this.registerJSONRoute(projectPath, name, options.parentRoutingModulePath);
 			return;
 		}
 
@@ -129,5 +135,28 @@ export class IgniteUIForReactTemplate implements Template {
 			folderName = folderName.replace(/\/\s+/g, "/");
 		}
 		return Util.lowerDashed(folderName);
+	}
+
+	protected registerJSONRoute(projectPath: string, name: string, routingModulePath: string) {
+		const configFile = fs.readFileSync(path.join(projectPath, routingModulePath), "utf8");
+		const viewsArr = JSON.parse(configFile);
+		viewsArr.push({
+			componentPath: this.getViewLink(name),
+			path: "/" + this.folderName(Util.nameFromPath(name)),
+			text: this.getToolbarLink(name)
+		});
+
+		fs.writeFileSync(path.join(projectPath, routingModulePath), JSON.stringify(viewsArr, null, 4));
+	}
+
+	protected getViewLink(name: string): string {
+		const filePath = "./views/" + this.folderName(name);
+		return filePath;
+	}
+
+	protected getToolbarLink(name: string): string {
+		name = Util.nameFromPath(name);
+		const toolbarLink = name.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
+		return toolbarLink;
 	}
 }
