@@ -8,8 +8,8 @@ import {
 	Template,
 	Util
 } from "@igniteui/cli-core";
-import * as path from "path";
 import * as fs from "fs-extra";
+import * as path from "path";
 import { ReactTypeScriptFileUpdate } from "../../templates/react/ReactTypeScriptFileUpdate";
 
 export class IgniteUIForReactTemplate implements Template {
@@ -66,7 +66,7 @@ export class IgniteUIForReactTemplate implements Template {
 			return;
 		}
 
-		if (this.projectType == 'igr-es6') {
+		if (this.projectType === "igr-es6") {
 			this.registerJSONRoute(projectPath, name, options.parentRoutingModulePath);
 			return;
 		}

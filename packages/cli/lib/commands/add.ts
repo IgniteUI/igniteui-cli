@@ -122,7 +122,7 @@ command = {
 					modulePath: `src/app/${Util.lowerDashed(fileName)}`
 				};
 
-				options["parentRoutingModulePath"] = template.projectType === 'igr-ts'
+				options["parentRoutingModulePath"] = template.projectType === "igr-ts"
 					? "src/app/app-routes.tsx"
 					: "./src/routes.json";
 			} else {
