@@ -4,6 +4,9 @@ import {
   IgcDockManagerPaneType,
   IgcSplitPaneOrientation
 } from '<%=dockManagerPackage%>';
+import { defineCustomElements } from '<%=dockManagerPackage%>/loader';
+
+defineCustomElements();
 
 @Component({
   selector: 'app-<%=filePrefix%>',
