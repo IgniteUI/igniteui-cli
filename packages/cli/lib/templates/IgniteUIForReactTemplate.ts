@@ -1,6 +1,16 @@
-import { AddTemplateArgs, ControlExtraConfiguration, defaultDelimiters, Template, Util } from "@igniteui/cli-core";
+import {
+	AddTemplateArgs,
+	App,
+	ControlExtraConfiguration,
+	defaultDelimiters,
+	FS_TOKEN,
+	IFileSystem,
+	Template,
+	Util
+} from "@igniteui/cli-core";
 import * as fs from "fs-extra";
 import * as path from "path";
+import { ReactTypeScriptFileUpdate } from "../../templates/react/ReactTypeScriptFileUpdate";
 
 export class IgniteUIForReactTemplate implements Template {
 	public components: string[];
@@ -12,14 +22,12 @@ export class IgniteUIForReactTemplate implements Template {
 	public description: string;
 	public dependencies: string[] = [];
 	public framework: string = "react";
-	public projectType = "igr-es6";
+	public projectType: string;
 	public hasExtraConfiguration: boolean = false;
 	public packages = [];
 	public delimiters = defaultDelimiters;
 	// non-standard template prop
 	protected widget: string;
-
-	private configFile: string = "./src/routes.json";
 
 	/**
 	 * Base ReactTemplate constructor
@@ -40,6 +48,7 @@ export class IgniteUIForReactTemplate implements Template {
 		config["path"] = this.folderName(name); //folder name allowed spaces, any casing
 		config["name"] = Util.nameFromPath(name); // this name should not have restrictions
 		config["ClassName"] = Util.className(Util.nameFromPath(name)); //first letter capital, no spaces and no dashes,
+		config["filePrefix"] = Util.lowerDashed(Util.nameFromPath(name));
 		config["cliVersion"] = Util.version();
 		if (this.widget) {
 			config["widget"] = this.widget;
@@ -52,19 +61,53 @@ export class IgniteUIForReactTemplate implements Template {
 		return config;
 	}
 
-	public registerInProject(projectPath: string, name: string, options?: AddTemplateArgs) {
-		if (options && options.skipRoute) {
+	public registerInProject(projectPath: string, name: string, options?: AddTemplateArgs, defaultPath = false) {
+		if (!options.parentName) {
 			return;
 		}
-		const configFile = fs.readFileSync(path.join(projectPath, this.configFile), "utf8");
-		const viewsArr = JSON.parse(configFile);
-		viewsArr.push({
-			componentPath: this.getViewLink(name),
-			path: "/" + this.folderName(Util.nameFromPath(name)),
-			text: this.getToolbarLink(name)
-		});
 
-		fs.writeFileSync(path.join(projectPath, this.configFile), JSON.stringify(viewsArr, null, 4));
+		if (this.projectType === "igr-es6") {
+			this.registerJSONRoute(projectPath, name, options.parentRoutingModulePath);
+			return;
+		}
+
+		const routeModulePath: string = options.parentRoutingModulePath;
+
+		if (!(options && options.skipRoute)
+			&& App.container.get<IFileSystem>(FS_TOKEN).fileExists(routeModulePath)) {
+			let nameFromPath = Util.nameFromPath(name);
+			let lowerDashed = Util.lowerDashed(nameFromPath);
+			let filePath = path.posix.join(projectPath, options.modulePath, `${lowerDashed}.tsx`);
+			const routingModule = new ReactTypeScriptFileUpdate(path.join(projectPath, routeModulePath));
+
+			if (defaultPath) {
+				routingModule.addRoute("", options.className, nameFromPath, filePath, options.routerChildren, undefined);
+			}
+
+			routingModule.addRoute(
+				lowerDashed,
+				options.className,
+				nameFromPath,
+				filePath,
+				options.routerChildren,
+				undefined
+			);
+
+			if (options.hasChildren) {
+				nameFromPath = Util.nameFromPath(`${options.modulePath}-routes.tsx`);
+				lowerDashed = Util.lowerDashed(nameFromPath);
+				filePath = path.posix.join(projectPath, options.modulePath, nameFromPath);
+
+				routingModule.addRoute(
+					lowerDashed,
+					options.className,
+					nameFromPath,
+					filePath,
+					options.routerChildren,
+					options.importAlias
+				);
+			}
+		}
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		throw new Error("Method not implemented.");
@@ -93,6 +136,19 @@ export class IgniteUIForReactTemplate implements Template {
 		}
 		return Util.lowerDashed(folderName);
 	}
+
+	protected registerJSONRoute(projectPath: string, name: string, routingModulePath: string) {
+		const configFile = fs.readFileSync(path.join(projectPath, routingModulePath), "utf8");
+		const viewsArr = JSON.parse(configFile);
+		viewsArr.push({
+			componentPath: this.getViewLink(name),
+			path: "/" + this.folderName(Util.nameFromPath(name)),
+			text: this.getToolbarLink(name)
+		});
+
+		fs.writeFileSync(path.join(projectPath, routingModulePath), JSON.stringify(viewsArr, null, 4));
+	}
+
 	protected getViewLink(name: string): string {
 		const filePath = "./views/" + this.folderName(name);
 		return filePath;

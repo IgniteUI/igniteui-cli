@@ -1,0 +1,12 @@
+:local(.container) {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+}
+
+:local(.title) {
+    color: rgb(0, 153, 255);
+}
+:local(.gauge) {
+    width: 50%;
+}
