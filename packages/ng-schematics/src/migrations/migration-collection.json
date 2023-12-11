@@ -1,5 +1,10 @@
 {
   "$schema": "../../../../node_modules/@angular-devkit/schematics/collection-schema.json",
   "schematics": {
+	"migration-01": {
+		"version": "XXX",
+		"description": "Updates Ignite UI for Angular Schematics project from XXX to XXX",
+		"factory": "./update-1"
+	}
   }
 }
