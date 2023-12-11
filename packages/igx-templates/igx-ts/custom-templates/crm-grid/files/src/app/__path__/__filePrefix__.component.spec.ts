@@ -25,7 +25,6 @@ describe('<%=ClassName%>Component', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ <%=ClassName%>Component ],
       imports: [
         FormsModule,
         BrowserAnimationsModule,
@@ -41,7 +40,8 @@ describe('<%=ClassName%>Component', () => {
         IgxToggleModule,
         IgxCheckboxModule,
         IgxSparklineModule,
-        IgxSparklineCoreModule
+        IgxSparklineCoreModule,
+        <%=ClassName%>Component
       ],
       providers: [IgxExcelExporterService, IgxCsvExporterService]
     })

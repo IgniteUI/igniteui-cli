@@ -15,8 +15,7 @@ describe('RedirectComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
-      declarations: [RedirectComponent],
+	  imports: [RouterTestingModule, RedirectComponent],
       providers: [
         { provide: ActivatedRoute, useValue: activeRouteSpy },
         { provide: ExternalAuthService, useValue: extAuthSpy },

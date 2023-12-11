@@ -1,3 +1,4 @@
+import { IGNITEUI_ANGULAR_PACKAGE } from "../../../constants";
 import { IgniteUIForAngularTemplate } from "../../../IgniteUIForAngularTemplate";
 
 class IgxCarouselTemplate extends IgniteUIForAngularTemplate {
@@ -10,10 +11,7 @@ class IgxCarouselTemplate extends IgniteUIForAngularTemplate {
 		this.projectType = "igx-ts";
 		this.name = "Carousel";
 		this.description = "basic IgxCarousel";
-		this.dependencies = [
-			{ import: "IgxCarouselModule", from: "<%=igxPackage%>" },
-			{ import: "CommonModule", from: "@angular/common"}
-		];
+		this.packages = [IGNITEUI_ANGULAR_PACKAGE];
 	}
 }
 module.exports = new IgxCarouselTemplate();

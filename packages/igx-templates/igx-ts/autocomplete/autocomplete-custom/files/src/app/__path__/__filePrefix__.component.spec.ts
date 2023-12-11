@@ -10,8 +10,8 @@ describe('<%=ClassName%>Component', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [<%=ClassName%>Component, <%=ClassName%>PipeStartsWith],
-      imports: [FormsModule, IgxDropDownModule, IgxAutocompleteModule, NoopAnimationsModule, IgxInputGroupModule]
+      imports: [FormsModule, IgxDropDownModule, IgxAutocompleteModule, NoopAnimationsModule,
+		IgxInputGroupModule, <%=ClassName%>Component, <%=ClassName%>PipeStartsWith]
     })
       .compileComponents();
   }));

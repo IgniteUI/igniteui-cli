@@ -12,9 +12,8 @@ describe('<%=ClassName%>Component', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [<%=ClassName%>Component],
-      imports: [CommonModule],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+	  imports: [CommonModule, <%=ClassName%>Component],
+	  schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
       .compileComponents();
   }));

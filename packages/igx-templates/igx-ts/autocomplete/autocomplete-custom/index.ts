@@ -1,3 +1,4 @@
+import { IGNITEUI_ANGULAR_PACKAGE } from "../../../constants";
 import { IgniteUIForAngularTemplate } from "../../../IgniteUIForAngularTemplate";
 
 class IgxAutocompleteTemplate extends IgniteUIForAngularTemplate {
@@ -10,16 +11,7 @@ class IgxAutocompleteTemplate extends IgniteUIForAngularTemplate {
 		this.projectType = "igx-ts";
 		this.name = "Simple Autocomplete";
 		this.description = "Simple IgxAutocomplete";
-		this.dependencies = [{
-			import: ["IgxAutocompleteModule", "IgxDropDownModule", "IgxInputGroupModule"],
-			from: "<%=igxPackage%>"
-		}, {
-			import: ["FormsModule"],
-			from: "@angular/forms"
-		}, {
-			declare: ["<%=ClassName%>PipeStartsWith"],
-			from: "./src/app/<%=path%>/<%=filePrefix%>.component.ts"
-		}];
+		this.packages = [IGNITEUI_ANGULAR_PACKAGE];
 	}
 }
 module.exports = new IgxAutocompleteTemplate();

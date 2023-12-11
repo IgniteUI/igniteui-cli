@@ -1,11 +1,42 @@
-import { Component, Pipe, PipeTransform, ViewChild } from '@angular/core';
-import { IgxToastComponent, ISelectionEventArgs, PositionSettings, HorizontalAlignment, VerticalAlignment } from '<%=igxPackage%>';
+import { Component, Pipe, PipeTransform, ViewChild, forwardRef } from '@angular/core';
+import {
+  IgxToastComponent,
+  ISelectionEventArgs,
+  PositionSettings,
+  HorizontalAlignment,
+  VerticalAlignment,
+  IgxAutocompleteDirective,
+  IgxDropDownComponent,
+  IgxDropDownGroupComponent,
+  IgxDropDownItemComponent,
+  IgxInputDirective,
+  IgxInputGroupComponent,
+  IgxLabelDirective,
+} from '<%=igxPackage%>';
 import { Region, Town, townsExtended } from './towns-data-extended';
+import { NgFor } from '@angular/common';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.component.html',
-  styleUrls: ['./<%=filePrefix%>.component.scss']
+  styleUrls: ['./<%=filePrefix%>.component.scss'],
+  standalone: true,
+  imports: [
+    IgxInputGroupComponent,
+    IgxLabelDirective,
+    ReactiveFormsModule,
+    IgxInputDirective,
+    IgxAutocompleteDirective,
+    FormsModule,
+    IgxDropDownComponent,
+    NgFor,
+    IgxDropDownGroupComponent,
+    IgxDropDownItemComponent,
+    IgxToastComponent,
+    forwardRef(() => <%=ClassName%>PipeStartsWith),
+    forwardRef(() => <%=ClassName%>RegionContains)
+  ]
 })
 export class <%=ClassName%>Component {
   public regions!: Region[];
@@ -35,14 +66,14 @@ export class <%=ClassName%>Component {
   }
 }
 
-@Pipe({ name: '<%=camelCaseName%>StartsWith' })
+@Pipe({ standalone: true, name: '<%=camelCaseName%>StartsWith' })
 export class  <%=ClassName%>PipeStartsWith implements PipeTransform {
   public transform(collection: Town[], term = '') {
     return collection.filter(item => item.name.toLowerCase().startsWith(term.trim().toLowerCase()));
   }
 }
 
-@Pipe({ name: '<%=camelCaseName%>RegionContains' })
+@Pipe({ standalone: true, name: '<%=camelCaseName%>RegionContains' })
 export class <%=ClassName%>RegionContains implements PipeTransform {
   transform(regions: Region[], term = '') {
     return this.filterRegions(regions, term);

@@ -1,6 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { IgxDropDownComponent, ISelectionEventArgs } from 'igniteui-angular';
+import { NgIf } from '@angular/common';
+import { IgxDropDownComponent, ISelectionEventArgs, IgxRippleDirective, IgxButtonDirective, IgxToggleActionDirective,
+  IgxAvatarComponent, IgxIconComponent, IgxDropDownItemComponent } from 'igniteui-angular';
 import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
 import { ExternalAuthService } from '../services/external-auth.service';
 import { UserService } from '../services/user.service';
@@ -8,7 +10,10 @@ import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-login-bar',
   templateUrl: './login-bar.component.html',
-  styleUrls: ['./login-bar.component.scss']
+  styleUrls: ['./login-bar.component.scss'],
+  standalone: true,
+  imports: [NgIf, IgxRippleDirective, IgxButtonDirective, IgxToggleActionDirective, IgxAvatarComponent, IgxIconComponent,
+    IgxDropDownComponent, IgxDropDownItemComponent, LoginDialogComponent]
 })
 export class LoginBarComponent {
 

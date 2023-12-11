@@ -1,6 +1,11 @@
 import {
   Component,
-  AfterViewInit, ElementRef, OnDestroy, OnInit, ViewChild, NgZone
+  AfterViewInit,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+  NgZone,
 } from '@angular/core';
 import {
   AbsoluteScrollStrategy,
@@ -15,18 +20,49 @@ import {
   OverlaySettings,
   PositionSettings,
   SortingDirection,
-  VerticalAlignment
+  VerticalAlignment,
+  IgxSwitchComponent,
+  IgxGridToolbarComponent,
+  IgxGridToolbarActionsComponent,
+  IgxGridToolbarHidingComponent,
+  IgxGridToolbarExporterComponent,
+  IgxColumnComponent,
+  IgxCellTemplateDirective,
+  IgxIconComponent,
+  IgxTreeGridGroupingPipe,
 } from '<%=igxPackage%>';
 import { timer } from 'rxjs';
 import { debounce } from 'rxjs/operators';
 import { LocalDataService } from './localData.service';
-import { ITreeGridAggregation } from './tree-grid-grouping.pipe';
+import { ITreeGridAggregation, <%=ClassName%>TreeGridGroupingPipe } from './tree-grid-grouping.pipe';
+import { NgIf, CurrencyPipe } from '@angular/common';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @Component({
   providers: [LocalDataService],
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.component.html',
-  styleUrls: ['./<%=filePrefix%>.component.scss']
+  styleUrls: ['./<%=filePrefix%>.component.scss'],
+  standalone: true,
+  imports: [
+    IgxSwitchComponent,
+    ReactiveFormsModule,
+    FormsModule,
+    IgxSliderComponent,
+    IgxButtonGroupComponent,
+    NgIf,
+    IgxTreeGridComponent,
+    IgxGridToolbarComponent,
+    IgxGridToolbarActionsComponent,
+    IgxGridToolbarHidingComponent,
+    IgxGridToolbarExporterComponent,
+    IgxColumnComponent,
+    IgxCellTemplateDirective,
+    IgxIconComponent,
+    CurrencyPipe,
+    IgxTreeGridGroupingPipe,
+    <%=ClassName%>TreeGridGroupingPipe
+  ]
 })
 export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('grid1', { static: true }) public grid1!: IgxTreeGridComponent;

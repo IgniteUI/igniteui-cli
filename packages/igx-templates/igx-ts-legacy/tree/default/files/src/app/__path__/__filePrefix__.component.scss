@@ -1,0 +1,31 @@
+.tree-node-icon {
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+}
+
+igx-tree {
+  max-height: 560px;
+  overflow-y: auto;
+}
+
+.node-refresh {
+  cursor: pointer;
+  padding: 0px 4px;
+  color: hsla(var(--igx-success-500));
+}
+
+.node {
+  display: flex;
+  align-items: center;
+}
+
+.node-title {
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+.sample-wrapper {
+  margin: 0 auto;
+  padding: 10px;
+}

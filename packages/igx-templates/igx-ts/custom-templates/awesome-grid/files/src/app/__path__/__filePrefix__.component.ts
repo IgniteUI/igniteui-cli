@@ -6,8 +6,8 @@ import {
   Inject,
   OnDestroy,
   OnInit,
-  ViewChild
-  } from '@angular/core';
+  ViewChild,
+} from '@angular/core';
 import {
   AbsolutePosition,
   CellType,
@@ -18,15 +18,48 @@ import {
   IgxStringFilteringOperand,
   IgxSummaryResult,
   OverlayClosingEventArgs,
-  OverlaySettings
-  } from '<%=igxPackage%>';
-import { SparklineDisplayType } from 'igniteui-angular-charts';
+  OverlaySettings,
+  IgxSwitchComponent,
+  IgxInputGroupComponent,
+  IgxInputDirective,
+  IgxColumnComponent,
+  IgxCellTemplateDirective,
+  IgxAvatarComponent,
+  IgxBadgeComponent,
+  IgxCircularProgressBarComponent,
+} from '<%=igxPackage%>';
+import {
+  SparklineDisplayType,
+  IgxSparklineCoreModule,
+} from 'igniteui-angular-charts';
 import { Athlete, AthletesData, SpeedEntry } from './services/data';
+import { NgIf, NgClass, NgFor, DecimalPipe } from '@angular/common';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.component.html',
-  styleUrls: ['./<%=filePrefix%>.component.scss']
+  styleUrls: ['./<%=filePrefix%>.component.scss'],
+  standalone: true,
+  imports: [
+    IgxSwitchComponent,
+    ReactiveFormsModule,
+    FormsModule,
+    IgxInputGroupComponent,
+    IgxInputDirective,
+    IgxGridComponent,
+    IgxPaginatorComponent,
+    IgxColumnComponent,
+    IgxCellTemplateDirective,
+    NgIf,
+    IgxAvatarComponent,
+    IgxBadgeComponent,
+    IgxSparklineCoreModule,
+    IgxCircularProgressBarComponent,
+    NgClass,
+    NgFor,
+    DecimalPipe,
+  ],
 })
 export class <%=ClassName%>Component implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('grid1', { read: IgxGridComponent, static: true })

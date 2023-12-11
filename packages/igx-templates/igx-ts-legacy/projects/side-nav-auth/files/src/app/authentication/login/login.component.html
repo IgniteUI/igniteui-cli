@@ -1,0 +1,29 @@
+<form id="loginForm" [formGroup]="loginForm" (ngSubmit)="tryLogin()">
+  <igx-input-group>
+    <igx-prefix>
+      <igx-icon>account_circle</igx-icon>
+    </igx-prefix>
+    <label igxLabel for="email">Email</label>
+    <input igxInput id="loginEmail" name="email" formControlName="email" type="text" />
+  </igx-input-group>
+  <igx-input-group>
+    <igx-prefix>
+      <igx-icon>lock</igx-icon>
+    </igx-prefix>
+    <input igxInput id="loginPassword" name="password" type="password" formControlName="password" />
+    <label igxLabel for="password">Password</label>
+  </igx-input-group>
+
+  <div class="button-wrapper">
+    <button igxButton="raised" type="submit" igxRipple [disabled]="!loginForm.valid">LOG IN</button>
+    <a id="register" (click)="showRegistrationForm()">Create new account?</a>
+  </div>
+  <div class="social-login" *ngIf="authService.hasProvider()">
+    <button type="button" *ngIf="authService.hasProvider(providers.Facebook)" class="facebook" igxButton="raised"
+      (click)="signUpFb()">Sign Up Facebook</button>
+    <button type="button" *ngIf="authService.hasProvider(providers.Google)" class="google" igxButton="raised"
+      (click)="signUpG()">Sign Up Google</button>
+    <button type="button" *ngIf="authService.hasProvider(providers.Microsoft)" class="microsoft" igxButton="raised"
+      (click)="signUpMS()">Sign Up Microsoft</button>
+  </div>
+</form>

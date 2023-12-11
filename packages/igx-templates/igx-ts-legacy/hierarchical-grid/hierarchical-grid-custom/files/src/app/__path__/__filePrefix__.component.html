@@ -1,0 +1,41 @@
+<p>A customizable IgxHierarchicalGrid with predefined features<br />
+  You can read more about configuring the igx-hierarchical- grid component in the
+  <a href="https://github.com/IgniteUI/igniteui-angular/tree/master/projects/igniteui-angular/src/lib/grids/hierarchical-grid/README.md"
+  target="_blank">README</a> or the
+  <a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/hierarchicalgrid/hierarchical-grid"
+  target="_blank">official documentation</a>.
+</p>
+
+<%=selectedFeatures%>
+<igx-hierarchical-grid #hGrid [data]="localData" [autoGenerate]="false" height="600px" width="1000px"
+  <%=gridFeatures%>>
+  <igx-column #artist field="Artist" dataType="string" <%=columnFeatures%>>
+    <%=artistPin%>
+  </igx-column>
+  <igx-column #grammy field="HasGrammyAward" dataType="boolean" <%=columnFeatures%>>
+    <%=grammyPin%>
+  </igx-column>
+  <igx-column #debut field="Debut" dataType="number" <%=columnFeatures%>></igx-column>
+  <igx-column #nominations field="GrammyNominations" dataType="number" <%=columnFeatures%>>
+    <%=nominationsPin%>
+  </igx-column>
+  <igx-column #awards field="GrammyAwards" dataType="number">
+    <%=awardsPin%>
+  </igx-column><%=additionalMarkup%>
+  <igx-row-island key="Albums" [autoGenerate]="false" <%=rowIslandFeatures%>>
+    <igx-column #album field="Album" dataType="string" <%=columnFeatures%>>
+      <%=albumPin%>
+    </igx-column>
+    <igx-column #launch field="LaunchDate" dataType="date" <%=columnFeatures%>>
+      <%=launchPin%>
+    </igx-column>
+    <igx-column #review field="BillboardReview" dataType="number" <%=columnFeatures%>></igx-column>
+    <igx-column field="USBillboard200" dataType="number" <%=columnFeatures%>></igx-column>
+    <igx-row-island key="Songs" [autoGenerate]="false">
+      <igx-column field="TrackNumber"></igx-column>
+      <igx-column field="Title"></igx-column>
+      <igx-column field="Released"></igx-column>
+      <igx-column field="Genre"></igx-column>
+    </igx-row-island>
+  </igx-row-island>
+</igx-hierarchical-grid>

@@ -15,15 +15,15 @@ describe('<%=ClassName%>Component', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [<%=ClassName%>Component],
-      imports: [
-        FormsModule,
-        IgxSelectModule,
-        IgxToggleModule,
-        IgxButtonModule,
-        IgxToastModule,
-        NoopAnimationsModule,
-      ]
+	  imports: [
+	    FormsModule,
+	    IgxSelectModule,
+	    IgxToggleModule,
+	    IgxButtonModule,
+	    IgxToastModule,
+	    NoopAnimationsModule,
+	    <%=ClassName%>Component,
+	  ]
     })
       .compileComponents();
   }));

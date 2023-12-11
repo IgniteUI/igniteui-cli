@@ -9,8 +9,7 @@ describe('<%=ClassName%>Component', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [<%=ClassName%>Component],
-      imports: [FormsModule, IgxAvatarModule, IgxFilterModule, IgxIconModule, IgxInputGroupModule, IgxListModule]
+	 imports: [FormsModule, IgxAvatarModule, IgxFilterModule, IgxIconModule, IgxInputGroupModule, IgxListModule, <%=ClassName%>Component]
     })
       .compileComponents();
   }));

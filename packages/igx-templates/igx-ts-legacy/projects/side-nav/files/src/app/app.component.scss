@@ -1,0 +1,30 @@
+.outer-wrapper {
+  height: 100%;
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: stretch;
+  overflow: auto;
+
+  > *:not(router-outlet) {
+    padding: 0 24px;
+  }
+
+  p {
+    margin: 15px;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .content {
+    justify-content: flex-start;
+
+    > *:not(router-outlet) {
+      padding: 0 15px;
+    }
+  }
+}

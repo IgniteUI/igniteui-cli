@@ -9,8 +9,7 @@ describe('<%=ClassName%>Component', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [<%=ClassName%>Component],
-      imports: [ NoopAnimationsModule, IgxStepperModule, IgxButtonModule, IgxButtonGroupModule ]
+	  imports: [NoopAnimationsModule, IgxStepperModule, IgxButtonModule, IgxButtonGroupModule, <%=ClassName%>Component]
     })
       .compileComponents();
   }));

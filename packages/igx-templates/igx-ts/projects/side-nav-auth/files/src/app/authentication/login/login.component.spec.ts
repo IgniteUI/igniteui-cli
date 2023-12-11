@@ -24,9 +24,8 @@ describe('LoginComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [ReactiveFormsModule, RouterTestingModule, NoopAnimationsModule,
+      imports: [LoginComponent, ReactiveFormsModule, RouterTestingModule, NoopAnimationsModule,
         IgxInputGroupModule, IgxButtonModule, IgxIconModule, IgxRippleModule],
-      declarations: [LoginComponent],
       providers: [
         { provide: ExternalAuthService, useValue: extAuthSpy },
         { provide: AuthenticationService, useValue: authSpy },

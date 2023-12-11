@@ -15,4 +15,5 @@ export class AuthSideProject extends SideNavProject implements ProjectTemplate {
 		return [...super.templatePaths, path.join(__dirname, "files")];
 	}
 }
+
 export default new AuthSideProject();

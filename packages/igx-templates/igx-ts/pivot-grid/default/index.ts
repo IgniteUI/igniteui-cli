@@ -1,3 +1,4 @@
+import { IGNITEUI_ANGULAR_PACKAGE } from "../../../constants";
 import { IgniteUIForAngularTemplate } from "../../../IgniteUIForAngularTemplate";
 
 class IgxPivotGridTemplate extends IgniteUIForAngularTemplate {
@@ -9,9 +10,7 @@ class IgxPivotGridTemplate extends IgniteUIForAngularTemplate {
 		this.id = "pivot-grid";
 		this.projectType = "igx-ts";
 		this.name = "Pivot Grid";
-		this.dependencies = [
-			{ import: "IgxPivotGridModule", from: "<%=igxPackage%>" }
-		];
+		this.packages = [IGNITEUI_ANGULAR_PACKAGE];
 	}
 }
 module.exports = new IgxPivotGridTemplate();

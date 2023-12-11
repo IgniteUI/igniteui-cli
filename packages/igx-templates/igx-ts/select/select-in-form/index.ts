@@ -1,3 +1,4 @@
+import { IGNITEUI_ANGULAR_PACKAGE } from "../../../constants";
 import { IgniteUIForAngularTemplate } from "../../../IgniteUIForAngularTemplate";
 
 class IgxSelectTemplate extends IgniteUIForAngularTemplate {
@@ -10,18 +11,7 @@ class IgxSelectTemplate extends IgniteUIForAngularTemplate {
 		this.projectType = "igx-ts";
 		this.name = "Select In Form";
 		this.description = "IgxSelect in a form";
-		this.dependencies = [{
-			import: [
-				"IgxSelectModule",
-				"IgxButtonModule",
-				"IgxToggleModule",
-				"IgxToastModule"
-			],
-			from: "<%=igxPackage%>"
-		}, {
-			import: ["FormsModule"],
-			from: "@angular/forms"
-		}];
+		this.packages = [IGNITEUI_ANGULAR_PACKAGE];
 	}
 }
 module.exports = new IgxSelectTemplate();

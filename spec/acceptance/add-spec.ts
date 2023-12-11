@@ -253,7 +253,7 @@ describe("Add command", () => {
 				dependencies: { [igxPackage]: "9.0.0" }
 			}));
 			fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
-				project: { framework: "angular", projectType: "igx-ts", components: [] }
+				project: { framework: "angular", projectType: "igx-ts-legacy", components: [] }
 			}));
 			fs.writeFileSync("tslint.json", JSON.stringify({
 				rules: {
@@ -328,7 +328,7 @@ export class AppModule {
 			spyOn(ProjectConfig, "globalConfig").and.returnValue({});
 
 			fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
-				project: { framework: "angular", projectType: "igx-ts", components: [] }
+				project: { framework: "angular", projectType: "igx-ts-legacy", components: [] }
 			}));
 			fs.writeFileSync("tslint.json", JSON.stringify({
 				rules: {

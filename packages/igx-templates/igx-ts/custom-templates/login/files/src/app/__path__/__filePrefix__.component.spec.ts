@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { <%=ClassName%>Component } from './<%=filePrefix%>.component';
 import { IgxInputGroupModule, IgxIconModule, IgxButtonModule, IgxRippleModule } from '<%=igxPackage%>';
@@ -17,8 +18,21 @@ describe('<%=ClassName%>Component', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [<%=ClassName%>Component],
-      imports: [ ReactiveFormsModule, NoopAnimationsModule, IgxInputGroupModule, IgxIconModule, IgxButtonModule, IgxRippleModule ]
+      imports: [
+        ReactiveFormsModule,
+        RouterTestingModule,
+        NoopAnimationsModule,
+        IgxInputGroupModule,
+        IgxButtonModule,
+        IgxIconModule,
+        IgxRippleModule,
+        <%=ClassName%>Component,
+      ],
+      providers: [
+        { provide: ExternalAuthService, useValue: extAuthSpy },
+        { provide: AuthenticationService, useValue: authSpy },
+        { provide: UserService, useValue: userServSpy },
+      ],
     })
       .compileComponents();
   }));

@@ -7,14 +7,18 @@ import {
   RadialGaugeBackingShape,
   RadialGaugeNeedleShape,
   RadialGaugePivotShape,
-  RadialGaugeScaleOversweepShape
+  RadialGaugeScaleOversweepShape,
+  IgxRadialGaugeCoreModule,
 } from 'igniteui-angular-gauges';
+import { IgxLayoutDirective, IgxButtonDirective } from '<%=igxPackage%>';
 
 @Component({
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.component.html',
   styleUrls: ['./<%=filePrefix%>.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  standalone: true,
+  imports: [IgxLayoutDirective, IgxButtonDirective, IgxRadialGaugeCoreModule]
 })
 export class <%=ClassName%>Component implements AfterViewInit {
 

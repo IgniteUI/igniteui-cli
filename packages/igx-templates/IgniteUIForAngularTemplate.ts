@@ -44,7 +44,7 @@ export class IgniteUIForAngularTemplate implements Template {
 			return Promise.resolve(false);
 		}
 
-		return  Object.assign({}, options["extraConfig"], this.getBaseVariables(name));
+		return Object.assign({}, options["extraConfig"], this.getBaseVariables(name));
 	}
 
 	//TODO: rename name to fullName for clarity + in all other places fileName to fullName
@@ -62,7 +62,47 @@ export class IgniteUIForAngularTemplate implements Template {
 			// tslint:disable-next-line:no-submodule-imports
 			require("@igniteui/cli-core/typescript").TypeScriptFileUpdate;
 
-		if (!(options && options.skipRoute) && App.container.get<IFileSystem>(FS_TOKEN).fileExists("src/app/app-routing.module.ts")) {
+		// standalone components
+		const mainModulePath = path.join(projectPath, `src/app/${modulePath}`);
+		if (!this.fileExists(mainModulePath)) {
+			const appRoutesPath = "src/app/app.routes.ts";
+			const folderName = this.folderName(name);
+			const fileName = this.fileName(name);
+			if (!(options && options.skipRoute) && this.fileExists(appRoutesPath)) {
+				const rountesConfig = new TsUpdate(path.join(projectPath, appRoutesPath));
+				rountesConfig.addRoute(
+					path.join(projectPath, `src/app/${folderName}/${fileName}.component.ts`),
+					this.fileName(name),		//path
+					Util.nameFromPath(name)		//text
+				);
+			}
+
+			const componentFile = new TsUpdate(path.join(projectPath, `src/app/${folderName}/${fileName}.component.ts`));
+			for (const dep of this.dependencies) {
+				if (dep.from && dep.from.startsWith(".")) {
+					// relative file dependency
+					const copy = Object.assign({}, dep);
+					copy.from = Util.relativePath(
+						path.join(projectPath, `src/app/${folderName}/${fileName}.component.ts`),
+						path.join(projectPath, copy.from!),
+						true,
+						true);
+					// can use addNgModuleMeta here instead?
+					componentFile.addStandaloneImport(copy,
+						Util.applyDelimiters(this.getBaseVariables(name), this.delimiters.content));
+					continue;
+				}
+
+				componentFile.addStandaloneImport(dep,
+					Util.applyDelimiters(this.getBaseVariables(name), this.delimiters.content));
+			}
+
+			componentFile.finalize();
+			return;
+		}
+
+		// ngModule based components
+		if (!(options && options.skipRoute) && this.fileExists("src/app/app-routing.module.ts")) {
 			//1) import the component class name,
 			//2) and populate the Routes array with the path and component
 			//for example: { path: 'combo', component: ComboComponent }
@@ -76,7 +116,6 @@ export class IgniteUIForAngularTemplate implements Template {
 
 		//3) add an import of the component class from its file location.
 		//4) populate the declarations portion of the @NgModule with the component class name.
-		const mainModulePath = path.join(projectPath, `src/app/${modulePath}`);
 		const mainModule = new TsUpdate(mainModulePath);
 		this.addClassDeclaration(mainModule, projectPath, name, modulePath);
 
@@ -85,7 +124,7 @@ export class IgniteUIForAngularTemplate implements Template {
 			if (dep.from && dep.from.startsWith(".")) {
 				// relative file dependency
 				const copy = Object.assign({}, dep);
-				copy.from = Util.relativePath(mainModulePath, path.join(projectPath, copy.from), true, true);
+				copy.from = Util.relativePath(mainModulePath, path.join(projectPath, copy.from!), true, true);
 				mainModule.addNgModuleMeta(copy,
 					Util.applyDelimiters(this.getBaseVariables(name), this.delimiters.content));
 			} else {
@@ -100,6 +139,10 @@ export class IgniteUIForAngularTemplate implements Template {
 		return [];
 	}
 	public setExtraConfiguration(extraConfigKeys: {}) { }
+
+	public fileExists(filePath: string): boolean {
+		return App.container.get<IFileSystem>(FS_TOKEN).fileExists(filePath);
+	}
 
 	protected addClassDeclaration(mainModule: TypeScriptFileUpdate, projPath: string, name: string, modulePath: string) {
 		mainModule.addDeclaration(
