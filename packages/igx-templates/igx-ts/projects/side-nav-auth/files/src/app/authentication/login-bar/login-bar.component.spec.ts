@@ -22,7 +22,16 @@ import { LoginBarComponent } from './login-bar.component';
 
 @Component({
   selector: 'app-login-dialog',
-  template: ''
+  template: '',
+  standalone: true,
+  imports: [RouterTestingModule,
+	  IgxAvatarModule,
+	  IgxButtonModule,
+	  IgxDialogModule,
+	  IgxDropDownModule,
+	  IgxIconModule,
+	  IgxRippleModule,
+	  IgxToggleModule]
 })
 class TestLoginDialogComponent extends LoginDialogComponent {
   open() { }
@@ -46,16 +55,17 @@ describe('LoginBarComponent', () => {
       imports: [
         RouterTestingModule,
         NoopAnimationsModule,
-        AuthModule.forRoot(),
+        AuthModule,
         IgxAvatarModule,
         IgxButtonModule,
         IgxDialogModule,
         IgxDropDownModule,
         IgxIconModule,
         IgxRippleModule,
-        IgxToggleModule
+        IgxToggleModule,
+		LoginBarComponent,
+		TestLoginDialogComponent
       ],
-      declarations: [LoginBarComponent, TestLoginDialogComponent],
       providers: [
         { provide: UserService, useClass: TestUserServSpy },
         { provide: ExternalAuthService, useClass: TestAuthService }

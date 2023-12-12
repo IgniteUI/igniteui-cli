@@ -1,3 +1,4 @@
+import { IGNITEUI_ANGULAR_PACKAGE } from "../../../constants";
 import { IgniteUIForAngularTemplate } from "../../../IgniteUIForAngularTemplate";
 
 class IgxGridBatchEditingTemplate extends IgniteUIForAngularTemplate {
@@ -10,19 +11,7 @@ class IgxGridBatchEditingTemplate extends IgniteUIForAngularTemplate {
 		this.projectType = "igx-ts";
 		this.name = "Grid Batch Editing";
 		this.description = "Sample IgxGrid with batch editing";
-		this.dependencies = [
-			{
-				import: [
-				"IgxGridModule",
-				"IgxFocusModule",
-				"IgxButtonModule",
-				"IgxDialogModule",
-				"IgxRippleModule"
-				],
-				from: "<%=igxPackage%>"
-			},
-			{ import: "FormsModule", from: "@angular/forms" }
-		];
+		this.packages = [IGNITEUI_ANGULAR_PACKAGE];
 	}
 }
 module.exports = new IgxGridBatchEditingTemplate();

@@ -8,9 +8,7 @@ export class SchematicsTemplateManager extends BaseTemplateManager {
 		this.frameworks.push({
 			id: "angular",
 			name: "angular",
-			projectLibraries: [
-				require("@igniteui/angular-templates").default as ProjectLibrary
-			]
+			projectLibraries: require("@igniteui/angular-templates").default as ProjectLibrary[]
 		});
 	}
 

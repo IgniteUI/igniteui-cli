@@ -7,7 +7,9 @@ import { LoginDialogComponent } from './login-dialog.component';
 
 @Component({
   selector: 'app-login, app-register',
-  template: ''
+  template: '',
+  standalone: true,
+  imports: [IgxDialogModule]
 })
 class TestSignViewComponent {
   @Output() public viewChange = new EventEmitter();
@@ -27,8 +29,7 @@ describe('LoginDialogComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [LoginDialogComponent, TestSignViewComponent],
-      imports: [NoopAnimationsModule, IgxDialogModule]
+       imports: [NoopAnimationsModule, IgxDialogModule, LoginDialogComponent, TestSignViewComponent]
     })
       .compileComponents();
   }));

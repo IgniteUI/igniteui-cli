@@ -12,16 +12,16 @@ describe('<%=ClassName%>Component', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [<%=ClassName%>Component],
-      imports: [
-        FormsModule,
-        NoopAnimationsModule,
-        IgxGridModule,
-        IgxHierarchicalGridModule,
-        IgxDatePickerModule,
-        IgxCheckboxModule,
-        IgxDialogModule
-      ]
+	  imports: [
+	    FormsModule,
+	    NoopAnimationsModule,
+	    IgxGridModule,
+	    IgxHierarchicalGridModule,
+	    IgxDatePickerModule,
+	    IgxCheckboxModule,
+	    IgxDialogModule,
+	    <%=ClassName%>Component
+	  ]
     })
     .compileComponents();
   }));

@@ -1,4 +1,4 @@
-import { ControlExtraConfigType, ControlExtraConfiguration } from "@igniteui/cli-core";
+import { ControlExtraConfigType, ControlExtraConfiguration, TemplateDependency } from "@igniteui/cli-core";
 import { IgniteUIForAngularTemplate } from "../../../IgniteUIForAngularTemplate";
 
 class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
@@ -14,9 +14,17 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 		this.name = "Custom Tree Grid";
 		this.description = "IgxTreeGrid with optional features like sorting, filtering, row editing, etc.";
 		this.dependencies = [
-			{ import: "IgxTreeGridModule", from: "<%=igxPackage%>" }
+			{
+				standalone: true,
+				import: "IgxTreeGridComponent",
+				from: "<%=igxPackage%>"
+			},
+			{
+				standalone: true,
+				import: "IgxColumnComponent",
+				from: "<%=igxPackage%>"
+			}
 		];
-
 		this.hasExtraConfiguration = true;
 	}
 
@@ -44,6 +52,7 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 		const columnBoolFeatures = [];
 		const treeGridFeatures = [];
 		const featureUrl = "https://www.infragistics.com/products/ignite-ui-angular/angular/components/treegrid/";
+
 		const anchorWrapper = {
 			start: `<a href="`,
 			// tslint:disable-next-line:object-literal-sort-keys
@@ -54,7 +63,6 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 		};
 		let selectedFeatures = "";
 		let columnPinning = "";
-
 		if (this.userExtraConfiguration["columnFeatures"]) {
 			const features = this.userExtraConfiguration["columnFeatures"] as string[];
 			const featuresUrls = [];
@@ -88,6 +96,11 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 						break;
 					case "Paging":
 						additionalElements.push(`  <igx-paginator></igx-paginator>`);
+						this.dependencies.push({
+							standalone: true,
+							import: "IgxPaginatorComponent",
+							from: "<%=igxPackage%>"
+						});
 						break;
 					case "Column Pinning":
 						columnPinning = '[pinned]="true"';
@@ -124,6 +137,7 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 						break;
 				}
 			}
+
 			selectedFeatures = features.map((e, i) => {
 				anchorWrapper.href = featuresUrls[i];
 				anchorWrapper.text = e;
@@ -134,6 +148,37 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 				selectedFeatures = `<p>Active Features:<br />${selectedFeatures}</p>`;
 			}
 			if (toolbarActions.length) {
+				this.dependencies = [
+					...this.dependencies,
+					...[
+						{
+							standalone: true,
+							import: "IgxGridToolbarComponent",
+							from: "<%=igxPackage%>"
+						},
+						{
+							standalone: true,
+							import: "IgxGridToolbarTitleComponent",
+							from: "<%=igxPackage%>"
+						},
+						{
+							standalone: true,
+							import: "IgxGridToolbarActionsComponent",
+							from: "<%=igxPackage%>"
+						},
+						{
+							standalone: true,
+							import: "IgxGridToolbarPinningComponent",
+							from: "<%=igxPackage%>"
+						},
+						{
+							standalone: true,
+							import: "IgxGridToolbarHidingComponent",
+							from: "<%=igxPackage%>"
+						}
+					]
+				];
+
 				const parts = [
 					"  <igx-grid-toolbar>",
 					"    <igx-grid-toolbar-title>Employees</igx-grid-toolbar-title>",

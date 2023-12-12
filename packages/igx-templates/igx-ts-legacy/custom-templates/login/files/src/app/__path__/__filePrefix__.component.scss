@@ -1,0 +1,25 @@
+:host {
+    display: block;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
+    padding: 24px 16px;
+    margin: 16px;
+    width: 400px;
+    max-height: 600px;
+}
+
+h3 {
+    color: #66ccff;
+}
+
+a {
+    cursor: pointer;
+}
+
+.igx-input-group, button {
+    margin-top: 32px;
+}
+
+button {
+
+    width: 100%;
+}

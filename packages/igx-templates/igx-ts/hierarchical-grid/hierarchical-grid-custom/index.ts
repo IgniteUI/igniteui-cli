@@ -1,5 +1,6 @@
 import { ControlExtraConfigType, ControlExtraConfiguration } from "@igniteui/cli-core";
 import { IgniteUIForAngularTemplate } from "../../../IgniteUIForAngularTemplate";
+import { IGNITEUI_ANGULAR_PACKAGE } from "../../../constants";
 
 class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 	private userExtraConfiguration = {};
@@ -16,9 +17,18 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 		this.name = "Custom Hierarchical Grid";
 		this.description = "a customizable IgxHierarchicalGrid";
 		this.dependencies = [
-			{ import: ["IgxGridModule", "IgxHierarchicalGridModule"], from: "<%=igxPackage%>" }
+			{
+				import: [
+					"IgxHierarchicalGridComponent",
+					"IgxRowIslandComponent",
+					"IgxColumnComponent",
+					"IgxIconComponent"
+				],
+				from: "<%=igxPackage%>",
+				standalone: true
+			}
 		];
-
+		this.packages = [IGNITEUI_ANGULAR_PACKAGE];
 		this.hasExtraConfiguration = true;
 	}
 
@@ -119,6 +129,11 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 						break;
 					case "Paging":
 						this.additionalElements.push(`  <igx-paginator [perPage]="5"></igx-paginator>`);
+						this.dependencies.push({
+							standalone: true,
+							import: 'IgxPaginatorComponent',
+							from: "<%=igxPackage%>"
+						});
 						break;
 					case "Column Pinning":
 						this.usePinning = true;
@@ -136,6 +151,37 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 					selectedFeatures = `<p>Active Features: ${selectedFeatures}</p>`;
 				}
 				if (toolbarActions.length) {
+					this.dependencies = [
+						...this.dependencies,
+						...[
+							{
+								standalone: true,
+								import: "IgxGridToolbarComponent",
+								from: "<%=igxPackage%>"
+							},
+							{
+								standalone: true,
+								import: "IgxGridToolbarTitleComponent",
+								from: "<%=igxPackage%>"
+							},
+							{
+								standalone: true,
+								import: "IgxGridToolbarActionsComponent",
+								from: "<%=igxPackage%>"
+							},
+							{
+								standalone: true,
+								import: "IgxGridToolbarPinningComponent",
+								from: "<%=igxPackage%>"
+							},
+							{
+								standalone: true,
+								import: "IgxGridToolbarHidingComponent",
+								from: "<%=igxPackage%>"
+							},
+						],
+					];
+
 					const parts = [
 						"  <igx-grid-toolbar>",
 						"    <igx-grid-toolbar-title>Singers</igx-grid-toolbar-title>",

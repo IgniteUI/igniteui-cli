@@ -19,7 +19,7 @@ describe('<%=ClassName%>Component', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [<%=ClassName%>Component],
+      declarations: [],
       imports: [
         FormsModule,
         BrowserAnimationsModule,
@@ -31,7 +31,8 @@ describe('<%=ClassName%>Component', () => {
         IgxSwitchModule,
         IgxInputGroupModule,
         IgxSparklineModule,
-        IgxSparklineCoreModule
+        IgxSparklineCoreModule,
+        <%=ClassName%>Component
       ]
     })
     .compileComponents();

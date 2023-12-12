@@ -4,7 +4,7 @@ import {
   AfterViewInit,
   QueryList,
   ViewChild,
-  ElementRef
+  ElementRef,
 } from '@angular/core';
 
 import {
@@ -23,14 +23,59 @@ import {
   IgxToggleDirective,
   OverlaySettings,
   PositionSettings,
-  VerticalAlignment} from '<%=igxPackage%>';
-import { SparklineDisplayType } from 'igniteui-angular-charts';
+  VerticalAlignment,
+  IgxGridToolbarComponent,
+  IgxGridToolbarTitleComponent,
+  IgxInputGroupComponent,
+  IgxPrefixDirective,
+  IgxIconComponent,
+  IgxInputDirective,
+  IgxSuffixDirective,
+  IgxButtonDirective,
+  IgxRippleDirective,
+  IgxGridToolbarActionsComponent,
+  IgxGridToolbarHidingComponent,
+  IgxGridToolbarPinningComponent,
+  IgxGridToolbarExporterComponent,
+  IgxColumnComponent,
+  IgxCellTemplateDirective,
+  IgxAvatarComponent,
+  IgxLinearProgressBarComponent,
+} from '<%=igxPackage%>';
+import { SparklineDisplayType, IgxSparklineCoreModule } from 'igniteui-angular-charts';
 import { DATA, DealsDescriptor, Employee } from './data';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.component.html',
-  styleUrls: ['./<%=filePrefix%>.component.scss']
+  styleUrls: ['./<%=filePrefix%>.component.scss'],
+  standalone: true,
+  imports: [
+    IgxGridComponent,
+    IgxGridToolbarComponent,
+    IgxGridToolbarTitleComponent,
+    IgxInputGroupComponent,
+    IgxPrefixDirective,
+    NgIf,
+    IgxIconComponent,
+    ReactiveFormsModule,
+    IgxInputDirective,
+    FormsModule,
+    IgxSuffixDirective,
+    IgxButtonDirective,
+    IgxRippleDirective,
+    IgxGridToolbarActionsComponent,
+    IgxGridToolbarHidingComponent,
+    IgxGridToolbarPinningComponent,
+    IgxGridToolbarExporterComponent,
+    IgxColumnComponent,
+    IgxCellTemplateDirective,
+    IgxAvatarComponent,
+    IgxLinearProgressBarComponent,
+    IgxSparklineCoreModule,
+  ]
 })
 export class <%=ClassName%>Component implements OnInit, AfterViewInit {
 

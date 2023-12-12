@@ -14,8 +14,26 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 		this.name = "Custom Grid";
 		this.description = "IgxGrid with optional features like sorting, filtering, editing, etc.";
 		this.dependencies = [
-			{ import: "IgxGridModule", from: "<%=igxPackage%>" },
-			{ import: "IgxCheckboxModule", from: "<%=igxPackage%>" }
+			{
+				import: "IgxGridComponent",
+				from: "<%=igxPackage%>",
+				standalone: true
+			},
+			{
+				import: "IgxCheckboxComponent",
+				from: "<%=igxPackage%>",
+				standalone: true
+			},
+			{
+				import: "IgxColumnComponent",
+				from: "<%=igxPackage%>",
+				standalone: true
+			},
+			{
+				import: "DatePipe",
+				from: "@angular/common",
+				standalone: true
+			}
 		];
 
 		this.hasExtraConfiguration = true;
@@ -95,7 +113,7 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 						break;
 						case "Row Editing":
 						gridFeatures.push(`[rowEditable]="true"`);
-						this.dependencies.push({ import: "IgxDatePickerModule", from: "<%=igxPackage%>" });
+						this.dependencies.push({ import: "IgxDatePickerComponent", from: "<%=igxPackage%>" });
 						break;
 					case "Row Selection":
 						const gridFeatureText = `rowSelection="multiple"`;
@@ -103,6 +121,11 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 						break;
 					case "Paging":
 						additionalElements.push(`  <igx-paginator></igx-paginator>`);
+						this.dependencies.push({
+							standalone: true,
+							import: "IgxPaginatorComponent",
+							from: "<%=igxPackage%>"
+						});
 						break;
 					case "Column Pinning":
 						columnPinning = '[pinned]="true"';
@@ -154,6 +177,37 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 				selectedFeatures = `<p>Active Features: ${selectedFeatures}</p>`;
 			}
 			if (toolbarActions.length) {
+				this.dependencies = [
+					...this.dependencies,
+					...[
+						{
+							standalone: true,
+							import: "IgxGridToolbarComponent",
+							from: "<%=igxPackage%>"
+						},
+						{
+							standalone: true,
+							import: "IgxGridToolbarTitleComponent",
+							from: "<%=igxPackage%>"
+						},
+						{
+							standalone: true,
+							import: "IgxGridToolbarActionsComponent",
+							from: "<%=igxPackage%>"
+						},
+						{
+							standalone: true,
+							import: "IgxGridToolbarPinningComponent",
+							from: "<%=igxPackage%>"
+						},
+						{
+							standalone: true,
+							import: "IgxGridToolbarHidingComponent",
+							from: "<%=igxPackage%>"
+						}
+					]
+				];
+
 				const parts = [
 					"  <igx-grid-toolbar>",
 					"    <igx-grid-toolbar-title>Employees</igx-grid-toolbar-title>",

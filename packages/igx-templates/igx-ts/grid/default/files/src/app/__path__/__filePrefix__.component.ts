@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { ColumnType } from '<%=igxPackage%>';
+import { ColumnType, IgxGridComponent, IgxPaginatorComponent } from '<%=igxPackage%>';
 import { Employee, employeesData } from './localData';
 
 @Component({
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.component.html',
-  styleUrls: ['./<%=filePrefix%>.component.scss']
+  styleUrls: ['./<%=filePrefix%>.component.scss'],
+  standalone: true,
+  imports: [IgxGridComponent, IgxPaginatorComponent]
 })
 export class <%=ClassName%>Component implements OnInit {
   public localData: Employee[] = [];

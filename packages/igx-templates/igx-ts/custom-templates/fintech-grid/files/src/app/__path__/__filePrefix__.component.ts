@@ -1,4 +1,12 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import {
   CellType,
   DefaultSortingStrategy,
@@ -11,19 +19,70 @@ import {
   IgxGridComponent,
   IgxSliderComponent,
   IRowSelectionEventArgs,
-  SortingDirection
+  SortingDirection,
+  IgxSwitchComponent,
+  IgxGridToolbarComponent,
+  IgxGridToolbarActionsComponent,
+  IgxGridToolbarHidingComponent,
+  IgxGridToolbarPinningComponent,
+  IgxGridToolbarExporterComponent,
+  IgxColumnComponent,
+  IgxCellEditorTemplateDirective,
+  IgxSelectComponent,
+  IgxFocusDirective,
+  IgxSelectItemComponent,
+  IgxCellTemplateDirective,
+  IgxIconComponent,
+  IgxButtonDirective,
+  IgxDialogTitleDirective,
+  IgxDialogActionsDirective,
 } from '<%=igxPackage%>';
-import { CategoryChartType, IgxCategoryChartComponent } from 'igniteui-angular-charts';
+import {
+  CategoryChartType,
+  IgxCategoryChartComponent,
+  IgxCategoryChartCoreModule,
+} from 'igniteui-angular-charts';
 import { timer } from 'rxjs';
 import { debounce } from 'rxjs/operators';
 import { LocalDataService } from './localData.service';
 import { Contract, REGIONS } from './localData/financialData';
+import { NgIf, NgFor, CurrencyPipe } from '@angular/common';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @Component({
   providers: [LocalDataService],
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.component.html',
-  styleUrls: ['./<%=filePrefix%>.component.scss']
+  styleUrls: ['./<%=filePrefix%>.component.scss'],
+  standalone: true,
+  imports: [
+    IgxSwitchComponent,
+    ReactiveFormsModule,
+    FormsModule,
+    IgxSliderComponent,
+    IgxButtonGroupComponent,
+    NgIf,
+    IgxGridComponent,
+    IgxGridToolbarComponent,
+    IgxGridToolbarActionsComponent,
+    IgxGridToolbarHidingComponent,
+    IgxGridToolbarPinningComponent,
+    IgxGridToolbarExporterComponent,
+    IgxColumnComponent,
+    IgxCellEditorTemplateDirective,
+    IgxSelectComponent,
+    IgxFocusDirective,
+    NgFor,
+    IgxSelectItemComponent,
+    IgxCellTemplateDirective,
+    IgxIconComponent,
+    IgxButtonDirective,
+    IgxDialogComponent,
+    IgxDialogTitleDirective,
+    IgxCategoryChartCoreModule,
+    IgxDialogActionsDirective,
+    CurrencyPipe,
+  ]
 })
 export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('grid1', { static: true }) public grid1!: IgxGridComponent;

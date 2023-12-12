@@ -1,6 +1,10 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { NgIf } from '@angular/common';
 import { Router } from '@angular/router';
+import { IgxInputGroupComponent, IgxPrefixDirective, IgxIconComponent, IgxLabelDirective,
+  IgxInputDirective, IgxButtonDirective, IgxRippleDirective } from 'igniteui-angular';
+
 import { AuthenticationService } from '../services/authentication.service';
 import { ExternalAuthProvider } from '../services/external-auth-configs';
 import { ExternalAuthService } from '../services/external-auth.service';
@@ -9,7 +13,10 @@ import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  standalone: true,
+  imports: [ReactiveFormsModule, IgxInputGroupComponent, IgxPrefixDirective, IgxIconComponent, IgxLabelDirective,
+    IgxInputDirective, IgxButtonDirective, IgxRippleDirective, NgIf]
 })
 export class LoginComponent {
   public loginForm: FormGroup;

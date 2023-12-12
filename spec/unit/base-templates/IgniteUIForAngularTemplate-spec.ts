@@ -47,6 +47,7 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			const mockFS = {
 				fileExists: () => {}
 			};
+			spyOn(templ, "fileExists").and.returnValue(true);
 			spyOn(App.container, "get").and.returnValue(mockFS);
 			spyOn(mockFS, "fileExists").and.callFake(file => {
 				if (file === "src/app/app-routing.module.ts") {
@@ -76,6 +77,7 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 		});
 		it("updates NgModule metadata", async done => {
 			const templ = new TestTemplate();
+			spyOn(templ, "fileExists").and.returnValue(true);
 			templ.dependencies.push({ import: "test", from: "test" });
 			templ.registerInProject("", "");
 			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith(
@@ -102,6 +104,7 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			const filePath = path.join("target", "./test.ts");
 
 			const templ = new TestTemplate();
+			spyOn(templ, "fileExists").and.returnValue(true);
 			templ.dependencies = [{ from: "./test.ts" }];
 			templ.registerInProject("target", "name");
 
@@ -113,6 +116,7 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 
 		it("should skip route if skipRoute is passed", async done => {
 			const templ = new TestTemplate();
+			spyOn(templ, "fileExists").and.returnValue(true);
 			templ.registerInProject("target/path", "view name", { skipRoute: true });
 			expect(helpers.tsUpdateMock.addRoute).toHaveBeenCalledTimes(0);
 

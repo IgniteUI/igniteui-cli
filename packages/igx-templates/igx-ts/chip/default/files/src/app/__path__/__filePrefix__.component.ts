@@ -8,8 +8,14 @@ import {
   IgxDropDownComponent,
   ISelectionEventArgs,
   OverlaySettings,
-  VerticalAlignment
+  VerticalAlignment,
+  IgxLayoutDirective,
+  IgxChipComponent,
+  IgxButtonDirective,
+  IgxDropDownItemNavigationDirective,
+  IgxDropDownItemComponent,
 } from '<%=igxPackage%>';
+import { NgFor } from '@angular/common';
 
 interface NamedEntry {
   id: string;
@@ -19,11 +25,20 @@ interface NamedEntry {
 @Component({
  selector: 'app-<%=filePrefix%>',
  styleUrls: ['./<%=filePrefix%>.component.scss'],
- templateUrl: './<%=filePrefix%>.component.html'
+ templateUrl: './<%=filePrefix%>.component.html',
+ standalone: true,
+ imports: [
+    IgxLayoutDirective,
+    IgxChipsAreaComponent,
+    NgFor,
+    IgxChipComponent,
+    IgxButtonDirective,
+    IgxDropDownItemNavigationDirective,
+    IgxDropDownComponent,
+    IgxDropDownItemComponent,
+  ]
 })
-
 export class <%=ClassName%>Component {
-
   public dropDownList: NamedEntry[] = [
     {
      id: '1',

@@ -10,11 +10,9 @@ describe('AppComponent', () => {
         IgxLayoutModule,
         IgxNavbarModule,
         IgxNavigationDrawerModule,
-        IgxRippleModule
-      ],
-      declarations: [
+        IgxRippleModule,
         AppComponent
-      ],
+      ]
     }).compileComponents();
   }));
   it('should create the app', waitForAsync(() => {

@@ -14,11 +14,9 @@ describe('AppComponent', () => {
         AuthenticationModule,
         IgxNavbarModule,
         IgxLayoutModule,
-        IgxRippleModule
-      ],
-      declarations: [
+        IgxRippleModule,
         AppComponent
-      ],
+      ]
     }).compileComponents();
   }));
   it('should create the app', waitForAsync(() => {

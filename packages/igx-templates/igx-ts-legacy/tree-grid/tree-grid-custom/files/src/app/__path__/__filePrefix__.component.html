@@ -1,0 +1,17 @@
+<p>
+  <%=description%><br />
+    You can read more about configuring the igx-grid component in the
+    <a href="https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/src/lib/grids/tree-grid/README.md"
+      target="_blank">README</a> or the
+    <a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/treegrid/tree-grid"
+      target="_blank">official documentation</a>.
+</p>
+<%=selectedFeatures%>
+
+<igx-tree-grid #treeGrid [data]="localData" primaryKey="ID" childDataKey="Employees" width="990px" height="700px"
+<%=treeGridFeatures%>>
+  <igx-column field="Name" dataType="string" minWidth="200px" width="500px" <%=columnFeatures%> <%=columnPinning%>></igx-column>
+  <igx-column field="Location" dataType="string" <%=columnFeatures%>></igx-column>
+  <igx-column field="HireDate" header="Hire Date" dataType="date" minWidth="100px" <%=columnFeatures%>></igx-column>
+  <igx-column field="Age" dataType="number" minWidth="100px" <%=columnFeatures%>></igx-column><%=additionalMarkup%>
+</igx-tree-grid>

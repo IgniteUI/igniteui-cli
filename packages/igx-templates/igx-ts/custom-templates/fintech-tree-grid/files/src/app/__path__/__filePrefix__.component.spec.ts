@@ -11,7 +11,6 @@ describe('<%=ClassName%>Component', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ <%=ClassName%>Component, <%=ClassName%>TreeGridGroupingPipe ],
       imports: [
         FormsModule,
         BrowserAnimationsModule,
@@ -19,7 +18,10 @@ describe('<%=ClassName%>Component', () => {
         IgxCheckboxModule,
         IgxButtonModule,
         IgxSliderModule,
-        IgxSwitchModule]
+        IgxSwitchModule,
+        <%=ClassName%>Component,
+        <%=ClassName%>TreeGridGroupingPipe
+      ]
     })
       .compileComponents();
   }));

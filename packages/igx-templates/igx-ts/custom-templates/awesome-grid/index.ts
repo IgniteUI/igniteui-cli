@@ -9,29 +9,6 @@ class IgxGridAwesomeTemplate extends IgniteUIForAngularTemplate {
 		this.listInCustomTemplates = true;
 		this.name = "Awesome Grid";
 		this.description = "Awesome IgxGrid";
-		this.dependencies = [
-			{ import: "IgxGridModule", from: "<%=igxPackage%>" },
-			{
-				import: [
-					"IgxProgressBarModule",
-					"IgxIconModule",
-					"IgxAvatarModule",
-					"IgxBadgeModule",
-					"IgxSwitchModule",
-					"IgxInputGroupModule",
-					"IgxButtonModule"
-				],
-				from: "<%=igxPackage%>"
-			},
-			{
-				import: [
-					"IgxSparklineModule",
-					"IgxSparklineCoreModule"
-				],
-				from: "igniteui-angular-charts"
-			},
-			{ import: "FormsModule", from: "@angular/forms" }
-		];
 		this.packages = ["igniteui-angular-core@~17.0.0", "igniteui-angular-charts@~17.0.0"];
 	}
 }
