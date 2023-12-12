@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { routes } from "./app/app-routes";
-import App from './app/App';
+import App from './app/app';
 import 'react-app-polyfill/ie11';
 import './index.css';
 
