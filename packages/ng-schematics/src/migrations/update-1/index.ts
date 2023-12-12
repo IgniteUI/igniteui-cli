@@ -1,7 +1,10 @@
 import { Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
+import { Options } from "../interfaces/options";
 
-export default function(): Rule {
+export default function(options: Options): Rule {
 	return (host: Tree, context: SchematicContext) => {
+		if (!options.applyMigrations) { return; }
+
 		context.logger.info("Updating project to Ignite UI CLI XXX");
 
 		const igConfig = "./igniteui-cli.json";

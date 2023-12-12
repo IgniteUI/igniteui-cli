@@ -39,7 +39,7 @@ describe("Update XXX", () => {
 `
 		);
 
-		const tree = await schematicRunner.runSchematicAsync("migration-01", {}, appTree).toPromise();
+		const tree = await schematicRunner.runSchematicAsync("migration-01", { applyMigrations: true }, appTree).toPromise();
 		expect(tree.readContent("./igniteui-cli.json"))
 			.toEqual(
 `{

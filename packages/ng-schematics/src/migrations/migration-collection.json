@@ -4,7 +4,8 @@
 	"migration-01": {
 		"version": "17.1.0",
 		"description": "Updates Ignite UI for Angular Schematics project from 17.0.X to 17.1.X",
-		"factory": "./update-1"
+		"factory": "./update-1",
+		"schema": "./schema.json"
 	}
   }
 }

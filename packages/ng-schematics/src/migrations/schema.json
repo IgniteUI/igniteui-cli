@@ -1,0 +1,14 @@
+{
+    "$schema": "http://json-schema.org/schema",
+    "$id": "igniteui-angular-ng-add",
+    "title": "IgniteUI for Angular ng-add schematic",
+    "type": "object",
+    "properties": {
+        "applyMigrations": {
+            "type": "boolean",
+            "description": "Apply migrations to the project.",
+            "default": true,
+            "x-prompt": "Would you like to apply automated migrations?"
+        }
+    }
+}
