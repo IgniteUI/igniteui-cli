@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/schema",
-    "$id": "igniteui-angular--schematics",
-    "title": "IgniteUI for Angular Schematics",
+    "$id": "igniteui-cli",
+    "title": "IgniteUI CLI schematic",
     "type": "object",
     "properties": {
         "applyMigrations": {

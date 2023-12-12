@@ -1,8 +1,10 @@
 import * as path from "path";
+// tslint:disable:no-implicit-dependencies
 import { EmptyTree } from "@angular-devkit/schematics";
+// tslint:disable-next-line:no-submodule-imports
 import { SchematicTestRunner, UnitTestTree } from "@angular-devkit/schematics/testing";
 
-describe("Update 17.1.0", () => {
+describe("Update 13.1.0", () => {
 	let appTree: UnitTestTree;
 	const schematicRunner = new SchematicTestRunner("ig-migrate", path.join(__dirname, "../migration-collection.json"));
 
@@ -35,11 +37,10 @@ describe("Update 17.1.0", () => {
         "version": ""
     },
     "build": {}
-}
-`
+}`
 		);
 
-		const tree = await schematicRunner.runSchematicAsync("migration-01", { applyMigrations: true }, appTree).toPromise();
+		const tree = await schematicRunner.runSchematicAsync("migration-07", { applyMigrations: true }, appTree).toPromise();
 		expect(tree.readContent("./igniteui-cli.json"))
 			.toEqual(
 `{

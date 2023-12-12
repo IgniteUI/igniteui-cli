@@ -1,11 +1,11 @@
+// tslint:disable:no-implicit-dependencies
 import { Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
-import { Options } from "../interfaces/options";
 
-export default function(options: Options): Rule {
+export default function(options: any): Rule {
 	return (host: Tree, context: SchematicContext) => {
 		if (!options.applyMigrations) { return; }
 
-		context.logger.info("Updating @igniteui/angular-schematics to 17.1.0");
+		context.logger.info("Updating project to Ignite UI CLI 13.1.0");
 
 		const igConfig = "./igniteui-cli.json";
 
