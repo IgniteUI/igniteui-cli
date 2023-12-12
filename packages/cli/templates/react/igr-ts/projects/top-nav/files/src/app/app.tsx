@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { routes } from './app-routes';
 import NavigationHeader from "../components/navigation-header";
-import "./App.css";
+import "./app.css";
 
 export default function App() {
 	const name = "$(name)";
