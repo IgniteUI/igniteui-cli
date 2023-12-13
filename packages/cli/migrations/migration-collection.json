@@ -30,6 +30,12 @@
             "version": "5.0.3",
             "description": "Updates Ignite UI for Angular project from CLI 5.0.x to 5.0.3",
             "factory": "./update-5_0_3"
-        }
+        },
+		"migration-07": {
+			"version": "13.1.0",
+			"description": "Updates Ignite UI for Angular Schematics project from 13.0.x to 13.1.x",
+			"factory": "./update-13_1_0",
+			"schema": "./schema.json"
+		}
     }
 }

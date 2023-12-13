@@ -11,6 +11,52 @@
 			"processId": "${command:PickProcess}"
 		},
 		{
+			"name": "Run migrations for CLI",
+			"request": "launch",
+			"type": "node",
+			"preLaunchTask": "build",
+			// "cwd": "<absolute directory of the project, having an old version of igniteui-angular, on which the migrations are applied>",
+			"cwd": "E:\\Temp\\TestCli",
+			"args": [
+				"-r",
+	 
+				// you need to install ts-node for the test project
+				"ts-node/register",
+	 
+				// "<path/to/ng>", "g",
+				"${env:AppData}/npm/node_modules/@angular/cli/bin/ng", "g",
+	 
+				// "<../../relative/path/from/cwd/to>/igniteui-angular/projects/igniteui-angular/migrations/migration-collection.json:migration-<number>
+				"../../Igniteui-Repos/igniteui-cli/packages/cli/migrations/migration-collection.json:migration-07"
+			],
+			"env": {
+				"TS_NODE_PROJECT": "${workspaceFolder}/tsconfig.json"
+			}
+		},
+		{
+			"name": "Run migrations for Angular Schematics",
+			"request": "launch",
+			"type": "node",
+			"preLaunchTask": "build",
+			// "cwd": "<absolute directory of the project, having an old version of igniteui-angular, on which the migrations are applied>",
+			"cwd": "E:\\Temp\\TestCli",
+			"args": [
+				"-r",
+	 
+				// you need to install ts-node for the test project
+				"ts-node/register",
+	 
+				// "<path/to/ng>", "g",
+				"${env:AppData}/npm/node_modules/@angular/cli/bin/ng", "g",
+	 
+				// "<../../relative/path/from/cwd/to>/igniteui-angular/projects/igniteui-angular/migrations/migration-collection.json:migration-<number>
+				"../../Igniteui-Repos/igniteui-cli/packages/ng-schematics/src/migrations/migration-collection.json:migration-01"
+			],
+			"env": {
+				"TS_NODE_PROJECT": "${workspaceFolder}/packages/ng-schematics/tsconfig.json"
+			}
+		},
+		{
 			"type": "node",
 			"request": "launch",
 			"name": "Launch New jQuery",
