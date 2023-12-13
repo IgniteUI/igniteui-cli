@@ -1,3 +1,24 @@
+# [13.1.0](https://github.com/IgniteUI/igniteui-cli/compare/v13.0.2...v13.1.0) (2023-12-13)
+
+🎉 This update includes:
+
+## React:
+- `igniteui-cli` templates now uses latest react framework version [18.x](https://legacy.reactjs.org/versions/).
+- `igniteui-cli` templates for the grid now uses the new [Ignite UI React IgrGrid](https://www.infragistics.com/products/ignite-ui-react/react/components/grids/data-grid)
+
+## Angular
+ - `igniteui-cli` and `@igniteui/angular-schematics` now generates [standalone angular](https://angular.io/guide/standalone-components) projects and standalone `igniteui-angular` components. Migrations are available for both - use `ng update` to apply them.
+ - `igniteui-cli` and `@igniteui/angular-schematics` keeps the old functionality and generates angular project and components using modules.
+
+## What's Changed
+* feat(igr-ts): add igr-ts proj type by @onlyexeption in https://github.com/IgniteUI/igniteui-cli/pull/1146
+* Fix file name casing by @onlyexeption in https://github.com/IgniteUI/igniteui-cli/pull/1178
+* Update to standalone components by @jackofdiamond5 in https://github.com/IgniteUI/igniteui-cli/pull/1174
+* Migrate projectType in cli config by @jackofdiamond5 in https://github.com/IgniteUI/igniteui-cli/pull/1180
+* fix(igx): remove prod config for ng build by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1179
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.0.2...v13.1.0
+
 # [13.0.2](https://github.com/IgniteUI/igniteui-cli/compare/v13.0.1...v13.0.2) (2023-11-21)
 
 ## What's Changed
