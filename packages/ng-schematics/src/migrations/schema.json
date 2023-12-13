@@ -6,9 +6,9 @@
     "properties": {
         "applyMigrations": {
             "type": "boolean",
-            "description": "Apply migrations to the project.",
+            "description": "We've updated our view templates to use Standalone Components. Those are compatible with your project and you can start using them now or remain with `NgModule` dependencies.",
             "default": true,
-            "x-prompt": "Would you like to apply automated migrations?"
+            "x-prompt": "Would you like to continue with Standalone Components for new views?"
         }
     }
 }
