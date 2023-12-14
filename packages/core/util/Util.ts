@@ -237,9 +237,10 @@ export class Util {
 
 	/**
 	 * lower-dashed string
+	 * Add dash on the place of empty spaces and between lower and upper case letters.
 	 */
 	public static lowerDashed(text: string) {
-		const regex = new RegExp("[\\s]+|([\\p{Ll}](?=[\\p{Lu}\\p{Nd}]))", "gu");
+		const regex = new RegExp("[\\s]+|([\\p{Ll}\\p{Nd}](?=[\\p{Lu}]))", "gu");
 		const result = text.trim()
 				.replace(regex, "$1-")
 				.toLowerCase();
