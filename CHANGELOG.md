@@ -1,3 +1,12 @@
+# [12.0.8](https://github.com/IgniteUI/igniteui-cli/compare/v12.0.7...v12.0.8) (2023-12-14)
+
+## What's Changed
+
+* In lowerDashed do not add dash before numbers - 12.0.x by @wnvko in https://github.com/IgniteUI/igniteui-cli/pull/1184
+
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v12.0.7...v12.0.8
+
 # [12.0.7](https://github.com/IgniteUI/igniteui-cli/compare/v12.0.6...v12.0.7) (2023-11-14)
 
 ## What's Changed
