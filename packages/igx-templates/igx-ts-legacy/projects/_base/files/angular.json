@@ -11,7 +11,8 @@
           "standalone": false
         },
         "@schematics/angular:application": {
-          "strict": true
+          "strict": true,
+          "standalone": false
         }
       },
       "root": "",
