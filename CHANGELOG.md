@@ -1,3 +1,11 @@
+# [13.1.1](https://github.com/IgniteUI/igniteui-cli/compare/v13.1.0...v13.1.1) (2023-12-14)
+
+## What's Changed
+* In lowerDashed do not add dash before numbers by @wnvko in https://github.com/IgniteUI/igniteui-cli/pull/1182
+* chore(angular): Add standalone=false variable to angular.json by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1186
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.1.0...v13.1.1
+
 # [13.1.0](https://github.com/IgniteUI/igniteui-cli/compare/v13.0.2...v13.1.0) (2023-12-13)
 
 🎉 This update includes:
