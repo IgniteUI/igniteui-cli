@@ -45,7 +45,7 @@
         "description": "Project type.",
         "type": "string",
         "alias": "t",
-		"default": "igx-ts"
+        "default": "igx-ts"
     }
   },
   "required": [

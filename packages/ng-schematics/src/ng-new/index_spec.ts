@@ -56,7 +56,7 @@ describe("Schematics ng-new", () => {
 			return currentTree;
 		});
 
-		runner.runSchematicAsync("ng-new", { version: "8.0.3", type: "igx-ts-legacy" }, myTree)
+		runner.runSchematicAsync("ng-new", { version: "8.0.3" }, myTree)
 		.pipe(take(1))
 		.subscribe((e: UnitTestTree) => {
 			for (const mockFunc of Object.entries(mockSession)) {
