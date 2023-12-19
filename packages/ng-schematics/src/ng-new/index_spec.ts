@@ -33,7 +33,7 @@ describe("Schematics ng-new", () => {
 		const mockSession = {
 			chooseActionLoop: spyOn(SchematicsPromptSession.prototype, "chooseActionLoop")
 				.and.returnValue(Promise.resolve(true)),
-			getProjectLibrary: spyOn(SchematicsPromptSession.prototype, "getProjectLibrary")
+			getProjectLibraryByType: spyOn(SchematicsPromptSession.prototype, "getProjectLibraryByType")
 				.and.returnValue((Promise.resolve(mockLibrary))),
 			getProjectTemplate: spyOn(SchematicsPromptSession.prototype, "getProjectTemplate")
 				.and.returnValue(Promise.resolve(mockProject)),
@@ -56,7 +56,7 @@ describe("Schematics ng-new", () => {
 			return currentTree;
 		});
 
-		runner.runSchematicAsync("ng-new", { version: "8.0.3" }, myTree)
+		runner.runSchematicAsync("ng-new", { version: "8.0.3", type: "igx-ts-legacy" }, myTree)
 		.pipe(take(1))
 		.subscribe((e: UnitTestTree) => {
 			for (const mockFunc of Object.entries(mockSession)) {
@@ -112,7 +112,7 @@ describe("Schematics ng-new", () => {
 		};
 
 		const mockSession = {
-			getProjectLibrary: spyOn(SchematicsPromptSession.prototype, "getProjectLibrary")
+			getProjectLibraryByType: spyOn(SchematicsPromptSession.prototype, "getProjectLibraryByType")
 			.and.returnValue((Promise.resolve(mockLibrary)))
 		};
 

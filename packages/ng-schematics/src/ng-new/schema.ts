@@ -18,4 +18,6 @@ export abstract class OptionsSchema {
 	public theme: string;
 
 	public template: string;
+
+	public type: string;
 }

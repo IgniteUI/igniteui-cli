@@ -40,6 +40,12 @@
     "template": {
       "description": "Project template.",
       "type": "string"
+    },
+    "type": {
+        "description": "Project type.",
+        "type": "string",
+        "alias": "t",
+		"default": "igx-ts"
     }
   },
   "required": [
