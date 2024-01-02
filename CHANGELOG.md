@@ -1,3 +1,11 @@
+# [13.1.2](https://github.com/IgniteUI/igniteui-cli/compare/v13.1.1...v13.1.2) (2024-01-02)
+
+## What's Changed
+
+* Resolve proj lib by type by @jackofdiamond5 in https://github.com/IgniteUI/igniteui-cli/pull/1188
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.1.1...v13.1.2
+
 # [13.1.1](https://github.com/IgniteUI/igniteui-cli/compare/v13.1.0...v13.1.1) (2023-12-14)
 
 ## What's Changed
