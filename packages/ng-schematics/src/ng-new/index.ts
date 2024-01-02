@@ -60,7 +60,7 @@ export function newProject(options: OptionsSchema): Rule {
 						throw new SchematicsException(`Folder "${options.name}" already exists!`);
 					}
 					const framework = templateManager.getFrameworkByName("angular");
-					projLibrary = await prompt.getProjectLibrary(framework);
+					projLibrary = await prompt.getProjectLibraryByType(framework, options.type);
 
 					if (!options.name || !prompt.nameIsValid(options.name)) {
 						options.name = await prompt.getUserInput({

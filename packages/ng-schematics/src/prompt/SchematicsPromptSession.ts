@@ -35,6 +35,12 @@ export class SchematicsPromptSession extends BasePromptSession {
 		return super.getProjectLibrary(framework);
 	}
 
+	public async getProjectLibraryByType(framework: Framework, type: string): Promise<ProjectLibrary> {
+		type = type === "igx-ts" || type === "igx-ts-legacy" ? type : "igx-ts";
+		framework.projectLibraries = [framework.projectLibraries.find(lib => lib.projectType === type)!];
+		return super.getProjectLibrary(framework);
+	}
+
 	public async getProjectTemplate(projectLibrary: ProjectLibrary): Promise<ProjectTemplate> {
 		return super.getProjectTemplate(projectLibrary);
 	}
