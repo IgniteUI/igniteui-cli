@@ -7,7 +7,7 @@ class IgcTextareaComponent extends IgniteUIForWebComponentsTemplate {
 		this.components = ["Teaxtarea"];
 		this.controlGroup = "Data Entry & Display";
 		this.listInComponentTemplates = true;
-		this.id = "textarea";
+		this.id = "text-area";
 		this.projectType = "igc-ts";
 		this.name = "Text area";
 		this.description = "basic IgcTextarea";

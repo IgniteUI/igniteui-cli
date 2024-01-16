@@ -3,7 +3,6 @@ import { customElement } from 'lit/decorators.js';
 import {
   defineComponents,
   IgcToggleButtonComponent,
-  registerIconFromText
 } from 'igniteui-webcomponents';
 
 defineComponents(IgcToggleButtonComponent);
@@ -12,9 +11,7 @@ defineComponents(IgcToggleButtonComponent);
 export default class $(ClassName) extends LitElement {
     render() {
         return html`
-          <igc-textarea>
-            Text area component
-          </igc-textarea>
+          <igc-toggle-button>Toggle button</igc-toggle-button>
         `;
       }
 }
