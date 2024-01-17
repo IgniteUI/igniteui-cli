@@ -18,6 +18,7 @@ export default defineConfig({
 		mainFields: ['module'],
 	},
 	server: {
+		open: true,
 		port: 3003
 	}
 })
