@@ -41,7 +41,8 @@ export class BaseIgrTsProject implements ProjectTemplate {
 			"description": this.description,
 			"dot": ".",
 			"path": name,
-			"projectTemplate": this.id
+			"projectTemplate": this.id,
+			"yamlDefaultBranch": this.id === "base" ? "<%=yaml-default-branch%>" : "main"
 		};
 	}
 }
