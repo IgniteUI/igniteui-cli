@@ -1,3 +1,19 @@
+# [13.1.3](https://github.com/IgniteUI/igniteui-cli/compare/v13.1.2...v13.1.3) (2024-01-17)
+
+## What's Changed
+
+* Enable binding information from the Router state to the components' inputs by @viktorkombov in https://github.com/IgniteUI/igniteui-cli/pull/1196
+* fix(igr-ts): add github workflows folder by @onlyexeption in https://github.com/IgniteUI/igniteui-cli/pull/1192
+* React - open browser on app start by @onlyexeption in https://github.com/IgniteUI/igniteui-cli/pull/1187
+* Replace base app name with placeholders by @jackofdiamond5 in https://github.com/IgniteUI/igniteui-cli/pull/1194
+* Bump the version of WebComponents by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1189
+* build(deps): bump follow-redirects from 1.15.0 to 1.15.4 by @dependabot in https://github.com/IgniteUI/igniteui-cli/pull/1193
+
+## New Contributors
+* @viktorkombov made their first contribution in https://github.com/IgniteUI/igniteui-cli/pull/1196
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.1.2...v13.1.3
+
 # [13.1.2](https://github.com/IgniteUI/igniteui-cli/compare/v13.1.1...v13.1.2) (2024-01-02)
 
 ## What's Changed
