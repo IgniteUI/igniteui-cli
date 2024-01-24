@@ -4,9 +4,9 @@
  */
 export default function createClassTransformer(styles: any) {
 	return (classes: string) => {
-	  return classes
-		.split(' ')
-		.map(className => styles[className] || className)
-		.join(' ');
+		return classes
+			.split(' ')
+			.map(className => styles[className] || className)
+			.join(' ');
 	}
 }
