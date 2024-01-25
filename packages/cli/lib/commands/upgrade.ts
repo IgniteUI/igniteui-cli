@@ -39,11 +39,9 @@ command = {
 			case "jquery":
 				Util.log("Upgrading packages for jQuery projects is currently not supported!");
 				return;
-			case "react":
-				Util.log("Upgrading packages for React projects is currently not supported!");
-				return;
 			case "angular":
-				if (projectType === "igx-ts") {
+			case "react":
+				if (projectType === "igx-ts" || projectType === "igr-ts") {
 					const projectLibrary = command.templateManager.getProjectLibrary(framework, projectType);
 					let project;
 					if (!config.project.projectTemplate || !projectLibrary.hasProject(config.project.projectTemplate)) {
@@ -63,7 +61,7 @@ command = {
 							Util.log(error.message);
 						}
 					}
-				} else {
+				} else if (framework.toLowerCase() === "angular") {
 					Util.log("Upgrading packages for Angular Wrappers projects is currently not supported!");
 					return;
 				}
