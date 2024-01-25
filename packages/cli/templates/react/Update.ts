@@ -60,7 +60,7 @@ function updateFileImports(
 		for (const packageDef of packageDefs) {
 			if (fileContent.includes(packageDef.trial)) {
 				const regexFrom = String.raw`(from ["'])${packageDef.trial}(?<submodules>\/.*?)?(["'])`;
-				var newContent = updateFileContent(fileContent, regexFrom, packageDef.licensed);
+				let newContent = updateFileContent(fileContent, regexFrom, packageDef.licensed);
 				const regexImport = String.raw`(import ["'])${packageDef.trial}(?<submodules>\/.*?)?(["'])`;
 				newContent = updateFileContent(newContent, regexImport, packageDef.licensed);
 				fileChange = fileContent !== newContent;
@@ -95,7 +95,7 @@ function createNpmrc(
 	fs: IFileSystem
 ): void {
 	const npmrcPath = path.join(rootPath, ".npmrc");
-	const fileContent = 
+	const fileContent =
 `@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/
 //packages.infragistics.com/npm/js-licensed/:always-auth=true
 `;

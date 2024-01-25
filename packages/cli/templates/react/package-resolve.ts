@@ -1,23 +1,23 @@
 import { App, FS_TOKEN, IFileSystem } from "@igniteui/cli-core";
 
-export const NPM_REACT= "igniteui-react";
-export const FEED_REACT= "@infragistics/igniteui-react";
-export const NPM_REACT_CORE= "igniteui-react-core";
-export const FEED_REACT_CORE= "@infragistics/igniteui-react-core";
-export const NPM_REACT_CHARTS= "igniteui-react-charts";
-export const FEED_REACT_CHARTS= "@infragistics/igniteui-react-charts";
-export const NPM_REACT_GAUGES= "igniteui-react-gauges";
-export const FEED_REACT_GAUGES= "@infragistics/igniteui-react-gauges";
-export const NPM_REACT_GRIDS= "igniteui-react-grids";
-export const FEED_REACT_GRIDS= "@infragistics/igniteui-react-grids";
-export const NPM_REACT_INPUTS= "igniteui-react-inputs";
-export const FEED_REACT_INPUTS= "@infragistics/igniteui-react-inputs";
-export const NPM_REACT_LAYOUTS= "igniteui-react-layouts";
-export const FEED_REACT_LAYOUTS= "@infragistics/igniteui-react-layouts";
-export const NPM_REACT_MAPS= "igniteui-react-maps";
-export const FEED_REACT_MAPS= "@infragistics/igniteui-react-maps";
-export const NPM_DOCK_MANAGER= "igniteui-dockmanager";
-export const FEED_DOCK_MANAGER= "@infragistics/igniteui-dockmanager";
+export const NPM_REACT = "igniteui-react";
+export const FEED_REACT = "@infragistics/igniteui-react";
+export const NPM_REACT_CORE = "igniteui-react-core";
+export const FEED_REACT_CORE = "@infragistics/igniteui-react-core";
+export const NPM_REACT_CHARTS = "igniteui-react-charts";
+export const FEED_REACT_CHARTS = "@infragistics/igniteui-react-charts";
+export const NPM_REACT_GAUGES = "igniteui-react-gauges";
+export const FEED_REACT_GAUGES = "@infragistics/igniteui-react-gauges";
+export const NPM_REACT_GRIDS = "igniteui-react-grids";
+export const FEED_REACT_GRIDS = "@infragistics/igniteui-react-grids";
+export const NPM_REACT_INPUTS = "igniteui-react-inputs";
+export const FEED_REACT_INPUTS = "@infragistics/igniteui-react-inputs";
+export const NPM_REACT_LAYOUTS = "igniteui-react-layouts";
+export const FEED_REACT_LAYOUTS = "@infragistics/igniteui-react-layouts";
+export const NPM_REACT_MAPS = "igniteui-react-maps";
+export const FEED_REACT_MAPS = "@infragistics/igniteui-react-maps";
+export const NPM_DOCK_MANAGER = "igniteui-dockmanager";
+export const FEED_DOCK_MANAGER = "@infragistics/igniteui-dockmanager";
 
 export interface PackageDefinition {
 	trial: string;
