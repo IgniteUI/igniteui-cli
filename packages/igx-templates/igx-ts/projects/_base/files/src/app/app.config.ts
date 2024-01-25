@@ -7,11 +7,11 @@ import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-	provideRouter(routes, withComponentInputBinding()),
-	importProvidersFrom(BrowserModule, HammerModule),
-	provideAnimations(),
-	// provide the HAMMER_GESTURE_CONFIG token
-	// to override the default settings of the HammerModule
+    provideRouter(routes, withComponentInputBinding()),
+    importProvidersFrom(BrowserModule, HammerModule),
+    provideAnimations()
+    // provide the HAMMER_GESTURE_CONFIG token
+    // to override the default settings of the HammerModule
     // { provide: HAMMER_GESTURE_CONFIG, useClass: MyHammerConfig }
   ]
 };
