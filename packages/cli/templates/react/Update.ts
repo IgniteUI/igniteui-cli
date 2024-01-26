@@ -94,14 +94,15 @@ function updatePackageJSON(
 function updateWorkflows(
 	fs: IFileSystem
 ): void {
-	const workflowPath = '.github/workflows/node.js.yml';
+	const workflowPath = ".github/workflows/node.js.yml";
 	let workflow = fs.readFile(workflowPath);
 	if (workflow) {
-		const oldNmpInstall = '- run: npm i # replace with \'npm ci\' after committing lock file from first install';
-		const newNpmInstall = '- run: echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc\n'
-			+ '    - run: echo "//packages.infragistics.com/npm/js-licensed/:_auth=${{ secrets.NPM_AUTH_TOKEN }}" >> ~/.npmrc'
-			+ '    - run: echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc\n'
-			+ '    - run: npm i # replace with \'npm ci\' after committing lock file from first install';
+		const oldNmpInstall = "- run: npm i # replace with \'npm ci\' after committing lock file from first install";
+		const newNpmInstall =
+`- run: echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
+    - run: echo "//packages.infragistics.com/npm/js-licensed/:_auth=\${{ secrets.NPM_AUTH_TOKEN }}" >> ~/.npmrc
+    - run: echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
+    - run: npm i # replace with \'npm ci\' after committing lock file from first install`;
 		workflow = workflow.replace(oldNmpInstall, newNpmInstall);
 		fs.writeFile(workflowPath, workflow);
 	}
