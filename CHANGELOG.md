@@ -1,3 +1,12 @@
+# [13.1.4](https://github.com/IgniteUI/igniteui-cli/compare/v13.1.3...v13.1.4) (2024-01-26)
+
+## What's Changed
+* feat: add style-utils file to base project by @onlyexeption in https://github.com/IgniteUI/igniteui-cli/pull/1195
+* refactor(projects-routes): update indentation by @jackofdiamond5 in https://github.com/IgniteUI/igniteui-cli/pull/1197
+
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.1.3...v13.1.4
+
 # [13.1.3](https://github.com/IgniteUI/igniteui-cli/compare/v13.1.2...v13.1.3) (2024-01-17)
 
 ## What's Changed
