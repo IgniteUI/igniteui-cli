@@ -1,3 +1,11 @@
+# [13.1.5](https://github.com/IgniteUI/igniteui-cli/compare/v13.1.4...v13.1.5) (2024-01-31)
+
+## What's Changed
+* chore: use patch versions instead of minor one by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1201
+
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v.13.1.4...v13.1.5
+
 # [13.1.4](https://github.com/IgniteUI/igniteui-cli/compare/v13.1.3...v13.1.4) (2024-01-26)
 
 ## What's Changed
