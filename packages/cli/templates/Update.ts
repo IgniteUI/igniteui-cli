@@ -1,35 +1,56 @@
-import { App, FS_TOKEN, IFileSystem, PackageManager, ProjectConfig, Util } from "@igniteui/cli-core";
+import { App, FS_TOKEN, IFileSystem, PackageManager, ProjectConfig, PackageDefinition, Util } from "@igniteui/cli-core";
 import * as path from "path";
-import { getUpgradeablePackages, PackageDefinition } from "./package-resolve";
+import { getReactUpgradeablePackages } from "./react/package-resolve";
+import { getWebcomponentsUpgradeablePackages } from "./webcomponents/package-resolve";
 
 export async function updateWorkspace(rootPath: string): Promise<boolean> {
-	const fs: IFileSystem = App.container.get(FS_TOKEN);
-	const upgradeable = getUpgradeablePackages();
+	let guideLink = "";
+	let logicFilesExtension = "";
+	let upgradeable: PackageDefinition[] = [];
+	
+	const config = ProjectConfig.getConfig();
+	const framework = config.project.framework;
+	switch (framework.toLowerCase()) {
+		// case "angular":
+		// 	guideLink = "https://www.infragistics.com/products/ignite-ui-angular/angular/components/general/ignite-ui-licensing";
+		// 	break;
+		case "react":
+			guideLink = "https://www.infragistics.com/products/ignite-ui-react/react/components/general-licensing";
+			logicFilesExtension = "tsx";
+			upgradeable = getReactUpgradeablePackages();
+			break;
+		case "webcomponents":
+			guideLink = "https://www.infragistics.com/products/ignite-ui-web-components/web-components/components/general-licensing";
+			logicFilesExtension = "ts";
+			upgradeable = getWebcomponentsUpgradeablePackages();
+			break;
+		default:
+			break;
+	}
+
 	if (!upgradeable.length) {
 		Util.log("Your app is already using packages from the Infragistics registry. You are good to go.", "green");
 		return false;
 	}
 
 	const packageJsonPath = path.join(rootPath, "package.json");
+	const fs: IFileSystem = App.container.get(FS_TOKEN);
 	const fileString = fs.readFile(packageJsonPath);
 
-	// check for registry user in npm
-	const config = ProjectConfig.getConfig();
 	if (!fileString) {
 		Util.log("Package.json not found!");
 		return false;
 	}
 	const pkgJSON = JSON.parse(fileString);
 
-	const errorMsg = "Something went wrong, " +
-		"please follow the steps in this guide: https://www.infragistics.com/products/ignite-ui-react/react/components/general-licensing";
+	const errorMsg = "Something went wrong, please follow the steps in this guide: " + guideLink;
 	if (!PackageManager.ensureRegistryUser(config, errorMsg)) {
 		return false;
 	}
 
 	const workspace = path.join(rootPath, "src");
 	const logicFiles = [];
-	logicFiles.push(...fs.glob(workspace, "**/*.tsx"));
+	logicFiles.push(...fs.glob(workspace, "**/*." + logicFilesExtension));
 	for (const packageDef of upgradeable) {
 		updatePackageJSON(packageDef.trial, packageDef.licensed, pkgJSON);
 	}
@@ -85,10 +106,6 @@ function updatePackageJSON(
 	}
 	pkgJSON.dependencies[replaceWith] = pkgJSON.dependencies[initName];
 	delete pkgJSON.dependencies[initName];
-
-	// add "infragistics-login" script
-	const scripts = pkgJSON["scripts"];
-	scripts["infragistics-login"] = "echo \"IMPORTANT: When prompted for username enter in this format `name!!domain.com`\" && npm adduser --registry=https://packages.infragistics.com/npm/js-licensed/ --scope=@infragistics --always-auth";
 }
 
 function updateWorkflows(

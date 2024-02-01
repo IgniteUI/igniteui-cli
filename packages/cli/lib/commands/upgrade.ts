@@ -41,7 +41,8 @@ command = {
 				return;
 			case "angular":
 			case "react":
-				if (projectType === "igx-ts" || projectType === "igr-ts") {
+			case "webcomponents":
+				if (projectType === "igx-ts" || projectType === "igr-ts" || projectType === "igc-ts") {
 					const projectLibrary = command.templateManager.getProjectLibrary(framework, projectType);
 					let project;
 					if (!config.project.projectTemplate || !projectLibrary.hasProject(config.project.projectTemplate)) {
