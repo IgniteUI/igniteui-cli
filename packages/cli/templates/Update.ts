@@ -7,12 +7,13 @@ export async function updateWorkspace(rootPath: string): Promise<boolean> {
 	let guideLink = "";
 	let logicFilesExtension = "";
 	let upgradeable: PackageDefinition[] = [];
-	
+
 	const config = ProjectConfig.getConfig();
 	const framework = config.project.framework;
 	switch (framework.toLowerCase()) {
 		// case "angular":
-		// 	guideLink = "https://www.infragistics.com/products/ignite-ui-angular/angular/components/general/ignite-ui-licensing";
+		// 	guideLink =
+		// 	  "https://www.infragistics.com/products/ignite-ui-angular/angular/components/general/ignite-ui-licensing";
 		// 	break;
 		case "react":
 			guideLink = "https://www.infragistics.com/products/ignite-ui-react/react/components/general-licensing";
