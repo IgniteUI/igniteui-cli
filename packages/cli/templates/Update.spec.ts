@@ -86,7 +86,7 @@ fdescribe("React - updateWorkspace", () => {
 		expect(fsSpy.writeFile).toHaveBeenCalledTimes(1);
 	});
 
-	fit("Should update import paths in files correctly", async () => {
+	it("Should update import paths in files correctly", async () => {
 		// const mockPackageJSON = {
 		// 	dependencies: {
 		// 		"some-package": "^0.0.0",
@@ -97,27 +97,28 @@ fdescribe("React - updateWorkspace", () => {
 		// };
 		const mockFileArray: MockFile[] = [
 			{
-			path: "package.json",
-			content:
-`{
+				path: "package.json",
+				content:
+				`{
   "dependencies": {
-	"igniteui-dockmanager": "^1.0.0",
-	"igniteui-react": "^18.5.1",
-	"igniteui-react-grids": "^18.5.1",
-	"some-package": "^0.0.0"
-  }
+    "igniteui-dockmanager": "^1.0.0",
+    "igniteui-react": "^18.5.1",
+    "igniteui-react-grids": "^18.5.1",
+    "some-package": "^0.0.0"
+	}
 }
 `,
-			expected:
-`{
+				expected:
+				`{
   "dependencies": {
-	"@infragistics/igniteui-dockmanager": "^1.0.0",
-	"@infragistics/igniteui-react": "^18.5.1",
-	"@infragistics/igniteui-react-grids": "^18.5.1",
-	"some-package": "^0.0.0"
+    "@infragistics/igniteui-dockmanager": "^1.0.0",
+    "@infragistics/igniteui-react": "^18.5.1",
+    "@infragistics/igniteui-react-grids": "^18.5.1",
+    "some-package": "^0.0.0"
   }
 }
-`},
+`
+			},
 {
 			path: "src/home.tsx",
 			content:
@@ -155,17 +156,18 @@ export default function Home() {
 			path: ".github/workflows/node.js.yml",
 			content:
 `# start content
-	- run: npm i # replace with \'npm ci\' after committing lock file from first install
+    - run: npm i # replace with \'npm ci\' after committing lock file from first install
 # end content
 `,
 			expected:
 `# start content
-	- run: echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
-	- run: echo "//packages.infragistics.com/npm/js-licensed/:_auth=\${{ secrets.NPM_AUTH_TOKEN }}" >> ~/.npmrc
-	- run: echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
-	- run: npm i # replace with \'npm ci\' after committing lock file from first install
+    - run: echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
+    - run: echo "//packages.infragistics.com/npm/js-licensed/:_auth=\${{ secrets.NPM_AUTH_TOKEN }}" >> ~/.npmrc
+    - run: echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
+    - run: npm i # replace with \'npm ci\' after committing lock file from first install
 # end content
-`}];
+`}
+];
 		(fsSpy.glob as jasmine.Spy).and.returnValues(
 			["src/home.tsx"]);
 		(fsSpy.readFile as jasmine.Spy).and.callFake((filePath: string) => {
