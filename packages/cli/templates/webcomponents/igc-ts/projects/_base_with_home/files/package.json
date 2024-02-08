@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@vaadin/router": "^1.7.4",
-    "@igniteui/material-icons-extended": "^2.11.0",
+    "@igniteui/material-icons-extended": "^3.0.2",
     "igniteui-dockmanager": "~1.14.3",
     "igniteui-webcomponents": "~4.7.0",
     "igniteui-webcomponents-charts": "~4.7.0",
@@ -30,33 +30,33 @@
     "igniteui-webcomponents-grids": "~4.7.0",
     "igniteui-webcomponents-inputs": "~4.7.0",
     "igniteui-webcomponents-layouts": "~4.7.0",
-    "lit": "^2.6.1",
-    "typescript": "^4.9.4"
+    "lit": "^3.1.2",
+    "typescript": "^5.3.3"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.20.2",
     "@open-wc/building-rollup": "^2.2.1",
-    "@open-wc/testing": "^3.1.7",
+    "@open-wc/testing": "^4.0.0",
     "@rollup/plugin-babel": "^6.0.3",
     "@rollup/plugin-node-resolve": "^15.0.1",
-    "@typescript-eslint/eslint-plugin": "^5.49.0",
-    "@typescript-eslint/parser": "^5.49.0",
+    "@typescript-eslint/eslint-plugin": "^6.20.0",
+    "@typescript-eslint/parser": "^6.20.0",
     "@web/dev-server": "^0.1.35",
     "@web/rollup-plugin-html": "^1.11.0",
     "@web/rollup-plugin-import-meta-assets": "^1.0.7",
-    "@web/test-runner": "^0.15.0",
+    "@web/test-runner": "^0.18.0",
     "babel-plugin-template-html-minifier": "^4.1.0",
-    "concurrently": "^7.6.0",
+    "concurrently": "^8.2.2",
     "deepmerge": "^4.2.2",
-    "eslint": "^8.32.0",
+    "eslint": "^8.56.0",
     "eslint-plugin-lit": "^1.8.2",
-    "igniteui-cli": "^11.0.2",
-    "rimraf": "^4.1.2",
+    "igniteui-cli": "^13.1.5",
+    "rimraf": "^5.0.5",
     "rollup": "^2.79.0",
     "rollup-plugin-copy-assets": "^2.0.3",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-workbox": "^6.2.0",
     "source-map": "^0.7.4",
-    "tslib": "^2.4.1"
+    "tslib": "^2.6.2"
   }
 }
