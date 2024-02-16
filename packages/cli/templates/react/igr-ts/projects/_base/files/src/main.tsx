@@ -4,7 +4,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { routes } from "./app/app-routes";
 import App from './app/app';
 import 'react-app-polyfill/ie11';
-import './index.css';
 
 /** Required in IE11 for Charts */
 Number.isNaN = Number.isNaN || function(value) {
