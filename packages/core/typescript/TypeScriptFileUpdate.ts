@@ -76,7 +76,7 @@ export class TypeScriptFileUpdate {
 		filePath: string, linkPath: string, linkText: string, parentRoutePath: string,
 		routesVariable = DEFAULT_ROUTES_VARIABLE,
 		lazyload = false,
-		routesPath = '',
+		routesPath = "",
 		root = false) {
 		this.addRouteModuleEntry(filePath, linkPath, linkText, routesVariable, parentRoutePath, lazyload, routesPath, root);
 	}
@@ -94,7 +94,7 @@ export class TypeScriptFileUpdate {
 		linkPath: string,
 		linkText: string,
 		routesVariable = DEFAULT_ROUTES_VARIABLE,
-		lazyload = false, routesPath = '', root = false) {
+		lazyload = false, routesPath = "", root = false) {
 		this.addRouteModuleEntry(filePath, linkPath, linkText, routesVariable, null, lazyload, routesPath, root);
 	}
 
@@ -224,7 +224,7 @@ export class TypeScriptFileUpdate {
 		routesVariable = DEFAULT_ROUTES_VARIABLE,
 		parentRoutePath?: string,
 		lazyload = false,
-		routesPath = '',
+		routesPath = "",
 		root = false
 	) {
 		let className: string;
@@ -725,24 +725,28 @@ export class TypeScriptFileUpdate {
 		};
 	}
 
-	private createRouteEntry(linkPath: string, className: string, linkText: string, lazyload = false, routesPath = '', root = false): ts.ObjectLiteralExpression {
+	private createRouteEntry(
+		linkPath: string,
+		className: string,
+		linkText: string,
+		lazyload = false, routesPath = "", root = false): ts.ObjectLiteralExpression {
 		const routePath = ts.factory.createPropertyAssignment("path", ts.factory.createStringLiteral(linkPath));
 		let routeComponent;
-        if (lazyload) {
-            if (root) {
-                routeComponent = ts
-                .factory
-                .createPropertyAssignment("loadChildren",
-                ts.factory.createIdentifier(`() => import('${routesPath}').then(m => m.routes)`));
-            } else {
-                routeComponent = ts
-                .factory
-                .createPropertyAssignment("loadComponent",
-                ts.factory.createIdentifier(`() => import('./${linkPath}/${linkPath}.component').then(m => m.${className})`));
-            }
-        } else {
-            routeComponent = ts.factory.createPropertyAssignment("component", ts.factory.createIdentifier(className)); 
-        }
+		if (lazyload) {
+			if (root) {
+				routeComponent = ts
+				.factory
+				.createPropertyAssignment("loadChildren",
+				ts.factory.createIdentifier(`() => import('${routesPath}').then(m => m.routes)`));
+			} else {
+				routeComponent = ts
+				.factory
+				.createPropertyAssignment("loadComponent",
+				ts.factory.createIdentifier(`() => import('./${linkPath}/${linkPath}.component').then(m => m.${className})`));
+			}
+		} else {
+			routeComponent = ts.factory.createPropertyAssignment("component", ts.factory.createIdentifier(className));
+		}
 		const routeDataInner = ts.factory.createPropertyAssignment("text", ts.factory.createStringLiteral(linkText));
 		const routeData = ts.factory.createPropertyAssignment(
 			"data", ts.factory.createObjectLiteralExpression([routeDataInner]));
