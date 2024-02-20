@@ -119,7 +119,7 @@ describe("updateWorkspace", () => {
 				path: "src/home.tsx",
 				content:
 `import { something } from 'module';
-import { bait } from 'igniteui-react-core';
+import { bait } from 'igniteui-react-other';
 import 'igniteui-react-grids/grids';
 import { IgrGridModule, IgrGrid, IgrColumn } from 'igniteui-react-grids';
 import { IgcDockManager } from 'igniteui-dockmanager';
@@ -132,7 +132,7 @@ export default function Home() {
 }`,
 				expected:
 `import { something } from 'module';
-import { bait } from 'igniteui-react-core';
+import { bait } from 'igniteui-react-other';
 import '@infragistics/igniteui-react-grids/grids';
 import { IgrGridModule, IgrGrid, IgrColumn } from '@infragistics/igniteui-react-grids';
 import { IgcDockManager } from '@infragistics/igniteui-dockmanager';
