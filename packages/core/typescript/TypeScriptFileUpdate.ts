@@ -338,7 +338,7 @@ export class TypeScriptFileUpdate {
 					}
 				};
 
-				if (parentRoutePath === undefined) {
+				if (parentRoutePath === null) {
 					conditionalVisitor = routeArrayVisitor;
 				} else {
 					conditionalVisitor = parentRouteVisitor;
@@ -732,6 +732,7 @@ export class TypeScriptFileUpdate {
 		lazyload = false, routesPath = "", root = false): ts.ObjectLiteralExpression {
 		const routePath = ts.factory.createPropertyAssignment("path", ts.factory.createStringLiteral(linkPath));
 		let routeComponent;
+		// TODO: we should consider using the ts.factory instead of string interpolations
 		if (lazyload) {
 			if (root) {
 				routeComponent = ts
