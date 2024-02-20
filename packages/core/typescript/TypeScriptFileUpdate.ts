@@ -74,8 +74,11 @@ export class TypeScriptFileUpdate {
 	 */
 	public addChildRoute(
 		filePath: string, linkPath: string, linkText: string, parentRoutePath: string,
-		routesVariable = DEFAULT_ROUTES_VARIABLE) {
-		this.addRouteModuleEntry(filePath, linkPath, linkText, routesVariable, parentRoutePath);
+		routesVariable = DEFAULT_ROUTES_VARIABLE,
+		lazyload = false,
+		routesPath = "",
+		root = false) {
+		this.addRouteModuleEntry(filePath, linkPath, linkText, routesVariable, parentRoutePath, lazyload, routesPath, root);
 	}
 
 	/**
@@ -86,8 +89,13 @@ export class TypeScriptFileUpdate {
 	 * @param linkText Text of the route to add as `data.text`
 	 * @param routesVariable Name of the array variable holding routes
 	 */
-	public addRoute(filePath: string, linkPath: string, linkText: string, routesVariable = DEFAULT_ROUTES_VARIABLE) {
-		this.addRouteModuleEntry(filePath, linkPath, linkText, routesVariable);
+	public addRoute(
+		filePath: string,
+		linkPath: string,
+		linkText: string,
+		routesVariable = DEFAULT_ROUTES_VARIABLE,
+		lazyload = false, routesPath = "", root = false) {
+		this.addRouteModuleEntry(filePath, linkPath, linkText, routesVariable, null, lazyload, routesPath, root);
 	}
 
 	/**
@@ -214,13 +222,19 @@ export class TypeScriptFileUpdate {
 		linkPath: string,
 		linkText: string,
 		routesVariable = DEFAULT_ROUTES_VARIABLE,
-		parentRoutePath?: string
+		parentRoutePath?: string,
+		lazyload = false,
+		routesPath = "",
+		root = false
 	) {
 		let className: string;
 		const fileSource = TsUtils.getFileSource(filePath);
 		const relativePath: string = Util.relativePath(this.targetPath, filePath, true, true);
 		className = TsUtils.getClassName(fileSource.getChildren());
-		this.requestImport([className], relativePath);
+
+		if (!lazyload) {
+			this.requestImport([className], relativePath);
+		}
 
 		// https://github.com/Microsoft/TypeScript/issues/14419#issuecomment-307256171
 		const transformer: ts.TransformerFactory<ts.Node> = <T extends ts.Node>(context: ts.TransformationContext) =>
@@ -229,7 +243,7 @@ export class TypeScriptFileUpdate {
 				// the visitor that should be used when adding routes to the main route array
 				const routeArrayVisitor = (node: ts.Node): ts.Node => {
 					if (node.kind === ts.SyntaxKind.ArrayLiteralExpression) {
-						const newObject = this.createRouteEntry(linkPath, className, linkText);
+						const newObject = this.createRouteEntry(linkPath, className, linkText, lazyload, routesPath, root);
 						const array = (node as ts.ArrayLiteralExpression);
 						this.createdStringLiterals.push(linkPath, linkText);
 						const notFoundWildCard = "**";
@@ -324,7 +338,7 @@ export class TypeScriptFileUpdate {
 					}
 				};
 
-				if (parentRoutePath === undefined) {
+				if (parentRoutePath === null) {
 					conditionalVisitor = routeArrayVisitor;
 				} else {
 					conditionalVisitor = parentRouteVisitor;
@@ -711,9 +725,29 @@ export class TypeScriptFileUpdate {
 		};
 	}
 
-	private createRouteEntry(linkPath: string, className: string, linkText: string): ts.ObjectLiteralExpression {
+	private createRouteEntry(
+		linkPath: string,
+		className: string,
+		linkText: string,
+		lazyload = false, routesPath = "", root = false): ts.ObjectLiteralExpression {
 		const routePath = ts.factory.createPropertyAssignment("path", ts.factory.createStringLiteral(linkPath));
-		const routeComponent = ts.factory.createPropertyAssignment("component", ts.factory.createIdentifier(className));
+		let routeComponent;
+		// TODO: we should consider using the ts.factory instead of string interpolations
+		if (lazyload) {
+			if (root) {
+				routeComponent = ts
+				.factory
+				.createPropertyAssignment("loadChildren",
+				ts.factory.createIdentifier(`() => import('${routesPath}').then(m => m.routes)`));
+			} else {
+				routeComponent = ts
+				.factory
+				.createPropertyAssignment("loadComponent",
+				ts.factory.createIdentifier(`() => import('./${linkPath}/${linkPath}.component').then(m => m.${className})`));
+			}
+		} else {
+			routeComponent = ts.factory.createPropertyAssignment("component", ts.factory.createIdentifier(className));
+		}
 		const routeDataInner = ts.factory.createPropertyAssignment("text", ts.factory.createStringLiteral(linkText));
 		const routeData = ts.factory.createPropertyAssignment(
 			"data", ts.factory.createObjectLiteralExpression([routeDataInner]));
