@@ -176,7 +176,9 @@ export class TypeScriptFileUpdate {
 	 * @param dep The dependency to provide. TODO: Use different type to describe CallExpression, possible parameters, etc
 	 * @param configVariable The name of the app config variable to edit
 	 */
-	public addAppConfigProvider(dep: Pick<TemplateDependency, 'provide' | 'from'>, configVariable = DEFAULT_APPCONFIG_VARIABLE) {
+	public addAppConfigProvider(
+		dep: Pick<TemplateDependency, "provide" | "from">,
+		configVariable = DEFAULT_APPCONFIG_VARIABLE) {
 		let providers = this.asArray(dep.provide, {});
 
 		const transformer: ts.TransformerFactory<ts.Node> = <T extends ts.Node>(context: ts.TransformationContext) =>
