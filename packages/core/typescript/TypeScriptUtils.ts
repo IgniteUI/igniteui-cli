@@ -83,10 +83,15 @@ export class TypeScriptUtils {
 	 * @param x Node to extract identifier text from.
 	 */
 	public static getIdentifierName(x: ts.Node): string {
-		if (x.kind === ts.SyntaxKind.CallExpression) {
-			const prop = ((x as ts.CallExpression).expression as ts.PropertyAccessExpression);
-			//pluck identifier from expression.name
-			x = prop.expression;
+		if (ts.isCallExpression(x)) {
+			const expression = x.expression;
+			if (ts.isPropertyAccessExpression(expression)) {
+				//pluck identifier from expression.name
+				x = expression.expression;
+			}
+			if (ts.isIdentifier(expression)) {
+				x = expression;
+			}
 		}
 		return (x as ts.Identifier).text;
 	}
