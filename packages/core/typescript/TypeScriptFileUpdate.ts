@@ -324,7 +324,7 @@ export class TypeScriptFileUpdate {
 							const index = existingProperties.indexOf(childrenProperty);
 							const childrenPropertyName = childrenProperty.name;
 							childrenProperty =
-								ts.updatePropertyAssignment(
+								ts.factory.updatePropertyAssignment(
 									childrenProperty,
 									childrenPropertyName,
 									ts.factory.createArrayLiteralExpression([...newArrayValues])
@@ -332,7 +332,7 @@ export class TypeScriptFileUpdate {
 							existingProperties
 								.splice(index, 1, childrenProperty);
 						}
-						return ts.updateObjectLiteral(currentNode, existingProperties) as ts.Node;
+						return ts.factory.updateObjectLiteralExpression(currentNode, existingProperties) as ts.Node;
 					} else {
 						return ts.visitEachChild(node, conditionalVisitor, context);
 					}
@@ -488,7 +488,7 @@ export class TypeScriptFileUpdate {
 						newProps.push(ts.factory.createPropertyAssignment(prop, arrayExpr));
 					}
 
-					return ts.updateObjectLiteral(obj, [
+					return ts.factory.updateObjectLiteralExpression(obj, [
 						...objProperties,
 						...newProps
 					]);
