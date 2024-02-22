@@ -241,6 +241,54 @@ export class AppModule {
 		expect(content.replace(/\r\n/g, "\n")).toEqual(moduleContentAfterSchematic.replace(/\r\n/g, "\n"));
 	});
 
+	it("should add provideAnimations to app.config.ts", async () => {
+		const moduleContent =
+`import { ApplicationConfig } from '@angular/core';
+import { provideRouter } from '@angular/router';
+import { routes } from './app.routes';
+
+export const appConfig: ApplicationConfig = {
+	providers: [provideRouter(routes)]
+};
+`;
+
+		const moduleContentAfterSchematic =
+`import { ApplicationConfig } from '@angular/core';
+import { provideRouter } from '@angular/router';
+import { routes } from './app.routes';
+import { provideAnimations } from "@angular/platform-browser/animations";
+
+export const appConfig: ApplicationConfig = {
+	providers: [provideRouter(routes), provideAnimations()]
+};
+`;
+		const targetFile = "./src/app/app.config.ts";
+		tree.create(targetFile, moduleContent);
+
+		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
+		let content = tree.readContent(targetFile);
+		expect(content.replace(/\r\n/g, "\n")).toEqual(moduleContentAfterSchematic.replace(/\r\n/g, "\n"));
+	});
+
+	it("should NOT add provideAnimations to app.config.ts if it already exists", async () => {
+		const moduleContent =
+`import { ApplicationConfig } from '@angular/core';
+import { provideRouter } from '@angular/router';
+import { routes } from './app.routes';
+import { provideAnimations } from "@angular/platform-browser/animations";
+
+export const appConfig: ApplicationConfig = {
+	providers: [provideRouter(routes), provideAnimations()]
+};
+`;
+		const targetFile = "./src/app/app.config.ts";
+		tree.create(targetFile, moduleContent);
+
+		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
+		let content = tree.readContent(targetFile);
+		expect(content.replace(/\r\n/g, "\n")).toEqual(moduleContent.replace(/\r\n/g, "\n"));
+	});
+
 	it("should properly display the dependency mismatch warning", async () => {
 		const warns: string[] = [];
 		runner.logger.subscribe(entry => {
