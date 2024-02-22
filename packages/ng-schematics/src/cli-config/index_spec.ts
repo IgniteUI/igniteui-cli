@@ -266,7 +266,7 @@ export const appConfig: ApplicationConfig = {
 		tree.create(targetFile, moduleContent);
 
 		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
-		let content = tree.readContent(targetFile);
+		const content = tree.readContent(targetFile);
 		expect(content.replace(/\r\n/g, "\n")).toEqual(moduleContentAfterSchematic.replace(/\r\n/g, "\n"));
 	});
 
@@ -285,7 +285,7 @@ export const appConfig: ApplicationConfig = {
 		tree.create(targetFile, moduleContent);
 
 		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
-		let content = tree.readContent(targetFile);
+		const content = tree.readContent(targetFile);
 		expect(content.replace(/\r\n/g, "\n")).toEqual(moduleContent.replace(/\r\n/g, "\n"));
 	});
 
