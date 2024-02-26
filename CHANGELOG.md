@@ -1,3 +1,24 @@
+# [13.1.6](https://github.com/IgniteUI/igniteui-cli/compare/v13.1.5...v13.1.6) (2024-02-26)
+
+🎉 This update includes:
+
+- `igniteui-angular` version [17.1.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/17.1.0).
+
+## What's Changed
+* chore: update wc refs by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1202
+* Bump proj deps to 17.1 by @jackofdiamond5 in https://github.com/IgniteUI/igniteui-cli/pull/1200
+* fix(React): Add styles to support dark themes #29410 by @gedinakova in https://github.com/IgniteUI/igniteui-cli/pull/1205
+* Lazy load routes by @jackofdiamond5 in https://github.com/IgniteUI/igniteui-cli/pull/1207
+* Provide http client by @jackofdiamond5 in https://github.com/IgniteUI/igniteui-cli/pull/1209
+* feat(ng-add): add setup config provideAnimations by @damyanpetev in https://github.com/IgniteUI/igniteui-cli/pull/1211
+* chore(*): fix lint errors by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1212
+* Remove the default 'Titillium' font from the Angular base project by @viktorkombov in https://github.com/IgniteUI/igniteui-cli/pull/1203
+
+## New Contributors
+* @gedinakova made their first contribution in https://github.com/IgniteUI/igniteui-cli/pull/1205
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.1.5...v13.1.6
+
 # [13.1.5](https://github.com/IgniteUI/igniteui-cli/compare/v13.1.4...v13.1.5) (2024-01-31)
 
 ## What's Changed
