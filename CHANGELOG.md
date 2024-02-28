@@ -1,3 +1,11 @@
+# [13.1.7](https://github.com/IgniteUI/igniteui-cli/compare/v13.1.6...v13.1.7) (2024-02-28)
+
+## What's Changed
+* fix(WebComponents): Removing an unnecessary quote from package.json by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1213
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.1.6...v13.1.7
+
+
 # [13.1.6](https://github.com/IgniteUI/igniteui-cli/compare/v13.1.5...v13.1.6) (2024-02-26)
 
 🎉 This update includes:
