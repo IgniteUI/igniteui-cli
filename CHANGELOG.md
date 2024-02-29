@@ -1,3 +1,10 @@
+# [13.1.8](https://github.com/IgniteUI/igniteui-cli/compare/v13.1.8...v13.1.8) (2024-02-29)
+
+## What's Changed
+* chore(ng): update budget by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1214
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.1.7...v13.1.8
+
 # [13.1.7](https://github.com/IgniteUI/igniteui-cli/compare/v13.1.6...v13.1.7) (2024-02-28)
 
 ## What's Changed
