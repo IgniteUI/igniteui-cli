@@ -1,4 +1,11 @@
-# [13.1.8](https://github.com/IgniteUI/igniteui-cli/compare/v13.1.8...v13.1.8) (2024-02-29)
+# [13.1.9](https://github.com/IgniteUI/igniteui-cli/compare/v13.1.8...v13.1.9) (2024-03-05)
+
+## What's Changed
+* Remove a redundant empty line in the routing file by @jackofdiamond5 in https://github.com/IgniteUI/igniteui-cli/pull/1215
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.1.8...v13.1.9
+
+# [13.1.8](https://github.com/IgniteUI/igniteui-cli/compare/v13.1.7...v13.1.8) (2024-02-29)
 
 ## What's Changed
 * chore(ng): update budget by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1214
