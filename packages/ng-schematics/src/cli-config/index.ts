@@ -59,11 +59,18 @@ function importBrowserAnimations(): Rule {
 	return async (tree: Tree) => {
 		const projects = await getProjects(tree);
 		projects.forEach(project => {
+			// TODO: Resolve hardcoded paths instead
 			const moduleFile = `${project.sourceRoot}/app/app.module.ts`;
 			if (tree.exists(moduleFile)) {
 				const mainModule = new TypeScriptFileUpdate(moduleFile);
 				mainModule.addNgModuleMeta({ import: "BrowserAnimationsModule", from: "@angular/platform-browser/animations" });
 				mainModule.finalize();
+			}
+			const appConfigFile = `${project.sourceRoot}/app/app.config.ts`;
+			if (tree.exists(appConfigFile)) {
+				const appConfig = new TypeScriptFileUpdate(appConfigFile);
+				appConfig.addAppConfigProvider({ provide: "provideAnimations", from: "@angular/platform-browser/animations" });
+				appConfig.finalize();
 			}
 		});
 	};

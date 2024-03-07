@@ -6,6 +6,7 @@ import { Util } from "../util/Util";
 import { TypeScriptUtils as TsUtils } from "./TypeScriptUtils";
 
 const DEFAULT_ROUTES_VARIABLE = "routes";
+const DEFAULT_APPCONFIG_VARIABLE = "appConfig";
 /**
  * Apply various updates to typescript files using AST
  */
@@ -170,6 +171,56 @@ export class TypeScriptFileUpdate {
 		this.ngMetaEdits.imports.push(...imports);
 	}
 
+	/**
+	 * Create a CallExpression for dep and add it to the `ApplicationConfig` providers array.
+	 * @param dep The dependency to provide. TODO: Use different type to describe CallExpression, possible parameters, etc
+	 * @param configVariable The name of the app config variable to edit
+	 */
+	public addAppConfigProvider(
+		dep: Pick<TemplateDependency, "provide" | "from">,
+		configVariable = DEFAULT_APPCONFIG_VARIABLE) {
+		let providers = this.asArray(dep.provide, {});
+
+		const transformer: ts.TransformerFactory<ts.Node> = <T extends ts.Node>(context: ts.TransformationContext) =>
+		(rootNode: T) => {
+			const conditionalVisitor: ts.Visitor = (node: ts.Node): ts.Node => {
+				if (node.kind === ts.SyntaxKind.ArrayLiteralExpression &&
+					node.parent.kind === ts.SyntaxKind.PropertyAssignment &&
+					(node.parent as ts.PropertyAssignment).name.getText() === "providers") {
+					const array = (node as ts.ArrayLiteralExpression);
+					const nodes = ts.visitNodes(array.elements, visitor);
+					const alreadyProvided = nodes.map(x => TsUtils.getIdentifierName(x));
+
+					providers =  providers.filter(x => alreadyProvided.indexOf(x) === -1);
+					this.requestImport(providers, dep.from);
+
+					const newProvides = providers
+						.map(x => ts.factory.createCallExpression(ts.factory.createIdentifier(x), undefined, undefined));
+					const elements = ts.factory.createNodeArray([
+						...nodes,
+						...newProvides
+					]);
+
+					return ts.factory.updateArrayLiteralExpression(array, elements);
+				} else {
+					return ts.visitEachChild(node, conditionalVisitor, context);
+				}
+			};
+
+			const visitCondition = (node: ts.Node): boolean => {
+				return node.kind === ts.SyntaxKind.VariableDeclaration &&
+					(node as ts.VariableDeclaration).name.getText() === configVariable &&
+					(node as ts.VariableDeclaration).type.getText() === "ApplicationConfig";
+			};
+			const visitor: ts.Visitor = this.createVisitor(conditionalVisitor, visitCondition, context);
+			context.enableSubstitution(ts.SyntaxKind.ArrayLiteralExpression);
+			return ts.visitNode(rootNode, visitor);
+		};
+		this.targetSource = ts.transform(this.targetSource, [transformer], {
+			pretty: true // oh well..
+		}).transformed[0] as ts.SourceFile;
+	}
+
 	//#region File state
 
 	/** Initializes existing imports info, [re]sets import and `NgModule` edits */
@@ -324,7 +375,7 @@ export class TypeScriptFileUpdate {
 							const index = existingProperties.indexOf(childrenProperty);
 							const childrenPropertyName = childrenProperty.name;
 							childrenProperty =
-								ts.updatePropertyAssignment(
+								ts.factory.updatePropertyAssignment(
 									childrenProperty,
 									childrenPropertyName,
 									ts.factory.createArrayLiteralExpression([...newArrayValues])
@@ -332,7 +383,7 @@ export class TypeScriptFileUpdate {
 							existingProperties
 								.splice(index, 1, childrenProperty);
 						}
-						return ts.updateObjectLiteral(currentNode, existingProperties) as ts.Node;
+						return ts.factory.updateObjectLiteralExpression(currentNode, existingProperties) as ts.Node;
 					} else {
 						return ts.visitEachChild(node, conditionalVisitor, context);
 					}
@@ -488,7 +539,7 @@ export class TypeScriptFileUpdate {
 						newProps.push(ts.factory.createPropertyAssignment(prop, arrayExpr));
 					}
 
-					return ts.updateObjectLiteral(obj, [
+					return ts.factory.updateObjectLiteralExpression(obj, [
 						...objProperties,
 						...newProps
 					]);
