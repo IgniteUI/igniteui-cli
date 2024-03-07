@@ -1,6 +1,5 @@
-import { TypeScriptFileUpdate } from "@igniteui/cli-core";
+import { NPM_DOCK_MANAGER, TypeScriptFileUpdate, resolveIgxPackage } from "@igniteui/cli-core";
 import { IgniteUIForAngularTemplate } from "../../../IgniteUIForAngularTemplate";
-import { NPM_DOCK_MANAGER, resolveIgxPackage } from "../../../package-resolve";
 
 class IgcDockManagerTemplate extends IgniteUIForAngularTemplate {
 	constructor() {

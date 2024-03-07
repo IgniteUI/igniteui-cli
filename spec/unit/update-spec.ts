@@ -1,8 +1,8 @@
-import { App, IFileSystem, PackageManager, ProjectConfig, Util } from "@igniteui/cli-core";
-import * as reactPkgResolve from "./react/package-resolve";
-import * as wcPkgResolve from "./webcomponents/package-resolve";
-import { updateWorkspace } from "./Update";
-import { PackageDefinition } from "./../../core/types/PackageDefinition";
+import { PackageManager } from "../../packages/core/packages/PackageManager";
+import { IFileSystem } from "../../packages/core/types";
+import { App, ProjectConfig, Util } from "../../packages/core/util";
+import * as pkgResolve from "../../packages/core/update/package-resolve";
+import { updateWorkspace } from "../../packages/core/update/Update";
 
 interface MockFile {
 	path: string;
@@ -11,30 +11,30 @@ interface MockFile {
 }
 
 // tslint:disable: object-literal-sort-keys
-describe("updateWorkspace", () => {
+fdescribe("updateWorkspace", () => {
 	let fsSpy: IFileSystem;
 
-	describe("React", () => {
+	describe("Igx templates", () => {
 		beforeEach(() => {
 			fsSpy = jasmine.createSpyObj("fsSpy", ["fileExists", "directoryExists", "readFile", "writeFile", "glob"]);
 			spyOn(App.container, "get").and.returnValue(fsSpy);
 			spyOnProperty(App, "workDir", "get").and.returnValue("mockDir");
-			spyOn(ProjectConfig, "getConfig").and.returnValue({ project: { framework: "React" }});
+			spyOn(ProjectConfig, "getConfig").and.returnValue({ project: { framework: "Angular" }});
 		});
 
 		it("Should fail if current used package is registry package", async () => {
-			spyOn(reactPkgResolve, "getReactUpgradeablePackages").and.returnValue([]);
+			spyOn(pkgResolve, "getUpgradeablePackages").and.returnValue([]);
 			spyOn(Util, "log");
 			expect(await updateWorkspace("")).toEqual(false);
 			expect(Util.log).toHaveBeenCalledWith("Your app is already using packages from the Infragistics registry. You are good to go.", "green");
 		});
 
 		it("Should fail if no packages.json is found", async () => {
-			const upgradable: PackageDefinition = {
-				trial: reactPkgResolve.NPM_REACT,
-				licensed: reactPkgResolve.FEED_REACT
+			const upgradeable: pkgResolve.PackageDefinition = {
+				trial: pkgResolve.NPM_ANGULAR,
+				licensed: pkgResolve.FEED_ANGULAR
 			};
-			spyOn(reactPkgResolve, "getReactUpgradeablePackages").and.returnValue([upgradable]);
+			spyOn(pkgResolve, "getUpgradeablePackages").and.returnValue([upgradeable]);
 			(fsSpy.directoryExists as jasmine.Spy).and.returnValue(false);
 			(fsSpy.readFile as jasmine.Spy).and.returnValue("");
 			spyOn(Util, "log");
@@ -46,18 +46,208 @@ describe("updateWorkspace", () => {
 			const mockJSONInput = {
 				someName: "testValue"
 			};
-			const upgradable: PackageDefinition = {
-				trial: reactPkgResolve.NPM_REACT,
-				licensed: reactPkgResolve.FEED_REACT
+			const upgradeable: pkgResolve.PackageDefinition = {
+				trial: pkgResolve.NPM_ANGULAR,
+				licensed: pkgResolve.FEED_ANGULAR
 			};
-			spyOn(reactPkgResolve, "getReactUpgradeablePackages").and.returnValue([upgradable]);
+			spyOn(pkgResolve, "getUpgradeablePackages").and.returnValue([upgradeable]);
 			(fsSpy.directoryExists as jasmine.Spy).and.returnValue(false);
 			(fsSpy.readFile as jasmine.Spy).and.returnValue(JSON.stringify(mockJSONInput, null, 4));
 			spyOn(PackageManager, "ensureRegistryUser").and.returnValue(false);
 			expect(await updateWorkspace("")).toEqual(false);
 		});
 
-		it("Should update package.json file, removing non-scoped igniteui-react packages", async () => {
+		it("Should update package.json file, removing non-scoped igniteui-angular packages", async () => {
+			const mockPackageJSON = {
+				dependencies: {
+					"@alphabetically-sorted-scope/package": "^0.0.0",
+					"alphabetically-second-package": "^0.0.0",
+					"igniteui-angular": "^9.1.0",
+					"igniteui-dockmanager": "^1.0.0",
+					"some-package": "^0.0.0"
+				}
+			};
+			(fsSpy.fileExists as jasmine.Spy).and.returnValue(true);
+			(fsSpy.readFile as jasmine.Spy).and.callFake((filePath: string) => {
+				if (filePath.indexOf("package.json") > -1) {
+					return JSON.stringify(mockPackageJSON);
+				}
+				if (filePath.indexOf("angular.json") > -1) {
+					return JSON.stringify({
+						projects: {}
+					});
+				}
+			});
+			spyOn(PackageManager, "ensureRegistryUser").and.returnValue(true);
+			spyOn(Util, "log");
+			expect(await updateWorkspace("")).toEqual(true);
+			expect(fsSpy.writeFile).toHaveBeenCalledWith("package.json", Util.formatPackageJson({
+				dependencies: {
+					"@alphabetically-sorted-scope/package": "^0.0.0",
+					"@infragistics/igniteui-angular": "^9.1.0",
+					"@infragistics/igniteui-dockmanager": "^1.0.0",
+					"alphabetically-second-package": "^0.0.0",
+					"some-package": "^0.0.0"
+				}
+			}));
+			expect(fsSpy.writeFile).toHaveBeenCalledTimes(2);
+			expect(fsSpy.glob).toHaveBeenCalledTimes(1);
+		});
+
+		it("Should update import paths in files correctly", async () => {
+			const mockPackageJSON = {
+				dependencies: {
+					"some-package": "^0.0.0",
+					"igniteui-angular": "^9.1.0",
+					"igniteui-dockmanager": "^1.0.0"
+				}
+			};
+			const mockFileArray: MockFile[] = [{
+				path: "src/home.component.ts",
+				content:
+`import { something } from 'module';
+import { bait } from 'igniteui-angular-core';
+import { IgxGridComponent } from 'igniteui-angular';
+import { IgcDockManager } from 'igniteui-dockmanager';
+
+export class HomeComponent {
+	title = 'igniteui-angular example';
+}`,
+				expected:
+`import { something } from 'module';
+import { bait } from 'igniteui-angular-core';
+import { IgxGridComponent } from '@infragistics/igniteui-angular';
+import { IgcDockManager } from '@infragistics/igniteui-dockmanager';
+
+export class HomeComponent {
+	title = 'igniteui-angular example';
+}`}, {
+				path: "src/home.component.scss",
+				content:
+`@use 'igniteui-angular/theming' as *;
+@use 'igniteui-dockmanager/styles/themes/test' as *;
+@include igx-core();
+`,
+				expected:
+`@use '@infragistics/igniteui-angular/theming' as *;
+@use '@infragistics/igniteui-dockmanager/styles/themes/test' as *;
+@include igx-core();
+`}, {
+				path: "angular.json",
+				content:
+`{
+	"projects": {
+		"test": {
+			"projectType": "application",
+			"sourceRoot": "src",
+			"root": "",
+			"styles": [
+				"src/styles.scss",
+				"node_modules/igniteui-angular/styles/igniteui-angular.css",
+				"node_modules/igniteui-dockmanager/styles/themes/test"
+			]
+		},
+		"test-e2e": {}
+	}
+}`,
+				expected:
+`{
+	"projects": {
+		"test": {
+			"projectType": "application",
+			"sourceRoot": "src",
+			"root": "",
+			"styles": [
+				"src/styles.scss",
+				"node_modules/@infragistics/igniteui-angular/styles/igniteui-angular.css",
+				"node_modules/@infragistics/igniteui-dockmanager/styles/themes/test"
+			]
+		},
+		"test-e2e": {}
+	}
+}`}, {
+		path: "src/app.module.ts",
+		content:
+`import { something } from 'module';
+import { bait } from 'igniteui-angular-core';
+import { IgxGridComponent } from 'igniteui-angular';
+import { dockManagerLoader } from 'igniteui-dockmanager/loader';
+
+export class HomeComponent {
+title = 'igniteui-angular example';
+}`,
+		expected:
+`import { something } from 'module';
+import { bait } from 'igniteui-angular-core';
+import { IgxGridComponent } from '@infragistics/igniteui-angular';
+import { dockManagerLoader } from '@infragistics/igniteui-dockmanager/loader';
+
+export class HomeComponent {
+title = 'igniteui-angular example';
+}`}];
+			(fsSpy.glob as jasmine.Spy).and.returnValues(
+				["src/home.component.ts", "src/app.module.ts"], ["src/home.component.scss"], [], []);
+			(fsSpy.readFile as jasmine.Spy).and.callFake((filePath: string) => {
+				if (filePath.indexOf("package.json") > -1) {
+					return JSON.stringify(mockPackageJSON);
+				}
+				const fileEntry = mockFileArray.find(entry => entry.path === filePath);
+				return fileEntry.content;
+			});
+			(fsSpy.fileExists as jasmine.Spy).and.returnValue(true);
+			spyOn(PackageManager, "ensureRegistryUser").and.returnValue(true);
+			expect(await updateWorkspace("")).toEqual(true);
+			for (const fileEntry of mockFileArray) {
+				expect((fsSpy.writeFile as jasmine.Spy)).toHaveBeenCalledWith(fileEntry.path, fileEntry.expected);
+			}
+			expect(fsSpy.glob).toHaveBeenCalledTimes(4);
+		});
+	});
+
+	fdescribe("React", () => {
+		beforeEach(() => {
+			fsSpy = jasmine.createSpyObj("fsSpy", ["fileExists", "directoryExists", "readFile", "writeFile", "glob"]);
+			spyOn(App.container, "get").and.returnValue(fsSpy);
+			spyOnProperty(App, "workDir", "get").and.returnValue("mockDir");
+			spyOn(ProjectConfig, "getConfig").and.returnValue({ project: { framework: "React" }});
+		});
+
+		it("Should fail if current used package is registry package", async () => {
+			spyOn(pkgResolve, "getUpgradeablePackages").and.returnValue([]);
+			spyOn(Util, "log");
+			expect(await updateWorkspace("")).toEqual(false);
+			expect(Util.log).toHaveBeenCalledWith("Your app is already using packages from the Infragistics registry. You are good to go.", "green");
+		});
+
+		it("Should fail if no packages.json is found", async () => {
+			const upgradeable: pkgResolve.PackageDefinition = {
+				trial: pkgResolve.NPM_REACT,
+				licensed: pkgResolve.FEED_REACT
+			};
+			spyOn(pkgResolve, "getUpgradeablePackages").and.returnValue([upgradeable]);
+			(fsSpy.directoryExists as jasmine.Spy).and.returnValue(false);
+			(fsSpy.readFile as jasmine.Spy).and.returnValue("");
+			spyOn(Util, "log");
+			expect(await updateWorkspace("")).toEqual(false);
+			expect(Util.log).toHaveBeenCalledWith("Package.json not found!");
+		});
+
+		it("Should fail if infragistics registry cannot be reached", async () => {
+			const mockJSONInput = {
+				someName: "testValue"
+			};
+			const upgradeable: pkgResolve.PackageDefinition = {
+				trial: pkgResolve.NPM_REACT,
+				licensed: pkgResolve.FEED_REACT
+			};
+			spyOn(pkgResolve, "getUpgradeablePackages").and.returnValue([upgradeable]);
+			(fsSpy.directoryExists as jasmine.Spy).and.returnValue(false);
+			(fsSpy.readFile as jasmine.Spy).and.returnValue(JSON.stringify(mockJSONInput, null, 4));
+			spyOn(PackageManager, "ensureRegistryUser").and.returnValue(false);
+			expect(await updateWorkspace("")).toEqual(false);
+		});
+
+		fit("Should update package.json file, removing non-scoped igniteui-react packages", async () => {
 			const mockPackageJSON = {
 				dependencies: {
 					"@alphabetically-sorted-scope/package": "^0.0.0",
@@ -192,18 +382,18 @@ export default function Home() {
 		});
 
 		it("Should fail if current used package is registry package", async () => {
-			spyOn(wcPkgResolve, "getWebcomponentsUpgradeablePackages").and.returnValue([]);
+			spyOn(pkgResolve, "getUpgradeablePackages").and.returnValue([]);
 			spyOn(Util, "log");
 			expect(await updateWorkspace("")).toEqual(false);
 			expect(Util.log).toHaveBeenCalledWith("Your app is already using packages from the Infragistics registry. You are good to go.", "green");
 		});
 
 		it("Should fail if no packages.json is found", async () => {
-			const upgradable: PackageDefinition = {
-				trial: wcPkgResolve.NPM_WEBCOMPONENTS_CORE,
-				licensed: wcPkgResolve.FEED_WEBCOMPONENTS_CORE
+			const upgradeable: pkgResolve.PackageDefinition = {
+				trial: pkgResolve.NPM_WEBCOMPONENTS_CORE,
+				licensed: pkgResolve.FEED_WEBCOMPONENTS_CORE
 			};
-			spyOn(wcPkgResolve, "getWebcomponentsUpgradeablePackages").and.returnValue([upgradable]);
+			spyOn(pkgResolve, "getUpgradeablePackages").and.returnValue([upgradeable]);
 			(fsSpy.directoryExists as jasmine.Spy).and.returnValue(false);
 			(fsSpy.readFile as jasmine.Spy).and.returnValue("");
 			spyOn(Util, "log");
@@ -215,18 +405,18 @@ export default function Home() {
 			const mockJSONInput = {
 				someName: "testValue"
 			};
-			const upgradable: PackageDefinition = {
-				trial: wcPkgResolve.NPM_WEBCOMPONENTS_CORE,
-				licensed: wcPkgResolve.FEED_WEBCOMPONENTS_CORE
+			const upgradeable: pkgResolve.PackageDefinition = {
+				trial: pkgResolve.NPM_WEBCOMPONENTS_CORE,
+				licensed: pkgResolve.FEED_WEBCOMPONENTS_CORE
 			};
-			spyOn(wcPkgResolve, "getWebcomponentsUpgradeablePackages").and.returnValue([upgradable]);
+			spyOn(pkgResolve, "getUpgradeablePackages").and.returnValue([upgradeable]);
 			(fsSpy.directoryExists as jasmine.Spy).and.returnValue(false);
 			(fsSpy.readFile as jasmine.Spy).and.returnValue(JSON.stringify(mockJSONInput, null, 4));
 			spyOn(PackageManager, "ensureRegistryUser").and.returnValue(false);
 			expect(await updateWorkspace("")).toEqual(false);
 		});
 
-		it("Should update package.json file, removing non-scoped igniteui-react packages", async () => {
+		it("Should update package.json file, removing non-scoped igniteui-webcomponents packages", async () => {
 			const mockPackageJSON = {
 				dependencies: {
 					"@alphabetically-sorted-scope/package": "^0.0.0",

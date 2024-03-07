@@ -1,5 +1,4 @@
-import { ControlExtraConfiguration, defaultDelimiters, ProjectTemplate, Util } from "@igniteui/cli-core";
-import { updateWorkspace } from "./../../../../Update";
+import { ControlExtraConfiguration, defaultDelimiters, ProjectTemplate, updateWorkspace, Util } from "@igniteui/cli-core";
 import * as path from "path";
 
 export class BaseIgrTsProject implements ProjectTemplate {

@@ -7,7 +7,6 @@ export * from "./ControlExtraConfiguration";
 export * from "./ExtensionModule";
 export * from "./Framework";
 export * from "./GoogleAnalyticsParameters";
-export * from "./PackageDefinition";
 export * from "./ProjectLibrary";
 export * from "./Template";
 export * from "./ProjectTemplate";

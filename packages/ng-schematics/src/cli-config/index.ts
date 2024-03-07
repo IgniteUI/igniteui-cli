@@ -1,7 +1,6 @@
 import { DependencyNotFoundException } from "@angular-devkit/core";
 import { chain, FileDoesNotExistException, Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
-import { NPM_PACKAGE, resolveIgxPackage } from "@igniteui/angular-templates";
-import { addClassToBody, TypeScriptFileUpdate } from "@igniteui/cli-core";
+import { addClassToBody, NPM_ANGULAR, resolveIgxPackage, TypeScriptFileUpdate } from "@igniteui/cli-core";
 import { createCliConfig } from "../utils/cli-config";
 import { setVirtual } from "../utils/NgFileSystem";
 import { addFontsToIndexHtml, getProjects, importDefaultTheme } from "../utils/theme-import";
@@ -32,7 +31,7 @@ function getDependencyVersion(pkg: string, tree: Tree): string {
 
 function displayVersionMismatch(): Rule {
 	return (tree: Tree, context: SchematicContext) => {
-		const igxPackage = resolveIgxPackage(NPM_PACKAGE);
+		const igxPackage = resolveIgxPackage(NPM_ANGULAR);
 		const pkgJson = JSON.parse(tree.read(`/node_modules/${igxPackage}/package.json`)!.toString());
 		const ngKey = "@angular/core";
 		const ngCommonKey = "@angular/common";

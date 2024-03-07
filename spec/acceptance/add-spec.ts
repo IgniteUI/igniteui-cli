@@ -1,5 +1,4 @@
-import { FEED_PACKAGE, NPM_PACKAGE } from "@igniteui/angular-templates";
-import { GoogleAnalytics, GoogleAnalyticsParameters, ProjectConfig } from "@igniteui/cli-core";
+import { FEED_ANGULAR, NPM_ANGULAR, GoogleAnalytics, GoogleAnalyticsParameters, ProjectConfig } from "@igniteui/cli-core";
 import * as fs from "fs-extra";
 import { EOL } from "os";
 import { parse } from "path";
@@ -245,7 +244,7 @@ describe("Add command", () => {
 		done();
 	});
 
-	for (const igxPackage of [NPM_PACKAGE, FEED_PACKAGE]) {
+	for (const igxPackage of [NPM_ANGULAR, FEED_ANGULAR]) {
 		it(`Should correctly add Ignite UI for Angular template - ${igxPackage}`, async done => {
 			spyOn(ProjectConfig, "globalConfig").and.returnValue({});
 

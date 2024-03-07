@@ -1,8 +1,9 @@
-import { App, FS_TOKEN, IFileSystem } from "@igniteui/cli-core";
+import { FS_TOKEN, IFileSystem } from "../../packages/core/types";
+import { App } from "../../packages/core/util";
 import {
-	FEED_DOCK_MANAGER, FEED_PACKAGE, getUpgradeablePackages,
-	NPM_DOCK_MANAGER, NPM_PACKAGE, PackageDefinition, resolveIgxPackage
-} from "./package-resolve";
+	FEED_DOCK_MANAGER, FEED_ANGULAR, getUpgradeablePackages,
+	NPM_DOCK_MANAGER, NPM_ANGULAR, resolveIgxPackage, PackageDefinition
+} from "../../packages/core/update/package-resolve";
 
 class MockFileSystem implements IFileSystem {
 	public fileExists(filePath: string): boolean {
@@ -29,19 +30,19 @@ describe("Igx templates - package resolve", () => {
 			spyOn(mockFs, "fileExists").and.returnValue(false);
 			App.container.set(FS_TOKEN, mockFs);
 
-			const result = resolveIgxPackage(NPM_PACKAGE);
-			expect(result).toEqual(NPM_PACKAGE);
+			const result = resolveIgxPackage(NPM_ANGULAR);
+			expect(result).toEqual(NPM_ANGULAR);
 			expect(mockFs.fileExists).toHaveBeenCalledWith("./package.json");
 		});
 
 		it("should return npm package if feed package in not in project", () => {
 			const mockFs = new MockFileSystem();
 			spyOn(mockFs, "fileExists").and.returnValue(true);
-			const readSpy = spyOn(mockFs, "readFile").and.returnValue(`{ "dependencies": { "${NPM_PACKAGE}": "*" } }`);
+			const readSpy = spyOn(mockFs, "readFile").and.returnValue(`{ "dependencies": { "${NPM_ANGULAR}": "*" } }`);
 			App.container.set(FS_TOKEN, mockFs);
 
-			let result = resolveIgxPackage(NPM_PACKAGE);
-			expect(result).toEqual(NPM_PACKAGE);
+			let result = resolveIgxPackage(NPM_ANGULAR);
+			expect(result).toEqual(NPM_ANGULAR);
 			expect(mockFs.fileExists).toHaveBeenCalledWith("./package.json");
 			expect(mockFs.readFile).toHaveBeenCalledWith("./package.json");
 
@@ -53,11 +54,11 @@ describe("Igx templates - package resolve", () => {
 		it("should return feed package if installed in project", () => {
 			const mockFs = new MockFileSystem();
 			spyOn(mockFs, "fileExists").and.returnValue(true);
-			const readSpy = spyOn(mockFs, "readFile").and.returnValue(`{ "dependencies": { "${FEED_PACKAGE}": "*" } }`);
+			const readSpy = spyOn(mockFs, "readFile").and.returnValue(`{ "dependencies": { "${FEED_ANGULAR}": "*" } }`);
 			App.container.set(FS_TOKEN, mockFs);
 
-			let result = resolveIgxPackage(NPM_PACKAGE);
-			expect(result).toEqual(FEED_PACKAGE);
+			let result = resolveIgxPackage(NPM_ANGULAR);
+			expect(result).toEqual(FEED_ANGULAR);
 			expect(mockFs.fileExists).toHaveBeenCalledWith("./package.json");
 			expect(mockFs.readFile).toHaveBeenCalledWith("./package.json");
 
@@ -102,7 +103,7 @@ describe("Igx templates - package resolve", () => {
 			};
 			const mockRead = spyOn(mockFs, "readFile").and.returnValue(JSON.stringify(mockObj));
 			const expected: PackageDefinition[] = [
-				{ trial: NPM_PACKAGE, licensed: FEED_PACKAGE }
+				{ trial: NPM_ANGULAR, licensed: FEED_ANGULAR }
 			];
 			expect(getUpgradeablePackages()).toEqual(expected);
 			mockObj.dependencies = {

@@ -1,7 +1,6 @@
 import { JsonArray, workspaces } from "@angular-devkit/core";
 import { Tree } from "@angular-devkit/schematics/src/tree/interface";
-import { NPM_PACKAGE, resolveIgxPackage } from "@igniteui/angular-templates";
-import { createWorkspaceHost } from "@igniteui/cli-core";
+import { createWorkspaceHost, NPM_ANGULAR, resolveIgxPackage } from "@igniteui/cli-core";
 import * as path from "path";
 
 export async function importDefaultTheme(tree: Tree): Promise<void> {
@@ -45,7 +44,7 @@ export async function addFontsToIndexHtml(tree: Tree) {
 }
 
 function importDefaultThemeSass(tree: Tree, filePath: string) {
-	const igxPackage = resolveIgxPackage(NPM_PACKAGE);
+	const igxPackage = resolveIgxPackage(NPM_ANGULAR);
 	const sassImports =
 		`
 @use "${igxPackage}/theming" as *;
@@ -87,7 +86,7 @@ export async function getProjects(tree: Tree): Promise<workspaces.ProjectDefinit
 }
 
 function importDefaultThemeToAngularWorkspace(workspace: workspaces.WorkspaceDefinition, key: string) {
-	const igxPackage = resolveIgxPackage(NPM_PACKAGE);
+	const igxPackage = resolveIgxPackage(NPM_ANGULAR);
 	const cssImport = `node_modules/${igxPackage}/styles/igniteui-angular.css`;
 	const project = workspace.extensions.defaultProject ?
 		workspace.projects.get(workspace.extensions.defaultProject as string) :
