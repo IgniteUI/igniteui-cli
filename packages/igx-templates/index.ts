@@ -3,5 +3,6 @@ import * as legacy from "./igx-ts-legacy";
 
 export * from "./package-resolve";
 export * from "./IgniteUIForAngularTemplate";
+export * from "./AngularTypeScriptFileUpdate";
 export * from "./Update";
 export default [standalone, legacy];
