@@ -1,4 +1,4 @@
-import { FsFileSystem, TypeScriptUtils } from "@igniteui/cli-core";
+import { FsFileSystem, TypeScriptUtils, TypeScriptNodeUtils } from "@igniteui/cli-core";
 import * as fs from "fs";
 import * as ts from "typescript";
 
@@ -72,12 +72,12 @@ describe("Unit - TypeScriptUtils", () => {
 
 		it("Creates correct identifier or method call", async done => {
 			const printer = ts.createPrinter();
-			const identifier = TypeScriptUtils.createIdentifier("Test");
+			const identifier = TypeScriptNodeUtils.createIdentifier("Test");
 			expect(identifier.kind).toBe(ts.SyntaxKind.Identifier);
 			const identifierText = printer.printNode(ts.EmitHint.Unspecified, identifier, null);
 			expect(identifierText).toBe("Test");
 
-			const identifierCall = TypeScriptUtils.createIdentifier("Test", "method");
+			const identifierCall = TypeScriptNodeUtils.createIdentifier("Test", "method");
 			expect(identifierCall.kind).toBe(ts.SyntaxKind.CallExpression);
 			const identifierCallText = printer.printNode(
 				ts.EmitHint.Unspecified,
@@ -90,13 +90,13 @@ describe("Unit - TypeScriptUtils", () => {
 
 		it("Creates correct import node", async done => {
 			const printer = ts.createPrinter();
-			const nameImport = TypeScriptUtils.createIdentifierImport(["Name"], "package");
+			const nameImport = TypeScriptNodeUtils.createIdentifierImport(["Name"], "package");
 			expect(nameImport.kind).toBe(ts.SyntaxKind.ImportDeclaration);
 			expect((nameImport.moduleSpecifier as ts.StringLiteral).text).toBe("package");
 			expect(nameImport.importClause.namedBindings).toBeDefined();
 			expect(printer.printNode(ts.EmitHint.Unspecified, nameImport, null)).toBe(`import { Name } from "package";`);
 
-			const namesImport = TypeScriptUtils.createIdentifierImport(["Test1", "Test2"], "@namespace/package");
+			const namesImport = TypeScriptNodeUtils.createIdentifierImport(["Test1", "Test2"], "@namespace/package");
 			expect((namesImport.moduleSpecifier as ts.StringLiteral).text).toBe("@namespace/package");
 			expect(namesImport.importClause.namedBindings).toBeDefined();
 			const namesImportText = printer.printNode(ts.EmitHint.Unspecified, namesImport, null);
@@ -109,7 +109,7 @@ describe("Unit - TypeScriptUtils", () => {
 		const classSource = ts.createSourceFile("",
 			`export class TestClass {}`,
 			ts.ScriptTarget.Latest, true);
-		expect(TypeScriptUtils.getClassName(classSource.getChildren())).toBe("TestClass");
+		expect(TypeScriptNodeUtils.getClassName(classSource.getChildren())).toBe("TestClass");
 
 		const classDecoratorSource = ts.createSourceFile("",
 			`@Component({
@@ -117,13 +117,13 @@ describe("Unit - TypeScriptUtils", () => {
 			})
 			export class TestDecoratorClass {}`,
 			ts.ScriptTarget.Latest, true);
-		expect(TypeScriptUtils.getClassName(classDecoratorSource.getChildren())).toBe("TestDecoratorClass");
+		expect(TypeScriptNodeUtils.getClassName(classDecoratorSource.getChildren())).toBe("TestDecoratorClass");
 
 		const multipleClassSource = ts.createSourceFile("",
 			`export class TestDecoratorClass1 {}
 			export class TestDecoratorClass2 {}`,
 			ts.ScriptTarget.Latest, true);
-		expect(TypeScriptUtils.getClassName(multipleClassSource.getChildren())).toBe("TestDecoratorClass1");
+		expect(TypeScriptNodeUtils.getClassName(multipleClassSource.getChildren())).toBe("TestDecoratorClass1");
 
 		const noExportClassSource = ts.createSourceFile("",
 			`function name() {
@@ -131,7 +131,7 @@ describe("Unit - TypeScriptUtils", () => {
 			}
 			export class TestDecoratorClass2 {}`,
 			ts.ScriptTarget.Latest, true);
-		expect(TypeScriptUtils.getClassName(noExportClassSource.getChildren())).toBe("TestDecoratorClass2");
+		expect(TypeScriptNodeUtils.getClassName(noExportClassSource.getChildren())).toBe("TestDecoratorClass2");
 		done();
 	});
 });

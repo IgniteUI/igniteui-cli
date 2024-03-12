@@ -3,6 +3,7 @@ import { App } from "..";
 import { TemplateDependency } from "../types";
 import { FS_TOKEN, IFileSystem } from "../types/FileSystem";
 import { Util } from "../util/Util";
+import { TypeScriptNodeUtils as TsNodeUtils } from "./TypeScriptNodeUtils";
 import { TypeScriptUtils as TsUtils } from "./TypeScriptUtils";
 
 const DEFAULT_ROUTES_VARIABLE = "routes";
@@ -108,7 +109,7 @@ export class TypeScriptFileUpdate {
 		let className: string;
 		const fileSource = TsUtils.getFileSource(filePath);
 		const relativePath: string = Util.relativePath(this.targetPath, filePath, true, true);
-		className = TsUtils.getClassName(fileSource.getChildren());
+		className = TsNodeUtils.getClassName(fileSource.getChildren());
 		if (addToExport) {
 			this.addNgModuleMeta({ declare: className, from: relativePath, export: className });
 		} else {
@@ -189,7 +190,7 @@ export class TypeScriptFileUpdate {
 					(node.parent as ts.PropertyAssignment).name.getText() === "providers") {
 					const array = (node as ts.ArrayLiteralExpression);
 					const nodes = ts.visitNodes(array.elements, visitor);
-					const alreadyProvided = nodes.map(x => TsUtils.getIdentifierName(x));
+					const alreadyProvided = nodes.map(x => TsNodeUtils.getIdentifierName(x));
 
 					providers =  providers.filter(x => alreadyProvided.indexOf(x) === -1);
 					this.requestImport(providers, dep.from);
@@ -281,7 +282,7 @@ export class TypeScriptFileUpdate {
 		let className: string;
 		const fileSource = TsUtils.getFileSource(filePath);
 		const relativePath: string = Util.relativePath(this.targetPath, filePath, true, true);
-		className = TsUtils.getClassName(fileSource.getChildren());
+		className = TsNodeUtils.getClassName(fileSource.getChildren());
 
 		if (!lazyload) {
 			this.requestImport([className], relativePath);
@@ -439,7 +440,7 @@ export class TypeScriptFileUpdate {
 
 		const newStatements = ts.factory.createNodeArray([
 			...this.targetSource.statements.slice(0, this.importsMeta.lastIndex),
-			...newImports.map(x => TsUtils.createIdentifierImport(x.imports, x.from)),
+			...newImports.map(x => TsNodeUtils.createIdentifierImport(x.imports, x.from)),
 			...this.targetSource.statements.slice(this.importsMeta.lastIndex)
 		]);
 		newImports.forEach(x => this.createdStringLiterals.push(x.from));
@@ -525,7 +526,7 @@ export class TypeScriptFileUpdate {
 							case "imports":
 								const importDeps = this.ngMetaEdits.imports;
 								arrayExpr = ts.factory.createArrayLiteralExpression(
-									importDeps.map(x => TsUtils.createIdentifier(x.name, x.root ? "forRoot" : ""))
+									importDeps.map(x => TsNodeUtils.createIdentifier(x.name, x.root ? "forRoot" : ""))
 								);
 								break;
 							case "declarations":
@@ -548,7 +549,7 @@ export class TypeScriptFileUpdate {
 					properties.indexOf((node.parent as ts.PropertyAssignment).name.getText()) !== -1) {
 					const initializer = (node as ts.ArrayLiteralExpression);
 					const props = ts.visitNodes(initializer.elements, visitor);
-					const alreadyImported = props.map(x => TsUtils.getIdentifierName(x));
+					const alreadyImported = props.map(x => TsNodeUtils.getIdentifierName(x));
 					const prop = properties.find(x => x === (node.parent as ts.PropertyAssignment).name.getText());
 
 					let identifiers = [];
@@ -556,7 +557,7 @@ export class TypeScriptFileUpdate {
 						case "imports":
 							identifiers = this.ngMetaEdits.imports
 								.filter(x => alreadyImported.indexOf(x.name) === -1)
-								.map(x => TsUtils.createIdentifier(x.name, x.root ? "forRoot" : ""));
+								.map(x => TsNodeUtils.createIdentifier(x.name, x.root ? "forRoot" : ""));
 							break;
 						case "declarations":
 						case "providers":
@@ -601,7 +602,7 @@ export class TypeScriptFileUpdate {
 						const newProps = [];
 						const importDeps = this.ngMetaEdits.imports;
 						importsExpr = ts.factory.createArrayLiteralExpression(
-							importDeps.map(x => TsUtils.createIdentifier(x.name))
+							importDeps.map(x => TsNodeUtils.createIdentifier(x.name))
 						);
 						newProps.push(ts.factory.createPropertyAssignment(prop, importsExpr));
 						return context.factory.updateObjectLiteralExpression(obj, [
