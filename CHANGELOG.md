@@ -1,3 +1,10 @@
+# [13.1.11](https://github.com/IgniteUI/igniteui-cli/compare/v13.1.10...v13.1.11) (2024-03-12)
+
+## What's Changed
+* Update react base template by @wnvko in https://github.com/IgniteUI/igniteui-cli/pull/1221
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.1.10...v13.1.11
+
 # [13.1.10](https://github.com/IgniteUI/igniteui-cli/compare/v13.1.9...v13.1.10) (2024-03-11)
 
 ## What's Changed
