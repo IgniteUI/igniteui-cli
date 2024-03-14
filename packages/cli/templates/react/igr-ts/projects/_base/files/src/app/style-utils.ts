@@ -3,10 +3,10 @@
  * @param styles Object map of classes and their scoped name, normally from a CSS Module import
  */
 export default function createClassTransformer(styles: any) {
-	return (classes: string) => {
-		return classes
-			.split(' ')
-			.map(className => styles[className] || className)
-			.join(' ');
-	}
+  return (classes: string) => {
+    return classes
+      .split(' ')
+      .map(className => styles[className] || className)
+      .join(' ');
+  }
 }
