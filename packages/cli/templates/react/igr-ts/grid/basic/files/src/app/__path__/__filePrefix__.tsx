@@ -8,7 +8,7 @@ import data from './data';
 IgrGridModule.register();
 
 export default function $(ClassName)() {
-	const title = 'Grid';
+  const title = 'Grid';
 
   return (
     <div>
