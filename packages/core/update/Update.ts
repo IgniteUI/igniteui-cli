@@ -4,23 +4,15 @@ import { App, ProjectConfig, Util } from "../util";
 import { FS_TOKEN, IFileSystem } from "../types";
 import { PackageManager } from "../packages/PackageManager";
 
-const styleExtension = ["css", "scss", "sass"];
 enum RegularExpressionType {
 	STYLE,
 	LOGIC
 }
 
-function createExpression(expressionType: RegularExpressionType, packageName: string): string {
-	if (expressionType === RegularExpressionType.LOGIC) {
-		return String.raw`(from ["'])${packageName}(?<submodules>\/.*?)?(["'])`;
-	} else if (expressionType === RegularExpressionType.STYLE) {
-		return String.raw`(node_modules\/|[~"'])${packageName}(\/)`;
-	}
-}
-
 export async function updateWorkspace(rootPath: string): Promise<boolean> {
 	let guideLink = "";
 	let logicFilesExtension = "";
+	let styleExtensions = [];
 
 	const config = ProjectConfig.getConfig();
 	const framework = config.project.framework;
@@ -29,10 +21,12 @@ export async function updateWorkspace(rootPath: string): Promise<boolean> {
 			guideLink =
 				"https://www.infragistics.com/products/ignite-ui-angular/angular/components/general/ignite-ui-licensing";
 			logicFilesExtension = "ts";
+			styleExtensions = ["css", "scss", "sass"];
 			break;
 		case "react":
 			guideLink = "https://www.infragistics.com/products/ignite-ui-react/react/components/general-licensing";
 			logicFilesExtension = "tsx";
+			styleExtensions = ["css"];
 			break;
 		case "webcomponents":
 			guideLink = "https://www.infragistics.com/products/ignite-ui-web-components/web-components/components/general-licensing";
@@ -63,17 +57,19 @@ export async function updateWorkspace(rootPath: string): Promise<boolean> {
 		return false;
 	}
 
+	const workspaces = [];
 	const logicFiles = [];
 	const styleFiles = [];
 	const pkgJsonFiles = [];
-	const workspaces = [];
+	pkgJsonFiles.push(...fs.glob(rootPath, `package.json`));
 
 	let workspaceConfig = null;
 	switch (framework.toLowerCase()) {
 		case "angular":
-			const workspaceConfigPath = path.join(rootPath, "angular.json");
-			if (fs.fileExists(workspaceConfigPath)) {
-				workspaceConfig = JSON.parse(fs.readFile(workspaceConfigPath));
+			const angularJsonPath = path.join(rootPath, "angular.json");
+			if (fs.fileExists(angularJsonPath)) {
+				workspaceConfig = JSON.parse(fs.readFile(angularJsonPath));
+				styleFiles.push(angularJsonPath);
 			} else {
 				Util.log("No angular.json file found! Aborting.");
 				return false;
@@ -103,10 +99,10 @@ export async function updateWorkspace(rootPath: string): Promise<boolean> {
 	// once all workspaces are gotten, get all files for all workspaces
 	for (const workspace of workspaces) {
 		logicFiles.push(...fs.glob(workspace, `**/*.${logicFilesExtension}`));
-		for (const extension of styleExtension) {
-			styleFiles.push(...fs.glob(workspace, `**/*.${extension}`));
+		for (const styleExtension of styleExtensions) {
+			styleFiles.push(...fs.glob(workspace, `**/*.${styleExtension}`));
 		}
-		pkgJsonFiles.push(fs.glob(workspace, `**/package.json`));
+		pkgJsonFiles.push(...fs.glob(workspace, `**/package.json`));
 	}
 
 	updateFileImports(logicFiles, styleFiles, upgradeable, fs);
@@ -117,13 +113,28 @@ export async function updateWorkspace(rootPath: string): Promise<boolean> {
 	return true;
 }
 
-function updateFileContent(fileContent: string, regexString: string, replaceWith: string): string {
-	const match = fileContent.match(new RegExp(regexString));
-	if (match) {
-		fileContent = fileContent.replace(new RegExp(regexString, "g"),
-			`$1${replaceWith}$2${match.length === 4 ? "$3" : ""}`);
+function updateFileContent(fileContent: string, regexStrings: string[], replaceWith: string): string {
+	for (const regexString of regexStrings) {
+		const match = fileContent.match(new RegExp(regexString));
+		if (match) {
+			fileContent = fileContent.replace(new RegExp(regexString, "g"),
+				`$1${replaceWith}$2${match.length === 4 ? "$3" : ""}`);
+		}
 	}
+
 	return fileContent;
+}
+
+function createExpressions(expressionType: RegularExpressionType, packageName: string): string[] {
+	const regexStrings = [];
+	if (expressionType === RegularExpressionType.LOGIC) {
+		regexStrings.push(String.raw`(import ["'])${packageName}(?<submodules>\/.*?)?(["'])`);
+		regexStrings.push(String.raw`(from ["'])${packageName}(?<submodules>\/.*?)?(["'])`);
+	} else if (expressionType === RegularExpressionType.STYLE) {
+		regexStrings.push(String.raw`(node_modules\/|[~"'])${packageName}(\/)`);
+	}
+
+	return regexStrings;
 }
 
 function updateFileImports(
@@ -139,7 +150,7 @@ function updateFileImports(
 		for (const packageDef of packageDefs) {
 			if (fileContent.includes(packageDef.trial)) {
 				const newContent = updateFileContent(fileContent,
-					createExpression(RegularExpressionType.LOGIC, packageDef.trial), packageDef.licensed);
+					createExpressions(RegularExpressionType.LOGIC, packageDef.trial), packageDef.licensed);
 				fileChange = fileContent !== newContent;
 				fileContent = newContent;
 			}
@@ -154,7 +165,7 @@ function updateFileImports(
 		for (const packageDef of packageDefs) {
 			if (fileContent.includes(packageDef.trial)) {
 				const newContent = updateFileContent(fileContent,
-					createExpression(RegularExpressionType.STYLE, packageDef.trial), packageDef.licensed);
+					createExpressions(RegularExpressionType.STYLE, packageDef.trial), packageDef.licensed);
 				fileChange = fileContent !== newContent;
 				fileContent = newContent;
 			}

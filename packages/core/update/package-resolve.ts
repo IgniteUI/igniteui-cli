@@ -108,7 +108,8 @@ export function resolveIgxPackage(packageName: keyof typeof UPGRADEABLE_PACKAGES
 
 	// read project package JSON
 	if (fs.fileExists("./package.json")) {
-		const packageJson = JSON.parse(fs.readFile("./package.json"));
+		const fileContent = fs.readFile("./package.json");
+		const packageJson = JSON.parse(fileContent);
 		const dependencies = packageJson["dependencies"];
 		const licensed = UPGRADEABLE_PACKAGES[packageName];
 		if (dependencies[licensed]) {
@@ -124,7 +125,8 @@ export function getUpgradeablePackages(): PackageDefinition[] {
 	const upgradeable: PackageDefinition[] = [];
 
 	if (fs.fileExists("./package.json")) {
-		const packageJson = JSON.parse(fs.readFile("./package.json"));
+		const fileContent = fs.readFile("./package.json");
+		const packageJson = JSON.parse(fileContent);
 		const dependencies = packageJson["dependencies"];
 		for (const packageEntry in UPGRADEABLE_PACKAGES) {
 			if (dependencies[packageEntry]) {
