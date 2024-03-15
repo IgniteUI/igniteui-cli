@@ -10,7 +10,7 @@ class IgrTsCategoryChartComponent extends BaseComponent {
 		this.name  = "Category Chart";
 		this.group = "Charts";
 		this.description = `makes visualizing category data easy. Simplifies the complexities
-							of the data visualization domain into manageable API`;
+			of the data visualization domain into manageable API`;
 	}
 }
 module.exports = new IgrTsCategoryChartComponent();
