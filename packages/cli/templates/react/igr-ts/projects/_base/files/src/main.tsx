@@ -7,7 +7,7 @@ import 'react-app-polyfill/ie11';
 
 /** Required in IE11 for Charts */
 Number.isNaN = Number.isNaN || function(value) {
-    return value !== value;
+  return value !== value;
 }
 
 const router = createBrowserRouter([
