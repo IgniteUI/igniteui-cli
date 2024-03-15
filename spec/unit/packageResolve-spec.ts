@@ -1,4 +1,4 @@
-import { FS_TOKEN, IFileSystem } from "../../packages/core/types";
+import { IFileSystem } from "../../packages/core/types";
 import { App } from "../../packages/core/util";
 import {
 	FEED_DOCK_MANAGER, FEED_ANGULAR, getUpgradeablePackages,
@@ -7,19 +7,19 @@ import {
 
 class MockFileSystem implements IFileSystem {
 	public fileExists(filePath: string): boolean {
-		throw new Error("Method not implemented.");
+		throw new Error("fileExists is not implemented.");
 	}
 	public readFile(filePath: string, encoding?: string): string {
-		throw new Error("Method not implemented.");
+		throw new Error("readFile is not implemented.");
 	}
 	public writeFile(filePath: string, text: string): void {
-		throw new Error("Method not implemented.");
+		throw new Error("writeFile not implemented.");
 	}
 	public directoryExists(dirPath: string): boolean {
-		throw new Error("Method not implemented.");
+		throw new Error("directoryExists not implemented.");
 	}
 	public glob(dirPath: string, pattern: string): string[] {
-		throw new Error("Method not implemented.");
+		throw new Error("glob not implemented.");
 	}
 }
 
@@ -28,7 +28,7 @@ describe("Igx templates - package resolve", () => {
 		it("should return npm package as fallback", () => {
 			const mockFs = new MockFileSystem();
 			spyOn(mockFs, "fileExists").and.returnValue(false);
-			App.container.set(FS_TOKEN, mockFs);
+			spyOn(App.container, "get").and.returnValue(mockFs);
 
 			const result = resolveIgxPackage(NPM_ANGULAR);
 			expect(result).toEqual(NPM_ANGULAR);
@@ -38,8 +38,8 @@ describe("Igx templates - package resolve", () => {
 		it("should return npm package if feed package in not in project", () => {
 			const mockFs = new MockFileSystem();
 			spyOn(mockFs, "fileExists").and.returnValue(true);
+			spyOn(App.container, "get").and.returnValue(mockFs);
 			const readSpy = spyOn(mockFs, "readFile").and.returnValue(`{ "dependencies": { "${NPM_ANGULAR}": "*" } }`);
-			App.container.set(FS_TOKEN, mockFs);
 
 			let result = resolveIgxPackage(NPM_ANGULAR);
 			expect(result).toEqual(NPM_ANGULAR);
@@ -55,7 +55,7 @@ describe("Igx templates - package resolve", () => {
 			const mockFs = new MockFileSystem();
 			spyOn(mockFs, "fileExists").and.returnValue(true);
 			const readSpy = spyOn(mockFs, "readFile").and.returnValue(`{ "dependencies": { "${FEED_ANGULAR}": "*" } }`);
-			App.container.set(FS_TOKEN, mockFs);
+			spyOn(App.container, "get").and.returnValue(mockFs);
 
 			let result = resolveIgxPackage(NPM_ANGULAR);
 			expect(result).toEqual(FEED_ANGULAR);
@@ -72,7 +72,7 @@ describe("Igx templates - package resolve", () => {
 		it("should return an empty array if there are no upgradeable packages", () => {
 			const mockFs = new MockFileSystem();
 			const existsSpy = spyOn(mockFs, "fileExists").and.returnValue(false);
-			App.container.set(FS_TOKEN, mockFs);
+			spyOn(App.container, "get").and.returnValue(mockFs);
 
 			expect(getUpgradeablePackages()).toEqual([]);
 			existsSpy.and.returnValue(true);
@@ -90,7 +90,7 @@ describe("Igx templates - package resolve", () => {
 		it("should return an array if containing ONLY upgradeable packages", () => {
 			const mockFs = new MockFileSystem();
 			const existsSpy = spyOn(mockFs, "fileExists").and.returnValue(false);
-			App.container.set(FS_TOKEN, mockFs);
+			spyOn(App.container, "get").and.returnValue(mockFs);
 
 			expect(getUpgradeablePackages()).toEqual([]);
 			existsSpy.and.returnValue(true);
