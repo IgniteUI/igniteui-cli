@@ -6,7 +6,9 @@
   "dependencies": {
     "@testing-library/jest-dom": "^6.1.3",
     "@testing-library/react": "^14.0.0",
+    "element-internals-polyfill": "^1.3.10",
     "functions-have-names": "^1.2.3",
+    "igniteui-dockmanager": "^1.13.0",
     "igniteui-react": "18.3.0",
     "igniteui-react-core": "18.3.0",
     "react": "^18.2.0",
@@ -14,8 +16,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.16.0",
     "resize-observer-polyfill": "^1.5.1",
-    "vitest": "^0.34.4",
-    "igniteui-dockmanager": "^1.13.0"
+    "vitest": "^0.34.4"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
