@@ -406,7 +406,9 @@ export class ReactTypeScriptFileUpdate {
 		routerAlias: string
 	): ts.ObjectLiteralExpression {
 		let routePath = ts.factory.createPropertyAssignment("path", ts.factory.createStringLiteral(path, true));
-		if (path === "") {
+		const defaultRoute = path === ""; 
+		if (defaultRoute) {
+			// for default route in React we should generate index: true, element: <ElementTag />
 			routePath = ts.factory.createPropertyAssignment("index", ts.factory.createTrue());
 		}
 		const jsxElement = ts.factory.createJsxSelfClosingElement(
@@ -419,7 +421,8 @@ export class ReactTypeScriptFileUpdate {
 			const childrenData = ts.factory.createPropertyAssignment("children", ts.factory.createIdentifier(routerAlias));
 			return ts.factory.createObjectLiteralExpression([routePath, routeComponent, routeData, childrenData]);
 		}
-		if (path === "") {
+		if (defaultRoute) {
+			// for default route React do not need routeData
 			return ts.factory.createObjectLiteralExpression([routePath, routeComponent]);
 		}
 		return ts.factory.createObjectLiteralExpression([routePath, routeComponent, routeData]);
