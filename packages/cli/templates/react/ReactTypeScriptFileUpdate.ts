@@ -405,7 +405,10 @@ export class ReactTypeScriptFileUpdate {
 		name: string,
 		routerAlias: string
 	): ts.ObjectLiteralExpression {
-		const routePath = ts.factory.createPropertyAssignment("path", ts.factory.createStringLiteral(path, true));
+		let routePath = ts.factory.createPropertyAssignment("path", ts.factory.createStringLiteral(path, true));
+		if (path === "") {
+			routePath = ts.factory.createPropertyAssignment("index", ts.factory.createTrue());
+		}
 		const jsxElement = ts.factory.createJsxSelfClosingElement(
 			ts.factory.createIdentifier(component), [], undefined
 		);
@@ -415,8 +418,10 @@ export class ReactTypeScriptFileUpdate {
 		if (routerAlias) {
 			const childrenData = ts.factory.createPropertyAssignment("children", ts.factory.createIdentifier(routerAlias));
 			return ts.factory.createObjectLiteralExpression([routePath, routeComponent, routeData, childrenData]);
-		} else {
-			return ts.factory.createObjectLiteralExpression([routePath, routeComponent, routeData]);
 		}
+		if (path === "") {
+			return ts.factory.createObjectLiteralExpression([routePath, routeComponent]);
+		}
+		return ts.factory.createObjectLiteralExpression([routePath, routeComponent, routeData]);
 	}
 }
