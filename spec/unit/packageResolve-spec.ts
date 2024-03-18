@@ -2,7 +2,7 @@ import { IFileSystem } from "../../packages/core/types";
 import { App } from "../../packages/core/util";
 import {
 	FEED_DOCK_MANAGER, FEED_ANGULAR, getUpgradeablePackages,
-	NPM_DOCK_MANAGER, NPM_ANGULAR, resolveIgxPackage, PackageDefinition
+	NPM_DOCK_MANAGER, NPM_ANGULAR, resolvePackage, PackageDefinition
 } from "../../packages/core/update/package-resolve";
 
 class MockFileSystem implements IFileSystem {
@@ -24,13 +24,13 @@ class MockFileSystem implements IFileSystem {
 }
 
 describe("Igx templates - package resolve", () => {
-	describe("resolveIgxPackage", () => {
+	describe("resolvePackage", () => {
 		it("should return npm package as fallback", () => {
 			const mockFs = new MockFileSystem();
 			spyOn(mockFs, "fileExists").and.returnValue(false);
 			spyOn(App.container, "get").and.returnValue(mockFs);
 
-			const result = resolveIgxPackage(NPM_ANGULAR);
+			const result = resolvePackage(NPM_ANGULAR);
 			expect(result).toEqual(NPM_ANGULAR);
 			expect(mockFs.fileExists).toHaveBeenCalledWith("./package.json");
 		});
@@ -41,13 +41,13 @@ describe("Igx templates - package resolve", () => {
 			spyOn(App.container, "get").and.returnValue(mockFs);
 			const readSpy = spyOn(mockFs, "readFile").and.returnValue(`{ "dependencies": { "${NPM_ANGULAR}": "*" } }`);
 
-			let result = resolveIgxPackage(NPM_ANGULAR);
+			let result = resolvePackage(NPM_ANGULAR);
 			expect(result).toEqual(NPM_ANGULAR);
 			expect(mockFs.fileExists).toHaveBeenCalledWith("./package.json");
 			expect(mockFs.readFile).toHaveBeenCalledWith("./package.json");
 
 			readSpy.and.returnValue(`{ "dependencies": { "${NPM_DOCK_MANAGER}": "*" } }`);
-			result = resolveIgxPackage(NPM_DOCK_MANAGER);
+			result = resolvePackage(NPM_DOCK_MANAGER);
 			expect(result).toEqual(NPM_DOCK_MANAGER);
 		});
 
@@ -57,13 +57,13 @@ describe("Igx templates - package resolve", () => {
 			const readSpy = spyOn(mockFs, "readFile").and.returnValue(`{ "dependencies": { "${FEED_ANGULAR}": "*" } }`);
 			spyOn(App.container, "get").and.returnValue(mockFs);
 
-			let result = resolveIgxPackage(NPM_ANGULAR);
+			let result = resolvePackage(NPM_ANGULAR);
 			expect(result).toEqual(FEED_ANGULAR);
 			expect(mockFs.fileExists).toHaveBeenCalledWith("./package.json");
 			expect(mockFs.readFile).toHaveBeenCalledWith("./package.json");
 
 			readSpy.and.returnValue(`{ "dependencies": { "${FEED_DOCK_MANAGER}": "*" } }`);
-			result = resolveIgxPackage(NPM_DOCK_MANAGER);
+			result = resolvePackage(NPM_DOCK_MANAGER);
 			expect(result).toEqual(FEED_DOCK_MANAGER);
 		});
 	});

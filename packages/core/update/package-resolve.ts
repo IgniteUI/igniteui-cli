@@ -103,7 +103,7 @@ export const UPGRADEABLE_PACKAGES = {
 	[NPM_WEBCOMPONENTS_CHART_ADAPTER]: FEED_WEBCOMPONENTS_CHART_ADAPTER
 };
 
-export function resolveIgxPackage(packageName: keyof typeof UPGRADEABLE_PACKAGES) {
+export function resolvePackage(packageName: keyof typeof UPGRADEABLE_PACKAGES) {
 	const fs = App.container.get<IFileSystem>(FS_TOKEN);
 
 	// read project package JSON

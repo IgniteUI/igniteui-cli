@@ -1,6 +1,6 @@
 import {
 	AddTemplateArgs, App, ControlExtraConfiguration, FS_TOKEN, IFileSystem, NPM_ANGULAR,
-	NPM_DOCK_MANAGER, Template, TemplateDependency, TypeScriptFileUpdate, Util, resolveIgxPackage
+	NPM_DOCK_MANAGER, Template, TemplateDependency, TypeScriptFileUpdate, Util, resolvePackage
 } from "@igniteui/cli-core";
 import * as path from "path";
 
@@ -158,8 +158,8 @@ export class IgniteUIForAngularTemplate implements Template {
 		config["description"] = this.description;
 		config["cliVersion"] = Util.version();
 		config["camelCaseName"] = Util.camelCase(name);
-		config["igxPackage"] = resolveIgxPackage(NPM_ANGULAR);
-		config["dockManagerPackage"] = resolveIgxPackage(NPM_DOCK_MANAGER);
+		config["igxPackage"] = resolvePackage(NPM_ANGULAR);
+		config["dockManagerPackage"] = resolvePackage(NPM_DOCK_MANAGER);
 
 		/** 'nameMerged' is never used igx templates, removed */
 		return config;

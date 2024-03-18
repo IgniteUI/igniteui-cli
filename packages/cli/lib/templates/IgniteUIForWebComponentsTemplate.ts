@@ -1,6 +1,6 @@
 import {
 	AddTemplateArgs, App, ControlExtraConfiguration, defaultDelimiters, FS_TOKEN,
-	IFileSystem, NPM_DOCK_MANAGER, resolveIgxPackage, Template, TemplateDependency, Util
+	IFileSystem, NPM_DOCK_MANAGER, resolvePackage, Template, TemplateDependency, Util
 } from "@igniteui/cli-core";
 import * as path from "path";
 import { TypeScriptFileUpdate } from "../../templates/webcomponents/TypeScriptFileUpdate";
@@ -92,7 +92,7 @@ export class IgniteUIForWebComponentsTemplate implements Template {
 		config["description"] = this.description;
 		config["cliVersion"] = Util.version();
 		config["camelCaseName"] = Util.camelCase(name);
-		config["dockManagerPackage"] = resolveIgxPackage(NPM_DOCK_MANAGER);
+		config["dockManagerPackage"] = resolvePackage(NPM_DOCK_MANAGER);
 
 		return config;
 	}
