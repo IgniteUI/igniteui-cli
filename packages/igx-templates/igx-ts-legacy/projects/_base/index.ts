@@ -82,4 +82,18 @@ $app-palette: palette($primary, $secondary, $surface);
 
 		return config;
 	}
+
+	protected getVariablesConfig(name: string, theme: string) {
+		return {
+			name,
+			theme,
+			"cliVersion": Util.version(),
+			"dash-name": Util.lowerDashed(name),
+			"description": this.description,
+			"dot": ".",
+			"path": name,
+			"projectTemplate": this.id,
+			"yamlDefaultBranch": this.id === "base" ? "<%=yaml-default-branch%>" : "main"
+		};
+	}
 }

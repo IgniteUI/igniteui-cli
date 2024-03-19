@@ -36,7 +36,8 @@ export class BaseIgcProject implements ProjectTemplate {
 			DefaultTheme: "",
 			dot: ".",
 			path: name,
-			projectTemplate: this.id
+			projectTemplate: this.id,
+			yamlDefaultBranch: this.id === "base" ? "<%=yaml-default-branch%>" : "main"
 		};
 
 		return config;

@@ -95,8 +95,76 @@ describe("updateWorkspace", () => {
 					"some-package": "^0.0.0"
 				}
 			}));
-			expect(fsSpy.writeFile).toHaveBeenCalledTimes(2);
+			expect(fsSpy.writeFile).toHaveBeenCalledTimes(1);
 			expect(fsSpy.glob).toHaveBeenCalledTimes(1);
+		});
+
+		it("Should add npmrc file if it does not exist", async () => {
+			const npmrc: MockFile = {
+				path: ".npmrc",
+				content: "",
+				expected:
+`@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/
+//packages.infragistics.com/npm/js-licensed/:always-auth=true
+`};
+			(fsSpy.glob as jasmine.Spy).and.returnValues(// per workspace
+				["package.json"], // root package.json
+				["src/home.component.ts", "src/app.module.ts"], // logic files
+				["src/home.component.scss"], [], [], // for each style extension
+				[] // inner package.json files
+			);
+			// ensure .npmrc does not exist
+			(fsSpy.fileExists as jasmine.Spy).and.callFake((filePath: string) => {
+				if (filePath === ".npmrc") {
+					return false;
+				}
+				return true;
+			});
+			(fsSpy.readFile as jasmine.Spy).and.callFake((filePath: string) => {
+				if (filePath === "angular.json") {
+					return "{}";
+				}
+				if (filePath === "package.json") {
+					return `{"dependencies":[]}`;
+				}
+				return "";
+			});
+			spyOn(Object, "keys").and.returnValue([]);
+			spyOn(PackageManager, "ensureRegistryUser").and.returnValue(true);
+			spyOn(pkgResolve, "getUpgradeablePackages").and.returnValue([{
+				trial: "mock-trial",
+				licensed: "mock-licensed"
+			}]);
+			expect(await updateWorkspace("")).toEqual(true);
+			expect((fsSpy.writeFile as jasmine.Spy)).toHaveBeenCalledWith(npmrc.path, npmrc.expected);
+		});
+
+		it("Should not modify existing npmrc file", async () => {
+			(fsSpy.glob as jasmine.Spy).and.returnValues(// per workspace
+				["package.json"], // root package.json
+				["src/home.component.ts", "src/app.module.ts"], // logic files
+				["src/home.component.scss"], [], [], // for each style extension
+				[] // inner package.json files
+			);
+			// ensure .npmrc does exist
+			(fsSpy.fileExists as jasmine.Spy).and.returnValue(true);
+			(fsSpy.readFile as jasmine.Spy).and.callFake((filePath: string) => {
+				if (filePath === "angular.json") {
+					return "{}";
+				}
+				if (filePath === "package.json") {
+					return `{"dependencies":[]}`;
+				}
+				return "";
+			});
+			spyOn(Object, "keys").and.returnValue([]);
+			spyOn(PackageManager, "ensureRegistryUser").and.returnValue(true);
+			spyOn(pkgResolve, "getUpgradeablePackages").and.returnValue([{
+				trial: "mock-trial",
+				licensed: "mock-licensed"
+			}]);
+			expect(await updateWorkspace("")).toEqual(true);
+			expect((fsSpy.writeFile as jasmine.Spy)).toHaveBeenCalledTimes(1);
 		});
 
 		it("Should update import paths in files correctly", async () => {
@@ -204,13 +272,8 @@ import { dockManagerLoader } from '@infragistics/igniteui-dockmanager/loader';
 
 export class HomeComponent {
 title = 'igniteui-angular example';
-}`}, {
-				path: ".npmrc",
-				content: "",
-				expected:
-`@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/
-//packages.infragistics.com/npm/js-licensed/:always-auth=true
-`}, {
+}`},
+{
 				path: ".github/workflows/node.js.yml",
 				content:
 `# start content
@@ -435,7 +498,7 @@ title = 'igniteui-angular example';
 					"some-package": "^0.0.0"
 				}
 			}));
-			expect(fsSpy.writeFile).toHaveBeenCalledTimes(2);
+			expect(fsSpy.writeFile).toHaveBeenCalledTimes(1);
 			expect(fsSpy.glob).toHaveBeenCalledTimes(4);
 		});
 
@@ -492,12 +555,6 @@ IgrGridModule.register();
 export default function Home() {
 	const title = 'igniteui-react example';
 }`}, {
-				path: ".npmrc",
-				content: "",
-				expected:
-`@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/
-//packages.infragistics.com/npm/js-licensed/:always-auth=true
-`}, {
 				path: ".github/workflows/node.js.yml",
 				content:
 `# start content
@@ -705,7 +762,7 @@ export default function Home() {
 			(fsSpy.glob as jasmine.Spy).and.returnValues // per workspace
 				([ "package.json" ], // root package.json
 				[], // logic files
-				[]); // inner package.json files
+				[ "./project/package.json" ]); // inner package.json files
 			(fsSpy.readFile as jasmine.Spy).and.callFake((filePath: string) => {
 				if (filePath.indexOf("package.json") > -1) {
 					return JSON.stringify(mockPackageJSON);
@@ -773,12 +830,6 @@ import { ModuleManager } from '@infragistics/igniteui-webcomponents-core';
 export default class App extends LitElement {
 	const title = 'igniteui-webcomponents example';
 }`}, {
-				path: ".npmrc",
-				content: "",
-				expected:
-`@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/
-//packages.infragistics.com/npm/js-licensed/:always-auth=true
-`}, {
 				path: ".github/workflows/node.js.yml",
 				content:
 `# start content
