@@ -152,6 +152,32 @@
 		{
 			"type": "node",
 			"request": "launch",
+			"name": "Launch React Add",
+			"cwd": "${workspaceRoot}/output/reactproj",
+			"program": "${workspaceRoot}/packages/cli/bin/execute.js",
+			"console": "externalTerminal",
+			"preLaunchTask": "build",
+			"outFiles": ["${workspaceFolder}/**/*.js"],
+			"args": [
+				"add",
+			]
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Launch React Upgrade Packages",
+			"cwd": "${workspaceRoot}/output/reactproj",
+			"program": "${workspaceRoot}/packages/cli/bin/execute.js",
+			"console": "externalTerminal",
+			"preLaunchTask": "build",
+			"outFiles": ["${workspaceFolder}/**/*.js"],
+			"args": [
+				"upgrade-packages",
+			]
+		},
+		{
+			"type": "node",
+			"request": "launch",
 			"name": "Launch Quickstart jQuery",
 			"cwd": "${workspaceRoot}/output",
 			"program": "${workspaceRoot}/packages/cli/bin/execute.js",

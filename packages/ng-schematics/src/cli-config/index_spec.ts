@@ -2,7 +2,7 @@ import * as path from "path";
 
 import { EmptyTree } from "@angular-devkit/schematics";
 import { SchematicTestRunner, UnitTestTree } from "@angular-devkit/schematics/testing";
-import { FEED_PACKAGE, NPM_PACKAGE } from "@igniteui/angular-templates";
+import { FEED_ANGULAR, NPM_ANGULAR } from "@igniteui/cli-core";
 
 describe("cli-config schematic", () => {
 	const collectionPath = path.join(__dirname, "../collection.json");
@@ -37,7 +37,7 @@ describe("cli-config schematic", () => {
 		peerDependencies: {}
 	};
 
-	function createIgPkgJson(igxPkg = NPM_PACKAGE) {
+	function createIgPkgJson(igxPkg = NPM_ANGULAR) {
 		const filePath = `node_modules/${igxPkg}/package.json`;
 		tree.create(filePath, JSON.stringify(pkgJsonConfig));
 		const pkgJson = JSON.parse(tree.readContent(filePath));
@@ -50,7 +50,7 @@ describe("cli-config schematic", () => {
 		tree.overwrite(filePath, JSON.stringify(pkgJson));
 	}
 
-	function populatePkgJson(igxPkg = NPM_PACKAGE) {
+	function populatePkgJson(igxPkg = NPM_ANGULAR) {
 		const targetFile = "/package.json";
 		const angularCore = "@angular/core";
 		const angularCommon = "@angular/common";
@@ -128,23 +128,23 @@ describe("cli-config schematic", () => {
 		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
 
 		let content = tree.readContent(targetFile);
-		expect(content.includes(`@use "${NPM_PACKAGE}`)).toBeTruthy();
+		expect(content.includes(`@use "${NPM_ANGULAR}`)).toBeTruthy();
 
 		tree.overwrite(targetFile, "");
 		resetTree();
-		createIgPkgJson(FEED_PACKAGE);
-		populatePkgJson(FEED_PACKAGE);
+		createIgPkgJson(FEED_ANGULAR);
+		populatePkgJson(FEED_ANGULAR);
 
 		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
 		content = tree.readContent(targetFile);
-		expect(content.includes(`@use "${FEED_PACKAGE}`)).toBeTruthy();
+		expect(content.includes(`@use "${FEED_ANGULAR}`)).toBeTruthy();
 	});
 
 	it("should add the default css theme to the workspace", async () => {
 		const targetFile = "/angular.json";
 		expect(tree.exists(targetFile)).toBeTruthy();
 
-		let targetImport = `node_modules/${NPM_PACKAGE}/styles/igniteui-angular.css`;
+		let targetImport = `node_modules/${NPM_ANGULAR}/styles/igniteui-angular.css`;
 		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
 		let workspace = JSON.parse(tree.read("/angular.json")!.toString());
 
@@ -160,9 +160,9 @@ describe("cli-config schematic", () => {
 			.toBeGreaterThan(0);
 
 		resetTree();
-		createIgPkgJson(FEED_PACKAGE);
-		populatePkgJson(FEED_PACKAGE);
-		targetImport = `node_modules/${FEED_PACKAGE}/styles/igniteui-angular.css`;
+		createIgPkgJson(FEED_ANGULAR);
+		populatePkgJson(FEED_ANGULAR);
+		targetImport = `node_modules/${FEED_ANGULAR}/styles/igniteui-angular.css`;
 
 		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
 		workspace = JSON.parse(tree.read("/angular.json")!.toString());
@@ -202,16 +202,16 @@ describe("cli-config schematic", () => {
 		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
 
 		let content = tree.readContent(targetFile);
-		expect(content.includes(`@use "${NPM_PACKAGE}`)).toBeTruthy();
+		expect(content.includes(`@use "${NPM_ANGULAR}`)).toBeTruthy();
 
 		tree.overwrite(targetFile, "");
 		resetTree();
-		createIgPkgJson(FEED_PACKAGE);
-		populatePkgJson(FEED_PACKAGE);
+		createIgPkgJson(FEED_ANGULAR);
+		populatePkgJson(FEED_ANGULAR);
 
 		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
 		content = tree.readContent(targetFile);
-		expect(content.includes(`@use "${FEED_PACKAGE}`)).toBeTruthy();
+		expect(content.includes(`@use "${FEED_ANGULAR}`)).toBeTruthy();
 	});
 
 	it("should add BrowserAnimationsModule to app.module.ts", async () => {
@@ -297,13 +297,13 @@ export const appConfig: ApplicationConfig = {
 			}
 		});
 		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
-		let pattern = new RegExp(`WARNING Version mismatch detected - ${NPM_PACKAGE}`);
+		let pattern = new RegExp(`WARNING Version mismatch detected - ${NPM_ANGULAR}`);
 		expect(warns).toContain(jasmine.stringMatching(pattern));
 
 		resetTree();
-		createIgPkgJson(FEED_PACKAGE);
-		populatePkgJson(FEED_PACKAGE);
-		pattern = new RegExp(`WARNING Version mismatch detected - ${FEED_PACKAGE}`);
+		createIgPkgJson(FEED_ANGULAR);
+		populatePkgJson(FEED_ANGULAR);
+		pattern = new RegExp(`WARNING Version mismatch detected - ${FEED_ANGULAR}`);
 
 		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
 		expect(warns).toContain(jasmine.stringMatching(pattern));

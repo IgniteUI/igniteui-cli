@@ -1,6 +1,5 @@
-import { ControlExtraConfiguration, ProjectTemplate, Util } from "@igniteui/cli-core";
+import { ControlExtraConfiguration, ProjectTemplate, Util, updateWorkspace } from "@igniteui/cli-core";
 import * as path from "path";
-import { updateWorkspace } from "../../../Update";
 
 export class BaseIgxProject implements ProjectTemplate {
 	public id: string = "base";
@@ -82,5 +81,19 @@ $app-palette: palette($primary, $secondary, $surface);
 		}
 
 		return config;
+	}
+
+	protected getVariablesConfig(name: string, theme: string) {
+		return {
+			name,
+			theme,
+			"cliVersion": Util.version(),
+			"dash-name": Util.lowerDashed(name),
+			"description": this.description,
+			"dot": ".",
+			"path": name,
+			"projectTemplate": this.id,
+			"yamlDefaultBranch": this.id === "base" ? "<%=yaml-default-branch%>" : "main"
+		};
 	}
 }
