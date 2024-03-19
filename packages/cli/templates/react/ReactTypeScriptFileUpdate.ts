@@ -40,9 +40,9 @@ export class ReactTypeScriptFileUpdate {
 		filePath: string,
 		routerChildren: string,
 		importAlias: string,
-		routesVariable = DEFAULT_ROUTES_VARIABLE
+		defaultRoute = false
 	) {
-		this.addRouteModuleEntry(path, component, name, filePath, routerChildren, importAlias, routesVariable);
+		this.addRouteModuleEntry(path, component, name, filePath, routerChildren, importAlias, defaultRoute);
 	}
 
 	//#region File state
@@ -93,15 +93,15 @@ export class ReactTypeScriptFileUpdate {
 		filePath: string,
 		routerChildren: string,
 		importAlias: string,
-		routesVariable = DEFAULT_ROUTES_VARIABLE
+		defaultRoute = false
 	) {
-		const isRouting: boolean = path.indexOf("routes") >= 0;
+		const isRouting: boolean = path.indexOf(DEFAULT_ROUTES_VARIABLE) >= 0;
 
 		if (isRouting && this.targetSource.text.indexOf(path.slice(0, -4)) > 0) {
 			return;
 		}
 
-		if (path) {
+		if (!defaultRoute) {
 			const relativePath: string = Util.relativePath(this.targetPath, filePath, true, true);
 
 			this.requestImport(relativePath, importAlias, component);
@@ -113,7 +113,7 @@ export class ReactTypeScriptFileUpdate {
 				// the visitor that should be used when adding routes to the main route array
 				const conditionalVisitor: ts.Visitor = (node: ts.Node): ts.Node => {
 					if (node.kind === ts.SyntaxKind.ArrayLiteralExpression) {
-						const newObject = this.createRouteEntry(path, component, name, routerChildren);
+						const newObject = this.createRouteEntry(path, component, name, routerChildren, defaultRoute);
 						const array = (node as ts.ArrayLiteralExpression);
 						this.createdStringLiterals.push(path, name);
 						const notFoundWildCard = ".*";
@@ -145,9 +145,9 @@ export class ReactTypeScriptFileUpdate {
 				if (!isRouting) {
 					visitCondition = (node: ts.Node): boolean => {
 						return node.kind === ts.SyntaxKind.VariableDeclaration &&
-							(node as ts.VariableDeclaration).name.getText() === routesVariable;
-							// no type currently
-							//(node as ts.VariableDeclaration).type.getText() === "Route[]";
+							(node as ts.VariableDeclaration).name.getText() === DEFAULT_ROUTES_VARIABLE;
+						// no type currently
+						//(node as ts.VariableDeclaration).type.getText() === "Route[]";
 					};
 				} else {
 					visitCondition = (node: ts.Node): boolean => {
@@ -403,14 +403,27 @@ export class ReactTypeScriptFileUpdate {
 		path: string,
 		component: string,
 		name: string,
-		routerAlias: string
+		routerAlias: string,
+		defaultRoute: boolean = false
 	): ts.ObjectLiteralExpression {
-		let routePath = ts.factory.createPropertyAssignment("path", ts.factory.createStringLiteral(path, true));
-		const defaultRoute = path === ""; 
 		if (defaultRoute) {
-			// for default route in React we should generate index: true, element: <ElementTag />
-			routePath = ts.factory.createPropertyAssignment("index", ts.factory.createTrue());
+			// for default route in React we should generate index: true, loader: () => redirect(path)
+			const index = ts.factory.createPropertyAssignment("index", ts.factory.createTrue());
+			const loader = ts.factory.createArrowFunction(
+				undefined,
+				undefined,
+				[],
+				undefined,
+				undefined,
+				ts.factory.createCallExpression(
+					ts.factory.createIdentifier("redirect"),
+					[],
+					[ts.factory.createStringLiteral(path, true)]
+				));
+			const redirect = ts.factory.createPropertyAssignment("loader", loader);
+			return ts.factory.createObjectLiteralExpression([index, redirect]);
 		}
+		const routePath = ts.factory.createPropertyAssignment("path", ts.factory.createStringLiteral(path, true));
 		const jsxElement = ts.factory.createJsxSelfClosingElement(
 			ts.factory.createIdentifier(component), [], undefined
 		);
@@ -420,10 +433,6 @@ export class ReactTypeScriptFileUpdate {
 		if (routerAlias) {
 			const childrenData = ts.factory.createPropertyAssignment("children", ts.factory.createIdentifier(routerAlias));
 			return ts.factory.createObjectLiteralExpression([routePath, routeComponent, routeData, childrenData]);
-		}
-		if (defaultRoute) {
-			// for default route React do not need routeData
-			return ts.factory.createObjectLiteralExpression([routePath, routeComponent]);
 		}
 		return ts.factory.createObjectLiteralExpression([routePath, routeComponent, routeData]);
 	}

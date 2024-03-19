@@ -81,7 +81,7 @@ export class IgniteUIForReactTemplate implements Template {
 			const routingModule = new ReactTypeScriptFileUpdate(path.join(projectPath, routeModulePath));
 
 			if (defaultPath) {
-				routingModule.addRoute("", options.className, nameFromPath, filePath, options.routerChildren, undefined);
+				routingModule.addRoute(lowerDashed, options.className, nameFromPath, filePath, options.routerChildren, undefined, defaultPath);
 			}
 
 			routingModule.addRoute(
