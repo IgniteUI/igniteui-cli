@@ -1,4 +1,4 @@
-import { ControlExtraConfiguration, defaultDelimiters, ProjectTemplate, Util } from "@igniteui/cli-core";
+import { ControlExtraConfiguration, defaultDelimiters, ProjectTemplate, updateWorkspace, Util } from "@igniteui/cli-core";
 import * as path from "path";
 
 export class BaseIgcProject implements ProjectTemplate {
@@ -20,7 +20,7 @@ export class BaseIgcProject implements ProjectTemplate {
 	}
 
 	public async upgradeIgniteUIPackages(projectPath: string, packagePath: string): Promise<boolean> {
-		throw new Error("Method not implemented.");
+		return updateWorkspace(projectPath);
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		return [];
@@ -36,7 +36,8 @@ export class BaseIgcProject implements ProjectTemplate {
 			DefaultTheme: "",
 			dot: ".",
 			path: name,
-			projectTemplate: this.id
+			projectTemplate: this.id,
+			yamlDefaultBranch: this.id === "base" ? "<%=yaml-default-branch%>" : "main"
 		};
 
 		return config;

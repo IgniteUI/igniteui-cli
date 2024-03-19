@@ -1,4 +1,4 @@
-import { ControlExtraConfiguration, defaultDelimiters, ProjectTemplate, Util } from "@igniteui/cli-core";
+import { ControlExtraConfiguration, defaultDelimiters, ProjectTemplate, updateWorkspace, Util } from "@igniteui/cli-core";
 import * as path from "path";
 
 export class BaseIgrTsProject implements ProjectTemplate {
@@ -23,7 +23,7 @@ export class BaseIgrTsProject implements ProjectTemplate {
 		throw new Error("Method not implemented.");
 	}
 	public async upgradeIgniteUIPackages(projectPath: string, packagePath: string): Promise<boolean> {
-		throw new Error("Method not implemented.");
+		return updateWorkspace(projectPath);
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
 		throw new Error("Method not implemented.");

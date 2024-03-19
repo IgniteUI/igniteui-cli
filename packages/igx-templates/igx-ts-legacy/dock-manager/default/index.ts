@@ -1,6 +1,5 @@
-import { TypeScriptFileUpdate } from "@igniteui/cli-core";
+import { NPM_DOCK_MANAGER, TypeScriptFileUpdate, resolvePackage } from "@igniteui/cli-core";
 import { IgniteUIForAngularTemplate } from "../../../IgniteUIForAngularTemplate";
-import { NPM_DOCK_MANAGER, resolveIgxPackage } from "../../../package-resolve";
 
 class IgcDockManagerTemplate extends IgniteUIForAngularTemplate {
 	constructor() {
@@ -16,7 +15,7 @@ class IgcDockManagerTemplate extends IgniteUIForAngularTemplate {
 			{ import: "<%=ClassName%>Module", from: "./src/app/<%=path%>/<%=filePrefix%>.module.ts" }
 		];
 		// "igniteui-dockmanager@~1.0.0":
-		this.packages = [ `${resolveIgxPackage(NPM_DOCK_MANAGER)}@~1.8.0` ];
+		this.packages = [ `${resolvePackage(NPM_DOCK_MANAGER)}@~1.8.0` ];
 	}
 	protected addClassDeclaration(mainModule: TypeScriptFileUpdate, projPath: string, name: string, modulePath: string) {
 		// not applicable with custom module
