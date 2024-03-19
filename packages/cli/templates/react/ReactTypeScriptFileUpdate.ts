@@ -12,7 +12,13 @@ export class ReactTypeScriptFileUpdate {
 	private targetSource: ts.SourceFile;
 	private importsMeta: { lastIndex: number, modulePaths: string[] };
 
-	private requestedImports: Array<{ as: string | undefined, from: string, component: string, edit: boolean }>;
+	private requestedImports: Array<{
+		as: string | undefined,
+		from: string,
+		component: string,
+		edit: boolean,
+		namedImport: boolean
+	}>;
 
 	private createdStringLiterals: string[];
 
@@ -101,9 +107,10 @@ export class ReactTypeScriptFileUpdate {
 			return;
 		}
 
-		if (!defaultRoute) {
+		if (defaultRoute) {
+			this.requestImport("react-router-dom", undefined, "redirect", true);
+		} else {
 			const relativePath: string = Util.relativePath(this.targetPath, filePath, true, true);
-
 			this.requestImport(relativePath, importAlias, component);
 		}
 
@@ -167,18 +174,18 @@ export class ReactTypeScriptFileUpdate {
 		this.finalize();
 	}
 
-	protected requestImport(modulePath: string, routerAlias: string, componentName: string) {
+	protected requestImport(modulePath: string, routerAlias: string, componentName: string, namedImport = false) {
 		const existing = this.requestedImports.find(x => x.from === modulePath);
+		// TODO: better check for named imports. There could be several named imports from same modulePath
 		if (!existing) {
 			// new imports, check if already exists in file
 			this.requestedImports.push({
 				as: routerAlias,
 				from: modulePath,
 				component: componentName,
-				edit: this.importsMeta.modulePaths.indexOf(modulePath) !== -1
+				edit: this.importsMeta.modulePaths.indexOf(modulePath) !== -1,
+				namedImport
 			});
-		} else {
-			return;
 		}
 	}
 
@@ -191,7 +198,7 @@ export class ReactTypeScriptFileUpdate {
 
 		const newStatements = ts.factory.createNodeArray([
 			...this.targetSource.statements.slice(0, this.importsMeta.lastIndex),
-			...newImports.map(x => this.createIdentifierImport(x.from, x.as, x.component)),
+			...newImports.map(x => this.createIdentifierImport(x.from, x.as, x.component, x.namedImport)),
 			...this.targetSource.statements.slice(this.importsMeta.lastIndex)
 		]);
 		newImports.forEach(x => this.createdStringLiterals.push(x.from));
@@ -199,7 +206,8 @@ export class ReactTypeScriptFileUpdate {
 		this.targetSource = ts.factory.updateSourceFile(this.targetSource, newStatements);
 	}
 
-	protected createIdentifierImport(importPath: string, as: string, component: string): ts.ImportDeclaration {
+	protected createIdentifierImport(
+		importPath: string, as: string, component: string, namedImport: boolean): ts.ImportDeclaration {
 		let exportedObject: string | undefined;
 		let exportedObjectName: string | undefined;
 		let importClause: ts.ImportClause | undefined;
@@ -215,11 +223,18 @@ export class ReactTypeScriptFileUpdate {
 				])
 			);
 		} else {
-			importClause = ts.factory.createImportClause(
-				false,
-				ts.factory.createIdentifier(component),
-				undefined
-			);
+			if (namedImport) {
+				const importSpecifier = ts.factory.createImportSpecifier(
+					false, undefined, ts.factory.createIdentifier(component));
+				const imports = ts.factory.createNamedImports([importSpecifier]);
+				importClause = ts.factory.createImportClause(false, undefined, imports);
+			} else {
+				importClause = ts.factory.createImportClause(
+					false,
+					ts.factory.createIdentifier(component),
+					undefined
+				);
+			}
 		}
 		const importDeclaration = ts.factory.createImportDeclaration(
 			undefined,
