@@ -12,7 +12,13 @@ export class ReactTypeScriptFileUpdate {
 	private targetSource: ts.SourceFile;
 	private importsMeta: { lastIndex: number, modulePaths: string[] };
 
-	private requestedImports: Array<{ as: string | undefined, from: string, component: string, edit: boolean }>;
+	private requestedImports: Array<{
+		as: string | undefined,
+		from: string,
+		component: string,
+		edit: boolean,
+		namedImport: boolean
+	}>;
 
 	private createdStringLiterals: string[];
 
@@ -40,9 +46,9 @@ export class ReactTypeScriptFileUpdate {
 		filePath: string,
 		routerChildren: string,
 		importAlias: string,
-		routesVariable = DEFAULT_ROUTES_VARIABLE
+		defaultRoute = false
 	) {
-		this.addRouteModuleEntry(path, component, name, filePath, routerChildren, importAlias, routesVariable);
+		this.addRouteModuleEntry(path, component, name, filePath, routerChildren, importAlias, defaultRoute);
 	}
 
 	//#region File state
@@ -93,17 +99,18 @@ export class ReactTypeScriptFileUpdate {
 		filePath: string,
 		routerChildren: string,
 		importAlias: string,
-		routesVariable = DEFAULT_ROUTES_VARIABLE
+		defaultRoute = false
 	) {
-		const isRouting: boolean = path.indexOf("routes") >= 0;
+		const isRouting: boolean = path.indexOf(DEFAULT_ROUTES_VARIABLE) >= 0;
 
 		if (isRouting && this.targetSource.text.indexOf(path.slice(0, -4)) > 0) {
 			return;
 		}
 
-		if (path) {
+		if (defaultRoute) {
+			this.requestImport("react-router-dom", undefined, "redirect", true);
+		} else {
 			const relativePath: string = Util.relativePath(this.targetPath, filePath, true, true);
-
 			this.requestImport(relativePath, importAlias, component);
 		}
 
@@ -113,7 +120,7 @@ export class ReactTypeScriptFileUpdate {
 				// the visitor that should be used when adding routes to the main route array
 				const conditionalVisitor: ts.Visitor = (node: ts.Node): ts.Node => {
 					if (node.kind === ts.SyntaxKind.ArrayLiteralExpression) {
-						const newObject = this.createRouteEntry(path, component, name, routerChildren);
+						const newObject = this.createRouteEntry(path, component, name, routerChildren, defaultRoute);
 						const array = (node as ts.ArrayLiteralExpression);
 						this.createdStringLiterals.push(path, name);
 						const notFoundWildCard = ".*";
@@ -145,9 +152,9 @@ export class ReactTypeScriptFileUpdate {
 				if (!isRouting) {
 					visitCondition = (node: ts.Node): boolean => {
 						return node.kind === ts.SyntaxKind.VariableDeclaration &&
-							(node as ts.VariableDeclaration).name.getText() === routesVariable;
-							// no type currently
-							//(node as ts.VariableDeclaration).type.getText() === "Route[]";
+							(node as ts.VariableDeclaration).name.getText() === DEFAULT_ROUTES_VARIABLE;
+						// no type currently
+						//(node as ts.VariableDeclaration).type.getText() === "Route[]";
 					};
 				} else {
 					visitCondition = (node: ts.Node): boolean => {
@@ -167,18 +174,18 @@ export class ReactTypeScriptFileUpdate {
 		this.finalize();
 	}
 
-	protected requestImport(modulePath: string, routerAlias: string, componentName: string) {
+	protected requestImport(modulePath: string, routerAlias: string, componentName: string, namedImport = false) {
 		const existing = this.requestedImports.find(x => x.from === modulePath);
+		// TODO: better check for named imports. There could be several named imports from same modulePath
 		if (!existing) {
 			// new imports, check if already exists in file
 			this.requestedImports.push({
 				as: routerAlias,
 				from: modulePath,
 				component: componentName,
-				edit: this.importsMeta.modulePaths.indexOf(modulePath) !== -1
+				edit: this.importsMeta.modulePaths.indexOf(modulePath) !== -1,
+				namedImport
 			});
-		} else {
-			return;
 		}
 	}
 
@@ -191,7 +198,7 @@ export class ReactTypeScriptFileUpdate {
 
 		const newStatements = ts.factory.createNodeArray([
 			...this.targetSource.statements.slice(0, this.importsMeta.lastIndex),
-			...newImports.map(x => this.createIdentifierImport(x.from, x.as, x.component)),
+			...newImports.map(x => this.createIdentifierImport(x.from, x.as, x.component, x.namedImport)),
 			...this.targetSource.statements.slice(this.importsMeta.lastIndex)
 		]);
 		newImports.forEach(x => this.createdStringLiterals.push(x.from));
@@ -199,7 +206,8 @@ export class ReactTypeScriptFileUpdate {
 		this.targetSource = ts.factory.updateSourceFile(this.targetSource, newStatements);
 	}
 
-	protected createIdentifierImport(importPath: string, as: string, component: string): ts.ImportDeclaration {
+	protected createIdentifierImport(
+		importPath: string, as: string, component: string, namedImport: boolean): ts.ImportDeclaration {
 		let exportedObject: string | undefined;
 		let exportedObjectName: string | undefined;
 		let importClause: ts.ImportClause | undefined;
@@ -215,11 +223,18 @@ export class ReactTypeScriptFileUpdate {
 				])
 			);
 		} else {
-			importClause = ts.factory.createImportClause(
-				false,
-				ts.factory.createIdentifier(component),
-				undefined
-			);
+			if (namedImport) {
+				const importSpecifier = ts.factory.createImportSpecifier(
+					false, undefined, ts.factory.createIdentifier(component));
+				const imports = ts.factory.createNamedImports([importSpecifier]);
+				importClause = ts.factory.createImportClause(false, undefined, imports);
+			} else {
+				importClause = ts.factory.createImportClause(
+					false,
+					ts.factory.createIdentifier(component),
+					undefined
+				);
+			}
 		}
 		const importDeclaration = ts.factory.createImportDeclaration(
 			undefined,
@@ -403,8 +418,26 @@ export class ReactTypeScriptFileUpdate {
 		path: string,
 		component: string,
 		name: string,
-		routerAlias: string
+		routerAlias: string,
+		defaultRoute: boolean = false
 	): ts.ObjectLiteralExpression {
+		if (defaultRoute) {
+			// for default route in React we should generate index: true, loader: () => redirect(path)
+			const index = ts.factory.createPropertyAssignment("index", ts.factory.createTrue());
+			const loader = ts.factory.createArrowFunction(
+				undefined,
+				undefined,
+				[],
+				undefined,
+				undefined,
+				ts.factory.createCallExpression(
+					ts.factory.createIdentifier("redirect"),
+					[],
+					[ts.factory.createStringLiteral(path, true)]
+				));
+			const redirect = ts.factory.createPropertyAssignment("loader", loader);
+			return ts.factory.createObjectLiteralExpression([index, redirect]);
+		}
 		const routePath = ts.factory.createPropertyAssignment("path", ts.factory.createStringLiteral(path, true));
 		const jsxElement = ts.factory.createJsxSelfClosingElement(
 			ts.factory.createIdentifier(component), [], undefined
@@ -415,8 +448,7 @@ export class ReactTypeScriptFileUpdate {
 		if (routerAlias) {
 			const childrenData = ts.factory.createPropertyAssignment("children", ts.factory.createIdentifier(routerAlias));
 			return ts.factory.createObjectLiteralExpression([routePath, routeComponent, routeData, childrenData]);
-		} else {
-			return ts.factory.createObjectLiteralExpression([routePath, routeComponent, routeData]);
 		}
+		return ts.factory.createObjectLiteralExpression([routePath, routeComponent, routeData]);
 	}
 }
