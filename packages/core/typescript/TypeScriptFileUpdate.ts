@@ -657,6 +657,7 @@ export class TypeScriptFileUpdate {
 				// there shouldn't be duplicate strings of these
 				text = text.replace(`"${str}"`, `'${str}'`);
 			}
+			text = text.replace(/["]/g, "'");
 		}
 
 		this.fileSystem.writeFile(filePath, text);
