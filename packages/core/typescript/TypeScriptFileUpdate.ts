@@ -72,14 +72,22 @@ export class TypeScriptFileUpdate {
 	 * @param linkText Text of the route to add as `data.text`
 	 * @param parentRoutePath Will include the new route as a **child** of the specified route path
 	 * @param routesVariable Name of the array variable holding routes
+	 * @param lazyload Whether to use lazy loading for the route
+	 * @param routesPath Path to the routing module
+	 * @param root Whether the route is a root route
+	 * @param isDefault Whether the route is the default route for the view
 	 */
 	public addChildRoute(
-		filePath: string, linkPath: string, linkText: string, parentRoutePath: string,
+		filePath: string,
+		linkPath: string,
+		linkText: string,
+		parentRoutePath: string,
 		routesVariable = DEFAULT_ROUTES_VARIABLE,
 		lazyload = false,
 		routesPath = "",
 		root = false,
-		isDefault = false) {
+		isDefault = false
+	) {
 		this.addRouteModuleEntry(filePath, linkPath, linkText, routesVariable,
 			parentRoutePath, lazyload, routesPath, root, isDefault);
 	}
@@ -793,7 +801,11 @@ export class TypeScriptFileUpdate {
 		linkPath: string,
 		className: string,
 		linkText: string,
-		lazyload = false, routesPath = "", root = false, isDefault = false): ts.ObjectLiteralExpression {
+		lazyload = false,
+		routesPath = "",
+		root = false,
+		isDefault = false
+	): ts.ObjectLiteralExpression {
 		const routePath = ts.factory.createPropertyAssignment("path", ts.factory.createStringLiteral(linkPath));
 		if (isDefault) {
 			const routeRedirectTo = ts.factory.createPropertyAssignment("redirectTo",
