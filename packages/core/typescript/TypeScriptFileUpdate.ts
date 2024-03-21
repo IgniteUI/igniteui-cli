@@ -72,14 +72,24 @@ export class TypeScriptFileUpdate {
 	 * @param linkText Text of the route to add as `data.text`
 	 * @param parentRoutePath Will include the new route as a **child** of the specified route path
 	 * @param routesVariable Name of the array variable holding routes
+	 * @param lazyload Whether to use lazy loading for the route
+	 * @param routesPath Path to the routing module
+	 * @param root Whether the route is a root route
+	 * @param isDefault Whether the route is the default route for the view
 	 */
 	public addChildRoute(
-		filePath: string, linkPath: string, linkText: string, parentRoutePath: string,
+		filePath: string,
+		linkPath: string,
+		linkText: string,
+		parentRoutePath: string,
 		routesVariable = DEFAULT_ROUTES_VARIABLE,
 		lazyload = false,
 		routesPath = "",
-		root = false) {
-		this.addRouteModuleEntry(filePath, linkPath, linkText, routesVariable, parentRoutePath, lazyload, routesPath, root);
+		root = false,
+		isDefault = false
+	) {
+		this.addRouteModuleEntry(filePath, linkPath, linkText, routesVariable,
+			parentRoutePath, lazyload, routesPath, root, isDefault);
 	}
 
 	/**
@@ -95,8 +105,8 @@ export class TypeScriptFileUpdate {
 		linkPath: string,
 		linkText: string,
 		routesVariable = DEFAULT_ROUTES_VARIABLE,
-		lazyload = false, routesPath = "", root = false) {
-		this.addRouteModuleEntry(filePath, linkPath, linkText, routesVariable, null, lazyload, routesPath, root);
+		lazyload = false, routesPath = "", root = false, isDefault = false) {
+		this.addRouteModuleEntry(filePath, linkPath, linkText, routesVariable, null, lazyload, routesPath, root, isDefault);
 	}
 
 	/**
@@ -276,7 +286,8 @@ export class TypeScriptFileUpdate {
 		parentRoutePath?: string,
 		lazyload = false,
 		routesPath = "",
-		root = false
+		root = false,
+		isDefault = false
 	) {
 		let className: string;
 		const fileSource = TsUtils.getFileSource(filePath);
@@ -343,6 +354,10 @@ export class TypeScriptFileUpdate {
 							}
 							return false;
 						}
+						let defaultRoute: ts.ObjectLiteralExpression;
+						if (isDefault) {
+							defaultRoute = this.createRouteEntry("", null, null, false, routesPath, root, isDefault);
+						}
 						const newObject = this.createRouteEntry(linkPath, className, linkText);
 						const currentNode = node as ts.ObjectLiteralExpression;
 						this.createdStringLiterals.push(linkPath, linkText);
@@ -364,7 +379,12 @@ export class TypeScriptFileUpdate {
 
 						let existingProperties = syntaxList.getChildren()
 							.filter(element => element.kind !== ts.SyntaxKind["CommaToken"]) as ts.ObjectLiteralElementLike[];
-						const newArrayValues = childrenArray.elements.concat(newObject);
+						let newArrayValues: ts.Expression[];
+						if (isDefault) {
+							newArrayValues = childrenArray.elements.concat(defaultRoute, newObject);
+						} else {
+							newArrayValues = childrenArray.elements.concat(newObject);
+						}
 						if (!childrenProperty) {
 							const propertyName = "children";
 							const propertyValue = ts.factory.createArrayLiteralExpression([...newArrayValues]);
@@ -645,6 +665,7 @@ export class TypeScriptFileUpdate {
 				// there shouldn't be duplicate strings of these
 				text = text.replace(`"${str}"`, `'${str}'`);
 			}
+			text = text.replace(/["]/g, "'");
 		}
 
 		this.fileSystem.writeFile(filePath, text);
@@ -780,8 +801,19 @@ export class TypeScriptFileUpdate {
 		linkPath: string,
 		className: string,
 		linkText: string,
-		lazyload = false, routesPath = "", root = false): ts.ObjectLiteralExpression {
+		lazyload = false,
+		routesPath = "",
+		root = false,
+		isDefault = false
+	): ts.ObjectLiteralExpression {
 		const routePath = ts.factory.createPropertyAssignment("path", ts.factory.createStringLiteral(linkPath));
+		if (isDefault) {
+			const routeRedirectTo = ts.factory.createPropertyAssignment("redirectTo",
+				ts.factory.createStringLiteral(routesPath));
+			const routePathMatch = ts.factory.createPropertyAssignment("pathMatch",
+				ts.factory.createStringLiteral("full"));
+			return ts.factory.createObjectLiteralExpression([routePath, routeRedirectTo, routePathMatch]);
+		}
 		let routeComponent;
 		// TODO: we should consider using the ts.factory instead of string interpolations
 		if (lazyload) {
