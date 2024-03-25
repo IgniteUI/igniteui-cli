@@ -5,3 +5,4 @@ export * from "./Schematics";
 export * from "./App";
 export * from "./FileSystem";
 export * from "./Container";
+export * from './types';

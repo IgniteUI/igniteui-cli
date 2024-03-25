@@ -1,5 +1,5 @@
 import * as ts from "typescript";
-import { App } from "..";
+import { App, IImport } from "..";
 import { TemplateDependency } from "../types";
 import { FS_TOKEN, IFileSystem } from "../types/FileSystem";
 import { Util } from "../util/Util";
@@ -17,22 +17,22 @@ export class TypeScriptFileUpdate {
 	// for AST transformation API List: https://github.com/Microsoft/TypeScript/pull/13940
 
 	protected formatOptions = { spaces: false, indentSize: 4, singleQuotes: false };
-	private fileSystem: IFileSystem;
-	private targetSource: ts.SourceFile;
-	private importsMeta: { lastIndex: number, modulePaths: string[] };
+	protected fileSystem: IFileSystem;
+	protected targetSource: ts.SourceFile;
+	protected importsMeta: { lastIndex: number, modulePaths: string[] };
 
-	private requestedImports: Array<{ from: string, imports: string[], edit: boolean }>;
-	private ngMetaEdits: {
+	protected requestedImports: IImport[];
+	protected ngMetaEdits: {
 		declarations: string[],
 		imports: Array<{ name: string, root: boolean, standalone?: boolean }>,
 		providers: string[],
 		exports: string[]
 	};
 
-	private createdStringLiterals: string[];
+	protected createdStringLiterals: string[];
 
 	/** Create updates for a file. Use `add<X>` methods to add transformations and `finalize` to apply and save them. */
-	constructor(private targetPath: string) {
+	constructor(protected targetPath: string) {
 		this.fileSystem = App.container.get<IFileSystem>(FS_TOKEN);
 		this.initState();
 	}
@@ -716,7 +716,7 @@ export class TypeScriptFileUpdate {
 	 * Apply formatting changes (position based) in reverse
 	 * from https://github.com/Microsoft/TypeScript/issues/1651#issuecomment-69877863
 	 */
-	private applyChanges(orig: string, changes: ts.TextChange[]): string {
+	protected applyChanges(orig: string, changes: ts.TextChange[]): string {
 		let result = orig;
 		for (let i = changes.length - 1; i >= 0; i--) {
 			const change = changes[i];
@@ -728,7 +728,7 @@ export class TypeScriptFileUpdate {
 	}
 
 	/** Return source file formatting options */
-	private getFormattingOptions(): ts.FormatCodeSettings {
+	protected getFormattingOptions(): ts.FormatCodeSettings {
 		const formatOptions: ts.FormatCodeSettings = {
 			// tslint:disable:object-literal-sort-keys
 			indentSize: this.formatOptions.indentSize,
@@ -748,7 +748,7 @@ export class TypeScriptFileUpdate {
 	}
 
 	/** Get language service host, sloppily */
-	private getLanguageHost(filePath: string): ts.LanguageServiceHost {
+	protected getLanguageHost(filePath: string): ts.LanguageServiceHost {
 		const files = {};
 		files[filePath] = { version: 0 };
 		// create the language service host to allow the LS to communicate with the host
@@ -774,7 +774,7 @@ export class TypeScriptFileUpdate {
 	//#endregion Formatting
 
 	/** Convert a string or string array union to array. Splits strings as comma delimited */
-	private asArray(value: string | string[], variables: { [key: string]: string }): string[] {
+	protected asArray(value: string | string[], variables: { [key: string]: string }): string[] {
 		let result: string[] = [];
 		if (value) {
 			result = typeof value === "string" ? value.split(/\s*,\s*/) : value;
