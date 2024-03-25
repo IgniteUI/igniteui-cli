@@ -1,5 +1,8 @@
-import { FEED_PACKAGE, IgniteUIForAngularTemplate, NPM_DOCK_MANAGER, NPM_PACKAGE } from "@igniteui/angular-templates";
-import { App, FS_TOKEN, IFileSystem, ProjectConfig, TypeScriptFileUpdate, Util } from "@igniteui/cli-core";
+import { IgniteUIForAngularTemplate } from "@igniteui/angular-templates";
+import {
+	FEED_ANGULAR, NPM_DOCK_MANAGER, NPM_ANGULAR, App, FS_TOKEN,
+	IFileSystem, ProjectConfig, TypeScriptFileUpdate, Util
+} from "@igniteui/cli-core";
 import * as path from "path";
 import { resetSpy } from "../../helpers/utils";
 
@@ -140,7 +143,7 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 				cliVersion: Util.version(),
 				description: "test description",
 				dockManagerPackage: `${NPM_DOCK_MANAGER}`,
-				igxPackage: `${NPM_PACKAGE}`
+				igxPackage: `${NPM_ANGULAR}`
 			};
 			Object.assign(expected, {
 				// extra
@@ -166,10 +169,10 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 
 			spyOn(App.container.get<IFileSystem>(FS_TOKEN), "readFile").and.callFake((filePath: string) => {
 				if (filePath === "./package.json") {
-					return `{ "dependencies": { "${FEED_PACKAGE}": "*" } }`;
+					return `{ "dependencies": { "${FEED_ANGULAR}": "*" } }`;
 				}
 			});
-			expected.igxPackage = FEED_PACKAGE;
+			expected.igxPackage = FEED_ANGULAR;
 			actual = templ.generateConfig("test", options);
 			expect(actual).toEqual(expected);
 			done();

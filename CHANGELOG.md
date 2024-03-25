@@ -1,3 +1,48 @@
+# [13.1.12](https://github.com/IgniteUI/igniteui-cli/compare/v13.1.11...v13.1.12) (2024-03-21)
+
+🎉 This update includes `upgrade-packages` command for web components and react.
+
+In a project with [igniteui-webcomponents](https://github.com/IgniteUI/igniteui-webcomponents) or [igniteui-react](https://github.com/IgniteUI/igniteui-react) use the following command:
+
+```console
+ig upgrade-packages
+```
+
+[License FAQ and Installation for web components](https://www.infragistics.com/products/ignite-ui-web-components/web-components/components/general-licensing)
+
+[License FAQ and Installation for react](https://www.infragistics.com/products/ignite-ui-react/react/components/general-licensing)
+
+## What's Changed
+* feat(cli): upgrade packages for React and WC by @igdmdimitrov in https://github.com/IgniteUI/igniteui-cli/pull/1198
+* fix: add elements internal polyfill to base template by @onlyexeption in https://github.com/IgniteUI/igniteui-cli/pull/1225
+* indentation across igr-ts projects by @onlyexeption in https://github.com/IgniteUI/igniteui-cli/pull/1223
+* build(deps): bump follow-redirects from 1.15.4 to 1.15.6 by @dependabot in https://github.com/IgniteUI/igniteui-cli/pull/1226
+* fix(Imports): Fixed class import path in .test.ts by @gedinakova in https://github.com/IgniteUI/igniteui-cli/pull/1224
+* fix(Lint): Fixed styles typing in style-utils by @gedinakova in https://github.com/IgniteUI/igniteui-cli/pull/1222
+* Generate default route redirect in React by @wnvko in https://github.com/IgniteUI/igniteui-cli/pull/1227
+* Generate default redirect routes for NG by @jackofdiamond5 in https://github.com/IgniteUI/igniteui-cli/pull/1228
+
+## New Contributors
+* @igdmdimitrov made their first contribution in https://github.com/IgniteUI/igniteui-cli/pull/1198
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.1.11...v13.1.12
+
+
+# [13.1.11](https://github.com/IgniteUI/igniteui-cli/compare/v13.1.10...v13.1.11) (2024-03-12)
+
+## What's Changed
+* Update react base template by @wnvko in https://github.com/IgniteUI/igniteui-cli/pull/1221
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.1.10...v13.1.11
+
+# [13.1.10](https://github.com/IgniteUI/igniteui-cli/compare/v13.1.9...v13.1.10) (2024-03-11)
+
+## What's Changed
+* Updating igx-ts-legacy base template by @dafo in https://github.com/IgniteUI/igniteui-cli/pull/1216
+
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.1.9...v13.1.10
+
 # [13.1.9](https://github.com/IgniteUI/igniteui-cli/compare/v13.1.8...v13.1.9) (2024-03-05)
 
 ## What's Changed
