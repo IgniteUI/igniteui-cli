@@ -46,33 +46,34 @@ export class IgniteUIForWebComponentsTemplate implements Template {
 		if (!(options && options.skipRoute) && App.container.get<IFileSystem>(FS_TOKEN)
 			.fileExists(routeModulePath)) {
 
-			if (defaultPath) {
-				routingModule.addRoute(
-					"",
-					options.selector,
-					Util.nameFromPath(fullName),
-					options.routerChildren,
-					undefined
-				);
-			}
+			// TODO
+			// if (defaultPath) {
+			// 	routingModule.addRoute(
+			// 		"",
+			// 		options.selector,
+			// 		Util.nameFromPath(fullName),
+			// 		options.routerChildren,
+			// 		undefined
+			// 	);
+			// }
 
-			routingModule.addRoute(
-				this.fileName(fullName),
-				options.selector,
-				Util.nameFromPath(fullName),
-				options.routerChildren,
-				undefined
-			);
+			// routingModule.addRoute(
+			// 	this.fileName(fullName),
+			// 	options.selector,
+			// 	Util.nameFromPath(fullName),
+			// 	options.routerChildren,
+			// 	undefined
+			// );
 
-			if (options.hasChildren) {
-				routingModule.addRoute(
-					this.fileName(`${options.modulePath}-routing.ts`),
-					options.selector,
-					Util.nameFromPath(`${options.modulePath}-routing.ts`),
-					options.routerChildren,
-					options.importAlias
-				);
-			}
+			// if (options.hasChildren) {
+			// 	routingModule.addRoute(
+			// 		this.fileName(`${options.modulePath}-routing.ts`),
+			// 		options.selector,
+			// 		Util.nameFromPath(`${options.modulePath}-routing.ts`),
+			// 		options.routerChildren,
+			// 		options.importAlias
+			// 	);
+			// }
 		}
 	}
 

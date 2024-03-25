@@ -80,40 +80,41 @@ export class IgniteUIForReactTemplate implements Template {
 			let filePath = path.posix.join(projectPath, options.modulePath, `${lowerDashed}.tsx`);
 			const routingModule = new ReactTypeScriptFileUpdate(path.join(projectPath, routeModulePath));
 
-			if (defaultPath) {
-				routingModule.addRoute(
-					lowerDashed,
-					options.className,
-					nameFromPath,
-					filePath,
-					options.routerChildren,
-					undefined,
-					defaultPath);
-			}
+			// TODO
+			// if (defaultPath) {
+			// 	routingModule.addRoute(
+			// 		lowerDashed,
+			// 		options.className,
+			// 		nameFromPath,
+			// 		filePath,
+			// 		options.routerChildren,
+			// 		undefined,
+			// 		defaultPath);
+			// }
 
-			routingModule.addRoute(
-				lowerDashed,
-				options.className,
-				nameFromPath,
-				filePath,
-				options.routerChildren,
-				undefined
-			);
+			// routingModule.addRoute(
+			// 	lowerDashed,
+			// 	options.className,
+			// 	nameFromPath,
+			// 	filePath,
+			// 	options.routerChildren,
+			// 	undefined
+			// );
 
-			if (options.hasChildren) {
-				nameFromPath = Util.nameFromPath(`${options.modulePath}-routes.tsx`);
-				lowerDashed = Util.lowerDashed(nameFromPath);
-				filePath = path.posix.join(projectPath, options.modulePath, nameFromPath);
+			// if (options.hasChildren) {
+			// 	nameFromPath = Util.nameFromPath(`${options.modulePath}-routes.tsx`);
+			// 	lowerDashed = Util.lowerDashed(nameFromPath);
+			// 	filePath = path.posix.join(projectPath, options.modulePath, nameFromPath);
 
-				routingModule.addRoute(
-					lowerDashed,
-					options.className,
-					nameFromPath,
-					filePath,
-					options.routerChildren,
-					options.importAlias
-				);
-			}
+			// 	routingModule.addRoute(
+			// 		lowerDashed,
+			// 		options.className,
+			// 		nameFromPath,
+			// 		filePath,
+			// 		options.routerChildren,
+			// 		options.importAlias
+			// 	);
+			// }
 		}
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {

@@ -1,17 +1,31 @@
-import { App, FS_TOKEN, IFileSystem, TypeScriptFileUpdate, TypeScriptUtils, Util } from "@igniteui/cli-core";
+import { App, FS_TOKEN, IFileSystem, IImport, TypeScriptFileUpdate, TypeScriptUtils, Util } from "@igniteui/cli-core";
 import * as ts from "typescript";
 
 const DEFAULT_ROUTES_VARIABLE = "routes";
 /**
  * Apply various updates to typescript files using AST
  */
-export class ReactTypeScriptFileUpdate extends TypeScriptFileUpdate {
+export class ReactTypeScriptFileUpdate /* extends TypeScriptFileUpdate */ {
 	/** Create updates for a file. Use `add<X>` methods to add transformations and `finalize` to apply and save them. */
+
+	/* temp */
+	private targetPath: string;
+	private targetSource: ts.SourceFile;
+	private fileSystem: IFileSystem;
+	private importsMeta: IImport;
+	private requestedImports: IImport[];
+	private createdStringLiterals: string[];
+
+	private addNewFileImports() {}
+	private formatFile(filePath: string) {}
+	private loadImportsMeta(): IImport { return null; }
+
 	constructor(targetPath: string) {
-		super(targetPath);
+		// super(targetPath);
 		this.fileSystem = App.container.get<IFileSystem>(FS_TOKEN);
 		this.initState();
 	}
+	/* -- */
 
 	/** Applies accumulated transforms, saves and formats the file */
 	public finalize() {
