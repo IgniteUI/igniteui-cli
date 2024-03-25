@@ -3,7 +3,7 @@ import {
 	IFileSystem, NPM_DOCK_MANAGER, resolvePackage, Template, TemplateDependency, Util
 } from "@igniteui/cli-core";
 import * as path from "path";
-import { TypeScriptFileUpdate } from "../../templates/webcomponents/TypeScriptFileUpdate";
+import { WebComponentsTypeScriptFileUpdate } from "../../templates/webcomponents/WebComponentsTypeScriptFileUpdate";
 
 export class IgniteUIForWebComponentsTemplate implements Template {
 	public components: string[];
@@ -41,7 +41,7 @@ export class IgniteUIForWebComponentsTemplate implements Template {
 			return;
 		}
 		const routeModulePath: string = options.parentRoutingModulePath;
-		const routingModule = new TypeScriptFileUpdate(path.join(projectPath, routeModulePath));
+		const routingModule = new WebComponentsTypeScriptFileUpdate(path.join(projectPath, routeModulePath));
 
 		if (!(options && options.skipRoute) && App.container.get<IFileSystem>(FS_TOKEN)
 			.fileExists(routeModulePath)) {
