@@ -14,3 +14,5 @@ export * from "./TemplateDependency";
 export * from "./enumerations/ControlExtraConfigType";
 export * from "./TemplateReplaceDelimiters";
 export * from "./FileSystem";
+export * from "./types-typescript";
+export * from './KeyValuePair';
