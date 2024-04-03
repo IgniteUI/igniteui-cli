@@ -80,7 +80,7 @@ describe('TypeScript AST Transformer', () => {
       const targetChild = astTransformer
         .findVariableDeclaration('myVar', 'string')
         ?.getChildAt(4)!;
-      const variableDeclaration = astTransformer.findNodeAncenstor(
+      const variableDeclaration = astTransformer.findNodeAncestor(
         targetChild,
         ts.isVariableDeclaration
       )!;
