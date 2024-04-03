@@ -11,7 +11,7 @@ class IgrTsLinearGaugeTemplate extends IgniteUIForReactTemplate {
 		this.name = "Linear Gauge";
 		this.description = `value compared against a scale and one or more ranges.`;
 		// TODO: read version from igniteui-react-core in package.json
-		this.packages = ["igniteui-react-gauges@18.3.0"];
+		this.packages = ["igniteui-react-gauges@~18.6.0"];
 	}
 }
 module.exports = new IgrTsLinearGaugeTemplate();
