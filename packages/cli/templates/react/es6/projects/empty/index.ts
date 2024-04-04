@@ -1,5 +1,5 @@
-import { ControlExtraConfiguration, defaultDelimiters, ProjectTemplate, Util } from "@igniteui/cli-core";
-import * as fs from "fs-extra";
+import { App, ControlExtraConfiguration, defaultDelimiters,
+	FS_TOKEN, FsFileSystem, ProjectTemplate, Util } from "@igniteui/cli-core";
 import * as path from "path";
 
 class EmptyProject implements ProjectTemplate {
@@ -24,6 +24,15 @@ class EmptyProject implements ProjectTemplate {
 		return true;
 	}
 	public generateConfig(name: string, theme: string, ...options: any[]): { [key: string]: any } {
+		const pkgJson = "package.json";
+		const fileSystme = App.container.get<FsFileSystem>(FS_TOKEN);
+		if (fileSystme.fileExists(pkgJson)) {
+			const packageJson = JSON.parse(fileSystme.readFile(pkgJson));
+			if (packageJson) {
+				packageJson.eslintConfig.extends = ["react-app", "react-app/jest"];
+				fileSystme.writeFile(pkgJson, JSON.stringify(packageJson, null, 2));
+			}
+		}
 
 		//TODO update the config with [{key: "keyname", "value"}]
 		return {
