@@ -36,6 +36,12 @@ export class TypeScriptFileUpdate {
 		this.initState();
 	}
 
+	public transform(source: ts.SourceFile | ts.SourceFile[],
+		transformers: ts.TransformerFactory<ts.SourceFile | ts.Node>[],
+		compilerOptions?: ts.CompilerOptions) {
+		return ts.transform(source, transformers, compilerOptions);
+	}
+
 	/** Applies accumulated transforms, saves and formats the file */
 	public finalize() {
 		const transforms = [];
@@ -52,7 +58,7 @@ export class TypeScriptFileUpdate {
 		}
 
 		if (transforms.length) {
-			this.targetSource = ts.transform(this.targetSource, transforms).transformed[0];
+			this.targetSource = this.transform(this.targetSource, transforms).transformed[0] as ts.SourceFile;
 		}
 
 		// add new import statements after visitor walks:
@@ -226,7 +232,7 @@ export class TypeScriptFileUpdate {
 			context.enableSubstitution(ts.SyntaxKind.ArrayLiteralExpression);
 			return ts.visitNode(rootNode, visitor);
 		};
-		this.targetSource = ts.transform(this.targetSource, [transformer], {
+		this.targetSource = this.transform(this.targetSource, [transformer], {
 			pretty: true // oh well..
 		}).transformed[0] as ts.SourceFile;
 	}
@@ -424,7 +430,7 @@ export class TypeScriptFileUpdate {
 				return ts.visitNode(rootNode, visitor);
 			};
 
-		this.targetSource = ts.transform(this.targetSource, [transformer], {
+		this.targetSource = this.transform(this.targetSource, [transformer], {
 			pretty: true // oh well..
 		}).transformed[0] as ts.SourceFile;
 
