@@ -211,7 +211,7 @@ export class TypeScriptFileUpdate {
 						...newProvides
 					]);
 
-					return ts.factory.updateArrayLiteralExpression(array, elements);
+					return ts.factory.updateArrayLiteralExpression(array, elements.map(x => x as ts.Expression));
 				} else {
 					return ts.visitEachChild(node, conditionalVisitor, context);
 				}
@@ -492,13 +492,13 @@ export class TypeScriptFileUpdate {
 					const moduleSpecifier = (namedImports.parent.parent.moduleSpecifier as ts.StringLiteral).text;
 
 					const existing = ts.visitNodes(namedImports.elements, visitor);
-					const alreadyImported = existing.map(x => x.name.text);
+					const alreadyImported = existing.map(x => ts.isImportSpecifier(x) && x.name.text);
 
 					const editImport = editImports.find(x => x.from === moduleSpecifier);
 					const newImports = editImport.imports.filter(x => alreadyImported.indexOf(x) === -1);
 
 					node = ts.factory.updateNamedImports(namedImports, [
-						...existing,
+						...existing.map(x => x as ts.ImportSpecifier),
 						...newImports.map(x => ts.factory.createImportSpecifier(false, undefined, ts.factory.createIdentifier(x)))
 					]);
 				} else {

@@ -23,9 +23,9 @@ export class TypeScriptUtils {
 		const importClause = ts.factory.createImportClause(false, undefined, namedImport);
 		const importDeclaration = ts.factory.createImportDeclaration(
 			undefined,
-			undefined,
 			importClause,
-			ts.factory.createStringLiteral(importPath));
+			ts.factory.createStringLiteral(importPath),
+			undefined);
 		return importDeclaration;
 	}
 
