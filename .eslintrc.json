@@ -1,4 +1,4 @@
-module.exports = {
+{
 	"root": true,
 	"env": {
 		"browser": true,
@@ -18,7 +18,7 @@ module.exports = {
 	"plugins": [
 		"eslint-plugin-import",
 		"eslint-plugin-unicorn",
-		"eslint-plugin-prefer-arrow",
+		"eslint-plugin-prefer-arrow"
 		// "@typescript-eslint" - install it if we extend the recommended ts rules
 	],
 	"ignorePatterns": [
@@ -157,4 +157,4 @@ module.exports = {
 		"use-isnan": "error",
 		"valid-typeof": "off"
 	}
-};
+}

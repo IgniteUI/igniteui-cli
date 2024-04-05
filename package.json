@@ -27,7 +27,7 @@
 		"test": "nyc npm run jasmine",
 		"jasmine": "node spec/jasmine-runner.js",
 		"coverage": "nyc report --dir coverage lcov",
-		"lint": "eslint -c .eslintrc.js ./**/*.ts",
+		"lint": "eslint -c .eslintrc.json ./**/*.ts",
 		"config-schema": "typescript-json-schema packages/core/types/Config.ts Config -o packages/core/config/Config.schema.json"
 	},
 	"nyc": {
@@ -63,6 +63,7 @@
 		"@types/fs-extra": "^3.0.3",
 		"@types/inquirer": "0.0.35",
 		"@types/jasmine": "3.3.9",
+		"@types/minimatch": "^5.1.2",
 		"@types/node": "^20.12.3",
 		"@typescript-eslint/eslint-plugin": "^7.5.0",
 		"@typescript-eslint/parser": "^7.5.0",
