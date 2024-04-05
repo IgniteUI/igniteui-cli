@@ -553,27 +553,6 @@ export class Util {
 		return obj;
 	}
 
-	public static addEsLintToPkgJson(config: Config);
-	public static addEsLintToPkgJson(projectPath: string);
-	public static addEsLintToPkgJson(configOrPath: Config | string) {
-		const pkgJson = typeof configOrPath === "string" ?
-			path.posix.join(configOrPath, "package.json")
-			: path.posix.join(__dirname, "package.json");
-
-		if (this.fileExists(pkgJson)) {
-			const packageJson = JSON.parse(this.readFile(pkgJson));
-			if (packageJson && !packageJson.eslintConfig) {
-				packageJson.eslintConfig = {};
-				packageJson.eslintConfig.extends = ["react-app"];
-				if (typeof configOrPath === "object"
-					&& configOrPath.project.projectType === "es6") {
-					packageJson.eslintConfig.extends.push("react-app/jest");
-				}
-				this.writeFile(pkgJson, JSON.stringify(packageJson, null, 2));
-			}
-		}
-	}
-
 	private static incrementName(name: string, baseLength: number): string {
 		const text: string = name.slice(0, baseLength);
 		const number: number = parseInt(name.slice(baseLength + 1), 10) || 0;

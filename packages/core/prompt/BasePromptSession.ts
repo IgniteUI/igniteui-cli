@@ -408,10 +408,6 @@ export abstract class BasePromptSession {
 				}
 			}
 
-			if (config.project.framework === "react") {
-				Util.addEsLintToPkgJson(config);
-			}
-
 			const defaultPort = config.project.defaultPort;
 			const port = await this.getUserInput({
 				type: "input",

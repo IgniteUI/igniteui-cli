@@ -139,10 +139,6 @@ command = {
 				config, projTemplate.delimiters, false);
 		}
 
-		if (ProjectConfig.getConfig().project?.framework === "react") {
-			Util.addEsLintToPkgJson(config as Config);
-		}
-
 		Util.log(Util.greenCheck() + " Project Created");
 
 		if (!argv["skip-git"] && !ProjectConfig.getConfig().skipGit) {
