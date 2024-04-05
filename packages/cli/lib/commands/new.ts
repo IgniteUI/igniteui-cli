@@ -1,4 +1,4 @@
-import { GoogleAnalytics, PackageManager, ProjectConfig, ProjectLibrary, Util } from "@igniteui/cli-core";
+import { Config, GoogleAnalytics, PackageManager, ProjectConfig, ProjectLibrary, Util } from "@igniteui/cli-core";
 import * as path from "path";
 import { TemplateManager } from "../TemplateManager";
 import { PromptSession } from "./../PromptSession";
@@ -137,6 +137,10 @@ command = {
 		for (const templatePath of projTemplate.templatePaths) {
 			await Util.processTemplates(templatePath, path.join(process.cwd(), argv.name),
 				config, projTemplate.delimiters, false);
+		}
+
+		if (ProjectConfig.getConfig().project?.framework === "react") {
+			Util.addEsLintToPkgJson(config as Config);
 		}
 
 		Util.log(Util.greenCheck() + " Project Created");

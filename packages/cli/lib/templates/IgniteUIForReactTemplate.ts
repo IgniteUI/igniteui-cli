@@ -66,6 +66,7 @@ export class IgniteUIForReactTemplate implements Template {
 			return;
 		}
 
+		Util.addEsLintToPkgJson(projectPath);
 		if (this.projectType === "igr-es6") {
 			this.registerJSONRoute(projectPath, name, options.parentRoutingModulePath);
 			return;

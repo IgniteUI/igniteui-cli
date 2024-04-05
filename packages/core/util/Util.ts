@@ -5,7 +5,7 @@ import * as glob from "glob";
 import * as path from "path";
 import through2 = require("through2");
 import { BaseComponent } from "../templates/BaseComponent";
-import { Component, ComponentGroup, Delimiter, FS_TOKEN, IFileSystem, Template, TemplateDelimiters } from "../types";
+import { Component, ComponentGroup, Config, Delimiter, FS_TOKEN, IFileSystem, Template, TemplateDelimiters } from "../types";
 import { App } from "./App";
 import { GoogleAnalytics } from "./GoogleAnalytics";
 
@@ -41,6 +41,14 @@ export class Util {
 
 	public static fileExists(filePath) {
 		return App.container.get<IFileSystem>(FS_TOKEN).fileExists(filePath);
+	}
+
+	public static readFile(filePath) {
+		return App.container.get<IFileSystem>(FS_TOKEN).readFile(filePath);
+	}
+
+	public static writeFile(filePath, content) {
+		return App.container.get<IFileSystem>(FS_TOKEN).writeFile(filePath, content);
 	}
 
 	public static isDirectory(dirPath): boolean {
@@ -543,6 +551,27 @@ export class Util {
 			obj[`${delimiter.start}${key}${delimiter.end}`] = config[key];
 		}
 		return obj;
+	}
+
+	public static addEsLintToPkgJson(config: Config);
+	public static addEsLintToPkgJson(projectPath: string);
+	public static addEsLintToPkgJson(configOrPath: Config | string) {
+		const pkgJson = typeof configOrPath === "string" ?
+			path.posix.join(configOrPath, "package.json")
+			: path.posix.join(__dirname, "package.json");
+
+		if (this.fileExists(pkgJson)) {
+			const packageJson = JSON.parse(this.readFile(pkgJson));
+			if (packageJson && !packageJson.eslintConfig) {
+				packageJson.eslintConfig = {};
+				packageJson.eslintConfig.extends = ["react-app"];
+				if (typeof configOrPath === "object"
+					&& configOrPath.project.projectType === "es6") {
+					packageJson.eslintConfig.extends.push("react-app/jest");
+				}
+				this.writeFile(pkgJson, JSON.stringify(packageJson, null, 2));
+			}
+		}
 	}
 
 	private static incrementName(name: string, baseLength: number): string {

@@ -101,7 +101,7 @@
 		"no-constant-condition": "warn",
 		"no-case-declarations": "off",
 		"no-extra-boolean-cast": "warn",
-		"no-unused-vars": "warn",
+		"no-unused-vars": "off",
 		"no-unexpected-multiline": "off",
 		"no-useless-escape": "off",
 		"new-parens": "error",
@@ -140,12 +140,7 @@
 			"error",
 			"never"
 		],
-		"prefer-arrow/prefer-arrow-functions": [
-			"warn",
-			{
-				"allowStandaloneDeclarations": true
-			}
-		],
+		"prefer-arrow/prefer-arrow-functions": "off",
 		"prefer-const": "warn",
 		"prefer-object-spread": "off",
 		"radix": "error",
