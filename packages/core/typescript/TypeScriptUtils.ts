@@ -3,6 +3,7 @@ import * as ts from "typescript";
 import { FS_TOKEN, IFileSystem } from "../types/FileSystem";
 import { App } from "../util";
 import { Util } from "../util/Util";
+import { EOL } from "os";
 
 export class TypeScriptUtils {
 
@@ -116,7 +117,10 @@ export class TypeScriptUtils {
 	}
 
 	public static createPrinter(): ts.Printer {
-		return ts.createPrinter();
+		const options: ts.PrinterOptions = {
+			newLine: EOL === "\n" ? ts.NewLineKind.LineFeed : ts.NewLineKind.CarriageReturnLineFeed
+		};
+		return ts.createPrinter(options);
 	}
 
 	/**

@@ -286,7 +286,7 @@ describe("Add command", () => {
 			expect(fs.existsSync(componentPath)).toBeTruthy();
 			// file contents:
 			expect(fs.readFileSync(componentPath, "utf-8")).toContain("export class TestViewComponent");
-			expect(fs.readFileSync("src/app/app-routing.module.ts", "utf-8").replace(/(\r?\n)+/g, EOL)).toBe(
+			expect(fs.readFileSync("src/app/app-routing.module.ts", "utf-8")).toBe(
 				`import { TestViewComponent } from './test-view/test-view.component';` + EOL +
 				`const routes: Routes = [{ path: 'test-view', component: TestViewComponent, data: { text: 'Test view' } }];` + EOL
 			);

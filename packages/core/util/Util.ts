@@ -43,14 +43,6 @@ export class Util {
 		return App.container.get<IFileSystem>(FS_TOKEN).fileExists(filePath);
 	}
 
-	public static readFile(filePath) {
-		return App.container.get<IFileSystem>(FS_TOKEN).readFile(filePath);
-	}
-
-	public static writeFile(filePath, content) {
-		return App.container.get<IFileSystem>(FS_TOKEN).writeFile(filePath, content);
-	}
-
 	public static isDirectory(dirPath): boolean {
 		return fs.lstatSync(dirPath).isDirectory();
 	}
