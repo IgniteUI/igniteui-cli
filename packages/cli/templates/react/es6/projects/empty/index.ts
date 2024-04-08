@@ -1,5 +1,4 @@
-import { App, ControlExtraConfiguration, defaultDelimiters,
-	FS_TOKEN, IFileSystem, ProjectTemplate, Util } from "@igniteui/cli-core";
+import { ControlExtraConfiguration, defaultDelimiters, ProjectTemplate, Util } from "@igniteui/cli-core";
 import * as path from "path";
 
 class EmptyProject implements ProjectTemplate {

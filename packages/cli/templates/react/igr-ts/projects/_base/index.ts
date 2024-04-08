@@ -1,5 +1,4 @@
-import { App, ControlExtraConfiguration, defaultDelimiters, FS_TOKEN,
-	IFileSystem, ProjectTemplate, updateWorkspace, Util } from "@igniteui/cli-core";
+import { ControlExtraConfiguration, defaultDelimiters, ProjectTemplate, updateWorkspace, Util } from "@igniteui/cli-core";
 import * as path from "path";
 
 export class BaseIgrTsProject implements ProjectTemplate {

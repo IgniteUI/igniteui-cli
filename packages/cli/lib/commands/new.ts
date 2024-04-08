@@ -1,4 +1,4 @@
-import { Config, GoogleAnalytics, PackageManager, ProjectConfig, ProjectLibrary, Util } from "@igniteui/cli-core";
+import { GoogleAnalytics, PackageManager, ProjectConfig, ProjectLibrary, Util } from "@igniteui/cli-core";
 import * as path from "path";
 import { TemplateManager } from "../TemplateManager";
 import { PromptSession } from "./../PromptSession";
