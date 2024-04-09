@@ -5,7 +5,7 @@ import * as glob from "glob";
 import * as path from "path";
 import through2 = require("through2");
 import { BaseComponent } from "../templates/BaseComponent";
-import { Component, ComponentGroup, Config, Delimiter, FS_TOKEN, IFileSystem, Template, TemplateDelimiters } from "../types";
+import { Component, ComponentGroup, Delimiter, FS_TOKEN, IFileSystem, Template, TemplateDelimiters } from "../types";
 import { App } from "./App";
 import { GoogleAnalytics } from "./GoogleAnalytics";
 

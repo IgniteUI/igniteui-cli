@@ -363,13 +363,13 @@ export class AppModule {
 			// file contents:
 			expect(fs.readFileSync(componentPath, "utf-8")).toContain("export class TestNestedFoldersComponent");
 
-			expect(fs.readFileSync("src/app/app-routing.module.ts", "utf-8").replace(/(\r?\n)+/g, EOL)).toBe(
+			expect(fs.readFileSync("src/app/app-routing.module.ts", "utf-8")).toBe(
 				`import { TestNestedFoldersComponent } from './${componentFolder}/test-nested-folders.component';` + EOL +
 				// tslint:disable-next-line:max-line-length
 				`const routes: Routes = [{ path: 'test-nested-folders', component: TestNestedFoldersComponent, data: { text: 'Test Nested Folders' } }];` + EOL
 			);
 
-			expect(fs.readFileSync("src/app/app.module.ts", "utf-8").replace(/(\r?\n)+/g, EOL)).toBe(
+			expect(fs.readFileSync("src/app/app.module.ts", "utf-8")).toBe(
 				`import { TestNestedFoldersComponent } from './${componentFolder}/test-nested-folders.component';` + EOL +
 				`import { IgxGridModule } from 'igniteui-angular';` + EOL +
 				`@NgModule({` + EOL +
