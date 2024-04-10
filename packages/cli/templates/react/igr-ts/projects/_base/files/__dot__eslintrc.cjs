@@ -13,13 +13,13 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': [
       'error',
       {
-        "args": "all",
-        "argsIgnorePattern": "^_",
-        "caughtErrors": "all",
-        "caughtErrorsIgnorePattern": "^_",
-        "destructuredArrayIgnorePattern": '^(_|set)',
-        "varsIgnorePattern": "^_",
-        "ignoreRestSiblings": true
+        args: 'all',
+        argsIgnorePattern: '^_',
+        caughtErrors: 'all',
+        caughtErrorsIgnorePattern: '^_',
+        destructuredArrayIgnorePattern: '^(_|set)',
+        varsIgnorePattern: '^_',
+        ignoreRestSiblings: true
       }
     ],
     'react-refresh/only-export-components': [
