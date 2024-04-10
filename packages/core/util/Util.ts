@@ -347,7 +347,7 @@ export class Util {
 	 */
 	public static gitInit(parentRoot, projectName) {
 		try {
-			const options = { cwd: path.join(parentRoot, projectName), stdio: [process.stdin, "ignore", "ignore"] };
+			const options: any = { cwd: path.join(parentRoot, projectName), stdio: [process.stdin, "ignore", "ignore"] };
 			Util.execSync("git init", options);
 			Util.execSync("git add .", options);
 			Util.execSync("git commit -m " + "\"Initial commit for project: " + projectName + "\"", options);

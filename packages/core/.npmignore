@@ -1,3 +1,5 @@
 # Ignores TypeScript files, but keeps definitions.
 *.ts
 !*.d.ts
+# override root gitignore
+!packages/*.js

@@ -1,11 +1,13 @@
-import { FsFileSystem, TypeScriptUtils } from "@igniteui/cli-core";
+import { App, TypeScriptUtils } from "@igniteui/cli-core";
 import * as fs from "fs";
 import * as ts from "typescript";
 
 describe("Unit - TypeScriptUtils", () => {
-	const fileSystem = new FsFileSystem();
-
 	describe("File read/write", () => {
+		beforeAll(() => {
+			App.initialize();
+		});
+
 		const newLines = {
 			CRLF: "\r\n",
 			LF: "\n"
@@ -23,13 +25,13 @@ describe("Unit - TypeScriptUtils", () => {
 			];
 
 			const readFileSpy = spyOn(fs, "readFileSync");
-			spyOn(ts, "createSourceFile").and.callThrough();
+			spyOn(TypeScriptUtils, "createSourceFile").and.callThrough();
 			// tslint:disable-next-line:forin
 			for (const key in newLines) {
 				readFileSpy.and.returnValue(sourceText.join(newLines[key]));
 				const result = TypeScriptUtils.getFileSource(`test/file${key}.ts`);
 				expect(fs.readFileSync).toHaveBeenCalledWith(`test/file${key}.ts`);
-				expect(ts.createSourceFile).toHaveBeenCalledWith(
+				expect(TypeScriptUtils.createSourceFile).toHaveBeenCalledWith(
 					`test/file${key}.ts`,
 					expectedText.join(newLines[key]),
 					ts.ScriptTarget.Latest, true
@@ -52,7 +54,7 @@ describe("Unit - TypeScriptUtils", () => {
 			];
 
 			spyOn(fs, "writeFileSync");
-			const printerSpy = spyOn(ts, "createPrinter");
+			const printerSpy = spyOn(TypeScriptUtils, "createPrinter");
 
 			// tslint:disable-next-line:forin
 			for (const key in newLines) {
