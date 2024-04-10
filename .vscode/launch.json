@@ -112,7 +112,7 @@
 			"name": "Launch Wizard",
 			"cwd": "${workspaceRoot}/output",
 			"program": "${workspaceRoot}/packages/cli/bin/execute.js",
-			"console": "externalTerminal",
+			"console": "integratedTerminal",
 			"preLaunchTask": "build",
 			"outFiles": [ "${workspaceRoot}/packages/**/*.js",
 				"${workspaceRoot}/spec/**/*.js" ],

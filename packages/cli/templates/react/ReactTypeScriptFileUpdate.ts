@@ -238,9 +238,9 @@ export class ReactTypeScriptFileUpdate {
 		}
 		const importDeclaration = ts.factory.createImportDeclaration(
 			undefined,
-			undefined,
 			importClause,
-			ts.factory.createStringLiteral(importPath, true));
+			ts.factory.createStringLiteral(importPath, true),
+			undefined);
 		return importDeclaration;
 	}
 

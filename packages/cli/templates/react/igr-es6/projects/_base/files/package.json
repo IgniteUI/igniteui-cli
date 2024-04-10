@@ -21,9 +21,6 @@
     "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!igniteui-react)/\" --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
   "browserslist": [
     ">0.2%",
     "not dead",
