@@ -36,6 +36,13 @@ export class TypeScriptFileUpdate {
 		this.initState();
 	}
 
+	public transform<T extends ts.Node>(source: T | T[],
+		transformers: ts.TransformerFactory<T>[],
+		compilerOptions?: ts.CompilerOptions)
+		: ts.TransformationResult<T> {
+		return ts.transform(source, transformers, compilerOptions);
+	}
+
 	/** Applies accumulated transforms, saves and formats the file */
 	public finalize() {
 		const transforms = [];
@@ -52,7 +59,7 @@ export class TypeScriptFileUpdate {
 		}
 
 		if (transforms.length) {
-			this.targetSource = ts.transform(this.targetSource, transforms).transformed[0];
+			this.targetSource = this.transform(this.targetSource, transforms).transformed[0];
 		}
 
 		// add new import statements after visitor walks:
@@ -191,14 +198,14 @@ export class TypeScriptFileUpdate {
 		configVariable = DEFAULT_APPCONFIG_VARIABLE) {
 		let providers = this.asArray(dep.provide, {});
 
-		const transformer: ts.TransformerFactory<ts.Node> = <T extends ts.Node>(context: ts.TransformationContext) =>
+		const transformer: ts.TransformerFactory<ts.SourceFile> = <T extends ts.SourceFile>(context: ts.TransformationContext) =>
 		(rootNode: T) => {
 			const conditionalVisitor: ts.Visitor = (node: ts.Node): ts.Node => {
 				if (node.kind === ts.SyntaxKind.ArrayLiteralExpression &&
 					node.parent.kind === ts.SyntaxKind.PropertyAssignment &&
 					(node.parent as ts.PropertyAssignment).name.getText() === "providers") {
 					const array = (node as ts.ArrayLiteralExpression);
-					const nodes = ts.visitNodes(array.elements, visitor);
+					const nodes = ts.visitNodes(array.elements, visitor, ts.isExpression);
 					const alreadyProvided = nodes.map(x => TsUtils.getIdentifierName(x));
 
 					providers =  providers.filter(x => alreadyProvided.indexOf(x) === -1);
@@ -206,7 +213,7 @@ export class TypeScriptFileUpdate {
 
 					const newProvides = providers
 						.map(x => ts.factory.createCallExpression(ts.factory.createIdentifier(x), undefined, undefined));
-					const elements = ts.factory.createNodeArray([
+					const elements = ts.factory.createNodeArray<ts.Expression>([
 						...nodes,
 						...newProvides
 					]);
@@ -224,11 +231,11 @@ export class TypeScriptFileUpdate {
 			};
 			const visitor: ts.Visitor = this.createVisitor(conditionalVisitor, visitCondition, context);
 			context.enableSubstitution(ts.SyntaxKind.ArrayLiteralExpression);
-			return ts.visitNode(rootNode, visitor);
+			return ts.visitNode(rootNode, visitor, ts.isSourceFile);
 		};
-		this.targetSource = ts.transform(this.targetSource, [transformer], {
+		this.targetSource = this.transform(this.targetSource, [transformer], {
 			pretty: true // oh well..
-		}).transformed[0] as ts.SourceFile;
+		}).transformed[0];
 	}
 
 	//#region File state
@@ -424,7 +431,7 @@ export class TypeScriptFileUpdate {
 				return ts.visitNode(rootNode, visitor);
 			};
 
-		this.targetSource = ts.transform(this.targetSource, [transformer], {
+		this.targetSource = this.transform(this.targetSource, [transformer], {
 			pretty: true // oh well..
 		}).transformed[0] as ts.SourceFile;
 
@@ -491,8 +498,8 @@ export class TypeScriptFileUpdate {
 					const namedImports = node as ts.NamedImports;
 					const moduleSpecifier = (namedImports.parent.parent.moduleSpecifier as ts.StringLiteral).text;
 
-					const existing = ts.visitNodes(namedImports.elements, visitor);
-					const alreadyImported = existing.map(x => x.name.text);
+					const existing = ts.visitNodes(namedImports.elements, visitor, ts.isImportSpecifier);
+					const alreadyImported = existing.map(x => ts.isImportSpecifier(x) && x.name.text);
 
 					const editImport = editImports.find(x => x.from === moduleSpecifier);
 					const newImports = editImport.imports.filter(x => alreadyImported.indexOf(x) === -1);
