@@ -1,6 +1,6 @@
 {
   "name": "@igniteui/cli-core",
-  "version": "13.1.13-beta.6",
+  "version": "13.1.13-beta.7",
   "description": "Base types and functionality for Ignite UI CLI",
   "repository": {
     "type": "git",
