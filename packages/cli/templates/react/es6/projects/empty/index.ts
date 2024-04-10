@@ -1,5 +1,4 @@
 import { ControlExtraConfiguration, defaultDelimiters, ProjectTemplate, Util } from "@igniteui/cli-core";
-import * as fs from "fs-extra";
 import * as path from "path";
 
 class EmptyProject implements ProjectTemplate {
@@ -24,7 +23,6 @@ class EmptyProject implements ProjectTemplate {
 		return true;
 	}
 	public generateConfig(name: string, theme: string, ...options: any[]): { [key: string]: any } {
-
 		//TODO update the config with [{key: "keyname", "value"}]
 		return {
 			"cliVersion": Util.version(),
