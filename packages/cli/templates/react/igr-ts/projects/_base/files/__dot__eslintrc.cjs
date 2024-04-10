@@ -12,7 +12,15 @@ module.exports = {
   rules: {
     '@typescript-eslint/no-unused-vars': [
       'error',
-      { destructuredArrayIgnorePattern: '^(_|set)' }
+      {
+        "args": "all",
+        "argsIgnorePattern": "^_",
+        "caughtErrors": "all",
+        "caughtErrorsIgnorePattern": "^_",
+        "destructuredArrayIgnorePattern": '^(_|set)',
+        "varsIgnorePattern": "^_",
+        "ignoreRestSiblings": true
+      }
     ],
     'react-refresh/only-export-components': [
       'warn',
