@@ -1,4 +1,9 @@
-# [13.1.13](https://github.com/IgniteUI/igniteui-cli/compare/v13.1.12...v13.1.13) (2024-04-11)
+# [13.1.14](https://github.com/IgniteUI/igniteui-cli/compare/v13.1.13...v13.1.14) (2024-04-11)
+
+## What's Changed
+* fix: include js files in ng-schematics/scripts w/ newer npm version by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1240
+
+# [13.1.13](https://github.com/IgniteUI/igniteui-cli/compare/v13.1.13...v13.1.14) (2024-04-11)
 
 ## What's Changed
 * feat(react): turn off no-explicit-any in eslint by @igdmdimitrov in https://github.com/IgniteUI/igniteui-cli/pull/1230
