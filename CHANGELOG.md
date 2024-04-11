@@ -1,3 +1,16 @@
+# [13.1.13](https://github.com/IgniteUI/igniteui-cli/compare/v13.1.12...v13.1.13) (2024-04-11)
+
+## What's Changed
+* feat(react): turn off no-explicit-any in eslint by @igdmdimitrov in https://github.com/IgniteUI/igniteui-cli/pull/1230
+* Remove obsolete classes in app.tsx by @onlyexeption in https://github.com/IgniteUI/igniteui-cli/pull/1231
+* chore: update typescript; migrate to eslint by @jackofdiamond5 in https://github.com/IgniteUI/igniteui-cli/pull/1235
+* fix: fix yml script placeholder delimiters by @onlyexeption in https://github.com/IgniteUI/igniteui-cli/pull/1239
+* fix(igr-ts): lint ignore unused vars prefix; ts strict by @onlyexeption in https://github.com/IgniteUI/igniteui-cli/pull/1232
+* fix(cli-templetes): Replaced index.html <title> to ApplicationTitle as placeholder by @ivanvpetrov in https://github.com/IgniteUI/igniteui-cli/pull/1237
+
+## New Contributors
+* @ivanvpetrov made their first contribution in https://github.com/IgniteUI/igniteui-cli/pull/1237
+
 # [13.1.12](https://github.com/IgniteUI/igniteui-cli/compare/v13.1.11...v13.1.12) (2024-03-21)
 
 🎉 This update includes `upgrade-packages` command for web components and react.
