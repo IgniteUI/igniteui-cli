@@ -10,8 +10,8 @@
 **/node_modules
 
 # ignore compiled files in packages
-packages/**/*.js.map
-packages/**/*.js
+/packages/**/*.js.map
+/packages/**/*.js
 /scripts/**/*.js.map
 /scripts/**/*.js
 /spec/**/*.js.map
