@@ -1,3 +1,10 @@
+# [13.1.15](https://github.com/IgniteUI/igniteui-cli/compare/v13.1.14...v13.1.15) (2024-04-12)
+
+## What's Changed
+* Remove igniteui-react related dependencies by @igdmdimitrov in https://github.com/IgniteUI/igniteui-cli/pull/1234
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.1.14...v13.1.15
+
 # [13.1.14](https://github.com/IgniteUI/igniteui-cli/compare/v13.1.13...v13.1.14) (2024-04-11)
 
 ## What's Changed
