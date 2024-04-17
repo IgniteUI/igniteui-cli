@@ -1,2 +1,3 @@
 export * from "./TypeScriptUtils";
-export * from "./TypeScriptFileUpdate";
+export * from "./TypeScriptASTTransformer";
+export * from "./TypeScriptFormattingService";
