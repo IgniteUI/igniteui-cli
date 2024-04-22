@@ -1,9 +1,9 @@
-import { ProjectConfig, TypeScriptFileUpdate, Util } from "@igniteui/cli-core";
+import { ProjectConfig, Util } from "@igniteui/cli-core";
 import * as path from "path";
 import { AngularTemplate } from "../../../packages/cli/lib/templates/AngularTemplate";
+import { AngularTypeScriptFileUpdate } from "@igniteui/angular-templates";
 
 describe("Unit - AngularTemplate Base", () => {
-	// tslint:disable:object-literal-sort-keys
 	class TestTemplate extends AngularTemplate {
 		constructor() {
 			super("root/path");
@@ -92,19 +92,20 @@ describe("Unit - AngularTemplate Base", () => {
 		beforeEach(() => {
 			helpers = {
 				tsUpdateMock: jasmine.createSpyObj(
-					"TypeScriptFileUpdate", ["addRoute", "addDeclaration", "finalize"]) as TypeScriptFileUpdate,
-				TypeScriptFileUpdate: () => helpers.tsUpdateMock,
+					"AngularTypeScriptFileUpdate", ["addRoute", "addNgModuleMeta", "finalize"]) as AngularTypeScriptFileUpdate,
+				AngularTypeScriptFileUpdate: () => helpers.tsUpdateMock,
 				requireMock: require
-			};
+			}
+
 			// spy on require:
 			spyOn(require("module"), "_load").and.callFake((modulePath: string) => {
-				if (modulePath.endsWith("@igniteui/cli-core/typescript")) {
+				if (modulePath.endsWith("@igniteui/angular-templates")) {
 					return helpers;
 				} else if (modulePath.endsWith("@igniteui/cli-core/packages/components")) {
 					return { dv: ["igDvWidget"] };
 				}
 			});
-			spyOn(helpers, "TypeScriptFileUpdate").and.callThrough();
+			spyOn(helpers, "AngularTypeScriptFileUpdate").and.callThrough();
 			// return through function to get new obj ref each time
 			spyOn(ProjectConfig, "getConfig").and.callFake(() => ({ project: { sourceFiles: ["existing"] } }));
 			spyOn(ProjectConfig, "setConfig");
@@ -113,17 +114,27 @@ describe("Unit - AngularTemplate Base", () => {
 		it("registers route and declare component", async done => {
 			const templ = new TestTemplate();
 			templ.registerInProject("target/path", "view name");
-			expect(helpers.TypeScriptFileUpdate).toHaveBeenCalledWith(path.join("target/path", "src/app/app-routing.module.ts"));
+			expect(helpers.AngularTypeScriptFileUpdate)
+				.toHaveBeenCalledWith(path.join("target/path", "src/app/app-routing.module.ts"), false, { singleQuotes: false });
 			expect(helpers.tsUpdateMock.addRoute).toHaveBeenCalledWith(
-				path.join("target/path", `src/app/components/view-name/view-name.component.ts`),
-				"view-name", //path
-				"view name" //text
+				{
+					path: 'view-name',
+					identifierName: 'ViewNameComponent',
+					modulePath: './components/view-name/view-name.component',
+					data: { text: 'view name' }
+				}
 			);
 
-			expect(helpers.TypeScriptFileUpdate).toHaveBeenCalledWith(path.join("target/path", "src/app/app.module.ts"));
-			expect(helpers.tsUpdateMock.addDeclaration).toHaveBeenCalledWith(
-				path.join("target/path", `src/app/components/view-name/view-name.component.ts`),
-				false // if added to a custom module => true
+			expect(helpers.AngularTypeScriptFileUpdate)
+				.toHaveBeenCalledWith(path.join("target/path", "src/app/app.module.ts"), false, { singleQuotes: false });
+			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith(
+				{
+					declare: [
+					  "ViewNameComponent",
+					],
+					from: "./components/view-name/view-name.component",
+					export: [],
+				  }
 			);
 			expect(helpers.tsUpdateMock.finalize).toHaveBeenCalled();
 
@@ -137,11 +148,17 @@ describe("Unit - AngularTemplate Base", () => {
 			expect(helpers.tsUpdateMock.addRoute).toHaveBeenCalledTimes(0);
 
 			// just declare
-			expect(helpers.TypeScriptFileUpdate).toHaveBeenCalledTimes(1);
-			expect(helpers.TypeScriptFileUpdate).toHaveBeenCalledWith(path.join("target/path", "src/app/app.module.ts"));
-			expect(helpers.tsUpdateMock.addDeclaration).toHaveBeenCalledWith(
-				path.join("target/path", `src/app/components/view-name/view-name.component.ts`),
-				false // if added to a custom module => true
+			expect(helpers.AngularTypeScriptFileUpdate).toHaveBeenCalledTimes(1);
+			expect(helpers.AngularTypeScriptFileUpdate).toHaveBeenCalledWith(path.join("target/path", "src/app/app.module.ts"),
+				false, { singleQuotes: false });
+			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith(
+				{
+					declare: [
+					  "ViewNameComponent",
+					],
+					from: "./components/view-name/view-name.component",
+					export: [],
+				  }
 			);
 			expect(helpers.tsUpdateMock.finalize).toHaveBeenCalled();
 
