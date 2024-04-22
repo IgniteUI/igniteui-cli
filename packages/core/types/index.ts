@@ -20,3 +20,6 @@ export * from './IPropertyAssignment';
 export * from './IImport';
 export * from './IIdentifier';
 export * from './KeyValuePair';
+export * from './IRouteEntry';
+export * from './IRouteLike';
+export * from './enumerations/RouteTarget';
