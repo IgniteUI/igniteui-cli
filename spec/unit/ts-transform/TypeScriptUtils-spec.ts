@@ -56,13 +56,12 @@ describe("Unit - TypeScriptUtils", () => {
 			spyOn(fs, "writeFileSync");
 			const printerSpy = spyOn(TypeScriptUtils, "createPrinter");
 
-			// tslint:disable-next-line:forin
 			for (const key in newLines) {
 				const printer = jasmine.createSpyObj("", { printFile: sourceText.join(newLines[key]) });
-				const source: ts.SourceFile = {} as any;
+				const source = ts.createSourceFile("", "", ts.ScriptTarget.Latest, true);
 				printerSpy.and.returnValue(printer);
 
-				const result = TypeScriptUtils.saveFile(`test/file${key}.ts`, source);
+				const _result = TypeScriptUtils.saveFile(`test/file${key}.ts`, source);
 				expect(printer.printFile).toHaveBeenCalledWith(source);
 				expect(fs.writeFileSync).toHaveBeenCalledWith(`test/file${key}.ts`, expectedText.join(newLines[key]));
 			}
