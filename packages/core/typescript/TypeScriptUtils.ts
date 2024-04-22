@@ -128,16 +128,23 @@ export class TypeScriptUtils {
 	 * @param filePath File path
 	 * @param source Source AST to print
 	 */
-	public static saveFile(filePath: string, source: ts.SourceFile) {
+	public static saveFile(filePath: string, soutceFile: ts.SourceFile);
+	public static saveFile(filePath: string, content: string);
+	public static saveFile(filePath: string, sourceOrContent: ts.SourceFile | string) {
 		const fileSystem = App.container.get<IFileSystem>(FS_TOKEN);
-		// https://github.com/Microsoft/TypeScript/issues/10786#issuecomment-288987738
-		const printer: ts.Printer = this.createPrinter();
-		let text = printer.printFile(source);
-		text = text.replace(
-			new RegExp(`(\r?\n)\\s*?${Util.escapeRegExp(this.newLinePlaceHolder)}(\r?\n)`, "g"),
-			`$1$2`
-		);
-		fileSystem.writeFile(filePath, text);
+		if (typeof sourceOrContent === "object" && ts.isSourceFile(sourceOrContent)) {
+			// https://github.com/Microsoft/TypeScript/issues/10786#issuecomment-288987738
+			const printer: ts.Printer = this.createPrinter();
+			let text = printer.printFile(sourceOrContent);
+			text = text.replace(
+				new RegExp(`(\r?\n)\\s*?${Util.escapeRegExp(this.newLinePlaceHolder)}(\r?\n)`, "g"),
+				`$1$2`
+			);
+			fileSystem.writeFile(filePath, text);
+			return;
+		}
+
+		fileSystem.writeFile(filePath, sourceOrContent);
 	}
 
 	//#endregion Utility functions
