@@ -259,13 +259,8 @@ describe("Unit - Add command", () => {
 		expect(mockTemplate.registerInProject).toHaveBeenCalledTimes(1);
 		expect(mockTemplate.registerInProject).toHaveBeenCalledWith(
 			directoryPath, "test-file-name",
-			jasmine.objectContaining({ modulePath: "myCustomModule/my-custom-module.module.ts" }));
-		// expect(sourceFilesSpy).toHaveBeenCalledTimes(1);
+			jasmine.objectContaining({ modulePath: "myCustomModule/my-custom-module.module.ts" }));;
 		expect(routeSpy).toHaveBeenCalledTimes(1);
-		// expect(declarationSpy).toHaveBeenCalledTimes(1);
-		// expect(declarationSpy).toHaveBeenCalledWith(
-		// 	path.join(directoryPath, `src/app/components/test-file-name/test-file-name.component.ts`),
-		// 	true);
 		expect(ngMetaSpy).toHaveBeenCalledTimes(1);
 		expect(ngMetaSpy).toHaveBeenCalledWith({
 			declare: ["TestFileNameComponent"],
