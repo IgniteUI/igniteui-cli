@@ -586,9 +586,6 @@ export class AngularTypeScriptFileUpdate {
     multiline: boolean = false,
     prepend: boolean = false
   ): ts.SourceFile {
-    // if (!route.path || !route.identifierName || route.lazyload)
-    //   return this.sourceFile;
-
     if (route.modulePath) {
       // add an import for the given identifier
       const routeIdentifier: IIdentifier = { name: route.identifierName };
@@ -649,7 +646,6 @@ export class AngularTypeScriptFileUpdate {
     multiline: boolean = false,
     prepend: boolean = false
   ): ts.SourceFile {
-    // if (!route.redirectTo || route.lazyload) return this.sourceFile;
     const structure = [
       {
         name: RouteTarget.Path,
@@ -694,14 +690,6 @@ export class AngularTypeScriptFileUpdate {
     multiline: boolean = false,
     prepend: boolean = false
   ): ts.SourceFile {
-    // if (
-    //   !route.lazyload ||
-    //   !route.path ||
-    //   !route.identifierName ||
-    //   !route.modulePath
-    // )
-    //   return this.sourceFile;
-
     const lazyLoadedModule = this.createDynamicImport(
       route.modulePath,
       route.identifierName,
