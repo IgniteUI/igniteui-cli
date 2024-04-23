@@ -101,7 +101,7 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 						checkBoxBind = `[ngModel]="cell.value" (ngModelChange)="cell.update($event)"`;
 						// enable Date Picker, ngModel
 						// this.dependencies.push({ import: "IgxDatePickerModule", from: "<%=igxPackage%>" });
-						this.dependencies.push({ import: "FormsModule", from: "@angular/forms" });
+						this.dependencies.push({ import: "FormsModule", from: "@angular/forms", standalone: true });
 						// datePickerEditor = EOL +
 						// 	`<ng-template igxCellEditor let-cell="cell">` + EOL +
 						// 	`  <igx-date-picker cancelButtonLabel="cancel" todayButtonLabel="today" [(ngModel)]="cell.value"` +
@@ -113,7 +113,7 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 						break;
 						case "Row Editing":
 						gridFeatures.push(`[rowEditable]="true"`);
-						this.dependencies.push({ import: "IgxDatePickerComponent", from: "<%=igxPackage%>" });
+						this.dependencies.push({ import: "IgxDatePickerComponent", from: "<%=igxPackage%>", standalone: true });
 						break;
 					case "Row Selection":
 						const gridFeatureText = `rowSelection="multiple"`;
