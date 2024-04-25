@@ -7,6 +7,7 @@ class IgcDockManagerTemplate extends IgniteUIForAngularTemplate {
 		this.components = ["Dock Manager"];
 		this.controlGroup = "Layouts";
 		this.listInComponentTemplates = true;
+		this.addAsNgModelDeclaration = false;
 		this.id = "dock-manager";
 		this.projectType = "igx-ts";
 		this.name = "Dock Manager";
