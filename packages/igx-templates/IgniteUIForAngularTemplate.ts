@@ -9,6 +9,7 @@ export class IgniteUIForAngularTemplate implements Template {
 	public components: string[];
 	public controlGroup: string;
 	public listInComponentTemplates: boolean = true;
+  public addAsNgModelDeclaration: boolean = true;
 	public listInCustomTemplates: boolean = false;
 	public id: string;
 	public name: string;
@@ -62,12 +63,12 @@ export class IgniteUIForAngularTemplate implements Template {
 			// tslint:disable-next-line:no-submodule-imports
 			require("@igniteui/angular-templates").AngularTypeScriptFileUpdate;
 
-		// standalone components
 		const mainModulePath = path.join(projectPath, `src/app/${modulePath}`);
 		const folderName = this.folderName(name);
 		const fileName = this.fileName(name);
 		const componentFilePath = path.join(projectPath, `src/app/${folderName}/${fileName}.component.ts`);
 		const className = `${Util.className(Util.nameFromPath(name))}Component`;
+		// standalone components
 		if (!this.fileExists(mainModulePath)) {
 			const appRoutesPath = "src/app/app.routes.ts";
 			if (!(options && options.skipRoute) && this.fileExists(appRoutesPath)) {
@@ -106,10 +107,6 @@ export class IgniteUIForAngularTemplate implements Template {
 				);
 			}
 
-			for (const dep of this.dependencies) {
-				componentFile.addStandaloneComponentMeta(dep);
-			}
-
 			const content = componentFile.finalize();
 			if (content) {
 				// add to a finalize override in the NG File Update instead?
@@ -143,7 +140,7 @@ export class IgniteUIForAngularTemplate implements Template {
 		//4) populate the declarations portion of the @NgModule with the component class name.
 		const mainModule = new TsUpdate(mainModulePath, false, { indentSize: 2 });
 		mainModule.addNgModuleMeta({
-			declare: [className],
+			declare: this.addAsNgModelDeclaration ? [className] : [],
 			from: Util.relativePath(mainModulePath, componentFilePath, true, true),
 			export: modulePath !== "app.module.ts" ? [className] : []
 		});
