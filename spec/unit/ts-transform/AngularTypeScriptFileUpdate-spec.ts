@@ -79,7 +79,7 @@ class MockFS implements IFileSystem {
   }
 }
 
-describe('Unit - AngularTypeScriptFileUpdate', () => {
+fdescribe('Unit - AngularTypeScriptFileUpdate', () => {
   describe('Initialization', () => {
     it('should be created with a path/to/file', () => {
       spyOn(App.container, 'get').and.returnValue(new MockFS());
@@ -99,7 +99,10 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
     });
 
     it('should add a route', () => {
-      spyOn((fileUpdate as any).astTransformer.formatter, 'applyFormatting').and.callThrough();
+      spyOn(
+        (fileUpdate as any).astTransformer.formatter,
+        'applyFormatting'
+      ).and.callThrough();
 
       fileUpdate.addRoute({
         path: 'test/route',
@@ -113,32 +116,51 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
       ).toHaveBeenCalledTimes(1);
 
       expect(result).toEqual(
-        `import { NgModule } from '@angular/core';` + EOL +
-`import { RouterModule, Routes } from '@angular/router';` + EOL + EOL +
-
-`import { PageNotFoundComponent } from './error-routing/not-found/not-found.component';` + EOL +
-`import { UncaughtErrorComponent } from './error-routing/error/uncaught-error.component';` + EOL +
-`import { ErrorRoutingModule } from './error-routing/error-routing.module';` + EOL +
-`import { TestRouteComponent } from 'path/to/module';` + EOL + EOL +
-
-`export const routes: Routes = [` + EOL +
-`    { path: 'error', component: UncaughtErrorComponent },` + EOL +
-`    { path: 'test/route', component: TestRouteComponent },` + EOL +
-`    { path: '**', component: PageNotFoundComponent } // must always be last` + EOL +
-`];` + EOL + EOL +
-
-`@NgModule({` + EOL +
-`    imports: [RouterModule.forRoot(routes, { bindToComponentInputs: true }), ErrorRoutingModule],` + EOL +
-`    exports: [RouterModule, ErrorRoutingModule]` + EOL +
-`})` + EOL +
-`export class AppRoutingModule {` + EOL +
-`}` + EOL
-
+        `import { NgModule } from '@angular/core';` +
+          EOL +
+          `import { RouterModule, Routes } from '@angular/router';` +
+          EOL +
+          EOL +
+          `import { PageNotFoundComponent } from './error-routing/not-found/not-found.component';` +
+          EOL +
+          `import { UncaughtErrorComponent } from './error-routing/error/uncaught-error.component';` +
+          EOL +
+          `import { ErrorRoutingModule } from './error-routing/error-routing.module';` +
+          EOL +
+          `import { TestRouteComponent } from 'path/to/module';` +
+          EOL +
+          EOL +
+          `export const routes: Routes = [` +
+          EOL +
+          `    { path: 'error', component: UncaughtErrorComponent },` +
+          EOL +
+          `    { path: 'test/route', component: TestRouteComponent },` +
+          EOL +
+          `    { path: '**', component: PageNotFoundComponent } // must always be last` +
+          EOL +
+          `];` +
+          EOL +
+          EOL +
+          `@NgModule({` +
+          EOL +
+          `    imports: [RouterModule.forRoot(routes, { bindToComponentInputs: true }), ErrorRoutingModule],` +
+          EOL +
+          `    exports: [RouterModule, ErrorRoutingModule]` +
+          EOL +
+          `})` +
+          EOL +
+          `export class AppRoutingModule {` +
+          EOL +
+          `}` +
+          EOL
       );
     });
 
     it('should add a default route', () => {
-      spyOn((fileUpdate as any).astTransformer.formatter, 'applyFormatting').and.callThrough();
+      spyOn(
+        (fileUpdate as any).astTransformer.formatter,
+        'applyFormatting'
+      ).and.callThrough();
 
       fileUpdate.addRoute({
         path: '',
@@ -152,30 +174,49 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
       ).toHaveBeenCalledTimes(1);
 
       expect(result).toEqual(
-        `import { NgModule } from '@angular/core';` + EOL +
-`import { RouterModule, Routes } from '@angular/router';` + EOL + EOL +
-
-`import { PageNotFoundComponent } from './error-routing/not-found/not-found.component';` + EOL +
-`import { UncaughtErrorComponent } from './error-routing/error/uncaught-error.component';` + EOL +
-`import { ErrorRoutingModule } from './error-routing/error-routing.module';` + EOL + EOL +
-
-`export const routes: Routes = [` + EOL +
-`    { path: 'error', component: UncaughtErrorComponent },` + EOL +
-`    { path: '', redirectTo: 'another/route', pathMatch: 'full' },` + EOL +
-`    { path: '**', component: PageNotFoundComponent } // must always be last` + EOL +
-`];`+ EOL + EOL +
-
-`@NgModule({` + EOL +
-`    imports: [RouterModule.forRoot(routes, { bindToComponentInputs: true }), ErrorRoutingModule],` + EOL +
-`    exports: [RouterModule, ErrorRoutingModule]` + EOL +
-`})` + EOL +
-`export class AppRoutingModule {` + EOL +
-`}` + EOL
+        `import { NgModule } from '@angular/core';` +
+          EOL +
+          `import { RouterModule, Routes } from '@angular/router';` +
+          EOL +
+          EOL +
+          `import { PageNotFoundComponent } from './error-routing/not-found/not-found.component';` +
+          EOL +
+          `import { UncaughtErrorComponent } from './error-routing/error/uncaught-error.component';` +
+          EOL +
+          `import { ErrorRoutingModule } from './error-routing/error-routing.module';` +
+          EOL +
+          EOL +
+          `export const routes: Routes = [` +
+          EOL +
+          `    { path: 'error', component: UncaughtErrorComponent },` +
+          EOL +
+          `    { path: '', redirectTo: 'another/route', pathMatch: 'full' },` +
+          EOL +
+          `    { path: '**', component: PageNotFoundComponent } // must always be last` +
+          EOL +
+          `];` +
+          EOL +
+          EOL +
+          `@NgModule({` +
+          EOL +
+          `    imports: [RouterModule.forRoot(routes, { bindToComponentInputs: true }), ErrorRoutingModule],` +
+          EOL +
+          `    exports: [RouterModule, ErrorRoutingModule]` +
+          EOL +
+          `})` +
+          EOL +
+          `export class AppRoutingModule {` +
+          EOL +
+          `}` +
+          EOL
       );
     });
 
     it('should add a route with redirect', () => {
-      spyOn((fileUpdate as any).astTransformer.formatter, 'applyFormatting').and.callThrough();
+      spyOn(
+        (fileUpdate as any).astTransformer.formatter,
+        'applyFormatting'
+      ).and.callThrough();
 
       fileUpdate.addRoute({
         path: 'test/route',
@@ -188,30 +229,49 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
       ).toHaveBeenCalledTimes(1);
 
       expect(result).toEqual(
-        `import { NgModule } from '@angular/core';` + EOL +
-`import { RouterModule, Routes } from '@angular/router';` + EOL + EOL +
-
-`import { PageNotFoundComponent } from './error-routing/not-found/not-found.component';` + EOL +
-`import { UncaughtErrorComponent } from './error-routing/error/uncaught-error.component';` + EOL +
-`import { ErrorRoutingModule } from './error-routing/error-routing.module';` + EOL + EOL +
-
-`export const routes: Routes = [` + EOL +
-`    { path: 'error', component: UncaughtErrorComponent },` + EOL +
-`    { path: 'test/route', redirectTo: 'another/route' },` + EOL +
-`    { path: '**', component: PageNotFoundComponent } // must always be last` + EOL +
-`];` + EOL + EOL +
-
-`@NgModule({` + EOL +
-`    imports: [RouterModule.forRoot(routes, { bindToComponentInputs: true }), ErrorRoutingModule],` + EOL +
-`    exports: [RouterModule, ErrorRoutingModule]` + EOL +
-`})` + EOL +
-`export class AppRoutingModule {` + EOL +
-`}` + EOL
+        `import { NgModule } from '@angular/core';` +
+          EOL +
+          `import { RouterModule, Routes } from '@angular/router';` +
+          EOL +
+          EOL +
+          `import { PageNotFoundComponent } from './error-routing/not-found/not-found.component';` +
+          EOL +
+          `import { UncaughtErrorComponent } from './error-routing/error/uncaught-error.component';` +
+          EOL +
+          `import { ErrorRoutingModule } from './error-routing/error-routing.module';` +
+          EOL +
+          EOL +
+          `export const routes: Routes = [` +
+          EOL +
+          `    { path: 'error', component: UncaughtErrorComponent },` +
+          EOL +
+          `    { path: 'test/route', redirectTo: 'another/route' },` +
+          EOL +
+          `    { path: '**', component: PageNotFoundComponent } // must always be last` +
+          EOL +
+          `];` +
+          EOL +
+          EOL +
+          `@NgModule({` +
+          EOL +
+          `    imports: [RouterModule.forRoot(routes, { bindToComponentInputs: true }), ErrorRoutingModule],` +
+          EOL +
+          `    exports: [RouterModule, ErrorRoutingModule]` +
+          EOL +
+          `})` +
+          EOL +
+          `export class AppRoutingModule {` +
+          EOL +
+          `}` +
+          EOL
       );
     });
 
     it('should add a lazy loaded route', () => {
-      spyOn((fileUpdate as any).astTransformer.formatter, 'applyFormatting').and.callThrough();
+      spyOn(
+        (fileUpdate as any).astTransformer.formatter,
+        'applyFormatting'
+      ).and.callThrough();
 
       fileUpdate.addRoute({
         path: 'lazyloaded',
@@ -226,30 +286,49 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
       ).toHaveBeenCalledTimes(1);
 
       expect(result).toEqual(
-        `import { NgModule } from '@angular/core';` + EOL +
-`import { RouterModule, Routes } from '@angular/router';` + EOL + EOL +
-
-`import { PageNotFoundComponent } from './error-routing/not-found/not-found.component';` + EOL +
-`import { UncaughtErrorComponent } from './error-routing/error/uncaught-error.component';` + EOL +
-`import { ErrorRoutingModule } from './error-routing/error-routing.module';` + EOL + EOL +
-
-`export const routes: Routes = [` + EOL +
-`    { path: 'error', component: UncaughtErrorComponent },` + EOL +
-`    { path: 'lazyloaded', loadComponent: () => import('my-lazyloaded-module').then(m => m.MyLazyLoadedComponent) },` + EOL +
-`    { path: '**', component: PageNotFoundComponent } // must always be last` + EOL +
-`];` + EOL + EOL +
-
-`@NgModule({` + EOL +
-`    imports: [RouterModule.forRoot(routes, { bindToComponentInputs: true }), ErrorRoutingModule],` + EOL +
-`    exports: [RouterModule, ErrorRoutingModule]` + EOL +
-`})` + EOL +
-`export class AppRoutingModule {` + EOL +
-`}` + EOL
+        `import { NgModule } from '@angular/core';` +
+          EOL +
+          `import { RouterModule, Routes } from '@angular/router';` +
+          EOL +
+          EOL +
+          `import { PageNotFoundComponent } from './error-routing/not-found/not-found.component';` +
+          EOL +
+          `import { UncaughtErrorComponent } from './error-routing/error/uncaught-error.component';` +
+          EOL +
+          `import { ErrorRoutingModule } from './error-routing/error-routing.module';` +
+          EOL +
+          EOL +
+          `export const routes: Routes = [` +
+          EOL +
+          `    { path: 'error', component: UncaughtErrorComponent },` +
+          EOL +
+          `    { path: 'lazyloaded', loadComponent: () => import('my-lazyloaded-module').then(m => m.MyLazyLoadedComponent) },` +
+          EOL +
+          `    { path: '**', component: PageNotFoundComponent } // must always be last` +
+          EOL +
+          `];` +
+          EOL +
+          EOL +
+          `@NgModule({` +
+          EOL +
+          `    imports: [RouterModule.forRoot(routes, { bindToComponentInputs: true }), ErrorRoutingModule],` +
+          EOL +
+          `    exports: [RouterModule, ErrorRoutingModule]` +
+          EOL +
+          `})` +
+          EOL +
+          `export class AppRoutingModule {` +
+          EOL +
+          `}` +
+          EOL
       );
     });
 
     it('should add a child route', () => {
-      spyOn((fileUpdate as any).astTransformer.formatter, 'applyFormatting').and.callThrough();
+      spyOn(
+        (fileUpdate as any).astTransformer.formatter,
+        'applyFormatting'
+      ).and.callThrough();
 
       fileUpdate.addRoute(
         {
@@ -273,39 +352,67 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
       ).toHaveBeenCalledTimes(1);
 
       expect(result).toEqual(
-        `import { NgModule } from '@angular/core';` + EOL +
-`import { RouterModule, Routes } from '@angular/router';` + EOL + EOL +
-
-`import { PageNotFoundComponent } from './error-routing/not-found/not-found.component';` + EOL +
-`import { UncaughtErrorComponent } from './error-routing/error/uncaught-error.component';` + EOL +
-`import { ErrorRoutingModule } from './error-routing/error-routing.module';` + EOL +
-`import { ParentComponent } from 'path/to/parent';` + EOL +
-`import { ChildComponent } from 'path/to/child';` + EOL + EOL +
-
-`export const routes: Routes = [` + EOL +
-`    { path: 'error', component: UncaughtErrorComponent },` + EOL +
-`    {` + EOL +
-`        path: 'parent',` + EOL +
-`        component: ParentComponent,` + EOL +
-`        children: [{` + EOL +
-`            path: 'child',` + EOL +
-`            component: ChildComponent` + EOL +
-`        }]` + EOL +
-`    },` + EOL +
-`    { path: '**', component: PageNotFoundComponent } // must always be last` + EOL +
-`];` + EOL + EOL +
-
-`@NgModule({` + EOL +
-`    imports: [RouterModule.forRoot(routes, { bindToComponentInputs: true }), ErrorRoutingModule],` + EOL +
-`    exports: [RouterModule, ErrorRoutingModule]` + EOL +
-`})` + EOL +
-`export class AppRoutingModule {` + EOL +
-`}` + EOL
+        `import { NgModule } from '@angular/core';` +
+          EOL +
+          `import { RouterModule, Routes } from '@angular/router';` +
+          EOL +
+          EOL +
+          `import { PageNotFoundComponent } from './error-routing/not-found/not-found.component';` +
+          EOL +
+          `import { UncaughtErrorComponent } from './error-routing/error/uncaught-error.component';` +
+          EOL +
+          `import { ErrorRoutingModule } from './error-routing/error-routing.module';` +
+          EOL +
+          `import { ParentComponent } from 'path/to/parent';` +
+          EOL +
+          `import { ChildComponent } from 'path/to/child';` +
+          EOL +
+          EOL +
+          `export const routes: Routes = [` +
+          EOL +
+          `    { path: 'error', component: UncaughtErrorComponent },` +
+          EOL +
+          `    {` +
+          EOL +
+          `        path: 'parent',` +
+          EOL +
+          `        component: ParentComponent,` +
+          EOL +
+          `        children: [{` +
+          EOL +
+          `            path: 'child',` +
+          EOL +
+          `            component: ChildComponent` +
+          EOL +
+          `        }]` +
+          EOL +
+          `    },` +
+          EOL +
+          `    { path: '**', component: PageNotFoundComponent } // must always be last` +
+          EOL +
+          `];` +
+          EOL +
+          EOL +
+          `@NgModule({` +
+          EOL +
+          `    imports: [RouterModule.forRoot(routes, { bindToComponentInputs: true }), ErrorRoutingModule],` +
+          EOL +
+          `    exports: [RouterModule, ErrorRoutingModule]` +
+          EOL +
+          `})` +
+          EOL +
+          `export class AppRoutingModule {` +
+          EOL +
+          `}` +
+          EOL
       );
     });
 
     it('should add child default routes with a default route', () => {
-      spyOn((fileUpdate as any).astTransformer.formatter, 'applyFormatting').and.callThrough();
+      spyOn(
+        (fileUpdate as any).astTransformer.formatter,
+        'applyFormatting'
+      ).and.callThrough();
 
       fileUpdate.addRoute(
         {
@@ -334,43 +441,75 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
       ).toHaveBeenCalledTimes(1);
 
       expect(result).toEqual(
-        `import { NgModule } from '@angular/core';` + EOL +
-`import { RouterModule, Routes } from '@angular/router';` + EOL + EOL +
-
-`import { PageNotFoundComponent } from './error-routing/not-found/not-found.component';`+ EOL +
-`import { UncaughtErrorComponent } from './error-routing/error/uncaught-error.component';`+ EOL +
-`import { ErrorRoutingModule } from './error-routing/error-routing.module';`+ EOL +
-`import { ParentComponent } from 'path/to/parent';`+ EOL +
-`import { ChildComponent } from 'path/to/child';`+ EOL + EOL +
-
-`export const routes: Routes = [` + EOL +
-`    { path: 'error', component: UncaughtErrorComponent },` + EOL +
-`    {` + EOL +
-`        path: 'parent',` + EOL +
-`        component: ParentComponent,` + EOL +
-`        children: [{` + EOL +
-`            path: '',` + EOL +
-`            redirectTo: 'child',` + EOL +
-`            pathMatch: 'full'` + EOL +
-`        }, {` + EOL +
-`            path: 'child',` + EOL +
-`            component: ChildComponent` + EOL +
-`        }]` + EOL +
-`    },` + EOL +
-`    { path: '**', component: PageNotFoundComponent } // must always be last` + EOL +
-`];` + EOL + EOL +
-
-`@NgModule({` + EOL +
-`    imports: [RouterModule.forRoot(routes, { bindToComponentInputs: true }), ErrorRoutingModule],` + EOL +
-`    exports: [RouterModule, ErrorRoutingModule]` + EOL +
-`})` + EOL +
-`export class AppRoutingModule {` + EOL +
-`}` + EOL
+        `import { NgModule } from '@angular/core';` +
+          EOL +
+          `import { RouterModule, Routes } from '@angular/router';` +
+          EOL +
+          EOL +
+          `import { PageNotFoundComponent } from './error-routing/not-found/not-found.component';` +
+          EOL +
+          `import { UncaughtErrorComponent } from './error-routing/error/uncaught-error.component';` +
+          EOL +
+          `import { ErrorRoutingModule } from './error-routing/error-routing.module';` +
+          EOL +
+          `import { ParentComponent } from 'path/to/parent';` +
+          EOL +
+          `import { ChildComponent } from 'path/to/child';` +
+          EOL +
+          EOL +
+          `export const routes: Routes = [` +
+          EOL +
+          `    { path: 'error', component: UncaughtErrorComponent },` +
+          EOL +
+          `    {` +
+          EOL +
+          `        path: 'parent',` +
+          EOL +
+          `        component: ParentComponent,` +
+          EOL +
+          `        children: [{` +
+          EOL +
+          `            path: '',` +
+          EOL +
+          `            redirectTo: 'child',` +
+          EOL +
+          `            pathMatch: 'full'` +
+          EOL +
+          `        }, {` +
+          EOL +
+          `            path: 'child',` +
+          EOL +
+          `            component: ChildComponent` +
+          EOL +
+          `        }]` +
+          EOL +
+          `    },` +
+          EOL +
+          `    { path: '**', component: PageNotFoundComponent } // must always be last` +
+          EOL +
+          `];` +
+          EOL +
+          EOL +
+          `@NgModule({` +
+          EOL +
+          `    imports: [RouterModule.forRoot(routes, { bindToComponentInputs: true }), ErrorRoutingModule],` +
+          EOL +
+          `    exports: [RouterModule, ErrorRoutingModule]` +
+          EOL +
+          `})` +
+          EOL +
+          `export class AppRoutingModule {` +
+          EOL +
+          `}` +
+          EOL
       );
     });
 
     it('should nested child routes on multiple levels', () => {
-      spyOn((fileUpdate as any).astTransformer.formatter, 'applyFormatting').and.callThrough();
+      spyOn(
+        (fileUpdate as any).astTransformer.formatter,
+        'applyFormatting'
+      ).and.callThrough();
 
       fileUpdate.addRoute(
         {
@@ -401,39 +540,69 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
       ).toHaveBeenCalledTimes(1);
 
       expect(result).toEqual(
-        `import { NgModule } from '@angular/core';` + EOL +
-`import { RouterModule, Routes } from '@angular/router';` + EOL + EOL +
-
-`import { PageNotFoundComponent } from './error-routing/not-found/not-found.component';` + EOL +
-`import { UncaughtErrorComponent } from './error-routing/error/uncaught-error.component';` + EOL +
-`import { ErrorRoutingModule } from './error-routing/error-routing.module';` + EOL +
-`import { ParentComponent } from 'path/to/parent';` + EOL +
-`import { ChildComponent } from 'path/to/child';` + EOL +
-`import { InnerChildComponent } from 'path/to/inner-child';` + EOL + EOL +
-
-`export const routes: Routes = [` + EOL +
-`    { path: 'error', component: UncaughtErrorComponent },` + EOL +
-`    {` + EOL +
-`        path: 'parent',` + EOL +
-`        component: ParentComponent,` + EOL +
-`        children: [{` + EOL +
-`            path: 'child',` + EOL +
-`            component: ChildComponent,` + EOL +
-`            children: [{` + EOL +
-`                path: 'inner-child',` + EOL +
-`                component: InnerChildComponent` + EOL +
-`            }]` + EOL +
-`        }]` + EOL +
-`    },` + EOL +
-`    { path: '**', component: PageNotFoundComponent } // must always be last` + EOL +
-`];` + EOL + EOL +
-
-`@NgModule({` + EOL +
-`    imports: [RouterModule.forRoot(routes, { bindToComponentInputs: true }), ErrorRoutingModule],` + EOL +
-`    exports: [RouterModule, ErrorRoutingModule]` + EOL +
-`})` + EOL +
-`export class AppRoutingModule {` + EOL +
-`}` + EOL
+        `import { NgModule } from '@angular/core';` +
+          EOL +
+          `import { RouterModule, Routes } from '@angular/router';` +
+          EOL +
+          EOL +
+          `import { PageNotFoundComponent } from './error-routing/not-found/not-found.component';` +
+          EOL +
+          `import { UncaughtErrorComponent } from './error-routing/error/uncaught-error.component';` +
+          EOL +
+          `import { ErrorRoutingModule } from './error-routing/error-routing.module';` +
+          EOL +
+          `import { ParentComponent } from 'path/to/parent';` +
+          EOL +
+          `import { ChildComponent } from 'path/to/child';` +
+          EOL +
+          `import { InnerChildComponent } from 'path/to/inner-child';` +
+          EOL +
+          EOL +
+          `export const routes: Routes = [` +
+          EOL +
+          `    { path: 'error', component: UncaughtErrorComponent },` +
+          EOL +
+          `    {` +
+          EOL +
+          `        path: 'parent',` +
+          EOL +
+          `        component: ParentComponent,` +
+          EOL +
+          `        children: [{` +
+          EOL +
+          `            path: 'child',` +
+          EOL +
+          `            component: ChildComponent,` +
+          EOL +
+          `            children: [{` +
+          EOL +
+          `                path: 'inner-child',` +
+          EOL +
+          `                component: InnerChildComponent` +
+          EOL +
+          `            }]` +
+          EOL +
+          `        }]` +
+          EOL +
+          `    },` +
+          EOL +
+          `    { path: '**', component: PageNotFoundComponent } // must always be last` +
+          EOL +
+          `];` +
+          EOL +
+          EOL +
+          `@NgModule({` +
+          EOL +
+          `    imports: [RouterModule.forRoot(routes, { bindToComponentInputs: true }), ErrorRoutingModule],` +
+          EOL +
+          `    exports: [RouterModule, ErrorRoutingModule]` +
+          EOL +
+          `})` +
+          EOL +
+          `export class AppRoutingModule {` +
+          EOL +
+          `}` +
+          EOL
       );
     });
   });
@@ -455,15 +624,23 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
 
         const result = fileUpdate.finalize();
         expect(result).toEqual(
-          `import { NgModule } from '@angular/core';` + EOL +
-`import { CommonModule } from '@angular/common';` + EOL +
-`import { RouterModule } from '@angular/router';` + EOL + EOL +
-
-`@NgModule({` + EOL +
-`    imports: [CommonModule, RouterModule.forRoot()]` + EOL +
-`})` + EOL +
-`export class MyModule {` + EOL +
-`}` + EOL
+          `import { NgModule } from '@angular/core';` +
+            EOL +
+            `import { CommonModule } from '@angular/common';` +
+            EOL +
+            `import { RouterModule } from '@angular/router';` +
+            EOL +
+            EOL +
+            `@NgModule({` +
+            EOL +
+            `    imports: [CommonModule, RouterModule.forRoot()]` +
+            EOL +
+            `})` +
+            EOL +
+            `export class MyModule {` +
+            EOL +
+            `}` +
+            EOL
         );
       });
 
@@ -481,24 +658,41 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
 
         const result = fileUpdate.finalize();
         expect(result).toEqual(
-          `import { NgModule } from '@angular/core';` + EOL +
-`import { CommonModule } from '@angular/common';` + EOL +
-`import { MyComponent, MyService } from './index';` + EOL + EOL +
-
-`@NgModule({` + EOL +
-`    imports: [CommonModule],` + EOL +
-`    declarations: [` + EOL +
-`        MyComponent` + EOL +
-`    ],` + EOL +
-`    providers: [` + EOL +
-`        MyService` + EOL +
-`    ],` + EOL +
-`    exports: [` + EOL +
-`        MyComponent` + EOL +
-`    ]` + EOL +
-`})` + EOL +
-`export class MyModule {` + EOL +
-`}` + EOL
+          `import { NgModule } from '@angular/core';` +
+            EOL +
+            `import { CommonModule } from '@angular/common';` +
+            EOL +
+            `import { MyComponent, MyService } from './index';` +
+            EOL +
+            EOL +
+            `@NgModule({` +
+            EOL +
+            `    imports: [CommonModule],` +
+            EOL +
+            `    declarations: [` +
+            EOL +
+            `        MyComponent` +
+            EOL +
+            `    ],` +
+            EOL +
+            `    providers: [` +
+            EOL +
+            `        MyService` +
+            EOL +
+            `    ],` +
+            EOL +
+            `    exports: [` +
+            EOL +
+            `        MyComponent` +
+            EOL +
+            `    ]` +
+            EOL +
+            `})` +
+            EOL +
+            `export class MyModule {` +
+            EOL +
+            `}` +
+            EOL
         );
       });
 
@@ -532,18 +726,92 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
 
         const result = fileUpdate.finalize();
         expect(result).toEqual(
-          `import { NgModule } from '@angular/core';` + EOL +
-`import { CommonModule } from '@angular/common';` + EOL +
-`import { ReplaceModule, Replace2Component, Replace3Component } from 'replace4';` + EOL +
-`import { Replace2Module, ReplaceService } from './src/replace4/replace5.service';` + EOL + EOL +
+          `import { NgModule } from '@angular/core';` +
+            EOL +
+            `import { CommonModule } from '@angular/common';` +
+            EOL +
+            `import { ReplaceModule, Replace2Component, Replace3Component } from 'replace4';` +
+            EOL +
+            `import { Replace2Module, ReplaceService } from './src/replace4/replace5.service';` +
+            EOL +
+            EOL +
+            `@NgModule({` +
+            EOL +
+            `    imports: [CommonModule, ReplaceModule, Replace2Module],` +
+            EOL +
+            `    declarations: [Replace2Component, Replace3Component],` +
+            EOL +
+            `    providers: [ReplaceService]` +
+            EOL +
+            `})` +
+            EOL +
+            `export class MyModule {` +
+            EOL +
+            `}` +
+            EOL
+        );
+      });
 
-`@NgModule({` + EOL +
-`    imports: [CommonModule, ReplaceModule, Replace2Module],` + EOL +
-`    declarations: [Replace2Component, Replace3Component],` + EOL +
-`    providers: [ReplaceService]` + EOL +
-`})` + EOL +
-`export class MyModule {` + EOL +
-`}` + EOL
+      it('should not add members to the same array if they are already present', () => {
+        fileUpdate.addNgModuleMeta(
+          {
+            declare: ['MyComponent'],
+            export: ['MyComponent'],
+            provide: ['MyService'],
+            from: './index',
+          },
+          undefined, // variables
+          true // multiline
+        );
+
+        fileUpdate.addNgModuleMeta(
+          {
+            declare: ['MyComponent'],
+            export: ['MyComponent'],
+            provide: ['MyService'],
+            from: './index',
+          },
+          undefined, // variables
+          true // multiline
+        );
+
+        const result = fileUpdate.finalize();
+        expect(result).toEqual(
+          `import { NgModule } from '@angular/core';` +
+            EOL +
+            `import { CommonModule } from '@angular/common';` +
+            EOL +
+            `import { MyComponent, MyService } from './index';` +
+            EOL +
+            EOL +
+            `@NgModule({` +
+            EOL +
+            `    imports: [CommonModule],` +
+            EOL +
+            `    declarations: [` +
+            EOL +
+            `        MyComponent` +
+            EOL +
+            `    ],` +
+            EOL +
+            `    providers: [` +
+            EOL +
+            `        MyService` +
+            EOL +
+            `    ],` +
+            EOL +
+            `    exports: [` +
+            EOL +
+            `        MyComponent` +
+            EOL +
+            `    ]` +
+            EOL +
+            `})` +
+            EOL +
+            `export class MyModule {` +
+            EOL +
+            `}` +
+            EOL
         );
       });
     });
@@ -567,21 +835,35 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
 
         const result = fileUpdate.finalize();
         expect(result).toEqual(
-          `import { Component } from '@angular/core';` + EOL +
-`import { CommonModule } from '@angular/common';` + EOL +
-`import { RouterOutlet } from '@angular/router';` + EOL +
-`import { MyComponent } from 'my-module';` + EOL + EOL +
-
-`@Component({` + EOL +
-`    selector: 'app-root',` + EOL +
-`    standalone: true,` + EOL +
-`    imports: [CommonModule, RouterOutlet, MyComponent],` + EOL +
-`    templateUrl: './app.component.html',` + EOL +
-`    styleUrls: ['./app.component.scss']` + EOL +
-`})` + EOL +
-`export class AppComponent {` + EOL +
-`    title = 'Home - IgniteUI for Angular';` + EOL +
-`}` + EOL
+          `import { Component } from '@angular/core';` +
+            EOL +
+            `import { CommonModule } from '@angular/common';` +
+            EOL +
+            `import { RouterOutlet } from '@angular/router';` +
+            EOL +
+            `import { MyComponent } from 'my-module';` +
+            EOL +
+            EOL +
+            `@Component({` +
+            EOL +
+            `    selector: 'app-root',` +
+            EOL +
+            `    standalone: true,` +
+            EOL +
+            `    imports: [CommonModule, RouterOutlet, MyComponent],` +
+            EOL +
+            `    templateUrl: './app.component.html',` +
+            EOL +
+            `    styleUrls: ['./app.component.scss']` +
+            EOL +
+            `})` +
+            EOL +
+            `export class AppComponent {` +
+            EOL +
+            `    title = 'Home - IgniteUI for Angular';` +
+            EOL +
+            `}` +
+            EOL
         );
       });
 
@@ -594,22 +876,37 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
 
         const result = fileUpdate.finalize();
         expect(result).toEqual(
-          `import { Component } from '@angular/core';` + EOL +
-`import { CommonModule } from '@angular/common';` + EOL +
-`import { RouterOutlet } from '@angular/router';` + EOL +
-`import { MyService } from 'my-service';` + EOL + EOL +
-
-`@Component({` + EOL +
-`    selector: 'app-root',` + EOL +
-`    standalone: true,` + EOL +
-`    imports: [CommonModule, RouterOutlet],` + EOL +
-`    templateUrl: './app.component.html',` + EOL +
-`    styleUrls: ['./app.component.scss'],` + EOL +
-`    providers: [MyService]` + EOL +
-`})` + EOL +
-`export class AppComponent {` + EOL +
-`    title = 'Home - IgniteUI for Angular';` + EOL +
-`}` + EOL
+          `import { Component } from '@angular/core';` +
+            EOL +
+            `import { CommonModule } from '@angular/common';` +
+            EOL +
+            `import { RouterOutlet } from '@angular/router';` +
+            EOL +
+            `import { MyService } from 'my-service';` +
+            EOL +
+            EOL +
+            `@Component({` +
+            EOL +
+            `    selector: 'app-root',` +
+            EOL +
+            `    standalone: true,` +
+            EOL +
+            `    imports: [CommonModule, RouterOutlet],` +
+            EOL +
+            `    templateUrl: './app.component.html',` +
+            EOL +
+            `    styleUrls: ['./app.component.scss'],` +
+            EOL +
+            `    providers: [MyService]` +
+            EOL +
+            `})` +
+            EOL +
+            `export class AppComponent {` +
+            EOL +
+            `    title = 'Home - IgniteUI for Angular';` +
+            EOL +
+            `}` +
+            EOL
         );
       });
 
@@ -640,23 +937,88 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
 
         const result = fileUpdate.finalize();
         expect(result).toEqual(
-          `import { Component } from '@angular/core';` + EOL +
-`import { CommonModule } from '@angular/common';` + EOL +
-`import { RouterOutlet } from '@angular/router';` + EOL +
-`import { ReplaceModule } from 'replace4';` + EOL +
-`import { ReplaceService } from './src/replace4/replace5.service';` + EOL + EOL +
+          `import { Component } from '@angular/core';` +
+            EOL +
+            `import { CommonModule } from '@angular/common';` +
+            EOL +
+            `import { RouterOutlet } from '@angular/router';` +
+            EOL +
+            `import { ReplaceModule } from 'replace4';` +
+            EOL +
+            `import { ReplaceService } from './src/replace4/replace5.service';` +
+            EOL +
+            EOL +
+            `@Component({` +
+            EOL +
+            `    selector: 'app-root',` +
+            EOL +
+            `    standalone: true,` +
+            EOL +
+            `    imports: [CommonModule, RouterOutlet, ReplaceModule],` +
+            EOL +
+            `    templateUrl: './app.component.html',` +
+            EOL +
+            `    styleUrls: ['./app.component.scss'],` +
+            EOL +
+            `    providers: [ReplaceService]` +
+            EOL +
+            `})` +
+            EOL +
+            `export class AppComponent {` +
+            EOL +
+            `    title = 'Home - IgniteUI for Angular';` +
+            EOL +
+            `}` +
+            EOL
+        );
+      });
 
-`@Component({`+ EOL +
-`    selector: 'app-root',`+ EOL +
-`    standalone: true,`+ EOL +
-`    imports: [CommonModule, RouterOutlet, ReplaceModule],`+ EOL +
-`    templateUrl: './app.component.html',`+ EOL +
-`    styleUrls: ['./app.component.scss'],`+ EOL +
-`    providers: [ReplaceService]`+ EOL +
-`})`+ EOL +
-`export class AppComponent {`+ EOL +
-`    title = 'Home - IgniteUI for Angular';`+ EOL +
-`}`+ EOL
+      it('should not add members to the same array if they are already present', () => {
+        fileUpdate.addStandaloneComponentMeta({
+          provide: ['MyService'],
+          from: 'my-service',
+          standalone: true,
+        });
+
+        fileUpdate.addStandaloneComponentMeta({
+          provide: ['MyService'],
+          from: 'my-service',
+          standalone: true,
+        });
+
+        const result = fileUpdate.finalize();
+        expect(result).toEqual(
+          `import { Component } from '@angular/core';` +
+            EOL +
+            `import { CommonModule } from '@angular/common';` +
+            EOL +
+            `import { RouterOutlet } from '@angular/router';` +
+            EOL +
+            `import { MyService } from 'my-service';` +
+            EOL +
+            EOL +
+            `@Component({` +
+            EOL +
+            `    selector: 'app-root',` +
+            EOL +
+            `    standalone: true,` +
+            EOL +
+            `    imports: [CommonModule, RouterOutlet],` +
+            EOL +
+            `    templateUrl: './app.component.html',` +
+            EOL +
+            `    styleUrls: ['./app.component.scss'],` +
+            EOL +
+            `    providers: [MyService]` +
+            EOL +
+            `})` +
+            EOL +
+            `export class AppComponent {` +
+            EOL +
+            `    title = 'Home - IgniteUI for Angular';` +
+            EOL +
+            `}` +
+            EOL
         );
       });
     });
