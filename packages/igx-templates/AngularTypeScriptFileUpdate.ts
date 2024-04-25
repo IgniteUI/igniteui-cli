@@ -192,9 +192,11 @@ export class AngularTypeScriptFileUpdate {
 
     if (dep.from) {
       // add an import declaration for the dependency
-      const identifiers = [...copy.import, ...copy.provide].map((name) => ({
-        name,
-      }));
+      const uniqueIdentifiers = new Set<string>([
+        ...copy.import,
+        ...copy.provide,
+      ]);
+      const identifiers = [...uniqueIdentifiers].map((name) => ({ name }));
 
       this.astTransformer.addImportDeclaration(
         identifiers.filter(
@@ -355,13 +357,10 @@ export class AngularTypeScriptFileUpdate {
 
     if (ts.isArrayLiteralExpression(targetMetaProp.initializer)) {
       // prop assignment of the form { member: [...] }
-      const existingIdentifiers = identifiers.filter((i) =>
-        this.astTransformer.findElementInArrayLiteral((node: ts.Node) => {
-          return (
-            node.getText().includes(i.text) &&
-            this.checkNgDecorator(NG_MODULE_DECORATOR_NAME, node)
-          );
-        })
+      // store to avoid second type check due to different context in the filter
+      const elementsAsNodeArray = targetMetaProp.initializer.elements;
+      const elementsToAdd = identifiers.filter(
+        (i) => !elementsAsNodeArray.some((el) => el.getText() === i.text)
       );
 
       return this.astTransformer.addMembersToArrayLiteral(
@@ -369,7 +368,7 @@ export class AngularTypeScriptFileUpdate {
           ts.isPropertyAssignment(node.parent) &&
           node.parent.name.getText() === target &&
           this.checkNgDecorator(name, node),
-        identifiers.filter((i) => !existingIdentifiers.includes(i))
+        elementsToAdd
       );
     }
 
@@ -387,8 +386,8 @@ export class AngularTypeScriptFileUpdate {
   }
 
   /**
-   * Checks if a node has an ancenstor with a specific decorator.
-   * @param name The name of the decoator.
+   * Checks if a node has an ancestor with a specific decorator.
+   * @param name The name of the decorator.
    * @param node The node to start checking from.
    */
   private checkNgDecorator(name: string, node: ts.Node): boolean {
@@ -491,7 +490,7 @@ export class AngularTypeScriptFileUpdate {
    * Converts a string or string array union to array.
    * @param value The value to convert.
    * @param variables Variables to replace in the strings.
-   * @remraks Splits strings as comma delimited.
+   * @remarks Splits strings as comma delimited.
    */
   private asArray(
     value: string | string[],
