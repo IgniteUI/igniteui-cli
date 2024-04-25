@@ -32,7 +32,7 @@
                 </div>
                 <div class="caseSensitiveButton">
                   <button igxButton="icon" igxRipple [igxRippleCentered]="true" (click)="updateSearch()"
-                    [igxButtonBackground]="caseSensitive? 'rgb(73, 180, 254)' : 'transparent'">
+                    igxButtonBackground="caseSensitive? 'rgb(73, 180, 254)' : 'transparent'">
                     <igx-icon class="caseSensitiveIcon" family="material">text_fields</igx-icon>
                   </button>
                 </div>
@@ -66,7 +66,7 @@
       [filterable]="false">
       <ng-template igxCell let-cell="cell">
         <div class="cell__inner avatar-cell">
-          <igx-avatar [src]="cell.row.data.avatar" [roundShape]="true" size="small"></igx-avatar>
+          <igx-avatar [src]="cell.row.data.avatar" [shape]="'square'" size="small"></igx-avatar>
         </div>
       </ng-template>
     </igx-column>

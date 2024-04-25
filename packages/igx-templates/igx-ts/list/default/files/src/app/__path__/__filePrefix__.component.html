@@ -19,7 +19,7 @@
   <igx-list-item #item *ngFor="let contact of contacts | igxFilter: filterContacts;">
     <div class="item-container">
       <div class="contact">
-        <igx-avatar [src]="contact.photo" [roundShape]="true"></igx-avatar>
+        <igx-avatar [src]="contact.photo" [shape]="'square'"></igx-avatar>
         <div class="contact__info">
           <span class="name">{{ contact.name }}</span>
           <span class="phone">{{ contact.phone }}</span>
