@@ -3,4 +3,6 @@ export enum AngularRouteTarget {
   Root = 'root',
   Data = 'data',
   RedirectTo = 'redirectTo',
+  LoadChildren = 'loadChildren',
+  LoadComponent = 'loadComponent',
 }

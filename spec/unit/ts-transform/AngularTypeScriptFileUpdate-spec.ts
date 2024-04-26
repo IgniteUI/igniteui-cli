@@ -79,7 +79,7 @@ class MockFS implements IFileSystem {
   }
 }
 
-fdescribe('Unit - AngularTypeScriptFileUpdate', () => {
+describe('Unit - AngularTypeScriptFileUpdate', () => {
   describe('Initialization', () => {
     it('should be created with a path/to/file', () => {
       spyOn(App.container, 'get').and.returnValue(new MockFS());

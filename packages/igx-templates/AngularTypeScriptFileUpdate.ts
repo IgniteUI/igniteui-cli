@@ -29,9 +29,6 @@ const IMPORT_IDENTIFIER_NAME = 'import';
 const NG_MODULE_DECORATOR_NAME = 'NgModule';
 const NG_SA_DECORATOR_NAME = 'Component';
 const NG_FOR_ROOT_IDENTIFIER_NAME = 'forRoot';
-const NG_LOAD_CHILDREN_IDENTIFIER_NAME = 'loadChildren';
-const NG_LOAD_COMPONENT_IDENTIFIER_NAME = 'loadComponent';
-export const NEW_LINE_PLACEHOLDER = '//I keep the new line';
 
 // insert before node that contains this element
 const anchorElement: IPropertyAssignment = {
@@ -149,6 +146,21 @@ export class AngularTypeScriptFileUpdate {
             multiline
           ),
         }
+      );
+    }
+
+    if (
+      route.lazyload &&
+      route.path &&
+      route.identifierName &&
+      route.modulePath
+    ) {
+      return this.addLazyLoadedRouteEntry(
+        route,
+        visitCondition,
+        anchorElement,
+        multiline,
+        true // prepend
       );
     }
 
@@ -695,16 +707,29 @@ export class AngularTypeScriptFileUpdate {
       route.root
     );
     const propAssignmentName = route.root
-      ? NG_LOAD_CHILDREN_IDENTIFIER_NAME
-      : NG_LOAD_COMPONENT_IDENTIFIER_NAME;
+      ? AngularRouteTarget.LoadChildren
+      : AngularRouteTarget.LoadComponent;
+
+    const structure: IAngularRouteEntry[] = [
+      {
+        name: RouteTarget.Path,
+        value: ts.factory.createStringLiteral(route.path),
+      },
+      { name: propAssignmentName, value: lazyLoadedModule },
+    ];
+    if (route.data) {
+      structure.push({
+        name: AngularRouteTarget.Data,
+        value: this.astTransformer.createObjectLiteralExpression(
+          [route.data],
+          multiline,
+          ts.factory.createStringLiteral
+        ),
+      });
+    }
+
     const newRoute = this.astTransformer.createObjectLiteralExpression(
-      [
-        {
-          name: RouteTarget.Path,
-          value: ts.factory.createStringLiteral(route.path),
-        },
-        { name: propAssignmentName, value: lazyLoadedModule },
-      ],
+      structure,
       multiline
     );
 
