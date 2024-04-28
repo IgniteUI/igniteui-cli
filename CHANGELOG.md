@@ -1,3 +1,12 @@
+# [13.1.16](https://github.com/IgniteUI/igniteui-cli/compare/v13.1.15...v13.1.16) (2024-04-28)
+
+## What's Changed
+* fix(react): fix null type build error in main.tsx by @teodosiah in https://github.com/IgniteUI/igniteui-cli/pull/1242
+* chore(ng standalone): add stylePreprocessorOptions for test by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1244
+* chore(*): update node in publish and all templates by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1245
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.1.15...v13.1.16
+
 # [13.1.15](https://github.com/IgniteUI/igniteui-cli/compare/v13.1.14...v13.1.15) (2024-04-12)
 
 ## What's Changed
