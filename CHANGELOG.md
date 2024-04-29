@@ -1,3 +1,12 @@
+# [13.2.0](https://github.com/IgniteUI/igniteui-cli/compare/v13.1.15...v13.1.16) (2024-04-29)
+
+🎉 This update includes:
+
+- `igniteui-angular` version [17.2.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/17.2.0).
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.1.16...v13.2.0
+
+
 # [13.1.16](https://github.com/IgniteUI/igniteui-cli/compare/v13.1.15...v13.1.16) (2024-04-28)
 
 ## What's Changed
