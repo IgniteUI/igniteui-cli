@@ -112,6 +112,21 @@ export class TypeScriptUtils {
 		return targetSource;
 	}
 
+	/**
+	 * Retrieves the source text, removes new line placeholders
+	 * @param source The source AST to print
+	 */
+	public static getSourceText(source: ts.SourceFile): string {
+		const printer = this.createPrinter();
+		let text = printer.printFile(source);
+		text = text.replace(
+			new RegExp(`(\r?\n)\\s*?${Util.escapeRegExp(this.newLinePlaceHolder)}(\r?\n)`, "g"),
+			`$1$2`
+		);
+
+		return text;
+	}
+
 	public static createSourceFile(filePath: string, text: string, scriptTarget: ts.ScriptTarget, setParentNodes?: boolean): ts.SourceFile {
 		return ts.createSourceFile(filePath, text, scriptTarget, setParentNodes);
 	}
@@ -124,19 +139,14 @@ export class TypeScriptUtils {
 	}
 
 	/**
-	 * Prints source, removes new line placeholders and saves the output in a target file
+	 * Saves the source to a target file
 	 * @param filePath File path
 	 * @param source Source AST to print
 	 */
 	public static saveFile(filePath: string, source: ts.SourceFile) {
 		const fileSystem = App.container.get<IFileSystem>(FS_TOKEN);
 		// https://github.com/Microsoft/TypeScript/issues/10786#issuecomment-288987738
-		const printer: ts.Printer = this.createPrinter();
-		let text = printer.printFile(source);
-		text = text.replace(
-			new RegExp(`(\r?\n)\\s*?${Util.escapeRegExp(this.newLinePlaceHolder)}(\r?\n)`, "g"),
-			`$1$2`
-		);
+		const text = this.getSourceText(source);
 		fileSystem.writeFile(filePath, text);
 	}
 
