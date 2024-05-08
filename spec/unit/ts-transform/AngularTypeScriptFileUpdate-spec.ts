@@ -38,7 +38,7 @@ export class AppComponent {
 }
 `;
 
-const moduleFile = `import { NgModule } from '@angular/core';
+const moduleFileContent = `import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
@@ -48,9 +48,19 @@ export class MyModule {
 }
 `;
 
+let moduleFile;
+let routesFile;
+let standaloneComponentFile;
+
 const routesPath = 'path/to/routes';
 const moduleFilePath = 'path/to/module';
 const standaloneComponentFilePath = 'path/to/component';
+
+function initFilesState() {
+  moduleFile = moduleFileContent;
+  routesFile = routesFileContent;
+  standaloneComponentFile = standaloneComponentFileContent;
+}
 
 class MockFS implements IFileSystem {
   public fileExists(filePath: string): boolean {
@@ -59,9 +69,9 @@ class MockFS implements IFileSystem {
   public readFile(filePath: string, encoding?: string): string {
     switch (filePath) {
       case routesPath:
-        return routesFileContent;
+        return routesFile;
       case standaloneComponentFilePath:
-        return standaloneComponentFileContent;
+        return standaloneComponentFile;
       case moduleFilePath:
         return moduleFile;
       default:
@@ -69,7 +79,17 @@ class MockFS implements IFileSystem {
     }
   }
   public writeFile(filePath: string, text: string): void {
-    throw new Error('writeFile is not implemented.');
+    switch (filePath) {
+      case routesPath:
+        routesFile = text;
+        break;
+      case standaloneComponentFilePath:
+        standaloneComponentFile = text;
+        break;
+      case moduleFilePath:
+        moduleFile = text;
+        break;
+    }
   }
   public directoryExists(dirPath: string): boolean {
     throw new Error('directoryExists is not implemented.');
@@ -82,6 +102,7 @@ class MockFS implements IFileSystem {
 describe('Unit - AngularTypeScriptFileUpdate', () => {
   describe('Initialization', () => {
     it('should be created with a path/to/file', () => {
+      initFilesState();
       spyOn(App.container, 'get').and.returnValue(new MockFS());
 
       const tsUpdate = new AngularTypeScriptFileUpdate(routesPath);
@@ -93,6 +114,7 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
   let fileUpdate!: AngularTypeScriptFileUpdate;
   describe('Routing', () => {
     beforeEach(() => {
+      initFilesState();
       spyOn(App, 'initialize').and.callThrough();
       spyOn(App.container, 'get').and.returnValue(new MockFS());
       fileUpdate = new AngularTypeScriptFileUpdate(routesPath);
@@ -610,6 +632,7 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
   describe('Metadata', () => {
     describe('NgModule', () => {
       beforeEach(() => {
+        initFilesState();
         spyOn(App, 'initialize').and.callThrough();
         spyOn(App.container, 'get').and.returnValue(new MockFS());
         fileUpdate = new AngularTypeScriptFileUpdate(moduleFilePath);
@@ -818,6 +841,7 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
 
     describe('Standalone Component', () => {
       beforeEach(() => {
+        initFilesState();
         spyOn(App, 'initialize').and.callThrough();
         spyOn(App.container, 'get').and.returnValue(new MockFS());
         fileUpdate = new AngularTypeScriptFileUpdate(
