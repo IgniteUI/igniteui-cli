@@ -56,6 +56,8 @@ export class TypeScriptFormattingService implements FormattingService {
       TypeScriptUtils.getSourceText(this._sourceFile),
       changes
     );
+
+    TypeScriptUtils.saveFile(this.path, text);
     return text;
   }
 
