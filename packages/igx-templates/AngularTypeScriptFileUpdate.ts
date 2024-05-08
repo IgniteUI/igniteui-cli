@@ -2,20 +2,20 @@ import * as ts from 'typescript';
 import { EOL } from 'os';
 
 import {
-  FormattingService,
+  TypeScriptFormattingService,
   KeyValuePair,
-  IIdentifier,
-  IPropertyAssignment,
+  Identifier,
+  PropertyAssignment,
   RouteTarget,
   TemplateDependency,
   TypeScriptASTTransformer,
   Util,
   TypeScriptUtils,
-  IFormatSettings,
+  FormatSettings,
 } from '@igniteui/cli-core';
 
 import {
-  IAngularRouteLike,
+  AngularRouteLike,
   AngularDecoratorMetaTarget,
   IAngularRouteEntry,
   AngularRouteTarget,
@@ -31,7 +31,7 @@ const NG_SA_DECORATOR_NAME = 'Component';
 const NG_FOR_ROOT_IDENTIFIER_NAME = 'forRoot';
 
 // insert before node that contains this element
-const anchorElement: IPropertyAssignment = {
+const anchorElement: PropertyAssignment = {
   name: 'path',
   value: ts.factory.createStringLiteral('**'),
 };
@@ -46,14 +46,13 @@ const printerOptions: ts.PrinterOptions = {
 export class AngularTypeScriptFileUpdate {
   private readonly astTransformer: TypeScriptASTTransformer;
   constructor(
-    targetPath: string,
+    private targetPath: string,
     private standalone: boolean = false,
-    formatSettings?: IFormatSettings
+    formatSettings?: FormatSettings
   ) {
-    const sourceFile = TypeScriptUtils.getFileSource(targetPath);
     this.astTransformer = new TypeScriptASTTransformer(
-      sourceFile,
-      new FormattingService(sourceFile, null, formatSettings, printerOptions),
+      TypeScriptUtils.getFileSource(targetPath),
+      new TypeScriptFormattingService(targetPath, formatSettings),
       printerOptions // TODO: may not be needed
     );
   }
@@ -66,11 +65,11 @@ export class AngularTypeScriptFileUpdate {
    * @param multiline Whether to format the new entry as multiline.
    */
   public addRoute(
-    route: IAngularRouteLike,
+    route: AngularRouteLike,
     multiline: boolean = false
   ): ts.SourceFile {
     const visitCondition = (node: ts.Node) =>
-      !!this.astTransformer.findNodeAncenstor(
+      !!this.astTransformer.findNodeAncestor(
         node,
         (node) =>
           ts.isVariableDeclaration(node) &&
@@ -111,7 +110,7 @@ export class AngularTypeScriptFileUpdate {
    */
   public addChildRoute(
     parentPath: string,
-    route: IAngularRouteLike,
+    route: AngularRouteLike,
     multiline: boolean = false,
     prepend: boolean = false
   ): ts.SourceFile {
@@ -171,7 +170,7 @@ export class AngularTypeScriptFileUpdate {
         ts.isPropertyAssignment(node.parent) &&
         node.parent.name.getText() === childrenKey &&
         // check if the parent route is the one we're looking for
-        !!this.astTransformer.findNodeAncenstor(
+        !!this.astTransformer.findNodeAncestor(
           node,
           (node) =>
             ts.isObjectLiteralExpression(node) &&
@@ -208,14 +207,13 @@ export class AngularTypeScriptFileUpdate {
         ...copy.import,
         ...copy.provide,
       ]);
-      const identifiers = [...uniqueIdentifiers].map((name) => ({ name }));
-
-      this.astTransformer.addImportDeclaration(
-        identifiers.filter(
-          (i) => !this.astTransformer.importDeclarationCollides(i)
-        ),
-        this.applyConfigTransformation(dep.from, variables!)
+      const identifiers = [...uniqueIdentifiers].filter(
+        (name) => !this.astTransformer.importDeclarationCollides({ name })
       );
+      this.astTransformer.addImportDeclaration({
+        identifier: identifiers.map((name) => ({ name })),
+        moduleName: this.applyConfigTransformation(dep.from, variables!),
+      });
     }
 
     if (copy.import.length > 0) {
@@ -267,14 +265,13 @@ export class AngularTypeScriptFileUpdate {
         ...copy.provide,
         ...copy.export,
       ]);
-      const identifiers = [...uniqueIdentifiers].map((name) => ({ name }));
-
-      this.astTransformer.addImportDeclaration(
-        identifiers.filter(
-          (i) => !this.astTransformer.importDeclarationCollides(i)
-        ),
-        this.applyConfigTransformation(dep.from, variables!)
+      const identifiers = [...uniqueIdentifiers].filter(
+        (name) => !this.astTransformer.importDeclarationCollides({ name })
       );
+      this.astTransformer.addImportDeclaration({
+        identifier: identifiers.map((name) => ({ name })),
+        moduleName: this.applyConfigTransformation(dep.from, variables!),
+      });
     }
 
     if (dep.root && copy.import.length > 0) {
@@ -332,6 +329,7 @@ export class AngularTypeScriptFileUpdate {
    * @remarks This method should be called after all modifications have been made to the AST.
    */
   public finalize(): string {
+    TypeScriptUtils.saveFile(this.targetPath, this.astTransformer.sourceFile);
     return this.astTransformer.finalize();
   }
 
@@ -403,7 +401,7 @@ export class AngularTypeScriptFileUpdate {
    * @param node The node to start checking from.
    */
   private checkNgDecorator(name: string, node: ts.Node): boolean {
-    return !!this.astTransformer.findNodeAncenstor(
+    return !!this.astTransformer.findNodeAncestor(
       node,
       (node) =>
         ts.isDecorator(node) &&
@@ -425,7 +423,7 @@ export class AngularTypeScriptFileUpdate {
       (node) =>
         ts.isPropertyAssignment(node) &&
         node.name.getText() === propName &&
-        !!this.astTransformer.findNodeAncenstor(
+        !!this.astTransformer.findNodeAncestor(
           node,
           (node) =>
             ts.isDecorator(node) &&
@@ -545,9 +543,9 @@ export class AngularTypeScriptFileUpdate {
    * @param prepend Whether to insert the new entry before the anchor element.
    */
   private addRedirectOrSimpleRouteEntry(
-    route: IAngularRouteLike,
+    route: AngularRouteLike,
     visitCondition: (node: ts.Node) => boolean,
-    anchorElement: IPropertyAssignment,
+    anchorElement: PropertyAssignment,
     multiline: boolean = false,
     prepend: boolean = false
   ): ts.SourceFile {
@@ -591,21 +589,21 @@ export class AngularTypeScriptFileUpdate {
    * @param prepend Whether to insert the new entry before the anchor element.
    */
   private addRouteEntry(
-    route: IAngularRouteLike,
+    route: AngularRouteLike,
     visitCondition: (node: ts.Node) => boolean,
-    anchorElement: IPropertyAssignment,
+    anchorElement: PropertyAssignment,
     multiline: boolean = false,
     prepend: boolean = false
   ): ts.SourceFile {
     if (route.modulePath) {
       // add an import for the given identifier
-      const routeIdentifier: IIdentifier = { name: route.identifierName };
+      const routeIdentifier: Identifier = { name: route.identifierName };
       if (!this.astTransformer.importDeclarationCollides(routeIdentifier)) {
-        // if identifierName, there must be a modulePath as well
-        this.astTransformer.addImportDeclaration(
-          [routeIdentifier],
-          route.modulePath
-        );
+        // if there is an identifierName, there must be a modulePath as well
+        this.astTransformer.addImportDeclaration({
+          identifier: routeIdentifier,
+          moduleName: route.modulePath,
+        });
       }
     }
 
@@ -651,9 +649,9 @@ export class AngularTypeScriptFileUpdate {
    * @param prepend Whether to insert the new entry before the anchor element.
    */
   private addRedirectRouteEntry(
-    route: IAngularRouteLike,
+    route: AngularRouteLike,
     visitCondition: (node: ts.Node) => boolean,
-    anchorElement: IPropertyAssignment,
+    anchorElement: PropertyAssignment,
     multiline: boolean = false,
     prepend: boolean = false
   ): ts.SourceFile {
@@ -695,9 +693,9 @@ export class AngularTypeScriptFileUpdate {
    * @param prepend Whether to insert the new entry before the anchor element.
    */
   private addLazyLoadedRouteEntry(
-    route: IAngularRouteLike,
+    route: AngularRouteLike,
     visitCondition: (node: ts.Node) => boolean,
-    anchorElement: IPropertyAssignment,
+    anchorElement: PropertyAssignment,
     multiline: boolean = false,
     prepend: boolean = false
   ): ts.SourceFile {

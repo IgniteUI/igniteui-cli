@@ -1,7 +1,7 @@
 import * as ts from "typescript";
 import { DependencyNotFoundException } from "@angular-devkit/core";
 import { chain, FileDoesNotExistException, Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
-import { addClassToBody, FormattingService, IFormatSettings, NPM_ANGULAR, resolvePackage, TypeScriptASTTransformer, TypeScriptUtils } from "@igniteui/cli-core";
+import { addClassToBody, TypeScriptFormattingService, FormatSettings, NPM_ANGULAR, resolvePackage, TypeScriptASTTransformer, TypeScriptUtils } from "@igniteui/cli-core";
 import { AngularTypeScriptFileUpdate } from "@igniteui/angular-templates";
 import { createCliConfig } from "../utils/cli-config";
 import { setVirtual } from "../utils/NgFileSystem";
@@ -73,29 +73,28 @@ function importBrowserAnimations(): Rule {
 						singleQuotes: false
 					});
 				mainModule.addNgModuleMeta({ import: "BrowserAnimationsModule", from: "@angular/platform-browser/animations" });
-				const content = mainModule.finalize();
-				if (content) {
-					// add to a finalize override in the NG File Update instead?
-					TypeScriptUtils.saveFile(moduleFilePath, content);
-				}
+				mainModule.finalize();
 			}
 			const appConfigFilePath = `${project.sourceRoot}/app/app.config.ts`;
 			if (tree.exists(appConfigFilePath)) {
 				const sourceFile = TypeScriptUtils.getFileSource(appConfigFilePath);
-				const formatSettings: IFormatSettings = {
+				const formatSettings: FormatSettings = {
 					indentSize: 4,
 					convertTabsToSpaces: false,
 					singleQuotes: false
 				};
-				const configTransformer = new TypeScriptASTTransformer(sourceFile, new FormattingService(sourceFile, undefined, formatSettings));
+				const configTransformer = new TypeScriptASTTransformer(sourceFile, new TypeScriptFormattingService(appConfigFilePath, formatSettings));
 				const providerMeta = { provide: "provideAnimations", from: "@angular/platform-browser/animations" };
 				if (!configTransformer.importDeclarationCollides({name: providerMeta.provide})) {
-					configTransformer.addImportDeclaration([{ name: providerMeta.provide }], providerMeta.from);
+					configTransformer.addImportDeclaration({
+						identifier: { name: providerMeta.provide },
+						moduleName: providerMeta.from
+					});
 				}
 
 				configTransformer
 					.addMembersToArrayLiteral((node) =>
-						!!configTransformer.findNodeAncenstor(node, (node) => ts.isPropertyAssignment(node) &&
+						!!configTransformer.findNodeAncestor(node, (node) => ts.isPropertyAssignment(node) &&
 							node.name.getText() === "providers" &&
 							ts.isObjectLiteralExpression(node.parent) &&
 							ts.isArrayLiteralExpression(node.initializer) &&
@@ -104,11 +103,8 @@ function importBrowserAnimations(): Rule {
 					[ts.factory.createCallExpression(ts.factory.createIdentifier(providerMeta.provide), undefined, [])]
 				)
 
-				const content = configTransformer.finalize();
-				if (content) {
-					// add to a finalize override in the NG File Update instead?
-					TypeScriptUtils.saveFile(appConfigFilePath, content);
-				}
+				TypeScriptUtils.saveFile(appConfigFilePath, configTransformer.sourceFile);
+				configTransformer.finalize();
 			}
 		});
 	};

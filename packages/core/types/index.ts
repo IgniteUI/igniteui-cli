@@ -16,6 +16,6 @@ export * from "./TemplateReplaceDelimiters";
 export * from "./FileSystem";
 export * from "./types-typescript";
 export * from './KeyValuePair';
-export * from './IRouteEntry';
-export * from './IRouteLike';
+export * from './RouteEntry';
+export * from './RouteLike';
 export * from './enumerations/RouteTarget';
