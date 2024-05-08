@@ -482,7 +482,7 @@ describe('TypeScript AST Transformer', () => {
 
       it('should create an import declaration', () => {
         const importDeclaration = astTransformer.createImportDeclaration({
-          identifier: { name: 'mock' },
+          identifiers: { name: 'mock' },
           moduleName: 'module',
         });
 
@@ -496,7 +496,7 @@ describe('TypeScript AST Transformer', () => {
 
       it('should create an import declaration with an alias', () => {
         const importDeclaration = astTransformer.createImportDeclaration({
-          identifier: { name: 'SomeImport', alias: 'mock' },
+          identifiers: { name: 'SomeImport', alias: 'mock' },
           moduleName: 'module',
         });
 
@@ -510,7 +510,7 @@ describe('TypeScript AST Transformer', () => {
 
       it('should create a default import declaration', () => {
         const importDeclaration = astTransformer.createImportDeclaration(
-          { identifier: { name: 'SomeMock' }, moduleName: 'module' },
+          { identifiers: { name: 'SomeMock' }, moduleName: 'module' },
           true
         );
 
@@ -525,7 +525,7 @@ describe('TypeScript AST Transformer', () => {
       it('should default to the first identifier for a default import declaration when multiple identifiers are passed in', () => {
         const importDeclaration = astTransformer.createImportDeclaration(
           {
-            identifier: [{ name: 'SomeMock' }, { name: 'AnotherMock' }],
+            identifiers: [{ name: 'SomeMock' }, { name: 'AnotherMock' }],
             moduleName: 'module',
           },
           true
@@ -542,7 +542,7 @@ describe('TypeScript AST Transformer', () => {
       // TODO: maybe?
       xit('should create an import declaration with a namespace import', () => {
         const importDeclaration = astTransformer.createImportDeclaration({
-          identifier: { name: '*', alias: 'mock' },
+          identifiers: { name: '*', alias: 'mock' },
           moduleName: 'another-module',
         });
 
@@ -569,7 +569,7 @@ describe('TypeScript AST Transformer', () => {
       describe('Adding imports', () => {
         it('should add an import declaration', () => {
           const updatedSourceFile = astTransformer.addImportDeclaration({
-            identifier: { name: 'AnotherMock' },
+            identifiers: { name: 'AnotherMock' },
             moduleName: 'another/module',
           });
 
@@ -581,7 +581,7 @@ describe('TypeScript AST Transformer', () => {
 
         it('should add an import declaration with an alias', () => {
           const updatedSourceFile = astTransformer.addImportDeclaration({
-            identifier: { name: 'AnotherMock', alias: 'anotherMock' },
+            identifiers: { name: 'AnotherMock', alias: 'anotherMock' },
             moduleName: 'another/module',
           });
 
@@ -594,7 +594,7 @@ describe('TypeScript AST Transformer', () => {
         it('should add an import declaration as a default import', () => {
           const updatedSourceFile = astTransformer.addImportDeclaration(
             {
-              identifier: { name: 'AnotherMock' },
+              identifiers: { name: 'AnotherMock' },
               moduleName: 'another/module',
             },
             true
@@ -608,7 +608,7 @@ describe('TypeScript AST Transformer', () => {
 
         it('should add an import declaration with an existing identifier if it is aliased and is from the same module', () => {
           const updatedSourceFile = astTransformer.addImportDeclaration({
-            identifier: { name: 'mock', alias: 'anotherMock' },
+            identifiers: { name: 'mock', alias: 'anotherMock' },
             moduleName: 'module',
           });
 
@@ -621,7 +621,7 @@ describe('TypeScript AST Transformer', () => {
 
         it('should add an import declaration with an existing identifier if it is aliased and is from a different module', () => {
           const updatedSourceFile = astTransformer.addImportDeclaration({
-            identifier: { name: 'mock', alias: 'anotherMock' },
+            identifiers: { name: 'mock', alias: 'anotherMock' },
             moduleName: 'another/module',
           });
 
@@ -633,7 +633,7 @@ describe('TypeScript AST Transformer', () => {
 
         it('should add identifier to an existing import declaration', () => {
           const updatedSourceFile = astTransformer.addImportDeclaration({
-            identifier: { name: 'AnotherMock' },
+            identifiers: { name: 'AnotherMock' },
             moduleName: 'module',
           });
 
@@ -645,7 +645,7 @@ describe('TypeScript AST Transformer', () => {
 
         it('should add an import declaration with multiple identifiers', () => {
           const updatedSourceFile = astTransformer.addImportDeclaration({
-            identifier: [
+            identifiers: [
               { name: 'AnotherMock' },
               { name: 'YetAnotherMock', alias: 'yetAnotherMock' },
             ],
@@ -666,7 +666,7 @@ describe('TypeScript AST Transformer', () => {
             true
           );
           const updatedSourceFile = astTransformer.addImportDeclaration({
-            identifier,
+            identifiers: identifier,
             moduleName: 'module',
           });
 
@@ -681,7 +681,7 @@ describe('TypeScript AST Transformer', () => {
           );
 
           let updatedSourceFile = astTransformer.addImportDeclaration({
-            identifier,
+            identifiers: identifier,
             moduleName: 'another/module',
           });
           expect(astTransformer.importDeclarationCollides(identifier)).toBe(
@@ -693,7 +693,7 @@ describe('TypeScript AST Transformer', () => {
             true
           );
           updatedSourceFile = astTransformer.addImportDeclaration({
-            identifier,
+            identifiers: identifier,
             moduleName: 'yet/another/module',
           });
 

@@ -536,9 +536,9 @@ export class TypeScriptASTTransformer {
     importDeclarationMeta: ImportDeclarationMeta,
     isDefault: boolean = false
   ): ts.ImportDeclaration {
-    const identifiers = Array.isArray(importDeclarationMeta.identifier)
-      ? importDeclarationMeta.identifier
-      : [importDeclarationMeta.identifier];
+    const identifiers = Array.isArray(importDeclarationMeta.identifiers)
+      ? importDeclarationMeta.identifiers
+      : [importDeclarationMeta.identifiers];
     let importClause: ts.ImportClause;
     // isTypeOnly on the import clause is set to false because we don't import types atm
     // might change it later if we need sth like - import type { X } from "module"
@@ -582,11 +582,11 @@ export class TypeScriptASTTransformer {
     // and are kept as separate entries in the map
     return Array.from(allImportedIdentifiers.values()).some(
       (importStatement) =>
-        !Array.isArray(importStatement.identifier) &&
-        (importStatement.identifier.name === identifier.name ||
-          (importStatement.identifier.alias &&
+        !Array.isArray(importStatement.identifiers) &&
+        (importStatement.identifiers.name === identifier.name ||
+          (importStatement.identifiers.alias &&
             identifier.alias &&
-            importStatement.identifier.alias === identifier.alias))
+            importStatement.identifiers.alias === identifier.alias))
     );
   }
 
@@ -608,9 +608,9 @@ export class TypeScriptASTTransformer {
         let newStatements = [...file.statements];
         let importDeclarationUpdated = false;
 
-        const identifiers = Array.isArray(importDeclarationMeta.identifier)
-          ? importDeclarationMeta.identifier
-          : [importDeclarationMeta.identifier];
+        const identifiers = Array.isArray(importDeclarationMeta.identifiers)
+          ? importDeclarationMeta.identifiers
+          : [importDeclarationMeta.identifiers];
         // loop over the statements to find and update the necessary import declaration
         for (let i = 0; i < newStatements.length; i++) {
           const statement = newStatements[i];
@@ -745,7 +745,7 @@ export class TypeScriptASTTransformer {
               : element.name.text;
             const alias = element.propertyName ? element.name.text : undefined;
             allImportedIdentifiers.set(identifierName, {
-              identifier: {
+              identifiers: {
                 name: identifierName,
                 alias,
               },
