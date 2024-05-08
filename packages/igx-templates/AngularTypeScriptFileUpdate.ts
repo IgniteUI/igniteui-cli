@@ -17,7 +17,7 @@ import {
 import {
   AngularRouteLike,
   AngularDecoratorMetaTarget,
-  IAngularRouteEntry,
+  AngularRouteEntry,
   AngularRouteTarget,
 } from './types';
 
@@ -125,21 +125,20 @@ export class AngularTypeScriptFileUpdate {
       this.astTransformer.findPropertyAssignment(visitCondition);
     if (!parentRoute) return this.astTransformer.sourceFile;
 
-    const childrenKey = 'children';
     const parentContainsChildrenKey =
       ts.isObjectLiteralExpression(parentRoute.parent) &&
       parentRoute.parent.properties.find(
-        (p) => ts.isPropertyAssignment(p) && p.name?.getText() === childrenKey
+        (p) =>
+          ts.isPropertyAssignment(p) &&
+          p.name?.getText() === AngularRouteTarget.Children
       );
 
     if (!parentContainsChildrenKey) {
       // if the parent route does not have the children array, create it
       this.astTransformer.addMemberToObjectLiteral(
-        (node) =>
-          ts.isObjectLiteralExpression(node) &&
-          node.properties.some(visitCondition),
+        (node) => node.properties.some(visitCondition),
         {
-          name: childrenKey,
+          name: AngularRouteTarget.Children,
           value: this.astTransformer.createArrayLiteralExpression(
             [],
             multiline
@@ -168,7 +167,7 @@ export class AngularTypeScriptFileUpdate {
       route,
       (node) =>
         ts.isPropertyAssignment(node.parent) &&
-        node.parent.name.getText() === childrenKey &&
+        node.parent.name.getText() === AngularRouteTarget.Children &&
         // check if the parent route is the one we're looking for
         !!this.astTransformer.findNodeAncestor(
           node,
@@ -207,11 +206,13 @@ export class AngularTypeScriptFileUpdate {
         ...copy.import,
         ...copy.provide,
       ]);
-      const identifiers = [...uniqueIdentifiers].filter(
-        (name) => !this.astTransformer.importDeclarationCollides({ name })
-      );
+      const identifiers = [...uniqueIdentifiers]
+        .filter(
+          (name) => !this.astTransformer.importDeclarationCollides({ name })
+        )
+        .map((name) => ({ name }));
       this.astTransformer.addImportDeclaration({
-        identifier: identifiers.map((name) => ({ name })),
+        identifiers,
         moduleName: this.applyConfigTransformation(dep.from, variables!),
       });
     }
@@ -265,11 +266,13 @@ export class AngularTypeScriptFileUpdate {
         ...copy.provide,
         ...copy.export,
       ]);
-      const identifiers = [...uniqueIdentifiers].filter(
-        (name) => !this.astTransformer.importDeclarationCollides({ name })
-      );
+      const identifiers = [...uniqueIdentifiers]
+        .filter(
+          (name) => !this.astTransformer.importDeclarationCollides({ name })
+        )
+        .map((name) => ({ name }));
       this.astTransformer.addImportDeclaration({
-        identifier: identifiers.map((name) => ({ name })),
+        identifiers,
         moduleName: this.applyConfigTransformation(dep.from, variables!),
       });
     }
@@ -421,7 +424,6 @@ export class AngularTypeScriptFileUpdate {
   ): ts.PropertyAssignment | undefined {
     return this.astTransformer.findPropertyAssignment(
       (node) =>
-        ts.isPropertyAssignment(node) &&
         node.name.getText() === propName &&
         !!this.astTransformer.findNodeAncestor(
           node,
@@ -601,13 +603,13 @@ export class AngularTypeScriptFileUpdate {
       if (!this.astTransformer.importDeclarationCollides(routeIdentifier)) {
         // if there is an identifierName, there must be a modulePath as well
         this.astTransformer.addImportDeclaration({
-          identifier: routeIdentifier,
+          identifiers: routeIdentifier,
           moduleName: route.modulePath,
         });
       }
     }
 
-    const structure: IAngularRouteEntry[] = [
+    const structure: AngularRouteEntry[] = [
       {
         name: RouteTarget.Path,
         value: ts.factory.createStringLiteral(route.path),
@@ -708,7 +710,7 @@ export class AngularTypeScriptFileUpdate {
       ? AngularRouteTarget.LoadChildren
       : AngularRouteTarget.LoadComponent;
 
-    const structure: IAngularRouteEntry[] = [
+    const structure: AngularRouteEntry[] = [
       {
         name: RouteTarget.Path,
         value: ts.factory.createStringLiteral(route.path),

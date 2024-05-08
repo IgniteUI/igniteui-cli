@@ -1,6 +1,7 @@
 import { RouteEntry, RouteTarget } from "@igniteui/cli-core";
 import { AngularRouteTarget } from "./enumerations/AngularRouteTarget";
 
-export interface IAngularRouteEntry extends Pick<RouteEntry, 'value'> {
+/** Represents an Angular route entry in a routes collection. */
+export interface AngularRouteEntry extends Pick<RouteEntry, "value"> {
   name: RouteTarget | AngularRouteTarget;
 }

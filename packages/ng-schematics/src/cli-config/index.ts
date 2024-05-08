@@ -87,7 +87,7 @@ function importBrowserAnimations(): Rule {
 				const providerMeta = { provide: "provideAnimations", from: "@angular/platform-browser/animations" };
 				if (!configTransformer.importDeclarationCollides({name: providerMeta.provide})) {
 					configTransformer.addImportDeclaration({
-						identifier: { name: providerMeta.provide },
+						identifiers: { name: providerMeta.provide },
 						moduleName: providerMeta.from
 					});
 				}
