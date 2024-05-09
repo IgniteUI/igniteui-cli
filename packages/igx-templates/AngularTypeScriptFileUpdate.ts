@@ -1,19 +1,19 @@
 import * as ts from 'typescript';
-import { EOL } from 'os';
-
 import {
-  TypeScriptFormattingService,
-  KeyValuePair,
   Identifier,
-  PropertyAssignment,
   RouteTarget,
-  TemplateDependency,
-  TypeScriptASTTransformer,
-  Util,
-  TypeScriptUtils,
+  KeyValuePair,
   FormatSettings,
+  PropertyAssignment,
+  TemplateDependency,
+  TypeScriptFileUpdate,
+  RoutesVariableAsParentCondition,
+  FindPropertyAssignmentWithStringLiteralValue,
+  ANCHOR_ELEMENT,
+  NG_SA_DECORATOR_NAME,
+  NG_MODULE_DECORATOR_NAME,
+  NG_FOR_ROOT_IDENTIFIER_NAME,
 } from '@igniteui/cli-core';
-
 import {
   AngularRouteLike,
   AngularDecoratorMetaTarget,
@@ -21,61 +21,31 @@ import {
   AngularRouteTarget,
 } from './types';
 
-// TODO: consider creating a global-constants file
-const ROUTES_VARIABLE_NAME = 'routes';
-const THEN_IDENTIFIER_NAME = 'then';
-const IMPORT_IDENTIFIER_NAME = 'import';
-
-const NG_MODULE_DECORATOR_NAME = 'NgModule';
-const NG_SA_DECORATOR_NAME = 'Component';
-const NG_FOR_ROOT_IDENTIFIER_NAME = 'forRoot';
-
-// insert before node that contains this element
-const anchorElement: PropertyAssignment = {
-  name: 'path',
-  value: ts.factory.createStringLiteral('**'),
-};
-
-const printerOptions: ts.PrinterOptions = {
-  newLine:
-    EOL === '\n'
-      ? ts.NewLineKind.LineFeed
-      : ts.NewLineKind.CarriageReturnLineFeed,
-};
-
-export class AngularTypeScriptFileUpdate {
-  private readonly astTransformer: TypeScriptASTTransformer;
+export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
   constructor(
-    private targetPath: string,
+    protected targetPath: string,
     private standalone: boolean = false,
     formatSettings?: FormatSettings
   ) {
-    this.astTransformer = new TypeScriptASTTransformer(
-      TypeScriptUtils.getFileSource(targetPath),
-      new TypeScriptFormattingService(targetPath, formatSettings),
-      printerOptions // TODO: may not be needed
-    );
+    super(targetPath, formatSettings);
   }
 
   //#region Public API
 
   /**
-   * Adds a route to the Angular routing module.
+   * Adds a route entry to the Angular routing module's routes variable instance.
    * @param route The route to add.
    * @param multiline Whether to format the new entry as multiline.
+   * @param prepend Whether to insert the new entry before the anchor element.
+   *  If no anchor is provided, the new entry will be added to the start or end of the array.
+   * @param anchorElement The anchor element to insert to.
    */
   public addRoute(
     route: AngularRouteLike,
-    multiline: boolean = false
+    multiline: boolean = false,
+    prepend: boolean = true,
+    anchorElement: PropertyAssignment = ANCHOR_ELEMENT
   ): ts.SourceFile {
-    const visitCondition = (node: ts.Node) =>
-      !!this.astTransformer.findNodeAncestor(
-        node,
-        (node) =>
-          ts.isVariableDeclaration(node) &&
-          node.name.getText() === ROUTES_VARIABLE_NAME
-      );
-
     if (
       route.lazyload &&
       route.path &&
@@ -84,19 +54,19 @@ export class AngularTypeScriptFileUpdate {
     ) {
       return this.addLazyLoadedRouteEntry(
         route,
-        visitCondition,
-        anchorElement,
+        RoutesVariableAsParentCondition(this.astTransformer),
         multiline,
-        true // prepend
+        prepend,
+        anchorElement
       );
     }
 
     return this.addRedirectOrSimpleRouteEntry(
       route,
-      visitCondition,
-      anchorElement,
+      RoutesVariableAsParentCondition(this.astTransformer),
       multiline,
-      true // prepend
+      prepend,
+      anchorElement
     );
   }
 
@@ -106,47 +76,16 @@ export class AngularTypeScriptFileUpdate {
    * @param route The child route to add.
    * @param multiline Whether to format the new entry as multiline.
    * @param prepend Whether to prepend the new added routes.
+   * @param anchorElement The anchor element to insert to.
    * @remarks The `parentPath` is used to determine where the child route should be added.
    */
   public addChildRoute(
     parentPath: string,
     route: AngularRouteLike,
     multiline: boolean = false,
-    prepend: boolean = false
+    prepend: boolean = false,
+    anchorElement: PropertyAssignment = ANCHOR_ELEMENT
   ): ts.SourceFile {
-    // find a node that has the parent's path
-    const visitCondition = (node: ts.Node | ts.ObjectLiteralElementLike) =>
-      ts.isPropertyAssignment(node) &&
-      node.name.getText() === RouteTarget.Path &&
-      ts.isStringLiteral(node.initializer) &&
-      node.initializer.text === parentPath;
-
-    const parentRoute =
-      this.astTransformer.findPropertyAssignment(visitCondition);
-    if (!parentRoute) return this.astTransformer.sourceFile;
-
-    const parentContainsChildrenKey =
-      ts.isObjectLiteralExpression(parentRoute.parent) &&
-      parentRoute.parent.properties.find(
-        (p) =>
-          ts.isPropertyAssignment(p) &&
-          p.name?.getText() === AngularRouteTarget.Children
-      );
-
-    if (!parentContainsChildrenKey) {
-      // if the parent route does not have the children array, create it
-      this.astTransformer.addMemberToObjectLiteral(
-        (node) => node.properties.some(visitCondition),
-        {
-          name: AngularRouteTarget.Children,
-          value: this.astTransformer.createArrayLiteralExpression(
-            [],
-            multiline
-          ),
-        }
-      );
-    }
-
     if (
       route.lazyload &&
       route.path &&
@@ -155,29 +94,19 @@ export class AngularTypeScriptFileUpdate {
     ) {
       return this.addLazyLoadedRouteEntry(
         route,
-        visitCondition,
-        anchorElement,
+        FindPropertyAssignmentWithStringLiteralValue(parentPath),
         multiline,
-        true // prepend
+        true, // prepend
+        ANCHOR_ELEMENT
       );
     }
 
-    // add the child route to the parent's children array
-    return this.addRedirectOrSimpleRouteEntry(
+    return super.addChildRoute(
+      parentPath,
       route,
-      (node) =>
-        ts.isPropertyAssignment(node.parent) &&
-        node.parent.name.getText() === AngularRouteTarget.Children &&
-        // check if the parent route is the one we're looking for
-        !!this.astTransformer.findNodeAncestor(
-          node,
-          (node) =>
-            ts.isObjectLiteralExpression(node) &&
-            node.properties.some(visitCondition)
-        ),
-      anchorElement,
       multiline,
-      prepend
+      prepend,
+      anchorElement
     );
   }
 
@@ -327,13 +256,114 @@ export class AngularTypeScriptFileUpdate {
     return this.astTransformer.sourceFile;
   }
 
+  //#endregion
+
+  //#region Protected Overrides
+
   /**
-   * Parses the AST and returns the resulting formatted source code.
-   * @remarks This method should be called after all modifications have been made to the AST.
+   * Adds a new not lazy-loaded route entry to the routes array. With a component identifier and path.
+   * @param route The route to add.
+   * @param visitCondition The condition used to find the appropriate route node.
+   * @param multiline Whether to format the new entry as multiline.
+   * @param prepend Whether to insert the new entry before the anchor element.
+   *  If no anchor is provided, the new entry will be added to the start or end of the array.
+   * @param anchorElement The anchor element to insert to.
    */
-  public finalize(): string {
-    TypeScriptUtils.saveFile(this.targetPath, this.astTransformer.sourceFile);
-    return this.astTransformer.finalize();
+  protected addRouteEntry(
+    route: AngularRouteLike,
+    visitCondition: (node: ts.Node) => boolean,
+    multiline: boolean = false,
+    prepend: boolean = false,
+    anchorElement: PropertyAssignment
+  ): ts.SourceFile {
+    if (route.modulePath) {
+      // add an import for the given identifier
+      const routeIdentifier: Identifier = { name: route.identifierName };
+      if (!this.astTransformer.importDeclarationCollides(routeIdentifier)) {
+        // if there is an identifierName, there must be a modulePath as well
+        this.astTransformer.addImportDeclaration({
+          identifiers: routeIdentifier,
+          moduleName: route.modulePath,
+        });
+      }
+    }
+
+    const structure: AngularRouteEntry[] = [
+      {
+        name: RouteTarget.Path,
+        value: ts.factory.createStringLiteral(route.path),
+      },
+      {
+        name: RouteTarget.Component,
+        value: ts.factory.createIdentifier(route.identifierName),
+      },
+    ];
+    if (route.data) {
+      structure.push({
+        name: AngularRouteTarget.Data,
+        value: this.astTransformer.createObjectLiteralExpression(
+          [route.data],
+          multiline,
+          ts.factory.createStringLiteral
+        ),
+      });
+    }
+
+    const newRoute = this.astTransformer.createObjectLiteralExpression(
+      structure,
+      multiline
+    );
+    return this.astTransformer.addMembersToArrayLiteral(
+      visitCondition,
+      [newRoute],
+      prepend,
+      anchorElement
+    );
+  }
+
+  /**
+   * Adds a new not lazy-loaded route entry to the routes array. With a redirect option.
+   * @param route The route to add.
+   * @param visitCondition The condition used to find the appropriate route node.
+   * @param multiline Whether to format the new entry as multiline.
+   * @param prepend Whether to insert the new entry before the anchor element.
+   *  If no anchor is provided, the new entry will be added to the start or end of the array.
+   * @param anchorElement The anchor element to insert to.
+   */
+  protected addRedirectRouteEntry(
+    route: AngularRouteLike,
+    visitCondition: (node: ts.Node) => boolean,
+    multiline: boolean = false,
+    prepend: boolean = false,
+    anchorElement: PropertyAssignment
+  ): ts.SourceFile {
+    const structure = [
+      {
+        name: RouteTarget.Path,
+        value: ts.factory.createStringLiteral(route.path || ''),
+      },
+      {
+        name: AngularRouteTarget.RedirectTo,
+        value: ts.factory.createStringLiteral(route.redirectTo),
+      },
+    ];
+    if (route.pathMatch) {
+      structure.push({
+        name: AngularRouteTarget.PathMatch,
+        value: ts.factory.createStringLiteral(route.pathMatch),
+      });
+    }
+
+    const newRoute = this.astTransformer.createObjectLiteralExpression(
+      structure,
+      multiline
+    );
+    return this.astTransformer.addMembersToArrayLiteral(
+      visitCondition,
+      [newRoute],
+      prepend,
+      anchorElement
+    );
   }
 
   //#endregion
@@ -435,271 +465,20 @@ export class AngularTypeScriptFileUpdate {
   }
 
   /**
-   * Creates an arrow function of the form `() => import(path).then(m => m.prop)`.
-   * @param path The path to the module to import.
-   * @param importedEntity The entity to import from the module.
-   * @param root Whether it should be `loadChildren` or `loadComponent`.
-   * @remarks If the `root` param is `true` the function will use `routes` as an `importedEntity`.
-   */
-  private createDynamicImport(
-    path: string,
-    importedEntity: string,
-    root: boolean = false
-  ): ts.ArrowFunction {
-    const thenClause = root ? ROUTES_VARIABLE_NAME : importedEntity;
-    // create the 'import(path)' expression
-    const importExpression = ts.factory.createCallExpression(
-      ts.factory.createIdentifier(IMPORT_IDENTIFIER_NAME),
-      undefined, // type arguments
-      [ts.factory.createStringLiteral(path)]
-    );
-
-    const thenFuncParamName = 'm';
-    // create the 'm => m.prop' arrow function
-    const thenExprArrowFuncBody = ts.factory.createArrowFunction(
-      undefined, // modifiers
-      undefined, // type parameters
-      [
-        ts.factory.createParameterDeclaration(
-          undefined, // decorators
-          undefined, // modifiers
-          ts.factory.createIdentifier(thenFuncParamName)
-        ),
-      ],
-      undefined,
-      ts.factory.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
-      ts.factory.createPropertyAccessChain(
-        ts.factory.createIdentifier(thenFuncParamName),
-        undefined, // question-dot token
-        thenClause
-      )
-    );
-
-    // build the '.then(m => m.prop)' expression and add it to the import expression
-    const body = ts.factory.createCallExpression(
-      ts.factory.createPropertyAccessExpression(
-        importExpression,
-        THEN_IDENTIFIER_NAME
-      ),
-      undefined, // type arguments
-      [thenExprArrowFuncBody]
-    );
-
-    // Create the '() => import(path).then(m => m.prop)' arrow function
-    const dynamicImport = ts.factory.createArrowFunction(
-      undefined, // modifiers
-      undefined, // type parameters
-      [], // parameters
-      undefined, // type
-      ts.factory.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
-      body
-    );
-
-    return dynamicImport;
-  }
-
-  /**
-   * Converts a string or string array union to array.
-   * @param value The value to convert.
-   * @param variables Variables to replace in the strings.
-   * @remarks Splits strings as comma delimited.
-   */
-  private asArray(
-    value: string | string[],
-    variables: KeyValuePair<string>
-  ): string[] {
-    let result: string[] = [];
-    if (value) {
-      result = typeof value === 'string' ? value.split(/\s*,\s*/) : value;
-      result = result.map((x) => this.applyConfigTransformation(x, variables));
-    }
-    return result;
-  }
-
-  /**
-   * Applies a configuration transformation to a string.
-   * @param data The string to transform.
-   * @param configuration The items to replace in the string.
-   */
-  private applyConfigTransformation = (
-    data: string,
-    configuration: KeyValuePair<string>
-  ): string => {
-    let key;
-    for (key in configuration) {
-      data = data.replace(
-        new RegExp(Util.escapeRegExp(key), 'g'),
-        configuration[key]
-      );
-    }
-
-    return data;
-  };
-
-  /**
-   * Adds a new entry to the routes array. With a component identifier and path or with redirect option.
-   * @param route The route to add.
-   * @param visitCondition The condition used to find the appropriate route node.
-   * @param anchorElement The anchor element to insert.
-   * @param multiline Whether to format the new entry as multiline.
-   * @param prepend Whether to insert the new entry before the anchor element.
-   */
-  private addRedirectOrSimpleRouteEntry(
-    route: AngularRouteLike,
-    visitCondition: (node: ts.Node) => boolean,
-    anchorElement: PropertyAssignment,
-    multiline: boolean = false,
-    prepend: boolean = false
-  ): ts.SourceFile {
-    if (route.lazyload) return this.astTransformer.sourceFile;
-
-    if (route.path && route.identifierName) {
-      this.addRouteEntry(
-        route,
-        visitCondition,
-        anchorElement,
-        multiline,
-        prepend
-      );
-    }
-
-    if (route.redirectTo) {
-      this.addRedirectRouteEntry(
-        route,
-        visitCondition,
-        anchorElement,
-        multiline,
-        prepend
-      );
-    }
-
-    if (route.children?.length) {
-      route.children.forEach((child) => {
-        this.addChildRoute(route.path!, child, multiline, false);
-      });
-    }
-
-    return this.astTransformer.sourceFile;
-  }
-
-  /**
-   * Adds a new not lazy-loaded route entry to the routes array. With a component identifier and path.
-   * @param route The route to add.
-   * @param visitCondition The condition used to find the appropriate route node.
-   * @param anchorElement The anchor element to insert to.
-   * @param multiline Whether to format the new entry as multiline.
-   * @param prepend Whether to insert the new entry before the anchor element.
-   */
-  private addRouteEntry(
-    route: AngularRouteLike,
-    visitCondition: (node: ts.Node) => boolean,
-    anchorElement: PropertyAssignment,
-    multiline: boolean = false,
-    prepend: boolean = false
-  ): ts.SourceFile {
-    if (route.modulePath) {
-      // add an import for the given identifier
-      const routeIdentifier: Identifier = { name: route.identifierName };
-      if (!this.astTransformer.importDeclarationCollides(routeIdentifier)) {
-        // if there is an identifierName, there must be a modulePath as well
-        this.astTransformer.addImportDeclaration({
-          identifiers: routeIdentifier,
-          moduleName: route.modulePath,
-        });
-      }
-    }
-
-    const structure: AngularRouteEntry[] = [
-      {
-        name: RouteTarget.Path,
-        value: ts.factory.createStringLiteral(route.path),
-      },
-      {
-        name: RouteTarget.Component,
-        value: ts.factory.createIdentifier(route.identifierName),
-      },
-    ];
-    if (route.data) {
-      structure.push({
-        name: AngularRouteTarget.Data,
-        value: this.astTransformer.createObjectLiteralExpression(
-          [route.data],
-          multiline,
-          ts.factory.createStringLiteral
-        ),
-      });
-    }
-
-    const newRoute = this.astTransformer.createObjectLiteralExpression(
-      structure,
-      multiline
-    );
-    return this.astTransformer.addMembersToArrayLiteral(
-      visitCondition,
-      [newRoute],
-      prepend,
-      anchorElement
-    );
-  }
-
-  /**
-   * Adds a new not lazy-loaded route entry to the routes array. With a redirect option.
-   * @param route The route to add.
-   * @param visitCondition The condition used to find the appropriate route node.
-   * @param anchorElement The anchor element to insert to.
-   * @param multiline Whether to format the new entry as multiline.
-   * @param prepend Whether to insert the new entry before the anchor element.
-   */
-  private addRedirectRouteEntry(
-    route: AngularRouteLike,
-    visitCondition: (node: ts.Node) => boolean,
-    anchorElement: PropertyAssignment,
-    multiline: boolean = false,
-    prepend: boolean = false
-  ): ts.SourceFile {
-    const structure = [
-      {
-        name: RouteTarget.Path,
-        value: ts.factory.createStringLiteral(route.path || ''),
-      },
-      {
-        name: AngularRouteTarget.RedirectTo,
-        value: ts.factory.createStringLiteral(route.redirectTo),
-      },
-    ];
-    if (route.pathMatch) {
-      structure.push({
-        name: AngularRouteTarget.PathMatch,
-        value: ts.factory.createStringLiteral(route.pathMatch),
-      });
-    }
-
-    const newRoute = this.astTransformer.createObjectLiteralExpression(
-      structure,
-      multiline
-    );
-    return this.astTransformer.addMembersToArrayLiteral(
-      visitCondition,
-      [newRoute],
-      prepend,
-      anchorElement
-    );
-  }
-
-  /**
    * Adds a new lazy-loaded route entry to the routes array.
    * @param route The route to add.
    * @param visitCondition The condition used to find the appropriate route node.
-   * @param anchorElement The anchor element to insert to.
    * @param multiline Whether to format the new entry as multiline.
    * @param prepend Whether to insert the new entry before the anchor element.
+   *  If no anchor is provided, the new entry will be added to the start or end of the array.
+   * @param anchorElement The anchor element to insert to.
    */
   private addLazyLoadedRouteEntry(
     route: AngularRouteLike,
     visitCondition: (node: ts.Node) => boolean,
-    anchorElement: PropertyAssignment,
     multiline: boolean = false,
-    prepend: boolean = false
+    prepend: boolean = false,
+    anchorElement: PropertyAssignment
   ): ts.SourceFile {
     const lazyLoadedModule = this.createDynamicImport(
       route.modulePath,
