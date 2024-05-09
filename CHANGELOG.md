@@ -1,4 +1,16 @@
-# [13.2.0](https://github.com/IgniteUI/igniteui-cli/compare/v13.1.15...v13.1.16) (2024-04-29)
+# [13.2.1](https://github.com/IgniteUI/igniteui-cli/compare/v13.2.0...v13.2.1) (2024-05-9)
+
+🎉 This update includes:
+
+- `igniteui-webcomponents` version [4.9.0](https://github.com/IgniteUI/igniteui-webcomponents/releases/tag/4.9.0).
+
+## What's Changed
+* chore(wc): update with latest version by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1249
+
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.2.0...v13.2.1
+
+# [13.2.0](https://github.com/IgniteUI/igniteui-cli/compare/v13.2.16...v13.2.0) (2024-04-29)
 
 🎉 This update includes:
 
