@@ -8,8 +8,6 @@ export interface AngularRouteLike extends RouteLike {
   root?: boolean;
   /** Additional developer-defined data provided to the component via `ActivatedRoute`. */
   data?: KeyValuePair<string>;
-  /** A URL to redirect to when the path matches. */
-  redirectTo?: string;
   /** An array of child `Route` objects that specifies a nested route configuration. */
   children?: AngularRouteLike[];
 }
