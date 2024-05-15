@@ -1,6 +1,10 @@
 import * as ts from 'typescript';
-import { FormattingService, FormatSettings } from '../types';
-import { FS_TOKEN, IFileSystem } from '../types/FileSystem';
+import {
+  FormattingService,
+  FormatSettings,
+  FS_TOKEN,
+  IFileSystem,
+} from '../types';
 import { App } from '../util';
 import { TypeScriptUtils } from './TypeScriptUtils';
 
