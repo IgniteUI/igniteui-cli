@@ -8,7 +8,7 @@ import {
   TemplateDependency,
   TypeScriptFileUpdate,
   RoutesVariableAsParentCondition,
-  FindPropertyAssignmentWithStringLiteralValue,
+  PropertyAssignmentWithStringLiteralValueCondition,
   ANCHOR_ELEMENT,
   NG_SA_DECORATOR_NAME,
   NG_MODULE_DECORATOR_NAME,
@@ -74,6 +74,7 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
    * Adds a child route to a parent route.
    * @param parentPath The path of the parent route.
    * @param route The child route to add.
+   * @param asIdentifier Whether to initialize the {@link RouteTarget.Children} member with an identifier or an array literal.
    * @param multiline Whether to format the new entry as multiline.
    * @param prepend Whether to prepend the new added routes.
    * @param anchorElement The anchor element to insert to.
@@ -82,6 +83,7 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
   public addChildRoute(
     parentPath: string,
     route: AngularRouteLike,
+    asIdentifier: boolean = false,
     multiline: boolean = false,
     prepend: boolean = false,
     anchorElement: PropertyAssignment = ANCHOR_ELEMENT
@@ -94,7 +96,7 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
     ) {
       return this.addLazyLoadedRouteEntry(
         route,
-        FindPropertyAssignmentWithStringLiteralValue(parentPath),
+        PropertyAssignmentWithStringLiteralValueCondition(RouteTarget.Path, parentPath),
         multiline,
         true, // prepend
         ANCHOR_ELEMENT
@@ -104,13 +106,14 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
     return super.addChildRoute(
       parentPath,
       route,
+      asIdentifier,
       multiline,
       prepend,
       anchorElement
     );
   }
 
-  /**
+  /** // TODO: update description
    * Adds an import identifier to a standalone component's metadata.
    * @param dep The dependency to add to the standalone component's metadata.
    * @param variables Variables to replace in the dependency strings.

@@ -2,7 +2,7 @@ import * as ts from 'typescript';
 import { TypeScriptASTTransformer } from './TypeScriptASTTransformer';
 import { TypeScriptUtils } from './TypeScriptUtils';
 import { TypeScriptFormattingService } from './TypeScriptFormattingService';
-import { FindPropertyAssignmentWithStringLiteralValue } from './VisitorConditions';
+import { PropertyAssignmentWithStringLiteralValueCondition } from './VisitorConditions';
 import {
   Util,
   ANCHOR_ELEMENT,
@@ -52,20 +52,25 @@ export abstract class TypeScriptFileUpdate {
    * Adds a child route to a parent route.
    * @param parentPath The path of the parent route.
    * @param route The child route to add.
+   * @param asIdentifier Whether to initialize the {@link RouteTarget.Children} member with an identifier or an array literal.
    * @param multiline Whether to format the new entry as multiline.
-   * @param prepend Whether to prepend the new added routes.
+   * @param prepend Whether to insert the new entry before the anchor element.
    * @param anchorElement The anchor element to insert to.
    * @remarks The `parentPath` is used to determine where the child route should be added.
    */
   public addChildRoute(
     parentPath: string,
     route: RouteLike,
+    asIdentifier: boolean = false,
     multiline: boolean = false,
     prepend: boolean = false,
     anchorElement: PropertyAssignment = ANCHOR_ELEMENT
   ): ts.SourceFile {
     const parentRoute = this.astTransformer.findPropertyAssignment(
-      FindPropertyAssignmentWithStringLiteralValue(parentPath)
+      PropertyAssignmentWithStringLiteralValueCondition(
+        RouteTarget.Path,
+        parentPath
+      )
     );
     if (!parentRoute) return this.astTransformer.sourceFile;
 
@@ -78,20 +83,32 @@ export abstract class TypeScriptFileUpdate {
       );
 
     if (!parentContainsChildrenKey) {
-      // if the parent route does not have the children array, create it
-      this.astTransformer.addMemberToObjectLiteral(
-        (node) =>
-          node.properties.some(
-            FindPropertyAssignmentWithStringLiteralValue(parentPath)
-          ),
-        {
+      // if the parent route does not have the children member, create it
+      const visitCondition = (node) =>
+        node.properties.some(
+          PropertyAssignmentWithStringLiteralValueCondition(
+            RouteTarget.Path,
+            parentPath
+          )
+        );
+
+      if (asIdentifier) {
+        // create a children member and initialize it with the specified identifier
+        this.requestImportForRouteIdentifier(route);
+
+        return this.astTransformer.addMemberToObjectLiteral(visitCondition, {
           name: RouteTarget.Children,
-          value: this.astTransformer.createArrayLiteralExpression(
-            [],
-            multiline
+          value: ts.factory.createIdentifier(
+            route.aliasName || route.identifierName
           ),
-        }
-      );
+        });
+      }
+
+      // create an empty children array member
+      this.astTransformer.addMemberToObjectLiteral(visitCondition, {
+        name: RouteTarget.Children,
+        value: this.astTransformer.createArrayLiteralExpression([], multiline),
+      });
     }
 
     // add the child route to the parent's children array
@@ -106,7 +123,10 @@ export abstract class TypeScriptFileUpdate {
           (node) =>
             ts.isObjectLiteralExpression(node) &&
             node.properties.some(
-              FindPropertyAssignmentWithStringLiteralValue(parentPath)
+              PropertyAssignmentWithStringLiteralValueCondition(
+                RouteTarget.Path,
+                parentPath
+              )
             )
         ),
       multiline,
@@ -146,7 +166,15 @@ export abstract class TypeScriptFileUpdate {
   ): ts.SourceFile {
     if (route.lazyload) return this.astTransformer.sourceFile;
 
-    if (route.path && route.identifierName) {
+    if (route.redirectTo) {
+      this.addRedirectRouteEntry(
+        route,
+        visitCondition,
+        multiline,
+        prepend,
+        anchorElement
+      );
+    } else if (route.path && (route.identifierName || route.aliasName)) {
       this.addRouteEntry(
         route,
         visitCondition,
@@ -156,21 +184,13 @@ export abstract class TypeScriptFileUpdate {
       );
     }
 
-    if (route.redirectTo) {
-      this.addRedirectRouteEntry(
-        route,
-        visitCondition,
-        multiline,
-        prepend,
-        anchorElement,
-      );
-    }
-
-    if (route.children?.length) {
-      route.children.forEach((child) => {
-        this.addChildRoute(route.path!, child, multiline, false);
-      });
-    }
+    this.addChildRouteEntry(
+      route,
+      false, // as identifier
+      multiline,
+      prepend,
+	  anchorElement
+    );
 
     return this.astTransformer.sourceFile;
   }
@@ -189,7 +209,7 @@ export abstract class TypeScriptFileUpdate {
     visitCondition: (node: ts.Node) => boolean,
     multiline: boolean,
     prepend: boolean,
-    anchorElement: PropertyAssignment,
+    anchorElement: PropertyAssignment
   ): ts.SourceFile;
 
   /**
@@ -208,17 +228,7 @@ export abstract class TypeScriptFileUpdate {
     prepend: boolean = false,
     anchorElement: PropertyAssignment
   ): ts.SourceFile {
-    if (route.modulePath) {
-      // add an import for the given identifier
-      const routeIdentifier: Identifier = { name: route.identifierName };
-      if (!this.astTransformer.importDeclarationCollides(routeIdentifier)) {
-        // if there is an identifierName, there must be a modulePath as well
-        this.astTransformer.addImportDeclaration({
-          identifiers: routeIdentifier,
-          moduleName: route.modulePath,
-        });
-      }
-    }
+    this.requestImportForRouteIdentifier(route);
 
     const structure: RouteEntry[] = [
       {
@@ -227,7 +237,9 @@ export abstract class TypeScriptFileUpdate {
       },
       {
         name: RouteTarget.Component,
-        value: ts.factory.createIdentifier(route.identifierName),
+        value: ts.factory.createIdentifier(
+          route.aliasName || route.identifierName
+        ),
       },
     ];
     const newRoute = this.astTransformer.createObjectLiteralExpression(
@@ -240,6 +252,45 @@ export abstract class TypeScriptFileUpdate {
       prepend,
       anchorElement
     );
+  }
+
+  /**
+   * Adds child route entry to the given parent route.
+   * @param route The parent route.
+   * @param asIdentifier Whether to initialize the {@link RouteTarget.Children} member with an identifier or an array literal.
+   * @param multiline Whether to format the new entry as multiline.
+   * @param prepend Whether to insert the new entry before the anchor element.
+   */
+  protected addChildRouteEntry(
+    route: RouteLike,
+    asIdentifier: boolean = false,
+    multiline: boolean = false,
+    prepend: boolean = false,
+    anchorElement: PropertyAssignment = ANCHOR_ELEMENT
+  ) {
+    if (!route.children) return this.astTransformer.sourceFile;
+
+    if (Array.isArray(route.children) && route.children?.length > 0) {
+      route.children.forEach((child) => {
+        this.addChildRoute(
+          route.path!,
+          child,
+          asIdentifier,
+          multiline,
+          false, // prepend
+          anchorElement
+        );
+      });
+    } else {
+      this.addChildRoute(
+        route.path!,
+        route.children as RouteLike,
+        asIdentifier,
+        multiline,
+        prepend,
+        anchorElement
+      );
+    }
   }
 
   /**
@@ -374,6 +425,59 @@ export abstract class TypeScriptFileUpdate {
       result = result.map((x) => this.applyConfigTransformation(x, variables));
     }
     return result;
+  }
+
+  /**
+   * Creates a side effects import declaration for a given module. Checks if the import has been added already.
+   * @param moduleName The name of the module to create an import for.
+   * @see {@link TypeScriptASTTransformer.createImportDeclaration}
+   */
+  protected requestSideEffectsImportForModule(
+    moduleName: string
+  ): ts.SourceFile {
+    const importMeta = {
+      identifiers: { name: '' },
+      moduleName,
+    };
+    if (
+      !this.astTransformer.importDeclarationCollides(
+        importMeta.identifiers,
+        moduleName,
+        true
+      )
+    ) {
+      return this.astTransformer.addImportDeclaration(
+        importMeta,
+        false, // is default
+        true // is side effects
+      );
+    }
+
+    return this.astTransformer.sourceFile;
+  }
+
+  /**
+   * Adds an import declaration for an identifier that exists in a route node. Checks if it does not collide with other imports first.
+   * @param route The route that contains an identifier to create a declaration for.
+   * @see {@link TypeScriptASTTransformer.createImportDeclaration}
+   */
+  protected requestImportForRouteIdentifier(route: RouteLike): ts.SourceFile {
+    if (route.modulePath) {
+      // add an import for the given identifier
+      const routeIdentifier: Identifier = {
+        name: route.identifierName,
+        alias: route.aliasName,
+      };
+      if (!this.astTransformer.importDeclarationCollides(routeIdentifier)) {
+        // if there is an identifierName, there must be a modulePath as well
+        return this.astTransformer.addImportDeclaration({
+          identifiers: routeIdentifier,
+          moduleName: route.modulePath,
+        });
+      }
+    }
+
+    return this.astTransformer.sourceFile;
   }
 
   //#endregion

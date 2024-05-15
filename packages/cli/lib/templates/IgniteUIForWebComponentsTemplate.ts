@@ -1,9 +1,10 @@
 import {
 	AddTemplateArgs, App, ControlExtraConfiguration, defaultDelimiters, FS_TOKEN,
-	IFileSystem, NPM_DOCK_MANAGER, resolvePackage, Template, TemplateDependency, Util
+	IFileSystem, NPM_DOCK_MANAGER, resolvePackage, RouteLike, ROUTES_VARIABLE_NAME, Template, TemplateDependency, Util,
+	WC_APP_ROUTING_NAME
 } from "@igniteui/cli-core";
 import * as path from "path";
-import { TypeScriptFileUpdate } from "../../templates/webcomponents/TypeScriptFileUpdate";
+import { WebComponentsTypeScriptFileUpdate } from "../../templates/webcomponents/WebComponentsTypeScriptFileUpdate";
 
 export class IgniteUIForWebComponentsTemplate implements Template {
 	public components: string[];
@@ -40,39 +41,61 @@ export class IgniteUIForWebComponentsTemplate implements Template {
 		if (!options.parentName) {
 			return;
 		}
+		//TODO: remove
+		if ((App.container as any).properties.size === 0) {
+			App.initialize();
+		}
+		//
+
 		const routeModulePath: string = options.parentRoutingModulePath;
-		const routingModule = new TypeScriptFileUpdate(path.join(projectPath, routeModulePath));
+		const routingModule = new WebComponentsTypeScriptFileUpdate(
+			path.join(projectPath, routeModulePath),
+			{ convertTabsToSpaces: false, indentSize: 4, singleQuotes: false }
+		);
 
 		if (!(options && options.skipRoute) && App.container.get<IFileSystem>(FS_TOKEN)
 			.fileExists(routeModulePath)) {
 
+			const modulePath = `./${Util.lowerDashed(fullName)}/${Util.lowerDashed(fullName)}-routing`
+			const child: RouteLike = {
+				identifierName: ROUTES_VARIABLE_NAME,
+				aliasName: options.routerChildren,
+				modulePath
+			};
+			const children = routeModulePath.includes(WC_APP_ROUTING_NAME)
+				? child
+				: undefined;
+
 			if (defaultPath) {
-				routingModule.addRoute(
-					"",
-					options.selector,
-					Util.nameFromPath(fullName),
-					options.routerChildren,
-					undefined
+				routingModule.addRoute({
+						path: "",
+						redirectTo: options.selector,
+						name: Util.nameFromPath(fullName),
+						children
+					}
 				);
 			}
-
-			routingModule.addRoute(
-				this.fileName(fullName),
-				options.selector,
-				Util.nameFromPath(fullName),
-				options.routerChildren,
-				undefined
-			);
 
 			if (options.hasChildren) {
-				routingModule.addRoute(
-					this.fileName(`${options.modulePath}-routing.ts`),
-					options.selector,
-					Util.nameFromPath(`${options.modulePath}-routing.ts`),
-					options.routerChildren,
-					options.importAlias
+				routingModule.addRoute({
+						path: this.fileName(fullName),
+						identifierName: options.selector,
+						name: Util.nameFromPath(fullName),
+						children
+					},
+				);
+			} else {
+				routingModule.addRoute({
+						path: this.fileName(fullName),
+						identifierName: options.selector,
+						name: Util.nameFromPath(fullName)
+					},
+					false, // multiline
+					false // prepend
 				);
 			}
+
+			routingModule.finalize();
 		}
 	}
 

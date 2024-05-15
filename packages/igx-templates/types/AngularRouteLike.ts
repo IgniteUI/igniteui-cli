@@ -9,5 +9,5 @@ export interface AngularRouteLike extends RouteLike {
   /** Additional developer-defined data provided to the component via `ActivatedRoute`. */
   data?: KeyValuePair<string>;
   /** An array of child `Route` objects that specifies a nested route configuration. */
-  children?: AngularRouteLike[];
+  children?: AngularRouteLike | AngularRouteLike[];
 }

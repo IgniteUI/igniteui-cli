@@ -527,7 +527,7 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
       );
     });
 
-    it('should nested child routes on multiple levels', () => {
+    it('should add nested child routes on multiple levels', () => {
       spyOn(
         (fileUpdate as any).astTransformer.formatter,
         'applyFormatting'

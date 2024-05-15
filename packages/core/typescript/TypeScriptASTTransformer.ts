@@ -6,6 +6,7 @@ import {
   Identifier,
   ImportDeclarationMeta,
 } from '../types';
+import { SIDE_EFFECTS_IMPORT_TEMPLATE_NAME } from '../util';
 
 export class TypeScriptASTTransformer {
   private _printer: ts.Printer | undefined;
@@ -50,7 +51,7 @@ export class TypeScriptASTTransformer {
   }
 
   /**
-   * Look up a property assignment in the AST.
+   * Looks up a property assignment in the AST.
    * @param visitCondition The condition by which the property assignment is found.
    * @param lastMatch Whether to return the last match found. If not set, the first match will be returned.
    */
@@ -528,14 +529,29 @@ export class TypeScriptASTTransformer {
    * Creates a node for a named import declaration.
    * @param importDeclarationMeta Metadata for the new import declaration.
    * @param isDefault Whether the import is a default import.
+   * @param isSideEffects Whether the import is a side effects import.
    * @returns A named import declaration of the form `import { MyClass } from "my-module"`.
    * @remarks If `isDefault` is `true`, the first element of `identifiers` will be used and
    * the import will be a default import of the form `import MyClass from "my-module"`.
+   * @remarks
+   * If `isSideEffects` is `true`, all other options are ignored
+   * and the import will be a side effects import of the form `import "my-module"`.
+   * @reference {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#description|MDN}
    */
   public createImportDeclaration(
     importDeclarationMeta: ImportDeclarationMeta,
-    isDefault: boolean = false
+    isDefault: boolean = false,
+    isSideEffects: boolean = false
   ): ts.ImportDeclaration {
+    if (isSideEffects) {
+      // create a side effects declaration of the form `import "my-module"`
+      return ts.factory.createImportDeclaration(
+        undefined, // modifiers
+        undefined, // import clause
+        ts.factory.createStringLiteral(importDeclarationMeta.moduleName) // module specifier
+      );
+    }
+
     const identifiers = Array.isArray(importDeclarationMeta.identifiers)
       ? importDeclarationMeta.identifiers
       : [importDeclarationMeta.identifiers];
@@ -572,21 +588,43 @@ export class TypeScriptASTTransformer {
   /**
    * Checks if an import declaration's identifier or alias would collide with an existing one.
    * @param identifier The identifier to check for collisions.
+   * @param moduleName The module that the import is for, used for side effects imports.
+   * @param isSideEffects If the import is strictly a side effects import.
    */
-  public importDeclarationCollides(identifier: Identifier): boolean {
-    const allImportedIdentifiers = this.findImportedIdentifiers([
+  public importDeclarationCollides(
+    identifier: Identifier,
+    moduleName?: string,
+    isSideEffects: boolean = false
+  ): boolean {
+    // identifiers are gathered from all import declarations
+    // and are kept as separate entries in the map
+    const allImportedIdentifiers = this.gatherImportDeclarations([
       ...this.sourceFile.statements,
     ]);
 
-    // identifiers are gathered from all import declarations
-    // and are kept as separate entries in the map
+    if (isSideEffects && moduleName) {
+      return Array.from(allImportedIdentifiers.values()).some(
+        (importStatement) => importStatement.moduleName === moduleName
+      );
+    }
+
     return Array.from(allImportedIdentifiers.values()).some(
-      (importStatement) =>
-        !Array.isArray(importStatement.identifiers) &&
-        (importStatement.identifiers.name === identifier.name ||
-          (importStatement.identifiers.alias &&
-            identifier.alias &&
-            importStatement.identifiers.alias === identifier.alias))
+      (importStatement) => {
+        let collides = false;
+        if (Array.isArray(importStatement.identifiers)) {
+          return collides;
+        }
+
+        if (importStatement.identifiers.name === identifier.name) {
+          collides = true;
+        }
+
+        if (importStatement.identifiers.alias && identifier.alias) {
+          return importStatement.identifiers.alias === identifier.alias;
+        }
+
+        return collides;
+      }
     );
   }
 
@@ -596,10 +634,14 @@ export class TypeScriptASTTransformer {
    * @param isDefault Whether the import is a default import.
    * @remarks If `isDefault` is `true`, the first identifier will be used and
    * the import will be a default import of the form `import MyClass from "my-module"`.
+   * @remarks If `isSideEffects` is `true`, all other options are ignored
+   * and the import will be a side effects import of the form `import "my-module"`.
+   * @reference {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#description|MDN}
    */
   public addImportDeclaration(
     importDeclarationMeta: ImportDeclarationMeta,
-    isDefault: boolean = false
+    isDefault: boolean = false,
+    isSideEffects: boolean = false
   ): ts.SourceFile {
     const transformer: ts.TransformerFactory<ts.SourceFile> = (
       context: ts.TransformationContext
@@ -666,7 +708,8 @@ export class TypeScriptASTTransformer {
         ) {
           const newImportDeclaration = this.createImportDeclaration(
             importDeclarationMeta,
-            isDefault
+            isDefault,
+            isSideEffects
           );
           newStatements = [
             ...file.statements.filter(ts.isImportDeclaration),
@@ -728,32 +771,67 @@ export class TypeScriptASTTransformer {
   }
 
   /**
-   * Gathers all imported identifiers from all import declarations.
+   * Gathers all imported declarations and separates them by their unique identifiers.
+   * Will append a template identifier for side effects imports.
    * @param statements The statements to search for import declarations.
+   *
+   * @remarks Distinguishes between the following import types:
+   *
+   * `import { X, Y... } from "module"` - a named import with an import clause that has named bindings - `{ X, Y... }`
+   *
+   * `import X from "module"` - a default import, it has an import clause without named bindings, it only has a name - `X`
+   *
+   * `import "module"` - a side effects import, it has no import clause
+   *
+   * It considers only top-level imports as valid, any imports that are not at the top of the file will be ignored.
    */
-  private findImportedIdentifiers(
+  private gatherImportDeclarations(
     statements: ts.Statement[]
   ): Map<string, ImportDeclarationMeta> {
     const allImportedIdentifiers = new Map<string, ImportDeclarationMeta>();
+    let i = 0;
     for (const statement of statements) {
-      if (ts.isImportDeclaration(statement)) {
-        const namedBindings = statement.importClause?.namedBindings;
-        if (namedBindings && ts.isNamedImports(namedBindings)) {
-          for (const element of namedBindings.elements) {
-            const identifierName = element.propertyName
-              ? element.propertyName.text
-              : element.name.text;
-            const alias = element.propertyName ? element.name.text : undefined;
-            allImportedIdentifiers.set(identifierName, {
-              identifiers: {
-                name: identifierName,
-                alias,
-              },
-              moduleName: this.getModuleSpecifierName(
-                statement.moduleSpecifier
-              ),
-            });
-          }
+      if (!ts.isImportDeclaration(statement)) {
+        // import declarations are at the top of the file,
+        // so we can safely break when we reach a node that is not an import declaration
+        break;
+      }
+
+      if (!statement.importClause) {
+        // a side effects import declaration
+        const sideEffectsName = `${SIDE_EFFECTS_IMPORT_TEMPLATE_NAME}_${++i}`;
+        allImportedIdentifiers.set(sideEffectsName, {
+          identifiers: { name: sideEffectsName },
+          moduleName: this.getModuleSpecifierName(statement.moduleSpecifier),
+        });
+        continue;
+      }
+
+      const importClause = statement.importClause;
+      if (!importClause.namedBindings) {
+        // a default import declaration
+        allImportedIdentifiers.set(importClause.name.text, {
+          identifiers: { name: importClause.name.text },
+          moduleName: this.getModuleSpecifierName(statement.moduleSpecifier),
+        });
+        continue;
+      }
+
+      const namedBindings = importClause.namedBindings;
+      if (namedBindings && ts.isNamedImports(namedBindings)) {
+        // a named import declaration with a list of named bindings
+        for (const element of namedBindings.elements) {
+          const identifierName = element.propertyName
+            ? element.propertyName.text
+            : element.name.text;
+          const alias = element.propertyName ? element.name.text : undefined;
+          allImportedIdentifiers.set(identifierName, {
+            identifiers: {
+              name: identifierName,
+              alias,
+            },
+            moduleName: this.getModuleSpecifierName(statement.moduleSpecifier),
+          });
         }
       }
     }
