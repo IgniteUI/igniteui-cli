@@ -41,11 +41,6 @@ export class IgniteUIForWebComponentsTemplate implements Template {
 		if (!options.parentName) {
 			return;
 		}
-		//TODO: remove
-		if ((App.container as any).properties.size === 0) {
-			App.initialize();
-		}
-		//
 
 		const routeModulePath: string = options.parentRoutingModulePath;
 		const routingModule = new WebComponentsTypeScriptFileUpdate(
