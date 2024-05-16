@@ -1,6 +1,7 @@
 import { App, FS_TOKEN, IFileSystem } from '@igniteui/cli-core';
 import { AngularTypeScriptFileUpdate } from '@igniteui/angular-templates';
 import { EOL } from 'os';
+import { MockFS } from './Mock-FS';
 
 const routesFileContent = `import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -48,62 +49,16 @@ export class MyModule {
 }
 `;
 
-let moduleFile;
-let routesFile;
-let standaloneComponentFile;
-
 const routesPath = 'path/to/routes';
 const moduleFilePath = 'path/to/module';
 const standaloneComponentFilePath = 'path/to/component';
 
-function initFilesState() {
-  moduleFile = moduleFileContent;
-  routesFile = routesFileContent;
-  standaloneComponentFile = standaloneComponentFileContent;
-}
-
-class MockFS implements IFileSystem {
-  public fileExists(filePath: string): boolean {
-    return filePath === routesPath || filePath === standaloneComponentFilePath;
-  }
-  public readFile(filePath: string, encoding?: string): string {
-    switch (filePath) {
-      case routesPath:
-        return routesFile;
-      case standaloneComponentFilePath:
-        return standaloneComponentFile;
-      case moduleFilePath:
-        return moduleFile;
-      default:
-        throw new Error('File not found');
-    }
-  }
-  public writeFile(filePath: string, text: string): void {
-    switch (filePath) {
-      case routesPath:
-        routesFile = text;
-        break;
-      case standaloneComponentFilePath:
-        standaloneComponentFile = text;
-        break;
-      case moduleFilePath:
-        moduleFile = text;
-        break;
-    }
-  }
-  public directoryExists(dirPath: string): boolean {
-    throw new Error('directoryExists is not implemented.');
-  }
-  public glob(dirPath: string, pattern: string): string[] {
-    throw new Error('glob is not implemented.');
-  }
-}
-
 describe('Unit - AngularTypeScriptFileUpdate', () => {
   describe('Initialization', () => {
     it('should be created with a path/to/file', () => {
-      initFilesState();
-      spyOn(App.container, 'get').and.returnValue(new MockFS());
+      spyOn(App.container, 'get').and.returnValue(
+        new MockFS(new Map([[routesPath, routesFileContent]]))
+      );
 
       const tsUpdate = new AngularTypeScriptFileUpdate(routesPath);
       expect(App.container.get).toHaveBeenCalledWith(FS_TOKEN);
@@ -114,9 +69,10 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
   let fileUpdate!: AngularTypeScriptFileUpdate;
   describe('Routing', () => {
     beforeEach(() => {
-      initFilesState();
       spyOn(App, 'initialize').and.callThrough();
-      spyOn(App.container, 'get').and.returnValue(new MockFS());
+      spyOn(App.container, 'get').and.returnValue(
+        new MockFS(new Map([[routesPath, routesFileContent]]))
+      );
       fileUpdate = new AngularTypeScriptFileUpdate(routesPath);
     });
 
@@ -632,9 +588,10 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
   describe('Metadata', () => {
     describe('NgModule', () => {
       beforeEach(() => {
-        initFilesState();
         spyOn(App, 'initialize').and.callThrough();
-        spyOn(App.container, 'get').and.returnValue(new MockFS());
+        spyOn(App.container, 'get').and.returnValue(
+          new MockFS(new Map([[moduleFilePath, moduleFileContent]]))
+        );
         fileUpdate = new AngularTypeScriptFileUpdate(moduleFilePath);
       });
 
@@ -841,9 +798,14 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
 
     describe('Standalone Component', () => {
       beforeEach(() => {
-        initFilesState();
         spyOn(App, 'initialize').and.callThrough();
-        spyOn(App.container, 'get').and.returnValue(new MockFS());
+        spyOn(App.container, 'get').and.returnValue(
+          new MockFS(
+            new Map([
+              [standaloneComponentFilePath, standaloneComponentFileContent],
+            ])
+          )
+        );
         fileUpdate = new AngularTypeScriptFileUpdate(
           standaloneComponentFilePath,
           true // standalone
