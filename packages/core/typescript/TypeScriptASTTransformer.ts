@@ -771,8 +771,8 @@ export class TypeScriptASTTransformer {
   }
 
   /**
-   * Gathers all imported declarations and separates them by their unique identifiers.
-   * Will append a template identifier for side effects imports.
+   * Gathers all import declarations and separates them by their unique identifiers.
+   * Will assign a template identifier for side effects imports.
    * @param statements The statements to search for import declarations.
    *
    * @remarks Distinguishes between the following import types:

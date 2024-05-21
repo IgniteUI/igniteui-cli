@@ -443,7 +443,7 @@ export abstract class TypeScriptFileUpdate {
       !this.astTransformer.importDeclarationCollides(
         importMeta.identifiers,
         moduleName,
-        true
+        true // is side effects
       )
     ) {
       return this.astTransformer.addImportDeclaration(
