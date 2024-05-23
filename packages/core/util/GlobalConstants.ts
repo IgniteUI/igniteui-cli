@@ -30,3 +30,8 @@ export const TS_PRINTER_OPTIONS: ts.PrinterOptions = {
       ? ts.NewLineKind.LineFeed
       : ts.NewLineKind.CarriageReturnLineFeed,
 };
+
+// React
+export const REACT_ROUTER_DOM_REDIRECT = 'redirect';
+export const REACT_APP_ROUTING_NAME = 'app-routes.tsx';
+export const REACT_ROUTER_DOM_MODULE = 'react-router-dom';
