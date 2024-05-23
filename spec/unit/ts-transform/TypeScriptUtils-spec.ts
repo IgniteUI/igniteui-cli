@@ -34,7 +34,7 @@ describe("Unit - TypeScriptUtils", () => {
 				expect(TypeScriptUtils.createSourceFile).toHaveBeenCalledWith(
 					`test/file${key}.ts`,
 					expectedText.join(newLines[key]),
-					ts.ScriptTarget.Latest, true
+					ts.ScriptTarget.Latest, true, false
 				);
 			}
 

@@ -104,11 +104,11 @@ export class TypeScriptUtils {
 	 * Returns an source file, adds new line placeholders as the TS parser won't add `SyntaxKind.NewLineTrivia` to the AST.
 	 * @param filePath Path of file to read
 	 */
-	public static getFileSource(filePath: string): ts.SourceFile {
+	public static getFileSource(filePath: string, useJSX: boolean = false): ts.SourceFile {
 		const fileSystem = App.container.get<IFileSystem>(FS_TOKEN);
 		let targetFile = fileSystem.readFile(filePath);
 		targetFile = targetFile.replace(/(\r?\n)(\r?\n)/g, `$1${this.newLinePlaceHolder}$2`);
-		const targetSource = this.createSourceFile(filePath, targetFile, ts.ScriptTarget.Latest, true);
+		const targetSource = this.createSourceFile(filePath, targetFile, ts.ScriptTarget.Latest, true, useJSX);
 		return targetSource;
 	}
 
@@ -127,8 +127,14 @@ export class TypeScriptUtils {
 		return text;
 	}
 
-	public static createSourceFile(filePath: string, text: string, scriptTarget: ts.ScriptTarget, setParentNodes?: boolean): ts.SourceFile {
-		return ts.createSourceFile(filePath, text, scriptTarget, setParentNodes);
+	public static createSourceFile(filePath: string, text: string,
+		scriptTarget: ts.ScriptTarget, setParentNodes?: boolean, useJSX: boolean = false): ts.SourceFile {
+		return ts.createSourceFile(
+			filePath,
+			text,
+			scriptTarget,
+			setParentNodes,
+			useJSX ? ts.ScriptKind.JS : ts.ScriptKind.TS);
 	}
 
 	public static createPrinter(): ts.Printer {

@@ -23,11 +23,20 @@ import {
 
 export abstract class TypeScriptFileUpdate {
   protected readonly astTransformer: TypeScriptASTTransformer;
-  constructor(protected targetPath: string, formatSettings?: FormatSettings) {
+  constructor(
+    protected targetPath: string,
+    formatSettings?: FormatSettings,
+    compilerOptions?: ts.CompilerOptions
+  ) {
     this.astTransformer = new TypeScriptASTTransformer(
-      TypeScriptUtils.getFileSource(targetPath),
-      new TypeScriptFormattingService(targetPath, formatSettings),
-      TS_PRINTER_OPTIONS // TODO: may not be needed
+      TypeScriptUtils.getFileSource(targetPath, compilerOptions?.jsx > 0),
+      new TypeScriptFormattingService(
+        targetPath,
+        formatSettings,
+        compilerOptions
+      ),
+      TS_PRINTER_OPTIONS, // TODO: may not be needed
+      compilerOptions
     );
   }
 
@@ -189,7 +198,7 @@ export abstract class TypeScriptFileUpdate {
       false, // as identifier
       multiline,
       prepend,
-	  anchorElement
+      anchorElement
     );
 
     return this.astTransformer.sourceFile;
@@ -362,13 +371,13 @@ export abstract class TypeScriptFileUpdate {
    * `memberName: () => callExpressionName(callExpressionArgs)`.
    * @param memberName The name that will be used in the object literal property assignment.
    * @param callExpressionName The name of the function that will be invoked in the arrow func's body.
-   * @param callExpressionArgs The arguments that wil lbe provided to the called function.
+   * @param callExpressionArgs The arguments that will be provided to the called function.
    * @remarks The `callExpressionArgs` is considered to be a string literal.
    */
   protected createArrowFunctionWithCallExpression(
     memberName: string,
     callExpressionName: string,
-    callExpressionArgs: string
+    callExpressionArgs?: string
   ): PropertyAssignment {
     const arrowFunction = ts.factory.createArrowFunction(
       undefined, // modifiers
@@ -379,7 +388,9 @@ export abstract class TypeScriptFileUpdate {
       ts.factory.createCallExpression(
         ts.factory.createIdentifier(callExpressionName),
         undefined, // type arguments
-        [ts.factory.createStringLiteral(callExpressionArgs)]
+        callExpressionArgs
+          ? [ts.factory.createStringLiteral(callExpressionArgs)]
+          : []
       )
     );
 
@@ -461,7 +472,10 @@ export abstract class TypeScriptFileUpdate {
    * @param route The route that contains an identifier to create a declaration for.
    * @see {@link TypeScriptASTTransformer.createImportDeclaration}
    */
-  protected requestImportForRouteIdentifier(route: RouteLike): ts.SourceFile {
+  protected requestImportForRouteIdentifier(
+    route: RouteLike,
+    isDefault: boolean = false
+  ): ts.SourceFile {
     if (route.modulePath) {
       // add an import for the given identifier
       const routeIdentifier: Identifier = {
@@ -470,10 +484,13 @@ export abstract class TypeScriptFileUpdate {
       };
       if (!this.astTransformer.importDeclarationCollides(routeIdentifier)) {
         // if there is an identifierName, there must be a modulePath as well
-        return this.astTransformer.addImportDeclaration({
-          identifiers: routeIdentifier,
-          moduleName: route.modulePath,
-        });
+        return this.astTransformer.addImportDeclaration(
+          {
+            identifiers: routeIdentifier,
+            moduleName: route.modulePath,
+          },
+          isDefault
+        );
       }
     }
 

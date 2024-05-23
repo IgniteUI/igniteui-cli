@@ -197,6 +197,34 @@ export class TypeScriptASTTransformer {
   }
 
   /**
+   * Adds a new JSX member to an object literal expression.
+   * @param visitCondition The condition by which the object literal expression is found.
+   * @param propertyName The name of the property that will be added.
+   * @param propertyValue The value of the property that will be added.
+   * @param jsxAttributes The JSX attributes to add to the JSX element.
+   *
+   * @remarks Creates a property assignment of the form `{ propertyName: <propertyValue /> }` in the object literal.
+   */
+  public addJsxMemberToObjectLiteral(
+    visitCondition: (node: ts.ObjectLiteralExpression) => boolean,
+    propertyName: string,
+    propertyValue: string,
+    jsxAttributes?: ts.JsxAttributes
+  ): ts.SourceFile {
+    const jsxElement = ts.factory.createJsxSelfClosingElement(
+      ts.factory.createIdentifier(propertyValue),
+      undefined, // type arguments
+      jsxAttributes
+    );
+
+    return this.addMemberToObjectLiteral(
+      visitCondition,
+      propertyName,
+      jsxElement
+    );
+  }
+
+  /**
    * Update the value of a member in an object literal expression.
    * @param visitCondition The condition by which the object literal expression is found.
    * @param targetMember The member that will be updated. The value should be the new value to set.
@@ -751,7 +779,8 @@ export class TypeScriptASTTransformer {
       this.sourceFile.fileName,
       content,
       ts.ScriptTarget.Latest,
-      true
+      true,
+      this.compilerOptions?.jsx > 0 ? ts.ScriptKind.JS : ts.ScriptKind.TS
     ));
   }
 

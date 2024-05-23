@@ -42,7 +42,10 @@ export class TypeScriptFormattingService implements FormattingService {
    */
   public applyFormatting(): string {
     this.readFormatConfigs();
-    this._sourceFile = TypeScriptUtils.getFileSource(this.path);
+    this._sourceFile = TypeScriptUtils.getFileSource(
+      this.path,
+      this.compilerOptions?.jsx > 0
+    );
 
     if (this.formatOptions.singleQuotes) {
       this._sourceFile = ts.transform<ts.SourceFile>(
