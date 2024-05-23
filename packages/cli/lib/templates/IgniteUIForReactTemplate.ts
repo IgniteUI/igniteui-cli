@@ -5,12 +5,16 @@ import {
 	defaultDelimiters,
 	FS_TOKEN,
 	IFileSystem,
+	REACT_APP_ROUTING_NAME,
+	RouteLike,
+	ROUTES_VARIABLE_NAME,
 	Template,
 	Util
 } from "@igniteui/cli-core";
 import * as fs from "fs-extra";
 import * as path from "path";
 import { ReactTypeScriptFileUpdate } from "../../templates/react/ReactTypeScriptFileUpdate";
+import { JsxEmit } from "typescript";
 
 export class IgniteUIForReactTemplate implements Template {
 	public components: string[];
@@ -75,45 +79,50 @@ export class IgniteUIForReactTemplate implements Template {
 
 		if (!(options && options.skipRoute)
 			&& App.container.get<IFileSystem>(FS_TOKEN).fileExists(routeModulePath)) {
-			let nameFromPath = Util.nameFromPath(name);
-			let lowerDashed = Util.lowerDashed(nameFromPath);
-			let filePath = path.posix.join(projectPath, options.modulePath, `${lowerDashed}.tsx`);
-			const routingModule = new ReactTypeScriptFileUpdate(path.join(projectPath, routeModulePath));
-
-			if (defaultPath) {
-				routingModule.addRoute(
-					lowerDashed,
-					options.className,
-					nameFromPath,
-					filePath,
-					options.routerChildren,
-					undefined,
-					defaultPath);
-			}
-
-			routingModule.addRoute(
-				lowerDashed,
-				options.className,
-				nameFromPath,
-				filePath,
-				options.routerChildren,
-				undefined
+			const routingModule = new ReactTypeScriptFileUpdate(
+				path.join(projectPath, routeModulePath),
+				{ convertTabsToSpaces: false, indentSize: 4, singleQuotes: true },
+				{ jsx: JsxEmit.Preserve }
 			);
 
-			if (options.hasChildren) {
-				nameFromPath = Util.nameFromPath(`${options.modulePath}-routes.tsx`);
-				lowerDashed = Util.lowerDashed(nameFromPath);
-				filePath = path.posix.join(projectPath, options.modulePath, nameFromPath);
+			const modulePath = `./${Util.lowerDashed(name)}/${Util.lowerDashed(name)}-routes`;
+			const child: RouteLike = {
+				identifierName: ROUTES_VARIABLE_NAME,
+				aliasName: options.routerChildren,
+				modulePath
+			};
 
-				routingModule.addRoute(
-					lowerDashed,
-					options.className,
-					nameFromPath,
-					filePath,
-					options.routerChildren,
-					options.importAlias
+			if (defaultPath) {
+				routingModule.addRoute({
+						index: true,
+						redirectTo: options.path,
+					}
 				);
 			}
+
+			const children = routeModulePath.includes(REACT_APP_ROUTING_NAME)
+				? child
+				: undefined;
+			if (options.hasChildren) {
+				routingModule.addRoute({
+						path: this.fileName(name),
+						element: Util.className(name),
+						text: Util.nameFromPath(name),
+						children
+					},
+				);
+			} else {
+				routingModule.addRoute({
+						path: this.fileName(name),
+						element: Util.className(name),
+						text: Util.nameFromPath(name)
+					},
+					false, // multiline
+					false // prepend
+				);
+			}
+
+			routingModule.finalize();
 		}
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
@@ -138,10 +147,15 @@ export class IgniteUIForReactTemplate implements Template {
 				Util.error(`Path ${"src/views/" + folderName} is not valid!`, "red");
 				process.exit(1);
 			}
-			//clean up potential leading spaces in folder names (`path/    name`):
+			//clean up potential leading spaces in folder names (`path/ name`):
 			folderName = folderName.replace(/\/\s+/g, "/");
 		}
 		return Util.lowerDashed(folderName);
+	}
+
+	protected fileName(pathName: string): string {
+		const name = Util.nameFromPath(pathName);
+		return Util.lowerDashed(name);
 	}
 
 	protected registerJSONRoute(projectPath: string, name: string, routingModulePath: string) {
