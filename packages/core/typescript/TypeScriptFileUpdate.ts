@@ -203,13 +203,13 @@ export abstract class TypeScriptFileUpdate {
    * Takes the form `memberName: () => callExpressionName(callExpressionArgs)`.
    * @param memberName The name that will be used in the object literal property assignment.
    * @param callExpressionName The name of the function that will be invoked in the arrow func's body.
-   * @param callExpressionArgs The arguments that wil lbe provided to the called function.
+   * @param callExpressionArgs The arguments that will be provided to the called function.
    * @remarks The `callExpressionArgs` is considered to be a string literal.
    */
   protected createArrowFunctionWithCallExpression(
     memberName: string,
     callExpressionName: string,
-    callExpressionArgs: string
+    callExpressionArgs?: string
   ): PropertyAssignment {
     const arrowFunction = ts.factory.createArrowFunction(
       undefined, // modifiers
