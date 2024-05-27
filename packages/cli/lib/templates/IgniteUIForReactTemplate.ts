@@ -81,7 +81,7 @@ export class IgniteUIForReactTemplate implements Template {
 			&& App.container.get<IFileSystem>(FS_TOKEN).fileExists(routeModulePath)) {
 			const routingModule = new ReactTypeScriptFileUpdate(
 				path.join(projectPath, routeModulePath),
-				{ convertTabsToSpaces: false, indentSize: 4, singleQuotes: true },
+				{ convertTabsToSpaces: false, indentSize: 2, singleQuotes: true },
 				{ jsx: JsxEmit.Preserve }
 			);
 
