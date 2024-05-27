@@ -45,7 +45,7 @@ export class IgniteUIForWebComponentsTemplate implements Template {
 		const routeModulePath: string = options.parentRoutingModulePath;
 		const routingModule = new WebComponentsTypeScriptFileUpdate(
 			path.join(projectPath, routeModulePath),
-			{ convertTabsToSpaces: false, indentSize: 4, singleQuotes: false }
+			{ convertTabsToSpaces: false, indentSize: 2, singleQuotes: true }
 		);
 
 		if (!(options && options.skipRoute) && App.container.get<IFileSystem>(FS_TOKEN)
@@ -57,9 +57,7 @@ export class IgniteUIForWebComponentsTemplate implements Template {
 				aliasName: options.routerChildren,
 				modulePath
 			};
-			const children = routeModulePath.includes(WC_APP_ROUTING_NAME)
-				? child
-				: undefined;
+			const children = options.hasChildren ? child : undefined;
 
 			if (defaultPath) {
 				routingModule.addRoute({
@@ -67,7 +65,9 @@ export class IgniteUIForWebComponentsTemplate implements Template {
 						redirectTo: options.selector,
 						name: Util.nameFromPath(fullName),
 						children
-					}
+					},
+					false, // multiline
+					true // prepend
 				);
 			}
 
@@ -78,6 +78,8 @@ export class IgniteUIForWebComponentsTemplate implements Template {
 						name: Util.nameFromPath(fullName),
 						children
 					},
+					false, // multiline
+					true // prepend
 				);
 			} else {
 				routingModule.addRoute({
@@ -86,7 +88,7 @@ export class IgniteUIForWebComponentsTemplate implements Template {
 						name: Util.nameFromPath(fullName)
 					},
 					false, // multiline
-					false // prepend
+					true // prepend
 				);
 			}
 
