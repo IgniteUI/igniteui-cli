@@ -61,7 +61,7 @@ export async function updateWorkspace(rootPath: string): Promise<boolean> {
 	const logicFiles = [];
 	const styleFiles = [];
 	const pkgJsonFiles = [];
-	pkgJsonFiles.push(...fs.glob(rootPath, `package.json`));
+	pkgJsonFiles.push(...fs.glob(rootPath, `package.json`, "node_modules"));
 
 	let workspaceConfig = null;
 	switch (framework.toLowerCase()) {
