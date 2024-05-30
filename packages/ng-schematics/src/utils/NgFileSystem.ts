@@ -24,13 +24,18 @@ export class NgTreeFileSystem implements IFileSystem {
 	 * Returns a list of file paths under a directory based on a match pattern
 	 * @param dirPath Root dir to search in
 	 * @param pattern Supports only recursive wildcard '\*\*\/\*'
+	 * @param ignorePattern Optional pattern to ignore
 	 */
-	public glob(dirPath: string, pattern: string): string[] {
+	public glob(dirPath: string, pattern: string, ignorePattern?: string): string[] {
 		const dir = this.tree.getDir(dirPath);
 		const entries: string[] = [];
 		pattern = pattern.split("**/*").pop() || pattern;
 
 		dir.visit((_fullPath, entry) => {
+			if (ignorePattern && entry?.path.includes(ignorePattern)) {
+				return;
+			}
+
 			if (entry?.path.endsWith(pattern)) {
 				entries.push(entry.path);
 			}

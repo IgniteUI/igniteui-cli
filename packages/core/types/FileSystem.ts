@@ -9,7 +9,7 @@ export interface IFileSystem {
 	 * @param dirPath Root dir to search in
 	 * @param pattern Pattern to match
 	 */
-	glob(dirPath: string, pattern: string): string[];
+	glob(dirPath: string, pattern: string, ignorePattern?: string): string[];
 }
 
 export const FS_TOKEN: string = "fs";
