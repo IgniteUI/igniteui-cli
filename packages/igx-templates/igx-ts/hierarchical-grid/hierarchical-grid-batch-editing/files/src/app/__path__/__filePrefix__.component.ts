@@ -14,8 +14,8 @@ import {
   IgxLabelDirective,
   IgxInputDirective,
   IgxCheckboxComponent,
+  GridType
 } from '<%=igxPackage%>';
-import { GridType } from '<%=igxPackage%>/lib/grids/common/grid.interface';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SINGERS } from './data';
 import { Singer } from './singer';
