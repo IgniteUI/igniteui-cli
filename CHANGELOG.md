@@ -1,3 +1,14 @@
+# [13.3.0](https://github.com/IgniteUI/igniteui-cli/compare/v13.2.1...v13.3.0) (2024-06-03)
+
+🎉 This update includes:
+
+- `igniteui-angular` version [18.0.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/18.0.0).
+
+## What's Changed
+* chore(ng): update to ng 18 by @jackofdiamond5 in https://github.com/IgniteUI/igniteui-cli/pull/1252
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.2.0...v13.2.1
+
 # [13.2.1](https://github.com/IgniteUI/igniteui-cli/compare/v13.2.0...v13.2.1) (2024-05-9)
 
 🎉 This update includes:
