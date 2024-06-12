@@ -83,17 +83,17 @@ function importBrowserAnimations(): Rule {
 					convertTabsToSpaces: false,
 					singleQuotes: false
 				};
-				const configTransformer = new TypeScriptASTTransformer(sourceFile, new TypeScriptFormattingService(appConfigFilePath, formatSettings));
+				const configTransformer = new TypeScriptASTTransformer(sourceFile, undefined, undefined, formatSettings);
 				const providerMeta = { provide: "provideAnimations", from: "@angular/platform-browser/animations" };
 				if (!configTransformer.importDeclarationCollides({name: providerMeta.provide})) {
-					configTransformer.addImportDeclaration({
+					configTransformer.requestNewImportDeclaration({
 						identifiers: { name: providerMeta.provide },
 						moduleName: providerMeta.from
 					});
 				}
 
 				configTransformer
-					.addMembersToArrayLiteral((node) =>
+					.requestNewMembersInArrayLiteral((node) =>
 						!!configTransformer.findNodeAncestor(node, (node) => ts.isPropertyAssignment(node) &&
 							node.name.getText() === "providers" &&
 							ts.isObjectLiteralExpression(node.parent) &&
