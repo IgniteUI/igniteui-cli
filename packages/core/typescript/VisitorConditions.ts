@@ -31,7 +31,8 @@ export const PropertyAssignmentWithStringLiteralValueCondition = (
 ) => {
   return (node: ts.Node | ts.ObjectLiteralElementLike) =>
     ts.isPropertyAssignment(node) &&
-    node.name.getText() === name &&
+    ts.isIdentifier(node.name) &&
+    node.name.text === name &&
     ts.isStringLiteral(node.initializer) &&
     node.initializer.text === literal;
 };
