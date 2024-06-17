@@ -19,15 +19,28 @@ import {
   Identifier,
   FormatSettings,
   PropertyAssignment,
+  ChangeRequest,
 } from '../types';
 
 export abstract class TypeScriptFileUpdate {
   protected readonly astTransformer: TypeScriptASTTransformer;
-  constructor(protected targetPath: string, formatSettings?: FormatSettings) {
+
+  /**
+   * Creates a new TypeScriptFileUpdate instance for the given file.
+   * @param filePath The path to the file that will be updated.
+   * @param formatSettings The formatting settings to apply.
+   * @param compilerOptions The compiler options to use when transforming the source file.
+   */
+  constructor(
+    protected filePath: string,
+    protected formatSettings?: FormatSettings,
+    compilerOptions?: ts.CompilerOptions
+  ) {
     this.astTransformer = new TypeScriptASTTransformer(
-      TypeScriptUtils.getFileSource(targetPath),
-      new TypeScriptFormattingService(targetPath, formatSettings),
-      TS_PRINTER_OPTIONS // TODO: may not be needed
+      TypeScriptUtils.getFileSource(filePath, compilerOptions?.jsx > 0),
+      TS_PRINTER_OPTIONS,
+      compilerOptions,
+      formatSettings
     );
   }
 
@@ -46,7 +59,7 @@ export abstract class TypeScriptFileUpdate {
     multiline: boolean,
     prepend: boolean,
     anchorElement: PropertyAssignment
-  ): ts.SourceFile;
+  ): void;
 
   /**
    * Adds a child route to a parent route.
@@ -65,22 +78,23 @@ export abstract class TypeScriptFileUpdate {
     multiline: boolean = false,
     prepend: boolean = false,
     anchorElement: PropertyAssignment = ANCHOR_ELEMENT
-  ): ts.SourceFile {
-    const parentRoute = this.astTransformer.findPropertyAssignment(
-      PropertyAssignmentWithStringLiteralValueCondition(
-        RouteTarget.Path,
-        parentPath
-      )
+  ): void {
+    const parentRoute = this.astTransformer.findObjectLiteralWithProperty(
+      RouteTarget.Path,
+      parentPath
     );
-    if (!parentRoute) return this.astTransformer.sourceFile;
 
-    const parentContainsChildrenKey =
-      ts.isObjectLiteralExpression(parentRoute.parent) &&
-      parentRoute.parent.properties.find(
-        (p) =>
-          ts.isPropertyAssignment(p) &&
-          p.name?.getText() === RouteTarget.Children
-      );
+    let parentContainsChildrenKey = parentRoute?.properties.some(
+      (p) => ts.isIdentifier(p.name) && p.name.text === RouteTarget.Children
+    );
+    let transformation: ChangeRequest<ts.Node> | undefined;
+    if (!parentContainsChildrenKey) {
+      // check if a previous transformation will add the children key
+      transformation = this.findParentRouteTransformation(parentPath);
+      parentContainsChildrenKey = Array.from(
+        this.astTransformer.transformations.values()
+      ).some((t) => t.relatedChangeId === transformation?.id);
+    }
 
     if (!parentContainsChildrenKey) {
       // if the parent route does not have the children member, create it
@@ -94,29 +108,43 @@ export abstract class TypeScriptFileUpdate {
 
       if (asIdentifier) {
         // create a children member and initialize it with the specified identifier
-        this.requestImportForRouteIdentifier(route);
-
-        return this.astTransformer.addMemberToObjectLiteral(visitCondition, {
-          name: RouteTarget.Children,
-          value: ts.factory.createIdentifier(
-            route.aliasName || route.identifierName
-          ),
-        });
+        this.astTransformer.requestNewMemberInObjectLiteral(
+          visitCondition,
+          {
+            name: RouteTarget.Children,
+            value: ts.factory.createIdentifier(
+              route.aliasName || route.identifierName
+            ),
+          },
+          transformation?.id
+        );
+        return;
+      } else {
+        // create an empty children array literal
+        this.astTransformer.requestNewMemberInObjectLiteral(
+          visitCondition,
+          {
+            name: RouteTarget.Children,
+            value: this.astTransformer.createArrayLiteralExpression(
+              [],
+              multiline
+            ),
+          },
+          transformation?.id
+        );
       }
-
-      // create an empty children array member
-      this.astTransformer.addMemberToObjectLiteral(visitCondition, {
-        name: RouteTarget.Children,
-        value: this.astTransformer.createArrayLiteralExpression([], multiline),
-      });
     }
 
-    // add the child route to the parent's children array
-    return this.addRedirectOrSimpleRouteEntry(
-      route,
-      (node) =>
-        ts.isPropertyAssignment(node.parent) &&
-        node.parent.name.getText() === RouteTarget.Children &&
+    if (!route.lazyload) {
+      this.requestImportForRouteIdentifier(route);
+    }
+
+    const visitCondition = (node) => {
+      const nodeParent = this.astTransformer.flatNodeRelations.get(node);
+      return (
+        ts.isPropertyAssignment(nodeParent) &&
+        ts.isIdentifier(nodeParent.name) &&
+        nodeParent.name.text === RouteTarget.Children &&
         // check if the parent route is the one we're looking for
         !!this.astTransformer.findNodeAncestor(
           node,
@@ -128,11 +156,30 @@ export abstract class TypeScriptFileUpdate {
                 parentPath
               )
             )
-        ),
-      multiline,
+        )
+      );
+    };
+    const structure = this.buildRouteStructure(route, multiline);
+    const newRoute = this.astTransformer.createObjectLiteralExpression(
+      structure,
+      multiline
+    );
+    this.astTransformer.requestNewMembersInArrayLiteral(
+      visitCondition,
+      [newRoute],
       prepend,
       anchorElement
     );
+
+    if (route.children) {
+      this.addChildRouteEntry(
+        route,
+        asIdentifier,
+        multiline,
+        prepend,
+        anchorElement
+      );
+    }
   }
 
   /**
@@ -140,7 +187,6 @@ export abstract class TypeScriptFileUpdate {
    * @remarks This method should be called after all modifications have been made to the AST.
    */
   public finalize(): string {
-    TypeScriptUtils.saveFile(this.targetPath, this.astTransformer.sourceFile);
     return this.astTransformer.finalize();
   }
 
@@ -163,8 +209,8 @@ export abstract class TypeScriptFileUpdate {
     multiline: boolean = false,
     prepend: boolean = false,
     anchorElement: PropertyAssignment
-  ): ts.SourceFile {
-    if (route.lazyload) return this.astTransformer.sourceFile;
+  ): void {
+    if (route.lazyload) return;
 
     if (route.redirectTo) {
       this.addRedirectRouteEntry(
@@ -189,10 +235,8 @@ export abstract class TypeScriptFileUpdate {
       false, // as identifier
       multiline,
       prepend,
-	  anchorElement
+      anchorElement
     );
-
-    return this.astTransformer.sourceFile;
   }
 
   /**
@@ -210,7 +254,16 @@ export abstract class TypeScriptFileUpdate {
     multiline: boolean,
     prepend: boolean,
     anchorElement: PropertyAssignment
-  ): ts.SourceFile;
+  ): void;
+
+  /**
+   * Builds the route structure for the given route per platform.
+   * @param route The route to build the structure for.
+   */
+  protected abstract buildRouteStructure(
+    route: RouteLike,
+    multiline: boolean
+  ): RouteEntry[];
 
   /**
    * Adds a new not lazy-loaded route entry to the routes array. With a component identifier and path.
@@ -227,13 +280,16 @@ export abstract class TypeScriptFileUpdate {
     multiline: boolean = false,
     prepend: boolean = false,
     anchorElement: PropertyAssignment
-  ): ts.SourceFile {
+  ): void {
     this.requestImportForRouteIdentifier(route);
 
     const structure: RouteEntry[] = [
       {
         name: RouteTarget.Path,
-        value: ts.factory.createStringLiteral(route.path),
+        value: ts.factory.createStringLiteral(
+          route.path,
+          this.formatSettings?.singleQuotes
+        ),
       },
       {
         name: RouteTarget.Component,
@@ -246,7 +302,7 @@ export abstract class TypeScriptFileUpdate {
       structure,
       multiline
     );
-    return this.astTransformer.addMembersToArrayLiteral(
+    this.astTransformer.requestNewMembersInArrayLiteral(
       visitCondition,
       [newRoute],
       prepend,
@@ -267,8 +323,8 @@ export abstract class TypeScriptFileUpdate {
     multiline: boolean = false,
     prepend: boolean = false,
     anchorElement: PropertyAssignment = ANCHOR_ELEMENT
-  ) {
-    if (!route.children) return this.astTransformer.sourceFile;
+  ): void {
+    if (!route.children) return;
 
     if (Array.isArray(route.children) && route.children?.length > 0) {
       route.children.forEach((child) => {
@@ -310,7 +366,7 @@ export abstract class TypeScriptFileUpdate {
     const importExpression = ts.factory.createCallExpression(
       ts.factory.createIdentifier(IMPORT_IDENTIFIER_NAME),
       undefined, // type arguments
-      [ts.factory.createStringLiteral(path)]
+      [ts.factory.createStringLiteral(path, this.formatSettings?.singleQuotes)]
     );
 
     const thenFuncParamName = 'm';
@@ -379,7 +435,14 @@ export abstract class TypeScriptFileUpdate {
       ts.factory.createCallExpression(
         ts.factory.createIdentifier(callExpressionName),
         undefined, // type arguments
-        [ts.factory.createStringLiteral(callExpressionArgs)]
+        callExpressionArgs
+          ? [
+              ts.factory.createStringLiteral(
+                callExpressionArgs,
+                this.formatSettings?.singleQuotes
+              ),
+            ]
+          : []
       )
     );
 
@@ -432,9 +495,7 @@ export abstract class TypeScriptFileUpdate {
    * @param moduleName The name of the module to create an import for.
    * @see {@link TypeScriptASTTransformer.createImportDeclaration}
    */
-  protected requestSideEffectsImportForModule(
-    moduleName: string
-  ): ts.SourceFile {
+  protected requestSideEffectsImportForModule(moduleName: string): void {
     const importMeta = {
       identifiers: { name: '' },
       moduleName,
@@ -443,17 +504,15 @@ export abstract class TypeScriptFileUpdate {
       !this.astTransformer.importDeclarationCollides(
         importMeta.identifiers,
         moduleName,
-        true
+        true // is side effects
       )
     ) {
-      return this.astTransformer.addImportDeclaration(
+      this.astTransformer.requestNewImportDeclaration(
         importMeta,
         false, // is default
         true // is side effects
       );
     }
-
-    return this.astTransformer.sourceFile;
   }
 
   /**
@@ -461,7 +520,10 @@ export abstract class TypeScriptFileUpdate {
    * @param route The route that contains an identifier to create a declaration for.
    * @see {@link TypeScriptASTTransformer.createImportDeclaration}
    */
-  protected requestImportForRouteIdentifier(route: RouteLike): ts.SourceFile {
+  protected requestImportForRouteIdentifier(
+    route: RouteLike,
+    isDefault: boolean = false
+  ): void {
     if (route.modulePath) {
       // add an import for the given identifier
       const routeIdentifier: Identifier = {
@@ -470,15 +532,72 @@ export abstract class TypeScriptFileUpdate {
       };
       if (!this.astTransformer.importDeclarationCollides(routeIdentifier)) {
         // if there is an identifierName, there must be a modulePath as well
-        return this.astTransformer.addImportDeclaration({
-          identifiers: routeIdentifier,
-          moduleName: route.modulePath,
-        });
+        this.astTransformer.requestNewImportDeclaration(
+          {
+            identifiers: routeIdentifier,
+            moduleName: route.modulePath,
+          },
+          isDefault
+        );
       }
     }
-
-    return this.astTransformer.sourceFile;
   }
 
   //#endregion
+
+  /**
+   * Finds a transformation that will add a specific parent route to the AST.
+   * @param path The path of the parent route to look for.
+   */
+  private findParentRouteTransformation(
+    path: string
+  ): ChangeRequest<ts.Node> | undefined {
+    const transformations = Array.from(
+      this.astTransformer.transformations.values()
+    );
+    const findParentObjectLiteral = (
+      node: ts.Node
+    ): ts.ObjectLiteralExpression => {
+      if (!ts.isObjectLiteralExpression(node)) return undefined;
+      const property = node.properties.find(
+        (p) =>
+          ts.isPropertyAssignment(p) &&
+          ts.isLiteralExpression(p.initializer) &&
+          p.initializer.text === path
+      );
+      if (property) return node;
+    };
+
+    let parentRoute: ts.ObjectLiteralExpression;
+    for (const change of transformations) {
+      if (!change.node) continue;
+      if (this.astTransformer.isNodeArray(change.node)) {
+        parentRoute = change.node.find(
+          findParentObjectLiteral
+        ) as ts.ObjectLiteralExpression;
+      } else {
+        parentRoute = findParentObjectLiteral(change.node);
+      }
+      if (parentRoute) return change;
+    }
+  }
+
+  /**
+   * Looks up a parent route in the AST or in the staged transformations.
+   * @param path The path of the parent route to look for.
+   */
+  private resolveParentRoute(
+    path: string
+  ): ts.ObjectLiteralExpression | undefined {
+    const parentRoute = this.astTransformer.findObjectLiteralWithProperty(
+      RouteTarget.Path,
+      path
+    );
+
+    return (
+      parentRoute ||
+      (this.findParentRouteTransformation(path)
+        ?.node as ts.ObjectLiteralExpression)
+    );
+  }
 }

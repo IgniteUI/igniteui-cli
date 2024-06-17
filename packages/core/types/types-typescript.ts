@@ -83,4 +83,8 @@ export interface ChangeRequest<T extends ts.Node> {
    * The affected node in the source file.
    */
   node: T | ts.NodeArray<T>;
+  /**
+   * The ID of the change request that should be applied before this one.
+   */
+  relatedChangeId?: string;
 }

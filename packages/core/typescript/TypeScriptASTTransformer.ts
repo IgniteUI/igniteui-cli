@@ -209,26 +209,30 @@ export class TypeScriptASTTransformer {
    * Creates a request that will resolve during {@link finalize} for a new property assignment in an object literal expression.
    * @param visitCondition The condition by which the object literal expression is found.
    * @param propertyAssignment The property that will be added.
+   * @param relatedChangeId The ID of the change request that should be applied before this one.
    */
   public requestNewMemberInObjectLiteral(
     visitCondition: (node: ts.ObjectLiteralExpression) => boolean,
-    propertyAssignment: PropertyAssignment
+    propertyAssignment: PropertyAssignment,
+    relatedChangeId?: string
   ): void;
   /**
    * Creates a request that will resolve during {@link finalize} for a new property assignment in an object literal expression.
    * @param visitCondition The condition by which the object literal expression is found.
    * @param propertyName The name of the property that will be added.
    * @param propertyValue The value of the property that will be added.
+   * @param relatedChangeId The ID of the change request that should be applied before this one.
    */
   public requestNewMemberInObjectLiteral(
     visitCondition: (node: ts.ObjectLiteralExpression) => boolean,
     propertyName: string,
-    propertyValue: ts.Expression
+    propertyValue: ts.Expression,
+    relatedChangeId?: string
   ): void;
   public requestNewMemberInObjectLiteral(
     visitCondition: (node: ts.ObjectLiteralExpression) => boolean,
     propertyNameOrAssignment: string | PropertyAssignment,
-    propertyValue?: ts.Expression
+    propertyValueOrChangeId?: ts.Expression | string
   ): void {
     let newProperty: ts.PropertyAssignment;
     if (propertyNameOrAssignment instanceof Object) {
@@ -236,10 +240,13 @@ export class TypeScriptASTTransformer {
         propertyNameOrAssignment.name,
         propertyNameOrAssignment.value
       );
-    } else if (propertyValue) {
+    } else if (
+      propertyValueOrChangeId &&
+      typeof propertyValueOrChangeId !== 'string'
+    ) {
       newProperty = ts.factory.createPropertyAssignment(
         ts.factory.createIdentifier(propertyNameOrAssignment as string),
-        propertyValue
+        propertyValueOrChangeId
       );
     } else {
       throw new Error('Must provide property value.');
@@ -253,10 +260,52 @@ export class TypeScriptASTTransformer {
       return (rootNode: T) => {
         const visitor = (node: ts.Node): ts.VisitResult<ts.Node> => {
           if (ts.isObjectLiteralExpression(node) && visitCondition(node)) {
-            return context.factory.updateObjectLiteralExpression(node, [
-              ...node.properties,
-              newProperty,
-            ]);
+            const existingProperty = node.properties.find(
+              (property) =>
+                ts.isPropertyAssignment(property) &&
+                ts.isIdentifier(property.name) &&
+                ts.isIdentifier(newProperty.name) &&
+                property.name.text === newProperty.name.text
+            );
+            if (!existingProperty) {
+              return context.factory.updateObjectLiteralExpression(node, [
+                ...node.properties,
+                newProperty,
+              ]);
+            }
+
+            if (!ts.isPropertyAssignment(existingProperty)) {
+              return ts.visitEachChild(node, visitor, context);
+            }
+
+            if (ts.isArrayLiteralExpression(existingProperty.initializer)) {
+              const elements = [...existingProperty.initializer.elements];
+              const newElements = ts.isArrayLiteralExpression(
+                newProperty.initializer
+              )
+                ? [...newProperty.initializer.elements]
+                : [newProperty.initializer];
+
+              const uniqueElements = this.mergeUnique(elements, newElements);
+
+              return context.factory.updateObjectLiteralExpression(node, [
+                ...node.properties.filter((p) => p !== existingProperty),
+                context.factory.updatePropertyAssignment(
+                  existingProperty,
+                  existingProperty.name,
+                  context.factory.createArrayLiteralExpression(uniqueElements)
+                ),
+              ]);
+            } else {
+              return context.factory.updateObjectLiteralExpression(node, [
+                ...node.properties.filter((p) => p !== existingProperty),
+                context.factory.updatePropertyAssignment(
+                  existingProperty,
+                  existingProperty.name,
+                  newProperty.initializer
+                ),
+              ]);
+            }
           }
           return ts.visitEachChild(node, visitor, context);
         };
@@ -276,7 +325,10 @@ export class TypeScriptASTTransformer {
       ChangeType.NewNode,
       transformer,
       SyntaxKind.PropertyAssignment,
-      newProperty
+      newProperty,
+      typeof propertyValueOrChangeId === 'string'
+        ? propertyValueOrChangeId
+        : undefined
     );
   }
 
@@ -544,9 +596,7 @@ export class TypeScriptASTTransformer {
       id,
       ChangeType.NewNode,
       transformer,
-      isExpression
-        ? SyntaxKind.Expression
-        : SyntaxKind.PropertyAssignment,
+      isExpression ? SyntaxKind.Expression : SyntaxKind.PropertyAssignment,
       ts.factory.createNodeArray(elements)
     );
   }
@@ -745,24 +795,39 @@ export class TypeScriptASTTransformer {
       );
     }
 
-    return Array.from(allImportedIdentifiers.values()).some(
-      (importStatement) => {
-        let collides = false;
-        if (Array.isArray(importStatement.identifiers)) {
-          return collides;
-        }
-
-        if (importStatement.identifiers.name === identifier.name) {
-          collides = true;
-        }
-
-        if (importStatement.identifiers.alias && identifier.alias) {
-          return importStatement.identifiers.alias === identifier.alias;
-        }
-
+    const collidesWithExisting = Array.from(
+      allImportedIdentifiers.values()
+    ).some((importStatement) => {
+      let collides = false;
+      if (Array.isArray(importStatement.identifiers)) {
         return collides;
       }
-    );
+
+      if (importStatement.identifiers.name === identifier.name) {
+        collides = true;
+      }
+
+      if (importStatement.identifiers.alias && identifier.alias) {
+        return importStatement.identifiers.alias === identifier.alias;
+      }
+
+      return collides;
+    });
+
+    const collidesWithTransformation = Array.from(this.transformations.values())
+      .filter((c) => c.syntaxKind === SyntaxKind.ImportDeclaration)
+      .some((i) => {
+        const identifierNameCheck = (node: ts.Node) =>
+          ts.isIdentifier(node) &&
+          (node.text === identifier.name || node.text === identifier.alias);
+        if (Array.isArray(i.node)) {
+          return i.node.some(identifierNameCheck);
+        } else {
+          return identifierNameCheck(i.node as ts.Node);
+        }
+      });
+
+    return collidesWithExisting || collidesWithTransformation;
   }
 
   /**
@@ -859,14 +924,28 @@ export class TypeScriptASTTransformer {
       };
     };
 
+    const identifiers = Array.isArray(importDeclarationMeta.identifiers)
+      ? ts.factory.createNodeArray(
+          importDeclarationMeta.identifiers.map((i) =>
+            ts.factory.createIdentifier(i.name || i.alias)
+          )
+        )
+      : ts.factory.createIdentifier(
+          importDeclarationMeta.identifiers.name ||
+            importDeclarationMeta.identifiers.alias
+        );
     const id = Array.isArray(importDeclarationMeta.identifiers)
-      ? importDeclarationMeta.identifiers.join(UNDERSCORE_TOKEN)
-      : importDeclarationMeta.identifiers.name;
+      ? importDeclarationMeta.identifiers
+          .map((i) => i.name || i.alias)
+          .join(UNDERSCORE_TOKEN)
+      : importDeclarationMeta.identifiers.name ||
+        importDeclarationMeta.identifiers.alias;
     this.requestChange(
       id,
       ChangeType.NewNode,
       transformer,
-      SyntaxKind.ImportDeclaration
+      SyntaxKind.ImportDeclaration,
+      identifiers
     );
   }
 
@@ -930,8 +1009,12 @@ export class TypeScriptASTTransformer {
 
   /**
    * Requests a change to the source file.
+   * @param id The unique identifier for the change request.
    * @param type The type of change to request.
    * @param transformer The transformer to apply to the source file during finalization.
+   * @param syntaxKind The syntax kind of the node to change.
+   * @param node The affected node.
+   * @param relatedChangeId The ID of the change request that should be applied before this one.
    * @remarks All aggregated changes will be applied during {@link finalize}.
    */
   private requestChange<T extends ts.Node>(
@@ -939,7 +1022,8 @@ export class TypeScriptASTTransformer {
     type: ChangeType,
     transformer: ts.TransformerFactory<ts.SourceFile>,
     syntaxKind: SyntaxKind,
-    node?: T | ts.NodeArray<T>
+    node?: T | ts.NodeArray<T>,
+    relatedChangeId?: string
   ): void {
     id = `${id}${UNDERSCORE_TOKEN}${crypto.randomUUID()}`;
     const requestedChange: ChangeRequest<ts.Node> = {
@@ -948,6 +1032,7 @@ export class TypeScriptASTTransformer {
       transformerFactory: transformer,
       syntaxKind,
       node,
+      relatedChangeId,
     };
 
     this.transformations.set(id, requestedChange);
@@ -1085,5 +1170,39 @@ export class TypeScriptASTTransformer {
 
     visit(rootNode, null);
     return flatNodeRelations;
+  }
+
+  /**
+   * Determines if a node is a literal expression or a TypeScript identifier.
+   * @param node The node to check.
+   */
+  private isLiteralOrIdentifier(
+    node: ts.Node
+  ): node is ts.Identifier | ts.LiteralExpression {
+    return ts.isLiteralExpression(node) || ts.isIdentifier(node);
+  }
+
+  /**
+   * Merge two collections and preserve unique elements only.
+   */
+  private mergeUnique(
+    col1: Array<ts.Identifier | ts.Expression>,
+    col2: Array<ts.Identifier | ts.Expression>
+  ): Array<ts.Identifier | ts.Expression> {
+    const combinedCollection = [...col1, ...col2];
+    const uniqueElements = new Set<string>();
+    const result: Array<ts.Identifier | ts.Expression> = [];
+
+    combinedCollection.forEach((element) => {
+      const identifier = this.isLiteralOrIdentifier(element)
+        ? element.text
+        : null;
+      if (identifier && !uniqueElements.has(identifier)) {
+        uniqueElements.add(identifier);
+        result.push(element);
+      }
+    });
+
+    return result;
   }
 }
