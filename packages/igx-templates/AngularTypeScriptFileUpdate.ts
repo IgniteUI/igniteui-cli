@@ -8,11 +8,14 @@ import {
   TemplateDependency,
   TypeScriptFileUpdate,
   RoutesVariableAsParentCondition,
-  PropertyAssignmentWithStringLiteralValueCondition,
   ANCHOR_ELEMENT,
   NG_SA_DECORATOR_NAME,
   NG_MODULE_DECORATOR_NAME,
   NG_FOR_ROOT_IDENTIFIER_NAME,
+  RouteEntry,
+  TypeScriptASTTransformer,
+  SyntaxKind,
+  ChangeType,
 } from '@igniteui/cli-core';
 import {
   AngularRouteLike,
@@ -22,12 +25,17 @@ import {
 } from './types';
 
 export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
+  /**
+   * Create a new AngularTypeScriptFileUpdate instance for the given file.
+   * @param standalone Whether the file is a standalone component.
+   * @param formatSettings Custom formatting settings to apply.
+   */
   constructor(
-    protected targetPath: string,
+    protected filePath: string,
     private standalone: boolean = false,
-    formatSettings?: FormatSettings
+    protected formatSettings?: FormatSettings
   ) {
-    super(targetPath, formatSettings);
+    super(filePath, formatSettings);
   }
 
   //#region Public API
@@ -40,34 +48,61 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
    *  If no anchor is provided, the new entry will be added to the start or end of the array.
    * @param anchorElement The anchor element to insert to.
    */
-  public addRoute(
+  public override addRoute(
     route: AngularRouteLike,
     multiline: boolean = false,
     prepend: boolean = true,
     anchorElement: PropertyAssignment = ANCHOR_ELEMENT
-  ): ts.SourceFile {
-    if (
-      route.lazyload &&
-      route.path &&
-      route.identifierName &&
-      route.modulePath
-    ) {
-      return this.addLazyLoadedRouteEntry(
-        route,
-        RoutesVariableAsParentCondition(this.astTransformer),
-        multiline,
-        prepend,
-        anchorElement
-      );
+  ): void {
+    // TODO: clean up - calculate route entry here and pass it down to the requestNewMembersInArrayLiteral
+    // the different methods that add the separate route entries might be redundant
+    // if (
+    //   route.lazyload &&
+    //   route.path &&
+    //   route.identifierName &&
+    //   route.modulePath
+    // ) {
+    //   this.addLazyLoadedRouteEntry(
+    //     route,
+    //     RoutesVariableAsParentCondition(this.astTransformer),
+    //     multiline,
+    //     prepend,
+    //     anchorElement
+    //   );
+    //   return;
+    // }
+
+    if (!route.lazyload) {
+      this.requestImportForRouteIdentifier(route);
     }
 
-    return this.addRedirectOrSimpleRouteEntry(
-      route,
+    const structure = this.buildRouteStructure(route, multiline);
+    const newRoute = this.astTransformer.createObjectLiteralExpression(
+      structure,
+      multiline
+    );
+    this.astTransformer.requestNewMembersInArrayLiteral(
       RoutesVariableAsParentCondition(this.astTransformer),
+      [newRoute],
+      prepend,
+      anchorElement
+    );
+
+    this.addChildRouteEntry(
+      route,
+      false, // as identifier
       multiline,
       prepend,
       anchorElement
     );
+
+    // this.addRedirectOrSimpleRouteEntry(
+    //   route,
+    //   RoutesVariableAsParentCondition(this.astTransformer),
+    //   multiline,
+    //   prepend,
+    //   anchorElement
+    // );
   }
 
   /**
@@ -80,38 +115,41 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
    * @param anchorElement The anchor element to insert to.
    * @remarks The `parentPath` is used to determine where the child route should be added.
    */
-  public addChildRoute(
-    parentPath: string,
-    route: AngularRouteLike,
-    asIdentifier: boolean = false,
-    multiline: boolean = false,
-    prepend: boolean = false,
-    anchorElement: PropertyAssignment = ANCHOR_ELEMENT
-  ): ts.SourceFile {
-    if (
-      route.lazyload &&
-      route.path &&
-      route.identifierName &&
-      route.modulePath
-    ) {
-      return this.addLazyLoadedRouteEntry(
-        route,
-        PropertyAssignmentWithStringLiteralValueCondition(RouteTarget.Path, parentPath),
-        multiline,
-        true, // prepend
-        ANCHOR_ELEMENT
-      );
-    }
-
-    return super.addChildRoute(
-      parentPath,
-      route,
-      asIdentifier,
-      multiline,
-      prepend,
-      anchorElement
-    );
-  }
+  // public override addChildRoute(
+  //   parentPath: string,
+  //   route: AngularRouteLike,
+  //   asIdentifier: boolean = false,
+  //   multiline: boolean = false,
+  //   prepend: boolean = false,
+  //   anchorElement: PropertyAssignment = ANCHOR_ELEMENT
+  // ): void {
+  //   if (
+  //     route.lazyload &&
+  //     route.path &&
+  //     route.identifierName &&
+  //     route.modulePath
+  //   ) {
+  //     this.addLazyLoadedRouteEntry(
+  //       route,
+  //       PropertyAssignmentWithStringLiteralValueCondition(
+  //         RouteTarget.Path,
+  //         parentPath
+  //       ),
+  //       multiline,
+  //       true, // prepend
+  //       ANCHOR_ELEMENT
+  //     );
+  //     return;
+  //   }
+  //   super.addChildRoute(
+  //     parentPath,
+  //     route,
+  //     asIdentifier,
+  //     multiline,
+  //     prepend,
+  //     anchorElement
+  //   );
+  // }
 
   /** // TODO: update description
    * Adds an import identifier to a standalone component's metadata.
@@ -123,9 +161,8 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
     dep: TemplateDependency,
     variables?: KeyValuePair<string>,
     multiline: boolean = false
-  ): ts.SourceFile {
-    if (!this.standalone || !dep.standalone)
-      return this.astTransformer.sourceFile;
+  ): void {
+    if (!this.standalone || !dep.standalone) return;
 
     const copy = {
       import: this.asArray(dep.import || [], variables || {}),
@@ -143,14 +180,14 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
           (name) => !this.astTransformer.importDeclarationCollides({ name })
         )
         .map((name) => ({ name }));
-      this.astTransformer.addImportDeclaration({
+      this.astTransformer.requestNewImportDeclaration({
         identifiers,
         moduleName: this.applyConfigTransformation(dep.from, variables!),
       });
     }
 
     if (copy.import.length > 0) {
-      return this.mutateNgDecoratorMeta(
+      this.mutateNgDecoratorMeta(
         NG_SA_DECORATOR_NAME,
         copy.import,
         AngularDecoratorMetaTarget.Imports,
@@ -158,15 +195,13 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
       );
     }
     if (copy.provide.length > 0) {
-      return this.mutateNgDecoratorMeta(
+      this.mutateNgDecoratorMeta(
         NG_SA_DECORATOR_NAME,
         copy.provide,
         AngularDecoratorMetaTarget.Providers,
         multiline
       );
     }
-
-    return this.astTransformer.sourceFile;
   }
 
   /**
@@ -179,9 +214,8 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
     dep: TemplateDependency,
     variables?: KeyValuePair<string>,
     multiline: boolean = false
-  ): ts.SourceFile {
-    if (this.standalone || dep.standalone)
-      return this.astTransformer.sourceFile;
+  ): void {
+    if (this.standalone || dep.standalone) return;
 
     const copy = {
       import: this.asArray(dep.import || [], variables || {}),
@@ -203,7 +237,7 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
           (name) => !this.astTransformer.importDeclarationCollides({ name })
         )
         .map((name) => ({ name }));
-      this.astTransformer.addImportDeclaration({
+      this.astTransformer.requestNewImportDeclaration({
         identifiers,
         moduleName: this.applyConfigTransformation(dep.from, variables!),
       });
@@ -255,13 +289,112 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
         multiline
       );
     }
-
-    return this.astTransformer.sourceFile;
   }
 
   //#endregion
 
   //#region Protected Overrides
+
+  protected override buildRouteStructure(
+    route: AngularRouteLike,
+    multiline: boolean
+  ): RouteEntry[] {
+    let structure: AngularRouteEntry[] = [];
+
+    // lazily loaded route
+    if (
+      route.lazyload &&
+      route.path &&
+      route.identifierName &&
+      route.modulePath
+    ) {
+      const lazyLoadedModule = this.createDynamicImport(
+        route.modulePath,
+        route.identifierName,
+        route.root
+      );
+      const propAssignmentName = route.root
+        ? AngularRouteTarget.LoadChildren
+        : AngularRouteTarget.LoadComponent;
+
+      structure = [
+        {
+          name: RouteTarget.Path,
+          value: ts.factory.createStringLiteral(
+            route.path,
+            this.formatSettings?.singleQuotes
+          ),
+        },
+        { name: propAssignmentName, value: lazyLoadedModule },
+      ];
+      if (route.data) {
+        structure.push({
+          name: AngularRouteTarget.Data,
+          value: this.astTransformer.createObjectLiteralExpression(
+            [route.data],
+            multiline,
+            (value) =>
+              ts.factory.createStringLiteral(
+                value,
+                this.formatSettings?.singleQuotes
+              )
+          ),
+        });
+      }
+
+      return structure as RouteEntry[];
+    }
+
+    // redirect route
+    if (route.redirectTo) {
+      structure = [
+        {
+          name: RouteTarget.Path,
+          value: ts.factory.createStringLiteral(
+            route.path || '',
+            this.formatSettings?.singleQuotes
+          ),
+        },
+        {
+          name: AngularRouteTarget.RedirectTo,
+          value: ts.factory.createStringLiteral(
+            route.redirectTo,
+            this.formatSettings?.singleQuotes
+          ),
+        },
+      ];
+      if (route.pathMatch) {
+        structure.push({
+          name: AngularRouteTarget.PathMatch,
+          value: ts.factory.createStringLiteral(
+            route.pathMatch,
+            this.formatSettings?.singleQuotes
+          ),
+        });
+      }
+
+      return structure as RouteEntry[];
+    }
+
+    // default route
+    structure = [
+      {
+        name: RouteTarget.Path,
+        value: ts.factory.createStringLiteral(
+          route.path,
+          this.formatSettings?.singleQuotes
+        ),
+      },
+      {
+        name: RouteTarget.Component,
+        value: ts.factory.createIdentifier(
+          route.aliasName || route.identifierName
+        ),
+      },
+    ];
+
+    return structure as RouteEntry[];
+  }
 
   /**
    * Adds a new not lazy-loaded route entry to the routes array. With a component identifier and path.
@@ -272,19 +405,19 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
    *  If no anchor is provided, the new entry will be added to the start or end of the array.
    * @param anchorElement The anchor element to insert to.
    */
-  protected addRouteEntry(
+  protected override addRouteEntry(
     route: AngularRouteLike,
     visitCondition: (node: ts.Node) => boolean,
     multiline: boolean = false,
     prepend: boolean = false,
     anchorElement: PropertyAssignment
-  ): ts.SourceFile {
+  ): void {
     if (route.modulePath) {
       // add an import for the given identifier
       const routeIdentifier: Identifier = { name: route.identifierName };
       if (!this.astTransformer.importDeclarationCollides(routeIdentifier)) {
         // if there is an identifierName, there must be a modulePath as well
-        this.astTransformer.addImportDeclaration({
+        this.astTransformer.requestNewImportDeclaration({
           identifiers: routeIdentifier,
           moduleName: route.modulePath,
         });
@@ -294,7 +427,10 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
     const structure: AngularRouteEntry[] = [
       {
         name: RouteTarget.Path,
-        value: ts.factory.createStringLiteral(route.path),
+        value: ts.factory.createStringLiteral(
+          route.path,
+          this.formatSettings?.singleQuotes
+        ),
       },
       {
         name: RouteTarget.Component,
@@ -307,7 +443,11 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
         value: this.astTransformer.createObjectLiteralExpression(
           [route.data],
           multiline,
-          ts.factory.createStringLiteral
+          (value) =>
+            ts.factory.createStringLiteral(
+              value,
+              this.formatSettings?.singleQuotes
+            )
         ),
       });
     }
@@ -316,7 +456,7 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
       structure,
       multiline
     );
-    return this.astTransformer.addMembersToArrayLiteral(
+    this.astTransformer.requestNewMembersInArrayLiteral(
       visitCondition,
       [newRoute],
       prepend,
@@ -333,27 +473,36 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
    *  If no anchor is provided, the new entry will be added to the start or end of the array.
    * @param anchorElement The anchor element to insert to.
    */
-  protected addRedirectRouteEntry(
+  protected override addRedirectRouteEntry(
     route: AngularRouteLike,
     visitCondition: (node: ts.Node) => boolean,
     multiline: boolean = false,
     prepend: boolean = false,
     anchorElement: PropertyAssignment
-  ): ts.SourceFile {
+  ): void {
     const structure = [
       {
         name: RouteTarget.Path,
-        value: ts.factory.createStringLiteral(route.path || ''),
+        value: ts.factory.createStringLiteral(
+          route.path || '',
+          this.formatSettings?.singleQuotes
+        ),
       },
       {
         name: AngularRouteTarget.RedirectTo,
-        value: ts.factory.createStringLiteral(route.redirectTo),
+        value: ts.factory.createStringLiteral(
+          route.redirectTo,
+          this.formatSettings?.singleQuotes
+        ),
       },
     ];
     if (route.pathMatch) {
       structure.push({
         name: AngularRouteTarget.PathMatch,
-        value: ts.factory.createStringLiteral(route.pathMatch),
+        value: ts.factory.createStringLiteral(
+          route.pathMatch,
+          this.formatSettings?.singleQuotes
+        ),
       });
     }
 
@@ -361,7 +510,7 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
       structure,
       multiline
     );
-    return this.astTransformer.addMembersToArrayLiteral(
+    this.astTransformer.requestNewMembersInArrayLiteral(
       visitCondition,
       [newRoute],
       prepend,
@@ -385,11 +534,11 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
     meta: string[],
     target: AngularDecoratorMetaTarget,
     multiline: boolean = false
-  ): ts.SourceFile {
+  ): void {
     const identifiers = meta.map(ts.factory.createIdentifier);
     const targetMetaProp = this.findNgDecoratorProperty(name, target);
     if (!targetMetaProp) {
-      return this.astTransformer.addMemberToObjectLiteral(
+      this.astTransformer.requestNewMemberInObjectLiteral(
         (node) => this.checkNgDecorator(name, node),
         {
           name: target,
@@ -399,27 +548,59 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
           ),
         }
       );
+      return;
     }
+
+    /**
+     * CONSIDER
+     * Drop the `children` member of the RouteLike interface.
+     * Make AddRoute add only routes, and AddChildRoute add only children. The transformers will handle the rest.
+     *
+     * The same treatment for the component decorators in Angular - make the transformers handle if a node should be overridden or initialized
+     * As for the imports the transformer can check if there are any collisions and add the import only if there are none.
+     */
 
     if (ts.isArrayLiteralExpression(targetMetaProp.initializer)) {
       // prop assignment of the form { member: [...] }
       // store to avoid second type check due to different context in the filter
       const elementsAsNodeArray = targetMetaProp.initializer.elements;
-      const elementsToAdd = identifiers.filter(
-        (i) => !elementsAsNodeArray.some((el) => el.getText() === i.text)
-      );
+      const elementsToAdd = identifiers.filter((i) => {
+        const nodeExists = elementsAsNodeArray.some(
+          (el) =>
+            (ts.isIdentifier(el) || ts.isLiteralExpression(el)) &&
+            el.text === i.text
+        );
+        const transformationForNodeExists = Array.from(
+          this.astTransformer.transformations.values()
+        )
+          .filter((t) => t.syntaxKind === SyntaxKind.Expression)
+          .some((change) => {
+            if (Array.isArray(change.node)) {
+              return change.node.some(
+                (n) => ts.isIdentifier(n) && n.text === i.text
+              );
+            } else {
+              return (change.node as ts.Identifier).text === i.text;
+            }
+          });
+        return !nodeExists && !transformationForNodeExists;
+      });
 
-      return this.astTransformer.addMembersToArrayLiteral(
-        (node) =>
-          ts.isPropertyAssignment(node.parent) &&
-          node.parent.name.getText() === target &&
-          this.checkNgDecorator(name, node),
-        elementsToAdd
-      );
+      this.astTransformer.requestNewMembersInArrayLiteral((node) => {
+        const nodeParent = this.astTransformer.flatNodeRelations.get(node);
+        return (
+          nodeParent &&
+          ts.isPropertyAssignment(nodeParent) &&
+          ts.isIdentifier(nodeParent.name) &&
+          nodeParent.name.text === target &&
+          this.checkNgDecorator(name, node)
+        );
+      }, elementsToAdd);
+      return;
     }
 
     // prop assignment of the form { member: <some-val> }
-    return this.astTransformer.updateObjectLiteralMember(
+    this.astTransformer.requestUpdateForObjectLiteralMember(
       (node) => this.checkNgDecorator(name, node),
       {
         name: target,
@@ -437,11 +618,20 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
    * @param node The node to start checking from.
    */
   private checkNgDecorator(name: string, node: ts.Node): boolean {
+    const getNodeExpressionTokenName = (node: ts.Node) => {
+      const nodeExpression =
+        ts.isDecorator(node) &&
+        ts.isCallExpression(node.expression) &&
+        node.expression;
+      const token =
+        nodeExpression &&
+        ts.isIdentifier(nodeExpression.expression) &&
+        nodeExpression.expression;
+      return ts.isIdentifier(token) && token.text;
+    };
     return !!this.astTransformer.findNodeAncestor(
       node,
-      (node) =>
-        ts.isDecorator(node) &&
-        node.expression.getFirstToken()?.getText() === name
+      (node) => getNodeExpressionTokenName(node) === name
     );
   }
 
@@ -455,15 +645,20 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
     decoratorName: string,
     propName: string
   ): ts.PropertyAssignment | undefined {
+    const ngDecoratorExists = (node: ts.Node): boolean =>
+      !!this.astTransformer.findNodeAncestor(node, (node) => {
+        const nodeExpressionToken =
+          ts.isDecorator(node) && node.expression.getFirstToken();
+        return (
+          ts.isIdentifier(nodeExpressionToken) &&
+          nodeExpressionToken.text === decoratorName
+        );
+      });
     return this.astTransformer.findPropertyAssignment(
       (node) =>
-        node.name.getText() === propName &&
-        !!this.astTransformer.findNodeAncestor(
-          node,
-          (node) =>
-            ts.isDecorator(node) &&
-            node.expression.getFirstToken()?.getText() === decoratorName
-        )
+        ts.isIdentifier(node.name) &&
+        node.name.text === propName &&
+        ngDecoratorExists(node)
     );
   }
 
@@ -482,7 +677,7 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
     multiline: boolean = false,
     prepend: boolean = false,
     anchorElement: PropertyAssignment
-  ): ts.SourceFile {
+  ): void {
     const lazyLoadedModule = this.createDynamicImport(
       route.modulePath,
       route.identifierName,
@@ -495,7 +690,10 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
     const structure: AngularRouteEntry[] = [
       {
         name: RouteTarget.Path,
-        value: ts.factory.createStringLiteral(route.path),
+        value: ts.factory.createStringLiteral(
+          route.path,
+          this.formatSettings?.singleQuotes
+        ),
       },
       { name: propAssignmentName, value: lazyLoadedModule },
     ];
@@ -505,7 +703,11 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
         value: this.astTransformer.createObjectLiteralExpression(
           [route.data],
           multiline,
-          ts.factory.createStringLiteral
+          (value) =>
+            ts.factory.createStringLiteral(
+              value,
+              this.formatSettings?.singleQuotes
+            )
         ),
       });
     }
@@ -515,7 +717,7 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
       multiline
     );
 
-    return this.astTransformer.addMembersToArrayLiteral(
+    this.astTransformer.requestNewMembersInArrayLiteral(
       visitCondition,
       [newRoute],
       prepend,
