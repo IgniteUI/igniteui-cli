@@ -2,7 +2,10 @@ import * as ts from 'typescript';
 import { TypeScriptASTTransformer } from './TypeScriptASTTransformer';
 import { TypeScriptUtils } from './TypeScriptUtils';
 import { TypeScriptFormattingService } from './TypeScriptFormattingService';
-import { PropertyAssignmentWithStringLiteralValueCondition } from './VisitorConditions';
+import {
+  PropertyAssignmentWithStringLiteralValueCondition,
+  RoutesVariableAsParentCondition,
+} from './VisitorConditions';
 import {
   Util,
   ANCHOR_ELEMENT,
@@ -21,6 +24,7 @@ import {
   PropertyAssignment,
   ChangeRequest,
 } from '../types';
+import { AngularRouteEntry } from '@igniteui/angular-templates';
 
 export abstract class TypeScriptFileUpdate {
   protected readonly astTransformer: TypeScriptASTTransformer;
@@ -75,111 +79,43 @@ export abstract class TypeScriptFileUpdate {
     parentPath: string,
     route: RouteLike,
     asIdentifier: boolean = false,
-    multiline: boolean = false,
-    prepend: boolean = false,
-    anchorElement: PropertyAssignment = ANCHOR_ELEMENT
+    multiline: boolean = false
   ): void {
-    const parentRoute = this.astTransformer.findObjectLiteralWithProperty(
-      RouteTarget.Path,
-      parentPath
-    );
-
-    let parentContainsChildrenKey = parentRoute?.properties.some(
-      (p) => ts.isIdentifier(p.name) && p.name.text === RouteTarget.Children
-    );
-    let transformation: ChangeRequest<ts.Node> | undefined;
-    if (!parentContainsChildrenKey) {
-      // check if a previous transformation will add the children key
-      transformation = this.findParentRouteTransformation(parentPath);
-      parentContainsChildrenKey = Array.from(
-        this.astTransformer.transformations.values()
-      ).some((t) => t.relatedChangeId === transformation?.id);
-    }
-
-    if (!parentContainsChildrenKey) {
-      // if the parent route does not have the children member, create it
-      const visitCondition = (node) =>
-        node.properties.some(
-          PropertyAssignmentWithStringLiteralValueCondition(
-            RouteTarget.Path,
-            parentPath
-          )
-        );
-
-      if (asIdentifier) {
-        // create a children member and initialize it with the specified identifier
-        this.astTransformer.requestNewMemberInObjectLiteral(
-          visitCondition,
-          {
-            name: RouteTarget.Children,
-            value: ts.factory.createIdentifier(
-              route.aliasName || route.identifierName
-            ),
-          },
-          transformation?.id
-        );
-        return;
-      } else {
-        // create an empty children array literal
-        this.astTransformer.requestNewMemberInObjectLiteral(
-          visitCondition,
-          {
-            name: RouteTarget.Children,
-            value: this.astTransformer.createArrayLiteralExpression(
-              [],
-              multiline
-            ),
-          },
-          transformation?.id
-        );
-      }
-    }
-
     if (!route.lazyload) {
       this.requestImportForRouteIdentifier(route);
     }
 
-    const visitCondition = (node) => {
-      const nodeParent = this.astTransformer.flatNodeRelations.get(node);
-      return (
-        ts.isPropertyAssignment(nodeParent) &&
-        ts.isIdentifier(nodeParent.name) &&
-        nodeParent.name.text === RouteTarget.Children &&
-        // check if the parent route is the one we're looking for
-        !!this.astTransformer.findNodeAncestor(
-          node,
-          (node) =>
-            ts.isObjectLiteralExpression(node) &&
-            node.properties.some(
-              PropertyAssignmentWithStringLiteralValueCondition(
-                RouteTarget.Path,
-                parentPath
-              )
-            )
-        )
+    const visitCondition = (node: ts.ObjectLiteralExpression) => {
+      return node.properties.some(
+        (n) =>
+          PropertyAssignmentWithStringLiteralValueCondition(
+            RouteTarget.Path,
+            parentPath
+          )(n) &&
+          RoutesVariableAsParentCondition(
+            this.astTransformer,
+            ROUTES_VARIABLE_NAME
+          )(n)
       );
     };
-    const structure = this.buildRouteStructure(route, multiline);
-    const newRoute = this.astTransformer.createObjectLiteralExpression(
-      structure,
+
+    const initializer = asIdentifier
+      ? ts.factory.createIdentifier(route.aliasName || route.identifierName)
+      : this.astTransformer.createArrayLiteralExpression(
+          [
+            this.astTransformer.createObjectLiteralExpression(
+              this.buildRouteStructure(route, multiline),
+              multiline
+            ),
+          ],
+          multiline
+        );
+    this.astTransformer.requestNewMemberInObjectLiteral(
+      visitCondition,
+      RouteTarget.Children,
+      initializer,
       multiline
     );
-    this.astTransformer.requestNewMembersInArrayLiteral(
-      visitCondition,
-      [newRoute],
-      prepend,
-      anchorElement
-    );
-
-    if (route.children) {
-      this.addChildRouteEntry(
-        route,
-        asIdentifier,
-        multiline,
-        prepend,
-        anchorElement
-      );
-    }
   }
 
   /**
@@ -192,7 +128,7 @@ export abstract class TypeScriptFileUpdate {
 
   //#endregion
 
-  //#region Inheritables
+  //#region Protected API
 
   /**
    * Adds a new entry to the routes array. With a component identifier and path or with redirect option.
@@ -229,14 +165,6 @@ export abstract class TypeScriptFileUpdate {
         anchorElement
       );
     }
-
-    this.addChildRouteEntry(
-      route,
-      false, // as identifier
-      multiline,
-      prepend,
-      anchorElement
-    );
   }
 
   /**
@@ -259,6 +187,7 @@ export abstract class TypeScriptFileUpdate {
   /**
    * Builds the route structure for the given route per platform.
    * @param route The route to build the structure for.
+   * @parma multiline Whether to format the new entry as multiline.
    */
   protected abstract buildRouteStructure(
     route: RouteLike,
@@ -308,45 +237,6 @@ export abstract class TypeScriptFileUpdate {
       prepend,
       anchorElement
     );
-  }
-
-  /**
-   * Adds child route entry to the given parent route.
-   * @param route The parent route.
-   * @param asIdentifier Whether to initialize the {@link RouteTarget.Children} member with an identifier or an array literal.
-   * @param multiline Whether to format the new entry as multiline.
-   * @param prepend Whether to insert the new entry before the anchor element.
-   */
-  protected addChildRouteEntry(
-    route: RouteLike,
-    asIdentifier: boolean = false,
-    multiline: boolean = false,
-    prepend: boolean = false,
-    anchorElement: PropertyAssignment = ANCHOR_ELEMENT
-  ): void {
-    if (!route.children) return;
-
-    if (Array.isArray(route.children) && route.children?.length > 0) {
-      route.children.forEach((child) => {
-        this.addChildRoute(
-          route.path!,
-          child,
-          asIdentifier,
-          multiline,
-          false, // prepend
-          anchorElement
-        );
-      });
-    } else {
-      this.addChildRoute(
-        route.path!,
-        route.children as RouteLike,
-        asIdentifier,
-        multiline,
-        prepend,
-        anchorElement
-      );
-    }
   }
 
   /**

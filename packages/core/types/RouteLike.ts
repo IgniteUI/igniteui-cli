@@ -14,6 +14,4 @@ export interface RouteLike {
   lazyload?: boolean;
   /** A URL to redirect to when the path matches. */
   redirectTo?: string;
-  /** The children of the route. */
-  children?: RouteLike | RouteLike[];
 }
