@@ -13,9 +13,7 @@ import {
   NG_MODULE_DECORATOR_NAME,
   NG_FOR_ROOT_IDENTIFIER_NAME,
   RouteEntry,
-  TypeScriptASTTransformer,
   SyntaxKind,
-  ChangeType,
 } from '@igniteui/cli-core';
 import {
   AngularRouteLike,
@@ -54,24 +52,6 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
     prepend: boolean = true,
     anchorElement: PropertyAssignment = ANCHOR_ELEMENT
   ): void {
-    // TODO: clean up - calculate route entry here and pass it down to the requestNewMembersInArrayLiteral
-    // the different methods that add the separate route entries might be redundant
-    // if (
-    //   route.lazyload &&
-    //   route.path &&
-    //   route.identifierName &&
-    //   route.modulePath
-    // ) {
-    //   this.addLazyLoadedRouteEntry(
-    //     route,
-    //     RoutesVariableAsParentCondition(this.astTransformer),
-    //     multiline,
-    //     prepend,
-    //     anchorElement
-    //   );
-    //   return;
-    // }
-
     if (!route.lazyload) {
       this.requestImportForRouteIdentifier(route);
     }
@@ -87,71 +67,23 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
       prepend,
       anchorElement
     );
+  }
 
-    this.addChildRouteEntry(
+  public override addChildRoute(
+    parentPath: string,
+    route: AngularRouteLike,
+    asIdentifier: boolean = false,
+    multiline: boolean = false,
+  ): void {
+    super.addChildRoute(
+      parentPath,
       route,
-      false, // as identifier
+      asIdentifier,
       multiline,
-      prepend,
-      anchorElement
     );
-
-    // this.addRedirectOrSimpleRouteEntry(
-    //   route,
-    //   RoutesVariableAsParentCondition(this.astTransformer),
-    //   multiline,
-    //   prepend,
-    //   anchorElement
-    // );
   }
 
   /**
-   * Adds a child route to a parent route.
-   * @param parentPath The path of the parent route.
-   * @param route The child route to add.
-   * @param asIdentifier Whether to initialize the {@link RouteTarget.Children} member with an identifier or an array literal.
-   * @param multiline Whether to format the new entry as multiline.
-   * @param prepend Whether to prepend the new added routes.
-   * @param anchorElement The anchor element to insert to.
-   * @remarks The `parentPath` is used to determine where the child route should be added.
-   */
-  // public override addChildRoute(
-  //   parentPath: string,
-  //   route: AngularRouteLike,
-  //   asIdentifier: boolean = false,
-  //   multiline: boolean = false,
-  //   prepend: boolean = false,
-  //   anchorElement: PropertyAssignment = ANCHOR_ELEMENT
-  // ): void {
-  //   if (
-  //     route.lazyload &&
-  //     route.path &&
-  //     route.identifierName &&
-  //     route.modulePath
-  //   ) {
-  //     this.addLazyLoadedRouteEntry(
-  //       route,
-  //       PropertyAssignmentWithStringLiteralValueCondition(
-  //         RouteTarget.Path,
-  //         parentPath
-  //       ),
-  //       multiline,
-  //       true, // prepend
-  //       ANCHOR_ELEMENT
-  //     );
-  //     return;
-  //   }
-  //   super.addChildRoute(
-  //     parentPath,
-  //     route,
-  //     asIdentifier,
-  //     multiline,
-  //     prepend,
-  //     anchorElement
-  //   );
-  // }
-
-  /** // TODO: update description
    * Adds an import identifier to a standalone component's metadata.
    * @param dep The dependency to add to the standalone component's metadata.
    * @param variables Variables to replace in the dependency strings.
@@ -537,28 +469,19 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
   ): void {
     const identifiers = meta.map(ts.factory.createIdentifier);
     const targetMetaProp = this.findNgDecoratorProperty(name, target);
+
     if (!targetMetaProp) {
       this.astTransformer.requestNewMemberInObjectLiteral(
         (node) => this.checkNgDecorator(name, node),
-        {
-          name: target,
-          value: this.astTransformer.createArrayLiteralExpression(
-            identifiers,
-            multiline
-          ),
-        }
+        target,
+        this.astTransformer.createArrayLiteralExpression(
+          identifiers,
+          multiline
+        ),
+        multiline
       );
       return;
     }
-
-    /**
-     * CONSIDER
-     * Drop the `children` member of the RouteLike interface.
-     * Make AddRoute add only routes, and AddChildRoute add only children. The transformers will handle the rest.
-     *
-     * The same treatment for the component decorators in Angular - make the transformers handle if a node should be overridden or initialized
-     * As for the imports the transformer can check if there are any collisions and add the import only if there are none.
-     */
 
     if (ts.isArrayLiteralExpression(targetMetaProp.initializer)) {
       // prop assignment of the form { member: [...] }
