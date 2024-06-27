@@ -13,6 +13,7 @@ import {
 } from '../types';
 import { SIDE_EFFECTS_IMPORT_TEMPLATE_NAME, UNDERSCORE_TOKEN } from '../util';
 import { TypeScriptFormattingService } from './TypeScriptFormattingService';
+import { TypeScriptExpressionCollector } from './TypeScriptExpressionCollector';
 
 export class TypeScriptASTTransformer {
   private _printer: ts.Printer | undefined;
@@ -209,30 +210,29 @@ export class TypeScriptASTTransformer {
    * Creates a request that will resolve during {@link finalize} for a new property assignment in an object literal expression.
    * @param visitCondition The condition by which the object literal expression is found.
    * @param propertyAssignment The property that will be added.
-   * @param relatedChangeId The ID of the change request that should be applied before this one.
    */
   public requestNewMemberInObjectLiteral(
     visitCondition: (node: ts.ObjectLiteralExpression) => boolean,
-    propertyAssignment: PropertyAssignment,
-    relatedChangeId?: string
+    propertyAssignment: PropertyAssignment
   ): void;
   /**
    * Creates a request that will resolve during {@link finalize} for a new property assignment in an object literal expression.
    * @param visitCondition The condition by which the object literal expression is found.
    * @param propertyName The name of the property that will be added.
    * @param propertyValue The value of the property that will be added.
-   * @param relatedChangeId The ID of the change request that should be applied before this one.
+   * @param multiline Whether the object literal should be multiline.
    */
   public requestNewMemberInObjectLiteral(
     visitCondition: (node: ts.ObjectLiteralExpression) => boolean,
     propertyName: string,
     propertyValue: ts.Expression,
-    relatedChangeId?: string
+    multiline?: boolean
   ): void;
   public requestNewMemberInObjectLiteral(
     visitCondition: (node: ts.ObjectLiteralExpression) => boolean,
     propertyNameOrAssignment: string | PropertyAssignment,
-    propertyValueOrChangeId?: ts.Expression | string
+    propertyValue?: ts.Expression,
+    multiline?: boolean
   ): void {
     let newProperty: ts.PropertyAssignment;
     if (propertyNameOrAssignment instanceof Object) {
@@ -240,18 +240,16 @@ export class TypeScriptASTTransformer {
         propertyNameOrAssignment.name,
         propertyNameOrAssignment.value
       );
-    } else if (
-      propertyValueOrChangeId &&
-      typeof propertyValueOrChangeId !== 'string'
-    ) {
+    } else if (propertyValue && typeof propertyValue !== 'string') {
       newProperty = ts.factory.createPropertyAssignment(
         ts.factory.createIdentifier(propertyNameOrAssignment as string),
-        propertyValueOrChangeId
+        propertyValue
       );
     } else {
       throw new Error('Must provide property value.');
     }
 
+    const expressionCollector = new TypeScriptExpressionCollector();
     const transformer: ts.TransformerFactory<ts.SourceFile> = <
       T extends ts.Node
     >(
@@ -286,26 +284,31 @@ export class TypeScriptASTTransformer {
                 ? [...newProperty.initializer.elements]
                 : [newProperty.initializer];
 
-              const uniqueElements = this.mergeUnique(elements, newElements);
-
+              const uniqueElements =
+                expressionCollector.collectUniqueExpressions([
+                  ...elements,
+                  ...newElements,
+                ]);
               return context.factory.updateObjectLiteralExpression(node, [
                 ...node.properties.filter((p) => p !== existingProperty),
                 context.factory.updatePropertyAssignment(
                   existingProperty,
                   existingProperty.name,
-                  context.factory.createArrayLiteralExpression(uniqueElements)
-                ),
-              ]);
-            } else {
-              return context.factory.updateObjectLiteralExpression(node, [
-                ...node.properties.filter((p) => p !== existingProperty),
-                context.factory.updatePropertyAssignment(
-                  existingProperty,
-                  existingProperty.name,
-                  newProperty.initializer
+                  context.factory.createArrayLiteralExpression(
+                    uniqueElements,
+                    multiline
+                  )
                 ),
               ]);
             }
+            return context.factory.updateObjectLiteralExpression(node, [
+              ...node.properties.filter((p) => p !== existingProperty),
+              context.factory.updatePropertyAssignment(
+                existingProperty,
+                existingProperty.name,
+                newProperty.initializer
+              ),
+            ]);
           }
           return ts.visitEachChild(node, visitor, context);
         };
@@ -325,10 +328,7 @@ export class TypeScriptASTTransformer {
       ChangeType.NewNode,
       transformer,
       SyntaxKind.PropertyAssignment,
-      newProperty,
-      typeof propertyValueOrChangeId === 'string'
-        ? propertyValueOrChangeId
-        : undefined
+      newProperty
     );
   }
 
@@ -459,13 +459,15 @@ export class TypeScriptASTTransformer {
    * @param elements The elements that will be added to the array literal.
    * @param prepend If the elements should be added at the beginning of the array.
    * @anchorElement The element to anchor the new elements to.
+   * @multiline Whether the array literal should be multiline.
    * @remarks The `anchorElement` must match the type of the elements in the collection.
    */
   public requestNewMembersInArrayLiteral(
     visitCondition: (node: ts.ArrayLiteralExpression) => boolean,
     elements: ts.Expression[],
     prepend?: boolean,
-    anchorElement?: ts.Expression | PropertyAssignment
+    anchorElement?: ts.Expression | PropertyAssignment,
+    multiline?: boolean
   ): void;
   /**
    * Creates a request that will resolve during {@link finalize} which adds a new element to an array literal expression.
@@ -473,19 +475,22 @@ export class TypeScriptASTTransformer {
    * @param elements The elements that will be added to the array literal
    * @prepend If the elements should be added at the beginning of the array.
    * @anchorElement The element to anchor the new elements to.
+   * @multiline Whether the array literal should be multiline.
    * @remarks The `anchorElement` must match the type of the elements in the collection.
    */
   public requestNewMembersInArrayLiteral(
     visitCondition: (node: ts.ArrayLiteralExpression) => boolean,
     elements: PropertyAssignment[],
     prepend?: boolean,
-    anchorElement?: ts.Expression | PropertyAssignment
+    anchorElement?: ts.Expression | PropertyAssignment,
+    multiline?: boolean
   ): void;
   public requestNewMembersInArrayLiteral(
     visitCondition: (node: ts.ArrayLiteralExpression) => boolean,
     expressionOrPropertyAssignment: ts.Expression[] | PropertyAssignment[],
     prepend: boolean = false,
-    anchorElement?: ts.StringLiteral | ts.NumericLiteral | PropertyAssignment
+    anchorElement?: ts.StringLiteral | ts.NumericLiteral | PropertyAssignment,
+    multiline: boolean = false
   ): void {
     let elements: ts.Expression[] | PropertyAssignment[];
     const isExpression = expressionOrPropertyAssignment.every((e) =>
@@ -495,7 +500,7 @@ export class TypeScriptASTTransformer {
       elements = expressionOrPropertyAssignment as ts.Expression[];
     } else {
       elements = (expressionOrPropertyAssignment as PropertyAssignment[]).map(
-        (property) => this.createObjectLiteralExpression([property])
+        (property) => this.createObjectLiteralExpression([property], multiline)
       );
     }
     const transformer: ts.TransformerFactory<ts.SourceFile> = <
@@ -1022,8 +1027,7 @@ export class TypeScriptASTTransformer {
     type: ChangeType,
     transformer: ts.TransformerFactory<ts.SourceFile>,
     syntaxKind: SyntaxKind,
-    node?: T | ts.NodeArray<T>,
-    relatedChangeId?: string
+    node?: T | ts.NodeArray<T>
   ): void {
     id = `${id}${UNDERSCORE_TOKEN}${crypto.randomUUID()}`;
     const requestedChange: ChangeRequest<ts.Node> = {
@@ -1031,8 +1035,7 @@ export class TypeScriptASTTransformer {
       type,
       transformerFactory: transformer,
       syntaxKind,
-      node,
-      relatedChangeId,
+      node
     };
 
     this.transformations.set(id, requestedChange);
@@ -1170,39 +1173,5 @@ export class TypeScriptASTTransformer {
 
     visit(rootNode, null);
     return flatNodeRelations;
-  }
-
-  /**
-   * Determines if a node is a literal expression or a TypeScript identifier.
-   * @param node The node to check.
-   */
-  private isLiteralOrIdentifier(
-    node: ts.Node
-  ): node is ts.Identifier | ts.LiteralExpression {
-    return ts.isLiteralExpression(node) || ts.isIdentifier(node);
-  }
-
-  /**
-   * Merge two collections and preserve unique elements only.
-   */
-  private mergeUnique(
-    col1: Array<ts.Identifier | ts.Expression>,
-    col2: Array<ts.Identifier | ts.Expression>
-  ): Array<ts.Identifier | ts.Expression> {
-    const combinedCollection = [...col1, ...col2];
-    const uniqueElements = new Set<string>();
-    const result: Array<ts.Identifier | ts.Expression> = [];
-
-    combinedCollection.forEach((element) => {
-      const identifier = this.isLiteralOrIdentifier(element)
-        ? element.text
-        : null;
-      if (identifier && !uniqueElements.has(identifier)) {
-        uniqueElements.add(identifier);
-        result.push(element);
-      }
-    });
-
-    return result;
   }
 }
