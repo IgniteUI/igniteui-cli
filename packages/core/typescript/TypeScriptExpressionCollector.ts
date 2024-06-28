@@ -84,7 +84,7 @@ export class TypeScriptExpressionCollector {
         return false;
       }
 
-      // compare prop values, only consider literal expressions and identifiers
+      // compare prop values, only consider literal expressions and identifiers for the moment (alt: use lodash?)
       if (
         ts.isPropertyAssignment(prop1) &&
         ts.isPropertyAssignment(prop2) &&

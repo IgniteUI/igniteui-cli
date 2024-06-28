@@ -1,7 +1,6 @@
 import * as ts from 'typescript';
 import { TypeScriptASTTransformer } from './TypeScriptASTTransformer';
 import { TypeScriptUtils } from './TypeScriptUtils';
-import { TypeScriptFormattingService } from './TypeScriptFormattingService';
 import {
   PropertyAssignmentWithStringLiteralValueCondition,
   RoutesVariableAsParentCondition,
@@ -24,7 +23,6 @@ import {
   PropertyAssignment,
   ChangeRequest,
 } from '../types';
-import { AngularRouteEntry } from '@igniteui/angular-templates';
 
 export abstract class TypeScriptFileUpdate {
   protected readonly astTransformer: TypeScriptASTTransformer;
@@ -434,60 +432,4 @@ export abstract class TypeScriptFileUpdate {
   }
 
   //#endregion
-
-  /**
-   * Finds a transformation that will add a specific parent route to the AST.
-   * @param path The path of the parent route to look for.
-   */
-  private findParentRouteTransformation(
-    path: string
-  ): ChangeRequest<ts.Node> | undefined {
-    const transformations = Array.from(
-      this.astTransformer.transformations.values()
-    );
-    const findParentObjectLiteral = (
-      node: ts.Node
-    ): ts.ObjectLiteralExpression => {
-      if (!ts.isObjectLiteralExpression(node)) return undefined;
-      const property = node.properties.find(
-        (p) =>
-          ts.isPropertyAssignment(p) &&
-          ts.isLiteralExpression(p.initializer) &&
-          p.initializer.text === path
-      );
-      if (property) return node;
-    };
-
-    let parentRoute: ts.ObjectLiteralExpression;
-    for (const change of transformations) {
-      if (!change.node) continue;
-      if (this.astTransformer.isNodeArray(change.node)) {
-        parentRoute = change.node.find(
-          findParentObjectLiteral
-        ) as ts.ObjectLiteralExpression;
-      } else {
-        parentRoute = findParentObjectLiteral(change.node);
-      }
-      if (parentRoute) return change;
-    }
-  }
-
-  /**
-   * Looks up a parent route in the AST or in the staged transformations.
-   * @param path The path of the parent route to look for.
-   */
-  private resolveParentRoute(
-    path: string
-  ): ts.ObjectLiteralExpression | undefined {
-    const parentRoute = this.astTransformer.findObjectLiteralWithProperty(
-      RouteTarget.Path,
-      path
-    );
-
-    return (
-      parentRoute ||
-      (this.findParentRouteTransformation(path)
-        ?.node as ts.ObjectLiteralExpression)
-    );
-  }
 }
