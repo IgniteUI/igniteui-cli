@@ -73,14 +73,9 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
     parentPath: string,
     route: AngularRouteLike,
     asIdentifier: boolean = false,
-    multiline: boolean = false,
+    multiline: boolean = false
   ): void {
-    super.addChildRoute(
-      parentPath,
-      route,
-      asIdentifier,
-      multiline,
-    );
+    super.addChildRoute(parentPath, route, asIdentifier, multiline);
   }
 
   /**
@@ -99,6 +94,7 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
     const copy = {
       import: this.asArray(dep.import || [], variables || {}),
       provide: this.asArray(dep.provide || [], variables || {}),
+      schemas: this.asArray(dep.schema || [], variables || {}),
     };
 
     if (dep.from) {
@@ -106,12 +102,9 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
       const uniqueIdentifiers = new Set<string>([
         ...copy.import,
         ...copy.provide,
+        ...copy.schemas,
       ]);
-      const identifiers = [...uniqueIdentifiers]
-        .filter(
-          (name) => !this.astTransformer.importDeclarationCollides({ name })
-        )
-        .map((name) => ({ name }));
+      const identifiers = [...uniqueIdentifiers].map((name) => ({ name }));
       this.astTransformer.requestNewImportDeclaration({
         identifiers,
         moduleName: this.applyConfigTransformation(dep.from, variables!),
@@ -131,6 +124,14 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
         NG_SA_DECORATOR_NAME,
         copy.provide,
         AngularDecoratorMetaTarget.Providers,
+        multiline
+      );
+    }
+    if (copy.schemas.length > 0) {
+      this.mutateNgDecoratorMeta(
+        NG_SA_DECORATOR_NAME,
+        copy.schemas,
+        AngularDecoratorMetaTarget.Schemas,
         multiline
       );
     }
@@ -154,6 +155,7 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
       declare: this.asArray(dep.declare || [], variables || {}),
       provide: this.asArray(dep.provide || [], variables || {}),
       export: this.asArray(dep.export || [], variables || {}),
+      schemas: this.asArray(dep.schema || [], variables || {}),
     };
 
     if (dep.from) {
@@ -163,12 +165,9 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
         ...copy.declare,
         ...copy.provide,
         ...copy.export,
+        ...copy.schemas,
       ]);
-      const identifiers = [...uniqueIdentifiers]
-        .filter(
-          (name) => !this.astTransformer.importDeclarationCollides({ name })
-        )
-        .map((name) => ({ name }));
+      const identifiers = [...uniqueIdentifiers].map((name) => ({ name }));
       this.astTransformer.requestNewImportDeclaration({
         identifiers,
         moduleName: this.applyConfigTransformation(dep.from, variables!),
@@ -218,6 +217,14 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
         NG_MODULE_DECORATOR_NAME,
         copy.export,
         AngularDecoratorMetaTarget.Exports,
+        multiline
+      );
+    }
+    if (copy.schemas.length > 0) {
+      this.mutateNgDecoratorMeta(
+        NG_MODULE_DECORATOR_NAME,
+        copy.schemas,
+        AngularDecoratorMetaTarget.Schemas,
         multiline
       );
     }
@@ -470,68 +477,15 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
     const identifiers = meta.map(ts.factory.createIdentifier);
     const targetMetaProp = this.findNgDecoratorProperty(name, target);
 
-    if (!targetMetaProp) {
-      this.astTransformer.requestNewMemberInObjectLiteral(
-        (node) => this.checkNgDecorator(name, node),
-        target,
-        this.astTransformer.createArrayLiteralExpression(
-          identifiers,
-          multiline
-        ),
-        multiline
-      );
-      return;
-    }
-
-    if (ts.isArrayLiteralExpression(targetMetaProp.initializer)) {
-      // prop assignment of the form { member: [...] }
-      // store to avoid second type check due to different context in the filter
-      const elementsAsNodeArray = targetMetaProp.initializer.elements;
-      const elementsToAdd = identifiers.filter((i) => {
-        const nodeExists = elementsAsNodeArray.some(
-          (el) =>
-            (ts.isIdentifier(el) || ts.isLiteralExpression(el)) &&
-            el.text === i.text
-        );
-        const transformationForNodeExists = Array.from(
-          this.astTransformer.transformations.values()
-        )
-          .filter((t) => t.syntaxKind === SyntaxKind.Expression)
-          .some((change) => {
-            if (Array.isArray(change.node)) {
-              return change.node.some(
-                (n) => ts.isIdentifier(n) && n.text === i.text
-              );
-            } else {
-              return (change.node as ts.Identifier).text === i.text;
-            }
-          });
-        return !nodeExists && !transformationForNodeExists;
-      });
-
-      this.astTransformer.requestNewMembersInArrayLiteral((node) => {
-        const nodeParent = this.astTransformer.flatNodeRelations.get(node);
-        return (
-          nodeParent &&
-          ts.isPropertyAssignment(nodeParent) &&
-          ts.isIdentifier(nodeParent.name) &&
-          nodeParent.name.text === target &&
-          this.checkNgDecorator(name, node)
-        );
-      }, elementsToAdd);
-      return;
-    }
-
-    // prop assignment of the form { member: <some-val> }
-    this.astTransformer.requestUpdateForObjectLiteralMember(
+    const value =
+      targetMetaProp && !ts.isArrayLiteralExpression(targetMetaProp.initializer)
+        ? [targetMetaProp.initializer, ...identifiers]
+        : identifiers;
+    this.astTransformer.requestNewMemberInObjectLiteral(
       (node) => this.checkNgDecorator(name, node),
-      {
-        name: target,
-        value: this.astTransformer.createArrayLiteralExpression(
-          [targetMetaProp.initializer, ...identifiers],
-          multiline
-        ),
-      }
+      target,
+      this.astTransformer.createArrayLiteralExpression(value, multiline),
+      multiline
     );
   }
 

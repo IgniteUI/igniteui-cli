@@ -319,14 +319,18 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
           path: 'parent',
           identifierName: 'ParentComponent',
           modulePath: 'path/to/parent',
-          children: [
-            {
-              path: 'child',
-              identifierName: 'ChildComponent',
-              modulePath: 'path/to/child',
-            },
-          ],
         },
+        true // multiline
+      );
+
+      fileUpdate.addChildRoute(
+        'parent',
+        {
+          path: 'child',
+          identifierName: 'ChildComponent',
+          modulePath: 'path/to/child',
+        },
+        false, // as identifier
         true // multiline
       );
 
@@ -396,7 +400,7 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
       );
     });
 
-    fit('should add child default routes with a default route', () => {
+    it('should add child default routes with a default route', () => {
       spyOn(
         (fileUpdate as any).astTransformer.formatter,
         'applyFormatting'
@@ -407,19 +411,29 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
           path: 'parent',
           identifierName: 'ParentComponent',
           modulePath: 'path/to/parent',
-          children: [
-            {
-              path: '',
-              redirectTo: 'child',
-              pathMatch: 'full',
-            },
-            {
-              path: 'child',
-              identifierName: 'ChildComponent',
-              modulePath: 'path/to/child',
-            },
-          ],
         },
+        true // multiline
+      );
+
+      fileUpdate.addChildRoute(
+        'parent',
+        {
+          path: '',
+          redirectTo: 'child',
+          pathMatch: 'full',
+        },
+        false, // as identifier
+        true // multiline
+      );
+
+      fileUpdate.addChildRoute(
+        'parent',
+        {
+          path: 'child',
+          identifierName: 'ChildComponent',
+          modulePath: 'path/to/child',
+        },
+        false, // as identifier
         true // multiline
       );
 
@@ -510,21 +524,29 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
           path: 'parent',
           identifierName: 'ParentComponent',
           modulePath: 'path/to/parent',
-          children: [
-            {
-              path: 'child',
-              identifierName: 'ChildComponent',
-              modulePath: 'path/to/child',
-              children: [
-                {
-                  path: 'inner-child',
-                  identifierName: 'InnerChildComponent',
-                  modulePath: 'path/to/inner-child',
-                },
-              ],
-            },
-          ],
         },
+        true // multiline
+      );
+
+      fileUpdate.addChildRoute(
+        'parent',
+        {
+          path: 'child',
+          identifierName: 'ChildComponent',
+          modulePath: 'path/to/child',
+        },
+        false, // as identifier
+        true // multiline
+      );
+
+      fileUpdate.addChildRoute(
+        'child',
+        {
+          path: 'inner-child',
+          identifierName: 'InnerChildComponent',
+          modulePath: 'path/to/inner-child',
+        },
+        false, // as identifier
         true // multiline
       );
 
