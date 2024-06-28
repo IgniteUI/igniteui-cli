@@ -7,7 +7,6 @@ import {
 } from './VisitorConditions';
 import {
   Util,
-  ANCHOR_ELEMENT,
   TS_PRINTER_OPTIONS,
   ROUTES_VARIABLE_NAME,
   THEN_IDENTIFIER_NAME,
@@ -21,7 +20,6 @@ import {
   Identifier,
   FormatSettings,
   PropertyAssignment,
-  ChangeRequest,
 } from '../types';
 
 export abstract class TypeScriptFileUpdate {
@@ -127,60 +125,6 @@ export abstract class TypeScriptFileUpdate {
   //#endregion
 
   //#region Protected API
-
-  /**
-   * Adds a new entry to the routes array. With a component identifier and path or with redirect option.
-   * @param route The route to add.
-   * @param visitCondition The condition used to find the appropriate route node.
-   * @param multiline Whether to format the new entry as multiline.
-   * @param prepend Whether to insert the new entry before the anchor element.
-   *  If no anchor is provided, the new entry will be added to the start or end of the array.
-   * @param anchorElement The anchor element to insert.
-   */
-  protected addRedirectOrSimpleRouteEntry(
-    route: RouteLike,
-    visitCondition: (node: ts.Node) => boolean,
-    multiline: boolean = false,
-    prepend: boolean = false,
-    anchorElement: PropertyAssignment
-  ): void {
-    if (route.lazyload) return;
-
-    if (route.redirectTo) {
-      this.addRedirectRouteEntry(
-        route,
-        visitCondition,
-        multiline,
-        prepend,
-        anchorElement
-      );
-    } else if (route.path && (route.identifierName || route.aliasName)) {
-      this.addRouteEntry(
-        route,
-        visitCondition,
-        multiline,
-        prepend,
-        anchorElement
-      );
-    }
-  }
-
-  /**
-   * Adds a new not lazy-loaded route entry to the routes array. With a redirect option.
-   * @param route The route to add.
-   * @param visitCondition The condition used to find the appropriate route node.
-   * @param multiline Whether to format the new entry as multiline.
-   * @param prepend Whether to insert the new entry before the anchor element.
-   *  If no anchor is provided, the new entry will be added to the start or end of the array.
-   * @param anchorElement The anchor element to insert to.
-   */
-  protected abstract addRedirectRouteEntry(
-    route: RouteLike,
-    visitCondition: (node: ts.Node) => boolean,
-    multiline: boolean,
-    prepend: boolean,
-    anchorElement: PropertyAssignment
-  ): void;
 
   /**
    * Builds the route structure for the given route per platform.
