@@ -49,7 +49,11 @@ export default function(): Rule {
 		if (tree.exists(moduleFile)) {
 			setVirtual(tree);
 			const mainModule = new AngularTypeScriptFileUpdate(moduleFile, false, { indentSize: 2 });
-			mainModule.addNgModuleMeta({ import: "HammerModule", from: "@angular/platform-browser" });
+			mainModule.addNgModuleMeta(
+				{ import: "HammerModule", from: "@angular/platform-browser" },
+				null, // vars
+				true // multiline
+			);
 			TypeScriptUtils.saveFile(moduleFile, mainModule.finalize());
 		}
 	};
