@@ -256,13 +256,27 @@ export class TypeScriptASTTransformer {
               ]);
             }
 
-            if (!ts.isPropertyAssignment(existingProperty)) {
+            /**
+             * TODO: Consider supporting also:
+             * 1. ts.SpreadAssignment - { ...x }
+             * 2. ts.SpreadElement - [ ...x ]
+             * 3. ts.JsxSpreadAttribute - <Component {...props} />
+             */
+            if (
+              !ts.isPropertyAssignment(existingProperty) &&
+              !ts.isShorthandPropertyAssignment(existingProperty)
+            ) {
               // this should never be the case as all members in an object literal are property assignments
               // the check exists because of the type guard
               return ts.visitEachChild(node, visitor, context);
             }
 
-            if (ts.isArrayLiteralExpression(existingProperty.initializer)) {
+            const existingPropInitializer = ts.isPropertyAssignment(
+              existingProperty
+            )
+              ? existingProperty.initializer
+              : existingProperty.objectAssignmentInitializer;
+            if (ts.isArrayLiteralExpression(existingPropInitializer)) {
               return this.updatePropertyAssignmentWithArrayLiteral(
                 newProperty,
                 existingProperty,
@@ -1116,16 +1130,26 @@ export class TypeScriptASTTransformer {
    * @param node The object literal expression node.
    */
   private updatePropertyAssignmentWithIdentifier(
-    newProperty: ts.PropertyAssignment,
-    existingProperty: ts.PropertyAssignment,
+    newProperty: ts.PropertyAssignment | ts.ShorthandPropertyAssignment,
+    existingProperty: ts.PropertyAssignment | ts.ShorthandPropertyAssignment,
     context: ts.TransformationContext,
     node: ts.ObjectLiteralExpression
   ) {
-    const updatedProperty = context.factory.updatePropertyAssignment(
-      existingProperty,
-      existingProperty.name,
-      newProperty.initializer
-    );
+    const newPropInitializer = ts.isPropertyAssignment(newProperty)
+      ? newProperty.initializer
+      : newProperty.objectAssignmentInitializer;
+
+    const updatedProperty = ts.isPropertyAssignment(existingProperty)
+      ? context.factory.updatePropertyAssignment(
+          existingProperty,
+          existingProperty.name,
+          newPropInitializer
+        )
+      : context.factory.updateShorthandPropertyAssignment(
+          existingProperty,
+          existingProperty.name,
+          newPropInitializer
+        );
     const structure = Array.from(node.properties);
     const targetIndex = structure.indexOf(existingProperty);
     if (targetIndex > -1) {
@@ -1149,27 +1173,45 @@ export class TypeScriptASTTransformer {
    * @param multiline Whether the array literal should be multiline.
    */
   private updatePropertyAssignmentWithArrayLiteral(
-    newProperty: ts.PropertyAssignment,
-    existingProperty: ts.PropertyAssignment,
+    newProperty: ts.PropertyAssignment | ts.ShorthandPropertyAssignment,
+    existingProperty: ts.PropertyAssignment | ts.ShorthandPropertyAssignment,
     context: ts.TransformationContext,
     node: ts.ObjectLiteralExpression,
     multiline: boolean
   ) {
+    const existingPropInitializer = ts.isPropertyAssignment(existingProperty)
+      ? existingProperty.initializer
+      : existingProperty.objectAssignmentInitializer;
+    const newPropInitializer = ts.isPropertyAssignment(newProperty)
+      ? newProperty.initializer
+      : newProperty.objectAssignmentInitializer;
+
     const initializerAsArray =
-      existingProperty.initializer as ts.ArrayLiteralExpression;
+      existingPropInitializer as ts.ArrayLiteralExpression;
     const elements = [...initializerAsArray.elements];
-    const newElements = ts.isArrayLiteralExpression(newProperty.initializer)
-      ? [...newProperty.initializer.elements]
-      : [newProperty.initializer];
+    const newElements = ts.isArrayLiteralExpression(newPropInitializer)
+      ? [...newPropInitializer.elements]
+      : [newPropInitializer];
     const uniqueElements = this._expressionCollector.collectUniqueExpressions([
       ...elements,
       ...newElements,
     ]);
-    const updatedProperty = context.factory.updatePropertyAssignment(
-      existingProperty,
-      existingProperty.name,
-      context.factory.createArrayLiteralExpression(uniqueElements, multiline)
+
+    const valueExpression = context.factory.createArrayLiteralExpression(
+      uniqueElements,
+      multiline
     );
+    const updatedProperty = ts.isPropertyAssignment(existingProperty)
+      ? context.factory.updatePropertyAssignment(
+          existingProperty,
+          existingProperty.name,
+          valueExpression
+        )
+      : context.factory.updateShorthandPropertyAssignment(
+          existingProperty,
+          existingProperty.name,
+          valueExpression
+        );
 
     const structure = Array.from(node.properties);
     const targetIndex = structure.indexOf(existingProperty);
