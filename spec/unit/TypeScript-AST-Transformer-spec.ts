@@ -645,61 +645,35 @@ describe('TypeScript AST Transformer', () => {
             `import { mock, AnotherMock, YetAnotherMock as yetAnotherMock } from "module";\n`
           );
         });
-      });
 
-      describe('Imports collision detection', () => {
-        it('should detect collisions between existing imports', () => {
-          const identifier = { name: 'mock' };
-          expect(astTransformer.importDeclarationCollides(identifier)).toBe(
-            true
-          );
+        it('should not add an import declaration if the identifier is already imported', () => {
           astTransformer.requestNewImportDeclaration({
-            identifiers: identifier,
+            identifiers: { name: 'mock' },
             moduleName: 'module',
           });
 
           const result = astTransformer.finalize();
-          expect(result).toEqual(`import { mock, mock } from "module";\n`);
+          expect(result).toEqual(`import { mock } from "module";\n`);
         });
 
-        it('should detect collisions between import declarations with the same alias', () => {
-          let identifier = { name: 'newMock', alias: 'aliasedMock' };
-          expect(
-            TypeScriptASTTransformer.checkForCollidingImports(sourceFile, [
-              identifier,
-            ])
-          ).toBe(false);
-
+        it('should not add an import declaration if the identifier is aliased to an existing identifier', () => {
           astTransformer.requestNewImportDeclaration({
-            identifiers: identifier,
-            moduleName: 'another/module',
+            identifiers: { name: 'someImport', alias: 'mock' },
+            moduleName: 'module',
           });
-          sourceFile = astTransformer.applyChanges();
-          expect(
-            TypeScriptASTTransformer.checkForCollidingImports(sourceFile, [
-              identifier,
-            ])
-          ).toBe(true);
-          astTransformer = new TypeScriptASTTransformer(sourceFile);
-
-          identifier = { name: 'someMock', alias: 'aliasedMock' };
-          astTransformer.requestNewImportDeclaration({
-            identifiers: identifier,
-            moduleName: 'yet/another/module',
-          });
-          sourceFile = astTransformer.applyChanges();
-          expect(
-            TypeScriptASTTransformer.checkForCollidingImports(sourceFile, [
-              identifier,
-            ])
-          ).toBe(true);
-          astTransformer = new TypeScriptASTTransformer(sourceFile);
 
           const result = astTransformer.finalize();
-          expect(result).toEqual(
-            `import { mock } from "module";\nimport { newMock as aliasedMock } from "another/module";\n` +
-              `import { someMock as aliasedMock } from "yet/another/module";\n`
-          );
+          expect(result).toEqual(`import { mock } from "module";\n`);
+        });
+
+        it('should make sure that multiple import declaration identifiers are not added if they are the same', () => {
+          astTransformer.requestNewImportDeclaration({
+            identifiers: [{ name: 'mock' }, { name: 'mock' }],
+            moduleName: 'module',
+          });
+
+          const result = astTransformer.finalize();
+          expect(result).toEqual(`import { mock } from "module";\n`);
         });
       });
     });

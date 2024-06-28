@@ -17,6 +17,7 @@ import { TypeScriptExpressionCollector } from './TypeScriptExpressionCollector';
 
 export class TypeScriptASTTransformer {
   private _printer: ts.Printer | undefined;
+  private _expressionCollector: TypeScriptExpressionCollector;
   private _flatNodeRelations: Map<ts.Node, ts.Node>;
   private _defaultCompilerOptions: ts.CompilerOptions = {
     pretty: true,
@@ -43,6 +44,7 @@ export class TypeScriptASTTransformer {
     }
 
     this._flatNodeRelations = this.createNodeRelationsMap(this.sourceFile);
+    this._expressionCollector = new TypeScriptExpressionCollector();
   }
 
   /** Map of all transformations to apply to the source file. */
@@ -75,23 +77,6 @@ export class TypeScriptASTTransformer {
       {},
       this._defaultCompilerOptions,
       this.customCompilerOptions
-    );
-  }
-
-  /**
-   * Checks if the given import declaration identifiers or aliases would collide with an existing one's.
-   * @param sourceFile The source file to check for collisions.
-   * @param identifiers The identifiers to check for collisions.
-   * @param moduleName The module that the import is for, used for side effects imports.
-   */
-  public static checkForCollidingImports(
-    sourceFile: ts.SourceFile,
-    identifiers: Identifier[],
-    moduleName?: string
-  ): boolean {
-    const transformer = new TypeScriptASTTransformer(sourceFile);
-    return identifiers.some((identifier) =>
-      transformer.importDeclarationCollides(identifier, moduleName)
     );
   }
 
@@ -249,7 +234,6 @@ export class TypeScriptASTTransformer {
       throw new Error('Must provide property value.');
     }
 
-    const expressionCollector = new TypeScriptExpressionCollector();
     const transformer: ts.TransformerFactory<ts.SourceFile> = <
       T extends ts.Node
     >(
@@ -273,42 +257,27 @@ export class TypeScriptASTTransformer {
             }
 
             if (!ts.isPropertyAssignment(existingProperty)) {
+              // this should never be the case as all members in an object literal are property assignments
+              // the check exists because of the type guard
               return ts.visitEachChild(node, visitor, context);
             }
 
             if (ts.isArrayLiteralExpression(existingProperty.initializer)) {
-              const elements = [...existingProperty.initializer.elements];
-              const newElements = ts.isArrayLiteralExpression(
-                newProperty.initializer
-              )
-                ? [...newProperty.initializer.elements]
-                : [newProperty.initializer];
-
-              const uniqueElements =
-                expressionCollector.collectUniqueExpressions([
-                  ...elements,
-                  ...newElements,
-                ]);
-              return context.factory.updateObjectLiteralExpression(node, [
-                ...node.properties.filter((p) => p !== existingProperty),
-                context.factory.updatePropertyAssignment(
-                  existingProperty,
-                  existingProperty.name,
-                  context.factory.createArrayLiteralExpression(
-                    uniqueElements,
-                    multiline
-                  )
-                ),
-              ]);
-            }
-            return context.factory.updateObjectLiteralExpression(node, [
-              ...node.properties.filter((p) => p !== existingProperty),
-              context.factory.updatePropertyAssignment(
+              return this.updatePropertyAssignmentWithArrayLiteral(
+                newProperty,
                 existingProperty,
-                existingProperty.name,
-                newProperty.initializer
-              ),
-            ]);
+                context,
+                node,
+                multiline
+              );
+            }
+
+            return this.updatePropertyAssignmentWithIdentifier(
+              newProperty,
+              existingProperty,
+              context,
+              node
+            );
           }
           return ts.visitEachChild(node, visitor, context);
         };
@@ -316,15 +285,7 @@ export class TypeScriptASTTransformer {
       };
     };
 
-    let id = '';
-    if (
-      ts.isIdentifier(newProperty.name) ||
-      ts.isLiteralExpression(newProperty.name)
-    ) {
-      id = newProperty.name.text;
-    }
     this.requestChange(
-      id,
       ChangeType.NewNode,
       transformer,
       SyntaxKind.PropertyAssignment,
@@ -362,10 +323,9 @@ export class TypeScriptASTTransformer {
   }
 
   /**
-   * Creates a request that will resolve during {@link finalize } for an update to the value of a member in an object literal expression.
+   * Creates a request that will resolve during {@link finalize} for an update to the value of a member in an object literal expression.
    * @param visitCondition The condition by which the object literal expression is found.
    * @param targetMember The member that will be updated. The value should be the new value to set.
-   * @returns The mutated AST.
    */
   public requestUpdateForObjectLiteralMember(
     visitCondition: (node: ts.ObjectLiteralExpression) => boolean,
@@ -407,7 +367,6 @@ export class TypeScriptASTTransformer {
     };
 
     this.requestChange(
-      targetMember.name,
       ChangeType.NodeUpdate,
       transformer,
       SyntaxKind.PropertyAssignment,
@@ -582,23 +541,7 @@ export class TypeScriptASTTransformer {
       };
     };
 
-    const id = elements
-      .map((e) => {
-        if (ts.isObjectLiteralExpression(e)) {
-          return e.properties
-            .map((p) => (ts.isIdentifier(p.name) ? p.name.text : ''))
-            .join(UNDERSCORE_TOKEN);
-        }
-
-        if (ts.isIdentifier(e)) {
-          return e.text;
-        }
-
-        return ts.isLiteralExpression(e) ? e.text : '';
-      })
-      .join(UNDERSCORE_TOKEN);
     this.requestChange(
-      id,
       ChangeType.NewNode,
       transformer,
       isExpression ? SyntaxKind.Expression : SyntaxKind.PropertyAssignment,
@@ -781,58 +724,49 @@ export class TypeScriptASTTransformer {
    * @param identifier The identifier to check for collisions.
    * @param moduleName The module that the import is for, used for side effects imports.
    * @param isSideEffects If the import is strictly a side effects import.
-   * @remarks Dynamically added import declarations are ignored.
+   * @param sourceFile The source file to check for collisions.
    */
   public importDeclarationCollides(
     identifier: Identifier,
     moduleName?: string,
-    isSideEffects: boolean = false
+    isSideEffects: boolean = false,
+    sourceFile: ts.SourceFile = this.sourceFile
   ): boolean {
     // identifiers are gathered from all import declarations
     // and are kept as separate entries in the map
     const allImportedIdentifiers = this.gatherImportDeclarations([
-      ...this.sourceFile.statements,
+      ...sourceFile.statements,
     ]);
 
     if (isSideEffects && moduleName) {
       return Array.from(allImportedIdentifiers.values()).some(
-        (importStatement) => importStatement.moduleName === moduleName
+        (importMeta) => importMeta.moduleName === moduleName
       );
     }
 
     const collidesWithExisting = Array.from(
       allImportedIdentifiers.values()
-    ).some((importStatement) => {
+    ).some((importMeta) => {
       let collides = false;
-      if (Array.isArray(importStatement.identifiers)) {
+      if (Array.isArray(importMeta.identifiers)) {
         return collides;
       }
 
-      if (importStatement.identifiers.name === identifier.name) {
+      if (identifier.name === importMeta.identifiers.name) {
         collides = true;
       }
 
-      if (importStatement.identifiers.alias && identifier.alias) {
-        return importStatement.identifiers.alias === identifier.alias;
+      if (identifier.alias) {
+        return (
+          identifier.alias === importMeta.identifiers.name ||
+          identifier.alias === importMeta.identifiers.alias
+        );
       }
 
       return collides;
     });
 
-    const collidesWithTransformation = Array.from(this.transformations.values())
-      .filter((c) => c.syntaxKind === SyntaxKind.ImportDeclaration)
-      .some((i) => {
-        const identifierNameCheck = (node: ts.Node) =>
-          ts.isIdentifier(node) &&
-          (node.text === identifier.name || node.text === identifier.alias);
-        if (Array.isArray(i.node)) {
-          return i.node.some(identifierNameCheck);
-        } else {
-          return identifierNameCheck(i.node as ts.Node);
-        }
-      });
-
-    return collidesWithExisting || collidesWithTransformation;
+    return collidesWithExisting;
   }
 
   /**
@@ -857,9 +791,22 @@ export class TypeScriptASTTransformer {
         let newStatements = [...file.statements];
         let importDeclarationUpdated = false;
 
-        const identifiers = Array.isArray(importDeclarationMeta.identifiers)
+        let identifiers = Array.isArray(importDeclarationMeta.identifiers)
           ? importDeclarationMeta.identifiers
           : [importDeclarationMeta.identifiers];
+
+        // loop over the identifiers and filter out all that would collide with an existing import
+        importDeclarationMeta.identifiers = identifiers = identifiers.filter(
+          (identifier) => {
+            return !this.importDeclarationCollides(
+              identifier,
+              importDeclarationMeta.moduleName,
+              isSideEffects,
+              file
+            );
+          }
+        );
+
         // loop over the statements to find and update the necessary import declaration
         for (let i = 0; i < newStatements.length; i++) {
           const statement = newStatements[i];
@@ -908,11 +855,7 @@ export class TypeScriptASTTransformer {
 
         // if no import declaration was updated and there are identifiers to add,
         // create a new import declaration with the identifiers
-        if (
-          !importDeclarationUpdated &&
-          identifiers.length > 0 &&
-          identifiers.length > 0
-        ) {
+        if (!importDeclarationUpdated && identifiers.length > 0) {
           const newImportDeclaration = this.createImportDeclaration(
             importDeclarationMeta,
             isDefault,
@@ -939,14 +882,8 @@ export class TypeScriptASTTransformer {
           importDeclarationMeta.identifiers.name ||
             importDeclarationMeta.identifiers.alias
         );
-    const id = Array.isArray(importDeclarationMeta.identifiers)
-      ? importDeclarationMeta.identifiers
-          .map((i) => i.name || i.alias)
-          .join(UNDERSCORE_TOKEN)
-      : importDeclarationMeta.identifiers.name ||
-        importDeclarationMeta.identifiers.alias;
+
     this.requestChange(
-      id,
       ChangeType.NewNode,
       transformer,
       SyntaxKind.ImportDeclaration,
@@ -1014,7 +951,6 @@ export class TypeScriptASTTransformer {
 
   /**
    * Requests a change to the source file.
-   * @param id The unique identifier for the change request.
    * @param type The type of change to request.
    * @param transformer The transformer to apply to the source file during finalization.
    * @param syntaxKind The syntax kind of the node to change.
@@ -1023,22 +959,19 @@ export class TypeScriptASTTransformer {
    * @remarks All aggregated changes will be applied during {@link finalize}.
    */
   private requestChange<T extends ts.Node>(
-    id: string = '',
     type: ChangeType,
     transformer: ts.TransformerFactory<ts.SourceFile>,
     syntaxKind: SyntaxKind,
     node?: T | ts.NodeArray<T>
   ): void {
-    id = `${id}${UNDERSCORE_TOKEN}${crypto.randomUUID()}`;
-    const requestedChange: ChangeRequest<ts.Node> = {
+    const id = crypto.randomUUID();
+    this.transformations.set(id, {
       id,
       type,
       transformerFactory: transformer,
       syntaxKind,
-      node
-    };
-
-    this.transformations.set(id, requestedChange);
+      node,
+    });
   }
 
   /**
@@ -1173,5 +1106,82 @@ export class TypeScriptASTTransformer {
 
     visit(rootNode, null);
     return flatNodeRelations;
+  }
+
+  /**
+   * Updates a property assignment with an identifier node, takes the form of `member: <some-value>`.
+   * @param newProperty The new property assignment to update with.
+   * @param existingProperty The existing property assignment to update.
+   * @param context The transformation context.
+   * @param node The object literal expression node.
+   */
+  private updatePropertyAssignmentWithIdentifier(
+    newProperty: ts.PropertyAssignment,
+    existingProperty: ts.PropertyAssignment,
+    context: ts.TransformationContext,
+    node: ts.ObjectLiteralExpression
+  ) {
+    const updatedProperty = context.factory.updatePropertyAssignment(
+      existingProperty,
+      existingProperty.name,
+      newProperty.initializer
+    );
+    const structure = Array.from(node.properties);
+    const targetIndex = structure.indexOf(existingProperty);
+    if (targetIndex > -1) {
+      // attempt to modify the property assignment and preserve the order
+      structure[targetIndex] = updatedProperty;
+      return context.factory.updateObjectLiteralExpression(node, structure);
+    }
+    // append the property assignment at the end
+    return context.factory.updateObjectLiteralExpression(node, [
+      ...node.properties.filter((p) => p !== existingProperty),
+      updatedProperty,
+    ]);
+  }
+
+  /**
+   * Updates a property assignment with an array literal node, takes the form of `member: [<some-value>, <some-value>, ...]`.
+   * @param newProperty The new property assignment to update with.
+   * @param existingProperty The existing property assignment to update.
+   * @param context The transformation context.
+   * @param node The object literal expression node.
+   * @param multiline Whether the array literal should be multiline.
+   */
+  private updatePropertyAssignmentWithArrayLiteral(
+    newProperty: ts.PropertyAssignment,
+    existingProperty: ts.PropertyAssignment,
+    context: ts.TransformationContext,
+    node: ts.ObjectLiteralExpression,
+    multiline: boolean
+  ) {
+    const initializerAsArray =
+      existingProperty.initializer as ts.ArrayLiteralExpression;
+    const elements = [...initializerAsArray.elements];
+    const newElements = ts.isArrayLiteralExpression(newProperty.initializer)
+      ? [...newProperty.initializer.elements]
+      : [newProperty.initializer];
+    const uniqueElements = this._expressionCollector.collectUniqueExpressions([
+      ...elements,
+      ...newElements,
+    ]);
+    const updatedProperty = context.factory.updatePropertyAssignment(
+      existingProperty,
+      existingProperty.name,
+      context.factory.createArrayLiteralExpression(uniqueElements, multiline)
+    );
+
+    const structure = Array.from(node.properties);
+    const targetIndex = structure.indexOf(existingProperty);
+    if (targetIndex > -1) {
+      // attempt to modify the property assignment and preserve the order
+      structure[targetIndex] = updatedProperty;
+      return context.factory.updateObjectLiteralExpression(node, structure);
+    }
+    // append the property assignment at the end
+    return context.factory.updateObjectLiteralExpression(node, [
+      ...node.properties.filter((p) => p !== existingProperty),
+      updatedProperty,
+    ]);
   }
 }
