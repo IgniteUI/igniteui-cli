@@ -137,51 +137,6 @@ export abstract class TypeScriptFileUpdate {
   ): RouteEntry[];
 
   /**
-   * Adds a new not lazy-loaded route entry to the routes array. With a component identifier and path.
-   * @param route The route to add.
-   * @param visitCondition The condition used to find the appropriate route node.
-   * @param multiline Whether to format the new entry as multiline.
-   * @param prepend Whether to insert the new entry before the anchor element.
-   *  If no anchor is provided, the new entry will be added to the start or end of the array.
-   * @param anchorElement The anchor element to insert to.
-   */
-  protected addRouteEntry(
-    route: RouteLike,
-    visitCondition: (node: ts.Node) => boolean,
-    multiline: boolean = false,
-    prepend: boolean = false,
-    anchorElement: PropertyAssignment
-  ): void {
-    this.requestImportForRouteIdentifier(route);
-
-    const structure: RouteEntry[] = [
-      {
-        name: RouteTarget.Path,
-        value: ts.factory.createStringLiteral(
-          route.path,
-          this.formatSettings?.singleQuotes
-        ),
-      },
-      {
-        name: RouteTarget.Component,
-        value: ts.factory.createIdentifier(
-          route.aliasName || route.identifierName
-        ),
-      },
-    ];
-    const newRoute = this.astTransformer.createObjectLiteralExpression(
-      structure,
-      multiline
-    );
-    this.astTransformer.requestNewMembersInArrayLiteral(
-      visitCondition,
-      [newRoute],
-      prepend,
-      anchorElement
-    );
-  }
-
-  /**
    * Creates an arrow function of the form `() => import(path).then(m => m.prop)`.
    * @param path The path to the module to import.
    * @param importedEntity The entity to import from the module.
