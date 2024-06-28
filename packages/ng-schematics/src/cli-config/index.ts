@@ -103,8 +103,8 @@ function importBrowserAnimations(): Rule {
 					[ts.factory.createCallExpression(ts.factory.createIdentifier(providerMeta.provide), undefined, [])]
 				)
 
-				TypeScriptUtils.saveFile(appConfigFilePath, configTransformer.sourceFile);
-				configTransformer.finalize();
+				const result = configTransformer.finalize();
+				TypeScriptUtils.saveFile(appConfigFilePath, result);
 			}
 		});
 	};
