@@ -4,4 +4,5 @@ export enum AngularDecoratorMetaTarget {
   Declarations = "declarations",
   Providers = "providers",
   Exports = "exports",
+  Schemas = "schemas",
 }
