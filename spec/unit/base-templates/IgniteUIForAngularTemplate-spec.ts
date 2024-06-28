@@ -58,7 +58,7 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			});
 			templ.registerInProject("target/path", "view name");
 			expect(helpers.AngularTypeScriptFileUpdate)
-				.toHaveBeenCalledWith(path.join("target/path", "src/app/app-routing.module.ts"), false, { indentSize: 2 });
+				.toHaveBeenCalledWith(path.join("target/path", "src/app/app-routing.module.ts"), false, { indentSize: 2, singleQuotes: true });
 			expect(helpers.tsUpdateMock.addRoute).toHaveBeenCalledWith(
 				{
 					modulePath: './view-name/view-name.component',
@@ -69,7 +69,7 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			);
 
 			expect(helpers.AngularTypeScriptFileUpdate)
-				.toHaveBeenCalledWith(path.join("target/path", "src/app/app.module.ts"), false, { indentSize: 2 });
+				.toHaveBeenCalledWith(path.join("target/path", "src/app/app.module.ts"), false, { indentSize: 2, singleQuotes: true });
 			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith(
 				{
 					declare: [
@@ -77,7 +77,9 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 					],
 					from: "./view-name/view-name.component",
 					export: []
-				}
+				},
+				jasmine.any(Object), // vars
+				true // multiline
 			);
 
 			expect(helpers.tsUpdateMock.finalize).toHaveBeenCalled();
@@ -92,7 +94,8 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			templ.registerInProject("", "");
 			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith(
 				{ import: "test", from: "test" },
-				Util.applyDelimiters(templ.getBaseVariables(""), templ.delimiters.content)
+				Util.applyDelimiters(templ.getBaseVariables(""), templ.delimiters.content),
+				true
 			);
 			resetSpy(helpers.tsUpdateMock.addNgModuleMeta);
 
@@ -100,10 +103,14 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			templ.registerInProject("", "");
 			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith(
 				{ import: "test", from: "test" },
-				Util.applyDelimiters(templ.getBaseVariables(""), templ.delimiters.content));
+				Util.applyDelimiters(templ.getBaseVariables(""), templ.delimiters.content),
+				true
+			);
 			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith(
 				{ declare: "test2", provide: "test2" },
-				Util.applyDelimiters(templ.getBaseVariables(""), templ.delimiters.content));
+				Util.applyDelimiters(templ.getBaseVariables(""), templ.delimiters.content),
+				true
+			);
 
 			done();
 		});
@@ -119,7 +126,11 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			templ.registerInProject("target", "name");
 
 			expect(Util.relativePath).toHaveBeenCalledWith(mainPath, filePath, true, true);
-			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith({ from: "./relative/result/test" }, {});
+			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith(
+				{ from: "./relative/result/test" },
+				jasmine.any(Object), // vars
+				true // multiline
+			);
 
 			done();
 		});
@@ -133,7 +144,7 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			// just declare
 			expect(helpers.AngularTypeScriptFileUpdate).toHaveBeenCalledTimes(1);
 			expect(helpers.AngularTypeScriptFileUpdate)
-				.toHaveBeenCalledWith(path.join("target/path", "src/app/app.module.ts"), false, { indentSize: 2 });
+				.toHaveBeenCalledWith(path.join("target/path", "src/app/app.module.ts"), false, { indentSize: 2, singleQuotes: true });
 			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith(
 				{
 					declare: [
@@ -141,7 +152,9 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 					],
 					from: "./view-name/view-name.component",
 					export: []
-				  }
+				},
+				jasmine.any(Object), // vars
+				true // multiline
 			);
 			expect(helpers.tsUpdateMock.finalize).toHaveBeenCalled();
 			done();
