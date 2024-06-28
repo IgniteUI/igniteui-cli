@@ -194,12 +194,15 @@ describe("Unit - Add command", () => {
 		expect(routeSpy).toHaveBeenCalledTimes(1);
 		expect(ngMetaSpy).toHaveBeenCalledTimes(1);
 		expect(ngMetaSpy).toHaveBeenCalledWith({
-			declare: [
-				"TestFileNameComponent"
-			],
-			from: "../test-file-name/test-file-name.component",
-			export: [ 'TestFileNameComponent' ]
-		});
+				declare: [
+					"TestFileNameComponent"
+				],
+				from: "../test-file-name/test-file-name.component",
+				export: [ 'TestFileNameComponent' ]
+			},
+			jasmine.any(Object),
+			true
+		);
 		expect(finalizeSpy).toHaveBeenCalledTimes(2);
 		expect(addCmd.templateManager.updateProjectConfiguration).toHaveBeenCalledTimes(1);
 		done();
