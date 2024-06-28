@@ -1,3 +1,10 @@
+# [13.2.2](https://github.com/IgniteUI/igniteui-cli/compare/v13.2.1...v13.2.2) (2024-06-28)
+
+## What's Changed
+* bump the template versions by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1259
+* bump web dev server in webc templates by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1261
+* Added mock implementations of HTMLElement.prototype functions in test setup by @ivanvpetrov in https://github.com/IgniteUI/igniteui-cli/pull/1265
+
 # [13.2.1](https://github.com/IgniteUI/igniteui-cli/compare/v13.2.0...v13.2.1) (2024-05-9)
 
 🎉 This update includes:
