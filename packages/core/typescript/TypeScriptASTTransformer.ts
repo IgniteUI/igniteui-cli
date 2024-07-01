@@ -266,8 +266,7 @@ export class TypeScriptASTTransformer {
               !ts.isPropertyAssignment(existingProperty) &&
               !ts.isShorthandPropertyAssignment(existingProperty)
             ) {
-              // this should never be the case as all members in an object literal are property assignments
-              // the check exists because of the type guard
+              // narrow down to ts.PropertyAssignment | ts.ShorthandPropertyAssignment
               return ts.visitEachChild(node, visitor, context);
             }
 
@@ -798,11 +797,14 @@ export class TypeScriptASTTransformer {
     isDefault: boolean = false,
     isSideEffects: boolean = false
   ): void {
-    const transformer: ts.TransformerFactory<ts.SourceFile> = (
+    const transformer: ts.TransformerFactory<ts.SourceFile> = <
+      T extends ts.Node
+    >(
       context: ts.TransformationContext
     ) => {
-      return (file) => {
-        let newStatements = [...file.statements];
+      return (rootNode: T) => {
+        const sourceFile = rootNode.getSourceFile();
+        let newStatements = [...sourceFile.statements];
         let importDeclarationUpdated = false;
 
         let identifiers = Array.isArray(importDeclarationMeta.identifiers)
@@ -816,7 +818,7 @@ export class TypeScriptASTTransformer {
               identifier,
               importDeclarationMeta.moduleName,
               isSideEffects,
-              file
+              sourceFile
             );
           }
         );
@@ -876,13 +878,13 @@ export class TypeScriptASTTransformer {
             isSideEffects
           );
           newStatements = [
-            ...file.statements.filter(ts.isImportDeclaration),
+            ...sourceFile.statements.filter(ts.isImportDeclaration),
             newImportDeclaration,
-            ...file.statements.filter((s) => !ts.isImportDeclaration(s)),
+            ...sourceFile.statements.filter((s) => !ts.isImportDeclaration(s)),
           ];
         }
 
-        return ts.factory.updateSourceFile(file, newStatements);
+        return ts.factory.updateSourceFile(sourceFile, newStatements);
       };
     };
 
