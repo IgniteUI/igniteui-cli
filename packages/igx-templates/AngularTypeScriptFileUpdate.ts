@@ -264,12 +264,10 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
         },
         { name: propAssignmentName, value: lazyLoadedModule },
       ];
-
-      return structure as RouteEntry[];
     }
 
-    // redirect route
     if (route.redirectTo) {
+      // redirect route
       structure = [
         {
           name: RouteTarget.Path,
@@ -295,7 +293,7 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
           ),
         });
       }
-    } else {
+    } else if (!route.lazyload) {
       // default route
       structure = [
         {
