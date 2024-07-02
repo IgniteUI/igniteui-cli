@@ -287,19 +287,11 @@ export abstract class TypeScriptFileUpdate {
       identifiers: { name: '' },
       moduleName,
     };
-    if (
-      !this.astTransformer.importDeclarationCollides(
-        importMeta.identifiers,
-        moduleName,
-        true // is side effects
-      )
-    ) {
-      this.astTransformer.requestNewImportDeclaration(
-        importMeta,
-        false, // is default
-        true // is side effects
-      );
-    }
+    this.astTransformer.requestNewImportDeclaration(
+      importMeta,
+      false, // is default
+      true // is side effects
+    );
   }
 
   /**
@@ -317,16 +309,15 @@ export abstract class TypeScriptFileUpdate {
         name: route.identifierName,
         alias: route.aliasName,
       };
-      if (!this.astTransformer.importDeclarationCollides(routeIdentifier)) {
-        // if there is an identifierName, there must be a modulePath as well
-        this.astTransformer.requestNewImportDeclaration(
-          {
-            identifiers: routeIdentifier,
-            moduleName: route.modulePath,
-          },
-          isDefault
-        );
-      }
+
+      // if there is an identifierName, there must be a modulePath as well
+      this.astTransformer.requestNewImportDeclaration(
+        {
+          identifiers: routeIdentifier,
+          moduleName: route.modulePath,
+        },
+        isDefault
+      );
     }
   }
 
