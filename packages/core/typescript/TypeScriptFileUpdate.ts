@@ -25,6 +25,7 @@ export class TypeScriptFileUpdate {
 		declarations: string[],
 		imports: Array<{ name: string, root: boolean, standalone?: boolean }>,
 		providers: string[],
+		schemas: string[],
 		exports: string[]
 	};
 
@@ -141,13 +142,14 @@ export class TypeScriptFileUpdate {
 			declare: this.asArray(dep.declare, variables),
 			import: this.asArray(dep.import, variables),
 			provide: this.asArray(dep.provide, variables),
+			schema: this.asArray(dep.schema, variables),
 			// tslint:disable-next-line:object-literal-sort-keys
 			export: this.asArray(dep.export, variables)
 		};
 
 		if (dep.from) {
 			// request import
-			const identifiers = [...copy.import, ...copy.declare, ...copy.provide];
+			const identifiers = [...copy.import, ...copy.declare, ...copy.provide, ...copy.schema];
 			this.requestImport(identifiers, Util.applyConfigTransformation(dep.from, variables));
 		}
 		const imports = copy.import
@@ -162,6 +164,10 @@ export class TypeScriptFileUpdate {
 		const providers = copy.provide
 			.filter(x => !this.ngMetaEdits.providers.find(p => p === x));
 		this.ngMetaEdits.providers.push(...providers);
+
+		const schemas = copy.schema
+			.filter(x => !this.ngMetaEdits.schemas.find(s => s === x));
+		this.ngMetaEdits.schemas.push(...schemas);
 
 		const exportsArr = copy.export
 			.filter(x => !this.ngMetaEdits.exports.find(p => p === x));
@@ -249,6 +255,7 @@ export class TypeScriptFileUpdate {
 			declarations: [],
 			imports: [],
 			providers: [],
+			schemas: [],
 			exports: []
 		};
 		this.createdStringLiterals = [];
@@ -557,6 +564,7 @@ export class TypeScriptFileUpdate {
 								break;
 							case "declarations":
 							case "providers":
+							case "schemas":
 							case "exports":
 								arrayExpr = ts.factory.createArrayLiteralExpression(
 									this.ngMetaEdits[prop].map(x => ts.factory.createIdentifier(x))
