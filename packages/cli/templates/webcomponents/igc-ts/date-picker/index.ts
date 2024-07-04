@@ -1,14 +1,14 @@
 import { BaseComponent } from "@igniteui/cli-core";
 
-class IgcAvatarComponent extends BaseComponent {
+class IgcDatePickerComponent extends BaseComponent {
 	/**
 	 *
 	 */
 	constructor() {
 		super(__dirname);
-		this.name  = "Avatar";
-		this.group = "Layouts";
-		this.description = `Customizable avatar component`;
+		this.name  = "DatePicker";
+		this.group = "Scheduling";
+		this.description = `Basic date picker component`;
 	}
 }
-module.exports = new IgcAvatarComponent();
+module.exports = new IgcDatePickerComponent();
