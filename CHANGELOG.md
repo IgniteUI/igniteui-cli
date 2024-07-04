@@ -1,3 +1,10 @@
+# [13.3.2](https://github.com/IgniteUI/igniteui-cli/compare/v13.3.1...v13.3.2) (2024-07-04)
+
+## What's Changed
+* chore(WebComponents): igniteui-webcomponents version bump, adding banner, divider and date picker templates - 13.3.x by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1274
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.3.1...v13.3.2
+
 # [13.3.1](https://github.com/IgniteUI/igniteui-cli/compare/v13.3.0...v13.3.1) (2024-06-28)
 
 ## What's Changed
