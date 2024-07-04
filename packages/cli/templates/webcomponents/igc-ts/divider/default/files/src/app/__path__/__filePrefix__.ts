@@ -2,22 +2,18 @@ import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import {
   defineComponents,
-  IgcAvatarComponent,
+  IgcDividerComponent,
 } from 'igniteui-webcomponents';
 
-defineComponents(IgcAvatarComponent);
+defineComponents(IgcDividerComponent);
 
 @customElement('app-$(path)')
 export default class $(ClassName) extends LitElement {
   render() {
     return html`
-      <igc-avatar
-        size="large"
-        shape="circle"
-        src="./src/assets/avatar1.jpg"
-        alt="My avatar"
-      >
-      </igc-avatar>
+      <p>First paragraph</p>
+      <igc-divider ?middle=true type=solid></igc-divider>
+      <p>Second paragraph</p>
     `;
   }
 }

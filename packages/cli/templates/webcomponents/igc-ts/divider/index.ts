@@ -1,14 +1,14 @@
 import { BaseComponent } from "@igniteui/cli-core";
 
-class IgcAvatarComponent extends BaseComponent {
+class IgcDividerComponent extends BaseComponent {
 	/**
 	 *
 	 */
 	constructor() {
 		super(__dirname);
-		this.name  = "Avatar";
-		this.group = "Layouts";
-		this.description = `Customizable avatar component`;
+		this.name  = "Divider";
+		this.group = "Data Entry & Display";
+		this.description = `Customizable divider component`;
 	}
 }
-module.exports = new IgcAvatarComponent();
+module.exports = new IgcDividerComponent();
