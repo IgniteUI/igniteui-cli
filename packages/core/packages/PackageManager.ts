@@ -95,7 +95,7 @@ export class PackageManager {
 				case "npm":
 				/* passes through */
 				default:
-					command = `${managerCommand} install --force --quiet`;
+					command = `${managerCommand} install --quiet`;
 					break;
 			}
 			await this.flushQueue(false);
@@ -277,7 +277,7 @@ export class PackageManager {
 			case "npm":
 			/* passes through */
 			default:
-				return `${managerCommand} install ${packageName} --force --quiet --save`;
+				return `${managerCommand} install ${packageName} --quiet --save`;
 		}
 	}
 

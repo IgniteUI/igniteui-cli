@@ -55,7 +55,7 @@ command = {
 					if (success && !argv.skipInstall) {
 						Util.log("Installing npm packages.");
 						try {
-							Util.execSync("npm install --force --quiet");
+							Util.execSync("npm install --quiet");
 							Util.log("npm packages installed.");
 						} catch (error) {
 							Util.error(`Error installing npm packages.`);

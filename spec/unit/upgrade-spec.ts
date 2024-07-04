@@ -55,7 +55,7 @@ describe("Unit - Upgrade command", () => {
 		upgradeIgniteUIPackagesSpy.and.returnValue(Promise.resolve(true));
 		await upgradeCmd.execute({ skipInstall: false });
 		expect(mockProject.upgradeIgniteUIPackages).toHaveBeenCalledTimes(3);
-		expect(Util.execSync).toHaveBeenCalledWith("npm install --force --quiet");
+		expect(Util.execSync).toHaveBeenCalledWith("npm install --quiet");
 
 		done();
 	});
