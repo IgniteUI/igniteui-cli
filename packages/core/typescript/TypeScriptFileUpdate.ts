@@ -25,7 +25,7 @@ export class TypeScriptFileUpdate {
 		declarations: string[],
 		imports: Array<{ name: string, root: boolean, standalone?: boolean }>,
 		providers: string[],
-		schemas: string[],
+		schemas: Array<{ name: string, root: boolean, standalone?: boolean }>,
 		exports: string[]
 	};
 
@@ -53,8 +53,8 @@ export class TypeScriptFileUpdate {
 		}
 
 		// should we support both standalone and module-based components in the same app?
-		if (this.ngMetaEdits.imports.some(x => x.standalone)) {
-			transforms.push(this.componentMetaTransformer);
+		if (this.ngMetaEdits.imports.some(x => x.standalone) || (this.ngMetaEdits.schemas.some(x => x.standalone))) {
+            transforms.push(this.componentMetaTransformer);
 		} else if (Object.keys(this.ngMetaEdits).filter(x => this.ngMetaEdits[x].length).length) {
 			transforms.push(this.ngModuleTransformer);
 		}
@@ -166,7 +166,8 @@ export class TypeScriptFileUpdate {
 		this.ngMetaEdits.providers.push(...providers);
 
 		const schemas = copy.schema
-			.filter(x => !this.ngMetaEdits.schemas.find(s => s === x));
+			.map(x => ({ name: x, root: dep.root }))
+			.filter(x => !this.ngMetaEdits.schemas.find(s => s.name === x.name));
 		this.ngMetaEdits.schemas.push(...schemas);
 
 		const exportsArr = copy.export
@@ -180,7 +181,8 @@ export class TypeScriptFileUpdate {
 	public addStandaloneImport(dep: TemplateDependency, variables?: { [key: string]: string }) {
 		const copy = {
 			import: this.asArray(dep.import, variables),
-			provide: this.asArray(dep.provide, variables)
+			provide: this.asArray(dep.provide, variables),
+			schema: this.asArray(dep.schema, variables)
 		};
 		if (dep.from) {
 			// request import
@@ -192,6 +194,11 @@ export class TypeScriptFileUpdate {
 			.map(x => ({ name: x, root: dep.root, standalone: true }))
 			.filter(x => !this.ngMetaEdits.imports.find(i => i.name === x.name));
 		this.ngMetaEdits.imports.push(...imports);
+
+		const schemas = copy.schema
+			.map(x => ({ name: x, root: dep.root, standalone: true}))
+			.filter(x => !this.ngMetaEdits.schemas.find(i => i.name === x.name));
+		this.ngMetaEdits.schemas.push(...schemas);
 	}
 
 	/**
@@ -627,18 +634,29 @@ export class TypeScriptFileUpdate {
 		<T extends ts.Node>(context: ts.TransformationContext) => (rootNode: T) => {
 			const visitComponent: ts.Visitor = (node: ts.Node): ts.Node => {
 				let importsExpr = null;
+				let schemasExpr = null;
 				const prop = "imports";
+				const schemasProp = "schemas";
 				if (node.kind === ts.SyntaxKind.ObjectLiteralExpression &&
 					node.parent &&
 					node.parent.kind === ts.SyntaxKind.CallExpression) {
 						const obj = (node as ts.ObjectLiteralExpression);
 						const objProperties = ts.visitNodes(obj.properties, visitor);
 						const newProps = [];
-						const importDeps = this.ngMetaEdits.imports;
-						importsExpr = ts.factory.createArrayLiteralExpression(
-							importDeps.map(x => TsUtils.createIdentifier(x.name))
-						);
-						newProps.push(ts.factory.createPropertyAssignment(prop, importsExpr));
+						if (this.ngMetaEdits.imports.some(x => x.standalone)) {
+							const importDeps = this.ngMetaEdits.imports;
+							importsExpr = ts.factory.createArrayLiteralExpression(
+								importDeps.map(x => TsUtils.createIdentifier(x.name))
+							);
+							newProps.push(ts.factory.createPropertyAssignment(prop, importsExpr));
+						}
+						if (this.ngMetaEdits.schemas.some(x => x.standalone)) {
+							const schemaDeps = this.ngMetaEdits.schemas;
+							schemasExpr = ts.factory.createArrayLiteralExpression(
+								schemaDeps.map(x => TsUtils.createIdentifier(x.name))
+							);
+							newProps.push(ts.factory.createPropertyAssignment(schemasProp, schemasExpr));
+						}
 						return context.factory.updateObjectLiteralExpression(obj, [
 							...objProperties,
 							...newProps
