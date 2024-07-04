@@ -7,7 +7,7 @@ class IgcDatePickerTemplate extends IgniteUIForWebComponentsTemplate {
 		this.components = ["DatePicker"];
 		this.controlGroup = "Scheduling";
 		this.listInComponentTemplates = true;
-		this.id = "datepicker";
+		this.id = "date-picker";
 		this.projectType = "igc-ts";
 		this.name = "Date Picker";
 		this.description = "basic IgcDatePicker";
