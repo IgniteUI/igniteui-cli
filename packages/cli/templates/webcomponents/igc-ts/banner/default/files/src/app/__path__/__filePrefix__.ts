@@ -14,7 +14,6 @@ export default class $(ClassName) extends LitElement {
       <igc-banner id="banner" .open=${open}>
         You are currently not logged in! Please, log into your account first.
       </igc-banner>
-      <igc-button onclick="banner.toggle()">Toggle Banner</igc-button>
     `;
   }
 }

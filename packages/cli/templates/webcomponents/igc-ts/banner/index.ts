@@ -7,7 +7,7 @@ class IgcBannerComponent extends BaseComponent {
 	constructor() {
 		super(__dirname);
 		this.name  = "Banner";
-		this.group = "Layouts";
+		this.group = "Notifications";
 		this.description = `Customizable banner component`;
 	}
 }

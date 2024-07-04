@@ -5,7 +5,7 @@ class IgcBannerTemplate extends IgniteUIForWebComponentsTemplate {
 	constructor() {
 		super(__dirname);
 		this.components = ["Banner"];
-		this.controlGroup = "Layouts";
+		this.controlGroup = "Notifications";
 		this.listInComponentTemplates = true;
 		this.id = "banner";
 		this.projectType = "igc-ts";
