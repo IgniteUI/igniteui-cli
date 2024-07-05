@@ -186,7 +186,7 @@ export class TypeScriptFileUpdate {
 		};
 		if (dep.from) {
 			// request import
-			const identifiers = [...copy.import, ...copy.provide];
+			const identifiers = [...copy.import, ...copy.provide, ...copy.schema];
 			this.requestImport(identifiers, Util.applyConfigTransformation(dep.from, variables));
 		}
 
