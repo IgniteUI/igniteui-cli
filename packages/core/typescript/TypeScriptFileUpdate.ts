@@ -25,7 +25,7 @@ export class TypeScriptFileUpdate {
 		declarations: string[],
 		imports: Array<{ name: string, root: boolean, standalone?: boolean }>,
 		providers: string[],
-		schemas: Array<{ name: string, root: boolean, standalone?: boolean }>,
+		schemas: Array<{ name: string, standalone?: boolean }>,
 		exports: string[]
 	};
 
@@ -561,24 +561,19 @@ export class TypeScriptFileUpdate {
 					const objProperties = ts.visitNodes(obj.properties, visitor);
 					const newProps = [];
 					for (const prop of missingProperties) {
-						let arrayExpr;
-						switch (prop) {
-							case "imports":
-								const importDeps = this.ngMetaEdits.imports;
-								arrayExpr = ts.factory.createArrayLiteralExpression(
-									importDeps.map(x => TsUtils.createIdentifier(x.name, x.root ? "forRoot" : ""))
-								);
-								break;
-							case "declarations":
-							case "providers":
-							case "schemas":
-							case "exports":
-								arrayExpr = ts.factory.createArrayLiteralExpression(
-									this.ngMetaEdits[prop].map(x => ts.factory.createIdentifier(x))
-								);
-								break;
+						if (this.ngMetaEdits[prop].length) {
+							const expr = ts.factory.createArrayLiteralExpression(
+								this.ngMetaEdits[prop].map(x => {
+									if (typeof x === "string") {
+										return TsUtils.createIdentifier(x);
+									}
+									if (typeof x === "object" && "name" in x) {
+										return TsUtils.createIdentifier(x.name, x.root ? "forRoot" : "")
+									}
+								})
+							);
+							newProps.push(ts.factory.createPropertyAssignment(prop, expr));
 						}
-						newProps.push(ts.factory.createPropertyAssignment(prop, arrayExpr));
 					}
 
 					return ts.factory.updateObjectLiteralExpression(obj, [
@@ -599,6 +594,11 @@ export class TypeScriptFileUpdate {
 							identifiers = this.ngMetaEdits.imports
 								.filter(x => alreadyImported.indexOf(x.name) === -1)
 								.map(x => TsUtils.createIdentifier(x.name, x.root ? "forRoot" : ""));
+							break;
+						case "schemas":
+							identifiers = this.ngMetaEdits.schemas
+								.filter(x => alreadyImported.indexOf(x.name) === -1)
+								.map(x => TsUtils.createIdentifier(x.name));
 							break;
 						case "declarations":
 						case "providers":
@@ -633,29 +633,21 @@ export class TypeScriptFileUpdate {
 	protected componentMetaTransformer: ts.TransformerFactory<ts.Node> =
 		<T extends ts.Node>(context: ts.TransformationContext) => (rootNode: T) => {
 			const visitComponent: ts.Visitor = (node: ts.Node): ts.Node => {
-				let importsExpr = null;
-				let schemasExpr = null;
-				const prop = "imports";
-				const schemasProp = "schemas";
+				const properties = Object.keys(this.ngMetaEdits);
 				if (node.kind === ts.SyntaxKind.ObjectLiteralExpression &&
 					node.parent &&
 					node.parent.kind === ts.SyntaxKind.CallExpression) {
 						const obj = (node as ts.ObjectLiteralExpression);
 						const objProperties = ts.visitNodes(obj.properties, visitor);
 						const newProps = [];
-						if (this.ngMetaEdits.imports.some(x => x.standalone)) {
-							const importDeps = this.ngMetaEdits.imports;
-							importsExpr = ts.factory.createArrayLiteralExpression(
-								importDeps.map(x => TsUtils.createIdentifier(x.name))
-							);
-							newProps.push(ts.factory.createPropertyAssignment(prop, importsExpr));
-						}
-						if (this.ngMetaEdits.schemas.some(x => x.standalone)) {
-							const schemaDeps = this.ngMetaEdits.schemas;
-							schemasExpr = ts.factory.createArrayLiteralExpression(
-								schemaDeps.map(x => TsUtils.createIdentifier(x.name))
-							);
-							newProps.push(ts.factory.createPropertyAssignment(schemasProp, schemasExpr));
+						const missingProperties = properties.filter(x => !obj.properties.find(o => o.name.getText() === x));
+						for (const prop of missingProperties) {
+							if (this.ngMetaEdits[prop].length) {
+								const expr = ts.factory.createArrayLiteralExpression(
+									this.ngMetaEdits[prop].map(x => TsUtils.createIdentifier(x.name))
+								);
+								newProps.push(ts.factory.createPropertyAssignment(prop, expr));
+							}
 						}
 						return context.factory.updateObjectLiteralExpression(obj, [
 							...objProperties,
