@@ -1,7 +1,6 @@
 import {
 	AddTemplateArgs, App, ControlExtraConfiguration, defaultDelimiters, FS_TOKEN,
-	IFileSystem, NPM_DOCK_MANAGER, resolvePackage, RouteLike, ROUTES_VARIABLE_NAME, Template, TemplateDependency, Util,
-	WC_APP_ROUTING_NAME
+	IFileSystem, NPM_DOCK_MANAGER, resolvePackage, RouteLike, ROUTES_VARIABLE_NAME, Template, TemplateDependency, TypeScriptUtils, Util
 } from "@igniteui/cli-core";
 import * as path from "path";
 import { WebComponentsTypeScriptFileUpdate } from "../../templates/webcomponents/WebComponentsTypeScriptFileUpdate";
@@ -45,52 +44,44 @@ export class IgniteUIForWebComponentsTemplate implements Template {
 		const routeModulePath: string = options.parentRoutingModulePath;
 		const routingModule = new WebComponentsTypeScriptFileUpdate(
 			path.join(projectPath, routeModulePath),
-			{ convertTabsToSpaces: false, indentSize: 4, singleQuotes: false }
+			{ convertTabsToSpaces: true, indentSize: 4, singleQuotes: true }
 		);
 
-		if (!(options && options.skipRoute) && App.container.get<IFileSystem>(FS_TOKEN)
-			.fileExists(routeModulePath)) {
-
-			const modulePath = `./${Util.lowerDashed(fullName)}/${Util.lowerDashed(fullName)}-routing`
-			const child: RouteLike = {
-				identifierName: ROUTES_VARIABLE_NAME,
-				aliasName: options.routerChildren,
-				modulePath
-			};
-			const children = routeModulePath.includes(WC_APP_ROUTING_NAME)
-				? child
-				: undefined;
-
+		if (
+			!(options && options.skipRoute) &&
+			App.container.get<IFileSystem>(FS_TOKEN).fileExists(routeModulePath)
+		) {
 			if (defaultPath) {
 				routingModule.addRoute({
 						path: "",
 						redirectTo: options.selector,
-						name: Util.nameFromPath(fullName),
-						children
+						name: Util.nameFromPath(fullName)
 					}
 				);
 			}
 
+			const modulePath = `./${Util.lowerDashed(fullName)}/${Util.lowerDashed(fullName)}-routing`
 			if (options.hasChildren) {
-				routingModule.addRoute({
-						path: this.fileName(fullName),
-						identifierName: options.selector,
-						name: Util.nameFromPath(fullName),
-						children
-					},
-				);
+				const child: RouteLike = {
+					identifierName: ROUTES_VARIABLE_NAME,
+					aliasName: options.routerChildren,
+					modulePath
+				};
+				routingModule.addChildRoute(this.fileName(fullName), child, true);
 			} else {
 				routingModule.addRoute({
 						path: this.fileName(fullName),
 						identifierName: options.selector,
 						name: Util.nameFromPath(fullName)
 					},
-					false, // multiline
-					false // prepend
+					false // multiline
 				);
 			}
 
-			routingModule.finalize();
+			const content = routingModule.finalize();
+			if (content) {
+				TypeScriptUtils.saveFile(routeModulePath, content);
+			}
 		}
 	}
 
