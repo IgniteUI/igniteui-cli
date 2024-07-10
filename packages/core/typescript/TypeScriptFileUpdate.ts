@@ -67,8 +67,6 @@ export abstract class TypeScriptFileUpdate {
    * @param route The child route to add.
    * @param asIdentifier Whether to initialize the {@link RouteTarget.Children} member with an identifier or an array literal.
    * @param multiline Whether to format the new entry as multiline.
-   * @param prepend Whether to insert the new entry before the anchor element.
-   * @param anchorElement The anchor element to insert to.
    * @remarks The `parentPath` is used to determine where the child route should be added.
    */
   public addChildRoute(
@@ -137,7 +135,7 @@ export abstract class TypeScriptFileUpdate {
   ): RouteEntry[];
 
   /**
-   * Creates an arrow function of the form `() => import(path).then(m => m.prop)`.
+   * Creates an arrow function with no arity that returns a dynamic import. Takes the form `() => import(path).then(m => m.prop)`.
    * @param path The path to the module to import.
    * @param importedEntity The entity to import from the module.
    * @param root Whether it should be `loadChildren` or `loadComponent`.
@@ -201,8 +199,8 @@ export abstract class TypeScriptFileUpdate {
   }
 
   /**
-   * Creates an arrow function with a call expression that takes the form
-   * `memberName: () => callExpressionName(callExpressionArgs)`.
+   * Creates a property assignment with a zero arity arrow function as the value, which has a call expression in its body.
+   * Takes the form `memberName: () => callExpressionName(callExpressionArgs)`.
    * @param memberName The name that will be used in the object literal property assignment.
    * @param callExpressionName The name of the function that will be invoked in the arrow func's body.
    * @param callExpressionArgs The arguments that wil lbe provided to the called function.
@@ -244,10 +242,10 @@ export abstract class TypeScriptFileUpdate {
    * @param data The string to transform.
    * @param configuration The items to replace in the string.
    */
-  protected applyConfigTransformation = (
+  protected applyConfigTransformation(
     data: string,
     configuration: KeyValuePair<string>
-  ): string => {
+  ): string {
     let key;
     for (key in configuration) {
       data = data.replace(
@@ -257,7 +255,7 @@ export abstract class TypeScriptFileUpdate {
     }
 
     return data;
-  };
+  }
 
   /**
    * Converts a string or string array union to array.
@@ -284,7 +282,7 @@ export abstract class TypeScriptFileUpdate {
    */
   protected requestSideEffectsImportForModule(moduleName: string): void {
     const importMeta = {
-      identifiers: { name: '' },
+      identifiers: { name: '<placeholder>' }, // will be ignored since it's a side effects import
       moduleName,
     };
     this.astTransformer.requestNewImportDeclaration(
