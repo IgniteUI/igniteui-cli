@@ -21,31 +21,89 @@ describe('Unit - WebComponentsTypeScriptFileUpdate', () => {
       spyOn(App.container, 'get').and.returnValue(
         new MockFS(new Map([['path/to/routes.ts', routesFileContent]]))
       );
-      fileUpdate = new WebComponentsTypeScriptFileUpdate(routesPath);
+      fileUpdate = new WebComponentsTypeScriptFileUpdate(routesPath, {
+        convertTabsToSpaces: true,
+        indentSize: 4,
+        singleQuotes: true,
+      });
     });
 
     it('should add a route', () => {
-      spyOn(
-        (fileUpdate as any).astTransformer.formatter,
-        'applyFormatting'
-      ).and.callThrough();
-
       fileUpdate.addRoute({
         path: 'test/route',
         identifierName: 'test-route-component',
         name: 'test-route',
-        children: {
+      });
+
+      const result = fileUpdate.finalize();
+      expect(result).toEqual(
+        `import { Route } from '@vaadin/router';` +
+          EOL +
+          `import './not-found/not-found.js';` +
+          EOL +
+          `import './test-route/test-route';` +
+          EOL +
+          EOL +
+          `export const routes: Route[] = [` +
+          EOL +
+          `    { path: 'test/route', component: 'test-route-component', name: 'test-route' },` +
+          EOL +
+          `    // The fallback route should always be after other alternatives.` +
+          EOL +
+          `    { path: '(.*)', component: 'app-not-found' }` +
+          EOL +
+          `];` +
+          EOL
+      );
+    });
+
+    it('should add a default/redirect route', () => {
+      fileUpdate.addRoute({
+        path: '',
+        redirectTo: 'another/route',
+        name: 'default',
+      });
+
+      const result = fileUpdate.finalize();
+      expect(result).toEqual(
+        `import { Route } from '@vaadin/router';` +
+          EOL +
+          `import './not-found/not-found.js';` +
+          EOL +
+          `import './default/default';` +
+          EOL +
+          EOL +
+          `export const routes: Route[] = [` +
+          EOL +
+          `    { path: '', component: 'another/route', name: 'default' },` +
+          EOL +
+          `    // The fallback route should always be after other alternatives.` +
+          EOL +
+          `    { path: '(.*)', component: 'app-not-found' }` +
+          EOL +
+          `];` +
+          EOL
+      );
+    });
+
+    it('should add a route with children', () => {
+      fileUpdate.addRoute({
+        path: 'test/route',
+        identifierName: 'test-route-component',
+        name: 'test-route',
+      });
+
+      fileUpdate.addChildRoute(
+        'test/route',
+        {
           identifierName: 'routes',
           aliasName: 'routerChildren',
           modulePath: 'path/to/module',
         },
-      });
+        true // as identifier
+      );
 
       const result = fileUpdate.finalize();
-      expect(
-        (fileUpdate as any).astTransformer.formatter.applyFormatting
-      ).toHaveBeenCalledTimes(1);
-
       expect(result).toEqual(
         `import { Route } from '@vaadin/router';` +
           EOL +
@@ -69,28 +127,24 @@ describe('Unit - WebComponentsTypeScriptFileUpdate', () => {
       );
     });
 
-    it('should add a default/redirect route', () => {
-      spyOn(
-        (fileUpdate as any).astTransformer.formatter,
-        'applyFormatting'
-      ).and.callThrough();
-
+    it('should add a default/redirect route with a children', () => {
       fileUpdate.addRoute({
         path: '',
         redirectTo: 'another/route',
         name: 'default',
-        children: {
+      });
+
+      fileUpdate.addChildRoute(
+        '',
+        {
           identifierName: 'routes',
           aliasName: 'routerChildren',
           modulePath: 'path/to/module',
         },
-      });
+        true // as identifier
+      );
 
       const result = fileUpdate.finalize();
-      expect(
-        (fileUpdate as any).astTransformer.formatter.applyFormatting
-      ).toHaveBeenCalledTimes(1);
-
       expect(result).toEqual(
         `import { Route } from '@vaadin/router';` +
           EOL +
