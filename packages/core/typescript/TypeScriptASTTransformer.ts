@@ -260,7 +260,7 @@ export class TypeScriptASTTransformer {
              * TODO: Consider supporting also:
              * 1. ts.SpreadAssignment - { ...x }
              * 2. ts.SpreadElement - [ ...x ]
-             * 3. ts.JsxSpreadAttribute - <Component {...props} />
+             * 3. ts.JsxSpreadAttribute - <Component { ...props } />
              */
             if (
               !ts.isPropertyAssignment(existingProperty) &&
@@ -943,16 +943,16 @@ export class TypeScriptASTTransformer {
 
   /**
    * Determines if a given object is an instance of `PropertyAssignment`.
-   * @param target The object to check.
+   * @param obj The object to check.
    */
-  public isPropertyAssignment(target: object): target is PropertyAssignment {
+  public isPropertyAssignment(obj: object): obj is PropertyAssignment {
     return (
-      target &&
-      'name' in target &&
-      'value' in target &&
-      (ts.isExpression(target.value as any) ||
-        ts.isNumericLiteral(target.value as any) ||
-        ts.isStringLiteral(target.value as any))
+      obj &&
+      'name' in obj &&
+      'value' in obj &&
+      (ts.isExpression(obj.value as any) ||
+        ts.isNumericLiteral(obj.value as any) ||
+        ts.isStringLiteral(obj.value as any))
     );
   }
 
@@ -1113,12 +1113,12 @@ export class TypeScriptASTTransformer {
    */
   private createNodeRelationsMap(rootNode: ts.Node): Map<ts.Node, ts.Node> {
     const flatNodeRelations = new Map<ts.Node, ts.Node>();
-    function visit(node: ts.Node, parent: ts.Node | null) {
+    const visit = (node: ts.Node, parent: ts.Node | null): void => {
       if (parent) {
         flatNodeRelations.set(node, parent);
       }
       ts.forEachChild(node, (child) => visit(child, node));
-    }
+    };
 
     visit(rootNode, null);
     return flatNodeRelations;
@@ -1136,7 +1136,7 @@ export class TypeScriptASTTransformer {
     existingProperty: ts.PropertyAssignment | ts.ShorthandPropertyAssignment,
     context: ts.TransformationContext,
     node: ts.ObjectLiteralExpression
-  ) {
+  ): ts.ObjectLiteralExpression {
     const newPropInitializer = ts.isPropertyAssignment(newProperty)
       ? newProperty.initializer
       : newProperty.objectAssignmentInitializer;
@@ -1180,7 +1180,7 @@ export class TypeScriptASTTransformer {
     context: ts.TransformationContext,
     node: ts.ObjectLiteralExpression,
     multiline: boolean
-  ) {
+  ): ts.ObjectLiteralExpression {
     const existingPropInitializer = ts.isPropertyAssignment(existingProperty)
       ? existingProperty.initializer
       : existingProperty.objectAssignmentInitializer;

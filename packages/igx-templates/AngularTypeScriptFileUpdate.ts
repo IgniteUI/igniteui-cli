@@ -22,7 +22,7 @@ import {
 
 export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
   /**
-   * Create a new AngularTypeScriptFileUpdate instance for the given file.
+   * Creates a new AngularTypeScriptFileUpdate instance for the given file.
    * @param standalone Whether the file is a standalone component.
    * @param formatSettings Custom formatting settings to apply.
    */
