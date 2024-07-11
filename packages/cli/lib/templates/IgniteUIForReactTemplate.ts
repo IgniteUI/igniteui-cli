@@ -86,12 +86,6 @@ export class IgniteUIForReactTemplate implements Template {
 			);
 
 			const modulePath = `./${Util.lowerDashed(name)}/${Util.lowerDashed(name)}-routes`;
-			const child: RouteLike = {
-				identifierName: ROUTES_VARIABLE_NAME,
-				aliasName: options.routerChildren,
-				modulePath
-			};
-
 			if (defaultPath) {
 				routingModule.addRoute({
 						index: true,
@@ -100,17 +94,13 @@ export class IgniteUIForReactTemplate implements Template {
 				);
 			}
 
-			const children = routeModulePath.includes(REACT_APP_ROUTING_NAME)
-				? child
-				: undefined;
 			if (options.hasChildren) {
-				routingModule.addRoute({
-						path: this.fileName(name),
-						element: Util.className(name),
-						text: Util.nameFromPath(name),
-						children
-					},
-				);
+				const child: RouteLike = {
+					identifierName: ROUTES_VARIABLE_NAME,
+					aliasName: options.routerChildren,
+					modulePath
+				};
+				routingModule.addChildRoute(this.fileName(name), child, true)
 			} else {
 				routingModule.addRoute({
 						path: this.fileName(name),
@@ -118,7 +108,6 @@ export class IgniteUIForReactTemplate implements Template {
 						text: Util.nameFromPath(name)
 					},
 					false, // multiline
-					false // prepend
 				);
 			}
 
