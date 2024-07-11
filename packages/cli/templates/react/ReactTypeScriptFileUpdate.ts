@@ -4,6 +4,7 @@ import {
   PropertyAssignment,
   REACT_ROUTER_DOM_MODULE,
   REACT_ROUTER_DOM_REDIRECT,
+  RouteEntry,
   RouteTarget,
   RoutesVariableAsParentCondition,
   TypeScriptFileUpdate,
@@ -22,20 +23,36 @@ export class ReactTypeScriptFileUpdate extends TypeScriptFileUpdate {
 
   //#region Overridden Public API
 
-  public addRoute(
+  public override addRoute(
     route: ReactRouteLike,
     multiline: boolean = false,
     prepend: boolean = false,
     anchorElement?: PropertyAssignment
-  ): ts.SourceFile {
-    return this.addRedirectOrSimpleRouteEntry(
-      {
-        ...route,
-        identifierName: route.identifierName || route.element,
-        name: route.name || route.text,
-      },
+  ): void {
+    const _route = {
+      ...route,
+      identifierName: route.identifierName || route.element,
+      name: route.name || route.text,
+    };
+    if (_route.redirectTo) {
+      this.requestImportForRouteLoader(_route);
+    } else {
+      const routeName = Util.lowerDashed(_route.name || _route.path);
+      const modulePath = `./${routeName}/${routeName}`;
+      this.requestImportForRouteIdentifier(
+        { ..._route, modulePath },
+        true // is default - for React, we import the component as `import X from 'module'`.
+      );
+    }
+
+    const structure = this.buildRouteStructure(_route, multiline);
+    const newRoute = this.astTransformer.createObjectLiteralExpression(
+      structure,
+      multiline
+    );
+    this.astTransformer.requestNewMembersInArrayLiteral(
       RoutesVariableAsParentCondition(this.astTransformer),
-      multiline,
+      [newRoute],
       prepend,
       anchorElement
     );
@@ -45,109 +62,59 @@ export class ReactTypeScriptFileUpdate extends TypeScriptFileUpdate {
 
   //#region Overrides
 
-  protected addRouteEntry(
+  protected override buildRouteStructure(
     route: ReactRouteLike,
-    visitCondition: (node: ts.Node) => boolean,
-    multiline: boolean = false,
-    prepend: boolean = false,
-    anchorElement: PropertyAssignment
-  ): ts.SourceFile {
-    const routeName = Util.lowerDashed(route.name || route.path);
-    const modulePath = `./${routeName}/${routeName}`;
-    this.requestImportForRouteIdentifier(
-      { ...route, modulePath },
-      true // is default - for React, we import the component as `import X from 'module'`.
-    );
-    if (
-      route.children &&
-      !Array.isArray(route.children) &&
-      (route.children.identifierName || route.children.aliasName)
-    ) {
-      this.requestImportForRouteIdentifier(route.children);
+    _multiline: boolean
+  ): RouteEntry[] {
+    let structure: ReactRouteEntry[];
+
+    if (route.redirectTo) {
+      const loaderPropertyAssignment =
+        this.createArrowFunctionWithCallExpression(
+          ReactRouteTarget.Loader,
+          route.loader || REACT_ROUTER_DOM_REDIRECT,
+          route.redirectTo
+        );
+      structure = [
+        {
+          name: ReactRouteTarget.Index,
+          value: route.index
+            ? ts.factory.createTrue()
+            : ts.factory.createFalse(),
+        },
+        {
+          name: ReactRouteTarget.Loader,
+          value: loaderPropertyAssignment.value,
+        },
+      ];
+    } else {
+      structure = [
+        {
+          name: RouteTarget.Path,
+          value: ts.factory.createStringLiteral(
+            route.path,
+            this.formatSettings.singleQuotes
+          ),
+        },
+        {
+          name: ReactRouteTarget.Element,
+          value: ts.factory.createJsxSelfClosingElement(
+            ts.factory.createIdentifier(route.element || route.identifierName),
+            undefined, // type arguments
+            undefined // jsx attributes
+          ),
+        },
+        {
+          name: ReactRouteTarget.Text,
+          value: ts.factory.createStringLiteral(
+            route.text || route.name,
+            this.formatSettings.singleQuotes
+          ),
+        },
+      ];
     }
 
-    const structure: ReactRouteEntry[] = [
-      {
-        name: RouteTarget.Path,
-        value: ts.factory.createStringLiteral(route.path),
-      },
-      {
-        name: ReactRouteTarget.Element,
-        value: ts.factory.createJsxSelfClosingElement(
-          ts.factory.createIdentifier(route.element || route.identifierName),
-          undefined, // type arguments
-          undefined // jsx attributes
-        ),
-      },
-      {
-        name: ReactRouteTarget.Text,
-        value: ts.factory.createStringLiteral(route.text || route.name),
-      },
-    ];
-    const newRoute = this.astTransformer.createObjectLiteralExpression(
-      structure,
-      multiline
-    );
-    return this.astTransformer.addMembersToArrayLiteral(
-      visitCondition,
-      [newRoute],
-      prepend,
-      anchorElement
-    );
-  }
-
-  protected addRedirectRouteEntry(
-    route: ReactRouteLike,
-    visitCondition: (node: ts.Node) => boolean,
-    multiline: boolean = false,
-    prepend: boolean = false,
-    anchorElement?: PropertyAssignment
-  ): ts.SourceFile {
-    const loaderPropertyAssignment = this.createArrowFunctionWithCallExpression(
-      ReactRouteTarget.Loader,
-      route.loader || REACT_ROUTER_DOM_REDIRECT,
-      route.redirectTo
-    );
-
-    this.requestImportForRouteLoader(route);
-
-    const structure: ReactRouteEntry[] = [
-      {
-        name: ReactRouteTarget.Index,
-        value: route.index ? ts.factory.createTrue() : ts.factory.createFalse(),
-      },
-      {
-        name: ReactRouteTarget.Loader,
-        value: loaderPropertyAssignment.value,
-      },
-    ];
-    const newRoute = this.astTransformer.createObjectLiteralExpression(
-      structure,
-      multiline
-    );
-    return this.astTransformer.addMembersToArrayLiteral(
-      visitCondition,
-      [newRoute],
-      prepend,
-      anchorElement
-    );
-  }
-
-  protected addChildRouteEntry(
-    route: ReactRouteLike,
-    asIdentifier: boolean = true,
-    multiline: boolean = false,
-    prepend: boolean = false
-  ): ts.SourceFile {
-    return super.addChildRouteEntry(
-      {
-        ...route,
-        identifierName: route.identifierName || route.element,
-      },
-      asIdentifier || true, // for React the `children` member should always be added in the form { children: identifier }
-      multiline,
-      prepend
-    );
+    return structure as RouteEntry[];
   }
 
   //#endregion
@@ -155,8 +122,8 @@ export class ReactTypeScriptFileUpdate extends TypeScriptFileUpdate {
   private requestImportForRouteLoader(
     route: ReactRouteLike,
     isDefault?: boolean
-  ): ts.SourceFile {
-    return this.requestImportForRouteIdentifier(
+  ): void {
+    this.requestImportForRouteIdentifier(
       {
         ...route,
         identifierName: route.loader || REACT_ROUTER_DOM_REDIRECT,

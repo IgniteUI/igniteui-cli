@@ -22,9 +22,4 @@ export interface ReactRouteLike extends RouteLike {
    * The name the page.
    */
   text?: string;
-
-  /**
-   * An array of child `Route` objects that specifies a nested route configuration.
-   */
-  children?: ReactRouteLike | ReactRouteLike[];
 }
