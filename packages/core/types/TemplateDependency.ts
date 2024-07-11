@@ -9,6 +9,9 @@ export interface TemplateDependency {
 	/** Add an identifier into `ngModule` provides metadata */
 	provide?: string | string[];
 
+	/** Add an identifier into `ngModule` schema metadata */
+	schema?: string | string[];
+
 	/** The package/path(TBD) to import the dependency from */
 	from?: string;
 
