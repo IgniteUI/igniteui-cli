@@ -51,6 +51,12 @@ export class IgniteUIForWebComponentsTemplate implements Template {
 			!(options && options.skipRoute) &&
 			App.container.get<IFileSystem>(FS_TOKEN).fileExists(routeModulePath)
 		) {
+			const modulePath = `./${Util.lowerDashed(fullName)}/${Util.lowerDashed(fullName)}-routing`
+			const child: RouteLike = {
+				identifierName: ROUTES_VARIABLE_NAME,
+				aliasName: options.routerChildren,
+				modulePath
+			};
 			if (defaultPath) {
 				routingModule.addRoute({
 						path: "",
@@ -58,30 +64,23 @@ export class IgniteUIForWebComponentsTemplate implements Template {
 						name: Util.nameFromPath(fullName)
 					}
 				);
+				if (options.hasChildren) {
+					routingModule.addChildRoute("", child, true);
+				}
 			}
 
-			const modulePath = `./${Util.lowerDashed(fullName)}/${Util.lowerDashed(fullName)}-routing`
+			routingModule.addRoute({
+					path: this.fileName(fullName),
+					identifierName: options.selector,
+					name: Util.nameFromPath(fullName)
+				},
+				false // multiline
+			);
 			if (options.hasChildren) {
-				const child: RouteLike = {
-					identifierName: ROUTES_VARIABLE_NAME,
-					aliasName: options.routerChildren,
-					modulePath
-				};
 				routingModule.addChildRoute(this.fileName(fullName), child, true);
-			} else {
-				routingModule.addRoute({
-						path: this.fileName(fullName),
-						identifierName: options.selector,
-						name: Util.nameFromPath(fullName)
-					},
-					false // multiline
-				);
 			}
 
-			const content = routingModule.finalize();
-			if (content) {
-				TypeScriptUtils.saveFile(routeModulePath, content);
-			}
+			routingModule.finalize();
 		}
 	}
 
