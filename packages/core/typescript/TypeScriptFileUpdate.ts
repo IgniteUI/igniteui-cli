@@ -113,8 +113,8 @@ export abstract class TypeScriptFileUpdate {
   }
 
   /**
-   * Parses the AST and returns the resulting formatted source code.
-   * @remarks This method should be called after all modifications have been made to the AST.
+   * Applies all transformations, parses the AST, formats the source code and saves all changes on the FS.
+   * @remarks This method should be called after all modifications are ready to be applied to the AST.
    */
   public finalize(): string {
     return this.astTransformer.finalize();
