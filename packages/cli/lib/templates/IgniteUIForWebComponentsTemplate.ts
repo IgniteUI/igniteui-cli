@@ -44,7 +44,7 @@ export class IgniteUIForWebComponentsTemplate implements Template {
 		const routeModulePath: string = options.parentRoutingModulePath;
 		const routingModule = new WebComponentsTypeScriptFileUpdate(
 			path.join(projectPath, routeModulePath),
-			{ convertTabsToSpaces: true, indentSize: 4, singleQuotes: true }
+			{ convertTabsToSpaces: true, indentSize: 2, singleQuotes: true }
 		);
 
 		if (
