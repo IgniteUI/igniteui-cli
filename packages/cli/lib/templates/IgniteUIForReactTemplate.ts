@@ -94,21 +94,21 @@ export class IgniteUIForReactTemplate implements Template {
 				);
 			}
 
+			routingModule.addRoute({
+					path: this.fileName(name),
+					element: Util.className(name),
+					text: Util.nameFromPath(name)
+				},
+				false // multiline
+			);
+
 			if (options.hasChildren) {
 				const child: RouteLike = {
 					identifierName: ROUTES_VARIABLE_NAME,
 					aliasName: options.routerChildren,
 					modulePath
 				};
-				routingModule.addChildRoute(this.fileName(name), child, true)
-			} else {
-				routingModule.addRoute({
-						path: this.fileName(name),
-						element: Util.className(name),
-						text: Util.nameFromPath(name)
-					},
-					false, // multiline
-				);
+				routingModule.addChildRoute(this.fileName(name), child, true);
 			}
 
 			routingModule.finalize();
