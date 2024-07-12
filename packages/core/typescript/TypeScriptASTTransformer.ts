@@ -929,8 +929,8 @@ export class TypeScriptASTTransformer {
 
   /**
    * Applies all transformations, parses the AST and returns the resulting source code.
-   * @remarks This method should be called after all modifications have been made to the AST.
-   * If a {@link formatter} is present, it will be used to format the source code.
+   * @remarks This method should be called after all modifications are ready to be applied to the AST.
+   * If a {@link formatter} is present, it will be used to format the source code and update the file on the FS.
    */
   public finalize(): string {
     const finalSource = this.applyChanges();
