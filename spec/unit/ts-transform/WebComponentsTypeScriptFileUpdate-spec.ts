@@ -23,7 +23,7 @@ describe('Unit - WebComponentsTypeScriptFileUpdate', () => {
       );
       fileUpdate = new WebComponentsTypeScriptFileUpdate(routesPath, {
         convertTabsToSpaces: true,
-        indentSize: 4,
+        indentSize: 2,
         singleQuotes: true,
       });
     });
@@ -46,11 +46,11 @@ describe('Unit - WebComponentsTypeScriptFileUpdate', () => {
           EOL +
           `export const routes: Route[] = [` +
           EOL +
-          `    { path: 'test/route', component: 'test-route-component', name: 'test-route' },` +
+          `  { path: 'test/route', component: 'test-route-component', name: 'test-route' },` +
           EOL +
-          `    // The fallback route should always be after other alternatives.` +
+          `  // The fallback route should always be after other alternatives.` +
           EOL +
-          `    { path: '(.*)', component: 'app-not-found' }` +
+          `  { path: '(.*)', component: 'app-not-found' }` +
           EOL +
           `];` +
           EOL
@@ -75,11 +75,11 @@ describe('Unit - WebComponentsTypeScriptFileUpdate', () => {
           EOL +
           `export const routes: Route[] = [` +
           EOL +
-          `    { path: '', component: 'another/route', name: 'default' },` +
+          `  { path: '', component: 'another/route', name: 'default' },` +
           EOL +
-          `    // The fallback route should always be after other alternatives.` +
+          `  // The fallback route should always be after other alternatives.` +
           EOL +
-          `    { path: '(.*)', component: 'app-not-found' }` +
+          `  { path: '(.*)', component: 'app-not-found' }` +
           EOL +
           `];` +
           EOL
@@ -116,11 +116,11 @@ describe('Unit - WebComponentsTypeScriptFileUpdate', () => {
           EOL +
           `export const routes: Route[] = [` +
           EOL +
-          `    { path: 'test/route', component: 'test-route-component', name: 'test-route', children: routerChildren },` +
+          `  { path: 'test/route', component: 'test-route-component', name: 'test-route', children: routerChildren },` +
           EOL +
-          `    // The fallback route should always be after other alternatives.` +
+          `  // The fallback route should always be after other alternatives.` +
           EOL +
-          `    { path: '(.*)', component: 'app-not-found' }` +
+          `  { path: '(.*)', component: 'app-not-found' }` +
           EOL +
           `];` +
           EOL
@@ -157,11 +157,11 @@ describe('Unit - WebComponentsTypeScriptFileUpdate', () => {
           EOL +
           `export const routes: Route[] = [` +
           EOL +
-          `    { path: '', component: 'another/route', name: 'default', children: routerChildren },` +
+          `  { path: '', component: 'another/route', name: 'default', children: routerChildren },` +
           EOL +
-          `    // The fallback route should always be after other alternatives.` +
+          `  // The fallback route should always be after other alternatives.` +
           EOL +
-          `    { path: '(.*)', component: 'app-not-found' }` +
+          `  { path: '(.*)', component: 'app-not-found' }` +
           EOL +
           `];` +
           EOL
