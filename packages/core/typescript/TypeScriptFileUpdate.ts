@@ -25,6 +25,7 @@ export class TypeScriptFileUpdate {
 		declarations: string[],
 		imports: Array<{ name: string, root: boolean, standalone?: boolean }>,
 		providers: string[],
+		schemas: Array<{ name: string, standalone?: boolean }>,
 		exports: string[]
 	};
 
@@ -52,8 +53,8 @@ export class TypeScriptFileUpdate {
 		}
 
 		// should we support both standalone and module-based components in the same app?
-		if (this.ngMetaEdits.imports.some(x => x.standalone)) {
-			transforms.push(this.componentMetaTransformer);
+		if (this.ngMetaEdits.imports.some(x => x.standalone) || (this.ngMetaEdits.schemas.some(x => x.standalone))) {
+            transforms.push(this.componentMetaTransformer);
 		} else if (Object.keys(this.ngMetaEdits).filter(x => this.ngMetaEdits[x].length).length) {
 			transforms.push(this.ngModuleTransformer);
 		}
@@ -141,13 +142,14 @@ export class TypeScriptFileUpdate {
 			declare: this.asArray(dep.declare, variables),
 			import: this.asArray(dep.import, variables),
 			provide: this.asArray(dep.provide, variables),
+			schema: this.asArray(dep.schema, variables),
 			// tslint:disable-next-line:object-literal-sort-keys
 			export: this.asArray(dep.export, variables)
 		};
 
 		if (dep.from) {
 			// request import
-			const identifiers = [...copy.import, ...copy.declare, ...copy.provide];
+			const identifiers = [...copy.import, ...copy.declare, ...copy.provide, ...copy.schema];
 			this.requestImport(identifiers, Util.applyConfigTransformation(dep.from, variables));
 		}
 		const imports = copy.import
@@ -163,6 +165,11 @@ export class TypeScriptFileUpdate {
 			.filter(x => !this.ngMetaEdits.providers.find(p => p === x));
 		this.ngMetaEdits.providers.push(...providers);
 
+		const schemas = copy.schema
+			.map(x => ({ name: x, root: dep.root }))
+			.filter(x => !this.ngMetaEdits.schemas.find(s => s.name === x.name));
+		this.ngMetaEdits.schemas.push(...schemas);
+
 		const exportsArr = copy.export
 			.filter(x => !this.ngMetaEdits.exports.find(p => p === x));
 		this.ngMetaEdits.exports.push(...exportsArr);
@@ -174,11 +181,12 @@ export class TypeScriptFileUpdate {
 	public addStandaloneImport(dep: TemplateDependency, variables?: { [key: string]: string }) {
 		const copy = {
 			import: this.asArray(dep.import, variables),
-			provide: this.asArray(dep.provide, variables)
+			provide: this.asArray(dep.provide, variables),
+			schema: this.asArray(dep.schema, variables)
 		};
 		if (dep.from) {
 			// request import
-			const identifiers = [...copy.import, ...copy.provide];
+			const identifiers = [...copy.import, ...copy.provide, ...copy.schema];
 			this.requestImport(identifiers, Util.applyConfigTransformation(dep.from, variables));
 		}
 
@@ -186,6 +194,11 @@ export class TypeScriptFileUpdate {
 			.map(x => ({ name: x, root: dep.root, standalone: true }))
 			.filter(x => !this.ngMetaEdits.imports.find(i => i.name === x.name));
 		this.ngMetaEdits.imports.push(...imports);
+
+		const schemas = copy.schema
+			.map(x => ({ name: x, root: dep.root, standalone: true}))
+			.filter(x => !this.ngMetaEdits.schemas.find(i => i.name === x.name));
+		this.ngMetaEdits.schemas.push(...schemas);
 	}
 
 	/**
@@ -249,6 +262,7 @@ export class TypeScriptFileUpdate {
 			declarations: [],
 			imports: [],
 			providers: [],
+			schemas: [],
 			exports: []
 		};
 		this.createdStringLiterals = [];
@@ -547,23 +561,19 @@ export class TypeScriptFileUpdate {
 					const objProperties = ts.visitNodes(obj.properties, visitor);
 					const newProps = [];
 					for (const prop of missingProperties) {
-						let arrayExpr;
-						switch (prop) {
-							case "imports":
-								const importDeps = this.ngMetaEdits.imports;
-								arrayExpr = ts.factory.createArrayLiteralExpression(
-									importDeps.map(x => TsUtils.createIdentifier(x.name, x.root ? "forRoot" : ""))
-								);
-								break;
-							case "declarations":
-							case "providers":
-							case "exports":
-								arrayExpr = ts.factory.createArrayLiteralExpression(
-									this.ngMetaEdits[prop].map(x => ts.factory.createIdentifier(x))
-								);
-								break;
+						if (this.ngMetaEdits[prop].length) {
+							const expr = ts.factory.createArrayLiteralExpression(
+								this.ngMetaEdits[prop].map(x => {
+									if (typeof x === "string") {
+										return TsUtils.createIdentifier(x);
+									}
+									if (typeof x === "object" && "name" in x) {
+										return TsUtils.createIdentifier(x.name, x.root ? "forRoot" : "")
+									}
+								})
+							);
+							newProps.push(ts.factory.createPropertyAssignment(prop, expr));
 						}
-						newProps.push(ts.factory.createPropertyAssignment(prop, arrayExpr));
 					}
 
 					return ts.factory.updateObjectLiteralExpression(obj, [
@@ -584,6 +594,11 @@ export class TypeScriptFileUpdate {
 							identifiers = this.ngMetaEdits.imports
 								.filter(x => alreadyImported.indexOf(x.name) === -1)
 								.map(x => TsUtils.createIdentifier(x.name, x.root ? "forRoot" : ""));
+							break;
+						case "schemas":
+							identifiers = this.ngMetaEdits.schemas
+								.filter(x => alreadyImported.indexOf(x.name) === -1)
+								.map(x => TsUtils.createIdentifier(x.name));
 							break;
 						case "declarations":
 						case "providers":
@@ -618,19 +633,22 @@ export class TypeScriptFileUpdate {
 	protected componentMetaTransformer: ts.TransformerFactory<ts.Node> =
 		<T extends ts.Node>(context: ts.TransformationContext) => (rootNode: T) => {
 			const visitComponent: ts.Visitor = (node: ts.Node): ts.Node => {
-				let importsExpr = null;
-				const prop = "imports";
+				const properties = Object.keys(this.ngMetaEdits);
 				if (node.kind === ts.SyntaxKind.ObjectLiteralExpression &&
 					node.parent &&
 					node.parent.kind === ts.SyntaxKind.CallExpression) {
 						const obj = (node as ts.ObjectLiteralExpression);
 						const objProperties = ts.visitNodes(obj.properties, visitor);
 						const newProps = [];
-						const importDeps = this.ngMetaEdits.imports;
-						importsExpr = ts.factory.createArrayLiteralExpression(
-							importDeps.map(x => TsUtils.createIdentifier(x.name))
-						);
-						newProps.push(ts.factory.createPropertyAssignment(prop, importsExpr));
+						const missingProperties = properties.filter(x => !obj.properties.find(o => o.name.getText() === x));
+						for (const prop of missingProperties) {
+							if (this.ngMetaEdits[prop].length) {
+								const expr = ts.factory.createArrayLiteralExpression(
+									this.ngMetaEdits[prop].map(x => TsUtils.createIdentifier(x.name))
+								);
+								newProps.push(ts.factory.createPropertyAssignment(prop, expr));
+							}
+						}
 						return context.factory.updateObjectLiteralExpression(obj, [
 							...objProperties,
 							...newProps
