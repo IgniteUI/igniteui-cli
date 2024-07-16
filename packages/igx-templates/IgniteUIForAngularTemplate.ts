@@ -81,11 +81,7 @@ export class IgniteUIForAngularTemplate implements Template {
 					identifierName: className
 				});
 
-				const content = rountesConfig.finalize();
-				if (content) {
-					// add to a finalize override in the NG File Update instead?
-					TypeScriptUtils.saveFile(routesConfigPath, content);
-				}
+				rountesConfig.finalize();
 			}
 
 			const componentFile = new TsUpdate(componentFilePath, true, { indentSize: 2, singleQuotes: true });
@@ -107,11 +103,7 @@ export class IgniteUIForAngularTemplate implements Template {
 				);
 			}
 
-			const content = componentFile.finalize();
-			if (content) {
-				// add to a finalize override in the NG File Update instead?
-				TypeScriptUtils.saveFile(componentFilePath, content);
-			}
+			componentFile.finalize();
 			return;
 		}
 
@@ -129,24 +121,20 @@ export class IgniteUIForAngularTemplate implements Template {
 				identifierName: className
 			});
 
-			const content = routingModule.finalize();
-			if (content) {
-				// add to a finalize override in the NG File Update instead?
-				TypeScriptUtils.saveFile(routingModulePath, content);
-			}
+			routingModule.finalize();
 		}
 
 		//3) add an import of the component class from its file location.
 		//4) populate the declarations portion of the @NgModule with the component class name.
 		const mainModule = new TsUpdate(mainModulePath, false, { indentSize: 2, singleQuotes: true });
 		mainModule.addNgModuleMeta({
-        declare: this.addAsNgModelDeclaration ? [className] : [],
-        from: Util.relativePath(mainModulePath, componentFilePath, true, true),
-        export: modulePath !== "app.module.ts" ? [className] : []
-      },
-      Util.applyDelimiters(this.getBaseVariables(name), this.delimiters.content),
-      true // multiline
-    );
+				declare: this.addAsNgModelDeclaration ? [className] : [],
+				from: Util.relativePath(mainModulePath, componentFilePath, true, true),
+				export: modulePath !== "app.module.ts" ? [className] : []
+			},
+			Util.applyDelimiters(this.getBaseVariables(name), this.delimiters.content),
+			true // multiline
+		);
 
 		// import IgxModules and other dependencies
 		for (const dep of this.dependencies) {
@@ -156,21 +144,17 @@ export class IgniteUIForAngularTemplate implements Template {
 				copy.from = Util.relativePath(mainModulePath, path.join(projectPath, copy.from!), true, true);
 				mainModule.addNgModuleMeta(copy,
 					Util.applyDelimiters(this.getBaseVariables(name), this.delimiters.content),
-          true // multiline
-        );
+					true // multiline
+				);
 			} else {
 				mainModule.addNgModuleMeta(dep,
 					Util.applyDelimiters(this.getBaseVariables(name), this.delimiters.content),
-          true // multiline
-        );
+					true // multiline
+				);
 			}
 		}
 
-		const content = mainModule.finalize();
-		if (content) {
-			// add to a finalize override in the NG File Update instead?
-			TypeScriptUtils.saveFile(mainModulePath, content);
-		}
+		mainModule.finalize();
 	}
 
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
