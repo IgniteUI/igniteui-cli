@@ -1,3 +1,12 @@
+# [13.2.4](https://github.com/IgniteUI/igniteui-cli/compare/v13.2.3...v13.2.4) (2024-07-16)
+
+## What's Changed
+* Adding schema to template dependency 13.2.x by @dafo in https://github.com/IgniteUI/igniteui-cli/pull/1270
+* chore(webc): Add types/mocha to the WebComponents templates - 13.2.x by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1282
+
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.2.3...v13.2.4
+
 # [13.2.3](https://github.com/IgniteUI/igniteui-cli/compare/v13.2.2...v13.2.3) (2024-07-04)
 
 ## What's Changed
