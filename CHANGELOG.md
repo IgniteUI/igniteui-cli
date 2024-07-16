@@ -1,3 +1,27 @@
+# [13.3.3](https://github.com/IgniteUI/igniteui-cli/compare/v13.3.2...v13.3.3) (2024-07-16)
+
+## What's Changed
+* Adding schema to template dependency 13.3.x by @jackofdiamond5 in https://github.com/IgniteUI/igniteui-cli/pull/1278
+* chore(webc): Add @types/mocha to the WebComponents templates - 13.3.x by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1281
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.3.2...v13.3.3
+
+# [13.3.2](https://github.com/IgniteUI/igniteui-cli/compare/v13.3.1...v13.3.2) (2024-07-04)
+
+## What's Changed
+* chore(WebComponents): igniteui-webcomponents version bump, adding banner, divider and date picker templates - 13.3.x by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1274
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.3.1...v13.3.2
+
+# [13.3.1](https://github.com/IgniteUI/igniteui-cli/compare/v13.3.0...v13.3.1) (2024-06-28)
+
+## What's Changed
+* bump the template versions by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1259
+* bump web dev server in webc templates by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1261
+* Added mock implementations of HTMLElement.prototype functions in test setup by @ivanvpetrov in https://github.com/IgniteUI/igniteui-cli/pull/1265
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.3.0...v13.3.1
+
 # [13.3.0](https://github.com/IgniteUI/igniteui-cli/compare/v13.2.1...v13.3.0) (2024-06-03)
 
 🎉 This update includes:
@@ -8,6 +32,55 @@
 * chore(ng): update to ng 18 by @jackofdiamond5 in https://github.com/IgniteUI/igniteui-cli/pull/1252
 
 **Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.2.0...v13.2.1
+# [13.3.2](https://github.com/IgniteUI/igniteui-cli/compare/v13.3.1...v13.3.2) (2024-07-04)
+
+## What's Changed
+* chore(WebComponents): igniteui-webcomponents version bump, adding banner, divider and date picker templates - 13.3.x by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1274
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.3.1...v13.3.2
+
+# [13.3.1](https://github.com/IgniteUI/igniteui-cli/compare/v13.3.0...v13.3.1) (2024-06-28)
+
+## What's Changed
+* bump the template versions by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1259
+* bump web dev server in webc templates by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1261
+* Added mock implementations of HTMLElement.prototype functions in test setup by @ivanvpetrov in https://github.com/IgniteUI/igniteui-cli/pull/1265
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.3.0...v13.3.1
+
+# [13.3.0](https://github.com/IgniteUI/igniteui-cli/compare/v13.2.1...v13.3.0) (2024-06-03)
+
+🎉 This update includes:
+
+- `igniteui-angular` version [18.0.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/18.0.0).
+
+## What's Changed
+* chore(ng): update to ng 18 by @jackofdiamond5 in https://github.com/IgniteUI/igniteui-cli/pull/1252
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.2.0...v13.2.1
+
+# [13.2.4](https://github.com/IgniteUI/igniteui-cli/compare/v13.2.3...v13.2.4) (2024-07-16)
+
+## What's Changed
+* Adding schema to template dependency 13.2.x by @dafo in https://github.com/IgniteUI/igniteui-cli/pull/1270
+* chore(webc): Add types/mocha to the WebComponents templates - 13.2.x by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1282
+
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.2.3...v13.2.4
+
+# [13.2.3](https://github.com/IgniteUI/igniteui-cli/compare/v13.2.2...v13.2.3) (2024-07-04)
+
+## What's Changed
+* chore(WebComponents): igniteui-webcomponents version bump, adding banner, divider and date picker templates - 13.2.x by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1275
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.2.2...v13.2.3
+
+# [13.2.2](https://github.com/IgniteUI/igniteui-cli/compare/v13.2.1...v13.2.2) (2024-06-28)
+
+## What's Changed
+* bump the template versions by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1259
+* bump web dev server in webc templates by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1261
+* Added mock implementations of HTMLElement.prototype functions in test setup by @ivanvpetrov in https://github.com/IgniteUI/igniteui-cli/pull/1265
 
 # [13.2.1](https://github.com/IgniteUI/igniteui-cli/compare/v13.2.0...v13.2.1) (2024-05-9)
 
@@ -28,6 +101,7 @@
 - `igniteui-angular` version [17.2.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/17.2.0).
 
 **Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.1.16...v13.2.0
+
 
 
 # [13.1.16](https://github.com/IgniteUI/igniteui-cli/compare/v13.1.15...v13.1.16) (2024-04-28)
