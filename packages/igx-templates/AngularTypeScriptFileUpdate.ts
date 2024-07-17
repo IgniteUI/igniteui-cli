@@ -278,6 +278,9 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
     }
   }
 
+  /**
+   * Provides the `HttpClient` for standalone applications.
+   */
   public provideHttpClientForStandaloneAppConfig() {
     this.astTransformer.requestNewImportDeclaration({
       identifiers: [{ name: 'provideHttpClient' }],
