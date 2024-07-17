@@ -6,9 +6,10 @@ import {
   REACT_ROUTER_DOM_REDIRECT,
   RouteEntry,
   RouteTarget,
-  RoutesVariableAsParentCondition,
+  variableAsParentCondition,
   TypeScriptFileUpdate,
   Util,
+  ROUTES_VARIABLE_NAME,
 } from '@igniteui/cli-core';
 import { ReactRouteEntry, ReactRouteTarget, ReactRouteLike } from './types';
 
@@ -51,7 +52,7 @@ export class ReactTypeScriptFileUpdate extends TypeScriptFileUpdate {
       multiline
     );
     this.astTransformer.requestNewMembersInArrayLiteral(
-      RoutesVariableAsParentCondition(this.astTransformer),
+      variableAsParentCondition(this.astTransformer, ROUTES_VARIABLE_NAME),
       [newRoute],
       prepend,
       anchorElement
