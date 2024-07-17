@@ -5,10 +5,11 @@ import {
 	RouteEntry,
 	RouteLike,
 	RouteTarget,
-	RoutesVariableAsParentCondition,
+	variableAsParentCondition,
 	TypeScriptFileUpdate,
 	Util,
 	WC_ANCHOR_ELEMENT,
+	ROUTES_VARIABLE_NAME,
 } from '@igniteui/cli-core';
 
 export class WebComponentsTypeScriptFileUpdate extends TypeScriptFileUpdate {
@@ -36,7 +37,7 @@ export class WebComponentsTypeScriptFileUpdate extends TypeScriptFileUpdate {
 			multiline
 		);
 		this.astTransformer.requestNewMembersInArrayLiteral(
-			RoutesVariableAsParentCondition(this.astTransformer),
+			variableAsParentCondition(this.astTransformer, ROUTES_VARIABLE_NAME),
 			[newRoute],
 			prepend,
 			anchorElement
