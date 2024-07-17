@@ -23,7 +23,4 @@ export interface TemplateDependency {
 
 	/** Describes a dependency for a standalone component's meta */
 	standalone?: boolean;
-
-	/** The set of schemas that declare elements to be allowed in the `NgModule`. */
-	schema?: string[];
 }
