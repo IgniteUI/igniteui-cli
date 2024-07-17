@@ -12,6 +12,11 @@ import {
   NG_MODULE_DECORATOR_NAME,
   NG_FOR_ROOT_IDENTIFIER_NAME,
   RouteEntry,
+  WITH_COMPONENT_INPUT_BINDING,
+  PROVIDE_ROUTER,
+  NG_DECORATOR_PROVIDERS,
+  NG_ROUTER_PACKAGE,
+  TRUE_CLAUSE,
 } from '@igniteui/cli-core';
 import {
   AngularRouteLike,
@@ -226,6 +231,68 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
         multiline
       );
     }
+  }
+
+  /**
+   * Includes `{ bindToComponentInputs: true }` for a `forRoot` call in an `NgModule`'s `imports` member.
+   *
+   * For standalone projects, includes an `withComponentInputBinding` call in a `providers` variable. Mainly present in an `app.config` file.
+   */
+  public allowComponentInputBinding() {
+    if (this.standalone) {
+      this.astTransformer.requestNewImportDeclaration({
+        identifiers: [{ name: WITH_COMPONENT_INPUT_BINDING }],
+        moduleName: NG_ROUTER_PACKAGE,
+      });
+      // create withComponentInputBinding()
+      const callExpr = ts.factory.createCallExpression(
+        ts.factory.createIdentifier(WITH_COMPONENT_INPUT_BINDING),
+        undefined, // type args
+        [] // args
+      );
+      this.astTransformer.requestNewArgumentInMethodCallExpression(
+        (node) =>
+          ts.isIdentifier(node.expression) &&
+          node.expression.text === PROVIDE_ROUTER &&
+          !!variableAsParentCondition(
+            this.astTransformer,
+            NG_DECORATOR_PROVIDERS
+          )(node),
+        callExpr
+      );
+    } else {
+      const objLiteral = this.astTransformer.createObjectLiteralExpression(
+        [{ bindToComponentInputs: TRUE_CLAUSE }],
+        false, // multiline
+        () => ts.factory.createTrue()
+      );
+      this.astTransformer.requestNewArgumentInMethodCallExpression(
+        (node) =>
+          ts.isPropertyAccessExpression(node.expression) &&
+          ts.isIdentifier(node.expression.name) &&
+          node.expression.name.text === NG_FOR_ROOT_IDENTIFIER_NAME &&
+          this.checkNgDecorator(NG_MODULE_DECORATOR_NAME, node),
+        objLiteral
+      );
+    }
+  }
+
+  public provideHttpClientForStandaloneAppConfig() {
+    this.astTransformer.requestNewImportDeclaration({
+      identifiers: [{ name: 'provideHttpClient' }],
+      moduleName: '@angular/common/http',
+    });
+
+    // create provideHttpClient()
+    const callExpr = ts.factory.createCallExpression(
+      ts.factory.createIdentifier('provideHttpClient'),
+      undefined, // type args
+      [] // args
+    );
+    this.astTransformer.requestNewMembersInArrayLiteral(
+      variableAsParentCondition(this.astTransformer, NG_DECORATOR_PROVIDERS),
+      [callExpr]
+    );
   }
 
   //#endregion

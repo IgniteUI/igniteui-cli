@@ -16,7 +16,7 @@ export const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes, { bindToComponentInputs: true }), ErrorRoutingModule],
+    imports: [RouterModule.forRoot(routes), ErrorRoutingModule],
     exports: [RouterModule, ErrorRoutingModule]
 })
 export class AppRoutingModule {
@@ -49,9 +49,21 @@ export class MyModule {
 }
 `;
 
+const appConfigStandalone = `import { ApplicationConfig, Provider } from '@angular/core';
+import { provideRouter } from '@angular/router';
+import { routes } from './app.routes';
+
+const providers: Provider[] = [
+    provideRouter(routes)
+];
+
+export const appConfig: ApplicationConfig = { providers };
+`;
+
 const routesPath = 'path/to/routes';
 const moduleFilePath = 'path/to/module';
 const standaloneComponentFilePath = 'path/to/component';
+const pathToAppConfig = 'path/to/app.config';
 
 describe('Unit - AngularTypeScriptFileUpdate', () => {
   describe('Initialization', () => {
@@ -66,7 +78,117 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
     });
   });
 
+  describe('General', () => {
+    it('should add bindToComponentInputs to the RouterModule.forRoot call', () => {
+      spyOn(App.container, 'get').and.returnValue(
+        new MockFS(new Map([[routesPath, routesFileContent]]))
+      );
+
+      fileUpdate = new AngularTypeScriptFileUpdate(routesPath, false, {
+        singleQuotes: true,
+      });
+      fileUpdate.allowComponentInputBinding();
+      const result = fileUpdate.finalize();
+      expect(result).toEqual(
+        `import { NgModule } from '@angular/core';` +
+          EOL +
+          `import { RouterModule, Routes } from '@angular/router';` +
+          EOL +
+          EOL +
+          `import { PageNotFoundComponent } from './error-routing/not-found/not-found.component';` +
+          EOL +
+          `import { UncaughtErrorComponent } from './error-routing/error/uncaught-error.component';` +
+          EOL +
+          `import { ErrorRoutingModule } from './error-routing/error-routing.module';` +
+          EOL +
+          EOL +
+          `export const routes: Routes = [` +
+          EOL +
+          `    { path: 'error', component: UncaughtErrorComponent },` +
+          EOL +
+          `    { path: '**', component: PageNotFoundComponent } // must always be last` +
+          EOL +
+          `];` +
+          EOL +
+          EOL +
+          `@NgModule({` +
+          EOL +
+          `    imports: [RouterModule.forRoot(routes, { bindToComponentInputs: true }), ErrorRoutingModule],` +
+          EOL +
+          `    exports: [RouterModule, ErrorRoutingModule]` +
+          EOL +
+          `})` +
+          EOL +
+          `export class AppRoutingModule {` +
+          EOL +
+          `}` +
+          EOL
+      );
+    });
+  });
+
   let fileUpdate!: AngularTypeScriptFileUpdate;
+  describe('App Config', () => {
+    beforeEach(() => {
+      spyOn(App.container, 'get').and.returnValue(
+        new MockFS(new Map([[pathToAppConfig, appConfigStandalone]]))
+      );
+      fileUpdate = new AngularTypeScriptFileUpdate(pathToAppConfig, true, {
+        singleQuotes: true,
+      });
+    });
+
+    it('should add withComponentsBinding to the provideRouter call', () => {
+      fileUpdate.allowComponentInputBinding();
+      const result = fileUpdate.finalize();
+      expect(result).toEqual(
+        `import { ApplicationConfig, Provider } from '@angular/core';` +
+          EOL +
+          `import { provideRouter, withComponentInputBinding } from '@angular/router';` +
+          EOL +
+          `import { routes } from './app.routes';` +
+          EOL +
+          EOL +
+          `const providers: Provider[] = [` +
+          EOL +
+          `    provideRouter(routes, withComponentInputBinding())` +
+          EOL +
+          `];` +
+          EOL +
+          EOL +
+          `export const appConfig: ApplicationConfig = { providers };` +
+          EOL
+      );
+    });
+
+    it('should include a provideHttpClient call', () => {
+      fileUpdate.provideHttpClientForStandaloneAppConfig();
+      const result = fileUpdate.finalize();
+      expect(result).toEqual(
+        `import { ApplicationConfig, Provider } from '@angular/core';` +
+          EOL +
+          `import { provideRouter } from '@angular/router';` +
+          EOL +
+          `import { routes } from './app.routes';` +
+          EOL +
+          `import { provideHttpClient } from '@angular/common/http';` +
+          EOL +
+          EOL +
+          `const providers: Provider[] = [` +
+          EOL +
+          `    provideRouter(routes),` +
+          EOL +
+          `    provideHttpClient()` +
+          EOL +
+          `];` +
+          EOL +
+          EOL +
+          `export const appConfig: ApplicationConfig = { providers };` +
+          EOL
+      );
+    });
+  });
+
   describe('Routing', () => {
     beforeEach(() => {
       spyOn(App, 'initialize').and.callThrough();
@@ -127,7 +249,7 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
           EOL +
           `@NgModule({` +
           EOL +
-          `    imports: [RouterModule.forRoot(routes, { bindToComponentInputs: true }), ErrorRoutingModule],` +
+          `    imports: [RouterModule.forRoot(routes), ErrorRoutingModule],` +
           EOL +
           `    exports: [RouterModule, ErrorRoutingModule]` +
           EOL +
@@ -183,7 +305,7 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
           EOL +
           `@NgModule({` +
           EOL +
-          `    imports: [RouterModule.forRoot(routes, { bindToComponentInputs: true }), ErrorRoutingModule],` +
+          `    imports: [RouterModule.forRoot(routes), ErrorRoutingModule],` +
           EOL +
           `    exports: [RouterModule, ErrorRoutingModule]` +
           EOL +
@@ -238,7 +360,7 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
           EOL +
           `@NgModule({` +
           EOL +
-          `    imports: [RouterModule.forRoot(routes, { bindToComponentInputs: true }), ErrorRoutingModule],` +
+          `    imports: [RouterModule.forRoot(routes), ErrorRoutingModule],` +
           EOL +
           `    exports: [RouterModule, ErrorRoutingModule]` +
           EOL +
@@ -295,7 +417,7 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
           EOL +
           `@NgModule({` +
           EOL +
-          `    imports: [RouterModule.forRoot(routes, { bindToComponentInputs: true }), ErrorRoutingModule],` +
+          `    imports: [RouterModule.forRoot(routes), ErrorRoutingModule],` +
           EOL +
           `    exports: [RouterModule, ErrorRoutingModule]` +
           EOL +
@@ -387,7 +509,7 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
           EOL +
           `@NgModule({` +
           EOL +
-          `    imports: [RouterModule.forRoot(routes, { bindToComponentInputs: true }), ErrorRoutingModule],` +
+          `    imports: [RouterModule.forRoot(routes), ErrorRoutingModule],` +
           EOL +
           `    exports: [RouterModule, ErrorRoutingModule]` +
           EOL +
@@ -500,7 +622,7 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
           EOL +
           `@NgModule({` +
           EOL +
-          `    imports: [RouterModule.forRoot(routes, { bindToComponentInputs: true }), ErrorRoutingModule],` +
+          `    imports: [RouterModule.forRoot(routes), ErrorRoutingModule],` +
           EOL +
           `    exports: [RouterModule, ErrorRoutingModule]` +
           EOL +
@@ -617,7 +739,7 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
           EOL +
           `@NgModule({` +
           EOL +
-          `    imports: [RouterModule.forRoot(routes, { bindToComponentInputs: true }), ErrorRoutingModule],` +
+          `    imports: [RouterModule.forRoot(routes), ErrorRoutingModule],` +
           EOL +
           `    exports: [RouterModule, ErrorRoutingModule]` +
           EOL +
