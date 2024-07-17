@@ -18,6 +18,8 @@ import {
   NG_ROUTER_PACKAGE,
   TRUE_CLAUSE,
   ROUTES_VARIABLE_NAME,
+  NG_HTTP_CLIENT_PROVIDER,
+  NG_COMMON_HTTP_PACKAGE,
 } from '@igniteui/cli-core';
 import {
   AngularRouteLike,
@@ -283,13 +285,13 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
    */
   public provideHttpClientForStandaloneAppConfig() {
     this.astTransformer.requestNewImportDeclaration({
-      identifiers: [{ name: 'provideHttpClient' }],
-      moduleName: '@angular/common/http',
+      identifiers: [{ name: NG_HTTP_CLIENT_PROVIDER }],
+      moduleName: NG_COMMON_HTTP_PACKAGE,
     });
 
     // create provideHttpClient()
     const callExpr = ts.factory.createCallExpression(
-      ts.factory.createIdentifier('provideHttpClient'),
+      ts.factory.createIdentifier(NG_HTTP_CLIENT_PROVIDER),
       undefined, // type args
       [] // args
     );
