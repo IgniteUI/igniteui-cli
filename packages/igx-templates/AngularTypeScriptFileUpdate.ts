@@ -6,7 +6,7 @@ import {
   PropertyAssignment,
   TemplateDependency,
   TypeScriptFileUpdate,
-  RoutesVariableAsParentCondition,
+  variableAsParentCondition,
   ANCHOR_ELEMENT,
   NG_SA_DECORATOR_NAME,
   NG_MODULE_DECORATOR_NAME,
@@ -17,6 +17,7 @@ import {
   NG_DECORATOR_PROVIDERS,
   NG_ROUTER_PACKAGE,
   TRUE_CLAUSE,
+  ROUTES_VARIABLE_NAME,
 } from '@igniteui/cli-core';
 import {
   AngularRouteLike,
@@ -65,7 +66,7 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
       multiline
     );
     this.astTransformer.requestNewMembersInArrayLiteral(
-      RoutesVariableAsParentCondition(this.astTransformer),
+      variableAsParentCondition(this.astTransformer, ROUTES_VARIABLE_NAME),
       [newRoute],
       prepend,
       anchorElement
@@ -254,7 +255,7 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
         (node) =>
           ts.isIdentifier(node.expression) &&
           node.expression.text === PROVIDE_ROUTER &&
-          !!variableAsParentCondition(
+          variableAsParentCondition(
             this.astTransformer,
             NG_DECORATOR_PROVIDERS
           )(node),

@@ -3,7 +3,7 @@ import { TypeScriptASTTransformer } from './TypeScriptASTTransformer';
 import { TypeScriptUtils } from './TypeScriptUtils';
 import {
   PropertyAssignmentWithStringLiteralValueCondition,
-  RoutesVariableAsParentCondition,
+  variableAsParentCondition,
 } from './VisitorConditions';
 import {
   Util,
@@ -86,7 +86,7 @@ export abstract class TypeScriptFileUpdate {
             RouteTarget.Path,
             parentPath
           )(n) &&
-          RoutesVariableAsParentCondition(
+          variableAsParentCondition(
             this.astTransformer,
             ROUTES_VARIABLE_NAME
           )(n)

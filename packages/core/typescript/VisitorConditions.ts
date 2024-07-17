@@ -1,22 +1,21 @@
 import * as ts from 'typescript';
 import { TypeScriptASTTransformer } from './TypeScriptASTTransformer';
-import { ROUTES_VARIABLE_NAME } from '../util';
 
 /**
- * Starting from the current node, look up the AST to find the variable declaration of the routes variable.
+ * Starting from the current node, look up the AST to find the variable declaration that holds the current node.
  * @param astTransformer Instance of the transformer that will look up the variable in the AST.
- * @param routesVariableName Name of the routes variable to look for.
+ * @param variableName Name of the variable to look for.
  */
-export const RoutesVariableAsParentCondition = (
+export const variableAsParentCondition = (
   astTransformer: TypeScriptASTTransformer,
-  routesVariableName: string = ROUTES_VARIABLE_NAME
+  variableName: string
 ) => {
   return (node: ts.Node): boolean =>
     !!astTransformer.findNodeAncestor(
       node,
       (node) =>
         ts.isVariableDeclaration(node) &&
-        node.name.getText() === routesVariableName
+        node.name.getText() === variableName
     );
 };
 
