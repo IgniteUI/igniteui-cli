@@ -11,7 +11,7 @@ import {
   ChangeType,
   SyntaxKind,
 } from '../types';
-import { SIDE_EFFECTS_IMPORT_TEMPLATE_NAME, UNDERSCORE_TOKEN } from '../util';
+import { SIDE_EFFECTS_IMPORT_TEMPLATE_NAME } from '../util';
 import { TypeScriptFormattingService } from './TypeScriptFormattingService';
 import { TypeScriptExpressionCollector } from './TypeScriptExpressionCollector';
 
@@ -663,6 +663,66 @@ export class TypeScriptASTTransformer {
       ),
       typeArgs,
       args
+    );
+  }
+
+  /**
+   * Creates a request that will resolve during {@link finalize} which adds a new argument to a method call expression.
+   * @param visitCondition The condition by which the method call expression is found.
+   * @param argument The argument to add to the method call.
+   * @param position The position in the argument list to add the new argument.
+   * @param override Whether to override the argument at the given position.
+   * @remarks If `position` is not provided or is less than zero, the argument will be added at the end of the argument list.
+   */
+  public requestNewArgumentInMethodCallExpression(
+    visitCondition: (node: ts.CallExpression) => boolean,
+    argument: ts.Expression,
+    position: number = -1,
+    override: boolean = false
+  ): void {
+    const transformer: ts.TransformerFactory<ts.SourceFile> = <
+      T extends ts.Node
+    >(
+      context: ts.TransformationContext
+    ) => {
+      return (rootNode: T) => {
+        const visitor = (node: ts.Node): ts.VisitResult<ts.Node> => {
+          if (ts.isCallExpression(node) && visitCondition(node)) {
+            // append the argument at a specific position in the argument list
+            if (position >= 0) {
+              const updatedArguments = [...node.arguments];
+              if (override) {
+                updatedArguments[position] = argument;
+              } else {
+                updatedArguments.splice(position, 0, argument);
+              }
+              return ts.factory.updateCallExpression(
+                node,
+                node.expression,
+                node.typeArguments,
+                updatedArguments
+              );
+            }
+            // append the argument at the end of the argument list
+            const updatedArguments = [...node.arguments, argument];
+            return ts.factory.updateCallExpression(
+              node,
+              node.expression,
+              node.typeArguments,
+              updatedArguments
+            );
+          }
+          return ts.visitEachChild(node, visitor, context);
+        };
+        return ts.visitNode(rootNode, visitor, ts.isSourceFile);
+      };
+    };
+
+    this.requestChange(
+      ChangeType.NewNode,
+      transformer,
+      SyntaxKind.Expression,
+      argument
     );
   }
 

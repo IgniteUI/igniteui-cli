@@ -67,6 +67,42 @@ describe('TypeScript AST Transformer', () => {
       expect(result).toEqual(`x.myGenericFunction<number>(5)`);
     });
 
+    it('should successfully add and modify arguments in a call expression', () => {
+      FILE_CONTENT = `myMethodCall(arg1, arg2, arg3);`;
+      sourceFile = ts.createSourceFile(
+        FILE_NAME,
+        FILE_CONTENT,
+        ts.ScriptTarget.Latest,
+        true
+      );
+      astTransformer = new TypeScriptASTTransformer(sourceFile);
+
+      const visitCondition = (node) => ts.isCallExpression(node);
+      astTransformer.requestNewArgumentInMethodCallExpression(
+        visitCondition,
+        ts.factory.createIdentifier('arg4'),
+        1, // position
+        true // override
+      );
+      let result = astTransformer.finalize();
+      expect(result).toEqual('myMethodCall(arg1, arg4, arg3);\n');
+
+      astTransformer.requestNewArgumentInMethodCallExpression(
+        visitCondition,
+        ts.factory.createIdentifier('arg4'),
+        2 // position
+      );
+      result = astTransformer.finalize();
+      expect(result).toEqual('myMethodCall(arg1, arg2, arg4, arg3);\n');
+
+      astTransformer.requestNewArgumentInMethodCallExpression(
+        visitCondition,
+        ts.factory.createIdentifier('arg5')
+      );
+      result = astTransformer.finalize();
+      expect(result).toEqual('myMethodCall(arg1, arg2, arg3, arg5);\n');
+    });
+
     it("should correctly find a node's ancenstor", () => {
       FILE_CONTENT = `const myVar: string = "hello";`;
       sourceFile = ts.createSourceFile(
