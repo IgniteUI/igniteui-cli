@@ -7,13 +7,13 @@ import { routes } from './app.routes';
 import { GlobalErrorHandlerService } from './error-routing/error/global-error-handler.service';
 import { environment } from '../environments/environment';
 
-const providers: Provider[] = [
+// provide the HAMMER_GESTURE_CONFIG token
+// to override the default settings of the HammerModule
+// { provide: HAMMER_GESTURE_CONFIG, useClass: MyHammerConfig }
+const providers: Provider = [
   provideRouter(routes),
   importProvidersFrom(BrowserModule, HammerModule),
   provideAnimations()
-  // provide the HAMMER_GESTURE_CONFIG token
-  // to override the default settings of the HammerModule
-  // { provide: HAMMER_GESTURE_CONFIG, useClass: MyHammerConfig }
 ];
 
 if (environment.production) {
