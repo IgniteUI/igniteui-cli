@@ -563,8 +563,8 @@ describe('TypeScript AST Transformer', () => {
         expect(result).toEqual(`import SomeMock from "module";`);
       });
 
-      // TODO: maybe?
-      xit('should create an import declaration with a namespace import', () => {
+      it('should create an import declaration with a namespace import', () => {
+        pending('consider adding support for namesapced imports');
         const importDeclaration = astTransformer.createImportDeclaration({
           identifiers: { name: '*', alias: 'mock' },
           moduleName: 'another-module',
