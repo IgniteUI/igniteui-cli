@@ -482,13 +482,6 @@ describe('TypeScript AST Transformer', () => {
       );
       expect(result).toEqual(`[\n    "new-value",\n    5\n]`);
     });
-
-    it('should find an element in an array literal by a given condition', () => {
-      const result = astTransformer.findElementInArrayLiteral(
-        (node) => ts.isNumericLiteral(node) && node.text === '2'
-      );
-      expect(result).toBeDefined();
-    });
   });
 
   describe('Imports', () => {

@@ -43,7 +43,7 @@ export class TypeScriptASTTransformer {
     public readonly sourceFile: ts.SourceFile,
     protected readonly printerOptions?: ts.PrinterOptions,
     protected readonly customCompilerOptions?: ts.CompilerOptions,
-    readonly formatSettings?: FormatSettings
+    private readonly formatSettings?: FormatSettings
   ) {
     if (formatSettings) {
       this.formatter = new TypeScriptFormattingService(
@@ -111,38 +111,6 @@ export class TypeScriptASTTransformer {
 
     ts.visitNode(this.sourceFile, visitor, ts.isPropertyAssignment);
     return propertyAssignment;
-  }
-
-  /**
-   * Looks up an object literal expression in the AST with a specific property assignment.
-   * @param name The name of the property to look for.
-   * @param value The value of the property to look for.
-   */
-  public findObjectLiteralWithProperty(
-    name: string,
-    value: string
-  ): ts.ObjectLiteralExpression | undefined {
-    let objectLiteral: ts.ObjectLiteralExpression | undefined;
-    const visitor: ts.Visitor = (node) => {
-      if (ts.isObjectLiteralExpression(node)) {
-        const property = node.properties.find((property) => {
-          if (ts.isPropertyAssignment(property)) {
-            return (
-              ts.isIdentifier(property.name) &&
-              property.name.text === name &&
-              ts.isLiteralExpression(property.initializer) &&
-              property.initializer.text === value
-            );
-          }
-        });
-        if (property) {
-          return (objectLiteral = node);
-        }
-        return ts.visitEachChild(node, visitor, undefined);
-      }
-    };
-    ts.visitNode(this.sourceFile, visitor, ts.isObjectLiteralExpression);
-    return objectLiteral;
   }
 
   /**
@@ -451,33 +419,6 @@ export class TypeScriptASTTransformer {
   }
 
   /**
-   * Finds an element in an array literal expression that satisfies the given condition.
-   * @param visitCondition The condition by which the element is found.
-   */
-  public findElementInArrayLiteral(
-    visitCondition: (node: ts.Expression) => boolean
-  ): ts.Expression | undefined {
-    let target: ts.Expression | undefined;
-    const visitor: ts.Visitor = (node) => {
-      if (ts.isArrayLiteralExpression(node)) {
-        node.elements.find((element) => {
-          if (visitCondition(element)) {
-            target = element;
-          }
-        });
-        if (target) {
-          return target;
-        }
-      }
-
-      return ts.visitEachChild(node, visitor, undefined);
-    };
-
-    ts.visitNode(this.sourceFile, visitor, ts.isExpression);
-    return target;
-  }
-
-  /**
    * Creates a `ts.CallExpression` for an identifier with a method call.
    * @param identifierName Identifier text.
    * @param call Method to call, creating `<identifierName>.<call>()`.
@@ -698,25 +639,6 @@ export class TypeScriptASTTransformer {
       syntaxKind,
       node,
     });
-  }
-
-  /**
-   * Creates an import specifier with an optional alias.
-   * @param identifier The identifier to import.
-   */
-  private createImportSpecifierWithOptionalAlias(
-    identifier: Identifier
-  ): ts.ImportSpecifier {
-    // the last arg of `createImportSpecifier` is required - this is where the alias goes
-    // the second arg is optional, this is where the name goes, hence the following
-    const aliasOrName = identifier.alias || identifier.name;
-    return ts.factory.createImportSpecifier(
-      false, // is type only
-      identifier.alias
-        ? ts.factory.createIdentifier(identifier.name)
-        : undefined,
-      ts.factory.createIdentifier(aliasOrName)
-    );
   }
 
   /**
