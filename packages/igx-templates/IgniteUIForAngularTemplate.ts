@@ -1,6 +1,6 @@
 import {
 	AddTemplateArgs, App, ControlExtraConfiguration, FS_TOKEN, IFileSystem, NPM_ANGULAR,
-	NPM_DOCK_MANAGER, Template, TemplateDependency, TypeScriptUtils, Util, resolvePackage
+	NPM_DOCK_MANAGER, Template, TemplateDependency, Util, resolvePackage
 } from "@igniteui/cli-core";
 import { AngularTypeScriptFileUpdate } from "@igniteui/angular-templates";
 import * as path from "path";
@@ -9,7 +9,7 @@ export class IgniteUIForAngularTemplate implements Template {
 	public components: string[];
 	public controlGroup: string;
 	public listInComponentTemplates: boolean = true;
-  public addAsNgModelDeclaration: boolean = true;
+	public addAsNgModelDeclaration: boolean = true;
 	public listInCustomTemplates: boolean = false;
 	public id: string;
 	public name: string;

@@ -8,10 +8,10 @@ import {
   TypeScriptFileUpdate,
   variableAsParentCondition,
   ANCHOR_ELEMENT,
+  RouteEntry,
   NG_SA_DECORATOR_NAME,
   NG_MODULE_DECORATOR_NAME,
   NG_FOR_ROOT_IDENTIFIER_NAME,
-  RouteEntry,
   WITH_COMPONENT_INPUT_BINDING,
   PROVIDE_ROUTER,
   NG_DECORATOR_PROVIDERS,
@@ -97,50 +97,16 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
   ): void {
     if (!this.standalone || !dep.standalone) return;
 
-    const copy = {
-      import: this.asArray(dep.import || [], variables || {}),
-      provide: this.asArray(dep.provide || [], variables || {}),
+    const copy: AngularDecoratorMetaTarget = {
+      imports: this.asArray(dep.import || [], variables || {}),
+      providers: this.asArray(dep.provide || [], variables || {}),
       schemas: this.asArray(dep.schema || [], variables || {}),
     };
-
     if (dep.from) {
-      // add an import declaration for the dependency
-      const uniqueIdentifiers = new Set<string>([
-        ...copy.import,
-        ...copy.provide,
-        ...copy.schemas,
-      ]);
-      const identifiers = [...uniqueIdentifiers].map((name) => ({ name }));
-      this.astTransformer.requestNewImportDeclaration({
-        identifiers,
-        moduleName: this.applyConfigTransformation(dep.from, variables!),
-      });
+      this.addImportDeclarationForDependency(copy, dep.from, variables);
     }
 
-    if (copy.import.length > 0) {
-      this.mutateNgDecoratorMeta(
-        NG_SA_DECORATOR_NAME,
-        copy.import,
-        AngularDecoratorMetaTarget.Imports,
-        multiline
-      );
-    }
-    if (copy.provide.length > 0) {
-      this.mutateNgDecoratorMeta(
-        NG_SA_DECORATOR_NAME,
-        copy.provide,
-        AngularDecoratorMetaTarget.Providers,
-        multiline
-      );
-    }
-    if (copy.schemas.length > 0) {
-      this.mutateNgDecoratorMeta(
-        NG_SA_DECORATOR_NAME,
-        copy.schemas,
-        AngularDecoratorMetaTarget.Schemas,
-        multiline
-      );
-    }
+    this.applyDecoratorMutations(NG_SA_DECORATOR_NAME, copy, multiline);
   }
 
   /**
@@ -156,33 +122,20 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
   ): void {
     if (this.standalone || dep.standalone) return;
 
-    const copy = {
-      import: this.asArray(dep.import || [], variables || {}),
-      declare: this.asArray(dep.declare || [], variables || {}),
-      provide: this.asArray(dep.provide || [], variables || {}),
-      export: this.asArray(dep.export || [], variables || {}),
+    const copy: AngularDecoratorMetaTarget = {
+      imports: this.asArray(dep.import || [], variables || {}),
+      declarations: this.asArray(dep.declare || [], variables || {}),
+      providers: this.asArray(dep.provide || [], variables || {}),
+      exports: this.asArray(dep.export || [], variables || {}),
       schemas: this.asArray(dep.schema || [], variables || {}),
     };
-
     if (dep.from) {
-      // add an import declaration for the dependency
-      const uniqueIdentifiers = new Set<string>([
-        ...copy.import,
-        ...copy.declare,
-        ...copy.provide,
-        ...copy.export,
-        ...copy.schemas,
-      ]);
-      const identifiers = [...uniqueIdentifiers].map((name) => ({ name }));
-      this.astTransformer.requestNewImportDeclaration({
-        identifiers,
-        moduleName: this.applyConfigTransformation(dep.from, variables!),
-      });
+      this.addImportDeclarationForDependency(copy, dep.from, variables);
     }
 
-    if (dep.root && copy.import.length > 0) {
+    if (dep.root && copy.imports.length > 0) {
       // add forRoot to the module
-      copy.import = copy.import.map((i) =>
+      copy.imports = copy.imports.map((i) =>
         this.astTransformer.printer.printNode(
           ts.EmitHint.Unspecified,
           this.astTransformer.createCallExpression(
@@ -194,46 +147,7 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
       );
     }
 
-    if (copy.declare.length > 0) {
-      this.mutateNgDecoratorMeta(
-        NG_MODULE_DECORATOR_NAME,
-        copy.declare,
-        AngularDecoratorMetaTarget.Declarations,
-        multiline
-      );
-    }
-    if (copy.import.length > 0) {
-      this.mutateNgDecoratorMeta(
-        NG_MODULE_DECORATOR_NAME,
-        copy.import,
-        AngularDecoratorMetaTarget.Imports,
-        multiline
-      );
-    }
-    if (copy.provide.length > 0) {
-      this.mutateNgDecoratorMeta(
-        NG_MODULE_DECORATOR_NAME,
-        copy.provide,
-        AngularDecoratorMetaTarget.Providers,
-        multiline
-      );
-    }
-    if (copy.export.length > 0) {
-      this.mutateNgDecoratorMeta(
-        NG_MODULE_DECORATOR_NAME,
-        copy.export,
-        AngularDecoratorMetaTarget.Exports,
-        multiline
-      );
-    }
-    if (copy.schemas.length > 0) {
-      this.mutateNgDecoratorMeta(
-        NG_MODULE_DECORATOR_NAME,
-        copy.schemas,
-        AngularDecoratorMetaTarget.Schemas,
-        multiline
-      );
-    }
+    this.applyDecoratorMutations(NG_MODULE_DECORATOR_NAME, copy, multiline);
   }
 
   /**
@@ -408,6 +322,48 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
   //#region Internals
 
   /**
+   * Add an imort declaration for the dependency.
+   * @param meta The metadata to use for the import declaration.
+   * @param moduleName The name of the module to import from.
+   * @param variables Variables to replace in the dependency strings.
+   */
+  private addImportDeclarationForDependency(
+    meta: AngularDecoratorMetaTarget,
+    moduleName: string,
+    variables?: KeyValuePair<string>
+  ): void {
+    // add an import declaration for the dependency
+    const uniqueIdentifiers = new Set<string>(
+      Object.keys(meta)
+        .map((key) => meta[key])
+        .flat()
+    );
+    const identifiers = [...uniqueIdentifiers].map((name) => ({ name }));
+    this.astTransformer.requestNewImportDeclaration({
+      identifiers,
+      moduleName: this.applyConfigTransformation(moduleName, variables!),
+    });
+  }
+
+  /**
+   * Applies mutations to an Angular decorator's metadata.
+   * @param decoratorName The name of the decorator to update.
+   * @param meta The metadata to use for the mutations.
+   * @param multiline Whether to format the new entry as multiline.
+   */
+  private applyDecoratorMutations(
+    decoratorName: string,
+    meta: AngularDecoratorMetaTarget,
+    multiline: boolean = false
+  ): void {
+    for (const key of Object.keys(meta)) {
+      if (meta[key].length > 0) {
+        this.mutateNgDecoratorMeta(decoratorName, meta[key], key, multiline);
+      }
+    }
+  }
+
+  /**
    * Updates an Angular decorator's metadata.
    * @param name The name of the decorator to update.
    * @param meta Names of identifiers to be added.
@@ -417,7 +373,7 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
   private mutateNgDecoratorMeta(
     name: string,
     meta: string[],
-    target: AngularDecoratorMetaTarget,
+    target: string,
     multiline: boolean = false
   ): void {
     const identifiers = meta.map(ts.factory.createIdentifier);
