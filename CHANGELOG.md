@@ -1,3 +1,17 @@
+# [13.4.0](https://github.com/IgniteUI/igniteui-cli/compare/v13.3.3...v13.4.0) (2024-07-22)
+
+🎉 This update includes:
+
+- `igniteui-angular` version [18.1.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/18.1.0).
+
+## What's Changed
+* chore(ng): update igniteui-angular@18.1.0; dv@18.0.0; remove force by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1276
+* Adding schema to template dependency 13.4.x by @jackofdiamond5 in https://github.com/IgniteUI/igniteui-cli/pull/1279
+* chore(webc): Add @types/mocha to the WebComponents templates - 13.4.x by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1283
+* fix(igr-ts): add new lines in base app routes file by @onlyexeption in https://github.com/IgniteUI/igniteui-cli/pull/1285
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.3.3...v13.4.0
+
 # [13.3.3](https://github.com/IgniteUI/igniteui-cli/compare/v13.3.2...v13.3.3) (2024-07-16)
 
 ## What's Changed
