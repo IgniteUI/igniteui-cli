@@ -2,6 +2,7 @@ import * as ts from 'typescript';
 import { EOL } from 'os';
 import { PropertyAssignment } from '../types';
 
+// TypeScript
 export const ROUTES_VARIABLE_NAME = 'routes';
 export const THEN_IDENTIFIER_NAME = 'then';
 export const IMPORT_IDENTIFIER_NAME = 'import';
@@ -30,3 +31,15 @@ export const ANCHOR_ELEMENT: PropertyAssignment = {
   name: 'path',
   value: ts.factory.createStringLiteral('**'),
 };
+
+// WC
+export const WC_APP_ROUTING_NAME = 'app-routing.ts';
+export const WC_ANCHOR_ELEMENT: PropertyAssignment = {
+  name: 'path',
+  value: ts.factory.createStringLiteral('(.*)'),
+};
+
+// React
+export const REACT_ROUTER_DOM_REDIRECT = 'redirect';
+export const REACT_APP_ROUTING_NAME = 'app-routes.tsx';
+export const REACT_ROUTER_DOM_MODULE = 'react-router-dom';
