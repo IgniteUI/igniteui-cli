@@ -1,7 +1,9 @@
 import {
 	AddTemplateArgs, App, Config, ControlExtraConfiguration, defaultDelimiters,
-	FS_TOKEN, FsFileSystem, IFileSystem, ProjectConfig, Template, TypeScriptFileUpdate, Util
+	FS_TOKEN, FsFileSystem, IFileSystem, ProjectConfig, Template, TypeScriptUtils, Util
 } from "@igniteui/cli-core";
+import { AngularTypeScriptFileUpdate } from "@igniteui/angular-templates";
+
 import * as path from "path";
 
 export class AngularTemplate implements Template {
@@ -51,29 +53,39 @@ export class AngularTemplate implements Template {
 		// which slows down execution of the entire component noticeably (template loading)
 		// https://www.typescriptlang.org/docs/handbook/modules.html#dynamic-module-loading-in-nodejs
 		// tslint:disable-next-line:variable-name
-		const TsUpdate: typeof TypeScriptFileUpdate =
+		const TsUpdate: typeof AngularTypeScriptFileUpdate =
 			// tslint:disable-next-line:no-submodule-imports
-			require("@igniteui/cli-core/typescript").TypeScriptFileUpdate;
+			require("@igniteui/angular-templates").AngularTypeScriptFileUpdate;
 
+		const componentPath = path.join(projectPath, `src/app/components/${this.folderName(name)}/${this.fileName(name)}.component.ts`);
+		const className = `${Util.className(Util.nameFromPath(name))}Component`;
 		if (!(options && options.skipRoute)) {
 			//1) import the component class name,
 			//2) and populate the Routes array with the path and component
 			//for example: { path: "combo", component: ComboComponent }
-			const routingModule = new TsUpdate(path.join(projectPath, "src/app/app-routing.module.ts"));
-			routingModule.addRoute(
-				path.join(projectPath, `src/app/components/${this.folderName(name)}/${this.fileName(name)}.component.ts`),
-				this.folderName(name), //path
-				Util.nameFromPath(name) //text
-			);
+			const routingModulePath = path.join(projectPath, "src/app/app-routing.module.ts");
+			const routingModule = new TsUpdate(routingModulePath, false, { singleQuotes: false });
+
+			routingModule.addRoute({
+				path: this.folderName(name),
+				identifierName: className,
+				modulePath: Util.relativePath(routingModulePath, componentPath, true, true),
+				data: { text: Util.nameFromPath(name) }
+			});
+
+			routingModule.finalize();
 		}
 
 		//3) add an import of the component class from its file location.
 		//4) populate the declarations portion of the @NgModule with the component class name.
-		const mainModule = new TsUpdate(path.join(projectPath, `src/app/${modulePath}`));
-		mainModule.addDeclaration(
-			path.join(projectPath, `src/app/components/${this.folderName(name)}/${this.fileName(name)}.component.ts`),
-			modulePath !== "app.module.ts"
-		);
+		const mainModulePath = path.join(projectPath, `src/app/${modulePath}`);
+		const relativePath = Util.relativePath(mainModulePath, componentPath, true, true);
+		const mainModule = new TsUpdate(mainModulePath, false, { singleQuotes: false });
+		mainModule.addNgModuleMeta({
+			declare: [className],
+			from: relativePath,
+			export: modulePath !== "app.module.ts" ? [className] : []
+		});
 		mainModule.finalize();
 
 		this.ensureSourceFiles(projectPath);

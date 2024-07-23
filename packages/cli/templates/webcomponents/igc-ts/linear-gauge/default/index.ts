@@ -1,4 +1,3 @@
-import { TypeScriptFileUpdate } from "@igniteui/cli-core";
 import { IgniteUIForWebComponentsTemplate } from "../../../../../lib/templates/IgniteUIForWebComponentsTemplate";
 
 class IgcLinearGaugeTemplate extends IgniteUIForWebComponentsTemplate {
@@ -15,9 +14,6 @@ class IgcLinearGaugeTemplate extends IgniteUIForWebComponentsTemplate {
 			"igniteui-webcomponents-core@~4.2.5",
 			"igniteui-webcomponents-gauges@~4.2.5"
 		];
-	}
-	protected addClassDeclaration(mainModule: TypeScriptFileUpdate, projPath: string, name: string, modulePath: string) {
-		// not applicable with custom module
 	}
 }
 module.exports = new IgcLinearGaugeTemplate();

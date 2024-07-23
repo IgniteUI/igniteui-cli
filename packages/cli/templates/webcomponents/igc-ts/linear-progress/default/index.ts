@@ -1,4 +1,3 @@
-import { TypeScriptFileUpdate } from "@igniteui/cli-core";
 import { IgniteUIForWebComponentsTemplate } from "../../../../../lib/templates/IgniteUIForWebComponentsTemplate";
 
 class IgcLinearProgressComponent extends IgniteUIForWebComponentsTemplate {
@@ -15,9 +14,6 @@ class IgcLinearProgressComponent extends IgniteUIForWebComponentsTemplate {
 			"igniteui-webcomponents-core@~4.2.5",
 			"igniteui-webcomponents-charts@~4.2.5"
 		];
-	}
-	protected addClassDeclaration(mainModule: TypeScriptFileUpdate, projPath: string, name: string, modulePath: string) {
-		// not applicable with custom module
 	}
 }
 module.exports = new IgcLinearProgressComponent();

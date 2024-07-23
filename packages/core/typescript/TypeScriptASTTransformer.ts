@@ -11,11 +11,22 @@ import {
   ChangeType,
   SyntaxKind,
 } from '../types';
-import { SIDE_EFFECTS_IMPORT_TEMPLATE_NAME, UNDERSCORE_TOKEN } from '../util';
 import { TypeScriptFormattingService } from './TypeScriptFormattingService';
+import {
+  createImportDeclaration,
+  importDeclarationCollides,
+  isPropertyAssignment,
+  newArgumentInMethodCallExpressionTransformerFactory,
+  newImportDeclarationTransformerFactory,
+  newMemberInArrayLiteralTransformerFactory,
+  newMemberInObjectLiteralTransformerFactory,
+  updateForObjectLiteralMemberTransformerFactory,
+} from './TransformerFactories';
+import { TypeScriptExpressionCollector } from './TypeScriptExpressionCollector';
 
 export class TypeScriptASTTransformer {
   private _printer: ts.Printer | undefined;
+  private _expressionCollector: TypeScriptExpressionCollector;
   private _flatNodeRelations: Map<ts.Node, ts.Node>;
   private _defaultCompilerOptions: ts.CompilerOptions = {
     pretty: true,
@@ -32,7 +43,7 @@ export class TypeScriptASTTransformer {
     public readonly sourceFile: ts.SourceFile,
     protected readonly printerOptions?: ts.PrinterOptions,
     protected readonly customCompilerOptions?: ts.CompilerOptions,
-    readonly formatSettings?: FormatSettings
+    private readonly formatSettings?: FormatSettings
   ) {
     if (formatSettings) {
       this.formatter = new TypeScriptFormattingService(
@@ -42,6 +53,7 @@ export class TypeScriptASTTransformer {
     }
 
     this._flatNodeRelations = this.createNodeRelationsMap(this.sourceFile);
+    this._expressionCollector = new TypeScriptExpressionCollector();
   }
 
   /** Map of all transformations to apply to the source file. */
@@ -78,23 +90,6 @@ export class TypeScriptASTTransformer {
   }
 
   /**
-   * Checks if the given import declaration identifiers or aliases would collide with an existing one's.
-   * @param sourceFile The source file to check for collisions.
-   * @param identifiers The identifiers to check for collisions.
-   * @param moduleName The module that the import is for, used for side effects imports.
-   */
-  public static checkForCollidingImports(
-    sourceFile: ts.SourceFile,
-    identifiers: Identifier[],
-    moduleName?: string
-  ): boolean {
-    const transformer = new TypeScriptASTTransformer(sourceFile);
-    return identifiers.some((identifier) =>
-      transformer.importDeclarationCollides(identifier, moduleName)
-    );
-  }
-
-  /**
    * Looks up a property assignment in the AST.
    * @param visitCondition The condition by which the property assignment is found.
    * @param lastMatch Whether to return the last match found. If not set, the first match will be returned.
@@ -116,38 +111,6 @@ export class TypeScriptASTTransformer {
 
     ts.visitNode(this.sourceFile, visitor, ts.isPropertyAssignment);
     return propertyAssignment;
-  }
-
-  /**
-   * Looks up an object literal expression in the AST with a specific property assignment.
-   * @param name The name of the property to look for.
-   * @param value The value of the property to look for.
-   */
-  public findObjectLiteralWithProperty(
-    name: string,
-    value: string
-  ): ts.ObjectLiteralExpression | undefined {
-    let objectLiteral: ts.ObjectLiteralExpression | undefined;
-    const visitor: ts.Visitor = (node) => {
-      if (ts.isObjectLiteralExpression(node)) {
-        const property = node.properties.find((property) => {
-          if (ts.isPropertyAssignment(property)) {
-            return (
-              ts.isIdentifier(property.name) &&
-              property.name.text === name &&
-              ts.isLiteralExpression(property.initializer) &&
-              property.initializer.text === value
-            );
-          }
-        });
-        if (property) {
-          return (objectLiteral = node);
-        }
-        return ts.visitEachChild(node, visitor, undefined);
-      }
-    };
-    ts.visitNode(this.sourceFile, visitor, ts.isObjectLiteralExpression);
-    return objectLiteral;
   }
 
   /**
@@ -219,16 +182,19 @@ export class TypeScriptASTTransformer {
    * @param visitCondition The condition by which the object literal expression is found.
    * @param propertyName The name of the property that will be added.
    * @param propertyValue The value of the property that will be added.
+   * @param multiline Whether the object literal should be multiline.
    */
   public requestNewMemberInObjectLiteral(
     visitCondition: (node: ts.ObjectLiteralExpression) => boolean,
     propertyName: string,
-    propertyValue: ts.Expression
+    propertyValue: ts.Expression,
+    multiline?: boolean
   ): void;
   public requestNewMemberInObjectLiteral(
     visitCondition: (node: ts.ObjectLiteralExpression) => boolean,
     propertyNameOrAssignment: string | PropertyAssignment,
-    propertyValue?: ts.Expression
+    propertyValue?: ts.Expression,
+    multiline?: boolean
   ): void {
     let newProperty: ts.PropertyAssignment;
     if (propertyNameOrAssignment instanceof Object) {
@@ -236,7 +202,7 @@ export class TypeScriptASTTransformer {
         propertyNameOrAssignment.name,
         propertyNameOrAssignment.value
       );
-    } else if (propertyValue) {
+    } else if (propertyValue && typeof propertyValue !== 'string') {
       newProperty = ts.factory.createPropertyAssignment(
         ts.factory.createIdentifier(propertyNameOrAssignment as string),
         propertyValue
@@ -245,36 +211,15 @@ export class TypeScriptASTTransformer {
       throw new Error('Must provide property value.');
     }
 
-    const transformer: ts.TransformerFactory<ts.SourceFile> = <
-      T extends ts.Node
-    >(
-      context: ts.TransformationContext
-    ) => {
-      return (rootNode: T) => {
-        const visitor = (node: ts.Node): ts.VisitResult<ts.Node> => {
-          if (ts.isObjectLiteralExpression(node) && visitCondition(node)) {
-            return context.factory.updateObjectLiteralExpression(node, [
-              ...node.properties,
-              newProperty,
-            ]);
-          }
-          return ts.visitEachChild(node, visitor, context);
-        };
-        return ts.visitNode(rootNode, visitor, ts.isSourceFile);
-      };
-    };
-
-    let id = '';
-    if (
-      ts.isIdentifier(newProperty.name) ||
-      ts.isLiteralExpression(newProperty.name)
-    ) {
-      id = newProperty.name.text;
-    }
+    const transformerFactory = newMemberInObjectLiteralTransformerFactory(
+      newProperty,
+      visitCondition,
+      multiline,
+      this._expressionCollector
+    );
     this.requestChange(
-      id,
       ChangeType.NewNode,
-      transformer,
+      transformerFactory,
       SyntaxKind.PropertyAssignment,
       newProperty
     );
@@ -310,54 +255,22 @@ export class TypeScriptASTTransformer {
   }
 
   /**
-   * Creates a request that will resolve during {@link finalize } for an update to the value of a member in an object literal expression.
+   * Creates a request that will resolve during {@link finalize} for an update to the value of a member in an object literal expression.
    * @param visitCondition The condition by which the object literal expression is found.
    * @param targetMember The member that will be updated. The value should be the new value to set.
-   * @returns The mutated AST.
    */
   public requestUpdateForObjectLiteralMember(
     visitCondition: (node: ts.ObjectLiteralExpression) => boolean,
     targetMember: PropertyAssignment
   ): void {
-    const transformer: ts.TransformerFactory<ts.SourceFile> = <
-      T extends ts.Node
-    >(
-      context: ts.TransformationContext
-    ) => {
-      return (rootNode: T) => {
-        const visitor = (node: ts.Node): ts.VisitResult<ts.Node> => {
-          if (ts.isObjectLiteralExpression(node) && visitCondition(node)) {
-            const newProperties = node.properties.map((property) => {
-              const isPropertyAssignment = ts.isPropertyAssignment(property);
-              if (
-                isPropertyAssignment &&
-                ts.isIdentifier(property.name) &&
-                property.name.text === targetMember.name
-              ) {
-                return context.factory.updatePropertyAssignment(
-                  property,
-                  property.name,
-                  targetMember.value
-                );
-              }
-              return property;
-            });
-
-            return context.factory.updateObjectLiteralExpression(
-              node,
-              newProperties
-            );
-          }
-          return ts.visitEachChild(node, visitor, context);
-        };
-        return ts.visitNode(rootNode, visitor, ts.isSourceFile);
-      };
-    };
+    const transformerFactory = updateForObjectLiteralMemberTransformerFactory(
+      visitCondition,
+      targetMember
+    );
 
     this.requestChange(
-      targetMember.name,
       ChangeType.NodeUpdate,
-      transformer,
+      transformerFactory,
       SyntaxKind.PropertyAssignment,
       ts.factory.createPropertyAssignment(targetMember.name, targetMember.value)
     );
@@ -376,7 +289,7 @@ export class TypeScriptASTTransformer {
     transform?: (value: string) => ts.Expression
   ): ts.ObjectLiteralExpression {
     let propertyAssignments: ts.ObjectLiteralElementLike[] = [];
-    if (properties.every(this.isPropertyAssignment)) {
+    if (properties.every(isPropertyAssignment)) {
       propertyAssignments = properties.map((property) =>
         ts.factory.createPropertyAssignment(property.name, property.value)
       );
@@ -407,13 +320,15 @@ export class TypeScriptASTTransformer {
    * @param elements The elements that will be added to the array literal.
    * @param prepend If the elements should be added at the beginning of the array.
    * @anchorElement The element to anchor the new elements to.
+   * @multiline Whether the array literal should be multiline.
    * @remarks The `anchorElement` must match the type of the elements in the collection.
    */
   public requestNewMembersInArrayLiteral(
     visitCondition: (node: ts.ArrayLiteralExpression) => boolean,
     elements: ts.Expression[],
     prepend?: boolean,
-    anchorElement?: ts.Expression | PropertyAssignment
+    anchorElement?: ts.Expression | PropertyAssignment,
+    multiline?: boolean
   ): void;
   /**
    * Creates a request that will resolve during {@link finalize} which adds a new element to an array literal expression.
@@ -421,19 +336,22 @@ export class TypeScriptASTTransformer {
    * @param elements The elements that will be added to the array literal
    * @prepend If the elements should be added at the beginning of the array.
    * @anchorElement The element to anchor the new elements to.
+   * @multiline Whether the array literal should be multiline.
    * @remarks The `anchorElement` must match the type of the elements in the collection.
    */
   public requestNewMembersInArrayLiteral(
     visitCondition: (node: ts.ArrayLiteralExpression) => boolean,
     elements: PropertyAssignment[],
     prepend?: boolean,
-    anchorElement?: ts.Expression | PropertyAssignment
+    anchorElement?: ts.Expression | PropertyAssignment,
+    multiline?: boolean
   ): void;
   public requestNewMembersInArrayLiteral(
     visitCondition: (node: ts.ArrayLiteralExpression) => boolean,
     expressionOrPropertyAssignment: ts.Expression[] | PropertyAssignment[],
     prepend: boolean = false,
-    anchorElement?: ts.StringLiteral | ts.NumericLiteral | PropertyAssignment
+    anchorElement?: ts.StringLiteral | ts.NumericLiteral | PropertyAssignment,
+    multiline: boolean = false
   ): void {
     let elements: ts.Expression[] | PropertyAssignment[];
     const isExpression = expressionOrPropertyAssignment.every((e) =>
@@ -443,110 +361,20 @@ export class TypeScriptASTTransformer {
       elements = expressionOrPropertyAssignment as ts.Expression[];
     } else {
       elements = (expressionOrPropertyAssignment as PropertyAssignment[]).map(
-        (property) => this.createObjectLiteralExpression([property])
+        (property) => this.createObjectLiteralExpression([property], multiline)
       );
     }
-    const transformer: ts.TransformerFactory<ts.SourceFile> = <
-      T extends ts.Node
-    >(
-      context: ts.TransformationContext
-    ) => {
-      return (rootNode: T) => {
-        const visitor = (node: ts.Node): ts.VisitResult<ts.Node> => {
-          let anchor: ts.Expression | undefined;
-          if (ts.isArrayLiteralExpression(node) && visitCondition(node)) {
-            if (anchorElement) {
-              anchor = Array.from(node.elements).find((e) => {
-                if (ts.isStringLiteral(e) || ts.isNumericLiteral(e)) {
-                  // make sure the entry is a string or numeric literal
-                  // and that its text matches the anchor element's text
-                  return (
-                    e.text ===
-                    (anchorElement as ts.StringLiteral | ts.NumericLiteral).text
-                  );
-                } else if (
-                  this.isPropertyAssignment(anchorElement) &&
-                  ts.isObjectLiteralExpression(e)
-                ) {
-                  // make sure the entry is a property assignment
-                  // and that its name and value match the anchor element's
-                  return e.properties.some(
-                    (p) =>
-                      ts.isPropertyAssignment(p) &&
-                      ts.isIdentifier(p.name) &&
-                      p.name.text === anchorElement.name &&
-                      ((ts.isStringLiteral(p.initializer) &&
-                        ts.isStringLiteral(anchorElement.value)) ||
-                        (ts.isNumericLiteral(p.initializer) &&
-                          ts.isNumericLiteral(anchorElement.value))) &&
-                      p.initializer.text === anchorElement.value.text
-                  );
-                }
-                return false;
-              });
-            }
 
-            if (anchor) {
-              let structure!: ts.Expression[];
-              if (prepend) {
-                structure = node.elements
-                  .slice(0, node.elements.indexOf(anchor))
-                  .concat(elements)
-                  .concat(node.elements.slice(node.elements.indexOf(anchor)));
-              } else {
-                structure = node.elements
-                  .slice(0, node.elements.indexOf(anchor) + 1)
-                  .concat(elements)
-                  .concat(
-                    node.elements.slice(node.elements.indexOf(anchor) + 1)
-                  );
-              }
-
-              return context.factory.updateArrayLiteralExpression(
-                node,
-                structure
-              );
-            }
-
-            if (prepend) {
-              return context.factory.updateArrayLiteralExpression(node, [
-                ...elements,
-                ...node.elements,
-              ]);
-            }
-            return context.factory.updateArrayLiteralExpression(node, [
-              ...node.elements,
-              ...elements,
-            ]);
-          }
-          return ts.visitEachChild(node, visitor, context);
-        };
-        return ts.visitNode(rootNode, visitor, ts.isSourceFile);
-      };
-    };
-
-    const id = elements
-      .map((e) => {
-        if (ts.isObjectLiteralExpression(e)) {
-          return e.properties
-            .map((p) => (ts.isIdentifier(p.name) ? p.name.text : ''))
-            .join(UNDERSCORE_TOKEN);
-        }
-
-        if (ts.isIdentifier(e)) {
-          return e.text;
-        }
-
-        return ts.isLiteralExpression(e) ? e.text : '';
-      })
-      .join(UNDERSCORE_TOKEN);
+    const transformerFactory = newMemberInArrayLiteralTransformerFactory(
+      visitCondition,
+      elements,
+      prepend,
+      anchorElement
+    );
     this.requestChange(
-      id,
       ChangeType.NewNode,
-      transformer,
-      isExpression
-        ? SyntaxKind.Expression
-        : SyntaxKind.PropertyAssignment,
+      transformerFactory,
+      isExpression ? SyntaxKind.Expression : SyntaxKind.PropertyAssignment,
       ts.factory.createNodeArray(elements)
     );
   }
@@ -591,33 +419,6 @@ export class TypeScriptASTTransformer {
   }
 
   /**
-   * Finds an element in an array literal expression that satisfies the given condition.
-   * @param visitCondition The condition by which the element is found.
-   */
-  public findElementInArrayLiteral(
-    visitCondition: (node: ts.Expression) => boolean
-  ): ts.Expression | undefined {
-    let target: ts.Expression | undefined;
-    const visitor: ts.Visitor = (node) => {
-      if (ts.isArrayLiteralExpression(node)) {
-        node.elements.find((element) => {
-          if (visitCondition(element)) {
-            target = element;
-          }
-        });
-        if (target) {
-          return target;
-        }
-      }
-
-      return ts.visitEachChild(node, visitor, undefined);
-    };
-
-    ts.visitNode(this.sourceFile, visitor, ts.isExpression);
-    return target;
-  }
-
-  /**
    * Creates a `ts.CallExpression` for an identifier with a method call.
    * @param identifierName Identifier text.
    * @param call Method to call, creating `<identifierName>.<call>()`.
@@ -656,6 +457,36 @@ export class TypeScriptASTTransformer {
   }
 
   /**
+   * Creates a request that will resolve during {@link finalize} which adds a new argument to a method call expression.
+   * @param visitCondition The condition by which the method call expression is found.
+   * @param argument The argument to add to the method call.
+   * @param position The position in the argument list to add the new argument.
+   * @param override Whether to override the argument at the given position.
+   * @remarks If `position` is not provided or is less than zero, the argument will be added at the end of the argument list.
+   */
+  public requestNewArgumentInMethodCallExpression(
+    visitCondition: (node: ts.CallExpression) => boolean,
+    argument: ts.Expression,
+    position: number = -1,
+    override: boolean = false
+  ): void {
+    const transformerFactory =
+      newArgumentInMethodCallExpressionTransformerFactory(
+        visitCondition,
+        argument,
+        position,
+        override
+      );
+
+    this.requestChange(
+      ChangeType.NewNode,
+      transformerFactory,
+      SyntaxKind.Expression,
+      argument
+    );
+  }
+
+  /**
    * Creates a node for a named import declaration.
    * @param importDeclarationMeta Metadata for the new import declaration.
    * @param isDefault Whether the import is a default import.
@@ -673,52 +504,12 @@ export class TypeScriptASTTransformer {
     isDefault: boolean = false,
     isSideEffects: boolean = false
   ): ts.ImportDeclaration {
-    if (isSideEffects) {
-      // create a side effects declaration of the form `import "my-module"`
-      return ts.factory.createImportDeclaration(
-        undefined, // modifiers
-        undefined, // import clause
-        ts.factory.createStringLiteral(
-          importDeclarationMeta.moduleName,
-          this.formatSettings?.singleQuotes
-        ) // module specifier
-      );
-    }
-
-    const identifiers = Array.isArray(importDeclarationMeta.identifiers)
-      ? importDeclarationMeta.identifiers
-      : [importDeclarationMeta.identifiers];
-    let importClause: ts.ImportClause;
-    // isTypeOnly on the import clause is set to false because we don't import types atm
-    // might change it later if we need sth like - import type { X } from "module"
-    // TODO: consider adding functionality for namespaced imports of the form - import * as X from "module"
-    if (isDefault) {
-      importClause = ts.factory.createImportClause(
-        false, // is type only
-        ts.factory.createIdentifier(identifiers[0].name) as ts.Identifier, // name - import X from "module"
-        undefined // named bindings
-      );
-    } else {
-      const namedImport = ts.factory.createNamedImports(
-        identifiers.map(this.createImportSpecifierWithOptionalAlias)
-      );
-      importClause = ts.factory.createImportClause(
-        false, // is type only
-        undefined, // name
-        namedImport // named bindings - import { X, Y... } from "module"
-      );
-    }
-
-    const importDeclaration = ts.factory.createImportDeclaration(
-      undefined, // modifiers
-      importClause,
-      ts.factory.createStringLiteral(
-        importDeclarationMeta.moduleName,
-        this.formatSettings?.singleQuotes
-      ) // module specifier
+    return createImportDeclaration(
+      importDeclarationMeta,
+      isDefault,
+      isSideEffects,
+      this.formatSettings?.singleQuotes || false
     );
-
-    return importDeclaration;
   }
 
   /**
@@ -726,42 +517,19 @@ export class TypeScriptASTTransformer {
    * @param identifier The identifier to check for collisions.
    * @param moduleName The module that the import is for, used for side effects imports.
    * @param isSideEffects If the import is strictly a side effects import.
-   * @remarks Dynamically added import declarations are ignored.
+   * @param sourceFile The source file to check for collisions.
    */
   public importDeclarationCollides(
     identifier: Identifier,
     moduleName?: string,
-    isSideEffects: boolean = false
+    isSideEffects: boolean = false,
+    sourceFile: ts.SourceFile = this.sourceFile
   ): boolean {
-    // identifiers are gathered from all import declarations
-    // and are kept as separate entries in the map
-    const allImportedIdentifiers = this.gatherImportDeclarations([
-      ...this.sourceFile.statements,
-    ]);
-
-    if (isSideEffects && moduleName) {
-      return Array.from(allImportedIdentifiers.values()).some(
-        (importStatement) => importStatement.moduleName === moduleName
-      );
-    }
-
-    return Array.from(allImportedIdentifiers.values()).some(
-      (importStatement) => {
-        let collides = false;
-        if (Array.isArray(importStatement.identifiers)) {
-          return collides;
-        }
-
-        if (importStatement.identifiers.name === identifier.name) {
-          collides = true;
-        }
-
-        if (importStatement.identifiers.alias && identifier.alias) {
-          return importStatement.identifiers.alias === identifier.alias;
-        }
-
-        return collides;
-      }
+    return importDeclarationCollides(
+      identifier,
+      sourceFile,
+      moduleName,
+      isSideEffects
     );
   }
 
@@ -780,93 +548,29 @@ export class TypeScriptASTTransformer {
     isDefault: boolean = false,
     isSideEffects: boolean = false
   ): void {
-    const transformer: ts.TransformerFactory<ts.SourceFile> = (
-      context: ts.TransformationContext
-    ) => {
-      return (file) => {
-        let newStatements = [...file.statements];
-        let importDeclarationUpdated = false;
+    const transformerFactory = newImportDeclarationTransformerFactory(
+      importDeclarationMeta,
+      isDefault,
+      isSideEffects,
+      this.formatSettings?.singleQuotes || false
+    );
 
-        const identifiers = Array.isArray(importDeclarationMeta.identifiers)
-          ? importDeclarationMeta.identifiers
-          : [importDeclarationMeta.identifiers];
-        // loop over the statements to find and update the necessary import declaration
-        for (let i = 0; i < newStatements.length; i++) {
-          const statement = newStatements[i];
-          if (
-            ts.isImportDeclaration(statement) &&
-            this.getModuleSpecifierName(statement.moduleSpecifier) ===
-              importDeclarationMeta.moduleName
-          ) {
-            // if there are new identifiers to add to an existing import declaration, update it
-            const namedBindings = statement.importClause?.namedBindings;
-            if (
-              namedBindings &&
-              ts.isNamedImports(namedBindings) &&
-              identifiers.length > 0
-            ) {
-              importDeclarationUpdated = true;
-              const updatedImportSpecifiers: ts.ImportSpecifier[] = [
-                ...namedBindings.elements,
-                ...identifiers.map(this.createImportSpecifierWithOptionalAlias),
-              ];
-              const updatedNamedImports: ts.NamedImports =
-                context.factory.updateNamedImports(
-                  namedBindings,
-                  updatedImportSpecifiers
-                );
-              const updatedImportClause: ts.ImportClause =
-                context.factory.updateImportClause(
-                  statement.importClause,
-                  false,
-                  statement.importClause.name,
-                  updatedNamedImports
-                );
+    const identifiers = Array.isArray(importDeclarationMeta.identifiers)
+      ? ts.factory.createNodeArray(
+          importDeclarationMeta.identifiers.map((i) =>
+            ts.factory.createIdentifier(i.name || i.alias)
+          )
+        )
+      : ts.factory.createIdentifier(
+          importDeclarationMeta.identifiers.name ||
+            importDeclarationMeta.identifiers.alias
+        );
 
-              newStatements[i] = context.factory.updateImportDeclaration(
-                statement,
-                statement.modifiers,
-                updatedImportClause,
-                statement.moduleSpecifier,
-                statement.attributes
-              );
-            }
-            // exit the loop after modifying the existing import declaration
-            break;
-          }
-        }
-
-        // if no import declaration was updated and there are identifiers to add,
-        // create a new import declaration with the identifiers
-        if (
-          !importDeclarationUpdated &&
-          identifiers.length > 0 &&
-          identifiers.length > 0
-        ) {
-          const newImportDeclaration = this.createImportDeclaration(
-            importDeclarationMeta,
-            isDefault,
-            isSideEffects
-          );
-          newStatements = [
-            ...file.statements.filter(ts.isImportDeclaration),
-            newImportDeclaration,
-            ...file.statements.filter((s) => !ts.isImportDeclaration(s)),
-          ];
-        }
-
-        return ts.factory.updateSourceFile(file, newStatements);
-      };
-    };
-
-    const id = Array.isArray(importDeclarationMeta.identifiers)
-      ? importDeclarationMeta.identifiers.join(UNDERSCORE_TOKEN)
-      : importDeclarationMeta.identifiers.name;
     this.requestChange(
-      id,
       ChangeType.NewNode,
-      transformer,
-      SyntaxKind.ImportDeclaration
+      transformerFactory,
+      SyntaxKind.ImportDeclaration,
+      identifiers
     );
   }
 
@@ -892,8 +596,8 @@ export class TypeScriptASTTransformer {
 
   /**
    * Applies all transformations, parses the AST and returns the resulting source code.
-   * @remarks This method should be called after all modifications have been made to the AST.
-   * If a {@link formatter} is present, it will be used to format the source code.
+   * @remarks This method should be called after all modifications are ready to be applied to the AST.
+   * If a {@link formatter} is present, it will be used to format the source code and update the file on the FS.
    */
   public finalize(): string {
     const finalSource = this.applyChanges();
@@ -905,155 +609,28 @@ export class TypeScriptASTTransformer {
   }
 
   /**
-   * Determines if a given object is an instance of `PropertyAssignment`.
-   * @param target The object to check.
-   */
-  public isPropertyAssignment(target: object): target is PropertyAssignment {
-    return (
-      target &&
-      'name' in target &&
-      'value' in target &&
-      (ts.isExpression(target.value as any) ||
-        ts.isNumericLiteral(target.value as any) ||
-        ts.isStringLiteral(target.value as any))
-    );
-  }
-
-  /**
-   * Determines if a given object is an instance of `ts.NodeArray`.
-   * @param obj The object to check.
-   */
-  public isNodeArray(obj: object): obj is ts.NodeArray<ts.Node> {
-    // #ref typescript/lib/typescript.js/isNodeArray
-    return 'pos' in obj && 'end' in obj && !('kind' in obj);
-  }
-
-  /**
    * Requests a change to the source file.
    * @param type The type of change to request.
-   * @param transformer The transformer to apply to the source file during finalization.
+   * @param transformerFactory The transformer to apply to the source file during finalization.
+   * @param syntaxKind The syntax kind of the node to change.
+   * @param node The affected node.
+   * @param relatedChangeId The ID of the change request that should be applied before this one.
    * @remarks All aggregated changes will be applied during {@link finalize}.
    */
   private requestChange<T extends ts.Node>(
-    id: string = '',
     type: ChangeType,
-    transformer: ts.TransformerFactory<ts.SourceFile>,
+    transformerFactory: ts.TransformerFactory<ts.SourceFile>,
     syntaxKind: SyntaxKind,
     node?: T | ts.NodeArray<T>
   ): void {
-    id = `${id}${UNDERSCORE_TOKEN}${crypto.randomUUID()}`;
-    const requestedChange: ChangeRequest<ts.Node> = {
+    const id = crypto.randomUUID();
+    this.transformations.set(id, {
       id,
       type,
-      transformerFactory: transformer,
+      transformerFactory,
       syntaxKind,
       node,
-    };
-
-    this.transformations.set(id, requestedChange);
-  }
-
-  /**
-   * Gathers all import declarations and separates them by their unique identifiers.
-   * Will assign a template identifier for side effects imports.
-   * @param statements The statements to search for import declarations.
-   *
-   * @remarks Distinguishes between the following import types:
-   *
-   * `import { X, Y... } from "module"` - a named import with an import clause that has named bindings - `{ X, Y... }`
-   *
-   * `import X from "module"` - a default import, it has an import clause without named bindings, it only has a name - `X`
-   *
-   * `import "module"` - a side effects import, it has no import clause
-   *
-   * It considers only top-level imports as valid, any imports that are not at the top of the file will be ignored.
-   */
-  private gatherImportDeclarations(
-    statements: ts.Statement[]
-  ): Map<string, ImportDeclarationMeta> {
-    const allImportedIdentifiers = new Map<string, ImportDeclarationMeta>();
-    let i = 0;
-    for (const statement of statements) {
-      if (!ts.isImportDeclaration(statement)) {
-        // import declarations are at the top of the file,
-        // so we can safely break when we reach a node that is not an import declaration
-        break;
-      }
-
-      if (!statement.importClause) {
-        // a side effects import declaration
-        const sideEffectsName = `${SIDE_EFFECTS_IMPORT_TEMPLATE_NAME}_${++i}`;
-        allImportedIdentifiers.set(sideEffectsName, {
-          identifiers: { name: sideEffectsName },
-          moduleName: this.getModuleSpecifierName(statement.moduleSpecifier),
-        });
-        continue;
-      }
-
-      const importClause = statement.importClause;
-      if (!importClause.namedBindings) {
-        // a default import declaration
-        allImportedIdentifiers.set(importClause.name.text, {
-          identifiers: { name: importClause.name.text },
-          moduleName: this.getModuleSpecifierName(statement.moduleSpecifier),
-        });
-        continue;
-      }
-
-      const namedBindings = importClause.namedBindings;
-      if (namedBindings && ts.isNamedImports(namedBindings)) {
-        // a named import declaration with a list of named bindings
-        for (const element of namedBindings.elements) {
-          const identifierName = element.propertyName
-            ? element.propertyName.text
-            : element.name.text;
-          const alias = element.propertyName ? element.name.text : undefined;
-          allImportedIdentifiers.set(identifierName, {
-            identifiers: {
-              name: identifierName,
-              alias,
-            },
-            moduleName: this.getModuleSpecifierName(statement.moduleSpecifier),
-          });
-        }
-      }
-    }
-
-    return allImportedIdentifiers;
-  }
-
-  /**
-   * Creates an import specifier with an optional alias.
-   * @param identifier The identifier to import.
-   */
-  private createImportSpecifierWithOptionalAlias(
-    identifier: Identifier
-  ): ts.ImportSpecifier {
-    // the last arg of `createImportSpecifier` is required - this is where the alias goes
-    // the second arg is optional, this is where the name goes, hence the following
-    const aliasOrName = identifier.alias || identifier.name;
-    return ts.factory.createImportSpecifier(
-      false, // is type only
-      identifier.alias
-        ? ts.factory.createIdentifier(identifier.name)
-        : undefined,
-      ts.factory.createIdentifier(aliasOrName)
-    );
-  }
-
-  /**
-   * Get a module specifier's node text representation.
-   * @param moduleSpecifier the specifier to get the name of.
-   * @remarks This method is used to get the name of a module specifier in an import declaration.
-   *  It should always be a string literal.
-   */
-  private getModuleSpecifierName(moduleSpecifier: ts.Expression): string {
-    if (ts.isStringLiteral(moduleSpecifier)) {
-      return moduleSpecifier.text;
-    }
-
-    // a module specifier should always be a string literal, so this should never be reached
-    throw new Error('Invalid module specifier.');
+    });
   }
 
   /**
@@ -1076,12 +653,12 @@ export class TypeScriptASTTransformer {
    */
   private createNodeRelationsMap(rootNode: ts.Node): Map<ts.Node, ts.Node> {
     const flatNodeRelations = new Map<ts.Node, ts.Node>();
-    function visit(node: ts.Node, parent: ts.Node | null) {
+    const visit = (node: ts.Node, parent: ts.Node | null): void => {
       if (parent) {
         flatNodeRelations.set(node, parent);
       }
       ts.forEachChild(node, (child) => visit(child, node));
-    }
+    };
 
     visit(rootNode, null);
     return flatNodeRelations;

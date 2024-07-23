@@ -1,12 +1,12 @@
 /** Schema interface for template dependencies */
 export interface TemplateDependency {
-	/** Add an identifier into `ngModule` imports metadata */
+	/** Add an identifier into `NgModule` imports metadata */
 	import?: string | string[];
 
-	/** Add an identifier into `ngModule` declarations metadata */
+	/** Add an identifier into `NgModule` declarations metadata */
 	declare?: string | string[];
 
-	/** Add an identifier into `ngModule` provides metadata */
+	/** Add an identifier into `NgModule` provides metadata */
 	provide?: string | string[];
 
 	/** Add an identifier into `ngModule` schema metadata */
@@ -15,10 +15,10 @@ export interface TemplateDependency {
 	/** The package/path(TBD) to import the dependency from */
 	from?: string;
 
-	/** Call `forRoot()` on modules when adding them to the `ngModule` imports metadata */
+	/** Call `forRoot()` on modules when adding them to the `NgModule` imports metadata */
 	root?: boolean;
 
-	/** Add an identifier into `ngModule` exports metadata */
+	/** Add an identifier into `NgModule` exports metadata */
 	export?: string | string[];
 
 	/** Describes a dependency for a standalone component's meta */
