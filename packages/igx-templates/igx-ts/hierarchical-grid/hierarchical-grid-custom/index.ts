@@ -121,7 +121,7 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 						break;
 					case "Cell Editing":
 						columnFeatures.push(`[editable]="true"`);
-						this.dependencies.push({ import: "FormsModule", from: "@angular/forms" });
+						this.dependencies.push({ import: "FormsModule", from: "@angular/forms", standalone: true });
 						break;
 					case "Row Selection":
 						const gridFeatureText = `rowSelection="multiple"`;
