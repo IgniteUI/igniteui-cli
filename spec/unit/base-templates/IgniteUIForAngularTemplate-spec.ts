@@ -1,7 +1,7 @@
-import { IgniteUIForAngularTemplate } from "@igniteui/angular-templates";
+import { IgniteUIForAngularTemplate, AngularTypeScriptFileUpdate } from "@igniteui/angular-templates";
 import {
 	FEED_ANGULAR, NPM_DOCK_MANAGER, NPM_ANGULAR, App, FS_TOKEN,
-	IFileSystem, ProjectConfig, TypeScriptFileUpdate, Util
+	IFileSystem, ProjectConfig, Util
 } from "@igniteui/cli-core";
 import * as path from "path";
 import { resetSpy } from "../../helpers/utils";
@@ -21,17 +21,16 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 		let helpers;
 		beforeEach(() => {
 			helpers = {
-				requireMock: require,
 				tsUpdateMock: jasmine.createSpyObj(
-					"TypeScriptFileUpdate", ["addRoute", "addDeclaration", "addNgModuleMeta", "finalize"]) as TypeScriptFileUpdate,
-				TypeScriptFileUpdate: (...args) => {
-					return helpers.tsUpdateMock;
-				}
-			};
+					"AngularTypeScriptFileUpdate", ["addRoute", "addNgModuleMeta", "finalize"]) as AngularTypeScriptFileUpdate,
+				AngularTypeScriptFileUpdate: () => helpers.tsUpdateMock,
+				requireMock: require
+			}
+
 			App.initialize();
 			// spy on require:
 			spyOn(require("module"), "_load").and.callFake((modulePath: string) => {
-				if (modulePath.endsWith("@igniteui/cli-core/typescript")) {
+				if (modulePath.endsWith("@igniteui/angular-templates")) {
 					return helpers;
 				} else if (modulePath.endsWith("@igniteui/cli-core/packages/components")) {
 					return { dv: ["igDvWidget"] };
@@ -39,7 +38,7 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			});
 			// spy on version due to require override
 			spyOn(Util, "version").and.returnValue("1.0.0");
-			spyOn(helpers, "TypeScriptFileUpdate").and.callThrough();
+			spyOn(helpers, "AngularTypeScriptFileUpdate").and.callThrough();
 			// return through function to get new obj ref each time
 			spyOn(ProjectConfig, "getConfig").and.callFake(() => ({ project: { sourceFiles: ["existing"] } }));
 			spyOn(ProjectConfig, "setConfig");
@@ -58,21 +57,31 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 				}
 			});
 			templ.registerInProject("target/path", "view name");
-			expect(helpers.TypeScriptFileUpdate)
-			.toHaveBeenCalledWith(path.join("target/path", "src/app/app-routing.module.ts"));
+			expect(helpers.AngularTypeScriptFileUpdate)
+				.toHaveBeenCalledWith(path.join("target/path", "src/app/app-routing.module.ts"), false, { indentSize: 2, singleQuotes: true });
 			expect(helpers.tsUpdateMock.addRoute).toHaveBeenCalledWith(
-				path.join("target/path", `src/app/view-name/view-name.component.ts`),
-				"view-name", //path
-				"view name" //text
+				{
+					modulePath: './view-name/view-name.component',
+					path: 'view-name',
+					identifierName: 'ViewNameComponent',
+					data: { text: 'view name'}
+				}
 			);
 
-			expect(helpers.TypeScriptFileUpdate)
-			.toHaveBeenCalledWith(path.join("target/path", "src/app/app.module.ts"));
-			expect(helpers.tsUpdateMock.addDeclaration).toHaveBeenCalledWith(
-				path.join("target/path", `src/app/view-name/view-name.component.ts`),
-				false // if added to a custom module => true
+			expect(helpers.AngularTypeScriptFileUpdate)
+				.toHaveBeenCalledWith(path.join("target/path", "src/app/app.module.ts"), false, { indentSize: 2, singleQuotes: true });
+			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith(
+				{
+					declare: [
+						"ViewNameComponent",
+					],
+					from: "./view-name/view-name.component",
+					export: []
+				},
+				jasmine.any(Object), // vars
+				true // multiline
 			);
-			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledTimes(0);
+
 			expect(helpers.tsUpdateMock.finalize).toHaveBeenCalled();
 			//config update:
 			expect(ProjectConfig.setConfig).toHaveBeenCalledTimes(0);
@@ -85,7 +94,8 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			templ.registerInProject("", "");
 			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith(
 				{ import: "test", from: "test" },
-				Util.applyDelimiters(templ.getBaseVariables(""), templ.delimiters.content)
+				Util.applyDelimiters(templ.getBaseVariables(""), templ.delimiters.content),
+				true
 			);
 			resetSpy(helpers.tsUpdateMock.addNgModuleMeta);
 
@@ -93,10 +103,14 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			templ.registerInProject("", "");
 			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith(
 				{ import: "test", from: "test" },
-				Util.applyDelimiters(templ.getBaseVariables(""), templ.delimiters.content));
+				Util.applyDelimiters(templ.getBaseVariables(""), templ.delimiters.content),
+				true
+			);
 			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith(
 				{ declare: "test2", provide: "test2" },
-				Util.applyDelimiters(templ.getBaseVariables(""), templ.delimiters.content));
+				Util.applyDelimiters(templ.getBaseVariables(""), templ.delimiters.content),
+				true
+			);
 
 			done();
 		});
@@ -112,7 +126,11 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			templ.registerInProject("target", "name");
 
 			expect(Util.relativePath).toHaveBeenCalledWith(mainPath, filePath, true, true);
-			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith({ from: "./relative/result/test" }, {});
+			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith(
+				{ from: "./relative/result/test" },
+				jasmine.any(Object), // vars
+				true // multiline
+			);
 
 			done();
 		});
@@ -124,14 +142,20 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			expect(helpers.tsUpdateMock.addRoute).toHaveBeenCalledTimes(0);
 
 			// just declare
-			expect(helpers.TypeScriptFileUpdate).toHaveBeenCalledTimes(1);
-			expect(helpers.TypeScriptFileUpdate)
-			.toHaveBeenCalledWith(path.join("target/path", "src/app/app.module.ts"));
-			expect(helpers.tsUpdateMock.addDeclaration).toHaveBeenCalledWith(
-				path.join("target/path", `src/app/view-name/view-name.component.ts`),
-				false // if added to a custom module => true
+			expect(helpers.AngularTypeScriptFileUpdate).toHaveBeenCalledTimes(1);
+			expect(helpers.AngularTypeScriptFileUpdate)
+				.toHaveBeenCalledWith(path.join("target/path", "src/app/app.module.ts"), false, { indentSize: 2, singleQuotes: true });
+			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith(
+				{
+					declare: [
+					  "ViewNameComponent",
+					],
+					from: "./view-name/view-name.component",
+					export: []
+				},
+				jasmine.any(Object), // vars
+				true // multiline
 			);
-			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledTimes(0);
 			expect(helpers.tsUpdateMock.finalize).toHaveBeenCalled();
 			done();
 		});

@@ -1,13 +1,15 @@
 import {
 	AddTemplateArgs, App, ControlExtraConfiguration, FS_TOKEN, IFileSystem, NPM_ANGULAR,
-	NPM_DOCK_MANAGER, Template, TemplateDependency, TypeScriptFileUpdate, Util, resolvePackage
+	NPM_DOCK_MANAGER, Template, TemplateDependency, Util, resolvePackage
 } from "@igniteui/cli-core";
+import { AngularTypeScriptFileUpdate } from "@igniteui/angular-templates";
 import * as path from "path";
 
 export class IgniteUIForAngularTemplate implements Template {
 	public components: string[];
 	public controlGroup: string;
 	public listInComponentTemplates: boolean = true;
+	public addAsNgModelDeclaration: boolean = true;
 	public listInCustomTemplates: boolean = false;
 	public id: string;
 	public name: string;
@@ -57,43 +59,48 @@ export class IgniteUIForAngularTemplate implements Template {
 		// which slows down execution of the entire component noticeably (template loading)
 		// https://www.typescriptlang.org/docs/handbook/modules.html#dynamic-module-loading-in-nodejs
 		// tslint:disable-next-line:variable-name
-		const TsUpdate: typeof TypeScriptFileUpdate =
+		const TsUpdate: typeof AngularTypeScriptFileUpdate =
 			// tslint:disable-next-line:no-submodule-imports
-			require("@igniteui/cli-core/typescript").TypeScriptFileUpdate;
+			require("@igniteui/angular-templates").AngularTypeScriptFileUpdate;
 
-		// standalone components
 		const mainModulePath = path.join(projectPath, `src/app/${modulePath}`);
+		const folderName = this.folderName(name);
+		const fileName = this.fileName(name);
+		const componentFilePath = path.join(projectPath, `src/app/${folderName}/${fileName}.component.ts`);
+		const className = `${Util.className(Util.nameFromPath(name))}Component`;
+		// standalone components
 		if (!this.fileExists(mainModulePath)) {
 			const appRoutesPath = "src/app/app.routes.ts";
-			const folderName = this.folderName(name);
-			const fileName = this.fileName(name);
 			if (!(options && options.skipRoute) && this.fileExists(appRoutesPath)) {
-				const rountesConfig = new TsUpdate(path.join(projectPath, appRoutesPath));
-				rountesConfig.addRoute(
-					path.join(projectPath, `src/app/${folderName}/${fileName}.component.ts`),
-					this.fileName(name),		//path
-					Util.nameFromPath(name)		//text
-				);
+				const routesConfigPath = path.join(projectPath, appRoutesPath);
+				const rountesConfig = new TsUpdate(routesConfigPath, true, { indentSize: 2, singleQuotes: true });
+				rountesConfig.addRoute({
+					modulePath: Util.relativePath(routesConfigPath, componentFilePath, true, true),
+					path: this.fileName(name),
+					data: { text: Util.nameFromPath(name) },
+					identifierName: className
+				});
+
+				rountesConfig.finalize();
 			}
 
-			const componentFile = new TsUpdate(path.join(projectPath, `src/app/${folderName}/${fileName}.component.ts`));
+			const componentFile = new TsUpdate(componentFilePath, true, { indentSize: 2, singleQuotes: true });
 			for (const dep of this.dependencies) {
 				if (dep.from && dep.from.startsWith(".")) {
 					// relative file dependency
 					const copy = Object.assign({}, dep);
 					copy.from = Util.relativePath(
-						path.join(projectPath, `src/app/${folderName}/${fileName}.component.ts`),
+						componentFilePath,
 						path.join(projectPath, copy.from!),
 						true,
 						true);
-					// can use addNgModuleMeta here instead?
-					componentFile.addStandaloneImport(copy,
+					componentFile.addStandaloneComponentMeta(dep,
 						Util.applyDelimiters(this.getBaseVariables(name), this.delimiters.content));
 					continue;
 				}
-
-				componentFile.addStandaloneImport(dep,
-					Util.applyDelimiters(this.getBaseVariables(name), this.delimiters.content));
+				componentFile.addStandaloneComponentMeta(dep,
+					Util.applyDelimiters(this.getBaseVariables(name), this.delimiters.content)
+				);
 			}
 
 			componentFile.finalize();
@@ -105,18 +112,29 @@ export class IgniteUIForAngularTemplate implements Template {
 			//1) import the component class name,
 			//2) and populate the Routes array with the path and component
 			//for example: { path: 'combo', component: ComboComponent }
-			const routingModule = new TsUpdate(path.join(projectPath, "src/app/app-routing.module.ts"));
-			routingModule.addRoute(
-				path.join(projectPath, `src/app/${this.folderName(name)}/${this.fileName(name)}.component.ts`),
-				this.fileName(name),		//path
-				Util.nameFromPath(name)		//text
-			);
+			const routingModulePath = path.join(projectPath, "src/app/app-routing.module.ts");
+			const routingModule = new TsUpdate(routingModulePath, false, { indentSize: 2, singleQuotes: true });
+			routingModule.addRoute({
+				modulePath: Util.relativePath(routingModulePath, componentFilePath, true, true),
+				path: this.fileName(name),
+				data: { text: Util.nameFromPath(name) },
+				identifierName: className
+			});
+
+			routingModule.finalize();
 		}
 
 		//3) add an import of the component class from its file location.
 		//4) populate the declarations portion of the @NgModule with the component class name.
-		const mainModule = new TsUpdate(mainModulePath);
-		this.addClassDeclaration(mainModule, projectPath, name, modulePath);
+		const mainModule = new TsUpdate(mainModulePath, false, { indentSize: 2, singleQuotes: true });
+		mainModule.addNgModuleMeta({
+				declare: this.addAsNgModelDeclaration ? [className] : [],
+				from: Util.relativePath(mainModulePath, componentFilePath, true, true),
+				export: modulePath !== "app.module.ts" ? [className] : []
+			},
+			Util.applyDelimiters(this.getBaseVariables(name), this.delimiters.content),
+			true // multiline
+		);
 
 		// import IgxModules and other dependencies
 		for (const dep of this.dependencies) {
@@ -125,12 +143,17 @@ export class IgniteUIForAngularTemplate implements Template {
 				const copy = Object.assign({}, dep);
 				copy.from = Util.relativePath(mainModulePath, path.join(projectPath, copy.from!), true, true);
 				mainModule.addNgModuleMeta(copy,
-					Util.applyDelimiters(this.getBaseVariables(name), this.delimiters.content));
+					Util.applyDelimiters(this.getBaseVariables(name), this.delimiters.content),
+					true // multiline
+				);
 			} else {
 				mainModule.addNgModuleMeta(dep,
-					Util.applyDelimiters(this.getBaseVariables(name), this.delimiters.content));
+					Util.applyDelimiters(this.getBaseVariables(name), this.delimiters.content),
+					true // multiline
+				);
 			}
 		}
+
 		mainModule.finalize();
 	}
 
@@ -141,12 +164,6 @@ export class IgniteUIForAngularTemplate implements Template {
 
 	public fileExists(filePath: string): boolean {
 		return App.container.get<IFileSystem>(FS_TOKEN).fileExists(filePath);
-	}
-
-	protected addClassDeclaration(mainModule: TypeScriptFileUpdate, projPath: string, name: string, modulePath: string) {
-		mainModule.addDeclaration(
-			path.join(projPath, `src/app/${this.folderName(name)}/${this.fileName(name)}.component.ts`),
-			modulePath !== "app.module.ts");
 	}
 
 	protected getBaseVariables(name: string): { [key: string]: string } {
