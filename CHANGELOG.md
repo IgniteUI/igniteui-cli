@@ -1,3 +1,10 @@
+# [13.4.1](https://github.com/IgniteUI/igniteui-cli/compare/v13.4.0...v13.4.1) (2024-07-24)
+
+## What's Changed
+* chore(*): update to ng 18.1 by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1287
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.4.0...v13.4.1
+
 # [13.4.0](https://github.com/IgniteUI/igniteui-cli/compare/v13.3.3...v13.4.0) (2024-07-22)
 
 🎉 This update includes:
