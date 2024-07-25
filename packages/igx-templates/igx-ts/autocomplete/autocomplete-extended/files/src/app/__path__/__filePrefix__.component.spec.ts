@@ -23,7 +23,8 @@ describe('<%=ClassName%>Component', () => {
         IgxAutocompleteModule,
         IgxInputGroupModule,
         IgxToastModule,
-        NoopAnimationsModule]
+        NoopAnimationsModule
+      ]
     })
       .compileComponents();
   }));
