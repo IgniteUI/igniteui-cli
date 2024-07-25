@@ -1,4 +1,3 @@
-import { TypeScriptFileUpdate } from "@igniteui/cli-core";
 import { IgniteUIForWebComponentsTemplate } from "../../../../../lib/templates/IgniteUIForWebComponentsTemplate";
 
 class IgcChipTemplate extends IgniteUIForWebComponentsTemplate {
@@ -11,9 +10,6 @@ class IgcChipTemplate extends IgniteUIForWebComponentsTemplate {
 		this.projectType = "igc-ts";
 		this.name = "Chip";
 		this.description = "Basic IgcChip";
-	}
-	protected addClassDeclaration(mainModule: TypeScriptFileUpdate, projPath: string, name: string, modulePath: string) {
-		// not applicable with custom module
 	}
 }
 module.exports = new IgcChipTemplate();

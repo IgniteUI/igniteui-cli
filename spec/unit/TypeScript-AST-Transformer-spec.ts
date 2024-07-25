@@ -67,6 +67,42 @@ describe('TypeScript AST Transformer', () => {
       expect(result).toEqual(`x.myGenericFunction<number>(5)`);
     });
 
+    it('should successfully add and modify arguments in a call expression', () => {
+      FILE_CONTENT = `myMethodCall(arg1, arg2, arg3);`;
+      sourceFile = ts.createSourceFile(
+        FILE_NAME,
+        FILE_CONTENT,
+        ts.ScriptTarget.Latest,
+        true
+      );
+      astTransformer = new TypeScriptASTTransformer(sourceFile);
+
+      const visitCondition = (node) => ts.isCallExpression(node);
+      astTransformer.requestNewArgumentInMethodCallExpression(
+        visitCondition,
+        ts.factory.createIdentifier('arg4'),
+        1, // position
+        true // override
+      );
+      let result = astTransformer.finalize();
+      expect(result).toEqual('myMethodCall(arg1, arg4, arg3);\n');
+
+      astTransformer.requestNewArgumentInMethodCallExpression(
+        visitCondition,
+        ts.factory.createIdentifier('arg4'),
+        2 // position
+      );
+      result = astTransformer.finalize();
+      expect(result).toEqual('myMethodCall(arg1, arg2, arg4, arg3);\n');
+
+      astTransformer.requestNewArgumentInMethodCallExpression(
+        visitCondition,
+        ts.factory.createIdentifier('arg5')
+      );
+      result = astTransformer.finalize();
+      expect(result).toEqual('myMethodCall(arg1, arg2, arg3, arg5);\n');
+    });
+
     it("should correctly find a node's ancenstor", () => {
       FILE_CONTENT = `const myVar: string = "hello";`;
       sourceFile = ts.createSourceFile(
@@ -152,21 +188,6 @@ describe('TypeScript AST Transformer', () => {
         ts.isObjectLiteralExpression(result.parent) &&
           result.parent.properties.length === 2
       ).toBeTruthy('Found incorrect property assignment.');
-    });
-
-    it('should determine correctly if an entity is an IPropertyAssignment', () => {
-      const propertyAssignment = {
-        name: 'test',
-        value: ts.factory.createStringLiteral('value'),
-      };
-      expect(
-        astTransformer.isPropertyAssignment(propertyAssignment)
-      ).toBeTruthy();
-
-      const notPropertyAssignment = { name: 'test', value: 'value' };
-      expect(
-        astTransformer.isPropertyAssignment(notPropertyAssignment)
-      ).toBeFalsy();
     });
   });
 
@@ -446,13 +467,6 @@ describe('TypeScript AST Transformer', () => {
       );
       expect(result).toEqual(`[\n    "new-value",\n    5\n]`);
     });
-
-    it('should find an element in an array literal by a given condition', () => {
-      const result = astTransformer.findElementInArrayLiteral(
-        (node) => ts.isNumericLiteral(node) && node.text === '2'
-      );
-      expect(result).toBeDefined();
-    });
   });
 
   describe('Imports', () => {
@@ -527,8 +541,8 @@ describe('TypeScript AST Transformer', () => {
         expect(result).toEqual(`import SomeMock from "module";`);
       });
 
-      // TODO: maybe?
-      xit('should create an import declaration with a namespace import', () => {
+      it('should create an import declaration with a namespace import', () => {
+        pending('consider adding support for namesapced imports');
         const importDeclaration = astTransformer.createImportDeclaration({
           identifiers: { name: '*', alias: 'mock' },
           moduleName: 'another-module',
@@ -645,61 +659,35 @@ describe('TypeScript AST Transformer', () => {
             `import { mock, AnotherMock, YetAnotherMock as yetAnotherMock } from "module";\n`
           );
         });
-      });
 
-      describe('Imports collision detection', () => {
-        it('should detect collisions between existing imports', () => {
-          const identifier = { name: 'mock' };
-          expect(astTransformer.importDeclarationCollides(identifier)).toBe(
-            true
-          );
+        it('should not add an import declaration if the identifier is already imported', () => {
           astTransformer.requestNewImportDeclaration({
-            identifiers: identifier,
+            identifiers: { name: 'mock' },
             moduleName: 'module',
           });
 
           const result = astTransformer.finalize();
-          expect(result).toEqual(`import { mock, mock } from "module";\n`);
+          expect(result).toEqual(`import { mock } from "module";\n`);
         });
 
-        it('should detect collisions between import declarations with the same alias', () => {
-          let identifier = { name: 'newMock', alias: 'aliasedMock' };
-          expect(
-            TypeScriptASTTransformer.checkForCollidingImports(sourceFile, [
-              identifier,
-            ])
-          ).toBe(false);
-
+        it('should not add an import declaration if the identifier is aliased to an existing identifier', () => {
           astTransformer.requestNewImportDeclaration({
-            identifiers: identifier,
-            moduleName: 'another/module',
+            identifiers: { name: 'someImport', alias: 'mock' },
+            moduleName: 'module',
           });
-          sourceFile = astTransformer.applyChanges();
-          expect(
-            TypeScriptASTTransformer.checkForCollidingImports(sourceFile, [
-              identifier,
-            ])
-          ).toBe(true);
-          astTransformer = new TypeScriptASTTransformer(sourceFile);
-
-          identifier = { name: 'someMock', alias: 'aliasedMock' };
-          astTransformer.requestNewImportDeclaration({
-            identifiers: identifier,
-            moduleName: 'yet/another/module',
-          });
-          sourceFile = astTransformer.applyChanges();
-          expect(
-            TypeScriptASTTransformer.checkForCollidingImports(sourceFile, [
-              identifier,
-            ])
-          ).toBe(true);
-          astTransformer = new TypeScriptASTTransformer(sourceFile);
 
           const result = astTransformer.finalize();
-          expect(result).toEqual(
-            `import { mock } from "module";\nimport { newMock as aliasedMock } from "another/module";\n` +
-              `import { someMock as aliasedMock } from "yet/another/module";\n`
-          );
+          expect(result).toEqual(`import { mock } from "module";\n`);
+        });
+
+        it('should make sure that multiple import declaration identifiers are not added if they are the same', () => {
+          astTransformer.requestNewImportDeclaration({
+            identifiers: [{ name: 'mock' }, { name: 'mock' }],
+            moduleName: 'module',
+          });
+
+          const result = astTransformer.finalize();
+          expect(result).toEqual(`import { mock } from "module";\n`);
         });
       });
     });

@@ -1,7 +1,6 @@
-import { IgniteUIForAngularTemplate } from "@igniteui/angular-templates";
+import { IgniteUIForAngularTemplate, AngularTypeScriptFileUpdate } from "@igniteui/angular-templates";
 import {
-	App, FS_TOKEN, GoogleAnalytics, IFileSystem, PackageManager, ProjectConfig,
-	TypeScriptFileUpdate, TypeScriptUtils, Util
+	App, GoogleAnalytics, PackageManager, ProjectConfig, TypeScriptUtils, Util
 } from "@igniteui/cli-core";
 import * as path from "path";
 import * as ts from "typescript";
@@ -134,10 +133,9 @@ describe("Unit - Add command", () => {
 		spyOn(TypeScriptUtils, "getFileSource").and.returnValue(
 			ts.createSourceFile("test-file-name", ``, ts.ScriptTarget.Latest, true)
 		);
-		const routeSpy = spyOn(TypeScriptFileUpdate.prototype, "addRoute");
-		const declarationSpy = spyOn(TypeScriptFileUpdate.prototype, "addDeclaration").and.callThrough();
-		const ngMetaSpy = spyOn(TypeScriptFileUpdate.prototype, "addNgModuleMeta");
-		const finalizeSpy = spyOn(TypeScriptFileUpdate.prototype, "finalize");
+		const routeSpy = spyOn(AngularTypeScriptFileUpdate.prototype, "addRoute");
+		const ngMetaSpy = spyOn(AngularTypeScriptFileUpdate.prototype, "addNgModuleMeta");
+		const finalizeSpy = spyOn(AngularTypeScriptFileUpdate.prototype, "finalize");
 		const mockTemplate = new IgniteUIForAngularTemplate("test");
 		mockTemplate.packages = [];
 		mockTemplate.dependencies = [];
@@ -192,20 +190,20 @@ describe("Unit - Add command", () => {
 			directoryPath, "test-file-name",
 			jasmine.objectContaining({ modulePath: "myCustomModule/my-custom-module.module.ts" })
 		);
-		// expect(sourceFilesSpy).toHaveBeenCalledTimes(1);
+
 		expect(routeSpy).toHaveBeenCalledTimes(1);
-		expect(declarationSpy).toHaveBeenCalledTimes(1);
-		expect(declarationSpy).toHaveBeenCalledWith(
-			path.join(directoryPath, `src/app/test-file-name/test-file-name.component.ts`),
-			true);
 		expect(ngMetaSpy).toHaveBeenCalledTimes(1);
 		expect(ngMetaSpy).toHaveBeenCalledWith({
-			declare: null,
-			from: "../test-file-name/test-file-name.component",
-			// tslint:disable-next-line:object-literal-sort-keys
-			export: null
-		});
-		expect(finalizeSpy).toHaveBeenCalledTimes(1);
+				declare: [
+					"TestFileNameComponent"
+				],
+				from: "../test-file-name/test-file-name.component",
+				export: [ 'TestFileNameComponent' ]
+			},
+			jasmine.any(Object),
+			true
+		);
+		expect(finalizeSpy).toHaveBeenCalledTimes(2);
 		expect(addCmd.templateManager.updateProjectConfiguration).toHaveBeenCalledTimes(1);
 		done();
 	});
@@ -219,10 +217,10 @@ describe("Unit - Add command", () => {
 		spyOn(TypeScriptUtils, "getFileSource").and.returnValue(
 			ts.createSourceFile("test-file-name", ``, ts.ScriptTarget.Latest, true)
 		);
-		const routeSpy = spyOn(TypeScriptFileUpdate.prototype, "addRoute");
-		const declarationSpy = spyOn(TypeScriptFileUpdate.prototype, "addDeclaration").and.callThrough();
-		const ngMetaSpy = spyOn(TypeScriptFileUpdate.prototype, "addNgModuleMeta");
-		const finalizeSpy = spyOn(TypeScriptFileUpdate.prototype, "finalize");
+		const routeSpy = spyOn(AngularTypeScriptFileUpdate.prototype, "addRoute");
+		// const declarationSpy = spyOn(AngularTypeScriptFileUpdate.prototype, "addDeclaration").and.callThrough();
+		const ngMetaSpy = spyOn(AngularTypeScriptFileUpdate.prototype, "addNgModuleMeta");
+		const finalizeSpy = spyOn(AngularTypeScriptFileUpdate.prototype, "finalize");
 		const mockTemplate = new AngularTemplate("test");
 		mockTemplate.packages = [];
 		mockTemplate.dependencies = [];
@@ -249,7 +247,6 @@ describe("Unit - Add command", () => {
 		spyOn(PackageManager, "ensureIgniteUISource");
 		await addCmd.execute({
 			name: "test-file-name", template: "CustomTemplate",
-			// tslint:disable-next-line:object-literal-sort-keys
 			module: "myCustomModule/my-custom-module.module.ts"
 		});
 		expect(addCmd.addTemplate).toHaveBeenCalledWith(
@@ -265,21 +262,15 @@ describe("Unit - Add command", () => {
 		expect(mockTemplate.registerInProject).toHaveBeenCalledTimes(1);
 		expect(mockTemplate.registerInProject).toHaveBeenCalledWith(
 			directoryPath, "test-file-name",
-			jasmine.objectContaining({ modulePath: "myCustomModule/my-custom-module.module.ts" }));
-		// expect(sourceFilesSpy).toHaveBeenCalledTimes(1);
+			jasmine.objectContaining({ modulePath: "myCustomModule/my-custom-module.module.ts" }));;
 		expect(routeSpy).toHaveBeenCalledTimes(1);
-		expect(declarationSpy).toHaveBeenCalledTimes(1);
-		expect(declarationSpy).toHaveBeenCalledWith(
-			path.join(directoryPath, `src/app/components/test-file-name/test-file-name.component.ts`),
-			true);
 		expect(ngMetaSpy).toHaveBeenCalledTimes(1);
 		expect(ngMetaSpy).toHaveBeenCalledWith({
-			declare: null,
+			declare: ["TestFileNameComponent"],
 			from: "../components/test-file-name/test-file-name.component",
-			// tslint:disable-next-line:object-literal-sort-keys
-			export: null
+			export: [ 'TestFileNameComponent' ]
 		});
-		expect(finalizeSpy).toHaveBeenCalledTimes(1);
+		expect(finalizeSpy).toHaveBeenCalledTimes(2);
 		expect(addCmd.templateManager.updateProjectConfiguration).toHaveBeenCalledTimes(1);
 		done();
 	});

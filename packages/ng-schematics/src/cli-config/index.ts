@@ -1,6 +1,8 @@
+import * as ts from "typescript";
 import { DependencyNotFoundException } from "@angular-devkit/core";
 import { chain, FileDoesNotExistException, Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
-import { addClassToBody, NPM_ANGULAR, resolvePackage, TypeScriptFileUpdate } from "@igniteui/cli-core";
+import { addClassToBody, TypeScriptFormattingService, FormatSettings, NPM_ANGULAR, resolvePackage, TypeScriptASTTransformer, TypeScriptUtils } from "@igniteui/cli-core";
+import { AngularTypeScriptFileUpdate } from "@igniteui/angular-templates";
 import { createCliConfig } from "../utils/cli-config";
 import { setVirtual } from "../utils/NgFileSystem";
 import { addFontsToIndexHtml, getProjects, importDefaultTheme } from "../utils/theme-import";
@@ -60,17 +62,49 @@ function importBrowserAnimations(): Rule {
 		const projects = await getProjects(tree);
 		projects.forEach(project => {
 			// TODO: Resolve hardcoded paths instead
-			const moduleFile = `${project.sourceRoot}/app/app.module.ts`;
-			if (tree.exists(moduleFile)) {
-				const mainModule = new TypeScriptFileUpdate(moduleFile);
+			const moduleFilePath = `${project.sourceRoot}/app/app.module.ts`;
+			if (tree.exists(moduleFilePath)) {
+				const mainModule = new AngularTypeScriptFileUpdate(
+					moduleFilePath,
+					false,
+					{
+						indentSize: 4,
+						convertTabsToSpaces: false,
+						singleQuotes: false
+					});
 				mainModule.addNgModuleMeta({ import: "BrowserAnimationsModule", from: "@angular/platform-browser/animations" });
 				mainModule.finalize();
 			}
-			const appConfigFile = `${project.sourceRoot}/app/app.config.ts`;
-			if (tree.exists(appConfigFile)) {
-				const appConfig = new TypeScriptFileUpdate(appConfigFile);
-				appConfig.addAppConfigProvider({ provide: "provideAnimations", from: "@angular/platform-browser/animations" });
-				appConfig.finalize();
+			const appConfigFilePath = `${project.sourceRoot}/app/app.config.ts`;
+			if (tree.exists(appConfigFilePath)) {
+				const sourceFile = TypeScriptUtils.getFileSource(appConfigFilePath);
+				const formatSettings: FormatSettings = {
+					indentSize: 4,
+					convertTabsToSpaces: false,
+					singleQuotes: false
+				};
+				const configTransformer = new TypeScriptASTTransformer(sourceFile, undefined, undefined, formatSettings);
+				const providerMeta = { provide: "provideAnimations", from: "@angular/platform-browser/animations" };
+				if (!configTransformer.importDeclarationCollides({name: providerMeta.provide})) {
+					configTransformer.requestNewImportDeclaration({
+						identifiers: { name: providerMeta.provide },
+						moduleName: providerMeta.from
+					});
+				}
+
+				configTransformer
+					.requestNewMembersInArrayLiteral((node) =>
+						!!configTransformer.findNodeAncestor(node, (node) => ts.isPropertyAssignment(node) &&
+							node.name.getText() === "providers" &&
+							ts.isObjectLiteralExpression(node.parent) &&
+							ts.isArrayLiteralExpression(node.initializer) &&
+							!node.initializer.elements.some(el => ts.isCallExpression(el) && el.expression.getText() === providerMeta.provide) &&
+							node.initializer.elements.some(el => ts.isCallExpression(el) && el.expression.getText() === "provideRouter")),
+					[ts.factory.createCallExpression(ts.factory.createIdentifier(providerMeta.provide), undefined, [])]
+				)
+
+				const result = configTransformer.finalize();
+				TypeScriptUtils.saveFile(appConfigFilePath, result);
 			}
 		});
 	};

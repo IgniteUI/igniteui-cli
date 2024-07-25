@@ -1,7 +1,8 @@
 // tslint:disable:no-implicit-dependencies
 import { workspaces } from "@angular-devkit/core";
 import { Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
-import { App, createWorkspaceHost, FS_TOKEN, FS_TYPE_TOKEN, FsTypes, IFileSystem, TypeScriptFileUpdate } from "@igniteui/cli-core";
+import { App, createWorkspaceHost, FS_TOKEN, FS_TYPE_TOKEN, FsTypes, IFileSystem, TypeScriptUtils } from "@igniteui/cli-core";
+import { AngularTypeScriptFileUpdate } from "@igniteui/angular-templates";
 
 //#region Temp duplicate of schematics pack fs
 export class NgTreeFileSystem implements IFileSystem {
@@ -47,9 +48,13 @@ export default function(): Rule {
 
 		if (tree.exists(moduleFile)) {
 			setVirtual(tree);
-			const mainModule = new TypeScriptFileUpdate(moduleFile);
-			mainModule.addNgModuleMeta({ import: "HammerModule", from: "@angular/platform-browser" });
-			mainModule.finalize();
+			const mainModule = new AngularTypeScriptFileUpdate(moduleFile, false, { indentSize: 2 });
+			mainModule.addNgModuleMeta(
+				{ import: "HammerModule", from: "@angular/platform-browser" },
+				null, // vars
+				true // multiline
+			);
+			TypeScriptUtils.saveFile(moduleFile, mainModule.finalize());
 		}
 	};
 }

@@ -11,7 +11,7 @@ export const routes: Routes = [
 ];
 
 @NgModule({
-	imports: [RouterModule.forRoot(routes, { bindToComponentInputs: true }), ErrorRoutingModule],
+	imports: [RouterModule.forRoot(routes), ErrorRoutingModule],
 	exports: [RouterModule, ErrorRoutingModule]
 })
 export class AppRoutingModule { }

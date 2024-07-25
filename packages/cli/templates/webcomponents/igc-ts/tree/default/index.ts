@@ -1,4 +1,3 @@
-import { TypeScriptFileUpdate } from "@igniteui/cli-core";
 import { IgniteUIForWebComponentsTemplate } from "../../../../../lib/templates/IgniteUIForWebComponentsTemplate";
 
 class IgcTreeTemplate extends IgniteUIForWebComponentsTemplate {
@@ -17,9 +16,6 @@ class IgcTreeTemplate extends IgniteUIForWebComponentsTemplate {
 			"igniteui-webcomponents-inputs@~4.2.5",
 			"igniteui-webcomponents-layouts@~4.2.5"
 		];
-	}
-	protected addClassDeclaration(mainModule: TypeScriptFileUpdate, projPath: string, name: string, modulePath: string) {
-		// not applicable with custom module
 	}
 }
 module.exports = new IgcTreeTemplate();
