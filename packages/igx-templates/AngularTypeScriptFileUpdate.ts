@@ -37,9 +37,10 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
   constructor(
     protected filePath: string,
     private standalone: boolean = false,
-    protected formatSettings?: FormatSettings
+    protected formatSettings?: FormatSettings,
+    compilerOptions?: ts.CompilerOptions
   ) {
-    super(filePath, formatSettings);
+    super(filePath, formatSettings, compilerOptions);
   }
 
   //#region Public API

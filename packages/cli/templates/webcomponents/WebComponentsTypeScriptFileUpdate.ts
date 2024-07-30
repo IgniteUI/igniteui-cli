@@ -13,8 +13,12 @@ import {
 } from '@igniteui/cli-core';
 
 export class WebComponentsTypeScriptFileUpdate extends TypeScriptFileUpdate {
-	constructor(public filePath: string, formatSettings?: FormatSettings) {
-		super(filePath, formatSettings);
+	constructor(
+		public filePath: string,
+		formatSettings?: FormatSettings,
+		compilerOptions?: ts.CompilerOptions
+	) {
+		super(filePath, formatSettings, compilerOptions);
 	}
 
 	//#region Overridden Public API
