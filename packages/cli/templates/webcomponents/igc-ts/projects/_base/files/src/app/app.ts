@@ -4,7 +4,7 @@ import { customElement } from 'lit/decorators.js';
 import { routes } from './app-routing.js';
 
 @customElement('app-root')
-export class App extends LitElement {
+export default class App extends LitElement {
   static styles = css`
     router-outlet {
       width: 100%;
