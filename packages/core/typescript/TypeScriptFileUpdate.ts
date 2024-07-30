@@ -1,5 +1,5 @@
 import * as ts from 'typescript';
-import { TypeScriptASTTransformer } from './TypeScriptASTTransformer';
+import { TypeScriptAstTransformer } from './TypeScriptAstTransformer';
 import { TypeScriptUtils } from './TypeScriptUtils';
 import {
   PropertyAssignmentWithStringLiteralValueCondition,
@@ -23,7 +23,7 @@ import {
 } from '../types';
 
 export abstract class TypeScriptFileUpdate {
-  protected readonly astTransformer: TypeScriptASTTransformer;
+  protected readonly astTransformer: TypeScriptAstTransformer;
 
   /**
    * Creates a new TypeScriptFileUpdate instance for the given file.
@@ -36,7 +36,7 @@ export abstract class TypeScriptFileUpdate {
     protected formatSettings?: FormatSettings,
     compilerOptions?: ts.CompilerOptions
   ) {
-    this.astTransformer = new TypeScriptASTTransformer(
+    this.astTransformer = new TypeScriptAstTransformer(
       TypeScriptUtils.getFileSource(filePath, compilerOptions?.jsx > 0),
       TS_PRINTER_OPTIONS,
       compilerOptions,
@@ -278,7 +278,7 @@ export abstract class TypeScriptFileUpdate {
   /**
    * Creates a side effects import declaration for a given module. Checks if the import has been added already.
    * @param moduleName The name of the module to create an import for.
-   * @see {@link TypeScriptASTTransformer.createImportDeclaration}
+   * @see {@link TypeScriptAstTransformer.createImportDeclaration}
    */
   protected requestSideEffectsImportForModule(moduleName: string): void {
     const importMeta = {
@@ -295,7 +295,7 @@ export abstract class TypeScriptFileUpdate {
   /**
    * Adds an import declaration for an identifier that exists in a route node. Checks if it does not collide with other imports first.
    * @param route The route that contains an identifier to create a declaration for.
-   * @see {@link TypeScriptASTTransformer.createImportDeclaration}
+   * @see {@link TypeScriptAstTransformer.createImportDeclaration}
    */
   protected requestImportForRouteIdentifier(
     route: RouteLike,

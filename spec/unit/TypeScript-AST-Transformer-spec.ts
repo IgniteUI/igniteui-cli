@@ -1,12 +1,12 @@
-import { TypeScriptASTTransformer } from '../../packages/core/typescript/TypeScriptASTTransformer';
 import * as ts from 'typescript';
+import { TypeScriptAstTransformer } from '../../packages/core/typescript/TypeScriptAstTransformer';
 
 const FILE_NAME = 'test-file.ts';
 let FILE_CONTENT = ``;
 
 describe('TypeScript AST Transformer', () => {
   let sourceFile: ts.SourceFile;
-  let astTransformer: TypeScriptASTTransformer;
+  let astTransformer: TypeScriptAstTransformer;
 
   const printer = ts.createPrinter();
 
@@ -19,7 +19,7 @@ describe('TypeScript AST Transformer', () => {
         ts.ScriptTarget.Latest,
         true
       );
-      astTransformer = new TypeScriptASTTransformer(sourceFile);
+      astTransformer = new TypeScriptAstTransformer(sourceFile);
 
       const result = astTransformer.findVariableDeclaration('myVar', 'string');
       expect(result).toBeDefined();
@@ -33,7 +33,7 @@ describe('TypeScript AST Transformer', () => {
         ts.ScriptTarget.Latest,
         true
       );
-      astTransformer = new TypeScriptASTTransformer(sourceFile);
+      astTransformer = new TypeScriptAstTransformer(sourceFile);
 
       const result = astTransformer.findVariableDeclaration('myVar', 'string');
       expect(result).toBeDefined();
@@ -46,7 +46,7 @@ describe('TypeScript AST Transformer', () => {
         ts.ScriptTarget.Latest,
         true
       );
-      astTransformer = new TypeScriptASTTransformer(sourceFile);
+      astTransformer = new TypeScriptAstTransformer(sourceFile);
 
       const typeArg = ts.factory.createKeywordTypeNode(
         ts.SyntaxKind.NumberKeyword
@@ -75,7 +75,7 @@ describe('TypeScript AST Transformer', () => {
         ts.ScriptTarget.Latest,
         true
       );
-      astTransformer = new TypeScriptASTTransformer(sourceFile);
+      astTransformer = new TypeScriptAstTransformer(sourceFile);
 
       const visitCondition = (node) => ts.isCallExpression(node);
       astTransformer.requestNewArgumentInMethodCallExpression(
@@ -111,7 +111,7 @@ describe('TypeScript AST Transformer', () => {
         ts.ScriptTarget.Latest,
         true
       );
-      astTransformer = new TypeScriptASTTransformer(sourceFile);
+      astTransformer = new TypeScriptAstTransformer(sourceFile);
 
       const targetChild = astTransformer
         .findVariableDeclaration('myVar', 'string')
@@ -132,7 +132,7 @@ describe('TypeScript AST Transformer', () => {
         ts.ScriptTarget.Latest,
         true
       );
-      astTransformer = new TypeScriptASTTransformer(sourceFile);
+      astTransformer = new TypeScriptAstTransformer(sourceFile);
 
       const result = astTransformer.findPropertyAssignment(
         (node) =>
@@ -149,7 +149,7 @@ describe('TypeScript AST Transformer', () => {
         ts.ScriptTarget.Latest,
         true
       );
-      astTransformer = new TypeScriptASTTransformer(sourceFile);
+      astTransformer = new TypeScriptAstTransformer(sourceFile);
 
       const result = astTransformer.findPropertyAssignment(
         (node) =>
@@ -173,7 +173,7 @@ describe('TypeScript AST Transformer', () => {
         ts.ScriptTarget.Latest,
         true
       );
-      astTransformer = new TypeScriptASTTransformer(sourceFile);
+      astTransformer = new TypeScriptAstTransformer(sourceFile);
 
       const result = astTransformer.findPropertyAssignment(
         (node) =>
@@ -200,7 +200,7 @@ describe('TypeScript AST Transformer', () => {
         ts.ScriptTarget.Latest,
         true
       );
-      astTransformer = new TypeScriptASTTransformer(sourceFile);
+      astTransformer = new TypeScriptAstTransformer(sourceFile);
     });
 
     it('should add member to an object literal', () => {
@@ -303,7 +303,7 @@ describe('TypeScript AST Transformer', () => {
         ts.ScriptTarget.Latest,
         true
       );
-      astTransformer = new TypeScriptASTTransformer(sourceFile);
+      astTransformer = new TypeScriptAstTransformer(sourceFile);
     });
 
     it('should append element to an array literal', () => {
@@ -368,7 +368,7 @@ describe('TypeScript AST Transformer', () => {
         ts.ScriptTarget.Latest,
         true
       );
-      astTransformer = new TypeScriptASTTransformer(sourceFile);
+      astTransformer = new TypeScriptAstTransformer(sourceFile);
 
       const anchor = {
         name: 'anchor',
@@ -479,7 +479,7 @@ describe('TypeScript AST Transformer', () => {
           ts.ScriptTarget.Latest,
           true
         );
-        astTransformer = new TypeScriptASTTransformer(sourceFile);
+        astTransformer = new TypeScriptAstTransformer(sourceFile);
       });
 
       it('should create an import declaration', () => {
@@ -566,7 +566,7 @@ describe('TypeScript AST Transformer', () => {
           ts.ScriptTarget.Latest,
           true
         );
-        astTransformer = new TypeScriptASTTransformer(sourceFile);
+        astTransformer = new TypeScriptAstTransformer(sourceFile);
       });
       describe('Adding imports', () => {
         it('should add an import declaration', () => {

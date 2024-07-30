@@ -24,7 +24,7 @@ import {
 } from './TransformerFactories';
 import { TypeScriptExpressionCollector } from './TypeScriptExpressionCollector';
 
-export class TypeScriptASTTransformer {
+export class TypeScriptAstTransformer {
   private _printer: ts.Printer | undefined;
   private _expressionCollector: TypeScriptExpressionCollector;
   private _flatNodeRelations: Map<ts.Node, ts.Node>;
@@ -319,8 +319,8 @@ export class TypeScriptASTTransformer {
    * @param visitCondition The condition by which the array literal expression is found.
    * @param elements The elements that will be added to the array literal.
    * @param prepend If the elements should be added at the beginning of the array.
-   * @anchorElement The element to anchor the new elements to.
-   * @multiline Whether the array literal should be multiline.
+   * @param anchorElement The element to anchor the new elements to.
+   * @param multiline Whether the array literal should be multiline.
    * @remarks The `anchorElement` must match the type of the elements in the collection.
    */
   public requestNewMembersInArrayLiteral(
@@ -334,9 +334,9 @@ export class TypeScriptASTTransformer {
    * Creates a request that will resolve during {@link finalize} which adds a new element to an array literal expression.
    * @param visitCondition The condition by which the array literal expression is found.
    * @param elements The elements that will be added to the array literal
-   * @prepend If the elements should be added at the beginning of the array.
-   * @anchorElement The element to anchor the new elements to.
-   * @multiline Whether the array literal should be multiline.
+   * @param prepend If the elements should be added at the beginning of the array.
+   * @param anchorElement The element to anchor the new elements to.
+   * @param multiline Whether the array literal should be multiline.
    * @remarks The `anchorElement` must match the type of the elements in the collection.
    */
   public requestNewMembersInArrayLiteral(
