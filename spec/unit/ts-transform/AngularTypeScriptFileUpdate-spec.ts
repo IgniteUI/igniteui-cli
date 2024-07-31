@@ -811,7 +811,7 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
             EOL +
             `@NgModule({` +
             EOL +
-            `    imports: [CommonModule, RouterModule.forRoot()]` +
+            `    imports: [CommonModule, RouterModule.forRoot([])]` +
             EOL +
             `})` +
             EOL +
@@ -1250,7 +1250,7 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
             EOL +
             `        TestBed.configureTestingModule({` +
             EOL +
-            `            imports: [RouterModule.forRoot()]` +
+            `            imports: [RouterModule.forRoot([])]` +
             EOL +
             `        }).compileComponents();` +
             EOL +

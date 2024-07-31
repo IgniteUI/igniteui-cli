@@ -513,19 +513,31 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
    * Calls `forRoot` on a module identifier.
    * @param dep The dependency to add to the module's metadata.
    * @param copy The copy of the module's metadata.
+   * @param args The arguments to pass to the `forRoot` call.
    */
   private addRootToModule(
     dep: TemplateDependency,
-    copy: AngularDecoratorMetaTarget
+    copy: AngularDecoratorMetaTarget,
+    args?: ts.Expression | ts.Expression[]
   ) {
     if (dep.root && copy.imports.length > 0) {
       // add forRoot to the module
+      let forRootArgs: ts.Expression[] = [
+        this.astTransformer.createArrayLiteralExpression([]),
+      ];
+      if (args) {
+        forRootArgs = Array.isArray(args)
+          ? args
+          : [this.astTransformer.createArrayLiteralExpression([args])];
+      }
       copy.imports = copy.imports.map((i) =>
         this.astTransformer.printer.printNode(
           ts.EmitHint.Unspecified,
           this.astTransformer.createCallExpression(
             i,
-            NG_FOR_ROOT_IDENTIFIER_NAME
+            NG_FOR_ROOT_IDENTIFIER_NAME,
+            undefined, // type args
+            forRootArgs
           ),
           this.astTransformer.sourceFile
         )
