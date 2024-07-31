@@ -35,8 +35,8 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
    * @param formatSettings Custom formatting settings to apply.
    */
   constructor(
-    protected filePath: string,
-    private standalone: boolean = false,
+    public readonly filePath: string,
+    public readonly standalone: boolean = false,
     protected formatSettings?: FormatSettings,
     compilerOptions?: ts.CompilerOptions
   ) {

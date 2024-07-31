@@ -14,7 +14,7 @@ import {
 
 export class WebComponentsTypeScriptFileUpdate extends TypeScriptFileUpdate {
 	constructor(
-		public filePath: string,
+		public readonly filePath: string,
 		formatSettings?: FormatSettings,
 		compilerOptions?: ts.CompilerOptions
 	) {

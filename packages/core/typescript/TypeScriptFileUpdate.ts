@@ -32,7 +32,7 @@ export abstract class TypeScriptFileUpdate {
    * @param compilerOptions The compiler options to use when transforming the source file.
    */
   constructor(
-    protected filePath: string,
+    public readonly filePath: string,
     protected formatSettings?: FormatSettings,
     compilerOptions?: ts.CompilerOptions
   ) {
