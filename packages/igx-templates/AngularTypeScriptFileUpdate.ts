@@ -20,6 +20,7 @@ import {
   ROUTES_VARIABLE_NAME,
   NG_HTTP_CLIENT_PROVIDER,
   NG_COMMON_HTTP_PACKAGE,
+  NG_CONFIG_TESTING_MODULE,
 } from '@igniteui/cli-core';
 import {
   AngularRouteLike,
@@ -134,21 +135,68 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
       this.addImportDeclarationForDependency(copy, dep.from, variables);
     }
 
-    if (dep.root && copy.imports.length > 0) {
-      // add forRoot to the module
-      copy.imports = copy.imports.map((i) =>
-        this.astTransformer.printer.printNode(
-          ts.EmitHint.Unspecified,
-          this.astTransformer.createCallExpression(
-            i,
-            NG_FOR_ROOT_IDENTIFIER_NAME
-          ),
-          this.astTransformer.sourceFile
-        )
-      );
+    this.addRootToModule(dep, copy);
+    this.applyDecoratorMutations(NG_MODULE_DECORATOR_NAME, copy, multiline);
+  }
+
+  /**
+   * Adds metadata to the arguments provided in `TestBed.configureTestingModule`.
+   * @param dep The dependency to add to the testing module's metadata.
+   * @param variables Variables to replace in the dependency strings.
+   * @param multiline Whether to format the new entry as multiline.
+   */
+  public addTestingModuleMeta(
+    dep: TemplateDependency,
+    variables?: KeyValuePair<string>,
+    multiline: boolean = false
+  ) {
+    const copy: AngularDecoratorMetaTarget = {
+      imports: this.asArray(dep.import || [], variables || {}),
+      declarations: this.asArray(dep.declare || [], variables || {}),
+      providers: this.asArray(dep.provide || [], variables || {}),
+      exports: this.asArray(dep.export || [], variables || {}),
+      schemas: this.asArray(dep.schema || [], variables || {}),
+    };
+    if (dep.from) {
+      this.addImportDeclarationForDependency(copy, dep.from, variables);
     }
 
-    this.applyDecoratorMutations(NG_MODULE_DECORATOR_NAME, copy, multiline);
+    if (!this.standalone) {
+      this.addRootToModule(dep, copy);
+    }
+
+    const parentIsConfigureTestingModule = (
+      node: ts.PropertyAssignment | ts.ObjectLiteralExpression
+    ) => {
+      return !!this.astTransformer.findNodeAncestor(node, (_node) => {
+        return (
+          ts.isCallExpression(_node) &&
+          ts.isPropertyAccessExpression(_node.expression) &&
+          ts.isIdentifier(_node.expression.name) &&
+          _node.expression.name.text === NG_CONFIG_TESTING_MODULE
+        );
+      });
+    };
+    const findTargetMetaProp = (propName: string) =>
+      this.astTransformer.findPropertyAssignment(
+        (node) =>
+          ts.isIdentifier(node.name) &&
+          node.name.text === propName &&
+          parentIsConfigureTestingModule(node)
+      );
+    for (const key of Object.keys(copy)) {
+      const targetMetaProp = findTargetMetaProp(key);
+      const identifiers = copy[key].map(ts.factory.createIdentifier);
+      if (copy[key].length > 0) {
+        this.mutateNgMeta(
+          key,
+          targetMetaProp,
+          identifiers,
+          parentIsConfigureTestingModule,
+          multiline
+        );
+      }
+    }
   }
 
   /**
@@ -375,13 +423,36 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
   ): void {
     const identifiers = meta.map(ts.factory.createIdentifier);
     const targetMetaProp = this.findNgDecoratorProperty(name, target);
+    this.mutateNgMeta(
+      target,
+      targetMetaProp,
+      identifiers,
+      (node) => this.checkNgDecorator(name, node),
+      multiline
+    );
+  }
 
+  /**
+   * Updates Angular's metadata related to NgModules, Standalone Components or TestingModules.
+   * @param target The name of the target metadata property to update.
+   * @param targetMetaProp The property that is to be updated.
+   * @param identifiers The identifiers to add.
+   * @param visitorCondition The condition to find the object literal that contains the target property.
+   * @param multiline Whether to format the new entry as multiline.
+   */
+  private mutateNgMeta(
+    target: string,
+    targetMetaProp: ts.PropertyAssignment,
+    identifiers: ts.Identifier[],
+    visitorCondition: (node: ts.ObjectLiteralExpression) => boolean,
+    multiline: boolean
+  ): void {
     const value =
       targetMetaProp && !ts.isArrayLiteralExpression(targetMetaProp.initializer)
         ? [targetMetaProp.initializer, ...identifiers]
         : identifiers;
     this.astTransformer.requestNewMemberInObjectLiteral(
-      (node) => this.checkNgDecorator(name, node),
+      visitorCondition,
       target,
       this.astTransformer.createArrayLiteralExpression(value, multiline),
       multiline
@@ -421,10 +492,10 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
     decoratorName: string,
     propName: string
   ): ts.PropertyAssignment | undefined {
-    const ngDecoratorExists = (node: ts.Node): boolean =>
-      !!this.astTransformer.findNodeAncestor(node, (node) => {
+    const ngDecoratorExists = (node: ts.PropertyAssignment): boolean =>
+      !!this.astTransformer.findNodeAncestor(node, (_node) => {
         const nodeExpressionToken =
-          ts.isDecorator(node) && node.expression.getFirstToken();
+          ts.isDecorator(_node) && _node.expression.getFirstToken();
         return (
           ts.isIdentifier(nodeExpressionToken) &&
           nodeExpressionToken.text === decoratorName
@@ -436,6 +507,30 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
         node.name.text === propName &&
         ngDecoratorExists(node)
     );
+  }
+
+  /**
+   * Calls `forRoot` on a module identifier.
+   * @param dep The dependency to add to the module's metadata.
+   * @param copy The copy of the module's metadata.
+   */
+  private addRootToModule(
+    dep: TemplateDependency,
+    copy: AngularDecoratorMetaTarget
+  ) {
+    if (dep.root && copy.imports.length > 0) {
+      // add forRoot to the module
+      copy.imports = copy.imports.map((i) =>
+        this.astTransformer.printer.printNode(
+          ts.EmitHint.Unspecified,
+          this.astTransformer.createCallExpression(
+            i,
+            NG_FOR_ROOT_IDENTIFIER_NAME
+          ),
+          this.astTransformer.sourceFile
+        )
+      );
+    }
   }
 
   //#endregion
