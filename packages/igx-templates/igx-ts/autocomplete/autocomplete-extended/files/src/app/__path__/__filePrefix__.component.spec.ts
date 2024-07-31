@@ -5,8 +5,8 @@ import { IgxAutocompleteModule, IgxDropDownModule, IgxInputGroupModule, IgxToast
 import {
   <%=ClassName%>Component,
   <%=ClassName%>PipeStartsWith,
-  <%=ClassName%>RegionContains }
-from './<%=filePrefix%>.component';
+  <%=ClassName%>RegionContains
+} from './<%=filePrefix%>.component';
 
 describe('<%=ClassName%>Component', () => {
   let component: <%=ClassName%>Component;
@@ -14,8 +14,17 @@ describe('<%=ClassName%>Component', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [<%=ClassName%>Component, <%=ClassName%>PipeStartsWith, <%=ClassName%>RegionContains],
-      imports: [FormsModule, IgxDropDownModule, IgxAutocompleteModule, NoopAnimationsModule, IgxInputGroupModule, IgxToastModule]
+      imports: [
+        <%=ClassName%>Component,
+        <%=ClassName%>PipeStartsWith,
+        <%=ClassName%>RegionContains,
+        FormsModule,
+        IgxDropDownModule,
+        IgxAutocompleteModule,
+        IgxInputGroupModule,
+        IgxToastModule,
+        NoopAnimationsModule
+      ]
     })
       .compileComponents();
   }));

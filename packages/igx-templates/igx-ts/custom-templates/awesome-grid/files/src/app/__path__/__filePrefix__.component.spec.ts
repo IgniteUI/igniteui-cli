@@ -19,7 +19,6 @@ describe('<%=ClassName%>Component', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [],
       imports: [
         FormsModule,
         BrowserAnimationsModule,
