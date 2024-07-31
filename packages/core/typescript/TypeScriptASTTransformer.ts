@@ -106,7 +106,8 @@ export class TypeScriptAstTransformer {
       if (!propertyAssignment || lastMatch) {
         return ts.visitEachChild(node, visitor, undefined);
       }
-      return undefined;
+
+      return node;
     };
 
     ts.visitNode(this.sourceFile, visitor, ts.isPropertyAssignment);
