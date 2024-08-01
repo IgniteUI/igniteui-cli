@@ -495,7 +495,9 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
     const ngDecoratorExists = (node: ts.PropertyAssignment): boolean =>
       !!this.astTransformer.findNodeAncestor(node, (_node) => {
         const nodeExpressionToken =
-          ts.isDecorator(_node) && _node.expression.getFirstToken();
+          ts.isDecorator(_node) &&
+          ts.isCallExpression(_node.expression) &&
+          _node.expression.expression;
         return (
           ts.isIdentifier(nodeExpressionToken) &&
           nodeExpressionToken.text === decoratorName
