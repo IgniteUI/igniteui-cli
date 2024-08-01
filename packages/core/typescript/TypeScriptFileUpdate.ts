@@ -91,12 +91,13 @@ export class TypeScriptFileUpdate {
 		linkText: string,
 		parentRoutePath: string,
 		routesVariable = DEFAULT_ROUTES_VARIABLE,
+		className: string,
 		lazyload = false,
 		routesPath = "",
 		root = false,
 		isDefault = false
 	) {
-		this.addRouteModuleEntry(filePath, linkPath, linkText, routesVariable,
+		this.addRouteModuleEntry(filePath, linkPath, linkText, routesVariable, className,
 			parentRoutePath, lazyload, routesPath, root, isDefault);
 	}
 
@@ -113,8 +114,9 @@ export class TypeScriptFileUpdate {
 		linkPath: string,
 		linkText: string,
 		routesVariable = DEFAULT_ROUTES_VARIABLE,
+		className: string,
 		lazyload = false, routesPath = "", root = false, isDefault = false) {
-		this.addRouteModuleEntry(filePath, linkPath, linkText, routesVariable, null, lazyload, routesPath, root, isDefault);
+		this.addRouteModuleEntry(filePath, linkPath, linkText, routesVariable, className, null, lazyload, routesPath, root, isDefault);
 	}
 
 	/**
@@ -304,6 +306,7 @@ export class TypeScriptFileUpdate {
 		linkPath: string,
 		linkText: string,
 		routesVariable = DEFAULT_ROUTES_VARIABLE,
+		providedClassName: string,
 		parentRoutePath?: string,
 		lazyload = false,
 		routesPath = "",
@@ -313,7 +316,11 @@ export class TypeScriptFileUpdate {
 		let className: string;
 		const fileSource = TsUtils.getFileSource(filePath);
 		const relativePath: string = Util.relativePath(this.targetPath, filePath, true, true);
-		className = TsUtils.getClassName(fileSource.getChildren());
+		if (providedClassName != "") {
+            className = providedClassName;
+        } else {
+            className = TsUtils.getClassName(fileSource.getChildren());
+        }
 
 		if (!lazyload) {
 			this.requestImport([className], relativePath);
