@@ -63,8 +63,7 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			expect(helpers.tsUpdateMock.addRoute).toHaveBeenCalledWith(
 				path.join("target/path", `src/app/view-name/view-name.component.ts`),
 				"view-name", //path
-				"view name", //text
-				""
+				"view name" //text
 			);
 
 			expect(helpers.TypeScriptFileUpdate)

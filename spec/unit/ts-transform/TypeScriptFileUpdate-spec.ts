@@ -189,7 +189,7 @@ describe("Unit - TypeScriptFileUpdate", () => {
 		spyOn(Util, "relativePath").and.returnValues("./to/component", "./to/component2");
 
 		const tsUpdate = new TypeScriptFileUpdate("route-module.ts");
-		tsUpdate.addRoute("path/to/component", "href", "text", "");
+		tsUpdate.addRoute("path/to/component", "href", "text");
 		expect(Util.relativePath).toHaveBeenCalledWith("route-module.ts", "path/to/component", true, true);
 		expect(TypeScriptUtils.getClassName).toHaveBeenCalledWith(["component1"]);
 		expect(fs.writeFileSync).toHaveBeenCalledWith(
@@ -255,7 +255,7 @@ describe("Unit - TypeScriptFileUpdate", () => {
 		const tsUpdate = new TypeScriptFileUpdate("route-module.ts");
 
 		// call when parent route has no child routes
-		tsUpdate.addChildRoute("path/to/component", "child-1", "child one", "parent", "");
+		tsUpdate.addChildRoute("path/to/component", "child-1", "child one", "parent");
 		expect(Util.relativePath).toHaveBeenCalledWith("route-module.ts", "path/to/component", true, true);
 		expect(TypeScriptUtils.getClassName).toHaveBeenCalledWith(["component1"]);
 		expect(fs.writeFileSync).toHaveBeenCalledWith(
@@ -270,7 +270,7 @@ describe("Unit - TypeScriptFileUpdate", () => {
 		expect(formatSpy).toHaveBeenCalled();
 
 		// call when parent route has child routes
-		tsUpdate.addChildRoute("path/to/component2", "child-2", "child two", "parent", "");
+		tsUpdate.addChildRoute("path/to/component2", "child-2", "child two", "parent");
 		expect(Util.relativePath).toHaveBeenCalledWith("route-module.ts", "path/to/component2", true, true);
 		expect(TypeScriptUtils.getClassName).toHaveBeenCalledWith(["component2"]);
 		expect(fs.writeFileSync).toHaveBeenCalledWith(

@@ -117,8 +117,7 @@ describe("Unit - AngularTemplate Base", () => {
 			expect(helpers.tsUpdateMock.addRoute).toHaveBeenCalledWith(
 				path.join("target/path", `src/app/components/view-name/view-name.component.ts`),
 				"view-name", //path
-				"view name", //text
-				""
+				"view name" //text
 			);
 
 			expect(helpers.TypeScriptFileUpdate).toHaveBeenCalledWith(path.join("target/path", "src/app/app.module.ts"));

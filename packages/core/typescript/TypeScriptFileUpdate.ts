@@ -90,15 +90,15 @@ export class TypeScriptFileUpdate {
 		linkPath: string,
 		linkText: string,
 		parentRoutePath: string,
-		className: string,
 		routesVariable = DEFAULT_ROUTES_VARIABLE,
 		lazyload = false,
 		routesPath = "",
 		root = false,
-		isDefault = false
+		isDefault = false,
+		className?: string
 	) {
-		this.addRouteModuleEntry(filePath, linkPath, linkText, routesVariable, className,
-			parentRoutePath, lazyload, routesPath, root, isDefault);
+		this.addRouteModuleEntry(filePath, linkPath, linkText, routesVariable,
+			parentRoutePath, lazyload, routesPath, root, isDefault, className);
 	}
 
 	/**
@@ -113,10 +113,9 @@ export class TypeScriptFileUpdate {
 		filePath: string,
 		linkPath: string,
 		linkText: string,
-		className: string,
 		routesVariable = DEFAULT_ROUTES_VARIABLE,
-		lazyload = false, routesPath = "", root = false, isDefault = false) {
-		this.addRouteModuleEntry(filePath, linkPath, linkText, routesVariable, className, null, lazyload, routesPath, root, isDefault);
+		lazyload = false, routesPath = "", root = false, isDefault = false, className?: string,) {
+		this.addRouteModuleEntry(filePath, linkPath, linkText, routesVariable, null, lazyload, routesPath, root, isDefault, className);
 	}
 
 	/**
@@ -306,21 +305,16 @@ export class TypeScriptFileUpdate {
 		linkPath: string,
 		linkText: string,
 		routesVariable = DEFAULT_ROUTES_VARIABLE,
-		providedClassName: string,
 		parentRoutePath?: string,
 		lazyload = false,
 		routesPath = "",
 		root = false,
-		isDefault = false
+		isDefault = false,
+		providedClassName?: string
 	) {
-		let className: string;
 		const fileSource = TsUtils.getFileSource(filePath);
 		const relativePath: string = Util.relativePath(this.targetPath, filePath, true, true);
-		if (providedClassName != "") {
-            className = providedClassName;
-        } else {
-            className = TsUtils.getClassName(fileSource.getChildren());
-        }
+		const className = providedClassName ||  TsUtils.getClassName(fileSource.getChildren())
 
 		if (!lazyload) {
 			this.requestImport([className], relativePath);

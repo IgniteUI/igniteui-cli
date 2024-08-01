@@ -63,8 +63,7 @@ export class AngularTemplate implements Template {
 			routingModule.addRoute(
 				path.join(projectPath, `src/app/components/${this.folderName(name)}/${this.fileName(name)}.component.ts`),
 				this.folderName(name), //path
-				Util.nameFromPath(name), //text
-				""
+				Util.nameFromPath(name) //text
 			);
 		}
 
