@@ -314,7 +314,7 @@ export class TypeScriptFileUpdate {
 	) {
 		const fileSource = TsUtils.getFileSource(filePath);
 		const relativePath: string = Util.relativePath(this.targetPath, filePath, true, true);
-		const className = providedClassName ||  TsUtils.getClassName(fileSource.getChildren())
+		const className = providedClassName || TsUtils.getClassName(fileSource.getChildren());
 
 		if (!lazyload) {
 			this.requestImport([className], relativePath);
