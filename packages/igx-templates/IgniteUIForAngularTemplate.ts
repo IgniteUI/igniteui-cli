@@ -72,7 +72,8 @@ export class IgniteUIForAngularTemplate implements Template {
 				rountesConfig.addRoute(
 					path.join(projectPath, `src/app/${folderName}/${fileName}.component.ts`),
 					this.fileName(name),		//path
-					Util.nameFromPath(name)		//text
+					Util.nameFromPath(name),		//text
+          ""
 				);
 			}
 
@@ -109,7 +110,8 @@ export class IgniteUIForAngularTemplate implements Template {
 			routingModule.addRoute(
 				path.join(projectPath, `src/app/${this.folderName(name)}/${this.fileName(name)}.component.ts`),
 				this.fileName(name),		//path
-				Util.nameFromPath(name)		//text
+				Util.nameFromPath(name),		//text
+        ""
 			);
 		}
 

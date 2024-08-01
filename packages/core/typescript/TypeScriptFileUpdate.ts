@@ -113,8 +113,8 @@ export class TypeScriptFileUpdate {
 		filePath: string,
 		linkPath: string,
 		linkText: string,
-		routesVariable = DEFAULT_ROUTES_VARIABLE,
 		className: string,
+		routesVariable = DEFAULT_ROUTES_VARIABLE,
 		lazyload = false, routesPath = "", root = false, isDefault = false) {
 		this.addRouteModuleEntry(filePath, linkPath, linkText, routesVariable, className, null, lazyload, routesPath, root, isDefault);
 	}
