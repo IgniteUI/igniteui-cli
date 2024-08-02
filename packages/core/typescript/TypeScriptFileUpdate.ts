@@ -315,7 +315,7 @@ export class TypeScriptFileUpdate {
 		const fileSource = TsUtils.getFileSource(filePath);
 		const relativePath: string = Util.relativePath(this.targetPath, filePath, true, true);
 		// TODO: Remove once the logic is updated to use the actual class name from the generated .json file
-		const className = providedClassName ||  TsUtils.getClassName(fileSource.getChildren())
+		const className = providedClassName || TsUtils.getClassName(fileSource.getChildren());
 
 		if (!lazyload) {
 			this.requestImport([className], relativePath);
