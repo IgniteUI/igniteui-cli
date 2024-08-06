@@ -1,3 +1,12 @@
+# [13.4.2](https://github.com/IgniteUI/igniteui-cli/compare/v13.4.1...v13.4.2) (2024-08-06)
+
+## What's Changed
+* Adding 'ng lint' command in Angular Standalone templates 13.4 by @Marina-L-Stoyanova in https://github.com/IgniteUI/igniteui-cli/pull/1301
+* Updating lint versions and adding lint configuration in angular.json … by @Marina-L-Stoyanova in https://github.com/IgniteUI/igniteui-cli/pull/1304
+* Providing class name to routing if we don't want to use the first cla… by @dafo in https://github.com/IgniteUI/igniteui-cli/pull/1302
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.4.1...v13.4.2
+
 # [13.4.1](https://github.com/IgniteUI/igniteui-cli/compare/v13.4.0...v13.4.1) (2024-07-24)
 
 ## What's Changed
