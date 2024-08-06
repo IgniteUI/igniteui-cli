@@ -94,10 +94,11 @@ export class TypeScriptFileUpdate {
 		lazyload = false,
 		routesPath = "",
 		root = false,
-		isDefault = false
+		isDefault = false,
+		className?: string
 	) {
 		this.addRouteModuleEntry(filePath, linkPath, linkText, routesVariable,
-			parentRoutePath, lazyload, routesPath, root, isDefault);
+			parentRoutePath, lazyload, routesPath, root, isDefault, className);
 	}
 
 	/**
@@ -113,8 +114,8 @@ export class TypeScriptFileUpdate {
 		linkPath: string,
 		linkText: string,
 		routesVariable = DEFAULT_ROUTES_VARIABLE,
-		lazyload = false, routesPath = "", root = false, isDefault = false) {
-		this.addRouteModuleEntry(filePath, linkPath, linkText, routesVariable, null, lazyload, routesPath, root, isDefault);
+		lazyload = false, routesPath = "", root = false, isDefault = false, className?: string) {
+		this.addRouteModuleEntry(filePath, linkPath, linkText, routesVariable, null, lazyload, routesPath, root, isDefault, className);
 	}
 
 	/**
@@ -308,12 +309,13 @@ export class TypeScriptFileUpdate {
 		lazyload = false,
 		routesPath = "",
 		root = false,
-		isDefault = false
+		isDefault = false,
+		providedClassName?: string
 	) {
-		let className: string;
 		const fileSource = TsUtils.getFileSource(filePath);
 		const relativePath: string = Util.relativePath(this.targetPath, filePath, true, true);
-		className = TsUtils.getClassName(fileSource.getChildren());
+		// TODO: Remove once the logic is updated to use the actual class name from the generated .json file
+		const className = providedClassName || TsUtils.getClassName(fileSource.getChildren());
 
 		if (!lazyload) {
 			this.requestImport([className], relativePath);
