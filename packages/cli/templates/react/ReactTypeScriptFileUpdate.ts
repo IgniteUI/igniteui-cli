@@ -15,7 +15,7 @@ import { ReactRouteEntry, ReactRouteTarget, ReactRouteLike } from './types';
 
 export class ReactTypeScriptFileUpdate extends TypeScriptFileUpdate {
   constructor(
-    filePath: string,
+    public readonly filePath: string,
     formatSettings?: FormatSettings,
     compilerOptions?: ts.CompilerOptions
   ) {

@@ -27,6 +27,7 @@ export const NG_DECORATOR_PROVIDERS = 'providers';
 export const NG_ROUTER_PACKAGE = '@angular/router';
 export const NG_COMMON_HTTP_PACKAGE = '@angular/common/http';
 export const NG_HTTP_CLIENT_PROVIDER = 'provideHttpClient';
+export const NG_CONFIG_TESTING_MODULE = 'configureTestingModule';
 export const ANCHOR_ELEMENT: PropertyAssignment = {
   name: 'path',
   value: ts.factory.createStringLiteral('**'),
