@@ -5,13 +5,7 @@ import {
   PropertyAssignmentWithStringLiteralValueCondition,
   variableAsParentCondition,
 } from './VisitorConditions';
-import {
-  Util,
-  TS_PRINTER_OPTIONS,
-  ROUTES_VARIABLE_NAME,
-  THEN_IDENTIFIER_NAME,
-  IMPORT_IDENTIFIER_NAME,
-} from '../util';
+import { Util, TS_PRINTER_OPTIONS, ROUTES_VARIABLE_NAME } from '../util';
 import {
   KeyValuePair,
   RouteEntry,
@@ -133,109 +127,6 @@ export abstract class TypeScriptFileUpdate {
     route: RouteLike,
     multiline: boolean
   ): RouteEntry[];
-
-  /**
-   * Creates an arrow function with no arity that returns a dynamic import. Takes the form `() => import(path).then(m => m.prop)`.
-   * @param path The path to the module to import.
-   * @param importedEntity The entity to import from the module.
-   * @param root Whether it should be `loadChildren` or `loadComponent`.
-   * @remarks If the `root` param is `true` the function will use `routes` as an `importedEntity`.
-   */
-  protected createDynamicImport(
-    path: string,
-    importedEntity: string,
-    root: boolean = false
-  ): ts.ArrowFunction {
-    const thenClause = root ? ROUTES_VARIABLE_NAME : importedEntity;
-    // create the 'import(path)' expression
-    const importExpression = ts.factory.createCallExpression(
-      ts.factory.createIdentifier(IMPORT_IDENTIFIER_NAME),
-      undefined, // type arguments
-      [ts.factory.createStringLiteral(path, this.formatSettings?.singleQuotes)]
-    );
-
-    const thenFuncParamName = 'm';
-    // create the 'm => m.prop' arrow function
-    const thenExprArrowFuncBody = ts.factory.createArrowFunction(
-      undefined, // modifiers
-      undefined, // type parameters
-      [
-        ts.factory.createParameterDeclaration(
-          undefined, // decorators
-          undefined, // modifiers
-          ts.factory.createIdentifier(thenFuncParamName)
-        ),
-      ],
-      undefined,
-      ts.factory.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
-      ts.factory.createPropertyAccessChain(
-        ts.factory.createIdentifier(thenFuncParamName),
-        undefined, // question-dot token
-        thenClause
-      )
-    );
-
-    // build the '.then(m => m.prop)' expression and add it to the import expression
-    const body = ts.factory.createCallExpression(
-      ts.factory.createPropertyAccessExpression(
-        importExpression,
-        THEN_IDENTIFIER_NAME
-      ),
-      undefined, // type arguments
-      [thenExprArrowFuncBody]
-    );
-
-    // Create the '() => import(path).then(m => m.prop)' arrow function
-    const dynamicImport = ts.factory.createArrowFunction(
-      undefined, // modifiers
-      undefined, // type parameters
-      [], // parameters
-      undefined, // type
-      ts.factory.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
-      body
-    );
-
-    return dynamicImport;
-  }
-
-  /**
-   * Creates a property assignment with a zero arity arrow function as the value, which has a call expression in its body.
-   * Takes the form `memberName: () => callExpressionName(callExpressionArgs)`.
-   * @param memberName The name that will be used in the object literal property assignment.
-   * @param callExpressionName The name of the function that will be invoked in the arrow func's body.
-   * @param callExpressionArgs The arguments that will be provided to the called function.
-   * @remarks The `callExpressionArgs` is considered to be a string literal.
-   */
-  protected createArrowFunctionWithCallExpression(
-    memberName: string,
-    callExpressionName: string,
-    callExpressionArgs?: string
-  ): PropertyAssignment {
-    const arrowFunction = ts.factory.createArrowFunction(
-      undefined, // modifiers
-      undefined, // type parameters
-      [], // parameters
-      undefined, // type
-      ts.factory.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
-      ts.factory.createCallExpression(
-        ts.factory.createIdentifier(callExpressionName),
-        undefined, // type arguments
-        callExpressionArgs
-          ? [
-              ts.factory.createStringLiteral(
-                callExpressionArgs,
-                this.formatSettings?.singleQuotes
-              ),
-            ]
-          : []
-      )
-    );
-
-    return {
-      name: memberName,
-      value: arrowFunction,
-    };
-  }
 
   /**
    * Applies a configuration transformation to a string.

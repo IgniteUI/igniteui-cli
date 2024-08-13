@@ -281,10 +281,9 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
       route.identifierName &&
       route.modulePath
     ) {
-      const lazyLoadedModule = this.createDynamicImport(
+      const lazyLoadedModule = this.astTransformer.createDynamicImport(
         route.modulePath,
-        route.identifierName,
-        route.root
+        route.identifierName
       );
       const propAssignmentName = route.root
         ? AngularRouteTarget.LoadChildren

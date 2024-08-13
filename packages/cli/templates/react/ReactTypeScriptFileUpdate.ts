@@ -71,7 +71,7 @@ export class ReactTypeScriptFileUpdate extends TypeScriptFileUpdate {
 
     if (route.redirectTo) {
       const loaderPropertyAssignment =
-        this.createArrowFunctionWithCallExpression(
+        this.astTransformer.createArrowFunctionWithCallExpression(
           ReactRouteTarget.Loader,
           route.loader || REACT_ROUTER_DOM_REDIRECT,
           route.redirectTo
