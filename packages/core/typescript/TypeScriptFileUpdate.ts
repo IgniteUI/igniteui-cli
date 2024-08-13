@@ -137,8 +137,7 @@ export abstract class TypeScriptFileUpdate {
     data: string,
     configuration: KeyValuePair<string>
   ): string {
-    let key;
-    for (key in configuration) {
+    for (const key in configuration) {
       data = data.replace(
         new RegExp(Util.escapeRegExp(key), 'g'),
         configuration[key]
