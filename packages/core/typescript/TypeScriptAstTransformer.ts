@@ -25,6 +25,9 @@ import {
 import { TypeScriptExpressionCollector } from './TypeScriptExpressionCollector';
 import { IMPORT_IDENTIFIER_NAME, THEN_IDENTIFIER_NAME } from '../util';
 
+/**
+ * Applies transformations to a source file using the TypeScript compiler API.
+ */
 export class TypeScriptAstTransformer {
   private _printer: ts.Printer | undefined;
   private _expressionCollector: TypeScriptExpressionCollector;
@@ -34,7 +37,7 @@ export class TypeScriptAstTransformer {
   };
 
   /**
-   * Create a new source update instance for the given source file.
+   * Create a new TypeScriptAstTransformer instance for the given source file.
    * @param sourceFile The source file to update.
    * @param printerOptions Options to use when printing the source file.
    * @param customCompilerOptions Custom compiler options to use when transforming the source file.

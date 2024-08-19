@@ -7,6 +7,17 @@ import {
 import { SIDE_EFFECTS_IMPORT_TEMPLATE_NAME } from '../util';
 import { TypeScriptExpressionCollector } from './TypeScriptExpressionCollector';
 
+/**
+ * Transformer factories for updating TypeScript source files.
+ * Each factory is responsible for a specific transformation.
+ * Each factory is a function that returns a transformer function.
+ * The transformer function is responsible for visiting and transforming nodes in the AST.
+ * The transformer function is passed to the TypeScript compiler API for processing.
+ * The TypeScript compiler API will call the transformer function for each node in the AST.
+ * The transformer function will return the transformed node or the original node if no transformation is applied.
+ * 	If the transformer function returns `undefined`, `null` the respective node is removed from the AST.
+ */
+
 //#region Factories
 
 /**
