@@ -1,5 +1,5 @@
 import * as ts from 'typescript';
-import { TypeScriptASTTransformer } from './TypeScriptASTTransformer';
+import { TypeScriptAstTransformer } from './TypeScriptAstTransformer';
 
 /**
  * Starting from the current node, look up the AST to find the variable declaration that holds the current node.
@@ -7,7 +7,7 @@ import { TypeScriptASTTransformer } from './TypeScriptASTTransformer';
  * @param variableName Name of the variable to look for.
  */
 export const variableAsParentCondition = (
-  astTransformer: TypeScriptASTTransformer,
+  astTransformer: TypeScriptAstTransformer,
   variableName: string
 ) => {
   return (node: ts.Node): boolean =>

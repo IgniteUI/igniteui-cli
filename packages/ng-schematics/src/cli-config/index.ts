@@ -1,7 +1,7 @@
 import * as ts from "typescript";
 import { DependencyNotFoundException } from "@angular-devkit/core";
 import { chain, FileDoesNotExistException, Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
-import { addClassToBody, TypeScriptFormattingService, FormatSettings, NPM_ANGULAR, resolvePackage, TypeScriptASTTransformer, TypeScriptUtils } from "@igniteui/cli-core";
+import { addClassToBody, FormatSettings, NPM_ANGULAR, resolvePackage, TypeScriptAstTransformer, TypeScriptUtils } from "@igniteui/cli-core";
 import { AngularTypeScriptFileUpdate } from "@igniteui/angular-templates";
 import { createCliConfig } from "../utils/cli-config";
 import { setVirtual } from "../utils/NgFileSystem";
@@ -83,7 +83,7 @@ function importBrowserAnimations(): Rule {
 					convertTabsToSpaces: false,
 					singleQuotes: false
 				};
-				const configTransformer = new TypeScriptASTTransformer(sourceFile, undefined, undefined, formatSettings);
+				const configTransformer = new TypeScriptAstTransformer(sourceFile, undefined, undefined, formatSettings);
 				const providerMeta = { provide: "provideAnimations", from: "@angular/platform-browser/animations" };
 				if (!configTransformer.importDeclarationCollides({name: providerMeta.provide})) {
 					configTransformer.requestNewImportDeclaration({

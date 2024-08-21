@@ -15,7 +15,7 @@ import { ReactRouteEntry, ReactRouteTarget, ReactRouteLike } from './types';
 
 export class ReactTypeScriptFileUpdate extends TypeScriptFileUpdate {
   constructor(
-    filePath: string,
+    public readonly filePath: string,
     formatSettings?: FormatSettings,
     compilerOptions?: ts.CompilerOptions
   ) {
@@ -71,7 +71,7 @@ export class ReactTypeScriptFileUpdate extends TypeScriptFileUpdate {
 
     if (route.redirectTo) {
       const loaderPropertyAssignment =
-        this.createArrowFunctionWithCallExpression(
+        this.astTransformer.createArrowFunctionWithCallExpression(
           ReactRouteTarget.Loader,
           route.loader || REACT_ROUTER_DOM_REDIRECT,
           route.redirectTo

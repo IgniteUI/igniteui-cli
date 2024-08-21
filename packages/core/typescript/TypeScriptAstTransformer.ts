@@ -23,8 +23,12 @@ import {
   updateForObjectLiteralMemberTransformerFactory,
 } from './TransformerFactories';
 import { TypeScriptExpressionCollector } from './TypeScriptExpressionCollector';
+import { IMPORT_IDENTIFIER_NAME, THEN_IDENTIFIER_NAME } from '../util';
 
-export class TypeScriptASTTransformer {
+/**
+ * Applies transformations to a source file using the TypeScript compiler API.
+ */
+export class TypeScriptAstTransformer {
   private _printer: ts.Printer | undefined;
   private _expressionCollector: TypeScriptExpressionCollector;
   private _flatNodeRelations: Map<ts.Node, ts.Node>;
@@ -33,7 +37,7 @@ export class TypeScriptASTTransformer {
   };
 
   /**
-   * Create a new source update instance for the given source file.
+   * Create a new TypeScriptAstTransformer instance for the given source file.
    * @param sourceFile The source file to update.
    * @param printerOptions Options to use when printing the source file.
    * @param customCompilerOptions Custom compiler options to use when transforming the source file.
@@ -106,7 +110,8 @@ export class TypeScriptASTTransformer {
       if (!propertyAssignment || lastMatch) {
         return ts.visitEachChild(node, visitor, undefined);
       }
-      return undefined;
+
+      return node;
     };
 
     ts.visitNode(this.sourceFile, visitor, ts.isPropertyAssignment);
@@ -319,8 +324,8 @@ export class TypeScriptASTTransformer {
    * @param visitCondition The condition by which the array literal expression is found.
    * @param elements The elements that will be added to the array literal.
    * @param prepend If the elements should be added at the beginning of the array.
-   * @anchorElement The element to anchor the new elements to.
-   * @multiline Whether the array literal should be multiline.
+   * @param anchorElement The element to anchor the new elements to.
+   * @param multiline Whether the array literal should be multiline.
    * @remarks The `anchorElement` must match the type of the elements in the collection.
    */
   public requestNewMembersInArrayLiteral(
@@ -334,9 +339,9 @@ export class TypeScriptASTTransformer {
    * Creates a request that will resolve during {@link finalize} which adds a new element to an array literal expression.
    * @param visitCondition The condition by which the array literal expression is found.
    * @param elements The elements that will be added to the array literal
-   * @prepend If the elements should be added at the beginning of the array.
-   * @anchorElement The element to anchor the new elements to.
-   * @multiline Whether the array literal should be multiline.
+   * @param prepend If the elements should be added at the beginning of the array.
+   * @param anchorElement The element to anchor the new elements to.
+   * @param multiline Whether the array literal should be multiline.
    * @remarks The `anchorElement` must match the type of the elements in the collection.
    */
   public requestNewMembersInArrayLiteral(
@@ -510,6 +515,105 @@ export class TypeScriptASTTransformer {
       isSideEffects,
       this.formatSettings?.singleQuotes || false
     );
+  }
+
+  /**
+   * Creates an arrow function with no arity that returns a dynamic import. Takes the form `() => import(path).then(m => m.prop)`.
+   * @param path The path to the module to import.
+   * @param importedEntity The entity to import from the module.
+   */
+  public createDynamicImport(
+    path: string,
+    importedEntity: string
+  ): ts.ArrowFunction {
+    // create the 'import(path)' expression
+    const importExpression = ts.factory.createCallExpression(
+      ts.factory.createIdentifier(IMPORT_IDENTIFIER_NAME),
+      undefined, // type arguments
+      [ts.factory.createStringLiteral(path, this.formatSettings?.singleQuotes)]
+    );
+
+    const thenFuncParamName = 'm';
+    // create the 'm => m.prop' arrow function
+    const thenExprArrowFuncBody = ts.factory.createArrowFunction(
+      undefined, // modifiers
+      undefined, // type parameters
+      [
+        ts.factory.createParameterDeclaration(
+          undefined, // decorators
+          undefined, // modifiers
+          ts.factory.createIdentifier(thenFuncParamName)
+        ),
+      ],
+      undefined,
+      ts.factory.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
+      ts.factory.createPropertyAccessChain(
+        ts.factory.createIdentifier(thenFuncParamName),
+        undefined, // question-dot token
+        importedEntity
+      )
+    );
+
+    // build the '.then(m => m.prop)' expression and add it to the import expression
+    const body = ts.factory.createCallExpression(
+      ts.factory.createPropertyAccessExpression(
+        importExpression,
+        THEN_IDENTIFIER_NAME
+      ),
+      undefined, // type arguments
+      [thenExprArrowFuncBody]
+    );
+
+    // Create the '() => import(path).then(m => m.prop)' arrow function
+    const dynamicImport = ts.factory.createArrowFunction(
+      undefined, // modifiers
+      undefined, // type parameters
+      [], // parameters
+      undefined, // type
+      ts.factory.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
+      body
+    );
+
+    return dynamicImport;
+  }
+
+  /**
+   * Creates a property assignment with a zero arity arrow function as the value, which has a call expression in its body.
+   * Takes the form `memberName: () => callExpressionName(callExpressionArgs)`.
+   * @param memberName The name that will be used in the object literal property assignment.
+   * @param callExpressionName The name of the function that will be invoked in the arrow func's body.
+   * @param callExpressionArgs The arguments that will be provided to the called function.
+   * @remarks The `callExpressionArgs` is considered to be a string literal.
+   */
+  public createArrowFunctionWithCallExpression(
+    memberName: string,
+    callExpressionName: string,
+    callExpressionArgs?: string
+  ): PropertyAssignment {
+    const arrowFunction = ts.factory.createArrowFunction(
+      undefined, // modifiers
+      undefined, // type parameters
+      [], // parameters
+      undefined, // type
+      ts.factory.createToken(ts.SyntaxKind.EqualsGreaterThanToken),
+      ts.factory.createCallExpression(
+        ts.factory.createIdentifier(callExpressionName),
+        undefined, // type arguments
+        callExpressionArgs
+          ? [
+              ts.factory.createStringLiteral(
+                callExpressionArgs,
+                this.formatSettings?.singleQuotes
+              ),
+            ]
+          : []
+      )
+    );
+
+    return {
+      name: memberName,
+      value: arrowFunction,
+    };
   }
 
   /**

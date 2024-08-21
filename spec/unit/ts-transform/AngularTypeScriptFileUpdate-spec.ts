@@ -60,10 +60,34 @@ const providers: Provider[] = [
 export const appConfig: ApplicationConfig = { providers };
 `;
 
+const specFileContent = `import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { MyComponent } from './my.component';
+
+describe('MyComponent', () => {
+  let component: MyComponent;
+  let fixture: ComponentFixture<MyComponent>;
+
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      imports: []
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(MyComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  }));
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
+`;
+
 const routesPath = 'path/to/routes';
 const moduleFilePath = 'path/to/module';
 const standaloneComponentFilePath = 'path/to/component';
 const pathToAppConfig = 'path/to/app.config';
+const specFilePath = 'path/to/my-component.spec';
 
 describe('Unit - AngularTypeScriptFileUpdate', () => {
   describe('Initialization', () => {
@@ -787,7 +811,7 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
             EOL +
             `@NgModule({` +
             EOL +
-            `    imports: [CommonModule, RouterModule.forRoot()]` +
+            `    imports: [CommonModule, RouterModule.forRoot([])]` +
             EOL +
             `})` +
             EOL +
@@ -1179,6 +1203,126 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
             `    title = 'Home - IgniteUI for Angular';` +
             EOL +
             `}` +
+            EOL
+        );
+      });
+    });
+
+    describe('Spec File', () => {
+      beforeEach(() => {
+        spyOn(App, 'initialize').and.callThrough();
+        spyOn(App.container, 'get').and.returnValue(
+          new MockFS(new Map([[specFilePath, specFileContent]]))
+        );
+        fileUpdate = new AngularTypeScriptFileUpdate(
+          specFilePath,
+          false, // standalone
+          {
+            singleQuotes: true,
+          }
+        );
+      });
+
+      it("should modify the imports collection of the spec file's testing module", () => {
+        fileUpdate.addTestingModuleMeta({
+          import: ['RouterModule'],
+          from: '@angular/router',
+          root: true,
+        });
+
+        const result = fileUpdate.finalize();
+        expect(result).toEqual(
+          `import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';` +
+            EOL +
+            `import { MyComponent } from './my.component';` +
+            EOL +
+            `import { RouterModule } from '@angular/router';` +
+            EOL +
+            EOL +
+            `describe('MyComponent', () => {` +
+            EOL +
+            `    let component: MyComponent;` +
+            EOL +
+            `    let fixture: ComponentFixture<MyComponent>;` +
+            EOL +
+            EOL +
+            `    beforeEach(waitForAsync(() => {` +
+            EOL +
+            `        TestBed.configureTestingModule({` +
+            EOL +
+            `            imports: [RouterModule.forRoot([])]` +
+            EOL +
+            `        }).compileComponents();` +
+            EOL +
+            EOL +
+            `        fixture = TestBed.createComponent(MyComponent);` +
+            EOL +
+            `        component = fixture.componentInstance;` +
+            EOL +
+            `        fixture.detectChanges();` +
+            EOL +
+            `    }));` +
+            EOL +
+            EOL +
+            `    it('should create', () => {` +
+            EOL +
+            `        expect(component).toBeTruthy();` +
+            EOL +
+            `    });` +
+            EOL +
+            `});` +
+            EOL
+        );
+      });
+
+      it("should add declarations to the spec file's testing module", () => {
+        fileUpdate.addTestingModuleMeta({
+          declare: ['MyComponent'],
+          from: 'my.component',
+          root: true,
+        });
+
+        const result = fileUpdate.finalize();
+        expect(result).toEqual(
+          `import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';` +
+            EOL +
+            `import { MyComponent } from './my.component';` +
+            EOL +
+            EOL +
+            `describe('MyComponent', () => {` +
+            EOL +
+            `    let component: MyComponent;` +
+            EOL +
+            `    let fixture: ComponentFixture<MyComponent>;` +
+            EOL +
+            EOL +
+            `    beforeEach(waitForAsync(() => {` +
+            EOL +
+            `        TestBed.configureTestingModule({` +
+            EOL +
+            `            imports: [],` +
+            EOL +
+            `            declarations: [MyComponent]` +
+            EOL +
+            `        }).compileComponents();` +
+            EOL +
+            EOL +
+            `        fixture = TestBed.createComponent(MyComponent);` +
+            EOL +
+            `        component = fixture.componentInstance;` +
+            EOL +
+            `        fixture.detectChanges();` +
+            EOL +
+            `    }));` +
+            EOL +
+            EOL +
+            `    it('should create', () => {` +
+            EOL +
+            `        expect(component).toBeTruthy();` +
+            EOL +
+            `    });` +
+            EOL +
+            `});` +
             EOL
         );
       });
