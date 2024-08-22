@@ -1,13 +1,7 @@
 import { ApplicationConfig, ErrorHandler, Provider, importProvidersFrom } from '@angular/core';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
-import { BrowserModule, HammerModule } from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
-import {
-  IgxNavigationDrawerModule,
-  IgxNavbarModule,
-  IgxLayoutModule,
-  IgxRippleModule,
-} from 'igniteui-angular';
 
 import { routes } from './app.routes';
 import { GlobalErrorHandlerService } from './error-routing/error/global-error-handler.service';

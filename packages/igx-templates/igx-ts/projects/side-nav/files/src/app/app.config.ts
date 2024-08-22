@@ -7,7 +7,7 @@ import {
   IgxNavbarModule,
   IgxLayoutModule,
   IgxRippleModule,
-} from 'igniteui-angular';
+} from '<%=igxPackage%>';
 
 import { routes } from './app.routes';
 
