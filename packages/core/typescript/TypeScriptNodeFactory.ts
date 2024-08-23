@@ -135,20 +135,6 @@ export class TypeScriptNodeFactory {
   }
 
   /**
-   * Maps a `KeyValuePair` type to a `ts.ObjectLiteralElementLike` type.
-   * @param kvp The key-value pair to map.
-   * @param transform Resolves the `ts.Expression` for the the initializer of the `ts.ObjectLiteralElementLike`.
-   */
-  private mapKeyValuePairToObjectLiteral<T>(
-    kvp: KeyValuePair<T>,
-    transform: (value: T) => ts.Expression
-  ): ts.ObjectLiteralElementLike[] {
-    return Object.entries(kvp).map(([key, value]) =>
-      ts.factory.createPropertyAssignment(key, transform(value))
-    );
-  }
-
-  /**
    * Creates a node for a named import declaration.
    * @param importDeclarationMeta Metadata for the new import declaration.
    * @param isDefault Whether the import is a default import.
@@ -271,5 +257,19 @@ export class TypeScriptNodeFactory {
       name: memberName,
       value: arrowFunction,
     };
+  }
+
+  /**
+   * Maps a `KeyValuePair` type to a `ts.ObjectLiteralElementLike` type.
+   * @param kvp The key-value pair to map.
+   * @param transform Resolves the `ts.Expression` for the the initializer of the `ts.ObjectLiteralElementLike`.
+   */
+  private mapKeyValuePairToObjectLiteral<T>(
+    kvp: KeyValuePair<T>,
+    transform: (value: T) => ts.Expression
+  ): ts.ObjectLiteralElementLike[] {
+    return Object.entries(kvp).map(([key, value]) =>
+      ts.factory.createPropertyAssignment(key, transform(value))
+    );
   }
 }
