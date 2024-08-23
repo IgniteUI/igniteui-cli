@@ -1,3 +1,19 @@
+# [13.4.3](https://github.com/IgniteUI/igniteui-cli/compare/v13.4.2...v13.4.3) (2024-08-22)
+
+## What's Changed
+* Clean up templates of redundant imports & use placeholders by @jackofdiamond5 in https://github.com/IgniteUI/igniteui-cli/pull/1306
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.4.2...v13.4.3
+
+# [13.4.2](https://github.com/IgniteUI/igniteui-cli/compare/v13.4.1...v13.4.2) (2024-08-06)
+
+## What's Changed
+* Adding 'ng lint' command in Angular Standalone templates 13.4 by @Marina-L-Stoyanova in https://github.com/IgniteUI/igniteui-cli/pull/1301
+* Updating lint versions and adding lint configuration in angular.json … by @Marina-L-Stoyanova in https://github.com/IgniteUI/igniteui-cli/pull/1304
+* Providing class name to routing if we don't want to use the first cla… by @dafo in https://github.com/IgniteUI/igniteui-cli/pull/1302
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.4.1...v13.4.2
+
 # [13.4.1](https://github.com/IgniteUI/igniteui-cli/compare/v13.4.0...v13.4.1) (2024-07-24)
 
 ## What's Changed
@@ -53,32 +69,15 @@
 * chore(ng): update to ng 18 by @jackofdiamond5 in https://github.com/IgniteUI/igniteui-cli/pull/1252
 
 **Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.2.0...v13.2.1
-# [13.3.2](https://github.com/IgniteUI/igniteui-cli/compare/v13.3.1...v13.3.2) (2024-07-04)
+
+# [13.2.5](https://github.com/IgniteUI/igniteui-cli/compare/v13.2.4...v13.2.5) (2024-08-06)
 
 ## What's Changed
-* chore(WebComponents): igniteui-webcomponents version bump, adding banner, divider and date picker templates - 13.3.x by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1274
+* Adding 'ng lint' command in Angular Standalone templates 13.2 by @Marina-L-Stoyanova in https://github.com/IgniteUI/igniteui-cli/pull/1300
+* Updating lint versions and adding lint configuration in angular.json … by @Marina-L-Stoyanova in https://github.com/IgniteUI/igniteui-cli/pull/1303
+* Providing class name to routing if we don't want to use the first class in file by @dafo in https://github.com/IgniteUI/igniteui-cli/pull/1297
 
-**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.3.1...v13.3.2
-
-# [13.3.1](https://github.com/IgniteUI/igniteui-cli/compare/v13.3.0...v13.3.1) (2024-06-28)
-
-## What's Changed
-* bump the template versions by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1259
-* bump web dev server in webc templates by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1261
-* Added mock implementations of HTMLElement.prototype functions in test setup by @ivanvpetrov in https://github.com/IgniteUI/igniteui-cli/pull/1265
-
-**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.3.0...v13.3.1
-
-# [13.3.0](https://github.com/IgniteUI/igniteui-cli/compare/v13.2.1...v13.3.0) (2024-06-03)
-
-🎉 This update includes:
-
-- `igniteui-angular` version [18.0.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/18.0.0).
-
-## What's Changed
-* chore(ng): update to ng 18 by @jackofdiamond5 in https://github.com/IgniteUI/igniteui-cli/pull/1252
-
-**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.2.0...v13.2.1
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.2.4...v13.2.5
 
 # [13.2.4](https://github.com/IgniteUI/igniteui-cli/compare/v13.2.3...v13.2.4) (2024-07-16)
 
