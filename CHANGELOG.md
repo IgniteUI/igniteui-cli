@@ -1,3 +1,34 @@
+# [14.0.0](https://github.com/IgniteUI/igniteui-cli/compare/v13.4.3...v14.0.0) (2024-08-23)
+
+## What's Changed
+* Implement an AST transformer by @jackofdiamond5 in https://github.com/IgniteUI/igniteui-cli/pull/1238
+* build(deps): bump socket.io from 4.5.1 to 4.7.5 by @dependabot in https://github.com/IgniteUI/igniteui-cli/pull/1257
+* Chore(webc): Bump the template versions. by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1259
+* chore(webc): Bump the version of @web/dev-server in the WebC templates by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1260
+* Added mock implementations of HTMLElement.prototype functions that ar… by @ivanvpetrov in https://github.com/IgniteUI/igniteui-cli/pull/1263
+* chore(webc): Bump the igniteui-webcomponent's version in the templates. by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1267
+* build(deps): bump socket.io-parser from 4.2.0 to 4.2.4 by @dependabot in https://github.com/IgniteUI/igniteui-cli/pull/1272
+* chore(WebComponents): igniteui-webcomponents version bump, adding banner, divider and date picker templates by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1273
+* Adding schema to template dependency by @dafo in https://github.com/IgniteUI/igniteui-cli/pull/1269
+* chore(webc): Add @types/mocha to the WebComponents templates - master by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1280
+* chore(ng): update igniteui-angular@18.1.0; dv@18.0.0; remove force - master by @jackofdiamond5 in https://github.com/IgniteUI/igniteui-cli/pull/1277
+* Add new lines in base app-routes file by @onlyexeption in https://github.com/IgniteUI/igniteui-cli/pull/1284
+* Refactor the ReactTypeScriptFileUpdate by @jackofdiamond5 in https://github.com/IgniteUI/igniteui-cli/pull/1251
+* Add a WebComponentsTypeScriptFileUpdate  by @jackofdiamond5 in https://github.com/IgniteUI/igniteui-cli/pull/1250
+* TypeScriptFileUpdate refactoring by @jackofdiamond5 in https://github.com/IgniteUI/igniteui-cli/pull/1243
+* Turn off no-explicit-any rule for wc by @mtsvyatkova in https://github.com/IgniteUI/igniteui-cli/pull/1288
+* add test files for app component in WC and Angular  by @onlyexeption in https://github.com/IgniteUI/igniteui-cli/pull/1286
+* Added overriding app.test.tsx for default top navigation template by @ivanvpetrov in https://github.com/IgniteUI/igniteui-cli/pull/1289
+* Adding 'ng lint' command in Angular Standalone templates by @Marina-L-Stoyanova in https://github.com/IgniteUI/igniteui-cli/pull/1299
+* Angular - apply mutations on configureTestingModule metadata by @jackofdiamond5 in https://github.com/IgniteUI/igniteui-cli/pull/1293
+* Use placeholders in side-nav projects by @jackofdiamond5 in https://github.com/IgniteUI/igniteui-cli/pull/1307
+* Move creation of nodes from ast transformer to a new node factory class by @jackofdiamond5 in https://github.com/IgniteUI/igniteui-cli/pull/1308
+
+## New Contributors
+* @mtsvyatkova made their first contribution in https://github.com/IgniteUI/igniteui-cli/pull/1288
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.4.3...v14.0.0
+
 # [13.4.3](https://github.com/IgniteUI/igniteui-cli/compare/v13.4.2...v13.4.3) (2024-08-22)
 
 ## What's Changed
