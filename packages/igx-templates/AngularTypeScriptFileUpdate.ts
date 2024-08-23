@@ -65,7 +65,7 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
     }
 
     const structure = this.buildRouteStructure(route, multiline);
-    const newRoute = this.astTransformer.createObjectLiteralExpression(
+    const newRoute = this.factory.createObjectLiteralExpression(
       structure,
       multiline
     );
@@ -227,7 +227,7 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
         callExpr
       );
     } else {
-      const objLiteral = this.astTransformer.createObjectLiteralExpression(
+      const objLiteral = this.factory.createObjectLiteralExpression(
         [{ bindToComponentInputs: TRUE_CLAUSE }],
         false, // multiline
         () => ts.factory.createTrue()
@@ -281,7 +281,7 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
       route.identifierName &&
       route.modulePath
     ) {
-      const lazyLoadedModule = this.astTransformer.createDynamicImport(
+      const lazyLoadedModule = this.factory.createDynamicImport(
         route.modulePath,
         route.identifierName
       );
@@ -350,7 +350,7 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
     if (route.data) {
       structure.push({
         name: AngularRouteTarget.Data,
-        value: this.astTransformer.createObjectLiteralExpression(
+        value: this.factory.createObjectLiteralExpression(
           [route.data],
           multiline,
           (value) =>
@@ -453,7 +453,7 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
     this.astTransformer.requestNewMemberInObjectLiteral(
       visitorCondition,
       target,
-      this.astTransformer.createArrayLiteralExpression(value, multiline),
+      this.factory.createArrayLiteralExpression(value, multiline),
       multiline
     );
   }
@@ -524,17 +524,17 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
     if (dep.root && copy.imports.length > 0) {
       // add forRoot to the module
       let forRootArgs: ts.Expression[] = [
-        this.astTransformer.createArrayLiteralExpression([]),
+        this.factory.createArrayLiteralExpression([]),
       ];
       if (args) {
         forRootArgs = Array.isArray(args)
           ? args
-          : [this.astTransformer.createArrayLiteralExpression([args])];
+          : [this.factory.createArrayLiteralExpression([args])];
       }
       copy.imports = copy.imports.map((i) =>
         this.astTransformer.printer.printNode(
           ts.EmitHint.Unspecified,
-          this.astTransformer.createCallExpression(
+          this.factory.createCallExpression(
             i,
             NG_FOR_ROOT_IDENTIFIER_NAME,
             undefined, // type args

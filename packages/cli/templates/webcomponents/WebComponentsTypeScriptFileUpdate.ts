@@ -36,7 +36,7 @@ export class WebComponentsTypeScriptFileUpdate extends TypeScriptFileUpdate {
 		}
 
 		const structure = this.buildRouteStructure(route, multiline);
-		const newRoute = this.astTransformer.createObjectLiteralExpression(
+		const newRoute = this.factory.createObjectLiteralExpression(
 			structure,
 			multiline
 		);

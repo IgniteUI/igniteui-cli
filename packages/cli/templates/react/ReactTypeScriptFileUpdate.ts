@@ -47,7 +47,7 @@ export class ReactTypeScriptFileUpdate extends TypeScriptFileUpdate {
     }
 
     const structure = this.buildRouteStructure(_route, multiline);
-    const newRoute = this.astTransformer.createObjectLiteralExpression(
+    const newRoute = this.factory.createObjectLiteralExpression(
       structure,
       multiline
     );
@@ -71,7 +71,7 @@ export class ReactTypeScriptFileUpdate extends TypeScriptFileUpdate {
 
     if (route.redirectTo) {
       const loaderPropertyAssignment =
-        this.astTransformer.createArrowFunctionWithCallExpression(
+        this.factory.createArrowFunctionWithCallExpression(
           ReactRouteTarget.Loader,
           route.loader || REACT_ROUTER_DOM_REDIRECT,
           route.redirectTo
