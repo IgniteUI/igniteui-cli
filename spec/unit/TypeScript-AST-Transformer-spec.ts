@@ -1,14 +1,16 @@
 import * as ts from 'typescript';
 import { TypeScriptAstTransformer } from '../../packages/core/typescript/TypeScriptAstTransformer';
+import { TypeScriptNodeFactory } from '../../packages/core/typescript/TypeScriptNodeFactory';
 
 const FILE_NAME = 'test-file.ts';
-let FILE_CONTENT = ``;
+let FILE_CONTENT = '';
 
 describe('TypeScript AST Transformer', () => {
   let sourceFile: ts.SourceFile;
   let astTransformer: TypeScriptAstTransformer;
 
   const printer = ts.createPrinter();
+  const nodeFactory = new TypeScriptNodeFactory();
 
   describe('General', () => {
     it('should find a variable declaration by given name & type', () => {
@@ -37,34 +39,6 @@ describe('TypeScript AST Transformer', () => {
 
       const result = astTransformer.findVariableDeclaration('myVar', 'string');
       expect(result).toBeDefined();
-    });
-
-    it('should create a call expression', () => {
-      sourceFile = ts.createSourceFile(
-        FILE_NAME,
-        FILE_CONTENT,
-        ts.ScriptTarget.Latest,
-        true
-      );
-      astTransformer = new TypeScriptAstTransformer(sourceFile);
-
-      const typeArg = ts.factory.createKeywordTypeNode(
-        ts.SyntaxKind.NumberKeyword
-      );
-      const arg = ts.factory.createNumericLiteral('5');
-      const callExpression = astTransformer.createCallExpression(
-        'x',
-        'myGenericFunction',
-        [typeArg],
-        [arg]
-      );
-
-      const result = printer.printNode(
-        ts.EmitHint.Unspecified,
-        callExpression,
-        sourceFile
-      );
-      expect(result).toEqual(`x.myGenericFunction<number>(5)`);
     });
 
     it('should successfully add and modify arguments in a call expression', () => {
@@ -278,20 +252,6 @@ describe('TypeScript AST Transformer', () => {
         `const myObj = { key1: "hello", key2: "world", key3: "newer-value" };\n`
       );
     });
-
-    it('should create an object literal expression', () => {
-      const newObjectLiteral = astTransformer.createObjectLiteralExpression(
-        [{ name: 'key3', value: ts.factory.createStringLiteral('new-value') }],
-        true
-      );
-
-      const result = printer.printNode(
-        ts.EmitHint.Unspecified,
-        newObjectLiteral,
-        sourceFile
-      );
-      expect(result).toEqual(`{\n    key3: "new-value"\n}`);
-    });
   });
 
   describe('Array literals', () => {
@@ -327,27 +287,6 @@ describe('TypeScript AST Transformer', () => {
       expect(result).toEqual(`const myArr = [4, 1, 2, 3];\n`);
     });
 
-    it('should create an array literal expression with IPropertyAssignment', () => {
-      const newArrayLiteral = astTransformer.createArrayLiteralExpression([
-        {
-          name: 'key3',
-          value: ts.factory.createStringLiteral('new-value'),
-        },
-        {
-          name: 'key4',
-          value: ts.factory.createNumericLiteral('5'),
-        },
-      ]);
-
-      const result = printer.printNode(
-        ts.EmitHint.Unspecified,
-        newArrayLiteral,
-        sourceFile
-      );
-
-      expect(result).toEqual(`[{ key3: "new-value" }, { key4: 5 }]`);
-    });
-
     it('should append elements to an array literal with primitive elements and an anchor element', () => {
       astTransformer.requestNewMembersInArrayLiteral(
         ts.isArrayLiteralExpression,
@@ -377,7 +316,7 @@ describe('TypeScript AST Transformer', () => {
       astTransformer.requestNewMembersInArrayLiteral(
         ts.isArrayLiteralExpression,
         [
-          astTransformer.createObjectLiteralExpression([
+          nodeFactory.createObjectLiteralExpression([
             {
               name: 'key3',
               value: ts.factory.createStringLiteral('new-value'),
@@ -395,7 +334,7 @@ describe('TypeScript AST Transformer', () => {
       astTransformer.requestNewMembersInArrayLiteral(
         ts.isArrayLiteralExpression,
         [
-          astTransformer.createObjectLiteralExpression([
+          nodeFactory.createObjectLiteralExpression([
             {
               name: 'key4',
               value: ts.factory.createStringLiteral('newer-value'),
@@ -413,7 +352,7 @@ describe('TypeScript AST Transformer', () => {
     });
 
     it('should create a multilined array literal expression with IPropertyAssignment', () => {
-      const newArrayLiteral = astTransformer.createArrayLiteralExpression(
+      const newArrayLiteral = nodeFactory.createArrayLiteralExpression(
         [
           {
             name: 'key3',
@@ -438,7 +377,7 @@ describe('TypeScript AST Transformer', () => {
     });
 
     it('should create an array literal expression', () => {
-      const newArrayLiteral = astTransformer.createArrayLiteralExpression([
+      const newArrayLiteral = nodeFactory.createArrayLiteralExpression([
         ts.factory.createStringLiteral('new-value'),
         ts.factory.createNumericLiteral('5'),
       ]);
@@ -452,7 +391,7 @@ describe('TypeScript AST Transformer', () => {
     });
 
     it('should create a multilined array literal expression', () => {
-      const newArrayLiteral = astTransformer.createArrayLiteralExpression(
+      const newArrayLiteral = nodeFactory.createArrayLiteralExpression(
         [
           ts.factory.createStringLiteral('new-value'),
           ts.factory.createNumericLiteral('5'),
@@ -483,7 +422,7 @@ describe('TypeScript AST Transformer', () => {
       });
 
       it('should create an import declaration', () => {
-        const importDeclaration = astTransformer.createImportDeclaration({
+        const importDeclaration = nodeFactory.createImportDeclaration({
           identifiers: { name: 'mock' },
           moduleName: 'module',
         });
@@ -497,7 +436,7 @@ describe('TypeScript AST Transformer', () => {
       });
 
       it('should create an import declaration with an alias', () => {
-        const importDeclaration = astTransformer.createImportDeclaration({
+        const importDeclaration = nodeFactory.createImportDeclaration({
           identifiers: { name: 'SomeImport', alias: 'mock' },
           moduleName: 'module',
         });
@@ -511,7 +450,7 @@ describe('TypeScript AST Transformer', () => {
       });
 
       it('should create a default import declaration', () => {
-        const importDeclaration = astTransformer.createImportDeclaration(
+        const importDeclaration = nodeFactory.createImportDeclaration(
           { identifiers: { name: 'SomeMock' }, moduleName: 'module' },
           true
         );
@@ -525,7 +464,7 @@ describe('TypeScript AST Transformer', () => {
       });
 
       it('should default to the first identifier for a default import declaration when multiple identifiers are passed in', () => {
-        const importDeclaration = astTransformer.createImportDeclaration(
+        const importDeclaration = nodeFactory.createImportDeclaration(
           {
             identifiers: [{ name: 'SomeMock' }, { name: 'AnotherMock' }],
             moduleName: 'module',
@@ -543,7 +482,7 @@ describe('TypeScript AST Transformer', () => {
 
       it('should create an import declaration with a namespace import', () => {
         pending('consider adding support for namesapced imports');
-        const importDeclaration = astTransformer.createImportDeclaration({
+        const importDeclaration = nodeFactory.createImportDeclaration({
           identifiers: { name: '*', alias: 'mock' },
           moduleName: 'another-module',
         });

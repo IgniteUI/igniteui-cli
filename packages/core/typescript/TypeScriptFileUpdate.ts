@@ -15,9 +15,14 @@ import {
   FormatSettings,
   PropertyAssignment,
 } from '../types';
+import { TypeScriptNodeFactory } from './TypeScriptNodeFactory';
 
 export abstract class TypeScriptFileUpdate {
+  /** Applies transformations to a source file using TypeScript compiler API. */
   protected readonly astTransformer: TypeScriptAstTransformer;
+
+  /** Wraps some members of the `ts.factory` for easier creation of custom TS nodes. */
+  protected readonly factory: TypeScriptNodeFactory;
 
   /**
    * Creates a new TypeScriptFileUpdate instance for the given file.
@@ -36,6 +41,7 @@ export abstract class TypeScriptFileUpdate {
       compilerOptions,
       formatSettings
     );
+    this.factory = new TypeScriptNodeFactory(formatSettings);
   }
 
   //#region Public API
@@ -89,9 +95,9 @@ export abstract class TypeScriptFileUpdate {
 
     const initializer = asIdentifier
       ? ts.factory.createIdentifier(route.aliasName || route.identifierName)
-      : this.astTransformer.createArrayLiteralExpression(
+      : this.factory.createArrayLiteralExpression(
           [
-            this.astTransformer.createObjectLiteralExpression(
+            this.factory.createObjectLiteralExpression(
               this.buildRouteStructure(route, multiline),
               multiline
             ),
