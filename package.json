@@ -81,7 +81,7 @@
 		"lerna": "^3.16.4",
 		"lerna-changelog": "^0.8.2",
 		"lite-server": "^2.6.1",
-		"nyc": "^13.1.0",
+		"nyc": "^17.0.0",
 		"resolve": "^1.6.0",
 		"source-map-support": "^0.5.4",
 		"ts-node": "^10.9.2",

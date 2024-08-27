@@ -52,7 +52,7 @@ command = {
 			fs.mkdirSync("./themes");
 			const source = path.join(config.project.igniteuiSource, "/css/themes/", config.project.theme.split(".")[0]);
 			const destination = path.join(config.project.sourceRoot, "themes");
-			fs.copySync(source, destination, { recursive: true });
+			fs.copySync(source, destination);
 		}
 	}
 };
