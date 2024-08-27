@@ -86,7 +86,7 @@
     "inquirer": "^6.4.1",
     "open": "^10.1.0",
     "resolve": "^1.6.0",
-    "through2": "^2.0.3",
+    "through2": "^4.0.2",
     "typescript": "~5.4.3",
     "yargs": "^8.0.2"
   },
@@ -105,7 +105,7 @@
     "lite-server": "^2.6.1",
     "nyc": "^17.0.0",
     "rxjs": "^6.6.3",
-    "source-map-support": "^0.5.4",
+    "source-map-support": "^0.5.21",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript-json-schema": "^0.65.1"
