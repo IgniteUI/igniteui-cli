@@ -28,10 +28,10 @@ describe("Unit - Cli.ts", () => {
 		done();
 	});
 	it("Should fire properly - quickstart", async done => {
-		spyOn(quickstart , "execute").and.returnValue(Promise.resolve(true));
+		spyOn(quickstart , "handler").and.returnValue(Promise.resolve(true));
 		spyOn(Util , "log");
 		await run.run("quickstart");
-		expect(quickstart.execute).toHaveBeenCalled();
+		expect(quickstart.handler).toHaveBeenCalled();
 		expect(Util.log).toHaveBeenCalled();
 		done();
 	});

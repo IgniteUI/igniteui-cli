@@ -30,7 +30,7 @@ export async function run(args = null) {
 
 	const templateManager = new TemplateManager();
 
-	newCommand.template = templateManager;
+	newCommand.templateManager = templateManager;
 	newCommand.builder.framework.choices = templateManager.getFrameworkIds();
 	add.templateManager = templateManager;
 	build.templateManager = templateManager;
@@ -43,16 +43,16 @@ export async function run(args = null) {
 
 	const argv = yargsModule
 	.command(quickstart)
-	.command(newCommand)
-	.command(add)
-	.command(build)
-	.command(start)
-	.command(generate)
-	.command(config)
-	.command(doc)
-	.command(test)
-	.command(list)
-	.command(upgrade)
+	// .command(newCommand)
+	// .command(add)
+	// .command(build)
+	// .command(start)
+	// .command(generate)
+	// .command(config)
+	// .command(doc)
+	// .command(test)
+	// .command(list)
+	// .command(upgrade)
 	.options({
 		version: {
 			alias: "v",
@@ -61,8 +61,16 @@ export async function run(args = null) {
 			type: "boolean"
 		}
 	})
-	.help().alias("help", "h")
-	.argv;
+	.options({
+		testMode: {
+			default: false,
+			type: "boolean",
+			hidden: true
+		}
+	})
+	.parseSync();
+	// .help().alias("help", "h")
+	// .argv;
 
 	//	unsubscribing from process.exit. If `help` was executed we should not reach here
 	process.removeListener("exit", logHelp);
@@ -72,6 +80,7 @@ export async function run(args = null) {
 		return;
 	}
 
+	// `argv._` are the positional arguments passed in to the script
 	const command = argv._[0];
 
 	// internal testing only
@@ -83,7 +92,7 @@ export async function run(args = null) {
 			await newCommand.execute(argv);
 			break;
 		case "quickstart":
-			await quickstart.execute(argv);
+			await quickstart.handler(argv);
 			Util.log("quickstart Created");
 			break;
 		case "add":
