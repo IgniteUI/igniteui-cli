@@ -47,7 +47,7 @@ export async function run(args = null) {
 		.command(quickstart)
 		.command(newCommand)
 		.command(add)
-	// .command(build)
+		.command(build)
 	// .command(start)
 	// .command(generate)
 	// .command(config)
@@ -129,9 +129,6 @@ export async function run(args = null) {
 					case "g":
 					case "generate":
 						await generate.template(argv);
-						break;
-					case "build":
-						await build.execute(argv);
 						break;
 					case "config":
 						break;

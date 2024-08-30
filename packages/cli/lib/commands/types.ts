@@ -1,4 +1,4 @@
-import { CommandModule } from "yargs";
+import { ArgumentsCamelCase, CommandModule } from "yargs";
 import { TemplateManager } from "../TemplateManager";
 import { AddTemplateArgs, Template } from "@igniteui/cli-core";
 
@@ -50,5 +50,9 @@ export interface NewCommandType extends CommandType {
 
 export interface AddCommandType extends CommandType {
 	addTemplate: (name: string, template: Template, options?: AddTemplateArgs) => Promise<boolean>
-	check: (argv: any) => boolean;
+	check: (argv: ArgumentsCamelCase<PositionalArgs | { [key: string]: unknown }>) => boolean;
+}
+
+export interface BuildCommandType extends CommandType {
+	build: (argv?: ArgumentsCamelCase<PositionalArgs>) => Promise<void>;
 }

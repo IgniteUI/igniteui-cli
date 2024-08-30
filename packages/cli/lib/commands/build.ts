@@ -1,22 +1,15 @@
 import { GoogleAnalytics, PackageManager, ProjectConfig, Util } from "@igniteui/cli-core";
 import * as fs from "fs-extra";
 import * as path from "path";
-import { TemplateManager } from "../TemplateManager";
+import { BuildCommandType, PositionalArgs } from "./types";
+import { ArgumentsCamelCase } from "yargs";
 
-let command: {
-	command: string,
-	desc: string,
-	builder: {},
-	templateManager: TemplateManager,
-	execute: (argv: any) => Promise<void>,
-	build: (argv: any) => Promise<void>
-};
-command = {
+const command: BuildCommandType = {
 	command: "build",
-	desc: "builds the project",
+	describe: "builds the project",
 	builder: {},
 	templateManager: null,
-	async execute(argv?) {
+	async handler(argv: ArgumentsCamelCase<PositionalArgs>) {
 
 		GoogleAnalytics.post({
 			t: "screenview",
