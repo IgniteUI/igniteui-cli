@@ -2,8 +2,9 @@ import { GoogleAnalytics, ProjectConfig, Util } from "@igniteui/cli-core";
 import { ExecSyncOptions } from "child_process";
 import * as path from "path";
 import * as resolve from "resolve";
-import { TemplateManager } from "../TemplateManager";
 import { default as build } from "./build";
+import { PositionalArgs, StartCommandType } from "./types";
+import { ArgumentsCamelCase } from "yargs";
 
 const execSyncNpmStart = (port: number, options: ExecSyncOptions): void => {
 	if (port) {
@@ -13,16 +14,9 @@ const execSyncNpmStart = (port: number, options: ExecSyncOptions): void => {
 	Util.execSync(`npm start`, options);
 };
 
-let command: {
-	[name: string]: any,
-	templateManager: TemplateManager,
-	execute: (argv: any) => Promise<void>,
-	start: (argv: any) => Promise<void>
-};
-// tslint:disable:object-literal-sort-keys
-command = {
+const command: StartCommandType = {
 	command: "start",
-	desc: "starts the project",
+	describe: "starts the project",
 	templateManager: null,
 	builder: {
 		port: {
@@ -31,8 +25,7 @@ command = {
 			type: "number"
 		}
 	},
-
-	async execute(argv) {
+	async handler(argv: ArgumentsCamelCase<PositionalArgs>) {
 		GoogleAnalytics.post({
 			t: "screenview",
 			cd: "Start"
@@ -40,14 +33,14 @@ command = {
 
 		command.start(argv);
 	},
-	async start(argv) {
+	async start(argv: ArgumentsCamelCase<PositionalArgs>) {
 		if (!ProjectConfig.hasLocalConfig()) {
 			Util.error("Start command is supported only on existing project created with igniteui-cli", "red");
 			return;
 		}
 
 		//build
-		await build.build({});
+		await build.build();
 
 		const config = ProjectConfig.getConfig();
 		const framework = config.project.framework;

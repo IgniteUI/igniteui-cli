@@ -42,9 +42,9 @@ describe("Unit - Cli.ts", () => {
 		done();
 	});
 	it("Should fire properly - build", async done => {
-		spyOn(build , "execute").and.returnValue(true);
+		spyOn(build , "handler").and.returnValue(true);
 		await run.run("build");
-		expect(build.execute).toHaveBeenCalled();
+		expect(build.handler).toHaveBeenCalled();
 		done();
 	});
 	it("Should fire properly - doc", async done => {
@@ -60,9 +60,9 @@ describe("Unit - Cli.ts", () => {
 		done();
 	});
 	it("Should fire properly - start", async done => {
-		spyOn(start , "execute").and.returnValue(true);
+		spyOn(start , "handler").and.returnValue(true);
 		await run.run("start");
-		expect(start.execute).toHaveBeenCalled();
+		expect(start.handler).toHaveBeenCalled();
 		done();
 	});
 	it("Should fire properly - list", async done => {

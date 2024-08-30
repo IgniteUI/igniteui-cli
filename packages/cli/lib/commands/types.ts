@@ -2,7 +2,6 @@ import { ArgumentsCamelCase, CommandModule } from "yargs";
 import { TemplateManager } from "../TemplateManager";
 import { AddTemplateArgs, Template } from "@igniteui/cli-core";
 
-
 export const ADD_COMMAND_NAME = "add";
 export const NEW_COMMAND_NAME = "new";
 export const QUICKSTART_COMMAND_NAME = "quickstart";
@@ -37,7 +36,9 @@ export interface PositionalArgs {
 	template: string;
 	module: string;
 	skipRoute: boolean;
+	/** For internal use only. */
 	skipExecution: boolean;
+	port: number;
 }
 
 export interface CommandType extends CommandModule<{}, any> {
@@ -49,10 +50,14 @@ export interface NewCommandType extends CommandType {
 }
 
 export interface AddCommandType extends CommandType {
-	addTemplate: (name: string, template: Template, options?: AddTemplateArgs) => Promise<boolean>
-	check: (argv: ArgumentsCamelCase<PositionalArgs | { [key: string]: unknown }>) => boolean;
+	addTemplate(name: string, template: Template, options?: AddTemplateArgs): Promise<boolean>
+	check(argv: ArgumentsCamelCase<PositionalArgs | { [key: string]: unknown }>): boolean;
 }
 
 export interface BuildCommandType extends CommandType {
-	build: (argv?: ArgumentsCamelCase<PositionalArgs>) => Promise<void>;
+	build(argv?: ArgumentsCamelCase<PositionalArgs>): Promise<void>;
+}
+
+export interface StartCommandType extends CommandType {
+	start(argv: any): Promise<void>
 }

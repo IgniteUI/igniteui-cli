@@ -19,7 +19,7 @@ describe("Unit - start command", () => {
 	it("Logs error when run outside project", async done => {
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
 
-		await startCmd.execute({});
+		await startCmd.handler({ _: ["start"], $0: "start" });
 
 		expect(Util.error).toHaveBeenCalledWith(
 			"Start command is supported only on existing project created with igniteui-cli",
@@ -40,17 +40,17 @@ describe("Unit - start command", () => {
 		} as Config;
 		spyOn(ProjectConfig, "getConfig").and.callFake(() => config);
 
-		await startCmd.execute({});
+		await startCmd.handler({ _: ["start"], $0: "start" });
 		expect(buildCmd.build).toHaveBeenCalled();
 		expect(Util.execSync).toHaveBeenCalledWith("npm start", { stdio: "inherit", killSignal: "SIGINT" });
 		expect(Util.log).toHaveBeenCalledWith(`Starting project.`, "green");
 
 		config.project.defaultPort = 3567;
-		await startCmd.execute({});
+		await startCmd.handler({ _: ["start"], $0: "start" });
 		// tslint:disable-next-line: max-line-length
 		expect(Util.execSync).toHaveBeenCalledWith("npm start -- --port=3567", { stdio: "inherit", killSignal: "SIGINT" });
 
-		await startCmd.execute({ port: 1234 });
+		await startCmd.handler({ port: 1234,  _: ["start"], $0: "start"  });
 		// tslint:disable-next-line: max-line-length
 		expect(Util.execSync).toHaveBeenCalledWith("npm start -- --port=1234", { stdio: "inherit", killSignal: "SIGINT" });
 
@@ -69,7 +69,7 @@ describe("Unit - start command", () => {
 		} as Config;
 		spyOn(ProjectConfig, "getConfig").and.callFake(() => config);
 
-		await startCmd.execute({});
+		await startCmd.handler({ _: ["start"], $0: "start" });
 		expect(buildCmd.build).toHaveBeenCalled();
 		expect(Util.execSync).toHaveBeenCalledWith("npm start", { stdio: "inherit", killSignal: "SIGINT" });
 		expect(Util.log).toHaveBeenCalledWith(`Starting project.`, "green");
@@ -98,17 +98,17 @@ describe("Unit - start command", () => {
 		} as Config;
 		spyOn(ProjectConfig, "getConfig").and.callFake(() => config);
 
-		await startCmd.execute({});
+		await startCmd.handler({ _: ["start"], $0: "start" });
 		expect(buildCmd.build).toHaveBeenCalled();
 		expect(Util.execSync).toHaveBeenCalledWith("npm start", { stdio: "inherit", killSignal: "SIGINT" });
 		expect(Util.log).toHaveBeenCalledWith(`Starting project.`, "green");
 
 		config.project.defaultPort = 3567;
-		await startCmd.execute({});
+		await startCmd.handler({ _: ["start"], $0: "start" });
 		expect(process.env.PORT).toEqual("3567");
 		expect(Util.execSync).toHaveBeenCalledWith("npm start", { stdio: "inherit", killSignal: "SIGINT" });
 
-		await startCmd.execute({ port: 1234 });
+		await startCmd.handler({ port: 1234, _: ["start"], $0: "start"  });
 		expect(process.env.PORT).toEqual("1234");
 		expect(Util.execSync).toHaveBeenCalledWith("npm start", { stdio: "inherit", killSignal: "SIGINT" });
 
@@ -140,7 +140,7 @@ describe("Unit - start command", () => {
 		} as Config;
 		spyOn(ProjectConfig, "getConfig").and.callFake(() => config);
 
-		await startCmd.execute({});
+		await startCmd.handler({ _: ["start"], $0: "start" });
 		expect(buildCmd.build).toHaveBeenCalled();
 		expect(resolve.sync).toHaveBeenCalledWith("browser-sync", { basedir: process.cwd() });
 		expect(bsMock.create).toHaveBeenCalledWith("igniteui-cli");
@@ -148,10 +148,10 @@ describe("Unit - start command", () => {
 		expect(Util.log).toHaveBeenCalledWith(`Starting project.`, "green");
 
 		config.project.defaultPort = 3567;
-		await startCmd.execute({});
+		await startCmd.handler({ _: ["start"], $0: "start" });
 		expect(bsServMock.init).toHaveBeenCalledWith({ test: true, port: 3567 });
 
-		await startCmd.execute({ port: 1234 });
+		await startCmd.handler({ port: 1234, _: ["start"], $0: "start"  });
 		expect(bsServMock.init).toHaveBeenCalledWith({ test: true, port: 1234 });
 
 		expect(Util.error).not.toHaveBeenCalled();

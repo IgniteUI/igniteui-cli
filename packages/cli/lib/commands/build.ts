@@ -17,7 +17,7 @@ const command: BuildCommandType = {
 		});
 		command.build(argv);
 	},
-	async build(argv?) {
+	async build() {
 		Util.log("Build started.");
 		await PackageManager.ensureIgniteUISource(true, command.templateManager);
 

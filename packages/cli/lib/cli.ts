@@ -16,6 +16,7 @@ import { TemplateManager } from "./TemplateManager";
 import { ADD_COMMAND_NAME, ALL_COMMANDS } from "./commands/types";
 
 // TODO: export all commands in an index.ts
+// TODO: docs for the new types
 
 process.title = "Ignite UI CLI";
 
@@ -48,7 +49,7 @@ export async function run(args = null) {
 		.command(newCommand)
 		.command(add)
 		.command(build)
-	// .command(start)
+		.command(start)
 	// .command(generate)
 	// .command(config)
 	// .command(doc)
@@ -137,9 +138,6 @@ export async function run(args = null) {
 						break;
 					case "test":
 						await test.execute(argv);
-						break;
-					case "start":
-						await start.execute(argv);
 						break;
 					case "l":
 					case "list":
