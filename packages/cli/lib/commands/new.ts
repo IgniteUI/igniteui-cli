@@ -1,17 +1,13 @@
 import { GoogleAnalytics, PackageManager, ProjectConfig, ProjectLibrary, Util } from "@igniteui/cli-core";
 import * as path from "path";
-import { TemplateManager } from "../TemplateManager";
 import { PromptSession } from "./../PromptSession";
+import { NewCommandType, PositionalArgs } from "./types";
+import { TemplateManager } from "../TemplateManager";
+import { ArgumentsCamelCase } from "yargs";
 
-let command: {
-	[name: string]: any,
-	template: TemplateManager,
-	execute: (argv: any) => Promise<void>
-};
-// tslint:disable:object-literal-sort-keys
-command = {
+const command: NewCommandType = {
 	command: "new [name]",
-	desc: "creates a project",
+	describe: "creates a project",
 	builder: {
 		"name": {
 			alias: "n",
@@ -50,8 +46,7 @@ command = {
 			type: "string"
 		}
 	},
-	template: null,
-	async execute(argv) {
+	async handler(argv: ArgumentsCamelCase<PositionalArgs>) {
 		GoogleAnalytics.post({
 			t: "screenview",
 			cd: "New"
@@ -61,7 +56,7 @@ command = {
 			return Util.error("There is already an existing project.", "red");
 		}
 		if (!argv.name) {
-			const prompts = new PromptSession(command.template);
+			const prompts = new PromptSession(command.templateManager || new TemplateManager());
 			await prompts.start();
 			return;
 		}
@@ -81,20 +76,20 @@ command = {
 			Util.error(`Folder "${argv.name}" already exists!`, "red");
 			return;
 		}
-		if (command.template.getFrameworkById(argv.framework) === undefined) {
+		if (command.templateManager?.getFrameworkById(argv.framework) === undefined) {
 			return Util.error("Framework not supported", "red");
 		}
 		let projectLib: ProjectLibrary;
 		if (argv.type) {
-			projectLib = command.template.getProjectLibrary(argv.framework, argv.type) as ProjectLibrary;
+			projectLib = command.templateManager?.getProjectLibrary(argv.framework, argv.type) as ProjectLibrary;
 			if (!projectLib) {
 				return Util.error(`Project type "${argv.type}" not found in framework '${argv.framework}'`);
 			}
 		} else {
-			projectLib = command.template.getProjectLibrary(argv.framework) as ProjectLibrary;
+			projectLib = command.templateManager?.getProjectLibrary(argv.framework) as ProjectLibrary;
 		}
 
-		if (command.template.getFrameworkById(argv.framework).id === "angular" && projectLib.projectType === "igx-ts") {
+		if (command.templateManager?.getFrameworkById(argv.framework).id === "angular" && projectLib.projectType === "igx-ts") {
 			Util.warn("Psst! Did you know you can use our schematics package with Angular CLI to create and modify your projects?", "yellow");
 			Util.warn("Read more at: https://www.infragistics.com/products/ignite-ui-angular/angular/components/general/cli-overview", "yellow");
 		}
@@ -156,6 +151,9 @@ command = {
 		Util.log(`  cd ${argv.name}`);
 		Util.log("  ig add      start guided mode for adding views to the app");
 		Util.log("  ig start    starts a web server and opens the app in the default browser");
+	},
+	addChoices(choices) {
+		this.builder.framework.choices = choices;
 	}
 };
 

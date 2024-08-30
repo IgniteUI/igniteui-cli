@@ -23,7 +23,6 @@ describe("New command", () => {
 	});
 
 	it("Creates jQuery project", async done => {
-
 		await cli.run(["new", "jQuery Proj", "--framework=jquery"]);
 
 		expect(fs.existsSync("./jQuery Proj")).toBeTruthy();
@@ -58,7 +57,7 @@ describe("New command", () => {
 	it("Creates React project", async done => {
 		// process.argv = ["new", "reactProj", "--framework=react"];
 
-		await cli.run(["new", "React Proj", "--framework=react"]);
+		await cli.run(["new", "React Proj", "--framework=react", "--skip-install"]);
 
 		expect(fs.existsSync("./React Proj")).toBeTruthy();
 		expect(filesDiff("../templates/react/es6/projects/empty/files", "./React Proj")).toEqual([]);
@@ -72,7 +71,7 @@ describe("New command", () => {
 	it("Creates Angular project", async done => {
 		// process.argv = ["new", "reactProj", "--framework=react"];
 
-		await cli.run(["new", "ngx Proj", "--framework=angular", "--type=igx-ts"]);
+		await cli.run(["new", "ngx Proj", "--framework=angular", "--type=igx-ts", "--skip-install"]);
 
 		expect(fs.existsSync("./ngx Proj")).toBeTruthy();
 		expect(filesDiff("../templates/angular/ig-ts/projects/empty/files", "./ngx Proj")).toEqual([]);
@@ -85,7 +84,7 @@ describe("New command", () => {
 
 	it("Creates Ignite UI for Angular project", async done => {
 
-		await cli.run(["new", "Ignite UI for Angular", "--framework=angular", "--type=igx-ts", "--theme=default"]);
+		await cli.run(["new", "Ignite UI for Angular", "--framework=angular", "--type=igx-ts", "--theme=default", "--skip-install"]);
 
 		expect(fs.existsSync("./Ignite UI for Angular")).toBeTruthy();
 		expect(filesDiff("../templates/angular/igx-ts/projects/empty/files", "./Ignite UI for Angular")).toEqual([]);
@@ -98,7 +97,7 @@ describe("New command", () => {
 
 	it("Should not work on existing folders", async done => {
 		fs.mkdirSync("testProj");
-		await cli.run(["new", "testProj"]);
+		await cli.run(["new", "testProj", "--skip-install"]);
 		expect(console.error).toHaveBeenCalledWith(jasmine.stringMatching(/Folder "testProj" already exists!/));
 
 		let expectedPrams: GoogleAnalyticsParameters = {
@@ -115,7 +114,7 @@ describe("New command", () => {
 		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);
 		fs.rmdirSync("testProj");
 
-		await cli.run(["new", "testProj2"]);
+		await cli.run(["new", "testProj2", "--skip-install"]);
 		expect(fs.existsSync("./testProj2")).toBeTruthy();
 		expect(fs.existsSync("./testProj2/ignite-cli-views.js")).toBeTruthy();
 
@@ -126,7 +125,7 @@ describe("New command", () => {
 			.toEqual("text", "Shouldn't overwrite existing project files!");
 
 		resetSpy(console.error);
-		await cli.run(["new", "   testProj2  \t  "]);
+		await cli.run(["new", "   testProj2  \t  ", "--skip-install"]);
 		expect(console.error).toHaveBeenCalledWith(jasmine.stringMatching(/Folder "testProj2" already exists!/));
 		expect(fs.readFileSync("./testProj2/ignite-cli-views.js").toString())
 			.toEqual("text", "Shouldn't overwrite existing project files!");
@@ -137,7 +136,7 @@ describe("New command", () => {
 
 	it("Git Status", async done => {
 		const projectName = "angularProj";
-		await cli.run(["new", projectName, "--framework=angular", "--type=igx-ts", "--theme=default"]);
+		await cli.run(["new", projectName, "--framework=angular", "--type=igx-ts", "--theme=default", "--skip-install"]);
 
 		process.chdir(projectName);
 		expect(fs.existsSync(".git")).toBeTruthy();
@@ -163,7 +162,7 @@ describe("New command", () => {
 	it("Creates project with single word name", async done => {
 		spyOn(Util, "gitInit");
 		const projectName = "a";
-		await cli.run(["new", projectName, "--framework=jquery"]);
+		await cli.run(["new", projectName, "--framework=jquery", "--skip-install"]);
 
 		expect(Util.gitInit).toHaveBeenCalled();
 		//TODO: read entire structure from ./templates and verify everything is copied over

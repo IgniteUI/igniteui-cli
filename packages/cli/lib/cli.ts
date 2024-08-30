@@ -30,8 +30,8 @@ export async function run(args = null) {
 
 	const templateManager = new TemplateManager();
 
+	newCommand.addChoices(templateManager.getFrameworkIds());
 	newCommand.templateManager = templateManager;
-	newCommand.builder.framework.choices = templateManager.getFrameworkIds();
 	add.templateManager = templateManager;
 	build.templateManager = templateManager;
 	start.templateManager = templateManager;
@@ -41,9 +41,8 @@ export async function run(args = null) {
 
 	const yargsModule = args ? yargs(args) : yargs;
 
-	const argv = yargsModule
-	.command(quickstart)
-	// .command(newCommand)
+	const argv = await yargsModule
+	.command(newCommand)
 	// .command(add)
 	// .command(build)
 	// .command(start)
@@ -68,9 +67,8 @@ export async function run(args = null) {
 			hidden: true
 		}
 	})
-	.parseSync();
-	// .help().alias("help", "h")
-	// .argv;
+	.help().alias("help", "h")
+	.parseAsync();
 
 	//	unsubscribing from process.exit. If `help` was executed we should not reach here
 	process.removeListener("exit", logHelp);
@@ -89,10 +87,14 @@ export async function run(args = null) {
 
 	switch (command) {
 		case "new":
-			await newCommand.execute(argv);
+			// await yargsModule
+			// 	.command(newCommand)
+			// 	.parseAsync();
 			break;
 		case "quickstart":
-			await quickstart.handler(argv);
+			await yargsModule
+				.command(quickstart)
+				.parseAsync();
 			Util.log("quickstart Created");
 			break;
 		case "add":
