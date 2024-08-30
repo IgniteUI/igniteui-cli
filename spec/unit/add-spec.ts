@@ -30,7 +30,7 @@ describe("Unit - Add command", () => {
 		const promptSession =  PromptSession.prototype;
 		spyOn(promptSession, "chooseActionLoop");
 
-		await addCmd.execute({});
+		await addCmd.handler({ _: ["add"], $0: "add" });
 		expect(promptSession.chooseActionLoop).toHaveBeenCalledWith(mockProjLib);
 		done();
 	});
@@ -117,7 +117,7 @@ describe("Unit - Add command", () => {
 		spyOn(addCmd, "addTemplate");
 		spyOn(PackageManager, "flushQueue").and.returnValue(Promise.resolve());
 		spyOn(PackageManager, "ensureIgniteUISource");
-		await addCmd.execute({name: "template with packages", template: "test-id"});
+		await addCmd.handler({ name: "template with packages", template: "test-id", _: ["add"], $0: "add" });
 		expect(addCmd.addTemplate).toHaveBeenCalledWith("template with packages", {}, jasmine.any(Object));
 		expect(PackageManager.flushQueue).toHaveBeenCalled();
 
@@ -170,10 +170,12 @@ describe("Unit - Add command", () => {
 				return true;
 			}
 		});
-		await addCmd.execute({
+		await addCmd.handler({
 			name: "test-file-name", template: "CustomTemplate",
 			// tslint:disable-next-line:object-literal-sort-keys
-			module: "myCustomModule/my-custom-module.module.ts"
+			module: "myCustomModule/my-custom-module.module.ts",
+			_: ["add"],
+			$0: "add"
 		});
 		expect(addCmd.addTemplate).toHaveBeenCalledWith(
 			"test-file-name", mockTemplate,
@@ -245,9 +247,11 @@ describe("Unit - Add command", () => {
 		spyOn(addCmd, "addTemplate").and.callThrough();
 		spyOn(PackageManager, "flushQueue").and.returnValue(Promise.resolve());
 		spyOn(PackageManager, "ensureIgniteUISource");
-		await addCmd.execute({
+		await addCmd.handler({
 			name: "test-file-name", template: "CustomTemplate",
-			module: "myCustomModule/my-custom-module.module.ts"
+			module: "myCustomModule/my-custom-module.module.ts",
+			_: ["add"],
+			$0: "add"
 		});
 		expect(addCmd.addTemplate).toHaveBeenCalledWith(
 			"test-file-name", mockTemplate,
@@ -304,10 +308,12 @@ describe("Unit - Add command", () => {
 		spyOn(PackageManager, "flushQueue").and.returnValue(Promise.resolve());
 		spyOn(PackageManager, "ensureIgniteUISource");
 
-		await addCmd.execute({
+		await addCmd.handler({
 			name: "test-file-name", template: "CustomTemplate",
 			// tslint:disable-next-line:object-literal-sort-keys
-			skipRoute: true
+			skipRoute: true,
+			_: ["add"],
+			$0: "add"
 		});
 		expect(addCmd.addTemplate).toHaveBeenCalledWith(
 			"test-file-name", mockTemplate,

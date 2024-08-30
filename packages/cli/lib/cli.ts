@@ -12,7 +12,10 @@ import { default as start } from "./commands/start";
 import { default as test } from "./commands/test";
 import { default as upgrade } from "./commands/upgrade";
 import { PromptSession } from "./PromptSession";
-import {TemplateManager} from "./TemplateManager";
+import { TemplateManager } from "./TemplateManager";
+import { ADD_COMMAND_NAME, ALL_COMMANDS } from "./commands/types";
+
+// TODO: export all commands in an index.ts
 
 process.title = "Ignite UI CLI";
 
@@ -40,10 +43,10 @@ export async function run(args = null) {
 	upgrade.templateManager = templateManager;
 
 	const yargsModule = args ? yargs(args) : yargs;
-
-	const argv = await yargsModule
-	.command(newCommand)
-	// .command(add)
+	await yargsModule
+		.command(quickstart)
+		.command(newCommand)
+		.command(add)
 	// .command(build)
 	// .command(start)
 	// .command(generate)
@@ -52,89 +55,103 @@ export async function run(args = null) {
 	// .command(test)
 	// .command(list)
 	// .command(upgrade)
-	.options({
-		version: {
-			alias: "v",
-			description: "Show current Ignite UI CLI version",
-			global: true,
-			type: "boolean"
-		}
-	})
-	.options({
-		testMode: {
-			default: false,
-			type: "boolean",
-			hidden: true
-		}
-	})
-	.help().alias("help", "h")
-	.parseAsync();
-
-	//	unsubscribing from process.exit. If `help` was executed we should not reach here
-	process.removeListener("exit", logHelp);
-
-	if (argv.version) {
-		Util.showVersion(__dirname + "/../ignite-ui-cli.txt");
-		return;
-	}
-
-	// `argv._` are the positional arguments passed in to the script
-	const command = argv._[0];
-
-	// internal testing only
-	/* istanbul ignore next */
-	App.testMode = !!argv.testMode;
-
-	switch (command) {
-		case "new":
-			// await yargsModule
-			// 	.command(newCommand)
-			// 	.parseAsync();
-			break;
-		case "quickstart":
-			await yargsModule
-				.command(quickstart)
-				.parseAsync();
-			Util.log("quickstart Created");
-			break;
-		case "add":
-			if (add.check(argv)) {
-				await add.execute(argv);
-			} else {
-				yargsModule.showHelp();
-				return;
+		.version(false) // disable built-in yargs.version to override it with our custom option
+		.options({
+			version: {
+				alias: "v",
+				description: "Show current Ignite UI CLI version",
+				global: true,
+				type: "boolean"
 			}
-			break;
-		case "g":
-		case "generate":
-			await generate.template(argv);
-			break;
-		case "build":
-			await build.execute(argv);
-			break;
-		case "config":
-			break;
-		case "doc":
-			await doc.execute(argv);
-			break;
-		case "test":
-			await test.execute(argv);
-			break;
-		case "start":
-			await start.execute(argv);
-			break;
-		case "l":
-		case "list":
-			list.execute(argv);
-			break;
-		case "upgrade-packages":
-			await upgrade.execute(argv);
-			break;
-		default:
-			Util.log("Starting Step by step mode.", "green");
-			Util.log("For available commands, stop this execution and use --help.", "green");
-			const prompts = new PromptSession(templateManager);
-			prompts.start();
-			break;
-	}
+		})
+		.options({
+			testMode: {
+				default: false,
+				type: "boolean",
+				hidden: true
+			}
+		})
+		.help().alias("help", "h")
+		.middleware((argv) => {
+				const command = argv._[0];
+				if (command === ADD_COMMAND_NAME && !add.check(argv)) {
+					argv.skipExecution = true;
+					yargsModule.showHelp();
+				}
+			},
+			false	// setting this to `true` is supposed to exec the middleware after parsing and before arg validation
+					// but in reality it also does not trigger the command's handler (╯°□°）╯︵ ┻━┻
+		)
+		.parseAsync(
+			args, // the args to parse to argv
+			{}, // docs say context to pass in to handlers, but nuh-uh, it's just garbage
+			async (err, argv, output) => {
+				// `argv._` are the positional arguments passed in to the script
+				const command = argv._[0];
+
+				if (err) {
+					Util.error(`The ${command} command threw error - ${err.name}`, "red");
+					Util.error(`Message: ${err.message}`, "red");
+					if (err.stack) {
+						Util.error(`Stack: ${err.stack}`, "red");
+					}
+					process.exit(1);
+				}
+
+				if (output) {
+					Util.log(output);
+				}
+
+				// unsubscribing from process.exit. If `help` was executed we should not reach here
+				process.removeListener("exit", logHelp);
+
+				if (argv.version) {
+					Util.showVersion(__dirname + "/../ignite-ui-cli.txt");
+					return;
+				}
+
+				// internal testing only
+				/* istanbul ignore next */
+				App.testMode = !!argv.testMode;
+
+				if (!ALL_COMMANDS.has(command.toString())) {
+					Util.log("Starting Step by step mode.", "green");
+					Util.log("For available commands, stop this execution and use --help.", "green");
+					const prompts = new PromptSession(templateManager);
+					prompts.start();
+					return;
+				}
+
+				switch (command) {
+					case "quickstart":
+						Util.log("quickstart Created");
+						break;
+					case "g":
+					case "generate":
+						await generate.template(argv);
+						break;
+					case "build":
+						await build.execute(argv);
+						break;
+					case "config":
+						break;
+					case "doc":
+						await doc.execute(argv);
+						break;
+					case "test":
+						await test.execute(argv);
+						break;
+					case "start":
+						await start.execute(argv);
+						break;
+					case "l":
+					case "list":
+						list.execute(argv);
+						break;
+					case "upgrade-packages":
+						await upgrade.execute(argv);
+						break;
+				}
+			}
+		);
 }
