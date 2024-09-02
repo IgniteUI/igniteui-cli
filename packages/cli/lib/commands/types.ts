@@ -42,10 +42,12 @@ export interface PositionalArgs {
 	skipConfig?: boolean;
 	property?: string;
 	global?: boolean;
+	term?: string;
 }
 
 export interface CommandType extends CommandModule<{}, any> {
 	templateManager?: TemplateManager;
+	handler(argv: ArgumentsCamelCase<PositionalArgs>);
 }
 
 export interface NewCommandType extends CommandType {
@@ -69,4 +71,8 @@ export interface ConfigCommandType extends CommandType {
 	getHandler(argv: ArgumentsCamelCase<PositionalArgs>): void;
 	setHandler(argv: ArgumentsCamelCase<PositionalArgs>): void;
 	addHandler(argv: ArgumentsCamelCase<PositionalArgs>): void;
+}
+
+export interface DocCommandType extends CommandType {
+	open(string): void;
 }

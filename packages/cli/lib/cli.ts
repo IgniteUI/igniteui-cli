@@ -15,9 +15,6 @@ import { PromptSession } from "./PromptSession";
 import { TemplateManager } from "./TemplateManager";
 import { ADD_COMMAND_NAME, ALL_COMMANDS } from "./commands/types";
 
-// TODO: export all commands in an index.ts
-// TODO: docs for the new types
-
 process.title = "Ignite UI CLI";
 
 function logHelp() {
@@ -43,6 +40,9 @@ export async function run(args = null) {
 	list.templateManager = templateManager;
 	upgrade.templateManager = templateManager;
 
+// TODO: export all commands in an index.ts
+// TODO: docs for the new types
+
 	const yargsModule = args ? yargs(args) : yargs;
 	await yargsModule
 		.command(quickstart)
@@ -52,7 +52,7 @@ export async function run(args = null) {
 		.command(start)
 		.command(generate)
 		.command(config)
-	// .command(doc)
+		.command(doc)
 	// .command(test)
 	// .command(list)
 	// .command(upgrade)
@@ -126,11 +126,6 @@ export async function run(args = null) {
 				switch (command) {
 					case "quickstart":
 						Util.log("quickstart Created");
-						break;
-					case "config":
-						break;
-					case "doc":
-						await doc.execute(argv);
 						break;
 					case "test":
 						await test.execute(argv);
