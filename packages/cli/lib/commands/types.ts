@@ -29,17 +29,19 @@ export const ALL_COMMANDS = new Set([
 ]);
 
 export interface PositionalArgs {
-	framework: string;
-	name: string;
-	type: string;
-	theme: string;
-	template: string;
-	module: string;
-	skipRoute: boolean;
+	framework?: string;
+	name?: string;
+	type?: string;
+	theme?: string;
+	template?: string;
+	module?: string;
+	skipRoute?: boolean;
 	/** For internal use only. */
-	skipExecution: boolean;
-	port: number;
-	skipConfig: boolean;
+	skipExecution?: boolean;
+	port?: number;
+	skipConfig?: boolean;
+	property?: string;
+	global?: boolean;
 }
 
 export interface CommandType extends CommandModule<{}, any> {
@@ -61,4 +63,10 @@ export interface BuildCommandType extends CommandType {
 
 export interface StartCommandType extends CommandType {
 	start(argv: any): Promise<void>
+}
+
+export interface ConfigCommandType extends CommandType {
+	getHandler(argv: ArgumentsCamelCase<PositionalArgs>): void;
+	setHandler(argv: ArgumentsCamelCase<PositionalArgs>): void;
+	addHandler(argv: ArgumentsCamelCase<PositionalArgs>): void;
 }

@@ -1,13 +1,14 @@
 import { Config, GoogleAnalytics, ProjectConfig, Util } from "@igniteui/cli-core";
+import { ConfigCommandType, PositionalArgs } from "./types";
+import { ArgumentsCamelCase } from "yargs";
 
-const command = {
-	// tslint:disable:object-literal-sort-keys
+const command: ConfigCommandType = {
 	command: "config",
-	desc: "gets, sets or adds a configuration property",
+	describe: "gets, sets or adds a configuration property",
 	builder: yargs => {
-		yargs.command({
+		return yargs.command({
 			command: "get <property>",
-			desc: "Gets a configuration property",
+			describe: "Gets a configuration property",
 			builder: {
 				property: {
 					describe: "Config property to get",
@@ -17,7 +18,7 @@ const command = {
 			handler: command.getHandler
 		}).command({
 			command: "set <property> <value>",
-			desc: "Sets a configuration property",
+			describe: "Sets a configuration property",
 			builder: {
 				property: {
 					describe: "Config property to set",
@@ -31,7 +32,7 @@ const command = {
 			handler: command.setHandler
 		}).command({
 			command: "add <property> <value>",
-			desc: "Adds a value to an existing configuration array",
+			describe: "Adds a value to an existing configuration array",
 			builder: {
 				property: {
 					describe: "Config property to add to",
@@ -42,7 +43,7 @@ const command = {
 					type: "string"
 				}
 			},
-			handler: argv => {
+			handler: (argv: ArgumentsCamelCase<PositionalArgs>) => {
 				command.addHandler(argv);
 			}
 		}).option("global", {
@@ -168,7 +169,8 @@ const command = {
 		}
 
 		Util.log(`Property "${argv.property}" updated.`);
-	}
+	},
+	handler(_argv) {} // part of the CommandModule interface
 };
 
 export default command;

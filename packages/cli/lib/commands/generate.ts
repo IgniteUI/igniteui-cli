@@ -55,7 +55,7 @@ async function handler(argv: ArgumentsCamelCase<PositionalArgs>) {
 		return Util.error("Template generation failed!", "red");
 	}
 	if (!argv.skipConfig) {
-		config.addHandler({ property: "customTemplates", value: "path:" + outDir, global: true, skipAnalytics: true });
+		config.addHandler({ property: "customTemplates", value: "path:" + outDir, global: true, skipAnalytics: true, _: ["config"], $0: "config" });
 	}
 
 	GoogleAnalytics.post({

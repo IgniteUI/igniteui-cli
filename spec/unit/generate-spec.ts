@@ -78,7 +78,9 @@ describe("Unit - Generate command", () => {
 			value: "path:" + outDir,
 			// tslint:disable-next-line:object-literal-sort-keys
 			global: true,
-			skipAnalytics: true
+			skipAnalytics: true,
+			_: ["config"],
+			$0: "config"
 		};
 		expect(config.addHandler).toHaveBeenCalledTimes(1);
 		expect(config.addHandler).toHaveBeenCalledWith(addHandlerExpectedParameter);

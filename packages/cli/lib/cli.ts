@@ -51,7 +51,7 @@ export async function run(args = null) {
 		.command(build)
 		.command(start)
 		.command(generate)
-	// .command(config)
+		.command(config)
 	// .command(doc)
 	// .command(test)
 	// .command(list)
