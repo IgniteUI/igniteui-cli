@@ -50,7 +50,7 @@ describe("Unit - Generate command", () => {
 
 		spyOn(config, "addHandler").and.stub();
 
-		await generateCmd.template({ name: "custom-template", framework: "jquery", type: "js" });
+		await generateCmd.handler({ name: "custom-template", framework: "jquery", type: "js", _: ["generate"], $0: "generate" });
 
 		expect(Util.error).toHaveBeenCalledTimes(0);
 
@@ -89,7 +89,7 @@ describe("Unit - Generate command", () => {
 	it("Logs error for wrong name", async done => {
 		spyOn(Util, "isAlphanumericExt").and.returnValue(false);
 
-		await generateCmd.template({ name: "123wrongName", framework: "jquery", type: "js" });
+		await generateCmd.handler({ name: "123wrongName", framework: "jquery", type: "js", _: ["generate"], $0: "generate" });
 
 		expect(Util.error).toHaveBeenCalledTimes(1);
 		expect(Util.error).toHaveBeenCalledWith(
@@ -107,7 +107,7 @@ describe("Unit - Generate command", () => {
 
 		spyOn(config, "addHandler").and.stub();
 
-		await generateCmd.template({ name: "custom-template", framework: "jquery", type: "js" });
+		await generateCmd.handler({ name: "custom-template", framework: "jquery", type: "js", _: ["generate"], $0: "generate" });
 
 		expect(Util.error).toHaveBeenCalledTimes(1);
 		expect(Util.error).toHaveBeenCalledWith("Folder 'custom-template' already exists!", "red");
@@ -125,7 +125,7 @@ describe("Unit - Generate command", () => {
 			getFrameworkById: undefined
 		});
 
-		await generateCmd.template({ name: "custom-template", framework: "wrongFramework", type: "js" });
+		await generateCmd.handler({ name: "custom-template", framework: "wrongFramework", type: "js", _: ["generate"], $0: "generate" });
 
 		expect(Util.error).toHaveBeenCalledTimes(1);
 		expect(Util.error).toHaveBeenCalledWith("Framework not supported", "red");
@@ -144,7 +144,7 @@ describe("Unit - Generate command", () => {
 			getProjectLibrary: undefined
 		});
 
-		await generateCmd.template({ name: "custom-template", framework: "jquery", type: "wrongType" });
+		await generateCmd.handler({ name: "custom-template", framework: "jquery", type: "wrongType", _: ["generate"], $0: "generate" });
 
 		expect(Util.error).toHaveBeenCalledTimes(1);
 		expect(Util.error).toHaveBeenCalledWith("Project type 'wrongType' not found in framework 'jquery'");
@@ -164,7 +164,7 @@ describe("Unit - Generate command", () => {
 			getProjectLibrary: {}
 		});
 
-		await generateCmd.template({ name: "custom-template", framework: "jquery", type: "js" });
+		await generateCmd.handler({ name: "custom-template", framework: "jquery", type: "js", _: ["generate"], $0: "generate" });
 
 		expect(Util.error).toHaveBeenCalledTimes(1);
 		expect(Util.error).toHaveBeenCalledWith("Template generation failed!", "red");
@@ -189,7 +189,7 @@ describe("Unit - Generate command", () => {
 
 		spyOn(config, "addHandler").and.stub();
 
-		await generateCmd.template({ name: "custom-template", framework: "jquery", type: "js", skipConfig: true });
+		await generateCmd.handler({ name: "custom-template", framework: "jquery", type: "js", skipConfig: true, _: ["generate"], $0: "generate" });
 
 		expect(Util.error).toHaveBeenCalledTimes(0);
 

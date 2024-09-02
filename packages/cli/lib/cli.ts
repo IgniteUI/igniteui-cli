@@ -50,7 +50,7 @@ export async function run(args = null) {
 		.command(add)
 		.command(build)
 		.command(start)
-	// .command(generate)
+		.command(generate)
 	// .command(config)
 	// .command(doc)
 	// .command(test)
@@ -126,10 +126,6 @@ export async function run(args = null) {
 				switch (command) {
 					case "quickstart":
 						Util.log("quickstart Created");
-						break;
-					case "g":
-					case "generate":
-						await generate.template(argv);
 						break;
 					case "config":
 						break;

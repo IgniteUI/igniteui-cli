@@ -39,6 +39,7 @@ export interface PositionalArgs {
 	/** For internal use only. */
 	skipExecution: boolean;
 	port: number;
+	skipConfig: boolean;
 }
 
 export interface CommandType extends CommandModule<{}, any> {
