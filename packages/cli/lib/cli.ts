@@ -13,7 +13,7 @@ import { default as test } from "./commands/test";
 import { default as upgrade } from "./commands/upgrade";
 import { PromptSession } from "./PromptSession";
 import { TemplateManager } from "./TemplateManager";
-import { ADD_COMMAND_NAME, ALL_COMMANDS } from "./commands/types";
+import { ADD_COMMAND_NAME, ALL_COMMANDS, QUICKSTART_COMMAND_NAME } from "./commands/types";
 
 process.title = "Ignite UI CLI";
 
@@ -55,7 +55,7 @@ export async function run(args = null) {
 		.command(doc)
 		.command(test)
 		.command(list)
-	// .command(upgrade)
+		.command(upgrade)
 		.version(false) // disable built-in yargs.version to override it with our custom option
 		.options({
 			version: {
@@ -99,6 +99,11 @@ export async function run(args = null) {
 					process.exit(1);
 				}
 
+				if (command === QUICKSTART_COMMAND_NAME) {
+					Util.log("quickstart Created");
+					return;
+				}
+
 				if (output) {
 					Util.log(output);
 				}
@@ -121,15 +126,6 @@ export async function run(args = null) {
 					const prompts = new PromptSession(templateManager);
 					prompts.start();
 					return;
-				}
-
-				switch (command) {
-					case "quickstart":
-						Util.log("quickstart Created");
-						break;
-					case "upgrade-packages":
-						await upgrade.execute(argv);
-						break;
 				}
 			}
 		);

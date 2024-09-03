@@ -104,7 +104,7 @@ export class PromptSession extends BasePromptSession {
 
 	protected async upgradePackages() {
 		upgrade.templateManager = this.templateManager as TemplateManager;
-		await upgrade.upgrade({ skipInstall: true });
+		await upgrade.upgrade({ skipInstall: true, _: ["upgrade"], $0: "upgrade" });
 	}
 
 	/**

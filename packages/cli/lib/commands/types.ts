@@ -81,3 +81,7 @@ export interface DocCommandType extends CommandType {
 export interface TestCommandType extends CommandType {
 	test(argv: ArgumentsCamelCase<PositionalArgs>): void;
 }
+
+export interface UpgradeCommandType extends CommandType {
+	upgrade(argv: ArgumentsCamelCase<PositionalArgs>): void;
+}

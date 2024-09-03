@@ -1,17 +1,10 @@
 import { GoogleAnalytics, ProjectConfig, Util } from "@igniteui/cli-core";
-import { TemplateManager } from "../TemplateManager";
+import { PositionalArgs, UpgradeCommandType } from "./types";
+import { ArgumentsCamelCase } from "yargs";
 
-let command: {
-	[name: string]: any,
-	templateManager: TemplateManager,
-	execute: (argv: any) => Promise<void>,
-	upgrade: (argv: any) => Promise<void>
-};
-
-// tslint:disable:object-literal-sort-keys
-command = {
+const command: UpgradeCommandType = {
 	command: "upgrade-packages",
-	desc: "upgrades Ignite UI Packages",
+	describe: "upgrades Ignite UI Packages",
 	templateManager: null,
 	builder: {
 		"skip-install": {
@@ -21,8 +14,7 @@ command = {
 			type: "boolean"
 		}
 	},
-	async execute(argv) {
-
+	async handler(argv: ArgumentsCamelCase<PositionalArgs>) {
 		GoogleAnalytics.post({
 			t: "screenview",
 			cd: "Upgrade packages"
@@ -30,7 +22,7 @@ command = {
 
 		return command.upgrade(argv);
 	},
-	async upgrade(argv) {
+	async upgrade(argv: ArgumentsCamelCase<PositionalArgs>) {
 		const config = ProjectConfig.getConfig();
 		const framework = config.project.framework;
 		const projectType = config.project.projectType;

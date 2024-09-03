@@ -38,7 +38,7 @@ describe("Unit - Upgrade command", () => {
 		const upgradeIgniteUIPackagesSpy = spyOn(mockProject, "upgradeIgniteUIPackages");
 
 		upgradeIgniteUIPackagesSpy.and.returnValue(Promise.resolve(true));
-		await upgradeCmd.execute({ skipInstall: true });
+		await upgradeCmd.handler({ skipInstall: true, _: ["upgrade"], $0: "upgrade" });
 		expect(mockTemplateManager.getProjectLibrary).toHaveBeenCalledTimes(1);
 		expect(mockTemplateManager.getProjectLibrary)
 			.toHaveBeenCalledWith(config.project.framework, config.project.projectType);
@@ -48,12 +48,12 @@ describe("Unit - Upgrade command", () => {
 		expect(Util.execSync).not.toHaveBeenCalled();
 
 		upgradeIgniteUIPackagesSpy.and.returnValue(Promise.resolve(false));
-		await upgradeCmd.execute({ skipInstall: false });
+		await upgradeCmd.handler({ skipInstall: false, _: ["upgrade"], $0: "upgrade" });
 		expect(mockProject.upgradeIgniteUIPackages).toHaveBeenCalledTimes(2);
 		expect(Util.execSync).not.toHaveBeenCalled();
 
 		upgradeIgniteUIPackagesSpy.and.returnValue(Promise.resolve(true));
-		await upgradeCmd.execute({ skipInstall: false });
+		await upgradeCmd.handler({ skipInstall: false, _: ["upgrade"], $0: "upgrade" });
 		expect(mockProject.upgradeIgniteUIPackages).toHaveBeenCalledTimes(3);
 		expect(Util.execSync).toHaveBeenCalledWith("npm install --quiet");
 
@@ -69,7 +69,7 @@ describe("Unit - Upgrade command", () => {
 		} as Config;
 		spyOn(ProjectConfig, "getConfig").and.returnValue(config);
 
-		await upgradeCmd.execute({});
+		await upgradeCmd.handler({ _: ["upgrade"], $0: "upgrade" });
 		expect(Util.log).toHaveBeenCalledTimes(1);
 		done();
 	});
