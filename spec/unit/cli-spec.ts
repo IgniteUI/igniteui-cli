@@ -66,9 +66,9 @@ describe("Unit - Cli.ts", () => {
 		done();
 	});
 	it("Should fire properly - list", async done => {
-		spyOn(list , "execute").and.returnValue(true);
+		spyOn(list , "handler").and.returnValue(true);
 		await run.run("list");
-		expect(list.execute).toHaveBeenCalled();
+		expect(list.handler).toHaveBeenCalled();
 		done();
 	});
 	it("Should fire properly - fallback to default", async done => {

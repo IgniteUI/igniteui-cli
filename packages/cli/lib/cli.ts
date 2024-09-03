@@ -54,7 +54,7 @@ export async function run(args = null) {
 		.command(config)
 		.command(doc)
 		.command(test)
-	// .command(list)
+		.command(list)
 	// .command(upgrade)
 		.version(false) // disable built-in yargs.version to override it with our custom option
 		.options({
@@ -126,10 +126,6 @@ export async function run(args = null) {
 				switch (command) {
 					case "quickstart":
 						Util.log("quickstart Created");
-						break;
-					case "l":
-					case "list":
-						list.execute(argv);
 						break;
 					case "upgrade-packages":
 						await upgrade.execute(argv);

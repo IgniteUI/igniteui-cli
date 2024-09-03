@@ -43,6 +43,7 @@ export interface PositionalArgs {
 	property?: string;
 	global?: boolean;
 	term?: string;
+	e2e?: boolean;
 }
 
 export interface CommandType extends CommandModule<{}, any> {

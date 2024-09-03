@@ -34,7 +34,7 @@ describe("Unit - List command", () => {
 			getProjectLibrary: projectLib
 		});
 
-		await listCmd.execute({ framework: "jQuery", type: "js" });
+		await listCmd.handler({ framework: "jQuery", type: "js", _: ["list"], $0: "list" });
 
 		expect(Util.error).toHaveBeenCalledTimes(0);
 
@@ -71,7 +71,7 @@ describe("Unit - List command", () => {
 			getProjectLibrary: projectLib
 		});
 
-		await listCmd.execute({});
+		await listCmd.handler({ _: ["list"], $0: "list" });
 		expect(Util.error).toHaveBeenCalledTimes(0);
 
 		expect(Util.log).toHaveBeenCalledTimes(10);
@@ -94,7 +94,7 @@ describe("Unit - List command", () => {
 			getFrameworkById: undefined
 		});
 
-		await listCmd.execute({ framework: "wrongOne", type: "js" });
+		await listCmd.handler({ framework: "wrongOne", type: "js", _: ["list"], $0: "list" });
 
 		expect(Util.error).toHaveBeenCalledTimes(1);
 		expect(Util.error).toHaveBeenCalledWith("Wrong framework provided", "red");
@@ -108,7 +108,7 @@ describe("Unit - List command", () => {
 			getFrameworkById: undefined
 		});
 
-		await listCmd.execute({});
+		await listCmd.handler({ _: ["list"], $0: "list" });
 
 		expect(Util.error).toHaveBeenCalledTimes(1);
 		expect(Util.error).toHaveBeenCalledWith("Wrong framework provided", "red");
@@ -122,7 +122,7 @@ describe("Unit - List command", () => {
 			getProjectLibrary: undefined
 		});
 
-		await listCmd.execute({ framework: "angular", type: "wrongType" });
+		await listCmd.handler({ framework: "angular", type: "wrongType", _: ["list"], $0: "list" });
 
 		expect(Util.error).toHaveBeenCalledTimes(1);
 		expect(Util.error).toHaveBeenCalledWith("Project type 'wrongType' not found in framework 'angular'", "red");
@@ -142,7 +142,7 @@ describe("Unit - List command", () => {
 			getProjectLibrary: projectLib
 		});
 
-		await listCmd.execute({ framework: "react"});
+		await listCmd.handler({ framework: "react", _: ["list"], $0: "list" });
 
 		expect(Util.error).toHaveBeenCalledTimes(0);
 
