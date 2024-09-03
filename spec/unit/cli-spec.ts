@@ -54,9 +54,9 @@ describe("Unit - Cli.ts", () => {
 		done();
 	});
 	it("Should fire properly - test", async done => {
-		spyOn(test , "execute").and.returnValue(true);
+		spyOn(test , "handler").and.returnValue(true);
 		await run.run("test");
-		expect(test.execute).toHaveBeenCalled();
+		expect(test.handler).toHaveBeenCalled();
 		done();
 	});
 	it("Should fire properly - start", async done => {

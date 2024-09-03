@@ -76,3 +76,7 @@ export interface ConfigCommandType extends CommandType {
 export interface DocCommandType extends CommandType {
 	open(string): void;
 }
+
+export interface TestCommandType extends CommandType {
+	test(argv: ArgumentsCamelCase<PositionalArgs>): void;
+}

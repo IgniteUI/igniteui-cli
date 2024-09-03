@@ -1,16 +1,18 @@
 import { GoogleAnalytics, ProjectConfig, Util } from "@igniteui/cli-core";
+import { PositionalArgs, TestCommandType } from "./types";
+import { ArgumentsCamelCase } from "yargs";
 
-const command = {
+const command: TestCommandType = {
 	// tslint:disable:object-literal-sort-keys
 	command: "test",
-	desc: "executes project tests",
+	describe: "executes project tests",
 	builder: {
 		e2e: {
 			describe: "Executes end-to-end tests",
 			type: "boolean"
 		}
 	},
-	async execute(argv) {
+	async handler(argv: ArgumentsCamelCase<PositionalArgs>) {
 
 		GoogleAnalytics.post({
 			t: "screenview",
@@ -19,7 +21,7 @@ const command = {
 
 		command.test(argv);
 	},
-	async test(argv) {
+	async test(argv: ArgumentsCamelCase<PositionalArgs>) {
 
 		if (!ProjectConfig.hasLocalConfig()) {
 			Util.error("Test command is supported only on existing project created with igniteui-cli", "red");
