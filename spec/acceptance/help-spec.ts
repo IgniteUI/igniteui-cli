@@ -61,7 +61,7 @@ describe("Help command", () => {
 		done();
 	});
 
-	it("should show help config sub-commands", async done => {
+	it("should show help for the config sub-commands", async done => {
 		const child = spawnSync("node", [execLocation, "config", "--help"], {
 			encoding: "utf-8"
 		});
@@ -82,7 +82,7 @@ describe("Help command", () => {
 		done();
 	});
 
-	it("should show help generate sub-commands", async done => {
+	it("should show help for the generate sub-commands", async done => {
 		const child = spawnSync("node", [execLocation, "generate", "--help"], {
 			encoding: "utf-8"
 		});
@@ -100,7 +100,7 @@ describe("Help command", () => {
 		done();
 	});
 
-	it("should show help generate template sub-commands", async done => {
+	it("should show help for the generate template sub-commands", async done => {
 		const child = spawnSync("node", [execLocation, "g", "t", "-h"], {
 			encoding: "utf-8"
 		});
@@ -133,6 +133,122 @@ describe("Help command", () => {
 		-h, --help       Show help                                           [boolean]
 		-f, --framework  Framework to list templates for  [string] [default: "jquery"]
 		-t, --type       Project type (depends on framework)                  [string]
+		`;
+
+		const replacedNewHelpText: string = originalNewHelpText.replace(/\s/g, "");
+		const actualNewText: string = (child.stdout.toString()).replace(/\s/g, "");
+
+		expect(actualNewText).toContain(replacedNewHelpText);
+		done();
+	});
+
+	it("should show help for the quickstart command", async done => {
+		const child = spawnSync("node", [execLocation, "quickstart", "-h"], {
+			encoding: "utf-8"
+		});
+
+		const originalNewHelpText: string = `
+		Options:
+		-v, --version    Show current Ignite UI CLI version                  [boolean]
+		-h, --help       Show help                                           [boolean]
+		-f, --framework  Framework to setup quickstart for
+		          [string] [choices: "jquery", "react", "angular"] [default: "jquery"]
+		`;
+
+		const replacedNewHelpText: string = originalNewHelpText.replace(/\s/g, "");
+		const actualNewText: string = (child.stdout.toString()).replace(/\s/g, "");
+
+		expect(actualNewText).toContain(replacedNewHelpText);
+		done();
+	});
+
+	it("should show help for the test command", async done => {
+		const child = spawnSync("node", [execLocation, "test", "-h"], {
+			encoding: "utf-8"
+		});
+
+		const originalNewHelpText: string = `
+		Options:
+		-v, --version  Show current Ignite UI CLI version                    [boolean]
+		-h, --help     Show help                                             [boolean]
+		    --e2e      Executes end-to-end tests                             [boolean]
+		`;
+
+		const replacedNewHelpText: string = originalNewHelpText.replace(/\s/g, "");
+		const actualNewText: string = (child.stdout.toString()).replace(/\s/g, "");
+
+		expect(actualNewText).toContain(replacedNewHelpText);
+		done();
+	});
+
+	it("should show help for the doc command", async done => {
+		const child = spawnSync("node", [execLocation, "doc", "-h"], {
+			encoding: "utf-8"
+		});
+
+		const originalNewHelpText: string = `
+		Options:
+		-v, --version  Show current Ignite UI CLI version                    [boolean]
+		-h, --help     Show help                                             [boolean]
+		    --term     The term you would like to search for                  [string]
+		`;
+
+		const replacedNewHelpText: string = originalNewHelpText.replace(/\s/g, "");
+		const actualNewText: string = (child.stdout.toString()).replace(/\s/g, "");
+
+		expect(actualNewText).toContain(replacedNewHelpText);
+		done();
+	});
+
+	it("should show help for the build command", async done => {
+		const child = spawnSync("node", [execLocation, "build", "-h"], {
+			encoding: "utf-8"
+		});
+
+		// ig build does not expose any options so just expect to see the general help text
+		const originalNewHelpText: string = `
+		Options:
+		-v, --version  Show current Ignite UI CLI version                    [boolean]
+		-h, --help     Show help                                             [boolean]
+		`;
+
+		const replacedNewHelpText: string = originalNewHelpText.replace(/\s/g, "");
+		const actualNewText: string = (child.stdout.toString()).replace(/\s/g, "");
+
+		expect(actualNewText).toContain(replacedNewHelpText);
+		done();
+	});
+
+	it("should show help for the start command", async done => {
+		const child = spawnSync("node", [execLocation, "start", "-h"], {
+			encoding: "utf-8"
+		});
+
+		const originalNewHelpText: string = `
+		Options:
+		-v, --version  Show current Ignite UI CLI version                    [boolean]
+		-h, --help     Show help                                             [boolean]
+		-p, --port     serve app port                                         [number]
+		`;
+
+		const replacedNewHelpText: string = originalNewHelpText.replace(/\s/g, "");
+		const actualNewText: string = (child.stdout.toString()).replace(/\s/g, "");
+
+		expect(actualNewText).toContain(replacedNewHelpText);
+		done();
+	});
+
+	it("should show help for the upgrade command", async done => {
+		const child = spawnSync("node", [execLocation, "upgrade-packages", "-h"], {
+			encoding: "utf-8"
+		});
+
+		const originalNewHelpText: string = `
+		Options:
+		-v, --version             Show current Ignite UI CLI version         [boolean]
+		-h, --help                Show help                                  [boolean]
+		--skip-install, --si  Runs upgrade command without performing install
+                                                      [boolean] [default: false]
 		`;
 
 		const replacedNewHelpText: string = originalNewHelpText.replace(/\s/g, "");
