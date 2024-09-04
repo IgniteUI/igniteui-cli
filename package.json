@@ -60,7 +60,6 @@
 		"handlebars": "4.7.8"
 	},
 	"devDependencies": {
-		"@types/fs-extra": "^11.0.4",
 		"@types/inquirer": "0.0.35",
 		"@types/jasmine": "3.3.9",
 		"@types/minimatch": "^5.1.2",
@@ -73,7 +72,6 @@
 		"eslint-plugin-import": "^2.29.1",
 		"eslint-plugin-prefer-arrow": "^1.2.3",
 		"eslint-plugin-unicorn": "^52.0.0",
-		"fs-extra": "^11.2.0",
 		"glob": "^11.0.0",
 		"inquirer": "^6.4.1",
 		"jasmine": "3.5.0",

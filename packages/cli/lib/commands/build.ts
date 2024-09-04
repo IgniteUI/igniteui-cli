@@ -1,5 +1,5 @@
 import { GoogleAnalytics, PackageManager, ProjectConfig, Util } from "@igniteui/cli-core";
-import * as fs from "fs-extra";
+import * as fs from "fs";
 import * as path from "path";
 import { BuildCommandType, PositionalArgs } from "./types";
 import { ArgumentsCamelCase } from "yargs";
@@ -47,7 +47,19 @@ const command: BuildCommandType = {
 			fs.mkdirSync("./themes");
 			const source = path.join(config.project.igniteuiSource, "/css/themes/", config.project.theme.split(".")[0]);
 			const destination = path.join(config.project.sourceRoot, "themes");
-			fs.copySync(source, destination);
+
+			Util.ensureDirectoryExists(destination);
+			if (!Util.isDirectory(source)) {
+				fs.copyFileSync(source, destination);
+				return;
+			}
+
+			const entries = fs.readdirSync(source, { withFileTypes: true });
+			entries.forEach((entry) => {
+				const sourcePath = path.join(source, entry.name);
+				const destinationPath = path.join(destination, entry.name);
+				fs.copyFileSync(sourcePath, destinationPath);
+			});
 		}
 	}
 };
