@@ -3,48 +3,59 @@ import * as path from "path";
 import { PromptSession } from "./../PromptSession";
 import { NewCommandType, PositionalArgs } from "./types";
 import { TemplateManager } from "../TemplateManager";
-import { ArgumentsCamelCase } from "yargs";
+import { ArgumentsCamelCase, Choices } from "yargs";
+
+// explicit typing because `type: "string"` will be inferred as `type: string` which yargs will not like
+const _framework: {
+    alias: string;
+    default: string;
+    describe: string;
+    type: "string";
+    choices: Choices;
+} = {
+	alias: "f",
+	default: "jquery",
+	describe: "Framework to setup project for",
+	type: "string",
+	choices: []
+};
 
 const command: NewCommandType = {
 	command: "new [name]",
 	describe: "creates a project",
-	builder: {
-		"name": {
-			alias: "n",
-			describe: "Project name",
-			type: "string"
-		},
-		"framework": {
-			alias: "f",
-			default: "jquery",
-			describe: "Framework to setup project for",
-			type: "string",
-			choices: []
-		},
-		"type": {
-			alias: "t",
-			describe: "Project type (depends on framework)",
-			type: "string"
-		},
-		"theme": {
-			alias: "th",
-			describe: "Project theme (depends on project type)",
-			type: "string"
-		},
-		"skip-git": {
-			alias: "sg",
-			describe: "Do not automatically initialize repository for the project with Git",
-			type: "boolean"
-		},
-		"skip-install": {
-			alias: "si",
-			describe: "Do not automatically install packages",
-			type: "boolean"
-		},
-		"template": {
-			describe: "Project template",
-			type: "string"
-		}
+	builder: (yargs) => {
+		return yargs
+			.option("name", {
+				alias: "n",
+				describe: "Project name",
+				type: "string"
+			})
+			.option("framework", _framework)
+			.option("type", {
+				alias: "t",
+				describe: "Project type (depends on framework)",
+				type: "string"
+			})
+			.option("theme", {
+				alias: "th",
+				describe: "Project theme (depends on project type)",
+				type: "string"
+			})
+			.option("skip-git", {
+				alias: "sg",
+				describe: "Do not automatically initialize repository for the project with Git",
+				type: "boolean"
+			})
+			.option("skip-install", {
+				alias: "si",
+				describe: "Do not automatically install packages",
+				type: "boolean"
+			})
+			.option("template", {
+				describe: "Project template",
+				type: "string"
+			})
+			.usage(""); // do not show any usage instructions before the commands list
 	},
 	async handler(argv: ArgumentsCamelCase<PositionalArgs>) {
 		GoogleAnalytics.post({
@@ -152,8 +163,8 @@ const command: NewCommandType = {
 		Util.log("  ig add      start guided mode for adding views to the app");
 		Util.log("  ig start    starts a web server and opens the app in the default browser");
 	},
-	addChoices(choices) {
-		this.builder.framework.choices = choices;
+	addChoices(choices: string[]): void {
+		_framework.choices = choices;
 	}
 };
 

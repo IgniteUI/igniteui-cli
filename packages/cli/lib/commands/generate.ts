@@ -86,33 +86,36 @@ const command: CommandType = {
 				aliases: ["t"],
 				command: "template [name]",
 				describe: "generates custom template",
-				builder: {
-					"framework": {
-						alias: "f",
-						default: "jquery",
-						describe: "Framework to generate template for",
-						type: "string"
-					},
-					"name": {
-						alias: "n",
-						default: "custom-template",
-						describe: "Template name",
-						type: "string"
-					},
-					"skip-config": {
-						alias: "s",
-						default: false,
-						describe: "Runs generate command without updating the cli config",
-						type: "boolean"
-					},
-					"type": {
-						alias: "t",
-						describe: "Project type (depends on framework)",
-						type: "string"
-					}
+				builder: (yargs) => {
+					return yargs
+						.option("framework", {
+							alias: "f",
+							default: "jquery",
+							describe: "Framework to generate template for",
+							type: "string"
+						})
+						.option("name", {
+							alias: "n",
+							default: "custom-template",
+							describe: "Template name",
+							type: "string"
+						})
+						.option("skip-config", {
+							alias: "s",
+							default: false,
+							describe: "Runs generate command without updating the cli config",
+							type: "boolean"
+						})
+						.option("type", {
+							alias: "t",
+							describe: "Project type (depends on framework)",
+							type: "string"
+						})
+						.usage(""); // do not show any usage instructions before the commands list
 				},
 				handler
 			})
+			.usage("") // do not show any usage instructions before the commands list
 			// at least one command is required
 			.demandCommand(1, "Please select command");
 		return yargs;
