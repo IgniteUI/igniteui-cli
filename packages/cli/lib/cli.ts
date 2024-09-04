@@ -1,19 +1,23 @@
 import { App, GoogleAnalytics, Util } from "@igniteui/cli-core";
 import * as yargs from "yargs";
-import { default as add } from "./commands/add";
-import { default as build } from "./commands/build";
-import { default as config } from "./commands/config";
-import { default as doc } from "./commands/doc";
-import { default as generate } from "./commands/generate";
-import { default as list } from "./commands/list";
-import { default as newCommand } from "./commands/new";
-import { default as quickstart } from "./commands/quickstart";
-import { default as start } from "./commands/start";
-import { default as test } from "./commands/test";
-import { default as upgrade } from "./commands/upgrade";
+import {
+  add,
+  ADD_COMMAND_NAME,
+  ALL_COMMANDS,
+  build,
+  config,
+  doc,
+  generate,
+  list,
+  newCommand,
+  quickstart,
+  QUICKSTART_COMMAND_NAME,
+  start,
+  test,
+  upgrade,
+} from './commands';
 import { PromptSession } from "./PromptSession";
 import { TemplateManager } from "./TemplateManager";
-import { ADD_COMMAND_NAME, ALL_COMMANDS, QUICKSTART_COMMAND_NAME } from "./commands/types";
 
 process.title = "Ignite UI CLI";
 
@@ -38,7 +42,6 @@ export async function run(args = null) {
 	list.templateManager = templateManager;
 	upgrade.templateManager = templateManager;
 
-// TODO: export all commands in an index.ts
 // TODO: docs for the new types
 
 	const yargsModule = args ? yargs(args) : yargs;
