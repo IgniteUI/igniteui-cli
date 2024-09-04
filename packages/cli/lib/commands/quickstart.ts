@@ -7,14 +7,16 @@ import { ArgumentsCamelCase } from "yargs";
 const command: CommandType = {
 	command: "quickstart",
 	describe: "creates rich feature grid",
-	builder: {
-		framework: {
-			alias: "f",
-			default: "jquery",
-			describe: "Framework to setup quickstart for",
-			type: "string",
-			choices: ["jquery", "react", "angular"]
-		}
+	builder: (yargs) => {
+		return yargs
+			.option("framework", {
+				alias: "f",
+				default: "jquery",
+				describe: "Framework to setup quickstart for",
+				type: "string",
+				choices: ["jquery", "react", "angular"]
+			})
+			.usage(""); // do not show any usage instructions before the commands list
 	},
 	async handler(argv: ArgumentsCamelCase<PositionalArgs>) {
 		GoogleAnalytics.post({

@@ -18,12 +18,14 @@ const command: StartCommandType = {
 	command: "start",
 	describe: "starts the project",
 	templateManager: null,
-	builder: {
-		port: {
-			alias: "p",
-			describe: "serve app port",
-			type: "number"
-		}
+	builder: (yargs) => {
+		return yargs
+			.option("port", {
+				alias: "p",
+				describe: "serve app port",
+				type: "number"
+			})
+			.usage(""); // do not show any usage instructions before the commands
 	},
 	async handler(argv: ArgumentsCamelCase<PositionalArgs>) {
 		GoogleAnalytics.post({
@@ -97,5 +99,4 @@ const command: StartCommandType = {
 		}
 	}
 };
-
 export default command;

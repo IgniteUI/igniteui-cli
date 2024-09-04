@@ -3,14 +3,15 @@ import { PositionalArgs, TestCommandType } from "./types";
 import { ArgumentsCamelCase } from "yargs";
 
 const command: TestCommandType = {
-	// tslint:disable:object-literal-sort-keys
 	command: "test",
 	describe: "executes project tests",
-	builder: {
-		e2e: {
-			describe: "Executes end-to-end tests",
-			type: "boolean"
-		}
+	builder: (yargs) => {
+		return yargs
+			.option("e2e", {
+				describe: "Executes end-to-end tests",
+				type: "boolean"
+			})
+			.usage(""); // do not show any usage instructions before the commands list
 	},
 	async handler(argv: ArgumentsCamelCase<PositionalArgs>) {
 
