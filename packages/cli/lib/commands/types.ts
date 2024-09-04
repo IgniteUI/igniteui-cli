@@ -12,7 +12,7 @@ export const CONFIG_COMMAND_NAME = "config";
 export const DOC_COMMAND_NAME = "doc";
 export const TEST_COMMAND_NAME = "test";
 export const LIST_COMMAND_NAME = "list";
-export const UPGRADE_COMMAND_NAME = "upgrade";
+export const UPGRADE_COMMAND_NAME = "upgrade-packages";
 
 export const ALL_COMMANDS = new Set([
   ADD_COMMAND_NAME,

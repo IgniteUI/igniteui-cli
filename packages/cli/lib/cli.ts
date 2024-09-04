@@ -100,11 +100,12 @@ export async function run(args = null) {
 					process.exit(1);
 				}
 
-				if (argv.h || argv.help) {
+				const helpRequest = argv.h || argv.help;
+				if (helpRequest) {
 					logHelp();
 				}
 
-				if (command === QUICKSTART_COMMAND_NAME) {
+				if (command === QUICKSTART_COMMAND_NAME && !helpRequest) {
 					Util.log("quickstart Created");
 					return;
 				}
