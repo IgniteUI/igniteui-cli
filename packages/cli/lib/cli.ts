@@ -1,20 +1,20 @@
 import { App, GoogleAnalytics, Util } from "@igniteui/cli-core";
 import * as yargs from "yargs";
 import {
-  add,
-  ADD_COMMAND_NAME,
-  ALL_COMMANDS,
-  build,
-  config,
-  doc,
-  generate,
-  list,
-  newCommand,
-  quickstart,
-  QUICKSTART_COMMAND_NAME,
-  start,
-  test,
-  upgrade,
+	add,
+	ADD_COMMAND_NAME,
+	ALL_COMMANDS,
+	build,
+	config,
+	doc,
+	generate,
+	list,
+	newCommand,
+	quickstart,
+	QUICKSTART_COMMAND_NAME,
+	start,
+	test,
+	upgrade,
 } from './commands';
 import { PromptSession } from "./PromptSession";
 import { TemplateManager } from "./TemplateManager";
@@ -41,8 +41,6 @@ export async function run(args = null) {
 	generate.templateManager = templateManager;
 	list.templateManager = templateManager;
 	upgrade.templateManager = templateManager;
-
-// TODO: docs for the new types
 
 	const yargsModule = args ? yargs(args) : yargs;
 	await yargsModule

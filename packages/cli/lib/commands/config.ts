@@ -63,7 +63,6 @@ const command: ConfigCommandType = {
 			// at least one command is required
 			.demandCommand(1, "Please select command");
 	},
-	// tslint:enable:object-literal-sort-keys
 	getHandler(argv) {
 		GoogleAnalytics.post({
 			t: "screenview",
