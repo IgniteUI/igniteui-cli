@@ -28,6 +28,13 @@
 * @mtsvyatkova made their first contribution in https://github.com/IgniteUI/igniteui-cli/pull/1288
 
 **Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.4.3...v14.0.0
+# [13.4.4](https://github.com/IgniteUI/igniteui-cli/compare/v13.4.3...v13.4.4) (2024-09-05)
+
+## What's Changed
+
+* chore(react): increase build ram by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1313
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v13.4.3...v13.4.4
 
 # [13.4.3](https://github.com/IgniteUI/igniteui-cli/compare/v13.4.2...v13.4.3) (2024-08-22)
 
