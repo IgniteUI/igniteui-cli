@@ -1,3 +1,11 @@
+# [14.0.1](https://github.com/IgniteUI/igniteui-cli/compare/v14.0.0...v14.0.1) (2024-09-05)
+
+## What's Changed
+
+* chore(react): increase build ram by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1314
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.0.0...v14.0.1
+
 # [14.0.0](https://github.com/IgniteUI/igniteui-cli/compare/v13.4.3...v14.0.0) (2024-08-23)
 
 ## What's Changed
