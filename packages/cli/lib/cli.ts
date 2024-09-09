@@ -126,7 +126,7 @@ export async function run(args = null) {
 				/* istanbul ignore next */
 				App.testMode = !!argv.testMode;
 
-				if (command && !ALL_COMMANDS.has(command.toString())) {
+				if (!ALL_COMMANDS.has(command?.toString())) {
 					Util.log("Starting Step by step mode.", "green");
 					Util.log("For available commands, stop this execution and use --help.", "green");
 					const prompts = new PromptSession(templateManager);
