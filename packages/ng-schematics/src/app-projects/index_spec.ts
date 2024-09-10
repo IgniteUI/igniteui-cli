@@ -17,12 +17,12 @@ describe("app-projects", () => {
 			},
 			theme: "mock-theme"
 		};
-		spyOn(tree, "read").and.returnValue(`Mock package content "igniteui-cli":`);
+		spyOn(tree, "read").and.returnValue(Buffer.from(`Mock package content "igniteui-cli":`));
 		spyOn(tree, "overwrite");
 		await runner.runSchematicAsync("app-projects", mockOptions, tree).toPromise();
 
 		expect(mockOptions.projTemplate.generateConfig).toHaveBeenCalled();
 		expect(tree.read).toHaveBeenCalledWith("./package.json");
-		expect(tree.overwrite).toHaveBeenCalledWith("./package.json", `Mock package content "@igniteui/angular-schematics":`);
+		expect(tree.overwrite).toHaveBeenCalledWith("./package.json", Buffer.from(`Mock package content "@igniteui/angular-schematics":`));
 	});
 });

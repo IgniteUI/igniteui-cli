@@ -1,9 +1,52 @@
-import { FEED_ANGULAR, NPM_ANGULAR, GoogleAnalytics, GoogleAnalyticsParameters, ProjectConfig } from "@igniteui/cli-core";
+import {
+	 FEED_ANGULAR, NPM_ANGULAR, GoogleAnalytics, GoogleAnalyticsParameters, ProjectConfig, FrameworkId, Config
+} from "@igniteui/cli-core";
 import * as fs from "fs";
 import { EOL } from "os";
 import { parse } from "path";
 import * as cli from "../../packages/cli/lib/cli";
 import { deleteAll, resetSpy } from "../helpers/utils";
+
+function createMockConfig(): Config {
+    return {
+		version: '1.0.0',
+		packagesInstalled: true,
+		build: {},
+		igPackageRegistry: 'https://example.com',
+		skipGit: true,
+		disableAnalytics: true,
+		customTemplates: [],
+		stepByStep: {
+			frameworks: ["angular", "react"],
+			[FrameworkId.angular]: {
+				projTypes: ["igx-ts", "igx-es6"]
+			},
+			[FrameworkId.react]: {
+				projTypes: ["igx-react"]
+			},
+			[FrameworkId.jquery]: {
+				projTypes: ["igx-jquery"]
+			},
+			[FrameworkId.webComponents]: {
+				projTypes: ["igx-webcomponents"]
+			}
+		},
+		project: {
+			defaultPort: 4200,
+			framework: "mock-ng",
+			projectType: "mock-igx-ts",
+			projectTemplate: "mock-side-nav",
+			theme: "default-theme",
+			themePath: "/path/to/theme",
+			components: ["mock-component"],
+			isBundle: true,
+			isShowcase: false,
+			version: '1.0.0',
+			sourceRoot: "/src",
+			igniteuiSource: "igniteui-source"
+		}
+	};
+}
 
 describe("Add command", () => {
 	let testFolder = parse(__filename).name;
@@ -96,7 +139,8 @@ describe("Add command", () => {
 
 	it("Should correctly add jQuery template", async done => {
 		// TODO: Mock out template manager and project register
-		spyOn(ProjectConfig, "globalConfig").and.returnValue({});
+		const mockConfig = createMockConfig();
+		spyOn(ProjectConfig, "globalConfig").and.returnValue(mockConfig);
 
 		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
 			project: { framework: "jquery", projectType: "js", components: [], igniteuiSource: "", themePath: "" }
@@ -119,7 +163,8 @@ describe("Add command", () => {
 	});
 
 	it("Should not duplicate add jq Grid template", async done => {
-		spyOn(ProjectConfig, "globalConfig").and.returnValue({});
+		const mockConfig = createMockConfig();
+		spyOn(ProjectConfig, "globalConfig").and.returnValue(mockConfig);
 
 		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
 			project: { framework: "jquery", projectType: "js", components: [], igniteuiSource: "", themePath: "" }
@@ -168,7 +213,8 @@ describe("Add command", () => {
 	});
 
 	it("Should correctly add Angular template", async done => {
-		spyOn(ProjectConfig, "globalConfig").and.returnValue({});
+		const mockConfig = createMockConfig();
+		spyOn(ProjectConfig, "globalConfig").and.returnValue(mockConfig);
 
 		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
 			project: { framework: "angular", projectType: "ig-ts", components: [] }
@@ -246,7 +292,8 @@ describe("Add command", () => {
 
 	for (const igxPackage of [NPM_ANGULAR, FEED_ANGULAR]) {
 		it(`Should correctly add Ignite UI for Angular template - ${igxPackage}`, async done => {
-			spyOn(ProjectConfig, "globalConfig").and.returnValue({});
+			const mockConfig = createMockConfig();
+			spyOn(ProjectConfig, "globalConfig").and.returnValue(mockConfig);
 
 			fs.writeFileSync("package.json", JSON.stringify({
 				dependencies: { [igxPackage]: "9.0.0" }
@@ -324,7 +371,8 @@ export class AppModule {
 
 	it("Should correctly add Ignite UI for Angular template passing folders path and spaces/tabs in name arg"
 		, async done => {
-			spyOn(ProjectConfig, "globalConfig").and.returnValue({});
+			const mockConfig = createMockConfig();
+			spyOn(ProjectConfig, "globalConfig").and.returnValue(mockConfig);
 
 			fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
 				project: { framework: "angular", projectType: "igx-ts-legacy", components: [] }
@@ -397,7 +445,8 @@ export class AppModule {
 
 	it("Should correctly add React template", async done => {
 		// TODO: Mock out template manager and project register
-		spyOn(ProjectConfig, "globalConfig").and.returnValue({});
+		const mockConfig = createMockConfig();
+		spyOn(ProjectConfig, "globalConfig").and.returnValue(mockConfig);
 
 		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
 			project: { framework: "react", projectType: "es6", components: [] }

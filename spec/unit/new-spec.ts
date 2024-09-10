@@ -1,8 +1,78 @@
-import { GoogleAnalytics, PackageManager, ProjectConfig, Util } from "@igniteui/cli-core";
+import { BaseTemplate, Config, FrameworkId, GoogleAnalytics, PackageManager, ProjectConfig, ProjectTemplate, Util } from "@igniteui/cli-core";
 import * as path from "path";
 import { default as newCmd } from "../../packages/cli/lib/commands/new";
 import { PromptSession } from "../../packages/cli/lib/PromptSession";
 import { resetSpy } from "../helpers/utils";
+
+function createMockConfig(): Config {
+    return {
+		version: '1.0.0',
+		packagesInstalled: true,
+		build: {},
+		igPackageRegistry: 'https://example.com',
+		skipGit: true,
+		disableAnalytics: true,
+		customTemplates: [],
+		stepByStep: {
+			frameworks: ["angular", "react"],
+			[FrameworkId.angular]: {
+				projTypes: ["igx-ts", "igx-es6"]
+			},
+			[FrameworkId.react]: {
+				projTypes: ["igx-react"]
+			},
+			[FrameworkId.jquery]: {
+				projTypes: ["igx-jquery"]
+			},
+			[FrameworkId.webComponents]: {
+				projTypes: ["igx-webcomponents"]
+			}
+		},
+		project: {
+			defaultPort: 4200,
+			framework: "mock-ng",
+			projectType: "mock-igx-ts",
+			projectTemplate: "mock-side-nav",
+			theme: "default-theme",
+			themePath: "/path/to/theme",
+			components: ["mock-component"],
+			isBundle: true,
+			isShowcase: false,
+			version: '1.0.0',
+			sourceRoot: "/src",
+			igniteuiSource: "igniteui-source"
+		}
+	};
+}
+
+function createMockBaseTemplate(): BaseTemplate {
+    return {
+        id: "mock-template-id",
+        name: "mock-template",
+        description: "A mock template",
+        delimiters: {
+            content: { start: "{{", end: "}}" },
+            path: { start: "[[", end: "]]" }
+        },
+        dependencies: ["mock-dependency"],
+        framework: "angular",
+        projectType: "ts",
+        hasExtraConfiguration: true,
+        templatePaths: ["/path/to/template"],
+        generateConfig: jasmine.createSpy().and.returnValue({}),
+        getExtraConfiguration: jasmine.createSpy().and.returnValue([]),
+        setExtraConfiguration: jasmine.createSpy()
+    };
+}
+
+function createMockProjectTemplate(baseTemplate: BaseTemplate): ProjectTemplate {
+    return {
+        ...baseTemplate,
+        installModules: jasmine.createSpy().and.callFake(() => {}),
+        upgradeIgniteUIPackages: jasmine.createSpy().and.returnValue(Promise.resolve(true)),
+        generateConfig: jasmine.createSpy().and.returnValue({}),
+    };
+}
 
 describe("Unit - New command", () => {
 	beforeAll(() => {
@@ -158,15 +228,11 @@ describe("Unit - New command", () => {
 	});
 
 	it("Generates default without project type", async done => {
-		const mockDelimiters = { mockDelimiter: { start: "test", end: "test" }};
-		const mockTemplate = {
-			delimiters: mockDelimiters,
-			generateConfig: { test: "test" },
-			templatePaths: ["test"]
-		};
+		const mockBaseTemplate = createMockBaseTemplate();
+        const mockProjectTemplate = createMockProjectTemplate(mockBaseTemplate);
 		const mockProjLib = {
 			getProject: () => {
-				return mockTemplate;
+				return mockProjectTemplate;
 			},
 			projectIds: ["empty"],
 			projectType: "js",
@@ -179,7 +245,9 @@ describe("Unit - New command", () => {
 		//spyOn(newCmd.template, "getFrameworkById").and.returnValue({});
 		//spyOn(newCmd.template, "getProjectLibrary").and.returnValue(mockProjLib);
 		const mockConfig = { test: "test" };
-		spyOn(mockTemplate, "generateConfig").and.returnValue(mockConfig);
+		const mockProjectConfig = createMockConfig();
+
+		spyOn(mockProjectTemplate, "generateConfig").and.returnValue(mockProjectConfig);
 		spyOn(process, "cwd").and.returnValue("Mock dir");
 		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
 
@@ -188,9 +256,9 @@ describe("Unit - New command", () => {
 		expect(newCmd.templateManager.getFrameworkById).toHaveBeenCalledWith("jq");
 		expect(newCmd.templateManager.getProjectLibrary).toHaveBeenCalledWith("jq");
 		expect(Util.log).toHaveBeenCalledWith("Project Name: Test, framework jq, type js, theme ig");
-		expect(mockTemplate.generateConfig).toHaveBeenCalledWith("Test", "ig");
+		expect(mockProjectTemplate.generateConfig).toHaveBeenCalledWith("Test", "ig");
 		expect(Util.processTemplates)
-		.toHaveBeenCalledWith("test", path.join("Mock dir", "Test"), mockConfig, mockDelimiters, false);
+		.toHaveBeenCalledWith("test", path.join("Mock dir", "Test"), mockConfig, mockBaseTemplate.delimiters, false);
 		expect(PackageManager.installPackages).toHaveBeenCalled();
 		expect(process.chdir).toHaveBeenCalledWith("Test");
 		expect(process.chdir).toHaveBeenCalledWith("..");
@@ -217,8 +285,13 @@ describe("Unit - New command", () => {
 			getFrameworkById: {},
 			getProjectLibrary: mockProjLib
 		});
+
 		const mockConfig = { test: "test" };
-		spyOn(mockTemplate, "generateConfig").and.returnValue(mockConfig);
+		const mockProjectConfig = createMockConfig();
+		const mockBaseTemplate = createMockBaseTemplate();
+        const mockProjectTemplate = createMockProjectTemplate(mockBaseTemplate);
+
+		spyOn(mockProjectTemplate, "generateConfig").and.returnValue(mockProjectConfig);
 		spyOn(process, "cwd").and.returnValue("Mock dir");
 		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
 
@@ -228,7 +301,7 @@ describe("Unit - New command", () => {
 		expect(newCmd.templateManager.getProjectLibrary).toHaveBeenCalledWith("jq", "type");
 		expect(mockTemplate.generateConfig).toHaveBeenCalledWith("Test", "ig");
 		expect(Util.processTemplates)
-		.toHaveBeenCalledWith("test", path.join("Mock dir", "Test"), mockConfig, mockDelimiters, false);
+		.toHaveBeenCalledWith("test", path.join("Mock dir", "Test"), mockConfig, mockBaseTemplate.delimiters, false);
 		expect(PackageManager.installPackages).toHaveBeenCalled();
 		expect(process.chdir).toHaveBeenCalledWith("Test");
 		expect(process.chdir).toHaveBeenCalledWith("..");
@@ -256,7 +329,11 @@ describe("Unit - New command", () => {
 			getFrameworkById: {},
 			getProjectLibrary: mockProjLib
 		});
-		spyOn(mockTemplate, "generateConfig");
+
+		const mockBaseTemplate = createMockBaseTemplate();
+        const mockProjectTemplate = createMockProjectTemplate(mockBaseTemplate);
+
+		spyOn(mockProjectTemplate, "generateConfig");
 
 		await newCmd.handler({ name: projectName, framework: "jq", _: ["new"], $0: "new" });
 
@@ -289,7 +366,11 @@ describe("Unit - New command", () => {
 			getFrameworkById: {},
 			getProjectLibrary: mockProjLib
 		});
-		spyOn(mockTemplate, "generateConfig");
+
+		const mockBaseTemplate = createMockBaseTemplate();
+        const mockProjectTemplate = createMockProjectTemplate(mockBaseTemplate);
+
+		spyOn(mockProjectTemplate, "generateConfig");
 		spyOn(Util, "gitInit");
 
 		await newCmd.handler({ "name": projectName, "framework": "jq", "skip-git": true, _: ["new"], $0: "new" });
@@ -317,8 +398,13 @@ describe("Unit - New command", () => {
 			getFrameworkById: {},
 			getProjectLibrary: mockProjLib
 		});
-		spyOn(mockTemplate, "generateConfig");
-		spyOn(ProjectConfig, "getConfig").and.returnValue({ skipGit: true });
+
+		const mockBaseTemplate = createMockBaseTemplate();
+        const mockProjectTemplate = createMockProjectTemplate(mockBaseTemplate);
+		const mockProjectConfig = createMockConfig();
+
+		spyOn(mockProjectTemplate, "generateConfig");
+		spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
 		spyOn(Util, "gitInit");
 
 		await newCmd.handler({ name: projectName, framework: "jq", _: ["new"], $0: "new" });
@@ -344,7 +430,11 @@ describe("Unit - New command", () => {
 			getFrameworkById: {},
 			getProjectLibrary: mockProjLib
 		});
-		spyOn(mockTemplate, "generateConfig");
+
+		const mockBaseTemplate = createMockBaseTemplate();
+        const mockProjectTemplate = createMockProjectTemplate(mockBaseTemplate);
+
+		spyOn(mockProjectTemplate, "generateConfig");
 		spyOn(Util, "gitInit");
 
 		await newCmd.handler({ name: "title", framework: "jq", skipInstall: true, _: ["new"], $0: "new" });

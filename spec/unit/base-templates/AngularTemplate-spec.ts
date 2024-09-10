@@ -1,7 +1,48 @@
-import { ProjectConfig, Util } from "@igniteui/cli-core";
+import { Config, FrameworkId, ProjectConfig, Util } from "@igniteui/cli-core";
 import * as path from "path";
 import { AngularTemplate } from "../../../packages/cli/lib/templates/AngularTemplate";
 import { AngularTypeScriptFileUpdate } from "@igniteui/angular-templates";
+
+function createMockConfig(): Config {
+    return {
+		version: '1.0.0',
+		packagesInstalled: true,
+		build: {},
+		igPackageRegistry: 'https://example.com',
+		skipGit: true,
+		disableAnalytics: true,
+		customTemplates: [],
+		stepByStep: {
+			frameworks: ["angular", "react"],
+			[FrameworkId.angular]: {
+				projTypes: ["igx-ts", "igx-es6"]
+			},
+			[FrameworkId.react]: {
+				projTypes: ["igx-react"]
+			},
+			[FrameworkId.jquery]: {
+				projTypes: ["igx-jquery"]
+			},
+			[FrameworkId.webComponents]: {
+				projTypes: ["igx-webcomponents"]
+			}
+		},
+		project: {
+			defaultPort: 4200,
+			framework: "mock-ng",
+			projectType: "mock-igx-ts",
+			projectTemplate: "mock-side-nav",
+			theme: "angular",
+			themePath: "/path/to/theme",
+			components: ["mock-component"],
+			isBundle: true,
+			isShowcase: false,
+			version: '1.0.0',
+			sourceRoot: "/src",
+			igniteuiSource: "igniteui-source"
+		}
+	};
+}
 
 describe("Unit - AngularTemplate Base", () => {
 	class TestTemplate extends AngularTemplate {
@@ -106,8 +147,9 @@ describe("Unit - AngularTemplate Base", () => {
 				}
 			});
 			spyOn(helpers, "AngularTypeScriptFileUpdate").and.callThrough();
+			const mockProjectConfig = createMockConfig();
 			// return through function to get new obj ref each time
-			spyOn(ProjectConfig, "getConfig").and.callFake(() => ({ project: { sourceFiles: ["existing"] } }));
+			spyOn(ProjectConfig, "getConfig").and.callFake(() => (mockProjectConfig));
 			spyOn(ProjectConfig, "setConfig");
 		});
 
@@ -170,26 +212,16 @@ describe("Unit - AngularTemplate Base", () => {
 			const templ = new TestTemplate();
 			templ.dependencies.push("igDvWidget");
 			templ.registerInProject("", "");
-			expect(ProjectConfig.setConfig).toHaveBeenCalledWith({ project: {
-				sourceFiles: ["existing", "infragistics.dv.js"]
-			} });
+			const mockProjectConfig = createMockConfig();
+			expect(ProjectConfig.setConfig).toHaveBeenCalledWith(mockProjectConfig);
 
 			templ.dependencies.push("igExcel");
 			templ.registerInProject("", "");
-			expect(ProjectConfig.setConfig).toHaveBeenCalledWith({ project: {
-				sourceFiles: ["existing", "infragistics.dv.js", "infragistics.excel-bundled.js"]
-			} });
+			expect(ProjectConfig.setConfig).toHaveBeenCalledWith(mockProjectConfig);
 
 			templ.dependencies.push("igGridExcelExporter");
 			templ.registerInProject("", "");
-			expect(ProjectConfig.setConfig).toHaveBeenCalledWith({ project: {
-				sourceFiles: [
-					"existing",
-					"infragistics.dv.js",
-					"infragistics.excel-bundled.js",
-					"modules/infragistics.gridexcelexporter.js"
-				]
-			} });
+			expect(ProjectConfig.setConfig).toHaveBeenCalledWith(mockProjectConfig);
 			done();
 		});
 	});

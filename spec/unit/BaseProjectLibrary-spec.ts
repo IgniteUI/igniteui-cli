@@ -68,7 +68,7 @@ describe("Unit - Base project library ", () => {
 		});
 
 		const library = new BaseProjectLibrary(__dirname);
-		spyOn(library, "customTemplates");
+		spyOnProperty(library, 'customTemplates', 'get').and.returnValue([]);
 		expect(library.templates.length).toEqual(3);
 		expect(library.templates[2].name).toEqual("comboCustomName");
 		expect(library.components.length).toEqual(1);
@@ -233,7 +233,7 @@ describe("Unit - Base project library ", () => {
 
 		const library = new BaseProjectLibrary(__dirname);
 		spyOn(library.groupDescriptions, "keys")
-			.and.returnValue(hash);
+			.and.returnValue(hash.values());
 		spyOn(require("module"), "_load").and.callFake((modulePath: string) => {
 			if (modulePath.startsWith(__dirname)) {
 				const folder = path.basename(modulePath);
@@ -244,8 +244,37 @@ describe("Unit - Base project library ", () => {
 				fail("unexpected require");
 			}
 		});
-		spyOn(library, "components")
-			.and.returnValues(["IgxAutocompleteComponent", "IgxBulletGraphAnimationComponent", "IgxCalendarComponent", "IgxCarouselComponent"]);
+		spyOnProperty(library, "components", "get")
+		.and.returnValue([
+			{
+				name: "IgxAutocompleteComponent",
+				description: "Description for IgxAutocompleteComponent",
+				group: "Data Entry & Display Group",
+				groupPriority: 1,
+				templates: []
+			},
+			{
+				name: "IgxBulletGraphAnimationComponent",
+				description: "Description for IgxBulletGraphAnimationComponent",
+				group: "Gauges Group",
+				groupPriority: 2,
+				templates: []
+			},
+			{
+				name: "IgxCalendarComponent",
+				description: "Description for IgxCalendarComponent",
+				group: "Data Entry & Display Group",
+				groupPriority: 1,
+				templates: []
+			},
+			{
+				name: "IgxCarouselComponent",
+				description: "Description for IgxCarouselComponent",
+				group: "Data Entry & Display Group",
+				groupPriority: 1,
+				templates: []
+			}
+		]);
 
 		expect(library.getComponentGroupNames()).toEqual([
 			"Grids & Lists Group", "Charts Group", "Maps Group", "Gauges Group", "Data Entry & Display Group"]);
