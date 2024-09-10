@@ -6,7 +6,6 @@ import { deleteAll, filesDiff, resetSpy } from "../helpers/utils";
 describe("New command", () => {
 	let testFolder;
 
-	// tslint:disable:no-console
 	beforeEach(() => {
 		spyOn(console, "log");
 		spyOn(console, "error");

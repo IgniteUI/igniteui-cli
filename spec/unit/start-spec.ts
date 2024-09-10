@@ -1,6 +1,6 @@
 import { Config, GoogleAnalytics, ProjectConfig, Util } from "@igniteui/cli-core";
-import * as path from "path";
-import * as resolve from "resolve";
+import path from "path";
+import resolve from "resolve";
 import { default as buildCmd } from "../../packages/cli/lib/commands/build";
 import { default as startCmd } from "../../packages/cli/lib/commands/start";
 
