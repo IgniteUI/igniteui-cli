@@ -2,7 +2,7 @@ import {
 	BasePromptSession, GoogleAnalytics, PackageManager, ProjectConfig,
 	ProjectLibrary, PromptTaskContext, Task, Util
 } from "@igniteui/cli-core";
-import * as inquirer from "inquirer";
+import { input } from "@inquirer/prompts";
 import * as path from "path";
 import { default as add } from "./commands/add";
 import { default as start } from "./commands/start";
@@ -16,14 +16,12 @@ export class PromptSession extends BasePromptSession {
 	}
 
 	public static async chooseTerm() {
-		const answers = await inquirer.prompt({
+		const answer = await input({
 			default: null,
 			message: "Enter a search term",
-			name: "term",
-			type: "input"
 		});
-		if (answers.term) {
-			return answers.term;
+		if (answer) {
+			return answer;
 		} else {
 			const retProm = await this.chooseTerm();
 			return retProm;
