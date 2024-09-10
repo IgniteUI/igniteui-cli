@@ -143,7 +143,7 @@ describe("Unit - Add command", () => {
 		spyOn(GoogleAnalytics, "post");
 	});
 
-	it("Should start prompt session with missing arg", async done => {
+	it("Should start prompt session with missing arg", async () => {
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 		const mockProjectConfig = createMockConfig();
 		spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
@@ -163,10 +163,9 @@ describe("Unit - Add command", () => {
 
 		await addCmd.handler({ _: ["add"], $0: "add" });
 		expect(promptSession.chooseActionLoop).toHaveBeenCalledWith(mockProjLib);
-		done();
 	});
 
-	it("Should validate and trim name", async done => {
+	it("Should validate and trim name", async () => {
 		const mockProjectConfig = createMockConfig();
 		spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
 		spyOn(Util, "error");
@@ -211,11 +210,9 @@ describe("Unit - Add command", () => {
 			expect(mockTemplate.generateConfig).toHaveBeenCalledWith(item.valid, { parentName: "app", parentRoutingModulePath: "src/app/app-routing.ts", selector: "app-undefined" });
 			expect(Util.processTemplates).toHaveBeenCalledWith("test", "Mock directory", mockConfig, mockDelimiters);
 		}
-
-		done();
 	});
 
-	it("Should queue package dependencies and wait for install", async done => {
+	it("Should queue package dependencies and wait for install", async () => {
 		const mockProjectConfig = createMockConfig();
 		spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
 		spyOn(Util, "log");
@@ -251,11 +248,9 @@ describe("Unit - Add command", () => {
 		await addCmd.handler({ name: "template with packages", template: "test-id", _: ["add"], $0: "add" });
 		expect(addCmd.addTemplate).toHaveBeenCalledWith("template with packages", mockTemplate, jasmine.any(Object));
 		expect(PackageManager.flushQueue).toHaveBeenCalled();
-
-		done();
 	});
 
-	it("Should properly accept module args when passed - IgniteUI for Angular", async done => {
+	it("Should properly accept module args when passed - IgniteUI for Angular", async () => {
 		const mockProjectConfig = createMockConfig();
 		spyOn(TypeScriptUtils, "getFileSource").and.returnValue(
 			ts.createSourceFile("test-file-name", ``, ts.ScriptTarget.Latest, true)
@@ -336,10 +331,9 @@ describe("Unit - Add command", () => {
 		);
 		expect(finalizeSpy).toHaveBeenCalledTimes(2);
 		expect(addCmd.templateManager.updateProjectConfiguration).toHaveBeenCalledTimes(1);
-		done();
 	});
 
-	it("Should properly accept module args when passed - Angular Wrappers", async done => {
+	it("Should properly accept module args when passed - Angular Wrappers", async () => {
 		const mockProjectConfig = createMockConfig();
 		spyOn(TypeScriptUtils, "getFileSource").and.returnValue(
 			ts.createSourceFile("test-file-name", ``, ts.ScriptTarget.Latest, true)
@@ -401,10 +395,9 @@ describe("Unit - Add command", () => {
 		});
 		expect(finalizeSpy).toHaveBeenCalledTimes(2);
 		expect(addCmd.templateManager.updateProjectConfiguration).toHaveBeenCalledTimes(1);
-		done();
 	});
 
-	it("Should properly accept skip-route args when passed", async done => {
+	it("Should properly accept skip-route args when passed", async () => {
 		const mockProjectConfig = createMockConfig();
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 		spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
@@ -454,10 +447,9 @@ describe("Unit - Add command", () => {
 			jasmine.objectContaining({ skipRoute: true })
 		);
 		expect(addCmd.templateManager.updateProjectConfiguration).toHaveBeenCalledWith(mockTemplate);
-		done();
 	});
 
-	it("Should not add component and should log error if wrong path is passed to module", async done => {
+	it("Should not add component and should log error if wrong path is passed to module", async () => {
 		spyOn(Util, "fileExists").and.returnValue(false);
 		spyOn(Util, "error");
 		const wrongPath = "myCustomModule/my-custom-module.module.ts";
@@ -465,6 +457,5 @@ describe("Unit - Add command", () => {
 		expect(Util.fileExists).toHaveBeenCalledTimes(1);
 		expect(Util.error).toHaveBeenCalledTimes(1);
 		expect(Util.error).toHaveBeenCalledWith(`Wrong module path provided: ${wrongPath}. No components were added!`);
-		done();
 	});
 });

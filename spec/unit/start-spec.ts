@@ -16,7 +16,7 @@ describe("Unit - start command", () => {
 		spyOn(buildCmd, "build");
 	});
 
-	it("Logs error when run outside project", async done => {
+	it("Logs error when run outside project", async () => {
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
 
 		await startCmd.handler({ _: ["start"], $0: "start" });
@@ -26,10 +26,9 @@ describe("Unit - start command", () => {
 			"red");
 		expect(Util.log).not.toHaveBeenCalled();
 		expect(Util.execSync).not.toHaveBeenCalled();
-		done();
 	});
 
-	it("Starts an Angular project", async done => {
+	it("Starts an Angular project", async () => {
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 		// tslint:disable-next-line:no-object-literal-type-assertion
 		const config: Config = {
@@ -55,10 +54,9 @@ describe("Unit - start command", () => {
 		expect(Util.execSync).toHaveBeenCalledWith("npm start -- --port=1234", { stdio: "inherit", killSignal: "SIGINT" });
 
 		expect(Util.error).not.toHaveBeenCalled();
-		done();
 	});
 
-	it("Starts a React es6 project", async done => {
+	it("Starts a React es6 project", async () => {
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 		// tslint:disable-next-line:no-object-literal-type-assertion
 		const config: Config = {
@@ -84,10 +82,9 @@ describe("Unit - start command", () => {
 			 expect(Util.execSync).toHaveBeenCalledWith("npm start -- --port=1234", { stdio: "inherit", killSignal: "SIGINT" });
 			*/
 		expect(Util.error).not.toHaveBeenCalled();
-		done();
 	});
 
-	it("Starts a React igr-es6 project", async done => {
+	it("Starts a React igr-es6 project", async () => {
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 		// tslint:disable-next-line:no-object-literal-type-assertion
 		const config: Config = {
@@ -113,10 +110,9 @@ describe("Unit - start command", () => {
 		expect(Util.execSync).toHaveBeenCalledWith("npm start", { stdio: "inherit", killSignal: "SIGINT" });
 
 		expect(Util.error).not.toHaveBeenCalled();
-		done();
 	});
 
-	it("Starts a jQuery project", async done => {
+	it("Starts a jQuery project", async () => {
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 		const bsConfig = { test: true };
 		const bsServMock = jasmine.createSpyObj("browserSync", ["init"]);
@@ -155,6 +151,5 @@ describe("Unit - start command", () => {
 		expect(bsServMock.init).toHaveBeenCalledWith({ test: true, port: 1234 });
 
 		expect(Util.error).not.toHaveBeenCalled();
-		done();
 	});
 });

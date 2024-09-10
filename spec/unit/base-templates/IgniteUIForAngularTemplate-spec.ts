@@ -83,7 +83,7 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			spyOn(ProjectConfig, "setConfig");
 		});
 
-		it("registers route and declare component", async done => {
+		it("registers route and declare component", async () => {
 			const templ = new TestTemplate();
 			const mockFS = {
 				fileExists: (file: string): boolean => {
@@ -126,9 +126,8 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			expect(helpers.tsUpdateMock.finalize).toHaveBeenCalled();
 			//config update:
 			expect(ProjectConfig.setConfig).toHaveBeenCalledTimes(0);
-			done();
 		});
-		it("updates NgModule metadata", async done => {
+		it("updates NgModule metadata", async () => {
 			const templ = new TestTemplate();
 			spyOn(templ, "fileExists").and.returnValue(true);
 			templ.dependencies.push({ import: "test", from: "test" });
@@ -152,10 +151,8 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 				Util.applyDelimiters(templ.getBaseVariables(""), templ.delimiters.content),
 				true
 			);
-
-			done();
 		});
-		it("formats relative imports", async done => {
+		it("formats relative imports", async () => {
 			spyOn(TestTemplate.prototype, "getBaseVariables").and.returnValue({});
 			spyOn(Util, "relativePath").and.returnValue("./relative/result/test");
 			const mainPath = path.join("target", "src/app/app.module.ts");
@@ -172,11 +169,9 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 				jasmine.any(Object), // vars
 				true // multiline
 			);
-
-			done();
 		});
 
-		it("should skip route if skipRoute is passed", async done => {
+		it("should skip route if skipRoute is passed", async () => {
 			const templ = new TestTemplate();
 			spyOn(templ, "fileExists").and.returnValue(true);
 			templ.registerInProject("target/path", "view name", { skipRoute: true });
@@ -198,10 +193,9 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 				true // multiline
 			);
 			expect(helpers.tsUpdateMock.finalize).toHaveBeenCalled();
-			done();
 		});
 
-		it("generateConfig merges variables passed under extraConfig", async done => {
+		it("generateConfig merges variables passed under extraConfig", async () => {
 			const expected = {
 				camelCaseName: "test",
 				ClassName: "Test",
@@ -240,7 +234,6 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			expected.igxPackage = FEED_ANGULAR;
 			actual = templ.generateConfig("test", options);
 			expect(actual).toEqual(expected);
-			done();
 		});
 	});
 });

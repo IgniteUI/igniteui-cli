@@ -13,7 +13,7 @@ describe("Update 2.0.0", () => {
 		appTree = new UnitTestTree(new EmptyTree());
 	});
 
-	it("should update router event rxjs subscription", async done => {
+	it("should update router event rxjs subscription", async () => {
 		appTree.create(
 			"/src/app/app.component.ts",
 `import { Component, OnInit, ViewChild } from '@angular/core';
@@ -78,7 +78,6 @@ export class AppComponent implements OnInit {
 }
 `
 			);
-		done();
 	});
 
 });

@@ -24,7 +24,7 @@ describe("Update 5.0.0", () => {
 		appTree.create("/angular.json", JSON.stringify(configJson));
 	});
 
-	it("should update error handler service if found", async done => {
+	it("should update error handler service if found", async () => {
 		const errorService = "src/app/error-routing/error/global-error-handler.service.ts";
 		appTree.create(errorService,
 `import { ErrorHandler, Injectable, isDevMode } from '@angular/core';
@@ -55,6 +55,5 @@ export class GlobalErrorHandlerService implements ErrorHandler {
 }
 `.replace(/\r\n/g, "\n")
 			);
-		done();
 	});
 });

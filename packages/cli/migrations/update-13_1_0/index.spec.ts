@@ -12,7 +12,7 @@ describe("Update 13.1.0", () => {
 		appTree = new UnitTestTree(new EmptyTree());
 	});
 
-	it("change projectType to legacy", async done => {
+	it("change projectType to legacy", async () => {
 		appTree.create(
 			"./ignite-ui-cli.json",
 `{
@@ -67,7 +67,6 @@ describe("Update 13.1.0", () => {
   "build": {}
 }`
 			);
-		done();
 	});
 
 });

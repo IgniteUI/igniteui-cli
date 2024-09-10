@@ -45,7 +45,7 @@ function createMockConfig(): Config {
 }
 
 describe("Unit - Package Manager", () => {
-	it("ensureIgniteUISource - Should run through properly when install now is set to true", async done => {
+	it("ensureIgniteUISource - Should run through properly when install now is set to true", async () => {
 		const mockRequire = {
 			dependencies: {
 				"ignite-ui": "20.1"
@@ -119,9 +119,8 @@ describe("Unit - Package Manager", () => {
 		expect(Util.execSync).toHaveBeenCalledWith("npm config set @infragistics:registry trial");
 		expect(PackageManager.removePackage).toHaveBeenCalled();
 		expect(PackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@"20.1"`, true);
-		done();
 	});
-	it("ensureIgniteUISource - Should run through properly when install = true && package error", async done => {
+	it("ensureIgniteUISource - Should run through properly when install = true && package error", async () => {
 		class TestPackageManager extends PackageManager {
 			public static getPackageJSON(): any { }
 		}
@@ -199,9 +198,8 @@ describe("Unit - Package Manager", () => {
 		);
 		expect(Util.execSync).toHaveBeenCalledTimes(2);
 		expect(Util.execSync).toHaveBeenCalledWith(`npm whoami --registry=trial`, { stdio: "pipe", encoding: "utf8" });
-		done();
 	});
-	it("ensureIgniteUISource - Should run through properly when install now is set to false", async done => {
+	it("ensureIgniteUISource - Should run through properly when install now is set to false", async () => {
 		spyOn(Util, "log");
 		const mockTemplateMgr = jasmine.createSpyObj("mockTemplateMgr", {
 			getProjectLibrary: {
@@ -219,10 +217,9 @@ describe("Unit - Package Manager", () => {
 		expect(Util.log).toHaveBeenCalledWith(
 			"Template(s) that require the full version of Ignite UI found in the project. " +
 			"You might be prompted for credentials on build to install it.", "yellow");
-		done();
 	});
 
-	it("ensureIgniteUISource - Should respect oss version when upgrading", async done => {
+	it("ensureIgniteUISource - Should respect oss version when upgrading", async () => {
 		class TestPackageManager extends PackageManager {
 			public static ensureRegistryUser(config: Config): boolean { return true; }
 			public static getPackageJSON(): any { }
@@ -272,10 +269,9 @@ describe("Unit - Package Manager", () => {
 			`npm install @infragistics/ignite-ui-full@">=0.1.0 <0.2.0" --quiet --save`,
 			jasmine.any(Object)
 		);
-		done();
 	});
 
-	it("Should run installPackages properly with error code", async done => {
+	it("Should run installPackages properly with error code", async () => {
 		const mockProjectConfig = createMockConfig();
 		spyOn(ProjectConfig, "localConfig").and.returnValue(mockProjectConfig);
 		spyOn(Util, "log");
@@ -295,9 +291,8 @@ describe("Unit - Package Manager", () => {
 			{ stdio: ["inherit"], killSignal: "SIGINT" });
 		mockProjectConfig.packagesInstalled = true;
 		expect(ProjectConfig.setConfig).toHaveBeenCalledWith(mockProjectConfig);
-		done();
 	});
-	it("Should run installPackages properly without error code", async done => {
+	it("Should run installPackages properly without error code", async () => {
 		const mockProjectConfig = createMockConfig();
 		spyOn(ProjectConfig, "localConfig").and.returnValue(mockProjectConfig);
 		spyOn(Util, "log");
@@ -312,9 +307,8 @@ describe("Unit - Package Manager", () => {
 			{ stdio: ["inherit"], killSignal: "SIGINT" });
 		mockProjectConfig.packagesInstalled = true;
 		expect(ProjectConfig.setConfig).toHaveBeenCalledWith(mockProjectConfig);
-		done();
 	});
-	it("Should exit on installPackages if child install is terminated", async done => {
+	it("Should exit on installPackages if child install is terminated", async () => {
 		const mockProjectConfig = createMockConfig();
 		spyOn(ProjectConfig, "localConfig").and.returnValue(mockProjectConfig);
 		spyOn(Util, "log");
@@ -332,9 +326,8 @@ describe("Unit - Package Manager", () => {
 			{ stdio: ["inherit"], killSignal: "SIGINT" });
 		expect(process.exit).toHaveBeenCalled();
 		expect(ProjectConfig.setConfig).toHaveBeenCalledTimes(0);
-		done();
 	});
-	it("Should run removePackage properly with error code", async done => {
+	it("Should run removePackage properly with error code", async () => {
 		spyOn(Util, "log");
 		spyOn(Util, "execSync").and.callFake(() => {
 			const err = new Error("Error");
@@ -348,9 +341,8 @@ describe("Unit - Package Manager", () => {
 		expect(Util.execSync).toHaveBeenCalledWith(
 			`npm uninstall example-package --quiet --save`, { stdio: "pipe", encoding: "utf8" }
 		);
-		done();
 	});
-	it("Should run removePackage properly without error code", async done => {
+	it("Should run removePackage properly without error code", async () => {
 		spyOn(Util, "log");
 		spyOn(Util, "execSync").and.returnValue("");
 		PackageManager.removePackage("example-package");
@@ -358,9 +350,8 @@ describe("Unit - Package Manager", () => {
 		expect(Util.log).toHaveBeenCalledWith(`Package example-package uninstalled successfully`);
 		expect(Util.execSync).toHaveBeenCalledWith(
 			`npm uninstall example-package --quiet --save`, { stdio: "pipe", encoding: "utf8" });
-		done();
 	});
-	it("Should run addPackage properly with error code", async done => {
+	it("Should run addPackage properly with error code", async () => {
 		spyOn(Util, "log");
 		spyOn(Util, "execSync").and.callFake(() => {
 			const err = new Error("Error");
@@ -373,9 +364,8 @@ describe("Unit - Package Manager", () => {
 		expect(Util.log).toHaveBeenCalledWith(`Error`);
 		expect(Util.execSync).toHaveBeenCalledWith(
 			`npm install example-package --quiet --save`, { stdio: "pipe", encoding: "utf8" });
-		done();
 	});
-	it("Should run addPackage properly without error code", async done => {
+	it("Should run addPackage properly without error code", async () => {
 		spyOn(Util, "log");
 		spyOn(Util, "execSync").and.returnValue("");
 		PackageManager.addPackage("example-package", true);
@@ -383,10 +373,9 @@ describe("Unit - Package Manager", () => {
 		expect(Util.log).toHaveBeenCalledWith(`Package example-package installed successfully`);
 		expect(Util.execSync).toHaveBeenCalledWith(
 			`npm install example-package --quiet --save`, { stdio: "pipe", encoding: "utf8" });
-		done();
 	});
 
-	it("queuePackage should start package install", async done => {
+	it("queuePackage should start package install", async () => {
 		const mockRequire = {
 			dependencies: {}
 		};
@@ -407,10 +396,9 @@ describe("Unit - Package Manager", () => {
 		expect(cp.exec).toHaveBeenCalledTimes(1);
 		expect(cp.exec).toHaveBeenCalledWith(
 			`npm install test-pack --quiet --no-save`, {}, jasmine.any(Function));
-		done();
 	});
 
-	it("queuePackage should ignore existing package installs", async done => {
+	it("queuePackage should ignore existing package installs", async () => {
 		const mockRequire = {
 			dependencies: {
 				"test-pack": "20.1"
@@ -435,10 +423,9 @@ describe("Unit - Package Manager", () => {
 		PackageManager.queuePackage("test-pack2");
 		PackageManager.queuePackage("test-pack2");
 		expect(cp.exec).toHaveBeenCalledTimes(1);
-		done();
 	});
 
-	it("Should wait for and log queued package installs", async done => {
+	it("Should wait for and log queued package installs", async () => {
 		PackageManager["installQueue"] = []; //must reset from other tests
 		const mockRequire = {
 			dependencies: {}
@@ -478,6 +465,5 @@ describe("Unit - Package Manager", () => {
 		expect(Util.log).toHaveBeenCalledWith(`Waiting for additional packages to install`);
 		expect(Util.log).toHaveBeenCalledWith("Error installing package test-pack3");
 		expect(Util.log).toHaveBeenCalledWith("stderr");
-		done();
 	});
 });

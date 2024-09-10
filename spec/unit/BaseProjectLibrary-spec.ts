@@ -3,7 +3,7 @@ import * as path from "path";
 
 describe("Unit - Base project library ", () => {
 
-	it("has correct projects.", async done => {
+	it("has correct projects.", async () => {
 		const mockProjects = ["angular", "jquery"];
 
 		spyOn(Util, "getDirectoryNames").and.returnValue(mockProjects);
@@ -12,10 +12,9 @@ describe("Unit - Base project library ", () => {
 		expect(library.hasProject("angular")).toBe(true);
 		expect(library.projectIds).toEqual(mockProjects);
 		expect(Util.getDirectoryNames).toHaveBeenCalledWith(path.join("../test", "projects"));
-		done();
 	});
 
-	it("gets correct custom templates", async done => {
+	it("gets correct custom templates", async () => {
 
 		spyOn(Util, "getDirectoryNames").and.returnValues(["bar-chart", "combo"]);
 
@@ -36,10 +35,9 @@ describe("Unit - Base project library ", () => {
 
 		const library = new BaseProjectLibrary(__dirname);
 		expect(library.getCustomTemplateNames()).toEqual(["bar-chartName", "comboName"]);
-		done();
 	});
 
-	it("gets correct templates", async done => {
+	it("gets correct templates", async () => {
 		spyOn(Util, "getDirectoryNames").and.returnValues(["bar-chart", "combo"], ["editors"]);
 
 		// spy on require(), https://coderwall.com/p/ck7w6g/spying-on-require-with-jasmine
@@ -73,10 +71,9 @@ describe("Unit - Base project library ", () => {
 		expect(library.templates[2].name).toEqual("comboCustomName");
 		expect(library.components.length).toEqual(1);
 		expect(library.components[0].name).toEqual("editorsName");
-		done();
 	});
 
-	it("gets correct components", async done => {
+	it("gets correct components", async () => {
 		spyOn(Util, "getDirectoryNames").and.returnValues(["bar-chart", "combo"]);
 
 		// spy on require(), https://coderwall.com/p/ck7w6g/spying-on-require-with-jasmine
@@ -97,10 +94,9 @@ describe("Unit - Base project library ", () => {
 		expect(library.components.length).toEqual(2);
 		expect(library.components[0].group).toEqual("bar-chartGroup");
 		expect(library.components[1].name).toEqual("comboName");
-		done();
 	});
 
-	it("gets template by id and name.", async done => {
+	it("gets template by id and name.", async () => {
 		spyOn(Util, "getDirectoryNames").and.returnValues(["grid", "chart"], ["awesome"]);
 
 		// spy on require(), https://coderwall.com/p/ck7w6g/spying-on-require-with-jasmine
@@ -142,10 +138,9 @@ describe("Unit - Base project library ", () => {
 		expect(library.getTemplateByName("gridtemplatename")).toBeFalsy();
 		expect(library.getTemplateByName("awesomeCustomName")).toBeTruthy();
 		expect(library.getTemplateByName("chartTemplateName")).toBe(library.templates[1]);
-		done();
 	});
 
-	it("registers a template successfully.", async done => {
+	it("registers a template successfully.", async () => {
 		spyOn(Util, "getDirectoryNames").and.returnValues(["grid", "chart"], ["awesome"]);
 
 		// spy on require(), https://coderwall.com/p/ck7w6g/spying-on-require-with-jasmine
@@ -186,10 +181,9 @@ describe("Unit - Base project library ", () => {
 		expect(library.getTemplateByName("newName")).toBeTruthy();
 		expect(library.getComponentByName("newComponent")).toBeTruthy();
 		expect(library.templates.length).toEqual(3);
-		done();
 	});
 
-	it("gets [custom] component by name.", async done => {
+	it("gets [custom] component by name.", async () => {
 		spyOn(Util, "getDirectoryNames").and.returnValues(["grid", "chart"], ["awesome"]);
 
 		// spy on require(), https://coderwall.com/p/ck7w6g/spying-on-require-with-jasmine
@@ -223,10 +217,9 @@ describe("Unit - Base project library ", () => {
 		expect(library.getComponentByName("awesomeCustomName")).toBeFalsy();
 		expect(library.getCustomTemplateByName("awesomeCustomName")).toBeTruthy();
 		expect(library.getComponentByName("gridName")).toBe(library.components[0]);
-		done();
 	});
 
-	it("gets correct component groups", async done => {
+	it("gets correct component groups", async () => {
 		const hash = ["Grids & Lists Group", "Charts Group", "Maps Group", "Gauges Group", "Data Entry & Display Group"];
 		spyOn(Util, "getDirectoryNames").and.returnValues
 		(["Grids & Lists", "Charts", "Maps", "Gauges", "Data Entry & Display"]);
@@ -278,10 +271,9 @@ describe("Unit - Base project library ", () => {
 
 		expect(library.getComponentGroupNames()).toEqual([
 			"Grids & Lists Group", "Charts Group", "Maps Group", "Gauges Group", "Data Entry & Display Group"]);
-		done();
 	});
 
-	it("gets correct component names by group", async done => {
+	it("gets correct component names by group", async () => {
 		spyOn(Util, "getDirectoryNames").and.returnValues(["chart", "combo", "grid"]);
 
 		spyOn(require("module"), "_load").and.callFake((modulePath: string) => {
@@ -319,10 +311,9 @@ describe("Unit - Base project library ", () => {
 
 		expect(library.getComponentsByGroup("commonGroup")).toEqual(expectedCommonGroup);
 		expect(library.getComponentsByGroup("gridGroup")).toEqual(expectedGridGroup);
-		done();
 	});
 
-	it("should sort component in a group based on priority", async done => {
+	it("should sort component in a group based on priority", async () => {
 		spyOnProperty(BaseProjectLibrary.prototype, "components").and.returnValue([
 			{ name: "Component1", group: "commonGroup", groupPriority: 1 },
 			{ name: "Component2", group: "commonGroup", groupPriority: 20 },
@@ -337,10 +328,9 @@ describe("Unit - Base project library ", () => {
 		expect(library.getComponentsByGroup("commonGroup").map(x => x.name)).toEqual(
 			["Component2", "Component3", "Component4", "Component1", "Component6", "Component7", "Component5"]
 		);
-		done();
 	});
 
-	it("gets correct project", async done => {
+	it("gets correct project", async () => {
 		spyOn(Util, "getDirectoryNames").and.returnValues(["chart", "combo", "grid"]);
 
 		spyOn(require("module"), "_load").and.callFake((modulePath: string) => {
@@ -356,10 +346,9 @@ describe("Unit - Base project library ", () => {
 		const library = new BaseProjectLibrary(__dirname);
 
 		expect(library.getProject("grid")).toBeTruthy();
-		done();
 	});
 
-	it("has template.", async done => {
+	it("has template.", async () => {
 		spyOn(Util, "getDirectoryNames").and.returnValues(["chart", "combo", "grid"], ["customControl"]);
 
 		spyOn(require("module"), "_load").and.callFake((modulePath: string) => {
@@ -386,6 +375,5 @@ describe("Unit - Base project library ", () => {
 		expect(library.hasTemplate("grid")).toBeTruthy();
 		expect(library.hasTemplate("combo")).toBeTruthy();
 		expect(library.hasTemplate("customControlCustom")).toBeTruthy();
-		done();
 	});
 });

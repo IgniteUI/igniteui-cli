@@ -18,7 +18,7 @@ describe("Schematics upgrade-packages", () => {
 		appTree = new UnitTestTree(new EmptyTree());
 	});
 
-	it("calls project template upgradeIgniteUIPackages and schedules install accordingly", async done => {
+	it("calls project template upgradeIgniteUIPackages and schedules install accordingly", async () => {
 		const runner = new SchematicTestRunner("schematics", collectionPath);
 
 		const mockConfig = {
@@ -173,7 +173,5 @@ describe("Schematics upgrade-packages", () => {
 		expect(upgradeSpy).toHaveBeenCalledTimes(3);
 		const installTaskOptions = new NodePackageInstallTask().toConfiguration();
 		expect(runner.tasks).toContain(jasmine.objectContaining(installTaskOptions));
-
-		done();
 	});
 });

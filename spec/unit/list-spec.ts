@@ -22,7 +22,7 @@ describe("Unit - List command", () => {
 	afterEach(() => {
 	});
 
-	it("Should list all templates with correctly provided parameters", async done => {
+	it("Should list all templates with correctly provided parameters", async () => {
 		const framework = { name: "jQuery" };
 		const projectLib = {
 			projectType: "js",
@@ -47,11 +47,9 @@ describe("Unit - List command", () => {
 		expect(Util.log).toHaveBeenCalledWith("'group2' group:");
 		expect(Util.log).toHaveBeenCalledWith("	id2.1     Description for 2.1");
 		expect(Util.log).toHaveBeenCalledWith("	id2.2     Description for 2.2");
-
-		done();
 	});
 
-	it("Should list templates for framework specified in local config if any", async done => {
+	it("Should list templates for framework specified in local config if any", async () => {
 		const mockProjectConfig = {
 			version: '1.0.0',
 			packagesInstalled: true,
@@ -119,11 +117,9 @@ describe("Unit - List command", () => {
 		expect(Util.log).toHaveBeenCalledWith("	id2.2     Description for 2.2");
 		expect(Util.log).toHaveBeenCalledWith(
 			"To list available templates for other framework and project type run outside of a project folder");
-
-		done();
 	});
 
-	it("Should log error if called with wrong framework", async done => {
+	it("Should log error if called with wrong framework", async () => {
 		listCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: undefined
 		});
@@ -132,11 +128,9 @@ describe("Unit - List command", () => {
 
 		expect(Util.error).toHaveBeenCalledTimes(1);
 		expect(Util.error).toHaveBeenCalledWith("Wrong framework provided", "red");
-
-		done();
 	});
 
-	it("Should log error if called without framework outside a project", async done => {
+	it("Should log error if called without framework outside a project", async () => {
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
 		listCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: undefined
@@ -146,11 +140,9 @@ describe("Unit - List command", () => {
 
 		expect(Util.error).toHaveBeenCalledTimes(1);
 		expect(Util.error).toHaveBeenCalledWith("Wrong framework provided", "red");
-
-		done();
 	});
 
-	it("Should log error if called with wrong type", async done => {
+	it("Should log error if called with wrong type", async () => {
 		listCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: {},
 			getProjectLibrary: undefined
@@ -160,11 +152,9 @@ describe("Unit - List command", () => {
 
 		expect(Util.error).toHaveBeenCalledTimes(1);
 		expect(Util.error).toHaveBeenCalledWith("Project type 'wrongType' not found in framework 'angular'", "red");
-
-		done();
 	});
 
-	it("Should list templates for default type when type no provided", async done => {
+	it("Should list templates for default type when type no provided", async () => {
 		const framework = { name: "React" };
 		const projectLib = {
 			projectType: "es6",
@@ -189,7 +179,5 @@ describe("Unit - List command", () => {
 		expect(Util.log).toHaveBeenCalledWith("'group2' group:");
 		expect(Util.log).toHaveBeenCalledWith("	id2.1     Description for 2.1");
 		expect(Util.log).toHaveBeenCalledWith("	id2.2     Description for 2.2");
-
-		done();
 	});
 });

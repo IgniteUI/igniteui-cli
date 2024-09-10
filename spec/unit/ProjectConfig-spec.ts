@@ -3,7 +3,7 @@ import * as fs from "fs";
 import * as os from "os";
 
 describe("Unit - ProjectConfig", () => {
-	it("hasLocalConfig returns correct values", async done => {
+	it("hasLocalConfig returns correct values", async () => {
 		const cwdSpy = spyOn(process, "cwd");
 		spyOn(os, "homedir").and.returnValues("rootDir");
 		spyOn(fs, "statSync").and.returnValue({
@@ -42,7 +42,5 @@ describe("Unit - ProjectConfig", () => {
 		cwdSpy.and.returnValue("rootDir/somePath");
 		expect(ProjectConfig.hasLocalConfig()).toBeTruthy();
 		expect(fs.statSync).toHaveBeenCalledTimes(1);
-
-		done();
 	});
 });

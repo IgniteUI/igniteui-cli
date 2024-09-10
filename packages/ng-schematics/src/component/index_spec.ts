@@ -12,7 +12,7 @@ describe("component",  () => {
 		spyOn(GoogleAnalytics, "post");
 	});
 
-	it("works", done => {
+	it("works", () => {
 		const runner = new SchematicTestRunner("schematics", collectionPath);
 		const mockInst = {
 			generateConfig: jasmine.createSpy(),
@@ -153,7 +153,6 @@ describe("component",  () => {
 			expect(mockLib.hasTemplate).toHaveBeenCalledWith("combo");
 			expect(mockLib.getTemplateById).toHaveBeenCalledWith("combo");
 			expect(state.files).toEqual([]);
-			done();
 		});
 	});
 });

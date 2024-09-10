@@ -1,7 +1,7 @@
 import { Util } from "@igniteui/cli-core";
 
 describe("Unit - Util", () => {
-	it("className should replace dashes and empty spaces", async done => {
+	it("className should replace dashes and empty spaces", async () => {
 		const projectNames = [
 			{
 				name: "name with spaces",
@@ -20,8 +20,6 @@ describe("Unit - Util", () => {
 		for (const item of projectNames) {
 			expect(Util.className(item.name)).toEqual(item.valid);
 		}
-
-		done();
 	});
 
 	it("should read the existing app folder name and return incremented app name ", () => {
@@ -78,7 +76,7 @@ describe("Unit - Util", () => {
 	});
 
 	describe("Relative paths", () => {
-		it("Creates correct relative path for child structure", async done => {
+		it("Creates correct relative path for child structure", async () => {
 
 			// default use, shared root
 			expect(Util.relativePath(
@@ -97,10 +95,9 @@ describe("Unit - Util", () => {
 				"C:/home/app/grid/grid.component.ts", true, false
 			))
 			.toBe("./app/grid/grid.component.ts", "Win style to posix file, keep ext => posix");
-			done();
 		});
 
-		it("Creates correct relative path for parent dir", async done => {
+		it("Creates correct relative path for parent dir", async () => {
 			// going up levels
 			expect(Util.relativePath(
 				"C:\\common\\folder1\\folder2\\folder3\\file.ts",
@@ -138,8 +135,6 @@ describe("Unit - Util", () => {
 				"C:\\common\\dir1\\dir2\\target.ts", true, false
 			))
 			.toBe("../../../dir1/dir2/target.ts", "posix folder to Win style file, keep ext => posix");
-
-			done();
 		});
 	});
 });

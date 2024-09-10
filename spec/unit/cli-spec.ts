@@ -14,64 +14,55 @@ describe("Unit - Cli.ts", () => {
 	});
 
 	/*
-	it("Should fire properly - XX", async done => {
+	it("Should fire properly - XX", async () => {
 		spyOn(XX , "YY");
 		await run.run("--XX");
 		expect(XX.YY).toHaveBeenCalled();
-		done();
 	});
 	*/
-	it("Should fire properly - Version", async done => {
+	it("Should fire properly - Version", async () => {
 		spyOn(Util, "showVersion");
 		await run.run("--version");
 		expect(Util.showVersion).toHaveBeenCalled();
-		done();
 	});
-	it("Should fire properly - quickstart", async done => {
+	it("Should fire properly - quickstart", async () => {
 		spyOn(quickstart , "handler").and.returnValue(Promise.resolve(true));
 		spyOn(Util , "log");
 		await run.run("quickstart");
 		expect(quickstart.handler).toHaveBeenCalled();
 		expect(Util.log).toHaveBeenCalled();
-		done();
 	});
-	it("Should fire properly - add", async done => {
+	it("Should fire properly - add", async () => {
 		spyOn(add , "check").and.returnValue(false);
 		await run.run("add");
 		expect(add.check).toHaveBeenCalled();
-		done();
 	});
-	it("Should fire properly - build", async done => {
+	it("Should fire properly - build", async () => {
 		spyOn(build , "handler").and.returnValue(true);
 		await run.run("build");
 		expect(build.handler).toHaveBeenCalled();
-		done();
 	});
-	it("Should fire properly - doc", async done => {
+	it("Should fire properly - doc", async () => {
 		spyOn(doc , "handler").and.returnValue(true);
 		await run.run("doc");
 		expect(doc.handler).toHaveBeenCalled();
-		done();
 	});
-	it("Should fire properly - test", async done => {
+	it("Should fire properly - test", async () => {
 		spyOn(test , "handler").and.returnValue(true);
 		await run.run("test");
 		expect(test.handler).toHaveBeenCalled();
-		done();
 	});
-	it("Should fire properly - start", async done => {
+	it("Should fire properly - start", async () => {
 		spyOn(start , "handler").and.returnValue(true);
 		await run.run("start");
 		expect(start.handler).toHaveBeenCalled();
-		done();
 	});
-	it("Should fire properly - list", async done => {
+	it("Should fire properly - list", async () => {
 		spyOn(list , "handler").and.returnValue(true);
 		await run.run("list");
 		expect(list.handler).toHaveBeenCalled();
-		done();
 	});
-	it("Should fire properly - fallback to default", async done => {
+	it("Should fire properly - fallback to default", async () => {
 		spyOn(Util , "log");
 		spyOn(GoogleAnalytics, "post");
 		spyOn(PromptSession.prototype, "start");
@@ -81,6 +72,5 @@ describe("Unit - Cli.ts", () => {
 		expect(Util.log).toHaveBeenCalledWith("Starting Step by step mode.", "green");
 		expect(Util.log).toHaveBeenCalledWith("For available commands, stop this execution and use --help.", "green");
 		expect(PromptSession.prototype.start).toHaveBeenCalled();
-		done();
 	});
 });

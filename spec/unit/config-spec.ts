@@ -48,16 +48,15 @@ describe("Unit - Config command", () => {
 	});
 
 	describe("Get", () => {
-		it("Should show error w/o existing project and global flag", async done => {
+		it("Should show error w/o existing project and global flag", async () => {
 			spyOn(Util, "error");
 			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
 
 			await configCmd.getHandler({ property: "test", _: ["config"], $0: "config" });
 			expect(Util.error).toHaveBeenCalledWith("No configuration file found in this folder!", "red");
-			done();
 		});
 
-		it("Should show error for missing prop", async done => {
+		it("Should show error for missing prop", async () => {
 			const mockProjectConfig = createMockConfig();
 			spyOn(Util, "error");
 			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
@@ -66,10 +65,9 @@ describe("Unit - Config command", () => {
 			await configCmd.getHandler({ property: "test", _: ["config"], $0: "config" });
 			expect(ProjectConfig.getConfig).toHaveBeenCalledWith(undefined);
 			expect(Util.error).toHaveBeenCalledWith(`No value found for "test" property`, "red");
-			done();
 		});
 
-		it("Should show error for missing prop and global flag", async done => {
+		it("Should show error for missing prop and global flag", async () => {
 			const mockProjectConfig = createMockConfig();
 			spyOn(Util, "error");
 			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
@@ -78,10 +76,9 @@ describe("Unit - Config command", () => {
 			await configCmd.getHandler({ property: "test", global: true, _: ["config"], $0: "config" });
 			expect(ProjectConfig.getConfig).toHaveBeenCalledWith(true);
 			expect(Util.error).toHaveBeenCalledWith(`No value found for "test" property`, "red");
-			done();
 		});
 
-		it("Should return value for property", async done => {
+		it("Should return value for property", async () => {
 			const mockProjectConfig = createMockConfig();
 			spyOn(Util, "log");
 			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
@@ -90,7 +87,6 @@ describe("Unit - Config command", () => {
 			await configCmd.getHandler({ property: "version", _: ["config"], $0: "config" });
 			expect(ProjectConfig.getConfig).toHaveBeenCalledWith(undefined);
 			expect(Util.log).toHaveBeenCalledWith("1.0.0");
-			done();
 		});
 	});
 
@@ -119,15 +115,14 @@ describe("Unit - Config command", () => {
 			);
 		});
 
-		it("Should show error w/o existing project and global flag", async done => {
+		it("Should show error w/o existing project and global flag", async () => {
 			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
 
 			await configCmd.setHandler({ property: "test", value: true, _: ["config"], $0: "config" });
 			expect(Util.error).toHaveBeenCalledWith("No configuration file found in this folder!", "red");
-			done();
 		});
 
-		it("Should show error when invalid value provided", async done => {
+		it("Should show error when invalid value provided", async () => {
 			const mockProjectConfig = createMockConfig();
 			spyOn(ProjectConfig, "globalConfig").and.returnValue(mockProjectConfig);
 
@@ -136,10 +131,9 @@ describe("Unit - Config command", () => {
 			expect(Util.error).toHaveBeenCalledTimes(1);
 			expect(Util.error).toHaveBeenCalledWith("Invalid value provided for packagesInstalled property", "red");
 			expect(Util.log).toHaveBeenCalledTimes(0);
-			done();
 		});
 
-		it("Should show error when invalid value type provided", async done => {
+		it("Should show error when invalid value type provided", async () => {
 			const mockProjectConfig = createMockConfig();
 			spyOn(ProjectConfig, "globalConfig").and.returnValue(mockProjectConfig);
 
@@ -149,10 +143,9 @@ describe("Unit - Config command", () => {
 			expect(Util.error).toHaveBeenCalledWith(
 				"Invalid value type provided for packagesInstalled property\nValue should be of type boolean", "red");
 			expect(Util.log).toHaveBeenCalledTimes(0);
-			done();
 		});
 
-		it("Should show error for array property", async done => {
+		it("Should show error for array property", async () => {
 			const mockProjectConfig = createMockConfig();
 			spyOn(ProjectConfig, "globalConfig").and.returnValue(mockProjectConfig);
 
@@ -162,10 +155,9 @@ describe("Unit - Config command", () => {
 			expect(Util.error).toHaveBeenCalledTimes(1);
 			expect(Util.error).toHaveBeenCalledWith("Provided value should be an empty array for customTemplates property", "red");
 			expect(Util.log).toHaveBeenCalledTimes(0);
-			done();
 		});
 
-		it("Should reset array property when empty array is provided", async done => {
+		it("Should reset array property when empty array is provided", async () => {
 			const mockProjectConfig = createMockConfig();
 			mockProjectConfig.customTemplates = ["Some value", "More values"];
 			spyOn(ProjectConfig, "globalConfig").and.returnValue(mockProjectConfig);
@@ -177,10 +169,9 @@ describe("Unit - Config command", () => {
 			expect(Util.log).toHaveBeenCalledTimes(1);
 			expect(Util.log).toHaveBeenCalledWith("Property \"customTemplates\" set.");
 			expect(ProjectConfig.setConfig).toHaveBeenCalledWith(mockProjectConfig, true /*global*/);
-			done();
 		});
 
-		it("Should set global prop", async done => {
+		it("Should set global prop", async () => {
 			const mockProjectConfig = createMockConfig();
 			spyOn(ProjectConfig, "hasLocalConfig");
 			spyOn(ProjectConfig, "globalConfig").and.returnValue(mockProjectConfig);
@@ -194,10 +185,9 @@ describe("Unit - Config command", () => {
 			expect(ProjectConfig.globalConfig).toHaveBeenCalled();
 			expect(ProjectConfig.setConfig).toHaveBeenCalledWith(mockProjectConfig, true /*global*/);
 			expect(Util.log).toHaveBeenCalledWith(`Property "stringProperty" set.`);
-			done();
 		});
 
-		it("Should set local prop", async done => {
+		it("Should set local prop", async () => {
 			const mockProjectConfig = createMockConfig();
 			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 			spyOn(ProjectConfig, "localConfig").and.returnValue(mockProjectConfig);
@@ -209,21 +199,19 @@ describe("Unit - Config command", () => {
 			expect(ProjectConfig.localConfig).toHaveBeenCalled();
 			expect(ProjectConfig.setConfig).toHaveBeenCalledWith(mockProjectConfig, undefined);
 			expect(Util.log).toHaveBeenCalledWith(`Property "booleanProperty" set.`);
-			done();
 		});
 	});
 
 	describe("Add", () => {
-		it("Should show error w/o existing project and global flag", async done => {
+		it("Should show error w/o existing project and global flag", async () => {
 			spyOn(Util, "error");
 			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
 
 			await configCmd.addHandler({ property: "test", value: true, _: ["config"], $0: "config" });
 			expect(Util.error).toHaveBeenCalledWith("No configuration file found in this folder!", "red");
-			done();
 		});
 
-		it("Should show error for non-array property", async done => {
+		it("Should show error for non-array property", async () => {
 			const mockProjectConfig = createMockConfig();
 			spyOn(Util, "error");
 			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
@@ -233,10 +221,9 @@ describe("Unit - Config command", () => {
 			expect(Util.error).toHaveBeenCalledWith(
 				`Configuration property "version" is not an array, use config set instead.`,
 				"red");
-			done();
 		});
 
-		it("Should skip existing", async done => {
+		it("Should skip existing", async () => {
 			const mockProjectConfig = createMockConfig();
 			mockProjectConfig.customTemplates = ["existing"];
 			spyOn(Util, "log");
@@ -245,10 +232,9 @@ describe("Unit - Config command", () => {
 
 			await configCmd.addHandler({ property: "customTemplates", value: "existing", _: ["config"], $0: "config" });
 			expect(Util.log).toHaveBeenCalledWith(`Value already exists in "customTemplates".`);
-			done();
 		});
 
-		it("Should create/add to global prop", async done => {
+		it("Should create/add to global prop", async () => {
 			const mockProjectConfig = createMockConfig();
 			spyOn(Util, "log");
 			spyOn(ProjectConfig, "globalConfig").and.returnValue(mockProjectConfig);
@@ -263,10 +249,9 @@ describe("Unit - Config command", () => {
 			mockProjectConfig.customTemplates = ["one", "two"];
 			expect(ProjectConfig.setConfig).toHaveBeenCalledWith(mockProjectConfig, true);
 			expect(Util.log).toHaveBeenCalledWith(`Property "customTemplates" updated.`);
-			done();
 		});
 
-		it("Should add to local prop", async done => {
+		it("Should add to local prop", async () => {
 			const mockProjectConfig = createMockConfig();
 			spyOn(Util, "log");
 			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
@@ -277,7 +262,6 @@ describe("Unit - Config command", () => {
 			mockProjectConfig.customTemplates = ["first"]
 			expect(ProjectConfig.setConfig).toHaveBeenCalledWith(mockProjectConfig, undefined);
 			expect(Util.log).toHaveBeenCalledWith(`Property "customTemplates" updated.`);
-			done();
 		});
 	});
 });

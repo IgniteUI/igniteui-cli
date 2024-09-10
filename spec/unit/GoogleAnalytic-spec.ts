@@ -92,7 +92,7 @@ describe("Unit - Google Analytic", () => {
 		fs.rmdirSync(`./output/${testFolder}`);
 	});
 
-	it("Calling post should create post request to 'www.google-analytics.com", async done => {
+	it("Calling post should create post request to 'www.google-analytics.com", async () => {
 		const mockProjectConfig = createMockConfig();
 		spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
 
@@ -106,10 +106,9 @@ describe("Unit - Google Analytic", () => {
 		expect(request.on).toHaveBeenCalledWith("error", jasmine.any(Function));
 
 		expect(request.end).toHaveBeenCalledTimes(1);
-		done();
 	});
 
-	it("Calling post with custom parameters should create post request to 'www.google-analytics.com", async done => {
+	it("Calling post with custom parameters should create post request to 'www.google-analytics.com", async () => {
 		const mockProjectConfig = createMockConfig();
 		spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
 
@@ -123,10 +122,9 @@ describe("Unit - Google Analytic", () => {
 		expect(request.on).toHaveBeenCalledWith("error", jasmine.any(Function));
 
 		expect(request.end).toHaveBeenCalledTimes(1);
-		done();
 	});
 
-	it("Should not post if 'disableAnalytics' is set to true", async done => {
+	it("Should not post if 'disableAnalytics' is set to true", async () => {
 		const mockProjectConfig = createMockConfig();
 		spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
 
@@ -135,17 +133,14 @@ describe("Unit - Google Analytic", () => {
 		expect(https.request).toHaveBeenCalledTimes(0);
 		expect(request.on).toHaveBeenCalledTimes(0);
 		expect(request.end).toHaveBeenCalledTimes(0);
-
-		done();
 	});
 
-	it("Random Guid is generated if the platform check fails", done => {
+	it("Random Guid is generated if the platform check fails", () => {
 		serviceSpy.and.throwError("Error!");
 		const value = GATestClass.getUserID();
 
 		expect(value).toBeDefined();
 		expect(value).toMatch(/\d{1,}/);
 
-		done();
 	});
 });

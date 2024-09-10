@@ -104,7 +104,7 @@ describe("Schematics ng-new", () => {
 		spyOn(GoogleAnalytics, "post");
 	});
 
-	it("works with no name provided", done => {
+	it("works with no name provided", () => {
 		const runner = new SchematicTestRunner("schematics", collectionPath);
 		const myTree = Tree.empty();
 		const workingDirectory = "my-test-project";
@@ -182,11 +182,10 @@ describe("Schematics ng-new", () => {
 			expect(taskOptions).toContain(jasmine.objectContaining(expectedInstall));
 			expect(taskOptions).toContain(expectedInit);
 			expect(taskOptions).toContain(expectedStart);
-			done();
 		});
 	});
 
-	it("works with name provided", done => {
+	it("works with name provided", () => {
 		const runner = new SchematicTestRunner("schematics", collectionPath);
 		const myTree = Tree.empty();
 		const workingDirectory = "my-test-project";
@@ -243,7 +242,6 @@ describe("Schematics ng-new", () => {
 			expect(mockProject.upgradeIgniteUIPackages).toHaveBeenCalled();
 			expect(taskOptions).toContain(jasmine.objectContaining(expectedInstall));
 			expect(taskOptions).toContain(expectedInit);
-			done();
 		});
 	});
 });
