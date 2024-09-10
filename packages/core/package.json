@@ -14,7 +14,7 @@
   "dependencies": {
     "chalk": "^2.3.2",
     "glob": "^7.1.2",
-    "inquirer": "^6.2.2",
+    "@inquirer/prompts": "^5.4.0",
     "through2": "^2.0.3",
     "typescript": "~5.4.3"
   },
