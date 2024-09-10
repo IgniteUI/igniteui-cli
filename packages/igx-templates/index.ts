@@ -1,5 +1,5 @@
-import * as standalone from './igx-ts';
-import * as legacy from './igx-ts-legacy';
+import standalone from './igx-ts';
+import legacy from './igx-ts-legacy';
 
 export * from './IgniteUIForAngularTemplate';
 export * from './AngularTypeScriptFileUpdate';
