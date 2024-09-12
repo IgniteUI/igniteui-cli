@@ -25,7 +25,7 @@ describe("Unit - New command", () => {
 		spyOn(Util, "error");
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 
-		await newCmd.execute({});
+		await newCmd.handler({ _: ["new"], $0: "new" });
 		expect(Util.error).toHaveBeenCalledWith("There is already an existing project.", "red");
 		done();
 	});
@@ -46,7 +46,7 @@ describe("Unit - New command", () => {
 
 		for (const item of errorCombos) {
 			resetSpy(Util.error);
-			await newCmd.execute({name: item.name });
+			await newCmd.handler({ name: item.name, _: ["new"], $0: "new" });
 			expect(Util.error).toHaveBeenCalledWith(`Name '${item.inError}' is not valid. `
 				+ "Name should start with a letter and can also contain numbers, dashes and spaces.",
 				"red");
@@ -58,30 +58,30 @@ describe("Unit - New command", () => {
 	it("Logs error for wrong framework", async done => {
 		spyOn(Util, "error");
 		//spied getFrameworkById won't return anything, i.e. not found
-		newCmd.template = jasmine.createSpyObj("TemplateManager", ["getFrameworkById", "getProjectLibrary"]);
+		newCmd.templateManager = jasmine.createSpyObj("TemplateManager", ["getFrameworkById", "getProjectLibrary"]);
 
-		await newCmd.execute({ name: "Test", framework: "jq"});
+		await newCmd.handler({ name: "Test", framework: "jq", _: ["new"], $0: "new" });
 
-		expect(newCmd.template.getFrameworkById).toHaveBeenCalledWith("jq");
+		expect(newCmd.templateManager.getFrameworkById).toHaveBeenCalledWith("jq");
 		expect(Util.error).toHaveBeenCalledWith("Framework not supported", "red");
 		//no further attempts to get project:
-		expect(newCmd.template.getProjectLibrary).toHaveBeenCalledTimes(0);
+		expect(newCmd.templateManager.getProjectLibrary).toHaveBeenCalledTimes(0);
 		expect(Util.log).toHaveBeenCalledTimes(0);
 		done();
 	});
 
 	it("Logs error for wrong project type", async done => {
 		spyOn(Util, "error");
-		newCmd.template = jasmine.createSpyObj("TemplateManager", {
+		newCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: {},
 			// return nothing, i.e. not found
 			getProjectLibrary: undefined
 		});
 
-		await newCmd.execute({ name: "Test", framework: "jq", type: "js"});
+		await newCmd.handler({ name: "Test", framework: "jq", type: "js", _: ["new"], $0: "new"});
 
-		expect(newCmd.template.getFrameworkById).toHaveBeenCalledWith("jq");
-		expect(newCmd.template.getProjectLibrary).toHaveBeenCalledWith("jq", "js");
+		expect(newCmd.templateManager.getFrameworkById).toHaveBeenCalledWith("jq");
+		expect(newCmd.templateManager.getProjectLibrary).toHaveBeenCalledWith("jq", "js");
 		expect(Util.error).toHaveBeenCalledWith(`Project type "js" not found in framework 'jq'`);
 		//no further attempts to get project:
 		expect(Util.log).toHaveBeenCalledTimes(0);
@@ -97,15 +97,15 @@ describe("Unit - New command", () => {
 			projectType: "type",
 			themes: ["ig"]
 		};
-		newCmd.template = jasmine.createSpyObj("TemplateManager", {
+		newCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: {},
 			getProjectLibrary: mockProjLib
 		});
 		spyOn(mockProjLib, "getProject");
-		await newCmd.execute({ name: "Test", framework: "jq", type: "js", theme: "mega-custom"});
+		await newCmd.handler({ name: "Test", framework: "jq", type: "js", theme: "mega-custom", _: ["new"], $0: "new" });
 
-		expect(newCmd.template.getFrameworkById).toHaveBeenCalledWith("jq");
-		expect(newCmd.template.getProjectLibrary).toHaveBeenCalledWith("jq", "js");
+		expect(newCmd.templateManager.getFrameworkById).toHaveBeenCalledWith("jq");
+		expect(newCmd.templateManager.getProjectLibrary).toHaveBeenCalledWith("jq", "js");
 		expect(Util.error).toHaveBeenCalledWith("Theme not supported");
 		//no further attempts to get project:
 		expect(Util.log).toHaveBeenCalledTimes(0);
@@ -117,7 +117,7 @@ describe("Unit - New command", () => {
 		spyOn(ProjectConfig, "getConfig").and.returnValue(null);
 
 		const mockProjLib = {};
-		newCmd.template = jasmine.createSpyObj("TemplateManager", {
+		newCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: {},
 			getProjectLibrary: mockProjLib
 		});
@@ -126,7 +126,7 @@ describe("Unit - New command", () => {
 		spyOn(promptSession, "start");
 		//spied getFrameworkById won't return anything, i.e. not found
 
-		await newCmd.execute({});
+		await newCmd.handler({ _: ["new"], $0: "new" });
 		expect(promptSession.start).toHaveBeenCalled();
 		done();
 	});
@@ -140,15 +140,15 @@ describe("Unit - New command", () => {
 			projectType: "type",
 			themes: ["ig"]
 		};
-		newCmd.template = jasmine.createSpyObj("TemplateManager", {
+		newCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: {},
 			getProjectLibrary: mockProjLib
 		});
 		spyOn(mockProjLib, "getProject");
-		await newCmd.execute({ name: "Test", framework: "jq", type: "type"});
+		await newCmd.handler({ name: "Test", framework: "jq", type: "type", _: ["new"], $0: "new" });
 
-		expect(newCmd.template.getFrameworkById).toHaveBeenCalledWith("jq");
-		expect(newCmd.template.getProjectLibrary).toHaveBeenCalledWith("jq", "type");
+		expect(newCmd.templateManager.getFrameworkById).toHaveBeenCalledWith("jq");
+		expect(newCmd.templateManager.getProjectLibrary).toHaveBeenCalledWith("jq", "type");
 		expect(Util.log).toHaveBeenCalledWith("Project Name: Test, framework jq, type type, theme ig");
 		expect(mockProjLib.getProject).toHaveBeenCalled();
 		expect(Util.error).toHaveBeenCalledWith("Project template not found");
@@ -172,7 +172,7 @@ describe("Unit - New command", () => {
 			projectType: "js",
 			themes: ["ig"]
 		};
-		newCmd.template = jasmine.createSpyObj("TemplateManager", {
+		newCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: {},
 			getProjectLibrary: mockProjLib
 		});
@@ -183,10 +183,10 @@ describe("Unit - New command", () => {
 		spyOn(process, "cwd").and.returnValue("Mock dir");
 		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
 
-		await newCmd.execute({ name: "Test", framework: "jq", theme: "ig" });
+		await newCmd.handler({ name: "Test", framework: "jq", theme: "ig", _: ["new"], $0: "new" });
 
-		expect(newCmd.template.getFrameworkById).toHaveBeenCalledWith("jq");
-		expect(newCmd.template.getProjectLibrary).toHaveBeenCalledWith("jq");
+		expect(newCmd.templateManager.getFrameworkById).toHaveBeenCalledWith("jq");
+		expect(newCmd.templateManager.getProjectLibrary).toHaveBeenCalledWith("jq");
 		expect(Util.log).toHaveBeenCalledWith("Project Name: Test, framework jq, type js, theme ig");
 		expect(mockTemplate.generateConfig).toHaveBeenCalledWith("Test", "ig");
 		expect(Util.processTemplates)
@@ -213,7 +213,7 @@ describe("Unit - New command", () => {
 			projectType: "type",
 			themes: ["ig"]
 		};
-		newCmd.template = jasmine.createSpyObj("TemplateManager", {
+		newCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: {},
 			getProjectLibrary: mockProjLib
 		});
@@ -222,10 +222,10 @@ describe("Unit - New command", () => {
 		spyOn(process, "cwd").and.returnValue("Mock dir");
 		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
 
-		await newCmd.execute({ name: "Test", framework: "jq", type: "type", theme: "ig" });
+		await newCmd.handler({ name: "Test", framework: "jq", type: "type", theme: "ig", _: ["new"], $0: "new" });
 
-		expect(newCmd.template.getFrameworkById).toHaveBeenCalledWith("jq");
-		expect(newCmd.template.getProjectLibrary).toHaveBeenCalledWith("jq", "type");
+		expect(newCmd.templateManager.getFrameworkById).toHaveBeenCalledWith("jq");
+		expect(newCmd.templateManager.getProjectLibrary).toHaveBeenCalledWith("jq", "type");
 		expect(mockTemplate.generateConfig).toHaveBeenCalledWith("Test", "ig");
 		expect(Util.processTemplates)
 		.toHaveBeenCalledWith("test", path.join("Mock dir", "Test"), mockConfig, mockDelimiters, false);
@@ -252,13 +252,13 @@ describe("Unit - New command", () => {
 			projectType: "type",
 			themes: ["ig"]
 		};
-		newCmd.template = jasmine.createSpyObj("TemplateManager", {
+		newCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: {},
 			getProjectLibrary: mockProjLib
 		});
 		spyOn(mockTemplate, "generateConfig");
 
-		await newCmd.execute({ name: projectName, framework: "jq" });
+		await newCmd.handler({ name: projectName, framework: "jq", _: ["new"], $0: "new" });
 
 		expect(Util.execSync).toHaveBeenCalledWith("git init", jasmine.any(Object));
 		expect(Util.execSync).toHaveBeenCalledWith("git add .", jasmine.any(Object));
@@ -285,14 +285,14 @@ describe("Unit - New command", () => {
 			projectType: "type",
 			themes: ["ig"]
 		};
-		newCmd.template = jasmine.createSpyObj("TemplateManager", {
+		newCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: {},
 			getProjectLibrary: mockProjLib
 		});
 		spyOn(mockTemplate, "generateConfig");
 		spyOn(Util, "gitInit");
 
-		await newCmd.execute({ "name": projectName, "framework": "jq", "skip-git": true });
+		await newCmd.handler({ "name": projectName, "framework": "jq", "skip-git": true, _: ["new"], $0: "new" });
 
 		expect(Util.gitInit).not.toHaveBeenCalled();
 		done();
@@ -313,7 +313,7 @@ describe("Unit - New command", () => {
 			projectType: "type",
 			themes: ["ig"]
 		};
-		newCmd.template = jasmine.createSpyObj("TemplateManager", {
+		newCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: {},
 			getProjectLibrary: mockProjLib
 		});
@@ -321,7 +321,7 @@ describe("Unit - New command", () => {
 		spyOn(ProjectConfig, "getConfig").and.returnValue({ skipGit: true });
 		spyOn(Util, "gitInit");
 
-		await newCmd.execute({ name: projectName, framework: "jq" });
+		await newCmd.handler({ name: projectName, framework: "jq", _: ["new"], $0: "new" });
 
 		expect(Util.gitInit).not.toHaveBeenCalled();
 		done();
@@ -340,14 +340,14 @@ describe("Unit - New command", () => {
 			projectType: "type",
 			themes: ["ig"]
 		};
-		newCmd.template = jasmine.createSpyObj("TemplateManager", {
+		newCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: {},
 			getProjectLibrary: mockProjLib
 		});
 		spyOn(mockTemplate, "generateConfig");
 		spyOn(Util, "gitInit");
 
-		await newCmd.execute({ name: "title", framework: "jq", skipInstall: true });
+		await newCmd.handler({ name: "title", framework: "jq", skipInstall: true, _: ["new"], $0: "new" });
 
 		expect(PackageManager.installPackages).not.toHaveBeenCalled();
 		expect(process.chdir).not.toHaveBeenCalled();

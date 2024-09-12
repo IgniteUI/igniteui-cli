@@ -19,7 +19,7 @@ describe("Unit - Quickstart command", () => {
 	it("Creates quickstart for the specified framework", async done => {
 		spyOn(Util, "execSync");
 
-		await quickstartCmd.execute({ framework: "angular" });
+		await quickstartCmd.handler({ framework: "angular", _: ["quickstart"], $0: "quickstart" });
 		const outDir = path.join(process.cwd(), "angular-quickstart");
 		const quickStartFiles = path.join(__dirname, "../../packages/cli/templates/quickstart", "angular");
 
@@ -35,7 +35,7 @@ describe("Unit - Quickstart command", () => {
 	it("Logs error for wrong framework", async done => {
 		spyOn(Util, "error");
 
-		await quickstartCmd.execute({ framework: "lottery" });
+		await quickstartCmd.handler({ framework: "lottery", _: ["quickstart"], $0: "quickstart"  });
 
 		expect(Util.error).toHaveBeenCalledWith("The framework is not supported!", "red");
 		expect(Util.log).toHaveBeenCalledWith("Quick Start!");
@@ -46,7 +46,7 @@ describe("Unit - Quickstart command", () => {
 	it("Creates default jquery quickstart when no framework is specified", async done => {
 		spyOn(Util, "execSync");
 		spyOn(liteServer, "server");
-		await quickstartCmd.execute({ framework: "jquery" });
+		await quickstartCmd.handler({ framework: "jquery", _: ["quickstart"], $0: "quickstart" });
 		expect(Util.execSync).toHaveBeenCalledWith("npm install");
 		const outDir = path.join(process.cwd(), "jquery-quickstart");
 		const quickStartFiles = path.join(__dirname, "../../packages/cli/templates/quickstart", "jquery");
@@ -62,7 +62,7 @@ describe("Unit - Quickstart command", () => {
 		spyOn(Util, "execSync");
 		spyOn(liteServer, "server");
 
-		await quickstartCmd.execute({ framework: "react" });
+		await quickstartCmd.handler({ framework: "react", _: ["quickstart"], $0: "quickstart" });
 		const outDir = path.join(process.cwd(), "react-quickstart");
 		const quickStartFiles = path.join(__dirname, "../../packages/cli/templates/quickstart", "react");
 

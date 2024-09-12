@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x, 20.x]
+        node-version: [20.x]
     steps:
       - name: Checkout
         uses: actions/checkout@v3 #set credentials for every repository on the computer --global, so `New command` CLI tests pass
@@ -31,10 +31,10 @@ jobs:
           yarn config set scripts-prepend-node-path auto
           yarn test
       - name: Generate coverage
-        if: matrix.node-version == '18.x'
+        if: matrix.node-version == '20.x'
         run: yarn coverage
       - name: Publish to coveralls.io
-        if: matrix.node-version == '18.x'
+        if: matrix.node-version == '20.x'
         uses: coverallsapp/github-action@v1.1.2
         with:
             github-token: ${{ github.token }}

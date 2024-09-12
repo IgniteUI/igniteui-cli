@@ -668,7 +668,7 @@ describe("Unit - PromptSession", () => {
 		await mockSession.chooseActionLoop({} as any);
 
 		expect(upgrade.upgrade).toHaveBeenCalledTimes(1);
-		expect(upgrade.upgrade).toHaveBeenCalledWith({ skipInstall: true });
+		expect(upgrade.upgrade).toHaveBeenCalledWith({ skipInstall: true, _: ["upgrade"], $0: "upgrade" });
 
 		done();
 	});

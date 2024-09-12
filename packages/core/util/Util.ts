@@ -51,6 +51,12 @@ export class Util {
 		return fs.lstatSync(filePath).isFile();
 	}
 
+	public static ensureDirectoryExists(dirPath) {
+		if (!this.directoryExists(dirPath)) {
+			fs.mkdirSync(dirPath);
+		}
+	}
+
 	public static getDirectoryNames(rootPath: string): string[] {
 		// TODO: add https://github.com/davetemplin/async-file
 		let folders: string[] = [];

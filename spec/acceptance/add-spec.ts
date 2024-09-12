@@ -1,5 +1,5 @@
 import { FEED_ANGULAR, NPM_ANGULAR, GoogleAnalytics, GoogleAnalyticsParameters, ProjectConfig } from "@igniteui/cli-core";
-import * as fs from "fs-extra";
+import * as fs from "fs";
 import { EOL } from "os";
 import { parse } from "path";
 import * as cli from "../../packages/cli/lib/cli";
@@ -216,7 +216,7 @@ describe("Add command", () => {
 			`.replace(/\s/g, "")
 		);
 		fs.unlinkSync("./src/app/components/test-view/test-view.component.ts");
-		fs.removeSync("./src");
+		fs.rmSync("./src", { recursive: true,  force: true });
 
 		fs.unlinkSync(ProjectConfig.configFile);
 
@@ -313,7 +313,7 @@ export class AppModule {
 				.toBe(expectedModuleSource.replace(/\r\n/g, "\n"));
 
 			fs.unlinkSync("./src/app/test-view/test-view.component.ts");
-			fs.removeSync("./src");
+			fs.rmSync("./src", { recursive: true,  force: true });
 
 			fs.unlinkSync(ProjectConfig.configFile);
 			fs.unlinkSync("tslint.json");
@@ -412,7 +412,7 @@ export class AppModule {
 		expect(fs.existsSync("./src/components/my-grid")).toBeTruthy();
 		expect(fs.existsSync("./src/components/my-grid/index.js")).toBeTruthy();
 		fs.unlinkSync("./src/components/my-grid/index.js");
-		fs.removeSync("./src");
+		fs.rmSync("./src", { recursive: true,  force: true });
 
 		fs.unlinkSync(ProjectConfig.configFile);
 		done();

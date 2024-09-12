@@ -1,21 +1,24 @@
 import { GoogleAnalytics, Util } from "@igniteui/cli-core";
 import * as path from "path";
 import * as resolve from "resolve";
+import { CommandType, PositionalArgs } from "./types";
+import { ArgumentsCamelCase } from "yargs";
 
-// tslint:disable:object-literal-sort-keys
-const command = {
+const command: CommandType = {
 	command: "quickstart",
-	desc: "creates rich feature grid",
-	builder: {
-		framework: {
-			alias: "f",
-			default: "jquery",
-			describe: "Framework to setup quickstart for",
-			type: "string",
-			choices: ["jquery", "react", "angular"]
-		}
+	describe: "creates rich feature grid",
+	builder: (yargs) => {
+		return yargs
+			.option("framework", {
+				alias: "f",
+				default: "jquery",
+				describe: "Framework to setup quickstart for",
+				type: "string",
+				choices: ["jquery", "react", "angular"]
+			})
+			.usage(""); // do not show any usage instructions before the commands list
 	},
-	async execute(argv) {
+	async handler(argv: ArgumentsCamelCase<PositionalArgs>) {
 		GoogleAnalytics.post({
 			t: "screenview",
 			cd: "Quick Start"

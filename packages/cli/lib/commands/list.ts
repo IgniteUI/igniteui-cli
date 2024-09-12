@@ -1,18 +1,13 @@
 import { Config, Framework, GoogleAnalytics, ProjectConfig, ProjectLibrary, Util } from "@igniteui/cli-core";
-import { TemplateManager } from "../TemplateManager";
+import { CommandType, PositionalArgs } from "./types";
+import { ArgumentsCamelCase } from "yargs";
 
-let command: {
-	[name: string]: any,
-	templateManager: TemplateManager,
-	execute: (argv: any) => void
-};
 
-// tslint:disable:object-literal-sort-keys
-command = {
+const command: CommandType = {
 	command: "list",
 	// use aliases here, instead of alias. With single alias yargs does not build correctly argv
 	aliases: ["l"],
-	desc: "list all templates",
+	describe: "list all templates",
 	builder: {
 		framework: {
 			alias: "f",
@@ -27,7 +22,7 @@ command = {
 		}
 	},
 	templateManager: null,
-	execute(argv) {
+	handler(argv: ArgumentsCamelCase<PositionalArgs>) {
 		GoogleAnalytics.post({
 			t: "screenview",
 			cd: "List"

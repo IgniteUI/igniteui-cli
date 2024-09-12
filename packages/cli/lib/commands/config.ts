@@ -1,60 +1,65 @@
 import { Config, GoogleAnalytics, ProjectConfig, Util } from "@igniteui/cli-core";
+import { ConfigCommandType } from "./types";
 
-const command = {
-	// tslint:disable:object-literal-sort-keys
+const command: ConfigCommandType = {
 	command: "config",
-	desc: "gets, sets or adds a configuration property",
-	builder: yargs => {
-		yargs.command({
-			command: "get <property>",
-			desc: "Gets a configuration property",
-			builder: {
-				property: {
-					describe: "Config property to get",
-					type: "string"
-				}
-			},
-			handler: command.getHandler
-		}).command({
-			command: "set <property> <value>",
-			desc: "Sets a configuration property",
-			builder: {
-				property: {
-					describe: "Config property to set",
-					type: "string"
+	describe: "gets, sets or adds a configuration property",
+	builder: (yargs) => {
+		return yargs
+			.command({
+				command: "get <property>",
+				describe: "Gets a configuration property",
+				builder: (yargs) => {
+					return yargs.option("property", {
+						describe: "Config property to get",
+						type: "string"
+					})
+					.usage(""); // do not show any usage instructions before the commands list
 				},
-				value: {
-					describe: "New value for the property",
-					type: "string"
-				}
-			},
-			handler: command.setHandler
-		}).command({
-			command: "add <property> <value>",
-			desc: "Adds a value to an existing configuration array",
-			builder: {
-				property: {
-					describe: "Config property to add to",
-					type: "string"
+				handler: command.getHandler
+			})
+			.command({
+				command: "set <property> <value>",
+				describe: "Sets a configuration property",
+				builder: (yargs) => {
+					return yargs.option("property", {
+						describe: "Config property to set",
+						type: "string"
+					})
+					.option("value", {
+						describe: "New value for the property",
+						type: "string"
+					})
+					.usage(""); // do not show any usage instructions before the commands list
 				},
-				value: {
-					describe: "New value to add",
-					type: "string"
-				}
-			},
-			handler: argv => {
-				command.addHandler(argv);
-			}
-		}).option("global", {
-			alias: "g",
-			type: "boolean",
-			global: true,
-			describe: "Specify if the global configuration should be used"
-		})
-		// at least one command is required
-		.demandCommand(1, "Please select command");
+				handler: command.setHandler
+			})
+			.command({
+				command: "add <property> <value>",
+				describe: "Adds a value to an existing configuration array",
+				builder: (yargs) => {
+					return yargs.option("property", {
+						describe: "Config property to add to",
+						type: "string"
+					})
+					.option("value", {
+						describe: "New value to add",
+						type: "string"
+					})
+					.usage(""); // do not show any usage instructions before the commands list
+				},
+				handler: command.addHandler
+			})
+			.option("global", {
+				alias: "g",
+				type: "boolean",
+				global: true,
+				describe: "Specify if the global configuration should be used"
+			})
+			.usage("") // do not show any usage instructions before the commands list
+			// at least one command is required
+			.demandCommand(1, "Please select command");
 	},
-	// tslint:enable:object-literal-sort-keys
 	getHandler(argv) {
 		GoogleAnalytics.post({
 			t: "screenview",
@@ -168,7 +173,8 @@ const command = {
 		}
 
 		Util.log(`Property "${argv.property}" updated.`);
-	}
+	},
+	handler(_argv) {} // part of the CommandModule interface
 };
 
 export default command;

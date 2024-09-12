@@ -1,27 +1,24 @@
 import { GoogleAnalytics, Util } from "@igniteui/cli-core";
-import * as opn from "opn";
 import { PromptSession } from "../PromptSession";
+import { DocCommandType, PositionalArgs } from "./types";
+import { ArgumentsCamelCase } from "yargs";
 
-let doc: {
-	[term: string]: any,
-	execute: (argv: any) => Promise<void>
-};
-doc = {
-	// tslint:disable:object-literal-sort-keys
+const doc: DocCommandType = {
 	command: "doc [term]",
-	desc: "opens the Infragistics search for the given term",
-	builder: {
-		term: {
-			describe: "The term you would like to search for",
-			type: "string"
-		}
+	describe: "opens the Infragistics search for the given term",
+	builder: (yargs) => {
+		return yargs
+			.option("term", {
+				describe: "The term you would like to search for",
+				type: "string"
+			})
+			.usage(""); // do not show any usage instructions before the commands list
 	},
-	template: null,
-	open(target) {
-		opn(target);
+	open: async (target) => {
+		const open = await import("open");
+		open.default.call(target);
 	},
-	async execute(argv) {
-
+	async handler(argv: ArgumentsCamelCase<PositionalArgs>) {
 		GoogleAnalytics.post({
 			t: "screenview",
 			cd: "Doc"
@@ -30,7 +27,7 @@ doc = {
 		if (!argv.term) {
 			const answer = await PromptSession.chooseTerm();
 			argv.term = answer;
-			await this.execute(argv);
+			await this.handler(argv);
 		} else if (!Util.isAlphanumericExt(argv.term)) {
 			return Util.error(`The search term '${argv.term}' is not valid.` + "\n" +
 			"Name should start with a letter and can also contain numbers, dashes and spaces.",
@@ -45,9 +42,8 @@ doc = {
 				cd13: argv.term
 			});
 
-			doc.open(`https://www.infragistics.com/search?q=${argv.term.trim()}`);
+			await doc.open(`https://www.infragistics.com/search?q=${argv.term.trim()}`);
 		}
 	}
 };
-
 export default doc;

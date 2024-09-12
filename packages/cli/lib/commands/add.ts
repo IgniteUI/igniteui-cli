@@ -2,19 +2,13 @@ import {
 	AddTemplateArgs, GoogleAnalytics, PackageManager,
 	ProjectConfig, ProjectLibrary, Template, Util
 } from "@igniteui/cli-core";
-import { TemplateManager } from "../TemplateManager";
 import { PromptSession } from "./../PromptSession";
+import { AddCommandType, PositionalArgs } from "./types";
+import { ArgumentsCamelCase } from "yargs";
 
-let command: {
-	[name: string]: any,
-	templateManager: TemplateManager,
-	execute: (argv: any) => Promise<void>,
-	addTemplate: (name: string, template: Template, options?: AddTemplateArgs) => Promise<boolean>
-};
-// tslint:disable:object-literal-sort-keys
-command = {
+const command: AddCommandType = {
 	command: "add [template] [name]",
-	desc: "adds template by its ID",
+	describe: "adds template by its ID",
 	templateManager: null,
 	builder: {
 		"template": {
@@ -42,13 +36,17 @@ command = {
 			global: true
 		}
 	},
-	check: argv => {
+	check: (argv: ArgumentsCamelCase<PositionalArgs>) => {
 		if ((!argv.name && argv.template) || (argv.name && !argv.template)) {
 			return false;
 		}
 		return true;
 	},
-	async execute(argv) {
+	async handler(argv: ArgumentsCamelCase<PositionalArgs>) {
+		if (argv.skipExecution) {
+			return;
+		}
+
 		GoogleAnalytics.post({
 			t: "screenview",
 			cd: "Add"
