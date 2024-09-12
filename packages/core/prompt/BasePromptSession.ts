@@ -1,5 +1,5 @@
 import * as path from "path";
-import { checkbox, input, rawlist, select, Separator } from "@inquirer/prompts";
+import { Separator } from "@inquirer/prompts";
 import { BaseTemplateManager } from "../templates";
 import {
 	Component, Config, ControlExtraConfigType, ControlExtraConfiguration, Framework,
@@ -7,6 +7,7 @@ import {
 } from "../types";
 import { App, ChoiceItem, GoogleAnalytics, ProjectConfig, Util } from "../util";
 import { Task, TaskRunner, WIZARD_BACK_OPTION } from "./TaskRunner";
+import { InquirerWrapper } from "./InquirerWrapper";
 
 export abstract class BasePromptSession {
 	protected config: Config;
@@ -37,6 +38,7 @@ export abstract class BasePromptSession {
 				name: "projectName",
 				message: "Enter a name for your project:",
 				default: Util.getAvailableName(defaultProjName, true),
+				choices: null,
 				validate: this.nameIsValid
 			});
 
@@ -124,9 +126,12 @@ export abstract class BasePromptSession {
 			options.choices = this.addSeparators(options.choices);
 		}
 
-		const userInput = await input(options);
-
-		const result = userInput[options.name] as string;
+		let result: string = null;
+		if (options.type === "list") {
+			result = await InquirerWrapper.select(options);
+		} else {
+			result = await InquirerWrapper.input(options);
+		}
 
 		// post to GA everything but 'Back' user choice
 		if (!withBackChoice || result !== WIZARD_BACK_OPTION) {
@@ -261,6 +266,7 @@ export abstract class BasePromptSession {
 			name: `${type === "component" ? type : "customView"}Name`,
 			message: `Name your ${type}:`,
 			default: availableDefaultName,
+			choices: null,
 			validate: (input: string) => {
 				// TODO: GA post?
 				const name = Util.nameFromPath(input);
@@ -278,13 +284,13 @@ export abstract class BasePromptSession {
 		for (const question of extraPrompt) {
 			switch (question.type) {
 				case "input":
-					extraConfigAnswers.push(await input(question));
+					extraConfigAnswers.push(await InquirerWrapper.input(question));
 					break;
 				case "select":
-					extraConfigAnswers.push(await select(question));
+					extraConfigAnswers.push(await InquirerWrapper.select(question));
 					break;
 				case "checkbox":
-					extraConfigAnswers.push(await checkbox(question));
+					extraConfigAnswers.push(await InquirerWrapper.checkbox(question));
 					break;
 			}
 		}
@@ -427,6 +433,7 @@ export abstract class BasePromptSession {
 				name: "port",
 				message: "Choose app host port:",
 				default: defaultPort,
+				choices: null,
 				validate: (input: string) => {
 					if (!Number(input)) {
 						Util.log(""); /* new line */
@@ -628,7 +635,7 @@ export interface IUserInputOptions {
 	type: string;
 	name: string;
 	message: string;
-	choices?: any[];
+	choices: any[];
 	default?: any;
 	validate?: (input: string) => string | boolean;
 }

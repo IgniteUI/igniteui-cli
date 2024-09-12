@@ -1,8 +1,7 @@
 import {
-	BasePromptSession, GoogleAnalytics, PackageManager, ProjectConfig,
+	BasePromptSession, GoogleAnalytics, InquirerWrapper, PackageManager, ProjectConfig,
 	ProjectLibrary, PromptTaskContext, Task, Util
 } from "@igniteui/cli-core";
-import { input } from "@inquirer/prompts";
 import * as path from "path";
 import { default as add } from "./commands/add";
 import { default as start } from "./commands/start";
@@ -16,7 +15,7 @@ export class PromptSession extends BasePromptSession {
 	}
 
 	public static async chooseTerm() {
-		const answer = await input({
+		const answer = await InquirerWrapper.input({
 			default: null,
 			message: "Enter a search term",
 		});
@@ -53,6 +52,7 @@ export class PromptSession extends BasePromptSession {
 				name: "projectName",
 				message: "Enter a name for your project:",
 				default: Util.getAvailableName(defaultProjName, true),
+				choices: null,
 				validate: this.nameIsValid
 			});
 

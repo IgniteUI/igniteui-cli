@@ -17,8 +17,9 @@
     "@inquirer/prompts": "^5.4.0",
     "through2": "^2.0.3",
     "typescript": "~5.4.3"
-  },
-  "devDependencies": {
-    "@angular-devkit/schematics": "~14.0.0"
+},
+"devDependencies": {
+	"@angular-devkit/schematics": "~14.0.0",
+	"@inquirer/type": "^1.5.3"
   }
 }
