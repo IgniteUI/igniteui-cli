@@ -1,5 +1,5 @@
 import { IgniteUIForAngularTemplate } from "@igniteui/angular-templates";
-import { ComponentGroup, Config, Framework, FrameworkId, ProjectConfig, Util } from "@igniteui/cli-core";
+import { ComponentGroup, Config, Framework, ProjectConfig, Util } from "@igniteui/cli-core";
 import * as path from "path";
 import { TemplateManager } from "../../packages/cli/lib/TemplateManager";
 import { AngularTemplate } from "../../packages/cli/lib/templates/AngularTemplate";
@@ -7,47 +7,6 @@ import { jQueryTemplate } from "../../packages/cli/lib/templates/jQueryTemplate"
 import { ReactTemplate } from "../../packages/cli/lib/templates/ReactTemplate";
 import { mockProLibFactory } from "../helpers/mocks";
 import { resetSpy } from "../helpers/utils";
-
-function createMockConfig(): Config {
-    return {
-		version: '1.0.0',
-		packagesInstalled: true,
-		build: {},
-		igPackageRegistry: 'https://example.com',
-		skipGit: true,
-		disableAnalytics: true,
-		customTemplates: [],
-		stepByStep: {
-			frameworks: ["angular", "react"],
-			[FrameworkId.angular]: {
-				projTypes: ["igx-ts", "igx-es6"]
-			},
-			[FrameworkId.react]: {
-				projTypes: ["igx-react"]
-			},
-			[FrameworkId.jquery]: {
-				projTypes: ["igx-jquery"]
-			},
-			[FrameworkId.webComponents]: {
-				projTypes: ["igx-webcomponents"]
-			}
-		},
-		project: {
-			defaultPort: 4200,
-			framework: "mock-ng",
-			projectType: "mock-igx-ts",
-			projectTemplate: "mock-side-nav",
-			theme: "default-theme",
-			themePath: "/path/to/theme",
-			components: ["mock-component"],
-			isBundle: true,
-			isShowcase: false,
-			version: '1.0.0',
-			sourceRoot: "/src",
-			igniteuiSource: "igniteui-source"
-		}
-	};
-}
 
 describe("Unit - Template manager", () => {
 	let mockProjLibs;
@@ -87,7 +46,7 @@ describe("Unit - Template manager", () => {
 			return obj;
 		}, {});
 		spyOn(Util, "getDirectoryNames").and.returnValue(frameworkIds);
-		const mockProjectConfig = createMockConfig();
+		const mockProjectConfig = { } as unknown as Config;
 		spyOn(ProjectConfig, "globalConfig").and.returnValue(mockProjectConfig);
 
 		const manager = new TemplateManager();
@@ -117,9 +76,8 @@ describe("Unit - Template manager", () => {
 	it("Shows warnings for incorrect custom templates", async () => {
 		spyOn(Util, "error");
 		spyOn(Util, "getDirectoryNames").and.returnValue(["jquery"]);
-		const mockProjectConfig = createMockConfig();
 		const template = "existing/template/";
-		mockProjectConfig.customTemplates.push(template);
+		const mockProjectConfig = { customTemplates: [template] } as unknown as Config;
 		spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
 		spyOn(Util, "directoryExists").and.returnValue(true);
 		spyOn(Util, "fileExists").and.returnValue(true);
@@ -175,9 +133,8 @@ describe("Unit - Template manager", () => {
 			["jquery"], //frameworks load
 			["template1", "template2"] //templates load
 		);
-		const mockProjectConfig = createMockConfig();
 		const template = "rootFolder/";
-		mockProjectConfig.customTemplates.push(template);
+		const mockProjectConfig = { customTemplates: [template] } as unknown as Config;
 		spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
 		spyOn(Util, "directoryExists").and.returnValue(true);
 		spyOn(Util, "fileExists").and.returnValues(false, true, true);
@@ -209,14 +166,13 @@ describe("Unit - Template manager", () => {
 
 	it("Should load/create/register diff types of external custom Templates", async () => {
 		spyOn(Util, "getDirectoryNames").and.returnValue(["jquery", "react", "angular"]);
-		const mockProjectConfig = createMockConfig();
 		const templates = [
 			"file:/template/jquery/js",
 			"file:/template/react/es6",
 			"path:/template/angular/ig-ts",
 			"/template/angular/igx-ts"
 		];
-		mockProjectConfig.customTemplates = templates;
+		const mockProjectConfig = { customTemplates: templates } as unknown as Config;
 		spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
 		spyOn(Util, "directoryExists").and.returnValue(true);
 		spyOn(Util, "fileExists").and.returnValue(true);

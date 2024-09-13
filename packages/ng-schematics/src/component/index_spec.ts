@@ -1,6 +1,6 @@
 import { Tree } from "@angular-devkit/schematics";
 import { SchematicTestRunner } from "@angular-devkit/schematics/testing";
-import { BaseTemplate, FrameworkId, GoogleAnalytics, ProjectConfig, ProjectLibrary, ProjectTemplate, Template } from "@igniteui/cli-core";
+import { BaseTemplate, Config, GoogleAnalytics, ProjectConfig, ProjectLibrary, ProjectTemplate, Template } from "@igniteui/cli-core";
 import * as path from "path";
 import { SchematicsTemplateManager } from "../SchematicsTemplateManager";
 
@@ -41,8 +41,7 @@ describe("component",  () => {
         const mockProjectTemplate: ProjectTemplate = {
             ...mockBaseTemplate,
             installModules: jasmine.createSpy().and.callFake(() => {}),
-            upgradeIgniteUIPackages: jasmine.createSpy().and.returnValue(Promise.resolve(true)),
-            generateConfig: jasmine.createSpy().and.returnValue({}),
+            upgradeIgniteUIPackages: jasmine.createSpy().and.returnValue(Promise.resolve(true))
         };
 
 		const mockTemplate: Template = {
@@ -103,43 +102,10 @@ describe("component",  () => {
 		projLibSpy.and.returnValue(mockLib);
 
 		const mockConfig = {
-			version: '1.0.0',
-			packagesInstalled: true,
-			build: {},
-			igPackageRegistry: 'https://example.com',
-			skipGit: false,
-			disableAnalytics: true,
-			customTemplates: ["path:C:\work\GitHub\ignite-ui-cli\output\custom-templ"],
-			stepByStep: {
-				frameworks: ["angular", "react"],
-				[FrameworkId.angular]: {
-					projTypes: ["igx-ts", "igx-es6"]
-				},
-				[FrameworkId.react]: {
-					projTypes: ["igx-react"]
-				},
-				[FrameworkId.jquery]: {
-					projTypes: ["igx-jquery"]
-				},
-				[FrameworkId.webComponents]: {
-					projTypes: ["igx-webcomponents"]
-				}
-			},
 			project: {
-				defaultPort: 4200,
-				framework: "mock-ng",
-				projectType: "mock-igx-ts",
-				projectTemplate: "mock-side-nav",
-				theme: "Custom",
-				themePath: "/path/to/theme",
-				components: ["mock-component"],
-				isBundle: true,
-				isShowcase: false,
-				version: '1.0.0',
-				sourceRoot: "/src",
-				igniteuiSource: "igniteui-source"
+				theme: "Custom"
 			}
-		};
+		} as unknown as Config;
 
 		const projConfigSpy = spyOn(ProjectConfig, "getConfig");
 		projConfigSpy.and.returnValue(mockConfig);

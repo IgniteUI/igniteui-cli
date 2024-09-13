@@ -1,8 +1,7 @@
 import { IgniteUIForAngularTemplate, AngularTypeScriptFileUpdate } from "@igniteui/angular-templates";
 import {
 	FEED_ANGULAR, NPM_DOCK_MANAGER, NPM_ANGULAR, App, FS_TOKEN,
-	IFileSystem, ProjectConfig, Util,
-	FrameworkId
+	IFileSystem, ProjectConfig, Util, Config
 } from "@igniteui/cli-core";
 import * as path from "path";
 import { resetSpy } from "../../helpers/utils";
@@ -42,43 +41,10 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			spyOn(helpers, "AngularTypeScriptFileUpdate").and.callThrough();
 			// return through function to get new obj ref each time
 			const mockProjectConfig = {
-				version: '1.0.0',
-				packagesInstalled: true,
-				build: {},
-				igPackageRegistry: 'https://example.com',
-				skipGit: false,
-				disableAnalytics: true,
-				customTemplates: [],
-				stepByStep: {
-					frameworks: ["angular", "react"],
-					[FrameworkId.angular]: {
-						projTypes: ["igx-ts", "igx-es6"]
-					},
-					[FrameworkId.react]: {
-						projTypes: ["igx-react"]
-					},
-					[FrameworkId.jquery]: {
-						projTypes: ["igx-jquery"]
-					},
-					[FrameworkId.webComponents]: {
-						projTypes: ["igx-webcomponents"]
-					}
-				},
 				project: {
-					defaultPort: 4200,
-					framework: "mock-ng",
-					projectType: "mock-igx-ts",
-					projectTemplate: "mock-side-nav",
-					theme: "default-theme",
-					themePath: "/path/to/theme",
-					components: ["mock-component"],
-					isBundle: true,
-					isShowcase: false,
-					version: '1.0.0',
-					sourceRoot: "/src",
-					igniteuiSource: "igniteui-source"
+					sourceFiles: ["existing"]
 				}
-			};
+			} as unknown as Config;
 			spyOn(ProjectConfig, "getConfig").and.callFake(() => (mockProjectConfig));
 			spyOn(ProjectConfig, "setConfig");
 		});

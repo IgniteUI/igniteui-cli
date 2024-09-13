@@ -1,49 +1,8 @@
 import { PackageManager } from "../../packages/core/packages/PackageManager";
-import { Config, FrameworkId, IFileSystem } from "../../packages/core/types";
+import { Config, IFileSystem } from "../../packages/core/types";
 import { App, ProjectConfig, Util } from "../../packages/core/util";
 import * as pkgResolve from "../../packages/core/update/package-resolve";
 import { updateWorkspace } from "../../packages/core/update/Update";
-
-function createMockConfig(): Config {
-    return {
-		version: '1.0.0',
-		packagesInstalled: true,
-		build: {},
-		igPackageRegistry: 'https://example.com',
-		skipGit: true,
-		disableAnalytics: true,
-		customTemplates: [],
-		stepByStep: {
-			frameworks: ["angular", "react"],
-			[FrameworkId.angular]: {
-				projTypes: ["igx-ts", "igx-es6"]
-			},
-			[FrameworkId.react]: {
-				projTypes: ["igx-react"]
-			},
-			[FrameworkId.jquery]: {
-				projTypes: ["igx-jquery"]
-			},
-			[FrameworkId.webComponents]: {
-				projTypes: ["igx-webcomponents"]
-			}
-		},
-		project: {
-			defaultPort: 4200,
-			framework: "mock-ng",
-			projectType: "mock-igx-ts",
-			projectTemplate: "mock-side-nav",
-			theme: "default-theme",
-			themePath: "/path/to/theme",
-			components: ["mock-component"],
-			isBundle: true,
-			isShowcase: false,
-			version: '1.0.0',
-			sourceRoot: "/src",
-			igniteuiSource: "igniteui-source"
-		}
-	};
-}
 
 interface MockFile {
 	path: string;
@@ -60,7 +19,11 @@ describe("updateWorkspace", () => {
 			fsSpy = jasmine.createSpyObj("fsSpy", ["fileExists", "directoryExists", "readFile", "writeFile", "glob"]);
 			spyOn(App.container, "get").and.returnValue(fsSpy);
 			spyOnProperty(App, "workDir", "get").and.returnValue("mockDir");
-			const mockProjectConfig = createMockConfig();
+			const mockProjectConfig = {
+				project: {
+					framework: "Angular"
+				}
+			 } as unknown as Config;
 			mockProjectConfig.project.framework = "Angular";
 			spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
 		});
@@ -470,8 +433,11 @@ title = 'igniteui-angular example';
 			fsSpy = jasmine.createSpyObj("fsSpy", ["fileExists", "directoryExists", "readFile", "writeFile", "glob"]);
 			spyOn(App.container, "get").and.returnValue(fsSpy);
 			spyOnProperty(App, "workDir", "get").and.returnValue("mockDir");
-			const mockProjectConfig = createMockConfig();
-			mockProjectConfig.project.framework = "React";
+			const mockProjectConfig = {
+				project: {
+					framework: "React"
+				}
+			 } as unknown as Config;
 			spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
 		});
 
@@ -754,8 +720,11 @@ export default function Home() {
 			fsSpy = jasmine.createSpyObj("fsSpy", ["fileExists", "directoryExists", "readFile", "writeFile", "glob"]);
 			spyOn(App.container, "get").and.returnValue(fsSpy);
 			spyOnProperty(App, "workDir", "get").and.returnValue("mockDir");
-			const mockProjectConfig = createMockConfig();
-			mockProjectConfig.project.framework = "Webcomponents";
+			const mockProjectConfig = {
+				project: {
+					framework: "Webcomponents"
+				}
+			 } as unknown as Config;
 			spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
 		});
 

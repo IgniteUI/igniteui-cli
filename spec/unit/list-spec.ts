@@ -1,4 +1,4 @@
-import { Config, FrameworkId, GoogleAnalytics, ProjectConfig, Util } from "@igniteui/cli-core";
+import { Config, GoogleAnalytics, ProjectConfig, Util } from "@igniteui/cli-core";
 import { default as listCmd } from "../../packages/cli/lib/commands/list";
 
 describe("Unit - List command", () => {
@@ -51,43 +51,11 @@ describe("Unit - List command", () => {
 
 	it("Should list templates for framework specified in local config if any", async () => {
 		const mockProjectConfig = {
-			version: '1.0.0',
-			packagesInstalled: true,
-			build: {},
-			igPackageRegistry: 'https://example.com',
-			skipGit: false,
-			disableAnalytics: true,
-			customTemplates: [],
-			stepByStep: {
-				frameworks: ["angular", "react"],
-				[FrameworkId.angular]: {
-					projTypes: ["igx-ts", "igx-es6"]
-				},
-				[FrameworkId.react]: {
-					projTypes: ["igx-react"]
-				},
-				[FrameworkId.jquery]: {
-					projTypes: ["igx-jquery"]
-				},
-				[FrameworkId.webComponents]: {
-					projTypes: ["igx-webcomponents"]
-				}
-			},
 			project: {
-				defaultPort: 4200,
-				framework: "mock-ng",
-				projectType: "mock-igx-ts",
-				projectTemplate: "mock-side-nav",
-				theme: "default-theme",
-				themePath: "/path/to/theme",
-				components: ["mock-component"],
-				isBundle: true,
-				isShowcase: false,
-				version: '1.0.0',
-				sourceRoot: "/src",
-				igniteuiSource: "igniteui-source"
+				framework: "angular",
+				projectType: "igx-ts"
 			}
-		};
+		} as unknown as Config;
 
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 		spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);

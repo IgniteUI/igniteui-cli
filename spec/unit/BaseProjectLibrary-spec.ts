@@ -1,4 +1,4 @@
-import { BaseProjectLibrary, Component, Template, Util } from "@igniteui/cli-core";
+import { BaseProjectLibrary, BaseTemplate, Component, Template, Util } from "@igniteui/cli-core";
 import * as path from "path";
 
 describe("Unit - Base project library ", () => {
@@ -66,11 +66,11 @@ describe("Unit - Base project library ", () => {
 		});
 
 		const library = new BaseProjectLibrary(__dirname);
-		spyOnProperty(library, 'customTemplates', 'get').and.returnValue([]);
+		spyOnProperty(library, "customTemplates", "get").and.callThrough();
 		expect(library.templates.length).toEqual(3);
-		expect(library.templates[2].name).toEqual("comboCustomName");
-		expect(library.components.length).toEqual(1);
-		expect(library.components[0].name).toEqual("editorsName");
+		expect(library.templates[2].name).toEqual("editorsCustomName");
+		expect(library.components.length).toEqual(2);
+		expect(library.components[0].name).toEqual("bar-chartName");
 	});
 
 	it("gets correct components", async () => {
@@ -240,23 +240,30 @@ describe("Unit - Base project library ", () => {
 		spyOnProperty(library, "components", "get")
 		.and.returnValue([
 			{
+				name: "IgxCategoryChartComponent",
+				description: "Description for IgxCategoryChartComponent",
+				group: "Grids & Lists Group",
+				groupPriority: 1,
+				templates: []
+			},
+			{
 				name: "IgxAutocompleteComponent",
 				description: "Description for IgxAutocompleteComponent",
-				group: "Data Entry & Display Group",
+				group: "Charts Group",
 				groupPriority: 1,
 				templates: []
 			},
 			{
 				name: "IgxBulletGraphAnimationComponent",
 				description: "Description for IgxBulletGraphAnimationComponent",
-				group: "Gauges Group",
+				group: "Maps Group",
 				groupPriority: 2,
 				templates: []
 			},
 			{
 				name: "IgxCalendarComponent",
 				description: "Description for IgxCalendarComponent",
-				group: "Data Entry & Display Group",
+				group: "Gauges Group",
 				groupPriority: 1,
 				templates: []
 			},

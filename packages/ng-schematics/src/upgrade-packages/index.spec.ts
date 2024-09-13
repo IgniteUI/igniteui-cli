@@ -1,7 +1,7 @@
 import { EmptyTree } from "@angular-devkit/schematics";
 import { NodePackageInstallTask } from "@angular-devkit/schematics/tasks";
 import { SchematicTestRunner, UnitTestTree } from "@angular-devkit/schematics/testing";
-import { App, BaseTemplate, FrameworkId, FS_TOKEN, FS_TYPE_TOKEN, FsTypes, GoogleAnalytics, ProjectConfig, ProjectLibrary, ProjectTemplate, Template } from "@igniteui/cli-core";
+import { App, BaseTemplate, Config, FS_TOKEN, FS_TYPE_TOKEN, FsTypes, GoogleAnalytics, ProjectConfig, ProjectLibrary, ProjectTemplate, Template } from "@igniteui/cli-core";
 import * as path from "path";
 import { SchematicsTemplateManager } from "../SchematicsTemplateManager";
 import { NgTreeFileSystem } from "../utils/NgFileSystem";
@@ -22,49 +22,15 @@ describe("Schematics upgrade-packages", () => {
 		const runner = new SchematicTestRunner("schematics", collectionPath);
 
 		const mockConfig = {
-			version: '1.0.0',
-			packagesInstalled: true,
-			build: {},
-			igPackageRegistry: 'https://example.com',
-			skipGit: true,
-			disableAnalytics: true,
 			customTemplates: [],
-			stepByStep: {
-				frameworks: ["angular", "react"],
-				[FrameworkId.angular]: {
-					projTypes: ["igx-ts", "igx-es6"]
-				},
-				[FrameworkId.react]: {
-					projTypes: ["igx-react"]
-				},
-				[FrameworkId.jquery]: {
-					projTypes: ["igx-jquery"]
-				},
-				[FrameworkId.webComponents]: {
-					projTypes: ["igx-webcomponents"]
-				}
-			},
 			project: {
-				defaultPort: 4200,
-				framework: "mock-ng",
-				projectType: "mock-igx-ts",
+				framework: "angular",
+				projectType: "igx-ts",
 				projectTemplate: "mock-side-nav",
-				theme: "default-theme",
-				themePath: "/path/to/theme",
-				components: ["mock-component"],
-				isBundle: true,
-				isShowcase: false,
-				version: '1.0.0',
-				sourceRoot: "/src",
-				igniteuiSource: "igniteui-source"
 			}
-		};
-		spyOn(ProjectConfig, "getConfig").and.returnValue(mockConfig);
+		} as unknown as Config;
 
-		const mockProjTemplate: Partial<ProjectTemplate> = {
-			upgradeIgniteUIPackages: async () => true
-		};
-		const upgradeSpy = spyOn(mockProjTemplate, "upgradeIgniteUIPackages");
+		spyOn(ProjectConfig, "getConfig").and.returnValue(mockConfig);
 
         const mockBaseTemplate: BaseTemplate = {
             id: "mock-template-id",
@@ -87,8 +53,7 @@ describe("Schematics upgrade-packages", () => {
         const mockProjectTemplate: ProjectTemplate = {
             ...mockBaseTemplate,
             installModules: jasmine.createSpy().and.callFake(() => {}),
-            upgradeIgniteUIPackages: jasmine.createSpy().and.returnValue(Promise.resolve(true)),
-            generateConfig: jasmine.createSpy().and.returnValue({}),
+            upgradeIgniteUIPackages: async () => true
         };
 
 		const mockTemplate: Template = {
@@ -139,7 +104,7 @@ describe("Schematics upgrade-packages", () => {
 				description: "A mock component group"
 			}]),
 			getCustomTemplates: jasmine.createSpy().and.returnValue([mockTemplate]),
-			getProject: jasmine.createSpy().and.returnValue(mockProjTemplate),
+			getProject: jasmine.createSpy().and.returnValue(mockProjectTemplate),
 			hasProject: jasmine.createSpy().and.returnValue(false),
 			hasTemplate: jasmine.createSpy().and.returnValue(false),
 			registerTemplate: jasmine.createSpy()
@@ -147,6 +112,7 @@ describe("Schematics upgrade-packages", () => {
 
 		const projLibSpy = spyOn(SchematicsTemplateManager.prototype, "getProjectLibrary");
 		projLibSpy.and.returnValue(mockLib);
+		const upgradeSpy = spyOn(mockProjectTemplate, "upgradeIgniteUIPackages");
 		upgradeSpy.and.returnValue(Promise.resolve(false));
 
 		await runner.runSchematicAsync(schematicName, { }, appTree).toPromise();
@@ -154,7 +120,7 @@ describe("Schematics upgrade-packages", () => {
 			t: "screenview",
 			cd: "Upgrade packages"
 		});
-		expect(projLibSpy).toHaveBeenCalledWith("mock-ng", "mock-igx-ts");
+		expect(projLibSpy).toHaveBeenCalledWith("angular", "igx-ts");
 		expect(mockLib.hasProject).toHaveBeenCalledWith("mock-side-nav");
 		expect(mockLib.getProject).toHaveBeenCalledWith("another-mock");
 		expect(App.container.get(FS_TYPE_TOKEN)).toEqual(FsTypes.virtual, "setVirtual not called");

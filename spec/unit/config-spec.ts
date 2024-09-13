@@ -1,46 +1,5 @@
-import { Config, FrameworkId, GoogleAnalytics, ProjectConfig, Util } from "@igniteui/cli-core";
+import { Config, GoogleAnalytics, ProjectConfig, Util } from "@igniteui/cli-core";
 import { default as configCmd } from "../../packages/cli/lib/commands/config";
-
-function createMockConfig(): Config {
-    return {
-		version: '1.0.0',
-		packagesInstalled: true,
-		build: {},
-		igPackageRegistry: 'https://example.com',
-		skipGit: true,
-		disableAnalytics: true,
-		customTemplates: [],
-		stepByStep: {
-			frameworks: ["angular", "react"],
-			[FrameworkId.angular]: {
-				projTypes: ["igx-ts", "igx-es6"]
-			},
-			[FrameworkId.react]: {
-				projTypes: ["igx-react"]
-			},
-			[FrameworkId.jquery]: {
-				projTypes: ["igx-jquery"]
-			},
-			[FrameworkId.webComponents]: {
-				projTypes: ["igx-webcomponents"]
-			}
-		},
-		project: {
-			defaultPort: 4200,
-			framework: "mock-ng",
-			projectType: "mock-igx-ts",
-			projectTemplate: "mock-side-nav",
-			theme: "default-theme",
-			themePath: "/path/to/theme",
-			components: ["mock-component"],
-			isBundle: true,
-			isShowcase: false,
-			version: '1.0.0',
-			sourceRoot: "/src",
-			igniteuiSource: "igniteui-source"
-		}
-	};
-}
 
 describe("Unit - Config command", () => {
 	beforeAll(() => {
@@ -57,7 +16,7 @@ describe("Unit - Config command", () => {
 		});
 
 		it("Should show error for missing prop", async () => {
-			const mockProjectConfig = createMockConfig();
+			const mockProjectConfig = { } as unknown as Config;
 			spyOn(Util, "error");
 			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 			spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
@@ -68,7 +27,7 @@ describe("Unit - Config command", () => {
 		});
 
 		it("Should show error for missing prop and global flag", async () => {
-			const mockProjectConfig = createMockConfig();
+			const mockProjectConfig = { } as unknown as Config;
 			spyOn(Util, "error");
 			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 			spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
@@ -79,7 +38,7 @@ describe("Unit - Config command", () => {
 		});
 
 		it("Should return value for property", async () => {
-			const mockProjectConfig = createMockConfig();
+			const mockProjectConfig = { version: "1.0.0" } as unknown as Config;
 			spyOn(Util, "log");
 			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 			spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
@@ -97,16 +56,16 @@ describe("Unit - Config command", () => {
 			spyOn(ProjectConfig, "getSchema").and.returnValue(
 				{
 					properties: {
-						arrayProperty: {
+						customTemplates: {
 							items: {
 								type: "string"
 							},
 							type: "array"
 						},
-						booleanProperty: {
+						packagesInstalled: {
 							type: "boolean"
 						},
-						stringProperty: {
+						igPackageRegistry: {
 							type: "string"
 						}
 					},
@@ -123,7 +82,7 @@ describe("Unit - Config command", () => {
 		});
 
 		it("Should show error when invalid value provided", async () => {
-			const mockProjectConfig = createMockConfig();
+			const mockProjectConfig = { packagesInstalled: true } as unknown as Config;
 			spyOn(ProjectConfig, "globalConfig").and.returnValue(mockProjectConfig);
 
 			await configCmd.setHandler({ property: "packagesInstalled", value: "non boolean value", global: true, _: ["config"], $0: "config" });
@@ -134,7 +93,7 @@ describe("Unit - Config command", () => {
 		});
 
 		it("Should show error when invalid value type provided", async () => {
-			const mockProjectConfig = createMockConfig();
+			const mockProjectConfig = { packagesInstalled: true } as unknown as Config;
 			spyOn(ProjectConfig, "globalConfig").and.returnValue(mockProjectConfig);
 
 			await configCmd.setHandler({ property: "packagesInstalled", value: '{ "object-Value": "for boolean"}', global: true, _: ["config"], $0: "config" });
@@ -146,7 +105,7 @@ describe("Unit - Config command", () => {
 		});
 
 		it("Should show error for array property", async () => {
-			const mockProjectConfig = createMockConfig();
+			const mockProjectConfig = { customTemplates: [] } as unknown as Config;
 			spyOn(ProjectConfig, "globalConfig").and.returnValue(mockProjectConfig);
 
 			// tslint:disable-next-line:quotemark
@@ -158,7 +117,7 @@ describe("Unit - Config command", () => {
 		});
 
 		it("Should reset array property when empty array is provided", async () => {
-			const mockProjectConfig = createMockConfig();
+			const mockProjectConfig = { customTemplates: [] } as unknown as Config;
 			mockProjectConfig.customTemplates = ["Some value", "More values"];
 			spyOn(ProjectConfig, "globalConfig").and.returnValue(mockProjectConfig);
 			spyOn(ProjectConfig, "setConfig");
@@ -172,7 +131,7 @@ describe("Unit - Config command", () => {
 		});
 
 		it("Should set global prop", async () => {
-			const mockProjectConfig = createMockConfig();
+			const mockProjectConfig = { igPackageRegistry: "https://example.com" } as unknown as Config;
 			spyOn(ProjectConfig, "hasLocalConfig");
 			spyOn(ProjectConfig, "globalConfig").and.returnValue(mockProjectConfig);
 			spyOn(ProjectConfig, "localConfig");
@@ -184,11 +143,11 @@ describe("Unit - Config command", () => {
 			expect(ProjectConfig.localConfig).toHaveBeenCalledTimes(0);
 			expect(ProjectConfig.globalConfig).toHaveBeenCalled();
 			expect(ProjectConfig.setConfig).toHaveBeenCalledWith(mockProjectConfig, true /*global*/);
-			expect(Util.log).toHaveBeenCalledWith(`Property "stringProperty" set.`);
+			expect(Util.log).toHaveBeenCalledWith(`Property "igPackageRegistry" set.`);
 		});
 
 		it("Should set local prop", async () => {
-			const mockProjectConfig = createMockConfig();
+			const mockProjectConfig = { igPackageRegistry: "https://example.com" } as unknown as Config;
 			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 			spyOn(ProjectConfig, "localConfig").and.returnValue(mockProjectConfig);
 			spyOn(ProjectConfig, "globalConfig");
@@ -198,7 +157,7 @@ describe("Unit - Config command", () => {
 			expect(ProjectConfig.globalConfig).toHaveBeenCalledTimes(0);
 			expect(ProjectConfig.localConfig).toHaveBeenCalled();
 			expect(ProjectConfig.setConfig).toHaveBeenCalledWith(mockProjectConfig, undefined);
-			expect(Util.log).toHaveBeenCalledWith(`Property "booleanProperty" set.`);
+			expect(Util.log).toHaveBeenCalledWith(`Property "packagesInstalled" set.`);
 		});
 	});
 
@@ -212,7 +171,7 @@ describe("Unit - Config command", () => {
 		});
 
 		it("Should show error for non-array property", async () => {
-			const mockProjectConfig = createMockConfig();
+			const mockProjectConfig = { version: "1.0.0" } as unknown as Config;
 			spyOn(Util, "error");
 			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 			spyOn(ProjectConfig, "localConfig").and.returnValue(mockProjectConfig);
@@ -224,7 +183,7 @@ describe("Unit - Config command", () => {
 		});
 
 		it("Should skip existing", async () => {
-			const mockProjectConfig = createMockConfig();
+			const mockProjectConfig = { customTemplates: [] } as unknown as Config;
 			mockProjectConfig.customTemplates = ["existing"];
 			spyOn(Util, "log");
 			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
@@ -235,7 +194,7 @@ describe("Unit - Config command", () => {
 		});
 
 		it("Should create/add to global prop", async () => {
-			const mockProjectConfig = createMockConfig();
+			const mockProjectConfig = { } as unknown as Config;
 			spyOn(Util, "log");
 			spyOn(ProjectConfig, "globalConfig").and.returnValue(mockProjectConfig);
 			spyOn(ProjectConfig, "setConfig");
@@ -252,7 +211,7 @@ describe("Unit - Config command", () => {
 		});
 
 		it("Should add to local prop", async () => {
-			const mockProjectConfig = createMockConfig();
+			const mockProjectConfig = { customTemplates: [] } as unknown as Config;
 			spyOn(Util, "log");
 			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 			spyOn(ProjectConfig, "localConfig").and.returnValue(mockProjectConfig);
