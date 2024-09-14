@@ -1,6 +1,5 @@
 import { Config, GoogleAnalytics, ProjectConfig, Util } from "@igniteui/cli-core";
-import { ConfigCommandType, PositionalArgs } from "./types";
-import { ArgumentsCamelCase } from "yargs";
+import { ConfigCommandType } from "./types";
 
 const command: ConfigCommandType = {
 	command: "config",
@@ -49,9 +48,7 @@ const command: ConfigCommandType = {
 					})
 					.usage(""); // do not show any usage instructions before the commands list
 				},
-				handler: (argv: ArgumentsCamelCase<PositionalArgs>) => {
-					command.addHandler(argv);
-				}
+				handler: command.addHandler
 			})
 			.option("global", {
 				alias: "g",
