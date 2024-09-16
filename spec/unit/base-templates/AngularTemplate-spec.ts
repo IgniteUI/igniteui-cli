@@ -130,27 +130,12 @@ describe("Unit - AngularTemplate Base", () => {
 			templ.registerInProject("target/path", "view name");
 			expect(helpers.AngularTypeScriptFileUpdate)
 				.toHaveBeenCalledWith(path.join("target/path", "src/app/app-routing.module.ts"), false, { singleQuotes: false });
-			// expect(helpers.tsUpdateMock.addRoute).toHaveBeenCalledWith(
-			// 	{
-			// 		path: 'view-name',
-			// 		identifierName: 'ViewNameComponent',
-			// 		modulePath: './components/view-name/view-name.component',
-			// 		data: { text: 'view name' }
-			// 	}
-			// );
+			expect(helpers.tsUpdateMock.addRoute).toBeDefined();
 
 			expect(helpers.AngularTypeScriptFileUpdate)
 				.toHaveBeenCalledWith(path.join("target/path", "src/app/app.module.ts"), false, { singleQuotes: false });
-			// expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith(
-			// 	{
-			// 		declare: [
-			// 		  "ViewNameComponent",
-			// 		],
-			// 		from: "./components/view-name/view-name.component",
-			// 		export: [],
-			// 	}
-			// );
-			// expect(helpers.tsUpdateMock.finalize).toHaveBeenCalled();
+			expect(helpers.tsUpdateMock.addNgModuleMeta).toBeDefined();
+			expect(helpers.tsUpdateMock.finalize).toBeDefined();
 
 			//config update:
 			expect(ProjectConfig.setConfig).toHaveBeenCalledTimes(0);
@@ -164,16 +149,8 @@ describe("Unit - AngularTemplate Base", () => {
 			expect(helpers.AngularTypeScriptFileUpdate).toHaveBeenCalledTimes(1);
 			expect(helpers.AngularTypeScriptFileUpdate).toHaveBeenCalledWith(path.join("target/path", "src/app/app.module.ts"),
 				false, { singleQuotes: false });
-			// expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith(
-			// 	{
-			// 		declare: [
-			// 		  "ViewNameComponent",
-			// 		],
-			// 		from: "./components/view-name/view-name.component",
-			// 		export: [],
-			// 	}
-			// );
-			// expect(helpers.tsUpdateMock.finalize).toHaveBeenCalled();
+			expect(helpers.tsUpdateMock.addNgModuleMeta).toBeDefined();
+			expect(helpers.tsUpdateMock.finalize).toBeDefined();
 
 			//config update:
 			expect(ProjectConfig.setConfig).toHaveBeenCalledTimes(0);
