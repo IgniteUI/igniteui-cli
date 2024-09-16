@@ -8,8 +8,6 @@ import { TemplateManager } from "../../packages/cli/lib/TemplateManager";
 import { Separator } from "@inquirer/prompts";
 
 describe("Unit - PromptSession", () => {
-	App.initialize(); // TODO: remove
-
 	beforeAll(() => {
 		spyOn(GoogleAnalytics, "post");
 	});
