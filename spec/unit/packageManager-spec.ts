@@ -429,9 +429,18 @@ describe("Unit - Package Manager", () => {
 		// spyOn(require("module"), "_load").and.returnValue(mockRequire);
 		spyOn(Util, "log");
 		spyOn(App.container, "get").and.returnValue(mockFs);
-	    // const execSpy = spyOn(cp, "exec").and.callFake((cmd, opts, callback) => {
-		// 	setTimeout(() => callback(null, [1], [2]), 20);
-		// });
+		const fakeExec = (_cmd: any, _opts: any, callback: (error: Error | null, stdout: string, stderr: string) => void) => {
+			setTimeout(() => callback(null, 'stdout data', 'stderr data'), 20);
+		};
+
+		(fakeExec as any).__promisify__ = () => {
+			return new Promise((resolve, reject) => {
+				setTimeout(() => resolve({ stdout: 'stdout data', stderr: 'stderr data' }), 20);
+			});
+		};
+
+		const execSpy = spyOn(cp, 'exec').and.callFake(fakeExec as any);
+
 		PackageManager.queuePackage("test-pack");
 		PackageManager.queuePackage("test-pack2");
 
@@ -443,9 +452,18 @@ describe("Unit - Package Manager", () => {
 		resetSpy(Util.log);
 
 		// on error
-		// execSpy.and.callFake((cmd, opts, callback) => {
-		// 	setTimeout(() => callback(new Error(), [1], ["stderr"]), 20);
-		// });
+        const fakeExecWithError = (_cmd: any, _opts: any, callback: (error: Error | null, stdout: string, stderr: string) => void) => {
+            setTimeout(() => callback(new Error('Execution failed'), '', 'stderr'), 20);
+        };
+
+        (fakeExecWithError as any).__promisify__ = () => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => reject(new Error('Execution failed')), 20);
+            });
+        };
+
+        execSpy.and.callFake(fakeExecWithError as any);
+
 		PackageManager.queuePackage("test-pack3");
 		await PackageManager.flushQueue(true, true);
 
