@@ -1,6 +1,6 @@
 import { App, TypeScriptUtils } from "@igniteui/cli-core";
-import * as fs from "fs";
-import * as ts from "typescript";
+import fs from "fs";
+import ts from "typescript";
 
 describe("Unit - TypeScriptUtils", () => {
 	describe("File read/write", () => {

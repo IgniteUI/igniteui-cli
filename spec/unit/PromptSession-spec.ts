@@ -1,11 +1,11 @@
-import { ControlExtraConfigType, GoogleAnalytics, PackageManager, ProjectConfig, Util } from "@igniteui/cli-core";
-import * as inquirer from "inquirer";
+import { App, ControlExtraConfigType, GoogleAnalytics, InquirerWrapper, PackageManager, ProjectConfig, Util } from "@igniteui/cli-core";
 import * as path from "path";
 import { default as add } from "../../packages/cli/lib/commands/add";
 import { default as start } from "../../packages/cli/lib/commands/start";
 import { default as upgrade } from "../../packages/cli/lib/commands/upgrade";
 import { PromptSession } from "../../packages/cli/lib/PromptSession";
 import { TemplateManager } from "../../packages/cli/lib/TemplateManager";
+import { Separator } from "@inquirer/prompts";
 
 describe("Unit - PromptSession", () => {
 	beforeAll(() => {
@@ -15,19 +15,22 @@ describe("Unit - PromptSession", () => {
 	// TODO: most of the tests use same setup - move the setup to beforeAll call
 	it("chooseTerm - Should call itself if no term is passed.", async done => {
 		spyOn(PromptSession, "chooseTerm").and.callThrough();
-		spyOn(inquirer, "prompt").and.returnValues(Promise.resolve({ term: "" }),
-			Promise.resolve({ term: "" }), Promise.resolve({ term: "" }),
-			Promise.resolve({ term: "" }), Promise.resolve({ term: "Test" }));
+		spyOn(InquirerWrapper, "input").and.returnValues(
+			Promise.resolve(""),
+			Promise.resolve(""),
+			Promise.resolve(""),
+			Promise.resolve(""),
+			Promise.resolve("Test")
+		);
 		const testVar = await PromptSession.chooseTerm();
 		expect(PromptSession.chooseTerm).toHaveBeenCalled();
 		expect(PromptSession.chooseTerm).toHaveBeenCalledTimes(5);
 		expect(testVar).toBe("Test");
-		expect(inquirer.prompt).toHaveBeenCalledTimes(5);
+		expect(InquirerWrapper.input).toHaveBeenCalledTimes(5);
 		done();
 	});
 	it("start - Should create new project correctly", async done => {
 		spyOn(ProjectConfig, "getConfig").and.returnValue({});
-		// tslint:disable:object-literal-sort-keys
 		const mockProject = {
 			name: "Project 1",
 			generateConfig: () => Promise.resolve(true),
@@ -49,7 +52,6 @@ describe("Unit - PromptSession", () => {
 			name: "Custom Framework 2",
 			projectLibraries
 		};
-		// tslint:disable:no-console
 		const mockFrameworks = [mockFramework1, mockFramework2];
 		const mockTemplate = jasmine.createSpyObj("mockTemplate", {
 			getProjectLibrary: mockProjectLibrary,
@@ -61,11 +63,11 @@ describe("Unit - PromptSession", () => {
 		});
 		mockTemplate.templatePaths = ["test"];
 		const mockSession = new PromptSession(mockTemplate);
-		const mockQuestion: inquirer.Question = {
+		const mockQuestion = {
 			type: "list",
 			name: "theme",
 			message: "Choose the theme for the project:",
-			choices: ["infragistics", new inquirer.Separator(), "infragistics.less"],
+			choices: ["infragistics", new Separator(), "infragistics.less"],
 			default: "infragistics"
 		};
 		spyOn(Util, "greenCheck").and.callThrough();
@@ -73,10 +75,12 @@ describe("Unit - PromptSession", () => {
 		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
 		spyOn(Util, "getAvailableName").and.returnValue(false);
 		spyOn(Util, "gitInit");
-		spyOn(inquirer, "prompt").and.returnValues(Promise.resolve({ projectName: "Test Project" }),
-			Promise.resolve({ framework: "Custom Framework 1" }),
-			Promise.resolve({ project: "jQuery" }),
-			Promise.resolve({ theme: "infragistics" }));
+		spyOn(InquirerWrapper, "input").and.returnValue(Promise.resolve("Test Project"));
+		spyOn(InquirerWrapper, "select").and.returnValues(
+			Promise.resolve("Custom Framework 1"),
+			Promise.resolve("jQuery"),
+			Promise.resolve("infragistics")
+		);
 		spyOn(process, "chdir");
 		spyOn(mockSession, "chooseActionLoop");
 		await mockSession.start();
@@ -85,7 +89,7 @@ describe("Unit - PromptSession", () => {
 		expect(Util.log).toHaveBeenCalledWith("  Generating project structure.");
 		expect(Util.log).toHaveBeenCalledWith("");
 		expect(Util.log).toHaveBeenCalledWith(Util.greenCheck() + " Project structure generated.");
-		expect(inquirer.prompt).toHaveBeenCalledWith(
+		expect(InquirerWrapper.input).toHaveBeenCalledWith(
 			jasmine.objectContaining({
 				type: "input",
 				message: "Enter a name for your project:",
@@ -95,8 +99,9 @@ describe("Unit - PromptSession", () => {
 		expect(Util.getAvailableName).toHaveBeenCalledWith("IG Project", true);
 		expect(Util.greenCheck).toHaveBeenCalledTimes(1 + 1);
 		expect(Util.gitInit).toHaveBeenCalled();
-		expect(inquirer.prompt).toHaveBeenCalledTimes(4);
-		expect(inquirer.prompt).toHaveBeenCalledWith(mockQuestion);
+		expect(InquirerWrapper.input).toHaveBeenCalledTimes(1);
+		expect(InquirerWrapper.select).toHaveBeenCalledTimes(3);
+		expect(InquirerWrapper.select).toHaveBeenCalledWith(mockQuestion);
 		expect(mockTemplate.getFrameworkByName).toHaveBeenCalledTimes(1);
 		done();
 	});
@@ -129,7 +134,6 @@ describe("Unit - PromptSession", () => {
 				}
 			}
 		} /* as Config */);
-		// tslint:disable:object-literal-sort-keys
 		const mockConfig = { test: "test" };
 		const mockProject = jasmine.createSpyObj({ generateConfig: mockConfig });
 		mockProject.name = "Project";
@@ -164,8 +168,8 @@ describe("Unit - PromptSession", () => {
 		spyOn(Util, "directoryExists").and.returnValue(false);
 		spyOn(Util, "isAlphanumericExt").and.returnValue(true);
 		spyOn(Util, "gitInit");
-		spyOn(inquirer, "prompt").and.returnValues(
-			Promise.resolve({ projectName: "Test Project" })
+		spyOn(InquirerWrapper, "input").and.returnValues(
+			Promise.resolve("Test Project")
 		);
 		spyOn(process, "chdir");
 		spyOn(mockSession, "chooseActionLoop");
@@ -174,8 +178,8 @@ describe("Unit - PromptSession", () => {
 		await mockSession.start();
 
 		// prompt only for project name:
-		expect(inquirer.prompt).toHaveBeenCalledTimes(1);
-		expect(inquirer.prompt).toHaveBeenCalledWith(
+		expect(InquirerWrapper.input).toHaveBeenCalledTimes(1);
+		expect(InquirerWrapper.input).toHaveBeenCalledWith(
 			jasmine.objectContaining({ type: "input", name: "projectName" })
 		);
 		expect(mockTemplate.getFrameworkNames).toHaveBeenCalledTimes(0);
@@ -199,7 +203,6 @@ describe("Unit - PromptSession", () => {
 		done();
 	});
 	it("start - New project - missing IFs", async done => {
-		// tslint:disable:object-literal-sort-keys
 		const mockProject = {
 			name: "Project 1",
 			generateConfig: () => ({ test: "test" }),
@@ -221,7 +224,6 @@ describe("Unit - PromptSession", () => {
 			name: "Custom Framework 2",
 			projectLibraries
 		};
-		// tslint:disable:no-console
 		const mockFrameworks = [mockFramework1, mockFramework2];
 		const mockTemplate = jasmine.createSpyObj("mockTemplate", {
 			getProjectLibrary: mockProjectLibrary,
@@ -233,11 +235,11 @@ describe("Unit - PromptSession", () => {
 		});
 		mockTemplate.templatePaths = ["test"];
 		const mockSession = new PromptSession(mockTemplate);
-		const mockQuestion: inquirer.Question = {
+		const mockQuestion = {
 			type: "list",
 			name: "theme",
 			message: "Choose the theme for the project:",
-			choices: ["infragistics", new inquirer.Separator(), "infragistics.less"],
+			choices: ["infragistics", new Separator(), "infragistics.less"],
 			default: "infragistics"
 		};
 		spyOn(ProjectConfig, "getConfig").and.returnValue({
@@ -252,16 +254,18 @@ describe("Unit - PromptSession", () => {
 		spyOn(Util, "isAlphanumericExt").and.callThrough();
 		spyOn(Util, "gitInit");
 		spyOn(Util, "error");
-		spyOn(inquirer, "prompt").and.returnValues(
-			Promise.resolve({ projectName: "Dummy name" }),
-			Promise.resolve({ framework: "Custom Framework 1" }),
-			Promise.resolve({ project: "jQuery" }),
-			Promise.resolve({ theme: "infragistics" }));
+		spyOn(InquirerWrapper, "input").and.returnValue(Promise.resolve("Dummy name"));
+		spyOn(InquirerWrapper, "select").and.returnValues(
+			Promise.resolve("Custom Framework 1"),
+			Promise.resolve("jQuery"),
+			Promise.resolve("infragistics")
+		);
 		spyOn(process, "chdir");
 		spyOn(mockSession, "chooseActionLoop");
 		await mockSession.start();
 
-		expect(inquirer.prompt).toHaveBeenCalledTimes(4);
+		expect(InquirerWrapper.input).toHaveBeenCalledTimes(1);
+		expect(InquirerWrapper.select).toHaveBeenCalledTimes(3);
 		expect(Util.log).toHaveBeenCalledTimes(4);
 		expect(Util.log).toHaveBeenCalledWith("  Proj Template: Project 1");
 		expect(Util.log).toHaveBeenCalledWith("");
@@ -270,11 +274,11 @@ describe("Unit - PromptSession", () => {
 
 		expect(Util.greenCheck).toHaveBeenCalledTimes(1 + 1);
 		expect(Util.gitInit).toHaveBeenCalledTimes(0);
-		expect(inquirer.prompt).toHaveBeenCalledWith(mockQuestion);
+		expect(InquirerWrapper.select).toHaveBeenCalledWith(mockQuestion);
 		expect(mockTemplate.getFrameworkByName).toHaveBeenCalledTimes(1);
 
 		// validate:
-		const firstCallArgs = (inquirer.prompt as jasmine.Spy).calls.first().args[0];
+		const firstCallArgs = (InquirerWrapper.input as jasmine.Spy).calls.first().args[0];
 		expect(firstCallArgs.validate).toEqual(jasmine.any(Function));
 		expect(firstCallArgs.validate("*This will ** not Work *")).toBe(false);
 		expect(Util.error).toHaveBeenCalledTimes(1);
@@ -287,7 +291,6 @@ describe("Unit - PromptSession", () => {
 		done();
 	});
 	it("chooseActionLoop - should run through properly - Add Component", async done => {
-		// tslint:disable:object-literal-sort-keys
 		const mockExtraConfigurations = [{
 			choices: [],
 			default: "Choice 1",
@@ -364,41 +367,46 @@ describe("Unit - PromptSession", () => {
 		spyOn(add, "addTemplate").and.returnValue(true);
 		spyOn(PackageManager, "flushQueue").and.returnValue(Promise.resolve(true));
 		spyOn(start, "start").and.returnValue(Promise.resolve(true));
-		spyOn(inquirer, "prompt").and.returnValues(
-			Promise.resolve({ action: "Add component" }),
-			Promise.resolve({ componentGroup: "Back" }),
-			Promise.resolve({ action: "Add component" }),
-			Promise.resolve({ componentGroup: "Custom Group 1" }),
-			Promise.resolve({ component: "Back" }),
-			Promise.resolve({ componentGroup: "Custom Group 1" }),
-			Promise.resolve({ component: "Custom Group 1 Component 2" }),
-			Promise.resolve({ template: "Template 1" }),
-			Promise.resolve({ componentName: "Template 1 Custom Name" }),
-			Promise.resolve({ customValue1: "Test", customValue2: "Test" }),
-			Promise.resolve({ action: "Complete & Run" }),
-			Promise.resolve({ port: 7777 })
+
+		spyOn(InquirerWrapper, "select").and.returnValues(
+			Promise.resolve("Add component"), 				// attempt to add a component
+			Promise.resolve("Back"), 						// return to the previous menu
+			Promise.resolve("Add component"), 				// attempt to add a component
+			Promise.resolve("Custom Group 1"),				// select a component group
+			Promise.resolve("Back"),						// return to the previous menu
+			Promise.resolve("Custom Group 1"),				// select a component group
+			Promise.resolve("Custom Group 1 Component 2"),	// select a component
+			Promise.resolve("Template 1"),					// select a template
+			Promise.resolve("Complete & Run")				// finalize the app
 		);
+
+		spyOn(InquirerWrapper, "input").and.returnValues(
+			Promise.resolve("Template 1 Custom Name"),		// enter a custom name for the template, invoked immediately after a template has been selected
+			Promise.resolve(7777)							// choose a port to run the app on
+		);
+
 		spyOn(ProjectConfig, "setConfig");
 		await mockSession.chooseActionLoop(mockProjectLibrary);
 		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(1);
-		expect(inquirer.prompt).toHaveBeenCalledTimes(12);
+		expect(InquirerWrapper.select).toHaveBeenCalledTimes(9);
 		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
 		expect(start.start).toHaveBeenCalledTimes(1);
 		expect(add.addTemplate).toHaveBeenCalledTimes(1);
-		expect(inquirer.prompt).toHaveBeenCalledWith([{
+		expect(InquirerWrapper.input).toHaveBeenCalledWith({
 			type: "input",
 			default: "Choice 1",
 			message: "Please enter a value",
 			name: "customValue1",
 			choices: []
-		}, {
+		});
+		expect(InquirerWrapper.input).toHaveBeenCalledWith({
 			type: "input",
 			default: "Choice 1",
 			message: "Please enter a value",
 			name: "customValue2",
 			choices: []
-		}]);
+		});
 		done();
 	});
 	it("chooseActionLoop - should run through properly - Add scenario", async done => {
@@ -439,20 +447,25 @@ describe("Unit - PromptSession", () => {
 		spyOn(PackageManager, "flushQueue").and.returnValue(Promise.resolve(true));
 		spyOn(start, "start").and.returnValue(Promise.resolve(true));
 		spyOn(Util, "getAvailableName").and.callThrough();
-		spyOn(inquirer, "prompt").and.returnValues(
-			Promise.resolve({ action: "Add scenario" }),
-			Promise.resolve({ customTemplate: "Back" }),
-			Promise.resolve({ action: "Add scenario" }),
-			Promise.resolve({ customTemplate: "Custom Template 1" }),
-			Promise.resolve({ customViewName: "Custom Template Name" }),
-			Promise.resolve({ action: "Complete & Run" }),
-			Promise.resolve({ usePaidAngular: "yes" }),
-			Promise.resolve({ port: 7777 })
+		spyOn(InquirerWrapper, "select").and.returnValues(
+			Promise.resolve("Add scenario"),			// attempt to add a scenario
+			Promise.resolve("Back"),					// return to the previous menu
+			Promise.resolve("Add scenario"),			// attempt to add a scenario
+			Promise.resolve("Custom Template 1"),		// select a template
+			Promise.resolve("Complete & Run"),			// finalize the app
+			Promise.resolve("no")						// do not use paid angular
 		);
+
+		spyOn(InquirerWrapper, "input").and.returnValues(
+			Promise.resolve("Custom Template Name"),	// enter a custom name for the template, invoked immediately after a template has been selected
+			Promise.resolve(7777)						// choose a port to run the app on
+		);
+
 		spyOn(ProjectConfig, "setConfig");
 		await mockSession.chooseActionLoop(mockProjectLibrary);
 		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(1);
-		expect(inquirer.prompt).toHaveBeenCalledTimes(8);
+		expect(InquirerWrapper.select).toHaveBeenCalledTimes(6);
+		expect(InquirerWrapper.input).toHaveBeenCalledTimes(2);
 		expect(Util.log).toHaveBeenCalledTimes(5);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
 		expect(start.start).toHaveBeenCalledTimes(1);
@@ -549,41 +562,46 @@ describe("Unit - PromptSession", () => {
 		spyOn(PackageManager, "flushQueue").and.returnValue(Promise.resolve(true));
 		//spyOn(start, "start").and.returnValue(Promise.resolve({port: 3333 }));
 		spyOn(start, "start").and.returnValue(Promise.resolve(true));
-		spyOn(inquirer, "prompt").and.returnValues(
-			Promise.resolve({ action: "Add component" }),
-			Promise.resolve({ componentGroup: "Back" }),
-			Promise.resolve({ action: "Add component" }),
-			Promise.resolve({ componentGroup: "Custom Group 1" }),
-			Promise.resolve({ component: "Back" }),
-			Promise.resolve({ componentGroup: "Custom Group 1" }),
-			Promise.resolve({ component: "Custom Group 1 Component 2" }),
-			Promise.resolve({ template: "Template 1" }),
-			Promise.resolve({ name: "Template 1 Custom Name" }),
-			Promise.resolve({ customValue1: "Test", customValue2: "Test" }),
-			Promise.resolve({ action: "Complete & Run" }),
-			Promise.resolve({ port: 7777 })
+
+		spyOn(InquirerWrapper, "select").and.returnValues(
+			Promise.resolve("Add component"), 				// attempt to add a component
+			Promise.resolve("Back"), 						// return to the previous menu
+			Promise.resolve("Add component"), 				// attempt to add a component
+			Promise.resolve("Custom Group 1"),				// select a component group
+			Promise.resolve("Back"),						// return to the previous menu
+			Promise.resolve("Custom Group 1"),				// select a component group
+			Promise.resolve("Custom Group 1 Component 2"),	// select a component
+			Promise.resolve("Template 1"),					// select a template
+			Promise.resolve("Choice 1"),					// setup extra configuration for the template
+			Promise.resolve("Complete & Run")				// finalize the app
 		);
+
+		spyOn(InquirerWrapper, "checkbox").and.returnValues(
+			Promise.resolve("Choice 1")
+		);
+
+		spyOn(InquirerWrapper, "input").and.returnValues(
+			Promise.resolve("Template 1 Custom Name"),		// enter a custom name for the template, invoked immediately after a template has been selected
+			Promise.resolve(7777)							// choose a port to run the app on
+		);
+
 		spyOn(ProjectConfig, "setConfig");
 		await mockSession.chooseActionLoop(mockProjectLibrary);
 		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(1);
-		expect(inquirer.prompt).toHaveBeenCalledTimes(12);
+		expect(InquirerWrapper.select).toHaveBeenCalledTimes(10);
+		expect(InquirerWrapper.input).toHaveBeenCalledTimes(2);
+		expect(InquirerWrapper.checkbox).toHaveBeenCalledTimes(1);
 		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
 		expect(start.start).toHaveBeenCalledTimes(1);
 		expect(add.addTemplate).toHaveBeenCalledTimes(1);
-		expect(inquirer.prompt).toHaveBeenCalledWith([{
-			type: "list",
-			default: "Choice 1",
-			message: "Please select a value",
-			name: "customValue1",
-			choices: ["Choice 1", "Choice 2", "Choice 3"]
-		}, {
+		expect(InquirerWrapper.checkbox).toHaveBeenCalledWith({
 			type: "checkbox",
 			default: "Choice 1",
 			message: "Please select a value",
 			name: "customValue2",
 			choices: ["Choice 1", "Choice 2", "Choice 3"]
-		}]);
+		});
 		done();
 	});
 	it("chooseActionLoop - Complete and Run should update default port", async done => {
@@ -616,9 +634,11 @@ describe("Unit - PromptSession", () => {
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 		const mockSession = new PromptSession(mockTemplate);
 		spyOn(mockSession, "chooseActionLoop").and.callThrough();
-		spyOn(inquirer, "prompt").and.returnValues(
-			Promise.resolve({ action: "Complete & Run" }),
-			Promise.resolve({ port: 7777 })
+		spyOn(InquirerWrapper, "select").and.returnValues(
+			Promise.resolve("Complete & Run"),
+		);
+		spyOn(InquirerWrapper, "input").and.returnValues(
+			Promise.resolve(7777)
 		);
 		params.project.defaultPort = 7777;
 		spyOn(start, "start");
@@ -631,7 +651,7 @@ describe("Unit - PromptSession", () => {
 		// validate:
 		spyOn(Util, "log");
 		spyOn(Util, "error");
-		const lastCallArgs = (inquirer.prompt as jasmine.Spy).calls.mostRecent().args[0];
+		const lastCallArgs = (InquirerWrapper.input as jasmine.Spy).calls.mostRecent().args[0];
 		expect(lastCallArgs.validate).toEqual(jasmine.any(Function));
 
 		expect(lastCallArgs.validate("not a number")).toBe(false);
@@ -679,12 +699,13 @@ describe("Unit - PromptSession", () => {
 		spyOn(Util, "gitInit");
 		spyOn(Util, "log");
 		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
-		spyOn(inquirer, "prompt").and.returnValues(
-			Promise.resolve({ projectName: "Test1" }),
-			Promise.resolve({ framework: "Angular" }),
-			Promise.resolve({ projectType: "Ignite UI for Angular" }),
-			Promise.resolve({ projTemplate: "Default side navigation" }),
-			Promise.resolve({ theme: "Custom" }));
+		spyOn(InquirerWrapper, "input").and.returnValues(Promise.resolve("Test1"));
+		spyOn(InquirerWrapper, "select").and.returnValues(
+			Promise.resolve("Angular"),
+			Promise.resolve("Ignite UI for Angular"),
+			Promise.resolve("Default side navigation"),
+			Promise.resolve("Custom")
+		);
 		spyOn(mockSession, "chooseActionLoop").and.returnValue(Promise.resolve());
 		spyOn(process, "chdir");
 		await mockSession.start();
@@ -711,12 +732,12 @@ describe("Unit - PromptSession", () => {
 		spyOn(Util, "gitInit");
 		spyOn(Util, "log");
 		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
-		spyOn(inquirer, "prompt").and.returnValues(
-			Promise.resolve({ projectName: "Test1" }),
-			Promise.resolve({ framework: "Angular" }),
-			Promise.resolve({ projectType: "Ignite UI for Angular" }),
-			Promise.resolve({ projTemplate: "Default side navigation" }),
-			Promise.resolve({ theme: "Default" }));
+		spyOn(InquirerWrapper, "input").and.returnValues(Promise.resolve("Test1"));
+		spyOn(InquirerWrapper, "select").and.returnValues(
+			Promise.resolve("Angular"),
+			Promise.resolve("Ignite UI for Angular"),
+			Promise.resolve("Default side navigation"),
+			Promise.resolve("Default"));
 		spyOn(mockSession, "chooseActionLoop").and.returnValue(Promise.resolve());
 		spyOn(process, "chdir");
 		await mockSession.start();

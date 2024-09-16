@@ -8,10 +8,9 @@ class IgxProjectLibrary extends BaseProjectLibrary {
 		this.themes = ["Custom", "Default"];
 
 		const groups = require("./groups.json");
-		// tslint:disable-next-line:forin
 		for (const key in groups) {
 			this.groupDescriptions.set(key, groups[key]);
 		}
 	}
 }
-module.exports = new IgxProjectLibrary();
+export = new IgxProjectLibrary() as BaseProjectLibrary;

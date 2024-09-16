@@ -1,6 +1,6 @@
+import fs from "fs";
+import os from "os";
 import { ProjectConfig } from "@igniteui/cli-core";
-import * as fs from "fs";
-import * as os from "os";
 
 describe("Unit - ProjectConfig", () => {
 	it("hasLocalConfig returns correct values", async done => {

@@ -1,5 +1,5 @@
-import * as inquirer from "inquirer";
 import * as path from "path";
+import { Separator } from "@inquirer/prompts";
 import { BaseTemplateManager } from "../templates";
 import {
 	Component, Config, ControlExtraConfigType, ControlExtraConfiguration, Framework,
@@ -7,6 +7,7 @@ import {
 } from "../types";
 import { App, ChoiceItem, GoogleAnalytics, ProjectConfig, Util } from "../util";
 import { Task, TaskRunner, WIZARD_BACK_OPTION } from "./TaskRunner";
+import { InquirerWrapper } from "./InquirerWrapper";
 
 export abstract class BasePromptSession {
 	protected config: Config;
@@ -37,6 +38,7 @@ export abstract class BasePromptSession {
 				name: "projectName",
 				message: "Enter a name for your project:",
 				default: Util.getAvailableName(defaultProjName, true),
+				choices: null,
 				validate: this.nameIsValid
 			});
 
@@ -124,9 +126,12 @@ export abstract class BasePromptSession {
 			options.choices = this.addSeparators(options.choices);
 		}
 
-		const userInput = await inquirer.prompt(options);
-
-		const result = userInput[options.name] as string;
+		let result: string = null;
+		if (options.type === "list") {
+			result = await InquirerWrapper.select(options);
+		} else {
+			result = await InquirerWrapper.input(options);
+		}
 
 		// post to GA everything but 'Back' user choice
 		if (!withBackChoice || result !== WIZARD_BACK_OPTION) {
@@ -261,6 +266,7 @@ export abstract class BasePromptSession {
 			name: `${type === "component" ? type : "customView"}Name`,
 			message: `Name your ${type}:`,
 			default: availableDefaultName,
+			choices: null,
 			validate: (input: string) => {
 				// TODO: GA post?
 				const name = Util.nameFromPath(input);
@@ -273,10 +279,23 @@ export abstract class BasePromptSession {
 
 	/** Create prompts from template extra configuration and assign user answers to the template */
 	protected async customizeTemplateTask(template: Template) {
-		const extraPrompt: any[] = this.createQuestions(template.getExtraConfiguration());
-		const extraConfigAnswers = await inquirer.prompt(extraPrompt);
-		const extraConfig = this.parseAnswers(extraConfigAnswers);
+		const extraPrompt = this.createQuestions(template.getExtraConfiguration());
+		const extraConfigAnswers = [];
+		for (const question of extraPrompt) {
+			switch (question.type) {
+				case "input":
+					extraConfigAnswers.push(await InquirerWrapper.input(question));
+					break;
+				case "select":
+					extraConfigAnswers.push(await InquirerWrapper.select(question));
+					break;
+				case "checkbox":
+					extraConfigAnswers.push(await InquirerWrapper.checkbox(question));
+					break;
+			}
+		}
 
+		const extraConfig = this.parseAnswers(extraConfigAnswers);
 		GoogleAnalytics.post({
 			t: "event",
 			ec: "$ig wizard",
@@ -296,12 +315,12 @@ export abstract class BasePromptSession {
 		for (let i = 0; i < array.length; i++) {
 			newArray.push(array[i]);
 			if (i + 1 < array.length) {
-				newArray.push(new inquirer.Separator());
+				newArray.push(new Separator());
 			}
 		}
 		if (array.length > 4) {
 			// additional separator after last item for lists that wrap around
-			newArray.push(new inquirer.Separator(new Array(15).join("=")));
+			newArray.push(new Separator(new Array(15).join("=")));
 		}
 		return newArray;
 	}
@@ -310,13 +329,13 @@ export abstract class BasePromptSession {
 	 * Generate questions from extra configuration array
 	 * @param extraConfig
 	 */
-	private createQuestions(extraConfig: ControlExtraConfiguration[]): any {
+	private createQuestions(extraConfig: ControlExtraConfiguration[]): { type: string; name: string; message: string; choices: any[]; default: any; }[] {
 		const result = [];
 		for (const element of extraConfig) {
 			const currExtraConfig = {};
 			switch (element.type) {
 				case ControlExtraConfigType.Choice:
-					currExtraConfig["type"] = "list";
+					currExtraConfig["type"] = "select"; // formerly list
 					break;
 				case ControlExtraConfigType.MultiChoice:
 					currExtraConfig["type"] = "checkbox";
@@ -414,6 +433,7 @@ export abstract class BasePromptSession {
 				name: "port",
 				message: "Choose app host port:",
 				default: defaultPort,
+				choices: null,
 				validate: (input: string) => {
 					if (!Number(input)) {
 						Util.log(""); /* new line */
@@ -615,7 +635,7 @@ export interface IUserInputOptions {
 	type: string;
 	name: string;
 	message: string;
-	choices?: any[];
+	choices: any[];
 	default?: any;
 	validate?: (input: string) => string | boolean;
 }

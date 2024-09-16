@@ -1,6 +1,6 @@
+import child_process from "child_process";
+import path from "path";
 import { App, Config, IFileSystem, PackageManager, ProjectConfig, Util } from "@igniteui/cli-core";
-import * as cp from "child_process";
-import * as path from "path";
 import { resetSpy } from "../helpers/utils";
 
 describe("Unit - Package Manager", () => {
@@ -43,7 +43,7 @@ describe("Unit - Package Manager", () => {
 			}
 			return "";
 		});
-		spyOn(cp, "spawnSync").and.returnValues({
+		spyOn(child_process, "spawnSync").and.returnValues({
 			status: 0
 		});
 		spyOn(Util, "log");
@@ -68,7 +68,7 @@ describe("Unit - Package Manager", () => {
 			"yellow"
 		);
 		expect(path.join).toHaveBeenCalled();
-		expect(cp.spawnSync).toHaveBeenCalledWith(
+		expect(child_process.spawnSync).toHaveBeenCalledWith(
 			/^win/.test(process.platform) ? "npm.cmd" : "npm",
 			["adduser", `--registry=trial`, `--scope=@infragistics`, `--always-auth`],
 			{
@@ -112,7 +112,7 @@ describe("Unit - Package Manager", () => {
 		spyOn(Util, "log");
 		spyOn(TestPackageManager, "removePackage");
 		spyOn(TestPackageManager, "getPackageJSON").and.callFake(() => mockRequire);
-		spyOn(cp, "spawnSync").and.returnValues({ status: 1 });
+		spyOn(child_process, "spawnSync").and.returnValues({ status: 1 });
 		await TestPackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
 		expect(ProjectConfig.localConfig).toHaveBeenCalled();
 		expect(Util.log).toHaveBeenCalledTimes(12);
@@ -148,7 +148,7 @@ describe("Unit - Package Manager", () => {
 			`for instructions on how to install the full package.`,
 			"yellow"
 		); // x1
-		expect(cp.spawnSync).toHaveBeenCalledWith(
+		expect(child_process.spawnSync).toHaveBeenCalledWith(
 			/^win/.test(process.platform) ? "npm.cmd" : "npm",
 			["adduser", `--registry=trial`, `--scope=@infragistics`, `--always-auth`],
 			{
@@ -375,11 +375,11 @@ describe("Unit - Package Manager", () => {
 		};
 		// should ignore already installed
 		spyOn(App.container, "get").and.returnValue(mockFs);
-		const execSpy = spyOn(cp, "exec");
+		const execSpy = spyOn(child_process, "exec");
 		PackageManager.queuePackage("test-pack");
 		expect(Util.log).toHaveBeenCalledTimes(0);
-		expect(cp.exec).toHaveBeenCalledTimes(1);
-		expect(cp.exec).toHaveBeenCalledWith(
+		expect(child_process.exec).toHaveBeenCalledTimes(1);
+		expect(child_process.exec).toHaveBeenCalledWith(
 			`npm install test-pack --quiet --no-save`, {}, jasmine.any(Function));
 		done();
 	});
@@ -401,15 +401,15 @@ describe("Unit - Package Manager", () => {
 		// should ignore already installed
 		spyOn(App.container, "get").and.returnValue(mockFs);
 		spyOn(Util, "log");
-		const execSpy = spyOn(cp, "exec");
+		const execSpy = spyOn(child_process, "exec");
 		PackageManager.queuePackage("test-pack");
 		expect(Util.log).toHaveBeenCalledTimes(0);
-		expect(cp.exec).toHaveBeenCalledTimes(0);
+		expect(child_process.exec).toHaveBeenCalledTimes(0);
 
 		// should ignore if already in queue
 		PackageManager.queuePackage("test-pack2");
 		PackageManager.queuePackage("test-pack2");
-		expect(cp.exec).toHaveBeenCalledTimes(1);
+		expect(child_process.exec).toHaveBeenCalledTimes(1);
 		done();
 	});
 
@@ -430,7 +430,7 @@ describe("Unit - Package Manager", () => {
 		// spyOn(require("module"), "_load").and.returnValue(mockRequire);
 		spyOn(Util, "log");
 		spyOn(App.container, "get").and.returnValue(mockFs);
-		const execSpy = spyOn(cp, "exec").and.callFake((cmd, opts, callback) => {
+		const execSpy = spyOn(child_process, "exec").and.callFake((cmd, opts, callback) => {
 			setTimeout(() => callback(null, [1], [2]), 20);
 		});
 		PackageManager.queuePackage("test-pack");
