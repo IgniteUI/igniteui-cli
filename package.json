@@ -63,7 +63,7 @@
 		"@types/inquirer": "0.0.35",
 		"@types/jasmine": "^5.1.4",
 		"@types/minimatch": "^5.1.2",
-		"@types/node": "^22.5.4",
+		"@types/node": "^22.5.5",
 		"@typescript-eslint/eslint-plugin": "^7.5.0",
 		"@typescript-eslint/parser": "^7.5.0",
 		"browser-sync": "^3.0.2",
