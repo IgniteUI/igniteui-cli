@@ -68,6 +68,7 @@ export function newProject(options: OptionsSchema): Rule {
 							name: "projectName",
 							message: "Enter a name for your project:",
 							default: Util.getAvailableName(defaultProjName, true),
+							choices: null as unknown as string[],
 							validate: prompt.nameIsValid
 						});
 						nameProvided = false;

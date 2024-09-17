@@ -1,6 +1,6 @@
 import { GoogleAnalytics, Util } from "@igniteui/cli-core";
+import os from "os";
 import * as fs from "fs";
-import * as os from "os";
 import * as path from "path";
 import { default as config } from "../../packages/cli/lib/commands/config";
 import { default as generateCmd } from "../../packages/cli/lib/commands/generate";

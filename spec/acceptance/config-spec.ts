@@ -1,6 +1,6 @@
 import { GoogleAnalytics, GoogleAnalyticsParameters } from "@igniteui/cli-core";
+import os from "os";
 import * as fs from "fs";
-import * as os from "os";
 import * as path from "path";
 import * as cli from "../../packages/cli/lib/cli";
 import { deleteAll, resetSpy } from "../helpers/utils";
@@ -8,7 +8,6 @@ import { deleteAll, resetSpy } from "../helpers/utils";
 describe("Config command", () => {
 	let testFolder = path.parse(__filename).name;
 
-	// tslint:disable:no-console
 	beforeEach(() => {
 		spyOn(console, "log");
 		spyOn(console, "error");

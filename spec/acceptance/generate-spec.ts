@@ -1,6 +1,6 @@
 import { Config, GoogleAnalytics, GoogleAnalyticsParameters, ProjectConfig, Template } from "@igniteui/cli-core";
+import os from "os";
 import * as fs from "fs";
-import * as os from "os";
 import * as path from "path";
 import * as cli from "../../packages/cli/lib/cli";
 import { deleteAll } from "../helpers/utils";

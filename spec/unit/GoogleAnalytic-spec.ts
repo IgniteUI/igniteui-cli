@@ -1,7 +1,7 @@
 import { Config, GoogleAnalytics, ProjectConfig } from "@igniteui/cli-core";
-import * as childProcess from "child_process";
+import child_process from "child_process";
+import https from "https";
 import * as fs from "fs";
-import * as https from "https";
 import * as path from "path";
 import * as process from "process";
 import { deleteAll } from "../helpers/utils";
@@ -20,7 +20,7 @@ describe("Unit - Google Analytic", () => {
 		request = jasmine.createSpyObj("request", ["on", "end"]);
 		spyOn(https, "request").and.returnValue(request);
 		serviceSpy =
-			spyOn(childProcess, "execSync").and.returnValue("some string which contains REG_SZ so we can get Machine Key");
+			spyOn(child_process, "execSync").and.returnValue("some string which contains REG_SZ so we can get Machine Key");
 		while (fs.existsSync(`./output/${testFolder}`)) {
 			testFolder += 1;
 		}

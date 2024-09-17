@@ -1,5 +1,5 @@
 import { App, GoogleAnalytics, Util } from "@igniteui/cli-core";
-import * as yargs from "yargs";
+import yargs from "yargs";
 import {
 	add,
 	ADD_COMMAND_NAME,
