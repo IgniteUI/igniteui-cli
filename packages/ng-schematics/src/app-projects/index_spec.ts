@@ -19,7 +19,7 @@ describe("app-projects", () => {
 		};
 		spyOn(tree, "read").and.returnValue(Buffer.from(`Mock package content "igniteui-cli":`));
 		spyOn(tree, "overwrite");
-		await runner.runSchematicAsync("app-projects", mockOptions, tree).toPromise();
+		await runner.runSchematic("app-projects", mockOptions, tree);
 
 		expect(mockOptions.projTemplate.generateConfig).toHaveBeenCalled();
 		expect(tree.read).toHaveBeenCalledWith("./package.json");

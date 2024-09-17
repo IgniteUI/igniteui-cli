@@ -12,6 +12,7 @@ describe("Update 4.2.3", () => {
 		defaultProject: "testProj",
 		projects: {
 			testProj: {
+				root: "",
 				sourceRoot: "/src"
 			}
 		},
@@ -43,7 +44,7 @@ describe("Update 4.2.3", () => {
 `
 		);
 
-		await schematicRunner.runSchematicAsync("migration-04", {}, appTree).toPromise();
+		await schematicRunner.runSchematic("migration-04", {}, appTree);
 		expect(appTree.readContent(stylesFile).replace(/\r\n/g, "\n"))
 			.toEqual(
 `@use 'igniteui-angular/theming' as *;

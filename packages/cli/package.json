@@ -91,8 +91,8 @@
     "yargs": "^17.7.2"
   },
   "devDependencies": {
-    "@angular-devkit/core": "~14.0.0",
-    "@angular-devkit/schematics": "~14.0.0",
+    "@angular-devkit/core": "^18.2.4",
+    "@angular-devkit/schematics": "^18.2.4",
     "@schematics/angular": "~14.0.0",
     "@types/jasmine": "^5.1.4",
     "@types/node": "^22.5.5",

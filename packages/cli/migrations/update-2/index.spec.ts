@@ -46,7 +46,7 @@ export class AppComponent implements OnInit {
 `
 		);
 
-		const tree = await schematicRunner.runSchematicAsync("migration-01", {}, appTree).toPromise();
+		const tree = await schematicRunner.runSchematic("migration-01", {}, appTree);
 		expect(tree.readContent("/src/app/app.component.ts"))
 			.toEqual(
 `import { Component, OnInit, ViewChild } from '@angular/core';

@@ -110,9 +110,9 @@ describe("component",  () => {
 		const projConfigSpy = spyOn(ProjectConfig, "getConfig");
 		projConfigSpy.and.returnValue(mockConfig);
 
-		const tree = runner.runSchematicAsync("component",
+		const tree = runner.runSchematic("component",
 			{ name: "my-combo", template: "combo", templateInst: mockInst, skipRoute: false }, Tree.empty());
-		tree.subscribe(state => {
+		tree.then(state => {
 			expect(mockInst.generateConfig).toHaveBeenCalledWith("my-combo", {});
 			expect(mockInst.registerInProject).toHaveBeenCalledWith("", "my-combo", { skipRoute: false, modulePath: undefined });
 			expect(projLibSpy).toHaveBeenCalledWith("angular", "igx-ts");

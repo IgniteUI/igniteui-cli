@@ -39,7 +39,7 @@ describe("Update 17.1.0", () => {
 `
 		);
 
-		const tree = await schematicRunner.runSchematicAsync("migration-01", { applyMigrations: true }, appTree).toPromise();
+		const tree = await schematicRunner.runSchematic("migration-01", { applyMigrations: true }, appTree);
 		expect(tree.readContent("./ignite-ui-cli.json"))
 			.toEqual(
 `{

@@ -131,9 +131,8 @@ describe("Schematics ng-new", () => {
 			return currentTree;
 		});
 
-		runner.runSchematicAsync("ng-new", { version: "8.0.3" }, myTree)
-		.pipe(take(1))
-		.subscribe((e: UnitTestTree) => {
+		runner.runSchematic("ng-new", { version: "8.0.3" }, myTree)
+		.then((e: UnitTestTree) => {
 			for (const mockFunc of Object.entries(mockSession)) {
 				expect(mockFunc[1]).toHaveBeenCalled();
 			}
@@ -189,9 +188,8 @@ describe("Schematics ng-new", () => {
 			return currentTree;
 		});
 
-		runner.runSchematicAsync("ng-new", { version: "8.0.3", name: workingDirectory }, myTree)
-		.pipe(take(1))
-		.subscribe((e: UnitTestTree) => {
+		runner.runSchematic("ng-new", { version: "8.0.3", name: workingDirectory }, myTree)
+		.then((e: UnitTestTree) => {
 			expect(AppProjectSchematic.default).toHaveBeenCalled();
 			expect(e.files.length).toEqual(1);
 			expect(e.exists(`${workingDirectory}/.gitignore`)).toBeTruthy();

@@ -12,6 +12,7 @@ describe("Update 5.0.0", () => {
 		defaultProject: "testProj",
 		projects: {
 			testProj: {
+				root: "",
 				prefix: "app",
 				sourceRoot: "src"
 			}
@@ -40,7 +41,7 @@ export class GlobalErrorHandlerService implements ErrorHandler {
 `
 		);
 
-		await schematicRunner.runSchematicAsync("migration-06", {}, appTree).toPromise();
+		await schematicRunner.runSchematic("migration-06", {}, appTree);
 		expect(appTree.readContent(errorService).replace(/\r\n/g, "\n"))
 			.toEqual(
 `import { ErrorHandler, Injectable, isDevMode } from '@angular/core';
