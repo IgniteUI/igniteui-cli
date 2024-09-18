@@ -65,6 +65,7 @@ $app-palette: palette($primary, $secondary, $surface);
 			dot: ".",
 			path: name,
 			projectTemplate: this.id,
+			igxPackage: "igniteui-angular",
 			yamlDefaultBranch: "<%=yaml-default-branch%>", // the placeholder will be evaluated by CodeGen
 			ApplicationTitle: "<%=ApplicationTitle%>" // the placeholder will be evaluated by CodeGen
 		};
