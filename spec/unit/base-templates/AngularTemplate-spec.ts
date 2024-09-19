@@ -88,15 +88,19 @@ describe("Unit - AngularTemplate Base", () => {
 	describe("registerInProject", () => {
 		let helpers;
 		beforeEach(() => {
-			helpers = {
-				tsUpdateMock: AngularTypeScriptFileUpdate,
-				requireMock: require
+		    const tsUpdateMock = jasmine.createSpyObj(
+			    "AngularTypeScriptFileUpdate", ["addRoute", "addNgModuleMeta", "finalize"]) as AngularTypeScriptFileUpdate;
+			function AngularTypeScriptFileUpdate() {
+			    this.addRoute = tsUpdateMock.addRoute;
+			    this.addNgModuleMeta = tsUpdateMock.addNgModuleMeta;
+			    this.finalize = tsUpdateMock.finalize;
 			}
 
-			helpers.tsUpdateMock.addRoute = jasmine.createSpy("addRoute");
-			helpers.tsUpdateMock.addNgModuleMeta = jasmine.createSpy("addNgModuleMeta");
-			helpers.tsUpdateMock.finalize = jasmine.createSpy("finalize");
-			helpers.AngularTypeScriptFileUpdate = helpers.tsUpdateMock;
+		    helpers = {
+		        tsUpdateMock,
+			    AngularTypeScriptFileUpdate,
+			    requireMock: require
+		    }
 
 			// spy on require:
 			spyOn(require("module"), "_load").and.callFake((modulePath: string) => {
@@ -130,12 +134,27 @@ describe("Unit - AngularTemplate Base", () => {
 			templ.registerInProject("target/path", "view name");
 			expect(helpers.AngularTypeScriptFileUpdate)
 				.toHaveBeenCalledWith(path.join("target/path", "src/app/app-routing.module.ts"), false, { singleQuotes: false });
-			expect(helpers.tsUpdateMock.addRoute).toBeDefined();
+			expect(helpers.tsUpdateMock.addRoute).toHaveBeenCalledWith(
+				{
+					path: 'view-name',
+					identifierName: 'ViewNameComponent',
+					modulePath: './components/view-name/view-name.component',
+					data: { text: 'view name' }
+				}
+			);
 
 			expect(helpers.AngularTypeScriptFileUpdate)
 				.toHaveBeenCalledWith(path.join("target/path", "src/app/app.module.ts"), false, { singleQuotes: false });
-			expect(helpers.tsUpdateMock.addNgModuleMeta).toBeDefined();
-			expect(helpers.tsUpdateMock.finalize).toBeDefined();
+			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith(
+				{
+					declare: [
+					  "ViewNameComponent",
+					],
+					from: "./components/view-name/view-name.component",
+					export: [],
+				}
+			);
+			expect(helpers.tsUpdateMock.finalize).toHaveBeenCalled();
 
 			//config update:
 			expect(ProjectConfig.setConfig).toHaveBeenCalledTimes(0);
@@ -149,8 +168,16 @@ describe("Unit - AngularTemplate Base", () => {
 			expect(helpers.AngularTypeScriptFileUpdate).toHaveBeenCalledTimes(1);
 			expect(helpers.AngularTypeScriptFileUpdate).toHaveBeenCalledWith(path.join("target/path", "src/app/app.module.ts"),
 				false, { singleQuotes: false });
-			expect(helpers.tsUpdateMock.addNgModuleMeta).toBeDefined();
-			expect(helpers.tsUpdateMock.finalize).toBeDefined();
+			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith(
+				{
+					declare: [
+					  "ViewNameComponent",
+					],
+					from: "./components/view-name/view-name.component",
+					export: [],
+				}
+			);
+			expect(helpers.tsUpdateMock.finalize).toHaveBeenCalled();
 
 			//config update:
 			expect(ProjectConfig.setConfig).toHaveBeenCalledTimes(0);
