@@ -1,3 +1,11 @@
+# [14.0.2](https://github.com/IgniteUI/igniteui-cli/compare/v14.0.1...v14.0.2) (2024-09-20)
+
+## What's Changed
+
+* Provide default package name in config for igx-ts projects by @jackofdiamond5 in https://github.com/IgniteUI/igniteui-cli/pull/1320
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.0.1...v14.0.2
+
 # [14.0.1](https://github.com/IgniteUI/igniteui-cli/compare/v14.0.0...v14.0.1) (2024-09-05)
 
 ## What's Changed
