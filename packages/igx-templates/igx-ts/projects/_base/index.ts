@@ -1,4 +1,4 @@
-import { ControlExtraConfiguration, ProjectTemplate, Util, updateWorkspace } from "@igniteui/cli-core";
+import { ControlExtraConfiguration, NPM_ANGULAR, ProjectTemplate, Util, updateWorkspace } from "@igniteui/cli-core";
 import * as path from "path";
 
 export class BaseIgxProject implements ProjectTemplate {
@@ -65,6 +65,7 @@ $app-palette: palette($primary, $secondary, $surface);
 			dot: ".",
 			path: name,
 			projectTemplate: this.id,
+			igxPackage: NPM_ANGULAR,
 			yamlDefaultBranch: "<%=yaml-default-branch%>", // the placeholder will be evaluated by CodeGen
 			ApplicationTitle: "<%=ApplicationTitle%>" // the placeholder will be evaluated by CodeGen
 		};
