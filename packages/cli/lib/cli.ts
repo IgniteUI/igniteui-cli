@@ -1,5 +1,5 @@
 import { App, GoogleAnalytics, Util } from "@igniteui/cli-core";
-import yargs from "yargs";
+// import yargs from "yargs";
 import {
 	add,
 	ADD_COMMAND_NAME,
@@ -42,6 +42,7 @@ export async function run(args = null) {
 	list.templateManager = templateManager;
 	upgrade.templateManager = templateManager;
 
+	const yargs = require("yargs");
 	const yargsModule = args ? yargs(args) : yargs;
 	await yargsModule
 		.scriptName("") // prevent the addition of the name of the executing script in the usage output
