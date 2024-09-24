@@ -18,7 +18,9 @@
 				"./packages/cli"
 			]
 		},
-		"esModuleInterop": true
+		"esModuleInterop": true,
+		"moduleResolution": "node",
+		"allowSyntheticDefaultImports": true
 	},
 	"exclude": [
 		"output",
