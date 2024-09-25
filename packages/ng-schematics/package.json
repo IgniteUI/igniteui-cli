@@ -29,7 +29,7 @@
     "@types/jasmine": "^5.1.4",
     "@types/node": "^22.5.5",
     "jasmine": "^5.3.0",
-    "typescript": "~5.4.3"
+    "typescript": "~5.5.4"
   },
   "ng-update": {
     "migrations": "./src/migrations/migration-collection.json"
