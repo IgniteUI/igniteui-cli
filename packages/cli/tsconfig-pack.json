@@ -1,0 +1,15 @@
+{
+	"compilerOptions": {
+		"target": "es6",
+		"module": "commonjs",
+		"declaration": true,
+		"esModuleInterop": true
+	},
+	"exclude": [
+		"./spec",
+		"./output",
+		"**/files/*",
+		"packages/cli/templates/quickstart/angular",
+		"node_modules"
+	]
+}
