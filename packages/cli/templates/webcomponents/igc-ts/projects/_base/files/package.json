@@ -21,9 +21,9 @@
   },
   "dependencies": {
     "@vaadin/router": "^1.7.4",
-    "lit": "^3.1.2",
-    "typescript": "^5.3.3",
-    "igniteui-webcomponents": "~4.11.0"
+    "lit": "^3.2.0",
+    "typescript": "^5.6.2",
+    "igniteui-webcomponents": "~5.0.0"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.20.2",
