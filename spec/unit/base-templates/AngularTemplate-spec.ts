@@ -88,19 +88,19 @@ describe("Unit - AngularTemplate Base", () => {
 	describe("registerInProject", () => {
 		let helpers;
 		beforeEach(() => {
-		    const tsUpdateMock = jasmine.createSpyObj(
-			    "AngularTypeScriptFileUpdate", ["addRoute", "addNgModuleMeta", "finalize"]) as AngularTypeScriptFileUpdate;
+			const tsUpdateMock = jasmine.createSpyObj(
+				"AngularTypeScriptFileUpdate", ["addRoute", "addNgModuleMeta", "finalize"]) as AngularTypeScriptFileUpdate;
 			function AngularTypeScriptFileUpdate() {
-			    this.addRoute = tsUpdateMock.addRoute;
-			    this.addNgModuleMeta = tsUpdateMock.addNgModuleMeta;
-			    this.finalize = tsUpdateMock.finalize;
+				this.addRoute = tsUpdateMock.addRoute;
+				this.addNgModuleMeta = tsUpdateMock.addNgModuleMeta;
+				this.finalize = tsUpdateMock.finalize;
 			}
 
-		    helpers = {
-		        tsUpdateMock,
-			    AngularTypeScriptFileUpdate,
-			    requireMock: require
-		    }
+			helpers = {
+				tsUpdateMock,
+				AngularTypeScriptFileUpdate,
+				requireMock: require
+			}
 
 			// spy on require:
 			spyOn(require("module"), "_load").and.callFake((modulePath: string) => {

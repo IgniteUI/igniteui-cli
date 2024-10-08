@@ -9,89 +9,89 @@ import { TemplateManager } from "../../packages/cli/lib/TemplateManager";
 import { Separator } from "@inquirer/prompts";
 
 function createMockBaseTemplate(): BaseTemplate {
-    return {
-        id: "mock-template-id",
-        name: "mock-template",
-        description: "A mock template",
-        delimiters: {
-            content: { start: "{{", end: "}}" },
-            path: { start: "[[", end: "]]" }
-        },
-        dependencies: ["mock-dependency"],
-        framework: "angular",
-        projectType: "ts",
-        hasExtraConfiguration: true,
-        templatePaths: ["/path/to/template"],
-        generateConfig: jasmine.createSpy().and.returnValue({}),
-        getExtraConfiguration: jasmine.createSpy().and.returnValue([]),
-        setExtraConfiguration: jasmine.createSpy()
-    };
+	return {
+		id: "mock-template-id",
+		name: "mock-template",
+		description: "A mock template",
+		delimiters: {
+			content: { start: "{{", end: "}}" },
+			path: { start: "[[", end: "]]" }
+		},
+		dependencies: ["mock-dependency"],
+		framework: "angular",
+		projectType: "ts",
+		hasExtraConfiguration: true,
+		templatePaths: ["/path/to/template"],
+		generateConfig: jasmine.createSpy().and.returnValue({}),
+		getExtraConfiguration: jasmine.createSpy().and.returnValue([]),
+		setExtraConfiguration: jasmine.createSpy()
+	};
 }
 
 function createMockProjectTemplate(baseTemplate: BaseTemplate): ProjectTemplate {
-    return {
-        ...baseTemplate,
-        installModules: jasmine.createSpy().and.callFake(() => {}),
-        upgradeIgniteUIPackages: jasmine.createSpy().and.returnValue(Promise.resolve(true))
-    };
+	return {
+		...baseTemplate,
+		installModules: jasmine.createSpy().and.callFake(() => {}),
+		upgradeIgniteUIPackages: jasmine.createSpy().and.returnValue(Promise.resolve(true))
+	};
 }
 
 function createMockTemplate(baseTemplate: BaseTemplate): Template {
-    return {
-        ...baseTemplate,
-        components: ["mock-component"],
-        controlGroup: "mock-group",
-        listInComponentTemplates: true,
-        listInCustomTemplates: true,
-        packages: ["mock-package"],
-        registerInProject: jasmine.createSpy(),
-    };
+	return {
+		...baseTemplate,
+		components: ["mock-component"],
+		controlGroup: "mock-group",
+		listInComponentTemplates: true,
+		listInCustomTemplates: true,
+		packages: ["mock-package"],
+		registerInProject: jasmine.createSpy(),
+	};
 }
 
 function createMockLibrary(mockTemplate: Template, mockProjectTemplate: ProjectTemplate): ProjectLibrary {
-    return {
-        name: "mock-library",
-        themes: ["mock-theme"],
-        components: [{
-            name: "mock-component",
-            description: "A mock component",
-            group: "mock-group",
-            groupPriority: 1,
-            templates: [mockTemplate]
-        }],
-        projectIds: ["another-mock"],
-        projects: [mockProjectTemplate],
-        templates: [mockTemplate],
-        projectType: "ts",
-        generateTemplateFolderPath: "/path/to/templates",
-        getCustomTemplateNames: jasmine.createSpy().and.returnValue([]),
-        getTemplateByName: jasmine.createSpy().and.returnValue(mockTemplate),
-        getTemplateById: jasmine.createSpy().and.returnValue(mockTemplate),
-        getComponentByName: jasmine.createSpy().and.returnValue({
-            name: "mock-component",
-            description: "A mock component",
-            group: "mock-group",
-            groupPriority: 1,
-            templates: [mockTemplate]
-        }),
-        getComponentGroupNames: jasmine.createSpy().and.returnValue(["mock-group"]),
-        getComponentsByGroup: jasmine.createSpy().and.returnValue([{
-            name: "mock-component",
-            description: "A mock component",
-            group: "mock-group",
-            groupPriority: 1,
-            templates: [mockTemplate]
-        }]),
-        getComponentGroups: jasmine.createSpy().and.returnValue([{
-            name: "mock-group",
-            description: "A mock component group"
-        }]),
-        getCustomTemplates: jasmine.createSpy().and.returnValue([mockTemplate]),
-        getProject: jasmine.createSpy().and.returnValue(mockProjectTemplate),
-        hasProject: jasmine.createSpy().and.returnValue(false),
-        hasTemplate: jasmine.createSpy().and.returnValue(false),
-        registerTemplate: jasmine.createSpy()
-    };
+	return {
+		name: "mock-library",
+		themes: ["mock-theme"],
+		components: [{
+			name: "mock-component",
+			description: "A mock component",
+			group: "mock-group",
+			groupPriority: 1,
+			templates: [mockTemplate]
+		}],
+		projectIds: ["another-mock"],
+		projects: [mockProjectTemplate],
+		templates: [mockTemplate],
+		projectType: "ts",
+		generateTemplateFolderPath: "/path/to/templates",
+		getCustomTemplateNames: jasmine.createSpy().and.returnValue([]),
+		getTemplateByName: jasmine.createSpy().and.returnValue(mockTemplate),
+		getTemplateById: jasmine.createSpy().and.returnValue(mockTemplate),
+		getComponentByName: jasmine.createSpy().and.returnValue({
+			name: "mock-component",
+			description: "A mock component",
+			group: "mock-group",
+			groupPriority: 1,
+			templates: [mockTemplate]
+		}),
+		getComponentGroupNames: jasmine.createSpy().and.returnValue(["mock-group"]),
+		getComponentsByGroup: jasmine.createSpy().and.returnValue([{
+			name: "mock-component",
+			description: "A mock component",
+			group: "mock-group",
+			groupPriority: 1,
+			templates: [mockTemplate]
+		}]),
+		getComponentGroups: jasmine.createSpy().and.returnValue([{
+			name: "mock-group",
+			description: "A mock component group"
+		}]),
+		getCustomTemplates: jasmine.createSpy().and.returnValue([mockTemplate]),
+		getProject: jasmine.createSpy().and.returnValue(mockProjectTemplate),
+		hasProject: jasmine.createSpy().and.returnValue(false),
+		hasTemplate: jasmine.createSpy().and.returnValue(false),
+		registerTemplate: jasmine.createSpy()
+	};
 }
 
 describe("Unit - PromptSession", () => {

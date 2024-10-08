@@ -5,22 +5,22 @@ import { PromptSession } from "../../packages/cli/lib/PromptSession";
 import { resetSpy } from "../helpers/utils";
 
 function createMockBaseTemplate(): BaseTemplate {
-    return {
-        id: "mock-template-id",
-        name: "mock-template",
-        description: "A mock template",
-        delimiters: {
-            content: { start: "{{", end: "}}" },
-            path: { start: "[[", end: "]]" }
-        },
-        dependencies: ["mock-dependency"],
-        framework: "angular",
-        projectType: "ts",
-        hasExtraConfiguration: true,
-        templatePaths: ["/path/to/template"],
-        generateConfig: null,
-        getExtraConfiguration: jasmine.createSpy().and.returnValue([]),
-        setExtraConfiguration: jasmine.createSpy()
+	return {
+		id: "mock-template-id",
+		name: "mock-template",
+		description: "A mock template",
+		delimiters: {
+			content: { start: "{{", end: "}}" },
+			path: { start: "[[", end: "]]" }
+		},
+		dependencies: ["mock-dependency"],
+		framework: "angular",
+		projectType: "ts",
+		hasExtraConfiguration: true,
+		templatePaths: ["/path/to/template"],
+		generateConfig: null,
+		getExtraConfiguration: jasmine.createSpy().and.returnValue([]),
+		setExtraConfiguration: jasmine.createSpy()
     };
 }
 
@@ -172,10 +172,10 @@ describe("Unit - New command", () => {
 	it("Generates default without project type", async () => {
 		const mockBaseTemplate = createMockBaseTemplate();
 		const mockProjectTemplate: ProjectTemplate = {
-            ...mockBaseTemplate,
-            installModules: jasmine.createSpy().and.callFake(() => {}),
-            upgradeIgniteUIPackages: jasmine.createSpy().and.returnValue(Promise.resolve(true))
-        };
+			...mockBaseTemplate,
+			installModules: jasmine.createSpy().and.callFake(() => {}),
+			upgradeIgniteUIPackages: jasmine.createSpy().and.returnValue(Promise.resolve(true))
+		};
 		const mockConfig = { test: "test" };
 		mockProjectTemplate.generateConfig = jasmine.createSpy().and.returnValue(mockConfig);
 		const mockProjLib = {

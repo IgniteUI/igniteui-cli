@@ -21,28 +21,28 @@ describe("component",  () => {
 			templatePaths: []
 		};
 		const mockBaseTemplate: BaseTemplate = {
-            id: "mock-template-id",
-            name: "mock-template",
-            description: "A mock template",
-            delimiters: {
-                content: { start: "{{", end: "}}" },
-                path: { start: "[[", end: "]]" }
-            },
-            dependencies: ["mock-dependency"],
-            framework: "angular",
-            projectType: "ts",
-            hasExtraConfiguration: true,
-            templatePaths: ["/path/to/template"],
-            generateConfig: jasmine.createSpy().and.returnValue({}),
-            getExtraConfiguration: jasmine.createSpy().and.returnValue([]),
-            setExtraConfiguration: jasmine.createSpy()
-        };
+			id: "mock-template-id",
+			name: "mock-template",
+			description: "A mock template",
+			delimiters: {
+				content: { start: "{{", end: "}}" },
+				path: { start: "[[", end: "]]" }
+			},
+			dependencies: ["mock-dependency"],
+			framework: "angular",
+			projectType: "ts",
+			hasExtraConfiguration: true,
+			templatePaths: ["/path/to/template"],
+			generateConfig: jasmine.createSpy().and.returnValue({}),
+			getExtraConfiguration: jasmine.createSpy().and.returnValue([]),
+			setExtraConfiguration: jasmine.createSpy()
+		};
 
-        const mockProjectTemplate: ProjectTemplate = {
-            ...mockBaseTemplate,
-            installModules: jasmine.createSpy().and.callFake(() => {}),
-            upgradeIgniteUIPackages: jasmine.createSpy().and.returnValue(Promise.resolve(true))
-        };
+		const mockProjectTemplate: ProjectTemplate = {
+			...mockBaseTemplate,
+			installModules: jasmine.createSpy().and.callFake(() => {}),
+			upgradeIgniteUIPackages: jasmine.createSpy().and.returnValue(Promise.resolve(true))
+		};
 
 		const mockTemplate: Template = {
 			...mockBaseTemplate,

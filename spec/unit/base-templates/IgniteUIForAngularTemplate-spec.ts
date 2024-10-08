@@ -21,17 +21,17 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 		let helpers;
 		beforeEach(() => {
 			const tsUpdateMock = jasmine.createSpyObj(
-			    "AngularTypeScriptFileUpdate", ["addRoute", "addNgModuleMeta", "finalize"]) as AngularTypeScriptFileUpdate;
+				"AngularTypeScriptFileUpdate", ["addRoute", "addNgModuleMeta", "finalize"]) as AngularTypeScriptFileUpdate;
 			function AngularTypeScriptFileUpdate() {
-			    this.addRoute = tsUpdateMock.addRoute;
-			    this.addNgModuleMeta = tsUpdateMock.addNgModuleMeta;
-			    this.finalize = tsUpdateMock.finalize;
+				this.addRoute = tsUpdateMock.addRoute;
+				this.addNgModuleMeta = tsUpdateMock.addNgModuleMeta;
+				this.finalize = tsUpdateMock.finalize;
 			}
-		    helpers = {
-		        tsUpdateMock,
-			    AngularTypeScriptFileUpdate,
-			    requireMock: require
-		    }
+			helpers = {
+				tsUpdateMock,
+				AngularTypeScriptFileUpdate,
+				requireMock: require
+			}
 
 			App.initialize();
 			// spy on require:

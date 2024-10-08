@@ -19,10 +19,10 @@ describe("Unit - Test command", () => {
 	it("Run e2e tests for igx-ts Angular project type", async () => {
 		const mockProjectConfig = {
 			project: {
-			  framework: "angular",
-			  projectType: "igx-ts"
-		    }
-		 } as unknown as Config;
+				framework: "angular",
+				projectType: "igx-ts"
+			}
+		} as unknown as Config;
 		spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
 
 		await testCmd.test({ e2e: true, skipAnalytics: true, _: ["test"], $0: "test" });

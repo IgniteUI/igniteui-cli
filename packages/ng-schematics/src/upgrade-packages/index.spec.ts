@@ -32,29 +32,29 @@ describe("Schematics upgrade-packages", () => {
 
 		spyOn(ProjectConfig, "getConfig").and.returnValue(mockConfig);
 
-        const mockBaseTemplate: BaseTemplate = {
-            id: "mock-template-id",
-            name: "mock-template",
-            description: "A mock template",
-            delimiters: {
-                content: { start: "{{", end: "}}" },
-                path: { start: "[[", end: "]]" }
-            },
-            dependencies: ["mock-dependency"],
-            framework: "angular",
-            projectType: "ts",
-            hasExtraConfiguration: true,
-            templatePaths: ["/path/to/template"],
-            generateConfig: jasmine.createSpy().and.returnValue({}),
-            getExtraConfiguration: jasmine.createSpy().and.returnValue([]),
-            setExtraConfiguration: jasmine.createSpy()
-        };
+		const mockBaseTemplate: BaseTemplate = {
+			id: "mock-template-id",
+			name: "mock-template",
+			description: "A mock template",
+			delimiters: {
+				content: { start: "{{", end: "}}" },
+				path: { start: "[[", end: "]]" }
+			},
+			dependencies: ["mock-dependency"],
+			framework: "angular",
+			projectType: "ts",
+			hasExtraConfiguration: true,
+			templatePaths: ["/path/to/template"],
+			generateConfig: jasmine.createSpy().and.returnValue({}),
+			getExtraConfiguration: jasmine.createSpy().and.returnValue([]),
+			setExtraConfiguration: jasmine.createSpy()
+		};
 
-        const mockProjectTemplate: ProjectTemplate = {
-            ...mockBaseTemplate,
-            installModules: jasmine.createSpy().and.callFake(() => {}),
-            upgradeIgniteUIPackages: async () => true
-        };
+		const mockProjectTemplate: ProjectTemplate = {
+			...mockBaseTemplate,
+			installModules: jasmine.createSpy().and.callFake(() => {}),
+			upgradeIgniteUIPackages: async () => true
+		};
 
 		const mockTemplate: Template = {
 			...mockBaseTemplate,

@@ -5,7 +5,6 @@ import { RunSchematicTaskOptions } from "@angular-devkit/schematics/tasks/run-sc
 import { SchematicTestRunner, UnitTestTree } from "@angular-devkit/schematics/testing";
 import { BaseTemplate, GoogleAnalytics, ProjectLibrary, ProjectTemplate, Template } from "@igniteui/cli-core";
 import * as path from "path";
-import { take } from "rxjs/operators";
 import * as AppProjectSchematic from "../app-projects/index";
 import { SchematicsPromptSession } from "../prompt/SchematicsPromptSession";
 
@@ -23,28 +22,28 @@ describe("Schematics ng-new", () => {
 		const workingDirectory = "my-test-project";
 
 		const mockBaseTemplate: BaseTemplate = {
-            id: "mock-template-id",
-            name: "mock-template",
-            description: "A mock template",
-            delimiters: {
-                content: { start: "{{", end: "}}" },
-                path: { start: "[[", end: "]]" }
-            },
-            dependencies: ["mock-dependency"],
-            framework: "angular",
-            projectType: "ts",
-            hasExtraConfiguration: true,
-            templatePaths: ["/path/to/template"],
-            generateConfig: jasmine.createSpy().and.returnValue({}),
-            getExtraConfiguration: jasmine.createSpy().and.returnValue([]),
-            setExtraConfiguration: jasmine.createSpy()
-        };
+			id: "mock-template-id",
+			name: "mock-template",
+			description: "A mock template",
+			delimiters: {
+				content: { start: "{{", end: "}}" },
+				path: { start: "[[", end: "]]" }
+			},
+			dependencies: ["mock-dependency"],
+			framework: "angular",
+			projectType: "ts",
+			hasExtraConfiguration: true,
+			templatePaths: ["/path/to/template"],
+			generateConfig: jasmine.createSpy().and.returnValue({}),
+			getExtraConfiguration: jasmine.createSpy().and.returnValue([]),
+			setExtraConfiguration: jasmine.createSpy()
+		};
 
-        const mockProjectTemplate: ProjectTemplate = {
-            ...mockBaseTemplate,
-            installModules: jasmine.createSpy().and.callFake(() => {}),
-            upgradeIgniteUIPackages: jasmine.createSpy().and.returnValue(Promise.resolve(true))
-        };
+		const mockProjectTemplate: ProjectTemplate = {
+			...mockBaseTemplate,
+			installModules: jasmine.createSpy().and.callFake(() => {}),
+			upgradeIgniteUIPackages: jasmine.createSpy().and.returnValue(Promise.resolve(true))
+		};
 
 		const mockTemplate: Template = {
 			...mockBaseTemplate,

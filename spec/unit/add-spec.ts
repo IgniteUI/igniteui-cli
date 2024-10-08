@@ -10,89 +10,89 @@ import { AngularTemplate } from "../../packages/cli/lib/templates/AngularTemplat
 import { resetSpy } from "../helpers/utils";
 
 function createMockBaseTemplate(): BaseTemplate {
-    return {
-        id: "mock-template-id",
-        name: "mock-template",
-        description: "A mock template",
-        delimiters: {
-            content: { start: "{{", end: "}}" },
-            path: { start: "[[", end: "]]" }
-        },
-        dependencies: ["mock-dependency"],
-        framework: "angular",
-        projectType: "ts",
-        hasExtraConfiguration: true,
-        templatePaths: ["/path/to/template"],
-        generateConfig: jasmine.createSpy().and.returnValue({}),
-        getExtraConfiguration: jasmine.createSpy().and.returnValue([]),
-        setExtraConfiguration: jasmine.createSpy()
-    };
+	return {
+		id: "mock-template-id",
+		name: "mock-template",
+		description: "A mock template",
+		delimiters: {
+			content: { start: "{{", end: "}}" },
+			path: { start: "[[", end: "]]" }
+		},
+		dependencies: ["mock-dependency"],
+		framework: "angular",
+		projectType: "ts",
+		hasExtraConfiguration: true,
+		templatePaths: ["/path/to/template"],
+		generateConfig: jasmine.createSpy().and.returnValue({}),
+		getExtraConfiguration: jasmine.createSpy().and.returnValue([]),
+		setExtraConfiguration: jasmine.createSpy()
+	};
 }
 
 function createMockProjectTemplate(baseTemplate: BaseTemplate): ProjectTemplate {
-    return {
-        ...baseTemplate,
-        installModules: jasmine.createSpy().and.callFake(() => {}),
-        upgradeIgniteUIPackages: jasmine.createSpy().and.returnValue(Promise.resolve(true))
-    };
+	return {
+		...baseTemplate,
+		installModules: jasmine.createSpy().and.callFake(() => {}),
+		upgradeIgniteUIPackages: jasmine.createSpy().and.returnValue(Promise.resolve(true))
+	};
 }
 
 function createMockTemplate(baseTemplate: BaseTemplate): Template {
-    return {
-        ...baseTemplate,
-        components: ["mock-component"],
-        controlGroup: "mock-group",
-        listInComponentTemplates: true,
-        listInCustomTemplates: true,
-        packages: ["mock-package"],
-        registerInProject: jasmine.createSpy(),
-    };
+	return {
+		...baseTemplate,
+		components: ["mock-component"],
+		controlGroup: "mock-group",
+		listInComponentTemplates: true,
+		listInCustomTemplates: true,
+		packages: ["mock-package"],
+		registerInProject: jasmine.createSpy(),
+	};
 }
 
 function createMockLibrary(mockTemplate: Template, mockProjectTemplate: ProjectTemplate): ProjectLibrary {
-    return {
-        name: "mock-library",
-        themes: ["mock-theme"],
-        components: [{
-            name: "mock-component",
-            description: "A mock component",
-            group: "mock-group",
-            groupPriority: 1,
-            templates: [mockTemplate]
-        }],
-        projectIds: ["another-mock"],
-        projects: [mockProjectTemplate],
-        templates: [mockTemplate],
-        projectType: "ts",
-        generateTemplateFolderPath: "/path/to/templates",
-        getCustomTemplateNames: jasmine.createSpy().and.returnValue([]),
-        getTemplateByName: jasmine.createSpy().and.returnValue(mockTemplate),
-        getTemplateById: jasmine.createSpy().and.returnValue(mockTemplate),
-        getComponentByName: jasmine.createSpy().and.returnValue({
-            name: "mock-component",
-            description: "A mock component",
-            group: "mock-group",
-            groupPriority: 1,
-            templates: [mockTemplate]
-        }),
-        getComponentGroupNames: jasmine.createSpy().and.returnValue(["mock-group"]),
-        getComponentsByGroup: jasmine.createSpy().and.returnValue([{
-            name: "mock-component",
-            description: "A mock component",
-            group: "mock-group",
-            groupPriority: 1,
-            templates: [mockTemplate]
-        }]),
-        getComponentGroups: jasmine.createSpy().and.returnValue([{
-            name: "mock-group",
-            description: "A mock component group"
-        }]),
-        getCustomTemplates: jasmine.createSpy().and.returnValue([mockTemplate]),
-        getProject: jasmine.createSpy().and.returnValue(mockProjectTemplate),
-        hasProject: jasmine.createSpy().and.returnValue(false),
-        hasTemplate: jasmine.createSpy().and.returnValue(false),
-        registerTemplate: jasmine.createSpy()
-    };
+	return {
+		name: "mock-library",
+		themes: ["mock-theme"],
+		components: [{
+			name: "mock-component",
+			description: "A mock component",
+			group: "mock-group",
+			groupPriority: 1,
+			templates: [mockTemplate]
+		}],
+		projectIds: ["another-mock"],
+		projects: [mockProjectTemplate],
+		templates: [mockTemplate],
+		projectType: "ts",
+		generateTemplateFolderPath: "/path/to/templates",
+		getCustomTemplateNames: jasmine.createSpy().and.returnValue([]),
+		getTemplateByName: jasmine.createSpy().and.returnValue(mockTemplate),
+		getTemplateById: jasmine.createSpy().and.returnValue(mockTemplate),
+		getComponentByName: jasmine.createSpy().and.returnValue({
+			name: "mock-component",
+			description: "A mock component",
+			group: "mock-group",
+			groupPriority: 1,
+			templates: [mockTemplate]
+		}),
+		getComponentGroupNames: jasmine.createSpy().and.returnValue(["mock-group"]),
+		getComponentsByGroup: jasmine.createSpy().and.returnValue([{
+			name: "mock-component",
+			description: "A mock component",
+			group: "mock-group",
+			groupPriority: 1,
+			templates: [mockTemplate]
+		}]),
+		getComponentGroups: jasmine.createSpy().and.returnValue([{
+			name: "mock-group",
+			description: "A mock component group"
+		}]),
+		getCustomTemplates: jasmine.createSpy().and.returnValue([mockTemplate]),
+		getProject: jasmine.createSpy().and.returnValue(mockProjectTemplate),
+		hasProject: jasmine.createSpy().and.returnValue(false),
+		hasTemplate: jasmine.createSpy().and.returnValue(false),
+		registerTemplate: jasmine.createSpy()
+	};
 }
 
 describe("Unit - Add command", () => {
@@ -105,16 +105,16 @@ describe("Unit - Add command", () => {
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 		const mockProjectConfig = {
 			project: {
-			  framework: "angular",
-			   theme: "infragistics"
-		    }
-	    } as unknown as Config;
+			framework: "angular",
+			theme: "infragistics"
+			}
+		} as unknown as Config;
 		spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
 
 		const mockBaseTemplate = createMockBaseTemplate();
-        const mockProjectTemplate = createMockProjectTemplate(mockBaseTemplate);
-        const mockTemplate = createMockTemplate(mockBaseTemplate);
-        const mockProjLib = createMockLibrary(mockTemplate, mockProjectTemplate);
+		const mockProjectTemplate = createMockProjectTemplate(mockBaseTemplate);
+		const mockTemplate = createMockTemplate(mockBaseTemplate);
+		const mockProjLib = createMockLibrary(mockTemplate, mockProjectTemplate);
 
 		addCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: {},
@@ -131,10 +131,10 @@ describe("Unit - Add command", () => {
 	it("Should validate and trim name", async () => {
 		const mockProjectConfig = {
 			project: {
-			  framework: "angular",
-			   theme: "infragistics"
-		    }
-	    } as unknown as Config;
+				framework: "angular",
+				theme: "infragistics"
+			}
+		} as unknown as Config;
 		spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
 		spyOn(Util, "error");
 		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(false));
@@ -184,10 +184,10 @@ describe("Unit - Add command", () => {
 	it("Should queue package dependencies and wait for install", async () => {
 		const mockProjectConfig = {
 			project: {
-			  framework: "angular",
-			   theme: "infragistics"
-		    }
-	    } as unknown as Config;
+				framework: "angular",
+				theme: "infragistics"
+			}
+		} as unknown as Config;
 		spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
 		spyOn(Util, "log");
 		spyOn(PackageManager, "queuePackage");
@@ -227,10 +227,10 @@ describe("Unit - Add command", () => {
 	it("Should properly accept module args when passed - IgniteUI for Angular", async () => {
 		const mockProjectConfig = {
 			project: {
-			  framework: "angular",
-			   theme: "infragistics"
-		    }
-	    } as unknown as Config;
+				framework: "angular",
+				theme: "infragistics"
+			}
+		} as unknown as Config;
 		spyOn(TypeScriptUtils, "getFileSource").and.returnValue(
 			ts.createSourceFile("test-file-name", ``, ts.ScriptTarget.Latest, true)
 		);
@@ -315,10 +315,10 @@ describe("Unit - Add command", () => {
 	it("Should properly accept module args when passed - Angular Wrappers", async () => {
 		const mockProjectConfig = {
 			project: {
-			  framework: "angular",
-			   theme: "infragistics"
-		    }
-	    } as unknown as Config;
+				framework: "angular",
+				theme: "infragistics"
+			}
+		} as unknown as Config;
 		spyOn(TypeScriptUtils, "getFileSource").and.returnValue(
 			ts.createSourceFile("test-file-name", ``, ts.ScriptTarget.Latest, true)
 		);
@@ -384,10 +384,10 @@ describe("Unit - Add command", () => {
 	it("Should properly accept skip-route args when passed", async () => {
 		const mockProjectConfig = {
 			project: {
-			  framework: "angular",
-			   theme: "infragistics"
-		    }
-	    } as unknown as Config;
+				framework: "angular",
+				theme: "infragistics"
+			}
+		} as unknown as Config;
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 		spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
 

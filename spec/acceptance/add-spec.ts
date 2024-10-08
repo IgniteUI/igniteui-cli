@@ -1,5 +1,10 @@
 import {
-	 FEED_ANGULAR, NPM_ANGULAR, GoogleAnalytics, GoogleAnalyticsParameters, ProjectConfig, Config
+	FEED_ANGULAR,
+	NPM_ANGULAR,
+	GoogleAnalytics,
+	GoogleAnalyticsParameters,
+	ProjectConfig,
+	Config
 } from "@igniteui/cli-core";
 import * as fs from "fs";
 import { EOL } from "os";
