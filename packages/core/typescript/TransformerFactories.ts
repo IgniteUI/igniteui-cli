@@ -214,6 +214,27 @@ export const newMemberInArrayLiteralTransformerFactory = (
 };
 
 /**
+ * Creates a {@link ts.TransformerFactory} that sorts the elements in a {@link ts.ArrayLiteralExpression}.
+ */
+export const sortInArrayLiteralTransformerFactory = (
+  visitCondition: (node: ts.ArrayLiteralExpression,) => boolean,
+  sortCondition: (a: ts.Expression, b: ts.Expression) => number
+) => {
+	return <T extends ts.Node>(context: ts.TransformationContext) => {
+		return (rootNode: T) => {
+			const visitor = (node: ts.Node): ts.VisitResult<ts.Node> => {
+				if (ts.isArrayLiteralExpression(node) && visitCondition(node)) {
+					const elements = [...node.elements].sort(sortCondition);
+					return context.factory.updateArrayLiteralExpression(node, elements);
+				}
+				return ts.visitEachChild(node, visitor, context);
+			}
+			return ts.visitNode(rootNode, visitor, ts.isSourceFile);
+		};
+	};
+};
+
+/**
  * Creates a {@link ts.TransformerFactory} that adds a new argument to a {@link ts.CallExpression}.
  */
 export const newArgumentInMethodCallExpressionTransformerFactory = (

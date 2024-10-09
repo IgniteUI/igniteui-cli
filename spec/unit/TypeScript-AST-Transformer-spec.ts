@@ -406,6 +406,59 @@ describe('TypeScript AST Transformer', () => {
       );
       expect(result).toEqual(`[\n    "new-value",\n    5\n]`);
     });
+
+    it('should properly sort the members of an array literal numbers', () => {
+      FILE_CONTENT = `const myArr = [1, 10, -3, 0, 65, 12, 6.3, 6.2, 11];`;
+      sourceFile = ts.createSourceFile(
+        FILE_NAME,
+        FILE_CONTENT,
+        ts.ScriptTarget.Latest,
+        true
+      );
+      astTransformer = new TypeScriptAstTransformer(sourceFile);
+      astTransformer.requestSortInArrayLiteral(
+        ts.isArrayLiteralExpression,
+        (a, b) => {
+          let leftSide = 0;
+          let rightSide = 0;
+          if (ts.isNumericLiteral(a)) {
+            leftSide = parseFloat(a.text);
+          }
+          if (ts.isNumericLiteral(b)) {
+            rightSide = parseFloat(b.text);
+          }
+
+          const resolveUnaryExprPrefix = (
+            kind: ts.SyntaxKind,
+            parsedNum: number
+          ) => {
+            if (kind === ts.SyntaxKind.MinusToken) {
+              return -parsedNum;
+            }
+            return parsedNum;
+          };
+
+          if (ts.isPrefixUnaryExpression(a) && ts.isNumericLiteral(a.operand)) {
+            leftSide = resolveUnaryExprPrefix(
+              a.operator,
+              parseFloat(a.operand.text)
+            );
+          }
+          if (ts.isPrefixUnaryExpression(b) && ts.isNumericLiteral(b.operand)) {
+            rightSide = resolveUnaryExprPrefix(
+              b.operator,
+              parseFloat(b.operand.text)
+            );
+          }
+          return leftSide - rightSide;
+        }
+      );
+
+      const result = astTransformer.finalize();
+      expect(result).toEqual(
+        `const myArr = [-3, 0, 1, 6.2, 6.3, 10, 11, 12, 65];\n`
+      );
+    });
   });
 
   describe('Imports', () => {

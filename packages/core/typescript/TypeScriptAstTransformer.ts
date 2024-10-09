@@ -17,6 +17,7 @@ import {
   newImportDeclarationTransformerFactory,
   newMemberInArrayLiteralTransformerFactory,
   newMemberInObjectLiteralTransformerFactory,
+  sortInArrayLiteralTransformerFactory,
   updateForObjectLiteralMemberTransformerFactory,
 } from './TransformerFactories';
 import { TypeScriptExpressionCollector } from './TypeScriptExpressionCollector';
@@ -342,6 +343,32 @@ export class TypeScriptAstTransformer {
       transformerFactory,
       isExpression ? SyntaxKind.Expression : SyntaxKind.PropertyAssignment,
       ts.factory.createNodeArray(elements)
+    );
+  }
+
+  /**
+   * Creates a request that will resolve during {@link finalize} which sorts the elements in an array literal expression.
+   * @param visitCondition The condition by which the array literal expression is found.
+   * @param sortCondition The sorting function to apply to the array elements.
+   *
+   * @remarks The `sortCondition` function should return a negative number if `a` should come before `b`,
+   *  a positive number if `a` should come after `b`, or zero if they are equal.
+   *
+   * It uses `Array.prototype.sort` internally.
+   */
+  public requestSortInArrayLiteral(
+    visitCondition: (node: ts.ArrayLiteralExpression) => boolean,
+    sortCondition: (a: ts.Expression, b: ts.Expression) => number
+  ): void {
+    const transformerFactory = sortInArrayLiteralTransformerFactory(
+      visitCondition,
+      sortCondition
+    );
+    this.requestChange(
+      ChangeType.NodeUpdate,
+      transformerFactory,
+      SyntaxKind.ArrayLiteralExpression,
+      null // assume the nodes of the matched array literal
     );
   }
 
