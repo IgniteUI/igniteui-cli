@@ -22,7 +22,7 @@
   "dependencies": {
     "@vaadin/router": "^1.7.4",
     "lit": "^3.1.2",
-    "typescript": "^5.3.3",
+    "typescript": "~5.5.4",
     "igniteui-webcomponents": "~4.11.0"
   },
   "devDependencies": {

@@ -3,9 +3,8 @@ import { NodePackageTaskOptions } from "@angular-devkit/schematics/tasks/package
 import { RepositoryInitializerTaskOptions } from "@angular-devkit/schematics/tasks/repo-init/options";
 import { RunSchematicTaskOptions } from "@angular-devkit/schematics/tasks/run-schematic/options";
 import { SchematicTestRunner, UnitTestTree } from "@angular-devkit/schematics/testing";
-import { GoogleAnalytics, ProjectTemplate } from "@igniteui/cli-core";
+import { BaseTemplate, GoogleAnalytics, ProjectLibrary, ProjectTemplate, Template } from "@igniteui/cli-core";
 import * as path from "path";
-import { take } from "rxjs/operators";
 import * as AppProjectSchematic from "../app-projects/index";
 import { SchematicsPromptSession } from "../prompt/SchematicsPromptSession";
 
@@ -17,12 +16,87 @@ describe("Schematics ng-new", () => {
 		spyOn(GoogleAnalytics, "post");
 	});
 
-	it("works with no name provided", done => {
+	it("works with no name provided", () => {
 		const runner = new SchematicTestRunner("schematics", collectionPath);
 		const myTree = Tree.empty();
 		const workingDirectory = "my-test-project";
-		const mockLibrary = {
-			getProject: jasmine.createSpy("getProject").and.returnValue(true), projectIds: ["empty-page"], themes: ["custom"]
+
+		const mockBaseTemplate: BaseTemplate = {
+			id: "mock-template-id",
+			name: "mock-template",
+			description: "A mock template",
+			delimiters: {
+				content: { start: "{{", end: "}}" },
+				path: { start: "[[", end: "]]" }
+			},
+			dependencies: ["mock-dependency"],
+			framework: "angular",
+			projectType: "ts",
+			hasExtraConfiguration: true,
+			templatePaths: ["/path/to/template"],
+			generateConfig: jasmine.createSpy().and.returnValue({}),
+			getExtraConfiguration: jasmine.createSpy().and.returnValue([]),
+			setExtraConfiguration: jasmine.createSpy()
+		};
+
+		const mockProjectTemplate: ProjectTemplate = {
+			...mockBaseTemplate,
+			installModules: jasmine.createSpy().and.callFake(() => {}),
+			upgradeIgniteUIPackages: jasmine.createSpy().and.returnValue(Promise.resolve(true))
+		};
+
+		const mockTemplate: Template = {
+			...mockBaseTemplate,
+			components: ["mock-component"],
+			controlGroup: "mock-group",
+			listInComponentTemplates: true,
+			listInCustomTemplates: true,
+			packages: ["mock-package"],
+			registerInProject: jasmine.createSpy(),
+		};
+
+		const mockLibrary: ProjectLibrary = {
+			name: "mock-library",
+			themes: ["mock-theme"],
+			components: [{
+				name: "mock-component",
+				description: "A mock component",
+				group: "mock-group",
+				groupPriority: 1,
+				templates: [mockTemplate]
+			}],
+			projectIds: ["another-mock"],
+			projects: [mockProjectTemplate],
+			templates: [mockTemplate],
+			projectType: "ts",
+			generateTemplateFolderPath: "/path/to/templates",
+			getCustomTemplateNames: jasmine.createSpy().and.returnValue([]),
+			getTemplateByName: jasmine.createSpy().and.returnValue(mockTemplate),
+			getTemplateById: jasmine.createSpy().and.returnValue(mockTemplate),
+			getComponentByName: jasmine.createSpy().and.returnValue({
+				name: "mock-component",
+				description: "A mock component",
+				group: "mock-group",
+				groupPriority: 1,
+				templates: [mockTemplate]
+			}),
+			getComponentGroupNames: jasmine.createSpy().and.returnValue(["mock-group"]),
+			getComponentsByGroup: jasmine.createSpy().and.returnValue([{
+				name: "mock-component",
+				description: "A mock component",
+				group: "mock-group",
+				groupPriority: 1,
+				templates: [mockTemplate]
+			}]),
+			getComponentGroups: jasmine.createSpy().and.returnValue([{
+				name: "mock-group",
+				description: "A mock component group"
+			}]),
+			getCustomTemplates: jasmine.createSpy().and.returnValue([mockTemplate]),
+			getProject: jasmine.createSpy().and.returnValue(mockProjectTemplate),
+			hasProject: jasmine.createSpy().and.returnValue(false),
+			hasTemplate: jasmine.createSpy().and.returnValue(false),
+			registerTemplate: jasmine.createSpy()
 		};
 
 		const mockProject: Partial<ProjectTemplate> = {
@@ -32,11 +106,11 @@ describe("Schematics ng-new", () => {
 
 		const mockSession = {
 			chooseActionLoop: spyOn(SchematicsPromptSession.prototype, "chooseActionLoop")
-				.and.returnValue(Promise.resolve(true)),
+				.and.returnValue(Promise.resolve()),
 			getProjectLibraryByType: spyOn(SchematicsPromptSession.prototype, "getProjectLibraryByType")
 				.and.returnValue((Promise.resolve(mockLibrary))),
 			getProjectTemplate: spyOn(SchematicsPromptSession.prototype, "getProjectTemplate")
-				.and.returnValue(Promise.resolve(mockProject)),
+				.and.returnValue(Promise.resolve(mockProjectTemplate)),
 			getTheme: spyOn(SchematicsPromptSession.prototype, "getTheme")
 				.and.returnValue(Promise.resolve("custom")),
 			getUserInput: spyOn(SchematicsPromptSession.prototype, "getUserInput")
@@ -56,9 +130,8 @@ describe("Schematics ng-new", () => {
 			return currentTree;
 		});
 
-		runner.runSchematicAsync("ng-new", { version: "8.0.3" }, myTree)
-		.pipe(take(1))
-		.subscribe((e: UnitTestTree) => {
+		runner.runSchematic("ng-new", { version: "8.0.3" }, myTree)
+		.then((e: UnitTestTree) => {
 			for (const mockFunc of Object.entries(mockSession)) {
 				expect(mockFunc[1]).toHaveBeenCalled();
 			}
@@ -93,11 +166,10 @@ describe("Schematics ng-new", () => {
 			expect(taskOptions).toContain(jasmine.objectContaining(expectedInstall));
 			expect(taskOptions).toContain(expectedInit);
 			expect(taskOptions).toContain(expectedStart);
-			done();
 		});
 	});
 
-	it("works with name provided", done => {
+	it("works with name provided", () => {
 		const runner = new SchematicTestRunner("schematics", collectionPath);
 		const myTree = Tree.empty();
 		const workingDirectory = "my-test-project";
@@ -105,16 +177,6 @@ describe("Schematics ng-new", () => {
 			upgradeIgniteUIPackages: () => Promise.resolve(true)
 		};
 		spyOn(mockProject, "upgradeIgniteUIPackages").and.callThrough();
-		const mockLibrary = {
-			getProject: jasmine.createSpy("getProject").and.returnValue(mockProject),
-			projectIds: ["empty-page"],
-			themes: ["custom"]
-		};
-
-		const mockSession = {
-			getProjectLibraryByType: spyOn(SchematicsPromptSession.prototype, "getProjectLibraryByType")
-			.and.returnValue((Promise.resolve(mockLibrary)))
-		};
 
 		const userAnswers = new Map<string, any>();
 		userAnswers.set("upgradePackages", true);
@@ -125,12 +187,8 @@ describe("Schematics ng-new", () => {
 			return currentTree;
 		});
 
-		runner.runSchematicAsync("ng-new", { version: "8.0.3", name: workingDirectory }, myTree)
-		.pipe(take(1))
-		.subscribe((e: UnitTestTree) => {
-			for (const mockFunc of Object.entries(mockSession)) {
-				expect(mockFunc[1]).toHaveBeenCalled();
-			}
+		runner.runSchematic("ng-new", { version: "8.0.3", name: workingDirectory }, myTree)
+		.then((e: UnitTestTree) => {
 			expect(AppProjectSchematic.default).toHaveBeenCalled();
 			expect(e.files.length).toEqual(1);
 			expect(e.exists(`${workingDirectory}/.gitignore`)).toBeTruthy();
@@ -154,7 +212,6 @@ describe("Schematics ng-new", () => {
 			expect(mockProject.upgradeIgniteUIPackages).toHaveBeenCalled();
 			expect(taskOptions).toContain(jasmine.objectContaining(expectedInstall));
 			expect(taskOptions).toContain(expectedInit);
-			done();
 		});
 	});
 });

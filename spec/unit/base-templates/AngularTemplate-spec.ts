@@ -1,4 +1,4 @@
-import { ProjectConfig, Util } from "@igniteui/cli-core";
+import { App, Config, ProjectConfig, Util } from "@igniteui/cli-core";
 import * as path from "path";
 import { AngularTemplate } from "../../../packages/cli/lib/templates/AngularTemplate";
 import { AngularTypeScriptFileUpdate } from "@igniteui/angular-templates";
@@ -15,7 +15,7 @@ describe("Unit - AngularTemplate Base", () => {
 		public widget = "widget no-process";
 	}
 
-	it("generateConfig call processTemplates with correct path and variables", async done => {
+	it("generateConfig call processTemplates with correct path and variables", async () => {
 		const expected = {
 			name: "my component",
 			ClassName: "MyComponent",
@@ -40,10 +40,9 @@ describe("Unit - AngularTemplate Base", () => {
 		// 	path.join("root/path" , "files"),
 		// 	"/target/path",
 		// 	expected, {});
-		done();
 	});
 
-	it("generateConfig merge passed variables under extraConfig (only)", async done => {
+	it("generateConfig merge passed variables under extraConfig (only)", async () => {
 		const expected = {
 			name: "page",
 			ClassName: "Page",
@@ -84,16 +83,22 @@ describe("Unit - AngularTemplate Base", () => {
 			someThirdVar: false
 		});
 		expect(actual).toEqual(expected);
-		done();
 	});
 
 	describe("registerInProject", () => {
 		let helpers;
 		beforeEach(() => {
+			const tsUpdateMock = jasmine.createSpyObj(
+				"AngularTypeScriptFileUpdate", ["addRoute", "addNgModuleMeta", "finalize"]) as AngularTypeScriptFileUpdate;
+			function AngularTypeScriptFileUpdate() {
+				this.addRoute = tsUpdateMock.addRoute;
+				this.addNgModuleMeta = tsUpdateMock.addNgModuleMeta;
+				this.finalize = tsUpdateMock.finalize;
+			}
+
 			helpers = {
-				tsUpdateMock: jasmine.createSpyObj(
-					"AngularTypeScriptFileUpdate", ["addRoute", "addNgModuleMeta", "finalize"]) as AngularTypeScriptFileUpdate,
-				AngularTypeScriptFileUpdate: () => helpers.tsUpdateMock,
+				tsUpdateMock,
+				AngularTypeScriptFileUpdate,
 				requireMock: require
 			}
 
@@ -106,12 +111,25 @@ describe("Unit - AngularTemplate Base", () => {
 				}
 			});
 			spyOn(helpers, "AngularTypeScriptFileUpdate").and.callThrough();
+
+			const mockFileSystem = {
+				fileExists: jasmine.createSpy().and.returnValue(false),
+				readFile: jasmine.createSpy().and.returnValue(JSON.stringify({ key: "value" })),
+				writeFile: jasmine.createSpy().and.callThrough()
+			};
+			spyOn(App.container, 'get').and.returnValue(mockFileSystem);
+
+			const mockProjectConfig = {
+				project: {
+					sourceFiles: ["existing"]
+				}
+			} as unknown as Config;
 			// return through function to get new obj ref each time
-			spyOn(ProjectConfig, "getConfig").and.callFake(() => ({ project: { sourceFiles: ["existing"] } }));
+			spyOn(ProjectConfig, "getConfig").and.callFake(() => (mockProjectConfig));
 			spyOn(ProjectConfig, "setConfig");
 		});
 
-		it("registers route and declare component", async done => {
+		it("registers route and declare component", async () => {
 			const templ = new TestTemplate();
 			templ.registerInProject("target/path", "view name");
 			expect(helpers.AngularTypeScriptFileUpdate)
@@ -134,15 +152,14 @@ describe("Unit - AngularTemplate Base", () => {
 					],
 					from: "./components/view-name/view-name.component",
 					export: [],
-				  }
+				}
 			);
 			expect(helpers.tsUpdateMock.finalize).toHaveBeenCalled();
 
 			//config update:
 			expect(ProjectConfig.setConfig).toHaveBeenCalledTimes(0);
-			done();
 		});
-		it("should skip route if skipRoute is passed", async done => {
+		it("should skip route if skipRoute is passed", async () => {
 			const templ = new TestTemplate();
 			templ.registerInProject("target/path", "view name", { skipRoute: true });
 			expect(helpers.tsUpdateMock.addRoute).toHaveBeenCalledTimes(0);
@@ -158,39 +175,46 @@ describe("Unit - AngularTemplate Base", () => {
 					],
 					from: "./components/view-name/view-name.component",
 					export: [],
-				  }
+				}
 			);
 			expect(helpers.tsUpdateMock.finalize).toHaveBeenCalled();
 
 			//config update:
 			expect(ProjectConfig.setConfig).toHaveBeenCalledTimes(0);
-			done();
 		});
-		it("updates project config", async done => {
+		it("updates project config", async () => {
 			const templ = new TestTemplate();
 			templ.dependencies.push("igDvWidget");
 			templ.registerInProject("", "");
-			expect(ProjectConfig.setConfig).toHaveBeenCalledWith({ project: {
-				sourceFiles: ["existing", "infragistics.dv.js"]
-			} });
+			const firstMockProjectConfig = {
+				project: {
+					sourceFiles: ["existing", "infragistics.dv.js"]
+				}
+			} as unknown as Config;
+			expect(ProjectConfig.setConfig).toHaveBeenCalledWith(firstMockProjectConfig);
 
 			templ.dependencies.push("igExcel");
 			templ.registerInProject("", "");
-			expect(ProjectConfig.setConfig).toHaveBeenCalledWith({ project: {
-				sourceFiles: ["existing", "infragistics.dv.js", "infragistics.excel-bundled.js"]
-			} });
+			const secondMockProjectConfig = {
+				project: {
+					sourceFiles: ["existing", "infragistics.dv.js", "infragistics.excel-bundled.js"]
+				}
+			} as unknown as Config;
+			expect(ProjectConfig.setConfig).toHaveBeenCalledWith(secondMockProjectConfig);
 
 			templ.dependencies.push("igGridExcelExporter");
 			templ.registerInProject("", "");
-			expect(ProjectConfig.setConfig).toHaveBeenCalledWith({ project: {
-				sourceFiles: [
-					"existing",
-					"infragistics.dv.js",
-					"infragistics.excel-bundled.js",
-					"modules/infragistics.gridexcelexporter.js"
-				]
-			} });
-			done();
+			const thirdMockProjectConfig = {
+				project: {
+					sourceFiles: [
+						"existing",
+						"infragistics.dv.js",
+						"infragistics.excel-bundled.js",
+						"modules/infragistics.gridexcelexporter.js"
+					]
+				}
+			} as unknown as Config;
+			expect(ProjectConfig.setConfig).toHaveBeenCalledWith(thirdMockProjectConfig);
 		});
 	});
 });

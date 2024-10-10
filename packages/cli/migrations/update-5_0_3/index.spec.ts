@@ -12,6 +12,7 @@ describe("Update 5.0.0", () => {
 		defaultProject: "testProj",
 		projects: {
 			testProj: {
+				root: "",
 				prefix: "app",
 				sourceRoot: "src"
 			}
@@ -24,7 +25,7 @@ describe("Update 5.0.0", () => {
 		appTree.create("/angular.json", JSON.stringify(configJson));
 	});
 
-	it("should update error handler service if found", async done => {
+	it("should update error handler service if found", async () => {
 		const errorService = "src/app/error-routing/error/global-error-handler.service.ts";
 		appTree.create(errorService,
 `import { ErrorHandler, Injectable, isDevMode } from '@angular/core';
@@ -40,7 +41,7 @@ export class GlobalErrorHandlerService implements ErrorHandler {
 `
 		);
 
-		await schematicRunner.runSchematicAsync("migration-06", {}, appTree).toPromise();
+		await schematicRunner.runSchematic("migration-06", {}, appTree);
 		expect(appTree.readContent(errorService).replace(/\r\n/g, "\n"))
 			.toEqual(
 `import { ErrorHandler, Injectable, isDevMode } from '@angular/core';
@@ -55,6 +56,5 @@ export class GlobalErrorHandlerService implements ErrorHandler {
 }
 `.replace(/\r\n/g, "\n")
 			);
-		done();
 	});
 });
