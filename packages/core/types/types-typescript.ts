@@ -84,3 +84,41 @@ export interface ChangeRequest<T extends ts.Node> {
    */
   node: T | ts.NodeArray<T>;
 }
+
+/**
+ * Options that can be applied when modifying a literal expression.
+ */
+export interface LiteralExpressionOptionsBase {
+  /**
+   * Whether the literal should be on multiple lines.
+   * @remarks This option is only applicable to {@link ts.ObjectLiteralExpression} and {@link ts.ArrayLiteralExpression}.
+   */
+  multiline?: boolean;
+}
+
+/**
+ * Options that can be applied when modifying an {@link ts.ObjectLiteralExpression}.
+ */
+export interface ObjectLiteralExpressionEditOptions
+  extends LiteralExpressionOptionsBase {
+  /**
+   * Whether to override all elements of the property's initializer.
+   * @remarks This option is only applicable to {@link ts.PropertyAssignment} with an initializer that is {@link ts.ArrayLiteralExpression}.
+   */
+  override?: boolean;
+}
+
+/**
+ * Options that can be applied when modifying an {@link ts.ArrayLiteralExpression}.
+ */
+export interface ArrayLiteralExpressionEditOptions
+  extends LiteralExpressionOptionsBase {
+  /**
+   * Whether to override all elements of the {@link ts.ArrayLiteralExpression}.
+   */
+  override?: boolean;
+  /**
+   * If any elements should be added at the beginning of an {@link ts.ArrayLiteralExpression}.
+   */
+  prepend?: boolean;
+}

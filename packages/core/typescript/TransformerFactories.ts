@@ -2,6 +2,7 @@ import * as ts from 'typescript';
 import {
   Identifier,
   ImportDeclarationMeta,
+  ObjectLiteralExpressionEditOptions,
   PropertyAssignment,
 } from '../types';
 import { SIDE_EFFECTS_IMPORT_TEMPLATE_NAME } from '../util';
@@ -26,9 +27,8 @@ import { TypeScriptExpressionCollector } from './TypeScriptExpressionCollector';
 export const newMemberInObjectLiteralTransformerFactory = (
   newProperty: ts.PropertyAssignment,
   visitCondition: (node: ts.Node) => boolean,
-  multiline: boolean,
   expressionCollector: TypeScriptExpressionCollector,
-  override: boolean
+  options: ObjectLiteralExpressionEditOptions
 ): ts.TransformerFactory<ts.SourceFile> => {
   return <T extends ts.Node>(context: ts.TransformationContext) => {
     return (rootNode: T) => {
@@ -74,8 +74,8 @@ export const newMemberInObjectLiteralTransformerFactory = (
               context,
               node,
               expressionCollector,
-              multiline,
-              override
+              options?.multiline,
+              options?.override
             );
           }
 

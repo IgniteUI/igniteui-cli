@@ -454,7 +454,7 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
       visitorCondition,
       target,
       this.factory.createArrayLiteralExpression(value, multiline),
-      multiline
+      { multiline }
     );
   }
 

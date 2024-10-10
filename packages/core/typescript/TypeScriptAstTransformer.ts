@@ -9,6 +9,7 @@ import {
   ChangeRequest,
   ChangeType,
   SyntaxKind,
+  ObjectLiteralExpressionEditOptions,
 } from '../types';
 import { TypeScriptFormattingService } from './TypeScriptFormattingService';
 import {
@@ -194,15 +195,13 @@ export class TypeScriptAstTransformer {
     visitCondition: (node: ts.ObjectLiteralExpression) => boolean,
     propertyName: string,
     propertyValue: ts.Expression,
-    multiline?: boolean,
-    override?: boolean
+	options?: ObjectLiteralExpressionEditOptions
   ): void;
   public requestNewMemberInObjectLiteral(
     visitCondition: (node: ts.ObjectLiteralExpression) => boolean,
     propertyNameOrAssignment: string | PropertyAssignment,
     propertyValue?: ts.Expression,
-    multiline?: boolean,
-    override?: boolean
+	options?: ObjectLiteralExpressionEditOptions
   ): void {
     let newProperty: ts.PropertyAssignment;
     if (propertyNameOrAssignment instanceof Object) {
@@ -222,9 +221,8 @@ export class TypeScriptAstTransformer {
     const transformerFactory = newMemberInObjectLiteralTransformerFactory(
       newProperty,
       visitCondition,
-      multiline,
       this._expressionCollector,
-      override
+      options
     );
     this.requestChange(
       ChangeType.NewNode,
