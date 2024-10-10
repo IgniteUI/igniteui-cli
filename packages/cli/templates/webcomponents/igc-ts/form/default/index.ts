@@ -9,7 +9,7 @@ class IgcFormTemplate extends IgniteUIForWebComponentsTemplate {
 		this.id = "form";
 		this.projectType = "igc-ts";
 		this.name = "Form";
-		this.description = "basic IgcForm";
+		this.description = "basic Form";
 	}
 }
 module.exports = new IgcFormTemplate();
