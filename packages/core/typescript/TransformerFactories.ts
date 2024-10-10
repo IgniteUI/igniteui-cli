@@ -1,5 +1,6 @@
 import * as ts from 'typescript';
 import {
+	ArrayLiteralExpressionEditOptions,
   Identifier,
   ImportDeclarationMeta,
   ObjectLiteralExpressionEditOptions,
@@ -138,8 +139,8 @@ export const updateForObjectLiteralMemberTransformerFactory = (
 export const newMemberInArrayLiteralTransformerFactory = (
   visitCondition: (node: ts.ArrayLiteralExpression) => boolean,
   elements: ts.Expression[],
-  prepend: boolean = false,
-  anchorElement?: ts.StringLiteral | ts.NumericLiteral | PropertyAssignment
+  anchorElement?: ts.StringLiteral | ts.NumericLiteral | PropertyAssignment,
+  options?: ArrayLiteralExpressionEditOptions
 ): ts.TransformerFactory<ts.SourceFile> => {
   return <T extends ts.Node>(context: ts.TransformationContext) => {
     return (rootNode: T) => {
@@ -179,7 +180,7 @@ export const newMemberInArrayLiteralTransformerFactory = (
 
           if (anchor) {
             let structure!: ts.Expression[];
-            if (prepend) {
+            if (options?.prepend) {
               structure = node.elements
                 .slice(0, node.elements.indexOf(anchor))
                 .concat(elements)
@@ -197,7 +198,7 @@ export const newMemberInArrayLiteralTransformerFactory = (
             );
           }
 
-          if (prepend) {
+          if (options?.prepend) {
             return context.factory.updateArrayLiteralExpression(node, [
               ...elements,
               ...node.elements,

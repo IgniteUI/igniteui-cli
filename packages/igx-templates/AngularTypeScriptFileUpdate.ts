@@ -72,8 +72,8 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
     this.astTransformer.requestNewMembersInArrayLiteral(
       variableAsParentCondition(this.astTransformer, ROUTES_VARIABLE_NAME),
       [newRoute],
-      prepend,
-      anchorElement
+      anchorElement,
+      { prepend }
     );
   }
 

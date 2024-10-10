@@ -10,6 +10,7 @@ import {
   ChangeType,
   SyntaxKind,
   ObjectLiteralExpressionEditOptions,
+  ArrayLiteralExpressionEditOptions,
 } from '../types';
 import { TypeScriptFormattingService } from './TypeScriptFormattingService';
 import {
@@ -195,13 +196,13 @@ export class TypeScriptAstTransformer {
     visitCondition: (node: ts.ObjectLiteralExpression) => boolean,
     propertyName: string,
     propertyValue: ts.Expression,
-	options?: ObjectLiteralExpressionEditOptions
+    options?: ObjectLiteralExpressionEditOptions
   ): void;
   public requestNewMemberInObjectLiteral(
     visitCondition: (node: ts.ObjectLiteralExpression) => boolean,
     propertyNameOrAssignment: string | PropertyAssignment,
     propertyValue?: ts.Expression,
-	options?: ObjectLiteralExpressionEditOptions
+    options?: ObjectLiteralExpressionEditOptions
   ): void {
     let newProperty: ts.PropertyAssignment;
     if (propertyNameOrAssignment instanceof Object) {
@@ -295,9 +296,8 @@ export class TypeScriptAstTransformer {
   public requestNewMembersInArrayLiteral(
     visitCondition: (node: ts.ArrayLiteralExpression) => boolean,
     elements: ts.Expression[],
-    prepend?: boolean,
     anchorElement?: ts.Expression | PropertyAssignment,
-    multiline?: boolean
+    options?: ArrayLiteralExpressionEditOptions
   ): void;
   /**
    * Creates a request that will resolve during {@link finalize} which adds a new element to an array literal expression.
@@ -311,16 +311,14 @@ export class TypeScriptAstTransformer {
   public requestNewMembersInArrayLiteral(
     visitCondition: (node: ts.ArrayLiteralExpression) => boolean,
     elements: PropertyAssignment[],
-    prepend?: boolean,
     anchorElement?: ts.Expression | PropertyAssignment,
-    multiline?: boolean
+    options?: ArrayLiteralExpressionEditOptions
   ): void;
   public requestNewMembersInArrayLiteral(
     visitCondition: (node: ts.ArrayLiteralExpression) => boolean,
     expressionOrPropertyAssignment: ts.Expression[] | PropertyAssignment[],
-    prepend: boolean = false,
     anchorElement?: ts.StringLiteral | ts.NumericLiteral | PropertyAssignment,
-    multiline: boolean = false
+    options?: ArrayLiteralExpressionEditOptions
   ): void {
     let elements: ts.Expression[] | PropertyAssignment[];
     const isExpression = expressionOrPropertyAssignment.every((e) =>
@@ -331,15 +329,18 @@ export class TypeScriptAstTransformer {
     } else {
       elements = (expressionOrPropertyAssignment as PropertyAssignment[]).map(
         (property) =>
-          this._factory.createObjectLiteralExpression([property], multiline)
+          this._factory.createObjectLiteralExpression(
+            [property],
+            options?.multiline
+          )
       );
     }
 
     const transformerFactory = newMemberInArrayLiteralTransformerFactory(
       visitCondition,
       elements,
-      prepend,
-      anchorElement
+      anchorElement,
+      options
     );
     this.requestChange(
       ChangeType.NewNode,
