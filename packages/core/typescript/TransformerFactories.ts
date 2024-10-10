@@ -94,45 +94,6 @@ export const newMemberInObjectLiteralTransformerFactory = (
   };
 };
 
-/** 		  // TODO: this method is no longer needed
- * Creates a {@link ts.TransformerFactory} that updates a member in a {@link ts.ObjectLiteralExpression}.
- */
-export const updateForObjectLiteralMemberTransformerFactory = (
-  visitCondition: (node: ts.ObjectLiteralExpression) => boolean,
-  targetMember: PropertyAssignment
-): ts.TransformerFactory<ts.SourceFile> => {
-  return <T extends ts.Node>(context: ts.TransformationContext) => {
-    return (rootNode: T) => {
-      const visitor = (node: ts.Node): ts.VisitResult<ts.Node> => {
-        if (ts.isObjectLiteralExpression(node) && visitCondition(node)) {
-          const newProperties = node.properties.map((property) => {
-            const isPropertyAssignment = ts.isPropertyAssignment(property);
-            if (
-              isPropertyAssignment &&
-              ts.isIdentifier(property.name) &&
-              property.name.text === targetMember.name
-            ) {
-              return context.factory.updatePropertyAssignment(
-                property,
-                property.name,
-                targetMember.value
-              );
-            }
-            return property;
-          });
-
-          return context.factory.updateObjectLiteralExpression(
-            node,
-            newProperties
-          );
-        }
-        return ts.visitEachChild(node, visitor, context);
-      };
-      return ts.visitNode(rootNode, visitor, ts.isSourceFile);
-    };
-  };
-};
-
 /**
  * Creates a {@link ts.TransformerFactory} that adds a new element to a {@link ts.ArrayLiteralExpression}.
  */

@@ -20,7 +20,6 @@ import {
   newMemberInArrayLiteralTransformerFactory,
   newMemberInObjectLiteralTransformerFactory,
   sortInArrayLiteralTransformerFactory,
-  updateForObjectLiteralMemberTransformerFactory,
 } from './TransformerFactories';
 import { TypeScriptExpressionCollector } from './TypeScriptExpressionCollector';
 import { TypeScriptNodeFactory } from './TypeScriptNodeFactory';
@@ -259,28 +258,6 @@ export class TypeScriptAstTransformer {
       visitCondition,
       propertyName,
       jsxElement
-    );
-  }
-
-  /**
-   * Creates a request that will resolve during {@link finalize} for an update to the value of a member in an object literal expression.
-   * @param visitCondition The condition by which the object literal expression is found.
-   * @param targetMember The member that will be updated. The value should be the new value to set.
-   */
-  public requestUpdateForObjectLiteralMember(
-    visitCondition: (node: ts.ObjectLiteralExpression) => boolean,
-    targetMember: PropertyAssignment
-  ): void {
-    const transformerFactory = updateForObjectLiteralMemberTransformerFactory(
-      visitCondition,
-      targetMember
-    );
-
-    this.requestChange(
-      ChangeType.NodeUpdate,
-      transformerFactory,
-      SyntaxKind.PropertyAssignment,
-      ts.factory.createPropertyAssignment(targetMember.name, targetMember.value)
     );
   }
 
