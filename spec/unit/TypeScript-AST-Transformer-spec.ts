@@ -218,6 +218,52 @@ describe('TypeScript AST Transformer', () => {
       );
     });
 
+    it('should update an existing member of an object literal if it is an array literal and override the initializer', () => {
+      FILE_CONTENT = `const myObj = { key1: ["hello", "world"] };`;
+      sourceFile = ts.createSourceFile(
+        FILE_NAME,
+        FILE_CONTENT,
+        ts.ScriptTarget.Latest,
+        true
+      );
+      astTransformer = new TypeScriptAstTransformer(sourceFile);
+
+      astTransformer.requestNewMemberInObjectLiteral(
+        ts.isObjectLiteralExpression,
+        'key1',
+        nodeFactory.createArrayLiteralExpression([
+          ts.factory.createStringLiteral('new-value'),
+        ]),
+        false, // multiline
+        true // override
+      );
+      const result = astTransformer.finalize();
+      expect(result).toEqual(`const myObj = { key1: ["new-value"] };\n`);
+    });
+
+    it('should update an existing member of an object literal if it is an array literal without overriding the initializer', () => {
+      FILE_CONTENT = `const myObj = { key1: ["hello", "world"] };`;
+      sourceFile = ts.createSourceFile(
+        FILE_NAME,
+        FILE_CONTENT,
+        ts.ScriptTarget.Latest,
+        true
+      );
+      astTransformer = new TypeScriptAstTransformer(sourceFile);
+
+      astTransformer.requestNewMemberInObjectLiteral(
+        ts.isObjectLiteralExpression,
+        'key1',
+        nodeFactory.createArrayLiteralExpression([
+          ts.factory.createStringLiteral('new-value'),
+        ]),
+        false, // multiline
+        false // override
+      );
+      const result = astTransformer.finalize();
+      expect(result).toEqual(`const myObj = { key1: ["hello", "world", "new-value"] };\n`);
+    });
+
     it('should not update a non-existing member of an object literal', () => {
       astTransformer.requestUpdateForObjectLiteralMember(
         ts.isObjectLiteralExpression,
@@ -458,6 +504,10 @@ describe('TypeScript AST Transformer', () => {
       expect(result).toEqual(
         `const myArr = [-3, 0, 1, 6.2, 6.3, 10, 11, 12, 65];\n`
       );
+    });
+
+    it('should override all elements in the array literal', () => {
+      fail('not implemented');
     });
   });
 

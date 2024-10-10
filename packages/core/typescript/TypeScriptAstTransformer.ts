@@ -187,18 +187,22 @@ export class TypeScriptAstTransformer {
    * @param propertyName The name of the property that will be added.
    * @param propertyValue The value of the property that will be added.
    * @param multiline Whether the object literal should be multiline.
+   * @param override Whether to override all elements of the property's initializer. Applicable when the property's initializer is an array.
+   * @remarks Will update the property's initializer if it already exists in the object literal.
    */
   public requestNewMemberInObjectLiteral(
     visitCondition: (node: ts.ObjectLiteralExpression) => boolean,
     propertyName: string,
     propertyValue: ts.Expression,
-    multiline?: boolean
+    multiline?: boolean,
+    override?: boolean
   ): void;
   public requestNewMemberInObjectLiteral(
     visitCondition: (node: ts.ObjectLiteralExpression) => boolean,
     propertyNameOrAssignment: string | PropertyAssignment,
     propertyValue?: ts.Expression,
-    multiline?: boolean
+    multiline?: boolean,
+    override?: boolean
   ): void {
     let newProperty: ts.PropertyAssignment;
     if (propertyNameOrAssignment instanceof Object) {
@@ -219,7 +223,8 @@ export class TypeScriptAstTransformer {
       newProperty,
       visitCondition,
       multiline,
-      this._expressionCollector
+      this._expressionCollector,
+      override
     );
     this.requestChange(
       ChangeType.NewNode,

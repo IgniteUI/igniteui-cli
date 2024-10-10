@@ -27,7 +27,8 @@ export const newMemberInObjectLiteralTransformerFactory = (
   newProperty: ts.PropertyAssignment,
   visitCondition: (node: ts.Node) => boolean,
   multiline: boolean,
-  expressionCollector: TypeScriptExpressionCollector
+  expressionCollector: TypeScriptExpressionCollector,
+  override: boolean
 ): ts.TransformerFactory<ts.SourceFile> => {
   return <T extends ts.Node>(context: ts.TransformationContext) => {
     return (rootNode: T) => {
@@ -73,7 +74,8 @@ export const newMemberInObjectLiteralTransformerFactory = (
               context,
               node,
               expressionCollector,
-              multiline
+              multiline,
+              override
             );
           }
 
@@ -91,7 +93,7 @@ export const newMemberInObjectLiteralTransformerFactory = (
   };
 };
 
-/**
+/** 		  // TODO: this method is no longer needed
  * Creates a {@link ts.TransformerFactory} that updates a member in a {@link ts.ObjectLiteralExpression}.
  */
 export const updateForObjectLiteralMemberTransformerFactory = (
@@ -217,21 +219,21 @@ export const newMemberInArrayLiteralTransformerFactory = (
  * Creates a {@link ts.TransformerFactory} that sorts the elements in a {@link ts.ArrayLiteralExpression}.
  */
 export const sortInArrayLiteralTransformerFactory = (
-  visitCondition: (node: ts.ArrayLiteralExpression,) => boolean,
+  visitCondition: (node: ts.ArrayLiteralExpression) => boolean,
   sortCondition: (a: ts.Expression, b: ts.Expression) => number
 ) => {
-	return <T extends ts.Node>(context: ts.TransformationContext) => {
-		return (rootNode: T) => {
-			const visitor = (node: ts.Node): ts.VisitResult<ts.Node> => {
-				if (ts.isArrayLiteralExpression(node) && visitCondition(node)) {
-					const elements = [...node.elements].sort(sortCondition);
-					return context.factory.updateArrayLiteralExpression(node, elements);
-				}
-				return ts.visitEachChild(node, visitor, context);
-			}
-			return ts.visitNode(rootNode, visitor, ts.isSourceFile);
-		};
-	};
+  return <T extends ts.Node>(context: ts.TransformationContext) => {
+    return (rootNode: T) => {
+      const visitor = (node: ts.Node): ts.VisitResult<ts.Node> => {
+        if (ts.isArrayLiteralExpression(node) && visitCondition(node)) {
+          const elements = [...node.elements].sort(sortCondition);
+          return context.factory.updateArrayLiteralExpression(node, elements);
+        }
+        return ts.visitEachChild(node, visitor, context);
+      };
+      return ts.visitNode(rootNode, visitor, ts.isSourceFile);
+    };
+  };
 };
 
 /**
@@ -541,6 +543,7 @@ function updatePropertyAssignmentWithIdentifier(
  * @param context The transformation context.
  * @param node The object literal expression node.
  * @param multiline Whether the array literal should be multiline.
+ * @param override Whether to override all elements if the property's initializer is an array.
  */
 function updatePropertyAssignmentWithArrayLiteral(
   newProperty: ts.PropertyAssignment | ts.ShorthandPropertyAssignment,
@@ -548,7 +551,8 @@ function updatePropertyAssignmentWithArrayLiteral(
   context: ts.TransformationContext,
   node: ts.ObjectLiteralExpression,
   expressionCollector: TypeScriptExpressionCollector,
-  multiline: boolean
+  multiline: boolean,
+  override: boolean
 ): ts.ObjectLiteralExpression {
   const existingPropInitializer = ts.isPropertyAssignment(existingProperty)
     ? existingProperty.initializer
@@ -564,10 +568,12 @@ function updatePropertyAssignmentWithArrayLiteral(
   const newElements = ts.isArrayLiteralExpression(newPropInitializer)
     ? [...newPropInitializer.elements]
     : [newPropInitializer];
-  const uniqueElements = expressionCollector.collectUniqueExpressions([
-    ...elements,
-    ...newElements,
-  ]);
+  const uniqueElements = override
+    ? expressionCollector.collectUniqueExpressions(newElements)
+    : expressionCollector.collectUniqueExpressions([
+        ...elements,
+        ...newElements,
+      ]);
 
   const valueExpression = context.factory.createArrayLiteralExpression(
     uniqueElements,
