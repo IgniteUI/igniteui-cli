@@ -35,7 +35,7 @@ describe("Unit - Generate command", () => {
 		fs.rmdirSync(`./output/${testFolder}`);
 	});
 
-	it("Should generate template pass with correct values", async done => {
+	it("Should generate template pass with correct values", async () => {
 		spyOn(Util, "isAlphanumericExt").and.returnValue(true);
 		spyOn(Util, "directoryExists").and.returnValue(false);
 		spyOn(Util, "processTemplates").and.returnValue(new Promise<boolean>((res, rej) => { res(true); }));
@@ -84,11 +84,9 @@ describe("Unit - Generate command", () => {
 		};
 		expect(config.addHandler).toHaveBeenCalledTimes(1);
 		expect(config.addHandler).toHaveBeenCalledWith(addHandlerExpectedParameter);
-
-		done();
 	});
 
-	it("Logs error for wrong name", async done => {
+	it("Logs error for wrong name", async () => {
 		spyOn(Util, "isAlphanumericExt").and.returnValue(false);
 
 		await generateCmd.handler({ name: "123wrongName", framework: "jquery", type: "js", _: ["generate"], $0: "generate" });
@@ -99,11 +97,9 @@ describe("Unit - Generate command", () => {
 			"red");
 
 		expect(Util.log).not.toHaveBeenCalled();
-
-		done();
 	});
 
-	it("Logs error for existing folder", async done => {
+	it("Logs error for existing folder", async () => {
 		spyOn(Util, "isAlphanumericExt").and.returnValue(true);
 		spyOn(Util, "directoryExists").and.returnValue(true);
 
@@ -115,11 +111,9 @@ describe("Unit - Generate command", () => {
 		expect(Util.error).toHaveBeenCalledWith("Folder 'custom-template' already exists!", "red");
 
 		expect(Util.log).not.toHaveBeenCalled();
-
-		done();
 	});
 
-	it("Logs error for wrong framework", async done => {
+	it("Logs error for wrong framework", async () => {
 		spyOn(Util, "isAlphanumericExt").and.returnValue(true);
 		spyOn(Util, "directoryExists").and.returnValue(false);
 
@@ -133,11 +127,9 @@ describe("Unit - Generate command", () => {
 		expect(Util.error).toHaveBeenCalledWith("Framework not supported", "red");
 
 		expect(Util.log).not.toHaveBeenCalled();
-
-		done();
 	});
 
-	it("Logs error for wrong type", async done => {
+	it("Logs error for wrong type", async () => {
 		spyOn(Util, "isAlphanumericExt").and.returnValue(true);
 		spyOn(Util, "directoryExists").and.returnValue(false);
 
@@ -152,11 +144,9 @@ describe("Unit - Generate command", () => {
 		expect(Util.error).toHaveBeenCalledWith("Project type 'wrongType' not found in framework 'jquery'");
 
 		expect(Util.log).not.toHaveBeenCalled();
-
-		done();
 	});
 
-	it("Logs error if generate template fail", async done => {
+	it("Logs error if generate template fail", async () => {
 		spyOn(Util, "isAlphanumericExt").and.returnValue(true);
 		spyOn(Util, "directoryExists").and.returnValue(false);
 		spyOn(Util, "processTemplates").and.returnValue(new Promise<boolean>((res, rej) => { res(false); }));
@@ -172,11 +162,9 @@ describe("Unit - Generate command", () => {
 		expect(Util.error).toHaveBeenCalledWith("Template generation failed!", "red");
 
 		expect(Util.log).not.toHaveBeenCalled();
-
-		done();
 	});
 
-	it("Should not add path to global config if skip-config is true", async done => {
+	it("Should not add path to global config if skip-config is true", async () => {
 		spyOn(Util, "isAlphanumericExt").and.returnValue(true);
 		spyOn(Util, "directoryExists").and.returnValue(false);
 		spyOn(Util, "processTemplates").and.returnValue(new Promise<boolean>((res, rej) => { res(true); }));
@@ -199,7 +187,5 @@ describe("Unit - Generate command", () => {
 		expect(Util.log).toHaveBeenCalledWith("Template generated successfully");
 
 		expect(config.addHandler).not.toHaveBeenCalled();
-
-		done();
 	});
 });

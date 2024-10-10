@@ -21,7 +21,7 @@ describe("New command", () => {
 		process.chdir("../");
 	});
 
-	it("Creates jQuery project", async done => {
+	it("Creates jQuery project", async () => {
 		await cli.run(["new", "jQuery Proj", "--framework=jquery"]);
 
 		expect(fs.existsSync("./jQuery Proj")).toBeTruthy();
@@ -50,10 +50,9 @@ describe("New command", () => {
 		};
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith(expectedPrams);
 		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);
-		done();
 	});
 
-	it("Creates React project", async done => {
+	it("Creates React project", async () => {
 		// process.argv = ["new", "reactProj", "--framework=react"];
 
 		await cli.run(["new", "React Proj", "--framework=react", "--skip-install"]);
@@ -64,10 +63,9 @@ describe("New command", () => {
 		expect(JSON.parse(packageText).name).toEqual("react-proj");
 		expect(fs.existsSync("./React Proj/.gitignore")).toBeTruthy();
 		testFolder = "./React Proj";
-		done();
 	});
 
-	it("Creates Angular project", async done => {
+	it("Creates Angular project", async () => {
 		// process.argv = ["new", "reactProj", "--framework=react"];
 
 		await cli.run(["new", "ngx Proj", "--framework=angular", "--type=igx-ts", "--skip-install"]);
@@ -78,10 +76,9 @@ describe("New command", () => {
 		expect(JSON.parse(packageText).name).toEqual("ngx-proj");
 		expect(fs.existsSync("./ngx Proj/.gitignore")).toBeTruthy();
 		testFolder = "./ngx Proj";
-		done();
 	});
 
-	it("Creates Ignite UI for Angular project", async done => {
+	it("Creates Ignite UI for Angular project", async () => {
 
 		await cli.run(["new", "Ignite UI for Angular", "--framework=angular", "--type=igx-ts", "--theme=default", "--skip-install"]);
 
@@ -91,10 +88,9 @@ describe("New command", () => {
 		expect(JSON.parse(packageText).name).toEqual("ignite-ui-for-angular");
 		expect(fs.existsSync("./Ignite UI for Angular/.gitignore")).toBeTruthy();
 		testFolder = "./Ignite UI for Angular";
-		done();
 	});
 
-	it("Should not work on existing folders", async done => {
+	it("Should not work on existing folders", async () => {
 		fs.mkdirSync("testProj");
 		await cli.run(["new", "testProj", "--skip-install"]);
 		expect(console.error).toHaveBeenCalledWith(jasmine.stringMatching(/Folder "testProj" already exists!/));
@@ -130,10 +126,9 @@ describe("New command", () => {
 			.toEqual("text", "Shouldn't overwrite existing project files!");
 
 		testFolder = "./testProj2";
-		done();
 	});
 
-	it("Git Status", async done => {
+	it("Git Status", async () => {
 		const projectName = "angularProj";
 		await cli.run(["new", projectName, "--framework=angular", "--type=igx-ts", "--theme=default", "--skip-install"]);
 
@@ -143,10 +138,9 @@ describe("New command", () => {
 			.toMatch("Initial commit for project: " + projectName);
 		process.chdir("../");
 		testFolder = "./angularProj";
-		done();
 	});
 
-	it("Skip Git/Install with command option", async done => {
+	it("Skip Git/Install with command option", async () => {
 		spyOn(Util, "gitInit");
 		const projectName = "angularProj";
 		await cli.run(["new", projectName, "--framework=angular", "--type=igx-ts", "--skip-git", "--skip-install", "--theme=default"]);
@@ -155,10 +149,9 @@ describe("New command", () => {
 		expect(PackageManager.installPackages).not.toHaveBeenCalled();
 
 		testFolder = projectName;
-		done();
 	});
 
-	it("Creates project with single word name", async done => {
+	it("Creates project with single word name", async () => {
 		spyOn(Util, "gitInit");
 		const projectName = "a";
 		await cli.run(["new", projectName, "--framework=jquery", "--skip-install"]);
@@ -168,6 +161,5 @@ describe("New command", () => {
 		expect(fs.existsSync("./a")).toBeTruthy();
 
 		testFolder = "./a";
-		done();
 	});
 });

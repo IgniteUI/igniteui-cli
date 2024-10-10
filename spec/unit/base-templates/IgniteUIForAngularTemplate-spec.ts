@@ -1,7 +1,7 @@
 import { IgniteUIForAngularTemplate, AngularTypeScriptFileUpdate } from "@igniteui/angular-templates";
 import {
 	FEED_ANGULAR, NPM_DOCK_MANAGER, NPM_ANGULAR, App, FS_TOKEN,
-	IFileSystem, ProjectConfig, Util
+	IFileSystem, ProjectConfig, Util, Config
 } from "@igniteui/cli-core";
 import * as path from "path";
 import { resetSpy } from "../../helpers/utils";
@@ -20,10 +20,16 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 	describe("registerInProject", () => {
 		let helpers;
 		beforeEach(() => {
+			const tsUpdateMock = jasmine.createSpyObj(
+				"AngularTypeScriptFileUpdate", ["addRoute", "addNgModuleMeta", "finalize"]) as AngularTypeScriptFileUpdate;
+			function AngularTypeScriptFileUpdate() {
+				this.addRoute = tsUpdateMock.addRoute;
+				this.addNgModuleMeta = tsUpdateMock.addNgModuleMeta;
+				this.finalize = tsUpdateMock.finalize;
+			}
 			helpers = {
-				tsUpdateMock: jasmine.createSpyObj(
-					"AngularTypeScriptFileUpdate", ["addRoute", "addNgModuleMeta", "finalize"]) as AngularTypeScriptFileUpdate,
-				AngularTypeScriptFileUpdate: () => helpers.tsUpdateMock,
+				tsUpdateMock,
+				AngularTypeScriptFileUpdate,
 				requireMock: require
 			}
 
@@ -40,14 +46,25 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			spyOn(Util, "version").and.returnValue("1.0.0");
 			spyOn(helpers, "AngularTypeScriptFileUpdate").and.callThrough();
 			// return through function to get new obj ref each time
-			spyOn(ProjectConfig, "getConfig").and.callFake(() => ({ project: { sourceFiles: ["existing"] } }));
+			const mockProjectConfig = {
+				project: {
+					sourceFiles: ["existing"]
+				}
+			} as unknown as Config;
+			spyOn(ProjectConfig, "getConfig").and.callFake(() => (mockProjectConfig));
 			spyOn(ProjectConfig, "setConfig");
 		});
 
-		it("registers route and declare component", async done => {
+		it("registers route and declare component", async () => {
 			const templ = new TestTemplate();
 			const mockFS = {
-				fileExists: () => {}
+				fileExists: (file: string): boolean => {
+					return false;
+				},
+				readFile: (file: string, encoding?: BufferEncoding): string => {
+					return JSON.stringify({ key: "value" });
+				},
+				writeFile: (file: string, text: string): void => {},
 			};
 			spyOn(templ, "fileExists").and.returnValue(true);
 			spyOn(App.container, "get").and.returnValue(mockFS);
@@ -85,10 +102,19 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			expect(helpers.tsUpdateMock.finalize).toHaveBeenCalled();
 			//config update:
 			expect(ProjectConfig.setConfig).toHaveBeenCalledTimes(0);
-			done();
 		});
-		it("updates NgModule metadata", async done => {
+		it("updates NgModule metadata", async () => {
 			const templ = new TestTemplate();
+			const mockFS = {
+				fileExists: (file: string): boolean => {
+					return false;
+				},
+				readFile: (file: string, encoding?: BufferEncoding): string => {
+					return JSON.stringify({ key: "value" });
+				},
+				writeFile: (file: string, text: string): void => {},
+			};
+			spyOn(App.container, "get").and.returnValue(mockFS);
 			spyOn(templ, "fileExists").and.returnValue(true);
 			templ.dependencies.push({ import: "test", from: "test" });
 			templ.registerInProject("", "");
@@ -111,16 +137,24 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 				Util.applyDelimiters(templ.getBaseVariables(""), templ.delimiters.content),
 				true
 			);
-
-			done();
 		});
-		it("formats relative imports", async done => {
+		it("formats relative imports", async () => {
 			spyOn(TestTemplate.prototype, "getBaseVariables").and.returnValue({});
 			spyOn(Util, "relativePath").and.returnValue("./relative/result/test");
 			const mainPath = path.join("target", "src/app/app.module.ts");
 			const filePath = path.join("target", "./test.ts");
 
 			const templ = new TestTemplate();
+			const mockFS = {
+				fileExists: (file: string): boolean => {
+					return false;
+				},
+				readFile: (file: string, encoding?: BufferEncoding): string => {
+					return JSON.stringify({ key: "value" });
+				},
+				writeFile: (file: string, text: string): void => {},
+			};
+			spyOn(App.container, "get").and.returnValue(mockFS);
 			spyOn(templ, "fileExists").and.returnValue(true);
 			templ.dependencies = [{ from: "./test.ts" }];
 			templ.registerInProject("target", "name");
@@ -131,12 +165,20 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 				jasmine.any(Object), // vars
 				true // multiline
 			);
-
-			done();
 		});
 
-		it("should skip route if skipRoute is passed", async done => {
+		it("should skip route if skipRoute is passed", async () => {
 			const templ = new TestTemplate();
+			const mockFS = {
+				fileExists: (file: string): boolean => {
+					return false;
+				},
+				readFile: (file: string, encoding?: BufferEncoding): string => {
+					return JSON.stringify({ key: "value" });
+				},
+				writeFile: (file: string, text: string): void => {},
+			};
+			spyOn(App.container, "get").and.returnValue(mockFS);
 			spyOn(templ, "fileExists").and.returnValue(true);
 			templ.registerInProject("target/path", "view name", { skipRoute: true });
 			expect(helpers.tsUpdateMock.addRoute).toHaveBeenCalledTimes(0);
@@ -157,10 +199,9 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 				true // multiline
 			);
 			expect(helpers.tsUpdateMock.finalize).toHaveBeenCalled();
-			done();
 		});
 
-		it("generateConfig merges variables passed under extraConfig", async done => {
+		it("generateConfig merges variables passed under extraConfig", async () => {
 			const expected = {
 				camelCaseName: "test",
 				ClassName: "Test",
@@ -199,7 +240,6 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			expected.igxPackage = FEED_ANGULAR;
 			actual = templ.generateConfig("test", options);
 			expect(actual).toEqual(expected);
-			done();
 		});
 	});
 });

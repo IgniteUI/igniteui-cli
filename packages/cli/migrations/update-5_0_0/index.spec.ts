@@ -12,6 +12,7 @@ describe("Update 5.0.0", () => {
 		defaultProject: "testProj",
 		projects: {
 			testProj: {
+				root: "",
 				prefix: "app",
 				sourceRoot: "src"
 			}
@@ -30,7 +31,7 @@ indent_size = 2
 `);
 	});
 
-	it("should add HammerModule", async done => {
+	it("should add HammerModule", async () => {
 		const indexFile = "/src/app/app.module.ts";
 		appTree.create(indexFile,
 `import { BrowserModule } from '@angular/platform-browser';
@@ -45,7 +46,7 @@ export class AppModule {
 `
 		);
 
-		await schematicRunner.runSchematicAsync("migration-05", {}, appTree).toPromise();
+		await schematicRunner.runSchematic("migration-05", {}, appTree);
 		expect(appTree.readContent(indexFile).replace(/\r\n/g, "\n"))
 			.toEqual(
 `import { BrowserModule, HammerModule } from '@angular/platform-browser';
@@ -60,6 +61,5 @@ export class AppModule {
 }
 `.replace(/\r\n/g, "\n")
 			);
-		done();
 	});
 });

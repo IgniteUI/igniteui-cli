@@ -1,5 +1,5 @@
 import { PackageManager } from "../../packages/core/packages/PackageManager";
-import { IFileSystem } from "../../packages/core/types";
+import { Config, IFileSystem } from "../../packages/core/types";
 import { App, ProjectConfig, Util } from "../../packages/core/util";
 import * as pkgResolve from "../../packages/core/update/package-resolve";
 import { updateWorkspace } from "../../packages/core/update/Update";
@@ -19,7 +19,13 @@ describe("updateWorkspace", () => {
 			fsSpy = jasmine.createSpyObj("fsSpy", ["fileExists", "directoryExists", "readFile", "writeFile", "glob"]);
 			spyOn(App.container, "get").and.returnValue(fsSpy);
 			spyOnProperty(App, "workDir", "get").and.returnValue("mockDir");
-			spyOn(ProjectConfig, "getConfig").and.returnValue({ project: { framework: "Angular" }});
+			const mockProjectConfig = {
+				project: {
+					framework: "Angular"
+				}
+			 } as unknown as Config;
+			mockProjectConfig.project.framework = "Angular";
+			spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
 		});
 
 		it("Should fail if current used package is registry package", async () => {
@@ -427,7 +433,12 @@ title = 'igniteui-angular example';
 			fsSpy = jasmine.createSpyObj("fsSpy", ["fileExists", "directoryExists", "readFile", "writeFile", "glob"]);
 			spyOn(App.container, "get").and.returnValue(fsSpy);
 			spyOnProperty(App, "workDir", "get").and.returnValue("mockDir");
-			spyOn(ProjectConfig, "getConfig").and.returnValue({ project: { framework: "React" }});
+			const mockProjectConfig = {
+				project: {
+					framework: "React"
+				}
+			 } as unknown as Config;
+			spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
 		});
 
 		it("Should fail if current used package is registry package", async () => {
@@ -709,7 +720,12 @@ export default function Home() {
 			fsSpy = jasmine.createSpyObj("fsSpy", ["fileExists", "directoryExists", "readFile", "writeFile", "glob"]);
 			spyOn(App.container, "get").and.returnValue(fsSpy);
 			spyOnProperty(App, "workDir", "get").and.returnValue("mockDir");
-			spyOn(ProjectConfig, "getConfig").and.returnValue({ project: { framework: "Webcomponents" }});
+			const mockProjectConfig = {
+				project: {
+					framework: "Webcomponents"
+				}
+			 } as unknown as Config;
+			spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
 		});
 
 		it("Should fail if current used package is registry package", async () => {

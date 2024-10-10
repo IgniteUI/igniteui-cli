@@ -38,7 +38,7 @@ describe("Generate command", () => {
 		fs.rmdirSync(`./output/${testFolder}`);
 	});
 
-	it("Should correctly generate template with default values", async done => {
+	it("Should correctly generate template with default values", async () => {
 		await cli.run(["generate", "template"]);
 
 		expect(fs.existsSync(path.join(process.cwd(), ".global"))).toBeTruthy();
@@ -95,10 +95,9 @@ describe("Generate command", () => {
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith(expectedParams);
 
 		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);
-		done();
 	});
 
-	it("Should correctly generate angular wrappers template", async done => {
+	it("Should correctly generate angular wrappers template", async () => {
 		await cli.run(["generate", "template", "angular-wrapper", "-f=angular", "-t=ig-ts"]);
 
 		expect(fs.existsSync(path.join(process.cwd(), ".global"))).toBeTruthy();
@@ -136,10 +135,9 @@ describe("Generate command", () => {
 		const pathDirectory = path.join(templateFolderPath, "files", "src", "app", "components", "__path__");
 		expect(fs.existsSync(pathDirectory)).toBeTruthy();
 		expect(fs.existsSync(path.join(pathDirectory, "__filePrefix__.component.ts"))).toBeTruthy();
-		done();
 	});
 
-	it("Should correctly generate angular template", async done => {
+	it("Should correctly generate angular template", async () => {
 		await cli.run(["generate", "template", "angular", "-f=angular", "-t=igx-ts"]);
 
 		expect(fs.existsSync(path.join(process.cwd(), ".global"))).toBeTruthy();
@@ -180,10 +178,9 @@ describe("Generate command", () => {
 		expect(fs.existsSync(path.join(pathDirectory, "__filePrefix__.component.html"))).toBeTruthy();
 		expect(fs.existsSync(path.join(pathDirectory, "__filePrefix__.component.spec.ts"))).toBeTruthy();
 		expect(fs.existsSync(path.join(pathDirectory, "__filePrefix__.component.ts"))).toBeTruthy();
-		done();
 	});
 
-	it("Should correctly generate react template", async done => {
+	it("Should correctly generate react template", async () => {
 		await cli.run(["generate", "template", "react", "-f=react", "-t=es6"]);
 
 		expect(fs.existsSync(path.join(process.cwd(), ".global"))).toBeTruthy();
@@ -220,6 +217,5 @@ describe("Generate command", () => {
 		const clientDirectory = path.join(templateFolderPath, "files", "src");
 		expect(fs.existsSync(clientDirectory)).toBeTruthy();
 		expect(fs.existsSync(path.join(clientDirectory, "components", "__path__", "index.js"))).toBeTruthy();
-		done();
 	});
 });

@@ -1,6 +1,6 @@
 import { IgniteUIForAngularTemplate, AngularTypeScriptFileUpdate } from "@igniteui/angular-templates";
 import {
-	App, GoogleAnalytics, PackageManager, ProjectConfig, TypeScriptUtils, Util
+	App, BaseTemplate, Config, GoogleAnalytics, PackageManager, ProjectConfig, ProjectLibrary, ProjectTemplate, Template, TemplateDelimiters, TypeScriptUtils, Util
 } from "@igniteui/cli-core";
 import * as path from "path";
 import * as ts from "typescript";
@@ -9,19 +9,113 @@ import { PromptSession } from "../../packages/cli/lib/PromptSession";
 import { AngularTemplate } from "../../packages/cli/lib/templates/AngularTemplate";
 import { resetSpy } from "../helpers/utils";
 
+function createMockBaseTemplate(): BaseTemplate {
+	return {
+		id: "mock-template-id",
+		name: "mock-template",
+		description: "A mock template",
+		delimiters: {
+			content: { start: "{{", end: "}}" },
+			path: { start: "[[", end: "]]" }
+		},
+		dependencies: ["mock-dependency"],
+		framework: "angular",
+		projectType: "ts",
+		hasExtraConfiguration: true,
+		templatePaths: ["/path/to/template"],
+		generateConfig: jasmine.createSpy().and.returnValue({}),
+		getExtraConfiguration: jasmine.createSpy().and.returnValue([]),
+		setExtraConfiguration: jasmine.createSpy()
+	};
+}
+
+function createMockProjectTemplate(baseTemplate: BaseTemplate): ProjectTemplate {
+	return {
+		...baseTemplate,
+		installModules: jasmine.createSpy().and.callFake(() => {}),
+		upgradeIgniteUIPackages: jasmine.createSpy().and.returnValue(Promise.resolve(true))
+	};
+}
+
+function createMockTemplate(baseTemplate: BaseTemplate): Template {
+	return {
+		...baseTemplate,
+		components: ["mock-component"],
+		controlGroup: "mock-group",
+		listInComponentTemplates: true,
+		listInCustomTemplates: true,
+		packages: ["mock-package"],
+		registerInProject: jasmine.createSpy(),
+	};
+}
+
+function createMockLibrary(mockTemplate: Template, mockProjectTemplate: ProjectTemplate): ProjectLibrary {
+	return {
+		name: "mock-library",
+		themes: ["mock-theme"],
+		components: [{
+			name: "mock-component",
+			description: "A mock component",
+			group: "mock-group",
+			groupPriority: 1,
+			templates: [mockTemplate]
+		}],
+		projectIds: ["another-mock"],
+		projects: [mockProjectTemplate],
+		templates: [mockTemplate],
+		projectType: "ts",
+		generateTemplateFolderPath: "/path/to/templates",
+		getCustomTemplateNames: jasmine.createSpy().and.returnValue([]),
+		getTemplateByName: jasmine.createSpy().and.returnValue(mockTemplate),
+		getTemplateById: jasmine.createSpy().and.returnValue(mockTemplate),
+		getComponentByName: jasmine.createSpy().and.returnValue({
+			name: "mock-component",
+			description: "A mock component",
+			group: "mock-group",
+			groupPriority: 1,
+			templates: [mockTemplate]
+		}),
+		getComponentGroupNames: jasmine.createSpy().and.returnValue(["mock-group"]),
+		getComponentsByGroup: jasmine.createSpy().and.returnValue([{
+			name: "mock-component",
+			description: "A mock component",
+			group: "mock-group",
+			groupPriority: 1,
+			templates: [mockTemplate]
+		}]),
+		getComponentGroups: jasmine.createSpy().and.returnValue([{
+			name: "mock-group",
+			description: "A mock component group"
+		}]),
+		getCustomTemplates: jasmine.createSpy().and.returnValue([mockTemplate]),
+		getProject: jasmine.createSpy().and.returnValue(mockProjectTemplate),
+		hasProject: jasmine.createSpy().and.returnValue(false),
+		hasTemplate: jasmine.createSpy().and.returnValue(false),
+		registerTemplate: jasmine.createSpy()
+	};
+}
+
 describe("Unit - Add command", () => {
 
 	beforeEach(() => {
 		spyOn(GoogleAnalytics, "post");
 	});
 
-	it("Should start prompt session with missing arg", async done => {
+	it("Should start prompt session with missing arg", async () => {
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
-		spyOn(ProjectConfig, "getConfig").and.returnValue({ project: {
+		const mockProjectConfig = {
+			project: {
 			framework: "angular",
-			theme: "infragistics"}});
+			theme: "infragistics"
+			}
+		} as unknown as Config;
+		spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
 
-		const mockProjLib = {};
+		const mockBaseTemplate = createMockBaseTemplate();
+		const mockProjectTemplate = createMockProjectTemplate(mockBaseTemplate);
+		const mockTemplate = createMockTemplate(mockBaseTemplate);
+		const mockProjLib = createMockLibrary(mockTemplate, mockProjectTemplate);
+
 		addCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: {},
 			getProjectLibrary: mockProjLib
@@ -32,13 +126,16 @@ describe("Unit - Add command", () => {
 
 		await addCmd.handler({ _: ["add"], $0: "add" });
 		expect(promptSession.chooseActionLoop).toHaveBeenCalledWith(mockProjLib);
-		done();
 	});
 
-	it("Should validate and trim name", async done => {
-		spyOn(ProjectConfig, "getConfig").and.returnValue({ project: {
-			framework: "angular",
-			theme: "infragistics"}});
+	it("Should validate and trim name", async () => {
+		const mockProjectConfig = {
+			project: {
+				framework: "angular",
+				theme: "infragistics"
+			}
+		} as unknown as Config;
+		spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
 		spyOn(Util, "error");
 		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(false));
 		spyOn(process, "cwd").and.returnValue("Mock directory");
@@ -47,7 +144,10 @@ describe("Unit - Add command", () => {
 		const mockConfig = { test: "test" };
 		mockTemplate.generateConfig.and.returnValue(mockConfig);
 		mockTemplate.templatePaths = ["test"];
-		const mockDelimiters = { mockDelimiter: { start: "test", end: "test" }};
+		const mockDelimiters: TemplateDelimiters = {
+			content: { start: "{{", end: "}}" },
+			path: { start: "[[", end: "]]" }
+		};
 		mockTemplate.delimiters = mockDelimiters;
 		const errorCombos = [
 			{ name: "name.ts", inError: "name.ts" }, // file extension test
@@ -79,14 +179,16 @@ describe("Unit - Add command", () => {
 			expect(mockTemplate.generateConfig).toHaveBeenCalledWith(item.valid, { parentName: "app", parentRoutingModulePath: "src/app/app-routing.ts", selector: "app-undefined" });
 			expect(Util.processTemplates).toHaveBeenCalledWith("test", "Mock directory", mockConfig, mockDelimiters);
 		}
-
-		done();
 	});
 
-	it("Should queue package dependencies and wait for install", async done => {
-		spyOn(ProjectConfig, "getConfig").and.returnValue({ project: {
-			framework: "angular",
-			theme: "infragistics"}});
+	it("Should queue package dependencies and wait for install", async () => {
+		const mockProjectConfig = {
+			project: {
+				framework: "angular",
+				theme: "infragistics"
+			}
+		} as unknown as Config;
+		spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
 		spyOn(Util, "log");
 		spyOn(PackageManager, "queuePackage");
 		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
@@ -107,9 +209,9 @@ describe("Unit - Add command", () => {
 
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 		addCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
-			getFrameworkById: {},
+			getFrameworkById: mockTemplate,
 			getProjectLibrary: jasmine.createSpyObj("ProjectLibrary", {
-				getTemplateById: {},
+				getTemplateById: mockTemplate,
 				hasTemplate: true
 			})
 		});
@@ -118,18 +220,17 @@ describe("Unit - Add command", () => {
 		spyOn(PackageManager, "flushQueue").and.returnValue(Promise.resolve());
 		spyOn(PackageManager, "ensureIgniteUISource");
 		await addCmd.handler({ name: "template with packages", template: "test-id", _: ["add"], $0: "add" });
-		expect(addCmd.addTemplate).toHaveBeenCalledWith("template with packages", {}, jasmine.any(Object));
+		expect(addCmd.addTemplate).toHaveBeenCalledWith("template with packages", mockTemplate, jasmine.any(Object));
 		expect(PackageManager.flushQueue).toHaveBeenCalled();
-
-		done();
 	});
 
-	it("Should properly accept module args when passed - IgniteUI for Angular", async done => {
-		const mockProjectConfig = {project: {
-			framework: "angular",
-			theme: "infragistics"
-		}};
-
+	it("Should properly accept module args when passed - IgniteUI for Angular", async () => {
+		const mockProjectConfig = {
+			project: {
+				framework: "angular",
+				theme: "infragistics"
+			}
+		} as unknown as Config;
 		spyOn(TypeScriptUtils, "getFileSource").and.returnValue(
 			ts.createSourceFile("test-file-name", ``, ts.ScriptTarget.Latest, true)
 		);
@@ -162,7 +263,9 @@ describe("Unit - Add command", () => {
 		spyOn(PackageManager, "ensureIgniteUISource");
 		spyOn(Util, "directoryExists").and.returnValue(true);
 		const mockVirtFs = {
-			fileExists: () => {}
+			fileExists: (file: string): boolean => {
+				return false;
+			}
 		};
 		spyOn(App.container, "get").and.returnValue(mockVirtFs);
 		spyOn(mockVirtFs, "fileExists").and.callFake(file => {
@@ -207,15 +310,15 @@ describe("Unit - Add command", () => {
 		);
 		expect(finalizeSpy).toHaveBeenCalledTimes(2);
 		expect(addCmd.templateManager.updateProjectConfiguration).toHaveBeenCalledTimes(1);
-		done();
 	});
 
-	it("Should properly accept module args when passed - Angular Wrappers", async done => {
-		const mockProjectConfig = {project: {
-			framework: "angular",
-			theme: "infragistics"
-		}};
-
+	it("Should properly accept module args when passed - Angular Wrappers", async () => {
+		const mockProjectConfig = {
+			project: {
+				framework: "angular",
+				theme: "infragistics"
+			}
+		} as unknown as Config;
 		spyOn(TypeScriptUtils, "getFileSource").and.returnValue(
 			ts.createSourceFile("test-file-name", ``, ts.ScriptTarget.Latest, true)
 		);
@@ -276,14 +379,15 @@ describe("Unit - Add command", () => {
 		});
 		expect(finalizeSpy).toHaveBeenCalledTimes(2);
 		expect(addCmd.templateManager.updateProjectConfiguration).toHaveBeenCalledTimes(1);
-		done();
 	});
 
-	it("Should properly accept skip-route args when passed", async done => {
-		const mockProjectConfig = {project: {
-			framework: "angular",
-			theme: "infragistics"
-		}};
+	it("Should properly accept skip-route args when passed", async () => {
+		const mockProjectConfig = {
+			project: {
+				framework: "angular",
+				theme: "infragistics"
+			}
+		} as unknown as Config;
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 		spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
 
@@ -332,10 +436,9 @@ describe("Unit - Add command", () => {
 			jasmine.objectContaining({ skipRoute: true })
 		);
 		expect(addCmd.templateManager.updateProjectConfiguration).toHaveBeenCalledWith(mockTemplate);
-		done();
 	});
 
-	it("Should not add component and should log error if wrong path is passed to module", async done => {
+	it("Should not add component and should log error if wrong path is passed to module", async () => {
 		spyOn(Util, "fileExists").and.returnValue(false);
 		spyOn(Util, "error");
 		const wrongPath = "myCustomModule/my-custom-module.module.ts";
@@ -343,6 +446,5 @@ describe("Unit - Add command", () => {
 		expect(Util.fileExists).toHaveBeenCalledTimes(1);
 		expect(Util.error).toHaveBeenCalledTimes(1);
 		expect(Util.error).toHaveBeenCalledWith(`Wrong module path provided: ${wrongPath}. No components were added!`);
-		done();
 	});
 });

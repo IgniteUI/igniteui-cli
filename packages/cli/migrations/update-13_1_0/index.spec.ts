@@ -12,7 +12,7 @@ describe("Update 13.1.0", () => {
 		appTree = new UnitTestTree(new EmptyTree());
 	});
 
-	it("change projectType to legacy", async done => {
+	it("change projectType to legacy", async () => {
 		appTree.create(
 			"./ignite-ui-cli.json",
 `{
@@ -40,7 +40,7 @@ describe("Update 13.1.0", () => {
 }`
 		);
 
-		const tree = await schematicRunner.runSchematicAsync("migration-07", { applyMigrations: true }, appTree).toPromise();
+		const tree = await schematicRunner.runSchematic("migration-07", { applyMigrations: true }, appTree);
 		expect(tree.readContent("./ignite-ui-cli.json"))
 			.toEqual(
 `{
@@ -67,7 +67,6 @@ describe("Update 13.1.0", () => {
   "build": {}
 }`
 			);
-		done();
 	});
 
 });

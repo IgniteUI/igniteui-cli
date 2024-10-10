@@ -12,7 +12,7 @@ describe("Unit - TypeScriptUtils", () => {
 			CRLF: "\r\n",
 			LF: "\n"
 		};
-		it("Reads source file and adds new line ([CR]LF) placeholders", async done => {
+		it("Reads source file and adds new line ([CR]LF) placeholders", async () => {
 			const sourceText = [
 				`import * as fs from "fs";`,
 				``, //new line
@@ -37,11 +37,9 @@ describe("Unit - TypeScriptUtils", () => {
 					ts.ScriptTarget.Latest, true, false
 				);
 			}
-
-			done();
 		});
 
-		it("Save source file and removes ([CR]LF) placeholders", async done => {
+		it("Save source file and removes ([CR]LF) placeholders", async () => {
 			const sourceText = [
 				`import * as fs from "fs";`,
 				TypeScriptUtils.newLinePlaceHolder,
@@ -65,7 +63,6 @@ describe("Unit - TypeScriptUtils", () => {
 				expect(printer.printFile).toHaveBeenCalledWith(source);
 				expect(fs.writeFileSync).toHaveBeenCalledWith(`test/file${key}.ts`, expectedText.join(newLines[key]));
 			}
-			done();
 		});
 	});
 });

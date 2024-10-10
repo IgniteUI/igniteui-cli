@@ -12,6 +12,7 @@ describe("Update 4.2.3", () => {
 		defaultProject: "testProj",
 		projects: {
 			testProj: {
+				root: "",
 				sourceRoot: "/src"
 			}
 		},
@@ -23,7 +24,7 @@ describe("Update 4.2.3", () => {
 		appTree.create("/angular.json", JSON.stringify(configJson));
 	});
 
-	it("should add Awesome Grid extra paginator style", async done => {
+	it("should add Awesome Grid extra paginator style", async () => {
 		const stylesFile = "/src/app/awesome-grid/awesome-grid.component.scss";
 		appTree.create(stylesFile,
 `@use 'igniteui-angular/theming' as *;
@@ -43,7 +44,7 @@ describe("Update 4.2.3", () => {
 `
 		);
 
-		await schematicRunner.runSchematicAsync("migration-04", {}, appTree).toPromise();
+		await schematicRunner.runSchematic("migration-04", {}, appTree);
 		expect(appTree.readContent(stylesFile).replace(/\r\n/g, "\n"))
 			.toEqual(
 `@use 'igniteui-angular/theming' as *;
@@ -69,6 +70,5 @@ describe("Update 4.2.3", () => {
 }
 `.replace(/\r\n/g, "\n")
 			);
-		done();
 	});
 });

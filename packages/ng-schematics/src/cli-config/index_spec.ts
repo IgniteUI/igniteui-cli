@@ -13,6 +13,7 @@ describe("cli-config schematic", () => {
 	const ngJsonConfig = {
 		projects: {
 			testProj: {
+				root: "",
 				sourceRoot,
 				architect: {
 					build: {
@@ -94,7 +95,7 @@ describe("cli-config schematic", () => {
 	});
 
 	it("should create an ignite-ui-cli.json file correctly", async () => {
-		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
+		await runner.runSchematic("cli-config", {}, tree);
 		expect(tree.exists("ignite-ui-cli.json")).toBeTruthy();
 
 		const cliJsonData = JSON.parse(tree.readContent("/ignite-ui-cli.json"));
@@ -103,7 +104,7 @@ describe("cli-config schematic", () => {
 
 	it("should add typography correctly", async () => {
 		const targetFile = "/src/index.html";
-		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
+		await runner.runSchematic("cli-config", {}, tree);
 
 		const content = tree.readContent(targetFile);
 		expect(content.includes("<body class=\"ig-typography ig-scrollbar\">")).toBeTruthy();
@@ -111,7 +112,7 @@ describe("cli-config schematic", () => {
 
 	it("should add Titillium and Material Icons stylesheets correctly", async () => {
 		const targetFile = "/src/index.html";
-		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
+		await runner.runSchematic("cli-config", {}, tree);
 
 		const content = tree.readContent(targetFile);
 		const headContentsRegex = /(?:<head>)([\s\S]*)(?:<\/head>)/;
@@ -125,7 +126,7 @@ describe("cli-config schematic", () => {
 		const targetFile = "/src/styles.scss";
 		tree.create(targetFile, "");
 
-		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
+		await runner.runSchematic("cli-config", {}, tree);
 
 		let content = tree.readContent(targetFile);
 		expect(content.includes(`@use "${NPM_ANGULAR}`)).toBeTruthy();
@@ -135,7 +136,7 @@ describe("cli-config schematic", () => {
 		createIgPkgJson(FEED_ANGULAR);
 		populatePkgJson(FEED_ANGULAR);
 
-		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
+		await runner.runSchematic("cli-config", {}, tree);
 		content = tree.readContent(targetFile);
 		expect(content.includes(`@use "${FEED_ANGULAR}`)).toBeTruthy();
 	});
@@ -145,7 +146,7 @@ describe("cli-config schematic", () => {
 		expect(tree.exists(targetFile)).toBeTruthy();
 
 		let targetImport = `node_modules/${NPM_ANGULAR}/styles/igniteui-angular.css`;
-		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
+		await runner.runSchematic("cli-config", {}, tree);
 		let workspace = JSON.parse(tree.read("/angular.json")!.toString());
 
 		expect(
@@ -164,7 +165,7 @@ describe("cli-config schematic", () => {
 		populatePkgJson(FEED_ANGULAR);
 		targetImport = `node_modules/${FEED_ANGULAR}/styles/igniteui-angular.css`;
 
-		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
+		await runner.runSchematic("cli-config", {}, tree);
 		workspace = JSON.parse(tree.read("/angular.json")!.toString());
 
 		expect(
@@ -186,7 +187,7 @@ describe("cli-config schematic", () => {
 		const targetFile = "/angular.json";
 		expect(tree.exists(targetFile)).toBeTruthy();
 
-		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
+		await runner.runSchematic("cli-config", {}, tree);
 		const workspace = JSON.parse(tree.read("/angular.json")!.toString());
 
 		// the schematic creates the hierarchy that leads to the styles object within the workspace,
@@ -199,7 +200,7 @@ describe("cli-config schematic", () => {
 		const targetFile = "/src/styles.sass";
 		tree.create(targetFile, "");
 
-		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
+		await runner.runSchematic("cli-config", {}, tree);
 
 		let content = tree.readContent(targetFile);
 		expect(content.includes(`@use "${NPM_ANGULAR}`)).toBeTruthy();
@@ -209,7 +210,7 @@ describe("cli-config schematic", () => {
 		createIgPkgJson(FEED_ANGULAR);
 		populatePkgJson(FEED_ANGULAR);
 
-		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
+		await runner.runSchematic("cli-config", {}, tree);
 		content = tree.readContent(targetFile);
 		expect(content.includes(`@use "${FEED_ANGULAR}`)).toBeTruthy();
 	});
@@ -236,7 +237,7 @@ export class AppModule {
 		const targetFile = "./src/app/app.module.ts";
 		tree.create(targetFile, moduleContent);
 
-		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
+		await runner.runSchematic("cli-config", {}, tree);
 		const content = tree.readContent(targetFile);
 		expect(content.replace(/\r\n/g, "\n")).toEqual(moduleContentAfterSchematic.replace(/\r\n/g, "\n"));
 	});
@@ -265,7 +266,7 @@ export const appConfig: ApplicationConfig = {
 		const targetFile = "./src/app/app.config.ts";
 		tree.create(targetFile, moduleContent);
 
-		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
+		await runner.runSchematic("cli-config", {}, tree);
 		const content = tree.readContent(targetFile);
 		expect(content.replace(/\r\n/g, "\n")).toEqual(moduleContentAfterSchematic.replace(/\r\n/g, "\n"));
 	});
@@ -284,7 +285,7 @@ export const appConfig: ApplicationConfig = {
 		const targetFile = "./src/app/app.config.ts";
 		tree.create(targetFile, moduleContent);
 
-		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
+		await runner.runSchematic("cli-config", {}, tree);
 		const content = tree.readContent(targetFile);
 		expect(content.replace(/\r\n/g, "\n")).toEqual(moduleContent.replace(/\r\n/g, "\n"));
 	});
@@ -296,7 +297,7 @@ export const appConfig: ApplicationConfig = {
 				warns.push(entry.message);
 			}
 		});
-		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
+		await runner.runSchematic("cli-config", {}, tree);
 		let pattern = new RegExp(`WARNING Version mismatch detected - ${NPM_ANGULAR}`);
 		expect(warns).toContain(jasmine.stringMatching(pattern));
 
@@ -305,7 +306,7 @@ export const appConfig: ApplicationConfig = {
 		populatePkgJson(FEED_ANGULAR);
 		pattern = new RegExp(`WARNING Version mismatch detected - ${FEED_ANGULAR}`);
 
-		await runner.runSchematicAsync("cli-config", {}, tree).toPromise();
+		await runner.runSchematic("cli-config", {}, tree);
 		expect(warns).toContain(jasmine.stringMatching(pattern));
 	});
 });

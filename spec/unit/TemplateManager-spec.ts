@@ -1,5 +1,5 @@
 import { IgniteUIForAngularTemplate } from "@igniteui/angular-templates";
-import { ComponentGroup, Framework, ProjectConfig, Util } from "@igniteui/cli-core";
+import { ComponentGroup, Config, Framework, ProjectConfig, Util } from "@igniteui/cli-core";
 import * as path from "path";
 import { TemplateManager } from "../../packages/cli/lib/TemplateManager";
 import { AngularTemplate } from "../../packages/cli/lib/templates/AngularTemplate";
@@ -36,7 +36,7 @@ describe("Unit - Template manager", () => {
 		});
 	});
 
-	it("Returns correct framework and projects", async done => {
+	it("Returns correct framework and projects", async () => {
 		const frameworkIds = ["react", "angular"];
 		mockProjLibs = frameworkIds.reduce((obj, folder) => {
 			obj[folder] = [
@@ -46,7 +46,8 @@ describe("Unit - Template manager", () => {
 			return obj;
 		}, {});
 		spyOn(Util, "getDirectoryNames").and.returnValue(frameworkIds);
-		spyOn(ProjectConfig, "globalConfig").and.returnValue({});
+		const mockProjectConfig = { } as unknown as Config;
+		spyOn(ProjectConfig, "globalConfig").and.returnValue(mockProjectConfig);
 
 		const manager = new TemplateManager();
 		expect(Util.getDirectoryNames).toHaveBeenCalledWith(path.join(__dirname, "../../packages/cli/templates"));
@@ -70,14 +71,14 @@ describe("Unit - Template manager", () => {
 		expect(manager.getProjectLibrary(frameworkIds[1], "test")).toBeUndefined();
 		expect(manager.getProjectLibrary(frameworkIds[1], frameworkIds[1] + "type1")).toBe(framework.projectLibraries[0]);
 		expect(manager.getProjectLibrary(frameworkIds[1], frameworkIds[1] + "type2")).toBe(framework.projectLibraries[1]);
-		done();
 	});
 
-	it("Shows warnings for incorrect custom templates", async done => {
+	it("Shows warnings for incorrect custom templates", async () => {
 		spyOn(Util, "error");
 		spyOn(Util, "getDirectoryNames").and.returnValue(["jquery"]);
 		const template = "existing/template/";
-		spyOn(ProjectConfig, "getConfig").and.returnValue({ customTemplates: [template] });
+		const mockProjectConfig = { customTemplates: [template] } as unknown as Config;
+		spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
 		spyOn(Util, "directoryExists").and.returnValue(true);
 		spyOn(Util, "fileExists").and.returnValue(true);
 		const mockProj =  mockProLibFactory("js");
@@ -125,17 +126,16 @@ describe("Unit - Template manager", () => {
 		expect(Util.error).toHaveBeenCalledWith(
 			`The framework/project type for template with id "existing" is not supported.`);
 		expect(Util.error).toHaveBeenCalledWith(`File path: ${(template + "template.json").replace(/\//g, path.sep)}`);
-
-		done();
 	});
 
-	it("Loads custom templates from sub folders", async done => {
+	it("Loads custom templates from sub folders", async () => {
 		spyOn(Util, "getDirectoryNames").and.returnValues(
 			["jquery"], //frameworks load
 			["template1", "template2"] //templates load
 		);
 		const template = "rootFolder/";
-		spyOn(ProjectConfig, "getConfig").and.returnValue({ customTemplates: [template] });
+		const mockProjectConfig = { customTemplates: [template] } as unknown as Config;
+		spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
 		spyOn(Util, "directoryExists").and.returnValue(true);
 		spyOn(Util, "fileExists").and.returnValues(false, true, true);
 		mockProjLibs = { jquery: [ mockProLibFactory("js") ] };
@@ -162,11 +162,9 @@ describe("Unit - Template manager", () => {
 		expect(mockProjLibs.jquery[0].registerTemplate).toHaveBeenCalledWith(
 			jasmine.objectContaining({ id: "rootFolder/template2/template.json".replace(/\//g, path.sep) })
 		);
-
-		done();
 	});
 
-	it("Should load/create/register diff types of external custom Templates", async done => {
+	it("Should load/create/register diff types of external custom Templates", async () => {
 		spyOn(Util, "getDirectoryNames").and.returnValue(["jquery", "react", "angular"]);
 		const templates = [
 			"file:/template/jquery/js",
@@ -174,7 +172,8 @@ describe("Unit - Template manager", () => {
 			"path:/template/angular/ig-ts",
 			"/template/angular/igx-ts"
 		];
-		spyOn(ProjectConfig, "getConfig").and.returnValue({ customTemplates: templates });
+		const mockProjectConfig = { customTemplates: templates } as unknown as Config;
+		spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
 		spyOn(Util, "directoryExists").and.returnValue(true);
 		spyOn(Util, "fileExists").and.returnValue(true);
 		mockProjLibs = {
@@ -225,6 +224,5 @@ describe("Unit - Template manager", () => {
 		expect(mockProjLibs.angular[1].registerTemplate).toHaveBeenCalledWith(
 			jasmine.objectContaining(template("angular", "igx-ts"))
 		);
-		done();
 	});
 });

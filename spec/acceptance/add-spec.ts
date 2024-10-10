@@ -1,4 +1,11 @@
-import { FEED_ANGULAR, NPM_ANGULAR, GoogleAnalytics, GoogleAnalyticsParameters, ProjectConfig } from "@igniteui/cli-core";
+import {
+	FEED_ANGULAR,
+	NPM_ANGULAR,
+	GoogleAnalytics,
+	GoogleAnalyticsParameters,
+	ProjectConfig,
+	Config
+} from "@igniteui/cli-core";
 import * as fs from "fs";
 import { EOL } from "os";
 import { parse } from "path";
@@ -27,7 +34,7 @@ describe("Add command", () => {
 		fs.rmdirSync(`./output/${testFolder}`);
 	});
 
-	it("Should not work without a project", async done => {
+	it("Should not work without a project", async () => {
 		await cli.run(["add", "grid", "name"]);
 
 		expect(console.error).toHaveBeenCalledWith(
@@ -53,11 +60,9 @@ describe("Add command", () => {
 			jasmine.stringMatching(/Add command is supported only on existing project created with igniteui-cli\s*/)
 		);
 		expect(console.log).toHaveBeenCalledTimes(0);
-
-		done();
 	});
 
-	it("Should not work quickstart project", async done => {
+	it("Should not work quickstart project", async () => {
 		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({ project: { isShowcase: true } }));
 		await cli.run(["add", "grid", "name"]);
 
@@ -67,10 +72,9 @@ describe("Add command", () => {
 		expect(console.log).toHaveBeenCalledTimes(0);
 
 		fs.unlinkSync(ProjectConfig.configFile);
-		done();
 	});
 
-	it("Should not work with wrong framework", async done => {
+	it("Should not work with wrong framework", async () => {
 		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({ project: { framework: "angular2" } }));
 		await cli.run(["add", "grid", "name"]);
 
@@ -78,10 +82,9 @@ describe("Add command", () => {
 		expect(console.log).toHaveBeenCalledTimes(0);
 
 		fs.unlinkSync(ProjectConfig.configFile);
-		done();
 	});
 
-	it("Should not work with wrong template", async done => {
+	it("Should not work with wrong template", async () => {
 		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({ project: { framework: "jquery" } }));
 		await cli.run(["add", "wrong", "name"]);
 
@@ -91,12 +94,12 @@ describe("Add command", () => {
 		expect(console.log).toHaveBeenCalledTimes(0);
 
 		fs.unlinkSync(ProjectConfig.configFile);
-		done();
 	});
 
-	it("Should correctly add jQuery template", async done => {
+	it("Should correctly add jQuery template", async () => {
 		// TODO: Mock out template manager and project register
-		spyOn(ProjectConfig, "globalConfig").and.returnValue({});
+		const mockConfig = {} as unknown as Config;
+		spyOn(ProjectConfig, "globalConfig").and.returnValue(mockConfig);
 
 		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
 			project: { framework: "jquery", projectType: "js", components: [], igniteuiSource: "", themePath: "" }
@@ -115,11 +118,11 @@ describe("Add command", () => {
 
 		fs.unlinkSync("ignite-cli-views.js");
 		fs.unlinkSync(ProjectConfig.configFile);
-		done();
 	});
 
-	it("Should not duplicate add jq Grid template", async done => {
-		spyOn(ProjectConfig, "globalConfig").and.returnValue({});
+	it("Should not duplicate add jq Grid template", async () => {
+		const mockConfig = {} as unknown as Config;
+		spyOn(ProjectConfig, "globalConfig").and.returnValue(mockConfig);
 
 		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
 			project: { framework: "jquery", projectType: "js", components: [], igniteuiSource: "", themePath: "" }
@@ -164,14 +167,21 @@ describe("Add command", () => {
 		fs.rmdirSync("./test-view");
 		fs.unlinkSync("ignite-cli-views.js");
 		fs.unlinkSync(ProjectConfig.configFile);
-		done();
 	});
 
-	it("Should correctly add Angular template", async done => {
-		spyOn(ProjectConfig, "globalConfig").and.returnValue({});
+	it("Should correctly add Angular template", async () => {
+		const mockConfig = {
+			project: {
+				framework: "angular",
+				projectType: "ig-ts",
+				components: [],
+			}
+		} as unknown as Config;
+
+		spyOn(ProjectConfig, "globalConfig").and.returnValue(mockConfig);
 
 		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
-			project: { framework: "angular", projectType: "ig-ts", components: [] }
+			project: mockConfig
 		}));
 		fs.mkdirSync(`./src`);
 		fs.mkdirSync(`./src/app`);
@@ -240,13 +250,12 @@ describe("Add command", () => {
 		};
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith(expectedPrams);
 		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);
-
-		done();
 	});
 
 	for (const igxPackage of [NPM_ANGULAR, FEED_ANGULAR]) {
-		it(`Should correctly add Ignite UI for Angular template - ${igxPackage}`, async done => {
-			spyOn(ProjectConfig, "globalConfig").and.returnValue({});
+		it(`Should correctly add Ignite UI for Angular template - ${igxPackage}`, async () => {
+			const mockConfig = {} as unknown as Config;
+			spyOn(ProjectConfig, "globalConfig").and.returnValue(mockConfig);
 
 			fs.writeFileSync("package.json", JSON.stringify({
 				dependencies: { [igxPackage]: "9.0.0" }
@@ -318,13 +327,13 @@ export class AppModule {
 			fs.unlinkSync(ProjectConfig.configFile);
 			fs.unlinkSync("tslint.json");
 			fs.unlinkSync("package.json");
-			done();
 		});
 	}
 
 	it("Should correctly add Ignite UI for Angular template passing folders path and spaces/tabs in name arg"
-		, async done => {
-			spyOn(ProjectConfig, "globalConfig").and.returnValue({});
+		, async () => {
+			const mockConfig = {} as unknown as Config;
+			spyOn(ProjectConfig, "globalConfig").and.returnValue(mockConfig);
 
 			fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
 				project: { framework: "angular", projectType: "igx-ts-legacy", components: [] }
@@ -392,12 +401,12 @@ export class AppModule {
 			fs.rmdirSync("./src");
 			fs.unlinkSync(ProjectConfig.configFile);
 			fs.unlinkSync("tslint.json");
-			done();
 		});
 
-	it("Should correctly add React template", async done => {
+	it("Should correctly add React template", async () => {
 		// TODO: Mock out template manager and project register
-		spyOn(ProjectConfig, "globalConfig").and.returnValue({});
+		const mockConfig = {} as unknown as Config;
+		spyOn(ProjectConfig, "globalConfig").and.returnValue(mockConfig);
 
 		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
 			project: { framework: "react", projectType: "es6", components: [] }
@@ -415,6 +424,5 @@ export class AppModule {
 		fs.rmSync("./src", { recursive: true,  force: true });
 
 		fs.unlinkSync(ProjectConfig.configFile);
-		done();
 	});
 });
