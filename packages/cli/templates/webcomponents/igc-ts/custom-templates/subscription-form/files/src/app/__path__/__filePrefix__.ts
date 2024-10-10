@@ -2,14 +2,12 @@ import { html, css, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import {
   defineComponents,
-  IgcFormComponent,
   IgcInputComponent,
   IgcCheckboxComponent,
   IgcButtonComponent,
 } from 'igniteui-webcomponents';
 
 defineComponents(
-  IgcFormComponent,
   IgcInputComponent,
   IgcCheckboxComponent,
   IgcButtonComponent,
@@ -49,7 +47,7 @@ export default class $(ClassName) extends LitElement {
   render() {
     return html`
       <div class="container sample">
-        <igc-form id="form" @igcSubmit="${this.handleSubmit}">
+        <form id="form" @submit="${this.handleSubmit}">
           <div>Subscribe</div>
           <igc-input required name="name" type="text" label="Your Name"></igc-input>
           <igc-input required name="email" type="email" label="Your E-mail"></igc-input>
@@ -59,7 +57,7 @@ export default class $(ClassName) extends LitElement {
             <igc-button type="reset">Reset</igc-button>
             <igc-button type="submit">Submit</igc-button>
           </div>
-        </igc-form>
+        </form>
       </div>
     `;
   }
