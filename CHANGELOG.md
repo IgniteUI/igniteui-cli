@@ -1,3 +1,25 @@
+# [14.1.0](https://github.com/IgniteUI/igniteui-cli/compare/v14.0.2...v14.1.0) (2024-09-20)
+
+## What's Changed
+* Dependency updates iteration 1 by @jackofdiamond5 in https://github.com/IgniteUI/igniteui-cli/pull/1311
+* Dependency updates iteration 2 - migrate inquirer by @jackofdiamond5 in https://github.com/IgniteUI/igniteui-cli/pull/1316
+* Dependency updates iteration 3 - upgrade jasmine and schematics by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1318
+* Provide default package name in config for igx-ts projects by @jackofdiamond5 in https://github.com/IgniteUI/igniteui-cli/pull/1320
+* chore(react): increase build ram by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1315
+* chore: update wc, react and dock-manager by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1321
+
+## New Contributors
+* @Hristo313 made their first contribution in https://github.com/IgniteUI/igniteui-cli/pull/1318
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.0.2...v14.1.0
+
+# [14.0.3](https://github.com/IgniteUI/igniteui-cli/compare/v14.0.2...v14.0.3) (2024-10-11)
+
+## What's Changed
+* chore: update wc, react and dock-manager by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1322
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.0.2...v14.0.3
+
 # [14.0.2](https://github.com/IgniteUI/igniteui-cli/compare/v14.0.1...v14.0.2) (2024-09-20)
 
 ## What's Changed
