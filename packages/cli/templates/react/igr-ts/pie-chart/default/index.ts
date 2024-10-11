@@ -10,7 +10,7 @@ class IgrTsPieChartTemplate extends IgniteUIForReactTemplate {
 		this.projectType = "igr-ts";
 		this.name = "Pie Chart";
 		this.description = `easily illustate the proportions of data entries`;
-		this.packages = ["igniteui-react-charts@~18.6.0"];
+		this.packages = ["igniteui-react-charts@~18.7.0"];
 	}
 }
 module.exports = new IgrTsPieChartTemplate();
