@@ -1,6 +1,6 @@
 import * as ts from 'typescript';
 import {
-	ArrayLiteralExpressionEditOptions,
+  ArrayLiteralExpressionEditOptions,
   Identifier,
   ImportDeclarationMeta,
   ObjectLiteralExpressionEditOptions,
@@ -139,6 +139,11 @@ export const newMemberInArrayLiteralTransformerFactory = (
             });
           }
 
+          /**
+           * TODO:
+           * Consider extracting some of the logic to the factory that handles array literals as property initializers and reusing that here.
+           * The anchor element should be preserved while it should also allow for overriding of the elements, if needed.
+           */
           if (anchor) {
             let structure!: ts.Expression[];
             if (options?.prepend) {
