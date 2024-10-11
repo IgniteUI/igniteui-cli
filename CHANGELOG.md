@@ -1,3 +1,10 @@
+# [14.0.3](https://github.com/IgniteUI/igniteui-cli/compare/v14.0.2...v14.0.3) (2024-10-11)
+
+## What's Changed
+* chore: update wc, react and dock-manager by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1322
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.0.2...v14.0.3
+
 # [14.0.2](https://github.com/IgniteUI/igniteui-cli/compare/v14.0.1...v14.0.2) (2024-09-20)
 
 ## What's Changed
