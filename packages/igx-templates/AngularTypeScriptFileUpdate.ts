@@ -171,6 +171,8 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
 
     const igxMembersPrefix = 'igx';
     this.astTransformer.requestSortInArrayLiteral(visitCondition, (a, b) => {
+      // this check is just to type guard to a ts.Identifier
+      // in reality, the elements should always be identifiers
       if (!ts.isIdentifier(a) || !ts.isIdentifier(b)) return -1;
 
       const aText = a.text.toLowerCase();
