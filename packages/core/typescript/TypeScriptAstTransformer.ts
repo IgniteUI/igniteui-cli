@@ -25,7 +25,7 @@ import { TypeScriptExpressionCollector } from './TypeScriptExpressionCollector';
 import { TypeScriptNodeFactory } from './TypeScriptNodeFactory';
 
 /**
- * Applies transformations to a source file using TypeScript compiler API.
+ * Applies changes to a `TypeScript` source file through `AST` mutations.
  */
 export class TypeScriptAstTransformer {
   private _defaultCompilerOptions: ts.CompilerOptions;
@@ -35,7 +35,7 @@ export class TypeScriptAstTransformer {
   private _printer: ts.Printer | undefined;
 
   /**
-   * Create a new TypeScriptAstTransformer instance for the given source file.
+   * Create a new `TypeScriptAstTransformer` instance for the given source file.
    * @param sourceFile The source file to update.
    * @param printerOptions Options to use when printing the source file.
    * @param customCompilerOptions Custom compiler options to use when transforming the source file.
@@ -94,8 +94,8 @@ export class TypeScriptAstTransformer {
   }
 
   /**
-   * Looks up a property assignment in the AST.
-   * @param visitCondition The condition by which the property assignment is found.
+   * Looks up a {@link ts.PropertyAssignment} in the `AST`.
+   * @param visitCondition The condition by which the {@link ts.PropertyAssignment} is found.
    * @param lastMatch Whether to return the last match found. If not set, the first match will be returned.
    */
   public findPropertyAssignment(
@@ -119,7 +119,7 @@ export class TypeScriptAstTransformer {
   }
 
   /**
-   * Searches the AST for a variable declaration with the given name and type.
+   * Searches the `AST` for a variable declaration with the given name and type.
    * @param name The name of the variable to look for.
    * @param type The type of the variable to look for.
    * @returns The variable declaration if found, otherwise `undefined`.
@@ -174,7 +174,7 @@ export class TypeScriptAstTransformer {
   }
 
   /**
-   * Creates a request that will resolve during {@link finalize} for a new property assignment in an {@link ts.ObjectLiteralExpression}.
+   * Creates a request that will resolve during {@link finalize} for a new {@link ts.PropertyAssignment} in an {@link ts.ObjectLiteralExpression}.
    * @param visitCondition The condition by which the {@link ts.ObjectLiteralExpression} is found.
    * @param propertyAssignment The property that will be added.
    */
@@ -183,7 +183,7 @@ export class TypeScriptAstTransformer {
     propertyAssignment: PropertyAssignment
   ): void;
   /**
-   * Creates a request that will resolve during {@link finalize} for a new property assignment in an {@link ts.ObjectLiteralExpression}.
+   * Creates a request that will resolve during {@link finalize} for a new {@link ts.PropertyAssignment} in an {@link ts.ObjectLiteralExpression}.
    * @param visitCondition The condition by which the {@link ts.ObjectLiteralExpression} is found.
    * @param propertyName The name of the property that will be added.
    * @param propertyValue The value of the property that will be added.
@@ -232,12 +232,12 @@ export class TypeScriptAstTransformer {
   }
 
   /**
-   * Creates a request that will resolve during {@link finalize} for a new property assignment that has a JSX value.
-   * The member is added in an object literal expression.
-   * @param visitCondition The condition by which the object literal expression is found.
+   * Creates a request that will resolve during {@link finalize} for a new property assignment that has a `JSX` value.
+   * The member is added in an {@link ts.ObjectLiteralExpression}.
+   * @param visitCondition The condition by which the {@link ts.ObjectLiteralExpression} is found.
    * @param propertyName The name of the property that will be added.
    * @param propertyValue The value of the property that will be added.
-   * @param jsxAttributes The JSX attributes to add to the JSX element.
+   * @param jsxAttributes The `JSX` attributes to add to the `JSX` element.
    *
    * @remarks Creates a property assignment of the form `{ propertyName: <propertyValue /> }` in the object literal.
    */
@@ -263,11 +263,10 @@ export class TypeScriptAstTransformer {
   /**
    * Creates a request that will resolve during {@link finalize} which adds a new element to an {@link ts.ArrayLiteralExpression}.
    * @param visitCondition The condition by which the {@link ts.ArrayLiteralExpression} is found.
-   * @param elements The elements that will be added to the array literal.
-   * @param prepend If the elements should be added at the beginning of the array.
+   * @param elements The elements that will be added to the {@link ts.ArrayLiteralExpression}.
    * @param anchorElement The element to anchor the new elements to.
-   * @param multiline Whether the array literal should be multiline.
-   * @remarks The `anchorElement` must match the type of the elements in the collection.
+   * @param options Options to apply when modifying the {@link ts.ArrayLiteralExpression}.
+   * @remarks The {@link anchorElement} must match the type of the elements in the collection.
    */
   public requestNewMembersInArrayLiteral(
     visitCondition: (node: ts.ArrayLiteralExpression) => boolean,
@@ -278,10 +277,10 @@ export class TypeScriptAstTransformer {
   /**
    * Creates a request that will resolve during {@link finalize} which adds a new element to an {@link ts.ArrayLiteralExpression}.
    * @param visitCondition The condition by which the {@link ts.ArrayLiteralExpression} is found.
-   * @param elements The elements that will be added to the array literal
+   * @param elements The elements that will be added to the {@link ts.ArrayLiteralExpression}.
    * @param anchorElement The element to anchor the new elements to.
-   * @param options Options to apply when modifying the array literal.
-   * @remarks The `anchorElement` must match the type of the elements in the collection.
+   * @param options Options to apply when modifying the {@link ts.ArrayLiteralExpression}.
+   * @remarks The {@link anchorElement} must match the type of the elements in the collection.
    */
   public requestNewMembersInArrayLiteral(
     visitCondition: (node: ts.ArrayLiteralExpression) => boolean,
@@ -330,10 +329,10 @@ export class TypeScriptAstTransformer {
    * @param visitCondition The condition by which the {@link ts.ArrayLiteralExpression} is found.
    * @param sortCondition The sorting function to apply to the array's elements.
    *
-   * @remarks The `sortCondition` function should return a negative number if `a` should come before `b`,
+   * @remarks The {@link sortCondition} function should return a negative number if `a` should come before `b`,
    *  a positive number if `a` should come after `b`, or zero if they are equal.
    *
-   * It uses `Array.prototype.sort` internally.
+   * Uses {@link Array.prototype.sort} internally.
    */
   public requestSortInArrayLiteral(
     visitCondition: (node: ts.ArrayLiteralExpression) => boolean,
@@ -357,7 +356,7 @@ export class TypeScriptAstTransformer {
    * @param argument The argument to add to the method call.
    * @param position The position in the argument list to add the new argument.
    * @param override Whether to override the argument at the given position.
-   * @remarks If `position` is not provided or is less than zero, the argument will be added at the end of the argument list.
+   * @remarks If {@link position} is not provided or is less than zero, the argument will be added at the end of the argument list.
    */
   public requestNewArgumentInMethodCallExpression(
     visitCondition: (node: ts.CallExpression) => boolean,
@@ -406,9 +405,10 @@ export class TypeScriptAstTransformer {
    * Creates a request that will resolve during {@link finalize} which adds an {@link ts.ImportDeclaration} to the source file.
    * @param importDeclarationMeta Metadata for the new {@link ts.ImportDeclaration}.
    * @param isDefault Whether the import is a default import.
-   * @remarks If `isDefault` is `true`, the first identifier will be used and
+   * @param isSideEffects Whether the import is a side effects import.
+   * @remarks If {@link isDefault} is `true`, the first identifier will be used and
    * the import will be a default import of the form `import MyClass from "my-module"`.
-   * @remarks If `isSideEffects` is `true`, all other options are ignored
+   * @remarks If {@link isSideEffects} is `true`, all other options are ignored
    * and the import will be a side effects import of the form `import "my-module"`.
    * @reference {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#description|MDN}
    */
@@ -444,8 +444,8 @@ export class TypeScriptAstTransformer {
   }
 
   /**
-   * Applies the requested changes to the source file.
-   * @remarks Does not mutate the original `ts.SourceFile`. Instead, it creates a new one with the changes applied.
+   * Applies the requested changes to the {@link ts.SourceFile}.
+   * @remarks Does not mutate the original {@link ts.SourceFile}. Instead, it creates a new one with the changes applied.
    */
   public applyChanges(): ts.SourceFile {
     let clone = this.sourceFile.getSourceFile();
@@ -464,8 +464,8 @@ export class TypeScriptAstTransformer {
   }
 
   /**
-   * Applies all transformations, parses the AST and returns the resulting source code.
-   * @remarks This method should be called after all modifications are ready to be applied to the AST.
+   * Applies all transformations, parses the `AST` and returns the resulting source code.
+   * @remarks This method should be called after all modifications are ready to be applied to the `AST`.
    * If a {@link formatter} is present, it will be used to format the source code and update the file on the FS.
    */
   public finalize(): string {

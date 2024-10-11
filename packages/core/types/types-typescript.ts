@@ -104,6 +104,7 @@ export interface ObjectLiteralExpressionEditOptions
   /**
    * Whether to override all elements of the property's initializer.
    * @remarks This option is only applicable to {@link ts.PropertyAssignment} with an initializer that is {@link ts.ArrayLiteralExpression}.
+   * All other initializers will be overridden by default.
    */
   override?: boolean;
 }
@@ -113,10 +114,6 @@ export interface ObjectLiteralExpressionEditOptions
  */
 export interface ArrayLiteralExpressionEditOptions
   extends LiteralExpressionOptionsBase {
-  /**
-   * Whether to override all elements of the {@link ts.ArrayLiteralExpression}.
-   */
-  override?: boolean;
   /**
    * If any elements should be added at the beginning of an {@link ts.ArrayLiteralExpression}.
    */
