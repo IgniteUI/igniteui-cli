@@ -1,4 +1,4 @@
-# [14.1.0](https://github.com/IgniteUI/igniteui-cli/compare/v14.0.2...v14.1.0) (2024-09-20)
+# [14.1.0](https://github.com/IgniteUI/igniteui-cli/compare/v14.0.2...v14.1.0) (2024-10-11)
 
 ## What's Changed
 * Dependency updates iteration 1 by @jackofdiamond5 in https://github.com/IgniteUI/igniteui-cli/pull/1311
