@@ -174,8 +174,8 @@ export class TypeScriptAstTransformer {
   }
 
   /**
-   * Creates a request that will resolve during {@link finalize} for a new property assignment in an object literal expression.
-   * @param visitCondition The condition by which the object literal expression is found.
+   * Creates a request that will resolve during {@link finalize} for a new property assignment in an {@link ts.ObjectLiteralExpression}.
+   * @param visitCondition The condition by which the {@link ts.ObjectLiteralExpression} is found.
    * @param propertyAssignment The property that will be added.
    */
   public requestNewMemberInObjectLiteral(
@@ -183,13 +183,12 @@ export class TypeScriptAstTransformer {
     propertyAssignment: PropertyAssignment
   ): void;
   /**
-   * Creates a request that will resolve during {@link finalize} for a new property assignment in an object literal expression.
-   * @param visitCondition The condition by which the object literal expression is found.
+   * Creates a request that will resolve during {@link finalize} for a new property assignment in an {@link ts.ObjectLiteralExpression}.
+   * @param visitCondition The condition by which the {@link ts.ObjectLiteralExpression} is found.
    * @param propertyName The name of the property that will be added.
    * @param propertyValue The value of the property that will be added.
-   * @param multiline Whether the object literal should be multiline.
-   * @param override Whether to override all elements of the property's initializer. Applicable when the property's initializer is an array.
-   * @remarks Will update the property's initializer if it already exists in the object literal.
+   * @param options Options to apply when modifying the object literal.
+   * @remarks Will update the property's initializer if it already exists.
    */
   public requestNewMemberInObjectLiteral(
     visitCondition: (node: ts.ObjectLiteralExpression) => boolean,
@@ -262,8 +261,8 @@ export class TypeScriptAstTransformer {
   }
 
   /**
-   * Creates a request that will resolve during {@link finalize} which adds a new element to an array literal expression.
-   * @param visitCondition The condition by which the array literal expression is found.
+   * Creates a request that will resolve during {@link finalize} which adds a new element to an {@link ts.ArrayLiteralExpression}.
+   * @param visitCondition The condition by which the {@link ts.ArrayLiteralExpression} is found.
    * @param elements The elements that will be added to the array literal.
    * @param prepend If the elements should be added at the beginning of the array.
    * @param anchorElement The element to anchor the new elements to.
@@ -277,12 +276,11 @@ export class TypeScriptAstTransformer {
     options?: ArrayLiteralExpressionEditOptions
   ): void;
   /**
-   * Creates a request that will resolve during {@link finalize} which adds a new element to an array literal expression.
-   * @param visitCondition The condition by which the array literal expression is found.
+   * Creates a request that will resolve during {@link finalize} which adds a new element to an {@link ts.ArrayLiteralExpression}.
+   * @param visitCondition The condition by which the {@link ts.ArrayLiteralExpression} is found.
    * @param elements The elements that will be added to the array literal
-   * @param prepend If the elements should be added at the beginning of the array.
    * @param anchorElement The element to anchor the new elements to.
-   * @param multiline Whether the array literal should be multiline.
+   * @param options Options to apply when modifying the array literal.
    * @remarks The `anchorElement` must match the type of the elements in the collection.
    */
   public requestNewMembersInArrayLiteral(
@@ -328,9 +326,9 @@ export class TypeScriptAstTransformer {
   }
 
   /**
-   * Creates a request that will resolve during {@link finalize} which sorts the elements in an array literal expression.
-   * @param visitCondition The condition by which the array literal expression is found.
-   * @param sortCondition The sorting function to apply to the array elements.
+   * Creates a request that will resolve during {@link finalize} which sorts the elements in an {@link ts.ArrayLiteralExpression}}.
+   * @param visitCondition The condition by which the {@link ts.ArrayLiteralExpression} is found.
+   * @param sortCondition The sorting function to apply to the array's elements.
    *
    * @remarks The `sortCondition` function should return a negative number if `a` should come before `b`,
    *  a positive number if `a` should come after `b`, or zero if they are equal.
@@ -384,7 +382,7 @@ export class TypeScriptAstTransformer {
   }
 
   /**
-   * Checks if an import declaration's identifier or alias would collide with an existing one.
+   * Checks if an {@link ts.ImportDeclaration}'s identifier or alias would collide with an existing one.
    * @param identifier The identifier to check for collisions.
    * @param moduleName The module that the import is for, used for side effects imports.
    * @param isSideEffects If the import is strictly a side effects import.
@@ -405,8 +403,8 @@ export class TypeScriptAstTransformer {
   }
 
   /**
-   * Creates a request that will resolve during {@link finalize} which adds an import declaration to the source file.
-   * @param importDeclarationMeta Metadata for the new import declaration.
+   * Creates a request that will resolve during {@link finalize} which adds an {@link ts.ImportDeclaration} to the source file.
+   * @param importDeclarationMeta Metadata for the new {@link ts.ImportDeclaration}.
    * @param isDefault Whether the import is a default import.
    * @remarks If `isDefault` is `true`, the first identifier will be used and
    * the import will be a default import of the form `import MyClass from "my-module"`.
