@@ -27,6 +27,7 @@ import {
   AngularDecoratorMetaTarget,
   AngularRouteEntry,
   AngularRouteTarget,
+  AngularDecoratorMetaTargetType,
 } from './types';
 
 export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
@@ -137,6 +138,57 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
 
     this.addRootToModule(dep, copy);
     this.applyDecoratorMutations(NG_MODULE_DECORATOR_NAME, copy, multiline);
+  }
+
+  /**
+   * Sorts the elements of an Angular decorator property that is an {@link ts.ArrayLiteralExpression}.
+   * @param decoratorName The name of the decorator to look for.
+   * @param target The target metadata property to sort.
+   *
+   * @remarks The {@link target} must be a {@link ts.PropertyAssignment} with an initializer that is an {@link ts.ArrayLiteralExpression}.
+   */
+  public sortNgMetaPropertyAssignment(
+    decoratorName: string,
+    target: AngularDecoratorMetaTargetType
+  ) {
+    const visitCondition = (node: ts.ArrayLiteralExpression) => {
+      const propertyAssignment = this.astTransformer.findNodeAncestor(
+        node,
+        (node) =>
+          ts.isPropertyAssignment(node) &&
+          ts.isIdentifier(node.name) &&
+          node.name.text.toLowerCase() === target.toLowerCase() &&
+          ts.isArrayLiteralExpression(node.initializer)
+      );
+
+      if (!propertyAssignment) {
+        return false;
+      }
+
+      const expectedDecorator = this.checkNgDecorator(decoratorName, node);
+      return expectedDecorator;
+    };
+
+    const igxMembersPrefix = 'igx';
+    this.astTransformer.requestSortInArrayLiteral(visitCondition, (a, b) => {
+      if (!ts.isIdentifier(a) || !ts.isIdentifier(b)) return -1;
+
+      const aText = a.text.toLowerCase();
+      const bText = b.text.toLowerCase();
+      if (
+        aText.startsWith(igxMembersPrefix) &&
+        !bText.startsWith(igxMembersPrefix)
+      ) {
+        return 1;
+      } else if (
+        !aText.startsWith(igxMembersPrefix) &&
+        bText.startsWith(igxMembersPrefix)
+      ) {
+        return -1;
+      } else {
+        return aText.localeCompare(bText);
+      }
+    });
   }
 
   /**
@@ -402,7 +454,7 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
   ): void {
     for (const key of Object.keys(meta)) {
       if (meta[key].length > 0) {
-        this.mutateNgDecoratorMeta(decoratorName, meta[key], key, multiline);
+        this.addMetaToNgDecorator(decoratorName, meta[key], key, multiline);
       }
     }
   }
@@ -414,7 +466,7 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
    * @param target The target metadata property to update.
    * @param multiline Whether to format the new entry as multiline.
    */
-  private mutateNgDecoratorMeta(
+  private addMetaToNgDecorator(
     name: string,
     meta: string[],
     target: string,

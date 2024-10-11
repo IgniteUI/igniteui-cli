@@ -1,5 +1,9 @@
 import { App, FS_TOKEN } from '@igniteui/cli-core';
-import { AngularTypeScriptFileUpdate } from '@igniteui/angular-templates';
+import {
+  AngularDecoratorMetaTargetType,
+  AngularDecoratorName,
+  AngularTypeScriptFileUpdate,
+} from '@igniteui/angular-templates';
 import { EOL } from 'os';
 import { MockFS } from './Mock-FS';
 
@@ -89,6 +93,24 @@ const standaloneComponentFilePath = 'path/to/component';
 const pathToAppConfig = 'path/to/app.config';
 const specFilePath = 'path/to/my-component.spec';
 
+let fileUpdate!: AngularTypeScriptFileUpdate;
+
+function setupFileUpdate(
+  standalone = false,
+  filePath: string,
+  fileContent: string
+) {
+  spyOn(App, 'initialize').and.callThrough();
+
+  spyOn(App.container, 'get').and.returnValue(
+    new MockFS(new Map([[filePath, fileContent]]))
+  );
+
+  fileUpdate = new AngularTypeScriptFileUpdate(filePath, standalone, {
+    singleQuotes: true,
+  });
+}
+
 describe('Unit - AngularTypeScriptFileUpdate', () => {
   describe('Initialization', () => {
     it('should be created with a path/to/file', () => {
@@ -151,7 +173,6 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
     });
   });
 
-  let fileUpdate!: AngularTypeScriptFileUpdate;
   describe('App Config', () => {
     beforeEach(() => {
       spyOn(App.container, 'get').and.returnValue(
@@ -779,21 +800,9 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
 
   describe('Metadata', () => {
     describe('NgModule', () => {
-      beforeEach(() => {
-        spyOn(App, 'initialize').and.callThrough();
-        spyOn(App.container, 'get').and.returnValue(
-          new MockFS(new Map([[moduleFilePath, moduleFileContent]]))
-        );
-        fileUpdate = new AngularTypeScriptFileUpdate(
-          moduleFilePath,
-          false, // standalone
-          {
-            singleQuotes: true,
-          }
-        );
-      });
-
       it('should add to imports array and update forRoot()', () => {
+        setupFileUpdate(false, moduleFilePath, moduleFileContent);
+
         fileUpdate.addNgModuleMeta({
           import: ['RouterModule'],
           from: '@angular/router',
@@ -823,6 +832,8 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
       });
 
       it("should add to declarations/exports/providers, creating them if they don't exist", () => {
+        setupFileUpdate(false, moduleFilePath, moduleFileContent);
+
         fileUpdate.addNgModuleMeta(
           {
             declare: ['MyComponent'],
@@ -875,6 +886,8 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
       });
 
       it('should replace variable placeholders / apply variable config transformations', () => {
+        setupFileUpdate(false, moduleFilePath, moduleFileContent);
+
         const configVariables = {
           '$(key)': 'Replace',
           '$(key2)': 'Replace2',
@@ -931,6 +944,8 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
       });
 
       it('should not add members to the same array if they are already present', () => {
+        setupFileUpdate(false, moduleFilePath, moduleFileContent);
+
         fileUpdate.addNgModuleMeta(
           {
             declare: ['MyComponent'],
@@ -992,26 +1007,79 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
             EOL
         );
       });
+
+      it('should properly sort the elements of the `imports` member array', () => {
+        const moduleWithImports = `import { NgModule } from '@angular/core';
+        import { CommonModule } from '@angular/common';
+
+        @NgModule({
+           imports: [
+            BrowserModule,
+            HammerModule,
+            AppRoutingModule,
+            BrowserAnimationsModule,
+            IgxInputGroupModule,
+            ReactiveFormsModule,
+            FormsModule,
+            HttpClientModule
+           ]
+        })
+        export class MyModule {
+        }`;
+        setupFileUpdate(false, moduleFilePath, moduleWithImports);
+
+        fileUpdate.sortNgMetaPropertyAssignment(
+          AngularDecoratorName.NgModule,
+          AngularDecoratorMetaTargetType.Imports
+        );
+
+        const result = fileUpdate.finalize();
+        expect(result).toEqual(
+          `import { NgModule } from '@angular/core';` +
+            EOL +
+            `import { CommonModule } from '@angular/common';` +
+            EOL +
+            EOL +
+            `@NgModule({` +
+            EOL +
+            `    imports: [` +
+            EOL +
+            `        AppRoutingModule,` +
+            EOL +
+            `        BrowserAnimationsModule,` +
+            EOL +
+            `        BrowserModule,` +
+            EOL +
+            `        FormsModule,` +
+            EOL +
+            `        HammerModule,` +
+            EOL +
+            `        HttpClientModule,` +
+            EOL +
+            `        ReactiveFormsModule,` +
+            EOL +
+            `        IgxInputGroupModule` +
+            EOL +
+            `    ]` +
+            EOL +
+            `})` +
+            EOL +
+            `export class MyModule {` +
+            EOL +
+            `}` +
+            EOL
+        );
+      });
     });
 
     describe('Standalone Component', () => {
-      beforeEach(() => {
-        spyOn(App, 'initialize').and.callThrough();
-        spyOn(App.container, 'get').and.returnValue(
-          new MockFS(
-            new Map([
-              [standaloneComponentFilePath, standaloneComponentFileContent],
-            ])
-          )
-        );
-        fileUpdate = new AngularTypeScriptFileUpdate(
-          standaloneComponentFilePath,
-          true, // standalone
-          { singleQuotes: true }
-        );
-      });
-
       it("should update a standalone component's import meta", () => {
+        setupFileUpdate(
+          true,
+          standaloneComponentFilePath,
+          standaloneComponentFileContent
+        );
+
         fileUpdate.addStandaloneComponentMeta({
           import: ['MyComponent'],
           from: 'my-module',
@@ -1053,6 +1121,12 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
       });
 
       it("should update a standalone component's provide meta", () => {
+        setupFileUpdate(
+          true,
+          standaloneComponentFilePath,
+          standaloneComponentFileContent
+        );
+
         fileUpdate.addStandaloneComponentMeta({
           provide: ['MyService'],
           from: 'my-service',
@@ -1096,6 +1170,12 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
       });
 
       it('should replace variable placeholders / apply variable config transformations', () => {
+        setupFileUpdate(
+          true,
+          standaloneComponentFilePath,
+          standaloneComponentFileContent
+        );
+
         const configVariables = {
           '$(key)': 'Replace',
           __key4__: 'replace4',
@@ -1159,6 +1239,12 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
       });
 
       it('should not add members to the same array if they are already present', () => {
+        setupFileUpdate(
+          true,
+          standaloneComponentFilePath,
+          standaloneComponentFileContent
+        );
+
         fileUpdate.addStandaloneComponentMeta({
           provide: ['MyService'],
           from: 'my-service',
@@ -1195,6 +1281,104 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
             `    styleUrls: ['./app.component.scss'],` +
             EOL +
             `    providers: [MyService]` +
+            EOL +
+            `})` +
+            EOL +
+            `export class AppComponent {` +
+            EOL +
+            `    title = 'Home - IgniteUI for Angular';` +
+            EOL +
+            `}` +
+            EOL
+        );
+      });
+
+      it('should properly sort the elements of the `imports` member array', () => {
+        const componentWithImports = `import { Component } from '@angular/core';
+        import { CommonModule } from '@angular/common';
+        import { BrowserModule } from '@angular/platform-browser';
+        import { HammerModule } from '@angular/platform-browser';
+        import { RouterOutlet } from '@angular/router';
+        import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+        import { IGX_INPUT_GROUP_DIRECTIVES } from 'igniteui-angular';
+
+        @Component({
+            selector: 'app-root',
+            standalone: true,
+            imports: [
+                BrowserModule,
+                HammerModule,
+                AppRoutingModule,
+                BrowserAnimationsModule,
+                IGX_INPUT_GROUP_DIRECTIVES,
+                ReactiveFormsModule,
+                FormsModule,
+                HttpClientModule
+            ],
+            templateUrl: './app.component.html',
+            styleUrls: ['./app.component.scss']
+        })
+        export class AppComponent {
+            title = 'Home - IgniteUI for Angular';
+        }`;
+
+        setupFileUpdate(
+          true,
+          standaloneComponentFilePath,
+          componentWithImports
+        );
+
+        fileUpdate.sortNgMetaPropertyAssignment(
+          AngularDecoratorName.Component,
+          AngularDecoratorMetaTargetType.Imports
+        );
+
+        const result = fileUpdate.finalize();
+        expect(result).toEqual(
+          `import { Component } from '@angular/core';` +
+            EOL +
+            `import { CommonModule } from '@angular/common';` +
+            EOL +
+            `import { BrowserModule } from '@angular/platform-browser';` +
+            EOL +
+            `import { HammerModule } from '@angular/platform-browser';` +
+            EOL +
+            `import { RouterOutlet } from '@angular/router';` +
+            EOL +
+            `import { BrowserAnimationsModule } from '@angular/platform-browser/animations';` +
+            EOL +
+            `import { IGX_INPUT_GROUP_DIRECTIVES } from 'igniteui-angular';` +
+            EOL +
+            EOL +
+            `@Component({` +
+            EOL +
+            `    selector: 'app-root',` +
+            EOL +
+            `    standalone: true,` +
+            EOL +
+            `    imports: [` +
+            EOL +
+            `        AppRoutingModule,` +
+            EOL +
+            `        BrowserAnimationsModule,` +
+            EOL +
+            `        BrowserModule,` +
+            EOL +
+            `        FormsModule,` +
+            EOL +
+            `        HammerModule,` +
+            EOL +
+            `        HttpClientModule,` +
+            EOL +
+            `        ReactiveFormsModule,` +
+            EOL +
+            `        IGX_INPUT_GROUP_DIRECTIVES` +
+            EOL +
+            `    ],` +
+            EOL +
+            `    templateUrl: './app.component.html',` +
+            EOL +
+            `    styleUrls: ['./app.component.scss']` +
             EOL +
             `})` +
             EOL +
