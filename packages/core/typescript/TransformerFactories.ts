@@ -478,29 +478,7 @@ function updatePropertyAssignmentWithIdentifier(
     ? newProperty.initializer
     : newProperty.objectAssignmentInitializer;
 
-  const updatedProperty = ts.isPropertyAssignment(existingProperty)
-    ? context.factory.updatePropertyAssignment(
-        existingProperty,
-        existingProperty.name,
-        newPropInitializer
-      )
-    : context.factory.updateShorthandPropertyAssignment(
-        existingProperty,
-        existingProperty.name,
-        newPropInitializer
-      );
-  const structure = Array.from(node.properties);
-  const targetIndex = structure.indexOf(existingProperty);
-  if (targetIndex > -1) {
-    // attempt to modify the property assignment and preserve the order
-    structure[targetIndex] = updatedProperty;
-    return context.factory.updateObjectLiteralExpression(node, structure);
-  }
-  // append the property assignment at the end
-  return context.factory.updateObjectLiteralExpression(node, [
-    ...node.properties.filter((p) => p !== existingProperty),
-    updatedProperty,
-  ]);
+  return updateProperty(node, existingProperty, newPropInitializer, context);
 }
 
 /**
@@ -546,16 +524,33 @@ function updatePropertyAssignmentWithArrayLiteral(
     uniqueElements,
     multiline
   );
+
+  return updateProperty(node, existingProperty, valueExpression, context);
+}
+
+/**
+ * Updates a {@link ts.PropertyAssignment} with a new {@link ts.Initializer}.
+ * @param node The object literal expression node.
+ * @param existingProperty The property to update.
+ * @param newInitializer The new initializer to set.
+ * @param context The transformation context.
+ */
+function updateProperty(
+  node: ts.ObjectLiteralExpression,
+  existingProperty: ts.PropertyAssignment | ts.ShorthandPropertyAssignment,
+  newInitializer: ts.Expression,
+  context: ts.TransformationContext
+): ts.ObjectLiteralExpression {
   const updatedProperty = ts.isPropertyAssignment(existingProperty)
     ? context.factory.updatePropertyAssignment(
         existingProperty,
         existingProperty.name,
-        valueExpression
+        newInitializer
       )
     : context.factory.updateShorthandPropertyAssignment(
         existingProperty,
         existingProperty.name,
-        valueExpression
+        newInitializer
       );
 
   const structure = Array.from(node.properties);
