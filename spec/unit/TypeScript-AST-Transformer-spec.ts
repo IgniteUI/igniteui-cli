@@ -204,31 +204,49 @@ describe('TypeScript AST Transformer', () => {
       );
     });
 
-    it('should update an existing member of an object literal', () => {
-      astTransformer.requestUpdateForObjectLiteralMember(
+    it('should update an existing member of an object literal if it is an array literal and override the initializer', () => {
+      FILE_CONTENT = `const myObj = { key1: ["hello", "world"] };`;
+      sourceFile = ts.createSourceFile(
+        FILE_NAME,
+        FILE_CONTENT,
+        ts.ScriptTarget.Latest,
+        true
+      );
+      astTransformer = new TypeScriptAstTransformer(sourceFile);
+
+      astTransformer.requestNewMemberInObjectLiteral(
         ts.isObjectLiteralExpression,
-        {
-          name: 'key2',
-          value: ts.factory.createStringLiteral('new-value'),
-        }
+        'key1',
+        nodeFactory.createArrayLiteralExpression([
+          ts.factory.createStringLiteral('new-value'),
+        ]),
+        { multiline: false, override: true }
       );
       const result = astTransformer.finalize();
-      expect(result).toEqual(
-        `const myObj = { key1: "hello", key2: "new-value" };\n`
-      );
+      expect(result).toEqual(`const myObj = { key1: ["new-value"] };\n`);
     });
 
-    it('should not update a non-existing member of an object literal', () => {
-      astTransformer.requestUpdateForObjectLiteralMember(
+    it('should update an existing member of an object literal if it is an array literal without overriding the initializer', () => {
+      FILE_CONTENT = `const myObj = { key1: ["hello", "world"] };`;
+      sourceFile = ts.createSourceFile(
+        FILE_NAME,
+        FILE_CONTENT,
+        ts.ScriptTarget.Latest,
+        true
+      );
+      astTransformer = new TypeScriptAstTransformer(sourceFile);
+
+      astTransformer.requestNewMemberInObjectLiteral(
         ts.isObjectLiteralExpression,
-        {
-          name: 'key3',
-          value: ts.factory.createStringLiteral('new-value'),
-        }
+        'key1',
+        nodeFactory.createArrayLiteralExpression([
+          ts.factory.createStringLiteral('new-value'),
+        ]),
+        { multiline: false, override: false }
       );
       const result = astTransformer.finalize();
       expect(result).toEqual(
-        `const myObj = { key1: "hello", key2: "world" };\n`
+        `const myObj = { key1: ["hello", "world", "new-value"] };\n`
       );
     });
 
@@ -239,7 +257,7 @@ describe('TypeScript AST Transformer', () => {
         ts.factory.createStringLiteral('new-value')
       );
 
-      astTransformer.requestUpdateForObjectLiteralMember(
+      astTransformer.requestNewMemberInObjectLiteral(
         ts.isObjectLiteralExpression,
         {
           name: 'key3',
@@ -280,7 +298,8 @@ describe('TypeScript AST Transformer', () => {
       astTransformer.requestNewMembersInArrayLiteral(
         ts.isArrayLiteralExpression,
         [ts.factory.createIdentifier('4')],
-        true
+        null, // anchor element
+        { prepend: true }
       );
 
       const result = astTransformer.finalize();
@@ -291,8 +310,8 @@ describe('TypeScript AST Transformer', () => {
       astTransformer.requestNewMembersInArrayLiteral(
         ts.isArrayLiteralExpression,
         [ts.factory.createIdentifier('4')],
-        true,
-        ts.factory.createIdentifier('3')
+        ts.factory.createIdentifier('3'),
+        { prepend: true }
       );
 
       const result = astTransformer.finalize();
@@ -323,8 +342,8 @@ describe('TypeScript AST Transformer', () => {
             },
           ]),
         ],
-        true,
-        anchor
+        anchor,
+        { prepend: true }
       );
 
       const anotherAnchor = {
@@ -341,8 +360,8 @@ describe('TypeScript AST Transformer', () => {
             },
           ]),
         ],
-        true,
-        anotherAnchor
+        anotherAnchor,
+        { prepend: true }
       );
 
       const result = astTransformer.finalize();
@@ -405,6 +424,63 @@ describe('TypeScript AST Transformer', () => {
         sourceFile
       );
       expect(result).toEqual(`[\n    "new-value",\n    5\n]`);
+    });
+
+    it('should properly sort the members of an array literal numbers', () => {
+      FILE_CONTENT = `const myArr = [1, 10, -3, 0, 65, 12, 6.3, 6.2, 11];`;
+      sourceFile = ts.createSourceFile(
+        FILE_NAME,
+        FILE_CONTENT,
+        ts.ScriptTarget.Latest,
+        true
+      );
+      astTransformer = new TypeScriptAstTransformer(sourceFile);
+      astTransformer.requestSortInArrayLiteral(
+        ts.isArrayLiteralExpression,
+        (a, b) => {
+          let leftSide = 0;
+          let rightSide = 0;
+          if (ts.isNumericLiteral(a)) {
+            leftSide = parseFloat(a.text);
+          }
+          if (ts.isNumericLiteral(b)) {
+            rightSide = parseFloat(b.text);
+          }
+
+          const resolveUnaryExprPrefix = (
+            kind: ts.SyntaxKind,
+            parsedNum: number
+          ) => {
+            if (kind === ts.SyntaxKind.MinusToken) {
+              return -parsedNum;
+            }
+            return parsedNum;
+          };
+
+          if (ts.isPrefixUnaryExpression(a) && ts.isNumericLiteral(a.operand)) {
+            leftSide = resolveUnaryExprPrefix(
+              a.operator,
+              parseFloat(a.operand.text)
+            );
+          }
+          if (ts.isPrefixUnaryExpression(b) && ts.isNumericLiteral(b.operand)) {
+            rightSide = resolveUnaryExprPrefix(
+              b.operator,
+              parseFloat(b.operand.text)
+            );
+          }
+          return leftSide - rightSide;
+        }
+      );
+
+      const result = astTransformer.finalize();
+      expect(result).toEqual(
+        `const myArr = [-3, 0, 1, 6.2, 6.3, 10, 11, 12, 65];\n`
+      );
+    });
+
+    it('should override all elements in the array literal', () => {
+      pending('Consider implementing logic that allows the overriding of all the elements in a floating array literal.');
     });
   });
 
