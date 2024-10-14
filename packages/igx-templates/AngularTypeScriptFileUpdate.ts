@@ -27,7 +27,7 @@ import {
   AngularDecoratorMetaTarget,
   AngularRouteEntry,
   AngularRouteTarget,
-  AngularDecoratorMetaTargetType,
+  AngularDecoratorOptions,
 } from './types';
 
 export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
@@ -147,9 +147,9 @@ export class AngularTypeScriptFileUpdate extends TypeScriptFileUpdate {
    *
    * @remarks The {@link target} must be a {@link ts.PropertyAssignment} with an initializer that is an {@link ts.ArrayLiteralExpression}.
    */
-  public sortNgMetaPropertyAssignment(
+  public sortDecoratorPropertyInitializer(
     decoratorName: string,
-    target: AngularDecoratorMetaTargetType
+    target: AngularDecoratorOptions
   ) {
     const visitCondition = (node: ts.ArrayLiteralExpression) => {
       const propertyAssignment = this.astTransformer.findNodeAncestor(

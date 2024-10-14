@@ -1,6 +1,6 @@
 import { App, FS_TOKEN } from '@igniteui/cli-core';
 import {
-  AngularDecoratorMetaTargetType,
+  AngularDecoratorOptions,
   AngularDecoratorName,
   AngularTypeScriptFileUpdate,
 } from '@igniteui/angular-templates';
@@ -1028,9 +1028,9 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
         }`;
         setupFileUpdate(false, moduleFilePath, moduleWithImports);
 
-        fileUpdate.sortNgMetaPropertyAssignment(
+        fileUpdate.sortDecoratorPropertyInitializer(
           AngularDecoratorName.NgModule,
-          AngularDecoratorMetaTargetType.Imports
+          AngularDecoratorOptions.Imports
         );
 
         const result = fileUpdate.finalize();
@@ -1328,9 +1328,9 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
           componentWithImports
         );
 
-        fileUpdate.sortNgMetaPropertyAssignment(
+        fileUpdate.sortDecoratorPropertyInitializer(
           AngularDecoratorName.Component,
-          AngularDecoratorMetaTargetType.Imports
+          AngularDecoratorOptions.Imports
         );
 
         const result = fileUpdate.finalize();
