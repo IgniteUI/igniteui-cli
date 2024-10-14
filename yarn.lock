@@ -425,7 +425,7 @@
     "@inquirer/type" "^1.5.3"
     ansi-escapes "^4.3.2"
 
-"@inquirer/prompts@^5.4.0":
+"@inquirer/prompts@^5.4.0", "@inquirer/prompts@~5.4.0":
   version "5.4.0"
   resolved "https://registry.yarnpkg.com/@inquirer/prompts/-/prompts-5.4.0.tgz#8bf2e47c39039b5f82e5d0fd69cf58b047a264d5"
   integrity sha512-HIQGd7JOX6WXf7zg7WGs+1m+e3eRFyL4mDtWRlV01AXqZido9W3BSoku2BR4E1lK/NCXok6jg6tTcLw4I0thfg==
@@ -8303,7 +8303,7 @@ thenify-all@^1.0.0:
   dependencies:
     any-promise "^1.0.0"
 
-through2@^2.0.0, through2@^2.0.2:
+through2@^2.0.0, through2@^2.0.2, through2@^2.0.3:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/through2/-/through2-2.0.5.tgz#01c1e39eb31d07cb7d03a96a70823260b23132cd"
   integrity sha512-/mrRod8xqpA+IHSLyGCQ2s8SPHiCDEeQJSep1jqLYeEUClOFG2Qsh+4FU6G9VeqpZnGW/Su8LQGc4YKni5rYSQ==
@@ -8622,6 +8622,11 @@ typescript-json-schema@^0.65.1:
     ts-node "^10.9.1"
     typescript "~5.5.0"
     yargs "^17.1.1"
+
+typescript@~5.4.3:
+  version "5.4.5"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.4.5.tgz#42ccef2c571fdbd0f6718b1d1f5e6e5ef006f611"
+  integrity sha512-vcI4UpRgg81oIRUFwR0WSIHKt11nJ7SAVlYNIu+QpqeyXP+gpQJy/Z4+F0aGxSE4MqwjyXvW/TzgkLAx2AGHwQ==
 
 typescript@~5.5.0, typescript@~5.5.4:
   version "5.5.4"
