@@ -1,0 +1,41 @@
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches: [ <%=yamlDefaultBranch%> ]
+  pull_request:
+    branches: [ <%=yamlDefaultBranch%> ]
+
+jobs:
+  build-and-deploy:
+
+    runs-on: ubuntu-latest
+
+    permissions:
+      pages: write
+      id-token: write
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: npm i
+    - name: Set environment variable for basename
+      run: echo "VITE_BASENAME=/${{ github.event.repository.name }}" >> $GITHUB_ENV
+    - run: npm run build -- --base=/${{ github.event.repository.name }}/
+    - name: Update Resource Paths
+      run: find ./dist/assets -name "*.js" -exec sed -i 's|src/assets|${{ github.event.repository.name }}/assets|g' {} +
+    - name: Copy Resources to dist
+      run: mkdir -p ./dist/assets && cp -R ./src/assets/* ./dist/assets/
+    - name: Upload build artifact to GitHub Pages
+      uses: actions/upload-pages-artifact@v1
+      with:
+        path: ./dist
+    - name: Deploy to GitHub Pages
+      uses: actions/deploy-pages@v1
