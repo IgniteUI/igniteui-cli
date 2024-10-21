@@ -202,9 +202,9 @@ function updateWorkflows(
 	const oldNpmInstall = "- run: npm i # replace with 'npm ci' after committing lock file from first install";
 	const newNpmInstall =
 `- run: echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
-	- run: echo "//packages.infragistics.com/npm/js-licensed/:_auth=\${{ secrets.NPM_AUTH_TOKEN }}" >> ~/.npmrc
-	- run: echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
-	- run: npm i # replace with 'npm ci' after committing lock file from first install`;
+    - run: echo "//packages.infragistics.com/npm/js-licensed/:_auth=\${{ secrets.NPM_AUTH_TOKEN }}" >> ~/.npmrc
+    - run: echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
+    - run: npm i # replace with 'npm ci' after committing lock file from first install`;
 
 	for (const fileName of workflowFiles) {
 		const workflowPath = `.github/workflows/${fileName}`;
