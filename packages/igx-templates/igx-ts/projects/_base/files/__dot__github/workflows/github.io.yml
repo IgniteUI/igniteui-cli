@@ -25,7 +25,8 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm i
+        # cache: 'npm' # enable after committing lock file from first install
+    - run: npm i # replace with 'npm ci' after committing lock file from first install
     - name: Set project name
       run: echo "PROJECT_NAME=$(jq -r '.name' package.json)" >> $GITHUB_ENV
     - name: Build project with dynamic base-href

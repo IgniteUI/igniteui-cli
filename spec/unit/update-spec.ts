@@ -293,6 +293,21 @@ title = 'igniteui-angular example';
     - run: echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
     - run: npm i # replace with \'npm ci\' after committing lock file from first install
 # end content
+`},
+{
+				path: ".github/workflows/github.io.yml",
+				content:
+`# start content
+    - run: npm i # replace with 'npm ci' after committing lock file from first install
+# end content
+`,
+				expected:
+`# start content
+    - run: echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
+    - run: echo "//packages.infragistics.com/npm/js-licensed/:_auth=\${{ secrets.NPM_AUTH_TOKEN }}" >> ~/.npmrc
+    - run: echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
+    - run: npm i # replace with 'npm ci' after committing lock file from first install
+# end content
 `}];
 			(fsSpy.glob as jasmine.Spy).and.returnValues // per workspace
 				([ "package.json" ], // root package.json
@@ -579,8 +594,22 @@ export default function Home() {
     - run: echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
     - run: npm i # replace with \'npm ci\' after committing lock file from first install
 # end content
-`}
-	];
+`},
+{
+				path: ".github/workflows/github.io.yml",
+				content:
+`# start content
+    - run: npm i # replace with 'npm ci' after committing lock file from first install
+# end content
+`,
+				expected:
+`# start content
+    - run: echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
+    - run: echo "//packages.infragistics.com/npm/js-licensed/:_auth=\${{ secrets.NPM_AUTH_TOKEN }}" >> ~/.npmrc
+    - run: echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
+    - run: npm i # replace with 'npm ci' after committing lock file from first install
+# end content
+`}];
 			(fsSpy.glob as jasmine.Spy).and.returnValues // per workspace
 				([ "package.json" ], // root package.json
 				[ "src/home.tsx" ], // logic files
@@ -859,8 +888,22 @@ export default class App extends LitElement {
     - run: echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
     - run: npm i # replace with \'npm ci\' after committing lock file from first install
 # end content
-`}
-	];
+`},
+{
+				path: ".github/workflows/github.io.yml",
+				content:
+`# start content
+    - run: npm i # replace with 'npm ci' after committing lock file from first install
+# end content
+`,
+				expected:
+`# start content
+    - run: echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
+    - run: echo "//packages.infragistics.com/npm/js-licensed/:_auth=\${{ secrets.NPM_AUTH_TOKEN }}" >> ~/.npmrc
+    - run: echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
+    - run: npm i # replace with 'npm ci' after committing lock file from first install
+# end content
+`}];
 			(fsSpy.glob as jasmine.Spy).and.returnValues // per workspace
 				([ "package.json" ], // root package.json
 				["src/app.ts"], // logic files

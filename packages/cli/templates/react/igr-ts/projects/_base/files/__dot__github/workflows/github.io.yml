@@ -25,7 +25,8 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm i
+        # cache: 'npm' # enable after committing lock file from first install
+    - run: npm i # replace with 'npm ci' after committing lock file from first install
     - name: Set environment variable for basename
       run: echo "VITE_BASENAME=/${{ github.event.repository.name }}" >> $GITHUB_ENV
     - run: npm run build -- --base=/${{ github.event.repository.name }}/

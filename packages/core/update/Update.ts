@@ -198,18 +198,22 @@ function updatePackageJsonFiles(
 function updateWorkflows(
 	fs: IFileSystem
 ): void {
-	const workflowPath = ".github/workflows/node.js.yml";
-	let workflow = fs.readFile(workflowPath);
-	if (workflow) {
-		const oldNmpInstall = "- run: npm i # replace with \'npm ci\' after committing lock file from first install";
-		const newNpmInstall =
+	const workflowFiles = ["node.js.yml", "github.io.yml"];
+    const oldNpmInstall = "- run: npm i # replace with 'npm ci' after committing lock file from first install";
+    const newNpmInstall =
 `- run: echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
     - run: echo "//packages.infragistics.com/npm/js-licensed/:_auth=\${{ secrets.NPM_AUTH_TOKEN }}" >> ~/.npmrc
     - run: echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
-    - run: npm i # replace with \'npm ci\' after committing lock file from first install`;
-		workflow = workflow.replace(oldNmpInstall, newNpmInstall);
-		fs.writeFile(workflowPath, workflow);
-	}
+    - run: npm i # replace with 'npm ci' after committing lock file from first install`;
+
+    for (const fileName of workflowFiles) {
+        const workflowPath = `.github/workflows/${fileName}`;
+        let workflow = fs.readFile(workflowPath);
+        if (workflow) {
+            workflow = workflow.replace(oldNpmInstall, newNpmInstall);
+            fs.writeFile(workflowPath, workflow);
+        }
+    }
 }
 
 function createNpmrc(

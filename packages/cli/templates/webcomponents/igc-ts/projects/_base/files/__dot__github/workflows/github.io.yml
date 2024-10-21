@@ -25,7 +25,8 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm i
+        # cache: 'npm' # enable after committing lock file from first install
+    - run: npm i # replace with 'npm ci' after committing lock file from first install
     - run: npm run build
     - name: Update base href in index.html
       run: sed -i 's|<base href="[^"]*"|<base href="/${{ github.event.repository.name }}/">|' ./dist/index.html
