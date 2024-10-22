@@ -1,0 +1,48 @@
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+
+    runs-on: ubuntu-latest
+
+    permissions:
+      pages: write
+      id-token: write
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+        # cache: 'npm' # enable after committing lock file from first install
+    - run: npm i # replace with 'npm ci' after committing lock file from first install
+    - name: Set project name
+      run: echo "PROJECT_NAME=$(jq -r '.name' package.json)" >> $GITHUB_ENV
+    - name: Determine if project is standalone and set build path
+      run: |
+        if jq -e ".projects[\"${{ env.PROJECT_NAME }}\"].schematics[\"@schematics/angular:application\"].standalone == false" angular.json > /dev/null; then
+          echo "BUILD_PATH=./dist/${{ env.PROJECT_NAME }}" >> $GITHUB_ENV
+        else
+          echo "BUILD_PATH=./dist/${{ env.PROJECT_NAME }}/browser" >> $GITHUB_ENV
+        fi
+    - name: Build project with dynamic base-href
+      run: npm run build -- --base-href "/${{ github.event.repository.name }}/"
+    - name: Update Resource Paths
+      run: find ${{ env.BUILD_PATH }} -type f -name '*main*.js' -exec sed -i -e "s|/assets|/${{ github.event.repository.name }}/assets|g" -e "s|url('/assets|url('/${{ github.event.repository.name }}/assets|g" {} +
+    - name: Upload build artifact to GitHub Pages
+      uses: actions/upload-pages-artifact@v1
+      with:
+        path: ${{ env.BUILD_PATH }}
+    - name: Deploy to GitHub Pages
+      uses: actions/deploy-pages@v1

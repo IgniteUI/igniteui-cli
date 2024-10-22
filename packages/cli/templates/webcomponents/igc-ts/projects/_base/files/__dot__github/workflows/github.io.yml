@@ -1,0 +1,44 @@
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches: [ <%=yamlDefaultBranch%> ]
+  pull_request:
+    branches: [ <%=yamlDefaultBranch%> ]
+
+jobs:
+  build-and-deploy:
+
+    runs-on: ubuntu-latest
+
+    permissions:
+      pages: write
+      id-token: write
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+        # cache: 'npm' # enable after committing lock file from first install
+    - run: npm i # replace with 'npm ci' after committing lock file from first install
+    - run: npm run build
+    - name: Update base href in index.html
+      run: sed -i 's|<base href="[^"]*"|<base href="/${{ github.event.repository.name }}/">|' ./dist/index.html
+    - name: Update Resource Paths
+      run: find ./dist -maxdepth 1 -type f ! -name 'sw*.js' ! -name 'workbox*.js' -name '*.js' -exec sed -i -e "s|/src/assets|/${{ github.event.repository.name }}/src/assets|g" -e "s|url('/src/assets|url('/${{ github.event.repository.name }}/src/assets|g" {} +
+    - name: Copy ig-theme.css to dist
+      run: cp ./ig-theme.css ./dist/
+    - name: Update href Paths for ig-theme.css
+      run: find ./dist -type f -exec sed -i "s|href=\"../../ig-theme.css\"|href=\"../../${{ github.event.repository.name }}/ig-theme.css\"|g" {} +
+    - name: Upload build artifact to GitHub Pages
+      uses: actions/upload-pages-artifact@v1
+      with:
+        path: ./dist
+    - name: Deploy to GitHub Pages
+      uses: actions/deploy-pages@v1
