@@ -2,9 +2,9 @@ name: Deploy GitHub Pages
 
 on:
   push:
-    branches: [ <%=yamlDefaultBranch%> ]
+    branches: [ $(yamlDefaultBranch) ]
   pull_request:
-    branches: [ <%=yamlDefaultBranch%> ]
+    branches: [ $(yamlDefaultBranch) ]
 
 jobs:
   build-and-deploy:
