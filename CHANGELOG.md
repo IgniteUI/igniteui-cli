@@ -1,3 +1,18 @@
+# [14.2.0](https://github.com/IgniteUI/igniteui-cli/compare/v14.1.0...v14.2.0) (2024-10-24)
+
+- `igniteui-angular` version [18.2.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/18.2.0).
+
+- `igniteui-webcomponents` version [5.1.0](https://github.com/IgniteUI/igniteui-webcomponents/releases/tag/5.1.0).
+
+## What's Changed
+
+* Add github pages templates by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1324
+* Add fixes in react and wc templates by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1326
+* chore: update to igniteui-angular & ng 18.2 by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1325
+
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.1.0...v14.2.0
+
 # [14.1.0](https://github.com/IgniteUI/igniteui-cli/compare/v14.0.2...v14.1.0) (2024-10-11)
 
 ## What's Changed
