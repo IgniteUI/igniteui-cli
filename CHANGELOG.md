@@ -1,3 +1,11 @@
+# [14.2.1](https://github.com/IgniteUI/igniteui-cli/compare/v14.2.0...v14.2.1) (2024-10-28)
+
+## What's Changed
+
+* fix(ng): use "skipLibCheck": true for legacy igx projects by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1328
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.2.0...v14.2.1
+
 # [14.2.0](https://github.com/IgniteUI/igniteui-cli/compare/v14.1.0...v14.2.0) (2024-10-24)
 
 - `igniteui-angular` version [18.2.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/18.2.0).
