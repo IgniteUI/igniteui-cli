@@ -129,7 +129,9 @@ export class PackageManager {
 			case "npm":
 			/* passes through */
 			default:
-				command = `${managerCommand} uninstall ${packageName} --quiet --save`;
+				// Validate packageName to prevent command injection. Allow only valid characters for package names
+				const safePackageName = packageName.replace(/[^a-zA-Z0-9-_@]/g, '');
+				command = `${managerCommand} uninstall ${safePackageName} --quiet --save`;
 				break;
 		}
 		try {
@@ -223,9 +225,11 @@ export class PackageManager {
 
 	public static ensureRegistryUser(config: Config, message: string): boolean {
 		const fullPackageRegistry = config.igPackageRegistry;
+		// Validate fullPackageRegistry to prevent command injection. Allow only valid characters for a registry URL
+		const safeFullPackageRegistryUrl = fullPackageRegistry.replace(/[^a-zA-Z0-9-_.:/]/g, '');
 		try {
 			// tslint:disable-next-line:object-literal-sort-keys
-			Util.execSync(`npm whoami --registry=${fullPackageRegistry}`, { stdio: "pipe", encoding: "utf8" });
+			Util.execSync(`npm whoami --registry=${safeFullPackageRegistryUrl}`, { stdio: "pipe", encoding: "utf8" });
 		} catch (error) {
 			// try registering the user:
 			Util.log(
@@ -236,7 +240,7 @@ export class PackageManager {
 				"We are initiating the login process for you. This will be required only once per environment.",
 				"gray"
 			);
-			Util.log(`Adding a registry user account for ${fullPackageRegistry}`, "yellow");
+			Util.log(`Adding a registry user account for ${safeFullPackageRegistryUrl}`, "yellow");
 			Util.log(`Use your Infragistics account credentials. "@" is not supported, ` +
 				`use "!!", so "username@infragistics.com" should be entered as "username!!infragistics.com"`, "yellow");
 
@@ -248,13 +252,13 @@ export class PackageManager {
 			}
 			const cmd = /^win/.test(process.platform) ? "npm.cmd" : "npm"; //https://github.com/nodejs/node/issues/3675
 			const login = spawnSync(cmd,
-				["adduser", `--registry=${fullPackageRegistry}`, `--scope=@infragistics`, `--always-auth`],
+				["adduser", `--registry=${safeFullPackageRegistryUrl}`, `--scope=@infragistics`, `--always-auth`],
 				{ stdio: "inherit" }
 			);
 			if (login?.status === 0) {
 				//make sure scope is configured:
 				try {
-					Util.execSync(`npm config set @infragistics:registry ${fullPackageRegistry}`);
+					Util.execSync(`npm config set @infragistics:registry ${safeFullPackageRegistryUrl}`);
 					return true;
 				} catch (error) {
 					return false;

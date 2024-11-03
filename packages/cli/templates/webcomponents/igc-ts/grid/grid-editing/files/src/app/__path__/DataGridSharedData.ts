@@ -9,7 +9,7 @@ export class DataGridSharedData {
     let maleCount: number = 0;
     let femaleCount: number = 0;
     for (let i = 0; i < count; i += 1) {
-      const age: number = Math.round(this.getRandomNumber(20, 40));
+      const age: number = Math.round(this.getSecureRandomNumber(20, 40));
       const gender: string = this.getRandomGender();
       const firstName: string = this.getRandomNameFirst(gender);
       const lastName: string = this.getRandomNameLast();
@@ -52,8 +52,8 @@ export class DataGridSharedData {
       person.Phone = this.getRandomPhone();
       person.Photo = photoPath;
       person.Street = street;
-      person.Salary = this.getRandomNumber(40, 200) * 1000;
-      person.Sales = this.getRandomNumber(200, 980) * 1000;
+      person.Salary = this.getSecureRandomNumber(40, 200) * 1000;
+      person.Sales = this.getSecureRandomNumber(200, 980) * 1000;
       person.Website = website;
       person.Productivity = this.getProductivity();
 
@@ -202,6 +202,13 @@ export class DataGridSharedData {
 
   private static roadNames: string[] = ['Main', 'Garden', 'Broad', 'Oak', 'Cedar', 'Park', 'Pine', 'Elm', 'Market', 'Hill'];
 
+  private static getSecureRandomNumber(min: number, max: number): number {
+    const randomBuffer  = new Uint32Array(1);
+    window.crypto.getRandomValues(randomBuffer);
+    const randomNumber = randomBuffer [0] / (0xFFFFFFFF + 1);
+    return Math.round(min + randomNumber * (max - min));
+}
+
   private static getRandomNumber(min: number, max: number): number {
     return Math.round(min + Math.random() * (max - min));
   }
@@ -217,8 +224,8 @@ export class DataGridSharedData {
 
   private static getRandomPhone(): string {
     const phoneCode = this.getRandomNumber(100, 900);
-    const phoneNum1 = this.getRandomNumber(100, 900);
-    const phoneNum2 = this.getRandomNumber(1000, 9000);
+    const phoneNum1 = this.getSecureRandomNumber(100, 900);
+    const phoneNum2 = this.getSecureRandomNumber(1000, 9000);
     const phone = `${phoneCode}-${phoneNum1}-${phoneNum2}`;
     return phone;
   }

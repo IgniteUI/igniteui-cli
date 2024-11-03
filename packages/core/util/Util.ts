@@ -282,6 +282,11 @@ export class Util {
 		}
 
 		for (const key of Object.keys(source)) {
+			// Skip keys that can affect the prototype of objects to avoid prototype pollution vulnerabilities
+			if (key === "__proto__" || key === "constructor") {
+				continue;
+			}
+
 			const sourceKeyIsArray = Array.isArray(source[key]);
 			const targetHasThisKey = target.hasOwnProperty(key);
 
@@ -356,7 +361,9 @@ export class Util {
 			const options: any = { cwd: path.join(parentRoot, projectName), stdio: [process.stdin, "ignore", "ignore"] };
 			Util.execSync("git init", options);
 			Util.execSync("git add .", options);
-			Util.execSync("git commit -m " + "\"Initial commit for project: " + projectName + "\"", options);
+			// Validate projectName to prevent command injection. Allow only letters, numbers, dashes, underscores, and spaces
+			const safeProjectName = projectName.replace(/[^a-zA-Z0-9-_ ]/g, '');
+			Util.execSync(`git commit -m "Initial commit for project: ${safeProjectName}"`, options);
 			Util.log(Util.greenCheck() + " Git Initialized and Project '" + projectName + "' Committed");
 		} catch (error) {
 			Util.error("Git initialization failed. Install Git in order to automatically commit the project.", "yellow");
