@@ -1,5 +1,5 @@
 import chalk from "chalk";
-import { execSync, ExecSyncOptions } from "child_process";
+import { execSync, ExecSyncOptions, execFileSync } from "child_process";
 import * as fs from "fs";
 import * as glob from "glob";
 import * as path from "path";
@@ -361,9 +361,7 @@ export class Util {
 			const options: any = { cwd: path.join(parentRoot, projectName), stdio: [process.stdin, "ignore", "ignore"] };
 			Util.execSync("git init", options);
 			Util.execSync("git add .", options);
-			// Validate projectName to prevent command injection. Allow only letters, numbers, dashes, underscores, and spaces
-			const safeProjectName = projectName.replace(/[^a-zA-Z0-9-_ ]/g, '');
-			Util.execSync(`git commit -m "Initial commit for project: ${safeProjectName}"`, options);
+			execFileSync("git", ["commit", "-m", `Initial commit for project: ${projectName}`], options);
 			Util.log(Util.greenCheck() + " Git Initialized and Project '" + projectName + "' Committed");
 		} catch (error) {
 			Util.error("Git initialization failed. Install Git in order to automatically commit the project.", "yellow");
