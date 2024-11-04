@@ -123,20 +123,18 @@ export class PackageManager {
 	}
 
 	public static removePackage(packageName: string, verbose: boolean = false): boolean {
-		let command: string;
 		const managerCommand = this.getManager();
+		let args: string[];
 		switch (managerCommand) {
 			case "npm":
 			/* passes through */
 			default:
-				// Validate packageName to prevent command injection. Allow only valid characters for package names
-				const safePackageName = packageName.replace(/[^a-zA-Z0-9-_@]/g, '');
-				command = `${managerCommand} uninstall ${safePackageName} --quiet --save`;
+				args = ['uninstall', packageName, '--quiet', '--save'];
 				break;
 		}
 		try {
 			// tslint:disable-next-line:object-literal-sort-keys
-			Util.execSync(command, { stdio: "pipe", encoding: "utf8" });
+			spawnSync(managerCommand, args, { stdio: "pipe", encoding: "utf8" });
 		} catch (error) {
 			Util.log(`Error uninstalling package ${packageName} with ${managerCommand}`);
 			if (verbose) {
@@ -225,11 +223,9 @@ export class PackageManager {
 
 	public static ensureRegistryUser(config: Config, message: string): boolean {
 		const fullPackageRegistry = config.igPackageRegistry;
-		// Validate fullPackageRegistry to prevent command injection. Allow only valid characters for a registry URL
-		const safeFullPackageRegistryUrl = fullPackageRegistry.replace(/[^a-zA-Z0-9-_.:/]/g, '');
 		try {
 			// tslint:disable-next-line:object-literal-sort-keys
-			Util.execSync(`npm whoami --registry=${safeFullPackageRegistryUrl}`, { stdio: "pipe", encoding: "utf8" });
+			spawnSync('npm', ['whoami', `--registry=${fullPackageRegistry}`], { stdio: 'pipe', encoding: 'utf8' });
 		} catch (error) {
 			// try registering the user:
 			Util.log(
@@ -240,7 +236,7 @@ export class PackageManager {
 				"We are initiating the login process for you. This will be required only once per environment.",
 				"gray"
 			);
-			Util.log(`Adding a registry user account for ${safeFullPackageRegistryUrl}`, "yellow");
+			Util.log(`Adding a registry user account for ${fullPackageRegistry}`, "yellow");
 			Util.log(`Use your Infragistics account credentials. "@" is not supported, ` +
 				`use "!!", so "username@infragistics.com" should be entered as "username!!infragistics.com"`, "yellow");
 
@@ -252,13 +248,13 @@ export class PackageManager {
 			}
 			const cmd = /^win/.test(process.platform) ? "npm.cmd" : "npm"; //https://github.com/nodejs/node/issues/3675
 			const login = spawnSync(cmd,
-				["adduser", `--registry=${safeFullPackageRegistryUrl}`, `--scope=@infragistics`, `--always-auth`],
+				["adduser", `--registry=${fullPackageRegistry}`, `--scope=@infragistics`, `--always-auth`],
 				{ stdio: "inherit" }
 			);
 			if (login?.status === 0) {
 				//make sure scope is configured:
 				try {
-					Util.execSync(`npm config set @infragistics:registry ${safeFullPackageRegistryUrl}`);
+					spawnSync('npm', ['config', 'set', `@infragistics:registry`, fullPackageRegistry]);
 					return true;
 				} catch (error) {
 					return false;
