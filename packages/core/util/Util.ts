@@ -1,5 +1,5 @@
 import chalk from "chalk";
-import { execSync, ExecSyncOptions } from "child_process";
+import { execSync, ExecSyncOptions, spawnSync, SpawnSyncOptions } from "child_process";
 import * as fs from "fs";
 import * as glob from "glob";
 import * as path from "path";
@@ -282,6 +282,11 @@ export class Util {
 		}
 
 		for (const key of Object.keys(source)) {
+			// Skip keys that can affect the prototype of objects to avoid prototype pollution vulnerabilities
+			if (key === "__proto__" || key === "constructor") {
+				continue;
+			}
+
 			const sourceKeyIsArray = Array.isArray(source[key]);
 			const targetHasThisKey = target.hasOwnProperty(key);
 
@@ -347,6 +352,32 @@ export class Util {
 	}
 
 	/**
+     * Execute synchronous command with options using spawnSync
+     * @param command Command to be executed
+     * @param args Command arguments
+     * @param options Command options
+     * @throws {Error} On non-zero exit code. Error has 'status', 'signal', 'output', 'stdout', 'stderr'
+     */
+	public static spawnSync(command: string, args: string[], options?: SpawnSyncOptions) {
+		try {
+			return spawnSync(command, args, options);
+		} catch (error) {
+			// Handle potential process interruption
+			// Check if the error output ends with "^C"
+			if (error.stderr && error.stderr.toString().endsWith() === "^C") {
+				return process.exit();
+			}
+
+			// Handle specific exit codes for different signals
+			if (error.status === 3221225786 || error.status > 128) {
+				return process.exit();
+			}
+
+			throw error;
+		}
+	}
+
+	/**
 	 * Initialize git for a project, located in the provided directory and commit it.
 	 * @param parentRoot Parent directory root of the project.
 	 * @param projectName Project name.
@@ -356,7 +387,8 @@ export class Util {
 			const options: any = { cwd: path.join(parentRoot, projectName), stdio: [process.stdin, "ignore", "ignore"] };
 			Util.execSync("git init", options);
 			Util.execSync("git add .", options);
-			Util.execSync("git commit -m " + "\"Initial commit for project: " + projectName + "\"", options);
+			const commitMessage = `"Initial commit for project: ${projectName}"`;
+			Util.spawnSync('git', ['commit', '-m', commitMessage], options);
 			Util.log(Util.greenCheck() + " Git Initialized and Project '" + projectName + "' Committed");
 		} catch (error) {
 			Util.error("Git initialization failed. Install Git in order to automatically commit the project.", "yellow");
