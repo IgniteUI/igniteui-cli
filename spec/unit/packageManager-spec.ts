@@ -53,7 +53,7 @@ describe("Unit - Package Manager", () => {
 				signal: "SIGABRT"
             };
 		};
-		spyOn(child_process, 'spawnSync').and.callFake(fakeSpawnSync as any);
+		spyOn(Util, 'spawnSync').and.callFake(fakeSpawnSync as any);
 
 		spyOn(Util, "log");
 		spyOn(PackageManager, "removePackage");
@@ -77,14 +77,14 @@ describe("Unit - Package Manager", () => {
 			"yellow"
 		);
 		expect(path.join).toHaveBeenCalled();
-		expect(child_process.spawnSync).toHaveBeenCalledWith(
+		expect(Util.spawnSync).toHaveBeenCalledWith(
 			/^win/.test(process.platform) ? "npm.cmd" : "npm",
 			["adduser", `--registry=trial`, `--scope=@infragistics`, `--always-auth`],
 			{
 				stdio: "inherit"
 			}
 		);
-		expect(child_process.spawnSync).toHaveBeenCalledWith(
+		expect(Util.spawnSync).toHaveBeenCalledWith(
 			"npm",
 			['config', 'set', `@infragistics:registry`, mockProjectConfig.igPackageRegistry]
 		);
@@ -134,7 +134,7 @@ describe("Unit - Package Manager", () => {
 				signal: "SIGABRT"
             };
 		};
-		spyOn(child_process, 'spawnSync').and.callFake(fakeSpawnSync as any);
+		spyOn(Util, 'spawnSync').and.callFake(fakeSpawnSync as any);
 
 		spyOn(Util, "log");
 		spyOn(TestPackageManager, "removePackage");
@@ -174,14 +174,14 @@ describe("Unit - Package Manager", () => {
 			`for instructions on how to install the full package.`,
 			"yellow"
 		); // x1
-		expect(child_process.spawnSync).toHaveBeenCalledWith(
+		expect(Util.spawnSync).toHaveBeenCalledWith(
 			/^win/.test(process.platform) ? "npm.cmd" : "npm",
 			["adduser", `--registry=trial`, `--scope=@infragistics`, `--always-auth`],
 			{
 				stdio: "inherit"
 			}
 		);
-		expect(child_process.spawnSync).toHaveBeenCalledWith(
+		expect(Util.spawnSync).toHaveBeenCalledWith(
 			"npm",
 			['whoami', `--registry=${mockProjectConfig.igPackageRegistry}`],
 			{
@@ -341,12 +341,12 @@ describe("Unit - Package Manager", () => {
 		const fakeSpawnSync = (cmd: any, args: string[], opts: any) => {
 			throw new Error("Error");
 		};
-		spyOn(child_process, 'spawnSync').and.callFake(fakeSpawnSync as any);
+		spyOn(Util, 'spawnSync').and.callFake(fakeSpawnSync as any);
 		PackageManager.removePackage("example-package", true);
 		expect(Util.log).toHaveBeenCalledTimes(2);
 		expect(Util.log).toHaveBeenCalledWith(`Error uninstalling package example-package with npm`);
 		expect(Util.log).toHaveBeenCalledWith(`Error`);
-		expect(child_process.spawnSync).toHaveBeenCalledWith(
+		expect(Util.spawnSync).toHaveBeenCalledWith(
 			`npm`,
 			['uninstall', "example-package", '--quiet', '--save'],
 			{ stdio: "pipe", encoding: "utf8" }
@@ -364,11 +364,11 @@ describe("Unit - Package Manager", () => {
 				signal: "SIGABRT"
             };
 		};
-		spyOn(child_process, 'spawnSync').and.callFake(fakeSpawnSync as any);
+		spyOn(Util, 'spawnSync').and.callFake(fakeSpawnSync as any);
 		PackageManager.removePackage("example-package");
 		expect(Util.log).toHaveBeenCalledTimes(1);
 		expect(Util.log).toHaveBeenCalledWith(`Package example-package uninstalled successfully`);
-		expect(child_process.spawnSync).toHaveBeenCalledWith(
+		expect(Util.spawnSync).toHaveBeenCalledWith(
 			`npm`,
 			['uninstall', "example-package", '--quiet', '--save'],
 			{ stdio: "pipe", encoding: "utf8" }

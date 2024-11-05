@@ -3,7 +3,6 @@ import * as path from "path";
 import { default as newCmd } from "../../packages/cli/lib/commands/new";
 import { PromptSession } from "../../packages/cli/lib/PromptSession";
 import { resetSpy } from "../helpers/utils";
-import child_process from "child_process";
 
 function createMockBaseTemplate(): BaseTemplate {
 	return {
@@ -285,7 +284,7 @@ describe("Unit - New command", () => {
 			getProjectLibrary: mockProjLib
 		});
 
-		spyOn(child_process, "spawnSync").and.returnValues({
+		spyOn(Util, "spawnSync").and.returnValues({
 			status: 0,
 			pid: 0,
 			output: [],
@@ -298,7 +297,7 @@ describe("Unit - New command", () => {
 
 		expect(Util.execSync).toHaveBeenCalledWith("git init", jasmine.any(Object));
 		expect(Util.execSync).toHaveBeenCalledWith("git add .", jasmine.any(Object));
-		expect(child_process.spawnSync).toHaveBeenCalledWith(
+		expect(Util.spawnSync).toHaveBeenCalledWith(
 			"git",
 			['commit', '-m', `"Initial commit for project: ${projectName}"`],
 			{ cwd: path.join(process.cwd(), projectName), stdio: [process.stdin, "ignore", "ignore"] }

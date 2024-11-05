@@ -1,4 +1,4 @@
-import { exec, spawnSync } from "child_process";
+import { exec } from "child_process";
 import * as path from "path";
 import { TemplateManager } from "../../cli/lib/TemplateManager";
 import { Config, FS_TOKEN, IFileSystem, ProjectTemplate } from "../types";
@@ -134,7 +134,7 @@ export class PackageManager {
 		}
 		try {
 			// tslint:disable-next-line:object-literal-sort-keys
-			spawnSync(managerCommand, args, { stdio: "pipe", encoding: "utf8" });
+			Util.spawnSync(managerCommand, args, { stdio: "pipe", encoding: "utf8" });
 		} catch (error) {
 			Util.log(`Error uninstalling package ${packageName} with ${managerCommand}`);
 			if (verbose) {
@@ -225,7 +225,7 @@ export class PackageManager {
 		const fullPackageRegistry = config.igPackageRegistry;
 		try {
 			// tslint:disable-next-line:object-literal-sort-keys
-			spawnSync('npm', ['whoami', `--registry=${fullPackageRegistry}`], { stdio: 'pipe', encoding: 'utf8' });
+			Util.spawnSync('npm', ['whoami', `--registry=${fullPackageRegistry}`], { stdio: 'pipe', encoding: 'utf8' });
 		} catch (error) {
 			// try registering the user:
 			Util.log(
@@ -247,14 +247,14 @@ export class PackageManager {
 				process.stdin.setRawMode(true);
 			}
 			const cmd = /^win/.test(process.platform) ? "npm.cmd" : "npm"; //https://github.com/nodejs/node/issues/3675
-			const login = spawnSync(cmd,
+			const login = Util.spawnSync(cmd,
 				["adduser", `--registry=${fullPackageRegistry}`, `--scope=@infragistics`, `--always-auth`],
 				{ stdio: "inherit" }
 			);
 			if (login?.status === 0) {
 				//make sure scope is configured:
 				try {
-					spawnSync('npm', ['config', 'set', `@infragistics:registry`, fullPackageRegistry]);
+					Util.spawnSync('npm', ['config', 'set', `@infragistics:registry`, fullPackageRegistry]);
 					return true;
 				} catch (error) {
 					return false;
