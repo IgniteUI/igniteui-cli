@@ -3,7 +3,6 @@
 		"packages/*"
 	],
 	"npmClient": "yarn",
-	
 	"version": "independent",
 	"changelog": {
 		"repo": "igniteui-cli-repo",
