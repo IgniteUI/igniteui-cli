@@ -68,9 +68,6 @@ const command: CommandType = {
 			Util.log("react-quickstart loaded");
 			Util.execSync("npm install");
 			Util.execSync("npm run webpack");
-			// lite-server installed per project
-			const liteServer = require(resolve.sync("lite-server", { basedir: process.cwd() }));
-			liteServer.server();
 		}
 
 		if (argv.framework === "angular") {
@@ -82,9 +79,6 @@ const command: CommandType = {
 		if (argv.framework === "jquery") {
 			Util.log("jquery-quickstart loaded");
 			Util.execSync("npm install");
-			// lite-server installed per project
-			const liteServer = require(resolve.sync("lite-server", { basedir: process.cwd() }));
-			liteServer.server();
 		}
 	}
 };

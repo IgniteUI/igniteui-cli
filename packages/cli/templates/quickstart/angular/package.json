@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "Ignite UI for jQuery Angular Wrappers quick start",
   "scripts": {
-    "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
     "lint": "tslint ./app/**/*.ts -t verbose",
-    "lite": "lite-server",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "webdriver:update": "webdriver-manager update"
@@ -30,7 +28,6 @@
   },
   "devDependencies": {
     "concurrently": "^3.1.0",
-    "lite-server": "^2.5.4",
     "typescript": "~5.5.4",
     "canonical-path": "0.0.2",
     "http-server": "^0.12.1",

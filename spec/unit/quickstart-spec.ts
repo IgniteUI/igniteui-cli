@@ -1,6 +1,5 @@
 
 import { GoogleAnalytics, Util } from "@igniteui/cli-core";
-import liteServer from "lite-server";
 import path from "path";
 import { default as quickstartCmd } from "../../packages/cli/lib/commands/quickstart";
 
@@ -43,7 +42,6 @@ describe("Unit - Quickstart command", () => {
 
 	it("Creates default jquery quickstart when no framework is specified", async () => {
 		spyOn(Util, "execSync");
-		spyOn(liteServer, "server");
 		await quickstartCmd.handler({ framework: "jquery", _: ["quickstart"], $0: "quickstart" });
 		expect(Util.execSync).toHaveBeenCalledWith("npm install");
 		const outDir = path.join(process.cwd(), "jquery-quickstart");
@@ -57,7 +55,6 @@ describe("Unit - Quickstart command", () => {
 
 	it("Creates quickstart for React framework", async () => {
 		spyOn(Util, "execSync");
-		spyOn(liteServer, "server");
 
 		await quickstartCmd.handler({ framework: "react", _: ["quickstart"], $0: "quickstart" });
 		const outDir = path.join(process.cwd(), "react-quickstart");
