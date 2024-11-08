@@ -1,3 +1,16 @@
+# [14.2.2](https://github.com/IgniteUI/igniteui-cli/compare/v14.2.1...v14.2.2) (2024-11-8)
+
+## What's Changed
+* resolve code scanning vulnerability alerts by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1331
+* resolve dependabot vulnerability alerts by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1332
+* build(coverage): bumping coveralls action version by @kdinev in https://github.com/IgniteUI/igniteui-cli/pull/1333
+* update node version in yml files and fix build logic for angular templates by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1330
+* remove and upgrade packages by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1335
+* replace coveralls with coveralls-next by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1336
+
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.2.1...v14.2.2
+
 # [14.2.1](https://github.com/IgniteUI/igniteui-cli/compare/v14.2.0...v14.2.1) (2024-10-28)
 
 ## What's Changed
