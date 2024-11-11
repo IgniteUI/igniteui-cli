@@ -8,8 +8,7 @@ on:
 
 jobs:
   build-and-deploy:
-    # Deactivate the workflow. Will be changed when AB is ready
-    if: false
+    if: <%=yamlGenerateDeploymentScript%> == true
     runs-on: ubuntu-latest
 
     permissions:
