@@ -10,9 +10,9 @@
     "ignite-ui": "~21.2"
   },
   "devDependencies": {
-    "browser-sync": "^2.26.3",
+    "browser-sync": "^3.0.3",
     "igniteui-cli": "^$(cliVersion)",
-    "karma": "^1.7.1",
+    "karma": "^6.4.4",
     "karma-chrome-launcher": "^2.2.0",
     "karma-qunit": "^1.2.1",
     "qunitjs": "^2.4.1"

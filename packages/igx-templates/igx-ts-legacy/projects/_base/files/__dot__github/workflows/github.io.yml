@@ -8,7 +8,8 @@ on:
 
 jobs:
   build-and-deploy:
-
+    # Deactivate the workflow. Will be changed when AB is ready
+    if: false
     runs-on: ubuntu-latest
 
     permissions:
@@ -17,7 +18,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x, 20.x]
+        node-version: [22.x]
 
     steps:
     - uses: actions/checkout@v3
@@ -31,10 +32,10 @@ jobs:
       run: echo "PROJECT_NAME=$(jq -r '.name' package.json)" >> $GITHUB_ENV
     - name: Determine if project is standalone and set build path
       run: |
-        if jq -e ".projects[\"${{ env.PROJECT_NAME }}\"].schematics[\"@schematics/angular:application\"].standalone == false" angular.json > /dev/null; then
-          echo "BUILD_PATH=./dist/${{ env.PROJECT_NAME }}" >> $GITHUB_ENV
-        else
+        if jq -e ".projects[\"${{ env.PROJECT_NAME }}\"].architect.build.builder == \"@angular-devkit/build-angular:application\"" angular.json > /dev/null; then
           echo "BUILD_PATH=./dist/${{ env.PROJECT_NAME }}/browser" >> $GITHUB_ENV
+        else
+          echo "BUILD_PATH=./dist/${{ env.PROJECT_NAME }}" >> $GITHUB_ENV
         fi
     - name: Build project with dynamic base-href
       run: npm run build -- --base-href "/${{ github.event.repository.name }}/"

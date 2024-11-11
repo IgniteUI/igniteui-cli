@@ -39,20 +39,22 @@ describe("Unit - Package Manager", () => {
 		};
 		// should ignore already installed
 		spyOn(App.container, "get").and.returnValue(mockFs);
-		spyOn(Util, "execSync").and.callFake((cmd: string, opts) => {
-			if (cmd.includes("whoami")) {
+
+		const fakeSpawnSync = (cmd: any, args: string[], opts: any) => {
+			if (args.includes("whoami")) {
 				throw new Error("");
 			}
-			return "";
-		});
-		spyOn(child_process, "spawnSync").and.returnValues({
-			status: 0,
-			pid: 0,
-			output: [],
-			stdout: "",
-			stderr: "",
-			signal: "SIGABRT"
-		});
+			return {
+                status: 0,
+                pid: 0,
+                output: [],
+            	stdout: "",
+				stderr: "",
+				signal: "SIGABRT"
+            };
+		};
+		spyOn(Util, 'spawnSync').and.callFake(fakeSpawnSync as any);
+
 		spyOn(Util, "log");
 		spyOn(PackageManager, "removePackage");
 		await PackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
@@ -75,14 +77,17 @@ describe("Unit - Package Manager", () => {
 			"yellow"
 		);
 		expect(path.join).toHaveBeenCalled();
-		expect(child_process.spawnSync).toHaveBeenCalledWith(
+		expect(Util.spawnSync).toHaveBeenCalledWith(
 			/^win/.test(process.platform) ? "npm.cmd" : "npm",
 			["adduser", `--registry=trial`, `--scope=@infragistics`, `--always-auth`],
 			{
 				stdio: "inherit"
 			}
 		);
-		expect(Util.execSync).toHaveBeenCalledWith("npm config set @infragistics:registry trial");
+		expect(Util.spawnSync).toHaveBeenCalledWith(
+			"npm",
+			['config', 'set', `@infragistics:registry`, mockProjectConfig.igPackageRegistry]
+		);
 		expect(PackageManager.removePackage).toHaveBeenCalled();
 		expect(PackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@"20.1"`, true);
 	});
@@ -115,18 +120,25 @@ describe("Unit - Package Manager", () => {
 		spyOn(ProjectConfig, "localConfig").and.returnValue(mockProjectConfig);
 		spyOn(ProjectConfig, "setConfig");
 		spyOn(TestPackageManager, "addPackage").and.returnValue(true);
-		spyOn(Util, "execSync").and.throwError("no user");
+
+		const fakeSpawnSync = (cmd: any, args: string[], opts: any) => {
+			if (args.includes("whoami")) {
+				throw new Error("no user");
+			}
+			return {
+                status: 1,
+                pid: 0,
+                output: [],
+            	stdout: "",
+				stderr: "",
+				signal: "SIGABRT"
+            };
+		};
+		spyOn(Util, 'spawnSync').and.callFake(fakeSpawnSync as any);
+
 		spyOn(Util, "log");
 		spyOn(TestPackageManager, "removePackage");
 		spyOn(TestPackageManager, "getPackageJSON").and.callFake(() => mockRequire);
-		spyOn(child_process, "spawnSync").and.returnValues({
-			status: 1,
-			pid: 0,
-			output: [],
-			stdout: "",
-			stderr: "",
-			signal: "SIGABRT"
-		});
 		await TestPackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
 		expect(ProjectConfig.localConfig).toHaveBeenCalled();
 		expect(Util.log).toHaveBeenCalledTimes(12);
@@ -162,15 +174,21 @@ describe("Unit - Package Manager", () => {
 			`for instructions on how to install the full package.`,
 			"yellow"
 		); // x1
-		expect(child_process.spawnSync).toHaveBeenCalledWith(
+		expect(Util.spawnSync).toHaveBeenCalledWith(
 			/^win/.test(process.platform) ? "npm.cmd" : "npm",
 			["adduser", `--registry=trial`, `--scope=@infragistics`, `--always-auth`],
 			{
 				stdio: "inherit"
 			}
 		);
-		expect(Util.execSync).toHaveBeenCalledTimes(2);
-		expect(Util.execSync).toHaveBeenCalledWith(`npm whoami --registry=trial`, { stdio: "pipe", encoding: "utf8" });
+		expect(Util.spawnSync).toHaveBeenCalledWith(
+			"npm",
+			['whoami', `--registry=${mockProjectConfig.igPackageRegistry}`],
+			{
+				stdio: "pipe",
+				encoding: "utf8"
+			}
+		);
 	});
 	it("ensureIgniteUISource - Should run through properly when install now is set to false", async () => {
 		spyOn(Util, "log");
@@ -320,27 +338,41 @@ describe("Unit - Package Manager", () => {
 	});
 	it("Should run removePackage properly with error code", async () => {
 		spyOn(Util, "log");
-		spyOn(Util, "execSync").and.callFake(() => {
-			const err = new Error("Error");
-			err["status"] = 1;
-			throw err;
-		});
+		const fakeSpawnSync = (cmd: any, args: string[], opts: any) => {
+			throw new Error("Error");
+		};
+		spyOn(Util, 'spawnSync').and.callFake(fakeSpawnSync as any);
 		PackageManager.removePackage("example-package", true);
 		expect(Util.log).toHaveBeenCalledTimes(2);
 		expect(Util.log).toHaveBeenCalledWith(`Error uninstalling package example-package with npm`);
 		expect(Util.log).toHaveBeenCalledWith(`Error`);
-		expect(Util.execSync).toHaveBeenCalledWith(
-			`npm uninstall example-package --quiet --save`, { stdio: "pipe", encoding: "utf8" }
+		expect(Util.spawnSync).toHaveBeenCalledWith(
+			`npm`,
+			['uninstall', "example-package", '--quiet', '--save'],
+			{ stdio: "pipe", encoding: "utf8" }
 		);
 	});
 	it("Should run removePackage properly without error code", async () => {
 		spyOn(Util, "log");
-		spyOn(Util, "execSync").and.returnValue("");
+		const fakeSpawnSync = (cmd: any, args: string[], opts: any) => {
+			return {
+                status: 0,
+                pid: 0,
+                output: [],
+            	stdout: "",
+				stderr: "",
+				signal: "SIGABRT"
+            };
+		};
+		spyOn(Util, 'spawnSync').and.callFake(fakeSpawnSync as any);
 		PackageManager.removePackage("example-package");
 		expect(Util.log).toHaveBeenCalledTimes(1);
 		expect(Util.log).toHaveBeenCalledWith(`Package example-package uninstalled successfully`);
-		expect(Util.execSync).toHaveBeenCalledWith(
-			`npm uninstall example-package --quiet --save`, { stdio: "pipe", encoding: "utf8" });
+		expect(Util.spawnSync).toHaveBeenCalledWith(
+			`npm`,
+			['uninstall', "example-package", '--quiet', '--save'],
+			{ stdio: "pipe", encoding: "utf8" }
+		);
 	});
 	it("Should run addPackage properly with error code", async () => {
 		spyOn(Util, "log");
