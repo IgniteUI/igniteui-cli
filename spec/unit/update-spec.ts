@@ -295,7 +295,7 @@ title = 'igniteui-angular example';
 # end content
 `},
 {
-				path: ".github/workflows/github.io.yml",
+				path: ".github/workflows/github-pages.yml",
 				content:
 `# start content
     - run: npm i # replace with 'npm ci' after committing lock file from first install
@@ -596,7 +596,7 @@ export default function Home() {
 # end content
 `},
 {
-				path: ".github/workflows/github.io.yml",
+				path: ".github/workflows/github-pages.yml",
 				content:
 `# start content
     - run: npm i # replace with 'npm ci' after committing lock file from first install
@@ -890,7 +890,7 @@ export default class App extends LitElement {
 # end content
 `},
 {
-				path: ".github/workflows/github.io.yml",
+				path: ".github/workflows/github-pages.yml",
 				content:
 `# start content
     - run: npm i # replace with 'npm ci' after committing lock file from first install
