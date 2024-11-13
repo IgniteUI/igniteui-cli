@@ -67,7 +67,7 @@ $app-palette: palette($primary, $secondary, $surface);
 			projectTemplate: this.id,
 			igxPackage: NPM_ANGULAR,
 			yamlDefaultBranch: "<%=yaml-default-branch%>", // the placeholder will be evaluated by CodeGen
-			ApplicationTitle: "<%=ApplicationTitle%>", // the placeholder will be evaluated by CodeGen
+			ApplicationTitle: "<%=ApplicationTitle%>" // the placeholder will be evaluated by CodeGen
 		};
 
 		switch (theme) {
