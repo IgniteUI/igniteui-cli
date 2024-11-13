@@ -37,8 +37,7 @@ export class BaseIgcProject implements ProjectTemplate {
 			dot: ".",
 			path: name,
 			projectTemplate: this.id,
-			yamlDefaultBranch: this.id === "base" ? "<%=yaml-default-branch%>" : "main",
-			yamlGenerateDeploymentScript: "<%=yaml-generate-deployment-script%>"
+			yamlDefaultBranch: this.id === "base" ? "<%=yaml-default-branch%>" : "main"
 		};
 
 		return config;
