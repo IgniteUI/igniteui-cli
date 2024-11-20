@@ -1,3 +1,10 @@
+# [14.2.3](https://github.com/IgniteUI/igniteui-cli/compare/v14.2.2...v14.2.3) (2024-11-15)
+
+## What's Changed
+* Removing global replacement. by @dkalinovInfra in https://github.com/IgniteUI/igniteui-cli/pull/1339
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.2.2...v14.2.3
+
 # [14.2.2](https://github.com/IgniteUI/igniteui-cli/compare/v14.2.1...v14.2.2) (2024-11-8)
 
 ## What's Changed
