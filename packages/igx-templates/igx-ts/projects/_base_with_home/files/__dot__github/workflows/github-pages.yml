@@ -2,9 +2,9 @@ name: Deploy GitHub Pages
 
 on:
   push:
-    branches: [ '*' ]
+    branches: [ <%=yamlDefaultBranch%> ]
   pull_request:
-    branches: [ '*' ]
+    branches: [ <%=yamlDefaultBranch%> ]
 
 jobs:
   build-and-deploy:
@@ -14,6 +14,10 @@ jobs:
     permissions:
       pages: write
       id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     strategy:
       matrix:
