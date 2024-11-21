@@ -18,11 +18,11 @@
   "license": "MIT",
   "schematics": "./src/collection.json",
   "dependencies": {
-    "@angular-devkit/core": "^18.2.4",
-    "@angular-devkit/schematics": "^18.2.4",
+    "@angular-devkit/core": "^19.0.0",
+    "@angular-devkit/schematics": "^19.0.0",
     "@igniteui/angular-templates": "~18.2.1424-beta.0",
     "@igniteui/cli-core": "~14.2.4-beta.0",
-    "@schematics/angular": "~14.0.0",
+    "@schematics/angular": "~19.0.0",
     "rxjs": "^7.8.1"
   },
   "devDependencies": {
