@@ -1,7 +1,9 @@
 import * as ts from 'typescript';
 import {
+  ArrayLiteralExpressionEditOptions,
   Identifier,
   ImportDeclarationMeta,
+  ObjectLiteralExpressionEditOptions,
   PropertyAssignment,
 } from '../types';
 import { SIDE_EFFECTS_IMPORT_TEMPLATE_NAME } from '../util';
@@ -26,8 +28,8 @@ import { TypeScriptExpressionCollector } from './TypeScriptExpressionCollector';
 export const newMemberInObjectLiteralTransformerFactory = (
   newProperty: ts.PropertyAssignment,
   visitCondition: (node: ts.Node) => boolean,
-  multiline: boolean,
-  expressionCollector: TypeScriptExpressionCollector
+  expressionCollector: TypeScriptExpressionCollector,
+  options: ObjectLiteralExpressionEditOptions
 ): ts.TransformerFactory<ts.SourceFile> => {
   return <T extends ts.Node>(context: ts.TransformationContext) => {
     return (rootNode: T) => {
@@ -73,7 +75,8 @@ export const newMemberInObjectLiteralTransformerFactory = (
               context,
               node,
               expressionCollector,
-              multiline
+              options?.multiline,
+              options?.override
             );
           }
 
@@ -92,52 +95,13 @@ export const newMemberInObjectLiteralTransformerFactory = (
 };
 
 /**
- * Creates a {@link ts.TransformerFactory} that updates a member in a {@link ts.ObjectLiteralExpression}.
- */
-export const updateForObjectLiteralMemberTransformerFactory = (
-  visitCondition: (node: ts.ObjectLiteralExpression) => boolean,
-  targetMember: PropertyAssignment
-): ts.TransformerFactory<ts.SourceFile> => {
-  return <T extends ts.Node>(context: ts.TransformationContext) => {
-    return (rootNode: T) => {
-      const visitor = (node: ts.Node): ts.VisitResult<ts.Node> => {
-        if (ts.isObjectLiteralExpression(node) && visitCondition(node)) {
-          const newProperties = node.properties.map((property) => {
-            const isPropertyAssignment = ts.isPropertyAssignment(property);
-            if (
-              isPropertyAssignment &&
-              ts.isIdentifier(property.name) &&
-              property.name.text === targetMember.name
-            ) {
-              return context.factory.updatePropertyAssignment(
-                property,
-                property.name,
-                targetMember.value
-              );
-            }
-            return property;
-          });
-
-          return context.factory.updateObjectLiteralExpression(
-            node,
-            newProperties
-          );
-        }
-        return ts.visitEachChild(node, visitor, context);
-      };
-      return ts.visitNode(rootNode, visitor, ts.isSourceFile);
-    };
-  };
-};
-
-/**
  * Creates a {@link ts.TransformerFactory} that adds a new element to a {@link ts.ArrayLiteralExpression}.
  */
 export const newMemberInArrayLiteralTransformerFactory = (
   visitCondition: (node: ts.ArrayLiteralExpression) => boolean,
   elements: ts.Expression[],
-  prepend: boolean = false,
-  anchorElement?: ts.StringLiteral | ts.NumericLiteral | PropertyAssignment
+  anchorElement?: ts.StringLiteral | ts.NumericLiteral | PropertyAssignment,
+  options?: ArrayLiteralExpressionEditOptions
 ): ts.TransformerFactory<ts.SourceFile> => {
   return <T extends ts.Node>(context: ts.TransformationContext) => {
     return (rootNode: T) => {
@@ -175,9 +139,14 @@ export const newMemberInArrayLiteralTransformerFactory = (
             });
           }
 
+          /**
+           * TODO:
+           * Consider extracting some of the logic to the factory that handles array literals as property initializers and reusing that here.
+           * The anchor element should be preserved while it should also allow for overriding of the elements, if needed.
+           */
           if (anchor) {
             let structure!: ts.Expression[];
-            if (prepend) {
+            if (options?.prepend) {
               structure = node.elements
                 .slice(0, node.elements.indexOf(anchor))
                 .concat(elements)
@@ -195,7 +164,7 @@ export const newMemberInArrayLiteralTransformerFactory = (
             );
           }
 
-          if (prepend) {
+          if (options?.prepend) {
             return context.factory.updateArrayLiteralExpression(node, [
               ...elements,
               ...node.elements,
@@ -205,6 +174,27 @@ export const newMemberInArrayLiteralTransformerFactory = (
             ...node.elements,
             ...elements,
           ]);
+        }
+        return ts.visitEachChild(node, visitor, context);
+      };
+      return ts.visitNode(rootNode, visitor, ts.isSourceFile);
+    };
+  };
+};
+
+/**
+ * Creates a {@link ts.TransformerFactory} that sorts the elements in a {@link ts.ArrayLiteralExpression}.
+ */
+export const sortInArrayLiteralTransformerFactory = (
+  visitCondition: (node: ts.ArrayLiteralExpression) => boolean,
+  sortCondition: (a: ts.Expression, b: ts.Expression) => number
+) => {
+  return <T extends ts.Node>(context: ts.TransformationContext) => {
+    return (rootNode: T) => {
+      const visitor = (node: ts.Node): ts.VisitResult<ts.Node> => {
+        if (ts.isArrayLiteralExpression(node) && visitCondition(node)) {
+          const elements = [...node.elements].sort(sortCondition);
+          return context.factory.updateArrayLiteralExpression(node, elements);
         }
         return ts.visitEachChild(node, visitor, context);
       };
@@ -488,29 +478,7 @@ function updatePropertyAssignmentWithIdentifier(
     ? newProperty.initializer
     : newProperty.objectAssignmentInitializer;
 
-  const updatedProperty = ts.isPropertyAssignment(existingProperty)
-    ? context.factory.updatePropertyAssignment(
-        existingProperty,
-        existingProperty.name,
-        newPropInitializer
-      )
-    : context.factory.updateShorthandPropertyAssignment(
-        existingProperty,
-        existingProperty.name,
-        newPropInitializer
-      );
-  const structure = Array.from(node.properties);
-  const targetIndex = structure.indexOf(existingProperty);
-  if (targetIndex > -1) {
-    // attempt to modify the property assignment and preserve the order
-    structure[targetIndex] = updatedProperty;
-    return context.factory.updateObjectLiteralExpression(node, structure);
-  }
-  // append the property assignment at the end
-  return context.factory.updateObjectLiteralExpression(node, [
-    ...node.properties.filter((p) => p !== existingProperty),
-    updatedProperty,
-  ]);
+  return updateProperty(node, existingProperty, newPropInitializer, context);
 }
 
 /**
@@ -520,6 +488,7 @@ function updatePropertyAssignmentWithIdentifier(
  * @param context The transformation context.
  * @param node The object literal expression node.
  * @param multiline Whether the array literal should be multiline.
+ * @param override Whether to override all elements if the property's initializer is an array.
  */
 function updatePropertyAssignmentWithArrayLiteral(
   newProperty: ts.PropertyAssignment | ts.ShorthandPropertyAssignment,
@@ -527,7 +496,8 @@ function updatePropertyAssignmentWithArrayLiteral(
   context: ts.TransformationContext,
   node: ts.ObjectLiteralExpression,
   expressionCollector: TypeScriptExpressionCollector,
-  multiline: boolean
+  multiline: boolean,
+  override: boolean
 ): ts.ObjectLiteralExpression {
   const existingPropInitializer = ts.isPropertyAssignment(existingProperty)
     ? existingProperty.initializer
@@ -543,25 +513,44 @@ function updatePropertyAssignmentWithArrayLiteral(
   const newElements = ts.isArrayLiteralExpression(newPropInitializer)
     ? [...newPropInitializer.elements]
     : [newPropInitializer];
-  const uniqueElements = expressionCollector.collectUniqueExpressions([
-    ...elements,
-    ...newElements,
-  ]);
+  const uniqueElements = override
+    ? expressionCollector.collectUniqueExpressions(newElements)
+    : expressionCollector.collectUniqueExpressions([
+        ...elements,
+        ...newElements,
+      ]);
 
   const valueExpression = context.factory.createArrayLiteralExpression(
     uniqueElements,
     multiline
   );
+
+  return updateProperty(node, existingProperty, valueExpression, context);
+}
+
+/**
+ * Updates a {@link ts.PropertyAssignment} with a new {@link ts.Initializer}.
+ * @param node The object literal expression node.
+ * @param existingProperty The property to update.
+ * @param newInitializer The new initializer to set.
+ * @param context The transformation context.
+ */
+function updateProperty(
+  node: ts.ObjectLiteralExpression,
+  existingProperty: ts.PropertyAssignment | ts.ShorthandPropertyAssignment,
+  newInitializer: ts.Expression,
+  context: ts.TransformationContext
+): ts.ObjectLiteralExpression {
   const updatedProperty = ts.isPropertyAssignment(existingProperty)
     ? context.factory.updatePropertyAssignment(
         existingProperty,
         existingProperty.name,
-        valueExpression
+        newInitializer
       )
     : context.factory.updateShorthandPropertyAssignment(
         existingProperty,
         existingProperty.name,
-        valueExpression
+        newInitializer
       );
 
   const structure = Array.from(node.properties);
