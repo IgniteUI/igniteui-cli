@@ -2,19 +2,22 @@ name: Deploy GitHub Pages
 
 on:
   push:
-    branches: [ <%=yamlDefaultBranch%> ]
+    branches: [ main ]
   pull_request:
-    branches: [ <%=yamlDefaultBranch%> ]
+    branches: [ main ]
 
 jobs:
   build-and-deploy:
-    # Deactivate the workflow. Will be changed when AB is ready
-    if: false
+    if: <%=yamlGenerateDeploymentScript%> == true
     runs-on: ubuntu-latest
 
     permissions:
       pages: write
       id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     strategy:
       matrix:
