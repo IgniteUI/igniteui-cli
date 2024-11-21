@@ -8,13 +8,16 @@ on:
 
 jobs:
   build-and-deploy:
-    # Deactivate the workflow. Will be changed when AB is ready
-    if: false
+    if: $(yamlGenerateDeploymentScript) == true
     runs-on: ubuntu-latest
 
     permissions:
       pages: write
       id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     strategy:
       matrix:
@@ -28,13 +31,15 @@ jobs:
         node-version: ${{ matrix.node-version }}
         # cache: 'npm' # enable after committing lock file from first install
     - run: npm i # replace with 'npm ci' after committing lock file from first install
-    - name: Set environment variable for basename
-      run: echo "VITE_BASENAME=/${{ github.event.repository.name }}" >> $GITHUB_ENV
-    - run: npm run build -- --base=/${{ github.event.repository.name }}/
+    - run: npm run build
+    - name: Update base href in index.html
+      run: sed -i 's|<base href="[^"]*"|<base href="/${{ github.event.repository.name }}/">|' ./dist/index.html
     - name: Update Resource Paths
-      run: find ./dist/assets -name "*.js" -exec sed -i 's|src/assets|${{ github.event.repository.name }}/assets|g' {} +
-    - name: Copy Resources to dist
-      run: mkdir -p ./dist/assets && cp -R ./src/assets/* ./dist/assets/
+      run: find ./dist -maxdepth 1 -type f ! -name 'sw*.js' ! -name 'workbox*.js' -name '*.js' -exec sed -i -e "s|/src/assets|/${{ github.event.repository.name }}/src/assets|g" -e "s|url('/src/assets|url('/${{ github.event.repository.name }}/src/assets|g" {} +
+    - name: Copy ig-theme.css to dist
+      run: cp ./ig-theme.css ./dist/
+    - name: Update href Paths for ig-theme.css
+      run: find ./dist -type f -exec sed -i "s|href=\"../../ig-theme.css\"|href=\"../../${{ github.event.repository.name }}/ig-theme.css\"|g" {} +
     - name: Upload build artifact to GitHub Pages
       uses: actions/upload-pages-artifact@v1
       with:
