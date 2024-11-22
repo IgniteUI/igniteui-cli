@@ -95,7 +95,8 @@ export class PackageManager {
 				case "npm":
 				/* passes through */
 				default:
-					command = `${managerCommand} install --quiet`;
+					// TODO: remove --legacy-peer-deps flag igniteui-cli#1338 once new DV package is available
+					command = `${managerCommand} install --quiet --legacy-peer-deps`;
 					break;
 			}
 			await this.flushQueue(false);
@@ -165,7 +166,8 @@ export class PackageManager {
 	}
 
 	public static async queuePackage(packageName: string, verbose = false) {
-		const command = this.getInstallCommand(this.getManager(), packageName).replace("--save", "--no-save");
+		// TODO: remove --legacy-peer-deps flag igniteui-cli#1338 once new DV package is available
+		const command = this.getInstallCommand(this.getManager(), packageName).replace("--save", "--no-save").concat(" --legacy-peer-deps");
 		const [packName, version] = packageName.split(/@(?=[^\/]+$)/);
 		const packageJSON = this.getPackageJSON();
 		if (!packageJSON.dependencies) {
