@@ -1,3 +1,18 @@
+# [14.3.0](https://github.com/IgniteUI/igniteui-cli/compare/v14.2.3...v14.3.0) (2024-11-25)
+
+🎉 This update includes:
+
+- `igniteui-angular` version [19.0.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/19.0.0).
+
+## What's Changed
+* Allow reordering of array literal expressions by @jackofdiamond5 in https://github.com/IgniteUI/igniteui-cli/pull/1323
+* Add pages deployment variable logic and fixes in github pages yaml files by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1337
+* chore(templates): Updating the versions for Angular 19 by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1340
+* chore(tsconfig-pack): Add skipLibCheck by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1344
+
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.2.3...v14.3.0
+
 # [14.2.3](https://github.com/IgniteUI/igniteui-cli/compare/v14.2.2...v14.2.3) (2024-11-15)
 
 ## What's Changed
