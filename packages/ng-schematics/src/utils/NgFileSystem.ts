@@ -1,5 +1,6 @@
 import { DirEntry, FileEntry, Tree } from "@angular-devkit/schematics";
 import { App, FS_TOKEN, FS_TYPE_TOKEN, FsTypes, IFileSystem } from "@igniteui/cli-core";
+import { minimatch } from 'minimatch';
 
 export class NgTreeFileSystem implements IFileSystem {
 	constructor(private tree: Tree) { }
@@ -7,7 +8,7 @@ export class NgTreeFileSystem implements IFileSystem {
 		return this.tree.exists(filePath);
 	}
 
-	public readFile(filePath: string, encoding?: string): string {
+	public readFile(filePath: string, _encoding?: string): string {
 		return (this.tree.read(filePath) || "").toString();
 	}
 
@@ -29,25 +30,23 @@ export class NgTreeFileSystem implements IFileSystem {
 	public glob(dirPath: string, pattern: string, ignorePattern?: string): string[] {
 		const dir = this.tree.getDir(dirPath);
 		const entries: string[] = [];
-		const wildcard = "**/*";
-		pattern = pattern.split(wildcard).pop() || pattern;
-		ignorePattern = ignorePattern?.split(wildcard).pop() || ignorePattern;
 
 		const visitor = (_fullPath: string, entry?: Readonly<FileEntry>): void => {
-			if (entry?.path.endsWith(pattern)) {
+			if (entry && minimatch(entry.path, pattern)) {
 				entries.push(entry.path);
 			}
 		};
+
 		if (ignorePattern) {
 			dir.subfiles.forEach(file => {
-				if (file.endsWith(pattern)) {
+				if (minimatch(file, pattern) && !minimatch(file, ignorePattern)) {
 					entries.push(file);
 				}
 			});
 
 			const recurse = (dir: DirEntry): void => {
 				for (const subdirPath of dir.subdirs) {
-					if (!subdirPath.includes(ignorePattern)) {
+					if (!minimatch(subdirPath, ignorePattern)) {
 						const currDir = dir.dir(subdirPath);
 						if (currDir.subdirs.length) {
 							recurse(currDir);
@@ -56,14 +55,13 @@ export class NgTreeFileSystem implements IFileSystem {
 						currDir.visit(visitor);
 					}
 				}
-			}
+			};
 
 			recurse(dir);
 			return entries;
 		}
 
 		dir.visit(visitor);
-
 		return entries;
 	}
 }
