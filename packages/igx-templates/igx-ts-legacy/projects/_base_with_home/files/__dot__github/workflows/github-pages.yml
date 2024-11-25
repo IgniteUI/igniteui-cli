@@ -3,8 +3,7 @@ name: Deploy GitHub Pages
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  workflow_dispatch: {}
 
 jobs:
   build-and-deploy:
@@ -44,6 +43,8 @@ jobs:
       run: npm run build -- --base-href "/${{ github.event.repository.name }}/"
     - name: Update Resource Paths
       run: find ${{ env.BUILD_PATH }} -type f -name '*main*.js' -exec sed -i -e "s|/assets|/${{ github.event.repository.name }}/assets|g" -e "s|url('/assets|url('/${{ github.event.repository.name }}/assets|g" {} +
+    - name: SPA routing handling
+      run: cp ${{ env.BUILD_PATH }}/index.html ${{ env.BUILD_PATH }}/404.html
     - name: Upload build artifact to GitHub Pages
       uses: actions/upload-pages-artifact@v1
       with:

@@ -3,8 +3,7 @@ name: Deploy GitHub Pages
 on:
   push:
     branches: [ $(yamlDefaultBranch) ]
-  pull_request:
-    branches: [ $(yamlDefaultBranch) ]
+  workflow_dispatch: {}
 
 jobs:
   build-and-deploy:
@@ -40,6 +39,8 @@ jobs:
       run: cp ./ig-theme.css ./dist/
     - name: Update href Paths for ig-theme.css
       run: find ./dist -type f -exec sed -i "s|href=\"../../ig-theme.css\"|href=\"../../${{ github.event.repository.name }}/ig-theme.css\"|g" {} +
+    - name: SPA routing handling
+      run: cp .dist/index.html .dist/404.html
     - name: Upload build artifact to GitHub Pages
       uses: actions/upload-pages-artifact@v1
       with:
