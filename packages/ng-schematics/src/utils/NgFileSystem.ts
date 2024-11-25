@@ -1,6 +1,7 @@
 import { DirEntry, FileEntry, Tree } from "@angular-devkit/schematics";
 import { App, FS_TOKEN, FS_TYPE_TOKEN, FsTypes, IFileSystem } from "@igniteui/cli-core";
 import { minimatch } from 'minimatch';
+import * as path from "path";
 
 export class NgTreeFileSystem implements IFileSystem {
 	constructor(private tree: Tree) { }
@@ -25,9 +26,9 @@ export class NgTreeFileSystem implements IFileSystem {
 	 * Returns a list of file paths under a directory based on a match pattern
 	 * @param dirPath Root dir to search in
 	 * @param pattern Supports only recursive wildcard `\*\*\/\*`
-	 * @param ignorePattern Optional pattern to ignore for each subdirectory
+	 * @param ignorePatterns Optional patterns to ignore for each subdirectory
 	 */
-	public glob(dirPath: string, pattern: string, ignorePattern?: string): string[] {
+	public glob(dirPath: string, pattern: string, ignorePatterns?: string[]): string[] {
 		const dir = this.tree.getDir(dirPath);
 		const entries: string[] = [];
 
@@ -37,22 +38,20 @@ export class NgTreeFileSystem implements IFileSystem {
 			}
 		};
 
-		if (ignorePattern) {
-			dir.subfiles.forEach(file => {
-				if (minimatch(file, pattern) && !minimatch(file, ignorePattern)) {
-					entries.push(file);
-				}
-			});
-
+		if (ignorePatterns?.length) {
 			const recurse = (dir: DirEntry): void => {
 				for (const subdirPath of dir.subdirs) {
-					if (!minimatch(subdirPath, ignorePattern)) {
-						const currDir = dir.dir(subdirPath);
-						if (currDir.subdirs.length) {
-							recurse(currDir);
-							return;
+					if (ignorePatterns.every(p => !minimatch(subdirPath, p))) {
+						const subDir = dir.dir(subdirPath);
+						if (subDir.subdirs.length) {
+							recurse(subDir);
+							continue;
 						}
-						currDir.visit(visitor);
+						for (const file of dir.subfiles) {
+							if (minimatch(file, pattern) && ignorePatterns.every(p => !minimatch(file, p))) {
+								entries.push(path.posix.normalize(`${dir.path}/${file}`));
+							}
+						}
 					}
 				}
 			};
