@@ -25,13 +25,6 @@
     "typescript": "~5.5.4",
     "igniteui-webcomponents": "~5.1.0"
   },
-  "overrides": {
-    "igniteui-angular-charts": {
-        "@angular/core": "^19.0.0",
-        "@angular/common": "^19.0.0",
-        "@angular/compiler": "^19.0.0"
-    }
-  },
   "devDependencies": {
     "@babel/preset-env": "^7.20.2",
     "@open-wc/building-rollup": "^2.2.1",

@@ -15,13 +15,6 @@
     "resize-observer-polyfill": "^1.5.1",
     "vitest": "^0.34.4"
   },
-  "overrides": {
-    "igniteui-angular-charts": {
-        "@angular/core": "^19.0.0",
-        "@angular/common": "^19.0.0",
-        "@angular/compiler": "^19.0.0"
-    }
-  },
   "devDependencies": {
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
