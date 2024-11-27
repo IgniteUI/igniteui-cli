@@ -24,7 +24,14 @@
     "minireset.css": "~0.0.7",
     "rxjs": "~7.8.0",
     "tslib": "~2.3.0",
-    "zone.js": "~0.14.3"
+    "zone.js": "~0.15.0"
+  },
+  "overrides": {
+    "igniteui-angular-charts": {
+        "@angular/core": "^19.0.0",
+        "@angular/common": "^19.0.0",
+        "@angular/compiler": "^19.0.0"
+    }
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~19.0.0",
