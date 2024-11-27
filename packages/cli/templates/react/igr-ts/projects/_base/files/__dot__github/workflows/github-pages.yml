@@ -3,8 +3,7 @@ name: Deploy GitHub Pages
 on:
   push:
     branches: [ $(yamlDefaultBranch) ]
-  pull_request:
-    branches: [ $(yamlDefaultBranch) ]
+  workflow_dispatch: {}
 
 jobs:
   build-and-deploy:
@@ -38,6 +37,8 @@ jobs:
       run: find ./dist/assets -name "*.js" -exec sed -i 's|src/assets|${{ github.event.repository.name }}/assets|g' {} +
     - name: Copy Resources to dist
       run: mkdir -p ./dist/assets && cp -R ./src/assets/* ./dist/assets/
+    - name: SPA routing handling
+      run: cp .dist/index.html .dist/404.html
     - name: Upload build artifact to GitHub Pages
       uses: actions/upload-pages-artifact@v1
       with:
