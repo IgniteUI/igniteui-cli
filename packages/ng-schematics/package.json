@@ -23,11 +23,13 @@
     "@igniteui/angular-templates": "~19.0.1431",
     "@igniteui/cli-core": "~14.3.1",
     "@schematics/angular": "~19.0.0",
-    "rxjs": "^7.8.1"
+    "rxjs": "^7.8.1",
+    "minimatch": "^10.0.1"
   },
   "devDependencies": {
     "@types/jasmine": "^5.1.4",
     "@types/node": "^22.5.5",
+	"@types/minimatch": "^5.1.2",
     "jasmine": "^5.3.0",
     "typescript": "~5.6.2"
   },
