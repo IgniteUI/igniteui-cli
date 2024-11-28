@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-and-deploy:
-    if: $(yamlGenerateDeploymentScript) == true
+
     runs-on: ubuntu-latest
 
     permissions:
@@ -40,7 +40,7 @@ jobs:
     - name: Update href Paths for ig-theme.css
       run: find ./dist -type f -exec sed -i "s|href=\"../../ig-theme.css\"|href=\"../../${{ github.event.repository.name }}/ig-theme.css\"|g" {} +
     - name: SPA routing handling
-      run: cp .dist/index.html .dist/404.html
+      run: cp ./dist/index.html ./dist/404.html
     - name: Upload build artifact to GitHub Pages
       uses: actions/upload-pages-artifact@v1
       with:
