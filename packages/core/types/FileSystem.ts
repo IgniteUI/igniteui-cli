@@ -8,8 +8,9 @@ export interface IFileSystem {
 	 * Returns a list of file paths under a directory based on a match pattern
 	 * @param dirPath Root dir to search in
 	 * @param pattern Pattern to match
+	 * @param ignorePatterns Optional pattern to ignore for each subdirectory
 	 */
-	glob(dirPath: string, pattern: string, ignorePattern?: string): string[];
+	glob(dirPath: string, pattern: string, ignorePatterns?: string[]): string[];
 }
 
 export const FS_TOKEN: string = "fs";

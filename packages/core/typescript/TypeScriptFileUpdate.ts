@@ -108,7 +108,7 @@ export abstract class TypeScriptFileUpdate {
       visitCondition,
       RouteTarget.Children,
       initializer,
-      multiline
+      { multiline }
     );
   }
 

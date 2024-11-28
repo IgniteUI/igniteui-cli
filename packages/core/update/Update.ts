@@ -61,7 +61,7 @@ export async function updateWorkspace(rootPath: string): Promise<boolean> {
 	const logicFiles = [];
 	const styleFiles = [];
 	const pkgJsonFiles = [];
-	pkgJsonFiles.push(...fs.glob(rootPath, `package.json`, "node_modules"));
+	pkgJsonFiles.push(...fs.glob(rootPath, `package.json`, ['node_modules', 'dist']));
 
 	let workspaceConfig = null;
 	switch (framework.toLowerCase()) {
@@ -198,7 +198,7 @@ function updatePackageJsonFiles(
 function updateWorkflows(
 	fs: IFileSystem
 ): void {
-	const workflowFiles = ["node.js.yml", "github.io.yml"];
+	const workflowFiles = ["node.js.yml", "github-pages.yml"];
 	const oldNpmInstall = "- run: npm i # replace with 'npm ci' after committing lock file from first install";
 	const newNpmInstall =
 `- run: echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
