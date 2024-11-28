@@ -38,7 +38,7 @@ jobs:
     - name: Copy Resources to dist
       run: mkdir -p ./dist/assets && cp -R ./src/assets/* ./dist/assets/
     - name: SPA routing handling
-      run: cp .dist/index.html .dist/404.html
+      run: cp ./dist/index.html ./dist/404.html
     - name: Upload build artifact to GitHub Pages
       uses: actions/upload-pages-artifact@v1
       with:
