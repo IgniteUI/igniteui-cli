@@ -58,7 +58,7 @@ const command: AddCommandType = {
 		}
 		const config = ProjectConfig.getConfig();
 		if (config.project.isShowcase) {
-			Util.error("Showcases and quickstart projects don't support the add command", "red");
+			Util.error("Showcases projects don't support the add command", "red");
 			return;
 		}
 		const framework = command.templateManager.getFrameworkById(config.project.framework);

@@ -24,7 +24,6 @@
 		"output",
 		"**/files/*",
 		"packages/cli/**/files/*",
-		"packages/cli/templates/quickstart/angular",
 		"node_modules"
 	]
 }

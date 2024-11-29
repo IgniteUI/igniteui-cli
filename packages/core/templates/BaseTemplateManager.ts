@@ -3,14 +3,12 @@ import { Framework, ProjectLibrary, Template } from "../types";
 import { ProjectConfig, Util } from "../util";
 
 export abstract class BaseTemplateManager {
-	protected _quickstartTemplatesPath: string = "quickstart";
 	protected frameworks: Framework[] = [];
 
 	constructor(private templatesAbsPath: string) {
 
 		// read dirs and push dir names into frameworks
-		const frameworks = Util.getDirectoryNames(this.templatesAbsPath)
-			.filter(x => x !== this._quickstartTemplatesPath);
+		const frameworks = Util.getDirectoryNames(this.templatesAbsPath);
 		// load and initialize templates
 		for (const framework of frameworks) {
 			this.frameworks.push(require(path.join(this.templatesAbsPath, framework)) as Framework);

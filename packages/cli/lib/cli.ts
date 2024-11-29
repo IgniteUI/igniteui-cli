@@ -10,8 +10,6 @@ import {
 	generate,
 	list,
 	newCommand,
-	quickstart,
-	QUICKSTART_COMMAND_NAME,
 	start,
 	test,
 	upgrade,
@@ -46,7 +44,6 @@ export async function run(args = null) {
 	await yargsModule
 		.scriptName("") // prevent the addition of the name of the executing script in the usage output
 		.usage("") // do not show any usage instructions before the commands list
-		.command(quickstart)
 		.command(newCommand)
 		.command(add)
 		.command(build)
@@ -104,11 +101,6 @@ export async function run(args = null) {
 				const helpRequest = argv.h || argv.help;
 				if (helpRequest) {
 					logHelp();
-				}
-
-				if (command === QUICKSTART_COMMAND_NAME && !helpRequest) {
-					Util.log("quickstart Created");
-					return;
 				}
 
 				// since we are providing a custom callback to `yargsModule.parseAsync`, we need to handle the output as well

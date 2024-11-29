@@ -43,7 +43,6 @@
     "templates/**/*.js",
     "templates/**/files/**/*",
     "templates/**/generate/**/*",
-    "templates/quickstart/**/*",
     "templates/**/*.json",
     "migrations/**/*.d.ts",
     "migrations/**/*.js",
@@ -63,7 +62,6 @@
     "exclude": [
       "**/*.d.ts",
       "output/",
-      "templates/quickstart/",
       "templates/**/files/"
     ],
     "reporter": [
