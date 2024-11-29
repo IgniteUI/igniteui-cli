@@ -18,7 +18,8 @@
 				"./packages/cli"
 			]
 		},
-		"esModuleInterop": true
+		"esModuleInterop": true,
+		"skipLibCheck": true,
 	},
 	"exclude": [
 		"output",

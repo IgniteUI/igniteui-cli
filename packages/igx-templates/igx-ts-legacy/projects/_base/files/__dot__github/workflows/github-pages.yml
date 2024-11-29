@@ -3,18 +3,20 @@ name: Deploy GitHub Pages
 on:
   push:
     branches: [ <%=yamlDefaultBranch%> ]
-  pull_request:
-    branches: [ <%=yamlDefaultBranch%> ]
+  workflow_dispatch: {}
 
 jobs:
   build-and-deploy:
-    # Deactivate the workflow. Will be changed when AB is ready
-    if: false
+
     runs-on: ubuntu-latest
 
     permissions:
       pages: write
       id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     strategy:
       matrix:
@@ -30,20 +32,15 @@ jobs:
     - run: npm i # replace with 'npm ci' after committing lock file from first install
     - name: Set project name
       run: echo "PROJECT_NAME=$(jq -r '.name' package.json)" >> $GITHUB_ENV
-    - name: Determine if project is standalone and set build path
-      run: |
-        if jq -e ".projects[\"${{ env.PROJECT_NAME }}\"].architect.build.builder == \"@angular-devkit/build-angular:application\"" angular.json > /dev/null; then
-          echo "BUILD_PATH=./dist/${{ env.PROJECT_NAME }}/browser" >> $GITHUB_ENV
-        else
-          echo "BUILD_PATH=./dist/${{ env.PROJECT_NAME }}" >> $GITHUB_ENV
-        fi
     - name: Build project with dynamic base-href
       run: npm run build -- --base-href "/${{ github.event.repository.name }}/"
     - name: Update Resource Paths
-      run: find ${{ env.BUILD_PATH }} -type f -name '*main*.js' -exec sed -i -e "s|/assets|/${{ github.event.repository.name }}/assets|g" -e "s|url('/assets|url('/${{ github.event.repository.name }}/assets|g" {} +
+      run: find ./dist/${{ env.PROJECT_NAME }} -type f -name '*main*.js' -exec sed -i -e "s|/assets|/${{ github.event.repository.name }}/assets|g" -e "s|url('/assets|url('/${{ github.event.repository.name }}/assets|g" {} +
+    - name: SPA routing handling
+      run: cp ./dist/${{ env.PROJECT_NAME }}/index.html ./dist/${{ env.PROJECT_NAME }}/404.html
     - name: Upload build artifact to GitHub Pages
       uses: actions/upload-pages-artifact@v1
       with:
-        path: ${{ env.BUILD_PATH }}
+        path: ./dist/${{ env.PROJECT_NAME }}
     - name: Deploy to GitHub Pages
       uses: actions/deploy-pages@v1

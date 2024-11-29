@@ -18,9 +18,9 @@ export default function(options: UpgradeOptions): Rule {
 		});
 		const templateManager = new SchematicsTemplateManager();
 		const config = ProjectConfig.getConfig();
-		const library = templateManager.getProjectLibrary(config.project.framework, config.project.projectType);
+		const library = templateManager.getProjectLibrary('angular', config.project?.projectType || 'igx-ts');
 		let project: ProjectTemplate;
-		if (!config.project.projectTemplate || !library.hasProject(config.project.projectTemplate)) {
+		if (!config.project?.projectTemplate || !library.hasProject(config.project?.projectTemplate)) {
 			// in case project template is missing from the config we provide backward.
 			project = library.getProject(library.projectIds[0]);
 		} else {

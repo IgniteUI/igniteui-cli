@@ -296,7 +296,8 @@ describe("Unit - Package Manager", () => {
 		expect(Util.log).toHaveBeenCalledWith(`Installing npm packages`);
 		expect(Util.log).toHaveBeenCalledWith(`Error installing npm packages.`);
 		expect(Util.log).toHaveBeenCalledWith(`Example`);
-		expect(Util.execSync).toHaveBeenCalledWith(`npm install --quiet`,
+		// TODO: remove --legacy-peer-deps flag igniteui-cli#1338 once new DV package is available
+		expect(Util.execSync).toHaveBeenCalledWith(`npm install --quiet --legacy-peer-deps`,
 			{ stdio: ["inherit"], killSignal: "SIGINT" });
 		mockProjectConfig.packagesInstalled = true;
 		expect(ProjectConfig.setConfig).toHaveBeenCalledWith(mockProjectConfig);
@@ -312,7 +313,8 @@ describe("Unit - Package Manager", () => {
 		expect(Util.log).toHaveBeenCalledTimes(2);
 		expect(Util.log).toHaveBeenCalledWith(`Installing npm packages`);
 		expect(Util.log).toHaveBeenCalledWith(`Packages installed successfully`);
-		expect(Util.execSync).toHaveBeenCalledWith(`npm install --quiet`,
+		// TODO: remove --legacy-peer-deps flag igniteui-cli#1338 once new DV package is available
+		expect(Util.execSync).toHaveBeenCalledWith(`npm install --quiet --legacy-peer-deps`,
 			{ stdio: ["inherit"], killSignal: "SIGINT" });
 		mockProjectConfig.packagesInstalled = true;
 		expect(ProjectConfig.setConfig).toHaveBeenCalledWith(mockProjectConfig);
@@ -331,7 +333,8 @@ describe("Unit - Package Manager", () => {
 		await PackageManager.installPackages(true);
 		expect(Util.log).toHaveBeenCalledTimes(1);
 		expect(Util.log).toHaveBeenCalledWith(`Installing npm packages`);
-		expect(Util.execSync).toHaveBeenCalledWith(`npm install --quiet`,
+		// TODO: remove --legacy-peer-deps flag igniteui-cli#1338 once new DV package is available
+		expect(Util.execSync).toHaveBeenCalledWith(`npm install --quiet --legacy-peer-deps`,
 			{ stdio: ["inherit"], killSignal: "SIGINT" });
 		expect(process.exit).toHaveBeenCalled();
 		expect(ProjectConfig.setConfig).toHaveBeenCalledTimes(0);
@@ -417,7 +420,7 @@ describe("Unit - Package Manager", () => {
 		expect(Util.log).toHaveBeenCalledTimes(0);
 		expect(child_process.exec).toHaveBeenCalledTimes(1);
 		expect(child_process.exec).toHaveBeenCalledWith(
-			`npm install test-pack --quiet --no-save`, {}, jasmine.any(Function));
+			`npm install test-pack --quiet --no-save --legacy-peer-deps`, {}, jasmine.any(Function));
 	});
 
 	it("queuePackage should ignore existing package installs", async () => {
