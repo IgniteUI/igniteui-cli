@@ -1,3 +1,21 @@
+# [14.3.2](https://github.com/IgniteUI/igniteui-cli/compare/v14.3.1...v14.3.2) (2024-11-28)
+
+## What's Changed
+* Remove build step from angular github pages yaml files by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1348
+* chore: release 14.3.1 by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1350
+* remove deployment script flag and if condition in github pages workflow by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1351
+* Fix pattern matching when upgrading packages by @jackofdiamond5 in https://github.com/IgniteUI/igniteui-cli/pull/1347
+* fix: adapt ngModules templates to 19 changes by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1352
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.3.0...v14.3.2
+
+# [14.3.1](https://github.com/IgniteUI/igniteui-cli/compare/v14.3.0...v14.3.1) (2024-11-27)
+
+## What's Changed
+* Remove build step from angular github pages yaml files by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1348
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.3.0...v14.3.1
+
 # [14.3.0](https://github.com/IgniteUI/igniteui-cli/compare/v14.2.3...v14.3.0) (2024-11-25)
 
 🎉 This update includes:
