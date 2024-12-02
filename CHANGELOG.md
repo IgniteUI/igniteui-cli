@@ -1,3 +1,11 @@
+# [14.3.3](https://github.com/IgniteUI/igniteui-cli/compare/v14.3.2...v14.3.3) (2024-12-02)
+
+## What's Changed
+* Disable standalone lint check and fix paths for angular modules by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1353
+* remove lite-server package and quickstart by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1334
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.3.2...v14.3.3
+
 # [14.3.2](https://github.com/IgniteUI/igniteui-cli/compare/v14.3.1...v14.3.2) (2024-11-28)
 
 ## What's Changed
