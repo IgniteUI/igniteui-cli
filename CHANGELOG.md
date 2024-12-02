@@ -1901,7 +1901,6 @@ You can install the Ignite UI for Angular Schematics globally and use them to cr
  - **templates, igx-ts, ig-ts**: Update Angular tests - references, configurations, and templates
  - **templates, igx-ts**: Update angular charts packages to 8.2.12 #644 
  - **templates, js**: Update ignite-ui to v19.2 #625
- - **templates, js**: Update jquery quickstart #625
 
 
 # [4.3.6](https://github.com/IgniteUI/igniteui-cli/compare/v4.3.5...v4.3.6) (2020-01-29)
@@ -2207,7 +2206,6 @@ A brand new project template type for Ignite UI for Angular with built-in authen
 * update Ignite UI for Angular to 6.0.0 and project to Angular 6 ([f878c37](https://github.com/IgniteUI/igniteui-cli/commit/f878c37))
 * update Ignite UI Angular wrappers project to Angular 6 [7868d8f](https://github.com/IgniteUI/igniteui-cli/commit/7868d8f)
 * update Ignite UI for JavaScript to 18.1 in jQuery, React and Angular wrappers projects ([16afac22](https://github.com/IgniteUI/igniteui-cli/commit/16afac22), [1c91a4d](https://github.com/IgniteUI/igniteui-cli/commit/1c91a4d), [65b8190](https://github.com/IgniteUI/igniteui-cli/commit/65b8190))
-* update quickstart projects ([84d8fc9](https://github.com/IgniteUI/igniteui-cli/commit/84d8fc9))
 
 
 <a name="1.3.0"></a>

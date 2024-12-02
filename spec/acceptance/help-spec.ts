@@ -14,7 +14,6 @@ describe("Help command", () => {
 		}
 
 		const originalHelpText: string = `Commands:
-		quickstart             creates rich feature grid
 		new [name]             creates a project
 		add [template] [name]  adds template by its ID
 		build                  builds the project
@@ -127,25 +126,6 @@ describe("Help command", () => {
 		-h, --help       Show help                                           [boolean]
 		-f, --framework  Framework to list templates for  [string] [default: "jquery"]
 		-t, --type       Project type (depends on framework)                  [string]
-		`;
-
-		const replacedNewHelpText: string = originalNewHelpText.replace(/\s/g, "");
-		const actualNewText: string = (child.stdout.toString()).replace(/\s/g, "");
-
-		expect(actualNewText).toContain(replacedNewHelpText);
-	});
-
-	it("should show help for the quickstart command", async () => {
-		const child = Util.spawnSync("node", [execLocation, "quickstart", "-h"], {
-			encoding: "utf-8"
-		});
-
-		const originalNewHelpText: string = `
-		Options:
-		-v, --version    Show current Ignite UI CLI version                  [boolean]
-		-h, --help       Show help                                           [boolean]
-		-f, --framework  Framework to setup quickstart for
-		          [string] [choices: "jquery", "react", "angular"] [default: "jquery"]
 		`;
 
 		const replacedNewHelpText: string = originalNewHelpText.replace(/\s/g, "");

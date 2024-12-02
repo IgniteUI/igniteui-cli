@@ -4,7 +4,6 @@ import { default as add } from "../../packages/cli/lib/commands/add";
 import { default as build } from "../../packages/cli/lib/commands/build";
 import { default as doc } from "../../packages/cli/lib/commands/doc";
 import { default as list } from "../../packages/cli/lib/commands/list";
-import { default as quickstart } from "../../packages/cli/lib/commands/quickstart";
 import { default as start } from "../../packages/cli/lib/commands/start";
 import { default as test } from "../../packages/cli/lib/commands/test";
 import { PromptSession } from "../../packages/cli/lib/PromptSession";
@@ -24,13 +23,6 @@ describe("Unit - Cli.ts", () => {
 		spyOn(Util, "showVersion");
 		await run.run("--version");
 		expect(Util.showVersion).toHaveBeenCalled();
-	});
-	it("Should fire properly - quickstart", async () => {
-		spyOn(quickstart , "handler").and.returnValue(Promise.resolve(true));
-		spyOn(Util , "log");
-		await run.run("quickstart");
-		expect(quickstart.handler).toHaveBeenCalled();
-		expect(Util.log).toHaveBeenCalled();
 	});
 	it("Should fire properly - add", async () => {
 		spyOn(add , "check").and.returnValue(false);

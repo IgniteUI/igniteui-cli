@@ -21,7 +21,6 @@
 	},
 	"tslint.exclude": [ 
 		"**/files/**/*.ts",
-		"./output/**/*.ts",
-		"./quickstart/**/*.ts"
+		"./output/**/*.ts"
 	]
 }

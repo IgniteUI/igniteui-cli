@@ -62,18 +62,6 @@ describe("Add command", () => {
 		expect(console.log).toHaveBeenCalledTimes(0);
 	});
 
-	it("Should not work quickstart project", async () => {
-		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({ project: { isShowcase: true } }));
-		await cli.run(["add", "grid", "name"]);
-
-		expect(console.error).toHaveBeenCalledWith(
-			jasmine.stringMatching(/Showcases and quickstart projects don't support the add command\s*/)
-		);
-		expect(console.log).toHaveBeenCalledTimes(0);
-
-		fs.unlinkSync(ProjectConfig.configFile);
-	});
-
 	it("Should not work with wrong framework", async () => {
 		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({ project: { framework: "angular2" } }));
 		await cli.run(["add", "grid", "name"]);

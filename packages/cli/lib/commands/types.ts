@@ -4,7 +4,6 @@ import { AddTemplateArgs, Template } from "@igniteui/cli-core";
 
 export const ADD_COMMAND_NAME = "add";
 export const NEW_COMMAND_NAME = "new";
-export const QUICKSTART_COMMAND_NAME = "quickstart";
 export const BUILD_COMMAND_NAME = "build";
 export const START_COMMAND_NAME = "start";
 export const GENERATE_COMMAND_NAME = "generate";
@@ -17,7 +16,6 @@ export const UPGRADE_COMMAND_NAME = "upgrade-packages";
 export const ALL_COMMANDS = new Set([
   ADD_COMMAND_NAME,
   NEW_COMMAND_NAME,
-  QUICKSTART_COMMAND_NAME,
   BUILD_COMMAND_NAME,
   START_COMMAND_NAME,
   GENERATE_COMMAND_NAME,

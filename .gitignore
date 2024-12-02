@@ -28,7 +28,6 @@ packages/core/config/Config.schema.json
 !packages/cli/templates/jquery/**/files/**/*
 !packages/cli/templates/angular/**/files/**/*
 !packages/cli/templates/react/**/files/**/*
-!packages/cli/templates/quickstart/**/*
 
 # Misc
 npm-debug.log*

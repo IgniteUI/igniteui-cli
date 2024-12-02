@@ -150,7 +150,7 @@ See the [Contribution guide](https://github.com/IgniteUI/igniteui-cli/blob/maste
 3. To build the packages, run `yarn build` in the project `root`.
 4. Open in Visual Studio Code
     
-    There is a predefined launch.config file for VS Code in the root folder, so you can use VS Code View/Debug window and choose one of the predefined actions. These include launching the step by step guide, quickstart project, create new project for a particular framework or add components.
+    There is a predefined launch.config file for VS Code in the root folder, so you can use VS Code View/Debug window and choose one of the predefined actions. These include launching the step by step guide, create new project for a particular framework or add components.
 
 5. Hit Start Debugging/F5
 

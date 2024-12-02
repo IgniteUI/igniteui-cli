@@ -10,7 +10,6 @@
 		"./spec",
 		"./output",
 		"**/files/*",
-		"packages/cli/templates/quickstart/angular",
 		"node_modules"
 	]
 }

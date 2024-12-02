@@ -178,48 +178,6 @@
 		{
 			"type": "node",
 			"request": "launch",
-			"name": "Launch Quickstart jQuery",
-			"cwd": "${workspaceRoot}/output",
-			"program": "${workspaceRoot}/packages/cli/bin/execute.js",
-			"console": "externalTerminal",
-			"preLaunchTask": "build",
-			"outFiles": ["${workspaceFolder}/**/*.js"],
-			"args": [
-				"quickstart",
-				"--framework=jquery"
-			]
-		},
-		{
-			"type": "node",
-			"request": "launch",
-			"name": "Launch Quickstart React",
-			"cwd": "${workspaceRoot}/output",
-			"program": "${workspaceRoot}/packages/cli/bin/execute.js",
-			"console": "externalTerminal",
-			"preLaunchTask": "build",
-			"outFiles": ["${workspaceFolder}/**/*.js"],
-			"args": [
-				"quickstart",
-				"--framework=react"
-			]
-		},
-		{
-			"type": "node",
-			"request": "launch",
-			"name": "Launch Quickstart Angular",
-			"cwd": "${workspaceRoot}/output",
-			"program": "${workspaceRoot}/packages/cli/bin/execute.js",
-			"console": "externalTerminal",
-			"preLaunchTask": "build",
-			"outFiles": ["${workspaceFolder}/**/*.js"],
-			"args": [
-				"quickstart",
-				"--framework=angular"
-			]
-		},
-		{
-			"type": "node",
-			"request": "launch",
 			"name": "Launch Add",
 			"program": "${workspaceRoot}/packages/cli/bin/execute.js",
 			"console": "externalTerminal",
