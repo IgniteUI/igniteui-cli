@@ -1,3 +1,9 @@
+# [14.3.4](https://github.com/IgniteUI/igniteui-cli/compare/v14.3.3...v14.3.4) (2024-12-04)
+## What's Changed
+* Add step in web components github pages workflow to fix navigation by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1355
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.3.3...v14.3.4
+
 # [14.3.3](https://github.com/IgniteUI/igniteui-cli/compare/v14.3.2...v14.3.3) (2024-12-02)
 
 ## What's Changed
