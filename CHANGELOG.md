@@ -1,3 +1,11 @@
+# [14.3.5](https://github.com/IgniteUI/igniteui-cli/compare/v14.3.4...v14.3.5) (2024-12-06)
+## What's Changed
+* chore: update official angular-eslint by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1357
+* fix web components router navigation by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1358
+* fix navigation path in web components config by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1359
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.3.4...v14.3.5
+
 # [14.3.4](https://github.com/IgniteUI/igniteui-cli/compare/v14.3.3...v14.3.4) (2024-12-04)
 ## What's Changed
 * Add step in web components github pages workflow to fix navigation by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1355
