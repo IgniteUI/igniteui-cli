@@ -1,3 +1,10 @@
+# [14.3.6](https://github.com/IgniteUI/igniteui-cli/compare/v14.3.5...v14.3.6) (2024-12-12)
+
+## What's Changed
+* fix(migrations): enable encapsulation for migrations by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1361
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.3.5...v14.3.6
+
 # [14.3.5](https://github.com/IgniteUI/igniteui-cli/compare/v14.3.4...v14.3.5) (2024-12-06)
 ## What's Changed
 * chore: update official angular-eslint by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1357
