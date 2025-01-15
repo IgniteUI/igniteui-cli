@@ -17,7 +17,7 @@ export default defineConfig({
         warn(warning);
       },
     },
-    target: 'esnext',
+    target: 'es2021',
     minify: 'terser',
     emptyOutDir: false,
   },
