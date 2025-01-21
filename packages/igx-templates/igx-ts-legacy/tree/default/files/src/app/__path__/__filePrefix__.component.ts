@@ -9,7 +9,8 @@ import { DataService } from './services/data.service';
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.component.html',
   styleUrls: ['./<%=filePrefix%>.component.scss'],
-  providers: [DataService]
+  providers: [DataService],
+  standalone: false
 })
 
 export class <%=ClassName%>Component implements OnDestroy {

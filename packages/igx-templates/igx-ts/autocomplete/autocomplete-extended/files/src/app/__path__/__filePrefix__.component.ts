@@ -66,14 +66,14 @@ export class <%=ClassName%>Component {
   }
 }
 
-@Pipe({ standalone: true, name: '<%=camelCaseName%>StartsWith' })
+@Pipe({ name: '<%=camelCaseName%>StartsWith' })
 export class  <%=ClassName%>PipeStartsWith implements PipeTransform {
   public transform(collection: Town[], term = '') {
     return collection.filter(item => item.name.toLowerCase().startsWith(term.trim().toLowerCase()));
   }
 }
 
-@Pipe({ standalone: true, name: '<%=camelCaseName%>RegionContains' })
+@Pipe({ name: '<%=camelCaseName%>RegionContains' })
 export class <%=ClassName%>RegionContains implements PipeTransform {
   transform(regions: Region[], term = '') {
     return this.filterRegions(regions, term);
