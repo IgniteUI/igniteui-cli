@@ -48,7 +48,7 @@
     "babel-plugin-template-html-minifier": "^4.1.0",
     "concurrently": "^8.2.2",
     "deepmerge": "^4.2.2",
-    "eslint": "^9.18.0",
+    "eslint": "^8.57.0",
     "eslint-plugin-lit": "^1.8.2",
     "igniteui-cli": "^14.0.0",
     "rimraf": "^5.0.5",
