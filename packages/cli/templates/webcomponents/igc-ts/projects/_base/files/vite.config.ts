@@ -1,6 +1,4 @@
 import { defineConfig } from 'vite';
-import { createHtmlPlugin } from 'vite-plugin-html';
-import babel from 'vite-plugin-babel';
 import { VitePWA } from 'vite-plugin-pwa';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 
@@ -27,51 +25,6 @@ export default defineConfig({
       targets: [
         { src: 'src/assets', dest: 'src' },
       ],
-    }),
-    /** HTML Plugin with service worker injection */
-    createHtmlPlugin({
-      minify: true,
-      inject: {
-        data: {
-        },
-      },
-    }),
-    /** Babel Plugin for JS transpilation */
-    babel({
-      babelConfig: {
-        presets: [
-          [
-            '@babel/preset-env',
-            {
-              targets: [
-                'last 3 Chrome major versions',
-                'last 3 Firefox major versions',
-                'last 3 Edge major versions',
-                'last 3 Safari major versions',
-              ],
-              modules: false,
-              bugfixes: true,
-            },
-          ],
-        ],
-        plugins: [
-          [
-            'babel-plugin-template-html-minifier',
-            {
-              modules: { lit: ['html', { name: 'css', encapsulation: 'style' }] },
-              failOnError: false,
-              strictCSS: true,
-              htmlMinifier: {
-                collapseWhitespace: true,
-                conservativeCollapse: true,
-                removeComments: true,
-                caseSensitive: true,
-                minifyCSS: true,
-              },
-            },
-          ],
-        ],
-      },
     }),
     /** PWA Plugin for service worker generation */
     VitePWA({
