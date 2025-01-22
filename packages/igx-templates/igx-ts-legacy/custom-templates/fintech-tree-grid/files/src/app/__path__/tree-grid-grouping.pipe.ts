@@ -13,7 +13,8 @@ export class ITreeGridAggregation {
 
 @Pipe({
   name: 'treeGridGrouping',
-  pure: true
+  pure: true,
+  standalone: false
 })
 export class <%=ClassName%>TreeGridGroupingPipe implements PipeTransform {
 
