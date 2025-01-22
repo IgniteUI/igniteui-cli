@@ -4,10 +4,8 @@ import {
   defineComponents,
   IgcIconComponent,
   IgcNavbarComponent,
-} from 'igniteui-webcomponents';
-import {
   registerIcon,
-} from 'igniteui-webcomponents/components/icon/icon.registry';
+} from 'igniteui-webcomponents';
 
 defineComponents(
   IgcIconComponent,
