@@ -5,7 +5,8 @@ import { Region, Town, townsExtended } from './towns-data-extended';
 @Component({
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.component.html',
-  styleUrls: ['./<%=filePrefix%>.component.scss']
+  styleUrls: ['./<%=filePrefix%>.component.scss'],
+  standalone: false
 })
 export class <%=ClassName%>Component {
   public regions!: Region[];
@@ -35,14 +36,14 @@ export class <%=ClassName%>Component {
   }
 }
 
-@Pipe({ name: '<%=camelCaseName%>StartsWith' })
+@Pipe({ name: '<%=camelCaseName%>StartsWith', standalone: false })
 export class  <%=ClassName%>PipeStartsWith implements PipeTransform {
   public transform(collection: Town[], term = '') {
     return collection.filter(item => item.name.toLowerCase().startsWith(term.trim().toLowerCase()));
   }
 }
 
-@Pipe({ name: '<%=camelCaseName%>RegionContains' })
+@Pipe({ name: '<%=camelCaseName%>RegionContains', standalone: false })
 export class <%=ClassName%>RegionContains implements PipeTransform {
   transform(regions: Region[], term = '') {
     return this.filterRegions(regions, term);

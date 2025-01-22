@@ -6,7 +6,8 @@ import { Employee, employeesData } from './localData';
   encapsulation: ViewEncapsulation.None,
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.component.html',
-  styleUrls: ['./<%=filePrefix%>.component.scss']
+  styleUrls: ['./<%=filePrefix%>.component.scss'],
+  standalone: false
 })
 export class <%=ClassName%>Component implements OnInit {
   @ViewChild('sampleGrid', { static: true, read: IgxGridComponent })

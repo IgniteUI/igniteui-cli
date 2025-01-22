@@ -26,7 +26,8 @@ import { ITreeGridAggregation } from './tree-grid-grouping.pipe';
   providers: [LocalDataService],
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.component.html',
-  styleUrls: ['./<%=filePrefix%>.component.scss']
+  styleUrls: ['./<%=filePrefix%>.component.scss'],
+  standalone: false
 })
 export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('grid1', { static: true }) public grid1!: IgxTreeGridComponent;

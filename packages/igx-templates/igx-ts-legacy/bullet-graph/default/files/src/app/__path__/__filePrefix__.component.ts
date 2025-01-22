@@ -6,7 +6,8 @@ import { IgxBulletGraphComponent, IgxLinearGraphRangeComponent } from 'igniteui-
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.component.html',
   styleUrls: ['./<%=filePrefix%>.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  standalone: false
 })
 export class <%=ClassName%>Component implements AfterViewInit {
   @ViewChild('bulletGraph', { static: true })

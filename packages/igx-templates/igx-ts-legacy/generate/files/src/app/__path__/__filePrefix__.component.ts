@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
   selector: "<%=filePrefix%>",
   templateUrl: './<%=filePrefix%>.component.html',
   styleUrls: ['./<%=filePrefix%>.component.scss'],
+  standalone: false
 })
 export class <%=ClassName%>Component {
   title = '<%=name%>';

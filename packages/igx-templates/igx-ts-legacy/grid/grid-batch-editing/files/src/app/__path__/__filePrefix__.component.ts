@@ -5,7 +5,8 @@ import { data, Product } from './data';
 @Component({
   selector: 'app-<%=filePrefix%>',
   styleUrls: ['./<%=filePrefix%>.component.scss'],
-  templateUrl: './<%=filePrefix%>.component.html'
+  templateUrl: './<%=filePrefix%>.component.html',
+  standalone: false
 })
 export class <%=ClassName%>Component implements OnInit {
   @ViewChild('gridRowEditTransaction', { static: true, read: IgxGridComponent }) public grid!: IgxGridComponent;
