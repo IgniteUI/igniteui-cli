@@ -4,7 +4,7 @@ import {
   defineComponents,
   IgcIconComponent,
   IgcNavbarComponent,
-  registerIcon
+  registerIcon,
 } from 'igniteui-webcomponents';
 
 defineComponents(
