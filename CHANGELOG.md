@@ -1,3 +1,12 @@
+# [14.3.7](https://github.com/IgniteUI/igniteui-cli/compare/v14.3.6...v14.3.7) (2025-01-22)
+
+## What's Changed
+* Upgrade github pages deploy and artifact versions by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1366
+* chore: update dv packages with v19; standalone false for legacy components by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1365
+
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.3.6...14.3.7
+
 # [14.3.6](https://github.com/IgniteUI/igniteui-cli/compare/v14.3.5...v14.3.6) (2024-12-12)
 
 ## What's Changed
