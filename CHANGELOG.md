@@ -1,3 +1,12 @@
+# [14.3.8](https://github.com/IgniteUI/igniteui-cli/compare/v14.3.7...v14.3.8) (2025-01-23)
+
+## What's Changed
+
+* Replace rollup with vite configuration by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1364
+* Fix wc navbar register icon import by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1367
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.3.7...v14.3.8
+
 # [14.3.7](https://github.com/IgniteUI/igniteui-cli/compare/v14.3.6...v14.3.7) (2025-01-22)
 
 ## What's Changed
