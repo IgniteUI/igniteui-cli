@@ -25,6 +25,7 @@ export default defineConfig({
       targets: [
         { src: 'src/assets', dest: 'src' },
       ],
+      silent: true,
     }),
     /** PWA Plugin for service worker generation */
     VitePWA({
