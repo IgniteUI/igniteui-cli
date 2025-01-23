@@ -1,3 +1,11 @@
+# [14.3.9](https://github.com/IgniteUI/igniteui-cli/compare/v14.3.8...v14.3.9) (2025-01-23)
+
+## What's Changed
+
+* feat: enable silent mode in Vite configuration for improved build output by @dkalinovInfra in https://github.com/IgniteUI/igniteui-cli/pull/1369
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.3.8...v14.3.9
+
 # [14.3.8](https://github.com/IgniteUI/igniteui-cli/compare/v14.3.7...v14.3.8) (2025-01-23)
 
 ## What's Changed
