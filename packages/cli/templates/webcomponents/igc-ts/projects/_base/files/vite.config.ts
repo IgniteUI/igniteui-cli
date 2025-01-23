@@ -42,7 +42,7 @@ export default defineConfig({
             handler: 'CacheFirst',
           },
         ],
-        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024
+        maximumFileSizeToCacheInBytes: 10 * 1024 * 1024 // 10 MB
       },
     }),
   ],
