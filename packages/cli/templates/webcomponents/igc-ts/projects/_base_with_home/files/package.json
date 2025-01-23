@@ -14,7 +14,7 @@
   },
   "scripts": {
     "start": "tsc && concurrently -k -r \"tsc --watch\" \"wds\"",
-    "build": "rimraf dist && tsc && node --max-old-space-size=4096 node_modules/rollup/dist/bin/rollup -c rollup.config.mjs",
+    "build": "rimraf dist && tsc && node --max-old-space-size=4096 node_modules/vite/bin/vite.js build",
     "start:build": "web-dev-server --root-dir dist --app-index index.html --open",
     "lint": "eslint \"**/*.{js,ts}\" --ignore-path .gitignore",
     "test": "tsc --project tsconfig.test.json && wtr"
@@ -30,34 +30,28 @@
     "igniteui-webcomponents-grids": "~5.0.0",
     "igniteui-webcomponents-inputs": "~5.0.0",
     "igniteui-webcomponents-layouts": "~5.0.0",
-    "lit": "^3.1.2",
-    "typescript": "~5.5.4"
+    "lit": "^3.2.1",
+    "typescript": "~5.7.2"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.20.2",
-    "@open-wc/building-rollup": "^2.2.1",
     "@open-wc/testing": "^4.0.0",
-    "@rollup/plugin-babel": "^6.0.3",
-    "@rollup/plugin-node-resolve": "^15.0.1",
     "@typescript-eslint/eslint-plugin": "^8.21.0",
     "@typescript-eslint/parser": "^8.21.0",
     "@web/dev-server": "^0.4.6",
-    "@web/rollup-plugin-html": "^2.3.0",
-    "@web/rollup-plugin-import-meta-assets": "^1.0.7",
     "@web/test-runner": "^0.18.0",
     "babel-plugin-template-html-minifier": "^4.1.0",
-    "concurrently": "^8.2.2",
+    "concurrently": "^9.1.2",
     "deepmerge": "^4.2.2",
     "eslint": "^8.57.0",
     "eslint-plugin-lit": "^1.8.2",
     "igniteui-cli": "^14.0.0",
-    "rimraf": "^5.0.5",
-    "rollup": "^2.79.0",
-    "rollup-plugin-copy-assets": "^2.0.3",
-    "rollup-plugin-terser": "^7.0.2",
-    "rollup-plugin-workbox": "^8.1.0",
+    "rimraf": "^5.0.10",
     "source-map": "^0.7.4",
-    "tslib": "^2.6.2",
-    "@types/mocha": "^10.0.6"
+    "tslib": "^2.8.1",
+    "@types/mocha": "^10.0.6",
+    "vite": "^6.0.10",
+    "vite-plugin-pwa": "^0.21.1",
+    "vite-plugin-static-copy": "^2.2.0"
   }
 }
