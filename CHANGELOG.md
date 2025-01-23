@@ -1,3 +1,12 @@
+# [14.3.10](https://github.com/IgniteUI/igniteui-cli/compare/v14.3.9...v14.3.10) (2025-01-23)
+
+## What's Changed
+
+* feat: increase maximum file size to cache in webComponents's vite configuration to 10 MB by @dkalinovInfra in https://github.com/IgniteUI/igniteui-cli/pull/1370
+
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.3.9...v14.3.10
+
 # [14.3.9](https://github.com/IgniteUI/igniteui-cli/compare/v14.3.8...v14.3.9) (2025-01-23)
 
 ## What's Changed
