@@ -35,7 +35,9 @@ jobs:
       run: echo "VITE_BASENAME=/${{ github.event.repository.name }}" >> $GITHUB_ENV
     - run: npm run build -- --base=/${{ github.event.repository.name }}/
     - name: Update Resource Paths
-      run: find ./dist/assets -name "*.js" -exec sed -i 's|src/assets|${{ github.event.repository.name }}/assets|g' {} +
+      run: |
+        find ./dist/assets -type f -name "*.js" -exec sed -i 's|src/assets|${{ github.event.repository.name }}/assets|g' {} +;
+        find ./dist/assets -type f -name "*.js" -exec sed -i 's|/static-data/|/${{ github.event.repository.name }}/static-data/|g' {} +
     - name: Copy Resources to dist
       run: mkdir -p ./dist/assets && cp -R ./src/assets/* ./dist/assets/
     - name: SPA routing handling
