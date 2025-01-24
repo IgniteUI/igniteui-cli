@@ -1,3 +1,10 @@
+# [14.3.11](https://github.com/IgniteUI/igniteui-cli/compare/v14.3.10...v14.3.11) (2025-01-24)
+
+## What's Changed
+* fix: static data paths when deploy to github pages by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1371
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.3.10...v14.3.11
+
 # [14.3.10](https://github.com/IgniteUI/igniteui-cli/compare/v14.3.9...v14.3.10) (2025-01-23)
 
 ## What's Changed
