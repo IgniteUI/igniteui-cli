@@ -35,7 +35,7 @@ jobs:
       run: |
         find ./src -type f -name "*.ts" -exec sed -i "s|Router.go(\`/|Router.go(\`/${{ github.event.repository.name }}/|g" {} \;
         find ./ -type f -name "vite.config.ts" -exec sed -i "s|navigateFallback: '/index.html'|navigateFallback: 'index.html'|g" {} \;
-    - run: npm run build
+    - run: npm run build -- --base=/${{ github.event.repository.name }}/
     - name: Update base href in index.html
       run: |
         sed -i 's|<base href="[^"]*">|<base href="/${{ github.event.repository.name }}/">|' ./dist/index.html
@@ -44,7 +44,7 @@ jobs:
     - name: Copy ig-theme.css to dist
       run: cp ./ig-theme.css ./dist/
     - name: Update href Paths for ig-theme.css
-      run: find ./dist -type f -exec sed -i "s|href=\"../../ig-theme.css\"|href=\"../../${{ github.event.repository.name }}/ig-theme.css\"|g" {} +
+      run: find ./dist -type f -exec sed -i "s|href=['\"]../../ig-theme.css['\"]|href='../../${{ github.event.repository.name }}/ig-theme.css'|g" {} +
     - name: SPA routing handling
       run: cp ./dist/index.html ./dist/404.html
     - name: Upload build artifact to GitHub Pages
