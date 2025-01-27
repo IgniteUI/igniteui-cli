@@ -1,3 +1,10 @@
+# [14.3.12](https://github.com/IgniteUI/igniteui-cli/compare/v14.3.11...v14.3.12) (2025-01-27)
+
+## What's Changed
+* fix: paths in web components github pages workflow by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1373
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.3.11...v14.3.12
+
 # [14.3.11](https://github.com/IgniteUI/igniteui-cli/compare/v14.3.10...v14.3.11) (2025-01-24)
 
 ## What's Changed
