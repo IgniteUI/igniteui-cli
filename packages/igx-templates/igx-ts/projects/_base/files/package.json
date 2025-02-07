@@ -31,6 +31,10 @@
         "@angular/core": "^19.0.0",
         "@angular/common": "^19.0.0",
         "@angular/compiler": "^19.0.0"
+    },
+    "reveal-sdk-wrappers-angular": {
+      "@angular/core": "^19.0.0",
+      "@angular/common": "^19.0.0"
     }
   },
   "devDependencies": {
