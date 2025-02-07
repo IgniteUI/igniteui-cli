@@ -1,3 +1,11 @@
+# [14.3.13](https://github.com/IgniteUI/igniteui-cli/compare/v14.3.12...v14.3.13) (2025-02-07)
+
+## What's Changed
+* fix: add overrides for reveal sdk wrappers by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1375
+* chore: remove dv overrides by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1376
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.3.12...v14.3.13
+
 # [14.3.12](https://github.com/IgniteUI/igniteui-cli/compare/v14.3.11...v14.3.12) (2025-01-27)
 
 ## What's Changed
