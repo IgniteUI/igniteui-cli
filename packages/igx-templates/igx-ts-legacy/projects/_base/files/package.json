@@ -44,7 +44,7 @@
     "@types/jasmine": "~5.1.1",
     "@typescript-eslint/eslint-plugin": "8.21.0",
     "@typescript-eslint/parser": "8.21.0",
-    "eslint": "~8.57.0",
+    "eslint": "~9.20.0",
     "igniteui-cli": "~<%=cliVersion%>",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
