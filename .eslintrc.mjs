@@ -22,7 +22,7 @@ export default [
     rules: {
       'complexity': 'off',
       'eslint-plugin-import/no-extraneous-dependencies': 'warn',
-      'eslint-plugin-import/no-internal-modules': 'off',
+      'eslint-plugin-import/no-internal-modules': 'warn',
       'eslint-plugin-import/order': [
         'off',
         {
