@@ -27,7 +27,7 @@
 		"test": "nyc npm run jasmine",
 		"jasmine": "node spec/jasmine-runner.js",
 		"coverage": "nyc report --report-dir",
-		"lint": "eslint -c .eslintrc.mjs ./**/*.ts",
+		"lint": "eslint -c eslint.config.mjs ./**/*.ts",
 		"config-schema": "typescript-json-schema packages/core/types/Config.ts Config -o packages/core/config/Config.schema.json"
 	},
 	"nyc": {
