@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
-import { terser } from 'rollup-plugin-terser';
 
 export default defineConfig({
   build: {
@@ -18,12 +17,15 @@ export default defineConfig({
     },
     target: 'es2021',
     minify: 'terser',
+    terserOptions: {
+      format: {
+        comments: false
+      }
+    },
     emptyOutDir: false,
     chunkSizeWarningLimit: 10 * 1024 * 1024 // 10 MB
   },
   plugins: [
-    /** Minify JS */
-    terser(),
     /** Copy static assets */
     viteStaticCopy({
       targets: [
