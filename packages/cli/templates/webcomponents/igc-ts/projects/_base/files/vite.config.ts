@@ -50,6 +50,9 @@ export default defineConfig({
         ],
         maximumFileSizeToCacheInBytes: 10 * 1024 * 1024 // 10 MB
       },
+      manifest: {
+        theme_color: "#ffffff"
+      }
     }),
   ],
 });

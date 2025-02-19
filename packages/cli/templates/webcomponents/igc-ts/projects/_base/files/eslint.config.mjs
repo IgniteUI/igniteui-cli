@@ -1,19 +1,22 @@
 import js from '@eslint/js';
+import parser from '@typescript-eslint/parser';
 import tseslint from '@typescript-eslint/eslint-plugin';
-import tsparser from '@typescript-eslint/parser';
+import { FlatCompat } from "@eslint/eslintrc";
+
+const compat = new FlatCompat({
+    recommendedConfig: js.configs.recommended
+});
 
 export default [
-  js.configs.recommended,
-  tseslint.configs.recommended,
+  ...compat.extends('eslint:recommended', 'plugin:@typescript-eslint/recommended'),
   {
-    env: {
-      browser: true,
-      es2021: true,
-      jasmine: true,
-    },
-    files: ['**/*.ts', '**/*.tsx'],
     languageOptions: {
-      parser: tsparser,
+      globals: {
+        browser: true,
+        es2021: true,
+        jasmine: true,
+      },
+      parser: parser,
       parserOptions: {
         ecmaVersion: 12,
         sourceType: 'module',
