@@ -1,53 +1,35 @@
-import angularEslint from "@angular-eslint/eslint-plugin";
-import angularEslintTemplate from "@angular-eslint/eslint-plugin-template";
-import typescriptParser from "@typescript-eslint/parser";
+import { FlatCompat } from '@eslint/eslintrc';
+
+const compat = new FlatCompat();
 
 export default [
+  ...compat.extends('plugin:@angular-eslint/recommended', 'plugin:@angular-eslint/template/process-inline-templates'),
   {
-    files: ["**/*.ts"],
+    files: ['**/*.ts', '**/*.tsx'],
     languageOptions: {
-      parser: typescriptParser,
       parserOptions: {
-        project: "tsconfig.json",
+        project: ['tsconfig.json'],
         createDefaultProgram: true,
       },
     },
-    plugins: {
-      "@angular-eslint": angularEslint,
-    },
-    extends: [
-      "plugin:@angular-eslint/recommended",
-      "plugin:@angular-eslint/template/process-inline-templates",
-    ],
     rules: {
-      "@angular-eslint/directive-selector": [
-        "error",
-        {
-          type: "attribute",
-          prefix: "app",
-          style: "camelCase",
-        },
+      '@angular-eslint/directive-selector': [
+        'error',
+        { type: 'attribute', prefix: 'app', style: 'camelCase' },
       ],
-      "@angular-eslint/component-selector": [
-        "error",
-        {
-          type: "element",
-          prefix: "app",
-          style: "kebab-case",
-        },
+      '@angular-eslint/component-selector': [
+        'error',
+        { type: 'element', prefix: 'app', style: 'kebab-case' },
       ],
-      "@angular-eslint/prefer-standalone": "off",
+      '@angular-eslint/prefer-standalone': 'off'
     },
   },
+  ...compat.extends('plugin:@angular-eslint/template/recommended'),
   {
-    files: ["**/*.html"],
-    plugins: {
-      "@angular-eslint/template": angularEslintTemplate,
-    },
-    extends: ["plugin:@angular-eslint/template/recommended"],
+    files: ['**/*.html'],
     rules: {},
   },
   {
-    ignores: ["projects/**/*"],
+    ignores: ['projects/**/*']
   },
 ];

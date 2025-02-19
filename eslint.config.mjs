@@ -5,19 +5,29 @@ import typescriptParser from '@typescript-eslint/parser';
 
 export default [
   {
-    files: ['**/*.ts', '**/*.tsx'],
-    languageOptions: {
-      parser: typescriptParser,
-      parserOptions: {
-        project: '**/tsconfig.json',
-        sourceType: 'module',
-      },
+	files: ['**/*.ts', '**/*.tsx'],
+	languageOptions: {
+		globals: {
+			browser: true,
+			es6: true,
+			node: true
+		},
+		//"extends": [
+		// TODO: consider extending the recommended by ts rules and overriding them where necessary
+		// 'eslint:recommended',
+		// 'plugin:@typescript-eslint/recommended'
+	    //],
+		parser: typescriptParser,
+		parserOptions: {
+        	project: '**/tsconfig.json',
+        	sourceType: 'module',
+		},
     },
     plugins: {
       'eslint-plugin-import': eslintPluginImport,
       'eslint-plugin-unicorn': eslintPluginUnicorn,
       'eslint-plugin-prefer-arrow': eslintPluginPreferArrow,
-      '@typescript-eslint/parser': typescriptParser,
+	  // "@typescript-eslint" - install it if we extend the recommended ts rules
     },
     rules: {
       'complexity': 'off',

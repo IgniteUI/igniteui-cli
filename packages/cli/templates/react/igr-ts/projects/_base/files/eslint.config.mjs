@@ -1,5 +1,5 @@
 import js from '@eslint/js';
-import parser from '@typescript-eslint/parser';
+import typescriptParser from '@typescript-eslint/parser';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import { FlatCompat } from "@eslint/eslintrc";
 
@@ -10,12 +10,13 @@ const compat = new FlatCompat({
 export default [
   ...compat.extends('eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:react-hooks/recommended'),
   {
+    files: ['**/*.ts', '**/*.tsx'],
     languageOptions: {
       globals: {
         browser: true,
         es2020: true,
       },
-      parser: parser,
+      parser: typescriptParser,
       parserOptions: {
         ecmaVersion: 'latest',
         sourceType: 'module',
