@@ -42,6 +42,6 @@ export default [
     },
   },
   {
-    ignores: ['dist', 'eslint.config.mjs'],
+    ignores: ['dist']
   }
 ];
