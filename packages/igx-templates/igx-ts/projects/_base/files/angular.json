@@ -51,7 +51,7 @@
 								},
 								{
 									"type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
+                  "maximumWarning": "8kb",
                   "maximumError": "2mb"
 								}
 							],
@@ -110,11 +110,11 @@
 				"lint": {
 				  "builder": "@angular-eslint/builder:lint",
 				  "options": {
-          "eslintConfig": "eslint.config.mjs",
-					"lintFilePatterns": [
-					  "src/**/*.ts",
-					  "src/**/*.html"
-					]
+            "eslintConfig": "eslint.config.mjs",
+					  "lintFilePatterns": [
+					    "src/**/*.ts",
+					    "src/**/*.html"
+					  ]
 				  }
 				}
 			}

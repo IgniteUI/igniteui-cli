@@ -16,7 +16,7 @@ export default [
 		// TODO: consider extending the recommended by ts rules and overriding them where necessary
 		// 'eslint:recommended',
 		// 'plugin:@typescript-eslint/recommended'
-	    //],
+		//],
 		parser: typescriptParser,
 		parserOptions: {
         	project: '**/tsconfig.json',
@@ -27,7 +27,7 @@ export default [
       'eslint-plugin-import': eslintPluginImport,
       'eslint-plugin-unicorn': eslintPluginUnicorn,
       'eslint-plugin-prefer-arrow': eslintPluginPreferArrow,
-	  // "@typescript-eslint" - install it if we extend the recommended ts rules
+	//"@typescript-eslint" - install it if we extend the recommended ts rules
     },
     rules: {
       'complexity': 'off',
