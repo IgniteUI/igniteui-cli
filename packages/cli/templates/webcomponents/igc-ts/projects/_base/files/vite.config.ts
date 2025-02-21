@@ -21,15 +21,6 @@ export default defineConfig({
     chunkSizeWarningLimit: 10 * 1024 * 1024 // 10 MB
   },
   plugins: [
-    {
-      name: 'remove-pure-comment',
-      transform(code, id) {
-        if (id.includes('node_modules/igniteui-webcomponents-core')) {
-          return code.replace(/\/\*\s#__PURE__\s\*\//g, '');
-        }
-        return code;
-      }
-    },
     /** Copy static assets */
     viteStaticCopy({
       targets: [
