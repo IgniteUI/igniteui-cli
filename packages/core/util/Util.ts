@@ -79,7 +79,8 @@ export class Util {
 		}
 
 		return new Promise((resolve, reject) => {
-			const filePaths: string[] = glob.sync(sourcePath + "/**/*", { nodir: true });
+			const filePaths: string[] = glob.sync(sourcePath + "/**/*", { nodir: true })
+				.map(filePath => filePath.replace(/\\/g, "/"));
 			let fileCount = filePaths.length;
 			// if no files should be created, resolve
 			if (fileCount === 0) {
@@ -608,9 +609,11 @@ export class Util {
 		sourcePath = sourcePath.replace(/\\/g, "/");
 		destinationPath = destinationPath.replace(/\\/g, "/");
 
-		let paths: string[] = glob.sync(sourcePath + "/**/*", { nodir: true });
+		let paths: string[] = glob.sync(sourcePath + "/**/*", { nodir: true })
+			.map(filePath => filePath.replace(/\\/g, "/"));
 		// TODO: D.P Temporary ignoring asset files
-		const ignorePaths: string[] = glob.sync(sourcePath + "/**/+(assets|data)/**/*", { nodir: true });
+		const ignorePaths: string[] = glob.sync(sourcePath + "/**/+(assets|data)/**/*", { nodir: true })
+			.map(filePath => filePath.replace(/\\/g, "/"));
 		paths = paths.filter(x => ignorePaths.indexOf(x) === -1);
 
 		for (let filePath of paths) {

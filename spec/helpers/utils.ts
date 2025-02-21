@@ -6,9 +6,11 @@ import * as glob from "glob";
  * @param folderPath Folder path
  */
 export function deleteAll(folderPath: string) {
-	const files: string[] = glob.sync(folderPath + "/**/*", { dot: true, nodir: true });
+	const files: string[] = glob.sync(folderPath + "/**/*", { dot: true, nodir: true })
+		.map(filePath => filePath.replace(/\\/g, "/"));
 	files.forEach(x => fs.unlinkSync(x));
-	const folders: string[] = glob.sync(folderPath + "/**/*", { dot: true });
+	const folders: string[] = glob.sync(folderPath + "/**/*", { dot: true })
+		.map(filePath => filePath.replace(/\\/g, "/"));
 	folders.reverse().forEach(x => fs.rmdirSync(x));
 }
 
@@ -25,8 +27,10 @@ export function filesDiff(
 	transform1?: (val: string) => string,
 	transform2?: (val: string) => string
 ): string[] {
-	let files1: string[] = glob.sync("**/*", {cwd: folderPath1, dot: true, nodir: true });
-	let files2: string[] = glob.sync("**/*", {cwd: folderPath1, dot: true, nodir: true });
+	let files1: string[] = glob.sync("**/*", {cwd: folderPath1, dot: true, nodir: true })
+		.map(filePath => filePath.replace(/\\/g, "/"));
+	let files2: string[] = glob.sync("**/*", {cwd: folderPath1, dot: true, nodir: true })
+		.map(filePath => filePath.replace(/\\/g, "/"));
 	if (transform1) {
 		files1 = files1.map(transform1);
 	}

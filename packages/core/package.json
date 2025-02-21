@@ -1,6 +1,6 @@
 {
   "name": "@igniteui/cli-core",
-  "version": "14.3.13",
+  "version": "14.3.14-beta.10",
   "description": "Base types and functionality for Ignite UI CLI",
   "repository": {
     "type": "git",
@@ -14,7 +14,7 @@
   "dependencies": {
     "@inquirer/prompts": "~5.4.0",
     "chalk": "^2.3.2",
-    "glob": "^7.1.2",
+    "glob": "^11.0.0",
     "through2": "^2.0.3",
     "typescript": "~5.5.4"
   },
