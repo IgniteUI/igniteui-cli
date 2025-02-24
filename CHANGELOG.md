@@ -1,3 +1,10 @@
+# [14.3.14](https://github.com/IgniteUI/igniteui-cli/compare/v14.3.13...v14.3.14) (2025-02-24)
+
+## What's Changed
+* fix: update eslint and fix warnings by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1378
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.3.13...v13.3.14
+
 # [14.3.13](https://github.com/IgniteUI/igniteui-cli/compare/v14.3.12...v14.3.13) (2025-02-07)
 
 ## What's Changed
