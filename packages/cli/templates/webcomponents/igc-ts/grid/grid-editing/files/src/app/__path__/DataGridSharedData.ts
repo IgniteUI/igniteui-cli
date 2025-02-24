@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 export class DataGridSharedData {
   public static getEmployees(count?: number): any[] {
     if (count === undefined) {

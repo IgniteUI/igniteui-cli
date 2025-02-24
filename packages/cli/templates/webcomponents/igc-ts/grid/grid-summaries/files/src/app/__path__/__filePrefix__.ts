@@ -1,10 +1,7 @@
 import { css, html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import 'igniteui-webcomponents-grids/grids/combined';
-import {
-  IgcGridComponent,
-  IgcColumnComponent,
-} from 'igniteui-webcomponents-grids/grids';
+import { IgcGridComponent } from 'igniteui-webcomponents-grids/grids';
 import {
   ComponentRenderer,
   WebGridDescriptionModule,
@@ -46,13 +43,6 @@ export default class $(ClassName) extends LitElement {
   firstUpdated() {
     const grid = this.shadowRoot?.getElementById('grid') as IgcGridComponent;
     const nwindData = NwindData;
-
-    const productID = this.shadowRoot?.getElementById('ProductID') as IgcColumnComponent;
-    const productName = this.shadowRoot?.getElementById('ProductName') as IgcColumnComponent;
-    const unitPrice = this.shadowRoot?.getElementById('UnitPrice') as IgcColumnComponent;
-    const unitsInStock = this.shadowRoot?.getElementById('UnitsInStock') as IgcColumnComponent;
-    const discontinued = this.shadowRoot?.getElementById('Discontinued') as IgcColumnComponent;
-    const orderDate = this.shadowRoot?.getElementById('OrderDate') as IgcColumnComponent;
 
     grid.data = new nwindData();
 

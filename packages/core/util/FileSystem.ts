@@ -30,6 +30,7 @@ export class FsFileSystem implements IFileSystem {
 	}
 
 	public glob(dirPath: string, pattern: string): string[] {
-		return glob.sync(path.join(dirPath, pattern), { nodir: true });
+		return glob.sync(path.join(dirPath, pattern), { nodir: true })
+			.map(filePath => filePath.replace(/\\/g, "/"));
 	}
 }
