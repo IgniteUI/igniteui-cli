@@ -32,4 +32,4 @@ jobs:
     - run: npm i # replace with 'npm ci' after committing lock file from first install
     - run: npm run lint
     - run: npm run build
-    - run: npm run test -- --watch=false --browsers ChromeHeadless
+    - run: NODE_OPTIONS="--max-old-space-size=6000" npm run test -- --watch=false --browsers ChromeHeadless
