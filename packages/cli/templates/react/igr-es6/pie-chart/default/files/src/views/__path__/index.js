@@ -9,7 +9,7 @@ import style from './style.css';
 IgrPieChartModule.register();
 IgrItemLegendModule.register();
 
-const data = [
+const data: any = [
     { MarketShare: 30, Company: "Google", },
     { MarketShare: 15, Company: "Microsoft", },
     { MarketShare: 30, Company: "Apple", },

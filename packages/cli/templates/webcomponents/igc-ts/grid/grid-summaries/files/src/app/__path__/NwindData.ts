@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 export class NwindDataItem {
     public constructor(init: Partial<NwindDataItem>) {
         Object.assign(this, init);

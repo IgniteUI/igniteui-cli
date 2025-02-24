@@ -27,7 +27,7 @@
 		"test": "nyc npm run jasmine",
 		"jasmine": "node spec/jasmine-runner.js",
 		"coverage": "nyc report --report-dir",
-		"lint": "eslint -c .eslintrc.json ./**/*.ts",
+		"lint": "eslint -c eslint.config.mjs ./**/*.ts",
 		"config-schema": "typescript-json-schema packages/core/types/Config.ts Config -o packages/core/config/Config.schema.json"
 	},
 	"nyc": {
@@ -65,9 +65,9 @@
 		"@types/node": "^22.5.5",
 		"@typescript-eslint/eslint-plugin": "^8.21.0",
 		"@typescript-eslint/parser": "^8.21.0",
-		"coveralls-next": "^4.2.1",
 		"browser-sync": "^3.0.3",
-		"eslint": "^8.57.0",
+		"coveralls-next": "^4.2.1",
+		"eslint": "^9.20.0",
 		"eslint-plugin-import": "^2.29.1",
 		"eslint-plugin-prefer-arrow": "^1.2.3",
 		"eslint-plugin-unicorn": "^52.0.0",

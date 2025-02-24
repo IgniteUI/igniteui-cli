@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-export default function NavigationHeader({ routes }) {
+export default function NavigationHeader({ routes }: any) {
   const [state, setState] = useState({ activeItem: null });
 
-  function handleClick(index) {
+  function handleClick(index: any) {
     setState({ activeItem: index });
   }
 
@@ -13,7 +13,7 @@ export default function NavigationHeader({ routes }) {
     if (!currentRoute) {
       currentRoute = '/'
     }
-    const activeItem = routes.findIndex((route) => route.path === currentRoute);
+    const activeItem = routes.findIndex((route: any) => route.path === currentRoute);
     setState({ activeItem });
   }, [routes]);
 
@@ -21,7 +21,7 @@ export default function NavigationHeader({ routes }) {
     <nav>
       <ul>
         {routes.map(
-          (route, i) => <li key={i} className={state.activeItem === i ? 'active' : ''}><Link onClick={() => handleClick(i)} to={route.path}>{route.text}</Link></li>
+          (route: any, i: any) => <li key={i} className={state.activeItem === i ? 'active' : ''}><Link onClick={() => handleClick(i)} to={route.path}>{route.text}</Link></li>
         )}
       </ul>
     </nav>

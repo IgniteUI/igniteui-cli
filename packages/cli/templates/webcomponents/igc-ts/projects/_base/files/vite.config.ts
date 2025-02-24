@@ -18,6 +18,7 @@ export default defineConfig({
     target: 'es2021',
     minify: 'terser',
     emptyOutDir: false,
+    chunkSizeWarningLimit: 10 * 1024 * 1024 // 10 MB
   },
   plugins: [
     /** Copy static assets */
@@ -44,6 +45,9 @@ export default defineConfig({
         ],
         maximumFileSizeToCacheInBytes: 10 * 1024 * 1024 // 10 MB
       },
+      manifest: {
+        theme_color: "#ffffff"
+      }
     }),
   ],
 });

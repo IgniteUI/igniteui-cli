@@ -128,7 +128,7 @@ describe("Add command", () => {
 		await cli.run(["add", "grid", "Test view"]);
 
 		expect(console.error).toHaveBeenCalledWith(
-			jasmine.stringMatching(/test-view[\\\/]index.html already exists!*/)
+			jasmine.stringMatching(/test-view[\\\/]style.css already exists!*/)
 		);
 		expect(fs.readFileSync("./test-view/index.html").toString()).toEqual("test", "Shouldn't overwrite file contents");
 
@@ -137,7 +137,7 @@ describe("Add command", () => {
 		await cli.run(["add", "grid", "test-View"]);
 
 		expect(console.error).toHaveBeenCalledWith(
-			jasmine.stringMatching(/test-view[\\\/]index.html already exists!*/)
+			jasmine.stringMatching(/test-view[\\\/]style.css already exists!*/)
 		);
 		expect(fs.readFileSync("./test-view/index.html").toString()).toEqual("test", "Shouldn't overwrite file contents");
 
@@ -146,7 +146,7 @@ describe("Add command", () => {
 		await cli.run(["add", "grid", "    Test-view  \t "]);
 
 		expect(console.error).toHaveBeenCalledWith(
-			jasmine.stringMatching(/test-view[\\\/]index.html already exists!*/)
+			jasmine.stringMatching(/test-view[\\\/]style.css already exists!*/)
 		);
 		expect(fs.readFileSync("./test-view/index.html").toString()).toEqual("test", "Shouldn't overwrite file contents");
 
