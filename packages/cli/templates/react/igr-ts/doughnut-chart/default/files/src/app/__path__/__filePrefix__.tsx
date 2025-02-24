@@ -24,8 +24,8 @@ const data: any = [
 export default function $(ClassName)() {
   const title = 'Doughnut Chart';
   const [chartData, setChartData] = useState([]);
-  const legendRef = useRef();
-  const chartRef = useRef();
+  const legendRef: any = useRef();
+  const chartRef: any = useRef();
 
   useEffect(() => {
     setChartData(data);
