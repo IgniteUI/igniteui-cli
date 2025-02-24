@@ -16,7 +16,7 @@
     "start": "tsc && concurrently -k -r \"tsc --watch\" \"wds\"",
     "build": "rimraf dist && tsc && node --max-old-space-size=4096 node_modules/vite/bin/vite.js build",
     "start:build": "web-dev-server --root-dir dist --app-index index.html --open",
-    "lint": "eslint \"**/*.{js,ts}\" --ignore-path .gitignore",
+    "lint": "eslint \"**/*.{js,ts}\" --ignore-pattern .gitignore",
     "test": "tsc --project tsconfig.test.json && wtr"
   },
   "dependencies": {
