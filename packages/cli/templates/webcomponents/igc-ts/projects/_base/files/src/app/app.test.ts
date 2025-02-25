@@ -1,5 +1,5 @@
 import { expect } from '@open-wc/testing';
-import { App } from './app.js';
+import App from './app.js';
 
 describe('App', () => {
   it('<app-root> is an instance of App', async () => {
