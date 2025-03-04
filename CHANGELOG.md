@@ -1,3 +1,11 @@
+# [14.3.15](https://github.com/IgniteUI/igniteui-cli/compare/v14.3.14...v14.3.15) (2025-03-04)
+
+## What's Changed
+* chore: update ignite and ng to 19.1; update other packages; by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1382
+* fix test errors by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1379
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.3.14...v14.3.15
+
 # [14.3.14](https://github.com/IgniteUI/igniteui-cli/compare/v14.3.13...v14.3.14) (2025-02-24)
 
 ## What's Changed
