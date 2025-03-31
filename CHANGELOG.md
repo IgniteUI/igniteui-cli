@@ -1,3 +1,13 @@
+# [14.3.16](https://github.com/IgniteUI/igniteui-cli/compare/v14.3.15...v14.3.16) (2025-03-31)
+
+## What's Changed
+* fix(workflows): Do not throw error if github workflows directory does… by @mddragnev in https://github.com/IgniteUI/igniteui-cli/pull/1383
+
+## New Contributors
+* @mddragnev made their first contribution in https://github.com/IgniteUI/igniteui-cli/pull/1383
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.3.15...v14.3.16
+
 # [14.3.15](https://github.com/IgniteUI/igniteui-cli/compare/v14.3.14...v14.3.15) (2025-03-04)
 
 ## What's Changed
