@@ -208,10 +208,12 @@ function updateWorkflows(
 
 	for (const fileName of workflowFiles) {
 		const workflowPath = `.github/workflows/${fileName}`;
-		let workflow = fs.readFile(workflowPath);
-		if (workflow) {
-			workflow = workflow.replace(oldNpmInstall, newNpmInstall);
-			fs.writeFile(workflowPath, workflow);
+		if (fs.fileExists(workflowPath)) {
+			let workflow = fs.readFile(workflowPath);
+			if (workflow) {
+				workflow = workflow.replace(oldNpmInstall, newNpmInstall);
+				fs.writeFile(workflowPath, workflow);
+			}
 		}
 	}
 }
