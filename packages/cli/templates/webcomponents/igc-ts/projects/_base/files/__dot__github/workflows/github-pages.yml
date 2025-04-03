@@ -41,8 +41,6 @@ jobs:
         sed -i 's|<base href="[^"]*">|<base href="/${{ github.event.repository.name }}/">|' ./dist/index.html
     - name: Update Resource Paths
       run: find ./dist -maxdepth 1 -type f ! -name 'sw*.js' ! -name 'workbox*.js' -name '*.js' -exec sed -i -e "s|/src/assets|/${{ github.event.repository.name }}/src/assets|g" -e "s|url('/src/assets|url('/${{ github.event.repository.name }}/src/assets|g" {} +
-    - name: Copy ig-theme.css to dist
-      run: cp ./ig-theme.css ./dist/
     - name: Update href Paths for ig-theme.css
       run: |
         find ./dist -type f -exec sed -i "s|href='../../ig-theme.css'|href='../../${{ github.event.repository.name }}/ig-theme.css'|g" {} +;

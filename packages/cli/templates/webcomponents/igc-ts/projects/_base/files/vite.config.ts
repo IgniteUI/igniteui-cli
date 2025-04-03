@@ -1,6 +1,12 @@
 import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
+import fs from 'fs';
+
+const gridMaterialCssPath = [
+  'node_modules/igniteui-webcomponents-grids/grids/themes/light/material.css',
+  'node_modules/@infragistics/igniteui-webcomponents-grids/grids/themes/light/material.css'
+].find(fs.existsSync) || null;
 
 export default defineConfig({
   build: {
@@ -21,10 +27,21 @@ export default defineConfig({
     chunkSizeWarningLimit: 10 * 1024 * 1024 // 10 MB
   },
   plugins: [
+    {
+      name: 'replace-grid-material-css-path',
+      apply: 'build',
+      transform(code, id) {
+        if (gridMaterialCssPath && id.endsWith('.js')) {
+          return code.replace(gridMaterialCssPath, '../../material.css');
+        }
+      }
+    },
     /** Copy static assets */
     viteStaticCopy({
       targets: [
         { src: 'src/assets', dest: 'src' },
+        { src: 'ig-theme.css', dest: '' },
+        ...(gridMaterialCssPath ? [{ src: gridMaterialCssPath, dest: '' }] : [])
       ],
       silent: true,
     }),
