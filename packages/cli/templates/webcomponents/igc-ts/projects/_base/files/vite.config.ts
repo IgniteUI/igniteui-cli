@@ -2,11 +2,17 @@ import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 import fs from 'fs';
+import path from 'path';
 
-const gridMaterialCssPath = [
-  'node_modules/igniteui-webcomponents-grids/grids/themes/light/material.css',
-  'node_modules/@infragistics/igniteui-webcomponents-grids/grids/themes/light/material.css'
-].find(fs.existsSync) || null;
+const themeColors = ["light", "dark"];
+const themeTypes = ["material", "bootstrap", "indigo", "fluent"];
+const basePaths = [
+  "node_modules/igniteui-webcomponents-grids/grids/themes",
+  "node_modules/@infragistics/igniteui-webcomponents-grids/grids/themes"
+];
+const themeFiles = themeColors.flatMap(color =>
+  themeTypes.flatMap(theme => basePaths.map(basePath => `${basePath}/${color}/${theme}.css`))
+).filter(fs.existsSync);
 
 export default defineConfig({
   build: {
@@ -31,8 +37,9 @@ export default defineConfig({
       name: 'replace-grid-material-css-path',
       apply: 'build',
       transform(code, id) {
-        if (gridMaterialCssPath && id.endsWith('.js')) {
-          return code.replace(gridMaterialCssPath, '../../material.css');
+        if (id.endsWith('.js')) {
+          themeFiles.forEach(t => { code = code.replaceAll(t, `../../${path.basename(t)}`); });
+          return code;
         }
       }
     },
@@ -41,7 +48,7 @@ export default defineConfig({
       targets: [
         { src: 'src/assets', dest: 'src' },
         { src: 'ig-theme.css', dest: '' },
-        ...(gridMaterialCssPath ? [{ src: gridMaterialCssPath, dest: '' }] : [])
+        ...themeFiles.map(themePath => ({ src: themePath, dest: '' }))
       ],
       silent: true,
     }),
