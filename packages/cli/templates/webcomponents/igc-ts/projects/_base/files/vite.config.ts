@@ -34,7 +34,7 @@ export default defineConfig({
   },
   plugins: [
     {
-      name: 'replace-grid-material-css-path',
+      name: 'replace-grid-css-paths',
       apply: 'build',
       transform(code, id) {
         if (id.endsWith('.js')) {
