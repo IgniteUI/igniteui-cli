@@ -1,3 +1,12 @@
+# [14.3.17](https://github.com/IgniteUI/igniteui-cli/compare/v14.3.16...v14.3.17) (2025-04-09)
+
+## What's Changed
+* fix(WC): update themes import paths to licensed version by @mddragnev in https://github.com/IgniteUI/igniteui-cli/pull/1387
+* build(deps): bump axios from 1.7.9 to 1.8.4 by @dependabot in https://github.com/IgniteUI/igniteui-cli/pull/1384
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.3.16...v14.3.17
+
+
 # [14.3.16](https://github.com/IgniteUI/igniteui-cli/compare/v14.3.15...v14.3.16) (2025-03-31)
 
 ## What's Changed
