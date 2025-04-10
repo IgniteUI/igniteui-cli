@@ -13,6 +13,7 @@ export async function updateWorkspace(rootPath: string): Promise<boolean> {
 	let guideLink = "";
 	let logicFilesExtension = "";
 	let styleExtensions = [];
+	let shouldUpgradeHTML = false;
 
 	const config = ProjectConfig.getConfig();
 	const framework = config.project.framework;
@@ -31,6 +32,7 @@ export async function updateWorkspace(rootPath: string): Promise<boolean> {
 		case "webcomponents":
 			guideLink = "https://www.infragistics.com/products/ignite-ui-web-components/web-components/components/general-licensing";
 			logicFilesExtension = "ts";
+			shouldUpgradeHTML = true;
 			break;
 		default:
 			break;
@@ -61,7 +63,15 @@ export async function updateWorkspace(rootPath: string): Promise<boolean> {
 	const logicFiles = [];
 	const styleFiles = [];
 	const pkgJsonFiles = [];
+	const htmlFiles = [];
 	pkgJsonFiles.push(...fs.glob(rootPath, `package.json`, ['node_modules', 'dist']));
+
+	if (shouldUpgradeHTML) {
+		const filePaths = fs.glob(rootPath, `*.html`, ['node_modules', 'dist']);
+		if (filePaths && filePaths.length > 0) {
+			htmlFiles.push(...filePaths);
+		}
+	}
 
 	let workspaceConfig = null;
 	switch (framework.toLowerCase()) {
@@ -106,6 +116,9 @@ export async function updateWorkspace(rootPath: string): Promise<boolean> {
 	}
 
 	updateFileImports(logicFiles, styleFiles, upgradeable, fs);
+	if (shouldUpgradeHTML) {
+		updateHTMLImports(htmlFiles, upgradeable, fs);
+	}
 	updatePackageJsonFiles(pkgJsonFiles, upgradeable, fs);
 	createNpmrc(rootPath, fs);
 	updateWorkflows(fs);
@@ -149,8 +162,11 @@ function updateFileImports(
 		let fileChange = false;
 		for (const packageDef of packageDefs) {
 			if (fileContent.includes(packageDef.trial)) {
-				const newContent = updateFileContent(fileContent,
-					createExpressions(RegularExpressionType.LOGIC, packageDef.trial), packageDef.licensed);
+				// Because when including a theme inside a WC render method we need to update its import path too #1386
+				const regExpressions = [...createExpressions(RegularExpressionType.LOGIC, packageDef.trial),
+					...createExpressions(RegularExpressionType.STYLE, packageDef.trial)
+				]
+				const newContent = updateFileContent(fileContent, regExpressions, packageDef.licensed);
 				fileChange = fileContent !== newContent;
 				fileContent = newContent;
 			}
@@ -229,5 +245,23 @@ function createNpmrc(
 //packages.infragistics.com/npm/js-licensed/:always-auth=true
 `;
 		fs.writeFile(npmrcPath, fileContent);
+	}
+}
+
+function updateHTMLImports(htmlFiles: string[], packageDefs: PackageDefinition[], fs: IFileSystem): void {
+	for (const file of htmlFiles) {
+		let fileContent = fs.readFile(file);
+		let fileChange = false;
+		for (const packageDef of packageDefs) {
+			if (fileContent.includes(packageDef.trial)) {
+				const newContent = updateFileContent(fileContent,
+					createExpressions(RegularExpressionType.STYLE, packageDef.trial), packageDef.licensed);
+				fileChange = fileContent !== newContent;
+				fileContent = newContent;
+			}
+		}
+		if (fileChange) {
+			fs.writeFile(file, fileContent);
+		}
 	}
 }

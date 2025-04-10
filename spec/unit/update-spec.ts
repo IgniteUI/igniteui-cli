@@ -806,6 +806,7 @@ export default function Home() {
 			(fsSpy.fileExists as jasmine.Spy).and.returnValue(true);
 			(fsSpy.glob as jasmine.Spy).and.returnValues // per workspace
 				([ "package.json" ], // root package.json
+				[], //index.html
 				[], // logic files
 				[ "./project/package.json" ]); // inner package.json files
 			(fsSpy.readFile as jasmine.Spy).and.callFake((filePath: string) => {
@@ -827,7 +828,7 @@ export default function Home() {
 				}
 			}));
 			expect(fsSpy.writeFile).toHaveBeenCalledTimes(2);
-			expect(fsSpy.glob).toHaveBeenCalledTimes(3);
+			expect(fsSpy.glob).toHaveBeenCalledTimes(4);
 		});
 
 		it("Should update import paths in files correctly", async () => {
@@ -839,6 +840,7 @@ export default function Home() {
   "dependencies": {
     "igniteui-webcomponents": "^4.7.0",
     "igniteui-webcomponents-core": "^4.7.0",
+    "igniteui-webcomponents-grids": "^4.7.0",
     "igniteui-dockmanager": "^1.0.0",
     "some-package": "^0.0.0"
   }
@@ -849,6 +851,7 @@ export default function Home() {
   "dependencies": {
     "@infragistics/igniteui-dockmanager": "^1.0.0",
     "@infragistics/igniteui-webcomponents-core": "^4.7.0",
+    "@infragistics/igniteui-webcomponents-grids": "^4.7.0",
     "igniteui-webcomponents": "^4.7.0",
     "some-package": "^0.0.0"
   }
@@ -874,7 +877,8 @@ import { ModuleManager } from '@infragistics/igniteui-webcomponents-core';
 
 export default class App extends LitElement {
 	const title = 'igniteui-webcomponents example';
-}`}, {
+}`},
+{
 				path: ".github/workflows/node.js.yml",
 				content:
 `# start content
@@ -903,9 +907,48 @@ export default class App extends LitElement {
     - run: echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
     - run: npm i # replace with 'npm ci' after committing lock file from first install
 # end content
-`}];
+`},
+{
+	path: "index.html",
+	content:
+	`<!doctype html>
+<html lang="en-GB">
+<head>
+	<meta charset="utf-8">
+	<base href="/">
+	<title>Ignite UI for Web Components</title>
+	<link rel="stylesheet" href="./node_modules/igniteui-webcomponents-grids/grids/themes/light/bootstrap.css">
+	<link rel="stylesheet" href="./styles.css">
+</head>
+<body class="ig-scrollbar">
+	<app-root></app-root>
+
+	<script type="module" src="./dist/src/index.js"></script>
+</body>
+</html>
+	`,
+	expected:
+	`<!doctype html>
+<html lang="en-GB">
+<head>
+	<meta charset="utf-8">
+	<base href="/">
+	<title>Ignite UI for Web Components</title>
+	<link rel="stylesheet" href="./node_modules/@infragistics/igniteui-webcomponents-grids/grids/themes/light/bootstrap.css">
+	<link rel="stylesheet" href="./styles.css">
+</head>
+<body class="ig-scrollbar">
+	<app-root></app-root>
+
+	<script type="module" src="./dist/src/index.js"></script>
+</body>
+</html>
+	`
+
+},];
 			(fsSpy.glob as jasmine.Spy).and.returnValues // per workspace
 				([ "package.json" ], // root package.json
+				["index.html"], // html file
 				["src/app.ts"], // logic files
 				[]); // inner package.json files
 			(fsSpy.readFile as jasmine.Spy).and.callFake((filePath: string) => {
@@ -921,7 +964,7 @@ export default class App extends LitElement {
 			for (const fileEntry of mockFileArray) {
 				expect((fsSpy.writeFile as jasmine.Spy)).toHaveBeenCalledWith(fileEntry.path, fileEntry.expected);
 			}
-			expect(fsSpy.glob).toHaveBeenCalledTimes(3);
+			expect(fsSpy.glob).toHaveBeenCalledTimes(4);
 		});
 
 		it("Should update package.json files from workspaces", async () => {
@@ -1012,6 +1055,7 @@ export default class App extends LitElement {
 			(fsSpy.fileExists as jasmine.Spy).and.returnValue(true);
 			(fsSpy.glob as jasmine.Spy).and.returnValues // per workspace
 				([ "package.json" ], // root package.json
+				[], //index.html
 				[], // projectA logic files
 				[ "./projectA/package.json" ], // projectA package.json
 				[], // projectB logic files
@@ -1031,7 +1075,7 @@ export default class App extends LitElement {
 			for (const fileEntry of mockFileArray) {
 				expect((fsSpy.writeFile as jasmine.Spy)).toHaveBeenCalledWith(fileEntry.path, fileEntry.expected);
 			}
-			expect(fsSpy.glob).toHaveBeenCalledTimes(5);
+			expect(fsSpy.glob).toHaveBeenCalledTimes(6);
 		});
 	});
 });
