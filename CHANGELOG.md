@@ -1,3 +1,10 @@
+# [14.3.18](https://github.com/IgniteUI/igniteui-cli/compare/v14.3.17...v14.3.18) (2025-04-11)
+
+## What's Changed
+* fix: add missing static css files for WC by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1385
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.3.17...v14.3.18
+
 # [14.3.17](https://github.com/IgniteUI/igniteui-cli/compare/v14.3.16...v14.3.17) (2025-04-09)
 
 ## What's Changed
