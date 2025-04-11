@@ -13,7 +13,7 @@
     "./$(dashName).js": "./dist/src/$(dashName).js"
   },
   "scripts": {
-    "start": "tsc && concurrently -k -r \"tsc --watch\" \"wds\"",
+    "start": "concurrently -k -r \"tsc --watch\" \"vite\"",
     "build": "rimraf dist && tsc && node --max-old-space-size=4096 node_modules/vite/bin/vite.js build",
     "start:build": "web-dev-server --root-dir dist --app-index index.html --open",
     "lint": "eslint \"**/*.{js,ts}\" --ignore-pattern .gitignore",
