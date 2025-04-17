@@ -1,3 +1,10 @@
+# [14.4.0](https://github.com/IgniteUI/igniteui-cli/compare/v14.3.18...v14.4.0) (2025-04-17)
+
+## What's Changed
+* chore(igx-templates): bump to ng 19.2.0 by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1392
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.3.18...v14.4.0
+
 # [14.3.18](https://github.com/IgniteUI/igniteui-cli/compare/v14.3.17...v14.3.18) (2025-04-11)
 
 ## What's Changed
