@@ -1,3 +1,10 @@
+# [14.4.1](https://github.com/IgniteUI/igniteui-cli/compare/v14.4.0...v14.4.1) (2025-04-23)
+
+## What's Changed
+* chore(wc): update igniteui-cli reference in igniteui-webcomponents packages
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.4.0...v14.4.1
+
 # [14.4.0](https://github.com/IgniteUI/igniteui-cli/compare/v14.3.18...v14.4.0) (2025-04-17)
 
 ## What's Changed
