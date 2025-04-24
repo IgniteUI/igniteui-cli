@@ -11,8 +11,8 @@ class IgcPieChartTemplate extends IgniteUIForWebComponentsTemplate {
 		this.name = "Pie Chart";
 		this.description = "IgcPieChart with local data";
 		this.packages = [
-			"igniteui-webcomponents-core@~5.0.0",
-			"igniteui-webcomponents-charts@~5.0.0"
+			"igniteui-webcomponents-core@~5.4.0",
+			"igniteui-webcomponents-charts@~5.4.0"
 		];
 	}
 }
