@@ -11,8 +11,8 @@ class IgcradialGaugeTemplate extends IgniteUIForWebComponentsTemplate {
 		this.name = "Radial Gauge";
 		this.description = "IgcRadialGauge";
 		this.packages = [
-			"igniteui-webcomponents-core@~5.0.0",
-			"igniteui-webcomponents-gauges@~5.0.0"
+			"igniteui-webcomponents-core@~5.4.0",
+			"igniteui-webcomponents-gauges@~5.4.0"
 		];
 	}
 }

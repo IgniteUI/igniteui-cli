@@ -23,7 +23,7 @@
     "@vaadin/router": "^1.7.4",
     "lit": "^3.2.1",
     "typescript": "~5.7.2",
-    "igniteui-webcomponents": "~5.1.0"
+    "igniteui-webcomponents": "~5.4.0"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.20.2",
