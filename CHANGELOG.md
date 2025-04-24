@@ -1,3 +1,10 @@
+# [14.4.2](https://github.com/IgniteUI/igniteui-cli/compare/v14.4.1...v14.4.2) (2025-04-24)
+
+## What's Changed
+* chore: update to latest wc package by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1394
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.4.1...v14.4.2
+
 # [14.4.1](https://github.com/IgniteUI/igniteui-cli/compare/v14.4.0...v14.4.1) (2025-04-23)
 
 ## What's Changed
