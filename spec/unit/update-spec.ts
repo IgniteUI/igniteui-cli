@@ -504,6 +504,7 @@ title = 'igniteui-angular example';
 			(fsSpy.fileExists as jasmine.Spy).and.returnValue(true);
 			(fsSpy.glob as jasmine.Spy).and.returnValues // per workspace
 				([ "package.json" ], // root package.json
+				[], // html files
 				[], // logic files
 				[], // for each style extension
 				[]); // inner package.json files
@@ -525,7 +526,7 @@ title = 'igniteui-angular example';
 				}
 			}));
 			expect(fsSpy.writeFile).toHaveBeenCalledTimes(1);
-			expect(fsSpy.glob).toHaveBeenCalledTimes(4);
+			expect(fsSpy.glob).toHaveBeenCalledTimes(5);
 		});
 
 		it("Should update import paths in files correctly", async () => {
@@ -609,9 +610,55 @@ export default function Home() {
     - run: echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
     - run: npm i # replace with 'npm ci' after committing lock file from first install
 # end content
-`}];
+`},
+{
+	path: "index.html",
+	content:
+	`<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<meta
+		name="viewport"
+		content="width=device-width, initial-scale=1, shrink-to-fit=no"
+		/>
+		<meta name="theme-color" content="#000000" />
+		<title>IgniteUI for React</title>
+		<link rel="stylesheet" href="./styles.css" />
+		<link rel="stylesheet"
+		href="node_modules/igniteui-react-grids/grids/themes/light/bootstrap.css"
+	</head>
+	<body>
+		<div id="root"></div>
+	</body>
+	<script type="module" src="/src/main.tsx"></script>
+	</html>`,
+	expected:
+	`<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<meta
+		name="viewport"
+		content="width=device-width, initial-scale=1, shrink-to-fit=no"
+		/>
+		<meta name="theme-color" content="#000000" />
+		<title>IgniteUI for React</title>
+		<link rel="stylesheet" href="./styles.css" />
+		<link rel="stylesheet"
+		href="node_modules/@infragistics/igniteui-react-grids/grids/themes/light/bootstrap.css"
+	</head>
+	<body>
+		<div id="root"></div>
+	</body>
+	<script type="module" src="/src/main.tsx"></script>
+	</html>`
+},];
 			(fsSpy.glob as jasmine.Spy).and.returnValues // per workspace
 				([ "package.json" ], // root package.json
+				["index.html"], // html file
 				[ "src/home.tsx" ], // logic files
 				[], // for each style extension
 				[]); // inner package.json files
@@ -628,7 +675,7 @@ export default function Home() {
 			for (const fileEntry of mockFileArray) {
 				expect((fsSpy.writeFile as jasmine.Spy)).toHaveBeenCalledWith(fileEntry.path, fileEntry.expected);
 			}
-			expect(fsSpy.glob).toHaveBeenCalledTimes(4);
+			expect(fsSpy.glob).toHaveBeenCalledTimes(5);
 		});
 
 		it("Should update package.json files from workspaces", async () => {
@@ -719,6 +766,7 @@ export default function Home() {
 			(fsSpy.fileExists as jasmine.Spy).and.returnValue(true);
 			(fsSpy.glob as jasmine.Spy).and.returnValues // per workspace
 				([ "package.json" ], // root package.json
+				[], // index.html
 				[], // projectA logic files
 				[], // projectA for each style extension
 				[ "./projectA/package.json" ], // projectA package.json
@@ -740,7 +788,7 @@ export default function Home() {
 			for (const fileEntry of mockFileArray) {
 				expect((fsSpy.writeFile as jasmine.Spy)).toHaveBeenCalledWith(fileEntry.path, fileEntry.expected);
 			}
-			expect(fsSpy.glob).toHaveBeenCalledTimes(7);
+			expect(fsSpy.glob).toHaveBeenCalledTimes(8);
 		});
 	});
 
