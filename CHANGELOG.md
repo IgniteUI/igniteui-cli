@@ -1,3 +1,10 @@
+# [14.4.3](https://github.com/IgniteUI/igniteui-cli/compare/v14.4.2...v14.4.3) (2025-04-25)
+
+## What's Changed
+* feat(React): Update react html files with licensed packages when upgr… by @mddragnev in https://github.com/IgniteUI/igniteui-cli/pull/1395
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.4.2...v14.4.3
+
 # [14.4.2](https://github.com/IgniteUI/igniteui-cli/compare/v14.4.1...v14.4.2) (2025-04-24)
 
 ## What's Changed
