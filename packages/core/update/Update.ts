@@ -122,7 +122,8 @@ export async function updateWorkspace(rootPath: string): Promise<boolean> {
 	}
 	updatePackageJsonFiles(pkgJsonFiles, upgradeable, fs);
 	createNpmrc(rootPath, fs);
-	updateWorkflows(fs);
+	updateGithubWorkflows(fs);
+	updateAzureWorkflows(fs);
 
 	return true;
 }
@@ -213,26 +214,52 @@ function updatePackageJsonFiles(
 }
 
 function updateWorkflows(
-	fs: IFileSystem
+	fs: IFileSystem,
+	basePath: string,
+	workflowFiles: string[],
+	oldInstallCmd: string,
+	newInstallCmd: string
 ): void {
-	const workflowFiles = ["node.js.yml", "github-pages.yml"];
-	const oldNpmInstall = "- run: npm i # replace with 'npm ci' after committing lock file from first install";
-	const newNpmInstall =
-`- run: echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
-    - run: echo "//packages.infragistics.com/npm/js-licensed/:_auth=\${{ secrets.NPM_AUTH_TOKEN }}" >> ~/.npmrc
-    - run: echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
-    - run: npm i # replace with 'npm ci' after committing lock file from first install`;
-
 	for (const fileName of workflowFiles) {
-		const workflowPath = `.github/workflows/${fileName}`;
+		const workflowPath = `${basePath}/${fileName}`;
 		if (fs.fileExists(workflowPath)) {
 			let workflow = fs.readFile(workflowPath);
 			if (workflow) {
-				workflow = workflow.replace(oldNpmInstall, newNpmInstall);
+				workflow = workflow.replace(oldInstallCmd, newInstallCmd);
 				fs.writeFile(workflowPath, workflow);
 			}
 		}
 	}
+}
+
+function updateGithubWorkflows(fs: IFileSystem): void {
+	updateWorkflows(
+		fs,
+		".github/workflows",
+		["node.js.yml", "github-pages.yml"],
+		"- run: npm i # replace with 'npm ci' after committing lock file from first install",
+		`- run: echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
+    - run: echo "//packages.infragistics.com/npm/js-licensed/:_auth=\${{ secrets.NPM_AUTH_TOKEN }}" >> ~/.npmrc
+    - run: echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
+    - run: npm i # replace with 'npm ci' after committing lock file from first install`
+	);
+}
+
+function updateAzureWorkflows(fs: IFileSystem): void {
+	updateWorkflows(
+		fs,
+		".azure/workflows",
+		["azure-pipelines.yml"],
+		"- script: npm i # replace with 'npm ci' after committing lock file from first install",
+		`- script: |
+      echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
+      echo "//packages.infragistics.com/npm/js-licensed/:_auth=$NPM_AUTH_TOKEN" >> ~/.npmrc
+      echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
+    displayName: 'Authenticate'
+    env:
+      NPM_AUTH_TOKEN: $(NPM_AUTH_TOKEN)
+    - script: npm i # replace with 'npm ci' after committing lock file from first install`
+	);
 }
 
 function createNpmrc(
