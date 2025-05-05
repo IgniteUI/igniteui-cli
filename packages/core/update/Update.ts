@@ -122,8 +122,7 @@ export async function updateWorkspace(rootPath: string): Promise<boolean> {
 	}
 	updatePackageJsonFiles(pkgJsonFiles, upgradeable, fs);
 	createNpmrc(rootPath, fs);
-	updateGithubWorkflows(fs);
-	updateAzureWorkflows(fs);
+	updateWorkflows(fs);
 
 	return true;
 }
@@ -213,53 +212,51 @@ function updatePackageJsonFiles(
 	}
 }
 
-function updateWorkflows(
-	fs: IFileSystem,
-	basePath: string,
-	workflowFiles: string[],
-	oldInstallCmd: string,
-	newInstallCmd: string
-): void {
-	for (const fileName of workflowFiles) {
-		const workflowPath = `${basePath}/${fileName}`;
-		if (fs.fileExists(workflowPath)) {
-			let workflow = fs.readFile(workflowPath);
-			if (workflow) {
-				workflow = workflow.replace(oldInstallCmd, newInstallCmd);
-				fs.writeFile(workflowPath, workflow);
-			}
-		}
-	}
-}
+function updateWorkflows(fs: IFileSystem): void {
+	type WorkflowGroup = {
+		basePath: string;
+		files: string[];
+		oldCmd: string;
+		newCmd: string;
+	};
 
-function updateGithubWorkflows(fs: IFileSystem): void {
-	updateWorkflows(
-		fs,
-		".github/workflows",
-		["node.js.yml", "github-pages.yml"],
-		"- run: npm i # replace with 'npm ci' after committing lock file from first install",
-		`- run: echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
+	const workflowGroups: WorkflowGroup[] = [
+		{
+			basePath: ".github/workflows",
+			files: ["node.js.yml", "github-pages.yml"],
+			oldCmd: "- run: npm i # replace with 'npm ci' after committing lock file from first install",
+			newCmd: `- run: echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
     - run: echo "//packages.infragistics.com/npm/js-licensed/:_auth=\${{ secrets.NPM_AUTH_TOKEN }}" >> ~/.npmrc
     - run: echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
     - run: npm i # replace with 'npm ci' after committing lock file from first install`
-	);
-}
-
-function updateAzureWorkflows(fs: IFileSystem): void {
-	updateWorkflows(
-		fs,
-		".azure/workflows",
-		["azure-pipelines.yml"],
-		"- script: npm i # replace with 'npm ci' after committing lock file from first install",
-		`- script: |
-      echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
-      echo "//packages.infragistics.com/npm/js-licensed/:_auth=$NPM_AUTH_TOKEN" >> ~/.npmrc
-      echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
-    displayName: 'Authenticate'
-    env:
-      NPM_AUTH_TOKEN: $(NPM_AUTH_TOKEN)
+		},
+		{
+			basePath: ".azure/workflows",
+			files: ["azure-pipelines.yml"],
+			oldCmd: "- script: npm i # replace with 'npm ci' after committing lock file from first install",
+			newCmd: `- script: |
+        echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
+        echo "//packages.infragistics.com/npm/js-licensed/:_auth=$NPM_AUTH_TOKEN" >> ~/.npmrc
+        echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
+      displayName: 'Authenticate'
+      env:
+        NPM_AUTH_TOKEN: $(NPM_AUTH_TOKEN)
     - script: npm i # replace with 'npm ci' after committing lock file from first install`
-	);
+		}
+	];
+
+	for (const group of workflowGroups) {
+		for (const file of group.files) {
+			const path = `${group.basePath}/${file}`;
+			if (fs.fileExists(path)) {
+				let content = fs.readFile(path);
+				if (content?.includes(group.oldCmd)) {
+					content = content.replace(group.oldCmd, group.newCmd);
+					fs.writeFile(path, content);
+				}
+			}
+		}
+	}
 }
 
 function createNpmrc(
