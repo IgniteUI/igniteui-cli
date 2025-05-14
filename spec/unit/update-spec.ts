@@ -308,6 +308,25 @@ title = 'igniteui-angular example';
     - run: echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
     - run: npm i # replace with 'npm ci' after committing lock file from first install
 # end content
+`},
+{
+				path: ".azure/workflows/azure-pipelines.yml",
+				content:
+`# start content
+    - script: npm i # replace with 'npm ci' after committing lock file from first install
+# end content
+`,
+				expected:
+`# start content
+    - script: |
+        echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
+        echo "//packages.infragistics.com/npm/js-licensed/:_auth=$NPM_AUTH_TOKEN" >> ~/.npmrc
+        echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
+      displayName: 'Authenticate'
+      env:
+        NPM_AUTH_TOKEN: $(NPM_AUTH_TOKEN)
+    - script: npm i # replace with 'npm ci' after committing lock file from first install
+# end content
 `}];
 			(fsSpy.glob as jasmine.Spy).and.returnValues // per workspace
 				([ "package.json" ], // root package.json
@@ -612,6 +631,25 @@ export default function Home() {
 # end content
 `},
 {
+				path: ".azure/workflows/azure-pipelines.yml",
+				content:
+`# start content
+    - script: npm i # replace with 'npm ci' after committing lock file from first install
+# end content
+`,
+				expected:
+`# start content
+    - script: |
+        echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
+        echo "//packages.infragistics.com/npm/js-licensed/:_auth=$NPM_AUTH_TOKEN" >> ~/.npmrc
+        echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
+      displayName: 'Authenticate'
+      env:
+        NPM_AUTH_TOKEN: $(NPM_AUTH_TOKEN)
+    - script: npm i # replace with 'npm ci' after committing lock file from first install
+# end content
+`},
+{
 	path: "index.html",
 	content:
 	`<!DOCTYPE html>
@@ -655,7 +693,7 @@ export default function Home() {
 	</body>
 	<script type="module" src="/src/main.tsx"></script>
 	</html>`
-},];
+}];
 			(fsSpy.glob as jasmine.Spy).and.returnValues // per workspace
 				([ "package.json" ], // root package.json
 				["index.html"], // html file
@@ -954,6 +992,25 @@ export default class App extends LitElement {
     - run: echo "//packages.infragistics.com/npm/js-licensed/:_auth=\${{ secrets.NPM_AUTH_TOKEN }}" >> ~/.npmrc
     - run: echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
     - run: npm i # replace with 'npm ci' after committing lock file from first install
+# end content
+`},
+{
+				path: ".azure/workflows/azure-pipelines.yml",
+				content:
+`# start content
+    - script: npm i # replace with 'npm ci' after committing lock file from first install
+# end content
+`,
+				expected:
+`# start content
+    - script: |
+        echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
+        echo "//packages.infragistics.com/npm/js-licensed/:_auth=$NPM_AUTH_TOKEN" >> ~/.npmrc
+        echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
+      displayName: 'Authenticate'
+      env:
+        NPM_AUTH_TOKEN: $(NPM_AUTH_TOKEN)
+    - script: npm i # replace with 'npm ci' after committing lock file from first install
 # end content
 `},
 {

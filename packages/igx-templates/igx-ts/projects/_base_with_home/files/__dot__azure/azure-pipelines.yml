@@ -1,0 +1,23 @@
+name: Azure CI
+
+trigger:
+  branches:
+    include: [ <%=yamlDefaultBranch%> ]
+
+pr:
+  branches:
+    include: [ <%=yamlDefaultBranch%> ]
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+  - script: npm i # replace with 'npm ci' after committing lock file from first install
+    displayName: 'Install dependencies'
+  - script: npm run lint
+    displayName: 'Run linter'
+    continueOnError: true
+  - script: npm run build
+    displayName: 'Build the project'
+  - script: npm run test -- --watch=false --browsers ChromeHeadless
+    displayName: 'Run tests'
