@@ -1,4 +1,4 @@
-import { expect } from '@open-wc/testing';
+import { describe, it, expect } from 'vitest';
 import { HomeComponent } from './home.js';
 
 describe('HomeComponent', () => {

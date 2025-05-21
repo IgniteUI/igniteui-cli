@@ -5,7 +5,8 @@
     "outDir": "test"
   },
   "exclude": [
-    "dist"
+    "dist",
+    "test"
   ],
   "include": [
     "**/*.ts"

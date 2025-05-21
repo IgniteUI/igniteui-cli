@@ -20,6 +20,10 @@ export default defineConfig({
     emptyOutDir: false,
     chunkSizeWarningLimit: 10 * 1024 * 1024 // 10 MB
   },
+  test: {
+    environment: 'jsdom',
+    include: ['test/src/app/**/*.test.js']
+  },
   plugins: [
     /** Copy static assets */
     viteStaticCopy({
