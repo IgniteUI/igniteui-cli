@@ -1,0 +1,8 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": false,
+    "source.fixAll.eslint": true
+  },
+  "typescript.format.enable": true,
+  "typescript.preferences.importModuleSpecifier": "relative"
+}
