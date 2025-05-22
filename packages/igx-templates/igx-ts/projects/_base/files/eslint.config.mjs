@@ -20,7 +20,9 @@ export default [
       '@angular-eslint/component-selector': [
         'error',
         { type: 'element', prefix: 'app', style: 'kebab-case' },
-      ]
+      ],
+	  'sort-imports': 'off',
+  	  'import/order': 'off'
     },
   },
   ...compat.extends('plugin:@angular-eslint/template/recommended'),

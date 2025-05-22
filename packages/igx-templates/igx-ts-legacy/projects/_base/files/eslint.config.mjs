@@ -21,7 +21,9 @@ export default [
         'error',
         { type: 'element', prefix: 'app', style: 'kebab-case' },
       ],
-      '@angular-eslint/prefer-standalone': 'off'
+      '@angular-eslint/prefer-standalone': 'off',
+	  'sort-imports': 'off',
+  	  'import/order': 'off'
     },
   },
   ...compat.extends('plugin:@angular-eslint/template/recommended'),
