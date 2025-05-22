@@ -21,7 +21,7 @@ export default function $(ClassName)() {
       </div>
       <div className={style.container}>
         <div className={style.grid}>
-          <IgrGrid autoGenerate="false" data={data}>
+          <IgrGrid autoGenerate={false} data={data}>
             <IgrColumn
               field="ProductID"
               header="Product ID"
@@ -50,7 +50,7 @@ export default function $(ClassName)() {
           </IgrGrid>
         </div>
         <div className={style.grid}>
-          <IgrGrid autoGenerate="true" data={data} />
+          <IgrGrid autoGenerate={true} data={data} />
         </div>
       </div>
     </div>
