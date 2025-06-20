@@ -10,7 +10,7 @@ class IgrTsBulletGraphTemplate extends IgniteUIForReactTemplate {
 		this.projectType = "igr-ts";
 		this.name = "Bullet Graph";
 		this.description = `allows for a linear and concise view of measures compared against a scale.`;
-		this.packages = ["igniteui-react-gauges@~19.0.0-alpha.1"];
+		this.packages = ["igniteui-react-gauges@~19.0.0"];
 	}
 }
 module.exports = new IgrTsBulletGraphTemplate();
