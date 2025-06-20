@@ -1,3 +1,21 @@
+# [14.5.0](https://github.com/IgniteUI/igniteui-cli/compare/v14.4.4...v14.5.0) (2025-06-05)
+
+🎉 This update includes:
+
+- `igniteui-angular` version [20.0.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/20.0.0).
+
+## What's Changed
+* chore: update ng templates with 20 by @lipata in https://github.com/IgniteUI/igniteui-cli/pull/1401
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.4.4...v14.5.0
+
+# [14.4.4](https://github.com/IgniteUI/igniteui-cli/compare/v14.4.3...v14.4.4) (2025-05-21)
+
+## What's Changed
+* feat: add azure pipelines yaml files for angular, react and wc templates by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1396
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.4.3...v14.4.4
+
 # [14.4.3](https://github.com/IgniteUI/igniteui-cli/compare/v14.4.2...v14.4.3) (2025-04-25)
 
 ## What's Changed

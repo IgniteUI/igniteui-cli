@@ -17,7 +17,7 @@
     "build": "rimraf dist && tsc && node --max-old-space-size=4096 node_modules/vite/bin/vite.js build",
     "start:build": "web-dev-server --root-dir dist --app-index index.html --open",
     "lint": "eslint \"**/*.{js,ts}\" --ignore-pattern .gitignore",
-    "test": "tsc --project tsconfig.test.json && wtr"
+    "test": "tsc --project tsconfig.test.json && vitest run"
   },
   "dependencies": {
     "@vaadin/router": "^1.7.4",
@@ -35,23 +35,22 @@
   },
   "devDependencies": {
     "@babel/preset-env": "^7.20.2",
-    "@open-wc/testing": "^4.0.0",
     "@typescript-eslint/eslint-plugin": "^8.21.0",
     "@typescript-eslint/parser": "^8.21.0",
     "@web/dev-server": "^0.4.6",
-    "@web/test-runner": "^0.18.0",
     "babel-plugin-template-html-minifier": "^4.1.0",
     "concurrently": "^9.1.2",
     "deepmerge": "^4.2.2",
     "eslint": "^9.20.0",
     "eslint-plugin-lit": "^1.8.2",
-    "igniteui-cli": "^14.0.0",
+    "igniteui-cli": "^14.5.0",
+    "jsdom": "^26.1.0",
     "rimraf": "^5.0.10",
     "source-map": "^0.7.4",
     "tslib": "^2.8.1",
-    "@types/mocha": "^10.0.6",
     "vite": "^6.0.10",
     "vite-plugin-pwa": "^0.21.1",
-    "vite-plugin-static-copy": "^2.2.0"
+    "vite-plugin-static-copy": "^2.2.0",
+    "vitest": "^3.1.3"
   }
 }

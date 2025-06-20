@@ -212,24 +212,48 @@ function updatePackageJsonFiles(
 	}
 }
 
-function updateWorkflows(
-	fs: IFileSystem
-): void {
-	const workflowFiles = ["node.js.yml", "github-pages.yml"];
-	const oldNpmInstall = "- run: npm i # replace with 'npm ci' after committing lock file from first install";
-	const newNpmInstall =
-`- run: echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
+function updateWorkflows(fs: IFileSystem): void {
+	type WorkflowGroup = {
+		basePath: string;
+		files: string[];
+		oldCmd: string;
+		newCmd: string;
+	};
+
+	const workflowGroups: WorkflowGroup[] = [
+		{
+			basePath: ".github/workflows",
+			files: ["node.js.yml", "github-pages.yml"],
+			oldCmd: "- run: npm i # replace with 'npm ci' after committing lock file from first install",
+			newCmd: `- run: echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
     - run: echo "//packages.infragistics.com/npm/js-licensed/:_auth=\${{ secrets.NPM_AUTH_TOKEN }}" >> ~/.npmrc
     - run: echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
-    - run: npm i # replace with 'npm ci' after committing lock file from first install`;
+    - run: npm i # replace with 'npm ci' after committing lock file from first install`
+		},
+		{
+			basePath: ".azure/workflows",
+			files: ["azure-pipelines.yml"],
+			oldCmd: "- script: npm i # replace with 'npm ci' after committing lock file from first install",
+			newCmd: `- script: |
+        echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
+        echo "//packages.infragistics.com/npm/js-licensed/:_auth=$NPM_AUTH_TOKEN" >> ~/.npmrc
+        echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
+      displayName: 'Authenticate'
+      env:
+        NPM_AUTH_TOKEN: $(NPM_AUTH_TOKEN)
+    - script: npm i # replace with 'npm ci' after committing lock file from first install`
+		}
+	];
 
-	for (const fileName of workflowFiles) {
-		const workflowPath = `.github/workflows/${fileName}`;
-		if (fs.fileExists(workflowPath)) {
-			let workflow = fs.readFile(workflowPath);
-			if (workflow) {
-				workflow = workflow.replace(oldNpmInstall, newNpmInstall);
-				fs.writeFile(workflowPath, workflow);
+	for (const group of workflowGroups) {
+		for (const file of group.files) {
+			const path = `${group.basePath}/${file}`;
+			if (fs.fileExists(path)) {
+				let content = fs.readFile(path);
+				if (content?.includes(group.oldCmd)) {
+					content = content.replace(group.oldCmd, group.newCmd);
+					fs.writeFile(path, content);
+				}
 			}
 		}
 	}
