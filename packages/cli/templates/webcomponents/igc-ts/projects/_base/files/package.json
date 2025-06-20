@@ -20,10 +20,10 @@
     "test": "tsc --project tsconfig.test.json && vitest run"
   },
   "dependencies": {
-    "@vaadin/router": "^1.7.4",
-    "lit": "^3.2.1",
-    "typescript": "~5.7.2",
-    "igniteui-webcomponents": "~5.4.0"
+    "@vaadin/router": "^2.0.0",
+    "lit": "^3.3.0",
+    "typescript": "~5.8.3",
+    "igniteui-webcomponents": "~6.1.0"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.20.2",
@@ -35,7 +35,7 @@
     "deepmerge": "^4.2.2",
     "eslint": "^9.20.0",
     "eslint-plugin-lit": "^1.8.2",
-    "igniteui-cli": "~14.4.4",
+    "igniteui-cli": "~14.5.0",
     "jsdom": "^26.1.0",
     "rimraf": "^5.0.10",
     "source-map": "^0.7.4",
