@@ -1,3 +1,10 @@
+# [14.5.1](https://github.com/IgniteUI/igniteui-cli/compare/v14.5.0...v14.5.1) (2025-06-24)
+
+## What's Changed
+* Update the CLI React wrappers to use React 19 by @valadzhov in https://github.com/IgniteUI/igniteui-cli/pull/1399
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.5.0...v14.5.1
+
 # [14.5.0](https://github.com/IgniteUI/igniteui-cli/compare/v14.4.4...v14.5.0) (2025-06-05)
 
 🎉 This update includes:
