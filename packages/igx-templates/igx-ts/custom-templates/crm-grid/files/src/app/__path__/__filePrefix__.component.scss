@@ -157,7 +157,7 @@
     }
 
     .igx-grid-toolbar__actions {
-        @include button($crm-grid-toolbar-button);
+        @include css-vars($crm-grid-toolbar-button);
 
         .igx-button--outlined {
             margin-left: 0.5rem;
@@ -178,7 +178,7 @@
             height: 36px;
         }
 
-        @include button($crm-grid-search-button);
+        @include css-vars($crm-grid-search-button);
     }
 
     .igx-input-group--search .igx-input-group__bundle,
