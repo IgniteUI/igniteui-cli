@@ -25,27 +25,27 @@ export default function $(ClassName)() {
             <IgrColumn
               field="ProductID"
               header="Product ID"
-              dataType="Number">
+              dataType="number">
             </IgrColumn>
             <IgrColumn
               field="ProductName"
               header="Product Name"
-              dataType="String">
+              dataType="string">
             </IgrColumn>
             <IgrColumn
               field="QuantityPerUnit"
               header="Quantity Per Unit"
-              dataType="String">
+              dataType="string">
             </IgrColumn>
             <IgrColumn
               field="UnitsInStock"
               header="Units In Stock"
-              dataType="Number">
+              dataType="number">
             </IgrColumn>
             <IgrColumn
               field="OrderDate"
               header="Order Date"
-              dataType="Date">
+              dataType="date">
             </IgrColumn>
           </IgrGrid>
         </div>

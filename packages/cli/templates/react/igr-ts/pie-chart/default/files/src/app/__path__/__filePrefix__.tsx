@@ -19,8 +19,8 @@ const data: any = [
 export default function $(ClassName)() {
   const title = 'Pie Chart';
   const [chartData, setChartData] = useState([]);
-  const legendRef: any = useRef();
-  const chartRef: any = useRef();
+  const legendRef: any = useRef(null);
+  const chartRef: any = useRef(null);
 
   useEffect(() => {
     setChartData(data);
