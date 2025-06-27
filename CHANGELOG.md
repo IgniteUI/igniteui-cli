@@ -2,7 +2,7 @@
 
 ## What's Changed
 
-https://my.slingshotapp.io/openTopic/e97e10ef_bf338f35-391a-4c18-a8b3-e95f41a8f4b9
+* chore: update with latest wc packages by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1402
 * fix(react): add missing argument and fix incorrect types by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1403
 * fix(angular): fix theme errors by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1404
 
