@@ -1,3 +1,13 @@
+# [14.5.2](https://github.com/IgniteUI/igniteui-cli/compare/v14.5.1...v14.5.2) (2025-06-27)
+
+## What's Changed
+
+https://my.slingshotapp.io/openTopic/e97e10ef_bf338f35-391a-4c18-a8b3-e95f41a8f4b9
+* fix(react): add missing argument and fix incorrect types by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1403
+* fix(angular): fix theme errors by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1404
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.5.1...v14.5.2
+
 # [14.5.1](https://github.com/IgniteUI/igniteui-cli/compare/v14.5.0...v14.5.1) (2025-06-24)
 
 ## What's Changed
