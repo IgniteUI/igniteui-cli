@@ -9,7 +9,7 @@ class IgxGridAwesomeTemplate extends IgniteUIForAngularTemplate {
 		this.listInCustomTemplates = true;
 		this.name = "Awesome Grid";
 		this.description = "Awesome IgxGrid";
-		this.packages = ["igniteui-angular-core@~19.0.0", "igniteui-angular-charts@~19.0.0"];
+		this.packages = ["igniteui-angular-core@~20.0.0", "igniteui-angular-charts@~20.0.0"];
 	}
 }
 module.exports = new IgxGridAwesomeTemplate();
