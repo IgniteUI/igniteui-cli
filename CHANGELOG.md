@@ -1,3 +1,10 @@
+# [14.5.3](https://github.com/IgniteUI/igniteui-cli/compare/v14.5.2...v14.5.3) (2025-06-28)
+
+## What's Changed
+* chore: update ng dv by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1405
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.5.2...v14.5.3
+
 # [14.5.2](https://github.com/IgniteUI/igniteui-cli/compare/v14.5.1...v14.5.2) (2025-06-27)
 
 ## What's Changed
