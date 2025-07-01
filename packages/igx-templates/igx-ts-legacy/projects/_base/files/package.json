@@ -30,21 +30,6 @@
     "reveal-sdk-wrappers-angular": {
       "@angular/core": "^20.0.0",
       "@angular/common": "^20.0.0"
-    },
-    "igniteui-angular-charts": {
-      "@angular/core": "^20.0.0",
-      "@angular/common": "^20.0.0",
-      "@angular/compiler": "^20.0.0"
-    },
-    "igniteui-angular-gauges": {
-      "@angular/core": "^20.0.0",
-      "@angular/common": "^20.0.0",
-      "@angular/compiler": "^20.0.0"
-    },
-    "igniteui-angular-maps": {
-      "@angular/core": "^20.0.0",
-      "@angular/common": "^20.0.0",
-      "@angular/compiler": "^20.0.0"
     }
   },
   "devDependencies": {
