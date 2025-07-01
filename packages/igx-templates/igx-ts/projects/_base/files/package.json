@@ -30,7 +30,8 @@
     "reveal-sdk-wrappers-angular": {
       "@angular/core": "^20.0.0",
       "@angular/common": "^20.0.0"
-    }
+    },
+    "rxjs": "~7.8.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~20.0.0",
