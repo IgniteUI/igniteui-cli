@@ -1,3 +1,11 @@
+# [14.5.4](https://github.com/IgniteUI/igniteui-cli/compare/v14.5.3...v14.5.4) (2025-07-01)
+
+## What's Changed
+* chore: remove ng dv overrides by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1406
+
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.5.3...v14.5.4
+
 # [14.5.3](https://github.com/IgniteUI/igniteui-cli/compare/v14.5.2...v14.5.3) (2025-06-28)
 
 ## What's Changed
