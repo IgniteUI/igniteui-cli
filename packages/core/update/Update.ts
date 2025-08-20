@@ -104,28 +104,14 @@ export async function updateWorkspace(rootPath: string): Promise<boolean> {
 						expandedWorkspaces.forEach(expandedWorkspace => {
 							// Only add if it's a directory
 							if (fs.directoryExists(expandedWorkspace)) {
-								// For React/Webcomponents, look for src directory within workspace
-								const srcPath = path.join(expandedWorkspace, "src");
-								if (fs.directoryExists(srcPath)) {
-									workspaces.push(srcPath);
-								} else {
-									// Fallback to workspace root if no src directory
-									workspaces.push(expandedWorkspace);
-								}
+								workspaces.push(expandedWorkspace);
 							}
 						});
 					} else {
 						// Direct workspace path
 						const workspacePath = path.join(rootPath, w);
 						if (fs.directoryExists(workspacePath)) {
-							// For React/Webcomponents, look for src directory within workspace
-							const srcPath = path.join(workspacePath, "src");
-							if (fs.directoryExists(srcPath)) {
-								workspaces.push(srcPath);
-							} else {
-								// Fallback to workspace root if no src directory
-								workspaces.push(workspacePath);
-							}
+							workspaces.push(workspacePath);
 						}
 					}
 				});
