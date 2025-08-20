@@ -1175,6 +1175,10 @@ export default class App extends LitElement {
 `
 				}];
 			(fsSpy.fileExists as jasmine.Spy).and.returnValue(true);
+			// Mock directoryExists to return true for workspace directories
+			(fsSpy.directoryExists as jasmine.Spy).and.callFake((dirPath: string) => {
+				return dirPath.includes("projectA") || dirPath.includes("projectB");
+			});
 			(fsSpy.glob as jasmine.Spy).and.returnValues // per workspace
 				([ "package.json" ], // root package.json
 				[], //index.html
