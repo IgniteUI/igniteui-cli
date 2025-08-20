@@ -97,7 +97,23 @@ export async function updateWorkspace(rootPath: string): Promise<boolean> {
 		case "webcomponents":
 			if (pkgJSON.workspaces) {
 				pkgJSON.workspaces.forEach(w => {
-					workspaces.push(path.join(rootPath, w));
+					// Handle workspace patterns that may contain globs
+					if (w.includes("*")) {
+						// Use glob to expand the workspace pattern
+						const expandedWorkspaces = fs.glob(rootPath, w);
+						expandedWorkspaces.forEach(expandedWorkspace => {
+							// Only add if it's a directory and contains source files
+							if (fs.directoryExists(expandedWorkspace)) {
+								workspaces.push(expandedWorkspace);
+							}
+						});
+					} else {
+						// Direct workspace path
+						const workspacePath = path.join(rootPath, w);
+						if (fs.directoryExists(workspacePath)) {
+							workspaces.push(workspacePath);
+						}
+					}
 				});
 			} else {
 				workspaces.push(path.join(rootPath, "src"));

@@ -716,7 +716,7 @@ export default function Home() {
 			expect(fsSpy.glob).toHaveBeenCalledTimes(5);
 		});
 
-		it("Should update package.json files from workspaces", async () => {
+		it("Should update package.json files from workspaces with glob patterns", async () => {
 			const mockFileArray: MockFile[] = [
 				{
 					path: "package.json",
@@ -730,8 +730,7 @@ export default function Home() {
       "some-package": "^0.0.0"
 	},
   "workspaces": [
-      "projectA",
-      "projectB"
+      "projects/*"
   ]
 }
 	`,
@@ -745,17 +744,16 @@ export default function Home() {
     "some-package": "^0.0.0"
   },
   "workspaces": [
-    "projectA",
-    "projectB"
+    "projects/*"
   ]
 }
 `
 				},
 				{
-					path: "./projectA/package.json",
+					path: "./projects/charts/package.json",
 					content:
 					`{
-  "name": "projectA",
+  "name": "charts-project",
   "dependencies": {
       "igniteui-dockmanager": "^1.0.0",
       "igniteui-react": "^18.5.1",
@@ -766,7 +764,7 @@ export default function Home() {
 	`,
 					expected:
 					`{
-  "name": "projectA",
+  "name": "charts-project",
   "dependencies": {
     "@infragistics/igniteui-dockmanager": "^1.0.0",
     "@infragistics/igniteui-react": "^18.5.1",
@@ -777,10 +775,10 @@ export default function Home() {
 `
 				},
 				{
-					path: "./projectB/package.json",
+					path: "./projects/charts/package.json",
 					content:
 					`{
-  "name": "projectB",
+  "name": "charts-project",
   "dependencies": {
       "igniteui-dockmanager": "^1.0.0",
       "igniteui-react": "^18.5.1",
@@ -791,7 +789,7 @@ export default function Home() {
 	`,
 					expected:
 					`{
-  "name": "projectB",
+  "name": "charts-project",
   "dependencies": {
     "@infragistics/igniteui-dockmanager": "^1.0.0",
     "@infragistics/igniteui-react": "^18.5.1",
@@ -802,15 +800,33 @@ export default function Home() {
 `
 				}];
 			(fsSpy.fileExists as jasmine.Spy).and.returnValue(true);
-			(fsSpy.glob as jasmine.Spy).and.returnValues // per workspace
-				([ "package.json" ], // root package.json
-				[], // index.html
-				[], // projectA logic files
-				[], // projectA for each style extension
-				[ "./projectA/package.json" ], // projectA package.json
-				[], // projectB logic files
-				[], // projectB for each style extension
-				[ "./projectB/package.json" ]); // projectB package.json
+			// Mock directoryExists to return true for valid workspace directories
+			(fsSpy.directoryExists as jasmine.Spy).and.callFake((dirPath: string) => {
+				return dirPath.includes("projects/charts") || dirPath.includes("projects");
+			});
+			
+			// Mock glob to simulate finding workspace directories and files
+			(fsSpy.glob as jasmine.Spy).and.callFake((dirPath: string, pattern: string) => {
+				if (pattern === "projects/*") {
+					return ["projects/charts"];
+				} else if (pattern === "package.json") {
+					return ["package.json"];
+				} else if (pattern === "**/*.tsx") {
+					if (dirPath.includes("charts")) {
+						return [];
+					}
+					return [];
+				} else if (pattern === "**/*.css") {
+					return [];
+				} else if (pattern === "**/package.json") {
+					if (dirPath.includes("charts")) {
+						return ["./projects/charts/package.json"];
+					}
+					return [];
+				}
+				return [];
+			});
+			
 			(fsSpy.readFile as jasmine.Spy).and.callFake((filePath: string) => {
 				if (filePath.indexOf("package.json") < 0) {
 					return;
@@ -818,7 +834,7 @@ export default function Home() {
 					return mockFileArray.find(entry => entry.path === "package.json").content;
 				}
 				const fileEntry = mockFileArray.find(entry => entry.path === filePath);
-				return fileEntry.content;
+				return fileEntry ? fileEntry.content : "";
 			});
 			spyOn(PackageManager, "ensureRegistryUser").and.returnValue(true);
 			spyOn(Util, "log");
@@ -826,7 +842,8 @@ export default function Home() {
 			for (const fileEntry of mockFileArray) {
 				expect((fsSpy.writeFile as jasmine.Spy)).toHaveBeenCalledWith(fileEntry.path, fileEntry.expected);
 			}
-			expect(fsSpy.glob).toHaveBeenCalledTimes(8);
+			// Expect: 1 for projects/*, 1 for package.json files at root, 1 for logic files, 1 for style files, 1 for package.json in workspace  
+			expect(fsSpy.glob).toHaveBeenCalledTimes(6);
 		});
 	});
 
