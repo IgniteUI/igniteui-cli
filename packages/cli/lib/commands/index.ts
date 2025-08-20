@@ -1,4 +1,5 @@
 export { default as add } from "./add";
+export { default as analyze } from "./analyze";
 export { default as build } from "./build";
 export { default as config } from "./config";
 export { default as doc } from "./doc";

@@ -12,6 +12,7 @@ export const DOC_COMMAND_NAME = "doc";
 export const TEST_COMMAND_NAME = "test";
 export const LIST_COMMAND_NAME = "list";
 export const UPGRADE_COMMAND_NAME = "upgrade-packages";
+export const ANALYZE_COMMAND_NAME = "analyze";
 
 export const ALL_COMMANDS = new Set([
   ADD_COMMAND_NAME,
@@ -23,7 +24,8 @@ export const ALL_COMMANDS = new Set([
   DOC_COMMAND_NAME,
   TEST_COMMAND_NAME,
   LIST_COMMAND_NAME,
-  UPGRADE_COMMAND_NAME
+  UPGRADE_COMMAND_NAME,
+  ANALYZE_COMMAND_NAME
 ]);
 
 export interface PositionalArgs {

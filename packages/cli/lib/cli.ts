@@ -4,6 +4,7 @@ import {
 	add,
 	ADD_COMMAND_NAME,
 	ALL_COMMANDS,
+	analyze,
 	build,
 	config,
 	doc,
@@ -46,6 +47,7 @@ export async function run(args = null) {
 		.usage("") // do not show any usage instructions before the commands list
 		.command(newCommand)
 		.command(add)
+		.command(analyze)
 		.command(build)
 		.command(start)
 		.command(generate)

@@ -6,3 +6,4 @@ export * from './App';
 export * from './FileSystem';
 export * from './Container';
 export * from './GlobalConstants';
+export * from './DeadCodeDetector';
