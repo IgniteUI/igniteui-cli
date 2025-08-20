@@ -102,16 +102,30 @@ export async function updateWorkspace(rootPath: string): Promise<boolean> {
 						// Use glob to expand the workspace pattern
 						const expandedWorkspaces = fs.glob(rootPath, w);
 						expandedWorkspaces.forEach(expandedWorkspace => {
-							// Only add if it's a directory and contains source files
+							// Only add if it's a directory
 							if (fs.directoryExists(expandedWorkspace)) {
-								workspaces.push(expandedWorkspace);
+								// For React/Webcomponents, look for src directory within workspace
+								const srcPath = path.join(expandedWorkspace, "src");
+								if (fs.directoryExists(srcPath)) {
+									workspaces.push(srcPath);
+								} else {
+									// Fallback to workspace root if no src directory
+									workspaces.push(expandedWorkspace);
+								}
 							}
 						});
 					} else {
 						// Direct workspace path
 						const workspacePath = path.join(rootPath, w);
 						if (fs.directoryExists(workspacePath)) {
-							workspaces.push(workspacePath);
+							// For React/Webcomponents, look for src directory within workspace
+							const srcPath = path.join(workspacePath, "src");
+							if (fs.directoryExists(srcPath)) {
+								workspaces.push(srcPath);
+							} else {
+								// Fallback to workspace root if no src directory
+								workspaces.push(workspacePath);
+							}
 						}
 					}
 				});

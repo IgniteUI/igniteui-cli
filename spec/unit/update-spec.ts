@@ -800,9 +800,9 @@ export default function Home() {
 `
 				}];
 			(fsSpy.fileExists as jasmine.Spy).and.returnValue(true);
-			// Mock directoryExists to return true for valid workspace directories
+			// Mock directoryExists to return true for valid workspace directories and src subdirectories
 			(fsSpy.directoryExists as jasmine.Spy).and.callFake((dirPath: string) => {
-				return dirPath.includes("projects/charts") || dirPath.includes("projects");
+				return dirPath.includes("projects/charts") || dirPath.includes("projects") || dirPath.endsWith("/src");
 			});
 			
 			// Mock glob to simulate finding workspace directories and files
