@@ -1,3 +1,10 @@
+# [14.5.5-beta.0](https://github.com/IgniteUI/igniteui-cli/compare/v14.5.4...v14.5.5-beta.0) (2025-08-20)
+
+## What's Changed
+* fix: react upgrade-packages not updating .tsx files in projects with workspace glob patterns by @copilot in https://github.com/IgniteUI/igniteui-cli/pull/1408
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.5.4...v14.5.5-beta.0
+
 # [14.5.4](https://github.com/IgniteUI/igniteui-cli/compare/v14.5.3...v14.5.4) (2025-07-01)
 
 ## What's Changed
