@@ -341,7 +341,7 @@
   integrity sha512-H9XAx3hc0BQHY6l+IFSWHDySypcXsvsuLhgYLUGywmJ5pswRVQJUHpOsobnLYp2ZUaUlKiKDrgWWhosOwAEM8Q==
 
 "@igniteui/angular-schematics@file:/home/runner/work/igniteui-cli/igniteui-cli/packages/ng-schematics":
-  version "20.0.1454"
+  version "20.0.1455-beta.0"
   resolved "file:packages/ng-schematics"
   dependencies:
     "@angular-devkit/core" "^19.0.0"
@@ -352,15 +352,15 @@
     minimatch "^10.0.1"
     rxjs "^7.8.1"
 
-"@igniteui/angular-templates@~20.0.1454", "@igniteui/angular-templates@file:/home/runner/work/igniteui-cli/igniteui-cli/packages/igx-templates":
-  version "20.0.1454"
+"@igniteui/angular-templates@~20.0.1455-beta.0", "@igniteui/angular-templates@file:/home/runner/work/igniteui-cli/igniteui-cli/packages/igx-templates":
+  version "20.0.1455-beta.0"
   resolved "file:packages/igx-templates"
   dependencies:
-    "@igniteui/cli-core" "~14.5.4"
+    "@igniteui/cli-core" "~14.5.5-beta.0"
     typescript "~5.5.4"
 
-"@igniteui/cli-core@~14.5.4", "@igniteui/cli-core@file:/home/runner/work/igniteui-cli/igniteui-cli/packages/core":
-  version "14.5.4"
+"@igniteui/cli-core@~14.5.5-beta.0", "@igniteui/cli-core@file:/home/runner/work/igniteui-cli/igniteui-cli/packages/core":
+  version "14.5.5-beta.0"
   resolved "file:packages/core"
   dependencies:
     "@inquirer/prompts" "~5.4.0"
@@ -3868,7 +3868,7 @@ ieee754@^1.1.13:
   integrity sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==
 
 "igniteui-cli@file:/home/runner/work/igniteui-cli/igniteui-cli/packages/cli":
-  version "14.5.4"
+  version "14.5.5-beta.0"
   resolved "file:packages/cli"
   dependencies:
     "@igniteui/angular-templates" "~20.0.1454"
