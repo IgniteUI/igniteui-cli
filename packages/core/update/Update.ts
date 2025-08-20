@@ -116,6 +116,14 @@ export async function updateWorkspace(rootPath: string): Promise<boolean> {
 		pkgJsonFiles.push(...fs.glob(workspace, `**/package.json`));
 	}
 
+	// For React and WebComponents projects, also include vite.config.ts files
+	if (framework.toLowerCase() === "react" || framework.toLowerCase() === "webcomponents") {
+		const viteConfigFiles = fs.glob(rootPath, `vite.config.ts`, ['node_modules', 'dist']);
+		if (viteConfigFiles && viteConfigFiles.length > 0) {
+			logicFiles.push(...viteConfigFiles);
+		}
+	}
+
 	updateFileImports(logicFiles, styleFiles, upgradeable, fs);
 	if (shouldUpgradeHTML) {
 		updateHTMLImports(htmlFiles, upgradeable, fs);

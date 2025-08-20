@@ -545,7 +545,7 @@ title = 'igniteui-angular example';
 				}
 			}));
 			expect(fsSpy.writeFile).toHaveBeenCalledTimes(1);
-			expect(fsSpy.glob).toHaveBeenCalledTimes(5);
+			expect(fsSpy.glob).toHaveBeenCalledTimes(6);
 		});
 
 		it("Should update import paths in files correctly", async () => {
@@ -713,7 +713,7 @@ export default function Home() {
 			for (const fileEntry of mockFileArray) {
 				expect((fsSpy.writeFile as jasmine.Spy)).toHaveBeenCalledWith(fileEntry.path, fileEntry.expected);
 			}
-			expect(fsSpy.glob).toHaveBeenCalledTimes(5);
+			expect(fsSpy.glob).toHaveBeenCalledTimes(6);
 		});
 
 		it("Should update package.json files from workspaces", async () => {
@@ -826,7 +826,94 @@ export default function Home() {
 			for (const fileEntry of mockFileArray) {
 				expect((fsSpy.writeFile as jasmine.Spy)).toHaveBeenCalledWith(fileEntry.path, fileEntry.expected);
 			}
-			expect(fsSpy.glob).toHaveBeenCalledTimes(8);
+			expect(fsSpy.glob).toHaveBeenCalledTimes(9);
+		});
+
+		it("Should update vite.config.ts file correctly", async () => {
+			const mockFileArray: MockFile[] = [
+				{
+					path: "package.json",
+					content:
+					`{
+  "dependencies": {
+      "igniteui-react-grids": "^18.5.1",
+      "some-package": "^0.0.0"
+  }
+}
+	`,
+					expected:
+					`{
+  "dependencies": {
+    "@infragistics/igniteui-react-grids": "^18.5.1",
+    "some-package": "^0.0.0"
+  }
+}
+`
+				},
+				{
+					path: "vite.config.ts",
+					content:
+`import { defineConfig } from 'vite';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
+
+export default defineConfig({
+  plugins: [
+    viteStaticCopy({
+      targets: [
+        {
+          src: "node_modules/igniteui-react-grids/grids/themes/light/bootstrap.css",
+          dest: "themes",
+        },
+        {
+          src: "node_modules/igniteui-react-grids/grids/themes/light/fluent.css",
+          dest: "themes",
+        },
+      ],
+    }),
+  ],
+});`,
+					expected:
+`import { defineConfig } from 'vite';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
+
+export default defineConfig({
+  plugins: [
+    viteStaticCopy({
+      targets: [
+        {
+          src: "node_modules/@infragistics/igniteui-react-grids/grids/themes/light/bootstrap.css",
+          dest: "themes",
+        },
+        {
+          src: "node_modules/@infragistics/igniteui-react-grids/grids/themes/light/fluent.css",
+          dest: "themes",
+        },
+      ],
+    }),
+  ],
+});`
+				}];
+			(fsSpy.glob as jasmine.Spy).and.returnValues // per workspace
+				([ "package.json" ], // root package.json
+				[], // html file
+				[ "src/home.tsx" ], // logic files
+				[], // for each style extension
+				[], // inner package.json files
+				["vite.config.ts"]); // vite config files
+			(fsSpy.readFile as jasmine.Spy).and.callFake((filePath: string) => {
+				if (filePath.indexOf("package.json") > -1) {
+					return mockFileArray.find(entry => entry.path === "package.json").content;
+				}
+				const fileEntry = mockFileArray.find(entry => entry.path === filePath);
+				return fileEntry ? fileEntry.content : "";
+			});
+			(fsSpy.fileExists as jasmine.Spy).and.returnValue(true);
+			spyOn(PackageManager, "ensureRegistryUser").and.returnValue(true);
+			expect(await updateWorkspace("")).toEqual(true);
+			for (const fileEntry of mockFileArray) {
+				expect((fsSpy.writeFile as jasmine.Spy)).toHaveBeenCalledWith(fileEntry.path, fileEntry.expected);
+			}
+			expect(fsSpy.glob).toHaveBeenCalledTimes(6);
 		});
 	});
 
@@ -914,7 +1001,7 @@ export default function Home() {
 				}
 			}));
 			expect(fsSpy.writeFile).toHaveBeenCalledTimes(2);
-			expect(fsSpy.glob).toHaveBeenCalledTimes(4);
+			expect(fsSpy.glob).toHaveBeenCalledTimes(5);
 		});
 
 		it("Should update import paths in files correctly", async () => {
@@ -1069,7 +1156,7 @@ export default class App extends LitElement {
 			for (const fileEntry of mockFileArray) {
 				expect((fsSpy.writeFile as jasmine.Spy)).toHaveBeenCalledWith(fileEntry.path, fileEntry.expected);
 			}
-			expect(fsSpy.glob).toHaveBeenCalledTimes(4);
+			expect(fsSpy.glob).toHaveBeenCalledTimes(5);
 		});
 
 		it("Should update package.json files from workspaces", async () => {
@@ -1180,7 +1267,97 @@ export default class App extends LitElement {
 			for (const fileEntry of mockFileArray) {
 				expect((fsSpy.writeFile as jasmine.Spy)).toHaveBeenCalledWith(fileEntry.path, fileEntry.expected);
 			}
-			expect(fsSpy.glob).toHaveBeenCalledTimes(6);
+			expect(fsSpy.glob).toHaveBeenCalledTimes(7);
+		});
+
+		it("Should update vite.config.ts file correctly", async () => {
+			const mockFileArray: MockFile[] = [
+				{
+					path: "package.json",
+					content:
+					`{
+  "dependencies": {
+    "igniteui-webcomponents-grids": "^4.7.0",
+    "some-package": "^0.0.0"
+  }
+}
+	`,
+					expected:
+`{
+  "dependencies": {
+    "@infragistics/igniteui-webcomponents-grids": "^4.7.0",
+    "some-package": "^0.0.0"
+  }
+}
+`
+				},
+				{
+					path: "vite.config.ts",
+					content:
+`import { defineConfig } from 'vite';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
+
+export default defineConfig(({ mode }) => {
+  return {
+    plugins: [
+      viteStaticCopy({
+        targets: [
+          {
+            src: "node_modules/igniteui-webcomponents-grids/grids/themes/light/bootstrap.css",
+            dest: "themes",
+          },
+          {
+            src: "node_modules/igniteui-webcomponents-grids/grids/themes/light/fluent.css",
+            dest: "themes",
+          },
+        ],
+      }),
+    ],
+  };
+});`,
+					expected:
+`import { defineConfig } from 'vite';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
+
+export default defineConfig(({ mode }) => {
+  return {
+    plugins: [
+      viteStaticCopy({
+        targets: [
+          {
+            src: "node_modules/@infragistics/igniteui-webcomponents-grids/grids/themes/light/bootstrap.css",
+            dest: "themes",
+          },
+          {
+            src: "node_modules/@infragistics/igniteui-webcomponents-grids/grids/themes/light/fluent.css",
+            dest: "themes",
+          },
+        ],
+      }),
+    ],
+  };
+});`
+				}];
+			(fsSpy.glob as jasmine.Spy).and.returnValues // per workspace
+				([ "package.json" ], // root package.json
+				[], // html file
+				["src/app.ts"], // logic files
+				[], // inner package.json files
+				["vite.config.ts"]); // vite config files
+			(fsSpy.readFile as jasmine.Spy).and.callFake((filePath: string) => {
+				if (filePath.indexOf("package.json") > -1) {
+					return mockFileArray.find(entry => entry.path === "package.json").content;
+				}
+				const fileEntry = mockFileArray.find(entry => entry.path === filePath);
+				return fileEntry ? fileEntry.content : "";
+			});
+			(fsSpy.fileExists as jasmine.Spy).and.returnValue(true);
+			spyOn(PackageManager, "ensureRegistryUser").and.returnValue(true);
+			expect(await updateWorkspace("")).toEqual(true);
+			for (const fileEntry of mockFileArray) {
+				expect((fsSpy.writeFile as jasmine.Spy)).toHaveBeenCalledWith(fileEntry.path, fileEntry.expected);
+			}
+			expect(fsSpy.glob).toHaveBeenCalledTimes(5);
 		});
 	});
 });
