@@ -1,5 +1,5 @@
 body {
-  background: hsla(var(--ig-surface-500, 0 0% 100%));
+  background: var(--ig-surface-500, 0 0% 100%);
   color: var(--ig-surface-500-contrast, black);
   font-family: var(--ig-font-family);
 }
