@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "ignite-ui": "21.1.13",
-    "igniteui-react": "^1.3.2",
+    "igniteui-react": "~19.2.0",
     "jquery": "^3.6.0",
     "jquery-ui": "^1.12.1",
     "react": "^17.0.2",

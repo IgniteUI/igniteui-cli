@@ -11,8 +11,8 @@ class IgcLinearGaugeTemplate extends IgniteUIForWebComponentsTemplate {
 		this.name = "Linear Gauge";
 		this.description = "IgcLinearGauge";
 		this.packages = [
-			"igniteui-webcomponents-core@~5.4.0",
-			"igniteui-webcomponents-gauges@~5.4.0"
+			"igniteui-webcomponents-core@~6.0.0",
+			"igniteui-webcomponents-gauges@~6.0.0"
 		];
 	}
 }
