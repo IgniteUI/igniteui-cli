@@ -545,7 +545,7 @@ title = 'igniteui-angular example';
 				}
 			}));
 			expect(fsSpy.writeFile).toHaveBeenCalledTimes(1);
-			expect(fsSpy.glob).toHaveBeenCalledTimes(5);
+			expect(fsSpy.glob).toHaveBeenCalledTimes(6);
 		});
 
 		it("Should update import paths in files correctly", async () => {
@@ -713,10 +713,10 @@ export default function Home() {
 			for (const fileEntry of mockFileArray) {
 				expect((fsSpy.writeFile as jasmine.Spy)).toHaveBeenCalledWith(fileEntry.path, fileEntry.expected);
 			}
-			expect(fsSpy.glob).toHaveBeenCalledTimes(5);
+			expect(fsSpy.glob).toHaveBeenCalledTimes(6);
 		});
 
-		it("Should update package.json files from workspaces", async () => {
+		it("Should update package.json files from workspaces with glob patterns", async () => {
 			const mockFileArray: MockFile[] = [
 				{
 					path: "package.json",
@@ -730,8 +730,7 @@ export default function Home() {
       "some-package": "^0.0.0"
 	},
   "workspaces": [
-      "projectA",
-      "projectB"
+      "projects/*"
   ]
 }
 	`,
@@ -745,17 +744,16 @@ export default function Home() {
     "some-package": "^0.0.0"
   },
   "workspaces": [
-    "projectA",
-    "projectB"
+    "projects/*"
   ]
 }
 `
 				},
 				{
-					path: "./projectA/package.json",
+					path: "./projects/charts/package.json",
 					content:
 					`{
-  "name": "projectA",
+  "name": "charts-project",
   "dependencies": {
       "igniteui-dockmanager": "^1.0.0",
       "igniteui-react": "^18.5.1",
@@ -766,7 +764,7 @@ export default function Home() {
 	`,
 					expected:
 					`{
-  "name": "projectA",
+  "name": "charts-project",
   "dependencies": {
     "@infragistics/igniteui-dockmanager": "^1.0.0",
     "@infragistics/igniteui-react": "^18.5.1",
@@ -777,10 +775,10 @@ export default function Home() {
 `
 				},
 				{
-					path: "./projectB/package.json",
+					path: "./projects/charts/package.json",
 					content:
 					`{
-  "name": "projectB",
+  "name": "charts-project",
   "dependencies": {
       "igniteui-dockmanager": "^1.0.0",
       "igniteui-react": "^18.5.1",
@@ -791,7 +789,7 @@ export default function Home() {
 	`,
 					expected:
 					`{
-  "name": "projectB",
+  "name": "charts-project",
   "dependencies": {
     "@infragistics/igniteui-dockmanager": "^1.0.0",
     "@infragistics/igniteui-react": "^18.5.1",
@@ -802,15 +800,33 @@ export default function Home() {
 `
 				}];
 			(fsSpy.fileExists as jasmine.Spy).and.returnValue(true);
-			(fsSpy.glob as jasmine.Spy).and.returnValues // per workspace
-				([ "package.json" ], // root package.json
-				[], // index.html
-				[], // projectA logic files
-				[], // projectA for each style extension
-				[ "./projectA/package.json" ], // projectA package.json
-				[], // projectB logic files
-				[], // projectB for each style extension
-				[ "./projectB/package.json" ]); // projectB package.json
+			// Mock directoryExists to return true for valid workspace directories and src subdirectories
+			(fsSpy.directoryExists as jasmine.Spy).and.callFake((dirPath: string) => {
+				return dirPath.includes("projects/charts") || dirPath.includes("projects") || dirPath.endsWith("/src");
+			});
+			
+			// Mock glob to simulate finding workspace directories and files
+			(fsSpy.glob as jasmine.Spy).and.callFake((dirPath: string, pattern: string) => {
+				if (pattern === "projects/*") {
+					return ["projects/charts"];
+				} else if (pattern === "package.json") {
+					return ["package.json"];
+				} else if (pattern === "**/*.tsx") {
+					if (dirPath.includes("charts")) {
+						return [];
+					}
+					return [];
+				} else if (pattern === "**/*.css") {
+					return [];
+				} else if (pattern === "**/package.json") {
+					if (dirPath.includes("charts")) {
+						return ["./projects/charts/package.json"];
+					}
+					return [];
+				}
+				return [];
+			});
+			
 			(fsSpy.readFile as jasmine.Spy).and.callFake((filePath: string) => {
 				if (filePath.indexOf("package.json") < 0) {
 					return;
@@ -818,7 +834,7 @@ export default function Home() {
 					return mockFileArray.find(entry => entry.path === "package.json").content;
 				}
 				const fileEntry = mockFileArray.find(entry => entry.path === filePath);
-				return fileEntry.content;
+				return fileEntry ? fileEntry.content : "";
 			});
 			spyOn(PackageManager, "ensureRegistryUser").and.returnValue(true);
 			spyOn(Util, "log");
@@ -826,7 +842,95 @@ export default function Home() {
 			for (const fileEntry of mockFileArray) {
 				expect((fsSpy.writeFile as jasmine.Spy)).toHaveBeenCalledWith(fileEntry.path, fileEntry.expected);
 			}
-			expect(fsSpy.glob).toHaveBeenCalledTimes(8);
+			// Expect: 1 for projects/*, 1 for package.json files at root, 1 for logic files, 1 for style files, 1 for package.json in workspace, 1 for vite.config.ts  
+			expect(fsSpy.glob).toHaveBeenCalledTimes(7);
+		});
+
+		it("Should update vite.config.ts file correctly", async () => {
+			const mockFileArray: MockFile[] = [
+				{
+					path: "package.json",
+					content:
+					`{
+  "dependencies": {
+      "igniteui-react-grids": "^18.5.1",
+      "some-package": "^0.0.0"
+  }
+}
+	`,
+					expected:
+					`{
+  "dependencies": {
+    "@infragistics/igniteui-react-grids": "^18.5.1",
+    "some-package": "^0.0.0"
+  }
+}
+`
+				},
+				{
+					path: "vite.config.ts",
+					content:
+`import { defineConfig } from 'vite';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
+
+export default defineConfig({
+  plugins: [
+    viteStaticCopy({
+      targets: [
+        {
+          src: "node_modules/igniteui-react-grids/grids/themes/light/bootstrap.css",
+          dest: "themes",
+        },
+        {
+          src: "node_modules/igniteui-react-grids/grids/themes/light/fluent.css",
+          dest: "themes",
+        },
+      ],
+    }),
+  ],
+});`,
+					expected:
+`import { defineConfig } from 'vite';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
+
+export default defineConfig({
+  plugins: [
+    viteStaticCopy({
+      targets: [
+        {
+          src: "node_modules/@infragistics/igniteui-react-grids/grids/themes/light/bootstrap.css",
+          dest: "themes",
+        },
+        {
+          src: "node_modules/@infragistics/igniteui-react-grids/grids/themes/light/fluent.css",
+          dest: "themes",
+        },
+      ],
+    }),
+  ],
+});`
+				}];
+			(fsSpy.glob as jasmine.Spy).and.returnValues // per workspace
+				([ "package.json" ], // root package.json
+				[], // html file
+				[ "src/home.tsx" ], // logic files
+				[], // for each style extension
+				[], // inner package.json files
+				["vite.config.ts"]); // vite config files
+			(fsSpy.readFile as jasmine.Spy).and.callFake((filePath: string) => {
+				if (filePath.indexOf("package.json") > -1) {
+					return mockFileArray.find(entry => entry.path === "package.json").content;
+				}
+				const fileEntry = mockFileArray.find(entry => entry.path === filePath);
+				return fileEntry ? fileEntry.content : "";
+			});
+			(fsSpy.fileExists as jasmine.Spy).and.returnValue(true);
+			spyOn(PackageManager, "ensureRegistryUser").and.returnValue(true);
+			expect(await updateWorkspace("")).toEqual(true);
+			for (const fileEntry of mockFileArray) {
+				expect((fsSpy.writeFile as jasmine.Spy)).toHaveBeenCalledWith(fileEntry.path, fileEntry.expected);
+			}
+			expect(fsSpy.glob).toHaveBeenCalledTimes(6);
 		});
 	});
 
@@ -914,7 +1018,7 @@ export default function Home() {
 				}
 			}));
 			expect(fsSpy.writeFile).toHaveBeenCalledTimes(2);
-			expect(fsSpy.glob).toHaveBeenCalledTimes(4);
+			expect(fsSpy.glob).toHaveBeenCalledTimes(5);
 		});
 
 		it("Should update import paths in files correctly", async () => {
@@ -1069,7 +1173,7 @@ export default class App extends LitElement {
 			for (const fileEntry of mockFileArray) {
 				expect((fsSpy.writeFile as jasmine.Spy)).toHaveBeenCalledWith(fileEntry.path, fileEntry.expected);
 			}
-			expect(fsSpy.glob).toHaveBeenCalledTimes(4);
+			expect(fsSpy.glob).toHaveBeenCalledTimes(5);
 		});
 
 		it("Should update package.json files from workspaces", async () => {
@@ -1158,6 +1262,10 @@ export default class App extends LitElement {
 `
 				}];
 			(fsSpy.fileExists as jasmine.Spy).and.returnValue(true);
+			// Mock directoryExists to return true for workspace directories
+			(fsSpy.directoryExists as jasmine.Spy).and.callFake((dirPath: string) => {
+				return dirPath.includes("projectA") || dirPath.includes("projectB");
+			});
 			(fsSpy.glob as jasmine.Spy).and.returnValues // per workspace
 				([ "package.json" ], // root package.json
 				[], //index.html
@@ -1180,7 +1288,97 @@ export default class App extends LitElement {
 			for (const fileEntry of mockFileArray) {
 				expect((fsSpy.writeFile as jasmine.Spy)).toHaveBeenCalledWith(fileEntry.path, fileEntry.expected);
 			}
-			expect(fsSpy.glob).toHaveBeenCalledTimes(6);
+			expect(fsSpy.glob).toHaveBeenCalledTimes(7);
+		});
+
+		it("Should update vite.config.ts file correctly", async () => {
+			const mockFileArray: MockFile[] = [
+				{
+					path: "package.json",
+					content:
+					`{
+  "dependencies": {
+    "igniteui-webcomponents-grids": "^4.7.0",
+    "some-package": "^0.0.0"
+  }
+}
+	`,
+					expected:
+`{
+  "dependencies": {
+    "@infragistics/igniteui-webcomponents-grids": "^4.7.0",
+    "some-package": "^0.0.0"
+  }
+}
+`
+				},
+				{
+					path: "vite.config.ts",
+					content:
+`import { defineConfig } from 'vite';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
+
+export default defineConfig(({ mode }) => {
+  return {
+    plugins: [
+      viteStaticCopy({
+        targets: [
+          {
+            src: "node_modules/igniteui-webcomponents-grids/grids/themes/light/bootstrap.css",
+            dest: "themes",
+          },
+          {
+            src: "node_modules/igniteui-webcomponents-grids/grids/themes/light/fluent.css",
+            dest: "themes",
+          },
+        ],
+      }),
+    ],
+  };
+});`,
+					expected:
+`import { defineConfig } from 'vite';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
+
+export default defineConfig(({ mode }) => {
+  return {
+    plugins: [
+      viteStaticCopy({
+        targets: [
+          {
+            src: "node_modules/@infragistics/igniteui-webcomponents-grids/grids/themes/light/bootstrap.css",
+            dest: "themes",
+          },
+          {
+            src: "node_modules/@infragistics/igniteui-webcomponents-grids/grids/themes/light/fluent.css",
+            dest: "themes",
+          },
+        ],
+      }),
+    ],
+  };
+});`
+				}];
+			(fsSpy.glob as jasmine.Spy).and.returnValues // per workspace
+				([ "package.json" ], // root package.json
+				[], // html file
+				["src/app.ts"], // logic files
+				[], // inner package.json files
+				["vite.config.ts"]); // vite config files
+			(fsSpy.readFile as jasmine.Spy).and.callFake((filePath: string) => {
+				if (filePath.indexOf("package.json") > -1) {
+					return mockFileArray.find(entry => entry.path === "package.json").content;
+				}
+				const fileEntry = mockFileArray.find(entry => entry.path === filePath);
+				return fileEntry ? fileEntry.content : "";
+			});
+			(fsSpy.fileExists as jasmine.Spy).and.returnValue(true);
+			spyOn(PackageManager, "ensureRegistryUser").and.returnValue(true);
+			expect(await updateWorkspace("")).toEqual(true);
+			for (const fileEntry of mockFileArray) {
+				expect((fsSpy.writeFile as jasmine.Spy)).toHaveBeenCalledWith(fileEntry.path, fileEntry.expected);
+			}
+			expect(fsSpy.glob).toHaveBeenCalledTimes(5);
 		});
 	});
 });

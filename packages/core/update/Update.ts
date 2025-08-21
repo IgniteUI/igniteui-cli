@@ -97,7 +97,23 @@ export async function updateWorkspace(rootPath: string): Promise<boolean> {
 		case "webcomponents":
 			if (pkgJSON.workspaces) {
 				pkgJSON.workspaces.forEach(w => {
-					workspaces.push(path.join(rootPath, w));
+					// Handle workspace patterns that may contain globs
+					if (w.includes("*")) {
+						// Use glob to expand the workspace pattern
+						const expandedWorkspaces = fs.glob(rootPath, w);
+						expandedWorkspaces.forEach(expandedWorkspace => {
+							// Only add if it's a directory
+							if (fs.directoryExists(expandedWorkspace)) {
+								workspaces.push(expandedWorkspace);
+							}
+						});
+					} else {
+						// Direct workspace path
+						const workspacePath = path.join(rootPath, w);
+						if (fs.directoryExists(workspacePath)) {
+							workspaces.push(workspacePath);
+						}
+					}
 				});
 			} else {
 				workspaces.push(path.join(rootPath, "src"));
@@ -114,6 +130,14 @@ export async function updateWorkspace(rootPath: string): Promise<boolean> {
 			styleFiles.push(...fs.glob(workspace, `**/*.${styleExtension}`));
 		}
 		pkgJsonFiles.push(...fs.glob(workspace, `**/package.json`));
+	}
+
+	// For React and WebComponents projects, also include vite.config.ts files
+	if (framework.toLowerCase() === "react" || framework.toLowerCase() === "webcomponents") {
+		const viteConfigFiles = fs.glob(rootPath, `vite.config.ts`, ['node_modules', 'dist']);
+		if (viteConfigFiles && viteConfigFiles.length > 0) {
+			logicFiles.push(...viteConfigFiles);
+		}
 	}
 
 	updateFileImports(logicFiles, styleFiles, upgradeable, fs);
