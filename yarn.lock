@@ -909,6 +909,11 @@
   resolved "https://registry.npmjs.org/@nx/nx-linux-x64-gnu/-/nx-linux-x64-gnu-20.3.2.tgz"
   integrity sha512-HhgHqOUT05H45zuQL+XPywQbRNFttd7Rkkr7dZnpCRdp4W8GDjfyKCoCS5qVyowAyNh9Vc7VEq9qmiLMlvf6Zg==
 
+"@nx/nx-linux-x64-musl@20.3.2":
+  version "20.3.2"
+  resolved "https://registry.npmjs.org/@nx/nx-linux-x64-musl/-/nx-linux-x64-musl-20.3.2.tgz"
+  integrity sha512-NrZ8L9of2GmYEM8GMJX6QRrLJlAwM+ds2rhdY1bxwpiyCNcD3IO/gzJlBs+kG4ly05F1u/X4k/FI5dXPpjUSgw==
+
 "@octokit/auth-token@^3.0.0":
   version "3.0.4"
   resolved "https://registry.npmjs.org/@octokit/auth-token/-/auth-token-3.0.4.tgz"

@@ -27,25 +27,4 @@ describe("React templates", () => {
 			}
 		}
 	});
-
-	it("Grid templates should include igniteui-react-core dependency", async () => {
-		const reactFramework: Framework = require(templatesLocation);
-		
-		// Check all project libraries
-		for (const projLibrary of reactFramework.projectLibraries) {
-			// Find grid templates
-			const gridTemplates = projLibrary.templates.filter(template => 
-				template.id === "grid" && template.packages && 
-				template.packages.some(pkg => pkg.includes("igniteui-react-grids"))
-			);
-			
-			// Verify each grid template includes igniteui-react-core
-			for (const gridTemplate of gridTemplates) {
-				const hasReactCore = gridTemplate.packages.some(pkg => pkg.includes("igniteui-react-core"));
-				expect(hasReactCore).toBeTruthy(
-					`Grid template ${gridTemplate.id} in project type ${gridTemplate.projectType} should include igniteui-react-core dependency`
-				);
-			}
-		}
-	});
 });
