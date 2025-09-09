@@ -1,0 +1,36 @@
+:local(.logo) {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+}
+
+:local(.header) {
+  padding-top: 5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: #333;
+}
+
+:local(.link) {
+  color: #61dafb;
+}
+
+:local(.app__name) {
+  padding-top: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

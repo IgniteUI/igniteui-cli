@@ -39,13 +39,6 @@ export default class $(ClassName) extends Component {
 						<IgrDateTimeColumn field="OrderDate" headerText="Order Date" />
 					</IgrDataGrid>
 				</div>
-				<div className={style.grid}>
-					<IgrDataGrid
-						height="100%"
-						width="100%"
-						autoGenerateColumns="true"
-						dataSource={this.data} />
-				</div>
 				</div>
 			</div>
 		)

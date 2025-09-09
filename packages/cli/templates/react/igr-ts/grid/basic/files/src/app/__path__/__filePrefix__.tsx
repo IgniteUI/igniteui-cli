@@ -49,9 +49,6 @@ export default function $(ClassName)() {
             </IgrColumn>
           </IgrGrid>
         </div>
-        <div className={style.grid}>
-          <IgrGrid autoGenerate={true} data={data} />
-        </div>
       </div>
     </div>
   );
