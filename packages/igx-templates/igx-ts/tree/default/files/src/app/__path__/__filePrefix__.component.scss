@@ -12,7 +12,7 @@ igx-tree {
 .node-refresh {
   cursor: pointer;
   padding: 0px 4px;
-  color: hsla(var(--igx-success-500));
+  color: var(--igx-success-500);
 }
 
 .node {
