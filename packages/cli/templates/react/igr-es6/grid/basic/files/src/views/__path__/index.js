@@ -22,23 +22,11 @@ export default class $(ClassName) extends Component {
 				<h1 className={style.title}>{this.title}</h1>
 				<div>
 					Read more on the&nbsp;
-                    <a href="https://www.infragistics.com/products/ignite-ui-react/react/components/grid.html">
+                    <a href="https://www.infragistics.com/products/ignite-ui-react/react/components/grids/data-grid.html">
 						official documentation page
                     </a>
 				</div>
 				<div className={style.container}>
-				<div className={style.grid}>
-					<IgrDataGrid
-						height="100%"
-						autoGenerateColumns="false"
-						dataSource={this.data}>
-						<IgrNumericColumn field="ProductID" headerText="Product ID" />
-						<IgrTextColumn field="ProductName" headerText="Product Name" />
-						<IgrTextColumn field="QuantityPerUnit" headerText="Quantity Per Unit" />
-						<IgrNumericColumn field="UnitsInStock" headerText="Units In Stock" />
-						<IgrDateTimeColumn field="OrderDate" headerText="Order Date" />
-					</IgrDataGrid>
-				</div>
 				<div className={style.grid}>
 					<IgrDataGrid
 						height="100%"
