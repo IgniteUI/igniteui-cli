@@ -30,9 +30,14 @@ export default class $(ClassName) extends Component {
 				<div className={style.grid}>
 					<IgrDataGrid
 						height="100%"
-						width="100%"
-						autoGenerateColumns="true"
-						dataSource={this.data} />
+						autoGenerateColumns="false"
+						dataSource={this.data}>
+						<IgrNumericColumn field="ProductID" headerText="Product ID" />
+						<IgrTextColumn field="ProductName" headerText="Product Name" />
+						<IgrTextColumn field="QuantityPerUnit" headerText="Quantity Per Unit" />
+						<IgrNumericColumn field="UnitsInStock" headerText="Units In Stock" />
+						<IgrDateTimeColumn field="OrderDate" headerText="Order Date" />
+					</IgrDataGrid>
 				</div>
 				</div>
 			</div>

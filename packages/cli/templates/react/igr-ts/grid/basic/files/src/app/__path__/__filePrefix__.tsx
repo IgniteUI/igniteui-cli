@@ -21,7 +21,33 @@ export default function $(ClassName)() {
       </div>
       <div className={style.container}>
         <div className={style.grid}>
-          <IgrGrid autoGenerate={true} data={data} />
+          <IgrGrid autoGenerate={false} data={data}>
+            <IgrColumn
+              field="ProductID"
+              header="Product ID"
+              dataType="number">
+            </IgrColumn>
+            <IgrColumn
+              field="ProductName"
+              header="Product Name"
+              dataType="string">
+            </IgrColumn>
+            <IgrColumn
+              field="QuantityPerUnit"
+              header="Quantity Per Unit"
+              dataType="string">
+            </IgrColumn>
+            <IgrColumn
+              field="UnitsInStock"
+              header="Units In Stock"
+              dataType="number">
+            </IgrColumn>
+            <IgrColumn
+              field="OrderDate"
+              header="Order Date"
+              dataType="date">
+            </IgrColumn>
+          </IgrGrid>
         </div>
       </div>
     </div>
