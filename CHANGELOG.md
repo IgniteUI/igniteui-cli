@@ -1,9 +1,9 @@
-# [14.5.5-beta.0](https://github.com/IgniteUI/igniteui-cli/compare/v14.5.4...v14.5.5-beta.0) (2025-08-20)
+# [14.5.5](https://github.com/IgniteUI/igniteui-cli/compare/v14.5.4...v14.5.5) (2025-08-21)
 
 ## What's Changed
-* fix: react upgrade-packages not updating .tsx files in projects with workspace glob patterns by @copilot in https://github.com/IgniteUI/igniteui-cli/pull/1408
+* fix: remove hsla function #1412 @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1412
 
-**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.5.4...v14.5.5-beta.0
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.5.4...v14.5.5
 
 # [14.5.4](https://github.com/IgniteUI/igniteui-cli/compare/v14.5.3...v14.5.4) (2025-07-01)
 

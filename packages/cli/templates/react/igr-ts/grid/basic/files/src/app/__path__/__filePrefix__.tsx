@@ -15,7 +15,7 @@ export default function $(ClassName)() {
       <h1 className={style.title}>{title}</h1>
       <div>
         Read more on the&nbsp;
-        <a href="https://www.infragistics.com/products/ignite-ui-react/react/components/grid.html">
+        <a href="https://www.infragistics.com/products/ignite-ui-react/react/components/grids/data-grid.html">
           official documentation page
         </a>
       </div>
@@ -48,9 +48,6 @@ export default function $(ClassName)() {
               dataType="date">
             </IgrColumn>
           </IgrGrid>
-        </div>
-        <div className={style.grid}>
-          <IgrGrid autoGenerate={true} data={data} />
         </div>
       </div>
     </div>

@@ -58,7 +58,7 @@ export default class $(ClassName) extends Component {
                 <h1 className={style.title}>{this.title}</h1>
                 <div>
                     Read more on the&nbsp;
-                    <a href="https://www.infragistics.com/products/ignite-ui-react/react/components/piechart.html">
+                    <a href="https://www.infragistics.com/products/ignite-ui-react/react/components/pie-chart.html">
                         official documentation page
                     </a>
                 </div>
