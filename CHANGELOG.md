@@ -1,3 +1,17 @@
+# [14.5.6](https://github.com/IgniteUI/igniteui-cli/compare/v14.5.5...v14.5.6) (2025-09-18)
+
+## What's Changed
+* fix: update Ignite UI product versions and remove --legacy-peer-deps flag by @Copilot in https://github.com/IgniteUI/igniteui-cli/pull/1409
+* fix: update react templates by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1419
+* fix(wc): enhance upgrade-packages to support workspace glob patterns and vite.config.ts files by @Copilot in https://github.com/IgniteUI/igniteui-cli/pull/1408
+* Add test setup file for angular standalone by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1421
+* fix: set default route by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1422
+
+## New Contributors
+* @Copilot made their first contribution in https://github.com/IgniteUI/igniteui-cli/pull/1409
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.5.5...14.5.6
+
 # [14.5.5](https://github.com/IgniteUI/igniteui-cli/compare/v14.5.4...v14.5.5) (2025-08-21)
 
 ## What's Changed
