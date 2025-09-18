@@ -66,7 +66,10 @@ export class IgniteUIForReactTemplate implements Template {
 
 	public registerInProject(projectPath: string, name: string, options?: AddTemplateArgs, defaultPath = false) {
 		if (!options.parentName) {
-			return;
+			options.parentName = "app";
+		}
+		if (!options.parentRoutingModulePath) {
+			options.parentRoutingModulePath = "src/app/app-routes.tsx";
 		}
 
 		if (this.projectType === "igr-es6") {
