@@ -160,6 +160,8 @@
 			"outFiles": ["${workspaceFolder}/**/*.js"],
 			"args": [
 				"add",
+				"--template=grid",
+				"--name=MyGridComponent"
 			]
 		},
 		{
