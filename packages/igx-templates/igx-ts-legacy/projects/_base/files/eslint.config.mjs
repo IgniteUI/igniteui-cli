@@ -3,15 +3,18 @@ import { FlatCompat } from '@eslint/eslintrc';
 const compat = new FlatCompat();
 
 export default [
-  ...compat.extends('plugin:@angular-eslint/recommended', 'plugin:@angular-eslint/template/process-inline-templates'),
   {
-    files: ['**/*.ts', '**/*.tsx'],
+    files: ['**/*.component.ts'],
     languageOptions: {
       parserOptions: {
         project: ['tsconfig.json'],
         createDefaultProgram: true,
       },
     },
+    ...compat.extends(
+      'plugin:@angular-eslint/recommended',
+      'plugin:@angular-eslint/template/process-inline-templates'
+    )[0],
     rules: {
       '@angular-eslint/directive-selector': [
         'error',
@@ -24,10 +27,24 @@ export default [
       '@angular-eslint/prefer-standalone': 'off'
     },
   },
-  ...compat.extends('plugin:@angular-eslint/template/recommended'),
   {
     files: ['**/*.html'],
-    rules: {},
+    languageOptions: {
+      parser: '@angular-eslint/template-parser'
+    },
+    ...compat.extends('plugin:@angular-eslint/template/recommended')[0]
+  },
+  {
+    files: ['**/*.ts'],
+    ignores: ['**/*.component.ts'],
+    languageOptions: {
+      parser: '@typescript-eslint/parser',
+      parserOptions: {
+        project: ['tsconfig.json'],
+        createDefaultProgram: true
+      },
+    },
+    ...compat.extends('plugin:@typescript-eslint/recommended')[0]
   },
   {
     ignores: ['projects/**/*']
