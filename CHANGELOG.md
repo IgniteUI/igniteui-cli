@@ -1,3 +1,11 @@
+# [14.5.7](https://github.com/IgniteUI/igniteui-cli/compare/v14.5.6...v14.5.7) (2025-09-23)
+
+## What's Changed
+* Fix lint errors in angular modules by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1423
+* chore: update wc@6.3.0 by @Lipata in https://github.com/IgniteUI/igniteui-cli/commit/bd0b53f6afd6ba5475587096a5f17cc7f810009d
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.5.6...v14.5.7
+
 # [14.5.6](https://github.com/IgniteUI/igniteui-cli/compare/v14.5.5...v14.5.6) (2025-09-18)
 
 ## What's Changed
