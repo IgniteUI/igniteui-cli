@@ -116,7 +116,22 @@ export async function updateWorkspace(rootPath: string): Promise<boolean> {
 					}
 				});
 			} else {
+				// For React and WebComponents projects without explicit workspaces,
+				// check for common project patterns like projects/* in addition to src/
 				workspaces.push(path.join(rootPath, "src"));
+				
+				// Check for projects/* pattern common in React demo/example repositories
+				// Only check if projects directory exists to avoid unnecessary glob calls
+				const projectsDir = path.join(rootPath, "projects");
+				if (fs.directoryExists(projectsDir)) {
+					const projectsPattern = "projects/*";
+					const projectsWorkspaces = fs.glob(rootPath, projectsPattern);
+					projectsWorkspaces.forEach(projectPath => {
+						if (fs.directoryExists(projectPath)) {
+							workspaces.push(projectPath);
+						}
+					});
+				}
 			}
 			break;
 		default:
