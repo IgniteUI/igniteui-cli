@@ -1,3 +1,10 @@
+# [14.5.8-beta.0](https://github.com/IgniteUI/igniteui-cli/compare/v14.5.7...v14.5.8-beta.0) (2025-09-24)
+
+## What's Changed
+* fix(react): enhance upgrade-packages to support workspace glob patterns for projects without explicit workspaces by @Copilot in https://github.com/IgniteUI/igniteui-cli/pull/TBD
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.5.7...v14.5.8-beta.0
+
 # [14.5.7](https://github.com/IgniteUI/igniteui-cli/compare/v14.5.6...v14.5.7) (2025-09-23)
 
 ## What's Changed

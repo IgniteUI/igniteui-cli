@@ -1,6 +1,6 @@
 {
   "name": "igniteui-cli",
-  "version": "14.5.7",
+  "version": "14.5.8-beta.0",
   "description": "CLI tool for creating Ignite UI projects",
   "keywords": [
     "CLI",
