@@ -1,3 +1,12 @@
+# [14.5.8](https://github.com/IgniteUI/igniteui-cli/compare/v14.5.7...v14.5.8) (2025-09-25)
+
+## What's Changed
+
+* ci(ng): update memory for tests by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1425
+* fix(react): enhance upgrade-packages to support workspace glob patterns for projects without explicit workspaces by @Copilot in https://github.com/IgniteUI/igniteui-cli/pull/1424
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.5.7...v14.5.8
+
 # [14.5.7](https://github.com/IgniteUI/igniteui-cli/compare/v14.5.6...v14.5.7) (2025-09-23)
 
 ## What's Changed
