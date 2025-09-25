@@ -521,6 +521,8 @@ title = 'igniteui-angular example';
 				}
 			};
 			(fsSpy.fileExists as jasmine.Spy).and.returnValue(true);
+			// Mock directoryExists to return false for projects directory to avoid extra glob calls
+			(fsSpy.directoryExists as jasmine.Spy).and.returnValue(false);
 			(fsSpy.glob as jasmine.Spy).and.returnValues // per workspace
 				([ "package.json" ], // root package.json
 				[], // html files
@@ -708,6 +710,8 @@ export default function Home() {
 				return fileEntry.content;
 			});
 			(fsSpy.fileExists as jasmine.Spy).and.returnValue(true);
+			// Mock directoryExists to return false for projects directory to avoid extra glob calls
+			(fsSpy.directoryExists as jasmine.Spy).and.returnValue(false);
 			spyOn(PackageManager, "ensureRegistryUser").and.returnValue(true);
 			expect(await updateWorkspace("")).toEqual(true);
 			for (const fileEntry of mockFileArray) {
@@ -926,11 +930,117 @@ export default defineConfig({
 			});
 			(fsSpy.fileExists as jasmine.Spy).and.returnValue(true);
 			spyOn(PackageManager, "ensureRegistryUser").and.returnValue(true);
+			// Mock directoryExists to return false for projects directory to avoid extra glob calls
+			(fsSpy.directoryExists as jasmine.Spy).and.returnValue(false);
 			expect(await updateWorkspace("")).toEqual(true);
 			for (const fileEntry of mockFileArray) {
 				expect((fsSpy.writeFile as jasmine.Spy)).toHaveBeenCalledWith(fileEntry.path, fileEntry.expected);
 			}
 			expect(fsSpy.glob).toHaveBeenCalledTimes(6);
+		});
+
+		it("Should detect and update React projects with projects/* structure but no explicit workspaces", async () => {
+			const mockFileArray: MockFile[] = [
+				{
+					path: "package.json",
+					content:
+					`{
+  "name": "grid-demos-react",
+  "dependencies": {
+      "igniteui-react-grids": "^18.5.1",
+      "some-package": "^0.0.0"
+	}
+}
+	`,
+					expected:
+					`{
+  "name": "grid-demos-react",
+  "dependencies": {
+    "@infragistics/igniteui-react-grids": "^18.5.1",
+    "some-package": "^0.0.0"
+  }
+}
+`
+				},
+				{
+					path: "projects/erp-hierarchical-grid/src/app.tsx",
+					content:
+`import { IgrGridModule, IgrGrid } from 'igniteui-react-grids';
+import 'igniteui-react-grids/grids/themes/light/bootstrap.css';
+
+export default function App() {
+	return <IgrGrid />;
+}`,
+					expected:
+`import { IgrGridModule, IgrGrid } from '@infragistics/igniteui-react-grids';
+import '@infragistics/igniteui-react-grids/grids/themes/light/bootstrap.css';
+
+export default function App() {
+	return <IgrGrid />;
+}`
+				},
+				{
+					path: "projects/finance-grid/src/components/GridComponent.tsx",
+					content:
+`import { IgrColumn } from 'igniteui-react-grids';
+
+export const GridComponent = () => {
+	return <IgrColumn />;
+}`,
+					expected:
+`import { IgrColumn } from '@infragistics/igniteui-react-grids';
+
+export const GridComponent = () => {
+	return <IgrColumn />;
+}`
+				}];
+
+			(fsSpy.fileExists as jasmine.Spy).and.returnValue(true);
+			// Mock directoryExists to return true for projects directories and src
+			(fsSpy.directoryExists as jasmine.Spy).and.callFake((dirPath: string) => {
+				return dirPath === "projects" || dirPath.endsWith("/projects") || dirPath.includes("projects/") || dirPath === "src" || dirPath.endsWith("/src");
+			});
+			
+			// Mock glob to simulate finding projects directories and files
+			(fsSpy.glob as jasmine.Spy).and.callFake((dirPath: string, pattern: string) => {
+				if (pattern === "package.json") {
+					return ["package.json"];
+				} else if (pattern === "projects/*") {
+					return ["projects/erp-hierarchical-grid", "projects/finance-grid"];
+				} else if (pattern === "**/*.tsx") {
+					if (dirPath.includes("erp-hierarchical-grid")) {
+						return ["projects/erp-hierarchical-grid/src/app.tsx"];
+					} else if (dirPath.includes("finance-grid")) {
+						return ["projects/finance-grid/src/components/GridComponent.tsx"];
+					} else if (dirPath.endsWith("/src")) {
+						return []; // src directory has no tsx files
+					}
+					return [];
+				} else if (pattern === "**/*.css") {
+					return [];
+				} else if (pattern === "**/package.json") {
+					return [];
+				} else if (pattern === "vite.config.ts") {
+					return [];
+				}
+				return [];
+			});
+			
+			(fsSpy.readFile as jasmine.Spy).and.callFake((filePath: string) => {
+				if (filePath.indexOf("package.json") > -1) {
+					return mockFileArray.find(entry => entry.path === "package.json").content;
+				}
+				const fileEntry = mockFileArray.find(entry => entry.path === filePath);
+				return fileEntry ? fileEntry.content : "";
+			});
+			spyOn(PackageManager, "ensureRegistryUser").and.returnValue(true);
+			spyOn(Util, "log");
+			expect(await updateWorkspace("")).toEqual(true);
+			for (const fileEntry of mockFileArray) {
+				expect((fsSpy.writeFile as jasmine.Spy)).toHaveBeenCalledWith(fileEntry.path, fileEntry.expected);
+			}
+			// Expect calls for: package.json, projects/*, src tsx files, src css files, src package.json, vite.config.ts, erp-hierarchical-grid tsx files, erp-hierarchical-grid css files, erp-hierarchical-grid package.json, finance-grid tsx files, finance-grid css files, finance-grid package.json
+			expect(fsSpy.glob).toHaveBeenCalledTimes(13);
 		});
 	});
 
@@ -994,6 +1104,8 @@ export default defineConfig({
 				}
 			};
 			(fsSpy.fileExists as jasmine.Spy).and.returnValue(true);
+			// Mock directoryExists to return false for projects directory to avoid extra glob calls
+			(fsSpy.directoryExists as jasmine.Spy).and.returnValue(false);
 			(fsSpy.glob as jasmine.Spy).and.returnValues // per workspace
 				([ "package.json" ], // root package.json
 				[], //index.html
@@ -1168,6 +1280,8 @@ export default class App extends LitElement {
 				return fileEntry.content;
 			});
 			(fsSpy.fileExists as jasmine.Spy).and.returnValue(true);
+			// Mock directoryExists to return false for projects directory to avoid extra glob calls
+			(fsSpy.directoryExists as jasmine.Spy).and.returnValue(false);
 			spyOn(PackageManager, "ensureRegistryUser").and.returnValue(true);
 			expect(await updateWorkspace("")).toEqual(true);
 			for (const fileEntry of mockFileArray) {
@@ -1373,6 +1487,8 @@ export default defineConfig(({ mode }) => {
 				return fileEntry ? fileEntry.content : "";
 			});
 			(fsSpy.fileExists as jasmine.Spy).and.returnValue(true);
+			// Mock directoryExists to return false for projects directory to avoid extra glob calls
+			(fsSpy.directoryExists as jasmine.Spy).and.returnValue(false);
 			spyOn(PackageManager, "ensureRegistryUser").and.returnValue(true);
 			expect(await updateWorkspace("")).toEqual(true);
 			for (const fileEntry of mockFileArray) {
