@@ -12,7 +12,7 @@ class IgrFinancialChartTemplate extends IgniteUIForReactTemplate {
 		this.name = "Financial Chart";
 		this.description = `charting component that makes it easy to visualize financial data by
 							using a simple and intuitive API.`;
-		this.packages = ["igniteui-react-charts@~19.0.0"]; // TODO: read version from igniteui-react-core in package.json
+		this.packages = ["igniteui-react-charts@~19.2.2"]; // TODO: read version from igniteui-react-core in package.json
 	}
 }
 module.exports = new IgrFinancialChartTemplate();
