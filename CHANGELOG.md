@@ -1,3 +1,16 @@
+# [14.6.0](https://github.com/IgniteUI/igniteui-cli/compare/v14.5.0...v14.6.0) (2025-10-02)
+
+🎉 This update includes:
+
+- `igniteui-angular` version [20.1.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/20.1.0).
+
+## What's Changed
+* feat(ng): update ig, ng and other libs by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1427
+* chore(react): update packages by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1428
+
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.5.8...v14.6.0
+
 # [14.5.8](https://github.com/IgniteUI/igniteui-cli/compare/v14.5.7...v14.5.8) (2025-09-25)
 
 ## What's Changed
