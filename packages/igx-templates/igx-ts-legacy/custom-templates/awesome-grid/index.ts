@@ -32,7 +32,7 @@ class IgxGridAwesomeTemplate extends IgniteUIForAngularTemplate {
 			},
 			{ import: "FormsModule", from: "@angular/forms" }
 		];
-		this.packages = ["igniteui-angular-core@~20.0.0", "igniteui-angular-charts@~20.0.0"];
+		this.packages = ["igniteui-angular-core@~20.1.0", "igniteui-angular-charts@~20.1.0"];
 	}
 }
 module.exports = new IgxGridAwesomeTemplate();
