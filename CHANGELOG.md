@@ -1,3 +1,10 @@
+# [14.6.1](https://github.com/IgniteUI/igniteui-cli/compare/v14.6.0...v14.6.1) (2025-10-06)
+
+## What's Changed
+* chore: update dv packages to 20.1 by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1429
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.6.0...v14.6.1
+
 # [14.6.0](https://github.com/IgniteUI/igniteui-cli/compare/v14.5.0...v14.6.0) (2025-10-02)
 
 🎉 This update includes:
