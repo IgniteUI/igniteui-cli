@@ -1,3 +1,12 @@
+# [14.6.2](https://github.com/IgniteUI/igniteui-cli/compare/v14.6.1...v14.6.2) (2025-10-07)
+
+## What's Changed
+* feat(react): add playwright and adjust tests; update packages; by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1430
+* chore: update react DV with stable version by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1432
+* chore(ng): disable eslint eqeqeq for html by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1431
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.6.1...v14.6.2
+
 # [14.6.1](https://github.com/IgniteUI/igniteui-cli/compare/v14.6.0...v14.6.1) (2025-10-06)
 
 ## What's Changed
