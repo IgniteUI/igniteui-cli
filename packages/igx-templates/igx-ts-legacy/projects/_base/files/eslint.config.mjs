@@ -29,6 +29,9 @@ export default [
   },
   {
     files: ['**/*.html'],
+    rules: {
+      eqeqeq: 'off'
+    },
     languageOptions: {
       parser: '@angular-eslint/template-parser'
     },
