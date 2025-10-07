@@ -11,7 +11,7 @@ class IgrTsCategoryChartTemplate extends IgniteUIForReactTemplate {
 		this.name = "Category Chart";
 		this.description = `makes visualizing category data easy. Simplifies the complexities
 							of the data visualization domain into manageable API`;
-		this.packages = ["igniteui-react-charts@~19.2.2"];
+		this.packages = ["igniteui-react-charts@~19.2.3"];
 	}
 }
 module.exports = new IgrTsCategoryChartTemplate();

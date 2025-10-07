@@ -26,7 +26,9 @@ export default [
   ...compat.extends('plugin:@angular-eslint/template/recommended'),
   {
     files: ['**/*.html'],
-    rules: {},
+    rules: {
+      eqeqeq: 'off'
+    },
   },
   {
     ignores: ['projects/**/*']

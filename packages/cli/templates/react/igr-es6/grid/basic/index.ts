@@ -15,8 +15,8 @@ class GridTemplate extends IgniteUIForReactTemplate {
 		this.components = ["Grid"];
 		this.controlGroup = "Data Grids";
 		// TODO: read version from igniteui-react-core in package.json
-		this.packages = ["igniteui-react-grids@~19.2.2", "igniteui-react-inputs@~19.2.2",
-			"igniteui-react-layouts@~19.2.2"];
+		this.packages = ["igniteui-react-grids@~19.2.3", "igniteui-react-inputs@~19.2.3",
+			"igniteui-react-layouts@~19.2.3"];
 
 		this.hasExtraConfiguration = false;
 	}
