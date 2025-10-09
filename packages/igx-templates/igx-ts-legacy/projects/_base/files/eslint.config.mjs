@@ -29,13 +29,13 @@ export default [
   },
   {
     files: ['**/*.html'],
-    rules: {
-      eqeqeq: 'off'
-    },
     languageOptions: {
       parser: '@angular-eslint/template-parser'
     },
-    ...compat.extends('plugin:@angular-eslint/template/recommended')[0]
+    ...compat.extends('plugin:@angular-eslint/template/recommended')[0],
+    rules: {
+      eqeqeq: 'off'
+    },
   },
   {
     files: ['**/*.ts'],
