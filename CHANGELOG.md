@@ -1,3 +1,11 @@
+# [14.6.3](https://github.com/IgniteUI/igniteui-cli/compare/v14.6.2...v14.6.3) (2025-10-09)
+
+## What's Changed
+* fix(ng): move eslint eqeqeq rule by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1433
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.6.2...v14.6.3
+
+
 # [14.6.2](https://github.com/IgniteUI/igniteui-cli/compare/v14.6.1...v14.6.2) (2025-10-07)
 
 ## What's Changed
