@@ -27,7 +27,9 @@
   },
   "files": [
     "dist/**/*",
-    "README.md"
+    "README.md",
+    "USAGE.md",
+    "claude_desktop_config.example.json"
   ],
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.20.0",
