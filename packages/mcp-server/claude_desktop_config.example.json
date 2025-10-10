@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "igniteui": {
+      "command": "npx",
+      "args": ["-y", "@igniteui/mcp-server"]
+    }
+  }
+}

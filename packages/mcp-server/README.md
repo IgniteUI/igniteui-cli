@@ -59,7 +59,12 @@ Create a new Ignite UI project for the specified framework.
 **Parameters:**
 - `name` (required): Project name
 - `framework` (required): One of `angular`, `react`, `webcomponents`, or `jquery`
-- `projectType` (optional): Project type (e.g., `igx-ts` for Angular, `igr-es6` or `igr-ts` for React, `igc-ts` for Web Components)
+- `projectType` (optional): Project type specific to the framework:
+  - Angular: `igx-ts` (TypeScript with Ignite UI)
+  - React: `es6`, `igr-es6`, or `igr-ts` (TypeScript with Ignite UI)
+  - Web Components: `igc-ts` (TypeScript with Ignite UI)
+  - jQuery: `js` (JavaScript)
+  - If not specified, uses the first available type for the framework
 - `template` (optional): Project template (e.g., `empty`, `side-nav`, `side-nav-auth`)
 - `theme` (optional): Theme name
 - `skipGit` (optional): Skip Git initialization (default: false)
@@ -77,7 +82,9 @@ Create a new Ignite UI project for the specified framework.
 
 ### 2. upgrade_to_licensed
 
-Upgrade an Ignite UI project from trial to licensed version.
+Upgrade an Ignite UI project from trial to licensed version. This command updates the package.json file to use the licensed Ignite UI packages instead of trial versions. This is useful when you have obtained a license for Ignite UI and want to upgrade an existing project.
+
+**Note**: This command works with Angular (igx-ts), React (igr-ts), and Web Components (igc-ts) projects. jQuery projects do not support this upgrade path.
 
 **Parameters:**
 - `projectPath` (optional): Path to project directory (defaults to current directory)
