@@ -5,7 +5,6 @@ const compat = new FlatCompat();
 export default [
   {
     files: ['**/*.ts', '**/*.tsx'],
-    ignores: ['**/*.spec.ts'],
     languageOptions: {
       parser: await import('@typescript-eslint/parser'),
       parserOptions: {
