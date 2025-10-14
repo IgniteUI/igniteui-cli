@@ -3,34 +3,27 @@ import { FlatCompat } from '@eslint/eslintrc';
 const compat = new FlatCompat();
 
 export default [
-  ...compat.extends('plugin:@angular-eslint/recommended', 'plugin:@angular-eslint/template/process-inline-templates'),
   {
     files: ['**/*.ts', '**/*.tsx'],
     languageOptions: {
+      parser: await import('@typescript-eslint/parser'),
       parserOptions: {
         project: ['tsconfig.json'],
         createDefaultProgram: true,
       },
     },
     rules: {
-      '@angular-eslint/directive-selector': [
-        'error',
-        { type: 'attribute', prefix: 'app', style: 'camelCase' },
-      ],
-      '@angular-eslint/component-selector': [
-        'error',
-        { type: 'element', prefix: 'app', style: 'kebab-case' },
-      ]
+      // Basic TypeScript linting without Angular template processing
     },
   },
-  ...compat.extends('plugin:@angular-eslint/template/recommended'),
   {
     files: ['**/*.html'],
+    ...compat.extends('plugin:@angular-eslint/template/recommended')[0],
     rules: {
       eqeqeq: 'off'
     },
   },
   {
-    ignores: ['projects/**/*']
+    ignores: ['projects/**/*', '**/*.spec.ts']
   },
 ];
