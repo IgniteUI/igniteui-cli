@@ -38,6 +38,7 @@ This monorepo contains several packages that combine into the `igniteui-cli`:
 | [@igniteui/angular-templates](https://www.npmjs.com/package/@igniteui/angular-templates) | Contains the template definitions for Angular components | [packages/igx-templates](./packages/igx-templates) |
 | [@igniteui/angular-schematics](https://www.npmjs.com/package/@igniteui/angular-schematics) | IgniteUI CLI implementation to be used with Angular CLI's schematics engine | [packages/ng-schematics](./packages/ng-schematics) |
 | [igniteui-cli](https://www.npmjs.com/package/igniteui-cli) | Standalone IgniteUI CLI tool for React, jQuery and Angular | [packages/cli](./packages/cli) |
+| [@igniteui/mcp-server](https://www.npmjs.com/package/@igniteui/mcp-server) | Model Context Protocol (MCP) server for AI-assisted project creation | [packages/mcp-server](./packages/mcp-server) |
 
 ## Table of Contents
 
@@ -136,6 +137,40 @@ ig list
 ig build
 ig start
 ```
+
+## MCP Server
+
+The Ignite UI CLI now includes a Model Context Protocol (MCP) server that enables AI assistants like Claude to create and manage Ignite UI projects programmatically. The MCP server exposes three main tools:
+
+1. **create_igniteui_project** - Create new projects for Angular, React, Web Components, or jQuery
+2. **upgrade_to_licensed** - Upgrade projects from trial to licensed versions
+3. **generate_from_docs** - Access documentation and generate component code
+
+### Installation
+
+```bash
+npm install -g @igniteui/mcp-server
+```
+
+### Usage with Claude Desktop
+
+Add to your Claude Desktop configuration:
+
+**macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
+**Windows**: `%APPDATA%/Claude/claude_desktop_config.json`
+
+```json
+{
+  "mcpServers": {
+    "igniteui": {
+      "command": "npx",
+      "args": ["-y", "@igniteui/mcp-server"]
+    }
+  }
+}
+```
+
+For more details, see the [MCP Server documentation](./packages/mcp-server/README.md).
 
 ## Schematics
 You can also add `Ignite UI for Angular` components to your projects by using the `igniteui/angular-schematics` package. It included schematic definitions for most of the logic present in the [`igniteui-cli`](/packages/cli). These can be called in any existing Angular project or even when creating one. You can learn more about the schematics package on from its [readme](/package/ng-schematics).
