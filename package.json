@@ -56,7 +56,6 @@
 		"all": true
 	},
 	"dependencies": {
-		"example-package": "^0.0.1",
 		"handlebars": "4.7.8"
 	},
 	"devDependencies": {
