@@ -1,4 +1,4 @@
-import { exec } from "child_process";
+import { spawn } from "child_process";
 import * as path from "path";
 import { TemplateManager } from "../../cli/lib/TemplateManager";
 import { Config, FS_TOKEN, IFileSystem, ProjectTemplate } from "../types";
@@ -149,10 +149,10 @@ export class PackageManager {
 
 	public static addPackage(packageName: string, verbose: boolean = false): boolean {
 		const managerCommand = this.getManager();
-		const command = this.getInstallCommand(managerCommand, packageName);
+		const args = this.getInstallArgs(packageName);
 		try {
 			// tslint:disable-next-line:object-literal-sort-keys
-			Util.execSync(command, { stdio: "pipe", encoding: "utf8" });
+			Util.spawnSync(managerCommand, args, { stdio: "pipe", encoding: "utf8" });
 		} catch (error) {
 			Util.log(`Error installing package ${packageName} with ${managerCommand}`);
 			if (verbose) {
@@ -165,7 +165,7 @@ export class PackageManager {
 	}
 
 	public static async queuePackage(packageName: string, verbose = false) {
-		const command = this.getInstallCommand(this.getManager(), packageName).replace("--save", "--no-save");
+		const args = this.getInstallArgs(packageName).map(arg => arg === '--save' ? '--no-save' : arg);
 		const [packName, version] = packageName.split(/@(?=[^\/]+$)/);
 		const packageJSON = this.getPackageJSON();
 		if (!packageJSON.dependencies) {
@@ -190,13 +190,24 @@ export class PackageManager {
 		// D.P. Concurrent install runs should be supported
 		// https://github.com/npm/npm/issues/5948
 		// https://github.com/npm/npm/issues/2500
+		const managerCommand = this.getManager();
 		const task = new Promise<{ packageName, error, stdout, stderr }>((resolve, reject) => {
-			const child = exec(
-				command, {},
-				(error, stdout, stderr) => {
-					resolve({ packageName, error, stdout, stderr });
-				}
-			);
+			const child = spawn(managerCommand, args);
+			let stdout = '';
+			let stderr = '';
+			child.stdout?.on('data', (data) => {
+				stdout += data.toString();
+			});
+			child.stderr?.on('data', (data) => {
+				stderr += data.toString();
+			});
+			child.on('close', (code) => {
+				const error = code !== 0 ? new Error(`Process exited with code ${code}`) : null;
+				resolve({ packageName, error, stdout, stderr });
+			});
+			child.on('error', (err) => {
+				resolve({ packageName, error: err, stdout, stderr });
+			});
 		});
 		task["packageName"] = packName;
 		this.installQueue.push(task);
@@ -279,6 +290,10 @@ export class PackageManager {
 			default:
 				return `${managerCommand} install ${packageName} --quiet --save`;
 		}
+	}
+
+	private static getInstallArgs(packageName: string): string[] {
+		return ['install', packageName, '--quiet', '--save'];
 	}
 
 	private static getManager(/*config:Config*/): string {

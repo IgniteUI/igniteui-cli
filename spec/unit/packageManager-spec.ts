@@ -246,15 +246,16 @@ describe("Unit - Package Manager", () => {
 		spyOn(ProjectConfig, "localConfig").and.callFake(() => mockProjectConfig);
 		spyOn(ProjectConfig, "setConfig");
 		spyOn(TestPackageManager, "addPackage").and.callThrough();
-		spyOn(Util, "execSync");
+		spyOn(Util, "spawnSync");
 		spyOn(Util, "log");
 		spyOn(TestPackageManager, "removePackage");
 		spyOn(TestPackageManager, "getPackageJSON").and.callFake(() => mockDeps);
 
 		await TestPackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
 		expect(TestPackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@"~20.1"`, true);
-		expect(Util.execSync).toHaveBeenCalledWith(
-			`npm install @infragistics/ignite-ui-full@"~20.1" --quiet --save`,
+		expect(Util.spawnSync).toHaveBeenCalledWith(
+			`npm`,
+			['install', `@infragistics/ignite-ui-full@"~20.1"`, '--quiet', '--save'],
 			jasmine.any(Object)
 		);
 		expect(TestPackageManager.removePackage).toHaveBeenCalledWith("ignite-ui", true);
@@ -264,8 +265,9 @@ describe("Unit - Package Manager", () => {
 		mockTemplateMgr.generateConfig = mockProjectConfig;
 		await TestPackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
 		expect(TestPackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@"^17.1"`, true);
-		expect(Util.execSync).toHaveBeenCalledWith(
-			`npm install @infragistics/ignite-ui-full@"^17.1" --quiet --save`,
+		expect(Util.spawnSync).toHaveBeenCalledWith(
+			`npm`,
+			['install', `@infragistics/ignite-ui-full@"^17.1"`, '--quiet', '--save'],
 			jasmine.any(Object)
 		);
 
@@ -274,8 +276,9 @@ describe("Unit - Package Manager", () => {
 		mockTemplateMgr.generateConfig = mockProjectConfig;
 		await TestPackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
 		expect(TestPackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@">=0.1.0 <0.2.0"`, true);
-		expect(Util.execSync).toHaveBeenCalledWith(
-			`npm install @infragistics/ignite-ui-full@">=0.1.0 <0.2.0" --quiet --save`,
+		expect(Util.spawnSync).toHaveBeenCalledWith(
+			`npm`,
+			['install', `@infragistics/ignite-ui-full@">=0.1.0 <0.2.0"`, '--quiet', '--save'],
 			jasmine.any(Object)
 		);
 	});
@@ -376,7 +379,7 @@ describe("Unit - Package Manager", () => {
 	});
 	it("Should run addPackage properly with error code", async () => {
 		spyOn(Util, "log");
-		spyOn(Util, "execSync").and.callFake(() => {
+		spyOn(Util, "spawnSync").and.callFake(() => {
 			const err = new Error("Error");
 			err["status"] = 1;
 			throw err;
@@ -385,17 +388,24 @@ describe("Unit - Package Manager", () => {
 		expect(Util.log).toHaveBeenCalledTimes(2);
 		expect(Util.log).toHaveBeenCalledWith(`Error installing package example-package with npm`);
 		expect(Util.log).toHaveBeenCalledWith(`Error`);
-		expect(Util.execSync).toHaveBeenCalledWith(
-			`npm install example-package --quiet --save`, { stdio: "pipe", encoding: "utf8" });
+		expect(Util.spawnSync).toHaveBeenCalledWith(
+			`npm`, ['install', 'example-package', '--quiet', '--save'], { stdio: "pipe", encoding: "utf8" });
 	});
 	it("Should run addPackage properly without error code", async () => {
 		spyOn(Util, "log");
-		spyOn(Util, "execSync").and.returnValue("");
+		spyOn(Util, "spawnSync").and.returnValue({
+			status: 0,
+			pid: 0,
+			output: [],
+			stdout: "",
+			stderr: "",
+			signal: null
+		});
 		PackageManager.addPackage("example-package", true);
 		expect(Util.log).toHaveBeenCalledTimes(1);
 		expect(Util.log).toHaveBeenCalledWith(`Package example-package installed successfully`);
-		expect(Util.execSync).toHaveBeenCalledWith(
-			`npm install example-package --quiet --save`, { stdio: "pipe", encoding: "utf8" });
+		expect(Util.spawnSync).toHaveBeenCalledWith(
+			`npm`, ['install', 'example-package', '--quiet', '--save'], { stdio: "pipe", encoding: "utf8" });
 	});
 
 	it("queuePackage should start package install", async () => {
@@ -412,12 +422,16 @@ describe("Unit - Package Manager", () => {
 		};
 		// should ignore already installed
 		spyOn(App.container, "get").and.returnValue(mockFs);
-		const execSpy = spyOn(child_process, "exec");
+		const spawnSpy = spyOn(child_process, "spawn").and.returnValue({
+			stdout: { on: jasmine.createSpy() },
+			stderr: { on: jasmine.createSpy() },
+			on: jasmine.createSpy()
+		} as any);
 		PackageManager.queuePackage("test-pack");
 		expect(Util.log).toHaveBeenCalledTimes(0);
-		expect(child_process.exec).toHaveBeenCalledTimes(1);
-		expect(child_process.exec).toHaveBeenCalledWith(
-			`npm install test-pack --quiet --no-save`, {}, jasmine.any(Function));
+		expect(child_process.spawn).toHaveBeenCalledTimes(1);
+		expect((child_process.spawn as any)).toHaveBeenCalledWith(
+			`npm`, ['install', 'test-pack', '--quiet', '--no-save']);
 	});
 
 	it("queuePackage should ignore existing package installs", async () => {
@@ -435,15 +449,19 @@ describe("Unit - Package Manager", () => {
 		// should ignore already installed
 		spyOn(App.container, "get").and.returnValue(mockFs);
 		spyOn(Util, "log");
-		const execSpy = spyOn(child_process, "exec");
+		const spawnSpy = spyOn(child_process, "spawn").and.returnValue({
+			stdout: { on: jasmine.createSpy() },
+			stderr: { on: jasmine.createSpy() },
+			on: jasmine.createSpy()
+		} as any);
 		PackageManager.queuePackage("test-pack");
 		expect(Util.log).toHaveBeenCalledTimes(0);
-		expect(child_process.exec).toHaveBeenCalledTimes(0);
+		expect(child_process.spawn).toHaveBeenCalledTimes(0);
 
 		// should ignore if already in queue
 		PackageManager.queuePackage("test-pack2");
 		PackageManager.queuePackage("test-pack2");
-		expect(child_process.exec).toHaveBeenCalledTimes(1);
+		expect(child_process.spawn).toHaveBeenCalledTimes(1);
 	});
 
 	it("Should wait for and log queued package installs", async () => {
@@ -461,17 +479,41 @@ describe("Unit - Package Manager", () => {
 		// spyOn(require("module"), "_load").and.returnValue(mockRequire);
 		spyOn(Util, "log");
 		spyOn(App.container, "get").and.returnValue(mockFs);
-		const fakeExec = (_cmd: any, _opts: any, callback: (error: Error | null, stdout: string, stderr: string) => void) => {
-			setTimeout(() => callback(null, 'stdout data', 'stderr data'), 20);
-		};
-
-		(fakeExec as any).__promisify__ = () => {
-			return new Promise((resolve, reject) => {
-				setTimeout(() => resolve({ stdout: 'stdout data', stderr: 'stderr data' }), 20);
+		
+		const createMockChild = (exitCode: number, stdoutData: string, stderrData: string) => {
+			const mockChild = {
+				stdout: { on: jasmine.createSpy() },
+				stderr: { on: jasmine.createSpy() },
+				on: jasmine.createSpy()
+			};
+			
+			// Setup stdout data handler
+			mockChild.stdout.on.and.callFake((event: string, handler: any) => {
+				if (event === 'data') {
+					setTimeout(() => handler(Buffer.from(stdoutData)), 10);
+				}
 			});
+			
+			// Setup stderr data handler
+			mockChild.stderr.on.and.callFake((event: string, handler: any) => {
+				if (event === 'data') {
+					setTimeout(() => handler(Buffer.from(stderrData)), 10);
+				}
+			});
+			
+			// Setup close handler
+			mockChild.on.and.callFake((event: string, handler: any) => {
+				if (event === 'close') {
+					setTimeout(() => handler(exitCode), 20);
+				}
+			});
+			
+			return mockChild;
 		};
 
-		const execSpy = spyOn(child_process, 'exec').and.callFake(fakeExec as any);
+		const spawnSpy = spyOn(child_process, 'spawn').and.callFake(() => {
+			return createMockChild(0, 'stdout data', 'stderr data') as any;
+		});
 
 		PackageManager.queuePackage("test-pack");
 		PackageManager.queuePackage("test-pack2");
@@ -484,17 +526,9 @@ describe("Unit - Package Manager", () => {
 		resetSpy(Util.log);
 
 		// on error
-        const fakeExecWithError = (_cmd: any, _opts: any, callback: (error: Error | null, stdout: string, stderr: string) => void) => {
-            setTimeout(() => callback(new Error('Execution failed'), '', 'stderr'), 20);
-        };
-
-        (fakeExecWithError as any).__promisify__ = () => {
-            return new Promise((resolve, reject) => {
-                setTimeout(() => reject(new Error('Execution failed')), 20);
-            });
-        };
-
-        execSpy.and.callFake(fakeExecWithError as any);
+		spawnSpy.and.callFake(() => {
+			return createMockChild(1, '', 'stderr') as any;
+		});
 
 		PackageManager.queuePackage("test-pack3");
 		await PackageManager.flushQueue(true, true);
