@@ -7,11 +7,16 @@ import { PositionalArgs, StartCommandType } from "./types";
 import { ArgumentsCamelCase } from "yargs";
 
 const execSyncNpmStart = (port: number, options: ExecSyncOptions): void => {
+	const args = ['start'];
 	if (port) {
-		Util.execSync(`npm start -- --port=${port}`, options);
-		return;
+		// Validate port is a number to prevent command injection
+		if (!Number.isInteger(port) || port < 0 || port > 65535) {
+			Util.error(`Invalid port number: ${port}`, "red");
+			return;
+		}
+		args.push('--', `--port=${port}`);
 	}
-	Util.execSync(`npm start`, options);
+	Util.spawnSync('npm', args, options);
 };
 
 const command: StartCommandType = {
