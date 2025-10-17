@@ -1,4 +1,11 @@
-# [14.6.3](https://github.com/IgniteUI/igniteui-cli/compare/v14.6.2...v14.6.3) (2025-10-09)
+# [14.6.4](https://github.com/IgniteUI/igniteui-cli/compare/v14.6.3...v14.6.4) (2025-10-14)
+
+## What's Changed
+* ci: temporarily disable spec file linting by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1435
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.6.3...v14.6.4
+
+
 
 ## What's Changed
 * fix(ng): move eslint eqeqeq rule by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1433
