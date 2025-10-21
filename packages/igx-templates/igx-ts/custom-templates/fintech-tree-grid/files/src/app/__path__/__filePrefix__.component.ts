@@ -70,11 +70,11 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
   @ViewChild('slider1', { static: true }) public volumeSlider!: IgxSliderComponent;
   @ViewChild('slider2', { static: true }) public intervalSlider!: IgxSliderComponent;
 
-  public showToolbar: boolean = true;
+  public showToolbar = true;
   public selectionMode: GridSelectionMode = 'multiple';
-  public theme: boolean = false;
-  public volume: number = 1000;
-  public frequency: number = 500;
+  public theme = false;
+  public volume = 1000;
+  public frequency = 500;
   public data: any[] = [];
   public controls = [
     {
@@ -111,7 +111,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
       field: 'Price'
     },
     {
-      aggregate: (parent: any, data: any[]) => {
+      aggregate: (parent: any) => {
         return parent.Change / (parent.Price - parent.Change) * 100;
       },
       field: 'Change(%)'
@@ -137,7 +137,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
   };
 
   private subscription: any;
-  private selectedButton: number = -1;
+  private selectedButton = -1;
   private timer: any;
   private volumeChanged: any;
 
@@ -150,7 +150,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
     this.grid1.sortingExpressions = [{ fieldName: this.groupColumnKey, dir: SortingDirection.Desc }];
     this.volumeChanged = this.volumeSlider.valueChange.pipe(debounce(() => timer(200)));
     this.volumeChanged.subscribe(
-      (x: any) => {
+      () => {
         this.localService.getData(this.volume);
       },
       (err: string) => console.log('Error: ' + err));
@@ -241,11 +241,10 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
   private strongPositive = (rowData: any): boolean => {
     return rowData['Change(%)'] >= 1;
   }
-  private strongNegative = (rowData: any, key: string): boolean => {
+  private strongNegative = (rowData: any): boolean => {
     return rowData['Change(%)'] <= -1;
   }
 
-  // tslint:disable:member-ordering
   public trends = {
     changeNeg: this.changeNegative,
     changePos: this.changePositive,
@@ -261,7 +260,6 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
     strongNegative2: this.strongNegative,
     strongPositive2: this.strongPositive
   };
-  // tslint:enable:member-ordering
 
   private disableOtherButtons(ind: number, disableButtons: boolean): void {
     if (this.subscription) {
@@ -308,10 +306,8 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
    */
   private updateRandomPrices(data: any[]): any {
     const newData = data.slice();
-    let y = 0;
     for (let i = Math.round(Math.random() * 10); i < newData.length; i += Math.round(Math.random() * 10)) {
       this.randomizeObjectData(newData[i]);
-      y++;
     }
     return newData;
   }

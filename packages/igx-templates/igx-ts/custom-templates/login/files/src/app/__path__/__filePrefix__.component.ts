@@ -56,6 +56,7 @@ export class <%=ClassName%>Component {
   }
 
   tryLogin() {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const loginInfo = this.loginForm.value;
     // use loginInfo
     this.showLogin = false;
@@ -72,6 +73,7 @@ export class <%=ClassName%>Component {
   }
 
   tryRegister() {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const registerInfo = this.registrationForm.value;
     // use registerInfo
     this.showRegister = false;

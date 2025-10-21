@@ -1,4 +1,3 @@
-/* tslint:disable */
 export const REGIONS: any[] = [
   {
     "Region": "North America",
@@ -48,7 +47,6 @@ export const MOCKFINANCEDATA: any[] = [
   "IndSect": "Consumer, Cyclical",
   "IndSubg": "Airlines",
   "SecType": "PUBLIC",
-  // tslint:disable-next-line:object-literal-sort-keys
   "CpnTyp": "FIXED",
   "IssuerN": "AMERICAN AIRLINES GROUP",
   "Moodys": "WR",
@@ -887,7 +885,6 @@ interface IResponse {
   data: any[];
   recordsUpdated: number;
   }
-/* tslint:enable */
 export class FinancialData {
   public generateData(count: number): any[] {
     const currData = [];
@@ -900,9 +897,6 @@ export class FinancialData {
       const region = REGIONS[this.generateRandomNumber(0, 5)];
       dataObj.Region = region.Region;
       dataObj.Country = this.randomizeCountry(region);
-      // for (let y = 0; y < 80; y++) {
-      //   dataObj["Text" + y] = "Text";
-      // }
 
       for (const mockData of MOCKFINANCEDATA) {
         for (const prop in mockData) {
@@ -930,12 +924,10 @@ export class FinancialData {
 
   public updateRandomPrices(data: any[]): any {
     const currData = data.slice(0, data.length + 1);
-    let y = 0;
     for (let i = Math.round(Math.random() * 10); i < data.length; i += Math.round(Math.random() * 10)) {
       const dataObj = Object.assign({}, data[i]);
       this.randomizeObjectData(dataObj);
       currData[i] = dataObj;
-      y++;
     }
      // return {data: currData, recordsUpdated: y };
     return currData;

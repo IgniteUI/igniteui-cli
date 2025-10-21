@@ -7,7 +7,7 @@ export class DataService {
   private nodeData: SelectableNodeData[] = [];
   private selectedNode: Set<string> = new Set<string>();
   private deselectedNode: Set<string> = new Set<string>();
-  private data$: ReplaySubject<SelectableNodeData[]> = new ReplaySubject();
+  private data$: ReplaySubject<SelectableNodeData[]> = new ReplaySubject<SelectableNodeData[]>();
   public get data(): Observable<SelectableNodeData[]> {
     return this.data$;
   }
