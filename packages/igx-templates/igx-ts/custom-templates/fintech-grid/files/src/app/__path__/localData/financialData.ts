@@ -900,7 +900,7 @@ export class FinancialData {
 
       for (const mockData of MOCKFINANCEDATA) {
         for (const prop in mockData) {
-          if (mockData.hasOwnProperty(prop)) {
+          if (Object.prototype.hasOwnProperty.call(mockData, prop)) {
             dataObj[prop] = mockData[prop];
           }
         }

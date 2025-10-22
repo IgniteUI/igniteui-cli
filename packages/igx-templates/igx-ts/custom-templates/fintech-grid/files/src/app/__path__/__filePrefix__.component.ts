@@ -250,7 +250,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
     }
   }
 
-  public onChange(event: IChangeCheckboxEventArgs): void {
+  public onChange(): void {
     if (this.grid1.groupingExpressions.length > 0) {
       this.grid1.groupingExpressions = [];
     } else {
@@ -477,9 +477,8 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
    */
   private updateRandomPrices(data: any[]): any {
     const newData = data.slice();
-    for (let i = Math.round(Math.random() * 10), y = 0; i < data.length; i += Math.round(Math.random() * 10)) {
+    for (let i = Math.round(Math.random() * 10); i < data.length; i += Math.round(Math.random() * 10)) {
       newData[i] = this.randomizeObjectData(data[i]);
-      y++;
     }
     return newData;
   }

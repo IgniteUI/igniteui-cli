@@ -32,7 +32,7 @@ module.exports = tseslint.config(
       ],
       // Relax rules
       "@typescript-eslint/no-explicit-any": "off",
-      "@angular-eslint/prefer-inject": "warn",
+      "@angular-eslint/prefer-inject": "off",
     },
   },
   {
@@ -41,7 +41,6 @@ module.exports = tseslint.config(
       ...angular.configs.templateRecommended,
       // ...angular.configs.templateAccessibility,
     ],
-    rules: {
-    },
+    rules: {},
   }
 );

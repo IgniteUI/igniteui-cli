@@ -17,7 +17,6 @@ import {
   IgxOverlayService,
   IgxStringFilteringOperand,
   IgxSummaryResult,
-  OverlayClosingEventArgs,
   OverlaySettings,
   IgxSwitchComponent,
   IgxInputGroupComponent,
