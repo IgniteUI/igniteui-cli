@@ -5,8 +5,8 @@
     "test": "karma start"
   },
   "dependencies": {
-    "jquery": ">=1.9.1",
-    "jquery-ui": ">=1.10.5",
+    "jquery": "^3.7.1",
+    "jquery-ui": "^1.13.3",
     "ignite-ui": "~21.2"
   },
   "devDependencies": {
