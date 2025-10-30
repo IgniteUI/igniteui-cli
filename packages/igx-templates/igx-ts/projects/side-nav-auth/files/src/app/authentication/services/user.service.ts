@@ -16,7 +16,6 @@ const USER_TOKEN = 'currentUser';
   providedIn: 'root'
 })
 export class UserService {
-  // tslint:disable-next-line:variable-name
   private _currentUser: User | null;
   /** Current logged in user, if any */
   public get currentUser() { return this._currentUser; }

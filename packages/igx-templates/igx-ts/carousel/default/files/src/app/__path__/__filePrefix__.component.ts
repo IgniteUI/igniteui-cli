@@ -14,7 +14,6 @@ export class <%=ClassName%>Component implements OnInit {
   public interval = 3000;
   public pause = true;
   public loop = true;
-  constructor() { }
 
   public ngOnInit() {
     this.addNewSlide();
