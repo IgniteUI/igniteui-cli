@@ -55,7 +55,6 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 
 		const anchorWrapper = {
 			start: `<a href="`,
-			// tslint:disable-next-line:object-literal-sort-keys
 			href: ``,
 			middle: `" target="_blank">`,
 			text: ``,

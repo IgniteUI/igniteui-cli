@@ -20,7 +20,6 @@ export class MicrosoftProvider extends BaseOidcProvider {
     // Microsoft OIDC doesn't support CORS for keys discovery URIs, intended for backend
     // See https://stackoverflow.com/a/44688644
     // Example implementation:
-    // tslint:disable-next-line:max-line-length
     // https://blogs.msdn.microsoft.com/mihansen/2018/07/12/net-core-angular-app-with-openid-connection-implicit-flow-authentication-angular-auth-oidc-client/
     // https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-protocols-oidc
     this.oidcConfigService.wellKnownEndpoints.jwks_uri = MicrosoftProvider.keysURL;

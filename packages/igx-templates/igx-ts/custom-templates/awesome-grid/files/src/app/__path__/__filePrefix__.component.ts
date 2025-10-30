@@ -17,7 +17,6 @@ import {
   IgxOverlayService,
   IgxStringFilteringOperand,
   IgxSummaryResult,
-  OverlayClosingEventArgs,
   OverlaySettings,
   IgxSwitchComponent,
   IgxInputGroupComponent,
@@ -86,10 +85,10 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy, AfterViewInit
   public overlaySettings!: OverlaySettings;
   public winner: Athlete = { Avatar: '', Name: '' } as Athlete;
   public top3: Athlete[] = [];
-  private _live: boolean = true;
+  private _live = true;
   private _timer: any;
   private windowWidth: any;
-  private _overlayId: string = '';
+  private _overlayId = '';
 
   get live(): boolean {
     return this._live;
@@ -127,7 +126,7 @@ export class <%=ClassName%>Component implements OnInit, OnDestroy, AfterViewInit
     this.localData.forEach(rec => this.getSpeed(rec));
     this.windowWidth = window.innerWidth;
     this._timer = setInterval(() => this.ticker(), 1500);
-    this.overlayService.closing.subscribe((event: OverlayClosingEventArgs) => {
+    this.overlayService.closing.subscribe(() => {
       this.showOverlay = false;
     });
   }

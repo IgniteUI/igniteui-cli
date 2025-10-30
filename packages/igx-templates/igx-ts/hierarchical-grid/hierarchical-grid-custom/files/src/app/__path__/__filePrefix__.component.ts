@@ -12,7 +12,11 @@ export class <%=ClassName%>Component {
   public localData: Artist[] = ARTISTS;
 
   public toggleColumn(col: ColumnType, event: MouseEvent): void {
-    col.pinned ? col.unpin() : col.pin();
+    if (col.pinned) {
+      col.unpin();
+    } else {
+      col.pin();
+    }
     event.stopPropagation();
   }
 }

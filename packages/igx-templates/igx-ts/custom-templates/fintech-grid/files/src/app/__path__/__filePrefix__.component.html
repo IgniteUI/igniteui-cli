@@ -5,7 +5,7 @@
         <igx-switch [checked]="true" [(ngModel)]="theme" (change)="onThemeChanged($event)">Dark</igx-switch>
       </div>
       <div class="control-item">
-        <igx-switch [checked]="grouped" (change)="onChange($event)"
+        <igx-switch [checked]="grouped" (change)="onChange()"
           cssClass="fintech-sample-switch">
           Grouped</igx-switch>
       </div>
@@ -203,7 +203,7 @@
 </div>
 
 <igx-dialog #dialog [closeOnOutsideSelect]="true" (closed)="onCloseHandler()">
-  <div (keydown)="closeDialog($event)">
+  <div (keydown)="closeDialog($event)" tabindex="0">
     <igx-dialog-title> Chart </igx-dialog-title>
 
     <div style="padding: 20px">
