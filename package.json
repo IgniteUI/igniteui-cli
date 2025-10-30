@@ -59,7 +59,7 @@
 		"handlebars": "4.7.8"
 	},
 	"devDependencies": {
-		"@inquirer/prompts": "^5.4.0",
+		"@inquirer/prompts": "^7.9.0",
 		"@types/jasmine": "^5.1.4",
 		"@types/minimatch": "^5.1.2",
 		"@types/node": "^22.5.5",
