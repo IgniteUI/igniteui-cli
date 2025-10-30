@@ -7,8 +7,8 @@
 </p>
 
 <div class="select-wrapper">
-  <igx-select #select>
-    <label igxLabel>Simple Select</label>
+  <igx-select #select id="simple-select">
+    <label igxLabel for="simple-select">Simple Select</label>
     <igx-select-item *ngFor="let item of items" [value]="item">
       {{item}}
     </igx-select-item>

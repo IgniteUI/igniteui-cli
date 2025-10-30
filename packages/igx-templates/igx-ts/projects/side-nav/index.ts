@@ -9,7 +9,7 @@ export class SideNavProject extends BaseWithHomeProject implements ProjectTempla
 	public dependencies: string[] = [];
 	public framework: string = "angular";
 	public projectType: string = "igx-ts";
-	public hasExtraConfiguration: boolean = false;
+	public hasExtraConfiguration = false;
 
 	public get templatePaths() {
 		return [...super.templatePaths, path.join(__dirname, "files")];

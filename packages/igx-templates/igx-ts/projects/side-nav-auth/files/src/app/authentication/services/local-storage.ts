@@ -3,7 +3,7 @@ import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 
 class LocalStorageFallback implements Storage {
   [name: string]: any;
-  readonly length: number = 0;
+  readonly length = 0;
   clear(): void { }
   getItem(key: string): string | null { return null; }
   key(index: number): string | null { return null; }

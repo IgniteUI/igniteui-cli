@@ -56,7 +56,6 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 			// must be assigned after getSelectedFeatures evaluates, TODO: refactor method
 			additionalMarkup: this.additionalElements.join("\n"),
 
-			// tslint:disable-next-line: object-literal-sort-keys
 			columnFeatures: columnFeatures.join(" "),
 			gridFeatures: gridFeatures.join(" "),
 			rowIslandFeatures: gridFeatures.join(" ").replace(/Singers/g, "Albums")
@@ -75,7 +74,6 @@ class IgxHierarchicalGridTemplate extends IgniteUIForAngularTemplate {
 		return super.generateConfig(name, { extraConfig });
 	}
 
-	//tslint:disable
 	private pinningTemplate(columnName: string): string {
 		// https://github.com/IgniteUI/igniteui-angular/issues/3998
 		// Defining let-columnRef="column" does not seem to work.

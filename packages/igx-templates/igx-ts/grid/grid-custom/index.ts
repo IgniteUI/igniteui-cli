@@ -61,7 +61,6 @@ class IgxCustomGridTemplate extends IgniteUIForAngularTemplate {
 		const featureUrl = "https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid/";
 		const anchorWrapper = {
 			start: `<a href="`,
-			// tslint:disable-next-line:object-literal-sort-keys
 			href: ``,
 			middle: `" target="_blank">`,
 			text: ``,
