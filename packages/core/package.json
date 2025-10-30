@@ -20,6 +20,6 @@
   },
   "devDependencies": {
     "@angular-devkit/schematics": "^19.0.0",
-    "@inquirer/type": "^1.5.3"
+    "@inquirer/type": "^3.0.0"
   }
 }
