@@ -202,7 +202,14 @@ export class DataGridSharedData {
   private static roadNames: string[] = ['Main', 'Garden', 'Broad', 'Oak', 'Cedar', 'Park', 'Pine', 'Elm', 'Market', 'Hill'];
 
   private static getRandomNumber(min: number, max: number): number {
-    return Math.round(min + Math.random() * (max - min));
+    return Math.round(min + this.secureRandom() * (max - min));
+  }
+
+  // Helper to produce a cryptographically secure random float in [0, 1)
+  private static secureRandom(): number {
+    const array = new Uint32Array(1);
+    window.crypto.getRandomValues(array);
+    return array[0] / 2 ** 32;
   }
 
   private static getRandomItem(array: any[]): any {
@@ -211,7 +218,7 @@ export class DataGridSharedData {
   }
 
   private static getRandomDate(start: Date, end: Date) {
-    return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+    return new Date(start.getTime() + this.secureRandom() * (end.getTime() - start.getTime()));
   }
 
   private static getRandomPhone(): string {
