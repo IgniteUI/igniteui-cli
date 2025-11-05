@@ -202,7 +202,24 @@ export class DataGridSharedData {
   private static roadNames: string[] = ['Main', 'Garden', 'Broad', 'Oak', 'Cedar', 'Park', 'Pine', 'Elm', 'Market', 'Hill'];
 
   private static getRandomNumber(min: number, max: number): number {
-    return Math.round(min + Math.random() * (max - min));
+    // Use crypto.getRandomValues for cryptographically secure random numbers
+    if (window && window.crypto && typeof window.crypto.getRandomValues === "function") {
+      const range = max - min + 1;
+      if (range <= 0) return min;
+      // Find the nearest greater power-of-2 for range, but not above 2^32-1
+      const maxUint32 = 0xFFFFFFFF;
+      const maxAcceptable = maxUint32 - (maxUint32 % range);
+      let rand32: number;
+      do {
+        const arr = new Uint32Array(1);
+        window.crypto.getRandomValues(arr);
+        rand32 = arr[0];
+      } while (rand32 > maxAcceptable);
+      return min + (rand32 % range);
+    } else {
+      // fallback to Math.random (not secure)
+      return Math.round(min + Math.random() * (max - min));
+    }
   }
 
   private static getRandomItem(array: any[]): any {
@@ -211,7 +228,25 @@ export class DataGridSharedData {
   }
 
   private static getRandomDate(start: Date, end: Date) {
-    return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+    const startMillis = start.getTime();
+    const endMillis = end.getTime();
+    const range = endMillis - startMillis + 1;
+    let randMillis: number;
+    if (window && window.crypto && typeof window.crypto.getRandomValues === "function") {
+      const maxUint32 = 0xFFFFFFFF;
+      const maxAcceptable = maxUint32 - (maxUint32 % range);
+      let rand32: number;
+      do {
+        const arr = new Uint32Array(1);
+        window.crypto.getRandomValues(arr);
+        rand32 = arr[0];
+      } while (rand32 > maxAcceptable);
+      randMillis = startMillis + (rand32 % range);
+    } else {
+      // fallback to Math.random (not secure)
+      randMillis = startMillis + Math.floor(Math.random() * range);
+    }
+    return new Date(randMillis);
   }
 
   private static getRandomPhone(): string {
