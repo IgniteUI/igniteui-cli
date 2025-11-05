@@ -93,13 +93,13 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
   @ViewChild('chart1', { static: true }) public chart1!: IgxCategoryChartComponent;
   @ViewChild('dialog', { static: true }) public dialog!: IgxDialogComponent;
 
-  public showToolbar: boolean = false;
+  public showToolbar = false;
   public properties: string[] = [];
   public selectionMode: GridSelectionMode = 'multiple';
   public chartType = CategoryChartType;
-  public theme: boolean = false;
-  public volume: number = 1000;
-  public frequency: number = 500;
+  public theme = false;
+  public volume = 1000;
+  public frequency = 500;
   public data: any[] = [];
   public chartData: any[] = [];
   public multiCellSelection: { data: any[] } = { data: [] };
@@ -133,7 +133,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
   public contracts = Contract;
   public regions = REGIONS;
   private subscription: any;
-  private selectedButton: number = -1;
+  private selectedButton = -1;
   private timer: any;
   private volumeChanged: any;
   constructor(
@@ -166,7 +166,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
     ];
     this.volumeChanged = this.volumeSlider.valueChange.pipe(debounce(() => timer(200)));
     this.volumeChanged.subscribe(
-      (x: any) => {
+      () => {
         this.localService.getData(this.volume);
       },
       (err: string) => console.log('Error: ' + err));
@@ -250,7 +250,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
     }
   }
 
-  public onChange(event: IChangeCheckboxEventArgs): void {
+  public onChange(): void {
     if (this.grid1.groupingExpressions.length > 0) {
       this.grid1.groupingExpressions = [];
     } else {
@@ -364,11 +364,10 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
   private strongPositive = (rowData: any): boolean => {
     return rowData['Change(%)'] >= 1;
   }
-  private strongNegative = (rowData: any, key: string): boolean => {
+  private strongNegative = (rowData: any): boolean => {
     return rowData['Change(%)'] <= -1;
   }
 
-  // tslint:disable:member-ordering
   public trends = {
     changeNeg: this.changeNegative,
     changePos: this.changePositive,
@@ -431,8 +430,6 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
     }
   }
 
-  // tslint:enable:member-ordering
-
   private disableOtherButtons(ind: number, disableButtons: boolean): void {
     if (this.subscription) {
       this.subscription.unsubscribe();
@@ -480,9 +477,8 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit, OnDestroy
    */
   private updateRandomPrices(data: any[]): any {
     const newData = data.slice();
-    for (let i = Math.round(Math.random() * 10), y = 0; i < data.length; i += Math.round(Math.random() * 10)) {
+    for (let i = Math.round(Math.random() * 10); i < data.length; i += Math.round(Math.random() * 10)) {
       newData[i] = this.randomizeObjectData(data[i]);
-      y++;
     }
     return newData;
   }

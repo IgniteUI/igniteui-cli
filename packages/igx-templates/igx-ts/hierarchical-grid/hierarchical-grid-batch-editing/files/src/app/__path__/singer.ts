@@ -1,4 +1,3 @@
-// tslint:disable:interface-name
 export interface Song {
   TrackNumber: number;
   Title: string;

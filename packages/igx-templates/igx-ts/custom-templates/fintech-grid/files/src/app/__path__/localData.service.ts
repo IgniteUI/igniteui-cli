@@ -12,7 +12,7 @@ export class LocalDataService {
     this.records = this.records$.asObservable();
   }
 
-  public getData(count: number = 10) {
+  public getData(count = 10) {
     const financialData: FinancialData = new FinancialData();
     this.records$.next(financialData.generateData(count));
   }
