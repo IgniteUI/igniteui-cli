@@ -6,7 +6,8 @@ const packageNames = {
 	"cli": "igniteui-cli",
 	"core": "igniteui/cli-core",
 	"igx-templates": "igniteui/angular-templates",
-	"ng-schematics": "igniteui/angular-schematics"
+	"ng-schematics": "igniteui/angular-schematics",
+	"mcp-server": "igniteui/mcp-server"
 };
 
 function changeVersion(text: string, version?: string) {
@@ -19,7 +20,7 @@ function changeVersion(text: string, version?: string) {
 }
 
 export function generateChangelog(version: string) {
-	const folders = ["cli", "ng-schematics", "igx-templates", "core"];
+	const folders = ["cli", "ng-schematics", "igx-templates", "core", "mcp-server"];
 	let mainChangelog: any = "";
 	try {
 		mainChangelog = readFileSync("CHANGELOG.md");
