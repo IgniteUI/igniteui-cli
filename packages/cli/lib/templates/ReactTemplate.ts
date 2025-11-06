@@ -123,12 +123,16 @@ export class ReactTemplate implements Template {
 					igniteuiResFile = igniteuiResFile.replace(freeVersionPath, fullVersionPath);
 					igniteuiResFile = igniteuiResFile.replace("-lite", "");
 				}
-				fs.writeFileSync(igResPath, igniteuiResFile);
+
+				const fd = fs.openSync(igResPath, fs.constants.O_WRONLY | fs.constants.O_TRUNC);
+				fs.writeSync(fd, igniteuiResFile);
+				fs.closeSync(fd);
 			}
 
 			if (dvDep && !igniteuiResFile.includes(dvPath)) {
-				fs.appendFileSync(igResPath, `${'\r\n// Ignite UI Charts Required JavaScript File\r\nimport "'
-					+ dvPath + '";\r\n'}`);
+				const fd = fs.openSync(igResPath, fs.constants.O_WRONLY | fs.constants.O_APPEND);
+				fs.writeSync(fd, `\r\n// Ignite UI Charts Required JavaScript File\r\nimport "${dvPath}";\r\n`);
+				fs.closeSync(fd);
 			}
 
 		} else {
