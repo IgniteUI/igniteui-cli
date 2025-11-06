@@ -9,6 +9,7 @@ import {
 	doc,
 	generate,
 	list,
+	mcp,
 	newCommand,
 	start,
 	test,
@@ -38,6 +39,7 @@ export async function run(args = null) {
 	start.templateManager = templateManager;
 	generate.templateManager = templateManager;
 	list.templateManager = templateManager;
+	mcp.templateManager = templateManager;
 	upgrade.templateManager = templateManager;
 
 	const yargsModule = args ? yargs(args) : yargs;
@@ -53,6 +55,7 @@ export async function run(args = null) {
 		.command(doc)
 		.command(test)
 		.command(list)
+		.command(mcp)
 		.command(upgrade)
 		.version(false) // disable built-in `yargs.version` to override it with our custom option
 		.options({

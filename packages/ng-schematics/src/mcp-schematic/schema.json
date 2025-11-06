@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "IgniteUIAngularMcpSchematic",
+  "title": "Ignite UI for Angular MCP Server Schema",
+  "type": "object",
+  "properties": {
+    "readOnly": {
+      "type": "boolean",
+      "default": false,
+      "description": "Only register read-only tools."
+    }
+  }
+}
