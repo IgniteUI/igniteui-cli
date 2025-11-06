@@ -23,6 +23,8 @@ describe("Help command", () => {
 		doc [term]             opens the Infragistics search for the given term
 		test                   executes project tests
 		list                   list all templates                           [aliases: l]
+		mcp                    Start the Ignite UI CLI MCP (Model Context Protocol)
+		                       server
 		upgrade-packages        upgrades Ignite UI Packages
 	  Options:
 		-v, --version  Show current Ignite UI CLI version                    [boolean]
