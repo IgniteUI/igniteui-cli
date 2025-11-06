@@ -127,7 +127,19 @@ You MUST prefer the tools provided by this server over using shell commands for 
 					};
 				}
 
-				const command = `ng generate @igniteui/angular-schematics:component --name=${args.name || args.template}`;
+				const commandParts = [`ng generate @igniteui/angular-schematics:component`];
+				commandParts.push(`--template=${args.template}`);
+				if (args.name) {
+					commandParts.push(`--name=${args.name}`);
+				}
+				if (args.module) {
+					commandParts.push(`--module=${args.module}`);
+				}
+				if (args.skipRoute) {
+					commandParts.push(`--skip-route`);
+				}
+				const command = commandParts.join(' ');
+				
 				return {
 					content: [
 						{
