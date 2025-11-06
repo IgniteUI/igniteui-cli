@@ -109,8 +109,8 @@ export class ReactTemplate implements Template {
 		const components = require("@igniteui/cli-core/packages/components");
 		const igResPath = path.join(projectPath, this.igniteResources);
 
-		if (fs.existsSync(igResPath)) {
-			const fd = fs.openSync(igResPath, fs.constants.O_RDWR);
+		try {
+			const fd = fs.openSync(igResPath, fs.constants.O_RDWR | fs.constants.O_CREAT);
 			let igniteuiResFile = fs.readFileSync(fd, "utf8");
 			const freeVersionPath = "ignite-ui/";
 			const fullVersionPath = "@infragistics/ignite-ui-full/en/";
@@ -124,7 +124,6 @@ export class ReactTemplate implements Template {
 					igniteuiResFile = igniteuiResFile.replace(freeVersionPath, fullVersionPath);
 					igniteuiResFile = igniteuiResFile.replace("-lite", "");
 				}
-
 				fs.ftruncateSync(fd, 0);
 				fs.writeSync(fd, igniteuiResFile);
 			}
@@ -134,8 +133,9 @@ export class ReactTemplate implements Template {
 			}
 
 			fs.closeSync(fd);
-		} else {
-			Util.log(`igniteuiResources.js file NOT found!`);
+		} catch (err) {
+			Util.error(`Error while updating igniteuiResources.js: ${err.message}`);
+			throw err;
 		}
 	}
 
