@@ -110,7 +110,8 @@ export class ReactTemplate implements Template {
 		const igResPath = path.join(projectPath, this.igniteResources);
 
 		if (fs.existsSync(igResPath)) {
-			let igniteuiResFile = fs.readFileSync(igResPath, "utf8");
+			const fd = fs.openSync(igResPath, fs.constants.O_RDWR);
+			let igniteuiResFile = fs.readFileSync(fd, "utf8");
 			const freeVersionPath = "ignite-ui/";
 			const fullVersionPath = "@infragistics/ignite-ui-full/en/";
 			const dvPath = "@infragistics/ignite-ui-full/en/js/infragistics.dv.js";
@@ -124,17 +125,15 @@ export class ReactTemplate implements Template {
 					igniteuiResFile = igniteuiResFile.replace("-lite", "");
 				}
 
-				const fd = fs.openSync(igResPath, fs.constants.O_WRONLY | fs.constants.O_TRUNC);
+				fs.ftruncateSync(fd, 0);
 				fs.writeSync(fd, igniteuiResFile);
-				fs.closeSync(fd);
 			}
 
 			if (dvDep && !igniteuiResFile.includes(dvPath)) {
-				const fd = fs.openSync(igResPath, fs.constants.O_WRONLY | fs.constants.O_APPEND);
 				fs.writeSync(fd, `\r\n// Ignite UI Charts Required JavaScript File\r\nimport "${dvPath}";\r\n`);
-				fs.closeSync(fd);
 			}
 
+			fs.closeSync(fd);
 		} else {
 			Util.log(`igniteuiResources.js file NOT found!`);
 		}
