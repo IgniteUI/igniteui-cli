@@ -17,14 +17,14 @@ describe("Unit - Google Analytic", () => {
 	}
 
 	beforeEach(() => {
-		request = jasmine.createSpyObj("request", ["on", "end"]);
+		request = jasmine.createSpyObj("request", ["on", "end", "write"]);
 		spyOn(https, "request").and.returnValue(request);
 		serviceSpy =
 			spyOn(child_process, "execSync").and.returnValue("some string which contains REG_SZ so we can get Machine Key");
 		while (fs.existsSync(`./output/${testFolder}`)) {
 			testFolder += 1;
 		}
-		fs.mkdirSync(`./output/${testFolder}`);
+		fs.mkdirSync(`./output/${testFolder}`, { recursive: true });
 	});
 
 	afterEach(() => {
@@ -41,6 +41,10 @@ describe("Unit - Google Analytic", () => {
 		const requestOptions = (https.request as jasmine.Spy).calls.mostRecent().args[0];
 		expect(requestOptions.host).toBe('www.google-analytics.com');
 		expect(requestOptions.method).toBe('POST');
+		expect(requestOptions.path).toContain('/mp/collect');  // GA4 endpoint
+		expect(requestOptions.path).toContain('measurement_id=');
+		expect(requestOptions.path).toContain('api_secret=');
+		expect(requestOptions.headers['Content-Type']).toBe('application/json');
 		expect(request.on).toHaveBeenCalledTimes(1);
 		expect(request.on).toHaveBeenCalledWith("error", jasmine.any(Function));
 
@@ -56,6 +60,8 @@ describe("Unit - Google Analytic", () => {
 		const requestOptions = (https.request as jasmine.Spy).calls.mostRecent().args[0];
 		expect(requestOptions.host).toBe('www.google-analytics.com');
 		expect(requestOptions.method).toBe('POST');
+		expect(requestOptions.path).toContain('/mp/collect');  // GA4 endpoint
+		expect(requestOptions.headers['Content-Type']).toBe('application/json');
 		expect(request.on).toHaveBeenCalledTimes(1);
 		expect(request.on).toHaveBeenCalledWith("error", jasmine.any(Function));
 

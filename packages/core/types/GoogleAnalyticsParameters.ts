@@ -1,23 +1,36 @@
 export interface GoogleAnalyticsParameters {
 	/**
+	 * @deprecated No longer used in GA4. Kept for backwards compatibility.
 	 * The tracking ID / web property ID. The format is UA-XXXX-Y.
-	 *  All collected data is associated by this ID.
+	 * All collected data is associated by this ID.
 	 */
 	tid?: string;
 
-	/** Application name. Should be always 'igniteui-cli'. */
+	/**
+	 * @deprecated No longer used in GA4. Kept for backwards compatibility.
+	 * Application name. Should be always 'igniteui-cli'.
+	 */
 	an?: string;
 
 	/** igniteui-cli application version. */
 	av?: string;
 
-	/** User Agent. We will provide here node version as browser version and the user OS. */
+	/**
+	 * @deprecated No longer used in GA4. Kept for backwards compatibility.
+	 * User Agent. We will provide here node version as browser version and the user OS.
+	 */
 	ua?: string;
 
-	/** User unique ID. */
+	/**
+	 * @deprecated No longer used in GA4. Kept for backwards compatibility.
+	 * User unique ID.
+	 */
 	uid?: string;
 
-	/** The Protocol version. The current value is '1'. */
+	/**
+	 * @deprecated No longer used in GA4. Kept for backwards compatibility.
+	 * The Protocol version. The current value is '1'.
+	 */
 	v?: number;
 
 	/**
@@ -25,6 +38,7 @@ export interface GoogleAnalyticsParameters {
 	 * Use 'screenview' for each command.
 	 * Use 'event' for each user input.
 	 * Use 'exception' for exceptions.
+	 * This is mapped to GA4 event names.
 	 */
 	t?: string;
 
