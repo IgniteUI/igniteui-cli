@@ -1,7 +1,6 @@
 import { createHash} from "crypto";
 import * as fs from "fs";
 import * as path from "path";
-import * as qs from "querystring";
 import { GoogleAnalyticsParameters } from "../types";
 import { App } from "./App";
 import { ProjectConfig } from "./ProjectConfig";
@@ -14,10 +13,28 @@ class GoogleAnalytics {
 	protected static userSettings: string = "user-settings.json";
 	protected static appVersion: string;
 	protected static npmVersion: string;
-	protected static trackingID = "UA-392932-23";
+	// GA4 Measurement ID and API Secret
+	// To obtain these credentials:
+	// 1. Go to Google Analytics Admin panel (https://analytics.google.com/analytics/web/)
+	// 2. Navigate to Admin > Data Streams > Select your stream
+	// 3. Measurement ID is shown at the top (format: G-XXXXXXXXXX)
+	// 4. For API Secret: Scroll down to "Measurement Protocol API secrets" > "Create" to generate a new secret
+	// 
+	// These can be overridden via environment variables:
+	// - IGNITEUI_CLI_GA4_MEASUREMENT_ID
+	// - IGNITEUI_CLI_GA4_API_SECRET
+	//
+	// NOTE: If environment variables are not set and placeholder values remain, analytics will silently fail.
+	// This matches the current behavior where invalid credentials result in silent failures.
+	protected static measurementID = process.env.IGNITEUI_CLI_GA4_MEASUREMENT_ID || "G-XXXXXXXXXX";  // TODO: Replace default with actual GA4 Measurement ID
+	protected static apiSecret = process.env.IGNITEUI_CLI_GA4_API_SECRET || "XXXXXXXXXXXXXXXXXXXXXXXX";  // TODO: Replace default with actual GA4 API Secret
+
+	// GA4 requires engagement_time_msec to be set for events to be processed
+	// Using a minimal value to satisfy the requirement
+	protected static readonly GA4_MIN_ENGAGEMENT_TIME = "100";
 
 	/**
-	 * Generates http post request with provided parameters and sends it to GA
+	 * Generates http post request with provided parameters and sends it to GA4
 	 * @param parameters Object containing all the parameters to send
 	 */
 	public static post(parameters: GoogleAnalyticsParameters) {
@@ -26,44 +43,102 @@ class GoogleAnalytics {
 			return;
 		}
 
-		// set GA protocol version. This should be 1
-		parameters.v = 1;
-
-		// set the Tracking ID
-		parameters.tid = this.trackingID;
-
-		// set application version if not set beforehand
-		if (!parameters.av) {
-			if (!this.appVersion) {
-				this.appVersion = Util.version();
-			}
-
-			parameters.av = this.appVersion;
+		// Get application version if not set
+		if (!this.appVersion) {
+			this.appVersion = Util.version();
 		}
 
-		// set application name
-		parameters.an = App.appName;
-
-		//	set user agent string. We are using this for detecting the user's OS.
-		//	as well as node version. The latest is set as browser version.
+		// Get user agent info
 		const nodeVersion = process.version;
 		const os = this.getOsForUserAgent();
 		const npmVersion = this.getNpmVersion();
-		parameters.ua = `node/${nodeVersion} (${os}) npm/${npmVersion}`;
+		const userAgent = `node/${nodeVersion} (${os}) npm/${npmVersion}`;
 
-		//	set user ID
-		parameters.uid = this.getUUID();
+		// Get client ID (user ID)
+		const clientId = this.getUUID();
 
-		//	generate http request and sent it to GA
-		const queryString = qs.stringify(parameters as {});
-		const fullPath = "/collect?" + queryString;
-		const options = { host: "www.google-analytics.com", path: fullPath, method: "POST" };
+		// Build GA4 event payload
+		const eventName = this.mapHitTypeToEventName(parameters.t || "event");
+		const eventParams: any = {
+			app_name: App.appName,
+			app_version: parameters.av || this.appVersion,
+			engagement_time_msec: this.GA4_MIN_ENGAGEMENT_TIME
+		};
+
+		// Map custom dimensions to event parameters
+		if (parameters.cd) eventParams.screen_name = parameters.cd;
+		if (parameters.ec) eventParams.event_category = parameters.ec;
+		if (parameters.ea) eventParams.event_action = parameters.ea;
+		if (parameters.el) eventParams.event_label = parameters.el;
+		if (parameters.exd) eventParams.exception_description = parameters.exd;
+		
+		// Map custom dimensions
+		if (parameters.cd1) eventParams.framework = parameters.cd1;
+		if (parameters.cd2) eventParams.project_type = parameters.cd2;
+		if (parameters.cd3) eventParams.project_name = parameters.cd3;
+		if (parameters.cd4) eventParams.action = parameters.cd4;
+		if (parameters.cd5) eventParams.component_group = parameters.cd5;
+		if (parameters.cd6) eventParams.component_name = parameters.cd6;
+		if (parameters.cd7) eventParams.template_name = parameters.cd7;
+		if (parameters.cd8) eventParams.custom_view_name = parameters.cd8;
+		if (parameters.cd9) eventParams.extra_config = parameters.cd9;
+		if (parameters.cd10 !== undefined) eventParams.skip_config = parameters.cd10;
+		if (parameters.cd11 !== undefined) eventParams.skip_git = parameters.cd11;
+		if (parameters.cd12 !== undefined) eventParams.global = parameters.cd12;
+		if (parameters.cd13) eventParams.search_term = parameters.cd13;
+		if (parameters.cd14) eventParams.theme = parameters.cd14;
+
+		// Build GA4 request payload
+		const payload = {
+			client_id: clientId,
+			user_properties: {
+				user_agent: {
+					value: userAgent
+				}
+			},
+			events: [{
+				name: eventName,
+				params: eventParams
+			}]
+		};
+
+		const payloadString = JSON.stringify(payload);
+		const fullPath = `/mp/collect?measurement_id=${this.measurementID}&api_secret=${this.apiSecret}`;
+		const options = {
+			host: "www.google-analytics.com",
+			path: fullPath,
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				"Content-Length": Buffer.byteLength(payloadString)
+			}
+		};
+
 		const https = require("https");
 		const req = https.request(options);
 		req.on("error", e => {
-			// TODO: save all the logs and send them later
+			// Silently fail analytics errors to avoid disrupting CLI functionality
+			// In the future, this could log to a file or queue for retry
+			// Error details: e.message, e.code
 		});
+		req.write(payloadString);
 		req.end();
+	}
+
+	/**
+	 * Maps Universal Analytics hit types to GA4 event names
+	 */
+	protected static mapHitTypeToEventName(hitType: string): string {
+		switch (hitType) {
+			case "screenview":
+				return "screen_view";
+			case "event":
+				return "cli_event";
+			case "exception":
+				return "exception";
+			default:
+				return "cli_event";
+		}
 	}
 
 	protected static getUUID(): string {
@@ -74,7 +149,7 @@ class GoogleAnalytics {
 		} else {
 			const dirName = path.dirname(absolutePath);
 			if (!fs.existsSync(dirName)) {
-				fs.mkdirSync(dirName);
+				fs.mkdirSync(dirName, { recursive: true });
 			}
 
 			UUID = this.getUserID();
