@@ -129,7 +129,8 @@ export class ReactTemplate implements Template {
 			}
 
 			if (dvDep && !igniteuiResFile.includes(dvPath)) {
-				fs.writeSync(fd, `\r\n// Ignite UI Charts Required JavaScript File\r\nimport "${dvPath}";\r\n`);
+				const endPos = fs.fstatSync(fd).size;
+				fs.writeSync(fd, `\r\n// Ignite UI Charts Required JavaScript File\r\nimport "${dvPath}";\r\n`, endPos);
 			}
 
 			fs.closeSync(fd);
