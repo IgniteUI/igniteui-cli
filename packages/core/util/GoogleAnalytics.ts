@@ -23,6 +23,9 @@ class GoogleAnalytics {
 	// These can be overridden via environment variables:
 	// - IGNITEUI_CLI_GA4_MEASUREMENT_ID
 	// - IGNITEUI_CLI_GA4_API_SECRET
+	//
+	// NOTE: If environment variables are not set and placeholder values remain, analytics will silently fail.
+	// This matches the current behavior where invalid credentials result in silent failures.
 	protected static measurementID = process.env.IGNITEUI_CLI_GA4_MEASUREMENT_ID || "G-XXXXXXXXXX";  // TODO: Replace default with actual GA4 Measurement ID
 	protected static apiSecret = process.env.IGNITEUI_CLI_GA4_API_SECRET || "XXXXXXXXXXXXXXXXXXXXXXXX";  // TODO: Replace default with actual GA4 API Secret
 
