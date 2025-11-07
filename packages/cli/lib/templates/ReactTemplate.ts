@@ -125,7 +125,7 @@ export class ReactTemplate implements Template {
 					igniteuiResFile = igniteuiResFile.replace("-lite", "");
 				}
 				fs.ftruncateSync(fd, 0);
-				fs.writeSync(fd, igniteuiResFile, 0);
+				fs.writeSync(fd, igniteuiResFile);
 			}
 
 			if (dvDep && !igniteuiResFile.includes(dvPath)) {
