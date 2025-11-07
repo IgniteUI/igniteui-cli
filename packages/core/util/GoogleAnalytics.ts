@@ -14,6 +14,11 @@ class GoogleAnalytics {
 	protected static appVersion: string;
 	protected static npmVersion: string;
 	// GA4 Measurement ID and API Secret
+	// To obtain these credentials:
+	// 1. Go to Google Analytics Admin panel (https://analytics.google.com/analytics/web/)
+	// 2. Navigate to Admin > Data Streams > Select your stream
+	// 3. Measurement ID is shown at the top (format: G-XXXXXXXXXX)
+	// 4. For API Secret: Scroll down to "Measurement Protocol API secrets" > "Create" to generate a new secret
 	protected static measurementID = "G-XXXXXXXXXX";  // TODO: Replace with actual GA4 Measurement ID
 	protected static apiSecret = "XXXXXXXXXXXXXXXXXXXXXXXX";  // TODO: Replace with actual GA4 API Secret
 
