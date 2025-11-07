@@ -19,8 +19,16 @@ class GoogleAnalytics {
 	// 2. Navigate to Admin > Data Streams > Select your stream
 	// 3. Measurement ID is shown at the top (format: G-XXXXXXXXXX)
 	// 4. For API Secret: Scroll down to "Measurement Protocol API secrets" > "Create" to generate a new secret
-	protected static measurementID = "G-XXXXXXXXXX";  // TODO: Replace with actual GA4 Measurement ID
-	protected static apiSecret = "XXXXXXXXXXXXXXXXXXXXXXXX";  // TODO: Replace with actual GA4 API Secret
+	// 
+	// These can be overridden via environment variables:
+	// - IGNITEUI_CLI_GA4_MEASUREMENT_ID
+	// - IGNITEUI_CLI_GA4_API_SECRET
+	protected static measurementID = process.env.IGNITEUI_CLI_GA4_MEASUREMENT_ID || "G-XXXXXXXXXX";  // TODO: Replace default with actual GA4 Measurement ID
+	protected static apiSecret = process.env.IGNITEUI_CLI_GA4_API_SECRET || "XXXXXXXXXXXXXXXXXXXXXXXX";  // TODO: Replace default with actual GA4 API Secret
+
+	// GA4 requires engagement_time_msec to be set for events to be processed
+	// Using a minimal value to satisfy the requirement
+	protected static readonly GA4_MIN_ENGAGEMENT_TIME = "100";
 
 	/**
 	 * Generates http post request with provided parameters and sends it to GA4
@@ -51,7 +59,7 @@ class GoogleAnalytics {
 		const eventParams: any = {
 			app_name: App.appName,
 			app_version: parameters.av || this.appVersion,
-			engagement_time_msec: "100"  // Required for events
+			engagement_time_msec: this.GA4_MIN_ENGAGEMENT_TIME
 		};
 
 		// Map custom dimensions to event parameters
@@ -106,7 +114,9 @@ class GoogleAnalytics {
 		const https = require("https");
 		const req = https.request(options);
 		req.on("error", e => {
-			// TODO: save all the logs and send them later
+			// Silently fail analytics errors to avoid disrupting CLI functionality
+			// In the future, this could log to a file or queue for retry
+			// Error details: e.message, e.code
 		});
 		req.write(payloadString);
 		req.end();
