@@ -1,6 +1,6 @@
 {
   "name": "@igniteui/angular-schematics",
-  "version": "20.1.1464",
+  "version": "20.1.1465",
   "description": "Ignite UI for Angular Schematics for ng new and ng generate",
   "repository": {
     "type": "git",
@@ -20,8 +20,8 @@
   "dependencies": {
     "@angular-devkit/core": "^19.0.0",
     "@angular-devkit/schematics": "^19.0.0",
-    "@igniteui/angular-templates": "~20.1.1464",
-    "@igniteui/cli-core": "~14.6.4",
+    "@igniteui/angular-templates": "~20.1.1465",
+    "@igniteui/cli-core": "~14.6.5",
     "@schematics/angular": "~19.0.0",
     "minimatch": "^10.0.1",
     "rxjs": "^7.8.1"
