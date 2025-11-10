@@ -109,8 +109,9 @@ export class ReactTemplate implements Template {
 		const components = require("@igniteui/cli-core/packages/components");
 		const igResPath = path.join(projectPath, this.igniteResources);
 
-		if (fs.existsSync(igResPath)) {
-			let igniteuiResFile = fs.readFileSync(igResPath, "utf8");
+		try {
+			const fd = fs.openSync(igResPath, fs.constants.O_RDWR | fs.constants.O_CREAT);
+			let igniteuiResFile = fs.readFileSync(fd, "utf8");
 			const freeVersionPath = "ignite-ui/";
 			const fullVersionPath = "@infragistics/ignite-ui-full/en/";
 			const dvPath = "@infragistics/ignite-ui-full/en/js/infragistics.dv.js";
@@ -123,16 +124,19 @@ export class ReactTemplate implements Template {
 					igniteuiResFile = igniteuiResFile.replace(freeVersionPath, fullVersionPath);
 					igniteuiResFile = igniteuiResFile.replace("-lite", "");
 				}
-				fs.writeFileSync(igResPath, igniteuiResFile);
+				fs.ftruncateSync(fd, 0);
+				fs.writeSync(fd, igniteuiResFile, 0);
 			}
 
 			if (dvDep && !igniteuiResFile.includes(dvPath)) {
-				fs.appendFileSync(igResPath, `${'\r\n// Ignite UI Charts Required JavaScript File\r\nimport "'
-					+ dvPath + '";\r\n'}`);
+				const endPos = fs.fstatSync(fd).size;
+				fs.writeSync(fd, `\r\n// Ignite UI Charts Required JavaScript File\r\nimport "${dvPath}";\r\n`, endPos);
 			}
 
-		} else {
-			Util.log(`igniteuiResources.js file NOT found!`);
+			fs.closeSync(fd);
+		} catch (err) {
+			Util.error(`Error while updating igniteuiResources.js: ${err.message}`);
+			throw err;
 		}
 	}
 
