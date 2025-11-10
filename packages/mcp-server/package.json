@@ -1,0 +1,43 @@
+{
+  "name": "@igniteui/mcp-server",
+  "version": "16.0.0-alpha.1",
+  "description": "Model Context Protocol (MCP) server for Ignite UI CLI",
+  "keywords": [
+    "MCP",
+    "Model Context Protocol",
+    "Ignite UI",
+    "CLI"
+  ],
+  "author": "Infragistics",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IgniteUI/igniteui-cli.git",
+    "directory": "packages/mcp-server"
+  },
+  "bin": {
+    "igniteui-mcp": "dist/index.js"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "prepublishOnly": "npm run build"
+  },
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "USAGE.md",
+    "claude_desktop_config.example.json"
+  ],
+  "dependencies": {
+    "@igniteui/cli-core": "~16.0.0-alpha.1",
+    "@modelcontextprotocol/sdk": "^1.20.0",
+    "igniteui-cli": "~16.0.0-alpha.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.5",
+    "typescript": "~5.6.2"
+  }
+}

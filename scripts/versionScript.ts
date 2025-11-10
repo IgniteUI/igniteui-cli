@@ -4,7 +4,7 @@ import * as path from "path";
 import { generateChangelog } from "./changelogScript";
 
 let version: string;
-const packageFolders = ["cli", "core", "igx-templates", "ng-schematics"];
+const packageFolders = ["cli", "core", "igx-templates", "mcp-server", "ng-schematics"];
 const updatedPackages = ["@igniteui/angular-templates", "@igniteui/angular-schematics"];
 
 function getVersion() {
