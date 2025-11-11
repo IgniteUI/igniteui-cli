@@ -1,4 +1,3 @@
-import 'vitest-canvas-mock'
 import ResizeObserver from 'resize-observer-polyfill'
 import {vi} from 'vitest'
 
