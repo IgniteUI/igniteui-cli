@@ -1,3 +1,17 @@
+# [14.7.0](https://github.com/IgniteUI/igniteui-cli/compare/v14.6.6...v14.7.0) (2025-11-17)
+## What's Changed
+
+* feat(ng): use ng lint schematic by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1439
+* chore(ng): add overrides to remove npm i warnings by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1440
+* chore: address dependabot security alerts by @Copilot in https://github.com/IgniteUI/igniteui-cli/pull/1437
+* fix: command injection vulnerabilities in PackageManager and start command by @Copilot in https://github.com/IgniteUI/igniteui-cli/pull/1438
+* Fix code scanning alert: Potential file system race conditions by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1446
+* Potential fix for code scanning alert: Workflow does not contain permissions by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1445
+* build(deps): bump eazy-logger from 4.0.1 to 4.1.0 in the npm_and_yarn group across 1 directory by @dependabot[bot] in https://github.com/IgniteUI/igniteui-cli/pull/1436
+* merge 14.6.x into master by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1451
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.6.6...v14.7.0
+
 # [14.6.6](https://github.com/IgniteUI/igniteui-cli/compare/v14.6.5...v14.6.6) (2025-11-12)
 
 ## What's Changed
