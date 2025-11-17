@@ -31,24 +31,16 @@
       "@angular/core": "^20.3.0",
       "@angular/common": "^20.3.0"
     },
-    "rxjs": "~7.8.1"
+    "glob": "^11.0.3",
+    "rimraf": "^6.0.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~20.3.0",
-    "@angular-eslint/builder": "~20.3.0",
-    "@angular-eslint/eslint-plugin": "~20.3.0",
-    "@angular-eslint/eslint-plugin-template": "~20.3.0",
-    "@angular-eslint/schematics": "~20.3.0",
-    "@angular-eslint/template-parser": "~20.3.0",
     "@angular/cli": "~20.3.0",
     "@angular/compiler-cli": "~20.3.0",
     "@types/jasmine": "~5.1.4",
-    "@typescript-eslint/eslint-plugin": "~8.45.0",
-    "@typescript-eslint/parser": "~8.45.0",
-    "eslint": "~9.36.0",
-    "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-prefer-arrow": "^1.2.3",
-    "eslint-plugin-unicorn": "^61.0.2",
+    "angular-eslint": "~20.3.0",
+    "eslint": "~9.35.0",
     "igniteui-cli": "~<%=cliVersion%>",
     "jasmine-core": "~5.11.0",
     "karma": "~6.4.4",
@@ -56,6 +48,7 @@
     "karma-coverage": "~2.2.1",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.9.2"
+    "typescript": "~5.9.2",
+    "typescript-eslint": "~8.40.0"
   }
 }

@@ -23,6 +23,9 @@ on:
 jobs:
   analyze:
     name: Analyze
+    permissions:
+      contents: read
+      security-events: write
     runs-on: ubuntu-latest
 
     strategy:

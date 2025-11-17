@@ -69,16 +69,16 @@ class GoogleAnalytics {
 	protected static getUUID(): string {
 		const absolutePath = path.join(this.userDataFolder, this.appFolder, this.userSettings);
 		let UUID = "";
-		if (fs.existsSync(absolutePath)) {
-			UUID = require(absolutePath).UUID;
-		} else {
-			const dirName = path.dirname(absolutePath);
-			if (!fs.existsSync(dirName)) {
-				fs.mkdirSync(dirName);
-			}
+		const dirName = path.dirname(absolutePath);
+		fs.mkdirSync(dirName, { recursive: true });
 
+		try {
+			const fd = fs.openSync(absolutePath, fs.constants.O_CREAT | fs.constants.O_EXCL | fs.constants.O_RDWR, 0o600);
 			UUID = this.getUserID();
-			fs.writeFileSync(absolutePath, JSON.stringify({ UUID }));
+			fs.writeFileSync(fd, JSON.stringify({ UUID }));
+			fs.closeSync(fd);
+		} catch {
+			UUID = JSON.parse(fs.readFileSync(absolutePath, "utf8")).UUID;
 		}
 
 		return UUID;

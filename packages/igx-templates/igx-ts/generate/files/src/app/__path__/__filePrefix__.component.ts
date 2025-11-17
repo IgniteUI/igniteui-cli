@@ -8,5 +8,4 @@ import { Component } from '@angular/core';
 })
 export class <%=ClassName%>Component {
   title = '<%=name%>';
-  constructor() { }
 }
