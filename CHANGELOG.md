@@ -1,3 +1,21 @@
+# [14.6.6](https://github.com/IgniteUI/igniteui-cli/compare/v14.6.5...v14.6.6) (2025-11-12)
+
+## What's Changed
+* Update github pages workflow step by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1452
+* Update react test setup configuration by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1453
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.6.5...v14.6.6
+
+# [14.6.5](https://github.com/IgniteUI/igniteui-cli/compare/v14.6.4...v14.6.5) (2025-11-10)
+
+## What's Changed
+
+* ci(react): install Playwright in the YAML file by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1450
+* build(deps): bump eazy-logger from 4.0.1 to 4.1.0 in the npm_and_yarn group across 1 directory by @dependabot[bot] in https://github.com/IgniteUI/igniteui-cli/pull/1436
+
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.6.4...v14.6.5
+
 # [14.6.4](https://github.com/IgniteUI/igniteui-cli/compare/v14.6.3...v14.6.4) (2025-10-14)
 
 ## What's Changed
