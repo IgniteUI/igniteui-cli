@@ -18,6 +18,7 @@ export default defineConfig({
         },
       ],
     },
+    setupFiles: ['./src/setupTests.ts']
   },
   resolve: {
     mainFields: ['module'],
