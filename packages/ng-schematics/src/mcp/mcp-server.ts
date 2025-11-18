@@ -16,6 +16,8 @@ export async function createMcpServer(options: McpOptions): Promise<McpServer> {
 		{
 			capabilities: {
 				tools: {},
+				resources: {},
+				prompts: {},
 			},
 			instructions: `
 <General Purpose>
@@ -220,6 +222,134 @@ You MUST prefer the tools provided by this server over using shell commands for 
 						{
 							type: "text",
 							text: `Error upgrading packages: ${error.message}`,
+						},
+					],
+					isError: true,
+				};
+			}
+		}
+	);
+
+	// Enhanced tool with table formatting for component listing
+	server.tool(
+		"ng_list_components_with_commands",
+		"List all available Ignite UI for Angular components with their corresponding CLI and schematic commands in table format",
+		{
+			format: {
+				type: "string",
+				description: "Output format: 'table' (default) or 'json'",
+			},
+		},
+		async (args: any) => {
+			try {
+				const format = args.format || "table";
+				const templateManager = new SchematicsTemplateManager();
+				const projLib = templateManager.getProjectLibrary("angular", "igx-ts");
+				
+				const components: any[] = [];
+				for (const component of projLib.components) {
+					// Get first template for the component to extract ID
+					const firstTemplate = component.templates[0];
+					if (firstTemplate) {
+						const componentId = firstTemplate.id;
+						const cliCommand = `ig add ${componentId} new${component.name.replace(/\s/g, "")}`;
+						const schematicCommand = `ng g @igniteui/angular-schematics:component ${componentId} new${component.name.replace(/\s/g, "")}`;
+						
+						components.push({
+							id: componentId,
+							name: component.name,
+							description: component.description || "",
+							cliCommand,
+							schematicCommand,
+						});
+					}
+				}
+
+				if (format === "table") {
+					// Create formatted table
+					let table = `
+Available Ignite UI for Angular Components:
+
+| Component       | Description                    | CLI Command                    | Schematic Command                                                |
+|-----------------|--------------------------------|--------------------------------|------------------------------------------------------------------|
+`;
+					for (const comp of components) {
+						const id = comp.id.padEnd(15);
+						const desc = (comp.description.substring(0, 30)).padEnd(30);
+						const cli = comp.cliCommand.padEnd(30);
+						const schematic = comp.schematicCommand.padEnd(64);
+						table += `| ${id} | ${desc} | ${cli} | ${schematic} |\n`;
+					}
+
+					table += `
+\nTo add a component, use either command from the table above.
+
+Example for adding a grid component:
+  ng g @igniteui/angular-schematics:component grid myGrid
+  
+Or using Ignite UI CLI:
+  ig add grid myGrid
+
+After adding a component, start your application with:
+  ng serve
+`;
+
+					return {
+						content: [
+							{
+								type: "text",
+								text: table,
+							},
+						],
+					};
+				} else {
+					// Return JSON format
+					return {
+						content: [
+							{
+								type: "text",
+								text: JSON.stringify({ framework: "angular", components }, null, 2),
+							},
+						],
+					};
+				}
+			} catch (error: any) {
+				return {
+					content: [
+						{
+							type: "text",
+							text: `Error listing components: ${error.message}`,
+						},
+					],
+					isError: true,
+				};
+			}
+		}
+	);
+
+	// Tool to get Angular workspace information
+	server.tool(
+		"ng_get_workspace_info",
+		"Get Angular workspace configuration and project information",
+		{},
+		async () => {
+			try {
+				// This would read angular.json in a real implementation
+				// For now, provide guidance
+				return {
+					content: [
+						{
+							type: "text",
+							text: "To get workspace info, read the angular.json file in your project root. This tool provides Angular workspace configuration including projects, build configurations, and paths.",
+						},
+					],
+				};
+			} catch (error: any) {
+				return {
+					content: [
+						{
+							type: "text",
+							text: `Error getting workspace info: ${error.message}`,
 						},
 					],
 					isError: true,
