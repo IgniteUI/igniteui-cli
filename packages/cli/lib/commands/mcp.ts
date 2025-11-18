@@ -43,6 +43,8 @@ async function createMcpServer(
 		{
 			capabilities: {
 				tools: {},
+				resources: {},
+				prompts: {},
 			},
 			instructions: `
 <General Purpose>
@@ -328,6 +330,237 @@ You MUST prefer the tools provided by this server over using shell commands for 
 						{
 							type: "text",
 							text: `Error in interactive mode: ${error.message}`,
+						},
+					],
+					isError: true,
+				};
+			}
+		}
+	);
+
+	// Enhanced tool with table formatting for component listing
+	server.tool(
+		"ig_list_components_with_commands",
+		"List all available Ignite UI components with their corresponding CLI and schematic commands in table format",
+		{
+			framework: {
+				type: "string",
+				description: "Framework to list components for (angular, react, webcomponents)",
+			},
+			format: {
+				type: "string",
+				description: "Output format: 'table' (default) or 'json'",
+			},
+		},
+		async (args: any) => {
+			try {
+				const framework = args.framework || "angular";
+				const format = args.format || "table";
+				const frameworks = templateManager.getFrameworkIds();
+				
+				if (!frameworks.includes(framework)) {
+					return {
+						content: [
+							{
+								type: "text",
+								text: `Framework "${framework}" not supported. Available: ${frameworks.join(", ")}`,
+							},
+						],
+						isError: true,
+					};
+				}
+
+				const frameworkObj = templateManager.getFrameworkById(framework);
+				const projectLibraries = frameworkObj?.projectLibraries || [];
+				const components: any[] = [];
+
+				for (const projectLib of projectLibraries) {
+					for (const component of projectLib.components) {
+						// Get first template for the component to extract ID
+						const firstTemplate = component.templates[0];
+						if (firstTemplate) {
+							const componentId = firstTemplate.id;
+							const cliCommand = `ig add ${componentId} new${component.name.replace(/\s/g, "")}`;
+							const schematicCommand = framework === "angular" 
+								? `ng g @igniteui/angular-schematics:component ${componentId} new${component.name.replace(/\s/g, "")}`
+								: cliCommand;
+							
+							components.push({
+								id: componentId,
+								name: component.name,
+								description: component.description || "",
+								cliCommand,
+								schematicCommand,
+							});
+						}
+					}
+				}
+
+				if (format === "table") {
+					// Create formatted table
+					let table = `
+Available Ignite UI Components for ${framework}:
+
+| Component       | Description                    | CLI Command                    | Schematic Command (Angular)                                      |
+|-----------------|--------------------------------|--------------------------------|------------------------------------------------------------------|
+`;
+					for (const comp of components) {
+						const id = comp.id.padEnd(15);
+						const desc = (comp.description.substring(0, 30)).padEnd(30);
+						const cli = comp.cliCommand.padEnd(30);
+						const schematic = comp.schematicCommand.padEnd(64);
+						table += `| ${id} | ${desc} | ${cli} | ${schematic} |\n`;
+					}
+
+					table += `
+\nTo add a component, use either command from the table above.
+After adding a component, start your application with:
+  - For Angular: ng serve (or ig start)
+  - For React: npm start (or ig start)  
+  - For WebComponents: npm start (or ig start)
+`;
+
+					return {
+						content: [
+							{
+								type: "text",
+								text: table,
+							},
+						],
+					};
+				} else {
+					// Return JSON format
+					return {
+						content: [
+							{
+								type: "text",
+								text: JSON.stringify({ framework, components }, null, 2),
+							},
+						],
+					};
+				}
+			} catch (error: any) {
+				return {
+					content: [
+						{
+							type: "text",
+							text: `Error listing components: ${error.message}`,
+						},
+					],
+					isError: true,
+				};
+			}
+		}
+	);
+
+	// Register resources (simplified for SDK compatibility)
+	// Note: MCP SDK v1.21.0 has different resource API than prompts/tools
+	// We'll provide resources through tools for now until SDK is updated
+	
+	server.tool(
+		"ig_get_project_config",
+		"Get the current project's ignite-ui-cli.json configuration",
+		{},
+		async () => {
+			try {
+				const { ProjectConfig } = await import("@igniteui/cli-core");
+				if (!ProjectConfig.hasLocalConfig()) {
+					return {
+						content: [
+							{
+								type: "text",
+								text: JSON.stringify({ error: "No Ignite UI project found in current directory" }, null, 2),
+							},
+						],
+					};
+				}
+				const config = ProjectConfig.getConfig();
+				return {
+					content: [
+						{
+							type: "text",
+							text: JSON.stringify(config, null, 2),
+						},
+					],
+				};
+			} catch (error: any) {
+				return {
+					content: [
+						{
+							type: "text",
+							text: JSON.stringify({ error: error.message }, null, 2),
+						},
+					],
+					isError: true,
+				};
+			}
+		}
+	);
+
+	server.tool(
+		"ig_get_components_catalog",
+		"Get full component catalog with metadata for a framework",
+		{
+			framework: {
+				type: "string",
+				description: "Framework to get catalog for (angular, react, webcomponents)",
+			},
+		},
+		async (args: any) => {
+			try {
+				const framework = args.framework || "angular";
+				
+				const frameworkObj = templateManager.getFrameworkById(framework);
+				if (!frameworkObj) {
+					return {
+						content: [
+							{
+								type: "text",
+								text: JSON.stringify({ error: `Framework "${framework}" not found` }, null, 2),
+							},
+						],
+						isError: true,
+					};
+				}
+
+				const catalog: any = {
+					framework,
+					name: frameworkObj.name,
+					projectTypes: [],
+				};
+
+				for (const projectLib of frameworkObj.projectLibraries || []) {
+					const projectType: any = {
+						id: projectLib.projectType,
+						name: projectLib.name,
+						components: projectLib.components.map((c: any) => ({
+							name: c.name,
+							description: c.description,
+							group: c.group,
+							templates: c.templates.map((t: any) => ({
+								id: t.id,
+								name: t.name,
+								description: t.description,
+							})),
+						})),
+					};
+					catalog.projectTypes.push(projectType);
+				}
+
+				return {
+					content: [
+						{
+							type: "text",
+							text: JSON.stringify(catalog, null, 2),
+						},
+					],
+				};
+			} catch (error: any) {
+				return {
+					content: [
+						{
+							type: "text",
+							text: JSON.stringify({ error: error.message }, null, 2),
 						},
 					],
 					isError: true,
