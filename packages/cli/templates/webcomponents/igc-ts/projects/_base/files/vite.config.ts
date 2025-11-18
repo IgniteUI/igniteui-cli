@@ -21,8 +21,15 @@ export default defineConfig({
     chunkSizeWarningLimit: 10 * 1024 * 1024 // 10 MB
   },
   test: {
-    environment: 'jsdom',
-    include: ['test/src/app/**/*.test.js']
+    browser: {
+      enabled: true,
+      provider: 'playwright',
+      instances: [
+        {
+          browser: 'chromium'
+        },
+      ],
+    },
   },
   plugins: [
     /** Copy static assets */
