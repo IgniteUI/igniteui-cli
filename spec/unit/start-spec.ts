@@ -12,7 +12,7 @@ describe("Unit - start command", () => {
 	beforeEach(() => {
 		spyOn(Util, "log");
 		spyOn(Util, "error");
-		spyOn(Util, "execSync");
+		spyOn(Util, "spawnSync");
 		spyOn(buildCmd, "build");
 	});
 
@@ -25,7 +25,7 @@ describe("Unit - start command", () => {
 			"Start command is supported only on existing project created with igniteui-cli",
 			"red");
 		expect(Util.log).not.toHaveBeenCalled();
-		expect(Util.execSync).not.toHaveBeenCalled();
+		expect(Util.spawnSync).not.toHaveBeenCalled();
 	});
 
 	it("Starts an Angular project", async () => {
@@ -41,17 +41,17 @@ describe("Unit - start command", () => {
 
 		await startCmd.handler({ _: ["start"], $0: "start" });
 		expect(buildCmd.build).toHaveBeenCalled();
-		expect(Util.execSync).toHaveBeenCalledWith("npm start", { stdio: "inherit", killSignal: "SIGINT" });
+		expect(Util.spawnSync).toHaveBeenCalledWith("npm", ['start'], { stdio: "inherit", killSignal: "SIGINT" });
 		expect(Util.log).toHaveBeenCalledWith(`Starting project.`, "green");
 
 		config.project.defaultPort = 3567;
 		await startCmd.handler({ _: ["start"], $0: "start" });
 		// tslint:disable-next-line: max-line-length
-		expect(Util.execSync).toHaveBeenCalledWith("npm start -- --port=3567", { stdio: "inherit", killSignal: "SIGINT" });
+		expect(Util.spawnSync).toHaveBeenCalledWith("npm", ['start', '--', '--port=3567'], { stdio: "inherit", killSignal: "SIGINT" });
 
 		await startCmd.handler({ port: 1234,  _: ["start"], $0: "start"  });
 		// tslint:disable-next-line: max-line-length
-		expect(Util.execSync).toHaveBeenCalledWith("npm start -- --port=1234", { stdio: "inherit", killSignal: "SIGINT" });
+		expect(Util.spawnSync).toHaveBeenCalledWith("npm", ['start', '--', '--port=1234'], { stdio: "inherit", killSignal: "SIGINT" });
 
 		expect(Util.error).not.toHaveBeenCalled();
 	});
@@ -69,7 +69,7 @@ describe("Unit - start command", () => {
 
 		await startCmd.handler({ _: ["start"], $0: "start" });
 		expect(buildCmd.build).toHaveBeenCalled();
-		expect(Util.execSync).toHaveBeenCalledWith("npm start", { stdio: "inherit", killSignal: "SIGINT" });
+		expect(Util.spawnSync).toHaveBeenCalledWith("npm", ['start'], { stdio: "inherit", killSignal: "SIGINT" });
 		expect(Util.log).toHaveBeenCalledWith(`Starting project.`, "green");
 
 		/* the following checks are no longer valid, as `config.project.defaultPort` is deprecated for react projects
@@ -77,9 +77,9 @@ describe("Unit - start command", () => {
 			 this change is required by how `react scripts` work, and to ensure passing a PORT via a platform agnostic approach.
 			 config.project.defaultPort = 3567;
 			 await startCmd.execute({});
-			 expect(Util.execSync).toHaveBeenCalledWith("npm start -- --port=3567", { stdio: "inherit", killSignal: "SIGINT" });
+			 expect(Util.spawnSync).toHaveBeenCalledWith("npm", ['start', '--', '--port=3567'], { stdio: "inherit", killSignal: "SIGINT" });
 			 await startCmd.execute({ port: 1234 });
-			 expect(Util.execSync).toHaveBeenCalledWith("npm start -- --port=1234", { stdio: "inherit", killSignal: "SIGINT" });
+			 expect(Util.spawnSync).toHaveBeenCalledWith("npm", ['start', '--', '--port=1234'], { stdio: "inherit", killSignal: "SIGINT" });
 			*/
 		expect(Util.error).not.toHaveBeenCalled();
 	});
@@ -97,17 +97,17 @@ describe("Unit - start command", () => {
 
 		await startCmd.handler({ _: ["start"], $0: "start" });
 		expect(buildCmd.build).toHaveBeenCalled();
-		expect(Util.execSync).toHaveBeenCalledWith("npm start", { stdio: "inherit", killSignal: "SIGINT" });
+		expect(Util.spawnSync).toHaveBeenCalledWith("npm", ['start'], { stdio: "inherit", killSignal: "SIGINT" });
 		expect(Util.log).toHaveBeenCalledWith(`Starting project.`, "green");
 
 		config.project.defaultPort = 3567;
 		await startCmd.handler({ _: ["start"], $0: "start" });
 		expect(process.env.PORT).toEqual("3567");
-		expect(Util.execSync).toHaveBeenCalledWith("npm start", { stdio: "inherit", killSignal: "SIGINT" });
+		expect(Util.spawnSync).toHaveBeenCalledWith("npm", ['start'], { stdio: "inherit", killSignal: "SIGINT" });
 
 		await startCmd.handler({ port: 1234, _: ["start"], $0: "start"  });
 		expect(process.env.PORT).toEqual("1234");
-		expect(Util.execSync).toHaveBeenCalledWith("npm start", { stdio: "inherit", killSignal: "SIGINT" });
+		expect(Util.spawnSync).toHaveBeenCalledWith("npm", ['start'], { stdio: "inherit", killSignal: "SIGINT" });
 
 		expect(Util.error).not.toHaveBeenCalled();
 	});
