@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "@babel/preset-env": "^7.20.2",
+    "@eslint/eslintrc": "^3.2.0",
     "@typescript-eslint/eslint-plugin": "^8.21.0",
     "@typescript-eslint/parser": "^8.21.0",
     "@web/dev-server": "^0.4.6",
@@ -35,6 +36,7 @@
     "deepmerge": "^4.2.2",
     "eslint": "^9.20.0",
     "eslint-plugin-lit": "^1.8.2",
+    "globals": "^15.14.0",
     "igniteui-cli": "~14.5.0",
     "jsdom": "^26.1.0",
     "rimraf": "^5.0.10",
