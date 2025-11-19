@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "ignite-ui": "21.1.13",
+    "ignite-ui": "~23.1",
     "igniteui-react": "~19.2.0",
     "jquery": "^3.7.1",
     "jquery-ui": "^1.13.3",

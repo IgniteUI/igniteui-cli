@@ -7,7 +7,7 @@
   "dependencies": {
     "jquery": "^3.7.1",
     "jquery-ui": "^1.13.3",
-    "ignite-ui": "~21.2"
+    "ignite-ui": "~23.1"
   },
   "devDependencies": {
     "browser-sync": "^3.0.3",
