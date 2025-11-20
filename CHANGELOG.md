@@ -1,3 +1,14 @@
+# [14.7.1](https://github.com/IgniteUI/igniteui-cli/compare/v14.7.0...v14.7.1) (2025-11-17)
+
+## What's Changed
+* chore: update jQuery, jQuery-UI, ignite-ui, and igniteui-angular-wrappers to latest versions to fix Dependabot alerts by @Copilot in https://github.com/IgniteUI/igniteui-cli/pull/1441
+* chore: rxjs to reveal overrides by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1456
+* chore: add js-yaml resolution by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1457
+* chore: update jasmine & lerna by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1460
+* build(deps): bump glob from 11.0.1 to 11.1.0 in the npm_and_yarn group across 1 directory by @dependabot[bot] in https://github.com/IgniteUI/igniteui-cli/pull/1454
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.7.0...v14.7.1
+
 # [14.7.0](https://github.com/IgniteUI/igniteui-cli/compare/v14.6.6...v14.7.0) (2025-11-17)
 ## What's Changed
 
