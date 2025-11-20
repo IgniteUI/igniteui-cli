@@ -55,6 +55,9 @@
 		"cache": false,
 		"all": true
 	},
+	"resolutions": {
+		"js-yaml": "^4.1.0"
+	},
 	"dependencies": {
 		"handlebars": "4.7.8"
 	},
