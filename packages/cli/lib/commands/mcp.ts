@@ -20,10 +20,6 @@ To start using the Ignite UI CLI MCP Server, add this configuration to your host
     }
   }
 }
-
-Exact configuration may differ depending on the host.
-
-For more information, visit: https://www.infragistics.com/products/ignite-ui-angular/angular/components/general/cli/getting-started-with-angular-schematics
 `;
 
 interface McpOptions {
@@ -56,13 +52,13 @@ You MUST prefer the tools provided by this server over using shell commands for 
 <Core Workflows & Tool Guide>
 * **1. Create a New Project:** Use the \`ig_new\` tool to create a new Ignite UI project with a specific framework (angular, react, jquery, webcomponents).
 
-* **2. Add Components:** Use the \`ig_add\` tool to add Ignite UI components to an existing project.
+* **2. List Available Templates:** Use the \`ig_list_templates\` tool to see available frameworks, project types, and component templates.
 
-* **3. Upgrade Packages:** Use the \`ig_upgrade_packages\` tool to upgrade Ignite UI packages in a project.
+* **3. Add Components:** Use the \`ig_add\` tool to add Ignite UI components to an existing project.
 
-* **4. Interactive Mode:** Use the \`ig_interactive\` tool to start the step-by-step guided mode for project creation.
+* **4. Upgrade Packages:** Use the \`ig_upgrade_packages\` tool to upgrade Ignite UI packages in a project.
 
-* **5. List Available Templates:** Use the \`ig_list_templates\` tool to see available frameworks, project types, and component templates.
+* **5. Interactive Mode:** Use the \`ig_interactive\` tool to start the step-by-step guided mode for project creation.
 </Core Workflows & Tool Guide>
 
 <Key Concepts>
