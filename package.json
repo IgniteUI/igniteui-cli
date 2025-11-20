@@ -56,7 +56,8 @@
 		"all": true
 	},
 	"resolutions": {
-		"js-yaml": "^4.1.0"
+		"js-yaml": "^4.1.1",
+		"glob": "^11.1.0"
 	},
 	"dependencies": {
 		"handlebars": "4.7.8"
