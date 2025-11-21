@@ -1,4 +1,4 @@
-# [14.7.1](https://github.com/IgniteUI/igniteui-cli/compare/v14.7.0...v14.7.1) (2025-11-17)
+# [14.7.1](https://github.com/IgniteUI/igniteui-cli/compare/v14.7.0...v14.7.1) (2025-11-20)
 
 ## What's Changed
 * chore: update jQuery, jQuery-UI, ignite-ui, and igniteui-angular-wrappers to latest versions to fix Dependabot alerts by @Copilot in https://github.com/IgniteUI/igniteui-cli/pull/1441

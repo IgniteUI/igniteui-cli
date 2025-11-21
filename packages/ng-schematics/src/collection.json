@@ -37,6 +37,12 @@
       "description": "Upgrades to the licensed Ignite UI for Angular packages",
       "factory": "./upgrade-packages/index",
       "schema": "./upgrade-packages/schema.json"
+    },
+    "mcp": {
+      "description": "Start the Ignite UI for Angular MCP (Model Context Protocol) server",
+      "factory": "./mcp-schematic/index#mcp",
+      "schema": "./mcp-schematic/schema.json",
+      "hidden": true
     }
   }
 }
