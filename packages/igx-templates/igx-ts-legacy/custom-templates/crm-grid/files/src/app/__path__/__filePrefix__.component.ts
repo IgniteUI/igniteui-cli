@@ -49,7 +49,7 @@ export class <%=ClassName%>Component implements OnInit, AfterViewInit {
   public earliestSummary = EarliestSummary;
   public soonSummary = SoonSummary;
 
-  public cols!: QueryList<ColumnType>;
+  public cols!: QueryList<IgxColumnComponent>;
   public hiddenColsLength: number = 0;
   public pinnedColsLength: number = 0;
 
