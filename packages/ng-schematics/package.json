@@ -31,7 +31,7 @@
     "@types/minimatch": "^5.1.2",
     "@types/node": "^22.5.5",
     "jasmine": "^5.12.0",
-    "typescript": "~5.9.3"
+    "typescript": "~5.6.2"
   },
   "ng-update": {
     "migrations": "./src/migrations/migration-collection.json"

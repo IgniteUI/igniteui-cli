@@ -16,7 +16,7 @@
     "chalk": "^2.3.2",
     "glob": "^11.0.0",
     "through2": "^2.0.3",
-    "typescript": "~5.9.3"
+    "typescript": "~5.5.4"
   },
   "devDependencies": {
     "@angular-devkit/schematics": "^21.0.0",
