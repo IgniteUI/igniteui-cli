@@ -32,6 +32,24 @@
       "@angular/common": "^21.0.0",
       "rxjs": "~7.8.1"
     },
+    "igniteui-angular-charts": {
+      "@angular/core": "^21.0.0",
+      "@angular/common": "^21.0.0",
+      "@angular/compiler": "^21.0.0",
+      "rxjs": "~7.8.1"
+    },
+    "igniteui-angular-gauges": {
+      "@angular/core": "^21.0.0",
+      "@angular/common": "^21.0.0",
+      "@angular/compiler": "^21.0.0",
+      "rxjs": "~7.8.1"
+    },
+    "igniteui-angular-maps": {
+      "@angular/core": "^21.0.0",
+      "@angular/common": "^21.0.0",
+      "@angular/compiler": "^21.0.0",
+      "rxjs": "~7.8.1"
+    },
     "glob": "^11.0.3",
     "rimraf": "^6.0.1"
   },
