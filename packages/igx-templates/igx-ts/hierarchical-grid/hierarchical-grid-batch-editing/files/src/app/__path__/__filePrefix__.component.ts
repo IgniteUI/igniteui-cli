@@ -13,8 +13,7 @@ import {
   IgxInputGroupComponent,
   IgxLabelDirective,
   IgxInputDirective,
-  IgxCheckboxComponent,
-  GridType
+  IgxCheckboxComponent
 } from '<%=igxPackage%>';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SINGERS } from './data';
@@ -90,13 +89,13 @@ export class <%=ClassName%>Component {
 
   public formatter = (a: number): number => a;
 
-  public undo(grid: GridType): void {
+  public undo(grid: any): void {
     /* exit edit mode */
     grid.crudService.endEdit(/* commit the edit transaction */ false);
     grid.transactions.undo();
   }
 
-  public redo(grid: GridType): void {
+  public redo(grid: any): void {
     grid.transactions.redo();
   }
 
