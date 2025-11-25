@@ -54,6 +54,7 @@
     "rimraf": "^6.0.1"
   },
   "devDependencies": {
+    "@angular/build": "~21.0.0",
     "@angular-devkit/build-angular": "~21.0.0",
     "@angular/cli": "~21.0.0",
     "@angular/compiler-cli": "~21.0.0",
