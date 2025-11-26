@@ -259,7 +259,7 @@ export class PackageManager {
 			}
 			const cmd = /^win/.test(process.platform) ? "npm.cmd" : "npm"; //https://github.com/nodejs/node/issues/3675
 			const login = Util.spawnSync(cmd,
-				["adduser", `--registry=${fullPackageRegistry}`, `--scope=@infragistics`, `--always-auth`],
+				["adduser", `--registry=${fullPackageRegistry}`, `--scope=@infragistics`, `--auth-type=legacy`],
 				{ stdio: "inherit" }
 			);
 			if (login?.status === 0) {

@@ -79,7 +79,7 @@ describe("Unit - Package Manager", () => {
 		expect(path.join).toHaveBeenCalled();
 		expect(Util.spawnSync).toHaveBeenCalledWith(
 			/^win/.test(process.platform) ? "npm.cmd" : "npm",
-			["adduser", `--registry=trial`, `--scope=@infragistics`, `--always-auth`],
+			["adduser", `--registry=trial`, `--scope=@infragistics`, `--auth-type=legacy`],
 			{
 				stdio: "inherit"
 			}
@@ -176,7 +176,7 @@ describe("Unit - Package Manager", () => {
 		); // x1
 		expect(Util.spawnSync).toHaveBeenCalledWith(
 			/^win/.test(process.platform) ? "npm.cmd" : "npm",
-			["adduser", `--registry=trial`, `--scope=@infragistics`, `--always-auth`],
+			["adduser", `--registry=trial`, `--scope=@infragistics`, `--auth-type=legacy`],
 			{
 				stdio: "inherit"
 			}
