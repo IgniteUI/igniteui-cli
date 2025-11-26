@@ -266,7 +266,7 @@ function updateWorkflows(fs: IFileSystem): void {
 			oldCmd: "- run: npm i # replace with 'npm ci' after committing lock file from first install",
 			newCmd: `- run: echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
     - run: echo "//packages.infragistics.com/npm/js-licensed/:_auth=\${{ secrets.NPM_AUTH_TOKEN }}" >> ~/.npmrc
-    - run: echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
+    - run: echo "//packages.infragistics.com/npm/js-licensed/:auth-type=legacy" >> ~/.npmrc
     - run: npm i # replace with 'npm ci' after committing lock file from first install`
 		},
 		{
@@ -276,7 +276,7 @@ function updateWorkflows(fs: IFileSystem): void {
 			newCmd: `- script: |
         echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
         echo "//packages.infragistics.com/npm/js-licensed/:_auth=$NPM_AUTH_TOKEN" >> ~/.npmrc
-        echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
+        echo "//packages.infragistics.com/npm/js-licensed/:auth-type=legacy" >> ~/.npmrc
       displayName: 'Authenticate'
       env:
         NPM_AUTH_TOKEN: $(NPM_AUTH_TOKEN)
@@ -306,7 +306,7 @@ function createNpmrc(
 	if (!fs.fileExists(npmrcPath)) {
 		const fileContent =
 `@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/
-//packages.infragistics.com/npm/js-licensed/:always-auth=true
+//packages.infragistics.com/npm/js-licensed/:auth-type=legacy
 `;
 		fs.writeFile(npmrcPath, fileContent);
 	}
