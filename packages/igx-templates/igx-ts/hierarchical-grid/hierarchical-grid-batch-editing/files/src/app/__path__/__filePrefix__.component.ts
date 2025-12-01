@@ -96,7 +96,7 @@ export class <%=ClassName%>Component {
     grid.transactions.undo();
   }
 
-  public redo(grid: GridType): void {
+  public redo(grid: any): void {
     grid.transactions.redo();
   }
 
