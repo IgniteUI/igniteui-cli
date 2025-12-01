@@ -111,7 +111,7 @@ describe("updateWorkspace", () => {
 				content: "",
 				expected:
 `@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/
-//packages.infragistics.com/npm/js-licensed/:always-auth=true
+//packages.infragistics.com/npm/js-licensed/:auth-type=legacy
 `};
 			(fsSpy.glob as jasmine.Spy).and.returnValues(// per workspace
 				["package.json"], // root package.json
@@ -290,7 +290,7 @@ title = 'igniteui-angular example';
 `# start content
     - run: echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
     - run: echo "//packages.infragistics.com/npm/js-licensed/:_auth=\${{ secrets.NPM_AUTH_TOKEN }}" >> ~/.npmrc
-    - run: echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
+    - run: echo "//packages.infragistics.com/npm/js-licensed/:auth-type=legacy" >> ~/.npmrc
     - run: npm i # replace with \'npm ci\' after committing lock file from first install
 # end content
 `},
@@ -305,7 +305,7 @@ title = 'igniteui-angular example';
 `# start content
     - run: echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
     - run: echo "//packages.infragistics.com/npm/js-licensed/:_auth=\${{ secrets.NPM_AUTH_TOKEN }}" >> ~/.npmrc
-    - run: echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
+    - run: echo "//packages.infragistics.com/npm/js-licensed/:auth-type=legacy" >> ~/.npmrc
     - run: npm i # replace with 'npm ci' after committing lock file from first install
 # end content
 `},
@@ -321,7 +321,7 @@ title = 'igniteui-angular example';
     - script: |
         echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
         echo "//packages.infragistics.com/npm/js-licensed/:_auth=$NPM_AUTH_TOKEN" >> ~/.npmrc
-        echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
+        echo "//packages.infragistics.com/npm/js-licensed/:auth-type=legacy" >> ~/.npmrc
       displayName: 'Authenticate'
       env:
         NPM_AUTH_TOKEN: $(NPM_AUTH_TOKEN)
@@ -613,7 +613,7 @@ export default function Home() {
 `# start content
     - run: echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
     - run: echo "//packages.infragistics.com/npm/js-licensed/:_auth=\${{ secrets.NPM_AUTH_TOKEN }}" >> ~/.npmrc
-    - run: echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
+    - run: echo "//packages.infragistics.com/npm/js-licensed/:auth-type=legacy" >> ~/.npmrc
     - run: npm i # replace with \'npm ci\' after committing lock file from first install
 # end content
 `},
@@ -628,7 +628,7 @@ export default function Home() {
 `# start content
     - run: echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
     - run: echo "//packages.infragistics.com/npm/js-licensed/:_auth=\${{ secrets.NPM_AUTH_TOKEN }}" >> ~/.npmrc
-    - run: echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
+    - run: echo "//packages.infragistics.com/npm/js-licensed/:auth-type=legacy" >> ~/.npmrc
     - run: npm i # replace with 'npm ci' after committing lock file from first install
 # end content
 `},
@@ -644,7 +644,7 @@ export default function Home() {
     - script: |
         echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
         echo "//packages.infragistics.com/npm/js-licensed/:_auth=$NPM_AUTH_TOKEN" >> ~/.npmrc
-        echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
+        echo "//packages.infragistics.com/npm/js-licensed/:auth-type=legacy" >> ~/.npmrc
       displayName: 'Authenticate'
       env:
         NPM_AUTH_TOKEN: $(NPM_AUTH_TOKEN)
@@ -1191,7 +1191,7 @@ export default class App extends LitElement {
 `# start content
     - run: echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
     - run: echo "//packages.infragistics.com/npm/js-licensed/:_auth=\${{ secrets.NPM_AUTH_TOKEN }}" >> ~/.npmrc
-    - run: echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
+    - run: echo "//packages.infragistics.com/npm/js-licensed/:auth-type=legacy" >> ~/.npmrc
     - run: npm i # replace with \'npm ci\' after committing lock file from first install
 # end content
 `},
@@ -1206,7 +1206,7 @@ export default class App extends LitElement {
 `# start content
     - run: echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
     - run: echo "//packages.infragistics.com/npm/js-licensed/:_auth=\${{ secrets.NPM_AUTH_TOKEN }}" >> ~/.npmrc
-    - run: echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
+    - run: echo "//packages.infragistics.com/npm/js-licensed/:auth-type=legacy" >> ~/.npmrc
     - run: npm i # replace with 'npm ci' after committing lock file from first install
 # end content
 `},
@@ -1222,7 +1222,7 @@ export default class App extends LitElement {
     - script: |
         echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
         echo "//packages.infragistics.com/npm/js-licensed/:_auth=$NPM_AUTH_TOKEN" >> ~/.npmrc
-        echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
+        echo "//packages.infragistics.com/npm/js-licensed/:auth-type=legacy" >> ~/.npmrc
       displayName: 'Authenticate'
       env:
         NPM_AUTH_TOKEN: $(NPM_AUTH_TOKEN)
