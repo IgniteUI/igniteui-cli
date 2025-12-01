@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { IgxDialogComponent, IgxGridComponent, IgxHierarchicalGridComponent,
   IgxRowIslandComponent, Transaction } from '<%=igxPackage%>';
 import { GridType } from '<%=igxPackage%>/lib/grids/common/grid.interface';
+
 import { SINGERS } from './data';
 import { Singer } from './singer';
 
