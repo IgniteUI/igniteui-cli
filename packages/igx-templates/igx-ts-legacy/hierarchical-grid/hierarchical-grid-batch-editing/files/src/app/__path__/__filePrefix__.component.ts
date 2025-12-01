@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { IgxDialogComponent, IgxGridComponent, IgxHierarchicalGridComponent,
   IgxRowIslandComponent, Transaction } from '<%=igxPackage%>';
+import { GridType } from '<%=igxPackage%>/lib/grids/common/grid.interface';
 
 import { SINGERS } from './data';
 import { Singer } from './singer';
@@ -58,13 +59,13 @@ export class <%=ClassName%>Component {
 
   public formatter = (a: number): number => a;
 
-  public undo(grid: IgxHierarchicalGridComponent): void {
+  public undo(grid: GridType): void {
     /* exit edit mode */
     grid.crudService.endEdit(/* commit the edit transaction */ false);
     grid.transactions.undo();
   }
 
-  public redo(grid: IgxHierarchicalGridComponent): void {
+  public redo(grid: GridType): void {
     grid.transactions.redo();
   }
 

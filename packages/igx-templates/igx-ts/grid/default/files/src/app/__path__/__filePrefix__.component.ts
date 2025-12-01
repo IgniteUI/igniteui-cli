@@ -17,7 +17,7 @@ export class <%=ClassName%>Component implements OnInit {
     this.localData = employeesData;
   }
 
-  public onColumnInit(column: IgxColumnComponent): void {
+  public onColumnInit(column: ColumnType): void {
     if (column.field === 'RegistererDate') {
       column.formatter = (date => date.toLocaleDateString());
     }
