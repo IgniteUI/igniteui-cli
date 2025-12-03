@@ -35,7 +35,7 @@
     "deepmerge": "^4.2.2",
     "eslint": "^9.20.0",
     "eslint-plugin-lit": "^1.8.2",
-    "igniteui-cli": "~14.5.0",
+    "igniteui-cli": "~14.8.0",
     "jsdom": "^26.1.0",
     "rimraf": "^5.0.10",
     "source-map": "^0.7.4",

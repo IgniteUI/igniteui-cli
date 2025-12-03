@@ -1,3 +1,15 @@
+# [14.8.0](https://github.com/IgniteUI/igniteui-cli/compare/v14.7.1...v14.8.0) (2025-12-03)
+
+🎉 This update includes:
+- `igniteui-angular` version [21.0.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/21.0.0).
+
+## What's Changed
+* chore: update Angular and igniteui-angular to 21.0.0 by @Copilot in https://github.com/IgniteUI/igniteui-cli/pull/1463
+* chore: replace always-auth=true with auth-type=legacy by @Copilot in https://github.com/IgniteUI/igniteui-cli/pull/1464
+* chore: update angular wrappers references to 21.0 by @Copilot in https://github.com/IgniteUI/igniteui-cli/pull/1466
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.7.1...v14.8.0
+
 # [14.7.1](https://github.com/IgniteUI/igniteui-cli/compare/v14.7.0...v14.7.1) (2025-11-17)
 
 ## What's Changed
