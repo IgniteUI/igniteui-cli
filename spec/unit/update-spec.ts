@@ -581,11 +581,9 @@ title = 'igniteui-angular example';
 `import { something } from 'module';
 import { bait } from 'igniteui-react-other';
 import 'igniteui-react-grids/grids';
-import { IgrGridModule, IgrGrid, IgrColumn } from 'igniteui-react-grids';
+import { IgrGrid, IgrColumn } from 'igniteui-react-grids';
 import { IgcDockManager } from 'igniteui-dockmanager';
 import 'igniteui-react-grids/grids/themes/light/bootstrap.css'
-
-IgrGridModule.register();
 
 export default function Home() {
 	const title = 'igniteui-react example';
@@ -594,11 +592,9 @@ export default function Home() {
 `import { something } from 'module';
 import { bait } from 'igniteui-react-other';
 import '@infragistics/igniteui-react-grids/grids';
-import { IgrGridModule, IgrGrid, IgrColumn } from '@infragistics/igniteui-react-grids';
+import { IgrGrid, IgrColumn } from '@infragistics/igniteui-react-grids';
 import { IgcDockManager } from '@infragistics/igniteui-dockmanager';
 import '@infragistics/igniteui-react-grids/grids/themes/light/bootstrap.css'
-
-IgrGridModule.register();
 
 export default function Home() {
 	const title = 'igniteui-react example';
@@ -965,14 +961,14 @@ export default defineConfig({
 				{
 					path: "projects/erp-hierarchical-grid/src/app.tsx",
 					content:
-`import { IgrGridModule, IgrGrid } from 'igniteui-react-grids';
+`import { IgrGrid } from 'igniteui-react-grids';
 import 'igniteui-react-grids/grids/themes/light/bootstrap.css';
 
 export default function App() {
 	return <IgrGrid />;
 }`,
 					expected:
-`import { IgrGridModule, IgrGrid } from '@infragistics/igniteui-react-grids';
+`import { IgrGrid } from '@infragistics/igniteui-react-grids';
 import '@infragistics/igniteui-react-grids/grids/themes/light/bootstrap.css';
 
 export default function App() {
