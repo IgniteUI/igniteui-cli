@@ -1,3 +1,10 @@
+# [14.8.1](https://github.com/IgniteUI/igniteui-cli/compare/v14.8.0...v14.8.1) (2025-12-12)
+
+## What's Changed
+* chore(react): remove unnecessary grid module by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1469
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.8.0...v14.8.1
+
 # [14.8.0](https://github.com/IgniteUI/igniteui-cli/compare/v14.7.1...v14.8.0) (2025-12-03)
 
 🎉 This update includes:
