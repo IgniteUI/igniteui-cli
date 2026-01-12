@@ -111,7 +111,7 @@ describe("updateWorkspace", () => {
 				content: "",
 				expected:
 `@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/
-//packages.infragistics.com/npm/js-licensed/:always-auth=true
+//packages.infragistics.com/npm/js-licensed/:auth-type=legacy
 `};
 			(fsSpy.glob as jasmine.Spy).and.returnValues(// per workspace
 				["package.json"], // root package.json
@@ -290,7 +290,7 @@ title = 'igniteui-angular example';
 `# start content
     - run: echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
     - run: echo "//packages.infragistics.com/npm/js-licensed/:_auth=\${{ secrets.NPM_AUTH_TOKEN }}" >> ~/.npmrc
-    - run: echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
+    - run: echo "//packages.infragistics.com/npm/js-licensed/:auth-type=legacy" >> ~/.npmrc
     - run: npm i # replace with \'npm ci\' after committing lock file from first install
 # end content
 `},
@@ -305,7 +305,7 @@ title = 'igniteui-angular example';
 `# start content
     - run: echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
     - run: echo "//packages.infragistics.com/npm/js-licensed/:_auth=\${{ secrets.NPM_AUTH_TOKEN }}" >> ~/.npmrc
-    - run: echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
+    - run: echo "//packages.infragistics.com/npm/js-licensed/:auth-type=legacy" >> ~/.npmrc
     - run: npm i # replace with 'npm ci' after committing lock file from first install
 # end content
 `},
@@ -321,7 +321,7 @@ title = 'igniteui-angular example';
     - script: |
         echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
         echo "//packages.infragistics.com/npm/js-licensed/:_auth=$NPM_AUTH_TOKEN" >> ~/.npmrc
-        echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
+        echo "//packages.infragistics.com/npm/js-licensed/:auth-type=legacy" >> ~/.npmrc
       displayName: 'Authenticate'
       env:
         NPM_AUTH_TOKEN: $(NPM_AUTH_TOKEN)
@@ -581,11 +581,9 @@ title = 'igniteui-angular example';
 `import { something } from 'module';
 import { bait } from 'igniteui-react-other';
 import 'igniteui-react-grids/grids';
-import { IgrGridModule, IgrGrid, IgrColumn } from 'igniteui-react-grids';
+import { IgrGrid, IgrColumn } from 'igniteui-react-grids';
 import { IgcDockManager } from 'igniteui-dockmanager';
 import 'igniteui-react-grids/grids/themes/light/bootstrap.css'
-
-IgrGridModule.register();
 
 export default function Home() {
 	const title = 'igniteui-react example';
@@ -594,11 +592,9 @@ export default function Home() {
 `import { something } from 'module';
 import { bait } from 'igniteui-react-other';
 import '@infragistics/igniteui-react-grids/grids';
-import { IgrGridModule, IgrGrid, IgrColumn } from '@infragistics/igniteui-react-grids';
+import { IgrGrid, IgrColumn } from '@infragistics/igniteui-react-grids';
 import { IgcDockManager } from '@infragistics/igniteui-dockmanager';
 import '@infragistics/igniteui-react-grids/grids/themes/light/bootstrap.css'
-
-IgrGridModule.register();
 
 export default function Home() {
 	const title = 'igniteui-react example';
@@ -613,7 +609,7 @@ export default function Home() {
 `# start content
     - run: echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
     - run: echo "//packages.infragistics.com/npm/js-licensed/:_auth=\${{ secrets.NPM_AUTH_TOKEN }}" >> ~/.npmrc
-    - run: echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
+    - run: echo "//packages.infragistics.com/npm/js-licensed/:auth-type=legacy" >> ~/.npmrc
     - run: npm i # replace with \'npm ci\' after committing lock file from first install
 # end content
 `},
@@ -628,7 +624,7 @@ export default function Home() {
 `# start content
     - run: echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
     - run: echo "//packages.infragistics.com/npm/js-licensed/:_auth=\${{ secrets.NPM_AUTH_TOKEN }}" >> ~/.npmrc
-    - run: echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
+    - run: echo "//packages.infragistics.com/npm/js-licensed/:auth-type=legacy" >> ~/.npmrc
     - run: npm i # replace with 'npm ci' after committing lock file from first install
 # end content
 `},
@@ -644,7 +640,7 @@ export default function Home() {
     - script: |
         echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
         echo "//packages.infragistics.com/npm/js-licensed/:_auth=$NPM_AUTH_TOKEN" >> ~/.npmrc
-        echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
+        echo "//packages.infragistics.com/npm/js-licensed/:auth-type=legacy" >> ~/.npmrc
       displayName: 'Authenticate'
       env:
         NPM_AUTH_TOKEN: $(NPM_AUTH_TOKEN)
@@ -965,14 +961,14 @@ export default defineConfig({
 				{
 					path: "projects/erp-hierarchical-grid/src/app.tsx",
 					content:
-`import { IgrGridModule, IgrGrid } from 'igniteui-react-grids';
+`import { IgrGrid } from 'igniteui-react-grids';
 import 'igniteui-react-grids/grids/themes/light/bootstrap.css';
 
 export default function App() {
 	return <IgrGrid />;
 }`,
 					expected:
-`import { IgrGridModule, IgrGrid } from '@infragistics/igniteui-react-grids';
+`import { IgrGrid } from '@infragistics/igniteui-react-grids';
 import '@infragistics/igniteui-react-grids/grids/themes/light/bootstrap.css';
 
 export default function App() {
@@ -1191,7 +1187,7 @@ export default class App extends LitElement {
 `# start content
     - run: echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
     - run: echo "//packages.infragistics.com/npm/js-licensed/:_auth=\${{ secrets.NPM_AUTH_TOKEN }}" >> ~/.npmrc
-    - run: echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
+    - run: echo "//packages.infragistics.com/npm/js-licensed/:auth-type=legacy" >> ~/.npmrc
     - run: npm i # replace with \'npm ci\' after committing lock file from first install
 # end content
 `},
@@ -1206,7 +1202,7 @@ export default class App extends LitElement {
 `# start content
     - run: echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
     - run: echo "//packages.infragistics.com/npm/js-licensed/:_auth=\${{ secrets.NPM_AUTH_TOKEN }}" >> ~/.npmrc
-    - run: echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
+    - run: echo "//packages.infragistics.com/npm/js-licensed/:auth-type=legacy" >> ~/.npmrc
     - run: npm i # replace with 'npm ci' after committing lock file from first install
 # end content
 `},
@@ -1222,7 +1218,7 @@ export default class App extends LitElement {
     - script: |
         echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
         echo "//packages.infragistics.com/npm/js-licensed/:_auth=$NPM_AUTH_TOKEN" >> ~/.npmrc
-        echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
+        echo "//packages.infragistics.com/npm/js-licensed/:auth-type=legacy" >> ~/.npmrc
       displayName: 'Authenticate'
       env:
         NPM_AUTH_TOKEN: $(NPM_AUTH_TOKEN)

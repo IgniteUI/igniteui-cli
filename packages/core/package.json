@@ -19,7 +19,7 @@
     "typescript": "~5.5.4"
   },
   "devDependencies": {
-    "@angular-devkit/schematics": "^19.0.0",
+    "@angular-devkit/schematics": "^21.0.0",
     "@inquirer/type": "^3.0.0"
   }
 }

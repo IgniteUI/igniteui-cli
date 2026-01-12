@@ -1,11 +1,9 @@
 import style from './style.module.css';
 import 'igniteui-react-grids/grids';
-import { IgrGridModule, IgrGrid, IgrColumn } from 'igniteui-react-grids';
+import { IgrGrid, IgrColumn } from 'igniteui-react-grids';
 import 'igniteui-react-grids/grids/themes/light/bootstrap.css'
 
 import data from './data';
-
-IgrGridModule.register();
 
 export default function $(ClassName)() {
   const title = 'Grid';

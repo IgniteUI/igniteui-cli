@@ -1,3 +1,33 @@
+# [14.8.1](https://github.com/IgniteUI/igniteui-cli/compare/v14.8.0...v14.8.1) (2025-12-12)
+
+## What's Changed
+* chore(react): remove unnecessary grid module by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1469
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.8.0...v14.8.1
+
+# [14.8.0](https://github.com/IgniteUI/igniteui-cli/compare/v14.7.1...v14.8.0) (2025-12-03)
+
+🎉 This update includes:
+- `igniteui-angular` version [21.0.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/21.0.0).
+
+## What's Changed
+* chore: update Angular and igniteui-angular to 21.0.0 by @Copilot in https://github.com/IgniteUI/igniteui-cli/pull/1463
+* chore: replace always-auth=true with auth-type=legacy by @Copilot in https://github.com/IgniteUI/igniteui-cli/pull/1464
+* chore: update angular wrappers references to 21.0 by @Copilot in https://github.com/IgniteUI/igniteui-cli/pull/1466
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.7.1...v14.8.0
+
+# [14.7.1](https://github.com/IgniteUI/igniteui-cli/compare/v14.7.0...v14.7.1) (2025-11-17)
+
+## What's Changed
+* chore: update jQuery, jQuery-UI, ignite-ui, and igniteui-angular-wrappers to latest versions to fix Dependabot alerts by @Copilot in https://github.com/IgniteUI/igniteui-cli/pull/1441
+* chore: rxjs to reveal overrides by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1456
+* chore: add js-yaml resolution by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1457
+* chore: update jasmine & lerna by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1460
+* build(deps): bump glob from 11.0.1 to 11.1.0 in the npm_and_yarn group across 1 directory by @dependabot[bot] in https://github.com/IgniteUI/igniteui-cli/pull/1454
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.7.0...v14.7.1
+
 # [14.7.0](https://github.com/IgniteUI/igniteui-cli/compare/v14.6.6...v14.7.0) (2025-11-17)
 ## What's Changed
 
