@@ -1,3 +1,10 @@
+# [14.8.2](https://github.com/IgniteUI/igniteui-cli/compare/v14.8.1...v14.8.2) (2025-12-13)
+
+## What's Changed
+* feat(wc): update tests to use Playwright by @Lipata in https://github.com/IgniteUI/igniteui-cli/pull/1455
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.8.1...v14.8.2
+
 # [14.8.1](https://github.com/IgniteUI/igniteui-cli/compare/v14.8.0...v14.8.1) (2025-12-12)
 
 ## What's Changed
