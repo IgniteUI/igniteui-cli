@@ -1,3 +1,11 @@
+# [14.8.3](https://github.com/IgniteUI/igniteui-cli/compare/v14.8.2...v14.8.3) (2026-01-19)
+
+## What's Changed
+* build(deps): bump glob from 11.0.1 to 11.1.0 in the npm_and_yarn group across 1 directory by @dependabot[bot] in https://github.com/IgniteUI/igniteui-cli/pull/1454
+* fix(angular): remove glob and rimraf from standalone package json @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1478
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.8.2...v14.8.3
+
 # [14.8.2](https://github.com/IgniteUI/igniteui-cli/compare/v14.8.1...v14.8.2) (2026-01-13)
 
 ## What's Changed
