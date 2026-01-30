@@ -804,7 +804,7 @@ export default function Home() {
 			(fsSpy.directoryExists as jasmine.Spy).and.callFake((dirPath: string) => {
 				return dirPath.includes("projects/charts") || dirPath.includes("projects") || dirPath.endsWith("/src");
 			});
-			
+
 			// Mock glob to simulate finding workspace directories and files
 			(fsSpy.glob as jasmine.Spy).and.callFake((dirPath: string, pattern: string) => {
 				if (pattern === "projects/*") {
@@ -826,7 +826,7 @@ export default function Home() {
 				}
 				return [];
 			});
-			
+
 			(fsSpy.readFile as jasmine.Spy).and.callFake((filePath: string) => {
 				if (filePath.indexOf("package.json") < 0) {
 					return;
@@ -842,7 +842,7 @@ export default function Home() {
 			for (const fileEntry of mockFileArray) {
 				expect((fsSpy.writeFile as jasmine.Spy)).toHaveBeenCalledWith(fileEntry.path, fileEntry.expected);
 			}
-			// Expect: 1 for projects/*, 1 for package.json files at root, 1 for logic files, 1 for style files, 1 for package.json in workspace, 1 for vite.config.ts  
+			// Expect: 1 for projects/*, 1 for package.json files at root, 1 for logic files, 1 for style files, 1 for package.json in workspace, 1 for vite.config.ts
 			expect(fsSpy.glob).toHaveBeenCalledTimes(7);
 		});
 
@@ -996,7 +996,7 @@ export const GridComponent = () => {
 			(fsSpy.directoryExists as jasmine.Spy).and.callFake((dirPath: string) => {
 				return dirPath === "projects" || dirPath.endsWith("/projects") || dirPath.includes("projects/") || dirPath === "src" || dirPath.endsWith("/src");
 			});
-			
+
 			// Mock glob to simulate finding projects directories and files
 			(fsSpy.glob as jasmine.Spy).and.callFake((dirPath: string, pattern: string) => {
 				if (pattern === "package.json") {
@@ -1021,7 +1021,7 @@ export const GridComponent = () => {
 				}
 				return [];
 			});
-			
+
 			(fsSpy.readFile as jasmine.Spy).and.callFake((filePath: string) => {
 				if (filePath.indexOf("package.json") > -1) {
 					return mockFileArray.find(entry => entry.path === "package.json").content;

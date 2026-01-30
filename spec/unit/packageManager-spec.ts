@@ -479,35 +479,35 @@ describe("Unit - Package Manager", () => {
 		// spyOn(require("module"), "_load").and.returnValue(mockRequire);
 		spyOn(Util, "log");
 		spyOn(App.container, "get").and.returnValue(mockFs);
-		
+
 		const createMockChild = (exitCode: number, stdoutData: string, stderrData: string) => {
 			const mockChild = {
 				stdout: { on: jasmine.createSpy() },
 				stderr: { on: jasmine.createSpy() },
 				on: jasmine.createSpy()
 			};
-			
+
 			// Setup stdout data handler
 			mockChild.stdout.on.and.callFake((event: string, handler: any) => {
 				if (event === 'data') {
 					setTimeout(() => handler(Buffer.from(stdoutData)), 10);
 				}
 			});
-			
+
 			// Setup stderr data handler
 			mockChild.stderr.on.and.callFake((event: string, handler: any) => {
 				if (event === 'data') {
 					setTimeout(() => handler(Buffer.from(stderrData)), 10);
 				}
 			});
-			
+
 			// Setup close handler
 			mockChild.on.and.callFake((event: string, handler: any) => {
 				if (event === 'close') {
 					setTimeout(() => handler(exitCode), 20);
 				}
 			});
-			
+
 			return mockChild;
 		};
 
