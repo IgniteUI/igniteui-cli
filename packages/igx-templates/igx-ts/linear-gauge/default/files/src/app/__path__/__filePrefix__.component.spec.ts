@@ -9,7 +9,7 @@ describe('<%=ClassName%>Component', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-	  imports: [IgxLinearGaugeModule, NoopAnimationsModule, <%=ClassName%>Component]
+      imports: [IgxLinearGaugeModule, NoopAnimationsModule, <%=ClassName%>Component]
     })
       .compileComponents();
   }));
