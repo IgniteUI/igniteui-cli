@@ -119,7 +119,7 @@ export async function updateWorkspace(rootPath: string): Promise<boolean> {
 				// For React and WebComponents projects without explicit workspaces,
 				// check for common project patterns like projects/* in addition to src/
 				workspaces.push(path.join(rootPath, "src"));
-				
+
 				// Check for projects/* pattern common in React demo/example repositories
 				// Only check if projects directory exists to avoid unnecessary glob calls
 				const projectsDir = path.join(rootPath, "projects");
