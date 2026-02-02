@@ -10,7 +10,8 @@ describe('<%=ClassName%>Component', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [<%=ClassName%>Component],
-      imports: [FormsModule, IgxCategoryChartModule]
+      imports: [FormsModule, IgxCategoryChartModule],
+      teardown: { destroyAfterEach: false }
     })
       .compileComponents();
   }));
