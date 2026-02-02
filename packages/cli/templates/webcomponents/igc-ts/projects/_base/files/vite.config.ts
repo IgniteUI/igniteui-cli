@@ -4,9 +4,6 @@ import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 export default defineConfig({
   base: './',
-  optimizeDeps: {
-    exclude: [],
-  },
   build: {
     rollupOptions: {
       output: {
