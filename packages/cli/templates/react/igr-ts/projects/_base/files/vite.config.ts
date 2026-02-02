@@ -8,8 +8,18 @@ export default defineConfig({
   build: {
     chunkSizeWarningLimit: 10 * 1024 * 1024, // 10 MB
   },
+  optimizeDeps: {
+    exclude: [],
+  },
   plugins: [react()],
   test: {
+    deps: {
+      optimizer: {
+        web: {
+          enabled: false,
+        },
+      },
+    },
     browser: {
       enabled: true,
       provider: 'playwright',

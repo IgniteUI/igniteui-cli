@@ -4,6 +4,9 @@ import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 export default defineConfig({
   base: './',
+  optimizeDeps: {
+    exclude: [],
+  },
   build: {
     rollupOptions: {
       output: {
@@ -22,6 +25,13 @@ export default defineConfig({
     chunkSizeWarningLimit: 10 * 1024 * 1024 // 10 MB
   },
   test: {
+    deps: {
+      optimizer: {
+        web: {
+          enabled: false,
+        },
+      },
+    },
     browser: {
       enabled: true,
       provider: 'playwright',
