@@ -31,7 +31,7 @@ export class AngularTemplate implements Template {
 
 	public get templatePaths(): string[] {
 		// Include common Angular files (like test.ts) before template-specific files
-		const commonPath = path.join(__dirname, "../templates/angular/common-files");
+		const commonPath = path.join(__dirname, "../../templates/angular/common-files");
 		return [commonPath, path.join(this.rootPath, "files")];
 	}
 

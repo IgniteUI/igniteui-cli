@@ -41,7 +41,7 @@ $app-palette: palette($primary, $secondary, $surface);
 
 	public get templatePaths(): string[] {
 		// Include common Angular files (like test.ts) before template-specific files
-		const commonPath = path.join(__dirname, "../../common-files");
+		const commonPath = path.join(__dirname, "../../../common-files");
 		return [commonPath, path.join(__dirname, "files")];
 	}
 
