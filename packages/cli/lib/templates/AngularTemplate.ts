@@ -30,7 +30,9 @@ export class AngularTemplate implements Template {
 	constructor(private rootPath: string) { }
 
 	public get templatePaths(): string[] {
-		return [path.join(this.rootPath, "files")];
+		// Include common Angular files (like test.ts) before template-specific files
+		const commonPath = path.join(__dirname, "../templates/angular/common-files");
+		return [commonPath, path.join(this.rootPath, "files")];
 	}
 
 	public generateConfig(name: string, options: {}): { [key: string]: any } {

@@ -33,7 +33,9 @@ export class IgniteUIForAngularTemplate implements Template {
 	};
 
 	public get templatePaths(): string[] {
-		return [path.join(this.rootPath, "files")];
+		// Include common Angular files (like test.ts) before template-specific files
+		const commonPath = path.join(__dirname, "common-files");
+		return [commonPath, path.join(this.rootPath, "files")];
 	}
 
 	constructor(private rootPath: string) {
