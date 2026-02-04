@@ -40,7 +40,9 @@ $app-palette: palette($primary, $secondary, $surface);
               "node_modules/igniteui-angular/styles/igniteui-angular.css"`;
 
 	public get templatePaths(): string[] {
-		return [path.join(__dirname, "files")];
+		// Include common Angular files (like test.ts) before template-specific files
+		const commonPath = path.join(__dirname, "../../common-files");
+		return [commonPath, path.join(__dirname, "files")];
 	}
 
 	public installModules(): void {
