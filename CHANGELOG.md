@@ -1,3 +1,11 @@
+# [14.8.4](https://github.com/IgniteUI/igniteui-cli/compare/v14.8.3...v14.8.4) (2026-02-05)
+
+## What's Changed
+* fix: teardown chart test specifically by @wnvko in https://github.com/IgniteUI/igniteui-cli/pull/1482
+* fix(angular): increase maximum error budget by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1485
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.8.3...v14.8.4
+
 # [14.8.3](https://github.com/IgniteUI/igniteui-cli/compare/v14.8.2...v14.8.3) (2026-01-19)
 
 ## What's Changed
