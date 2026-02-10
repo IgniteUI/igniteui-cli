@@ -1,4 +1,4 @@
-import { ApplicationConfig, ErrorHandler, Provider, importProvidersFrom } from '@angular/core';
+import { ApplicationConfig, ErrorHandler, Provider, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { BrowserModule, HammerModule } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
@@ -11,6 +11,7 @@ import { environment } from '../environments/environment';
 // to override the default settings of the HammerModule
 // { provide: HAMMER_GESTURE_CONFIG, useClass: MyHammerConfig }
 const providers: Provider = [
+  provideZoneChangeDetection({ eventCoalescing: true }),
   provideRouter(routes),
   importProvidersFrom(BrowserModule, HammerModule),
   provideAnimations()
