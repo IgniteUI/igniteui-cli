@@ -17,8 +17,7 @@ export default defineConfig({
           browser: 'chromium'
         },
       ],
-    },
-    setupFiles: ['./src/setupTests.ts']
+    }
   },
   resolve: {
     mainFields: ['module'],
