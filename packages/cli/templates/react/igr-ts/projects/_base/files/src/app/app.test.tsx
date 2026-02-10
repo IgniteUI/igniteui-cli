@@ -1,16 +1,11 @@
-import { beforeAll, expect, test, vi } from 'vitest';
+import { beforeAll, expect, test } from 'vitest';
 import { render } from '@testing-library/react';
 import App from './app';
 import 'element-internals-polyfill';
-import ResizeObserver from 'resize-observer-polyfill';
+import { setupTestMocks } from '../setupTests';
 
 beforeAll(() => {
-  globalThis.ResizeObserver = ResizeObserver;
-
-  HTMLElement.prototype.scrollIntoView = vi.fn();
-  HTMLElement.prototype.hidePopover = vi.fn();
-  HTMLElement.prototype.showPopover = vi.fn();
-  HTMLElement.prototype.togglePopover = vi.fn();
+  setupTestMocks();
 })
 
 test('renders without crashing', () => {
