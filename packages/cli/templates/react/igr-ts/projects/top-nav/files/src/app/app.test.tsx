@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import App from './app';
 import 'element-internals-polyfill';
-import ResizeObserver from 'resize-observer-polyfill'
+import ResizeObserver from 'resize-observer-polyfill';
 
 beforeAll(() => {
   globalThis.ResizeObserver = ResizeObserver;

@@ -1,7 +1,7 @@
 import { beforeAll, expect, test, vi } from 'vitest';
 import { render } from '@testing-library/react';
 import $(ClassName) from './$(path)';
-import ResizeObserver from 'resize-observer-polyfill'
+import ResizeObserver from 'resize-observer-polyfill';
 
 beforeAll(() => {
   globalThis.ResizeObserver = ResizeObserver;
