@@ -1,3 +1,11 @@
+# [14.8.5](https://github.com/IgniteUI/igniteui-cli/compare/v14.8.4...v14.8.5) (2026-02-11)
+
+## What's Changed
+* fix(angular): add provide zone change detection in app config by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1488
+* fix(react): remove setupTests and update test with it's logic by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1489
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.8.4...v14.8.5
+
 # [14.8.4](https://github.com/IgniteUI/igniteui-cli/compare/v14.8.3...v14.8.4) (2026-02-05)
 
 ## What's Changed
