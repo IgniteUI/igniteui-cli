@@ -91,7 +91,7 @@
   "devDependencies": {
     "@angular-devkit/core": "^21.0.0",
     "@angular-devkit/schematics": "^21.0.0",
-    "@schematics/angular": "~21.0.0",
+    "@schematics/angular": "^21.0.0",
     "@types/jasmine": "^5.1.4",
     "@types/node": "^22.5.5",
     "browser-sync": "^3.0.3",
@@ -99,7 +99,7 @@
     "jasmine": "^5.12.0",
     "jasmine-spec-reporter": "^7.0.0",
     "nyc": "^17.0.0",
-    "rxjs": "^7.8.1",
+    "rxjs": "~7.8.1",
     "source-map-support": "^0.5.21",
     "ts-node": "~10.9.2",
     "tslint": "~6.1.0",

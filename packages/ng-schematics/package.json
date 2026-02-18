@@ -18,13 +18,13 @@
   "license": "MIT",
   "schematics": "./src/collection.json",
   "dependencies": {
-    "@angular-devkit/core": "^19.0.0",
-    "@angular-devkit/schematics": "^19.0.0",
+    "@angular-devkit/core": "^21.0.0",
+    "@angular-devkit/schematics": "^21.0.0",
     "@igniteui/angular-templates": "~21.0.1485",
     "@igniteui/cli-core": "~14.8.5",
-    "@schematics/angular": "~19.0.0",
+    "@schematics/angular": "^21.0.0",
     "minimatch": "^10.0.1",
-    "rxjs": "^7.8.1"
+    "rxjs": "~7.8.1"
   },
   "devDependencies": {
     "@types/jasmine": "^5.1.4",
