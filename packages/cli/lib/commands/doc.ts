@@ -27,7 +27,7 @@ const doc: DocCommandType = {
 		if (!argv.term) {
 			const answer = await PromptSession.chooseTerm();
 			argv.term = answer;
-			await this.handler(argv);
+			await doc.handler(argv);
 		} else if (!Util.isAlphanumericExt(argv.term)) {
 			return Util.error(`The search term '${argv.term}' is not valid.` + "\n" +
 			"Name should start with a letter and can also contain numbers, dashes and spaces.",

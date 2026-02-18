@@ -70,7 +70,7 @@ export interface CommandType extends CommandModule<{}, any> {
 	templateManager?: TemplateManager;
 
 	/** Handler function that will be called by yargs after the command line has been parsed. */
-	handler(argv: ArgumentsCamelCase<PositionalArgs>);
+	handler(/** do not use `this` in handler */this: void, argv: ArgumentsCamelCase<PositionalArgs>);
 }
 
 export interface NewCommandType extends CommandType {
