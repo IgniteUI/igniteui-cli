@@ -40,7 +40,7 @@ const command: CommandType = {
 		const templatesByGroup = [];
 		const controlGroups: string[] = [];
 
-		const framework: Framework = this.templateManager.getFrameworkById(argv.framework);
+		const framework: Framework = command.templateManager.getFrameworkById(argv.framework);
 		if (!framework) {
 			return Util.error("Wrong framework provided", "red");
 		}
