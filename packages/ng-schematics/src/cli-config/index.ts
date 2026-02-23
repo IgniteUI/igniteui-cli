@@ -125,22 +125,24 @@ const SKILLS_BASE_URL = "https://raw.githubusercontent.com/IgniteUI/igniteui-ang
 const COPILOT_INSTRUCTIONS_PATH = ".github/copilot-instructions.md";
 const CLAUDE_MD_PATH = "CLAUDE.md";
 
-async function fetchSkillContent(url: string): Promise<string | null> {
+async function fetchSkillContent(url: string, context: SchematicContext): Promise<string | null> {
 	try {
 		const response = await fetch(url);
 		if (!response.ok) {
+			context.logger.debug(`Failed to fetch ${url}: HTTP ${response.status}`);
 			return null;
 		}
 		return await response.text();
-	} catch {
+	} catch (e) {
+		context.logger.debug(`Failed to fetch ${url}: ${e instanceof Error ? e.message : e}`);
 		return null;
 	}
 }
 
 function addAISkillsFiles(): Rule {
 	return async (tree: Tree, context: SchematicContext) => {
-		const copilotContent = await fetchSkillContent(`${SKILLS_BASE_URL}/copilot-instructions.md`);
-		const claudeContent = await fetchSkillContent(`${SKILLS_BASE_URL}/CLAUDE.md`);
+		const copilotContent = await fetchSkillContent(`${SKILLS_BASE_URL}/copilot-instructions.md`, context);
+		const claudeContent = await fetchSkillContent(`${SKILLS_BASE_URL}/CLAUDE.md`, context);
 
 		if (!copilotContent && !claudeContent) {
 			context.logger.warn("Could not fetch AI skill files from the remote source. Skipping AI skills setup.");
