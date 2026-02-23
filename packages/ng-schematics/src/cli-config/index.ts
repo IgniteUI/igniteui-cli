@@ -140,7 +140,11 @@ function copySkillFile(tree: Tree, sourcePath: string, destPath: string, context
 		context.logger.info(`${destPath} already exists. Skipping.`);
 		return;
 	}
-	const content = tree.read(sourcePath)!;
+	const content = tree.read(sourcePath);
+	if (!content) {
+		context.logger.debug(`Could not read source skill file: ${sourcePath}`);
+		return;
+	}
 	tree.create(destPath, content);
 	context.logger.info(`Created ${destPath}`);
 }
@@ -149,14 +153,15 @@ function addAISkillsFiles(options: CliConfigOptions): Rule {
 	return (tree: Tree, context: SchematicContext) => {
 		const igxPackage = resolvePackage(NPM_ANGULAR);
 		const skillsSourceDir = `/node_modules/${igxPackage}/skills`;
+		const skillsDir = tree.getDir(skillsSourceDir);
+		const skillFiles = skillsDir.subfiles;
 
-		if (!tree.getDir(skillsSourceDir).subfiles.length) {
+		if (!skillFiles.length) {
 			context.logger.warn(`No skill files found in ${skillsSourceDir}. Skipping AI skills setup.`);
 			return;
 		}
 
 		const targets = options.aiSkillsTargets || [];
-		const skillFiles = tree.getDir(skillsSourceDir).subfiles;
 
 		for (const target of targets) {
 			let destDir: string;
