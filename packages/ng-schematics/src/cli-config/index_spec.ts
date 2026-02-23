@@ -309,4 +309,157 @@ export const appConfig: ApplicationConfig = {
 		await runner.runSchematic("cli-config", {}, tree);
 		expect(warns).toContain(jasmine.stringMatching(pattern));
 	});
+
+	describe("addAISkills", () => {
+		const mockSkillContent = "# Ignite UI for Angular - AI Skills\nBest practices...";
+		const copilotDest = ".github/copilot-instructions.md";
+		const claudeDest = "CLAUDE.md";
+		const cursorDest = ".cursor/skills";
+
+		function createSkillFiles(igxPkg = NPM_ANGULAR) {
+			const dir = `node_modules/${igxPkg}/skills`;
+			tree.create(`${dir}/igniteui-angular.md`, mockSkillContent);
+		}
+
+		it("should copy skill file to .github/copilot-instructions.md for copilot target", async () => {
+			createSkillFiles();
+			await runner.runSchematic("cli-config", {
+				addAISkills: true,
+				aiSkillsTargets: ["copilot"]
+			}, tree);
+			expect(tree.exists(copilotDest)).toBeTruthy();
+			expect(tree.readContent(copilotDest)).toEqual(mockSkillContent);
+		});
+
+		it("should copy skill file to CLAUDE.md for claude target", async () => {
+			createSkillFiles();
+			await runner.runSchematic("cli-config", {
+				addAISkills: true,
+				aiSkillsTargets: ["claude"]
+			}, tree);
+			expect(tree.exists(claudeDest)).toBeTruthy();
+			expect(tree.readContent(claudeDest)).toEqual(mockSkillContent);
+		});
+
+		it("should copy skill files to .cursor/skills/ for cursor target", async () => {
+			createSkillFiles();
+			await runner.runSchematic("cli-config", {
+				addAISkills: true,
+				aiSkillsTargets: ["cursor"]
+			}, tree);
+			expect(tree.exists(`${cursorDest}/igniteui-angular.md`)).toBeTruthy();
+			expect(tree.readContent(`${cursorDest}/igniteui-angular.md`)).toEqual(mockSkillContent);
+		});
+
+		it("should copy skill files to custom path", async () => {
+			createSkillFiles();
+			const customPath = "my-custom/ai-skills";
+			await runner.runSchematic("cli-config", {
+				addAISkills: true,
+				aiSkillsTargets: ["custom"],
+				aiSkillsCustomPath: customPath
+			}, tree);
+			expect(tree.exists(`${customPath}/igniteui-angular.md`)).toBeTruthy();
+			expect(tree.readContent(`${customPath}/igniteui-angular.md`)).toEqual(mockSkillContent);
+		});
+
+		it("should handle multiple targets at once", async () => {
+			createSkillFiles();
+			await runner.runSchematic("cli-config", {
+				addAISkills: true,
+				aiSkillsTargets: ["copilot", "claude", "cursor"]
+			}, tree);
+			expect(tree.exists(copilotDest)).toBeTruthy();
+			expect(tree.exists(claudeDest)).toBeTruthy();
+			expect(tree.exists(`${cursorDest}/igniteui-angular.md`)).toBeTruthy();
+		});
+
+		it("should NOT create skill files when addAISkills is false", async () => {
+			createSkillFiles();
+			await runner.runSchematic("cli-config", {
+				addAISkills: false,
+				aiSkillsTargets: ["copilot", "claude"]
+			}, tree);
+			expect(tree.exists(copilotDest)).toBeFalsy();
+			expect(tree.exists(claudeDest)).toBeFalsy();
+		});
+
+		it("should NOT create skill files when aiSkillsTargets is empty", async () => {
+			createSkillFiles();
+			await runner.runSchematic("cli-config", {
+				addAISkills: true,
+				aiSkillsTargets: []
+			}, tree);
+			expect(tree.exists(copilotDest)).toBeFalsy();
+			expect(tree.exists(claudeDest)).toBeFalsy();
+		});
+
+		it("should not overwrite existing copilot-instructions.md", async () => {
+			createSkillFiles();
+			const existingContent = "# Existing instructions";
+			tree.create(copilotDest, existingContent);
+
+			await runner.runSchematic("cli-config", {
+				addAISkills: true,
+				aiSkillsTargets: ["copilot"]
+			}, tree);
+			expect(tree.readContent(copilotDest)).toEqual(existingContent);
+		});
+
+		it("should not overwrite existing CLAUDE.md", async () => {
+			createSkillFiles();
+			const existingContent = "# Existing CLAUDE.md";
+			tree.create(claudeDest, existingContent);
+
+			await runner.runSchematic("cli-config", {
+				addAISkills: true,
+				aiSkillsTargets: ["claude"]
+			}, tree);
+			expect(tree.readContent(claudeDest)).toEqual(existingContent);
+		});
+
+		it("should not overwrite existing cursor skill files", async () => {
+			createSkillFiles();
+			const existingContent = "# Existing cursor skill";
+			tree.create(`${cursorDest}/igniteui-angular.md`, existingContent);
+
+			await runner.runSchematic("cli-config", {
+				addAISkills: true,
+				aiSkillsTargets: ["cursor"]
+			}, tree);
+			expect(tree.readContent(`${cursorDest}/igniteui-angular.md`)).toEqual(existingContent);
+		});
+
+		it("should warn when custom target has no path", async () => {
+			createSkillFiles();
+			const warns: string[] = [];
+			runner.logger.subscribe(entry => {
+				if (entry.level === "warn") {
+					warns.push(entry.message);
+				}
+			});
+
+			await runner.runSchematic("cli-config", {
+				addAISkills: true,
+				aiSkillsTargets: ["custom"]
+			}, tree);
+			expect(warns).toContain(jasmine.stringMatching(/Custom AI skills path was selected but no path was provided/));
+		});
+
+		it("should work with FEED_ANGULAR package", async () => {
+			// Run schematic first to create ignite-ui-cli.json (required by resetTree)
+			await runner.runSchematic("cli-config", {}, tree);
+
+			resetTree();
+			createIgPkgJson(FEED_ANGULAR);
+			populatePkgJson(FEED_ANGULAR);
+			createSkillFiles(FEED_ANGULAR);
+
+			await runner.runSchematic("cli-config", {
+				addAISkills: true,
+				aiSkillsTargets: ["copilot"]
+			}, tree);
+			expect(tree.exists(copilotDest)).toBeTruthy();
+		});
+	});
 });
