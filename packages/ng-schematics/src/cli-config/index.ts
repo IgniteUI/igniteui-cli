@@ -7,10 +7,6 @@ import { createCliConfig } from "../utils/cli-config";
 import { setVirtual } from "../utils/NgFileSystem";
 import { addFontsToIndexHtml, getProjects, importDefaultTheme } from "../utils/theme-import";
 
-interface CliConfigOptions {
-	addAISkills?: boolean;
-}
-
 function getDependencyVersion(pkg: string, tree: Tree): string {
 	const targetFile = "/package.json";
 	if (tree.exists(targetFile)) {
@@ -121,68 +117,16 @@ function importStyles(): Rule {
 	};
 }
 
-const SKILLS_BASE_URL = "https://raw.githubusercontent.com/IgniteUI/igniteui-angular/master/skills";
-const COPILOT_INSTRUCTIONS_PATH = ".github/copilot-instructions.md";
-const CLAUDE_MD_PATH = "CLAUDE.md";
-
-async function fetchSkillContent(url: string, context: SchematicContext): Promise<string | null> {
-	try {
-		const response = await fetch(url);
-		if (!response.ok) {
-			context.logger.debug(`Failed to fetch ${url}: HTTP ${response.status}`);
-			return null;
-		}
-		return await response.text();
-	} catch (e) {
-		context.logger.debug(`Failed to fetch ${url}: ${e instanceof Error ? e.message : e}`);
-		return null;
-	}
-}
-
-function addAISkillsFiles(): Rule {
-	return async (tree: Tree, context: SchematicContext) => {
-		const copilotContent = await fetchSkillContent(`${SKILLS_BASE_URL}/copilot-instructions.md`, context);
-		const claudeContent = await fetchSkillContent(`${SKILLS_BASE_URL}/CLAUDE.md`, context);
-
-		if (!copilotContent && !claudeContent) {
-			context.logger.warn("Could not fetch AI skill files from the remote source. Skipping AI skills setup.");
-			return;
-		}
-
-		if (copilotContent) {
-			if (tree.exists(COPILOT_INSTRUCTIONS_PATH)) {
-				context.logger.info(`${COPILOT_INSTRUCTIONS_PATH} already exists. Skipping.`);
-			} else {
-				tree.create(COPILOT_INSTRUCTIONS_PATH, copilotContent);
-				context.logger.info(`Created ${COPILOT_INSTRUCTIONS_PATH}`);
-			}
-		}
-
-		if (claudeContent) {
-			if (tree.exists(CLAUDE_MD_PATH)) {
-				context.logger.info(`${CLAUDE_MD_PATH} already exists. Skipping.`);
-			} else {
-				tree.create(CLAUDE_MD_PATH, claudeContent);
-				context.logger.info(`Created ${CLAUDE_MD_PATH}`);
-			}
-		}
-	};
-}
-
 // tslint:disable-next-line:space-before-function-paren
-export default function (options: CliConfigOptions = {}): Rule {
+export default function (): Rule {
 	return (tree: Tree) => {
 		setVirtual(tree);
-		const rules: Rule[] = [
+		return chain([
 			importStyles(),
 			addTypographyToProj(),
 			importBrowserAnimations(),
 			createCliConfig(),
 			displayVersionMismatch()
-		];
-		if (options.addAISkills !== false) {
-			rules.push(addAISkillsFiles());
-		}
-		return chain(rules);
+		]);
 	};
 }
