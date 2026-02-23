@@ -128,7 +128,8 @@ function importStyles(): Rule {
 const AGENT_DEST_MAP: Record<string, string> = {
 	copilot: ".github/copilot-instructions.md",
 	claude: "CLAUDE.md",
-	cursor: ".cursor/skills"
+	cursor: ".cursor/skills",
+	agents: ".agents/skills"
 };
 
 function copySkillFile(tree: Tree, sourcePath: string, destPath: string, context: SchematicContext): void {

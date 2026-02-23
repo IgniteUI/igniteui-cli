@@ -315,6 +315,7 @@ export const appConfig: ApplicationConfig = {
 		const copilotDest = ".github/copilot-instructions.md";
 		const claudeDest = "CLAUDE.md";
 		const cursorDest = ".cursor/skills";
+		const agentsDest = ".agents/skills";
 
 		function createSkillFiles(igxPkg = NPM_ANGULAR) {
 			const dir = `node_modules/${igxPkg}/skills`;
@@ -351,6 +352,16 @@ export const appConfig: ApplicationConfig = {
 			expect(tree.readContent(`${cursorDest}/igniteui-angular.md`)).toEqual(mockSkillContent);
 		});
 
+		it("should copy skill files to .agents/skills/ for agents target", async () => {
+			createSkillFiles();
+			await runner.runSchematic("cli-config", {
+				addAISkills: true,
+				aiSkillsTargets: ["agents"]
+			}, tree);
+			expect(tree.exists(`${agentsDest}/igniteui-angular.md`)).toBeTruthy();
+			expect(tree.readContent(`${agentsDest}/igniteui-angular.md`)).toEqual(mockSkillContent);
+		});
+
 		it("should copy skill files to custom path", async () => {
 			createSkillFiles();
 			const customPath = "my-custom/ai-skills";
@@ -367,11 +378,12 @@ export const appConfig: ApplicationConfig = {
 			createSkillFiles();
 			await runner.runSchematic("cli-config", {
 				addAISkills: true,
-				aiSkillsTargets: ["copilot", "claude", "cursor"]
+				aiSkillsTargets: ["copilot", "claude", "cursor", "agents"]
 			}, tree);
 			expect(tree.exists(copilotDest)).toBeTruthy();
 			expect(tree.exists(claudeDest)).toBeTruthy();
 			expect(tree.exists(`${cursorDest}/igniteui-angular.md`)).toBeTruthy();
+			expect(tree.exists(`${agentsDest}/igniteui-angular.md`)).toBeTruthy();
 		});
 
 		it("should NOT create skill files when addAISkills is false", async () => {
@@ -428,6 +440,18 @@ export const appConfig: ApplicationConfig = {
 				aiSkillsTargets: ["cursor"]
 			}, tree);
 			expect(tree.readContent(`${cursorDest}/igniteui-angular.md`)).toEqual(existingContent);
+		});
+
+		it("should not overwrite existing agents skill files", async () => {
+			createSkillFiles();
+			const existingContent = "# Existing agents skill";
+			tree.create(`${agentsDest}/igniteui-angular.md`, existingContent);
+
+			await runner.runSchematic("cli-config", {
+				addAISkills: true,
+				aiSkillsTargets: ["agents"]
+			}, tree);
+			expect(tree.readContent(`${agentsDest}/igniteui-angular.md`)).toEqual(existingContent);
 		});
 
 		it("should warn when custom target has no path", async () => {

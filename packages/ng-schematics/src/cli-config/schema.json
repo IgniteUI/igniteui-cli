@@ -15,7 +15,7 @@
       "description": "AI agent targets for skill files",
       "items": {
         "type": "string",
-        "enum": ["copilot", "claude", "cursor", "custom"]
+        "enum": ["copilot", "claude", "cursor", "agents", "custom"]
       },
       "x-prompt": {
         "message": "Which AI coding assistant(s) would you like to add skills for?",
@@ -25,6 +25,7 @@
           { "value": "copilot", "label": "GitHub Copilot (.github/copilot-instructions.md)" },
           { "value": "claude", "label": "Claude (CLAUDE.md)" },
           { "value": "cursor", "label": "Cursor (.cursor/skills/)" },
+          { "value": "agents", "label": "VS Code Agents (.agents/skills/)" },
           { "value": "custom", "label": "Add custom path" }
         ]
       }
