@@ -2,7 +2,7 @@ import * as path from "path";
 
 import { EmptyTree } from "@angular-devkit/schematics";
 import { SchematicTestRunner, UnitTestTree } from "@angular-devkit/schematics/testing";
-import { FEED_ANGULAR, NPM_ANGULAR } from "@igniteui/cli-core";
+import { FEED_ANGULAR, InquirerWrapper, NPM_ANGULAR } from "@igniteui/cli-core";
 
 describe("cli-config schematic", () => {
 	const collectionPath = path.join(__dirname, "../collection.json");
@@ -85,6 +85,9 @@ describe("cli-config schematic", () => {
 			 </body>`);
 		createIgPkgJson();
 		populatePkgJson();
+		// Default: return empty selection so existing tests aren't affected by AI skills prompts
+		spyOn(InquirerWrapper, "confirm").and.returnValue(Promise.resolve(false));
+		spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve([]));
 	});
 
 	it("should create the needed files correctly", () => {
@@ -389,21 +392,43 @@ export const appConfig: ApplicationConfig = {
 		it("should NOT create skill files when addAISkills is false", async () => {
 			createSkillFiles();
 			await runner.runSchematic("cli-config", {
-				addAISkills: false,
-				aiSkillsTargets: ["copilot", "claude"]
+				addAISkills: false
 			}, tree);
 			expect(tree.exists(copilotDest)).toBeFalsy();
 			expect(tree.exists(claudeDest)).toBeFalsy();
 		});
 
-		it("should NOT create skill files when aiSkillsTargets is empty", async () => {
+		it("should NOT create skill files when user selects no targets from prompt", async () => {
 			createSkillFiles();
-			await runner.runSchematic("cli-config", {
-				addAISkills: true,
-				aiSkillsTargets: []
-			}, tree);
+			// checkbox returns empty selection → no files created
+			(InquirerWrapper.checkbox as jasmine.Spy).and.returnValue(Promise.resolve([]));
+			await runner.runSchematic("cli-config", {}, tree);
 			expect(tree.exists(copilotDest)).toBeFalsy();
 			expect(tree.exists(claudeDest)).toBeFalsy();
+		});
+
+		it("should prompt for targets when user confirms and no targets provided", async () => {
+			createSkillFiles();
+			(InquirerWrapper.checkbox as jasmine.Spy).and.returnValue(
+				Promise.resolve(["copilot (.github/copilot-instructions.md)"])
+			);
+
+			// addAISkills defaults to true via schema, aiSkillsTargets is undefined → prompts
+			await runner.runSchematic("cli-config", {}, tree);
+			expect(InquirerWrapper.checkbox).toHaveBeenCalled();
+			expect(tree.exists(copilotDest)).toBeTruthy();
+		});
+
+		it("should prompt for custom path when custom target selected via prompt", async () => {
+			createSkillFiles();
+			(InquirerWrapper.checkbox as jasmine.Spy).and.returnValue(
+				Promise.resolve(["custom (add custom path)"])
+			);
+			spyOn(InquirerWrapper, "input").and.returnValue(Promise.resolve("my-custom-path"));
+
+			await runner.runSchematic("cli-config", {}, tree);
+			expect(InquirerWrapper.input).toHaveBeenCalled();
+			expect(tree.exists("my-custom-path/igniteui-angular.md")).toBeTruthy();
 		});
 
 		it("should not overwrite existing copilot-instructions.md", async () => {
@@ -465,7 +490,8 @@ export const appConfig: ApplicationConfig = {
 
 			await runner.runSchematic("cli-config", {
 				addAISkills: true,
-				aiSkillsTargets: ["custom"]
+				aiSkillsTargets: ["custom"],
+				aiSkillsCustomPath: ""
 			}, tree);
 			expect(warns).toContain(jasmine.stringMatching(/Custom AI skills path was selected but no path was provided/));
 		});
