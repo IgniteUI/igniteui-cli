@@ -3,6 +3,7 @@ import * as path from "path";
 import { EmptyTree } from "@angular-devkit/schematics";
 import { SchematicTestRunner, UnitTestTree } from "@angular-devkit/schematics/testing";
 import { FEED_ANGULAR, InquirerWrapper, NPM_ANGULAR } from "@igniteui/cli-core";
+import { AGENT_CHOICES } from "./index";
 
 describe("cli-config schematic", () => {
 	const collectionPath = path.join(__dirname, "../collection.json");
@@ -409,8 +410,9 @@ export const appConfig: ApplicationConfig = {
 
 		it("should prompt for targets when user confirms and no targets provided", async () => {
 			createSkillFiles();
+			const copilotChoice = AGENT_CHOICES.find(c => c.key === "copilot")!.label;
 			(InquirerWrapper.checkbox as jasmine.Spy).and.returnValue(
-				Promise.resolve(["copilot (.github/copilot-instructions.md)"])
+				Promise.resolve([copilotChoice])
 			);
 
 			// addAISkills defaults to true via schema, aiSkillsTargets is undefined → prompts
@@ -421,8 +423,9 @@ export const appConfig: ApplicationConfig = {
 
 		it("should prompt for custom path when custom target selected via prompt", async () => {
 			createSkillFiles();
+			const customChoice = AGENT_CHOICES.find(c => c.key === "custom")!.label;
 			(InquirerWrapper.checkbox as jasmine.Spy).and.returnValue(
-				Promise.resolve(["custom (add custom path)"])
+				Promise.resolve([customChoice])
 			);
 			spyOn(InquirerWrapper, "input").and.returnValue(Promise.resolve("my-custom-path"));
 

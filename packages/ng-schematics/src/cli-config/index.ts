@@ -132,6 +132,15 @@ const AGENT_DEST_MAP: Record<string, string> = {
 	agents: ".agents/skills"
 };
 
+/** Agent choices for interactive prompt, maps agent key → display label */
+export const AGENT_CHOICES: { key: string; label: string }[] = [
+	{ key: "copilot", label: "copilot (.github/copilot-instructions.md)" },
+	{ key: "claude", label: "claude (CLAUDE.md)" },
+	{ key: "cursor", label: "cursor (.cursor/skills/)" },
+	{ key: "agents", label: "agents (.agents/skills/)" },
+	{ key: "custom", label: "custom (add custom path)" }
+];
+
 function copySkillFile(tree: Tree, sourcePath: string, destPath: string, context: SchematicContext): void {
 	if (!tree.exists(sourcePath)) {
 		context.logger.debug(`Source skill file not found: ${sourcePath}`);
@@ -167,19 +176,13 @@ function addAISkillsFiles(options: CliConfigOptions): Rule {
 		// Step 2: Ask which agents to target (only if not already specified)
 		let targets = options.aiSkillsTargets || [];
 		if (targets.length === 0) {
-			const agentChoices = [
-				"copilot (.github/copilot-instructions.md)",
-				"claude (CLAUDE.md)",
-				"cursor (.cursor/skills/)",
-				"agents (.agents/skills/)",
-				"custom (add custom path)"
-			];
 			const selected = await InquirerWrapper.checkbox({
 				message: "Which AI coding assistant(s) would you like to add skills for?",
-				choices: agentChoices
+				choices: AGENT_CHOICES.map(c => c.label)
 			});
-			// Extract the agent key from the choice string
-			targets = selected.map(t => t.split(" ")[0]);
+			// Map display labels back to agent keys
+			const labelToKey = new Map(AGENT_CHOICES.map(c => [c.label, c.key]));
+			targets = selected.map(s => labelToKey.get(s) || s);
 		}
 		if (targets.length === 0) {
 			return;
