@@ -1,3 +1,16 @@
+# [14.9.0](https://github.com/IgniteUI/igniteui-cli/compare/v14.8.5...v14.9.0) (2026-02-25)
+
+🎉 This update includes:
+- `igniteui-angular` version [21.1.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/21.1.0).
+
+## What's Changed
+* feat(ng): update igniteui-angular to 21.1.0 by @damyanpetev in https://github.com/IgniteUI/igniteui-cli/pull/1495
+* fix(commands,list): do not use `this` in handler by @damyanpetev in https://github.com/IgniteUI/igniteui-cli/pull/1494
+* fix(angular): add missing providers by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1497
+* fix(angular): add igniteui angular core override by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1498
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.8.5...14.9.0
+
 # [14.8.5](https://github.com/IgniteUI/igniteui-cli/compare/v14.8.4...v14.8.5) (2026-02-11)
 
 ## What's Changed
