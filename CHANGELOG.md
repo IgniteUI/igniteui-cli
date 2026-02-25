@@ -1,4 +1,13 @@
-# [14.9.0](https://github.com/IgniteUI/igniteui-cli/compare/v14.8.5...v14.9.0) (2026-02-25)
+## [14.9.1](https://github.com/IgniteUI/igniteui-cli/compare/14.9.0...14.9.1) (2026-02-25)
+
+### What's Changed
+* chore(igx-ts): update angular projects dependencies by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1505
+
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/14.9.0...14.9.1
+
+
+# [14.9.0](https://github.com/IgniteUI/igniteui-cli/compare/v14.8.5...14.9.0) (2026-02-25)
 
 🎉 This update includes:
 - `igniteui-angular` version [21.1.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/21.1.0).
