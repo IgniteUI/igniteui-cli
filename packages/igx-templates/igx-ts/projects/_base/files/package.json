@@ -28,32 +28,32 @@
   },
   "overrides": {
     "reveal-sdk-wrappers-angular": {
-      "@angular/core": "^21.0.0",
-      "@angular/common": "^21.0.0",
+      "@angular/core": "^21.1.5",
+      "@angular/common": "^21.1.5",
       "rxjs": "~7.8.1"
     },
     "igniteui-angular-charts": {
-      "@angular/core": "^21.0.0",
-      "@angular/common": "^21.0.0",
-      "@angular/compiler": "^21.0.0",
+      "@angular/core": "^21.1.5",
+      "@angular/common": "^21.1.5",
+      "@angular/compiler": "^21.1.5",
       "rxjs": "~7.8.1"
     },
     "igniteui-angular-gauges": {
-      "@angular/core": "^21.0.0",
-      "@angular/common": "^21.0.0",
-      "@angular/compiler": "^21.0.0",
+      "@angular/core": "^21.1.5",
+      "@angular/common": "^21.1.5",
+      "@angular/compiler": "^21.1.5",
       "rxjs": "~7.8.1"
     },
     "igniteui-angular-maps": {
-      "@angular/core": "^21.0.0",
-      "@angular/common": "^21.0.0",
-      "@angular/compiler": "^21.0.0",
+      "@angular/core": "^21.1.5",
+      "@angular/common": "^21.1.5",
+      "@angular/compiler": "^21.1.5",
       "rxjs": "~7.8.1"
     },
     "igniteui-angular-core": {
-      "@angular/core": "^21.0.0",
-      "@angular/common": "^21.0.0",
-      "@angular/compiler": "^21.0.0",
+      "@angular/core": "^21.1.5",
+      "@angular/common": "^21.1.5",
+      "@angular/compiler": "^21.1.5",
       "rxjs": "~7.8.1"
     }
   },
