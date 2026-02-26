@@ -25,7 +25,38 @@
     "minireset.css": "~0.0.7",
     "rxjs": "~7.8.0",
     "tslib": "~2.8.1",
-    "zone.js": "~0.14.0"
+    "zone.js": "~0.15.0"
+  },
+  "overrides": {
+    "reveal-sdk-wrappers-angular": {
+      "@angular/core": "^21.1.5",
+      "@angular/common": "^21.1.5",
+      "rxjs": "~7.8.1"
+    },
+    "igniteui-angular-charts": {
+      "@angular/core": "^21.1.5",
+      "@angular/common": "^21.1.5",
+      "@angular/compiler": "^21.1.5",
+      "rxjs": "~7.8.1"
+    },
+    "igniteui-angular-gauges": {
+      "@angular/core": "^21.1.5",
+      "@angular/common": "^21.1.5",
+      "@angular/compiler": "^21.1.5",
+      "rxjs": "~7.8.1"
+    },
+    "igniteui-angular-maps": {
+      "@angular/core": "^21.1.5",
+      "@angular/common": "^21.1.5",
+      "@angular/compiler": "^21.1.5",
+      "rxjs": "~7.8.1"
+    },
+    "igniteui-angular-core": {
+      "@angular/core": "^21.1.5",
+      "@angular/common": "^21.1.5",
+      "@angular/compiler": "^21.1.5",
+      "rxjs": "~7.8.1"
+    }
   },
   "devDependencies": {
     "@angular/build": "~21.1.5",
