@@ -34,6 +34,7 @@ module.exports = defineConfig([
       // Relax rules
       "@typescript-eslint/no-explicit-any": "off",
       "@angular-eslint/prefer-inject": "off",
+      "@angular-eslint/prefer-standalone": "off"
     },
   },
   {
@@ -44,7 +45,7 @@ module.exports = defineConfig([
     ],
     rules: {
       // Relax rules
-      "@angular-eslint/template/eqeqeq": "off",
+      "@angular-eslint/template/eqeqeq": "off"
     },
   }
 ]);

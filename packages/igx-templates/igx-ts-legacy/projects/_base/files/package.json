@@ -60,20 +60,11 @@
   "devDependencies": {
     "@angular/build": "~21.1.5",
     "@angular-devkit/build-angular": "~21.1.5",
-    "@angular-eslint/builder": "~21.2.0",
-    "@angular-eslint/eslint-plugin": "~21.2.0",
-    "@angular-eslint/eslint-plugin-template": "~21.2.0",
-    "@angular-eslint/schematics": "~21.2.0",
-    "@angular-eslint/template-parser": "~21.2.0",
     "@angular/cli": "~21.1.5",
     "@angular/compiler-cli": "~21.1.5",
     "@types/jasmine": "~5.1.4",
-    "@typescript-eslint/eslint-plugin": "~8.47.0",
-    "@typescript-eslint/parser": "~8.47.0",
+    "angular-eslint": "~21.2.0",
     "eslint": "~9.39.1",
-    "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-prefer-arrow": "^1.2.3",
-    "eslint-plugin-unicorn": "^62.0.0",
     "igniteui-cli": "~<%=cliVersion%>",
     "jasmine-core": "~5.12.1",
     "karma": "~6.4.4",
@@ -81,6 +72,7 @@
     "karma-coverage": "~2.2.1",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.9.3"
+    "typescript": "~5.9.3",
+    "typescript-eslint": "~8.47.0"
   }
 }
