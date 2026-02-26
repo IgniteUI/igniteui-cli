@@ -43,7 +43,7 @@ module.exports = defineConfig([
     ],
     rules: {
       // Relax rules
-      "@angular-eslint/template/eqeqeq": "off",
+      "@angular-eslint/template/eqeqeq": "off"
     },
   }
 ]);
