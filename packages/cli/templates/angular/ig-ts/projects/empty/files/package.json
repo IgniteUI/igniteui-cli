@@ -29,8 +29,7 @@
   "overrides": {
     "igniteui-angular-wrappers": {
       "@angular/core": "^21.1.5",
-      "@angular/common": "^21.1.5",
-      "rxjs": "~7.8.1"
+      "@angular/common": "^21.1.5"
     }
   },
   "devDependencies": {
