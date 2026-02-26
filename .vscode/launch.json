@@ -204,7 +204,7 @@
 		{
 			"type": "node",
 			"request": "launch",
-			"cwd": "${workspaceRoot}/output/proj",
+			"cwd": "${workspaceRoot}/output/test-standalone-lint",
 			"name": "Launch Start",
 			"program": "${workspaceRoot}/packages/cli/bin/execute.js",
 			"console": "externalTerminal",
