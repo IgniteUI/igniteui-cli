@@ -2,7 +2,7 @@
 import * as fs from "fs";
 import * as glob from "glob";
 import * as path from "path";
-import { IFileSystem } from "../types/FileSystem";
+import type { IFileSystem } from "../types/FileSystem";
 
 export class FsFileSystem implements IFileSystem {
 	public fileExists(filePath: string): boolean {
@@ -30,7 +30,8 @@ export class FsFileSystem implements IFileSystem {
 	}
 
 	public glob(dirPath: string, pattern: string): string[] {
-		return glob.sync(path.join(dirPath, pattern), { nodir: true })
-			.map(filePath => filePath.replace(/\\/g, "/"));
+		// NB!: glob 8+ patterns use `\` as escape only, so ensure posix-style:
+		const globPattern = path.join(dirPath, pattern).replace(/\\/g, "/");
+		return glob.sync(globPattern, { nodir: true });
 	}
 }

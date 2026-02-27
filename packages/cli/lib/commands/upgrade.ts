@@ -1,4 +1,4 @@
-import { GoogleAnalytics, ProjectConfig, Util } from "@igniteui/cli-core";
+import { GoogleAnalytics, ProjectConfig, type ProjectTemplate, Util } from "@igniteui/cli-core";
 import { PositionalArgs, UpgradeCommandType } from "./types";
 import { ArgumentsCamelCase } from "yargs";
 
@@ -38,7 +38,7 @@ const command: UpgradeCommandType = {
 			case "webcomponents":
 				if (projectType === "igx-ts" || projectType === "igr-ts" || projectType === "igc-ts") {
 					const projectLibrary = command.templateManager.getProjectLibrary(framework, projectType);
-					let project;
+					let project: ProjectTemplate;
 					if (!config.project.projectTemplate || !projectLibrary.hasProject(config.project.projectTemplate)) {
 						// in case project template is missing from the config we provide backward.
 						project = projectLibrary.getProject(projectLibrary.projectIds[0]);
