@@ -17,8 +17,8 @@ import { LoginBarComponent } from './authentication/login-bar/login-bar.componen
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  templateUrl: './app.html',
+  styleUrl: './app.scss',
   encapsulation: ViewEncapsulation.None,
   imports: [
     LoginBarComponent,
@@ -34,7 +34,7 @@ import { LoginBarComponent } from './authentication/login-bar/login-bar.componen
     IgxNavbarComponent,
     RouterOutlet]
 })
-export class AppComponent implements OnInit {
+export class App implements OnInit {
   public topNavLinks: {
     path: string,
     name: string
