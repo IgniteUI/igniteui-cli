@@ -14,8 +14,7 @@ import {
 @Component({
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.component.html',
-  styleUrls: ['./<%=filePrefix%>.component.scss'],
-  standalone: true,
+  styleUrl: './<%=filePrefix%>.component.scss',
   imports: [
     ReactiveFormsModule,
     FormsModule,

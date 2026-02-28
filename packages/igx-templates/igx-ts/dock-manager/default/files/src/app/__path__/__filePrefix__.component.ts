@@ -11,8 +11,7 @@ defineCustomElements();
 @Component({
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.component.html',
-  styleUrls: ['./<%=filePrefix%>.component.scss'],
-  standalone: true,
+  styleUrl: './<%=filePrefix%>.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class <%=ClassName%>Component {

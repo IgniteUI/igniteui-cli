@@ -4,8 +4,7 @@ import { IgxGeographicMapComponent, IgxGeographicMapCoreModule } from 'igniteui-
 @Component({
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.component.html',
-  styleUrls: ['./<%=filePrefix%>.component.scss'],
-  standalone: true,
+  styleUrl: './<%=filePrefix%>.component.scss',
   imports: [IgxGeographicMapCoreModule]
 })
 export class <%=ClassName%>Component implements AfterViewInit {

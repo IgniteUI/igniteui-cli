@@ -5,8 +5,7 @@ import { IgxHierarchicalGridComponent, IgxColumnComponent, IgxRowIslandComponent
 @Component({
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.component.html',
-  styleUrls: ['./<%=filePrefix%>.component.scss'],
-  standalone: true,
+  styleUrl: './<%=filePrefix%>.component.scss',
   imports: [IgxHierarchicalGridComponent, IgxColumnComponent, IgxRowIslandComponent]
 })
 export class <%=ClassName%>Component {

@@ -4,8 +4,7 @@ import { IDialogEventArgs, IgxButtonDirective, IgxDialogComponent } from '<%=igx
 @Component({
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.component.html',
-  styleUrls: ['./<%=filePrefix%>.component.scss'],
-  standalone: true,
+  styleUrl: './<%=filePrefix%>.component.scss',
   imports: [IgxButtonDirective, IgxDialogComponent]
 })
 export class <%=ClassName%>Component {

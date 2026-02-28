@@ -5,8 +5,7 @@ import { IgxGridComponent, IgxColumnComponent, IgxColumnGroupComponent, IgxPagin
 @Component({
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.component.html',
-  styleUrls: ['./<%=filePrefix%>.component.scss'],
-  standalone: true,
+  styleUrl: './<%=filePrefix%>.component.scss',
   imports: [IgxGridComponent, IgxColumnComponent, IgxColumnGroupComponent, IgxPaginatorComponent]
 })
 export class <%=ClassName%>Component implements OnInit {

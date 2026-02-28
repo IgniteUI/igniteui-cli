@@ -5,8 +5,7 @@ import { IgxCarouselComponent, IgxSlideComponent } from '<%=igxPackage%>';
 @Component({
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.component.html',
-  styleUrls: ['./<%=filePrefix%>.component.scss'],
-  standalone: true,
+  styleUrl: './<%=filePrefix%>.component.scss',
   imports: [IgxCarouselComponent, NgFor, IgxSlideComponent]
 })
 export class <%=ClassName%>Component implements OnInit {
