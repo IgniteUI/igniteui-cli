@@ -7,19 +7,21 @@ import {
   IgxNavDrawerItemDirective,
   IgxRippleDirective,
   IgxFlexDirective,
-  IgxNavbarComponent,
+  IgxNavbarComponent
 } from 'igniteui-angular';
 import { filter } from 'rxjs/operators';
 import { NgFor } from '@angular/common';
+
 import { routes } from './app.routes';
+import { LoginBarComponent } from './authentication/login-bar/login-bar.component';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  styleUrl: './app.component.scss',
   encapsulation: ViewEncapsulation.None,
   imports: [
+    LoginBarComponent,
     IgxLayoutDirective,
     IgxNavigationDrawerComponent,
     IgxNavDrawerTemplateDirective,
@@ -30,8 +32,7 @@ import { routes } from './app.routes';
     RouterLink,
     IgxFlexDirective,
     IgxNavbarComponent,
-    RouterOutlet
-  ]
+    RouterOutlet]
 })
 export class AppComponent implements OnInit {
   public topNavLinks: {
@@ -46,7 +47,7 @@ export class AppComponent implements OnInit {
     for (const route of routes) {
       if (route.path && route.data && route.path.indexOf('*') === -1) {
         this.topNavLinks.push({
-          name: route.data['text'],
+          name: route.data.text,
           path: '/' + route.path
         });
       }

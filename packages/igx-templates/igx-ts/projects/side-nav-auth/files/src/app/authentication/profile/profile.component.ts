@@ -4,8 +4,7 @@ import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss'],
-  standalone: true
+  styleUrl: './profile.component.scss'
 })
 export class ProfileComponent {
   constructor(public userService: UserService) { }

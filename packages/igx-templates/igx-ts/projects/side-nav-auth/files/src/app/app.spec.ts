@@ -2,7 +2,7 @@ import { TestBed, waitForAsync } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { IgxLayoutModule, IgxNavbarModule, IgxNavigationDrawerModule, IgxRippleModule } from 'igniteui-angular';
-import { AppComponent } from './app.component';
+import { AppComponent } from './app';
 import { AuthenticationModule } from './authentication';
 
 describe('AppComponent', () => {

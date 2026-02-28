@@ -1,7 +1,7 @@
 import { TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterModule } from '@angular/router';
 import { IgxLayoutModule, IgxNavbarModule, IgxNavigationDrawerModule, IgxRippleModule } from 'igniteui-angular';
-import { AppComponent } from './app.component';
+import { AppComponent } from './app';
 
 describe('AppComponent', () => {
   beforeEach(waitForAsync(() => {

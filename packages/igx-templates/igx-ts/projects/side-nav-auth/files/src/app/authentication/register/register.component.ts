@@ -10,8 +10,7 @@ import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss'],
-  standalone: true,
+  styleUrl: './register.component.scss',
   imports: [ReactiveFormsModule, IgxInputGroupComponent, IgxPrefixDirective, IgxIconComponent, IgxLabelDirective,
 	IgxInputDirective, IgxButtonDirective, IgxRippleDirective]
 })

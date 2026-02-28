@@ -10,8 +10,7 @@ import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-login-bar',
   templateUrl: './login-bar.component.html',
-  styleUrls: ['./login-bar.component.scss'],
-  standalone: true,
+  styleUrl: './login-bar.component.scss',
   imports: [NgIf, IgxRippleDirective, IgxButtonDirective, IgxToggleActionDirective, IgxAvatarComponent, IgxIconComponent,
     IgxDropDownComponent, IgxDropDownItemComponent, LoginDialogComponent]
 })

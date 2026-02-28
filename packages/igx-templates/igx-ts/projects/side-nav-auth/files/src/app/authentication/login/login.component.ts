@@ -13,8 +13,7 @@ import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
-  standalone: true,
+  styleUrl: './login.component.scss',
   imports: [ReactiveFormsModule, IgxInputGroupComponent, IgxPrefixDirective, IgxIconComponent, IgxLabelDirective,
     IgxInputDirective, IgxButtonDirective, IgxRippleDirective, NgIf]
 })
