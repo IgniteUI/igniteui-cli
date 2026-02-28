@@ -15,7 +15,7 @@ import { routes } from './app.routes';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app..html',
+  templateUrl: './app.html',
   styleUrl: './app.scss',
   encapsulation: ViewEncapsulation.None,
   imports: [

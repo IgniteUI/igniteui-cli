@@ -23,7 +23,6 @@ import { LoginBarComponent } from './login-bar.component';
 @Component({
   selector: 'app-login-dialog',
   template: '',
-  standalone: true,
   imports: [RouterTestingModule,
 	  IgxAvatarModule,
 	  IgxButtonModule,

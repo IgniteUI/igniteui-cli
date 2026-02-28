@@ -8,7 +8,6 @@ import { LoginDialogComponent } from './login-dialog.component';
 @Component({
   selector: 'app-login, app-register',
   template: '',
-  standalone: true,
   imports: [IgxDialogModule]
 })
 class TestSignViewComponent {
