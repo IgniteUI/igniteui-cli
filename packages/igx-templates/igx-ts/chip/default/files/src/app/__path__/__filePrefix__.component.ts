@@ -24,9 +24,8 @@ interface NamedEntry {
 
 @Component({
  selector: 'app-<%=filePrefix%>',
- styleUrls: ['./<%=filePrefix%>.component.scss'],
  templateUrl: './<%=filePrefix%>.component.html',
- standalone: true,
+ styleUrl: './<%=filePrefix%>.component.scss',
  imports: [
     IgxLayoutDirective,
     IgxChipsAreaComponent,

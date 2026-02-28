@@ -4,9 +4,8 @@ import { IgxLayoutDirective, IgxDatePickerComponent } from '<%=igxPackage%>';;
 @Component({
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.component.html',
-  styleUrls: ['./<%=filePrefix%>.component.scss'],
+  styleUrl: './<%=filePrefix%>.component.scss',
   encapsulation: ViewEncapsulation.Emulated,
-  standalone: true,
   imports: [IgxLayoutDirective, IgxDatePickerComponent],
 })
 export class <%=ClassName%>Component {

@@ -5,8 +5,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.component.html',
-  styleUrls: ['./<%=filePrefix%>.component.scss'],
-  standalone: true,
+  styleUrl: './<%=filePrefix%>.component.scss',
   imports: [FormsModule, IgxCategoryChartModule]
 })
 export class <%=ClassName%>Component {

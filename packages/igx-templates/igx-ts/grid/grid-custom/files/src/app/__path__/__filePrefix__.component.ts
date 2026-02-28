@@ -4,8 +4,7 @@ import { Employee, employeesData } from './localData';
 @Component({
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.component.html',
-  styleUrls: ['./<%=filePrefix%>.component.scss'],
-  standalone: true
+  styleUrl: './<%=filePrefix%>.component.scss'
 })
 export class <%=ClassName%>Component implements OnInit {
   public localData: Employee[] = [];

@@ -5,8 +5,7 @@ import { IgxFinancialChartModule } from 'igniteui-angular-charts';
 @Component({
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.component.html',
-  styleUrls: ['./<%=filePrefix%>.component.scss'],
-  standalone: true,
+  styleUrl: './<%=filePrefix%>.component.scss',
   imports: [IgxFinancialChartModule]
 })
 export class <%=ClassName%>Component {

@@ -15,9 +15,8 @@ import { DataService } from './services/data.service';
 @Component({
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.component.html',
-  styleUrls: ['./<%=filePrefix%>.component.scss'],
+  styleUrl: './<%=filePrefix%>.component.scss',
   providers: [DataService],
-  standalone: true,
   imports: [
     IgxTreeComponent,
     NgFor,
