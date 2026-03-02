@@ -4,12 +4,12 @@ import { BrowserModule, HammerModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IgxLayoutModule, IgxNavbarModule, IgxNavigationDrawerModule, IgxRippleModule } from 'igniteui-angular';
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { App } from './app';
 import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    App,
     HomeComponent
   ],
   imports: [
@@ -24,6 +24,6 @@ import { HomeComponent } from './home/home.component';
     IgxRippleModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [App]
 })
 export class AppModule { }

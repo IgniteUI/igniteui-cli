@@ -42,7 +42,7 @@ export default function(): Rule {
 			workspace.projects.get(workspace.extensions.defaultProject as string) :
 			workspace.projects.values().next().value as workspaces.ProjectDefinition;
 
-		const moduleFile = `${project.sourceRoot}/${project.prefix}/app.module.ts`;
+		const moduleFile = `${project.sourceRoot}/${project.prefix}/app-module.ts`;
 
 		context.logger.info(`Applying migration for Ignite UI CLI 5.0.0`);
 

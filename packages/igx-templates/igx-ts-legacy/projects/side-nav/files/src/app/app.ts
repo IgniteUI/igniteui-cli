@@ -6,12 +6,12 @@ import { routes } from './app-routing.module';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  templateUrl: './app.html',
+  styleUrl: './app.scss',
   encapsulation: ViewEncapsulation.None,
   standalone: false
 })
-export class AppComponent implements OnInit {
+export class App implements OnInit {
   public topNavLinks: {
     path: string,
     name: string

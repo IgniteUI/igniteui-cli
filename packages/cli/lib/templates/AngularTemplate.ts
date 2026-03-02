@@ -45,7 +45,7 @@ export class AngularTemplate implements Template {
 	}
 
 	public registerInProject(projectPath: string, name: string, options?: AddTemplateArgs) {
-		let modulePath = "app.module.ts";
+		let modulePath = "app-module.ts";
 		if (options && options.modulePath) {
 			modulePath = options.modulePath;
 		}
@@ -84,7 +84,7 @@ export class AngularTemplate implements Template {
 		mainModule.addNgModuleMeta({
 			declare: [className],
 			from: relativePath,
-			export: modulePath !== "app.module.ts" ? [className] : []
+			export: modulePath !== "app-module.ts" ? [className] : []
 		});
 		mainModule.finalize();
 

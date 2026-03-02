@@ -50,7 +50,7 @@ export class IgniteUIForAngularTemplate implements Template {
 
 	//TODO: rename name to fullName for clarity + in all other places fileName to fullName
 	public registerInProject(projectPath: string, name: string, options?: AddTemplateArgs) {
-		let modulePath = "app.module.ts";
+		let modulePath = "app-module.ts";
 		if (options && options.modulePath) {
 			modulePath = options.modulePath;
 		}
@@ -130,7 +130,7 @@ export class IgniteUIForAngularTemplate implements Template {
 		mainModule.addNgModuleMeta({
 				declare: this.addAsNgModelDeclaration ? [className] : [],
 				from: Util.relativePath(mainModulePath, componentFilePath, true, true),
-				export: modulePath !== "app.module.ts" ? [className] : []
+				export: modulePath !== "app-module.ts" ? [className] : []
 			},
 			Util.applyDelimiters(this.getBaseVariables(name), this.delimiters.content),
 			true // multiline

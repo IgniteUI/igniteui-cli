@@ -3,7 +3,7 @@ import { routes } from "../app-routing.module";
 
 @Component({
   selector: "nav-menu",
-  styleUrls: ['./nav-menu.component.css'],
+  styleUrl: './nav-menu.component.css',
   template: `
   <nav class="nav-menu">
     <h1>$(name)</h1>

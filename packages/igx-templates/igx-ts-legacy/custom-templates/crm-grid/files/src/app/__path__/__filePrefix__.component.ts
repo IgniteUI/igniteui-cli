@@ -30,7 +30,7 @@ import { DATA, DealsDescriptor, Employee } from './data';
 @Component({
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.component.html',
-  styleUrls: ['./<%=filePrefix%>.component.scss'],
+  styleUrl: './<%=filePrefix%>.component.scss',
   standalone: false
 })
 export class <%=ClassName%>Component implements OnInit, AfterViewInit {

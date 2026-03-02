@@ -72,7 +72,7 @@ h3 {
 	});
 
 	it("should remove forRoot() from IgxGridModule", async () => {
-		const indexFile = "/src/app/app.module.ts";
+		const indexFile = "/src/app/app-module.ts";
 		appTree.create(indexFile,
 `@NgModule({
   imports: [

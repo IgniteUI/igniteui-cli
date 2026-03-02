@@ -8,7 +8,7 @@ import {
 @Component({
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.component.html',
-  styleUrls: ['./<%=filePrefix%>.component.scss'],
+  styleUrl: './<%=filePrefix%>.component.scss',
   encapsulation: ViewEncapsulation.None,
   standalone: false
 })

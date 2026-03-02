@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 @Component({
   selector: 'app-<%=filePrefix%>',
-  styleUrls: ['<%=filePrefix%>.component.scss'],
   templateUrl: '<%=filePrefix%>.component.html',
+  styleUrl: '<%=filePrefix%>.component.scss',
   standalone: false
 })
 export class <%=ClassName%>Component {

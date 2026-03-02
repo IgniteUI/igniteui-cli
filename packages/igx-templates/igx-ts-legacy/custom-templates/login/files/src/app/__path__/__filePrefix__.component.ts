@@ -4,7 +4,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.component.html',
-  styleUrls: ['./<%=filePrefix%>.component.scss'],
+  styleUrl: './<%=filePrefix%>.component.scss',
   standalone: false
 })
 

@@ -15,7 +15,7 @@ describe("Update 2.0.0", () => {
 
 	it("should update router event rxjs subscription", async () => {
 		appTree.create(
-			"/src/app/app.component.ts",
+			"/src/app/app.ts",
 `import { Component, OnInit, ViewChild } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 import 'rxjs/add/operator/filter';
@@ -25,10 +25,10 @@ import { IgxNavigationDrawerComponent } from 'igniteui-angular';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  templateUrl: './app.html',
+  styleUrl: './app.css'
 })
-export class AppComponent implements OnInit {
+export class App implements OnInit {
   @ViewChild(IgxNavigationDrawerComponent, { static: true }) public navdrawer: IgxNavigationDrawerComponent;
 
   constructor(private router: Router) {}
@@ -47,7 +47,7 @@ export class AppComponent implements OnInit {
 		);
 
 		const tree = await schematicRunner.runSchematic("migration-01", {}, appTree);
-		expect(tree.readContent("/src/app/app.component.ts"))
+		expect(tree.readContent("/src/app/app.ts"))
 			.toEqual(
 `import { Component, OnInit, ViewChild } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
@@ -58,10 +58,10 @@ import { IgxNavigationDrawerComponent } from 'igniteui-angular';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  templateUrl: './app.html',
+  styleUrl: './app.css'
 })
-export class AppComponent implements OnInit {
+export class App implements OnInit {
   @ViewChild(IgxNavigationDrawerComponent, { static: true }) public navdrawer: IgxNavigationDrawerComponent;
 
   constructor(private router: Router) {}

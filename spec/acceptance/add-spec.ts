@@ -174,13 +174,13 @@ describe("Add command", () => {
 		fs.mkdirSync(`./src`);
 		fs.mkdirSync(`./src/app`);
 		fs.writeFileSync("src/app/app-routing.module.ts", "const routes: Routes = [];");
-		fs.writeFileSync("src/app/app.module.ts", `@NgModule({
+		fs.writeFileSync("src/app/app-module.ts", `@NgModule({
 			declarations: [
-			  AppComponent,
+			  App,
 			  HomeComponent
 			],
 			imports: [ BrowserModule ],
-			bootstrap: [AppComponent]
+			bootstrap: [App]
 		})
 		export class AppModule { }`);
 		await cli.run(["add", "grid", "Test view"]);
@@ -198,16 +198,16 @@ describe("Add command", () => {
 			const routes: Routes = [{ path: "test-view", component: TestViewComponent, data: { text: "Test view" } }];
 			`.replace(/\s/g, "")
 		);
-		expect(fs.readFileSync("src/app/app.module.ts", "utf-8").replace(/\s/g, "")).toBe(
+		expect(fs.readFileSync("src/app/app-module.ts", "utf-8").replace(/\s/g, "")).toBe(
 			`import { TestViewComponent } from "./components/test-view/test-view.component";
 			@NgModule({
 				declarations: [
-					AppComponent,
+					App,
 					HomeComponent,
 					TestViewComponent
 				],
 				imports: [ BrowserModule ],
-				bootstrap: [AppComponent]
+				bootstrap: [App]
 			})
 			export class AppModule {
 			}
@@ -261,15 +261,15 @@ describe("Add command", () => {
 			fs.mkdirSync(`./src`);
 			fs.mkdirSync(`./src/app`);
 			fs.writeFileSync("src/app/app-routing.module.ts", "const routes: Routes = [];");
-			fs.writeFileSync("src/app/app.module.ts", `@NgModule({
+			fs.writeFileSync("src/app/app-module.ts", `@NgModule({
 				declarations: [
-				AppComponent,
+				App,
 				HomeComponent
 				],
 				imports: [
 				BrowserModule
 				],
-				bootstrap: [AppComponent]
+				bootstrap: [App]
 			})
 			export class AppModule { }`);
 
@@ -293,7 +293,7 @@ describe("Add command", () => {
 import { IgxGridModule } from '${igxPackage}';
 @NgModule({
   declarations: [
-    AppComponent,
+    App,
     HomeComponent,
     TestViewComponent
   ],
@@ -301,12 +301,12 @@ import { IgxGridModule } from '${igxPackage}';
     BrowserModule,
     IgxGridModule
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [App]
 })
 export class AppModule {
 }
 `;
-			expect(fs.readFileSync("src/app/app.module.ts", "utf-8").replace(/\r\n/g, "\n"))
+			expect(fs.readFileSync("src/app/app-module.ts", "utf-8").replace(/\r\n/g, "\n"))
 				.toBe(expectedModuleSource.replace(/\r\n/g, "\n"));
 
 			fs.unlinkSync("./src/app/test-view/test-view.component.ts");
@@ -336,15 +336,15 @@ export class AppModule {
 			fs.mkdirSync(`./src`);
 			fs.mkdirSync(`./src/app`);
 			fs.writeFileSync("src/app/app-routing.module.ts", "const routes: Routes = [];");
-			fs.writeFileSync("src/app/app.module.ts", `@NgModule({
+			fs.writeFileSync("src/app/app-module.ts", `@NgModule({
 			declarations: [
-			  AppComponent,
+			  App,
 			  HomeComponent
 			],
 			imports: [
 			  BrowserModule
 			],
-			bootstrap: [AppComponent]
+			bootstrap: [App]
 		})
 		export class AppModule { }`);
 
@@ -366,12 +366,12 @@ export class AppModule {
 				`const routes: Routes = [{ path: 'test-nested-folders', component: TestNestedFoldersComponent, data: { text: 'Test Nested Folders' } }];` + EOL
 			);
 
-			expect(fs.readFileSync("src/app/app.module.ts", "utf-8")).toBe(
+			expect(fs.readFileSync("src/app/app-module.ts", "utf-8")).toBe(
 				`import { TestNestedFoldersComponent } from './${componentFolder}/test-nested-folders.component';` + EOL +
 				`import { IgxGridModule } from 'igniteui-angular';` + EOL +
 				`@NgModule({` + EOL +
 				`  declarations: [` + EOL +
-				`    AppComponent,` + EOL +
+				`    App,` + EOL +
 				`    HomeComponent,` + EOL +
 				`    TestNestedFoldersComponent` + EOL +
 				`  ],` + EOL +
@@ -379,7 +379,7 @@ export class AppModule {
 				`    BrowserModule,` + EOL +
 				`    IgxGridModule` + EOL +
 				`  ],` + EOL +
-				`  bootstrap: [AppComponent]` + EOL +
+				`  bootstrap: [App]` + EOL +
 				`})` + EOL +
 				`export class AppModule {` + EOL +
 				`}` + EOL

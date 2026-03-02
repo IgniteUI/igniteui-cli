@@ -144,7 +144,7 @@ describe("Unit - AngularTemplate Base", () => {
 			);
 
 			expect(helpers.AngularTypeScriptFileUpdate)
-				.toHaveBeenCalledWith(path.join("target/path", "src/app/app.module.ts"), false, { singleQuotes: false });
+				.toHaveBeenCalledWith(path.join("target/path", "src/app/app-module.ts"), false, { singleQuotes: false });
 			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith(
 				{
 					declare: [
@@ -166,7 +166,7 @@ describe("Unit - AngularTemplate Base", () => {
 
 			// just declare
 			expect(helpers.AngularTypeScriptFileUpdate).toHaveBeenCalledTimes(1);
-			expect(helpers.AngularTypeScriptFileUpdate).toHaveBeenCalledWith(path.join("target/path", "src/app/app.module.ts"),
+			expect(helpers.AngularTypeScriptFileUpdate).toHaveBeenCalledWith(path.join("target/path", "src/app/app-module.ts"),
 				false, { singleQuotes: false });
 			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith(
 				{
