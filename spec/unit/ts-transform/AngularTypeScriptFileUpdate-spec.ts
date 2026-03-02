@@ -33,7 +33,6 @@ import { RouterOutlet } from '@angular/router';
 
 @Component({
     selector: 'app-root',
-    standalone: true,
     imports: [CommonModule, RouterOutlet],
     templateUrl: './app.html',
     styleUrl: './app.scss'
@@ -1082,8 +1081,7 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
 
         fileUpdate.addStandaloneComponentMeta({
           import: ['MyComponent'],
-          from: 'my-module',
-          standalone: true,
+          from: 'my-module'
         });
 
         const result = fileUpdate.finalize();
@@ -1127,8 +1125,7 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
 
         fileUpdate.addStandaloneComponentMeta({
           provide: ['MyService'],
-          from: 'my-service',
-          standalone: true,
+          from: 'my-service'
         });
 
         const result = fileUpdate.finalize();
@@ -1181,8 +1178,7 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
         fileUpdate.addStandaloneComponentMeta(
           {
             import: '$(key)Module',
-            from: '__key4__',
-            standalone: true,
+            from: '__key4__'
           },
           configVariables
         );
@@ -1190,8 +1186,7 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
         fileUpdate.addStandaloneComponentMeta(
           {
             provide: ['$(key)Service'],
-            from: './src/__key4__/__key5__.service',
-            standalone: true,
+            from: './src/__key4__/__key5__.service'
           },
           configVariables
         );
@@ -1241,14 +1236,12 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
 
         fileUpdate.addStandaloneComponentMeta({
           provide: ['MyService'],
-          from: 'my-service',
-          standalone: true,
+          from: 'my-service'
         });
 
         fileUpdate.addStandaloneComponentMeta({
           provide: ['MyService'],
-          from: 'my-service',
-          standalone: true,
+          from: 'my-service'
         });
 
         const result = fileUpdate.finalize();
