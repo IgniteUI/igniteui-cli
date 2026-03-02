@@ -150,9 +150,9 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
           EOL +
           `export const routes: Routes = [` +
           EOL +
-          `    { path: 'error', component: UncaughtErrorComponent },` +
+          `    { path: 'error', component: UncaughtError },` +
           EOL +
-          `    { path: '**', component: PageNotFoundComponent } // must always be last` +
+          `    { path: '**', component: NotFound } // must always be last` +
           EOL +
           `];` +
           EOL +
@@ -1101,8 +1101,6 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
             EOL +
             `    selector: 'app-root',` +
             EOL +
-            `    standalone: true,` +
-            EOL +
             `    imports: [CommonModule, RouterOutlet, MyComponent],` +
             EOL +
             `    templateUrl: './app.html',` +
@@ -1147,8 +1145,6 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
             `@Component({` +
             EOL +
             `    selector: 'app-root',` +
-            EOL +
-            `    standalone: true,` +
             EOL +
             `    imports: [CommonModule, RouterOutlet],` +
             EOL +
@@ -1217,8 +1213,6 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
             EOL +
             `    selector: 'app-root',` +
             EOL +
-            `    standalone: true,` +
-            EOL +
             `    imports: [CommonModule, RouterOutlet, ReplaceModule],` +
             EOL +
             `    templateUrl: './app.html',` +
@@ -1272,8 +1266,6 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
             EOL +
             `    selector: 'app-root',` +
             EOL +
-            `    standalone: true,` +
-            EOL +
             `    imports: [CommonModule, RouterOutlet],` +
             EOL +
             `    templateUrl: './app.html',` +
@@ -1304,7 +1296,6 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
 
         @Component({
             selector: 'app-root',
-            standalone: true,
             imports: [
                 BrowserModule,
                 HammerModule,
@@ -1353,8 +1344,6 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
             `@Component({` +
             EOL +
             `    selector: 'app-root',` +
-            EOL +
-            `    standalone: true,` +
             EOL +
             `    imports: [` +
             EOL +
