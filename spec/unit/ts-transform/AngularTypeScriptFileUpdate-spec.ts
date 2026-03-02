@@ -1081,7 +1081,8 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
 
         fileUpdate.addStandaloneComponentMeta({
           import: ['MyComponent'],
-          from: 'my-module'
+          from: 'my-module',
+          standalone: true,
         });
 
         const result = fileUpdate.finalize();
@@ -1125,7 +1126,8 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
 
         fileUpdate.addStandaloneComponentMeta({
           provide: ['MyService'],
-          from: 'my-service'
+          from: 'my-service',
+          standalone: true,
         });
 
         const result = fileUpdate.finalize();
@@ -1178,7 +1180,8 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
         fileUpdate.addStandaloneComponentMeta(
           {
             import: '$(key)Module',
-            from: '__key4__'
+            from: '__key4__',
+            standalone: true,
           },
           configVariables
         );
@@ -1186,7 +1189,8 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
         fileUpdate.addStandaloneComponentMeta(
           {
             provide: ['$(key)Service'],
-            from: './src/__key4__/__key5__.service'
+            from: './src/__key4__/__key5__.service',
+            standalone: true,
           },
           configVariables
         );
@@ -1236,12 +1240,14 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
 
         fileUpdate.addStandaloneComponentMeta({
           provide: ['MyService'],
-          from: 'my-service'
+          from: 'my-service',
+          standalone: true,
         });
 
         fileUpdate.addStandaloneComponentMeta({
           provide: ['MyService'],
-          from: 'my-service'
+          from: 'my-service',
+          standalone: true,
         });
 
         const result = fileUpdate.finalize();
