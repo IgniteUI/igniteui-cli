@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
+  standalone: false,
   template: '<h2>Error 500: Internal Server Error</h2>',
-  standalone: false
 })
-export class UncaughtErrorComponent  { }
+export class UncaughtError { }

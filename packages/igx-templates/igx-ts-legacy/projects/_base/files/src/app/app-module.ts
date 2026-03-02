@@ -1,12 +1,16 @@
-import { NgModule } from '@angular/core';
+import { NgModule, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { BrowserModule, HammerModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { App } from './app';
+import { NotFound } from './error-routing/not-found/not-found';
+import { UncaughtError } from './error-routing/error/uncaught-error';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    App,
+    NotFound,
+    UncaughtError
   ],
   imports: [
     BrowserModule,
@@ -14,8 +18,10 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     BrowserAnimationsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    provideBrowserGlobalErrorListeners()
+  ],
+  bootstrap: [App]
 })
 export class AppModule {
 }
