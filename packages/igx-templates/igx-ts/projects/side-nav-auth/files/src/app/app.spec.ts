@@ -7,7 +7,7 @@ import { AuthenticationModule } from './authentication';
 
 describe('App', () => {
   beforeEach(async () => {
-    TestBed.configureTestingModule({
+    await TestBed.configureTestingModule({
       imports: [
         NoopAnimationsModule,
         RouterModule.forRoot([]),
