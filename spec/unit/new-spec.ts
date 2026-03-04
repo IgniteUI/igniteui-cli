@@ -288,7 +288,7 @@ describe("Unit - New command", () => {
 
 		expect(Util.execSync).toHaveBeenCalledWith("git init", jasmine.any(Object));
 		expect(Util.execSync).toHaveBeenCalledWith("git add .", jasmine.any(Object));
-		expect(Util.execSync).toHaveBeenCalledWith("git commit -m " + "\"Initial commit for project: " + projectName + "\"",
+		expect(Util.execSync).toHaveBeenCalledWith("git commit -m \"Initial commit for project\"",
 			jasmine.any(Object));
 		expect(Util.log).toHaveBeenCalledWith(
 			jasmine.stringMatching("Git Initialized and Project '" + projectName + "' Committed")

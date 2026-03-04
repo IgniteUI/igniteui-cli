@@ -88,9 +88,8 @@ export class PackageManager {
 		const config = ProjectConfig.localConfig();
 		if (!config.packagesInstalled) {
 			let command: string;
-			let managerCommand: string;
+			const managerCommand = this.getManager();
 
-			managerCommand = this.getManager();
 			switch (managerCommand) {
 				case "npm":
 				/* passes through */
@@ -125,47 +124,50 @@ export class PackageManager {
 	public static removePackage(packageName: string, verbose: boolean = false): boolean {
 		let command: string;
 		const managerCommand = this.getManager();
+		const sanitizePackage = Util.sanitizeShellArg(packageName);
 		switch (managerCommand) {
 			case "npm":
 			/* passes through */
 			default:
-				command = `${managerCommand} uninstall ${packageName} --quiet --save`;
+				command = `${managerCommand} uninstall ${sanitizePackage} --quiet --save`;
 				break;
 		}
 		try {
 			// tslint:disable-next-line:object-literal-sort-keys
 			Util.execSync(command, { stdio: "pipe", encoding: "utf8" });
 		} catch (error) {
-			Util.log(`Error uninstalling package ${packageName} with ${managerCommand}`);
+			Util.log(`Error uninstalling package ${sanitizePackage} with ${managerCommand}`);
 			if (verbose) {
 				Util.log(error.message);
 			}
 			return false;
 		}
 
-		Util.log(`Package ${packageName} uninstalled successfully`);
+		Util.log(`Package ${sanitizePackage} uninstalled successfully`);
 		return true;
 	}
 
 	public static addPackage(packageName: string, verbose: boolean = false): boolean {
 		const managerCommand = this.getManager();
-		const command = this.getInstallCommand(managerCommand, packageName);
+		const sanitizePackage = Util.sanitizeShellArg(packageName);
+		const command = this.getInstallCommand(managerCommand, sanitizePackage);
 		try {
 			// tslint:disable-next-line:object-literal-sort-keys
 			Util.execSync(command, { stdio: "pipe", encoding: "utf8" });
 		} catch (error) {
-			Util.log(`Error installing package ${packageName} with ${managerCommand}`);
+			Util.log(`Error installing package ${sanitizePackage} with ${managerCommand}`);
 			if (verbose) {
 				Util.log(error.message);
 			}
 			return false;
 		}
-		Util.log(`Package ${packageName} installed successfully`);
+		Util.log(`Package ${sanitizePackage} installed successfully`);
 		return true;
 	}
 
 	public static async queuePackage(packageName: string, verbose = false) {
-		const command = this.getInstallCommand(this.getManager(), packageName).replace("--save", "--no-save");
+		const command = this.getInstallCommand(this.getManager(), Util.sanitizeShellArg(packageName))
+			.replace("--save", "--no-save");
 		const [packName, version] = packageName.split(/@(?=[^\/]+$)/);
 		const packageJSON = this.getPackageJSON();
 		if (!packageJSON.dependencies) {
@@ -222,7 +224,7 @@ export class PackageManager {
 	}
 
 	public static ensureRegistryUser(config: Config, message: string): boolean {
-		const fullPackageRegistry = config.igPackageRegistry;
+		const fullPackageRegistry = Util.sanitizeShellArg(config.igPackageRegistry);
 		try {
 			// tslint:disable-next-line:object-literal-sort-keys
 			Util.execSync(`npm whoami --registry=${fullPackageRegistry}`, { stdio: "pipe", encoding: "utf8" });
@@ -281,7 +283,7 @@ export class PackageManager {
 		}
 	}
 
-	private static getManager(/*config:Config*/): string {
+	private static getManager(/*config:Config*/): 'npm' {
 		//stub to potentially swap out managers
 		return "npm";
 	}

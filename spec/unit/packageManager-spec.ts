@@ -236,7 +236,7 @@ describe("Unit - Package Manager", () => {
 		await TestPackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
 		expect(TestPackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@"~20.1"`, true);
 		expect(Util.execSync).toHaveBeenCalledWith(
-			`npm install @infragistics/ignite-ui-full@"~20.1" --quiet --save`,
+			`npm install @infragistics/ignite-ui-full@~20.1 --quiet --save`,
 			jasmine.any(Object)
 		);
 		expect(TestPackageManager.removePackage).toHaveBeenCalledWith("ignite-ui", true);
@@ -247,17 +247,17 @@ describe("Unit - Package Manager", () => {
 		await TestPackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
 		expect(TestPackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@"^17.1"`, true);
 		expect(Util.execSync).toHaveBeenCalledWith(
-			`npm install @infragistics/ignite-ui-full@"^17.1" --quiet --save`,
+			`npm install @infragistics/ignite-ui-full@^17.1 --quiet --save`,
 			jasmine.any(Object)
 		);
 
-		mockDeps.dependencies["ignite-ui"] = ">=0.1.0 <0.2.0";
+		mockDeps.dependencies["ignite-ui"] = ">=0.1.0"; // ranges no longer supported, but check sanitize
 		mockProjectConfig.project.igniteuiSource = "./node_modules/ignite-ui";
 		mockTemplateMgr.generateConfig = mockProjectConfig;
 		await TestPackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
-		expect(TestPackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@">=0.1.0 <0.2.0"`, true);
+		expect(TestPackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@">=0.1.0"`, true);
 		expect(Util.execSync).toHaveBeenCalledWith(
-			`npm install @infragistics/ignite-ui-full@">=0.1.0 <0.2.0" --quiet --save`,
+			`npm install @infragistics/ignite-ui-full@0.1.0 --quiet --save`,
 			jasmine.any(Object)
 		);
 	});
