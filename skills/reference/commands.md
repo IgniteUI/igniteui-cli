@@ -58,7 +58,7 @@ ig add <templateId> <ComponentName> [options]
 | Flag | Version | Notes |
 |------|---------|-------|
 | `--module` / `-m` | v2.0.0 | Angular only. Path to `.module.ts` relative to `/src/app/` |
-| `--skip-route` / `-srk` | v3.2.0 | Suppress auto-generating a navigation route |
+| `--skip-route` / `-skr` | v3.2.0 | Suppress auto-generating a navigation route |
 
 ### Example with flags
 
