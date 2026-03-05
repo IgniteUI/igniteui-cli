@@ -36,10 +36,10 @@ ig new "<AppName>" --framework=<f> --type=<t> --template=<tmpl> --theme=<theme>
 
 | Flag | Notes |
 |------|-------|
-| `--framework` / `-f` | `angular`, `react`, `jquery` |
+| `--framework` / `-f` | `angular`, `react`, `jquery`, `webcomponents` |
 | `--type` / `-t` | See table above |
 | `--template` | See table above |
-| `--theme` | `default`, `dark`, `fluent` |
+| `--theme` | Theme name (options depend on selected project library) |
 | `--skip-install` | Skip automatic npm install |
 | `--skip-git` | Skip Git repository initialization |
 
@@ -58,7 +58,7 @@ ig add <templateId> <ComponentName> [options]
 | Flag | Version | Notes |
 |------|---------|-------|
 | `--module` / `-m` | v2.0.0 | Angular only. Path to `.module.ts` relative to `/src/app/` |
-| `--skip-route` / `-srk` | v3.2.0 | Suppress auto-generating a navigation route |
+| `--skip-route` / `-skr` | v3.2.0 | Suppress auto-generating a navigation route |
 
 ### Example with flags
 

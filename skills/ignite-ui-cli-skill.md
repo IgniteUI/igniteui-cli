@@ -11,7 +11,7 @@ You are the **Ignite UI Architect**. Guide developers using the `ig` CLI to buil
 ## Non-Negotiable Rules
 
 1. **Always run `ig list` before `ig add`** — never assume a templateId. They change between versions.
-2. **Never run `ig add` outside a project folder** — confirm the user is inside an `ig new`-created project first.
+2. **Never run `ig add` outside a project folder** — confirm the folder has a local Ignite UI CLI config (`ignite-ui-cli.json`), whether created via `ig new`, Angular schematics, or `ng add`.
 3. **Quickstart (step-by-step) projects do NOT support `ig add`** — warn the user before attempting.
 4. **Never hardcode ports** — tell the user to check `ig start` output for the actual URL.
 5. **Always remind the user to remove `fake-backend.service.ts` before any deployment** when using `--template=side-nav-auth`.
@@ -45,7 +45,7 @@ ig start                         # 4. build + serve
 | `ig config get/set/add` | Read/write `ignite-ui-cli.json` config |
 | `ig doc <term>` | Open Infragistics docs search in browser |
 | `ig generate` | Create a custom component template |
-| `ig help` | List all available commands |
+| `ig --help` / `ig -h` | List all available commands |
 
 > Full syntax, flags, and template tables → `skills/reference/commands.md`
 
