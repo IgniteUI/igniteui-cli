@@ -45,7 +45,7 @@ ig start                         # 4. build + serve
 | `ig config get/set/add` | Read/write `ignite-ui-cli.json` config |
 | `ig doc <term>` | Open Infragistics docs search in browser |
 | `ig generate` | Create a custom component template |
-| `ig help` | List all available commands |
+| `ig --help` / `ig -h` | List all available commands |
 
 > Full syntax, flags, and template tables → `skills/reference/commands.md`
 
