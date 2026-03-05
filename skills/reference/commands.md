@@ -36,10 +36,10 @@ ig new "<AppName>" --framework=<f> --type=<t> --template=<tmpl> --theme=<theme>
 
 | Flag | Notes |
 |------|-------|
-| `--framework` / `-f` | `angular`, `react`, `jquery` |
+| `--framework` / `-f` | `angular`, `react`, `jquery`, `webcomponents` |
 | `--type` / `-t` | See table above |
 | `--template` | See table above |
-| `--theme` | `default`, `dark`, `fluent` |
+| `--theme` | Theme name (options depend on selected project library) |
 | `--skip-install` | Skip automatic npm install |
 | `--skip-git` | Skip Git repository initialization |
 
