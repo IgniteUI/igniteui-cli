@@ -85,7 +85,7 @@ When run inside a project folder, the project's framework takes precedence over 
 
 ---
 
-## `ig start` — Serve & Default Ports
+## `ig start` — Serve 
 
 Builds the application, starts a web server, and opens it in the default browser.
 
@@ -94,20 +94,11 @@ ig start
 ig start --port=1234
 ig start -p=1234
 ```
-
-| Framework | Type | Default URL |
-|-----------|------|-------------|
-| Angular | `igx-ts` | http://localhost:4200/ |
-| Angular | `ig-ts` (Wrappers) | http://localhost:3001/ |
-| React | `igr-es6` | http://localhost:3000/ |
-| React | `ig-ts` (Wrappers) | http://localhost:3002/ |
-| jQuery | `js` | http://localhost:3000/ |
-
 ---
 
 ## `ig build` — Compile Only
 
-Compiles the project without launching a server. Installs npm dependencies and resolves OSS vs. licensed packages — prompts for Infragistics credentials if a licensed component (e.g. Grid) is detected. Build artifacts and CSS are output to the `output/` directory.
+Compiles the project without launching a server. Installs npm dependencies and resolves OSS vs. licensed packages — prompts for Infragistics credentials if a licensed component (e.g. Grid) is detected. 
 
 ```bash
 ig build
