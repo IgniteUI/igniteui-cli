@@ -15,12 +15,12 @@ import {
 } from 'igniteui-angular';
 import { AuthGuard } from './auth.guard';
 import { AuthenticationRoutingModule } from './authentication-routing.module';
-import { LoginBarComponent } from './login-bar/login-bar.component';
-import { LoginDialogComponent } from './login-dialog/login-dialog.component';
-import { LoginComponent } from './login/login.component';
-import { ProfileComponent } from './profile/profile.component';
-import { RedirectComponent } from './redirect/redirect.component';
-import { RegisterComponent } from './register/register.component';
+import { LoginBar } from './login-bar/login-bar';
+import { LoginDialog } from './login-dialog/login-dialog';
+import { Login } from './login/login';
+import { Profile} from './profile/profile';
+import { Redirect } from './redirect/redirect';
+import { Register } from './register/register';
 import { BackendProvider } from './services/fake-backend.service';
 import { JwtInterceptor } from './services/jwt.interceptor';
 
@@ -41,12 +41,12 @@ import { JwtInterceptor } from './services/jwt.interceptor';
     IgxToggleModule
   ],
   declarations: [
-    LoginBarComponent,
-    LoginComponent,
-    LoginDialogComponent,
-    ProfileComponent,
-    RedirectComponent,
-    RegisterComponent
+    LoginBar,
+    Login,
+    LoginDialog,
+    Profile,
+    Redirect,
+    Register
   ],
   providers: [
     AuthGuard,
@@ -56,12 +56,12 @@ import { JwtInterceptor } from './services/jwt.interceptor';
     BackendProvider
   ],
   exports: [
-    LoginBarComponent,
-    LoginComponent,
-    RedirectComponent,
-    RegisterComponent,
-    LoginDialogComponent,
-    ProfileComponent
+    LoginBar,
+    Login,
+    Redirect,
+    Register,
+    LoginDialog,
+    Profile
   ]
 })
 export class AuthenticationModule { }

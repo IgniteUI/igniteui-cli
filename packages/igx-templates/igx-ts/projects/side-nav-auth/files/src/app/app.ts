@@ -13,7 +13,7 @@ import { filter } from 'rxjs/operators';
 import { NgFor } from '@angular/common';
 
 import { routes } from './app.routes';
-import { LoginBarComponent } from './authentication/login-bar/login-bar.component';
+import { LoginBar } from './authentication/login-bar/login-bar';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +21,7 @@ import { LoginBarComponent } from './authentication/login-bar/login-bar.componen
   styleUrl: './app.scss',
   encapsulation: ViewEncapsulation.None,
   imports: [
-    LoginBarComponent,
+    LoginBar,
     IgxLayoutDirective,
     IgxNavigationDrawerComponent,
     IgxNavDrawerTemplateDirective,

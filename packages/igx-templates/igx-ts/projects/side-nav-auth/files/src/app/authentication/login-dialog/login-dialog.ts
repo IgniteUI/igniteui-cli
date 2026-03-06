@@ -2,16 +2,16 @@ import { Component, ViewChild } from '@angular/core';
 import { IgxDialogComponent } from 'igniteui-angular';
 import { NgIf } from '@angular/common';
 
-import { RegisterComponent } from '../register/register.component';
-import { LoginComponent } from '../login/login.component';
+import { Register } from '../register/register';
+import { Login } from '../login/login';
 
 @Component({
   selector: 'app-login-dialog',
-  templateUrl: './login-dialog.component.html',
-  styleUrl: './login-dialog.component.scss',
-  imports: [IgxDialogComponent, NgIf, LoginComponent, RegisterComponent]
+  templateUrl: './login-dialog.html',
+  styleUrl: './login-dialog.scss',
+  imports: [IgxDialogComponent, NgIf, Login, Register]
 })
-export class LoginDialogComponent {
+export class LoginDialog {
   public showLogin = true;
   public get title() { return this.showLogin ? 'Login' : 'Register'; }
   @ViewChild(IgxDialogComponent, { static: true })

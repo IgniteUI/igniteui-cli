@@ -4,10 +4,10 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AuthenticationService } from '../services/authentication.service';
 import { ExternalAuthService } from '../services/external-auth.service';
 import { UserService } from '../services/user.service';
-import { RedirectComponent } from './redirect.component';
+import { Redirect } from './redirect';
 
-describe('RedirectComponent', () => {
-  let fixture: ComponentFixture<RedirectComponent>;
+describe('Redirect', () => {
+  let fixture: ComponentFixture<Redirect>;
   const activeRouteSpy: any = { snapshot: { data: { value: { provider: {} } } } };
   const extAuthSpy = jasmine.createSpyObj('ExternalAuthService', ['getUserInfo']);
   const authSpy = jasmine.createSpyObj('AuthenticationService', ['loginWith']);
@@ -15,7 +15,7 @@ describe('RedirectComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-	  imports: [RouterTestingModule, RedirectComponent],
+	  imports: [RouterTestingModule, Redirect],
       providers: [
         { provide: ActivatedRoute, useValue: activeRouteSpy },
         { provide: ExternalAuthService, useValue: extAuthSpy },
@@ -34,7 +34,7 @@ describe('RedirectComponent', () => {
       error: null,
       user: { name: 'TEST' }
     }));
-    fixture = TestBed.createComponent(RedirectComponent);
+    fixture = TestBed.createComponent(Redirect);
     fixture.detectChanges();
     await fixture.whenStable();
     expect(extAuthSpy.getUserInfo).toHaveBeenCalled();
@@ -51,7 +51,7 @@ describe('RedirectComponent', () => {
       error: 'Err'
     }));
     spyOn(window, 'alert');
-    fixture = TestBed.createComponent(RedirectComponent);
+    fixture = TestBed.createComponent(Redirect);
     fixture.detectChanges();
     await fixture.whenStable();
     expect(window.alert).toHaveBeenCalledWith('Err');

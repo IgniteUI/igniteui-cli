@@ -1,14 +1,14 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { UserService } from '../services/user.service';
-import { ProfileComponent } from './profile.component';
+import { Profile } from './profile';
 
-describe('ProfileComponent', () => {
-  let component: ProfileComponent;
-  let fixture: ComponentFixture<ProfileComponent>;
+describe('Profile', () => {
+  let component: Profile;
+  let fixture: ComponentFixture<Profile>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [ProfileComponent],
+      imports: [Profile],
       providers: [
         { provide: UserService, useValue: { currentUser: { name: 'test' } } }
       ]
@@ -17,7 +17,7 @@ describe('ProfileComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProfileComponent);
+    fixture = TestBed.createComponent(Profile);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

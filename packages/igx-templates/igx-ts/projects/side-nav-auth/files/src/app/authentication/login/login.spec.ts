@@ -10,21 +10,21 @@ import { AuthenticationService } from '../services/authentication.service';
 import { ExternalAuthProvider } from '../services/external-auth-configs';
 import { ExternalAuthService } from '../services/external-auth.service';
 import { UserService } from '../services/user.service';
-import { LoginComponent } from './login.component';
+import { Login } from './login';
 
 const MAIL_GROUP_NAME = 'email';
 const PASSWORD_GROUP_NAME = 'password';
 
-describe('LoginComponent', () => {
-  let component: LoginComponent;
-  let fixture: ComponentFixture<LoginComponent>;
+describe('Login', () => {
+  let component: Login;
+  let fixture: ComponentFixture<Login>;
   const extAuthSpy = jasmine.createSpyObj('ExternalAuthService', ['login', 'hasProvider']);
   const authSpy = jasmine.createSpyObj('AuthenticationService', ['login']);
   const userServSpy = jasmine.createSpyObj('UserService', ['setCurrentUser']);
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [LoginComponent, ReactiveFormsModule, RouterTestingModule, NoopAnimationsModule,
+      imports: [Login, ReactiveFormsModule, RouterTestingModule, NoopAnimationsModule,
         IgxInputGroupModule, IgxButtonModule, IgxIconModule, IgxRippleModule],
       providers: [
         { provide: ExternalAuthService, useValue: extAuthSpy },
@@ -36,7 +36,7 @@ describe('LoginComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoginComponent);
+    fixture = TestBed.createComponent(Login);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

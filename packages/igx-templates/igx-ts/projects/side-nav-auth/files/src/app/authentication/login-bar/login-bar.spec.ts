@@ -15,10 +15,10 @@ import {
   IgxRippleModule,
   IgxToggleModule
 } from 'igniteui-angular';
-import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
+import { LoginDialog } from '../login-dialog/login-dialog';
 import { ExternalAuthService } from '../services/external-auth.service';
 import { UserService } from '../services/user.service';
-import { LoginBarComponent } from './login-bar.component';
+import { LoginBar } from './login-bar';
 
 @Component({
   selector: 'app-login-dialog',
@@ -32,13 +32,13 @@ import { LoginBarComponent } from './login-bar.component';
 	  IgxRippleModule,
 	  IgxToggleModule]
 })
-class TestLoginDialogComponent extends LoginDialogComponent {
+class TestLoginDialog extends LoginDialog {
   open() { }
 }
 
-describe('LoginBarComponent', () => {
-  let component: LoginBarComponent;
-  let fixture: ComponentFixture<LoginBarComponent>;
+describe('LoginBar', () => {
+  let component: LoginBar;
+  let fixture: ComponentFixture<LoginBar>;
   class TestUserServSpy {
     logout() { }
     get currentUser() { return null; }
@@ -62,8 +62,8 @@ describe('LoginBarComponent', () => {
         IgxIconModule,
         IgxRippleModule,
         IgxToggleModule,
-		LoginBarComponent,
-		TestLoginDialogComponent
+		LoginBar,
+		TestLoginDialog
       ],
       providers: [
         { provide: UserService, useClass: TestUserServSpy },
@@ -74,7 +74,7 @@ describe('LoginBarComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoginBarComponent);
+    fixture = TestBed.createComponent(LoginBar);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -101,7 +101,7 @@ describe('LoginBarComponent', () => {
 
   it('should open dialog on button click (not logged)', () => {
     // override ViewChild:
-    component.loginDialog = new TestLoginDialogComponent();
+    component.loginDialog = new TestLoginDialog();
 
     const button = fixture.debugElement.query(By.css('button'));
     spyOn(component.loginDialog, 'open');

@@ -11,7 +11,7 @@ const routeData = 'value';
 @Component({
   template: '<p>Signing in...</p>'
 })
-export class RedirectComponent implements OnInit {
+export class Redirect implements OnInit {
   private provider: ExternalAuthProvider;
 
   constructor(

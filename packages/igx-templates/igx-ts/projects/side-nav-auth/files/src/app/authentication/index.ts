@@ -2,7 +2,7 @@ export * from './auth.guard';
 export * from './authentication-routing.module';
 export * from './authentication.module';
 export * from './models/login';
-export * from './models/register';
+export * from './models/register-info';
 export * from './models/user';
 export * from './services/authentication.service';
 export * from './services/external-auth.service';

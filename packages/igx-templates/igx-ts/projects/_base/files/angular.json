@@ -1,6 +1,10 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
+  "cli": {
+    "packageManager": "npm",
+    "schematicCollections": ["angular-eslint"]
+  },
   "newProjectRoot": "projects",
   "projects": {
     "<%=dashName%>": {
@@ -20,9 +24,7 @@
             "outputPath": "dist/<%=dashName%>",
 						"index": "src/index.html",
             "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -32,13 +34,9 @@
             "styles": [
               "src/styles.scss"<%=DefaultTheme%>
             ],
-            "scripts": [
-							"./node_modules/hammerjs/hammer.min.js"
-						],
+            "scripts": ["./node_modules/hammerjs/hammer.min.js"],
             "stylePreprocessorOptions": {
-              "includePaths": [
-                "node_modules"
-              ]
+              "includePaths": ["node_modules"]
             }
           },
           "configurations": {
@@ -90,43 +88,15 @@
 					}
         },
         "test": {
-          "builder": "@angular/build:karma",
-          "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
-            "tsConfig": "tsconfig.spec.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-                "src/favicon.ico",
-                "src/assets"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
-            "stylePreprocessorOptions": {
-              "includePaths": [
-                "node_modules"
-              ]
-            }
-          }
+          "builder": "@angular/build:unit-test"
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "src/**/*.ts",
-              "src/**/*.html"
-            ]
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
           }
         }
       }
     }
-  },
-  "cli": {
-    "schematicCollections": [
-      "angular-eslint"
-    ]
   }
 }
