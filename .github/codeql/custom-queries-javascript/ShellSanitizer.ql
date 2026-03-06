@@ -9,9 +9,10 @@ module UtilSanitizerConfig implements DataFlow::ConfigSig {
 	predicate isBarrier(DataFlow::Node nd) {
 		nd.(DataFlow::CallNode).getCalleeName() = "sanitizeShellArg"
 	}
-	/** Minimal stubs required by ConfigSig (false should be no extra action). */
-	predicate isSource(DataFlow::Node n) { false }
-	predicate isSink(DataFlow::Node n) { false }
+	/** Minimal stubs required by ConfigSig */
+  predicate isSource(DataFlow::Node source) { source instanceof Source }
+
+  predicate isSink(DataFlow::Node sink) { sink instanceof Sink }
 }
 
 module UtilSanitizerConfigFlow = TaintTracking::Global<UtilSanitizerConfig>;
