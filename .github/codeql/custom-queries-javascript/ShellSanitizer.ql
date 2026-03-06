@@ -7,7 +7,7 @@ module UtilSanitizerConfig implements DataFlow::ConfigSig {
 	 * Treat calls to Util.sanitizeShellArg(...) as a barrier/sanitizer for dataflow
 	 */
 	predicate isBarrier(DataFlow::Node nd) {
-		nd.(DataFlow::CallNode).getCalleeName() = "Util.sanitizeShellArg"
+		nd.(DataFlow::CallNode).getCalleeName() = "sanitizeShellArg"
 	}
 	/** Minimal stubs required by ConfigSig (false should be no extra action). */
 	predicate isSource(DataFlow::Node n) { false }
