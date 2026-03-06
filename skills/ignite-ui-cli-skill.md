@@ -137,3 +137,12 @@ ig new "MyApp" --framework=angular --type=igx-ts --template=side-nav-auth
 ng g @igniteui/angular-schematics:upgrade-packages
 # Will prompt for Infragistics credentials
 ```
+
+**"Create a new Web Components app with a grid"**
+```bash
+ig new "WCApp" --framework=webcomponents --type=igc-ts --template=side-nav
+cd WCApp
+ig list                          # confirm: grid templateId
+ig add grid ProductsGrid
+ig start
+```

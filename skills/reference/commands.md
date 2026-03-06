@@ -20,7 +20,8 @@ ig new "<AppName>" --framework=<f> --type=<t> --template=<tmpl> --theme=<theme>
 | Angular | `igx-ts-legacy` | Ignite UI for Angular — module-based bootstrapping |
 | Angular | `ig-ts` | Ignite UI Angular JS Wrappers |
 | React | `igr-es6` | Ignite UI for React (native components) |
-| React | `ig-ts` | Ignite UI jQuery React Wrappers |
+| React | `igr-ts` | Ignite UI React Wrappers |
+| WebComponents | `igc-ts` | Ignite UI WebComponents |
 | jQuery | `js` | Default — `--type` not required |
 
 ### Templates
