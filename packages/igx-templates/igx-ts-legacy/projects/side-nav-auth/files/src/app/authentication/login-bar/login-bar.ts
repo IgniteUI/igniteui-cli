@@ -1,19 +1,19 @@
 import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { IgxDropDownComponent, ISelectionEventArgs } from 'igniteui-angular';
-import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
+import { LoginDialog } from '../login-dialog/login-dialog';
 import { ExternalAuthService } from '../services/external-auth.service';
 import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-login-bar',
-  templateUrl: './login-bar.component.html',
-  styleUrl: './login-bar.component.scss'
+  templateUrl: './login-bar.html',
+  styleUrl: './login-bar.scss'
 })
-export class LoginBarComponent {
+export class LoginBar {
 
-  @ViewChild(LoginDialogComponent, { static: true })
-  loginDialog!: LoginDialogComponent;
+  @ViewChild(LoginDialog, { static: true })
+  loginDialog!: LoginDialog;
 
   @ViewChild(IgxDropDownComponent, { static: true })
   igxDropDown!: IgxDropDownComponent;

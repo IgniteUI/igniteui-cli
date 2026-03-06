@@ -3,10 +3,10 @@ import { IgxDialogComponent } from 'igniteui-angular';
 
 @Component({
   selector: 'app-login-dialog',
-  templateUrl: './login-dialog.component.html',
-  styleUrl: './login-dialog.component.scss'
+  templateUrl: './login-dialog.html',
+  styleUrl: './login-dialog.scss'
 })
-export class LoginDialogComponent {
+export class LoginDialog {
   public showLogin = true;
   public get title() { return this.showLogin ? 'Login' : 'Register'; }
   @ViewChild(IgxDialogComponent, { static: true })

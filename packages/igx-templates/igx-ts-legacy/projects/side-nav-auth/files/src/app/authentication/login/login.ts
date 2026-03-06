@@ -8,10 +8,10 @@ import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  templateUrl: './login.html',
+  styleUrl: './login.scss'
 })
-export class LoginComponent {
+export class Login {
   public loginForm: FormGroup;
   @Output() public viewChange: EventEmitter<any> = new EventEmitter();
   @Output() public loggedIn: EventEmitter<any> = new EventEmitter();

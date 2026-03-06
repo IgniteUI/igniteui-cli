@@ -9,18 +9,6 @@
     "test": "node --max-old-space-size=8192 ./node_modules/@angular/cli/bin/ng test",
     "lint": "ng lint"
   },
-  "prettier": {
-    "printWidth": 100,
-    "singleQuote": true,
-    "overrides": [
-      {
-        "files": "*.html",
-        "options": {
-          "parser": "angular"
-        }
-      }
-    ]
-  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~21.2.0",
@@ -36,23 +24,19 @@
     "minireset.css": "~0.0.7",
     "rxjs": "~7.8.1",
     "tslib": "~2.8.1",
-    "zone.js": "~0.15.0"
+    "zone.js": "~0.16.0"
   },
   "devDependencies": {
-    "@angular/build": "~21.2.0",
-    "@angular/cli": "~21.2.0",
+    "@angular/build": "~21.2.1",
+    "@angular/cli": "~21.2.1",
     "@angular/compiler-cli": "~21.2.0",
-    "@types/jasmine": "~5.1.4",
-    "angular-eslint": "~21.2.0",
-    "eslint": "~9.39.2",
+    "angular-eslint": "~21.3.0",
+    "eslint": "^10.0.2",
     "igniteui-cli": "~<%=cliVersion%>",
-    "jasmine-core": "~5.12.1",
-    "karma": "~6.4.4",
-    "karma-chrome-launcher": "~3.2.0",
-    "karma-coverage": "~2.2.1",
-    "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "~2.1.0",
+    "jsdom": "^28.0.0",
+    "prettier": "^3.8.1",
     "typescript": "~5.9.3",
-    "typescript-eslint": "~8.50.1"
+    "typescript-eslint": "8.56.1",
+    "vitest": "^4.0.8"
   }
 }

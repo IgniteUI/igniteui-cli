@@ -3,7 +3,7 @@ import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angul
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { IgxDialogModule } from 'igniteui-angular';
-import { LoginDialogComponent } from './login-dialog.component';
+import { LoginDialog } from './login-dialog';
 
 @Component({
   selector: 'app-login, app-register',
@@ -15,9 +15,9 @@ class TestSignViewComponent {
   @Output() public registered = new EventEmitter();
 }
 
-describe('LoginDialogComponent', () => {
-  let component: LoginDialogComponent;
-  let fixture: ComponentFixture<LoginDialogComponent>;
+describe('LoginDialog', () => {
+  let component: LoginDialog;
+  let fixture: ComponentFixture<LoginDialog>;
 
   const checkViews = (): { loginView: DebugElement, registerView: DebugElement } => {
     const loginView = fixture.debugElement.query(By.css('app-login'));
@@ -27,14 +27,14 @@ describe('LoginDialogComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [LoginDialogComponent, TestSignViewComponent],
+      declarations: [LoginDialog, TestSignViewComponent],
       imports: [NoopAnimationsModule, IgxDialogModule]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoginDialogComponent);
+    fixture = TestBed.createComponent(LoginDialog);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

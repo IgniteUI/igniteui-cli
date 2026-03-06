@@ -1,16 +1,16 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Register } from '../models/register';
+import { RegisterInfo } from '../models/register-info';
 import { AuthenticationService } from '../services/authentication.service';
 import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrl: './register.component.scss'
+  templateUrl: './register.html',
+  styleUrl: './register.scss'
 })
-export class RegisterComponent {
+export class Register {
 
   public registrationForm: FormGroup;
 
@@ -32,7 +32,7 @@ export class RegisterComponent {
   }
 
   async tryRegister() {
-    const response = await this.authentication.register(this.registrationForm.value as Register);
+    const response = await this.authentication.register(this.registrationForm.value as RegisterInfo);
     if (!response.error) {
       this.userService.setCurrentUser(response.user!);
       this.router.navigate(['/profile']);

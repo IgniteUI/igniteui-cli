@@ -6,16 +6,16 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { IgxButtonModule, IgxIconModule, IgxInputGroupModule, IgxRippleModule } from 'igniteui-angular';
 import { AuthenticationService } from '../services/authentication.service';
 import { UserService } from '../services/user.service';
-import { RegisterComponent } from './register.component';
+import { Register } from './register';
 
 const MAIL_GROUP_NAME = 'email';
 const PASSWORD_GROUP_NAME = 'password';
 const USERNAME_GROUP_NAME = 'given_name';
 const FAMILY_NAME_GROUP_NAME = 'family_name';
 
-describe('RegisterComponent', () => {
-  let component: RegisterComponent;
-  let fixture: ComponentFixture<RegisterComponent>;
+describe('Register', () => {
+  let component: Register;
+  let fixture: ComponentFixture<Register>;
   const authSpy = jasmine.createSpyObj('AuthenticationService', ['register']);
   const userServSpy = jasmine.createSpyObj('UserService', ['setCurrentUser']);
   const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
@@ -31,7 +31,7 @@ describe('RegisterComponent', () => {
         IgxInputGroupModule,
         IgxRippleModule
       ],
-      declarations: [RegisterComponent],
+      declarations: [Register],
       providers: [
         { provide: AuthenticationService, useValue: authSpy },
         { provide: UserService, useValue: userServSpy },
@@ -42,7 +42,7 @@ describe('RegisterComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RegisterComponent);
+    fixture = TestBed.createComponent(Register);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
