@@ -71,7 +71,7 @@ ig add grid AdminGrid --module=admin/admin.module.ts --skip-route
 
 ## `ig list` — Usage
 
-Lists all available templates for the current project's framework and type. Always run before `ig add` — the tables below may lag behind new releases, but `ig list` is always current.
+Lists all available templates for the current project's framework and type. Always run before `ig add` — `ig list` is always current and authoritative; any template tables in documentation may lag behind new releases.
 
 ```bash
 ig list                                    # inside a project — uses project's framework
@@ -82,11 +82,11 @@ ig l                                       # alias
 
 When run inside a project folder, the project's framework takes precedence over any flags passed.
 
-> ⚠️ Always run `ig list` to confirm templateIds.
+> ⚠️ Always run `ig list` to confirm templateIds before running `ig add`.
 
 ---
 
-## `ig start` — Serve 
+## `ig start` — Serve
 
 Builds the application, starts a web server, and opens it in the default browser.
 
@@ -95,11 +95,12 @@ ig start
 ig start --port=1234
 ig start -p=1234
 ```
+
 ---
 
 ## `ig build` — Compile Only
 
-Compiles the project without launching a server. Installs npm dependencies and resolves OSS vs. licensed packages — prompts for Infragistics credentials if a licensed component (e.g. Grid) is detected. 
+Compiles the project without launching a server. Installs npm dependencies and resolves OSS vs. licensed packages — prompts for Infragistics credentials if a licensed component (e.g. Grid) is detected.
 
 ```bash
 ig build
@@ -191,6 +192,138 @@ Uncomment in `app.module.ts`:
 - [ ] Replace localStorage JWT with HttpOnly cookies (localStorage is XSS-vulnerable)
 - [ ] Set correct redirect URLs and allowed origins in each provider's developer console
 - [ ] Never commit `<CLIENT_ID>` values — use environment variables
+
+---
+
+## OSS vs. Licensed Packages — Full Detail
+
+### OSS (public npm)
+
+No registry setup needed. Suitable for community-tier components.
+
+```bash
+npm install igniteui-angular
+```
+
+---
+
+### Licensed (packages.infragistics.com)
+
+Required for premium/enterprise components. Follow these steps:
+
+#### 1. Register the scoped registry
+
+Machine-wide (stored in `~/.npmrc`):
+```bash
+npm config set @infragistics:registry https://packages.infragistics.com/npm/private-npm/
+```
+
+Per-project (add to `<project-root>/.npmrc`, commit to repo only if auth token is NOT included):
+```
+@infragistics:registry=https://packages.infragistics.com/npm/private-npm/
+```
+
+#### 2. Authenticate interactively
+
+```bash
+npm adduser --registry=https://packages.infragistics.com/npm/private-npm/ --always-auth
+```
+Enter your Infragistics account username, password, and e-mail when prompted.
+This writes an auth token to `~/.npmrc` automatically.
+
+#### 3. Authenticate via token (CI/CD)
+
+Generate a Base64-encoded `user:password` string and add to `.npmrc`:
+```
+@infragistics:registry=https://packages.infragistics.com/npm/private-npm/
+//packages.infragistics.com/npm/private-npm/:_auth=<BASE64_USER:PASS>
+//packages.infragistics.com/npm/private-npm/:always-auth=true
+//packages.infragistics.com/npm/private-npm/:email=<YOUR_EMAIL>
+```
+> **Never commit `.npmrc` files that contain auth tokens.** Add to `.gitignore`.
+
+#### 4. Install the licensed package
+
+```bash
+npm install @infragistics/igniteui-angular
+```
+
+Verify the registry resolved correctly:
+```bash
+npm list @infragistics/igniteui-angular
+```
+
+---
+
+### Setting Up a License Key (v16+)
+
+From Ignite UI for Angular v16 onward, a **license key string** must also be configured at runtime in addition to the registry setup above.
+
+#### 1. Locate your license key
+
+Log in to [Infragistics My Account](https://account.infragistics.com/subscriptions) → **Subscriptions** → copy the key for your product.
+
+#### 2. Apply the key in your app
+
+In `app.module.ts` (module-based) or `app.config.ts` (standalone):
+
+```typescript
+import { IgxLicenseManager } from '@infragistics/igniteui-angular';
+
+// Module-based: inside AppModule constructor
+IgxLicenseManager.setLicenseKey('YOUR_LICENSE_KEY');
+
+// Standalone: call before bootstrapApplication()
+IgxLicenseManager.setLicenseKey('YOUR_LICENSE_KEY');
+bootstrapApplication(AppComponent, appConfig);
+```
+
+#### 3. Store the key securely
+
+Never hardcode the key as a string literal in source control. Instead, inject it via an environment variable at build time:
+
+```typescript
+// src/environments/environment.ts
+export const environment = {
+  igLicenseKey: process.env['IG_LICENSE_KEY'] ?? ''
+};
+
+// app.module.ts / app.config.ts
+import { environment } from '../environments/environment';
+IgxLicenseManager.setLicenseKey(environment.igLicenseKey);
+```
+
+Set `IG_LICENSE_KEY` in your CI/CD pipeline secrets and Angular build configuration. Add `environment.ts` with real keys to `.gitignore`.
+
+> ⚠️ If the key is missing or invalid, Ignite UI components render a watermark in development and throw an error in production builds.
+
+---
+
+### Switching Licensed → OSS
+
+> ⚠️ Some premium components (e.g. pivot grid, advanced filtering) exist **only** in the licensed package and have no OSS equivalent. Switching to OSS will cause compile errors for any such components — replace or remove them before switching.
+
+| Step | Action |
+|------|--------|
+| 1 | Remove `@infragistics:registry` line from `.npmrc` |
+| 2 | In `package.json`, replace `@infragistics/igniteui-angular` → `igniteui-angular` |
+| 3 | Search entire `src/` for `@infragistics/igniteui-angular` imports and remove the scope |
+| 4 | Remove any `IgxLicenseManager.setLicenseKey(...)` calls — the OSS package does not use a key |
+| 5 | `npm install` |
+| 6 | Build and verify no `403` or missing module errors |
+
+---
+
+### Common Errors
+
+| Error | Cause | Fix |
+|-------|-------|-----|
+| `403 Forbidden` on `npm install` | Not authenticated or trial account | Re-run `npm adduser` with a licensed account |
+| `E404 Not Found` for `@infragistics/...` | Registry not registered | Add `@infragistics:registry` to `.npmrc` |
+| Auth token rejected in CI | Token stale or base64 encoding wrong | Re-encode `user:password` and update pipeline secret |
+| `ENOENT .npmrc` in Docker | File not copied into image | Add `.npmrc` to Docker build context (and exclude from final image) |
+| Watermark on components | License key missing or not called before bootstrap | Add `IgxLicenseManager.setLicenseKey(...)` before app initializes |
+| `LicenseKey is not valid` in prod | Key set but expired or wrong product tier | Verify key in Infragistics account portal |
 
 ---
 
