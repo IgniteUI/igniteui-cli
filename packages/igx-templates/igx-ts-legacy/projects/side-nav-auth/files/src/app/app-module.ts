@@ -8,12 +8,12 @@ import {
 import { AppRoutingModule } from './app-routing.module';
 import { App } from './app';
 import { AuthenticationModule, ExternalAuthService } from './authentication';
-import { HomeComponent } from './home/home.component';
+import { Home } from './home/home';
 
 @NgModule({
   declarations: [
     App,
-    HomeComponent
+    Home
   ],
   imports: [
     FormsModule,
