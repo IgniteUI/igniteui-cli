@@ -9,7 +9,7 @@ describe('<%=ClassName%>', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-	  imports: [IgxGeographicMapModule, NoopAnimationsModule, GeographicMapComponent]
+	  imports: [IgxGeographicMapModule, NoopAnimationsModule, GeographicMap]
     })
       .compileComponents();
   });

@@ -66,8 +66,8 @@ export class IgniteUIForAngularTemplate implements Template {
 		const mainModulePath = path.join(projectPath, `src/app/${modulePath}`);
 		const folderName = this.folderName(name);
 		const fileName = this.fileName(name);
-		const componentFilePath = path.join(projectPath, `src/app/${folderName}/${fileName}.component.ts`);
-		const className = `${Util.className(Util.nameFromPath(name))}Component`;
+		const componentFilePath = path.join(projectPath, `src/app/${folderName}/${fileName}.ts`);
+		const className = `${Util.className(Util.nameFromPath(name))}`;
 		// standalone components
 		if (!this.fileExists(mainModulePath)) {
 			const appRoutesPath = "src/app/app.routes.ts";

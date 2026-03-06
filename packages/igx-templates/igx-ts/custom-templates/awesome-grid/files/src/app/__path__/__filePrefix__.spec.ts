@@ -35,7 +35,7 @@ describe('<%=ClassName%>', () => {
       ]
     })
     .compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(<%=ClassName%>);
