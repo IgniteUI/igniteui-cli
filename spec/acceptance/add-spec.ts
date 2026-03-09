@@ -264,7 +264,7 @@ describe("Add command", () => {
 			fs.writeFileSync("src/app/app-module.ts", `@NgModule({
 				declarations: [
 				App,
-				HomeComponent
+				Home
 				],
 				imports: [
 				BrowserModule
@@ -279,23 +279,23 @@ describe("Add command", () => {
 			expect(console.log).toHaveBeenCalledWith(jasmine.stringMatching(/View 'Test view' added\s*/));
 
 			expect(fs.existsSync("./src/app/test-view")).toBeTruthy();
-			const componentPath = "./src/app/test-view/test-view.component.ts";
+			const componentPath = "./src/app/test-view/test-view.ts";
 			expect(fs.existsSync(componentPath)).toBeTruthy();
 			// file contents:
-			expect(fs.readFileSync(componentPath, "utf-8")).toContain("export class TestViewComponent");
+			expect(fs.readFileSync(componentPath, "utf-8")).toContain("export class TestView");
 			expect(fs.readFileSync("src/app/app-routing.module.ts", "utf-8")).toBe(
-				`import { TestViewComponent } from './test-view/test-view.component';` + EOL +
-				`const routes: Routes = [{ path: 'test-view', component: TestViewComponent, data: { text: 'Test view' } }];` + EOL
+				`import { TestView } from './test-view/test-view';` + EOL +
+				`const routes: Routes = [{ path: 'test-view', component: TestView, data: { text: 'Test view' } }];` + EOL
 			);
 
 			const expectedModuleSource =
-`import { TestViewComponent } from './test-view/test-view.component';
+`import { TestView } from './test-view/test-view';
 import { IgxGridModule } from '${igxPackage}';
 @NgModule({
   declarations: [
     App,
-    HomeComponent,
-    TestViewComponent
+    Home,
+    TestView
   ],
   imports: [
     BrowserModule,
@@ -309,7 +309,7 @@ export class AppModule {
 			expect(fs.readFileSync("src/app/app-module.ts", "utf-8").replace(/\r\n/g, "\n"))
 				.toBe(expectedModuleSource.replace(/\r\n/g, "\n"));
 
-			fs.unlinkSync("./src/app/test-view/test-view.component.ts");
+			fs.unlinkSync("./src/app/test-view/test-view.ts");
 			fs.rmSync("./src", { recursive: true,  force: true });
 
 			fs.unlinkSync(ProjectConfig.configFile);
@@ -339,7 +339,7 @@ export class AppModule {
 			fs.writeFileSync("src/app/app-module.ts", `@NgModule({
 			declarations: [
 			  App,
-			  HomeComponent
+			  Home
 			],
 			imports: [
 			  BrowserModule
@@ -355,25 +355,25 @@ export class AppModule {
 
 			const componentFolder = "folder/test-nested-folders/test-nested-folders";
 			expect(fs.existsSync(`./src/app/${componentFolder}`)).toBeTruthy();
-			const componentPath = `./src/app/${componentFolder}/test-nested-folders.component.ts`;
+			const componentPath = `./src/app/${componentFolder}/test-nested-folders.ts`;
 			expect(fs.existsSync(componentPath)).toBeTruthy();
 			// file contents:
-			expect(fs.readFileSync(componentPath, "utf-8")).toContain("export class TestNestedFoldersComponent");
+			expect(fs.readFileSync(componentPath, "utf-8")).toContain("export class TestNestedFolders");
 
 			expect(fs.readFileSync("src/app/app-routing.module.ts", "utf-8")).toBe(
-				`import { TestNestedFoldersComponent } from './${componentFolder}/test-nested-folders.component';` + EOL +
+				`import { TestNestedFolders } from './${componentFolder}/test-nested-folders';` + EOL +
 				// tslint:disable-next-line:max-line-length
-				`const routes: Routes = [{ path: 'test-nested-folders', component: TestNestedFoldersComponent, data: { text: 'Test Nested Folders' } }];` + EOL
+				`const routes: Routes = [{ path: 'test-nested-folders', component: TestNestedFolders, data: { text: 'Test Nested Folders' } }];` + EOL
 			);
 
 			expect(fs.readFileSync("src/app/app-module.ts", "utf-8")).toBe(
-				`import { TestNestedFoldersComponent } from './${componentFolder}/test-nested-folders.component';` + EOL +
+				`import { TestNestedFolders } from './${componentFolder}/test-nested-folders';` + EOL +
 				`import { IgxGridModule } from 'igniteui-angular';` + EOL +
 				`@NgModule({` + EOL +
 				`  declarations: [` + EOL +
 				`    App,` + EOL +
-				`    HomeComponent,` + EOL +
-				`    TestNestedFoldersComponent` + EOL +
+				`    Home,` + EOL +
+				`    TestNestedFolders` + EOL +
 				`  ],` + EOL +
 				`  imports: [` + EOL +
 				`    BrowserModule,` + EOL +

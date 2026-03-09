@@ -78,9 +78,9 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 				.toHaveBeenCalledWith(path.join("target/path", "src/app/app-routing.module.ts"), false, { indentSize: 2, singleQuotes: true });
 			expect(helpers.tsUpdateMock.addRoute).toHaveBeenCalledWith(
 				{
-					modulePath: './view-name/view-name.component',
+					modulePath: './view-name/view-name',
 					path: 'view-name',
-					identifierName: 'ViewNameComponent',
+					identifierName: 'ViewName',
 					data: { text: 'view name'}
 				}
 			);
@@ -90,9 +90,9 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith(
 				{
 					declare: [
-						"ViewNameComponent",
+						"ViewNamet",
 					],
-					from: "./view-name/view-name.component",
+					from: "./view-name/view-name",
 					export: []
 				},
 				jasmine.any(Object), // vars
@@ -190,9 +190,9 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith(
 				{
 					declare: [
-					  "ViewNameComponent",
+					  "ViewName",
 					],
-					from: "./view-name/view-name.component",
+					from: "./view-name/view-name",
 					export: []
 				},
 				jasmine.any(Object), // vars
