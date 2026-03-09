@@ -5,12 +5,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IgxLayoutModule, IgxNavbarModule, IgxNavigationDrawerModule, IgxRippleModule } from 'igniteui-angular';
 import { AppRoutingModule } from './app-routing.module';
 import { App } from './app';
-import { HomeComponent } from './home/home.component';
+import { Home } from './home/home';
 
 @NgModule({
   declarations: [
     App,
-    HomeComponent
+    Home
   ],
   imports: [
     FormsModule,
