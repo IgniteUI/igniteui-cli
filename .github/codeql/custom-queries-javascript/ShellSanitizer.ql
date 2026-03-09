@@ -14,3 +14,6 @@ class ShellArgSanitizer extends CommandInjection::Sanitizer {
       this.(DataFlow::CallNode).getCalleeName() = "sanitizeShellArg"
     }
 }
+
+// needed to make the module valid https://codeql.github.com/docs/ql-language-reference/modules/#query-modules
+where 1 = 0 select "no-op"

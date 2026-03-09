@@ -1,3 +1,0 @@
-packs:
-  javascript:
-    - .github/codeql/custom-queries-javascript
