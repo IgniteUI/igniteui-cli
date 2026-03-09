@@ -365,14 +365,15 @@ export class Util {
 	/**
 	 * Execute synchronous command with options using spawnSync
 	 * @param command Command to be executed
-	 * NOTE: `spawn` without `shell` (unsafe) is **not** equivalent to `exec` & requires `npm.cmd` to run the correct process on win
-	 * do not call with/add commands that are not known binaries without validating first
+	 * NOTE: `spawn` without `shell` (unsafe) is **not** equivalent to `exec` & requires direct path to run the correct process on win,
+	 * e.g. `npm.cmd` but that is also blocked in node@24+ for security reasons
+	 * Do not call with/add commands that are not known binaries without validating first
 	 * @param args Command arguments
 	 * @param options Command options
 	 * @returns {SpawnSyncReturns} object with status and stdout
 	 * @remarks Consuming code MUST handle the result and check for failure status!
 	 */
-	public static spawnSync(command: string, args: string[], options?: Omit<SpawnSyncOptions, 'shell'>) {
+	public static spawnSync(command: 'node' | 'git', args: string[], options?: Omit<SpawnSyncOptions, 'shell'>) {
 		return spawnSync(command, args, options);
 	}
 

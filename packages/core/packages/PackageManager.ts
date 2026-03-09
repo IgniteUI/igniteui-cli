@@ -248,20 +248,16 @@ export class PackageManager {
 			if (process.stdin.isTTY) {
 				process.stdin.setRawMode(true);
 			}
-			const cmd = /^win/.test(process.platform) ? "npm.cmd" : "npm"; //https://github.com/nodejs/node/issues/3675
-			const login = Util.spawnSync(cmd,
-				["adduser", `--registry=${fullPackageRegistry}`, `--scope=@infragistics`, `--auth-type=legacy`],
-				{ stdio: "inherit" }
-			);
-			if (login?.status === 0) {
+
+			try {
+				Util.execSync(
+					`npm login --registry=${fullPackageRegistry} --scope=@infragistics --auth-type=legacy`,
+					{ stdio: "inherit" }
+				);
 				//make sure scope is configured:
-				try {
-					Util.execSync(`npm config set @infragistics:registry ${fullPackageRegistry}`);
-					return true;
-				} catch (error) {
-					return false;
-				}
-			} else {
+				Util.execSync(`npm config set @infragistics:registry ${fullPackageRegistry}`);
+				return true;
+			} catch (error) {
 				Util.log(message, "red");
 				return false;
 			}

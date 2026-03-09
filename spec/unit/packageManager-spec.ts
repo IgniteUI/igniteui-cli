@@ -45,14 +45,6 @@ describe("Unit - Package Manager", () => {
 			}
 			return "";
 		});
-		spyOn(Util, "spawnSync").and.returnValues({
-			status: 0,
-			pid: 0,
-			output: [],
-			stdout: "",
-			stderr: "",
-			signal: "SIGABRT"
-		});
 		spyOn(Util, "log");
 		spyOn(PackageManager, "removePackage");
 		await PackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
@@ -75,9 +67,8 @@ describe("Unit - Package Manager", () => {
 			"yellow"
 		);
 		expect(path.join).toHaveBeenCalled();
-		expect(Util.spawnSync).toHaveBeenCalledWith(
-			/^win/.test(process.platform) ? "npm.cmd" : "npm",
-			["adduser", `--registry=trial`, `--scope=@infragistics`, `--auth-type=legacy`],
+		expect(Util.execSync).toHaveBeenCalledWith(
+			"npm login --registry=trial --scope=@infragistics --auth-type=legacy",
 			{
 				stdio: "inherit"
 			}
@@ -119,14 +110,6 @@ describe("Unit - Package Manager", () => {
 		spyOn(Util, "log");
 		spyOn(TestPackageManager, "removePackage");
 		spyOn(TestPackageManager, "getPackageJSON").and.callFake(() => mockRequire);
-		spyOn(Util, "spawnSync").and.returnValues({
-			status: 1,
-			pid: 0,
-			output: [],
-			stdout: "",
-			stderr: "",
-			signal: "SIGABRT"
-		});
 		await TestPackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
 		expect(ProjectConfig.localConfig).toHaveBeenCalled();
 		expect(Util.log).toHaveBeenCalledTimes(12);
@@ -162,14 +145,13 @@ describe("Unit - Package Manager", () => {
 			`for instructions on how to install the full package.`,
 			"yellow"
 		); // x1
-		expect(Util.spawnSync).toHaveBeenCalledWith(
-			/^win/.test(process.platform) ? "npm.cmd" : "npm",
-			["adduser", `--registry=trial`, `--scope=@infragistics`, `--auth-type=legacy`],
+		expect(Util.execSync).toHaveBeenCalledWith(
+			"npm login --registry=trial --scope=@infragistics --auth-type=legacy",
 			{
 				stdio: "inherit"
 			}
 		);
-		expect(Util.execSync).toHaveBeenCalledTimes(2);
+		expect(Util.execSync).toHaveBeenCalledTimes(4 /* ¯\(°_o)/¯*/);
 		expect(Util.execSync).toHaveBeenCalledWith(`npm whoami --registry=trial`, { stdio: "pipe", encoding: "utf8" });
 	});
 	it("ensureIgniteUISource - Should run through properly when install now is set to false", async () => {
