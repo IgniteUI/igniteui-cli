@@ -24,7 +24,7 @@ h3 {
 }
 
 function removeGridForRoot(host: Tree) {
-	const appModulePath = "src/app/app-module.ts";
+	const appModulePath = "src/app/app.module.ts";
 	if (host.exists(appModulePath)) {
 		let content = host.read(appModulePath).toString();
 		if (content.indexOf("IgxGridModule.forRoot()") !== -1) {

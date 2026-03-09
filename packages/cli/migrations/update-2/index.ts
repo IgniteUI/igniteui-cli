@@ -5,7 +5,7 @@ export default function(): Rule {
 	return (host: Tree, context: SchematicContext) => {
 		context.logger.info("Updating project to Ignite UI CLI 2.0.0");
 
-		const appComponentPath = "src/app/app.ts";
+		const appComponentPath = "src/app/app.component.ts";
 
 		if (host.exists(appComponentPath)) {
 			let content = host.read(appComponentPath).toString();
