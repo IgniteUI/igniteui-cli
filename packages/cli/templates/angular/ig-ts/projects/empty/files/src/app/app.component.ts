@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +6,5 @@ import { Component, signal } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  protected readonly title = signal('$(dash-name)');
+  title = "$(dash-name)";
 }
