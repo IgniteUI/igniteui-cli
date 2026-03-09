@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AuthenticationService } from '../services/authentication.service';
@@ -13,8 +13,8 @@ describe('Redirect', () => {
   const authSpy = jasmine.createSpyObj('AuthenticationService', ['loginWith']);
   const userServSpy = jasmine.createSpyObj('UserService', ['setCurrentUser']);
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       imports: [RouterTestingModule],
       declarations: [Redirect],
       providers: [
@@ -25,7 +25,7 @@ describe('Redirect', () => {
       ]
     })
       .compileComponents();
-  }));
+  });
 
   it('should try external login on init', async () => {
     const router: Router = TestBed.inject(Router);

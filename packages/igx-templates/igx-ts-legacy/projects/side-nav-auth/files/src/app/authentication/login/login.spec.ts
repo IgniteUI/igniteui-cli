@@ -1,5 +1,5 @@
 import { DebugElement } from '@angular/core';
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -22,8 +22,8 @@ describe('Login', () => {
   const authSpy = jasmine.createSpyObj('AuthenticationService', ['login']);
   const userServSpy = jasmine.createSpyObj('UserService', ['setCurrentUser']);
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       imports: [ReactiveFormsModule, RouterTestingModule, NoopAnimationsModule,
         IgxInputGroupModule, IgxButtonModule, IgxIconModule, IgxRippleModule],
       declarations: [Login],
@@ -34,7 +34,7 @@ describe('Login', () => {
       ]
     })
       .compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(Login);

@@ -1,5 +1,5 @@
 import { Component, DebugElement, EventEmitter, Output } from '@angular/core';
-import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { IgxDialogModule } from 'igniteui-angular';
@@ -25,13 +25,13 @@ describe('LoginDialog', () => {
     return { loginView, registerView };
   };
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       declarations: [LoginDialog, TestSignViewComponent],
       imports: [NoopAnimationsModule, IgxDialogModule]
     })
       .compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(LoginDialog);
