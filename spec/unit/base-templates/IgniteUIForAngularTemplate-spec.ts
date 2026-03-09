@@ -90,7 +90,7 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith(
 				{
 					declare: [
-						"ViewNamet",
+						"ViewName",
 					],
 					from: "./view-name/view-name",
 					export: []
