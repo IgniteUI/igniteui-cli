@@ -63,7 +63,7 @@ export class AngularTemplate implements Template {
 			//1) import the component class name,
 			//2) and populate the Routes array with the path and component
 			//for example: { path: "combo", component: ComboComponent }
-			const routingModulePath = path.join(projectPath, "src/app/app-routing.module.ts");
+			const routingModulePath = path.join(projectPath, "src/app/app-routing-module.ts");
 			const routingModule = new TsUpdate(routingModulePath, false, { singleQuotes: false });
 
 			routingModule.addRoute({

@@ -108,11 +108,11 @@ export class IgniteUIForAngularTemplate implements Template {
 		}
 
 		// ngModule based components
-		if (!(options && options.skipRoute) && this.fileExists("src/app/app-routing.module.ts")) {
+		if (!(options && options.skipRoute) && this.fileExists("src/app/app-routing-module.ts")) {
 			//1) import the component class name,
 			//2) and populate the Routes array with the path and component
 			//for example: { path: 'combo', component: ComboComponent }
-			const routingModulePath = path.join(projectPath, "src/app/app-routing.module.ts");
+			const routingModulePath = path.join(projectPath, "src/app/app-routing-module.ts");
 			const routingModule = new TsUpdate(routingModulePath, false, { indentSize: 2, singleQuotes: true });
 			routingModule.addRoute({
 				modulePath: Util.relativePath(routingModulePath, componentFilePath, true, true),

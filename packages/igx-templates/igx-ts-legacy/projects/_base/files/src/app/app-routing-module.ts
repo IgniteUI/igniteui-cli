@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { NotFound } from './error-routing/not-found/not-found';
 import { UncaughtError } from './error-routing/error/uncaught-error';
-import { ErrorRoutingModule } from './error-routing/error-routing.module';
+import { ErrorRoutingModule } from './error-routing/error-routing-module';
 
 export const routes: Routes = [
 	{ path: 'error', component: UncaughtError },
