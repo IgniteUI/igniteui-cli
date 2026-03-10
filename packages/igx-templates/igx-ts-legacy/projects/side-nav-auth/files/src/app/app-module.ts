@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, provideBrowserGlobalErrorListeners, provideZoneChangeDetection } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule, HammerModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -28,7 +28,10 @@ import { Home } from './home/home';
     IgxLayoutModule,
     IgxRippleModule
   ],
-  providers: [],
+  providers: [
+    provideBrowserGlobalErrorListeners(),
+    provideZoneChangeDetection({ eventCoalescing: true })
+  ],
   bootstrap: [App]
 })
 export class AppModule {
