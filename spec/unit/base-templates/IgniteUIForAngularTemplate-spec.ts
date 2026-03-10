@@ -69,13 +69,13 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			spyOn(templ, "fileExists").and.returnValue(true);
 			spyOn(App.container, "get").and.returnValue(mockFS);
 			spyOn(mockFS, "fileExists").and.callFake(file => {
-				if (file === "src/app/app-routing.module.ts") {
+				if (file === "src/app/app-routing-module.ts") {
 					return true;
 				}
 			});
 			templ.registerInProject("target/path", "view name");
 			expect(helpers.AngularTypeScriptFileUpdate)
-				.toHaveBeenCalledWith(path.join("target/path", "src/app/app-routing.module.ts"), false, { indentSize: 2, singleQuotes: true });
+				.toHaveBeenCalledWith(path.join("target/path", "src/app/app-routing-module.ts"), false, { indentSize: 2, singleQuotes: true });
 			expect(helpers.tsUpdateMock.addRoute).toHaveBeenCalledWith(
 				{
 					modulePath: './view-name/view-name',
