@@ -5,7 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   IgxLayoutModule, IgxNavbarModule, IgxNavigationDrawerModule, IgxRippleModule
 } from 'igniteui-angular';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { AuthenticationModule, ExternalAuthService } from './authentication';
 import { Home } from './home/home';
