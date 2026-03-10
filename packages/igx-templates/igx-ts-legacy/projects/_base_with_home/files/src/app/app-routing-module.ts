@@ -4,7 +4,7 @@ import { Home } from './home/home';
 
 import { NotFound } from './error-routing/not-found/not-found';
 import { UncaughtError } from './error-routing/error/uncaught-error';
-import { ErrorRoutingModule } from './error-routing/error-routing.module';
+import { ErrorRoutingModule } from './error-routing/error-routing-module';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},

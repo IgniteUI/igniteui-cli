@@ -14,7 +14,7 @@ import {
   IgxToggleModule
 } from 'igniteui-angular';
 import { AuthGuard } from './auth.guard';
-import { AuthenticationRoutingModule } from './authentication-routing.module';
+import { AuthenticationRoutingModule } from './authentication-routing-module';
 import { LoginBar } from './login-bar/login-bar';
 import { LoginDialog } from './login-dialog/login-dialog';
 import { Login } from './login/login';
