@@ -152,7 +152,7 @@ describe("Schematics ng-new", () => {
 				authorEmail: undefined,
 				authorName: undefined,
 				commit: true,
-				message: `Initial commit for project: ${workingDirectory}`
+				message: `Initial commit for project`
 			};
 			const expectedStart: RunSchematicTaskOptions<any> = {
 				collection: null,
@@ -206,7 +206,7 @@ describe("Schematics ng-new", () => {
 				authorEmail: undefined,
 				authorName: undefined,
 				commit: true,
-				message: `Initial commit for project: ${workingDirectory}`
+				message: `Initial commit for project`
 			};
 			expect(taskOptions.length).toBe(2);
 			expect(mockProject.upgradeIgniteUIPackages).toHaveBeenCalled();
