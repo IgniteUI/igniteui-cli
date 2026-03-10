@@ -173,7 +173,7 @@ describe("Add command", () => {
 		}));
 		fs.mkdirSync(`./src`);
 		fs.mkdirSync(`./src/app`);
-		fs.writeFileSync("src/app/app-routing.module.ts", "const routes: Routes = [];");
+		fs.writeFileSync("src/app/app-routing-module.ts", "const routes: Routes = [];");
 		fs.writeFileSync("src/app/app-module.ts", `@NgModule({
 			declarations: [
 			  App,
@@ -193,7 +193,7 @@ describe("Add command", () => {
 		expect(fs.existsSync(componentPath)).toBeTruthy();
 		// file contents:
 		expect(fs.readFileSync(componentPath, "utf-8")).toContain("export class TestViewComponent");
-		expect(fs.readFileSync("src/app/app-routing.module.ts", "utf-8").replace(/\s/g, "")).toBe(
+		expect(fs.readFileSync("src/app/app-routing-module.ts", "utf-8").replace(/\s/g, "")).toBe(
 			`import { TestViewComponent } from "./components/test-view/test-view.component";
 			const routes: Routes = [{ path: "test-view", component: TestViewComponent, data: { text: "Test view" } }];
 			`.replace(/\s/g, "")
@@ -260,7 +260,7 @@ describe("Add command", () => {
 			}));
 			fs.mkdirSync(`./src`);
 			fs.mkdirSync(`./src/app`);
-			fs.writeFileSync("src/app/app-routing.module.ts", "const routes: Routes = [];");
+			fs.writeFileSync("src/app/app-routing-module.ts", "const routes: Routes = [];");
 			fs.writeFileSync("src/app/app-module.ts", `@NgModule({
 				declarations: [
 				App,
@@ -283,7 +283,7 @@ describe("Add command", () => {
 			expect(fs.existsSync(componentPath)).toBeTruthy();
 			// file contents:
 			expect(fs.readFileSync(componentPath, "utf-8")).toContain("export class TestView");
-			expect(fs.readFileSync("src/app/app-routing.module.ts", "utf-8")).toBe(
+			expect(fs.readFileSync("src/app/app-routing-module.ts", "utf-8")).toBe(
 				`import { TestView } from './test-view/test-view';` + EOL +
 				`const routes: Routes = [{ path: 'test-view', component: TestView, data: { text: 'Test view' } }];` + EOL
 			);
@@ -335,7 +335,7 @@ export class AppModule {
 			}));
 			fs.mkdirSync(`./src`);
 			fs.mkdirSync(`./src/app`);
-			fs.writeFileSync("src/app/app-routing.module.ts", "const routes: Routes = [];");
+			fs.writeFileSync("src/app/app-routing-module.ts", "const routes: Routes = [];");
 			fs.writeFileSync("src/app/app-module.ts", `@NgModule({
 			declarations: [
 			  App,
@@ -360,7 +360,7 @@ export class AppModule {
 			// file contents:
 			expect(fs.readFileSync(componentPath, "utf-8")).toContain("export class TestNestedFolders");
 
-			expect(fs.readFileSync("src/app/app-routing.module.ts", "utf-8")).toBe(
+			expect(fs.readFileSync("src/app/app-routing-module.ts", "utf-8")).toBe(
 				`import { TestNestedFolders } from './${componentFolder}/test-nested-folders';` + EOL +
 				// tslint:disable-next-line:max-line-length
 				`const routes: Routes = [{ path: 'test-nested-folders', component: TestNestedFolders, data: { text: 'Test Nested Folders' } }];` + EOL

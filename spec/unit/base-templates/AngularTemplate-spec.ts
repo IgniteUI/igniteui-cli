@@ -133,7 +133,7 @@ describe("Unit - AngularTemplate Base", () => {
 			const templ = new TestTemplate();
 			templ.registerInProject("target/path", "view name");
 			expect(helpers.AngularTypeScriptFileUpdate)
-				.toHaveBeenCalledWith(path.join("target/path", "src/app/app-routing.module.ts"), false, { singleQuotes: false });
+				.toHaveBeenCalledWith(path.join("target/path", "src/app/app-routing-module.ts"), false, { singleQuotes: false });
 			expect(helpers.tsUpdateMock.addRoute).toHaveBeenCalledWith(
 				{
 					path: 'view-name',

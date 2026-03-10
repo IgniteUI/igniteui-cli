@@ -269,7 +269,7 @@ describe("Unit - Add command", () => {
 		};
 		spyOn(App.container, "get").and.returnValue(mockVirtFs);
 		spyOn(mockVirtFs, "fileExists").and.callFake(file => {
-			if (file === "src/app/app-routing.module.ts") {
+			if (file === "src/app/app-routing-module.ts") {
 				return true;
 			}
 		});

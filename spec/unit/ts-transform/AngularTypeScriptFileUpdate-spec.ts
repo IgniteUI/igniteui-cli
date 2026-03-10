@@ -12,7 +12,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { NotFound } from './error-routing/not-found/not-found';
 import { UncaughtError } from './error-routing/error/uncaught-error';
-import { ErrorRoutingModule } from './error-routing/error-routing.module';
+import { ErrorRoutingModule } from './error-routing/error-routing-module';
 
 export const routes: Routes = [
     { path: 'error', component: UncaughtError },
@@ -144,7 +144,7 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
           EOL +
           `import { UncaughtError } from './error-routing/error/uncaught-error';` +
           EOL +
-          `import { ErrorRoutingModule } from './error-routing/error-routing.module';` +
+          `import { ErrorRoutingModule } from './error-routing/error-routing-module';` +
           EOL +
           EOL +
           `export const routes: Routes = [` +
@@ -275,7 +275,7 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
           EOL +
           `import { UncaughtError } from './error-routing/error/uncaught-error';` +
           EOL +
-          `import { ErrorRoutingModule } from './error-routing/error-routing.module';` +
+          `import { ErrorRoutingModule } from './error-routing/error-routing-module';` +
           EOL +
           `import { TestRouteComponent } from 'path/to/module';` +
           EOL +
@@ -333,7 +333,7 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
           EOL +
           `import { UncaughtError } from './error-routing/error/uncaught-error';` +
           EOL +
-          `import { ErrorRoutingModule } from './error-routing/error-routing.module';` +
+          `import { ErrorRoutingModule } from './error-routing/error-routing-module';` +
           EOL +
           EOL +
           `export const routes: Routes = [` +
@@ -388,7 +388,7 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
           EOL +
           `import { UncaughtError } from './error-routing/error/uncaught-error';` +
           EOL +
-          `import { ErrorRoutingModule } from './error-routing/error-routing.module';` +
+          `import { ErrorRoutingModule } from './error-routing/error-routing-module';` +
           EOL +
           EOL +
           `export const routes: Routes = [` +
@@ -445,7 +445,7 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
           EOL +
           `import { UncaughtError } from './error-routing/error/uncaught-error';` +
           EOL +
-          `import { ErrorRoutingModule } from './error-routing/error-routing.module';` +
+          `import { ErrorRoutingModule } from './error-routing/error-routing-module';` +
           EOL +
           EOL +
           `export const routes: Routes = [` +
@@ -515,7 +515,7 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
           EOL +
           `import { UncaughtError } from './error-routing/error/uncaught-error';` +
           EOL +
-          `import { ErrorRoutingModule } from './error-routing/error-routing.module';` +
+          `import { ErrorRoutingModule } from './error-routing/error-routing-module';` +
           EOL +
           `import { ParentComponent } from 'path/to/parent';` +
           EOL +
@@ -618,7 +618,7 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
           EOL +
           `import { UncaughtError } from './error-routing/error/uncaught-error';` +
           EOL +
-          `import { ErrorRoutingModule } from './error-routing/error-routing.module';` +
+          `import { ErrorRoutingModule } from './error-routing/error-routing-module';` +
           EOL +
           `import { ParentComponent } from 'path/to/parent';` +
           EOL +
@@ -731,7 +731,7 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
           EOL +
           `import { UncaughtError } from './error-routing/error/uncaught-error';` +
           EOL +
-          `import { ErrorRoutingModule } from './error-routing/error-routing.module';` +
+          `import { ErrorRoutingModule } from './error-routing/error-routing-module';` +
           EOL +
           `import { ParentComponent } from 'path/to/parent';` +
           EOL +
