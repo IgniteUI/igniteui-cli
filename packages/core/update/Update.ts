@@ -55,7 +55,7 @@ export async function updateWorkspace(rootPath: string): Promise<boolean> {
 	}
 	const pkgJSON = JSON.parse(fileString);
 
-	const errorMsg = "Something went wrong, please follow the steps in this guide: " + guideLink;
+	const errorMsg = "Can't detect/setup Infragistics feed login required for licensed packages.\nSee: " + guideLink;
 	if (!PackageManager.ensureRegistryUser(config, errorMsg)) {
 		return false;
 	}
