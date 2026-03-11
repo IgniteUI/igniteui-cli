@@ -6,6 +6,7 @@ import { App, ProjectConfig, Util } from "../util";
 
 import componentsConfig = require("./components");
 
+/** @internal */
 export const REGISTRY_ATTEMPT_LOGIN = false;
 
 export class PackageManager {
