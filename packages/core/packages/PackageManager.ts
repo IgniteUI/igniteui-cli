@@ -6,6 +6,8 @@ import { App, ProjectConfig, Util } from "../util";
 
 import componentsConfig = require("./components");
 
+export const REGISTRY_ATTEMPT_LOGIN = false;
+
 export class PackageManager {
 	private static ossPackage: string = "ignite-ui";
 	private static fullPackage: string = "@infragistics/ignite-ui-full";
@@ -45,6 +47,10 @@ export class PackageManager {
 			const version = ossVersion ? `@"${ossVersion}"` : "";
 			const errorMsg = "Something went wrong, " +
 				"please follow the steps in this guide: https://www.igniteui.com/help/using-ignite-ui-npm-packages";
+			Util.log(
+				"The project you've created requires the full version of Ignite UI from Infragistics private feed.",
+				"gray"
+			);
 			// fallback to @latest, in case when igniteui-full does not have a matching version to ossVersion
 			// ex: "ignite-ui": "^21.1.13" BUT  --> ignite-ui-full": "^21.1.11" (no 21.1.13 released).
 			// TODO: update temp fix - only working in 21.1.11 without errors
@@ -229,11 +235,12 @@ export class PackageManager {
 			// tslint:disable-next-line:object-literal-sort-keys
 			Util.execSync(`npm whoami --registry=${fullPackageRegistry}`, { stdio: "pipe", encoding: "utf8" });
 		} catch (error) {
+			if (!REGISTRY_ATTEMPT_LOGIN) {
+				Util.log(message, "gray");
+				return true;
+			}
+
 			// try registering the user:
-			Util.log(
-				"The project you've created requires the full version of Ignite UI from Infragistics private feed.",
-				"gray"
-			);
 			Util.log(
 				"We are initiating the login process for you. This will be required only once per environment.",
 				"gray"

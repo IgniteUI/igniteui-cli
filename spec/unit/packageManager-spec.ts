@@ -1,7 +1,9 @@
 import child_process from "child_process";
 import path from "path";
-import { App, Config, IFileSystem, PackageManager, ProjectConfig, Util } from "@igniteui/cli-core";
+import { App, Config, IFileSystem, PackageManager, ProjectConfig, REGISTRY_ATTEMPT_LOGIN, Util } from "@igniteui/cli-core";
 import { resetSpy } from "../helpers/utils";
+
+const loginFlow = REGISTRY_ATTEMPT_LOGIN;
 
 describe("Unit - Package Manager", () => {
 	it("ensureIgniteUISource - Should run through properly when install now is set to true", async () => {
@@ -48,32 +50,34 @@ describe("Unit - Package Manager", () => {
 		spyOn(Util, "log");
 		spyOn(PackageManager, "removePackage");
 		await PackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
-		expect(Util.log).toHaveBeenCalledTimes(4);
+		expect(Util.log).toHaveBeenCalledTimes(loginFlow ? 4 : 2);
 		expect(Util.log).toHaveBeenCalledWith(
 			"The project you've created requires the full version of Ignite UI from Infragistics private feed.",
 			"gray"
 		);
-		expect(Util.log).toHaveBeenCalledWith(
-			"We are initiating the login process for you. This will be required only once per environment.",
-			"gray"
-		);
-		expect(Util.log).toHaveBeenCalledWith(
-			"Adding a registry user account for trial",
-			"yellow"
-		);
-		expect(Util.log).toHaveBeenCalledWith(
-			`Use your Infragistics account credentials. "@" is not supported, ` +
-			`use "!!", so "username@infragistics.com" should be entered as "username!!infragistics.com"`,
-			"yellow"
-		);
-		expect(path.join).toHaveBeenCalled();
-		expect(Util.execSync).toHaveBeenCalledWith(
-			"npm login --registry=trial --scope=@infragistics --auth-type=legacy",
-			{
-				stdio: "inherit"
-			}
-		);
-		expect(Util.execSync).toHaveBeenCalledWith("npm config set @infragistics:registry trial");
+		if (loginFlow) {
+			expect(Util.log).toHaveBeenCalledWith(
+				"We are initiating the login process for you. This will be required only once per environment.",
+				"gray"
+			);
+			expect(Util.log).toHaveBeenCalledWith(
+				"Adding a registry user account for trial",
+				"yellow"
+			);
+			expect(Util.log).toHaveBeenCalledWith(
+				`Use your Infragistics account credentials. "@" is not supported, ` +
+				`use "!!", so "username@infragistics.com" should be entered as "username!!infragistics.com"`,
+				"yellow"
+			);
+			expect(path.join).toHaveBeenCalled();
+			expect(Util.execSync).toHaveBeenCalledWith(
+				"npm login --registry=trial --scope=@infragistics --auth-type=legacy",
+				{
+					stdio: "inherit"
+				}
+			);
+			expect(Util.execSync).toHaveBeenCalledWith("npm config set @infragistics:registry trial");
+		}
 		expect(PackageManager.removePackage).toHaveBeenCalled();
 		expect(PackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@"20.1"`, true);
 	});
@@ -112,46 +116,49 @@ describe("Unit - Package Manager", () => {
 		spyOn(TestPackageManager, "getPackageJSON").and.callFake(() => mockRequire);
 		await TestPackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
 		expect(ProjectConfig.localConfig).toHaveBeenCalled();
-		expect(Util.log).toHaveBeenCalledTimes(12);
+		expect(Util.log).toHaveBeenCalledTimes(loginFlow ? 12 /* [O.O] */: 2);
 		expect(Util.log).toHaveBeenCalledWith(
 			"The project you've created requires the full version of Ignite UI from Infragistics private feed.",
 			"gray"
-		); // x2
-		expect(Util.log).toHaveBeenCalledWith(
-			"We are initiating the login process for you. This will be required only once per environment.",
-			"gray"
-		); // x2
-		expect(Util.log).toHaveBeenCalledWith(
-			"Adding a registry user account for trial",
-			"yellow"
-		); // x2
-		expect(Util.log).toHaveBeenCalledWith(
-			`Use your Infragistics account credentials. "@" is not supported, ` +
-			`use "!!", so "username@infragistics.com" should be entered as "username!!infragistics.com"`,
-			"yellow"
-		); // x2
+		);
 		expect(Util.log).toHaveBeenCalledWith(
 			"Something went wrong, " +
 			"please follow the steps in this guide: https://www.igniteui.com/help/using-ignite-ui-npm-packages",
-			"red"
-		); // x2
-		expect(Util.log).toHaveBeenCalledWith(
-			"Something went wrong with upgrading Ignite UI to the full version. " +
-			`As a result only views using OSS components will run correctly.`,
-			"yellow"
-		); // x1
-		expect(Util.log).toHaveBeenCalledWith(
-			"Please visit https://www.igniteui.com/help/using-ignite-ui-npm-packages " +
-			`for instructions on how to install the full package.`,
-			"yellow"
-		); // x1
-		expect(Util.execSync).toHaveBeenCalledWith(
-			"npm login --registry=trial --scope=@infragistics --auth-type=legacy",
-			{
-				stdio: "inherit"
-			}
+			loginFlow ? "red": "gray"
 		);
-		expect(Util.execSync).toHaveBeenCalledTimes(4 /* ¯\(°_o)/¯*/);
+
+		if (loginFlow) {
+			expect(Util.log).toHaveBeenCalledWith(
+				"We are initiating the login process for you. This will be required only once per environment.",
+				"gray"
+			);
+			expect(Util.log).toHaveBeenCalledWith(
+				"Adding a registry user account for trial",
+				"yellow"
+			);
+			expect(Util.log).toHaveBeenCalledWith(
+				`Use your Infragistics account credentials. "@" is not supported, ` +
+				`use "!!", so "username@infragistics.com" should be entered as "username!!infragistics.com"`,
+				"yellow"
+			);
+			expect(Util.log).toHaveBeenCalledWith(
+				"Something went wrong with upgrading Ignite UI to the full version. " +
+				`As a result only views using OSS components will run correctly.`,
+				"yellow"
+			);
+			expect(Util.log).toHaveBeenCalledWith(
+				"Please visit https://www.igniteui.com/help/using-ignite-ui-npm-packages " +
+				`for instructions on how to install the full package.`,
+				"yellow"
+			);
+			expect(Util.execSync).toHaveBeenCalledWith(
+				"npm login --registry=trial --scope=@infragistics --auth-type=legacy",
+				{
+					stdio: "inherit"
+				}
+			);
+		}
+		expect(Util.execSync).toHaveBeenCalledTimes(loginFlow ? 4 /* ¯\(°_o)/¯ */ : 1);
 		expect(Util.execSync).toHaveBeenCalledWith(`npm whoami --registry=trial`, { stdio: "pipe", encoding: "utf8" });
 	});
 	it("ensureIgniteUISource - Should run through properly when install now is set to false", async () => {
