@@ -1,0 +1,7 @@
+{
+  "extends": "../submodules/igniteui-webcomponents/tsconfig.json",
+  "typedocOptions": {
+    "theme": "default",
+    "out": "../docs/webcomponents/api"
+  }
+}

@@ -1,0 +1,37 @@
+[submodule "packages/igniteui-mcp/igniteui-doc-mcp/angular/igniteui-docfx"]
+	path = packages/igniteui-mcp/igniteui-doc-mcp/angular/igniteui-docfx
+	url = https://github.com/IgniteUI/igniteui-docfx
+	ignore = dirty
+[submodule "packages/igniteui-mcp/igniteui-doc-mcp/angular/igniteui-angular-samples"]
+	path = packages/igniteui-mcp/igniteui-doc-mcp/angular/igniteui-angular-samples
+	url = https://github.com/IgniteUI/igniteui-angular-samples
+	ignore = dirty
+[submodule "packages/igniteui-mcp/igniteui-doc-mcp/angular/igniteui-angular-examples"]
+	path = packages/igniteui-mcp/igniteui-doc-mcp/angular/igniteui-angular-examples
+	url = https://github.com/IgniteUI/igniteui-angular-examples
+	ignore = dirty
+[submodule "packages/igniteui-mcp/igniteui-doc-mcp/common/igniteui-xplat-docs"]
+	path = packages/igniteui-mcp/igniteui-doc-mcp/common/igniteui-xplat-docs
+	url = https://github.com/IgniteUI/igniteui-xplat-docs
+	ignore = dirty
+[submodule "packages/igniteui-mcp/igniteui-doc-mcp/react/igniteui-react-examples"]
+	path = packages/igniteui-mcp/igniteui-doc-mcp/react/igniteui-react-examples
+	url = https://github.com/IgniteUI/igniteui-react-examples.git
+	ignore = dirty
+[submodule "packages/igniteui-mcp/igniteui-doc-mcp/webcomponents/igniteui-wc-examples"]
+	path = packages/igniteui-mcp/igniteui-doc-mcp/webcomponents/igniteui-wc-examples
+	url = https://github.com/IgniteUI/igniteui-wc-examples.git
+	ignore = dirty
+[submodule "packages/igniteui-mcp/igniteui-doc-mcp/blazor/igniteui-blazor-examples"]
+	path = packages/igniteui-mcp/igniteui-doc-mcp/blazor/igniteui-blazor-examples
+	url = https://github.com/IgniteUI/igniteui-blazor-examples.git
+	ignore = dirty
+[submodule "packages/igniteui-mcp/igniteui-api-mcp/submodules/igniteui-angular"]
+	path = packages/igniteui-mcp/igniteui-api-mcp/submodules/igniteui-angular
+	url = https://github.com/IgniteUI/igniteui-angular.git
+[submodule "packages/igniteui-mcp/igniteui-api-mcp/submodules/igniteui-webcomponents"]
+	path = packages/igniteui-mcp/igniteui-api-mcp/submodules/igniteui-webcomponents
+	url = https://github.com/IgniteUI/igniteui-webcomponents.git
+[submodule "packages/igniteui-mcp/igniteui-api-mcp/submodules/igniteui-react"]
+	path = packages/igniteui-mcp/igniteui-api-mcp/submodules/igniteui-react
+	url = https://github.com/IgniteUI/igniteui-react.git
