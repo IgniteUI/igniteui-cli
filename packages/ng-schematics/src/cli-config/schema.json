@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "igniteui-angular-cli-config",
+  "title": "Ignite UI for Angular CLI Config Options Schema",
+  "type": "object",
+  "properties": {
+    "addAISkills": {
+      "type": "boolean",
+      "description": "Add AI coding skills for your IDE",
+      "default": true
+    },
+    "aiSkillsTargets": {
+      "type": "array",
+      "description": "AI agent targets for skill files",
+      "items": {
+        "type": "string",
+        "enum": ["copilot", "claude", "cursor", "agents", "custom"]
+      }
+    },
+    "aiSkillsCustomPath": {
+      "type": "string",
+      "description": "Custom path for AI skill files"
+    }
+  },
+  "required": []
+}

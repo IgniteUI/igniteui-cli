@@ -31,7 +31,8 @@
     },
     "cli-config": {
       "description": "Installs the needed dependencies onto the host application.",
-      "factory": "./cli-config/index"
+      "factory": "./cli-config/index",
+      "schema": "./cli-config/schema.json"
     },
     "upgrade-packages": {
       "description": "Upgrades to the licensed Ignite UI for Angular packages",

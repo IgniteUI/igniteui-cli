@@ -2,7 +2,8 @@ import * as path from "path";
 
 import { EmptyTree } from "@angular-devkit/schematics";
 import { SchematicTestRunner, UnitTestTree } from "@angular-devkit/schematics/testing";
-import { FEED_ANGULAR, NPM_ANGULAR } from "@igniteui/cli-core";
+import { FEED_ANGULAR, InquirerWrapper, NPM_ANGULAR } from "@igniteui/cli-core";
+import { AGENT_CHOICES } from "./index";
 
 describe("cli-config schematic", () => {
 	const collectionPath = path.join(__dirname, "../collection.json");
@@ -85,6 +86,9 @@ describe("cli-config schematic", () => {
 			 </body>`);
 		createIgPkgJson();
 		populatePkgJson();
+		// Default: return empty selection so existing tests aren't affected by AI skills prompts
+		spyOn(InquirerWrapper, "confirm").and.returnValue(Promise.resolve(false));
+		spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve([]));
 	});
 
 	it("should create the needed files correctly", () => {
@@ -308,5 +312,207 @@ export const appConfig: ApplicationConfig = {
 
 		await runner.runSchematic("cli-config", {}, tree);
 		expect(warns).toContain(jasmine.stringMatching(pattern));
+	});
+
+	describe("addAISkills", () => {
+		const mockSkillContent = "# Ignite UI for Angular - AI Skills\nBest practices...";
+		const copilotDest = ".github/copilot-instructions.md";
+		const claudeDest = "CLAUDE.md";
+		const cursorDest = ".cursor/skills";
+		const agentsDest = ".agents/skills";
+
+		function createSkillFiles(igxPkg = NPM_ANGULAR) {
+			const dir = `node_modules/${igxPkg}/skills`;
+			tree.create(`${dir}/igniteui-angular.md`, mockSkillContent);
+		}
+
+		it("should copy skill file to .github/copilot-instructions.md for copilot target", async () => {
+			createSkillFiles();
+			await runner.runSchematic("cli-config", {
+				addAISkills: true,
+				aiSkillsTargets: ["copilot"]
+			}, tree);
+			expect(tree.exists(copilotDest)).toBeTruthy();
+			expect(tree.readContent(copilotDest)).toEqual(mockSkillContent);
+		});
+
+		it("should copy skill file to CLAUDE.md for claude target", async () => {
+			createSkillFiles();
+			await runner.runSchematic("cli-config", {
+				addAISkills: true,
+				aiSkillsTargets: ["claude"]
+			}, tree);
+			expect(tree.exists(claudeDest)).toBeTruthy();
+			expect(tree.readContent(claudeDest)).toEqual(mockSkillContent);
+		});
+
+		it("should copy skill files to .cursor/skills/ for cursor target", async () => {
+			createSkillFiles();
+			await runner.runSchematic("cli-config", {
+				addAISkills: true,
+				aiSkillsTargets: ["cursor"]
+			}, tree);
+			expect(tree.exists(`${cursorDest}/igniteui-angular.md`)).toBeTruthy();
+			expect(tree.readContent(`${cursorDest}/igniteui-angular.md`)).toEqual(mockSkillContent);
+		});
+
+		it("should copy skill files to .agents/skills/ for agents target", async () => {
+			createSkillFiles();
+			await runner.runSchematic("cli-config", {
+				addAISkills: true,
+				aiSkillsTargets: ["agents"]
+			}, tree);
+			expect(tree.exists(`${agentsDest}/igniteui-angular.md`)).toBeTruthy();
+			expect(tree.readContent(`${agentsDest}/igniteui-angular.md`)).toEqual(mockSkillContent);
+		});
+
+		it("should copy skill files to custom path", async () => {
+			createSkillFiles();
+			const customPath = "my-custom/ai-skills";
+			await runner.runSchematic("cli-config", {
+				addAISkills: true,
+				aiSkillsTargets: ["custom"],
+				aiSkillsCustomPath: customPath
+			}, tree);
+			expect(tree.exists(`${customPath}/igniteui-angular.md`)).toBeTruthy();
+			expect(tree.readContent(`${customPath}/igniteui-angular.md`)).toEqual(mockSkillContent);
+		});
+
+		it("should handle multiple targets at once", async () => {
+			createSkillFiles();
+			await runner.runSchematic("cli-config", {
+				addAISkills: true,
+				aiSkillsTargets: ["copilot", "claude", "cursor", "agents"]
+			}, tree);
+			expect(tree.exists(copilotDest)).toBeTruthy();
+			expect(tree.exists(claudeDest)).toBeTruthy();
+			expect(tree.exists(`${cursorDest}/igniteui-angular.md`)).toBeTruthy();
+			expect(tree.exists(`${agentsDest}/igniteui-angular.md`)).toBeTruthy();
+		});
+
+		it("should NOT create skill files when addAISkills is false", async () => {
+			createSkillFiles();
+			await runner.runSchematic("cli-config", {
+				addAISkills: false
+			}, tree);
+			expect(tree.exists(copilotDest)).toBeFalsy();
+			expect(tree.exists(claudeDest)).toBeFalsy();
+		});
+
+		it("should NOT create skill files when user selects no targets from prompt", async () => {
+			createSkillFiles();
+			// checkbox returns empty selection → no files created
+			(InquirerWrapper.checkbox as jasmine.Spy).and.returnValue(Promise.resolve([]));
+			await runner.runSchematic("cli-config", {}, tree);
+			expect(tree.exists(copilotDest)).toBeFalsy();
+			expect(tree.exists(claudeDest)).toBeFalsy();
+		});
+
+		it("should prompt for targets when user confirms and no targets provided", async () => {
+			createSkillFiles();
+			const copilotChoice = AGENT_CHOICES.find(c => c.key === "copilot")!.label;
+			(InquirerWrapper.checkbox as jasmine.Spy).and.returnValue(
+				Promise.resolve([copilotChoice])
+			);
+
+			// addAISkills defaults to true via schema, aiSkillsTargets is undefined → prompts
+			await runner.runSchematic("cli-config", {}, tree);
+			expect(InquirerWrapper.checkbox).toHaveBeenCalled();
+			expect(tree.exists(copilotDest)).toBeTruthy();
+		});
+
+		it("should prompt for custom path when custom target selected via prompt", async () => {
+			createSkillFiles();
+			const customChoice = AGENT_CHOICES.find(c => c.key === "custom")!.label;
+			(InquirerWrapper.checkbox as jasmine.Spy).and.returnValue(
+				Promise.resolve([customChoice])
+			);
+			spyOn(InquirerWrapper, "input").and.returnValue(Promise.resolve("my-custom-path"));
+
+			await runner.runSchematic("cli-config", {}, tree);
+			expect(InquirerWrapper.input).toHaveBeenCalled();
+			expect(tree.exists("my-custom-path/igniteui-angular.md")).toBeTruthy();
+		});
+
+		it("should not overwrite existing copilot-instructions.md", async () => {
+			createSkillFiles();
+			const existingContent = "# Existing instructions";
+			tree.create(copilotDest, existingContent);
+
+			await runner.runSchematic("cli-config", {
+				addAISkills: true,
+				aiSkillsTargets: ["copilot"]
+			}, tree);
+			expect(tree.readContent(copilotDest)).toEqual(existingContent);
+		});
+
+		it("should not overwrite existing CLAUDE.md", async () => {
+			createSkillFiles();
+			const existingContent = "# Existing CLAUDE.md";
+			tree.create(claudeDest, existingContent);
+
+			await runner.runSchematic("cli-config", {
+				addAISkills: true,
+				aiSkillsTargets: ["claude"]
+			}, tree);
+			expect(tree.readContent(claudeDest)).toEqual(existingContent);
+		});
+
+		it("should not overwrite existing cursor skill files", async () => {
+			createSkillFiles();
+			const existingContent = "# Existing cursor skill";
+			tree.create(`${cursorDest}/igniteui-angular.md`, existingContent);
+
+			await runner.runSchematic("cli-config", {
+				addAISkills: true,
+				aiSkillsTargets: ["cursor"]
+			}, tree);
+			expect(tree.readContent(`${cursorDest}/igniteui-angular.md`)).toEqual(existingContent);
+		});
+
+		it("should not overwrite existing agents skill files", async () => {
+			createSkillFiles();
+			const existingContent = "# Existing agents skill";
+			tree.create(`${agentsDest}/igniteui-angular.md`, existingContent);
+
+			await runner.runSchematic("cli-config", {
+				addAISkills: true,
+				aiSkillsTargets: ["agents"]
+			}, tree);
+			expect(tree.readContent(`${agentsDest}/igniteui-angular.md`)).toEqual(existingContent);
+		});
+
+		it("should warn when custom target has no path", async () => {
+			createSkillFiles();
+			const warns: string[] = [];
+			runner.logger.subscribe(entry => {
+				if (entry.level === "warn") {
+					warns.push(entry.message);
+				}
+			});
+
+			await runner.runSchematic("cli-config", {
+				addAISkills: true,
+				aiSkillsTargets: ["custom"],
+				aiSkillsCustomPath: ""
+			}, tree);
+			expect(warns).toContain(jasmine.stringMatching(/Custom AI skills path was selected but no path was provided/));
+		});
+
+		it("should work with FEED_ANGULAR package", async () => {
+			// Run schematic first to create ignite-ui-cli.json (required by resetTree)
+			await runner.runSchematic("cli-config", {}, tree);
+
+			resetTree();
+			createIgPkgJson(FEED_ANGULAR);
+			populatePkgJson(FEED_ANGULAR);
+			createSkillFiles(FEED_ANGULAR);
+
+			await runner.runSchematic("cli-config", {
+				addAISkills: true,
+				aiSkillsTargets: ["copilot"]
+			}, tree);
+			expect(tree.exists(copilotDest)).toBeTruthy();
+		});
 	});
 });
