@@ -38,7 +38,7 @@ import { RouterOutlet } from '@angular/router';
     styleUrl: './app.scss'
 })
 export class App {
-	protected readonly title = signal('Home - IgniteUI for Angular');
+    protected readonly title = signal('Home - IgniteUI for Angular');
 }
 `;
 
