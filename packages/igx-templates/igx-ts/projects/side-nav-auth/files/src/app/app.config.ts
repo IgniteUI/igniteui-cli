@@ -1,34 +1,32 @@
-import { ApplicationConfig, EnvironmentProviders, Provider, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { ApplicationConfig, importProvidersFrom, provideBrowserGlobalErrorListeners, provideZoneChangeDetection } from '@angular/core';
 import { BrowserModule, HammerModule } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideRouter } from '@angular/router';
 import {
-  IgxNavigationDrawerModule,
-  IgxNavbarModule,
   IgxLayoutModule,
+  IgxNavbarModule,
+  IgxNavigationDrawerModule,
   IgxRippleModule,
 } from '<%=igxPackage%>';
 
 import { AuthenticationModule, ExternalAuthService } from './authentication';
 import { routes } from './app.routes';
 
-// provide the HAMMER_GESTURE_CONFIG token
-// to override the default settings of the HammerModule
-// { provide: HAMMER_GESTURE_CONFIG, useClass: MyHammerConfig }
-const providers: (EnvironmentProviders | Provider)[] = [
-  provideZoneChangeDetection({ eventCoalescing: true }),
-  provideRouter(routes),
-  importProvidersFrom(
-    BrowserModule,
-    HammerModule,
-    IgxLayoutModule,
-    IgxNavbarModule,
-    IgxNavigationDrawerModule,
-    IgxRippleModule,
-    AuthenticationModule
-  ),
-  provideAnimations(),
-  ExternalAuthService
-];
-
-export const appConfig: ApplicationConfig = { providers };
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideBrowserGlobalErrorListeners(),
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(routes),
+    importProvidersFrom(
+      BrowserModule,
+      HammerModule,
+      IgxLayoutModule,
+      IgxNavbarModule,
+      IgxNavigationDrawerModule,
+      IgxRippleModule,
+      AuthenticationModule
+    ),
+    provideAnimations(),
+    ExternalAuthService
+  ]
+};

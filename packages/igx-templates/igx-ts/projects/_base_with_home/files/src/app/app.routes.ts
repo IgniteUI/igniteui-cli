@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { PageNotFoundComponent } from './error-routing/not-found/not-found.component';
-import { UncaughtErrorComponent } from './error-routing/error/uncaught-error.component';
+import { Home } from './home/home';
+import { NotFound } from './error-routing/not-found/not-found';
+import { UncaughtError } from './error-routing/error/uncaught-error';
 
 export const routes: Routes = [
 	{ path: '', redirectTo: '/home', pathMatch: 'full'},
-	{ path: 'home', component: HomeComponent, data: { text: 'Home' }},
-	{ path: 'error', component: UncaughtErrorComponent },
-	{ path: '**', component: PageNotFoundComponent } // must always be last
+	{ path: 'home', component: Home, data: { text: 'Home' }},
+	{ path: 'error', component: UncaughtError },
+	{ path: '**', component: NotFound } // must always be last
 ];
