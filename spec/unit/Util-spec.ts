@@ -85,7 +85,7 @@ describe("Unit - Util", () => {
 			))
 			.toBe("./carousel/carousel.component", "Shared Win root, file to file => posix ");
 			expect(Util.relativePath(
-				"/home/app/app.module.ts",
+				"/home/app/app-module.ts",
 				"/home/app/grid/grid.component.ts", true, true
 			))
 			.toBe("./grid/grid.component", "Shared posix root, file to file => posix ");
