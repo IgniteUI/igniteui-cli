@@ -14,7 +14,9 @@ export class NgTreeFileSystem implements IFileSystem {
 	}
 
 	public writeFile(filePath: string, text: string): void {
-		return this.tree.overwrite(filePath, text);
+		this.tree.exists(filePath)
+			? this.tree.overwrite(filePath, text)
+			: this.tree.create(filePath, text);
 	}
 
 	public directoryExists(dirPath: string): boolean {

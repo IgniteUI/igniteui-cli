@@ -1,3 +1,16 @@
+## [14.9.2](https://github.com/IgniteUI/igniteui-cli/compare/14.9.1...14.9.2) (2026-03-11)
+
+### What's Changed
+* fix(igx-ts): update igniteui-angular versions and remove overrides by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1508
+* fix(igx-ts): fix eslint configurations by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1509
+* fix(upgrade-packages): correctly glob files on windows by @damyanpetev in https://github.com/IgniteUI/igniteui-cli/pull/1511
+* fix(igx-ts-legacy): fix grid type import and add missing override by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1519
+* Fix start and other npm exec commands by @damyanpetev in https://github.com/IgniteUI/igniteui-cli/pull/1520
+* fix(schematics): fs writeFile create check by @damyanpetev in https://github.com/IgniteUI/igniteui-cli/pull/1526
+* fix(packages): disable non-functional registry login attempt on upgrade by @damyanpetev in https://github.com/IgniteUI/igniteui-cli/pull/1528
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/14.9.1...14.9.2
+
 ## [14.9.1](https://github.com/IgniteUI/igniteui-cli/compare/14.9.0...14.9.1) (2026-02-25)
 
 ### What's Changed
@@ -5,7 +18,6 @@
 
 
 **Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/14.9.0...14.9.1
-
 
 # [14.9.0](https://github.com/IgniteUI/igniteui-cli/compare/v14.8.5...14.9.0) (2026-02-25)
 
