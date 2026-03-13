@@ -1,0 +1,26 @@
+{
+  "$schema": "https://typedoc-plugin-markdown.org/schema.json",
+  "plugin": ["typedoc-plugin-markdown"],
+  "entryPoints": ["../submodules/igniteui-webcomponents/src/index.ts"],
+  "theme": "default",
+  "entryPointStrategy": "resolve",
+  "tsconfig": "../typedoc/webcomponents.tsconfig.json",
+  "out": "../docs/webcomponents/api",
+  "name": "IgniteUI for Web Components API",
+  "readme": "none",
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "excludeInternal": true,
+  "excludeNotDocumented": true,
+  "suppressCommentWarningsInDeclarationFiles": true,
+  "skipErrorChecking": true,
+  "hidePageHeader": true,
+  "hideBreadcrumbs": true,
+  "exclude": [
+    "**/*.spec.ts",
+    "**/tests/**",
+    "**/theming/**",
+    "**/theme-provider*",
+    "**/controllers/**"
+  ],
+}
