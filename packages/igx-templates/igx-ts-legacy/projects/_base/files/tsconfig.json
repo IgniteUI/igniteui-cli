@@ -5,7 +5,6 @@
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
-    "forceConsistentCasingInFileNames": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
@@ -13,9 +12,6 @@
     "skipLibCheck": true,
     "isolatedModules": true,
     "strict": true,
-    "sourceMap": true,
-    "declaration": false,
-    "downlevelIteration": true,
     "experimentalDecorators": true,
     "moduleResolution": "Bundler",
     "importHelpers": true,
@@ -31,13 +27,7 @@
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": true,
-    // TODO: Remove this option when fixing https://infragistics.visualstudio.com/Indigo_Platform/_workitems/edit/30602
-    "extendedDiagnostics": {
-      "checks": {
-        "optionalChainNotNullable": "suppress"
-      }
-    }
+    "strictTemplates": true
   },
   "files": [],
   "references": [
