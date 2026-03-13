@@ -6,12 +6,12 @@ import { UncaughtError } from './error-routing/error/uncaught-error';
 import { ErrorRoutingModule } from './error-routing/error-routing-module';
 
 export const routes: Routes = [
-	{ path: 'error', component: UncaughtError },
-	{ path: '**', component: NotFound } // must always be last
+  { path: 'error', component: UncaughtError },
+  { path: '**', component: NotFound } // must always be last
 ];
 
 @NgModule({
-	imports: [RouterModule.forRoot(routes), ErrorRoutingModule],
-	exports: [RouterModule, ErrorRoutingModule]
+  imports: [RouterModule.forRoot(routes), ErrorRoutingModule],
+  exports: [RouterModule, ErrorRoutingModule]
 })
 export class AppRoutingModule { }
