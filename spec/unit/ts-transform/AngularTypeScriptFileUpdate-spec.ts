@@ -10,13 +10,13 @@ import { MockFS } from './Mock-FS';
 const routesFileContent = `import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { PageNotFoundComponent } from './error-routing/not-found/not-found.component';
-import { UncaughtErrorComponent } from './error-routing/error/uncaught-error.component';
-import { ErrorRoutingModule } from './error-routing/error-routing.module';
+import { NotFound } from './error-routing/not-found/not-found';
+import { UncaughtError } from './error-routing/error/uncaught-error';
+import { ErrorRoutingModule } from './error-routing/error-routing-module';
 
 export const routes: Routes = [
-    { path: 'error', component: UncaughtErrorComponent },
-    { path: '**', component: PageNotFoundComponent } // must always be last
+    { path: 'error', component: UncaughtError },
+    { path: '**', component: NotFound } // must always be last
 ];
 
 @NgModule({
@@ -27,19 +27,18 @@ export class AppRoutingModule {
 }
 `;
 
-const standaloneComponentFileContent = `import { Component } from '@angular/core';
+const standaloneComponentFileContent = `import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
     selector: 'app-root',
-    standalone: true,
     imports: [CommonModule, RouterOutlet],
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss']
+    templateUrl: './app.html',
+    styleUrl: './app.scss'
 })
-export class AppComponent {
-    title = 'Home - IgniteUI for Angular';
+export class App {
+    protected readonly title = signal('Home - IgniteUI for Angular');
 }
 `;
 
@@ -141,18 +140,18 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
           `import { RouterModule, Routes } from '@angular/router';` +
           EOL +
           EOL +
-          `import { PageNotFoundComponent } from './error-routing/not-found/not-found.component';` +
+          `import { NotFound } from './error-routing/not-found/not-found';` +
           EOL +
-          `import { UncaughtErrorComponent } from './error-routing/error/uncaught-error.component';` +
+          `import { UncaughtError } from './error-routing/error/uncaught-error';` +
           EOL +
-          `import { ErrorRoutingModule } from './error-routing/error-routing.module';` +
+          `import { ErrorRoutingModule } from './error-routing/error-routing-module';` +
           EOL +
           EOL +
           `export const routes: Routes = [` +
           EOL +
-          `    { path: 'error', component: UncaughtErrorComponent },` +
+          `    { path: 'error', component: UncaughtError },` +
           EOL +
-          `    { path: '**', component: PageNotFoundComponent } // must always be last` +
+          `    { path: '**', component: NotFound } // must always be last` +
           EOL +
           `];` +
           EOL +
@@ -272,22 +271,22 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
           `import { RouterModule, Routes } from '@angular/router';` +
           EOL +
           EOL +
-          `import { PageNotFoundComponent } from './error-routing/not-found/not-found.component';` +
+          `import { NotFound } from './error-routing/not-found/not-found';` +
           EOL +
-          `import { UncaughtErrorComponent } from './error-routing/error/uncaught-error.component';` +
+          `import { UncaughtError } from './error-routing/error/uncaught-error';` +
           EOL +
-          `import { ErrorRoutingModule } from './error-routing/error-routing.module';` +
+          `import { ErrorRoutingModule } from './error-routing/error-routing-module';` +
           EOL +
           `import { TestRouteComponent } from 'path/to/module';` +
           EOL +
           EOL +
           `export const routes: Routes = [` +
           EOL +
-          `    { path: 'error', component: UncaughtErrorComponent },` +
+          `    { path: 'error', component: UncaughtError },` +
           EOL +
           `    { path: 'test/route', component: TestRouteComponent },` +
           EOL +
-          `    { path: '**', component: PageNotFoundComponent } // must always be last` +
+          `    { path: '**', component: NotFound } // must always be last` +
           EOL +
           `];` +
           EOL +
@@ -330,20 +329,20 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
           `import { RouterModule, Routes } from '@angular/router';` +
           EOL +
           EOL +
-          `import { PageNotFoundComponent } from './error-routing/not-found/not-found.component';` +
+          `import { NotFound } from './error-routing/not-found/not-found';` +
           EOL +
-          `import { UncaughtErrorComponent } from './error-routing/error/uncaught-error.component';` +
+          `import { UncaughtError } from './error-routing/error/uncaught-error';` +
           EOL +
-          `import { ErrorRoutingModule } from './error-routing/error-routing.module';` +
+          `import { ErrorRoutingModule } from './error-routing/error-routing-module';` +
           EOL +
           EOL +
           `export const routes: Routes = [` +
           EOL +
-          `    { path: 'error', component: UncaughtErrorComponent },` +
+          `    { path: 'error', component: UncaughtError },` +
           EOL +
           `    { path: '', redirectTo: 'another/route', pathMatch: 'full' },` +
           EOL +
-          `    { path: '**', component: PageNotFoundComponent } // must always be last` +
+          `    { path: '**', component: NotFound } // must always be last` +
           EOL +
           `];` +
           EOL +
@@ -385,20 +384,20 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
           `import { RouterModule, Routes } from '@angular/router';` +
           EOL +
           EOL +
-          `import { PageNotFoundComponent } from './error-routing/not-found/not-found.component';` +
+          `import { NotFound } from './error-routing/not-found/not-found';` +
           EOL +
-          `import { UncaughtErrorComponent } from './error-routing/error/uncaught-error.component';` +
+          `import { UncaughtError } from './error-routing/error/uncaught-error';` +
           EOL +
-          `import { ErrorRoutingModule } from './error-routing/error-routing.module';` +
+          `import { ErrorRoutingModule } from './error-routing/error-routing-module';` +
           EOL +
           EOL +
           `export const routes: Routes = [` +
           EOL +
-          `    { path: 'error', component: UncaughtErrorComponent },` +
+          `    { path: 'error', component: UncaughtError },` +
           EOL +
           `    { path: 'test/route', redirectTo: 'another/route' },` +
           EOL +
-          `    { path: '**', component: PageNotFoundComponent } // must always be last` +
+          `    { path: '**', component: NotFound } // must always be last` +
           EOL +
           `];` +
           EOL +
@@ -442,20 +441,20 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
           `import { RouterModule, Routes } from '@angular/router';` +
           EOL +
           EOL +
-          `import { PageNotFoundComponent } from './error-routing/not-found/not-found.component';` +
+          `import { NotFound } from './error-routing/not-found/not-found';` +
           EOL +
-          `import { UncaughtErrorComponent } from './error-routing/error/uncaught-error.component';` +
+          `import { UncaughtError } from './error-routing/error/uncaught-error';` +
           EOL +
-          `import { ErrorRoutingModule } from './error-routing/error-routing.module';` +
+          `import { ErrorRoutingModule } from './error-routing/error-routing-module';` +
           EOL +
           EOL +
           `export const routes: Routes = [` +
           EOL +
-          `    { path: 'error', component: UncaughtErrorComponent },` +
+          `    { path: 'error', component: UncaughtError },` +
           EOL +
           `    { path: 'lazyloaded', loadComponent: () => import('my-lazyloaded-module').then(m => m.MyLazyLoadedComponent) },` +
           EOL +
-          `    { path: '**', component: PageNotFoundComponent } // must always be last` +
+          `    { path: '**', component: NotFound } // must always be last` +
           EOL +
           `];` +
           EOL +
@@ -512,11 +511,11 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
           `import { RouterModule, Routes } from '@angular/router';` +
           EOL +
           EOL +
-          `import { PageNotFoundComponent } from './error-routing/not-found/not-found.component';` +
+          `import { NotFound } from './error-routing/not-found/not-found';` +
           EOL +
-          `import { UncaughtErrorComponent } from './error-routing/error/uncaught-error.component';` +
+          `import { UncaughtError } from './error-routing/error/uncaught-error';` +
           EOL +
-          `import { ErrorRoutingModule } from './error-routing/error-routing.module';` +
+          `import { ErrorRoutingModule } from './error-routing/error-routing-module';` +
           EOL +
           `import { ParentComponent } from 'path/to/parent';` +
           EOL +
@@ -525,7 +524,7 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
           EOL +
           `export const routes: Routes = [` +
           EOL +
-          `    { path: 'error', component: UncaughtErrorComponent },` +
+          `    { path: 'error', component: UncaughtError },` +
           EOL +
           `    {` +
           EOL +
@@ -547,7 +546,7 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
           EOL +
           `    },` +
           EOL +
-          `    { path: '**', component: PageNotFoundComponent } // must always be last` +
+          `    { path: '**', component: NotFound } // must always be last` +
           EOL +
           `];` +
           EOL +
@@ -615,11 +614,11 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
           `import { RouterModule, Routes } from '@angular/router';` +
           EOL +
           EOL +
-          `import { PageNotFoundComponent } from './error-routing/not-found/not-found.component';` +
+          `import { NotFound } from './error-routing/not-found/not-found';` +
           EOL +
-          `import { UncaughtErrorComponent } from './error-routing/error/uncaught-error.component';` +
+          `import { UncaughtError } from './error-routing/error/uncaught-error';` +
           EOL +
-          `import { ErrorRoutingModule } from './error-routing/error-routing.module';` +
+          `import { ErrorRoutingModule } from './error-routing/error-routing-module';` +
           EOL +
           `import { ParentComponent } from 'path/to/parent';` +
           EOL +
@@ -628,7 +627,7 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
           EOL +
           `export const routes: Routes = [` +
           EOL +
-          `    { path: 'error', component: UncaughtErrorComponent },` +
+          `    { path: 'error', component: UncaughtError },` +
           EOL +
           `    {` +
           EOL +
@@ -660,7 +659,7 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
           EOL +
           `    },` +
           EOL +
-          `    { path: '**', component: PageNotFoundComponent } // must always be last` +
+          `    { path: '**', component: NotFound } // must always be last` +
           EOL +
           `];` +
           EOL +
@@ -728,11 +727,11 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
           `import { RouterModule, Routes } from '@angular/router';` +
           EOL +
           EOL +
-          `import { PageNotFoundComponent } from './error-routing/not-found/not-found.component';` +
+          `import { NotFound } from './error-routing/not-found/not-found';` +
           EOL +
-          `import { UncaughtErrorComponent } from './error-routing/error/uncaught-error.component';` +
+          `import { UncaughtError } from './error-routing/error/uncaught-error';` +
           EOL +
-          `import { ErrorRoutingModule } from './error-routing/error-routing.module';` +
+          `import { ErrorRoutingModule } from './error-routing/error-routing-module';` +
           EOL +
           `import { ParentComponent } from 'path/to/parent';` +
           EOL +
@@ -743,7 +742,7 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
           EOL +
           `export const routes: Routes = [` +
           EOL +
-          `    { path: 'error', component: UncaughtErrorComponent },` +
+          `    { path: 'error', component: UncaughtError },` +
           EOL +
           `    {` +
           EOL +
@@ -777,7 +776,7 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
           EOL +
           `    },` +
           EOL +
-          `    { path: '**', component: PageNotFoundComponent } // must always be last` +
+          `    { path: '**', component: NotFound } // must always be last` +
           EOL +
           `];` +
           EOL +
@@ -1088,7 +1087,7 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
 
         const result = fileUpdate.finalize();
         expect(result).toEqual(
-          `import { Component } from '@angular/core';` +
+          `import { Component, signal } from '@angular/core';` +
             EOL +
             `import { CommonModule } from '@angular/common';` +
             EOL +
@@ -1101,19 +1100,17 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
             EOL +
             `    selector: 'app-root',` +
             EOL +
-            `    standalone: true,` +
-            EOL +
             `    imports: [CommonModule, RouterOutlet, MyComponent],` +
             EOL +
-            `    templateUrl: './app.component.html',` +
+            `    templateUrl: './app.html',` +
             EOL +
-            `    styleUrls: ['./app.component.scss']` +
+            `    styleUrl: './app.scss'` +
             EOL +
             `})` +
             EOL +
-            `export class AppComponent {` +
+            `export class App {` +
             EOL +
-            `    title = 'Home - IgniteUI for Angular';` +
+            `    protected readonly title = signal('Home - IgniteUI for Angular');` +
             EOL +
             `}` +
             EOL
@@ -1135,7 +1132,7 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
 
         const result = fileUpdate.finalize();
         expect(result).toEqual(
-          `import { Component } from '@angular/core';` +
+          `import { Component, signal } from '@angular/core';` +
             EOL +
             `import { CommonModule } from '@angular/common';` +
             EOL +
@@ -1148,21 +1145,19 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
             EOL +
             `    selector: 'app-root',` +
             EOL +
-            `    standalone: true,` +
-            EOL +
             `    imports: [CommonModule, RouterOutlet],` +
             EOL +
-            `    templateUrl: './app.component.html',` +
+            `    templateUrl: './app.html',` +
             EOL +
-            `    styleUrls: ['./app.component.scss'],` +
+            `    styleUrl: './app.scss',` +
             EOL +
             `    providers: [MyService]` +
             EOL +
             `})` +
             EOL +
-            `export class AppComponent {` +
+            `export class App {` +
             EOL +
-            `    title = 'Home - IgniteUI for Angular';` +
+            `    protected readonly title = signal('Home - IgniteUI for Angular');` +
             EOL +
             `}` +
             EOL
@@ -1202,7 +1197,7 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
 
         const result = fileUpdate.finalize();
         expect(result).toEqual(
-          `import { Component } from '@angular/core';` +
+          `import { Component, signal } from '@angular/core';` +
             EOL +
             `import { CommonModule } from '@angular/common';` +
             EOL +
@@ -1217,21 +1212,19 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
             EOL +
             `    selector: 'app-root',` +
             EOL +
-            `    standalone: true,` +
-            EOL +
             `    imports: [CommonModule, RouterOutlet, ReplaceModule],` +
             EOL +
-            `    templateUrl: './app.component.html',` +
+            `    templateUrl: './app.html',` +
             EOL +
-            `    styleUrls: ['./app.component.scss'],` +
+            `    styleUrl: './app.scss',` +
             EOL +
             `    providers: [ReplaceService]` +
             EOL +
             `})` +
             EOL +
-            `export class AppComponent {` +
+            `export class App {` +
             EOL +
-            `    title = 'Home - IgniteUI for Angular';` +
+            `    protected readonly title = signal('Home - IgniteUI for Angular');` +
             EOL +
             `}` +
             EOL
@@ -1259,7 +1252,7 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
 
         const result = fileUpdate.finalize();
         expect(result).toEqual(
-          `import { Component } from '@angular/core';` +
+          `import { Component, signal } from '@angular/core';` +
             EOL +
             `import { CommonModule } from '@angular/common';` +
             EOL +
@@ -1272,21 +1265,19 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
             EOL +
             `    selector: 'app-root',` +
             EOL +
-            `    standalone: true,` +
-            EOL +
             `    imports: [CommonModule, RouterOutlet],` +
             EOL +
-            `    templateUrl: './app.component.html',` +
+            `    templateUrl: './app.html',` +
             EOL +
-            `    styleUrls: ['./app.component.scss'],` +
+            `    styleUrl: './app.scss',` +
             EOL +
             `    providers: [MyService]` +
             EOL +
             `})` +
             EOL +
-            `export class AppComponent {` +
+            `export class App {` +
             EOL +
-            `    title = 'Home - IgniteUI for Angular';` +
+            `    protected readonly title = signal('Home - IgniteUI for Angular');` +
             EOL +
             `}` +
             EOL
@@ -1294,7 +1285,7 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
       });
 
       it('should properly sort the elements of the `imports` member array', () => {
-        const componentWithImports = `import { Component } from '@angular/core';
+        const componentWithImports = `import { Component, signal } from '@angular/core';
         import { CommonModule } from '@angular/common';
         import { BrowserModule } from '@angular/platform-browser';
         import { HammerModule } from '@angular/platform-browser';
@@ -1304,7 +1295,6 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
 
         @Component({
             selector: 'app-root',
-            standalone: true,
             imports: [
                 BrowserModule,
                 HammerModule,
@@ -1315,11 +1305,11 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
                 FormsModule,
                 HttpClientModule
             ],
-            templateUrl: './app.component.html',
-            styleUrls: ['./app.component.scss']
+            templateUrl: './app.html',
+            styleUrl: './app.scss'
         })
-        export class AppComponent {
-            title = 'Home - IgniteUI for Angular';
+        export class App {
+            protected readonly title = signal('Home - IgniteUI for Angular');
         }`;
 
         setupFileUpdate(
@@ -1335,7 +1325,7 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
 
         const result = fileUpdate.finalize();
         expect(result).toEqual(
-          `import { Component } from '@angular/core';` +
+          `import { Component, signal } from '@angular/core';` +
             EOL +
             `import { CommonModule } from '@angular/common';` +
             EOL +
@@ -1353,8 +1343,6 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
             `@Component({` +
             EOL +
             `    selector: 'app-root',` +
-            EOL +
-            `    standalone: true,` +
             EOL +
             `    imports: [` +
             EOL +
@@ -1376,15 +1364,15 @@ describe('Unit - AngularTypeScriptFileUpdate', () => {
             EOL +
             `    ],` +
             EOL +
-            `    templateUrl: './app.component.html',` +
+            `    templateUrl: './app.html',` +
             EOL +
-            `    styleUrls: ['./app.component.scss']` +
+            `    styleUrl: './app.scss'` +
             EOL +
             `})` +
             EOL +
-            `export class AppComponent {` +
+            `export class App {` +
             EOL +
-            `    title = 'Home - IgniteUI for Angular';` +
+            `    protected readonly title = signal('Home - IgniteUI for Angular');` +
             EOL +
             `}` +
             EOL

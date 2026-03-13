@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { defineCustomElements } from '<%=dockManagerPackage%>/loader';
-import { <%=ClassName%>Component } from './<%=filePrefix%>.component';
+import { <%=ClassName%> } from './<%=filePrefix%>';
 
 defineCustomElements();
 
@@ -10,10 +10,10 @@ defineCustomElements();
     CommonModule
   ],
   declarations: [
-    <%=ClassName%>Component
+    <%=ClassName%>
   ],
   exports: [
-    <%=ClassName%>Component
+    <%=ClassName%>
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

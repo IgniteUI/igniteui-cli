@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { dematerialize, materialize, mergeMap } from 'rxjs/operators';
 import { ExternalLogin } from '../models/login';
-import { Register } from '../models/register';
+import { RegisterInfo } from '../models/register-info';
 import { UserJWT } from '../models/user';
 import { encodeBase64Url } from './jwt-util';
 import { LocalStorageService } from './local-storage';
@@ -88,7 +88,7 @@ export class BackendInterceptor implements HttpInterceptor {
   }
 
   private getStorageUser(request: HttpRequest<any>): StorageUser {
-    const user = request.body as Register;
+    const user = request.body as RegisterInfo;
     let fullName = user.given_name;
     fullName += user.family_name ? ` ${user.family_name}` : '';
     return {
