@@ -14,7 +14,8 @@ describe('<%=ClassName%>', () => {
       declarations: [ <%=ClassName%> ],
       imports: [ FormsModule, BrowserAnimationsModule,
         IgxGridModule, IgxDialogModule, IgxCategoryChartModule,
-        IgxButtonModule, IgxSwitchModule, IgxSliderModule, IgxCheckboxModule ]
+        IgxButtonModule, IgxSwitchModule, IgxSliderModule, IgxCheckboxModule ],
+      teardown: { destroyAfterEach: false }
     })
     .compileComponents();
   });
