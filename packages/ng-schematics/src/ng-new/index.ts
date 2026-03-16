@@ -174,7 +174,7 @@ export function newProject(options: OptionsSchema): Rule {
 				}
 				if (!options.skipGit) {
 					const gitTask = context.addTask(
-						new RepositoryInitializerTask(options.name, { message: `Initial commit for project: ${options.name}` }),
+						new RepositoryInitializerTask(options.name, { message: `Initial commit for project` }),
 						[...installChain] //copy
 					);
 					installChain.push(gitTask);

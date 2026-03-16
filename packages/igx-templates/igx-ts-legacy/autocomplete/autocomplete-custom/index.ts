@@ -18,7 +18,7 @@ class IgxAutocompleteTemplate extends IgniteUIForAngularTemplate {
 			from: "@angular/forms"
 		}, {
 			declare: ["<%=ClassName%>PipeStartsWith"],
-			from: "./src/app/<%=path%>/<%=filePrefix%>.component.ts"
+			from: "./src/app/<%=path%>/<%=filePrefix%>.ts"
 		}];
 	}
 }

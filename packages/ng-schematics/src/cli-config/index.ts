@@ -62,7 +62,7 @@ function importBrowserAnimations(): Rule {
 		const projects = await getProjects(tree);
 		projects.forEach(project => {
 			// TODO: Resolve hardcoded paths instead
-			const moduleFilePath = `${project.sourceRoot}/app/app.module.ts`;
+			const moduleFilePath = `${project.sourceRoot}/app/app-module.ts`;
 			if (tree.exists(moduleFilePath)) {
 				const mainModule = new AngularTypeScriptFileUpdate(
 					moduleFilePath,

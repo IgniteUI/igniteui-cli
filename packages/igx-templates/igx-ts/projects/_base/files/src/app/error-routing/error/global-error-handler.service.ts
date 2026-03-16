@@ -1,12 +1,12 @@
-import { ErrorHandler, Injectable, Injector, NgZone } from '@angular/core';
+import { ErrorHandler, Injectable, Injector, NgZone, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Injectable()
 export class GlobalErrorHandlerService implements ErrorHandler {
+  private injector = inject(Injector);
+  private zone = inject(NgZone);
 
-  constructor(private injector: Injector, private zone: NgZone) { }
-
-  handleError(error: any) {
+  handleError(error: unknown) {
     // handle and/or log error, for example:
     console.error(error);
 
@@ -16,7 +16,7 @@ export class GlobalErrorHandlerService implements ErrorHandler {
       this.zone.run(() => {
         router
           .navigate(['error'])
-          .catch((err: any) => console.error(err));
+          .catch((err: unknown) => console.error(err));
       });
     }
   }
