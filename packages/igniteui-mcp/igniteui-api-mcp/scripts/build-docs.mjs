@@ -16,7 +16,7 @@ const { PLATFORM_CONFIGS } = platformsModule;
 const platform = process.argv[2];
 
 if (!platform) {
-  console.error('❌ Platform required. Usage: npm run build-docs:angular');
+  console.error('❌ Platform required. Usage: npm run build:docs:angular');
   console.error(`   Available: ${Object.keys(PLATFORM_CONFIGS).join(', ')}`);
   process.exit(1);
 }

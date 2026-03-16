@@ -1,4 +1,3 @@
-import { readFileSync } from 'fs';
 import type { CallToolResult } from '@modelcontextprotocol/sdk/types.js';
 import { DocLoader } from '../lib/doc-loader.js';
 import { searchDocs, extractSection } from '../lib/doc-search.js';
@@ -9,34 +8,60 @@ export function createGetApiReferenceHandler(docLoader: DocLoader) {
   return async (params: GetApiReferenceParams): Promise<CallToolResult> => {
     const { platform, component, section = 'all' } = params;
 
-    const entry = docLoader.get(platform, component);
+    let resolvedComponent = component;
+    let entry = docLoader.get(platform, resolvedComponent);
 
     if (!entry) {
       // Try case-insensitive search within platform
-      const results = docLoader.search({ platform, filter: component });
+      const results = docLoader.search({ platform, filter: resolvedComponent });
       const caseInsensitive = results.find(
-        e => e.component.toLowerCase() === component.toLowerCase()
+        e => e.component.toLowerCase() === resolvedComponent.toLowerCase()
       );
 
       if (caseInsensitive) {
-        return createGetApiReferenceHandler(docLoader)({
-          platform,
-          component: caseInsensitive.component,
-          section
-        });
+        resolvedComponent = caseInsensitive.component;
+        entry = caseInsensitive;
       }
 
-      const platformName = getPlatformConfig(platform).displayName;
+      if (!entry) {
+        const platformName = getPlatformConfig(platform).displayName;
+        return {
+          content: [{
+            type: "text",
+            text: `API reference for "${resolvedComponent}" not found in ${platformName}. Use search_api to find available components.`
+          }],
+          isError: true,
+        };
+      }
+    }
+
+    if (!entry) {
       return {
         content: [{
           type: "text",
-          text: `API reference for "${component}" not found in ${platformName}. Use search_api to find available components.`
+          text: `API reference for "${resolvedComponent}" could not be resolved.`
         }],
         isError: true,
       };
     }
 
-    const content = readFileSync(entry.filepath, "utf-8");
+     if (platform === 'react') {
+      const markdown = docLoader.formatReactComponent(resolvedComponent, section);
+      if (markdown) {
+        return { content: [{ type: "text", text: markdown }] };
+      }
+    }
+
+    const content = entry.content;
+    if (!content) {
+      return {
+        content: [{
+          type: "text",
+          text: `API content for "${resolvedComponent}" is not available in memory.`
+        }],
+        isError: true,
+      };
+    }
 
     // Extract specific section if requested
     if (section !== 'all') {
@@ -55,8 +80,11 @@ export function createSearchApiHandler(docLoader: DocLoader) {
   return async (params: SearchApiParams): Promise<CallToolResult> => {
     const { platform, query } = params;
 
-    if (!query.trim()) {
-      return { content: [{ type: "text", text: "Empty query." }] };
+    if (!query) {
+      return {
+        content: [{ type: "text", text: "Search query is required." }],
+        isError: true,
+      };
     }
 
     const docs = docLoader.search({ platform });

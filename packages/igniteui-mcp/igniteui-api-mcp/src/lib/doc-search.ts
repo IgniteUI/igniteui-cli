@@ -1,11 +1,4 @@
-import { readFileSync } from 'fs';
-import type { DocEntry } from './doc-loader.js';
-
-export interface SearchHit {
-  entry: DocEntry;
-  matches: number;
-  excerpt: string;
-}
+import type { DocEntry, SearchHit } from './types/docs.types.js';
 
 export function searchDocs(
   docs: DocEntry[],
@@ -18,7 +11,7 @@ export function searchDocs(
   const hits: SearchHit[] = [];
 
   for (const entry of docs) {
-    const content = readFileSync(entry.filepath, "utf-8");
+    const content = entry.content ?? '';
     const contentLower = content.toLowerCase();
 
     let matches = 0;
@@ -64,18 +57,42 @@ export function searchDocs(
 
 export function extractSection(markdown: string, section: string): string | null {
   const headingMap: Record<string, string[]> = {
-    properties: ['## Properties', '## Accessors'],
-    methods: ['## Methods', '## Functions'],
-    events: ['## Events', '## Outputs'],
+    properties: ['properties', 'accessors'],
+    methods: ['methods', 'functions'],
+    events: ['events', 'outputs'],
   };
 
-  const headings = headingMap[section] || [];
-
-  for (const heading of headings) {
-    const regex = new RegExp(`^${heading}[\\s\\S]*?(?=^## |$)`, 'im');
-    const match = markdown.match(regex);
-    if (match) return match[0];
+  const headings = headingMap[section.toLowerCase()] || [];
+  if (headings.length === 0) {
+    return null;
   }
 
-  return null;
+  const lines = markdown.split(/\r?\n/);
+  let startIndex = -1;
+  let endIndex = lines.length;
+
+  for (let index = 0; index < lines.length; index++) {
+    const match = lines[index].match(/^##\s+(.+?)\s*$/);
+    if (!match) {
+      continue;
+    }
+
+    const normalizedHeading = match[1].toLowerCase().replace(/\s+/g, ' ').trim();
+
+    if (startIndex === -1) {
+      if (headings.includes(normalizedHeading)) {
+        startIndex = index;
+      }
+      continue;
+    }
+
+    endIndex = index;
+    break;
+  }
+
+  if (startIndex === -1) {
+    return null;
+  }
+
+  return lines.slice(startIndex, endIndex).join('\n').trimEnd();
 }

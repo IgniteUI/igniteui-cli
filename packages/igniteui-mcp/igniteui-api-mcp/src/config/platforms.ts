@@ -1,4 +1,3 @@
-// export const PLATFORMS = ['angular', 'react', 'webcomponents'] as const;
 export const PLATFORMS = ['angular', 'webcomponents', 'react'] as const;
 export type Platform = typeof PLATFORMS[number];
 
