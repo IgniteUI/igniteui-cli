@@ -10,6 +10,7 @@ import fs from "fs/promises";
 import { exec } from "child_process";
 import { promisify } from "util";
 import { description } from "./tools/description.js";
+import { handleDetectPlatform } from "./tools/handler.js";
 
 const execAsync = promisify(exec);
 
@@ -196,6 +197,22 @@ server.registerTool(
       return { isError: true, content: [{ type: "text" as const, text: `Generation failed: ${error.stderr || error.message}` }] };
     }
   }
+);
+
+server.registerTool(
+  "detect_platform",
+  {
+    title: "Detect Target Platform",
+    description: description.detect_platform,
+    inputSchema: z.object({
+      path: z.string().optional()
+        .describe("Path to package.json file, relative to current working directory. Defaults to ./package.json"),
+    }),
+  },
+  async ({ path }) => {
+    //const validated = detectPlatformSchema.parse({ path });
+    return handleDetectPlatform({ packageJsonPath: path });
+  },
 );
 
 // --- Prompt ---
