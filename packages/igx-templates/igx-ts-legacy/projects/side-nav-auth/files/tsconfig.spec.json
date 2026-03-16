@@ -9,7 +9,7 @@
       "node",
       "facebook-js-sdk"
     ],
-    "module": "commonjs"
+    "module": "esnext"
   },
   "files": [
     "src/test.ts"
