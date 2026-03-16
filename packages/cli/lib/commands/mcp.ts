@@ -68,6 +68,10 @@ function configureVsCode(entry: McpServerEntry): void {
 	const configPath = getConfigPath("vscode");
 	const config = readJson<VsCodeMcpConfig>(configPath, { servers: {} });
 	config.servers = config.servers || {};
+	if (config.servers[MCP_SERVER_KEY]) {
+		Util.log( ` Ignite UI MCP server already configured in ${configPath}`);
+		return;
+	}
 	config.servers[MCP_SERVER_KEY] = entry;
 	writeJson(configPath, config);
 	Util.log(Util.greenCheck() + ` MCP server configured in ${configPath}`);
@@ -77,6 +81,10 @@ function configureClaude(entry: McpServerEntry): void {
 	const configPath = getConfigPath("claude");
 	const config = readJson<ClaudeDesktopConfig>(configPath, { mcpServers: {} });
 	config.mcpServers = config.mcpServers || {};
+	if (config.mcpServers[MCP_SERVER_KEY]) {
+		Util.log(` Ignite UI MCP server already configured in ${configPath}`);
+		return;
+	}
 	config.mcpServers[MCP_SERVER_KEY] = entry;
 	writeJson(configPath, config);
 	Util.log(Util.greenCheck() + ` MCP server configured in ${configPath}`);
