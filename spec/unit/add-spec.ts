@@ -269,7 +269,7 @@ describe("Unit - Add command", () => {
 		};
 		spyOn(App.container, "get").and.returnValue(mockVirtFs);
 		spyOn(mockVirtFs, "fileExists").and.callFake(file => {
-			if (file === "src/app/app-routing.module.ts") {
+			if (file === "src/app/app-routing-module.ts") {
 				return true;
 			}
 		});
@@ -300,10 +300,10 @@ describe("Unit - Add command", () => {
 		expect(ngMetaSpy).toHaveBeenCalledTimes(1);
 		expect(ngMetaSpy).toHaveBeenCalledWith({
 				declare: [
-					"TestFileNameComponent"
+					"TestFileName"
 				],
-				from: "../test-file-name/test-file-name.component",
-				export: [ 'TestFileNameComponent' ]
+				from: "../test-file-name/test-file-name",
+				export: [ 'TestFileName' ]
 			},
 			jasmine.any(Object),
 			true
