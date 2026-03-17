@@ -5,7 +5,7 @@ MCP server that serves pre-compressed Ignite UI component documentation via full
 ## Setup
 
 ```bash
-cd igniteui-doc-mcp
+cd packages/igniteui-mcp/igniteui-doc-mcp
 npm install
 ```
 
@@ -13,6 +13,20 @@ Create a `.env` file with your OpenAI API key (required for compress and validat
 
 ```
 OPENAI_API_KEY=sk-...
+```
+
+### Building the Database
+The MCP server uses a SQLite database with FTS4 full-text search to serve documentation. The database is built from the compressed markdown files in `dist/docs_final/` using the `build-db.ts` script.
+
+```bash
+npm run build:db
+```
+
+### Building the MCP Server
+Compile the TypeScript source code for the MCP server:
+
+```bash
+npm run build
 ```
 
 ### Running the MCP Server
