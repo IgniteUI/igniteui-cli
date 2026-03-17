@@ -1,0 +1,21 @@
+{
+  "$schema": "https://typedoc-plugin-markdown.org/schema.json",
+  "plugin": ["../react/igniteui-react/plugins/typedoc-plugin-react-components/dist/main.js", "typedoc-plugin-markdown"],
+  "entryPoints": [
+    "../react/igniteui-react/src/components",
+    "../react/igniteui-react/src/dock-manager",
+    "../react/igniteui-react/src/grids",
+    "../react/igniteui-react/src/grid-lite",
+  ],
+  "entryPointStrategy": "resolve",
+  "tsconfig": "../react/igniteui-react/tsconfig-typedoc.json",
+  "out": "../docs/react/api",
+  "name": "IgniteUI for React API",
+  "readme": "none",
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "excludeInternal": true,
+  "skipErrorChecking": true,
+  "hidePageHeader": true,
+  "hideBreadcrumbs": true
+}

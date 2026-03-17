@@ -20,6 +20,9 @@
     "build:xplat-blazor": "cd common/igniteui-xplat-docs && npm install --silent && npm run buildBlazor",
     "build:xplat-react": "cd common/igniteui-xplat-docs && npm install --silent && npm run buildReact",
     "build:xplat-wc": "cd common/igniteui-xplat-docs && npm install --silent && npm run buildWC",
+    "build:docs:angular": "npm run build && node scripts/build-docs.mjs angular",
+    "build:docs:webcomponents": "npm run build && node scripts/build-docs.mjs webcomponents",
+    "build:docs:all": "npm run build:docs:angular && npm run build:docs:webcomponents",
     "export:angular": "npx tsx scripts/export-angular-docs.ts",
     "export:react": "npx tsx scripts/export-react-docs.ts --skip-build",
     "export:blazor": "npx tsx scripts/export-blazor-docs.ts --skip-build",
@@ -79,6 +82,8 @@
     "@types/tmp": "^0.2.6",
     "better-sqlite3": "^12.6.2",
     "tsx": "^4.21.0",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "typedoc": "^0.28.6",
+    "typedoc-plugin-markdown": "^4.4.1"
   }
 }

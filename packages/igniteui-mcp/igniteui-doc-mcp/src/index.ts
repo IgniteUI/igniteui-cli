@@ -8,10 +8,14 @@ import dotenv from "dotenv";
 import path from "path";
 import { exec } from "child_process";
 import { promisify } from "util";
-import { description } from "./tools/description.js";
+import { TOOL_DESCRIPTIONS } from "./tools/description.js";
 import type { DocsProvider } from "./providers/DocsProvider.js";
 import { RemoteDocsProvider } from "./providers/RemoteDocsProvider.js";
 import { LocalDocsProvider } from "./providers/LocalDocsProvider.js";
+import { getApiReferenceSchema, searchApiSchema } from "./tools/schemas.js";
+import { createGetApiReferenceHandler, createSearchApiHandler } from "./tools/handlers.js";
+import { getPlatforms } from "./config/platforms.js";
+import { DocLoader } from "./lib/doc-loader.js";
 
 const execAsync = promisify(exec);
 
@@ -137,10 +141,30 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
   );
 }
 
+function registerApiTools(server: McpServer, docLoader: DocLoader) {
+  server.registerTool(
+    "get_api_reference",
+    {
+      description: TOOL_DESCRIPTIONS.get_api_reference,
+      inputSchema: getApiReferenceSchema,
+    },
+    createGetApiReferenceHandler(docLoader)
+  );
+
+  server.registerTool(
+    "search_api",
+    {
+      description: TOOL_DESCRIPTIONS.search_api,
+      inputSchema: searchApiSchema,
+    },
+    createSearchApiHandler(docLoader)
+  );
+}
+
 server.registerTool(
   "generate_ignite_app",
   {
-    description: description.generate_ignite_app,
+    description: TOOL_DESCRIPTIONS.generate_ignite_app,
     inputSchema: {
       name: z
         .string()
@@ -252,18 +276,30 @@ Most tools require a \`framework\` parameter. Determine the framework from the u
 }));
 
 async function main() {
+  const platforms = getPlatforms();
+  const docLoader = new DocLoader(platforms);
+  docLoader.load();
+
   const docsProvider = await createDocsProvider();
 
   const mode = isLocalMode() ? "local" : "remote";
   appendFileSync(LOG_PATH, `[${new Date().toISOString()}] Server starting in ${mode} mode\n\n`);
 
   registerDocTools(server, docsProvider);
+  registerApiTools(server, docLoader);
 
   const transport = new StdioServerTransport();
   await server.connect(transport);
 }
 
 main().catch((err) => {
-  console.error(err);
+  if (err instanceof Error) {
+    console.error(`❌ Failed to start IgniteUI API MCP server: ${err.message}`);
+    if (err.cause) {
+      console.error('Cause:', err.cause);
+    }
+  } else {
+    console.error(err);
+  }
   process.exit(1);
 });
