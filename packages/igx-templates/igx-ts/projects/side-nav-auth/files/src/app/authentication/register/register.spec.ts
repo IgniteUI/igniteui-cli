@@ -1,7 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { IgxButtonModule, IgxIconModule, IgxInputGroupModule, IgxRippleModule } from 'igniteui-angular';
 import { AuthenticationService } from '../services/authentication.service';
 import { UserService } from '../services/user.service';
 import { Register } from './register';
@@ -22,7 +24,12 @@ describe('Register', () => {
     await TestBed.configureTestingModule({
       imports: [
         NoopAnimationsModule,
+        ReactiveFormsModule,
         RouterTestingModule,
+        IgxButtonModule,
+        IgxIconModule,
+        IgxInputGroupModule,
+        IgxRippleModule,
 		Register
       ],
       providers: [

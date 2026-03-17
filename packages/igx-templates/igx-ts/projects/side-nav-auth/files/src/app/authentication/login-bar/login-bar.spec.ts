@@ -4,7 +4,17 @@ import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { IgxAvatarComponent } from 'igniteui-angular';
+import { AuthModule } from 'angular-auth-oidc-client';
+import {
+  IgxAvatarComponent,
+  IgxAvatarModule,
+  IgxButtonModule,
+  IgxDialogModule,
+  IgxDropDownModule,
+  IgxIconModule,
+  IgxRippleModule,
+  IgxToggleModule
+} from 'igniteui-angular';
 import { LoginDialog } from '../login-dialog/login-dialog';
 import { ExternalAuthService } from '../services/external-auth.service';
 import { UserService } from '../services/user.service';
@@ -13,7 +23,14 @@ import { LoginBar } from './login-bar';
 @Component({
   selector: 'app-login-dialog',
   template: '',
-  imports: []
+  imports: [RouterTestingModule,
+	  IgxAvatarModule,
+	  IgxButtonModule,
+	  IgxDialogModule,
+	  IgxDropDownModule,
+	  IgxIconModule,
+	  IgxRippleModule,
+	  IgxToggleModule]
 })
 class TestLoginDialog extends LoginDialog {
   open() { }
@@ -37,6 +54,14 @@ describe('LoginBar', () => {
       imports: [
         RouterTestingModule,
         NoopAnimationsModule,
+        AuthModule,
+        IgxAvatarModule,
+        IgxButtonModule,
+        IgxDialogModule,
+        IgxDropDownModule,
+        IgxIconModule,
+        IgxRippleModule,
+        IgxToggleModule,
 		LoginBar,
 		TestLoginDialog
       ],
