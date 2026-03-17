@@ -1,6 +1,6 @@
 # igniteui-doc-mcp
 
-MCP server that serves pre-compressed Ignite UI component documentation via full-text search. Includes multi-step pipelines for processing raw documentation into optimized, LLM-friendly markdown for Angular, React, WebComponents, and Blazor.
+MCP server that serves pre-compressed Ignite UI component documentation via full-text search. Supports two modes: **remote** (proxies to a backend API) and **local** (bundled SQLite database via sql.js). Includes multi-step pipelines for processing raw documentation into optimized, LLM-friendly markdown for Angular, React, WebComponents, and Blazor.
 
 ## Setup
 
@@ -14,6 +14,66 @@ Create a `.env` file with your OpenAI API key (required for compress and validat
 ```
 OPENAI_API_KEY=sk-...
 ```
+
+### Running the MCP Server
+
+```bash
+# Remote mode (default) — proxies to DOCS_BACKEND_URL
+node dist/index.js
+
+# Local mode — uses bundled SQLite database
+node dist/index.js --local
+
+# Local mode via env var
+DOCS_MODE=local node dist/index.js
+
+# Custom DB path for local mode
+DB_PATH=/path/to/igniteui-docs.db node dist/index.js --local
+```
+
+Local mode requires `dist/igniteui-docs.db`. Run the pipeline and `npm run build:db` to generate it.
+
+### Configuring MCP Clients for Local Mode
+
+To use the server in local mode with an MCP client (VS Code, Claude Desktop, Cursor, etc.), add it to your MCP configuration file with the `--local` flag.
+
+**VS Code** (`.vscode/mcp.json`):
+```json
+{
+  "servers": {
+    "igniteui": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["/absolute/path/to/igniteui-doc-mcp/dist/index.js", "--local"]
+    }
+  }
+}
+```
+
+**Claude Desktop** (`claude_desktop_config.json`):
+```json
+{
+  "mcpServers": {
+    "igniteui": {
+      "command": "node",
+      "args": ["/absolute/path/to/igniteui-doc-mcp/dist/index.js", "--local"]
+    }
+  }
+}
+```
+
+**With custom DB path** (any client — add `env` block):
+```json
+{
+  "command": "node",
+  "args": ["/absolute/path/to/igniteui-doc-mcp/dist/index.js", "--local"],
+  "env": {
+    "DB_PATH": "/absolute/path/to/igniteui-docs.db"
+  }
+}
+```
+
+> **Note:** The `--local` flag makes the server fully self-contained — no backend API or network access needed. The SQLite database (`db/igniteui-docs.db`) is checked into git, so after `npm run build` it is copied to `dist/` and ready to use.
 
 ## Pipeline Overview
 

@@ -6,14 +6,16 @@ import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 import dotenv from "dotenv";
 import path from "path";
-import fs from "fs/promises";
 import { exec } from "child_process";
 import { promisify } from "util";
 import { description } from "./tools/description.js";
+import type { DocsProvider } from "./providers/DocsProvider.js";
+import { RemoteDocsProvider } from "./providers/RemoteDocsProvider.js";
+import { LocalDocsProvider } from "./providers/LocalDocsProvider.js";
 
 const execAsync = promisify(exec);
 
-dotenv.config();
+dotenv.config({ quiet: true });
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const LOG_PATH = join(__dirname, "mcp-server.log");
@@ -31,10 +33,17 @@ function log(tool: string, input: Record<string, any>, output: string, durationM
   appendFileSync(LOG_PATH, line);
 }
 
-async function fetchText(url: URL): Promise<string> {
-  const resp = await fetch(url);
-  if (!resp.ok) throw new Error(`Backend returned ${resp.status}: ${await resp.text()}`);
-  return resp.text();
+function isLocalMode(): boolean {
+  return process.argv.includes("--local") || process.env.DOCS_MODE === "local";
+}
+
+async function createDocsProvider(): Promise<DocsProvider> {
+  if (isLocalMode()) {
+    const provider = new LocalDocsProvider();
+    await provider.init();
+    return provider;
+  }
+  return new RemoteDocsProvider(BACKEND_URL);
 }
 
 const FRAMEWORK_ENUM = z
@@ -57,88 +66,76 @@ const server = new McpServer(
   }
 );
 
-server.registerTool(
-  "list_components",
-  {
-    description:
-      "List available Ignite UI component docs. Filter by framework and optionally by keyword match against filename, component, toc_name, keywords, summary.",
-    inputSchema: {
-      framework: FRAMEWORK_ENUM,
-      filter: z
-        .string()
-        .optional()
-        .describe("Optional keyword to filter by filename, component, keywords, or summary"),
+function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
+  server.registerTool(
+    "list_components",
+    {
+      description:
+        "List available Ignite UI component docs. Filter by framework and optionally by keyword match against filename, component, toc_name, keywords, summary.",
+      inputSchema: {
+        framework: FRAMEWORK_ENUM,
+        filter: z
+          .string()
+          .optional()
+          .describe("Optional keyword to filter by filename, component, keywords, or summary"),
+      },
     },
-  },
-  async ({ framework, filter }) => {
-    const start = performance.now();
-    const url = new URL("/api/docs", BACKEND_URL);
-    url.searchParams.set("framework", framework);
-    if (filter) url.searchParams.set("filter", filter);
-    const text = await fetchText(url);
-    log("list_components", { framework, filter }, text, Math.round(performance.now() - start));
-    return { content: [{ type: "text" as const, text }] };
-  }
-);
+    async ({ framework, filter }) => {
+      const start = performance.now();
+      const text = await docsProvider.listComponents(framework, filter);
+      log("list_components", { framework, filter }, text, Math.round(performance.now() - start));
+      return { content: [{ type: "text" as const, text }] };
+    }
+  );
 
-server.registerTool(
-  "get_doc",
-  {
-    description:
-      "Return the full markdown content of a specific Ignite UI component doc. Requires framework and doc name.",
-    inputSchema: {
-      framework: FRAMEWORK_ENUM,
-      name: z
-        .string()
-        .describe('Doc name without .md extension, e.g. "grid-editing" or "accordion"'),
+  server.registerTool(
+    "get_doc",
+    {
+      description:
+        "Return the full markdown content of a specific Ignite UI component doc. Requires framework and doc name.",
+      inputSchema: {
+        framework: FRAMEWORK_ENUM,
+        name: z
+          .string()
+          .describe('Doc name without .md extension, e.g. "grid-editing" or "accordion"'),
+      },
     },
-  },
-  async ({ framework, name }) => {
-    const start = performance.now();
-    const url = new URL(`/api/docs/${framework}/${name}`, BACKEND_URL);
-    const resp = await fetch(url);
-    if (resp.status === 404) {
-      const text = `Doc "${name}" not found for framework "${framework}". Use list_components to see available docs.`;
+    async ({ framework, name }) => {
+      const start = performance.now();
+      const { text, found } = await docsProvider.getDoc(framework, name);
       log("get_doc", { framework, name }, text, Math.round(performance.now() - start));
-      return { content: [{ type: "text" as const, text }], isError: true };
+      return { content: [{ type: "text" as const, text }], ...(found ? {} : { isError: true }) };
     }
-    if (!resp.ok) throw new Error(`Backend returned ${resp.status}: ${await resp.text()}`);
-    const text = await resp.text();
-    log("get_doc", { framework, name }, text, Math.round(performance.now() - start));
-    return { content: [{ type: "text" as const, text }] };
-  }
-);
+  );
 
-server.registerTool(
-  "search_docs",
-  {
-    description:
-      "Full-text search across Ignite UI docs for a specific framework. Returns top 20 results with excerpt snippets.",
-    inputSchema: {
-      query: z.string().describe("Search query (supports prefix matching, e.g. 'grid*')"),
-      framework: FRAMEWORK_ENUM,
+  server.registerTool(
+    "search_docs",
+    {
+      description:
+        "Full-text search across Ignite UI docs for a specific framework. Returns top 20 results with excerpt snippets.",
+      inputSchema: {
+        query: z.string().describe("Search query (supports prefix matching, e.g. 'grid*')"),
+        framework: FRAMEWORK_ENUM,
+      },
     },
-  },
-  async ({ query: queryText, framework }) => {
-    const start = performance.now();
-    if (!queryText.trim()) {
-      log("search_docs", { query: queryText, framework }, "Empty query.", 0);
-      return { content: [{ type: "text" as const, text: "Empty query." }] };
+    async ({ query: queryText, framework }) => {
+      const start = performance.now();
+      if (!queryText.trim()) {
+        log("search_docs", { query: queryText, framework }, "Empty query.", 0);
+        return { content: [{ type: "text" as const, text: "Empty query." }] };
+      }
+      const sanitized = queryText
+        .replace(/["\-(){}[\]:^~@]/g, " ")
+        .split(/\s+/)
+        .filter(Boolean)
+        .map((term) => `"${term}"`)
+        .join(" OR ");
+      const text = await docsProvider.searchDocs(framework, sanitized);
+      log("search_docs", { query: queryText, framework }, text, Math.round(performance.now() - start));
+      return { content: [{ type: "text" as const, text }] };
     }
-    const sanitized = queryText
-      .replace(/["\-(){}[\]:^~@]/g, " ")
-      .split(/\s+/)
-      .filter(Boolean)
-      .map((term) => `"${term}"`)
-      .join(" OR ");
-    const url = new URL("/api/docs/search", BACKEND_URL);
-    url.searchParams.set("framework", framework);
-    url.searchParams.set("query", sanitized);
-    const text = await fetchText(url);
-    log("search_docs", { query: queryText, framework }, text, Math.round(performance.now() - start));
-    return { content: [{ type: "text" as const, text }] };
-  }
-);
+  );
+}
 
 server.registerTool(
   "generate_ignite_app",
@@ -255,6 +252,13 @@ Most tools require a \`framework\` parameter. Determine the framework from the u
 }));
 
 async function main() {
+  const docsProvider = await createDocsProvider();
+
+  const mode = isLocalMode() ? "local" : "remote";
+  appendFileSync(LOG_PATH, `[${new Date().toISOString()}] Server starting in ${mode} mode\n\n`);
+
+  registerDocTools(server, docsProvider);
+
   const transport = new StdioServerTransport();
   await server.connect(transport);
 }

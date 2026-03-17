@@ -13,6 +13,78 @@ _tocName: Changelog
 
 All notable changes for each version of Ignite UI for Web Components are documented on this page.
 
+## **7.0.0 (February 2026)**
+
+### igniteui-webcomponents-charts
+
+#### Bug Fixes
+
+| Bug Number | Control | Description |
+|------------|---------|-------------|
+|2327|IgcToolbar|SubPanel sample not working in WebComponents|
+|2638|IgcDataChart|Improve mouse hot detection for rotated labels|
+|2959|IgcLinearGauge|Gauges should not call View functions|
+|2842|IgcDataChart|AssigningCategoryStyle args.GetItems is null or not working to update items in the fragment series|
+|2326|IgcDataChart|Add property to set others color|
+
+### igniteui-webcomponents
+
+#### New Features
+
+- #### AI-Assisted Development - Copilot Skills
+  - Four end-user skills are now shipped with the `igniteui-webcomponents` package under the `skills/` directory providing step-by-step guidance to GitHub Copilot and other LLM agents for common tasks:
+    - **igniteui-wc-choose-components** - Identify the right component for a given UI pattern.
+    - **igniteui-wc-integrate-with-framework** - Set up and use components in React, Angular, Vue, or vanilla JS.
+    - **igniteui-wc-customize-component-theme** - Apply custom styles via CSS custom properties, parts, and the theming system.
+    - **igniteui-wc-optimize-bundle-size** - Reduce production bundle size through selective imports and lazy loading.
+
+- #### Chat
+  - `adoptRootStyles` can now be toggled on/off at runtime.
+
+#### Breaking Changes
+
+- #### Themes
+  - Changed global prefixes for CSS custom properties for component themes to align with other Ignite UI component libraries.
+
+- #### Chat
+  - Removed the `typingIndicator` template renderer. Use the `typing-indicator` slot instead.
+
+- #### Tooltip
+  - Removed the `disableArrow` deprecated property.
+
+- #### Library
+  - Minimum Node version required is now >= 22.
+
+#### Bug Fixes
+
+| Bug Number | Control | Description |
+|------------|---------|-------------|
+|[2033](https://github.com/IgniteUI/igniteui-webcomponents/pull/2033)|Carousel|Context instantiation in Blazor|
+|[2085](https://github.com/IgniteUI/igniteui-webcomponents/pull/2085)|Combo|Correct cursor style over non input parts|
+|[2085](https://github.com/IgniteUI/igniteui-webcomponents/pull/2085)|Textarea|Correct cursor style over non input parts|
+
+### igniteui-webcomponents-grids (Grids)
+
+- [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html), [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html), [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html), [`IgcPivotGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotgridcomponent.html)
+  - Improved performance by dynamically adjusting the scroll throttle based on the data displayed in grid.
+
+**Breaking Changes**
+
+- [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html), [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html), [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html), [`IgcPivotGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotgridcomponent.html)
+  - Original `data` array mutations (like adding/removing/moving records in the original array) are no longer detected automatically. Components need an array reference change for the change to be detected.
+
+**Localization(i18n)**
+
+- [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html), [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html), [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html), [`IgcPivotGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotgridcomponent.html), [`IgcComboComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html), [`IgcDatePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html), [`IgcDateRangePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html), [`IgcCalendarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html), [`IgcCarouselComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccarouselcomponent.html), [`IgcChipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcchipcomponent.html), [`IgcInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html), [`IgcTreeComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreecomponent.html)
+  - New `Intl` implementation for the grid components that format and render data like dates and numbers. Updated `Intl` implementation for [`IgcCalendarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html), [`IgcDatePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html), and [`IgcDateRangePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html) that previously used it in `igniteui-webcomponents`.
+  - New localization implementation for the currently supported languages for all components that have resource strings in the currently supported languages.
+  - New public localization API and package named `igniteui-i18n-resources` containing the new resources that are used in conjunction.
+        **PDF export**
+- Added PDF export functionality allowing users to export grid data to PDF format.
+
+**Popover API**
+Dropdown menus and dialogs are now using HTML Popover API to provide better positioning and accessibility.
+
 ## **6.3.1 (December 2025)**
 
 ### Enhancements

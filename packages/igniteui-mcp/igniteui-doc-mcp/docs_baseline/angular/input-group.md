@@ -1475,7 +1475,9 @@ $custom-input-group: input-group-theme(
 The last step is to include the newly created theme:
 
 ```scss
-@include css-vars($custom-input-group);
+:host {
+  @include tokens($custom-input-group);
+}
 ```
 
 In the sample below, you can see how using the input group with customized CSS variables allows you to create a design that visually resembles the one used in the [`Carbon`](https://carbondesignsystem.com/components/text-input/usage/#live-demo) design system.
@@ -1509,36 +1511,38 @@ export class InputGroupStyleComponent { }
 
 // CSS variables approach
 
-igx-input-group {
-    --border-color: #0f62fe;
-    --size: #{rem(40px)};
-    --idle-bottom-line-color: #8d8d8d;
-    --hover-bottom-line-color: #8d8d8d;
-    --hover-placeholder-color: var(--ig-gray-600);
-    --idle-secondary-color: var(--ig-gray-600);
-    --focused-secondary-color: var(--ig-gray-700);
-    --focused-bottom-line-color: #8d8d8d;
-    --box-background-hover: var(--ig-gray-100);
-    --helper-text-color: var(--ig-gray-600);
-}
+// igx-input-group {
+//     --border-color: #0f62fe;
+//     --size: #{rem(40px)};
+//     --idle-bottom-line-color: #8d8d8d;
+//     --hover-bottom-line-color: #8d8d8d;
+//     --hover-placeholder-color: var(--ig-gray-600);
+//     --idle-secondary-color: var(--ig-gray-600);
+//     --focused-secondary-color: var(--ig-gray-700);
+//     --focused-bottom-line-color: #8d8d8d;
+//     --box-background-hover: var(--ig-gray-100);
+//     --helper-text-color: var(--ig-gray-600);
+// }
 
 // Sass theme approach
 
-// $custom-input-group: input-group-theme(
-//     $border-color: #0f62fe,
-//     $idle-bottom-line-color: #8d8d8d,
-//     $hover-bottom-line-color: #8d8d8d,
-//     $hover-placeholder-color: var(--ig-gray-600),
-//     $idle-secondary-color: var(--ig-gray-600),
-//     $focused-secondary-color: var(--ig-gray-700),
-//     $size: rem(40px),
-//     $box-border-radius: 0,
-//     $box-background-hover: var(--ig-gray-100),
-//     $placeholder-color: var(--ig-gray-600),
-//     $helper-text-color: var(--ig-gray-600)
-// );
+$custom-input-group: input-group-theme(
+    $border-color: #0f62fe,
+    $idle-bottom-line-color: #8d8d8d,
+    $hover-bottom-line-color: #8d8d8d,
+    $hover-placeholder-color: var(--ig-gray-600),
+    $idle-secondary-color: var(--ig-gray-600),
+    $focused-secondary-color: var(--ig-gray-700),
+    $size: rem(40px),
+    $box-border-radius: 0,
+    $box-background-hover: var(--ig-gray-100),
+    $placeholder-color: var(--ig-gray-600),
+    $helper-text-color: var(--ig-gray-600)
+);
 
-// @include css-vars($custom-input-group);
+:host {
+    @include tokens($custom-input-group);
+}
 ```
 
 >[!NOTE]

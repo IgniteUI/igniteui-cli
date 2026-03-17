@@ -26,43 +26,45 @@ Our free, open-source React Grid Lite comes with the following column-based feat
 
 ## Installation and Setup
 
+<!-- React -->
+
 ### Installation
 
 To install Grid Lite, go to the root folder of your project (where `package.json` is located) and run the following command using npm:
 
 ```cmd
-npm install igniteui-grid-lite --save
+npm install igniteui-react --save
 ```
 
 Or using yarn:
 
 ```cmd
-yarn add igniteui-grid-lite
+yarn add igniteui-react
 ```
+
+<!-- end: React -->
 
 ### Using the Grid Lite in your React code
 
-In the file where you want to use Grid Lite, import and register it before your component class or function is declared:
-
 <!-- React -->
 
-```tsx
-import { IgcGridLite } from 'igniteui-grid-lite';
+In the file where you want to use Grid Lite, first we need to import it:
 
-IgcGridLite.register();
+```tsx
+import { IgrGridLite } from 'igniteui-react/grid-lite';
 ```
 
 <!-- End: React -->
 
-Add the `<igc-grid-lite>` element to your markup:
-
 <!-- React -->
+
+Add the `<GridLite>` component to your markup:
 
 ```tsx
 return (
   <div className="container sample ig-typography">
     <div className="grid-lite-wrapper">
-      <igc-grid-lite ref={this.gridRef} id="grid-lite"></igc-grid-lite>
+      <IgrGridLite ref={this.gridRef} id="grid-lite"></IgrGridLite>
     </div>
   </div>
 );
@@ -100,6 +102,8 @@ export type User = {
   avatar: string;
   active: boolean;
   priority: 'Low' | 'Standard' | 'High';
+  employmentType: 'Full-Time' | 'Part-Time' | 'Contract';
+  department: 'Engineering' | 'Marketing' | 'Sales' | 'Finance';
   satisfaction: number;
   registeredAt: Date;
 };
@@ -113,6 +117,8 @@ export class GridLiteDataService {
   private productNames = ['Widget', 'Gadget', 'Gizmo', 'Device', 'Tool', 'Instrument', 'Machine', 'Equipment'];
   private productModels = ['Pro', 'Plus', 'Max', 'Ultra', 'Mini', 'Lite'];
   private priorities: ('Low' | 'Standard' | 'High')[] = ['Low', 'Standard', 'High'];
+  private employmentTypes: ('Full-Time' | 'Part-Time' | 'Contract')[] = ['Full-Time', 'Part-Time', 'Contract'];
+  private departments: ('Engineering' | 'Marketing' | 'Sales' | 'Finance')[] = ['Engineering', 'Marketing', 'Sales', 'Finance'];
 
   private randomInt(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -191,6 +197,8 @@ export class GridLiteDataService {
       avatar: imagePath,
       active: this.randomBoolean(),
       priority: this.randomElement(this.priorities),
+      employmentType: this.randomElement(this.employmentTypes),
+      department: this.randomElement(this.departments),
       satisfaction: this.randomInt(0, 5),
       registeredAt: new Date(Date.now() - this.randomInt(0, 365 * 24 * 60 * 60 * 1000))
     };
@@ -219,85 +227,214 @@ igc-grid-lite {
   min-height: 75vh;
   --ig-size: 1;
 }
+
+/* Badge spacing tokens are scale multipliers; 2.6667 = 0.5rem target inline padding / 0.1875rem base spacing unit. */
+.badge-padded {
+  --ig-spacing-inline: 2.6667;
+}
+
+.badge-padded::part(base) {
+  padding-block: 0.125rem;
+  color: var(--ig-gray-900) !important;
+}
+
+/* Use lighter variant shades across both department (filled) and employment (outlined) badges. */
+.badge-padded[variant="success"] {
+  --ig-badge-border-color: var(--ig-success-300);
+}
+
+.badge-padded[variant="warning"] {
+  --ig-badge-border-color: var(--ig-warn-300);
+}
+
+.badge-padded[variant="primary"] {
+  --ig-badge-border-color: var(--ig-primary-300);
+}
+
+.badge-padded[variant="danger"] {
+  --ig-badge-border-color: var(--ig-error-300);
+}
+
+/* Force lighter fills for department (filled) badges. */
+.badge-padded.badge-department[variant="success"]::part(base) {
+  background: var(--ig-success-300) !important;
+}
+
+.badge-padded.badge-department[variant="warning"]::part(base) {
+  background: var(--ig-warn-300) !important;
+}
+
+.badge-padded.badge-department[variant="primary"]::part(base) {
+  background: var(--ig-primary-300) !important;
+}
+
+.badge-padded.badge-department[variant="danger"]::part(base) {
+  background: var(--ig-error-300) !important;
+}
+
+/* Employment badges are outline-only. */
+.badge-employment::part(base) {
+  background: transparent !important;
+  box-shadow: inset 0 0 0 0.125rem var(--ig-badge-border-color) !important;
+}
 ```
 ```tsx
-import React, { useEffect } from 'react';
-import ReactDOM from 'react-dom/client';
-import { GridLiteDataService, User } from './GridLiteDataService';
-
-// Import the web component
-import { IgcGridLite } from 'igniteui-grid-lite';
-import { 
-  defineComponents,
-  IgcRatingComponent,
-  IgcCheckboxComponent,
-  IgcSelectComponent,
-  IgcAvatarComponent
-} from 'igniteui-webcomponents';
+import React, { useEffect } from "react";
+import ReactDOM from "react-dom/client";
+import { GridLiteDataService, User } from "./GridLiteDataService";
+import "./index.css";
+import {
+  IgrAvatar,
+  IgrBadge,
+  IgrRating,
+  type StyleVariant,
+} from "igniteui-react";
+import {
+  IgrGridLite,
+  IgrGridLiteColumn,
+  type IgrCellContext,
+} from "igniteui-react/grid-lite";
 
 import "igniteui-webcomponents/themes/light/bootstrap.css";
 import "./index.css";
 
-// Register components
-IgcGridLite.register();
-defineComponents(
-  IgcAvatarComponent,
-  IgcRatingComponent,
-  IgcCheckboxComponent,
-  IgcSelectComponent
+const avatarCellTemplate = (ctx: IgrCellContext) => (
+  <IgrAvatar shape="circle" alt="User avatar" src={ctx.value}></IgrAvatar>
 );
 
-// Define cellTemplate functions outside component
-const avatarCellTemplate = (params: any) => {
-  const cell = document.createElement('igc-avatar');
-  cell.setAttribute('shape', 'circle');
-  cell.setAttribute('alt', 'User avatar');
-  cell.setAttribute('src', params.value);
-  return cell;
+const satisfactionCellTemplate = (ctx: IgrCellContext) => (
+  <IgrRating readOnly max={5} step={0.01} value={ctx.value}></IgrRating>
+);
+
+const getDepartmentBadgeVariant = (value: string): StyleVariant => {
+  switch (value) {
+    case "Engineering":
+      return "primary";
+    case "Marketing":
+      return "warning";
+    case "Sales":
+      return "danger";
+    case "Finance":
+      return "success";
+    default:
+      return "primary";
+  }
 };
 
-const satisfactionCellTemplate = (params: any) => {
-  const rating = document.createElement('igc-rating');
-  rating.setAttribute('readonly', '');
-  rating.setAttribute('value', params.value.toString());
-  return rating;
+const getEmploymentTypeOutline = (value: string): StyleVariant => {
+  switch (value) {
+    case "Full-Time":
+      return "success";
+    case "Part-Time":
+      return "warning";
+    case "Contract":
+      return "primary";
+    default:
+      return "primary";
+  }
 };
 
-const registeredAtCellTemplate = (params: any) => {
-  const span = document.createElement('span');
-  span.textContent = params.value.toLocaleString();
-  return span;
-};
+const employmentTypeCellTemplate = (ctx: IgrCellContext) => (
+  <IgrBadge
+    variant={getEmploymentTypeOutline(ctx.value)}
+    outlined={true}
+    className="badge-padded badge-employment"
+  >
+    {ctx.value}
+  </IgrBadge>
+);
 
+const departmentCellTemplate = (ctx: IgrCellContext) => (
+  <IgrBadge
+    variant={getDepartmentBadgeVariant(ctx.value)}
+    className="badge-padded badge-department"
+  >
+    {ctx.value}
+  </IgrBadge>
+);
+
+const registeredAtCellTemplate = (ctx: IgrCellContext) => (
+  <span>{ctx.value.toLocaleString()}</span>
+);
 
 export default function Sample() {
-  const [data, setData] = React.useState<User[]>([]);	
+  const [data, setData] = React.useState<User[]>([]);
 
   useEffect(() => {
-      const dataService = new GridLiteDataService();
-      const data: User[] = dataService.generateUsers(1000);
-      setData(data);
+    const dataService = new GridLiteDataService();
+    const data: User[] = dataService.generateUsers(1000);
+    setData(data);
   }, []);
 
   return (
-    <div className="container sample">
+    <div className="container sample ig-typography">
       <div className="grid-lite-wrapper">
-        <igc-grid-lite data={data} id="grid-lite">
-          <igc-grid-lite-column field="avatar" header="Avatar" cellTemplate={avatarCellTemplate}></igc-grid-lite-column>
-          <igc-grid-lite-column field="firstName" header="First name" sortable filterable resizable></igc-grid-lite-column>
-          <igc-grid-lite-column field="lastName" header="Last name" sortable filterable resizable></igc-grid-lite-column>
-          <igc-grid-lite-column field="email" header="Email Address"></igc-grid-lite-column>
-          <igc-grid-lite-column field="satisfaction" header="Satisfaction rating" data-type="number" sortable filterable cellTemplate={satisfactionCellTemplate}></igc-grid-lite-column>
-          <igc-grid-lite-column field="registeredAt" header="Registered @" sortable cellTemplate={registeredAtCellTemplate}></igc-grid-lite-column>
-        </igc-grid-lite>
+        <IgrGridLite data={data} id="grid-lite" adoptRootStyles={true}>
+          <IgrGridLiteColumn
+            field="avatar"
+            header="Avatar"
+            cellTemplate={avatarCellTemplate}
+          ></IgrGridLiteColumn>
+          <IgrGridLiteColumn
+            field="firstName"
+            header="First Name"
+            sortable
+            filterable
+            resizable
+          ></IgrGridLiteColumn>
+          <IgrGridLiteColumn
+            field="lastName"
+            header="Last Name"
+            sortable
+            filterable
+            resizable
+          ></IgrGridLiteColumn>
+          <IgrGridLiteColumn
+            field="satisfaction"
+            header="Satisfaction Rating"
+            dataType="number"
+            sortable
+            filterable
+            resizable
+            cellTemplate={satisfactionCellTemplate}
+          ></IgrGridLiteColumn>
+          <IgrGridLiteColumn
+            field="employmentType"
+            header="Employment Type"
+            sortable
+            filterable
+            resizable
+            cellTemplate={employmentTypeCellTemplate}
+          ></IgrGridLiteColumn>
+          <IgrGridLiteColumn
+            field="email"
+            header="Email Address"
+            resizable
+          ></IgrGridLiteColumn>
+          <IgrGridLiteColumn
+            field="department"
+            header="Department"
+            sortable
+            filterable
+            resizable
+            cellTemplate={departmentCellTemplate}
+          ></IgrGridLiteColumn>
+          <IgrGridLiteColumn
+            field="registeredAt"
+            header="Registered On"
+            sortable
+            resizable
+            cellTemplate={registeredAtCellTemplate}
+          ></IgrGridLiteColumn>
+        </IgrGridLite>
       </div>
     </div>
   );
 }
 
 // rendering above component in the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Sample/>);
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<Sample />);
 ```
 
 

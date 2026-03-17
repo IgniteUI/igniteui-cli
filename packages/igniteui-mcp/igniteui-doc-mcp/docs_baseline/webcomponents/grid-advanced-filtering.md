@@ -126,6 +126,10 @@ Then set the related CSS properties to this class:
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 
+:root {
+    --ig-theme: bootstrap;
+}
+
 #grid {
     --ig-query-builder-header-foreground: #512da8;
     --ig-query-builder-color-expression-group-and: #eb0000;

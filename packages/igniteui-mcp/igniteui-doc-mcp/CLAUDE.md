@@ -9,8 +9,11 @@ This is the **Ignite UI Documentation MCP Server** — a Model Context Protocol 
 ## Project Structure
 
 ```
-├── src/index.ts                        # MCP server entry point (sql.js + SQLite FTS4)
-├── src/sql.js.d.ts                     # TypeScript type declarations for sql.js
+├── src/index.ts                        # MCP server entry point — dual-mode (remote or local SQLite)
+├── src/providers/
+│   ├── DocsProvider.ts                 # DocsProvider interface (listComponents, getDoc, searchDocs)
+│   ├── RemoteDocsProvider.ts           # Remote mode — proxies to DOCS_BACKEND_URL
+│   └── LocalDocsProvider.ts            # Local mode — sql.js WASM SQLite with FTS4
 ├── scripts/
 │   ├── build-db.ts                    # Build SQLite DB from compressed docs (better-sqlite3)
 │   ├── export-angular-docs.ts          # Export Angular docs from docfx (toc-driven, template expansion, include resolution, API URL resolution)
@@ -68,8 +71,33 @@ This is the **Ignite UI Documentation MCP Server** — a Model Context Protocol 
 npm install        # install dependencies
 npm run build:db   # build SQLite database from compressed docs → dist/igniteui-docs.db
 npm run build      # compile TypeScript (tsc) → outputs to ./dist/
-npm start          # run MCP server (node dist/index.js), uses stdio transport
+npm start          # run MCP server in remote mode (default, proxies to DOCS_BACKEND_URL)
 ```
+
+### Dual Mode
+
+The server supports two documentation backends:
+
+| Mode | Activation | Data Source |
+|------|-----------|-------------|
+| **Remote** (default) | No flags needed | Proxies to `DOCS_BACKEND_URL` |
+| **Local** | `--local` flag or `DOCS_MODE=local` env var | Bundled `dist/igniteui-docs.db` via sql.js |
+
+```bash
+# Remote mode (default)
+node dist/index.js
+
+# Local mode via CLI flag
+node dist/index.js --local
+
+# Local mode via env var
+DOCS_MODE=local node dist/index.js
+
+# Custom DB path
+DB_PATH=/path/to/igniteui-docs.db node dist/index.js --local
+```
+
+Local mode requires `dist/igniteui-docs.db` to exist. Run the pipeline and `npm run build:db` first.
 
 ### Database Build
 
@@ -172,7 +200,10 @@ npm run pipeline:blazor           # run all steps: clear → build → export �
 ## Architecture
 
 **MCP Server** (`src/index.ts`): Unified server using `@modelcontextprotocol/sdk` with stdio transport.
-- Documentation tools use a backend API (`DOCS_BACKEND_URL`)
+- **Dual-mode documentation**: Uses a `DocsProvider` interface (`src/providers/DocsProvider.ts`) with two implementations:
+  - `RemoteDocsProvider` — proxies to `DOCS_BACKEND_URL` (default)
+  - `LocalDocsProvider` — loads `dist/igniteui-docs.db` into memory via `sql.js` WASM SQLite, queries with FTS4
+  - Mode selected at startup via `--local` CLI flag or `DOCS_MODE=local` env var
 - GitHub API tools use `octokit` (requires `GITHUB_TOKEN` env var)
 - CLI scaffolding tools use `igniteui-cli` via `npx`
 - Ten registered tools:

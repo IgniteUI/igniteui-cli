@@ -741,7 +741,9 @@ Now, the time picker's items are properly rendered **inside** of our component's
 >In order to learn more about the various options for providing themes to elements that are shown by using the [`IgxOverlayService`](overlay.md), you can take a look at the [Overlay styling topic](overlay-styling.md).
 
 ```scss
- @include css-vars($my-time-picker-theme);
+:host {
+    @include tokens($my-time-picker-theme);
+}
 ```
 
 >[!WARNING]
@@ -749,9 +751,9 @@ Now, the time picker's items are properly rendered **inside** of our component's
 
 ```scss
 :host {
-  ::ng-deep {
-    @include css-vars($my-time-picker-theme);
-  }
+    ::ng-deep {
+        @include tokens($my-time-picker-theme);
+    }
 }
 ```
 
@@ -801,9 +803,9 @@ $dark-button: flat-button-theme(
   $foreground: #ecaa53,
 );
 
-:host ::ng-deep {
-  @include css-vars($my-time-picker-theme);
-  @include css-vars($dark-button);
+:host {
+  @include tokens($my-time-picker-theme);
+  @include tokens($dark-button);
 }
 ```
 

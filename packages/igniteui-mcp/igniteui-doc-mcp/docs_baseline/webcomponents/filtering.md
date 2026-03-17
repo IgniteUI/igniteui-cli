@@ -24,11 +24,11 @@ The Grid Lite supports filtering operations on its data source. Data filtering i
 </igc-grid-lite>
 ```
 
-<!-- React, WebComponents -->
+<!-- WebComponents -->
 
 You can also control whether the filter operations for string columns should be case sensitive by using the `filteringCaseSensitive` property or `filtering-case-sensitive` attribute:
 
-<!-- end: React, WebComponents -->
+<!-- end: WebComponents -->
 
 <!-- WebComponents -->
 
@@ -233,12 +233,14 @@ export interface FilterExpression<T, K extends Keys<T> = Keys<T>> {
 
 <!-- React, WebComponents -->
 
-The Grid Lite exposes two main approaches for applying filter operations from its API. Either through the `GridLite.filter()`/`GridLite.clearFilter()` methods or through the `Grid.Lite.filterExpressions` property.
+The Grid Lite exposes two main approaches for applying filter operations from its API. Either through the `GridLite.filter()`/`GridLite.clearFilter()` methods or through the `GridLite.filterExpressions` property.
 
 The `filter()` method accepts either a single expression or an array of filter expression and then filters the grid data
 based on those expressions.
 
 <!-- end: React, WebComponents -->
+
+<!-- WebComponents -->
 
 ```typescript
 // Single
@@ -247,7 +249,7 @@ grid.filter({ key: 'firstName', condition: 'contains', searchTerm: 'George' });
 // Multiple
 grid.filter([
   { key: 'firstName', condition: 'startsWith', searchTerm: 'a' },
-  { key: 'firstName', condition: 'startsWith' searchTerm: 'g', criteria: 'or' },
+  { key: 'firstName', condition: 'startsWith', searchTerm: 'g', criteria: 'or' },
 ]);
 ```
 
@@ -256,6 +258,8 @@ grid.filter([
 The `clearFilter()` method, as the name implies, clears the filter state of a single column or the whole grid component, depending on the passed arguments.
 
 <!-- end: React, WebComponents -->
+
+<!-- WebComponents -->
 
 ```typescript
 // Clear the filter state for the `age` column.
@@ -270,6 +274,8 @@ grid.clearFilter();
 <!-- React, WebComponents -->
 
 The `filterExpressions` property is very similar in behavior to the `filter()` method call. It exposes a declarative way to control filter state in the grid, but the most useful property is the ability to set initial filter state when the Grid Lite component is first rendered.
+
+<!-- WebComponents -->
 
 For example here is a Lit-based sample:
 
@@ -287,9 +293,13 @@ For example here is a Lit-based sample:
 }
 ```
 
-<!-- End: React, WebComponents -->
+<!-- end: WebComponents -->
+
+<!-- end: React, WebComponents -->
 
 It can be used to get the current filter state of the component and do additional processing depending on another state in your application.
+
+<!-- WebComponents -->
 
 ```typescript
 const state = grid.filterExpressions;
@@ -301,11 +311,13 @@ saveUserFilterState(state);
 
 <!-- React, WebComponents -->
 
-When a filter operation is performed through the UI, the component emits a custom `filtering` event. The `detail` property is the sort expression which will be applied by the Grid Lite. The event is cancellable and if cancelled will prevent the current filter operation.
+When a filter operation is performed through the UI, the component emits a custom `filtering` event. The `detail` property is the filter expression which will be applied by the Grid Lite. The event is cancellable and if cancelled will prevent the current filter operation.
 
 After the grid applies the new filter state, a `filtered` event is emitted. It contains the filter state for the column which was the target of the operation and it is not cancellable.
 
 <!-- end: React, WebComponents -->
+
+<!-- WebComponents -->
 
 ```typescript
 grid.addEventListener('filtering', (event: CustomEvent<GridLiteFilteringEvent<T>>) => { ... });
@@ -506,9 +518,13 @@ export type DataPipelineParams<T extends object> = {
 };
 ```
 
+<!-- WebComponents -->
+
 ```typescript
 grid.dataPipelineConfiguration = { filter: (params: DataPipelineParams<T>) => T[] | Promise<T[]> };
 ```
+
+<!-- end: WebComponents -->
 
 <!-- End: React, WebComponents -->
 

@@ -538,7 +538,9 @@ $custom-datepicker-theme: calendar-theme(
 The last step is to pass the custom Date Picker theme:
 
 ```scss
-@include css-vars($custom-datepicker-theme);
+:host {
+    @include tokens($custom-datepicker-theme);
+}
 ```
 
 >[!WARNING]
@@ -547,7 +549,7 @@ The last step is to pass the custom Date Picker theme:
 ```scss
 :host {
   ::ng-deep {
-    @include css-vars($custom-datepicker-theme);
+    @include tokens($custom-datepicker-theme);
   }
 }
 ```
@@ -585,9 +587,7 @@ $custom-datepicker-theme: calendar-theme(
 );
 
 :host {
-  ::ng-deep {
-    @include css-vars($custom-datepicker-theme);
-  }
+    @include tokens($custom-datepicker-theme);
 }
 ```
 

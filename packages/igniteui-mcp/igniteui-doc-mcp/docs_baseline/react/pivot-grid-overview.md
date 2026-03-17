@@ -92,10 +92,8 @@ export default function App() {
             <div className="container sample ig-typography">
                 <div className="container fill">
                     <div className="pivot-container">
-                        <div>
-                            <IgrPivotGrid data={pivotData} ref={gridRef} pivotConfiguration={pivotConfiguration} defaultExpandState={true} superCompactMode={true}>
-                            </IgrPivotGrid>
-                        </div>
+                        <IgrPivotGrid data={pivotData} ref={gridRef} pivotConfiguration={pivotConfiguration} defaultExpandState={true} superCompactMode={true}>
+                        </IgrPivotGrid>
                         <IgrPivotDataSelector ref={selector}></IgrPivotDataSelector>
                     </div>
                 </div>

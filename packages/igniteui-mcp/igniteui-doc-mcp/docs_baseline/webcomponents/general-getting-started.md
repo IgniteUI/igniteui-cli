@@ -40,6 +40,10 @@ Additionally, you can read more about the Ignite UI CLI in this [topic](general-
 
 Run this command to install the web component polyfills:
 
+```bash
+npm install @webcomponents/custom-elements
+```
+
 Then import the web component polyfills into index.js:
 
 ```ts

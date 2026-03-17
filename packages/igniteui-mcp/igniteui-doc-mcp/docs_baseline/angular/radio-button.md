@@ -316,7 +316,9 @@ $custom-radio-theme: radio-theme(
 Finally, **include** the custom theme in your application:
 
 ```scss
-@include css-vars($custom-radio-theme);
+:host {
+  @include tokens($custom-radio-theme);
+}
 ```
 
 ```typescript
@@ -349,31 +351,33 @@ export class RadioStylingSampleComponent {
 
 // CSS variables approach
 
-igx-radio {
-    --empty-color: #556b81;
-    --label-color: #131e29;
-    --fill-color: #0064d9;
-    --focus-outline-color: #0032a5;
-}
+// igx-radio {
+//     --empty-color: #556b81;
+//     --label-color: #131e29;
+//     --fill-color: #0064d9;
+//     --focus-outline-color: #0032a5;
+// }
 
-igx-radio:hover {
-    --empty-fill-color: #e3f0ff;
-    --empty-color: #0064d9;
-    --hover-color: transparent;
-}
+// igx-radio:hover {
+//     --empty-fill-color: #e3f0ff;
+//     --empty-color: #0064d9;
+//     --hover-color: transparent;
+// }
 
 // Sass theme approach
 
-// $custom-radio-theme: radio-theme(
-//     $empty-color: #556b81,
-//     $label-color: #131e29,
-//     $fill-color: #0064d9,
-//     $focus-outline-color: #0032a5,
-//     $fill-color-hover: #0064d9,
-//     $hover-color: transparent
-// );
+$custom-radio-theme: radio-theme(
+    $empty-color: #556b81,
+    $label-color: #131e29,
+    $fill-color: #0064d9,
+    $focus-outline-color: #0032a5,
+    $fill-color-hover: #0064d9,
+    $hover-color: transparent
+);
 
-// @include css-vars($custom-radio-theme);
+:host {
+    @include tokens($custom-radio-theme);
+}
 ```
 
 > [!NOTE]

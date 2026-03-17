@@ -68,7 +68,7 @@ import { IgxTooltipModule } from 'igniteui-angular/tooltip';
 export class AppModule {}
 ```
 
-Alternatively, as of `16.0.0` you can import the `IgxTooltipDirective` as a standalone dependency, or use the [`IGX_TOOLTIP_DIRECTIVES`](https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/src/lib/directives/tooltip/public_api.ts) token to import the component and all of its supporting components and directives.
+Alternatively, as of `16.0.0` you can import the `IgxTooltipDirective` as a standalone dependency, or use the [`IGX_TOOLTIP_DIRECTIVES`](https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/directives/src/directives/tooltip/public_api.ts) token to import the component and all of its supporting components and directives.
 
 ```typescript
 // home.component.ts
@@ -217,7 +217,7 @@ We will also use the following styles for our application:
 
 .locationTooltip {
   width: 310px;
-  background-color: var(--igx-grays-700);
+  background-color: var(--ig-grays-700);
   padding: 3px;
   font-size: 13px;
 }
@@ -1041,16 +1041,175 @@ p {
 
 ### Show/Hide delay settings
 
-What if we want to control the amount of time that should pass before showing and hiding the tooltip? For this purpose we can use the [`showDelay`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltiptargetdirective.html#showDelay) and the [`hideDelay`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltiptargetdirective.html#hideDelay) properties of the [`igxTooltipTarget`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltiptargetdirective.html) directive. Both properties are of type **number** and take time in milliseconds.
+What if we want to control the amount of time that should pass before showing and hiding the tooltip? For this purpose we can use the [`showDelay`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltiptargetdirective.html#showdelay) and the [`hideDelay`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltiptargetdirective.html#hidedelay) properties of the [`igxTooltipTarget`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltiptargetdirective.html) directive. Both properties are of type **number** and take time in milliseconds.
 
 > [!NOTE]
-> The built-in UI interaction behavior of the [`IgxTooltipTargetDirective`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltiptargetdirective.html) works by taking [`showDelay`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltiptargetdirective.html#showDelay) and [`hideDelay`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltiptargetdirective.html#hideDelay) property values into account. Showing and hiding the tooltip through the API or the API of the [`IgxTooltipDirective`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltipdirective.html) does NOT take the [`showDelay`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltiptargetdirective.html#showDelay) and [`hideDelay`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltiptargetdirective.html#hideDelay) property values into account. If necessary, such logic would have to be implemented manually according to the application's specifics.
+> The built-in UI interaction behavior of the [`IgxTooltipTargetDirective`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltiptargetdirective.html) works by taking [`showDelay`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltiptargetdirective.html#showdelay) and [`hideDelay`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltiptargetdirective.html#hidedelay) property values into account. Showing and hiding the tooltip through the API or the API of the [`IgxTooltipDirective`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltipdirective.html) does NOT take the [`showDelay`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltiptargetdirective.html#showdelay) and [`hideDelay`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltiptargetdirective.html#hidedelay) property values into account. If necessary, such logic would have to be implemented manually according to the application's specifics.
+
+### Triggers
+
+By default, the [`igxTooltip`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltipdirective.html) is triggered only while hovering over the [`igxTooltipTarget`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltiptargetdirective.html). However, you can change this behavior using the [`showTriggers`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltiptargetdirective.html#showtriggers) and [`hideTriggers`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltiptargetdirective.html#hidetriggers) properties, which allow you to control when the [`igxTooltip`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltipdirective.html) appears and disappears. These properties accept event names as values—such as `click`, `focus`, or `keypress`—letting you trigger the [`igxTooltip`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltipdirective.html) in different scenarios.
+
+```typescript
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import {
+    IgxTooltipTargetDirective,
+    IgxTooltipDirective,
+    IgxButtonDirective,
+    IgxCardComponent,
+    IgxCardHeaderComponent,
+    IgxCardHeaderTitleDirective,
+    IgxCardContentDirective
+} from "igniteui-angular";
+import { defineComponents, IgcInputComponent } from 'igniteui-webcomponents';
+
+defineComponents(IgcInputComponent);
+
+@Component({
+    selector: "app-tooltip-triggers",
+    styleUrls: ["./tooltip-triggers.component.scss"],
+    templateUrl: "./tooltip-triggers.component.html",
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    imports: [
+    IgxTooltipTargetDirective,
+    IgxTooltipDirective,
+    IgxButtonDirective,
+    IgxCardComponent,
+    IgxCardHeaderComponent,
+    IgxCardHeaderTitleDirective,
+    IgxCardContentDirective
+]
+})
+export class TooltipTriggersComponent { }
+```
+```html
+<div class="triggers-container">
+    <igx-card>
+        <igx-card-header>
+            <h4 igxCardHeaderTitle>Default triggers</h4>
+        </igx-card-header>
+        <igx-card-content>
+            <p>
+                Hovering over the button below will display the tooltip using its default configuration: it appears on <strong>pointer enter</strong> and hides on <strong>pointer leave</strong> or <strong>click</strong>.
+            </p>
+            <button igxButton="outlined" [igxTooltipTarget]="triggersDefault">Hover over me</button>
+        </igx-card-content>
+    </igx-card>
+    <div #triggersDefault="tooltip" igxTooltip>
+        I am shown on pointer enter and hidden on pointer leave and/or click.
+    </div>
+
+    <igx-card>
+        <igx-card-header>
+            <h4 igxCardHeaderTitle>Focus based</h4>
+        </igx-card-header>
+        <igx-card-content>
+            <p>
+              In this instance, the tooltip is bound to show on its anchor
+              <strong>focus</strong> and will hide when its anchor is
+              <strong>blurred</strong>.
+            </p>
+            <p>Try to navigate with a Tab key to the anchor to see the effect.</p>
+            <button igxButton="outlined" [igxTooltipTarget]="triggersFocusBlur" [showDelay]="0" [hideDelay]="0" [showTriggers]="'focus'" [hideTriggers]="'blur'">Focus me</button>
+        </igx-card-content>
+    </igx-card>
+    <div #triggersFocusBlur="tooltip" igxTooltip>
+        I am shown on focus and hidden on blur.
+    </div>
+
+    <igx-card>
+        <igx-card-header>
+            <h4 igxCardHeaderTitle>Same trigger(s) for showing and hiding</h4>
+        </igx-card-header>
+        <igx-card-content>
+            <p>
+              The same trigger can be bound to both show and hide the tooltip. The
+              button below has its tooltip bound to show/hide on
+              <strong>click</strong>.
+            </p>
+            <button igxButton="outlined" [igxTooltipTarget]="triggersClick" [showDelay]="0" [hideDelay]="0" [showTriggers]="'click'" [hideTriggers]="'click'">Click</button>
+        </igx-card-content>
+    </igx-card>
+    <div #triggersClick="tooltip" igxTooltip>
+        I am shown on click and will hide on anchor click.
+    </div>
+
+    <igx-card>
+        <igx-card-header>
+            <h4 igxCardHeaderTitle>Keyboard interactions</h4>
+        </igx-card-header>
+        <igx-card-content>
+            <p>
+              Keyboard interactions are also supported. The button below has its
+              tooltip bound to show on a <strong>keypress</strong> and hide on a
+              <strong>keypress</strong> or <strong>blur</strong>.
+            </p>
+            <p>Try it out by focusing the button and pressing a key.</p>
+            <button igxButton="outlined" [igxTooltipTarget]="triggersKeypress" [showTriggers]="'keypress'" [hideTriggers]="'keypress,blur'">Press a key</button>
+        </igx-card-content>
+    </igx-card>
+    <div #triggersKeypress="tooltip" igxTooltip>
+        I am shown on a keypress and will hide on a keypress or blur.
+    </div>
+
+    <igx-card>
+        <igx-card-header>
+            <h4 igxCardHeaderTitle>Custom events</h4>
+        </igx-card-header>
+        <igx-card-content>
+            <p>
+              The tooltip supports any DOM event, including custom events. Try entering a value in the input below, then "commit" it by either <strong>blurring</strong> the input or pressing <strong>Enter</strong>.
+            </p>
+            <igc-input outlined label="Username" [igxTooltipTarget]="triggersCustom" [showTriggers]="'igcChange'"></igc-input>
+        </igx-card-content>
+    </igx-card>
+    <div #triggersCustom="tooltip" igxTooltip>
+        Value changed!
+    </div>
+</div>
+```
+```scss
+.triggers-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+    gap: 0.6rem;
+    padding: 0.5rem 0rem 0rem 0.5rem;
+
+    & igx-card {
+        max-width: 320px;
+    }
+
+    & igx-card-header {
+        min-height: 3rem;
+    }
+
+    & igx-card-content {
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        gap: 0.5rem;
+        justify-content: space-between;
+    }
+
+    & igc-input {
+        --size: 36px;
+    }
+}
+
+.igx-tooltip {
+    max-width: 200px;
+}
+```
+
+> [!NOTE]
+> Setting [`showTriggers`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltiptargetdirective.html#showtriggers) and [`hideTriggers`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltiptargetdirective.html#hidetriggers) only has effect when interacting with the [`igxTooltipTarget`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltiptargetdirective.html), not the [`igxTooltip`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltipdirective.html) itself. Default event triggers for the [`igxTooltip`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltipdirective.html) are `pointerenter` and `pointerleave`.
 
 ### Overlay configuration
 
 Both the [`igxTooltip`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltipdirective.html) and [`igxTooltipTarget`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltiptargetdirective.html) directives use the [`IgxOverlayService`](overlay.md) to open and close the respective tooltip element.
 
-The [`igxTooltipTarget`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltiptargetdirective.html) directive exposes a [`positionSettings`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltiptargetdirective.html#positionSettings) property, which can be used to customize the animations of our tooltip, its position in the UI and a lot more! If this property is not set, then default position settings will be used.
+The [`igxTooltipTarget`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltiptargetdirective.html) directive exposes a [`positionSettings`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltiptargetdirective.html#positionsettings) property, which can be used to customize the animations of our tooltip, its position in the UI and a lot more! If this property is not set, then default position settings will be used.
 
 To further customize the tooltip, use the [`overlaySettings`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltiptargetdirective.html#overlaysettings) property (inherited from the [`igxToggleAction`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtoggleactiondirective.html)).
 
@@ -1095,7 +1254,7 @@ You can make the tooltip "sticky" using the [`sticky`](https://www.infragistics.
 <div #tooltipRef="tooltip" igxTooltip>Her name is Madelyn James</div>
 ```
 
-To customize the default close button, use the [`closeButtonTemplate`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltiptargetdirective.html#closebuttontemplate) property.
+To customize the default close button, use the [`closeButtonTemplate`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltiptargetdirective.html#closetemplate) property.
 
 ```html
 
@@ -1300,7 +1459,7 @@ To customize the arrow's position, you can override the `positionArrow(arrow: HT
 For example:
 
 ```ts
-export class CustomStrategy extends TooltipPositioningStrategy {
+export class CustomStrategy extends TooltipPositionStrategy {
   constructor(settings?: PositionSettings) {
     super(settings);
   }
@@ -1374,7 +1533,9 @@ Since the tooltip uses the [`IgxOverlayService`](overlay.md), in order for our c
 The last step is to **include** the component theme in our application.
 
 ```scss
-@include css-vars($dark-tooltip);
+:host {
+  @include tokens($dark-tooltip);
+}
 ```
 
 So now our styled tooltip should look like this:
@@ -1416,7 +1577,9 @@ $dark-tooltip: tooltip-theme(
   $border-radius: 6px,
 );
 
-@include css-vars($dark-tooltip);
+:host {
+    @include tokens($dark-tooltip);
+}
 ```
 
 ### Styling with Tailwind
@@ -1481,7 +1644,7 @@ Extra care should be taken in the following scenarios:
 
 | Limitation                          | Description|
 | ----------------------------------- | ---------- |
-| Custom position strategy with arrow | The [`igxTooltipTarget`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltiptargetdirective.html) directive uses the `TooltipPositionStrategy` to position the tooltip and arrow element. If a custom [`positionStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/overlaysettings.html#positioningStrategy) is used and [`hasArrow`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltiptargetdirective.html#hasarrow) is set to `true`, the custom strategy should extend the `TooltipPositionStrategy`. Otherwise, the arrow will not be displayed.|
+| Custom position strategy with arrow | The [`igxTooltipTarget`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltiptargetdirective.html) directive uses the [`TooltipPositionStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/tooltippositionstrategy.html) to position the tooltip and arrow element. If a custom [`positionStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/overlaysettings.html#positionstrategy) is used and [`hasArrow`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltiptargetdirective.html#hasarrow) is set to `true`, the custom strategy should extend the [`TooltipPositionStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/tooltippositionstrategy.html). Otherwise, the arrow will not be displayed.|
 
 
 ## API References

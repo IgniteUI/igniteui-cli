@@ -602,7 +602,7 @@ $custom-button-group: button-group-theme(
 );
 
 :host ::ng-deep {
-    @include css-vars($custom-button-group);
+    @include tokens($custom-button-group);
 }
 ```
 
@@ -828,7 +828,9 @@ $custom-select-theme: select-theme(
 The last step is to pass the custom radio theme in our application:
 
 ```scss
-@include css-vars($custom-select-theme);
+:host {
+    @include tokens($custom-select-theme);
+}
 ```
 
 ```typescript
@@ -890,7 +892,9 @@ $custom-select-theme: select-theme(
   $toggle-button-background: #57a5cd,
 );
 
-@include css-vars($custom-select-theme);
+:host {
+  @include tokens($custom-select-theme);
+}
 ```
 
 ### Styling with Tailwind

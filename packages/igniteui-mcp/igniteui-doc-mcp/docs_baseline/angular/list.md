@@ -1883,7 +1883,9 @@ Take a look at the [`list-theme`](https://www.infragistics.com/products/ignite-u
 The last step is to **include** the newly created themes.
 
 ```scss
-@include css-vars($my-list-theme);
+:host {
+  @include tokens($my-list-theme);
+}
 ```
 
 The result is the following:
@@ -1983,7 +1985,9 @@ $my-list-theme: list-theme(
     $background: #57a5cd
 );
 
-@include css-vars($my-list-theme);
+:host {
+    @include tokens($my-list-theme);
+}
 ```
 
 For full list of parameters that you can change for the list component please refer to: [IgxListComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-list-theme)

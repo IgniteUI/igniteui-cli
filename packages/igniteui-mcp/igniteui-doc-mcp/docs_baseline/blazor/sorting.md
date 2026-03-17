@@ -107,6 +107,8 @@ You can also control whether the sort operations for string columns should be ca
 
 The Grid Lite supports both single and multi-column sorting. Multi-column is enabled by default and can be configured through the [`IgbSortingOptions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSortingOptions.html) property of the grid. The [`Mode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSortingOptions.html#IgniteUI_Blazor_Controls_IgbSortingOptions_Mode) property accepts `GridLiteSortingMode.Single` or `GridLiteSortingMode.Multiple` as values.
 
+<!-- end: Blazor -->
+
 ```razor
 // Enable single-column sorting
 grid.SortingOptions = new IgbGridLiteSortingOptions { Mode = GridLiteSortingMode.Single };
@@ -277,6 +279,8 @@ The Grid Lite exposes two main approaches for applying sort operations from its 
 
 The `Sort()` method accepts either a single expression or an array of sort expression and then sorts the grid data based on those expressions.
 
+<!-- end: Blazor -->
+
 ```razor
 // Single
 await grid.Sort(new IgbGridLiteSortingExpression { Key = "Price", Direction = GridLiteSortingDirection.Descending });
@@ -291,6 +295,8 @@ await grid.Sort(new IgbGridLiteSortingExpression[]
 
 The `ClearSort()` method, as the name implies, clears the sort state of a single column or the whole grid component, depending
 on the passed arguments.
+
+<!-- end: Blazor -->
 
 ```razor
 // Clear the sort state for the `Price` column.
@@ -322,6 +328,10 @@ private IgbGridLiteSortingExpression[] sortState = new[]
 
 <IgbGridLite SortingExpressions="sortState" />
 ```
+
+<!-- end: Blazor -->
+
+It can be used to get the current sort state of the component and do additional processing depending on another state in your application.
 
 ```razor
 var state = grid.SortingExpressions;

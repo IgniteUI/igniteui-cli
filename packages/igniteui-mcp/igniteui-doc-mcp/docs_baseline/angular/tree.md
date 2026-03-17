@@ -654,7 +654,9 @@ $custom-tree-theme: tree-theme(
 The last step is to include the component's theme.
 
 ```scss
-@include css-vars($custom-tree-theme);
+:host {
+  @include tokens($custom-tree-theme);
+}
 ```
 
 ### Demo
@@ -702,7 +704,9 @@ $custom-tree-theme: tree-theme(
   $background: #ecaa53,
 );
 
-@include css-vars($custom-tree-theme);
+:host {
+    @include tokens($custom-tree-theme);
+}
 ```
 
 ### Styling with Tailwind

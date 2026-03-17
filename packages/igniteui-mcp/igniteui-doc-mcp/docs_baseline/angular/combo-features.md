@@ -300,7 +300,7 @@ export class ComboDemo {
 
 <div class="divider--half"></div>
 
-## API Summary
+## API References
 
 <div class="divider--half"></div>
 

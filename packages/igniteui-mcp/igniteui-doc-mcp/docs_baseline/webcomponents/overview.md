@@ -26,6 +26,8 @@ Our free, open-source Web Components Grid Lite comes with the following column-b
 
 ## Installation and Setup
 
+<!-- WebComponents -->
+
 ### Installation
 
 To install Grid Lite, go to the root folder of your project (where `package.json` is located) and run the following command using npm:
@@ -40,9 +42,9 @@ Or using yarn:
 yarn add igniteui-grid-lite
 ```
 
-### Using the Grid Lite in your Web Components code
+<!-- end: WebComponents -->
 
-In the file where you want to use Grid Lite, import and register it before your component class or function is declared:
+### Using the Grid Lite in your Web Components code
 
 <!-- WebComponents -->
 

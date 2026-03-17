@@ -33,3 +33,5 @@ yarn-error.log*
 
 # API MCP - Generated documentation
 igniteui-api-mcp/docs/
+
+tmp/

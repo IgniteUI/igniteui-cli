@@ -757,7 +757,125 @@ The sample belows uses has significant amount of data, in order to increase the 
 
 <!-- NOTE this sample is differed -->
 
+```typescript
+export class AthletesDataItem {
+    public constructor(init: Partial<AthletesDataItem>) {
+        Object.assign(this, init);
+    }
 
+    public Id: number;
+    public Avatar: string;
+    public Position: string;
+    public Name: string;
+    public AthleteNumber: number;
+    public BeatsPerMinute: number;
+    public TopSpeed: number;
+    public Registered: string;
+    public TrackProgress: number;
+    public CountryFlag: string;
+    public CountryName: string;
+
+}
+export class AthletesData extends Array<AthletesDataItem> {
+    public constructor(items: Array<AthletesDataItem> | number = -1) {
+        if (Array.isArray(items)) {
+            super(...items);
+        } else {
+            const newItems = [
+                new AthletesDataItem({ Id: 100, Avatar: `https://dl.infragistics.com/x/img/people/women/20.png`, Position: `current`, Name: `Alexis Walker`, AthleteNumber: 43183, BeatsPerMinute: 103, TopSpeed: 5.8, Registered: `2017-08-07T10:35:06-03:00`, TrackProgress: 45, CountryFlag: `https://dl.infragistics.com/x/img/flags/GH.png`, CountryName: `Ghana` }),
+                new AthletesDataItem({ Id: 101, Avatar: `https://dl.infragistics.com/x/img/people/women/31.png`, Position: `down`, Name: `Lavínia Silva`, AthleteNumber: 33994, BeatsPerMinute: 93, TopSpeed: 5.6, Registered: `2017-03-22T08:55:46-02:00`, TrackProgress: 45, CountryFlag: `https://dl.infragistics.com/x/img/flags/NO.png`, CountryName: `Norway` }),
+                new AthletesDataItem({ Id: 105, Avatar: `https://dl.infragistics.com/x/img/people/men/13.png`, Position: `down`, Name: `Samu Hokkanen`, AthleteNumber: 22469, BeatsPerMinute: 106, TopSpeed: 5.5, Registered: `2017-06-29T04:58:27-03:00`, TrackProgress: 25, CountryFlag: `https://dl.infragistics.com/x/img/flags/AZ.png`, CountryName: `Azerbaijan` }),
+                // ... 182 more items
+            ];
+            super(...newItems.slice(0));
+        }
+    }
+}
+```
+```css
+/* shared styles are loaded from: */
+/* https://dl.infragistics.com/x/css/samples/shared.v8.css */
+```
+```tsx
+import React, { useEffect, useMemo, useState } from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import "igniteui-react-grids/grids/themes/light/bootstrap.css";
+import { AthletesData, AthletesDataItem } from "./AthletesData";
+
+import { IgrButton } from "igniteui-react";
+import {
+  IgrGridToolbar,
+  IgrGridToolbarActions,
+  IgrGridToolbarExporter,
+  IgrGridToolbarTitle,
+  IgrGrid,
+  IgrColumn,
+} from "igniteui-react-grids";
+
+
+export default function GridDataExportingIndicatorSample() {
+  const athletesData = useMemo(() => new AthletesData(), []);
+  const [localData, setLocalData] = useState([]);
+  const [showProgress, setShowProgress] = useState(false);
+  
+  useEffect(() => {
+    const data: AthletesDataItem[] = [];
+    let uniqueId = 0;
+    for (let i = 0; i < 2000; i ++) {
+      for (let c = 0; c < athletesData.length; c++) {
+        data.push({ ...athletesData[c], Id: uniqueId++ });
+      }
+    }
+    setLocalData(data);
+  }, [athletesData]);
+  
+
+  const setupProgressVisibility = () => {
+    setShowProgress(true);
+
+    setTimeout(() => {
+      setShowProgress(false);
+    }, 5000);
+  };
+
+  return (
+    <div className="container sample ig-typography">
+      <div className="container fill">
+        <IgrGrid
+          data={localData}
+          autoGenerate={false}
+          primaryKey="Id"
+        >
+          <IgrGridToolbar key="toolbar" showProgress={showProgress}>
+            <IgrGridToolbarTitle key="toolbarTitle">
+              <span key="toolbarTitleText">Grid Toolbar</span>
+            </IgrGridToolbarTitle>
+            <IgrButton key="btn" onClick={setupProgressVisibility}>
+              <span key="simulate">Simulate long running operation</span>
+            </IgrButton>
+            <IgrGridToolbarActions key="toolbarActions">
+              <IgrGridToolbarExporter key="toolbarExporter"></IgrGridToolbarExporter>
+            </IgrGridToolbarActions>
+          </IgrGridToolbar>
+
+          <IgrColumn field="Id" header="ID" dataType="number" />
+          <IgrColumn field="Name" header="Name" />
+          <IgrColumn field="Position" header="Position" />
+          <IgrColumn field="AthleteNumber" header="Athlete Number" dataType="number" />
+          <IgrColumn field="BeatsPerMinute" header="Beats Per Minute" dataType="number" />
+          <IgrColumn field="TopSpeed" header="Top Speed" dataType="number" />
+          <IgrColumn field="CountryName" header="Country" />
+        </IgrGrid>
+      </div>
+    </div>
+  );
+}
+
+// rendering above component in the React DOM
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<GridDataExportingIndicatorSample />);
+```
 
 
 <!-- WebComponents, Blazor, React -->

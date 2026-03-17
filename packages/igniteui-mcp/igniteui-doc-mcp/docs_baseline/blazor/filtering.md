@@ -146,10 +146,12 @@ public class IgbGridLiteFilterExpression
 
 <!-- Blazor -->
 
-The Grid Lite exposes two main approaches for applying filter operations from its API. Either through the `GridLite.Filter()`/`GridLite.ClearFilter()` methods or through the `Grid.Lite.FilterExpressions` property.
+The Grid Lite exposes two main approaches for applying filter operations from its API. Either through the `GridLite.Filter()`/`GridLite.ClearFilter()` methods or through the `GridLite.FilterExpressions` property.
 
 The `Filter()` method accepts either a single expression or an array of filter expression and then filters the grid data
 based on those expressions.
+
+<!-- end: Blazor -->
 
 ```razor
 // Single
@@ -164,6 +166,8 @@ await grid.Filter(new IgbGridLiteFilterExpression[]
 <!-- Blazor -->
 
 The `ClearFilter()` method, as the name implies, clears the filter state of a single column or the whole grid component, depending on the passed arguments.
+
+<!-- end: Blazor -->
 
 ```razor
 // Clear the filter state for the `Age` column.
@@ -194,11 +198,23 @@ private IgbGridLiteFilterExpression[] filterState = new[]
 
 <!-- end: Blazor -->
 
+It can be used to get the current filter state of the component and do additional processing depending on another state in your application.
+
+```razor
+var state = grid.FilterExpressions;
+// Save the current filter state
+SaveUserFilterState(state);
+```
+
+## Events
+
 <!-- Blazor -->
 
 When a filter operation is performed through the UI, the component raises `Filtering` and `Filtered` events. The `Filtering` event is cancellable and if cancelled will prevent the current filter operation.
 
 After the grid applies the new filter state, a `Filtered` event is raised. It contains the filter state for the column which was the target of the operation and it is not cancellable.
+
+<!-- end: Blazor -->
 
 ```razor
 <IgbGridLite Filtering="OnFiltering" Filtered="OnFiltered" />

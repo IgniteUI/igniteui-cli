@@ -1537,7 +1537,9 @@ $custom-calendar-theme: calendar-theme(
 The last step is to pass the custom calendar theme:
 
 ```scss
- @include css-vars($custom-calendar-theme);
+:host {
+    @include tokens($custom-calendar-theme);
+}
 ```
 
 ```typescript
@@ -1721,13 +1723,13 @@ igx-calendar {
 // :host {
 //     ::ng-deep {
 //         .igx-days-view__date--weekend:not(.igx-days-view__date--inactive) {
-//             @include css-vars($custom-calendar-theme-weekend);
+//             @include tokens($custom-calendar-theme-weekend);
 //         }
 //     }
 // }
 
 // igx-calendar {
-//     @include css-vars($custom-calendar-theme);
+//     @include tokens($custom-calendar-theme);
 // }
 ```
 

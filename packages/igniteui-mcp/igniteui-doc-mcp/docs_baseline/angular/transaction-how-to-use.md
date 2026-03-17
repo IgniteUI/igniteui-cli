@@ -26,13 +26,14 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
 import { WISHLIST, WishlistItem } from '../data';
 import { NgClass } from '@angular/common';
 import { TransactionBasePipe } from '../pipes/transaction-base.pipe';
+import { IgxButtonDirective } from 'igniteui-angular/directives';
 
 @Component({
     providers: [IgxTransactionService],
     selector: 'app-transaction-base',
     styleUrls: ['./transaction-base.component.scss'],
     templateUrl: 'transaction-base.component.html',
-    imports: [IgxCardComponent, IgxListComponent, IgxListItemComponent, NgClass, IgxListLineTitleDirective, IgxListLineSubTitleDirective, IgxIconComponent, IgxListActionDirective, TransactionBasePipe]
+    imports: [IgxButtonDirective, IgxCardComponent, IgxListComponent, IgxListItemComponent, NgClass, IgxListLineTitleDirective, IgxListLineSubTitleDirective, IgxIconComponent, IgxListActionDirective, TransactionBasePipe]
 })
 export class TransactionBaseComponent {
     transactions = inject<IgxTransactionService<Transaction, State>>(IgxTransactionService);

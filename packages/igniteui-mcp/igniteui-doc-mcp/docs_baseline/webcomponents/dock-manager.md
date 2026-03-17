@@ -45,12 +45,12 @@ npm install --save igniteui-dockmanager
 
 <!-- Angular, WebComponents -->
 
-Then it is necessary to import and call the **defineCustomElements()** function:
+Then it is necessary to import and call the **defineComponents()** function:
 
 ```ts
-import { defineCustomElements } from 'igniteui-dockmanager/loader';
+import { defineComponents, IgcDockManagerComponent } from 'igniteui-dockmanager';
 
-defineCustomElements();
+defineComponents(IgcDockManagerComponent);
 ```
 
 <!-- end: Angular, React, WebComponents -->

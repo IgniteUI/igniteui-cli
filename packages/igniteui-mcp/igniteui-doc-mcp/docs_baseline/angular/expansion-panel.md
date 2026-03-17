@@ -491,11 +491,13 @@ $custom-panel-theme: expansion-panel-theme(
 
 ### Applying the Component Theme
 
-Now to apply the component theme all that's left is to include `css-vars` mixin and pass the `$custom-panel-theme` map.
+Now to apply the component theme all that's left is to include `tokens` mixin and pass the `$custom-panel-theme` map.
 
 ```scss
 // In expansion-styling.component.scss
-@include css-vars($custom-panel-theme);
+:host {
+  @include tokens($custom-panel-theme);
+}
 ```
 
 To find out more on how you can use Ignite UI theming engine [`click here`](themes/sass/component-themes.md)
@@ -555,8 +557,9 @@ $custom-panel-theme: expansion-panel-theme(
   $header-icon-color: #ffd351,
 );
 
-// Apply the custom themes to the components mixins.
-@include css-vars($custom-panel-theme);
+:host {
+    @include tokens($custom-panel-theme);
+}
 ```
 
 ### Styling with Tailwind

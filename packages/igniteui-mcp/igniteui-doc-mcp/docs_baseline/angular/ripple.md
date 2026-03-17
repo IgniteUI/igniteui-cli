@@ -284,7 +284,9 @@ $custom-ripple-theme: ripple-theme(
 The next step is to pass the custom ripple theme:
 
 ```scss
-@include css-vars($custom-ripple-theme);
+:host {
+  @include tokens($custom-ripple-theme);
+}
 ```
 
 > [!NOTE]
@@ -335,7 +337,9 @@ $custom-ripple-theme: ripple-theme(
   $color: #383779,
 );
 
-@include css-vars($custom-ripple-theme);
+:host {
+  @include tokens($custom-ripple-theme);
+}
 ```
 
 ## API References

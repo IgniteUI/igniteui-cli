@@ -1041,7 +1041,9 @@ If we take a look at the [`tabs-theme`](https://www.infragistics.com/products/ig
 The last step is to **include** the component theme in our application.
 
 ```scss
-@include css-vars($dark-tabs);
+:host {
+  @include tokens($dark-tabs);
+}
 ```
 
 ### Demo
@@ -1099,7 +1101,9 @@ $dark-tabs: tabs-theme(
   $item-active-color: #F4D45C,
 );
 
-@include css-vars($dark-tabs);
+:host {
+  @include tokens($dark-tabs);
+}
 ```
 
 ### Styling with Tailwind

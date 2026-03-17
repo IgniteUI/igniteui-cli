@@ -13,6 +13,69 @@ _tocName: Changelog
 
 All notable changes for each version of Ignite UI for React are documented on this page.
 
+## **19.5.1 (February 2026)**
+
+### igniteui-react
+
+#### New Features
+
+- #### AI-Assisted Development - Copilot Skills
+  - Four end-user skills are now shipped with the `igniteui-react` package under the `skills/` directory providing step-by-step guidance to GitHub Copilot and other LLM agents for common tasks:
+    - **igniteui-wc-choose-components** - Identify the right component for a given UI pattern.
+    - **igniteui-wc-integrate-with-framework** - Set up and use components in React, Angular, Vue, or vanilla JS.
+    - **igniteui-wc-customize-component-theme** - Apply custom styles via CSS custom properties, parts, and the theming system.
+    - **igniteui-wc-optimize-bundle-size** - Reduce production bundle size through selective imports and lazy loading.
+- #### Chat
+  - `adoptRootStyles` can now be toggled on/off at runtime.
+
+#### Breaking Changes
+
+- #### Themes
+  - Changed global prefixes for CSS custom properties for component themes to align with other Ignite UI component libraries.
+
+- #### Chat
+  - Removed the `typingIndicator` template renderer. Use the `typing-indicator` slot instead.
+
+- #### Tooltip
+  - Removed the `disableArrow` deprecated property.
+
+- #### Library
+
+  - Minimum Node version required is now >= 22.
+
+    #### Bug Fixes
+
+| Bug Number | Control | Description |
+|------------|---------|-------------|
+|[2033](https://github.com/IgniteUI/igniteui-webcomponents/pull/2033)|Carousel|Context instantiation in Blazor|
+|[2085](https://github.com/IgniteUI/igniteui-webcomponents/pull/2085)|Combo|Correct cursor style over non input parts|
+|[2085](https://github.com/IgniteUI/igniteui-webcomponents/pull/2085)|Textarea|Correct cursor style over non input parts|
+
+### igniteui-react-grids (Grids)
+
+- [`grid`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_grids.igrdatagridcelleventargs.html#grid), [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html), [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html), [`IgrPivotGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrpivotgrid.html)
+  - Improved performance by dynamically adjusting the scroll throttle based on the data displayed in grid.
+
+**Breaking Changes**
+
+- [`grid`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_grids.igrdatagridcelleventargs.html#grid), [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html), [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html), [`IgrPivotGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrpivotgrid.html)
+  - Original `data` array mutations (like adding/removing/moving records in the original array) are no longer detected automatically. Components need an array reference change for the change to be detected.
+
+**Localization(i18n)**
+
+- [`grid`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_grids.igrdatagridcelleventargs.html#grid), [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html), [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html), [`IgrPivotGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrpivotgrid.html), [`IgrCombo`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html), `DatePicker`, [`IgrDateRangePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html), [`IgrCalendar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendar.html), [`IgrCarousel`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcarousel.html), [`IgrChip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrchip.html), [`IgrInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html), [`IgrTree`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtree.html)
+  - New `Intl` implementation for the grid components that format and render data like dates and numbers. Updated `Intl` implementation for [`IgrCalendar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendar.html), `DatePicker`, and [`IgrDateRangePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html).
+  - New localization implementation for the currently supported languages for all components that have resource strings in the currently supported languages.
+  - New public localization API and package named `igniteui-i18n-resources` containing the new resources that are used in conjunction.
+
+**PDF export**
+
+- Added PDF export functionality allowing users to export grid data to PDF format.
+
+**Popover API**
+
+- Dropdown menus and dialogs are now using HTML Popover API to provide better positioning and accessibility.
+
 ## **19.3.2 (February 2026)**
 
 ### Enhancements

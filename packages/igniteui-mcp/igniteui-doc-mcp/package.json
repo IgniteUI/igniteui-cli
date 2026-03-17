@@ -8,7 +8,7 @@
     "igniteui-mcp": "./dist/index.js"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && node -e \"const fs=require('fs'),p=require('path');const s=p.resolve('db/igniteui-docs.db'),d=p.resolve('dist/igniteui-docs.db');if(fs.existsSync(s)){fs.copyFileSync(s,d);console.log('Copied db/igniteui-docs.db → dist/')}else{console.warn('db/igniteui-docs.db not found, skipping copy')}\"",
     "start": "node dist/index.js",
     "build:db": "npx tsx scripts/build-db.ts",
     "inspector": "npx @modelcontextprotocol/inspector dist/index.js",
@@ -17,9 +17,9 @@
     "clear:react": "npx tsx -e \"import{rmSync}from'fs';['docs_processing','docs_prepeared','docs_final'].forEach(d=>{rmSync('dist/'+d+'/react',{recursive:true,force:true})})\"",
     "clear:blazor": "npx tsx -e \"import{rmSync}from'fs';['docs_processing','docs_prepeared','docs_final'].forEach(d=>{rmSync('dist/'+d+'/blazor',{recursive:true,force:true})})\"",
     "clear:webcomponents": "npx tsx -e \"import{rmSync}from'fs';['docs_processing','docs_prepeared','docs_final'].forEach(d=>{rmSync('dist/'+d+'/webcomponents',{recursive:true,force:true})})\"",
-    "build:xplat-blazor": "cd common/igniteui-xplat-docs && npm run buildBlazor",
-    "build:xplat-react": "cd common/igniteui-xplat-docs && npm run buildReact",
-    "build:xplat-wc": "cd common/igniteui-xplat-docs && npm run buildWC",
+    "build:xplat-blazor": "cd common/igniteui-xplat-docs && npm install --silent && npm run buildBlazor",
+    "build:xplat-react": "cd common/igniteui-xplat-docs && npm install --silent && npm run buildReact",
+    "build:xplat-wc": "cd common/igniteui-xplat-docs && npm install --silent && npm run buildWC",
     "export:angular": "npx tsx scripts/export-angular-docs.ts",
     "export:react": "npx tsx scripts/export-react-docs.ts --skip-build",
     "export:blazor": "npx tsx scripts/export-blazor-docs.ts --skip-build",
@@ -69,13 +69,14 @@
     "js-yaml": "^4.1.1",
     "octokit": "^5.0.5",
     "openai": "^6.22.0",
+    "sql.js": "^1.14.1",
     "zod": "^3.25.1"
   },
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.13",
     "@types/js-yaml": "^4.0.9",
-    "@types/tmp": "^0.2.6",
     "@types/node": "^25.2.2",
+    "@types/tmp": "^0.2.6",
     "better-sqlite3": "^12.6.2",
     "tsx": "^4.21.0",
     "typescript": "^5.8.3"

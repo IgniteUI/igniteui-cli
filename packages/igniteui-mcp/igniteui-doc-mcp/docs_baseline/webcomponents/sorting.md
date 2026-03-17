@@ -24,11 +24,11 @@ The Grid Lite supports sorting operations on its data source. Data sorting is co
 </igc-grid-lite>
 ```
 
-<!-- React, WebComponents -->
+<!-- WebComponents -->
 
 You can also control whether the sort operations for string columns should be case sensitive by using the `sortingCaseSensitive` property or `sorting-case-sensitive` attribute.
 
-<!-- end: React, WebComponents -->
+<!-- end: WebComponents -->
 
 <!-- WebComponents -->
 
@@ -40,7 +40,7 @@ You can also control whether the sort operations for string columns should be ca
 ></igc-grid-lite-column>
 ```
 
-<!-- React, WebComponents -->
+<!-- WebComponents -->
 
 For custom comparison logic, set the `sortConfiguration` property with a `comparer` function:
 
@@ -55,7 +55,7 @@ column.sortConfiguration = {
 };
 ```
 
-<!-- end: React, WebComponents -->
+<!-- end: WebComponents -->
 
 ```typescript
 export type UserSimple = {
@@ -212,6 +212,8 @@ igc-grid-lite {
 The Grid Lite supports both single and multi-column sorting. Multi-column is enabled by default and can be configured through the `sortingOptions` property of the grid. The `mode` property accepts `'single'` or `'multiple'` as values.
 
 <!-- end: React, WebComponents -->
+
+<!-- WebComponents -->
 
 ```typescript
 // Enable single-column sorting
@@ -440,6 +442,8 @@ The `sort()` method accepts either a single expression or an array of sort expre
 
 <!-- end: React, WebComponents -->
 
+<!-- WebComponents -->
+
 ```typescript
 // Single
 grid.sort({ key: 'price', direction: 'descending' });
@@ -458,6 +462,8 @@ on the passed arguments.
 
 <!-- end: React, WebComponents -->
 
+<!-- WebComponents -->
+
 ```typescript
 // Clear the sort state for the `price` column.
 grid.clearSort('price');
@@ -475,7 +481,7 @@ sort state in the grid, but the most useful property is the ability to set initi
 
 <!-- end: React, WebComponents -->
 
-<!-- React, WebComponents -->
+<!-- WebComponents -->
 
 For example here is a Lit-based sample:
 
@@ -492,9 +498,11 @@ For example here is a Lit-based sample:
 }
 ```
 
-<!-- end: React, WebComponents -->
+<!-- end: WebComponents -->
 
 It can be used to get the current sort state of the component and do additional processing depending on another state in your application.
+
+<!-- WebComponents -->
 
 ```typescript
 const state = grid.sortingExpressions;
@@ -510,10 +518,14 @@ When a sorting operation is performed through the UI, the component emits a cust
 
 After the grid applies the new sorting state, a `sorted` event is emitted. It contains the expression which was used in the last sort operation and it is not cancellable.
 
+<!-- WebComponents -->
+
 ```typescript
 grid.addEventListener('sorting', (event: CustomEvent<SortingExpression<T>>) => { ... });
 grid.addEventListener('sorted', (event: CustomEvent<SortingExpression<T>>) => { ... });
 ```
+
+<!-- end: WebComponents -->
 
 <!-- end: React, WebComponents -->
 
@@ -712,9 +724,13 @@ export type DataPipelineParams<T extends object> = {
 };
 ```
 
+<!-- WebComponents -->
+
 ```typescript
 grid.dataPipelineConfiguration = { sort: (params: DataPipelineParams<T>) => T[] | Promise<T[]> };
 ```
+
+<!-- end: WebComponents -->
 
 <!-- End: React, WebComponents -->
 

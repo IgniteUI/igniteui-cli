@@ -471,7 +471,9 @@ $custom-checkbox-theme: checkbox-theme(
 Finally, **include** the custom theme in your application:
 
 ```scss
-@include css-vars($custom-checkbox-theme);
+:host {
+    @include tokens($custom-checkbox-theme);
+}
 ```
 
 In the sample below, you can see how using the checkbox component with customized CSS variables allows you to create a design that visually resembles the checkbox used in the [`SAP UI5`](https://ui5.sap.com/#/entity/sap.m.CheckBox/sample/sap.m.sample.CheckBox) design system.
@@ -530,9 +532,10 @@ igx-checkbox:hover {
 //     $empty-color: #131e29,
 //     $border-radius: rem(4px),
 // );
-//
-// @include css-vars($custom-checkbox-theme);
-//
+
+// :host {
+//     @include tokens($custom-checkbox-theme);
+// }
 ```
 
 ### Styling with Tailwind

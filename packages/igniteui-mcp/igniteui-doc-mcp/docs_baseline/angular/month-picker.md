@@ -293,7 +293,9 @@ $my-calendar-theme: calendar-theme(
 The next step is to **include** the component theme in our application.
 
 ```scss
-@include css-vars($my-calendar-theme);
+:host {
+  @include tokens($my-calendar-theme);
+}
 ```
 
 After everything's done, your component should look like this:
@@ -326,7 +328,9 @@ $my-calendar-theme: calendar-theme(
   $content-background: #57a5cd,
 );
 
-@include css-vars($my-calendar-theme);
+:host {
+  @include tokens($my-calendar-theme);
+}
 ```
 
 ### Styling with Tailwind

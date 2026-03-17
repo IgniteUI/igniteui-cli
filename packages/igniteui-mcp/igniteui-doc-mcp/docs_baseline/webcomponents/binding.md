@@ -43,7 +43,7 @@ If the grid has `autoGenerate` enabled, it will "*infer*" the new column configu
 
 <!-- end: React, WebComponents -->
 
-<!-- React, WebComponents -->
+<!-- WebComponents -->
 
 ```typescript
 grid.autoGenerate = true;
@@ -52,7 +52,7 @@ grid.autoGenerate = true;
 grid.data = [];
 ```
 
-<!-- end: React, WebComponents -->
+<!-- end: WebComponents -->
 
 <!-- React, WebComponents -->
 

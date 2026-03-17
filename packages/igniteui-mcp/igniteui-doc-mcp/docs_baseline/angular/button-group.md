@@ -657,7 +657,9 @@ As seen, the `button-group-theme` exposes some useful parameters for basic styli
 The last step is to include the component's theme.
 
 ```scss
-@include css-vars($custom-button-group);
+:host {
+  @include tokens($custom-button-group);
+}
 ```
 
 ### Demo
@@ -695,7 +697,9 @@ $custom-button-group: button-group-theme(
   $item-background: #57a5cd,
 );
 
-@include css-vars($custom-button-group);
+:host {
+    @include tokens($custom-button-group);
+}
 ```
 
 ### Styling with Tailwind

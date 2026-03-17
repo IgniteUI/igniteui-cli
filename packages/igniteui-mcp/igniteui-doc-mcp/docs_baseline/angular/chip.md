@@ -920,7 +920,9 @@ $custom-chip-theme: chip-theme(
 Finally, **include** the custom theme in your application:
 
 ```scss
-@include css-vars($custom-chip-theme);
+:host {
+  @include tokens($custom-chip-theme);
+}
 ```
 
 In the sample below, you can see how using the chip component with customized CSS variables allows you to create a design that visually resembles the chip used in the [`Ant`](https://ant.design/components/tag?theme=light#tag-demo-icon) design system.
@@ -1031,7 +1033,9 @@ igx-chip {
 //     $border-radius: rem(5px)
 // );
 
-// @include css-vars($custom-chip-theme)
+// :host {
+//     @include tokens($custom-chip-theme);
+// }
 ```
 
 ### Styling with Tailwind
@@ -1086,7 +1090,7 @@ igx-chip {
 }
 ```
 
-Or you can use the universal `--igx-chip-size` variable to target all instances:
+Or you can use the universal `--ig-chip-size` variable to target all instances:
 
 ```html
 <div class="my-app">
@@ -1096,7 +1100,7 @@ Or you can use the universal `--igx-chip-size` variable to target all instances:
 
 ```scss
 .my-app {
-  --igx-chip-size: 50px;
+  --ig-chip-size: 50px;
 }
 ```
 

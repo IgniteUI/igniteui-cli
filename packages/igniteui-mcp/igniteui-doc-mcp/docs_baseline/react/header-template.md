@@ -24,9 +24,9 @@ By default the column uses the `field` property for label text. To customize the
 
 ```tsx
 return (
-  <igc-grid-lite>
-    <igc-grid-lite-column field="price" header="Price per item"></igc-grid-lite-column>
-  </igc-grid-lite>
+  <IgrGridLite>
+    <IgrGridLiteColumn field="price" header="Price per item"></IgrGridLiteColumn>
+  </IgrGridLite>
 );
 ```
 
@@ -39,17 +39,24 @@ return (
 
 Similar to the cell template, you can also pass a custom template renderer and create your own DOM inside the column header.
 
-<!-- React, WebComponents -->
+<!-- End: WebComponents -->
 
-```typescript
-import { html } from 'lit';
+<!-- React -->
+
+```tsx
+const ratingHeaderTemplate = (ctx: IgrHeaderContext) => (
+  <h3>{"⭐ Rating ⭐"}</h3>
+);
 
 
-const column = document.querySelector('igc-grid-lite-column');
-column.headerTemplate = () => html`<h3>⭐ Rating ⭐</h3>`;
+return (
+  <IgrGridLite>
+    <IgrGridLiteColumn field="rating" headerTemplate={ratingHeaderTemplate}></IgrGridLiteColumn>
+  </IgrGridLite>
+);
 ```
 
-<!-- End: React, WebComponents -->
+<!-- End: React -->
 
 <!-- End: Blazor -->
 
@@ -200,47 +207,75 @@ igc-grid-lite {
 }
 ```
 ```tsx
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { GridLiteDataService, User } from './GridLiteDataService';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { GridLiteDataService, ProductInfo } from "./GridLiteDataService";
+import { IgrRating } from "igniteui-react";
+import {
+  IgrGridLite,
+  IgrGridLiteColumn,
+  type IgrCellContext,
+  type IgrHeaderContext,
+} from "igniteui-react/grid-lite";
 
-// Import the web component
-import { IgcGridLite } from 'igniteui-grid-lite';
 import "igniteui-webcomponents/themes/light/bootstrap.css";
 import "./index.css";
 
-// Register components
-IgcGridLite.register();
+const ratingHeaderTemplate = (_ctx: IgrHeaderContext) => (
+  <h3>{"\u2B50 Rating \u2B50"}</h3>
+);
+
+const ratingCellTemplate = (ctx: IgrCellContext) => (
+  <IgrRating readOnly step={0.01} max={5} value={ctx.value}></IgrRating>
+);
 
 export default function Sample() {
-  const gridRef = React.useRef<any>(null);
+  const [data, setData] = React.useState<ProductInfo[]>([]);
 
   React.useEffect(() => {
-    if (gridRef.current) {
-      const dataService = new GridLiteDataService();
-      const data: User[] = dataService.generateUsers(50);
-      gridRef.current.data = data;
-    }
+    const dataService = new GridLiteDataService();
+    const items: ProductInfo[] = dataService.generateProducts(50);
+    setData(items);
   }, []);
 
   return (
     <div className="container sample ig-typography">
       <div className="grid-lite-wrapper">
-        <igc-grid-lite ref={gridRef} id="grid-lite">
-          <igc-grid-lite-column field="id" header="🆔 ID" width="150px"></igc-grid-lite-column>
-          <igc-grid-lite-column field="firstName" header="👤 First Name"></igc-grid-lite-column>
-          <igc-grid-lite-column field="lastName" header="👤 Last Name"></igc-grid-lite-column>
-          <igc-grid-lite-column field="age" header="🎂 Age" data-type="number" width="100px"></igc-grid-lite-column>
-          <igc-grid-lite-column field="email" header="📧 Email"></igc-grid-lite-column>
-        </igc-grid-lite>
+        <IgrGridLite id="grid-lite" data={data}>
+          <IgrGridLiteColumn
+            field="name"
+            header="Product Name"
+          ></IgrGridLiteColumn>
+          <IgrGridLiteColumn
+            field="price"
+            header="Price (€)"
+            dataType="number"
+          ></IgrGridLiteColumn>
+          <IgrGridLiteColumn
+            field="sold"
+            header="Units Sold"
+            dataType="number"
+          ></IgrGridLiteColumn>
+          <IgrGridLiteColumn
+            field="total"
+            header="Total Revenue"
+            dataType="number"
+          ></IgrGridLiteColumn>
+          <IgrGridLiteColumn
+            field="rating"
+            dataType="number"
+            headerTemplate={ratingHeaderTemplate}
+            cellTemplate={ratingCellTemplate}
+          ></IgrGridLiteColumn>
+        </IgrGridLite>
       </div>
     </div>
   );
 }
 
 // rendering above component in the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Sample/>);
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<Sample />);
 ```
 
 
