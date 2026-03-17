@@ -68,13 +68,6 @@ export function createSearchApiHandler(docLoader: ApiDocLoader) {
   return async (params: SearchApiParams): Promise<CallToolResult> => {
     const { platform, query } = params;
 
-    if (!query) {
-      return {
-        content: [{ type: "text", text: "Search query is required." }],
-        isError: true,
-      };
-    }
-
     const docs = docLoader.search({ platform });
     const hits = searchApiDocs(docs, query, 10);
 

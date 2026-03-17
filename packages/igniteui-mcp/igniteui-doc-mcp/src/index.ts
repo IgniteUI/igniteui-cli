@@ -60,13 +60,13 @@ const server = new McpServer(
   { name: "igniteui-mcp-server", version: "1.0.0" },
   {
     instructions:
-      "Unified Ignite UI MCP server — documentation, GitHub API, and CLI scaffolding for 4 frameworks. " +
+      "Unified Ignite UI MCP server — documentation, API reference, and CLI scaffolding for 4 frameworks. " +
       "Most tools require a 'framework' parameter. Detect the framework from the user's code or project: " +
       "Angular → Igx prefix (IgxGrid), package 'igniteui-angular', .ts+.html files. " +
       "React → Igr prefix (IgrGrid), package 'igniteui-react', .tsx files. " +
       "Blazor → Igb prefix (IgbGrid), package 'IgniteUI.Blazor', .razor files. " +
       "Web Components → Igc prefix + Component suffix (IgcGridComponent), package 'igniteui-webcomponents', .ts+.html with custom elements. " +
-      "Use get_project_framework to auto-detect. If the framework is unclear from context, ask the user.",
+      "If the framework is unclear from context, ask the user.",
   }
 );
 
@@ -76,6 +76,7 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
     {
       description:
         "List available Ignite UI component docs. Filter by framework and optionally by keyword match against filename, component, toc_name, keywords, summary.",
+      annotations: { readOnlyHint: true, openWorldHint: false },
       inputSchema: {
         framework: FRAMEWORK_ENUM,
         filter: z
@@ -97,6 +98,7 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
     {
       description:
         "Return the full markdown content of a specific Ignite UI component doc. Requires framework and doc name.",
+      annotations: { readOnlyHint: true, openWorldHint: false },
       inputSchema: {
         framework: FRAMEWORK_ENUM,
         name: z
@@ -117,8 +119,9 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
     {
       description:
         "Full-text search across Ignite UI docs for a specific framework. Returns top 20 results with excerpt snippets.",
+      annotations: { readOnlyHint: true, openWorldHint: false },
       inputSchema: {
-        query: z.string().describe("Search query (supports prefix matching, e.g. 'grid*')"),
+        query: z.string().min(1, "Search query is required").describe("Search query (supports prefix matching, e.g. 'grid*')"),
         framework: FRAMEWORK_ENUM,
       },
     },
@@ -146,6 +149,7 @@ function registerApiTools(server: McpServer, docLoader: ApiDocLoader) {
     "get_api_reference",
     {
       description: TOOL_DESCRIPTIONS.get_api_reference,
+      annotations: { readOnlyHint: true, openWorldHint: false },
       inputSchema: getApiReferenceSchema,
     },
     createGetApiReferenceHandler(docLoader)
@@ -155,6 +159,7 @@ function registerApiTools(server: McpServer, docLoader: ApiDocLoader) {
     "search_api",
     {
       description: TOOL_DESCRIPTIONS.search_api,
+      annotations: { readOnlyHint: true, openWorldHint: false },
       inputSchema: searchApiSchema,
     },
     createSearchApiHandler(docLoader)
@@ -165,13 +170,18 @@ server.registerTool(
   "generate_ignite_app",
   {
     description: TOOL_DESCRIPTIONS.generate_ignite_app,
+    annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: true },
     inputSchema: {
       name: z
         .string()
         .regex(/^[a-zA-Z0-9_\-]+$/, "Project name must be a valid folder name (alphanumeric, -, _)")
         .describe("The name of the new project folder"),
       framework: z.enum(["angular", "react", "webcomponents"]).describe("The framework for the project"),
-      type: z.string().describe("The project template type (e.g., 'igx-ts', 'igr-ts', 'igc-ts')").optional(),
+      type: z
+        .string()
+        .regex(/^[a-zA-Z0-9_\-]+$/, "Project type must be alphanumeric with hyphens/underscores only")
+        .describe("The project template type (e.g., 'igx-ts', 'igr-ts', 'igc-ts')")
+        .optional(),
       template: z
         .enum(["base", "side-nav", "empty"])
         .describe("The UI template layout (e.g., 'base', 'side-nav', 'empty'). Defaults to 'base'.")
@@ -223,7 +233,7 @@ server.registerTool(
 
 server.registerPrompt("igniteui-usage-guide", {
   description:
-    "Instructions for using Ignite UI tools — framework detection, documentation, GitHub API, and CLI scaffolding.",
+    "Instructions for using Ignite UI tools — framework detection, documentation, API reference, and CLI scaffolding.",
   }, async () => ({
   messages: [
     {
@@ -249,8 +259,7 @@ Most tools require a \`framework\` parameter. Determine the framework from the u
 2. **Package name** in package.json / .csproj — \`igniteui-angular\` → angular, \`IgniteUI.Blazor\` → blazor
 3. **File extensions** — .razor → blazor, .tsx → react
 4. **User's explicit statement** — "I'm using Angular", "Blazor project", etc.
-5. **Use \`get_project_framework\`** to auto-detect from local project files
-6. **Ask the user** if none of the above apply
+5. **Ask the user** if none of the above apply
 
 ## Documentation Tools
 
@@ -258,18 +267,14 @@ Most tools require a \`framework\` parameter. Determine the framework from the u
 - **\`list_components\`** — find docs by component name or keyword
 - **\`get_doc\`** — retrieve full markdown doc once you know the exact name (kebab-case, no .md extension)
 
-## GitHub API Tools
+## API Reference Tools
 
-- **\`search_components\`** — find component source file paths on GitHub
-- **\`get_api_definition\`** — extract public API (interfaces, classes, types) from a source file found via \`search_components\`
-- **\`get_scaffold_reference\`** — find real-world usage examples from sample repositories
+- **\`search_api\`** — discover components by keyword when the exact name is unknown (supports angular, react, webcomponents)
+- **\`get_api_reference\`** — retrieve properties, methods, and events for a known component
 
 ## CLI Scaffolding Tools
 
-- **\`get_project_framework\`** — auto-detect framework from local project files
-- **\`get_cli_templates_list\`** — list available CLI templates before scaffolding
-- **\`generate_ignite_app\`** — scaffold a new Ignite UI project
-- **\`add_ignite_component\`** — add a component to an existing Ignite UI CLI project`,
+- **\`generate_ignite_app\`** — scaffold a new Ignite UI project (angular, react, webcomponents)`,
       },
     },
   ],

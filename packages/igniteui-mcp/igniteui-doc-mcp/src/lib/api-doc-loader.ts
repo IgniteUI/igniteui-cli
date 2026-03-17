@@ -25,7 +25,7 @@ function isIndexEntry(value: unknown): value is IndexEntry {
 export class ApiDocsInitializationError extends Error {
   constructor(message: string, options?: { cause?: unknown }) {
     super(message, { cause: options?.cause });
-    this.name = 'DocsInitializationError';
+    this.name = 'ApiDocsInitializationError';
   }
 }
 

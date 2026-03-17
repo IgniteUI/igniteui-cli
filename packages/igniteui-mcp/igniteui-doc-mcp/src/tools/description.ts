@@ -1,7 +1,7 @@
 export const TOOL_DESCRIPTIONS = {
   generate_ignite_app: `Creates a new Ignite UI project scaffold with complete structure, dependencies, and configuration files.
 
-  **Before using:**Run list_components to find components that match user's desired functionality. (example: If user whants to build a dashboard, you will need to find components like "card", "chart", "tabs" that are commonly used in dashboards and include them in the generated project template.)
+  **Before using:** Run list_components to find components that match user's desired functionality. (example: If user wants to build a dashboard, you will need to find components like "card", "chart", "tabs" that are commonly used in dashboards and include them in the generated project template.)
   or run get_cli_templates_list to find valid templateId values for your CLI version and use those in the generated project template.
 
   **Best for:** Starting new projects from scratch, creating greenfield applications.
@@ -18,118 +18,41 @@ export const TOOL_DESCRIPTIONS = {
   **Next steps:** cd into folder, run npm install, then npm start.`,
   get_api_reference: `
   <overview>
-      Get the complete API reference documentation for an IgniteUI component, class, interface, or enum.
+      Retrieve the full API reference for one Ignite UI component or class. Supports angular, react, and webcomponents. Component name matching is case-insensitive.
   </overview>
 
-  <naming_conventions>
-      Component names follow strict platform-specific prefixes:
-      - Angular: Igx prefix (e.g., IgxGridComponent, IgxButtonComponent, IgxCarouselComponent)
-      - Web Components: Igc prefix (e.g., IgcGridComponent, IgcButtonComponent, IgcCarouselComponent)
-      - React: Igr prefix (e.g., IgrDataGrid, IgrButton, IgrCarousel)
+  <when_to_use>
+      Use this when you already know the component name (e.g. from a search_api result or from the user's code). If you only have a keyword, feature, or partial name, run search_api first to discover the exact name and platform.
+  </when_to_use>
 
-      The prefix MUST match the platform parameter.
-  </naming_conventions>
+  <returns>
+      Formatted markdown for the requested API entry. The full entry (section="all") includes the class/interface summary, properties with types and descriptions, methods with signatures, and events. Use section="properties", "methods", or "events" to retrieve a single section and reduce response size.
+  </returns>
 
-  <parameters>
-      1. platform:
-      - Must be one of: "angular", "react", or "webcomponents"
-      - MUST match the component prefix:
-          - platform="angular" → component starts with "Igx"
-          - platform="react" → component starts with "Igr"
-          - platform="webcomponents" → component starts with "Igc"
-      - If you used search_api, extract platform from the brackets in results
-          Example: "IgcButtonComponent [webcomponents]" → use platform="webcomponents"
-
-      2. component:
-      - Exact component name (case-sensitive)
-      - Must include full component/class name (including Component suffix when present)
-      - Examples: "IgxGridComponent", "IgcButtonComponent", "IgrDataGrid" (NOT "IgxGrid" or "Button")
-
-      3. section:
-      - Return only a specific section: "properties", "methods", "events", or "all"
-      - Default: "all" (returns complete documentation)
-  </parameters>
+  <constraints>
+      Blazor is currently not supported — covers angular, react, and webcomponents only. Component name must be ≤128 characters. Returns isError if the component is not found, with a prompt to use search_api.
+  </constraints>
 
   <workflow>
-      If you found component via search_api:
-      1. Look at search result: "ComponentName [platform] [type]"
-      2. Extract platform from brackets: [webcomponents] → platform="webcomponents"
-      3. Extract exact component name: IgcButtonComponent
-      4. Call: get_api_reference(platform="webcomponents", component="IgcButtonComponent")
+      Typical follow-up to search_api: take the exact component name and platform from a search result, then call get_api_reference.
   </workflow>
   `,
   search_api: `
   <overview>
-      Search for IgniteUI components and APIs by keyword, feature, or partial name across all platforms.
+      Search Ignite UI API entries by keyword, feature, or partial component name across angular, react, and webcomponents. Returns up to 10 results ranked by match count.
   </overview>
 
-  <usage_guidelines>
-      Use search_api when:
-      - You don't know the exact component name
-      Example: User says "carousel" but you need "IgxCarouselComponent"
-      - User asks vague questions
-      Example: "What components are available for date selection?"
-      - You need to verify a component exists before calling get_api_reference
-      - You want to discover related components
-      Example: Search "grid" to find IgxGridComponent, IgxTreeGridComponent, etc.
-      - User mentions a feature but not a specific component
-      Example: "components with filtering" or "date picker"
-  </usage_guidelines>
+  <when_to_use>
+      Use this as the discovery step when the exact component name is unknown, when you want to narrow candidates, or when you want to confirm which platform an entry belongs to. Once you have a result, call get_api_reference with the exact name and platform.
+      Do NOT use this if you already know the exact component name — call get_api_reference directly.
+  </when_to_use>
 
-  <parameters>
-      1. query (required):
-      - Search keywords, partial names, or features
-      - Searches across: component names, descriptions, types, and keywords
-      - Case-insensitive
-      - Examples: "button", "carousel", "grid filtering", "date picker"
+  <returns>
+      Up to 10 text results ranked by match count. Each result includes the exact component name, platform tag, API type (class/interface/directive/enum), match count, keyword list, and a content excerpt. Use the component name and platform from a result to call get_api_reference.
+  </returns>
 
-      2. platform (optional):
-      - Limit search to specific platform: "angular", "react", or "webcomponents"
-      - Omit to search across all platforms
-      - Use when: user explicitly mentions a platform, or you want to narrow results
-  </parameters>
-
-  <result_format>
-      Each result shows:
-      ComponentName [platform] [type] (X matches)
-      Keywords: keyword1, keyword2
-      Excerpt: ...relevant text snippet...
-
-      Example result:
-      IgcButtonComponent [webcomponents] [class] (5 matches)
-      Keywords: button, click, action
-      Excerpt: ...Button component for user interactions...
-
-      IMPORTANT: The [platform] bracket tells you which platform this component belongs to.
-  </result_format>
-
-  <workflow>
-      Standard workflow for finding and using a component:
-      1. search_api(query="your search term")
-      2. Read results and identify the component you need
-      3. Extract platform from [brackets] in the result
-      4. Extract exact ComponentName from the result
-      5. Call get_api_reference(platform=<from_brackets>, component=<exact_name>)
-
-      Example:
-      1. search_api(query="button")
-      2. See result: "IgcButtonComponent [webcomponents] [class]"
-      3. Extract: platform="webcomponents", component="IgcButtonComponent"
-      4. get_api_reference(platform="webcomponents", component="IgcButtonComponent")
-  </workflow>
-
-  <naming_reference>
-      Platform shown in brackets maps to component prefixes:
-      - [angular] → Components start with Igx (IgxButtonComponent, IgxGridComponent)
-      - [webcomponents] → Components start with Igc (IgcButtonComponent, IgcGridComponent)
-      - [react] → Components start with Igr (IgrButton, IgrDataGrid)
-  </naming_reference>
-
-  <critical_reminders>
-      - ALWAYS extract platform from the [brackets] in search results
-      - NEVER ignore the platform shown in search results
-      - The [platform] bracket is the source of truth for which platform to use
-      - Component prefix (Igx/Igc/Igr) must match the platform
-  </critical_reminders>
+  <constraints>
+      Blazor is currently not supported. Omit platform to search all three platforms simultaneously. Search matches against component names, keywords, API type, and document content. Output is text, not structured JSON. Maximum query length is 256 characters.
+  </constraints>
   `
 };
