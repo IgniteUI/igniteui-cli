@@ -1,0 +1,8 @@
+{
+  "servers": {
+    "igniteui-cli-mcp": {
+      "command": "npx",
+      "args": ["-y", "igniteui-cli-mcp"]
+    }
+  }
+}
