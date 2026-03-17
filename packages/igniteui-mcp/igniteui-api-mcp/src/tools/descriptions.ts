@@ -15,17 +15,18 @@ export const TOOL_DESCRIPTIONS = {
 
   <parameters>
     1. platform:
-      - Must be one of: "angular" or "webcomponents"
+      - Must be one of: "angular", "react", or "webcomponents"
       - MUST match the component prefix:
         - platform="angular" → component starts with "Igx"
+        - platform="react" → component starts with "Igr"
         - platform="webcomponents" → component starts with "Igc"
       - If you used search_api, extract platform from the brackets in results
         Example: "IgcButtonComponent [webcomponents]" → use platform="webcomponents"
 
     2. component:
       - Exact component name (case-sensitive)
-      - Must include full name with Component suffix when present
-      -  Examples: "IgxGridComponent", "IgcButtonComponent" (NOT "IgxGrid" or "Button")
+      - Must include full component/class name (including Component suffix when present)
+      - Examples: "IgxGridComponent", "IgcButtonComponent", "IgrDataGrid" (NOT "IgxGrid" or "Button")
 
     3. section:
       - Return only a specific section: "properties", "methods", "events", or "all"
@@ -66,7 +67,7 @@ export const TOOL_DESCRIPTIONS = {
       - Examples: "button", "carousel", "grid filtering", "date picker"
 
     2. platform (optional):
-      - Limit search to specific platform: "angular" or "webcomponents"
+      - Limit search to specific platform: "angular", "react", or "webcomponents"
       - Omit to search across all platforms
       - Use when: user explicitly mentions a platform, or you want to narrow results
   </parameters>
