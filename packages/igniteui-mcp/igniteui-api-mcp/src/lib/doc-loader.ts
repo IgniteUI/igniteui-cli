@@ -53,8 +53,6 @@ export class DocLoader {
 
     const docsPath = join(__dirname, '..', '..', config.docsPath);
     const indexPath = join(docsPath, 'index.json');
-    const docsPathResolved = resolve(docsPath);
-    const docsPathReal = realpathSync(docsPathResolved);
 
     if (!existsSync(indexPath)) {
       throw new DocsInitializationError(
@@ -63,6 +61,8 @@ export class DocLoader {
     }
 
     try {
+      const docsPathResolved = resolve(docsPath);
+      const docsPathReal = realpathSync(docsPathResolved);
       const indexContent = readFileSync(indexPath, 'utf-8');
       const parsedIndex = JSON.parse(indexContent) as unknown;
       if (!parsedIndex || typeof parsedIndex !== 'object') {
