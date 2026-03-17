@@ -219,7 +219,7 @@ describe("cli-config schematic", () => {
 		expect(content.includes(`@use "${FEED_ANGULAR}`)).toBeTruthy();
 	});
 
-	it("should add BrowserAnimationsModule to app.module.ts", async () => {
+	it("should add BrowserAnimationsModule to app-module.ts", async () => {
 		const moduleContent =
 `import { NgModule } from '@angular/core';
 @NgModule({
@@ -238,7 +238,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 export class AppModule {
 }
 `;
-		const targetFile = "./src/app/app.module.ts";
+		const targetFile = "./src/app/app-module.ts";
 		tree.create(targetFile, moduleContent);
 
 		await runner.runSchematic("cli-config", {}, tree);

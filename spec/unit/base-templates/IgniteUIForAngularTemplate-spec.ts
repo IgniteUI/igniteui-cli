@@ -69,30 +69,30 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			spyOn(templ, "fileExists").and.returnValue(true);
 			spyOn(App.container, "get").and.returnValue(mockFS);
 			spyOn(mockFS, "fileExists").and.callFake(file => {
-				if (file === "src/app/app-routing.module.ts") {
+				if (file === "src/app/app-routing-module.ts") {
 					return true;
 				}
 			});
 			templ.registerInProject("target/path", "view name");
 			expect(helpers.AngularTypeScriptFileUpdate)
-				.toHaveBeenCalledWith(path.join("target/path", "src/app/app-routing.module.ts"), false, { indentSize: 2, singleQuotes: true });
+				.toHaveBeenCalledWith(path.join("target/path", "src/app/app-routing-module.ts"), false, { indentSize: 2, singleQuotes: true });
 			expect(helpers.tsUpdateMock.addRoute).toHaveBeenCalledWith(
 				{
-					modulePath: './view-name/view-name.component',
+					modulePath: './view-name/view-name',
 					path: 'view-name',
-					identifierName: 'ViewNameComponent',
+					identifierName: 'ViewName',
 					data: { text: 'view name'}
 				}
 			);
 
 			expect(helpers.AngularTypeScriptFileUpdate)
-				.toHaveBeenCalledWith(path.join("target/path", "src/app/app.module.ts"), false, { indentSize: 2, singleQuotes: true });
+				.toHaveBeenCalledWith(path.join("target/path", "src/app/app-module.ts"), false, { indentSize: 2, singleQuotes: true });
 			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith(
 				{
 					declare: [
-						"ViewNameComponent",
+						"ViewName",
 					],
-					from: "./view-name/view-name.component",
+					from: "./view-name/view-name",
 					export: []
 				},
 				jasmine.any(Object), // vars
@@ -141,7 +141,7 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 		it("formats relative imports", async () => {
 			spyOn(TestTemplate.prototype, "getBaseVariables").and.returnValue({});
 			spyOn(Util, "relativePath").and.returnValue("./relative/result/test");
-			const mainPath = path.join("target", "src/app/app.module.ts");
+			const mainPath = path.join("target", "src/app/app-module.ts");
 			const filePath = path.join("target", "./test.ts");
 
 			const templ = new TestTemplate();
@@ -186,13 +186,13 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			// just declare
 			expect(helpers.AngularTypeScriptFileUpdate).toHaveBeenCalledTimes(1);
 			expect(helpers.AngularTypeScriptFileUpdate)
-				.toHaveBeenCalledWith(path.join("target/path", "src/app/app.module.ts"), false, { indentSize: 2, singleQuotes: true });
+				.toHaveBeenCalledWith(path.join("target/path", "src/app/app-module.ts"), false, { indentSize: 2, singleQuotes: true });
 			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith(
 				{
 					declare: [
-					  "ViewNameComponent",
+					  "ViewName",
 					],
-					from: "./view-name/view-name.component",
+					from: "./view-name/view-name",
 					export: []
 				},
 				jasmine.any(Object), // vars

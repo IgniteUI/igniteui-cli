@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ExternalLogin, Login } from '../models/login';
-import { Register } from '../models/register';
+import { RegisterInfo } from '../models/register-info';
 import { LoginResult, User } from '../models/user';
 import { parseUser } from './jwt-util';
 
@@ -24,7 +24,7 @@ export class AuthenticationService {
   }
 
   /** Send user info to register endpoint. */
-  public async register(userData: Register): Promise<LoginResult> {
+  public async register(userData: RegisterInfo): Promise<LoginResult> {
     return this.loginPost('/register', userData);
   }
 

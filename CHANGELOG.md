@@ -1,3 +1,37 @@
+## [14.9.2](https://github.com/IgniteUI/igniteui-cli/compare/14.9.1...14.9.2) (2026-03-11)
+
+### What's Changed
+* fix(igx-ts): update igniteui-angular versions and remove overrides by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1508
+* fix(igx-ts): fix eslint configurations by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1509
+* fix(upgrade-packages): correctly glob files on windows by @damyanpetev in https://github.com/IgniteUI/igniteui-cli/pull/1511
+* fix(igx-ts-legacy): fix grid type import and add missing override by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1519
+* Fix start and other npm exec commands by @damyanpetev in https://github.com/IgniteUI/igniteui-cli/pull/1520
+* fix(schematics): fs writeFile create check by @damyanpetev in https://github.com/IgniteUI/igniteui-cli/pull/1526
+* fix(packages): disable non-functional registry login attempt on upgrade by @damyanpetev in https://github.com/IgniteUI/igniteui-cli/pull/1528
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/14.9.1...14.9.2
+
+## [14.9.1](https://github.com/IgniteUI/igniteui-cli/compare/14.9.0...14.9.1) (2026-02-25)
+
+### What's Changed
+* chore(igx-ts): update angular projects dependencies by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1505
+
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/14.9.0...14.9.1
+
+# [14.9.0](https://github.com/IgniteUI/igniteui-cli/compare/v14.8.5...14.9.0) (2026-02-25)
+
+🎉 This update includes:
+- `igniteui-angular` version [21.1.0](https://github.com/IgniteUI/igniteui-angular/releases/tag/21.1.0).
+
+## What's Changed
+* feat(ng): update igniteui-angular to 21.1.0 by @damyanpetev in https://github.com/IgniteUI/igniteui-cli/pull/1495
+* fix(commands,list): do not use `this` in handler by @damyanpetev in https://github.com/IgniteUI/igniteui-cli/pull/1494
+* fix(angular): add missing providers by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1497
+* fix(angular): add igniteui angular core override by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1498
+
+**Full Changelog**: https://github.com/IgniteUI/igniteui-cli/compare/v14.8.5...14.9.0
+
 # [14.8.5](https://github.com/IgniteUI/igniteui-cli/compare/v14.8.4...v14.8.5) (2026-02-11)
 
 ## What's Changed

@@ -50,7 +50,7 @@ export class IgniteUIForAngularTemplate implements Template {
 
 	//TODO: rename name to fullName for clarity + in all other places fileName to fullName
 	public registerInProject(projectPath: string, name: string, options?: AddTemplateArgs) {
-		let modulePath = "app.module.ts";
+		let modulePath = "app-module.ts";
 		if (options && options.modulePath) {
 			modulePath = options.modulePath;
 		}
@@ -66,8 +66,8 @@ export class IgniteUIForAngularTemplate implements Template {
 		const mainModulePath = path.join(projectPath, `src/app/${modulePath}`);
 		const folderName = this.folderName(name);
 		const fileName = this.fileName(name);
-		const componentFilePath = path.join(projectPath, `src/app/${folderName}/${fileName}.component.ts`);
-		const className = `${Util.className(Util.nameFromPath(name))}Component`;
+		const componentFilePath = path.join(projectPath, `src/app/${folderName}/${fileName}.ts`);
+		const className = `${Util.className(Util.nameFromPath(name))}`;
 		// standalone components
 		if (!this.fileExists(mainModulePath)) {
 			const appRoutesPath = "src/app/app.routes.ts";
@@ -108,11 +108,11 @@ export class IgniteUIForAngularTemplate implements Template {
 		}
 
 		// ngModule based components
-		if (!(options && options.skipRoute) && this.fileExists("src/app/app-routing.module.ts")) {
+		if (!(options && options.skipRoute) && this.fileExists("src/app/app-routing-module.ts")) {
 			//1) import the component class name,
 			//2) and populate the Routes array with the path and component
 			//for example: { path: 'combo', component: ComboComponent }
-			const routingModulePath = path.join(projectPath, "src/app/app-routing.module.ts");
+			const routingModulePath = path.join(projectPath, "src/app/app-routing-module.ts");
 			const routingModule = new TsUpdate(routingModulePath, false, { indentSize: 2, singleQuotes: true });
 			routingModule.addRoute({
 				modulePath: Util.relativePath(routingModulePath, componentFilePath, true, true),
@@ -130,7 +130,7 @@ export class IgniteUIForAngularTemplate implements Template {
 		mainModule.addNgModuleMeta({
 				declare: this.addAsNgModelDeclaration ? [className] : [],
 				from: Util.relativePath(mainModulePath, componentFilePath, true, true),
-				export: modulePath !== "app.module.ts" ? [className] : []
+				export: modulePath !== "app-module.ts" ? [className] : []
 			},
 			Util.applyDelimiters(this.getBaseVariables(name), this.delimiters.content),
 			true // multiline
