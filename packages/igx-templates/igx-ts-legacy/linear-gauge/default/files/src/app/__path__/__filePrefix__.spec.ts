@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { IgxLinearGaugeModule } from 'igniteui-angular-gauges';
 import { <%=ClassName%> } from './<%=filePrefix%>';
-import * as gauges from 'igniteui-angular-gauges';
 
 describe('<%=ClassName%>', () => {
   let component: <%=ClassName%>;
