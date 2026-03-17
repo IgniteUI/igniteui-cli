@@ -35,16 +35,6 @@ export function createGetApiReferenceHandler(docLoader: DocLoader) {
       }
     }
 
-    if (!entry) {
-      return {
-        content: [{
-          type: "text",
-          text: `API reference for "${resolvedComponent}" could not be resolved.`
-        }],
-        isError: true,
-      };
-    }
-
      if (platform === 'react') {
       const markdown = docLoader.formatReactComponent(resolvedComponent, section);
       if (markdown) {
