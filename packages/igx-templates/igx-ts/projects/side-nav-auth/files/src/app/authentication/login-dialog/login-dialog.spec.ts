@@ -2,13 +2,12 @@ import { Component, DebugElement, EventEmitter, Output } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { IgxDialogModule } from 'igniteui-angular';
 import { LoginDialog } from './login-dialog';
 
 @Component({
   selector: 'app-login, app-register',
   template: '',
-  imports: [IgxDialogModule]
+  imports: []
 })
 class TestSignViewComponent {
   @Output() public viewChange = new EventEmitter();
@@ -28,7 +27,7 @@ describe('LoginDialog', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-       imports: [NoopAnimationsModule, IgxDialogModule, LoginDialog, TestSignViewComponent]
+       imports: [NoopAnimationsModule, LoginDialog, TestSignViewComponent]
     })
       .compileComponents();
   });

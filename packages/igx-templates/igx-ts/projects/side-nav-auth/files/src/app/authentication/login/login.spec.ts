@@ -1,11 +1,9 @@
 import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { IgxButtonModule, IgxIconModule, IgxInputGroupModule, IgxRippleModule } from 'igniteui-angular';
 import { AuthenticationService } from '../services/authentication.service';
 import { ExternalAuthProvider } from '../services/external-auth-configs';
 import { ExternalAuthService } from '../services/external-auth.service';
@@ -24,8 +22,7 @@ describe('Login', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Login, ReactiveFormsModule, RouterTestingModule, NoopAnimationsModule,
-        IgxInputGroupModule, IgxButtonModule, IgxIconModule, IgxRippleModule],
+      imports: [Login, RouterTestingModule, NoopAnimationsModule],
       providers: [
         { provide: ExternalAuthService, useValue: extAuthSpy },
         { provide: AuthenticationService, useValue: authSpy },
