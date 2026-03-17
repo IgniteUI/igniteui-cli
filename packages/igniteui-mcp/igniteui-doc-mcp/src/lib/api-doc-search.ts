@@ -1,6 +1,6 @@
 import type { DocEntry, SearchHit } from './types/docs.types.js';
 
-export function searchDocs(
+export function searchApiDocs(
   docs: DocEntry[],
   query: string,
   limit: number = 10

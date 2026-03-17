@@ -15,7 +15,7 @@ import { LocalDocsProvider } from "./providers/LocalDocsProvider.js";
 import { getApiReferenceSchema, searchApiSchema } from "./tools/schemas.js";
 import { createGetApiReferenceHandler, createSearchApiHandler } from "./tools/handlers.js";
 import { getPlatforms } from "./config/platforms.js";
-import { DocLoader } from "./lib/doc-loader.js";
+import { ApiDocLoader } from "./lib/api-doc-loader.js";
 
 const execAsync = promisify(exec);
 
@@ -141,7 +141,7 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
   );
 }
 
-function registerApiTools(server: McpServer, docLoader: DocLoader) {
+function registerApiTools(server: McpServer, docLoader: ApiDocLoader) {
   server.registerTool(
     "get_api_reference",
     {
@@ -277,7 +277,7 @@ Most tools require a \`framework\` parameter. Determine the framework from the u
 
 async function main() {
   const platforms = getPlatforms();
-  const docLoader = new DocLoader(platforms);
+  const docLoader = new ApiDocLoader(platforms);
   docLoader.load();
 
   const docsProvider = await createDocsProvider();

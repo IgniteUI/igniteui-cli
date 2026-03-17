@@ -32,6 +32,14 @@ if (!config) {
 async function buildDocs() {
   console.log(`📚 Building ${config.displayName} API documentation...`);
 
+  if (config.apiSource.kind !== 'markdown-index') {
+    console.error(
+      `❌ ${config.displayName} uses a ${config.apiSource.kind} source and is not built with scripts/build-docs.mjs.`
+    );
+    console.error(`   Use the platform-specific pipeline for ${platform} instead.`);
+    process.exit(1);
+  }
+
   const projectRoot = join(__dirname, '..');
   const submodulePath = join(projectRoot, config.submodulePath);
   const outputDir = join(projectRoot, config.docsPath);

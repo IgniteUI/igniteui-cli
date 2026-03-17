@@ -22,17 +22,17 @@ function isIndexEntry(value: unknown): value is IndexEntry {
   );
 }
 
-export class DocsInitializationError extends Error {
+export class ApiDocsInitializationError extends Error {
   constructor(message: string, options?: { cause?: unknown }) {
     super(message, { cause: options?.cause });
     this.name = 'DocsInitializationError';
   }
 }
 
-export class DocLoader {
+export class ApiDocLoader {
   private docs = new Map<string, DocEntry>();
   private platformConfigs: PlatformConfig[];
-  private reactParser?: ReactJsonParser;
+  private typedocJsonParsers = new Map<Platform, ReactJsonParser>();
  
   constructor(platformConfigs: PlatformConfig[]) {
     this.platformConfigs = platformConfigs;
@@ -47,15 +47,20 @@ export class DocLoader {
   }
 
   private loadPlatform(config: PlatformConfig): void {
-    if (config.key === 'react') {
-      return this.parseReactJson(config);
+    switch (config.apiSource.kind) {
+      case 'typedoc-json':
+        return this.parseTypedocJson(config);
+      case 'markdown-index':
+        return this.parseMarkdownIndex(config);
     }
+  }
 
+  private parseMarkdownIndex(config: PlatformConfig): void {
     const docsPath = join(__dirname, '..', '..', config.docsPath);
     const indexPath = join(docsPath, 'index.json');
 
     if (!existsSync(indexPath)) {
-      throw new DocsInitializationError(
+      throw new ApiDocsInitializationError(
         `API docs not found for ${config.displayName}: ${indexPath}. Run: npm run build:docs:${config.key}`
       );
     }
@@ -74,7 +79,7 @@ export class DocLoader {
       let count = 0;
       for (const [name, rawEntry] of Object.entries(index)) {
         if (!isIndexEntry(rawEntry)) {
-          throw new DocsInitializationError(
+          throw new ApiDocsInitializationError(
             `Invalid docs index entry for ${config.displayName} (${config.key}) in ${indexPath}: key="${name}" has invalid shape.`
           );
         }
@@ -104,7 +109,7 @@ export class DocLoader {
 
       console.log(`   ${config.displayName}: ${count} entries`);
     } catch (err: unknown) {
-      throw new DocsInitializationError(
+      throw new ApiDocsInitializationError(
         `Failed to load ${config.displayName} index: ${indexPath}`,
         { cause: err }
       );
@@ -123,7 +128,7 @@ export class DocLoader {
     const isContained = rel !== '' && !rel.startsWith('..') && !isAbsolute(rel);
 
     if (!isContained) {
-      throw new DocsInitializationError(
+      throw new ApiDocsInitializationError(
         `Invalid docs index entry for ${config.displayName} (${config.key}) in ${indexPath}: file="${entryFile}" resolves outside docs root (${docsPathReal}).`
       );
     }
@@ -131,16 +136,23 @@ export class DocLoader {
     return filepathReal;
   }
 
-  private parseReactJson(config: PlatformConfig) {
-    const jsonPath = join(__dirname, '..', '..', dirname(config.docsPath), 'igniteui-react.json');
-
-    if (!existsSync(jsonPath)) {
-      throw new DocsInitializationError(`React API model not found: ${jsonPath}`);
+  private parseTypedocJson(config: PlatformConfig): void {
+    if (config.apiSource.kind !== 'typedoc-json') {
+      throw new ApiDocsInitializationError(
+        `Invalid typedoc JSON source configuration for ${config.displayName} (${config.key}).`
+      );
     }
 
-    this.reactParser = new ReactJsonParser(jsonPath);
+    const jsonPath = join(__dirname, '..', '..', config.apiSource.jsonPath);
 
-    const components = this.reactParser.getAllComponents();
+    if (!existsSync(jsonPath)) {
+      throw new ApiDocsInitializationError(`${config.displayName} API model not found: ${jsonPath}`);
+    }
+
+    const parser = new ReactJsonParser(jsonPath);
+    this.typedocJsonParsers.set(config.key, parser);
+
+    const components = parser.getAllComponents();
     for (const name of components) {
       const key = `${config.key}:${name}`;
       this.docs.set(key, {
@@ -161,17 +173,27 @@ export class DocLoader {
     return this.docs.get(`${platform}:${name}`);
   }
 
-  formatReactComponent(name: string, section: ReactDocSection = 'all'): string | null {
-    if (!this.reactParser) {
+  formatStructuredComponent(
+    platform: Platform,
+    name: string,
+    section: ReactDocSection = 'all'
+  ): string | null {
+    const config = this.platformConfigs.find(candidate => candidate.key === platform);
+    if (!config || config.apiSource.kind !== 'typedoc-json') {
       return null;
     }
 
-    const component = this.reactParser.getComponent(name);
+    const parser = this.typedocJsonParsers.get(platform);
+    if (!parser) {
+      return null;
+    }
+
+    const component = parser.getComponent(name);
     if (!component) {
       return null;
     }
 
-    return this.reactParser.formatAsMarkdown(component, section);
+    return parser.formatAsMarkdown(component, section);
   }
 
   search(options: {

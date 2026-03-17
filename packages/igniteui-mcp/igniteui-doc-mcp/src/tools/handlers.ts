@@ -1,10 +1,10 @@
 import type { CallToolResult } from '@modelcontextprotocol/sdk/types.js';
-import { DocLoader } from '../lib/doc-loader.js';
-import { searchDocs, extractSection } from '../lib/doc-search.js';
+import { ApiDocLoader } from '../lib/api-doc-loader.js';
+import { searchApiDocs, extractSection } from '../lib/api-doc-search.js';
 import type { GetApiReferenceParams, SearchApiParams } from './schemas.js';
 import { getPlatformConfig } from '../config/platforms.js';
 
-export function createGetApiReferenceHandler(docLoader: DocLoader) {
+export function createGetApiReferenceHandler(docLoader: ApiDocLoader) {
   return async (params: GetApiReferenceParams): Promise<CallToolResult> => {
     const { platform, component, section = 'all' } = params;
 
@@ -35,11 +35,9 @@ export function createGetApiReferenceHandler(docLoader: DocLoader) {
       }
     }
 
-     if (platform === 'react') {
-      const markdown = docLoader.formatReactComponent(resolvedComponent, section);
-      if (markdown) {
-        return { content: [{ type: "text", text: markdown }] };
-      }
+    const formatted = docLoader.formatStructuredComponent(platform, resolvedComponent, section);
+    if (formatted) {
+      return { content: [{ type: "text", text: formatted }] };
     }
 
     const content = entry.content;
@@ -66,7 +64,7 @@ export function createGetApiReferenceHandler(docLoader: DocLoader) {
   };
 }
 
-export function createSearchApiHandler(docLoader: DocLoader) {
+export function createSearchApiHandler(docLoader: ApiDocLoader) {
   return async (params: SearchApiParams): Promise<CallToolResult> => {
     const { platform, query } = params;
 
@@ -78,7 +76,7 @@ export function createSearchApiHandler(docLoader: DocLoader) {
     }
 
     const docs = docLoader.search({ platform });
-    const hits = searchDocs(docs, query, 10);
+    const hits = searchApiDocs(docs, query, 10);
 
     if (hits.length === 0) {
       const platformText = platform ? ` in ${getPlatformConfig(platform).displayName}` : '';
