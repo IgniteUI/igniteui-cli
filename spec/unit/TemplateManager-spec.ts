@@ -4,7 +4,7 @@ import * as path from "path";
 import { TemplateManager } from "../../packages/cli/lib/TemplateManager";
 import { jQueryTemplate } from "../../packages/cli/lib/templates/jQueryTemplate";
 import { ReactTemplate } from "../../packages/cli/lib/templates/ReactTemplate";
-import { IgniteUIForWebComponentsTemplate } from "../../packages//cli/lib/templates/IgniteUIForWebComponentsTemplate";
+import { IgniteUIForWebComponentsTemplate } from "../../packages/cli/lib/templates/IgniteUIForWebComponentsTemplate";
 import { mockProLibFactory } from "../helpers/mocks";
 import { resetSpy } from "../helpers/utils";
 
