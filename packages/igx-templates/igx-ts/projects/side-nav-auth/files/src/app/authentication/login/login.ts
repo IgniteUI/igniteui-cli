@@ -5,10 +5,10 @@ import { Router } from '@angular/router';
 import { IgxInputGroupComponent, IgxPrefixDirective, IgxIconComponent, IgxLabelDirective,
   IgxInputDirective, IgxButtonDirective, IgxRippleDirective } from 'igniteui-angular';
 
-import { AuthenticationService } from '../services/authentication.service';
+import { Authentication } from '../services/authentication';
 import { ExternalAuthProvider } from '../services/external-auth-configs';
-import { ExternalAuthService } from '../services/external-auth.service';
-import { UserService } from '../services/user.service';
+import { ExternalAuth } from '../services/external-auth';
+import { UserStore } from '../services/user';
 
 @Component({
   selector: 'app-login',
@@ -25,8 +25,8 @@ export class Login {
   public providers = ExternalAuthProvider;
 
   constructor(
-    public authService: ExternalAuthService, private authentication: AuthenticationService,
-    private userService: UserService, private router: Router, fb: FormBuilder
+    public authService: ExternalAuth, private authentication: Authentication,
+    private userService: UserStore, private router: Router, fb: FormBuilder
   ) {
     this.loginForm = fb.group({
       email: ['', Validators.required],

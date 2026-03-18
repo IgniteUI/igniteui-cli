@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { AuthenticationService } from '../services/authentication.service';
-import { ExternalAuthService } from '../services/external-auth.service';
-import { UserService } from '../services/user.service';
+import { Authentication } from '../services/authentication';
+import { ExternalAuth } from '../services/external-auth';
+import { UserStore } from '../services/user';
 import { Redirect } from './redirect';
 
 describe('Redirect', () => {
   let fixture: ComponentFixture<Redirect>;
   const activeRouteSpy: any = { snapshot: { data: { value: { provider: {} } } } };
-  const extAuthSpy = jasmine.createSpyObj('ExternalAuthService', ['getUserInfo']);
-  const authSpy = jasmine.createSpyObj('AuthenticationService', ['loginWith']);
-  const userServSpy = jasmine.createSpyObj('UserService', ['setCurrentUser']);
+  const extAuthSpy = jasmine.createSpyObj('ExternalAuth', ['getUserInfo']);
+  const authSpy = jasmine.createSpyObj('Authentication', ['loginWith']);
+  const userServSpy = jasmine.createSpyObj('UserStore', ['setCurrentUser']);
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -19,9 +19,9 @@ describe('Redirect', () => {
       declarations: [Redirect],
       providers: [
         { provide: ActivatedRoute, useValue: activeRouteSpy },
-        { provide: ExternalAuthService, useValue: extAuthSpy },
-        { provide: AuthenticationService, useValue: authSpy },
-        { provide: UserService, useValue: userServSpy }
+        { provide: ExternalAuth, useValue: extAuthSpy },
+        { provide: Authentication, useValue: authSpy },
+        { provide: UserStore, useValue: userServSpy }
       ]
     })
       .compileComponents();

@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { <%=ClassName%> } from './<%=filePrefix%>';
-import { <%=ClassName%>TreeGridGroupingPipe } from './tree-grid-grouping.pipe';
+import { <%=ClassName%>TreeGridGrouping } from './tree-grid-grouping';
 import { IgxTreeGridModule, IgxCheckboxModule, IgxButtonModule, IgxSliderModule, IgxSwitchModule } from '<%=igxPackage%>';
 
 describe('<%=ClassName%>', () => {
@@ -11,7 +11,7 @@ describe('<%=ClassName%>', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ <%=ClassName%>, <%=ClassName%>TreeGridGroupingPipe ],
+      declarations: [ <%=ClassName%>, <%=ClassName%>TreeGridGrouping ],
       imports: [
         FormsModule,
         BrowserAnimationsModule,

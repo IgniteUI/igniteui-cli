@@ -7,7 +7,7 @@ import {
 } from 'igniteui-angular';
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
-import { AuthenticationModule, ExternalAuthService } from './authentication';
+import { AuthenticationModule, ExternalAuth } from './authentication';
 import { Home } from './home/home';
 
 @NgModule({
@@ -33,7 +33,7 @@ import { Home } from './home/home';
 })
 export class AppModule {
 
-  constructor(private externalAuthService: ExternalAuthService) {
+  constructor(private externalAuthService: ExternalAuth) {
     /**
      * To register a social login, un-comment one or more of the following and add your service provider Client ID.
      * See https://github.com/IgniteUI/igniteui-cli/wiki/Angular-Authentication-Project-Template#add-a-third-party-social-provider

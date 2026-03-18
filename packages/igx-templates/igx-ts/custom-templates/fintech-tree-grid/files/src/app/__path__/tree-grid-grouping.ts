@@ -7,16 +7,15 @@ class GroupByRecord {
 }
 
 export class ITreeGridAggregation {
-  public field: string = '';
+  public field = '';
   public aggregate: (parent: any, children: any[]) => any = [] as any;
 }
 
 @Pipe({
   name: 'treeGridGrouping',
-  pure: true,
-  standalone: false
+  pure: true
 })
-export class <%=ClassName%>TreeGridGroupingPipe implements PipeTransform {
+export class <%=ClassName%>TreeGridGrouping implements PipeTransform {
 
   public transform(collection: any[],
            groupColumns: string[],
@@ -41,7 +40,7 @@ export class <%=ClassName%>TreeGridGroupingPipe implements PipeTransform {
               parentID: any,
               data: any[]) {
     for (const groupRecord of groupRecords) {
-      const parent: { [key: string]: any } = {};
+      const parent: Record<string, any> = {};
       const children = groupRecord.records;
 
       parent[primaryKey] = parentID + groupRecord.key;

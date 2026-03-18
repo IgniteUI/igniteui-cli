@@ -29,9 +29,9 @@ describe('<%=ClassName%>', () => {
         <%=ClassName%>,
       ],
       providers: [
-        { provide: ExternalAuthService, useValue: extAuthSpy },
-        { provide: AuthenticationService, useValue: authSpy },
-        { provide: UserService, useValue: userServSpy },
+        { provide: ExternalAuth, useValue: extAuthSpy },
+        { provide: Authentication, useValue: authSpy },
+        { provide: UserStore, useValue: userServSpy },
       ],
     })
       .compileComponents();

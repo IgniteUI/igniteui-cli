@@ -9,7 +9,7 @@ import { parseUser } from './jwt-util';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthenticationService {
+export class Authentication {
 
   constructor(private http: HttpClient) { }
 

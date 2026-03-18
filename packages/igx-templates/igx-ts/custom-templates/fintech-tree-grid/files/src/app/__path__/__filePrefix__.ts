@@ -29,17 +29,17 @@ import {
   IgxColumnComponent,
   IgxCellTemplateDirective,
   IgxIconComponent,
-  IgxTreeGridGroupingPipe,
+  IgxTreeGridGrouping,
 } from '<%=igxPackage%>';
 import { timer } from 'rxjs';
 import { debounce } from 'rxjs/operators';
-import { LocalDataService } from './localData.service';
-import { ITreeGridAggregation, <%=ClassName%>TreeGridGroupingPipe } from './tree-grid-grouping.pipe';
+import { LocalData } from './localData';
+import { ITreeGridAggregation, <%=ClassName%>TreeGridGrouping } from './tree-grid-grouping';
 import { NgIf, CurrencyPipe } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @Component({
-  providers: [LocalDataService],
+  providers: [LocalData],
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.html',
   styleUrl: './<%=filePrefix%>.scss',
@@ -59,8 +59,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     IgxCellTemplateDirective,
     IgxIconComponent,
     CurrencyPipe,
-    IgxTreeGridGroupingPipe,
-    <%=ClassName%>TreeGridGroupingPipe
+    IgxTreeGridGrouping,
+    <%=ClassName%>TreeGridGrouping
   ]
 })
 export class <%=ClassName%> implements OnInit, AfterViewInit, OnDestroy {
@@ -140,7 +140,7 @@ export class <%=ClassName%> implements OnInit, AfterViewInit, OnDestroy {
   private timer: any;
   private volumeChanged: any;
 
-  constructor(private zone: NgZone, private localService: LocalDataService, private elRef: ElementRef) {
+  constructor(private zone: NgZone, private localService: LocalData, private elRef: ElementRef) {
     this.subscription = this.localService.getData(this.volume);
     this.localService.records.subscribe((d) => this.data = d);
   }

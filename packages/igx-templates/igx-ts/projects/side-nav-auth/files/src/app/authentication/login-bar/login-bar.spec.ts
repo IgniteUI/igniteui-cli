@@ -16,8 +16,8 @@ import {
   IgxToggleModule
 } from 'igniteui-angular';
 import { LoginDialog } from '../login-dialog/login-dialog';
-import { ExternalAuthService } from '../services/external-auth.service';
-import { UserService } from '../services/user.service';
+import { ExternalAuth } from '../services/external-auth';
+import { UserStore } from '../services/user';
 import { LoginBar } from './login-bar';
 
 @Component({
@@ -66,8 +66,8 @@ describe('LoginBar', () => {
 		TestLoginDialog
       ],
       providers: [
-        { provide: UserService, useClass: TestUserServSpy },
-        { provide: ExternalAuthService, useClass: TestAuthService }
+        { provide: UserStore, useClass: TestUserServSpy },
+        { provide: ExternalAuth, useClass: TestAuthService }
       ]
     })
       .compileComponents();
@@ -87,7 +87,7 @@ describe('LoginBar', () => {
     let buttons = fixture.debugElement.queryAll(By.css('button'));
     expect(buttons.length).toBe(1);
     expect(buttons[0].nativeElement.innerText).toBe('Log In');
-    const userServ = TestBed.inject(UserService);
+    const userServ = TestBed.inject(UserStore);
     spyOnProperty(userServ, 'currentUser', 'get').and.returnValue({
       picture: 'picture'
     });
@@ -110,7 +110,7 @@ describe('LoginBar', () => {
   });
 
   it('should open drop down on button click (logged in)', async () => {
-    const userServ = TestBed.inject(UserService);
+    const userServ = TestBed.inject(UserStore);
     spyOnProperty(userServ, 'currentUser', 'get').and.returnValue({
       picture: 'picture'
     });
@@ -123,8 +123,8 @@ describe('LoginBar', () => {
   });
 
   it('should handle user menu items', async () => {
-    const userServ = TestBed.inject(UserService);
-    const authServ = TestBed.inject(ExternalAuthService);
+    const userServ = TestBed.inject(UserStore);
+    const authServ = TestBed.inject(ExternalAuth);
     const router: Router = TestBed.inject(Router);
     spyOn(router, 'navigate');
     spyOn(userServ, 'clearCurrentUser');

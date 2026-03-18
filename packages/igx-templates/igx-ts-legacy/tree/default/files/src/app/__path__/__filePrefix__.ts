@@ -3,13 +3,13 @@ import { IgxTreeNodeComponent } from '<%=igxPackage%>';
 import { Subject } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
 import { DATA, NodeData, REMOTE_ROOT, SelectableNodeData } from './local-data';
-import { DataService } from './services/data.service';
+import { Data } from './services/data';
 
 @Component({
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.html',
   styleUrl: './<%=filePrefix%>.scss',
-  providers: [DataService],
+  providers: [Data],
   standalone: false
 })
 
@@ -21,7 +21,7 @@ export class <%=ClassName%> implements OnDestroy {
   public remoteData: SelectableNodeData[] = [];
   private destroy$ = new Subject<void>();
 
-  constructor(private dataService: DataService) {
+  constructor(private dataService: Data) {
     this.dataService.data.pipe(takeUntil(this.destroy$)).subscribe((data) => {
       this.loading = false;
       this.remoteData = data;

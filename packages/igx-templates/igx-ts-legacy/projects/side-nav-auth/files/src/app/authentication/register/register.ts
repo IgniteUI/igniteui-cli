@@ -2,8 +2,8 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegisterInfo } from '../models/register-info';
-import { AuthenticationService } from '../services/authentication.service';
-import { UserService } from '../services/user.service';
+import { Authentication } from '../services/authentication';
+import { UserStore } from '../services/user';
 
 @Component({
   selector: 'app-register',
@@ -19,9 +19,9 @@ export class Register {
   @Output()
   registered: EventEmitter<any> = new EventEmitter();
 
-  constructor(private authentication: AuthenticationService,
+  constructor(private authentication: Authentication,
     private fb: FormBuilder,
-    private userService: UserService,
+    private userService: UserStore,
     private router: Router) {
     this.registrationForm = this.fb.group({
       given_name: ['', Validators.required],

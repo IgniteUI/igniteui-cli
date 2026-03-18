@@ -23,7 +23,7 @@ class IgxTreeGridFinTechTemplate extends IgniteUIForAngularTemplate {
 				from: "<%=igxPackage%>"
 			},
 			{ import: "FormsModule", from: "@angular/forms" },
-			{ declare: "<%=ClassName%>TreeGridGroupingPipe", from: "./src/app/<%=path%>/tree-grid-grouping.pipe.ts" }
+			{ declare: "<%=ClassName%>TreeGridGrouping", from: "./src/app/<%=path%>/tree-grid-grouping.ts" }
 		];
 	}
 }

@@ -19,11 +19,11 @@ import {
 } from '<%=igxPackage%>';
 import { timer } from 'rxjs';
 import { debounce } from 'rxjs/operators';
-import { LocalDataService } from './localData.service';
-import { ITreeGridAggregation } from './tree-grid-grouping.pipe';
+import { LocalData } from './localData';
+import { ITreeGridAggregation } from './tree-grid-grouping';
 
 @Component({
-  providers: [LocalDataService],
+  providers: [LocalData],
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.html',
   styleUrl: './<%=filePrefix%>.scss',
@@ -106,7 +106,7 @@ export class <%=ClassName%> implements OnInit, AfterViewInit, OnDestroy {
   private timer: any;
   private volumeChanged: any;
 
-  constructor(private zone: NgZone, private localService: LocalDataService, private elRef: ElementRef) {
+  constructor(private zone: NgZone, private localService: LocalData, private elRef: ElementRef) {
     this.subscription = this.localService.getData(this.volume);
     this.localService.records.subscribe((d) => this.data = d);
   }

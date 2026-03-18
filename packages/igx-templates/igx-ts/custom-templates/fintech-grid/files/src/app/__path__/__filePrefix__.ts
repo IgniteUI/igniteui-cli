@@ -44,13 +44,13 @@ import {
 } from 'igniteui-angular-charts';
 import { timer } from 'rxjs';
 import { debounce } from 'rxjs/operators';
-import { LocalDataService } from './localData.service';
+import { LocalData } from './localData';
 import { Contract, REGIONS } from './localData/financialData';
 import { NgIf, NgFor, CurrencyPipe } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @Component({
-  providers: [LocalDataService],
+  providers: [LocalData],
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.html',
   styleUrl: './<%=filePrefix%>.scss',
@@ -136,7 +136,7 @@ export class <%=ClassName%> implements OnInit, AfterViewInit, OnDestroy {
   private timer: any;
   private volumeChanged: any;
   constructor(
-    private localService: LocalDataService,
+    private localService: LocalData,
     private elRef: ElementRef,
     private cdr: ChangeDetectorRef) {
     this.subscription = this.localService.getData(this.volume);

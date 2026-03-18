@@ -4,8 +4,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { IgxButtonModule, IgxIconModule, IgxInputGroupModule, IgxRippleModule } from 'igniteui-angular';
-import { AuthenticationService } from '../services/authentication.service';
-import { UserService } from '../services/user.service';
+import { Authentication } from '../services/authentication';
+import { UserStore } from '../services/user';
 import { Register } from './register';
 
 const MAIL_GROUP_NAME = 'email';
@@ -16,8 +16,8 @@ const FAMILY_NAME_GROUP_NAME = 'family_name';
 describe('Register', () => {
   let component: Register;
   let fixture: ComponentFixture<Register>;
-  const authSpy = jasmine.createSpyObj('AuthenticationService', ['register']);
-  const userServSpy = jasmine.createSpyObj('UserService', ['setCurrentUser']);
+  const authSpy = jasmine.createSpyObj('Authentication', ['register']);
+  const userServSpy = jasmine.createSpyObj('UserStore', ['setCurrentUser']);
   const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
 
   beforeEach(async () => {
@@ -33,8 +33,8 @@ describe('Register', () => {
       ],
       declarations: [Register],
       providers: [
-        { provide: AuthenticationService, useValue: authSpy },
-        { provide: UserService, useValue: userServSpy },
+        { provide: Authentication, useValue: authSpy },
+        { provide: UserStore, useValue: userServSpy },
         { provide: Router, useValue: routerSpy }
       ]
     })

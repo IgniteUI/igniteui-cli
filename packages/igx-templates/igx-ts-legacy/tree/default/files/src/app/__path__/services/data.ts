@@ -3,7 +3,7 @@ import { Observable, ReplaySubject } from 'rxjs';
 import { NodeData, REMOTE_DATA, SelectableNodeData } from '../local-data';
 
 @Injectable()
-export class DataService {
+export class Data {
   private nodeData: SelectableNodeData[] = [];
   private selectedNode: Set<string> = new Set<string>();
   private deselectedNode: Set<string> = new Set<string>();

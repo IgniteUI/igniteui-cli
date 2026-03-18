@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UserService } from '../services/user.service';
+import { UserStore } from '../services/user';
 
 @Component({
   selector: 'app-profile',
@@ -7,5 +7,5 @@ import { UserService } from '../services/user.service';
   styleUrl: './profile.scss'
 })
 export class Profile {
-  constructor(public userService: UserService) { }
+  constructor(public userService: UserStore) { }
 }

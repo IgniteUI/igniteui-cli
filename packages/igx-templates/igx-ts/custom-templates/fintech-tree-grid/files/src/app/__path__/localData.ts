@@ -3,7 +3,7 @@ import { BehaviorSubject, Observable} from 'rxjs';
 import { FinancialData } from './assets/financialData';
 
 @Injectable()
-export class LocalDataService {
+export class LocalData {
   public records: Observable<any[]>;
   public records$: BehaviorSubject<any[]>;
 
@@ -12,7 +12,7 @@ export class LocalDataService {
     this.records = this.records$.asObservable();
   }
 
-  public getData(count: number = 10): void {
+  public getData(count = 10): void {
     const financialData: FinancialData = new FinancialData();
     this.records$.next(financialData.generateData(count));
   }
