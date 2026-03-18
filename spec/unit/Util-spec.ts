@@ -52,7 +52,7 @@ describe("Unit - Util", () => {
 		expect(Util.getAvailableName(defaultComponentName, false, "jQuery")).toEqual("grid 1");
 		expect(Util.getAvailableName(defaultComponentName, false, "React")).toEqual("grid 1");
 		expect(Util.getAvailableName(defaultComponentName, false, "Angular", "igx-ts")).toEqual("grid 1");
-		expect(Util.directoryExists).toHaveBeenCalledTimes(10);
+		expect(Util.directoryExists).toHaveBeenCalledTimes(8);
 	});
 
 	it("should read the existing component view name and return incremented view name ", () => {

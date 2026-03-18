@@ -2,9 +2,9 @@ import { IgniteUIForAngularTemplate } from "@igniteui/angular-templates";
 import { ComponentGroup, Config, Framework, ProjectConfig, Util } from "@igniteui/cli-core";
 import * as path from "path";
 import { TemplateManager } from "../../packages/cli/lib/TemplateManager";
-import { AngularTemplate } from "../../packages/cli/lib/templates/AngularTemplate";
 import { jQueryTemplate } from "../../packages/cli/lib/templates/jQueryTemplate";
 import { ReactTemplate } from "../../packages/cli/lib/templates/ReactTemplate";
+import { IgniteUIForWebComponentsTemplate } from "../../packages//cli/lib/templates/IgniteUIForWebComponentsTemplate";
 import { mockProLibFactory } from "../helpers/mocks";
 import { resetSpy } from "../helpers/utils";
 
@@ -165,11 +165,11 @@ describe("Unit - Template manager", () => {
 	});
 
 	it("Should load/create/register diff types of external custom Templates", async () => {
-		spyOn(Util, "getDirectoryNames").and.returnValue(["jquery", "react", "angular"]);
+		spyOn(Util, "getDirectoryNames").and.returnValue(["jquery", "react", "angular", "webcomponents"]);
 		const templates = [
 			"file:/template/jquery/js",
 			"file:/template/react/es6",
-			"path:/template/angular/ig-ts",
+			"path:/template/webcomponents/igc-ts",
 			"/template/angular/igx-ts"
 		];
 		const mockProjectConfig = { customTemplates: templates } as unknown as Config;
@@ -177,9 +177,10 @@ describe("Unit - Template manager", () => {
 		spyOn(Util, "directoryExists").and.returnValue(true);
 		spyOn(Util, "fileExists").and.returnValue(true);
 		mockProjLibs = {
-			angular: [ mockProLibFactory("ig-ts"), mockProLibFactory("igx-ts")],
+			angular: [ mockProLibFactory("igx-ts")],
 			jquery: [ mockProLibFactory("js") ],
-			react: [ mockProLibFactory("es6") ]
+			react: [ mockProLibFactory("es6") ],
+			webcomponents: [ mockProLibFactory("igc-ts") ],
 		};
 		customRequire = {
 			require: modulePath => {
@@ -214,14 +215,14 @@ describe("Unit - Template manager", () => {
 		expect(mockProjLibs.react[0].registerTemplate).toHaveBeenCalledWith(
 			jasmine.objectContaining(template("react", "es6"))
 		);
-		expect(mockProjLibs.angular[0].registerTemplate).toHaveBeenCalledTimes(1);
-		expect(mockProjLibs.angular[0].registerTemplate).toHaveBeenCalledWith(jasmine.any(AngularTemplate));
-		expect(mockProjLibs.angular[0].registerTemplate).toHaveBeenCalledWith(
-			jasmine.objectContaining(template("angular", "ig-ts"))
+		expect(mockProjLibs.webcomponents[0].registerTemplate).toHaveBeenCalledTimes(1);
+		expect(mockProjLibs.webcomponents[0].registerTemplate).toHaveBeenCalledWith(jasmine.any(IgniteUIForWebComponentsTemplate));
+		expect(mockProjLibs.webcomponents[0].registerTemplate).toHaveBeenCalledWith(
+			jasmine.objectContaining(template("webcomponents", "igc-ts"))
 		);
-		expect(mockProjLibs.angular[1].registerTemplate).toHaveBeenCalledTimes(1);
-		expect(mockProjLibs.angular[1].registerTemplate).toHaveBeenCalledWith(jasmine.any(IgniteUIForAngularTemplate));
-		expect(mockProjLibs.angular[1].registerTemplate).toHaveBeenCalledWith(
+		expect(mockProjLibs.angular[0].registerTemplate).toHaveBeenCalledTimes(1);
+		expect(mockProjLibs.angular[0].registerTemplate).toHaveBeenCalledWith(jasmine.any(IgniteUIForAngularTemplate));
+		expect(mockProjLibs.angular[0].registerTemplate).toHaveBeenCalledWith(
 			jasmine.objectContaining(template("angular", "igx-ts"))
 		);
 	});
