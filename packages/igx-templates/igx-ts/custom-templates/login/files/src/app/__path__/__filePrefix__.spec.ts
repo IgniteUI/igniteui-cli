@@ -1,9 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ReactiveFormsModule } from '@angular/forms';
-import { RouterTestingModule } from '@angular/router/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { <%=ClassName%> } from './<%=filePrefix%>';
-import { IgxInputGroupModule, IgxIconModule, IgxButtonModule, IgxRippleModule } from '<%=igxPackage%>';
 
 const MAIL_GROUP_NAME = 'email';
 const PASSWORD_GROUP_NAME = 'password';
@@ -19,15 +16,9 @@ describe('<%=ClassName%>', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        ReactiveFormsModule,
-        RouterTestingModule,
         NoopAnimationsModule,
-        IgxInputGroupModule,
-        IgxButtonModule,
-        IgxIconModule,
-        IgxRippleModule,
         <%=ClassName%>,
-      ]
+      ],
     })
       .compileComponents();
   });
