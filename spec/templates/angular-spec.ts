@@ -18,21 +18,6 @@ describe("Angular templates", () => {
 		}
 	});
 
-	it("Ig templates should have no internal collisions", async () => {
-		const angularFramework: Framework = require(templatesLocation);
-		const projLibrary = angularFramework.projectLibraries.find(x => x.projectType === "ig-ts");
-		for (let i = 0; i < projLibrary.templates.length; i++) {
-			const element = projLibrary.templates[i];
-			for (let j = i + 1; j < projLibrary.templates.length; j++) {
-				const target = projLibrary.templates[j];
-				// pass some __path__ so those won't match
-				expect(
-					(Util as any).validateTemplate(element["rootPath"] + "/files", target["rootPath"] + "/files", {path: "1"}, {})
-				).toBeTruthy(`Template ${element.id} can overwrite ${target.id}`);
-			}
-		}
-	});
-
 	it("Igx templates should have no internal collisions", async () => {
 		const angularFramework: Framework = require(templatesLocation);
 		const projLibrary = angularFramework.projectLibraries.find(x => x.projectType === "igx-ts");

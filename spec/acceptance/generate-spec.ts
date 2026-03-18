@@ -97,46 +97,6 @@ describe("Generate command", () => {
 		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);
 	});
 
-	it("Should correctly generate angular wrappers template", async () => {
-		await cli.run(["generate", "template", "angular-wrapper", "-f=angular", "-t=ig-ts"]);
-
-		expect(fs.existsSync(path.join(process.cwd(), ".global"))).toBeTruthy();
-		expect(fs.existsSync(path.join(process.cwd(), "angular-wrapper"))).toBeTruthy();
-		const templatePath = path.join(process.cwd(), "angular-wrapper", "template.json");
-		expect(fs.existsSync(templatePath)).toBeTruthy();
-
-		const globalConfigPath = path.join(process.cwd(), ".global", "ignite-ui-cli.json");
-		expect(fs.existsSync(globalConfigPath)).toBeTruthy();
-		const templateFolderPath = path.join(process.cwd(), "angular-wrapper");
-		const igniteUiCliActual = require(globalConfigPath);
-		const igniteUiCliExpected = {
-			customTemplates: [
-				"path:" + templateFolderPath
-			]
-		};
-		expect(igniteUiCliActual).toEqual(igniteUiCliExpected);
-
-		expectedTemplate = require(templatePath) as Template;
-		actualTemplate = {
-			components: [],
-			controlGroup: "",
-			dependencies: [],
-			description: "Ignite UI wrappers for Angular template created with Ignite UI CLI",
-			framework: "angular",
-			id: "angular-wrapper",
-			listInComponentTemplates: false,
-			listInCustomTemplates: true,
-			name: "angular-wrapper",
-			packages: [],
-			projectType: "ig-ts"
-		};
-		expect(expectedTemplate).toEqual(actualTemplate);
-
-		const pathDirectory = path.join(templateFolderPath, "files", "src", "app", "components", "__path__");
-		expect(fs.existsSync(pathDirectory)).toBeTruthy();
-		expect(fs.existsSync(path.join(pathDirectory, "__filePrefix__.component.ts"))).toBeTruthy();
-	});
-
 	it("Should correctly generate angular template", async () => {
 		await cli.run(["generate", "template", "angular", "-f=angular", "-t=igx-ts"]);
 
