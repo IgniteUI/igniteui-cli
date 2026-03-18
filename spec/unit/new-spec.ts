@@ -1,5 +1,6 @@
 import { App, BaseTemplate, Config, GoogleAnalytics, PackageManager, ProjectConfig, ProjectTemplate, Util } from "@igniteui/cli-core";
 import * as path from "path";
+import * as aiSkillsModule from "../../packages/cli/lib/ai-skills";
 import { default as newCmd } from "../../packages/cli/lib/commands/new";
 import { PromptSession } from "../../packages/cli/lib/PromptSession";
 import { resetSpy } from "../helpers/utils";
@@ -200,7 +201,9 @@ describe("Unit - New command", () => {
 
 		const mockFileSystem = {
 			fileExists: jasmine.createSpy().and.returnValue(false),
-			readFile: jasmine.createSpy().and.returnValue(JSON.stringify({ key: "value" }))
+			readFile: jasmine.createSpy().and.returnValue(JSON.stringify({ key: "value" })),
+			directoryExists: jasmine.createSpy().and.returnValue(false),
+			glob: jasmine.createSpy().and.returnValue([])
 		};
 		spyOn(App.container, 'get').and.returnValue(mockFileSystem);
 
@@ -246,7 +249,9 @@ describe("Unit - New command", () => {
 
 		const mockFileSystem = {
 			fileExists: jasmine.createSpy().and.returnValue(false),
-			readFile: jasmine.createSpy().and.returnValue(JSON.stringify({ key: "value" }))
+			readFile: jasmine.createSpy().and.returnValue(JSON.stringify({ key: "value" })),
+			directoryExists: jasmine.createSpy().and.returnValue(false),
+			glob: jasmine.createSpy().and.returnValue([])
 		};
 		spyOn(App.container, 'get').and.returnValue(mockFileSystem);
 
@@ -376,5 +381,61 @@ describe("Unit - New command", () => {
 
 		expect(PackageManager.installPackages).not.toHaveBeenCalled();
 		expect(process.chdir).not.toHaveBeenCalled();
+	});
+
+	describe("copyAISkillsToProject", () => {
+		let copyAISpy: jasmine.Spy;
+
+		beforeEach(() => {
+			copyAISpy = spyOn(aiSkillsModule, "copyAISkillsToProject").and.returnValue(Promise.resolve());
+		});
+
+		function buildHandlerSetup() {
+			const mockTemplate = {
+				generateConfig: jasmine.createSpy().and.returnValue({}),
+				templatePaths: ["test"]
+			};
+			const mockProjLib = {
+				getProject: () => mockTemplate,
+				projectIds: ["empty"],
+				projectType: "js",
+				themes: ["ig"]
+			};
+			newCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
+				getFrameworkById: {},
+				getProjectLibrary: mockProjLib
+			});
+			spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
+			spyOn(Util, "directoryExists").and.returnValue(false);
+		}
+
+		it("should call copyAISkillsToProject after package install", async () => {
+			buildHandlerSetup();
+			await newCmd.handler({ name: "myapp", framework: "jq", _: ["new"], $0: "new" });
+
+			expect(PackageManager.installPackages).toHaveBeenCalled();
+			expect(copyAISpy).toHaveBeenCalled();
+			expect(process.chdir).toHaveBeenCalledWith("myapp");
+			expect(process.chdir).toHaveBeenCalledWith("..");
+		});
+
+		it("should NOT call copyAISkillsToProject when --skip-install is used", async () => {
+			buildHandlerSetup();
+			await newCmd.handler({ name: "myapp", framework: "jq", skipInstall: true, _: ["new"], $0: "new" });
+
+			expect(PackageManager.installPackages).not.toHaveBeenCalled();
+			expect(copyAISpy).not.toHaveBeenCalled();
+		});
+
+		it("should call copyAISkillsToProject after PackageManager.installPackages completes", async () => {
+			const callOrder: string[] = [];
+			(PackageManager.installPackages as jasmine.Spy).and.callFake(async () => { callOrder.push("install"); });
+			copyAISpy.and.callFake(async () => { callOrder.push("skills"); });
+
+			buildHandlerSetup();
+			await newCmd.handler({ name: "myapp", framework: "jq", _: ["new"], $0: "new" });
+
+			expect(callOrder).toEqual(["install", "skills"]);
+		});
 	});
 });

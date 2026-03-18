@@ -3,6 +3,7 @@ import {
 	ProjectLibrary, PromptTaskContext, Task, Util
 } from "@igniteui/cli-core";
 import * as path from "path";
+import { copyAISkillsToProject } from "./ai-skills";
 import { default as add } from "./commands/add";
 import { default as start } from "./commands/start";
 import { default as upgrade } from "./commands/upgrade";
@@ -95,6 +96,8 @@ export class PromptSession extends BasePromptSession {
 
 	protected async completeAndRun(port?: number) {
 		await PackageManager.flushQueue(true);
+		await PackageManager.installPackages();
+		await copyAISkillsToProject();
 		if (true) { // TODO: Make conditional?
 			await start.start({ port });
 		}

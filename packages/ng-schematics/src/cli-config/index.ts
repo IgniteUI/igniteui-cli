@@ -1,17 +1,17 @@
 import * as path from "path";
 import * as ts from "typescript";
 import { DependencyNotFoundException } from "@angular-devkit/core";
-import { chain, FileDoesNotExistException, Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
-import { addClassToBody, FormatSettings, InquirerWrapper, NPM_ANGULAR, resolvePackage, TypeScriptAstTransformer, TypeScriptUtils } from "@igniteui/cli-core";
+import { chain, DirEntry, FileDoesNotExistException, Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
+import { ScopedTree } from "@angular-devkit/schematics/src/tree/scoped";
+import { addClassToBody, FormatSettings, NPM_ANGULAR, resolvePackage, TypeScriptAstTransformer, TypeScriptUtils } from "@igniteui/cli-core";
 import { AngularTypeScriptFileUpdate } from "@igniteui/angular-templates";
 import { createCliConfig } from "../utils/cli-config";
 import { setVirtual } from "../utils/NgFileSystem";
 import { addFontsToIndexHtml, getProjects, importDefaultTheme } from "../utils/theme-import";
 
 interface CliConfigOptions {
+	directory?: string;
 	addAISkills?: boolean;
-	aiSkillsTargets?: string[];
-	aiSkillsCustomPath?: string;
 }
 
 function getDependencyVersion(pkg: string, tree: Tree): string {
@@ -124,22 +124,22 @@ function importStyles(): Rule {
 	};
 }
 
-/** Agent target → destination path mapping */
-const AGENT_DEST_MAP: Record<string, string> = {
-	copilot: ".github/copilot-instructions.md",
-	claude: "CLAUDE.md",
-	cursor: ".cursor/skills",
-	agents: ".agents/skills"
-};
+const CLAUDE_SKILLS_DIR = ".claude/skills";
 
-/** Agent choices for interactive prompt, maps agent key → display label */
-export const AGENT_CHOICES: { key: string; label: string }[] = [
-	{ key: "copilot", label: "copilot (.github/copilot-instructions.md)" },
-	{ key: "claude", label: "claude (CLAUDE.md)" },
-	{ key: "cursor", label: "cursor (.cursor/skills/)" },
-	{ key: "agents", label: "agents (.agents/skills/)" },
-	{ key: "custom", label: "custom (add custom path)" }
-];
+/** Recursively collects all files under a DirEntry as { full, relative } path pairs */
+function collectSkillFiles(dir: DirEntry, basePath: string): Array<{ full: string; relative: string }> {
+	const results: Array<{ full: string; relative: string }> = [];
+	for (const file of dir.subfiles) {
+		results.push({ full: path.posix.join(basePath, file as string), relative: file as string });
+	}
+	for (const subdir of dir.subdirs) {
+		const sub = dir.dir(subdir);
+		for (const entry of collectSkillFiles(sub, path.posix.join(basePath, subdir as string))) {
+			results.push({ full: entry.full, relative: path.posix.join(subdir as string, entry.relative) });
+		}
+	}
+	return results;
+}
 
 function copySkillFile(tree: Tree, sourcePath: string, destPath: string, context: SchematicContext): void {
 	if (!tree.exists(sourcePath)) {
@@ -160,89 +160,31 @@ function copySkillFile(tree: Tree, sourcePath: string, destPath: string, context
 }
 
 function addAISkillsFiles(options: CliConfigOptions): Rule {
-	return async (tree: Tree, context: SchematicContext) => {
-		// Step 1: Ask if user wants AI skills (only if not already specified)
-		let addSkills = options.addAISkills;
-		if (addSkills === undefined) {
-			addSkills = await InquirerWrapper.confirm({
-				message: "Would you like to add AI coding skills for your IDE?",
-				default: true
-			});
-		}
-		if (!addSkills) {
+	return (tree: Tree, context: SchematicContext) => {
+		if (options.addAISkills === false) {
 			return;
-		}
-
-		// Step 2: Ask which agents to target (only if not already specified)
-		let targets = options.aiSkillsTargets || [];
-		if (targets.length === 0) {
-			const selected = await InquirerWrapper.checkbox({
-				message: "Which AI coding assistant(s) would you like to add skills for?",
-				choices: AGENT_CHOICES.map(c => c.label)
-			});
-			// Map display labels back to agent keys
-			const labelToKey = new Map(AGENT_CHOICES.map(c => [c.label, c.key]));
-			targets = selected.map(s => labelToKey.get(s) || s);
-		}
-		if (targets.length === 0) {
-			return;
-		}
-
-		// Step 3: If "custom" selected, ask for path (only if not already specified)
-		let customPath = options.aiSkillsCustomPath;
-		if (targets.includes("custom") && customPath === undefined) {
-			customPath = await InquirerWrapper.input({
-				message: "Enter the custom path for AI skill files:"
-			});
 		}
 
 		const igxPackage = resolvePackage(NPM_ANGULAR);
 		const skillsSourceDir = `/node_modules/${igxPackage}/skills`;
 		const skillsDir = tree.getDir(skillsSourceDir);
-		const skillFiles = skillsDir.subfiles;
+		const allSkillFiles = collectSkillFiles(skillsDir, skillsSourceDir);
 
-		if (!skillFiles.length) {
-			context.logger.warn(`No skill files found in ${skillsSourceDir}. Skipping AI skills setup.`);
+		if (!allSkillFiles.length) {
 			return;
 		}
 
-		for (const target of targets) {
-			let destDir: string;
-			if (target === "custom") {
-				if (!customPath) {
-					context.logger.warn("Custom AI skills path was selected but no path was provided. Skipping.");
-					continue;
-				}
-				destDir = customPath;
-			} else {
-				const dest = AGENT_DEST_MAP[target];
-				if (!dest) {
-					context.logger.warn(`Unknown AI agent target: ${target}. Skipping.`);
-					continue;
-				}
-				destDir = dest;
-			}
-
-			// Check if the dest is a specific file path (has .md extension) or a directory
-			if (destDir.endsWith(".md")) {
-				// For single-file destinations (Copilot, Claude), copy first skill file
-				const sourcePath = path.posix.join(skillsSourceDir, skillFiles[0]);
-				copySkillFile(tree, sourcePath, destDir, context);
-			} else {
-				// For directory destinations (Cursor, Agents, Custom), copy all skill files
-				for (const file of skillFiles) {
-					const sourcePath = path.posix.join(skillsSourceDir, file);
-					const destPath = path.posix.join(destDir, file);
-					copySkillFile(tree, sourcePath, destPath, context);
-				}
-			}
+		for (const { full, relative } of allSkillFiles) {
+			const destPath = path.posix.join(CLAUDE_SKILLS_DIR, relative);
+			copySkillFile(tree, full, destPath, context);
 		}
 	};
 }
 
 // tslint:disable-next-line:space-before-function-paren
 export default function (options: CliConfigOptions = {}): Rule {
-	return (tree: Tree) => {
+	return (originalTree: Tree, context: SchematicContext) => {
+		const tree = options.directory ? new ScopedTree(originalTree, options.directory) : originalTree;
 		setVirtual(tree);
 		const rules: Rule[] = [
 			importStyles(),
@@ -252,6 +194,6 @@ export default function (options: CliConfigOptions = {}): Rule {
 			displayVersionMismatch(),
 			addAISkillsFiles(options)
 		];
-		return chain(rules);
+		return chain(rules)(tree, context);
 	};
 }

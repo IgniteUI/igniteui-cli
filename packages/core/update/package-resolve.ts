@@ -41,6 +41,8 @@ export const NPM_REACT_SPREADSHEET_CHART_ADAPTER = "igniteui-react-spreadsheet-c
 export const FEED_REACT_SPREADSHEET_CHART_ADAPTER = "@infragistics/igniteui-react-spreadsheet-chart-adapter";
 
 // webcomponents
+export const NPM_WEBCOMPONENTS = "igniteui-webcomponents";
+export const FEED_WEBCOMPONENTS = "@infragistics/igniteui-webcomponents";
 export const NPM_WEBCOMPONENTS_CHARTS = "igniteui-webcomponents-charts";
 export const FEED_WEBCOMPONENTS_CHARTS = "@infragistics/igniteui-webcomponents-charts";
 export const NPM_WEBCOMPONENTS_CORE = "igniteui-webcomponents-core";
@@ -89,6 +91,7 @@ export const UPGRADEABLE_PACKAGES = {
 	[NPM_REACT_SPREADSHEET_CHART_ADAPTER]: FEED_REACT_SPREADSHEET_CHART_ADAPTER,
 
 	// webcomponents
+	[NPM_WEBCOMPONENTS]: FEED_WEBCOMPONENTS,
 	[NPM_WEBCOMPONENTS_CHARTS]: FEED_WEBCOMPONENTS_CHARTS,
 	[NPM_WEBCOMPONENTS_CORE]: FEED_WEBCOMPONENTS_CORE,
 	[NPM_WEBCOMPONENTS_DATASOURCES]: FEED_WEBCOMPONENTS_DATASOURCES,
