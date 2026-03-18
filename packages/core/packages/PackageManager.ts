@@ -107,9 +107,10 @@ export class PackageManager {
 			await this.flushQueue(false);
 			Util.log(`Installing ${managerCommand} packages`);
 			try {
-				// inherit the parent process' stdin so we can catch if an attempt to interrupt the process is made
-				// ignore stdout and stderr as they will output unnecessary text onto the console
-				Util.execSync(command, { stdio: ["inherit"], killSignal: "SIGINT" });
+				// inherit all stdio so user can see progress and Ctrl+C interrupts work correctly.
+				// using only stdio: ["inherit"] (stdin-only) causes a pipe deadlock when npm install
+				// output exceeds the internal buffer, freezing the process indefinitely.
+				Util.execSync(command, { stdio: "inherit" });
 				Util.log(`Packages installed successfully`);
 			} catch (error) {
 				// ^C (SIGINT) produces status:3221225786 https://github.com/sass/node-sass/issues/1283#issuecomment-169450661
