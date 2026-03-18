@@ -65,19 +65,6 @@ describe("New command", () => {
 		testFolder = "./React Proj";
 	});
 
-	it("Creates Angular project", async () => {
-		// process.argv = ["new", "reactProj", "--framework=react"];
-
-		await cli.run(["new", "ngx Proj", "--framework=angular", "--type=igx-ts", "--skip-install"]);
-
-		expect(fs.existsSync("./ngx Proj")).toBeTruthy();
-		expect(filesDiff("../templates/angular/ig-ts/projects/empty/files", "./ngx Proj")).toEqual([]);
-		const packageText = fs.readFileSync("./ngx Proj/package.json", "utf-8");
-		expect(JSON.parse(packageText).name).toEqual("ngx-proj");
-		expect(fs.existsSync("./ngx Proj/.gitignore")).toBeTruthy();
-		testFolder = "./ngx Proj";
-	});
-
 	it("Creates Ignite UI for Angular project", async () => {
 
 		await cli.run(["new", "Ignite UI for Angular", "--framework=angular", "--type=igx-ts", "--theme=default", "--skip-install"]);

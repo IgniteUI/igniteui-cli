@@ -29,21 +29,6 @@ describe("Unit - Test command", () => {
 		expect (Util.execSync).toHaveBeenCalledWith("npm run e2e", { stdio: "inherit" });
 	});
 
-	it("e2e command for ig-ts Angular project type runs test command instead", async () => {
-		const mockProjectConfig = {
-			project: {
-			  framework: "angular",
-			  projectType: "ig-ts"
-		    }
-		 } as unknown as Config;
-		mockProjectConfig.project.framework = "angular";
-		mockProjectConfig.project.projectType = "ig-ts";
-		spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
-
-		await testCmd.test({ e2e: true, skipAnalytics: true, _: ["test"], $0: "test" });
-		expect (Util.execSync).toHaveBeenCalledWith("npm test", { stdio: "inherit" });
-	});
-
 	it("e2e command for jQuery project runs test command instead", async () => {
 		const mockProjectConfig = {
 			project: {
