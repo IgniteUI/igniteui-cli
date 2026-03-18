@@ -54,6 +54,6 @@ You are an expert in TypeScript, Angular, and scalable web application developme
 - Use the `providedIn: 'root'` option for singleton services
 - Use the `inject()` function instead of constructor injection
 
-## IgniteUI components
+## UI components
 
-- Use `igniteui-angular` for UI components.
+- Use `igniteui-angular`.
