@@ -6,7 +6,7 @@
     "start": "ng serve -o",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "vitest --browser",
+    "test": "ng test --browsers=chromium",
     "lint": "ng lint"
   },
   "private": true,
@@ -27,7 +27,6 @@
     "zone.js": "~0.16.0"
   },
   "devDependencies": {
-    "@analogjs/vite-plugin-angular": "^2.3.1",
     "@angular/build": "~21.2.1",
     "@angular/cli": "~21.2.1",
     "@angular/compiler-cli": "~21.2.0",

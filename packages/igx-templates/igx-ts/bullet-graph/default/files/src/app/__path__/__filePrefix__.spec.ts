@@ -14,7 +14,6 @@ describe('<%=ClassName%>', () => {
   });
 
   beforeEach(() => {
-    vi.useFakeTimers();
     fixture = TestBed.createComponent(<%=ClassName%>);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -22,13 +21,7 @@ describe('<%=ClassName%>', () => {
     component.bulletGraph.transitionDuration = 0;
   });
 
-  afterEach(() => {
-    vi.useRealTimers();
-    fixture.destroy();
-  });
-
   it('should create', () => {
-    vi.advanceTimersByTime(1000);
     expect(component).toBeTruthy();
   });
 });

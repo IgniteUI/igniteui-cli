@@ -14,19 +14,12 @@ describe('<%=ClassName%>', () => {
   });
 
   beforeEach(() => {
-    vi.useFakeTimers();
     fixture = TestBed.createComponent(<%=ClassName%>);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  afterEach(() => {
-    vi.useRealTimers();
-    fixture.destroy();
-  });
-
   it('should create', () => {
-    vi.advanceTimersByTime(1000);
     expect(component).toBeTruthy();
     // disable animation
     component.radialGauge.transitionDuration = 0;
