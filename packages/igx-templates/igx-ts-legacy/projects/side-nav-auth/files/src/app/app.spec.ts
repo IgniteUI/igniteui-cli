@@ -3,7 +3,6 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { IgxLayoutModule, IgxNavbarModule, IgxNavigationDrawerModule, IgxRippleModule } from 'igniteui-angular';
 import { App } from './app';
-import { AppModule } from './app-module';
 import { AuthenticationModule } from './authentication';
 
 describe('App', () => {
@@ -16,8 +15,7 @@ describe('App', () => {
         AuthenticationModule,
         IgxNavbarModule,
         IgxLayoutModule,
-        IgxRippleModule,
-        AppModule
+        IgxRippleModule
       ],
       declarations: [
         App

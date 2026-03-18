@@ -2,7 +2,6 @@ import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { IgxLayoutModule, IgxNavbarModule, IgxNavigationDrawerModule, IgxRippleModule } from 'igniteui-angular';
 import { App } from './app';
-import { AppModule } from './app-module';
 
 describe('App', () => {
   beforeEach(async () => {
@@ -12,8 +11,7 @@ describe('App', () => {
         IgxLayoutModule,
         IgxNavbarModule,
         IgxNavigationDrawerModule,
-        IgxRippleModule,
-        AppModule
+        IgxRippleModule
       ],
       declarations: [
         App
