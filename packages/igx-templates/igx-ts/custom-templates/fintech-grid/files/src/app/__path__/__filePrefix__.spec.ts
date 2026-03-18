@@ -22,7 +22,8 @@ describe('<%=ClassName%>', () => {
 		  IgxSliderModule,
 		  IgxCheckboxModule,
 		  <%=ClassName%>,
-		]
+		],
+    teardown: { destroyAfterEach: false }
     })
     .compileComponents();
   });

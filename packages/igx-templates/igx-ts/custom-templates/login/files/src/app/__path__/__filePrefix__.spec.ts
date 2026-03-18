@@ -27,12 +27,7 @@ describe('<%=ClassName%>', () => {
         IgxIconModule,
         IgxRippleModule,
         <%=ClassName%>,
-      ],
-      providers: [
-        { provide: ExternalAuthService, useValue: extAuthSpy },
-        { provide: AuthenticationService, useValue: authSpy },
-        { provide: UserService, useValue: userServSpy },
-      ],
+      ]
     })
       .compileComponents();
   });
