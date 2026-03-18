@@ -4,7 +4,8 @@ import {
 	GoogleAnalytics,
 	GoogleAnalyticsParameters,
 	ProjectConfig,
-	Config
+	Config,
+	PackageManager
 } from "@igniteui/cli-core";
 import * as fs from "fs";
 import { EOL } from "os";
@@ -312,6 +313,7 @@ export class AppModule {
 		// TODO: Mock out template manager and project register
 		const mockConfig = {} as unknown as Config;
 		spyOn(ProjectConfig, "globalConfig").and.returnValue(mockConfig);
+		spyOn(PackageManager, "queuePackage");
 
 		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
 			project: { framework: "react", projectType: "igr-ts", components: [] }
