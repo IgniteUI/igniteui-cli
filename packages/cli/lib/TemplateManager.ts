@@ -31,9 +31,6 @@ export class TemplateManager extends BaseTemplateManager {
 				case "react|es6":
 					template = new ReactTemplate(rootPath);
 					break;
-				case "angular|ig-ts":
-					template = new AngularTemplate(rootPath);
-					break;
 				case "angular|igx-ts":
 					template = new IgniteUIForAngularTemplate(rootPath);
 					break;

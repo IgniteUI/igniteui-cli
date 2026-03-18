@@ -161,7 +161,7 @@ describe("Add command", () => {
 		const mockConfig = {
 			project: {
 				framework: "angular",
-				projectType: "ig-ts",
+				projectType: "igx-ts",
 				components: [],
 			}
 		} as unknown as Config;
@@ -229,7 +229,7 @@ describe("Add command", () => {
 			ec: "$ig add",
 			ea: "template id: grid; file name: Test view",
 			cd1: "angular",
-			cd2: "ig-ts",
+			cd2: "igx-ts",
 			cd5: "Data Grids",
 			cd7: "grid",
 			cd8: "Grid",
