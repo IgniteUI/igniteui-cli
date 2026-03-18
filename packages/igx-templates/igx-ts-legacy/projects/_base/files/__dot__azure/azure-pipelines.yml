@@ -21,7 +21,7 @@ steps:
     displayName: 'Build the project'
   - script: npx playwright install chromium-headless-shell
     displayName: 'Install Playwright browsers'
-  - script: npm run test -- --watch=false --browsers ChromeHeadless
+  - script: npm run test -- --watch=false
     displayName: 'Run tests'
     env:
       CI: 'true'
