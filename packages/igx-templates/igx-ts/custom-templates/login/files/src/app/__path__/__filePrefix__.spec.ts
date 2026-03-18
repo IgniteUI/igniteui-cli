@@ -18,7 +18,11 @@ describe('<%=ClassName%>', () => {
       imports: [
         NoopAnimationsModule,
         <%=ClassName%>,
+<<<<<<< copilot/clean-igx-ts-spec-files
       ],
+=======
+      ]
+>>>>>>> master
     })
       .compileComponents();
   });

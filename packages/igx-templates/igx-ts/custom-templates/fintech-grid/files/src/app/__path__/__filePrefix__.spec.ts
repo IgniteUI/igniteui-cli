@@ -11,7 +11,8 @@ describe('<%=ClassName%>', () => {
 		imports: [
 		  NoopAnimationsModule,
 		  <%=ClassName%>,
-		]
+		],
+    teardown: { destroyAfterEach: false }
     })
     .compileComponents();
   });
