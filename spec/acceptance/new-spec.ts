@@ -58,7 +58,7 @@ describe("New command", () => {
 		await cli.run(["new", "React Proj", "--framework=react", "--skip-install"]);
 
 		expect(fs.existsSync("./React Proj")).toBeTruthy();
-		expect(filesDiff("../templates/react/es6/projects/empty/files", "./React Proj")).toEqual([]);
+		expect(filesDiff("../templates/react/igr-ts/projects/empty/files", "./React Proj")).toEqual([]);
 		const packageText = fs.readFileSync("./React Proj/package.json", "utf-8");
 		expect(JSON.parse(packageText).name).toEqual("react-proj");
 		expect(fs.existsSync("./React Proj/.gitignore")).toBeTruthy();

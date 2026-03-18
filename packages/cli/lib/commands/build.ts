@@ -40,9 +40,6 @@ const command: BuildCommandType = {
 		});
 
 		await PackageManager.installPackages();
-		if (config.project.projectType === "es6") {
-			return;
-		}
 		if (config.project.theme.includes(".less") || config.project.theme.includes(".sass")) {
 			fs.mkdirSync("./themes");
 			const source = path.join(config.project.igniteuiSource, "/css/themes/", config.project.theme.split(".")[0]);
