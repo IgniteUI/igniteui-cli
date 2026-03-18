@@ -1,173 +1,163 @@
 ---
 name: igniteui-mcp
-description: >
-  Use this skill whenever working with Ignite UI components or theming across Angular, React, Blazor, or Web Components. 
-  Triggers include: adding, configuring, or styling any Ignite UI/IgxGrid/IgrGrid/IgbGrid/IgcGrid component; setting up 
-  themes, palettes, typography, or design tokens; scaffolding a new Ignite UI project; asking how to customize grids, 
-  charts, buttons, or any other Ignite UI component's appearance. Use this even if the user just mentions "igniteui", 
-  "ignite ui", "igx", "igr", "igb", "igc" components, or asks about theming their Angular/React/Blazor app — don't 
-  wait for an explicit request to use the skill.
-compatibility:
-  - igniteui-mcp-server
-  - igniteui-theming
+description: "Guides Ignite UI component selection, project scaffolding, theming, and API lookups across Angular, React, Blazor, and Web Components. Use when the user mentions igniteui, ignite ui, igx, igr, igb, igc, Ignite UI grids/charts/buttons, scaffolding a new project, looking up API references, or customizing themes, palettes, typography, sizing, spacing, roundness, or design tokens. Also triggers on any work involving igniteui-angular, igniteui-react, IgniteUI.Blazor, or igniteui-webcomponents packages. Do NOT use for generic Angular/React/Blazor component questions unrelated to Ignite UI, general CSS theming without Ignite UI context, or third-party component libraries."
+compatibility: Requires the igniteui-mcp-server and igniteui-theming MCP servers to be connected.
+metadata:
+  author: Infragistics
+  version: 1.0.0
+  mcp-server: igniteui-mcp-server, igniteui-theming
 ---
 
 # Ignite UI MCP Skill
 
-This skill guides you through using two MCP servers together to build and theme Ignite UI applications correctly. Always use both MCPs — one for component APIs, one for theming. Never guess component props or theming token names.
+Coordinates `igniteui-mcp-server` (docs, API, scaffolding) and `igniteui-theming` (palette, tokens, styling) so every component choice, API lookup, and styling decision is grounded in real tool output — not memory.
 
 ---
 
 ## Core Rules
 
-> **PREFER IGNITE UI COMPONENTS: Always use an Ignite UI component when one exists for the task. Never reach for a plain HTML element, a third-party library, or a custom implementation when Ignite UI covers the use case. If you're unsure whether a component exists, call `list_components` or `search_docs` before writing any code.**
-
-> **Before writing or modifying any Ignite UI component code, call `get_doc` (or `search_docs`) first. Before writing any theming code, call `get_component_design_tokens` first. Never rely on memory — APIs and token names change between versions.**
+1. **Prefer Ignite UI components** — the library covers 60+ components across grids, charts, inputs, layouts, and navigation. Before reaching for plain HTML or a third-party component, call `list_components` or `search_docs` to confirm Ignite UI doesn't already have it. Using the native component ensures consistent theming, accessibility, and API patterns across the app.
+2. **Read docs before writing code** — call `get_doc` or `search_docs` first. Component APIs change between versions and memory is unreliable. The doc page is the source of truth.
+3. **Read tokens before writing theme code** — call `get_component_design_tokens` first. Wrong token names silently do nothing — there's no error, the style just doesn't apply, which is much harder to debug.
+4. **Keep MCPs in their lanes** — `igniteui-mcp-server` for docs/API/scaffolding; `igniteui-theming` for palette/tokens/styling. Using the wrong server for a task will either fail or return irrelevant results.
 
 ---
 
-## Step 1: Confirm the Framework
+## Step 1: Establish Context
 
-If the framework is unambiguous from context (e.g. the user pastes `.tsx` code, mentions "my Angular app", or an `Igx` prefix is visible), use that. Otherwise, ask before proceeding:
+### Verify MCP Availability
+
+Confirm both servers are connected: `igniteui-mcp-server` and `igniteui-theming`.
+
+If one is missing: continue only with the connected server, tell the user what capability is unavailable, and do not invent tool names, APIs, or token names as a fallback.
+
+### Confirm the Framework
+
+Infer from context (file extension, Igx/Igr/Igb/Igc prefix, package name). If unclear, ask once:
 
 *"Which framework are you using — Angular, React, Blazor, or Web Components?"*
 
-Use the confirmed framework value throughout all MCP calls:
-
-| Framework      | `framework` value | Component Prefix             | Package                  | File Types        |
-|----------------|-------------------|------------------------------|--------------------------|-------------------|
-| Angular        | `angular`         | `Igx` (e.g. `IgxGrid`)      | `igniteui-angular`       | `.ts` + `.html`   |
-| React          | `react`           | `Igr` (e.g. `IgrGrid`)      | `igniteui-react`         | `.tsx`            |
-| Blazor         | `blazor`          | `Igb` (e.g. `IgbGrid`)      | `IgniteUI.Blazor`        | `.razor`          |
-| Web Components | `webcomponents`   | `Igc` + `Component` suffix  | `igniteui-webcomponents` | `.ts` + `.html`   |
+| Framework      | `framework` value | Prefix                      | Package                  | Files             |
+|----------------|-------------------|-----------------------------|--------------------------|-------------------|
+| Angular        | `angular`         | `Igx` (e.g. `IgxGrid`)     | `igniteui-angular`       | `.ts` + `.html`   |
+| React          | `react`           | `Igr` (e.g. `IgrGrid`)     | `igniteui-react`         | `.tsx`            |
+| Blazor         | `blazor`          | `Igb` (e.g. `IgbGrid`)     | `IgniteUI.Blazor`        | `.razor`          |
+| Web Components | `webcomponents`   | `Igc` + `Component` suffix | `igniteui-webcomponents` | `.ts` + `.html`   |
 
 ---
 
-## Step 2: Look Up Component Docs Before Writing Code
+## Step 2: Route to the Right Tool
 
-Use `igniteui-mcp-server` tools in this order:
+**Docs tools** (`search_docs`, `list_components`, `get_doc`) — for feature discovery, implementation guidance, and "how do I do X" questions.
 
-1. **Don't know the component name?** → `search_docs` with a natural-language query (e.g. `"virtual scrolling"`, `"inline editing"`). Returns top 20 results with excerpts.
-2. **Browsing what's available?** → `list_components` with optional `filter` (e.g. `"chart"`, `"grid"`). 
-3. **Ready to read the full API?** → `get_doc` with the exact doc name (kebab-case, no `.md`). Read this before writing any component code.
+**API tools** (`search_api`, `get_api_reference`) — for exact class-level details: properties, methods, events, types. When the user explicitly names a class (e.g. "What methods does IgxGridComponent have?"), skip docs and go straight to `get_api_reference`.
 
-**Example flow:**
-```
-search_docs("row pinning", "angular")
-→ finds "grid-row-pinning"
-
-get_doc("angular", "grid-row-pinning")
-→ read full API, code examples, inputs/outputs
-→ now write the component code
-```
+Start with docs for vague feature questions. Switch to API tools only when the task needs precise class members. See `references/tool-routing.md` for decision examples, worked scenarios, and common mistakes.
 
 ---
 
-## Step 3: Scaffold (new projects only — skip for existing ones)
+## Step 3: Scaffold (new projects only)
 
-If the user is starting a brand new project:
+Skip this step entirely for existing projects.
 
 ```
-1. list_components → survey available components; identify Ignite UI components covering the requirements
-2. generate_ignite_app → scaffold with confirmed framework, project name, template, and outputPath
-3. cd into output folder → npm install → npm start
+1. list_components          → survey available components
+2. generate_ignite_app      → scaffold the project
+3. cd <name> → npm install → npm start
 ```
 
-**Choose the template based on what you're building** — don't default to `side-nav` just because it sounds complete:
+Example call:
+```
+generate_ignite_app(
+  framework="angular",
+  name="my-dashboard",
+  template="base",
+  outputPath="./projects/my-dashboard"
+)
+```
+
+Template guide — pick based on what you're building, not what sounds complete:
 
 | Template | When to use |
 |----------|-------------|
-| `empty` | Blank slate; you'll wire everything manually |
-| `base` | Single-view or focused UI (a form, a grid, a dashboard page) — no navigation needed |
-| `side-nav` | Multi-view app where users navigate between distinct sections |
-
-A single-view implementation doesn't need a side-nav shell. Reach for `base` unless the project clearly requires navigation between multiple views.
-
-For existing projects, skip this step entirely and go straight to Step 4.
+| `empty` | Blank slate, fully manual wiring |
+| `base` | Single-view UI — form, grid, dashboard — no navigation needed |
+| `side-nav` | Multi-view app with navigation between distinct sections |
 
 ---
 
-## Step 4: Set Up Theming
+## Step 4: Theming
 
-Use `igniteui-theming` tools in this sequence:
+Use `igniteui-theming` for all styling work.
 
-### 4a. Full theme (new projects or full rebrands)
-Call `create_theme` with primary/secondary/surface colors, variant (`light`/`dark`), font family, and design system.
-
-Design systems: `material` (default), `bootstrap`, `fluent`, `indigo`.
-
-If `create_theme` reports luminance warnings, use `create_palette` instead (it auto-generates all shades). If brand guidelines specify exact hex values per shade, use `create_custom_palette` (full control, but all shades in a group must be monochromatic, 50=lightest → 900=darkest).
-
-### 4b. Component-level overrides
-Always follow this two-step pattern — never guess token names:
-
+Quick sequence:
 ```
-1. get_component_design_tokens("flat-button")   ← exact valid tokens
-2. create_component_theme(platform, designSystem, "flat-button", { tokens })
+create_theme              → generates base palette, typography, and CSS/Sass variables
+get_component_design_tokens + create_component_theme  → per-component token overrides
+set_size / set_spacing / set_roundness  → layout adjustments (always CSS output)
 ```
 
-Button variants need specific names: `flat-button`, `contained-button`, `outlined-button`, `fab-button` — not just `"button"`.
-
-For **compound components** (e.g. `combo`, `grid`, `date-picker`), `create_component_theme` returns child themes that must also be generated. Call `get_component_design_tokens` + `create_component_theme` for each child using the scoped selector it provides.
-
-### 4c. Layout adjustments
-
-| Goal | Tool | Key param |
-|------|------|-----------|
-| Component feels too big/small | `set_size` | `size`: `small` / `medium` / `large` |
-| Padding feels too tight/loose | `set_spacing` | `spacing`: a multiplier (e.g. `0.75`) |
-| Corners too sharp/round | `set_roundness` | `radiusFactor`: 0 (square) → 1 (max round) |
-
-All three can be scoped to a specific component or applied globally.
-
-### 4d. Reference palette colors in custom CSS
-Use `get_color` to get a CSS variable reference that stays in sync with the active palette:
-```
-get_color("primary", variant="600", contrast=true)
-→ var(--ig-primary-600-contrast)
-```
-
-### 4e. Consult authoritative references
-Use `read_resource` before making palette or typography decisions:
-
-| URI | What it contains |
-|-----|------------------|
-| `theming://presets/palettes` | Available preset palette colors |
-| `theming://guidance/colors/rules` | Light/dark theme color rules |
-| `theming://guidance/colors/usage` | Which shade to use for which UI role |
-| `theming://platforms/angular` | Angular-specific setup & imports |
-| `theming://docs/spacing-and-sizing` | Spacing/sizing overview |
+For the full workflow covering compound component child themes, button variant naming, palette color references via `get_color`, Sass vs CSS output selection, and error handling for luminance warnings, consult `references/theming.md`.
 
 ---
 
-## Output Format: Sass vs CSS
+## Examples
 
-Most theming tools support both:
-- **`sass`** — uses `igniteui-theming` Sass functions/mixins. Requires Sass compilation. Default for theme generators.
-- **`css`** — emits CSS custom properties directly. Use for prototyping or CSS-in-JS. Default for layout setters (`set_size`, `set_spacing`, `set_roundness`).
+### Example 1: Adding a Grid with Sorting and Filtering
+
+User says: "I need a data grid with sorting and filtering for my Angular project"
+
+```
+1. Framework confirmed: Angular (from context)
+2. search_docs("grid sorting filtering", "angular")
+   → returns "grid-sorting", "grid-filtering"
+3. get_doc("angular", "grid-sorting")
+   → read implementation guide, code snippets
+4. get_api_reference("angular", "IgxGridComponent", section="properties")
+   → confirm exact property names for sorting configuration
+5. Write component code based on docs, not memory
+```
+
+Result: Working IgxGrid with sorting and filtering, code grounded in real docs.
+
+### Example 2: Rebranding an App with a New Primary Color
+
+User says: "Change our theme to use brand blue #1A73E8 as primary"
+
+```
+1. create_theme(primary="#1A73E8", secondary="...", surface="...", variant="light", ...)
+   → generates base palette and typography
+2. get_component_design_tokens("grid")
+   → read available tokens for the grid
+3. create_component_theme("angular", "material", "grid", { token: value })
+   → apply grid-specific overrides
+4. Check response for child components → repeat steps 2-3 for each child
+```
+
+Result: Full theme with palette, component overrides, and Sass output.
+
+### Example 3: Looking Up a Specific API
+
+User says: "Does the React chip component have an onSelected event?"
+
+```
+1. search_api("chip", "react")
+   → returns "IgrChip"
+2. get_api_reference("react", "IgrChip", section="events")
+   → scan returned events list for selection-related events
+```
+
+Result: Exact answer grounded in API reference, not memory.
 
 ---
 
-## Full Workflow Reference
+## Quality Checklist
 
-```
-1. Confirm framework from context, or ask the user
-2. search_docs / list_components → confirm an Ignite UI component exists for the task
-4. get_doc → read full component API before writing any code
-5. generate_ignite_app (new projects only)
-6. Implement using Ignite UI components (never plain HTML or third-party if IU covers it)
-7. create_theme → base palette + typography + elevations
-8. get_component_design_tokens + create_component_theme → per-component overrides
-9. set_size / set_spacing / set_roundness → layout adjustments
-```
-
----
-
-## Common Mistakes to Avoid
-
-- **Using plain HTML or third-party components** — always check whether an Ignite UI component exists first (`list_components` or `search_docs`). If it does, use it.
-- **Guessing token names** — always call `get_component_design_tokens` first; wrong names silently do nothing.
-- **Using `"button"` as component name** — use the specific variant: `"flat-button"`, `"contained-button"`, etc.
-- **Skipping child themes for compound components** — `grid`, `combo`, `date-picker` have required child components; the tool will tell you what they are.
-- **Skipping `get_doc` before coding** — component APIs change; what you remember may be outdated.
-- **Using `igniteui-mcp-server` for theming** — it's docs only. All theming goes through `igniteui-theming`.
+- [ ] Framework confirmed or safely inferred from context
+- [ ] Both MCP servers confirmed connected before proceeding
+- [ ] Docs read via `get_doc` before writing component code
+- [ ] API reference verified via `get_api_reference` when task needs exact properties, methods, or events
+- [ ] Design tokens read via `get_component_design_tokens` before writing theming code
+- [ ] Theming output format (Sass vs CSS) matches the project's build setup
+- [ ] MCP tools matched to the task (docs MCP ≠ theming MCP)
+- [ ] No component APIs, token names, or selectors guessed from memory
