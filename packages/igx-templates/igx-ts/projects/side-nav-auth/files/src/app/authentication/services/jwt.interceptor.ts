@@ -7,10 +7,10 @@ import { UserStore } from '../services/user';
   providedIn: 'root'
 })
 export class JwtInterceptor implements HttpInterceptor {
-  constructor(private userService: UserStore) { }
+  constructor(private userStore: UserStore) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const currentUser = this.userService.currentUser;
+    const currentUser = this.userStore.currentUser;
     if (currentUser && currentUser.token) {
       request = request.clone({
         setHeaders: {

@@ -25,7 +25,7 @@ export class Register {
 
   constructor(private authentication: Authentication,
     private fb: FormBuilder,
-    private userService: UserStore,
+    private userStore: UserStore,
     private router: Router) {
     this.registrationForm = this.fb.group({
       given_name: ['', Validators.required],
@@ -38,7 +38,7 @@ export class Register {
   async tryRegister() {
     const response = await this.authentication.register(this.registrationForm.value as RegisterInfo);
     if (!response.error) {
-      this.userService.setCurrentUser(response.user!);
+      this.userStore.setCurrentUser(response.user!);
       this.router.navigate(['/profile']);
       this.registered.emit();
     } else {

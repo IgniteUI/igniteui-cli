@@ -23,8 +23,8 @@ export class LoginBar {
   igxDropDown!: IgxDropDownComponent;
 
   constructor(
-    public userService: UserStore,
-    private authService: ExternalAuth,
+    public userStore: UserStore,
+    private externalAuth: ExternalAuth,
     private router: Router) {
   }
 
@@ -34,8 +34,8 @@ export class LoginBar {
 
   handleLogout() {
     this.router.navigate(['/home']);
-    this.userService.clearCurrentUser();
-    this.authService.logout();
+    this.userStore.clearCurrentUser();
+    this.externalAuth.logout();
   }
 
   menuSelect(args: ISelectionEventArgs) {

@@ -45,7 +45,7 @@ describe('LoginBar', () => {
     clearCurrentUser() { return null; }
   }
 
-  class TestAuthService {
+  class MockExternalAuth {
     logout() { }
   }
 
@@ -67,7 +67,7 @@ describe('LoginBar', () => {
       ],
       providers: [
         { provide: UserStore, useClass: TestUserServSpy },
-        { provide: ExternalAuth, useClass: TestAuthService }
+        { provide: ExternalAuth, useClass: MockExternalAuth }
       ]
     })
       .compileComponents();
@@ -87,8 +87,8 @@ describe('LoginBar', () => {
     let buttons = fixture.debugElement.queryAll(By.css('button'));
     expect(buttons.length).toBe(1);
     expect(buttons[0].nativeElement.innerText).toBe('Log In');
-    const userServ = TestBed.inject(UserStore);
-    spyOnProperty(userServ, 'currentUser', 'get').and.returnValue({
+    const userStore = TestBed.inject(UserStore);
+    spyOnProperty(userStore, 'currentUser', 'get').and.returnValue({
       picture: 'picture'
     });
     fixture.detectChanges();
@@ -110,8 +110,8 @@ describe('LoginBar', () => {
   });
 
   it('should open drop down on button click (logged in)', async () => {
-    const userServ = TestBed.inject(UserStore);
-    spyOnProperty(userServ, 'currentUser', 'get').and.returnValue({
+    const userStore = TestBed.inject(UserStore);
+    spyOnProperty(userStore, 'currentUser', 'get').and.returnValue({
       picture: 'picture'
     });
     fixture.detectChanges();
@@ -123,12 +123,12 @@ describe('LoginBar', () => {
   });
 
   it('should handle user menu items', async () => {
-    const userServ = TestBed.inject(UserStore);
-    const authServ = TestBed.inject(ExternalAuth);
+    const userStore = TestBed.inject(UserStore);
+    const externalAuth = TestBed.inject(ExternalAuth);
     const router: Router = TestBed.inject(Router);
     spyOn(router, 'navigate');
-    spyOn(userServ, 'clearCurrentUser');
-    spyOn(authServ, 'logout');
+    spyOn(userStore, 'clearCurrentUser');
+    spyOn(externalAuth, 'logout');
 
     component.igxDropDown.open();
     component.igxDropDown.setSelectedItem(0);
@@ -136,7 +136,7 @@ describe('LoginBar', () => {
 
     component.igxDropDown.setSelectedItem(1);
     expect(router.navigate).toHaveBeenCalledWith(['/home']);
-    expect(userServ.clearCurrentUser).toHaveBeenCalled();
-    expect(authServ.logout).toHaveBeenCalled();
+    expect(userStore.clearCurrentUser).toHaveBeenCalled();
+    expect(externalAuth.logout).toHaveBeenCalled();
   });
 });

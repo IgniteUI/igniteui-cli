@@ -136,11 +136,11 @@ export class <%=ClassName%> implements OnInit, AfterViewInit, OnDestroy {
   private timer: any;
   private volumeChanged: any;
   constructor(
-    private localService: LocalData,
+    private localData: LocalData,
     private elRef: ElementRef,
     private cdr: ChangeDetectorRef) {
-    this.subscription = this.localService.getData(this.volume);
-    this.localService.records.subscribe(x => { this.data = x; });
+    this.subscription = this.localData.getData(this.volume);
+    this.localData.records.subscribe(x => { this.data = x; });
   }
 
   public ngOnInit(): void {
@@ -166,7 +166,7 @@ export class <%=ClassName%> implements OnInit, AfterViewInit, OnDestroy {
     this.volumeChanged = this.volumeSlider.valueChange.pipe(debounce(() => timer(200)));
     this.volumeChanged.subscribe(
       () => {
-        this.localService.getData(this.volume);
+        this.localData.getData(this.volume);
       },
       (err: string) => console.log('Error: ' + err));
   }

@@ -7,5 +7,5 @@ import { UserStore } from '../services/user';
   styleUrl: './profile.scss'
 })
 export class Profile {
-  constructor(public userService: UserStore) { }
+  constructor(public userStore: UserStore) { }
 }

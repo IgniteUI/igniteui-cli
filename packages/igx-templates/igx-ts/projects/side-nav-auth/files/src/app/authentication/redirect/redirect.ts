@@ -17,17 +17,17 @@ export class Redirect implements OnInit {
   constructor(
     route: ActivatedRoute,
     private router: Router,
-    private user: UserStore,
-    private authService: Authentication,
-    private externalAuthService: ExternalAuth) {
+    private userStore: UserStore,
+    private authentication: Authentication,
+    private externalAuth: ExternalAuth) {
     this.provider = route.snapshot.data[routeData].provider as ExternalAuthProvider;
   }
 
   async ngOnInit() {
-    const userInfo: ExternalLogin = await this.externalAuthService.getUserInfo(this.provider);
-    const result = await this.authService.loginWith(userInfo);
+    const userInfo: ExternalLogin = await this.externalAuth.getUserInfo(this.provider);
+    const result = await this.authentication.loginWith(userInfo);
     if (!result.error) {
-      this.user.setCurrentUser(result.user!);
+      this.userStore.setCurrentUser(result.user!);
       this.router.navigate(['/profile']);
     } else {
       alert(result.error);
