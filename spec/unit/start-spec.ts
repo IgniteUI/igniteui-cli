@@ -56,34 +56,6 @@ describe("Unit - start command", () => {
 		expect(Util.error).not.toHaveBeenCalled();
 	});
 
-	it("Starts a React es6 project", async () => {
-		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
-		// tslint:disable-next-line:no-object-literal-type-assertion
-		const config: Config = {
-			project: {
-				framework: "react",
-				projectType: "es6"
-			}
-		} as Config;
-		spyOn(ProjectConfig, "getConfig").and.callFake(() => config);
-
-		await startCmd.handler({ _: ["start"], $0: "start" });
-		expect(buildCmd.build).toHaveBeenCalled();
-		expect(Util.execSync).toHaveBeenCalledWith("npm start", { stdio: "inherit", killSignal: "SIGINT" });
-		expect(Util.log).toHaveBeenCalledWith(`Starting project.`, "green");
-
-		/* the following checks are no longer valid, as `config.project.defaultPort` is deprecated for react projects
-			 in favor of using an .env file on project root lv, containing default variables like port. Ex: PORT=3002
-			 this change is required by how `react scripts` work, and to ensure passing a PORT via a platform agnostic approach.
-			 config.project.defaultPort = 3567;
-			 await startCmd.execute({});
-			 expect(Util.execSync).toHaveBeenCalledWith("npm start -- --port=3567", { stdio: "inherit", killSignal: "SIGINT" });
-			 await startCmd.execute({ port: 1234 });
-			 expect(Util.execSync).toHaveBeenCalledWith("npm start -- --port=1234", { stdio: "inherit", killSignal: "SIGINT" });
-			*/
-		expect(Util.error).not.toHaveBeenCalled();
-	});
-
 	it("Starts a React igr-es6 project", async () => {
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 		// tslint:disable-next-line:no-object-literal-type-assertion
