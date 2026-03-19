@@ -60,32 +60,24 @@ export async function copyAISkillsToProject(): Promise<void> {
 		return; // no skills available for this framework, silently skip
 	}
 
-	// Collect files from all skill roots.
-	// When multiple packages contribute skills (e.g. several igniteui-webcomponents-* packages),
-	// prefix each file's relative path with the package directory name so that each package
-	// gets its own subdirectory under .claude/skills/.
-	const allFiles: Array<{ full: string; relative: string }> = [];
+	const destAbs = path.join(process.cwd(), CLAUDE_SKILLS_DIR);
+	const multiRoot = skillsRoots.length > 1;
+
 	for (const skillsRoot of skillsRoots) {
 		const rawPaths = fs.glob(skillsRoot, "**/*");
-		const pkgDirName = path.basename(path.dirname(skillsRoot)); // e.g. "igniteui-react"
+		const pkgDirName = multiRoot ? path.basename(path.dirname(skillsRoot)) : "";
+
 		for (const p of rawPaths) {
 			const full = p.replace(/\//g, path.sep);
-			const relFromRoot = path.relative(skillsRoot, full);
-			const relative = skillsRoots.length > 1
-				? path.join(pkgDirName, relFromRoot)
-				: relFromRoot;
-			allFiles.push({ full, relative });
-		}
-	}
+			const relative = path.relative(skillsRoot, full);
+			const dest = multiRoot
+				? path.join(destAbs, pkgDirName, relative)
+				: path.join(destAbs, relative);
 
-	if (!allFiles.length) return;
-
-	const destAbs = path.join(process.cwd(), CLAUDE_SKILLS_DIR);
-	for (const { full, relative } of allFiles) {
-		const dest = path.join(destAbs, relative);
-		if (!fs.fileExists(dest)) {
-			fs.writeFile(dest, fs.readFile(full, "utf8"));
-			Util.log(`${Util.greenCheck()} Created ${path.relative(process.cwd(), dest)}`);
+			if (!fs.fileExists(dest)) {
+				fs.writeFile(dest, fs.readFile(full, "utf8"));
+				Util.log(`${Util.greenCheck()} Created ${path.relative(process.cwd(), dest)}`);
+			}
 		}
 	}
 }

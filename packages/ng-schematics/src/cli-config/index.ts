@@ -2,7 +2,7 @@ import * as path from "path";
 import * as ts from "typescript";
 import { DependencyNotFoundException } from "@angular-devkit/core";
 import { chain, DirEntry, FileDoesNotExistException, Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
-import { ScopedTree } from "@angular-devkit/schematics/src/tree/scoped";
+import { ScopedTree } from "../utils/ScopedTree";
 import { addClassToBody, FormatSettings, NPM_ANGULAR, resolvePackage, TypeScriptAstTransformer, TypeScriptUtils } from "@igniteui/cli-core";
 import { AngularTypeScriptFileUpdate } from "@igniteui/angular-templates";
 import { createCliConfig } from "../utils/cli-config";
@@ -126,37 +126,24 @@ function importStyles(): Rule {
 
 const CLAUDE_SKILLS_DIR = ".claude/skills";
 
-/** Recursively collects all files under a DirEntry as { full, relative } path pairs */
-function collectSkillFiles(dir: DirEntry, basePath: string): Array<{ full: string; relative: string }> {
-	const results: Array<{ full: string; relative: string }> = [];
+/** Recursively copies all files under a DirEntry into the destination directory */
+function copySkillFiles(tree: Tree, dir: DirEntry, srcBase: string, destBase: string, context: SchematicContext): void {
 	for (const file of dir.subfiles) {
-		results.push({ full: path.posix.join(basePath, file as string), relative: file as string });
-	}
-	for (const subdir of dir.subdirs) {
-		const sub = dir.dir(subdir);
-		for (const entry of collectSkillFiles(sub, path.posix.join(basePath, subdir as string))) {
-			results.push({ full: entry.full, relative: path.posix.join(subdir as string, entry.relative) });
+		const srcPath = path.posix.join(srcBase, file as string);
+		const destPath = path.posix.join(destBase, file as string);
+		if (tree.exists(destPath)) {
+			context.logger.info(`${destPath} already exists. Skipping.`);
+		} else {
+			const content = tree.read(srcPath);
+			if (content) {
+				tree.create(destPath, content);
+				context.logger.info(`Created ${destPath}`);
+			}
 		}
 	}
-	return results;
-}
-
-function copySkillFile(tree: Tree, sourcePath: string, destPath: string, context: SchematicContext): void {
-	if (!tree.exists(sourcePath)) {
-		context.logger.debug(`Source skill file not found: ${sourcePath}`);
-		return;
+	for (const subdir of dir.subdirs) {
+		copySkillFiles(tree, dir.dir(subdir), path.posix.join(srcBase, subdir as string), path.posix.join(destBase, subdir as string), context);
 	}
-	if (tree.exists(destPath)) {
-		context.logger.info(`${destPath} already exists. Skipping.`);
-		return;
-	}
-	const content = tree.read(sourcePath);
-	if (!content) {
-		context.logger.debug(`Could not read source skill file: ${sourcePath}`);
-		return;
-	}
-	tree.create(destPath, content);
-	context.logger.info(`Created ${destPath}`);
 }
 
 function addAISkillsFiles(options: CliConfigOptions): Rule {
@@ -168,16 +155,12 @@ function addAISkillsFiles(options: CliConfigOptions): Rule {
 		const igxPackage = resolvePackage(NPM_ANGULAR);
 		const skillsSourceDir = `/node_modules/${igxPackage}/skills`;
 		const skillsDir = tree.getDir(skillsSourceDir);
-		const allSkillFiles = collectSkillFiles(skillsDir, skillsSourceDir);
 
-		if (!allSkillFiles.length) {
+		if (!skillsDir.subfiles.length && !skillsDir.subdirs.length) {
 			return;
 		}
 
-		for (const { full, relative } of allSkillFiles) {
-			const destPath = path.posix.join(CLAUDE_SKILLS_DIR, relative);
-			copySkillFile(tree, full, destPath, context);
-		}
+		copySkillFiles(tree, skillsDir, skillsSourceDir, CLAUDE_SKILLS_DIR, context);
 	};
 }
 
