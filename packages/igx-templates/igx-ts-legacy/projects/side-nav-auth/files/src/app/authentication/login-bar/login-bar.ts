@@ -2,8 +2,8 @@ import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { IgxDropDownComponent, ISelectionEventArgs } from 'igniteui-angular';
 import { LoginDialog } from '../login-dialog/login-dialog';
-import { ExternalAuth } from '../services/external-auth';
-import { UserStore } from '../services/user';
+import { ExternalAuthService } from '../services/external-auth.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-login-bar',
@@ -19,8 +19,8 @@ export class LoginBar {
   igxDropDown!: IgxDropDownComponent;
 
   constructor(
-    public userService: UserStore,
-    private authService: ExternalAuth,
+    public userService: UserService,
+    private authService: ExternalAuthService,
     private router: Router) {
   }
 

@@ -19,7 +19,7 @@ export enum ExternalAuthRedirectUrl {
 @Injectable({
   providedIn: 'root'
 })
-export class ExternalAuth {
+export class ExternalAuthService {
   protected providers: Map<ExternalAuthProvider, AuthProvider> = new Map();
   public get activeProvider(): ExternalAuthProvider {
     return this.localStorage.getItem('extActiveProvider') as ExternalAuthProvider;

@@ -16,7 +16,7 @@ export class ITreeGridAggregation {
   pure: true,
   standalone: false
 })
-export class <%=ClassName%>TreeGridGrouping implements PipeTransform {
+export class <%=ClassName%>TreeGridGroupingPipe implements PipeTransform {
 
   public transform(collection: any[],
            groupColumns: string[],

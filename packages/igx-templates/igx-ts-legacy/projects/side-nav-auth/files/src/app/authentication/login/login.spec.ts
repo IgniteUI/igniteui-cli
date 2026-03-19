@@ -6,10 +6,10 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { IgxButtonModule, IgxIconModule, IgxInputGroupModule, IgxRippleModule } from 'igniteui-angular';
-import { Authentication } from '../services/authentication';
+import { AuthenticationService } from '../services/authentication.service';
 import { ExternalAuthProvider } from '../services/external-auth-configs';
-import { ExternalAuth } from '../services/external-auth';
-import { UserStore } from '../services/user';
+import { ExternalAuthService } from '../services/external-auth.service';
+import { UserService } from '../services/user.service';
 import { Login } from './login';
 
 const MAIL_GROUP_NAME = 'email';
@@ -18,9 +18,9 @@ const PASSWORD_GROUP_NAME = 'password';
 describe('Login', () => {
   let component: Login;
   let fixture: ComponentFixture<Login>;
-  const extAuthSpy = jasmine.createSpyObj('ExternalAuth', ['login', 'hasProvider']);
-  const authSpy = jasmine.createSpyObj('Authentication', ['login']);
-  const userServSpy = jasmine.createSpyObj('UserStore', ['setCurrentUser']);
+  const extAuthSpy = jasmine.createSpyObj('ExternalAuthService', ['login', 'hasProvider']);
+  const authSpy = jasmine.createSpyObj('AuthenticationService', ['login']);
+  const userServSpy = jasmine.createSpyObj('UserService', ['setCurrentUser']);
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -28,9 +28,9 @@ describe('Login', () => {
         IgxInputGroupModule, IgxButtonModule, IgxIconModule, IgxRippleModule],
       declarations: [Login],
       providers: [
-        { provide: ExternalAuth, useValue: extAuthSpy },
-        { provide: Authentication, useValue: authSpy },
-        { provide: UserStore, useValue: userServSpy }
+        { provide: ExternalAuthService, useValue: extAuthSpy },
+        { provide: AuthenticationService, useValue: authSpy },
+        { provide: UserService, useValue: userServSpy }
       ]
     })
       .compileComponents();

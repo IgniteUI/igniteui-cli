@@ -4,7 +4,7 @@ import { AuthGuard } from './auth.guard';
 import { Profile } from './profile/profile';
 import { Redirect } from './redirect/redirect';
 import { ExternalAuthProvider } from './services/external-auth-configs';
-import { ExternalAuthRedirectUrl } from './services/external-auth';
+import { ExternalAuthRedirectUrl } from './services/external-auth.service';
 
 const authRoutes: Routes = [
   { path: 'profile', component: Profile, canActivate: [AuthGuard] },

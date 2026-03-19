@@ -5,14 +5,14 @@ import { take } from 'rxjs/operators';
 import { FacebookProvider } from '../providers/facebook-provider';
 import { GoogleProvider } from '../providers/google-provider';
 import { MicrosoftProvider } from '../providers/microsoft-provider';
-import { Authentication } from './authentication';
+import { AuthenticationService } from './authentication.service';
 import { ExternalAuthProvider } from './external-auth-configs';
-import { ExternalAuthRedirectUrl, ExternalAuth } from './external-auth';
-import { BackendInterceptor } from './fake-backend';
+import { ExternalAuthRedirectUrl, ExternalAuthService } from './external-auth.service';
+import { BackendInterceptor } from './fake-backend.service';
 import * as JWTUtil from './jwt-util';
 import { LocalStorageService } from './local-storage';
 import msKeys from './microsoft-keys';
-import { UserStore } from './user';
+import { UserService } from './user.service';
 
 describe('Services', () => {
 
@@ -21,7 +21,7 @@ describe('Services', () => {
       post: () => { }
     } as any;
 
-    const authServ = new Authentication(MOCK_HTTP_CLIENT);
+    const authServ = new AuthenticationService(MOCK_HTTP_CLIENT);
     it('Should properly initialize', async () => {
       expect(authServ).toBeDefined();
     });
@@ -79,7 +79,7 @@ describe('Services', () => {
     } as any;
 
     const localStorage = new LocalStorageService(PLATFORM_ID);
-    const extAuthServ = new ExternalAuth(MOCK_ROUTER, MOCK_OIDC_SECURITY, MOCK_OIDC_CONFIG, MOCK_LOCATION, localStorage);
+    const extAuthServ = new ExternalAuthService(MOCK_ROUTER, MOCK_OIDC_SECURITY, MOCK_OIDC_CONFIG, MOCK_LOCATION, localStorage);
     it(`Should properly initialize`, () => {
       expect(extAuthServ).toBeDefined();
     });
@@ -488,7 +488,7 @@ describe('Services', () => {
     });
 
     it(`Should properly initialize`, () => {
-      const userServ = new UserStore(localStorage);
+      const userServ = new UserService(localStorage);
       expect(userServ).toBeDefined();
       expect(localStorage.getItem).toHaveBeenCalledWith('currentUser');
       expect(JSON.parse).toHaveBeenCalledWith('MOCK JSON');
@@ -497,7 +497,7 @@ describe('Services', () => {
     });
 
     it(`Should properly get 'initials'`, () => {
-      const userServ = new UserStore(localStorage);
+      const userServ = new UserService(localStorage);
       const currentUserSpy = spyOnProperty(userServ, 'currentUser', 'get').and.returnValue(null);
       expect(userServ.initials).toEqual(null);
       currentUserSpy.and.returnValue({ given_name: '' });
@@ -515,7 +515,7 @@ describe('Services', () => {
     });
 
     it(`Should properly 'setCurrentUser'`, () => {
-      const userServ = new UserStore(localStorage);
+      const userServ = new UserService(localStorage);
       const mockUser2 = {
         exp: 111,
         name: 'Qually T',
@@ -537,7 +537,7 @@ describe('Services', () => {
     });
 
     it(`Should properly call 'clearCurrentUser'`, () => {
-      const userServ = new UserStore(localStorage);
+      const userServ = new UserService(localStorage);
       spyOn(localStorage, 'removeItem');
       expect(userServ.currentUser).toBeTruthy();
       userServ.clearCurrentUser();

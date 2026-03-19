@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ExternalLogin } from '../models/login';
-import { Authentication } from '../services/authentication';
+import { AuthenticationService } from '../services/authentication.service';
 import { ExternalAuthProvider } from '../services/external-auth-configs';
-import { ExternalAuth } from '../services/external-auth';
-import { UserStore } from '../services/user';
+import { ExternalAuthService } from '../services/external-auth.service';
+import { UserService } from '../services/user.service';
 
 const routeData = 'value';
 
@@ -17,9 +17,9 @@ export class Redirect implements OnInit {
   constructor(
     route: ActivatedRoute,
     private router: Router,
-    private user: UserStore,
-    private authService: Authentication,
-    private externalAuthService: ExternalAuth) {
+    private user: UserService,
+    private authService: AuthenticationService,
+    private externalAuthService: ExternalAuthService) {
     this.provider = route.snapshot.data[routeData].provider as ExternalAuthProvider;
   }
 

@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Authentication } from '../services/authentication';
+import { AuthenticationService } from '../services/authentication.service';
 import { ExternalAuthProvider } from '../services/external-auth-configs';
-import { ExternalAuth } from '../services/external-auth';
-import { UserStore } from '../services/user';
+import { ExternalAuthService } from '../services/external-auth.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -19,8 +19,8 @@ export class Login {
   public providers = ExternalAuthProvider;
 
   constructor(
-    public authService: ExternalAuth, private authentication: Authentication,
-    private userService: UserStore, private router: Router, fb: FormBuilder
+    public authService: ExternalAuthService, private authentication: AuthenticationService,
+    private userService: UserService, private router: Router, fb: FormBuilder
   ) {
     this.loginForm = fb.group({
       email: ['', Validators.required],

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable} from 'rxjs';
-import { FinancialData } from './assets/financialData';
+import { FinancialData } from './localData/financialData';
 
 @Injectable()
-export class LocalData {
+export class LocalDataService {
   public records: Observable<any[]>;
   public records$: BehaviorSubject<any[]>;
 
@@ -12,7 +12,7 @@ export class LocalData {
     this.records = this.records$.asObservable();
   }
 
-  public getData(count: number = 10): void {
+  public getData(count: number = 10) {
     const financialData: FinancialData = new FinancialData();
     this.records$.next(financialData.generateData(count));
   }

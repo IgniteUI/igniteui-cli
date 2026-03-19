@@ -21,7 +21,7 @@ import { Login } from './login/login';
 import { Profile } from './profile/profile';
 import { Redirect } from './redirect/redirect';
 import { Register } from './register/register';
-import { BackendProvider } from './services/fake-backend';
+import { BackendProvider } from './services/fake-backend.service';
 import { JwtInterceptor } from './services/jwt.interceptor';
 
 @NgModule({

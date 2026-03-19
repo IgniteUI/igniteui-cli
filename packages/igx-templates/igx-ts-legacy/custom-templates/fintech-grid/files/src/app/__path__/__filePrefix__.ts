@@ -16,11 +16,11 @@ import {
 import { CategoryChartType, IgxCategoryChartComponent } from 'igniteui-angular-charts';
 import { timer } from 'rxjs';
 import { debounce } from 'rxjs/operators';
-import { LocalData } from './localData';
+import { LocalDataService } from './localData.service';
 import { Contract, REGIONS } from './localData/financialData';
 
 @Component({
-  providers: [LocalData],
+  providers: [LocalDataService],
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.html',
   styleUrl: './<%=filePrefix%>.scss',
@@ -79,7 +79,7 @@ export class <%=ClassName%> implements OnInit, AfterViewInit, OnDestroy {
   private timer: any;
   private volumeChanged: any;
   constructor(
-    private localService: LocalData,
+    private localService: LocalDataService,
     private elRef: ElementRef,
     private cdr: ChangeDetectorRef) {
     this.subscription = this.localService.getData(this.volume);
