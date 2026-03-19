@@ -34,7 +34,7 @@ export class UserService {
 
   constructor(private localStorage: LocalStorageService) {
     const storedUser = this.localStorage.getItem(USER_TOKEN);
-    this._currentUser = storedUser ? JSON.parse(storedUser) : null;
+    this._currentUser = storedUser && storedUser !== 'undefined' ? JSON.parse(storedUser) : null;
   }
 
   /** Save new login as current user */

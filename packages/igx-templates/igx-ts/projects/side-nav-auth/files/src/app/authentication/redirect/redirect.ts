@@ -11,8 +11,7 @@ import { UserService } from '../services/user.service';
 const routeData = 'value';
 
 @Component({
-  template: '<p>Signing in...</p>',
-  standalone: true
+  template: '<p>Signing in...</p>'
 })
 export class Redirect implements OnInit {
   private provider: ExternalAuthProvider;
