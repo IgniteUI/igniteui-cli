@@ -430,20 +430,10 @@ export class Util {
 	}
 
 	public static getAvailableName(
-		defaultName: string, isApp: boolean, framework?: string, projectType?: string): string {
+		defaultName: string, isApp: boolean, _framework?: string, _projectType?: string): string {
 
 		const baseLength = defaultName.length;
-		let specificPath = "";
-
-		if (framework === "angular" && projectType === "igx-ts") {
-			specificPath = path.join("src", "app");
-		} else if (framework === "react" && projectType === "igr-es6") {
-			specificPath = path.join("src", "views");
-		} else if (framework === "react" && projectType === "igr-ts") {
-			specificPath = path.join("src", "app");
-		} else if (framework === "webcomponents" && projectType === "igc-ts") {
-			specificPath = path.join("src", "app");
-		}
+		const specificPath = path.join("src", "app");
 
 		if (isApp) {
 			while (Util.directoryExists(path.join(App.workDir, defaultName))) {

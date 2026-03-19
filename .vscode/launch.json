@@ -118,7 +118,7 @@
 		{
 			"type": "node",
 			"request": "launch",
-			"name": "Launch New React TS ES6",
+			"name": "Launch New React",
 			"cwd": "${workspaceRoot}/output",
 			"program": "${workspaceRoot}/packages/cli/bin/execute.js",
 			"console": "externalTerminal",
