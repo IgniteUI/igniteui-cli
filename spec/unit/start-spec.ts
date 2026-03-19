@@ -77,7 +77,7 @@ describe("Unit - start command", () => {
 		expect(Util.execSync).toHaveBeenCalledWith("npm start -- --port=3567", { stdio: "inherit", killSignal: "SIGINT" });
 
 		await startCmd.handler({ port: 1234, _: ["start"], $0: "start"  });
-		expect(Util.execSync).toHaveBeenCalledWith("npm start -- --port=3567", { stdio: "inherit", killSignal: "SIGINT" });
+		expect(Util.execSync).toHaveBeenCalledWith("npm start -- --port=1234", { stdio: "inherit", killSignal: "SIGINT" });
 
 		expect(Util.error).not.toHaveBeenCalled();
 	});
