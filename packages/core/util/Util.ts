@@ -430,10 +430,14 @@ export class Util {
 	}
 
 	public static getAvailableName(
-		defaultName: string, isApp: boolean, _framework?: string, _projectType?: string): string {
+		defaultName: string, isApp: boolean, framework?: string, _projectType?: string): string {
 
 		const baseLength = defaultName.length;
-		const specificPath = path.join("src", "app");
+		let specificPath = "";
+
+		if (["angular", "react", "webcomponents"].includes(framework)) {
+			specificPath = path.join("src", "app");
+		}
 
 		if (isApp) {
 			while (Util.directoryExists(path.join(App.workDir, defaultName))) {
