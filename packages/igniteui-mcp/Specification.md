@@ -112,7 +112,7 @@ Doc "<name>" not found for framework "<framework>". Use list_components to see a
 **Purpose**: Full-text search across Ignite UI docs for a specific framework. Returns the top 20 results with excerpt snippets.
 
 **Logic**:
-- Sanitizes the query by removing special FTS characters (`" - ( ) { } [ ] : ^ ~ @ `) and wraps each term in quotes joined with `OR`
+- Sanitizes the query by removing special FTS characters (``" - ( ) { } [ ] : ^ ~ @ ` ``) and wraps each term in quotes joined with `OR`
 - Calls `GET /api/docs/search?framework=<framework>&query=<sanitized>` on the docs backend
 - Returns an empty-query message immediately if the input is blank
 
