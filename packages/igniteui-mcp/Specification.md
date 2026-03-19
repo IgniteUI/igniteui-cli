@@ -6,7 +6,7 @@
 ## Overview
 The IgniteUI-CLI MCP (Model Context Protocol) Server provides programmatic access to IgniteUI doc repositories, enabling AI assistants, development tools, and automation systems to interact with IgniteUI projects through a standardized protocol.
 
-The Framework MCP Server solves the "Context Gap" encountered by AI models when working with custom or rapidly evolving UI libraries. By leveraging a structured documentation backend (exposed via `/api/docs/...`) built from IgniteUI framework repositories, the server transforms curated docs and metadata into actionable knowledge, allowing an AI to understand not just what APIs and components exist, but how to implement them according to specific framework standards.
+The IgniteUI-CLI MCP Server solves the "Context Gap" encountered by AI models when working with custom or rapidly evolving UI libraries. By leveraging a structured documentation backend (exposed via `/api/docs/...`) built from IgniteUI framework repositories, the server transforms curated docs and metadata into actionable knowledge, allowing an AI to understand not just what APIs and components exist, but how to implement them according to specific framework standards.
 
 ## Target Users
 - AI coding assistants (GitHub Copilot, Claude, etc.)
