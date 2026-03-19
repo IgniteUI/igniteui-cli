@@ -79,9 +79,9 @@ The `igniteui-cli` makes full use of the component definitions provided by [`ign
 
 #### Generate Ignite UI for React project
 
-To create a new project with Ignite UI for React use [ig new](https://github.com/IgniteUI/igniteui-cli/wiki/New#creating-ignite-ui-for-react-applications-v400) by specifying `react` as framework and `igr-es6` as project type:
+To create a new project with Ignite UI for React use [ig new](https://github.com/IgniteUI/igniteui-cli/wiki/New#creating-ignite-ui-for-react-applications-v400) by specifying `react` as framework and `igr-ts` as project type:
 ```bash
-ig new "IG Project" --framework=react --type=igr-es6
+ig new "IG Project" --framework=react --type=igr-ts
 ```
 
 #### Adding components

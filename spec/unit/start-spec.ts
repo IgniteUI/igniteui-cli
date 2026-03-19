@@ -56,13 +56,13 @@ describe("Unit - start command", () => {
 		expect(Util.error).not.toHaveBeenCalled();
 	});
 
-	it("Starts a React igr-es6 project", async () => {
+	it("Starts a React project", async () => {
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 		// tslint:disable-next-line:no-object-literal-type-assertion
 		const config: Config = {
 			project: {
 				framework: "react",
-				projectType: "igr-es6"
+				projectType: "igr-ts"
 			}
 		} as Config;
 		spyOn(ProjectConfig, "getConfig").and.callFake(() => config);
@@ -74,12 +74,10 @@ describe("Unit - start command", () => {
 
 		config.project.defaultPort = 3567;
 		await startCmd.handler({ _: ["start"], $0: "start" });
-		expect(process.env.PORT).toEqual("3567");
-		expect(Util.execSync).toHaveBeenCalledWith("npm start", { stdio: "inherit", killSignal: "SIGINT" });
+		expect(Util.execSync).toHaveBeenCalledWith("npm start -- --port=3567", { stdio: "inherit", killSignal: "SIGINT" });
 
 		await startCmd.handler({ port: 1234, _: ["start"], $0: "start"  });
-		expect(process.env.PORT).toEqual("1234");
-		expect(Util.execSync).toHaveBeenCalledWith("npm start", { stdio: "inherit", killSignal: "SIGINT" });
+		expect(Util.execSync).toHaveBeenCalledWith("npm start -- --port=1234", { stdio: "inherit", killSignal: "SIGINT" });
 
 		expect(Util.error).not.toHaveBeenCalled();
 	});
@@ -103,7 +101,6 @@ describe("Unit - start command", () => {
 		const config: Config = {
 			project: {
 				framework: "jquery",
-				projectType: "igr-es6"
 			}
 		} as Config;
 		spyOn(ProjectConfig, "getConfig").and.callFake(() => config);
