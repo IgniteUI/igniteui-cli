@@ -8,7 +8,7 @@ import { IgxInputGroupComponent, IgxPrefixDirective, IgxIconComponent, IgxLabelD
 import { Authentication } from '../services/authentication';
 import { ExternalAuthProvider } from '../services/external-auth-configs';
 import { ExternalAuth } from '../services/external-auth';
-import { UserStore } from '../services/user';
+import { UserStore } from '../services/user-store';
 
 @Component({
   selector: 'app-login',

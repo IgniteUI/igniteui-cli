@@ -12,7 +12,7 @@ import { BackendInterceptor } from './fake-backend';
 import * as JWTUtil from './jwt-util';
 import { LocalStorageService } from './local-storage';
 import msKeys from './microsoft-keys';
-import { UserStore } from './user';
+import { UserStore } from './user-store';
 
 describe('Services', () => {
 

@@ -5,7 +5,7 @@ import { IgxDropDownComponent, ISelectionEventArgs, IgxRippleDirective, IgxButto
   IgxAvatarComponent, IgxIconComponent, IgxDropDownItemComponent } from 'igniteui-angular';
 import { LoginDialog } from '../login-dialog/login-dialog';
 import { ExternalAuth } from '../services/external-auth';
-import { UserStore } from '../services/user';
+import { UserStore } from '../services/user-store';
 
 @Component({
   selector: 'app-login-bar',

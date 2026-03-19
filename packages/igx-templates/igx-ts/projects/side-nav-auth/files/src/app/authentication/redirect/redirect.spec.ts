@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Authentication } from '../services/authentication';
 import { ExternalAuth } from '../services/external-auth';
-import { UserStore } from '../services/user';
+import { UserStore } from '../services/user-store';
 import { Redirect } from './redirect';
 
 describe('Redirect', () => {

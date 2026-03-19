@@ -4,7 +4,7 @@ import { ExternalLogin } from '../models/login';
 import { Authentication } from '../services/authentication';
 import { ExternalAuthProvider } from '../services/external-auth-configs';
 import { ExternalAuth } from '../services/external-auth';
-import { UserStore } from '../services/user';
+import { UserStore } from '../services/user-store';
 
 const routeData = 'value';
 

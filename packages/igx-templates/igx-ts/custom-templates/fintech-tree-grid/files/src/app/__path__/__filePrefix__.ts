@@ -33,7 +33,7 @@ import {
 } from '<%=igxPackage%>';
 import { timer } from 'rxjs';
 import { debounce } from 'rxjs/operators';
-import { LocalData } from './localData';
+import { LocalData } from './local-data';
 import { ITreeGridAggregation, <%=ClassName%>TreeGridGroupingPipe } from './tree-grid-grouping.pipe';
 import { NgIf, CurrencyPipe } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';

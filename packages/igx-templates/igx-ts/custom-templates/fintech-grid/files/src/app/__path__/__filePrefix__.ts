@@ -44,7 +44,7 @@ import {
 } from 'igniteui-angular-charts';
 import { timer } from 'rxjs';
 import { debounce } from 'rxjs/operators';
-import { LocalData } from './localData';
+import { LocalData } from './local-data';
 import { Contract, REGIONS } from './data/financialData';
 import { NgIf, NgFor, CurrencyPipe } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';

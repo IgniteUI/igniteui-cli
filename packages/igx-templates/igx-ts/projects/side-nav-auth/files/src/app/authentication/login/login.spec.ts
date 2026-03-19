@@ -9,7 +9,7 @@ import { IgxButtonModule, IgxIconModule, IgxInputGroupModule, IgxRippleModule } 
 import { Authentication } from '../services/authentication';
 import { ExternalAuthProvider } from '../services/external-auth-configs';
 import { ExternalAuth } from '../services/external-auth';
-import { UserStore } from '../services/user';
+import { UserStore } from '../services/user-store';
 import { Login } from './login';
 
 const MAIL_GROUP_NAME = 'email';

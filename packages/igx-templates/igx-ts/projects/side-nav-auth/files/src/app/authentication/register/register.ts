@@ -5,7 +5,7 @@ import { IgxInputGroupComponent, IgxPrefixDirective, IgxIconComponent, IgxLabelD
 	IgxRippleDirective } from 'igniteui-angular';
 import { RegisterInfo } from '../models/register-info';
 import { Authentication } from '../services/authentication';
-import { UserStore } from '../services/user';
+import { UserStore } from '../services/user-store';
 
 @Component({
   selector: 'app-register',

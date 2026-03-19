@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { IgxButtonModule, IgxIconModule, IgxInputGroupModule, IgxRippleModule } from 'igniteui-angular';
 import { Authentication } from '../services/authentication';
-import { UserStore } from '../services/user';
+import { UserStore } from '../services/user-store';
 import { Register } from './register';
 
 const MAIL_GROUP_NAME = 'email';
