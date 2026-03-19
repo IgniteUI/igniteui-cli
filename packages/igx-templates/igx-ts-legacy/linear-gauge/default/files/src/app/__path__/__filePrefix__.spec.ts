@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { IgxLinearGaugeModule } from 'igniteui-angular-gauges';
 import { <%=ClassName%> } from './<%=filePrefix%>';
 
@@ -10,7 +9,7 @@ describe('<%=ClassName%>', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [<%=ClassName%>],
-      imports: [IgxLinearGaugeModule, NoopAnimationsModule]
+      imports: [IgxLinearGaugeModule]
     })
       .compileComponents();
   });
