@@ -5,25 +5,40 @@ import { appendFileSync, mkdirSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 import dotenv from "dotenv";
-import path from "path";
-import { exec } from "child_process";
-import { promisify } from "util";
 import { description } from "./tools/description.js";
 import type { DocsProvider } from "./providers/DocsProvider.js";
 import { RemoteDocsProvider } from "./providers/RemoteDocsProvider.js";
 import { LocalDocsProvider } from "./providers/LocalDocsProvider.js";
 
-const execAsync = promisify(exec);
-
 dotenv.config({ quiet: true });
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const LOG_PATH = join(__dirname, "mcp-server.log");
-const BACKEND_URL = process.env.DOCS_BACKEND_URL || "https://codegen-test5.indigo.design";
 
-mkdirSync(dirname(LOG_PATH), { recursive: true });
+function parseCliArgs(): { remote?: string; debug: boolean } {
+  const args = process.argv.slice(2);
+  let remote: string | undefined;
+  let debug = false;
+  for (let i = 0; i < args.length; i++) {
+    if (args[i] === "--remote") {
+      remote = args[++i] || process.env.IGNITEUI_MCP_DOCS_BACKEND_URL;
+      if (!remote) {
+        console.error("Error: --remote requires a URL argument or IGNITEUI_MCP_DOCS_BACKEND_URL env var.");
+        process.exit(1);
+      }
+    }
+    if (args[i] === "--debug") debug = true;
+  }
+  if (!remote && process.env.IGNITEUI_MCP_DOCS_BACKEND_URL) {
+    // env var alone does not activate remote mode
+  }
+  return { remote, debug };
+}
+
+const cliArgs = parseCliArgs();
 
 function log(tool: string, input: Record<string, any>, output: string, durationMs: number) {
+  if (!cliArgs.debug) return;
   const timestamp = new Date().toISOString();
   const outputPreview = output.length > 500 ? output.slice(0, 500) + `... (${output.length} chars total)` : output;
   const line =
@@ -31,19 +46,6 @@ function log(tool: string, input: Record<string, any>, output: string, durationM
     `  INPUT:  ${JSON.stringify(input)}\n` +
     `  OUTPUT: ${outputPreview}\n\n`;
   appendFileSync(LOG_PATH, line);
-}
-
-function isLocalMode(): boolean {
-  return process.argv.includes("--local") || process.env.DOCS_MODE === "local";
-}
-
-async function createDocsProvider(): Promise<DocsProvider> {
-  if (isLocalMode()) {
-    const provider = new LocalDocsProvider();
-    await provider.init();
-    return provider;
-  }
-  return new RemoteDocsProvider(BACKEND_URL);
 }
 
 const FRAMEWORK_ENUM = z
@@ -135,65 +137,75 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
       return { content: [{ type: "text" as const, text }] };
     }
   );
-}
 
-server.registerTool(
-  "generate_ignite_app",
-  {
-    description: description.generate_ignite_app,
-    inputSchema: {
-      name: z
-        .string()
-        .regex(/^[a-zA-Z0-9_\-]+$/, "Project name must be a valid folder name (alphanumeric, -, _)")
-        .describe("The name of the new project folder"),
-      framework: z.enum(["angular", "react", "webcomponents"]).describe("The framework for the project"),
-      type: z.string().describe("The project template type (e.g., 'igx-ts', 'igr-ts', 'igc-ts')").optional(),
-      template: z
-        .enum(["base", "side-nav", "empty"])
-        .describe("The UI template layout (e.g., 'base', 'side-nav', 'empty'). Defaults to 'base'.")
-        .optional()
-        .default("base"),
-      outputPath: z.string().describe("The absolute or relative path where the project should be created.").optional(),
+  const SETUP_DOCS: Record<string, string[]> = {
+    angular: ["cli-getting-started-with-cli", "cli-step-by-step-guide-using-cli"],
+    react: ["general-cli-overview"],
+    webcomponents: ["general-cli-overview"],
+    blazor: ["general-installing-blazor", "general-nuget-feed"],
+  };
+
+  const BLAZOR_DOTNET_GUIDE = `# Creating a Blazor Application
+
+## Create a new Blazor Web App
+
+\`\`\`bash
+dotnet new blazor -n MyBlazorApp
+cd MyBlazorApp
+\`\`\`
+
+## Or create a Blazor WebAssembly Standalone App
+
+\`\`\`bash
+dotnet new blazorwasm -n MyBlazorApp
+cd MyBlazorApp
+\`\`\`
+
+## Run the app
+
+\`\`\`bash
+dotnet run
+\`\`\`
+
+After creating the app, follow the guides below to add Ignite UI for Blazor components.
+
+---
+
+`;
+
+  server.registerTool(
+    "generate_ignite_app",
+    {
+      description: description.generate_ignite_app,
+      inputSchema: {
+        framework: FRAMEWORK_ENUM,
+      },
     },
-  },
-  async ({ name, framework, type, template, outputPath }) => {
-    const templateType = type || { angular: "igx-ts", react: "igr-ts", webcomponents: "igc-ts" }[framework];
+    async ({ framework }) => {
+      const start = performance.now();
+      const docNames = SETUP_DOCS[framework] || [];
+      const sections: string[] = [];
 
-    const basePath = outputPath ? path.resolve(outputPath) : process.cwd();
+      if (framework === "blazor") {
+        sections.push(BLAZOR_DOTNET_GUIDE);
+      }
 
-    try {
-      const command = [
-        "npx -y igniteui-cli new",
-        name,
-        `--framework=${framework}`,
-        ...(framework === "angular" ? ["--collection=@igniteui/angular-schematics"] : []),
-        `--type=${templateType}`,
-        `--skip-git=true`,
-        `--skip-install=true`,
-        `--template=${template}`,
-      ].join(" ");
+      for (const name of docNames) {
+        const { text, found } = await docsProvider.getDoc(framework, name);
+        if (found) {
+          sections.push(text);
+        }
+      }
 
-      const { stdout } = await execAsync(command, { cwd: basePath });
+      const result = sections.length > 0
+        ? sections.join("\n\n---\n\n")
+        : `No setup guide available for framework: ${framework}`;
 
-      return {
-        content: [
-          {
-            type: "text" as const,
-            text:
-              `Project '${name}' generated successfully.\n\n` +
-              `**Project Configuration Details:**\n` +
-              `* Output Path: ${basePath}\n` +
-              `* Requested Template: ${template}\n` +
-              `* Registered projectTemplate (in JSON): ${JSON.stringify({ type: templateType, template }, null, 2)}\n\n` +
-              `CLI Output:\n${stdout}`,
-          },
-        ],
-      };
-    } catch (error: any) {
-      return { isError: true, content: [{ type: "text" as const, text: `Generation failed: ${error.stderr || error.message}` }] };
+      log("generate_ignite_app", { framework }, result, Math.round(performance.now() - start));
+      return { content: [{ type: "text" as const, text: result }] };
     }
-  }
-);
+  );
+}
 
 // --- Prompt ---
 
@@ -240,22 +252,36 @@ Most tools require a \`framework\` parameter. Determine the framework from the u
 - **\`get_api_definition\`** — extract public API (interfaces, classes, types) from a source file found via \`search_components\`
 - **\`get_scaffold_reference\`** — find real-world usage examples from sample repositories
 
-## CLI Scaffolding Tools
+## Project Setup
 
-- **\`get_project_framework\`** — auto-detect framework from local project files
-- **\`get_cli_templates_list\`** — list available CLI templates before scaffolding
-- **\`generate_ignite_app\`** — scaffold a new Ignite UI project
-- **\`add_ignite_component\`** — add a component to an existing Ignite UI CLI project`,
+- **\`generate_ignite_app\`** — returns setup guides for creating a new Ignite UI project (CLI guides for Angular/React/WC, dotnet + NuGet guides for Blazor)
+
+## Other Tools
+
+- **\`get_project_framework\`** — auto-detect framework from local project files`,
       },
     },
   ],
 }));
 
 async function main() {
-  const docsProvider = await createDocsProvider();
+  let docsProvider: DocsProvider;
+  let mode: string;
 
-  const mode = isLocalMode() ? "local" : "remote";
-  appendFileSync(LOG_PATH, `[${new Date().toISOString()}] Server starting in ${mode} mode\n\n`);
+  if (cliArgs.remote) {
+    docsProvider = new RemoteDocsProvider(cliArgs.remote);
+    mode = "remote";
+  } else {
+    const provider = new LocalDocsProvider();
+    await provider.init();
+    docsProvider = provider;
+    mode = "local";
+  }
+
+  if (cliArgs.debug) {
+    mkdirSync(dirname(LOG_PATH), { recursive: true });
+    appendFileSync(LOG_PATH, `[${new Date().toISOString()}] Server starting in ${mode} mode\n\n`);
+  }
 
   registerDocTools(server, docsProvider);
 

@@ -1,9 +1,7 @@
 ---
-title: React Theming MCP | Infragistics 
-_description: React works with the Ignite UI Theming MCP server that allows you to create custom themes, palettes, typography, and elevations for your Ignite UI for React applications. Learn how to use the MCP server to generate and apply custom themes that match your brand and design requirements.
-_keywords: Ignite UI for React controls, React widgets, web widgets, UI widgets, Components Suite, Artificial Intelligence, AI, MCP, Model Context Protocol, Theming, Custom Themes, Palettes, Typography, Elevations
-_license: MIT
-mentionedTypes: []
+title: Ignite UI Theming MCP | Ignite UI for Angular
+_description: Ignite UI for Angular ships with the Ignite UI Theming MCP server that allows you to create custom themes, palettes, typography, and elevations for your Angular applications. Learn how to use the MCP server to generate and apply custom themes that match your brand and design requirements.
+_keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Artificial Intelligence, AI, MCP, Model Context Protocol, Theming, Custom Themes, Palettes, Typography, Elevations
 _tocName: Theming MCP
 ---
 
@@ -15,34 +13,34 @@ _tocName: Theming MCP
 
 ## Overview
 
-Instead of writing styles by hand, you can describe your theming intent in plain language and let an AI assistant generate the correct code for you. The MCP server gives the AI the knowledge and tools it needs to produce accurate theming code — including palettes with proper shade generation, typography, elevations, component design token overrides, and more.
+Instead of writing Sass theming code by hand, you can describe your theming intent in plain language and let an AI assistant generate the correct code for you. The MCP server gives the AI the knowledge and tools it needs to produce accurate theming code — including palettes with proper shade generation, typography, elevations, component design token overrides, and more.
 
-The server supports all four Ignite UI design systems — **Material**, **Bootstrap**, **Fluent**, and **Indigo** — in both light and dark variants. While this guide focuses on React, the MCP server also works with all Ignite UI component libraries from Infragistics. The `detect_platform` tool reads your `package.json` and selects the correct import paths and selectors automatically.
+The server supports all four Ignite UI design systems — **Material**, **Bootstrap**, **Fluent**, and **Indigo** — in both light and dark variants. While this guide focuses on Angular, the MCP server also works with **Ignite UI for Web Components**, **React**, and **Blazor**. The `detect_platform` tool reads your `package.json` and selects the correct import paths and selectors automatically.
 
 Most tools can produce either **Sass** or **CSS** output. Sass output is the default and integrates with the `igniteui-theming` Sass module. CSS output generates ready-to-use CSS custom properties and can be used **without a local Sass toolchain** — the server compiles it for you.
 
 **Example prompts to try once connected:**
 
-> *"Create a complete Material Design dark theme for my React app with primary #2563eb and coral secondary #f97316."*
+> _"Create a complete Material Design dark theme for my Angular app with primary #2563eb and coral secondary #f97316."_
 
-> *"What design tokens are available for the button component? Customize it with my brand purple #8b5cf6."*
+> _"What design tokens are available for the button component? Customize it with my brand purple #8b5cf6."_
 
-> *"My brand guidelines specify exact hex values for every primary shade — create a custom palette with those explicit values."*
+> _"My brand guidelines specify exact hex values for every primary shade — create a custom palette with those explicit values."_
 
-> *"Make the calendar component use smaller spacing."*
+> _"Make the calendar component use smaller spacing."_
 
 ## Prerequisites
 
 Before configuring the MCP server, make sure you have:
 
 - **Node.js** (v18 or later) installed — this provides the `npx` command used to launch the server.
-- A project with an **Ignite UI package** listed as a dependency in `package.json`.
+- A project with an **Ignite UI package** listed as a dependency in `package.json`. For Angular, this is `igniteui-angular` (v15.0 or later). The server also supports `igniteui-webcomponents`, `igniteui-react`, and `igniteui-blazor`.
 - An **AI client with MCP support** — for example, VS Code with GitHub Copilot, Cursor, Claude Desktop, Claude Code, or a JetBrains IDE with the AI Assistant plugin.
 
-If you do not have Ignite UI Theming installed yet, run:
+If you do not have `igniteui-angular` installed yet, run:
 
 ```bash
-npm install igniteui-theming
+ng add igniteui-angular
 ```
 
 ## Setup
@@ -55,8 +53,16 @@ The canonical launch command is:
 npx -y igniteui-theming igniteui-theming-mcp
 ```
 
-> \[!NOTE]
+> [!NOTE]
 > The `-y` flag tells `npx` to auto-confirm the package download prompt so the server can start without manual intervention.
+
+### How version resolution works
+
+Because `igniteui-theming` is a dependency of `igniteui-angular`, it is already present in your `node_modules` after `npm install`. When you run the launch command above, `npx` detects the locally installed copy and runs it directly — no network request is made. This means the MCP server version always stays in sync with the rest of your Ignite UI packages.
+
+If you run the command outside a project (or before running `npm install`), `npx -y` downloads the **latest** version from npm into a temporary cache instead. The server will still start, but `detect_platform` will return `generic` since there is no `package.json` to inspect.
+
+Choose your AI client below for the specific configuration steps.
 
 ### VS Code
 
@@ -75,7 +81,7 @@ GitHub Copilot in VS Code supports MCP servers through a workspace-level configu
 
 Once saved, open the GitHub Copilot chat panel, switch to **Agent** mode, and the Ignite UI Theming tools will be available.
 
-> \[!NOTE]
+> [!NOTE]
 > MCP support in VS Code requires GitHub Copilot and VS Code 1.99 or later.
 
 ### Cursor
@@ -95,7 +101,7 @@ Cursor supports project-scoped MCP configuration. Create or edit `.cursor/mcp.js
 
 The server will be picked up automatically when you open a new Cursor chat session.
 
-> \[!NOTE]
+> [!NOTE]
 > You can also configure MCP servers globally via **Settings → MCP** in Cursor.
 
 ### Claude Desktop
@@ -146,11 +152,8 @@ Use the `/mcp` command inside Claude Code to verify the server is connected.
 JetBrains AI Assistant supports MCP servers through the IDE settings:
 
 1. Open **Settings** (or **Preferences** on macOS).
-
 2. Navigate to **Tools → AI Assistant → Model Context Protocol (MCP)**.
-
 3. Click **+ Add** and choose **As JSON** or use the form fields.
-
 4. Enter the following configuration:
 
     ```json
@@ -166,7 +169,7 @@ JetBrains AI Assistant supports MCP servers through the IDE settings:
 
 5. Click **OK** and restart the AI Assistant.
 
-> \[!NOTE]
+> [!NOTE]
 > MCP support requires the AI Assistant plugin to be installed and enabled in your JetBrains IDE.
 
 ### Other MCP Clients
@@ -178,9 +181,9 @@ For any other MCP-compatible client, use the STDIO transport with the following 
 
 ## Customizing AI Behavior with Project Rules
 
-This section is optional. It is aimed at teams that want to fine-tune *how* the AI generates theming code to match their existing codebase conventions.
+This section is optional. It is aimed at teams that want to fine-tune _how_ the AI generates theming code to match their existing codebase conventions.
 
-Editors like VS Code and Cursor let you provide project-level instruction files that shape how the AI behaves. The MCP server already teaches the AI *which tools to call and in what order* — you do not need to repeat that. Instead, use these instruction files to encode your **project's design decisions, code conventions, and file organization** so the AI produces code that fits your codebase on the first try.
+Editors like VS Code and Cursor let you provide project-level instruction files that shape how the AI behaves. The MCP server already teaches the AI _which tools to call and in what order_ — you do not need to repeat that. Instead, use these instruction files to encode your **project's design decisions, code conventions, and file organization** so the AI produces code that fits your codebase on the first try.
 
 ### VS Code (`.github/copilot-instructions.md`)
 
@@ -201,7 +204,7 @@ Editors like VS Code and Cursor let you provide project-level instruction files 
 
 ```markdown
 ---
-description: Ignite UI for React theming conventions
+description: Ignite UI for Angular theming conventions
 globs: ["**/*.scss", "**/styles/**"]
 ---
 
@@ -217,7 +220,7 @@ globs: ["**/*.scss", "**/styles/**"]
 - For dark mode, only the palette changes. Component overrides stay the same.
 ```
 
-> \[!NOTE]
+> [!NOTE]
 > Both files are committed to source control, so every team member gets the same AI behavior without manual setup. Adapt the brand colors, design system, and file paths to match your project.
 
 ## Available Tools
@@ -226,7 +229,7 @@ The MCP server exposes a set of tools that the AI uses automatically based on yo
 
 To see the current full list of tools and their parameters at any time, ask your AI assistant:
 
-> *"What tools does the Ignite UI Theming MCP provide?"*
+> _"What tools does the Ignite UI Theming MCP provide?"_
 
 Here is a brief overview of each tool:
 
@@ -246,8 +249,11 @@ Here is a brief overview of each tool:
 | `get_color` | Returns a CSS variable reference for a palette color, e.g. `var(--ig-primary-500)`. Supports optional contrast and opacity parameters. |
 | `read_resource` | Reads built-in reference resources organized into four categories: platform configs (6), palette/typography/elevation presets (5), color guidance (7), and layout/spacing docs (8). |
 
-> \[!NOTE]
+> [!NOTE]
 > For compound components (e.g., `combo`, `select`, `grid`), `get_component_design_tokens` returns a list of related child themes instead of a flat token list. For example, querying `grid` may return child themes such as `grid`, `grid-toolbar`, `grid-filtering`, and `paginator`. The AI will generate a separate `create_component_theme` call for each child theme using the appropriate scoped selector.
+
+> [!NOTE]
+> If your project uses the licensed `@infragistics/igniteui-angular` package, tell the AI so it can set the `licensed` parameter on palette, theme, and component tools. This adjusts the generated import paths accordingly.
 
 ## Example Scenarios
 
@@ -255,49 +261,49 @@ The following scenarios show what you can ask the AI to do once the MCP server i
 
 ### New Project Theme
 
-> *"I'm starting a new React project with Ignite UI. Create a complete Material Design light theme with primary #2563eb, secondary #f97316, and Roboto font."*
+> _"I'm starting a new Angular project with Ignite UI. Create a complete Material Design light theme with primary #2563eb, secondary #f97316, and Roboto font."_
 
 The AI will call `create_theme` and return a ready-to-use `styles.scss` file. The generated output will look similar to this:
 
 ```scss
 /* styles.scss */
-@use 'igniteui-theming' as *;
-@use 'igniteui-theming/sass/typography/presets' as *;
-@use 'igniteui-theming/sass/elevations/presets' as *;
+@use 'igniteui-angular/theming' as *;
 
 $my-palette: palette(
   $primary: #2563eb,
   $secondary: #f97316,
   $surface: #fff,
+  $gray: #9e9e9e,
 );
 
-@include elevations($material-elevations);
-@include palette($light-material-palette);
-@include typography(
-  $font-family: "Titillium Web, sans-serif",
-  $type-scale: $material-type-scale
+$my-typography: typography(
+  $font-family: 'Roboto, sans-serif',
 );
+
+@include core();
+@include typography($my-typography);
+@include theme($my-palette, $schema: $light-material-schema);
 ```
 
 ### Dark Mode Variant
 
-> *"I need a dark mode version of my existing theme. Keep the same primary blue but use a dark surface #121212."*
+> _"I need a dark mode version of my existing theme. Keep the same primary blue but use a dark surface #121212."_
 
 ### Brand-Exact Color Shades
 
-> *"Our design system specifies exact hex values for all 14 shades of our primary green. I'll paste the values — create a custom palette."*
+> _"Our design system specifies exact hex values for all 14 shades of our primary green. I'll paste the values — create a custom palette."_
 
-The AI will call `create_custom_palette` with `mode: "explicit"` for the primary color and auto-generate the rest.
+The AI will call `create_custom_palette` with `mode: "explicit"` for the primary color and auto-generate the rest. See [Palettes](../themes/palettes.md) for more detail on shade generation.
 
 ### Component-Level Customization
 
-> *"Style the flat button with a purple background #8b5cf6 and white text, with a lighter purple #a78bfa on hover."*
+> _"Style the flat button with a purple background #8b5cf6 and white text, with a lighter purple #a78bfa on hover."_
 
 The AI will call `get_component_design_tokens` first to discover valid token names, then call `create_component_theme` with the correct values.
 
 ### Layout Adjustments
 
-> *"The calendar feels bloated — reduce its spacing, and make all components slightly smaller."*
+> _"The calendar feels bloated — reduce its spacing, and make all components slightly smaller."_
 
 The AI will call `set_spacing` scoped to the calendar component and `set_size` at the `:root` level.
 
@@ -305,7 +311,7 @@ The AI will call `set_spacing` scoped to the calendar component and `set_size` a
 
 **Platform not detected**
 
-If `detect_platform` returns `null` or `generic`, make sure your `package.json` lists an Ignite UI package (e.g., `igniteui-react`) as a dependency. You can also tell the AI explicitly: *"Use Ignite UI for React."*
+If `detect_platform` returns `null` or `generic`, make sure your `package.json` lists an Ignite UI package (e.g., `igniteui-angular`, `igniteui-webcomponents`) as a dependency. You can also tell the AI explicitly: _"Use the Angular platform."_
 
 **Luminance warning on colors**
 
@@ -315,8 +321,31 @@ If the AI warns about color luminance, it means the chosen color is too light or
 
 For light themes use a light surface (e.g., `#fafafa`). For dark themes use a dark surface (e.g., `#121212`). Mismatched surface colors cause the AI to emit a warning.
 
+**Generated Sass does not compile**
+
+Ensure `igniteui-angular` and `igniteui-theming` are installed:
+
+```bash
+ng add igniteui-angular
+```
+
+Also confirm that `core()` is called before any other theming mixin in your `styles.scss`. See [Theming with Sass](../themes/sass/index.md) for the correct file setup.
+
 ## Additional Resources
 
-- [Ignite UI for React Skills](./skills.md)
-- [Ignite UI for React **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-react)
-- [Ignite UI for React **GitHub**](https://github.com/IgniteUI/igniteui-react)
+Related topics:
+
+- [Theming Overview](../themes/index.md)
+- [Palettes](../themes/palettes.md)
+- [Typography](../themes/typography.md)
+- [Elevations](../themes/elevations.md)
+- [Spacing](../themes/spacing.md)
+- [Roundness](../themes/roundness.md)
+- [Theming with Sass](../themes/sass/index.md)
+
+<div class="divider--half"></div>
+
+Our community is active and always welcoming to new ideas.
+
+- [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)
+- [Ignite UI for Angular **GitHub**](https://github.com/IgniteUI/igniteui-angular)

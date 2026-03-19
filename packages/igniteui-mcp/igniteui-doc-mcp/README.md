@@ -32,24 +32,27 @@ npm run build
 ### Running the MCP Server
 
 ```bash
-# Remote mode (default) — proxies to DOCS_BACKEND_URL
+# Local mode (default) — uses bundled SQLite database
 node dist/index.js
 
-# Local mode — uses bundled SQLite database
-node dist/index.js --local
+# Remote mode — proxies to a backend API
+node dist/index.js --remote https://your-backend-url.com
 
-# Local mode via env var
-DOCS_MODE=local node dist/index.js
+# Remote mode via env var
+IGNITEUI_MCP_DOCS_BACKEND_URL=https://your-backend-url.com node dist/index.js --remote
 
 # Custom DB path for local mode
-DB_PATH=/path/to/igniteui-docs.db node dist/index.js --local
+DB_PATH=/path/to/igniteui-docs.db node dist/index.js
+
+# Enable debug logging
+node dist/index.js --debug
 ```
 
 Local mode requires `dist/igniteui-docs.db`. Run the pipeline and `npm run build:db` to generate it.
 
-### Configuring MCP Clients for Local Mode
+### Configuring MCP Clients
 
-To use the server in local mode with an MCP client (VS Code, Claude Desktop, Cursor, etc.), add it to your MCP configuration file with the `--local` flag.
+To use the server with an MCP client (VS Code, Claude Desktop, Cursor, etc.), add it to your MCP configuration file.
 
 **VS Code** (`.vscode/mcp.json`):
 ```json
@@ -58,7 +61,7 @@ To use the server in local mode with an MCP client (VS Code, Claude Desktop, Cur
     "igniteui": {
       "type": "stdio",
       "command": "node",
-      "args": ["/absolute/path/to/igniteui-doc-mcp/dist/index.js", "--local"]
+      "args": ["/absolute/path/to/igniteui-doc-mcp/dist/index.js"]
     }
   }
 }
@@ -70,7 +73,7 @@ To use the server in local mode with an MCP client (VS Code, Claude Desktop, Cur
   "mcpServers": {
     "igniteui": {
       "command": "node",
-      "args": ["/absolute/path/to/igniteui-doc-mcp/dist/index.js", "--local"]
+      "args": ["/absolute/path/to/igniteui-doc-mcp/dist/index.js"]
     }
   }
 }
@@ -80,14 +83,22 @@ To use the server in local mode with an MCP client (VS Code, Claude Desktop, Cur
 ```json
 {
   "command": "node",
-  "args": ["/absolute/path/to/igniteui-doc-mcp/dist/index.js", "--local"],
+  "args": ["/absolute/path/to/igniteui-doc-mcp/dist/index.js"],
   "env": {
     "DB_PATH": "/absolute/path/to/igniteui-docs.db"
   }
 }
 ```
 
-> **Note:** The `--local` flag makes the server fully self-contained — no backend API or network access needed. The SQLite database (`db/igniteui-docs.db`) is checked into git, so after `npm run build` it is copied to `dist/` and ready to use.
+**With remote backend** (any client):
+```json
+{
+  "command": "node",
+  "args": ["/absolute/path/to/igniteui-doc-mcp/dist/index.js", "--remote", "https://your-backend-url.com"]
+}
+```
+
+> **Note:** The server uses local mode by default — fully self-contained with no backend API or network access needed. The SQLite database (`db/igniteui-docs.db`) is checked into git, so after `npm run build` it is copied to `dist/` and ready to use.
 
 ## Pipeline Overview
 
@@ -219,7 +230,7 @@ npm run compress:blazor
 
 | Parameter | Description | Default |
 |-----------|-------------|---------|
-| `--model <name>` | OpenAI model to use | `gpt-5-mini` |
+| `--model <name>` | OpenAI model to use | `gpt-5.4-mini` |
 | `--api-base <url>` | Custom OpenAI API base URL | OpenAI default |
 | `--min-size <kb>` | Skip files smaller than this (KB) | `0` |
 | `--delay <seconds>` | Delay between API calls | `0.5` |
@@ -257,7 +268,7 @@ npm run compress:react -- --batch poll             # Step 2: poll, download & va
 npm run compress:react -- --batch retry            # Step 3: retry failed/invalid files (optional)
 
 # Batch with filters
-npm run compress:react -- --batch submit --only grid.md --model gpt-5-mini
+npm run compress:react -- --batch submit --only grid.md --model gpt-5.4-mini
 
 # Incremental mode (only compress changed files from diff manifest)
 npm run compress:angular -- --manifest dist/diff-manifest.json
@@ -324,7 +335,7 @@ npx tsx --env-file=.env scripts/validate-docs.ts --input ./dist/docs_final/angul
 | `--input <dir>` | **(Required)** Path to compressed docs directory | none |
 | `--original <dir>` | Path to original (pre-compress) docs directory | Inferred by replacing `docs_final` with `docs_prepeared` in `--input` |
 | `--output <path>` | Path for the JSON report file | `dist/validation_report_<platform>.json` |
-| `--model <name>` | OpenAI model for judging | `gpt-5.1` |
+| `--model <name>` | OpenAI model for judging | `gpt-5.4` |
 | `--api-base <url>` | Custom OpenAI API base URL | OpenAI default |
 | `--sample <count>` | Number of files to validate (stratified by size) | `10` |
 | `--delay <seconds>` | Delay between API calls | `1` |
@@ -409,7 +420,7 @@ npm run start      # start MCP server
 }
 ```
 
-The server loads `dist/igniteui-docs.db` (SQLite with FTS4) into memory via `sql.js` and serves ~1,200 docs across all 4 frameworks.
+The server uses local mode by default, loading `dist/igniteui-docs.db` (SQLite with FTS4) into memory via `sql.js` to serve ~1,200 docs across all 4 frameworks. Use `--remote <url>` to proxy to a backend API instead. Use `--debug` to enable request logging.
 
 ### Tools
 
@@ -418,45 +429,29 @@ The server loads `dist/igniteui-docs.db` (SQLite with FTS4) into memory via `sql
 | `list_components` | `framework` (required), `filter?` | List docs for a framework, optionally filtered by keyword (LIKE match against filename, component, toc_name, keywords, summary) |
 | `get_doc` | `framework` (required), `name` (required) | Return full markdown content of a specific doc. `name` is without `.md` extension |
 | `search_docs` | `query` (required), `framework` (required) | FTS4 full-text search with Porter stemming. Returns top 20 results with snippet excerpts |
-| `generate_ignite_app` | `name` (required), `framework` (required), `type?`, `template?`, `outputPath?` | Scaffold a new Ignite UI project using the Ignite UI CLI |
+| `generate_ignite_app` | `framework` (required) | Return setup guides for creating a new Ignite UI project. For Angular/React/WC: CLI docs. For Blazor: dotnet + NuGet guides |
 
 #### generate_ignite_app
 
-Creates a new Ignite UI project with complete structure, dependencies, and configuration files using the Ignite UI CLI.
+Returns framework-specific setup guides for creating a new Ignite UI project.
 
-**Supported frameworks:** `angular`, `react`, `webcomponents`
+**For Angular, React, Web Components:** Returns Ignite UI CLI documentation with step-by-step instructions for project scaffolding.
+**For Blazor:** Returns a guide for creating a Blazor app using `dotnet new` and adding Ignite UI Blazor dependencies via NuGet.
+
+**Supported frameworks:** `angular`, `react`, `webcomponents`, `blazor`
 
 **Parameters:**
 
 | Parameter | Required | Description |
 |-----------|----------|-------------|
-| `name` | Yes | Project folder name (alphanumeric, `-`, `_`) |
-| `framework` | Yes | `angular`, `react`, or `webcomponents` |
-| `type` | No | CLI template type. Defaults: `igx-ts` (Angular), `igr-ts` (React), `igc-ts` (WebComponents) |
-| `template` | No | UI layout template: `base` (default), `side-nav`, or `empty` |
-| `outputPath` | No | Absolute or relative path where the project should be created. Defaults to current working directory |
-
-**Before using:** Run `list_components` to discover components that match your requirements (e.g. search for `"card"`, `"chart"`, `"grid"`).
-
-**Next steps after generation:** `cd <name>` → `npm install` → `npm start`
+| `framework` | Yes | `angular`, `react`, `webcomponents`, or `blazor` |
 
 **Example:**
 ```json
 {
-  "name": "my-dashboard",
-  "framework": "angular",
-  "template": "side-nav",
-  "outputPath": "C:/projects"
+  "framework": "angular"
 }
 ```
-
-> **Prerequisites:** Ensure the following global packages are installed before using this tool:
-> ```bash
-> npm i -g --ignore-scripts @angular/cli@latest
-> npm i -g --ignore-scripts igniteui-cli@latest
-> npm i -g --ignore-scripts @igniteui/cli-core@latest
-> npm i -g --ignore-scripts @igniteui/angular-schematics@latest
-> ```
 
 ## Directory Structure
 

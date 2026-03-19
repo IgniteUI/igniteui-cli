@@ -37,11 +37,11 @@ In the package manager dialog, open the **Browse** tab, select the **Infragistic
 ## Using the .NET CLI
 
 ```cmd
-> dotnet add package IgniteUI.Blazor --version 25.2.38 (December 2025)
+> dotnet add package IgniteUI.Blazor --version 25.2.77 (March 2026)
 ```
 
 ## Using the Package Manager
 
 ```cmd
-PM> Install-Package IgniteUI.Blazor -Version 25.2.38 (December 2025)
+PM> Install-Package IgniteUI.Blazor -Version 25.2.77 (March 2026)
 ```

@@ -18,9 +18,13 @@ All notable changes for each version of Ignite UI for Blazor are documented on t
 
 - As of version 2024.2, the Ignite UI for Blazor toolset supports .NET 9. For more information on .NET 9 please refer to [this article on Microsoft's site](https://learn.microsoft.com/en-us/dotnet/core/whats-new/dotnet-9/overview).
 
-## **25.2.38 (December 2025)**
+## **25.2.77 (March 2026)**
 
 ### IgniteUI.Blazor (Grids)
+
+#### IgbQueryBuilder
+
+- Added new component - IgbQueryBuilder - a UI component that allows users to build complex filtering conditions through an intuitive visual interface.
 
 #### IgbGrid, IgbTreeGrid, IgbHierarchicalGrid, IgbPivotGrid
 
@@ -67,20 +71,18 @@ All notable changes for each version of Ignite UI for Blazor are documented on t
 
 | Bug Number | Control | Description |
 |------------|---------|-------------|
-| 2189 | DataChart | DataChart skips rendering axis when there are no labels |
-| 2959 | LinearGauge | Gauges should not call View functions |
-| 2221 | Excel | Adding Excel support for round tripping the camera tool |
-| 2235 | Excel | fixed Excel Formula parser |
-| 2842 | DataChart | AssigningCategoryStyle args.GetItems is null or not working to update items in the fragment series |
-| 2234 | DataChart | Improve DataChart rendering - skip when bucket size is 0 |
-| 2326 | PieChart | Add property to set others color |
-| 2871 | DataLegend | Preserve deterministic ordering of series groups in DataLegend |
-| 2722 | DataChart | DataTooltipLayer - TitleTextColor is overridden when chart's TitleTextColor is used |
-| 2317 | Grid | Improve IgbGrid BodyTemplate Performance (C#/.NET templating) |
-| 2280 | CategoryChart | regression issue in Blazor Chart when doing aggregations (ex. grouping and summarizing) |
-| 2908 | MaskInput | IgbMaskInput Prompt parameter is not propagated to the underlying Web Component prompt property |
-| 2907 | DateTimeInput  | IgbDateTimeInput Prompt parameter is not propagated to the underlying Web Component prompt property |
-| 2909 | PivotGrid  | IgbPivotGrid exposes SnackbarDisplayTime, but the property is not applicable and causes false test failures |
+| 2189  | IgbDataChart | DataChart skips rendering axis when there are no labels |
+| 2317  | IgbGrid | Improve IgbGrid BodyTemplate Performance (C#/.NET templating) |
+| 2326  | IgbDataPieChart | Added OthersCategory styling properties to DataPieChart |
+| 2907  | IgbDateTimeInput  | IgbDateTimeInput Prompt parameter is not propagated to the underlying Web Component prompt property |
+| 2908  | IgbMaskInput | IgbMaskInput Prompt parameter is not propagated to the underlying Web Component prompt property |
+| 2909  | IgbPivotGrid  | IgbPivotGrid exposes SnackbarDisplayTime, but the property is not applicable and causes false test failures |
+| 38668 | IgbDataTooltipLayer | TitleTextColor is overridden when chart's TitleTextColor is used |
+| 40238 | Excel | fixed Excel Formula parser - Workbook.Load() throwing a Excel.FormulaParseException|
+| 41167 | Excel | Object's Formulas are not round-tripped - Added Excel support for round tripping the camera tool |
+| 41419 | Excel | Saving a VBA Signed Excel file does not keep a signature/certificate. |
+| 41594 | IgbDataChart | AssigningCategoryStyle args.GetItems is null or not working to update items in the fragment series |
+| 41598 | IgbDataChart | Exception editing a doughnut chart – DivideByZeroException  |
 | [#2079](https://github.com/IgniteUI/igniteui-webcomponents/pull/2079) | Calendar | `aria-hidden` state for weeks outside of the current month |
 | [#2078](https://github.com/IgniteUI/igniteui-webcomponents/pull/2078) | Date Picker | CSS border for slotted actions in dialog mode |
 | [#2068](https://github.com/IgniteUI/igniteui-webcomponents/pull/2068) | Input | Placeholder color on focus |
@@ -117,7 +119,7 @@ All notable changes for each version of Ignite UI for Blazor are documented on t
 | [#1828](https://github.com/IgniteUI/igniteui-webcomponents/issues/1828) | Tooltip | Do not show the tooltip when the tooltip target is clicked |
 | [#1936](https://github.com/IgniteUI/igniteui-webcomponents/pull/1936) | Tooltip | Removed the max-width constraint for slotted content |
 
-## **{PackageVerChanges-25-2-DEC}**
+## **25.2.38 (December 2025)**
 
 ### Enhancements
 
