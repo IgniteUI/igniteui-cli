@@ -4,6 +4,8 @@ import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { importProvidersFrom } from '@angular/core';
+import { provideHttpClient } from '@angular/common/http';
 import { AuthModule } from 'angular-auth-oidc-client';
 import {
   IgxAvatarComponent,
@@ -54,7 +56,6 @@ describe('LoginBar', () => {
       imports: [
         RouterTestingModule,
         NoopAnimationsModule,
-        AuthModule,
         IgxAvatarModule,
         IgxButtonModule,
         IgxDialogModule,
@@ -66,6 +67,8 @@ describe('LoginBar', () => {
 		TestLoginDialog
       ],
       providers: [
+        importProvidersFrom(AuthModule.forRoot({ config: [] })),
+        provideHttpClient(),
         { provide: UserService, useClass: TestUserServSpy },
         { provide: ExternalAuthService, useClass: TestAuthService }
       ]

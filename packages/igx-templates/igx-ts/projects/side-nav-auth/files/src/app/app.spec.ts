@@ -1,9 +1,11 @@
+import { importProvidersFrom } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
+import { provideHttpClient } from '@angular/common/http';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
+import { AuthModule } from 'angular-auth-oidc-client';
 import { IgxLayoutModule, IgxNavbarModule, IgxNavigationDrawerModule, IgxRippleModule } from 'igniteui-angular';
 import { App } from './app';
-import { AuthenticationModule } from './authentication';
 
 describe('App', () => {
   beforeEach(async () => {
@@ -12,11 +14,14 @@ describe('App', () => {
         NoopAnimationsModule,
         RouterModule.forRoot([]),
         IgxNavigationDrawerModule,
-        AuthenticationModule,
         IgxNavbarModule,
         IgxLayoutModule,
         IgxRippleModule,
         App
+      ],
+      providers: [
+        importProvidersFrom(AuthModule.forRoot({ config: [] })),
+        provideHttpClient()
       ]
     }).compileComponents();
   });
