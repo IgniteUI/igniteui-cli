@@ -45,7 +45,7 @@ import {
 import { timer } from 'rxjs';
 import { debounce } from 'rxjs/operators';
 import { LocalData } from './localData';
-import { Contract, REGIONS } from './localData/financialData';
+import { Contract, REGIONS } from './data/financialData';
 import { NgIf, NgFor, CurrencyPipe } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
