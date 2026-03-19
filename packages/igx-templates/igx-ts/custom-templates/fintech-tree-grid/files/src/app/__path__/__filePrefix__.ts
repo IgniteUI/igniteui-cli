@@ -29,12 +29,12 @@ import {
   IgxColumnComponent,
   IgxCellTemplateDirective,
   IgxIconComponent,
-  IgxTreeGridGrouping,
+  IgxTreeGridGroupingPipe,
 } from '<%=igxPackage%>';
 import { timer } from 'rxjs';
 import { debounce } from 'rxjs/operators';
 import { LocalData } from './localData';
-import { ITreeGridAggregation, <%=ClassName%>TreeGridGrouping } from './tree-grid-grouping';
+import { ITreeGridAggregation, <%=ClassName%>TreeGridGroupingPipe } from './tree-grid-grouping.pipe';
 import { NgIf, CurrencyPipe } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
@@ -59,8 +59,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     IgxCellTemplateDirective,
     IgxIconComponent,
     CurrencyPipe,
-    IgxTreeGridGrouping,
-    <%=ClassName%>TreeGridGrouping
+    IgxTreeGridGroupingPipe,
+    <%=ClassName%>TreeGridGroupingPipe
   ]
 })
 export class <%=ClassName%> implements OnInit, AfterViewInit, OnDestroy {
