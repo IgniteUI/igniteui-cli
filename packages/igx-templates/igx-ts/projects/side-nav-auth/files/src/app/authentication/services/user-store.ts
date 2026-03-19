@@ -8,14 +8,14 @@ const USER_TOKEN = 'currentUser';
  * Service used to store and provide the current logged in user in the app.
  *
  * **NOTE**: Keep in mind using local storage can be susceptible to XSS attacks.
- * Consider not storing the User o the client storage if the app requirements allow,
+ * Consider not storing the User on the client storage if the app requirements allow,
  * adding a fingerprint to the JWT claims that is sent with a secure cookie,
  * or other security measures.
  */
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class UserStore {
   private _currentUser: User | null;
   /** Current logged in user, if any */
   public get currentUser() { return this._currentUser; }
