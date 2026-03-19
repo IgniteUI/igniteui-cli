@@ -4,7 +4,8 @@ import {
 	GoogleAnalytics,
 	GoogleAnalyticsParameters,
 	ProjectConfig,
-	Config
+	Config,
+	PackageManager
 } from "@igniteui/cli-core";
 import * as fs from "fs";
 import { EOL } from "os";
@@ -312,22 +313,27 @@ export class AppModule {
 		// TODO: Mock out template manager and project register
 		const mockConfig = {} as unknown as Config;
 		spyOn(ProjectConfig, "globalConfig").and.returnValue(mockConfig);
+		spyOn(PackageManager, "queuePackage");
 
 		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
-			project: { framework: "react", projectType: "es6", components: [] }
+			project: { framework: "react", projectType: "igr-ts", components: [] }
 		}));
 		fs.mkdirSync(`./src`);
-		fs.writeFileSync("src/routes.json", "[]");
+		fs.mkdirSync(`./src/app`);
+		fs.writeFileSync("src/app/app-routes.tsx", `
+			export const routes = [
+			];
+		`);
 		await cli.run(["add", "grid", "My grid"]);
 
 		expect(console.error).toHaveBeenCalledTimes(0);
 		expect(console.log).toHaveBeenCalledWith(jasmine.stringMatching(/View 'My grid' added\s*/));
 
-		expect(fs.existsSync("./src/components/my-grid")).toBeTruthy();
-		expect(fs.existsSync("./src/components/my-grid/index.js")).toBeTruthy();
-		fs.unlinkSync("./src/components/my-grid/index.js");
-		fs.rmSync("./src", { recursive: true,  force: true });
+		expect(fs.existsSync("./src/app/my-grid/my-grid.tsx")).toBeTruthy();
+		expect(fs.existsSync("./src/app/my-grid/my-grid.test.tsx")).toBeTruthy();
 
+		deleteAll("./src");
+		fs.rmdirSync("./src");
 		fs.unlinkSync(ProjectConfig.configFile);
 	});
 });

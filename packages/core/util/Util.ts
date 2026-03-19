@@ -437,8 +437,6 @@ export class Util {
 
 		if (framework === "angular" && projectType === "igx-ts") {
 			specificPath = path.join("src", "app");
-		} else if (framework === "react" && projectType === "es6") {
-			specificPath = path.join("src", "components");
 		} else if (framework === "react" && projectType === "igr-es6") {
 			specificPath = path.join("src", "views");
 		} else if (framework === "react" && projectType === "igr-ts") {
