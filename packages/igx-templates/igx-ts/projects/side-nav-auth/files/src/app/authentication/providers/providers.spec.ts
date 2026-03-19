@@ -1,9 +1,11 @@
+import { of } from 'rxjs';
 import { FacebookProvider } from './facebook-provider';
 import { GoogleProvider } from './google-provider';
 import { MicrosoftProvider } from './microsoft-provider';
 
 describe('Providers', () => {
   const MOCK_EXTERNAL_AUTH_CONFIG = {
+    configId: 'test-config-id',
     stsServer: 'test-stsServer',
     redirect_url: 'test-redirect_url',
     client_id: 'test-client_id',
@@ -16,23 +18,11 @@ describe('Providers', () => {
   const MOCK_ROUTER = {
     navigate: () => { }
   } as any;
-  const MOCK_OIDC_CONFIG = {
-    wellKnownEndpoints: {
-      issuer: ''
-    },
-    load_using_stsServer: () => { },
-    onConfigurationLoaded: {
-      pipe: () => { }
-    }
-  } as any;
   const MOCK_OIDC_SECURITY = {
-    setupModule: () => { },
     authorize: () => { },
-    getToken: () => { },
-    onAuthorizationResult: () => { },
-    authorizedImplicitFlowCallback: () => { },
-    getUserData: () => { },
-    logoff: () => { }
+    getAccessToken: () => '',
+    logoff: () => { },
+    userData$: of({ allUserData: [] })
   } as any;
   describe('Facebook Provider', () => {
     const facebookProviderName = 'FB';
@@ -134,38 +124,19 @@ describe('Providers', () => {
   describe('Google Provider', () => {
 
     it('Should properly initialize', () => {
-      const provider = new GoogleProvider(MOCK_OIDC_CONFIG, MOCK_OIDC_SECURITY, MOCK_EXTERNAL_AUTH_CONFIG);
+      const provider = new GoogleProvider(MOCK_OIDC_SECURITY, MOCK_EXTERNAL_AUTH_CONFIG);
       expect(provider).toBeDefined();
     });
 
-    it('Should properly call config', () => {
-      const provider = new GoogleProvider(MOCK_OIDC_CONFIG, MOCK_OIDC_SECURITY, MOCK_EXTERNAL_AUTH_CONFIG);
-      spyOn(MOCK_OIDC_SECURITY, 'setupModule').and.callThrough();
-      provider.config();
-      expect(MOCK_OIDC_SECURITY.setupModule).toHaveBeenCalled();
-    });
-
     it('Should properly call login', () => {
-      const provider = new GoogleProvider(MOCK_OIDC_CONFIG, MOCK_OIDC_SECURITY, MOCK_EXTERNAL_AUTH_CONFIG);
-      const mockSub = {
-        subscribe: (fn: () => {}) => {
-          fn.apply(MOCK_OIDC_SECURITY);
-        }
-      };
-      spyOn(mockSub, 'subscribe').and.callThrough();
+      const provider = new GoogleProvider(MOCK_OIDC_SECURITY, MOCK_EXTERNAL_AUTH_CONFIG);
       spyOn(MOCK_OIDC_SECURITY, 'authorize');
-      spyOn(MOCK_OIDC_CONFIG.onConfigurationLoaded, 'pipe').and.returnValue(mockSub);
-      spyOn(MOCK_OIDC_CONFIG, 'load_using_stsServer');
-      const mockSpy = spyOn(provider, 'config');
       provider.login();
-      expect(mockSub.subscribe).toHaveBeenCalled();
-      expect(mockSpy).toHaveBeenCalled();
-      expect(MOCK_OIDC_SECURITY.authorize).toHaveBeenCalled();
-      expect(MOCK_OIDC_CONFIG.load_using_stsServer).toHaveBeenCalled();
+      expect(MOCK_OIDC_SECURITY.authorize).toHaveBeenCalledWith(MOCK_EXTERNAL_AUTH_CONFIG.configId);
     });
 
     it(`Should properly call 'formatUserData'`, () => {
-      const provider = new GoogleProvider(MOCK_OIDC_CONFIG, MOCK_OIDC_SECURITY, MOCK_EXTERNAL_AUTH_CONFIG);
+      const provider = new GoogleProvider(MOCK_OIDC_SECURITY, MOCK_EXTERNAL_AUTH_CONFIG);
       const mockObj = {
         sub: 'test-id',
         name: 'test-name',
@@ -174,7 +145,7 @@ describe('Providers', () => {
         family_name: 'test-family_name',
         picture: 'test-picture'
       };
-      spyOn(MOCK_OIDC_SECURITY, 'getToken').and.returnValue('FAKE');
+      spyOn(MOCK_OIDC_SECURITY, 'getAccessToken').and.returnValue('FAKE');
       expect((provider as any).formatUserData(mockObj)).toEqual({
         id: mockObj.sub,
         name: mockObj.name,
@@ -186,114 +157,60 @@ describe('Providers', () => {
       });
     });
 
-    it('Should properly call getUserInfo', () => {
-      const provider = new GoogleProvider(MOCK_OIDC_CONFIG, MOCK_OIDC_SECURITY, MOCK_EXTERNAL_AUTH_CONFIG);
-      const mockSub = {
-        subscribe: (fn: () => {}) => {
-          fn.apply(this);
-        }
-      };
-      spyOn(mockSub, 'subscribe').and.callThrough();
-      spyOn(MOCK_OIDC_CONFIG.onConfigurationLoaded, 'pipe').and.returnValue(mockSub);
-      spyOn(provider, 'config');
-      spyOn(MOCK_OIDC_CONFIG, 'load_using_stsServer');
-      MOCK_OIDC_SECURITY.onAuthorizationResult = mockSub;
-      spyOn(MOCK_OIDC_SECURITY, 'getUserData').and.returnValue(mockSub);
-      spyOn(MOCK_OIDC_SECURITY, 'authorizedImplicitFlowCallback');
-      const formatDataSpy = spyOn<any>(provider, 'formatUserData');
-      provider.getUserInfo();
-      expect(mockSub.subscribe).toHaveBeenCalled();
-      expect(mockSub.subscribe).toHaveBeenCalledTimes(3);
-      expect(formatDataSpy).toHaveBeenCalled();
-      expect(provider.config).toHaveBeenCalled();
-      expect(MOCK_OIDC_SECURITY.authorizedImplicitFlowCallback).toHaveBeenCalled();
-      expect(MOCK_OIDC_CONFIG.load_using_stsServer).toHaveBeenCalled();
+    it('Should properly call getUserInfo', async () => {
+      const provider = new GoogleProvider(MOCK_OIDC_SECURITY, MOCK_EXTERNAL_AUTH_CONFIG);
+      const mockUserData = { sub: 'test-id', name: 'test-name', email: 'test@example.com' };
+      MOCK_OIDC_SECURITY.userData$ = of({
+        allUserData: [{ configId: MOCK_EXTERNAL_AUTH_CONFIG.configId, userData: mockUserData }]
+      });
+      spyOn(MOCK_OIDC_SECURITY, 'getAccessToken').and.returnValue('test-token');
+      const formatDataSpy = spyOn<any>(provider, 'formatUserData').and.callThrough();
+      await provider.getUserInfo();
+      expect(formatDataSpy).toHaveBeenCalledWith(mockUserData);
     });
 
     it('Should properly call logout', () => {
-      const provider = new GoogleProvider(MOCK_OIDC_CONFIG, MOCK_OIDC_SECURITY, MOCK_EXTERNAL_AUTH_CONFIG);
-      spyOn(MOCK_OIDC_SECURITY, 'logoff').and.callThrough();
+      const provider = new GoogleProvider(MOCK_OIDC_SECURITY, MOCK_EXTERNAL_AUTH_CONFIG);
+      spyOn(MOCK_OIDC_SECURITY, 'logoff');
       provider.logout();
-      expect(MOCK_OIDC_SECURITY.logoff).toHaveBeenCalled();
+      expect(MOCK_OIDC_SECURITY.logoff).toHaveBeenCalledWith(MOCK_EXTERNAL_AUTH_CONFIG.configId);
     });
   });
 
   describe('Microsoft Provider', () => {
 
     it('Should properly initialize', () => {
-      const provider = new MicrosoftProvider(MOCK_OIDC_CONFIG, MOCK_OIDC_SECURITY, MOCK_EXTERNAL_AUTH_CONFIG);
+      const provider = new MicrosoftProvider(MOCK_OIDC_SECURITY, MOCK_EXTERNAL_AUTH_CONFIG);
       expect(provider).toBeDefined();
     });
 
-    it('Should properly call config', () => {
-      const provider = new MicrosoftProvider(MOCK_OIDC_CONFIG, MOCK_OIDC_SECURITY, MOCK_EXTERNAL_AUTH_CONFIG);
-      spyOn(MOCK_OIDC_SECURITY, 'setupModule').and.callThrough();
-      provider.config();
-      expect(MOCK_OIDC_SECURITY.setupModule).toHaveBeenCalled();
-    });
-
-    it('Should properly call config if tenant !== consumer', () => {
-      const provider = new MicrosoftProvider(MOCK_OIDC_CONFIG, MOCK_OIDC_SECURITY, MOCK_EXTERNAL_AUTH_CONFIG);
-      provider.tenant = 'test';
-      provider.tenantID = 'test_id';
-      const replaceSpy = spyOn<any>(String.prototype, 'replace');
-      spyOn(MOCK_OIDC_SECURITY, 'setupModule').and.callThrough();
-      provider.config();
-      expect(replaceSpy).toHaveBeenCalledWith('{tenantid}', 'test_id');
-      expect(MOCK_OIDC_SECURITY.setupModule).toHaveBeenCalled();
-    });
-
     it('Should properly call login', () => {
-      const provider = new MicrosoftProvider(MOCK_OIDC_CONFIG, MOCK_OIDC_SECURITY, MOCK_EXTERNAL_AUTH_CONFIG);
-      const mockSub = {
-        subscribe: (fn: () => {}) => {
-          fn.apply(MOCK_OIDC_SECURITY);
-        }
-      };
-      spyOn(mockSub, 'subscribe').and.callThrough();
+      const provider = new MicrosoftProvider(MOCK_OIDC_SECURITY, MOCK_EXTERNAL_AUTH_CONFIG);
       spyOn(MOCK_OIDC_SECURITY, 'authorize');
-      spyOn(MOCK_OIDC_CONFIG.onConfigurationLoaded, 'pipe').and.returnValue(mockSub);
-      spyOn(MOCK_OIDC_CONFIG, 'load_using_stsServer');
-      const mockSpy = spyOn(provider, 'config');
       provider.login();
-      expect(mockSub.subscribe).toHaveBeenCalled();
-      expect(mockSpy).toHaveBeenCalled();
-      expect(MOCK_OIDC_SECURITY.authorize).toHaveBeenCalled();
-      expect(MOCK_OIDC_CONFIG.load_using_stsServer).toHaveBeenCalled();
+      expect(MOCK_OIDC_SECURITY.authorize).toHaveBeenCalledWith(MOCK_EXTERNAL_AUTH_CONFIG.configId);
     });
 
-    it('Should properly call getUserInfo', () => {
-      const provider = new MicrosoftProvider(MOCK_OIDC_CONFIG, MOCK_OIDC_SECURITY, MOCK_EXTERNAL_AUTH_CONFIG);
-      const mockSub = {
-        subscribe: (fn: () => {}) => {
-          fn.apply(MOCK_OIDC_SECURITY);
-        }
-      };
-      spyOn(mockSub, 'subscribe').and.callThrough();
-      spyOn(MOCK_OIDC_CONFIG.onConfigurationLoaded, 'pipe').and.returnValue(mockSub);
-      spyOn(MOCK_OIDC_CONFIG, 'load_using_stsServer');
-      spyOn(provider, 'config');
-      spyOn(MOCK_OIDC_SECURITY, 'authorizedImplicitFlowCallback');
-      MOCK_OIDC_SECURITY.onAuthorizationResult = mockSub;
-      spyOn(MOCK_OIDC_SECURITY, 'getUserData').and.returnValue(mockSub);
-      const formatDataSpy = spyOn<any>(provider, 'formatUserData');
-      provider.getUserInfo();
-      expect(mockSub.subscribe).toHaveBeenCalled();
-      expect(mockSub.subscribe).toHaveBeenCalledTimes(3);
-      expect(formatDataSpy).toHaveBeenCalled();
-      expect(provider.config).toHaveBeenCalled();
-      expect(MOCK_OIDC_SECURITY.authorizedImplicitFlowCallback).toHaveBeenCalled();
-      expect(MOCK_OIDC_CONFIG.load_using_stsServer).toHaveBeenCalled();
+    it('Should properly call getUserInfo', async () => {
+      const provider = new MicrosoftProvider(MOCK_OIDC_SECURITY, MOCK_EXTERNAL_AUTH_CONFIG);
+      const mockUserData = { oid: 'test-id', name: 'test-name', email: 'test@example.com' };
+      MOCK_OIDC_SECURITY.userData$ = of({
+        allUserData: [{ configId: MOCK_EXTERNAL_AUTH_CONFIG.configId, userData: mockUserData }]
+      });
+      spyOn(MOCK_OIDC_SECURITY, 'getAccessToken').and.returnValue('test-token');
+      const formatDataSpy = spyOn<any>(provider, 'formatUserData').and.callThrough();
+      await provider.getUserInfo();
+      expect(formatDataSpy).toHaveBeenCalledWith(mockUserData);
     });
 
     it(`Should properly call 'formatUserData'`, () => {
-      const provider = new MicrosoftProvider(MOCK_OIDC_CONFIG, MOCK_OIDC_SECURITY, MOCK_EXTERNAL_AUTH_CONFIG);
+      const provider = new MicrosoftProvider(MOCK_OIDC_SECURITY, MOCK_EXTERNAL_AUTH_CONFIG);
       const mockObj = {
         oid: 'test-id',
         name: 'test-name',
         email: 'test-email',
       };
-      spyOn(MOCK_OIDC_SECURITY, 'getToken').and.returnValue('FAKE');
+      spyOn(MOCK_OIDC_SECURITY, 'getAccessToken').and.returnValue('FAKE');
       expect((provider as any).formatUserData(mockObj)).toEqual({
         id: mockObj.oid,
         name: mockObj.name,

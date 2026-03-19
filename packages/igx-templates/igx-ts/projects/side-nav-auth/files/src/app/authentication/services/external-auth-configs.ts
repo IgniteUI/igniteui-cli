@@ -5,6 +5,7 @@ export enum ExternalAuthProvider {
 }
 
 export interface ExternalAuthConfig {
+  configId?: string;
   stsServer: string;
   client_id: string;
   scope: string;

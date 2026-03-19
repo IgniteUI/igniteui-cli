@@ -72,14 +72,13 @@ describe('Services', () => {
 
   describe('External Authentication Service', () => {
     const MOCK_OIDC_SECURITY = {} as any;
-    const MOCK_OIDC_CONFIG = {} as any;
     const MOCK_ROUTER = {} as any;
     const MOCK_LOCATION = {
       prepareExternalUrl: () => { }
     } as any;
 
     const localStorage = new LocalStorageService(PLATFORM_ID);
-    const extAuthServ = new ExternalAuthService(MOCK_ROUTER, MOCK_OIDC_SECURITY, MOCK_OIDC_CONFIG, MOCK_LOCATION, localStorage);
+    const extAuthServ = new ExternalAuthService(MOCK_ROUTER, MOCK_OIDC_SECURITY, MOCK_LOCATION, localStorage);
     it(`Should properly initialize`, () => {
       expect(extAuthServ).toBeDefined();
     });
@@ -109,6 +108,7 @@ describe('Services', () => {
       const providersSpy = spyOn<any>((extAuthServ as any).providers, 'set');
       spyOn<any>(extAuthServ, 'getAbsoluteUrl').and.returnValue('testUrl');
       const configParams = {
+        configId: ExternalAuthProvider.Google,
         provider: ExternalAuthProvider.Google,
         stsServer: 'https://accounts.google.com',
         client_id: 'test',
@@ -123,7 +123,7 @@ describe('Services', () => {
       extAuthServ.addGoogle('test');
       expect(providersSpy).toHaveBeenCalled();
       expect(providersSpy).toHaveBeenCalledWith('Google',
-        new GoogleProvider(MOCK_OIDC_CONFIG, MOCK_OIDC_SECURITY, configParams));
+        new GoogleProvider(MOCK_OIDC_SECURITY, configParams));
     });
 
     it(`Should properly call 'addFacebook'`, () => {
@@ -142,6 +142,7 @@ describe('Services', () => {
       const providersSpy = spyOn<any>((extAuthServ as any).providers, 'set');
       spyOn<any>(extAuthServ, 'getAbsoluteUrl').and.returnValue('testUrl');
       const configParams = {
+        configId: ExternalAuthProvider.Microsoft,
         provider: ExternalAuthProvider.Microsoft,
         stsServer: 'https://login.microsoftonline.com/consumers/v2.0/',
         client_id: 'test',
@@ -156,7 +157,7 @@ describe('Services', () => {
       extAuthServ.addMicrosoft('test');
       expect(providersSpy).toHaveBeenCalled();
       expect(providersSpy).toHaveBeenCalledWith('Microsoft',
-        new MicrosoftProvider(MOCK_OIDC_CONFIG, MOCK_OIDC_SECURITY, configParams));
+        new MicrosoftProvider(MOCK_OIDC_SECURITY, configParams));
     });
 
     it(`Should properly call 'getUserInfo'`, async () => {

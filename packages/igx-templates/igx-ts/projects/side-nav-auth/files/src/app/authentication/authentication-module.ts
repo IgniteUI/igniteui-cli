@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AuthModule, OidcConfigService } from 'angular-auth-oidc-client';
+import { AuthModule } from 'angular-auth-oidc-client';
 import {
   IgxAvatarModule,
   IgxButtonModule,
@@ -18,7 +18,7 @@ import { AuthenticationRoutingModule } from './authentication-routing-module';
 import { LoginBar } from './login-bar/login-bar';
 import { LoginDialog } from './login-dialog/login-dialog';
 import { Login } from './login/login';
-import { Profile} from './profile/profile';
+import { Profile } from './profile/profile';
 import { Redirect } from './redirect/redirect';
 import { Register } from './register/register';
 import { BackendProvider } from './services/fake-backend.service';
@@ -29,7 +29,7 @@ import { JwtInterceptor } from './services/jwt.interceptor';
     CommonModule,
     HttpClientModule,
     ReactiveFormsModule,
-    AuthModule.forRoot(),
+    AuthModule.forRoot({ config: [] }),
     AuthenticationRoutingModule,
     IgxAvatarModule,
     IgxButtonModule,
@@ -38,9 +38,7 @@ import { JwtInterceptor } from './services/jwt.interceptor';
     IgxIconModule,
     IgxInputGroupModule,
     IgxRippleModule,
-    IgxToggleModule
-  ],
-  declarations: [
+    IgxToggleModule,
     LoginBar,
     Login,
     LoginDialog,
@@ -50,7 +48,6 @@ import { JwtInterceptor } from './services/jwt.interceptor';
   ],
   providers: [
     AuthGuard,
-    OidcConfigService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     // TODO: DELETE THIS BEFORE PRODUCTION!
     BackendProvider

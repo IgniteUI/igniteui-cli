@@ -1,7 +1,7 @@
 import { Location } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { OidcConfigService, OidcSecurityService } from 'angular-auth-oidc-client';
+import { OidcSecurityService } from 'angular-auth-oidc-client';
 import { ExternalLogin } from '../models/login';
 import { AuthProvider } from '../providers/auth-provider';
 import { FacebookProvider } from '../providers/facebook-provider';
@@ -31,7 +31,6 @@ export class ExternalAuthService {
   constructor(
     private router: Router,
     private oidcSecurityService: OidcSecurityService,
-    private oidcConfigService: OidcConfigService,
     private location: Location,
     private localStorage: LocalStorageService) {
   }
@@ -45,6 +44,7 @@ export class ExternalAuthService {
 
   public addGoogle(clientID: string) {
     const googleConfig: ExternalAuthConfig = {
+      configId: ExternalAuthProvider.Google,
       provider: ExternalAuthProvider.Google,
       stsServer: 'https://accounts.google.com',
       client_id: clientID,
@@ -58,7 +58,7 @@ export class ExternalAuthService {
     };
     this.providers.set(
       ExternalAuthProvider.Google,
-      new GoogleProvider(this.oidcConfigService, this.oidcSecurityService, googleConfig)
+      new GoogleProvider(this.oidcSecurityService, googleConfig)
     );
   }
 
@@ -76,6 +76,7 @@ export class ExternalAuthService {
 
   public addMicrosoft(clientID: string) {
     const msConfig: ExternalAuthConfig = {
+      configId: ExternalAuthProvider.Microsoft,
       provider: ExternalAuthProvider.Microsoft,
       stsServer: 'https://login.microsoftonline.com/consumers/v2.0/',
       client_id: clientID,
@@ -89,7 +90,7 @@ export class ExternalAuthService {
     };
     this.providers.set(
       ExternalAuthProvider.Microsoft,
-      new MicrosoftProvider(this.oidcConfigService, this.oidcSecurityService, msConfig)
+      new MicrosoftProvider(this.oidcSecurityService, msConfig)
     );
   }
 
