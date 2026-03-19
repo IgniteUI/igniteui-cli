@@ -13,7 +13,7 @@ The IgniteUI-CLI MCP Server solves the "Context Gap" encountered by AI models wh
 
 ## Use Cases
 - ### Automatic Component Discovery
-An engineer asks, "How do I add a multi-select filter to the Grid?" The AI uses the server to search  IgniteUI docs repositories, identifies the specific "Filtering" component in the relevant framework, and retrieves its latest usage patterns.
+An engineer asks, "How do I add a multi-select filter to the Grid?" The AI uses the server to search IgniteUI docs repositories, identifies the specific "Filtering" component in the relevant framework, and retrieves its latest usage patterns.
 
 - ### Cross-Framework Migration
 A developer needs to port a feature from an existing Angular project to a new React project. The AI uses the server to compare the Interface definitions and Input properties of the Angular component against the React equivalent, ensuring a feature-parity migration.
