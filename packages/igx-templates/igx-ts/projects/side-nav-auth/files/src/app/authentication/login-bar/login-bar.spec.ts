@@ -49,6 +49,8 @@ describe('LoginBar', () => {
     logout() { }
   }
 
+  afterEach(() => { vi.restoreAllMocks(); });
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
@@ -88,7 +90,7 @@ describe('LoginBar', () => {
     expect(buttons.length).toBe(1);
     expect(buttons[0].nativeElement.innerText).toBe('Log In');
     const userStore = TestBed.inject(UserStore);
-    spyOnProperty(userStore, 'currentUser', 'get').and.returnValue({
+    vi.spyOn(userStore, 'currentUser', 'get').mockReturnValue({
       picture: 'picture'
     });
     fixture.detectChanges();
@@ -104,14 +106,14 @@ describe('LoginBar', () => {
     component.loginDialog = new TestLoginDialog();
 
     const button = fixture.debugElement.query(By.css('button'));
-    spyOn(component.loginDialog, 'open');
+    vi.spyOn(component.loginDialog, 'open');
     button.triggerEventHandler('click', {});
     expect(component.loginDialog.open).toHaveBeenCalled();
   });
 
   it('should open drop down on button click (logged in)', async () => {
     const userStore = TestBed.inject(UserStore);
-    spyOnProperty(userStore, 'currentUser', 'get').and.returnValue({
+    vi.spyOn(userStore, 'currentUser', 'get').mockReturnValue({
       picture: 'picture'
     });
     fixture.detectChanges();
@@ -126,9 +128,9 @@ describe('LoginBar', () => {
     const userStore = TestBed.inject(UserStore);
     const externalAuth = TestBed.inject(ExternalAuth);
     const router: Router = TestBed.inject(Router);
-    spyOn(router, 'navigate');
-    spyOn(userStore, 'clearCurrentUser');
-    spyOn(externalAuth, 'logout');
+    vi.spyOn(router, 'navigate');
+    vi.spyOn(userStore, 'clearCurrentUser');
+    vi.spyOn(externalAuth, 'logout');
 
     component.igxDropDown.open();
     component.igxDropDown.setSelectedItem(0);

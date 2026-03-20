@@ -16,6 +16,8 @@ import { UserStore } from './user-store';
 
 describe('Services', () => {
 
+  afterEach(() => { vi.restoreAllMocks(); });
+
   describe('Authentication Service', () => {
     const MOCK_HTTP_CLIENT = {
       post: () => { }
@@ -26,33 +28,33 @@ describe('Services', () => {
       expect(authServ).toBeDefined();
     });
     it(`Should properly call 'login'`, async () => {
-      const loginPostSpy = spyOn<any>(authServ, 'loginPost').and.returnValue(Promise.resolve());
+      const loginPostSpy = vi.spyOn(authServ as any, 'loginPost').mockResolvedValue(undefined);
       const dummyData = { email: 'Dummy', password: 'Data' };
       await authServ.login(dummyData);
       expect(loginPostSpy).toHaveBeenCalled();
       expect(loginPostSpy).toHaveBeenCalledWith('/login', dummyData);
     });
     it(`Should properly call 'register'`, async () => {
-      const loginPostSpy = spyOn<any>(authServ, 'loginPost').and.returnValue(Promise.resolve());
+      const loginPostSpy = vi.spyOn(authServ as any, 'loginPost').mockResolvedValue(undefined);
       const dummyData = { given_name: 'Testy', family_name: 'Testington', email: 'Dummy', password: 'Data' };
       await authServ.register(dummyData);
       expect(loginPostSpy).toHaveBeenCalled();
       expect(loginPostSpy).toHaveBeenCalledWith('/register', dummyData);
     });
     it(`Should properly call 'loginWith'`, async () => {
-      const loginPostSpy = spyOn<any>(authServ, 'loginPost').and.returnValue(Promise.resolve());
+      const loginPostSpy = vi.spyOn(authServ as any, 'loginPost').mockResolvedValue(undefined);
       const dummyData = { id: 'Test', name: 'Testy', email: 'Dummy', externalToken: 'Data' };
       await authServ.loginWith(dummyData);
       expect(loginPostSpy).toHaveBeenCalled();
       expect(loginPostSpy).toHaveBeenCalledWith('/extlogin', dummyData);
     });
     it(`Should properly call 'loginPost'`, async () => {
-      const loginPostSpy = spyOn<any>(authServ, 'loginPost').and.callThrough();
+      const loginPostSpy = vi.spyOn(authServ as any, 'loginPost');
       const dummyData = { email: 'Dummy', password: 'Data' };
       const mockObs = { toPromise: () => { } };
-      spyOn(mockObs, 'toPromise').and.returnValue('TEST DATA' as any);
-      spyOn(MOCK_HTTP_CLIENT, 'post').and.returnValue(mockObs);
-      const parseSpy = spyOn(JWTUtil, 'parseUser').and.returnValue({ user: 'Test' } as any);
+      vi.spyOn(mockObs, 'toPromise').mockReturnValue('TEST DATA' as any);
+      vi.spyOn(MOCK_HTTP_CLIENT, 'post').mockReturnValue(mockObs);
+      const parseSpy = vi.spyOn(JWTUtil, 'parseUser').mockReturnValue({ user: 'Test' } as any);
       await authServ.login(dummyData);
       expect(loginPostSpy).toHaveBeenCalledWith('/login', dummyData);
       expect(MOCK_HTTP_CLIENT.post).toHaveBeenCalledWith('/login', dummyData);
@@ -61,10 +63,10 @@ describe('Services', () => {
     it(`Should properly call 'loginPost' and throw error`, async () => {
       const dummyData = { email: 'Dummy', password: 'Data' };
       const mockObs = { toPromise: () => { } };
-      spyOn(mockObs, 'toPromise').and.callFake(() => {
+      vi.spyOn(mockObs, 'toPromise').mockImplementation(() => {
         throw new Error('Test Error');
       });
-      spyOn(MOCK_HTTP_CLIENT, 'post').and.returnValue(mockObs);
+      vi.spyOn(MOCK_HTTP_CLIENT, 'post').mockReturnValue(mockObs);
       expect(await (authServ as any).loginPost(dummyData)).toEqual({ error: 'Test Error' });
       expect(MOCK_HTTP_CLIENT.post).toHaveBeenCalled();
     });
@@ -83,12 +85,12 @@ describe('Services', () => {
       expect(extAuthServ).toBeDefined();
     });
     it(`Should properly get/set 'activeProvider'`, () => {
-      spyOn(localStorage, 'getItem').and.returnValue('test');
+      vi.spyOn(localStorage, 'getItem').mockReturnValue('test');
       const testProvider = extAuthServ.activeProvider;
       expect(localStorage.getItem).toHaveBeenCalled();
       expect(localStorage.getItem).toHaveBeenCalledWith('extActiveProvider');
       expect(testProvider).toEqual('test');
-      spyOn(localStorage, 'setItem');
+      vi.spyOn(localStorage, 'setItem');
       extAuthServ.activeProvider = 'ccc' as any;
       expect(localStorage.setItem).toHaveBeenCalled();
       expect(localStorage.setItem).toHaveBeenCalledWith('extActiveProvider', 'ccc');
@@ -105,8 +107,8 @@ describe('Services', () => {
     });
 
     it(`Should properly call 'addGoogle'`, () => {
-      const providersSpy = spyOn<any>((extAuthServ as any).providers, 'set');
-      spyOn<any>(extAuthServ, 'getAbsoluteUrl').and.returnValue('testUrl');
+      const providersSpy = vi.spyOn((extAuthServ as any).providers, 'set');
+      vi.spyOn(extAuthServ as any, 'getAbsoluteUrl').mockReturnValue('testUrl');
       const configParams = {
         configId: ExternalAuthProvider.Google,
         provider: ExternalAuthProvider.Google,
@@ -127,7 +129,7 @@ describe('Services', () => {
     });
 
     it(`Should properly call 'addFacebook'`, () => {
-      const providersSpy = spyOn<any>((extAuthServ as any).providers, 'set');
+      const providersSpy = vi.spyOn((extAuthServ as any).providers, 'set');
       const configParams = {
         client_id: 'test',
         redirect_url: ExternalAuthRedirectUrl.Facebook
@@ -139,8 +141,8 @@ describe('Services', () => {
     });
 
     it(`Should properly call 'addMicrosoft'`, () => {
-      const providersSpy = spyOn<any>((extAuthServ as any).providers, 'set');
-      spyOn<any>(extAuthServ, 'getAbsoluteUrl').and.returnValue('testUrl');
+      const providersSpy = vi.spyOn((extAuthServ as any).providers, 'set');
+      vi.spyOn(extAuthServ as any, 'getAbsoluteUrl').mockReturnValue('testUrl');
       const configParams = {
         configId: ExternalAuthProvider.Microsoft,
         provider: ExternalAuthProvider.Microsoft,
@@ -167,14 +169,14 @@ describe('Services', () => {
           return { name: 'test' };
         }
       };
-      spyOn(mockObj, 'getUserInfo').and.callThrough();
-      const providersGetSpy = spyOn(providersMap, 'get').and.returnValue(false);
+      vi.spyOn(mockObj, 'getUserInfo');
+      const providersGetSpy = vi.spyOn(providersMap, 'get').mockReturnValue(false as any);
       providersMap.set(ExternalAuthProvider.Facebook, mockObj);
       (extAuthServ as any).providers = providersMap;
-      spyOn(Promise, 'reject').and.returnValue(Promise.resolve(null));
+      vi.spyOn(Promise, 'reject').mockReturnValue(Promise.resolve(null) as any);
       expect(await extAuthServ.getUserInfo(ExternalAuthProvider.Facebook)).toBeNull();
       expect(providersGetSpy).toHaveBeenCalledTimes(1);
-      providersGetSpy.and.returnValue(mockObj);
+      providersGetSpy.mockReturnValue(mockObj as any);
       expect(await extAuthServ.getUserInfo(ExternalAuthProvider.Facebook)).toEqual({
         name: 'test',
         externalProvider: ExternalAuthProvider.Facebook
@@ -187,15 +189,15 @@ describe('Services', () => {
       const mockObj = {
         login: () => { }
       } as any;
-      spyOn(mockObj, 'login');
-      const providersGetSpy = spyOn(providersMap, 'get').and.returnValue(false);
+      vi.spyOn(mockObj, 'login');
+      const providersGetSpy = vi.spyOn(providersMap, 'get').mockReturnValue(false as any);
       providersMap.set(ExternalAuthProvider.Facebook, mockObj);
       (extAuthServ as any).providers = providersMap;
-      const setActiveProvider = spyOnProperty(extAuthServ, 'activeProvider', 'set');
+      const setActiveProvider = vi.spyOn(extAuthServ, 'activeProvider', 'set');
       extAuthServ.login(ExternalAuthProvider.Facebook);
       expect(mockObj.login).not.toHaveBeenCalled();
       expect(setActiveProvider).not.toHaveBeenCalled();
-      providersGetSpy.and.returnValue(mockObj);
+      providersGetSpy.mockReturnValue(mockObj);
       extAuthServ.login(ExternalAuthProvider.Facebook);
       expect(mockObj.login).toHaveBeenCalled();
       expect(setActiveProvider).toHaveBeenCalledWith(ExternalAuthProvider.Facebook);
@@ -206,16 +208,16 @@ describe('Services', () => {
       const mockObj = {
         logout: () => { }
       } as any;
-      spyOn(mockObj, 'logout');
+      vi.spyOn(mockObj, 'logout');
       providersMap.set(ExternalAuthProvider.Facebook, mockObj);
-      spyOn(providersMap, 'get').and.returnValue(mockObj);
+      vi.spyOn(providersMap, 'get').mockReturnValue(mockObj);
       (extAuthServ as any).providers = providersMap;
-      const setActiveProviderSpy = spyOnProperty(extAuthServ, 'activeProvider', 'get').and.returnValue(false);
+      const setActiveProviderSpy = vi.spyOn(extAuthServ, 'activeProvider', 'get').mockReturnValue(false as any);
       extAuthServ.logout();
       expect(mockObj.logout).not.toHaveBeenCalled();
       expect(providersMap.get).not.toHaveBeenCalled();
       expect(setActiveProviderSpy).toHaveBeenCalledTimes(1);
-      setActiveProviderSpy.and.returnValue('MOCK TOKEN');
+      setActiveProviderSpy.mockReturnValue('MOCK TOKEN' as any);
       extAuthServ.logout();
       expect(mockObj.logout).toHaveBeenCalled();
       expect(providersMap.get).toHaveBeenCalled();
@@ -225,7 +227,7 @@ describe('Services', () => {
 
     it(`Should properly call 'getAbsoluteUrl'`, () => {
       const currentOrigin = window.location.origin;
-      spyOn(MOCK_LOCATION, 'prepareExternalUrl').and.returnValue('test_href_2');
+      vi.spyOn(MOCK_LOCATION, 'prepareExternalUrl').mockReturnValue('test_href_2');
       expect((extAuthServ as any).getAbsoluteUrl('mock_path')).toEqual(`${currentOrigin}test_href_2`);
       expect(MOCK_LOCATION.prepareExternalUrl).toHaveBeenCalledWith('mock_path');
     });
@@ -248,9 +250,9 @@ describe('Services', () => {
         // endpoint /login
 
         // mocked method in intercept still need to return observable, otherwise rxjs pipe throws
-        spyOn(provider, 'loginHandle').and.returnValue(new Observable());
-        spyOn(JSON, 'parse').and.returnValue(mockUsers);
-        spyOn(mockLocalStorage, 'getItem').and.returnValue('[]');
+        vi.spyOn(provider, 'loginHandle').mockReturnValue(new Observable());
+        vi.spyOn(JSON, 'parse').mockReturnValue(mockUsers);
+        vi.spyOn(mockLocalStorage, 'getItem').mockReturnValue('[]');
         provider.intercept(mockRequest, mockNext).pipe(take(1)).subscribe(() => { });
         expect(JSON.parse).toHaveBeenCalledWith('[]');
         expect(JSON.parse).toHaveBeenCalledTimes(1);
@@ -258,8 +260,8 @@ describe('Services', () => {
         expect(provider.loginHandle).toHaveBeenCalledTimes(1);
         // endpoint /register
         mockRequest.url = '/register';
-        const getStorageUserSpy = spyOn<any>(provider, 'getStorageUser').and.returnValue({ name: 'Mock user' });
-        spyOn(provider, 'registerHandle').and.returnValue(new Observable());
+        const getStorageUserSpy = vi.spyOn(provider as any, 'getStorageUser').mockReturnValue({ name: 'Mock user' });
+        vi.spyOn(provider, 'registerHandle').mockReturnValue(new Observable());
         provider.intercept(mockRequest, mockNext).pipe(take(1)).subscribe(() => { });
         expect(JSON.parse).toHaveBeenCalledTimes(2);
         expect(getStorageUserSpy).toHaveBeenCalledWith(mockRequest);
@@ -268,7 +270,7 @@ describe('Services', () => {
         expect(provider.registerHandle).toHaveBeenCalledTimes(1);
         // endpoint /register
         mockRequest.url = '/extlogin';
-        const getStorageExtUserSpy = spyOn<any>(provider, 'getStorageExtUser').and.returnValue({ name: 'Mock user' });
+        const getStorageExtUserSpy = vi.spyOn(provider as any, 'getStorageExtUser').mockReturnValue({ name: 'Mock user' });
         provider.intercept(mockRequest, mockNext).pipe(take(1)).subscribe(() => { });
         expect(JSON.parse).toHaveBeenCalledTimes(3);
         expect(getStorageExtUserSpy).toHaveBeenCalledWith(mockRequest);
@@ -290,7 +292,7 @@ describe('Services', () => {
         // no intercept scenario
         mockRequest.method = 'POST';
         mockRequest.url = '/test';
-        spyOn(mockNext, 'handle').and.callThrough();
+        vi.spyOn(mockNext, 'handle');
         provider.intercept(mockRequest, mockNext).pipe(take(1)).subscribe(() => { });
         expect(mockNext.handle).toHaveBeenCalledWith(mockRequest);
         expect(mockNext.handle).toHaveBeenCalledTimes(1);
@@ -324,10 +326,10 @@ describe('Services', () => {
         provider.registerHandle(mockUser, false).pipe(take(1)).subscribe(() => { }, (e) => { output = e; });
         expect(output).toEqual(expectedOutput);
 
-        spyOn(localStorage, 'setItem');
-        spyOn(JSON, 'stringify').and.returnValue('MOCK OBJ');
-        const generateBodySpy = spyOn<any>(provider, 'getUserJWT').and.returnValue('MOCK BODY');
-        const tokenSpy = spyOn<any>(provider, 'generateToken').and.returnValue('MOCK TOKEN');
+        vi.spyOn(localStorage, 'setItem');
+        vi.spyOn(JSON, 'stringify').mockReturnValue('MOCK OBJ');
+        const generateBodySpy = vi.spyOn(provider as any, 'getUserJWT').mockReturnValue('MOCK BODY');
+        const tokenSpy = vi.spyOn(provider as any, 'generateToken').mockReturnValue('MOCK TOKEN');
         expectedOutput = new HttpResponse({ status: 200, body: 'MOCK TOKEN' });
         provider.registerHandle({ email: 'test_user', customProp: 'very_custom ' } as any, true)
           .pipe(take(1)).subscribe((e) => { output = e; });
@@ -370,9 +372,9 @@ describe('Services', () => {
             email: 'test_email'
           }
         } as any;
-        spyOn(Array.prototype, 'find').and.callThrough();
-        const jwtSpy = spyOn<any>(provider, 'getUserJWT').and.returnValue('MOCK BODY');
-        const tokenSpy = spyOn<any>(provider, 'generateToken').and.returnValue('MOCK TOKEN');
+        vi.spyOn(Array.prototype, 'find');
+        const jwtSpy = vi.spyOn(provider as any, 'getUserJWT').mockReturnValue('MOCK BODY');
+        const tokenSpy = vi.spyOn(provider as any, 'generateToken').mockReturnValue('MOCK TOKEN');
         const expectedOutput = new HttpResponse({ status: 200, body: 'MOCK TOKEN' });
         provider.loginHandle(mockRequest).pipe(take(1)).subscribe((e) => {
           expect(e).toEqual(expectedOutput);
@@ -445,8 +447,8 @@ describe('Services', () => {
           email: 'test_email',
           picture: 'test_picture'
         };
-        spyOn(Math, 'floor').and.returnValue(1000);
-        spyOn(Date.prototype, 'getTime').and.returnValue(1000);
+        vi.spyOn(Math, 'floor').mockReturnValue(1000);
+        vi.spyOn(Date.prototype, 'getTime').mockReturnValue(1000);
         const expectedExp = 1000 + (7 * 24 * 60 * 60);
         expect((provider as any).getUserJWT(mockInput)).toEqual({
           exp: expectedExp,
@@ -464,7 +466,7 @@ describe('Services', () => {
         const provider = new BackendInterceptor(new LocalStorageService({}));
         const inputString = 'testString1';
         const expectedOutput = 'g.g.mockSignature';
-        spyOn(JWTUtil, 'encodeBase64Url').and.returnValue('g');
+        vi.spyOn(JWTUtil, 'encodeBase64Url').mockReturnValue('g');
         expect((provider as any).generateToken(inputString)).toEqual(expectedOutput);
       });
     });
@@ -484,8 +486,8 @@ describe('Services', () => {
     const localStorage = new LocalStorageService(PLATFORM_ID);
 
     beforeEach(() => {
-      spyOn(JSON, 'parse').and.returnValue(mockUser);
-      spyOn(localStorage, 'getItem').and.returnValue('MOCK JSON');
+      vi.spyOn(JSON, 'parse').mockReturnValue(mockUser);
+      vi.spyOn(localStorage, 'getItem').mockReturnValue('MOCK JSON');
     });
 
     it(`Should properly initialize`, () => {
@@ -499,19 +501,19 @@ describe('Services', () => {
 
     it(`Should properly get 'initials'`, () => {
       const userServ = new UserStore(localStorage);
-      const currentUserSpy = spyOnProperty(userServ, 'currentUser', 'get').and.returnValue(null);
+      const currentUserSpy = vi.spyOn(userServ, 'currentUser', 'get').mockReturnValue(null as any);
       expect(userServ.initials).toEqual(null);
-      currentUserSpy.and.returnValue({ given_name: '' });
+      currentUserSpy.mockReturnValue({ given_name: '' } as any);
       expect(userServ.initials).toEqual('');
-      currentUserSpy.and.returnValue({ given_name: '', family_name: '' });
+      currentUserSpy.mockReturnValue({ given_name: '', family_name: '' } as any);
       expect(userServ.initials).toEqual('');
-      currentUserSpy.and.returnValue({ given_name: '', family_name: 'g' });
+      currentUserSpy.mockReturnValue({ given_name: '', family_name: 'g' } as any);
       expect(userServ.initials).toEqual('g');
-      currentUserSpy.and.returnValue({ given_name: 'h3ll0' });
+      currentUserSpy.mockReturnValue({ given_name: 'h3ll0' } as any);
       expect(userServ.initials).toEqual('h');
-      currentUserSpy.and.returnValue({ given_name: 'h3ll0', family_name: 'g' });
+      currentUserSpy.mockReturnValue({ given_name: 'h3ll0', family_name: 'g' } as any);
       expect(userServ.initials).toEqual('hg');
-      currentUserSpy.and.returnValue({ given_name: 'h3ll0', family_name: '' });
+      currentUserSpy.mockReturnValue({ given_name: 'h3ll0', family_name: '' } as any);
       expect(userServ.initials).toEqual('h');
     });
 
@@ -527,8 +529,8 @@ describe('Services', () => {
         token: `mock token`,
         externalToken: `mock token 2`
       };
-      spyOn(JSON, 'stringify').and.returnValue('MOCK STRING');
-      spyOn(localStorage, 'setItem');
+      vi.spyOn(JSON, 'stringify').mockReturnValue('MOCK STRING');
+      vi.spyOn(localStorage, 'setItem');
       userServ.setCurrentUser(mockUser2);
       expect(userServ.currentUser).toEqual(mockUser2);
       expect(JSON.stringify).toHaveBeenCalledWith(mockUser2);
@@ -539,7 +541,7 @@ describe('Services', () => {
 
     it(`Should properly call 'clearCurrentUser'`, () => {
       const userServ = new UserStore(localStorage);
-      spyOn(localStorage, 'removeItem');
+      vi.spyOn(localStorage, 'removeItem');
       expect(userServ.currentUser).toBeTruthy();
       userServ.clearCurrentUser();
       expect(localStorage.removeItem).toHaveBeenCalledWith('currentUser');

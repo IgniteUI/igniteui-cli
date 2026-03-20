@@ -18,9 +18,11 @@ const PASSWORD_GROUP_NAME = 'password';
 describe('Login', () => {
   let component: Login;
   let fixture: ComponentFixture<Login>;
-  const extAuthSpy = jasmine.createSpyObj('ExternalAuth', ['login', 'hasProvider']);
-  const authSpy = jasmine.createSpyObj('Authentication', ['login']);
-  const userServSpy = jasmine.createSpyObj('UserStore', ['setCurrentUser']);
+  const extAuthSpy = { login: vi.fn(), hasProvider: vi.fn() };
+  const authSpy = { login: vi.fn() };
+  const userServSpy = { setCurrentUser: vi.fn() };
+
+  afterEach(() => { vi.restoreAllMocks(); });
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -47,17 +49,17 @@ describe('Login', () => {
 
   it('should submit login data', async () => {
     const router: Router = TestBed.inject(Router);
-    spyOn(router, 'navigate');
+    vi.spyOn(router, 'navigate');
     expect(component.loginForm.valid).toBeFalsy();
     component.loginForm.controls[MAIL_GROUP_NAME].setValue('test@example.com');
     expect(component.loginForm.valid).toBeFalsy();
     component.loginForm.controls[PASSWORD_GROUP_NAME].setValue('123456');
     expect(component.loginForm.valid).toBeTruthy();
-    spyOn(component.loggedIn, 'emit');
-    authSpy.login.and.returnValue(Promise.resolve({
+    vi.spyOn(component.loggedIn, 'emit');
+    authSpy.login.mockResolvedValue({
       error: null,
       user: { name: 'TEST' }
-    }));
+    });
     await component.tryLogin();
     expect(authSpy.login).toHaveBeenCalledTimes(1);
     expect(authSpy.login).toHaveBeenCalledWith({
@@ -68,10 +70,10 @@ describe('Login', () => {
     expect(component.loggedIn.emit).toHaveBeenCalled();
     expect(router.navigate).toHaveBeenCalledWith(['/profile']);
 
-    authSpy.login.and.returnValue(Promise.resolve({
+    authSpy.login.mockResolvedValue({
       error: 'Err'
-    }));
-    spyOn(window, 'alert');
+    });
+    vi.spyOn(window, 'alert').mockImplementation(() => {});
     await component.tryLogin();
     expect(window.alert).toHaveBeenCalledWith('Err');
   });
@@ -79,22 +81,22 @@ describe('Login', () => {
   it('should enable external auth buttons when configured', () => {
     let activeProvider = ExternalAuthProvider.Facebook;
     const has = (provider: ExternalAuthProvider) => provider ? provider === activeProvider : true;
-    (extAuthSpy.hasProvider as jasmine.Spy).and.callFake(has);
+    extAuthSpy.hasProvider.mockImplementation(has);
     fixture.detectChanges();
-    expect(fixture.debugElement.query(By.css('button.facebook'))).toEqual(jasmine.any(DebugElement));
+    expect(fixture.debugElement.query(By.css('button.facebook'))).toEqual(expect.any(DebugElement));
     expect(fixture.debugElement.query(By.css('button.google'))).toBeNull();
     expect(fixture.debugElement.query(By.css('button.microsoft'))).toBeNull();
     activeProvider = ExternalAuthProvider.Google;
     fixture.detectChanges();
     expect(fixture.debugElement.query(By.css('button.facebook'))).toBeNull();
-    expect(fixture.debugElement.query(By.css('button.google'))).toEqual(jasmine.any(DebugElement));
+    expect(fixture.debugElement.query(By.css('button.google'))).toEqual(expect.any(DebugElement));
     expect(fixture.debugElement.query(By.css('button.microsoft'))).toBeNull();
   });
 
   it('should call correct external auth login per button', () => {
-    (extAuthSpy.hasProvider as jasmine.Spy).and.returnValue(true);
+    extAuthSpy.hasProvider.mockReturnValue(true);
     fixture.detectChanges();
-    spyOn(component.loggedIn, 'emit');
+    vi.spyOn(component.loggedIn, 'emit');
     fixture.debugElement.query(By.css('button.facebook')).nativeElement.click();
     expect(extAuthSpy.login).toHaveBeenCalledWith(ExternalAuthProvider.Facebook);
     expect(component.loggedIn.emit).toHaveBeenCalled();
@@ -107,7 +109,7 @@ describe('Login', () => {
   });
 
   it('should emit viewChange on "create account" click', () => {
-    spyOn(fixture.componentInstance.viewChange, 'emit');
+    vi.spyOn(fixture.componentInstance.viewChange, 'emit');
     fixture.debugElement.query(By.css('#register')).nativeElement.click();
     expect(fixture.componentInstance.viewChange.emit).toHaveBeenCalled();
   });
