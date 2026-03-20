@@ -20,6 +20,4 @@ export abstract class OptionsSchema {
 	public template: string;
 
 	public type: string;
-
-	public addAISkills?: boolean;
 }
