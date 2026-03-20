@@ -1,7 +1,8 @@
 import { Component, DebugElement, EventEmitter, Output } from '@angular/core';
-import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { StsConfigLoader } from 'angular-auth-oidc-client';
 import { IgxDialogModule } from 'igniteui-angular';
 import { LoginDialog } from './login-dialog';
 
@@ -28,7 +29,8 @@ describe('LoginDialog', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-       imports: [NoopAnimationsModule, IgxDialogModule, LoginDialog, TestSignViewComponent]
+      imports: [NoopAnimationsModule, IgxDialogModule, LoginDialog, TestSignViewComponent],
+      providers: [{ provide: StsConfigLoader, useValue: {} }]
     })
       .compileComponents();
   });
@@ -43,7 +45,7 @@ describe('LoginDialog', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should switch views, show login on open', fakeAsync(() => {
+  it('should switch views, show login on open', async () => {
     let result = checkViews();
     expect(result.loginView).not.toBeNull();
     expect(result.registerView).toBeNull();
@@ -56,14 +58,14 @@ describe('LoginDialog', () => {
     expect(component.loginDialog.title).toEqual('Register');
 
     component.open();
-    tick();
+    await fixture.whenStable();
     fixture.detectChanges();
     result = checkViews();
     expect(result.loginView).not.toBeNull();
     expect(result.registerView).toBeNull();
     expect(component.showLogin).toBeTruthy();
     expect(component.loginDialog.title).toEqual('Login');
-  }));
+  });
 
   it('should switch views, close on events', () => {
     let view: TestSignViewComponent = fixture.debugElement.query(By.css('app-login')).componentInstance;

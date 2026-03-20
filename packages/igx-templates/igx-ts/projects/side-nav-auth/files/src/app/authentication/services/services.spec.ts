@@ -51,14 +51,15 @@ describe('Services', () => {
     it(`Should properly call 'loginPost'`, async () => {
       const loginPostSpy = vi.spyOn(authServ as any, 'loginPost');
       const dummyData = { email: 'Dummy', password: 'Data' };
+      const mockUser = { name: 'Test User', email: 'Dummy' };
+      const mockToken = `${JWTUtil.encodeBase64Url({ alg: 'Mock', typ: 'JWT' })}.${JWTUtil.encodeBase64Url(mockUser)}.mockSignature`;
       const mockObs = { toPromise: () => { } };
-      vi.spyOn(mockObs, 'toPromise').mockReturnValue('TEST DATA' as any);
+      vi.spyOn(mockObs, 'toPromise').mockReturnValue(mockToken as any);
       vi.spyOn(MOCK_HTTP_CLIENT, 'post').mockReturnValue(mockObs);
-      const parseSpy = vi.spyOn(JWTUtil, 'parseUser').mockReturnValue({ user: 'Test' } as any);
-      await authServ.login(dummyData);
+      const result = await authServ.login(dummyData);
       expect(loginPostSpy).toHaveBeenCalledWith('/login', dummyData);
       expect(MOCK_HTTP_CLIENT.post).toHaveBeenCalledWith('/login', dummyData);
-      expect(parseSpy).toHaveBeenCalledWith('TEST DATA');
+      expect(result).toEqual({ user: { ...mockUser, token: mockToken } });
     });
     it(`Should properly call 'loginPost' and throw error`, async () => {
       const dummyData = { email: 'Dummy', password: 'Data' };
@@ -465,8 +466,7 @@ describe('Services', () => {
       it(`Should properly call 'generateToken'`, () => {
         const provider = new BackendInterceptor(new LocalStorageService({}));
         const inputString = 'testString1';
-        const expectedOutput = 'g.g.mockSignature';
-        vi.spyOn(JWTUtil, 'encodeBase64Url').mockReturnValue('g');
+        const expectedOutput = `${JWTUtil.encodeBase64Url({ alg: 'Mock', typ: 'JWT' })}.${JWTUtil.encodeBase64Url(inputString)}.mockSignature`;
         expect((provider as any).generateToken(inputString)).toEqual(expectedOutput);
       });
     });

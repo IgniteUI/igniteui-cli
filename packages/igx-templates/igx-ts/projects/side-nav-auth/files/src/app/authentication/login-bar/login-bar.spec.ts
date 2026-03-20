@@ -47,6 +47,7 @@ describe('LoginBar', () => {
 
   class MockExternalAuth {
     logout() { }
+    hasProvider() { }
   }
 
   afterEach(() => { vi.restoreAllMocks(); });
@@ -87,7 +88,7 @@ describe('LoginBar', () => {
 
   it('should switch between buttons based on logged user ', () => {
     let buttons = fixture.debugElement.queryAll(By.css('button'));
-    expect(buttons.length).toBe(1);
+    expect(buttons.length).toBe(2);
     expect(buttons[0].nativeElement.innerText).toBe('Log In');
     const userStore = TestBed.inject(UserStore);
     vi.spyOn(userStore, 'currentUser', 'get').mockReturnValue({
@@ -95,7 +96,7 @@ describe('LoginBar', () => {
     } as any);
     fixture.detectChanges();
     buttons = fixture.debugElement.queryAll(By.css('button'));
-    expect(buttons.length).toBe(1);
+    expect(buttons.length).toBe(2);
     expect(buttons[0].nativeElement.children.length).toEqual(2);
     const avatar: IgxAvatarComponent = fixture.debugElement.query(By.css('igx-avatar')).componentInstance;
     expect(avatar.src).toBe('picture');

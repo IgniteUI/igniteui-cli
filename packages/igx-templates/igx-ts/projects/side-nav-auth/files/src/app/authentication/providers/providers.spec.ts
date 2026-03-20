@@ -38,14 +38,14 @@ describe('Providers', () => {
       email: 'mock_email',
       picture: 'mock_picture'
     };
-    (global as any).FB = {
+    globalThis[facebookProviderName] = {
       login: (callback: any) => { callback({ authResponse: mockResponse }); },
       init: () => {},
       api: (paramsOrCb: any, cb?: any) => {
         const callback = typeof paramsOrCb === 'function' ? paramsOrCb : cb;
         callback(mockAPIObj);
       },
-      getAuthResponse: () => ({ accessToken: 'mockAccessToken' }),
+      getAuthResponse: (): any => { return { accessToken: 'mockAccessToken' } },
       logout: () => {},
       AppEvents: {},
       Canvas: {},
@@ -141,7 +141,7 @@ describe('Providers', () => {
       expect(MOCK_OIDC_SECURITY.authorize).toHaveBeenCalledWith(MOCK_EXTERNAL_AUTH_CONFIG.configId);
     });
 
-    it(`Should properly call 'formatUserData'`, () => {
+    it(`Should properly call 'formatUserData'`, async () => {
       const provider = new GoogleProvider(MOCK_OIDC_SECURITY, MOCK_EXTERNAL_AUTH_CONFIG);
       const mockObj = {
         sub: 'test-id',
@@ -151,8 +151,9 @@ describe('Providers', () => {
         family_name: 'test-family_name',
         picture: 'test-picture'
       };
-      vi.spyOn(MOCK_OIDC_SECURITY, 'getAccessToken').mockReturnValue('FAKE');
-      expect((provider as any).formatUserData(mockObj)).toEqual({
+      MOCK_OIDC_SECURITY.getAccessToken = vi.fn(() => of('FAKE'));
+      const result = await (provider as any).formatUserData(mockObj);
+      expect(result).toEqual({
         id: mockObj.sub,
         name: mockObj.name,
         email: mockObj.email,
@@ -169,7 +170,7 @@ describe('Providers', () => {
       MOCK_OIDC_SECURITY.userData$ = of({
         allUserData: [{ configId: MOCK_EXTERNAL_AUTH_CONFIG.configId, userData: mockUserData }]
       });
-      vi.spyOn(MOCK_OIDC_SECURITY, 'getAccessToken').mockReturnValue('test-token');
+      MOCK_OIDC_SECURITY.getAccessToken = vi.fn(() => of('test-token'));
       const formatDataSpy = vi.spyOn<any, any>(provider, 'formatUserData');
       await provider.getUserInfo();
       expect(formatDataSpy).toHaveBeenCalledWith(mockUserData);
@@ -203,21 +204,22 @@ describe('Providers', () => {
       MOCK_OIDC_SECURITY.userData$ = of({
         allUserData: [{ configId: MOCK_EXTERNAL_AUTH_CONFIG.configId, userData: mockUserData }]
       });
-      vi.spyOn(MOCK_OIDC_SECURITY, 'getAccessToken').mockReturnValue('test-token');
+      MOCK_OIDC_SECURITY.getAccessToken = vi.fn(() => of('test-token'));
       const formatDataSpy = vi.spyOn<any, any>(provider, 'formatUserData');
       await provider.getUserInfo();
       expect(formatDataSpy).toHaveBeenCalledWith(mockUserData);
     });
 
-    it(`Should properly call 'formatUserData'`, () => {
+    it(`Should properly call 'formatUserData'`, async () => {
       const provider = new MicrosoftProvider(MOCK_OIDC_SECURITY, MOCK_EXTERNAL_AUTH_CONFIG);
       const mockObj = {
         oid: 'test-id',
         name: 'test-name',
         email: 'test-email',
       };
-      vi.spyOn(MOCK_OIDC_SECURITY, 'getAccessToken').mockReturnValue('FAKE');
-      expect((provider as any).formatUserData(mockObj)).toEqual({
+      MOCK_OIDC_SECURITY.getAccessToken = vi.fn(() => of('FAKE'));
+      const result = await (provider as any).formatUserData(mockObj);
+      expect(result).toEqual({
         id: mockObj.oid,
         name: mockObj.name,
         email: mockObj.email,
