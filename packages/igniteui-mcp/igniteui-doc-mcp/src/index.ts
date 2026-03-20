@@ -6,10 +6,14 @@ import { appendFileSync, mkdirSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 import dotenv from "dotenv";
-import { description, SETUP_DOCS, BLAZOR_DOTNET_GUIDE, USAGE_GUIDE } from "./tools/constants.js";
+import { TOOL_DESCRIPTIONS, SETUP_DOCS, BLAZOR_DOTNET_GUIDE, USAGE_GUIDE } from "./tools/constants.js";
 import type { DocsProvider } from "./providers/DocsProvider.js";
 import { RemoteDocsProvider } from "./providers/RemoteDocsProvider.js";
 import { LocalDocsProvider } from "./providers/LocalDocsProvider.js";
+import { getApiReferenceSchema, searchApiSchema } from "./tools/schemas.js";
+import { createGetApiReferenceHandler, createSearchApiHandler } from "./tools/handlers.js";
+import { ApiDocLoader } from "./lib/api-doc-loader.js";
+import { getPlatforms } from "./config/platforms.js";
 
 dotenv.config({ quiet: true });
 
@@ -59,7 +63,7 @@ const server = new McpServer(
   { name: "igniteui-mcp-server", version: "1.0.0" },
   {
     instructions:
-      "Unified Ignite UI MCP server — documentation, GitHub API, and CLI scaffolding for 4 frameworks. " +
+      "Unified Ignite UI MCP server — documentation, API reference, and CLI scaffolding for 4 frameworks. " +
       "Most tools require a 'framework' parameter. Detect the framework from the user's code or project: " +
       "Angular → Igx prefix (IgxGrid), package 'igniteui-angular', .ts+.html files. " +
       "React → Igr prefix (IgrGrid), package 'igniteui-react', .tsx files. " +
@@ -69,12 +73,35 @@ const server = new McpServer(
   }
 );
 
+function registerApiTools(server: McpServer, docLoader: ApiDocLoader) {
+  server.registerTool(
+    "get_api_reference",
+    {
+      description: TOOL_DESCRIPTIONS.get_api_reference,
+      annotations: { readOnlyHint: true, openWorldHint: false },
+      inputSchema: getApiReferenceSchema,
+    },
+    createGetApiReferenceHandler(docLoader)
+  );
+
+  server.registerTool(
+    "search_api",
+    {
+      description: TOOL_DESCRIPTIONS.search_api,
+      annotations: { readOnlyHint: true, openWorldHint: false },
+      inputSchema: searchApiSchema,
+    },
+    createSearchApiHandler(docLoader)
+  );
+}
+
 function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
   server.registerTool(
     "list_components",
     {
       description:
         "List available Ignite UI component docs. Filter by framework and optionally by keyword match against filename, component, toc_name, keywords, summary.",
+      annotations: { readOnlyHint: true, openWorldHint: false },
       inputSchema: {
         framework: FRAMEWORK_ENUM,
         filter: z
@@ -96,6 +123,7 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
     {
       description:
         "Return the full markdown content of a specific Ignite UI component doc. Requires framework and doc name.",
+      annotations: { readOnlyHint: true, openWorldHint: false },
       inputSchema: {
         framework: FRAMEWORK_ENUM,
         name: z
@@ -116,8 +144,9 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
     {
       description:
         "Full-text search across Ignite UI docs for a specific framework. Returns top 20 results with excerpt snippets.",
+      annotations: { readOnlyHint: true, openWorldHint: false },
       inputSchema: {
-        query: z.string().describe("Search query (supports prefix matching, e.g. 'grid*')"),
+        query: z.string().min(1, "Search query is required").describe("Search query (supports prefix matching, e.g. 'grid*')"),
         framework: FRAMEWORK_ENUM,
       },
     },
@@ -142,7 +171,7 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
   server.registerTool(
     "generate_ignite_app",
     {
-      description: description.generate_ignite_app,
+      description: TOOL_DESCRIPTIONS.generate_ignite_app,
       inputSchema: {
         framework: FRAMEWORK_ENUM,
       },
@@ -177,7 +206,7 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
 
 server.registerPrompt("igniteui-usage-guide", {
   description:
-    "Instructions for using Ignite UI tools — framework detection, documentation, GitHub API, and CLI scaffolding.",
+    "Instructions for using Ignite UI tools — framework detection, documentation, API reference, and CLI scaffolding.",
   }, async () => ({
   messages: [
     {
@@ -191,6 +220,10 @@ server.registerPrompt("igniteui-usage-guide", {
 }));
 
 async function main() {
+  const platforms = getPlatforms();
+  const docLoader = new ApiDocLoader(platforms);
+  docLoader.load();
+
   let docsProvider: DocsProvider;
   let mode: string;
 
@@ -210,12 +243,21 @@ async function main() {
   }
 
   registerDocTools(server, docsProvider);
+  registerApiTools(server, docLoader);
 
   const transport = new StdioServerTransport();
   await server.connect(transport);
 }
 
 main().catch((err) => {
-  console.error(err);
+  if (err instanceof Error) {
+    console.error(`❌ Failed to start IgniteUI API MCP server: ${err.message}`);
+    if (err.cause) {
+      console.error('Cause:', err.cause);
+    }
+  } else {
+    console.error(err);
+  }
+
   process.exit(1);
 });

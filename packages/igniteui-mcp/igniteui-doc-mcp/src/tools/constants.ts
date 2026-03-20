@@ -1,4 +1,4 @@
-export const description = {
+export const TOOL_DESCRIPTIONS = {
   generate_ignite_app: `Returns setup guides for creating a new Ignite UI project for the specified framework.
 
 **For Angular, React, Web Components:** Returns the Ignite UI CLI documentation with step-by-step instructions for project scaffolding using \`igniteui-cli\`.
@@ -8,6 +8,45 @@ export const description = {
 - framework: REQUIRED — angular | react | blazor | webcomponents
 
 Use this tool when the user wants to create a new project or needs setup instructions.`,
+get_api_reference: `
+  <overview>
+      Retrieve the full API reference for one Ignite UI component or class. Supports angular, react, and webcomponents. Component name matching is case-insensitive.
+  </overview>
+
+  <when_to_use>
+      Use this when you already know the component name (e.g. from a search_api result or from the user's code). If you only have a keyword, feature, or partial name, run search_api first to discover the exact name and platform.
+  </when_to_use>
+
+  <returns>
+      Formatted markdown for the requested API entry. The full entry (section="all") includes the class/interface summary, properties with types and descriptions, methods with signatures, and events. Use section="properties", "methods", or "events" to retrieve a single section and reduce response size.
+  </returns>
+
+  <constraints>
+      Blazor is currently not supported — covers angular, react, and webcomponents only. Component name must be ≤128 characters. Returns isError if the component is not found, with a prompt to use search_api.
+  </constraints>
+
+  <workflow>
+      Typical follow-up to search_api: take the exact component name and platform from a search result, then call get_api_reference.
+  </workflow>
+  `,
+  search_api: `
+  <overview>
+      Search Ignite UI API entries by keyword, feature, or partial component name across angular, react, and webcomponents. Returns up to 10 results ranked by match count.
+  </overview>
+
+  <when_to_use>
+      Use this as the discovery step when the exact component name is unknown, when you want to narrow candidates, or when you want to confirm which platform an entry belongs to. Once you have a result, call get_api_reference with the exact name and platform.
+      Do NOT use this if you already know the exact component name — call get_api_reference directly.
+  </when_to_use>
+
+  <returns>
+      Up to 10 text results ranked by match count. Each result includes the exact component name, platform tag, API type (class/interface/directive/enum), match count, keyword list, and a content excerpt. Use the component name and platform from a result to call get_api_reference.
+  </returns>
+
+  <constraints>
+      Blazor is currently not supported. Omit platform to search all three platforms simultaneously. Search matches against component names, keywords, API type, and document content. Output is text, not structured JSON. Maximum query length is 256 characters.
+  </constraints>
+  `
 };
 
 export const SETUP_DOCS: Record<string, string[]> = {
@@ -73,11 +112,10 @@ Most tools require a \`framework\` parameter. Determine the framework from the u
 - **\`list_components\`** — find docs by component name or keyword
 - **\`get_doc\`** — retrieve full markdown doc once you know the exact name (kebab-case, no .md extension)
 
-## GitHub API Tools
+## API Reference Tools
 
-- **\`search_components\`** — find component source file paths on GitHub
-- **\`get_api_definition\`** — extract public API (interfaces, classes, types) from a source file found via \`search_components\`
-- **\`get_scaffold_reference\`** — find real-world usage examples from sample repositories
+- **\`search_api\`** — discover components by keyword when the exact name is unknown (supports angular, react, webcomponents)
+- **\`get_api_reference\`** — retrieve properties, methods, and events for a known component
 
 ## Project Setup
 
