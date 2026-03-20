@@ -4,9 +4,18 @@
   "description": "Unified MCP server for Ignite UI — documentation, GitHub API, and CLI scaffolding",
   "type": "module",
   "main": "dist/index.js",
+  "exports": {
+    ".": "./dist/index.js"
+  },
   "bin": {
     "igniteui-mcp": "./dist/index.js"
   },
+  "files": [
+    "dist/**/*.js",
+    "dist/**/*.d.ts",
+    "dist/igniteui-docs.db",
+    "README.md"
+  ],
   "scripts": {
     "build": "tsc && npx tsx scripts/build.ts",
     "start": "node dist/index.js",
@@ -65,10 +74,6 @@
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.12.1",
     "dotenv": "^17.2.4",
-    "js-tiktoken": "^1.0.21",
-    "js-yaml": "^4.1.1",
-    "octokit": "^5.0.5",
-    "openai": "^6.22.0",
     "sql.js": "^1.14.1",
     "zod": "^3.25.1"
   },
@@ -78,6 +83,10 @@
     "@types/node": "^25.2.2",
     "@types/tmp": "^0.2.6",
     "better-sqlite3": "^12.6.2",
+    "js-tiktoken": "^1.0.21",
+    "js-yaml": "^4.1.1",
+    "octokit": "^5.0.5",
+    "openai": "^6.22.0",
     "tsx": "^4.21.0",
     "typescript": "^5.8.3"
   }
