@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { UserService } from '../services/user.service';
+import { UserStore } from '../services/user-store';
 import { Profile } from './profile';
 
 describe('Profile', () => {
@@ -10,7 +10,7 @@ describe('Profile', () => {
     await TestBed.configureTestingModule({
       imports: [Profile],
       providers: [
-        { provide: UserService, useValue: { currentUser: { name: 'test' } } }
+        { provide: UserStore, useValue: { currentUser: { name: 'test' } } }
       ]
     })
       .compileComponents();

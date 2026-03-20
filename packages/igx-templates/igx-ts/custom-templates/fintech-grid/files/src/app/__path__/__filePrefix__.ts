@@ -44,13 +44,13 @@ import {
 } from 'igniteui-angular-charts';
 import { timer } from 'rxjs';
 import { debounce } from 'rxjs/operators';
-import { LocalDataService } from './localData.service';
-import { Contract, REGIONS } from './localData/financialData';
+import { LocalData } from './local-data';
+import { Contract, REGIONS } from './data/financialData';
 import { NgIf, NgFor, CurrencyPipe } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @Component({
-  providers: [LocalDataService],
+  providers: [LocalData],
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.html',
   styleUrl: './<%=filePrefix%>.scss',
@@ -136,11 +136,11 @@ export class <%=ClassName%> implements OnInit, AfterViewInit, OnDestroy {
   private timer: any;
   private volumeChanged: any;
   constructor(
-    private localService: LocalDataService,
+    private localData: LocalData,
     private elRef: ElementRef,
     private cdr: ChangeDetectorRef) {
-    this.subscription = this.localService.getData(this.volume);
-    this.localService.records.subscribe(x => { this.data = x; });
+    this.subscription = this.localData.getData(this.volume);
+    this.localData.records.subscribe(x => { this.data = x; });
   }
 
   public ngOnInit(): void {
@@ -166,7 +166,7 @@ export class <%=ClassName%> implements OnInit, AfterViewInit, OnDestroy {
     this.volumeChanged = this.volumeSlider.valueChange.pipe(debounce(() => timer(200)));
     this.volumeChanged.subscribe(
       () => {
-        this.localService.getData(this.volume);
+        this.localData.getData(this.volume);
       },
       (err: string) => console.log('Error: ' + err));
   }

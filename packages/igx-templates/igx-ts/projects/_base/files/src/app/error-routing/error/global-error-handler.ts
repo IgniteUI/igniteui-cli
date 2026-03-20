@@ -2,7 +2,7 @@ import { ErrorHandler, Injectable, Injector, NgZone, inject } from '@angular/cor
 import { Router } from '@angular/router';
 
 @Injectable()
-export class GlobalErrorHandlerService implements ErrorHandler {
+export class GlobalErrorHandler implements ErrorHandler {
   private injector = inject(Injector);
   private zone = inject(NgZone);
 

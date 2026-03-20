@@ -3,7 +3,7 @@ import { BehaviorSubject, Observable} from 'rxjs';
 import { FinancialData } from './assets/financialData';
 
 @Injectable()
-export class LocalDataService {
+export class LocalData {
   public records: Observable<any[]>;
   public records$: BehaviorSubject<any[]>;
 
