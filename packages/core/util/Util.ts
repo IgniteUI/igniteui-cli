@@ -128,14 +128,12 @@ export class Util {
 	 * @param colorKeyword Optional color (CSS keyword like red, green, etc.)
 	 */
 	public static log(message: string, colorKeyword?: string) {
-		// tslint:disable:no-console
 		if (colorKeyword) {
 			const color = chalk.keyword(colorKeyword);
-			console.log(color(message));
-		} else {
-			console.log(message);
+			message = color(message);
 		}
-		// tslint:enable:no-console
+		// eslint-disable-next-line no-console
+		console.log(message);
 	}
 
 	/**
@@ -149,14 +147,12 @@ export class Util {
 			cd: `error: ${message}`
 		});
 
-		// tslint:disable:no-console
 		if (colorKeyword) {
 			const color = chalk.keyword(colorKeyword);
-			console.error(color(message));
-		} else {
-			console.error(message);
+			message = color(message);
 		}
-		// tslint:enable:no-console
+		// eslint-disable-next-line no-console
+		console.error(message);
 	}
 
 	/**
@@ -165,14 +161,12 @@ export class Util {
 	 * @param colorKeyword Optional color (CSS keyword like red, green, etc.)
 	 */
 	public static warn(message: string, colorKeyword?: string) {
-		// tslint:disable:no-console
 		if (colorKeyword) {
 			const color = chalk.keyword(colorKeyword);
-			console.warn(color(message));
-		} else {
-			console.warn(message);
+			message = color(message);
 		}
-		// tslint:enable:no-console
+		// eslint-disable-next-line no-console
+		console.warn(message);
 	}
 
 	public static greenCheck() {

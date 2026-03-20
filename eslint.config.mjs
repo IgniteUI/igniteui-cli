@@ -92,7 +92,7 @@ export default [
       'no-bitwise': 'off',
       'no-caller': 'error',
       'no-cond-assign': 'error',
-      'no-console': 'off',
+      'no-console': 'error',
       'no-debugger': 'error',
       'no-duplicate-case': 'error',
       'no-duplicate-imports': 'error',
@@ -135,6 +135,7 @@ export default [
     files: ['**/*.spec.ts', '**/*-spec.ts', 'spec/**/*.ts'],
     rules: {
       'eslint-plugin-import/no-extraneous-dependencies': 'off',
+      'no-console': 'off',
     },
   },
   {
