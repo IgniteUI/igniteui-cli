@@ -1,4 +1,3 @@
-// tslint:disable:no-implicit-dependencies
 import { Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
 
 export default function(options: any): Rule {

@@ -274,7 +274,6 @@ describe("Unit - Add command", () => {
 		});
 		await addCmd.handler({
 			name: "test-file-name", template: "CustomTemplate",
-			// tslint:disable-next-line:object-literal-sort-keys
 			module: "myCustomModule/my-custom-module.module.ts",
 			_: ["add"],
 			$0: "add"
@@ -344,7 +343,6 @@ describe("Unit - Add command", () => {
 
 		await addCmd.handler({
 			name: "test-file-name", template: "CustomTemplate",
-			// tslint:disable-next-line:object-literal-sort-keys
 			skipRoute: true,
 			_: ["add"],
 			$0: "add"

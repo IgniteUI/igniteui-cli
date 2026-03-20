@@ -1,4 +1,4 @@
-// tslint:disable: no-implicit-dependencies
+// eslint-disable-next-line eslint-plugin-import/no-extraneous-dependencies
 import { workspaces } from "@angular-devkit/core";
 import { Tree } from "@angular-devkit/schematics";
 
