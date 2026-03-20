@@ -35,7 +35,7 @@ describe('Redirect', () => {
 
   it('should try external login on init', async () => {
     const router: Router = TestBed.inject(Router);
-    vi.spyOn(router, 'navigate').mockReturnValue(Promise.resolve(true) as any);
+    vi.spyOn(router, 'navigate');
     extAuthSpy.getUserInfo.mockResolvedValue({ test: '1' });
     authSpy.loginWith.mockResolvedValue({
       error: null,
@@ -52,7 +52,7 @@ describe('Redirect', () => {
 
   it('should show err on external login', async () => {
     const router: Router = TestBed.inject(Router);
-    vi.spyOn(router, 'navigate').mockReturnValue(Promise.resolve(true) as any);
+    vi.spyOn(router, 'navigate');
     extAuthSpy.getUserInfo.mockResolvedValue({ test: '1' });
     authSpy.loginWith.mockResolvedValue({
       error: 'Err'

@@ -128,7 +128,7 @@ describe('LoginBar', () => {
     const userStore = TestBed.inject(UserStore);
     const externalAuth = TestBed.inject(ExternalAuth);
     const router: Router = TestBed.inject(Router);
-    vi.spyOn(router, 'navigate').mockReturnValue(Promise.resolve(true) as any);
+    vi.spyOn(router, 'navigate');
     vi.spyOn(userStore, 'clearCurrentUser');
     vi.spyOn(externalAuth, 'logout');
 

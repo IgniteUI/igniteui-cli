@@ -30,5 +30,5 @@ export abstract class BaseOidcProvider implements AuthProvider {
   }
 
   /** Format received user data per provider claims */
-  protected abstract formatUserData(userData: { [key: string]: any; }): ExternalLogin;
+  protected abstract formatUserData(userData: { [key: string]: any; }): Promise<ExternalLogin>;
 }
