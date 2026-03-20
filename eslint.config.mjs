@@ -32,7 +32,6 @@ export default [
     rules: {
       'complexity': 'off',
       'eslint-plugin-import/no-extraneous-dependencies': 'warn',
-      'eslint-plugin-import/no-internal-modules': 'warn',
       'eslint-plugin-import/order': [
         'off',
         {
@@ -93,7 +92,7 @@ export default [
       'no-bitwise': 'off',
       'no-caller': 'error',
       'no-cond-assign': 'error',
-      'no-console': 'off',
+      'no-console': 'error',
       'no-debugger': 'error',
       'no-duplicate-case': 'error',
       'no-duplicate-imports': 'error',
@@ -133,11 +132,18 @@ export default [
     },
   },
   {
+    files: ['**/*.spec.ts', '**/*-spec.ts', 'spec/**/*.ts'],
+    rules: {
+      'eslint-plugin-import/no-extraneous-dependencies': 'off',
+      'no-console': 'off',
+    },
+  },
+  {
     ignores: [
-      '/node_modules/**/*',
-      '/coverage/**/*',
-      '/output/**/*',
-      '/packages/cli/templates/**/*',
+      'node_modules/**/*',
+      'coverage/**/*',
+      'output/**/*',
+      'packages/cli/templates/**/*',
       '**/files/**/*'
     ]
   },
