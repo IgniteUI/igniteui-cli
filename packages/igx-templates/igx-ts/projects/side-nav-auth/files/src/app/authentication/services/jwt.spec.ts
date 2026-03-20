@@ -4,6 +4,8 @@ import { decodeBase64Url, decodeJWT, parseUser } from './jwt-util';
 import { JwtInterceptor } from './jwt.interceptor';
 
 describe('JWT Tests', () => {
+  afterEach(() => { vi.restoreAllMocks(); });
+
   describe(`JWT Interceptor`, () => {
     const mockService = {} as any;
     const jwtInterceptor = new JwtInterceptor(mockService);
@@ -19,7 +21,7 @@ describe('JWT Tests', () => {
       const mockNext = {
         handle: () => new Observable()
       } as any;
-      spyOn(mockNext, 'handle').and.callThrough();
+      vi.spyOn(mockNext, 'handle');
       mockService.currentUser = false;
       // call w/o current user
       jwtInterceptor.intercept(mockRequest, mockNext).pipe(take(1)).subscribe(() => { });
@@ -34,7 +36,7 @@ describe('JWT Tests', () => {
       mockService.currentUser = {
         token: 'test_token'
       };
-      spyOn(mockRequest, 'clone').and.callThrough();
+      vi.spyOn(mockRequest, 'clone');
       jwtInterceptor.intercept(mockRequest, mockNext).pipe(take(1)).subscribe(() => { });
       expect(mockRequest.clone).toHaveBeenCalledWith({
         setHeaders: {
@@ -67,7 +69,7 @@ describe('JWT Tests', () => {
 
     it(`Should properly handle 'parseUser'`, () => {
       expect(() => parseUser('not valid user name')).toThrow();
-      spyOn(JSON, 'parse').and.returnValue({ payload: 'Mock payload' });
+      vi.spyOn(JSON, 'parse').mockReturnValue({ payload: 'Mock payload' });
       expect(parseUser('123.123')).toEqual({ payload: 'Mock payload', token: '123.123' } as any);
     });
   });

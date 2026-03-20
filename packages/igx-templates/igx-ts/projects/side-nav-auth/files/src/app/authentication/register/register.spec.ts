@@ -16,9 +16,11 @@ const FAMILY_NAME_GROUP_NAME = 'family_name';
 describe('Register', () => {
   let component: Register;
   let fixture: ComponentFixture<Register>;
-  const authSpy = jasmine.createSpyObj('Authentication', ['register']);
-  const userServSpy = jasmine.createSpyObj('UserStore', ['setCurrentUser']);
-  const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
+  const authSpy = { register: vi.fn() };
+  const userServSpy = { setCurrentUser: vi.fn() };
+  const routerSpy = { navigate: vi.fn() };
+
+  afterEach(() => { vi.restoreAllMocks(); });
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -60,11 +62,11 @@ describe('Register', () => {
     component.registrationForm.controls[PASSWORD_GROUP_NAME].setValue('123456');
     expect(component.registrationForm.valid).toBeTruthy();
     component.registrationForm.controls[FAMILY_NAME_GROUP_NAME].setValue('Doe');
-    spyOn(component.registered, 'emit');
-    authSpy.register.and.returnValue(Promise.resolve({
+    vi.spyOn(component.registered, 'emit');
+    authSpy.register.mockResolvedValue({
       error: null,
       user: { name: 'John Doe' }
-    }));
+    });
     await component.tryRegister();
     expect(authSpy.register).toHaveBeenCalledTimes(1);
     expect(authSpy.register).toHaveBeenCalledWith({
@@ -76,16 +78,16 @@ describe('Register', () => {
     expect(userServSpy.setCurrentUser).toHaveBeenCalledWith({ name: 'John Doe' });
     expect(component.registered.emit).toHaveBeenCalled();
     expect(routerSpy.navigate).toHaveBeenCalledWith(['/profile']);
-    authSpy.register.and.returnValue(Promise.resolve({
+    authSpy.register.mockResolvedValue({
       error: 'Reg error'
-    }));
-    spyOn(window, 'alert');
+    });
+    vi.spyOn(window, 'alert').mockImplementation(() => {});
     await component.tryRegister();
     expect(window.alert).toHaveBeenCalledWith('Reg error');
   });
 
   it(`should properly emit when 'showLoginForm' is called`, () => {
-    spyOn(component.viewChange, 'emit');
+    vi.spyOn(component.viewChange, 'emit');
     component.showLoginForm();
     expect(component.viewChange.emit).toHaveBeenCalled();
   });

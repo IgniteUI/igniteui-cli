@@ -9,7 +9,7 @@ import {
   IgxRippleModule,
 } from '<%=igxPackage%>';
 
-import { AuthenticationModule, ExternalAuth } from './authentication';
+import { provideAuthentication } from './authentication/provide-authentication';
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
@@ -24,9 +24,8 @@ export const appConfig: ApplicationConfig = {
       IgxNavbarModule,
       IgxNavigationDrawerModule,
       IgxRippleModule,
-      AuthenticationModule
     ),
     provideAnimations(),
-    ExternalAuth
+    ...provideAuthentication()
   ]
 };

@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { OidcSecurityService } from 'angular-auth-oidc-client';
+import { of } from 'rxjs';
 import { Authentication } from '../services/authentication';
 import { ExternalAuth } from '../services/external-auth';
 import { UserStore } from '../services/user-store';
@@ -9,18 +11,23 @@ import { Redirect } from './redirect';
 describe('Redirect', () => {
   let fixture: ComponentFixture<Redirect>;
   const activeRouteSpy: any = { snapshot: { data: { value: { provider: {} } } } };
-  const extAuthSpy = jasmine.createSpyObj('ExternalAuth', ['getUserInfo']);
-  const authSpy = jasmine.createSpyObj('Authentication', ['loginWith']);
-  const userServSpy = jasmine.createSpyObj('UserStore', ['setCurrentUser']);
+  const extAuthSpy = { getUserInfo: vi.fn() };
+  const authSpy = { loginWith: vi.fn() };
+  const userServSpy = { setCurrentUser: vi.fn() };
+  const oidcSecuritySpy = { checkAuth: vi.fn() };
+
+  afterEach(() => { vi.restoreAllMocks(); });
 
   beforeEach(async () => {
+    oidcSecuritySpy.checkAuth.mockReturnValue(of(null));
     await TestBed.configureTestingModule({
 	  imports: [RouterTestingModule, Redirect],
       providers: [
         { provide: ActivatedRoute, useValue: activeRouteSpy },
         { provide: ExternalAuth, useValue: extAuthSpy },
         { provide: Authentication, useValue: authSpy },
-        { provide: UserStore, useValue: userServSpy }
+        { provide: UserStore, useValue: userServSpy },
+        { provide: OidcSecurityService, useValue: oidcSecuritySpy }
       ]
     })
       .compileComponents();
@@ -28,12 +35,12 @@ describe('Redirect', () => {
 
   it('should try external login on init', async () => {
     const router: Router = TestBed.inject(Router);
-    spyOn(router, 'navigate');
-    extAuthSpy.getUserInfo.and.returnValue(Promise.resolve({ test: '1' }));
-    authSpy.loginWith.and.returnValue(Promise.resolve({
+    vi.spyOn(router, 'navigate');
+    extAuthSpy.getUserInfo.mockResolvedValue({ test: '1' });
+    authSpy.loginWith.mockResolvedValue({
       error: null,
       user: { name: 'TEST' }
-    }));
+    });
     fixture = TestBed.createComponent(Redirect);
     fixture.detectChanges();
     await fixture.whenStable();
@@ -45,12 +52,12 @@ describe('Redirect', () => {
 
   it('should show err on external login', async () => {
     const router: Router = TestBed.inject(Router);
-    spyOn(router, 'navigate');
-    extAuthSpy.getUserInfo.and.returnValue(Promise.resolve({ test: '1' }));
-    authSpy.loginWith.and.returnValue(Promise.resolve({
+    vi.spyOn(router, 'navigate');
+    extAuthSpy.getUserInfo.mockResolvedValue({ test: '1' });
+    authSpy.loginWith.mockResolvedValue({
       error: 'Err'
-    }));
-    spyOn(window, 'alert');
+    });
+    vi.spyOn(window, 'alert').mockImplementation(() => {});
     fixture = TestBed.createComponent(Redirect);
     fixture.detectChanges();
     await fixture.whenStable();

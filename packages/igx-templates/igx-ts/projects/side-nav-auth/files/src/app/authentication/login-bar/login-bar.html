@@ -4,7 +4,7 @@
 <button class="login-button" *ngIf="userStore.currentUser" igxRipple="white" igxButton="flat" igxButtonBackground="c"
   igxButtonColor="white" [igxToggleAction]="options">
   <igx-avatar [initials]="userStore.initials ?? ''" [src]="userStore.currentUser.picture ?? ''"
-    [roundShape]="true" size="small" bgColor="white">
+    shape="circle" size="small" bgColor="white">
   </igx-avatar>
   <igx-icon>keyboard_arrow_down</igx-icon>
 </button>
