@@ -3,17 +3,17 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { OidcSecurityService } from 'angular-auth-oidc-client';
 import { of } from 'rxjs';
-import { AuthenticationService } from '../services/authentication.service';
-import { ExternalAuthService } from '../services/external-auth.service';
-import { UserService } from '../services/user.service';
+import { Authentication } from '../services/authentication';
+import { ExternalAuth } from '../services/external-auth';
+import { UserStore } from '../services/user-store';
 import { Redirect } from './redirect';
 
 describe('Redirect', () => {
   let fixture: ComponentFixture<Redirect>;
   const activeRouteSpy: any = { snapshot: { data: { value: { provider: {} } } } };
-  const extAuthSpy = jasmine.createSpyObj('ExternalAuthService', ['getUserInfo']);
-  const authSpy = jasmine.createSpyObj('AuthenticationService', ['loginWith']);
-  const userServSpy = jasmine.createSpyObj('UserService', ['setCurrentUser']);
+  const extAuthSpy = jasmine.createSpyObj('ExternalAuth', ['getUserInfo']);
+  const authSpy = jasmine.createSpyObj('Authentication', ['loginWith']);
+  const userServSpy = jasmine.createSpyObj('UserStore', ['setCurrentUser']);
   const oidcSecuritySpy = jasmine.createSpyObj('OidcSecurityService', ['checkAuth']);
 
   beforeEach(async () => {
@@ -22,9 +22,9 @@ describe('Redirect', () => {
 	  imports: [RouterTestingModule, Redirect],
       providers: [
         { provide: ActivatedRoute, useValue: activeRouteSpy },
-        { provide: ExternalAuthService, useValue: extAuthSpy },
-        { provide: AuthenticationService, useValue: authSpy },
-        { provide: UserService, useValue: userServSpy },
+        { provide: ExternalAuth, useValue: extAuthSpy },
+        { provide: Authentication, useValue: authSpy },
+        { provide: UserStore, useValue: userServSpy }
         { provide: OidcSecurityService, useValue: oidcSecuritySpy }
       ]
     })

@@ -5,10 +5,10 @@ import { Router } from '@angular/router';
 import { IgxInputGroupComponent, IgxPrefixDirective, IgxIconComponent, IgxLabelDirective,
   IgxInputDirective, IgxButtonDirective, IgxRippleDirective } from 'igniteui-angular';
 
-import { AuthenticationService } from '../services/authentication.service';
+import { Authentication } from '../services/authentication';
 import { ExternalAuthProvider } from '../services/external-auth-configs';
-import { ExternalAuthService } from '../services/external-auth.service';
-import { UserService } from '../services/user.service';
+import { ExternalAuth } from '../services/external-auth';
+import { UserStore } from '../services/user-store';
 
 @Component({
   selector: 'app-login',
@@ -25,8 +25,8 @@ export class Login {
   public providers = ExternalAuthProvider;
 
   constructor(
-    public authService: ExternalAuthService, private authentication: AuthenticationService,
-    private userService: UserService, private router: Router, fb: FormBuilder
+    public externalAuth: ExternalAuth, private authentication: Authentication,
+    private userStore: UserStore, private router: Router, fb: FormBuilder
   ) {
     this.loginForm = fb.group({
       email: ['', Validators.required],
@@ -35,22 +35,22 @@ export class Login {
   }
 
   signUpG() {
-    this.authService.login(ExternalAuthProvider.Google);
+    this.externalAuth.login(ExternalAuthProvider.Google);
   }
 
   signUpMS() {
-    this.authService.login(ExternalAuthProvider.Microsoft);
+    this.externalAuth.login(ExternalAuthProvider.Microsoft);
   }
 
   signUpFb() {
-    this.authService.login(ExternalAuthProvider.Facebook);
+    this.externalAuth.login(ExternalAuthProvider.Facebook);
     this.loggedIn.emit();
   }
 
   async tryLogin() {
     const response = await this.authentication.login(this.loginForm.value);
     if (!response.error) {
-      this.userService.setCurrentUser(response.user!);
+      this.userStore.setCurrentUser(response.user!);
       this.router.navigate(['/profile']);
       this.loginForm.reset();
       // https://github.com/angular/angular/issues/15741

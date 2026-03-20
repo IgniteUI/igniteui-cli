@@ -125,7 +125,7 @@ describe("Unit - List command", () => {
 	it("Should list templates for default type when type no provided", async () => {
 		const framework = { name: "React" };
 		const projectLib = {
-			projectType: "es6",
+			projectType: "igr-ts",
 			templates: mockTemplates
 		};
 
@@ -139,7 +139,7 @@ describe("Unit - List command", () => {
 		expect(Util.error).toHaveBeenCalledTimes(0);
 
 		expect(Util.log).toHaveBeenCalledTimes(9);
-		expect(Util.log).toHaveBeenCalledWith("Available templates for 'React' framework 'es6' type");
+		expect(Util.log).toHaveBeenCalledWith("Available templates for 'React' framework 'igr-ts' type");
 		expect(Util.log).toHaveBeenCalledWith("'group1' group:");
 		expect(Util.log).toHaveBeenCalledWith("	id1.1     Description for 1.1");
 		expect(Util.log).toHaveBeenCalledWith("	id1.2     Description for 1.2");

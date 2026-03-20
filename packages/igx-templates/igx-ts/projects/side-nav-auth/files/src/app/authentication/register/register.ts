@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 import { IgxInputGroupComponent, IgxPrefixDirective, IgxIconComponent, IgxLabelDirective, IgxInputDirective, IgxButtonDirective,
 	IgxRippleDirective } from 'igniteui-angular';
 import { RegisterInfo } from '../models/register-info';
-import { AuthenticationService } from '../services/authentication.service';
-import { UserService } from '../services/user.service';
+import { Authentication } from '../services/authentication';
+import { UserStore } from '../services/user-store';
 
 @Component({
   selector: 'app-register',
@@ -23,9 +23,9 @@ export class Register {
   @Output()
   registered: EventEmitter<any> = new EventEmitter();
 
-  constructor(private authentication: AuthenticationService,
+  constructor(private authentication: Authentication,
     private fb: FormBuilder,
-    private userService: UserService,
+    private userStore: UserStore,
     private router: Router) {
     this.registrationForm = this.fb.group({
       given_name: ['', Validators.required],
@@ -38,7 +38,7 @@ export class Register {
   async tryRegister() {
     const response = await this.authentication.register(this.registrationForm.value as RegisterInfo);
     if (!response.error) {
-      this.userService.setCurrentUser(response.user!);
+      this.userStore.setCurrentUser(response.user!);
       this.router.navigate(['/profile']);
       this.registered.emit();
     } else {

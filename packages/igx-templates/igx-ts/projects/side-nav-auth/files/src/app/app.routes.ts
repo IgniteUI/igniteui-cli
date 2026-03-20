@@ -3,7 +3,7 @@ import { AuthGuard } from './authentication/auth.guard';
 import { Profile } from './authentication/profile/profile';
 import { Redirect } from './authentication/redirect/redirect';
 import { ExternalAuthProvider } from './authentication/services/external-auth-configs';
-import { ExternalAuthRedirectUrl } from './authentication/services/external-auth.service';
+import { ExternalAuthRedirectUrl } from './authentication/services/external-auth';
 
 export const routes: Routes = [
   { path: 'profile', component: Profile, canActivate: [AuthGuard] },
