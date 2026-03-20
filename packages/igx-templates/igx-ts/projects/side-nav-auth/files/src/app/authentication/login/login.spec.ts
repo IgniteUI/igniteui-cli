@@ -49,7 +49,7 @@ describe('Login', () => {
 
   it('should submit login data', async () => {
     const router: Router = TestBed.inject(Router);
-    vi.spyOn(router, 'navigate');
+    vi.spyOn(router, 'navigate').mockReturnValue(Promise.resolve(true) as any);
     expect(component.loginForm.valid).toBeFalsy();
     component.loginForm.controls[MAIL_GROUP_NAME].setValue('test@example.com');
     expect(component.loginForm.valid).toBeFalsy();

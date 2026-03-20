@@ -67,7 +67,7 @@ describe('LoginDialog', () => {
 
   it('should switch views, close on events', () => {
     let view: TestSignViewComponent = fixture.debugElement.query(By.css('app-login')).componentInstance;
-    vi.spyOn(component.loginDialog, 'close');
+    vi.spyOn(component.loginDialog, 'close').mockImplementation(() => {});
 
     view.viewChange.emit();
     expect(component.showLogin).toBeFalsy();
