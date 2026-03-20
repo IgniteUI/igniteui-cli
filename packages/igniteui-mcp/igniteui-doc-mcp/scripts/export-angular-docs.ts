@@ -222,6 +222,31 @@ function expandGridTemplates(): Map<string, { relPath: string; content: string }
   return expanded;
 }
 
+const GRID_DIRS = new Set(Object.values(gridsConfigs).map((c) => c.igPath));
+
+/**
+ * Flatten hierarchical toc.yml paths to single-level filenames.
+ * - Top-level files: keep as-is (e.g., accordion.md)
+ * - Grid paths (grid/, treegrid/, etc.): prefix with grid type (grid-editing.md)
+ * - Other nested paths: prefix with immediate parent dir (cli-getting-started-with-cli.md)
+ */
+function flattenPath(href: string): string {
+  const parts = href.replace(/\\/g, "/").split("/");
+  if (parts.length === 1) return parts[0];
+
+  const fileName = parts[parts.length - 1];
+  const topDir = parts[0];
+
+  // Grid paths: prefix with the grid type directory
+  if (GRID_DIRS.has(topDir)) {
+    return `${topDir}-${fileName}`;
+  }
+
+  // Other nested paths: prefix with immediate parent directory
+  const parent = parts[parts.length - 2];
+  return `${parent}-${fileName}`;
+}
+
 function main() {
   console.error(`Exporting Angular docs (lang: ${LANG})...`);
 
@@ -235,6 +260,7 @@ function main() {
   console.error("Expanding grid templates...");
   const expandedGridDocs = expandGridTemplates();
 
+  mkdirSync(OUTPUT_DIR, { recursive: true });
   let totalFiles = 0;
 
   // Step 3: Process toc entries
@@ -272,8 +298,8 @@ function main() {
     content = replaceEnvironmentVars(content);
     content = stripImages(content);
 
-    const outPath = join(OUTPUT_DIR, relPath);
-    mkdirSync(dirname(outPath), { recursive: true });
+    const flatName = flattenPath(relPath);
+    const outPath = join(OUTPUT_DIR, flatName);
     writeFileSync(outPath, content, "utf-8");
     totalFiles++;
   }

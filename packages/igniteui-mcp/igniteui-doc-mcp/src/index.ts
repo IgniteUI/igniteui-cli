@@ -5,29 +5,44 @@ import { appendFileSync, mkdirSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 import dotenv from "dotenv";
-import path from "path";
-import { exec } from "child_process";
-import { promisify } from "util";
-import { TOOL_DESCRIPTIONS } from "./tools/description.js";
+import { TOOL_DESCRIPTIONS, SETUP_DOCS, BLAZOR_DOTNET_GUIDE, USAGE_GUIDE } from "./tools/constants.js";
 import type { DocsProvider } from "./providers/DocsProvider.js";
 import { RemoteDocsProvider } from "./providers/RemoteDocsProvider.js";
 import { LocalDocsProvider } from "./providers/LocalDocsProvider.js";
 import { getApiReferenceSchema, searchApiSchema } from "./tools/schemas.js";
 import { createGetApiReferenceHandler, createSearchApiHandler } from "./tools/handlers.js";
-import { getPlatforms } from "./config/platforms.js";
 import { ApiDocLoader } from "./lib/api-doc-loader.js";
-
-const execAsync = promisify(exec);
+import { getPlatforms } from "./config/platforms.js";
 
 dotenv.config({ quiet: true });
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const LOG_PATH = join(__dirname, "mcp-server.log");
-const BACKEND_URL = process.env.DOCS_BACKEND_URL || "https://codegen-test5.indigo.design";
 
-mkdirSync(dirname(LOG_PATH), { recursive: true });
+function parseCliArgs(): { remote?: string; debug: boolean } {
+  const args = process.argv.slice(2);
+  let remote: string | undefined;
+  let debug = false;
+  for (let i = 0; i < args.length; i++) {
+    if (args[i] === "--remote") {
+      remote = args[++i] || process.env.IGNITEUI_MCP_DOCS_BACKEND_URL;
+      if (!remote) {
+        console.error("Error: --remote requires a URL argument or IGNITEUI_MCP_DOCS_BACKEND_URL env var.");
+        process.exit(1);
+      }
+    }
+    if (args[i] === "--debug") debug = true;
+  }
+  if (!remote && process.env.IGNITEUI_MCP_DOCS_BACKEND_URL) {
+    // env var alone does not activate remote mode
+  }
+  return { remote, debug };
+}
+
+const cliArgs = parseCliArgs();
 
 function log(tool: string, input: Record<string, any>, output: string, durationMs: number) {
+  if (!cliArgs.debug) return;
   const timestamp = new Date().toISOString();
   const outputPreview = output.length > 500 ? output.slice(0, 500) + `... (${output.length} chars total)` : output;
   const line =
@@ -35,19 +50,6 @@ function log(tool: string, input: Record<string, any>, output: string, durationM
     `  INPUT:  ${JSON.stringify(input)}\n` +
     `  OUTPUT: ${outputPreview}\n\n`;
   appendFileSync(LOG_PATH, line);
-}
-
-function isLocalMode(): boolean {
-  return process.argv.includes("--local") || process.env.DOCS_MODE === "local";
-}
-
-async function createDocsProvider(): Promise<DocsProvider> {
-  if (isLocalMode()) {
-    const provider = new LocalDocsProvider();
-    await provider.init();
-    return provider;
-  }
-  return new RemoteDocsProvider(BACKEND_URL);
 }
 
 const FRAMEWORK_ENUM = z
@@ -66,9 +68,31 @@ const server = new McpServer(
       "React → Igr prefix (IgrGrid), package 'igniteui-react', .tsx files. " +
       "Blazor → Igb prefix (IgbGrid), package 'IgniteUI.Blazor', .razor files. " +
       "Web Components → Igc prefix + Component suffix (IgcGridComponent), package 'igniteui-webcomponents', .ts+.html with custom elements. " +
-      "If the framework is unclear from context, ask the user.",
+      "Use get_project_framework to auto-detect. If the framework is unclear from context, ask the user.",
   }
 );
+
+function registerApiTools(server: McpServer, docLoader: ApiDocLoader) {
+  server.registerTool(
+    "get_api_reference",
+    {
+      description: TOOL_DESCRIPTIONS.get_api_reference,
+      annotations: { readOnlyHint: true, openWorldHint: false },
+      inputSchema: getApiReferenceSchema,
+    },
+    createGetApiReferenceHandler(docLoader)
+  );
+
+  server.registerTool(
+    "search_api",
+    {
+      description: TOOL_DESCRIPTIONS.search_api,
+      annotations: { readOnlyHint: true, openWorldHint: false },
+      inputSchema: searchApiSchema,
+    },
+    createSearchApiHandler(docLoader)
+  );
+}
 
 function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
   server.registerTool(
@@ -142,92 +166,40 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
       return { content: [{ type: "text" as const, text }] };
     }
   );
-}
-
-function registerApiTools(server: McpServer, docLoader: ApiDocLoader) {
-  server.registerTool(
-    "get_api_reference",
-    {
-      description: TOOL_DESCRIPTIONS.get_api_reference,
-      annotations: { readOnlyHint: true, openWorldHint: false },
-      inputSchema: getApiReferenceSchema,
-    },
-    createGetApiReferenceHandler(docLoader)
-  );
 
   server.registerTool(
-    "search_api",
+    "generate_ignite_app",
     {
-      description: TOOL_DESCRIPTIONS.search_api,
-      annotations: { readOnlyHint: true, openWorldHint: false },
-      inputSchema: searchApiSchema,
+      description: TOOL_DESCRIPTIONS.generate_ignite_app,
+      inputSchema: {
+        framework: FRAMEWORK_ENUM,
+      },
     },
-    createSearchApiHandler(docLoader)
-  );
-}
+    async ({ framework }) => {
+      const start = performance.now();
+      const docNames = SETUP_DOCS[framework] || [];
+      const sections: string[] = [];
 
-server.registerTool(
-  "generate_ignite_app",
-  {
-    description: TOOL_DESCRIPTIONS.generate_ignite_app,
-    annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: true },
-    inputSchema: {
-      name: z
-        .string()
-        .regex(/^[a-zA-Z0-9_\-]+$/, "Project name must be a valid folder name (alphanumeric, -, _)")
-        .describe("The name of the new project folder"),
-      framework: z.enum(["angular", "react", "webcomponents"]).describe("The framework for the project"),
-      type: z
-        .string()
-        .regex(/^[a-zA-Z0-9_\-]+$/, "Project type must be alphanumeric with hyphens/underscores only")
-        .describe("The project template type (e.g., 'igx-ts', 'igr-ts', 'igc-ts')")
-        .optional(),
-      template: z
-        .enum(["base", "side-nav", "empty"])
-        .describe("The UI template layout (e.g., 'base', 'side-nav', 'empty'). Defaults to 'base'.")
-        .optional()
-        .default("base"),
-      outputPath: z.string().describe("The absolute or relative path where the project should be created.").optional(),
-    },
-  },
-  async ({ name, framework, type, template, outputPath }) => {
-    const templateType = type || { angular: "igx-ts", react: "igr-ts", webcomponents: "igc-ts" }[framework];
+      if (framework === "blazor") {
+        sections.push(BLAZOR_DOTNET_GUIDE);
+      }
 
-    const basePath = outputPath ? path.resolve(outputPath) : process.cwd();
+      for (const name of docNames) {
+        const { text, found } = await docsProvider.getDoc(framework, name);
+        if (found) {
+          sections.push(text);
+        }
+      }
 
-    try {
-      const command = [
-        "npx -y igniteui-cli new",
-        name,
-        `--framework=${framework}`,
-        ...(framework === "angular" ? ["--collection=@igniteui/angular-schematics"] : []),
-        `--type=${templateType}`,
-        `--skip-git=true`,
-        `--skip-install=true`,
-        `--template=${template}`,
-      ].join(" ");
+      const result = sections.length > 0
+        ? sections.join("\n\n---\n\n")
+        : `No setup guide available for framework: ${framework}`;
 
-      const { stdout } = await execAsync(command, { cwd: basePath });
-
-      return {
-        content: [
-          {
-            type: "text" as const,
-            text:
-              `Project '${name}' generated successfully.\n\n` +
-              `**Project Configuration Details:**\n` +
-              `* Output Path: ${basePath}\n` +
-              `* Requested Template: ${template}\n` +
-              `* Registered projectTemplate (in JSON): ${JSON.stringify({ type: templateType, template }, null, 2)}\n\n` +
-              `CLI Output:\n${stdout}`,
-          },
-        ],
-      };
-    } catch (error: any) {
-      return { isError: true, content: [{ type: "text" as const, text: `Generation failed: ${error.stderr || error.message}` }] };
+      log("generate_ignite_app", { framework }, result, Math.round(performance.now() - start));
+      return { content: [{ type: "text" as const, text: result }] };
     }
-  }
-);
+  );
+}
 
 // --- Prompt ---
 
@@ -240,41 +212,7 @@ server.registerPrompt("igniteui-usage-guide", {
       role: "user" as const,
       content: {
         type: "text" as const,
-        text: `# Ignite UI Tools — Usage Guide
-
-## Framework Detection
-
-Most tools require a \`framework\` parameter. Determine the framework from the user's project context:
-
-| Framework | Value | Component Prefix | Package Name | File Extensions |
-|-----------|-------|-----------------|--------------|-----------------|
-| Angular | \`angular\` | \`Igx\` (e.g. IgxGrid, IgxCombo) | \`igniteui-angular\` | .ts + .html + .scss |
-| React | \`react\` | \`Igr\` (e.g. IgrGrid, IgrCombo) | \`igniteui-react\` | .tsx |
-| Blazor | \`blazor\` | \`Igb\` (e.g. IgbGrid, IgbCombo) | \`IgniteUI.Blazor\` | .razor, .razor.cs |
-| Web Components | \`webcomponents\` | \`Igc\` + \`Component\` suffix (e.g. IgcGridComponent) | \`igniteui-webcomponents\` | .ts + .html (custom elements) |
-
-## Detection Priority
-
-1. **Component prefix in code** — most reliable. \`IgxGrid\` → angular, \`IgrGrid\` → react, etc.
-2. **Package name** in package.json / .csproj — \`igniteui-angular\` → angular, \`IgniteUI.Blazor\` → blazor
-3. **File extensions** — .razor → blazor, .tsx → react
-4. **User's explicit statement** — "I'm using Angular", "Blazor project", etc.
-5. **Ask the user** if none of the above apply
-
-## Documentation Tools
-
-- **\`search_docs\`** — full-text search when user asks "how do I..." or describes a feature need
-- **\`list_components\`** — find docs by component name or keyword
-- **\`get_doc\`** — retrieve full markdown doc once you know the exact name (kebab-case, no .md extension)
-
-## API Reference Tools
-
-- **\`search_api\`** — discover components by keyword when the exact name is unknown (supports angular, react, webcomponents)
-- **\`get_api_reference\`** — retrieve properties, methods, and events for a known component
-
-## CLI Scaffolding Tools
-
-- **\`generate_ignite_app\`** — scaffold a new Ignite UI project (angular, react, webcomponents)`,
+        text: USAGE_GUIDE,
       },
     },
   ],
@@ -285,10 +223,23 @@ async function main() {
   const docLoader = new ApiDocLoader(platforms);
   docLoader.load();
 
-  const docsProvider = await createDocsProvider();
+  let docsProvider: DocsProvider;
+  let mode: string;
 
-  const mode = isLocalMode() ? "local" : "remote";
-  appendFileSync(LOG_PATH, `[${new Date().toISOString()}] Server starting in ${mode} mode\n\n`);
+  if (cliArgs.remote) {
+    docsProvider = new RemoteDocsProvider(cliArgs.remote);
+    mode = "remote";
+  } else {
+    const provider = new LocalDocsProvider();
+    await provider.init();
+    docsProvider = provider;
+    mode = "local";
+  }
+
+  if (cliArgs.debug) {
+    mkdirSync(dirname(LOG_PATH), { recursive: true });
+    appendFileSync(LOG_PATH, `[${new Date().toISOString()}] Server starting in ${mode} mode\n\n`);
+  }
 
   registerDocTools(server, docsProvider);
   registerApiTools(server, docLoader);
@@ -306,5 +257,6 @@ main().catch((err) => {
   } else {
     console.error(err);
   }
+
   process.exit(1);
 });

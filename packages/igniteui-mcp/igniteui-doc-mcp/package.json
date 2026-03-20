@@ -8,7 +8,7 @@
     "igniteui-mcp": "./dist/index.js"
   },
   "scripts": {
-    "build": "tsc && node -e \"const fs=require('fs'),p=require('path');const s=p.resolve('db/igniteui-docs.db'),d=p.resolve('dist/igniteui-docs.db');if(fs.existsSync(s)){fs.copyFileSync(s,d);console.log('Copied db/igniteui-docs.db → dist/')}else{console.warn('db/igniteui-docs.db not found, skipping copy')}\"",
+    "build": "tsc && npx tsx scripts/build.ts",
     "start": "node dist/index.js",
     "build:db": "npx tsx scripts/build-db.ts",
     "inspector": "npx @modelcontextprotocol/inspector dist/index.js",

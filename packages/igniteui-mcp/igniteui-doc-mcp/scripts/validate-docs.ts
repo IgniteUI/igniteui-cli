@@ -34,7 +34,7 @@ interface FileScore {
 function parseArgs(): CliArgs {
   const args = process.argv.slice(2);
   const opts: CliArgs = {
-    model: "gpt-5.1",
+    model: "gpt-5.4",
     sample: 10,
     delay: 1,
     input: "",
