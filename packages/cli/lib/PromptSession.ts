@@ -95,9 +95,7 @@ export class PromptSession extends BasePromptSession {
 
 	protected async completeAndRun(port?: number) {
 		await PackageManager.flushQueue(true);
-		if (true) { // TODO: Make conditional?
-			await start.start({ port });
-		}
+		await start.start({ port });
 	}
 
 	protected async upgradePackages() {
