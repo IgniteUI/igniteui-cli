@@ -33,7 +33,7 @@ import { LoginBar } from './login-bar';
 	  IgxToggleModule]
 })
 class TestLoginDialog extends LoginDialog {
-  open() { }
+  override open() { }
 }
 
 describe('LoginBar', () => {
@@ -92,7 +92,7 @@ describe('LoginBar', () => {
     const userStore = TestBed.inject(UserStore);
     vi.spyOn(userStore, 'currentUser', 'get').mockReturnValue({
       picture: 'picture'
-    });
+    } as any);
     fixture.detectChanges();
     buttons = fixture.debugElement.queryAll(By.css('button'));
     expect(buttons.length).toBe(1);
@@ -115,7 +115,7 @@ describe('LoginBar', () => {
     const userStore = TestBed.inject(UserStore);
     vi.spyOn(userStore, 'currentUser', 'get').mockReturnValue({
       picture: 'picture'
-    });
+    } as any);
     fixture.detectChanges();
 
     const button = fixture.debugElement.query(By.css('button'));

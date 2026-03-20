@@ -38,18 +38,21 @@ describe('Providers', () => {
       email: 'mock_email',
       picture: 'mock_picture'
     };
-    global[facebookProviderName] = {
-      login: (callback: (obj: any) => void, scope: { scope: string }) => { callback({ authResponse: mockResponse }); },
-      init: () => { },
-      api: (params: string, callback: (obj: any) => void) => { callback(mockAPIObj); },
-      getAuthResponse: (): any => { return { accessToken: 'mockAccessToken' } },
-      logout: () => { },
-      AppEvents: null,
-      Canvas: null,
-      Event: null,
-      getLoginStatus: (): any => null,
-      ui: (params: any, callback: (response: any) => void): void => { },
-      XFBML: null
+    (global as any).FB = {
+      login: (callback: any) => { callback({ authResponse: mockResponse }); },
+      init: () => {},
+      api: (paramsOrCb: any, cb?: any) => {
+        const callback = typeof paramsOrCb === 'function' ? paramsOrCb : cb;
+        callback(mockAPIObj);
+      },
+      getAuthResponse: () => ({ accessToken: 'mockAccessToken' }),
+      logout: () => {},
+      AppEvents: {},
+      Canvas: {},
+      Event: {} as any,
+      getLoginStatus: () => null,
+      ui: () => {},
+      XFBML: {}
     };
     it('Should properly initialize', () => {
       const provider = new FacebookProvider(MOCK_EXTERNAL_AUTH_CONFIG, MOCK_ROUTER);
