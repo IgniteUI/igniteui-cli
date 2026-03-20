@@ -41,6 +41,8 @@ export const NPM_REACT_SPREADSHEET_CHART_ADAPTER = "igniteui-react-spreadsheet-c
 export const FEED_REACT_SPREADSHEET_CHART_ADAPTER = "@infragistics/igniteui-react-spreadsheet-chart-adapter";
 
 // webcomponents
+export const NPM_WEBCOMPONENTS = "igniteui-webcomponents";
+export const FEED_WEBCOMPONENTS = "@infragistics/igniteui-webcomponents";
 export const NPM_WEBCOMPONENTS_CHARTS = "igniteui-webcomponents-charts";
 export const FEED_WEBCOMPONENTS_CHARTS = "@infragistics/igniteui-webcomponents-charts";
 export const NPM_WEBCOMPONENTS_CORE = "igniteui-webcomponents-core";

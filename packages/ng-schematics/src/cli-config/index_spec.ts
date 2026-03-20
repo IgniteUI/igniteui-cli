@@ -309,4 +309,56 @@ export const appConfig: ApplicationConfig = {
 		await runner.runSchematic("cli-config", {}, tree);
 		expect(warns).toContain(jasmine.stringMatching(pattern));
 	});
+
+	describe("addAISkills", () => {
+		const mockSkillContent = "# Ignite UI for Angular - AI Skills\nBest practices...";
+		const claudeDest = ".claude/skills";
+
+		function createSkillFiles(igxPkg = NPM_ANGULAR) {
+			const dir = `node_modules/${igxPkg}/skills`;
+			tree.create(`${dir}/igniteui-angular.md`, mockSkillContent);
+		}
+
+		it("should automatically copy skill files to .claude/skills/", async () => {
+			createSkillFiles();
+			await runner.runSchematic("cli-config", {}, tree);
+			expect(tree.exists(`${claudeDest}/igniteui-angular.md`)).toBeTruthy();
+			expect(tree.readContent(`${claudeDest}/igniteui-angular.md`)).toEqual(mockSkillContent);
+		});
+
+		it("should NOT create skill files when addAISkills is false", async () => {
+			createSkillFiles();
+			await runner.runSchematic("cli-config", {
+				addAISkills: false
+			}, tree);
+			expect(tree.exists(`${claudeDest}/igniteui-angular.md`)).toBeFalsy();
+		});
+
+		it("should not overwrite existing skill files", async () => {
+			createSkillFiles();
+			const existingContent = "# Existing skill";
+			tree.create(`${claudeDest}/igniteui-angular.md`, existingContent);
+
+			await runner.runSchematic("cli-config", {}, tree);
+			expect(tree.readContent(`${claudeDest}/igniteui-angular.md`)).toEqual(existingContent);
+		});
+
+		it("should silently skip when no skill files found in the package", async () => {
+			// no skill files created → nothing copied, no errors
+			await runner.runSchematic("cli-config", {}, tree);
+			expect(tree.exists(claudeDest)).toBeFalsy();
+		});
+
+		it("should work with FEED_ANGULAR package", async () => {
+			await runner.runSchematic("cli-config", {}, tree);
+
+			resetTree();
+			createIgPkgJson(FEED_ANGULAR);
+			populatePkgJson(FEED_ANGULAR);
+			createSkillFiles(FEED_ANGULAR);
+
+			await runner.runSchematic("cli-config", {}, tree);
+			expect(tree.exists(`${claudeDest}/igniteui-angular.md`)).toBeTruthy();
+		});
+	});
 });
