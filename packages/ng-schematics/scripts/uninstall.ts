@@ -1,4 +1,3 @@
-// tslint:disable-next-line:no-implicit-dependencies
 import { App, GoogleAnalytics } from "@igniteui/cli-core";
 
 function uninstall() {

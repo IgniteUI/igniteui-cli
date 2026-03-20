@@ -15,7 +15,6 @@ import { deleteAll, resetSpy } from "../helpers/utils";
 
 describe("Add command", () => {
 	let testFolder = parse(__filename).name;
-	// tslint:disable:no-console
 	beforeEach(() => {
 		spyOn(console, "log");
 		spyOn(console, "error");
@@ -169,13 +168,12 @@ describe("Add command", () => {
 			fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
 				project: { framework: "angular", projectType: "igx-ts-legacy", components: [] }
 			}));
-			fs.writeFileSync("tslint.json", JSON.stringify({
-				rules: {
-					"indent": [true, "spaces", 2],
-					"prefer-const": true,
-					"quotemark": [true, "single"]
-				}
-			}));
+			fs.writeFileSync(".editorconfig", `
+				[*.ts]
+				indent_style = space
+				indent_size = 2
+				quote_type = single
+			`);
 			fs.mkdirSync(`./src`);
 			fs.mkdirSync(`./src/app`);
 			fs.writeFileSync("src/app/app-routing-module.ts", "const routes: Routes = [];");
@@ -231,7 +229,7 @@ export class AppModule {
 			fs.rmSync("./src", { recursive: true,  force: true });
 
 			fs.unlinkSync(ProjectConfig.configFile);
-			fs.unlinkSync("tslint.json");
+			fs.unlinkSync(".editorconfig");
 			fs.unlinkSync("package.json");
 		});
 	}
@@ -244,13 +242,12 @@ export class AppModule {
 			fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
 				project: { framework: "angular", projectType: "igx-ts-legacy", components: [] }
 			}));
-			fs.writeFileSync("tslint.json", JSON.stringify({
-				rules: {
-					"indent": [true, "spaces", 2],
-					"prefer-const": true,
-					"quotemark": [true, "single"]
-				}
-			}));
+			fs.writeFileSync(".editorconfig", `
+				[*.ts]
+				indent_style = space
+				indent_size = 2
+				quote_type = single
+			`);
 			fs.mkdirSync(`./src`);
 			fs.mkdirSync(`./src/app`);
 			fs.writeFileSync("src/app/app-routing-module.ts", "const routes: Routes = [];");
@@ -280,7 +277,6 @@ export class AppModule {
 
 			expect(fs.readFileSync("src/app/app-routing-module.ts", "utf-8")).toBe(
 				`import { TestNestedFolders } from './${componentFolder}/test-nested-folders';` + EOL +
-				// tslint:disable-next-line:max-line-length
 				`const routes: Routes = [{ path: 'test-nested-folders', component: TestNestedFolders, data: { text: 'Test Nested Folders' } }];` + EOL
 			);
 
@@ -306,7 +302,7 @@ export class AppModule {
 			deleteAll("./src");
 			fs.rmdirSync("./src");
 			fs.unlinkSync(ProjectConfig.configFile);
-			fs.unlinkSync("tslint.json");
+			fs.unlinkSync(".editorconfig");
 		});
 
 	it("Should correctly add React template", async () => {

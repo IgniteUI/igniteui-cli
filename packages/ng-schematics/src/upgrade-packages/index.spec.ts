@@ -7,7 +7,6 @@ import { SchematicsTemplateManager } from "../SchematicsTemplateManager";
 import { NgTreeFileSystem } from "../utils/NgFileSystem";
 
 describe("Schematics upgrade-packages", () => {
-	// tslint:disable: object-literal-sort-keys
 
 	let appTree: UnitTestTree;
 	const collectionPath = path.join(__dirname, "../collection.json");
