@@ -110,7 +110,6 @@ export class Util {
 
 	public static applyConfigTransformation = (data: string, configuration: { [key: string]: string }): string => {
 		let key;
-		// tslint:disable-next-line:forin
 		for (key in configuration) {
 			data = data.replace(new RegExp(Util.escapeRegExp(key), "g"), configuration[key]);
 		}

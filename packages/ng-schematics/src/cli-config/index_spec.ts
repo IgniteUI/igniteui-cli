@@ -9,7 +9,7 @@ describe("cli-config schematic", () => {
 	const runner: SchematicTestRunner = new SchematicTestRunner("cli-schematics", collectionPath);
 	let tree: UnitTestTree;
 	const sourceRoot = "src";
-	// tslint:disable: object-literal-sort-keys
+
 	const ngJsonConfig = {
 		projects: {
 			testProj: {

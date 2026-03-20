@@ -79,7 +79,6 @@ const command: CommandType = {
 	command: "generate",
 	describe: "generates custom template",
 	templateManager: null,
-	// tslint:disable:object-literal-sort-keys
 	builder: yargs => {
 		yargs
 			.command({

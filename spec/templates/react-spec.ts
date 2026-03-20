@@ -3,7 +3,6 @@ import { Framework, Util } from "@igniteui/cli-core";
 const templatesLocation = "../../packages/cli/templates/react";
 describe("React templates", () => {
 
-	// tslint:disable-next-line:only-arrow-functions
 	it("Templates should have IDs", async function() {
 		const reactFramework = require(templatesLocation);
 		expect(reactFramework.projectLibraries[0]).toBeDefined();

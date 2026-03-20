@@ -18,7 +18,6 @@ describe("Unit - Upgrade command", () => {
 	});
 
 	it("Upgrade an Ignite UI for Angular project", async () => {
-		// tslint:disable-next-line: no-object-literal-type-assertion
 		const config: Config = {
 			project: {
 				framework: "angular",
@@ -134,7 +133,6 @@ describe("Unit - Upgrade command", () => {
 	});
 
 	it("Logs error for not supported framework", async () => {
-		// tslint:disable-next-line: no-object-literal-type-assertion
 		const config: Config = {
 			project: {
 				framework: "jquery"
