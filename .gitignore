@@ -12,6 +12,7 @@
 # ignore compiled files in packages
 /packages/**/*.js.map
 /packages/**/*.js
+!/packages/igniteui-mcp/igniteui-doc-mcp/scripts/build.js
 /scripts/**/*.js.map
 /scripts/**/*.js
 /spec/**/*.js.map
