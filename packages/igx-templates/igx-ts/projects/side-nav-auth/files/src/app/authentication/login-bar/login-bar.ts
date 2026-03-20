@@ -4,8 +4,8 @@ import { NgIf } from '@angular/common';
 import { IgxDropDownComponent, ISelectionEventArgs, IgxRippleDirective, IgxButtonDirective, IgxToggleActionDirective,
   IgxAvatarComponent, IgxIconComponent, IgxDropDownItemComponent } from 'igniteui-angular';
 import { LoginDialog } from '../login-dialog/login-dialog';
-import { ExternalAuthService } from '../services/external-auth.service';
-import { UserService } from '../services/user.service';
+import { ExternalAuth } from '../services/external-auth';
+import { UserStore } from '../services/user-store';
 
 @Component({
   selector: 'app-login-bar',
@@ -23,8 +23,8 @@ export class LoginBar {
   igxDropDown!: IgxDropDownComponent;
 
   constructor(
-    public userService: UserService,
-    private authService: ExternalAuthService,
+    public userStore: UserStore,
+    private externalAuth: ExternalAuth,
     private router: Router) {
   }
 
@@ -34,8 +34,8 @@ export class LoginBar {
 
   handleLogout() {
     this.router.navigate(['/home']);
-    this.userService.clearCurrentUser();
-    this.authService.logout();
+    this.userStore.clearCurrentUser();
+    this.externalAuth.logout();
   }
 
   menuSelect(args: ISelectionEventArgs) {

@@ -3,7 +3,7 @@ import { ComponentGroup, Config, Framework, ProjectConfig, Util } from "@igniteu
 import * as path from "path";
 import { TemplateManager } from "../../packages/cli/lib/TemplateManager";
 import { jQueryTemplate } from "../../packages/cli/lib/templates/jQueryTemplate";
-import { ReactTemplate } from "../../packages/cli/lib/templates/ReactTemplate";
+import { IgniteUIForReactTemplate } from "../../packages/cli/lib/templates/IgniteUIForReactTemplate";
 import { IgniteUIForWebComponentsTemplate } from "../../packages/cli/lib/templates/IgniteUIForWebComponentsTemplate";
 import { mockProLibFactory } from "../helpers/mocks";
 import { resetSpy } from "../helpers/utils";
@@ -168,7 +168,7 @@ describe("Unit - Template manager", () => {
 		spyOn(Util, "getDirectoryNames").and.returnValue(["jquery", "react", "angular", "webcomponents"]);
 		const templates = [
 			"file:/template/jquery/js",
-			"file:/template/react/es6",
+			"file:/template/react/igr-ts",
 			"path:/template/webcomponents/igc-ts",
 			"/template/angular/igx-ts"
 		];
@@ -179,7 +179,7 @@ describe("Unit - Template manager", () => {
 		mockProjLibs = {
 			angular: [ mockProLibFactory("igx-ts")],
 			jquery: [ mockProLibFactory("js") ],
-			react: [ mockProLibFactory("es6") ],
+			react: [ mockProLibFactory("igr-ts") ],
 			webcomponents: [ mockProLibFactory("igc-ts") ],
 		};
 		customRequire = {
@@ -211,9 +211,9 @@ describe("Unit - Template manager", () => {
 			jasmine.objectContaining(template("jquery", "js"))
 		);
 		expect(mockProjLibs.react[0].registerTemplate).toHaveBeenCalledTimes(1);
-		expect(mockProjLibs.react[0].registerTemplate).toHaveBeenCalledWith(jasmine.any(ReactTemplate));
+		expect(mockProjLibs.react[0].registerTemplate).toHaveBeenCalledWith(jasmine.any(IgniteUIForReactTemplate));
 		expect(mockProjLibs.react[0].registerTemplate).toHaveBeenCalledWith(
-			jasmine.objectContaining(template("react", "es6"))
+			jasmine.objectContaining(template("react", "igr-ts"))
 		);
 		expect(mockProjLibs.webcomponents[0].registerTemplate).toHaveBeenCalledTimes(1);
 		expect(mockProjLibs.webcomponents[0].registerTemplate).toHaveBeenCalledWith(jasmine.any(IgniteUIForWebComponentsTemplate));

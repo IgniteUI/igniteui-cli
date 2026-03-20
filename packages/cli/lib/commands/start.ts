@@ -65,7 +65,7 @@ const command: StartCommandType = {
 			cd14: config.project.theme
 		});
 
-		let port = Number(argv.port) || defaultPort;
+		const port = Number(argv.port) || defaultPort;
 		// TODO: consider piping the stdin so that we handle the cp's termination
 		// this may require additional logic to be implemented if the cp asks for input
 		const options: ExecSyncOptions = { stdio: "inherit", killSignal: "SIGINT" };
@@ -82,23 +82,11 @@ const command: StartCommandType = {
 
 				browserSync.init(bsConfig);
 				break;
-			case "react":
-				if (port) {
-					if (projectType === "igr-ts") {
-						execSyncNpmStart(port, options);
-					} else {
-						// https://facebook.github.io/create-react-app/docs/advanced-configuration
-						// react-scripts start "--port=dafaultPort" is not a valid command for all environments.
-						// .env file is included and used by both igr-es6 and es6 now,
-						// to specify the port for all environments (Windows, Mac, etc)
-						process.env.PORT = `${port}`;
-						port = null;
-					}
-				}
-			/* falls through */
 			case "angular":
+			case "react":
 			case "webcomponents":
 				execSyncNpmStart(port, options);
+				break;
 			default:
 				break;
 		}

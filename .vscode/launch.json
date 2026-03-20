@@ -112,21 +112,6 @@
 			"args": [
 				"new",
 				"reactproj",
-				"--framework=react"
-			]
-		},
-		{
-			"type": "node",
-			"request": "launch",
-			"name": "Launch New React TS ES6",
-			"cwd": "${workspaceRoot}/output",
-			"program": "${workspaceRoot}/packages/cli/bin/execute.js",
-			"console": "externalTerminal",
-			"preLaunchTask": "build",
-			"outFiles": ["${workspaceFolder}/**/*.js"],
-			"args": [
-				"new",
-				"reactproj",
 				"--framework=react",
 				"--type=igr-ts"
 			]
