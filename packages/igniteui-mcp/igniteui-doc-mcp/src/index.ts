@@ -218,7 +218,7 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
         }
         result = sections.join("\n\n---\n\n");
       } else {
-        result = SETUP_MD;
+        result = SETUP_MD[framework] ?? `No setup guide available for framework: ${framework}`;
       }
 
       log("igniteui_get_project_setup_guide", { framework }, result, Math.round(performance.now() - start));

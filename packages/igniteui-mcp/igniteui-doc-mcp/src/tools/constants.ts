@@ -3,7 +3,11 @@ import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-export const SETUP_MD: string = readFileSync(join(__dirname, "setup.md"), "utf-8");
+export const SETUP_MD: Record<string, string> = {
+  angular: readFileSync(join(__dirname, "setup_angular.md"), "utf-8"),
+  react: readFileSync(join(__dirname, "setup_react.md"), "utf-8"),
+  webcomponents: readFileSync(join(__dirname, "setup_webcomponents.md"), "utf-8"),
+};
 
 export const TOOL_DESCRIPTIONS = {
   get_project_setup_guide: `Get the official Ignite UI project setup guide for one framework: angular, react, blazor, or webcomponents.
@@ -14,7 +18,8 @@ Returns documentation text only. For Angular, React, and Web Components, it retu
 
 This tool is read-only: it does not create files, run commands, detect the current project, or modify the workspace.
 
-Template rule: start with the base template unless the user explicitly needs multiple routed views. Use side-nav only when multi-view routing is actually required.`,
+Template rule: start with the base template unless the user explicitly needs multiple routed views. Use side-nav only when multi-view routing is actually required.
+`,
 
   list_components: `List all available Ignite UI component documentation entries for a given framework. Optionally filter by keyword matched against filename, component name, keywords, or summary.
 
@@ -22,7 +27,8 @@ Use this to discover what docs exist before calling igniteui_get_doc — e.g. to
 
 Returns a formatted list where each entry includes: doc name (pass this as the 'name' parameter to igniteui_get_doc), display name, summary, and premium status. Without a filter, returns the full catalog for the framework.
 
-No pagination — the full result set is returned in one call.`,
+No pagination — the full result set is returned in one call.
+`,
 
   get_doc: `Retrieve the full markdown content of one specific Ignite UI component doc by its exact name. The name is kebab-case without the .md extension (e.g. "grid-editing", "combo-overview", "accordion").
 
@@ -30,7 +36,8 @@ Use this after discovering doc names from igniteui_list_components or igniteui_s
 
 Returns YAML frontmatter (component, keywords, summary) followed by the complete markdown body with code samples, tables, and links.
 
-Returns isError if the doc name is not found, with a suggestion to use igniteui_list_components.`,
+Returns isError if the doc name is not found, with a suggestion to use igniteui_list_components.
+`,
 
   search_docs: `Full-text search across all Ignite UI documentation for a specific framework. Supports prefix matching with trailing * (e.g. "grid*" matches grid, grids, grid-editing) and hyphenated terms (e.g. "grid-editing" matched as a phrase).
 
@@ -38,7 +45,8 @@ Use this when the user asks "how do I..." or describes a feature need — e.g. "
 
 Returns up to 20 results ranked by relevance. Each result includes: doc name (pass to igniteui_get_doc for full content), display name, summary, and a text excerpt with matching terms highlighted between >>> and <<<.
 
-Query must be non-empty. Special characters are sanitized automatically — only * for prefix matching needs to be passed explicitly.`,
+Query must be non-empty. Special characters are sanitized automatically — only * for prefix matching needs to be passed explicitly.
+`,
 
   get_api_reference: `Look up the full API reference for a specific Ignite UI component or class by exact name. Case-insensitive matching. Covers angular, react, and webcomponents (Blazor API not yet available).
 
@@ -46,7 +54,8 @@ Use this when you already know the exact component name — from the user's code
 
 Returns formatted markdown with the class/interface summary, properties (with types and descriptions), methods (with signatures), and events. Use section="properties", "methods", or "events" to retrieve only that section and reduce response size. Defaults to section="all".
 
-Component name must be ≤128 characters. Returns isError with a suggestion to use igniteui_search_api if not found.`,
+Component name must be ≤128 characters. Returns isError with a suggestion to use igniteui_search_api if not found.
+`,
 
   search_api: `Search Ignite UI API entries by keyword, feature name, or partial component name. Returns up to 10 results ranked by relevance across angular, react, and webcomponents (Blazor API not yet available).
 
@@ -54,7 +63,8 @@ Use this as the discovery step when the exact component name is unknown — e.g.
 
 Each result includes: exact component name, framework tag, API type (class/interface/directive/enum), match count, keyword list, and a content excerpt. Pass the component name and framework from a result to igniteui_get_api_reference for full details. To reduce response size, use section="properties", "methods", or "events" instead of the default "all".
 
-Omit framework to search all frameworks at once. Maximum query length is 256 characters.`
+Omit framework to search all frameworks at once. Maximum query length is 256 characters.
+`
 };
 
 export const SETUP_DOCS: Record<string, string[]> = {
