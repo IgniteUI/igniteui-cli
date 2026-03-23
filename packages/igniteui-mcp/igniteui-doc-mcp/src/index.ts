@@ -103,7 +103,7 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
     {
       title: "List Ignite UI Components",
       description:
-        "List available Ignite UI component docs. Filter by framework and optionally by keyword match against filename, component, toc_name, keywords, summary.",
+        "List all available Ignite UI component documentation entries for a given framework. Optionally filter by keyword against filename, component name, keywords, or summary. Use this to discover what docs exist before calling igniteui_get_doc. Returns a formatted list with doc names (use these as the 'name' parameter for igniteui_get_doc), summaries, and premium status.",
       annotations: { readOnlyHint: true, openWorldHint: false },
       inputSchema: {
         framework: FRAMEWORK_ENUM,
@@ -126,7 +126,7 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
     {
       title: "Get Ignite UI Doc",
       description:
-        "Return the full markdown content of a specific Ignite UI component doc. Requires framework and doc name.",
+        "Return the full markdown content of a specific Ignite UI component doc by name. Use igniteui_list_components or igniteui_search_docs first to find the exact doc name if you don't know it. Returns frontmatter metadata (component, keywords, summary) followed by the full markdown content. Returns isError if the doc name is not found.",
       annotations: { readOnlyHint: true, openWorldHint: false },
       inputSchema: {
         framework: FRAMEWORK_ENUM,
@@ -148,7 +148,7 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
     {
       title: "Search Ignite UI Docs",
       description:
-        "Full-text search across Ignite UI docs for a specific framework. Returns top 20 results with excerpt snippets.",
+        "Full-text search across all Ignite UI documentation for a specific framework. Use this when the user asks 'how do I...' or describes a feature need. Returns up to 20 results with doc name, summary, and excerpt snippets showing matching text. Use the doc name from results with igniteui_get_doc to retrieve the full content. For browsing by component name instead, use igniteui_list_components.",
       annotations: { readOnlyHint: true, openWorldHint: false },
       inputSchema: {
         query: z.string().min(1, "Search query is required").describe("Search query (supports prefix matching, e.g. 'grid*')"),

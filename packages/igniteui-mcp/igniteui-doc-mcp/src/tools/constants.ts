@@ -1,52 +1,23 @@
 export const TOOL_DESCRIPTIONS = {
-  generate_ignite_app: `Returns setup guides for creating a new Ignite UI project for the specified framework.
+  generate_ignite_app: `Return setup guides and instructions for creating a new Ignite UI project. For Angular, React, and Web Components, returns the Ignite UI CLI documentation with step-by-step scaffolding instructions. For Blazor, returns a guide using dotnet new and NuGet package installation.
 
-**For Angular, React, Web Components:** Returns the Ignite UI CLI documentation with step-by-step instructions for project scaffolding using \`igniteui-cli\`.
-**For Blazor:** Returns a guide for creating a Blazor app using \`dotnet new\` and adding Ignite UI Blazor dependencies via NuGet.
+Use this when the user wants to start a new project, needs installation steps, or asks "how do I set up Ignite UI". This does NOT generate files or run commands — it returns documentation text only.
 
-**Parameters:**
-- framework: REQUIRED — angular | react | blazor | webcomponents
+Returns one or more markdown documents concatenated together with the full setup walkthrough for the requested framework.`,
+get_api_reference: `Look up the full API reference for a specific Ignite UI component or class by exact name. Case-insensitive matching. Covers angular, react, and webcomponents (Blazor API not yet available).
 
-Use this tool when the user wants to create a new project or needs setup instructions.`,
-get_api_reference: `
-  <overview>
-      Retrieve the full API reference for one Ignite UI component or class. Supports angular, react, and webcomponents. Component name matching is case-insensitive.
-  </overview>
+Use this when you already know the exact component name — from the user's code (e.g. IgxGridComponent, IgrGrid, IgcSelect) or from a previous igniteui_search_api result. If you only have a keyword or partial name, call igniteui_search_api first to discover the exact name.
 
-  <when_to_use>
-      Use this when you already know the component name (e.g. from a igniteui_search_api result or from the user's code). If you only have a keyword, feature, or partial name, run igniteui_search_api first to discover the exact name and platform.
-  </when_to_use>
+Returns formatted markdown with the class/interface summary, properties (with types and descriptions), methods (with signatures), and events. Use section="properties", "methods", or "events" to retrieve only that section and reduce response size. Defaults to section="all".
 
-  <returns>
-      Formatted markdown for the requested API entry. The full entry (section="all") includes the class/interface summary, properties with types and descriptions, methods with signatures, and events. Use section="properties", "methods", or "events" to retrieve a single section and reduce response size.
-  </returns>
+Component name must be ≤128 characters. Returns isError with a suggestion to use igniteui_search_api if not found.`,
+  search_api: `Search Ignite UI API entries by keyword, feature name, or partial component name. Returns up to 10 results ranked by relevance across angular, react, and webcomponents (Blazor API not yet available).
 
-  <constraints>
-      Blazor is currently not supported — covers angular, react, and webcomponents only. Component name must be ≤128 characters. Returns isError if the component is not found, with a prompt to use igniteui_search_api.
-  </constraints>
+Use this as the discovery step when the exact component name is unknown — e.g. the user asks about "grid virtualization" or "combo filtering". Also use it to confirm which framework a component belongs to. Do NOT use this if you already know the exact component name — call igniteui_get_api_reference directly instead.
 
-  <workflow>
-      Typical follow-up to igniteui_search_api: take the exact component name and platform from a search result, then call igniteui_get_api_reference.
-  </workflow>
-  `,
-  search_api: `
-  <overview>
-      Search Ignite UI API entries by keyword, feature, or partial component name across angular, react, and webcomponents. Returns up to 10 results ranked by match count.
-  </overview>
+Each result includes: exact component name, framework tag, API type (class/interface/directive/enum), match count, keyword list, and a content excerpt. Pass the component name and framework from a result to igniteui_get_api_reference for full details.
 
-  <when_to_use>
-      Use this as the discovery step when the exact component name is unknown, when you want to narrow candidates, or when you want to confirm which platform an entry belongs to. Once you have a result, call igniteui_get_api_reference with the exact name and platform.
-      Do NOT use this if you already know the exact component name — call igniteui_get_api_reference directly.
-  </when_to_use>
-
-  <returns>
-      Up to 10 text results ranked by match count. Each result includes the exact component name, platform tag, API type (class/interface/directive/enum), match count, keyword list, and a content excerpt. Use the component name and platform from a result to call igniteui_get_api_reference.
-  </returns>
-
-  <constraints>
-      Blazor is currently not supported. Omit platform to search all three platforms simultaneously. Search matches against component names, keywords, API type, and document content. Output is text, not structured JSON. Maximum query length is 256 characters.
-  </constraints>
-  `
+Omit framework to search all frameworks at once. Maximum query length is 256 characters.`
 };
 
 export const SETUP_DOCS: Record<string, string[]> = {
