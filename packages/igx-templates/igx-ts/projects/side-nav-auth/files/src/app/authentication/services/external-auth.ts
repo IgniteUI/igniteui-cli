@@ -42,8 +42,7 @@ export class ExternalAuth {
     return this.providers.size > 0;
   }
 
-  public addGoogle(clientID: string) {
-    // TODO: Add Google OIDC config to provideAuthentication() using clientID
+  public addGoogle() {
     this.providers.set(
       ExternalAuthProvider.Google,
       new GoogleProvider(this.oidcSecurityService, ExternalAuthProvider.Google)
@@ -62,8 +61,7 @@ export class ExternalAuth {
     );
   }
 
-  public addMicrosoft(clientID: string) {
-    // TODO: Add Microsoft OIDC config to provideAuthentication() using clientID
+  public addMicrosoft() {
     this.providers.set(
       ExternalAuthProvider.Microsoft,
       new MicrosoftProvider(this.oidcSecurityService, ExternalAuthProvider.Microsoft)
