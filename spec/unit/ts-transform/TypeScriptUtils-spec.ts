@@ -26,7 +26,7 @@ describe("Unit - TypeScriptUtils", () => {
 
 			const readFileSpy = spyOn(fs, "readFileSync");
 			spyOn(TypeScriptUtils, "createSourceFile").and.callThrough();
-			// tslint:disable-next-line:forin
+
 			for (const key in newLines) {
 				readFileSpy.and.returnValue(sourceText.join(newLines[key]));
 				const result = TypeScriptUtils.getFileSource(`test/file${key}.ts`);

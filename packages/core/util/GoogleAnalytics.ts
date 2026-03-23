@@ -162,7 +162,7 @@ class GoogleAnalytics {
 		if (!this.npmVersion) {
 			this.npmVersion = "";
 			const buffer = Util.execSync("npm -v");
-			// tslint:disable-next-line:prefer-for-of
+
 			for (let i = 0; i < buffer.length; i += 1) {
 				this.npmVersion += String.fromCharCode(+buffer[i]).toString();
 			}

@@ -30,7 +30,6 @@ describe("Unit - start command", () => {
 
 	it("Starts an Angular project", async () => {
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
-		// tslint:disable-next-line:no-object-literal-type-assertion
 		const config: Config = {
 			project: {
 				framework: "angular",
@@ -46,11 +45,9 @@ describe("Unit - start command", () => {
 
 		config.project.defaultPort = 3567;
 		await startCmd.handler({ _: ["start"], $0: "start" });
-		// tslint:disable-next-line: max-line-length
 		expect(Util.execSync).toHaveBeenCalledWith("npm start -- --port=3567", { stdio: "inherit", killSignal: "SIGINT" });
 
 		await startCmd.handler({ port: 1234,  _: ["start"], $0: "start"  });
-		// tslint:disable-next-line: max-line-length
 		expect(Util.execSync).toHaveBeenCalledWith("npm start -- --port=1234", { stdio: "inherit", killSignal: "SIGINT" });
 
 		expect(Util.error).not.toHaveBeenCalled();
@@ -58,7 +55,6 @@ describe("Unit - start command", () => {
 
 	it("Starts a React project", async () => {
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
-		// tslint:disable-next-line:no-object-literal-type-assertion
 		const config: Config = {
 			project: {
 				framework: "react",
@@ -97,7 +93,6 @@ describe("Unit - start command", () => {
 			}
 		});
 		spyOn(resolve, "sync").and.returnValue("browser-sync");
-		// tslint:disable-next-line:no-object-literal-type-assertion
 		const config: Config = {
 			project: {
 				framework: "jquery",

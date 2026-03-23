@@ -22,7 +22,7 @@ describe("Unit - Template manager", () => {
 		spyOn(require("module"), "_load").and.callFake((modulePath: string) => {
 			if (isTemplatesPath(modulePath)) {
 				const folder = path.basename(modulePath);
-				// tslint:disable-next-line:no-object-literal-type-assertion
+
 				return {
 					id: folder,
 					name: folder,

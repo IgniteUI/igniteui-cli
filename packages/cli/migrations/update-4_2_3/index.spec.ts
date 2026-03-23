@@ -1,8 +1,5 @@
 import * as path from "path";
-
-// tslint:disable:no-implicit-dependencies
 import { EmptyTree } from "@angular-devkit/schematics";
-// tslint:disable-next-line:no-submodule-imports
 import { SchematicTestRunner, UnitTestTree } from "@angular-devkit/schematics/testing";
 
 describe("Update 4.2.3", () => {

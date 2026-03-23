@@ -4,7 +4,6 @@ const templatesLocation = "../../packages/cli/templates/angular";
 
 describe("Angular templates", () => {
 
-	// tslint:disable-next-line:only-arrow-functions
 	it("Templates should have IDs", async function() {
 		const angularFramework = require(templatesLocation);
 		expect(angularFramework.projectLibraries[0]).toBeDefined();

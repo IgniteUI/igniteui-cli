@@ -22,7 +22,7 @@ describe("Unit - Base project library ", () => {
 		spyOn(require("module"), "_load").and.callFake((modulePath: string) => {
 			if (modulePath.startsWith(path.join(__dirname, "custom-templates"))) {
 				const folder = path.basename(modulePath);
-				// tslint:disable-next-line:no-object-literal-type-assertion
+
 				return {
 					group: folder + "Group",
 					id: folder,
@@ -44,7 +44,7 @@ describe("Unit - Base project library ", () => {
 		spyOn(require("module"), "_load").and.callFake((modulePath: string) => {
 			if (modulePath.startsWith(path.join(__dirname, "custom-templates"))) {
 				const folder = path.basename(modulePath);
-				// tslint:disable-next-line:no-object-literal-type-assertion
+
 				return {
 					group: folder + "CustomGroup",
 					id: folder,
@@ -53,7 +53,7 @@ describe("Unit - Base project library ", () => {
 			}
 			if (modulePath.startsWith(__dirname)) {
 				const folder = path.basename(modulePath);
-				// tslint:disable-next-line:no-object-literal-type-assertion
+
 				return {
 					group: folder + "Group",
 					id: folder,
@@ -80,7 +80,7 @@ describe("Unit - Base project library ", () => {
 		spyOn(require("module"), "_load").and.callFake((modulePath: string) => {
 			if (modulePath.startsWith(__dirname)) {
 				const folder = path.basename(modulePath);
-				// tslint:disable-next-line:no-object-literal-type-assertion
+
 				return {
 					group: folder + "Group",
 					name: folder + "Name"
@@ -103,7 +103,7 @@ describe("Unit - Base project library ", () => {
 		spyOn(require("module"), "_load").and.callFake((modulePath: string) => {
 			if (modulePath.startsWith(path.join(__dirname, "custom-templates"))) {
 				const folder = path.basename(modulePath);
-				// tslint:disable-next-line:no-object-literal-type-assertion
+
 				return {
 					group: folder + "CustomGroup",
 					id: folder,
@@ -112,7 +112,7 @@ describe("Unit - Base project library ", () => {
 			}
 			if (modulePath.startsWith(__dirname)) {
 				const folder = path.basename(modulePath);
-				// tslint:disable-next-line:no-object-literal-type-assertion
+
 				return {
 					templates: {
 						group: folder + "TemplateGroup",
@@ -147,7 +147,7 @@ describe("Unit - Base project library ", () => {
 		spyOn(require("module"), "_load").and.callFake((modulePath: string) => {
 			if (modulePath.startsWith(path.join(__dirname, "custom-templates"))) {
 				const folder = path.basename(modulePath);
-				// tslint:disable-next-line:no-object-literal-type-assertion
+
 				return {
 					group: folder + "CustomGroup",
 					id: folder,
@@ -156,7 +156,7 @@ describe("Unit - Base project library ", () => {
 			}
 			if (modulePath.startsWith(__dirname)) {
 				const folder = path.basename(modulePath);
-				// tslint:disable-next-line:no-object-literal-type-assertion
+
 				return {
 					templates: {
 						components: { name: folder + "ComponentName"},
@@ -190,7 +190,7 @@ describe("Unit - Base project library ", () => {
 		spyOn(require("module"), "_load").and.callFake((modulePath: string) => {
 			if (modulePath.startsWith(path.join(__dirname, "custom-templates"))) {
 				const folder = path.basename(modulePath);
-				// tslint:disable-next-line:no-object-literal-type-assertion
+
 				return {
 					group: folder + "CustomGroup",
 					id: folder,
@@ -199,7 +199,7 @@ describe("Unit - Base project library ", () => {
 			}
 			if (modulePath.startsWith(__dirname)) {
 				const folder = path.basename(modulePath);
-				// tslint:disable-next-line:no-object-literal-type-assertion
+
 				return {
 						group: folder + "Group",
 						name: folder + "Name"
@@ -361,7 +361,7 @@ describe("Unit - Base project library ", () => {
 		spyOn(require("module"), "_load").and.callFake((modulePath: string) => {
 			if (modulePath.startsWith(path.join(__dirname, "custom-templates"))) {
 				const folder = path.basename(modulePath);
-				// tslint:disable-next-line:no-object-literal-type-assertion
+
 				return {
 						id: folder + "Custom"
 				};
