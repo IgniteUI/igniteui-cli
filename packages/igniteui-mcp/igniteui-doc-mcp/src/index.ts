@@ -69,14 +69,15 @@ const server = new McpServer(
       "React → Igr prefix (IgrGrid), package 'igniteui-react', .tsx files. " +
       "Blazor → Igb prefix (IgbGrid), package 'IgniteUI.Blazor', .razor files. " +
       "Web Components → Igc prefix + Component suffix (IgcGridComponent), package 'igniteui-webcomponents', .ts+.html with custom elements. " +
-      "Use get_project_framework to auto-detect. If the framework is unclear from context, ask the user.",
+      "If the framework is unclear from context, ask the user.",
   }
 );
 
 function registerApiTools(server: McpServer, docLoader: ApiDocLoader) {
   server.registerTool(
-    "get_api_reference",
+    "igniteui_get_api_reference",
     {
+      title: "Get Ignite UI API Reference",
       description: TOOL_DESCRIPTIONS.get_api_reference,
       annotations: { readOnlyHint: true, openWorldHint: false },
       inputSchema: getApiReferenceSchema,
@@ -85,8 +86,9 @@ function registerApiTools(server: McpServer, docLoader: ApiDocLoader) {
   );
 
   server.registerTool(
-    "search_api",
+    "igniteui_search_api",
     {
+      title: "Search Ignite UI API",
       description: TOOL_DESCRIPTIONS.search_api,
       annotations: { readOnlyHint: true, openWorldHint: false },
       inputSchema: searchApiSchema,
@@ -97,8 +99,9 @@ function registerApiTools(server: McpServer, docLoader: ApiDocLoader) {
 
 function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
   server.registerTool(
-    "list_components",
+    "igniteui_list_components",
     {
+      title: "List Ignite UI Components",
       description:
         "List available Ignite UI component docs. Filter by framework and optionally by keyword match against filename, component, toc_name, keywords, summary.",
       annotations: { readOnlyHint: true, openWorldHint: false },
@@ -119,8 +122,9 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
   );
 
   server.registerTool(
-    "get_doc",
+    "igniteui_get_doc",
     {
+      title: "Get Ignite UI Doc",
       description:
         "Return the full markdown content of a specific Ignite UI component doc. Requires framework and doc name.",
       annotations: { readOnlyHint: true, openWorldHint: false },
@@ -140,8 +144,9 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
   );
 
   server.registerTool(
-    "search_docs",
+    "igniteui_search_docs",
     {
+      title: "Search Ignite UI Docs",
       description:
         "Full-text search across Ignite UI docs for a specific framework. Returns top 20 results with excerpt snippets.",
       annotations: { readOnlyHint: true, openWorldHint: false },
@@ -169,8 +174,9 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
   );
 
   server.registerTool(
-    "generate_ignite_app",
+    "igniteui_generate_app",
     {
+      title: "Generate Ignite UI App",
       description: TOOL_DESCRIPTIONS.generate_ignite_app,
       inputSchema: {
         framework: FRAMEWORK_ENUM,
