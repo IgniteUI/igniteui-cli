@@ -1,32 +1,5 @@
 import type { DocEntry, SearchHit } from './types/docs.types.js';
 
-/**
- * Recompute the excerpt for a hit using actual content.
- * Called by the search handler after lazy-loading content
- * for top hits that originally had metadata-only excerpts.
- */
-export function enrichExcerpt(
-  hit: SearchHit,
-  content: string,
-  query: string
-): void {
-  const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
-  for (const term of terms) {
-    const escaped = term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    const re = new RegExp(`\\b${escaped}`, "i");
-    const match = re.exec(content);
-    if (match) {
-      const start = Math.max(0, match.index - 80);
-      const end = Math.min(content.length, match.index + 80);
-      hit.excerpt =
-        (start > 0 ? "..." : "") +
-        content.slice(start, end).replace(/\n/g, " ") +
-        (end < content.length ? "..." : "");
-      return;
-    }
-  }
-}
-
 export function searchApiDocs(
   docs: DocEntry[],
   query: string,

@@ -1,6 +1,6 @@
 import type { CallToolResult } from '@modelcontextprotocol/sdk/types.js';
 import { ApiDocLoader } from '../lib/api-doc-loader.js';
-import { searchApiDocs, extractSection, enrichExcerpt } from '../lib/api-doc-search.js';
+import { searchApiDocs, extractSection } from '../lib/api-doc-search.js';
 import type { GetApiReferenceParams, SearchApiParams } from './schemas.js';
 import { getPlatformConfig } from '../config/platforms.js';
 
@@ -67,22 +67,6 @@ export function createSearchApiHandler(docLoader: ApiDocLoader) {
 
     const docs = docLoader.search({ platform });
     const hits = searchApiDocs(docs, query, 10);
-
-    // Enrich top hits: lazy-load content for entries that matched
-    // on metadata only (content was not in memory at search time).
-    // This provides content-based excerpts without eagerly loading
-    // all markdown files at startup.
-    for (const hit of hits) {
-      if (hit.entry.content === undefined) {
-        const content = docLoader.getContent(
-          hit.entry.platform,
-          hit.entry.component
-        );
-        if (content) {
-          enrichExcerpt(hit, content, query);
-        }
-      }
-    }
 
     if (hits.length === 0) {
       const platformText = platform ? ` in ${getPlatformConfig(platform).displayName}` : '';
