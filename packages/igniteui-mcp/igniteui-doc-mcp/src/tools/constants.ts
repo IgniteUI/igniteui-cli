@@ -43,7 +43,7 @@ Component name must be ≤128 characters. Returns isError with a suggestion to u
 
 Use this as the discovery step when the exact component name is unknown — e.g. the user asks about "grid virtualization" or "combo filtering". Also use it to confirm which framework a component belongs to. Do NOT use this if you already know the exact component name — call igniteui_get_api_reference directly instead.
 
-Each result includes: exact component name, framework tag, API type (class/interface/directive/enum), match count, keyword list, and a content excerpt. Pass the component name and framework from a result to igniteui_get_api_reference for full details.
+Each result includes: exact component name, framework tag, API type (class/interface/directive/enum), match count, keyword list, and a content excerpt. Pass the component name and framework from a result to igniteui_get_api_reference for full details. To reduce response size, use section="properties", "methods", or "events" instead of the default "all".
 
 Omit framework to search all frameworks at once. Maximum query length is 256 characters.`
 };
