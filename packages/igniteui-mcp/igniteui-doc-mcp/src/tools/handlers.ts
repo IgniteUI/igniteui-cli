@@ -20,7 +20,7 @@ export function createGetApiReferenceHandler(docLoader: ApiDocLoader) {
       }
     }
 
-  if (!entry) {
+    if (!entry) {
       const platformName = getPlatformConfig(platform).displayName;
       return {
         content: [{
