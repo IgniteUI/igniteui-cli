@@ -1,13 +1,12 @@
 import { Location } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { OpenIdConfiguration, OidcSecurityService } from 'angular-auth-oidc-client';
+import { OidcSecurityService } from 'angular-auth-oidc-client';
 import { ExternalLogin } from '../models/login';
 import { AuthProvider } from '../providers/auth-provider';
 import { FacebookProvider } from '../providers/facebook-provider';
 import { GoogleProvider } from '../providers/google-provider';
 import { MicrosoftProvider } from '../providers/microsoft-provider';
-import { OidcConfigLoader } from '../providers/oidc-config-loader';
 import { ExternalAuthConfig, ExternalAuthProvider } from './external-auth-configs';
 import { LocalStorageService } from './local-storage';
 
@@ -33,8 +32,7 @@ export class ExternalAuth {
     private router: Router,
     private oidcSecurityService: OidcSecurityService,
     private location: Location,
-    private localStorage: LocalStorageService,
-    private oidcConfigLoader: OidcConfigLoader) {
+    private localStorage: LocalStorageService) {
   }
 
   public hasProvider(provider?: ExternalAuthProvider) {
@@ -45,17 +43,6 @@ export class ExternalAuth {
   }
 
   public addGoogle(clientID: string) {
-    const oidcConfig: OpenIdConfiguration = {
-      configId: ExternalAuthProvider.Google,
-      authority: 'https://accounts.google.com',
-      clientId: clientID,
-      scope: 'openid email profile',
-      redirectUrl: this.getAbsoluteUrl(ExternalAuthRedirectUrl.Google),
-      responseType: 'id_token token',
-      postLogoutRedirectUri: '/',
-      silentRenew: false
-    };
-    this.oidcConfigLoader.add(oidcConfig);
     this.providers.set(
       ExternalAuthProvider.Google,
       new GoogleProvider(this.oidcSecurityService, ExternalAuthProvider.Google)
@@ -75,17 +62,6 @@ export class ExternalAuth {
   }
 
   public addMicrosoft(clientID: string) {
-    const oidcConfig: OpenIdConfiguration = {
-      configId: ExternalAuthProvider.Microsoft,
-      authority: 'https://login.microsoftonline.com/consumers/v2.0/',
-      clientId: clientID,
-      scope: 'openid email profile',
-      redirectUrl: this.getAbsoluteUrl(ExternalAuthRedirectUrl.Microsoft),
-      responseType: 'id_token token',
-      postLogoutRedirectUri: '/',
-      silentRenew: false
-    };
-    this.oidcConfigLoader.add(oidcConfig);
     this.providers.set(
       ExternalAuthProvider.Microsoft,
       new MicrosoftProvider(this.oidcSecurityService, ExternalAuthProvider.Microsoft)

@@ -81,8 +81,7 @@ describe('Services', () => {
     } as any;
 
     const localStorage = new LocalStorageService(PLATFORM_ID);
-    const mockOidcConfigLoader = { add: vi.fn() } as any;
-    const extAuthServ = new ExternalAuth(MOCK_ROUTER, MOCK_OIDC_SECURITY, MOCK_LOCATION, localStorage, mockOidcConfigLoader);
+    const extAuthServ = new ExternalAuth(MOCK_ROUTER, MOCK_OIDC_SECURITY, MOCK_LOCATION, localStorage);
     it(`Should properly initialize`, () => {
       expect(extAuthServ).toBeDefined();
     });
@@ -110,19 +109,7 @@ describe('Services', () => {
 
     it(`Should properly call 'addGoogle'`, () => {
       const providersSpy = vi.spyOn((extAuthServ as any).providers, 'set');
-      vi.spyOn(extAuthServ as any, 'getAbsoluteUrl').mockReturnValue('testUrl');
-      mockOidcConfigLoader.add.mockClear();
       extAuthServ.addGoogle('test');
-      expect(mockOidcConfigLoader.add).toHaveBeenCalledWith({
-        configId: ExternalAuthProvider.Google,
-        authority: 'https://accounts.google.com',
-        clientId: 'test',
-        scope: 'openid email profile',
-        redirectUrl: 'testUrl',
-        responseType: 'id_token token',
-        postLogoutRedirectUri: '/',
-        silentRenew: false
-      });
       expect(providersSpy).toHaveBeenCalled();
       expect(providersSpy).toHaveBeenCalledWith('Google',
         new GoogleProvider(MOCK_OIDC_SECURITY, ExternalAuthProvider.Google));
@@ -142,19 +129,7 @@ describe('Services', () => {
 
     it(`Should properly call 'addMicrosoft'`, () => {
       const providersSpy = vi.spyOn((extAuthServ as any).providers, 'set');
-      vi.spyOn(extAuthServ as any, 'getAbsoluteUrl').mockReturnValue('testUrl');
-      mockOidcConfigLoader.add.mockClear();
       extAuthServ.addMicrosoft('test');
-      expect(mockOidcConfigLoader.add).toHaveBeenCalledWith({
-        configId: ExternalAuthProvider.Microsoft,
-        authority: 'https://login.microsoftonline.com/consumers/v2.0/',
-        clientId: 'test',
-        scope: 'openid email profile',
-        redirectUrl: 'testUrl',
-        responseType: 'id_token token',
-        postLogoutRedirectUri: '/',
-        silentRenew: false
-      });
       expect(providersSpy).toHaveBeenCalled();
       expect(providersSpy).toHaveBeenCalledWith('Microsoft',
         new MicrosoftProvider(MOCK_OIDC_SECURITY, ExternalAuthProvider.Microsoft));
