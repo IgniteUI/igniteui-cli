@@ -4,7 +4,8 @@ import {
 	GoogleAnalytics,
 	GoogleAnalyticsParameters,
 	ProjectConfig,
-	Config
+	Config,
+	PackageManager
 } from "@igniteui/cli-core";
 import * as fs from "fs";
 import { EOL } from "os";
@@ -14,7 +15,6 @@ import { deleteAll, resetSpy } from "../helpers/utils";
 
 describe("Add command", () => {
 	let testFolder = parse(__filename).name;
-	// tslint:disable:no-console
 	beforeEach(() => {
 		spyOn(console, "log");
 		spyOn(console, "error");
@@ -157,89 +157,6 @@ describe("Add command", () => {
 		fs.unlinkSync(ProjectConfig.configFile);
 	});
 
-	it("Should correctly add Angular template", async () => {
-		const mockConfig = {
-			project: {
-				framework: "angular",
-				projectType: "ig-ts",
-				components: [],
-			}
-		} as unknown as Config;
-
-		spyOn(ProjectConfig, "globalConfig").and.returnValue(mockConfig);
-
-		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
-			project: mockConfig
-		}));
-		fs.mkdirSync(`./src`);
-		fs.mkdirSync(`./src/app`);
-		fs.writeFileSync("src/app/app-routing-module.ts", "const routes: Routes = [];");
-		fs.writeFileSync("src/app/app-module.ts", `@NgModule({
-			declarations: [
-			  App,
-			  HomeComponent
-			],
-			imports: [ BrowserModule ],
-			bootstrap: [App]
-		})
-		export class AppModule { }`);
-		await cli.run(["add", "grid", "Test view"]);
-
-		expect(console.error).toHaveBeenCalledTimes(0);
-		expect(console.log).toHaveBeenCalledWith(jasmine.stringMatching(/View 'Test view' added\s*/));
-
-		expect(fs.existsSync("./src/app/components/test-view")).toBeTruthy();
-		const componentPath = "./src/app/components/test-view/test-view.component.ts";
-		expect(fs.existsSync(componentPath)).toBeTruthy();
-		// file contents:
-		expect(fs.readFileSync(componentPath, "utf-8")).toContain("export class TestViewComponent");
-		expect(fs.readFileSync("src/app/app-routing-module.ts", "utf-8").replace(/\s/g, "")).toBe(
-			`import { TestViewComponent } from "./components/test-view/test-view.component";
-			const routes: Routes = [{ path: "test-view", component: TestViewComponent, data: { text: "Test view" } }];
-			`.replace(/\s/g, "")
-		);
-		expect(fs.readFileSync("src/app/app-module.ts", "utf-8").replace(/\s/g, "")).toBe(
-			`import { TestViewComponent } from "./components/test-view/test-view.component";
-			@NgModule({
-				declarations: [
-					App,
-					HomeComponent,
-					TestViewComponent
-				],
-				imports: [ BrowserModule ],
-				bootstrap: [App]
-			})
-			export class AppModule {
-			}
-			`.replace(/\s/g, "")
-		);
-		fs.unlinkSync("./src/app/components/test-view/test-view.component.ts");
-		fs.rmSync("./src", { recursive: true,  force: true });
-
-		fs.unlinkSync(ProjectConfig.configFile);
-
-		let expectedPrams: GoogleAnalyticsParameters = {
-			t: "screenview",
-			cd: "Add"
-		};
-		expect(GoogleAnalytics.post).toHaveBeenCalledWith(expectedPrams);
-
-		expectedPrams = {
-			t: "event",
-			ec: "$ig add",
-			ea: "template id: grid; file name: Test view",
-			cd1: "angular",
-			cd2: "ig-ts",
-			cd5: "Data Grids",
-			cd7: "grid",
-			cd8: "Grid",
-			cd11: false,
-			cd14: undefined
-		};
-		expect(GoogleAnalytics.post).toHaveBeenCalledWith(expectedPrams);
-		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);
-	});
-
 	for (const igxPackage of [NPM_ANGULAR, FEED_ANGULAR]) {
 		it(`Should correctly add Ignite UI for Angular template - ${igxPackage}`, async () => {
 			const mockConfig = {} as unknown as Config;
@@ -251,13 +168,12 @@ describe("Add command", () => {
 			fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
 				project: { framework: "angular", projectType: "igx-ts-legacy", components: [] }
 			}));
-			fs.writeFileSync("tslint.json", JSON.stringify({
-				rules: {
-					"indent": [true, "spaces", 2],
-					"prefer-const": true,
-					"quotemark": [true, "single"]
-				}
-			}));
+			fs.writeFileSync(".editorconfig", `
+				[*.ts]
+				indent_style = space
+				indent_size = 2
+				quote_type = single
+			`);
 			fs.mkdirSync(`./src`);
 			fs.mkdirSync(`./src/app`);
 			fs.writeFileSync("src/app/app-routing-module.ts", "const routes: Routes = [];");
@@ -313,7 +229,7 @@ export class AppModule {
 			fs.rmSync("./src", { recursive: true,  force: true });
 
 			fs.unlinkSync(ProjectConfig.configFile);
-			fs.unlinkSync("tslint.json");
+			fs.unlinkSync(".editorconfig");
 			fs.unlinkSync("package.json");
 		});
 	}
@@ -326,13 +242,12 @@ export class AppModule {
 			fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
 				project: { framework: "angular", projectType: "igx-ts-legacy", components: [] }
 			}));
-			fs.writeFileSync("tslint.json", JSON.stringify({
-				rules: {
-					"indent": [true, "spaces", 2],
-					"prefer-const": true,
-					"quotemark": [true, "single"]
-				}
-			}));
+			fs.writeFileSync(".editorconfig", `
+				[*.ts]
+				indent_style = space
+				indent_size = 2
+				quote_type = single
+			`);
 			fs.mkdirSync(`./src`);
 			fs.mkdirSync(`./src/app`);
 			fs.writeFileSync("src/app/app-routing-module.ts", "const routes: Routes = [];");
@@ -362,7 +277,6 @@ export class AppModule {
 
 			expect(fs.readFileSync("src/app/app-routing-module.ts", "utf-8")).toBe(
 				`import { TestNestedFolders } from './${componentFolder}/test-nested-folders';` + EOL +
-				// tslint:disable-next-line:max-line-length
 				`const routes: Routes = [{ path: 'test-nested-folders', component: TestNestedFolders, data: { text: 'Test Nested Folders' } }];` + EOL
 			);
 
@@ -388,29 +302,34 @@ export class AppModule {
 			deleteAll("./src");
 			fs.rmdirSync("./src");
 			fs.unlinkSync(ProjectConfig.configFile);
-			fs.unlinkSync("tslint.json");
+			fs.unlinkSync(".editorconfig");
 		});
 
 	it("Should correctly add React template", async () => {
 		// TODO: Mock out template manager and project register
 		const mockConfig = {} as unknown as Config;
 		spyOn(ProjectConfig, "globalConfig").and.returnValue(mockConfig);
+		spyOn(PackageManager, "queuePackage");
 
 		fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
-			project: { framework: "react", projectType: "es6", components: [] }
+			project: { framework: "react", projectType: "igr-ts", components: [] }
 		}));
 		fs.mkdirSync(`./src`);
-		fs.writeFileSync("src/routes.json", "[]");
+		fs.mkdirSync(`./src/app`);
+		fs.writeFileSync("src/app/app-routes.tsx", `
+			export const routes = [
+			];
+		`);
 		await cli.run(["add", "grid", "My grid"]);
 
 		expect(console.error).toHaveBeenCalledTimes(0);
 		expect(console.log).toHaveBeenCalledWith(jasmine.stringMatching(/View 'My grid' added\s*/));
 
-		expect(fs.existsSync("./src/components/my-grid")).toBeTruthy();
-		expect(fs.existsSync("./src/components/my-grid/index.js")).toBeTruthy();
-		fs.unlinkSync("./src/components/my-grid/index.js");
-		fs.rmSync("./src", { recursive: true,  force: true });
+		expect(fs.existsSync("./src/app/my-grid/my-grid.tsx")).toBeTruthy();
+		expect(fs.existsSync("./src/app/my-grid/my-grid.test.tsx")).toBeTruthy();
 
+		deleteAll("./src");
+		fs.rmdirSync("./src");
 		fs.unlinkSync(ProjectConfig.configFile);
 	});
 });

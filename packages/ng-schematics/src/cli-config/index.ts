@@ -117,7 +117,6 @@ function importStyles(): Rule {
 	};
 }
 
-// tslint:disable-next-line:space-before-function-paren
 export default function (): Rule {
 	return (tree: Tree) => {
 		setVirtual(tree);

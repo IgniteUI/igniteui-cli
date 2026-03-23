@@ -6,7 +6,6 @@ import * as path from "path";
 import * as ts from "typescript";
 import { default as addCmd } from "../../packages/cli/lib/commands/add";
 import { PromptSession } from "../../packages/cli/lib/PromptSession";
-import { AngularTemplate } from "../../packages/cli/lib/templates/AngularTemplate";
 import { resetSpy } from "../helpers/utils";
 
 function createMockBaseTemplate(): BaseTemplate {
@@ -275,7 +274,6 @@ describe("Unit - Add command", () => {
 		});
 		await addCmd.handler({
 			name: "test-file-name", template: "CustomTemplate",
-			// tslint:disable-next-line:object-literal-sort-keys
 			module: "myCustomModule/my-custom-module.module.ts",
 			_: ["add"],
 			$0: "add"
@@ -308,75 +306,6 @@ describe("Unit - Add command", () => {
 			jasmine.any(Object),
 			true
 		);
-		expect(finalizeSpy).toHaveBeenCalledTimes(2);
-		expect(addCmd.templateManager.updateProjectConfiguration).toHaveBeenCalledTimes(1);
-	});
-
-	it("Should properly accept module args when passed - Angular Wrappers", async () => {
-		const mockProjectConfig = {
-			project: {
-				framework: "angular",
-				theme: "infragistics"
-			}
-		} as unknown as Config;
-		spyOn(TypeScriptUtils, "getFileSource").and.returnValue(
-			ts.createSourceFile("test-file-name", ``, ts.ScriptTarget.Latest, true)
-		);
-		const routeSpy = spyOn(AngularTypeScriptFileUpdate.prototype, "addRoute");
-		// const declarationSpy = spyOn(AngularTypeScriptFileUpdate.prototype, "addDeclaration").and.callThrough();
-		const ngMetaSpy = spyOn(AngularTypeScriptFileUpdate.prototype, "addNgModuleMeta");
-		const finalizeSpy = spyOn(AngularTypeScriptFileUpdate.prototype, "finalize");
-		const mockTemplate = new AngularTemplate("test");
-		mockTemplate.packages = [];
-		mockTemplate.dependencies = [];
-
-		const directoryPath = path.join("My/Example/Path");
-		spyOn(process, "cwd").and.returnValue(directoryPath);
-		spyOn(mockTemplate, "generateConfig");
-		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
-		spyOn(mockTemplate, "registerInProject").and.callThrough();
-		spyOn(Util, "directoryExists").and.returnValue(true);
-		// const sourceFilesSpy = spyOn<any>(mockTemplate, "ensureSourceFiles");
-		const mockLibrary = jasmine.createSpyObj("frameworkLibrary", ["hasTemplate", "getTemplateById"]);
-		mockLibrary.hasTemplate.and.returnValue(true);
-		mockLibrary.getTemplateById.and.returnValue(mockTemplate);
-		addCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
-			getFrameworkById: {},
-			getProjectLibrary: mockLibrary,
-			updateProjectConfiguration: () => {}
-		});
-		spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
-		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
-		spyOn(addCmd, "addTemplate").and.callThrough();
-		spyOn(PackageManager, "flushQueue").and.returnValue(Promise.resolve());
-		spyOn(PackageManager, "ensureIgniteUISource");
-		await addCmd.handler({
-			name: "test-file-name", template: "CustomTemplate",
-			module: "myCustomModule/my-custom-module.module.ts",
-			_: ["add"],
-			$0: "add"
-		});
-		expect(addCmd.addTemplate).toHaveBeenCalledWith(
-			"test-file-name", mockTemplate,
-			jasmine.objectContaining({ modulePath: "myCustomModule/my-custom-module.module.ts" })
-		);
-		expect(PackageManager.flushQueue).toHaveBeenCalled();
-		expect(mockTemplate.generateConfig).toHaveBeenCalledTimes(1);
-		expect(mockTemplate.generateConfig).toHaveBeenCalledWith(
-			"test-file-name",
-			jasmine.objectContaining({ modulePath: "myCustomModule/my-custom-module.module.ts" })
-		);
-		expect(mockTemplate.registerInProject).toHaveBeenCalledTimes(1);
-		expect(mockTemplate.registerInProject).toHaveBeenCalledWith(
-			directoryPath, "test-file-name",
-			jasmine.objectContaining({ modulePath: "myCustomModule/my-custom-module.module.ts" }));;
-		expect(routeSpy).toHaveBeenCalledTimes(1);
-		expect(ngMetaSpy).toHaveBeenCalledTimes(1);
-		expect(ngMetaSpy).toHaveBeenCalledWith({
-			declare: ["TestFileNameComponent"],
-			from: "../components/test-file-name/test-file-name.component",
-			export: [ 'TestFileNameComponent' ]
-		});
 		expect(finalizeSpy).toHaveBeenCalledTimes(2);
 		expect(addCmd.templateManager.updateProjectConfiguration).toHaveBeenCalledTimes(1);
 	});
@@ -414,7 +343,6 @@ describe("Unit - Add command", () => {
 
 		await addCmd.handler({
 			name: "test-file-name", template: "CustomTemplate",
-			// tslint:disable-next-line:object-literal-sort-keys
 			skipRoute: true,
 			_: ["add"],
 			$0: "add"
@@ -442,7 +370,7 @@ describe("Unit - Add command", () => {
 		spyOn(Util, "fileExists").and.returnValue(false);
 		spyOn(Util, "error");
 		const wrongPath = "myCustomModule/my-custom-module.module.ts";
-		addCmd.addTemplate("test-file-name", new AngularTemplate(__dirname), { modulePath: wrongPath });
+		addCmd.addTemplate("test-file-name", new IgniteUIForAngularTemplate(__dirname), { modulePath: wrongPath });
 		expect(Util.fileExists).toHaveBeenCalledTimes(1);
 		expect(Util.error).toHaveBeenCalledTimes(1);
 		expect(Util.error).toHaveBeenCalledWith(`Wrong module path provided: ${wrongPath}. No components were added!`);

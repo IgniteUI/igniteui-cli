@@ -154,10 +154,8 @@ export class BaseProjectLibrary implements ProjectLibrary {
 	}
 
 	public getComponentGroupNames(): string[] {
-		let groups: string[];
-
 		//poor-man's groupBy reduce
-		groups = this.components.reduce((prev, current, index, array) => {
+		const groups = this.components.reduce((prev, current, index, array) => {
 			if (prev.indexOf(current.group) === -1) {
 				prev.push(current.group);
 			}

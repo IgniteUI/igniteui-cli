@@ -5,10 +5,8 @@ const scripts = {
 	preuninstall: "node ./scripts/uninstall.js"
 };
 
-// tslint:disable-next-line:no-var-requires
 const config = require("../packages/cli/package.json");
 config.scripts = scripts;
-// tslint:disable-next-line:no-var-requires
 const schematicsConfig = require("../packages/ng-schematics/package.json");
 Object.assign(schematicsConfig.scripts, scripts);
 

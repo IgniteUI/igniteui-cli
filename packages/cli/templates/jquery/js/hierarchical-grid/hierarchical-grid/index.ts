@@ -35,7 +35,6 @@ class HierarchicalGridTemplate extends jQueryTemplate {
 		this.userExtraConfiguration = extraConfigKeys;
 	}
 	public generateConfig(name: string, ...options: any[]): {[key: string]: any} {
-		// tslint:disable:object-literal-sort-keys
 		this.gridHelper.addFeature("Responsive", {
 			inherit: false,
 			enableVerticalRendering: false,
@@ -54,7 +53,7 @@ class HierarchicalGridTemplate extends jQueryTemplate {
 				}
 			]
 		});
-		// tslint:enable:object-literal-sort-keys
+
 		const features = this.gridHelper.generateFeatures(this.userExtraConfiguration["features"], 4);
 		const config = { gridfeatures: features };
 		return super.generateConfig(name, { extraConfig : config });

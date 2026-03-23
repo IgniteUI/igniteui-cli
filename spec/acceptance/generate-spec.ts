@@ -97,46 +97,6 @@ describe("Generate command", () => {
 		expect(GoogleAnalytics.post).toHaveBeenCalledTimes(2);
 	});
 
-	it("Should correctly generate angular wrappers template", async () => {
-		await cli.run(["generate", "template", "angular-wrapper", "-f=angular", "-t=ig-ts"]);
-
-		expect(fs.existsSync(path.join(process.cwd(), ".global"))).toBeTruthy();
-		expect(fs.existsSync(path.join(process.cwd(), "angular-wrapper"))).toBeTruthy();
-		const templatePath = path.join(process.cwd(), "angular-wrapper", "template.json");
-		expect(fs.existsSync(templatePath)).toBeTruthy();
-
-		const globalConfigPath = path.join(process.cwd(), ".global", "ignite-ui-cli.json");
-		expect(fs.existsSync(globalConfigPath)).toBeTruthy();
-		const templateFolderPath = path.join(process.cwd(), "angular-wrapper");
-		const igniteUiCliActual = require(globalConfigPath);
-		const igniteUiCliExpected = {
-			customTemplates: [
-				"path:" + templateFolderPath
-			]
-		};
-		expect(igniteUiCliActual).toEqual(igniteUiCliExpected);
-
-		expectedTemplate = require(templatePath) as Template;
-		actualTemplate = {
-			components: [],
-			controlGroup: "",
-			dependencies: [],
-			description: "Ignite UI wrappers for Angular template created with Ignite UI CLI",
-			framework: "angular",
-			id: "angular-wrapper",
-			listInComponentTemplates: false,
-			listInCustomTemplates: true,
-			name: "angular-wrapper",
-			packages: [],
-			projectType: "ig-ts"
-		};
-		expect(expectedTemplate).toEqual(actualTemplate);
-
-		const pathDirectory = path.join(templateFolderPath, "files", "src", "app", "components", "__path__");
-		expect(fs.existsSync(pathDirectory)).toBeTruthy();
-		expect(fs.existsSync(path.join(pathDirectory, "__filePrefix__.component.ts"))).toBeTruthy();
-	});
-
 	it("Should correctly generate angular template", async () => {
 		await cli.run(["generate", "template", "angular", "-f=angular", "-t=igx-ts"]);
 
@@ -181,7 +141,7 @@ describe("Generate command", () => {
 	});
 
 	it("Should correctly generate react template", async () => {
-		await cli.run(["generate", "template", "react", "-f=react", "-t=es6"]);
+		await cli.run(["generate", "template", "react", "-f=react", "-t=igr-ts"]);
 
 		expect(fs.existsSync(path.join(process.cwd(), ".global"))).toBeTruthy();
 		const globalConfigPath = path.join(process.cwd(), ".global", "ignite-ui-cli.json");
@@ -203,19 +163,21 @@ describe("Generate command", () => {
 			components: [],
 			controlGroup: "",
 			dependencies: [],
-			description: "Ignite UI Components for React template created with Ignite UI CLI",
+			description: "Ignite UI for React template created with Ignite UI CLI",
 			framework: "react",
 			id: "react",
 			listInComponentTemplates: false,
 			listInCustomTemplates: true,
 			name: "react",
 			packages: [],
-			projectType: "es6"
+			projectType: "igr-ts"
 		};
 		expect(expectedTemplate).toEqual(actualTemplate);
 
 		const clientDirectory = path.join(templateFolderPath, "files", "src");
 		expect(fs.existsSync(clientDirectory)).toBeTruthy();
-		expect(fs.existsSync(path.join(clientDirectory, "components", "__path__", "index.js"))).toBeTruthy();
+		expect(fs.existsSync(path.join(clientDirectory, "app", "__path__", "__filePrefix__.tsx"))).toBeTruthy();
+		expect(fs.existsSync(path.join(clientDirectory, "app", "__path__", "__filePrefix__.test.tsx"))).toBeTruthy();
+		expect(fs.existsSync(path.join(clientDirectory, "app", "__path__", "style.module.css"))).toBeTruthy();
 	});
 });
