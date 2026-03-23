@@ -74,8 +74,6 @@ ig start
 ig new "My React App" --framework=react --type=igr-ts --template=base
 ```
 
-> Requires Ignite UI CLI v13+. Verify with `ig version` before scaffolding.  
-> Generated projects use **Vite** as the build tool.
 
 ---
 
