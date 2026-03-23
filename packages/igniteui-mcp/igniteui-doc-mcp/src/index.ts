@@ -200,11 +200,18 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
     {
       description: TOOL_DESCRIPTIONS.get_project_setup_guide,
       inputSchema: {
-        framework: FRAMEWORK_ENUM,
+        framework: FRAMEWORK_ENUM.optional(),
       },
     },
     async ({ framework }) => {
       const start = performance.now();
+
+      if (!framework) {
+        const msg = "Which framework are you using? Please specify one of: angular, react, blazor, or webcomponents.";
+        log("igniteui_get_project_setup_guide", {}, msg, 0);
+        return { content: [{ type: "text" as const, text: msg }] };
+      }
+
       let result: string;
 
       if (framework === "blazor") {
