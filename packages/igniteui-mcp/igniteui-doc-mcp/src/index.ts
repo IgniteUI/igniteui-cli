@@ -102,15 +102,18 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
     "igniteui_list_components",
     {
       title: "List Ignite UI Components",
-      description:
-        "List all available Ignite UI component documentation entries for a given framework. Optionally filter by keyword against filename, component name, keywords, or summary. Use this to discover what docs exist before calling igniteui_get_doc. Returns a formatted list with doc names (use these as the 'name' parameter for igniteui_get_doc), summaries, and premium status.",
+      description: TOOL_DESCRIPTIONS.list_components,
       annotations: { readOnlyHint: true, openWorldHint: false },
       inputSchema: {
         framework: FRAMEWORK_ENUM,
         filter: z
           .string()
           .optional()
-          .describe("Optional keyword to filter by filename, component, keywords, or summary"),
+          .describe(
+            "Keyword to match against filename, component name, keywords, or summary. " +
+            "Case-insensitive substring match. Example: 'grid', 'combo', 'chart'. " +
+            "Omit to return all docs for the framework."
+          ),
       },
     },
     async ({ framework, filter }) => {
@@ -125,14 +128,17 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
     "igniteui_get_doc",
     {
       title: "Get Ignite UI Doc",
-      description:
-        "Return the full markdown content of a specific Ignite UI component doc by name. Use igniteui_list_components or igniteui_search_docs first to find the exact doc name if you don't know it. Returns frontmatter metadata (component, keywords, summary) followed by the full markdown content. Returns isError if the doc name is not found.",
+      description: TOOL_DESCRIPTIONS.get_doc,
       annotations: { readOnlyHint: true, openWorldHint: false },
       inputSchema: {
         framework: FRAMEWORK_ENUM,
         name: z
           .string()
-          .describe('Doc name without .md extension, e.g. "grid-editing" or "accordion"'),
+          .describe(
+            'Exact doc name in kebab-case without the .md extension. ' +
+            'Examples: "grid-editing", "combo-overview", "accordion". ' +
+            'Get valid names from igniteui_list_components or igniteui_search_docs.'
+          ),
       },
     },
     async ({ framework, name }) => {
@@ -147,11 +153,18 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
     "igniteui_search_docs",
     {
       title: "Search Ignite UI Docs",
-      description:
-        "Full-text search across all Ignite UI documentation for a specific framework. Use this when the user asks 'how do I...' or describes a feature need. Returns up to 20 results with doc name, summary, and excerpt snippets showing matching text. Use the doc name from results with igniteui_get_doc to retrieve the full content. For browsing by component name instead, use igniteui_list_components.",
+      description: TOOL_DESCRIPTIONS.search_docs,
       annotations: { readOnlyHint: true, openWorldHint: false },
       inputSchema: {
-        query: z.string().min(1, "Search query is required").describe("Search query (supports prefix matching, e.g. 'grid*')"),
+        query: z
+          .string()
+          .min(1, "Search query is required")
+          .describe(
+            "Search query for full-text search. Supports prefix matching with " +
+            "trailing * (e.g. 'grid*' matches grid, grids, grid-editing). " +
+            "Hyphenated terms like 'grid-editing' are matched as phrases. " +
+            "Examples: 'column pinning', 'tree*', 'data validation'."
+          ),
         framework: FRAMEWORK_ENUM,
       },
     },
@@ -161,11 +174,25 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
         log("search_docs", { query: queryText, framework }, "Empty query.", 0);
         return { content: [{ type: "text" as const, text: "Empty query." }] };
       }
+
+      // Sanitize user input for FTS4 MATCH syntax.
+      // Strip characters that are FTS4 operators or cause syntax errors:
+      //   " (phrase delimiter), ( ) (grouping), : (column filter), @ (internal)
+      // Preserve hyphens — the porter tokenizer handles them consistently
+      // at both index and query time (e.g. "grid-editing" stays as one phrase).
+      // Preserve trailing * — FTS4 prefix queries (e.g. grid*) rely on it,
+      // and the DB is built with prefix="2,3" indexes to support this.
       const sanitized = queryText
-        .replace(/["\-(){}[\]:^~@]/g, " ")
+        .replace(/["(){}[\]:@]/g, " ")
         .split(/\s+/)
         .filter(Boolean)
-        .map((term) => `"${term}"`)
+        .map((term) => {
+          // Terms ending with * are prefix queries — don't quote them
+          // because FTS4 treats "grid*" as a literal match for the
+          // asterisk character, while unquoted grid* does prefix expansion.
+          if (term.endsWith("*")) return term;
+          return `"${term}"`;
+        })
         .join(" OR ");
       const text = await docsProvider.searchDocs(framework, sanitized);
       log("search_docs", { query: queryText, framework }, text, Math.round(performance.now() - start));
