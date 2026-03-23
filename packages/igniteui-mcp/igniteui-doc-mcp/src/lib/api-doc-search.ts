@@ -8,29 +8,22 @@ export function searchApiDocs(
   const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
   if (terms.length === 0) return [];
 
-  // Compile regexes once — reused across all entries.
-  // Previously these were created per-term per-entry,
-  // meaning ~1,200 entries × N terms = thousands of regex
-  // constructions per search call.
-  const patterns = terms.map(term => {
-    const escaped = term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    return new RegExp(`\\b${escaped}`, "i");
-  });
-
   const hits: SearchHit[] = [];
 
   for (const entry of docs) {
     const content = entry.content ?? '';
+    const contentLower = content.toLowerCase();
 
     let matches = 0;
     let firstIdx = -1;
 
-    for (let i = 0; i < patterns.length; i++) {
-      const re = patterns[i];
+    for (const term of terms) {
+      const escaped = term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      const re = new RegExp(`\\b${escaped}`, "i");
 
-      const contentMatch = content ? re.exec(content) : null;
+      const contentMatch = re.exec(contentLower);
       const keywordHit = entry.keywords.some(k => re.test(k));
-      const componentHit = re.test(entry.component);
+      const componentHit = re.test(entry.component.toLowerCase());
       const typeHit = re.test(entry.type);
 
       if (contentMatch || keywordHit || componentHit || typeHit) {

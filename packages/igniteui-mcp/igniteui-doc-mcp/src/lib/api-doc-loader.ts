@@ -31,10 +31,6 @@ export class ApiDocsInitializationError extends Error {
 
 export class ApiDocLoader {
   private docs = new Map<string, DocEntry>();
-  // Case-insensitive index: "platform:lowername" → DocEntry.
-  // Built at load time so get_api_reference can resolve names
-  // like "igxgridcomponent" without scanning all entries.
-  private caseIndex = new Map<string, DocEntry>();
   private platformConfigs: PlatformConfig[];
   private typedocJsonParsers = new Map<Platform, ReactJsonParser>();
  
@@ -96,25 +92,18 @@ export class ApiDocLoader {
           config,
           indexPath
         );
-
-        // Store metadata only — markdown content is loaded lazily
-        // on first access via getContent(). The index.json already
-        // provides everything needed for search() and listing.
-        const entry: DocEntry = {
+        const content = readFileSync(filepath, 'utf-8');
+        
+        this.docs.set(key, {
           filepath,
-          // content deliberately omitted — loaded on demand
+          content,
           title: rawEntry.title,
           component: rawEntry.component,
           type: rawEntry.type,
           keywords: rawEntry.keywords ?? [],
           summary: rawEntry.summary ?? '',
           platform: config.key,
-        };
-        this.docs.set(key, entry);
-        this.caseIndex.set(
-          `${config.key}:${rawEntry.component.toLowerCase()}`,
-          entry
-        );
+        });
         count++;
       }
 
@@ -166,7 +155,7 @@ export class ApiDocLoader {
     const components = parser.getAllComponents();
     for (const name of components) {
       const key = `${config.key}:${name}`;
-      const entry: DocEntry = {
+      this.docs.set(key, {
         filepath: jsonPath, // Points to JSON, not markdown
         title: `Class: ${name}`,
         component: name,
@@ -174,12 +163,7 @@ export class ApiDocLoader {
         keywords: [],
         summary: '',
         platform: config.key,
-      };
-      this.docs.set(key, entry);
-      this.caseIndex.set(
-        `${config.key}:${name.toLowerCase()}`,
-        entry
-      );
+      });
     }
 
     console.log(`   ${config.displayName}: ${components.length} entries (from JSON)`);
@@ -187,43 +171,6 @@ export class ApiDocLoader {
 
   get(platform: Platform, name: string): DocEntry | undefined {
     return this.docs.get(`${platform}:${name}`);
-  }
-
-  /**
-   * O(1) case-insensitive component lookup by platform.
-   * Falls back gracefully to undefined — no full scan needed.
-   */
-  getCaseInsensitive(
-    platform: Platform,
-    name: string
-  ): DocEntry | undefined {
-    return this.caseIndex.get(
-      `${platform}:${name.toLowerCase()}`
-    );
-  }
-
-  /**
-   * Get the markdown content for a doc entry, loading it lazily from
-   * disk on first access. Subsequent calls return the cached content.
-   * For typedoc-json entries (React), returns undefined — those are
-   * served via formatStructuredComponent() instead.
-   */
-  getContent(platform: Platform, name: string): string | undefined {
-    const entry = this.docs.get(`${platform}:${name}`);
-    if (!entry) return undefined;
-
-    // Already loaded (or was inline from typedoc-json)
-    if (entry.content !== undefined) return entry.content;
-
-    // Lazy-load from disk and cache on the entry
-    try {
-      entry.content = readFileSync(entry.filepath, 'utf-8');
-    } catch {
-      // File missing at runtime — return undefined, don't crash
-      return undefined;
-    }
-
-    return entry.content;
   }
 
   formatStructuredComponent(
