@@ -12,27 +12,23 @@ export function createGetApiReferenceHandler(docLoader: ApiDocLoader) {
     let entry = docLoader.get(platform, resolvedComponent);
 
     if (!entry) {
-      // Try case-insensitive search within platform
-      const results = docLoader.search({ platform, filter: resolvedComponent });
-      const caseInsensitive = results.find(
-        e => e.component.toLowerCase() === resolvedComponent.toLowerCase()
-      );
-
-      if (caseInsensitive) {
-        resolvedComponent = caseInsensitive.component;
-        entry = caseInsensitive;
+      // O(1) case-insensitive lookup via pre-built index,
+      // instead of scanning all entries with docLoader.search().
+      entry = docLoader.getCaseInsensitive(platform, resolvedComponent);
+      if (entry) {
+        resolvedComponent = entry.component;
       }
+    }
 
-      if (!entry) {
-        const platformName = getPlatformConfig(platform).displayName;
-        return {
-          content: [{
-            type: "text",
-            text: `API reference for "${resolvedComponent}" not found in ${platformName}. Use igniteui_search_api to find available components.`
-          }],
-          isError: true,
-        };
-      }
+  if (!entry) {
+      const platformName = getPlatformConfig(platform).displayName;
+      return {
+        content: [{
+          type: "text",
+          text: `API reference for "${resolvedComponent}" not found in ${platformName}. Use igniteui_search_api to find available components.`
+        }],
+        isError: true,
+      };
     }
 
     const formatted = docLoader.formatStructuredComponent(platform, resolvedComponent, section);
@@ -40,12 +36,13 @@ export function createGetApiReferenceHandler(docLoader: ApiDocLoader) {
       return { content: [{ type: "text", text: formatted }] };
     }
 
-    const content = entry.content;
+    // Lazy-load content from disk (only reads the file on first access)
+    const content = docLoader.getContent(platform, resolvedComponent);
     if (!content) {
       return {
         content: [{
           type: "text",
-          text: `API content for "${resolvedComponent}" is not available in memory.`
+          text: `API content for "${resolvedComponent}" is not available.`
         }],
         isError: true,
       };
