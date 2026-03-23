@@ -3,6 +3,7 @@ import {
 	ProjectLibrary, PromptTaskContext, Task, Util
 } from "@igniteui/cli-core";
 import * as path from "path";
+import * as fs from "fs";
 import { default as add } from "./commands/add";
 import { default as start } from "./commands/start";
 import { default as upgrade } from "./commands/upgrade";
@@ -103,6 +104,37 @@ export class PromptSession extends BasePromptSession {
 	protected async upgradePackages() {
 		upgrade.templateManager = this.templateManager as TemplateManager;
 		await upgrade.upgrade({ skipInstall: true, _: ["upgrade"], $0: "upgrade" });
+	}
+
+	protected async configureMcp(): Promise<void> {
+		const MCP_SERVER_KEY = "igniteui-mcp-server";
+		let command: string;
+		let args: string[];
+		try {
+			const pkgEntry = require.resolve("igniteui-mcp-server");
+			command = "node";
+			args = [pkgEntry];
+		} catch {
+			command = "npx";
+			args = ["-y", "igniteui-mcp-server"];
+		}
+		const configPath = path.join(process.cwd(), ".vscode", "mcp.json");
+		let config: { servers: Record<string, { command: string; args: string[] }> } = { servers: {} };
+		try {
+			config = JSON.parse(fs.readFileSync(configPath, "utf8"));
+		} catch { /* file doesn't exist yet */ }
+		config.servers = config.servers || {};
+
+		if (config.servers[MCP_SERVER_KEY]) {
+			Util.log(Util.greenCheck() + ` Ignite UI MCP server already configured in ${configPath}`);
+			return;
+		}
+
+		// Preserve existing MCP entries and add ours
+		config.servers[MCP_SERVER_KEY] = { command, args };
+		fs.mkdirSync(path.dirname(configPath), { recursive: true });
+		fs.writeFileSync(configPath, JSON.stringify(config, null, 2) + "\n", "utf8");
+		Util.log(Util.greenCheck() + ` MCP server configured in ${configPath}`);
 	}
 
 	/**

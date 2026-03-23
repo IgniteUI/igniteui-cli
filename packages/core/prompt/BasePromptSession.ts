@@ -98,6 +98,9 @@ export abstract class BasePromptSession {
 	/** Upgrade packages to use private Infragistics feed */
 	protected abstract upgradePackages();
 
+	/** Configure the Ignite UI MCP server for the project */
+	protected abstract configureMcp(): Promise<void>;
+
 	/**
 	 * Get user name and set template's extra configurations if any
 	 * @param projectLibrary to add component to
@@ -425,6 +428,20 @@ export abstract class BasePromptSession {
 				if (shouldUpgrade === "yes") {
 					await this.upgradePackages();
 				}
+			}
+			
+			const addMcp = await this.getUserInput({
+				type: "list",
+				name: "addMcp",
+				message: "Would you like to add the Ignite UI MCP server to this project?",
+				choices: [
+					{ value: "yes", name: "Yes (adds .vscode/mcp.json)", short: "Yes" },
+					{ value: "no", name: "Skip for now", short: "Skip" }
+				],
+				default: "yes"
+			});
+			if (addMcp === "yes") {
+				await this.configureMcp();
 			}
 
 			const defaultPort = config.project.defaultPort;
