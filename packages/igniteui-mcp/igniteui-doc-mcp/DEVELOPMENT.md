@@ -6,6 +6,7 @@ MCP server that serves pre-compressed Ignite UI component documentation via full
 
 ```bash
 cd packages/igniteui-mcp/igniteui-doc-mcp
+git submodule update --init --recursive
 npm install
 ```
 
@@ -20,6 +21,27 @@ The MCP server uses a SQLite database with FTS4 full-text search to serve docume
 
 ```bash
 npm run build:db
+```
+
+### Building the API markdown
+The repository already tracks the required documentation and source repositories as git submodules. A fresh clone still needs `git submodule update --init --recursive` to materialize them locally.
+
+Required submodules for local API markdown generation include:
+- `angular/igniteui-angular`
+- `webcomponents/igniteui-webcomponents`
+
+Before using the MCP server from a source checkout, generate the local API markdowns:
+
+```bash
+npm run build:docs:all
+```
+
+This step builds the Angular and Web Components API markdown used by the local MCP API tools. If you skip it, API lookups may be incomplete or unavailable even if the server itself builds successfully.
+
+If you want to refresh submodules to newer upstream commits, run:
+
+```bash
+git submodule update --remote --merge
 ```
 
 ### Building the MCP Server
@@ -426,12 +448,12 @@ The server uses local mode by default, loading `dist/igniteui-docs.db` (SQLite w
 
 | Tool | Parameters | Description |
 |------|-----------|-------------|
-| `list_components` | `framework` (required), `filter?` | List docs for a framework, optionally filtered by keyword (LIKE match against filename, component, toc_name, keywords, summary) |
-| `get_doc` | `framework` (required), `name` (required) | Return full markdown content of a specific doc. `name` is without `.md` extension |
-| `search_docs` | `query` (required), `framework` (required) | FTS4 full-text search with Porter stemming. Returns top 20 results with snippet excerpts |
-| `generate_ignite_app` | `framework` (required) | Return setup guides for creating a new Ignite UI project. For Angular/React/WC: CLI docs. For Blazor: dotnet + NuGet guides |
+| `igniteui_list_components` | `framework` (required), `filter?` | List docs for a framework, optionally filtered by keyword (LIKE match against filename, component, toc_name, keywords, summary) |
+| `igniteui_get_doc` | `framework` (required), `name` (required) | Return full markdown content of a specific doc. `name` is without `.md` extension |
+| `igniteui_search_docs` | `query` (required), `framework` (required) | FTS4 full-text search with Porter stemming. Returns top 20 results with snippet excerpts |
+| `igniteui_get_project_setup_guide` | `framework` (required) | Return setup guides for creating a new Ignite UI project. For Angular/React/WC: CLI docs. For Blazor: dotnet + NuGet guides |
 
-#### generate_ignite_app
+#### igniteui_get_project_setup_guide
 
 Returns framework-specific setup guides for creating a new Ignite UI project.
 

@@ -97,7 +97,7 @@ export class LocalDocsProvider implements DocsProvider {
     if (!stmt.step()) {
       stmt.free();
       return {
-        text: `Doc "${name}" not found for framework "${framework}". Use list_components to see available docs.`,
+        text: `Doc "${name}" not found for framework "${framework}". Use igniteui_list_components to see available docs.`,
         found: false,
       };
     }

@@ -186,7 +186,7 @@ Rules:
 3. **Compress step**: Run `npm run compress:react -- --only <file>.md` on a single file, verify output has correct `Igr` prefix in frontmatter and React-appropriate content
 4. **Full pipeline**: Run `npm run pipeline:react` end-to-end
 5. **Validation**: Run `npm run validate:react` to score compressed output quality
-6. **MCP server**: Temporarily point `src/index.ts` at `dist/docs_final/react/` instead of `react_compressed/` and verify `list_components`, `get_doc`, `search_docs` work correctly
+6. **MCP server**: Temporarily point `src/index.ts` at `dist/docs_final/react/` instead of `react_compressed/` and verify `igniteui_list_components`, `igniteui_get_doc`, `igniteui_search_docs` work correctly
 
 ## Critical Files
 
