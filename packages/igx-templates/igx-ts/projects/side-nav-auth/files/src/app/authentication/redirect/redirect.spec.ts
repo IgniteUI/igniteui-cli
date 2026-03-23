@@ -10,7 +10,7 @@ import { Redirect } from './redirect';
 
 describe('Redirect', () => {
   let fixture: ComponentFixture<Redirect>;
-  const activeRouteSpy: any = { snapshot: { data: { value: { provider: {} } } } };
+  const activeRouteSpy: any = { snapshot: { data: { provider: {} } } };
   const extAuthSpy = { getUserInfo: vi.fn() };
   const authSpy = { loginWith: vi.fn() };
   const userServSpy = { setCurrentUser: vi.fn() };

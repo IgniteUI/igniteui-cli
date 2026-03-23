@@ -9,7 +9,7 @@ export class GoogleProvider extends BaseOidcProvider {
    * https://developers.google.com/+/web/api/rest/openidconnect/getOpenIdConnect
    */
   protected async formatUserData(userData: { [key: string]: any; }): Promise<ExternalLogin> {
-    const token = await firstValueFrom(this.oidcSecurityService.getAccessToken(this.externalStsConfig.configId));
+    const token = await firstValueFrom(this.oidcSecurityService.getAccessToken(this.configId));
     return {
       id: userData['sub'],
       name: userData['name'],

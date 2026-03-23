@@ -81,7 +81,8 @@ describe('Services', () => {
     } as any;
 
     const localStorage = new LocalStorageService(PLATFORM_ID);
-    const extAuthServ = new ExternalAuth(MOCK_ROUTER, MOCK_OIDC_SECURITY, MOCK_LOCATION, localStorage);
+    const mockOidcConfigLoader = { add: vi.fn() } as any;
+    const extAuthServ = new ExternalAuth(MOCK_ROUTER, MOCK_OIDC_SECURITY, MOCK_LOCATION, localStorage, mockOidcConfigLoader);
     it(`Should properly initialize`, () => {
       expect(extAuthServ).toBeDefined();
     });
@@ -110,23 +111,21 @@ describe('Services', () => {
     it(`Should properly call 'addGoogle'`, () => {
       const providersSpy = vi.spyOn((extAuthServ as any).providers, 'set');
       vi.spyOn(extAuthServ as any, 'getAbsoluteUrl').mockReturnValue('testUrl');
-      const configParams = {
-        configId: ExternalAuthProvider.Google,
-        provider: ExternalAuthProvider.Google,
-        stsServer: 'https://accounts.google.com',
-        client_id: 'test',
-        scope: 'openid email profile',
-        redirect_url: 'testUrl',
-        response_type: 'id_token token',
-        post_logout_redirect_uri: '/',
-        post_login_route: 'redirect',
-        auto_userinfo: false,
-        max_id_token_iat_offset_allowed_in_seconds: 30
-      };
+      mockOidcConfigLoader.add.mockClear();
       extAuthServ.addGoogle('test');
+      expect(mockOidcConfigLoader.add).toHaveBeenCalledWith({
+        configId: ExternalAuthProvider.Google,
+        authority: 'https://accounts.google.com',
+        clientId: 'test',
+        scope: 'openid email profile',
+        redirectUrl: 'testUrl',
+        responseType: 'id_token token',
+        postLogoutRedirectUri: '/',
+        silentRenew: false
+      });
       expect(providersSpy).toHaveBeenCalled();
       expect(providersSpy).toHaveBeenCalledWith('Google',
-        new GoogleProvider(MOCK_OIDC_SECURITY, configParams));
+        new GoogleProvider(MOCK_OIDC_SECURITY, ExternalAuthProvider.Google));
     });
 
     it(`Should properly call 'addFacebook'`, () => {
@@ -144,23 +143,21 @@ describe('Services', () => {
     it(`Should properly call 'addMicrosoft'`, () => {
       const providersSpy = vi.spyOn((extAuthServ as any).providers, 'set');
       vi.spyOn(extAuthServ as any, 'getAbsoluteUrl').mockReturnValue('testUrl');
-      const configParams = {
-        configId: ExternalAuthProvider.Microsoft,
-        provider: ExternalAuthProvider.Microsoft,
-        stsServer: 'https://login.microsoftonline.com/consumers/v2.0/',
-        client_id: 'test',
-        scope: 'openid email profile',
-        redirect_url: 'testUrl',
-        response_type: 'id_token token',
-        post_logout_redirect_uri: '/',
-        post_login_route: '',
-        auto_userinfo: false,
-        max_id_token_iat_offset_allowed_in_seconds: 1000
-      } as any;
+      mockOidcConfigLoader.add.mockClear();
       extAuthServ.addMicrosoft('test');
+      expect(mockOidcConfigLoader.add).toHaveBeenCalledWith({
+        configId: ExternalAuthProvider.Microsoft,
+        authority: 'https://login.microsoftonline.com/consumers/v2.0/',
+        clientId: 'test',
+        scope: 'openid email profile',
+        redirectUrl: 'testUrl',
+        responseType: 'id_token token',
+        postLogoutRedirectUri: '/',
+        silentRenew: false
+      });
       expect(providersSpy).toHaveBeenCalled();
       expect(providersSpy).toHaveBeenCalledWith('Microsoft',
-        new MicrosoftProvider(MOCK_OIDC_SECURITY, configParams));
+        new MicrosoftProvider(MOCK_OIDC_SECURITY, ExternalAuthProvider.Microsoft));
     });
 
     it(`Should properly call 'getUserInfo'`, async () => {

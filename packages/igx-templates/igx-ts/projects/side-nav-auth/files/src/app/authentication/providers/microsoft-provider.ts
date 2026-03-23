@@ -10,7 +10,7 @@ export class MicrosoftProvider extends BaseOidcProvider {
    * https://docs.microsoft.com/en-us/azure/active-directory/develop/id-tokens#payload-claims
    */
   protected async formatUserData(userData: { [key: string]: any; }): Promise<ExternalLogin> {
-    const token = await firstValueFrom(this.oidcSecurityService.getAccessToken(this.externalStsConfig.configId));
+    const token = await firstValueFrom(this.oidcSecurityService.getAccessToken(this.configId));
     return {
       id: userData['oid'],
       name: userData['name'],
