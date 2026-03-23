@@ -64,14 +64,14 @@ ig new MyApp --framework=angular --type=igx-ts --template=side-nav
 ## React
 
 ```bash
-ig new "<ProjectName>" --framework=react --type=igr-ts
+ig new "<ProjectName>" --framework=react --type=igr-ts --template=base
 cd <ProjectName>
 ig start
 ```
 
 **Example:**
 ```bash
-ig new "My React App" --framework=react --type=igr-ts
+ig new "My React App" --framework=react --type=igr-ts --template=base
 ```
 
 > Requires Ignite UI CLI v13+. Verify with `ig version` before scaffolding.  
@@ -82,14 +82,14 @@ ig new "My React App" --framework=react --type=igr-ts
 ## Web Components
 
 ```bash
-ig new "<ProjectName>" --framework=webcomponents --type=igc-ts
+ig new "<ProjectName>" --framework=webcomponents --type=igc-ts --template=base
 cd <ProjectName>
 ig start
 ```
 
 **Example:**
 ```bash
-ig new "My WC App" --framework=webcomponents --type=igc-ts
+ig new "My WC App" --framework=webcomponents --type=igc-ts --template=base
 ```
 
 ---
