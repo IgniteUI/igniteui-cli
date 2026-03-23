@@ -77,7 +77,6 @@ function registerApiTools(server: McpServer, docLoader: ApiDocLoader) {
   server.registerTool(
     "igniteui_get_api_reference",
     {
-      title: "Get Ignite UI API Reference",
       description: TOOL_DESCRIPTIONS.get_api_reference,
       annotations: { readOnlyHint: true, openWorldHint: false },
       inputSchema: getApiReferenceSchema,
@@ -88,7 +87,6 @@ function registerApiTools(server: McpServer, docLoader: ApiDocLoader) {
   server.registerTool(
     "igniteui_search_api",
     {
-      title: "Search Ignite UI API",
       description: TOOL_DESCRIPTIONS.search_api,
       annotations: { readOnlyHint: true, openWorldHint: false },
       inputSchema: searchApiSchema,
@@ -101,7 +99,6 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
   server.registerTool(
     "igniteui_list_components",
     {
-      title: "List Ignite UI Components",
       description: TOOL_DESCRIPTIONS.list_components,
       annotations: { readOnlyHint: true, openWorldHint: false },
       inputSchema: {
@@ -127,7 +124,6 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
   server.registerTool(
     "igniteui_get_doc",
     {
-      title: "Get Ignite UI Doc",
       description: TOOL_DESCRIPTIONS.get_doc,
       annotations: { readOnlyHint: true, openWorldHint: false },
       inputSchema: {
@@ -152,7 +148,6 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
   server.registerTool(
     "igniteui_search_docs",
     {
-      title: "Search Ignite UI Docs",
       description: TOOL_DESCRIPTIONS.search_docs,
       annotations: { readOnlyHint: true, openWorldHint: false },
       inputSchema: {
@@ -203,7 +198,6 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
   server.registerTool(
     "igniteui_generate_app",
     {
-      title: "Generate Ignite UI App",
       description: TOOL_DESCRIPTIONS.generate_ignite_app,
       inputSchema: {
         framework: FRAMEWORK_ENUM,
