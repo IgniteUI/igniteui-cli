@@ -69,13 +69,13 @@ const server = new McpServer(
       "React → Igr prefix (IgrGrid), package 'igniteui-react', .tsx files. " +
       "Blazor → Igb prefix (IgbGrid), package 'IgniteUI.Blazor', .razor files. " +
       "Web Components → Igc prefix + Component suffix (IgcGridComponent), package 'igniteui-webcomponents', .ts+.html with custom elements. " +
-      "Use get_project_framework to auto-detect. If the framework is unclear from context, ask the user.",
+      "If the framework is unclear from context, ask the user.",
   }
 );
 
 function registerApiTools(server: McpServer, docLoader: ApiDocLoader) {
   server.registerTool(
-    "get_api_reference",
+    "igniteui_get_api_reference",
     {
       description: TOOL_DESCRIPTIONS.get_api_reference,
       annotations: { readOnlyHint: true, openWorldHint: false },
@@ -85,7 +85,7 @@ function registerApiTools(server: McpServer, docLoader: ApiDocLoader) {
   );
 
   server.registerTool(
-    "search_api",
+    "igniteui_search_api",
     {
       description: TOOL_DESCRIPTIONS.search_api,
       annotations: { readOnlyHint: true, openWorldHint: false },
@@ -97,79 +97,106 @@ function registerApiTools(server: McpServer, docLoader: ApiDocLoader) {
 
 function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
   server.registerTool(
-    "list_components",
+    "igniteui_list_components",
     {
-      description:
-        "List available Ignite UI component docs. Filter by framework and optionally by keyword match against filename, component, toc_name, keywords, summary.",
+      description: TOOL_DESCRIPTIONS.list_components,
       annotations: { readOnlyHint: true, openWorldHint: false },
       inputSchema: {
         framework: FRAMEWORK_ENUM,
         filter: z
           .string()
           .optional()
-          .describe("Optional keyword to filter by filename, component, keywords, or summary"),
+          .describe(
+            "Keyword to match against filename, component name, keywords, or summary. " +
+            "Case-insensitive substring match. Example: 'grid', 'combo', 'chart'. " +
+            "Omit to return all docs for the framework."
+          ),
       },
     },
     async ({ framework, filter }) => {
       const start = performance.now();
       const text = await docsProvider.listComponents(framework, filter);
-      log("list_components", { framework, filter }, text, Math.round(performance.now() - start));
+      log("igniteui_list_components", { framework, filter }, text, Math.round(performance.now() - start));
       return { content: [{ type: "text" as const, text }] };
     }
   );
 
   server.registerTool(
-    "get_doc",
+    "igniteui_get_doc",
     {
-      description:
-        "Return the full markdown content of a specific Ignite UI component doc. Requires framework and doc name.",
+      description: TOOL_DESCRIPTIONS.get_doc,
       annotations: { readOnlyHint: true, openWorldHint: false },
       inputSchema: {
         framework: FRAMEWORK_ENUM,
         name: z
           .string()
-          .describe('Doc name without .md extension, e.g. "grid-editing" or "accordion"'),
+          .describe(
+            'Exact doc name in kebab-case without the .md extension. ' +
+            'Examples: "grid-editing", "combo-overview", "accordion". ' +
+            'Get valid names from igniteui_list_components or igniteui_search_docs.'
+          ),
       },
     },
     async ({ framework, name }) => {
       const start = performance.now();
       const { text, found } = await docsProvider.getDoc(framework, name);
-      log("get_doc", { framework, name }, text, Math.round(performance.now() - start));
+      log("igniteui_get_doc", { framework, name }, text, Math.round(performance.now() - start));
       return { content: [{ type: "text" as const, text }], ...(found ? {} : { isError: true }) };
     }
   );
 
   server.registerTool(
-    "search_docs",
+    "igniteui_search_docs",
     {
-      description:
-        "Full-text search across Ignite UI docs for a specific framework. Returns top 20 results with excerpt snippets.",
+      description: TOOL_DESCRIPTIONS.search_docs,
       annotations: { readOnlyHint: true, openWorldHint: false },
       inputSchema: {
-        query: z.string().min(1, "Search query is required").describe("Search query (supports prefix matching, e.g. 'grid*')"),
+        query: z
+          .string()
+          .min(1, "Search query is required")
+          .describe(
+            "Search query for full-text search. Supports prefix matching with " +
+            "trailing * (e.g. 'grid*' matches grid, grids, grid-editing). " +
+            "Hyphenated terms like 'grid-editing' are matched as phrases. " +
+            "Examples: 'column pinning', 'tree*', 'data validation'."
+          ),
         framework: FRAMEWORK_ENUM,
       },
     },
     async ({ query: queryText, framework }) => {
       const start = performance.now();
       if (!queryText.trim()) {
-        log("search_docs", { query: queryText, framework }, "Empty query.", 0);
+        log("igniteui_search_docs", { query: queryText, framework }, "Empty query.", 0);
         return { content: [{ type: "text" as const, text: "Empty query." }] };
       }
+
+      // Sanitize user input for FTS4 MATCH syntax.
+      // Strip characters that are FTS4 operators or cause syntax errors:
+      //   " (phrase delimiter), ( ) (grouping), : (column filter), @ (internal)
+      // Preserve hyphens — the porter tokenizer handles them consistently
+      // at both index and query time (e.g. "grid-editing" stays as one phrase).
+      // Preserve trailing * — FTS4 prefix queries (e.g. grid*) rely on it,
+      // and the DB is built with prefix="2,3" indexes to support this.
       const sanitized = queryText
-        .replace(/["\-(){}[\]:^~@]/g, " ")
+        .replace(/["(){}[\]:@]/g, " ")
         .split(/\s+/)
         .filter(Boolean)
-        .map((term) => `"${term}"`)
+        .map((term) => {
+          // Terms ending with * are prefix queries — don't quote them
+          // because FTS4 treats "grid*" as a literal match for the
+          // asterisk character, while unquoted grid* does prefix expansion.
+          if (term.endsWith("*")) return term;
+          return `"${term}"`;
+        })
         .join(" OR ");
       const text = await docsProvider.searchDocs(framework, sanitized);
-      log("search_docs", { query: queryText, framework }, text, Math.round(performance.now() - start));
+      log("igniteui_search_docs", { query: queryText, framework }, text, Math.round(performance.now() - start));
       return { content: [{ type: "text" as const, text }] };
     }
   );
 
   server.registerTool(
-    "get_project_setup_guide",
+    "igniteui_get_project_setup_guide",
     {
       description: TOOL_DESCRIPTIONS.get_project_setup_guide,
       inputSchema: {
@@ -194,7 +221,7 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
         result = SETUP_MD;
       }
 
-      log("get_project_setup_guide", { framework }, result, Math.round(performance.now() - start));
+      log("igniteui_get_project_setup_guide", { framework }, result, Math.round(performance.now() - start));
       return { content: [{ type: "text" as const, text: result }] };
     }
   );

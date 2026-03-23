@@ -43,7 +43,7 @@ export class ApiDocLoader {
       this.loadPlatform(config);
     }
     
-    console.log(`Loaded ${this.docs.size} API entries across ${this.platformConfigs.length} platforms`);
+    console.error(`Loaded ${this.docs.size} API entries across ${this.platformConfigs.length} platforms`);
   }
 
   private loadPlatform(config: PlatformConfig): void {
@@ -107,7 +107,7 @@ export class ApiDocLoader {
         count++;
       }
 
-      console.log(`   ${config.displayName}: ${count} entries`);
+      console.error(`   ${config.displayName}: ${count} entries`);
     } catch (err: unknown) {
       throw new ApiDocsInitializationError(
         `Failed to load ${config.displayName} index: ${indexPath}`,
@@ -166,7 +166,7 @@ export class ApiDocLoader {
       });
     }
 
-    console.log(`   ${config.displayName}: ${components.length} entries (from JSON)`);
+    console.error(`   ${config.displayName}: ${components.length} entries (from JSON)`);
   }
 
   get(platform: Platform, name: string): DocEntry | undefined {

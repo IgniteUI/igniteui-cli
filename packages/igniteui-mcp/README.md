@@ -20,12 +20,12 @@ An MCP server that provides intelligent tools for discovering, exploring, and wo
 
 ### Tools
 
-- **search_documentation** — Search for documentation across multiple IgniteUI repositories
-- **get_api_definition** — Retrieve TypeScript/C# API definitions (interfaces, classes, types) from component source files
-- **get_example_scaffold** — Find example implementations and scaffolds for specific component types
-- **generate_ignite_app** — Create a new Ignite UI project using the CLI
-- **add_ignite_component** — Add a component to an existing project using the CLI
-- **get_cli_templates_list** — List available Ignite UI CLI templates and components
+- **igniteui_search_documentation** — Search for documentation across multiple IgniteUI repositories
+- **igniteui_get_api_definition** — Retrieve TypeScript/C# API definitions (interfaces, classes, types) from component source files
+- **igniteui_get_example_scaffold** — Find example implementations and scaffolds for specific component types
+- **igniteui_generate_ignite_app** — Create a new Ignite UI project using the CLI
+- **igniteui_add_ignite_component** — Add a component to an existing project using the CLI
+- **igniteui_get_cli_templates_list** — List available Ignite UI CLI templates and components
 
 ### Supported Frameworks
 
@@ -96,13 +96,16 @@ npm run inspector # Debug with the MCP Inspector
 
 ## igniteui-doc-mcp
 
-An MCP server that serves pre-compressed Ignite UI component documentation. It loads markdown docs at startup and exposes them via three tools. Includes documentation processing pipelines for Angular, React, WebComponents, and Blazor that export, inject sample code into, and LLM-compress docs from the source repositories.
+An MCP server that serves pre-compressed Ignite UI component documentation. It loads markdown docs at startup and exposes them via prefixed MCP tools. Includes documentation processing pipelines for Angular, React, WebComponents, and Blazor that export, inject sample code into, and LLM-compress docs from the source repositories.
 
 ### Tools
 
-- **list_components** — List/filter available component docs by keyword match against filename, component name, keywords, or summary
-- **get_doc** — Retrieve the full markdown content of a specific component doc
-- **search_docs** — Full-text search across all docs with ranked results
+- **igniteui_list_components** — List/filter available component docs by keyword match against filename, component name, keywords, or summary
+- **igniteui_get_doc** — Retrieve the full markdown content of a specific component doc
+- **igniteui_search_docs** — Full-text search across all docs with ranked results
+- **igniteui_search_api** — Search API entries by keyword, feature name, or partial component name
+- **igniteui_get_api_reference** — Retrieve the API reference for a specific component or class
+- **igniteui_get_project_setup_guide** — Return setup guides for creating a new Ignite UI project
 
 ### Documentation Pipelines
 
