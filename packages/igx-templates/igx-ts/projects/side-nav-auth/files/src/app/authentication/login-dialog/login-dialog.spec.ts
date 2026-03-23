@@ -29,7 +29,7 @@ describe('LoginDialog', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NoopAnimationsModule, IgxDialogModule, LoginDialog, TestSignViewComponent],
+      imports: [NoopAnimationsModule, IgxDialogModule, LoginDialog],
       providers: [{ provide: StsConfigLoader, useValue: {} }]
     })
       .compileComponents();

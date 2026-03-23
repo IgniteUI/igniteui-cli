@@ -171,8 +171,7 @@ describe('Services', () => {
       const providersGetSpy = vi.spyOn(providersMap, 'get').mockReturnValue(false as any);
       providersMap.set(ExternalAuthProvider.Facebook, mockObj);
       (extAuthServ as any).providers = providersMap;
-      vi.spyOn(Promise, 'reject').mockReturnValue(Promise.resolve(null) as any);
-      expect(await extAuthServ.getUserInfo(ExternalAuthProvider.Facebook)).toBeNull();
+      await expect(extAuthServ.getUserInfo(ExternalAuthProvider.Facebook)).rejects.toBeNull();
       expect(providersGetSpy).toHaveBeenCalledTimes(1);
       providersGetSpy.mockReturnValue(mockObj as any);
       expect(await extAuthServ.getUserInfo(ExternalAuthProvider.Facebook)).toEqual({
