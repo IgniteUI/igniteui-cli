@@ -1,12 +1,12 @@
-# IgniteUI MCP Server Specification
+# IgniteUI-CLI MCP Server Specification
 
 ## Version: 1.4.0
 ## Date: March 19, 2026
 
 ## Overview
-The IgniteUI MCP (Model Context Protocol) Server provides programmatic access to Ignite UI documentation and API references, enabling AI assistants, development tools, and automation systems to interact with Ignite UI projects through a standardized protocol.
+The IgniteUI-CLI MCP (Model Context Protocol) Server provides programmatic access to Ignite UI documentation and API references, enabling AI assistants, development tools, and automation systems to interact with Ignite UI projects through a standardized protocol.
 
-The IgniteUI MCP Server solves the "Context Gap" encountered by AI models when working with custom or rapidly evolving UI libraries. By leveraging either a bundled SQLite documentation database or a structured backend exposed via `/api/docs/...`, the server transforms curated docs and metadata into actionable knowledge, allowing an AI to understand not just what APIs and components exist, but how to implement them according to specific framework standards.
+The IgniteUI-CLI MCP Server solves the "Context Gap" encountered by AI models when working with custom or rapidly evolving UI libraries. By leveraging either a bundled SQLite documentation database or a structured backend exposed via `/api/docs/...`, the server transforms curated docs and metadata into actionable knowledge, allowing an AI to understand not just what APIs and components exist, but how to implement them according to specific framework standards.
 
 ## Target Users
 - AI coding assistants (GitHub Copilot, Claude, etc.)
