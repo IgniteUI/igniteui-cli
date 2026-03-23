@@ -2,7 +2,7 @@
 
 ## Context
 
-The MCP server (`igniteui-doc-mcp/src/index.ts`) exposes 3 tools over stdio using an in-memory SQLite DB with FTS4. We need a C# Web API in `docs-backend/` that serves the same data over HTTP REST endpoints, so the MCP server can optionally call these endpoints instead of loading the ~20MB DB directly.
+The MCP server (`igniteui-doc-mcp/src/index.ts`) exposes 3 documentation tools over stdio using an in-memory SQLite DB with FTS4. We need a C# Web API in `docs-backend/` that serves the same data over HTTP REST endpoints, so the MCP server can optionally call these endpoints instead of loading the ~20MB DB directly.
 
 ## DB Schema (from `igniteui-doc-mcp/dist/igniteui-docs.db`)
 
@@ -26,10 +26,10 @@ CREATE VIRTUAL TABLE docs_fts USING fts4(
 );
 ```
 
-## Endpoints (mirror the 3 MCP tools)
+## Endpoints (mirror the 3 documentation MCP tools)
 
 ### 1. `GET /api/docs?framework={fw}&filter={optional}`
-Maps to `list_components`. Returns a plain text list matching the MCP format exactly:
+Maps to `igniteui_list_components`. Returns a plain text list matching the MCP format exactly:
 ```
 accordion [IgxAccordionComponent]
 avatar [IgxAvatarComponent]
@@ -38,10 +38,10 @@ grid-editing [IgxGridComponent, IgxColumnComponent]
 Each line: `{filename without .md} [{component}]`. Content-Type: `text/plain`.
 
 ### 2. `GET /api/docs/{framework}/{name}`
-Maps to `get_doc`. Returns the full markdown content as `text/plain`. 404 if not found.
+Maps to `igniteui_get_doc`. Returns the full markdown content as `text/plain`. 404 if not found.
 
 ### 3. `GET /api/docs/search?framework={fw}&query={text}`
-Maps to `search_docs`. Returns plain text matching MCP format:
+Maps to `igniteui_search_docs`. Returns plain text matching MCP format:
 ```
 **accordion** [IgxAccordionComponent]
 ...excerpt with >>>highlights<<<...

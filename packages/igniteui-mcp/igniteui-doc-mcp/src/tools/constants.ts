@@ -6,9 +6,19 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 export const SETUP_MD: string = readFileSync(join(__dirname, "setup.md"), "utf-8");
 
 export const TOOL_DESCRIPTIONS = {
-  get_project_setup_guide: `Returns setup guides for creating a new Ignite UI project for the specified framework.
-*Before you start*: Call list_components or search_api to identify which Ignite UI components you want to use, then call get_project_setup_guide for the relevant framework to get the official setup instructions.
-**Rule of thumb:**Start with base template unless routing between multiple views is required. A single-view implementation doesn't need a side-nav shell. Only use side-nav when routing between multiple views is genuinely required.
+  get_project_setup_guide: `Get the official Ignite UI project setup guide for one framework: angular, react, blazor, or webcomponents.
+
+Use this when the user wants to create a new Ignite UI project, needs installation or scaffolding steps, or asks how to set up Ignite UI for a specific framework. Use documentation tools such as igniteui_list_components or igniteui_search_api first if you need to identify which components the user plans to use.
+
+Returns documentation text only. For Angular, React, and Web Components, it returns Ignite UI CLI setup and template guidance. For Blazor, it returns dotnet new and NuGet installation guidance. The response may contain one or more markdown guide sections concatenated into a single text result.
+
+This tool is read-only: it does not create files, run commands, detect the current project, or modify the workspace.
+
+Template rule: start with the base template unless the user explicitly needs multiple routed views. Use side-nav only when multi-view routing is actually required.`,
+
+  list_components: `List all available Ignite UI component documentation entries for a given framework. Optionally filter by keyword matched against filename, component name, keywords, or summary.
+
+Use this to discover what docs exist before calling igniteui_get_doc — e.g. to browse available grid docs, filter with "grid". For feature-based or free-text queries ("how do I enable row editing"), use igniteui_search_docs instead.
 
 Returns a formatted list where each entry includes: doc name (pass this as the 'name' parameter to igniteui_get_doc), display name, summary, and premium status. Without a filter, returns the full catalog for the framework.
 
@@ -63,7 +73,7 @@ export const SETUP_DOCS: Record<string, string[]> = {
 };
 
 export const BLAZOR_DOTNET_GUIDE = `# Creating a Blazor Application
-Before you start: Call \`list_components\` or \`search_api\` to identify which Ignite UI components you want to use, then call \`get_project_setup_guide\` for the relevant framework to get the official setup instructions.
+Before you start: Call \`igniteui_list_components\` or \`igniteui_search_api\` to identify which Ignite UI components you want to use, then call \`igniteui_get_project_setup_guide\` for the relevant framework to get the official setup instructions.
 
 ## Create a new Blazor Web App
 
@@ -133,4 +143,5 @@ Most tools require a \`framework\` parameter. Determine the framework from the u
 
 ## Project Setup
 
-- **\`get_project_setup_guide\`** — returns setup guides for creating a new Ignite UI project (CLI guides for Angular/React/WC, dotnet + NuGet guides for Blazor)
+- **\`igniteui_get_project_setup_guide\`** — returns setup guides for creating a new Ignite UI project (CLI guides for Angular/React/WC, dotnet + NuGet guides for Blazor)
+`;

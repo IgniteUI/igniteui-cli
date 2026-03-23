@@ -116,7 +116,7 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
     async ({ framework, filter }) => {
       const start = performance.now();
       const text = await docsProvider.listComponents(framework, filter);
-      log("list_components", { framework, filter }, text, Math.round(performance.now() - start));
+      log("igniteui_list_components", { framework, filter }, text, Math.round(performance.now() - start));
       return { content: [{ type: "text" as const, text }] };
     }
   );
@@ -140,7 +140,7 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
     async ({ framework, name }) => {
       const start = performance.now();
       const { text, found } = await docsProvider.getDoc(framework, name);
-      log("get_doc", { framework, name }, text, Math.round(performance.now() - start));
+      log("igniteui_get_doc", { framework, name }, text, Math.round(performance.now() - start));
       return { content: [{ type: "text" as const, text }], ...(found ? {} : { isError: true }) };
     }
   );
@@ -166,7 +166,7 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
     async ({ query: queryText, framework }) => {
       const start = performance.now();
       if (!queryText.trim()) {
-        log("search_docs", { query: queryText, framework }, "Empty query.", 0);
+        log("igniteui_search_docs", { query: queryText, framework }, "Empty query.", 0);
         return { content: [{ type: "text" as const, text: "Empty query." }] };
       }
 
@@ -190,13 +190,13 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
         })
         .join(" OR ");
       const text = await docsProvider.searchDocs(framework, sanitized);
-      log("search_docs", { query: queryText, framework }, text, Math.round(performance.now() - start));
+      log("igniteui_search_docs", { query: queryText, framework }, text, Math.round(performance.now() - start));
       return { content: [{ type: "text" as const, text }] };
     }
   );
 
   server.registerTool(
-    "get_project_setup_guide",
+    "igniteui_get_project_setup_guide",
     {
       description: TOOL_DESCRIPTIONS.get_project_setup_guide,
       inputSchema: {
@@ -221,7 +221,7 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
         result = SETUP_MD;
       }
 
-      log("get_project_setup_guide", { framework }, result, Math.round(performance.now() - start));
+      log("igniteui_get_project_setup_guide", { framework }, result, Math.round(performance.now() - start));
       return { content: [{ type: "text" as const, text: result }] };
     }
   );

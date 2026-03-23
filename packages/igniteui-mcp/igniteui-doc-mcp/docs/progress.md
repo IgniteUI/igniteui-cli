@@ -79,9 +79,9 @@ Tracks which plans/features have been implemented and which are pending.
 - **Key changes**:
   - `build-db.ts` uses `better-sqlite3` to read `docs_final/` + `docs_prepeared/` and produce `dist/igniteui-docs.db`
   - `src/index.ts` uses `sql.js` (WASM SQLite) to load the DB and serve queries
-  - All 3 MCP tools gain a `framework` parameter (optional for `list_components`/`search_docs`, required for `get_doc`)
-  - `search_docs` uses FTS4 MATCH with Porter stemming and `snippet()` excerpts (top 20 results)
-  - `list_components` uses SQL LIKE for filtering across filename, toc_name, component, keywords, summary
+  - All 3 MCP tools gain a `framework` parameter (optional for `igniteui_list_components`/`igniteui_search_docs`, required for `igniteui_get_doc`)
+  - `igniteui_search_docs` uses FTS4 MATCH with Porter stemming and `snippet()` excerpts (top 20 results)
+  - `igniteui_list_components` uses SQL LIKE for filtering across filename, toc_name, component, keywords, summary
   - `toc_name` looked up from prepared docs (`_tocName` frontmatter field) at build time
   - Server renamed from `igniteui-react-docs` to `igniteui-docs`
   - DB size: ~20MB for 1,208 docs
