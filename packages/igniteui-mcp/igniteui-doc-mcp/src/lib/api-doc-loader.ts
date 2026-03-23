@@ -212,10 +212,15 @@ export class ApiDocLoader {
     const entry = this.docs.get(`${platform}:${name}`);
     if (!entry) return undefined;
 
-    // Already loaded (or was inline from typedoc-json)
+    // Already loaded
     if (entry.content !== undefined) return entry.content;
 
-    // Lazy-load from disk and cache on the entry
+    // typedoc-json entries (React) point at the full JSON model file.
+    // Don't read it here — those are served via formatStructuredComponent().
+    const config = this.platformConfigs.find(c => c.key === platform);
+    if (config?.apiSource.kind === 'typedoc-json') return undefined;
+
+    // Lazy-load markdown from disk and cache on the entry
     try {
       entry.content = readFileSync(entry.filepath, 'utf-8');
     } catch {
