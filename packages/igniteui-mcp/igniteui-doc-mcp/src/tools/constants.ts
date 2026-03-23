@@ -1,7 +1,14 @@
-export const TOOL_DESCRIPTIONS = {
-  list_components: `List all available Ignite UI component documentation entries for a given framework. Optionally filter by keyword matched against filename, component name, keywords, or summary.
+import { readFileSync } from "fs";
+import { join, dirname } from "path";
+import { fileURLToPath } from "url";
 
-Use this to discover what docs exist before calling igniteui_get_doc — e.g. to browse available grid docs, filter with "grid". For feature-based or free-text queries ("how do I enable row editing"), use igniteui_search_docs instead.
+const __dirname = dirname(fileURLToPath(import.meta.url));
+export const SETUP_MD: string = readFileSync(join(__dirname, "setup.md"), "utf-8");
+
+export const TOOL_DESCRIPTIONS = {
+  get_project_setup_guide: `Returns setup guides for creating a new Ignite UI project for the specified framework.
+*Before you start*: Call list_components or search_api to identify which Ignite UI components you want to use, then call get_project_setup_guide for the relevant framework to get the official setup instructions.
+**Rule of thumb:**Start with base template unless routing between multiple views is required. A single-view implementation doesn't need a side-nav shell. Only use side-nav when routing between multiple views is genuinely required.
 
 Returns a formatted list where each entry includes: doc name (pass this as the 'name' parameter to igniteui_get_doc), display name, summary, and premium status. Without a filter, returns the full catalog for the framework.
 
@@ -56,6 +63,7 @@ export const SETUP_DOCS: Record<string, string[]> = {
 };
 
 export const BLAZOR_DOTNET_GUIDE = `# Creating a Blazor Application
+Before you start: Call \`list_components\` or \`search_api\` to identify which Ignite UI components you want to use, then call \`get_project_setup_guide\` for the relevant framework to get the official setup instructions.
 
 ## Create a new Blazor Web App
 
@@ -76,6 +84,14 @@ cd MyBlazorApp
 \`\`\`bash
 dotnet run
 \`\`\`
+
+## What's Next
+
+Once the project is running:
+1. Call \`igniteui_list_components\` or\`igniteui_search_docs\` to find the component you want to add.
+2. Call \`igniteui_get_doc\` with the component name to get full usage instructions.
+3. Call \`igniteui_get_api_reference\` or \`igniteui_search_api\` to look up properties, methods, and events.
+4. Apply theming via the **igniteui-theming MCP** before or after adding components. 
 
 After creating the app, follow the guides below to add Ignite UI for Blazor components.
 
@@ -117,4 +133,4 @@ Most tools require a \`framework\` parameter. Determine the framework from the u
 
 ## Project Setup
 
-- **\`igniteui_generate_app\`** — returns setup guides for creating a new Ignite UI project (CLI guides for Angular/React/WC, dotnet + NuGet guides for Blazor)`;
+- **\`get_project_setup_guide\`** — returns setup guides for creating a new Ignite UI project (CLI guides for Angular/React/WC, dotnet + NuGet guides for Blazor)
