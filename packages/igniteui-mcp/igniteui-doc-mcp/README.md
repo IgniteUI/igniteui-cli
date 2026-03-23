@@ -16,6 +16,32 @@ Or use directly with `npx`:
 npx @igniteui/mcp-server
 ```
 
+## Running From Source
+
+In order to run the MCP from this repository, git submodules must be initialized first. The repo already includes the submodule entries, but a fresh clone still needs to fetch them locally.
+
+Required submodules for local API markdown generation include:
+- `angular/igniteui-angular`
+- `webcomponents/igniteui-webcomponents`
+
+Recommended first-time setup:
+
+```bash
+cd packages/igniteui-mcp/igniteui-doc-mcp
+git submodule update --init --recursive
+npm install
+npm run build:docs:all
+npm run build
+```
+
+`npm run build:docs:all` generates the local API markdown artifacts used by the MCP API tools for Angular and Web Components. Run it before starting the server.
+
+If you need to refresh submodules to newer upstream commits later, use:
+
+```bash
+git submodule update --remote --merge
+```
+
 ## MCP Client Configuration
 
 ### VS Code
@@ -121,6 +147,8 @@ igniteui-mcp --debug
 ### Local (default)
 
 Fully self-contained — no network access required. Uses a bundled SQLite database with FTS4 full-text search powered by [sql.js](https://github.com/sql-js/sql.js/) (WebAssembly).
+
+When running from a source checkout, make sure you have already run `npm run build:docs:all` before starting the MCP so the local API markdowns are present.
 
 ### Remote
 

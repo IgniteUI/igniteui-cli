@@ -6,6 +6,7 @@ MCP server that serves pre-compressed Ignite UI component documentation via full
 
 ```bash
 cd packages/igniteui-mcp/igniteui-doc-mcp
+git submodule update --init --recursive
 npm install
 ```
 
@@ -20,6 +21,27 @@ The MCP server uses a SQLite database with FTS4 full-text search to serve docume
 
 ```bash
 npm run build:db
+```
+
+### Building the API markdown
+The repository already tracks the required documentation and source repositories as git submodules. A fresh clone still needs `git submodule update --init --recursive` to materialize them locally.
+
+Required submodules for local API markdown generation include:
+- `angular/igniteui-angular`
+- `webcomponents/igniteui-webcomponents`
+
+Before using the MCP server from a source checkout, generate the local API markdowns:
+
+```bash
+npm run build:docs:all
+```
+
+This step builds the Angular and Web Components API markdown used by the local MCP API tools. If you skip it, API lookups may be incomplete or unavailable even if the server itself builds successfully.
+
+If you want to refresh submodules to newer upstream commits, run:
+
+```bash
+git submodule update --remote --merge
 ```
 
 ### Building the MCP Server
