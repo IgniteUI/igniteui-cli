@@ -6,7 +6,7 @@ import { appendFileSync, mkdirSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 import dotenv from "dotenv";
-import { TOOL_DESCRIPTIONS, SETUP_DOCS, BLAZOR_DOTNET_GUIDE, USAGE_GUIDE } from "./tools/constants.js";
+import { TOOL_DESCRIPTIONS, SETUP_DOCS, SETUP_MD, BLAZOR_DOTNET_GUIDE, USAGE_GUIDE } from "./tools/constants.js";
 import type { DocsProvider } from "./providers/DocsProvider.js";
 import { RemoteDocsProvider } from "./providers/RemoteDocsProvider.js";
 import { LocalDocsProvider } from "./providers/LocalDocsProvider.js";
@@ -169,34 +169,32 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
   );
 
   server.registerTool(
-    "generate_ignite_app",
+    "get_project_setup_guide",
     {
-      description: TOOL_DESCRIPTIONS.generate_ignite_app,
+      description: TOOL_DESCRIPTIONS.get_project_setup_guide,
       inputSchema: {
         framework: FRAMEWORK_ENUM,
       },
     },
     async ({ framework }) => {
       const start = performance.now();
-      const docNames = SETUP_DOCS[framework] || [];
-      const sections: string[] = [];
+      let result: string;
 
       if (framework === "blazor") {
-        sections.push(BLAZOR_DOTNET_GUIDE);
-      }
-
-      for (const name of docNames) {
-        const { text, found } = await docsProvider.getDoc(framework, name);
-        if (found) {
-          sections.push(text);
+        const docNames = SETUP_DOCS["blazor"] || [];
+        const sections: string[] = [BLAZOR_DOTNET_GUIDE];
+        for (const name of docNames) {
+          const { text, found } = await docsProvider.getDoc(framework, name);
+          if (found) {
+            sections.push(text);
+          }
         }
+        result = sections.join("\n\n---\n\n");
+      } else {
+        result = SETUP_MD;
       }
 
-      const result = sections.length > 0
-        ? sections.join("\n\n---\n\n")
-        : `No setup guide available for framework: ${framework}`;
-
-      log("generate_ignite_app", { framework }, result, Math.round(performance.now() - start));
+      log("get_project_setup_guide", { framework }, result, Math.round(performance.now() - start));
       return { content: [{ type: "text" as const, text: result }] };
     }
   );

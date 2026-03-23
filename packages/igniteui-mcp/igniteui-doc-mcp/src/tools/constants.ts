@@ -1,6 +1,14 @@
-export const TOOL_DESCRIPTIONS = {
-  generate_ignite_app: `Returns setup guides for creating a new Ignite UI project for the specified framework.
+import { readFileSync } from "fs";
+import { join, dirname } from "path";
+import { fileURLToPath } from "url";
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
+export const SETUP_MD: string = readFileSync(join(__dirname, "setup.md"), "utf-8");
+
+export const TOOL_DESCRIPTIONS = {
+  get_project_setup_guide: `Returns setup guides for creating a new Ignite UI project for the specified framework.
+*Before you start*: Call list_components or search_api to identify which Ignite UI components you want to use, then call get_project_setup_guide for the relevant framework to get the official setup instructions.
+**Rule of thumb:**Start with base template unless routing between multiple views is required. A single-view implementation doesn't need a side-nav shell. Only use side-nav when routing between multiple views is genuinely required.
 **For Angular, React, Web Components:** Returns the Ignite UI CLI documentation with step-by-step instructions for project scaffolding using \`igniteui-cli\`.
 **For Blazor:** Returns a guide for creating a Blazor app using \`dotnet new\` and adding Ignite UI Blazor dependencies via NuGet.
 
@@ -57,6 +65,7 @@ export const SETUP_DOCS: Record<string, string[]> = {
 };
 
 export const BLAZOR_DOTNET_GUIDE = `# Creating a Blazor Application
+Before you start: Call \`list_components\` or \`search_api\` to identify which Ignite UI components you want to use, then call \`get_project_setup_guide\` for the relevant framework to get the official setup instructions.
 
 ## Create a new Blazor Web App
 
@@ -77,6 +86,14 @@ cd MyBlazorApp
 \`\`\`bash
 dotnet run
 \`\`\`
+
+## What's Next
+
+Once the project is running:
+1. Call \`list_components\` or\`search_docs\` to find the component you want to add.
+2. Call \`get_doc\` with the component name to get full usage instructions.
+3. Call \`get_api_reference\` or \`search_api\` to look up properties, methods, and events.
+4. Apply theming via the **igniteui-theming MCP** before or after adding components. 
 
 After creating the app, follow the guides below to add Ignite UI for Blazor components.
 
@@ -119,7 +136,7 @@ Most tools require a \`framework\` parameter. Determine the framework from the u
 
 ## Project Setup
 
-- **\`generate_ignite_app\`** — returns setup guides for creating a new Ignite UI project (CLI guides for Angular/React/WC, dotnet + NuGet guides for Blazor)
+- **\`get_project_setup_guide\`** — returns setup guides for creating a new Ignite UI project (CLI guides for Angular/React/WC, dotnet + NuGet guides for Blazor)
 
 ## Other Tools
 
