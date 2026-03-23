@@ -40,14 +40,6 @@ Returns up to 20 results ranked by relevance. Each result includes: doc name (pa
 
 Query must be non-empty. Special characters are sanitized automatically — only * for prefix matching needs to be passed explicitly.`,
 
-  generate_ignite_app: `Return setup guides and step-by-step instructions for creating a new Ignite UI project. For Angular, React, and Web Components, returns the Ignite UI CLI documentation with scaffolding commands. For Blazor, returns a guide using dotnet new and NuGet package installation.
-
-Use this when the user wants to create a new project, needs installation steps, or asks "how do I set up Ignite UI". This does NOT generate files or run commands — it returns documentation text only.
-
-Returns one or more markdown documents concatenated together (separated by ---) with the full setup walkthrough for the requested framework, including CLI commands and configuration steps.
-
-All four frameworks are supported. Returns a message if no setup guide is available for the given framework.`,
-
   get_api_reference: `Look up the full API reference for a specific Ignite UI component or class by exact name. Case-insensitive matching. Covers angular, react, and webcomponents (Blazor API not yet available).
 
 Use this when you already know the exact component name — from the user's code (e.g. IgxGridComponent, IgrGrid, IgcSelect) or from a previous igniteui_search_api result. If you only have a keyword or partial name, call igniteui_search_api first to discover the exact name.
