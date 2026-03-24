@@ -1,6 +1,6 @@
 # IgniteUI for React — App Generation Instructions
 
-Before you start: Call `list_components` or `igniteui_search_api` to identify which Ignite UI components you want to use.
+Before you start: Call `igniteui_list_components` or `igniteui_search_api` to identify which Ignite UI components you want to use.
 
 ---
 
