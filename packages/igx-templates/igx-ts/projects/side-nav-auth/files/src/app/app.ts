@@ -62,7 +62,7 @@ export class App implements OnInit {
 
     // this.externalAuthService.addMicrosoft();
 
-    // this.externalAuthService.addFacebook('<CLIENT_ID>');
+    // this.externalAuthService.addFacebook('YOUR_FACEBOOK_CLIENT_ID');
   }
 
   public ngOnInit(): void {
