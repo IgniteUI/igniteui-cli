@@ -112,7 +112,7 @@ describe('Services', () => {
       extAuthServ.addGoogle('test');
       expect(providersSpy).toHaveBeenCalled();
       expect(providersSpy).toHaveBeenCalledWith('Google',
-        new GoogleProvider(MOCK_OIDC_SECURITY, ExternalAuthProvider.Google));
+        new GoogleProvider(MOCK_OIDC_SECURITY, 'test'));
     });
 
     it(`Should properly call 'addFacebook'`, () => {
@@ -132,7 +132,7 @@ describe('Services', () => {
       extAuthServ.addMicrosoft('test');
       expect(providersSpy).toHaveBeenCalled();
       expect(providersSpy).toHaveBeenCalledWith('Microsoft',
-        new MicrosoftProvider(MOCK_OIDC_SECURITY, ExternalAuthProvider.Microsoft));
+        new MicrosoftProvider(MOCK_OIDC_SECURITY, 'test'));
     });
 
     it(`Should properly call 'getUserInfo'`, async () => {
