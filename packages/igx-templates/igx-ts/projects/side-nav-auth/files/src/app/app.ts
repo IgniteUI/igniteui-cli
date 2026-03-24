@@ -44,7 +44,7 @@ export class App implements OnInit {
   @ViewChild(IgxNavigationDrawerComponent, { static: true })
   public navdrawer!: IgxNavigationDrawerComponent;
 
-  constructor(private router: Router, private externalAuthService: ExternalAuth) {
+  constructor(private router: Router, private externalAuth: ExternalAuth) {
     for (const route of routes) {
       if (route.path && route.data && route.path.indexOf('*') === -1) {
         this.topNavLinks.push({
@@ -58,11 +58,9 @@ export class App implements OnInit {
      * To register a social login, un-comment one or more of the following and add your service provider Client ID.
      * See https://github.com/IgniteUI/igniteui-cli/wiki/Angular-Authentication-Project-Template#add-a-third-party-social-provider
      */
-    // this.externalAuthService.addGoogle();
-
-    // this.externalAuthService.addMicrosoft();
-
-    // this.externalAuthService.addFacebook('YOUR_FACEBOOK_CLIENT_ID');
+    // this.externalAuth.addGoogle('CLIENT_ID');
+    // this.externalAuth.addMicrosoft('CLIENT_ID');
+    // this.externalAuth.addFacebook('CLIENT_ID');
   }
 
   public ngOnInit(): void {

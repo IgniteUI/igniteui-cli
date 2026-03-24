@@ -109,7 +109,7 @@ describe('Services', () => {
 
     it(`Should properly call 'addGoogle'`, () => {
       const providersSpy = vi.spyOn((extAuthServ as any).providers, 'set');
-      extAuthServ.addGoogle();
+      extAuthServ.addGoogle('test');
       expect(providersSpy).toHaveBeenCalled();
       expect(providersSpy).toHaveBeenCalledWith('Google',
         new GoogleProvider(MOCK_OIDC_SECURITY, ExternalAuthProvider.Google));
@@ -129,7 +129,7 @@ describe('Services', () => {
 
     it(`Should properly call 'addMicrosoft'`, () => {
       const providersSpy = vi.spyOn((extAuthServ as any).providers, 'set');
-      extAuthServ.addMicrosoft();
+      extAuthServ.addMicrosoft('test');
       expect(providersSpy).toHaveBeenCalled();
       expect(providersSpy).toHaveBeenCalledWith('Microsoft',
         new MicrosoftProvider(MOCK_OIDC_SECURITY, ExternalAuthProvider.Microsoft));
