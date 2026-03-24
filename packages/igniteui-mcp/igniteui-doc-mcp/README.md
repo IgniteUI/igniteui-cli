@@ -46,6 +46,8 @@ git submodule update --remote --merge
 
 ### VS Code
 
+If IgniteUi CLI is globbaly installed you can configure the MCP like this: 
+
 Add to `.vscode/mcp.json`:
 
 ```json
@@ -53,14 +55,29 @@ Add to `.vscode/mcp.json`:
   "servers": {
     "igniteui": {
       "type": "stdio",
-      "command": "npx",
-      "args": ["-y", "@igniteui/mcp-server"]
+      "command": "ig",
+      "args": ["mcp"]
     }
   }
 }
 ```
 
+Or if you want to use it locally:
+
+```json
+{
+  "servers": {
+    "igniteui": {
+      "command": "node",
+      "args": ["absolute_path_to-igniteui-cli/mcp/dist/index.js"]
+    }
+  }
+}
+```
+
+
 ### Claude Desktop
+If IgniteUi ClI is globbaly installed you can configure the MCP like this: 
 
 Add to `claude_desktop_config.json`:
 
@@ -68,14 +85,28 @@ Add to `claude_desktop_config.json`:
 {
   "mcpServers": {
     "igniteui": {
-      "command": "npx",
-      "args": ["-y", "@igniteui/mcp-server"]
+      "type": "stdio",
+      "command": "ig",
+      "args": ["mcp"]
+    }
+  }
+}
+```
+Or if you want to use it locally:
+
+```json
+{
+  "mcpServers": {
+    "igniteui": {
+      "command": "node",
+      "args": ["absolute_path_to-igniteui-cli/mcp/dist/index.js"]
     }
   }
 }
 ```
 
 ### Cursor
+If IgniteUi ClI is globbaly installed you can configure the MCP like this:
 
 Add to Cursor MCP settings:
 
@@ -83,8 +114,21 @@ Add to Cursor MCP settings:
 {
   "mcpServers": {
     "igniteui": {
-      "command": "npx",
-      "args": ["-y", "@igniteui/mcp-server"]
+      "type": "stdio",
+      "command": "ig",
+      "args": ["mcp"]
+    }
+  }
+}
+```
+Or if you want to use it locally:
+
+```json
+{
+  "mcpServers": {
+    "igniteui": {
+      "command": "node",
+      "args": ["absolute_path_to-igniteui-cli/mcp/dist/index.js"]
     }
   }
 }
