@@ -75,7 +75,7 @@ export const SETUP_DOCS: Record<string, string[]> = {
 };
 
 export const BLAZOR_DOTNET_GUIDE = `# Creating a Blazor Application
-Before you start: Call \`igniteui_list_components\` or \`igniteui_search_api\` to identify which Ignite UI components you want to use, then call \`igniteui_get_project_setup_guide\` for the relevant framework to get the official setup instructions.
+Before you start: Call \`igniteui_list_components\` or \`igniteui_search_api\` to identify which Ignite UI components you want to use, then follow the steps below. Use \`igniteui_search_docs\` if you need more detailed documentation for specific components or features.
 
 ## Create a new Blazor Web App
 
