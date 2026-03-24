@@ -10,7 +10,7 @@ export const SETUP_MD: Record<string, string> = {
 };
 
 export const TOOL_DESCRIPTIONS = {
-  get_project_setup_guide: `Get the official Ignite UI project setup guide for one framework: angular, react, blazor, or webcomponents.
+  get_project_setup_guide: `Get the Ignite UI project setup guide for one framework: angular, react, blazor, or webcomponents.
 
 Use this when the user wants to create a new Ignite UI project, needs installation or scaffolding steps, or asks how to set up Ignite UI for a specific framework. Use documentation tools such as list_components or search_api first if you need to identify which components the user plans to use.
 
