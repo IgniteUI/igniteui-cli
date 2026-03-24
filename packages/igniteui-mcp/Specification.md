@@ -137,7 +137,7 @@ Doc "<name>" not found for framework "<framework>". Use igniteui_list_components
 - This tool is read-only: it does not create files, run commands, or modify the workspace
 
 **Schema**:
-- `framework`: Enum (angular|react|blazor|webcomponents) — required
+- `framework`: Enum (angular|react|blazor|webcomponents) 
 
 **Return**: Markdown setup guidance only. The response contains installation, scaffolding, and next-step instructions for the selected framework.
 
