@@ -11,7 +11,8 @@ export function provideAuthentication(): Array<Provider | EnvironmentProviders> 
     importProvidersFrom(AuthModule.forRoot({ config: [] })),
     provideHttpClient(withInterceptorsFromDi()),
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    // TODO: DELETE THIS BEFORE PRODUCTION!
+    // BackendProvider intercepts HTTP requests and simulates a REST API for development/testing.
+    // Remove this provider and configure a real backend before deploying to production.
     BackendProvider
   ];
 }

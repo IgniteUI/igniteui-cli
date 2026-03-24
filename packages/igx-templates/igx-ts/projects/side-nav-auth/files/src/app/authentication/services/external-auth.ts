@@ -76,7 +76,7 @@ export class ExternalAuth {
     }
   }
 
-  /** TODO, use setActiveProvider only? */
+  /** Returns user info from the given external auth provider */
   public async getUserInfo(provider: ExternalAuthProvider): Promise<ExternalLogin> {
     const extProvider = this.providers.get(provider);
     if (extProvider) {
@@ -84,7 +84,7 @@ export class ExternalAuth {
       userInfo.externalProvider = provider;
       return userInfo;
     }
-    return Promise.reject(null); // TODO ?
+    return Promise.reject(null);
   }
 
   /**
