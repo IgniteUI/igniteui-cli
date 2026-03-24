@@ -28,7 +28,8 @@
 		"jasmine": "node spec/jasmine-runner.js",
 		"coverage": "nyc report --report-dir",
 		"lint": "eslint -c eslint.config.mjs ./**/*.ts",
-		"config-schema": "typescript-json-schema packages/core/types/Config.ts Config -o packages/core/config/Config.schema.json"
+		"config-schema": "typescript-json-schema packages/core/types/Config.ts Config -o packages/core/config/Config.schema.json",
+		"build:mcp-bundle": "node scripts/bundle-mcp.js"
 	},
 	"nyc": {
 		"extension": [
