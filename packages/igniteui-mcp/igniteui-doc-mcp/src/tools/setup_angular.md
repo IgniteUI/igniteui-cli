@@ -41,7 +41,7 @@ ig start
 **Option B — Angular Schematics** (if the user already has an Angular CLI project or prefers `ng`-native tooling):
  
 ```bash
-ng new --collection="@igniteui/angular-schematics"
+ng new <ProjectName> --collection="@igniteui/angular-schematics"
 ```
  
 Or to add Ignite UI to an existing Angular project:
