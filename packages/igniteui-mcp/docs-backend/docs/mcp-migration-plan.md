@@ -24,7 +24,7 @@ Two changes:
 
 Each tool handler becomes a single `fetch()` call to the corresponding REST endpoint. The backend already returns text in the exact same format, so the tool just passes the response through.
 
-**`igniteui_list_components`**:
+**`list_components`**:
 ```ts
 const url = new URL("/api/docs", BACKEND_URL);
 url.searchParams.set("framework", framework);
@@ -32,7 +32,7 @@ if (filter) url.searchParams.set("filter", filter);
 const text = await fetchText(url);
 ```
 
-**`igniteui_get_doc`**:
+**`get_doc`**:
 ```ts
 const url = new URL(`/api/docs/${framework}/${name}`, BACKEND_URL);
 const resp = await fetch(url);
@@ -40,7 +40,7 @@ if (resp.status === 404) { /* return isError response */ }
 const text = await resp.text();
 ```
 
-**`igniteui_search_docs`**:
+**`search_docs`**:
 ```ts
 const url = new URL("/api/docs/search", BACKEND_URL);
 url.searchParams.set("framework", framework);

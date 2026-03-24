@@ -100,12 +100,12 @@ An MCP server that serves pre-compressed Ignite UI component documentation. It l
 
 ### Tools
 
-- **igniteui_list_components** — List/filter available component docs by keyword match against filename, component name, keywords, or summary
-- **igniteui_get_doc** — Retrieve the full markdown content of a specific component doc
-- **igniteui_search_docs** — Full-text search across all docs with ranked results
-- **igniteui_search_api** — Search API entries by keyword, feature name, or partial component name
-- **igniteui_get_api_reference** — Retrieve the API reference for a specific component or class
-- **igniteui_get_project_setup_guide** — Return setup guides for creating a new Ignite UI project
+- **list_components** — List/filter available component docs by keyword match against filename, component name, keywords, or summary
+- **get_doc** — Retrieve the full markdown content of a specific component doc
+- **search_docs** — Full-text search across all docs with ranked results
+- **search_api** — Search API entries by keyword, feature name, or partial component name
+- **get_api_reference** — Retrieve the API reference for a specific component or class
+- **get_project_setup_guide** — Return setup guides for creating a new Ignite UI project
 
 ### Documentation Pipelines
 

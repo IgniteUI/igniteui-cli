@@ -11,7 +11,7 @@ The `compress-angular-docs.ts` script has a system prompt copied from a React co
 | Input doc | `angular/igniteui-docfx/en/components/button.md` (uses `IgxButtonModule`, `IgxButtonDirective`) |
 | Output `component:` | `IgrButton` | `IgxButtonDirective` |
 
-The `component` frontmatter field is used by the MCP server (`src/index.ts`) for filtering and display in `igniteui_list_components` and matching in `igniteui_search_docs`. Wrong prefixes mean Angular searches for `IgxButton` won't match the compressed doc.
+The `component` frontmatter field is used by the MCP server (`src/index.ts`) for filtering and display in `list_components` and matching in `search_docs`. Wrong prefixes mean Angular searches for `IgxButton` won't match the compressed doc.
 
 ## Root Cause
 

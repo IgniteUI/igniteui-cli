@@ -28,7 +28,7 @@ export function createGetApiReferenceHandler(docLoader: ApiDocLoader) {
         return {
           content: [{
             type: "text",
-            text: `API reference for "${resolvedComponent}" not found in ${platformName}. Use igniteui_search_api to find available components.`
+            text: `API reference for "${resolvedComponent}" not found in ${platformName}. Use search_api to find available components.`
           }],
           isError: true,
         };

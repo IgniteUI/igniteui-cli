@@ -29,7 +29,7 @@ CREATE VIRTUAL TABLE docs_fts USING fts4(
 ## Endpoints (mirror the 3 documentation MCP tools)
 
 ### 1. `GET /api/docs?framework={fw}&filter={optional}`
-Maps to `igniteui_list_components`. Returns a plain text list matching the MCP format exactly:
+Maps to `list_components`. Returns a plain text list matching the MCP format exactly:
 ```
 accordion [IgxAccordionComponent]
 avatar [IgxAvatarComponent]
@@ -38,10 +38,10 @@ grid-editing [IgxGridComponent, IgxColumnComponent]
 Each line: `{filename without .md} [{component}]`. Content-Type: `text/plain`.
 
 ### 2. `GET /api/docs/{framework}/{name}`
-Maps to `igniteui_get_doc`. Returns the full markdown content as `text/plain`. 404 if not found.
+Maps to `get_doc`. Returns the full markdown content as `text/plain`. 404 if not found.
 
 ### 3. `GET /api/docs/search?framework={fw}&query={text}`
-Maps to `igniteui_search_docs`. Returns plain text matching MCP format:
+Maps to `search_docs`. Returns plain text matching MCP format:
 ```
 **accordion** [IgxAccordionComponent]
 ...excerpt with >>>highlights<<<...

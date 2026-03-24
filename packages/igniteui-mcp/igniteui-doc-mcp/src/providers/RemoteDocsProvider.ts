@@ -25,7 +25,7 @@ export class RemoteDocsProvider implements DocsProvider {
     const resp = await fetch(url);
     if (resp.status === 404) {
       return {
-        text: `Doc "${name}" not found for framework "${framework}". Use igniteui_list_components to see available docs.`,
+        text: `Doc "${name}" not found for framework "${framework}". Use list_components to see available docs.`,
         found: false,
       };
     }

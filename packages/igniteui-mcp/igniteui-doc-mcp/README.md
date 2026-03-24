@@ -96,12 +96,12 @@ All tools require a `framework` parameter: `angular`, `react`, `blazor`, or `web
 
 | Tool | Description |
 |------|-------------|
-| `igniteui_list_components` | List available Ignite UI component docs. Filter by framework and optional keyword match against filename, component name, keywords, or summary. |
-| `igniteui_get_doc` | Return the full markdown content of a specific component doc by name (e.g., `grid-editing`, `accordion`). |
-| `igniteui_search_docs` | Full-text search across Ignite UI docs for a specific framework. Returns top 20 results with excerpt snippets. Supports prefix matching (e.g., `grid*`). |
-| `igniteui_search_api` | Search Ignite UI API entries by keyword, feature name, or partial component name. |
-| `igniteui_get_api_reference` | Return the full API reference for a specific Ignite UI component or class by exact name. |
-| `igniteui_get_project_setup_guide` | Returns setup guides for creating a new Ignite UI project. For Angular/React/Web Components: CLI scaffolding instructions. For Blazor: `dotnet new` + NuGet setup guide. |
+| `list_components` | List available Ignite UI component docs. Filter by framework and optional keyword match against filename, component name, keywords, or summary. |
+| `get_doc` | Return the full markdown content of a specific component doc by name (e.g., `grid-editing`, `accordion`). |
+| `search_docs` | Full-text search across Ignite UI docs for a specific framework. Returns top 20 results with excerpt snippets. Supports prefix matching (e.g., `grid*`). |
+| `search_api` | Search Ignite UI API entries by keyword, feature name, or partial component name. |
+| `get_api_reference` | Return the full API reference for a specific Ignite UI component or class by exact name. |
+| `get_project_setup_guide` | Returns setup guides for creating a new Ignite UI project. For Angular/React/Web Components: CLI scaffolding instructions. For Blazor: `dotnet new` + NuGet setup guide. |
 
 ## Available Prompts
 

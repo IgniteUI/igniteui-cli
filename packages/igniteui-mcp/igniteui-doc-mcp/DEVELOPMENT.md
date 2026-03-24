@@ -448,12 +448,12 @@ The server uses local mode by default, loading `dist/igniteui-docs.db` (SQLite w
 
 | Tool | Parameters | Description |
 |------|-----------|-------------|
-| `igniteui_list_components` | `framework` (required), `filter?` | List docs for a framework, optionally filtered by keyword (LIKE match against filename, component, toc_name, keywords, summary) |
-| `igniteui_get_doc` | `framework` (required), `name` (required) | Return full markdown content of a specific doc. `name` is without `.md` extension |
-| `igniteui_search_docs` | `query` (required), `framework` (required) | FTS4 full-text search with Porter stemming. Returns top 20 results with snippet excerpts |
-| `igniteui_get_project_setup_guide` | `framework` (required) | Return setup guides for creating a new Ignite UI project. For Angular/React/WC: CLI docs. For Blazor: dotnet + NuGet guides |
+| `list_components` | `framework` (required), `filter?` | List docs for a framework, optionally filtered by keyword (LIKE match against filename, component, toc_name, keywords, summary) |
+| `get_doc` | `framework` (required), `name` (required) | Return full markdown content of a specific doc. `name` is without `.md` extension |
+| `search_docs` | `query` (required), `framework` (required) | FTS4 full-text search with Porter stemming. Returns top 20 results with snippet excerpts |
+| `get_project_setup_guide` | `framework` (required) | Return setup guides for creating a new Ignite UI project. For Angular/React/WC: CLI docs. For Blazor: dotnet + NuGet guides |
 
-#### igniteui_get_project_setup_guide
+#### get_project_setup_guide
 
 Returns framework-specific setup guides for creating a new Ignite UI project.
 

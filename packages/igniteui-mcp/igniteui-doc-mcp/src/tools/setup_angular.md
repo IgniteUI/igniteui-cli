@@ -1,6 +1,6 @@
 # IgniteUI for Angular — App Generation Instructions
  
-Before you start: Call `igniteui_list_components` or `igniteui_search_api` to identify which Ignite UI components you want to use.
+Before you start: Call `list_components` or `search_api` to identify which Ignite UI components you want to use.
  
 ---
  
@@ -75,7 +75,7 @@ ig new MyApp --framework=angular --type=igx-ts --template=side-nav
 ## What's Next
  
 Once the project is running:
-1. Call `igniteui_list_components` or `igniteui_search_docs` to find the component you want to add.
-2. Call `igniteui_get_doc` with the component name to get full usage instructions.
-3. Call `igniteui_get_api_reference` or `igniteui_search_api` to look up properties, methods, and events.
+1. Call `list_components` or `search_docs` to find the component you want to add.
+2. Call `get_doc` with the component name to get full usage instructions.
+3. Call `get_api_reference` or `search_api` to look up properties, methods, and events.
 4. Apply theming via the **igniteui-theming MCP** before or after adding components.

@@ -107,9 +107,9 @@ Uses `sql.js` (WASM SQLite) to load `dist/igniteui-docs.db` into memory at start
 
 | Tool | Parameters | Description |
 |------|-----------|-------------|
-| `igniteui_list_components` | `framework` (required), `filter?` | SQL LIKE against filename, toc_name, component, keywords, summary |
-| `igniteui_get_doc` | `framework` (required), `name` (required) | Returns full markdown. Appends `.md` internally |
-| `igniteui_search_docs` | `framework` (required), `query` (required) | FTS4 MATCH with `snippet()`, top 20 results |
+| `list_components` | `framework` (required), `filter?` | SQL LIKE against filename, toc_name, component, keywords, summary |
+| `get_doc` | `framework` (required), `name` (required) | Returns full markdown. Appends `.md` internally |
+| `search_docs` | `framework` (required), `query` (required) | FTS4 MATCH with `snippet()`, top 20 results |
 
 All tools require `framework` (`angular`, `react`, `blazor`, `webcomponents`).
 

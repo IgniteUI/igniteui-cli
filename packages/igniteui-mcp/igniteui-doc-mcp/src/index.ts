@@ -75,7 +75,7 @@ const server = new McpServer(
 
 function registerApiTools(server: McpServer, docLoader: ApiDocLoader) {
   server.registerTool(
-    "igniteui_get_api_reference",
+    "get_api_reference",
     {
       description: TOOL_DESCRIPTIONS.get_api_reference,
       annotations: { readOnlyHint: true, openWorldHint: false },
@@ -85,7 +85,7 @@ function registerApiTools(server: McpServer, docLoader: ApiDocLoader) {
   );
 
   server.registerTool(
-    "igniteui_search_api",
+    "search_api",
     {
       description: TOOL_DESCRIPTIONS.search_api,
       annotations: { readOnlyHint: true, openWorldHint: false },
@@ -97,7 +97,7 @@ function registerApiTools(server: McpServer, docLoader: ApiDocLoader) {
 
 function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
   server.registerTool(
-    "igniteui_list_components",
+    "list_components",
     {
       description: TOOL_DESCRIPTIONS.list_components,
       annotations: { readOnlyHint: true, openWorldHint: false },
@@ -116,13 +116,13 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
     async ({ framework, filter }) => {
       const start = performance.now();
       const text = await docsProvider.listComponents(framework, filter);
-      log("igniteui_list_components", { framework, filter }, text, Math.round(performance.now() - start));
+      log("list_components", { framework, filter }, text, Math.round(performance.now() - start));
       return { content: [{ type: "text" as const, text }] };
     }
   );
 
   server.registerTool(
-    "igniteui_get_doc",
+    "get_doc",
     {
       description: TOOL_DESCRIPTIONS.get_doc,
       annotations: { readOnlyHint: true, openWorldHint: false },
@@ -133,20 +133,20 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
           .describe(
             'Exact doc name in kebab-case without the .md extension. ' +
             'Examples: "grid-editing", "combo-overview", "accordion". ' +
-            'Get valid names from igniteui_list_components or igniteui_search_docs.'
+            'Get valid names from list_components or search_docs.'
           ),
       },
     },
     async ({ framework, name }) => {
       const start = performance.now();
       const { text, found } = await docsProvider.getDoc(framework, name);
-      log("igniteui_get_doc", { framework, name }, text, Math.round(performance.now() - start));
+      log("get_doc", { framework, name }, text, Math.round(performance.now() - start));
       return { content: [{ type: "text" as const, text }], ...(found ? {} : { isError: true }) };
     }
   );
 
   server.registerTool(
-    "igniteui_search_docs",
+    "search_docs",
     {
       description: TOOL_DESCRIPTIONS.search_docs,
       annotations: { readOnlyHint: true, openWorldHint: false },
@@ -166,7 +166,7 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
     async ({ query: queryText, framework }) => {
       const start = performance.now();
       if (!queryText.trim()) {
-        log("igniteui_search_docs", { query: queryText, framework }, "Empty query.", 0);
+        log("search_docs", { query: queryText, framework }, "Empty query.", 0);
         return { content: [{ type: "text" as const, text: "Empty query." }] };
       }
 
@@ -190,13 +190,13 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
         })
         .join(" OR ");
       const text = await docsProvider.searchDocs(framework, sanitized);
-      log("igniteui_search_docs", { query: queryText, framework }, text, Math.round(performance.now() - start));
+      log("search_docs", { query: queryText, framework }, text, Math.round(performance.now() - start));
       return { content: [{ type: "text" as const, text }] };
     }
   );
 
   server.registerTool(
-    "igniteui_get_project_setup_guide",
+    "get_project_setup_guide",
     {
       description: TOOL_DESCRIPTIONS.get_project_setup_guide,
       inputSchema: {
@@ -208,7 +208,7 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
 
       if (!framework) {
         const msg = "Which framework are you using? Please specify one of: angular, react, blazor, or webcomponents.";
-        log("igniteui_get_project_setup_guide", {}, msg, 0);
+        log("get_project_setup_guide", {}, msg, 0);
         return { content: [{ type: "text" as const, text: msg }] };
       }
 
@@ -228,7 +228,7 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
         result = SETUP_MD[framework] ?? `No setup guide available for framework: ${framework}`;
       }
 
-      log("igniteui_get_project_setup_guide", { framework }, result, Math.round(performance.now() - start));
+      log("get_project_setup_guide", { framework }, result, Math.round(performance.now() - start));
       return { content: [{ type: "text" as const, text: result }] };
     }
   );

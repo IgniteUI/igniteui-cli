@@ -42,17 +42,17 @@ The server exposes six core tools built using the `@modelcontextprotocol/sdk` an
 ## Tool Summary
 
 ```
-1. igniteui_list_components         → Browse available component docs by framework
-2. igniteui_get_doc                 → Retrieve full markdown doc for a specific component
-3. igniteui_search_docs             → Full-text search across docs for a framework
-4. igniteui_get_project_setup_guide → Return official setup guidance for a framework
-5. igniteui_search_api              → Search API entries by keyword or partial name
-6. igniteui_get_api_reference       → Retrieve full API reference for a known component
+1. list_components         → Browse available component docs by framework
+2. get_doc                 → Retrieve full markdown doc for a specific component
+3. search_docs             → Full-text search across docs for a framework
+4. get_project_setup_guide → Return official setup guidance for a framework
+5. search_api              → Search API entries by keyword or partial name
+6. get_api_reference       → Retrieve full API reference for a known component
 ```
 
 ## Tool Definitions
 
-### **igniteui_list_components**
+### **list_components**
 **Purpose**: Lists available Ignite UI component docs, optionally filtered by keyword.
 
 **Logic**:
@@ -64,9 +64,9 @@ The server exposes six core tools built using the `@modelcontextprotocol/sdk` an
 - `framework`: Enum (angular|react|blazor|webcomponents) — required
 - `filter`: String (optional keyword to narrow results)
 
-**Return**: Formatted text. Each result includes the display name, the doc name to pass to `igniteui_get_doc`, the summary when available, and a premium marker when applicable.
+**Return**: Formatted text. Each result includes the display name, the doc name to pass to `get_doc`, the summary when available, and a premium marker when applicable.
 
-### **igniteui_get_doc**
+### **get_doc**
 **Purpose**: Returns the full Markdown content of a specific Ignite UI component doc.
 
 **Logic**:
@@ -95,10 +95,10 @@ MCP envelope:     { isError: true, content: [{ type: "text", text: "..." }] }
 The `text` field follows this exact template:
 
 ```
-Doc "<name>" not found for framework "<framework>". Use igniteui_list_components to see available docs.
+Doc "<name>" not found for framework "<framework>". Use list_components to see available docs.
 ```
 
-**Example** — calling `igniteui_get_doc("angular", "grid-virtual-scrolling")` when the doc does not exist:
+**Example** — calling `get_doc("angular", "grid-virtual-scrolling")` when the doc does not exist:
 
 ```json
 {
@@ -106,12 +106,12 @@ Doc "<name>" not found for framework "<framework>". Use igniteui_list_components
   "content": [
     {
       "type": "text",
-      "text": "Doc \"grid-virtual-scrolling\" not found for framework \"angular\". Use igniteui_list_components to see available docs."
+      "text": "Doc \"grid-virtual-scrolling\" not found for framework \"angular\". Use list_components to see available docs."
     }
   ]
 }
 ```
-### **igniteui_search_docs**
+### **search_docs**
 **Purpose**: Full-text search across Ignite UI docs for a specific framework. Returns the top 20 results with excerpt snippets.
 
 **Logic**:
@@ -126,9 +126,9 @@ Doc "<name>" not found for framework "<framework>". Use igniteui_list_components
 - `query`: String — supports prefix matching (e.g. `"grid*"`) — required
 - `framework`: Enum (angular|react|blazor|webcomponents) — required
 
-**Return**: Formatted text with up to 20 ranked results. Each result includes the display name, the doc name to pass to `igniteui_get_doc`, the summary when available, and an excerpt with matches highlighted.
+**Return**: Formatted text with up to 20 ranked results. Each result includes the display name, the doc name to pass to `get_doc`, the summary when available, and an excerpt with matches highlighted.
 
-### **igniteui_get_project_setup_guide**
+### **get_project_setup_guide**
 **Purpose**: Returns the official Ignite UI project setup guidance for a framework.
 
 **Logic**:
@@ -141,7 +141,7 @@ Doc "<name>" not found for framework "<framework>". Use igniteui_list_components
 
 **Return**: Markdown setup guidance only. The response contains installation, scaffolding, and next-step instructions for the selected framework.
 
-### **igniteui_search_api**
+### **search_api**
 **Purpose**: Search Ignite UI API entries by keyword, feature, or partial component name across Angular, React, and Web Components. Returns up to 10 results ranked by match count.
 
 **Logic**:
@@ -158,15 +158,15 @@ Doc "<name>" not found for framework "<framework>". Use igniteui_list_components
 - Output is text, not structured JSON
 - Returns an empty-query message immediately if the input is blank
 
-**Return**: Up to 10 ranked text results. Use the exact `component` name and `platform` from a result to call `igniteui_get_api_reference`.
+**Return**: Up to 10 ranked text results. Use the exact `component` name and `platform` from a result to call `get_api_reference`.
 
-### **igniteui_get_api_reference**
+### **get_api_reference**
 **Purpose**: Retrieve the full API reference for one Ignite UI component or class. Supports Angular, React, and Web Components. Component name matching is case-insensitive.
 
 **Logic**:
-- Requires the exact component name (obtained from user code or an `igniteui_search_api` result)
+- Requires the exact component name (obtained from user code or an `search_api` result)
 - Accepts an optional `section` parameter to retrieve a subset of the API and reduce response size
-- Returns `isError: true` with a prompt to use `igniteui_search_api` if the component is not found
+- Returns `isError: true` with a prompt to use `search_api` if the component is not found
 - If an exact case-sensitive match is not found, performs a case-insensitive lookup within the selected platform before returning an error
 
 **Schema**:
@@ -191,14 +191,14 @@ MCP envelope:     { isError: true, content: [{ type: "text", text: "..." }] }
 The `text` field follows this exact template:
 
 ```
-API reference for "<component>" not found in <Platform Display Name>. Use igniteui_search_api to find available components.
+API reference for "<component>" not found in <Platform Display Name>. Use search_api to find available components.
 ```
 
 #### Typical Workflow
 
 ```
-igniteui_search_api(query, platform?)                → discover exact component name and platform
-igniteui_get_api_reference(component, platform)      → retrieve full API reference
+search_api(query, platform?)                → discover exact component name and platform
+get_api_reference(component, platform)      → retrieve full API reference
 ```
 
 ## Architecture
