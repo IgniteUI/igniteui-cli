@@ -1,52 +1,70 @@
+import { readFileSync } from "fs";
+import { join, dirname } from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+export const SETUP_MD: Record<string, string> = {
+  angular: readFileSync(join(__dirname, "setup_angular.md"), "utf-8"),
+  react: readFileSync(join(__dirname, "setup_react.md"), "utf-8"),
+  webcomponents: readFileSync(join(__dirname, "setup_webcomponents.md"), "utf-8"),
+};
+
 export const TOOL_DESCRIPTIONS = {
-  generate_ignite_app: `Returns setup guides for creating a new Ignite UI project for the specified framework.
+  get_project_setup_guide: `Get the official Ignite UI project setup guide for one framework: angular, react, blazor, or webcomponents.
 
-**For Angular, React, Web Components:** Returns the Ignite UI CLI documentation with step-by-step instructions for project scaffolding using \`igniteui-cli\`.
-**For Blazor:** Returns a guide for creating a Blazor app using \`dotnet new\` and adding Ignite UI Blazor dependencies via NuGet.
+Use this when the user wants to create a new Ignite UI project, needs installation or scaffolding steps, or asks how to set up Ignite UI for a specific framework. Use documentation tools such as list_components or search_api first if you need to identify which components the user plans to use.
 
-**Parameters:**
-- framework: REQUIRED — angular | react | blazor | webcomponents
+Returns documentation text only. For Angular, React, and Web Components, it returns Ignite UI CLI setup and template guidance. For Blazor, it returns dotnet new and NuGet installation guidance. The response may contain one or more markdown guide sections concatenated into a single text result.
 
-Use this tool when the user wants to create a new project or needs setup instructions.`,
-get_api_reference: `
-  <overview>
-      Retrieve the full API reference for one Ignite UI component or class. Supports angular, react, and webcomponents. Component name matching is case-insensitive.
-  </overview>
+This tool is read-only: it does not create files, run commands, detect the current project, or modify the workspace.
 
-  <when_to_use>
-      Use this when you already know the component name (e.g. from a search_api result or from the user's code). If you only have a keyword, feature, or partial name, run search_api first to discover the exact name and platform.
-  </when_to_use>
+Template rule: start with the base template unless the user explicitly needs multiple routed views. Use side-nav only when multi-view routing is actually required.
+`,
 
-  <returns>
-      Formatted markdown for the requested API entry. The full entry (section="all") includes the class/interface summary, properties with types and descriptions, methods with signatures, and events. Use section="properties", "methods", or "events" to retrieve a single section and reduce response size.
-  </returns>
+  list_components: `List all available Ignite UI component documentation entries for a given framework. Optionally filter by keyword matched against filename, component name, keywords, or summary.
 
-  <constraints>
-      Blazor is currently not supported — covers angular, react, and webcomponents only. Component name must be ≤128 characters. Returns isError if the component is not found, with a prompt to use search_api.
-  </constraints>
+Use this to discover what docs exist before calling get_doc — e.g. to browse available grid docs, filter with "grid". For feature-based or free-text queries ("how do I enable row editing"), use search_docs instead.
 
-  <workflow>
-      Typical follow-up to search_api: take the exact component name and platform from a search result, then call get_api_reference.
-  </workflow>
-  `,
-  search_api: `
-  <overview>
-      Search Ignite UI API entries by keyword, feature, or partial component name across angular, react, and webcomponents. Returns up to 10 results ranked by match count.
-  </overview>
+Returns a formatted list where each entry includes: doc name (pass this as the 'name' parameter to get_doc), display name, summary, and premium status. Without a filter, returns the full catalog for the framework.
 
-  <when_to_use>
-      Use this as the discovery step when the exact component name is unknown, when you want to narrow candidates, or when you want to confirm which platform an entry belongs to. Once you have a result, call get_api_reference with the exact name and platform.
-      Do NOT use this if you already know the exact component name — call get_api_reference directly.
-  </when_to_use>
+No pagination — the full result set is returned in one call.
+`,
 
-  <returns>
-      Up to 10 text results ranked by match count. Each result includes the exact component name, platform tag, API type (class/interface/directive/enum), match count, keyword list, and a content excerpt. Use the component name and platform from a result to call get_api_reference.
-  </returns>
+  get_doc: `Retrieve the full markdown content of one specific Ignite UI component doc by its exact name. The name is kebab-case without the .md extension (e.g. "grid-editing", "combo-overview", "accordion").
 
-  <constraints>
-      Blazor is currently not supported. Omit platform to search all three platforms simultaneously. Search matches against component names, keywords, API type, and document content. Output is text, not structured JSON. Maximum query length is 256 characters.
-  </constraints>
-  `
+Use this after discovering doc names from list_components or search_docs. Do NOT guess doc names — call one of those discovery tools first if the name is unknown.
+
+Returns YAML frontmatter (component, keywords, summary) followed by the complete markdown body with code samples, tables, and links.
+
+Returns isError if the doc name is not found, with a suggestion to use list_components.
+`,
+
+  search_docs: `Full-text search across all Ignite UI documentation for a specific framework. Supports prefix matching with trailing * (e.g. "grid*" matches grid, grids, grid-editing) and hyphenated terms (e.g. "grid-editing" matched as a phrase).
+
+Use this when the user asks "how do I..." or describes a feature need — e.g. "column pinning", "data validation", "tree*". For browsing by component name instead, use list_components.
+
+Returns up to 20 results ranked by relevance. Each result includes: doc name (pass to get_doc for full content), display name, summary, and a text excerpt with matching terms highlighted between >>> and <<<.
+
+Query must be non-empty. Special characters are sanitized automatically — only * for prefix matching needs to be passed explicitly.
+`,
+
+  get_api_reference: `Look up the full API reference for a specific Ignite UI component or class by exact name. Case-insensitive matching. Covers angular, react, and webcomponents (Blazor API not yet available).
+
+Use this when you already know the exact component name — from the user's code (e.g. IgxGridComponent, IgrGrid, IgcSelect) or from a previous search_api result. If you only have a keyword or partial name, call search_api first to discover the exact name.
+
+Returns formatted markdown with the class/interface summary, properties (with types and descriptions), methods (with signatures), and events. Use section="properties", "methods", or "events" to retrieve only that section and reduce response size. Defaults to section="all".
+
+Component name must be ≤128 characters. Returns isError with a suggestion to use search_api if not found.
+`,
+
+  search_api: `Search Ignite UI API entries by keyword, feature name, or partial component name. Returns up to 10 results ranked by relevance across angular, react, and webcomponents (Blazor API not yet available).
+
+Use this as the discovery step when the exact component name is unknown — e.g. the user asks about "grid virtualization" or "combo filtering". Also use it to confirm which framework a component belongs to. Do NOT use this if you already know the exact component name — call get_api_reference directly instead.
+
+Each result includes: exact component name, framework tag, API type (class/interface/directive/enum), match count, keyword list, and a content excerpt. Pass the component name and framework from a result to get_api_reference for full details. To reduce response size, use section="properties", "methods", or "events" instead of the default "all".
+
+Omit framework to search all frameworks at once. Maximum query length is 256 characters.
+`
 };
 
 export const SETUP_DOCS: Record<string, string[]> = {
@@ -57,6 +75,7 @@ export const SETUP_DOCS: Record<string, string[]> = {
 };
 
 export const BLAZOR_DOTNET_GUIDE = `# Creating a Blazor Application
+Before you start: Call \`list_components\` or \`search_api\` to identify which Ignite UI components you want to use, then follow the steps below. Use \`search_docs\` if you need more detailed documentation for specific components or features.
 
 ## Create a new Blazor Web App
 
@@ -77,6 +96,14 @@ cd MyBlazorApp
 \`\`\`bash
 dotnet run
 \`\`\`
+
+## What's Next
+
+Once the project is running:
+1. Call \`list_components\` or\`search_docs\` to find the component you want to add.
+2. Call \`get_doc\` with the component name to get full usage instructions.
+3. Call \`get_api_reference\` or \`search_api\` to look up properties, methods, and events.
+4. Apply theming via the **igniteui-theming MCP** before or after adding components. 
 
 After creating the app, follow the guides below to add Ignite UI for Blazor components.
 
@@ -103,8 +130,7 @@ Most tools require a \`framework\` parameter. Determine the framework from the u
 2. **Package name** in package.json / .csproj — \`igniteui-angular\` → angular, \`IgniteUI.Blazor\` → blazor
 3. **File extensions** — .razor → blazor, .tsx → react
 4. **User's explicit statement** — "I'm using Angular", "Blazor project", etc.
-5. **Use \`get_project_framework\`** to auto-detect from local project files
-6. **Ask the user** if none of the above apply
+5. **Ask the user** if none of the above apply
 
 ## Documentation Tools
 
@@ -119,8 +145,5 @@ Most tools require a \`framework\` parameter. Determine the framework from the u
 
 ## Project Setup
 
-- **\`generate_ignite_app\`** — returns setup guides for creating a new Ignite UI project (CLI guides for Angular/React/WC, dotnet + NuGet guides for Blazor)
-
-## Other Tools
-
-- **\`get_project_framework\`** — auto-detect framework from local project files`;
+- **\`get_project_setup_guide\`** — returns setup guides for creating a new Ignite UI project (CLI guides for Angular/React/WC, dotnet + NuGet guides for Blazor)
+`;

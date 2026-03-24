@@ -52,7 +52,7 @@ All three methods return serialized text (matching the current tool output forma
    - Parse `--local` from `process.argv` (or check `DOCS_MODE` env var)
    - Instantiate the appropriate provider
    - Refactor the 3 doc tool handlers to call `provider.listComponents()` / `provider.getDoc()` / `provider.searchDocs()`
-   - Keep `generate_ignite_app` and the prompt unchanged (they don't use docs)
+   - Keep `get_project_setup_guide` and the prompt unchanged (they don't use docs)
 
 5. **add-sql-js-dependency** — `npm install sql.js` and verify it bundles the WASM file correctly.
 

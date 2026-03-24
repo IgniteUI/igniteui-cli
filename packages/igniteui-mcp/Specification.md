@@ -4,9 +4,9 @@
 ## Date: March 19, 2026
 
 ## Overview
-The IgniteUI-CLI MCP (Model Context Protocol) Server provides programmatic access to IgniteUI doc repositories, enabling AI assistants, development tools, and automation systems to interact with IgniteUI projects through a standardized protocol.
+The IgniteUI-CLI MCP (Model Context Protocol) Server provides programmatic access to Ignite UI documentation and API references, enabling AI assistants, development tools, and automation systems to interact with Ignite UI projects through a standardized protocol.
 
-The IgniteUI-CLI MCP Server solves the "Context Gap" encountered by AI models when working with custom or rapidly evolving UI libraries. By leveraging a structured documentation backend (exposed via `/api/docs/...`) built from IgniteUI framework repositories, the server transforms curated docs and metadata into actionable knowledge, allowing an AI to understand not just what APIs and components exist, but how to implement them according to specific framework standards.
+The IgniteUI-CLI MCP Server solves the "Context Gap" encountered by AI models when working with custom or rapidly evolving UI libraries. By leveraging either a bundled SQLite documentation database or a structured backend exposed via `/api/docs/...`, the server transforms curated docs and metadata into actionable knowledge, allowing an AI to understand not just what APIs and components exist, but how to implement them according to specific framework standards.
 
 ## Target Users
 - AI coding assistants (GitHub Copilot, Claude, etc.)
@@ -37,17 +37,17 @@ A designer provides a Figma file. The AI interprets the design, recommends match
 A developer needs to port an application from one framework (e.g., Angular) to another (e.g., React or Blazor). The AI assists by mapping components, translating patterns, and ensuring feature parity across frameworks.
 
 # Technical Description of Tools
-The server exposes six core tools built using the @modelcontextprotocol/sdk and validated via Zod schemas.
+The server exposes six core tools built using the `@modelcontextprotocol/sdk` and validated via Zod schemas.
 
 ## Tool Summary
 
 ```
-1. list_components      → Browse available component docs by framework
-2. get_doc              → Retrieve full markdown doc for a specific component
-3. search_docs          → Full-text search across docs for a framework
-4. generate_ignite_app  → Scaffold a new Ignite UI project via CLI
-5. search_api           → Search API entries by keyword or partial name
-6. get_api_reference    → Retrieve full API reference for a known component
+1. list_components         → Browse available component docs by framework
+2. get_doc                 → Retrieve full markdown doc for a specific component
+3. search_docs             → Full-text search across docs for a framework
+4. get_project_setup_guide → Return official setup guidance for a framework
+5. search_api              → Search API entries by keyword or partial name
+6. get_api_reference       → Retrieve full API reference for a known component
 ```
 
 ## Tool Definitions
@@ -56,23 +56,26 @@ The server exposes six core tools built using the @modelcontextprotocol/sdk and 
 **Purpose**: Lists available Ignite UI component docs, optionally filtered by keyword.
 
 **Logic**:
-- Calls `GET /api/docs?framework=<framework>[&filter=<keyword>]` on the docs backend
-- Filter matches against filename, component name, toc_name, keywords, and summary fields
+- In remote mode, calls `GET /api/docs?framework=<framework>[&filter=<keyword>]` on the docs backend
+- In local mode, queries the bundled docs database
+- Filter matches against filename, component name, `toc_name`, keywords, and summary fields
 
 **Schema**:
 - `framework`: Enum (angular|react|blazor|webcomponents) — required
 - `filter`: String (optional keyword to narrow results)
 
-**Return**: JSON list of matching component doc entries.
+**Return**: Formatted text. Each result includes the display name, the doc name to pass to `get_doc`, the summary when available, and a premium marker when applicable.
 
 ### **get_doc**
 **Purpose**: Returns the full Markdown content of a specific Ignite UI component doc.
 
 **Logic**:
-- Calls `GET /api/docs/<framework>/<name>` on the docs backend
+- In remote mode, calls `GET /api/docs/<framework>/<name>` on the docs backend
+- In local mode, retrieves the doc from the bundled docs database
 - On HTTP 200: returns the raw Markdown body as a text content item
 - On HTTP 404: does **not** throw or propagate an exception — returns a structured MCP tool-level error response (see Error Response Contract below)
 - On any other HTTP error status: throws, which the MCP transport surfaces as an unhandled tool error
+- In local mode, successful responses reconstruct YAML frontmatter including `component`, `toc_name`, `keywords`, `summary`, and `premium` when present
 
 **Schema**:
 - `framework`: Enum (angular|react|blazor|webcomponents) — required
@@ -112,32 +115,31 @@ Doc "<name>" not found for framework "<framework>". Use list_components to see a
 **Purpose**: Full-text search across Ignite UI docs for a specific framework. Returns the top 20 results with excerpt snippets.
 
 **Logic**:
-- Sanitizes the query by removing special FTS characters (``" - ( ) { } [ ] : ^ ~ @ ` ``) and wraps each term in quotes joined with `OR`
-- Calls `GET /api/docs/search?framework=<framework>&query=<sanitized>` on the docs backend
+- Sanitizes the query by removing special FTS characters (`"`, `(`, `)`, `{`, `}`, `[`, `]`, `:`, `@`)
+- Preserves hyphenated terms and trailing `*` for prefix search
+- Wraps non-prefix terms in quotes joined with `OR`
+- In remote mode, calls `GET /api/docs/search?framework=<framework>&query=<sanitized>` on the docs backend
+- In local mode, executes an FTS query against the bundled docs database
 - Returns an empty-query message immediately if the input is blank
 
 **Schema**:
 - `query`: String — supports prefix matching (e.g. `"grid*"`) — required
 - `framework`: Enum (angular|react|blazor|webcomponents) — required
 
-**Return**: Top 20 search results with excerpt snippets.
+**Return**: Formatted text with up to 20 ranked results. Each result includes the display name, the doc name to pass to `get_doc`, the summary when available, and an excerpt with matches highlighted.
 
-### **generate_ignite_app**
-**Purpose**: Creates a new Ignite UI project scaffold using the official Ignite UI CLI.
+### **get_project_setup_guide**
+**Purpose**: Returns the official Ignite UI project setup guidance for a framework.
 
 **Logic**:
-- Runs `npx -y igniteui-cli new <name> --framework=<framework> --type=<type> --template=<template> --skip-git=true --skip-install=true`
-- For Angular, also passes `--collection=@igniteui/angular-schematics`
-- Resolves `outputPath` to an absolute path (defaults to `process.cwd()`)
+- For Angular, React, and Web Components, returns the bundled CLI setup and template guidance
+- For Blazor, returns a composed response that starts with a `dotnet new` / run guide and appends the relevant documentation sections when available
+- This tool is read-only: it does not create files, run commands, or modify the workspace
 
 **Schema**:
-- `name`: String — project folder name (alphanumeric, `-`, `_`) — required
-- `framework`: Enum (angular|react|webcomponents) — required
-- `type`: String — CLI template type (e.g., `"igx-ts"`, `"igr-ts"`, `"igc-ts"`); defaults per framework if omitted — optional
-- `template`: Enum (base|side-nav|empty) — UI layout template; defaults to `"base"` — optional
-- `outputPath`: String — absolute or relative path where the project is created; defaults to `process.cwd()` — optional
+- `framework`: Enum (angular|react|blazor|webcomponents) 
 
-**Return**: Success message with output path, applied template configuration, and raw CLI output. On failure, returns `isError: true` with the CLI stderr/message.
+**Return**: Markdown setup guidance only. The response contains installation, scaffolding, and next-step instructions for the selected framework.
 
 ### **search_api**
 **Purpose**: Search Ignite UI API entries by keyword, feature, or partial component name across Angular, React, and Web Components. Returns up to 10 results ranked by match count.
@@ -156,18 +158,19 @@ Doc "<name>" not found for framework "<framework>". Use list_components to see a
 - Output is text, not structured JSON
 - Returns an empty-query message immediately if the input is blank
 
-**Return**: Up to 10 ranked text results. Use the exact `name` and `platform` from a result to call `get_api_reference`.
+**Return**: Up to 10 ranked text results. Use the exact `component` name and `platform` from a result to call `get_api_reference`.
 
 ### **get_api_reference**
 **Purpose**: Retrieve the full API reference for one Ignite UI component or class. Supports Angular, React, and Web Components. Component name matching is case-insensitive.
 
 **Logic**:
-- Requires the exact component name (obtained from user code or a `search_api` result)
+- Requires the exact component name (obtained from user code or an `search_api` result)
 - Accepts an optional `section` parameter to retrieve a subset of the API and reduce response size
 - Returns `isError: true` with a prompt to use `search_api` if the component is not found
+- If an exact case-sensitive match is not found, performs a case-insensitive lookup within the selected platform before returning an error
 
 **Schema**:
-- `name`: String — exact component or class name; max 128 characters — required
+- `component`: String — exact component or class name; max 128 characters — required
 - `platform`: Enum (angular|react|webcomponents) — required
 - `section`: Enum (all|properties|methods|events) — optional; defaults to `all`
 
@@ -188,14 +191,14 @@ MCP envelope:     { isError: true, content: [{ type: "text", text: "..." }] }
 The `text` field follows this exact template:
 
 ```
-Component "<name>" not found for platform "<platform>". Use search_api to discover the correct name.
+API reference for "<component>" not found in <Platform Display Name>. Use search_api to find available components.
 ```
 
 #### Typical Workflow
 
 ```
-search_api(query, platform?)     → discover exact name and platform
-get_api_reference(name, platform) → retrieve full API reference
+search_api(query, platform?)                → discover exact component name and platform
+get_api_reference(component, platform)      → retrieve full API reference
 ```
 
 ## Architecture
@@ -203,19 +206,24 @@ get_api_reference(name, platform) → retrieve full API reference
 ### Communication Layer
 The server communicates via Standard Input/Output (stdio), allowing it to run as a local process.
 
+### Operating Modes
+- **Local mode (default)**: uses a bundled SQLite database with full-text search for docs and locally loaded API models
+- **Remote mode**: proxies documentation requests to a backend API when started with `--remote <url>`
+
 ## Deployment Guide
 To deploy this server:
 
-Build: Compile the TypeScript source into the dist/ directory.
+Build: Compile the TypeScript source into the `dist/` directory.
 
 **VS Code** → `.vscode/mcp.json`
 
 ```json
 {
   "servers": {
-    "igniteui-cli": {
+    "igniteui": {
+      "type": "stdio",
       "command": "npx",
-      "args": ["-y", "igniteui-cli-mcp"]
+      "args": ["-y", "@igniteui/mcp-server"]
     }
   }
 }
@@ -226,9 +234,9 @@ Build: Compile the TypeScript source into the dist/ directory.
 ```json
 {
   "mcpServers": {
-    "igniteui-cli": {
+    "igniteui": {
       "command": "npx",
-      "args": ["-y", "igniteui-cli-mcp"]
+      "args": ["-y", "@igniteui/mcp-server"]
     }
   }
 }
@@ -240,9 +248,9 @@ or `%APPDATA%\Claude\claude_desktop_config.json` (Windows)
 ```json
 {
   "mcpServers": {
-    "igniteui-cli": {
+    "igniteui": {
       "command": "npx",
-      "args": ["-y", "igniteui-cli-mcp"]
+      "args": ["-y", "@igniteui/mcp-server"]
     }
   }
 }
