@@ -76,7 +76,6 @@ describe("Unit - Generate command", () => {
 		const addHandlerExpectedParameter = {
 			property: "customTemplates",
 			value: "path:" + outDir,
-			// tslint:disable-next-line:object-literal-sort-keys
 			global: true,
 			skipAnalytics: true,
 			_: ["config"],

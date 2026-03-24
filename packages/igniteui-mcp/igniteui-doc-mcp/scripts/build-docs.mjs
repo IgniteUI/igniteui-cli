@@ -1,5 +1,5 @@
 import { execSync } from 'child_process';
-import { existsSync, mkdirSync, readdirSync, statSync, readFileSync, writeFileSync } from 'fs';
+import { existsSync, mkdirSync, readdirSync, rmSync, statSync, readFileSync, writeFileSync } from 'fs';
 import { join, dirname, basename } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -83,7 +83,7 @@ async function buildDocs() {
         console.error('❌ Failed to build Web Components submodule');
         console.error('   Try building manually:');
         console.error(`   cd ${submodulePath}`);
-        console.error('   npm install && npm run build');
+        console.error('   npm install && npm run build:publish');
         process.exit(1);
       }
     } else {
@@ -143,8 +143,6 @@ async function buildDocs() {
     console.warn('   You can manually delete:', nodeModulesPath);
   }
 }
-
-  console.log('✅ Complete!');
 
   console.log('✅ Complete!');
 }

@@ -419,6 +419,73 @@ npm run clear:webcomponents  # Delete only WebComponents build artifacts
 
 Per-platform clear removes the platform subdirectory from `docs_processing/`, `docs_prepeared/`, and `docs_final/`. Use these for a full rebuild of a single platform.
 
+## API Reference Documentation
+
+The MCP server provides API reference lookup via the `get_api_reference` and `search_api` tools. API docs are generated from framework submodules using TypeDoc and stored in `docs/<framework>/`.
+
+Each framework uses one of two source strategies:
+
+| Framework | Strategy | Source | Output |
+|-----------|----------|--------|--------|
+| Angular | `markdown-index` | `angular/igniteui-angular` (TypeDoc → markdown) | `docs/angular/api/*.md` + `index.json` |
+| React | `typedoc-json` | Pre-built TypeDoc JSON model | `docs/react/igniteui-react.json` |
+| Web Components | `markdown-index` | `webcomponents/igniteui-webcomponents` (TypeDoc → markdown) | `docs/webcomponents/api/*.md` + `index.json` |
+| Blazor | — | Not yet supported | — |
+
+### Building API Docs
+
+```bash
+npm run build:docs:angular         # Angular: TypeDoc → markdown + search index
+npm run build:docs:webcomponents   # Web Components: build lib → TypeDoc → markdown + search index
+npm run build:docs:all             # Build both Angular and Web Components
+```
+
+Each `build:docs:<platform>` script:
+1. Initializes the required git submodule (`git submodule update --init`)
+2. Compiles the MCP server TypeScript (`npm run build`)
+3. Runs `scripts/build-docs.mjs <platform>` which:
+   - Checks the submodule is built (for Web Components, runs `npm install && npm run build:publish` if needed)
+   - Runs TypeDoc with the config from `typedoc/<platform>.typedoc.json`
+   - Generates markdown files in `docs/<platform>/api/`
+   - Builds a search index (`index.json`) with component names, types, keywords, and summaries
+
+**React** uses a pre-built TypeDoc JSON model (`docs/react/igniteui-react.json`) that is checked into git. It does not need a `build:docs` step — the JSON is parsed at runtime by `ReactJsonParser`.
+
+### Rebuilding After Upstream Changes
+
+When the upstream Angular or Web Components library releases a new version:
+
+1. Update the submodule to the new version:
+   ```bash
+   cd angular/igniteui-angular    # or webcomponents/igniteui-webcomponents
+   git fetch && git checkout <new-tag>
+   cd ../..
+   ```
+
+2. Rebuild the API docs:
+   ```bash
+   npm run build:docs:angular     # or build:docs:webcomponents
+   ```
+
+3. Commit the updated `docs/` output and submodule reference.
+
+### Web Components First-Time Build
+
+The Web Components submodule requires a one-time library build before TypeDoc can generate docs. The `build-docs.mjs` script handles this automatically:
+
+1. If `dist/index.d.ts` is missing, it runs `npm install && npm run build:publish`
+2. After TypeDoc completes, it cleans up `node_modules` if it installed them
+3. Subsequent runs skip the build step if `dist/index.d.ts` exists
+
+If the automatic build fails, build manually:
+
+```bash
+cd webcomponents/igniteui-webcomponents
+npm install && npm run build:publish
+cd ../..
+npm run build:docs:webcomponents
+```
+
 ## MCP Server
 
 Build the database, compile TypeScript, and start:
@@ -444,6 +511,13 @@ npm run start      # start MCP server
 
 The server uses local mode by default, loading `dist/igniteui-docs.db` (SQLite with FTS4) into memory via `sql.js` to serve ~1,200 docs across all 4 frameworks. Use `--remote <url>` to proxy to a backend API instead. Use `--debug` to enable request logging.
 
+### Testing with MCP Inspector
+
+```bash
+npm run inspector                                    # standalone MCP server
+npx @modelcontextprotocol/inspector ig mcp           # via CLI (after build:mcp-bundle + build)
+```
+
 ### Tools
 
 | Tool | Parameters | Description |
@@ -452,6 +526,8 @@ The server uses local mode by default, loading `dist/igniteui-docs.db` (SQLite w
 | `get_doc` | `framework` (required), `name` (required) | Return full markdown content of a specific doc. `name` is without `.md` extension |
 | `search_docs` | `query` (required), `framework` (required) | FTS4 full-text search with Porter stemming. Returns top 20 results with snippet excerpts |
 | `get_project_setup_guide` | `framework` (required) | Return setup guides for creating a new Ignite UI project. For Angular/React/WC: CLI docs. For Blazor: dotnet + NuGet guides |
+| `get_api_reference` | `framework` (required), `name` (required) | Retrieve the full API reference for a component or class. Returns formatted markdown with properties, methods, and events |
+| `search_api` | `framework` (required), `query` (required) | Search API entries by keyword, feature, or partial component name. Returns up to 10 results ranked by match count |
 
 #### get_project_setup_guide
 

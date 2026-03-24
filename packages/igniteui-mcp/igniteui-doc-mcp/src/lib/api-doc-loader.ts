@@ -42,16 +42,26 @@ export class ApiDocLoader {
     for (const config of this.platformConfigs) {
       this.loadPlatform(config);
     }
-    
-    console.error(`Loaded ${this.docs.size} API entries across ${this.platformConfigs.length} platforms`);
+
+    if (this.docs.size > 0) {
+      console.error(`Loaded ${this.docs.size} API entries across ${this.platformConfigs.length} platforms`);
+    }
   }
 
   private loadPlatform(config: PlatformConfig): void {
-    switch (config.apiSource.kind) {
-      case 'typedoc-json':
-        return this.parseTypedocJson(config);
-      case 'markdown-index':
-        return this.parseMarkdownIndex(config);
+    try {
+      switch (config.apiSource.kind) {
+        case 'typedoc-json':
+          return this.parseTypedocJson(config);
+        case 'markdown-index':
+          return this.parseMarkdownIndex(config);
+      }
+    } catch (err) {
+      if (err instanceof ApiDocsInitializationError) {
+        console.error(`   ⚠ ${config.displayName}: API reference not available (get_api_reference and search_api tools will skip this framework)`);
+      } else {
+        throw err;
+      }
     }
   }
 

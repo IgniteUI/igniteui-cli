@@ -12,7 +12,6 @@
 # ignore compiled files in packages
 /packages/**/*.js.map
 /packages/**/*.js
-!/packages/igniteui-mcp/igniteui-doc-mcp/scripts/build.js
 /scripts/**/*.js.map
 /scripts/**/*.js
 /spec/**/*.js.map
@@ -29,6 +28,9 @@ packages/core/config/Config.schema.json
 !packages/cli/templates/jquery/**/files/**/*
 !packages/cli/templates/angular/**/files/**/*
 !packages/cli/templates/react/**/files/**/*
+
+# bundled MCP server (build artifact)
+/packages/cli/mcp/
 
 # Misc
 npm-debug.log*

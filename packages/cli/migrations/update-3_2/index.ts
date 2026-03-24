@@ -1,4 +1,3 @@
-// tslint:disable:no-implicit-dependencies
 import { workspaces } from "@angular-devkit/core";
 import { Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
 import { createWorkspaceHost } from "@igniteui/cli-core";

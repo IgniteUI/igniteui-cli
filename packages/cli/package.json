@@ -21,16 +21,6 @@
     "url": "https://github.com/IgniteUI/igniteui-cli/issues"
   },
   "main": "lib/cli.js",
-  "scripts": {
-    "build": "node ./node_modules/typescript/lib/tsc.js && npm run config-schema",
-    "build-pack": "node ./node_modules/typescript/lib/tsc.js -p tsconfig-pack.json && npm run config-schema",
-    "pretest": "npm run lint && npm run build",
-    "test": "nyc npm run jasmine",
-    "jasmine": "node spec/jasmine-runner.js",
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "lint": "tslint --project tsconfig.json",
-    "config-schema": "typescript-json-schema packages/core/types/Config.ts Config -o packages/core/config/Config.schema.json"
-  },
   "files": [
     "ignite-ui-cli.txt",
     "bin/*",
@@ -49,7 +39,13 @@
     "migrations/**/*.json",
     "schematics/**/*.d.ts",
     "schematics/**/*.js",
-    "schematics/**/*.json"
+    "schematics/**/*.json",
+    "mcp/dist/**/*.js",
+    "mcp/dist/**/*.d.ts",
+    "mcp/dist/igniteui-docs.db",
+    "mcp/dist/package.json",
+    "mcp/docs/**/*.json",
+    "mcp/docs/**/*.md"
   ],
   "nyc": {
     "extension": [
@@ -79,14 +75,18 @@
     "@igniteui/angular-templates": "~21.1.1492",
     "@igniteui/cli-core": "~14.9.2",
     "@inquirer/prompts": "^7.9.0",
+    "@modelcontextprotocol/sdk": "^1.12.1",
     "@types/yargs": "^17.0.33",
     "chalk": "^5.3.0",
+    "dotenv": "^17.2.4",
     "glob": "^11.0.0",
     "open": "^10.1.0",
     "resolve": "^1.22.8",
+    "sql.js": "^1.14.1",
     "through2": "^4.0.2",
     "typescript": "~5.5.4",
-    "yargs": "^17.7.2"
+    "yargs": "^17.7.2",
+    "zod": "^3.25.1"
   },
   "devDependencies": {
     "@angular-devkit/core": "^21.0.0",
@@ -102,7 +102,6 @@
     "rxjs": "~7.8.1",
     "source-map-support": "^0.5.21",
     "ts-node": "~10.9.2",
-    "tslint": "~6.1.0",
     "typescript-json-schema": "^0.65.1"
   },
   "ng-update": {
