@@ -185,13 +185,30 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
           // Terms ending with * are prefix queries — don't quote them
           // because FTS4 treats "grid*" as a literal match for the
           // asterisk character, while unquoted grid* does prefix expansion.
-          if (term.endsWith("*")) return term;
+          // Drop terms that are only asterisks (e.g. *, **) — they have
+          // no actual prefix and would cause an FTS4 syntax error.
+          if (term.endsWith("*")) {
+            return /[^*]/.test(term) ? term : null;
+          }
           return `"${term}"`;
         })
+        .filter(Boolean)
         .join(" OR ");
-      const text = await docsProvider.searchDocs(framework, sanitized);
-      log("search_docs", { query: queryText, framework }, text, Math.round(performance.now() - start));
-      return { content: [{ type: "text" as const, text }] };
+
+      if (!sanitized) {
+        log("search_docs", { query: queryText, framework }, "Empty query after sanitization.", 0);
+        return { content: [{ type: "text" as const, text: "No valid search terms found." }] };
+      }
+
+      try {
+        const text = await docsProvider.searchDocs(framework, sanitized);
+        log("search_docs", { query: queryText, framework }, text, Math.round(performance.now() - start));
+        return { content: [{ type: "text" as const, text }] };
+      } catch (err) {
+        const msg = `Search failed: ${err instanceof Error ? err.message : String(err)}`;
+        log("search_docs", { query: queryText, framework }, msg, Math.round(performance.now() - start));
+        return { content: [{ type: "text" as const, text: msg }], isError: true };
+      }
     }
   );
 
