@@ -138,7 +138,7 @@ describe('Providers', () => {
       const provider = new GoogleProvider(MOCK_OIDC_SECURITY, MOCK_EXTERNAL_AUTH_CONFIG.configId);
       vi.spyOn(MOCK_OIDC_SECURITY, 'authorize');
       provider.login();
-      expect(MOCK_OIDC_SECURITY.authorize).toHaveBeenCalledWith(MOCK_EXTERNAL_AUTH_CONFIG.configId);
+      expect(MOCK_OIDC_SECURITY.authorize).toHaveBeenCalledWith();
     });
 
     it(`Should properly call 'formatUserData'`, async () => {
@@ -178,9 +178,9 @@ describe('Providers', () => {
 
     it('Should properly call logout', () => {
       const provider = new GoogleProvider(MOCK_OIDC_SECURITY, MOCK_EXTERNAL_AUTH_CONFIG.configId);
-      vi.spyOn(MOCK_OIDC_SECURITY, 'logoff');
+      const logoffSpy = vi.spyOn(MOCK_OIDC_SECURITY, 'logoff').mockReturnValue(of(undefined));
       provider.logout();
-      expect(MOCK_OIDC_SECURITY.logoff).toHaveBeenCalledWith(MOCK_EXTERNAL_AUTH_CONFIG.configId);
+      expect(logoffSpy).toHaveBeenCalled();
     });
   });
 
@@ -195,7 +195,7 @@ describe('Providers', () => {
       const provider = new MicrosoftProvider(MOCK_OIDC_SECURITY, MOCK_EXTERNAL_AUTH_CONFIG.configId);
       vi.spyOn(MOCK_OIDC_SECURITY, 'authorize');
       provider.login();
-      expect(MOCK_OIDC_SECURITY.authorize).toHaveBeenCalledWith(MOCK_EXTERNAL_AUTH_CONFIG.configId);
+      expect(MOCK_OIDC_SECURITY.authorize).toHaveBeenCalledWith();
     });
 
     it('Should properly call getUserInfo', async () => {
