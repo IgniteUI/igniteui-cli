@@ -79,3 +79,25 @@ Once the project is running:
 2. Call `get_doc` with the component name to get full usage instructions.
 3. Call `get_api_reference` or `search_api` to look up properties, methods, and events.
 4. Apply theming via the **igniteui-theming MCP** before or after adding components.
+
+**Use the next paragraph only if the user explicitly asks to upgrade to licensed packages or switch from trial to licensed.**
+
+## Upgrade to Licensed Packages
+
+If the project was created with `ng add igniteui-angular`, `@igniteui/angular-schematics`, or `igniteui-cli`, run the upgrade command to switch from trial to licensed packages. Update the project first to avoid skipping migrations (see the Update Guide).
+
+**Angular Schematics:**
+
+```bash
+ng g @igniteui/angular-schematics:upgrade-packages
+```
+
+**Ignite UI CLI:**
+
+```bash
+ig upgrade-packages
+```
+
+The command updates package dependencies and source references. You will be prompted to log in to the Infragistics npm registry if not already configured.
+
+---
