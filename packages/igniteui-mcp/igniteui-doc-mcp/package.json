@@ -5,7 +5,8 @@
   "type": "module",
   "main": "dist/index.js",
   "exports": {
-    ".": "./dist/index.js"
+    ".": "./dist/index.js",
+    "./package.json": "./package.json"
   },
   "bin": {
     "igniteui-mcp": "./dist/index.js"
@@ -14,6 +15,13 @@
     "dist/**/*.js",
     "dist/**/*.d.ts",
     "dist/igniteui-docs.db",
+    "dist/tools/*.md",
+    "docs/angular/api/**/*.md",
+    "docs/angular/api/**/*.json",
+    "docs/react/**/*.md",
+    "docs/react/**/*.json",
+    "docs/webcomponents/api/**/*.md",
+    "docs/webcomponents/api/**/*.json",
     "README.md"
   ],
   "scripts": {

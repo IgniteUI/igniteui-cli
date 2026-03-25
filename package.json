@@ -21,21 +21,21 @@
 		"release": "lerna version --conventional-commits --force-publish=* --yes --no-git-tag-version --no-push",
 		"deploy": "lerna exec 'npm publish --tag'",
 		"version": "node ./scripts/versionScript.js",
-		"build": "node ./node_modules/typescript/lib/tsc.js && npm run config-schema",
-		"build-pack": "node ./node_modules/typescript/lib/tsc.js -p tsconfig-pack.json && npm run config-schema",
+		"build": "node ./node_modules/typescript/lib/tsc.js && npm run config-schema && npm run build:mcp",
+		"build:mcp": "cd packages/igniteui-mcp/igniteui-doc-mcp && npx tsc",
+		"build-pack": "node ./node_modules/typescript/lib/tsc.js -p tsconfig-pack.json && npm run config-schema && npm run build:mcp",
 		"pretest": "npm run lint && npm run build",
 		"test": "nyc npm run jasmine",
 		"jasmine": "node spec/jasmine-runner.js",
 		"coverage": "nyc report --report-dir",
 		"lint": "eslint -c eslint.config.mjs ./**/*.ts",
-		"config-schema": "typescript-json-schema packages/core/types/Config.ts Config -o packages/core/config/Config.schema.json",
-		"build:mcp-bundle": "node ./node_modules/typescript/lib/tsc.js --project tsconfig-bundle-mcp.json && node scripts/bundle-mcp.js"
+		"config-schema": "typescript-json-schema packages/core/types/Config.ts Config -o packages/core/config/Config.schema.json"
 	},
 	"nyc": {
 		"extension": [
 			".ts",
 			".tsx"
-		],
+],
 		"include": [
 			"packages/"
 		],
@@ -88,6 +88,7 @@
 		"typescript-json-schema": "^0.65.1"
 	},
 	"workspaces": [
-		"packages/*"
+		"packages/*",
+		"packages/igniteui-mcp/igniteui-doc-mcp"
 	]
 }

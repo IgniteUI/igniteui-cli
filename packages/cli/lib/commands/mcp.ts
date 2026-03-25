@@ -23,13 +23,23 @@ const command: CommandType = {
 			.usage("");
 	},
 	async handler(argv: ArgumentsCamelCase<PositionalArgs>) {
-		const mcpEntry = path.resolve(__dirname, "..", "..", "mcp", "dist", "index.js");
+		let mcpEntry: string;
+		try {
+			const mcpPkgJson = require.resolve("@igniteui/mcp-server/package.json");
+			mcpEntry = path.resolve(path.dirname(mcpPkgJson), "dist", "index.js");
+		} catch {
+			process.stderr.write(
+				"MCP server package not found. Install it first:\n" +
+				"  yarn install\n"
+			);
+			process.exitCode = 1;
+			return;
+		}
 
 		if (!fs.existsSync(mcpEntry)) {
 			process.stderr.write(
-				"MCP server bundle not found. Build it first:\n" +
-				"  cd packages/igniteui-mcp/igniteui-doc-mcp && npm install && npm run build && cd ../../..\n" +
-				"  npm run build:mcp-bundle\n"
+				"MCP server not built. Build it first:\n" +
+				"  npm run build:mcp\n"
 			);
 			process.exitCode = 1;
 			return;
