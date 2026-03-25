@@ -11,6 +11,9 @@
   "bin": {
     "igniteui-mcp": "./dist/index.js"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "files": [
     "dist/**/*.js",
     "dist/**/*.d.ts",
