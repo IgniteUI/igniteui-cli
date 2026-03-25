@@ -1,7 +1,10 @@
-import { Framework, Util } from "@igniteui/cli-core";
+import { App, Framework, Util } from "@igniteui/cli-core";
 
 const templatesLocation = "../../packages/cli/templates/react";
 describe("React templates", () => {
+	beforeAll(() => {
+		App.initialize();
+	});
 
 	it("Templates should have IDs", async function() {
 		const reactFramework = require(templatesLocation);
@@ -22,7 +25,9 @@ describe("React templates", () => {
 				// pass some __path__ so those won't match
 				expect(
 					(Util as any).validateTemplate(element["rootPath"] + "/files", target["rootPath"] + "/files", {path: "1"}, {})
-				).toBeTruthy(`Template ${element.id} can overwrite ${target.id}`);
+				)
+					.withContext(`Template ${element.id} can overwrite ${target.id}`)
+					.toBeTruthy();
 			}
 		}
 	});
