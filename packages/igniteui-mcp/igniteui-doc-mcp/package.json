@@ -14,6 +14,7 @@
   "files": [
     "dist/**/*.js",
     "dist/**/*.d.ts",
+    "dist/tools/*.md",
     "dist/igniteui-docs.db",
     "dist/tools/*.md",
     "docs/angular/api/**/*.md",

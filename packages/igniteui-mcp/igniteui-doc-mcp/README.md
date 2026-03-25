@@ -16,9 +16,37 @@ Or use directly with `npx`:
 npx @igniteui/mcp-server
 ```
 
+## Running From Source
+
+In order to run the MCP from this repository, git submodules must be initialized first. The repo already includes the submodule entries, but a fresh clone still needs to fetch them locally.
+
+Required submodules for local API markdown generation include:
+- `angular/igniteui-angular`
+- `webcomponents/igniteui-webcomponents`
+
+Recommended first-time setup:
+
+```bash
+cd packages/igniteui-mcp/igniteui-doc-mcp
+git submodule update --init --recursive
+npm install
+npm run build:docs:all
+npm run build
+```
+
+`npm run build:docs:all` generates the local API markdown artifacts used by the MCP API tools for Angular and Web Components. Run it before starting the server.
+
+If you need to refresh submodules to newer upstream commits later, use:
+
+```bash
+git submodule update --remote --merge
+```
+
 ## MCP Client Configuration
 
 ### VS Code
+
+If IgniteUi CLI is globbaly installed you can configure the MCP like this: 
 
 Add to `.vscode/mcp.json`:
 
@@ -27,14 +55,29 @@ Add to `.vscode/mcp.json`:
   "servers": {
     "igniteui": {
       "type": "stdio",
-      "command": "npx",
-      "args": ["-y", "@igniteui/mcp-server"]
+      "command": "ig",
+      "args": ["mcp"]
     }
   }
 }
 ```
 
+Or if you want to use it locally:
+
+```json
+{
+  "servers": {
+    "igniteui": {
+      "command": "node",
+      "args": ["absolute_path_to-igniteui-cli/mcp/dist/index.js"]
+    }
+  }
+}
+```
+
+
 ### Claude Desktop
+If IgniteUi ClI is globbaly installed you can configure the MCP like this: 
 
 Add to `claude_desktop_config.json`:
 
@@ -42,14 +85,28 @@ Add to `claude_desktop_config.json`:
 {
   "mcpServers": {
     "igniteui": {
-      "command": "npx",
-      "args": ["-y", "@igniteui/mcp-server"]
+      "type": "stdio",
+      "command": "ig",
+      "args": ["mcp"]
+    }
+  }
+}
+```
+Or if you want to use it locally:
+
+```json
+{
+  "mcpServers": {
+    "igniteui": {
+      "command": "node",
+      "args": ["absolute_path_to-igniteui-cli/mcp/dist/index.js"]
     }
   }
 }
 ```
 
 ### Cursor
+If IgniteUi ClI is globbaly installed you can configure the MCP like this:
 
 Add to Cursor MCP settings:
 
@@ -57,8 +114,21 @@ Add to Cursor MCP settings:
 {
   "mcpServers": {
     "igniteui": {
-      "command": "npx",
-      "args": ["-y", "@igniteui/mcp-server"]
+      "type": "stdio",
+      "command": "ig",
+      "args": ["mcp"]
+    }
+  }
+}
+```
+Or if you want to use it locally:
+
+```json
+{
+  "mcpServers": {
+    "igniteui": {
+      "command": "node",
+      "args": ["absolute_path_to-igniteui-cli/mcp/dist/index.js"]
     }
   }
 }
@@ -73,7 +143,9 @@ All tools require a `framework` parameter: `angular`, `react`, `blazor`, or `web
 | `list_components` | List available Ignite UI component docs. Filter by framework and optional keyword match against filename, component name, keywords, or summary. |
 | `get_doc` | Return the full markdown content of a specific component doc by name (e.g., `grid-editing`, `accordion`). |
 | `search_docs` | Full-text search across Ignite UI docs for a specific framework. Returns top 20 results with excerpt snippets. Supports prefix matching (e.g., `grid*`). |
-| `generate_ignite_app` | Returns setup guides for creating a new Ignite UI project. For Angular/React/Web Components: CLI scaffolding instructions. For Blazor: `dotnet new` + NuGet setup guide. |
+| `search_api` | Search Ignite UI API entries by keyword, feature name, or partial component name. |
+| `get_api_reference` | Return the full API reference for a specific Ignite UI component or class by exact name. |
+| `get_project_setup_guide` | Returns setup guides for creating a new Ignite UI project. For Angular/React/Web Components: CLI scaffolding instructions. For Blazor: `dotnet new` + NuGet setup guide. |
 
 ## Available Prompts
 
@@ -119,6 +191,8 @@ igniteui-mcp --debug
 ### Local (default)
 
 Fully self-contained — no network access required. Uses a bundled SQLite database with FTS4 full-text search powered by [sql.js](https://github.com/sql-js/sql.js/) (WebAssembly).
+
+When running from a source checkout, make sure you have already run `npm run build:docs:all` before starting the MCP so the local API markdowns are present.
 
 ### Remote
 
