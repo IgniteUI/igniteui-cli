@@ -12,6 +12,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+        with:
+          submodules: false
       - uses: actions/setup-node@v2
         with:
           node-version: 20
@@ -27,6 +29,11 @@ jobs:
         run: |
           npm run build-pack
           node scripts/build-task.js
+
+      - name: Build MCP API docs
+        run: |
+          cd packages/igniteui-mcp/igniteui-doc-mcp
+          npm run build:docs:all
 
       - name: Define npm tag
         run: |
