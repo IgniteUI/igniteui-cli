@@ -221,10 +221,9 @@ Build: Compile the TypeScript source into the `dist/` directory.
 {
   "servers": {
     "igniteui": {
-      "type": "stdio",
       "command": "npx",
-      "args": ["-y", "@igniteui/mcp-server"]
-    }
+      "args": ["-y", "igniteui-cli@next", "mcp"]
+    },
   }
 }
 ```
@@ -236,8 +235,8 @@ Build: Compile the TypeScript source into the `dist/` directory.
   "mcpServers": {
     "igniteui": {
       "command": "npx",
-      "args": ["-y", "@igniteui/mcp-server"]
-    }
+      "args": ["-y", "igniteui-cli@next", "mcp"]
+    },
   }
 }
 ```
@@ -250,8 +249,8 @@ or `%APPDATA%\Claude\claude_desktop_config.json` (Windows)
   "mcpServers": {
     "igniteui": {
       "command": "npx",
-      "args": ["-y", "@igniteui/mcp-server"]
-    }
+      "args": ["-y", "igniteui-cli@next", "mcp"]
+    },
   }
 }
 ```
