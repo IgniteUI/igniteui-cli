@@ -1,0 +1,5 @@
+# Variable: IGX\_DATE\_PICKER\_DIRECTIVES
+
+> `const` **IGX\_DATE\_PICKER\_DIRECTIVES**: readonly \[*typeof* [`IgxDatePickerComponent`](../classes/IgxDatePickerComponent.md), *typeof* [`IgxPickerToggleComponent`](../classes/IgxPickerToggleComponent.md), *typeof* [`IgxPickerClearComponent`](../classes/IgxPickerClearComponent.md), *typeof* [`IgxPickerActionsDirective`](../classes/IgxPickerActionsDirective.md), *typeof* [`IgxLabelDirective`](../classes/IgxLabelDirective.md), *typeof* `IgxPrefixDirective`, *typeof* `IgxSuffixDirective`, *typeof* [`IgxHintDirective`](../classes/IgxHintDirective.md), *typeof* `IgxCalendarHeaderTemplateDirective`, *typeof* `IgxCalendarSubheaderTemplateDirective`, *typeof* `IgxCalendarHeaderTitleTemplateDirective`\]
+
+Defined in: [angular/igniteui-angular/projects/igniteui-angular/date-picker/src/date-picker/public\_api.ts:12](https://github.com/IgniteUI/igniteui-angular/blob/28ea802da6e8bd841b82e336a16781159d69e779/projects/igniteui-angular/date-picker/src/date-picker/public_api.ts#L12)
