@@ -1,6 +1,6 @@
 {
   "name": "@igniteui/mcp-server",
-  "version": "14.10.0-alpha.0",
+  "version": "14.10.0-alpha.1",
   "description": "Unified MCP server for Ignite UI — documentation, GitHub API, and CLI scaffolding",
   "type": "module",
   "main": "dist/index.js",
