@@ -10,6 +10,7 @@
 		"./spec",
 		"./output",
 		"**/files/*",
-		"node_modules"
+		"node_modules",
+		"packages/igniteui-mcp"
 	]
 }
