@@ -84,7 +84,7 @@ Once the project is running:
 
 ## Upgrade to Licensed Packages
 
-If the project was created with `ng add igniteui-angular`, `@igniteui/angular-schematics`, or `igniteui-cli`, run the upgrade command to switch from trial to licensed packages. Update the project first to avoid skipping migrations (see the Update Guide).
+If the project contains `ignite-ui-cli.json` then upgrade using the **Ignite UI Angular Schematics** or the **Ignite UI CLI**, depending on which is already installed in the dependencies. If not, then refer to docs about licensing.
 
 **Angular Schematics:**
 
