@@ -42,10 +42,10 @@ export class ExternalAuth {
     return this.providers.size > 0;
   }
 
-  public addGoogle(clientID: string) {
+  public addGoogle() {
     this.providers.set(
       ExternalAuthProvider.Google,
-      new GoogleProvider(this.oidcSecurityService, clientID)
+      new GoogleProvider(this.oidcSecurityService, ExternalAuthProvider.Google)
     );
   }
 
@@ -61,10 +61,10 @@ export class ExternalAuth {
     );
   }
 
-  public addMicrosoft(clientID: string) {
+  public addMicrosoft() {
     this.providers.set(
       ExternalAuthProvider.Microsoft,
-      new MicrosoftProvider(this.oidcSecurityService, clientID)
+      new MicrosoftProvider(this.oidcSecurityService, ExternalAuthProvider.Microsoft)
     );
   }
 

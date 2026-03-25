@@ -1,6 +1,6 @@
 import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
-import { EnvironmentProviders, importProvidersFrom, Provider } from '@angular/core';
-import { AuthModule } from 'angular-auth-oidc-client';
+import { EnvironmentProviders, Provider } from '@angular/core';
+import { provideAuth } from 'angular-auth-oidc-client';
 
 import { BackendProvider } from './services/fake-backend';
 import { JwtInterceptor } from './services/jwt.interceptor';
@@ -8,7 +8,18 @@ import { JwtInterceptor } from './services/jwt.interceptor';
 /** Provides all authentication-related dependencies (OIDC, JWT interceptor, fake backend). */
 export function provideAuthentication(): Array<Provider | EnvironmentProviders> {
   return [
-    importProvidersFrom(AuthModule.forRoot({ config: [] })),
+    provideAuth({
+      config: {
+        // authority: '<your OIDC authority URL>',
+        // redirectUrl: '<your redirect URL>',
+        // postLogoutRedirectUri: window.location.origin,
+        // clientId: '<your client ID>',
+        // scope: 'openid profile email offline_access',
+        // responseType: 'code',
+        // silentRenew: true,
+        // useRefreshToken: true
+      },
+    }),
     provideHttpClient(withInterceptorsFromDi()),
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     // BackendProvider intercepts HTTP requests and simulates a REST API for development/testing.

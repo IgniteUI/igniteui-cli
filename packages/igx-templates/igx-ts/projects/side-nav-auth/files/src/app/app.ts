@@ -58,8 +58,8 @@ export class App implements OnInit {
      * To register a social login, un-comment one or more of the following and add your service provider Client ID.
      * See https://github.com/IgniteUI/igniteui-cli/wiki/Angular-Authentication-Project-Template#add-a-third-party-social-provider
      */
-    // this.externalAuth.addGoogle('CLIENT_ID');
-    // this.externalAuth.addMicrosoft('CLIENT_ID');
+    // this.externalAuth.addGoogle();
+    // this.externalAuth.addMicrosoft();
     // this.externalAuth.addFacebook('CLIENT_ID');
   }
 
