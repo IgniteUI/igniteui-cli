@@ -33,7 +33,7 @@ export interface PositionalArgs {
 	/** The name of the project */
 	name?: string;
 
-	/** The type of the project. (eg. igx-ts, igx-ts-legacy) */
+	/** The type of the project. (eg. igx-ts) */
 	type?: string;
 
 	/** Which theme to use when creating a new project. */
