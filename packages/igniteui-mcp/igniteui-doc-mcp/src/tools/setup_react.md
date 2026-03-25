@@ -69,7 +69,7 @@ Once the project is running:
 
 ## Upgrade to Licensed Packages
 
-If the project was created with `igniteui-cli`, run the upgrade command to switch from trial to licensed packages. Update the project first to avoid skipping migrations (see the Update Guide).
+If the project contains `ignite-ui-cli.json` then upgrade using the **Ignite UI CLI**. If not, then refer to docs about licensing.
 
 ```bash
 ig upgrade-packages
