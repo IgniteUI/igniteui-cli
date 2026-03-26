@@ -141,7 +141,6 @@ export class PackageManager {
 				break;
 		}
 		try {
-			// tslint:disable-next-line:object-literal-sort-keys
 			Util.execSync(command, { stdio: "pipe", encoding: "utf8" });
 		} catch (error) {
 			Util.log(`Error uninstalling package ${sanitizePackage} with ${managerCommand}`);
@@ -160,7 +159,6 @@ export class PackageManager {
 		const sanitizePackage = Util.sanitizeShellArg(packageName);
 		const command = this.getInstallCommand(managerCommand, sanitizePackage);
 		try {
-			// tslint:disable-next-line:object-literal-sort-keys
 			Util.execSync(command, { stdio: "pipe", encoding: "utf8" });
 		} catch (error) {
 			Util.log(`Error installing package ${sanitizePackage} with ${managerCommand}`);
@@ -234,7 +232,6 @@ export class PackageManager {
 	public static ensureRegistryUser(config: Config, message: string): boolean {
 		const fullPackageRegistry = Util.sanitizeShellArg(config.igPackageRegistry);
 		try {
-			// tslint:disable-next-line:object-literal-sort-keys
 			Util.execSync(`npm whoami --registry=${fullPackageRegistry}`, { stdio: "pipe", encoding: "utf8" });
 		} catch (error) {
 			if (!REGISTRY_ATTEMPT_LOGIN) {

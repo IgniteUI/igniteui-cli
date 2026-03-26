@@ -19,5 +19,9 @@ steps:
     continueOnError: true
   - script: npm run build
     displayName: 'Build the project'
-  - script: npm run test -- --watch=false --browsers ChromeHeadless
+  - script: npx playwright install chromium-headless-shell
+    displayName: 'Install Playwright browsers'
+  - script: npm run test -- --watch=false
     displayName: 'Run tests'
+    env:
+      CI: 'true'

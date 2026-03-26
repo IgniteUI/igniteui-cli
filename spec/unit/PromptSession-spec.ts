@@ -122,7 +122,7 @@ describe("Unit - PromptSession", () => {
 			}
 		} as unknown as Config;
 		spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
-		// tslint:disable:object-literal-sort-keys
+
 		const mockProject = {
 			name: "Project 1",
 			generateConfig: () => Promise.resolve(true),
@@ -231,7 +231,7 @@ describe("Unit - PromptSession", () => {
 		} as unknown as Config;
 
 		spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
-		// tslint:disable:object-literal-sort-keys
+
 		const mockBaseTemplate = createMockBaseTemplate();
         const mockProjectTemplate = createMockProjectTemplate(mockBaseTemplate);
 		mockProjectTemplate.name = "Project";
@@ -304,7 +304,6 @@ describe("Unit - PromptSession", () => {
 		expect(mockSession.chooseActionLoop).toHaveBeenCalled();
 	});
 	it("start - New project - missing IFs", async () => {
-		// tslint:disable:object-literal-sort-keys
 		const mockProject = {
 			name: "Project 1",
 			generateConfig: () => ({ test: "test" }),
@@ -393,7 +392,6 @@ describe("Unit - PromptSession", () => {
 		expect(Util.directoryExists).toHaveBeenCalledWith("Th15 w1ll");
 	});
 	it("chooseActionLoop - should run through properly - Add Component", async () => {
-		// tslint:disable:object-literal-sort-keys
 		const mockExtraConfigurations = [{
 			choices: [],
 			default: "Choice 1",
@@ -579,7 +577,6 @@ describe("Unit - PromptSession", () => {
 		expect(add.addTemplate).toHaveBeenCalledWith("Custom Template Name", mockSelectedTemplate);
 	});
 	it("chooseActionLoop - should run through properly - Add Component", async () => {
-		// tslint:disable:object-literal-sort-keys
 		const mockExtraConfigurations = [{
 			choices: ["Choice 1", "Choice 2", "Choice 3"],
 			default: "Choice 1",
@@ -619,7 +616,6 @@ describe("Unit - PromptSession", () => {
 			getComponentsByGroup:
 				[{
 					group: "Custom Group 1", name: "Component 1", description: "description for Component 1",
-					// tslint:disable-next-line:align
 					templates: [{ description: "description for Template 1" }]
 				},
 				{

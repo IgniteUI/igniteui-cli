@@ -36,7 +36,7 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			App.initialize();
 			// spy on require:
 			spyOn(require("module"), "_load").and.callFake((modulePath: string) => {
-				if (modulePath.endsWith("@igniteui/angular-templates")) {
+				if (modulePath.endsWith("./AngularTypeScriptFileUpdate")) {
 					return helpers;
 				} else if (modulePath.endsWith("@igniteui/cli-core/packages/components")) {
 					return { dv: ["igDvWidget"] };

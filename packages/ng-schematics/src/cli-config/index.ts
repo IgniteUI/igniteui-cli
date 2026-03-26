@@ -164,7 +164,6 @@ function addAISkillsFiles(options: CliConfigOptions): Rule {
 	};
 }
 
-// tslint:disable-next-line:space-before-function-paren
 export default function (options: CliConfigOptions = {}): Rule {
 	return (originalTree: Tree, context: SchematicContext) => {
 		const tree = options.directory ? new ScopedTree(originalTree, options.directory) : originalTree;

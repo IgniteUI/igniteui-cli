@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { <%=ClassName%> } from './<%=filePrefix%>';
 import { <%=ClassName%>TreeGridGroupingPipe } from './tree-grid-grouping.pipe';
-import { IgxTreeGridModule, IgxCheckboxModule, IgxButtonModule, IgxSliderModule, IgxSwitchModule } from '<%=igxPackage%>';
+import { IgxTreeGridModule, IgxCheckboxModule, IgxButtonModule, IgxSliderModule, IgxSwitchModule, IgxButtonGroupComponent, IgxIconComponent } from '<%=igxPackage%>';
 
 describe('<%=ClassName%>', () => {
   let component: <%=ClassName%>;
@@ -19,7 +19,9 @@ describe('<%=ClassName%>', () => {
         IgxCheckboxModule,
         IgxButtonModule,
         IgxSliderModule,
-        IgxSwitchModule]
+        IgxSwitchModule,
+        IgxButtonGroupComponent,
+        IgxIconComponent]
     })
       .compileComponents();
   });

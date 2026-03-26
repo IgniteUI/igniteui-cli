@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { IgxCheckboxModule, IgxDatePickerModule, IgxTreeGridModule } from '<%=igxPackage%>';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { IgxTreeGridModule } from '<%=igxPackage%>';
 import { <%=ClassName%> } from './<%=filePrefix%>';
 
 describe('<%=ClassName%>', () => {
@@ -9,7 +9,7 @@ describe('<%=ClassName%>', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BrowserAnimationsModule, IgxTreeGridModule, IgxDatePickerModule, IgxCheckboxModule, <%=ClassName%>]
+      imports: [NoopAnimationsModule, IgxTreeGridModule, <%=ClassName%>]
     })
       .compileComponents();
   });

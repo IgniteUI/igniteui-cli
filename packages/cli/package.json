@@ -21,16 +21,6 @@
     "url": "https://github.com/IgniteUI/igniteui-cli/issues"
   },
   "main": "lib/cli.js",
-  "scripts": {
-    "build": "node ./node_modules/typescript/lib/tsc.js && npm run config-schema",
-    "build-pack": "node ./node_modules/typescript/lib/tsc.js -p tsconfig-pack.json && npm run config-schema",
-    "pretest": "npm run lint && npm run build",
-    "test": "nyc npm run jasmine",
-    "jasmine": "node spec/jasmine-runner.js",
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "lint": "tslint --project tsconfig.json",
-    "config-schema": "typescript-json-schema packages/core/types/Config.ts Config -o packages/core/config/Config.schema.json"
-  },
   "files": [
     "ignite-ui-cli.txt",
     "bin/*",
@@ -102,7 +92,6 @@
     "rxjs": "~7.8.1",
     "source-map-support": "^0.5.21",
     "ts-node": "~10.9.2",
-    "tslint": "~6.1.0",
     "typescript-json-schema": "^0.65.1"
   },
   "ng-update": {

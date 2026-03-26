@@ -1,9 +1,11 @@
-import { Framework, Util } from "@igniteui/cli-core";
+import { App, Framework, Util } from "@igniteui/cli-core";
 
 const templatesLocation = "../../packages/cli/templates/react";
 describe("React templates", () => {
+	beforeAll(() => {
+		App.initialize();
+	});
 
-	// tslint:disable-next-line:only-arrow-functions
 	it("Templates should have IDs", async function() {
 		const reactFramework = require(templatesLocation);
 		expect(reactFramework.projectLibraries[0]).toBeDefined();
@@ -15,7 +17,7 @@ describe("React templates", () => {
 
 	it("Templates should have no internal collisions", async () => {
 		const reactFramework: Framework = require(templatesLocation);
-		const projLibrary = reactFramework.projectLibraries.find(x => x.projectType === "es6");
+		const projLibrary = reactFramework.projectLibraries.find(x => x.projectType === "igr-ts");
 		for (let i = 0; i < projLibrary.templates.length; i++) {
 			const element = projLibrary.templates[i];
 			for (let j = i + 1; j < projLibrary.templates.length; j++) {
@@ -23,7 +25,9 @@ describe("React templates", () => {
 				// pass some __path__ so those won't match
 				expect(
 					(Util as any).validateTemplate(element["rootPath"] + "/files", target["rootPath"] + "/files", {path: "1"}, {})
-				).toBeTruthy(`Template ${element.id} can overwrite ${target.id}`);
+				)
+					.withContext(`Template ${element.id} can overwrite ${target.id}`)
+					.toBeTruthy();
 			}
 		}
 	});

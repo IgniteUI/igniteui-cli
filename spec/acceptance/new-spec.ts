@@ -58,24 +58,11 @@ describe("New command", () => {
 		await cli.run(["new", "React Proj", "--framework=react", "--skip-install"]);
 
 		expect(fs.existsSync("./React Proj")).toBeTruthy();
-		expect(filesDiff("../templates/react/es6/projects/empty/files", "./React Proj")).toEqual([]);
+		expect(filesDiff("../templates/react/igr-ts/projects/empty/files", "./React Proj")).toEqual([]);
 		const packageText = fs.readFileSync("./React Proj/package.json", "utf-8");
 		expect(JSON.parse(packageText).name).toEqual("react-proj");
 		expect(fs.existsSync("./React Proj/.gitignore")).toBeTruthy();
 		testFolder = "./React Proj";
-	});
-
-	it("Creates Angular project", async () => {
-		// process.argv = ["new", "reactProj", "--framework=react"];
-
-		await cli.run(["new", "ngx Proj", "--framework=angular", "--type=igx-ts", "--skip-install"]);
-
-		expect(fs.existsSync("./ngx Proj")).toBeTruthy();
-		expect(filesDiff("../templates/angular/ig-ts/projects/empty/files", "./ngx Proj")).toEqual([]);
-		const packageText = fs.readFileSync("./ngx Proj/package.json", "utf-8");
-		expect(JSON.parse(packageText).name).toEqual("ngx-proj");
-		expect(fs.existsSync("./ngx Proj/.gitignore")).toBeTruthy();
-		testFolder = "./ngx Proj";
 	});
 
 	it("Creates Ignite UI for Angular project", async () => {

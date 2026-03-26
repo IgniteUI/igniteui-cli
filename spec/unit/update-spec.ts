@@ -10,7 +10,6 @@ interface MockFile {
 	expected: string;
 }
 
-// tslint:disable: object-literal-sort-keys
 describe("updateWorkspace", () => {
 	let fsSpy: IFileSystem;
 

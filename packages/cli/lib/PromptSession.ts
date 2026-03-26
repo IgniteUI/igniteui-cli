@@ -98,9 +98,7 @@ export class PromptSession extends BasePromptSession {
 		await PackageManager.flushQueue(true);
 		await PackageManager.installPackages();
 		await copyAISkillsToProject();
-		if (true) { // TODO: Make conditional?
-			await start.start({ port });
-		}
+		await start.start({ port });
 	}
 
 	protected async upgradePackages() {

@@ -203,7 +203,6 @@ export abstract class BasePromptSession {
 	 * @param framework to get project library for
 	 */
 	protected async getProjectLibrary(framework: Framework): Promise<ProjectLibrary> {
-		let projectLibrary: ProjectLibrary;
 		const projectLibraries = this.getProjectLibNames(framework);
 
 		const projectRes = await this.getUserInput({
@@ -212,9 +211,7 @@ export abstract class BasePromptSession {
 			message: "Choose the type of project:",
 			choices: projectLibraries
 		});
-		projectLibrary = this.templateManager.getProjectLibraryByName(framework, projectRes);
-
-		return projectLibrary;
+		return this.templateManager.getProjectLibraryByName(framework, projectRes);
 	}
 
 	/**
@@ -222,17 +219,13 @@ export abstract class BasePromptSession {
 	 * @param projectLibrary to get theme for
 	 */
 	protected async getProjectTemplate(projectLibrary: ProjectLibrary): Promise<ProjectTemplate> {
-		let projTemplate: ProjectTemplate;
-
 		const componentNameRes = await this.getUserInput({
 			type: "list",
 			name: "projTemplate",
 			message: "Choose project template:",
 			choices: Util.formatChoices(projectLibrary.projects)
 		});
-		projTemplate = projectLibrary.projects.find(x => x.name === componentNameRes);
-
-		return projTemplate;
+		return projectLibrary.projects.find(x => x.name === componentNameRes);
 	}
 
 	/**
@@ -240,8 +233,7 @@ export abstract class BasePromptSession {
 	 * @param projectLibrary to get theme for
 	 */
 	protected async getTheme(projectLibrary: ProjectLibrary): Promise<string> {
-		let theme: string;
-		theme = await this.getUserInput({
+		const theme = await this.getUserInput({
 			type: "list",
 			name: "theme",
 			message: "Choose the theme for the project:",
@@ -500,7 +492,6 @@ export abstract class BasePromptSession {
 	 * @param component to get template for
 	 */
 	private getTemplateTask: Task<PromptTaskContext> = async (_runner, context) => {
-		let selectedTemplate: Template;
 		const templates: Template[] = context.component.templates;
 
 		const templateRes = await this.getUserInput({
@@ -514,7 +505,7 @@ export abstract class BasePromptSession {
 			return WIZARD_BACK_OPTION;
 		}
 
-		selectedTemplate = templates.find((value, i, obj) => {
+		const selectedTemplate = templates.find((value, i, obj) => {
 			return value.name === templateRes;
 		});
 

@@ -2,7 +2,7 @@ import {
 	AddTemplateArgs, App, ControlExtraConfiguration, FS_TOKEN, IFileSystem, NPM_ANGULAR,
 	NPM_DOCK_MANAGER, Template, TemplateDependency, Util, resolvePackage
 } from "@igniteui/cli-core";
-import { AngularTypeScriptFileUpdate } from "@igniteui/angular-templates";
+import type { AngularTypeScriptFileUpdate } from "./AngularTypeScriptFileUpdate";
 import * as path from "path";
 
 export class IgniteUIForAngularTemplate implements Template {
@@ -58,10 +58,8 @@ export class IgniteUIForAngularTemplate implements Template {
 		// D.P. Don't use the top-level import as that chains import of typescript
 		// which slows down execution of the entire component noticeably (template loading)
 		// https://www.typescriptlang.org/docs/handbook/modules.html#dynamic-module-loading-in-nodejs
-		// tslint:disable-next-line:variable-name
 		const TsUpdate: typeof AngularTypeScriptFileUpdate =
-			// tslint:disable-next-line:no-submodule-imports
-			require("@igniteui/angular-templates").AngularTypeScriptFileUpdate;
+			require("./AngularTypeScriptFileUpdate").AngularTypeScriptFileUpdate;
 
 		const mainModulePath = path.join(projectPath, `src/app/${modulePath}`);
 		const folderName = this.folderName(name);
