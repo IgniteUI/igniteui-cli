@@ -10,6 +10,7 @@ import { addFontsToIndexHtml, getProjects, importDefaultTheme } from "../utils/t
 
 interface CliConfigOptions {
 	addAISkills?: boolean;
+	directory?: string;
 }
 
 function getDependencyVersion(pkg: string, tree: Tree): string {
