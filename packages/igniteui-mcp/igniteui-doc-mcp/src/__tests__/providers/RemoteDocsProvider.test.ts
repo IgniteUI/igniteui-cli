@@ -124,11 +124,33 @@ describe('RemoteDocsProvider', () => {
       expect(url.searchParams.get('query')).toBe('grid selection');
     });
 
+    it('returns the search result text', async () => {
+      vi.stubGlobal('fetch', mockFetch(200, '## Results\n- Grid editing docs'));
+
+      const provider = new RemoteDocsProvider(BACKEND_URL);
+      const result = await provider.searchDocs('angular', 'grid editing');
+
+      expect(result).toContain('Grid editing docs');
+    });
+
     it('throws when backend returns a non-ok status', async () => {
       vi.stubGlobal('fetch', mockFetch(502, 'Bad Gateway'));
 
       const provider = new RemoteDocsProvider(BACKEND_URL);
       await expect(provider.searchDocs('angular', 'grid')).rejects.toThrow('502');
+    });
+  });
+
+  describe('URL construction', () => {
+    it('handles backend URL with trailing slash', async () => {
+      const fetch = mockFetch(200, 'ok');
+      vi.stubGlobal('fetch', fetch);
+
+      const provider = new RemoteDocsProvider(BACKEND_URL + '/');
+      await provider.listComponents('angular');
+
+      const url = new URL(fetch.mock.calls[0][0]);
+      expect(url.pathname).toBe('/api/docs');
     });
   });
 });

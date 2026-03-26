@@ -14,6 +14,7 @@ import { getApiReferenceSchema, searchApiSchema } from "./tools/schemas.js";
 import { createGetApiReferenceHandler, createSearchApiHandler } from "./tools/handlers.js";
 import { ApiDocLoader } from "./lib/api-doc-loader.js";
 import { getPlatforms } from "./config/platforms.js";
+import { sanitizeFtsQuery } from "./lib/fts-sanitizer.js";
 
 dotenv.config({ quiet: true });
 
@@ -171,29 +172,7 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
       }
 
       // Sanitize user input for FTS4 MATCH syntax.
-      // Strip characters that are FTS4 operators or cause syntax errors:
-      //   " (phrase delimiter), ( ) (grouping), : (column filter), @ (internal)
-      // Preserve hyphens — the porter tokenizer handles them consistently
-      // at both index and query time (e.g. "grid-editing" stays as one phrase).
-      // Preserve trailing * — FTS4 prefix queries (e.g. grid*) rely on it,
-      // and the DB is built with prefix="2,3" indexes to support this.
-      const sanitized = queryText
-        .replace(/["(){}[\]:@]/g, " ")
-        .split(/\s+/)
-        .filter(Boolean)
-        .map((term) => {
-          // Terms ending with * are prefix queries — don't quote them
-          // because FTS4 treats "grid*" as a literal match for the
-          // asterisk character, while unquoted grid* does prefix expansion.
-          // Drop terms that are only asterisks (e.g. *, **) — they have
-          // no actual prefix and would cause an FTS4 syntax error.
-          if (term.endsWith("*")) {
-            return /[^*]/.test(term) ? term : null;
-          }
-          return `"${term}"`;
-        })
-        .filter(Boolean)
-        .join(" OR ");
+      const sanitized = sanitizeFtsQuery(queryText);
 
       if (!sanitized) {
         log("search_docs", { query: queryText, framework }, "Empty query after sanitization.", 0);

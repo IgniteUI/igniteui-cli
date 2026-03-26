@@ -25,6 +25,10 @@ describe('searchApiDocs', () => {
     expect(searchApiDocs([makeEntry({ content: 'grid data' })], '   ')).toEqual([]);
   });
 
+  it('returns empty array when docs list is empty', () => {
+    expect(searchApiDocs([], 'grid')).toEqual([]);
+  });
+
   it('matches against component name', () => {
     const hits = searchApiDocs([makeEntry({ component: 'IgxGrid' })], 'IgxGrid');
     expect(hits).toHaveLength(1);
@@ -94,6 +98,29 @@ describe('searchApiDocs', () => {
     );
     expect(hits[0].excerpt).toMatch(/^\.\.\./);
     expect(hits[0].excerpt).toMatch(/\.\.\.$/);
+  });
+
+  it('handles query with regex special characters safely', () => {
+    const entry = makeEntry({ content: 'value (test)' });
+    // Should not throw due to unescaped regex chars in query
+    expect(() => searchApiDocs([entry], '(test)')).not.toThrow();
+  });
+
+  it('returns match count reflecting number of distinct terms matched', () => {
+    const entry = makeEntry({
+      component: 'IgxGrid',
+      content: 'grid selection filtering',
+      keywords: ['grid'],
+    });
+    const hits = searchApiDocs([entry], 'grid selection filtering');
+    expect(hits[0].matches).toBe(3);
+  });
+
+  it('uses default limit of 10', () => {
+    const docs = Array.from({ length: 20 }, (_, i) =>
+      makeEntry({ component: `Igx${i}`, content: 'grid' })
+    );
+    expect(searchApiDocs(docs, 'grid')).toHaveLength(10);
   });
 });
 
