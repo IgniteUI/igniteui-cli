@@ -1,0 +1,158 @@
+import { describe, expect, it, vi } from 'vitest';
+import { createGetApiReferenceHandler, createSearchApiHandler } from '../../tools/handlers.js';
+import type { ApiDocLoader } from '../../lib/api-doc-loader.js';
+import type { DocEntry } from '../../lib/types/docs.types.js';
+
+function makeEntry(overrides: Partial<DocEntry> = {}): DocEntry {
+  return {
+    filepath: '/fake/IgxGrid.md',
+    title: 'IgxGridComponent',
+    component: 'IgxGridComponent',
+    type: 'class',
+    keywords: ['grid'],
+    summary: 'A data grid.',
+    platform: 'angular',
+    content: '## Properties\nrowSelection: string\n\n## Methods\nselectAllRows(): void',
+    ...overrides,
+  };
+}
+
+function makeLoader(overrides: Partial<ApiDocLoader> = {}): ApiDocLoader {
+  return {
+    get: vi.fn().mockReturnValue(undefined),
+    search: vi.fn().mockReturnValue([]),
+    formatStructuredComponent: vi.fn().mockReturnValue(null),
+    load: vi.fn(),
+    getStats: vi.fn(),
+    ...overrides,
+  } as unknown as ApiDocLoader;
+}
+
+describe('createGetApiReferenceHandler', () => {
+  it('returns valid MCP response format when component is found', async () => {
+    const loader = makeLoader({ get: vi.fn().mockReturnValue(makeEntry()) });
+    const handler = createGetApiReferenceHandler(loader);
+    const result = await handler({ platform: 'angular', component: 'IgxGridComponent', section: 'all' });
+
+    expect(result).toHaveProperty('content');
+    expect(result.content).toBeInstanceOf(Array);
+    expect(result.content[0]).toHaveProperty('type', 'text');
+    expect(result.content[0]).toHaveProperty('text');
+    expect(result.isError).toBeUndefined();
+  });
+
+  it('returns isError when component is not found', async () => {
+    const loader = makeLoader();
+    const handler = createGetApiReferenceHandler(loader);
+    const result = await handler({ platform: 'angular', component: 'IgxNonExistent', section: 'all' });
+
+    expect(result.isError).toBe(true);
+    expect(result.content[0].text).toContain('IgxNonExistent');
+    expect(result.content[0].text).toContain('not found');
+  });
+
+  it('falls back to case-insensitive match', async () => {
+    const entry = makeEntry({ component: 'IgxGridComponent' });
+    const loader = makeLoader({
+      get: vi.fn().mockReturnValueOnce(undefined).mockReturnValue(entry),
+      // search() returns DocEntry[], not SearchHit[]
+      search: vi.fn().mockReturnValue([entry]),
+    });
+    const handler = createGetApiReferenceHandler(loader);
+    const result = await handler({ platform: 'angular', component: 'igxgridcomponent', section: 'all' });
+
+    expect(result.isError).toBeUndefined();
+  });
+
+  it('returns isError with suggestion to use search_api when not found even case-insensitively', async () => {
+    const loader = makeLoader({ search: vi.fn().mockReturnValue([]) });
+    const handler = createGetApiReferenceHandler(loader);
+    const result = await handler({ platform: 'angular', component: 'IgxNonExistent', section: 'all' });
+
+    expect(result.isError).toBe(true);
+    expect(result.content[0].text).toContain('search_api');
+  });
+
+  it('returns isError when content is undefined on the entry', async () => {
+    const entry = makeEntry({ content: undefined });
+    const loader = makeLoader({ get: vi.fn().mockReturnValue(entry) });
+    const handler = createGetApiReferenceHandler(loader);
+    const result = await handler({ platform: 'angular', component: 'IgxGridComponent', section: 'all' });
+
+    expect(result.isError).toBe(true);
+    expect(result.content[0].text).toContain('not available');
+  });
+
+  it('extracts specified section from content when section is not "all"', async () => {
+    const loader = makeLoader({ get: vi.fn().mockReturnValue(makeEntry()) });
+    const handler = createGetApiReferenceHandler(loader);
+    const result = await handler({ platform: 'angular', component: 'IgxGridComponent', section: 'properties' });
+
+    expect(result.isError).toBeUndefined();
+    expect(result.content[0].text).toContain('Properties');
+    expect(result.content[0].text).not.toContain('Methods');
+  });
+
+  it('uses formatStructuredComponent output when available (typedoc-json platforms)', async () => {
+    const loader = makeLoader({
+      get: vi.fn().mockReturnValue(makeEntry()),
+      formatStructuredComponent: vi.fn().mockReturnValue('# Formatted\nsome content'),
+    });
+    const handler = createGetApiReferenceHandler(loader);
+    const result = await handler({ platform: 'react', component: 'IgrGrid', section: 'all' });
+
+    expect(result.content[0].text).toBe('# Formatted\nsome content');
+  });
+});
+
+describe('createSearchApiHandler', () => {
+  it('returns valid MCP response format with results', async () => {
+    const entry = makeEntry();
+    const loader = makeLoader({
+      search: vi.fn().mockReturnValue([entry]),
+    });
+    const handler = createSearchApiHandler(loader);
+    const result = await handler({ query: 'grid' });
+
+    expect(result).toHaveProperty('content');
+    expect(result.content[0].type).toBe('text');
+    expect(result.content[0].text).toContain('IgxGridComponent');
+  });
+
+  it('includes platform and type tags in output', async () => {
+    const entry = makeEntry({ platform: 'angular', type: 'class' });
+    const loader = makeLoader({ search: vi.fn().mockReturnValue([entry]) });
+    const handler = createSearchApiHandler(loader);
+    const result = await handler({ query: 'grid' });
+
+    expect(result.content[0].text).toContain('[angular]');
+    expect(result.content[0].text).toContain('[class]');
+  });
+
+  it('returns a "no results" message when nothing matches', async () => {
+    const loader = makeLoader({ search: vi.fn().mockReturnValue([]) });
+    const handler = createSearchApiHandler(loader);
+    const result = await handler({ query: 'nonexistent' });
+
+    expect(result.content[0].text).toContain('No results');
+    expect(result.content[0].text).toContain('nonexistent');
+  });
+
+  it('includes platform name in "no results" message when platform is specified', async () => {
+    const loader = makeLoader({ search: vi.fn().mockReturnValue([]) });
+    const handler = createSearchApiHandler(loader);
+    const result = await handler({ platform: 'angular', query: 'nonexistent' });
+
+    expect(result.content[0].text).toContain('Angular');
+  });
+
+  it('includes keywords in output when entry has keywords', async () => {
+    const entry = makeEntry({ keywords: ['selection', 'virtual'] });
+    const loader = makeLoader({ search: vi.fn().mockReturnValue([entry]) });
+    const handler = createSearchApiHandler(loader);
+    const result = await handler({ query: 'selection' });
+
+    expect(result.content[0].text).toContain('selection');
+    expect(result.content[0].text).toContain('virtual');
+  });
+});
