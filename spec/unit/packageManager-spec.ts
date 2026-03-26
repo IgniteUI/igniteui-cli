@@ -268,7 +268,7 @@ describe("Unit - Package Manager", () => {
 		expect(Util.log).toHaveBeenCalledWith(`Error installing npm packages.`);
 		expect(Util.log).toHaveBeenCalledWith(`Example`);
 		expect(Util.execSync).toHaveBeenCalledWith(`npm install --quiet`,
-			{ stdio: "inherit" });
+			{ stdio: ["inherit"], killSignal: "SIGINT" });
 		mockProjectConfig.packagesInstalled = true;
 		expect(ProjectConfig.setConfig).toHaveBeenCalledWith(mockProjectConfig);
 	});
@@ -284,7 +284,7 @@ describe("Unit - Package Manager", () => {
 		expect(Util.log).toHaveBeenCalledWith(`Installing npm packages`);
 		expect(Util.log).toHaveBeenCalledWith(`Packages installed successfully`);
 		expect(Util.execSync).toHaveBeenCalledWith(`npm install --quiet`,
-			{ stdio: "inherit" });
+			{ stdio: ["inherit"], killSignal: "SIGINT" });
 		mockProjectConfig.packagesInstalled = true;
 		expect(ProjectConfig.setConfig).toHaveBeenCalledWith(mockProjectConfig);
 	});
@@ -303,7 +303,7 @@ describe("Unit - Package Manager", () => {
 		expect(Util.log).toHaveBeenCalledTimes(1);
 		expect(Util.log).toHaveBeenCalledWith(`Installing npm packages`);
 		expect(Util.execSync).toHaveBeenCalledWith(`npm install --quiet`,
-			{ stdio: "inherit" });
+			{ stdio: ["inherit"], killSignal: "SIGINT" });
 		expect(process.exit).toHaveBeenCalled();
 		expect(ProjectConfig.setConfig).toHaveBeenCalledTimes(0);
 	});

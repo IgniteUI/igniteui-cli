@@ -96,6 +96,7 @@ export class PromptSession extends BasePromptSession {
 
 	protected async completeAndRun(port?: number) {
 		await PackageManager.flushQueue(true);
+		// ensure packages are installed so copyAISkillsToProject can read from node_modules
 		await PackageManager.installPackages();
 		await copyAISkillsToProject();
 		if (true) { // TODO: Make conditional?

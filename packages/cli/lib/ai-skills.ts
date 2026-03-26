@@ -1,5 +1,5 @@
 import * as path from "path";
-import { App, FS_TOKEN, IFileSystem, NPM_ANGULAR, NPM_REACT, NPM_WEBCOMPONENTS, ProjectConfig, resolvePackage, UPGRADEABLE_PACKAGES, Util } from "@igniteui/cli-core";
+import { App, FS_TOKEN, IFileSystem, NPM_ANGULAR, NPM_REACT, ProjectConfig, resolvePackage, UPGRADEABLE_PACKAGES, Util } from "@igniteui/cli-core";
 
 const CLAUDE_SKILLS_DIR = ".claude/skills";
 
@@ -21,16 +21,17 @@ function resolveSkillsRoots(nodeModulesDir: string, fs: IFileSystem): string[] {
 	} catch { /* config not readable – fall through to scan all */ }
 
 	// Map framework id → candidate package names from the known packages registry
+	const allPkgKeys = Object.keys(UPGRADEABLE_PACKAGES);
 	let candidates: string[];
 	if (framework === "angular") {
 		candidates = [NPM_ANGULAR];
 	} else if (framework === "react") {
 		candidates = [NPM_REACT];
 	} else if (framework === "webcomponents") {
-		candidates = [NPM_WEBCOMPONENTS];
+		candidates = allPkgKeys.filter(k => k.startsWith("igniteui-webcomponents"));
 	} else {
 		// Unknown / jQuery – check every known Ignite UI package
-		candidates = Object.keys(UPGRADEABLE_PACKAGES);
+		candidates = allPkgKeys;
 	}
 
 	for (const pkg of candidates) {

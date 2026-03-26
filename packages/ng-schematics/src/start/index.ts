@@ -1,5 +1,5 @@
 import { Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
-import { ScopedTree } from "../utils/ScopedTree";
+import { ScopedTree } from "@angular-devkit/schematics/src/tree/scoped";
 import { ProjectConfig, Util } from "@igniteui/cli-core";
 import { defer } from "rxjs";
 import { setVirtual } from "../utils/NgFileSystem";

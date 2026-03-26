@@ -178,8 +178,7 @@ export function newProject(options: OptionsSchema): Rule {
 				if (!options.skipInstall) {
 					context.addTask(
 						new RunSchematicTask("cli-config", {
-							directory: options.name,
-							addAISkills: options.addAISkills
+							addAISkills: true
 						}),
 						[...installChain]
 					);
