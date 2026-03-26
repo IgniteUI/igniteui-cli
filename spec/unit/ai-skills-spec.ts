@@ -182,7 +182,7 @@ describe("Unit - copyAISkillsToProject", () => {
 
 	describe("WebComponents framework", () => {
 		it("should copy skills from igniteui-webcomponents into .claude/skills/", async () => {
-			const wcPkg = "igniteui-webcomponents";
+			const wcPkg = "igniteui-webcomponents-core";
 			const dir = skillsDir(wcPkg);
 			const file = skillFile(wcPkg, "webcomponents.md");
 			const content = "# Ignite UI WebComponents skills";

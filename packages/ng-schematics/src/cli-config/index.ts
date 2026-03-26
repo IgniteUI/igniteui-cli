@@ -9,7 +9,6 @@ import { setVirtual } from "../utils/NgFileSystem";
 import { addFontsToIndexHtml, getProjects, importDefaultTheme } from "../utils/theme-import";
 
 interface CliConfigOptions {
-	directory?: string;
 	addAISkills?: boolean;
 }
 
@@ -127,7 +126,7 @@ const CLAUDE_SKILLS_DIR = ".claude/skills";
 
 function addAISkillsFiles(options: CliConfigOptions): Rule {
 	return (tree: Tree, context: SchematicContext) => {
-		if (options.addAISkills) {
+		if (!options.addAISkills) {
 			return;
 		}
 
