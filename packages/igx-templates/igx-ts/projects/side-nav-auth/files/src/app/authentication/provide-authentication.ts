@@ -14,7 +14,7 @@ export function provideAuthentication(): Array<Provider | EnvironmentProviders> 
         // redirectUrl: '<your redirect URL>',
         // postLogoutRedirectUri: window.location.origin,
         // clientId: '<your client ID>',
-        // scope: 'openid profile email offline_access',
+        // scope: 'openid profile email',
         // responseType: 'code',
         // silentRenew: true,
         // useRefreshToken: true
