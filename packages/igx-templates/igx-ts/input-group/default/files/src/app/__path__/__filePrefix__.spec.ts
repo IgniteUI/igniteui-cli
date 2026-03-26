@@ -1,16 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import {
-  IgxButtonModule,
-  IgxComboModule,
-  IgxDatePickerModule,
-  IgxIconModule,
-  IgxInputGroupModule,
-  IgxRippleModule,
-  IgxSelectModule,
-  IgxTimePickerModule
-} from '<%=igxPackage%>';
 import { <%=ClassName%> } from './<%=filePrefix%>';
 
 describe('<%=ClassName%>', () => {
@@ -20,17 +9,7 @@ describe('<%=ClassName%>', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
 	  imports: [
-	    FormsModule,
-	    ReactiveFormsModule,
 	    NoopAnimationsModule,
-	    IgxInputGroupModule,
-	    IgxButtonModule,
-	    IgxRippleModule,
-	    IgxIconModule,
-	    IgxComboModule,
-	    IgxDatePickerModule,
-	    IgxTimePickerModule,
-	    IgxSelectModule,
 	    <%=ClassName%>
 	  ]
     })

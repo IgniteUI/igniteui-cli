@@ -139,7 +139,6 @@ describe("Schematics ng-new", () => {
 			expect(e.files.length).toEqual(1);
 			expect(e.exists(`${workingDirectory}/.gitignore`)).toBeTruthy();
 			const taskOptions = runner.tasks.map(task => task.options);
-			// tslint:disable:object-literal-sort-keys
 			const expectedInstall: NodePackageTaskOptions = {
 				command: "install",
 				quiet: true,
@@ -193,7 +192,6 @@ describe("Schematics ng-new", () => {
 			expect(e.files.length).toEqual(1);
 			expect(e.exists(`${workingDirectory}/.gitignore`)).toBeTruthy();
 			const taskOptions = runner.tasks.map(task => task.options);
-			// tslint:disable:object-literal-sort-keys
 			const expectedInstall: NodePackageTaskOptions = {
 				command: "install",
 				quiet: true,

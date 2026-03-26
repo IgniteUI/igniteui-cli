@@ -6,7 +6,7 @@
     "start": "ng serve -o",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "node --max-old-space-size=8192 ./node_modules/@angular/cli/bin/ng test",
+    "test": "ng test --browsers=chromium",
     "lint": "ng lint"
   },
   "private": true,
@@ -31,18 +31,14 @@
     "@angular/cli": "~21.2.1",
     "@angular/compiler-cli": "~21.2.0",
     "@eslint/js": "^10.0.1",
-    "@types/jasmine": "~5.1.4",
+    "@vitest/browser-playwright": "^4.1.0",
     "angular-eslint": "~21.3.0",
     "eslint": "^10.0.2",
     "igniteui-cli": "~<%=cliVersion%>",
-    "jasmine-core": "~5.12.1",
-    "karma": "~6.4.4",
-    "karma-chrome-launcher": "~3.2.0",
-    "karma-coverage": "~2.2.1",
-    "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "~2.1.0",
+    "playwright": "^1.58.2",
     "prettier": "^3.8.1",
     "typescript": "~5.9.3",
-    "typescript-eslint": "8.56.1"
+    "typescript-eslint": "8.56.1",
+    "vitest": "^4.1.0"
   }
 }

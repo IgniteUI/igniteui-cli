@@ -5,7 +5,7 @@ import { provideRouter } from '@angular/router';
 
 import { environment } from '../environments/environment';
 import { routes } from './app.routes';
-import { GlobalErrorHandlerService } from './error-routing/error/global-error-handler.service';
+import { GlobalErrorHandler } from './error-routing/error/global-error-handler';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -14,6 +14,6 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     importProvidersFrom(BrowserModule, HammerModule),
     provideAnimations(),
-    ...(environment.production ? [{ provide: ErrorHandler, useClass: GlobalErrorHandlerService }] : [])
+    ...(environment.production ? [{ provide: ErrorHandler, useClass: GlobalErrorHandler }] : [])
   ]
 };
