@@ -10,7 +10,7 @@ export abstract class BaseOidcProvider implements AuthProvider {
     protected configId: string) { }
 
   public login() {
-    this.oidcSecurityService.authorize();
+    this.oidcSecurityService.authorize(this.configId);
   }
 
   public async getUserInfo(): Promise<ExternalLogin> {
@@ -25,9 +25,9 @@ export abstract class BaseOidcProvider implements AuthProvider {
   }
 
   public logout() {
-    this.oidcSecurityService.logoff().subscribe();
+    this.oidcSecurityService.logoff(this.configId).subscribe();
   }
 
   /** Format received user data per provider claims */
-  protected abstract formatUserData(userData: { [key: string]: any; }): Promise<ExternalLogin>;
+  protected abstract formatUserData(userData: any): Promise<ExternalLogin>;
 }

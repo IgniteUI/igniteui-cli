@@ -26,6 +26,6 @@ export const appConfig: ApplicationConfig = {
       IgxRippleModule,
     ),
     provideAnimations(),
-    ...provideAuthentication()
+    provideAuthentication()
   ]
 };

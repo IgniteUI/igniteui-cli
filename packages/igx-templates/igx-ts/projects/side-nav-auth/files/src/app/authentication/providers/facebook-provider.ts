@@ -25,14 +25,14 @@ export class FacebookProvider implements AuthProvider {
       if (response.authResponse) {
         FB.api(
           '/me?fields=id,email,name,first_name,last_name,picture',
-          (newResponse: { [key: string]: any; }) => {
+          (newResponse: any) => {
             this.user = {
-              id: newResponse['id'],
-              name: newResponse['name'],
-              given_name: newResponse['first_name'],
-              family_name: newResponse['last_name'],
-              email: newResponse['email'],
-              picture: newResponse['picture'],
+              id: newResponse.id,
+              name: newResponse.name,
+              given_name: newResponse.first_name,
+              family_name: newResponse.last_name,
+              email: newResponse.email,
+              picture: newResponse.picture,
               externalToken: FB.getAuthResponse()?.[accessToken] ?? ''
             };
             this.router.navigate([this.externalStsConfig.redirect_url]);
