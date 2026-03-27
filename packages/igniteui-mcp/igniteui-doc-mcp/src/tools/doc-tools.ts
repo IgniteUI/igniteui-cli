@@ -5,8 +5,9 @@ export const MISSING_FRAMEWORK_MESSAGE =
   'Which framework are you using? Please specify one of: angular, react, blazor, or webcomponents.';
 
 // Sanitize user input for FTS4 MATCH syntax.
-// Strip characters that are FTS4 operators or cause syntax errors:
-//   " (phrase delimiter), ( ) (grouping), : (column filter), @ (internal)
+// Strip characters that are FTS4 operators or commonly cause syntax issues:
+//   " (phrase delimiter), ( ) (grouping), { } [ ] (extra grouping/bracketing),
+//   : (column filter), @ (internal)
 // Preserve hyphens — the porter tokenizer handles them consistently
 // at both index and query time (e.g. "grid-editing" stays as one phrase).
 // Preserve trailing * — FTS4 prefix queries (e.g. grid*) rely on it,
