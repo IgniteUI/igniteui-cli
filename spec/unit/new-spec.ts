@@ -391,7 +391,7 @@ describe("Unit - New command", () => {
 		let copyAISpy: jasmine.Spy;
 
 		beforeEach(() => {
-			copyAISpy = spyOn(aiSkillsModule, "copyAISkillsToProject").and.returnValue(Promise.resolve());
+			copyAISpy = spyOn(aiSkillsModule, "copyAISkillsToProject");
 		});
 
 		function buildHandlerSetup() {

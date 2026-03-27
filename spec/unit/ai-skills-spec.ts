@@ -1,17 +1,12 @@
 import { App, Config, IFileSystem, ProjectConfig } from "@igniteui/cli-core";
-import * as path from "path";
 import { copyAISkillsToProject } from "../../packages/cli/lib/ai-skills";
 
-const MOCK_CWD = path.join("C:", "projects", "my-app");
-const NODE_MODULES = path.join(MOCK_CWD, "node_modules");
-
 function skillsDir(pkgName: string) {
-	return path.join(NODE_MODULES, pkgName, "skills");
+	return `node_modules/${pkgName}/skills`;
 }
 
 function skillFile(pkgName: string, file: string) {
-	// glob in FsFileSystem returns forward-slash paths
-	return skillsDir(pkgName).replace(/\\/g, "/") + "/" + file;
+	return `${skillsDir(pkgName)}/${file}`;
 }
 
 function makeFs(overrides: Partial<IFileSystem> = {}): IFileSystem {
@@ -26,16 +21,6 @@ function makeFs(overrides: Partial<IFileSystem> = {}): IFileSystem {
 }
 
 describe("Unit - copyAISkillsToProject", () => {
-	let mockCwd: jasmine.Spy;
-
-	beforeEach(() => {
-		mockCwd = spyOn(process, "cwd").and.returnValue(MOCK_CWD);
-	});
-
-	afterEach(() => {
-		mockCwd.and.callThrough();
-	});
-
 	describe("Angular framework", () => {
 		it("should copy skills from igniteui-angular into .claude/skills/", async () => {
 			const angularSkillsDir = skillsDir("igniteui-angular");
@@ -49,7 +34,7 @@ describe("Unit - copyAISkillsToProject", () => {
 					return false; // dest file does not exist yet
 				}),
 				readFile: jasmine.createSpy("readFile").and.callFake((p: string) => {
-					if (p === skillFilePath.replace(/\//g, path.sep)) return mockSkillContent;
+					if (p === skillFilePath) return mockSkillContent;
 					return "";
 				}),
 				directoryExists: jasmine.createSpy("directoryExists").and.callFake((p: string) =>
@@ -69,8 +54,7 @@ describe("Unit - copyAISkillsToProject", () => {
 
 			await copyAISkillsToProject();
 
-			const expectedDest = path.join(MOCK_CWD, ".claude", "skills", "angular.md");
-			expect(fs.writeFile).toHaveBeenCalledWith(expectedDest, mockSkillContent);
+			expect(fs.writeFile).toHaveBeenCalledWith(".claude/skills/angular.md", mockSkillContent);
 		});
 
 		it("should prefer the licensed @infragistics/igniteui-angular package if installed", async () => {
@@ -107,19 +91,16 @@ describe("Unit - copyAISkillsToProject", () => {
 
 			await copyAISkillsToProject();
 
-			const expectedDest = path.join(MOCK_CWD, ".claude", "skills", "angular.md");
-			expect(fs.writeFile).toHaveBeenCalledWith(expectedDest, "skill content");
+			expect(fs.writeFile).toHaveBeenCalledWith(".claude/skills/angular.md", "skill content");
 		});
 
 		it("should not overwrite an existing skill file", async () => {
 			const angularSkillsDir = skillsDir("igniteui-angular");
 			const skillFilePath = skillFile("igniteui-angular", "angular.md");
-			const destFile = path.join(MOCK_CWD, ".claude", "skills", "angular.md");
-
 			const fs = makeFs({
 				fileExists: jasmine.createSpy("fileExists").and.callFake((p: string) => {
 					if (p === "ignite-ui-cli.json") return true;
-					if (p === destFile) return true; // already exists
+					if (p === ".claude/skills/angular.md") return true; // already exists
 					return false;
 				}),
 				directoryExists: jasmine.createSpy("directoryExists").and.callFake((p: string) =>
@@ -155,7 +136,7 @@ describe("Unit - copyAISkillsToProject", () => {
 					return false;
 				}),
 				readFile: jasmine.createSpy("readFile").and.callFake((p: string) => {
-					if (p === file.replace(/\//g, path.sep)) return content;
+					if (p === file) return content;
 					return "";
 				}),
 				directoryExists: jasmine.createSpy("directoryExists").and.callFake((p: string) =>
@@ -175,8 +156,7 @@ describe("Unit - copyAISkillsToProject", () => {
 
 			await copyAISkillsToProject();
 
-			const dest = path.join(MOCK_CWD, ".claude", "skills", "overview.md");
-			expect(fs.writeFile).toHaveBeenCalledWith(dest, content);
+			expect(fs.writeFile).toHaveBeenCalledWith(".claude/skills/overview.md", content);
 		});
 	});
 
@@ -194,7 +174,7 @@ describe("Unit - copyAISkillsToProject", () => {
 					return false;
 				}),
 				readFile: jasmine.createSpy("readFile").and.callFake((p: string) => {
-					if (p === file.replace(/\//g, path.sep)) return content;
+					if (p === file) return content;
 					return "";
 				}),
 				directoryExists: jasmine.createSpy("directoryExists").and.callFake((p: string) =>
@@ -214,8 +194,7 @@ describe("Unit - copyAISkillsToProject", () => {
 
 			await copyAISkillsToProject();
 
-			const dest = path.join(MOCK_CWD, ".claude", "skills", "webcomponents.md");
-			expect(fs.writeFile).toHaveBeenCalledWith(dest, content);
+			expect(fs.writeFile).toHaveBeenCalledWith(".claude/skills/webcomponents.md", content);
 		});
 	});
 
@@ -247,8 +226,7 @@ describe("Unit - copyAISkillsToProject", () => {
 
 			// With multiple roots, the dest path is prefixed; angular is the only root found here
 			// but since we scan ALL packages and only one directory exists, roots.length === 1 → no prefix
-			const dest = path.join(MOCK_CWD, ".claude", "skills", "angular.md");
-			expect(fs.writeFile).toHaveBeenCalledWith(dest, "skill content");
+			expect(fs.writeFile).toHaveBeenCalledWith(".claude/skills/angular.md", "skill content");
 		});
 	});
 
@@ -330,8 +308,7 @@ describe("Unit - copyAISkillsToProject", () => {
 
 			await copyAISkillsToProject();
 
-			const expectedDest = path.join(MOCK_CWD, ".claude", "skills", "grids", "grid.md");
-			expect(fs.writeFile).toHaveBeenCalledWith(expectedDest, content);
+			expect(fs.writeFile).toHaveBeenCalledWith(".claude/skills/grids/grid.md", content);
 		});
 	});
 });

@@ -1,8 +1,8 @@
 import * as ts from "typescript";
-import { DependencyNotFoundException, normalize, relative } from "@angular-devkit/core";
-import { apply, chain, FileDoesNotExistException, filter, MergeStrategy, mergeWith, move, Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
+import { DependencyNotFoundException } from "@angular-devkit/core";
+import { chain, FileDoesNotExistException, Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
 import { ScopedTree } from "@angular-devkit/schematics/src/tree/scoped";
-import { addClassToBody, FormatSettings, NPM_ANGULAR, resolvePackage, TypeScriptAstTransformer, TypeScriptUtils } from "@igniteui/cli-core";
+import { addClassToBody, copyAISkillsToProject, FormatSettings, NPM_ANGULAR, resolvePackage, TypeScriptAstTransformer, TypeScriptUtils } from "@igniteui/cli-core";
 import { AngularTypeScriptFileUpdate } from "@igniteui/angular-templates";
 import { createCliConfig } from "../utils/cli-config";
 import { setVirtual } from "../utils/NgFileSystem";
@@ -123,35 +123,12 @@ function importStyles(): Rule {
 	};
 }
 
-const CLAUDE_SKILLS_DIR = ".claude/skills";
-
 function addAISkillsFiles(options: CliConfigOptions): Rule {
-	return (tree: Tree, context: SchematicContext) => {
+	return () => {
 		if (!options.addAISkills) {
 			return;
 		}
-
-		const igxPackage = resolvePackage(NPM_ANGULAR);
-		const skillsSourceDir = normalize(`/node_modules/${igxPackage}/skills`);
-		const skillsDir = tree.getDir(skillsSourceDir);
-
-		if (!skillsDir.subfiles.length && !skillsDir.subdirs.length) {
-			return;
-		}
-
-		const skillsSource = () => {
-			const skillsTree = Tree.empty();
-			skillsDir.visit((filePath) => {
-				skillsTree.create(relative(skillsSourceDir, filePath), tree.read(filePath)!);
-			});
-			return skillsTree;
-		};
-
-		context.logger.info(`Added Ignite UI for Angular agent skill files to ${CLAUDE_SKILLS_DIR}.`);
-		return mergeWith(apply(skillsSource, [
-			filter(path => !tree.exists(`/${CLAUDE_SKILLS_DIR}${path}`)),
-			move(CLAUDE_SKILLS_DIR)
-		]), MergeStrategy.Default)(tree, context);
+		copyAISkillsToProject();
 	};
 }
 
