@@ -14,7 +14,7 @@ class GridTemplate extends IgniteUIForReactTemplate {
 		this.projectType = "igr-ts";
 		this.components = ["Grid"];
 		this.controlGroup = "Data Grids";
-		this.packages = ["igniteui-react-grids@~19.6.0",];
+		this.packages = ["igniteui-react-grids@~19.6.0"];
 
 		this.hasExtraConfiguration = false;
 	}
