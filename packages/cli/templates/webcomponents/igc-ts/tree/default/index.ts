@@ -11,10 +11,10 @@ class IgcTreeTemplate extends IgniteUIForWebComponentsTemplate {
 		this.name = "Tree";
 		this.description = "basic IgcTree";
 		this.packages = [
-			"igniteui-webcomponents-core@~6.0.0",
-			"igniteui-webcomponents-grids@~6.0.0",
-			"igniteui-webcomponents-inputs@~6.0.0",
-			"igniteui-webcomponents-layouts@~6.0.0"
+			"igniteui-webcomponents-core@~7.0.0",
+			"igniteui-webcomponents-grids@~7.0.0",
+			"igniteui-webcomponents-inputs@~7.0.0",
+			"igniteui-webcomponents-layouts@~7.0.0"
 		];
 	}
 }
