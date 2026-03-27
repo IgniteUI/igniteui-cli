@@ -54,13 +54,13 @@ Add to `.vscode/mcp.json`:
     "igniteui": {
       "command": "npx",
       "args": ["-y", "igniteui-cli@next", "mcp"]
-    },
+    }
   }
 }
 ```
 
 ### Claude Desktop
-If IgniteUi ClI is globbaly installed you can configure the MCP like this: 
+If IgniteUI CLI is globally installed you can configure the MCP like this:
 
 Add to `claude_desktop_config.json`:
 
@@ -70,12 +70,12 @@ Add to `claude_desktop_config.json`:
     "igniteui": {
       "command": "npx",
       "args": ["-y", "igniteui-cli@next", "mcp"]
-    },
+    }
   }
 }
 ```
 ### Cursor
-If IgniteUi ClI is globbaly installed you can configure the MCP like this:
+If IgniteUI CLI is globally installed you can configure the MCP like this:
 
 Add to Cursor MCP settings:
 
@@ -85,7 +85,7 @@ Add to Cursor MCP settings:
     "igniteui": {
       "command": "npx",
       "args": ["-y", "igniteui-cli@next", "mcp"]
-    },
+    }
   }
 }
 ```
