@@ -27,14 +27,15 @@ import { ExternalAuthRedirectUrl } from './services/external-auth';
 
 // export const microsoftOidcConfig: OpenIdConfiguration = {
 //   configId: ExternalAuthProvider.Microsoft,
-//   authority: 'https://login.microsoftonline.com/consumers/v2.0/',
+//   authority: 'https://login.microsoftonline.com/<YOUR_MICROSOFT_TENANT_ID>/v2.0/',
 //   redirectUrl: `${window.location.origin}/${ExternalAuthRedirectUrl.Microsoft}`,
 //   postLogoutRedirectUri: window.location.origin,
 //   clientId: 'YOUR_MICROSOFT_CLIENT_ID',
 //   scope: 'openid profile email',
 //   responseType: 'code',
 //   silentRenew: true,
-//   useRefreshToken: true
+//   useRefreshToken: true,
+//   strictIssuerValidationOnWellKnownRetrievalOff: true
 // };
 
 /** Active OIDC provider configurations. Uncomment entries above and add them here to enable social login. */

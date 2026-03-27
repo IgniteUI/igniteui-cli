@@ -10,7 +10,7 @@ import { JwtInterceptor } from './services/jwt.interceptor';
  * Pass OIDC provider configurations via `configs` to enable social login.
  * See `authentication/oidc-configs.ts` for available provider configuration templates.
  */
-export function provideAuthentication(configs: OpenIdConfiguration[] = []): Array<Provider | EnvironmentProviders> {
+export function provideAuthentication(configs: OpenIdConfiguration[] = []): (Provider | EnvironmentProviders)[] {
   return [
     provideAuth({ config: configs }),
     provideHttpClient(withInterceptorsFromDi()),
