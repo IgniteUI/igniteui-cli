@@ -8,7 +8,7 @@ import { ExternalAuthRedirectUrl } from './services/external-auth';
  * To enable a provider:
  *  1. Uncomment the corresponding configuration object.
  *  2. Replace the placeholder values with your actual client ID and authority URL.
- *  3. Ensure the matching `addGoogle()`, `addMicrosoft()` call is uncommented in `app.ts`.
+ *  3. Uncomment the matching `addGoogle()`, `addMicrosoft()`, or `addFacebook()` call in `authentication/provide-authentication.ts`.
  *
  * See https://github.com/damienbod/angular-auth-oidc-client for full configuration options.
  */
