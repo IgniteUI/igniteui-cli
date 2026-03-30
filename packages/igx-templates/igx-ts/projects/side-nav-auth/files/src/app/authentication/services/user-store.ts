@@ -34,7 +34,17 @@ export class UserStore {
 
   constructor(private localStorage: LocalStorageService) {
     const storedUser = this.localStorage.getItem(USER_TOKEN);
-    this._currentUser = storedUser ? JSON.parse(storedUser) : null;
+    if (storedUser && storedUser !== 'undefined') {
+      try {
+        this._currentUser = JSON.parse(storedUser);
+      } catch {
+        // Malformed JSON in storage; clear it and fall back to no current user.
+        this._currentUser = null;
+        this.localStorage.removeItem(USER_TOKEN);
+      }
+    } else {
+      this._currentUser = null;
+    }
   }
 
   /** Save new login as current user */
