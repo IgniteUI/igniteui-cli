@@ -1,3 +1,5 @@
+export const AUTH_BASE_PATH = 'auth';
+
 export enum ExternalAuthProvider {
   Facebook = 'Facebook',
   Google = 'Google',

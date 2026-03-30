@@ -135,7 +135,7 @@ describe('LoginBar', () => {
 
     component.igxDropDown.open();
     component.igxDropDown.setSelectedItem(0);
-    expect(router.navigate).toHaveBeenCalledWith(['/profile']);
+    expect(router.navigate).toHaveBeenCalledWith(['/auth/profile']);
 
     component.igxDropDown.setSelectedItem(1);
     expect(router.navigate).toHaveBeenCalledWith(['/home']);

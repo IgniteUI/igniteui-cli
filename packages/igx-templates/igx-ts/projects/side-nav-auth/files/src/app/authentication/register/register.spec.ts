@@ -77,7 +77,7 @@ describe('Register', () => {
     });
     expect(userServSpy.setCurrentUser).toHaveBeenCalledWith({ name: 'John Doe' });
     expect(component.registered.emit).toHaveBeenCalled();
-    expect(routerSpy.navigate).toHaveBeenCalledWith(['/profile']);
+    expect(routerSpy.navigate).toHaveBeenCalledWith(['/auth/profile']);
     authSpy.register.mockResolvedValue({
       error: 'Reg error'
     });

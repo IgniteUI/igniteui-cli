@@ -7,7 +7,7 @@ import { AuthProvider } from '../providers/auth-provider';
 import { FacebookProvider } from '../providers/facebook-provider';
 import { GoogleProvider } from '../providers/google-provider';
 import { MicrosoftProvider } from '../providers/microsoft-provider';
-import { ExternalAuthConfig, ExternalAuthProvider } from './external-auth-configs';
+import { ExternalAuthConfig, ExternalAuthProvider, AUTH_BASE_PATH } from './external-auth-configs';
 import { LocalStorageService } from './local-storage';
 
 export enum ExternalAuthRedirectUrl {
@@ -52,7 +52,7 @@ export class ExternalAuth {
   public addFacebook(clientID: string) {
     const fbConfig: ExternalAuthConfig = {
       client_id: clientID,
-      redirect_url: ExternalAuthRedirectUrl.Facebook
+      redirect_url: `/${AUTH_BASE_PATH}/${ExternalAuthRedirectUrl.Facebook}`
     };
 
     this.providers.set(

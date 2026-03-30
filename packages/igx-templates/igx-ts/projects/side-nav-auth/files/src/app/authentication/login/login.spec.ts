@@ -68,7 +68,7 @@ describe('Login', () => {
     });
     expect(userServSpy.setCurrentUser).toHaveBeenCalledWith({ name: 'TEST' });
     expect(component.loggedIn.emit).toHaveBeenCalled();
-    expect(router.navigate).toHaveBeenCalledWith(['/profile']);
+    expect(router.navigate).toHaveBeenCalledWith(['/auth/profile']);
 
     authSpy.login.mockResolvedValue({
       error: 'Err'

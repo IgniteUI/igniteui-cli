@@ -31,7 +31,7 @@ export class Redirect implements OnInit {
       const result = await this.authentication.loginWith(userInfo);
       if (!result.error) {
         this.userStore.setCurrentUser(result.user!);
-        this.router.navigate(['/profile']);
+        this.router.navigate(['/auth/profile']);
       } else {
         alert(result.error);
       }

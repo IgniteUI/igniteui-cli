@@ -6,7 +6,7 @@ import { FacebookProvider } from '../providers/facebook-provider';
 import { GoogleProvider } from '../providers/google-provider';
 import { MicrosoftProvider } from '../providers/microsoft-provider';
 import { Authentication } from './authentication';
-import { ExternalAuthProvider } from './external-auth-configs';
+import { ExternalAuthProvider, AUTH_BASE_PATH } from './external-auth-configs';
 import { ExternalAuthRedirectUrl, ExternalAuth } from './external-auth';
 import { BackendInterceptor } from './fake-backend';
 import * as JWTUtil from './jwt-util';
@@ -119,7 +119,7 @@ describe('Services', () => {
       const providersSpy = vi.spyOn((extAuthServ as any).providers, 'set');
       const configParams = {
         client_id: 'test',
-        redirect_url: ExternalAuthRedirectUrl.Facebook
+        redirect_url: `/${AUTH_BASE_PATH}/${ExternalAuthRedirectUrl.Facebook}`
       } as any;
       extAuthServ.addFacebook('test');
       expect(providersSpy).toHaveBeenCalled();

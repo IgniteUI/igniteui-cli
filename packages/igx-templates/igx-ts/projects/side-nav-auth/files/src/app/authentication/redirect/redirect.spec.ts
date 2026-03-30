@@ -47,7 +47,7 @@ describe('Redirect', () => {
     expect(extAuthSpy.getUserInfo).toHaveBeenCalled();
     expect(authSpy.loginWith).toHaveBeenCalledWith({ test: '1' });
     expect(userServSpy.setCurrentUser).toHaveBeenCalledWith({ name: 'TEST' });
-    expect(router.navigate).toHaveBeenCalledWith(['/profile']);
+    expect(router.navigate).toHaveBeenCalledWith(['/auth/profile']);
   });
 
   it('should show err on external login', async () => {

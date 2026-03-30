@@ -51,7 +51,7 @@ export class Login {
     const response = await this.authentication.login(this.loginForm.value);
     if (!response.error) {
       this.userStore.setCurrentUser(response.user!);
-      this.router.navigate(['/profile']);
+      this.router.navigate(['/auth/profile']);
       this.loginForm.reset();
       // https://github.com/angular/angular/issues/15741
       Object.keys(this.loginForm.controls).forEach(key => {
