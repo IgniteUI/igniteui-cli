@@ -1,6 +1,6 @@
 import style from './style.module.css';
 import { IgrCard, IgrCardHeader, IgrCardContent, IgrCardActions, IgrButton } from 'igniteui-react';
-import 'igniteui-react/themes/light/bootstrap.css';
+import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
 export default function $(ClassName)() {
   return (
