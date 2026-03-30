@@ -14,7 +14,6 @@ import {
   IgxLabelDirective,
 } from '<%=igxPackage%>';
 import { Region, Town, townsExtended } from './towns-data-extended';
-import { NgFor } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @Component({
@@ -29,7 +28,6 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     IgxAutocompleteDirective,
     FormsModule,
     IgxDropDownComponent,
-    NgFor,
     IgxDropDownGroupComponent,
     IgxDropDownItemComponent,
     IgxToastComponent,

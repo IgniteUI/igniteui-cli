@@ -22,14 +22,17 @@
         [(ngModel)]="townSelected"/>
     </igx-input-group>
     <igx-drop-down #townsEnhancedPanel maxHeight="300px" (selectionChanging)="getPostalCode($event)">
+      @for (eRegion of regions | <%=camelCaseName%>RegionContains:townSelected; track eRegion) {
       <igx-drop-down-item-group
-	  *ngFor="let eRegion of regions | <%=camelCaseName%>RegionContains:townSelected"
         [label]="eRegion.name">
-        <igx-drop-down-item *ngFor="let town of eRegion.towns | <%=camelCaseName%>StartsWith:townSelected"
+        @for (town of eRegion.towns | <%=camelCaseName%>StartsWith:townSelected; track town) {
+        <igx-drop-down-item
           [value]="town.name">
           {{town.name}}
         </igx-drop-down-item>
+        }
       </igx-drop-down-item-group>
+      }
     </igx-drop-down>
 
     <igx-toast #message>Postal Code: {{postalCode}}"</igx-toast>

@@ -10,13 +10,16 @@
     <igx-icon>search</igx-icon>
   </igx-prefix>
   <input #search igxInput placeholder="Search Contacts" [(ngModel)]="searchContact">
-  <igx-suffix *ngIf="search.value.length > 0" (click)="searchContact = ''">
+  @if (search.value.length > 0) {
+  <igx-suffix (click)="searchContact = ''">
     <igx-icon>clear</igx-icon>
   </igx-suffix>
+  }
 </igx-input-group>
 <igx-list>
   <igx-list-item [isHeader]="true"> Contacts </igx-list-item>
-  <igx-list-item #item *ngFor="let contact of contacts | igxFilter: filterContacts;">
+  @for (contact of contacts | igxFilter: filterContacts; track contact) {
+  <igx-list-item #item>
     <div class="item-container">
       <div class="contact">
         <igx-avatar [src]="contact.photo" [shape]="'square'"></igx-avatar>
@@ -29,4 +32,5 @@
       </igx-icon>
     </div>
   </igx-list-item>
+  }
 </igx-list>
