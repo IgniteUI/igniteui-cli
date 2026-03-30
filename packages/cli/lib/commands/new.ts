@@ -1,6 +1,5 @@
 import { GoogleAnalytics, PackageManager, ProjectConfig, ProjectLibrary, Util } from "@igniteui/cli-core";
 import * as path from "path";
-import { copyAISkillsToProject } from "../ai-skills";
 import { PromptSession } from "./../PromptSession";
 import { NewCommandType, PositionalArgs } from "./types";
 import { TemplateManager } from "../TemplateManager";
@@ -155,7 +154,6 @@ const command: NewCommandType = {
 		if (!argv.skipInstall) {
 			process.chdir(argv.name);
 			await PackageManager.installPackages();
-			await copyAISkillsToProject();
 			process.chdir("..");
 		}
 

@@ -49,15 +49,16 @@ function resolveSkillsRoots(): string[] {
  * Copies skill files from the installed Ignite UI package(s) into .claude/skills/.
  * Works with both real FS (CLI) and virtual Tree FS (schematics) through IFileSystem.
  */
-export function copyAISkillsToProject(): void {
+export function copyAISkillsToProject(): "copied" | "up-to-date" | "no-source" {
 	const fs = App.container.get<IFileSystem>(FS_TOKEN);
 	const skillsRoots = resolveSkillsRoots();
 
 	if (!skillsRoots.length) {
-		return;
+		return "no-source";
 	}
 
 	const multiRoot = skillsRoots.length > 1;
+	let copied = false;
 
 	for (const skillsRoot of skillsRoots) {
 		const rawPaths = fs.glob(skillsRoot, "**/*");
@@ -76,7 +77,9 @@ export function copyAISkillsToProject(): void {
 			if (!fs.fileExists(dest)) {
 				fs.writeFile(dest, fs.readFile(p));
 				Util.log(`${Util.greenCheck()} Created ${dest}`);
+				copied = true;
 			}
 		}
 	}
+	return copied ? "copied" : "up-to-date";
 }

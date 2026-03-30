@@ -3,12 +3,6 @@
   "$id": "igniteui-angular-cli-config",
   "title": "Ignite UI for Angular CLI Config Options Schema",
   "type": "object",
-  "properties": {
-    "addAISkills": {
-      "type": "boolean",
-      "description": "Add AI coding skills for your IDE",
-      "default": true
-    }
-  },
+  "properties": {},
   "required": []
 }

@@ -2,14 +2,13 @@ import * as ts from "typescript";
 import { DependencyNotFoundException } from "@angular-devkit/core";
 import { chain, FileDoesNotExistException, Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
 import { ScopedTree } from "@angular-devkit/schematics/src/tree/scoped";
-import { addClassToBody, copyAISkillsToProject, FormatSettings, NPM_ANGULAR, resolvePackage, TypeScriptAstTransformer, TypeScriptUtils } from "@igniteui/cli-core";
+import { addClassToBody, FormatSettings, NPM_ANGULAR, resolvePackage, TypeScriptAstTransformer, TypeScriptUtils } from "@igniteui/cli-core";
 import { AngularTypeScriptFileUpdate } from "@igniteui/angular-templates";
 import { createCliConfig } from "../utils/cli-config";
 import { setVirtual } from "../utils/NgFileSystem";
 import { addFontsToIndexHtml, getProjects, importDefaultTheme } from "../utils/theme-import";
 
 interface CliConfigOptions {
-	addAISkills?: boolean;
 	directory?: string;
 }
 
@@ -123,15 +122,6 @@ function importStyles(): Rule {
 	};
 }
 
-function addAISkillsFiles(options: CliConfigOptions): Rule {
-	return () => {
-		if (!options.addAISkills) {
-			return;
-		}
-		copyAISkillsToProject();
-	};
-}
-
 export default function (options: CliConfigOptions = {}): Rule {
 	return (originalTree: Tree, context: SchematicContext) => {
 		const tree = options.directory ? new ScopedTree(originalTree, options.directory) : originalTree;
@@ -141,8 +131,7 @@ export default function (options: CliConfigOptions = {}): Rule {
 			addTypographyToProj(),
 			importBrowserAnimations(),
 			createCliConfig(),
-			displayVersionMismatch(),
-			addAISkillsFiles(options)
+			displayVersionMismatch()
 		];
 		return chain(rules)(tree, context);
 	};
