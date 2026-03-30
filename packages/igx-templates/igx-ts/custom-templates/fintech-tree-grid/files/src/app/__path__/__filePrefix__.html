@@ -21,22 +21,28 @@
     </div>
   </div>
   <div class="sample-toolbar">
-    <span *ngIf="buttonSelected === 1">Feeding {{volume}} records every {{frequency / 1000}} sec.
+    @if (buttonSelected === 1) {
+    <span>Feeding {{volume}} records every {{frequency / 1000}} sec.
       {{volume}} records updated. </span>
-    <span *ngIf="buttonSelected === 0">Feeding {{volume}} records every {{frequency / 1000}} sec.
+    }
+    @if (buttonSelected === 0) {
+    <span>Feeding {{volume}} records every {{frequency / 1000}} sec.
       ~{{volume/5}} records updated.</span>
+    }
   </div>
   <igx-tree-grid #grid1 igxPreventDocumentScroll
     [data]="data | treeGridGrouping:groupColumns:aggregations:groupColumnKey:primaryKey:childDataKey"
     height="90%" width="100%" [autoGenerate]="false" displayDensity="compact"
     [primaryKey]="primaryKey" [childDataKey]="childDataKey" hiddenColumnsText="Hidden"
     [rowSelection]="selectionMode" [allowFiltering]="true" filterMode="excelStyleFilter" [moving]="true">
-    <igx-grid-toolbar *ngIf="showToolbar">
+    @if (showToolbar) {
+    <igx-grid-toolbar>
       <igx-grid-toolbar-actions>
         <igx-grid-toolbar-hiding title="Indicators"></igx-grid-toolbar-hiding>
         <igx-grid-toolbar-exporter [exportCSV]="false"></igx-grid-toolbar-exporter>
       </igx-grid-toolbar-actions>
     </igx-grid-toolbar>
+    }
 
     <!-- Empty templates for Sorting,Moving,Hiding, Pinning actions inside ESF dialog -->
     <!-- <ng-template igxExcelStyleSorting></ng-template>
@@ -53,8 +59,12 @@
       <ng-template igxCell let-cell="cell">
         <div class="finjs-icons">
           <span>{{cell.value | currency:'USD':'symbol':'1.4-4'}}</span>
-          <igx-icon *ngIf="trends.positive(cell.row.data)">trending_up</igx-icon>
-          <igx-icon *ngIf="trends.negative(cell.row.data)">trending_down</igx-icon>
+          @if (trends.positive(cell.row.data)) {
+          <igx-icon>trending_up</igx-icon>
+          }
+          @if (trends.negative(cell.row.data)) {
+          <igx-icon>trending_down</igx-icon>
+          }
         </div>
       </ng-template>
     </igx-column>

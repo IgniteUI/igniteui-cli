@@ -5,7 +5,6 @@ import {
   Validators,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { NgIf } from '@angular/common';
 import {
   IgxInputGroupComponent,
   IgxPrefixDirective,
@@ -29,7 +28,6 @@ import {
     IgxInputDirective,
     IgxButtonDirective,
     IgxRippleDirective,
-    NgIf
   ]
 })
 export class <%=ClassName%> {

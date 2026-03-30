@@ -20,17 +20,25 @@
         <ng-template igxCell let-cell="cell">
           <div class="cell__inner">
             <div>{{ paginator.page * paginator.perPage + cell.row.index + 1 }}</div>
-            <ng-container *ngIf="isTop3(cell)">
-              <span class="cup" *ngIf="cell.row.index === 0">
+            @if (isTop3(cell)) {
+            <ng-container>
+              @if (cell.row.index === 0) {
+              <span class="cup">
                 <img src="assets/images/trophy_gold.svg" alt="First place Trophy image" />
               </span>
-              <span class="cup" *ngIf="cell.row.index === 1">
+              }
+              @if (cell.row.index === 1) {
+              <span class="cup">
                 <img src="assets/images/trophy_silver.svg" alt="Second place Trophy image" />
               </span>
-              <span class="cup" *ngIf="cell.row.index === 2">
+              }
+              @if (cell.row.index === 2) {
+              <span class="cup">
                 <img src="assets/images/trophy_bronze.svg" alt="Third place Trophy image" />
               </span>
+              }
             </ng-container>
+            }
           </div>
         </ng-template>
       </igx-column>
@@ -40,7 +48,9 @@
           <div class="cell__inner">
             <igx-avatar [src]="cell.row.data.Avatar" [shape]="'square'" size="small"> </igx-avatar><span
               class="athlete_name">{{ cell.value }}</span>
-            <igx-badge *ngIf="live" [type]="getBadgeType(cell)" [icon]="getIconType(cell)"></igx-badge>
+            @if (live) {
+            <igx-badge [type]="getBadgeType(cell)" [icon]="getIconType(cell)"></igx-badge>
+            }
           </div>
 
         </ng-template>
@@ -116,7 +126,8 @@
           <span>Finish</span>
         </div>
         <div class="s-overlay__players">
-          <ng-container *ngFor="let player of top3; let i = index">
+          @for (player of top3; track $index; let i = $index) {
+          <ng-container>
             <div class="s-overlay__player"
               [ngClass]="i === 0 ? 's-overlay__player--winner' : i === 1 ? 's-overlay__player--second' : 's-overlay__player--third'">
               <div class="s-overlay__trophy">
@@ -127,6 +138,7 @@
               <p class="s-overlay__player-name">{{ player.Name }}</p>
             </div>
           </ng-container>
+          }
         </div>
       </div>
     </div>

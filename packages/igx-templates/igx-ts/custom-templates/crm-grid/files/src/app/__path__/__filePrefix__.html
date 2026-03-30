@@ -13,23 +13,34 @@
           <div class="sample-flex-container">
             <igx-input-group type="search" class="searchInputGroup">
               <igx-prefix>
-                <igx-icon class="prefixIcon" *ngIf="searchText.length === 0">search</igx-icon>
-                <igx-icon class="prefixIcon" *ngIf="searchText.length > 0" (click)="clearSearch()">clear</igx-icon>
+                @if (searchText.length === 0) {
+                <igx-icon class="prefixIcon">search</igx-icon>
+                }
+                @if (searchText.length > 0) {
+                <igx-icon class="prefixIcon" (click)="clearSearch()">clear</igx-icon>
+                }
               </igx-prefix>
 
               <input #search1 id="search1" class="searchInput" igxInput placeholder="Search" [(ngModel)]="searchText"
                 (ngModelChange)="grid1.findNext(searchText, caseSensitive)" (keydown)="searchKeyDown($event)" />
 
-              <igx-suffix *ngIf="searchText.length > 0">
-                <div class="resultsText" *ngIf="grid1.lastSearchInfo">
-                  <span *ngIf="grid1.lastSearchInfo.matchInfoCache.length > 0">
+              @if (searchText.length > 0) {
+              <igx-suffix>
+                @if (grid1.lastSearchInfo) {
+                <div class="resultsText">
+                  @if (grid1.lastSearchInfo.matchInfoCache.length > 0) {
+                  <span>
                     {{ grid1.lastSearchInfo.activeMatchIndex + 1 }} of {{
                     grid1.lastSearchInfo.matchInfoCache.length }} results
                   </span>
-                  <span *ngIf="grid1.lastSearchInfo.matchInfoCache.length === 0">
+                  }
+                  @if (grid1.lastSearchInfo.matchInfoCache.length === 0) {
+                  <span>
                     No results
                   </span>
+                  }
                 </div>
+                }
                 <div class="caseSensitiveButton">
                   <button igxButton="icon" igxRipple [igxRippleCentered]="true" (click)="updateSearch()"
                     igxButtonBackground="caseSensitive? 'rgb(73, 180, 254)' : 'transparent'">
@@ -47,6 +58,7 @@
                   </button>
                 </div>
               </igx-suffix>
+              }
             </igx-input-group>
           </div>
         </div>

@@ -32,7 +32,7 @@ import {
   IgxSparklineCoreModule,
 } from 'igniteui-angular-charts';
 import { Athlete, AthletesData, SpeedEntry } from './services/data';
-import { NgIf, NgClass, NgFor, DecimalPipe } from '@angular/common';
+import { NgClass, DecimalPipe } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @Component({
@@ -49,13 +49,11 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     IgxPaginatorComponent,
     IgxColumnComponent,
     IgxCellTemplateDirective,
-    NgIf,
     IgxAvatarComponent,
     IgxBadgeComponent,
     IgxSparklineCoreModule,
     IgxCircularProgressBarComponent,
     NgClass,
-    NgFor,
     DecimalPipe,
   ],
 })

@@ -1,4 +1,5 @@
-<form *ngIf="showLogin" class="input-group-form" [formGroup]="loginForm" (ngSubmit)="tryLogin()">
+@if (showLogin) {
+<form class="input-group-form" [formGroup]="loginForm" (ngSubmit)="tryLogin()">
   <h3>Welcome Back</h3>
   <igx-input-group>
     <igx-prefix>
@@ -17,10 +18,14 @@
   <button igxButton="raised" type="submit" igxRipple [disabled]="!loginForm.valid">LOG IN</button>
   <a (click)="showRegistrationForm()">Register</a>
 </form>
+}
 
-<div *ngIf="showSuccessLogin">You've successfully logged in</div>
+@if (showSuccessLogin) {
+<div>You've successfully logged in</div>
+}
 
-<form *ngIf="showRegister" class="input-group-form" [formGroup]="registrationForm" (ngSubmit)="tryRegister()">
+@if (showRegister) {
+<form class="input-group-form" [formGroup]="registrationForm" (ngSubmit)="tryRegister()">
   <h3>Create your account</h3>
   <igx-input-group>
     <label igxLabel for="firstName">First Name</label>
@@ -41,5 +46,8 @@
   <button igxButton="raised" type="submit" igxRipple [disabled]="!registrationForm.valid">SIGN UP</button>
   <a (click)="showLoginForm()">Log in</a>
 </form>
+}
 
-<div *ngIf="showSuccessRegister">You have successfully registered.</div>
+@if (showSuccessRegister) {
+<div>You have successfully registered.</div>
+}
