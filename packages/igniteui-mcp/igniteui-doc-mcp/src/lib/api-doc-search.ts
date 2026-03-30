@@ -59,7 +59,7 @@ export function extractSection(markdown: string, section: string): string | null
   const headingMap: Record<string, string[]> = {
     properties: ['properties', 'accessors'],
     methods: ['methods', 'functions'],
-    events: ['events', 'outputs'],
+    events: ['events', 'outputs', 'fires'],
   };
 
   const headings = headingMap[section.toLowerCase()] || [];
@@ -68,8 +68,9 @@ export function extractSection(markdown: string, section: string): string | null
   }
 
   const lines = markdown.split(/\r?\n/);
-  let startIndex = -1;
-  let endIndex = lines.length;
+  const matches: string[] = [];
+  let currentStart = -1;
+  let currentHeading = '';
 
   for (let index = 0; index < lines.length; index++) {
     const match = lines[index].match(/^##\s+(.+?)\s*$/);
@@ -79,20 +80,25 @@ export function extractSection(markdown: string, section: string): string | null
 
     const normalizedHeading = match[1].toLowerCase().replace(/\s+/g, ' ').trim();
 
-    if (startIndex === -1) {
-      if (headings.includes(normalizedHeading)) {
-        startIndex = index;
-      }
-      continue;
+    if (currentStart !== -1) {
+      matches.push(lines.slice(currentStart, index).join('\n').trimEnd());
+      currentStart = -1;
+      currentHeading = '';
     }
 
-    endIndex = index;
-    break;
+    if (headings.includes(normalizedHeading)) {
+      currentStart = index;
+      currentHeading = normalizedHeading;
+    }
   }
 
-  if (startIndex === -1) {
+  if (currentStart !== -1 && headings.includes(currentHeading)) {
+    matches.push(lines.slice(currentStart).join('\n').trimEnd());
+  }
+
+  if (matches.length === 0) {
     return null;
   }
 
-  return lines.slice(startIndex, endIndex).join('\n').trimEnd();
+  return matches.join('\n\n');
 }
