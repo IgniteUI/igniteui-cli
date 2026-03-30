@@ -6,12 +6,13 @@ import { appendFileSync, mkdirSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 import dotenv from "dotenv";
-import { TOOL_DESCRIPTIONS, SETUP_DOCS, SETUP_MD, BLAZOR_DOTNET_GUIDE, USAGE_GUIDE } from "./tools/constants.js";
+import { TOOL_DESCRIPTIONS, USAGE_GUIDE } from "./tools/constants.js";
 import type { DocsProvider } from "./providers/DocsProvider.js";
 import { RemoteDocsProvider } from "./providers/RemoteDocsProvider.js";
 import { LocalDocsProvider } from "./providers/LocalDocsProvider.js";
 import { getApiReferenceSchema, searchApiSchema } from "./tools/schemas.js";
 import { createGetApiReferenceHandler, createSearchApiHandler } from "./tools/handlers.js";
+import { buildProjectSetupGuide, sanitizeSearchDocsQuery } from "./tools/doc-tools.js";
 import { ApiDocLoader } from "./lib/api-doc-loader.js";
 import { getPlatforms } from "./config/platforms.js";
 
@@ -170,30 +171,7 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
         return { content: [{ type: "text" as const, text: "Empty query." }] };
       }
 
-      // Sanitize user input for FTS4 MATCH syntax.
-      // Strip characters that are FTS4 operators or cause syntax errors:
-      //   " (phrase delimiter), ( ) (grouping), : (column filter), @ (internal)
-      // Preserve hyphens — the porter tokenizer handles them consistently
-      // at both index and query time (e.g. "grid-editing" stays as one phrase).
-      // Preserve trailing * — FTS4 prefix queries (e.g. grid*) rely on it,
-      // and the DB is built with prefix="2,3" indexes to support this.
-      const sanitized = queryText
-        .replace(/["(){}[\]:@]/g, " ")
-        .split(/\s+/)
-        .filter(Boolean)
-        .map((term) => {
-          // Terms ending with * are prefix queries — don't quote them
-          // because FTS4 treats "grid*" as a literal match for the
-          // asterisk character, while unquoted grid* does prefix expansion.
-          // Drop terms that are only asterisks (e.g. *, **) — they have
-          // no actual prefix and would cause an FTS4 syntax error.
-          if (term.endsWith("*")) {
-            return /[^*]/.test(term) ? term : null;
-          }
-          return `"${term}"`;
-        })
-        .filter(Boolean)
-        .join(" OR ");
+      const sanitized = sanitizeSearchDocsQuery(queryText);
 
       if (!sanitized) {
         log("search_docs", { query: queryText, framework }, "Empty query after sanitization.", 0);
@@ -223,27 +201,7 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
     async ({ framework }) => {
       const start = performance.now();
 
-      if (!framework) {
-        const msg = "Which framework are you using? Please specify one of: angular, react, blazor, or webcomponents.";
-        log("get_project_setup_guide", {}, msg, 0);
-        return { content: [{ type: "text" as const, text: msg }] };
-      }
-
-      let result: string;
-
-      if (framework === "blazor") {
-        const docNames = SETUP_DOCS["blazor"] || [];
-        const sections: string[] = [BLAZOR_DOTNET_GUIDE];
-        for (const name of docNames) {
-          const { text, found } = await docsProvider.getDoc(framework, name);
-          if (found) {
-            sections.push(text);
-          }
-        }
-        result = sections.join("\n\n---\n\n");
-      } else {
-        result = SETUP_MD[framework] ?? `No setup guide available for framework: ${framework}`;
-      }
+      const result = await buildProjectSetupGuide(docsProvider, framework);
 
       log("get_project_setup_guide", { framework }, result, Math.round(performance.now() - start));
       return { content: [{ type: "text" as const, text: result }] };
