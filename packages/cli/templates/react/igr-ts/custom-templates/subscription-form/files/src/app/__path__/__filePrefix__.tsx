@@ -3,7 +3,7 @@ import { IgrInput, IgrCheckbox, IgrButton } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
 export default function $(ClassName)() {
-  const handleSubmit = (event: SubmitEvent) => {
+  const handleSubmit = (event: React.SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
     const form = event.target as HTMLFormElement;
     const formData = new FormData(form);
