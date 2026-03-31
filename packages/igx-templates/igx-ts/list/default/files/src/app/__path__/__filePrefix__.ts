@@ -11,7 +11,7 @@ import {
   IgxAvatarComponent,
   IgxFilterPipe,
 } from '<%=igxPackage%>';
-import { NgClass } from '@angular/common';
+
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 interface Contact {
@@ -35,7 +35,6 @@ interface Contact {
     IgxSuffixDirective,
     IgxListComponent,
     IgxAvatarComponent,
-    NgClass,
     ReactiveFormsModule,
     FormsModule
   ]
