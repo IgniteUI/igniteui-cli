@@ -1,5 +1,5 @@
 import style from './style.module.css';
-import { IgrTabs, IgrTab, IgrTabPanel } from 'igniteui-react';
+import { IgrTabs, IgrTab } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
 export default function $(ClassName)() {
@@ -8,11 +8,18 @@ export default function $(ClassName)() {
       <h1 className={style.title}>Tabs</h1>
       <div className={style.container}>
         <IgrTabs>
-          <IgrTab panel="first" selected={true}><span>Albums</span></IgrTab>
-          <IgrTab panel="second"><span>Favourites</span></IgrTab>
-          <IgrTab panel="third" disabled={true}><span>Info</span></IgrTab>
-          <IgrTabPanel slot="panel" id="first"><p>Sgt. Peppers Lonely Hearts Club Band</p><p>The Dark Side of the Moon</p><p>Thriller</p></IgrTabPanel>
-          <IgrTabPanel slot="panel" id="second"><p>The Dark Side of the Moon</p><p>Led Zeppelin IV</p></IgrTabPanel>
+          <IgrTab label="Albums" selected={true}>
+            <p>Sgt. Peppers Lonely Hearts Club Band</p>
+            <p>The Dark Side of the Moon</p>
+            <p>Thriller</p>
+          </IgrTab>
+          <IgrTab label="Favourites">
+            <p>The Dark Side of the Moon</p>
+            <p>Led Zeppelin IV</p>
+          </IgrTab>
+          <IgrTab label="Info" disabled={true}>
+            <p>No content available</p>
+          </IgrTab>
         </IgrTabs>
       </div>
     </div>
