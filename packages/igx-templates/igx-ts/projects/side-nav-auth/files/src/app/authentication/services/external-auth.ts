@@ -1,13 +1,13 @@
 import { Location } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { OidcConfigService, OidcSecurityService } from 'angular-auth-oidc-client';
+import { OidcSecurityService } from 'angular-auth-oidc-client';
 import { ExternalLogin } from '../models/login';
 import { AuthProvider } from '../providers/auth-provider';
 import { FacebookProvider } from '../providers/facebook-provider';
 import { GoogleProvider } from '../providers/google-provider';
 import { MicrosoftProvider } from '../providers/microsoft-provider';
-import { ExternalAuthConfig, ExternalAuthProvider } from './external-auth-configs';
+import { ExternalAuthConfig, ExternalAuthProvider, AUTH_BASE_PATH } from './external-auth-configs';
 import { LocalStorageService } from './local-storage';
 
 export enum ExternalAuthRedirectUrl {
@@ -31,7 +31,6 @@ export class ExternalAuth {
   constructor(
     private router: Router,
     private oidcSecurityService: OidcSecurityService,
-    private oidcConfigService: OidcConfigService,
     private location: Location,
     private localStorage: LocalStorageService) {
   }
@@ -43,30 +42,18 @@ export class ExternalAuth {
     return this.providers.size > 0;
   }
 
-  public addGoogle(clientID: string) {
-    const googleConfig: ExternalAuthConfig = {
-      provider: ExternalAuthProvider.Google,
-      stsServer: 'https://accounts.google.com',
-      client_id: clientID,
-      scope: 'openid email profile',
-      redirect_url: this.getAbsoluteUrl(ExternalAuthRedirectUrl.Google),
-      response_type: 'id_token token',
-      post_logout_redirect_uri: '/',
-      post_login_route: 'redirect',
-      auto_userinfo: false,
-      max_id_token_iat_offset_allowed_in_seconds: 30
-    };
+  public addGoogle() {
     this.providers.set(
       ExternalAuthProvider.Google,
-      new GoogleProvider(this.oidcConfigService, this.oidcSecurityService, googleConfig)
+      new GoogleProvider(this.oidcSecurityService, ExternalAuthProvider.Google)
     );
   }
 
   public addFacebook(clientID: string) {
     const fbConfig: ExternalAuthConfig = {
       client_id: clientID,
-      redirect_url: ExternalAuthRedirectUrl.Facebook
-    } as ExternalAuthConfig;
+      redirect_url: `/${AUTH_BASE_PATH}/${ExternalAuthRedirectUrl.Facebook}`
+    };
 
     this.providers.set(
       ExternalAuthProvider.Facebook,
@@ -74,22 +61,10 @@ export class ExternalAuth {
     );
   }
 
-  public addMicrosoft(clientID: string) {
-    const msConfig: ExternalAuthConfig = {
-      provider: ExternalAuthProvider.Microsoft,
-      stsServer: 'https://login.microsoftonline.com/consumers/v2.0/',
-      client_id: clientID,
-      scope: 'openid email profile',
-      redirect_url: this.getAbsoluteUrl(ExternalAuthRedirectUrl.Microsoft),
-      response_type: 'id_token token',
-      post_logout_redirect_uri: '/',
-      post_login_route: '',
-      auto_userinfo: false,
-      max_id_token_iat_offset_allowed_in_seconds: 1000
-    };
+  public addMicrosoft() {
     this.providers.set(
       ExternalAuthProvider.Microsoft,
-      new MicrosoftProvider(this.oidcConfigService, this.oidcSecurityService, msConfig)
+      new MicrosoftProvider(this.oidcSecurityService, ExternalAuthProvider.Microsoft)
     );
   }
 
@@ -101,7 +76,7 @@ export class ExternalAuth {
     }
   }
 
-  /** TODO, use setActiveProvider only? */
+  /** Returns user info from the given external auth provider */
   public async getUserInfo(provider: ExternalAuthProvider): Promise<ExternalLogin> {
     const extProvider = this.providers.get(provider);
     if (extProvider) {
@@ -109,7 +84,7 @@ export class ExternalAuth {
       userInfo.externalProvider = provider;
       return userInfo;
     }
-    return Promise.reject(null); // TODO ?
+    return Promise.reject(null);
   }
 
   /**

@@ -42,7 +42,7 @@ export class LoginBar {
     // TODO: Use item value, swap to menu component in the future
     switch (args.newSelection.index) {
       case 0:
-        this.router.navigate(['/profile']);
+        this.router.navigate(['/auth/profile']);
         break;
       case 1:
         this.handleLogout();
