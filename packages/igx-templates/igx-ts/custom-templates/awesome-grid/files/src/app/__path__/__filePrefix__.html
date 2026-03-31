@@ -21,23 +21,23 @@
           <div class="cell__inner">
             <div>{{ paginator.page * paginator.perPage + cell.row.index + 1 }}</div>
             @if (isTop3(cell)) {
-            <ng-container>
-              @if (cell.row.index === 0) {
-              <span class="cup">
-                <img src="assets/images/trophy_gold.svg" alt="First place Trophy image" />
-              </span>
-              }
-              @if (cell.row.index === 1) {
-              <span class="cup">
-                <img src="assets/images/trophy_silver.svg" alt="Second place Trophy image" />
-              </span>
-              }
-              @if (cell.row.index === 2) {
-              <span class="cup">
-                <img src="assets/images/trophy_bronze.svg" alt="Third place Trophy image" />
-              </span>
-              }
-            </ng-container>
+              <ng-container>
+                @if (cell.row.index === 0) {
+                  <span class="cup">
+                    <img src="assets/images/trophy_gold.svg" alt="First place Trophy image" />
+                  </span>
+                }
+                @if (cell.row.index === 1) {
+                  <span class="cup">
+                    <img src="assets/images/trophy_silver.svg" alt="Second place Trophy image" />
+                  </span>
+                }
+                @if (cell.row.index === 2) {
+                  <span class="cup">
+                    <img src="assets/images/trophy_bronze.svg" alt="Third place Trophy image" />
+                  </span>
+                }
+              </ng-container>
             }
           </div>
         </ng-template>
@@ -49,7 +49,7 @@
             <igx-avatar [src]="cell.row.data.Avatar" [shape]="'square'" size="small"> </igx-avatar><span
               class="athlete_name">{{ cell.value }}</span>
             @if (live) {
-            <igx-badge [type]="getBadgeType(cell)" [icon]="getIconType(cell)"></igx-badge>
+              <igx-badge [type]="getBadgeType(cell)" [icon]="getIconType(cell)"></igx-badge>
             }
           </div>
 
@@ -127,17 +127,17 @@
         </div>
         <div class="s-overlay__players">
           @for (player of top3; track $index; let i = $index) {
-          <ng-container>
-            <div class="s-overlay__player"
-              [ngClass]="i === 0 ? 's-overlay__player--winner' : i === 1 ? 's-overlay__player--second' : 's-overlay__player--third'">
-              <div class="s-overlay__trophy">
-                <span>{{i + 1}}</span>
-                <img [src]="getTrophyUrl(i)" alt="First place Trophy image" />
+            <ng-container>
+              <div class="s-overlay__player"
+                [ngClass]="i === 0 ? 's-overlay__player--winner' : i === 1 ? 's-overlay__player--second' : 's-overlay__player--third'">
+                <div class="s-overlay__trophy">
+                  <span>{{i + 1}}</span>
+                  <img [src]="getTrophyUrl(i)" alt="First place Trophy image" />
+                </div>
+                <igx-avatar [size]="i === 0 ? 'large': 'medium'" [shape]="'square'" [src]="player.Avatar"></igx-avatar>
+                <p class="s-overlay__player-name">{{ player.Name }}</p>
               </div>
-              <igx-avatar [size]="i === 0 ? 'large': 'medium'" [shape]="'square'" [src]="player.Avatar"></igx-avatar>
-              <p class="s-overlay__player-name">{{ player.Name }}</p>
-            </div>
-          </ng-container>
+            </ng-container>
           }
         </div>
       </div>

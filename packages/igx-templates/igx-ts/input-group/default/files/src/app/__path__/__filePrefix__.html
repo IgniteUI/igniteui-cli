@@ -41,13 +41,13 @@
         <div class="container">
           <igx-select #select name="movies" formControlName="movie">
             @for (genre of genres; track genre) {
-            <igx-select-item-group [label]="genre.type">
-              @for (movie of genre.movies; track movie) {
-              <igx-select-item [value]="movie">
-                {{ movie }}
-              </igx-select-item>
-              }
-            </igx-select-item-group>
+              <igx-select-item-group [label]="genre.type">
+                @for (movie of genre.movies; track movie) {
+                  <igx-select-item [value]="movie">
+                    {{ movie }}
+                  </igx-select-item>
+                }
+              </igx-select-item-group>
             }
             <label igxLabel for="movies">Movie</label>
             <ng-template igxSelectToggleIcon>

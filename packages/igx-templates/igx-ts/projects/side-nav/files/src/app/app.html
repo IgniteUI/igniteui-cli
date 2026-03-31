@@ -3,7 +3,7 @@
     <ng-template igxDrawer>
       <span igxDrawerItem [isHeader]="true">Views</span>
       @for (route of topNavLinks; track route) {
-      <span igxDrawerItem igxRipple routerLinkActive="igx-nav-drawer__item--active" [routerLink]="route.path">{{route.name}}</span>
+        <span igxDrawerItem igxRipple routerLinkActive="igx-nav-drawer__item--active" [routerLink]="route.path">{{route.name}}</span>
       }
     </ng-template>
   </igx-nav-drawer>

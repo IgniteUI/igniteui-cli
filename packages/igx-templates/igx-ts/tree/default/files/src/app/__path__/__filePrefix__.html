@@ -7,19 +7,19 @@
 <div class="sample-wrapper">
   <igx-tree selection="Cascading">
     @for (root of data; track root) {
-    <igx-tree-node [expanded]="true" [data]="root">
-      <ng-template *ngTemplateOutlet="nodeTemplate; context: { $implicit: root }"></ng-template>
-      @for (folder of root.Files; track folder) {
-      <igx-tree-node #subfolder [data]="folder">
-        <ng-template *ngTemplateOutlet="nodeTemplate; context: { $implicit: folder }"></ng-template>
-        @for (file of folder.Files; track file) {
-        <igx-tree-node [data]="file">
-          <ng-template *ngTemplateOutlet="nodeTemplate; context: { $implicit: file }"></ng-template>
-        </igx-tree-node>
+      <igx-tree-node [expanded]="true" [data]="root">
+        <ng-template *ngTemplateOutlet="nodeTemplate; context: { $implicit: root }"></ng-template>
+        @for (folder of root.Files; track folder) {
+          <igx-tree-node #subfolder [data]="folder">
+            <ng-template *ngTemplateOutlet="nodeTemplate; context: { $implicit: folder }"></ng-template>
+            @for (file of folder.Files; track file) {
+              <igx-tree-node [data]="file">
+                <ng-template *ngTemplateOutlet="nodeTemplate; context: { $implicit: file }"></ng-template>
+              </igx-tree-node>
+            }
+          </igx-tree-node>
         }
       </igx-tree-node>
-      }
-    </igx-tree-node>
     }
     <igx-tree-node #remote [loading]="loading" [disabled]="loading" [data]="remoteRoot"
       (expandedChange)="getNodeData(remote, $event)">
@@ -27,19 +27,19 @@
         <igx-icon class="tree-node-icon">{{ remoteRoot.Icon }}</igx-icon>
         <span class="node-title">{{ remoteRoot.Name }}</span>
         @if (showRefresh) {
-        <igx-icon class="tree-node-icon node-refresh" (click)="refreshData(remote)"
-          [showDelay]="600" [hideDelay]="100" igxTooltipTarget="tooltipRef">refresh</igx-icon>
+          <igx-icon class="tree-node-icon node-refresh" (click)="refreshData(remote)"
+            [showDelay]="600" [hideDelay]="100" igxTooltipTarget="tooltipRef">refresh</igx-icon>
         }
       </div>
       @if (!remoteData?.length && !remote.loading) {
-      <igx-tree-node #dummyNode [data]="{}" [disabled]="true">
-      </igx-tree-node>
+        <igx-tree-node #dummyNode [data]="{}" [disabled]="true">
+        </igx-tree-node>
       }
       @for (entry of remoteData; track entry) {
-      <igx-tree-node [data]="entry" [selected]="!!entry.Selected"
-        (selectedChange)="handleSelection(entry, $event)">
-        <ng-template *ngTemplateOutlet="nodeTemplate; context: { $implicit: entry }"></ng-template>
-      </igx-tree-node>
+        <igx-tree-node [data]="entry" [selected]="!!entry.Selected"
+          (selectedChange)="handleSelection(entry, $event)">
+          <ng-template *ngTemplateOutlet="nodeTemplate; context: { $implicit: entry }"></ng-template>
+        </igx-tree-node>
       }
     </igx-tree-node>
   </igx-tree>

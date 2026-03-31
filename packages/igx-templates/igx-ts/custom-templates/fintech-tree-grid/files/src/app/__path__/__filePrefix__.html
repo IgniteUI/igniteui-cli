@@ -22,12 +22,12 @@
   </div>
   <div class="sample-toolbar">
     @if (buttonSelected === 1) {
-    <span>Feeding {{volume}} records every {{frequency / 1000}} sec.
-      {{volume}} records updated. </span>
+      <span>Feeding {{volume}} records every {{frequency / 1000}} sec.
+        {{volume}} records updated. </span>
     }
     @if (buttonSelected === 0) {
-    <span>Feeding {{volume}} records every {{frequency / 1000}} sec.
-      ~{{volume/5}} records updated.</span>
+      <span>Feeding {{volume}} records every {{frequency / 1000}} sec.
+        ~{{volume/5}} records updated.</span>
     }
   </div>
   <igx-tree-grid #grid1 igxPreventDocumentScroll
@@ -36,12 +36,12 @@
     [primaryKey]="primaryKey" [childDataKey]="childDataKey" hiddenColumnsText="Hidden"
     [rowSelection]="selectionMode" [allowFiltering]="true" filterMode="excelStyleFilter" [moving]="true">
     @if (showToolbar) {
-    <igx-grid-toolbar>
-      <igx-grid-toolbar-actions>
-        <igx-grid-toolbar-hiding title="Indicators"></igx-grid-toolbar-hiding>
-        <igx-grid-toolbar-exporter [exportCSV]="false"></igx-grid-toolbar-exporter>
-      </igx-grid-toolbar-actions>
-    </igx-grid-toolbar>
+      <igx-grid-toolbar>
+        <igx-grid-toolbar-actions>
+          <igx-grid-toolbar-hiding title="Indicators"></igx-grid-toolbar-hiding>
+          <igx-grid-toolbar-exporter [exportCSV]="false"></igx-grid-toolbar-exporter>
+        </igx-grid-toolbar-actions>
+      </igx-grid-toolbar>
     }
 
     <!-- Empty templates for Sorting,Moving,Hiding, Pinning actions inside ESF dialog -->
@@ -60,10 +60,10 @@
         <div class="finjs-icons">
           <span>{{cell.value | currency:'USD':'symbol':'1.4-4'}}</span>
           @if (trends.positive(cell.row.data)) {
-          <igx-icon>trending_up</igx-icon>
+            <igx-icon>trending_up</igx-icon>
           }
           @if (trends.negative(cell.row.data)) {
-          <igx-icon>trending_down</igx-icon>
+            <igx-icon>trending_down</igx-icon>
           }
         </div>
       </ng-template>

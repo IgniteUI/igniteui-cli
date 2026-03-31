@@ -9,9 +9,9 @@
   <div class="chipsArea">
     <igx-chips-area #chipsArea class="chiparea">
       @for (chip of chipList; track chip.id) {
-      <igx-chip class="chipStyle" [id]="chip.id" [removable]="true" (remove)="chipRemoved($event)">
+        <igx-chip class="chipStyle" [id]="chip.id" [removable]="true" (remove)="chipRemoved($event)">
           <span #label [class]="'igx-chip__text'">{{chip.name}}</span>
-      </igx-chip>
+        </igx-chip>
       }
     </igx-chips-area>
   </div>
@@ -19,11 +19,11 @@
     <button #openButton igxButton="raised" (click)="toggleDropDown($event)" [igxDropDownItemNavigation]="dropdown">Talks</button>
     <igx-drop-down #dropdown (selectionChanging)="itemSelection($event)">
       @for (item of dropDownList; track item.id) {
-      <igx-drop-down-item [value]="item.name">
+        <igx-drop-down-item [value]="item.name">
           <div class="ig-drop-down__item-template">
             <span>{{item.name}}</span>
           </div>
-      </igx-drop-down-item>
+        </igx-drop-down-item>
       }
     </igx-drop-down>
   </div>

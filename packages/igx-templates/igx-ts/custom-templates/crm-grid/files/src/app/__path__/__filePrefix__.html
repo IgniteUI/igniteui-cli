@@ -14,10 +14,10 @@
             <igx-input-group type="search" class="searchInputGroup">
               <igx-prefix>
                 @if (searchText.length === 0) {
-                <igx-icon class="prefixIcon">search</igx-icon>
+                  <igx-icon class="prefixIcon">search</igx-icon>
                 }
                 @if (searchText.length > 0) {
-                <igx-icon class="prefixIcon" (click)="clearSearch()">clear</igx-icon>
+                  <igx-icon class="prefixIcon" (click)="clearSearch()">clear</igx-icon>
                 }
               </igx-prefix>
 
@@ -25,22 +25,22 @@
                 (ngModelChange)="grid1.findNext(searchText, caseSensitive)" (keydown)="searchKeyDown($event)" />
 
               @if (searchText.length > 0) {
-              <igx-suffix>
-                @if (grid1.lastSearchInfo) {
-                <div class="resultsText">
-                  @if (grid1.lastSearchInfo.matchInfoCache.length > 0) {
-                  <span>
-                    {{ grid1.lastSearchInfo.activeMatchIndex + 1 }} of {{
-                    grid1.lastSearchInfo.matchInfoCache.length }} results
-                  </span>
+                <igx-suffix>
+                  @if (grid1.lastSearchInfo) {
+                    <div class="resultsText">
+                      @if (grid1.lastSearchInfo.matchInfoCache.length > 0) {
+                        <span>
+                          {{ grid1.lastSearchInfo.activeMatchIndex + 1 }} of {{
+                          grid1.lastSearchInfo.matchInfoCache.length }} results
+                        </span>
+                      }
+                      @if (grid1.lastSearchInfo.matchInfoCache.length === 0) {
+                        <span>
+                          No results
+                        </span>
+                      }
+                    </div>
                   }
-                  @if (grid1.lastSearchInfo.matchInfoCache.length === 0) {
-                  <span>
-                    No results
-                  </span>
-                  }
-                </div>
-                }
                 <div class="caseSensitiveButton">
                   <button igxButton="icon" igxRipple [igxRippleCentered]="true" (click)="updateSearch()"
                     [igxButtonBackground]="caseSensitive ? 'rgb(73, 180, 254)' : 'transparent'">
@@ -57,7 +57,7 @@
                     <igx-icon family="material">navigate_next</igx-icon>
                   </button>
                 </div>
-              </igx-suffix>
+                </igx-suffix>
               }
             </igx-input-group>
           </div>

@@ -7,9 +7,9 @@
   <button #button igxButton="raised" igxRipple [igxToggleAction]="dropdown" [igxDropDownItemNavigation]="dropdown">Toggle dropdown</button>
   <igx-drop-down width="200px" #dropdown>
     @for (item of items; track item) {
-    <igx-drop-down-item [disabled]="!!item.disabled" [isHeader]="!!item.header">
-      {{ item.name }}
-    </igx-drop-down-item>
+      <igx-drop-down-item [disabled]="!!item.disabled" [isHeader]="!!item.header">
+        {{ item.name }}
+      </igx-drop-down-item>
     }
   </igx-drop-down>
 </div>

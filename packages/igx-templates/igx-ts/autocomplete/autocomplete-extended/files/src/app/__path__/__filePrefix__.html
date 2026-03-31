@@ -23,15 +23,15 @@
     </igx-input-group>
     <igx-drop-down #townsEnhancedPanel maxHeight="300px" (selectionChanging)="getPostalCode($event)">
       @for (eRegion of regions | <%=camelCaseName%>RegionContains:townSelected; track eRegion) {
-      <igx-drop-down-item-group
-        [label]="eRegion.name">
-        @for (town of eRegion.towns | <%=camelCaseName%>StartsWith:townSelected; track town) {
-        <igx-drop-down-item
-          [value]="town.name">
-          {{town.name}}
-        </igx-drop-down-item>
-        }
-      </igx-drop-down-item-group>
+        <igx-drop-down-item-group
+          [label]="eRegion.name">
+          @for (town of eRegion.towns | <%=camelCaseName%>StartsWith:townSelected; track town) {
+            <igx-drop-down-item
+              [value]="town.name">
+              {{town.name}}
+            </igx-drop-down-item>
+          }
+        </igx-drop-down-item-group>
       }
     </igx-drop-down>
 

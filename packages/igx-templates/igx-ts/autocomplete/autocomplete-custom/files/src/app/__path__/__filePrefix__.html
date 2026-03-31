@@ -12,9 +12,9 @@
       </igx-input-group>
       <igx-drop-down #townsPanel maxHeight="300px">
         @for (town of towns | <%=camelCaseName%>StartsWith:townSelected; track town) {
-        <igx-drop-down-item [value]="town">
-          {{town}}
-        </igx-drop-down-item>
+          <igx-drop-down-item [value]="town">
+            {{town}}
+          </igx-drop-down-item>
         }
       </igx-drop-down>
     </form>

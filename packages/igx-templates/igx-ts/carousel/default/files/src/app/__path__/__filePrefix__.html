@@ -5,9 +5,9 @@
 <div class="carousel-container">
   <igx-carousel [interval]="interval" [pause]="pause" [loop]="loop">
     @for (slide of slides; track slide) {
-    <igx-slide [active]="!!slide.active">
-      <img [src]="slide.image">
-    </igx-slide>
+      <igx-slide [active]="!!slide.active">
+        <img [src]="slide.image">
+      </igx-slide>
     }
   </igx-carousel>
 </div>

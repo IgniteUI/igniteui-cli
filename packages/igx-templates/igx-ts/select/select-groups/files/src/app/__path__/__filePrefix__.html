@@ -11,18 +11,18 @@
   <igx-select #select id="selectWithGroups">
     <label igxLabel for="selectWithGroups">Select With Groups</label>
     @for (item of items; track item) {
-    <igx-select-item-group [label]="item.type">
-      @for (fruit of item.fruits; track fruit) {
-      <igx-select-item [value]="fruit">
-        {{fruit}}
-      </igx-select-item>
-      }
-      @for (vegetable of item.vegetables; track vegetable) {
-      <igx-select-item [value]="vegetable">
-        {{vegetable}}
-      </igx-select-item>
-      }
-    </igx-select-item-group>
+      <igx-select-item-group [label]="item.type">
+        @for (fruit of item.fruits; track fruit) {
+          <igx-select-item [value]="fruit">
+            {{fruit}}
+          </igx-select-item>
+        }
+        @for (vegetable of item.vegetables; track vegetable) {
+          <igx-select-item [value]="vegetable">
+            {{vegetable}}
+          </igx-select-item>
+        }
+      </igx-select-item-group>
     }
   </igx-select>
 </div>
