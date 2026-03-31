@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { NgIf } from '@angular/common';
 import { Router } from '@angular/router';
 import { IgxInputGroupComponent, IgxPrefixDirective, IgxIconComponent, IgxLabelDirective,
   IgxInputDirective, IgxButtonDirective, IgxRippleDirective } from 'igniteui-angular';
@@ -15,7 +14,7 @@ import { UserStore } from '../services/user-store';
   templateUrl: './login.html',
   styleUrl: './login.scss',
   imports: [ReactiveFormsModule, IgxInputGroupComponent, IgxPrefixDirective, IgxIconComponent, IgxLabelDirective,
-    IgxInputDirective, IgxButtonDirective, IgxRippleDirective, NgIf]
+    IgxInputDirective, IgxButtonDirective, IgxRippleDirective]
 })
 export class Login {
   public loginForm: FormGroup;

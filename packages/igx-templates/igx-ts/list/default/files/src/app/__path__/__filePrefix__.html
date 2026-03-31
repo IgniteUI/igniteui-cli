@@ -10,23 +10,27 @@
     <igx-icon>search</igx-icon>
   </igx-prefix>
   <input #search igxInput placeholder="Search Contacts" [(ngModel)]="searchContact">
-  <igx-suffix *ngIf="search.value.length > 0" (click)="searchContact = ''">
-    <igx-icon>clear</igx-icon>
-  </igx-suffix>
+  @if (search.value.length > 0) {
+    <igx-suffix (click)="searchContact = ''">
+      <igx-icon>clear</igx-icon>
+    </igx-suffix>
+  }
 </igx-input-group>
 <igx-list>
   <igx-list-item [isHeader]="true"> Contacts </igx-list-item>
-  <igx-list-item #item *ngFor="let contact of contacts | igxFilter: filterContacts;">
-    <div class="item-container">
-      <div class="contact">
-        <igx-avatar [src]="contact.photo" [shape]="'square'"></igx-avatar>
-        <div class="contact__info">
-          <span class="name">{{ contact.name }}</span>
-          <span class="phone">{{ contact.phone }}</span>
+  @for (contact of contacts | igxFilter: filterContacts; track contact) {
+    <igx-list-item #item>
+      <div class="item-container">
+        <div class="contact">
+          <igx-avatar [src]="contact.photo" [shape]="'square'"></igx-avatar>
+          <div class="contact__info">
+            <span class="name">{{ contact.name }}</span>
+            <span class="phone">{{ contact.phone }}</span>
+          </div>
         </div>
+        <igx-icon class="icon" [class.icon--favorite]="contact.isFavorite" (click)="toggleFavorite(item)">star
+        </igx-icon>
       </div>
-      <igx-icon class="icon" [ngClass]="{ 'icon--favorite': contact.isFavorite }" (click)="toggleFavorite(item)">star
-      </igx-icon>
-    </div>
-  </igx-list-item>
+    </igx-list-item>
+  }
 </igx-list>

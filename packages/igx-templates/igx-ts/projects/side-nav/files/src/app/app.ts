@@ -10,7 +10,6 @@ import {
   IgxNavbarComponent,
 } from 'igniteui-angular';
 import { filter } from 'rxjs/operators';
-import { NgFor } from '@angular/common';
 import { routes } from './app.routes';
 
 @Component({
@@ -23,7 +22,6 @@ import { routes } from './app.routes';
     IgxNavigationDrawerComponent,
     IgxNavDrawerTemplateDirective,
     IgxNavDrawerItemDirective,
-    NgFor,
     IgxRippleDirective,
     RouterLinkActive,
     RouterLink,

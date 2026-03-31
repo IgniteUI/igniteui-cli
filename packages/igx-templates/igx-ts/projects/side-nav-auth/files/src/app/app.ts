@@ -10,7 +10,6 @@ import {
   IgxNavbarComponent
 } from 'igniteui-angular';
 import { filter } from 'rxjs/operators';
-import { NgFor } from '@angular/common';
 
 import { routes } from './app.routes';
 import { LoginBar } from './authentication/login-bar/login-bar';
@@ -26,7 +25,6 @@ import { LoginBar } from './authentication/login-bar/login-bar';
     IgxNavigationDrawerComponent,
     IgxNavDrawerTemplateDirective,
     IgxNavDrawerItemDirective,
-    NgFor,
     IgxRippleDirective,
     RouterLinkActive,
     RouterLink,
