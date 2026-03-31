@@ -35,7 +35,7 @@
 		"extension": [
 			".ts",
 			".tsx"
-],
+		],
 		"include": [
 			"packages/"
 		],
@@ -43,7 +43,8 @@
 			"**/*.d.ts",
 			"output/",
 			"packages/cli/templates/**/files/",
-			"packages/igx-templates/"
+			"packages/igx-templates/",
+			"packages/igniteui-mcp/"
 		],
 		"reporter": [
 			"lcov",
