@@ -2,8 +2,10 @@ import * as path from "path";
 import * as fs from "fs";
 
 // Import from built dist/ because the MCP package is ESM and this Jasmine test setup runs through CJS/ts-node. Run build:mcp first.
+// Non-literal import paths prevent tsc from resolving these modules at compile time (dist/ is created by build:mcp which runs after tsc).
 describe("Unit - MCP runtime", () => {
 	const mcpRoot = path.resolve("packages/igniteui-mcp/igniteui-doc-mcp");
+	const mcpDist = "../../packages/igniteui-mcp/igniteui-doc-mcp/dist";
 
 	let createGetApiReferenceHandler: any;
 	let createSearchApiHandler: any;
@@ -19,21 +21,21 @@ describe("Unit - MCP runtime", () => {
 
 	beforeAll(async () => {
 		({ createGetApiReferenceHandler, createSearchApiHandler } =
-			await import("../../packages/igniteui-mcp/igniteui-doc-mcp/dist/tools/handlers.js"));
+			await import(`${mcpDist}/tools/handlers.js`));
 		({ extractSection, searchApiDocs } =
-			await import("../../packages/igniteui-mcp/igniteui-doc-mcp/dist/lib/api-doc-search.js"));
+			await import(`${mcpDist}/lib/api-doc-search.js`));
 		({ RemoteDocsProvider } =
-			await import("../../packages/igniteui-mcp/igniteui-doc-mcp/dist/providers/RemoteDocsProvider.js"));
+			await import(`${mcpDist}/providers/RemoteDocsProvider.js`));
 		({ buildProjectSetupGuide, sanitizeSearchDocsQuery } =
-			await import("../../packages/igniteui-mcp/igniteui-doc-mcp/dist/tools/doc-tools.js"));
+			await import(`${mcpDist}/tools/doc-tools.js`));
 		({ ApiDocLoader } =
-			await import("../../packages/igniteui-mcp/igniteui-doc-mcp/dist/lib/api-doc-loader.js"));
+			await import(`${mcpDist}/lib/api-doc-loader.js`));
 		({ ReactJsonParser } =
-			await import("../../packages/igniteui-mcp/igniteui-doc-mcp/dist/lib/react-json-parser.js"));
+			await import(`${mcpDist}/lib/react-json-parser.js`));
 		({ LocalDocsProvider } =
-			await import("../../packages/igniteui-mcp/igniteui-doc-mcp/dist/providers/LocalDocsProvider.js"));
+			await import(`${mcpDist}/providers/LocalDocsProvider.js`));
 		({ SETUP_DOCS } =
-			await import("../../packages/igniteui-mcp/igniteui-doc-mcp/dist/tools/constants.js"));
+			await import(`${mcpDist}/tools/constants.js`));
 	});
 
 	afterAll(() => {
