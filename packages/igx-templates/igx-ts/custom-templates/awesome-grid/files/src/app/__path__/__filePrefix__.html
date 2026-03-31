@@ -131,7 +131,7 @@
               <div class="s-overlay__player"
                 [class.s-overlay__player--winner]="i === 0"
                 [class.s-overlay__player--second]="i === 1"
-                [class.s-overlay__player--third]="i >= 2">
+                [class.s-overlay__player--third]="i === 2">
                 <div class="s-overlay__trophy">
                   <span>{{i + 1}}</span>
                   <img [src]="getTrophyUrl(i)" alt="First place Trophy image" />
