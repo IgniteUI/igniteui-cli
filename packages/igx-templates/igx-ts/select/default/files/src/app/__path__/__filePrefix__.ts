@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IgxSelectComponent, IgxLabelDirective, IgxSelectItemComponent } from '<%=igxPackage%>';;
+import { IgxSelectComponent, IgxLabelDirective, IgxSelectItemComponent } from '<%=igxPackage%>';
 
 @Component({
   selector: 'app-<%=filePrefix%>',
