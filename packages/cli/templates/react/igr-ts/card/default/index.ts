@@ -3,7 +3,7 @@ import { IgniteUIForReactTemplate } from "../../../../../lib/templates/IgniteUIF
 class IgrCardTemplate extends IgniteUIForReactTemplate {
 	constructor() {
 		super(__dirname);
-		this.components = ["IgrCard"];
+		this.components = ["Card"];
 		this.controlGroup = "Layouts";
 		this.listInComponentTemplates = true;
 		this.id = "card";

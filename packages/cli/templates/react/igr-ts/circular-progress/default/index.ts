@@ -3,7 +3,7 @@ import { IgniteUIForReactTemplate } from "../../../../../lib/templates/IgniteUIF
 class IgrCircularProgressTemplate extends IgniteUIForReactTemplate {
 constructor() {
 super(__dirname);
-this.components = ["CircularProgress"];
+this.components = ["Circular Progress"];
 this.controlGroup = "Data Entry & Display";
 this.listInComponentTemplates = true;
 this.id = "circular-progress";

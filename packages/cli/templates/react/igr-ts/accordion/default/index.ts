@@ -3,7 +3,7 @@ import { IgniteUIForReactTemplate } from "../../../../../lib/templates/IgniteUIF
 class IgrAccordionTemplate extends IgniteUIForReactTemplate {
 	constructor() {
 		super(__dirname);
-		this.components = ["IgrAccordion"];
+		this.components = ["Accordion"];
 		this.controlGroup = "Layouts";
 		this.listInComponentTemplates = true;
 		this.id = "accordion";

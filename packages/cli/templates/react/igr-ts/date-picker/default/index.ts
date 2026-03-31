@@ -3,7 +3,7 @@ import { IgniteUIForReactTemplate } from "../../../../../lib/templates/IgniteUIF
 class IgrDatePickerTemplate extends IgniteUIForReactTemplate {
 constructor() {
 super(__dirname);
-this.components = ["DatePicker"];
+this.components = ["Date Picker"];
 this.controlGroup = "Scheduling";
 this.listInComponentTemplates = true;
 this.id = "date-picker";

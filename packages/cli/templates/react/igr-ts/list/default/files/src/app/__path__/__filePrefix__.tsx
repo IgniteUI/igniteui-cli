@@ -1,5 +1,5 @@
 import style from './style.module.css';
-import { IgrList, IgrListItem, IgrListHeader, IgrAvatar, IgrButton } from 'igniteui-react';
+import { IgrList, IgrListItem, IgrListHeader, IgrAvatar } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
 export default function $(ClassName)() {

@@ -3,9 +3,10 @@ import { IgrInput, IgrCheckbox, IgrButton } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
 export default function $(ClassName)() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: SubmitEvent) => {
     event.preventDefault();
-    const formData = new FormData(event.currentTarget);
+    const form = event.target as HTMLFormElement;
+    const formData = new FormData(form);
     const entries = Array.from(formData.entries());
     const result = entries.map(([key, value]) => `${key}=${value}`).join('; ');
     alert(result);

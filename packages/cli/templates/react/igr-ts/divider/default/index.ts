@@ -3,8 +3,8 @@ import { IgniteUIForReactTemplate } from "../../../../../lib/templates/IgniteUIF
 class IgrDividerTemplate extends IgniteUIForReactTemplate {
 	constructor() {
 		super(__dirname);
-		this.components = ["IgrDivider"];
-		this.controlGroup = "Layouts";
+		this.components = ["Divider"];
+		this.controlGroup = "Data Entry & Display";
 		this.listInComponentTemplates = true;
 		this.id = "divider";
 		this.projectType = "igr-ts";

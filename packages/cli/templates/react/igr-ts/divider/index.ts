@@ -4,7 +4,7 @@ class IgrDividerComponent extends BaseComponent {
 	constructor() {
 		super(__dirname);
 		this.name  = "Divider";
-		this.group = "Layouts";
+		this.group = "Data Entry & Display";
 		this.description = `provides a thin, lightweight separator.`;
 	}
 }

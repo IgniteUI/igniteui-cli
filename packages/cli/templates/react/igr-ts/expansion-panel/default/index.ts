@@ -3,7 +3,7 @@ import { IgniteUIForReactTemplate } from "../../../../../lib/templates/IgniteUIF
 class IgrExpansionPanelTemplate extends IgniteUIForReactTemplate {
 	constructor() {
 		super(__dirname);
-		this.components = ["IgrExpansionPanel"];
+		this.components = ["Expansion Panel"];
 		this.controlGroup = "Layouts";
 		this.listInComponentTemplates = true;
 		this.id = "expansion-panel";

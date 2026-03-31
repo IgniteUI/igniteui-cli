@@ -3,7 +3,7 @@ import { IgniteUIForReactTemplate } from "../../../../../lib/templates/IgniteUIF
 class IgrLinearProgressTemplate extends IgniteUIForReactTemplate {
 constructor() {
 super(__dirname);
-this.components = ["LinearProgress"];
+this.components = ["Linear Progress"];
 this.controlGroup = "Data Entry & Display";
 this.listInComponentTemplates = true;
 this.id = "linear-progress";
