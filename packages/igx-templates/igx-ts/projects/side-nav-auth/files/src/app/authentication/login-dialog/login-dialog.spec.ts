@@ -1,4 +1,4 @@
-import { Component, DebugElement, EventEmitter, Output } from '@angular/core';
+import { Component, DebugElement, output } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -12,9 +12,9 @@ import { LoginDialog } from './login-dialog';
   imports: [IgxDialogModule]
 })
 class TestSignViewComponent {
-  @Output() public viewChange = new EventEmitter();
-  @Output() public loggedIn = new EventEmitter();
-  @Output() public registered = new EventEmitter();
+  public viewChange = output();
+  public loggedIn = output();
+  public registered = output();
 }
 
 describe('LoginDialog', () => {
@@ -55,7 +55,7 @@ describe('LoginDialog', () => {
     result = checkViews();
     expect(result.loginView).toBeNull();
     expect(result.registerView).not.toBeNull();
-    expect(component.loginDialog.title).toEqual('Register');
+    expect(component.loginDialog().title).toEqual('Register');
 
     component.open();
     await fixture.whenStable();
@@ -64,22 +64,22 @@ describe('LoginDialog', () => {
     expect(result.loginView).not.toBeNull();
     expect(result.registerView).toBeNull();
     expect(component.showLogin).toBeTruthy();
-    expect(component.loginDialog.title).toEqual('Login');
+    expect(component.loginDialog().title).toEqual('Login');
   });
 
   it('should switch views, close on events', () => {
     let view: TestSignViewComponent = fixture.debugElement.query(By.css('app-login')).componentInstance;
-    vi.spyOn(component.loginDialog, 'close');
+    vi.spyOn(component.loginDialog(), 'close');
 
     view.viewChange.emit();
     expect(component.showLogin).toBeFalsy();
     view.loggedIn.emit();
-    expect(component.loginDialog.close).toHaveBeenCalledTimes(1);
+    expect(component.loginDialog().close).toHaveBeenCalledTimes(1);
     fixture.detectChanges();
     view = fixture.debugElement.query(By.css('app-register')).componentInstance;
     view.viewChange.emit();
     expect(component.showLogin).toBeTruthy();
     view.registered.emit();
-    expect(component.loginDialog.close).toHaveBeenCalledTimes(2);
+    expect(component.loginDialog().close).toHaveBeenCalledTimes(2);
   });
 });

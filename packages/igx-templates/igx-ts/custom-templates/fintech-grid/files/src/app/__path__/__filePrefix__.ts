@@ -5,7 +5,8 @@ import {
   ElementRef,
   OnDestroy,
   OnInit,
-  ViewChild,
+  inject,
+  viewChild,
 } from '@angular/core';
 import {
   CellType,
@@ -82,13 +83,13 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
   ]
 })
 export class <%=ClassName%> implements OnInit, AfterViewInit, OnDestroy {
-  @ViewChild('grid1', { static: true }) public grid1!: IgxGridComponent;
-  @ViewChild('buttonGroup1', { static: true }) public buttonGroup1!: IgxButtonGroupComponent;
-  @ViewChild('buttonGroup2', { static: true }) public buttonGroup2!: IgxButtonGroupComponent;
-  @ViewChild('slider1', { static: true }) public volumeSlider!: IgxSliderComponent;
-  @ViewChild('slider2', { static: true }) public intervalSlider!: IgxSliderComponent;
-  @ViewChild('chart1', { static: true }) public chart1!: IgxCategoryChartComponent;
-  @ViewChild('dialog', { static: true }) public dialog!: IgxDialogComponent;
+  public grid1 = viewChild.required<IgxGridComponent>('grid1');
+  public buttonGroup1 = viewChild.required<IgxButtonGroupComponent>('buttonGroup1');
+  public buttonGroup2 = viewChild.required<IgxButtonGroupComponent>('buttonGroup2');
+  public volumeSlider = viewChild.required<IgxSliderComponent>('slider1');
+  public intervalSlider = viewChild.required<IgxSliderComponent>('slider2');
+  public chart1 = viewChild.required<IgxCategoryChartComponent>('chart1');
+  public dialog = viewChild.required<IgxDialogComponent>('dialog');
 
   public showToolbar = false;
   public properties: string[] = [];
@@ -133,16 +134,17 @@ export class <%=ClassName%> implements OnInit, AfterViewInit, OnDestroy {
   private selectedButton = -1;
   private timer: any;
   private volumeChanged: any;
-  constructor(
-    private localData: LocalData,
-    private elRef: ElementRef,
-    private cdr: ChangeDetectorRef) {
+  private localData = inject(LocalData);
+  private elRef = inject(ElementRef);
+  private cdr = inject(ChangeDetectorRef);
+
+  constructor() {
     this.subscription = this.localData.getData(this.volume);
     this.localData.records.subscribe(x => { this.data = x; });
   }
 
   public ngOnInit(): void {
-    this.grid1.groupingExpressions = [{
+    this.grid1().groupingExpressions = [{
       dir: SortingDirection.Desc,
       fieldName: 'Category',
       ignoreCase: false,
@@ -161,7 +163,7 @@ export class <%=ClassName%> implements OnInit, AfterViewInit, OnDestroy {
       strategy: DefaultSortingStrategy.instance()
     }
     ];
-    this.volumeChanged = this.volumeSlider.valueChange.pipe(debounce(() => timer(200)));
+    this.volumeChanged = this.volumeSlider().valueChange.pipe(debounce(() => timer(200)));
     this.volumeChanged.subscribe(
       () => {
         this.localData.getData(this.volume);
@@ -170,8 +172,8 @@ export class <%=ClassName%> implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public ngAfterViewInit(): void {
-    this.grid1.hideGroupedColumns = true;
-    this.grid1.reflow();
+    this.grid1().hideGroupedColumns = true;
+    this.grid1().reflow();
     this.selectFirstGroupAndFillChart();
     this.cdr.detectChanges();
   }
@@ -180,10 +182,10 @@ export class <%=ClassName%> implements OnInit, AfterViewInit, OnDestroy {
     this.properties = ['Price', 'Country'];
     this.setChartConfig('Countries', 'Prices (USD)', 'Data Chart with prices by Category and Country');
 
-    if (this.grid1.groupsRecords[0].groups && this.grid1.groupsRecords[0]?.groups[0]?.groups) {
-      const recordsToBeSelected = this.grid1.selectionService.getRowIDs(this.grid1.groupsRecords[0].groups[0].groups[0].records);
+    if (this.grid1().groupsRecords[0].groups && this.grid1().groupsRecords[0]?.groups[0]?.groups) {
+      const recordsToBeSelected = this.grid1().selectionService.getRowIDs(this.grid1().groupsRecords[0].groups[0].groups[0].records);
       recordsToBeSelected.forEach(item => {
-        this.grid1.selectionService.selectRowById(item, false, true);
+        this.grid1().selectionService.selectRowById(item, false, true);
       });
     }
   }
@@ -192,22 +194,22 @@ export class <%=ClassName%> implements OnInit, AfterViewInit, OnDestroy {
     // update label interval and angle based on data
     this.setLabelIntervalAndAngle();
 
-    this.chart1.xAxisTitle = xAsis;
-    this.chart1.yAxisTitle = yAxis;
-    this.chart1.chartTitle = title;
+    this.chart1().xAxisTitle = xAsis;
+    this.chart1().yAxisTitle = yAxis;
+    this.chart1().chartTitle = title;
   }
 
   public onButtonAction(evt: IButtonGroupEventArgs): void {
     switch (evt.index) {
       case 0: {
         this.disableOtherButtons(evt.index, true);
-        const currData = this.grid1.data;
+        const currData = this.grid1().data;
         this.timer = setInterval(() => this.ticker(currData), this.frequency);
         break;
       }
       case 1: {
         this.disableOtherButtons(evt.index, true);
-        const currData = this.grid1.data;
+        const currData = this.grid1().data;
         this.timer = setInterval(() => this.tickerAllPrices(currData), this.frequency);
         break;
       }
@@ -218,7 +220,7 @@ export class <%=ClassName%> implements OnInit, AfterViewInit, OnDestroy {
       }
       case 3: {
         this.disableOtherButtons(evt.index, true);
-        this.dialog.open();
+        this.dialog().open();
         break;
       }
       default:
@@ -229,29 +231,29 @@ export class <%=ClassName%> implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public onCloseHandler(): void {
-    this.buttonGroup1.selectButton(2);
-    if (this.grid1.navigation.activeNode) {
-      if (this.grid1.navigation.activeNode.row === -1) {
-        this.grid1.theadRow.nativeElement.focus();
+    this.buttonGroup1().selectButton(2);
+    if (this.grid1().navigation.activeNode) {
+      if (this.grid1().navigation.activeNode.row === -1) {
+        this.grid1().theadRow.nativeElement.focus();
       } else {
-        this.grid1.tbody.nativeElement.focus();
+        this.grid1().tbody.nativeElement.focus();
       }
     }
   }
 
   public closeDialog(evt: KeyboardEvent): void {
-    if (this.dialog.isOpen &&
+    if (this.dialog().isOpen &&
       evt.shiftKey === true && evt.ctrlKey === true && evt.key.toLowerCase() === 'd') {
       evt.preventDefault();
-      this.dialog.close();
+      this.dialog().close();
     }
   }
 
   public onChange(): void {
-    if (this.grid1.groupingExpressions.length > 0) {
-      this.grid1.groupingExpressions = [];
+    if (this.grid1().groupingExpressions.length > 0) {
+      this.grid1().groupingExpressions = [];
     } else {
-      this.grid1.groupingExpressions = [{
+      this.grid1().groupingExpressions = [{
         dir: SortingDirection.Desc,
         fieldName: 'Category',
         ignoreCase: false,
@@ -274,13 +276,13 @@ export class <%=ClassName%> implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public rowSelectionChanging(args: IRowSelectionEventArgs): void {
-    this.grid1.clearCellSelection();
+    this.grid1().clearCellSelection();
     this.chartData = [];
     args.newSelection.forEach(row => {
-        if (this.grid1.data) {
-            this.chartData.push(this.grid1.data[row]);
-            this.chart1.notifyInsertItem(this.chartData, this.chartData.length - 1,
-              this.grid1.data[row]);
+        if (this.grid1().data) {
+            this.chartData.push(this.grid1().data[row]);
+            this.chart1().notifyInsertItem(this.chartData, this.chartData.length - 1,
+              this.grid1().data[row]);
         }
     });
     this.setLabelIntervalAndAngle();
@@ -293,13 +295,13 @@ export class <%=ClassName%> implements OnInit, AfterViewInit, OnDestroy {
       this.chartData = this.data.filter(item => item.Region === cell.row.data.Region &&
         item.Category === cell.row.data.Category);
 
-      this.chart1.notifyInsertItem(this.chartData, this.chartData.length - 1, {});
+      this.chart1().notifyInsertItem(this.chartData, this.chartData.length - 1, {});
 
       this.setLabelIntervalAndAngle();
-      this.chart1.chartTitle = 'Data Chart with prices of ' + this.chartData[0].Category + ' in ' +
+      this.chart1().chartTitle = 'Data Chart with prices of ' + this.chartData[0].Category + ' in ' +
         this.chartData[0].Region + ' Region';
 
-      this.dialog.open();
+      this.dialog().open();
     }, 200);
   }
 
@@ -384,35 +386,35 @@ export class <%=ClassName%> implements OnInit, AfterViewInit, OnDestroy {
   public setLabelIntervalAndAngle(): void {
     const intervalSet = this.chartData.length;
     if (intervalSet < 10) {
-      this.chart1.xAxisLabelAngle = 0;
-      this.chart1.xAxisInterval = 1;
+      this.chart1().xAxisLabelAngle = 0;
+      this.chart1().xAxisInterval = 1;
     } else if (intervalSet < 15) {
-      this.chart1.xAxisLabelAngle = 30;
-      this.chart1.xAxisInterval = 1;
+      this.chart1().xAxisLabelAngle = 30;
+      this.chart1().xAxisInterval = 1;
     } else if (intervalSet < 40) {
-      this.chart1.xAxisLabelAngle = 90;
-      this.chart1.xAxisInterval = 1;
+      this.chart1().xAxisLabelAngle = 90;
+      this.chart1().xAxisInterval = 1;
     } else if (intervalSet < 100) {
-      this.chart1.xAxisLabelAngle = 90;
-      this.chart1.xAxisInterval = 3;
+      this.chart1().xAxisLabelAngle = 90;
+      this.chart1().xAxisInterval = 3;
     } else if (intervalSet < 200) {
-      this.chart1.xAxisLabelAngle = 90;
-      this.chart1.xAxisInterval = 5;
+      this.chart1().xAxisLabelAngle = 90;
+      this.chart1().xAxisInterval = 5;
     } else if (intervalSet < 400) {
-      this.chart1.xAxisLabelAngle = 90;
-      this.chart1.xAxisInterval = 7;
+      this.chart1().xAxisLabelAngle = 90;
+      this.chart1().xAxisInterval = 7;
     } else if (intervalSet > 400) {
-      this.chart1.xAxisLabelAngle = 90;
-      this.chart1.xAxisInterval = 10;
+      this.chart1().xAxisLabelAngle = 90;
+      this.chart1().xAxisInterval = 10;
     }
-    this.chart1.yAxisAbbreviateLargeNumbers = true;
+    this.chart1().yAxisAbbreviateLargeNumbers = true;
   }
 
   public gridKeydown(evt: KeyboardEvent): void {
-    if (this.grid1.selectedRows.length > 0 &&
+    if (this.grid1().selectedRows.length > 0 &&
       evt.shiftKey === true && evt.ctrlKey === true && evt.key.toLowerCase() === 'd') {
       evt.preventDefault();
-      this.dialog.open();
+      this.dialog().open();
     }
   }
 
@@ -422,7 +424,7 @@ export class <%=ClassName%> implements OnInit, AfterViewInit, OnDestroy {
     const type = args.targetType;
 
     if (type === 'dataCell' && target.column.field === 'Chart' && evt.key.toLowerCase() === 'enter') {
-      this.grid1.selectRows([target.row.key], true);
+      this.grid1().selectRows([target.row.key], true);
       this.openSingleRowChart(target);
     }
   }
@@ -431,13 +433,13 @@ export class <%=ClassName%> implements OnInit, AfterViewInit, OnDestroy {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
-    this.volumeSlider.disabled = disableButtons;
-    this.intervalSlider.disabled = disableButtons;
+    this.volumeSlider().disabled = disableButtons;
+    this.intervalSlider().disabled = disableButtons;
     this.selectedButton = ind;
-    this.buttonGroup1.buttons.forEach((button, index) => {
+    this.buttonGroup1().buttons.forEach((button, index) => {
       if (index === 2) { button.disabled = !disableButtons; } else {
-        this.buttonGroup1.buttons[0].disabled = disableButtons;
-        this.buttonGroup1.buttons[1].disabled = disableButtons;
+        this.buttonGroup1().buttons[0].disabled = disableButtons;
+        this.buttonGroup1().buttons[1].disabled = disableButtons;
       }
     });
   }
@@ -451,11 +453,11 @@ export class <%=ClassName%> implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private ticker(data: any): void {
-    this.grid1.data = this.updateRandomPrices(data);
+    this.grid1().data = this.updateRandomPrices(data);
   }
 
   private tickerAllPrices(data: any): void {
-    this.grid1.data = this.updateAllPrices(data);
+    this.grid1().data = this.updateAllPrices(data);
   }
 
   /**
@@ -513,7 +515,7 @@ export class <%=ClassName%> implements OnInit, AfterViewInit, OnDestroy {
   }
 
   get grouped(): boolean {
-    return this.grid1.groupingExpressions.length > 0;
+    return this.grid1().groupingExpressions.length > 0;
   }
 
   get buttonSelected(): number {

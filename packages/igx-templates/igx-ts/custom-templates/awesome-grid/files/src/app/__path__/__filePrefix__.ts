@@ -3,10 +3,10 @@ import {
   Component,
   ElementRef,
   HostListener,
-  Inject,
   OnDestroy,
   OnInit,
-  ViewChild,
+  inject,
+  viewChild,
 } from '@angular/core';
 import {
   AbsolutePosition,
@@ -57,17 +57,13 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
   ],
 })
 export class <%=ClassName%> implements OnInit, OnDestroy, AfterViewInit {
-  @ViewChild('grid1', { read: IgxGridComponent, static: true })
-  public grid1!: IgxGridComponent;
+  public grid1 = viewChild.required('grid1', { read: IgxGridComponent });
 
-  @ViewChild('paginator', { read: IgxPaginatorComponent, static: true })
-  public paginator!: IgxPaginatorComponent;
+  public paginator = viewChild.required('paginator', { read: IgxPaginatorComponent });
 
-  @ViewChild('winnerAlert', { static: true })
-  public winnerAlert!: ElementRef;
+  public winnerAlert = viewChild.required<ElementRef>('winnerAlert');
 
-  @ViewChild('finishedAlert', { static: true })
-  public finishedAlert!: ElementRef;
+  public finishedAlert = viewChild.required<ElementRef>('finishedAlert');
 
   public displayType = SparklineDisplayType;
   public topSpeedSummary = CustomTopSpeedSummary;
@@ -115,7 +111,7 @@ export class <%=ClassName%> implements OnInit, OnDestroy, AfterViewInit {
     return (this.windowWidth && this.windowWidth < 860) || !this.live;
   }
 
-  constructor(@Inject(IgxOverlayService) public overlayService: IgxOverlayService) { }
+  public overlayService = inject(IgxOverlayService);
 
   public ngOnInit(): void {
     this.localData = AthletesData.slice(0, 30).sort((a, b) => b.TrackProgress - a.TrackProgress);
@@ -145,7 +141,7 @@ export class <%=ClassName%> implements OnInit, OnDestroy, AfterViewInit {
   }
 
   public isTop3(cell: CellType): boolean {
-    const top = this.paginator.page === 0 && cell.row.index < 4;
+    const top = this.paginator().page === 0 && cell.row.index < 4;
     return top;
   }
 
@@ -227,8 +223,8 @@ export class <%=ClassName%> implements OnInit, OnDestroy, AfterViewInit {
   public filter(event: Event): void {
     const target = event.target as HTMLInputElement;
     const term = target.value;
-    this.grid1.filter('CountryName', term, IgxStringFilteringOperand.instance().condition('contains'), true);
-    this.grid1.markForCheck();
+    this.grid1().filter('CountryName', term, IgxStringFilteringOperand.instance().condition('contains'), true);
+    this.grid1().markForCheck();
   }
 
   public showAlert(element: ElementRef): void {
@@ -252,7 +248,7 @@ export class <%=ClassName%> implements OnInit, OnDestroy, AfterViewInit {
     }
     if (this.isFinished) {
       this.live = false;
-      this.paginator.page = 0;
+      this.paginator().page = 0;
       return;
     }
     this.updateData();
@@ -265,21 +261,21 @@ export class <%=ClassName%> implements OnInit, OnDestroy, AfterViewInit {
       if (!this.hasWinner && this.localData[0].TrackProgress >= 100) {
         this.winner = this.localData[0];
         this.hasWinner = true;
-        this.showAlert(this.winnerAlert);
+        this.showAlert(this.winnerAlert());
       }
     }
 
     // move grid to next page to monitor players who still run
-    const firstOnPage = this.grid1.getCellByColumn(0, 'TrackProgress');
+    const firstOnPage = this.grid1().getCellByColumn(0, 'TrackProgress');
     if (firstOnPage && firstOnPage.value === 100) {
-      this.paginator.page = this.paginator.page + 1;
+      this.paginator().page = this.paginator().page + 1;
     }
 
     // show Top 3 players after race has finished
     if (this.localData[this.localData.length - 1].TrackProgress === 100) {
       this.top3 = this.localData.slice(0, 3);
       this.isFinished = true;
-      this.showAlert(this.finishedAlert);
+      this.showAlert(this.finishedAlert());
     }
   }
 
@@ -292,7 +288,7 @@ export class <%=ClassName%> implements OnInit, OnDestroy, AfterViewInit {
         if (rec.BeatsPerMinute !== undefined) {
           rec.BeatsPerMinute += this.generateRandomNumber(-5, 5);
         }
-        if (rec.Id !== undefined && rec.Id < this.paginator.perPage + 1) {
+        if (rec.Id !== undefined && rec.Id < this.paginator().perPage + 1) {
           rec.TrackProgress = Math.min(rec.TrackProgress + this.generateRandomNumber(15, 20), 100);
         } else {
           rec.TrackProgress = Math.min(rec.TrackProgress + this.generateRandomNumber(7, 12), 100);
