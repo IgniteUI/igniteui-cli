@@ -75,7 +75,7 @@ Add to `claude_desktop_config.json`:
 }
 ```
 ### Cursor
-If IgniteUI CLI is globally installed you can configure the MCP like this:
+If Ignite UI CLI is globally installed you can configure the MCP like this:
 
 Add to Cursor MCP settings:
 
