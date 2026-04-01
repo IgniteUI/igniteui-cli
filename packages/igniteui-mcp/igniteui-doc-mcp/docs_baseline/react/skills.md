@@ -24,7 +24,7 @@ The skill files live in the [`skills/`](https://github.com/IgniteUI/igniteui-rea
 |:------|:-----|:------------|
 | Components | [`skills/igniteui-react-components/SKILL.md`](https://github.com/IgniteUI/igniteui-react/blob/master/skills/igniteui-react-components/SKILL.md) | Identify the right components, install, import, and use them — JSX patterns, event handling, refs, forms, TypeScript |
 | Theming & Styling | [`skills/igniteui-react-customize-theme/SKILL.md`](https://github.com/IgniteUI/igniteui-react/blob/master/skills/igniteui-react-customize-theme/SKILL.md) | Palettes, typography, elevations, component themes, MCP server |
-| Optimization | [`skills/igniteui-react-optimize-bundle-size/SKILL.md`](https://github.com/IgniteUI/igniteui-react/blob/master/skills/igniteui-react-optimize-bundle-size/SKILL.md) | Ensuring best practices for tree shaking to optimize bundle size
+| Optimization | [`skills/igniteui-react-optimize-bundle-size/SKILL.md`](https://github.com/IgniteUI/igniteui-react/blob/master/skills/igniteui-react-optimize-bundle-size/SKILL.md) | Ensuring best practices for tree shaking to optimize bundle size |
 
 <!-- end: React -->
 
