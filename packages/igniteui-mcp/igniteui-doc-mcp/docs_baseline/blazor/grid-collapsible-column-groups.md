@@ -218,7 +218,7 @@ To get started with the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api
 <!-- Blazor -->
 
 ```cmd
-> dotnet add package IgniteUI.Blazor --version 25.2.77 (March 2026)
+> dotnet add package IgniteUI.Blazor --version 25.2.83 (March 2026)
 ```
 
 <!-- end: Blazor -->

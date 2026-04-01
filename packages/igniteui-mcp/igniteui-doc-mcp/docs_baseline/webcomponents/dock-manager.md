@@ -1117,11 +1117,20 @@ The Dock Manager comes with a light and a dark theme. The light theme is the def
 
 ## Localization
 
-The Dock Manager component supports localizing the strings used in the context menus, tooltips and aria attributes. By default, the Dock Manager detects the language of the page by searching for a [lang](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang) attribute on any of its parents. If the [lang](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang) attribute is not set or is set to a value which the Dock Manager does not support, the default language used is [English (en)](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/index.html#IgcDockManagerResourceStringsEN). The Dock Manager provides built-in localized strings for the following languages: [English (en)](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/index.html#IgcDockManagerResourceStringsEN), [Japanese (jp)](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/index.html#IgcDockManagerResourceStringsJP), [Korean (ko)](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/index.html#IgcDockManagerResourceStringsKO) and [Spanish (es)](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/index.html#IgcDockManagerResourceStringsES).
+The Dock Manager lets you localize the strings used in context menus, tooltips, and ARIA attributes. By default, it reads the [lang](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang) attribute from the root `<html>` element to determine which language to use. If the [lang](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang) attribute is missing or set to an unsupported value, the Dock Manager uses [English (en)](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/index.html#IgcDockManagerResourceStringsEN).
 
 <!-- WebComponents -->
 
-In order to provide resource strings for any other language use the [addResourceStrings](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/index.html#addResourceStrings) method:
+Ready-to-use Dock Manager resource strings for Spanish (`es`), Japanese (`ja`), and Korean (`ko`) are provided via the `igniteui-i18n-resources` peer dependency. To use one of these languages, install `igniteui-i18n-resources` and register the corresponding bundle with `igniteui-i18n-core`:
+
+```ts
+import { registerI18n } from 'igniteui-i18n-core';
+import { DockManagerResourceStringsES } from 'igniteui-i18n-resources';
+
+registerI18n(DockManagerResourceStringsES, 'es');
+```
+
+If you need to support a different language, use the [addResourceStrings](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/index.html#addResourceStrings) method to provide your own translated strings:
 
 ```ts
 import { addResourceStrings } from 'igniteui-dockmanager';
@@ -1136,7 +1145,7 @@ addResourceStrings('fr', dockManagerStringsFr);
 
 <!-- end: WebComponents -->
 
-The Dock Manager exposes [`resourceStrings`](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/classes/igcdockmanagercomponent.html#resourceStrings) property which allows you to modify the strings. If you set the [`resourceStrings`](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/classes/igcdockmanagercomponent.html#resourceStrings) property, the Dock Manager will use your strings no matter what [lang](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang) attribute is set.
+The Dock Manager also exposes a [`resourceStrings`](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/classes/igcdockmanagercomponent.html#resourceStrings) property that you can use to modify individual strings directly. When you set the [`resourceStrings`](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/classes/igcdockmanagercomponent.html#resourceStrings) property, the Dock Manager uses the strings you provide regardless of the [lang](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang) attribute on the page.
 
 <!-- end: React, WebComponents -->
 

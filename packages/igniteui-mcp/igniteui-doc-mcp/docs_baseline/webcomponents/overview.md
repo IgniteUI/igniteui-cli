@@ -33,7 +33,7 @@ Our free, open-source Web Components Grid Lite comes with the following column-b
 To install Grid Lite, go to the root folder of your project (where `package.json` is located) and run the following command using npm:
 
 ```cmd
-npm install igniteui-grid-lite --save
+npm install igniteui-grid-lite
 ```
 
 Or using yarn:
