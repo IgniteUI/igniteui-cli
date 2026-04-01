@@ -117,6 +117,46 @@ function importStyles(): Rule {
 	};
 }
 
+function addAIConfig(): Rule {
+	return (tree: Tree) => {
+		const mcpFilePath = "/.vscode/mcp.json";
+		const igniteuiServer = {
+			command: "npx",
+			args: ["-y", "igniteui-cli@next", "mcp"]
+		};
+		const igniteuiThemingServer = {
+			command: "npx",
+			args: ["-y", "igniteui-theming", "igniteui-theming-mcp"]
+		};
+
+		if (tree.exists(mcpFilePath)) {
+			const content = JSON.parse(tree.read(mcpFilePath)!.toString());
+			const servers = content.servers ?? {};
+			let modified = false;
+			if (!servers["igniteui"]) {
+				servers["igniteui"] = igniteuiServer;
+				modified = true;
+			}
+			if (!servers["igniteui-theming"]) {
+				servers["igniteui-theming"] = igniteuiThemingServer;
+				modified = true;
+			}
+			if (modified) {
+				content.servers = servers;
+				tree.overwrite(mcpFilePath, JSON.stringify(content, null, 2));
+			}
+		} else {
+			const mcpConfig = {
+				servers: {
+					"igniteui": igniteuiServer,
+					"igniteui-theming": igniteuiThemingServer
+				}
+			};
+			tree.create(mcpFilePath, JSON.stringify(mcpConfig, null, 2));
+		}
+	};
+}
+
 export default function (): Rule {
 	return (tree: Tree) => {
 		setVirtual(tree);
@@ -125,7 +165,8 @@ export default function (): Rule {
 			addTypographyToProj(),
 			importBrowserAnimations(),
 			createCliConfig(),
-			displayVersionMismatch()
+			displayVersionMismatch(),
+			addAIConfig()
 		]);
 	};
 }
