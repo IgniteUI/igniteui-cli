@@ -25,7 +25,7 @@ The skill files live in the [`skills/`](https://github.com/IgniteUI/igniteui-web
 | Components & Layout | [`skills/igniteui-wc-choose-components/SKILL.md`](https://github.com/IgniteUI/igniteui-webcomponents/blob/master/skills/igniteui-wc-choose-components/SKILL.md) | Standalone components, form controls, overlays, layout |
 | Platform Integration | [`skills/igniteui-wc-integrate-with-framework/SKILL.md`](https://github.com/IgniteUI/igniteui-webcomponents/blob/master/skills/igniteui-wc-integrate-with-framework/SKILL.md) | Helps with integrating components to the user's platform of choice |
 | Theming & Styling | [`skills/igniteui-wc-customize-component-theme/SKILL.md`](https://github.com/IgniteUI/igniteui-webcomponents/blob/master/skills/igniteui-wc-customize-component-theme/SKILL.md) | Palettes, typography, elevations, component themes, MCP server |
-| Optimization | [`skills/igniteui-wc-optimize-bundle-size/SKILL.md`](https://github.com/IgniteUI/igniteui-webcomponents/blob/master/skills/igniteui-wc-optimize-bundle-size/SKILL.md) | Ensuring best practices for tree shaking to optimize bundle size
+| Optimization | [`skills/igniteui-wc-optimize-bundle-size/SKILL.md`](https://github.com/IgniteUI/igniteui-webcomponents/blob/master/skills/igniteui-wc-optimize-bundle-size/SKILL.md) | Ensuring best practices for tree shaking to optimize bundle size |
 
 <!-- end: WebComponents -->
 
