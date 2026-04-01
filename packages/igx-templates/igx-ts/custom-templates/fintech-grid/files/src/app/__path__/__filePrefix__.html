@@ -30,23 +30,28 @@
     </div>
   </div>
   <div class="sample-toolbar">
-    <span *ngIf="buttonSelected === 1">Feeding {{volume}} records every {{frequency / 1000}} sec.
-      {{volume}} records updated. </span>
-    <span *ngIf="buttonSelected === 0">Feeding {{volume}} records every {{frequency / 1000}} sec.
-      ~{{volume/5}} records updated.</span>
+    @if (buttonSelected === 1) {
+      <span>Feeding {{volume}} records every {{frequency / 1000}} sec.
+        {{volume}} records updated. </span>
+    }
+    @if (buttonSelected === 0) {
+      <span>Feeding {{volume}} records every {{frequency / 1000}} sec.
+        ~{{volume/5}} records updated.</span>
+    }
   </div>
   <igx-grid #grid1 igxPreventDocumentScroll (rowSelectionChanging)="rowSelectionChanging($event)" [data]="data"
     width="100%" height="90%" [autoGenerate]="false" displayDensity="compact" primaryKey="ID" hiddenColumnsText="Hidden"
     [rowSelection]="selectionMode" [allowFiltering]="true" filterMode="excelStyleFilter"
     (keydown)="gridKeydown($event)" (gridKeydown)="customKeydown($event)" [moving]="true">
-    <igx-grid-toolbar *ngIf="showToolbar">
-      <igx-grid-toolbar-actions>
-        <igx-grid-toolbar-hiding title="Indicators"></igx-grid-toolbar-hiding>
-        <igx-grid-toolbar-pinning title=" "></igx-grid-toolbar-pinning>
-        <igx-grid-toolbar-exporter [exportCSV]="false"></igx-grid-toolbar-exporter>
-      </igx-grid-toolbar-actions>
-    </igx-grid-toolbar>
-
+    @if (showToolbar) {
+      <igx-grid-toolbar>
+        <igx-grid-toolbar-actions>
+          <igx-grid-toolbar-hiding title="Indicators"></igx-grid-toolbar-hiding>
+          <igx-grid-toolbar-pinning title=" "></igx-grid-toolbar-pinning>
+          <igx-grid-toolbar-exporter [exportCSV]="false"></igx-grid-toolbar-exporter>
+        </igx-grid-toolbar-actions>
+      </igx-grid-toolbar>
+    }
 
     <!-- Empty templates for Sorting,Moving,Hiding, Pinning actions inside ESF dialog -->
     <!-- <ng-template igxExcelStyleSorting></ng-template>
@@ -61,7 +66,9 @@
     <igx-column field="Contract" width="110px" [groupable]="true" [sortable]="true" [editable]="true">
       <ng-template igxCellEditor let-cell="cell" let-value>
         <igx-select [placeholder]="value" [(ngModel)]="cell.editValue" [igxFocus]="true">
-          <igx-select-item *ngFor="let c of contracts" [value]="c">{{ c }}</igx-select-item>
+          @for (c of contracts; track c) {
+            <igx-select-item [value]="c">{{ c }}</igx-select-item>
+          }
         </igx-select>
       </ng-template>
     </igx-column>
@@ -71,7 +78,9 @@
     <igx-column field="Region" width="110px" [groupable]="true" [sortable]="true" [editable]="true">
       <ng-template igxCellEditor let-cell="cell" let-value>
         <igx-select [placeholder]="value" [(ngModel)]="cell.editValue" [igxFocus]="true">
-          <igx-select-item *ngFor="let r of regions" [value]="r.Region">{{ r.Region }}</igx-select-item>
+          @for (r of regions; track r) {
+            <igx-select-item [value]="r.Region">{{ r.Region }}</igx-select-item>
+          }
         </igx-select>
       </ng-template>
     </igx-column>
@@ -84,8 +93,12 @@
       <ng-template igxCell let-cell="cell">
         <div class="fintech-icons">
           <span>{{cell.value | currency:'USD':'symbol':'1.4-4'}}</span>
-          <igx-icon *ngIf="trends.positive(cell.row.data)">trending_up</igx-icon>
-          <igx-icon *ngIf="trends.negative(cell.row.data)">trending_down</igx-icon>
+          @if (trends.positive(cell.row.data)) {
+            <igx-icon>trending_up</igx-icon>
+          }
+          @if (trends.negative(cell.row.data)) {
+            <igx-icon>trending_down</igx-icon>
+          }
         </div>
       </ng-template>
     </igx-column>

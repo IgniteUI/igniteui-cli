@@ -35,7 +35,7 @@ import { timer } from 'rxjs';
 import { debounce } from 'rxjs/operators';
 import { LocalData } from './local-data';
 import { ITreeGridAggregation, <%=ClassName%>TreeGridGroupingPipe } from './tree-grid-grouping.pipe';
-import { NgIf, CurrencyPipe } from '@angular/common';
+import { CurrencyPipe } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @Component({
@@ -49,7 +49,6 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     FormsModule,
     IgxSliderComponent,
     IgxButtonGroupComponent,
-    NgIf,
     IgxTreeGridComponent,
     IgxGridToolbarComponent,
     IgxGridToolbarActionsComponent,
