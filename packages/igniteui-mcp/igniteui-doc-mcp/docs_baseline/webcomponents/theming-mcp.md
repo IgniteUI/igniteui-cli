@@ -259,6 +259,8 @@ The following scenarios show what you can ask the AI to do once the MCP server i
 
 The AI will call `create_theme` and return a ready-to-use `styles.scss` file. The generated output will look similar to this:
 
+<!-- React, WebComponents -->
+
 ```scss
 /* styles.scss */
 @use 'igniteui-theming' as *;
@@ -278,6 +280,8 @@ $my-palette: palette(
   $type-scale: $material-type-scale
 );
 ```
+
+<!-- end: React, WebComponents -->
 
 ### Dark Mode Variant
 
@@ -305,7 +309,7 @@ The AI will call `set_spacing` scoped to the calendar component and `set_size` a
 
 **Platform not detected**
 
-If `detect_platform` returns `null` or `generic`, make sure your `package.json` lists an Ignite UI package (e.g., `igniteui-react`) as a dependency. You can also tell the AI explicitly: *"Use Ignite UI for Web Components."*
+If `detect_platform` returns `null` or `generic`, make sure your `package.json` lists an Ignite UI package (e.g., `igniteui-webcomponents`) as a dependency. You can also tell the AI explicitly: *"Use the Web Components platform."*
 
 **Luminance warning on colors**
 
@@ -318,5 +322,20 @@ For light themes use a light surface (e.g., `#fafafa`). For dark themes use a da
 ## Additional Resources
 
 - [Ignite UI for Web Components Skills](./skills.md)
+
+<!-- Ideally these should be included once documentation is combined
+- [Theming Overview](../themes/index.md)
+- [Palettes](../themes/palettes.md)
+- [Typography](../themes/typography.md)
+- [Elevations](../themes/elevations.md)
+- [Spacing](../themes/spacing.md)
+- [Roundness](../themes/roundness.md)
+- [Theming with Sass](../themes/sass/index.md)
+-->
+
+<div class="divider--half"></div>
+
+Our community is active and always welcoming to new ideas.
+
 - [Ignite UI for Web Components **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-web-components)
 - [Ignite UI for Web Components **GitHub**](https://github.com/IgniteUI/igniteui-webcomponents)

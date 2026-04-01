@@ -18,6 +18,15 @@ All notable changes for each version of Ignite UI for Blazor are documented on t
 
 - As of version 2024.2, the Ignite UI for Blazor toolset supports .NET 9. For more information on .NET 9 please refer to [this article on Microsoft's site](https://learn.microsoft.com/en-us/dotnet/core/whats-new/dotnet-9/overview).
 
+## **25.2.83 (March 2026)**
+
+### Bug Fixes
+
+| Bug Number | Control | Description |
+|------------|---------|-------------|
+| 3229  | Grids | Latest version of Blazor Grids shows Trial watermark for Licensed version |
+| 2754  | IgbTabs | Changing the check state for IgbSwitch inside the tab causes the tab content to disappear |
+
 ## **25.2.77 (March 2026)**
 
 ### IgniteUI.Blazor (Grids)

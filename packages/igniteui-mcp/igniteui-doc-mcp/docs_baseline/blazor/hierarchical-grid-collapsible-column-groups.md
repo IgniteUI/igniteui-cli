@@ -327,7 +327,7 @@ To get started with the [`IgbHierarchicalGrid`](https://www.infragistics.com/bla
 <!-- Blazor -->
 
 ```cmd
-> dotnet add package IgniteUI.Blazor --version 25.2.77 (March 2026)
+> dotnet add package IgniteUI.Blazor --version 25.2.83 (March 2026)
 ```
 
 <!-- end: Blazor -->

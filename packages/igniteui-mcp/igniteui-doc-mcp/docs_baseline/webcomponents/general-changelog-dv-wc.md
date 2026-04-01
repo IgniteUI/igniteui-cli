@@ -13,6 +13,18 @@ _tocName: Changelog
 
 All notable changes for each version of Ignite UI for Web Components are documented on this page.
 
+## **7.0.1 (March 2026)**
+
+#### Bug Fixes
+
+| Bug Number | Control | Description |
+|------------|---------|-------------|
+| 3055 | IgcDataPieChart | DataPieChart - missing styling properties for the Others Slice |
+| 38668 | IgcDataTooltipLayer | TitleTextColor is overriden when chart's TitleTextColor is used |
+| 40238 | Excel | fixed Excel Formula parser - Workbook.Load() throwing a Excel.FormulaParseException|
+| 41167 | Excel | Object's Formulas are not round-tripped - Added Excel support for round tripping the camera tool |
+| 41419 | Excel | Saving a VBA Signed Excel file does not keep a signature/certificate. |
+
 ## **7.0.0 (February 2026)**
 
 ### igniteui-webcomponents-charts
@@ -24,8 +36,8 @@ All notable changes for each version of Ignite UI for Web Components are documen
 |2327|IgcToolbar|SubPanel sample not working in WebComponents|
 |2638|IgcDataChart|Improve mouse hot detection for rotated labels|
 |2959|IgcLinearGauge|Gauges should not call View functions|
-|2842|IgcDataChart|AssigningCategoryStyle args.GetItems is null or not working to update items in the fragment series|
 |2326|IgcDataChart|Add property to set others color|
+|41594|IgcDataChart|AssigningCategoryStyle args.GetItems is null or not working to update items in the fragment series|
 
 ### igniteui-webcomponents
 
