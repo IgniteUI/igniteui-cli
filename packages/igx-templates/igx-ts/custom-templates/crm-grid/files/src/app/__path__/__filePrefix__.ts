@@ -45,7 +45,6 @@ import {
 import { SparklineDisplayType, IgxSparklineCoreModule } from 'igniteui-angular-charts';
 import { DATA, DealsDescriptor, Employee } from './data';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-<%=filePrefix%>',
@@ -57,7 +56,6 @@ import { NgIf } from '@angular/common';
     IgxGridToolbarTitleComponent,
     IgxInputGroupComponent,
     IgxPrefixDirective,
-    NgIf,
     IgxIconComponent,
     ReactiveFormsModule,
     IgxInputDirective,

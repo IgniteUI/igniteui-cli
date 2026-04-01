@@ -19,7 +19,6 @@ import {
   IgxButtonDirective,
   IgxRippleDirective,
 } from '<%=igxPackage%>';
-import { NgFor } from '@angular/common';
 
 interface Genre {
   type: string;
@@ -33,7 +32,6 @@ interface Genre {
   imports: [
     ReactiveFormsModule,
     IgxSelectComponent,
-    NgFor,
     IgxSelectGroupComponent,
     IgxSelectItemComponent,
     IgxLabelDirective,
