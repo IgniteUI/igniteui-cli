@@ -13,6 +13,25 @@ _tocName: Changelog
 
 All notable changes for each version of Ignite UI for React are documented on this page.
 
+## **19.6.0 (March 2026)**
+
+### igniteui-react
+
+#### Changed
+
+- [`IgrDockManager`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdockmanager.html): Updated to use the latest `igniteui-dockmanager@2.1.0` with new `minResizeWidth` and `minResizeHeight` properties, `paneFlyoutToggle` event; additional `layoutChange` event detail and fixes. See the [full changelog](https://github.com/IgniteUI/igniteui-dockmanager/blob/master/CHANGELOG.md#210).
+- Updated to use the latest `igniteui-webcomponents@7.1.0` including new `Splitter` and `Highlight` container components and fixes. See the [full changelog](https://github.com/IgniteUI/igniteui-webcomponents/blob/master/CHANGELOG.md#710---2026-03-19).
+
+#### New Features
+
+- #### AI-Assisted Development - Agent Skills
+  - Structured knowledge files that teach AI coding assistants (GitHub Copilot, Cursor, Windsurf, Claude, JetBrains AI, etc.) how to work with Ignite UI for React.
+  - The skill files are included in the `igniteui-react` package and also live in the [skills/](https://github.com/IgniteUI/igniteui-react/tree/master/skills) directory:
+    - **components** - Identify the right React components (`*`) for a UI pattern, then install, import, and use them — JSX patterns, events, refs, forms, etc.
+    - **customize-theme** - Customize styling using CSS custom properties, Sass, and the theming system in React, including using Ignite UI Theming MCP server.
+    - **optimize-bundle-size** - Reduce bundle size with granular imports, tree-shaking, and lazy loading.
+  - These skills are automatically discovered when placed in the agent's skills path (e.g. `.agents/skills` or `.claude/skills`).
+
 ## **19.5.2 (March 2026)**
 
 ### Bug Fixes
