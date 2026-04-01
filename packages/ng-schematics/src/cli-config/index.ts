@@ -117,7 +117,7 @@ function importStyles(): Rule {
 	};
 }
 
-function addAIConfig(): Rule {
+export function addAIConfig(): Rule {
 	return (tree: Tree) => {
 		const mcpFilePath = "/.vscode/mcp.json";
 		const igniteuiServer = {
