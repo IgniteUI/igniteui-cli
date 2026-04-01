@@ -136,7 +136,7 @@ describe("Schematics ng-new", () => {
 				expect(mockFunc[1]).toHaveBeenCalled();
 			}
 			expect(AppProjectSchematic.default).toHaveBeenCalled();
-			expect(e.files.length).toEqual(1);
+			expect(e.files.length).toEqual(2);
 			expect(e.exists(`${workingDirectory}/.gitignore`)).toBeTruthy();
 			const taskOptions = runner.tasks.map(task => task.options);
 			const expectedInstall: NodePackageTaskOptions = {
@@ -189,7 +189,7 @@ describe("Schematics ng-new", () => {
 		runner.runSchematic("ng-new", { version: "8.0.3", name: workingDirectory }, myTree)
 		.then((e: UnitTestTree) => {
 			expect(AppProjectSchematic.default).toHaveBeenCalled();
-			expect(e.files.length).toEqual(1);
+			expect(e.files.length).toEqual(2);
 			expect(e.exists(`${workingDirectory}/.gitignore`)).toBeTruthy();
 			const taskOptions = runner.tasks.map(task => task.options);
 			const expectedInstall: NodePackageTaskOptions = {
