@@ -25,6 +25,7 @@
 		"output",
 		"**/files/*",
 		"packages/cli/**/files/*",
-		"node_modules"
+		"node_modules",
+		"packages/igniteui-mcp"
 	]
 }

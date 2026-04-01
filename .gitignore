@@ -29,6 +29,9 @@ packages/core/config/Config.schema.json
 !packages/cli/templates/angular/**/files/**/*
 !packages/cli/templates/react/**/files/**/*
 
+# bundled MCP server (build artifact)
+/packages/cli/mcp/
+
 # Misc
 npm-debug.log*
 yarn-error.log*
