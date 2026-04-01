@@ -26,7 +26,7 @@ All notable changes for each version of Ignite UI for Angular are documented on 
 | 2189 | IgxDataChart | DataChart skips rendering axis when there are no labels |
 | 3055 | IgxDataPieChart | added missing styling properties for the Others Slice |
 | 38668 | IgxDataTooltipLayer | TitleTextColor is overridden when chart's TitleTextColor is used |
-| 40238 | Excel | fixed Excel Formula parser - Workbook.Load() throwing a Excel.FormulaParseException|
+| 40238 | Excel | fixed Excel Formula parser - Workbook.Load() throwing an Excel.FormulaParseException |
 | 41167 | Excel | Object's Formulas are not round-tripped - Added Excel support for round tripping the camera tool |
 | 41419 | Excel | Saving a VBA Signed Excel file does not keep a signature/certificate. |
 | 41594 | IgxDataChart | AssigningCategoryStyle args.GetItems is null or not working to update items in the fragment series. |
