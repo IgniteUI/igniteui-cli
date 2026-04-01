@@ -212,4 +212,34 @@ describe("Schematics ng-new", () => {
 			expect(taskOptions).toContain(expectedInit);
 		});
 	});
+
+	describe("addAIConfig via ng-new", () => {
+		const workingDirectory = "my-test-project";
+		const mcpFilePath = `${workingDirectory}/.vscode/mcp.json`;
+
+		function setupAndRun(runner: SchematicTestRunner, myTree: Tree): Promise<UnitTestTree> {
+			spyOn(AppProjectSchematic, "default").and.returnValue((currentTree: Tree, _context: SchematicContext) => {
+				currentTree.create("gitignore", "");
+				return currentTree;
+			});
+
+			const userAnswers = new Map<string, any>();
+			userAnswers.set("upgradePackages", false);
+			spyOnProperty(SchematicsPromptSession.prototype, "userAnswers", "get").and.returnValue(userAnswers);
+
+			return runner.runSchematic("ng-new", { version: "8.0.3", name: workingDirectory, skipInstall: true, skipGit: true }, myTree);
+		}
+
+		it("should create .vscode/mcp.json with both servers during ng-new", async () => {
+			const runner = new SchematicTestRunner("schematics", collectionPath);
+			const myTree = Tree.empty();
+
+			const e = await setupAndRun(runner, myTree);
+
+			expect(e.exists(mcpFilePath)).toBeTruthy();
+			const content = JSON.parse(e.readContent(mcpFilePath));
+			expect(content.servers["igniteui"]).toEqual({ command: "npx", args: ["-y", "igniteui-cli@next", "mcp"] });
+			expect(content.servers["igniteui-theming"]).toEqual({ command: "npx", args: ["-y", "igniteui-theming", "igniteui-theming-mcp"] });
+		});
+	});
 });
