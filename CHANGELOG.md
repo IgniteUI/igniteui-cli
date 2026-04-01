@@ -1,3 +1,22809 @@
+# 14.10.0-alpha.4
+
+## igniteui/cli-core@14.10.0-alpha.4 (2026-03-27)
+
+
+
+# 14.10.0-alpha.3 (2026-03-25)
+
+
+
+# 14.10.0-alpha.1 (2026-03-25)
+
+
+#### Bug Fixes
+
+* **eslint:** correct config ignores and resolve lint errors ([68d01ac](https://github.com/IgniteUI/igniteui-cli/commit/68d01ac6102e4e3d660dff9d229e826ea64943db))
+* **lint:** re-enable no-console rule ([3ffa07f](https://github.com/IgniteUI/igniteui-cli/commit/3ffa07ff8812e93dd358b38332f3abc2ea955af2))
+
+
+
+## 14.9.2 (2026-03-11)
+
+
+#### Bug Fixes
+
+* **packages:** disable non-functional registry login attempt on upgrade ([#1528](https://github.com/IgniteUI/igniteui-cli/issues/1528)) ([1008a1e](https://github.com/IgniteUI/igniteui-cli/commit/1008a1e3fadb20553f464162d69a5bb2393d615b))
+* **packages:** login command for node@24+ spawn change ([cbb6502](https://github.com/IgniteUI/igniteui-cli/commit/cbb6502e90cfeaa7a87885748aa4b337c37c0b2f))
+* **upgrade-packages:** correctly glob files on windows ([#1511](https://github.com/IgniteUI/igniteui-cli/issues/1511)) ([64f2735](https://github.com/IgniteUI/igniteui-cli/commit/64f2735963f269fb4b60dd7479566baae33119c8))
+
+
+#### Reverts
+
+* partially revert changes swapping exec with spawn ([3a64b67](https://github.com/IgniteUI/igniteui-cli/commit/3a64b67bc43df42f72363e63192b90fea38b111f))
+
+
+
+## 14.9.1 (2026-02-25)
+
+
+
+# 14.9.0 (2026-02-25)
+
+
+#### Features
+
+* **ng:** update igniteui-angular to 21.1.0 ([#1495](https://github.com/IgniteUI/igniteui-cli/issues/1495)) ([399f83e](https://github.com/IgniteUI/igniteui-cli/commit/399f83e4278dafdf9a3832fa013840f05ba586e6))
+
+
+
+## 14.8.5-beta.3 (2026-02-11)
+
+
+
+## 14.8.5-beta.0 (2026-02-10)
+
+
+
+## 14.8.4 (2026-02-05)
+
+
+
+## 14.8.3 (2026-01-19)
+
+
+
+## 14.8.2 (2026-01-13)
+
+
+
+## 14.8.2-beta.4 (2026-01-12)
+
+
+
+## 14.8.2-beta.3 (2026-01-12)
+
+
+
+## 14.8.2-beta.2 (2026-01-12)
+
+
+
+## 14.8.2-beta.0 (2026-01-12)
+
+
+
+# 14.8.0 (2025-12-03)
+
+
+
+# 14.8.0-beta.2 (2025-12-01)
+
+
+
+# 14.8.0-beta.1 (2025-12-01)
+
+
+
+## 14.7.1 (2025-11-20)
+
+
+
+# 14.7.0 (2025-11-17)
+
+
+#### Bug Fixes
+
+* command injection vulnerabilities in PackageManager and start command ([#1438](https://github.com/IgniteUI/igniteui-cli/issues/1438)) ([1f86df3](https://github.com/IgniteUI/igniteui-cli/commit/1f86df3d6e660b93db047415e9c53af1ef4f0a30))
+
+
+#### Features
+
+* **ng:** use ng lint schematic ([#1439](https://github.com/IgniteUI/igniteui-cli/issues/1439)) ([fa917cd](https://github.com/IgniteUI/igniteui-cli/commit/fa917cd7c974db05061f9442d8c5cdcc74853928))
+
+
+
+## 14.6.4 (2025-10-14)
+
+
+
+## 14.6.3 (2025-10-09)
+
+
+
+## 14.6.2 (2025-10-07)
+
+
+
+## 14.6.1 (2025-10-06)
+
+
+
+# 14.6.0 (2025-10-02)
+
+
+#### Features
+
+* **ng:** update ig, ng and other libs ([#1427](https://github.com/IgniteUI/igniteui-cli/issues/1427)) ([93fbbcc](https://github.com/IgniteUI/igniteui-cli/commit/93fbbcce2668084dcc958736f7167e36e9cbed47))
+
+
+
+## 14.5.8 (2025-09-25)
+
+
+#### Bug Fixes
+
+* **react:** enhance upgrade-packages to support workspace glob patterns for projects without explicit workspaces ([#1424](https://github.com/IgniteUI/igniteui-cli/issues/1424)) ([6eeee2f](https://github.com/IgniteUI/igniteui-cli/commit/6eeee2ff879902197f012e83eb6064a72a4c438e))
+
+
+
+## 14.5.7 (2025-09-23)
+
+
+
+## 14.5.6 (2025-09-18)
+
+
+#### Bug Fixes
+
+* Remove --legacy-peer-deps flag to allow automatic peer dependency installation ([fe0ea3d](https://github.com/IgniteUI/igniteui-cli/commit/fe0ea3df94614b10dc494e241b070309e283c0b6))
+* **wc:** enhance upgrade-packages to support workspace glob patterns and vite.config.ts files ([#1408](https://github.com/IgniteUI/igniteui-cli/issues/1408)) ([bcd62be](https://github.com/IgniteUI/igniteui-cli/commit/bcd62be52107bcbdab6d207866fe7ffb99883b6d))
+
+
+
+## 14.5.4 (2025-07-01)
+
+
+
+## 14.5.3 (2025-06-28)
+
+
+
+## 14.5.1 (2025-06-24)
+
+
+
+# 14.5.0 (2025-06-05)
+
+
+
+## 14.4.4 (2025-05-21)
+
+
+#### Features
+
+* add azure pipelines yaml files for angular, react and wc templates ([#1396](https://github.com/IgniteUI/igniteui-cli/issues/1396)) ([6a3e39d](https://github.com/IgniteUI/igniteui-cli/commit/6a3e39d41f50abe51fa7fd819961412304a31343))
+
+
+
+## 14.4.3 (2025-04-25)
+
+
+#### Features
+
+* **React:** Update react html files with licensed packages when upgrading packages ([#1395](https://github.com/IgniteUI/igniteui-cli/issues/1395)) ([7a7c4f0](https://github.com/IgniteUI/igniteui-cli/commit/7a7c4f0b5b74acc67e7524e643ee2a102ededb46))
+
+
+
+## 14.4.2 (2025-04-24)
+
+
+
+## 14.4.1 (2025-04-23)
+
+
+
+# 14.4.0 (2025-04-17)
+
+
+
+## 14.3.18 (2025-04-11)
+
+
+#### Bug Fixes
+
+* add missing static css files for WC ([#1385](https://github.com/IgniteUI/igniteui-cli/issues/1385)) ([95018f9](https://github.com/IgniteUI/igniteui-cli/commit/95018f93704f62af70b9c4a2e07b46554e6331a4))
+
+
+
+## 14.3.17 (2025-04-09)
+
+
+#### Bug Fixes
+
+* **WC:** update themes import paths to licensed version ([#1387](https://github.com/IgniteUI/igniteui-cli/issues/1387)) ([260068b](https://github.com/IgniteUI/igniteui-cli/commit/260068b9c9e3f4e895717ca6003f6ba0aded5cf2))
+
+
+
+## 14.3.16 (2025-03-31)
+
+
+#### Bug Fixes
+
+* **workflows:** Do not throw error if github workflows directory does not exist when updating ([#1383](https://github.com/IgniteUI/igniteui-cli/issues/1383)) ([acc771a](https://github.com/IgniteUI/igniteui-cli/commit/acc771afac962166f630c36beff428aa83af97de))
+
+
+
+## 14.3.14 (2025-02-24)
+
+
+#### Bug Fixes
+
+* update eslint and fix warnings ([#1378](https://github.com/IgniteUI/igniteui-cli/issues/1378)) ([aa84345](https://github.com/IgniteUI/igniteui-cli/commit/aa84345ff21fc0fccde94063099e4c713862cde8))
+
+
+
+## 14.3.12-beta.0 (2025-01-27)
+
+
+
+## 14.3.11 (2025-01-24)
+
+
+#### Bug Fixes
+
+* static data paths when deploy to github pages ([#1371](https://github.com/IgniteUI/igniteui-cli/issues/1371)) ([4b40231](https://github.com/IgniteUI/igniteui-cli/commit/4b402313f4d2a2cfd80115d274514d9e5507334c))
+
+
+
+## 14.3.10 (2025-01-23)
+
+
+
+## 14.3.9 (2025-01-23)
+
+
+
+## 14.3.8 (2025-01-23)
+
+
+
+## 14.3.7 (2025-01-22)
+
+
+
+## 14.3.6 (2024-12-12)
+
+
+
+## 14.3.5 (2024-12-06)
+
+
+#### Bug Fixes
+
+* **web-components:** fix the step for updating the router navigation in github pages workflow ([#1358](https://github.com/IgniteUI/igniteui-cli/issues/1358)) ([3e0f42c](https://github.com/IgniteUI/igniteui-cli/commit/3e0f42c4fc7a75f6819f8ba85f760ac6a6d854f1))
+
+
+
+## 14.3.4 (2024-12-04)
+
+
+
+## 14.3.3 (2024-12-02)
+
+
+
+## 14.3.2 (2024-11-28)
+
+
+#### Features
+
+* Add pages deployment variable logic and fixes in github pages yaml files ([#1337](https://github.com/IgniteUI/igniteui-cli/issues/1337)) ([c75d9c7](https://github.com/IgniteUI/igniteui-cli/commit/c75d9c7a9d7a9244e7a9a814770809f06280529a))
+* allow reordering of array literal expressions ([#1323](https://github.com/IgniteUI/igniteui-cli/issues/1323)) ([412a2a5](https://github.com/IgniteUI/igniteui-cli/commit/412a2a585fa16fda53eb643c74af7fb4037c1412))
+
+
+
+## 14.2.3 (2024-11-15)
+
+
+
+## 14.2.2 (2024-11-08)
+
+
+
+## 14.2.1 (2024-10-28)
+
+
+
+# 14.2.0 (2024-10-25)
+
+
+
+# 14.2.0-beta.4 (2024-10-23)
+
+
+
+# 14.1.0 (2024-10-11)
+
+
+
+## 14.0.2 (2024-09-20)
+
+
+
+## 14.0.1 (2024-09-05)
+
+
+
+# 14.0.0 (2024-08-23)
+
+
+
+# 14.0.0-beta.2 (2024-07-24)
+
+
+#### Features
+
+* **igx-templates:** add AngularTypeScriptFileUpdate ([e7f6ed3](https://github.com/IgniteUI/igniteui-cli/commit/e7f6ed3d339bb444dcdbaec4cabe5dcbff27b5ac))
+
+
+
+## 13.3.3 (2024-07-16)
+
+
+
+## 13.3.2 (2024-07-04)
+
+
+
+## 13.3.1 (2024-06-28)
+
+
+#### Features
+
+* **core:** add FormattingService ([f7ea2a4](https://github.com/IgniteUI/igniteui-cli/commit/f7ea2a4d8f57b5f1edb531df76d05c541df754e1))
+* **core:** add new types ([aa636a3](https://github.com/IgniteUI/igniteui-cli/commit/aa636a3b1642da1a57758d49e0f7f6f79c7e2d01))
+* **core:** add TypeScriptASTTransformer ([9854847](https://github.com/IgniteUI/igniteui-cli/commit/9854847e32c718d82013e1fc8b58d9b06700b819))
+
+
+
+# 13.3.0-rc.0 (2024-05-31)
+
+
+
+## 13.2.1 (2024-05-09)
+
+
+
+# 13.2.0 (2024-04-29)
+
+
+
+# 13.2.0-rc.0 (2024-04-29)
+
+
+
+## 13.1.16 (2024-04-28)
+
+
+
+## 13.1.15 (2024-04-12)
+
+
+
+## 13.1.13 (2024-04-11)
+
+
+
+## 13.1.12 (2024-03-21)
+
+
+#### Features
+
+* **cli:** upgrade packages for React and WC ([#1198](https://github.com/IgniteUI/igniteui-cli/issues/1198)) ([16c9b8d](https://github.com/IgniteUI/igniteui-cli/commit/16c9b8dda219ebacd473a2fad5e0c0ea70d5f320))
+
+
+
+## 13.1.11 (2024-03-12)
+
+
+
+## 13.1.10 (2024-03-11)
+
+
+
+## 13.1.9 (2024-03-05)
+
+
+
+## 13.1.8 (2024-02-29)
+
+
+
+## 13.1.7 (2024-02-28)
+
+
+
+## 13.1.6 (2024-02-26)
+
+
+#### Features
+
+* **ng-add:** add setup config provideAnimations ([2f47676](https://github.com/IgniteUI/igniteui-cli/commit/2f476762ac772039228fe10565d49a6ced76b72d))
+
+
+
+## 13.1.5 (2024-01-31)
+
+
+
+## 13.1.3 (2024-01-17)
+
+
+
+## 13.1.1 (2023-12-14)
+
+
+#### Bug Fixes
+
+* **kebacase:** do not add dash before numbers ([25d8f54](https://github.com/IgniteUI/igniteui-cli/commit/25d8f544243f6e1f5583c772f4b8e0e3cbb7ca12))
+* **kebap-case:** add dash between number and uppercase letter ([0be7637](https://github.com/IgniteUI/igniteui-cli/commit/0be7637bc19423821e066a9e62dbdec3e5bd5cb4))
+
+
+#### Features
+
+* **igr-ts:** add igr-ts proj type ([#1146](https://github.com/IgniteUI/igniteui-cli/issues/1146)) ([4609525](https://github.com/IgniteUI/igniteui-cli/commit/460952505758fcf1ab9b559ed6809015f3c5d3a5)), closes [#1147](https://github.com/IgniteUI/igniteui-cli/issues/1147) [#1153](https://github.com/IgniteUI/igniteui-cli/issues/1153)
+
+
+
+## 13.0.1 (2023-11-15)
+
+
+#### Bug Fixes
+
+* update Utils.LowerDashed function ([#1171](https://github.com/IgniteUI/igniteui-cli/issues/1171)) ([2254ecc](https://github.com/IgniteUI/igniteui-cli/commit/2254ecc0267be8c19e7f1d5295886b2ba6c345c7))
+
+
+
+# 13.0.0 (2023-11-09)
+
+
+
+# 13.0.0-rc.0 (2023-11-09)
+
+
+
+## 12.0.6-beta.2 (2023-10-02)
+
+
+
+## 12.0.5 (2023-07-18)
+
+
+
+## 12.0.4 (2023-07-18)
+
+
+
+## 12.0.3 (2023-06-28)
+
+
+
+## 12.0.3-beta.0 (2023-06-02)
+
+
+
+## 12.0.1 (2023-05-26)
+
+
+
+# 12.0.0 (2023-05-15)
+
+
+
+# 12.0.0-rc.0 (2023-05-15)
+
+
+#### Features
+
+* **igx:** add base_with_home proj to igx-templates ([#1118](https://github.com/IgniteUI/igniteui-cli/issues/1118)) ([d84c431](https://github.com/IgniteUI/igniteui-cli/commit/d84c4310a03e35588626c57148091c6b224c7bc3))
+* **igx:** update to 16 ([#1120](https://github.com/IgniteUI/igniteui-cli/issues/1120)) ([e6efa40](https://github.com/IgniteUI/igniteui-cli/commit/e6efa40c2c748d2679b6be66252bc7732e51de29))
+
+
+
+## 11.1.1 (2023-04-11)
+
+
+
+# 11.1.0 (2023-03-28)
+
+
+
+# 11.1.0-rc.0 (2023-03-24)
+
+
+
+## 11.0.2 (2023-02-17)
+
+
+
+# 11.0.0 (2022-11-23)
+
+
+
+# 10.1.0-beta.13 (2022-10-27)
+
+
+
+# 10.1.0-beta.12 (2022-10-27)
+
+
+
+# 10.1.0-beta.11 (2022-10-25)
+
+
+
+# 10.1.0-beta.10 (2022-10-25)
+
+
+
+# 10.1.0-beta.8 (2022-10-23)
+
+
+
+# 10.1.0-beta.7 (2022-10-19)
+
+
+
+# 10.1.0-beta.5 (2022-10-18)
+
+
+
+# 10.1.0-beta.4 (2022-10-18)
+
+
+
+# 10.1.0-beta.3 (2022-10-17)
+
+
+
+# 10.1.0-beta.2 (2022-10-14)
+
+
+
+# 10.1.0-beta.1 (2022-10-14)
+
+
+
+# 10.1.0-beta.0 (2022-10-07)
+
+
+
+## 10.0.5 (2022-09-19)
+
+
+
+## 10.0.4-beta.0 (2022-06-30)
+
+
+
+## 10.0.2 (2022-06-29)
+
+
+
+## 10.0.1 (2022-06-17)
+
+
+#### Bug Fixes
+
+* **package-manager:** skip setting up child install tasks for new projects ([de2a134](https://github.com/IgniteUI/igniteui-cli/commit/de2a1341e13ba20635a5ed94c5cc7e4c79c7ca46))
+
+
+
+# 9.2.0 (2022-05-26)
+
+
+
+## 9.1.4 (2022-05-20)
+
+
+
+## 9.1.3 (2022-05-19)
+
+
+
+## 9.1.2 (2022-05-16)
+
+
+
+## 9.1.1 (2022-03-18)
+
+
+
+## 9.1.1-rc.0 (2022-03-17)
+
+
+
+# 9.1.0 (2022-03-02)
+
+
+
+# 9.1.0-rc.1 (2022-02-25)
+
+
+
+# 9.1.0-beta.0 (2022-02-22)
+
+
+#### Bug Fixes
+
+* **start:** pass in options for wc child process ([2df9e33](https://github.com/IgniteUI/igniteui-cli/commit/2df9e337e86e353d6d3dde6b53001af7af36fe12))
+
+
+
+## 9.0.6 (2022-02-04)
+
+
+
+## 9.0.5 (2022-02-04)
+
+
+
+## 9.0.5-beta.2 (2022-02-03)
+
+
+
+## 9.0.5-beta.1 (2022-01-28)
+
+
+
+## 9.0.5-beta.0 (2021-12-20)
+
+
+
+## 9.0.4 (2021-12-15)
+
+
+
+## 9.0.3 (2021-12-13)
+
+
+#### Bug Fixes
+
+* **import:** Update func signature ([a3ac17a](https://github.com/IgniteUI/igniteui-cli/commit/a3ac17ab30436ed0420c92902c53ff7c3dfd0534))
+* **lint:** Fix lint errors ([6b5dd98](https://github.com/IgniteUI/igniteui-cli/commit/6b5dd985e90fb9cf8675c6cf0c06c6193e27fb32))
+
+
+#### Features
+
+* **typescript:** Add support for typescript 4.5.2 ([055ca5b](https://github.com/IgniteUI/igniteui-cli/commit/055ca5b7f8e54acdd8f3f1d6b6d7517916d852f3))
+
+
+
+## 9.0.1 (2021-11-25)
+
+
+
+# 9.0.0 (2021-11-22)
+
+
+
+# 9.0.0-rc.3 (2021-11-22)
+
+
+
+# 9.0.0-rc.2 (2021-11-19)
+
+
+#### Bug Fixes
+
+* add igx-scrollbar class to body, [#14033](https://github.com/IgniteUI/igniteui-cli/issues/14033) ([b02ac58](https://github.com/IgniteUI/igniteui-cli/commit/b02ac5822015c6b1b1fdd4684a52a2eecb3eadd9))
+
+
+
+# 9.0.0-rc.1 (2021-11-17)
+
+
+
+# 9.0.0-rc.0 (2021-11-17)
+
+
+#### Features
+
+* **angular:** update to Angular 13 [#895](https://github.com/IgniteUI/igniteui-cli/issues/895) ([#896](https://github.com/IgniteUI/igniteui-cli/issues/896)) ([32f1721](https://github.com/IgniteUI/igniteui-cli/commit/32f17215290af3372b554f0e440e39b9b9b5040a))
+
+
+
+# 8.3.0-rc.0 (2021-11-11)
+
+
+
+# 8.3.0-beta.6 (2021-11-09)
+
+
+
+# 8.3.0-beta.5 (2021-11-09)
+
+
+
+# 8.3.0-beta.4 (2021-11-09)
+
+
+
+# 8.3.0-beta.3 (2021-11-08)
+
+
+
+# 8.3.0-beta.2 (2021-11-08)
+
+
+
+# 8.3.0-beta.1 (2021-11-04)
+
+
+
+# 8.3.0-beta.0 (2021-11-04)
+
+
+
+## 8.2.1 (2021-10-08)
+
+
+
+## 8.2.1-rc.0 (2021-10-07)
+
+
+
+# 8.2.0 (2021-10-04)
+
+
+
+# 8.2.0-alpha.0 (2021-09-30)
+
+
+
+## 8.1.2 (2021-09-28)
+
+
+#### Bug Fixes
+
+* **ts-transform:** respect quote type from editorconfig ([99b3aad](https://github.com/IgniteUI/igniteui-cli/commit/99b3aadce0e6e7de8e2fef502db2ff1811d7a11e))
+
+
+
+## 8.1.1 (2021-09-02)
+
+
+#### Bug Fixes
+
+* **lint:** Fix all lint errors. ([659cc29](https://github.com/IgniteUI/igniteui-cli/commit/659cc2913f20092bd9ffc3f5a1a1f549db005912))
+
+
+#### Features
+
+* **ig-ts:** Empty project is now angular project. ([83e5c6f](https://github.com/IgniteUI/igniteui-cli/commit/83e5c6f8370b0d10a349751d9b90f3f284d9ae69))
+
+
+
+# 8.1.0-rc.0 (2021-07-30)
+
+
+
+# 8.1.0-beta.1 (2021-07-30)
+
+
+
+# 8.1.0-beta.0 (2021-07-28)
+
+
+#### Features
+
+* update angular to v12.1 [#856](https://github.com/IgniteUI/igniteui-cli/issues/856) ([#857](https://github.com/IgniteUI/igniteui-cli/issues/857)) ([971822e](https://github.com/IgniteUI/igniteui-cli/commit/971822e343158bd107ef5b07bf60773509bd928c))
+
+
+
+## 8.0.3 (2021-07-14)
+
+
+
+## 8.0.2 (2021-07-07)
+
+
+
+## 8.0.2-beta.1 (2021-07-06)
+
+
+
+## 8.0.2-beta.0 (2021-07-02)
+
+
+
+## 8.0.1 (2021-07-01)
+
+
+
+# 8.0.0 (2021-05-14)
+
+
+
+# 8.0.0-rc.0 (2021-05-13)
+
+
+
+# 8.0.0-alpha.1 (2021-05-13)
+
+
+
+## 7.1.1 (2021-03-15)
+
+
+
+## 7.1.1-beta.0 (2021-03-12)
+
+
+
+# 7.1.0 (2021-02-22)
+
+
+
+# 7.1.0-beta.0 (2021-02-18)
+
+
+
+## 7.0.1 (2020-11-16)
+
+
+
+# 7.0.0 (2020-11-13)
+
+
+
+# 7.0.0-rc.2 (2020-11-12)
+
+
+
+# 7.0.0-rc.1 (2020-11-10)
+
+
+
+# 7.0.0-rc.0 (2020-11-10)
+
+
+
+# 7.0.0-alpha.0 (2020-11-10)
+
+
+
+# 6.2.0 (2020-10-20)
+
+
+
+# 6.2.0-rc.0 (2020-10-16)
+
+
+
+# 6.2.0-beta.0 (2020-10-14)
+
+
+
+# 6.1.0 (2020-08-12)
+
+
+
+# 6.1.0-beta.0 (2020-08-07)
+
+
+
+# 6.1.0-alpha.0 (2020-07-09)
+
+
+#### Features
+
+* **tsutil:** add optional parent route to TsFileUpdateUtil.addRoute method ([#777](https://github.com/IgniteUI/igniteui-cli/issues/777)) ([2df694a](https://github.com/IgniteUI/igniteui-cli/commit/2df694ac03a4601059f730b6cc9ae7d3ab6371ea))
+
+
+
+# 6.0.0 (2020-06-25)
+
+
+
+# 6.0.0-rc.0 (2020-06-25)
+
+
+#### Bug Fixes
+
+* use group.json for step by step groups [#707](https://github.com/IgniteUI/igniteui-cli/issues/707) ([adf562c](https://github.com/IgniteUI/igniteui-cli/commit/adf562c639725fb6a8008ef682f5fbdd66e65b55))
+
+
+#### Features
+
+* remove angular as default choice for step by step [#579](https://github.com/IgniteUI/igniteui-cli/issues/579) ([5d2697e](https://github.com/IgniteUI/igniteui-cli/commit/5d2697e019d344cc5ebedf9ac00de94b012ded73))
+
+
+
+# 5.2.0 (2020-06-11)
+
+
+
+## 5.1.1 (2020-06-03)
+
+
+
+# 5.1.0 (2020-06-01)
+
+
+
+# 5.1.0-beta.4 (2020-06-01)
+
+
+#### Bug Fixes
+
+* **package-manager:** manually update pckgJSON instead of letting npm do it, [#751](https://github.com/IgniteUI/igniteui-cli/issues/751) ([6fa4c0c](https://github.com/IgniteUI/igniteui-cli/commit/6fa4c0c8d5afecfef8a8c1de18b1f6620edc006c))
+
+
+
+# 5.1.0-beta.3 (2020-05-29)
+
+
+#### Bug Fixes
+
+* **upgrade:** clear stdin stream before login prompt ([c77f49a](https://github.com/IgniteUI/igniteui-cli/commit/c77f49ab940933e9df6da2518d5192d5d49fbd0c))
+
+
+
+# 5.1.0-beta.2 (2020-05-28)
+
+
+
+# 5.1.0-beta.1 (2020-05-28)
+
+
+
+# 5.1.0-beta.0 (2020-05-27)
+
+
+#### Bug Fixes
+
+* **templates:** upgrade command properly replaces strings in ALL .ts files ([2d2c9b3](https://github.com/IgniteUI/igniteui-cli/commit/2d2c9b3dc02da3f7633642d9b3b4a02d7f0bb119))
+
+
+#### Features
+
+* **commands:** Add 'upgrade-packages' command ([25db37d](https://github.com/IgniteUI/igniteui-cli/commit/25db37d0df1fa52d81501b74ab328330e7a60744))
+* **schematics:** update-package logic added ([197b94e](https://github.com/IgniteUI/igniteui-cli/commit/197b94e367d5e9a359c989beef01c6f35d7b54b5))
+* **step-by-step:** add prompt to upgrade to private feed packages, [#724](https://github.com/IgniteUI/igniteui-cli/issues/724) ([63c0c85](https://github.com/IgniteUI/igniteui-cli/commit/63c0c85639c1e5e5415c82f96a6b5cb5bbad4b99))
+
+
+
+# 5.1.0-alpha.0 (2020-05-20)
+
+
+
+## 5.0.3 (2020-05-18)
+
+
+
+## 5.0.2 (2020-05-05)
+
+
+#### Bug Fixes
+
+* **start:** inherit all stdio, not just input [#699](https://github.com/IgniteUI/igniteui-cli/issues/699) ([1c03891](https://github.com/IgniteUI/igniteui-cli/commit/1c03891227bcdcff6dbff2005939e631737d8b7f))
+
+
+
+# 5.0.0 (2020-02-11)
+
+
+
+# 5.0.0-rc.4 (2020-02-11)
+
+
+
+# 5.0.0-rc.3 (2020-02-07)
+
+
+
+# 5.0.0-rc.2 (2020-02-07)
+
+
+
+# 5.0.0-rc.0 (2020-01-31)
+
+
+
+# 5.0.0-beta.3 (2019-12-13)
+
+
+
+# 5.0.0-beta.2 (2019-12-06)
+
+
+#### Features
+
+* **schematics:** adding a name for schematics projects [#587](https://github.com/IgniteUI/igniteui-cli/issues/587) ([#602](https://github.com/IgniteUI/igniteui-cli/issues/602)) ([19409d0](https://github.com/IgniteUI/igniteui-cli/commit/19409d0b7018c518c64c7ff161a6ec4a3438f834))
+
+
+
+# 5.0.0-beta.1 (2019-11-28)
+
+
+#### Bug Fixes
+
+* **schematics:** component schematics checks for available names [#576](https://github.com/IgniteUI/igniteui-cli/issues/576) ([#586](https://github.com/IgniteUI/igniteui-cli/issues/586)) ([bccd6c1](https://github.com/IgniteUI/igniteui-cli/commit/bccd6c131c4ab9bc197cfa29e1b792494270720f))
+* **schematics:** this package is a dep in new project instead of ignteui-cli ([c04a13c](https://github.com/IgniteUI/igniteui-cli/commit/c04a13c1c82c1d4a9a627503086f86d9040c6778))
+* **templating, igx-ts:** add dot path variable for prefixed files that glob ignores ([486a0da](https://github.com/IgniteUI/igniteui-cli/commit/486a0da0ee6190f16544ee46ae360b822c057b53))
+
+
+
+# 5.0.0-alpha.1 (2019-10-02)
+
+## igniteui/angular-templates@21.1.14100-alpha.4 (2026-03-27)
+
+
+
+# 14.10.0-alpha.3 (2026-03-25)
+
+
+#### Features
+
+* Updated VS Code MCP configuration to align with new naming conventions. ([4fdb8e0](https://github.com/IgniteUI/igniteui-cli/commit/4fdb8e091b87c960c9cbbb35c126b6b7a32475fc))
+
+
+
+# 14.10.0-alpha.1 (2026-03-25)
+
+
+#### Bug Fixes
+
+* **eslint:** correct config ignores and resolve lint errors ([68d01ac](https://github.com/IgniteUI/igniteui-cli/commit/68d01ac6102e4e3d660dff9d229e826ea64943db))
+* **igx-ts-legacy:** update igx ts legacy templates ([#1517](https://github.com/IgniteUI/igniteui-cli/issues/1517)) ([c26c8ff](https://github.com/IgniteUI/igniteui-cli/commit/c26c8ff298092c21b2aa6ca77a75cd2a5fdedc79))
+
+
+#### Features
+
+* add copilot instructions for AI agents in multiple templates ([73921a7](https://github.com/IgniteUI/igniteui-cli/commit/73921a738efcc0a3e2a7df24bdf509f9f694da8a))
+* **claude:** add CLAUDE.md files for AI agent instructions across multiple templates ([5a96a33](https://github.com/IgniteUI/igniteui-cli/commit/5a96a33eac3f2fcbaf1444ac7778f7c8c2c89952))
+* **igx-ts:** update angular project to use vitest with playwright ([#1542](https://github.com/IgniteUI/igniteui-cli/issues/1542)) ([85dd3e6](https://github.com/IgniteUI/igniteui-cli/commit/85dd3e609295d7d801c127715c5fe8947f90f23d))
+* **igx-ts:** update project setup and templates naming ([#1514](https://github.com/IgniteUI/igniteui-cli/issues/1514)) ([ed4d1dd](https://github.com/IgniteUI/igniteui-cli/commit/ed4d1ddced09cee062caae7f8445df5ba11d8cac))
+* **mcp:** add angular-cli server configuration to mcp.json ([43a01a0](https://github.com/IgniteUI/igniteui-cli/commit/43a01a08ca6ac9b9a7958a172e5f27b02fe1fbb1))
+* **templates:** add AGENTS.md and mcp.json files for React and Web Components and Angular project templates ([d867f44](https://github.com/IgniteUI/igniteui-cli/commit/d867f44e17d01be82ec6853c6b0c22910a652b73))
+
+
+
+## 14.9.2 (2026-03-11)
+
+
+#### Bug Fixes
+
+* **igx-ts-legacy:** fi grid type import and add missing override ([ff24df0](https://github.com/IgniteUI/igniteui-cli/commit/ff24df0e665d8c834f510bfc62fc99af6532a38e))
+* **igx-ts:** fix eslint configurations ([#1509](https://github.com/IgniteUI/igniteui-cli/issues/1509)) ([ec63959](https://github.com/IgniteUI/igniteui-cli/commit/ec63959ee65e5c369d483d5dc34965f121a36cae))
+* **igx-ts:** fix side nav route data text ([487ba12](https://github.com/IgniteUI/igniteui-cli/commit/487ba122c2d51822642d15f501ea776193bf6a44))
+* **igx-ts:** update igniteui-angular versions and remove overrides ([#1508](https://github.com/IgniteUI/igniteui-cli/issues/1508)) ([6b4e1c8](https://github.com/IgniteUI/igniteui-cli/commit/6b4e1c87e8e7a94a5212a7037072088b7eec8a1a))
+
+
+
+## 14.9.1 (2026-02-25)
+
+
+
+# 14.9.0 (2026-02-25)
+
+
+#### Bug Fixes
+
+* **angular:** add igniteui angular core override ([0a5d46f](https://github.com/IgniteUI/igniteui-cli/commit/0a5d46f73bd3d621a833d07ad09318ccbdcfb9b9))
+* **angular:** add missing providers ([804703e](https://github.com/IgniteUI/igniteui-cli/commit/804703e984919aa2fac6272f8058f94256460b73))
+* **angular:** empty template config ([75eef02](https://github.com/IgniteUI/igniteui-cli/commit/75eef022a33f0dc6bc5b90816ccee9c415d76289))
+* update imports ([a2bf7bf](https://github.com/IgniteUI/igniteui-cli/commit/a2bf7bf6fc973ba0af8d12dc1c33605419475891))
+
+
+#### Features
+
+* **ng:** update igniteui-angular to 21.1.0 ([#1495](https://github.com/IgniteUI/igniteui-cli/issues/1495)) ([399f83e](https://github.com/IgniteUI/igniteui-cli/commit/399f83e4278dafdf9a3832fa013840f05ba586e6))
+
+
+
+## 14.8.5-beta.3 (2026-02-11)
+
+
+#### Bug Fixes
+
+* **angular:** fix the type of the providers ([142dbda](https://github.com/IgniteUI/igniteui-cli/commit/142dbda9665430bb3fb5a97744e8913195975708))
+
+
+
+## 14.8.5-beta.0 (2026-02-10)
+
+
+#### Bug Fixes
+
+* **angular:** add provide zone change detection in app config for angular standalone ([27b516b](https://github.com/IgniteUI/igniteui-cli/commit/27b516b640b1ecf9fdb7320e6a5c84a398aab505))
+
+
+
+## 14.8.4 (2026-02-05)
+
+
+#### Bug Fixes
+
+* add same fix to legacy angular projects ([2456829](https://github.com/IgniteUI/igniteui-cli/commit/245682908c81c931b65707b5098a98e3991f6f71))
+* **angular:** increase maximum error budget ([#1485](https://github.com/IgniteUI/igniteui-cli/issues/1485)) ([63a03bd](https://github.com/IgniteUI/igniteui-cli/commit/63a03bddb3459797bc5a0121f2d601823fd3cd35))
+* move tearDown to chart related test files ([40b1739](https://github.com/IgniteUI/igniteui-cli/commit/40b1739734199b035c32b02937456c9ae444654a))
+* remove calls to test.ts ([c08ca9f](https://github.com/IgniteUI/igniteui-cli/commit/c08ca9fcd472488a125c2f073bd06e051a5f3314))
+* remove test.ts as not needed ([451d49a](https://github.com/IgniteUI/igniteui-cli/commit/451d49ab3c6b7652b29b062e1e3a9301f2497a0f))
+
+
+
+## 14.8.3 (2026-01-19)
+
+
+#### Bug Fixes
+
+* **angular:** remove glob and rimraf from standalone package json ([#1478](https://github.com/IgniteUI/igniteui-cli/issues/1478)) ([0a3afce](https://github.com/IgniteUI/igniteui-cli/commit/0a3afce21e6e14196c8942f9f15a56793e1679fa))
+
+
+
+## 14.8.2 (2026-01-13)
+
+
+
+## 14.8.2-beta.4 (2026-01-12)
+
+
+
+## 14.8.2-beta.3 (2026-01-12)
+
+
+
+## 14.8.2-beta.2 (2026-01-12)
+
+
+
+## 14.8.2-beta.0 (2026-01-12)
+
+
+
+# 14.8.0 (2025-12-03)
+
+
+
+# 14.8.0-beta.2 (2025-12-01)
+
+
+
+# 14.8.0-beta.1 (2025-12-01)
+
+
+
+## 14.7.1 (2025-11-20)
+
+
+
+# 14.7.0 (2025-11-17)
+
+
+#### Features
+
+* **ng:** use ng lint schematic ([#1439](https://github.com/IgniteUI/igniteui-cli/issues/1439)) ([fa917cd](https://github.com/IgniteUI/igniteui-cli/commit/fa917cd7c974db05061f9442d8c5cdcc74853928))
+
+
+
+## 14.6.4 (2025-10-14)
+
+
+
+## 14.6.3 (2025-10-09)
+
+
+#### Bug Fixes
+
+* **ng:** move eqeqeq rule ([#1433](https://github.com/IgniteUI/igniteui-cli/issues/1433)) ([29a574d](https://github.com/IgniteUI/igniteui-cli/commit/29a574db2af16adff262440d789c58216ba08a8e))
+
+
+
+## 14.6.2 (2025-10-07)
+
+
+
+## 14.6.1 (2025-10-06)
+
+
+
+# 14.6.0 (2025-10-02)
+
+
+#### Features
+
+* **ng:** update ig, ng and other libs ([#1427](https://github.com/IgniteUI/igniteui-cli/issues/1427)) ([93fbbcc](https://github.com/IgniteUI/igniteui-cli/commit/93fbbcce2668084dcc958736f7167e36e9cbed47))
+
+
+
+## 14.5.8 (2025-09-25)
+
+
+
+## 14.5.7 (2025-09-23)
+
+
+#### Bug Fixes
+
+* **angular:** fix eslint config for angular modules ([#1423](https://github.com/IgniteUI/igniteui-cli/issues/1423)) ([2420d26](https://github.com/IgniteUI/igniteui-cli/commit/2420d26511cffef06cad58fa7e67a61a6b885187))
+
+
+
+## 14.5.6 (2025-09-18)
+
+
+#### Bug Fixes
+
+* **ng, standalone:** add test setup file for angular standalone ([#1421](https://github.com/IgniteUI/igniteui-cli/issues/1421)) ([feebb55](https://github.com/IgniteUI/igniteui-cli/commit/feebb5574cfffe86f6f2b342c2643b3ef9651a3c))
+
+
+
+## 14.5.4 (2025-07-01)
+
+
+#### Bug Fixes
+
+* **ng:** Add same proj rxjs version in overrides, so there are no peer dep errors for it. It is needed when having reveal or other overrides. ([4728d19](https://github.com/IgniteUI/igniteui-cli/commit/4728d19e7658cf5c4d863a6c277be696f77e5ac5))
+
+
+
+## 14.5.3 (2025-06-28)
+
+
+#### Bug Fixes
+
+* **angular:** fix theme errors ([#1404](https://github.com/IgniteUI/igniteui-cli/issues/1404)) ([3e7e4a3](https://github.com/IgniteUI/igniteui-cli/commit/3e7e4a3777bde5cc025df182bb57e5b9f002c5d9))
+
+
+
+## 14.5.1 (2025-06-24)
+
+
+
+# 14.5.0 (2025-06-05)
+
+
+
+## 14.4.4 (2025-05-21)
+
+
+#### Features
+
+* add azure pipelines yaml files for angular, react and wc templates ([#1396](https://github.com/IgniteUI/igniteui-cli/issues/1396)) ([6a3e39d](https://github.com/IgniteUI/igniteui-cli/commit/6a3e39d41f50abe51fa7fd819961412304a31343))
+
+
+
+## 14.4.3 (2025-04-25)
+
+
+
+## 14.4.2 (2025-04-24)
+
+
+
+## 14.4.1 (2025-04-23)
+
+
+
+# 14.4.0 (2025-04-17)
+
+
+
+## 14.3.18 (2025-04-11)
+
+
+#### Bug Fixes
+
+* add missing static css files for WC ([#1385](https://github.com/IgniteUI/igniteui-cli/issues/1385)) ([95018f9](https://github.com/IgniteUI/igniteui-cli/commit/95018f93704f62af70b9c4a2e07b46554e6331a4))
+
+
+
+## 14.3.17 (2025-04-09)
+
+
+
+## 14.3.16 (2025-03-31)
+
+
+
+## 14.3.14 (2025-02-24)
+
+
+#### Bug Fixes
+
+* **angular:** add ovverides for reveal sdk wrappers ([d2bc8cb](https://github.com/IgniteUI/igniteui-cli/commit/d2bc8cb26584f5836d633d24421d6dc774bd53a5))
+* update eslint and fix warnings ([#1378](https://github.com/IgniteUI/igniteui-cli/issues/1378)) ([aa84345](https://github.com/IgniteUI/igniteui-cli/commit/aa84345ff21fc0fccde94063099e4c713862cde8))
+
+
+
+## 14.3.12-beta.0 (2025-01-27)
+
+
+
+## 14.3.11 (2025-01-24)
+
+
+#### Bug Fixes
+
+* static data paths when deploy to github pages ([#1371](https://github.com/IgniteUI/igniteui-cli/issues/1371)) ([4b40231](https://github.com/IgniteUI/igniteui-cli/commit/4b402313f4d2a2cfd80115d274514d9e5507334c))
+
+
+
+## 14.3.10 (2025-01-23)
+
+
+
+## 14.3.9 (2025-01-23)
+
+
+
+## 14.3.8 (2025-01-23)
+
+
+
+## 14.3.7 (2025-01-22)
+
+
+#### Bug Fixes
+
+* **github-pages:** upgrade github pages deploy and artefact versions ([#1366](https://github.com/IgniteUI/igniteui-cli/issues/1366)) ([db6d0ea](https://github.com/IgniteUI/igniteui-cli/commit/db6d0eaef44c189cb80f10925d25595d97b7da4b))
+
+
+
+## 14.3.6 (2024-12-12)
+
+
+
+## 14.3.5 (2024-12-06)
+
+
+#### Bug Fixes
+
+* **web-components:** fix the step for updating the router navigation in github pages workflow ([#1358](https://github.com/IgniteUI/igniteui-cli/issues/1358)) ([3e0f42c](https://github.com/IgniteUI/igniteui-cli/commit/3e0f42c4fc7a75f6819f8ba85f760ac6a6d854f1))
+
+
+
+## 14.3.4 (2024-12-04)
+
+
+
+## 14.3.3 (2024-12-02)
+
+
+
+## 14.3.2 (2024-11-28)
+
+
+#### Bug Fixes
+
+* adapt ngModules templates to 19 changes ([2ce6e9d](https://github.com/IgniteUI/igniteui-cli/commit/2ce6e9d38acef0f0e8981ef054f61ab35d137fd8))
+
+
+
+# 14.3.0 (2024-11-25)
+
+
+#### Features
+
+* Add pages deployment variable logic and fixes in github pages yaml files ([#1337](https://github.com/IgniteUI/igniteui-cli/issues/1337)) ([c75d9c7](https://github.com/IgniteUI/igniteui-cli/commit/c75d9c7a9d7a9244e7a9a814770809f06280529a))
+* allow reordering of array literal expressions ([#1323](https://github.com/IgniteUI/igniteui-cli/issues/1323)) ([412a2a5](https://github.com/IgniteUI/igniteui-cli/commit/412a2a585fa16fda53eb643c74af7fb4037c1412))
+
+
+
+## 14.2.3 (2024-11-15)
+
+
+
+## 14.2.2 (2024-11-08)
+
+
+
+## 14.2.1 (2024-10-28)
+
+
+
+# 14.2.0 (2024-10-25)
+
+
+
+# 14.2.0-beta.4 (2024-10-23)
+
+
+
+# 14.1.0 (2024-10-11)
+
+
+
+## 14.0.2 (2024-09-20)
+
+
+
+## 14.0.1 (2024-09-05)
+
+
+
+# 14.0.0 (2024-08-23)
+
+
+
+# 14.0.0-beta.2 (2024-07-24)
+
+
+
+## 13.4.1 (2024-07-24)
+
+
+#### Features
+
+* **igx-templates:** add AngularTypeScriptFileUpdate ([e7f6ed3](https://github.com/IgniteUI/igniteui-cli/commit/e7f6ed3d339bb444dcdbaec4cabe5dcbff27b5ac))
+
+
+
+# 13.4.0 (2024-07-22)
+
+
+
+## 13.3.3 (2024-07-16)
+
+
+
+## 13.3.2 (2024-07-04)
+
+
+
+## 13.3.1 (2024-06-28)
+
+
+
+# 13.3.0-rc.0 (2024-05-31)
+
+
+#### Features
+
+* **ng-sa-base:** add vscode template folder ([a4787e7](https://github.com/IgniteUI/igniteui-cli/commit/a4787e74fcc715aceaa4c265fd97e4452e70463e))
+* **ngm-base:** add vscode template folder ([0ed6fb8](https://github.com/IgniteUI/igniteui-cli/commit/0ed6fb8cf8ef75103c84e8ee2ddeaa2886be3922))
+
+
+
+## 13.2.1 (2024-05-09)
+
+
+
+# 13.2.0 (2024-04-29)
+
+
+
+# 13.2.0-rc.0 (2024-04-29)
+
+
+
+## 13.1.16 (2024-04-28)
+
+
+
+## 13.1.15 (2024-04-12)
+
+
+
+## 13.1.13 (2024-04-11)
+
+
+#### Bug Fixes
+
+* **cli-templetes:** Replaced index.html <title> to ApplicationTitle as placeholder ([#1237](https://github.com/IgniteUI/igniteui-cli/issues/1237)) ([d622d54](https://github.com/IgniteUI/igniteui-cli/commit/d622d54fbd3becbc514bfc971eac4c97b3346255))
+* fix yml script placeholder delimiters ([#1239](https://github.com/IgniteUI/igniteui-cli/issues/1239)) ([45a2264](https://github.com/IgniteUI/igniteui-cli/commit/45a2264a93edc5b0ca307d5ec43fcd6a9de42cea))
+
+
+
+## 13.1.12 (2024-03-21)
+
+
+#### Features
+
+* **cli:** upgrade packages for React and WC ([#1198](https://github.com/IgniteUI/igniteui-cli/issues/1198)) ([16c9b8d](https://github.com/IgniteUI/igniteui-cli/commit/16c9b8dda219ebacd473a2fad5e0c0ea70d5f320))
+
+
+
+## 13.1.11 (2024-03-12)
+
+
+
+## 13.1.10 (2024-03-11)
+
+
+
+## 13.1.9 (2024-03-05)
+
+
+
+## 13.1.8 (2024-02-29)
+
+
+
+## 13.1.7 (2024-02-28)
+
+
+
+## 13.1.6 (2024-02-26)
+
+
+#### Features
+
+* **_base-legacy:** update project type to legacy ([f8984c9](https://github.com/IgniteUI/igniteui-cli/commit/f8984c93f02e8391ca721bc49eeabd45e5f7bb34))
+* **_base:** provide http client ([1e1d1c2](https://github.com/IgniteUI/igniteui-cli/commit/1e1d1c2d6c70a110ace81e74c91bcab2a7021086))
+
+
+
+## 13.1.5 (2024-01-31)
+
+
+
+## 13.1.3 (2024-01-17)
+
+
+#### Bug Fixes
+
+* **igx-ts:** update karma-jasmine-html-reporter ([0cf034d](https://github.com/IgniteUI/igniteui-cli/commit/0cf034db6474b8ed88e9b3d93e9b3011afd47b3b))
+
+
+
+## 13.1.1 (2023-12-14)
+
+
+#### Bug Fixes
+
+* **igx:** remove prod config for ng build ([d90c056](https://github.com/IgniteUI/igniteui-cli/commit/d90c056aed7ac87f972ea719eeac9367e6b97226))
+
+
+#### Features
+
+* **igr-ts:** add igr-ts proj type ([#1146](https://github.com/IgniteUI/igniteui-cli/issues/1146)) ([4609525](https://github.com/IgniteUI/igniteui-cli/commit/460952505758fcf1ab9b559ed6809015f3c5d3a5)), closes [#1147](https://github.com/IgniteUI/igniteui-cli/issues/1147) [#1153](https://github.com/IgniteUI/igniteui-cli/issues/1153)
+
+
+
+## 13.0.1 (2023-11-15)
+
+
+
+# 13.0.0 (2023-11-09)
+
+
+
+# 13.0.0-rc.0 (2023-11-09)
+
+
+
+## 12.0.6-beta.2 (2023-10-02)
+
+
+
+## 12.0.5 (2023-07-18)
+
+
+
+## 12.0.4 (2023-07-18)
+
+
+
+## 12.0.3 (2023-06-28)
+
+
+
+## 12.0.3-beta.0 (2023-06-02)
+
+
+#### Bug Fixes
+
+* **igx:** more fixes ([1373d18](https://github.com/IgniteUI/igniteui-cli/commit/1373d18e45d8fa9bb69bf5692b360bb4ecec531b))
+* **igx:** replace DataGridSelectionMode with GridSelectionMode ([fc61052](https://github.com/IgniteUI/igniteui-cli/commit/fc61052d68f5fffbaf96c0f7c71220c39c7d5ef2))
+
+
+
+## 12.0.1 (2023-05-26)
+
+
+
+## 11.1.2 (2023-05-25)
+
+
+
+# 12.0.0 (2023-05-15)
+
+
+
+# 12.0.0-rc.0 (2023-05-15)
+
+
+#### Features
+
+* **igx:** add base_with_home proj to igx-templates ([#1118](https://github.com/IgniteUI/igniteui-cli/issues/1118)) ([d84c431](https://github.com/IgniteUI/igniteui-cli/commit/d84c4310a03e35588626c57148091c6b224c7bc3))
+* **igx:** update to 16 ([#1120](https://github.com/IgniteUI/igniteui-cli/issues/1120)) ([e6efa40](https://github.com/IgniteUI/igniteui-cli/commit/e6efa40c2c748d2679b6be66252bc7732e51de29))
+
+
+
+## 11.1.1 (2023-04-11)
+
+
+
+# 11.1.0 (2023-03-28)
+
+
+
+# 11.1.0-rc.0 (2023-03-24)
+
+
+#### Bug Fixes
+
+* **igx-ts:** updating dependencies [#1099](https://github.com/IgniteUI/igniteui-cli/issues/1099) ([#1102](https://github.com/IgniteUI/igniteui-cli/issues/1102)) ([cd3b35a](https://github.com/IgniteUI/igniteui-cli/commit/cd3b35ac7961474ecd4ecbb8c4dffa33067c20f1))
+
+
+
+## 11.0.2 (2023-02-17)
+
+
+
+# 11.0.0 (2022-11-23)
+
+
+
+# 10.1.0-beta.13 (2022-10-27)
+
+
+
+# 10.1.0-beta.12 (2022-10-27)
+
+
+
+# 10.1.0-beta.11 (2022-10-25)
+
+
+
+# 10.1.0-beta.10 (2022-10-25)
+
+
+
+# 10.1.0-beta.8 (2022-10-23)
+
+
+
+# 10.1.0-beta.7 (2022-10-19)
+
+
+
+# 10.1.0-beta.5 (2022-10-18)
+
+
+
+# 10.1.0-beta.4 (2022-10-18)
+
+
+
+# 10.1.0-beta.3 (2022-10-17)
+
+
+
+# 10.1.0-beta.2 (2022-10-14)
+
+
+
+# 10.1.0-beta.1 (2022-10-14)
+
+
+
+# 10.1.0-beta.0 (2022-10-07)
+
+
+
+## 10.0.5 (2022-09-19)
+
+
+
+## 10.0.4-beta.0 (2022-06-30)
+
+
+
+## 10.0.2 (2022-06-29)
+
+
+
+## 10.0.1 (2022-06-17)
+
+
+
+# 9.2.0 (2022-05-26)
+
+
+
+## 9.1.4 (2022-05-20)
+
+
+
+## 9.1.3 (2022-05-19)
+
+
+
+## 9.1.2 (2022-05-16)
+
+
+#### Bug Fixes
+
+* **fintech grid:** fix slow grid [#1020](https://github.com/IgniteUI/igniteui-cli/issues/1020) ([4f888dc](https://github.com/IgniteUI/igniteui-cli/commit/4f888dc3c2b1fd6ad896b197634d3aa0c3ef57cd))
+
+
+
+## 9.1.1 (2022-03-18)
+
+
+
+## 9.1.1-rc.0 (2022-03-17)
+
+
+#### Bug Fixes
+
+* **ng:** gridAPI rename ([5b8b0a5](https://github.com/IgniteUI/igniteui-cli/commit/5b8b0a5e5e21ce5ae2228e0d025eea0195206292))
+
+
+#### Features
+
+* **ng:** update to 13.3.0 ([17553b0](https://github.com/IgniteUI/igniteui-cli/commit/17553b0da7586d14d91778417161f2a77864fd16))
+
+
+
+# 9.1.0 (2022-03-02)
+
+
+
+# 9.1.0-rc.1 (2022-02-25)
+
+
+#### Bug Fixes
+
+* **templates:** Adding override modifier. ([6334d17](https://github.com/IgniteUI/igniteui-cli/commit/6334d174642212d942c5f5669c1082ae56bb3cc8))
+
+
+
+# 9.1.0-rc.0 (2022-02-24)
+
+
+
+# 9.1.0-beta.0 (2022-02-22)
+
+
+#### Bug Fixes
+
+* **angular:** change more igx- ([f9ade5e](https://github.com/IgniteUI/igniteui-cli/commit/f9ade5e176444ce3c2a80f60baf43d239b8788fe))
+* **angular:** remove old code ([3b063db](https://github.com/IgniteUI/igniteui-cli/commit/3b063db9cf51509b289148f4928cdfda9837a6dd))
+
+
+
+## 9.0.6 (2022-02-04)
+
+
+
+## 9.0.5 (2022-02-04)
+
+
+
+## 9.0.5-beta.2 (2022-02-03)
+
+
+
+## 9.0.5-beta.1 (2022-01-28)
+
+
+
+## 9.0.5-beta.0 (2021-12-20)
+
+
+
+## 9.0.4 (2021-12-15)
+
+
+
+## 9.0.3 (2021-12-13)
+
+
+#### Bug Fixes
+
+* **schematics:** fix home import without placeholder ([#966](https://github.com/IgniteUI/igniteui-cli/issues/966)) ([9263bb2](https://github.com/IgniteUI/igniteui-cli/commit/9263bb22b6dd699845d3e6fad7ab78536f7a484c))
+
+
+#### Features
+
+* **typescript:** Add support for typescript 4.5.2 ([055ca5b](https://github.com/IgniteUI/igniteui-cli/commit/055ca5b7f8e54acdd8f3f1d6b6d7517916d852f3))
+* Update [@use](https://github.com/use) [@forward](https://github.com/forward) and hsla ([#961](https://github.com/IgniteUI/igniteui-cli/issues/961)) ([2ef8435](https://github.com/IgniteUI/igniteui-cli/commit/2ef8435816f8ff4f60c7e0cd4ed497a11fc815da))
+
+
+
+## 9.0.1 (2021-11-25)
+
+
+
+# 9.0.0 (2021-11-22)
+
+
+
+# 9.0.0-rc.3 (2021-11-22)
+
+
+#### Bug Fixes
+
+* changes from latest rc, packages updates ([f59905f](https://github.com/IgniteUI/igniteui-cli/commit/f59905fbd0d37d536b2a13dd002cc99ce8c48165))
+
+
+
+# 9.0.0-rc.2 (2021-11-19)
+
+
+#### Bug Fixes
+
+* add igx-scrollbar class to body, [#14033](https://github.com/IgniteUI/igniteui-cli/issues/14033) ([b02ac58](https://github.com/IgniteUI/igniteui-cli/commit/b02ac5822015c6b1b1fdd4684a52a2eecb3eadd9))
+* **angular:** new theme imports upgrade packages ([3ae74d9](https://github.com/IgniteUI/igniteui-cli/commit/3ae74d9bb9a338f939e9e5fb73c978003401c2a7))
+
+
+
+# 9.0.0-rc.1 (2021-11-17)
+
+
+
+# 9.0.0-rc.0 (2021-11-17)
+
+
+#### Features
+
+* **angular:** update to Angular 13 [#895](https://github.com/IgniteUI/igniteui-cli/issues/895) ([#896](https://github.com/IgniteUI/igniteui-cli/issues/896)) ([32f1721](https://github.com/IgniteUI/igniteui-cli/commit/32f17215290af3372b554f0e440e39b9b9b5040a))
+
+
+
+# 8.3.0-rc.0 (2021-11-11)
+
+
+
+# 8.3.0-beta.6 (2021-11-09)
+
+
+
+# 8.3.0-beta.5 (2021-11-09)
+
+
+
+# 8.3.0-beta.4 (2021-11-09)
+
+
+
+# 8.3.0-beta.3 (2021-11-08)
+
+
+
+# 8.3.0-beta.2 (2021-11-08)
+
+
+
+# 8.3.0-beta.1 (2021-11-04)
+
+
+
+# 8.3.0-beta.0 (2021-11-04)
+
+
+
+## 8.2.1 (2021-10-08)
+
+
+
+## 8.2.1-rc.0 (2021-10-07)
+
+
+
+# 8.2.0 (2021-10-04)
+
+
+
+# 8.2.0-alpha.0 (2021-09-30)
+
+
+#### Bug Fixes
+
+* remove icon color, becasue it is deprecated ([7b33804](https://github.com/IgniteUI/igniteui-cli/commit/7b338049a3182d7a8ea9e7106d10ef485dcc0623))
+
+
+
+## 8.1.2 (2021-09-28)
+
+
+
+## 8.1.1 (2021-09-02)
+
+
+
+# 8.1.0-rc.0 (2021-07-30)
+
+
+#### Bug Fixes
+
+* **igx-ts:** remove deprecated properties from scenario templates ([f84dc3c](https://github.com/IgniteUI/igniteui-cli/commit/f84dc3cd9626d5f287caed74cd32fda6849906e2))
+
+
+
+# 8.1.0-beta.1 (2021-07-30)
+
+
+#### Bug Fixes
+
+* **awesome-grid:** fix deprecated properties warnings ([f7a5b0c](https://github.com/IgniteUI/igniteui-cli/commit/f7a5b0c589c4b0aa8ded7c036859956d84c1ed23))
+* **fintech-grid:** fix console warnings and errors ([eaaf733](https://github.com/IgniteUI/igniteui-cli/commit/eaaf73311b45b9fc326353c8c6e6a1efe3f6f225))
+* **igx-ts:** Update angular.json ([c038c70](https://github.com/IgniteUI/igniteui-cli/commit/c038c708c5d2476e819071fd6c9defe29915b904))
+* **igx-ts:** use explicit index in drop-down components for logic view ([cb96f7d](https://github.com/IgniteUI/igniteui-cli/commit/cb96f7dcc2a5a4af2c585b22b50daa372f3684e9))
+
+
+#### Features
+
+* **igx-ts:** update custom grid templates w/ 12.1 paginator ([2b5058b](https://github.com/IgniteUI/igniteui-cli/commit/2b5058bd8c2f1946fd1f52b848a5b6ca9aebfcee))
+
+
+
+# 8.1.0-beta.0 (2021-07-28)
+
+
+#### Features
+
+* **igx-templates:** add igx-accordion template ([#851](https://github.com/IgniteUI/igniteui-cli/issues/851)) ([03e74cd](https://github.com/IgniteUI/igniteui-cli/commit/03e74cd194184b629ea09ec3cfa5218943d0feef))
+* update angular to v12.1 [#856](https://github.com/IgniteUI/igniteui-cli/issues/856) ([#857](https://github.com/IgniteUI/igniteui-cli/issues/857)) ([971822e](https://github.com/IgniteUI/igniteui-cli/commit/971822e343158bd107ef5b07bf60773509bd928c))
+
+
+
+## 8.0.3 (2021-07-14)
+
+
+#### Bug Fixes
+
+* **igx-ts:** fix strict errors in base and side-nav projects ([963d23d](https://github.com/IgniteUI/igniteui-cli/commit/963d23dc9771d8d184bff89fe2e2782e3bd97219))
+* **igx-ts:** fix strict errors in side-nav-auth project ([695f430](https://github.com/IgniteUI/igniteui-cli/commit/695f430c693b4a4cb817784d4b20dc0c268ec80c))
+
+
+
+## 8.0.2 (2021-07-07)
+
+
+
+## 8.0.2-beta.1 (2021-07-06)
+
+
+#### Bug Fixes
+
+* **angular-templates:** fix issue with strict templates in igx-ts ([38aaa75](https://github.com/IgniteUI/igniteui-cli/commit/38aaa756908493244414a51cc31688c27246b2f6)), closes [#850](https://github.com/IgniteUI/igniteui-cli/issues/850)
+
+
+
+## 8.0.2-beta.0 (2021-07-02)
+
+
+
+## 8.0.1 (2021-07-01)
+
+
+
+# 8.0.0 (2021-05-14)
+
+
+#### Bug Fixes
+
+* **fonts:** Fix icon font names and families ([35a702e](https://github.com/IgniteUI/igniteui-cli/commit/35a702ee21d4a780b9318de071246969af54fca7))
+* **template:** Fix and upadte awesome template ([f2b51aa](https://github.com/IgniteUI/igniteui-cli/commit/f2b51aa2685220b282ca8a25bb2580f44b960bcb))
+* **warnings:** Update icons for grids samples ([0efbbae](https://github.com/IgniteUI/igniteui-cli/commit/0efbbaecdcb3b6095c6ebc483729214f5e4753aa))
+
+
+
+# 8.0.0-rc.0 (2021-05-13)
+
+
+
+# 8.0.0-alpha.1 (2021-05-13)
+
+
+#### Bug Fixes
+
+* **igx-templates:** provide service in tree sample, add some style ([b76452a](https://github.com/IgniteUI/igniteui-cli/commit/b76452a22d047a07d95c19fd3c720466065f178e))
+* remove strict checks and update open() method ([f2877e3](https://github.com/IgniteUI/igniteui-cli/commit/f2877e342746f85962d3f10125c6b784e53eb5d2))
+
+
+#### Features
+
+* **igx-templates:** add igx-tree template ([41bc6c3](https://github.com/IgniteUI/igniteui-cli/commit/41bc6c37b19c9136335347a468cdd5c8685a1f61))
+
+
+
+## 7.1.1 (2021-03-15)
+
+
+
+## 7.1.1-beta.0 (2021-03-12)
+
+
+
+# 7.1.0 (2021-02-22)
+
+
+
+# 7.1.0-beta.0 (2021-02-18)
+
+
+#### Bug Fixes
+
+* **toolbar:** Update hgrid & treegrid custom template toolbar ([c27af22](https://github.com/IgniteUI/igniteui-cli/commit/c27af22c413da93305a5c90c8a60a6dbac1a01e1))
+
+
+
+## 7.0.1 (2020-11-16)
+
+
+#### Bug Fixes
+
+* **igx-ts:** add local storage to spec ([3056a97](https://github.com/IgniteUI/igniteui-cli/commit/3056a97d99c492c04f2bbf19a7bd09c418294dbf))
+* **igx,custom-grid:** assign allowFiltering when selected as option ([7534c5f](https://github.com/IgniteUI/igniteui-cli/commit/7534c5f51736587b87217042b98c1be753cd76a8))
+* ssr breaks because of localStorage ref ([dc9410f](https://github.com/IgniteUI/igniteui-cli/commit/dc9410ff7c333bdece6ba25212f6c763afe64601))
+
+
+
+# 7.0.0 (2020-11-13)
+
+
+#### Bug Fixes
+
+* **igx-ts:** update build-angular ([082869c](https://github.com/IgniteUI/igniteui-cli/commit/082869cf27b52cb26695b6f90f4980ea85e67574))
+
+
+
+# 7.0.0-rc.2 (2020-11-12)
+
+
+#### Bug Fixes
+
+* **igx-ts:** crm grid with new toolbar ([a387742](https://github.com/IgniteUI/igniteui-cli/commit/a387742493b73f2c2f5e2cbacaf1bbe5a4d9345f))
+* **igx-ts:** fix toolbar according to latest changes ([93323c8](https://github.com/IgniteUI/igniteui-cli/commit/93323c81a3e388ae46e1dabcca13261312f92ade))
+* **igx-ts:** fix toolbar for grid fintech ([edc2057](https://github.com/IgniteUI/igniteui-cli/commit/edc20571657d5177c7a82ccae32d86f430970185))
+* **igx-ts:** tree-grid toolbar update ([2c985d7](https://github.com/IgniteUI/igniteui-cli/commit/2c985d78902d90439cbef733e6252f8c1eae37e3))
+* **igx-ts:** update HGrid Batch demo ([890a02d](https://github.com/IgniteUI/igniteui-cli/commit/890a02d54be89358aff76f9b07b3d8630df4f79c))
+
+
+
+## 6.2.1 (2020-11-11)
+
+
+#### Bug Fixes
+
+* **igx, side-auth:** add SSR-friendly local storage service ([8db27be](https://github.com/IgniteUI/igniteui-cli/commit/8db27be4739d396bbd34c389d9227aabdd01b970))
+* **igx,side-auth:** add proper wrapper class so layout is 100% ([508df9d](https://github.com/IgniteUI/igniteui-cli/commit/508df9d2255ec1a908ecd4054a841360c1827933))
+
+
+
+# 7.0.0-rc.1 (2020-11-10)
+
+
+#### Bug Fixes
+
+* **igx-ts:** fix package.json for auth project ([00b9cd9](https://github.com/IgniteUI/igniteui-cli/commit/00b9cd942ec154c76da1ac0e810e366cf373b64f))
+* **igx-ts:** remove base.json for auth project ([019535b](https://github.com/IgniteUI/igniteui-cli/commit/019535be27bac30b065b27a6facde53578a08456))
+* **igx-ts:** revert deleted packages ([acede53](https://github.com/IgniteUI/igniteui-cli/commit/acede5371f24b10be2314de0118ff1976cfb8c35))
+
+
+
+# 7.0.0-rc.0 (2020-11-10)
+
+
+#### Bug Fixes
+
+* **dock-manager:** remove unnecessary quotes ([cd9c16c](https://github.com/IgniteUI/igniteui-cli/commit/cd9c16cea9f4d120e7b6e0dd9112e907c5f2228b))
+
+
+
+# 7.0.0-alpha.0 (2020-11-10)
+
+
+#### Bug Fixes
+
+* **dock-manager:** Use correct module name in app.module import [#792](https://github.com/IgniteUI/igniteui-cli/issues/792) ([53691b5](https://github.com/IgniteUI/igniteui-cli/commit/53691b54af896c410a0b2b0c3e91751f76341dbd))
+
+
+
+# 6.2.0 (2020-10-20)
+
+
+
+# 6.2.0 (2020-10-20)
+
+
+
+# 6.2.0-rc.0 (2020-10-16)
+
+
+#### Bug Fixes
+
+* **templates, crm grid, grid batch editing:** Fixing issues in the two templates. ([2dc2859](https://github.com/IgniteUI/igniteui-cli/commit/2dc2859dd10f41f9b0b8a05072fa6d12de5c9c00))
+* **templates, crm-grid, grid batchediting:** Addressing the comments. ([09955ea](https://github.com/IgniteUI/igniteui-cli/commit/09955ea47cbe58546a6d117611a705c86c058b6e))
+
+
+
+# 6.2.0-beta.0 (2020-10-14)
+
+
+#### Bug Fixes
+
+* **deployment:** Fix environment check 793 ([3f3946a](https://github.com/IgniteUI/igniteui-cli/commit/3f3946a474840d38a763149230d743b3e845bf47))
+* update map to 10.1.3 ([3926b77](https://github.com/IgniteUI/igniteui-cli/commit/3926b77d575e2051b210232be2b8b1f76b681fab))
+
+
+
+# 6.1.0 (2020-08-12)
+
+
+
+# 6.1.0-beta.0 (2020-08-07)
+
+
+
+# 6.1.0-alpha.0 (2020-07-09)
+
+
+
+# 6.0.0 (2020-06-25)
+
+
+
+## 5.2.1 (2020-06-25)
+
+
+
+# 6.0.0-rc.0 (2020-06-25)
+
+
+#### Bug Fixes
+
+* **igx,dock-manager:** resolve package name from project ([ac66d8e](https://github.com/IgniteUI/igniteui-cli/commit/ac66d8e0fadf643530a5f3aa53ee3fe851cc1a33))
+* use group.json for step by step groups [#707](https://github.com/IgniteUI/igniteui-cli/issues/707) ([adf562c](https://github.com/IgniteUI/igniteui-cli/commit/adf562c639725fb6a8008ef682f5fbdd66e65b55))
+
+
+#### Features
+
+* Adding a Map template for Angular ([7cbddeb](https://github.com/IgniteUI/igniteui-cli/commit/7cbddeb907db8277f6db43db47f19f06591a7c7f))
+* **packages:** Bump packages to Angular 10  [#767](https://github.com/IgniteUI/igniteui-cli/issues/767) ([f7e104e](https://github.com/IgniteUI/igniteui-cli/commit/f7e104e8ccee1692ff886259a7b7cf653de46573))
+* **packages:** remove deprecated option [#767](https://github.com/IgniteUI/igniteui-cli/issues/767) ([602111e](https://github.com/IgniteUI/igniteui-cli/commit/602111eefdcf390e832275c428e86f9ef5aa547f))
+* **packages:** Update igx-ts projects [#767](https://github.com/IgniteUI/igniteui-cli/issues/767) ([71df154](https://github.com/IgniteUI/igniteui-cli/commit/71df1546f4765699bf0600ef07062cad85b69d99))
+
+
+
+# 5.2.0 (2020-06-11)
+
+
+#### Features
+
+* **igx-ts:** add Dock Manager template for Angular ([#763](https://github.com/IgniteUI/igniteui-cli/issues/763)) ([63acfdf](https://github.com/IgniteUI/igniteui-cli/commit/63acfdf6b9c511c0c8be18374f470ee8a0ca375c))
+* **igx,side-nav:**  move content padding so views can override ([36f9964](https://github.com/IgniteUI/igniteui-cli/commit/36f9964bbe2d21920f99f5815f346ec117a61724))
+
+
+
+## 5.1.1 (2020-06-03)
+
+
+#### Bug Fixes
+
+* **igx,upgrade:** ignore projects without sourceRoot ([6d64d30](https://github.com/IgniteUI/igniteui-cli/commit/6d64d30efa3aedcfd7d32eb9e7e1c29c90c7ea6e))
+* **upgrade:** Logging a message that licensed package is already installed ([63df30d](https://github.com/IgniteUI/igniteui-cli/commit/63df30d67c7d46fed0b6e4411e5b097dcd7f11f2))
+
+
+
+# 5.1.0 (2020-06-01)
+
+
+
+# 5.1.0-beta.4 (2020-06-01)
+
+
+
+# 5.1.0-beta.3 (2020-05-29)
+
+
+
+# 5.1.0-beta.2 (2020-05-28)
+
+
+
+# 5.1.0-beta.1 (2020-05-28)
+
+
+
+# 5.1.0-beta.0 (2020-05-27)
+
+
+#### Bug Fixes
+
+* **igx,templates:** correct empty project template id ([2d0b385](https://github.com/IgniteUI/igniteui-cli/commit/2d0b385a4ce3f8483e4f5f048bc94111ecb7db31))
+* **templates:** fix upgrade to get correct config ([a3021ef](https://github.com/IgniteUI/igniteui-cli/commit/a3021efc9baac77348a6e91a53f7b8b214fdb719))
+* **templates:** upgrade command properly replaces strings in ALL .ts files ([2d2c9b3](https://github.com/IgniteUI/igniteui-cli/commit/2d2c9b3dc02da3f7633642d9b3b4a02d7f0bb119))
+* **upgrade:** sort packages.json dependencies when adding licensed package ([62bb652](https://github.com/IgniteUI/igniteui-cli/commit/62bb652857e8e8cd6e368ef71ac2bf4ef8ea6749))
+
+
+#### Features
+
+* **schematics:** update-package logic added ([197b94e](https://github.com/IgniteUI/igniteui-cli/commit/197b94e367d5e9a359c989beef01c6f35d7b54b5))
+* **upgrade:** handle multiple licensed packages, [#741](https://github.com/IgniteUI/igniteui-cli/issues/741) ([ef02f5b](https://github.com/IgniteUI/igniteui-cli/commit/ef02f5b089d3616bbb24ba4ba8e2f0a4c7045374))
+
+
+
+# 5.1.0-alpha.0 (2020-05-20)
+
+
+#### Features
+
+* **igx,multi-pacakge:** templates resolve lib package from project ([7bb4670](https://github.com/IgniteUI/igniteui-cli/commit/7bb4670e1f7832321c3373e07c967d3d13d83777))
+
+
+
+## 5.0.3 (2020-05-18)
+
+
+#### Bug Fixes
+
+* **igx:** proj template error handler log instead throw, register only in prod ([270addd](https://github.com/IgniteUI/igniteui-cli/commit/270adddfdee8bb84892e768971e976e70550b2c2))
+
+
+
+## 5.0.2 (2020-05-05)
+
+
+
+# 5.0.0 (2020-02-11)
+
+
+
+# 5.0.0-rc.4 (2020-02-11)
+
+
+#### Bug Fixes
+
+* **carousel:** Add noop animations module ([c696124](https://github.com/IgniteUI/igniteui-cli/commit/c6961249ccbfe186e1f369b23420584b908b5787))
+
+
+
+# 5.0.0-rc.3 (2020-02-07)
+
+
+
+# 5.0.0-rc.2 (2020-02-07)
+
+
+#### Bug Fixes
+
+* **igx-ts:** change tsconfig module for spec files to avoid errors, [#660](https://github.com/IgniteUI/igniteui-cli/issues/660) ([3d6b987](https://github.com/IgniteUI/igniteui-cli/commit/3d6b987e4e2c72a9b73453af112465b7234aa9c3))
+* **igx-ts:** update auth providers tests, [#660](https://github.com/IgniteUI/igniteui-cli/issues/660) ([4c15c8b](https://github.com/IgniteUI/igniteui-cli/commit/4c15c8bc00ffd5543e676ce07ea4718ea234b62b))
+* **templates, igx:** add chart packages [#679](https://github.com/IgniteUI/igniteui-cli/issues/679) ([75f4dcd](https://github.com/IgniteUI/igniteui-cli/commit/75f4dcd3bf585d38b3f86ef85cfecc6b8ddcfabc))
+* **templates, igx:** add chart packages [#684](https://github.com/IgniteUI/igniteui-cli/issues/684) ([dd7bfb7](https://github.com/IgniteUI/igniteui-cli/commit/dd7bfb75923ebe4d644239774899c26cf6bf7564))
+
+
+#### Features
+
+* **igx-ts:** Update projects [#647](https://github.com/IgniteUI/igniteui-cli/issues/647) ([e0a738a](https://github.com/IgniteUI/igniteui-cli/commit/e0a738aea9b0345386fb2611bc28168ca99390f0))
+
+
+
+# 5.0.0-rc.0 (2020-01-31)
+
+
+#### Bug Fixes
+
+* **ig-add:** only take into account 'extraConfig' in generateConfig [#618](https://github.com/IgniteUI/igniteui-cli/issues/618) ([#621](https://github.com/IgniteUI/igniteui-cli/issues/621)) ([d8d7db8](https://github.com/IgniteUI/igniteui-cli/commit/d8d7db823f1c6c717063ce678695be4d8db084d6))
+* **igx-ts:** update scenario templates [#628](https://github.com/IgniteUI/igniteui-cli/issues/628) ([#643](https://github.com/IgniteUI/igniteui-cli/issues/643)) ([ecda4d7](https://github.com/IgniteUI/igniteui-cli/commit/ecda4d779d3a196c16c13f87e2787ff7fdcbc167))
+* **templates:** update angular charts packages to v8.2.12 ([3ed3013](https://github.com/IgniteUI/igniteui-cli/commit/3ed301379a765d4ad0614e1d51cd5dec2227494d))
+
+
+
+# 5.0.0-beta.3 (2019-12-13)
+
+
+
+# 5.0.0-beta.2 (2019-12-06)
+
+
+#### Bug Fixes
+
+* **schematics:** set virtual FS in proper stage ([2102464](https://github.com/IgniteUI/igniteui-cli/commit/2102464698a493f97f4739bd14068b218b985d95))
+
+
+
+# 5.0.0-beta.1 (2019-11-28)
+
+
+#### Bug Fixes
+
+* **igx-templates:** fix side-auth template tsconfig.app.json, [#597](https://github.com/IgniteUI/igniteui-cli/issues/597) ([1ffe4ba](https://github.com/IgniteUI/igniteui-cli/commit/1ffe4ba77b30c4eaab2a176ec30470cf32cf7980))
+* **igx-ts:** update autocomplete templates to import FormsModule [#581](https://github.com/IgniteUI/igniteui-cli/issues/581) ([#584](https://github.com/IgniteUI/igniteui-cli/issues/584)) ([b91a1e8](https://github.com/IgniteUI/igniteui-cli/commit/b91a1e8efe1c3e78482abff524b69c48e64f9094))
+* **templating, igx-ts:** add dot path variable for prefixed files that glob ignores ([486a0da](https://github.com/IgniteUI/igniteui-cli/commit/486a0da0ee6190f16544ee46ae360b822c057b53))
+
+
+
+# 5.0.0-alpha.1 (2019-10-02)
+
+
+#### Features
+
+* **ng-schematics:** add component generate schematic ([a0e86c2](https://github.com/IgniteUI/igniteui-cli/commit/a0e86c29d72c52727a13aee4ded2acd0ef6ddc44))
+
+## igniteui/angular-schematics@21.1.14100-alpha.4 (2026-03-27)
+
+
+
+# 14.10.0-alpha.3 (2026-03-25)
+
+
+
+# 14.10.0-alpha.1 (2026-03-25)
+
+
+#### Bug Fixes
+
+* **eslint:** correct config ignores and resolve lint errors ([68d01ac](https://github.com/IgniteUI/igniteui-cli/commit/68d01ac6102e4e3d660dff9d229e826ea64943db))
+* **igx-ts-legacy:** update igx ts legacy templates ([#1517](https://github.com/IgniteUI/igniteui-cli/issues/1517)) ([c26c8ff](https://github.com/IgniteUI/igniteui-cli/commit/c26c8ff298092c21b2aa6ca77a75cd2a5fdedc79))
+
+
+
+## 14.9.2 (2026-03-11)
+
+
+#### Bug Fixes
+
+* **schematics:** fs writeFile create check ([#1526](https://github.com/IgniteUI/igniteui-cli/issues/1526)) ([f8e4b59](https://github.com/IgniteUI/igniteui-cli/commit/f8e4b59bd951ff1b702f3d24cf61ebc33115dc89))
+
+
+
+## 14.9.1 (2026-02-25)
+
+
+
+# 14.9.0 (2026-02-25)
+
+
+#### Features
+
+* **ng:** update igniteui-angular to 21.1.0 ([#1495](https://github.com/IgniteUI/igniteui-cli/issues/1495)) ([399f83e](https://github.com/IgniteUI/igniteui-cli/commit/399f83e4278dafdf9a3832fa013840f05ba586e6))
+
+
+
+## 14.8.5-beta.3 (2026-02-11)
+
+
+
+## 14.8.5-beta.0 (2026-02-10)
+
+
+
+## 14.8.4 (2026-02-05)
+
+
+
+## 14.8.3 (2026-01-19)
+
+
+
+## 14.8.2 (2026-01-13)
+
+
+
+## 14.8.2-beta.4 (2026-01-12)
+
+
+
+## 14.8.2-beta.3 (2026-01-12)
+
+
+
+## 14.8.2-beta.2 (2026-01-12)
+
+
+
+## 14.8.2-beta.0 (2026-01-12)
+
+
+
+# 14.8.0 (2025-12-03)
+
+
+
+# 14.8.0-beta.2 (2025-12-01)
+
+
+
+# 14.8.0-beta.1 (2025-12-01)
+
+
+
+## 14.7.1 (2025-11-20)
+
+
+
+# 14.7.0 (2025-11-17)
+
+
+#### Features
+
+* **ng:** use ng lint schematic ([#1439](https://github.com/IgniteUI/igniteui-cli/issues/1439)) ([fa917cd](https://github.com/IgniteUI/igniteui-cli/commit/fa917cd7c974db05061f9442d8c5cdcc74853928))
+
+
+
+## 14.6.4 (2025-10-14)
+
+
+
+## 14.6.3 (2025-10-09)
+
+
+
+## 14.6.2 (2025-10-07)
+
+
+
+## 14.6.1 (2025-10-06)
+
+
+
+# 14.6.0 (2025-10-02)
+
+
+#### Features
+
+* **ng:** update ig, ng and other libs ([#1427](https://github.com/IgniteUI/igniteui-cli/issues/1427)) ([93fbbcc](https://github.com/IgniteUI/igniteui-cli/commit/93fbbcce2668084dcc958736f7167e36e9cbed47))
+
+
+
+## 14.5.8 (2025-09-25)
+
+
+
+## 14.5.7 (2025-09-23)
+
+
+
+## 14.5.6 (2025-09-18)
+
+
+
+## 14.5.4 (2025-07-01)
+
+
+
+## 14.5.3 (2025-06-28)
+
+
+
+## 14.5.1 (2025-06-24)
+
+
+
+# 14.5.0 (2025-06-05)
+
+
+
+## 14.4.4 (2025-05-21)
+
+
+#### Features
+
+* add azure pipelines yaml files for angular, react and wc templates ([#1396](https://github.com/IgniteUI/igniteui-cli/issues/1396)) ([6a3e39d](https://github.com/IgniteUI/igniteui-cli/commit/6a3e39d41f50abe51fa7fd819961412304a31343))
+
+
+
+## 14.4.3 (2025-04-25)
+
+
+
+## 14.4.2 (2025-04-24)
+
+
+
+## 14.4.1 (2025-04-23)
+
+
+
+# 14.4.0 (2025-04-17)
+
+
+
+## 14.3.18 (2025-04-11)
+
+
+#### Bug Fixes
+
+* add missing static css files for WC ([#1385](https://github.com/IgniteUI/igniteui-cli/issues/1385)) ([95018f9](https://github.com/IgniteUI/igniteui-cli/commit/95018f93704f62af70b9c4a2e07b46554e6331a4))
+
+
+
+## 14.3.17 (2025-04-09)
+
+
+
+## 14.3.16 (2025-03-31)
+
+
+
+## 14.3.14 (2025-02-24)
+
+
+#### Bug Fixes
+
+* update eslint and fix warnings ([#1378](https://github.com/IgniteUI/igniteui-cli/issues/1378)) ([aa84345](https://github.com/IgniteUI/igniteui-cli/commit/aa84345ff21fc0fccde94063099e4c713862cde8))
+
+
+
+## 14.3.12-beta.0 (2025-01-27)
+
+
+
+## 14.3.11 (2025-01-24)
+
+
+#### Bug Fixes
+
+* static data paths when deploy to github pages ([#1371](https://github.com/IgniteUI/igniteui-cli/issues/1371)) ([4b40231](https://github.com/IgniteUI/igniteui-cli/commit/4b402313f4d2a2cfd80115d274514d9e5507334c))
+
+
+
+## 14.3.10 (2025-01-23)
+
+
+
+## 14.3.9 (2025-01-23)
+
+
+
+## 14.3.8 (2025-01-23)
+
+
+
+## 14.3.7 (2025-01-22)
+
+
+
+## 14.3.6 (2024-12-12)
+
+
+#### Bug Fixes
+
+* **migrations:** enable encapsulation for migrations ([#1361](https://github.com/IgniteUI/igniteui-cli/issues/1361)) ([9561a16](https://github.com/IgniteUI/igniteui-cli/commit/9561a1604a746b8a4b771627de2af4d14927e7c2))
+
+
+
+## 14.3.5 (2024-12-06)
+
+
+#### Bug Fixes
+
+* **web-components:** fix the step for updating the router navigation in github pages workflow ([#1358](https://github.com/IgniteUI/igniteui-cli/issues/1358)) ([3e0f42c](https://github.com/IgniteUI/igniteui-cli/commit/3e0f42c4fc7a75f6819f8ba85f760ac6a6d854f1))
+
+
+
+## 14.3.4 (2024-12-04)
+
+
+
+## 14.3.3 (2024-12-02)
+
+
+
+## 14.3.2 (2024-11-28)
+
+
+#### Features
+
+* Add pages deployment variable logic and fixes in github pages yaml files ([#1337](https://github.com/IgniteUI/igniteui-cli/issues/1337)) ([c75d9c7](https://github.com/IgniteUI/igniteui-cli/commit/c75d9c7a9d7a9244e7a9a814770809f06280529a))
+
+
+
+## 14.2.3 (2024-11-15)
+
+
+
+## 14.2.2 (2024-11-08)
+
+
+
+## 14.2.1 (2024-10-28)
+
+
+
+# 14.2.0 (2024-10-25)
+
+
+
+# 14.2.0-beta.4 (2024-10-23)
+
+
+
+# 14.1.0 (2024-10-11)
+
+
+
+## 14.0.2 (2024-09-20)
+
+
+
+## 14.0.1 (2024-09-05)
+
+
+
+# 14.0.0 (2024-08-23)
+
+
+
+# 14.0.0-beta.2 (2024-07-24)
+
+
+#### Features
+
+* **igx-templates:** add AngularTypeScriptFileUpdate ([e7f6ed3](https://github.com/IgniteUI/igniteui-cli/commit/e7f6ed3d339bb444dcdbaec4cabe5dcbff27b5ac))
+
+
+
+## 13.3.3 (2024-07-16)
+
+
+
+## 13.3.2 (2024-07-04)
+
+
+
+## 13.3.1 (2024-06-28)
+
+
+
+# 13.3.0-rc.0 (2024-05-31)
+
+
+
+## 13.2.1 (2024-05-09)
+
+
+
+# 13.2.0 (2024-04-29)
+
+
+
+# 13.2.0-rc.0 (2024-04-29)
+
+
+
+## 13.1.16 (2024-04-28)
+
+
+
+## 13.1.15 (2024-04-12)
+
+
+#### Bug Fixes
+
+* include js files in ng-schematics/scripts w/ newer npm version ([727f2f6](https://github.com/IgniteUI/igniteui-cli/commit/727f2f670d303ddb585b78d68a2c42f907a4786f))
+
+
+
+## 13.1.13 (2024-04-11)
+
+
+
+## 13.1.12 (2024-03-21)
+
+
+#### Features
+
+* **cli:** upgrade packages for React and WC ([#1198](https://github.com/IgniteUI/igniteui-cli/issues/1198)) ([16c9b8d](https://github.com/IgniteUI/igniteui-cli/commit/16c9b8dda219ebacd473a2fad5e0c0ea70d5f320))
+
+
+
+## 13.1.11 (2024-03-12)
+
+
+
+## 13.1.10 (2024-03-11)
+
+
+
+## 13.1.9 (2024-03-05)
+
+
+
+## 13.1.8 (2024-02-29)
+
+
+
+## 13.1.7 (2024-02-28)
+
+
+
+## 13.1.6 (2024-02-26)
+
+
+#### Features
+
+* **ng-add:** add setup config provideAnimations ([2f47676](https://github.com/IgniteUI/igniteui-cli/commit/2f476762ac772039228fe10565d49a6ced76b72d))
+
+
+
+## 13.1.5 (2024-01-31)
+
+
+
+## 13.1.3 (2024-01-17)
+
+
+
+## 13.1.1 (2023-12-14)
+
+
+#### Features
+
+* **igr-ts:** add igr-ts proj type ([#1146](https://github.com/IgniteUI/igniteui-cli/issues/1146)) ([4609525](https://github.com/IgniteUI/igniteui-cli/commit/460952505758fcf1ab9b559ed6809015f3c5d3a5)), closes [#1147](https://github.com/IgniteUI/igniteui-cli/issues/1147) [#1153](https://github.com/IgniteUI/igniteui-cli/issues/1153)
+
+
+
+## 13.0.1 (2023-11-15)
+
+
+
+# 13.0.0 (2023-11-09)
+
+
+
+# 13.0.0-rc.0 (2023-11-09)
+
+
+
+## 12.0.6-beta.2 (2023-10-02)
+
+
+
+## 12.0.5 (2023-07-18)
+
+
+
+## 12.0.4 (2023-07-18)
+
+
+
+## 12.0.3 (2023-06-28)
+
+
+
+## 12.0.3-beta.0 (2023-06-02)
+
+
+
+## 12.0.1 (2023-05-26)
+
+
+
+# 12.0.0 (2023-05-15)
+
+
+
+# 12.0.0-rc.0 (2023-05-15)
+
+
+#### Features
+
+* **igx:** add base_with_home proj to igx-templates ([#1118](https://github.com/IgniteUI/igniteui-cli/issues/1118)) ([d84c431](https://github.com/IgniteUI/igniteui-cli/commit/d84c4310a03e35588626c57148091c6b224c7bc3))
+* **igx:** update to 16 ([#1120](https://github.com/IgniteUI/igniteui-cli/issues/1120)) ([e6efa40](https://github.com/IgniteUI/igniteui-cli/commit/e6efa40c2c748d2679b6be66252bc7732e51de29))
+
+
+
+## 11.1.1 (2023-04-11)
+
+
+
+# 11.1.0 (2023-03-28)
+
+
+
+# 11.1.0-rc.0 (2023-03-24)
+
+
+
+## 11.0.2 (2023-02-17)
+
+
+
+# 11.0.0 (2022-11-23)
+
+
+
+# 10.1.0-beta.13 (2022-10-27)
+
+
+
+# 10.1.0-beta.12 (2022-10-27)
+
+
+
+# 10.1.0-beta.11 (2022-10-25)
+
+
+
+# 10.1.0-beta.10 (2022-10-25)
+
+
+
+# 10.1.0-beta.8 (2022-10-23)
+
+
+
+# 10.1.0-beta.7 (2022-10-19)
+
+
+
+# 10.1.0-beta.5 (2022-10-18)
+
+
+
+# 10.1.0-beta.4 (2022-10-18)
+
+
+
+# 10.1.0-beta.3 (2022-10-17)
+
+
+
+# 10.1.0-beta.2 (2022-10-14)
+
+
+
+# 10.1.0-beta.1 (2022-10-14)
+
+
+
+# 10.1.0-beta.0 (2022-10-07)
+
+
+
+## 10.0.5 (2022-09-19)
+
+
+
+## 10.0.4-beta.1 (2022-07-15)
+
+
+
+## 10.0.4-beta.0 (2022-06-30)
+
+
+
+## 10.0.2 (2022-06-29)
+
+
+
+## 10.0.1 (2022-06-17)
+
+
+
+# 9.2.0 (2022-05-26)
+
+
+
+## 9.1.4 (2022-05-20)
+
+
+
+## 9.1.3 (2022-05-19)
+
+
+
+## 9.1.2 (2022-05-16)
+
+
+
+## 9.1.1 (2022-03-18)
+
+
+
+## 9.1.1-rc.0 (2022-03-17)
+
+
+
+# 9.1.0 (2022-03-02)
+
+
+
+# 9.1.0-rc.1 (2022-02-25)
+
+
+
+# 9.1.0-beta.0 (2022-02-22)
+
+
+#### Bug Fixes
+
+* **angular:** change more igx- ([f9ade5e](https://github.com/IgniteUI/igniteui-cli/commit/f9ade5e176444ce3c2a80f60baf43d239b8788fe))
+
+
+
+## 9.0.6 (2022-02-04)
+
+
+
+## 9.0.5 (2022-02-04)
+
+
+
+## 9.0.5-beta.2 (2022-02-03)
+
+
+
+## 9.0.5-beta.1 (2022-01-28)
+
+
+
+## 9.0.5-beta.0 (2021-12-20)
+
+
+
+## 9.0.4 (2021-12-15)
+
+
+
+## 9.0.3 (2021-12-13)
+
+
+#### Features
+
+* **typescript:** Add support for typescript 4.5.2 ([055ca5b](https://github.com/IgniteUI/igniteui-cli/commit/055ca5b7f8e54acdd8f3f1d6b6d7517916d852f3))
+
+
+
+## 9.0.1 (2021-11-25)
+
+
+
+# 9.0.0 (2021-11-22)
+
+
+
+# 9.0.0-rc.3 (2021-11-22)
+
+
+
+# 9.0.0-rc.2 (2021-11-19)
+
+
+#### Bug Fixes
+
+* add igx-scrollbar class to body, [#14033](https://github.com/IgniteUI/igniteui-cli/issues/14033) ([b02ac58](https://github.com/IgniteUI/igniteui-cli/commit/b02ac5822015c6b1b1fdd4684a52a2eecb3eadd9))
+
+
+
+# 9.0.0-rc.1 (2021-11-17)
+
+
+
+# 9.0.0-rc.0 (2021-11-17)
+
+
+#### Features
+
+* **angular:** update to Angular 13 [#895](https://github.com/IgniteUI/igniteui-cli/issues/895) ([#896](https://github.com/IgniteUI/igniteui-cli/issues/896)) ([32f1721](https://github.com/IgniteUI/igniteui-cli/commit/32f17215290af3372b554f0e440e39b9b9b5040a))
+
+
+
+# 8.3.0-rc.0 (2021-11-11)
+
+
+
+# 8.3.0-beta.6 (2021-11-09)
+
+
+
+# 8.3.0-beta.5 (2021-11-09)
+
+
+
+# 8.3.0-beta.4 (2021-11-09)
+
+
+
+# 8.3.0-beta.3 (2021-11-08)
+
+
+
+# 8.3.0-beta.2 (2021-11-08)
+
+
+
+# 8.3.0-beta.1 (2021-11-04)
+
+
+
+# 8.3.0-beta.0 (2021-11-04)
+
+
+
+## 8.2.1 (2021-10-08)
+
+
+
+## 8.2.1-rc.0 (2021-10-07)
+
+
+
+# 8.2.0 (2021-10-04)
+
+
+
+# 8.2.0-alpha.0 (2021-09-30)
+
+
+
+## 8.1.2 (2021-09-28)
+
+
+
+## 8.1.1 (2021-09-02)
+
+
+
+## 8.0.4 (2021-08-02)
+
+
+#### Bug Fixes
+
+* **schematics:** resolve schema id deprecation warning ([#870](https://github.com/IgniteUI/igniteui-cli/issues/870)) ([17d7016](https://github.com/IgniteUI/igniteui-cli/commit/17d70164de93a5162ba4a02b44b571de318a37c7))
+
+
+
+# 8.1.0-rc.0 (2021-07-30)
+
+
+
+# 8.1.0-beta.1 (2021-07-30)
+
+
+
+# 8.1.0-beta.0 (2021-07-28)
+
+
+#### Features
+
+* update angular to v12.1 [#856](https://github.com/IgniteUI/igniteui-cli/issues/856) ([#857](https://github.com/IgniteUI/igniteui-cli/issues/857)) ([971822e](https://github.com/IgniteUI/igniteui-cli/commit/971822e343158bd107ef5b07bf60773509bd928c))
+
+
+
+## 8.0.3 (2021-07-14)
+
+
+
+## 8.0.2 (2021-07-07)
+
+
+
+## 8.0.2-beta.1 (2021-07-06)
+
+
+
+## 8.0.2-beta.0 (2021-07-02)
+
+
+
+## 8.0.1 (2021-07-01)
+
+
+
+# 8.0.0 (2021-05-14)
+
+
+
+# 8.0.0-rc.0 (2021-05-13)
+
+
+
+# 8.0.0-alpha.1 (2021-05-13)
+
+
+
+## 7.1.1 (2021-03-15)
+
+
+
+## 7.1.1-beta.0 (2021-03-12)
+
+
+
+# 7.1.0 (2021-02-22)
+
+
+
+# 7.1.0-beta.0 (2021-02-18)
+
+
+
+## 7.0.1 (2020-11-16)
+
+
+
+# 7.0.0 (2020-11-13)
+
+
+
+# 7.0.0-rc.2 (2020-11-12)
+
+
+
+# 7.0.0-rc.1 (2020-11-10)
+
+
+
+# 7.0.0-rc.0 (2020-11-10)
+
+
+
+# 7.0.0-alpha.0 (2020-11-10)
+
+
+
+# 6.2.0 (2020-10-20)
+
+
+
+# 6.2.0-rc.0 (2020-10-16)
+
+
+
+# 6.2.0-beta.0 (2020-10-14)
+
+
+
+# 6.1.0 (2020-08-12)
+
+
+
+# 6.1.0-beta.0 (2020-08-07)
+
+
+
+# 6.1.0-alpha.0 (2020-07-09)
+
+
+
+# 6.0.0 (2020-06-25)
+
+
+
+# 6.0.0-rc.0 (2020-06-25)
+
+
+#### Bug Fixes
+
+* **igx,dock-manager:** resolve package name from project ([ac66d8e](https://github.com/IgniteUI/igniteui-cli/commit/ac66d8e0fadf643530a5f3aa53ee3fe851cc1a33))
+
+
+
+# 5.2.0 (2020-06-11)
+
+
+
+## 5.1.1 (2020-06-03)
+
+
+
+# 5.1.0 (2020-06-01)
+
+
+
+# 5.1.0-beta.4 (2020-06-01)
+
+
+
+# 5.1.0-beta.3 (2020-05-29)
+
+
+
+# 5.1.0-beta.2 (2020-05-28)
+
+
+
+# 5.1.0-beta.1 (2020-05-28)
+
+
+#### Bug Fixes
+
+* **schematics:** include upgrade-packages schema ([77aa13d](https://github.com/IgniteUI/igniteui-cli/commit/77aa13db7442b24d787029af4d6a860a0bd85d3b))
+* **schematics:** remove log for unsupported custom templates ([97e3bb3](https://github.com/IgniteUI/igniteui-cli/commit/97e3bb3813cf25603a97177a5ec5d87b2db94206))
+* **upgrade:** provide default fallback for incorrect package template ([9dd4d80](https://github.com/IgniteUI/igniteui-cli/commit/9dd4d80db6cf13d3fd7594790bcaaeec9a383b49))
+
+
+
+# 5.1.0-beta.0 (2020-05-27)
+
+
+#### Features
+
+* **schematics:** update-package logic added ([197b94e](https://github.com/IgniteUI/igniteui-cli/commit/197b94e367d5e9a359c989beef01c6f35d7b54b5))
+* **step-by-step:** add prompt to upgrade to private feed packages, [#724](https://github.com/IgniteUI/igniteui-cli/issues/724) ([63c0c85](https://github.com/IgniteUI/igniteui-cli/commit/63c0c85639c1e5e5415c82f96a6b5cb5bbad4b99))
+
+
+
+# 5.1.0-alpha.0 (2020-05-20)
+
+
+
+## 5.0.3 (2020-05-18)
+
+
+
+## 5.0.2 (2020-05-05)
+
+
+
+# 5.0.0 (2020-02-11)
+
+
+
+# 5.0.0-rc.4 (2020-02-11)
+
+
+#### Bug Fixes
+
+* **schematics:** ensure component prompt installs packages [#695](https://github.com/IgniteUI/igniteui-cli/issues/695) ([16e55d4](https://github.com/IgniteUI/igniteui-cli/commit/16e55d446c3d18fddb7ec7040a266ef498d83060))
+
+
+
+# 5.0.0-rc.3 (2020-02-07)
+
+
+
+# 5.0.0-rc.2 (2020-02-07)
+
+
+
+# 5.0.0-rc.0 (2020-01-31)
+
+
+#### Bug Fixes
+
+* new project accepts lower case theme name [#600](https://github.com/IgniteUI/igniteui-cli/issues/600) ([#619](https://github.com/IgniteUI/igniteui-cli/issues/619)) ([d6eedea](https://github.com/IgniteUI/igniteui-cli/commit/d6eedea8998b07aa6312dea6fdbab66acd88303a))
+* prompt for template and theme if no name provided [#622](https://github.com/IgniteUI/igniteui-cli/issues/622) ([#626](https://github.com/IgniteUI/igniteui-cli/issues/626)) ([44621e9](https://github.com/IgniteUI/igniteui-cli/commit/44621e9040f29da4819e6758e8316e6c7048e38d))
+
+
+
+# 5.0.0-beta.3 (2019-12-13)
+
+
+#### Bug Fixes
+
+* **cli, schematics:** check for fileSystem on post install [#612](https://github.com/IgniteUI/igniteui-cli/issues/612) ([#613](https://github.com/IgniteUI/igniteui-cli/issues/613)) ([0a6a878](https://github.com/IgniteUI/igniteui-cli/commit/0a6a87877bfe42fb9d665ac7b7e4be3d5e72511f))
+* **new, schematics:** no prompts when "name" is provided [#595](https://github.com/IgniteUI/igniteui-cli/issues/595) ([#609](https://github.com/IgniteUI/igniteui-cli/issues/609)) ([0ed45ba](https://github.com/IgniteUI/igniteui-cli/commit/0ed45ba0ed2147a0255d5df2a44e82b665c90c99))
+
+
+
+# 5.0.0-beta.2 (2019-12-06)
+
+
+#### Bug Fixes
+
+* **schematics:** set virtual FS in proper stage ([2102464](https://github.com/IgniteUI/igniteui-cli/commit/2102464698a493f97f4739bd14068b218b985d95))
+* **schematics:** skip start task if skipInstall === true ([#603](https://github.com/IgniteUI/igniteui-cli/issues/603)) ([fc38d65](https://github.com/IgniteUI/igniteui-cli/commit/fc38d651ecfa47f95921fa72f7be5ff68d8b586e))
+
+
+#### Features
+
+* **schematics:** adding a name for schematics projects [#587](https://github.com/IgniteUI/igniteui-cli/issues/587) ([#602](https://github.com/IgniteUI/igniteui-cli/issues/602)) ([19409d0](https://github.com/IgniteUI/igniteui-cli/commit/19409d0b7018c518c64c7ff161a6ec4a3438f834))
+
+
+
+# 5.0.0-beta.1 (2019-11-28)
+
+
+#### Bug Fixes
+
+* **schematics:** component schematics checks for available names [#576](https://github.com/IgniteUI/igniteui-cli/issues/576) ([#586](https://github.com/IgniteUI/igniteui-cli/issues/586)) ([bccd6c1](https://github.com/IgniteUI/igniteui-cli/commit/bccd6c131c4ab9bc197cfa29e1b792494270720f))
+* **schematics:** this package is a dep in new project instead of ignteui-cli ([c04a13c](https://github.com/IgniteUI/igniteui-cli/commit/c04a13c1c82c1d4a9a627503086f86d9040c6778))
+* **schematics:** use project config instead of hard-coded paths ([#592](https://github.com/IgniteUI/igniteui-cli/issues/592)) ([43240b6](https://github.com/IgniteUI/igniteui-cli/commit/43240b610d878186aa4b50959c37822e1f54eaf6))
+
+
+#### Features
+
+* **schematics:** add prompt session to component schematic, [#566](https://github.com/IgniteUI/igniteui-cli/issues/566) ([#571](https://github.com/IgniteUI/igniteui-cli/issues/571)) ([e25c1ce](https://github.com/IgniteUI/igniteui-cli/commit/e25c1ceab6fbff58a89e8712d3eda31da7c1af65))
+* **schematics:** adding ng-new schematic missing options [#596](https://github.com/IgniteUI/igniteui-cli/issues/596) ([#598](https://github.com/IgniteUI/igniteui-cli/issues/598)) ([8b51541](https://github.com/IgniteUI/igniteui-cli/commit/8b5154133bfe3fc6ef1c9958879cd835e36b001e))
+
+
+
+# 5.0.0-alpha.1 (2019-10-02)
+
+
+#### Bug Fixes
+
+* rename gitignore manually ([beb06a9](https://github.com/IgniteUI/igniteui-cli/commit/beb06a9de2511654797d75737a2e0bd5da968d8c))
+
+
+#### Features
+
+* **ng-schematics:** add component generate schematic ([a0e86c2](https://github.com/IgniteUI/igniteui-cli/commit/a0e86c29d72c52727a13aee4ded2acd0ef6ddc44))
+* **schematics:** add start schematic, enable npm and git init tasks ([2a329b1](https://github.com/IgniteUI/igniteui-cli/commit/2a329b18c5e2d6d0f852a72c842c3bab4022a9f2))
+
+## igniteui-cli@14.10.0-alpha.4 (2026-03-27)
+
+
+
+# 14.10.0-alpha.3 (2026-03-25)
+
+
+#### Features
+
+* Updated VS Code MCP configuration to align with new naming conventions. ([4fdb8e0](https://github.com/IgniteUI/igniteui-cli/commit/4fdb8e091b87c960c9cbbb35c126b6b7a32475fc))
+
+
+
+# 14.10.0-alpha.1 (2026-03-25)
+
+
+#### Bug Fixes
+
+* **eslint:** correct config ignores and resolve lint errors ([68d01ac](https://github.com/IgniteUI/igniteui-cli/commit/68d01ac6102e4e3d660dff9d229e826ea64943db))
+* **igx-ts-legacy:** update igx ts legacy templates ([#1517](https://github.com/IgniteUI/igniteui-cli/issues/1517)) ([c26c8ff](https://github.com/IgniteUI/igniteui-cli/commit/c26c8ff298092c21b2aa6ca77a75cd2a5fdedc79))
+
+
+#### Features
+
+* add copilot instructions for AI agents in multiple templates ([73921a7](https://github.com/IgniteUI/igniteui-cli/commit/73921a738efcc0a3e2a7df24bdf509f9f694da8a))
+* **claude:** add CLAUDE.md files for AI agent instructions across multiple templates ([5a96a33](https://github.com/IgniteUI/igniteui-cli/commit/5a96a33eac3f2fcbaf1444ac7778f7c8c2c89952))
+* make @igniteui/mcp-server a workspace package ([cf48369](https://github.com/IgniteUI/igniteui-cli/commit/cf483695e01afeac2ee6d7da193c2ee2d2af375a))
+* **templates:** add AGENTS.md and mcp.json files for React and Web Components and Angular project templates ([d867f44](https://github.com/IgniteUI/igniteui-cli/commit/d867f44e17d01be82ec6853c6b0c22910a652b73))
+
+
+
+## 14.9.2 (2026-03-11)
+
+
+#### Bug Fixes
+
+* **igx-ts:** update igniteui-angular versions and remove overrides ([#1508](https://github.com/IgniteUI/igniteui-cli/issues/1508)) ([6b4e1c8](https://github.com/IgniteUI/igniteui-cli/commit/6b4e1c87e8e7a94a5212a7037072088b7eec8a1a))
+* **upgrade-packages:** correctly glob files on windows ([#1511](https://github.com/IgniteUI/igniteui-cli/issues/1511)) ([64f2735](https://github.com/IgniteUI/igniteui-cli/commit/64f2735963f269fb4b60dd7479566baae33119c8))
+
+
+#### Reverts
+
+* partially revert changes swapping exec with spawn ([3a64b67](https://github.com/IgniteUI/igniteui-cli/commit/3a64b67bc43df42f72363e63192b90fea38b111f))
+
+
+
+## 14.9.1 (2026-02-25)
+
+
+
+# 14.9.0 (2026-02-25)
+
+
+#### Bug Fixes
+
+* **commands,list:** do not use `this` in handler ([#1494](https://github.com/IgniteUI/igniteui-cli/issues/1494)) ([b8f5b53](https://github.com/IgniteUI/igniteui-cli/commit/b8f5b53599cb20374acee53195395213060b51d3))
+* **react:** remove setupTests and update test with it's logic ([#1489](https://github.com/IgniteUI/igniteui-cli/issues/1489)) ([bd1f0ba](https://github.com/IgniteUI/igniteui-cli/commit/bd1f0ba0bccfd6768ccae44ab10568be5ecb1828))
+
+
+#### Features
+
+* **ng:** update igniteui-angular to 21.1.0 ([#1495](https://github.com/IgniteUI/igniteui-cli/issues/1495)) ([399f83e](https://github.com/IgniteUI/igniteui-cli/commit/399f83e4278dafdf9a3832fa013840f05ba586e6))
+
+
+
+## 14.8.5-beta.3 (2026-02-11)
+
+
+
+## 14.8.5-beta.0 (2026-02-10)
+
+
+
+## 14.8.4 (2026-02-05)
+
+
+#### Bug Fixes
+
+* **angular:** increase maximum error budget ([#1485](https://github.com/IgniteUI/igniteui-cli/issues/1485)) ([63a03bd](https://github.com/IgniteUI/igniteui-cli/commit/63a03bddb3459797bc5a0121f2d601823fd3cd35))
+
+
+
+## 14.8.3 (2026-01-19)
+
+
+
+## 14.8.2 (2026-01-13)
+
+
+
+## 14.8.2-beta.4 (2026-01-12)
+
+
+
+## 14.8.2-beta.3 (2026-01-12)
+
+
+#### Bug Fixes
+
+* add vitest/browser package ([e283ed2](https://github.com/IgniteUI/igniteui-cli/commit/e283ed29b99d794bd67f3bcab7a9dbfd391045ec))
+* add vitest/browser package ([5c29f50](https://github.com/IgniteUI/igniteui-cli/commit/5c29f5054febc0d656732886d08237528d6f6e40))
+
+
+
+## 14.8.2-beta.2 (2026-01-12)
+
+
+#### Bug Fixes
+
+* add playwright to the yaml files for wc ([6432111](https://github.com/IgniteUI/igniteui-cli/commit/643211110ad858f84b9ed23b3602f80218f23cbd))
+* resolve missed merge conflict ([ba42d4f](https://github.com/IgniteUI/igniteui-cli/commit/ba42d4f378a3e8334f51381ac1ff85799134ce3e))
+
+
+
+## 14.8.2-beta.0 (2026-01-12)
+
+
+
+# 14.8.0 (2025-12-03)
+
+
+
+# 14.8.0-beta.2 (2025-12-01)
+
+
+
+# 14.8.0-beta.1 (2025-12-01)
+
+
+
+## 14.7.1 (2025-11-20)
+
+
+#### Features
+
+* update tests to use Playwright ([517ea99](https://github.com/IgniteUI/igniteui-cli/commit/517ea9901372d7a42b516f5e9114a82880038e7e))
+
+
+
+# 14.7.0 (2025-11-17)
+
+
+#### Bug Fixes
+
+* command injection vulnerabilities in PackageManager and start command ([#1438](https://github.com/IgniteUI/igniteui-cli/issues/1438)) ([1f86df3](https://github.com/IgniteUI/igniteui-cli/commit/1f86df3d6e660b93db047415e9c53af1ef4f0a30))
+
+
+#### Features
+
+* **ng:** use ng lint schematic ([#1439](https://github.com/IgniteUI/igniteui-cli/issues/1439)) ([fa917cd](https://github.com/IgniteUI/igniteui-cli/commit/fa917cd7c974db05061f9442d8c5cdcc74853928))
+
+
+
+## 14.6.4 (2025-10-14)
+
+
+
+## 14.6.3 (2025-10-09)
+
+
+
+## 14.6.2 (2025-10-07)
+
+
+#### Features
+
+* **react:** add playwright and adjust tests; update packages; ([#1430](https://github.com/IgniteUI/igniteui-cli/issues/1430)) ([32b41dc](https://github.com/IgniteUI/igniteui-cli/commit/32b41dcf3f53de76fbafce39a36a1e8d51876b93))
+
+
+
+## 14.6.1 (2025-10-06)
+
+
+
+# 14.6.0 (2025-10-02)
+
+
+#### Features
+
+* **ng:** update ig, ng and other libs ([#1427](https://github.com/IgniteUI/igniteui-cli/issues/1427)) ([93fbbcc](https://github.com/IgniteUI/igniteui-cli/commit/93fbbcce2668084dcc958736f7167e36e9cbed47))
+
+
+
+## 14.5.8 (2025-09-25)
+
+
+
+## 14.5.7 (2025-09-23)
+
+
+
+## 14.5.6 (2025-09-18)
+
+
+#### Bug Fixes
+
+* Add missing igniteui-react-core dependency to React grid templates ([fb429bb](https://github.com/IgniteUI/igniteui-cli/commit/fb429bbd3634e0cf86a617672f857be4bb8b2f0d))
+* Remove --legacy-peer-deps flag to allow automatic peer dependency installation ([fe0ea3d](https://github.com/IgniteUI/igniteui-cli/commit/fe0ea3df94614b10dc494e241b070309e283c0b6))
+* set default route ([#1422](https://github.com/IgniteUI/igniteui-cli/issues/1422)) ([768d0d0](https://github.com/IgniteUI/igniteui-cli/commit/768d0d0a2873d2efc81c426ce35b5e42e92508a9))
+* update react templates ([93d132f](https://github.com/IgniteUI/igniteui-cli/commit/93d132fa229f0dba963cd5f21b89d5274e346910))
+* use only grid with defined columns ([faeb25a](https://github.com/IgniteUI/igniteui-cli/commit/faeb25a64effeba39e24dafe6e93e5a26a07c5bc))
+
+
+#### Features
+
+* Update Ignite UI product versions in template files ([964dda1](https://github.com/IgniteUI/igniteui-cli/commit/964dda13da00ca0c9d4bf1a42d6d98d2aa1d7b88))
+
+
+
+## 14.5.4 (2025-07-01)
+
+
+
+## 14.5.3 (2025-06-28)
+
+
+#### Bug Fixes
+
+* **react:** add missing argument and fix incorrect types ([#1403](https://github.com/IgniteUI/igniteui-cli/issues/1403)) ([fb006b3](https://github.com/IgniteUI/igniteui-cli/commit/fb006b38e6b4f3a2e61326b018787f67bd32b640))
+
+
+
+## 14.5.1 (2025-06-24)
+
+
+
+# 14.5.0 (2025-06-05)
+
+
+
+## 14.4.4 (2025-05-21)
+
+
+#### Features
+
+* add azure pipelines yaml files for angular, react and wc templates ([#1396](https://github.com/IgniteUI/igniteui-cli/issues/1396)) ([6a3e39d](https://github.com/IgniteUI/igniteui-cli/commit/6a3e39d41f50abe51fa7fd819961412304a31343))
+
+
+
+## 14.4.3 (2025-04-25)
+
+
+
+## 14.4.2 (2025-04-24)
+
+
+
+## 14.4.1 (2025-04-23)
+
+
+
+# 14.4.0 (2025-04-17)
+
+
+
+## 14.3.18 (2025-04-11)
+
+
+#### Bug Fixes
+
+* add missing static css files for WC ([#1385](https://github.com/IgniteUI/igniteui-cli/issues/1385)) ([95018f9](https://github.com/IgniteUI/igniteui-cli/commit/95018f93704f62af70b9c4a2e07b46554e6331a4))
+
+
+
+## 14.3.17 (2025-04-09)
+
+
+
+## 14.3.16 (2025-03-31)
+
+
+
+## 14.3.14 (2025-02-24)
+
+
+#### Bug Fixes
+
+* update eslint and fix warnings ([#1378](https://github.com/IgniteUI/igniteui-cli/issues/1378)) ([aa84345](https://github.com/IgniteUI/igniteui-cli/commit/aa84345ff21fc0fccde94063099e4c713862cde8))
+
+
+
+## 14.3.12-beta.0 (2025-01-27)
+
+
+#### Bug Fixes
+
+* **wc:** add seperate update for single or double quotes ([79ed105](https://github.com/IgniteUI/igniteui-cli/commit/79ed105cd67baf99f15e327d5f9840c3103d8018))
+* **wc:** fix iteration ([83583db](https://github.com/IgniteUI/igniteui-cli/commit/83583dbae937824e1b1f4d3f8d1ce8cc8e5589ec))
+* **wc:** fix paths in web components workflow ([6ff5999](https://github.com/IgniteUI/igniteui-cli/commit/6ff5999b782af24f09c29d4c60befb32a84fc5e0))
+
+
+
+## 14.3.11 (2025-01-24)
+
+
+#### Bug Fixes
+
+* static data paths when deploy to github pages ([#1371](https://github.com/IgniteUI/igniteui-cli/issues/1371)) ([4b40231](https://github.com/IgniteUI/igniteui-cli/commit/4b402313f4d2a2cfd80115d274514d9e5507334c))
+
+
+
+## 14.3.10 (2025-01-23)
+
+
+#### Features
+
+* increase maximum file size to cache in webComponents's vite configuration to 10 MB ([#1370](https://github.com/IgniteUI/igniteui-cli/issues/1370)) ([0a1385e](https://github.com/IgniteUI/igniteui-cli/commit/0a1385e5d1f98c8fcdf020d144f048b112b251d5))
+
+
+
+## 14.3.9 (2025-01-23)
+
+
+#### Features
+
+* enable silent mode in Vite configuration for improved build output ([#1369](https://github.com/IgniteUI/igniteui-cli/issues/1369)) ([7728300](https://github.com/IgniteUI/igniteui-cli/commit/7728300cbba7c5b15261ff2a82820432bd4b12b7))
+
+
+
+## 14.3.8 (2025-01-23)
+
+
+#### Features
+
+* replace rollup with vite configuration for wc ([#1364](https://github.com/IgniteUI/igniteui-cli/issues/1364)) ([024ee5f](https://github.com/IgniteUI/igniteui-cli/commit/024ee5f048427c5406013f1e4d051403ae255fca))
+
+
+
+## 14.3.7 (2025-01-22)
+
+
+#### Bug Fixes
+
+* **github-pages:** upgrade github pages deploy and artefact versions ([#1366](https://github.com/IgniteUI/igniteui-cli/issues/1366)) ([db6d0ea](https://github.com/IgniteUI/igniteui-cli/commit/db6d0eaef44c189cb80f10925d25595d97b7da4b))
+
+
+
+## 14.3.6 (2024-12-12)
+
+
+#### Bug Fixes
+
+* **migrations:** enable encapsulation for migrations ([#1361](https://github.com/IgniteUI/igniteui-cli/issues/1361)) ([9561a16](https://github.com/IgniteUI/igniteui-cli/commit/9561a1604a746b8a4b771627de2af4d14927e7c2))
+
+
+
+## 14.3.5 (2024-12-06)
+
+
+#### Bug Fixes
+
+* **web-components:** fix the step for updating the router navigation in github pages workflow ([#1358](https://github.com/IgniteUI/igniteui-cli/issues/1358)) ([3e0f42c](https://github.com/IgniteUI/igniteui-cli/commit/3e0f42c4fc7a75f6819f8ba85f760ac6a6d854f1))
+
+
+
+## 14.3.4 (2024-12-04)
+
+
+#### Bug Fixes
+
+* **web-components:** add step in github pages workflow to fix navigation ([#1355](https://github.com/IgniteUI/igniteui-cli/issues/1355)) ([0ca7277](https://github.com/IgniteUI/igniteui-cli/commit/0ca7277be8eaf1218af8a47f1ed7f51273499737))
+
+
+
+## 14.3.3 (2024-12-02)
+
+
+
+## 14.3.2 (2024-11-28)
+
+
+
+# 14.3.0 (2024-11-25)
+
+
+#### Features
+
+* Add pages deployment variable logic and fixes in github pages yaml files ([#1337](https://github.com/IgniteUI/igniteui-cli/issues/1337)) ([c75d9c7](https://github.com/IgniteUI/igniteui-cli/commit/c75d9c7a9d7a9244e7a9a814770809f06280529a))
+* allow reordering of array literal expressions ([#1323](https://github.com/IgniteUI/igniteui-cli/issues/1323)) ([412a2a5](https://github.com/IgniteUI/igniteui-cli/commit/412a2a585fa16fda53eb643c74af7fb4037c1412))
+
+
+
+## 14.2.3 (2024-11-15)
+
+
+
+## 14.2.2 (2024-11-08)
+
+
+#### Bug Fixes
+
+* **cli:** replace coveralls with coveralls-next ([#1336](https://github.com/IgniteUI/igniteui-cli/issues/1336)) ([4028e28](https://github.com/IgniteUI/igniteui-cli/commit/4028e28bc62da3f2232f79b60e26b9d13c93c8f9))
+
+
+
+## 14.2.1 (2024-10-28)
+
+
+
+# 14.2.0 (2024-10-25)
+
+
+
+# 14.2.0-beta.4 (2024-10-23)
+
+
+#### Bug Fixes
+
+* **cli:** add fixes in react and wc templates ([#1326](https://github.com/IgniteUI/igniteui-cli/issues/1326)) ([0430547](https://github.com/IgniteUI/igniteui-cli/commit/0430547a733c98b76aa94499516934547049b117))
+
+
+
+# 14.1.0 (2024-10-11)
+
+
+
+## 14.0.2 (2024-09-20)
+
+
+
+## 14.0.1 (2024-09-05)
+
+
+
+# 14.0.0 (2024-08-23)
+
+
+#### Bug Fixes
+
+* **eslint:** turn off no-explicit-any rule for wc ([#1288](https://github.com/IgniteUI/igniteui-cli/issues/1288)) ([1ee5b0f](https://github.com/IgniteUI/igniteui-cli/commit/1ee5b0f4ecc97a93f60b95e1615bb2a75fce9238))
+
+
+
+# 14.0.0-beta.2 (2024-07-24)
+
+
+#### Bug Fixes
+
+* **igr-ts:** add new lines in base app routes file ([#1284](https://github.com/IgniteUI/igniteui-cli/issues/1284)) ([92a14ef](https://github.com/IgniteUI/igniteui-cli/commit/92a14ef05f174bb5e5bc09978c986eb8f27e57e1))
+
+
+#### Features
+
+* **igx-templates:** add AngularTypeScriptFileUpdate ([e7f6ed3](https://github.com/IgniteUI/igniteui-cli/commit/e7f6ed3d339bb444dcdbaec4cabe5dcbff27b5ac))
+
+
+
+## 13.3.3 (2024-07-16)
+
+
+
+## 13.3.2 (2024-07-04)
+
+
+
+## 13.3.1 (2024-06-28)
+
+
+
+# 13.3.0-rc.0 (2024-05-31)
+
+
+
+## 13.2.1 (2024-05-09)
+
+
+
+# 13.2.0 (2024-04-29)
+
+
+
+# 13.2.0-rc.0 (2024-04-29)
+
+
+
+## 13.1.16 (2024-04-28)
+
+
+#### Bug Fixes
+
+* **react:** fix null type build error in main.tsx ([#1242](https://github.com/IgniteUI/igniteui-cli/issues/1242)) ([2d0b579](https://github.com/IgniteUI/igniteui-cli/commit/2d0b57999b6a22445c2e7ff494310f9e94c421ea))
+
+
+
+## 13.1.15 (2024-04-12)
+
+
+
+## 13.1.13 (2024-04-11)
+
+
+#### Bug Fixes
+
+* **cli-templetes:** Replaced index.html <title> to ApplicationTitle as placeholder ([#1237](https://github.com/IgniteUI/igniteui-cli/issues/1237)) ([d622d54](https://github.com/IgniteUI/igniteui-cli/commit/d622d54fbd3becbc514bfc971eac4c97b3346255))
+* **igr-ts:** lint ignore unused vars prefix; ts strict ([#1232](https://github.com/IgniteUI/igniteui-cli/issues/1232)) ([91e35b3](https://github.com/IgniteUI/igniteui-cli/commit/91e35b3eb060f079ff6e30bdead75af7d6b98add))
+
+
+
+## 13.1.13-beta.4 (2024-04-04)
+
+
+
+## 13.1.13-beta.3 (2024-04-04)
+
+
+#### Features
+
+* **react:** remove igniteui deps from package.json and bump versions ([841a19d](https://github.com/IgniteUI/igniteui-cli/commit/841a19d2779f4f156c48368b4fa7a20b1a181eb4))
+* **react:** turn off no-explicit-any in eslint ([ef50011](https://github.com/IgniteUI/igniteui-cli/commit/ef500113afe214e8e64dea926d6937c5e5f827df))
+
+
+
+## 13.1.12 (2024-03-21)
+
+
+#### Features
+
+* **cli:** upgrade packages for React and WC ([#1198](https://github.com/IgniteUI/igniteui-cli/issues/1198)) ([16c9b8d](https://github.com/IgniteUI/igniteui-cli/commit/16c9b8dda219ebacd473a2fad5e0c0ea70d5f320))
+
+
+
+# 13.2.0-beta.0 (2024-03-15)
+
+
+#### Bug Fixes
+
+* add elements internal polyfill to base template ([c7d2396](https://github.com/IgniteUI/igniteui-cli/commit/c7d2396572a9cd77205b8727ed81089f460403e2))
+* **Imports:** Fixed class import path in .test.ts ([#1224](https://github.com/IgniteUI/igniteui-cli/issues/1224)) ([6b3a2ef](https://github.com/IgniteUI/igniteui-cli/commit/6b3a2effef4951f0fc59e5393186eb2e69f2972b))
+* **Lint:** Fixed styles typing in style-utils ([#1222](https://github.com/IgniteUI/igniteui-cli/issues/1222)) ([6ad842a](https://github.com/IgniteUI/igniteui-cli/commit/6ad842a2bc16d50c8b29ddbca5907b80e40fd798))
+
+
+
+## 13.1.11 (2024-03-12)
+
+
+#### Bug Fixes
+
+* **react:** add editorconfig and vite-env.d.ts ([555300c](https://github.com/IgniteUI/igniteui-cli/commit/555300c38df56246cb7cc08f6b25e8ae5fd316f0))
+
+
+
+## 13.1.10 (2024-03-11)
+
+
+
+## 13.1.9 (2024-03-05)
+
+
+
+## 13.1.8 (2024-02-29)
+
+
+
+## 13.1.7 (2024-02-28)
+
+
+#### Bug Fixes
+
+* **WebComponents:** Removing an unnecessary ` from package.json ([3420292](https://github.com/IgniteUI/igniteui-cli/commit/3420292eb5752eaf76cfee1e12927d8d2749b8be))
+
+
+
+## 13.1.6 (2024-02-26)
+
+
+#### Bug Fixes
+
+* **React:** Add styles to support dark themes [#29410](https://github.com/IgniteUI/igniteui-cli/issues/29410) ([#1205](https://github.com/IgniteUI/igniteui-cli/issues/1205)) ([a191348](https://github.com/IgniteUI/igniteui-cli/commit/a191348d07317cdaac43db7bd52ee3958784ae55))
+
+
+
+## 13.1.5 (2024-01-31)
+
+
+#### Features
+
+* add style-utils file to base project ([#1195](https://github.com/IgniteUI/igniteui-cli/issues/1195)) ([112f27d](https://github.com/IgniteUI/igniteui-cli/commit/112f27ddc49d9106a182c8c7768543aa1b913164))
+
+
+
+## 13.1.3 (2024-01-17)
+
+
+#### Bug Fixes
+
+* **igr-ts:** add github workflows folder ([#1192](https://github.com/IgniteUI/igniteui-cli/issues/1192)) ([2369c55](https://github.com/IgniteUI/igniteui-cli/commit/2369c556b8f84ce6a575c73b617c7581cedf5c0f))
+* open browser on app start ([#1187](https://github.com/IgniteUI/igniteui-cli/issues/1187)) ([c4e1f5c](https://github.com/IgniteUI/igniteui-cli/commit/c4e1f5c8d65dd8729083377973a40450b4899d63))
+
+
+#### Features
+
+* **igc-ts:** bump the version to 4.7.0 and add new components ([#1189](https://github.com/IgniteUI/igniteui-cli/issues/1189)) ([e9dbfd7](https://github.com/IgniteUI/igniteui-cli/commit/e9dbfd7d6212f1b8535de6a142f6140e3848f6ef))
+
+
+
+## 13.1.1 (2023-12-14)
+
+
+#### Features
+
+* **igr-ts:** add igr-ts proj type ([#1146](https://github.com/IgniteUI/igniteui-cli/issues/1146)) ([4609525](https://github.com/IgniteUI/igniteui-cli/commit/460952505758fcf1ab9b559ed6809015f3c5d3a5)), closes [#1147](https://github.com/IgniteUI/igniteui-cli/issues/1147) [#1153](https://github.com/IgniteUI/igniteui-cli/issues/1153)
+
+
+
+## 13.0.1 (2023-11-15)
+
+
+
+# 13.0.0 (2023-11-09)
+
+
+
+# 13.0.0-rc.0 (2023-11-09)
+
+
+
+## 12.0.6-beta.2 (2023-10-02)
+
+
+
+## 12.0.5 (2023-07-18)
+
+
+#### Bug Fixes
+
+* memory allocation issue during build of webComponent app that uses igc-category-chart ([ee188bf](https://github.com/IgniteUI/igniteui-cli/commit/ee188bf4672b8ee96ac1b891cf8e334f44bb4929))
+
+
+
+## 12.0.4 (2023-07-18)
+
+
+
+## 12.0.3 (2023-06-28)
+
+
+
+## 12.0.3-beta.0 (2023-06-02)
+
+
+#### Bug Fixes
+
+* **igx:** replace DataGridSelectionMode with GridSelectionMode ([fc61052](https://github.com/IgniteUI/igniteui-cli/commit/fc61052d68f5fffbaf96c0f7c71220c39c7d5ef2))
+
+
+
+## 12.0.1 (2023-05-26)
+
+
+
+# 12.0.0 (2023-05-15)
+
+
+
+# 12.0.0-rc.0 (2023-05-15)
+
+
+#### Bug Fixes
+
+* **grid:** Adding missing packages to the grid template [#1109](https://github.com/IgniteUI/igniteui-cli/issues/1109) ([9c65afe](https://github.com/IgniteUI/igniteui-cli/commit/9c65afe228f182918c6e3f50e7cfec0466d7f7d2))
+* **web-components:** Adding packages in each template. ([674f55c](https://github.com/IgniteUI/igniteui-cli/commit/674f55c66bfa3308696cee3da1dd1d0e3ae64c0c))
+
+
+#### Features
+
+* **igx:** add base_with_home proj to igx-templates ([#1118](https://github.com/IgniteUI/igniteui-cli/issues/1118)) ([d84c431](https://github.com/IgniteUI/igniteui-cli/commit/d84c4310a03e35588626c57148091c6b224c7bc3))
+* **igx:** update to 16 ([#1120](https://github.com/IgniteUI/igniteui-cli/issues/1120)) ([e6efa40](https://github.com/IgniteUI/igniteui-cli/commit/e6efa40c2c748d2679b6be66252bc7732e51de29))
+
+
+
+## 11.1.1 (2023-04-11)
+
+
+#### Bug Fixes
+
+* **wc:** changing the function call [#1110](https://github.com/IgniteUI/igniteui-cli/issues/1110) ([#1113](https://github.com/IgniteUI/igniteui-cli/issues/1113)) ([5e4d1db](https://github.com/IgniteUI/igniteui-cli/commit/5e4d1dbdeeaa498278a7669b08031c51bfa2f367))
+
+
+
+# 11.1.0 (2023-03-28)
+
+
+
+# 11.1.0-rc.0 (2023-03-24)
+
+
+
+## 11.0.2 (2023-02-17)
+
+
+
+# 11.0.0 (2022-11-23)
+
+
+#### Features
+
+* add lint file for web components ([#1085](https://github.com/IgniteUI/igniteui-cli/issues/1085)) ([25498c0](https://github.com/IgniteUI/igniteui-cli/commit/25498c09b2bc4e5bc30c67c36008d97b342e3526))
+
+
+
+# 10.1.0-beta.13 (2022-10-27)
+
+
+
+# 10.1.0-beta.12 (2022-10-27)
+
+
+#### Features
+
+* **wc:** add npmrc to proj template ([#1079](https://github.com/IgniteUI/igniteui-cli/issues/1079)) ([af233e5](https://github.com/IgniteUI/igniteui-cli/commit/af233e53d72b615ce11e16a65ddf358645329ffb))
+
+
+
+# 10.1.0-beta.11 (2022-10-25)
+
+
+
+# 10.1.0-beta.10 (2022-10-25)
+
+
+
+# 10.1.0-beta9 (2022-10-25)
+
+
+
+# 10.1.0-beta.8 (2022-10-23)
+
+
+
+# 10.1.0-beta.7 (2022-10-19)
+
+
+
+# 10.1.0-beta.6 (2022-10-19)
+
+
+
+# 10.1.0-beta.5 (2022-10-18)
+
+
+
+# 10.1.0-beta.4 (2022-10-18)
+
+
+#### Features
+
+* provide default options when adding a template ([#1070](https://github.com/IgniteUI/igniteui-cli/issues/1070)) ([73e5c2c](https://github.com/IgniteUI/igniteui-cli/commit/73e5c2c0cc62b81384d6b4928103adf5ccf16153))
+
+
+
+# 10.1.0-beta.3 (2022-10-17)
+
+
+
+# 10.1.0-beta.2 (2022-10-14)
+
+
+
+# 10.1.0-beta.1 (2022-10-14)
+
+
+
+# 10.1.0-beta.0 (2022-10-07)
+
+
+#### Bug Fixes
+
+* **webcomponents:** set background and color to body ([b41a8b6](https://github.com/IgniteUI/igniteui-cli/commit/b41a8b66834ed46206cb14aa8bff0d6e3b99ef18))
+* **webcomponents:** set correct fallback for background color ([#1065](https://github.com/IgniteUI/igniteui-cli/issues/1065)) ([a976831](https://github.com/IgniteUI/igniteui-cli/commit/a976831228c204b015bd49773af4b5fc9767873a))
+* **webcomponents:** update app-root markup ([c717c37](https://github.com/IgniteUI/igniteui-cli/commit/c717c370cae66218eb4a7d5daaf0137da8c12d23))
+
+
+#### Features
+
+* **wc:** add base template for Web Components [#988](https://github.com/IgniteUI/igniteui-cli/issues/988) ([#1058](https://github.com/IgniteUI/igniteui-cli/issues/1058)) ([7574ab2](https://github.com/IgniteUI/igniteui-cli/commit/7574ab2b0221687a6ace6f627ec55caa3945236f))
+
+
+
+## 10.0.5 (2022-09-19)
+
+
+#### Features
+
+* **wc:** add accordion, tab & date-time-editor templates ([#1055](https://github.com/IgniteUI/igniteui-cli/issues/1055)) ([f2a631f](https://github.com/IgniteUI/igniteui-cli/commit/f2a631fcd18f529172af8e038929bf7f542e71ff))
+
+
+
+## 10.0.4-beta.0 (2022-06-30)
+
+
+
+## 10.0.2 (2022-06-29)
+
+
+
+## 10.0.1 (2022-06-17)
+
+
+
+# 9.2.0 (2022-05-26)
+
+
+
+## 9.1.4 (2022-05-20)
+
+
+
+## 9.1.3 (2022-05-19)
+
+
+
+## 9.1.2 (2022-05-16)
+
+
+
+## 9.1.1 (2022-03-18)
+
+
+
+## 9.1.1-rc.0 (2022-03-17)
+
+
+#### Bug Fixes
+
+* **wc:** address comments ([e1f804d](https://github.com/IgniteUI/igniteui-cli/commit/e1f804deada9f5fdf628ba25e122278cb9118507))
+
+
+#### Features
+
+* **ng:** update to 13.3.0 ([17553b0](https://github.com/IgniteUI/igniteui-cli/commit/17553b0da7586d14d91778417161f2a77864fd16))
+* **wc:** add new 2.1.0 components ([526da0c](https://github.com/IgniteUI/igniteui-cli/commit/526da0ce167659c9cfd3b21caf21efdcbc47e18d))
+
+
+
+# 9.1.0 (2022-03-02)
+
+
+
+# 9.1.0-rc.1 (2022-02-25)
+
+
+
+# 9.1.0-beta.0 (2022-02-22)
+
+
+#### Bug Fixes
+
+* **start:** pass in options for wc child process ([2df9e33](https://github.com/IgniteUI/igniteui-cli/commit/2df9e337e86e353d6d3dde6b53001af7af36fe12))
+
+
+#### Features
+
+* **wc:** adding empty view and refactor proj structure [#967](https://github.com/IgniteUI/igniteui-cli/issues/967) ([#979](https://github.com/IgniteUI/igniteui-cli/issues/979)) ([622a014](https://github.com/IgniteUI/igniteui-cli/commit/622a0143be1583cfb97d7b80cabbfe21e03c20eb))
+* **web-components:** use LitElement in the templates [#989](https://github.com/IgniteUI/igniteui-cli/issues/989) ([#1001](https://github.com/IgniteUI/igniteui-cli/issues/1001)) ([5d828bc](https://github.com/IgniteUI/igniteui-cli/commit/5d828bc6062e6971d82f588ebf59a6e489d87257))
+
+
+
+## 9.0.6 (2022-02-04)
+
+
+
+## 9.0.5 (2022-02-04)
+
+
+
+## 9.0.5-beta.2 (2022-02-03)
+
+
+
+## 9.0.5-beta.1 (2022-01-28)
+
+
+
+## 9.0.5-beta.0 (2021-12-20)
+
+
+
+## 9.0.4 (2021-12-15)
+
+
+
+## 9.0.3 (2021-12-13)
+
+
+#### Features
+
+* **typescript:** Add support for typescript 4.5.2 ([055ca5b](https://github.com/IgniteUI/igniteui-cli/commit/055ca5b7f8e54acdd8f3f1d6b6d7517916d852f3))
+* Update [@use](https://github.com/use) [@forward](https://github.com/forward) and hsla ([#961](https://github.com/IgniteUI/igniteui-cli/issues/961)) ([2ef8435](https://github.com/IgniteUI/igniteui-cli/commit/2ef8435816f8ff4f60c7e0cd4ed497a11fc815da))
+
+
+
+## 9.0.1 (2021-11-25)
+
+
+
+# 9.0.0 (2021-11-22)
+
+
+
+# 9.0.0-rc.3 (2021-11-22)
+
+
+
+# 9.0.0-rc.2 (2021-11-19)
+
+
+#### Bug Fixes
+
+* add igx-scrollbar class to body, [#14033](https://github.com/IgniteUI/igniteui-cli/issues/14033) ([b02ac58](https://github.com/IgniteUI/igniteui-cli/commit/b02ac5822015c6b1b1fdd4684a52a2eecb3eadd9))
+
+
+
+# 9.0.0-rc.1 (2021-11-17)
+
+
+
+# 9.0.0-rc.0 (2021-11-17)
+
+
+#### Features
+
+* **angular:** update to Angular 13 [#895](https://github.com/IgniteUI/igniteui-cli/issues/895) ([#896](https://github.com/IgniteUI/igniteui-cli/issues/896)) ([32f1721](https://github.com/IgniteUI/igniteui-cli/commit/32f17215290af3372b554f0e440e39b9b9b5040a))
+
+
+
+# 8.3.0-rc.0 (2021-11-11)
+
+
+
+# 8.3.0-beta.7 (2021-11-09)
+
+
+
+# 8.3.0-beta.6 (2021-11-09)
+
+
+
+# 8.3.0-beta.5 (2021-11-09)
+
+
+
+# 8.3.0-beta.4 (2021-11-09)
+
+
+
+# 8.3.0-beta.3 (2021-11-08)
+
+
+
+# 8.3.0-beta.2 (2021-11-08)
+
+
+
+# 8.3.0-beta.1 (2021-11-04)
+
+
+
+# 8.3.0-beta.0 (2021-11-04)
+
+
+
+## 8.2.1 (2021-10-08)
+
+
+
+## 8.2.1-rc.0 (2021-10-07)
+
+
+
+# 8.2.0 (2021-10-04)
+
+
+
+# 8.2.0-alpha.0 (2021-09-30)
+
+
+
+## 8.1.2 (2021-09-28)
+
+
+#### Bug Fixes
+
+* **igr-es6:** Underscore dot ([a0ce582](https://github.com/IgniteUI/igniteui-cli/commit/a0ce582e112a31c2c59d5532791ef07ab988335b))
+
+
+
+## 8.1.1 (2021-09-02)
+
+
+#### Bug Fixes
+
+* **custom-templates:** Refactor samples, ([1f50907](https://github.com/IgniteUI/igniteui-cli/commit/1f509070a9409c4100d3d9c6a5de2f443d04c556))
+* **ig-ts:** Free version path contains no /en ([e96c7f6](https://github.com/IgniteUI/igniteui-cli/commit/e96c7f673729a034eeb3d89f5adfe3061d6e9f0b))
+* **ig-ts:** Make use of all visible height ([ebfe5ed](https://github.com/IgniteUI/igniteui-cli/commit/ebfe5edada1fcd9d4f8e25f868f916ad2d862121))
+* **ig-ts:** Temp fix - add static FormsModule ([9341753](https://github.com/IgniteUI/igniteui-cli/commit/9341753ab6fed9597c6f30f9fb1383ad132282ab))
+* **ig-ts:** Update prod budgets ([4edd971](https://github.com/IgniteUI/igniteui-cli/commit/4edd97100f0ab2cdd7a00176992ca1da57de47ff))
+* **lint:** Fix all lint errors. ([659cc29](https://github.com/IgniteUI/igniteui-cli/commit/659cc2913f20092bd9ffc3f5a1a1f549db005912))
+* **lint:** Fix dum line lenght ([570accb](https://github.com/IgniteUI/igniteui-cli/commit/570accbaef8f74d01cecbeda0046edb1a8423ef1))
+* **lint:** Fix lint errors ([84394b9](https://github.com/IgniteUI/igniteui-cli/commit/84394b9c4c24ed9727c8719bd9e463cea09d482b))
+* **lint:** Fix lint errors. ([0477e7d](https://github.com/IgniteUI/igniteui-cli/commit/0477e7dd3d9b4731e1b3176316581d3e0339ca5e))
+* **templates:** Add file-saver package ([8c7a59d](https://github.com/IgniteUI/igniteui-cli/commit/8c7a59db381a32719cdadbf1534a387c90bb05d5))
+
+
+#### Features
+
+* **ig-ts:** Empty project is now angular project. ([83e5c6f](https://github.com/IgniteUI/igniteui-cli/commit/83e5c6f8370b0d10a349751d9b90f3f284d9ae69))
+
+
+
+# 8.1.0-rc.0 (2021-07-30)
+
+
+
+# 8.1.0-beta.1 (2021-07-30)
+
+
+
+# 8.1.0-beta.0 (2021-07-28)
+
+
+#### Features
+
+* update angular to v12.1 [#856](https://github.com/IgniteUI/igniteui-cli/issues/856) ([#857](https://github.com/IgniteUI/igniteui-cli/issues/857)) ([971822e](https://github.com/IgniteUI/igniteui-cli/commit/971822e343158bd107ef5b07bf60773509bd928c))
+
+
+
+## 8.0.3 (2021-07-14)
+
+
+
+## 8.0.2 (2021-07-07)
+
+
+
+## 8.0.2-beta.1 (2021-07-06)
+
+
+
+## 8.0.2-beta.0 (2021-07-02)
+
+
+
+## 8.0.1 (2021-07-01)
+
+
+
+# 8.0.0 (2021-05-14)
+
+
+
+# 8.0.0-rc.0 (2021-05-13)
+
+
+
+# 8.0.0-alpha.1 (2021-05-13)
+
+
+
+## 7.1.1 (2021-03-15)
+
+
+
+## 7.1.1-beta.0 (2021-03-12)
+
+
+
+# 7.1.0 (2021-02-22)
+
+
+
+# 7.1.0-beta.0 (2021-02-18)
+
+
+
+## 7.0.1 (2020-11-16)
+
+
+
+# 7.0.0 (2020-11-13)
+
+
+
+# 7.0.0-rc.2 (2020-11-12)
+
+
+
+# 7.0.0-rc.1 (2020-11-10)
+
+
+
+# 7.0.0-rc.0 (2020-11-10)
+
+
+
+# 7.0.0-alpha.0 (2020-11-10)
+
+
+
+# 6.2.0 (2020-10-20)
+
+
+
+# 6.2.0-rc.0 (2020-10-16)
+
+
+
+# 6.2.0-beta.0 (2020-10-14)
+
+
+#### Bug Fixes
+
+* **react-grid:** Add missing module [#791](https://github.com/IgniteUI/igniteui-cli/issues/791) ([#798](https://github.com/IgniteUI/igniteui-cli/issues/798)) ([68e2b81](https://github.com/IgniteUI/igniteui-cli/commit/68e2b81e297a5b4279f53e5bb9dff80126cc08b6))
+
+
+
+# 6.1.0 (2020-08-12)
+
+
+
+# 6.1.0-beta.0 (2020-08-07)
+
+
+
+# 6.1.0-alpha.0 (2020-07-09)
+
+
+
+# 6.0.0 (2020-06-25)
+
+
+
+## 5.2.1 (2020-06-25)
+
+
+
+# 6.0.0-rc.0 (2020-06-25)
+
+
+#### Features
+
+* **packages:** Bump packages to Angular 10  [#767](https://github.com/IgniteUI/igniteui-cli/issues/767) ([73a5670](https://github.com/IgniteUI/igniteui-cli/commit/73a56703ff4f4f0cc23d1da3c65cb4fbe114c9b4))
+* **packages:** Bump packages to Angular 10  [#767](https://github.com/IgniteUI/igniteui-cli/issues/767) ([f7e104e](https://github.com/IgniteUI/igniteui-cli/commit/f7e104e8ccee1692ff886259a7b7cf653de46573))
+
+
+
+# 5.2.0 (2020-06-11)
+
+
+
+## 5.1.1 (2020-06-03)
+
+
+
+# 5.1.0 (2020-06-01)
+
+
+
+# 5.1.0-beta.4 (2020-06-01)
+
+
+
+# 5.1.0-beta.3 (2020-05-29)
+
+
+
+# 5.1.0-beta.2 (2020-05-28)
+
+
+
+# 5.1.0-beta.1 (2020-05-28)
+
+
+#### Bug Fixes
+
+* **upgrade:** provide default fallback for incorrect package template ([9dd4d80](https://github.com/IgniteUI/igniteui-cli/commit/9dd4d80db6cf13d3fd7594790bcaaeec9a383b49))
+
+
+
+# 5.1.0-beta.0 (2020-05-27)
+
+
+#### Features
+
+* **commands:** Add 'upgrade-packages' command ([25db37d](https://github.com/IgniteUI/igniteui-cli/commit/25db37d0df1fa52d81501b74ab328330e7a60744))
+* **schematics:** update-package logic added ([197b94e](https://github.com/IgniteUI/igniteui-cli/commit/197b94e367d5e9a359c989beef01c6f35d7b54b5))
+* **step-by-step:** add prompt to upgrade to private feed packages, [#724](https://github.com/IgniteUI/igniteui-cli/issues/724) ([63c0c85](https://github.com/IgniteUI/igniteui-cli/commit/63c0c85639c1e5e5415c82f96a6b5cb5bbad4b99))
+
+
+
+# 5.1.0-alpha.0 (2020-05-20)
+
+
+
+## 5.0.3 (2020-05-18)
+
+
+#### Bug Fixes
+
+* **igx:** proj template error handler log instead throw, register only in prod ([270addd](https://github.com/IgniteUI/igniteui-cli/commit/270adddfdee8bb84892e768971e976e70550b2c2))
+
+
+
+## 5.0.2 (2020-05-05)
+
+
+#### Bug Fixes
+
+* **ig-ts:** correct grid features template variable [#702](https://github.com/IgniteUI/igniteui-cli/issues/702) ([3f09bd9](https://github.com/IgniteUI/igniteui-cli/commit/3f09bd9af64177162e4e450df2148e1b13b2f87f))
+* **start:** inherit all stdio, not just input [#699](https://github.com/IgniteUI/igniteui-cli/issues/699) ([1c03891](https://github.com/IgniteUI/igniteui-cli/commit/1c03891227bcdcff6dbff2005939e631737d8b7f))
+
+
+
+# 5.0.0 (2020-02-11)
+
+
+
+# 5.0.0-rc.4 (2020-02-11)
+
+
+
+# 5.0.0-rc.3 (2020-02-07)
+
+
+
+# 5.0.0-rc.2 (2020-02-07)
+
+
+#### Features
+
+* **ix-ts:** Update ig-ts projects [#647](https://github.com/IgniteUI/igniteui-cli/issues/647) ([a6204d8](https://github.com/IgniteUI/igniteui-cli/commit/a6204d80f50e885459306276f3584fac0488460b))
+
+
+
+# 5.0.0-rc.0 (2020-01-31)
+
+
+#### Bug Fixes
+
+* new project accepts lower case theme name [#600](https://github.com/IgniteUI/igniteui-cli/issues/600) ([#619](https://github.com/IgniteUI/igniteui-cli/issues/619)) ([d6eedea](https://github.com/IgniteUI/igniteui-cli/commit/d6eedea8998b07aa6312dea6fdbab66acd88303a))
+
+
+
+# 5.0.0-beta.3 (2019-12-13)
+
+
+#### Bug Fixes
+
+* **cli, schematics:** check for fileSystem on post install [#612](https://github.com/IgniteUI/igniteui-cli/issues/612) ([#613](https://github.com/IgniteUI/igniteui-cli/issues/613)) ([0a6a878](https://github.com/IgniteUI/igniteui-cli/commit/0a6a87877bfe42fb9d665ac7b7e4be3d5e72511f))
+
+
+
+# 5.0.0-beta.2 (2019-12-06)
+
+
+
+# 5.0.0-beta.1 (2019-11-28)
+
+
+
+# 5.0.0-alpha.1 (2019-10-02)
+
+
+# 14.10.0-alpha.3
+
+## igniteui/cli-core@14.10.0-alpha.3 (2026-03-25)
+
+
+
+# 14.10.0-alpha.1 (2026-03-25)
+
+
+#### Bug Fixes
+
+* **eslint:** correct config ignores and resolve lint errors ([68d01ac](https://github.com/IgniteUI/igniteui-cli/commit/68d01ac6102e4e3d660dff9d229e826ea64943db))
+* **lint:** re-enable no-console rule ([3ffa07f](https://github.com/IgniteUI/igniteui-cli/commit/3ffa07ff8812e93dd358b38332f3abc2ea955af2))
+
+
+
+## 14.9.2 (2026-03-11)
+
+
+#### Bug Fixes
+
+* **packages:** disable non-functional registry login attempt on upgrade ([#1528](https://github.com/IgniteUI/igniteui-cli/issues/1528)) ([1008a1e](https://github.com/IgniteUI/igniteui-cli/commit/1008a1e3fadb20553f464162d69a5bb2393d615b))
+* **packages:** login command for node@24+ spawn change ([cbb6502](https://github.com/IgniteUI/igniteui-cli/commit/cbb6502e90cfeaa7a87885748aa4b337c37c0b2f))
+* **upgrade-packages:** correctly glob files on windows ([#1511](https://github.com/IgniteUI/igniteui-cli/issues/1511)) ([64f2735](https://github.com/IgniteUI/igniteui-cli/commit/64f2735963f269fb4b60dd7479566baae33119c8))
+
+
+#### Reverts
+
+* partially revert changes swapping exec with spawn ([3a64b67](https://github.com/IgniteUI/igniteui-cli/commit/3a64b67bc43df42f72363e63192b90fea38b111f))
+
+
+
+## 14.9.1 (2026-02-25)
+
+
+
+# 14.9.0 (2026-02-25)
+
+
+#### Features
+
+* **ng:** update igniteui-angular to 21.1.0 ([#1495](https://github.com/IgniteUI/igniteui-cli/issues/1495)) ([399f83e](https://github.com/IgniteUI/igniteui-cli/commit/399f83e4278dafdf9a3832fa013840f05ba586e6))
+
+
+
+## 14.8.5-beta.3 (2026-02-11)
+
+
+
+## 14.8.5-beta.0 (2026-02-10)
+
+
+
+## 14.8.4 (2026-02-05)
+
+
+
+## 14.8.3 (2026-01-19)
+
+
+
+## 14.8.2 (2026-01-13)
+
+
+
+## 14.8.2-beta.4 (2026-01-12)
+
+
+
+## 14.8.2-beta.3 (2026-01-12)
+
+
+
+## 14.8.2-beta.2 (2026-01-12)
+
+
+
+## 14.8.2-beta.0 (2026-01-12)
+
+
+
+# 14.8.0 (2025-12-03)
+
+
+
+# 14.8.0-beta.2 (2025-12-01)
+
+
+
+# 14.8.0-beta.1 (2025-12-01)
+
+
+
+## 14.7.1 (2025-11-20)
+
+
+
+# 14.7.0 (2025-11-17)
+
+
+#### Bug Fixes
+
+* command injection vulnerabilities in PackageManager and start command ([#1438](https://github.com/IgniteUI/igniteui-cli/issues/1438)) ([1f86df3](https://github.com/IgniteUI/igniteui-cli/commit/1f86df3d6e660b93db047415e9c53af1ef4f0a30))
+
+
+#### Features
+
+* **ng:** use ng lint schematic ([#1439](https://github.com/IgniteUI/igniteui-cli/issues/1439)) ([fa917cd](https://github.com/IgniteUI/igniteui-cli/commit/fa917cd7c974db05061f9442d8c5cdcc74853928))
+
+
+
+## 14.6.4 (2025-10-14)
+
+
+
+## 14.6.3 (2025-10-09)
+
+
+
+## 14.6.2 (2025-10-07)
+
+
+
+## 14.6.1 (2025-10-06)
+
+
+
+# 14.6.0 (2025-10-02)
+
+
+#### Features
+
+* **ng:** update ig, ng and other libs ([#1427](https://github.com/IgniteUI/igniteui-cli/issues/1427)) ([93fbbcc](https://github.com/IgniteUI/igniteui-cli/commit/93fbbcce2668084dcc958736f7167e36e9cbed47))
+
+
+
+## 14.5.8 (2025-09-25)
+
+
+#### Bug Fixes
+
+* **react:** enhance upgrade-packages to support workspace glob patterns for projects without explicit workspaces ([#1424](https://github.com/IgniteUI/igniteui-cli/issues/1424)) ([6eeee2f](https://github.com/IgniteUI/igniteui-cli/commit/6eeee2ff879902197f012e83eb6064a72a4c438e))
+
+
+
+## 14.5.7 (2025-09-23)
+
+
+
+## 14.5.6 (2025-09-18)
+
+
+#### Bug Fixes
+
+* Remove --legacy-peer-deps flag to allow automatic peer dependency installation ([fe0ea3d](https://github.com/IgniteUI/igniteui-cli/commit/fe0ea3df94614b10dc494e241b070309e283c0b6))
+* **wc:** enhance upgrade-packages to support workspace glob patterns and vite.config.ts files ([#1408](https://github.com/IgniteUI/igniteui-cli/issues/1408)) ([bcd62be](https://github.com/IgniteUI/igniteui-cli/commit/bcd62be52107bcbdab6d207866fe7ffb99883b6d))
+
+
+
+## 14.5.4 (2025-07-01)
+
+
+
+## 14.5.3 (2025-06-28)
+
+
+
+## 14.5.1 (2025-06-24)
+
+
+
+# 14.5.0 (2025-06-05)
+
+
+
+## 14.4.4 (2025-05-21)
+
+
+#### Features
+
+* add azure pipelines yaml files for angular, react and wc templates ([#1396](https://github.com/IgniteUI/igniteui-cli/issues/1396)) ([6a3e39d](https://github.com/IgniteUI/igniteui-cli/commit/6a3e39d41f50abe51fa7fd819961412304a31343))
+
+
+
+## 14.4.3 (2025-04-25)
+
+
+#### Features
+
+* **React:** Update react html files with licensed packages when upgrading packages ([#1395](https://github.com/IgniteUI/igniteui-cli/issues/1395)) ([7a7c4f0](https://github.com/IgniteUI/igniteui-cli/commit/7a7c4f0b5b74acc67e7524e643ee2a102ededb46))
+
+
+
+## 14.4.2 (2025-04-24)
+
+
+
+## 14.4.1 (2025-04-23)
+
+
+
+# 14.4.0 (2025-04-17)
+
+
+
+## 14.3.18 (2025-04-11)
+
+
+#### Bug Fixes
+
+* add missing static css files for WC ([#1385](https://github.com/IgniteUI/igniteui-cli/issues/1385)) ([95018f9](https://github.com/IgniteUI/igniteui-cli/commit/95018f93704f62af70b9c4a2e07b46554e6331a4))
+
+
+
+## 14.3.17 (2025-04-09)
+
+
+#### Bug Fixes
+
+* **WC:** update themes import paths to licensed version ([#1387](https://github.com/IgniteUI/igniteui-cli/issues/1387)) ([260068b](https://github.com/IgniteUI/igniteui-cli/commit/260068b9c9e3f4e895717ca6003f6ba0aded5cf2))
+
+
+
+## 14.3.16 (2025-03-31)
+
+
+#### Bug Fixes
+
+* **workflows:** Do not throw error if github workflows directory does not exist when updating ([#1383](https://github.com/IgniteUI/igniteui-cli/issues/1383)) ([acc771a](https://github.com/IgniteUI/igniteui-cli/commit/acc771afac962166f630c36beff428aa83af97de))
+
+
+
+## 14.3.14 (2025-02-24)
+
+
+#### Bug Fixes
+
+* update eslint and fix warnings ([#1378](https://github.com/IgniteUI/igniteui-cli/issues/1378)) ([aa84345](https://github.com/IgniteUI/igniteui-cli/commit/aa84345ff21fc0fccde94063099e4c713862cde8))
+
+
+
+## 14.3.12-beta.0 (2025-01-27)
+
+
+
+## 14.3.11 (2025-01-24)
+
+
+#### Bug Fixes
+
+* static data paths when deploy to github pages ([#1371](https://github.com/IgniteUI/igniteui-cli/issues/1371)) ([4b40231](https://github.com/IgniteUI/igniteui-cli/commit/4b402313f4d2a2cfd80115d274514d9e5507334c))
+
+
+
+## 14.3.10 (2025-01-23)
+
+
+
+## 14.3.9 (2025-01-23)
+
+
+
+## 14.3.8 (2025-01-23)
+
+
+
+## 14.3.7 (2025-01-22)
+
+
+
+## 14.3.6 (2024-12-12)
+
+
+
+## 14.3.5 (2024-12-06)
+
+
+#### Bug Fixes
+
+* **web-components:** fix the step for updating the router navigation in github pages workflow ([#1358](https://github.com/IgniteUI/igniteui-cli/issues/1358)) ([3e0f42c](https://github.com/IgniteUI/igniteui-cli/commit/3e0f42c4fc7a75f6819f8ba85f760ac6a6d854f1))
+
+
+
+## 14.3.4 (2024-12-04)
+
+
+
+## 14.3.3 (2024-12-02)
+
+
+
+## 14.3.2 (2024-11-28)
+
+
+#### Features
+
+* Add pages deployment variable logic and fixes in github pages yaml files ([#1337](https://github.com/IgniteUI/igniteui-cli/issues/1337)) ([c75d9c7](https://github.com/IgniteUI/igniteui-cli/commit/c75d9c7a9d7a9244e7a9a814770809f06280529a))
+* allow reordering of array literal expressions ([#1323](https://github.com/IgniteUI/igniteui-cli/issues/1323)) ([412a2a5](https://github.com/IgniteUI/igniteui-cli/commit/412a2a585fa16fda53eb643c74af7fb4037c1412))
+
+
+
+## 14.2.3 (2024-11-15)
+
+
+
+## 14.2.2 (2024-11-08)
+
+
+
+## 14.2.1 (2024-10-28)
+
+
+
+# 14.2.0 (2024-10-25)
+
+
+
+# 14.2.0-beta.4 (2024-10-23)
+
+
+
+# 14.1.0 (2024-10-11)
+
+
+
+## 14.0.2 (2024-09-20)
+
+
+
+## 14.0.1 (2024-09-05)
+
+
+
+# 14.0.0 (2024-08-23)
+
+
+
+# 14.0.0-beta.2 (2024-07-24)
+
+
+#### Features
+
+* **igx-templates:** add AngularTypeScriptFileUpdate ([e7f6ed3](https://github.com/IgniteUI/igniteui-cli/commit/e7f6ed3d339bb444dcdbaec4cabe5dcbff27b5ac))
+
+
+
+## 13.3.3 (2024-07-16)
+
+
+
+## 13.3.2 (2024-07-04)
+
+
+
+## 13.3.1 (2024-06-28)
+
+
+#### Features
+
+* **core:** add FormattingService ([f7ea2a4](https://github.com/IgniteUI/igniteui-cli/commit/f7ea2a4d8f57b5f1edb531df76d05c541df754e1))
+* **core:** add new types ([aa636a3](https://github.com/IgniteUI/igniteui-cli/commit/aa636a3b1642da1a57758d49e0f7f6f79c7e2d01))
+* **core:** add TypeScriptASTTransformer ([9854847](https://github.com/IgniteUI/igniteui-cli/commit/9854847e32c718d82013e1fc8b58d9b06700b819))
+
+
+
+# 13.3.0-rc.0 (2024-05-31)
+
+
+
+## 13.2.1 (2024-05-09)
+
+
+
+# 13.2.0 (2024-04-29)
+
+
+
+# 13.2.0-rc.0 (2024-04-29)
+
+
+
+## 13.1.16 (2024-04-28)
+
+
+
+## 13.1.15 (2024-04-12)
+
+
+
+## 13.1.13 (2024-04-11)
+
+
+
+## 13.1.12 (2024-03-21)
+
+
+#### Features
+
+* **cli:** upgrade packages for React and WC ([#1198](https://github.com/IgniteUI/igniteui-cli/issues/1198)) ([16c9b8d](https://github.com/IgniteUI/igniteui-cli/commit/16c9b8dda219ebacd473a2fad5e0c0ea70d5f320))
+
+
+
+## 13.1.11 (2024-03-12)
+
+
+
+## 13.1.10 (2024-03-11)
+
+
+
+## 13.1.9 (2024-03-05)
+
+
+
+## 13.1.8 (2024-02-29)
+
+
+
+## 13.1.7 (2024-02-28)
+
+
+
+## 13.1.6 (2024-02-26)
+
+
+#### Features
+
+* **ng-add:** add setup config provideAnimations ([2f47676](https://github.com/IgniteUI/igniteui-cli/commit/2f476762ac772039228fe10565d49a6ced76b72d))
+
+
+
+## 13.1.5 (2024-01-31)
+
+
+
+## 13.1.3 (2024-01-17)
+
+
+
+## 13.1.1 (2023-12-14)
+
+
+#### Bug Fixes
+
+* **kebacase:** do not add dash before numbers ([25d8f54](https://github.com/IgniteUI/igniteui-cli/commit/25d8f544243f6e1f5583c772f4b8e0e3cbb7ca12))
+* **kebap-case:** add dash between number and uppercase letter ([0be7637](https://github.com/IgniteUI/igniteui-cli/commit/0be7637bc19423821e066a9e62dbdec3e5bd5cb4))
+
+
+#### Features
+
+* **igr-ts:** add igr-ts proj type ([#1146](https://github.com/IgniteUI/igniteui-cli/issues/1146)) ([4609525](https://github.com/IgniteUI/igniteui-cli/commit/460952505758fcf1ab9b559ed6809015f3c5d3a5)), closes [#1147](https://github.com/IgniteUI/igniteui-cli/issues/1147) [#1153](https://github.com/IgniteUI/igniteui-cli/issues/1153)
+
+
+
+## 13.0.1 (2023-11-15)
+
+
+#### Bug Fixes
+
+* update Utils.LowerDashed function ([#1171](https://github.com/IgniteUI/igniteui-cli/issues/1171)) ([2254ecc](https://github.com/IgniteUI/igniteui-cli/commit/2254ecc0267be8c19e7f1d5295886b2ba6c345c7))
+
+
+
+# 13.0.0 (2023-11-09)
+
+
+
+# 13.0.0-rc.0 (2023-11-09)
+
+
+
+## 12.0.6-beta.2 (2023-10-02)
+
+
+
+## 12.0.5 (2023-07-18)
+
+
+
+## 12.0.4 (2023-07-18)
+
+
+
+## 12.0.3 (2023-06-28)
+
+
+
+## 12.0.3-beta.0 (2023-06-02)
+
+
+
+## 12.0.1 (2023-05-26)
+
+
+
+# 12.0.0 (2023-05-15)
+
+
+
+# 12.0.0-rc.0 (2023-05-15)
+
+
+#### Features
+
+* **igx:** add base_with_home proj to igx-templates ([#1118](https://github.com/IgniteUI/igniteui-cli/issues/1118)) ([d84c431](https://github.com/IgniteUI/igniteui-cli/commit/d84c4310a03e35588626c57148091c6b224c7bc3))
+* **igx:** update to 16 ([#1120](https://github.com/IgniteUI/igniteui-cli/issues/1120)) ([e6efa40](https://github.com/IgniteUI/igniteui-cli/commit/e6efa40c2c748d2679b6be66252bc7732e51de29))
+
+
+
+## 11.1.1 (2023-04-11)
+
+
+
+# 11.1.0 (2023-03-28)
+
+
+
+# 11.1.0-rc.0 (2023-03-24)
+
+
+
+## 11.0.2 (2023-02-17)
+
+
+
+# 11.0.0 (2022-11-23)
+
+
+
+# 10.1.0-beta.13 (2022-10-27)
+
+
+
+# 10.1.0-beta.12 (2022-10-27)
+
+
+
+# 10.1.0-beta.11 (2022-10-25)
+
+
+
+# 10.1.0-beta.10 (2022-10-25)
+
+
+
+# 10.1.0-beta.8 (2022-10-23)
+
+
+
+# 10.1.0-beta.7 (2022-10-19)
+
+
+
+# 10.1.0-beta.5 (2022-10-18)
+
+
+
+# 10.1.0-beta.4 (2022-10-18)
+
+
+
+# 10.1.0-beta.3 (2022-10-17)
+
+
+
+# 10.1.0-beta.2 (2022-10-14)
+
+
+
+# 10.1.0-beta.1 (2022-10-14)
+
+
+
+# 10.1.0-beta.0 (2022-10-07)
+
+
+
+## 10.0.5 (2022-09-19)
+
+
+
+## 10.0.4-beta.0 (2022-06-30)
+
+
+
+## 10.0.2 (2022-06-29)
+
+
+
+## 10.0.1 (2022-06-17)
+
+
+#### Bug Fixes
+
+* **package-manager:** skip setting up child install tasks for new projects ([de2a134](https://github.com/IgniteUI/igniteui-cli/commit/de2a1341e13ba20635a5ed94c5cc7e4c79c7ca46))
+
+
+
+# 9.2.0 (2022-05-26)
+
+
+
+## 9.1.4 (2022-05-20)
+
+
+
+## 9.1.3 (2022-05-19)
+
+
+
+## 9.1.2 (2022-05-16)
+
+
+
+## 9.1.1 (2022-03-18)
+
+
+
+## 9.1.1-rc.0 (2022-03-17)
+
+
+
+# 9.1.0 (2022-03-02)
+
+
+
+# 9.1.0-rc.1 (2022-02-25)
+
+
+
+# 9.1.0-beta.0 (2022-02-22)
+
+
+#### Bug Fixes
+
+* **start:** pass in options for wc child process ([2df9e33](https://github.com/IgniteUI/igniteui-cli/commit/2df9e337e86e353d6d3dde6b53001af7af36fe12))
+
+
+
+## 9.0.6 (2022-02-04)
+
+
+
+## 9.0.5 (2022-02-04)
+
+
+
+## 9.0.5-beta.2 (2022-02-03)
+
+
+
+## 9.0.5-beta.1 (2022-01-28)
+
+
+
+## 9.0.5-beta.0 (2021-12-20)
+
+
+
+## 9.0.4 (2021-12-15)
+
+
+
+## 9.0.3 (2021-12-13)
+
+
+#### Bug Fixes
+
+* **import:** Update func signature ([a3ac17a](https://github.com/IgniteUI/igniteui-cli/commit/a3ac17ab30436ed0420c92902c53ff7c3dfd0534))
+* **lint:** Fix lint errors ([6b5dd98](https://github.com/IgniteUI/igniteui-cli/commit/6b5dd985e90fb9cf8675c6cf0c06c6193e27fb32))
+
+
+#### Features
+
+* **typescript:** Add support for typescript 4.5.2 ([055ca5b](https://github.com/IgniteUI/igniteui-cli/commit/055ca5b7f8e54acdd8f3f1d6b6d7517916d852f3))
+
+
+
+## 9.0.1 (2021-11-25)
+
+
+
+# 9.0.0 (2021-11-22)
+
+
+
+# 9.0.0-rc.3 (2021-11-22)
+
+
+
+# 9.0.0-rc.2 (2021-11-19)
+
+
+#### Bug Fixes
+
+* add igx-scrollbar class to body, [#14033](https://github.com/IgniteUI/igniteui-cli/issues/14033) ([b02ac58](https://github.com/IgniteUI/igniteui-cli/commit/b02ac5822015c6b1b1fdd4684a52a2eecb3eadd9))
+
+
+
+# 9.0.0-rc.1 (2021-11-17)
+
+
+
+# 9.0.0-rc.0 (2021-11-17)
+
+
+#### Features
+
+* **angular:** update to Angular 13 [#895](https://github.com/IgniteUI/igniteui-cli/issues/895) ([#896](https://github.com/IgniteUI/igniteui-cli/issues/896)) ([32f1721](https://github.com/IgniteUI/igniteui-cli/commit/32f17215290af3372b554f0e440e39b9b9b5040a))
+
+
+
+# 8.3.0-rc.0 (2021-11-11)
+
+
+
+# 8.3.0-beta.6 (2021-11-09)
+
+
+
+# 8.3.0-beta.5 (2021-11-09)
+
+
+
+# 8.3.0-beta.4 (2021-11-09)
+
+
+
+# 8.3.0-beta.3 (2021-11-08)
+
+
+
+# 8.3.0-beta.2 (2021-11-08)
+
+
+
+# 8.3.0-beta.1 (2021-11-04)
+
+
+
+# 8.3.0-beta.0 (2021-11-04)
+
+
+
+## 8.2.1 (2021-10-08)
+
+
+
+## 8.2.1-rc.0 (2021-10-07)
+
+
+
+# 8.2.0 (2021-10-04)
+
+
+
+# 8.2.0-alpha.0 (2021-09-30)
+
+
+
+## 8.1.2 (2021-09-28)
+
+
+#### Bug Fixes
+
+* **ts-transform:** respect quote type from editorconfig ([99b3aad](https://github.com/IgniteUI/igniteui-cli/commit/99b3aadce0e6e7de8e2fef502db2ff1811d7a11e))
+
+
+
+## 8.1.1 (2021-09-02)
+
+
+#### Bug Fixes
+
+* **lint:** Fix all lint errors. ([659cc29](https://github.com/IgniteUI/igniteui-cli/commit/659cc2913f20092bd9ffc3f5a1a1f549db005912))
+
+
+#### Features
+
+* **ig-ts:** Empty project is now angular project. ([83e5c6f](https://github.com/IgniteUI/igniteui-cli/commit/83e5c6f8370b0d10a349751d9b90f3f284d9ae69))
+
+
+
+# 8.1.0-rc.0 (2021-07-30)
+
+
+
+# 8.1.0-beta.1 (2021-07-30)
+
+
+
+# 8.1.0-beta.0 (2021-07-28)
+
+
+#### Features
+
+* update angular to v12.1 [#856](https://github.com/IgniteUI/igniteui-cli/issues/856) ([#857](https://github.com/IgniteUI/igniteui-cli/issues/857)) ([971822e](https://github.com/IgniteUI/igniteui-cli/commit/971822e343158bd107ef5b07bf60773509bd928c))
+
+
+
+## 8.0.3 (2021-07-14)
+
+
+
+## 8.0.2 (2021-07-07)
+
+
+
+## 8.0.2-beta.1 (2021-07-06)
+
+
+
+## 8.0.2-beta.0 (2021-07-02)
+
+
+
+## 8.0.1 (2021-07-01)
+
+
+
+# 8.0.0 (2021-05-14)
+
+
+
+# 8.0.0-rc.0 (2021-05-13)
+
+
+
+# 8.0.0-alpha.1 (2021-05-13)
+
+
+
+## 7.1.1 (2021-03-15)
+
+
+
+## 7.1.1-beta.0 (2021-03-12)
+
+
+
+# 7.1.0 (2021-02-22)
+
+
+
+# 7.1.0-beta.0 (2021-02-18)
+
+
+
+## 7.0.1 (2020-11-16)
+
+
+
+# 7.0.0 (2020-11-13)
+
+
+
+# 7.0.0-rc.2 (2020-11-12)
+
+
+
+# 7.0.0-rc.1 (2020-11-10)
+
+
+
+# 7.0.0-rc.0 (2020-11-10)
+
+
+
+# 7.0.0-alpha.0 (2020-11-10)
+
+
+
+# 6.2.0 (2020-10-20)
+
+
+
+# 6.2.0-rc.0 (2020-10-16)
+
+
+
+# 6.2.0-beta.0 (2020-10-14)
+
+
+
+# 6.1.0 (2020-08-12)
+
+
+
+# 6.1.0-beta.0 (2020-08-07)
+
+
+
+# 6.1.0-alpha.0 (2020-07-09)
+
+
+#### Features
+
+* **tsutil:** add optional parent route to TsFileUpdateUtil.addRoute method ([#777](https://github.com/IgniteUI/igniteui-cli/issues/777)) ([2df694a](https://github.com/IgniteUI/igniteui-cli/commit/2df694ac03a4601059f730b6cc9ae7d3ab6371ea))
+
+
+
+# 6.0.0 (2020-06-25)
+
+
+
+# 6.0.0-rc.0 (2020-06-25)
+
+
+#### Bug Fixes
+
+* use group.json for step by step groups [#707](https://github.com/IgniteUI/igniteui-cli/issues/707) ([adf562c](https://github.com/IgniteUI/igniteui-cli/commit/adf562c639725fb6a8008ef682f5fbdd66e65b55))
+
+
+#### Features
+
+* remove angular as default choice for step by step [#579](https://github.com/IgniteUI/igniteui-cli/issues/579) ([5d2697e](https://github.com/IgniteUI/igniteui-cli/commit/5d2697e019d344cc5ebedf9ac00de94b012ded73))
+
+
+
+# 5.2.0 (2020-06-11)
+
+
+
+## 5.1.1 (2020-06-03)
+
+
+
+# 5.1.0 (2020-06-01)
+
+
+
+# 5.1.0-beta.4 (2020-06-01)
+
+
+#### Bug Fixes
+
+* **package-manager:** manually update pckgJSON instead of letting npm do it, [#751](https://github.com/IgniteUI/igniteui-cli/issues/751) ([6fa4c0c](https://github.com/IgniteUI/igniteui-cli/commit/6fa4c0c8d5afecfef8a8c1de18b1f6620edc006c))
+
+
+
+# 5.1.0-beta.3 (2020-05-29)
+
+
+#### Bug Fixes
+
+* **upgrade:** clear stdin stream before login prompt ([c77f49a](https://github.com/IgniteUI/igniteui-cli/commit/c77f49ab940933e9df6da2518d5192d5d49fbd0c))
+
+
+
+# 5.1.0-beta.2 (2020-05-28)
+
+
+
+# 5.1.0-beta.1 (2020-05-28)
+
+
+
+# 5.1.0-beta.0 (2020-05-27)
+
+
+#### Bug Fixes
+
+* **templates:** upgrade command properly replaces strings in ALL .ts files ([2d2c9b3](https://github.com/IgniteUI/igniteui-cli/commit/2d2c9b3dc02da3f7633642d9b3b4a02d7f0bb119))
+
+
+#### Features
+
+* **commands:** Add 'upgrade-packages' command ([25db37d](https://github.com/IgniteUI/igniteui-cli/commit/25db37d0df1fa52d81501b74ab328330e7a60744))
+* **schematics:** update-package logic added ([197b94e](https://github.com/IgniteUI/igniteui-cli/commit/197b94e367d5e9a359c989beef01c6f35d7b54b5))
+* **step-by-step:** add prompt to upgrade to private feed packages, [#724](https://github.com/IgniteUI/igniteui-cli/issues/724) ([63c0c85](https://github.com/IgniteUI/igniteui-cli/commit/63c0c85639c1e5e5415c82f96a6b5cb5bbad4b99))
+
+
+
+# 5.1.0-alpha.0 (2020-05-20)
+
+
+
+## 5.0.3 (2020-05-18)
+
+
+
+## 5.0.2 (2020-05-05)
+
+
+#### Bug Fixes
+
+* **start:** inherit all stdio, not just input [#699](https://github.com/IgniteUI/igniteui-cli/issues/699) ([1c03891](https://github.com/IgniteUI/igniteui-cli/commit/1c03891227bcdcff6dbff2005939e631737d8b7f))
+
+
+
+# 5.0.0 (2020-02-11)
+
+
+
+# 5.0.0-rc.4 (2020-02-11)
+
+
+
+# 5.0.0-rc.3 (2020-02-07)
+
+
+
+# 5.0.0-rc.2 (2020-02-07)
+
+
+
+# 5.0.0-rc.0 (2020-01-31)
+
+
+
+# 5.0.0-beta.3 (2019-12-13)
+
+
+
+# 5.0.0-beta.2 (2019-12-06)
+
+
+#### Features
+
+* **schematics:** adding a name for schematics projects [#587](https://github.com/IgniteUI/igniteui-cli/issues/587) ([#602](https://github.com/IgniteUI/igniteui-cli/issues/602)) ([19409d0](https://github.com/IgniteUI/igniteui-cli/commit/19409d0b7018c518c64c7ff161a6ec4a3438f834))
+
+
+
+# 5.0.0-beta.1 (2019-11-28)
+
+
+#### Bug Fixes
+
+* **schematics:** component schematics checks for available names [#576](https://github.com/IgniteUI/igniteui-cli/issues/576) ([#586](https://github.com/IgniteUI/igniteui-cli/issues/586)) ([bccd6c1](https://github.com/IgniteUI/igniteui-cli/commit/bccd6c131c4ab9bc197cfa29e1b792494270720f))
+* **schematics:** this package is a dep in new project instead of ignteui-cli ([c04a13c](https://github.com/IgniteUI/igniteui-cli/commit/c04a13c1c82c1d4a9a627503086f86d9040c6778))
+* **templating, igx-ts:** add dot path variable for prefixed files that glob ignores ([486a0da](https://github.com/IgniteUI/igniteui-cli/commit/486a0da0ee6190f16544ee46ae360b822c057b53))
+
+
+
+# 5.0.0-alpha.1 (2019-10-02)
+
+## igniteui/angular-templates@21.1.14100-alpha.3 (2026-03-25)
+
+
+#### Features
+
+* Updated VS Code MCP configuration to align with new naming conventions. ([4fdb8e0](https://github.com/IgniteUI/igniteui-cli/commit/4fdb8e091b87c960c9cbbb35c126b6b7a32475fc))
+
+
+
+# 14.10.0-alpha.1 (2026-03-25)
+
+
+#### Bug Fixes
+
+* **eslint:** correct config ignores and resolve lint errors ([68d01ac](https://github.com/IgniteUI/igniteui-cli/commit/68d01ac6102e4e3d660dff9d229e826ea64943db))
+* **igx-ts-legacy:** update igx ts legacy templates ([#1517](https://github.com/IgniteUI/igniteui-cli/issues/1517)) ([c26c8ff](https://github.com/IgniteUI/igniteui-cli/commit/c26c8ff298092c21b2aa6ca77a75cd2a5fdedc79))
+
+
+#### Features
+
+* add copilot instructions for AI agents in multiple templates ([73921a7](https://github.com/IgniteUI/igniteui-cli/commit/73921a738efcc0a3e2a7df24bdf509f9f694da8a))
+* **claude:** add CLAUDE.md files for AI agent instructions across multiple templates ([5a96a33](https://github.com/IgniteUI/igniteui-cli/commit/5a96a33eac3f2fcbaf1444ac7778f7c8c2c89952))
+* **igx-ts:** update angular project to use vitest with playwright ([#1542](https://github.com/IgniteUI/igniteui-cli/issues/1542)) ([85dd3e6](https://github.com/IgniteUI/igniteui-cli/commit/85dd3e609295d7d801c127715c5fe8947f90f23d))
+* **igx-ts:** update project setup and templates naming ([#1514](https://github.com/IgniteUI/igniteui-cli/issues/1514)) ([ed4d1dd](https://github.com/IgniteUI/igniteui-cli/commit/ed4d1ddced09cee062caae7f8445df5ba11d8cac))
+* **mcp:** add angular-cli server configuration to mcp.json ([43a01a0](https://github.com/IgniteUI/igniteui-cli/commit/43a01a08ca6ac9b9a7958a172e5f27b02fe1fbb1))
+* **templates:** add AGENTS.md and mcp.json files for React and Web Components and Angular project templates ([d867f44](https://github.com/IgniteUI/igniteui-cli/commit/d867f44e17d01be82ec6853c6b0c22910a652b73))
+
+
+
+## 14.9.2 (2026-03-11)
+
+
+#### Bug Fixes
+
+* **igx-ts-legacy:** fi grid type import and add missing override ([ff24df0](https://github.com/IgniteUI/igniteui-cli/commit/ff24df0e665d8c834f510bfc62fc99af6532a38e))
+* **igx-ts:** fix eslint configurations ([#1509](https://github.com/IgniteUI/igniteui-cli/issues/1509)) ([ec63959](https://github.com/IgniteUI/igniteui-cli/commit/ec63959ee65e5c369d483d5dc34965f121a36cae))
+* **igx-ts:** fix side nav route data text ([487ba12](https://github.com/IgniteUI/igniteui-cli/commit/487ba122c2d51822642d15f501ea776193bf6a44))
+* **igx-ts:** update igniteui-angular versions and remove overrides ([#1508](https://github.com/IgniteUI/igniteui-cli/issues/1508)) ([6b4e1c8](https://github.com/IgniteUI/igniteui-cli/commit/6b4e1c87e8e7a94a5212a7037072088b7eec8a1a))
+
+
+
+## 14.9.1 (2026-02-25)
+
+
+
+# 14.9.0 (2026-02-25)
+
+
+#### Bug Fixes
+
+* **angular:** add igniteui angular core override ([0a5d46f](https://github.com/IgniteUI/igniteui-cli/commit/0a5d46f73bd3d621a833d07ad09318ccbdcfb9b9))
+* **angular:** add missing providers ([804703e](https://github.com/IgniteUI/igniteui-cli/commit/804703e984919aa2fac6272f8058f94256460b73))
+* **angular:** empty template config ([75eef02](https://github.com/IgniteUI/igniteui-cli/commit/75eef022a33f0dc6bc5b90816ccee9c415d76289))
+* update imports ([a2bf7bf](https://github.com/IgniteUI/igniteui-cli/commit/a2bf7bf6fc973ba0af8d12dc1c33605419475891))
+
+
+#### Features
+
+* **ng:** update igniteui-angular to 21.1.0 ([#1495](https://github.com/IgniteUI/igniteui-cli/issues/1495)) ([399f83e](https://github.com/IgniteUI/igniteui-cli/commit/399f83e4278dafdf9a3832fa013840f05ba586e6))
+
+
+
+## 14.8.5-beta.3 (2026-02-11)
+
+
+#### Bug Fixes
+
+* **angular:** fix the type of the providers ([142dbda](https://github.com/IgniteUI/igniteui-cli/commit/142dbda9665430bb3fb5a97744e8913195975708))
+
+
+
+## 14.8.5-beta.0 (2026-02-10)
+
+
+#### Bug Fixes
+
+* **angular:** add provide zone change detection in app config for angular standalone ([27b516b](https://github.com/IgniteUI/igniteui-cli/commit/27b516b640b1ecf9fdb7320e6a5c84a398aab505))
+
+
+
+## 14.8.4 (2026-02-05)
+
+
+#### Bug Fixes
+
+* add same fix to legacy angular projects ([2456829](https://github.com/IgniteUI/igniteui-cli/commit/245682908c81c931b65707b5098a98e3991f6f71))
+* **angular:** increase maximum error budget ([#1485](https://github.com/IgniteUI/igniteui-cli/issues/1485)) ([63a03bd](https://github.com/IgniteUI/igniteui-cli/commit/63a03bddb3459797bc5a0121f2d601823fd3cd35))
+* move tearDown to chart related test files ([40b1739](https://github.com/IgniteUI/igniteui-cli/commit/40b1739734199b035c32b02937456c9ae444654a))
+* remove calls to test.ts ([c08ca9f](https://github.com/IgniteUI/igniteui-cli/commit/c08ca9fcd472488a125c2f073bd06e051a5f3314))
+* remove test.ts as not needed ([451d49a](https://github.com/IgniteUI/igniteui-cli/commit/451d49ab3c6b7652b29b062e1e3a9301f2497a0f))
+
+
+
+## 14.8.3 (2026-01-19)
+
+
+#### Bug Fixes
+
+* **angular:** remove glob and rimraf from standalone package json ([#1478](https://github.com/IgniteUI/igniteui-cli/issues/1478)) ([0a3afce](https://github.com/IgniteUI/igniteui-cli/commit/0a3afce21e6e14196c8942f9f15a56793e1679fa))
+
+
+
+## 14.8.2 (2026-01-13)
+
+
+
+## 14.8.2-beta.4 (2026-01-12)
+
+
+
+## 14.8.2-beta.3 (2026-01-12)
+
+
+
+## 14.8.2-beta.2 (2026-01-12)
+
+
+
+## 14.8.2-beta.0 (2026-01-12)
+
+
+
+# 14.8.0 (2025-12-03)
+
+
+
+# 14.8.0-beta.2 (2025-12-01)
+
+
+
+# 14.8.0-beta.1 (2025-12-01)
+
+
+
+## 14.7.1 (2025-11-20)
+
+
+
+# 14.7.0 (2025-11-17)
+
+
+#### Features
+
+* **ng:** use ng lint schematic ([#1439](https://github.com/IgniteUI/igniteui-cli/issues/1439)) ([fa917cd](https://github.com/IgniteUI/igniteui-cli/commit/fa917cd7c974db05061f9442d8c5cdcc74853928))
+
+
+
+## 14.6.4 (2025-10-14)
+
+
+
+## 14.6.3 (2025-10-09)
+
+
+#### Bug Fixes
+
+* **ng:** move eqeqeq rule ([#1433](https://github.com/IgniteUI/igniteui-cli/issues/1433)) ([29a574d](https://github.com/IgniteUI/igniteui-cli/commit/29a574db2af16adff262440d789c58216ba08a8e))
+
+
+
+## 14.6.2 (2025-10-07)
+
+
+
+## 14.6.1 (2025-10-06)
+
+
+
+# 14.6.0 (2025-10-02)
+
+
+#### Features
+
+* **ng:** update ig, ng and other libs ([#1427](https://github.com/IgniteUI/igniteui-cli/issues/1427)) ([93fbbcc](https://github.com/IgniteUI/igniteui-cli/commit/93fbbcce2668084dcc958736f7167e36e9cbed47))
+
+
+
+## 14.5.8 (2025-09-25)
+
+
+
+## 14.5.7 (2025-09-23)
+
+
+#### Bug Fixes
+
+* **angular:** fix eslint config for angular modules ([#1423](https://github.com/IgniteUI/igniteui-cli/issues/1423)) ([2420d26](https://github.com/IgniteUI/igniteui-cli/commit/2420d26511cffef06cad58fa7e67a61a6b885187))
+
+
+
+## 14.5.6 (2025-09-18)
+
+
+#### Bug Fixes
+
+* **ng, standalone:** add test setup file for angular standalone ([#1421](https://github.com/IgniteUI/igniteui-cli/issues/1421)) ([feebb55](https://github.com/IgniteUI/igniteui-cli/commit/feebb5574cfffe86f6f2b342c2643b3ef9651a3c))
+
+
+
+## 14.5.4 (2025-07-01)
+
+
+#### Bug Fixes
+
+* **ng:** Add same proj rxjs version in overrides, so there are no peer dep errors for it. It is needed when having reveal or other overrides. ([4728d19](https://github.com/IgniteUI/igniteui-cli/commit/4728d19e7658cf5c4d863a6c277be696f77e5ac5))
+
+
+
+## 14.5.3 (2025-06-28)
+
+
+#### Bug Fixes
+
+* **angular:** fix theme errors ([#1404](https://github.com/IgniteUI/igniteui-cli/issues/1404)) ([3e7e4a3](https://github.com/IgniteUI/igniteui-cli/commit/3e7e4a3777bde5cc025df182bb57e5b9f002c5d9))
+
+
+
+## 14.5.1 (2025-06-24)
+
+
+
+# 14.5.0 (2025-06-05)
+
+
+
+## 14.4.4 (2025-05-21)
+
+
+#### Features
+
+* add azure pipelines yaml files for angular, react and wc templates ([#1396](https://github.com/IgniteUI/igniteui-cli/issues/1396)) ([6a3e39d](https://github.com/IgniteUI/igniteui-cli/commit/6a3e39d41f50abe51fa7fd819961412304a31343))
+
+
+
+## 14.4.3 (2025-04-25)
+
+
+
+## 14.4.2 (2025-04-24)
+
+
+
+## 14.4.1 (2025-04-23)
+
+
+
+# 14.4.0 (2025-04-17)
+
+
+
+## 14.3.18 (2025-04-11)
+
+
+#### Bug Fixes
+
+* add missing static css files for WC ([#1385](https://github.com/IgniteUI/igniteui-cli/issues/1385)) ([95018f9](https://github.com/IgniteUI/igniteui-cli/commit/95018f93704f62af70b9c4a2e07b46554e6331a4))
+
+
+
+## 14.3.17 (2025-04-09)
+
+
+
+## 14.3.16 (2025-03-31)
+
+
+
+## 14.3.14 (2025-02-24)
+
+
+#### Bug Fixes
+
+* **angular:** add ovverides for reveal sdk wrappers ([d2bc8cb](https://github.com/IgniteUI/igniteui-cli/commit/d2bc8cb26584f5836d633d24421d6dc774bd53a5))
+* update eslint and fix warnings ([#1378](https://github.com/IgniteUI/igniteui-cli/issues/1378)) ([aa84345](https://github.com/IgniteUI/igniteui-cli/commit/aa84345ff21fc0fccde94063099e4c713862cde8))
+
+
+
+## 14.3.12-beta.0 (2025-01-27)
+
+
+
+## 14.3.11 (2025-01-24)
+
+
+#### Bug Fixes
+
+* static data paths when deploy to github pages ([#1371](https://github.com/IgniteUI/igniteui-cli/issues/1371)) ([4b40231](https://github.com/IgniteUI/igniteui-cli/commit/4b402313f4d2a2cfd80115d274514d9e5507334c))
+
+
+
+## 14.3.10 (2025-01-23)
+
+
+
+## 14.3.9 (2025-01-23)
+
+
+
+## 14.3.8 (2025-01-23)
+
+
+
+## 14.3.7 (2025-01-22)
+
+
+#### Bug Fixes
+
+* **github-pages:** upgrade github pages deploy and artefact versions ([#1366](https://github.com/IgniteUI/igniteui-cli/issues/1366)) ([db6d0ea](https://github.com/IgniteUI/igniteui-cli/commit/db6d0eaef44c189cb80f10925d25595d97b7da4b))
+
+
+
+## 14.3.6 (2024-12-12)
+
+
+
+## 14.3.5 (2024-12-06)
+
+
+#### Bug Fixes
+
+* **web-components:** fix the step for updating the router navigation in github pages workflow ([#1358](https://github.com/IgniteUI/igniteui-cli/issues/1358)) ([3e0f42c](https://github.com/IgniteUI/igniteui-cli/commit/3e0f42c4fc7a75f6819f8ba85f760ac6a6d854f1))
+
+
+
+## 14.3.4 (2024-12-04)
+
+
+
+## 14.3.3 (2024-12-02)
+
+
+
+## 14.3.2 (2024-11-28)
+
+
+#### Bug Fixes
+
+* adapt ngModules templates to 19 changes ([2ce6e9d](https://github.com/IgniteUI/igniteui-cli/commit/2ce6e9d38acef0f0e8981ef054f61ab35d137fd8))
+
+
+
+# 14.3.0 (2024-11-25)
+
+
+#### Features
+
+* Add pages deployment variable logic and fixes in github pages yaml files ([#1337](https://github.com/IgniteUI/igniteui-cli/issues/1337)) ([c75d9c7](https://github.com/IgniteUI/igniteui-cli/commit/c75d9c7a9d7a9244e7a9a814770809f06280529a))
+* allow reordering of array literal expressions ([#1323](https://github.com/IgniteUI/igniteui-cli/issues/1323)) ([412a2a5](https://github.com/IgniteUI/igniteui-cli/commit/412a2a585fa16fda53eb643c74af7fb4037c1412))
+
+
+
+## 14.2.3 (2024-11-15)
+
+
+
+## 14.2.2 (2024-11-08)
+
+
+
+## 14.2.1 (2024-10-28)
+
+
+
+# 14.2.0 (2024-10-25)
+
+
+
+# 14.2.0-beta.4 (2024-10-23)
+
+
+
+# 14.1.0 (2024-10-11)
+
+
+
+## 14.0.2 (2024-09-20)
+
+
+
+## 14.0.1 (2024-09-05)
+
+
+
+# 14.0.0 (2024-08-23)
+
+
+
+# 14.0.0-beta.2 (2024-07-24)
+
+
+
+## 13.4.1 (2024-07-24)
+
+
+#### Features
+
+* **igx-templates:** add AngularTypeScriptFileUpdate ([e7f6ed3](https://github.com/IgniteUI/igniteui-cli/commit/e7f6ed3d339bb444dcdbaec4cabe5dcbff27b5ac))
+
+
+
+# 13.4.0 (2024-07-22)
+
+
+
+## 13.3.3 (2024-07-16)
+
+
+
+## 13.3.2 (2024-07-04)
+
+
+
+## 13.3.1 (2024-06-28)
+
+
+
+# 13.3.0-rc.0 (2024-05-31)
+
+
+#### Features
+
+* **ng-sa-base:** add vscode template folder ([a4787e7](https://github.com/IgniteUI/igniteui-cli/commit/a4787e74fcc715aceaa4c265fd97e4452e70463e))
+* **ngm-base:** add vscode template folder ([0ed6fb8](https://github.com/IgniteUI/igniteui-cli/commit/0ed6fb8cf8ef75103c84e8ee2ddeaa2886be3922))
+
+
+
+## 13.2.1 (2024-05-09)
+
+
+
+# 13.2.0 (2024-04-29)
+
+
+
+# 13.2.0-rc.0 (2024-04-29)
+
+
+
+## 13.1.16 (2024-04-28)
+
+
+
+## 13.1.15 (2024-04-12)
+
+
+
+## 13.1.13 (2024-04-11)
+
+
+#### Bug Fixes
+
+* **cli-templetes:** Replaced index.html <title> to ApplicationTitle as placeholder ([#1237](https://github.com/IgniteUI/igniteui-cli/issues/1237)) ([d622d54](https://github.com/IgniteUI/igniteui-cli/commit/d622d54fbd3becbc514bfc971eac4c97b3346255))
+* fix yml script placeholder delimiters ([#1239](https://github.com/IgniteUI/igniteui-cli/issues/1239)) ([45a2264](https://github.com/IgniteUI/igniteui-cli/commit/45a2264a93edc5b0ca307d5ec43fcd6a9de42cea))
+
+
+
+## 13.1.12 (2024-03-21)
+
+
+#### Features
+
+* **cli:** upgrade packages for React and WC ([#1198](https://github.com/IgniteUI/igniteui-cli/issues/1198)) ([16c9b8d](https://github.com/IgniteUI/igniteui-cli/commit/16c9b8dda219ebacd473a2fad5e0c0ea70d5f320))
+
+
+
+## 13.1.11 (2024-03-12)
+
+
+
+## 13.1.10 (2024-03-11)
+
+
+
+## 13.1.9 (2024-03-05)
+
+
+
+## 13.1.8 (2024-02-29)
+
+
+
+## 13.1.7 (2024-02-28)
+
+
+
+## 13.1.6 (2024-02-26)
+
+
+#### Features
+
+* **_base-legacy:** update project type to legacy ([f8984c9](https://github.com/IgniteUI/igniteui-cli/commit/f8984c93f02e8391ca721bc49eeabd45e5f7bb34))
+* **_base:** provide http client ([1e1d1c2](https://github.com/IgniteUI/igniteui-cli/commit/1e1d1c2d6c70a110ace81e74c91bcab2a7021086))
+
+
+
+## 13.1.5 (2024-01-31)
+
+
+
+## 13.1.3 (2024-01-17)
+
+
+#### Bug Fixes
+
+* **igx-ts:** update karma-jasmine-html-reporter ([0cf034d](https://github.com/IgniteUI/igniteui-cli/commit/0cf034db6474b8ed88e9b3d93e9b3011afd47b3b))
+
+
+
+## 13.1.1 (2023-12-14)
+
+
+#### Bug Fixes
+
+* **igx:** remove prod config for ng build ([d90c056](https://github.com/IgniteUI/igniteui-cli/commit/d90c056aed7ac87f972ea719eeac9367e6b97226))
+
+
+#### Features
+
+* **igr-ts:** add igr-ts proj type ([#1146](https://github.com/IgniteUI/igniteui-cli/issues/1146)) ([4609525](https://github.com/IgniteUI/igniteui-cli/commit/460952505758fcf1ab9b559ed6809015f3c5d3a5)), closes [#1147](https://github.com/IgniteUI/igniteui-cli/issues/1147) [#1153](https://github.com/IgniteUI/igniteui-cli/issues/1153)
+
+
+
+## 13.0.1 (2023-11-15)
+
+
+
+# 13.0.0 (2023-11-09)
+
+
+
+# 13.0.0-rc.0 (2023-11-09)
+
+
+
+## 12.0.6-beta.2 (2023-10-02)
+
+
+
+## 12.0.5 (2023-07-18)
+
+
+
+## 12.0.4 (2023-07-18)
+
+
+
+## 12.0.3 (2023-06-28)
+
+
+
+## 12.0.3-beta.0 (2023-06-02)
+
+
+#### Bug Fixes
+
+* **igx:** more fixes ([1373d18](https://github.com/IgniteUI/igniteui-cli/commit/1373d18e45d8fa9bb69bf5692b360bb4ecec531b))
+* **igx:** replace DataGridSelectionMode with GridSelectionMode ([fc61052](https://github.com/IgniteUI/igniteui-cli/commit/fc61052d68f5fffbaf96c0f7c71220c39c7d5ef2))
+
+
+
+## 12.0.1 (2023-05-26)
+
+
+
+## 11.1.2 (2023-05-25)
+
+
+
+# 12.0.0 (2023-05-15)
+
+
+
+# 12.0.0-rc.0 (2023-05-15)
+
+
+#### Features
+
+* **igx:** add base_with_home proj to igx-templates ([#1118](https://github.com/IgniteUI/igniteui-cli/issues/1118)) ([d84c431](https://github.com/IgniteUI/igniteui-cli/commit/d84c4310a03e35588626c57148091c6b224c7bc3))
+* **igx:** update to 16 ([#1120](https://github.com/IgniteUI/igniteui-cli/issues/1120)) ([e6efa40](https://github.com/IgniteUI/igniteui-cli/commit/e6efa40c2c748d2679b6be66252bc7732e51de29))
+
+
+
+## 11.1.1 (2023-04-11)
+
+
+
+# 11.1.0 (2023-03-28)
+
+
+
+# 11.1.0-rc.0 (2023-03-24)
+
+
+#### Bug Fixes
+
+* **igx-ts:** updating dependencies [#1099](https://github.com/IgniteUI/igniteui-cli/issues/1099) ([#1102](https://github.com/IgniteUI/igniteui-cli/issues/1102)) ([cd3b35a](https://github.com/IgniteUI/igniteui-cli/commit/cd3b35ac7961474ecd4ecbb8c4dffa33067c20f1))
+
+
+
+## 11.0.2 (2023-02-17)
+
+
+
+# 11.0.0 (2022-11-23)
+
+
+
+# 10.1.0-beta.13 (2022-10-27)
+
+
+
+# 10.1.0-beta.12 (2022-10-27)
+
+
+
+# 10.1.0-beta.11 (2022-10-25)
+
+
+
+# 10.1.0-beta.10 (2022-10-25)
+
+
+
+# 10.1.0-beta.8 (2022-10-23)
+
+
+
+# 10.1.0-beta.7 (2022-10-19)
+
+
+
+# 10.1.0-beta.5 (2022-10-18)
+
+
+
+# 10.1.0-beta.4 (2022-10-18)
+
+
+
+# 10.1.0-beta.3 (2022-10-17)
+
+
+
+# 10.1.0-beta.2 (2022-10-14)
+
+
+
+# 10.1.0-beta.1 (2022-10-14)
+
+
+
+# 10.1.0-beta.0 (2022-10-07)
+
+
+
+## 10.0.5 (2022-09-19)
+
+
+
+## 10.0.4-beta.0 (2022-06-30)
+
+
+
+## 10.0.2 (2022-06-29)
+
+
+
+## 10.0.1 (2022-06-17)
+
+
+
+# 9.2.0 (2022-05-26)
+
+
+
+## 9.1.4 (2022-05-20)
+
+
+
+## 9.1.3 (2022-05-19)
+
+
+
+## 9.1.2 (2022-05-16)
+
+
+#### Bug Fixes
+
+* **fintech grid:** fix slow grid [#1020](https://github.com/IgniteUI/igniteui-cli/issues/1020) ([4f888dc](https://github.com/IgniteUI/igniteui-cli/commit/4f888dc3c2b1fd6ad896b197634d3aa0c3ef57cd))
+
+
+
+## 9.1.1 (2022-03-18)
+
+
+
+## 9.1.1-rc.0 (2022-03-17)
+
+
+#### Bug Fixes
+
+* **ng:** gridAPI rename ([5b8b0a5](https://github.com/IgniteUI/igniteui-cli/commit/5b8b0a5e5e21ce5ae2228e0d025eea0195206292))
+
+
+#### Features
+
+* **ng:** update to 13.3.0 ([17553b0](https://github.com/IgniteUI/igniteui-cli/commit/17553b0da7586d14d91778417161f2a77864fd16))
+
+
+
+# 9.1.0 (2022-03-02)
+
+
+
+# 9.1.0-rc.1 (2022-02-25)
+
+
+#### Bug Fixes
+
+* **templates:** Adding override modifier. ([6334d17](https://github.com/IgniteUI/igniteui-cli/commit/6334d174642212d942c5f5669c1082ae56bb3cc8))
+
+
+
+# 9.1.0-rc.0 (2022-02-24)
+
+
+
+# 9.1.0-beta.0 (2022-02-22)
+
+
+#### Bug Fixes
+
+* **angular:** change more igx- ([f9ade5e](https://github.com/IgniteUI/igniteui-cli/commit/f9ade5e176444ce3c2a80f60baf43d239b8788fe))
+* **angular:** remove old code ([3b063db](https://github.com/IgniteUI/igniteui-cli/commit/3b063db9cf51509b289148f4928cdfda9837a6dd))
+
+
+
+## 9.0.6 (2022-02-04)
+
+
+
+## 9.0.5 (2022-02-04)
+
+
+
+## 9.0.5-beta.2 (2022-02-03)
+
+
+
+## 9.0.5-beta.1 (2022-01-28)
+
+
+
+## 9.0.5-beta.0 (2021-12-20)
+
+
+
+## 9.0.4 (2021-12-15)
+
+
+
+## 9.0.3 (2021-12-13)
+
+
+#### Bug Fixes
+
+* **schematics:** fix home import without placeholder ([#966](https://github.com/IgniteUI/igniteui-cli/issues/966)) ([9263bb2](https://github.com/IgniteUI/igniteui-cli/commit/9263bb22b6dd699845d3e6fad7ab78536f7a484c))
+
+
+#### Features
+
+* **typescript:** Add support for typescript 4.5.2 ([055ca5b](https://github.com/IgniteUI/igniteui-cli/commit/055ca5b7f8e54acdd8f3f1d6b6d7517916d852f3))
+* Update [@use](https://github.com/use) [@forward](https://github.com/forward) and hsla ([#961](https://github.com/IgniteUI/igniteui-cli/issues/961)) ([2ef8435](https://github.com/IgniteUI/igniteui-cli/commit/2ef8435816f8ff4f60c7e0cd4ed497a11fc815da))
+
+
+
+## 9.0.1 (2021-11-25)
+
+
+
+# 9.0.0 (2021-11-22)
+
+
+
+# 9.0.0-rc.3 (2021-11-22)
+
+
+#### Bug Fixes
+
+* changes from latest rc, packages updates ([f59905f](https://github.com/IgniteUI/igniteui-cli/commit/f59905fbd0d37d536b2a13dd002cc99ce8c48165))
+
+
+
+# 9.0.0-rc.2 (2021-11-19)
+
+
+#### Bug Fixes
+
+* add igx-scrollbar class to body, [#14033](https://github.com/IgniteUI/igniteui-cli/issues/14033) ([b02ac58](https://github.com/IgniteUI/igniteui-cli/commit/b02ac5822015c6b1b1fdd4684a52a2eecb3eadd9))
+* **angular:** new theme imports upgrade packages ([3ae74d9](https://github.com/IgniteUI/igniteui-cli/commit/3ae74d9bb9a338f939e9e5fb73c978003401c2a7))
+
+
+
+# 9.0.0-rc.1 (2021-11-17)
+
+
+
+# 9.0.0-rc.0 (2021-11-17)
+
+
+#### Features
+
+* **angular:** update to Angular 13 [#895](https://github.com/IgniteUI/igniteui-cli/issues/895) ([#896](https://github.com/IgniteUI/igniteui-cli/issues/896)) ([32f1721](https://github.com/IgniteUI/igniteui-cli/commit/32f17215290af3372b554f0e440e39b9b9b5040a))
+
+
+
+# 8.3.0-rc.0 (2021-11-11)
+
+
+
+# 8.3.0-beta.6 (2021-11-09)
+
+
+
+# 8.3.0-beta.5 (2021-11-09)
+
+
+
+# 8.3.0-beta.4 (2021-11-09)
+
+
+
+# 8.3.0-beta.3 (2021-11-08)
+
+
+
+# 8.3.0-beta.2 (2021-11-08)
+
+
+
+# 8.3.0-beta.1 (2021-11-04)
+
+
+
+# 8.3.0-beta.0 (2021-11-04)
+
+
+
+## 8.2.1 (2021-10-08)
+
+
+
+## 8.2.1-rc.0 (2021-10-07)
+
+
+
+# 8.2.0 (2021-10-04)
+
+
+
+# 8.2.0-alpha.0 (2021-09-30)
+
+
+#### Bug Fixes
+
+* remove icon color, becasue it is deprecated ([7b33804](https://github.com/IgniteUI/igniteui-cli/commit/7b338049a3182d7a8ea9e7106d10ef485dcc0623))
+
+
+
+## 8.1.2 (2021-09-28)
+
+
+
+## 8.1.1 (2021-09-02)
+
+
+
+# 8.1.0-rc.0 (2021-07-30)
+
+
+#### Bug Fixes
+
+* **igx-ts:** remove deprecated properties from scenario templates ([f84dc3c](https://github.com/IgniteUI/igniteui-cli/commit/f84dc3cd9626d5f287caed74cd32fda6849906e2))
+
+
+
+# 8.1.0-beta.1 (2021-07-30)
+
+
+#### Bug Fixes
+
+* **awesome-grid:** fix deprecated properties warnings ([f7a5b0c](https://github.com/IgniteUI/igniteui-cli/commit/f7a5b0c589c4b0aa8ded7c036859956d84c1ed23))
+* **fintech-grid:** fix console warnings and errors ([eaaf733](https://github.com/IgniteUI/igniteui-cli/commit/eaaf73311b45b9fc326353c8c6e6a1efe3f6f225))
+* **igx-ts:** Update angular.json ([c038c70](https://github.com/IgniteUI/igniteui-cli/commit/c038c708c5d2476e819071fd6c9defe29915b904))
+* **igx-ts:** use explicit index in drop-down components for logic view ([cb96f7d](https://github.com/IgniteUI/igniteui-cli/commit/cb96f7dcc2a5a4af2c585b22b50daa372f3684e9))
+
+
+#### Features
+
+* **igx-ts:** update custom grid templates w/ 12.1 paginator ([2b5058b](https://github.com/IgniteUI/igniteui-cli/commit/2b5058bd8c2f1946fd1f52b848a5b6ca9aebfcee))
+
+
+
+# 8.1.0-beta.0 (2021-07-28)
+
+
+#### Features
+
+* **igx-templates:** add igx-accordion template ([#851](https://github.com/IgniteUI/igniteui-cli/issues/851)) ([03e74cd](https://github.com/IgniteUI/igniteui-cli/commit/03e74cd194184b629ea09ec3cfa5218943d0feef))
+* update angular to v12.1 [#856](https://github.com/IgniteUI/igniteui-cli/issues/856) ([#857](https://github.com/IgniteUI/igniteui-cli/issues/857)) ([971822e](https://github.com/IgniteUI/igniteui-cli/commit/971822e343158bd107ef5b07bf60773509bd928c))
+
+
+
+## 8.0.3 (2021-07-14)
+
+
+#### Bug Fixes
+
+* **igx-ts:** fix strict errors in base and side-nav projects ([963d23d](https://github.com/IgniteUI/igniteui-cli/commit/963d23dc9771d8d184bff89fe2e2782e3bd97219))
+* **igx-ts:** fix strict errors in side-nav-auth project ([695f430](https://github.com/IgniteUI/igniteui-cli/commit/695f430c693b4a4cb817784d4b20dc0c268ec80c))
+
+
+
+## 8.0.2 (2021-07-07)
+
+
+
+## 8.0.2-beta.1 (2021-07-06)
+
+
+#### Bug Fixes
+
+* **angular-templates:** fix issue with strict templates in igx-ts ([38aaa75](https://github.com/IgniteUI/igniteui-cli/commit/38aaa756908493244414a51cc31688c27246b2f6)), closes [#850](https://github.com/IgniteUI/igniteui-cli/issues/850)
+
+
+
+## 8.0.2-beta.0 (2021-07-02)
+
+
+
+## 8.0.1 (2021-07-01)
+
+
+
+# 8.0.0 (2021-05-14)
+
+
+#### Bug Fixes
+
+* **fonts:** Fix icon font names and families ([35a702e](https://github.com/IgniteUI/igniteui-cli/commit/35a702ee21d4a780b9318de071246969af54fca7))
+* **template:** Fix and upadte awesome template ([f2b51aa](https://github.com/IgniteUI/igniteui-cli/commit/f2b51aa2685220b282ca8a25bb2580f44b960bcb))
+* **warnings:** Update icons for grids samples ([0efbbae](https://github.com/IgniteUI/igniteui-cli/commit/0efbbaecdcb3b6095c6ebc483729214f5e4753aa))
+
+
+
+# 8.0.0-rc.0 (2021-05-13)
+
+
+
+# 8.0.0-alpha.1 (2021-05-13)
+
+
+#### Bug Fixes
+
+* **igx-templates:** provide service in tree sample, add some style ([b76452a](https://github.com/IgniteUI/igniteui-cli/commit/b76452a22d047a07d95c19fd3c720466065f178e))
+* remove strict checks and update open() method ([f2877e3](https://github.com/IgniteUI/igniteui-cli/commit/f2877e342746f85962d3f10125c6b784e53eb5d2))
+
+
+#### Features
+
+* **igx-templates:** add igx-tree template ([41bc6c3](https://github.com/IgniteUI/igniteui-cli/commit/41bc6c37b19c9136335347a468cdd5c8685a1f61))
+
+
+
+## 7.1.1 (2021-03-15)
+
+
+
+## 7.1.1-beta.0 (2021-03-12)
+
+
+
+# 7.1.0 (2021-02-22)
+
+
+
+# 7.1.0-beta.0 (2021-02-18)
+
+
+#### Bug Fixes
+
+* **toolbar:** Update hgrid & treegrid custom template toolbar ([c27af22](https://github.com/IgniteUI/igniteui-cli/commit/c27af22c413da93305a5c90c8a60a6dbac1a01e1))
+
+
+
+## 7.0.1 (2020-11-16)
+
+
+#### Bug Fixes
+
+* **igx-ts:** add local storage to spec ([3056a97](https://github.com/IgniteUI/igniteui-cli/commit/3056a97d99c492c04f2bbf19a7bd09c418294dbf))
+* **igx,custom-grid:** assign allowFiltering when selected as option ([7534c5f](https://github.com/IgniteUI/igniteui-cli/commit/7534c5f51736587b87217042b98c1be753cd76a8))
+* ssr breaks because of localStorage ref ([dc9410f](https://github.com/IgniteUI/igniteui-cli/commit/dc9410ff7c333bdece6ba25212f6c763afe64601))
+
+
+
+# 7.0.0 (2020-11-13)
+
+
+#### Bug Fixes
+
+* **igx-ts:** update build-angular ([082869c](https://github.com/IgniteUI/igniteui-cli/commit/082869cf27b52cb26695b6f90f4980ea85e67574))
+
+
+
+# 7.0.0-rc.2 (2020-11-12)
+
+
+#### Bug Fixes
+
+* **igx-ts:** crm grid with new toolbar ([a387742](https://github.com/IgniteUI/igniteui-cli/commit/a387742493b73f2c2f5e2cbacaf1bbe5a4d9345f))
+* **igx-ts:** fix toolbar according to latest changes ([93323c8](https://github.com/IgniteUI/igniteui-cli/commit/93323c81a3e388ae46e1dabcca13261312f92ade))
+* **igx-ts:** fix toolbar for grid fintech ([edc2057](https://github.com/IgniteUI/igniteui-cli/commit/edc20571657d5177c7a82ccae32d86f430970185))
+* **igx-ts:** tree-grid toolbar update ([2c985d7](https://github.com/IgniteUI/igniteui-cli/commit/2c985d78902d90439cbef733e6252f8c1eae37e3))
+* **igx-ts:** update HGrid Batch demo ([890a02d](https://github.com/IgniteUI/igniteui-cli/commit/890a02d54be89358aff76f9b07b3d8630df4f79c))
+
+
+
+## 6.2.1 (2020-11-11)
+
+
+#### Bug Fixes
+
+* **igx, side-auth:** add SSR-friendly local storage service ([8db27be](https://github.com/IgniteUI/igniteui-cli/commit/8db27be4739d396bbd34c389d9227aabdd01b970))
+* **igx,side-auth:** add proper wrapper class so layout is 100% ([508df9d](https://github.com/IgniteUI/igniteui-cli/commit/508df9d2255ec1a908ecd4054a841360c1827933))
+
+
+
+# 7.0.0-rc.1 (2020-11-10)
+
+
+#### Bug Fixes
+
+* **igx-ts:** fix package.json for auth project ([00b9cd9](https://github.com/IgniteUI/igniteui-cli/commit/00b9cd942ec154c76da1ac0e810e366cf373b64f))
+* **igx-ts:** remove base.json for auth project ([019535b](https://github.com/IgniteUI/igniteui-cli/commit/019535be27bac30b065b27a6facde53578a08456))
+* **igx-ts:** revert deleted packages ([acede53](https://github.com/IgniteUI/igniteui-cli/commit/acede5371f24b10be2314de0118ff1976cfb8c35))
+
+
+
+# 7.0.0-rc.0 (2020-11-10)
+
+
+#### Bug Fixes
+
+* **dock-manager:** remove unnecessary quotes ([cd9c16c](https://github.com/IgniteUI/igniteui-cli/commit/cd9c16cea9f4d120e7b6e0dd9112e907c5f2228b))
+
+
+
+# 7.0.0-alpha.0 (2020-11-10)
+
+
+#### Bug Fixes
+
+* **dock-manager:** Use correct module name in app.module import [#792](https://github.com/IgniteUI/igniteui-cli/issues/792) ([53691b5](https://github.com/IgniteUI/igniteui-cli/commit/53691b54af896c410a0b2b0c3e91751f76341dbd))
+
+
+
+# 6.2.0 (2020-10-20)
+
+
+
+# 6.2.0 (2020-10-20)
+
+
+
+# 6.2.0-rc.0 (2020-10-16)
+
+
+#### Bug Fixes
+
+* **templates, crm grid, grid batch editing:** Fixing issues in the two templates. ([2dc2859](https://github.com/IgniteUI/igniteui-cli/commit/2dc2859dd10f41f9b0b8a05072fa6d12de5c9c00))
+* **templates, crm-grid, grid batchediting:** Addressing the comments. ([09955ea](https://github.com/IgniteUI/igniteui-cli/commit/09955ea47cbe58546a6d117611a705c86c058b6e))
+
+
+
+# 6.2.0-beta.0 (2020-10-14)
+
+
+#### Bug Fixes
+
+* **deployment:** Fix environment check 793 ([3f3946a](https://github.com/IgniteUI/igniteui-cli/commit/3f3946a474840d38a763149230d743b3e845bf47))
+* update map to 10.1.3 ([3926b77](https://github.com/IgniteUI/igniteui-cli/commit/3926b77d575e2051b210232be2b8b1f76b681fab))
+
+
+
+# 6.1.0 (2020-08-12)
+
+
+
+# 6.1.0-beta.0 (2020-08-07)
+
+
+
+# 6.1.0-alpha.0 (2020-07-09)
+
+
+
+# 6.0.0 (2020-06-25)
+
+
+
+## 5.2.1 (2020-06-25)
+
+
+
+# 6.0.0-rc.0 (2020-06-25)
+
+
+#### Bug Fixes
+
+* **igx,dock-manager:** resolve package name from project ([ac66d8e](https://github.com/IgniteUI/igniteui-cli/commit/ac66d8e0fadf643530a5f3aa53ee3fe851cc1a33))
+* use group.json for step by step groups [#707](https://github.com/IgniteUI/igniteui-cli/issues/707) ([adf562c](https://github.com/IgniteUI/igniteui-cli/commit/adf562c639725fb6a8008ef682f5fbdd66e65b55))
+
+
+#### Features
+
+* Adding a Map template for Angular ([7cbddeb](https://github.com/IgniteUI/igniteui-cli/commit/7cbddeb907db8277f6db43db47f19f06591a7c7f))
+* **packages:** Bump packages to Angular 10  [#767](https://github.com/IgniteUI/igniteui-cli/issues/767) ([f7e104e](https://github.com/IgniteUI/igniteui-cli/commit/f7e104e8ccee1692ff886259a7b7cf653de46573))
+* **packages:** remove deprecated option [#767](https://github.com/IgniteUI/igniteui-cli/issues/767) ([602111e](https://github.com/IgniteUI/igniteui-cli/commit/602111eefdcf390e832275c428e86f9ef5aa547f))
+* **packages:** Update igx-ts projects [#767](https://github.com/IgniteUI/igniteui-cli/issues/767) ([71df154](https://github.com/IgniteUI/igniteui-cli/commit/71df1546f4765699bf0600ef07062cad85b69d99))
+
+
+
+# 5.2.0 (2020-06-11)
+
+
+#### Features
+
+* **igx-ts:** add Dock Manager template for Angular ([#763](https://github.com/IgniteUI/igniteui-cli/issues/763)) ([63acfdf](https://github.com/IgniteUI/igniteui-cli/commit/63acfdf6b9c511c0c8be18374f470ee8a0ca375c))
+* **igx,side-nav:**  move content padding so views can override ([36f9964](https://github.com/IgniteUI/igniteui-cli/commit/36f9964bbe2d21920f99f5815f346ec117a61724))
+
+
+
+## 5.1.1 (2020-06-03)
+
+
+#### Bug Fixes
+
+* **igx,upgrade:** ignore projects without sourceRoot ([6d64d30](https://github.com/IgniteUI/igniteui-cli/commit/6d64d30efa3aedcfd7d32eb9e7e1c29c90c7ea6e))
+* **upgrade:** Logging a message that licensed package is already installed ([63df30d](https://github.com/IgniteUI/igniteui-cli/commit/63df30d67c7d46fed0b6e4411e5b097dcd7f11f2))
+
+
+
+# 5.1.0 (2020-06-01)
+
+
+
+# 5.1.0-beta.4 (2020-06-01)
+
+
+
+# 5.1.0-beta.3 (2020-05-29)
+
+
+
+# 5.1.0-beta.2 (2020-05-28)
+
+
+
+# 5.1.0-beta.1 (2020-05-28)
+
+
+
+# 5.1.0-beta.0 (2020-05-27)
+
+
+#### Bug Fixes
+
+* **igx,templates:** correct empty project template id ([2d0b385](https://github.com/IgniteUI/igniteui-cli/commit/2d0b385a4ce3f8483e4f5f048bc94111ecb7db31))
+* **templates:** fix upgrade to get correct config ([a3021ef](https://github.com/IgniteUI/igniteui-cli/commit/a3021efc9baac77348a6e91a53f7b8b214fdb719))
+* **templates:** upgrade command properly replaces strings in ALL .ts files ([2d2c9b3](https://github.com/IgniteUI/igniteui-cli/commit/2d2c9b3dc02da3f7633642d9b3b4a02d7f0bb119))
+* **upgrade:** sort packages.json dependencies when adding licensed package ([62bb652](https://github.com/IgniteUI/igniteui-cli/commit/62bb652857e8e8cd6e368ef71ac2bf4ef8ea6749))
+
+
+#### Features
+
+* **schematics:** update-package logic added ([197b94e](https://github.com/IgniteUI/igniteui-cli/commit/197b94e367d5e9a359c989beef01c6f35d7b54b5))
+* **upgrade:** handle multiple licensed packages, [#741](https://github.com/IgniteUI/igniteui-cli/issues/741) ([ef02f5b](https://github.com/IgniteUI/igniteui-cli/commit/ef02f5b089d3616bbb24ba4ba8e2f0a4c7045374))
+
+
+
+# 5.1.0-alpha.0 (2020-05-20)
+
+
+#### Features
+
+* **igx,multi-pacakge:** templates resolve lib package from project ([7bb4670](https://github.com/IgniteUI/igniteui-cli/commit/7bb4670e1f7832321c3373e07c967d3d13d83777))
+
+
+
+## 5.0.3 (2020-05-18)
+
+
+#### Bug Fixes
+
+* **igx:** proj template error handler log instead throw, register only in prod ([270addd](https://github.com/IgniteUI/igniteui-cli/commit/270adddfdee8bb84892e768971e976e70550b2c2))
+
+
+
+## 5.0.2 (2020-05-05)
+
+
+
+# 5.0.0 (2020-02-11)
+
+
+
+# 5.0.0-rc.4 (2020-02-11)
+
+
+#### Bug Fixes
+
+* **carousel:** Add noop animations module ([c696124](https://github.com/IgniteUI/igniteui-cli/commit/c6961249ccbfe186e1f369b23420584b908b5787))
+
+
+
+# 5.0.0-rc.3 (2020-02-07)
+
+
+
+# 5.0.0-rc.2 (2020-02-07)
+
+
+#### Bug Fixes
+
+* **igx-ts:** change tsconfig module for spec files to avoid errors, [#660](https://github.com/IgniteUI/igniteui-cli/issues/660) ([3d6b987](https://github.com/IgniteUI/igniteui-cli/commit/3d6b987e4e2c72a9b73453af112465b7234aa9c3))
+* **igx-ts:** update auth providers tests, [#660](https://github.com/IgniteUI/igniteui-cli/issues/660) ([4c15c8b](https://github.com/IgniteUI/igniteui-cli/commit/4c15c8bc00ffd5543e676ce07ea4718ea234b62b))
+* **templates, igx:** add chart packages [#679](https://github.com/IgniteUI/igniteui-cli/issues/679) ([75f4dcd](https://github.com/IgniteUI/igniteui-cli/commit/75f4dcd3bf585d38b3f86ef85cfecc6b8ddcfabc))
+* **templates, igx:** add chart packages [#684](https://github.com/IgniteUI/igniteui-cli/issues/684) ([dd7bfb7](https://github.com/IgniteUI/igniteui-cli/commit/dd7bfb75923ebe4d644239774899c26cf6bf7564))
+
+
+#### Features
+
+* **igx-ts:** Update projects [#647](https://github.com/IgniteUI/igniteui-cli/issues/647) ([e0a738a](https://github.com/IgniteUI/igniteui-cli/commit/e0a738aea9b0345386fb2611bc28168ca99390f0))
+
+
+
+# 5.0.0-rc.0 (2020-01-31)
+
+
+#### Bug Fixes
+
+* **ig-add:** only take into account 'extraConfig' in generateConfig [#618](https://github.com/IgniteUI/igniteui-cli/issues/618) ([#621](https://github.com/IgniteUI/igniteui-cli/issues/621)) ([d8d7db8](https://github.com/IgniteUI/igniteui-cli/commit/d8d7db823f1c6c717063ce678695be4d8db084d6))
+* **igx-ts:** update scenario templates [#628](https://github.com/IgniteUI/igniteui-cli/issues/628) ([#643](https://github.com/IgniteUI/igniteui-cli/issues/643)) ([ecda4d7](https://github.com/IgniteUI/igniteui-cli/commit/ecda4d779d3a196c16c13f87e2787ff7fdcbc167))
+* **templates:** update angular charts packages to v8.2.12 ([3ed3013](https://github.com/IgniteUI/igniteui-cli/commit/3ed301379a765d4ad0614e1d51cd5dec2227494d))
+
+
+
+# 5.0.0-beta.3 (2019-12-13)
+
+
+
+# 5.0.0-beta.2 (2019-12-06)
+
+
+#### Bug Fixes
+
+* **schematics:** set virtual FS in proper stage ([2102464](https://github.com/IgniteUI/igniteui-cli/commit/2102464698a493f97f4739bd14068b218b985d95))
+
+
+
+# 5.0.0-beta.1 (2019-11-28)
+
+
+#### Bug Fixes
+
+* **igx-templates:** fix side-auth template tsconfig.app.json, [#597](https://github.com/IgniteUI/igniteui-cli/issues/597) ([1ffe4ba](https://github.com/IgniteUI/igniteui-cli/commit/1ffe4ba77b30c4eaab2a176ec30470cf32cf7980))
+* **igx-ts:** update autocomplete templates to import FormsModule [#581](https://github.com/IgniteUI/igniteui-cli/issues/581) ([#584](https://github.com/IgniteUI/igniteui-cli/issues/584)) ([b91a1e8](https://github.com/IgniteUI/igniteui-cli/commit/b91a1e8efe1c3e78482abff524b69c48e64f9094))
+* **templating, igx-ts:** add dot path variable for prefixed files that glob ignores ([486a0da](https://github.com/IgniteUI/igniteui-cli/commit/486a0da0ee6190f16544ee46ae360b822c057b53))
+
+
+
+# 5.0.0-alpha.1 (2019-10-02)
+
+
+#### Features
+
+* **ng-schematics:** add component generate schematic ([a0e86c2](https://github.com/IgniteUI/igniteui-cli/commit/a0e86c29d72c52727a13aee4ded2acd0ef6ddc44))
+
+## igniteui/angular-schematics@21.1.14100-alpha.3 (2026-03-25)
+
+
+
+# 14.10.0-alpha.1 (2026-03-25)
+
+
+#### Bug Fixes
+
+* **eslint:** correct config ignores and resolve lint errors ([68d01ac](https://github.com/IgniteUI/igniteui-cli/commit/68d01ac6102e4e3d660dff9d229e826ea64943db))
+* **igx-ts-legacy:** update igx ts legacy templates ([#1517](https://github.com/IgniteUI/igniteui-cli/issues/1517)) ([c26c8ff](https://github.com/IgniteUI/igniteui-cli/commit/c26c8ff298092c21b2aa6ca77a75cd2a5fdedc79))
+
+
+
+## 14.9.2 (2026-03-11)
+
+
+#### Bug Fixes
+
+* **schematics:** fs writeFile create check ([#1526](https://github.com/IgniteUI/igniteui-cli/issues/1526)) ([f8e4b59](https://github.com/IgniteUI/igniteui-cli/commit/f8e4b59bd951ff1b702f3d24cf61ebc33115dc89))
+
+
+
+## 14.9.1 (2026-02-25)
+
+
+
+# 14.9.0 (2026-02-25)
+
+
+#### Features
+
+* **ng:** update igniteui-angular to 21.1.0 ([#1495](https://github.com/IgniteUI/igniteui-cli/issues/1495)) ([399f83e](https://github.com/IgniteUI/igniteui-cli/commit/399f83e4278dafdf9a3832fa013840f05ba586e6))
+
+
+
+## 14.8.5-beta.3 (2026-02-11)
+
+
+
+## 14.8.5-beta.0 (2026-02-10)
+
+
+
+## 14.8.4 (2026-02-05)
+
+
+
+## 14.8.3 (2026-01-19)
+
+
+
+## 14.8.2 (2026-01-13)
+
+
+
+## 14.8.2-beta.4 (2026-01-12)
+
+
+
+## 14.8.2-beta.3 (2026-01-12)
+
+
+
+## 14.8.2-beta.2 (2026-01-12)
+
+
+
+## 14.8.2-beta.0 (2026-01-12)
+
+
+
+# 14.8.0 (2025-12-03)
+
+
+
+# 14.8.0-beta.2 (2025-12-01)
+
+
+
+# 14.8.0-beta.1 (2025-12-01)
+
+
+
+## 14.7.1 (2025-11-20)
+
+
+
+# 14.7.0 (2025-11-17)
+
+
+#### Features
+
+* **ng:** use ng lint schematic ([#1439](https://github.com/IgniteUI/igniteui-cli/issues/1439)) ([fa917cd](https://github.com/IgniteUI/igniteui-cli/commit/fa917cd7c974db05061f9442d8c5cdcc74853928))
+
+
+
+## 14.6.4 (2025-10-14)
+
+
+
+## 14.6.3 (2025-10-09)
+
+
+
+## 14.6.2 (2025-10-07)
+
+
+
+## 14.6.1 (2025-10-06)
+
+
+
+# 14.6.0 (2025-10-02)
+
+
+#### Features
+
+* **ng:** update ig, ng and other libs ([#1427](https://github.com/IgniteUI/igniteui-cli/issues/1427)) ([93fbbcc](https://github.com/IgniteUI/igniteui-cli/commit/93fbbcce2668084dcc958736f7167e36e9cbed47))
+
+
+
+## 14.5.8 (2025-09-25)
+
+
+
+## 14.5.7 (2025-09-23)
+
+
+
+## 14.5.6 (2025-09-18)
+
+
+
+## 14.5.4 (2025-07-01)
+
+
+
+## 14.5.3 (2025-06-28)
+
+
+
+## 14.5.1 (2025-06-24)
+
+
+
+# 14.5.0 (2025-06-05)
+
+
+
+## 14.4.4 (2025-05-21)
+
+
+#### Features
+
+* add azure pipelines yaml files for angular, react and wc templates ([#1396](https://github.com/IgniteUI/igniteui-cli/issues/1396)) ([6a3e39d](https://github.com/IgniteUI/igniteui-cli/commit/6a3e39d41f50abe51fa7fd819961412304a31343))
+
+
+
+## 14.4.3 (2025-04-25)
+
+
+
+## 14.4.2 (2025-04-24)
+
+
+
+## 14.4.1 (2025-04-23)
+
+
+
+# 14.4.0 (2025-04-17)
+
+
+
+## 14.3.18 (2025-04-11)
+
+
+#### Bug Fixes
+
+* add missing static css files for WC ([#1385](https://github.com/IgniteUI/igniteui-cli/issues/1385)) ([95018f9](https://github.com/IgniteUI/igniteui-cli/commit/95018f93704f62af70b9c4a2e07b46554e6331a4))
+
+
+
+## 14.3.17 (2025-04-09)
+
+
+
+## 14.3.16 (2025-03-31)
+
+
+
+## 14.3.14 (2025-02-24)
+
+
+#### Bug Fixes
+
+* update eslint and fix warnings ([#1378](https://github.com/IgniteUI/igniteui-cli/issues/1378)) ([aa84345](https://github.com/IgniteUI/igniteui-cli/commit/aa84345ff21fc0fccde94063099e4c713862cde8))
+
+
+
+## 14.3.12-beta.0 (2025-01-27)
+
+
+
+## 14.3.11 (2025-01-24)
+
+
+#### Bug Fixes
+
+* static data paths when deploy to github pages ([#1371](https://github.com/IgniteUI/igniteui-cli/issues/1371)) ([4b40231](https://github.com/IgniteUI/igniteui-cli/commit/4b402313f4d2a2cfd80115d274514d9e5507334c))
+
+
+
+## 14.3.10 (2025-01-23)
+
+
+
+## 14.3.9 (2025-01-23)
+
+
+
+## 14.3.8 (2025-01-23)
+
+
+
+## 14.3.7 (2025-01-22)
+
+
+
+## 14.3.6 (2024-12-12)
+
+
+#### Bug Fixes
+
+* **migrations:** enable encapsulation for migrations ([#1361](https://github.com/IgniteUI/igniteui-cli/issues/1361)) ([9561a16](https://github.com/IgniteUI/igniteui-cli/commit/9561a1604a746b8a4b771627de2af4d14927e7c2))
+
+
+
+## 14.3.5 (2024-12-06)
+
+
+#### Bug Fixes
+
+* **web-components:** fix the step for updating the router navigation in github pages workflow ([#1358](https://github.com/IgniteUI/igniteui-cli/issues/1358)) ([3e0f42c](https://github.com/IgniteUI/igniteui-cli/commit/3e0f42c4fc7a75f6819f8ba85f760ac6a6d854f1))
+
+
+
+## 14.3.4 (2024-12-04)
+
+
+
+## 14.3.3 (2024-12-02)
+
+
+
+## 14.3.2 (2024-11-28)
+
+
+#### Features
+
+* Add pages deployment variable logic and fixes in github pages yaml files ([#1337](https://github.com/IgniteUI/igniteui-cli/issues/1337)) ([c75d9c7](https://github.com/IgniteUI/igniteui-cli/commit/c75d9c7a9d7a9244e7a9a814770809f06280529a))
+
+
+
+## 14.2.3 (2024-11-15)
+
+
+
+## 14.2.2 (2024-11-08)
+
+
+
+## 14.2.1 (2024-10-28)
+
+
+
+# 14.2.0 (2024-10-25)
+
+
+
+# 14.2.0-beta.4 (2024-10-23)
+
+
+
+# 14.1.0 (2024-10-11)
+
+
+
+## 14.0.2 (2024-09-20)
+
+
+
+## 14.0.1 (2024-09-05)
+
+
+
+# 14.0.0 (2024-08-23)
+
+
+
+# 14.0.0-beta.2 (2024-07-24)
+
+
+#### Features
+
+* **igx-templates:** add AngularTypeScriptFileUpdate ([e7f6ed3](https://github.com/IgniteUI/igniteui-cli/commit/e7f6ed3d339bb444dcdbaec4cabe5dcbff27b5ac))
+
+
+
+## 13.3.3 (2024-07-16)
+
+
+
+## 13.3.2 (2024-07-04)
+
+
+
+## 13.3.1 (2024-06-28)
+
+
+
+# 13.3.0-rc.0 (2024-05-31)
+
+
+
+## 13.2.1 (2024-05-09)
+
+
+
+# 13.2.0 (2024-04-29)
+
+
+
+# 13.2.0-rc.0 (2024-04-29)
+
+
+
+## 13.1.16 (2024-04-28)
+
+
+
+## 13.1.15 (2024-04-12)
+
+
+#### Bug Fixes
+
+* include js files in ng-schematics/scripts w/ newer npm version ([727f2f6](https://github.com/IgniteUI/igniteui-cli/commit/727f2f670d303ddb585b78d68a2c42f907a4786f))
+
+
+
+## 13.1.13 (2024-04-11)
+
+
+
+## 13.1.12 (2024-03-21)
+
+
+#### Features
+
+* **cli:** upgrade packages for React and WC ([#1198](https://github.com/IgniteUI/igniteui-cli/issues/1198)) ([16c9b8d](https://github.com/IgniteUI/igniteui-cli/commit/16c9b8dda219ebacd473a2fad5e0c0ea70d5f320))
+
+
+
+## 13.1.11 (2024-03-12)
+
+
+
+## 13.1.10 (2024-03-11)
+
+
+
+## 13.1.9 (2024-03-05)
+
+
+
+## 13.1.8 (2024-02-29)
+
+
+
+## 13.1.7 (2024-02-28)
+
+
+
+## 13.1.6 (2024-02-26)
+
+
+#### Features
+
+* **ng-add:** add setup config provideAnimations ([2f47676](https://github.com/IgniteUI/igniteui-cli/commit/2f476762ac772039228fe10565d49a6ced76b72d))
+
+
+
+## 13.1.5 (2024-01-31)
+
+
+
+## 13.1.3 (2024-01-17)
+
+
+
+## 13.1.1 (2023-12-14)
+
+
+#### Features
+
+* **igr-ts:** add igr-ts proj type ([#1146](https://github.com/IgniteUI/igniteui-cli/issues/1146)) ([4609525](https://github.com/IgniteUI/igniteui-cli/commit/460952505758fcf1ab9b559ed6809015f3c5d3a5)), closes [#1147](https://github.com/IgniteUI/igniteui-cli/issues/1147) [#1153](https://github.com/IgniteUI/igniteui-cli/issues/1153)
+
+
+
+## 13.0.1 (2023-11-15)
+
+
+
+# 13.0.0 (2023-11-09)
+
+
+
+# 13.0.0-rc.0 (2023-11-09)
+
+
+
+## 12.0.6-beta.2 (2023-10-02)
+
+
+
+## 12.0.5 (2023-07-18)
+
+
+
+## 12.0.4 (2023-07-18)
+
+
+
+## 12.0.3 (2023-06-28)
+
+
+
+## 12.0.3-beta.0 (2023-06-02)
+
+
+
+## 12.0.1 (2023-05-26)
+
+
+
+# 12.0.0 (2023-05-15)
+
+
+
+# 12.0.0-rc.0 (2023-05-15)
+
+
+#### Features
+
+* **igx:** add base_with_home proj to igx-templates ([#1118](https://github.com/IgniteUI/igniteui-cli/issues/1118)) ([d84c431](https://github.com/IgniteUI/igniteui-cli/commit/d84c4310a03e35588626c57148091c6b224c7bc3))
+* **igx:** update to 16 ([#1120](https://github.com/IgniteUI/igniteui-cli/issues/1120)) ([e6efa40](https://github.com/IgniteUI/igniteui-cli/commit/e6efa40c2c748d2679b6be66252bc7732e51de29))
+
+
+
+## 11.1.1 (2023-04-11)
+
+
+
+# 11.1.0 (2023-03-28)
+
+
+
+# 11.1.0-rc.0 (2023-03-24)
+
+
+
+## 11.0.2 (2023-02-17)
+
+
+
+# 11.0.0 (2022-11-23)
+
+
+
+# 10.1.0-beta.13 (2022-10-27)
+
+
+
+# 10.1.0-beta.12 (2022-10-27)
+
+
+
+# 10.1.0-beta.11 (2022-10-25)
+
+
+
+# 10.1.0-beta.10 (2022-10-25)
+
+
+
+# 10.1.0-beta.8 (2022-10-23)
+
+
+
+# 10.1.0-beta.7 (2022-10-19)
+
+
+
+# 10.1.0-beta.5 (2022-10-18)
+
+
+
+# 10.1.0-beta.4 (2022-10-18)
+
+
+
+# 10.1.0-beta.3 (2022-10-17)
+
+
+
+# 10.1.0-beta.2 (2022-10-14)
+
+
+
+# 10.1.0-beta.1 (2022-10-14)
+
+
+
+# 10.1.0-beta.0 (2022-10-07)
+
+
+
+## 10.0.5 (2022-09-19)
+
+
+
+## 10.0.4-beta.1 (2022-07-15)
+
+
+
+## 10.0.4-beta.0 (2022-06-30)
+
+
+
+## 10.0.2 (2022-06-29)
+
+
+
+## 10.0.1 (2022-06-17)
+
+
+
+# 9.2.0 (2022-05-26)
+
+
+
+## 9.1.4 (2022-05-20)
+
+
+
+## 9.1.3 (2022-05-19)
+
+
+
+## 9.1.2 (2022-05-16)
+
+
+
+## 9.1.1 (2022-03-18)
+
+
+
+## 9.1.1-rc.0 (2022-03-17)
+
+
+
+# 9.1.0 (2022-03-02)
+
+
+
+# 9.1.0-rc.1 (2022-02-25)
+
+
+
+# 9.1.0-beta.0 (2022-02-22)
+
+
+#### Bug Fixes
+
+* **angular:** change more igx- ([f9ade5e](https://github.com/IgniteUI/igniteui-cli/commit/f9ade5e176444ce3c2a80f60baf43d239b8788fe))
+
+
+
+## 9.0.6 (2022-02-04)
+
+
+
+## 9.0.5 (2022-02-04)
+
+
+
+## 9.0.5-beta.2 (2022-02-03)
+
+
+
+## 9.0.5-beta.1 (2022-01-28)
+
+
+
+## 9.0.5-beta.0 (2021-12-20)
+
+
+
+## 9.0.4 (2021-12-15)
+
+
+
+## 9.0.3 (2021-12-13)
+
+
+#### Features
+
+* **typescript:** Add support for typescript 4.5.2 ([055ca5b](https://github.com/IgniteUI/igniteui-cli/commit/055ca5b7f8e54acdd8f3f1d6b6d7517916d852f3))
+
+
+
+## 9.0.1 (2021-11-25)
+
+
+
+# 9.0.0 (2021-11-22)
+
+
+
+# 9.0.0-rc.3 (2021-11-22)
+
+
+
+# 9.0.0-rc.2 (2021-11-19)
+
+
+#### Bug Fixes
+
+* add igx-scrollbar class to body, [#14033](https://github.com/IgniteUI/igniteui-cli/issues/14033) ([b02ac58](https://github.com/IgniteUI/igniteui-cli/commit/b02ac5822015c6b1b1fdd4684a52a2eecb3eadd9))
+
+
+
+# 9.0.0-rc.1 (2021-11-17)
+
+
+
+# 9.0.0-rc.0 (2021-11-17)
+
+
+#### Features
+
+* **angular:** update to Angular 13 [#895](https://github.com/IgniteUI/igniteui-cli/issues/895) ([#896](https://github.com/IgniteUI/igniteui-cli/issues/896)) ([32f1721](https://github.com/IgniteUI/igniteui-cli/commit/32f17215290af3372b554f0e440e39b9b9b5040a))
+
+
+
+# 8.3.0-rc.0 (2021-11-11)
+
+
+
+# 8.3.0-beta.6 (2021-11-09)
+
+
+
+# 8.3.0-beta.5 (2021-11-09)
+
+
+
+# 8.3.0-beta.4 (2021-11-09)
+
+
+
+# 8.3.0-beta.3 (2021-11-08)
+
+
+
+# 8.3.0-beta.2 (2021-11-08)
+
+
+
+# 8.3.0-beta.1 (2021-11-04)
+
+
+
+# 8.3.0-beta.0 (2021-11-04)
+
+
+
+## 8.2.1 (2021-10-08)
+
+
+
+## 8.2.1-rc.0 (2021-10-07)
+
+
+
+# 8.2.0 (2021-10-04)
+
+
+
+# 8.2.0-alpha.0 (2021-09-30)
+
+
+
+## 8.1.2 (2021-09-28)
+
+
+
+## 8.1.1 (2021-09-02)
+
+
+
+## 8.0.4 (2021-08-02)
+
+
+#### Bug Fixes
+
+* **schematics:** resolve schema id deprecation warning ([#870](https://github.com/IgniteUI/igniteui-cli/issues/870)) ([17d7016](https://github.com/IgniteUI/igniteui-cli/commit/17d70164de93a5162ba4a02b44b571de318a37c7))
+
+
+
+# 8.1.0-rc.0 (2021-07-30)
+
+
+
+# 8.1.0-beta.1 (2021-07-30)
+
+
+
+# 8.1.0-beta.0 (2021-07-28)
+
+
+#### Features
+
+* update angular to v12.1 [#856](https://github.com/IgniteUI/igniteui-cli/issues/856) ([#857](https://github.com/IgniteUI/igniteui-cli/issues/857)) ([971822e](https://github.com/IgniteUI/igniteui-cli/commit/971822e343158bd107ef5b07bf60773509bd928c))
+
+
+
+## 8.0.3 (2021-07-14)
+
+
+
+## 8.0.2 (2021-07-07)
+
+
+
+## 8.0.2-beta.1 (2021-07-06)
+
+
+
+## 8.0.2-beta.0 (2021-07-02)
+
+
+
+## 8.0.1 (2021-07-01)
+
+
+
+# 8.0.0 (2021-05-14)
+
+
+
+# 8.0.0-rc.0 (2021-05-13)
+
+
+
+# 8.0.0-alpha.1 (2021-05-13)
+
+
+
+## 7.1.1 (2021-03-15)
+
+
+
+## 7.1.1-beta.0 (2021-03-12)
+
+
+
+# 7.1.0 (2021-02-22)
+
+
+
+# 7.1.0-beta.0 (2021-02-18)
+
+
+
+## 7.0.1 (2020-11-16)
+
+
+
+# 7.0.0 (2020-11-13)
+
+
+
+# 7.0.0-rc.2 (2020-11-12)
+
+
+
+# 7.0.0-rc.1 (2020-11-10)
+
+
+
+# 7.0.0-rc.0 (2020-11-10)
+
+
+
+# 7.0.0-alpha.0 (2020-11-10)
+
+
+
+# 6.2.0 (2020-10-20)
+
+
+
+# 6.2.0-rc.0 (2020-10-16)
+
+
+
+# 6.2.0-beta.0 (2020-10-14)
+
+
+
+# 6.1.0 (2020-08-12)
+
+
+
+# 6.1.0-beta.0 (2020-08-07)
+
+
+
+# 6.1.0-alpha.0 (2020-07-09)
+
+
+
+# 6.0.0 (2020-06-25)
+
+
+
+# 6.0.0-rc.0 (2020-06-25)
+
+
+#### Bug Fixes
+
+* **igx,dock-manager:** resolve package name from project ([ac66d8e](https://github.com/IgniteUI/igniteui-cli/commit/ac66d8e0fadf643530a5f3aa53ee3fe851cc1a33))
+
+
+
+# 5.2.0 (2020-06-11)
+
+
+
+## 5.1.1 (2020-06-03)
+
+
+
+# 5.1.0 (2020-06-01)
+
+
+
+# 5.1.0-beta.4 (2020-06-01)
+
+
+
+# 5.1.0-beta.3 (2020-05-29)
+
+
+
+# 5.1.0-beta.2 (2020-05-28)
+
+
+
+# 5.1.0-beta.1 (2020-05-28)
+
+
+#### Bug Fixes
+
+* **schematics:** include upgrade-packages schema ([77aa13d](https://github.com/IgniteUI/igniteui-cli/commit/77aa13db7442b24d787029af4d6a860a0bd85d3b))
+* **schematics:** remove log for unsupported custom templates ([97e3bb3](https://github.com/IgniteUI/igniteui-cli/commit/97e3bb3813cf25603a97177a5ec5d87b2db94206))
+* **upgrade:** provide default fallback for incorrect package template ([9dd4d80](https://github.com/IgniteUI/igniteui-cli/commit/9dd4d80db6cf13d3fd7594790bcaaeec9a383b49))
+
+
+
+# 5.1.0-beta.0 (2020-05-27)
+
+
+#### Features
+
+* **schematics:** update-package logic added ([197b94e](https://github.com/IgniteUI/igniteui-cli/commit/197b94e367d5e9a359c989beef01c6f35d7b54b5))
+* **step-by-step:** add prompt to upgrade to private feed packages, [#724](https://github.com/IgniteUI/igniteui-cli/issues/724) ([63c0c85](https://github.com/IgniteUI/igniteui-cli/commit/63c0c85639c1e5e5415c82f96a6b5cb5bbad4b99))
+
+
+
+# 5.1.0-alpha.0 (2020-05-20)
+
+
+
+## 5.0.3 (2020-05-18)
+
+
+
+## 5.0.2 (2020-05-05)
+
+
+
+# 5.0.0 (2020-02-11)
+
+
+
+# 5.0.0-rc.4 (2020-02-11)
+
+
+#### Bug Fixes
+
+* **schematics:** ensure component prompt installs packages [#695](https://github.com/IgniteUI/igniteui-cli/issues/695) ([16e55d4](https://github.com/IgniteUI/igniteui-cli/commit/16e55d446c3d18fddb7ec7040a266ef498d83060))
+
+
+
+# 5.0.0-rc.3 (2020-02-07)
+
+
+
+# 5.0.0-rc.2 (2020-02-07)
+
+
+
+# 5.0.0-rc.0 (2020-01-31)
+
+
+#### Bug Fixes
+
+* new project accepts lower case theme name [#600](https://github.com/IgniteUI/igniteui-cli/issues/600) ([#619](https://github.com/IgniteUI/igniteui-cli/issues/619)) ([d6eedea](https://github.com/IgniteUI/igniteui-cli/commit/d6eedea8998b07aa6312dea6fdbab66acd88303a))
+* prompt for template and theme if no name provided [#622](https://github.com/IgniteUI/igniteui-cli/issues/622) ([#626](https://github.com/IgniteUI/igniteui-cli/issues/626)) ([44621e9](https://github.com/IgniteUI/igniteui-cli/commit/44621e9040f29da4819e6758e8316e6c7048e38d))
+
+
+
+# 5.0.0-beta.3 (2019-12-13)
+
+
+#### Bug Fixes
+
+* **cli, schematics:** check for fileSystem on post install [#612](https://github.com/IgniteUI/igniteui-cli/issues/612) ([#613](https://github.com/IgniteUI/igniteui-cli/issues/613)) ([0a6a878](https://github.com/IgniteUI/igniteui-cli/commit/0a6a87877bfe42fb9d665ac7b7e4be3d5e72511f))
+* **new, schematics:** no prompts when "name" is provided [#595](https://github.com/IgniteUI/igniteui-cli/issues/595) ([#609](https://github.com/IgniteUI/igniteui-cli/issues/609)) ([0ed45ba](https://github.com/IgniteUI/igniteui-cli/commit/0ed45ba0ed2147a0255d5df2a44e82b665c90c99))
+
+
+
+# 5.0.0-beta.2 (2019-12-06)
+
+
+#### Bug Fixes
+
+* **schematics:** set virtual FS in proper stage ([2102464](https://github.com/IgniteUI/igniteui-cli/commit/2102464698a493f97f4739bd14068b218b985d95))
+* **schematics:** skip start task if skipInstall === true ([#603](https://github.com/IgniteUI/igniteui-cli/issues/603)) ([fc38d65](https://github.com/IgniteUI/igniteui-cli/commit/fc38d651ecfa47f95921fa72f7be5ff68d8b586e))
+
+
+#### Features
+
+* **schematics:** adding a name for schematics projects [#587](https://github.com/IgniteUI/igniteui-cli/issues/587) ([#602](https://github.com/IgniteUI/igniteui-cli/issues/602)) ([19409d0](https://github.com/IgniteUI/igniteui-cli/commit/19409d0b7018c518c64c7ff161a6ec4a3438f834))
+
+
+
+# 5.0.0-beta.1 (2019-11-28)
+
+
+#### Bug Fixes
+
+* **schematics:** component schematics checks for available names [#576](https://github.com/IgniteUI/igniteui-cli/issues/576) ([#586](https://github.com/IgniteUI/igniteui-cli/issues/586)) ([bccd6c1](https://github.com/IgniteUI/igniteui-cli/commit/bccd6c131c4ab9bc197cfa29e1b792494270720f))
+* **schematics:** this package is a dep in new project instead of ignteui-cli ([c04a13c](https://github.com/IgniteUI/igniteui-cli/commit/c04a13c1c82c1d4a9a627503086f86d9040c6778))
+* **schematics:** use project config instead of hard-coded paths ([#592](https://github.com/IgniteUI/igniteui-cli/issues/592)) ([43240b6](https://github.com/IgniteUI/igniteui-cli/commit/43240b610d878186aa4b50959c37822e1f54eaf6))
+
+
+#### Features
+
+* **schematics:** add prompt session to component schematic, [#566](https://github.com/IgniteUI/igniteui-cli/issues/566) ([#571](https://github.com/IgniteUI/igniteui-cli/issues/571)) ([e25c1ce](https://github.com/IgniteUI/igniteui-cli/commit/e25c1ceab6fbff58a89e8712d3eda31da7c1af65))
+* **schematics:** adding ng-new schematic missing options [#596](https://github.com/IgniteUI/igniteui-cli/issues/596) ([#598](https://github.com/IgniteUI/igniteui-cli/issues/598)) ([8b51541](https://github.com/IgniteUI/igniteui-cli/commit/8b5154133bfe3fc6ef1c9958879cd835e36b001e))
+
+
+
+# 5.0.0-alpha.1 (2019-10-02)
+
+
+#### Bug Fixes
+
+* rename gitignore manually ([beb06a9](https://github.com/IgniteUI/igniteui-cli/commit/beb06a9de2511654797d75737a2e0bd5da968d8c))
+
+
+#### Features
+
+* **ng-schematics:** add component generate schematic ([a0e86c2](https://github.com/IgniteUI/igniteui-cli/commit/a0e86c29d72c52727a13aee4ded2acd0ef6ddc44))
+* **schematics:** add start schematic, enable npm and git init tasks ([2a329b1](https://github.com/IgniteUI/igniteui-cli/commit/2a329b18c5e2d6d0f852a72c842c3bab4022a9f2))
+
+## igniteui-cli@14.10.0-alpha.3 (2026-03-25)
+
+
+#### Features
+
+* Updated VS Code MCP configuration to align with new naming conventions. ([4fdb8e0](https://github.com/IgniteUI/igniteui-cli/commit/4fdb8e091b87c960c9cbbb35c126b6b7a32475fc))
+
+
+
+# 14.10.0-alpha.1 (2026-03-25)
+
+
+#### Bug Fixes
+
+* **eslint:** correct config ignores and resolve lint errors ([68d01ac](https://github.com/IgniteUI/igniteui-cli/commit/68d01ac6102e4e3d660dff9d229e826ea64943db))
+* **igx-ts-legacy:** update igx ts legacy templates ([#1517](https://github.com/IgniteUI/igniteui-cli/issues/1517)) ([c26c8ff](https://github.com/IgniteUI/igniteui-cli/commit/c26c8ff298092c21b2aa6ca77a75cd2a5fdedc79))
+
+
+#### Features
+
+* add copilot instructions for AI agents in multiple templates ([73921a7](https://github.com/IgniteUI/igniteui-cli/commit/73921a738efcc0a3e2a7df24bdf509f9f694da8a))
+* **claude:** add CLAUDE.md files for AI agent instructions across multiple templates ([5a96a33](https://github.com/IgniteUI/igniteui-cli/commit/5a96a33eac3f2fcbaf1444ac7778f7c8c2c89952))
+* make @igniteui/mcp-server a workspace package ([cf48369](https://github.com/IgniteUI/igniteui-cli/commit/cf483695e01afeac2ee6d7da193c2ee2d2af375a))
+* **templates:** add AGENTS.md and mcp.json files for React and Web Components and Angular project templates ([d867f44](https://github.com/IgniteUI/igniteui-cli/commit/d867f44e17d01be82ec6853c6b0c22910a652b73))
+
+
+
+## 14.9.2 (2026-03-11)
+
+
+#### Bug Fixes
+
+* **igx-ts:** update igniteui-angular versions and remove overrides ([#1508](https://github.com/IgniteUI/igniteui-cli/issues/1508)) ([6b4e1c8](https://github.com/IgniteUI/igniteui-cli/commit/6b4e1c87e8e7a94a5212a7037072088b7eec8a1a))
+* **upgrade-packages:** correctly glob files on windows ([#1511](https://github.com/IgniteUI/igniteui-cli/issues/1511)) ([64f2735](https://github.com/IgniteUI/igniteui-cli/commit/64f2735963f269fb4b60dd7479566baae33119c8))
+
+
+#### Reverts
+
+* partially revert changes swapping exec with spawn ([3a64b67](https://github.com/IgniteUI/igniteui-cli/commit/3a64b67bc43df42f72363e63192b90fea38b111f))
+
+
+
+## 14.9.1 (2026-02-25)
+
+
+
+# 14.9.0 (2026-02-25)
+
+
+#### Bug Fixes
+
+* **commands,list:** do not use `this` in handler ([#1494](https://github.com/IgniteUI/igniteui-cli/issues/1494)) ([b8f5b53](https://github.com/IgniteUI/igniteui-cli/commit/b8f5b53599cb20374acee53195395213060b51d3))
+* **react:** remove setupTests and update test with it's logic ([#1489](https://github.com/IgniteUI/igniteui-cli/issues/1489)) ([bd1f0ba](https://github.com/IgniteUI/igniteui-cli/commit/bd1f0ba0bccfd6768ccae44ab10568be5ecb1828))
+
+
+#### Features
+
+* **ng:** update igniteui-angular to 21.1.0 ([#1495](https://github.com/IgniteUI/igniteui-cli/issues/1495)) ([399f83e](https://github.com/IgniteUI/igniteui-cli/commit/399f83e4278dafdf9a3832fa013840f05ba586e6))
+
+
+
+## 14.8.5-beta.3 (2026-02-11)
+
+
+
+## 14.8.5-beta.0 (2026-02-10)
+
+
+
+## 14.8.4 (2026-02-05)
+
+
+#### Bug Fixes
+
+* **angular:** increase maximum error budget ([#1485](https://github.com/IgniteUI/igniteui-cli/issues/1485)) ([63a03bd](https://github.com/IgniteUI/igniteui-cli/commit/63a03bddb3459797bc5a0121f2d601823fd3cd35))
+
+
+
+## 14.8.3 (2026-01-19)
+
+
+
+## 14.8.2 (2026-01-13)
+
+
+
+## 14.8.2-beta.4 (2026-01-12)
+
+
+
+## 14.8.2-beta.3 (2026-01-12)
+
+
+#### Bug Fixes
+
+* add vitest/browser package ([e283ed2](https://github.com/IgniteUI/igniteui-cli/commit/e283ed29b99d794bd67f3bcab7a9dbfd391045ec))
+* add vitest/browser package ([5c29f50](https://github.com/IgniteUI/igniteui-cli/commit/5c29f5054febc0d656732886d08237528d6f6e40))
+
+
+
+## 14.8.2-beta.2 (2026-01-12)
+
+
+#### Bug Fixes
+
+* add playwright to the yaml files for wc ([6432111](https://github.com/IgniteUI/igniteui-cli/commit/643211110ad858f84b9ed23b3602f80218f23cbd))
+* resolve missed merge conflict ([ba42d4f](https://github.com/IgniteUI/igniteui-cli/commit/ba42d4f378a3e8334f51381ac1ff85799134ce3e))
+
+
+
+## 14.8.2-beta.0 (2026-01-12)
+
+
+
+# 14.8.0 (2025-12-03)
+
+
+
+# 14.8.0-beta.2 (2025-12-01)
+
+
+
+# 14.8.0-beta.1 (2025-12-01)
+
+
+
+## 14.7.1 (2025-11-20)
+
+
+#### Features
+
+* update tests to use Playwright ([517ea99](https://github.com/IgniteUI/igniteui-cli/commit/517ea9901372d7a42b516f5e9114a82880038e7e))
+
+
+
+# 14.7.0 (2025-11-17)
+
+
+#### Bug Fixes
+
+* command injection vulnerabilities in PackageManager and start command ([#1438](https://github.com/IgniteUI/igniteui-cli/issues/1438)) ([1f86df3](https://github.com/IgniteUI/igniteui-cli/commit/1f86df3d6e660b93db047415e9c53af1ef4f0a30))
+
+
+#### Features
+
+* **ng:** use ng lint schematic ([#1439](https://github.com/IgniteUI/igniteui-cli/issues/1439)) ([fa917cd](https://github.com/IgniteUI/igniteui-cli/commit/fa917cd7c974db05061f9442d8c5cdcc74853928))
+
+
+
+## 14.6.4 (2025-10-14)
+
+
+
+## 14.6.3 (2025-10-09)
+
+
+
+## 14.6.2 (2025-10-07)
+
+
+#### Features
+
+* **react:** add playwright and adjust tests; update packages; ([#1430](https://github.com/IgniteUI/igniteui-cli/issues/1430)) ([32b41dc](https://github.com/IgniteUI/igniteui-cli/commit/32b41dcf3f53de76fbafce39a36a1e8d51876b93))
+
+
+
+## 14.6.1 (2025-10-06)
+
+
+
+# 14.6.0 (2025-10-02)
+
+
+#### Features
+
+* **ng:** update ig, ng and other libs ([#1427](https://github.com/IgniteUI/igniteui-cli/issues/1427)) ([93fbbcc](https://github.com/IgniteUI/igniteui-cli/commit/93fbbcce2668084dcc958736f7167e36e9cbed47))
+
+
+
+## 14.5.8 (2025-09-25)
+
+
+
+## 14.5.7 (2025-09-23)
+
+
+
+## 14.5.6 (2025-09-18)
+
+
+#### Bug Fixes
+
+* Add missing igniteui-react-core dependency to React grid templates ([fb429bb](https://github.com/IgniteUI/igniteui-cli/commit/fb429bbd3634e0cf86a617672f857be4bb8b2f0d))
+* Remove --legacy-peer-deps flag to allow automatic peer dependency installation ([fe0ea3d](https://github.com/IgniteUI/igniteui-cli/commit/fe0ea3df94614b10dc494e241b070309e283c0b6))
+* set default route ([#1422](https://github.com/IgniteUI/igniteui-cli/issues/1422)) ([768d0d0](https://github.com/IgniteUI/igniteui-cli/commit/768d0d0a2873d2efc81c426ce35b5e42e92508a9))
+* update react templates ([93d132f](https://github.com/IgniteUI/igniteui-cli/commit/93d132fa229f0dba963cd5f21b89d5274e346910))
+* use only grid with defined columns ([faeb25a](https://github.com/IgniteUI/igniteui-cli/commit/faeb25a64effeba39e24dafe6e93e5a26a07c5bc))
+
+
+#### Features
+
+* Update Ignite UI product versions in template files ([964dda1](https://github.com/IgniteUI/igniteui-cli/commit/964dda13da00ca0c9d4bf1a42d6d98d2aa1d7b88))
+
+
+
+## 14.5.4 (2025-07-01)
+
+
+
+## 14.5.3 (2025-06-28)
+
+
+#### Bug Fixes
+
+* **react:** add missing argument and fix incorrect types ([#1403](https://github.com/IgniteUI/igniteui-cli/issues/1403)) ([fb006b3](https://github.com/IgniteUI/igniteui-cli/commit/fb006b38e6b4f3a2e61326b018787f67bd32b640))
+
+
+
+## 14.5.1 (2025-06-24)
+
+
+
+# 14.5.0 (2025-06-05)
+
+
+
+## 14.4.4 (2025-05-21)
+
+
+#### Features
+
+* add azure pipelines yaml files for angular, react and wc templates ([#1396](https://github.com/IgniteUI/igniteui-cli/issues/1396)) ([6a3e39d](https://github.com/IgniteUI/igniteui-cli/commit/6a3e39d41f50abe51fa7fd819961412304a31343))
+
+
+
+## 14.4.3 (2025-04-25)
+
+
+
+## 14.4.2 (2025-04-24)
+
+
+
+## 14.4.1 (2025-04-23)
+
+
+
+# 14.4.0 (2025-04-17)
+
+
+
+## 14.3.18 (2025-04-11)
+
+
+#### Bug Fixes
+
+* add missing static css files for WC ([#1385](https://github.com/IgniteUI/igniteui-cli/issues/1385)) ([95018f9](https://github.com/IgniteUI/igniteui-cli/commit/95018f93704f62af70b9c4a2e07b46554e6331a4))
+
+
+
+## 14.3.17 (2025-04-09)
+
+
+
+## 14.3.16 (2025-03-31)
+
+
+
+## 14.3.14 (2025-02-24)
+
+
+#### Bug Fixes
+
+* update eslint and fix warnings ([#1378](https://github.com/IgniteUI/igniteui-cli/issues/1378)) ([aa84345](https://github.com/IgniteUI/igniteui-cli/commit/aa84345ff21fc0fccde94063099e4c713862cde8))
+
+
+
+## 14.3.12-beta.0 (2025-01-27)
+
+
+#### Bug Fixes
+
+* **wc:** add seperate update for single or double quotes ([79ed105](https://github.com/IgniteUI/igniteui-cli/commit/79ed105cd67baf99f15e327d5f9840c3103d8018))
+* **wc:** fix iteration ([83583db](https://github.com/IgniteUI/igniteui-cli/commit/83583dbae937824e1b1f4d3f8d1ce8cc8e5589ec))
+* **wc:** fix paths in web components workflow ([6ff5999](https://github.com/IgniteUI/igniteui-cli/commit/6ff5999b782af24f09c29d4c60befb32a84fc5e0))
+
+
+
+## 14.3.11 (2025-01-24)
+
+
+#### Bug Fixes
+
+* static data paths when deploy to github pages ([#1371](https://github.com/IgniteUI/igniteui-cli/issues/1371)) ([4b40231](https://github.com/IgniteUI/igniteui-cli/commit/4b402313f4d2a2cfd80115d274514d9e5507334c))
+
+
+
+## 14.3.10 (2025-01-23)
+
+
+#### Features
+
+* increase maximum file size to cache in webComponents's vite configuration to 10 MB ([#1370](https://github.com/IgniteUI/igniteui-cli/issues/1370)) ([0a1385e](https://github.com/IgniteUI/igniteui-cli/commit/0a1385e5d1f98c8fcdf020d144f048b112b251d5))
+
+
+
+## 14.3.9 (2025-01-23)
+
+
+#### Features
+
+* enable silent mode in Vite configuration for improved build output ([#1369](https://github.com/IgniteUI/igniteui-cli/issues/1369)) ([7728300](https://github.com/IgniteUI/igniteui-cli/commit/7728300cbba7c5b15261ff2a82820432bd4b12b7))
+
+
+
+## 14.3.8 (2025-01-23)
+
+
+#### Features
+
+* replace rollup with vite configuration for wc ([#1364](https://github.com/IgniteUI/igniteui-cli/issues/1364)) ([024ee5f](https://github.com/IgniteUI/igniteui-cli/commit/024ee5f048427c5406013f1e4d051403ae255fca))
+
+
+
+## 14.3.7 (2025-01-22)
+
+
+#### Bug Fixes
+
+* **github-pages:** upgrade github pages deploy and artefact versions ([#1366](https://github.com/IgniteUI/igniteui-cli/issues/1366)) ([db6d0ea](https://github.com/IgniteUI/igniteui-cli/commit/db6d0eaef44c189cb80f10925d25595d97b7da4b))
+
+
+
+## 14.3.6 (2024-12-12)
+
+
+#### Bug Fixes
+
+* **migrations:** enable encapsulation for migrations ([#1361](https://github.com/IgniteUI/igniteui-cli/issues/1361)) ([9561a16](https://github.com/IgniteUI/igniteui-cli/commit/9561a1604a746b8a4b771627de2af4d14927e7c2))
+
+
+
+## 14.3.5 (2024-12-06)
+
+
+#### Bug Fixes
+
+* **web-components:** fix the step for updating the router navigation in github pages workflow ([#1358](https://github.com/IgniteUI/igniteui-cli/issues/1358)) ([3e0f42c](https://github.com/IgniteUI/igniteui-cli/commit/3e0f42c4fc7a75f6819f8ba85f760ac6a6d854f1))
+
+
+
+## 14.3.4 (2024-12-04)
+
+
+#### Bug Fixes
+
+* **web-components:** add step in github pages workflow to fix navigation ([#1355](https://github.com/IgniteUI/igniteui-cli/issues/1355)) ([0ca7277](https://github.com/IgniteUI/igniteui-cli/commit/0ca7277be8eaf1218af8a47f1ed7f51273499737))
+
+
+
+## 14.3.3 (2024-12-02)
+
+
+
+## 14.3.2 (2024-11-28)
+
+
+
+# 14.3.0 (2024-11-25)
+
+
+#### Features
+
+* Add pages deployment variable logic and fixes in github pages yaml files ([#1337](https://github.com/IgniteUI/igniteui-cli/issues/1337)) ([c75d9c7](https://github.com/IgniteUI/igniteui-cli/commit/c75d9c7a9d7a9244e7a9a814770809f06280529a))
+* allow reordering of array literal expressions ([#1323](https://github.com/IgniteUI/igniteui-cli/issues/1323)) ([412a2a5](https://github.com/IgniteUI/igniteui-cli/commit/412a2a585fa16fda53eb643c74af7fb4037c1412))
+
+
+
+## 14.2.3 (2024-11-15)
+
+
+
+## 14.2.2 (2024-11-08)
+
+
+#### Bug Fixes
+
+* **cli:** replace coveralls with coveralls-next ([#1336](https://github.com/IgniteUI/igniteui-cli/issues/1336)) ([4028e28](https://github.com/IgniteUI/igniteui-cli/commit/4028e28bc62da3f2232f79b60e26b9d13c93c8f9))
+
+
+
+## 14.2.1 (2024-10-28)
+
+
+
+# 14.2.0 (2024-10-25)
+
+
+
+# 14.2.0-beta.4 (2024-10-23)
+
+
+#### Bug Fixes
+
+* **cli:** add fixes in react and wc templates ([#1326](https://github.com/IgniteUI/igniteui-cli/issues/1326)) ([0430547](https://github.com/IgniteUI/igniteui-cli/commit/0430547a733c98b76aa94499516934547049b117))
+
+
+
+# 14.1.0 (2024-10-11)
+
+
+
+## 14.0.2 (2024-09-20)
+
+
+
+## 14.0.1 (2024-09-05)
+
+
+
+# 14.0.0 (2024-08-23)
+
+
+#### Bug Fixes
+
+* **eslint:** turn off no-explicit-any rule for wc ([#1288](https://github.com/IgniteUI/igniteui-cli/issues/1288)) ([1ee5b0f](https://github.com/IgniteUI/igniteui-cli/commit/1ee5b0f4ecc97a93f60b95e1615bb2a75fce9238))
+
+
+
+# 14.0.0-beta.2 (2024-07-24)
+
+
+#### Bug Fixes
+
+* **igr-ts:** add new lines in base app routes file ([#1284](https://github.com/IgniteUI/igniteui-cli/issues/1284)) ([92a14ef](https://github.com/IgniteUI/igniteui-cli/commit/92a14ef05f174bb5e5bc09978c986eb8f27e57e1))
+
+
+#### Features
+
+* **igx-templates:** add AngularTypeScriptFileUpdate ([e7f6ed3](https://github.com/IgniteUI/igniteui-cli/commit/e7f6ed3d339bb444dcdbaec4cabe5dcbff27b5ac))
+
+
+
+## 13.3.3 (2024-07-16)
+
+
+
+## 13.3.2 (2024-07-04)
+
+
+
+## 13.3.1 (2024-06-28)
+
+
+
+# 13.3.0-rc.0 (2024-05-31)
+
+
+
+## 13.2.1 (2024-05-09)
+
+
+
+# 13.2.0 (2024-04-29)
+
+
+
+# 13.2.0-rc.0 (2024-04-29)
+
+
+
+## 13.1.16 (2024-04-28)
+
+
+#### Bug Fixes
+
+* **react:** fix null type build error in main.tsx ([#1242](https://github.com/IgniteUI/igniteui-cli/issues/1242)) ([2d0b579](https://github.com/IgniteUI/igniteui-cli/commit/2d0b57999b6a22445c2e7ff494310f9e94c421ea))
+
+
+
+## 13.1.15 (2024-04-12)
+
+
+
+## 13.1.13 (2024-04-11)
+
+
+#### Bug Fixes
+
+* **cli-templetes:** Replaced index.html <title> to ApplicationTitle as placeholder ([#1237](https://github.com/IgniteUI/igniteui-cli/issues/1237)) ([d622d54](https://github.com/IgniteUI/igniteui-cli/commit/d622d54fbd3becbc514bfc971eac4c97b3346255))
+* **igr-ts:** lint ignore unused vars prefix; ts strict ([#1232](https://github.com/IgniteUI/igniteui-cli/issues/1232)) ([91e35b3](https://github.com/IgniteUI/igniteui-cli/commit/91e35b3eb060f079ff6e30bdead75af7d6b98add))
+
+
+
+## 13.1.13-beta.4 (2024-04-04)
+
+
+
+## 13.1.13-beta.3 (2024-04-04)
+
+
+#### Features
+
+* **react:** remove igniteui deps from package.json and bump versions ([841a19d](https://github.com/IgniteUI/igniteui-cli/commit/841a19d2779f4f156c48368b4fa7a20b1a181eb4))
+* **react:** turn off no-explicit-any in eslint ([ef50011](https://github.com/IgniteUI/igniteui-cli/commit/ef500113afe214e8e64dea926d6937c5e5f827df))
+
+
+
+## 13.1.12 (2024-03-21)
+
+
+#### Features
+
+* **cli:** upgrade packages for React and WC ([#1198](https://github.com/IgniteUI/igniteui-cli/issues/1198)) ([16c9b8d](https://github.com/IgniteUI/igniteui-cli/commit/16c9b8dda219ebacd473a2fad5e0c0ea70d5f320))
+
+
+
+# 13.2.0-beta.0 (2024-03-15)
+
+
+#### Bug Fixes
+
+* add elements internal polyfill to base template ([c7d2396](https://github.com/IgniteUI/igniteui-cli/commit/c7d2396572a9cd77205b8727ed81089f460403e2))
+* **Imports:** Fixed class import path in .test.ts ([#1224](https://github.com/IgniteUI/igniteui-cli/issues/1224)) ([6b3a2ef](https://github.com/IgniteUI/igniteui-cli/commit/6b3a2effef4951f0fc59e5393186eb2e69f2972b))
+* **Lint:** Fixed styles typing in style-utils ([#1222](https://github.com/IgniteUI/igniteui-cli/issues/1222)) ([6ad842a](https://github.com/IgniteUI/igniteui-cli/commit/6ad842a2bc16d50c8b29ddbca5907b80e40fd798))
+
+
+
+## 13.1.11 (2024-03-12)
+
+
+#### Bug Fixes
+
+* **react:** add editorconfig and vite-env.d.ts ([555300c](https://github.com/IgniteUI/igniteui-cli/commit/555300c38df56246cb7cc08f6b25e8ae5fd316f0))
+
+
+
+## 13.1.10 (2024-03-11)
+
+
+
+## 13.1.9 (2024-03-05)
+
+
+
+## 13.1.8 (2024-02-29)
+
+
+
+## 13.1.7 (2024-02-28)
+
+
+#### Bug Fixes
+
+* **WebComponents:** Removing an unnecessary ` from package.json ([3420292](https://github.com/IgniteUI/igniteui-cli/commit/3420292eb5752eaf76cfee1e12927d8d2749b8be))
+
+
+
+## 13.1.6 (2024-02-26)
+
+
+#### Bug Fixes
+
+* **React:** Add styles to support dark themes [#29410](https://github.com/IgniteUI/igniteui-cli/issues/29410) ([#1205](https://github.com/IgniteUI/igniteui-cli/issues/1205)) ([a191348](https://github.com/IgniteUI/igniteui-cli/commit/a191348d07317cdaac43db7bd52ee3958784ae55))
+
+
+
+## 13.1.5 (2024-01-31)
+
+
+#### Features
+
+* add style-utils file to base project ([#1195](https://github.com/IgniteUI/igniteui-cli/issues/1195)) ([112f27d](https://github.com/IgniteUI/igniteui-cli/commit/112f27ddc49d9106a182c8c7768543aa1b913164))
+
+
+
+## 13.1.3 (2024-01-17)
+
+
+#### Bug Fixes
+
+* **igr-ts:** add github workflows folder ([#1192](https://github.com/IgniteUI/igniteui-cli/issues/1192)) ([2369c55](https://github.com/IgniteUI/igniteui-cli/commit/2369c556b8f84ce6a575c73b617c7581cedf5c0f))
+* open browser on app start ([#1187](https://github.com/IgniteUI/igniteui-cli/issues/1187)) ([c4e1f5c](https://github.com/IgniteUI/igniteui-cli/commit/c4e1f5c8d65dd8729083377973a40450b4899d63))
+
+
+#### Features
+
+* **igc-ts:** bump the version to 4.7.0 and add new components ([#1189](https://github.com/IgniteUI/igniteui-cli/issues/1189)) ([e9dbfd7](https://github.com/IgniteUI/igniteui-cli/commit/e9dbfd7d6212f1b8535de6a142f6140e3848f6ef))
+
+
+
+## 13.1.1 (2023-12-14)
+
+
+#### Features
+
+* **igr-ts:** add igr-ts proj type ([#1146](https://github.com/IgniteUI/igniteui-cli/issues/1146)) ([4609525](https://github.com/IgniteUI/igniteui-cli/commit/460952505758fcf1ab9b559ed6809015f3c5d3a5)), closes [#1147](https://github.com/IgniteUI/igniteui-cli/issues/1147) [#1153](https://github.com/IgniteUI/igniteui-cli/issues/1153)
+
+
+
+## 13.0.1 (2023-11-15)
+
+
+
+# 13.0.0 (2023-11-09)
+
+
+
+# 13.0.0-rc.0 (2023-11-09)
+
+
+
+## 12.0.6-beta.2 (2023-10-02)
+
+
+
+## 12.0.5 (2023-07-18)
+
+
+#### Bug Fixes
+
+* memory allocation issue during build of webComponent app that uses igc-category-chart ([ee188bf](https://github.com/IgniteUI/igniteui-cli/commit/ee188bf4672b8ee96ac1b891cf8e334f44bb4929))
+
+
+
+## 12.0.4 (2023-07-18)
+
+
+
+## 12.0.3 (2023-06-28)
+
+
+
+## 12.0.3-beta.0 (2023-06-02)
+
+
+#### Bug Fixes
+
+* **igx:** replace DataGridSelectionMode with GridSelectionMode ([fc61052](https://github.com/IgniteUI/igniteui-cli/commit/fc61052d68f5fffbaf96c0f7c71220c39c7d5ef2))
+
+
+
+## 12.0.1 (2023-05-26)
+
+
+
+# 12.0.0 (2023-05-15)
+
+
+
+# 12.0.0-rc.0 (2023-05-15)
+
+
+#### Bug Fixes
+
+* **grid:** Adding missing packages to the grid template [#1109](https://github.com/IgniteUI/igniteui-cli/issues/1109) ([9c65afe](https://github.com/IgniteUI/igniteui-cli/commit/9c65afe228f182918c6e3f50e7cfec0466d7f7d2))
+* **web-components:** Adding packages in each template. ([674f55c](https://github.com/IgniteUI/igniteui-cli/commit/674f55c66bfa3308696cee3da1dd1d0e3ae64c0c))
+
+
+#### Features
+
+* **igx:** add base_with_home proj to igx-templates ([#1118](https://github.com/IgniteUI/igniteui-cli/issues/1118)) ([d84c431](https://github.com/IgniteUI/igniteui-cli/commit/d84c4310a03e35588626c57148091c6b224c7bc3))
+* **igx:** update to 16 ([#1120](https://github.com/IgniteUI/igniteui-cli/issues/1120)) ([e6efa40](https://github.com/IgniteUI/igniteui-cli/commit/e6efa40c2c748d2679b6be66252bc7732e51de29))
+
+
+
+## 11.1.1 (2023-04-11)
+
+
+#### Bug Fixes
+
+* **wc:** changing the function call [#1110](https://github.com/IgniteUI/igniteui-cli/issues/1110) ([#1113](https://github.com/IgniteUI/igniteui-cli/issues/1113)) ([5e4d1db](https://github.com/IgniteUI/igniteui-cli/commit/5e4d1dbdeeaa498278a7669b08031c51bfa2f367))
+
+
+
+# 11.1.0 (2023-03-28)
+
+
+
+# 11.1.0-rc.0 (2023-03-24)
+
+
+
+## 11.0.2 (2023-02-17)
+
+
+
+# 11.0.0 (2022-11-23)
+
+
+#### Features
+
+* add lint file for web components ([#1085](https://github.com/IgniteUI/igniteui-cli/issues/1085)) ([25498c0](https://github.com/IgniteUI/igniteui-cli/commit/25498c09b2bc4e5bc30c67c36008d97b342e3526))
+
+
+
+# 10.1.0-beta.13 (2022-10-27)
+
+
+
+# 10.1.0-beta.12 (2022-10-27)
+
+
+#### Features
+
+* **wc:** add npmrc to proj template ([#1079](https://github.com/IgniteUI/igniteui-cli/issues/1079)) ([af233e5](https://github.com/IgniteUI/igniteui-cli/commit/af233e53d72b615ce11e16a65ddf358645329ffb))
+
+
+
+# 10.1.0-beta.11 (2022-10-25)
+
+
+
+# 10.1.0-beta.10 (2022-10-25)
+
+
+
+# 10.1.0-beta9 (2022-10-25)
+
+
+
+# 10.1.0-beta.8 (2022-10-23)
+
+
+
+# 10.1.0-beta.7 (2022-10-19)
+
+
+
+# 10.1.0-beta.6 (2022-10-19)
+
+
+
+# 10.1.0-beta.5 (2022-10-18)
+
+
+
+# 10.1.0-beta.4 (2022-10-18)
+
+
+#### Features
+
+* provide default options when adding a template ([#1070](https://github.com/IgniteUI/igniteui-cli/issues/1070)) ([73e5c2c](https://github.com/IgniteUI/igniteui-cli/commit/73e5c2c0cc62b81384d6b4928103adf5ccf16153))
+
+
+
+# 10.1.0-beta.3 (2022-10-17)
+
+
+
+# 10.1.0-beta.2 (2022-10-14)
+
+
+
+# 10.1.0-beta.1 (2022-10-14)
+
+
+
+# 10.1.0-beta.0 (2022-10-07)
+
+
+#### Bug Fixes
+
+* **webcomponents:** set background and color to body ([b41a8b6](https://github.com/IgniteUI/igniteui-cli/commit/b41a8b66834ed46206cb14aa8bff0d6e3b99ef18))
+* **webcomponents:** set correct fallback for background color ([#1065](https://github.com/IgniteUI/igniteui-cli/issues/1065)) ([a976831](https://github.com/IgniteUI/igniteui-cli/commit/a976831228c204b015bd49773af4b5fc9767873a))
+* **webcomponents:** update app-root markup ([c717c37](https://github.com/IgniteUI/igniteui-cli/commit/c717c370cae66218eb4a7d5daaf0137da8c12d23))
+
+
+#### Features
+
+* **wc:** add base template for Web Components [#988](https://github.com/IgniteUI/igniteui-cli/issues/988) ([#1058](https://github.com/IgniteUI/igniteui-cli/issues/1058)) ([7574ab2](https://github.com/IgniteUI/igniteui-cli/commit/7574ab2b0221687a6ace6f627ec55caa3945236f))
+
+
+
+## 10.0.5 (2022-09-19)
+
+
+#### Features
+
+* **wc:** add accordion, tab & date-time-editor templates ([#1055](https://github.com/IgniteUI/igniteui-cli/issues/1055)) ([f2a631f](https://github.com/IgniteUI/igniteui-cli/commit/f2a631fcd18f529172af8e038929bf7f542e71ff))
+
+
+
+## 10.0.4-beta.0 (2022-06-30)
+
+
+
+## 10.0.2 (2022-06-29)
+
+
+
+## 10.0.1 (2022-06-17)
+
+
+
+# 9.2.0 (2022-05-26)
+
+
+
+## 9.1.4 (2022-05-20)
+
+
+
+## 9.1.3 (2022-05-19)
+
+
+
+## 9.1.2 (2022-05-16)
+
+
+
+## 9.1.1 (2022-03-18)
+
+
+
+## 9.1.1-rc.0 (2022-03-17)
+
+
+#### Bug Fixes
+
+* **wc:** address comments ([e1f804d](https://github.com/IgniteUI/igniteui-cli/commit/e1f804deada9f5fdf628ba25e122278cb9118507))
+
+
+#### Features
+
+* **ng:** update to 13.3.0 ([17553b0](https://github.com/IgniteUI/igniteui-cli/commit/17553b0da7586d14d91778417161f2a77864fd16))
+* **wc:** add new 2.1.0 components ([526da0c](https://github.com/IgniteUI/igniteui-cli/commit/526da0ce167659c9cfd3b21caf21efdcbc47e18d))
+
+
+
+# 9.1.0 (2022-03-02)
+
+
+
+# 9.1.0-rc.1 (2022-02-25)
+
+
+
+# 9.1.0-beta.0 (2022-02-22)
+
+
+#### Bug Fixes
+
+* **start:** pass in options for wc child process ([2df9e33](https://github.com/IgniteUI/igniteui-cli/commit/2df9e337e86e353d6d3dde6b53001af7af36fe12))
+
+
+#### Features
+
+* **wc:** adding empty view and refactor proj structure [#967](https://github.com/IgniteUI/igniteui-cli/issues/967) ([#979](https://github.com/IgniteUI/igniteui-cli/issues/979)) ([622a014](https://github.com/IgniteUI/igniteui-cli/commit/622a0143be1583cfb97d7b80cabbfe21e03c20eb))
+* **web-components:** use LitElement in the templates [#989](https://github.com/IgniteUI/igniteui-cli/issues/989) ([#1001](https://github.com/IgniteUI/igniteui-cli/issues/1001)) ([5d828bc](https://github.com/IgniteUI/igniteui-cli/commit/5d828bc6062e6971d82f588ebf59a6e489d87257))
+
+
+
+## 9.0.6 (2022-02-04)
+
+
+
+## 9.0.5 (2022-02-04)
+
+
+
+## 9.0.5-beta.2 (2022-02-03)
+
+
+
+## 9.0.5-beta.1 (2022-01-28)
+
+
+
+## 9.0.5-beta.0 (2021-12-20)
+
+
+
+## 9.0.4 (2021-12-15)
+
+
+
+## 9.0.3 (2021-12-13)
+
+
+#### Features
+
+* **typescript:** Add support for typescript 4.5.2 ([055ca5b](https://github.com/IgniteUI/igniteui-cli/commit/055ca5b7f8e54acdd8f3f1d6b6d7517916d852f3))
+* Update [@use](https://github.com/use) [@forward](https://github.com/forward) and hsla ([#961](https://github.com/IgniteUI/igniteui-cli/issues/961)) ([2ef8435](https://github.com/IgniteUI/igniteui-cli/commit/2ef8435816f8ff4f60c7e0cd4ed497a11fc815da))
+
+
+
+## 9.0.1 (2021-11-25)
+
+
+
+# 9.0.0 (2021-11-22)
+
+
+
+# 9.0.0-rc.3 (2021-11-22)
+
+
+
+# 9.0.0-rc.2 (2021-11-19)
+
+
+#### Bug Fixes
+
+* add igx-scrollbar class to body, [#14033](https://github.com/IgniteUI/igniteui-cli/issues/14033) ([b02ac58](https://github.com/IgniteUI/igniteui-cli/commit/b02ac5822015c6b1b1fdd4684a52a2eecb3eadd9))
+
+
+
+# 9.0.0-rc.1 (2021-11-17)
+
+
+
+# 9.0.0-rc.0 (2021-11-17)
+
+
+#### Features
+
+* **angular:** update to Angular 13 [#895](https://github.com/IgniteUI/igniteui-cli/issues/895) ([#896](https://github.com/IgniteUI/igniteui-cli/issues/896)) ([32f1721](https://github.com/IgniteUI/igniteui-cli/commit/32f17215290af3372b554f0e440e39b9b9b5040a))
+
+
+
+# 8.3.0-rc.0 (2021-11-11)
+
+
+
+# 8.3.0-beta.7 (2021-11-09)
+
+
+
+# 8.3.0-beta.6 (2021-11-09)
+
+
+
+# 8.3.0-beta.5 (2021-11-09)
+
+
+
+# 8.3.0-beta.4 (2021-11-09)
+
+
+
+# 8.3.0-beta.3 (2021-11-08)
+
+
+
+# 8.3.0-beta.2 (2021-11-08)
+
+
+
+# 8.3.0-beta.1 (2021-11-04)
+
+
+
+# 8.3.0-beta.0 (2021-11-04)
+
+
+
+## 8.2.1 (2021-10-08)
+
+
+
+## 8.2.1-rc.0 (2021-10-07)
+
+
+
+# 8.2.0 (2021-10-04)
+
+
+
+# 8.2.0-alpha.0 (2021-09-30)
+
+
+
+## 8.1.2 (2021-09-28)
+
+
+#### Bug Fixes
+
+* **igr-es6:** Underscore dot ([a0ce582](https://github.com/IgniteUI/igniteui-cli/commit/a0ce582e112a31c2c59d5532791ef07ab988335b))
+
+
+
+## 8.1.1 (2021-09-02)
+
+
+#### Bug Fixes
+
+* **custom-templates:** Refactor samples, ([1f50907](https://github.com/IgniteUI/igniteui-cli/commit/1f509070a9409c4100d3d9c6a5de2f443d04c556))
+* **ig-ts:** Free version path contains no /en ([e96c7f6](https://github.com/IgniteUI/igniteui-cli/commit/e96c7f673729a034eeb3d89f5adfe3061d6e9f0b))
+* **ig-ts:** Make use of all visible height ([ebfe5ed](https://github.com/IgniteUI/igniteui-cli/commit/ebfe5edada1fcd9d4f8e25f868f916ad2d862121))
+* **ig-ts:** Temp fix - add static FormsModule ([9341753](https://github.com/IgniteUI/igniteui-cli/commit/9341753ab6fed9597c6f30f9fb1383ad132282ab))
+* **ig-ts:** Update prod budgets ([4edd971](https://github.com/IgniteUI/igniteui-cli/commit/4edd97100f0ab2cdd7a00176992ca1da57de47ff))
+* **lint:** Fix all lint errors. ([659cc29](https://github.com/IgniteUI/igniteui-cli/commit/659cc2913f20092bd9ffc3f5a1a1f549db005912))
+* **lint:** Fix dum line lenght ([570accb](https://github.com/IgniteUI/igniteui-cli/commit/570accbaef8f74d01cecbeda0046edb1a8423ef1))
+* **lint:** Fix lint errors ([84394b9](https://github.com/IgniteUI/igniteui-cli/commit/84394b9c4c24ed9727c8719bd9e463cea09d482b))
+* **lint:** Fix lint errors. ([0477e7d](https://github.com/IgniteUI/igniteui-cli/commit/0477e7dd3d9b4731e1b3176316581d3e0339ca5e))
+* **templates:** Add file-saver package ([8c7a59d](https://github.com/IgniteUI/igniteui-cli/commit/8c7a59db381a32719cdadbf1534a387c90bb05d5))
+
+
+#### Features
+
+* **ig-ts:** Empty project is now angular project. ([83e5c6f](https://github.com/IgniteUI/igniteui-cli/commit/83e5c6f8370b0d10a349751d9b90f3f284d9ae69))
+
+
+
+# 8.1.0-rc.0 (2021-07-30)
+
+
+
+# 8.1.0-beta.1 (2021-07-30)
+
+
+
+# 8.1.0-beta.0 (2021-07-28)
+
+
+#### Features
+
+* update angular to v12.1 [#856](https://github.com/IgniteUI/igniteui-cli/issues/856) ([#857](https://github.com/IgniteUI/igniteui-cli/issues/857)) ([971822e](https://github.com/IgniteUI/igniteui-cli/commit/971822e343158bd107ef5b07bf60773509bd928c))
+
+
+
+## 8.0.3 (2021-07-14)
+
+
+
+## 8.0.2 (2021-07-07)
+
+
+
+## 8.0.2-beta.1 (2021-07-06)
+
+
+
+## 8.0.2-beta.0 (2021-07-02)
+
+
+
+## 8.0.1 (2021-07-01)
+
+
+
+# 8.0.0 (2021-05-14)
+
+
+
+# 8.0.0-rc.0 (2021-05-13)
+
+
+
+# 8.0.0-alpha.1 (2021-05-13)
+
+
+
+## 7.1.1 (2021-03-15)
+
+
+
+## 7.1.1-beta.0 (2021-03-12)
+
+
+
+# 7.1.0 (2021-02-22)
+
+
+
+# 7.1.0-beta.0 (2021-02-18)
+
+
+
+## 7.0.1 (2020-11-16)
+
+
+
+# 7.0.0 (2020-11-13)
+
+
+
+# 7.0.0-rc.2 (2020-11-12)
+
+
+
+# 7.0.0-rc.1 (2020-11-10)
+
+
+
+# 7.0.0-rc.0 (2020-11-10)
+
+
+
+# 7.0.0-alpha.0 (2020-11-10)
+
+
+
+# 6.2.0 (2020-10-20)
+
+
+
+# 6.2.0-rc.0 (2020-10-16)
+
+
+
+# 6.2.0-beta.0 (2020-10-14)
+
+
+#### Bug Fixes
+
+* **react-grid:** Add missing module [#791](https://github.com/IgniteUI/igniteui-cli/issues/791) ([#798](https://github.com/IgniteUI/igniteui-cli/issues/798)) ([68e2b81](https://github.com/IgniteUI/igniteui-cli/commit/68e2b81e297a5b4279f53e5bb9dff80126cc08b6))
+
+
+
+# 6.1.0 (2020-08-12)
+
+
+
+# 6.1.0-beta.0 (2020-08-07)
+
+
+
+# 6.1.0-alpha.0 (2020-07-09)
+
+
+
+# 6.0.0 (2020-06-25)
+
+
+
+## 5.2.1 (2020-06-25)
+
+
+
+# 6.0.0-rc.0 (2020-06-25)
+
+
+#### Features
+
+* **packages:** Bump packages to Angular 10  [#767](https://github.com/IgniteUI/igniteui-cli/issues/767) ([73a5670](https://github.com/IgniteUI/igniteui-cli/commit/73a56703ff4f4f0cc23d1da3c65cb4fbe114c9b4))
+* **packages:** Bump packages to Angular 10  [#767](https://github.com/IgniteUI/igniteui-cli/issues/767) ([f7e104e](https://github.com/IgniteUI/igniteui-cli/commit/f7e104e8ccee1692ff886259a7b7cf653de46573))
+
+
+
+# 5.2.0 (2020-06-11)
+
+
+
+## 5.1.1 (2020-06-03)
+
+
+
+# 5.1.0 (2020-06-01)
+
+
+
+# 5.1.0-beta.4 (2020-06-01)
+
+
+
+# 5.1.0-beta.3 (2020-05-29)
+
+
+
+# 5.1.0-beta.2 (2020-05-28)
+
+
+
+# 5.1.0-beta.1 (2020-05-28)
+
+
+#### Bug Fixes
+
+* **upgrade:** provide default fallback for incorrect package template ([9dd4d80](https://github.com/IgniteUI/igniteui-cli/commit/9dd4d80db6cf13d3fd7594790bcaaeec9a383b49))
+
+
+
+# 5.1.0-beta.0 (2020-05-27)
+
+
+#### Features
+
+* **commands:** Add 'upgrade-packages' command ([25db37d](https://github.com/IgniteUI/igniteui-cli/commit/25db37d0df1fa52d81501b74ab328330e7a60744))
+* **schematics:** update-package logic added ([197b94e](https://github.com/IgniteUI/igniteui-cli/commit/197b94e367d5e9a359c989beef01c6f35d7b54b5))
+* **step-by-step:** add prompt to upgrade to private feed packages, [#724](https://github.com/IgniteUI/igniteui-cli/issues/724) ([63c0c85](https://github.com/IgniteUI/igniteui-cli/commit/63c0c85639c1e5e5415c82f96a6b5cb5bbad4b99))
+
+
+
+# 5.1.0-alpha.0 (2020-05-20)
+
+
+
+## 5.0.3 (2020-05-18)
+
+
+#### Bug Fixes
+
+* **igx:** proj template error handler log instead throw, register only in prod ([270addd](https://github.com/IgniteUI/igniteui-cli/commit/270adddfdee8bb84892e768971e976e70550b2c2))
+
+
+
+## 5.0.2 (2020-05-05)
+
+
+#### Bug Fixes
+
+* **ig-ts:** correct grid features template variable [#702](https://github.com/IgniteUI/igniteui-cli/issues/702) ([3f09bd9](https://github.com/IgniteUI/igniteui-cli/commit/3f09bd9af64177162e4e450df2148e1b13b2f87f))
+* **start:** inherit all stdio, not just input [#699](https://github.com/IgniteUI/igniteui-cli/issues/699) ([1c03891](https://github.com/IgniteUI/igniteui-cli/commit/1c03891227bcdcff6dbff2005939e631737d8b7f))
+
+
+
+# 5.0.0 (2020-02-11)
+
+
+
+# 5.0.0-rc.4 (2020-02-11)
+
+
+
+# 5.0.0-rc.3 (2020-02-07)
+
+
+
+# 5.0.0-rc.2 (2020-02-07)
+
+
+#### Features
+
+* **ix-ts:** Update ig-ts projects [#647](https://github.com/IgniteUI/igniteui-cli/issues/647) ([a6204d8](https://github.com/IgniteUI/igniteui-cli/commit/a6204d80f50e885459306276f3584fac0488460b))
+
+
+
+# 5.0.0-rc.0 (2020-01-31)
+
+
+#### Bug Fixes
+
+* new project accepts lower case theme name [#600](https://github.com/IgniteUI/igniteui-cli/issues/600) ([#619](https://github.com/IgniteUI/igniteui-cli/issues/619)) ([d6eedea](https://github.com/IgniteUI/igniteui-cli/commit/d6eedea8998b07aa6312dea6fdbab66acd88303a))
+
+
+
+# 5.0.0-beta.3 (2019-12-13)
+
+
+#### Bug Fixes
+
+* **cli, schematics:** check for fileSystem on post install [#612](https://github.com/IgniteUI/igniteui-cli/issues/612) ([#613](https://github.com/IgniteUI/igniteui-cli/issues/613)) ([0a6a878](https://github.com/IgniteUI/igniteui-cli/commit/0a6a87877bfe42fb9d665ac7b7e4be3d5e72511f))
+
+
+
+# 5.0.0-beta.2 (2019-12-06)
+
+
+
+# 5.0.0-beta.1 (2019-11-28)
+
+
+
+# 5.0.0-alpha.1 (2019-10-02)
+
+
+# 14.10.0-alpha.2
+
+## igniteui/cli-core@14.10.0-alpha.2 (2026-03-25)
+
+
+#### Bug Fixes
+
+* **eslint:** correct config ignores and resolve lint errors ([68d01ac](https://github.com/IgniteUI/igniteui-cli/commit/68d01ac6102e4e3d660dff9d229e826ea64943db))
+* **lint:** re-enable no-console rule ([3ffa07f](https://github.com/IgniteUI/igniteui-cli/commit/3ffa07ff8812e93dd358b38332f3abc2ea955af2))
+
+
+
+## 14.9.2 (2026-03-11)
+
+
+#### Bug Fixes
+
+* **packages:** disable non-functional registry login attempt on upgrade ([#1528](https://github.com/IgniteUI/igniteui-cli/issues/1528)) ([1008a1e](https://github.com/IgniteUI/igniteui-cli/commit/1008a1e3fadb20553f464162d69a5bb2393d615b))
+* **packages:** login command for node@24+ spawn change ([cbb6502](https://github.com/IgniteUI/igniteui-cli/commit/cbb6502e90cfeaa7a87885748aa4b337c37c0b2f))
+* **upgrade-packages:** correctly glob files on windows ([#1511](https://github.com/IgniteUI/igniteui-cli/issues/1511)) ([64f2735](https://github.com/IgniteUI/igniteui-cli/commit/64f2735963f269fb4b60dd7479566baae33119c8))
+
+
+#### Reverts
+
+* partially revert changes swapping exec with spawn ([3a64b67](https://github.com/IgniteUI/igniteui-cli/commit/3a64b67bc43df42f72363e63192b90fea38b111f))
+
+
+
+## 14.9.1 (2026-02-25)
+
+
+
+# 14.9.0 (2026-02-25)
+
+
+#### Features
+
+* **ng:** update igniteui-angular to 21.1.0 ([#1495](https://github.com/IgniteUI/igniteui-cli/issues/1495)) ([399f83e](https://github.com/IgniteUI/igniteui-cli/commit/399f83e4278dafdf9a3832fa013840f05ba586e6))
+
+
+
+## 14.8.5-beta.3 (2026-02-11)
+
+
+
+## 14.8.5-beta.0 (2026-02-10)
+
+
+
+## 14.8.4 (2026-02-05)
+
+
+
+## 14.8.3 (2026-01-19)
+
+
+
+## 14.8.2 (2026-01-13)
+
+
+
+## 14.8.2-beta.4 (2026-01-12)
+
+
+
+## 14.8.2-beta.3 (2026-01-12)
+
+
+
+## 14.8.2-beta.2 (2026-01-12)
+
+
+
+## 14.8.2-beta.0 (2026-01-12)
+
+
+
+# 14.8.0 (2025-12-03)
+
+
+
+# 14.8.0-beta.2 (2025-12-01)
+
+
+
+# 14.8.0-beta.1 (2025-12-01)
+
+
+
+## 14.7.1 (2025-11-20)
+
+
+
+# 14.7.0 (2025-11-17)
+
+
+#### Bug Fixes
+
+* command injection vulnerabilities in PackageManager and start command ([#1438](https://github.com/IgniteUI/igniteui-cli/issues/1438)) ([1f86df3](https://github.com/IgniteUI/igniteui-cli/commit/1f86df3d6e660b93db047415e9c53af1ef4f0a30))
+
+
+#### Features
+
+* **ng:** use ng lint schematic ([#1439](https://github.com/IgniteUI/igniteui-cli/issues/1439)) ([fa917cd](https://github.com/IgniteUI/igniteui-cli/commit/fa917cd7c974db05061f9442d8c5cdcc74853928))
+
+
+
+## 14.6.4 (2025-10-14)
+
+
+
+## 14.6.3 (2025-10-09)
+
+
+
+## 14.6.2 (2025-10-07)
+
+
+
+## 14.6.1 (2025-10-06)
+
+
+
+# 14.6.0 (2025-10-02)
+
+
+#### Features
+
+* **ng:** update ig, ng and other libs ([#1427](https://github.com/IgniteUI/igniteui-cli/issues/1427)) ([93fbbcc](https://github.com/IgniteUI/igniteui-cli/commit/93fbbcce2668084dcc958736f7167e36e9cbed47))
+
+
+
+## 14.5.8 (2025-09-25)
+
+
+#### Bug Fixes
+
+* **react:** enhance upgrade-packages to support workspace glob patterns for projects without explicit workspaces ([#1424](https://github.com/IgniteUI/igniteui-cli/issues/1424)) ([6eeee2f](https://github.com/IgniteUI/igniteui-cli/commit/6eeee2ff879902197f012e83eb6064a72a4c438e))
+
+
+
+## 14.5.7 (2025-09-23)
+
+
+
+## 14.5.6 (2025-09-18)
+
+
+#### Bug Fixes
+
+* Remove --legacy-peer-deps flag to allow automatic peer dependency installation ([fe0ea3d](https://github.com/IgniteUI/igniteui-cli/commit/fe0ea3df94614b10dc494e241b070309e283c0b6))
+* **wc:** enhance upgrade-packages to support workspace glob patterns and vite.config.ts files ([#1408](https://github.com/IgniteUI/igniteui-cli/issues/1408)) ([bcd62be](https://github.com/IgniteUI/igniteui-cli/commit/bcd62be52107bcbdab6d207866fe7ffb99883b6d))
+
+
+
+## 14.5.4 (2025-07-01)
+
+
+
+## 14.5.3 (2025-06-28)
+
+
+
+## 14.5.1 (2025-06-24)
+
+
+
+# 14.5.0 (2025-06-05)
+
+
+
+## 14.4.4 (2025-05-21)
+
+
+#### Features
+
+* add azure pipelines yaml files for angular, react and wc templates ([#1396](https://github.com/IgniteUI/igniteui-cli/issues/1396)) ([6a3e39d](https://github.com/IgniteUI/igniteui-cli/commit/6a3e39d41f50abe51fa7fd819961412304a31343))
+
+
+
+## 14.4.3 (2025-04-25)
+
+
+#### Features
+
+* **React:** Update react html files with licensed packages when upgrading packages ([#1395](https://github.com/IgniteUI/igniteui-cli/issues/1395)) ([7a7c4f0](https://github.com/IgniteUI/igniteui-cli/commit/7a7c4f0b5b74acc67e7524e643ee2a102ededb46))
+
+
+
+## 14.4.2 (2025-04-24)
+
+
+
+## 14.4.1 (2025-04-23)
+
+
+
+# 14.4.0 (2025-04-17)
+
+
+
+## 14.3.18 (2025-04-11)
+
+
+#### Bug Fixes
+
+* add missing static css files for WC ([#1385](https://github.com/IgniteUI/igniteui-cli/issues/1385)) ([95018f9](https://github.com/IgniteUI/igniteui-cli/commit/95018f93704f62af70b9c4a2e07b46554e6331a4))
+
+
+
+## 14.3.17 (2025-04-09)
+
+
+#### Bug Fixes
+
+* **WC:** update themes import paths to licensed version ([#1387](https://github.com/IgniteUI/igniteui-cli/issues/1387)) ([260068b](https://github.com/IgniteUI/igniteui-cli/commit/260068b9c9e3f4e895717ca6003f6ba0aded5cf2))
+
+
+
+## 14.3.16 (2025-03-31)
+
+
+#### Bug Fixes
+
+* **workflows:** Do not throw error if github workflows directory does not exist when updating ([#1383](https://github.com/IgniteUI/igniteui-cli/issues/1383)) ([acc771a](https://github.com/IgniteUI/igniteui-cli/commit/acc771afac962166f630c36beff428aa83af97de))
+
+
+
+## 14.3.14 (2025-02-24)
+
+
+#### Bug Fixes
+
+* update eslint and fix warnings ([#1378](https://github.com/IgniteUI/igniteui-cli/issues/1378)) ([aa84345](https://github.com/IgniteUI/igniteui-cli/commit/aa84345ff21fc0fccde94063099e4c713862cde8))
+
+
+
+## 14.3.12-beta.0 (2025-01-27)
+
+
+
+## 14.3.11 (2025-01-24)
+
+
+#### Bug Fixes
+
+* static data paths when deploy to github pages ([#1371](https://github.com/IgniteUI/igniteui-cli/issues/1371)) ([4b40231](https://github.com/IgniteUI/igniteui-cli/commit/4b402313f4d2a2cfd80115d274514d9e5507334c))
+
+
+
+## 14.3.10 (2025-01-23)
+
+
+
+## 14.3.9 (2025-01-23)
+
+
+
+## 14.3.8 (2025-01-23)
+
+
+
+## 14.3.7 (2025-01-22)
+
+
+
+## 14.3.6 (2024-12-12)
+
+
+
+## 14.3.5 (2024-12-06)
+
+
+#### Bug Fixes
+
+* **web-components:** fix the step for updating the router navigation in github pages workflow ([#1358](https://github.com/IgniteUI/igniteui-cli/issues/1358)) ([3e0f42c](https://github.com/IgniteUI/igniteui-cli/commit/3e0f42c4fc7a75f6819f8ba85f760ac6a6d854f1))
+
+
+
+## 14.3.4 (2024-12-04)
+
+
+
+## 14.3.3 (2024-12-02)
+
+
+
+## 14.3.2 (2024-11-28)
+
+
+#### Features
+
+* Add pages deployment variable logic and fixes in github pages yaml files ([#1337](https://github.com/IgniteUI/igniteui-cli/issues/1337)) ([c75d9c7](https://github.com/IgniteUI/igniteui-cli/commit/c75d9c7a9d7a9244e7a9a814770809f06280529a))
+* allow reordering of array literal expressions ([#1323](https://github.com/IgniteUI/igniteui-cli/issues/1323)) ([412a2a5](https://github.com/IgniteUI/igniteui-cli/commit/412a2a585fa16fda53eb643c74af7fb4037c1412))
+
+
+
+## 14.2.3 (2024-11-15)
+
+
+
+## 14.2.2 (2024-11-08)
+
+
+
+## 14.2.1 (2024-10-28)
+
+
+
+# 14.2.0 (2024-10-25)
+
+
+
+# 14.2.0-beta.4 (2024-10-23)
+
+
+
+# 14.1.0 (2024-10-11)
+
+
+
+## 14.0.2 (2024-09-20)
+
+
+
+## 14.0.1 (2024-09-05)
+
+
+
+# 14.0.0 (2024-08-23)
+
+
+
+# 14.0.0-beta.2 (2024-07-24)
+
+
+#### Features
+
+* **igx-templates:** add AngularTypeScriptFileUpdate ([e7f6ed3](https://github.com/IgniteUI/igniteui-cli/commit/e7f6ed3d339bb444dcdbaec4cabe5dcbff27b5ac))
+
+
+
+## 13.3.3 (2024-07-16)
+
+
+
+## 13.3.2 (2024-07-04)
+
+
+
+## 13.3.1 (2024-06-28)
+
+
+#### Features
+
+* **core:** add FormattingService ([f7ea2a4](https://github.com/IgniteUI/igniteui-cli/commit/f7ea2a4d8f57b5f1edb531df76d05c541df754e1))
+* **core:** add new types ([aa636a3](https://github.com/IgniteUI/igniteui-cli/commit/aa636a3b1642da1a57758d49e0f7f6f79c7e2d01))
+* **core:** add TypeScriptASTTransformer ([9854847](https://github.com/IgniteUI/igniteui-cli/commit/9854847e32c718d82013e1fc8b58d9b06700b819))
+
+
+
+# 13.3.0-rc.0 (2024-05-31)
+
+
+
+## 13.2.1 (2024-05-09)
+
+
+
+# 13.2.0 (2024-04-29)
+
+
+
+# 13.2.0-rc.0 (2024-04-29)
+
+
+
+## 13.1.16 (2024-04-28)
+
+
+
+## 13.1.15 (2024-04-12)
+
+
+
+## 13.1.13 (2024-04-11)
+
+
+
+## 13.1.12 (2024-03-21)
+
+
+#### Features
+
+* **cli:** upgrade packages for React and WC ([#1198](https://github.com/IgniteUI/igniteui-cli/issues/1198)) ([16c9b8d](https://github.com/IgniteUI/igniteui-cli/commit/16c9b8dda219ebacd473a2fad5e0c0ea70d5f320))
+
+
+
+## 13.1.11 (2024-03-12)
+
+
+
+## 13.1.10 (2024-03-11)
+
+
+
+## 13.1.9 (2024-03-05)
+
+
+
+## 13.1.8 (2024-02-29)
+
+
+
+## 13.1.7 (2024-02-28)
+
+
+
+## 13.1.6 (2024-02-26)
+
+
+#### Features
+
+* **ng-add:** add setup config provideAnimations ([2f47676](https://github.com/IgniteUI/igniteui-cli/commit/2f476762ac772039228fe10565d49a6ced76b72d))
+
+
+
+## 13.1.5 (2024-01-31)
+
+
+
+## 13.1.3 (2024-01-17)
+
+
+
+## 13.1.1 (2023-12-14)
+
+
+#### Bug Fixes
+
+* **kebacase:** do not add dash before numbers ([25d8f54](https://github.com/IgniteUI/igniteui-cli/commit/25d8f544243f6e1f5583c772f4b8e0e3cbb7ca12))
+* **kebap-case:** add dash between number and uppercase letter ([0be7637](https://github.com/IgniteUI/igniteui-cli/commit/0be7637bc19423821e066a9e62dbdec3e5bd5cb4))
+
+
+#### Features
+
+* **igr-ts:** add igr-ts proj type ([#1146](https://github.com/IgniteUI/igniteui-cli/issues/1146)) ([4609525](https://github.com/IgniteUI/igniteui-cli/commit/460952505758fcf1ab9b559ed6809015f3c5d3a5)), closes [#1147](https://github.com/IgniteUI/igniteui-cli/issues/1147) [#1153](https://github.com/IgniteUI/igniteui-cli/issues/1153)
+
+
+
+## 13.0.1 (2023-11-15)
+
+
+#### Bug Fixes
+
+* update Utils.LowerDashed function ([#1171](https://github.com/IgniteUI/igniteui-cli/issues/1171)) ([2254ecc](https://github.com/IgniteUI/igniteui-cli/commit/2254ecc0267be8c19e7f1d5295886b2ba6c345c7))
+
+
+
+# 13.0.0 (2023-11-09)
+
+
+
+# 13.0.0-rc.0 (2023-11-09)
+
+
+
+## 12.0.6-beta.2 (2023-10-02)
+
+
+
+## 12.0.5 (2023-07-18)
+
+
+
+## 12.0.4 (2023-07-18)
+
+
+
+## 12.0.3 (2023-06-28)
+
+
+
+## 12.0.3-beta.0 (2023-06-02)
+
+
+
+## 12.0.1 (2023-05-26)
+
+
+
+# 12.0.0 (2023-05-15)
+
+
+
+# 12.0.0-rc.0 (2023-05-15)
+
+
+#### Features
+
+* **igx:** add base_with_home proj to igx-templates ([#1118](https://github.com/IgniteUI/igniteui-cli/issues/1118)) ([d84c431](https://github.com/IgniteUI/igniteui-cli/commit/d84c4310a03e35588626c57148091c6b224c7bc3))
+* **igx:** update to 16 ([#1120](https://github.com/IgniteUI/igniteui-cli/issues/1120)) ([e6efa40](https://github.com/IgniteUI/igniteui-cli/commit/e6efa40c2c748d2679b6be66252bc7732e51de29))
+
+
+
+## 11.1.1 (2023-04-11)
+
+
+
+# 11.1.0 (2023-03-28)
+
+
+
+# 11.1.0-rc.0 (2023-03-24)
+
+
+
+## 11.0.2 (2023-02-17)
+
+
+
+# 11.0.0 (2022-11-23)
+
+
+
+# 10.1.0-beta.13 (2022-10-27)
+
+
+
+# 10.1.0-beta.12 (2022-10-27)
+
+
+
+# 10.1.0-beta.11 (2022-10-25)
+
+
+
+# 10.1.0-beta.10 (2022-10-25)
+
+
+
+# 10.1.0-beta.8 (2022-10-23)
+
+
+
+# 10.1.0-beta.7 (2022-10-19)
+
+
+
+# 10.1.0-beta.5 (2022-10-18)
+
+
+
+# 10.1.0-beta.4 (2022-10-18)
+
+
+
+# 10.1.0-beta.3 (2022-10-17)
+
+
+
+# 10.1.0-beta.2 (2022-10-14)
+
+
+
+# 10.1.0-beta.1 (2022-10-14)
+
+
+
+# 10.1.0-beta.0 (2022-10-07)
+
+
+
+## 10.0.5 (2022-09-19)
+
+
+
+## 10.0.4-beta.0 (2022-06-30)
+
+
+
+## 10.0.2 (2022-06-29)
+
+
+
+## 10.0.1 (2022-06-17)
+
+
+#### Bug Fixes
+
+* **package-manager:** skip setting up child install tasks for new projects ([de2a134](https://github.com/IgniteUI/igniteui-cli/commit/de2a1341e13ba20635a5ed94c5cc7e4c79c7ca46))
+
+
+
+# 9.2.0 (2022-05-26)
+
+
+
+## 9.1.4 (2022-05-20)
+
+
+
+## 9.1.3 (2022-05-19)
+
+
+
+## 9.1.2 (2022-05-16)
+
+
+
+## 9.1.1 (2022-03-18)
+
+
+
+## 9.1.1-rc.0 (2022-03-17)
+
+
+
+# 9.1.0 (2022-03-02)
+
+
+
+# 9.1.0-rc.1 (2022-02-25)
+
+
+
+# 9.1.0-beta.0 (2022-02-22)
+
+
+#### Bug Fixes
+
+* **start:** pass in options for wc child process ([2df9e33](https://github.com/IgniteUI/igniteui-cli/commit/2df9e337e86e353d6d3dde6b53001af7af36fe12))
+
+
+
+## 9.0.6 (2022-02-04)
+
+
+
+## 9.0.5 (2022-02-04)
+
+
+
+## 9.0.5-beta.2 (2022-02-03)
+
+
+
+## 9.0.5-beta.1 (2022-01-28)
+
+
+
+## 9.0.5-beta.0 (2021-12-20)
+
+
+
+## 9.0.4 (2021-12-15)
+
+
+
+## 9.0.3 (2021-12-13)
+
+
+#### Bug Fixes
+
+* **import:** Update func signature ([a3ac17a](https://github.com/IgniteUI/igniteui-cli/commit/a3ac17ab30436ed0420c92902c53ff7c3dfd0534))
+* **lint:** Fix lint errors ([6b5dd98](https://github.com/IgniteUI/igniteui-cli/commit/6b5dd985e90fb9cf8675c6cf0c06c6193e27fb32))
+
+
+#### Features
+
+* **typescript:** Add support for typescript 4.5.2 ([055ca5b](https://github.com/IgniteUI/igniteui-cli/commit/055ca5b7f8e54acdd8f3f1d6b6d7517916d852f3))
+
+
+
+## 9.0.1 (2021-11-25)
+
+
+
+# 9.0.0 (2021-11-22)
+
+
+
+# 9.0.0-rc.3 (2021-11-22)
+
+
+
+# 9.0.0-rc.2 (2021-11-19)
+
+
+#### Bug Fixes
+
+* add igx-scrollbar class to body, [#14033](https://github.com/IgniteUI/igniteui-cli/issues/14033) ([b02ac58](https://github.com/IgniteUI/igniteui-cli/commit/b02ac5822015c6b1b1fdd4684a52a2eecb3eadd9))
+
+
+
+# 9.0.0-rc.1 (2021-11-17)
+
+
+
+# 9.0.0-rc.0 (2021-11-17)
+
+
+#### Features
+
+* **angular:** update to Angular 13 [#895](https://github.com/IgniteUI/igniteui-cli/issues/895) ([#896](https://github.com/IgniteUI/igniteui-cli/issues/896)) ([32f1721](https://github.com/IgniteUI/igniteui-cli/commit/32f17215290af3372b554f0e440e39b9b9b5040a))
+
+
+
+# 8.3.0-rc.0 (2021-11-11)
+
+
+
+# 8.3.0-beta.6 (2021-11-09)
+
+
+
+# 8.3.0-beta.5 (2021-11-09)
+
+
+
+# 8.3.0-beta.4 (2021-11-09)
+
+
+
+# 8.3.0-beta.3 (2021-11-08)
+
+
+
+# 8.3.0-beta.2 (2021-11-08)
+
+
+
+# 8.3.0-beta.1 (2021-11-04)
+
+
+
+# 8.3.0-beta.0 (2021-11-04)
+
+
+
+## 8.2.1 (2021-10-08)
+
+
+
+## 8.2.1-rc.0 (2021-10-07)
+
+
+
+# 8.2.0 (2021-10-04)
+
+
+
+# 8.2.0-alpha.0 (2021-09-30)
+
+
+
+## 8.1.2 (2021-09-28)
+
+
+#### Bug Fixes
+
+* **ts-transform:** respect quote type from editorconfig ([99b3aad](https://github.com/IgniteUI/igniteui-cli/commit/99b3aadce0e6e7de8e2fef502db2ff1811d7a11e))
+
+
+
+## 8.1.1 (2021-09-02)
+
+
+#### Bug Fixes
+
+* **lint:** Fix all lint errors. ([659cc29](https://github.com/IgniteUI/igniteui-cli/commit/659cc2913f20092bd9ffc3f5a1a1f549db005912))
+
+
+#### Features
+
+* **ig-ts:** Empty project is now angular project. ([83e5c6f](https://github.com/IgniteUI/igniteui-cli/commit/83e5c6f8370b0d10a349751d9b90f3f284d9ae69))
+
+
+
+# 8.1.0-rc.0 (2021-07-30)
+
+
+
+# 8.1.0-beta.1 (2021-07-30)
+
+
+
+# 8.1.0-beta.0 (2021-07-28)
+
+
+#### Features
+
+* update angular to v12.1 [#856](https://github.com/IgniteUI/igniteui-cli/issues/856) ([#857](https://github.com/IgniteUI/igniteui-cli/issues/857)) ([971822e](https://github.com/IgniteUI/igniteui-cli/commit/971822e343158bd107ef5b07bf60773509bd928c))
+
+
+
+## 8.0.3 (2021-07-14)
+
+
+
+## 8.0.2 (2021-07-07)
+
+
+
+## 8.0.2-beta.1 (2021-07-06)
+
+
+
+## 8.0.2-beta.0 (2021-07-02)
+
+
+
+## 8.0.1 (2021-07-01)
+
+
+
+# 8.0.0 (2021-05-14)
+
+
+
+# 8.0.0-rc.0 (2021-05-13)
+
+
+
+# 8.0.0-alpha.1 (2021-05-13)
+
+
+
+## 7.1.1 (2021-03-15)
+
+
+
+## 7.1.1-beta.0 (2021-03-12)
+
+
+
+# 7.1.0 (2021-02-22)
+
+
+
+# 7.1.0-beta.0 (2021-02-18)
+
+
+
+## 7.0.1 (2020-11-16)
+
+
+
+# 7.0.0 (2020-11-13)
+
+
+
+# 7.0.0-rc.2 (2020-11-12)
+
+
+
+# 7.0.0-rc.1 (2020-11-10)
+
+
+
+# 7.0.0-rc.0 (2020-11-10)
+
+
+
+# 7.0.0-alpha.0 (2020-11-10)
+
+
+
+# 6.2.0 (2020-10-20)
+
+
+
+# 6.2.0-rc.0 (2020-10-16)
+
+
+
+# 6.2.0-beta.0 (2020-10-14)
+
+
+
+# 6.1.0 (2020-08-12)
+
+
+
+# 6.1.0-beta.0 (2020-08-07)
+
+
+
+# 6.1.0-alpha.0 (2020-07-09)
+
+
+#### Features
+
+* **tsutil:** add optional parent route to TsFileUpdateUtil.addRoute method ([#777](https://github.com/IgniteUI/igniteui-cli/issues/777)) ([2df694a](https://github.com/IgniteUI/igniteui-cli/commit/2df694ac03a4601059f730b6cc9ae7d3ab6371ea))
+
+
+
+# 6.0.0 (2020-06-25)
+
+
+
+# 6.0.0-rc.0 (2020-06-25)
+
+
+#### Bug Fixes
+
+* use group.json for step by step groups [#707](https://github.com/IgniteUI/igniteui-cli/issues/707) ([adf562c](https://github.com/IgniteUI/igniteui-cli/commit/adf562c639725fb6a8008ef682f5fbdd66e65b55))
+
+
+#### Features
+
+* remove angular as default choice for step by step [#579](https://github.com/IgniteUI/igniteui-cli/issues/579) ([5d2697e](https://github.com/IgniteUI/igniteui-cli/commit/5d2697e019d344cc5ebedf9ac00de94b012ded73))
+
+
+
+# 5.2.0 (2020-06-11)
+
+
+
+## 5.1.1 (2020-06-03)
+
+
+
+# 5.1.0 (2020-06-01)
+
+
+
+# 5.1.0-beta.4 (2020-06-01)
+
+
+#### Bug Fixes
+
+* **package-manager:** manually update pckgJSON instead of letting npm do it, [#751](https://github.com/IgniteUI/igniteui-cli/issues/751) ([6fa4c0c](https://github.com/IgniteUI/igniteui-cli/commit/6fa4c0c8d5afecfef8a8c1de18b1f6620edc006c))
+
+
+
+# 5.1.0-beta.3 (2020-05-29)
+
+
+#### Bug Fixes
+
+* **upgrade:** clear stdin stream before login prompt ([c77f49a](https://github.com/IgniteUI/igniteui-cli/commit/c77f49ab940933e9df6da2518d5192d5d49fbd0c))
+
+
+
+# 5.1.0-beta.2 (2020-05-28)
+
+
+
+# 5.1.0-beta.1 (2020-05-28)
+
+
+
+# 5.1.0-beta.0 (2020-05-27)
+
+
+#### Bug Fixes
+
+* **templates:** upgrade command properly replaces strings in ALL .ts files ([2d2c9b3](https://github.com/IgniteUI/igniteui-cli/commit/2d2c9b3dc02da3f7633642d9b3b4a02d7f0bb119))
+
+
+#### Features
+
+* **commands:** Add 'upgrade-packages' command ([25db37d](https://github.com/IgniteUI/igniteui-cli/commit/25db37d0df1fa52d81501b74ab328330e7a60744))
+* **schematics:** update-package logic added ([197b94e](https://github.com/IgniteUI/igniteui-cli/commit/197b94e367d5e9a359c989beef01c6f35d7b54b5))
+* **step-by-step:** add prompt to upgrade to private feed packages, [#724](https://github.com/IgniteUI/igniteui-cli/issues/724) ([63c0c85](https://github.com/IgniteUI/igniteui-cli/commit/63c0c85639c1e5e5415c82f96a6b5cb5bbad4b99))
+
+
+
+# 5.1.0-alpha.0 (2020-05-20)
+
+
+
+## 5.0.3 (2020-05-18)
+
+
+
+## 5.0.2 (2020-05-05)
+
+
+#### Bug Fixes
+
+* **start:** inherit all stdio, not just input [#699](https://github.com/IgniteUI/igniteui-cli/issues/699) ([1c03891](https://github.com/IgniteUI/igniteui-cli/commit/1c03891227bcdcff6dbff2005939e631737d8b7f))
+
+
+
+# 5.0.0 (2020-02-11)
+
+
+
+# 5.0.0-rc.4 (2020-02-11)
+
+
+
+# 5.0.0-rc.3 (2020-02-07)
+
+
+
+# 5.0.0-rc.2 (2020-02-07)
+
+
+
+# 5.0.0-rc.0 (2020-01-31)
+
+
+
+# 5.0.0-beta.3 (2019-12-13)
+
+
+
+# 5.0.0-beta.2 (2019-12-06)
+
+
+#### Features
+
+* **schematics:** adding a name for schematics projects [#587](https://github.com/IgniteUI/igniteui-cli/issues/587) ([#602](https://github.com/IgniteUI/igniteui-cli/issues/602)) ([19409d0](https://github.com/IgniteUI/igniteui-cli/commit/19409d0b7018c518c64c7ff161a6ec4a3438f834))
+
+
+
+# 5.0.0-beta.1 (2019-11-28)
+
+
+#### Bug Fixes
+
+* **schematics:** component schematics checks for available names [#576](https://github.com/IgniteUI/igniteui-cli/issues/576) ([#586](https://github.com/IgniteUI/igniteui-cli/issues/586)) ([bccd6c1](https://github.com/IgniteUI/igniteui-cli/commit/bccd6c131c4ab9bc197cfa29e1b792494270720f))
+* **schematics:** this package is a dep in new project instead of ignteui-cli ([c04a13c](https://github.com/IgniteUI/igniteui-cli/commit/c04a13c1c82c1d4a9a627503086f86d9040c6778))
+* **templating, igx-ts:** add dot path variable for prefixed files that glob ignores ([486a0da](https://github.com/IgniteUI/igniteui-cli/commit/486a0da0ee6190f16544ee46ae360b822c057b53))
+
+
+
+# 5.0.0-alpha.1 (2019-10-02)
+
+## igniteui/angular-templates@21.1.14100-alpha.2 (2026-03-25)
+
+
+#### Bug Fixes
+
+* **eslint:** correct config ignores and resolve lint errors ([68d01ac](https://github.com/IgniteUI/igniteui-cli/commit/68d01ac6102e4e3d660dff9d229e826ea64943db))
+* **igx-ts-legacy:** update igx ts legacy templates ([#1517](https://github.com/IgniteUI/igniteui-cli/issues/1517)) ([c26c8ff](https://github.com/IgniteUI/igniteui-cli/commit/c26c8ff298092c21b2aa6ca77a75cd2a5fdedc79))
+
+
+#### Features
+
+* add copilot instructions for AI agents in multiple templates ([73921a7](https://github.com/IgniteUI/igniteui-cli/commit/73921a738efcc0a3e2a7df24bdf509f9f694da8a))
+* **claude:** add CLAUDE.md files for AI agent instructions across multiple templates ([5a96a33](https://github.com/IgniteUI/igniteui-cli/commit/5a96a33eac3f2fcbaf1444ac7778f7c8c2c89952))
+* **igx-ts:** update angular project to use vitest with playwright ([#1542](https://github.com/IgniteUI/igniteui-cli/issues/1542)) ([85dd3e6](https://github.com/IgniteUI/igniteui-cli/commit/85dd3e609295d7d801c127715c5fe8947f90f23d))
+* **igx-ts:** update project setup and templates naming ([#1514](https://github.com/IgniteUI/igniteui-cli/issues/1514)) ([ed4d1dd](https://github.com/IgniteUI/igniteui-cli/commit/ed4d1ddced09cee062caae7f8445df5ba11d8cac))
+* **mcp:** add angular-cli server configuration to mcp.json ([43a01a0](https://github.com/IgniteUI/igniteui-cli/commit/43a01a08ca6ac9b9a7958a172e5f27b02fe1fbb1))
+* **templates:** add AGENTS.md and mcp.json files for React and Web Components and Angular project templates ([d867f44](https://github.com/IgniteUI/igniteui-cli/commit/d867f44e17d01be82ec6853c6b0c22910a652b73))
+
+
+
+## 14.9.2 (2026-03-11)
+
+
+#### Bug Fixes
+
+* **igx-ts-legacy:** fi grid type import and add missing override ([ff24df0](https://github.com/IgniteUI/igniteui-cli/commit/ff24df0e665d8c834f510bfc62fc99af6532a38e))
+* **igx-ts:** fix eslint configurations ([#1509](https://github.com/IgniteUI/igniteui-cli/issues/1509)) ([ec63959](https://github.com/IgniteUI/igniteui-cli/commit/ec63959ee65e5c369d483d5dc34965f121a36cae))
+* **igx-ts:** fix side nav route data text ([487ba12](https://github.com/IgniteUI/igniteui-cli/commit/487ba122c2d51822642d15f501ea776193bf6a44))
+* **igx-ts:** update igniteui-angular versions and remove overrides ([#1508](https://github.com/IgniteUI/igniteui-cli/issues/1508)) ([6b4e1c8](https://github.com/IgniteUI/igniteui-cli/commit/6b4e1c87e8e7a94a5212a7037072088b7eec8a1a))
+
+
+
+## 14.9.1 (2026-02-25)
+
+
+
+# 14.9.0 (2026-02-25)
+
+
+#### Bug Fixes
+
+* **angular:** add igniteui angular core override ([0a5d46f](https://github.com/IgniteUI/igniteui-cli/commit/0a5d46f73bd3d621a833d07ad09318ccbdcfb9b9))
+* **angular:** add missing providers ([804703e](https://github.com/IgniteUI/igniteui-cli/commit/804703e984919aa2fac6272f8058f94256460b73))
+* **angular:** empty template config ([75eef02](https://github.com/IgniteUI/igniteui-cli/commit/75eef022a33f0dc6bc5b90816ccee9c415d76289))
+* update imports ([a2bf7bf](https://github.com/IgniteUI/igniteui-cli/commit/a2bf7bf6fc973ba0af8d12dc1c33605419475891))
+
+
+#### Features
+
+* **ng:** update igniteui-angular to 21.1.0 ([#1495](https://github.com/IgniteUI/igniteui-cli/issues/1495)) ([399f83e](https://github.com/IgniteUI/igniteui-cli/commit/399f83e4278dafdf9a3832fa013840f05ba586e6))
+
+
+
+## 14.8.5-beta.3 (2026-02-11)
+
+
+#### Bug Fixes
+
+* **angular:** fix the type of the providers ([142dbda](https://github.com/IgniteUI/igniteui-cli/commit/142dbda9665430bb3fb5a97744e8913195975708))
+
+
+
+## 14.8.5-beta.0 (2026-02-10)
+
+
+#### Bug Fixes
+
+* **angular:** add provide zone change detection in app config for angular standalone ([27b516b](https://github.com/IgniteUI/igniteui-cli/commit/27b516b640b1ecf9fdb7320e6a5c84a398aab505))
+
+
+
+## 14.8.4 (2026-02-05)
+
+
+#### Bug Fixes
+
+* add same fix to legacy angular projects ([2456829](https://github.com/IgniteUI/igniteui-cli/commit/245682908c81c931b65707b5098a98e3991f6f71))
+* **angular:** increase maximum error budget ([#1485](https://github.com/IgniteUI/igniteui-cli/issues/1485)) ([63a03bd](https://github.com/IgniteUI/igniteui-cli/commit/63a03bddb3459797bc5a0121f2d601823fd3cd35))
+* move tearDown to chart related test files ([40b1739](https://github.com/IgniteUI/igniteui-cli/commit/40b1739734199b035c32b02937456c9ae444654a))
+* remove calls to test.ts ([c08ca9f](https://github.com/IgniteUI/igniteui-cli/commit/c08ca9fcd472488a125c2f073bd06e051a5f3314))
+* remove test.ts as not needed ([451d49a](https://github.com/IgniteUI/igniteui-cli/commit/451d49ab3c6b7652b29b062e1e3a9301f2497a0f))
+
+
+
+## 14.8.3 (2026-01-19)
+
+
+#### Bug Fixes
+
+* **angular:** remove glob and rimraf from standalone package json ([#1478](https://github.com/IgniteUI/igniteui-cli/issues/1478)) ([0a3afce](https://github.com/IgniteUI/igniteui-cli/commit/0a3afce21e6e14196c8942f9f15a56793e1679fa))
+
+
+
+## 14.8.2 (2026-01-13)
+
+
+
+## 14.8.2-beta.4 (2026-01-12)
+
+
+
+## 14.8.2-beta.3 (2026-01-12)
+
+
+
+## 14.8.2-beta.2 (2026-01-12)
+
+
+
+## 14.8.2-beta.0 (2026-01-12)
+
+
+
+# 14.8.0 (2025-12-03)
+
+
+
+# 14.8.0-beta.2 (2025-12-01)
+
+
+
+# 14.8.0-beta.1 (2025-12-01)
+
+
+
+## 14.7.1 (2025-11-20)
+
+
+
+# 14.7.0 (2025-11-17)
+
+
+#### Features
+
+* **ng:** use ng lint schematic ([#1439](https://github.com/IgniteUI/igniteui-cli/issues/1439)) ([fa917cd](https://github.com/IgniteUI/igniteui-cli/commit/fa917cd7c974db05061f9442d8c5cdcc74853928))
+
+
+
+## 14.6.4 (2025-10-14)
+
+
+
+## 14.6.3 (2025-10-09)
+
+
+#### Bug Fixes
+
+* **ng:** move eqeqeq rule ([#1433](https://github.com/IgniteUI/igniteui-cli/issues/1433)) ([29a574d](https://github.com/IgniteUI/igniteui-cli/commit/29a574db2af16adff262440d789c58216ba08a8e))
+
+
+
+## 14.6.2 (2025-10-07)
+
+
+
+## 14.6.1 (2025-10-06)
+
+
+
+# 14.6.0 (2025-10-02)
+
+
+#### Features
+
+* **ng:** update ig, ng and other libs ([#1427](https://github.com/IgniteUI/igniteui-cli/issues/1427)) ([93fbbcc](https://github.com/IgniteUI/igniteui-cli/commit/93fbbcce2668084dcc958736f7167e36e9cbed47))
+
+
+
+## 14.5.8 (2025-09-25)
+
+
+
+## 14.5.7 (2025-09-23)
+
+
+#### Bug Fixes
+
+* **angular:** fix eslint config for angular modules ([#1423](https://github.com/IgniteUI/igniteui-cli/issues/1423)) ([2420d26](https://github.com/IgniteUI/igniteui-cli/commit/2420d26511cffef06cad58fa7e67a61a6b885187))
+
+
+
+## 14.5.6 (2025-09-18)
+
+
+#### Bug Fixes
+
+* **ng, standalone:** add test setup file for angular standalone ([#1421](https://github.com/IgniteUI/igniteui-cli/issues/1421)) ([feebb55](https://github.com/IgniteUI/igniteui-cli/commit/feebb5574cfffe86f6f2b342c2643b3ef9651a3c))
+
+
+
+## 14.5.4 (2025-07-01)
+
+
+#### Bug Fixes
+
+* **ng:** Add same proj rxjs version in overrides, so there are no peer dep errors for it. It is needed when having reveal or other overrides. ([4728d19](https://github.com/IgniteUI/igniteui-cli/commit/4728d19e7658cf5c4d863a6c277be696f77e5ac5))
+
+
+
+## 14.5.3 (2025-06-28)
+
+
+#### Bug Fixes
+
+* **angular:** fix theme errors ([#1404](https://github.com/IgniteUI/igniteui-cli/issues/1404)) ([3e7e4a3](https://github.com/IgniteUI/igniteui-cli/commit/3e7e4a3777bde5cc025df182bb57e5b9f002c5d9))
+
+
+
+## 14.5.1 (2025-06-24)
+
+
+
+# 14.5.0 (2025-06-05)
+
+
+
+## 14.4.4 (2025-05-21)
+
+
+#### Features
+
+* add azure pipelines yaml files for angular, react and wc templates ([#1396](https://github.com/IgniteUI/igniteui-cli/issues/1396)) ([6a3e39d](https://github.com/IgniteUI/igniteui-cli/commit/6a3e39d41f50abe51fa7fd819961412304a31343))
+
+
+
+## 14.4.3 (2025-04-25)
+
+
+
+## 14.4.2 (2025-04-24)
+
+
+
+## 14.4.1 (2025-04-23)
+
+
+
+# 14.4.0 (2025-04-17)
+
+
+
+## 14.3.18 (2025-04-11)
+
+
+#### Bug Fixes
+
+* add missing static css files for WC ([#1385](https://github.com/IgniteUI/igniteui-cli/issues/1385)) ([95018f9](https://github.com/IgniteUI/igniteui-cli/commit/95018f93704f62af70b9c4a2e07b46554e6331a4))
+
+
+
+## 14.3.17 (2025-04-09)
+
+
+
+## 14.3.16 (2025-03-31)
+
+
+
+## 14.3.14 (2025-02-24)
+
+
+#### Bug Fixes
+
+* **angular:** add ovverides for reveal sdk wrappers ([d2bc8cb](https://github.com/IgniteUI/igniteui-cli/commit/d2bc8cb26584f5836d633d24421d6dc774bd53a5))
+* update eslint and fix warnings ([#1378](https://github.com/IgniteUI/igniteui-cli/issues/1378)) ([aa84345](https://github.com/IgniteUI/igniteui-cli/commit/aa84345ff21fc0fccde94063099e4c713862cde8))
+
+
+
+## 14.3.12-beta.0 (2025-01-27)
+
+
+
+## 14.3.11 (2025-01-24)
+
+
+#### Bug Fixes
+
+* static data paths when deploy to github pages ([#1371](https://github.com/IgniteUI/igniteui-cli/issues/1371)) ([4b40231](https://github.com/IgniteUI/igniteui-cli/commit/4b402313f4d2a2cfd80115d274514d9e5507334c))
+
+
+
+## 14.3.10 (2025-01-23)
+
+
+
+## 14.3.9 (2025-01-23)
+
+
+
+## 14.3.8 (2025-01-23)
+
+
+
+## 14.3.7 (2025-01-22)
+
+
+#### Bug Fixes
+
+* **github-pages:** upgrade github pages deploy and artefact versions ([#1366](https://github.com/IgniteUI/igniteui-cli/issues/1366)) ([db6d0ea](https://github.com/IgniteUI/igniteui-cli/commit/db6d0eaef44c189cb80f10925d25595d97b7da4b))
+
+
+
+## 14.3.6 (2024-12-12)
+
+
+
+## 14.3.5 (2024-12-06)
+
+
+#### Bug Fixes
+
+* **web-components:** fix the step for updating the router navigation in github pages workflow ([#1358](https://github.com/IgniteUI/igniteui-cli/issues/1358)) ([3e0f42c](https://github.com/IgniteUI/igniteui-cli/commit/3e0f42c4fc7a75f6819f8ba85f760ac6a6d854f1))
+
+
+
+## 14.3.4 (2024-12-04)
+
+
+
+## 14.3.3 (2024-12-02)
+
+
+
+## 14.3.2 (2024-11-28)
+
+
+#### Bug Fixes
+
+* adapt ngModules templates to 19 changes ([2ce6e9d](https://github.com/IgniteUI/igniteui-cli/commit/2ce6e9d38acef0f0e8981ef054f61ab35d137fd8))
+
+
+
+# 14.3.0 (2024-11-25)
+
+
+#### Features
+
+* Add pages deployment variable logic and fixes in github pages yaml files ([#1337](https://github.com/IgniteUI/igniteui-cli/issues/1337)) ([c75d9c7](https://github.com/IgniteUI/igniteui-cli/commit/c75d9c7a9d7a9244e7a9a814770809f06280529a))
+* allow reordering of array literal expressions ([#1323](https://github.com/IgniteUI/igniteui-cli/issues/1323)) ([412a2a5](https://github.com/IgniteUI/igniteui-cli/commit/412a2a585fa16fda53eb643c74af7fb4037c1412))
+
+
+
+## 14.2.3 (2024-11-15)
+
+
+
+## 14.2.2 (2024-11-08)
+
+
+
+## 14.2.1 (2024-10-28)
+
+
+
+# 14.2.0 (2024-10-25)
+
+
+
+# 14.2.0-beta.4 (2024-10-23)
+
+
+
+# 14.1.0 (2024-10-11)
+
+
+
+## 14.0.2 (2024-09-20)
+
+
+
+## 14.0.1 (2024-09-05)
+
+
+
+# 14.0.0 (2024-08-23)
+
+
+
+# 14.0.0-beta.2 (2024-07-24)
+
+
+
+## 13.4.1 (2024-07-24)
+
+
+#### Features
+
+* **igx-templates:** add AngularTypeScriptFileUpdate ([e7f6ed3](https://github.com/IgniteUI/igniteui-cli/commit/e7f6ed3d339bb444dcdbaec4cabe5dcbff27b5ac))
+
+
+
+# 13.4.0 (2024-07-22)
+
+
+
+## 13.3.3 (2024-07-16)
+
+
+
+## 13.3.2 (2024-07-04)
+
+
+
+## 13.3.1 (2024-06-28)
+
+
+
+# 13.3.0-rc.0 (2024-05-31)
+
+
+#### Features
+
+* **ng-sa-base:** add vscode template folder ([a4787e7](https://github.com/IgniteUI/igniteui-cli/commit/a4787e74fcc715aceaa4c265fd97e4452e70463e))
+* **ngm-base:** add vscode template folder ([0ed6fb8](https://github.com/IgniteUI/igniteui-cli/commit/0ed6fb8cf8ef75103c84e8ee2ddeaa2886be3922))
+
+
+
+## 13.2.1 (2024-05-09)
+
+
+
+# 13.2.0 (2024-04-29)
+
+
+
+# 13.2.0-rc.0 (2024-04-29)
+
+
+
+## 13.1.16 (2024-04-28)
+
+
+
+## 13.1.15 (2024-04-12)
+
+
+
+## 13.1.13 (2024-04-11)
+
+
+#### Bug Fixes
+
+* **cli-templetes:** Replaced index.html <title> to ApplicationTitle as placeholder ([#1237](https://github.com/IgniteUI/igniteui-cli/issues/1237)) ([d622d54](https://github.com/IgniteUI/igniteui-cli/commit/d622d54fbd3becbc514bfc971eac4c97b3346255))
+* fix yml script placeholder delimiters ([#1239](https://github.com/IgniteUI/igniteui-cli/issues/1239)) ([45a2264](https://github.com/IgniteUI/igniteui-cli/commit/45a2264a93edc5b0ca307d5ec43fcd6a9de42cea))
+
+
+
+## 13.1.12 (2024-03-21)
+
+
+#### Features
+
+* **cli:** upgrade packages for React and WC ([#1198](https://github.com/IgniteUI/igniteui-cli/issues/1198)) ([16c9b8d](https://github.com/IgniteUI/igniteui-cli/commit/16c9b8dda219ebacd473a2fad5e0c0ea70d5f320))
+
+
+
+## 13.1.11 (2024-03-12)
+
+
+
+## 13.1.10 (2024-03-11)
+
+
+
+## 13.1.9 (2024-03-05)
+
+
+
+## 13.1.8 (2024-02-29)
+
+
+
+## 13.1.7 (2024-02-28)
+
+
+
+## 13.1.6 (2024-02-26)
+
+
+#### Features
+
+* **_base-legacy:** update project type to legacy ([f8984c9](https://github.com/IgniteUI/igniteui-cli/commit/f8984c93f02e8391ca721bc49eeabd45e5f7bb34))
+* **_base:** provide http client ([1e1d1c2](https://github.com/IgniteUI/igniteui-cli/commit/1e1d1c2d6c70a110ace81e74c91bcab2a7021086))
+
+
+
+## 13.1.5 (2024-01-31)
+
+
+
+## 13.1.3 (2024-01-17)
+
+
+#### Bug Fixes
+
+* **igx-ts:** update karma-jasmine-html-reporter ([0cf034d](https://github.com/IgniteUI/igniteui-cli/commit/0cf034db6474b8ed88e9b3d93e9b3011afd47b3b))
+
+
+
+## 13.1.1 (2023-12-14)
+
+
+#### Bug Fixes
+
+* **igx:** remove prod config for ng build ([d90c056](https://github.com/IgniteUI/igniteui-cli/commit/d90c056aed7ac87f972ea719eeac9367e6b97226))
+
+
+#### Features
+
+* **igr-ts:** add igr-ts proj type ([#1146](https://github.com/IgniteUI/igniteui-cli/issues/1146)) ([4609525](https://github.com/IgniteUI/igniteui-cli/commit/460952505758fcf1ab9b559ed6809015f3c5d3a5)), closes [#1147](https://github.com/IgniteUI/igniteui-cli/issues/1147) [#1153](https://github.com/IgniteUI/igniteui-cli/issues/1153)
+
+
+
+## 13.0.1 (2023-11-15)
+
+
+
+# 13.0.0 (2023-11-09)
+
+
+
+# 13.0.0-rc.0 (2023-11-09)
+
+
+
+## 12.0.6-beta.2 (2023-10-02)
+
+
+
+## 12.0.5 (2023-07-18)
+
+
+
+## 12.0.4 (2023-07-18)
+
+
+
+## 12.0.3 (2023-06-28)
+
+
+
+## 12.0.3-beta.0 (2023-06-02)
+
+
+#### Bug Fixes
+
+* **igx:** more fixes ([1373d18](https://github.com/IgniteUI/igniteui-cli/commit/1373d18e45d8fa9bb69bf5692b360bb4ecec531b))
+* **igx:** replace DataGridSelectionMode with GridSelectionMode ([fc61052](https://github.com/IgniteUI/igniteui-cli/commit/fc61052d68f5fffbaf96c0f7c71220c39c7d5ef2))
+
+
+
+## 12.0.1 (2023-05-26)
+
+
+
+## 11.1.2 (2023-05-25)
+
+
+
+# 12.0.0 (2023-05-15)
+
+
+
+# 12.0.0-rc.0 (2023-05-15)
+
+
+#### Features
+
+* **igx:** add base_with_home proj to igx-templates ([#1118](https://github.com/IgniteUI/igniteui-cli/issues/1118)) ([d84c431](https://github.com/IgniteUI/igniteui-cli/commit/d84c4310a03e35588626c57148091c6b224c7bc3))
+* **igx:** update to 16 ([#1120](https://github.com/IgniteUI/igniteui-cli/issues/1120)) ([e6efa40](https://github.com/IgniteUI/igniteui-cli/commit/e6efa40c2c748d2679b6be66252bc7732e51de29))
+
+
+
+## 11.1.1 (2023-04-11)
+
+
+
+# 11.1.0 (2023-03-28)
+
+
+
+# 11.1.0-rc.0 (2023-03-24)
+
+
+#### Bug Fixes
+
+* **igx-ts:** updating dependencies [#1099](https://github.com/IgniteUI/igniteui-cli/issues/1099) ([#1102](https://github.com/IgniteUI/igniteui-cli/issues/1102)) ([cd3b35a](https://github.com/IgniteUI/igniteui-cli/commit/cd3b35ac7961474ecd4ecbb8c4dffa33067c20f1))
+
+
+
+## 11.0.2 (2023-02-17)
+
+
+
+# 11.0.0 (2022-11-23)
+
+
+
+# 10.1.0-beta.13 (2022-10-27)
+
+
+
+# 10.1.0-beta.12 (2022-10-27)
+
+
+
+# 10.1.0-beta.11 (2022-10-25)
+
+
+
+# 10.1.0-beta.10 (2022-10-25)
+
+
+
+# 10.1.0-beta.8 (2022-10-23)
+
+
+
+# 10.1.0-beta.7 (2022-10-19)
+
+
+
+# 10.1.0-beta.5 (2022-10-18)
+
+
+
+# 10.1.0-beta.4 (2022-10-18)
+
+
+
+# 10.1.0-beta.3 (2022-10-17)
+
+
+
+# 10.1.0-beta.2 (2022-10-14)
+
+
+
+# 10.1.0-beta.1 (2022-10-14)
+
+
+
+# 10.1.0-beta.0 (2022-10-07)
+
+
+
+## 10.0.5 (2022-09-19)
+
+
+
+## 10.0.4-beta.0 (2022-06-30)
+
+
+
+## 10.0.2 (2022-06-29)
+
+
+
+## 10.0.1 (2022-06-17)
+
+
+
+# 9.2.0 (2022-05-26)
+
+
+
+## 9.1.4 (2022-05-20)
+
+
+
+## 9.1.3 (2022-05-19)
+
+
+
+## 9.1.2 (2022-05-16)
+
+
+#### Bug Fixes
+
+* **fintech grid:** fix slow grid [#1020](https://github.com/IgniteUI/igniteui-cli/issues/1020) ([4f888dc](https://github.com/IgniteUI/igniteui-cli/commit/4f888dc3c2b1fd6ad896b197634d3aa0c3ef57cd))
+
+
+
+## 9.1.1 (2022-03-18)
+
+
+
+## 9.1.1-rc.0 (2022-03-17)
+
+
+#### Bug Fixes
+
+* **ng:** gridAPI rename ([5b8b0a5](https://github.com/IgniteUI/igniteui-cli/commit/5b8b0a5e5e21ce5ae2228e0d025eea0195206292))
+
+
+#### Features
+
+* **ng:** update to 13.3.0 ([17553b0](https://github.com/IgniteUI/igniteui-cli/commit/17553b0da7586d14d91778417161f2a77864fd16))
+
+
+
+# 9.1.0 (2022-03-02)
+
+
+
+# 9.1.0-rc.1 (2022-02-25)
+
+
+#### Bug Fixes
+
+* **templates:** Adding override modifier. ([6334d17](https://github.com/IgniteUI/igniteui-cli/commit/6334d174642212d942c5f5669c1082ae56bb3cc8))
+
+
+
+# 9.1.0-rc.0 (2022-02-24)
+
+
+
+# 9.1.0-beta.0 (2022-02-22)
+
+
+#### Bug Fixes
+
+* **angular:** change more igx- ([f9ade5e](https://github.com/IgniteUI/igniteui-cli/commit/f9ade5e176444ce3c2a80f60baf43d239b8788fe))
+* **angular:** remove old code ([3b063db](https://github.com/IgniteUI/igniteui-cli/commit/3b063db9cf51509b289148f4928cdfda9837a6dd))
+
+
+
+## 9.0.6 (2022-02-04)
+
+
+
+## 9.0.5 (2022-02-04)
+
+
+
+## 9.0.5-beta.2 (2022-02-03)
+
+
+
+## 9.0.5-beta.1 (2022-01-28)
+
+
+
+## 9.0.5-beta.0 (2021-12-20)
+
+
+
+## 9.0.4 (2021-12-15)
+
+
+
+## 9.0.3 (2021-12-13)
+
+
+#### Bug Fixes
+
+* **schematics:** fix home import without placeholder ([#966](https://github.com/IgniteUI/igniteui-cli/issues/966)) ([9263bb2](https://github.com/IgniteUI/igniteui-cli/commit/9263bb22b6dd699845d3e6fad7ab78536f7a484c))
+
+
+#### Features
+
+* **typescript:** Add support for typescript 4.5.2 ([055ca5b](https://github.com/IgniteUI/igniteui-cli/commit/055ca5b7f8e54acdd8f3f1d6b6d7517916d852f3))
+* Update [@use](https://github.com/use) [@forward](https://github.com/forward) and hsla ([#961](https://github.com/IgniteUI/igniteui-cli/issues/961)) ([2ef8435](https://github.com/IgniteUI/igniteui-cli/commit/2ef8435816f8ff4f60c7e0cd4ed497a11fc815da))
+
+
+
+## 9.0.1 (2021-11-25)
+
+
+
+# 9.0.0 (2021-11-22)
+
+
+
+# 9.0.0-rc.3 (2021-11-22)
+
+
+#### Bug Fixes
+
+* changes from latest rc, packages updates ([f59905f](https://github.com/IgniteUI/igniteui-cli/commit/f59905fbd0d37d536b2a13dd002cc99ce8c48165))
+
+
+
+# 9.0.0-rc.2 (2021-11-19)
+
+
+#### Bug Fixes
+
+* add igx-scrollbar class to body, [#14033](https://github.com/IgniteUI/igniteui-cli/issues/14033) ([b02ac58](https://github.com/IgniteUI/igniteui-cli/commit/b02ac5822015c6b1b1fdd4684a52a2eecb3eadd9))
+* **angular:** new theme imports upgrade packages ([3ae74d9](https://github.com/IgniteUI/igniteui-cli/commit/3ae74d9bb9a338f939e9e5fb73c978003401c2a7))
+
+
+
+# 9.0.0-rc.1 (2021-11-17)
+
+
+
+# 9.0.0-rc.0 (2021-11-17)
+
+
+#### Features
+
+* **angular:** update to Angular 13 [#895](https://github.com/IgniteUI/igniteui-cli/issues/895) ([#896](https://github.com/IgniteUI/igniteui-cli/issues/896)) ([32f1721](https://github.com/IgniteUI/igniteui-cli/commit/32f17215290af3372b554f0e440e39b9b9b5040a))
+
+
+
+# 8.3.0-rc.0 (2021-11-11)
+
+
+
+# 8.3.0-beta.6 (2021-11-09)
+
+
+
+# 8.3.0-beta.5 (2021-11-09)
+
+
+
+# 8.3.0-beta.4 (2021-11-09)
+
+
+
+# 8.3.0-beta.3 (2021-11-08)
+
+
+
+# 8.3.0-beta.2 (2021-11-08)
+
+
+
+# 8.3.0-beta.1 (2021-11-04)
+
+
+
+# 8.3.0-beta.0 (2021-11-04)
+
+
+
+## 8.2.1 (2021-10-08)
+
+
+
+## 8.2.1-rc.0 (2021-10-07)
+
+
+
+# 8.2.0 (2021-10-04)
+
+
+
+# 8.2.0-alpha.0 (2021-09-30)
+
+
+#### Bug Fixes
+
+* remove icon color, becasue it is deprecated ([7b33804](https://github.com/IgniteUI/igniteui-cli/commit/7b338049a3182d7a8ea9e7106d10ef485dcc0623))
+
+
+
+## 8.1.2 (2021-09-28)
+
+
+
+## 8.1.1 (2021-09-02)
+
+
+
+# 8.1.0-rc.0 (2021-07-30)
+
+
+#### Bug Fixes
+
+* **igx-ts:** remove deprecated properties from scenario templates ([f84dc3c](https://github.com/IgniteUI/igniteui-cli/commit/f84dc3cd9626d5f287caed74cd32fda6849906e2))
+
+
+
+# 8.1.0-beta.1 (2021-07-30)
+
+
+#### Bug Fixes
+
+* **awesome-grid:** fix deprecated properties warnings ([f7a5b0c](https://github.com/IgniteUI/igniteui-cli/commit/f7a5b0c589c4b0aa8ded7c036859956d84c1ed23))
+* **fintech-grid:** fix console warnings and errors ([eaaf733](https://github.com/IgniteUI/igniteui-cli/commit/eaaf73311b45b9fc326353c8c6e6a1efe3f6f225))
+* **igx-ts:** Update angular.json ([c038c70](https://github.com/IgniteUI/igniteui-cli/commit/c038c708c5d2476e819071fd6c9defe29915b904))
+* **igx-ts:** use explicit index in drop-down components for logic view ([cb96f7d](https://github.com/IgniteUI/igniteui-cli/commit/cb96f7dcc2a5a4af2c585b22b50daa372f3684e9))
+
+
+#### Features
+
+* **igx-ts:** update custom grid templates w/ 12.1 paginator ([2b5058b](https://github.com/IgniteUI/igniteui-cli/commit/2b5058bd8c2f1946fd1f52b848a5b6ca9aebfcee))
+
+
+
+# 8.1.0-beta.0 (2021-07-28)
+
+
+#### Features
+
+* **igx-templates:** add igx-accordion template ([#851](https://github.com/IgniteUI/igniteui-cli/issues/851)) ([03e74cd](https://github.com/IgniteUI/igniteui-cli/commit/03e74cd194184b629ea09ec3cfa5218943d0feef))
+* update angular to v12.1 [#856](https://github.com/IgniteUI/igniteui-cli/issues/856) ([#857](https://github.com/IgniteUI/igniteui-cli/issues/857)) ([971822e](https://github.com/IgniteUI/igniteui-cli/commit/971822e343158bd107ef5b07bf60773509bd928c))
+
+
+
+## 8.0.3 (2021-07-14)
+
+
+#### Bug Fixes
+
+* **igx-ts:** fix strict errors in base and side-nav projects ([963d23d](https://github.com/IgniteUI/igniteui-cli/commit/963d23dc9771d8d184bff89fe2e2782e3bd97219))
+* **igx-ts:** fix strict errors in side-nav-auth project ([695f430](https://github.com/IgniteUI/igniteui-cli/commit/695f430c693b4a4cb817784d4b20dc0c268ec80c))
+
+
+
+## 8.0.2 (2021-07-07)
+
+
+
+## 8.0.2-beta.1 (2021-07-06)
+
+
+#### Bug Fixes
+
+* **angular-templates:** fix issue with strict templates in igx-ts ([38aaa75](https://github.com/IgniteUI/igniteui-cli/commit/38aaa756908493244414a51cc31688c27246b2f6)), closes [#850](https://github.com/IgniteUI/igniteui-cli/issues/850)
+
+
+
+## 8.0.2-beta.0 (2021-07-02)
+
+
+
+## 8.0.1 (2021-07-01)
+
+
+
+# 8.0.0 (2021-05-14)
+
+
+#### Bug Fixes
+
+* **fonts:** Fix icon font names and families ([35a702e](https://github.com/IgniteUI/igniteui-cli/commit/35a702ee21d4a780b9318de071246969af54fca7))
+* **template:** Fix and upadte awesome template ([f2b51aa](https://github.com/IgniteUI/igniteui-cli/commit/f2b51aa2685220b282ca8a25bb2580f44b960bcb))
+* **warnings:** Update icons for grids samples ([0efbbae](https://github.com/IgniteUI/igniteui-cli/commit/0efbbaecdcb3b6095c6ebc483729214f5e4753aa))
+
+
+
+# 8.0.0-rc.0 (2021-05-13)
+
+
+
+# 8.0.0-alpha.1 (2021-05-13)
+
+
+#### Bug Fixes
+
+* **igx-templates:** provide service in tree sample, add some style ([b76452a](https://github.com/IgniteUI/igniteui-cli/commit/b76452a22d047a07d95c19fd3c720466065f178e))
+* remove strict checks and update open() method ([f2877e3](https://github.com/IgniteUI/igniteui-cli/commit/f2877e342746f85962d3f10125c6b784e53eb5d2))
+
+
+#### Features
+
+* **igx-templates:** add igx-tree template ([41bc6c3](https://github.com/IgniteUI/igniteui-cli/commit/41bc6c37b19c9136335347a468cdd5c8685a1f61))
+
+
+
+## 7.1.1 (2021-03-15)
+
+
+
+## 7.1.1-beta.0 (2021-03-12)
+
+
+
+# 7.1.0 (2021-02-22)
+
+
+
+# 7.1.0-beta.0 (2021-02-18)
+
+
+#### Bug Fixes
+
+* **toolbar:** Update hgrid & treegrid custom template toolbar ([c27af22](https://github.com/IgniteUI/igniteui-cli/commit/c27af22c413da93305a5c90c8a60a6dbac1a01e1))
+
+
+
+## 7.0.1 (2020-11-16)
+
+
+#### Bug Fixes
+
+* **igx-ts:** add local storage to spec ([3056a97](https://github.com/IgniteUI/igniteui-cli/commit/3056a97d99c492c04f2bbf19a7bd09c418294dbf))
+* **igx,custom-grid:** assign allowFiltering when selected as option ([7534c5f](https://github.com/IgniteUI/igniteui-cli/commit/7534c5f51736587b87217042b98c1be753cd76a8))
+* ssr breaks because of localStorage ref ([dc9410f](https://github.com/IgniteUI/igniteui-cli/commit/dc9410ff7c333bdece6ba25212f6c763afe64601))
+
+
+
+# 7.0.0 (2020-11-13)
+
+
+#### Bug Fixes
+
+* **igx-ts:** update build-angular ([082869c](https://github.com/IgniteUI/igniteui-cli/commit/082869cf27b52cb26695b6f90f4980ea85e67574))
+
+
+
+# 7.0.0-rc.2 (2020-11-12)
+
+
+#### Bug Fixes
+
+* **igx-ts:** crm grid with new toolbar ([a387742](https://github.com/IgniteUI/igniteui-cli/commit/a387742493b73f2c2f5e2cbacaf1bbe5a4d9345f))
+* **igx-ts:** fix toolbar according to latest changes ([93323c8](https://github.com/IgniteUI/igniteui-cli/commit/93323c81a3e388ae46e1dabcca13261312f92ade))
+* **igx-ts:** fix toolbar for grid fintech ([edc2057](https://github.com/IgniteUI/igniteui-cli/commit/edc20571657d5177c7a82ccae32d86f430970185))
+* **igx-ts:** tree-grid toolbar update ([2c985d7](https://github.com/IgniteUI/igniteui-cli/commit/2c985d78902d90439cbef733e6252f8c1eae37e3))
+* **igx-ts:** update HGrid Batch demo ([890a02d](https://github.com/IgniteUI/igniteui-cli/commit/890a02d54be89358aff76f9b07b3d8630df4f79c))
+
+
+
+## 6.2.1 (2020-11-11)
+
+
+#### Bug Fixes
+
+* **igx, side-auth:** add SSR-friendly local storage service ([8db27be](https://github.com/IgniteUI/igniteui-cli/commit/8db27be4739d396bbd34c389d9227aabdd01b970))
+* **igx,side-auth:** add proper wrapper class so layout is 100% ([508df9d](https://github.com/IgniteUI/igniteui-cli/commit/508df9d2255ec1a908ecd4054a841360c1827933))
+
+
+
+# 7.0.0-rc.1 (2020-11-10)
+
+
+#### Bug Fixes
+
+* **igx-ts:** fix package.json for auth project ([00b9cd9](https://github.com/IgniteUI/igniteui-cli/commit/00b9cd942ec154c76da1ac0e810e366cf373b64f))
+* **igx-ts:** remove base.json for auth project ([019535b](https://github.com/IgniteUI/igniteui-cli/commit/019535be27bac30b065b27a6facde53578a08456))
+* **igx-ts:** revert deleted packages ([acede53](https://github.com/IgniteUI/igniteui-cli/commit/acede5371f24b10be2314de0118ff1976cfb8c35))
+
+
+
+# 7.0.0-rc.0 (2020-11-10)
+
+
+#### Bug Fixes
+
+* **dock-manager:** remove unnecessary quotes ([cd9c16c](https://github.com/IgniteUI/igniteui-cli/commit/cd9c16cea9f4d120e7b6e0dd9112e907c5f2228b))
+
+
+
+# 7.0.0-alpha.0 (2020-11-10)
+
+
+#### Bug Fixes
+
+* **dock-manager:** Use correct module name in app.module import [#792](https://github.com/IgniteUI/igniteui-cli/issues/792) ([53691b5](https://github.com/IgniteUI/igniteui-cli/commit/53691b54af896c410a0b2b0c3e91751f76341dbd))
+
+
+
+# 6.2.0 (2020-10-20)
+
+
+
+# 6.2.0 (2020-10-20)
+
+
+
+# 6.2.0-rc.0 (2020-10-16)
+
+
+#### Bug Fixes
+
+* **templates, crm grid, grid batch editing:** Fixing issues in the two templates. ([2dc2859](https://github.com/IgniteUI/igniteui-cli/commit/2dc2859dd10f41f9b0b8a05072fa6d12de5c9c00))
+* **templates, crm-grid, grid batchediting:** Addressing the comments. ([09955ea](https://github.com/IgniteUI/igniteui-cli/commit/09955ea47cbe58546a6d117611a705c86c058b6e))
+
+
+
+# 6.2.0-beta.0 (2020-10-14)
+
+
+#### Bug Fixes
+
+* **deployment:** Fix environment check 793 ([3f3946a](https://github.com/IgniteUI/igniteui-cli/commit/3f3946a474840d38a763149230d743b3e845bf47))
+* update map to 10.1.3 ([3926b77](https://github.com/IgniteUI/igniteui-cli/commit/3926b77d575e2051b210232be2b8b1f76b681fab))
+
+
+
+# 6.1.0 (2020-08-12)
+
+
+
+# 6.1.0-beta.0 (2020-08-07)
+
+
+
+# 6.1.0-alpha.0 (2020-07-09)
+
+
+
+# 6.0.0 (2020-06-25)
+
+
+
+## 5.2.1 (2020-06-25)
+
+
+
+# 6.0.0-rc.0 (2020-06-25)
+
+
+#### Bug Fixes
+
+* **igx,dock-manager:** resolve package name from project ([ac66d8e](https://github.com/IgniteUI/igniteui-cli/commit/ac66d8e0fadf643530a5f3aa53ee3fe851cc1a33))
+* use group.json for step by step groups [#707](https://github.com/IgniteUI/igniteui-cli/issues/707) ([adf562c](https://github.com/IgniteUI/igniteui-cli/commit/adf562c639725fb6a8008ef682f5fbdd66e65b55))
+
+
+#### Features
+
+* Adding a Map template for Angular ([7cbddeb](https://github.com/IgniteUI/igniteui-cli/commit/7cbddeb907db8277f6db43db47f19f06591a7c7f))
+* **packages:** Bump packages to Angular 10  [#767](https://github.com/IgniteUI/igniteui-cli/issues/767) ([f7e104e](https://github.com/IgniteUI/igniteui-cli/commit/f7e104e8ccee1692ff886259a7b7cf653de46573))
+* **packages:** remove deprecated option [#767](https://github.com/IgniteUI/igniteui-cli/issues/767) ([602111e](https://github.com/IgniteUI/igniteui-cli/commit/602111eefdcf390e832275c428e86f9ef5aa547f))
+* **packages:** Update igx-ts projects [#767](https://github.com/IgniteUI/igniteui-cli/issues/767) ([71df154](https://github.com/IgniteUI/igniteui-cli/commit/71df1546f4765699bf0600ef07062cad85b69d99))
+
+
+
+# 5.2.0 (2020-06-11)
+
+
+#### Features
+
+* **igx-ts:** add Dock Manager template for Angular ([#763](https://github.com/IgniteUI/igniteui-cli/issues/763)) ([63acfdf](https://github.com/IgniteUI/igniteui-cli/commit/63acfdf6b9c511c0c8be18374f470ee8a0ca375c))
+* **igx,side-nav:**  move content padding so views can override ([36f9964](https://github.com/IgniteUI/igniteui-cli/commit/36f9964bbe2d21920f99f5815f346ec117a61724))
+
+
+
+## 5.1.1 (2020-06-03)
+
+
+#### Bug Fixes
+
+* **igx,upgrade:** ignore projects without sourceRoot ([6d64d30](https://github.com/IgniteUI/igniteui-cli/commit/6d64d30efa3aedcfd7d32eb9e7e1c29c90c7ea6e))
+* **upgrade:** Logging a message that licensed package is already installed ([63df30d](https://github.com/IgniteUI/igniteui-cli/commit/63df30d67c7d46fed0b6e4411e5b097dcd7f11f2))
+
+
+
+# 5.1.0 (2020-06-01)
+
+
+
+# 5.1.0-beta.4 (2020-06-01)
+
+
+
+# 5.1.0-beta.3 (2020-05-29)
+
+
+
+# 5.1.0-beta.2 (2020-05-28)
+
+
+
+# 5.1.0-beta.1 (2020-05-28)
+
+
+
+# 5.1.0-beta.0 (2020-05-27)
+
+
+#### Bug Fixes
+
+* **igx,templates:** correct empty project template id ([2d0b385](https://github.com/IgniteUI/igniteui-cli/commit/2d0b385a4ce3f8483e4f5f048bc94111ecb7db31))
+* **templates:** fix upgrade to get correct config ([a3021ef](https://github.com/IgniteUI/igniteui-cli/commit/a3021efc9baac77348a6e91a53f7b8b214fdb719))
+* **templates:** upgrade command properly replaces strings in ALL .ts files ([2d2c9b3](https://github.com/IgniteUI/igniteui-cli/commit/2d2c9b3dc02da3f7633642d9b3b4a02d7f0bb119))
+* **upgrade:** sort packages.json dependencies when adding licensed package ([62bb652](https://github.com/IgniteUI/igniteui-cli/commit/62bb652857e8e8cd6e368ef71ac2bf4ef8ea6749))
+
+
+#### Features
+
+* **schematics:** update-package logic added ([197b94e](https://github.com/IgniteUI/igniteui-cli/commit/197b94e367d5e9a359c989beef01c6f35d7b54b5))
+* **upgrade:** handle multiple licensed packages, [#741](https://github.com/IgniteUI/igniteui-cli/issues/741) ([ef02f5b](https://github.com/IgniteUI/igniteui-cli/commit/ef02f5b089d3616bbb24ba4ba8e2f0a4c7045374))
+
+
+
+# 5.1.0-alpha.0 (2020-05-20)
+
+
+#### Features
+
+* **igx,multi-pacakge:** templates resolve lib package from project ([7bb4670](https://github.com/IgniteUI/igniteui-cli/commit/7bb4670e1f7832321c3373e07c967d3d13d83777))
+
+
+
+## 5.0.3 (2020-05-18)
+
+
+#### Bug Fixes
+
+* **igx:** proj template error handler log instead throw, register only in prod ([270addd](https://github.com/IgniteUI/igniteui-cli/commit/270adddfdee8bb84892e768971e976e70550b2c2))
+
+
+
+## 5.0.2 (2020-05-05)
+
+
+
+# 5.0.0 (2020-02-11)
+
+
+
+# 5.0.0-rc.4 (2020-02-11)
+
+
+#### Bug Fixes
+
+* **carousel:** Add noop animations module ([c696124](https://github.com/IgniteUI/igniteui-cli/commit/c6961249ccbfe186e1f369b23420584b908b5787))
+
+
+
+# 5.0.0-rc.3 (2020-02-07)
+
+
+
+# 5.0.0-rc.2 (2020-02-07)
+
+
+#### Bug Fixes
+
+* **igx-ts:** change tsconfig module for spec files to avoid errors, [#660](https://github.com/IgniteUI/igniteui-cli/issues/660) ([3d6b987](https://github.com/IgniteUI/igniteui-cli/commit/3d6b987e4e2c72a9b73453af112465b7234aa9c3))
+* **igx-ts:** update auth providers tests, [#660](https://github.com/IgniteUI/igniteui-cli/issues/660) ([4c15c8b](https://github.com/IgniteUI/igniteui-cli/commit/4c15c8bc00ffd5543e676ce07ea4718ea234b62b))
+* **templates, igx:** add chart packages [#679](https://github.com/IgniteUI/igniteui-cli/issues/679) ([75f4dcd](https://github.com/IgniteUI/igniteui-cli/commit/75f4dcd3bf585d38b3f86ef85cfecc6b8ddcfabc))
+* **templates, igx:** add chart packages [#684](https://github.com/IgniteUI/igniteui-cli/issues/684) ([dd7bfb7](https://github.com/IgniteUI/igniteui-cli/commit/dd7bfb75923ebe4d644239774899c26cf6bf7564))
+
+
+#### Features
+
+* **igx-ts:** Update projects [#647](https://github.com/IgniteUI/igniteui-cli/issues/647) ([e0a738a](https://github.com/IgniteUI/igniteui-cli/commit/e0a738aea9b0345386fb2611bc28168ca99390f0))
+
+
+
+# 5.0.0-rc.0 (2020-01-31)
+
+
+#### Bug Fixes
+
+* **ig-add:** only take into account 'extraConfig' in generateConfig [#618](https://github.com/IgniteUI/igniteui-cli/issues/618) ([#621](https://github.com/IgniteUI/igniteui-cli/issues/621)) ([d8d7db8](https://github.com/IgniteUI/igniteui-cli/commit/d8d7db823f1c6c717063ce678695be4d8db084d6))
+* **igx-ts:** update scenario templates [#628](https://github.com/IgniteUI/igniteui-cli/issues/628) ([#643](https://github.com/IgniteUI/igniteui-cli/issues/643)) ([ecda4d7](https://github.com/IgniteUI/igniteui-cli/commit/ecda4d779d3a196c16c13f87e2787ff7fdcbc167))
+* **templates:** update angular charts packages to v8.2.12 ([3ed3013](https://github.com/IgniteUI/igniteui-cli/commit/3ed301379a765d4ad0614e1d51cd5dec2227494d))
+
+
+
+# 5.0.0-beta.3 (2019-12-13)
+
+
+
+# 5.0.0-beta.2 (2019-12-06)
+
+
+#### Bug Fixes
+
+* **schematics:** set virtual FS in proper stage ([2102464](https://github.com/IgniteUI/igniteui-cli/commit/2102464698a493f97f4739bd14068b218b985d95))
+
+
+
+# 5.0.0-beta.1 (2019-11-28)
+
+
+#### Bug Fixes
+
+* **igx-templates:** fix side-auth template tsconfig.app.json, [#597](https://github.com/IgniteUI/igniteui-cli/issues/597) ([1ffe4ba](https://github.com/IgniteUI/igniteui-cli/commit/1ffe4ba77b30c4eaab2a176ec30470cf32cf7980))
+* **igx-ts:** update autocomplete templates to import FormsModule [#581](https://github.com/IgniteUI/igniteui-cli/issues/581) ([#584](https://github.com/IgniteUI/igniteui-cli/issues/584)) ([b91a1e8](https://github.com/IgniteUI/igniteui-cli/commit/b91a1e8efe1c3e78482abff524b69c48e64f9094))
+* **templating, igx-ts:** add dot path variable for prefixed files that glob ignores ([486a0da](https://github.com/IgniteUI/igniteui-cli/commit/486a0da0ee6190f16544ee46ae360b822c057b53))
+
+
+
+# 5.0.0-alpha.1 (2019-10-02)
+
+
+#### Features
+
+* **ng-schematics:** add component generate schematic ([a0e86c2](https://github.com/IgniteUI/igniteui-cli/commit/a0e86c29d72c52727a13aee4ded2acd0ef6ddc44))
+
+## igniteui/angular-schematics@21.1.14100-alpha.2 (2026-03-25)
+
+
+#### Bug Fixes
+
+* **eslint:** correct config ignores and resolve lint errors ([68d01ac](https://github.com/IgniteUI/igniteui-cli/commit/68d01ac6102e4e3d660dff9d229e826ea64943db))
+* **igx-ts-legacy:** update igx ts legacy templates ([#1517](https://github.com/IgniteUI/igniteui-cli/issues/1517)) ([c26c8ff](https://github.com/IgniteUI/igniteui-cli/commit/c26c8ff298092c21b2aa6ca77a75cd2a5fdedc79))
+
+
+
+## 14.9.2 (2026-03-11)
+
+
+#### Bug Fixes
+
+* **schematics:** fs writeFile create check ([#1526](https://github.com/IgniteUI/igniteui-cli/issues/1526)) ([f8e4b59](https://github.com/IgniteUI/igniteui-cli/commit/f8e4b59bd951ff1b702f3d24cf61ebc33115dc89))
+
+
+
+## 14.9.1 (2026-02-25)
+
+
+
+# 14.9.0 (2026-02-25)
+
+
+#### Features
+
+* **ng:** update igniteui-angular to 21.1.0 ([#1495](https://github.com/IgniteUI/igniteui-cli/issues/1495)) ([399f83e](https://github.com/IgniteUI/igniteui-cli/commit/399f83e4278dafdf9a3832fa013840f05ba586e6))
+
+
+
+## 14.8.5-beta.3 (2026-02-11)
+
+
+
+## 14.8.5-beta.0 (2026-02-10)
+
+
+
+## 14.8.4 (2026-02-05)
+
+
+
+## 14.8.3 (2026-01-19)
+
+
+
+## 14.8.2 (2026-01-13)
+
+
+
+## 14.8.2-beta.4 (2026-01-12)
+
+
+
+## 14.8.2-beta.3 (2026-01-12)
+
+
+
+## 14.8.2-beta.2 (2026-01-12)
+
+
+
+## 14.8.2-beta.0 (2026-01-12)
+
+
+
+# 14.8.0 (2025-12-03)
+
+
+
+# 14.8.0-beta.2 (2025-12-01)
+
+
+
+# 14.8.0-beta.1 (2025-12-01)
+
+
+
+## 14.7.1 (2025-11-20)
+
+
+
+# 14.7.0 (2025-11-17)
+
+
+#### Features
+
+* **ng:** use ng lint schematic ([#1439](https://github.com/IgniteUI/igniteui-cli/issues/1439)) ([fa917cd](https://github.com/IgniteUI/igniteui-cli/commit/fa917cd7c974db05061f9442d8c5cdcc74853928))
+
+
+
+## 14.6.4 (2025-10-14)
+
+
+
+## 14.6.3 (2025-10-09)
+
+
+
+## 14.6.2 (2025-10-07)
+
+
+
+## 14.6.1 (2025-10-06)
+
+
+
+# 14.6.0 (2025-10-02)
+
+
+#### Features
+
+* **ng:** update ig, ng and other libs ([#1427](https://github.com/IgniteUI/igniteui-cli/issues/1427)) ([93fbbcc](https://github.com/IgniteUI/igniteui-cli/commit/93fbbcce2668084dcc958736f7167e36e9cbed47))
+
+
+
+## 14.5.8 (2025-09-25)
+
+
+
+## 14.5.7 (2025-09-23)
+
+
+
+## 14.5.6 (2025-09-18)
+
+
+
+## 14.5.4 (2025-07-01)
+
+
+
+## 14.5.3 (2025-06-28)
+
+
+
+## 14.5.1 (2025-06-24)
+
+
+
+# 14.5.0 (2025-06-05)
+
+
+
+## 14.4.4 (2025-05-21)
+
+
+#### Features
+
+* add azure pipelines yaml files for angular, react and wc templates ([#1396](https://github.com/IgniteUI/igniteui-cli/issues/1396)) ([6a3e39d](https://github.com/IgniteUI/igniteui-cli/commit/6a3e39d41f50abe51fa7fd819961412304a31343))
+
+
+
+## 14.4.3 (2025-04-25)
+
+
+
+## 14.4.2 (2025-04-24)
+
+
+
+## 14.4.1 (2025-04-23)
+
+
+
+# 14.4.0 (2025-04-17)
+
+
+
+## 14.3.18 (2025-04-11)
+
+
+#### Bug Fixes
+
+* add missing static css files for WC ([#1385](https://github.com/IgniteUI/igniteui-cli/issues/1385)) ([95018f9](https://github.com/IgniteUI/igniteui-cli/commit/95018f93704f62af70b9c4a2e07b46554e6331a4))
+
+
+
+## 14.3.17 (2025-04-09)
+
+
+
+## 14.3.16 (2025-03-31)
+
+
+
+## 14.3.14 (2025-02-24)
+
+
+#### Bug Fixes
+
+* update eslint and fix warnings ([#1378](https://github.com/IgniteUI/igniteui-cli/issues/1378)) ([aa84345](https://github.com/IgniteUI/igniteui-cli/commit/aa84345ff21fc0fccde94063099e4c713862cde8))
+
+
+
+## 14.3.12-beta.0 (2025-01-27)
+
+
+
+## 14.3.11 (2025-01-24)
+
+
+#### Bug Fixes
+
+* static data paths when deploy to github pages ([#1371](https://github.com/IgniteUI/igniteui-cli/issues/1371)) ([4b40231](https://github.com/IgniteUI/igniteui-cli/commit/4b402313f4d2a2cfd80115d274514d9e5507334c))
+
+
+
+## 14.3.10 (2025-01-23)
+
+
+
+## 14.3.9 (2025-01-23)
+
+
+
+## 14.3.8 (2025-01-23)
+
+
+
+## 14.3.7 (2025-01-22)
+
+
+
+## 14.3.6 (2024-12-12)
+
+
+#### Bug Fixes
+
+* **migrations:** enable encapsulation for migrations ([#1361](https://github.com/IgniteUI/igniteui-cli/issues/1361)) ([9561a16](https://github.com/IgniteUI/igniteui-cli/commit/9561a1604a746b8a4b771627de2af4d14927e7c2))
+
+
+
+## 14.3.5 (2024-12-06)
+
+
+#### Bug Fixes
+
+* **web-components:** fix the step for updating the router navigation in github pages workflow ([#1358](https://github.com/IgniteUI/igniteui-cli/issues/1358)) ([3e0f42c](https://github.com/IgniteUI/igniteui-cli/commit/3e0f42c4fc7a75f6819f8ba85f760ac6a6d854f1))
+
+
+
+## 14.3.4 (2024-12-04)
+
+
+
+## 14.3.3 (2024-12-02)
+
+
+
+## 14.3.2 (2024-11-28)
+
+
+#### Features
+
+* Add pages deployment variable logic and fixes in github pages yaml files ([#1337](https://github.com/IgniteUI/igniteui-cli/issues/1337)) ([c75d9c7](https://github.com/IgniteUI/igniteui-cli/commit/c75d9c7a9d7a9244e7a9a814770809f06280529a))
+
+
+
+## 14.2.3 (2024-11-15)
+
+
+
+## 14.2.2 (2024-11-08)
+
+
+
+## 14.2.1 (2024-10-28)
+
+
+
+# 14.2.0 (2024-10-25)
+
+
+
+# 14.2.0-beta.4 (2024-10-23)
+
+
+
+# 14.1.0 (2024-10-11)
+
+
+
+## 14.0.2 (2024-09-20)
+
+
+
+## 14.0.1 (2024-09-05)
+
+
+
+# 14.0.0 (2024-08-23)
+
+
+
+# 14.0.0-beta.2 (2024-07-24)
+
+
+#### Features
+
+* **igx-templates:** add AngularTypeScriptFileUpdate ([e7f6ed3](https://github.com/IgniteUI/igniteui-cli/commit/e7f6ed3d339bb444dcdbaec4cabe5dcbff27b5ac))
+
+
+
+## 13.3.3 (2024-07-16)
+
+
+
+## 13.3.2 (2024-07-04)
+
+
+
+## 13.3.1 (2024-06-28)
+
+
+
+# 13.3.0-rc.0 (2024-05-31)
+
+
+
+## 13.2.1 (2024-05-09)
+
+
+
+# 13.2.0 (2024-04-29)
+
+
+
+# 13.2.0-rc.0 (2024-04-29)
+
+
+
+## 13.1.16 (2024-04-28)
+
+
+
+## 13.1.15 (2024-04-12)
+
+
+#### Bug Fixes
+
+* include js files in ng-schematics/scripts w/ newer npm version ([727f2f6](https://github.com/IgniteUI/igniteui-cli/commit/727f2f670d303ddb585b78d68a2c42f907a4786f))
+
+
+
+## 13.1.13 (2024-04-11)
+
+
+
+## 13.1.12 (2024-03-21)
+
+
+#### Features
+
+* **cli:** upgrade packages for React and WC ([#1198](https://github.com/IgniteUI/igniteui-cli/issues/1198)) ([16c9b8d](https://github.com/IgniteUI/igniteui-cli/commit/16c9b8dda219ebacd473a2fad5e0c0ea70d5f320))
+
+
+
+## 13.1.11 (2024-03-12)
+
+
+
+## 13.1.10 (2024-03-11)
+
+
+
+## 13.1.9 (2024-03-05)
+
+
+
+## 13.1.8 (2024-02-29)
+
+
+
+## 13.1.7 (2024-02-28)
+
+
+
+## 13.1.6 (2024-02-26)
+
+
+#### Features
+
+* **ng-add:** add setup config provideAnimations ([2f47676](https://github.com/IgniteUI/igniteui-cli/commit/2f476762ac772039228fe10565d49a6ced76b72d))
+
+
+
+## 13.1.5 (2024-01-31)
+
+
+
+## 13.1.3 (2024-01-17)
+
+
+
+## 13.1.1 (2023-12-14)
+
+
+#### Features
+
+* **igr-ts:** add igr-ts proj type ([#1146](https://github.com/IgniteUI/igniteui-cli/issues/1146)) ([4609525](https://github.com/IgniteUI/igniteui-cli/commit/460952505758fcf1ab9b559ed6809015f3c5d3a5)), closes [#1147](https://github.com/IgniteUI/igniteui-cli/issues/1147) [#1153](https://github.com/IgniteUI/igniteui-cli/issues/1153)
+
+
+
+## 13.0.1 (2023-11-15)
+
+
+
+# 13.0.0 (2023-11-09)
+
+
+
+# 13.0.0-rc.0 (2023-11-09)
+
+
+
+## 12.0.6-beta.2 (2023-10-02)
+
+
+
+## 12.0.5 (2023-07-18)
+
+
+
+## 12.0.4 (2023-07-18)
+
+
+
+## 12.0.3 (2023-06-28)
+
+
+
+## 12.0.3-beta.0 (2023-06-02)
+
+
+
+## 12.0.1 (2023-05-26)
+
+
+
+# 12.0.0 (2023-05-15)
+
+
+
+# 12.0.0-rc.0 (2023-05-15)
+
+
+#### Features
+
+* **igx:** add base_with_home proj to igx-templates ([#1118](https://github.com/IgniteUI/igniteui-cli/issues/1118)) ([d84c431](https://github.com/IgniteUI/igniteui-cli/commit/d84c4310a03e35588626c57148091c6b224c7bc3))
+* **igx:** update to 16 ([#1120](https://github.com/IgniteUI/igniteui-cli/issues/1120)) ([e6efa40](https://github.com/IgniteUI/igniteui-cli/commit/e6efa40c2c748d2679b6be66252bc7732e51de29))
+
+
+
+## 11.1.1 (2023-04-11)
+
+
+
+# 11.1.0 (2023-03-28)
+
+
+
+# 11.1.0-rc.0 (2023-03-24)
+
+
+
+## 11.0.2 (2023-02-17)
+
+
+
+# 11.0.0 (2022-11-23)
+
+
+
+# 10.1.0-beta.13 (2022-10-27)
+
+
+
+# 10.1.0-beta.12 (2022-10-27)
+
+
+
+# 10.1.0-beta.11 (2022-10-25)
+
+
+
+# 10.1.0-beta.10 (2022-10-25)
+
+
+
+# 10.1.0-beta.8 (2022-10-23)
+
+
+
+# 10.1.0-beta.7 (2022-10-19)
+
+
+
+# 10.1.0-beta.5 (2022-10-18)
+
+
+
+# 10.1.0-beta.4 (2022-10-18)
+
+
+
+# 10.1.0-beta.3 (2022-10-17)
+
+
+
+# 10.1.0-beta.2 (2022-10-14)
+
+
+
+# 10.1.0-beta.1 (2022-10-14)
+
+
+
+# 10.1.0-beta.0 (2022-10-07)
+
+
+
+## 10.0.5 (2022-09-19)
+
+
+
+## 10.0.4-beta.1 (2022-07-15)
+
+
+
+## 10.0.4-beta.0 (2022-06-30)
+
+
+
+## 10.0.2 (2022-06-29)
+
+
+
+## 10.0.1 (2022-06-17)
+
+
+
+# 9.2.0 (2022-05-26)
+
+
+
+## 9.1.4 (2022-05-20)
+
+
+
+## 9.1.3 (2022-05-19)
+
+
+
+## 9.1.2 (2022-05-16)
+
+
+
+## 9.1.1 (2022-03-18)
+
+
+
+## 9.1.1-rc.0 (2022-03-17)
+
+
+
+# 9.1.0 (2022-03-02)
+
+
+
+# 9.1.0-rc.1 (2022-02-25)
+
+
+
+# 9.1.0-beta.0 (2022-02-22)
+
+
+#### Bug Fixes
+
+* **angular:** change more igx- ([f9ade5e](https://github.com/IgniteUI/igniteui-cli/commit/f9ade5e176444ce3c2a80f60baf43d239b8788fe))
+
+
+
+## 9.0.6 (2022-02-04)
+
+
+
+## 9.0.5 (2022-02-04)
+
+
+
+## 9.0.5-beta.2 (2022-02-03)
+
+
+
+## 9.0.5-beta.1 (2022-01-28)
+
+
+
+## 9.0.5-beta.0 (2021-12-20)
+
+
+
+## 9.0.4 (2021-12-15)
+
+
+
+## 9.0.3 (2021-12-13)
+
+
+#### Features
+
+* **typescript:** Add support for typescript 4.5.2 ([055ca5b](https://github.com/IgniteUI/igniteui-cli/commit/055ca5b7f8e54acdd8f3f1d6b6d7517916d852f3))
+
+
+
+## 9.0.1 (2021-11-25)
+
+
+
+# 9.0.0 (2021-11-22)
+
+
+
+# 9.0.0-rc.3 (2021-11-22)
+
+
+
+# 9.0.0-rc.2 (2021-11-19)
+
+
+#### Bug Fixes
+
+* add igx-scrollbar class to body, [#14033](https://github.com/IgniteUI/igniteui-cli/issues/14033) ([b02ac58](https://github.com/IgniteUI/igniteui-cli/commit/b02ac5822015c6b1b1fdd4684a52a2eecb3eadd9))
+
+
+
+# 9.0.0-rc.1 (2021-11-17)
+
+
+
+# 9.0.0-rc.0 (2021-11-17)
+
+
+#### Features
+
+* **angular:** update to Angular 13 [#895](https://github.com/IgniteUI/igniteui-cli/issues/895) ([#896](https://github.com/IgniteUI/igniteui-cli/issues/896)) ([32f1721](https://github.com/IgniteUI/igniteui-cli/commit/32f17215290af3372b554f0e440e39b9b9b5040a))
+
+
+
+# 8.3.0-rc.0 (2021-11-11)
+
+
+
+# 8.3.0-beta.6 (2021-11-09)
+
+
+
+# 8.3.0-beta.5 (2021-11-09)
+
+
+
+# 8.3.0-beta.4 (2021-11-09)
+
+
+
+# 8.3.0-beta.3 (2021-11-08)
+
+
+
+# 8.3.0-beta.2 (2021-11-08)
+
+
+
+# 8.3.0-beta.1 (2021-11-04)
+
+
+
+# 8.3.0-beta.0 (2021-11-04)
+
+
+
+## 8.2.1 (2021-10-08)
+
+
+
+## 8.2.1-rc.0 (2021-10-07)
+
+
+
+# 8.2.0 (2021-10-04)
+
+
+
+# 8.2.0-alpha.0 (2021-09-30)
+
+
+
+## 8.1.2 (2021-09-28)
+
+
+
+## 8.1.1 (2021-09-02)
+
+
+
+## 8.0.4 (2021-08-02)
+
+
+#### Bug Fixes
+
+* **schematics:** resolve schema id deprecation warning ([#870](https://github.com/IgniteUI/igniteui-cli/issues/870)) ([17d7016](https://github.com/IgniteUI/igniteui-cli/commit/17d70164de93a5162ba4a02b44b571de318a37c7))
+
+
+
+# 8.1.0-rc.0 (2021-07-30)
+
+
+
+# 8.1.0-beta.1 (2021-07-30)
+
+
+
+# 8.1.0-beta.0 (2021-07-28)
+
+
+#### Features
+
+* update angular to v12.1 [#856](https://github.com/IgniteUI/igniteui-cli/issues/856) ([#857](https://github.com/IgniteUI/igniteui-cli/issues/857)) ([971822e](https://github.com/IgniteUI/igniteui-cli/commit/971822e343158bd107ef5b07bf60773509bd928c))
+
+
+
+## 8.0.3 (2021-07-14)
+
+
+
+## 8.0.2 (2021-07-07)
+
+
+
+## 8.0.2-beta.1 (2021-07-06)
+
+
+
+## 8.0.2-beta.0 (2021-07-02)
+
+
+
+## 8.0.1 (2021-07-01)
+
+
+
+# 8.0.0 (2021-05-14)
+
+
+
+# 8.0.0-rc.0 (2021-05-13)
+
+
+
+# 8.0.0-alpha.1 (2021-05-13)
+
+
+
+## 7.1.1 (2021-03-15)
+
+
+
+## 7.1.1-beta.0 (2021-03-12)
+
+
+
+# 7.1.0 (2021-02-22)
+
+
+
+# 7.1.0-beta.0 (2021-02-18)
+
+
+
+## 7.0.1 (2020-11-16)
+
+
+
+# 7.0.0 (2020-11-13)
+
+
+
+# 7.0.0-rc.2 (2020-11-12)
+
+
+
+# 7.0.0-rc.1 (2020-11-10)
+
+
+
+# 7.0.0-rc.0 (2020-11-10)
+
+
+
+# 7.0.0-alpha.0 (2020-11-10)
+
+
+
+# 6.2.0 (2020-10-20)
+
+
+
+# 6.2.0-rc.0 (2020-10-16)
+
+
+
+# 6.2.0-beta.0 (2020-10-14)
+
+
+
+# 6.1.0 (2020-08-12)
+
+
+
+# 6.1.0-beta.0 (2020-08-07)
+
+
+
+# 6.1.0-alpha.0 (2020-07-09)
+
+
+
+# 6.0.0 (2020-06-25)
+
+
+
+# 6.0.0-rc.0 (2020-06-25)
+
+
+#### Bug Fixes
+
+* **igx,dock-manager:** resolve package name from project ([ac66d8e](https://github.com/IgniteUI/igniteui-cli/commit/ac66d8e0fadf643530a5f3aa53ee3fe851cc1a33))
+
+
+
+# 5.2.0 (2020-06-11)
+
+
+
+## 5.1.1 (2020-06-03)
+
+
+
+# 5.1.0 (2020-06-01)
+
+
+
+# 5.1.0-beta.4 (2020-06-01)
+
+
+
+# 5.1.0-beta.3 (2020-05-29)
+
+
+
+# 5.1.0-beta.2 (2020-05-28)
+
+
+
+# 5.1.0-beta.1 (2020-05-28)
+
+
+#### Bug Fixes
+
+* **schematics:** include upgrade-packages schema ([77aa13d](https://github.com/IgniteUI/igniteui-cli/commit/77aa13db7442b24d787029af4d6a860a0bd85d3b))
+* **schematics:** remove log for unsupported custom templates ([97e3bb3](https://github.com/IgniteUI/igniteui-cli/commit/97e3bb3813cf25603a97177a5ec5d87b2db94206))
+* **upgrade:** provide default fallback for incorrect package template ([9dd4d80](https://github.com/IgniteUI/igniteui-cli/commit/9dd4d80db6cf13d3fd7594790bcaaeec9a383b49))
+
+
+
+# 5.1.0-beta.0 (2020-05-27)
+
+
+#### Features
+
+* **schematics:** update-package logic added ([197b94e](https://github.com/IgniteUI/igniteui-cli/commit/197b94e367d5e9a359c989beef01c6f35d7b54b5))
+* **step-by-step:** add prompt to upgrade to private feed packages, [#724](https://github.com/IgniteUI/igniteui-cli/issues/724) ([63c0c85](https://github.com/IgniteUI/igniteui-cli/commit/63c0c85639c1e5e5415c82f96a6b5cb5bbad4b99))
+
+
+
+# 5.1.0-alpha.0 (2020-05-20)
+
+
+
+## 5.0.3 (2020-05-18)
+
+
+
+## 5.0.2 (2020-05-05)
+
+
+
+# 5.0.0 (2020-02-11)
+
+
+
+# 5.0.0-rc.4 (2020-02-11)
+
+
+#### Bug Fixes
+
+* **schematics:** ensure component prompt installs packages [#695](https://github.com/IgniteUI/igniteui-cli/issues/695) ([16e55d4](https://github.com/IgniteUI/igniteui-cli/commit/16e55d446c3d18fddb7ec7040a266ef498d83060))
+
+
+
+# 5.0.0-rc.3 (2020-02-07)
+
+
+
+# 5.0.0-rc.2 (2020-02-07)
+
+
+
+# 5.0.0-rc.0 (2020-01-31)
+
+
+#### Bug Fixes
+
+* new project accepts lower case theme name [#600](https://github.com/IgniteUI/igniteui-cli/issues/600) ([#619](https://github.com/IgniteUI/igniteui-cli/issues/619)) ([d6eedea](https://github.com/IgniteUI/igniteui-cli/commit/d6eedea8998b07aa6312dea6fdbab66acd88303a))
+* prompt for template and theme if no name provided [#622](https://github.com/IgniteUI/igniteui-cli/issues/622) ([#626](https://github.com/IgniteUI/igniteui-cli/issues/626)) ([44621e9](https://github.com/IgniteUI/igniteui-cli/commit/44621e9040f29da4819e6758e8316e6c7048e38d))
+
+
+
+# 5.0.0-beta.3 (2019-12-13)
+
+
+#### Bug Fixes
+
+* **cli, schematics:** check for fileSystem on post install [#612](https://github.com/IgniteUI/igniteui-cli/issues/612) ([#613](https://github.com/IgniteUI/igniteui-cli/issues/613)) ([0a6a878](https://github.com/IgniteUI/igniteui-cli/commit/0a6a87877bfe42fb9d665ac7b7e4be3d5e72511f))
+* **new, schematics:** no prompts when "name" is provided [#595](https://github.com/IgniteUI/igniteui-cli/issues/595) ([#609](https://github.com/IgniteUI/igniteui-cli/issues/609)) ([0ed45ba](https://github.com/IgniteUI/igniteui-cli/commit/0ed45ba0ed2147a0255d5df2a44e82b665c90c99))
+
+
+
+# 5.0.0-beta.2 (2019-12-06)
+
+
+#### Bug Fixes
+
+* **schematics:** set virtual FS in proper stage ([2102464](https://github.com/IgniteUI/igniteui-cli/commit/2102464698a493f97f4739bd14068b218b985d95))
+* **schematics:** skip start task if skipInstall === true ([#603](https://github.com/IgniteUI/igniteui-cli/issues/603)) ([fc38d65](https://github.com/IgniteUI/igniteui-cli/commit/fc38d651ecfa47f95921fa72f7be5ff68d8b586e))
+
+
+#### Features
+
+* **schematics:** adding a name for schematics projects [#587](https://github.com/IgniteUI/igniteui-cli/issues/587) ([#602](https://github.com/IgniteUI/igniteui-cli/issues/602)) ([19409d0](https://github.com/IgniteUI/igniteui-cli/commit/19409d0b7018c518c64c7ff161a6ec4a3438f834))
+
+
+
+# 5.0.0-beta.1 (2019-11-28)
+
+
+#### Bug Fixes
+
+* **schematics:** component schematics checks for available names [#576](https://github.com/IgniteUI/igniteui-cli/issues/576) ([#586](https://github.com/IgniteUI/igniteui-cli/issues/586)) ([bccd6c1](https://github.com/IgniteUI/igniteui-cli/commit/bccd6c131c4ab9bc197cfa29e1b792494270720f))
+* **schematics:** this package is a dep in new project instead of ignteui-cli ([c04a13c](https://github.com/IgniteUI/igniteui-cli/commit/c04a13c1c82c1d4a9a627503086f86d9040c6778))
+* **schematics:** use project config instead of hard-coded paths ([#592](https://github.com/IgniteUI/igniteui-cli/issues/592)) ([43240b6](https://github.com/IgniteUI/igniteui-cli/commit/43240b610d878186aa4b50959c37822e1f54eaf6))
+
+
+#### Features
+
+* **schematics:** add prompt session to component schematic, [#566](https://github.com/IgniteUI/igniteui-cli/issues/566) ([#571](https://github.com/IgniteUI/igniteui-cli/issues/571)) ([e25c1ce](https://github.com/IgniteUI/igniteui-cli/commit/e25c1ceab6fbff58a89e8712d3eda31da7c1af65))
+* **schematics:** adding ng-new schematic missing options [#596](https://github.com/IgniteUI/igniteui-cli/issues/596) ([#598](https://github.com/IgniteUI/igniteui-cli/issues/598)) ([8b51541](https://github.com/IgniteUI/igniteui-cli/commit/8b5154133bfe3fc6ef1c9958879cd835e36b001e))
+
+
+
+# 5.0.0-alpha.1 (2019-10-02)
+
+
+#### Bug Fixes
+
+* rename gitignore manually ([beb06a9](https://github.com/IgniteUI/igniteui-cli/commit/beb06a9de2511654797d75737a2e0bd5da968d8c))
+
+
+#### Features
+
+* **ng-schematics:** add component generate schematic ([a0e86c2](https://github.com/IgniteUI/igniteui-cli/commit/a0e86c29d72c52727a13aee4ded2acd0ef6ddc44))
+* **schematics:** add start schematic, enable npm and git init tasks ([2a329b1](https://github.com/IgniteUI/igniteui-cli/commit/2a329b18c5e2d6d0f852a72c842c3bab4022a9f2))
+
+## igniteui-cli@14.10.0-alpha.2 (2026-03-25)
+
+
+#### Bug Fixes
+
+* **eslint:** correct config ignores and resolve lint errors ([68d01ac](https://github.com/IgniteUI/igniteui-cli/commit/68d01ac6102e4e3d660dff9d229e826ea64943db))
+* **igx-ts-legacy:** update igx ts legacy templates ([#1517](https://github.com/IgniteUI/igniteui-cli/issues/1517)) ([c26c8ff](https://github.com/IgniteUI/igniteui-cli/commit/c26c8ff298092c21b2aa6ca77a75cd2a5fdedc79))
+
+
+#### Features
+
+* add copilot instructions for AI agents in multiple templates ([73921a7](https://github.com/IgniteUI/igniteui-cli/commit/73921a738efcc0a3e2a7df24bdf509f9f694da8a))
+* **claude:** add CLAUDE.md files for AI agent instructions across multiple templates ([5a96a33](https://github.com/IgniteUI/igniteui-cli/commit/5a96a33eac3f2fcbaf1444ac7778f7c8c2c89952))
+* make @igniteui/mcp-server a workspace package ([cf48369](https://github.com/IgniteUI/igniteui-cli/commit/cf483695e01afeac2ee6d7da193c2ee2d2af375a))
+* **templates:** add AGENTS.md and mcp.json files for React and Web Components and Angular project templates ([d867f44](https://github.com/IgniteUI/igniteui-cli/commit/d867f44e17d01be82ec6853c6b0c22910a652b73))
+
+
+
+## 14.9.2 (2026-03-11)
+
+
+#### Bug Fixes
+
+* **igx-ts:** update igniteui-angular versions and remove overrides ([#1508](https://github.com/IgniteUI/igniteui-cli/issues/1508)) ([6b4e1c8](https://github.com/IgniteUI/igniteui-cli/commit/6b4e1c87e8e7a94a5212a7037072088b7eec8a1a))
+* **upgrade-packages:** correctly glob files on windows ([#1511](https://github.com/IgniteUI/igniteui-cli/issues/1511)) ([64f2735](https://github.com/IgniteUI/igniteui-cli/commit/64f2735963f269fb4b60dd7479566baae33119c8))
+
+
+#### Reverts
+
+* partially revert changes swapping exec with spawn ([3a64b67](https://github.com/IgniteUI/igniteui-cli/commit/3a64b67bc43df42f72363e63192b90fea38b111f))
+
+
+
+## 14.9.1 (2026-02-25)
+
+
+
+# 14.9.0 (2026-02-25)
+
+
+#### Bug Fixes
+
+* **commands,list:** do not use `this` in handler ([#1494](https://github.com/IgniteUI/igniteui-cli/issues/1494)) ([b8f5b53](https://github.com/IgniteUI/igniteui-cli/commit/b8f5b53599cb20374acee53195395213060b51d3))
+* **react:** remove setupTests and update test with it's logic ([#1489](https://github.com/IgniteUI/igniteui-cli/issues/1489)) ([bd1f0ba](https://github.com/IgniteUI/igniteui-cli/commit/bd1f0ba0bccfd6768ccae44ab10568be5ecb1828))
+
+
+#### Features
+
+* **ng:** update igniteui-angular to 21.1.0 ([#1495](https://github.com/IgniteUI/igniteui-cli/issues/1495)) ([399f83e](https://github.com/IgniteUI/igniteui-cli/commit/399f83e4278dafdf9a3832fa013840f05ba586e6))
+
+
+
+## 14.8.5-beta.3 (2026-02-11)
+
+
+
+## 14.8.5-beta.0 (2026-02-10)
+
+
+
+## 14.8.4 (2026-02-05)
+
+
+#### Bug Fixes
+
+* **angular:** increase maximum error budget ([#1485](https://github.com/IgniteUI/igniteui-cli/issues/1485)) ([63a03bd](https://github.com/IgniteUI/igniteui-cli/commit/63a03bddb3459797bc5a0121f2d601823fd3cd35))
+
+
+
+## 14.8.3 (2026-01-19)
+
+
+
+## 14.8.2 (2026-01-13)
+
+
+
+## 14.8.2-beta.4 (2026-01-12)
+
+
+
+## 14.8.2-beta.3 (2026-01-12)
+
+
+#### Bug Fixes
+
+* add vitest/browser package ([e283ed2](https://github.com/IgniteUI/igniteui-cli/commit/e283ed29b99d794bd67f3bcab7a9dbfd391045ec))
+* add vitest/browser package ([5c29f50](https://github.com/IgniteUI/igniteui-cli/commit/5c29f5054febc0d656732886d08237528d6f6e40))
+
+
+
+## 14.8.2-beta.2 (2026-01-12)
+
+
+#### Bug Fixes
+
+* add playwright to the yaml files for wc ([6432111](https://github.com/IgniteUI/igniteui-cli/commit/643211110ad858f84b9ed23b3602f80218f23cbd))
+* resolve missed merge conflict ([ba42d4f](https://github.com/IgniteUI/igniteui-cli/commit/ba42d4f378a3e8334f51381ac1ff85799134ce3e))
+
+
+
+## 14.8.2-beta.0 (2026-01-12)
+
+
+
+# 14.8.0 (2025-12-03)
+
+
+
+# 14.8.0-beta.2 (2025-12-01)
+
+
+
+# 14.8.0-beta.1 (2025-12-01)
+
+
+
+## 14.7.1 (2025-11-20)
+
+
+#### Features
+
+* update tests to use Playwright ([517ea99](https://github.com/IgniteUI/igniteui-cli/commit/517ea9901372d7a42b516f5e9114a82880038e7e))
+
+
+
+# 14.7.0 (2025-11-17)
+
+
+#### Bug Fixes
+
+* command injection vulnerabilities in PackageManager and start command ([#1438](https://github.com/IgniteUI/igniteui-cli/issues/1438)) ([1f86df3](https://github.com/IgniteUI/igniteui-cli/commit/1f86df3d6e660b93db047415e9c53af1ef4f0a30))
+
+
+#### Features
+
+* **ng:** use ng lint schematic ([#1439](https://github.com/IgniteUI/igniteui-cli/issues/1439)) ([fa917cd](https://github.com/IgniteUI/igniteui-cli/commit/fa917cd7c974db05061f9442d8c5cdcc74853928))
+
+
+
+## 14.6.4 (2025-10-14)
+
+
+
+## 14.6.3 (2025-10-09)
+
+
+
+## 14.6.2 (2025-10-07)
+
+
+#### Features
+
+* **react:** add playwright and adjust tests; update packages; ([#1430](https://github.com/IgniteUI/igniteui-cli/issues/1430)) ([32b41dc](https://github.com/IgniteUI/igniteui-cli/commit/32b41dcf3f53de76fbafce39a36a1e8d51876b93))
+
+
+
+## 14.6.1 (2025-10-06)
+
+
+
+# 14.6.0 (2025-10-02)
+
+
+#### Features
+
+* **ng:** update ig, ng and other libs ([#1427](https://github.com/IgniteUI/igniteui-cli/issues/1427)) ([93fbbcc](https://github.com/IgniteUI/igniteui-cli/commit/93fbbcce2668084dcc958736f7167e36e9cbed47))
+
+
+
+## 14.5.8 (2025-09-25)
+
+
+
+## 14.5.7 (2025-09-23)
+
+
+
+## 14.5.6 (2025-09-18)
+
+
+#### Bug Fixes
+
+* Add missing igniteui-react-core dependency to React grid templates ([fb429bb](https://github.com/IgniteUI/igniteui-cli/commit/fb429bbd3634e0cf86a617672f857be4bb8b2f0d))
+* Remove --legacy-peer-deps flag to allow automatic peer dependency installation ([fe0ea3d](https://github.com/IgniteUI/igniteui-cli/commit/fe0ea3df94614b10dc494e241b070309e283c0b6))
+* set default route ([#1422](https://github.com/IgniteUI/igniteui-cli/issues/1422)) ([768d0d0](https://github.com/IgniteUI/igniteui-cli/commit/768d0d0a2873d2efc81c426ce35b5e42e92508a9))
+* update react templates ([93d132f](https://github.com/IgniteUI/igniteui-cli/commit/93d132fa229f0dba963cd5f21b89d5274e346910))
+* use only grid with defined columns ([faeb25a](https://github.com/IgniteUI/igniteui-cli/commit/faeb25a64effeba39e24dafe6e93e5a26a07c5bc))
+
+
+#### Features
+
+* Update Ignite UI product versions in template files ([964dda1](https://github.com/IgniteUI/igniteui-cli/commit/964dda13da00ca0c9d4bf1a42d6d98d2aa1d7b88))
+
+
+
+## 14.5.4 (2025-07-01)
+
+
+
+## 14.5.3 (2025-06-28)
+
+
+#### Bug Fixes
+
+* **react:** add missing argument and fix incorrect types ([#1403](https://github.com/IgniteUI/igniteui-cli/issues/1403)) ([fb006b3](https://github.com/IgniteUI/igniteui-cli/commit/fb006b38e6b4f3a2e61326b018787f67bd32b640))
+
+
+
+## 14.5.1 (2025-06-24)
+
+
+
+# 14.5.0 (2025-06-05)
+
+
+
+## 14.4.4 (2025-05-21)
+
+
+#### Features
+
+* add azure pipelines yaml files for angular, react and wc templates ([#1396](https://github.com/IgniteUI/igniteui-cli/issues/1396)) ([6a3e39d](https://github.com/IgniteUI/igniteui-cli/commit/6a3e39d41f50abe51fa7fd819961412304a31343))
+
+
+
+## 14.4.3 (2025-04-25)
+
+
+
+## 14.4.2 (2025-04-24)
+
+
+
+## 14.4.1 (2025-04-23)
+
+
+
+# 14.4.0 (2025-04-17)
+
+
+
+## 14.3.18 (2025-04-11)
+
+
+#### Bug Fixes
+
+* add missing static css files for WC ([#1385](https://github.com/IgniteUI/igniteui-cli/issues/1385)) ([95018f9](https://github.com/IgniteUI/igniteui-cli/commit/95018f93704f62af70b9c4a2e07b46554e6331a4))
+
+
+
+## 14.3.17 (2025-04-09)
+
+
+
+## 14.3.16 (2025-03-31)
+
+
+
+## 14.3.14 (2025-02-24)
+
+
+#### Bug Fixes
+
+* update eslint and fix warnings ([#1378](https://github.com/IgniteUI/igniteui-cli/issues/1378)) ([aa84345](https://github.com/IgniteUI/igniteui-cli/commit/aa84345ff21fc0fccde94063099e4c713862cde8))
+
+
+
+## 14.3.12-beta.0 (2025-01-27)
+
+
+#### Bug Fixes
+
+* **wc:** add seperate update for single or double quotes ([79ed105](https://github.com/IgniteUI/igniteui-cli/commit/79ed105cd67baf99f15e327d5f9840c3103d8018))
+* **wc:** fix iteration ([83583db](https://github.com/IgniteUI/igniteui-cli/commit/83583dbae937824e1b1f4d3f8d1ce8cc8e5589ec))
+* **wc:** fix paths in web components workflow ([6ff5999](https://github.com/IgniteUI/igniteui-cli/commit/6ff5999b782af24f09c29d4c60befb32a84fc5e0))
+
+
+
+## 14.3.11 (2025-01-24)
+
+
+#### Bug Fixes
+
+* static data paths when deploy to github pages ([#1371](https://github.com/IgniteUI/igniteui-cli/issues/1371)) ([4b40231](https://github.com/IgniteUI/igniteui-cli/commit/4b402313f4d2a2cfd80115d274514d9e5507334c))
+
+
+
+## 14.3.10 (2025-01-23)
+
+
+#### Features
+
+* increase maximum file size to cache in webComponents's vite configuration to 10 MB ([#1370](https://github.com/IgniteUI/igniteui-cli/issues/1370)) ([0a1385e](https://github.com/IgniteUI/igniteui-cli/commit/0a1385e5d1f98c8fcdf020d144f048b112b251d5))
+
+
+
+## 14.3.9 (2025-01-23)
+
+
+#### Features
+
+* enable silent mode in Vite configuration for improved build output ([#1369](https://github.com/IgniteUI/igniteui-cli/issues/1369)) ([7728300](https://github.com/IgniteUI/igniteui-cli/commit/7728300cbba7c5b15261ff2a82820432bd4b12b7))
+
+
+
+## 14.3.8 (2025-01-23)
+
+
+#### Features
+
+* replace rollup with vite configuration for wc ([#1364](https://github.com/IgniteUI/igniteui-cli/issues/1364)) ([024ee5f](https://github.com/IgniteUI/igniteui-cli/commit/024ee5f048427c5406013f1e4d051403ae255fca))
+
+
+
+## 14.3.7 (2025-01-22)
+
+
+#### Bug Fixes
+
+* **github-pages:** upgrade github pages deploy and artefact versions ([#1366](https://github.com/IgniteUI/igniteui-cli/issues/1366)) ([db6d0ea](https://github.com/IgniteUI/igniteui-cli/commit/db6d0eaef44c189cb80f10925d25595d97b7da4b))
+
+
+
+## 14.3.6 (2024-12-12)
+
+
+#### Bug Fixes
+
+* **migrations:** enable encapsulation for migrations ([#1361](https://github.com/IgniteUI/igniteui-cli/issues/1361)) ([9561a16](https://github.com/IgniteUI/igniteui-cli/commit/9561a1604a746b8a4b771627de2af4d14927e7c2))
+
+
+
+## 14.3.5 (2024-12-06)
+
+
+#### Bug Fixes
+
+* **web-components:** fix the step for updating the router navigation in github pages workflow ([#1358](https://github.com/IgniteUI/igniteui-cli/issues/1358)) ([3e0f42c](https://github.com/IgniteUI/igniteui-cli/commit/3e0f42c4fc7a75f6819f8ba85f760ac6a6d854f1))
+
+
+
+## 14.3.4 (2024-12-04)
+
+
+#### Bug Fixes
+
+* **web-components:** add step in github pages workflow to fix navigation ([#1355](https://github.com/IgniteUI/igniteui-cli/issues/1355)) ([0ca7277](https://github.com/IgniteUI/igniteui-cli/commit/0ca7277be8eaf1218af8a47f1ed7f51273499737))
+
+
+
+## 14.3.3 (2024-12-02)
+
+
+
+## 14.3.2 (2024-11-28)
+
+
+
+# 14.3.0 (2024-11-25)
+
+
+#### Features
+
+* Add pages deployment variable logic and fixes in github pages yaml files ([#1337](https://github.com/IgniteUI/igniteui-cli/issues/1337)) ([c75d9c7](https://github.com/IgniteUI/igniteui-cli/commit/c75d9c7a9d7a9244e7a9a814770809f06280529a))
+* allow reordering of array literal expressions ([#1323](https://github.com/IgniteUI/igniteui-cli/issues/1323)) ([412a2a5](https://github.com/IgniteUI/igniteui-cli/commit/412a2a585fa16fda53eb643c74af7fb4037c1412))
+
+
+
+## 14.2.3 (2024-11-15)
+
+
+
+## 14.2.2 (2024-11-08)
+
+
+#### Bug Fixes
+
+* **cli:** replace coveralls with coveralls-next ([#1336](https://github.com/IgniteUI/igniteui-cli/issues/1336)) ([4028e28](https://github.com/IgniteUI/igniteui-cli/commit/4028e28bc62da3f2232f79b60e26b9d13c93c8f9))
+
+
+
+## 14.2.1 (2024-10-28)
+
+
+
+# 14.2.0 (2024-10-25)
+
+
+
+# 14.2.0-beta.4 (2024-10-23)
+
+
+#### Bug Fixes
+
+* **cli:** add fixes in react and wc templates ([#1326](https://github.com/IgniteUI/igniteui-cli/issues/1326)) ([0430547](https://github.com/IgniteUI/igniteui-cli/commit/0430547a733c98b76aa94499516934547049b117))
+
+
+
+# 14.1.0 (2024-10-11)
+
+
+
+## 14.0.2 (2024-09-20)
+
+
+
+## 14.0.1 (2024-09-05)
+
+
+
+# 14.0.0 (2024-08-23)
+
+
+#### Bug Fixes
+
+* **eslint:** turn off no-explicit-any rule for wc ([#1288](https://github.com/IgniteUI/igniteui-cli/issues/1288)) ([1ee5b0f](https://github.com/IgniteUI/igniteui-cli/commit/1ee5b0f4ecc97a93f60b95e1615bb2a75fce9238))
+
+
+
+# 14.0.0-beta.2 (2024-07-24)
+
+
+#### Bug Fixes
+
+* **igr-ts:** add new lines in base app routes file ([#1284](https://github.com/IgniteUI/igniteui-cli/issues/1284)) ([92a14ef](https://github.com/IgniteUI/igniteui-cli/commit/92a14ef05f174bb5e5bc09978c986eb8f27e57e1))
+
+
+#### Features
+
+* **igx-templates:** add AngularTypeScriptFileUpdate ([e7f6ed3](https://github.com/IgniteUI/igniteui-cli/commit/e7f6ed3d339bb444dcdbaec4cabe5dcbff27b5ac))
+
+
+
+## 13.3.3 (2024-07-16)
+
+
+
+## 13.3.2 (2024-07-04)
+
+
+
+## 13.3.1 (2024-06-28)
+
+
+
+# 13.3.0-rc.0 (2024-05-31)
+
+
+
+## 13.2.1 (2024-05-09)
+
+
+
+# 13.2.0 (2024-04-29)
+
+
+
+# 13.2.0-rc.0 (2024-04-29)
+
+
+
+## 13.1.16 (2024-04-28)
+
+
+#### Bug Fixes
+
+* **react:** fix null type build error in main.tsx ([#1242](https://github.com/IgniteUI/igniteui-cli/issues/1242)) ([2d0b579](https://github.com/IgniteUI/igniteui-cli/commit/2d0b57999b6a22445c2e7ff494310f9e94c421ea))
+
+
+
+## 13.1.15 (2024-04-12)
+
+
+
+## 13.1.13 (2024-04-11)
+
+
+#### Bug Fixes
+
+* **cli-templetes:** Replaced index.html <title> to ApplicationTitle as placeholder ([#1237](https://github.com/IgniteUI/igniteui-cli/issues/1237)) ([d622d54](https://github.com/IgniteUI/igniteui-cli/commit/d622d54fbd3becbc514bfc971eac4c97b3346255))
+* **igr-ts:** lint ignore unused vars prefix; ts strict ([#1232](https://github.com/IgniteUI/igniteui-cli/issues/1232)) ([91e35b3](https://github.com/IgniteUI/igniteui-cli/commit/91e35b3eb060f079ff6e30bdead75af7d6b98add))
+
+
+
+## 13.1.13-beta.4 (2024-04-04)
+
+
+
+## 13.1.13-beta.3 (2024-04-04)
+
+
+#### Features
+
+* **react:** remove igniteui deps from package.json and bump versions ([841a19d](https://github.com/IgniteUI/igniteui-cli/commit/841a19d2779f4f156c48368b4fa7a20b1a181eb4))
+* **react:** turn off no-explicit-any in eslint ([ef50011](https://github.com/IgniteUI/igniteui-cli/commit/ef500113afe214e8e64dea926d6937c5e5f827df))
+
+
+
+## 13.1.12 (2024-03-21)
+
+
+#### Features
+
+* **cli:** upgrade packages for React and WC ([#1198](https://github.com/IgniteUI/igniteui-cli/issues/1198)) ([16c9b8d](https://github.com/IgniteUI/igniteui-cli/commit/16c9b8dda219ebacd473a2fad5e0c0ea70d5f320))
+
+
+
+# 13.2.0-beta.0 (2024-03-15)
+
+
+#### Bug Fixes
+
+* add elements internal polyfill to base template ([c7d2396](https://github.com/IgniteUI/igniteui-cli/commit/c7d2396572a9cd77205b8727ed81089f460403e2))
+* **Imports:** Fixed class import path in .test.ts ([#1224](https://github.com/IgniteUI/igniteui-cli/issues/1224)) ([6b3a2ef](https://github.com/IgniteUI/igniteui-cli/commit/6b3a2effef4951f0fc59e5393186eb2e69f2972b))
+* **Lint:** Fixed styles typing in style-utils ([#1222](https://github.com/IgniteUI/igniteui-cli/issues/1222)) ([6ad842a](https://github.com/IgniteUI/igniteui-cli/commit/6ad842a2bc16d50c8b29ddbca5907b80e40fd798))
+
+
+
+## 13.1.11 (2024-03-12)
+
+
+#### Bug Fixes
+
+* **react:** add editorconfig and vite-env.d.ts ([555300c](https://github.com/IgniteUI/igniteui-cli/commit/555300c38df56246cb7cc08f6b25e8ae5fd316f0))
+
+
+
+## 13.1.10 (2024-03-11)
+
+
+
+## 13.1.9 (2024-03-05)
+
+
+
+## 13.1.8 (2024-02-29)
+
+
+
+## 13.1.7 (2024-02-28)
+
+
+#### Bug Fixes
+
+* **WebComponents:** Removing an unnecessary ` from package.json ([3420292](https://github.com/IgniteUI/igniteui-cli/commit/3420292eb5752eaf76cfee1e12927d8d2749b8be))
+
+
+
+## 13.1.6 (2024-02-26)
+
+
+#### Bug Fixes
+
+* **React:** Add styles to support dark themes [#29410](https://github.com/IgniteUI/igniteui-cli/issues/29410) ([#1205](https://github.com/IgniteUI/igniteui-cli/issues/1205)) ([a191348](https://github.com/IgniteUI/igniteui-cli/commit/a191348d07317cdaac43db7bd52ee3958784ae55))
+
+
+
+## 13.1.5 (2024-01-31)
+
+
+#### Features
+
+* add style-utils file to base project ([#1195](https://github.com/IgniteUI/igniteui-cli/issues/1195)) ([112f27d](https://github.com/IgniteUI/igniteui-cli/commit/112f27ddc49d9106a182c8c7768543aa1b913164))
+
+
+
+## 13.1.3 (2024-01-17)
+
+
+#### Bug Fixes
+
+* **igr-ts:** add github workflows folder ([#1192](https://github.com/IgniteUI/igniteui-cli/issues/1192)) ([2369c55](https://github.com/IgniteUI/igniteui-cli/commit/2369c556b8f84ce6a575c73b617c7581cedf5c0f))
+* open browser on app start ([#1187](https://github.com/IgniteUI/igniteui-cli/issues/1187)) ([c4e1f5c](https://github.com/IgniteUI/igniteui-cli/commit/c4e1f5c8d65dd8729083377973a40450b4899d63))
+
+
+#### Features
+
+* **igc-ts:** bump the version to 4.7.0 and add new components ([#1189](https://github.com/IgniteUI/igniteui-cli/issues/1189)) ([e9dbfd7](https://github.com/IgniteUI/igniteui-cli/commit/e9dbfd7d6212f1b8535de6a142f6140e3848f6ef))
+
+
+
+## 13.1.1 (2023-12-14)
+
+
+#### Features
+
+* **igr-ts:** add igr-ts proj type ([#1146](https://github.com/IgniteUI/igniteui-cli/issues/1146)) ([4609525](https://github.com/IgniteUI/igniteui-cli/commit/460952505758fcf1ab9b559ed6809015f3c5d3a5)), closes [#1147](https://github.com/IgniteUI/igniteui-cli/issues/1147) [#1153](https://github.com/IgniteUI/igniteui-cli/issues/1153)
+
+
+
+## 13.0.1 (2023-11-15)
+
+
+
+# 13.0.0 (2023-11-09)
+
+
+
+# 13.0.0-rc.0 (2023-11-09)
+
+
+
+## 12.0.6-beta.2 (2023-10-02)
+
+
+
+## 12.0.5 (2023-07-18)
+
+
+#### Bug Fixes
+
+* memory allocation issue during build of webComponent app that uses igc-category-chart ([ee188bf](https://github.com/IgniteUI/igniteui-cli/commit/ee188bf4672b8ee96ac1b891cf8e334f44bb4929))
+
+
+
+## 12.0.4 (2023-07-18)
+
+
+
+## 12.0.3 (2023-06-28)
+
+
+
+## 12.0.3-beta.0 (2023-06-02)
+
+
+#### Bug Fixes
+
+* **igx:** replace DataGridSelectionMode with GridSelectionMode ([fc61052](https://github.com/IgniteUI/igniteui-cli/commit/fc61052d68f5fffbaf96c0f7c71220c39c7d5ef2))
+
+
+
+## 12.0.1 (2023-05-26)
+
+
+
+# 12.0.0 (2023-05-15)
+
+
+
+# 12.0.0-rc.0 (2023-05-15)
+
+
+#### Bug Fixes
+
+* **grid:** Adding missing packages to the grid template [#1109](https://github.com/IgniteUI/igniteui-cli/issues/1109) ([9c65afe](https://github.com/IgniteUI/igniteui-cli/commit/9c65afe228f182918c6e3f50e7cfec0466d7f7d2))
+* **web-components:** Adding packages in each template. ([674f55c](https://github.com/IgniteUI/igniteui-cli/commit/674f55c66bfa3308696cee3da1dd1d0e3ae64c0c))
+
+
+#### Features
+
+* **igx:** add base_with_home proj to igx-templates ([#1118](https://github.com/IgniteUI/igniteui-cli/issues/1118)) ([d84c431](https://github.com/IgniteUI/igniteui-cli/commit/d84c4310a03e35588626c57148091c6b224c7bc3))
+* **igx:** update to 16 ([#1120](https://github.com/IgniteUI/igniteui-cli/issues/1120)) ([e6efa40](https://github.com/IgniteUI/igniteui-cli/commit/e6efa40c2c748d2679b6be66252bc7732e51de29))
+
+
+
+## 11.1.1 (2023-04-11)
+
+
+#### Bug Fixes
+
+* **wc:** changing the function call [#1110](https://github.com/IgniteUI/igniteui-cli/issues/1110) ([#1113](https://github.com/IgniteUI/igniteui-cli/issues/1113)) ([5e4d1db](https://github.com/IgniteUI/igniteui-cli/commit/5e4d1dbdeeaa498278a7669b08031c51bfa2f367))
+
+
+
+# 11.1.0 (2023-03-28)
+
+
+
+# 11.1.0-rc.0 (2023-03-24)
+
+
+
+## 11.0.2 (2023-02-17)
+
+
+
+# 11.0.0 (2022-11-23)
+
+
+#### Features
+
+* add lint file for web components ([#1085](https://github.com/IgniteUI/igniteui-cli/issues/1085)) ([25498c0](https://github.com/IgniteUI/igniteui-cli/commit/25498c09b2bc4e5bc30c67c36008d97b342e3526))
+
+
+
+# 10.1.0-beta.13 (2022-10-27)
+
+
+
+# 10.1.0-beta.12 (2022-10-27)
+
+
+#### Features
+
+* **wc:** add npmrc to proj template ([#1079](https://github.com/IgniteUI/igniteui-cli/issues/1079)) ([af233e5](https://github.com/IgniteUI/igniteui-cli/commit/af233e53d72b615ce11e16a65ddf358645329ffb))
+
+
+
+# 10.1.0-beta.11 (2022-10-25)
+
+
+
+# 10.1.0-beta.10 (2022-10-25)
+
+
+
+# 10.1.0-beta9 (2022-10-25)
+
+
+
+# 10.1.0-beta.8 (2022-10-23)
+
+
+
+# 10.1.0-beta.7 (2022-10-19)
+
+
+
+# 10.1.0-beta.6 (2022-10-19)
+
+
+
+# 10.1.0-beta.5 (2022-10-18)
+
+
+
+# 10.1.0-beta.4 (2022-10-18)
+
+
+#### Features
+
+* provide default options when adding a template ([#1070](https://github.com/IgniteUI/igniteui-cli/issues/1070)) ([73e5c2c](https://github.com/IgniteUI/igniteui-cli/commit/73e5c2c0cc62b81384d6b4928103adf5ccf16153))
+
+
+
+# 10.1.0-beta.3 (2022-10-17)
+
+
+
+# 10.1.0-beta.2 (2022-10-14)
+
+
+
+# 10.1.0-beta.1 (2022-10-14)
+
+
+
+# 10.1.0-beta.0 (2022-10-07)
+
+
+#### Bug Fixes
+
+* **webcomponents:** set background and color to body ([b41a8b6](https://github.com/IgniteUI/igniteui-cli/commit/b41a8b66834ed46206cb14aa8bff0d6e3b99ef18))
+* **webcomponents:** set correct fallback for background color ([#1065](https://github.com/IgniteUI/igniteui-cli/issues/1065)) ([a976831](https://github.com/IgniteUI/igniteui-cli/commit/a976831228c204b015bd49773af4b5fc9767873a))
+* **webcomponents:** update app-root markup ([c717c37](https://github.com/IgniteUI/igniteui-cli/commit/c717c370cae66218eb4a7d5daaf0137da8c12d23))
+
+
+#### Features
+
+* **wc:** add base template for Web Components [#988](https://github.com/IgniteUI/igniteui-cli/issues/988) ([#1058](https://github.com/IgniteUI/igniteui-cli/issues/1058)) ([7574ab2](https://github.com/IgniteUI/igniteui-cli/commit/7574ab2b0221687a6ace6f627ec55caa3945236f))
+
+
+
+## 10.0.5 (2022-09-19)
+
+
+#### Features
+
+* **wc:** add accordion, tab & date-time-editor templates ([#1055](https://github.com/IgniteUI/igniteui-cli/issues/1055)) ([f2a631f](https://github.com/IgniteUI/igniteui-cli/commit/f2a631fcd18f529172af8e038929bf7f542e71ff))
+
+
+
+## 10.0.4-beta.0 (2022-06-30)
+
+
+
+## 10.0.2 (2022-06-29)
+
+
+
+## 10.0.1 (2022-06-17)
+
+
+
+# 9.2.0 (2022-05-26)
+
+
+
+## 9.1.4 (2022-05-20)
+
+
+
+## 9.1.3 (2022-05-19)
+
+
+
+## 9.1.2 (2022-05-16)
+
+
+
+## 9.1.1 (2022-03-18)
+
+
+
+## 9.1.1-rc.0 (2022-03-17)
+
+
+#### Bug Fixes
+
+* **wc:** address comments ([e1f804d](https://github.com/IgniteUI/igniteui-cli/commit/e1f804deada9f5fdf628ba25e122278cb9118507))
+
+
+#### Features
+
+* **ng:** update to 13.3.0 ([17553b0](https://github.com/IgniteUI/igniteui-cli/commit/17553b0da7586d14d91778417161f2a77864fd16))
+* **wc:** add new 2.1.0 components ([526da0c](https://github.com/IgniteUI/igniteui-cli/commit/526da0ce167659c9cfd3b21caf21efdcbc47e18d))
+
+
+
+# 9.1.0 (2022-03-02)
+
+
+
+# 9.1.0-rc.1 (2022-02-25)
+
+
+
+# 9.1.0-beta.0 (2022-02-22)
+
+
+#### Bug Fixes
+
+* **start:** pass in options for wc child process ([2df9e33](https://github.com/IgniteUI/igniteui-cli/commit/2df9e337e86e353d6d3dde6b53001af7af36fe12))
+
+
+#### Features
+
+* **wc:** adding empty view and refactor proj structure [#967](https://github.com/IgniteUI/igniteui-cli/issues/967) ([#979](https://github.com/IgniteUI/igniteui-cli/issues/979)) ([622a014](https://github.com/IgniteUI/igniteui-cli/commit/622a0143be1583cfb97d7b80cabbfe21e03c20eb))
+* **web-components:** use LitElement in the templates [#989](https://github.com/IgniteUI/igniteui-cli/issues/989) ([#1001](https://github.com/IgniteUI/igniteui-cli/issues/1001)) ([5d828bc](https://github.com/IgniteUI/igniteui-cli/commit/5d828bc6062e6971d82f588ebf59a6e489d87257))
+
+
+
+## 9.0.6 (2022-02-04)
+
+
+
+## 9.0.5 (2022-02-04)
+
+
+
+## 9.0.5-beta.2 (2022-02-03)
+
+
+
+## 9.0.5-beta.1 (2022-01-28)
+
+
+
+## 9.0.5-beta.0 (2021-12-20)
+
+
+
+## 9.0.4 (2021-12-15)
+
+
+
+## 9.0.3 (2021-12-13)
+
+
+#### Features
+
+* **typescript:** Add support for typescript 4.5.2 ([055ca5b](https://github.com/IgniteUI/igniteui-cli/commit/055ca5b7f8e54acdd8f3f1d6b6d7517916d852f3))
+* Update [@use](https://github.com/use) [@forward](https://github.com/forward) and hsla ([#961](https://github.com/IgniteUI/igniteui-cli/issues/961)) ([2ef8435](https://github.com/IgniteUI/igniteui-cli/commit/2ef8435816f8ff4f60c7e0cd4ed497a11fc815da))
+
+
+
+## 9.0.1 (2021-11-25)
+
+
+
+# 9.0.0 (2021-11-22)
+
+
+
+# 9.0.0-rc.3 (2021-11-22)
+
+
+
+# 9.0.0-rc.2 (2021-11-19)
+
+
+#### Bug Fixes
+
+* add igx-scrollbar class to body, [#14033](https://github.com/IgniteUI/igniteui-cli/issues/14033) ([b02ac58](https://github.com/IgniteUI/igniteui-cli/commit/b02ac5822015c6b1b1fdd4684a52a2eecb3eadd9))
+
+
+
+# 9.0.0-rc.1 (2021-11-17)
+
+
+
+# 9.0.0-rc.0 (2021-11-17)
+
+
+#### Features
+
+* **angular:** update to Angular 13 [#895](https://github.com/IgniteUI/igniteui-cli/issues/895) ([#896](https://github.com/IgniteUI/igniteui-cli/issues/896)) ([32f1721](https://github.com/IgniteUI/igniteui-cli/commit/32f17215290af3372b554f0e440e39b9b9b5040a))
+
+
+
+# 8.3.0-rc.0 (2021-11-11)
+
+
+
+# 8.3.0-beta.7 (2021-11-09)
+
+
+
+# 8.3.0-beta.6 (2021-11-09)
+
+
+
+# 8.3.0-beta.5 (2021-11-09)
+
+
+
+# 8.3.0-beta.4 (2021-11-09)
+
+
+
+# 8.3.0-beta.3 (2021-11-08)
+
+
+
+# 8.3.0-beta.2 (2021-11-08)
+
+
+
+# 8.3.0-beta.1 (2021-11-04)
+
+
+
+# 8.3.0-beta.0 (2021-11-04)
+
+
+
+## 8.2.1 (2021-10-08)
+
+
+
+## 8.2.1-rc.0 (2021-10-07)
+
+
+
+# 8.2.0 (2021-10-04)
+
+
+
+# 8.2.0-alpha.0 (2021-09-30)
+
+
+
+## 8.1.2 (2021-09-28)
+
+
+#### Bug Fixes
+
+* **igr-es6:** Underscore dot ([a0ce582](https://github.com/IgniteUI/igniteui-cli/commit/a0ce582e112a31c2c59d5532791ef07ab988335b))
+
+
+
+## 8.1.1 (2021-09-02)
+
+
+#### Bug Fixes
+
+* **custom-templates:** Refactor samples, ([1f50907](https://github.com/IgniteUI/igniteui-cli/commit/1f509070a9409c4100d3d9c6a5de2f443d04c556))
+* **ig-ts:** Free version path contains no /en ([e96c7f6](https://github.com/IgniteUI/igniteui-cli/commit/e96c7f673729a034eeb3d89f5adfe3061d6e9f0b))
+* **ig-ts:** Make use of all visible height ([ebfe5ed](https://github.com/IgniteUI/igniteui-cli/commit/ebfe5edada1fcd9d4f8e25f868f916ad2d862121))
+* **ig-ts:** Temp fix - add static FormsModule ([9341753](https://github.com/IgniteUI/igniteui-cli/commit/9341753ab6fed9597c6f30f9fb1383ad132282ab))
+* **ig-ts:** Update prod budgets ([4edd971](https://github.com/IgniteUI/igniteui-cli/commit/4edd97100f0ab2cdd7a00176992ca1da57de47ff))
+* **lint:** Fix all lint errors. ([659cc29](https://github.com/IgniteUI/igniteui-cli/commit/659cc2913f20092bd9ffc3f5a1a1f549db005912))
+* **lint:** Fix dum line lenght ([570accb](https://github.com/IgniteUI/igniteui-cli/commit/570accbaef8f74d01cecbeda0046edb1a8423ef1))
+* **lint:** Fix lint errors ([84394b9](https://github.com/IgniteUI/igniteui-cli/commit/84394b9c4c24ed9727c8719bd9e463cea09d482b))
+* **lint:** Fix lint errors. ([0477e7d](https://github.com/IgniteUI/igniteui-cli/commit/0477e7dd3d9b4731e1b3176316581d3e0339ca5e))
+* **templates:** Add file-saver package ([8c7a59d](https://github.com/IgniteUI/igniteui-cli/commit/8c7a59db381a32719cdadbf1534a387c90bb05d5))
+
+
+#### Features
+
+* **ig-ts:** Empty project is now angular project. ([83e5c6f](https://github.com/IgniteUI/igniteui-cli/commit/83e5c6f8370b0d10a349751d9b90f3f284d9ae69))
+
+
+
+# 8.1.0-rc.0 (2021-07-30)
+
+
+
+# 8.1.0-beta.1 (2021-07-30)
+
+
+
+# 8.1.0-beta.0 (2021-07-28)
+
+
+#### Features
+
+* update angular to v12.1 [#856](https://github.com/IgniteUI/igniteui-cli/issues/856) ([#857](https://github.com/IgniteUI/igniteui-cli/issues/857)) ([971822e](https://github.com/IgniteUI/igniteui-cli/commit/971822e343158bd107ef5b07bf60773509bd928c))
+
+
+
+## 8.0.3 (2021-07-14)
+
+
+
+## 8.0.2 (2021-07-07)
+
+
+
+## 8.0.2-beta.1 (2021-07-06)
+
+
+
+## 8.0.2-beta.0 (2021-07-02)
+
+
+
+## 8.0.1 (2021-07-01)
+
+
+
+# 8.0.0 (2021-05-14)
+
+
+
+# 8.0.0-rc.0 (2021-05-13)
+
+
+
+# 8.0.0-alpha.1 (2021-05-13)
+
+
+
+## 7.1.1 (2021-03-15)
+
+
+
+## 7.1.1-beta.0 (2021-03-12)
+
+
+
+# 7.1.0 (2021-02-22)
+
+
+
+# 7.1.0-beta.0 (2021-02-18)
+
+
+
+## 7.0.1 (2020-11-16)
+
+
+
+# 7.0.0 (2020-11-13)
+
+
+
+# 7.0.0-rc.2 (2020-11-12)
+
+
+
+# 7.0.0-rc.1 (2020-11-10)
+
+
+
+# 7.0.0-rc.0 (2020-11-10)
+
+
+
+# 7.0.0-alpha.0 (2020-11-10)
+
+
+
+# 6.2.0 (2020-10-20)
+
+
+
+# 6.2.0-rc.0 (2020-10-16)
+
+
+
+# 6.2.0-beta.0 (2020-10-14)
+
+
+#### Bug Fixes
+
+* **react-grid:** Add missing module [#791](https://github.com/IgniteUI/igniteui-cli/issues/791) ([#798](https://github.com/IgniteUI/igniteui-cli/issues/798)) ([68e2b81](https://github.com/IgniteUI/igniteui-cli/commit/68e2b81e297a5b4279f53e5bb9dff80126cc08b6))
+
+
+
+# 6.1.0 (2020-08-12)
+
+
+
+# 6.1.0-beta.0 (2020-08-07)
+
+
+
+# 6.1.0-alpha.0 (2020-07-09)
+
+
+
+# 6.0.0 (2020-06-25)
+
+
+
+## 5.2.1 (2020-06-25)
+
+
+
+# 6.0.0-rc.0 (2020-06-25)
+
+
+#### Features
+
+* **packages:** Bump packages to Angular 10  [#767](https://github.com/IgniteUI/igniteui-cli/issues/767) ([73a5670](https://github.com/IgniteUI/igniteui-cli/commit/73a56703ff4f4f0cc23d1da3c65cb4fbe114c9b4))
+* **packages:** Bump packages to Angular 10  [#767](https://github.com/IgniteUI/igniteui-cli/issues/767) ([f7e104e](https://github.com/IgniteUI/igniteui-cli/commit/f7e104e8ccee1692ff886259a7b7cf653de46573))
+
+
+
+# 5.2.0 (2020-06-11)
+
+
+
+## 5.1.1 (2020-06-03)
+
+
+
+# 5.1.0 (2020-06-01)
+
+
+
+# 5.1.0-beta.4 (2020-06-01)
+
+
+
+# 5.1.0-beta.3 (2020-05-29)
+
+
+
+# 5.1.0-beta.2 (2020-05-28)
+
+
+
+# 5.1.0-beta.1 (2020-05-28)
+
+
+#### Bug Fixes
+
+* **upgrade:** provide default fallback for incorrect package template ([9dd4d80](https://github.com/IgniteUI/igniteui-cli/commit/9dd4d80db6cf13d3fd7594790bcaaeec9a383b49))
+
+
+
+# 5.1.0-beta.0 (2020-05-27)
+
+
+#### Features
+
+* **commands:** Add 'upgrade-packages' command ([25db37d](https://github.com/IgniteUI/igniteui-cli/commit/25db37d0df1fa52d81501b74ab328330e7a60744))
+* **schematics:** update-package logic added ([197b94e](https://github.com/IgniteUI/igniteui-cli/commit/197b94e367d5e9a359c989beef01c6f35d7b54b5))
+* **step-by-step:** add prompt to upgrade to private feed packages, [#724](https://github.com/IgniteUI/igniteui-cli/issues/724) ([63c0c85](https://github.com/IgniteUI/igniteui-cli/commit/63c0c85639c1e5e5415c82f96a6b5cb5bbad4b99))
+
+
+
+# 5.1.0-alpha.0 (2020-05-20)
+
+
+
+## 5.0.3 (2020-05-18)
+
+
+#### Bug Fixes
+
+* **igx:** proj template error handler log instead throw, register only in prod ([270addd](https://github.com/IgniteUI/igniteui-cli/commit/270adddfdee8bb84892e768971e976e70550b2c2))
+
+
+
+## 5.0.2 (2020-05-05)
+
+
+#### Bug Fixes
+
+* **ig-ts:** correct grid features template variable [#702](https://github.com/IgniteUI/igniteui-cli/issues/702) ([3f09bd9](https://github.com/IgniteUI/igniteui-cli/commit/3f09bd9af64177162e4e450df2148e1b13b2f87f))
+* **start:** inherit all stdio, not just input [#699](https://github.com/IgniteUI/igniteui-cli/issues/699) ([1c03891](https://github.com/IgniteUI/igniteui-cli/commit/1c03891227bcdcff6dbff2005939e631737d8b7f))
+
+
+
+# 5.0.0 (2020-02-11)
+
+
+
+# 5.0.0-rc.4 (2020-02-11)
+
+
+
+# 5.0.0-rc.3 (2020-02-07)
+
+
+
+# 5.0.0-rc.2 (2020-02-07)
+
+
+#### Features
+
+* **ix-ts:** Update ig-ts projects [#647](https://github.com/IgniteUI/igniteui-cli/issues/647) ([a6204d8](https://github.com/IgniteUI/igniteui-cli/commit/a6204d80f50e885459306276f3584fac0488460b))
+
+
+
+# 5.0.0-rc.0 (2020-01-31)
+
+
+#### Bug Fixes
+
+* new project accepts lower case theme name [#600](https://github.com/IgniteUI/igniteui-cli/issues/600) ([#619](https://github.com/IgniteUI/igniteui-cli/issues/619)) ([d6eedea](https://github.com/IgniteUI/igniteui-cli/commit/d6eedea8998b07aa6312dea6fdbab66acd88303a))
+
+
+
+# 5.0.0-beta.3 (2019-12-13)
+
+
+#### Bug Fixes
+
+* **cli, schematics:** check for fileSystem on post install [#612](https://github.com/IgniteUI/igniteui-cli/issues/612) ([#613](https://github.com/IgniteUI/igniteui-cli/issues/613)) ([0a6a878](https://github.com/IgniteUI/igniteui-cli/commit/0a6a87877bfe42fb9d665ac7b7e4be3d5e72511f))
+
+
+
+# 5.0.0-beta.2 (2019-12-06)
+
+
+
+# 5.0.0-beta.1 (2019-11-28)
+
+
+
+# 5.0.0-alpha.1 (2019-10-02)
+
+
+# 14.10.0-alpha.1
+
+## igniteui/cli-core@14.10.0-alpha.1 (2026-03-25)
+
+
+#### Bug Fixes
+
+* **eslint:** correct config ignores and resolve lint errors ([68d01ac](https://github.com/IgniteUI/igniteui-cli/commit/68d01ac6102e4e3d660dff9d229e826ea64943db))
+* **lint:** re-enable no-console rule ([3ffa07f](https://github.com/IgniteUI/igniteui-cli/commit/3ffa07ff8812e93dd358b38332f3abc2ea955af2))
+
+
+
+## 14.9.2 (2026-03-11)
+
+
+#### Bug Fixes
+
+* **packages:** disable non-functional registry login attempt on upgrade ([#1528](https://github.com/IgniteUI/igniteui-cli/issues/1528)) ([1008a1e](https://github.com/IgniteUI/igniteui-cli/commit/1008a1e3fadb20553f464162d69a5bb2393d615b))
+* **packages:** login command for node@24+ spawn change ([cbb6502](https://github.com/IgniteUI/igniteui-cli/commit/cbb6502e90cfeaa7a87885748aa4b337c37c0b2f))
+* **upgrade-packages:** correctly glob files on windows ([#1511](https://github.com/IgniteUI/igniteui-cli/issues/1511)) ([64f2735](https://github.com/IgniteUI/igniteui-cli/commit/64f2735963f269fb4b60dd7479566baae33119c8))
+
+
+#### Reverts
+
+* partially revert changes swapping exec with spawn ([3a64b67](https://github.com/IgniteUI/igniteui-cli/commit/3a64b67bc43df42f72363e63192b90fea38b111f))
+
+
+
+## 14.9.1 (2026-02-25)
+
+
+
+# 14.9.0 (2026-02-25)
+
+
+#### Features
+
+* **ng:** update igniteui-angular to 21.1.0 ([#1495](https://github.com/IgniteUI/igniteui-cli/issues/1495)) ([399f83e](https://github.com/IgniteUI/igniteui-cli/commit/399f83e4278dafdf9a3832fa013840f05ba586e6))
+
+
+
+## 14.8.5-beta.3 (2026-02-11)
+
+
+
+## 14.8.5-beta.0 (2026-02-10)
+
+
+
+## 14.8.4 (2026-02-05)
+
+
+
+## 14.8.3 (2026-01-19)
+
+
+
+## 14.8.2 (2026-01-13)
+
+
+
+## 14.8.2-beta.4 (2026-01-12)
+
+
+
+## 14.8.2-beta.3 (2026-01-12)
+
+
+
+## 14.8.2-beta.2 (2026-01-12)
+
+
+
+## 14.8.2-beta.0 (2026-01-12)
+
+
+
+# 14.8.0 (2025-12-03)
+
+
+
+# 14.8.0-beta.2 (2025-12-01)
+
+
+
+# 14.8.0-beta.1 (2025-12-01)
+
+
+
+## 14.7.1 (2025-11-20)
+
+
+
+# 14.7.0 (2025-11-17)
+
+
+#### Bug Fixes
+
+* command injection vulnerabilities in PackageManager and start command ([#1438](https://github.com/IgniteUI/igniteui-cli/issues/1438)) ([1f86df3](https://github.com/IgniteUI/igniteui-cli/commit/1f86df3d6e660b93db047415e9c53af1ef4f0a30))
+
+
+#### Features
+
+* **ng:** use ng lint schematic ([#1439](https://github.com/IgniteUI/igniteui-cli/issues/1439)) ([fa917cd](https://github.com/IgniteUI/igniteui-cli/commit/fa917cd7c974db05061f9442d8c5cdcc74853928))
+
+
+
+## 14.6.4 (2025-10-14)
+
+
+
+## 14.6.3 (2025-10-09)
+
+
+
+## 14.6.2 (2025-10-07)
+
+
+
+## 14.6.1 (2025-10-06)
+
+
+
+# 14.6.0 (2025-10-02)
+
+
+#### Features
+
+* **ng:** update ig, ng and other libs ([#1427](https://github.com/IgniteUI/igniteui-cli/issues/1427)) ([93fbbcc](https://github.com/IgniteUI/igniteui-cli/commit/93fbbcce2668084dcc958736f7167e36e9cbed47))
+
+
+
+## 14.5.8 (2025-09-25)
+
+
+#### Bug Fixes
+
+* **react:** enhance upgrade-packages to support workspace glob patterns for projects without explicit workspaces ([#1424](https://github.com/IgniteUI/igniteui-cli/issues/1424)) ([6eeee2f](https://github.com/IgniteUI/igniteui-cli/commit/6eeee2ff879902197f012e83eb6064a72a4c438e))
+
+
+
+## 14.5.7 (2025-09-23)
+
+
+
+## 14.5.6 (2025-09-18)
+
+
+#### Bug Fixes
+
+* Remove --legacy-peer-deps flag to allow automatic peer dependency installation ([fe0ea3d](https://github.com/IgniteUI/igniteui-cli/commit/fe0ea3df94614b10dc494e241b070309e283c0b6))
+* **wc:** enhance upgrade-packages to support workspace glob patterns and vite.config.ts files ([#1408](https://github.com/IgniteUI/igniteui-cli/issues/1408)) ([bcd62be](https://github.com/IgniteUI/igniteui-cli/commit/bcd62be52107bcbdab6d207866fe7ffb99883b6d))
+
+
+
+## 14.5.4 (2025-07-01)
+
+
+
+## 14.5.3 (2025-06-28)
+
+
+
+## 14.5.1 (2025-06-24)
+
+
+
+# 14.5.0 (2025-06-05)
+
+
+
+## 14.4.4 (2025-05-21)
+
+
+#### Features
+
+* add azure pipelines yaml files for angular, react and wc templates ([#1396](https://github.com/IgniteUI/igniteui-cli/issues/1396)) ([6a3e39d](https://github.com/IgniteUI/igniteui-cli/commit/6a3e39d41f50abe51fa7fd819961412304a31343))
+
+
+
+## 14.4.3 (2025-04-25)
+
+
+#### Features
+
+* **React:** Update react html files with licensed packages when upgrading packages ([#1395](https://github.com/IgniteUI/igniteui-cli/issues/1395)) ([7a7c4f0](https://github.com/IgniteUI/igniteui-cli/commit/7a7c4f0b5b74acc67e7524e643ee2a102ededb46))
+
+
+
+## 14.4.2 (2025-04-24)
+
+
+
+## 14.4.1 (2025-04-23)
+
+
+
+# 14.4.0 (2025-04-17)
+
+
+
+## 14.3.18 (2025-04-11)
+
+
+#### Bug Fixes
+
+* add missing static css files for WC ([#1385](https://github.com/IgniteUI/igniteui-cli/issues/1385)) ([95018f9](https://github.com/IgniteUI/igniteui-cli/commit/95018f93704f62af70b9c4a2e07b46554e6331a4))
+
+
+
+## 14.3.17 (2025-04-09)
+
+
+#### Bug Fixes
+
+* **WC:** update themes import paths to licensed version ([#1387](https://github.com/IgniteUI/igniteui-cli/issues/1387)) ([260068b](https://github.com/IgniteUI/igniteui-cli/commit/260068b9c9e3f4e895717ca6003f6ba0aded5cf2))
+
+
+
+## 14.3.16 (2025-03-31)
+
+
+#### Bug Fixes
+
+* **workflows:** Do not throw error if github workflows directory does not exist when updating ([#1383](https://github.com/IgniteUI/igniteui-cli/issues/1383)) ([acc771a](https://github.com/IgniteUI/igniteui-cli/commit/acc771afac962166f630c36beff428aa83af97de))
+
+
+
+## 14.3.14 (2025-02-24)
+
+
+#### Bug Fixes
+
+* update eslint and fix warnings ([#1378](https://github.com/IgniteUI/igniteui-cli/issues/1378)) ([aa84345](https://github.com/IgniteUI/igniteui-cli/commit/aa84345ff21fc0fccde94063099e4c713862cde8))
+
+
+
+## 14.3.12-beta.0 (2025-01-27)
+
+
+
+## 14.3.11 (2025-01-24)
+
+
+#### Bug Fixes
+
+* static data paths when deploy to github pages ([#1371](https://github.com/IgniteUI/igniteui-cli/issues/1371)) ([4b40231](https://github.com/IgniteUI/igniteui-cli/commit/4b402313f4d2a2cfd80115d274514d9e5507334c))
+
+
+
+## 14.3.10 (2025-01-23)
+
+
+
+## 14.3.9 (2025-01-23)
+
+
+
+## 14.3.8 (2025-01-23)
+
+
+
+## 14.3.7 (2025-01-22)
+
+
+
+## 14.3.6 (2024-12-12)
+
+
+
+## 14.3.5 (2024-12-06)
+
+
+#### Bug Fixes
+
+* **web-components:** fix the step for updating the router navigation in github pages workflow ([#1358](https://github.com/IgniteUI/igniteui-cli/issues/1358)) ([3e0f42c](https://github.com/IgniteUI/igniteui-cli/commit/3e0f42c4fc7a75f6819f8ba85f760ac6a6d854f1))
+
+
+
+## 14.3.4 (2024-12-04)
+
+
+
+## 14.3.3 (2024-12-02)
+
+
+
+## 14.3.2 (2024-11-28)
+
+
+#### Features
+
+* Add pages deployment variable logic and fixes in github pages yaml files ([#1337](https://github.com/IgniteUI/igniteui-cli/issues/1337)) ([c75d9c7](https://github.com/IgniteUI/igniteui-cli/commit/c75d9c7a9d7a9244e7a9a814770809f06280529a))
+* allow reordering of array literal expressions ([#1323](https://github.com/IgniteUI/igniteui-cli/issues/1323)) ([412a2a5](https://github.com/IgniteUI/igniteui-cli/commit/412a2a585fa16fda53eb643c74af7fb4037c1412))
+
+
+
+## 14.2.3 (2024-11-15)
+
+
+
+## 14.2.2 (2024-11-08)
+
+
+
+## 14.2.1 (2024-10-28)
+
+
+
+# 14.2.0 (2024-10-25)
+
+
+
+# 14.2.0-beta.4 (2024-10-23)
+
+
+
+# 14.1.0 (2024-10-11)
+
+
+
+## 14.0.2 (2024-09-20)
+
+
+
+## 14.0.1 (2024-09-05)
+
+
+
+# 14.0.0 (2024-08-23)
+
+
+
+# 14.0.0-beta.2 (2024-07-24)
+
+
+#### Features
+
+* **igx-templates:** add AngularTypeScriptFileUpdate ([e7f6ed3](https://github.com/IgniteUI/igniteui-cli/commit/e7f6ed3d339bb444dcdbaec4cabe5dcbff27b5ac))
+
+
+
+## 13.3.3 (2024-07-16)
+
+
+
+## 13.3.2 (2024-07-04)
+
+
+
+## 13.3.1 (2024-06-28)
+
+
+#### Features
+
+* **core:** add FormattingService ([f7ea2a4](https://github.com/IgniteUI/igniteui-cli/commit/f7ea2a4d8f57b5f1edb531df76d05c541df754e1))
+* **core:** add new types ([aa636a3](https://github.com/IgniteUI/igniteui-cli/commit/aa636a3b1642da1a57758d49e0f7f6f79c7e2d01))
+* **core:** add TypeScriptASTTransformer ([9854847](https://github.com/IgniteUI/igniteui-cli/commit/9854847e32c718d82013e1fc8b58d9b06700b819))
+
+
+
+# 13.3.0-rc.0 (2024-05-31)
+
+
+
+## 13.2.1 (2024-05-09)
+
+
+
+# 13.2.0 (2024-04-29)
+
+
+
+# 13.2.0-rc.0 (2024-04-29)
+
+
+
+## 13.1.16 (2024-04-28)
+
+
+
+## 13.1.15 (2024-04-12)
+
+
+
+## 13.1.13 (2024-04-11)
+
+
+
+## 13.1.12 (2024-03-21)
+
+
+#### Features
+
+* **cli:** upgrade packages for React and WC ([#1198](https://github.com/IgniteUI/igniteui-cli/issues/1198)) ([16c9b8d](https://github.com/IgniteUI/igniteui-cli/commit/16c9b8dda219ebacd473a2fad5e0c0ea70d5f320))
+
+
+
+## 13.1.11 (2024-03-12)
+
+
+
+## 13.1.10 (2024-03-11)
+
+
+
+## 13.1.9 (2024-03-05)
+
+
+
+## 13.1.8 (2024-02-29)
+
+
+
+## 13.1.7 (2024-02-28)
+
+
+
+## 13.1.6 (2024-02-26)
+
+
+#### Features
+
+* **ng-add:** add setup config provideAnimations ([2f47676](https://github.com/IgniteUI/igniteui-cli/commit/2f476762ac772039228fe10565d49a6ced76b72d))
+
+
+
+## 13.1.5 (2024-01-31)
+
+
+
+## 13.1.3 (2024-01-17)
+
+
+
+## 13.1.1 (2023-12-14)
+
+
+#### Bug Fixes
+
+* **kebacase:** do not add dash before numbers ([25d8f54](https://github.com/IgniteUI/igniteui-cli/commit/25d8f544243f6e1f5583c772f4b8e0e3cbb7ca12))
+* **kebap-case:** add dash between number and uppercase letter ([0be7637](https://github.com/IgniteUI/igniteui-cli/commit/0be7637bc19423821e066a9e62dbdec3e5bd5cb4))
+
+
+#### Features
+
+* **igr-ts:** add igr-ts proj type ([#1146](https://github.com/IgniteUI/igniteui-cli/issues/1146)) ([4609525](https://github.com/IgniteUI/igniteui-cli/commit/460952505758fcf1ab9b559ed6809015f3c5d3a5)), closes [#1147](https://github.com/IgniteUI/igniteui-cli/issues/1147) [#1153](https://github.com/IgniteUI/igniteui-cli/issues/1153)
+
+
+
+## 13.0.1 (2023-11-15)
+
+
+#### Bug Fixes
+
+* update Utils.LowerDashed function ([#1171](https://github.com/IgniteUI/igniteui-cli/issues/1171)) ([2254ecc](https://github.com/IgniteUI/igniteui-cli/commit/2254ecc0267be8c19e7f1d5295886b2ba6c345c7))
+
+
+
+# 13.0.0 (2023-11-09)
+
+
+
+# 13.0.0-rc.0 (2023-11-09)
+
+
+
+## 12.0.6-beta.2 (2023-10-02)
+
+
+
+## 12.0.5 (2023-07-18)
+
+
+
+## 12.0.4 (2023-07-18)
+
+
+
+## 12.0.3 (2023-06-28)
+
+
+
+## 12.0.3-beta.0 (2023-06-02)
+
+
+
+## 12.0.1 (2023-05-26)
+
+
+
+# 12.0.0 (2023-05-15)
+
+
+
+# 12.0.0-rc.0 (2023-05-15)
+
+
+#### Features
+
+* **igx:** add base_with_home proj to igx-templates ([#1118](https://github.com/IgniteUI/igniteui-cli/issues/1118)) ([d84c431](https://github.com/IgniteUI/igniteui-cli/commit/d84c4310a03e35588626c57148091c6b224c7bc3))
+* **igx:** update to 16 ([#1120](https://github.com/IgniteUI/igniteui-cli/issues/1120)) ([e6efa40](https://github.com/IgniteUI/igniteui-cli/commit/e6efa40c2c748d2679b6be66252bc7732e51de29))
+
+
+
+## 11.1.1 (2023-04-11)
+
+
+
+# 11.1.0 (2023-03-28)
+
+
+
+# 11.1.0-rc.0 (2023-03-24)
+
+
+
+## 11.0.2 (2023-02-17)
+
+
+
+# 11.0.0 (2022-11-23)
+
+
+
+# 10.1.0-beta.13 (2022-10-27)
+
+
+
+# 10.1.0-beta.12 (2022-10-27)
+
+
+
+# 10.1.0-beta.11 (2022-10-25)
+
+
+
+# 10.1.0-beta.10 (2022-10-25)
+
+
+
+# 10.1.0-beta.8 (2022-10-23)
+
+
+
+# 10.1.0-beta.7 (2022-10-19)
+
+
+
+# 10.1.0-beta.5 (2022-10-18)
+
+
+
+# 10.1.0-beta.4 (2022-10-18)
+
+
+
+# 10.1.0-beta.3 (2022-10-17)
+
+
+
+# 10.1.0-beta.2 (2022-10-14)
+
+
+
+# 10.1.0-beta.1 (2022-10-14)
+
+
+
+# 10.1.0-beta.0 (2022-10-07)
+
+
+
+## 10.0.5 (2022-09-19)
+
+
+
+## 10.0.4-beta.0 (2022-06-30)
+
+
+
+## 10.0.2 (2022-06-29)
+
+
+
+## 10.0.1 (2022-06-17)
+
+
+#### Bug Fixes
+
+* **package-manager:** skip setting up child install tasks for new projects ([de2a134](https://github.com/IgniteUI/igniteui-cli/commit/de2a1341e13ba20635a5ed94c5cc7e4c79c7ca46))
+
+
+
+# 9.2.0 (2022-05-26)
+
+
+
+## 9.1.4 (2022-05-20)
+
+
+
+## 9.1.3 (2022-05-19)
+
+
+
+## 9.1.2 (2022-05-16)
+
+
+
+## 9.1.1 (2022-03-18)
+
+
+
+## 9.1.1-rc.0 (2022-03-17)
+
+
+
+# 9.1.0 (2022-03-02)
+
+
+
+# 9.1.0-rc.1 (2022-02-25)
+
+
+
+# 9.1.0-beta.0 (2022-02-22)
+
+
+#### Bug Fixes
+
+* **start:** pass in options for wc child process ([2df9e33](https://github.com/IgniteUI/igniteui-cli/commit/2df9e337e86e353d6d3dde6b53001af7af36fe12))
+
+
+
+## 9.0.6 (2022-02-04)
+
+
+
+## 9.0.5 (2022-02-04)
+
+
+
+## 9.0.5-beta.2 (2022-02-03)
+
+
+
+## 9.0.5-beta.1 (2022-01-28)
+
+
+
+## 9.0.5-beta.0 (2021-12-20)
+
+
+
+## 9.0.4 (2021-12-15)
+
+
+
+## 9.0.3 (2021-12-13)
+
+
+#### Bug Fixes
+
+* **import:** Update func signature ([a3ac17a](https://github.com/IgniteUI/igniteui-cli/commit/a3ac17ab30436ed0420c92902c53ff7c3dfd0534))
+* **lint:** Fix lint errors ([6b5dd98](https://github.com/IgniteUI/igniteui-cli/commit/6b5dd985e90fb9cf8675c6cf0c06c6193e27fb32))
+
+
+#### Features
+
+* **typescript:** Add support for typescript 4.5.2 ([055ca5b](https://github.com/IgniteUI/igniteui-cli/commit/055ca5b7f8e54acdd8f3f1d6b6d7517916d852f3))
+
+
+
+## 9.0.1 (2021-11-25)
+
+
+
+# 9.0.0 (2021-11-22)
+
+
+
+# 9.0.0-rc.3 (2021-11-22)
+
+
+
+# 9.0.0-rc.2 (2021-11-19)
+
+
+#### Bug Fixes
+
+* add igx-scrollbar class to body, [#14033](https://github.com/IgniteUI/igniteui-cli/issues/14033) ([b02ac58](https://github.com/IgniteUI/igniteui-cli/commit/b02ac5822015c6b1b1fdd4684a52a2eecb3eadd9))
+
+
+
+# 9.0.0-rc.1 (2021-11-17)
+
+
+
+# 9.0.0-rc.0 (2021-11-17)
+
+
+#### Features
+
+* **angular:** update to Angular 13 [#895](https://github.com/IgniteUI/igniteui-cli/issues/895) ([#896](https://github.com/IgniteUI/igniteui-cli/issues/896)) ([32f1721](https://github.com/IgniteUI/igniteui-cli/commit/32f17215290af3372b554f0e440e39b9b9b5040a))
+
+
+
+# 8.3.0-rc.0 (2021-11-11)
+
+
+
+# 8.3.0-beta.6 (2021-11-09)
+
+
+
+# 8.3.0-beta.5 (2021-11-09)
+
+
+
+# 8.3.0-beta.4 (2021-11-09)
+
+
+
+# 8.3.0-beta.3 (2021-11-08)
+
+
+
+# 8.3.0-beta.2 (2021-11-08)
+
+
+
+# 8.3.0-beta.1 (2021-11-04)
+
+
+
+# 8.3.0-beta.0 (2021-11-04)
+
+
+
+## 8.2.1 (2021-10-08)
+
+
+
+## 8.2.1-rc.0 (2021-10-07)
+
+
+
+# 8.2.0 (2021-10-04)
+
+
+
+# 8.2.0-alpha.0 (2021-09-30)
+
+
+
+## 8.1.2 (2021-09-28)
+
+
+#### Bug Fixes
+
+* **ts-transform:** respect quote type from editorconfig ([99b3aad](https://github.com/IgniteUI/igniteui-cli/commit/99b3aadce0e6e7de8e2fef502db2ff1811d7a11e))
+
+
+
+## 8.1.1 (2021-09-02)
+
+
+#### Bug Fixes
+
+* **lint:** Fix all lint errors. ([659cc29](https://github.com/IgniteUI/igniteui-cli/commit/659cc2913f20092bd9ffc3f5a1a1f549db005912))
+
+
+#### Features
+
+* **ig-ts:** Empty project is now angular project. ([83e5c6f](https://github.com/IgniteUI/igniteui-cli/commit/83e5c6f8370b0d10a349751d9b90f3f284d9ae69))
+
+
+
+# 8.1.0-rc.0 (2021-07-30)
+
+
+
+# 8.1.0-beta.1 (2021-07-30)
+
+
+
+# 8.1.0-beta.0 (2021-07-28)
+
+
+#### Features
+
+* update angular to v12.1 [#856](https://github.com/IgniteUI/igniteui-cli/issues/856) ([#857](https://github.com/IgniteUI/igniteui-cli/issues/857)) ([971822e](https://github.com/IgniteUI/igniteui-cli/commit/971822e343158bd107ef5b07bf60773509bd928c))
+
+
+
+## 8.0.3 (2021-07-14)
+
+
+
+## 8.0.2 (2021-07-07)
+
+
+
+## 8.0.2-beta.1 (2021-07-06)
+
+
+
+## 8.0.2-beta.0 (2021-07-02)
+
+
+
+## 8.0.1 (2021-07-01)
+
+
+
+# 8.0.0 (2021-05-14)
+
+
+
+# 8.0.0-rc.0 (2021-05-13)
+
+
+
+# 8.0.0-alpha.1 (2021-05-13)
+
+
+
+## 7.1.1 (2021-03-15)
+
+
+
+## 7.1.1-beta.0 (2021-03-12)
+
+
+
+# 7.1.0 (2021-02-22)
+
+
+
+# 7.1.0-beta.0 (2021-02-18)
+
+
+
+## 7.0.1 (2020-11-16)
+
+
+
+# 7.0.0 (2020-11-13)
+
+
+
+# 7.0.0-rc.2 (2020-11-12)
+
+
+
+# 7.0.0-rc.1 (2020-11-10)
+
+
+
+# 7.0.0-rc.0 (2020-11-10)
+
+
+
+# 7.0.0-alpha.0 (2020-11-10)
+
+
+
+# 6.2.0 (2020-10-20)
+
+
+
+# 6.2.0-rc.0 (2020-10-16)
+
+
+
+# 6.2.0-beta.0 (2020-10-14)
+
+
+
+# 6.1.0 (2020-08-12)
+
+
+
+# 6.1.0-beta.0 (2020-08-07)
+
+
+
+# 6.1.0-alpha.0 (2020-07-09)
+
+
+#### Features
+
+* **tsutil:** add optional parent route to TsFileUpdateUtil.addRoute method ([#777](https://github.com/IgniteUI/igniteui-cli/issues/777)) ([2df694a](https://github.com/IgniteUI/igniteui-cli/commit/2df694ac03a4601059f730b6cc9ae7d3ab6371ea))
+
+
+
+# 6.0.0 (2020-06-25)
+
+
+
+# 6.0.0-rc.0 (2020-06-25)
+
+
+#### Bug Fixes
+
+* use group.json for step by step groups [#707](https://github.com/IgniteUI/igniteui-cli/issues/707) ([adf562c](https://github.com/IgniteUI/igniteui-cli/commit/adf562c639725fb6a8008ef682f5fbdd66e65b55))
+
+
+#### Features
+
+* remove angular as default choice for step by step [#579](https://github.com/IgniteUI/igniteui-cli/issues/579) ([5d2697e](https://github.com/IgniteUI/igniteui-cli/commit/5d2697e019d344cc5ebedf9ac00de94b012ded73))
+
+
+
+# 5.2.0 (2020-06-11)
+
+
+
+## 5.1.1 (2020-06-03)
+
+
+
+# 5.1.0 (2020-06-01)
+
+
+
+# 5.1.0-beta.4 (2020-06-01)
+
+
+#### Bug Fixes
+
+* **package-manager:** manually update pckgJSON instead of letting npm do it, [#751](https://github.com/IgniteUI/igniteui-cli/issues/751) ([6fa4c0c](https://github.com/IgniteUI/igniteui-cli/commit/6fa4c0c8d5afecfef8a8c1de18b1f6620edc006c))
+
+
+
+# 5.1.0-beta.3 (2020-05-29)
+
+
+#### Bug Fixes
+
+* **upgrade:** clear stdin stream before login prompt ([c77f49a](https://github.com/IgniteUI/igniteui-cli/commit/c77f49ab940933e9df6da2518d5192d5d49fbd0c))
+
+
+
+# 5.1.0-beta.2 (2020-05-28)
+
+
+
+# 5.1.0-beta.1 (2020-05-28)
+
+
+
+# 5.1.0-beta.0 (2020-05-27)
+
+
+#### Bug Fixes
+
+* **templates:** upgrade command properly replaces strings in ALL .ts files ([2d2c9b3](https://github.com/IgniteUI/igniteui-cli/commit/2d2c9b3dc02da3f7633642d9b3b4a02d7f0bb119))
+
+
+#### Features
+
+* **commands:** Add 'upgrade-packages' command ([25db37d](https://github.com/IgniteUI/igniteui-cli/commit/25db37d0df1fa52d81501b74ab328330e7a60744))
+* **schematics:** update-package logic added ([197b94e](https://github.com/IgniteUI/igniteui-cli/commit/197b94e367d5e9a359c989beef01c6f35d7b54b5))
+* **step-by-step:** add prompt to upgrade to private feed packages, [#724](https://github.com/IgniteUI/igniteui-cli/issues/724) ([63c0c85](https://github.com/IgniteUI/igniteui-cli/commit/63c0c85639c1e5e5415c82f96a6b5cb5bbad4b99))
+
+
+
+# 5.1.0-alpha.0 (2020-05-20)
+
+
+
+## 5.0.3 (2020-05-18)
+
+
+
+## 5.0.2 (2020-05-05)
+
+
+#### Bug Fixes
+
+* **start:** inherit all stdio, not just input [#699](https://github.com/IgniteUI/igniteui-cli/issues/699) ([1c03891](https://github.com/IgniteUI/igniteui-cli/commit/1c03891227bcdcff6dbff2005939e631737d8b7f))
+
+
+
+# 5.0.0 (2020-02-11)
+
+
+
+# 5.0.0-rc.4 (2020-02-11)
+
+
+
+# 5.0.0-rc.3 (2020-02-07)
+
+
+
+# 5.0.0-rc.2 (2020-02-07)
+
+
+
+# 5.0.0-rc.0 (2020-01-31)
+
+
+
+# 5.0.0-beta.3 (2019-12-13)
+
+
+
+# 5.0.0-beta.2 (2019-12-06)
+
+
+#### Features
+
+* **schematics:** adding a name for schematics projects [#587](https://github.com/IgniteUI/igniteui-cli/issues/587) ([#602](https://github.com/IgniteUI/igniteui-cli/issues/602)) ([19409d0](https://github.com/IgniteUI/igniteui-cli/commit/19409d0b7018c518c64c7ff161a6ec4a3438f834))
+
+
+
+# 5.0.0-beta.1 (2019-11-28)
+
+
+#### Bug Fixes
+
+* **schematics:** component schematics checks for available names [#576](https://github.com/IgniteUI/igniteui-cli/issues/576) ([#586](https://github.com/IgniteUI/igniteui-cli/issues/586)) ([bccd6c1](https://github.com/IgniteUI/igniteui-cli/commit/bccd6c131c4ab9bc197cfa29e1b792494270720f))
+* **schematics:** this package is a dep in new project instead of ignteui-cli ([c04a13c](https://github.com/IgniteUI/igniteui-cli/commit/c04a13c1c82c1d4a9a627503086f86d9040c6778))
+* **templating, igx-ts:** add dot path variable for prefixed files that glob ignores ([486a0da](https://github.com/IgniteUI/igniteui-cli/commit/486a0da0ee6190f16544ee46ae360b822c057b53))
+
+
+
+# 5.0.0-alpha.1 (2019-10-02)
+
+## igniteui/angular-templates@21.1.14100-alpha.1 (2026-03-25)
+
+
+#### Bug Fixes
+
+* **eslint:** correct config ignores and resolve lint errors ([68d01ac](https://github.com/IgniteUI/igniteui-cli/commit/68d01ac6102e4e3d660dff9d229e826ea64943db))
+* **igx-ts-legacy:** update igx ts legacy templates ([#1517](https://github.com/IgniteUI/igniteui-cli/issues/1517)) ([c26c8ff](https://github.com/IgniteUI/igniteui-cli/commit/c26c8ff298092c21b2aa6ca77a75cd2a5fdedc79))
+
+
+#### Features
+
+* add copilot instructions for AI agents in multiple templates ([73921a7](https://github.com/IgniteUI/igniteui-cli/commit/73921a738efcc0a3e2a7df24bdf509f9f694da8a))
+* **claude:** add CLAUDE.md files for AI agent instructions across multiple templates ([5a96a33](https://github.com/IgniteUI/igniteui-cli/commit/5a96a33eac3f2fcbaf1444ac7778f7c8c2c89952))
+* **igx-ts:** update angular project to use vitest with playwright ([#1542](https://github.com/IgniteUI/igniteui-cli/issues/1542)) ([85dd3e6](https://github.com/IgniteUI/igniteui-cli/commit/85dd3e609295d7d801c127715c5fe8947f90f23d))
+* **igx-ts:** update project setup and templates naming ([#1514](https://github.com/IgniteUI/igniteui-cli/issues/1514)) ([ed4d1dd](https://github.com/IgniteUI/igniteui-cli/commit/ed4d1ddced09cee062caae7f8445df5ba11d8cac))
+* **mcp:** add angular-cli server configuration to mcp.json ([43a01a0](https://github.com/IgniteUI/igniteui-cli/commit/43a01a08ca6ac9b9a7958a172e5f27b02fe1fbb1))
+* **templates:** add AGENTS.md and mcp.json files for React and Web Components and Angular project templates ([d867f44](https://github.com/IgniteUI/igniteui-cli/commit/d867f44e17d01be82ec6853c6b0c22910a652b73))
+
+
+
+## 14.9.2 (2026-03-11)
+
+
+#### Bug Fixes
+
+* **igx-ts-legacy:** fi grid type import and add missing override ([ff24df0](https://github.com/IgniteUI/igniteui-cli/commit/ff24df0e665d8c834f510bfc62fc99af6532a38e))
+* **igx-ts:** fix eslint configurations ([#1509](https://github.com/IgniteUI/igniteui-cli/issues/1509)) ([ec63959](https://github.com/IgniteUI/igniteui-cli/commit/ec63959ee65e5c369d483d5dc34965f121a36cae))
+* **igx-ts:** fix side nav route data text ([487ba12](https://github.com/IgniteUI/igniteui-cli/commit/487ba122c2d51822642d15f501ea776193bf6a44))
+* **igx-ts:** update igniteui-angular versions and remove overrides ([#1508](https://github.com/IgniteUI/igniteui-cli/issues/1508)) ([6b4e1c8](https://github.com/IgniteUI/igniteui-cli/commit/6b4e1c87e8e7a94a5212a7037072088b7eec8a1a))
+
+
+
+## 14.9.1 (2026-02-25)
+
+
+
+# 14.9.0 (2026-02-25)
+
+
+#### Bug Fixes
+
+* **angular:** add igniteui angular core override ([0a5d46f](https://github.com/IgniteUI/igniteui-cli/commit/0a5d46f73bd3d621a833d07ad09318ccbdcfb9b9))
+* **angular:** add missing providers ([804703e](https://github.com/IgniteUI/igniteui-cli/commit/804703e984919aa2fac6272f8058f94256460b73))
+* **angular:** empty template config ([75eef02](https://github.com/IgniteUI/igniteui-cli/commit/75eef022a33f0dc6bc5b90816ccee9c415d76289))
+* update imports ([a2bf7bf](https://github.com/IgniteUI/igniteui-cli/commit/a2bf7bf6fc973ba0af8d12dc1c33605419475891))
+
+
+#### Features
+
+* **ng:** update igniteui-angular to 21.1.0 ([#1495](https://github.com/IgniteUI/igniteui-cli/issues/1495)) ([399f83e](https://github.com/IgniteUI/igniteui-cli/commit/399f83e4278dafdf9a3832fa013840f05ba586e6))
+
+
+
+## 14.8.5-beta.3 (2026-02-11)
+
+
+#### Bug Fixes
+
+* **angular:** fix the type of the providers ([142dbda](https://github.com/IgniteUI/igniteui-cli/commit/142dbda9665430bb3fb5a97744e8913195975708))
+
+
+
+## 14.8.5-beta.0 (2026-02-10)
+
+
+#### Bug Fixes
+
+* **angular:** add provide zone change detection in app config for angular standalone ([27b516b](https://github.com/IgniteUI/igniteui-cli/commit/27b516b640b1ecf9fdb7320e6a5c84a398aab505))
+
+
+
+## 14.8.4 (2026-02-05)
+
+
+#### Bug Fixes
+
+* add same fix to legacy angular projects ([2456829](https://github.com/IgniteUI/igniteui-cli/commit/245682908c81c931b65707b5098a98e3991f6f71))
+* **angular:** increase maximum error budget ([#1485](https://github.com/IgniteUI/igniteui-cli/issues/1485)) ([63a03bd](https://github.com/IgniteUI/igniteui-cli/commit/63a03bddb3459797bc5a0121f2d601823fd3cd35))
+* move tearDown to chart related test files ([40b1739](https://github.com/IgniteUI/igniteui-cli/commit/40b1739734199b035c32b02937456c9ae444654a))
+* remove calls to test.ts ([c08ca9f](https://github.com/IgniteUI/igniteui-cli/commit/c08ca9fcd472488a125c2f073bd06e051a5f3314))
+* remove test.ts as not needed ([451d49a](https://github.com/IgniteUI/igniteui-cli/commit/451d49ab3c6b7652b29b062e1e3a9301f2497a0f))
+
+
+
+## 14.8.3 (2026-01-19)
+
+
+#### Bug Fixes
+
+* **angular:** remove glob and rimraf from standalone package json ([#1478](https://github.com/IgniteUI/igniteui-cli/issues/1478)) ([0a3afce](https://github.com/IgniteUI/igniteui-cli/commit/0a3afce21e6e14196c8942f9f15a56793e1679fa))
+
+
+
+## 14.8.2 (2026-01-13)
+
+
+
+## 14.8.2-beta.4 (2026-01-12)
+
+
+
+## 14.8.2-beta.3 (2026-01-12)
+
+
+
+## 14.8.2-beta.2 (2026-01-12)
+
+
+
+## 14.8.2-beta.0 (2026-01-12)
+
+
+
+# 14.8.0 (2025-12-03)
+
+
+
+# 14.8.0-beta.2 (2025-12-01)
+
+
+
+# 14.8.0-beta.1 (2025-12-01)
+
+
+
+## 14.7.1 (2025-11-20)
+
+
+
+# 14.7.0 (2025-11-17)
+
+
+#### Features
+
+* **ng:** use ng lint schematic ([#1439](https://github.com/IgniteUI/igniteui-cli/issues/1439)) ([fa917cd](https://github.com/IgniteUI/igniteui-cli/commit/fa917cd7c974db05061f9442d8c5cdcc74853928))
+
+
+
+## 14.6.4 (2025-10-14)
+
+
+
+## 14.6.3 (2025-10-09)
+
+
+#### Bug Fixes
+
+* **ng:** move eqeqeq rule ([#1433](https://github.com/IgniteUI/igniteui-cli/issues/1433)) ([29a574d](https://github.com/IgniteUI/igniteui-cli/commit/29a574db2af16adff262440d789c58216ba08a8e))
+
+
+
+## 14.6.2 (2025-10-07)
+
+
+
+## 14.6.1 (2025-10-06)
+
+
+
+# 14.6.0 (2025-10-02)
+
+
+#### Features
+
+* **ng:** update ig, ng and other libs ([#1427](https://github.com/IgniteUI/igniteui-cli/issues/1427)) ([93fbbcc](https://github.com/IgniteUI/igniteui-cli/commit/93fbbcce2668084dcc958736f7167e36e9cbed47))
+
+
+
+## 14.5.8 (2025-09-25)
+
+
+
+## 14.5.7 (2025-09-23)
+
+
+#### Bug Fixes
+
+* **angular:** fix eslint config for angular modules ([#1423](https://github.com/IgniteUI/igniteui-cli/issues/1423)) ([2420d26](https://github.com/IgniteUI/igniteui-cli/commit/2420d26511cffef06cad58fa7e67a61a6b885187))
+
+
+
+## 14.5.6 (2025-09-18)
+
+
+#### Bug Fixes
+
+* **ng, standalone:** add test setup file for angular standalone ([#1421](https://github.com/IgniteUI/igniteui-cli/issues/1421)) ([feebb55](https://github.com/IgniteUI/igniteui-cli/commit/feebb5574cfffe86f6f2b342c2643b3ef9651a3c))
+
+
+
+## 14.5.4 (2025-07-01)
+
+
+#### Bug Fixes
+
+* **ng:** Add same proj rxjs version in overrides, so there are no peer dep errors for it. It is needed when having reveal or other overrides. ([4728d19](https://github.com/IgniteUI/igniteui-cli/commit/4728d19e7658cf5c4d863a6c277be696f77e5ac5))
+
+
+
+## 14.5.3 (2025-06-28)
+
+
+#### Bug Fixes
+
+* **angular:** fix theme errors ([#1404](https://github.com/IgniteUI/igniteui-cli/issues/1404)) ([3e7e4a3](https://github.com/IgniteUI/igniteui-cli/commit/3e7e4a3777bde5cc025df182bb57e5b9f002c5d9))
+
+
+
+## 14.5.1 (2025-06-24)
+
+
+
+# 14.5.0 (2025-06-05)
+
+
+
+## 14.4.4 (2025-05-21)
+
+
+#### Features
+
+* add azure pipelines yaml files for angular, react and wc templates ([#1396](https://github.com/IgniteUI/igniteui-cli/issues/1396)) ([6a3e39d](https://github.com/IgniteUI/igniteui-cli/commit/6a3e39d41f50abe51fa7fd819961412304a31343))
+
+
+
+## 14.4.3 (2025-04-25)
+
+
+
+## 14.4.2 (2025-04-24)
+
+
+
+## 14.4.1 (2025-04-23)
+
+
+
+# 14.4.0 (2025-04-17)
+
+
+
+## 14.3.18 (2025-04-11)
+
+
+#### Bug Fixes
+
+* add missing static css files for WC ([#1385](https://github.com/IgniteUI/igniteui-cli/issues/1385)) ([95018f9](https://github.com/IgniteUI/igniteui-cli/commit/95018f93704f62af70b9c4a2e07b46554e6331a4))
+
+
+
+## 14.3.17 (2025-04-09)
+
+
+
+## 14.3.16 (2025-03-31)
+
+
+
+## 14.3.14 (2025-02-24)
+
+
+#### Bug Fixes
+
+* **angular:** add ovverides for reveal sdk wrappers ([d2bc8cb](https://github.com/IgniteUI/igniteui-cli/commit/d2bc8cb26584f5836d633d24421d6dc774bd53a5))
+* update eslint and fix warnings ([#1378](https://github.com/IgniteUI/igniteui-cli/issues/1378)) ([aa84345](https://github.com/IgniteUI/igniteui-cli/commit/aa84345ff21fc0fccde94063099e4c713862cde8))
+
+
+
+## 14.3.12-beta.0 (2025-01-27)
+
+
+
+## 14.3.11 (2025-01-24)
+
+
+#### Bug Fixes
+
+* static data paths when deploy to github pages ([#1371](https://github.com/IgniteUI/igniteui-cli/issues/1371)) ([4b40231](https://github.com/IgniteUI/igniteui-cli/commit/4b402313f4d2a2cfd80115d274514d9e5507334c))
+
+
+
+## 14.3.10 (2025-01-23)
+
+
+
+## 14.3.9 (2025-01-23)
+
+
+
+## 14.3.8 (2025-01-23)
+
+
+
+## 14.3.7 (2025-01-22)
+
+
+#### Bug Fixes
+
+* **github-pages:** upgrade github pages deploy and artefact versions ([#1366](https://github.com/IgniteUI/igniteui-cli/issues/1366)) ([db6d0ea](https://github.com/IgniteUI/igniteui-cli/commit/db6d0eaef44c189cb80f10925d25595d97b7da4b))
+
+
+
+## 14.3.6 (2024-12-12)
+
+
+
+## 14.3.5 (2024-12-06)
+
+
+#### Bug Fixes
+
+* **web-components:** fix the step for updating the router navigation in github pages workflow ([#1358](https://github.com/IgniteUI/igniteui-cli/issues/1358)) ([3e0f42c](https://github.com/IgniteUI/igniteui-cli/commit/3e0f42c4fc7a75f6819f8ba85f760ac6a6d854f1))
+
+
+
+## 14.3.4 (2024-12-04)
+
+
+
+## 14.3.3 (2024-12-02)
+
+
+
+## 14.3.2 (2024-11-28)
+
+
+#### Bug Fixes
+
+* adapt ngModules templates to 19 changes ([2ce6e9d](https://github.com/IgniteUI/igniteui-cli/commit/2ce6e9d38acef0f0e8981ef054f61ab35d137fd8))
+
+
+
+# 14.3.0 (2024-11-25)
+
+
+#### Features
+
+* Add pages deployment variable logic and fixes in github pages yaml files ([#1337](https://github.com/IgniteUI/igniteui-cli/issues/1337)) ([c75d9c7](https://github.com/IgniteUI/igniteui-cli/commit/c75d9c7a9d7a9244e7a9a814770809f06280529a))
+* allow reordering of array literal expressions ([#1323](https://github.com/IgniteUI/igniteui-cli/issues/1323)) ([412a2a5](https://github.com/IgniteUI/igniteui-cli/commit/412a2a585fa16fda53eb643c74af7fb4037c1412))
+
+
+
+## 14.2.3 (2024-11-15)
+
+
+
+## 14.2.2 (2024-11-08)
+
+
+
+## 14.2.1 (2024-10-28)
+
+
+
+# 14.2.0 (2024-10-25)
+
+
+
+# 14.2.0-beta.4 (2024-10-23)
+
+
+
+# 14.1.0 (2024-10-11)
+
+
+
+## 14.0.2 (2024-09-20)
+
+
+
+## 14.0.1 (2024-09-05)
+
+
+
+# 14.0.0 (2024-08-23)
+
+
+
+# 14.0.0-beta.2 (2024-07-24)
+
+
+
+## 13.4.1 (2024-07-24)
+
+
+#### Features
+
+* **igx-templates:** add AngularTypeScriptFileUpdate ([e7f6ed3](https://github.com/IgniteUI/igniteui-cli/commit/e7f6ed3d339bb444dcdbaec4cabe5dcbff27b5ac))
+
+
+
+# 13.4.0 (2024-07-22)
+
+
+
+## 13.3.3 (2024-07-16)
+
+
+
+## 13.3.2 (2024-07-04)
+
+
+
+## 13.3.1 (2024-06-28)
+
+
+
+# 13.3.0-rc.0 (2024-05-31)
+
+
+#### Features
+
+* **ng-sa-base:** add vscode template folder ([a4787e7](https://github.com/IgniteUI/igniteui-cli/commit/a4787e74fcc715aceaa4c265fd97e4452e70463e))
+* **ngm-base:** add vscode template folder ([0ed6fb8](https://github.com/IgniteUI/igniteui-cli/commit/0ed6fb8cf8ef75103c84e8ee2ddeaa2886be3922))
+
+
+
+## 13.2.1 (2024-05-09)
+
+
+
+# 13.2.0 (2024-04-29)
+
+
+
+# 13.2.0-rc.0 (2024-04-29)
+
+
+
+## 13.1.16 (2024-04-28)
+
+
+
+## 13.1.15 (2024-04-12)
+
+
+
+## 13.1.13 (2024-04-11)
+
+
+#### Bug Fixes
+
+* **cli-templetes:** Replaced index.html <title> to ApplicationTitle as placeholder ([#1237](https://github.com/IgniteUI/igniteui-cli/issues/1237)) ([d622d54](https://github.com/IgniteUI/igniteui-cli/commit/d622d54fbd3becbc514bfc971eac4c97b3346255))
+* fix yml script placeholder delimiters ([#1239](https://github.com/IgniteUI/igniteui-cli/issues/1239)) ([45a2264](https://github.com/IgniteUI/igniteui-cli/commit/45a2264a93edc5b0ca307d5ec43fcd6a9de42cea))
+
+
+
+## 13.1.12 (2024-03-21)
+
+
+#### Features
+
+* **cli:** upgrade packages for React and WC ([#1198](https://github.com/IgniteUI/igniteui-cli/issues/1198)) ([16c9b8d](https://github.com/IgniteUI/igniteui-cli/commit/16c9b8dda219ebacd473a2fad5e0c0ea70d5f320))
+
+
+
+## 13.1.11 (2024-03-12)
+
+
+
+## 13.1.10 (2024-03-11)
+
+
+
+## 13.1.9 (2024-03-05)
+
+
+
+## 13.1.8 (2024-02-29)
+
+
+
+## 13.1.7 (2024-02-28)
+
+
+
+## 13.1.6 (2024-02-26)
+
+
+#### Features
+
+* **_base-legacy:** update project type to legacy ([f8984c9](https://github.com/IgniteUI/igniteui-cli/commit/f8984c93f02e8391ca721bc49eeabd45e5f7bb34))
+* **_base:** provide http client ([1e1d1c2](https://github.com/IgniteUI/igniteui-cli/commit/1e1d1c2d6c70a110ace81e74c91bcab2a7021086))
+
+
+
+## 13.1.5 (2024-01-31)
+
+
+
+## 13.1.3 (2024-01-17)
+
+
+#### Bug Fixes
+
+* **igx-ts:** update karma-jasmine-html-reporter ([0cf034d](https://github.com/IgniteUI/igniteui-cli/commit/0cf034db6474b8ed88e9b3d93e9b3011afd47b3b))
+
+
+
+## 13.1.1 (2023-12-14)
+
+
+#### Bug Fixes
+
+* **igx:** remove prod config for ng build ([d90c056](https://github.com/IgniteUI/igniteui-cli/commit/d90c056aed7ac87f972ea719eeac9367e6b97226))
+
+
+#### Features
+
+* **igr-ts:** add igr-ts proj type ([#1146](https://github.com/IgniteUI/igniteui-cli/issues/1146)) ([4609525](https://github.com/IgniteUI/igniteui-cli/commit/460952505758fcf1ab9b559ed6809015f3c5d3a5)), closes [#1147](https://github.com/IgniteUI/igniteui-cli/issues/1147) [#1153](https://github.com/IgniteUI/igniteui-cli/issues/1153)
+
+
+
+## 13.0.1 (2023-11-15)
+
+
+
+# 13.0.0 (2023-11-09)
+
+
+
+# 13.0.0-rc.0 (2023-11-09)
+
+
+
+## 12.0.6-beta.2 (2023-10-02)
+
+
+
+## 12.0.5 (2023-07-18)
+
+
+
+## 12.0.4 (2023-07-18)
+
+
+
+## 12.0.3 (2023-06-28)
+
+
+
+## 12.0.3-beta.0 (2023-06-02)
+
+
+#### Bug Fixes
+
+* **igx:** more fixes ([1373d18](https://github.com/IgniteUI/igniteui-cli/commit/1373d18e45d8fa9bb69bf5692b360bb4ecec531b))
+* **igx:** replace DataGridSelectionMode with GridSelectionMode ([fc61052](https://github.com/IgniteUI/igniteui-cli/commit/fc61052d68f5fffbaf96c0f7c71220c39c7d5ef2))
+
+
+
+## 12.0.1 (2023-05-26)
+
+
+
+## 11.1.2 (2023-05-25)
+
+
+
+# 12.0.0 (2023-05-15)
+
+
+
+# 12.0.0-rc.0 (2023-05-15)
+
+
+#### Features
+
+* **igx:** add base_with_home proj to igx-templates ([#1118](https://github.com/IgniteUI/igniteui-cli/issues/1118)) ([d84c431](https://github.com/IgniteUI/igniteui-cli/commit/d84c4310a03e35588626c57148091c6b224c7bc3))
+* **igx:** update to 16 ([#1120](https://github.com/IgniteUI/igniteui-cli/issues/1120)) ([e6efa40](https://github.com/IgniteUI/igniteui-cli/commit/e6efa40c2c748d2679b6be66252bc7732e51de29))
+
+
+
+## 11.1.1 (2023-04-11)
+
+
+
+# 11.1.0 (2023-03-28)
+
+
+
+# 11.1.0-rc.0 (2023-03-24)
+
+
+#### Bug Fixes
+
+* **igx-ts:** updating dependencies [#1099](https://github.com/IgniteUI/igniteui-cli/issues/1099) ([#1102](https://github.com/IgniteUI/igniteui-cli/issues/1102)) ([cd3b35a](https://github.com/IgniteUI/igniteui-cli/commit/cd3b35ac7961474ecd4ecbb8c4dffa33067c20f1))
+
+
+
+## 11.0.2 (2023-02-17)
+
+
+
+# 11.0.0 (2022-11-23)
+
+
+
+# 10.1.0-beta.13 (2022-10-27)
+
+
+
+# 10.1.0-beta.12 (2022-10-27)
+
+
+
+# 10.1.0-beta.11 (2022-10-25)
+
+
+
+# 10.1.0-beta.10 (2022-10-25)
+
+
+
+# 10.1.0-beta.8 (2022-10-23)
+
+
+
+# 10.1.0-beta.7 (2022-10-19)
+
+
+
+# 10.1.0-beta.5 (2022-10-18)
+
+
+
+# 10.1.0-beta.4 (2022-10-18)
+
+
+
+# 10.1.0-beta.3 (2022-10-17)
+
+
+
+# 10.1.0-beta.2 (2022-10-14)
+
+
+
+# 10.1.0-beta.1 (2022-10-14)
+
+
+
+# 10.1.0-beta.0 (2022-10-07)
+
+
+
+## 10.0.5 (2022-09-19)
+
+
+
+## 10.0.4-beta.0 (2022-06-30)
+
+
+
+## 10.0.2 (2022-06-29)
+
+
+
+## 10.0.1 (2022-06-17)
+
+
+
+# 9.2.0 (2022-05-26)
+
+
+
+## 9.1.4 (2022-05-20)
+
+
+
+## 9.1.3 (2022-05-19)
+
+
+
+## 9.1.2 (2022-05-16)
+
+
+#### Bug Fixes
+
+* **fintech grid:** fix slow grid [#1020](https://github.com/IgniteUI/igniteui-cli/issues/1020) ([4f888dc](https://github.com/IgniteUI/igniteui-cli/commit/4f888dc3c2b1fd6ad896b197634d3aa0c3ef57cd))
+
+
+
+## 9.1.1 (2022-03-18)
+
+
+
+## 9.1.1-rc.0 (2022-03-17)
+
+
+#### Bug Fixes
+
+* **ng:** gridAPI rename ([5b8b0a5](https://github.com/IgniteUI/igniteui-cli/commit/5b8b0a5e5e21ce5ae2228e0d025eea0195206292))
+
+
+#### Features
+
+* **ng:** update to 13.3.0 ([17553b0](https://github.com/IgniteUI/igniteui-cli/commit/17553b0da7586d14d91778417161f2a77864fd16))
+
+
+
+# 9.1.0 (2022-03-02)
+
+
+
+# 9.1.0-rc.1 (2022-02-25)
+
+
+#### Bug Fixes
+
+* **templates:** Adding override modifier. ([6334d17](https://github.com/IgniteUI/igniteui-cli/commit/6334d174642212d942c5f5669c1082ae56bb3cc8))
+
+
+
+# 9.1.0-rc.0 (2022-02-24)
+
+
+
+# 9.1.0-beta.0 (2022-02-22)
+
+
+#### Bug Fixes
+
+* **angular:** change more igx- ([f9ade5e](https://github.com/IgniteUI/igniteui-cli/commit/f9ade5e176444ce3c2a80f60baf43d239b8788fe))
+* **angular:** remove old code ([3b063db](https://github.com/IgniteUI/igniteui-cli/commit/3b063db9cf51509b289148f4928cdfda9837a6dd))
+
+
+
+## 9.0.6 (2022-02-04)
+
+
+
+## 9.0.5 (2022-02-04)
+
+
+
+## 9.0.5-beta.2 (2022-02-03)
+
+
+
+## 9.0.5-beta.1 (2022-01-28)
+
+
+
+## 9.0.5-beta.0 (2021-12-20)
+
+
+
+## 9.0.4 (2021-12-15)
+
+
+
+## 9.0.3 (2021-12-13)
+
+
+#### Bug Fixes
+
+* **schematics:** fix home import without placeholder ([#966](https://github.com/IgniteUI/igniteui-cli/issues/966)) ([9263bb2](https://github.com/IgniteUI/igniteui-cli/commit/9263bb22b6dd699845d3e6fad7ab78536f7a484c))
+
+
+#### Features
+
+* **typescript:** Add support for typescript 4.5.2 ([055ca5b](https://github.com/IgniteUI/igniteui-cli/commit/055ca5b7f8e54acdd8f3f1d6b6d7517916d852f3))
+* Update [@use](https://github.com/use) [@forward](https://github.com/forward) and hsla ([#961](https://github.com/IgniteUI/igniteui-cli/issues/961)) ([2ef8435](https://github.com/IgniteUI/igniteui-cli/commit/2ef8435816f8ff4f60c7e0cd4ed497a11fc815da))
+
+
+
+## 9.0.1 (2021-11-25)
+
+
+
+# 9.0.0 (2021-11-22)
+
+
+
+# 9.0.0-rc.3 (2021-11-22)
+
+
+#### Bug Fixes
+
+* changes from latest rc, packages updates ([f59905f](https://github.com/IgniteUI/igniteui-cli/commit/f59905fbd0d37d536b2a13dd002cc99ce8c48165))
+
+
+
+# 9.0.0-rc.2 (2021-11-19)
+
+
+#### Bug Fixes
+
+* add igx-scrollbar class to body, [#14033](https://github.com/IgniteUI/igniteui-cli/issues/14033) ([b02ac58](https://github.com/IgniteUI/igniteui-cli/commit/b02ac5822015c6b1b1fdd4684a52a2eecb3eadd9))
+* **angular:** new theme imports upgrade packages ([3ae74d9](https://github.com/IgniteUI/igniteui-cli/commit/3ae74d9bb9a338f939e9e5fb73c978003401c2a7))
+
+
+
+# 9.0.0-rc.1 (2021-11-17)
+
+
+
+# 9.0.0-rc.0 (2021-11-17)
+
+
+#### Features
+
+* **angular:** update to Angular 13 [#895](https://github.com/IgniteUI/igniteui-cli/issues/895) ([#896](https://github.com/IgniteUI/igniteui-cli/issues/896)) ([32f1721](https://github.com/IgniteUI/igniteui-cli/commit/32f17215290af3372b554f0e440e39b9b9b5040a))
+
+
+
+# 8.3.0-rc.0 (2021-11-11)
+
+
+
+# 8.3.0-beta.6 (2021-11-09)
+
+
+
+# 8.3.0-beta.5 (2021-11-09)
+
+
+
+# 8.3.0-beta.4 (2021-11-09)
+
+
+
+# 8.3.0-beta.3 (2021-11-08)
+
+
+
+# 8.3.0-beta.2 (2021-11-08)
+
+
+
+# 8.3.0-beta.1 (2021-11-04)
+
+
+
+# 8.3.0-beta.0 (2021-11-04)
+
+
+
+## 8.2.1 (2021-10-08)
+
+
+
+## 8.2.1-rc.0 (2021-10-07)
+
+
+
+# 8.2.0 (2021-10-04)
+
+
+
+# 8.2.0-alpha.0 (2021-09-30)
+
+
+#### Bug Fixes
+
+* remove icon color, becasue it is deprecated ([7b33804](https://github.com/IgniteUI/igniteui-cli/commit/7b338049a3182d7a8ea9e7106d10ef485dcc0623))
+
+
+
+## 8.1.2 (2021-09-28)
+
+
+
+## 8.1.1 (2021-09-02)
+
+
+
+# 8.1.0-rc.0 (2021-07-30)
+
+
+#### Bug Fixes
+
+* **igx-ts:** remove deprecated properties from scenario templates ([f84dc3c](https://github.com/IgniteUI/igniteui-cli/commit/f84dc3cd9626d5f287caed74cd32fda6849906e2))
+
+
+
+# 8.1.0-beta.1 (2021-07-30)
+
+
+#### Bug Fixes
+
+* **awesome-grid:** fix deprecated properties warnings ([f7a5b0c](https://github.com/IgniteUI/igniteui-cli/commit/f7a5b0c589c4b0aa8ded7c036859956d84c1ed23))
+* **fintech-grid:** fix console warnings and errors ([eaaf733](https://github.com/IgniteUI/igniteui-cli/commit/eaaf73311b45b9fc326353c8c6e6a1efe3f6f225))
+* **igx-ts:** Update angular.json ([c038c70](https://github.com/IgniteUI/igniteui-cli/commit/c038c708c5d2476e819071fd6c9defe29915b904))
+* **igx-ts:** use explicit index in drop-down components for logic view ([cb96f7d](https://github.com/IgniteUI/igniteui-cli/commit/cb96f7dcc2a5a4af2c585b22b50daa372f3684e9))
+
+
+#### Features
+
+* **igx-ts:** update custom grid templates w/ 12.1 paginator ([2b5058b](https://github.com/IgniteUI/igniteui-cli/commit/2b5058bd8c2f1946fd1f52b848a5b6ca9aebfcee))
+
+
+
+# 8.1.0-beta.0 (2021-07-28)
+
+
+#### Features
+
+* **igx-templates:** add igx-accordion template ([#851](https://github.com/IgniteUI/igniteui-cli/issues/851)) ([03e74cd](https://github.com/IgniteUI/igniteui-cli/commit/03e74cd194184b629ea09ec3cfa5218943d0feef))
+* update angular to v12.1 [#856](https://github.com/IgniteUI/igniteui-cli/issues/856) ([#857](https://github.com/IgniteUI/igniteui-cli/issues/857)) ([971822e](https://github.com/IgniteUI/igniteui-cli/commit/971822e343158bd107ef5b07bf60773509bd928c))
+
+
+
+## 8.0.3 (2021-07-14)
+
+
+#### Bug Fixes
+
+* **igx-ts:** fix strict errors in base and side-nav projects ([963d23d](https://github.com/IgniteUI/igniteui-cli/commit/963d23dc9771d8d184bff89fe2e2782e3bd97219))
+* **igx-ts:** fix strict errors in side-nav-auth project ([695f430](https://github.com/IgniteUI/igniteui-cli/commit/695f430c693b4a4cb817784d4b20dc0c268ec80c))
+
+
+
+## 8.0.2 (2021-07-07)
+
+
+
+## 8.0.2-beta.1 (2021-07-06)
+
+
+#### Bug Fixes
+
+* **angular-templates:** fix issue with strict templates in igx-ts ([38aaa75](https://github.com/IgniteUI/igniteui-cli/commit/38aaa756908493244414a51cc31688c27246b2f6)), closes [#850](https://github.com/IgniteUI/igniteui-cli/issues/850)
+
+
+
+## 8.0.2-beta.0 (2021-07-02)
+
+
+
+## 8.0.1 (2021-07-01)
+
+
+
+# 8.0.0 (2021-05-14)
+
+
+#### Bug Fixes
+
+* **fonts:** Fix icon font names and families ([35a702e](https://github.com/IgniteUI/igniteui-cli/commit/35a702ee21d4a780b9318de071246969af54fca7))
+* **template:** Fix and upadte awesome template ([f2b51aa](https://github.com/IgniteUI/igniteui-cli/commit/f2b51aa2685220b282ca8a25bb2580f44b960bcb))
+* **warnings:** Update icons for grids samples ([0efbbae](https://github.com/IgniteUI/igniteui-cli/commit/0efbbaecdcb3b6095c6ebc483729214f5e4753aa))
+
+
+
+# 8.0.0-rc.0 (2021-05-13)
+
+
+
+# 8.0.0-alpha.1 (2021-05-13)
+
+
+#### Bug Fixes
+
+* **igx-templates:** provide service in tree sample, add some style ([b76452a](https://github.com/IgniteUI/igniteui-cli/commit/b76452a22d047a07d95c19fd3c720466065f178e))
+* remove strict checks and update open() method ([f2877e3](https://github.com/IgniteUI/igniteui-cli/commit/f2877e342746f85962d3f10125c6b784e53eb5d2))
+
+
+#### Features
+
+* **igx-templates:** add igx-tree template ([41bc6c3](https://github.com/IgniteUI/igniteui-cli/commit/41bc6c37b19c9136335347a468cdd5c8685a1f61))
+
+
+
+## 7.1.1 (2021-03-15)
+
+
+
+## 7.1.1-beta.0 (2021-03-12)
+
+
+
+# 7.1.0 (2021-02-22)
+
+
+
+# 7.1.0-beta.0 (2021-02-18)
+
+
+#### Bug Fixes
+
+* **toolbar:** Update hgrid & treegrid custom template toolbar ([c27af22](https://github.com/IgniteUI/igniteui-cli/commit/c27af22c413da93305a5c90c8a60a6dbac1a01e1))
+
+
+
+## 7.0.1 (2020-11-16)
+
+
+#### Bug Fixes
+
+* **igx-ts:** add local storage to spec ([3056a97](https://github.com/IgniteUI/igniteui-cli/commit/3056a97d99c492c04f2bbf19a7bd09c418294dbf))
+* **igx,custom-grid:** assign allowFiltering when selected as option ([7534c5f](https://github.com/IgniteUI/igniteui-cli/commit/7534c5f51736587b87217042b98c1be753cd76a8))
+* ssr breaks because of localStorage ref ([dc9410f](https://github.com/IgniteUI/igniteui-cli/commit/dc9410ff7c333bdece6ba25212f6c763afe64601))
+
+
+
+# 7.0.0 (2020-11-13)
+
+
+#### Bug Fixes
+
+* **igx-ts:** update build-angular ([082869c](https://github.com/IgniteUI/igniteui-cli/commit/082869cf27b52cb26695b6f90f4980ea85e67574))
+
+
+
+# 7.0.0-rc.2 (2020-11-12)
+
+
+#### Bug Fixes
+
+* **igx-ts:** crm grid with new toolbar ([a387742](https://github.com/IgniteUI/igniteui-cli/commit/a387742493b73f2c2f5e2cbacaf1bbe5a4d9345f))
+* **igx-ts:** fix toolbar according to latest changes ([93323c8](https://github.com/IgniteUI/igniteui-cli/commit/93323c81a3e388ae46e1dabcca13261312f92ade))
+* **igx-ts:** fix toolbar for grid fintech ([edc2057](https://github.com/IgniteUI/igniteui-cli/commit/edc20571657d5177c7a82ccae32d86f430970185))
+* **igx-ts:** tree-grid toolbar update ([2c985d7](https://github.com/IgniteUI/igniteui-cli/commit/2c985d78902d90439cbef733e6252f8c1eae37e3))
+* **igx-ts:** update HGrid Batch demo ([890a02d](https://github.com/IgniteUI/igniteui-cli/commit/890a02d54be89358aff76f9b07b3d8630df4f79c))
+
+
+
+## 6.2.1 (2020-11-11)
+
+
+#### Bug Fixes
+
+* **igx, side-auth:** add SSR-friendly local storage service ([8db27be](https://github.com/IgniteUI/igniteui-cli/commit/8db27be4739d396bbd34c389d9227aabdd01b970))
+* **igx,side-auth:** add proper wrapper class so layout is 100% ([508df9d](https://github.com/IgniteUI/igniteui-cli/commit/508df9d2255ec1a908ecd4054a841360c1827933))
+
+
+
+# 7.0.0-rc.1 (2020-11-10)
+
+
+#### Bug Fixes
+
+* **igx-ts:** fix package.json for auth project ([00b9cd9](https://github.com/IgniteUI/igniteui-cli/commit/00b9cd942ec154c76da1ac0e810e366cf373b64f))
+* **igx-ts:** remove base.json for auth project ([019535b](https://github.com/IgniteUI/igniteui-cli/commit/019535be27bac30b065b27a6facde53578a08456))
+* **igx-ts:** revert deleted packages ([acede53](https://github.com/IgniteUI/igniteui-cli/commit/acede5371f24b10be2314de0118ff1976cfb8c35))
+
+
+
+# 7.0.0-rc.0 (2020-11-10)
+
+
+#### Bug Fixes
+
+* **dock-manager:** remove unnecessary quotes ([cd9c16c](https://github.com/IgniteUI/igniteui-cli/commit/cd9c16cea9f4d120e7b6e0dd9112e907c5f2228b))
+
+
+
+# 7.0.0-alpha.0 (2020-11-10)
+
+
+#### Bug Fixes
+
+* **dock-manager:** Use correct module name in app.module import [#792](https://github.com/IgniteUI/igniteui-cli/issues/792) ([53691b5](https://github.com/IgniteUI/igniteui-cli/commit/53691b54af896c410a0b2b0c3e91751f76341dbd))
+
+
+
+# 6.2.0 (2020-10-20)
+
+
+
+# 6.2.0 (2020-10-20)
+
+
+
+# 6.2.0-rc.0 (2020-10-16)
+
+
+#### Bug Fixes
+
+* **templates, crm grid, grid batch editing:** Fixing issues in the two templates. ([2dc2859](https://github.com/IgniteUI/igniteui-cli/commit/2dc2859dd10f41f9b0b8a05072fa6d12de5c9c00))
+* **templates, crm-grid, grid batchediting:** Addressing the comments. ([09955ea](https://github.com/IgniteUI/igniteui-cli/commit/09955ea47cbe58546a6d117611a705c86c058b6e))
+
+
+
+# 6.2.0-beta.0 (2020-10-14)
+
+
+#### Bug Fixes
+
+* **deployment:** Fix environment check 793 ([3f3946a](https://github.com/IgniteUI/igniteui-cli/commit/3f3946a474840d38a763149230d743b3e845bf47))
+* update map to 10.1.3 ([3926b77](https://github.com/IgniteUI/igniteui-cli/commit/3926b77d575e2051b210232be2b8b1f76b681fab))
+
+
+
+# 6.1.0 (2020-08-12)
+
+
+
+# 6.1.0-beta.0 (2020-08-07)
+
+
+
+# 6.1.0-alpha.0 (2020-07-09)
+
+
+
+# 6.0.0 (2020-06-25)
+
+
+
+## 5.2.1 (2020-06-25)
+
+
+
+# 6.0.0-rc.0 (2020-06-25)
+
+
+#### Bug Fixes
+
+* **igx,dock-manager:** resolve package name from project ([ac66d8e](https://github.com/IgniteUI/igniteui-cli/commit/ac66d8e0fadf643530a5f3aa53ee3fe851cc1a33))
+* use group.json for step by step groups [#707](https://github.com/IgniteUI/igniteui-cli/issues/707) ([adf562c](https://github.com/IgniteUI/igniteui-cli/commit/adf562c639725fb6a8008ef682f5fbdd66e65b55))
+
+
+#### Features
+
+* Adding a Map template for Angular ([7cbddeb](https://github.com/IgniteUI/igniteui-cli/commit/7cbddeb907db8277f6db43db47f19f06591a7c7f))
+* **packages:** Bump packages to Angular 10  [#767](https://github.com/IgniteUI/igniteui-cli/issues/767) ([f7e104e](https://github.com/IgniteUI/igniteui-cli/commit/f7e104e8ccee1692ff886259a7b7cf653de46573))
+* **packages:** remove deprecated option [#767](https://github.com/IgniteUI/igniteui-cli/issues/767) ([602111e](https://github.com/IgniteUI/igniteui-cli/commit/602111eefdcf390e832275c428e86f9ef5aa547f))
+* **packages:** Update igx-ts projects [#767](https://github.com/IgniteUI/igniteui-cli/issues/767) ([71df154](https://github.com/IgniteUI/igniteui-cli/commit/71df1546f4765699bf0600ef07062cad85b69d99))
+
+
+
+# 5.2.0 (2020-06-11)
+
+
+#### Features
+
+* **igx-ts:** add Dock Manager template for Angular ([#763](https://github.com/IgniteUI/igniteui-cli/issues/763)) ([63acfdf](https://github.com/IgniteUI/igniteui-cli/commit/63acfdf6b9c511c0c8be18374f470ee8a0ca375c))
+* **igx,side-nav:**  move content padding so views can override ([36f9964](https://github.com/IgniteUI/igniteui-cli/commit/36f9964bbe2d21920f99f5815f346ec117a61724))
+
+
+
+## 5.1.1 (2020-06-03)
+
+
+#### Bug Fixes
+
+* **igx,upgrade:** ignore projects without sourceRoot ([6d64d30](https://github.com/IgniteUI/igniteui-cli/commit/6d64d30efa3aedcfd7d32eb9e7e1c29c90c7ea6e))
+* **upgrade:** Logging a message that licensed package is already installed ([63df30d](https://github.com/IgniteUI/igniteui-cli/commit/63df30d67c7d46fed0b6e4411e5b097dcd7f11f2))
+
+
+
+# 5.1.0 (2020-06-01)
+
+
+
+# 5.1.0-beta.4 (2020-06-01)
+
+
+
+# 5.1.0-beta.3 (2020-05-29)
+
+
+
+# 5.1.0-beta.2 (2020-05-28)
+
+
+
+# 5.1.0-beta.1 (2020-05-28)
+
+
+
+# 5.1.0-beta.0 (2020-05-27)
+
+
+#### Bug Fixes
+
+* **igx,templates:** correct empty project template id ([2d0b385](https://github.com/IgniteUI/igniteui-cli/commit/2d0b385a4ce3f8483e4f5f048bc94111ecb7db31))
+* **templates:** fix upgrade to get correct config ([a3021ef](https://github.com/IgniteUI/igniteui-cli/commit/a3021efc9baac77348a6e91a53f7b8b214fdb719))
+* **templates:** upgrade command properly replaces strings in ALL .ts files ([2d2c9b3](https://github.com/IgniteUI/igniteui-cli/commit/2d2c9b3dc02da3f7633642d9b3b4a02d7f0bb119))
+* **upgrade:** sort packages.json dependencies when adding licensed package ([62bb652](https://github.com/IgniteUI/igniteui-cli/commit/62bb652857e8e8cd6e368ef71ac2bf4ef8ea6749))
+
+
+#### Features
+
+* **schematics:** update-package logic added ([197b94e](https://github.com/IgniteUI/igniteui-cli/commit/197b94e367d5e9a359c989beef01c6f35d7b54b5))
+* **upgrade:** handle multiple licensed packages, [#741](https://github.com/IgniteUI/igniteui-cli/issues/741) ([ef02f5b](https://github.com/IgniteUI/igniteui-cli/commit/ef02f5b089d3616bbb24ba4ba8e2f0a4c7045374))
+
+
+
+# 5.1.0-alpha.0 (2020-05-20)
+
+
+#### Features
+
+* **igx,multi-pacakge:** templates resolve lib package from project ([7bb4670](https://github.com/IgniteUI/igniteui-cli/commit/7bb4670e1f7832321c3373e07c967d3d13d83777))
+
+
+
+## 5.0.3 (2020-05-18)
+
+
+#### Bug Fixes
+
+* **igx:** proj template error handler log instead throw, register only in prod ([270addd](https://github.com/IgniteUI/igniteui-cli/commit/270adddfdee8bb84892e768971e976e70550b2c2))
+
+
+
+## 5.0.2 (2020-05-05)
+
+
+
+# 5.0.0 (2020-02-11)
+
+
+
+# 5.0.0-rc.4 (2020-02-11)
+
+
+#### Bug Fixes
+
+* **carousel:** Add noop animations module ([c696124](https://github.com/IgniteUI/igniteui-cli/commit/c6961249ccbfe186e1f369b23420584b908b5787))
+
+
+
+# 5.0.0-rc.3 (2020-02-07)
+
+
+
+# 5.0.0-rc.2 (2020-02-07)
+
+
+#### Bug Fixes
+
+* **igx-ts:** change tsconfig module for spec files to avoid errors, [#660](https://github.com/IgniteUI/igniteui-cli/issues/660) ([3d6b987](https://github.com/IgniteUI/igniteui-cli/commit/3d6b987e4e2c72a9b73453af112465b7234aa9c3))
+* **igx-ts:** update auth providers tests, [#660](https://github.com/IgniteUI/igniteui-cli/issues/660) ([4c15c8b](https://github.com/IgniteUI/igniteui-cli/commit/4c15c8bc00ffd5543e676ce07ea4718ea234b62b))
+* **templates, igx:** add chart packages [#679](https://github.com/IgniteUI/igniteui-cli/issues/679) ([75f4dcd](https://github.com/IgniteUI/igniteui-cli/commit/75f4dcd3bf585d38b3f86ef85cfecc6b8ddcfabc))
+* **templates, igx:** add chart packages [#684](https://github.com/IgniteUI/igniteui-cli/issues/684) ([dd7bfb7](https://github.com/IgniteUI/igniteui-cli/commit/dd7bfb75923ebe4d644239774899c26cf6bf7564))
+
+
+#### Features
+
+* **igx-ts:** Update projects [#647](https://github.com/IgniteUI/igniteui-cli/issues/647) ([e0a738a](https://github.com/IgniteUI/igniteui-cli/commit/e0a738aea9b0345386fb2611bc28168ca99390f0))
+
+
+
+# 5.0.0-rc.0 (2020-01-31)
+
+
+#### Bug Fixes
+
+* **ig-add:** only take into account 'extraConfig' in generateConfig [#618](https://github.com/IgniteUI/igniteui-cli/issues/618) ([#621](https://github.com/IgniteUI/igniteui-cli/issues/621)) ([d8d7db8](https://github.com/IgniteUI/igniteui-cli/commit/d8d7db823f1c6c717063ce678695be4d8db084d6))
+* **igx-ts:** update scenario templates [#628](https://github.com/IgniteUI/igniteui-cli/issues/628) ([#643](https://github.com/IgniteUI/igniteui-cli/issues/643)) ([ecda4d7](https://github.com/IgniteUI/igniteui-cli/commit/ecda4d779d3a196c16c13f87e2787ff7fdcbc167))
+* **templates:** update angular charts packages to v8.2.12 ([3ed3013](https://github.com/IgniteUI/igniteui-cli/commit/3ed301379a765d4ad0614e1d51cd5dec2227494d))
+
+
+
+# 5.0.0-beta.3 (2019-12-13)
+
+
+
+# 5.0.0-beta.2 (2019-12-06)
+
+
+#### Bug Fixes
+
+* **schematics:** set virtual FS in proper stage ([2102464](https://github.com/IgniteUI/igniteui-cli/commit/2102464698a493f97f4739bd14068b218b985d95))
+
+
+
+# 5.0.0-beta.1 (2019-11-28)
+
+
+#### Bug Fixes
+
+* **igx-templates:** fix side-auth template tsconfig.app.json, [#597](https://github.com/IgniteUI/igniteui-cli/issues/597) ([1ffe4ba](https://github.com/IgniteUI/igniteui-cli/commit/1ffe4ba77b30c4eaab2a176ec30470cf32cf7980))
+* **igx-ts:** update autocomplete templates to import FormsModule [#581](https://github.com/IgniteUI/igniteui-cli/issues/581) ([#584](https://github.com/IgniteUI/igniteui-cli/issues/584)) ([b91a1e8](https://github.com/IgniteUI/igniteui-cli/commit/b91a1e8efe1c3e78482abff524b69c48e64f9094))
+* **templating, igx-ts:** add dot path variable for prefixed files that glob ignores ([486a0da](https://github.com/IgniteUI/igniteui-cli/commit/486a0da0ee6190f16544ee46ae360b822c057b53))
+
+
+
+# 5.0.0-alpha.1 (2019-10-02)
+
+
+#### Features
+
+* **ng-schematics:** add component generate schematic ([a0e86c2](https://github.com/IgniteUI/igniteui-cli/commit/a0e86c29d72c52727a13aee4ded2acd0ef6ddc44))
+
+## igniteui/angular-schematics@21.1.14100-alpha.1 (2026-03-25)
+
+
+#### Bug Fixes
+
+* **eslint:** correct config ignores and resolve lint errors ([68d01ac](https://github.com/IgniteUI/igniteui-cli/commit/68d01ac6102e4e3d660dff9d229e826ea64943db))
+* **igx-ts-legacy:** update igx ts legacy templates ([#1517](https://github.com/IgniteUI/igniteui-cli/issues/1517)) ([c26c8ff](https://github.com/IgniteUI/igniteui-cli/commit/c26c8ff298092c21b2aa6ca77a75cd2a5fdedc79))
+
+
+
+## 14.9.2 (2026-03-11)
+
+
+#### Bug Fixes
+
+* **schematics:** fs writeFile create check ([#1526](https://github.com/IgniteUI/igniteui-cli/issues/1526)) ([f8e4b59](https://github.com/IgniteUI/igniteui-cli/commit/f8e4b59bd951ff1b702f3d24cf61ebc33115dc89))
+
+
+
+## 14.9.1 (2026-02-25)
+
+
+
+# 14.9.0 (2026-02-25)
+
+
+#### Features
+
+* **ng:** update igniteui-angular to 21.1.0 ([#1495](https://github.com/IgniteUI/igniteui-cli/issues/1495)) ([399f83e](https://github.com/IgniteUI/igniteui-cli/commit/399f83e4278dafdf9a3832fa013840f05ba586e6))
+
+
+
+## 14.8.5-beta.3 (2026-02-11)
+
+
+
+## 14.8.5-beta.0 (2026-02-10)
+
+
+
+## 14.8.4 (2026-02-05)
+
+
+
+## 14.8.3 (2026-01-19)
+
+
+
+## 14.8.2 (2026-01-13)
+
+
+
+## 14.8.2-beta.4 (2026-01-12)
+
+
+
+## 14.8.2-beta.3 (2026-01-12)
+
+
+
+## 14.8.2-beta.2 (2026-01-12)
+
+
+
+## 14.8.2-beta.0 (2026-01-12)
+
+
+
+# 14.8.0 (2025-12-03)
+
+
+
+# 14.8.0-beta.2 (2025-12-01)
+
+
+
+# 14.8.0-beta.1 (2025-12-01)
+
+
+
+## 14.7.1 (2025-11-20)
+
+
+
+# 14.7.0 (2025-11-17)
+
+
+#### Features
+
+* **ng:** use ng lint schematic ([#1439](https://github.com/IgniteUI/igniteui-cli/issues/1439)) ([fa917cd](https://github.com/IgniteUI/igniteui-cli/commit/fa917cd7c974db05061f9442d8c5cdcc74853928))
+
+
+
+## 14.6.4 (2025-10-14)
+
+
+
+## 14.6.3 (2025-10-09)
+
+
+
+## 14.6.2 (2025-10-07)
+
+
+
+## 14.6.1 (2025-10-06)
+
+
+
+# 14.6.0 (2025-10-02)
+
+
+#### Features
+
+* **ng:** update ig, ng and other libs ([#1427](https://github.com/IgniteUI/igniteui-cli/issues/1427)) ([93fbbcc](https://github.com/IgniteUI/igniteui-cli/commit/93fbbcce2668084dcc958736f7167e36e9cbed47))
+
+
+
+## 14.5.8 (2025-09-25)
+
+
+
+## 14.5.7 (2025-09-23)
+
+
+
+## 14.5.6 (2025-09-18)
+
+
+
+## 14.5.4 (2025-07-01)
+
+
+
+## 14.5.3 (2025-06-28)
+
+
+
+## 14.5.1 (2025-06-24)
+
+
+
+# 14.5.0 (2025-06-05)
+
+
+
+## 14.4.4 (2025-05-21)
+
+
+#### Features
+
+* add azure pipelines yaml files for angular, react and wc templates ([#1396](https://github.com/IgniteUI/igniteui-cli/issues/1396)) ([6a3e39d](https://github.com/IgniteUI/igniteui-cli/commit/6a3e39d41f50abe51fa7fd819961412304a31343))
+
+
+
+## 14.4.3 (2025-04-25)
+
+
+
+## 14.4.2 (2025-04-24)
+
+
+
+## 14.4.1 (2025-04-23)
+
+
+
+# 14.4.0 (2025-04-17)
+
+
+
+## 14.3.18 (2025-04-11)
+
+
+#### Bug Fixes
+
+* add missing static css files for WC ([#1385](https://github.com/IgniteUI/igniteui-cli/issues/1385)) ([95018f9](https://github.com/IgniteUI/igniteui-cli/commit/95018f93704f62af70b9c4a2e07b46554e6331a4))
+
+
+
+## 14.3.17 (2025-04-09)
+
+
+
+## 14.3.16 (2025-03-31)
+
+
+
+## 14.3.14 (2025-02-24)
+
+
+#### Bug Fixes
+
+* update eslint and fix warnings ([#1378](https://github.com/IgniteUI/igniteui-cli/issues/1378)) ([aa84345](https://github.com/IgniteUI/igniteui-cli/commit/aa84345ff21fc0fccde94063099e4c713862cde8))
+
+
+
+## 14.3.12-beta.0 (2025-01-27)
+
+
+
+## 14.3.11 (2025-01-24)
+
+
+#### Bug Fixes
+
+* static data paths when deploy to github pages ([#1371](https://github.com/IgniteUI/igniteui-cli/issues/1371)) ([4b40231](https://github.com/IgniteUI/igniteui-cli/commit/4b402313f4d2a2cfd80115d274514d9e5507334c))
+
+
+
+## 14.3.10 (2025-01-23)
+
+
+
+## 14.3.9 (2025-01-23)
+
+
+
+## 14.3.8 (2025-01-23)
+
+
+
+## 14.3.7 (2025-01-22)
+
+
+
+## 14.3.6 (2024-12-12)
+
+
+#### Bug Fixes
+
+* **migrations:** enable encapsulation for migrations ([#1361](https://github.com/IgniteUI/igniteui-cli/issues/1361)) ([9561a16](https://github.com/IgniteUI/igniteui-cli/commit/9561a1604a746b8a4b771627de2af4d14927e7c2))
+
+
+
+## 14.3.5 (2024-12-06)
+
+
+#### Bug Fixes
+
+* **web-components:** fix the step for updating the router navigation in github pages workflow ([#1358](https://github.com/IgniteUI/igniteui-cli/issues/1358)) ([3e0f42c](https://github.com/IgniteUI/igniteui-cli/commit/3e0f42c4fc7a75f6819f8ba85f760ac6a6d854f1))
+
+
+
+## 14.3.4 (2024-12-04)
+
+
+
+## 14.3.3 (2024-12-02)
+
+
+
+## 14.3.2 (2024-11-28)
+
+
+#### Features
+
+* Add pages deployment variable logic and fixes in github pages yaml files ([#1337](https://github.com/IgniteUI/igniteui-cli/issues/1337)) ([c75d9c7](https://github.com/IgniteUI/igniteui-cli/commit/c75d9c7a9d7a9244e7a9a814770809f06280529a))
+
+
+
+## 14.2.3 (2024-11-15)
+
+
+
+## 14.2.2 (2024-11-08)
+
+
+
+## 14.2.1 (2024-10-28)
+
+
+
+# 14.2.0 (2024-10-25)
+
+
+
+# 14.2.0-beta.4 (2024-10-23)
+
+
+
+# 14.1.0 (2024-10-11)
+
+
+
+## 14.0.2 (2024-09-20)
+
+
+
+## 14.0.1 (2024-09-05)
+
+
+
+# 14.0.0 (2024-08-23)
+
+
+
+# 14.0.0-beta.2 (2024-07-24)
+
+
+#### Features
+
+* **igx-templates:** add AngularTypeScriptFileUpdate ([e7f6ed3](https://github.com/IgniteUI/igniteui-cli/commit/e7f6ed3d339bb444dcdbaec4cabe5dcbff27b5ac))
+
+
+
+## 13.3.3 (2024-07-16)
+
+
+
+## 13.3.2 (2024-07-04)
+
+
+
+## 13.3.1 (2024-06-28)
+
+
+
+# 13.3.0-rc.0 (2024-05-31)
+
+
+
+## 13.2.1 (2024-05-09)
+
+
+
+# 13.2.0 (2024-04-29)
+
+
+
+# 13.2.0-rc.0 (2024-04-29)
+
+
+
+## 13.1.16 (2024-04-28)
+
+
+
+## 13.1.15 (2024-04-12)
+
+
+#### Bug Fixes
+
+* include js files in ng-schematics/scripts w/ newer npm version ([727f2f6](https://github.com/IgniteUI/igniteui-cli/commit/727f2f670d303ddb585b78d68a2c42f907a4786f))
+
+
+
+## 13.1.13 (2024-04-11)
+
+
+
+## 13.1.12 (2024-03-21)
+
+
+#### Features
+
+* **cli:** upgrade packages for React and WC ([#1198](https://github.com/IgniteUI/igniteui-cli/issues/1198)) ([16c9b8d](https://github.com/IgniteUI/igniteui-cli/commit/16c9b8dda219ebacd473a2fad5e0c0ea70d5f320))
+
+
+
+## 13.1.11 (2024-03-12)
+
+
+
+## 13.1.10 (2024-03-11)
+
+
+
+## 13.1.9 (2024-03-05)
+
+
+
+## 13.1.8 (2024-02-29)
+
+
+
+## 13.1.7 (2024-02-28)
+
+
+
+## 13.1.6 (2024-02-26)
+
+
+#### Features
+
+* **ng-add:** add setup config provideAnimations ([2f47676](https://github.com/IgniteUI/igniteui-cli/commit/2f476762ac772039228fe10565d49a6ced76b72d))
+
+
+
+## 13.1.5 (2024-01-31)
+
+
+
+## 13.1.3 (2024-01-17)
+
+
+
+## 13.1.1 (2023-12-14)
+
+
+#### Features
+
+* **igr-ts:** add igr-ts proj type ([#1146](https://github.com/IgniteUI/igniteui-cli/issues/1146)) ([4609525](https://github.com/IgniteUI/igniteui-cli/commit/460952505758fcf1ab9b559ed6809015f3c5d3a5)), closes [#1147](https://github.com/IgniteUI/igniteui-cli/issues/1147) [#1153](https://github.com/IgniteUI/igniteui-cli/issues/1153)
+
+
+
+## 13.0.1 (2023-11-15)
+
+
+
+# 13.0.0 (2023-11-09)
+
+
+
+# 13.0.0-rc.0 (2023-11-09)
+
+
+
+## 12.0.6-beta.2 (2023-10-02)
+
+
+
+## 12.0.5 (2023-07-18)
+
+
+
+## 12.0.4 (2023-07-18)
+
+
+
+## 12.0.3 (2023-06-28)
+
+
+
+## 12.0.3-beta.0 (2023-06-02)
+
+
+
+## 12.0.1 (2023-05-26)
+
+
+
+# 12.0.0 (2023-05-15)
+
+
+
+# 12.0.0-rc.0 (2023-05-15)
+
+
+#### Features
+
+* **igx:** add base_with_home proj to igx-templates ([#1118](https://github.com/IgniteUI/igniteui-cli/issues/1118)) ([d84c431](https://github.com/IgniteUI/igniteui-cli/commit/d84c4310a03e35588626c57148091c6b224c7bc3))
+* **igx:** update to 16 ([#1120](https://github.com/IgniteUI/igniteui-cli/issues/1120)) ([e6efa40](https://github.com/IgniteUI/igniteui-cli/commit/e6efa40c2c748d2679b6be66252bc7732e51de29))
+
+
+
+## 11.1.1 (2023-04-11)
+
+
+
+# 11.1.0 (2023-03-28)
+
+
+
+# 11.1.0-rc.0 (2023-03-24)
+
+
+
+## 11.0.2 (2023-02-17)
+
+
+
+# 11.0.0 (2022-11-23)
+
+
+
+# 10.1.0-beta.13 (2022-10-27)
+
+
+
+# 10.1.0-beta.12 (2022-10-27)
+
+
+
+# 10.1.0-beta.11 (2022-10-25)
+
+
+
+# 10.1.0-beta.10 (2022-10-25)
+
+
+
+# 10.1.0-beta.8 (2022-10-23)
+
+
+
+# 10.1.0-beta.7 (2022-10-19)
+
+
+
+# 10.1.0-beta.5 (2022-10-18)
+
+
+
+# 10.1.0-beta.4 (2022-10-18)
+
+
+
+# 10.1.0-beta.3 (2022-10-17)
+
+
+
+# 10.1.0-beta.2 (2022-10-14)
+
+
+
+# 10.1.0-beta.1 (2022-10-14)
+
+
+
+# 10.1.0-beta.0 (2022-10-07)
+
+
+
+## 10.0.5 (2022-09-19)
+
+
+
+## 10.0.4-beta.1 (2022-07-15)
+
+
+
+## 10.0.4-beta.0 (2022-06-30)
+
+
+
+## 10.0.2 (2022-06-29)
+
+
+
+## 10.0.1 (2022-06-17)
+
+
+
+# 9.2.0 (2022-05-26)
+
+
+
+## 9.1.4 (2022-05-20)
+
+
+
+## 9.1.3 (2022-05-19)
+
+
+
+## 9.1.2 (2022-05-16)
+
+
+
+## 9.1.1 (2022-03-18)
+
+
+
+## 9.1.1-rc.0 (2022-03-17)
+
+
+
+# 9.1.0 (2022-03-02)
+
+
+
+# 9.1.0-rc.1 (2022-02-25)
+
+
+
+# 9.1.0-beta.0 (2022-02-22)
+
+
+#### Bug Fixes
+
+* **angular:** change more igx- ([f9ade5e](https://github.com/IgniteUI/igniteui-cli/commit/f9ade5e176444ce3c2a80f60baf43d239b8788fe))
+
+
+
+## 9.0.6 (2022-02-04)
+
+
+
+## 9.0.5 (2022-02-04)
+
+
+
+## 9.0.5-beta.2 (2022-02-03)
+
+
+
+## 9.0.5-beta.1 (2022-01-28)
+
+
+
+## 9.0.5-beta.0 (2021-12-20)
+
+
+
+## 9.0.4 (2021-12-15)
+
+
+
+## 9.0.3 (2021-12-13)
+
+
+#### Features
+
+* **typescript:** Add support for typescript 4.5.2 ([055ca5b](https://github.com/IgniteUI/igniteui-cli/commit/055ca5b7f8e54acdd8f3f1d6b6d7517916d852f3))
+
+
+
+## 9.0.1 (2021-11-25)
+
+
+
+# 9.0.0 (2021-11-22)
+
+
+
+# 9.0.0-rc.3 (2021-11-22)
+
+
+
+# 9.0.0-rc.2 (2021-11-19)
+
+
+#### Bug Fixes
+
+* add igx-scrollbar class to body, [#14033](https://github.com/IgniteUI/igniteui-cli/issues/14033) ([b02ac58](https://github.com/IgniteUI/igniteui-cli/commit/b02ac5822015c6b1b1fdd4684a52a2eecb3eadd9))
+
+
+
+# 9.0.0-rc.1 (2021-11-17)
+
+
+
+# 9.0.0-rc.0 (2021-11-17)
+
+
+#### Features
+
+* **angular:** update to Angular 13 [#895](https://github.com/IgniteUI/igniteui-cli/issues/895) ([#896](https://github.com/IgniteUI/igniteui-cli/issues/896)) ([32f1721](https://github.com/IgniteUI/igniteui-cli/commit/32f17215290af3372b554f0e440e39b9b9b5040a))
+
+
+
+# 8.3.0-rc.0 (2021-11-11)
+
+
+
+# 8.3.0-beta.6 (2021-11-09)
+
+
+
+# 8.3.0-beta.5 (2021-11-09)
+
+
+
+# 8.3.0-beta.4 (2021-11-09)
+
+
+
+# 8.3.0-beta.3 (2021-11-08)
+
+
+
+# 8.3.0-beta.2 (2021-11-08)
+
+
+
+# 8.3.0-beta.1 (2021-11-04)
+
+
+
+# 8.3.0-beta.0 (2021-11-04)
+
+
+
+## 8.2.1 (2021-10-08)
+
+
+
+## 8.2.1-rc.0 (2021-10-07)
+
+
+
+# 8.2.0 (2021-10-04)
+
+
+
+# 8.2.0-alpha.0 (2021-09-30)
+
+
+
+## 8.1.2 (2021-09-28)
+
+
+
+## 8.1.1 (2021-09-02)
+
+
+
+## 8.0.4 (2021-08-02)
+
+
+#### Bug Fixes
+
+* **schematics:** resolve schema id deprecation warning ([#870](https://github.com/IgniteUI/igniteui-cli/issues/870)) ([17d7016](https://github.com/IgniteUI/igniteui-cli/commit/17d70164de93a5162ba4a02b44b571de318a37c7))
+
+
+
+# 8.1.0-rc.0 (2021-07-30)
+
+
+
+# 8.1.0-beta.1 (2021-07-30)
+
+
+
+# 8.1.0-beta.0 (2021-07-28)
+
+
+#### Features
+
+* update angular to v12.1 [#856](https://github.com/IgniteUI/igniteui-cli/issues/856) ([#857](https://github.com/IgniteUI/igniteui-cli/issues/857)) ([971822e](https://github.com/IgniteUI/igniteui-cli/commit/971822e343158bd107ef5b07bf60773509bd928c))
+
+
+
+## 8.0.3 (2021-07-14)
+
+
+
+## 8.0.2 (2021-07-07)
+
+
+
+## 8.0.2-beta.1 (2021-07-06)
+
+
+
+## 8.0.2-beta.0 (2021-07-02)
+
+
+
+## 8.0.1 (2021-07-01)
+
+
+
+# 8.0.0 (2021-05-14)
+
+
+
+# 8.0.0-rc.0 (2021-05-13)
+
+
+
+# 8.0.0-alpha.1 (2021-05-13)
+
+
+
+## 7.1.1 (2021-03-15)
+
+
+
+## 7.1.1-beta.0 (2021-03-12)
+
+
+
+# 7.1.0 (2021-02-22)
+
+
+
+# 7.1.0-beta.0 (2021-02-18)
+
+
+
+## 7.0.1 (2020-11-16)
+
+
+
+# 7.0.0 (2020-11-13)
+
+
+
+# 7.0.0-rc.2 (2020-11-12)
+
+
+
+# 7.0.0-rc.1 (2020-11-10)
+
+
+
+# 7.0.0-rc.0 (2020-11-10)
+
+
+
+# 7.0.0-alpha.0 (2020-11-10)
+
+
+
+# 6.2.0 (2020-10-20)
+
+
+
+# 6.2.0-rc.0 (2020-10-16)
+
+
+
+# 6.2.0-beta.0 (2020-10-14)
+
+
+
+# 6.1.0 (2020-08-12)
+
+
+
+# 6.1.0-beta.0 (2020-08-07)
+
+
+
+# 6.1.0-alpha.0 (2020-07-09)
+
+
+
+# 6.0.0 (2020-06-25)
+
+
+
+# 6.0.0-rc.0 (2020-06-25)
+
+
+#### Bug Fixes
+
+* **igx,dock-manager:** resolve package name from project ([ac66d8e](https://github.com/IgniteUI/igniteui-cli/commit/ac66d8e0fadf643530a5f3aa53ee3fe851cc1a33))
+
+
+
+# 5.2.0 (2020-06-11)
+
+
+
+## 5.1.1 (2020-06-03)
+
+
+
+# 5.1.0 (2020-06-01)
+
+
+
+# 5.1.0-beta.4 (2020-06-01)
+
+
+
+# 5.1.0-beta.3 (2020-05-29)
+
+
+
+# 5.1.0-beta.2 (2020-05-28)
+
+
+
+# 5.1.0-beta.1 (2020-05-28)
+
+
+#### Bug Fixes
+
+* **schematics:** include upgrade-packages schema ([77aa13d](https://github.com/IgniteUI/igniteui-cli/commit/77aa13db7442b24d787029af4d6a860a0bd85d3b))
+* **schematics:** remove log for unsupported custom templates ([97e3bb3](https://github.com/IgniteUI/igniteui-cli/commit/97e3bb3813cf25603a97177a5ec5d87b2db94206))
+* **upgrade:** provide default fallback for incorrect package template ([9dd4d80](https://github.com/IgniteUI/igniteui-cli/commit/9dd4d80db6cf13d3fd7594790bcaaeec9a383b49))
+
+
+
+# 5.1.0-beta.0 (2020-05-27)
+
+
+#### Features
+
+* **schematics:** update-package logic added ([197b94e](https://github.com/IgniteUI/igniteui-cli/commit/197b94e367d5e9a359c989beef01c6f35d7b54b5))
+* **step-by-step:** add prompt to upgrade to private feed packages, [#724](https://github.com/IgniteUI/igniteui-cli/issues/724) ([63c0c85](https://github.com/IgniteUI/igniteui-cli/commit/63c0c85639c1e5e5415c82f96a6b5cb5bbad4b99))
+
+
+
+# 5.1.0-alpha.0 (2020-05-20)
+
+
+
+## 5.0.3 (2020-05-18)
+
+
+
+## 5.0.2 (2020-05-05)
+
+
+
+# 5.0.0 (2020-02-11)
+
+
+
+# 5.0.0-rc.4 (2020-02-11)
+
+
+#### Bug Fixes
+
+* **schematics:** ensure component prompt installs packages [#695](https://github.com/IgniteUI/igniteui-cli/issues/695) ([16e55d4](https://github.com/IgniteUI/igniteui-cli/commit/16e55d446c3d18fddb7ec7040a266ef498d83060))
+
+
+
+# 5.0.0-rc.3 (2020-02-07)
+
+
+
+# 5.0.0-rc.2 (2020-02-07)
+
+
+
+# 5.0.0-rc.0 (2020-01-31)
+
+
+#### Bug Fixes
+
+* new project accepts lower case theme name [#600](https://github.com/IgniteUI/igniteui-cli/issues/600) ([#619](https://github.com/IgniteUI/igniteui-cli/issues/619)) ([d6eedea](https://github.com/IgniteUI/igniteui-cli/commit/d6eedea8998b07aa6312dea6fdbab66acd88303a))
+* prompt for template and theme if no name provided [#622](https://github.com/IgniteUI/igniteui-cli/issues/622) ([#626](https://github.com/IgniteUI/igniteui-cli/issues/626)) ([44621e9](https://github.com/IgniteUI/igniteui-cli/commit/44621e9040f29da4819e6758e8316e6c7048e38d))
+
+
+
+# 5.0.0-beta.3 (2019-12-13)
+
+
+#### Bug Fixes
+
+* **cli, schematics:** check for fileSystem on post install [#612](https://github.com/IgniteUI/igniteui-cli/issues/612) ([#613](https://github.com/IgniteUI/igniteui-cli/issues/613)) ([0a6a878](https://github.com/IgniteUI/igniteui-cli/commit/0a6a87877bfe42fb9d665ac7b7e4be3d5e72511f))
+* **new, schematics:** no prompts when "name" is provided [#595](https://github.com/IgniteUI/igniteui-cli/issues/595) ([#609](https://github.com/IgniteUI/igniteui-cli/issues/609)) ([0ed45ba](https://github.com/IgniteUI/igniteui-cli/commit/0ed45ba0ed2147a0255d5df2a44e82b665c90c99))
+
+
+
+# 5.0.0-beta.2 (2019-12-06)
+
+
+#### Bug Fixes
+
+* **schematics:** set virtual FS in proper stage ([2102464](https://github.com/IgniteUI/igniteui-cli/commit/2102464698a493f97f4739bd14068b218b985d95))
+* **schematics:** skip start task if skipInstall === true ([#603](https://github.com/IgniteUI/igniteui-cli/issues/603)) ([fc38d65](https://github.com/IgniteUI/igniteui-cli/commit/fc38d651ecfa47f95921fa72f7be5ff68d8b586e))
+
+
+#### Features
+
+* **schematics:** adding a name for schematics projects [#587](https://github.com/IgniteUI/igniteui-cli/issues/587) ([#602](https://github.com/IgniteUI/igniteui-cli/issues/602)) ([19409d0](https://github.com/IgniteUI/igniteui-cli/commit/19409d0b7018c518c64c7ff161a6ec4a3438f834))
+
+
+
+# 5.0.0-beta.1 (2019-11-28)
+
+
+#### Bug Fixes
+
+* **schematics:** component schematics checks for available names [#576](https://github.com/IgniteUI/igniteui-cli/issues/576) ([#586](https://github.com/IgniteUI/igniteui-cli/issues/586)) ([bccd6c1](https://github.com/IgniteUI/igniteui-cli/commit/bccd6c131c4ab9bc197cfa29e1b792494270720f))
+* **schematics:** this package is a dep in new project instead of ignteui-cli ([c04a13c](https://github.com/IgniteUI/igniteui-cli/commit/c04a13c1c82c1d4a9a627503086f86d9040c6778))
+* **schematics:** use project config instead of hard-coded paths ([#592](https://github.com/IgniteUI/igniteui-cli/issues/592)) ([43240b6](https://github.com/IgniteUI/igniteui-cli/commit/43240b610d878186aa4b50959c37822e1f54eaf6))
+
+
+#### Features
+
+* **schematics:** add prompt session to component schematic, [#566](https://github.com/IgniteUI/igniteui-cli/issues/566) ([#571](https://github.com/IgniteUI/igniteui-cli/issues/571)) ([e25c1ce](https://github.com/IgniteUI/igniteui-cli/commit/e25c1ceab6fbff58a89e8712d3eda31da7c1af65))
+* **schematics:** adding ng-new schematic missing options [#596](https://github.com/IgniteUI/igniteui-cli/issues/596) ([#598](https://github.com/IgniteUI/igniteui-cli/issues/598)) ([8b51541](https://github.com/IgniteUI/igniteui-cli/commit/8b5154133bfe3fc6ef1c9958879cd835e36b001e))
+
+
+
+# 5.0.0-alpha.1 (2019-10-02)
+
+
+#### Bug Fixes
+
+* rename gitignore manually ([beb06a9](https://github.com/IgniteUI/igniteui-cli/commit/beb06a9de2511654797d75737a2e0bd5da968d8c))
+
+
+#### Features
+
+* **ng-schematics:** add component generate schematic ([a0e86c2](https://github.com/IgniteUI/igniteui-cli/commit/a0e86c29d72c52727a13aee4ded2acd0ef6ddc44))
+* **schematics:** add start schematic, enable npm and git init tasks ([2a329b1](https://github.com/IgniteUI/igniteui-cli/commit/2a329b18c5e2d6d0f852a72c842c3bab4022a9f2))
+
+## igniteui-cli@14.10.0-alpha.1 (2026-03-25)
+
+
+#### Bug Fixes
+
+* **eslint:** correct config ignores and resolve lint errors ([68d01ac](https://github.com/IgniteUI/igniteui-cli/commit/68d01ac6102e4e3d660dff9d229e826ea64943db))
+* **igx-ts-legacy:** update igx ts legacy templates ([#1517](https://github.com/IgniteUI/igniteui-cli/issues/1517)) ([c26c8ff](https://github.com/IgniteUI/igniteui-cli/commit/c26c8ff298092c21b2aa6ca77a75cd2a5fdedc79))
+
+
+#### Features
+
+* add copilot instructions for AI agents in multiple templates ([73921a7](https://github.com/IgniteUI/igniteui-cli/commit/73921a738efcc0a3e2a7df24bdf509f9f694da8a))
+* **claude:** add CLAUDE.md files for AI agent instructions across multiple templates ([5a96a33](https://github.com/IgniteUI/igniteui-cli/commit/5a96a33eac3f2fcbaf1444ac7778f7c8c2c89952))
+* make @igniteui/mcp-server a workspace package ([cf48369](https://github.com/IgniteUI/igniteui-cli/commit/cf483695e01afeac2ee6d7da193c2ee2d2af375a))
+* **templates:** add AGENTS.md and mcp.json files for React and Web Components and Angular project templates ([d867f44](https://github.com/IgniteUI/igniteui-cli/commit/d867f44e17d01be82ec6853c6b0c22910a652b73))
+
+
+
+## 14.9.2 (2026-03-11)
+
+
+#### Bug Fixes
+
+* **igx-ts:** update igniteui-angular versions and remove overrides ([#1508](https://github.com/IgniteUI/igniteui-cli/issues/1508)) ([6b4e1c8](https://github.com/IgniteUI/igniteui-cli/commit/6b4e1c87e8e7a94a5212a7037072088b7eec8a1a))
+* **upgrade-packages:** correctly glob files on windows ([#1511](https://github.com/IgniteUI/igniteui-cli/issues/1511)) ([64f2735](https://github.com/IgniteUI/igniteui-cli/commit/64f2735963f269fb4b60dd7479566baae33119c8))
+
+
+#### Reverts
+
+* partially revert changes swapping exec with spawn ([3a64b67](https://github.com/IgniteUI/igniteui-cli/commit/3a64b67bc43df42f72363e63192b90fea38b111f))
+
+
+
+## 14.9.1 (2026-02-25)
+
+
+
+# 14.9.0 (2026-02-25)
+
+
+#### Bug Fixes
+
+* **commands,list:** do not use `this` in handler ([#1494](https://github.com/IgniteUI/igniteui-cli/issues/1494)) ([b8f5b53](https://github.com/IgniteUI/igniteui-cli/commit/b8f5b53599cb20374acee53195395213060b51d3))
+* **react:** remove setupTests and update test with it's logic ([#1489](https://github.com/IgniteUI/igniteui-cli/issues/1489)) ([bd1f0ba](https://github.com/IgniteUI/igniteui-cli/commit/bd1f0ba0bccfd6768ccae44ab10568be5ecb1828))
+
+
+#### Features
+
+* **ng:** update igniteui-angular to 21.1.0 ([#1495](https://github.com/IgniteUI/igniteui-cli/issues/1495)) ([399f83e](https://github.com/IgniteUI/igniteui-cli/commit/399f83e4278dafdf9a3832fa013840f05ba586e6))
+
+
+
+## 14.8.5-beta.3 (2026-02-11)
+
+
+
+## 14.8.5-beta.0 (2026-02-10)
+
+
+
+## 14.8.4 (2026-02-05)
+
+
+#### Bug Fixes
+
+* **angular:** increase maximum error budget ([#1485](https://github.com/IgniteUI/igniteui-cli/issues/1485)) ([63a03bd](https://github.com/IgniteUI/igniteui-cli/commit/63a03bddb3459797bc5a0121f2d601823fd3cd35))
+
+
+
+## 14.8.3 (2026-01-19)
+
+
+
+## 14.8.2 (2026-01-13)
+
+
+
+## 14.8.2-beta.4 (2026-01-12)
+
+
+
+## 14.8.2-beta.3 (2026-01-12)
+
+
+#### Bug Fixes
+
+* add vitest/browser package ([e283ed2](https://github.com/IgniteUI/igniteui-cli/commit/e283ed29b99d794bd67f3bcab7a9dbfd391045ec))
+* add vitest/browser package ([5c29f50](https://github.com/IgniteUI/igniteui-cli/commit/5c29f5054febc0d656732886d08237528d6f6e40))
+
+
+
+## 14.8.2-beta.2 (2026-01-12)
+
+
+#### Bug Fixes
+
+* add playwright to the yaml files for wc ([6432111](https://github.com/IgniteUI/igniteui-cli/commit/643211110ad858f84b9ed23b3602f80218f23cbd))
+* resolve missed merge conflict ([ba42d4f](https://github.com/IgniteUI/igniteui-cli/commit/ba42d4f378a3e8334f51381ac1ff85799134ce3e))
+
+
+
+## 14.8.2-beta.0 (2026-01-12)
+
+
+
+# 14.8.0 (2025-12-03)
+
+
+
+# 14.8.0-beta.2 (2025-12-01)
+
+
+
+# 14.8.0-beta.1 (2025-12-01)
+
+
+
+## 14.7.1 (2025-11-20)
+
+
+#### Features
+
+* update tests to use Playwright ([517ea99](https://github.com/IgniteUI/igniteui-cli/commit/517ea9901372d7a42b516f5e9114a82880038e7e))
+
+
+
+# 14.7.0 (2025-11-17)
+
+
+#### Bug Fixes
+
+* command injection vulnerabilities in PackageManager and start command ([#1438](https://github.com/IgniteUI/igniteui-cli/issues/1438)) ([1f86df3](https://github.com/IgniteUI/igniteui-cli/commit/1f86df3d6e660b93db047415e9c53af1ef4f0a30))
+
+
+#### Features
+
+* **ng:** use ng lint schematic ([#1439](https://github.com/IgniteUI/igniteui-cli/issues/1439)) ([fa917cd](https://github.com/IgniteUI/igniteui-cli/commit/fa917cd7c974db05061f9442d8c5cdcc74853928))
+
+
+
+## 14.6.4 (2025-10-14)
+
+
+
+## 14.6.3 (2025-10-09)
+
+
+
+## 14.6.2 (2025-10-07)
+
+
+#### Features
+
+* **react:** add playwright and adjust tests; update packages; ([#1430](https://github.com/IgniteUI/igniteui-cli/issues/1430)) ([32b41dc](https://github.com/IgniteUI/igniteui-cli/commit/32b41dcf3f53de76fbafce39a36a1e8d51876b93))
+
+
+
+## 14.6.1 (2025-10-06)
+
+
+
+# 14.6.0 (2025-10-02)
+
+
+#### Features
+
+* **ng:** update ig, ng and other libs ([#1427](https://github.com/IgniteUI/igniteui-cli/issues/1427)) ([93fbbcc](https://github.com/IgniteUI/igniteui-cli/commit/93fbbcce2668084dcc958736f7167e36e9cbed47))
+
+
+
+## 14.5.8 (2025-09-25)
+
+
+
+## 14.5.7 (2025-09-23)
+
+
+
+## 14.5.6 (2025-09-18)
+
+
+#### Bug Fixes
+
+* Add missing igniteui-react-core dependency to React grid templates ([fb429bb](https://github.com/IgniteUI/igniteui-cli/commit/fb429bbd3634e0cf86a617672f857be4bb8b2f0d))
+* Remove --legacy-peer-deps flag to allow automatic peer dependency installation ([fe0ea3d](https://github.com/IgniteUI/igniteui-cli/commit/fe0ea3df94614b10dc494e241b070309e283c0b6))
+* set default route ([#1422](https://github.com/IgniteUI/igniteui-cli/issues/1422)) ([768d0d0](https://github.com/IgniteUI/igniteui-cli/commit/768d0d0a2873d2efc81c426ce35b5e42e92508a9))
+* update react templates ([93d132f](https://github.com/IgniteUI/igniteui-cli/commit/93d132fa229f0dba963cd5f21b89d5274e346910))
+* use only grid with defined columns ([faeb25a](https://github.com/IgniteUI/igniteui-cli/commit/faeb25a64effeba39e24dafe6e93e5a26a07c5bc))
+
+
+#### Features
+
+* Update Ignite UI product versions in template files ([964dda1](https://github.com/IgniteUI/igniteui-cli/commit/964dda13da00ca0c9d4bf1a42d6d98d2aa1d7b88))
+
+
+
+## 14.5.4 (2025-07-01)
+
+
+
+## 14.5.3 (2025-06-28)
+
+
+#### Bug Fixes
+
+* **react:** add missing argument and fix incorrect types ([#1403](https://github.com/IgniteUI/igniteui-cli/issues/1403)) ([fb006b3](https://github.com/IgniteUI/igniteui-cli/commit/fb006b38e6b4f3a2e61326b018787f67bd32b640))
+
+
+
+## 14.5.1 (2025-06-24)
+
+
+
+# 14.5.0 (2025-06-05)
+
+
+
+## 14.4.4 (2025-05-21)
+
+
+#### Features
+
+* add azure pipelines yaml files for angular, react and wc templates ([#1396](https://github.com/IgniteUI/igniteui-cli/issues/1396)) ([6a3e39d](https://github.com/IgniteUI/igniteui-cli/commit/6a3e39d41f50abe51fa7fd819961412304a31343))
+
+
+
+## 14.4.3 (2025-04-25)
+
+
+
+## 14.4.2 (2025-04-24)
+
+
+
+## 14.4.1 (2025-04-23)
+
+
+
+# 14.4.0 (2025-04-17)
+
+
+
+## 14.3.18 (2025-04-11)
+
+
+#### Bug Fixes
+
+* add missing static css files for WC ([#1385](https://github.com/IgniteUI/igniteui-cli/issues/1385)) ([95018f9](https://github.com/IgniteUI/igniteui-cli/commit/95018f93704f62af70b9c4a2e07b46554e6331a4))
+
+
+
+## 14.3.17 (2025-04-09)
+
+
+
+## 14.3.16 (2025-03-31)
+
+
+
+## 14.3.14 (2025-02-24)
+
+
+#### Bug Fixes
+
+* update eslint and fix warnings ([#1378](https://github.com/IgniteUI/igniteui-cli/issues/1378)) ([aa84345](https://github.com/IgniteUI/igniteui-cli/commit/aa84345ff21fc0fccde94063099e4c713862cde8))
+
+
+
+## 14.3.12-beta.0 (2025-01-27)
+
+
+#### Bug Fixes
+
+* **wc:** add seperate update for single or double quotes ([79ed105](https://github.com/IgniteUI/igniteui-cli/commit/79ed105cd67baf99f15e327d5f9840c3103d8018))
+* **wc:** fix iteration ([83583db](https://github.com/IgniteUI/igniteui-cli/commit/83583dbae937824e1b1f4d3f8d1ce8cc8e5589ec))
+* **wc:** fix paths in web components workflow ([6ff5999](https://github.com/IgniteUI/igniteui-cli/commit/6ff5999b782af24f09c29d4c60befb32a84fc5e0))
+
+
+
+## 14.3.11 (2025-01-24)
+
+
+#### Bug Fixes
+
+* static data paths when deploy to github pages ([#1371](https://github.com/IgniteUI/igniteui-cli/issues/1371)) ([4b40231](https://github.com/IgniteUI/igniteui-cli/commit/4b402313f4d2a2cfd80115d274514d9e5507334c))
+
+
+
+## 14.3.10 (2025-01-23)
+
+
+#### Features
+
+* increase maximum file size to cache in webComponents's vite configuration to 10 MB ([#1370](https://github.com/IgniteUI/igniteui-cli/issues/1370)) ([0a1385e](https://github.com/IgniteUI/igniteui-cli/commit/0a1385e5d1f98c8fcdf020d144f048b112b251d5))
+
+
+
+## 14.3.9 (2025-01-23)
+
+
+#### Features
+
+* enable silent mode in Vite configuration for improved build output ([#1369](https://github.com/IgniteUI/igniteui-cli/issues/1369)) ([7728300](https://github.com/IgniteUI/igniteui-cli/commit/7728300cbba7c5b15261ff2a82820432bd4b12b7))
+
+
+
+## 14.3.8 (2025-01-23)
+
+
+#### Features
+
+* replace rollup with vite configuration for wc ([#1364](https://github.com/IgniteUI/igniteui-cli/issues/1364)) ([024ee5f](https://github.com/IgniteUI/igniteui-cli/commit/024ee5f048427c5406013f1e4d051403ae255fca))
+
+
+
+## 14.3.7 (2025-01-22)
+
+
+#### Bug Fixes
+
+* **github-pages:** upgrade github pages deploy and artefact versions ([#1366](https://github.com/IgniteUI/igniteui-cli/issues/1366)) ([db6d0ea](https://github.com/IgniteUI/igniteui-cli/commit/db6d0eaef44c189cb80f10925d25595d97b7da4b))
+
+
+
+## 14.3.6 (2024-12-12)
+
+
+#### Bug Fixes
+
+* **migrations:** enable encapsulation for migrations ([#1361](https://github.com/IgniteUI/igniteui-cli/issues/1361)) ([9561a16](https://github.com/IgniteUI/igniteui-cli/commit/9561a1604a746b8a4b771627de2af4d14927e7c2))
+
+
+
+## 14.3.5 (2024-12-06)
+
+
+#### Bug Fixes
+
+* **web-components:** fix the step for updating the router navigation in github pages workflow ([#1358](https://github.com/IgniteUI/igniteui-cli/issues/1358)) ([3e0f42c](https://github.com/IgniteUI/igniteui-cli/commit/3e0f42c4fc7a75f6819f8ba85f760ac6a6d854f1))
+
+
+
+## 14.3.4 (2024-12-04)
+
+
+#### Bug Fixes
+
+* **web-components:** add step in github pages workflow to fix navigation ([#1355](https://github.com/IgniteUI/igniteui-cli/issues/1355)) ([0ca7277](https://github.com/IgniteUI/igniteui-cli/commit/0ca7277be8eaf1218af8a47f1ed7f51273499737))
+
+
+
+## 14.3.3 (2024-12-02)
+
+
+
+## 14.3.2 (2024-11-28)
+
+
+
+# 14.3.0 (2024-11-25)
+
+
+#### Features
+
+* Add pages deployment variable logic and fixes in github pages yaml files ([#1337](https://github.com/IgniteUI/igniteui-cli/issues/1337)) ([c75d9c7](https://github.com/IgniteUI/igniteui-cli/commit/c75d9c7a9d7a9244e7a9a814770809f06280529a))
+* allow reordering of array literal expressions ([#1323](https://github.com/IgniteUI/igniteui-cli/issues/1323)) ([412a2a5](https://github.com/IgniteUI/igniteui-cli/commit/412a2a585fa16fda53eb643c74af7fb4037c1412))
+
+
+
+## 14.2.3 (2024-11-15)
+
+
+
+## 14.2.2 (2024-11-08)
+
+
+#### Bug Fixes
+
+* **cli:** replace coveralls with coveralls-next ([#1336](https://github.com/IgniteUI/igniteui-cli/issues/1336)) ([4028e28](https://github.com/IgniteUI/igniteui-cli/commit/4028e28bc62da3f2232f79b60e26b9d13c93c8f9))
+
+
+
+## 14.2.1 (2024-10-28)
+
+
+
+# 14.2.0 (2024-10-25)
+
+
+
+# 14.2.0-beta.4 (2024-10-23)
+
+
+#### Bug Fixes
+
+* **cli:** add fixes in react and wc templates ([#1326](https://github.com/IgniteUI/igniteui-cli/issues/1326)) ([0430547](https://github.com/IgniteUI/igniteui-cli/commit/0430547a733c98b76aa94499516934547049b117))
+
+
+
+# 14.1.0 (2024-10-11)
+
+
+
+## 14.0.2 (2024-09-20)
+
+
+
+## 14.0.1 (2024-09-05)
+
+
+
+# 14.0.0 (2024-08-23)
+
+
+#### Bug Fixes
+
+* **eslint:** turn off no-explicit-any rule for wc ([#1288](https://github.com/IgniteUI/igniteui-cli/issues/1288)) ([1ee5b0f](https://github.com/IgniteUI/igniteui-cli/commit/1ee5b0f4ecc97a93f60b95e1615bb2a75fce9238))
+
+
+
+# 14.0.0-beta.2 (2024-07-24)
+
+
+#### Bug Fixes
+
+* **igr-ts:** add new lines in base app routes file ([#1284](https://github.com/IgniteUI/igniteui-cli/issues/1284)) ([92a14ef](https://github.com/IgniteUI/igniteui-cli/commit/92a14ef05f174bb5e5bc09978c986eb8f27e57e1))
+
+
+#### Features
+
+* **igx-templates:** add AngularTypeScriptFileUpdate ([e7f6ed3](https://github.com/IgniteUI/igniteui-cli/commit/e7f6ed3d339bb444dcdbaec4cabe5dcbff27b5ac))
+
+
+
+## 13.3.3 (2024-07-16)
+
+
+
+## 13.3.2 (2024-07-04)
+
+
+
+## 13.3.1 (2024-06-28)
+
+
+
+# 13.3.0-rc.0 (2024-05-31)
+
+
+
+## 13.2.1 (2024-05-09)
+
+
+
+# 13.2.0 (2024-04-29)
+
+
+
+# 13.2.0-rc.0 (2024-04-29)
+
+
+
+## 13.1.16 (2024-04-28)
+
+
+#### Bug Fixes
+
+* **react:** fix null type build error in main.tsx ([#1242](https://github.com/IgniteUI/igniteui-cli/issues/1242)) ([2d0b579](https://github.com/IgniteUI/igniteui-cli/commit/2d0b57999b6a22445c2e7ff494310f9e94c421ea))
+
+
+
+## 13.1.15 (2024-04-12)
+
+
+
+## 13.1.13 (2024-04-11)
+
+
+#### Bug Fixes
+
+* **cli-templetes:** Replaced index.html <title> to ApplicationTitle as placeholder ([#1237](https://github.com/IgniteUI/igniteui-cli/issues/1237)) ([d622d54](https://github.com/IgniteUI/igniteui-cli/commit/d622d54fbd3becbc514bfc971eac4c97b3346255))
+* **igr-ts:** lint ignore unused vars prefix; ts strict ([#1232](https://github.com/IgniteUI/igniteui-cli/issues/1232)) ([91e35b3](https://github.com/IgniteUI/igniteui-cli/commit/91e35b3eb060f079ff6e30bdead75af7d6b98add))
+
+
+
+## 13.1.13-beta.4 (2024-04-04)
+
+
+
+## 13.1.13-beta.3 (2024-04-04)
+
+
+#### Features
+
+* **react:** remove igniteui deps from package.json and bump versions ([841a19d](https://github.com/IgniteUI/igniteui-cli/commit/841a19d2779f4f156c48368b4fa7a20b1a181eb4))
+* **react:** turn off no-explicit-any in eslint ([ef50011](https://github.com/IgniteUI/igniteui-cli/commit/ef500113afe214e8e64dea926d6937c5e5f827df))
+
+
+
+## 13.1.12 (2024-03-21)
+
+
+#### Features
+
+* **cli:** upgrade packages for React and WC ([#1198](https://github.com/IgniteUI/igniteui-cli/issues/1198)) ([16c9b8d](https://github.com/IgniteUI/igniteui-cli/commit/16c9b8dda219ebacd473a2fad5e0c0ea70d5f320))
+
+
+
+# 13.2.0-beta.0 (2024-03-15)
+
+
+#### Bug Fixes
+
+* add elements internal polyfill to base template ([c7d2396](https://github.com/IgniteUI/igniteui-cli/commit/c7d2396572a9cd77205b8727ed81089f460403e2))
+* **Imports:** Fixed class import path in .test.ts ([#1224](https://github.com/IgniteUI/igniteui-cli/issues/1224)) ([6b3a2ef](https://github.com/IgniteUI/igniteui-cli/commit/6b3a2effef4951f0fc59e5393186eb2e69f2972b))
+* **Lint:** Fixed styles typing in style-utils ([#1222](https://github.com/IgniteUI/igniteui-cli/issues/1222)) ([6ad842a](https://github.com/IgniteUI/igniteui-cli/commit/6ad842a2bc16d50c8b29ddbca5907b80e40fd798))
+
+
+
+## 13.1.11 (2024-03-12)
+
+
+#### Bug Fixes
+
+* **react:** add editorconfig and vite-env.d.ts ([555300c](https://github.com/IgniteUI/igniteui-cli/commit/555300c38df56246cb7cc08f6b25e8ae5fd316f0))
+
+
+
+## 13.1.10 (2024-03-11)
+
+
+
+## 13.1.9 (2024-03-05)
+
+
+
+## 13.1.8 (2024-02-29)
+
+
+
+## 13.1.7 (2024-02-28)
+
+
+#### Bug Fixes
+
+* **WebComponents:** Removing an unnecessary ` from package.json ([3420292](https://github.com/IgniteUI/igniteui-cli/commit/3420292eb5752eaf76cfee1e12927d8d2749b8be))
+
+
+
+## 13.1.6 (2024-02-26)
+
+
+#### Bug Fixes
+
+* **React:** Add styles to support dark themes [#29410](https://github.com/IgniteUI/igniteui-cli/issues/29410) ([#1205](https://github.com/IgniteUI/igniteui-cli/issues/1205)) ([a191348](https://github.com/IgniteUI/igniteui-cli/commit/a191348d07317cdaac43db7bd52ee3958784ae55))
+
+
+
+## 13.1.5 (2024-01-31)
+
+
+#### Features
+
+* add style-utils file to base project ([#1195](https://github.com/IgniteUI/igniteui-cli/issues/1195)) ([112f27d](https://github.com/IgniteUI/igniteui-cli/commit/112f27ddc49d9106a182c8c7768543aa1b913164))
+
+
+
+## 13.1.3 (2024-01-17)
+
+
+#### Bug Fixes
+
+* **igr-ts:** add github workflows folder ([#1192](https://github.com/IgniteUI/igniteui-cli/issues/1192)) ([2369c55](https://github.com/IgniteUI/igniteui-cli/commit/2369c556b8f84ce6a575c73b617c7581cedf5c0f))
+* open browser on app start ([#1187](https://github.com/IgniteUI/igniteui-cli/issues/1187)) ([c4e1f5c](https://github.com/IgniteUI/igniteui-cli/commit/c4e1f5c8d65dd8729083377973a40450b4899d63))
+
+
+#### Features
+
+* **igc-ts:** bump the version to 4.7.0 and add new components ([#1189](https://github.com/IgniteUI/igniteui-cli/issues/1189)) ([e9dbfd7](https://github.com/IgniteUI/igniteui-cli/commit/e9dbfd7d6212f1b8535de6a142f6140e3848f6ef))
+
+
+
+## 13.1.1 (2023-12-14)
+
+
+#### Features
+
+* **igr-ts:** add igr-ts proj type ([#1146](https://github.com/IgniteUI/igniteui-cli/issues/1146)) ([4609525](https://github.com/IgniteUI/igniteui-cli/commit/460952505758fcf1ab9b559ed6809015f3c5d3a5)), closes [#1147](https://github.com/IgniteUI/igniteui-cli/issues/1147) [#1153](https://github.com/IgniteUI/igniteui-cli/issues/1153)
+
+
+
+## 13.0.1 (2023-11-15)
+
+
+
+# 13.0.0 (2023-11-09)
+
+
+
+# 13.0.0-rc.0 (2023-11-09)
+
+
+
+## 12.0.6-beta.2 (2023-10-02)
+
+
+
+## 12.0.5 (2023-07-18)
+
+
+#### Bug Fixes
+
+* memory allocation issue during build of webComponent app that uses igc-category-chart ([ee188bf](https://github.com/IgniteUI/igniteui-cli/commit/ee188bf4672b8ee96ac1b891cf8e334f44bb4929))
+
+
+
+## 12.0.4 (2023-07-18)
+
+
+
+## 12.0.3 (2023-06-28)
+
+
+
+## 12.0.3-beta.0 (2023-06-02)
+
+
+#### Bug Fixes
+
+* **igx:** replace DataGridSelectionMode with GridSelectionMode ([fc61052](https://github.com/IgniteUI/igniteui-cli/commit/fc61052d68f5fffbaf96c0f7c71220c39c7d5ef2))
+
+
+
+## 12.0.1 (2023-05-26)
+
+
+
+# 12.0.0 (2023-05-15)
+
+
+
+# 12.0.0-rc.0 (2023-05-15)
+
+
+#### Bug Fixes
+
+* **grid:** Adding missing packages to the grid template [#1109](https://github.com/IgniteUI/igniteui-cli/issues/1109) ([9c65afe](https://github.com/IgniteUI/igniteui-cli/commit/9c65afe228f182918c6e3f50e7cfec0466d7f7d2))
+* **web-components:** Adding packages in each template. ([674f55c](https://github.com/IgniteUI/igniteui-cli/commit/674f55c66bfa3308696cee3da1dd1d0e3ae64c0c))
+
+
+#### Features
+
+* **igx:** add base_with_home proj to igx-templates ([#1118](https://github.com/IgniteUI/igniteui-cli/issues/1118)) ([d84c431](https://github.com/IgniteUI/igniteui-cli/commit/d84c4310a03e35588626c57148091c6b224c7bc3))
+* **igx:** update to 16 ([#1120](https://github.com/IgniteUI/igniteui-cli/issues/1120)) ([e6efa40](https://github.com/IgniteUI/igniteui-cli/commit/e6efa40c2c748d2679b6be66252bc7732e51de29))
+
+
+
+## 11.1.1 (2023-04-11)
+
+
+#### Bug Fixes
+
+* **wc:** changing the function call [#1110](https://github.com/IgniteUI/igniteui-cli/issues/1110) ([#1113](https://github.com/IgniteUI/igniteui-cli/issues/1113)) ([5e4d1db](https://github.com/IgniteUI/igniteui-cli/commit/5e4d1dbdeeaa498278a7669b08031c51bfa2f367))
+
+
+
+# 11.1.0 (2023-03-28)
+
+
+
+# 11.1.0-rc.0 (2023-03-24)
+
+
+
+## 11.0.2 (2023-02-17)
+
+
+
+# 11.0.0 (2022-11-23)
+
+
+#### Features
+
+* add lint file for web components ([#1085](https://github.com/IgniteUI/igniteui-cli/issues/1085)) ([25498c0](https://github.com/IgniteUI/igniteui-cli/commit/25498c09b2bc4e5bc30c67c36008d97b342e3526))
+
+
+
+# 10.1.0-beta.13 (2022-10-27)
+
+
+
+# 10.1.0-beta.12 (2022-10-27)
+
+
+#### Features
+
+* **wc:** add npmrc to proj template ([#1079](https://github.com/IgniteUI/igniteui-cli/issues/1079)) ([af233e5](https://github.com/IgniteUI/igniteui-cli/commit/af233e53d72b615ce11e16a65ddf358645329ffb))
+
+
+
+# 10.1.0-beta.11 (2022-10-25)
+
+
+
+# 10.1.0-beta.10 (2022-10-25)
+
+
+
+# 10.1.0-beta9 (2022-10-25)
+
+
+
+# 10.1.0-beta.8 (2022-10-23)
+
+
+
+# 10.1.0-beta.7 (2022-10-19)
+
+
+
+# 10.1.0-beta.6 (2022-10-19)
+
+
+
+# 10.1.0-beta.5 (2022-10-18)
+
+
+
+# 10.1.0-beta.4 (2022-10-18)
+
+
+#### Features
+
+* provide default options when adding a template ([#1070](https://github.com/IgniteUI/igniteui-cli/issues/1070)) ([73e5c2c](https://github.com/IgniteUI/igniteui-cli/commit/73e5c2c0cc62b81384d6b4928103adf5ccf16153))
+
+
+
+# 10.1.0-beta.3 (2022-10-17)
+
+
+
+# 10.1.0-beta.2 (2022-10-14)
+
+
+
+# 10.1.0-beta.1 (2022-10-14)
+
+
+
+# 10.1.0-beta.0 (2022-10-07)
+
+
+#### Bug Fixes
+
+* **webcomponents:** set background and color to body ([b41a8b6](https://github.com/IgniteUI/igniteui-cli/commit/b41a8b66834ed46206cb14aa8bff0d6e3b99ef18))
+* **webcomponents:** set correct fallback for background color ([#1065](https://github.com/IgniteUI/igniteui-cli/issues/1065)) ([a976831](https://github.com/IgniteUI/igniteui-cli/commit/a976831228c204b015bd49773af4b5fc9767873a))
+* **webcomponents:** update app-root markup ([c717c37](https://github.com/IgniteUI/igniteui-cli/commit/c717c370cae66218eb4a7d5daaf0137da8c12d23))
+
+
+#### Features
+
+* **wc:** add base template for Web Components [#988](https://github.com/IgniteUI/igniteui-cli/issues/988) ([#1058](https://github.com/IgniteUI/igniteui-cli/issues/1058)) ([7574ab2](https://github.com/IgniteUI/igniteui-cli/commit/7574ab2b0221687a6ace6f627ec55caa3945236f))
+
+
+
+## 10.0.5 (2022-09-19)
+
+
+#### Features
+
+* **wc:** add accordion, tab & date-time-editor templates ([#1055](https://github.com/IgniteUI/igniteui-cli/issues/1055)) ([f2a631f](https://github.com/IgniteUI/igniteui-cli/commit/f2a631fcd18f529172af8e038929bf7f542e71ff))
+
+
+
+## 10.0.4-beta.0 (2022-06-30)
+
+
+
+## 10.0.2 (2022-06-29)
+
+
+
+## 10.0.1 (2022-06-17)
+
+
+
+# 9.2.0 (2022-05-26)
+
+
+
+## 9.1.4 (2022-05-20)
+
+
+
+## 9.1.3 (2022-05-19)
+
+
+
+## 9.1.2 (2022-05-16)
+
+
+
+## 9.1.1 (2022-03-18)
+
+
+
+## 9.1.1-rc.0 (2022-03-17)
+
+
+#### Bug Fixes
+
+* **wc:** address comments ([e1f804d](https://github.com/IgniteUI/igniteui-cli/commit/e1f804deada9f5fdf628ba25e122278cb9118507))
+
+
+#### Features
+
+* **ng:** update to 13.3.0 ([17553b0](https://github.com/IgniteUI/igniteui-cli/commit/17553b0da7586d14d91778417161f2a77864fd16))
+* **wc:** add new 2.1.0 components ([526da0c](https://github.com/IgniteUI/igniteui-cli/commit/526da0ce167659c9cfd3b21caf21efdcbc47e18d))
+
+
+
+# 9.1.0 (2022-03-02)
+
+
+
+# 9.1.0-rc.1 (2022-02-25)
+
+
+
+# 9.1.0-beta.0 (2022-02-22)
+
+
+#### Bug Fixes
+
+* **start:** pass in options for wc child process ([2df9e33](https://github.com/IgniteUI/igniteui-cli/commit/2df9e337e86e353d6d3dde6b53001af7af36fe12))
+
+
+#### Features
+
+* **wc:** adding empty view and refactor proj structure [#967](https://github.com/IgniteUI/igniteui-cli/issues/967) ([#979](https://github.com/IgniteUI/igniteui-cli/issues/979)) ([622a014](https://github.com/IgniteUI/igniteui-cli/commit/622a0143be1583cfb97d7b80cabbfe21e03c20eb))
+* **web-components:** use LitElement in the templates [#989](https://github.com/IgniteUI/igniteui-cli/issues/989) ([#1001](https://github.com/IgniteUI/igniteui-cli/issues/1001)) ([5d828bc](https://github.com/IgniteUI/igniteui-cli/commit/5d828bc6062e6971d82f588ebf59a6e489d87257))
+
+
+
+## 9.0.6 (2022-02-04)
+
+
+
+## 9.0.5 (2022-02-04)
+
+
+
+## 9.0.5-beta.2 (2022-02-03)
+
+
+
+## 9.0.5-beta.1 (2022-01-28)
+
+
+
+## 9.0.5-beta.0 (2021-12-20)
+
+
+
+## 9.0.4 (2021-12-15)
+
+
+
+## 9.0.3 (2021-12-13)
+
+
+#### Features
+
+* **typescript:** Add support for typescript 4.5.2 ([055ca5b](https://github.com/IgniteUI/igniteui-cli/commit/055ca5b7f8e54acdd8f3f1d6b6d7517916d852f3))
+* Update [@use](https://github.com/use) [@forward](https://github.com/forward) and hsla ([#961](https://github.com/IgniteUI/igniteui-cli/issues/961)) ([2ef8435](https://github.com/IgniteUI/igniteui-cli/commit/2ef8435816f8ff4f60c7e0cd4ed497a11fc815da))
+
+
+
+## 9.0.1 (2021-11-25)
+
+
+
+# 9.0.0 (2021-11-22)
+
+
+
+# 9.0.0-rc.3 (2021-11-22)
+
+
+
+# 9.0.0-rc.2 (2021-11-19)
+
+
+#### Bug Fixes
+
+* add igx-scrollbar class to body, [#14033](https://github.com/IgniteUI/igniteui-cli/issues/14033) ([b02ac58](https://github.com/IgniteUI/igniteui-cli/commit/b02ac5822015c6b1b1fdd4684a52a2eecb3eadd9))
+
+
+
+# 9.0.0-rc.1 (2021-11-17)
+
+
+
+# 9.0.0-rc.0 (2021-11-17)
+
+
+#### Features
+
+* **angular:** update to Angular 13 [#895](https://github.com/IgniteUI/igniteui-cli/issues/895) ([#896](https://github.com/IgniteUI/igniteui-cli/issues/896)) ([32f1721](https://github.com/IgniteUI/igniteui-cli/commit/32f17215290af3372b554f0e440e39b9b9b5040a))
+
+
+
+# 8.3.0-rc.0 (2021-11-11)
+
+
+
+# 8.3.0-beta.7 (2021-11-09)
+
+
+
+# 8.3.0-beta.6 (2021-11-09)
+
+
+
+# 8.3.0-beta.5 (2021-11-09)
+
+
+
+# 8.3.0-beta.4 (2021-11-09)
+
+
+
+# 8.3.0-beta.3 (2021-11-08)
+
+
+
+# 8.3.0-beta.2 (2021-11-08)
+
+
+
+# 8.3.0-beta.1 (2021-11-04)
+
+
+
+# 8.3.0-beta.0 (2021-11-04)
+
+
+
+## 8.2.1 (2021-10-08)
+
+
+
+## 8.2.1-rc.0 (2021-10-07)
+
+
+
+# 8.2.0 (2021-10-04)
+
+
+
+# 8.2.0-alpha.0 (2021-09-30)
+
+
+
+## 8.1.2 (2021-09-28)
+
+
+#### Bug Fixes
+
+* **igr-es6:** Underscore dot ([a0ce582](https://github.com/IgniteUI/igniteui-cli/commit/a0ce582e112a31c2c59d5532791ef07ab988335b))
+
+
+
+## 8.1.1 (2021-09-02)
+
+
+#### Bug Fixes
+
+* **custom-templates:** Refactor samples, ([1f50907](https://github.com/IgniteUI/igniteui-cli/commit/1f509070a9409c4100d3d9c6a5de2f443d04c556))
+* **ig-ts:** Free version path contains no /en ([e96c7f6](https://github.com/IgniteUI/igniteui-cli/commit/e96c7f673729a034eeb3d89f5adfe3061d6e9f0b))
+* **ig-ts:** Make use of all visible height ([ebfe5ed](https://github.com/IgniteUI/igniteui-cli/commit/ebfe5edada1fcd9d4f8e25f868f916ad2d862121))
+* **ig-ts:** Temp fix - add static FormsModule ([9341753](https://github.com/IgniteUI/igniteui-cli/commit/9341753ab6fed9597c6f30f9fb1383ad132282ab))
+* **ig-ts:** Update prod budgets ([4edd971](https://github.com/IgniteUI/igniteui-cli/commit/4edd97100f0ab2cdd7a00176992ca1da57de47ff))
+* **lint:** Fix all lint errors. ([659cc29](https://github.com/IgniteUI/igniteui-cli/commit/659cc2913f20092bd9ffc3f5a1a1f549db005912))
+* **lint:** Fix dum line lenght ([570accb](https://github.com/IgniteUI/igniteui-cli/commit/570accbaef8f74d01cecbeda0046edb1a8423ef1))
+* **lint:** Fix lint errors ([84394b9](https://github.com/IgniteUI/igniteui-cli/commit/84394b9c4c24ed9727c8719bd9e463cea09d482b))
+* **lint:** Fix lint errors. ([0477e7d](https://github.com/IgniteUI/igniteui-cli/commit/0477e7dd3d9b4731e1b3176316581d3e0339ca5e))
+* **templates:** Add file-saver package ([8c7a59d](https://github.com/IgniteUI/igniteui-cli/commit/8c7a59db381a32719cdadbf1534a387c90bb05d5))
+
+
+#### Features
+
+* **ig-ts:** Empty project is now angular project. ([83e5c6f](https://github.com/IgniteUI/igniteui-cli/commit/83e5c6f8370b0d10a349751d9b90f3f284d9ae69))
+
+
+
+# 8.1.0-rc.0 (2021-07-30)
+
+
+
+# 8.1.0-beta.1 (2021-07-30)
+
+
+
+# 8.1.0-beta.0 (2021-07-28)
+
+
+#### Features
+
+* update angular to v12.1 [#856](https://github.com/IgniteUI/igniteui-cli/issues/856) ([#857](https://github.com/IgniteUI/igniteui-cli/issues/857)) ([971822e](https://github.com/IgniteUI/igniteui-cli/commit/971822e343158bd107ef5b07bf60773509bd928c))
+
+
+
+## 8.0.3 (2021-07-14)
+
+
+
+## 8.0.2 (2021-07-07)
+
+
+
+## 8.0.2-beta.1 (2021-07-06)
+
+
+
+## 8.0.2-beta.0 (2021-07-02)
+
+
+
+## 8.0.1 (2021-07-01)
+
+
+
+# 8.0.0 (2021-05-14)
+
+
+
+# 8.0.0-rc.0 (2021-05-13)
+
+
+
+# 8.0.0-alpha.1 (2021-05-13)
+
+
+
+## 7.1.1 (2021-03-15)
+
+
+
+## 7.1.1-beta.0 (2021-03-12)
+
+
+
+# 7.1.0 (2021-02-22)
+
+
+
+# 7.1.0-beta.0 (2021-02-18)
+
+
+
+## 7.0.1 (2020-11-16)
+
+
+
+# 7.0.0 (2020-11-13)
+
+
+
+# 7.0.0-rc.2 (2020-11-12)
+
+
+
+# 7.0.0-rc.1 (2020-11-10)
+
+
+
+# 7.0.0-rc.0 (2020-11-10)
+
+
+
+# 7.0.0-alpha.0 (2020-11-10)
+
+
+
+# 6.2.0 (2020-10-20)
+
+
+
+# 6.2.0-rc.0 (2020-10-16)
+
+
+
+# 6.2.0-beta.0 (2020-10-14)
+
+
+#### Bug Fixes
+
+* **react-grid:** Add missing module [#791](https://github.com/IgniteUI/igniteui-cli/issues/791) ([#798](https://github.com/IgniteUI/igniteui-cli/issues/798)) ([68e2b81](https://github.com/IgniteUI/igniteui-cli/commit/68e2b81e297a5b4279f53e5bb9dff80126cc08b6))
+
+
+
+# 6.1.0 (2020-08-12)
+
+
+
+# 6.1.0-beta.0 (2020-08-07)
+
+
+
+# 6.1.0-alpha.0 (2020-07-09)
+
+
+
+# 6.0.0 (2020-06-25)
+
+
+
+## 5.2.1 (2020-06-25)
+
+
+
+# 6.0.0-rc.0 (2020-06-25)
+
+
+#### Features
+
+* **packages:** Bump packages to Angular 10  [#767](https://github.com/IgniteUI/igniteui-cli/issues/767) ([73a5670](https://github.com/IgniteUI/igniteui-cli/commit/73a56703ff4f4f0cc23d1da3c65cb4fbe114c9b4))
+* **packages:** Bump packages to Angular 10  [#767](https://github.com/IgniteUI/igniteui-cli/issues/767) ([f7e104e](https://github.com/IgniteUI/igniteui-cli/commit/f7e104e8ccee1692ff886259a7b7cf653de46573))
+
+
+
+# 5.2.0 (2020-06-11)
+
+
+
+## 5.1.1 (2020-06-03)
+
+
+
+# 5.1.0 (2020-06-01)
+
+
+
+# 5.1.0-beta.4 (2020-06-01)
+
+
+
+# 5.1.0-beta.3 (2020-05-29)
+
+
+
+# 5.1.0-beta.2 (2020-05-28)
+
+
+
+# 5.1.0-beta.1 (2020-05-28)
+
+
+#### Bug Fixes
+
+* **upgrade:** provide default fallback for incorrect package template ([9dd4d80](https://github.com/IgniteUI/igniteui-cli/commit/9dd4d80db6cf13d3fd7594790bcaaeec9a383b49))
+
+
+
+# 5.1.0-beta.0 (2020-05-27)
+
+
+#### Features
+
+* **commands:** Add 'upgrade-packages' command ([25db37d](https://github.com/IgniteUI/igniteui-cli/commit/25db37d0df1fa52d81501b74ab328330e7a60744))
+* **schematics:** update-package logic added ([197b94e](https://github.com/IgniteUI/igniteui-cli/commit/197b94e367d5e9a359c989beef01c6f35d7b54b5))
+* **step-by-step:** add prompt to upgrade to private feed packages, [#724](https://github.com/IgniteUI/igniteui-cli/issues/724) ([63c0c85](https://github.com/IgniteUI/igniteui-cli/commit/63c0c85639c1e5e5415c82f96a6b5cb5bbad4b99))
+
+
+
+# 5.1.0-alpha.0 (2020-05-20)
+
+
+
+## 5.0.3 (2020-05-18)
+
+
+#### Bug Fixes
+
+* **igx:** proj template error handler log instead throw, register only in prod ([270addd](https://github.com/IgniteUI/igniteui-cli/commit/270adddfdee8bb84892e768971e976e70550b2c2))
+
+
+
+## 5.0.2 (2020-05-05)
+
+
+#### Bug Fixes
+
+* **ig-ts:** correct grid features template variable [#702](https://github.com/IgniteUI/igniteui-cli/issues/702) ([3f09bd9](https://github.com/IgniteUI/igniteui-cli/commit/3f09bd9af64177162e4e450df2148e1b13b2f87f))
+* **start:** inherit all stdio, not just input [#699](https://github.com/IgniteUI/igniteui-cli/issues/699) ([1c03891](https://github.com/IgniteUI/igniteui-cli/commit/1c03891227bcdcff6dbff2005939e631737d8b7f))
+
+
+
+# 5.0.0 (2020-02-11)
+
+
+
+# 5.0.0-rc.4 (2020-02-11)
+
+
+
+# 5.0.0-rc.3 (2020-02-07)
+
+
+
+# 5.0.0-rc.2 (2020-02-07)
+
+
+#### Features
+
+* **ix-ts:** Update ig-ts projects [#647](https://github.com/IgniteUI/igniteui-cli/issues/647) ([a6204d8](https://github.com/IgniteUI/igniteui-cli/commit/a6204d80f50e885459306276f3584fac0488460b))
+
+
+
+# 5.0.0-rc.0 (2020-01-31)
+
+
+#### Bug Fixes
+
+* new project accepts lower case theme name [#600](https://github.com/IgniteUI/igniteui-cli/issues/600) ([#619](https://github.com/IgniteUI/igniteui-cli/issues/619)) ([d6eedea](https://github.com/IgniteUI/igniteui-cli/commit/d6eedea8998b07aa6312dea6fdbab66acd88303a))
+
+
+
+# 5.0.0-beta.3 (2019-12-13)
+
+
+#### Bug Fixes
+
+* **cli, schematics:** check for fileSystem on post install [#612](https://github.com/IgniteUI/igniteui-cli/issues/612) ([#613](https://github.com/IgniteUI/igniteui-cli/issues/613)) ([0a6a878](https://github.com/IgniteUI/igniteui-cli/commit/0a6a87877bfe42fb9d665ac7b7e4be3d5e72511f))
+
+
+
+# 5.0.0-beta.2 (2019-12-06)
+
+
+
+# 5.0.0-beta.1 (2019-11-28)
+
+
+
+# 5.0.0-alpha.1 (2019-10-02)
+
+
+# 14.10.0-alpha.0
+
+## igniteui/cli-core@14.10.0-alpha.0 (2026-03-25)
+
+* **packages:** MCP server initial release as workspace package
+
+#### Features
+
+#### Bug Fixes
+
+* **eslint:** correct config ignores and resolve lint errors ([68d01ac](https://github.com/IgniteUI/igniteui-cli/commit/68d01ac6102e4e3d660dff9d229e826ea64943db))
+* **lint:** re-enable no-console rule ([3ffa07f](https://github.com/IgniteUI/igniteui-cli/commit/3ffa07ff8812e93dd358b38332f3abc2ea955af2))
+
+
+
+## 14.9.2 (2026-03-11)
+
+
+#### Bug Fixes
+
+* **packages:** disable non-functional registry login attempt on upgrade ([#1528](https://github.com/IgniteUI/igniteui-cli/issues/1528)) ([1008a1e](https://github.com/IgniteUI/igniteui-cli/commit/1008a1e3fadb20553f464162d69a5bb2393d615b))
+* **packages:** login command for node@24+ spawn change ([cbb6502](https://github.com/IgniteUI/igniteui-cli/commit/cbb6502e90cfeaa7a87885748aa4b337c37c0b2f))
+* **upgrade-packages:** correctly glob files on windows ([#1511](https://github.com/IgniteUI/igniteui-cli/issues/1511)) ([64f2735](https://github.com/IgniteUI/igniteui-cli/commit/64f2735963f269fb4b60dd7479566baae33119c8))
+
+
+#### Reverts
+
+* partially revert changes swapping exec with spawn ([3a64b67](https://github.com/IgniteUI/igniteui-cli/commit/3a64b67bc43df42f72363e63192b90fea38b111f))
+
+
+
+## 14.9.1 (2026-02-25)
+
+
+
+# 14.9.0 (2026-02-25)
+
+
+#### Features
+
+* **ng:** update igniteui-angular to 21.1.0 ([#1495](https://github.com/IgniteUI/igniteui-cli/issues/1495)) ([399f83e](https://github.com/IgniteUI/igniteui-cli/commit/399f83e4278dafdf9a3832fa013840f05ba586e6))
+
+
+
+## 14.8.5-beta.3 (2026-02-11)
+
+
+
+## 14.8.5-beta.0 (2026-02-10)
+
+
+
+## 14.8.4 (2026-02-05)
+
+
+
+## 14.8.3 (2026-01-19)
+
+
+
+## 14.8.2 (2026-01-13)
+
+
+
+## 14.8.2-beta.4 (2026-01-12)
+
+
+
+## 14.8.2-beta.3 (2026-01-12)
+
+
+
+## 14.8.2-beta.2 (2026-01-12)
+
+
+
+## 14.8.2-beta.0 (2026-01-12)
+
+
+
+# 14.8.0 (2025-12-03)
+
+
+
+# 14.8.0-beta.2 (2025-12-01)
+
+
+
+# 14.8.0-beta.1 (2025-12-01)
+
+
+
+## 14.7.1 (2025-11-20)
+
+
+
+# 14.7.0 (2025-11-17)
+
+
+#### Bug Fixes
+
+* command injection vulnerabilities in PackageManager and start command ([#1438](https://github.com/IgniteUI/igniteui-cli/issues/1438)) ([1f86df3](https://github.com/IgniteUI/igniteui-cli/commit/1f86df3d6e660b93db047415e9c53af1ef4f0a30))
+
+
+#### Features
+
+* **ng:** use ng lint schematic ([#1439](https://github.com/IgniteUI/igniteui-cli/issues/1439)) ([fa917cd](https://github.com/IgniteUI/igniteui-cli/commit/fa917cd7c974db05061f9442d8c5cdcc74853928))
+
+
+
+## 14.6.4 (2025-10-14)
+
+
+
+## 14.6.3 (2025-10-09)
+
+
+
+## 14.6.2 (2025-10-07)
+
+
+
+## 14.6.1 (2025-10-06)
+
+
+
+# 14.6.0 (2025-10-02)
+
+
+#### Features
+
+* **ng:** update ig, ng and other libs ([#1427](https://github.com/IgniteUI/igniteui-cli/issues/1427)) ([93fbbcc](https://github.com/IgniteUI/igniteui-cli/commit/93fbbcce2668084dcc958736f7167e36e9cbed47))
+
+
+
+## 14.5.8 (2025-09-25)
+
+
+#### Bug Fixes
+
+* **react:** enhance upgrade-packages to support workspace glob patterns for projects without explicit workspaces ([#1424](https://github.com/IgniteUI/igniteui-cli/issues/1424)) ([6eeee2f](https://github.com/IgniteUI/igniteui-cli/commit/6eeee2ff879902197f012e83eb6064a72a4c438e))
+
+
+
+## 14.5.7 (2025-09-23)
+
+
+
+## 14.5.6 (2025-09-18)
+
+
+#### Bug Fixes
+
+* Remove --legacy-peer-deps flag to allow automatic peer dependency installation ([fe0ea3d](https://github.com/IgniteUI/igniteui-cli/commit/fe0ea3df94614b10dc494e241b070309e283c0b6))
+* **wc:** enhance upgrade-packages to support workspace glob patterns and vite.config.ts files ([#1408](https://github.com/IgniteUI/igniteui-cli/issues/1408)) ([bcd62be](https://github.com/IgniteUI/igniteui-cli/commit/bcd62be52107bcbdab6d207866fe7ffb99883b6d))
+
+
+
+## 14.5.4 (2025-07-01)
+
+
+
+## 14.5.3 (2025-06-28)
+
+
+
+## 14.5.1 (2025-06-24)
+
+
+
+# 14.5.0 (2025-06-05)
+
+
+
+## 14.4.4 (2025-05-21)
+
+
+#### Features
+
+* add azure pipelines yaml files for angular, react and wc templates ([#1396](https://github.com/IgniteUI/igniteui-cli/issues/1396)) ([6a3e39d](https://github.com/IgniteUI/igniteui-cli/commit/6a3e39d41f50abe51fa7fd819961412304a31343))
+
+
+
+## 14.4.3 (2025-04-25)
+
+
+#### Features
+
+* **React:** Update react html files with licensed packages when upgrading packages ([#1395](https://github.com/IgniteUI/igniteui-cli/issues/1395)) ([7a7c4f0](https://github.com/IgniteUI/igniteui-cli/commit/7a7c4f0b5b74acc67e7524e643ee2a102ededb46))
+
+
+
+## 14.4.2 (2025-04-24)
+
+
+
+## 14.4.1 (2025-04-23)
+
+
+
+# 14.4.0 (2025-04-17)
+
+
+
+## 14.3.18 (2025-04-11)
+
+
+#### Bug Fixes
+
+* add missing static css files for WC ([#1385](https://github.com/IgniteUI/igniteui-cli/issues/1385)) ([95018f9](https://github.com/IgniteUI/igniteui-cli/commit/95018f93704f62af70b9c4a2e07b46554e6331a4))
+
+
+
+## 14.3.17 (2025-04-09)
+
+
+#### Bug Fixes
+
+* **WC:** update themes import paths to licensed version ([#1387](https://github.com/IgniteUI/igniteui-cli/issues/1387)) ([260068b](https://github.com/IgniteUI/igniteui-cli/commit/260068b9c9e3f4e895717ca6003f6ba0aded5cf2))
+
+
+
+## 14.3.16 (2025-03-31)
+
+
+#### Bug Fixes
+
+* **workflows:** Do not throw error if github workflows directory does not exist when updating ([#1383](https://github.com/IgniteUI/igniteui-cli/issues/1383)) ([acc771a](https://github.com/IgniteUI/igniteui-cli/commit/acc771afac962166f630c36beff428aa83af97de))
+
+
+
+## 14.3.14 (2025-02-24)
+
+
+#### Bug Fixes
+
+* update eslint and fix warnings ([#1378](https://github.com/IgniteUI/igniteui-cli/issues/1378)) ([aa84345](https://github.com/IgniteUI/igniteui-cli/commit/aa84345ff21fc0fccde94063099e4c713862cde8))
+
+
+
+## 14.3.12-beta.0 (2025-01-27)
+
+
+
+## 14.3.11 (2025-01-24)
+
+
+#### Bug Fixes
+
+* static data paths when deploy to github pages ([#1371](https://github.com/IgniteUI/igniteui-cli/issues/1371)) ([4b40231](https://github.com/IgniteUI/igniteui-cli/commit/4b402313f4d2a2cfd80115d274514d9e5507334c))
+
+
+
+## 14.3.10 (2025-01-23)
+
+
+
+## 14.3.9 (2025-01-23)
+
+
+
+## 14.3.8 (2025-01-23)
+
+
+
+## 14.3.7 (2025-01-22)
+
+
+
+## 14.3.6 (2024-12-12)
+
+
+
+## 14.3.5 (2024-12-06)
+
+
+#### Bug Fixes
+
+* **web-components:** fix the step for updating the router navigation in github pages workflow ([#1358](https://github.com/IgniteUI/igniteui-cli/issues/1358)) ([3e0f42c](https://github.com/IgniteUI/igniteui-cli/commit/3e0f42c4fc7a75f6819f8ba85f760ac6a6d854f1))
+
+
+
+## 14.3.4 (2024-12-04)
+
+
+
+## 14.3.3 (2024-12-02)
+
+
+
+## 14.3.2 (2024-11-28)
+
+
+#### Features
+
+* Add pages deployment variable logic and fixes in github pages yaml files ([#1337](https://github.com/IgniteUI/igniteui-cli/issues/1337)) ([c75d9c7](https://github.com/IgniteUI/igniteui-cli/commit/c75d9c7a9d7a9244e7a9a814770809f06280529a))
+* allow reordering of array literal expressions ([#1323](https://github.com/IgniteUI/igniteui-cli/issues/1323)) ([412a2a5](https://github.com/IgniteUI/igniteui-cli/commit/412a2a585fa16fda53eb643c74af7fb4037c1412))
+
+
+
+## 14.2.3 (2024-11-15)
+
+
+
+## 14.2.2 (2024-11-08)
+
+
+
+## 14.2.1 (2024-10-28)
+
+
+
+# 14.2.0 (2024-10-25)
+
+
+
+# 14.2.0-beta.4 (2024-10-23)
+
+
+
+# 14.1.0 (2024-10-11)
+
+
+
+## 14.0.2 (2024-09-20)
+
+
+
+## 14.0.1 (2024-09-05)
+
+
+
+# 14.0.0 (2024-08-23)
+
+
+
+# 14.0.0-beta.2 (2024-07-24)
+
+
+#### Features
+
+* **igx-templates:** add AngularTypeScriptFileUpdate ([e7f6ed3](https://github.com/IgniteUI/igniteui-cli/commit/e7f6ed3d339bb444dcdbaec4cabe5dcbff27b5ac))
+
+
+
+## 13.3.3 (2024-07-16)
+
+
+
+## 13.3.2 (2024-07-04)
+
+
+
+## 13.3.1 (2024-06-28)
+
+
+#### Features
+
+* **core:** add FormattingService ([f7ea2a4](https://github.com/IgniteUI/igniteui-cli/commit/f7ea2a4d8f57b5f1edb531df76d05c541df754e1))
+* **core:** add new types ([aa636a3](https://github.com/IgniteUI/igniteui-cli/commit/aa636a3b1642da1a57758d49e0f7f6f79c7e2d01))
+* **core:** add TypeScriptASTTransformer ([9854847](https://github.com/IgniteUI/igniteui-cli/commit/9854847e32c718d82013e1fc8b58d9b06700b819))
+
+
+
+# 13.3.0-rc.0 (2024-05-31)
+
+
+
+## 13.2.1 (2024-05-09)
+
+
+
+# 13.2.0 (2024-04-29)
+
+
+
+# 13.2.0-rc.0 (2024-04-29)
+
+
+
+## 13.1.16 (2024-04-28)
+
+
+
+## 13.1.15 (2024-04-12)
+
+
+
+## 13.1.13 (2024-04-11)
+
+
+
+## 13.1.12 (2024-03-21)
+
+
+#### Features
+
+* **cli:** upgrade packages for React and WC ([#1198](https://github.com/IgniteUI/igniteui-cli/issues/1198)) ([16c9b8d](https://github.com/IgniteUI/igniteui-cli/commit/16c9b8dda219ebacd473a2fad5e0c0ea70d5f320))
+
+
+
+## 13.1.11 (2024-03-12)
+
+
+
+## 13.1.10 (2024-03-11)
+
+
+
+## 13.1.9 (2024-03-05)
+
+
+
+## 13.1.8 (2024-02-29)
+
+
+
+## 13.1.7 (2024-02-28)
+
+
+
+## 13.1.6 (2024-02-26)
+
+
+#### Features
+
+* **ng-add:** add setup config provideAnimations ([2f47676](https://github.com/IgniteUI/igniteui-cli/commit/2f476762ac772039228fe10565d49a6ced76b72d))
+
+
+
+## 13.1.5 (2024-01-31)
+
+
+
+## 13.1.3 (2024-01-17)
+
+
+
+## 13.1.1 (2023-12-14)
+
+
+#### Bug Fixes
+
+* **kebacase:** do not add dash before numbers ([25d8f54](https://github.com/IgniteUI/igniteui-cli/commit/25d8f544243f6e1f5583c772f4b8e0e3cbb7ca12))
+* **kebap-case:** add dash between number and uppercase letter ([0be7637](https://github.com/IgniteUI/igniteui-cli/commit/0be7637bc19423821e066a9e62dbdec3e5bd5cb4))
+
+
+#### Features
+
+* **igr-ts:** add igr-ts proj type ([#1146](https://github.com/IgniteUI/igniteui-cli/issues/1146)) ([4609525](https://github.com/IgniteUI/igniteui-cli/commit/460952505758fcf1ab9b559ed6809015f3c5d3a5)), closes [#1147](https://github.com/IgniteUI/igniteui-cli/issues/1147) [#1153](https://github.com/IgniteUI/igniteui-cli/issues/1153)
+
+
+
+## 13.0.1 (2023-11-15)
+
+
+#### Bug Fixes
+
+* update Utils.LowerDashed function ([#1171](https://github.com/IgniteUI/igniteui-cli/issues/1171)) ([2254ecc](https://github.com/IgniteUI/igniteui-cli/commit/2254ecc0267be8c19e7f1d5295886b2ba6c345c7))
+
+
+
+# 13.0.0 (2023-11-09)
+
+
+
+# 13.0.0-rc.0 (2023-11-09)
+
+
+
+## 12.0.6-beta.2 (2023-10-02)
+
+
+
+## 12.0.5 (2023-07-18)
+
+
+
+## 12.0.4 (2023-07-18)
+
+
+
+## 12.0.3 (2023-06-28)
+
+
+
+## 12.0.3-beta.0 (2023-06-02)
+
+
+
+## 12.0.1 (2023-05-26)
+
+
+
+# 12.0.0 (2023-05-15)
+
+
+
+# 12.0.0-rc.0 (2023-05-15)
+
+
+#### Features
+
+* **igx:** add base_with_home proj to igx-templates ([#1118](https://github.com/IgniteUI/igniteui-cli/issues/1118)) ([d84c431](https://github.com/IgniteUI/igniteui-cli/commit/d84c4310a03e35588626c57148091c6b224c7bc3))
+* **igx:** update to 16 ([#1120](https://github.com/IgniteUI/igniteui-cli/issues/1120)) ([e6efa40](https://github.com/IgniteUI/igniteui-cli/commit/e6efa40c2c748d2679b6be66252bc7732e51de29))
+
+
+
+## 11.1.1 (2023-04-11)
+
+
+
+# 11.1.0 (2023-03-28)
+
+
+
+# 11.1.0-rc.0 (2023-03-24)
+
+
+
+## 11.0.2 (2023-02-17)
+
+
+
+# 11.0.0 (2022-11-23)
+
+
+
+# 10.1.0-beta.13 (2022-10-27)
+
+
+
+# 10.1.0-beta.12 (2022-10-27)
+
+
+
+# 10.1.0-beta.11 (2022-10-25)
+
+
+
+# 10.1.0-beta.10 (2022-10-25)
+
+
+
+# 10.1.0-beta.8 (2022-10-23)
+
+
+
+# 10.1.0-beta.7 (2022-10-19)
+
+
+
+# 10.1.0-beta.5 (2022-10-18)
+
+
+
+# 10.1.0-beta.4 (2022-10-18)
+
+
+
+# 10.1.0-beta.3 (2022-10-17)
+
+
+
+# 10.1.0-beta.2 (2022-10-14)
+
+
+
+# 10.1.0-beta.1 (2022-10-14)
+
+
+
+# 10.1.0-beta.0 (2022-10-07)
+
+
+
+## 10.0.5 (2022-09-19)
+
+
+
+## 10.0.4-beta.0 (2022-06-30)
+
+
+
+## 10.0.2 (2022-06-29)
+
+
+
+## 10.0.1 (2022-06-17)
+
+
+#### Bug Fixes
+
+* **package-manager:** skip setting up child install tasks for new projects ([de2a134](https://github.com/IgniteUI/igniteui-cli/commit/de2a1341e13ba20635a5ed94c5cc7e4c79c7ca46))
+
+
+
+# 9.2.0 (2022-05-26)
+
+
+
+## 9.1.4 (2022-05-20)
+
+
+
+## 9.1.3 (2022-05-19)
+
+
+
+## 9.1.2 (2022-05-16)
+
+
+
+## 9.1.1 (2022-03-18)
+
+
+
+## 9.1.1-rc.0 (2022-03-17)
+
+
+
+# 9.1.0 (2022-03-02)
+
+
+
+# 9.1.0-rc.1 (2022-02-25)
+
+
+
+# 9.1.0-beta.0 (2022-02-22)
+
+
+#### Bug Fixes
+
+* **start:** pass in options for wc child process ([2df9e33](https://github.com/IgniteUI/igniteui-cli/commit/2df9e337e86e353d6d3dde6b53001af7af36fe12))
+
+
+
+## 9.0.6 (2022-02-04)
+
+
+
+## 9.0.5 (2022-02-04)
+
+
+
+## 9.0.5-beta.2 (2022-02-03)
+
+
+
+## 9.0.5-beta.1 (2022-01-28)
+
+
+
+## 9.0.5-beta.0 (2021-12-20)
+
+
+
+## 9.0.4 (2021-12-15)
+
+
+
+## 9.0.3 (2021-12-13)
+
+
+#### Bug Fixes
+
+* **import:** Update func signature ([a3ac17a](https://github.com/IgniteUI/igniteui-cli/commit/a3ac17ab30436ed0420c92902c53ff7c3dfd0534))
+* **lint:** Fix lint errors ([6b5dd98](https://github.com/IgniteUI/igniteui-cli/commit/6b5dd985e90fb9cf8675c6cf0c06c6193e27fb32))
+
+
+#### Features
+
+* **typescript:** Add support for typescript 4.5.2 ([055ca5b](https://github.com/IgniteUI/igniteui-cli/commit/055ca5b7f8e54acdd8f3f1d6b6d7517916d852f3))
+
+
+
+## 9.0.1 (2021-11-25)
+
+
+
+# 9.0.0 (2021-11-22)
+
+
+
+# 9.0.0-rc.3 (2021-11-22)
+
+
+
+# 9.0.0-rc.2 (2021-11-19)
+
+
+#### Bug Fixes
+
+* add igx-scrollbar class to body, [#14033](https://github.com/IgniteUI/igniteui-cli/issues/14033) ([b02ac58](https://github.com/IgniteUI/igniteui-cli/commit/b02ac5822015c6b1b1fdd4684a52a2eecb3eadd9))
+
+
+
+# 9.0.0-rc.1 (2021-11-17)
+
+
+
+# 9.0.0-rc.0 (2021-11-17)
+
+
+#### Features
+
+* **angular:** update to Angular 13 [#895](https://github.com/IgniteUI/igniteui-cli/issues/895) ([#896](https://github.com/IgniteUI/igniteui-cli/issues/896)) ([32f1721](https://github.com/IgniteUI/igniteui-cli/commit/32f17215290af3372b554f0e440e39b9b9b5040a))
+
+
+
+# 8.3.0-rc.0 (2021-11-11)
+
+
+
+# 8.3.0-beta.6 (2021-11-09)
+
+
+
+# 8.3.0-beta.5 (2021-11-09)
+
+
+
+# 8.3.0-beta.4 (2021-11-09)
+
+
+
+# 8.3.0-beta.3 (2021-11-08)
+
+
+
+# 8.3.0-beta.2 (2021-11-08)
+
+
+
+# 8.3.0-beta.1 (2021-11-04)
+
+
+
+# 8.3.0-beta.0 (2021-11-04)
+
+
+
+## 8.2.1 (2021-10-08)
+
+
+
+## 8.2.1-rc.0 (2021-10-07)
+
+
+
+# 8.2.0 (2021-10-04)
+
+
+
+# 8.2.0-alpha.0 (2021-09-30)
+
+
+
+## 8.1.2 (2021-09-28)
+
+
+#### Bug Fixes
+
+* **ts-transform:** respect quote type from editorconfig ([99b3aad](https://github.com/IgniteUI/igniteui-cli/commit/99b3aadce0e6e7de8e2fef502db2ff1811d7a11e))
+
+
+
+## 8.1.1 (2021-09-02)
+
+
+#### Bug Fixes
+
+* **lint:** Fix all lint errors. ([659cc29](https://github.com/IgniteUI/igniteui-cli/commit/659cc2913f20092bd9ffc3f5a1a1f549db005912))
+
+
+#### Features
+
+* **ig-ts:** Empty project is now angular project. ([83e5c6f](https://github.com/IgniteUI/igniteui-cli/commit/83e5c6f8370b0d10a349751d9b90f3f284d9ae69))
+
+
+
+# 8.1.0-rc.0 (2021-07-30)
+
+
+
+# 8.1.0-beta.1 (2021-07-30)
+
+
+
+# 8.1.0-beta.0 (2021-07-28)
+
+
+#### Features
+
+* update angular to v12.1 [#856](https://github.com/IgniteUI/igniteui-cli/issues/856) ([#857](https://github.com/IgniteUI/igniteui-cli/issues/857)) ([971822e](https://github.com/IgniteUI/igniteui-cli/commit/971822e343158bd107ef5b07bf60773509bd928c))
+
+
+
+## 8.0.3 (2021-07-14)
+
+
+
+## 8.0.2 (2021-07-07)
+
+
+
+## 8.0.2-beta.1 (2021-07-06)
+
+
+
+## 8.0.2-beta.0 (2021-07-02)
+
+
+
+## 8.0.1 (2021-07-01)
+
+
+
+# 8.0.0 (2021-05-14)
+
+
+
+# 8.0.0-rc.0 (2021-05-13)
+
+
+
+# 8.0.0-alpha.1 (2021-05-13)
+
+
+
+## 7.1.1 (2021-03-15)
+
+
+
+## 7.1.1-beta.0 (2021-03-12)
+
+
+
+# 7.1.0 (2021-02-22)
+
+
+
+# 7.1.0-beta.0 (2021-02-18)
+
+
+
+## 7.0.1 (2020-11-16)
+
+
+
+# 7.0.0 (2020-11-13)
+
+
+
+# 7.0.0-rc.2 (2020-11-12)
+
+
+
+# 7.0.0-rc.1 (2020-11-10)
+
+
+
+# 7.0.0-rc.0 (2020-11-10)
+
+
+
+# 7.0.0-alpha.0 (2020-11-10)
+
+
+
+# 6.2.0 (2020-10-20)
+
+
+
+# 6.2.0-rc.0 (2020-10-16)
+
+
+
+# 6.2.0-beta.0 (2020-10-14)
+
+
+
+# 6.1.0 (2020-08-12)
+
+
+
+# 6.1.0-beta.0 (2020-08-07)
+
+
+
+# 6.1.0-alpha.0 (2020-07-09)
+
+
+#### Features
+
+* **tsutil:** add optional parent route to TsFileUpdateUtil.addRoute method ([#777](https://github.com/IgniteUI/igniteui-cli/issues/777)) ([2df694a](https://github.com/IgniteUI/igniteui-cli/commit/2df694ac03a4601059f730b6cc9ae7d3ab6371ea))
+
+
+
+# 6.0.0 (2020-06-25)
+
+
+
+# 6.0.0-rc.0 (2020-06-25)
+
+
+#### Bug Fixes
+
+* use group.json for step by step groups [#707](https://github.com/IgniteUI/igniteui-cli/issues/707) ([adf562c](https://github.com/IgniteUI/igniteui-cli/commit/adf562c639725fb6a8008ef682f5fbdd66e65b55))
+
+
+#### Features
+
+* remove angular as default choice for step by step [#579](https://github.com/IgniteUI/igniteui-cli/issues/579) ([5d2697e](https://github.com/IgniteUI/igniteui-cli/commit/5d2697e019d344cc5ebedf9ac00de94b012ded73))
+
+
+
+# 5.2.0 (2020-06-11)
+
+
+
+## 5.1.1 (2020-06-03)
+
+
+
+# 5.1.0 (2020-06-01)
+
+
+
+# 5.1.0-beta.4 (2020-06-01)
+
+
+#### Bug Fixes
+
+* **package-manager:** manually update pckgJSON instead of letting npm do it, [#751](https://github.com/IgniteUI/igniteui-cli/issues/751) ([6fa4c0c](https://github.com/IgniteUI/igniteui-cli/commit/6fa4c0c8d5afecfef8a8c1de18b1f6620edc006c))
+
+
+
+# 5.1.0-beta.3 (2020-05-29)
+
+
+#### Bug Fixes
+
+* **upgrade:** clear stdin stream before login prompt ([c77f49a](https://github.com/IgniteUI/igniteui-cli/commit/c77f49ab940933e9df6da2518d5192d5d49fbd0c))
+
+
+
+# 5.1.0-beta.2 (2020-05-28)
+
+
+
+# 5.1.0-beta.1 (2020-05-28)
+
+
+
+# 5.1.0-beta.0 (2020-05-27)
+
+
+#### Bug Fixes
+
+* **templates:** upgrade command properly replaces strings in ALL .ts files ([2d2c9b3](https://github.com/IgniteUI/igniteui-cli/commit/2d2c9b3dc02da3f7633642d9b3b4a02d7f0bb119))
+
+
+#### Features
+
+* **commands:** Add 'upgrade-packages' command ([25db37d](https://github.com/IgniteUI/igniteui-cli/commit/25db37d0df1fa52d81501b74ab328330e7a60744))
+* **schematics:** update-package logic added ([197b94e](https://github.com/IgniteUI/igniteui-cli/commit/197b94e367d5e9a359c989beef01c6f35d7b54b5))
+* **step-by-step:** add prompt to upgrade to private feed packages, [#724](https://github.com/IgniteUI/igniteui-cli/issues/724) ([63c0c85](https://github.com/IgniteUI/igniteui-cli/commit/63c0c85639c1e5e5415c82f96a6b5cb5bbad4b99))
+
+
+
+# 5.1.0-alpha.0 (2020-05-20)
+
+
+
+## 5.0.3 (2020-05-18)
+
+
+
+## 5.0.2 (2020-05-05)
+
+
+#### Bug Fixes
+
+* **start:** inherit all stdio, not just input [#699](https://github.com/IgniteUI/igniteui-cli/issues/699) ([1c03891](https://github.com/IgniteUI/igniteui-cli/commit/1c03891227bcdcff6dbff2005939e631737d8b7f))
+
+
+
+# 5.0.0 (2020-02-11)
+
+
+
+# 5.0.0-rc.4 (2020-02-11)
+
+
+
+# 5.0.0-rc.3 (2020-02-07)
+
+
+
+# 5.0.0-rc.2 (2020-02-07)
+
+
+
+# 5.0.0-rc.0 (2020-01-31)
+
+
+
+# 5.0.0-beta.3 (2019-12-13)
+
+
+
+# 5.0.0-beta.2 (2019-12-06)
+
+
+#### Features
+
+* **schematics:** adding a name for schematics projects [#587](https://github.com/IgniteUI/igniteui-cli/issues/587) ([#602](https://github.com/IgniteUI/igniteui-cli/issues/602)) ([19409d0](https://github.com/IgniteUI/igniteui-cli/commit/19409d0b7018c518c64c7ff161a6ec4a3438f834))
+
+
+
+# 5.0.0-beta.1 (2019-11-28)
+
+
+#### Bug Fixes
+
+* **schematics:** component schematics checks for available names [#576](https://github.com/IgniteUI/igniteui-cli/issues/576) ([#586](https://github.com/IgniteUI/igniteui-cli/issues/586)) ([bccd6c1](https://github.com/IgniteUI/igniteui-cli/commit/bccd6c131c4ab9bc197cfa29e1b792494270720f))
+* **schematics:** this package is a dep in new project instead of ignteui-cli ([c04a13c](https://github.com/IgniteUI/igniteui-cli/commit/c04a13c1c82c1d4a9a627503086f86d9040c6778))
+* **templating, igx-ts:** add dot path variable for prefixed files that glob ignores ([486a0da](https://github.com/IgniteUI/igniteui-cli/commit/486a0da0ee6190f16544ee46ae360b822c057b53))
+
+
+
+# 5.0.0-alpha.1 (2019-10-02)
+
+## igniteui/angular-templates@21.1.14100-alpha.0 (2026-03-25)
+
+
+#### Bug Fixes
+
+* **eslint:** correct config ignores and resolve lint errors ([68d01ac](https://github.com/IgniteUI/igniteui-cli/commit/68d01ac6102e4e3d660dff9d229e826ea64943db))
+* **igx-ts-legacy:** update igx ts legacy templates ([#1517](https://github.com/IgniteUI/igniteui-cli/issues/1517)) ([c26c8ff](https://github.com/IgniteUI/igniteui-cli/commit/c26c8ff298092c21b2aa6ca77a75cd2a5fdedc79))
+
+
+#### Features
+
+* add copilot instructions for AI agents in multiple templates ([73921a7](https://github.com/IgniteUI/igniteui-cli/commit/73921a738efcc0a3e2a7df24bdf509f9f694da8a))
+* **claude:** add CLAUDE.md files for AI agent instructions across multiple templates ([5a96a33](https://github.com/IgniteUI/igniteui-cli/commit/5a96a33eac3f2fcbaf1444ac7778f7c8c2c89952))
+* **igx-ts:** update angular project to use vitest with playwright ([#1542](https://github.com/IgniteUI/igniteui-cli/issues/1542)) ([85dd3e6](https://github.com/IgniteUI/igniteui-cli/commit/85dd3e609295d7d801c127715c5fe8947f90f23d))
+* **igx-ts:** update project setup and templates naming ([#1514](https://github.com/IgniteUI/igniteui-cli/issues/1514)) ([ed4d1dd](https://github.com/IgniteUI/igniteui-cli/commit/ed4d1ddced09cee062caae7f8445df5ba11d8cac))
+* **mcp:** add angular-cli server configuration to mcp.json ([43a01a0](https://github.com/IgniteUI/igniteui-cli/commit/43a01a08ca6ac9b9a7958a172e5f27b02fe1fbb1))
+* **templates:** add AGENTS.md and mcp.json files for React and Web Components and Angular project templates ([d867f44](https://github.com/IgniteUI/igniteui-cli/commit/d867f44e17d01be82ec6853c6b0c22910a652b73))
+
+
+
+## 14.9.2 (2026-03-11)
+
+
+#### Bug Fixes
+
+* **igx-ts-legacy:** fi grid type import and add missing override ([ff24df0](https://github.com/IgniteUI/igniteui-cli/commit/ff24df0e665d8c834f510bfc62fc99af6532a38e))
+* **igx-ts:** fix eslint configurations ([#1509](https://github.com/IgniteUI/igniteui-cli/issues/1509)) ([ec63959](https://github.com/IgniteUI/igniteui-cli/commit/ec63959ee65e5c369d483d5dc34965f121a36cae))
+* **igx-ts:** fix side nav route data text ([487ba12](https://github.com/IgniteUI/igniteui-cli/commit/487ba122c2d51822642d15f501ea776193bf6a44))
+* **igx-ts:** update igniteui-angular versions and remove overrides ([#1508](https://github.com/IgniteUI/igniteui-cli/issues/1508)) ([6b4e1c8](https://github.com/IgniteUI/igniteui-cli/commit/6b4e1c87e8e7a94a5212a7037072088b7eec8a1a))
+
+
+
+## 14.9.1 (2026-02-25)
+
+
+
+# 14.9.0 (2026-02-25)
+
+
+#### Bug Fixes
+
+* **angular:** add igniteui angular core override ([0a5d46f](https://github.com/IgniteUI/igniteui-cli/commit/0a5d46f73bd3d621a833d07ad09318ccbdcfb9b9))
+* **angular:** add missing providers ([804703e](https://github.com/IgniteUI/igniteui-cli/commit/804703e984919aa2fac6272f8058f94256460b73))
+* **angular:** empty template config ([75eef02](https://github.com/IgniteUI/igniteui-cli/commit/75eef022a33f0dc6bc5b90816ccee9c415d76289))
+* update imports ([a2bf7bf](https://github.com/IgniteUI/igniteui-cli/commit/a2bf7bf6fc973ba0af8d12dc1c33605419475891))
+
+
+#### Features
+
+* **ng:** update igniteui-angular to 21.1.0 ([#1495](https://github.com/IgniteUI/igniteui-cli/issues/1495)) ([399f83e](https://github.com/IgniteUI/igniteui-cli/commit/399f83e4278dafdf9a3832fa013840f05ba586e6))
+
+
+
+## 14.8.5-beta.3 (2026-02-11)
+
+
+#### Bug Fixes
+
+* **angular:** fix the type of the providers ([142dbda](https://github.com/IgniteUI/igniteui-cli/commit/142dbda9665430bb3fb5a97744e8913195975708))
+
+
+
+## 14.8.5-beta.0 (2026-02-10)
+
+
+#### Bug Fixes
+
+* **angular:** add provide zone change detection in app config for angular standalone ([27b516b](https://github.com/IgniteUI/igniteui-cli/commit/27b516b640b1ecf9fdb7320e6a5c84a398aab505))
+
+
+
+## 14.8.4 (2026-02-05)
+
+
+#### Bug Fixes
+
+* add same fix to legacy angular projects ([2456829](https://github.com/IgniteUI/igniteui-cli/commit/245682908c81c931b65707b5098a98e3991f6f71))
+* **angular:** increase maximum error budget ([#1485](https://github.com/IgniteUI/igniteui-cli/issues/1485)) ([63a03bd](https://github.com/IgniteUI/igniteui-cli/commit/63a03bddb3459797bc5a0121f2d601823fd3cd35))
+* move tearDown to chart related test files ([40b1739](https://github.com/IgniteUI/igniteui-cli/commit/40b1739734199b035c32b02937456c9ae444654a))
+* remove calls to test.ts ([c08ca9f](https://github.com/IgniteUI/igniteui-cli/commit/c08ca9fcd472488a125c2f073bd06e051a5f3314))
+* remove test.ts as not needed ([451d49a](https://github.com/IgniteUI/igniteui-cli/commit/451d49ab3c6b7652b29b062e1e3a9301f2497a0f))
+
+
+
+## 14.8.3 (2026-01-19)
+
+
+#### Bug Fixes
+
+* **angular:** remove glob and rimraf from standalone package json ([#1478](https://github.com/IgniteUI/igniteui-cli/issues/1478)) ([0a3afce](https://github.com/IgniteUI/igniteui-cli/commit/0a3afce21e6e14196c8942f9f15a56793e1679fa))
+
+
+
+## 14.8.2 (2026-01-13)
+
+
+
+## 14.8.2-beta.4 (2026-01-12)
+
+
+
+## 14.8.2-beta.3 (2026-01-12)
+
+
+
+## 14.8.2-beta.2 (2026-01-12)
+
+
+
+## 14.8.2-beta.0 (2026-01-12)
+
+
+
+# 14.8.0 (2025-12-03)
+
+
+
+# 14.8.0-beta.2 (2025-12-01)
+
+
+
+# 14.8.0-beta.1 (2025-12-01)
+
+
+
+## 14.7.1 (2025-11-20)
+
+
+
+# 14.7.0 (2025-11-17)
+
+
+#### Features
+
+* **ng:** use ng lint schematic ([#1439](https://github.com/IgniteUI/igniteui-cli/issues/1439)) ([fa917cd](https://github.com/IgniteUI/igniteui-cli/commit/fa917cd7c974db05061f9442d8c5cdcc74853928))
+
+
+
+## 14.6.4 (2025-10-14)
+
+
+
+## 14.6.3 (2025-10-09)
+
+
+#### Bug Fixes
+
+* **ng:** move eqeqeq rule ([#1433](https://github.com/IgniteUI/igniteui-cli/issues/1433)) ([29a574d](https://github.com/IgniteUI/igniteui-cli/commit/29a574db2af16adff262440d789c58216ba08a8e))
+
+
+
+## 14.6.2 (2025-10-07)
+
+
+
+## 14.6.1 (2025-10-06)
+
+
+
+# 14.6.0 (2025-10-02)
+
+
+#### Features
+
+* **ng:** update ig, ng and other libs ([#1427](https://github.com/IgniteUI/igniteui-cli/issues/1427)) ([93fbbcc](https://github.com/IgniteUI/igniteui-cli/commit/93fbbcce2668084dcc958736f7167e36e9cbed47))
+
+
+
+## 14.5.8 (2025-09-25)
+
+
+
+## 14.5.7 (2025-09-23)
+
+
+#### Bug Fixes
+
+* **angular:** fix eslint config for angular modules ([#1423](https://github.com/IgniteUI/igniteui-cli/issues/1423)) ([2420d26](https://github.com/IgniteUI/igniteui-cli/commit/2420d26511cffef06cad58fa7e67a61a6b885187))
+
+
+
+## 14.5.6 (2025-09-18)
+
+
+#### Bug Fixes
+
+* **ng, standalone:** add test setup file for angular standalone ([#1421](https://github.com/IgniteUI/igniteui-cli/issues/1421)) ([feebb55](https://github.com/IgniteUI/igniteui-cli/commit/feebb5574cfffe86f6f2b342c2643b3ef9651a3c))
+
+
+
+## 14.5.4 (2025-07-01)
+
+
+#### Bug Fixes
+
+* **ng:** Add same proj rxjs version in overrides, so there are no peer dep errors for it. It is needed when having reveal or other overrides. ([4728d19](https://github.com/IgniteUI/igniteui-cli/commit/4728d19e7658cf5c4d863a6c277be696f77e5ac5))
+
+
+
+## 14.5.3 (2025-06-28)
+
+
+#### Bug Fixes
+
+* **angular:** fix theme errors ([#1404](https://github.com/IgniteUI/igniteui-cli/issues/1404)) ([3e7e4a3](https://github.com/IgniteUI/igniteui-cli/commit/3e7e4a3777bde5cc025df182bb57e5b9f002c5d9))
+
+
+
+## 14.5.1 (2025-06-24)
+
+
+
+# 14.5.0 (2025-06-05)
+
+
+
+## 14.4.4 (2025-05-21)
+
+
+#### Features
+
+* add azure pipelines yaml files for angular, react and wc templates ([#1396](https://github.com/IgniteUI/igniteui-cli/issues/1396)) ([6a3e39d](https://github.com/IgniteUI/igniteui-cli/commit/6a3e39d41f50abe51fa7fd819961412304a31343))
+
+
+
+## 14.4.3 (2025-04-25)
+
+
+
+## 14.4.2 (2025-04-24)
+
+
+
+## 14.4.1 (2025-04-23)
+
+
+
+# 14.4.0 (2025-04-17)
+
+
+
+## 14.3.18 (2025-04-11)
+
+
+#### Bug Fixes
+
+* add missing static css files for WC ([#1385](https://github.com/IgniteUI/igniteui-cli/issues/1385)) ([95018f9](https://github.com/IgniteUI/igniteui-cli/commit/95018f93704f62af70b9c4a2e07b46554e6331a4))
+
+
+
+## 14.3.17 (2025-04-09)
+
+
+
+## 14.3.16 (2025-03-31)
+
+
+
+## 14.3.14 (2025-02-24)
+
+
+#### Bug Fixes
+
+* **angular:** add ovverides for reveal sdk wrappers ([d2bc8cb](https://github.com/IgniteUI/igniteui-cli/commit/d2bc8cb26584f5836d633d24421d6dc774bd53a5))
+* update eslint and fix warnings ([#1378](https://github.com/IgniteUI/igniteui-cli/issues/1378)) ([aa84345](https://github.com/IgniteUI/igniteui-cli/commit/aa84345ff21fc0fccde94063099e4c713862cde8))
+
+
+
+## 14.3.12-beta.0 (2025-01-27)
+
+
+
+## 14.3.11 (2025-01-24)
+
+
+#### Bug Fixes
+
+* static data paths when deploy to github pages ([#1371](https://github.com/IgniteUI/igniteui-cli/issues/1371)) ([4b40231](https://github.com/IgniteUI/igniteui-cli/commit/4b402313f4d2a2cfd80115d274514d9e5507334c))
+
+
+
+## 14.3.10 (2025-01-23)
+
+
+
+## 14.3.9 (2025-01-23)
+
+
+
+## 14.3.8 (2025-01-23)
+
+
+
+## 14.3.7 (2025-01-22)
+
+
+#### Bug Fixes
+
+* **github-pages:** upgrade github pages deploy and artefact versions ([#1366](https://github.com/IgniteUI/igniteui-cli/issues/1366)) ([db6d0ea](https://github.com/IgniteUI/igniteui-cli/commit/db6d0eaef44c189cb80f10925d25595d97b7da4b))
+
+
+
+## 14.3.6 (2024-12-12)
+
+
+
+## 14.3.5 (2024-12-06)
+
+
+#### Bug Fixes
+
+* **web-components:** fix the step for updating the router navigation in github pages workflow ([#1358](https://github.com/IgniteUI/igniteui-cli/issues/1358)) ([3e0f42c](https://github.com/IgniteUI/igniteui-cli/commit/3e0f42c4fc7a75f6819f8ba85f760ac6a6d854f1))
+
+
+
+## 14.3.4 (2024-12-04)
+
+
+
+## 14.3.3 (2024-12-02)
+
+
+
+## 14.3.2 (2024-11-28)
+
+
+#### Bug Fixes
+
+* adapt ngModules templates to 19 changes ([2ce6e9d](https://github.com/IgniteUI/igniteui-cli/commit/2ce6e9d38acef0f0e8981ef054f61ab35d137fd8))
+
+
+
+# 14.3.0 (2024-11-25)
+
+
+#### Features
+
+* Add pages deployment variable logic and fixes in github pages yaml files ([#1337](https://github.com/IgniteUI/igniteui-cli/issues/1337)) ([c75d9c7](https://github.com/IgniteUI/igniteui-cli/commit/c75d9c7a9d7a9244e7a9a814770809f06280529a))
+* allow reordering of array literal expressions ([#1323](https://github.com/IgniteUI/igniteui-cli/issues/1323)) ([412a2a5](https://github.com/IgniteUI/igniteui-cli/commit/412a2a585fa16fda53eb643c74af7fb4037c1412))
+
+
+
+## 14.2.3 (2024-11-15)
+
+
+
+## 14.2.2 (2024-11-08)
+
+
+
+## 14.2.1 (2024-10-28)
+
+
+
+# 14.2.0 (2024-10-25)
+
+
+
+# 14.2.0-beta.4 (2024-10-23)
+
+
+
+# 14.1.0 (2024-10-11)
+
+
+
+## 14.0.2 (2024-09-20)
+
+
+
+## 14.0.1 (2024-09-05)
+
+
+
+# 14.0.0 (2024-08-23)
+
+
+
+# 14.0.0-beta.2 (2024-07-24)
+
+
+
+## 13.4.1 (2024-07-24)
+
+
+#### Features
+
+* **igx-templates:** add AngularTypeScriptFileUpdate ([e7f6ed3](https://github.com/IgniteUI/igniteui-cli/commit/e7f6ed3d339bb444dcdbaec4cabe5dcbff27b5ac))
+
+
+
+# 13.4.0 (2024-07-22)
+
+
+
+## 13.3.3 (2024-07-16)
+
+
+
+## 13.3.2 (2024-07-04)
+
+
+
+## 13.3.1 (2024-06-28)
+
+
+
+# 13.3.0-rc.0 (2024-05-31)
+
+
+#### Features
+
+* **ng-sa-base:** add vscode template folder ([a4787e7](https://github.com/IgniteUI/igniteui-cli/commit/a4787e74fcc715aceaa4c265fd97e4452e70463e))
+* **ngm-base:** add vscode template folder ([0ed6fb8](https://github.com/IgniteUI/igniteui-cli/commit/0ed6fb8cf8ef75103c84e8ee2ddeaa2886be3922))
+
+
+
+## 13.2.1 (2024-05-09)
+
+
+
+# 13.2.0 (2024-04-29)
+
+
+
+# 13.2.0-rc.0 (2024-04-29)
+
+
+
+## 13.1.16 (2024-04-28)
+
+
+
+## 13.1.15 (2024-04-12)
+
+
+
+## 13.1.13 (2024-04-11)
+
+
+#### Bug Fixes
+
+* **cli-templetes:** Replaced index.html <title> to ApplicationTitle as placeholder ([#1237](https://github.com/IgniteUI/igniteui-cli/issues/1237)) ([d622d54](https://github.com/IgniteUI/igniteui-cli/commit/d622d54fbd3becbc514bfc971eac4c97b3346255))
+* fix yml script placeholder delimiters ([#1239](https://github.com/IgniteUI/igniteui-cli/issues/1239)) ([45a2264](https://github.com/IgniteUI/igniteui-cli/commit/45a2264a93edc5b0ca307d5ec43fcd6a9de42cea))
+
+
+
+## 13.1.12 (2024-03-21)
+
+
+#### Features
+
+* **cli:** upgrade packages for React and WC ([#1198](https://github.com/IgniteUI/igniteui-cli/issues/1198)) ([16c9b8d](https://github.com/IgniteUI/igniteui-cli/commit/16c9b8dda219ebacd473a2fad5e0c0ea70d5f320))
+
+
+
+## 13.1.11 (2024-03-12)
+
+
+
+## 13.1.10 (2024-03-11)
+
+
+
+## 13.1.9 (2024-03-05)
+
+
+
+## 13.1.8 (2024-02-29)
+
+
+
+## 13.1.7 (2024-02-28)
+
+
+
+## 13.1.6 (2024-02-26)
+
+
+#### Features
+
+* **_base-legacy:** update project type to legacy ([f8984c9](https://github.com/IgniteUI/igniteui-cli/commit/f8984c93f02e8391ca721bc49eeabd45e5f7bb34))
+* **_base:** provide http client ([1e1d1c2](https://github.com/IgniteUI/igniteui-cli/commit/1e1d1c2d6c70a110ace81e74c91bcab2a7021086))
+
+
+
+## 13.1.5 (2024-01-31)
+
+
+
+## 13.1.3 (2024-01-17)
+
+
+#### Bug Fixes
+
+* **igx-ts:** update karma-jasmine-html-reporter ([0cf034d](https://github.com/IgniteUI/igniteui-cli/commit/0cf034db6474b8ed88e9b3d93e9b3011afd47b3b))
+
+
+
+## 13.1.1 (2023-12-14)
+
+
+#### Bug Fixes
+
+* **igx:** remove prod config for ng build ([d90c056](https://github.com/IgniteUI/igniteui-cli/commit/d90c056aed7ac87f972ea719eeac9367e6b97226))
+
+
+#### Features
+
+* **igr-ts:** add igr-ts proj type ([#1146](https://github.com/IgniteUI/igniteui-cli/issues/1146)) ([4609525](https://github.com/IgniteUI/igniteui-cli/commit/460952505758fcf1ab9b559ed6809015f3c5d3a5)), closes [#1147](https://github.com/IgniteUI/igniteui-cli/issues/1147) [#1153](https://github.com/IgniteUI/igniteui-cli/issues/1153)
+
+
+
+## 13.0.1 (2023-11-15)
+
+
+
+# 13.0.0 (2023-11-09)
+
+
+
+# 13.0.0-rc.0 (2023-11-09)
+
+
+
+## 12.0.6-beta.2 (2023-10-02)
+
+
+
+## 12.0.5 (2023-07-18)
+
+
+
+## 12.0.4 (2023-07-18)
+
+
+
+## 12.0.3 (2023-06-28)
+
+
+
+## 12.0.3-beta.0 (2023-06-02)
+
+
+#### Bug Fixes
+
+* **igx:** more fixes ([1373d18](https://github.com/IgniteUI/igniteui-cli/commit/1373d18e45d8fa9bb69bf5692b360bb4ecec531b))
+* **igx:** replace DataGridSelectionMode with GridSelectionMode ([fc61052](https://github.com/IgniteUI/igniteui-cli/commit/fc61052d68f5fffbaf96c0f7c71220c39c7d5ef2))
+
+
+
+## 12.0.1 (2023-05-26)
+
+
+
+## 11.1.2 (2023-05-25)
+
+
+
+# 12.0.0 (2023-05-15)
+
+
+
+# 12.0.0-rc.0 (2023-05-15)
+
+
+#### Features
+
+* **igx:** add base_with_home proj to igx-templates ([#1118](https://github.com/IgniteUI/igniteui-cli/issues/1118)) ([d84c431](https://github.com/IgniteUI/igniteui-cli/commit/d84c4310a03e35588626c57148091c6b224c7bc3))
+* **igx:** update to 16 ([#1120](https://github.com/IgniteUI/igniteui-cli/issues/1120)) ([e6efa40](https://github.com/IgniteUI/igniteui-cli/commit/e6efa40c2c748d2679b6be66252bc7732e51de29))
+
+
+
+## 11.1.1 (2023-04-11)
+
+
+
+# 11.1.0 (2023-03-28)
+
+
+
+# 11.1.0-rc.0 (2023-03-24)
+
+
+#### Bug Fixes
+
+* **igx-ts:** updating dependencies [#1099](https://github.com/IgniteUI/igniteui-cli/issues/1099) ([#1102](https://github.com/IgniteUI/igniteui-cli/issues/1102)) ([cd3b35a](https://github.com/IgniteUI/igniteui-cli/commit/cd3b35ac7961474ecd4ecbb8c4dffa33067c20f1))
+
+
+
+## 11.0.2 (2023-02-17)
+
+
+
+# 11.0.0 (2022-11-23)
+
+
+
+# 10.1.0-beta.13 (2022-10-27)
+
+
+
+# 10.1.0-beta.12 (2022-10-27)
+
+
+
+# 10.1.0-beta.11 (2022-10-25)
+
+
+
+# 10.1.0-beta.10 (2022-10-25)
+
+
+
+# 10.1.0-beta.8 (2022-10-23)
+
+
+
+# 10.1.0-beta.7 (2022-10-19)
+
+
+
+# 10.1.0-beta.5 (2022-10-18)
+
+
+
+# 10.1.0-beta.4 (2022-10-18)
+
+
+
+# 10.1.0-beta.3 (2022-10-17)
+
+
+
+# 10.1.0-beta.2 (2022-10-14)
+
+
+
+# 10.1.0-beta.1 (2022-10-14)
+
+
+
+# 10.1.0-beta.0 (2022-10-07)
+
+
+
+## 10.0.5 (2022-09-19)
+
+
+
+## 10.0.4-beta.0 (2022-06-30)
+
+
+
+## 10.0.2 (2022-06-29)
+
+
+
+## 10.0.1 (2022-06-17)
+
+
+
+# 9.2.0 (2022-05-26)
+
+
+
+## 9.1.4 (2022-05-20)
+
+
+
+## 9.1.3 (2022-05-19)
+
+
+
+## 9.1.2 (2022-05-16)
+
+
+#### Bug Fixes
+
+* **fintech grid:** fix slow grid [#1020](https://github.com/IgniteUI/igniteui-cli/issues/1020) ([4f888dc](https://github.com/IgniteUI/igniteui-cli/commit/4f888dc3c2b1fd6ad896b197634d3aa0c3ef57cd))
+
+
+
+## 9.1.1 (2022-03-18)
+
+
+
+## 9.1.1-rc.0 (2022-03-17)
+
+
+#### Bug Fixes
+
+* **ng:** gridAPI rename ([5b8b0a5](https://github.com/IgniteUI/igniteui-cli/commit/5b8b0a5e5e21ce5ae2228e0d025eea0195206292))
+
+
+#### Features
+
+* **ng:** update to 13.3.0 ([17553b0](https://github.com/IgniteUI/igniteui-cli/commit/17553b0da7586d14d91778417161f2a77864fd16))
+
+
+
+# 9.1.0 (2022-03-02)
+
+
+
+# 9.1.0-rc.1 (2022-02-25)
+
+
+#### Bug Fixes
+
+* **templates:** Adding override modifier. ([6334d17](https://github.com/IgniteUI/igniteui-cli/commit/6334d174642212d942c5f5669c1082ae56bb3cc8))
+
+
+
+# 9.1.0-rc.0 (2022-02-24)
+
+
+
+# 9.1.0-beta.0 (2022-02-22)
+
+
+#### Bug Fixes
+
+* **angular:** change more igx- ([f9ade5e](https://github.com/IgniteUI/igniteui-cli/commit/f9ade5e176444ce3c2a80f60baf43d239b8788fe))
+* **angular:** remove old code ([3b063db](https://github.com/IgniteUI/igniteui-cli/commit/3b063db9cf51509b289148f4928cdfda9837a6dd))
+
+
+
+## 9.0.6 (2022-02-04)
+
+
+
+## 9.0.5 (2022-02-04)
+
+
+
+## 9.0.5-beta.2 (2022-02-03)
+
+
+
+## 9.0.5-beta.1 (2022-01-28)
+
+
+
+## 9.0.5-beta.0 (2021-12-20)
+
+
+
+## 9.0.4 (2021-12-15)
+
+
+
+## 9.0.3 (2021-12-13)
+
+
+#### Bug Fixes
+
+* **schematics:** fix home import without placeholder ([#966](https://github.com/IgniteUI/igniteui-cli/issues/966)) ([9263bb2](https://github.com/IgniteUI/igniteui-cli/commit/9263bb22b6dd699845d3e6fad7ab78536f7a484c))
+
+
+#### Features
+
+* **typescript:** Add support for typescript 4.5.2 ([055ca5b](https://github.com/IgniteUI/igniteui-cli/commit/055ca5b7f8e54acdd8f3f1d6b6d7517916d852f3))
+* Update [@use](https://github.com/use) [@forward](https://github.com/forward) and hsla ([#961](https://github.com/IgniteUI/igniteui-cli/issues/961)) ([2ef8435](https://github.com/IgniteUI/igniteui-cli/commit/2ef8435816f8ff4f60c7e0cd4ed497a11fc815da))
+
+
+
+## 9.0.1 (2021-11-25)
+
+
+
+# 9.0.0 (2021-11-22)
+
+
+
+# 9.0.0-rc.3 (2021-11-22)
+
+
+#### Bug Fixes
+
+* changes from latest rc, packages updates ([f59905f](https://github.com/IgniteUI/igniteui-cli/commit/f59905fbd0d37d536b2a13dd002cc99ce8c48165))
+
+
+
+# 9.0.0-rc.2 (2021-11-19)
+
+
+#### Bug Fixes
+
+* add igx-scrollbar class to body, [#14033](https://github.com/IgniteUI/igniteui-cli/issues/14033) ([b02ac58](https://github.com/IgniteUI/igniteui-cli/commit/b02ac5822015c6b1b1fdd4684a52a2eecb3eadd9))
+* **angular:** new theme imports upgrade packages ([3ae74d9](https://github.com/IgniteUI/igniteui-cli/commit/3ae74d9bb9a338f939e9e5fb73c978003401c2a7))
+
+
+
+# 9.0.0-rc.1 (2021-11-17)
+
+
+
+# 9.0.0-rc.0 (2021-11-17)
+
+
+#### Features
+
+* **angular:** update to Angular 13 [#895](https://github.com/IgniteUI/igniteui-cli/issues/895) ([#896](https://github.com/IgniteUI/igniteui-cli/issues/896)) ([32f1721](https://github.com/IgniteUI/igniteui-cli/commit/32f17215290af3372b554f0e440e39b9b9b5040a))
+
+
+
+# 8.3.0-rc.0 (2021-11-11)
+
+
+
+# 8.3.0-beta.6 (2021-11-09)
+
+
+
+# 8.3.0-beta.5 (2021-11-09)
+
+
+
+# 8.3.0-beta.4 (2021-11-09)
+
+
+
+# 8.3.0-beta.3 (2021-11-08)
+
+
+
+# 8.3.0-beta.2 (2021-11-08)
+
+
+
+# 8.3.0-beta.1 (2021-11-04)
+
+
+
+# 8.3.0-beta.0 (2021-11-04)
+
+
+
+## 8.2.1 (2021-10-08)
+
+
+
+## 8.2.1-rc.0 (2021-10-07)
+
+
+
+# 8.2.0 (2021-10-04)
+
+
+
+# 8.2.0-alpha.0 (2021-09-30)
+
+
+#### Bug Fixes
+
+* remove icon color, becasue it is deprecated ([7b33804](https://github.com/IgniteUI/igniteui-cli/commit/7b338049a3182d7a8ea9e7106d10ef485dcc0623))
+
+
+
+## 8.1.2 (2021-09-28)
+
+
+
+## 8.1.1 (2021-09-02)
+
+
+
+# 8.1.0-rc.0 (2021-07-30)
+
+
+#### Bug Fixes
+
+* **igx-ts:** remove deprecated properties from scenario templates ([f84dc3c](https://github.com/IgniteUI/igniteui-cli/commit/f84dc3cd9626d5f287caed74cd32fda6849906e2))
+
+
+
+# 8.1.0-beta.1 (2021-07-30)
+
+
+#### Bug Fixes
+
+* **awesome-grid:** fix deprecated properties warnings ([f7a5b0c](https://github.com/IgniteUI/igniteui-cli/commit/f7a5b0c589c4b0aa8ded7c036859956d84c1ed23))
+* **fintech-grid:** fix console warnings and errors ([eaaf733](https://github.com/IgniteUI/igniteui-cli/commit/eaaf73311b45b9fc326353c8c6e6a1efe3f6f225))
+* **igx-ts:** Update angular.json ([c038c70](https://github.com/IgniteUI/igniteui-cli/commit/c038c708c5d2476e819071fd6c9defe29915b904))
+* **igx-ts:** use explicit index in drop-down components for logic view ([cb96f7d](https://github.com/IgniteUI/igniteui-cli/commit/cb96f7dcc2a5a4af2c585b22b50daa372f3684e9))
+
+
+#### Features
+
+* **igx-ts:** update custom grid templates w/ 12.1 paginator ([2b5058b](https://github.com/IgniteUI/igniteui-cli/commit/2b5058bd8c2f1946fd1f52b848a5b6ca9aebfcee))
+
+
+
+# 8.1.0-beta.0 (2021-07-28)
+
+
+#### Features
+
+* **igx-templates:** add igx-accordion template ([#851](https://github.com/IgniteUI/igniteui-cli/issues/851)) ([03e74cd](https://github.com/IgniteUI/igniteui-cli/commit/03e74cd194184b629ea09ec3cfa5218943d0feef))
+* update angular to v12.1 [#856](https://github.com/IgniteUI/igniteui-cli/issues/856) ([#857](https://github.com/IgniteUI/igniteui-cli/issues/857)) ([971822e](https://github.com/IgniteUI/igniteui-cli/commit/971822e343158bd107ef5b07bf60773509bd928c))
+
+
+
+## 8.0.3 (2021-07-14)
+
+
+#### Bug Fixes
+
+* **igx-ts:** fix strict errors in base and side-nav projects ([963d23d](https://github.com/IgniteUI/igniteui-cli/commit/963d23dc9771d8d184bff89fe2e2782e3bd97219))
+* **igx-ts:** fix strict errors in side-nav-auth project ([695f430](https://github.com/IgniteUI/igniteui-cli/commit/695f430c693b4a4cb817784d4b20dc0c268ec80c))
+
+
+
+## 8.0.2 (2021-07-07)
+
+
+
+## 8.0.2-beta.1 (2021-07-06)
+
+
+#### Bug Fixes
+
+* **angular-templates:** fix issue with strict templates in igx-ts ([38aaa75](https://github.com/IgniteUI/igniteui-cli/commit/38aaa756908493244414a51cc31688c27246b2f6)), closes [#850](https://github.com/IgniteUI/igniteui-cli/issues/850)
+
+
+
+## 8.0.2-beta.0 (2021-07-02)
+
+
+
+## 8.0.1 (2021-07-01)
+
+
+
+# 8.0.0 (2021-05-14)
+
+
+#### Bug Fixes
+
+* **fonts:** Fix icon font names and families ([35a702e](https://github.com/IgniteUI/igniteui-cli/commit/35a702ee21d4a780b9318de071246969af54fca7))
+* **template:** Fix and upadte awesome template ([f2b51aa](https://github.com/IgniteUI/igniteui-cli/commit/f2b51aa2685220b282ca8a25bb2580f44b960bcb))
+* **warnings:** Update icons for grids samples ([0efbbae](https://github.com/IgniteUI/igniteui-cli/commit/0efbbaecdcb3b6095c6ebc483729214f5e4753aa))
+
+
+
+# 8.0.0-rc.0 (2021-05-13)
+
+
+
+# 8.0.0-alpha.1 (2021-05-13)
+
+
+#### Bug Fixes
+
+* **igx-templates:** provide service in tree sample, add some style ([b76452a](https://github.com/IgniteUI/igniteui-cli/commit/b76452a22d047a07d95c19fd3c720466065f178e))
+* remove strict checks and update open() method ([f2877e3](https://github.com/IgniteUI/igniteui-cli/commit/f2877e342746f85962d3f10125c6b784e53eb5d2))
+
+
+#### Features
+
+* **igx-templates:** add igx-tree template ([41bc6c3](https://github.com/IgniteUI/igniteui-cli/commit/41bc6c37b19c9136335347a468cdd5c8685a1f61))
+
+
+
+## 7.1.1 (2021-03-15)
+
+
+
+## 7.1.1-beta.0 (2021-03-12)
+
+
+
+# 7.1.0 (2021-02-22)
+
+
+
+# 7.1.0-beta.0 (2021-02-18)
+
+
+#### Bug Fixes
+
+* **toolbar:** Update hgrid & treegrid custom template toolbar ([c27af22](https://github.com/IgniteUI/igniteui-cli/commit/c27af22c413da93305a5c90c8a60a6dbac1a01e1))
+
+
+
+## 7.0.1 (2020-11-16)
+
+
+#### Bug Fixes
+
+* **igx-ts:** add local storage to spec ([3056a97](https://github.com/IgniteUI/igniteui-cli/commit/3056a97d99c492c04f2bbf19a7bd09c418294dbf))
+* **igx,custom-grid:** assign allowFiltering when selected as option ([7534c5f](https://github.com/IgniteUI/igniteui-cli/commit/7534c5f51736587b87217042b98c1be753cd76a8))
+* ssr breaks because of localStorage ref ([dc9410f](https://github.com/IgniteUI/igniteui-cli/commit/dc9410ff7c333bdece6ba25212f6c763afe64601))
+
+
+
+# 7.0.0 (2020-11-13)
+
+
+#### Bug Fixes
+
+* **igx-ts:** update build-angular ([082869c](https://github.com/IgniteUI/igniteui-cli/commit/082869cf27b52cb26695b6f90f4980ea85e67574))
+
+
+
+# 7.0.0-rc.2 (2020-11-12)
+
+
+#### Bug Fixes
+
+* **igx-ts:** crm grid with new toolbar ([a387742](https://github.com/IgniteUI/igniteui-cli/commit/a387742493b73f2c2f5e2cbacaf1bbe5a4d9345f))
+* **igx-ts:** fix toolbar according to latest changes ([93323c8](https://github.com/IgniteUI/igniteui-cli/commit/93323c81a3e388ae46e1dabcca13261312f92ade))
+* **igx-ts:** fix toolbar for grid fintech ([edc2057](https://github.com/IgniteUI/igniteui-cli/commit/edc20571657d5177c7a82ccae32d86f430970185))
+* **igx-ts:** tree-grid toolbar update ([2c985d7](https://github.com/IgniteUI/igniteui-cli/commit/2c985d78902d90439cbef733e6252f8c1eae37e3))
+* **igx-ts:** update HGrid Batch demo ([890a02d](https://github.com/IgniteUI/igniteui-cli/commit/890a02d54be89358aff76f9b07b3d8630df4f79c))
+
+
+
+## 6.2.1 (2020-11-11)
+
+
+#### Bug Fixes
+
+* **igx, side-auth:** add SSR-friendly local storage service ([8db27be](https://github.com/IgniteUI/igniteui-cli/commit/8db27be4739d396bbd34c389d9227aabdd01b970))
+* **igx,side-auth:** add proper wrapper class so layout is 100% ([508df9d](https://github.com/IgniteUI/igniteui-cli/commit/508df9d2255ec1a908ecd4054a841360c1827933))
+
+
+
+# 7.0.0-rc.1 (2020-11-10)
+
+
+#### Bug Fixes
+
+* **igx-ts:** fix package.json for auth project ([00b9cd9](https://github.com/IgniteUI/igniteui-cli/commit/00b9cd942ec154c76da1ac0e810e366cf373b64f))
+* **igx-ts:** remove base.json for auth project ([019535b](https://github.com/IgniteUI/igniteui-cli/commit/019535be27bac30b065b27a6facde53578a08456))
+* **igx-ts:** revert deleted packages ([acede53](https://github.com/IgniteUI/igniteui-cli/commit/acede5371f24b10be2314de0118ff1976cfb8c35))
+
+
+
+# 7.0.0-rc.0 (2020-11-10)
+
+
+#### Bug Fixes
+
+* **dock-manager:** remove unnecessary quotes ([cd9c16c](https://github.com/IgniteUI/igniteui-cli/commit/cd9c16cea9f4d120e7b6e0dd9112e907c5f2228b))
+
+
+
+# 7.0.0-alpha.0 (2020-11-10)
+
+
+#### Bug Fixes
+
+* **dock-manager:** Use correct module name in app.module import [#792](https://github.com/IgniteUI/igniteui-cli/issues/792) ([53691b5](https://github.com/IgniteUI/igniteui-cli/commit/53691b54af896c410a0b2b0c3e91751f76341dbd))
+
+
+
+# 6.2.0 (2020-10-20)
+
+
+
+# 6.2.0 (2020-10-20)
+
+
+
+# 6.2.0-rc.0 (2020-10-16)
+
+
+#### Bug Fixes
+
+* **templates, crm grid, grid batch editing:** Fixing issues in the two templates. ([2dc2859](https://github.com/IgniteUI/igniteui-cli/commit/2dc2859dd10f41f9b0b8a05072fa6d12de5c9c00))
+* **templates, crm-grid, grid batchediting:** Addressing the comments. ([09955ea](https://github.com/IgniteUI/igniteui-cli/commit/09955ea47cbe58546a6d117611a705c86c058b6e))
+
+
+
+# 6.2.0-beta.0 (2020-10-14)
+
+
+#### Bug Fixes
+
+* **deployment:** Fix environment check 793 ([3f3946a](https://github.com/IgniteUI/igniteui-cli/commit/3f3946a474840d38a763149230d743b3e845bf47))
+* update map to 10.1.3 ([3926b77](https://github.com/IgniteUI/igniteui-cli/commit/3926b77d575e2051b210232be2b8b1f76b681fab))
+
+
+
+# 6.1.0 (2020-08-12)
+
+
+
+# 6.1.0-beta.0 (2020-08-07)
+
+
+
+# 6.1.0-alpha.0 (2020-07-09)
+
+
+
+# 6.0.0 (2020-06-25)
+
+
+
+## 5.2.1 (2020-06-25)
+
+
+
+# 6.0.0-rc.0 (2020-06-25)
+
+
+#### Bug Fixes
+
+* **igx,dock-manager:** resolve package name from project ([ac66d8e](https://github.com/IgniteUI/igniteui-cli/commit/ac66d8e0fadf643530a5f3aa53ee3fe851cc1a33))
+* use group.json for step by step groups [#707](https://github.com/IgniteUI/igniteui-cli/issues/707) ([adf562c](https://github.com/IgniteUI/igniteui-cli/commit/adf562c639725fb6a8008ef682f5fbdd66e65b55))
+
+
+#### Features
+
+* Adding a Map template for Angular ([7cbddeb](https://github.com/IgniteUI/igniteui-cli/commit/7cbddeb907db8277f6db43db47f19f06591a7c7f))
+* **packages:** Bump packages to Angular 10  [#767](https://github.com/IgniteUI/igniteui-cli/issues/767) ([f7e104e](https://github.com/IgniteUI/igniteui-cli/commit/f7e104e8ccee1692ff886259a7b7cf653de46573))
+* **packages:** remove deprecated option [#767](https://github.com/IgniteUI/igniteui-cli/issues/767) ([602111e](https://github.com/IgniteUI/igniteui-cli/commit/602111eefdcf390e832275c428e86f9ef5aa547f))
+* **packages:** Update igx-ts projects [#767](https://github.com/IgniteUI/igniteui-cli/issues/767) ([71df154](https://github.com/IgniteUI/igniteui-cli/commit/71df1546f4765699bf0600ef07062cad85b69d99))
+
+
+
+# 5.2.0 (2020-06-11)
+
+
+#### Features
+
+* **igx-ts:** add Dock Manager template for Angular ([#763](https://github.com/IgniteUI/igniteui-cli/issues/763)) ([63acfdf](https://github.com/IgniteUI/igniteui-cli/commit/63acfdf6b9c511c0c8be18374f470ee8a0ca375c))
+* **igx,side-nav:**  move content padding so views can override ([36f9964](https://github.com/IgniteUI/igniteui-cli/commit/36f9964bbe2d21920f99f5815f346ec117a61724))
+
+
+
+## 5.1.1 (2020-06-03)
+
+
+#### Bug Fixes
+
+* **igx,upgrade:** ignore projects without sourceRoot ([6d64d30](https://github.com/IgniteUI/igniteui-cli/commit/6d64d30efa3aedcfd7d32eb9e7e1c29c90c7ea6e))
+* **upgrade:** Logging a message that licensed package is already installed ([63df30d](https://github.com/IgniteUI/igniteui-cli/commit/63df30d67c7d46fed0b6e4411e5b097dcd7f11f2))
+
+
+
+# 5.1.0 (2020-06-01)
+
+
+
+# 5.1.0-beta.4 (2020-06-01)
+
+
+
+# 5.1.0-beta.3 (2020-05-29)
+
+
+
+# 5.1.0-beta.2 (2020-05-28)
+
+
+
+# 5.1.0-beta.1 (2020-05-28)
+
+
+
+# 5.1.0-beta.0 (2020-05-27)
+
+
+#### Bug Fixes
+
+* **igx,templates:** correct empty project template id ([2d0b385](https://github.com/IgniteUI/igniteui-cli/commit/2d0b385a4ce3f8483e4f5f048bc94111ecb7db31))
+* **templates:** fix upgrade to get correct config ([a3021ef](https://github.com/IgniteUI/igniteui-cli/commit/a3021efc9baac77348a6e91a53f7b8b214fdb719))
+* **templates:** upgrade command properly replaces strings in ALL .ts files ([2d2c9b3](https://github.com/IgniteUI/igniteui-cli/commit/2d2c9b3dc02da3f7633642d9b3b4a02d7f0bb119))
+* **upgrade:** sort packages.json dependencies when adding licensed package ([62bb652](https://github.com/IgniteUI/igniteui-cli/commit/62bb652857e8e8cd6e368ef71ac2bf4ef8ea6749))
+
+
+#### Features
+
+* **schematics:** update-package logic added ([197b94e](https://github.com/IgniteUI/igniteui-cli/commit/197b94e367d5e9a359c989beef01c6f35d7b54b5))
+* **upgrade:** handle multiple licensed packages, [#741](https://github.com/IgniteUI/igniteui-cli/issues/741) ([ef02f5b](https://github.com/IgniteUI/igniteui-cli/commit/ef02f5b089d3616bbb24ba4ba8e2f0a4c7045374))
+
+
+
+# 5.1.0-alpha.0 (2020-05-20)
+
+
+#### Features
+
+* **igx,multi-pacakge:** templates resolve lib package from project ([7bb4670](https://github.com/IgniteUI/igniteui-cli/commit/7bb4670e1f7832321c3373e07c967d3d13d83777))
+
+
+
+## 5.0.3 (2020-05-18)
+
+
+#### Bug Fixes
+
+* **igx:** proj template error handler log instead throw, register only in prod ([270addd](https://github.com/IgniteUI/igniteui-cli/commit/270adddfdee8bb84892e768971e976e70550b2c2))
+
+
+
+## 5.0.2 (2020-05-05)
+
+
+
+# 5.0.0 (2020-02-11)
+
+
+
+# 5.0.0-rc.4 (2020-02-11)
+
+
+#### Bug Fixes
+
+* **carousel:** Add noop animations module ([c696124](https://github.com/IgniteUI/igniteui-cli/commit/c6961249ccbfe186e1f369b23420584b908b5787))
+
+
+
+# 5.0.0-rc.3 (2020-02-07)
+
+
+
+# 5.0.0-rc.2 (2020-02-07)
+
+
+#### Bug Fixes
+
+* **igx-ts:** change tsconfig module for spec files to avoid errors, [#660](https://github.com/IgniteUI/igniteui-cli/issues/660) ([3d6b987](https://github.com/IgniteUI/igniteui-cli/commit/3d6b987e4e2c72a9b73453af112465b7234aa9c3))
+* **igx-ts:** update auth providers tests, [#660](https://github.com/IgniteUI/igniteui-cli/issues/660) ([4c15c8b](https://github.com/IgniteUI/igniteui-cli/commit/4c15c8bc00ffd5543e676ce07ea4718ea234b62b))
+* **templates, igx:** add chart packages [#679](https://github.com/IgniteUI/igniteui-cli/issues/679) ([75f4dcd](https://github.com/IgniteUI/igniteui-cli/commit/75f4dcd3bf585d38b3f86ef85cfecc6b8ddcfabc))
+* **templates, igx:** add chart packages [#684](https://github.com/IgniteUI/igniteui-cli/issues/684) ([dd7bfb7](https://github.com/IgniteUI/igniteui-cli/commit/dd7bfb75923ebe4d644239774899c26cf6bf7564))
+
+
+#### Features
+
+* **igx-ts:** Update projects [#647](https://github.com/IgniteUI/igniteui-cli/issues/647) ([e0a738a](https://github.com/IgniteUI/igniteui-cli/commit/e0a738aea9b0345386fb2611bc28168ca99390f0))
+
+
+
+# 5.0.0-rc.0 (2020-01-31)
+
+
+#### Bug Fixes
+
+* **ig-add:** only take into account 'extraConfig' in generateConfig [#618](https://github.com/IgniteUI/igniteui-cli/issues/618) ([#621](https://github.com/IgniteUI/igniteui-cli/issues/621)) ([d8d7db8](https://github.com/IgniteUI/igniteui-cli/commit/d8d7db823f1c6c717063ce678695be4d8db084d6))
+* **igx-ts:** update scenario templates [#628](https://github.com/IgniteUI/igniteui-cli/issues/628) ([#643](https://github.com/IgniteUI/igniteui-cli/issues/643)) ([ecda4d7](https://github.com/IgniteUI/igniteui-cli/commit/ecda4d779d3a196c16c13f87e2787ff7fdcbc167))
+* **templates:** update angular charts packages to v8.2.12 ([3ed3013](https://github.com/IgniteUI/igniteui-cli/commit/3ed301379a765d4ad0614e1d51cd5dec2227494d))
+
+
+
+# 5.0.0-beta.3 (2019-12-13)
+
+
+
+# 5.0.0-beta.2 (2019-12-06)
+
+
+#### Bug Fixes
+
+* **schematics:** set virtual FS in proper stage ([2102464](https://github.com/IgniteUI/igniteui-cli/commit/2102464698a493f97f4739bd14068b218b985d95))
+
+
+
+# 5.0.0-beta.1 (2019-11-28)
+
+
+#### Bug Fixes
+
+* **igx-templates:** fix side-auth template tsconfig.app.json, [#597](https://github.com/IgniteUI/igniteui-cli/issues/597) ([1ffe4ba](https://github.com/IgniteUI/igniteui-cli/commit/1ffe4ba77b30c4eaab2a176ec30470cf32cf7980))
+* **igx-ts:** update autocomplete templates to import FormsModule [#581](https://github.com/IgniteUI/igniteui-cli/issues/581) ([#584](https://github.com/IgniteUI/igniteui-cli/issues/584)) ([b91a1e8](https://github.com/IgniteUI/igniteui-cli/commit/b91a1e8efe1c3e78482abff524b69c48e64f9094))
+* **templating, igx-ts:** add dot path variable for prefixed files that glob ignores ([486a0da](https://github.com/IgniteUI/igniteui-cli/commit/486a0da0ee6190f16544ee46ae360b822c057b53))
+
+
+
+# 5.0.0-alpha.1 (2019-10-02)
+
+
+#### Features
+
+* **ng-schematics:** add component generate schematic ([a0e86c2](https://github.com/IgniteUI/igniteui-cli/commit/a0e86c29d72c52727a13aee4ded2acd0ef6ddc44))
+
+## igniteui/angular-schematics@21.1.14100-alpha.0 (2026-03-25)
+
+
+#### Bug Fixes
+
+* **eslint:** correct config ignores and resolve lint errors ([68d01ac](https://github.com/IgniteUI/igniteui-cli/commit/68d01ac6102e4e3d660dff9d229e826ea64943db))
+* **igx-ts-legacy:** update igx ts legacy templates ([#1517](https://github.com/IgniteUI/igniteui-cli/issues/1517)) ([c26c8ff](https://github.com/IgniteUI/igniteui-cli/commit/c26c8ff298092c21b2aa6ca77a75cd2a5fdedc79))
+
+
+
+## 14.9.2 (2026-03-11)
+
+
+#### Bug Fixes
+
+* **schematics:** fs writeFile create check ([#1526](https://github.com/IgniteUI/igniteui-cli/issues/1526)) ([f8e4b59](https://github.com/IgniteUI/igniteui-cli/commit/f8e4b59bd951ff1b702f3d24cf61ebc33115dc89))
+
+
+
+## 14.9.1 (2026-02-25)
+
+
+
+# 14.9.0 (2026-02-25)
+
+
+#### Features
+
+* **ng:** update igniteui-angular to 21.1.0 ([#1495](https://github.com/IgniteUI/igniteui-cli/issues/1495)) ([399f83e](https://github.com/IgniteUI/igniteui-cli/commit/399f83e4278dafdf9a3832fa013840f05ba586e6))
+
+
+
+## 14.8.5-beta.3 (2026-02-11)
+
+
+
+## 14.8.5-beta.0 (2026-02-10)
+
+
+
+## 14.8.4 (2026-02-05)
+
+
+
+## 14.8.3 (2026-01-19)
+
+
+
+## 14.8.2 (2026-01-13)
+
+
+
+## 14.8.2-beta.4 (2026-01-12)
+
+
+
+## 14.8.2-beta.3 (2026-01-12)
+
+
+
+## 14.8.2-beta.2 (2026-01-12)
+
+
+
+## 14.8.2-beta.0 (2026-01-12)
+
+
+
+# 14.8.0 (2025-12-03)
+
+
+
+# 14.8.0-beta.2 (2025-12-01)
+
+
+
+# 14.8.0-beta.1 (2025-12-01)
+
+
+
+## 14.7.1 (2025-11-20)
+
+
+
+# 14.7.0 (2025-11-17)
+
+
+#### Features
+
+* **ng:** use ng lint schematic ([#1439](https://github.com/IgniteUI/igniteui-cli/issues/1439)) ([fa917cd](https://github.com/IgniteUI/igniteui-cli/commit/fa917cd7c974db05061f9442d8c5cdcc74853928))
+
+
+
+## 14.6.4 (2025-10-14)
+
+
+
+## 14.6.3 (2025-10-09)
+
+
+
+## 14.6.2 (2025-10-07)
+
+
+
+## 14.6.1 (2025-10-06)
+
+
+
+# 14.6.0 (2025-10-02)
+
+
+#### Features
+
+* **ng:** update ig, ng and other libs ([#1427](https://github.com/IgniteUI/igniteui-cli/issues/1427)) ([93fbbcc](https://github.com/IgniteUI/igniteui-cli/commit/93fbbcce2668084dcc958736f7167e36e9cbed47))
+
+
+
+## 14.5.8 (2025-09-25)
+
+
+
+## 14.5.7 (2025-09-23)
+
+
+
+## 14.5.6 (2025-09-18)
+
+
+
+## 14.5.4 (2025-07-01)
+
+
+
+## 14.5.3 (2025-06-28)
+
+
+
+## 14.5.1 (2025-06-24)
+
+
+
+# 14.5.0 (2025-06-05)
+
+
+
+## 14.4.4 (2025-05-21)
+
+
+#### Features
+
+* add azure pipelines yaml files for angular, react and wc templates ([#1396](https://github.com/IgniteUI/igniteui-cli/issues/1396)) ([6a3e39d](https://github.com/IgniteUI/igniteui-cli/commit/6a3e39d41f50abe51fa7fd819961412304a31343))
+
+
+
+## 14.4.3 (2025-04-25)
+
+
+
+## 14.4.2 (2025-04-24)
+
+
+
+## 14.4.1 (2025-04-23)
+
+
+
+# 14.4.0 (2025-04-17)
+
+
+
+## 14.3.18 (2025-04-11)
+
+
+#### Bug Fixes
+
+* add missing static css files for WC ([#1385](https://github.com/IgniteUI/igniteui-cli/issues/1385)) ([95018f9](https://github.com/IgniteUI/igniteui-cli/commit/95018f93704f62af70b9c4a2e07b46554e6331a4))
+
+
+
+## 14.3.17 (2025-04-09)
+
+
+
+## 14.3.16 (2025-03-31)
+
+
+
+## 14.3.14 (2025-02-24)
+
+
+#### Bug Fixes
+
+* update eslint and fix warnings ([#1378](https://github.com/IgniteUI/igniteui-cli/issues/1378)) ([aa84345](https://github.com/IgniteUI/igniteui-cli/commit/aa84345ff21fc0fccde94063099e4c713862cde8))
+
+
+
+## 14.3.12-beta.0 (2025-01-27)
+
+
+
+## 14.3.11 (2025-01-24)
+
+
+#### Bug Fixes
+
+* static data paths when deploy to github pages ([#1371](https://github.com/IgniteUI/igniteui-cli/issues/1371)) ([4b40231](https://github.com/IgniteUI/igniteui-cli/commit/4b402313f4d2a2cfd80115d274514d9e5507334c))
+
+
+
+## 14.3.10 (2025-01-23)
+
+
+
+## 14.3.9 (2025-01-23)
+
+
+
+## 14.3.8 (2025-01-23)
+
+
+
+## 14.3.7 (2025-01-22)
+
+
+
+## 14.3.6 (2024-12-12)
+
+
+#### Bug Fixes
+
+* **migrations:** enable encapsulation for migrations ([#1361](https://github.com/IgniteUI/igniteui-cli/issues/1361)) ([9561a16](https://github.com/IgniteUI/igniteui-cli/commit/9561a1604a746b8a4b771627de2af4d14927e7c2))
+
+
+
+## 14.3.5 (2024-12-06)
+
+
+#### Bug Fixes
+
+* **web-components:** fix the step for updating the router navigation in github pages workflow ([#1358](https://github.com/IgniteUI/igniteui-cli/issues/1358)) ([3e0f42c](https://github.com/IgniteUI/igniteui-cli/commit/3e0f42c4fc7a75f6819f8ba85f760ac6a6d854f1))
+
+
+
+## 14.3.4 (2024-12-04)
+
+
+
+## 14.3.3 (2024-12-02)
+
+
+
+## 14.3.2 (2024-11-28)
+
+
+#### Features
+
+* Add pages deployment variable logic and fixes in github pages yaml files ([#1337](https://github.com/IgniteUI/igniteui-cli/issues/1337)) ([c75d9c7](https://github.com/IgniteUI/igniteui-cli/commit/c75d9c7a9d7a9244e7a9a814770809f06280529a))
+
+
+
+## 14.2.3 (2024-11-15)
+
+
+
+## 14.2.2 (2024-11-08)
+
+
+
+## 14.2.1 (2024-10-28)
+
+
+
+# 14.2.0 (2024-10-25)
+
+
+
+# 14.2.0-beta.4 (2024-10-23)
+
+
+
+# 14.1.0 (2024-10-11)
+
+
+
+## 14.0.2 (2024-09-20)
+
+
+
+## 14.0.1 (2024-09-05)
+
+
+
+# 14.0.0 (2024-08-23)
+
+
+
+# 14.0.0-beta.2 (2024-07-24)
+
+
+#### Features
+
+* **igx-templates:** add AngularTypeScriptFileUpdate ([e7f6ed3](https://github.com/IgniteUI/igniteui-cli/commit/e7f6ed3d339bb444dcdbaec4cabe5dcbff27b5ac))
+
+
+
+## 13.3.3 (2024-07-16)
+
+
+
+## 13.3.2 (2024-07-04)
+
+
+
+## 13.3.1 (2024-06-28)
+
+
+
+# 13.3.0-rc.0 (2024-05-31)
+
+
+
+## 13.2.1 (2024-05-09)
+
+
+
+# 13.2.0 (2024-04-29)
+
+
+
+# 13.2.0-rc.0 (2024-04-29)
+
+
+
+## 13.1.16 (2024-04-28)
+
+
+
+## 13.1.15 (2024-04-12)
+
+
+#### Bug Fixes
+
+* include js files in ng-schematics/scripts w/ newer npm version ([727f2f6](https://github.com/IgniteUI/igniteui-cli/commit/727f2f670d303ddb585b78d68a2c42f907a4786f))
+
+
+
+## 13.1.13 (2024-04-11)
+
+
+
+## 13.1.12 (2024-03-21)
+
+
+#### Features
+
+* **cli:** upgrade packages for React and WC ([#1198](https://github.com/IgniteUI/igniteui-cli/issues/1198)) ([16c9b8d](https://github.com/IgniteUI/igniteui-cli/commit/16c9b8dda219ebacd473a2fad5e0c0ea70d5f320))
+
+
+
+## 13.1.11 (2024-03-12)
+
+
+
+## 13.1.10 (2024-03-11)
+
+
+
+## 13.1.9 (2024-03-05)
+
+
+
+## 13.1.8 (2024-02-29)
+
+
+
+## 13.1.7 (2024-02-28)
+
+
+
+## 13.1.6 (2024-02-26)
+
+
+#### Features
+
+* **ng-add:** add setup config provideAnimations ([2f47676](https://github.com/IgniteUI/igniteui-cli/commit/2f476762ac772039228fe10565d49a6ced76b72d))
+
+
+
+## 13.1.5 (2024-01-31)
+
+
+
+## 13.1.3 (2024-01-17)
+
+
+
+## 13.1.1 (2023-12-14)
+
+
+#### Features
+
+* **igr-ts:** add igr-ts proj type ([#1146](https://github.com/IgniteUI/igniteui-cli/issues/1146)) ([4609525](https://github.com/IgniteUI/igniteui-cli/commit/460952505758fcf1ab9b559ed6809015f3c5d3a5)), closes [#1147](https://github.com/IgniteUI/igniteui-cli/issues/1147) [#1153](https://github.com/IgniteUI/igniteui-cli/issues/1153)
+
+
+
+## 13.0.1 (2023-11-15)
+
+
+
+# 13.0.0 (2023-11-09)
+
+
+
+# 13.0.0-rc.0 (2023-11-09)
+
+
+
+## 12.0.6-beta.2 (2023-10-02)
+
+
+
+## 12.0.5 (2023-07-18)
+
+
+
+## 12.0.4 (2023-07-18)
+
+
+
+## 12.0.3 (2023-06-28)
+
+
+
+## 12.0.3-beta.0 (2023-06-02)
+
+
+
+## 12.0.1 (2023-05-26)
+
+
+
+# 12.0.0 (2023-05-15)
+
+
+
+# 12.0.0-rc.0 (2023-05-15)
+
+
+#### Features
+
+* **igx:** add base_with_home proj to igx-templates ([#1118](https://github.com/IgniteUI/igniteui-cli/issues/1118)) ([d84c431](https://github.com/IgniteUI/igniteui-cli/commit/d84c4310a03e35588626c57148091c6b224c7bc3))
+* **igx:** update to 16 ([#1120](https://github.com/IgniteUI/igniteui-cli/issues/1120)) ([e6efa40](https://github.com/IgniteUI/igniteui-cli/commit/e6efa40c2c748d2679b6be66252bc7732e51de29))
+
+
+
+## 11.1.1 (2023-04-11)
+
+
+
+# 11.1.0 (2023-03-28)
+
+
+
+# 11.1.0-rc.0 (2023-03-24)
+
+
+
+## 11.0.2 (2023-02-17)
+
+
+
+# 11.0.0 (2022-11-23)
+
+
+
+# 10.1.0-beta.13 (2022-10-27)
+
+
+
+# 10.1.0-beta.12 (2022-10-27)
+
+
+
+# 10.1.0-beta.11 (2022-10-25)
+
+
+
+# 10.1.0-beta.10 (2022-10-25)
+
+
+
+# 10.1.0-beta.8 (2022-10-23)
+
+
+
+# 10.1.0-beta.7 (2022-10-19)
+
+
+
+# 10.1.0-beta.5 (2022-10-18)
+
+
+
+# 10.1.0-beta.4 (2022-10-18)
+
+
+
+# 10.1.0-beta.3 (2022-10-17)
+
+
+
+# 10.1.0-beta.2 (2022-10-14)
+
+
+
+# 10.1.0-beta.1 (2022-10-14)
+
+
+
+# 10.1.0-beta.0 (2022-10-07)
+
+
+
+## 10.0.5 (2022-09-19)
+
+
+
+## 10.0.4-beta.1 (2022-07-15)
+
+
+
+## 10.0.4-beta.0 (2022-06-30)
+
+
+
+## 10.0.2 (2022-06-29)
+
+
+
+## 10.0.1 (2022-06-17)
+
+
+
+# 9.2.0 (2022-05-26)
+
+
+
+## 9.1.4 (2022-05-20)
+
+
+
+## 9.1.3 (2022-05-19)
+
+
+
+## 9.1.2 (2022-05-16)
+
+
+
+## 9.1.1 (2022-03-18)
+
+
+
+## 9.1.1-rc.0 (2022-03-17)
+
+
+
+# 9.1.0 (2022-03-02)
+
+
+
+# 9.1.0-rc.1 (2022-02-25)
+
+
+
+# 9.1.0-beta.0 (2022-02-22)
+
+
+#### Bug Fixes
+
+* **angular:** change more igx- ([f9ade5e](https://github.com/IgniteUI/igniteui-cli/commit/f9ade5e176444ce3c2a80f60baf43d239b8788fe))
+
+
+
+## 9.0.6 (2022-02-04)
+
+
+
+## 9.0.5 (2022-02-04)
+
+
+
+## 9.0.5-beta.2 (2022-02-03)
+
+
+
+## 9.0.5-beta.1 (2022-01-28)
+
+
+
+## 9.0.5-beta.0 (2021-12-20)
+
+
+
+## 9.0.4 (2021-12-15)
+
+
+
+## 9.0.3 (2021-12-13)
+
+
+#### Features
+
+* **typescript:** Add support for typescript 4.5.2 ([055ca5b](https://github.com/IgniteUI/igniteui-cli/commit/055ca5b7f8e54acdd8f3f1d6b6d7517916d852f3))
+
+
+
+## 9.0.1 (2021-11-25)
+
+
+
+# 9.0.0 (2021-11-22)
+
+
+
+# 9.0.0-rc.3 (2021-11-22)
+
+
+
+# 9.0.0-rc.2 (2021-11-19)
+
+
+#### Bug Fixes
+
+* add igx-scrollbar class to body, [#14033](https://github.com/IgniteUI/igniteui-cli/issues/14033) ([b02ac58](https://github.com/IgniteUI/igniteui-cli/commit/b02ac5822015c6b1b1fdd4684a52a2eecb3eadd9))
+
+
+
+# 9.0.0-rc.1 (2021-11-17)
+
+
+
+# 9.0.0-rc.0 (2021-11-17)
+
+
+#### Features
+
+* **angular:** update to Angular 13 [#895](https://github.com/IgniteUI/igniteui-cli/issues/895) ([#896](https://github.com/IgniteUI/igniteui-cli/issues/896)) ([32f1721](https://github.com/IgniteUI/igniteui-cli/commit/32f17215290af3372b554f0e440e39b9b9b5040a))
+
+
+
+# 8.3.0-rc.0 (2021-11-11)
+
+
+
+# 8.3.0-beta.6 (2021-11-09)
+
+
+
+# 8.3.0-beta.5 (2021-11-09)
+
+
+
+# 8.3.0-beta.4 (2021-11-09)
+
+
+
+# 8.3.0-beta.3 (2021-11-08)
+
+
+
+# 8.3.0-beta.2 (2021-11-08)
+
+
+
+# 8.3.0-beta.1 (2021-11-04)
+
+
+
+# 8.3.0-beta.0 (2021-11-04)
+
+
+
+## 8.2.1 (2021-10-08)
+
+
+
+## 8.2.1-rc.0 (2021-10-07)
+
+
+
+# 8.2.0 (2021-10-04)
+
+
+
+# 8.2.0-alpha.0 (2021-09-30)
+
+
+
+## 8.1.2 (2021-09-28)
+
+
+
+## 8.1.1 (2021-09-02)
+
+
+
+## 8.0.4 (2021-08-02)
+
+
+#### Bug Fixes
+
+* **schematics:** resolve schema id deprecation warning ([#870](https://github.com/IgniteUI/igniteui-cli/issues/870)) ([17d7016](https://github.com/IgniteUI/igniteui-cli/commit/17d70164de93a5162ba4a02b44b571de318a37c7))
+
+
+
+# 8.1.0-rc.0 (2021-07-30)
+
+
+
+# 8.1.0-beta.1 (2021-07-30)
+
+
+
+# 8.1.0-beta.0 (2021-07-28)
+
+
+#### Features
+
+* update angular to v12.1 [#856](https://github.com/IgniteUI/igniteui-cli/issues/856) ([#857](https://github.com/IgniteUI/igniteui-cli/issues/857)) ([971822e](https://github.com/IgniteUI/igniteui-cli/commit/971822e343158bd107ef5b07bf60773509bd928c))
+
+
+
+## 8.0.3 (2021-07-14)
+
+
+
+## 8.0.2 (2021-07-07)
+
+
+
+## 8.0.2-beta.1 (2021-07-06)
+
+
+
+## 8.0.2-beta.0 (2021-07-02)
+
+
+
+## 8.0.1 (2021-07-01)
+
+
+
+# 8.0.0 (2021-05-14)
+
+
+
+# 8.0.0-rc.0 (2021-05-13)
+
+
+
+# 8.0.0-alpha.1 (2021-05-13)
+
+
+
+## 7.1.1 (2021-03-15)
+
+
+
+## 7.1.1-beta.0 (2021-03-12)
+
+
+
+# 7.1.0 (2021-02-22)
+
+
+
+# 7.1.0-beta.0 (2021-02-18)
+
+
+
+## 7.0.1 (2020-11-16)
+
+
+
+# 7.0.0 (2020-11-13)
+
+
+
+# 7.0.0-rc.2 (2020-11-12)
+
+
+
+# 7.0.0-rc.1 (2020-11-10)
+
+
+
+# 7.0.0-rc.0 (2020-11-10)
+
+
+
+# 7.0.0-alpha.0 (2020-11-10)
+
+
+
+# 6.2.0 (2020-10-20)
+
+
+
+# 6.2.0-rc.0 (2020-10-16)
+
+
+
+# 6.2.0-beta.0 (2020-10-14)
+
+
+
+# 6.1.0 (2020-08-12)
+
+
+
+# 6.1.0-beta.0 (2020-08-07)
+
+
+
+# 6.1.0-alpha.0 (2020-07-09)
+
+
+
+# 6.0.0 (2020-06-25)
+
+
+
+# 6.0.0-rc.0 (2020-06-25)
+
+
+#### Bug Fixes
+
+* **igx,dock-manager:** resolve package name from project ([ac66d8e](https://github.com/IgniteUI/igniteui-cli/commit/ac66d8e0fadf643530a5f3aa53ee3fe851cc1a33))
+
+
+
+# 5.2.0 (2020-06-11)
+
+
+
+## 5.1.1 (2020-06-03)
+
+
+
+# 5.1.0 (2020-06-01)
+
+
+
+# 5.1.0-beta.4 (2020-06-01)
+
+
+
+# 5.1.0-beta.3 (2020-05-29)
+
+
+
+# 5.1.0-beta.2 (2020-05-28)
+
+
+
+# 5.1.0-beta.1 (2020-05-28)
+
+
+#### Bug Fixes
+
+* **schematics:** include upgrade-packages schema ([77aa13d](https://github.com/IgniteUI/igniteui-cli/commit/77aa13db7442b24d787029af4d6a860a0bd85d3b))
+* **schematics:** remove log for unsupported custom templates ([97e3bb3](https://github.com/IgniteUI/igniteui-cli/commit/97e3bb3813cf25603a97177a5ec5d87b2db94206))
+* **upgrade:** provide default fallback for incorrect package template ([9dd4d80](https://github.com/IgniteUI/igniteui-cli/commit/9dd4d80db6cf13d3fd7594790bcaaeec9a383b49))
+
+
+
+# 5.1.0-beta.0 (2020-05-27)
+
+
+#### Features
+
+* **schematics:** update-package logic added ([197b94e](https://github.com/IgniteUI/igniteui-cli/commit/197b94e367d5e9a359c989beef01c6f35d7b54b5))
+* **step-by-step:** add prompt to upgrade to private feed packages, [#724](https://github.com/IgniteUI/igniteui-cli/issues/724) ([63c0c85](https://github.com/IgniteUI/igniteui-cli/commit/63c0c85639c1e5e5415c82f96a6b5cb5bbad4b99))
+
+
+
+# 5.1.0-alpha.0 (2020-05-20)
+
+
+
+## 5.0.3 (2020-05-18)
+
+
+
+## 5.0.2 (2020-05-05)
+
+
+
+# 5.0.0 (2020-02-11)
+
+
+
+# 5.0.0-rc.4 (2020-02-11)
+
+
+#### Bug Fixes
+
+* **schematics:** ensure component prompt installs packages [#695](https://github.com/IgniteUI/igniteui-cli/issues/695) ([16e55d4](https://github.com/IgniteUI/igniteui-cli/commit/16e55d446c3d18fddb7ec7040a266ef498d83060))
+
+
+
+# 5.0.0-rc.3 (2020-02-07)
+
+
+
+# 5.0.0-rc.2 (2020-02-07)
+
+
+
+# 5.0.0-rc.0 (2020-01-31)
+
+
+#### Bug Fixes
+
+* new project accepts lower case theme name [#600](https://github.com/IgniteUI/igniteui-cli/issues/600) ([#619](https://github.com/IgniteUI/igniteui-cli/issues/619)) ([d6eedea](https://github.com/IgniteUI/igniteui-cli/commit/d6eedea8998b07aa6312dea6fdbab66acd88303a))
+* prompt for template and theme if no name provided [#622](https://github.com/IgniteUI/igniteui-cli/issues/622) ([#626](https://github.com/IgniteUI/igniteui-cli/issues/626)) ([44621e9](https://github.com/IgniteUI/igniteui-cli/commit/44621e9040f29da4819e6758e8316e6c7048e38d))
+
+
+
+# 5.0.0-beta.3 (2019-12-13)
+
+
+#### Bug Fixes
+
+* **cli, schematics:** check for fileSystem on post install [#612](https://github.com/IgniteUI/igniteui-cli/issues/612) ([#613](https://github.com/IgniteUI/igniteui-cli/issues/613)) ([0a6a878](https://github.com/IgniteUI/igniteui-cli/commit/0a6a87877bfe42fb9d665ac7b7e4be3d5e72511f))
+* **new, schematics:** no prompts when "name" is provided [#595](https://github.com/IgniteUI/igniteui-cli/issues/595) ([#609](https://github.com/IgniteUI/igniteui-cli/issues/609)) ([0ed45ba](https://github.com/IgniteUI/igniteui-cli/commit/0ed45ba0ed2147a0255d5df2a44e82b665c90c99))
+
+
+
+# 5.0.0-beta.2 (2019-12-06)
+
+
+#### Bug Fixes
+
+* **schematics:** set virtual FS in proper stage ([2102464](https://github.com/IgniteUI/igniteui-cli/commit/2102464698a493f97f4739bd14068b218b985d95))
+* **schematics:** skip start task if skipInstall === true ([#603](https://github.com/IgniteUI/igniteui-cli/issues/603)) ([fc38d65](https://github.com/IgniteUI/igniteui-cli/commit/fc38d651ecfa47f95921fa72f7be5ff68d8b586e))
+
+
+#### Features
+
+* **schematics:** adding a name for schematics projects [#587](https://github.com/IgniteUI/igniteui-cli/issues/587) ([#602](https://github.com/IgniteUI/igniteui-cli/issues/602)) ([19409d0](https://github.com/IgniteUI/igniteui-cli/commit/19409d0b7018c518c64c7ff161a6ec4a3438f834))
+
+
+
+# 5.0.0-beta.1 (2019-11-28)
+
+
+#### Bug Fixes
+
+* **schematics:** component schematics checks for available names [#576](https://github.com/IgniteUI/igniteui-cli/issues/576) ([#586](https://github.com/IgniteUI/igniteui-cli/issues/586)) ([bccd6c1](https://github.com/IgniteUI/igniteui-cli/commit/bccd6c131c4ab9bc197cfa29e1b792494270720f))
+* **schematics:** this package is a dep in new project instead of ignteui-cli ([c04a13c](https://github.com/IgniteUI/igniteui-cli/commit/c04a13c1c82c1d4a9a627503086f86d9040c6778))
+* **schematics:** use project config instead of hard-coded paths ([#592](https://github.com/IgniteUI/igniteui-cli/issues/592)) ([43240b6](https://github.com/IgniteUI/igniteui-cli/commit/43240b610d878186aa4b50959c37822e1f54eaf6))
+
+
+#### Features
+
+* **schematics:** add prompt session to component schematic, [#566](https://github.com/IgniteUI/igniteui-cli/issues/566) ([#571](https://github.com/IgniteUI/igniteui-cli/issues/571)) ([e25c1ce](https://github.com/IgniteUI/igniteui-cli/commit/e25c1ceab6fbff58a89e8712d3eda31da7c1af65))
+* **schematics:** adding ng-new schematic missing options [#596](https://github.com/IgniteUI/igniteui-cli/issues/596) ([#598](https://github.com/IgniteUI/igniteui-cli/issues/598)) ([8b51541](https://github.com/IgniteUI/igniteui-cli/commit/8b5154133bfe3fc6ef1c9958879cd835e36b001e))
+
+
+
+# 5.0.0-alpha.1 (2019-10-02)
+
+
+#### Bug Fixes
+
+* rename gitignore manually ([beb06a9](https://github.com/IgniteUI/igniteui-cli/commit/beb06a9de2511654797d75737a2e0bd5da968d8c))
+
+
+#### Features
+
+* **ng-schematics:** add component generate schematic ([a0e86c2](https://github.com/IgniteUI/igniteui-cli/commit/a0e86c29d72c52727a13aee4ded2acd0ef6ddc44))
+* **schematics:** add start schematic, enable npm and git init tasks ([2a329b1](https://github.com/IgniteUI/igniteui-cli/commit/2a329b18c5e2d6d0f852a72c842c3bab4022a9f2))
+
+## igniteui-cli@14.10.0-alpha.0 (2026-03-25)
+
+
+#### Bug Fixes
+
+* **eslint:** correct config ignores and resolve lint errors ([68d01ac](https://github.com/IgniteUI/igniteui-cli/commit/68d01ac6102e4e3d660dff9d229e826ea64943db))
+* **igx-ts-legacy:** update igx ts legacy templates ([#1517](https://github.com/IgniteUI/igniteui-cli/issues/1517)) ([c26c8ff](https://github.com/IgniteUI/igniteui-cli/commit/c26c8ff298092c21b2aa6ca77a75cd2a5fdedc79))
+
+
+#### Features
+
+* add copilot instructions for AI agents in multiple templates ([73921a7](https://github.com/IgniteUI/igniteui-cli/commit/73921a738efcc0a3e2a7df24bdf509f9f694da8a))
+* **claude:** add CLAUDE.md files for AI agent instructions across multiple templates ([5a96a33](https://github.com/IgniteUI/igniteui-cli/commit/5a96a33eac3f2fcbaf1444ac7778f7c8c2c89952))
+* make @igniteui/mcp-server a workspace package ([cf48369](https://github.com/IgniteUI/igniteui-cli/commit/cf483695e01afeac2ee6d7da193c2ee2d2af375a))
+* **templates:** add AGENTS.md and mcp.json files for React and Web Components and Angular project templates ([d867f44](https://github.com/IgniteUI/igniteui-cli/commit/d867f44e17d01be82ec6853c6b0c22910a652b73))
+
+
+
+## 14.9.2 (2026-03-11)
+
+
+#### Bug Fixes
+
+* **igx-ts:** update igniteui-angular versions and remove overrides ([#1508](https://github.com/IgniteUI/igniteui-cli/issues/1508)) ([6b4e1c8](https://github.com/IgniteUI/igniteui-cli/commit/6b4e1c87e8e7a94a5212a7037072088b7eec8a1a))
+* **upgrade-packages:** correctly glob files on windows ([#1511](https://github.com/IgniteUI/igniteui-cli/issues/1511)) ([64f2735](https://github.com/IgniteUI/igniteui-cli/commit/64f2735963f269fb4b60dd7479566baae33119c8))
+
+
+#### Reverts
+
+* partially revert changes swapping exec with spawn ([3a64b67](https://github.com/IgniteUI/igniteui-cli/commit/3a64b67bc43df42f72363e63192b90fea38b111f))
+
+
+
+## 14.9.1 (2026-02-25)
+
+
+
+# 14.9.0 (2026-02-25)
+
+
+#### Bug Fixes
+
+* **commands,list:** do not use `this` in handler ([#1494](https://github.com/IgniteUI/igniteui-cli/issues/1494)) ([b8f5b53](https://github.com/IgniteUI/igniteui-cli/commit/b8f5b53599cb20374acee53195395213060b51d3))
+* **react:** remove setupTests and update test with it's logic ([#1489](https://github.com/IgniteUI/igniteui-cli/issues/1489)) ([bd1f0ba](https://github.com/IgniteUI/igniteui-cli/commit/bd1f0ba0bccfd6768ccae44ab10568be5ecb1828))
+
+
+#### Features
+
+* **ng:** update igniteui-angular to 21.1.0 ([#1495](https://github.com/IgniteUI/igniteui-cli/issues/1495)) ([399f83e](https://github.com/IgniteUI/igniteui-cli/commit/399f83e4278dafdf9a3832fa013840f05ba586e6))
+
+
+
+## 14.8.5-beta.3 (2026-02-11)
+
+
+
+## 14.8.5-beta.0 (2026-02-10)
+
+
+
+## 14.8.4 (2026-02-05)
+
+
+#### Bug Fixes
+
+* **angular:** increase maximum error budget ([#1485](https://github.com/IgniteUI/igniteui-cli/issues/1485)) ([63a03bd](https://github.com/IgniteUI/igniteui-cli/commit/63a03bddb3459797bc5a0121f2d601823fd3cd35))
+
+
+
+## 14.8.3 (2026-01-19)
+
+
+
+## 14.8.2 (2026-01-13)
+
+
+
+## 14.8.2-beta.4 (2026-01-12)
+
+
+
+## 14.8.2-beta.3 (2026-01-12)
+
+
+#### Bug Fixes
+
+* add vitest/browser package ([e283ed2](https://github.com/IgniteUI/igniteui-cli/commit/e283ed29b99d794bd67f3bcab7a9dbfd391045ec))
+* add vitest/browser package ([5c29f50](https://github.com/IgniteUI/igniteui-cli/commit/5c29f5054febc0d656732886d08237528d6f6e40))
+
+
+
+## 14.8.2-beta.2 (2026-01-12)
+
+
+#### Bug Fixes
+
+* add playwright to the yaml files for wc ([6432111](https://github.com/IgniteUI/igniteui-cli/commit/643211110ad858f84b9ed23b3602f80218f23cbd))
+* resolve missed merge conflict ([ba42d4f](https://github.com/IgniteUI/igniteui-cli/commit/ba42d4f378a3e8334f51381ac1ff85799134ce3e))
+
+
+
+## 14.8.2-beta.0 (2026-01-12)
+
+
+
+# 14.8.0 (2025-12-03)
+
+
+
+# 14.8.0-beta.2 (2025-12-01)
+
+
+
+# 14.8.0-beta.1 (2025-12-01)
+
+
+
+## 14.7.1 (2025-11-20)
+
+
+#### Features
+
+* update tests to use Playwright ([517ea99](https://github.com/IgniteUI/igniteui-cli/commit/517ea9901372d7a42b516f5e9114a82880038e7e))
+
+
+
+# 14.7.0 (2025-11-17)
+
+
+#### Bug Fixes
+
+* command injection vulnerabilities in PackageManager and start command ([#1438](https://github.com/IgniteUI/igniteui-cli/issues/1438)) ([1f86df3](https://github.com/IgniteUI/igniteui-cli/commit/1f86df3d6e660b93db047415e9c53af1ef4f0a30))
+
+
+#### Features
+
+* **ng:** use ng lint schematic ([#1439](https://github.com/IgniteUI/igniteui-cli/issues/1439)) ([fa917cd](https://github.com/IgniteUI/igniteui-cli/commit/fa917cd7c974db05061f9442d8c5cdcc74853928))
+
+
+
+## 14.6.4 (2025-10-14)
+
+
+
+## 14.6.3 (2025-10-09)
+
+
+
+## 14.6.2 (2025-10-07)
+
+
+#### Features
+
+* **react:** add playwright and adjust tests; update packages; ([#1430](https://github.com/IgniteUI/igniteui-cli/issues/1430)) ([32b41dc](https://github.com/IgniteUI/igniteui-cli/commit/32b41dcf3f53de76fbafce39a36a1e8d51876b93))
+
+
+
+## 14.6.1 (2025-10-06)
+
+
+
+# 14.6.0 (2025-10-02)
+
+
+#### Features
+
+* **ng:** update ig, ng and other libs ([#1427](https://github.com/IgniteUI/igniteui-cli/issues/1427)) ([93fbbcc](https://github.com/IgniteUI/igniteui-cli/commit/93fbbcce2668084dcc958736f7167e36e9cbed47))
+
+
+
+## 14.5.8 (2025-09-25)
+
+
+
+## 14.5.7 (2025-09-23)
+
+
+
+## 14.5.6 (2025-09-18)
+
+
+#### Bug Fixes
+
+* Add missing igniteui-react-core dependency to React grid templates ([fb429bb](https://github.com/IgniteUI/igniteui-cli/commit/fb429bbd3634e0cf86a617672f857be4bb8b2f0d))
+* Remove --legacy-peer-deps flag to allow automatic peer dependency installation ([fe0ea3d](https://github.com/IgniteUI/igniteui-cli/commit/fe0ea3df94614b10dc494e241b070309e283c0b6))
+* set default route ([#1422](https://github.com/IgniteUI/igniteui-cli/issues/1422)) ([768d0d0](https://github.com/IgniteUI/igniteui-cli/commit/768d0d0a2873d2efc81c426ce35b5e42e92508a9))
+* update react templates ([93d132f](https://github.com/IgniteUI/igniteui-cli/commit/93d132fa229f0dba963cd5f21b89d5274e346910))
+* use only grid with defined columns ([faeb25a](https://github.com/IgniteUI/igniteui-cli/commit/faeb25a64effeba39e24dafe6e93e5a26a07c5bc))
+
+
+#### Features
+
+* Update Ignite UI product versions in template files ([964dda1](https://github.com/IgniteUI/igniteui-cli/commit/964dda13da00ca0c9d4bf1a42d6d98d2aa1d7b88))
+
+
+
+## 14.5.4 (2025-07-01)
+
+
+
+## 14.5.3 (2025-06-28)
+
+
+#### Bug Fixes
+
+* **react:** add missing argument and fix incorrect types ([#1403](https://github.com/IgniteUI/igniteui-cli/issues/1403)) ([fb006b3](https://github.com/IgniteUI/igniteui-cli/commit/fb006b38e6b4f3a2e61326b018787f67bd32b640))
+
+
+
+## 14.5.1 (2025-06-24)
+
+
+
+# 14.5.0 (2025-06-05)
+
+
+
+## 14.4.4 (2025-05-21)
+
+
+#### Features
+
+* add azure pipelines yaml files for angular, react and wc templates ([#1396](https://github.com/IgniteUI/igniteui-cli/issues/1396)) ([6a3e39d](https://github.com/IgniteUI/igniteui-cli/commit/6a3e39d41f50abe51fa7fd819961412304a31343))
+
+
+
+## 14.4.3 (2025-04-25)
+
+
+
+## 14.4.2 (2025-04-24)
+
+
+
+## 14.4.1 (2025-04-23)
+
+
+
+# 14.4.0 (2025-04-17)
+
+
+
+## 14.3.18 (2025-04-11)
+
+
+#### Bug Fixes
+
+* add missing static css files for WC ([#1385](https://github.com/IgniteUI/igniteui-cli/issues/1385)) ([95018f9](https://github.com/IgniteUI/igniteui-cli/commit/95018f93704f62af70b9c4a2e07b46554e6331a4))
+
+
+
+## 14.3.17 (2025-04-09)
+
+
+
+## 14.3.16 (2025-03-31)
+
+
+
+## 14.3.14 (2025-02-24)
+
+
+#### Bug Fixes
+
+* update eslint and fix warnings ([#1378](https://github.com/IgniteUI/igniteui-cli/issues/1378)) ([aa84345](https://github.com/IgniteUI/igniteui-cli/commit/aa84345ff21fc0fccde94063099e4c713862cde8))
+
+
+
+## 14.3.12-beta.0 (2025-01-27)
+
+
+#### Bug Fixes
+
+* **wc:** add seperate update for single or double quotes ([79ed105](https://github.com/IgniteUI/igniteui-cli/commit/79ed105cd67baf99f15e327d5f9840c3103d8018))
+* **wc:** fix iteration ([83583db](https://github.com/IgniteUI/igniteui-cli/commit/83583dbae937824e1b1f4d3f8d1ce8cc8e5589ec))
+* **wc:** fix paths in web components workflow ([6ff5999](https://github.com/IgniteUI/igniteui-cli/commit/6ff5999b782af24f09c29d4c60befb32a84fc5e0))
+
+
+
+## 14.3.11 (2025-01-24)
+
+
+#### Bug Fixes
+
+* static data paths when deploy to github pages ([#1371](https://github.com/IgniteUI/igniteui-cli/issues/1371)) ([4b40231](https://github.com/IgniteUI/igniteui-cli/commit/4b402313f4d2a2cfd80115d274514d9e5507334c))
+
+
+
+## 14.3.10 (2025-01-23)
+
+
+#### Features
+
+* increase maximum file size to cache in webComponents's vite configuration to 10 MB ([#1370](https://github.com/IgniteUI/igniteui-cli/issues/1370)) ([0a1385e](https://github.com/IgniteUI/igniteui-cli/commit/0a1385e5d1f98c8fcdf020d144f048b112b251d5))
+
+
+
+## 14.3.9 (2025-01-23)
+
+
+#### Features
+
+* enable silent mode in Vite configuration for improved build output ([#1369](https://github.com/IgniteUI/igniteui-cli/issues/1369)) ([7728300](https://github.com/IgniteUI/igniteui-cli/commit/7728300cbba7c5b15261ff2a82820432bd4b12b7))
+
+
+
+## 14.3.8 (2025-01-23)
+
+
+#### Features
+
+* replace rollup with vite configuration for wc ([#1364](https://github.com/IgniteUI/igniteui-cli/issues/1364)) ([024ee5f](https://github.com/IgniteUI/igniteui-cli/commit/024ee5f048427c5406013f1e4d051403ae255fca))
+
+
+
+## 14.3.7 (2025-01-22)
+
+
+#### Bug Fixes
+
+* **github-pages:** upgrade github pages deploy and artefact versions ([#1366](https://github.com/IgniteUI/igniteui-cli/issues/1366)) ([db6d0ea](https://github.com/IgniteUI/igniteui-cli/commit/db6d0eaef44c189cb80f10925d25595d97b7da4b))
+
+
+
+## 14.3.6 (2024-12-12)
+
+
+#### Bug Fixes
+
+* **migrations:** enable encapsulation for migrations ([#1361](https://github.com/IgniteUI/igniteui-cli/issues/1361)) ([9561a16](https://github.com/IgniteUI/igniteui-cli/commit/9561a1604a746b8a4b771627de2af4d14927e7c2))
+
+
+
+## 14.3.5 (2024-12-06)
+
+
+#### Bug Fixes
+
+* **web-components:** fix the step for updating the router navigation in github pages workflow ([#1358](https://github.com/IgniteUI/igniteui-cli/issues/1358)) ([3e0f42c](https://github.com/IgniteUI/igniteui-cli/commit/3e0f42c4fc7a75f6819f8ba85f760ac6a6d854f1))
+
+
+
+## 14.3.4 (2024-12-04)
+
+
+#### Bug Fixes
+
+* **web-components:** add step in github pages workflow to fix navigation ([#1355](https://github.com/IgniteUI/igniteui-cli/issues/1355)) ([0ca7277](https://github.com/IgniteUI/igniteui-cli/commit/0ca7277be8eaf1218af8a47f1ed7f51273499737))
+
+
+
+## 14.3.3 (2024-12-02)
+
+
+
+## 14.3.2 (2024-11-28)
+
+
+
+# 14.3.0 (2024-11-25)
+
+
+#### Features
+
+* Add pages deployment variable logic and fixes in github pages yaml files ([#1337](https://github.com/IgniteUI/igniteui-cli/issues/1337)) ([c75d9c7](https://github.com/IgniteUI/igniteui-cli/commit/c75d9c7a9d7a9244e7a9a814770809f06280529a))
+* allow reordering of array literal expressions ([#1323](https://github.com/IgniteUI/igniteui-cli/issues/1323)) ([412a2a5](https://github.com/IgniteUI/igniteui-cli/commit/412a2a585fa16fda53eb643c74af7fb4037c1412))
+
+
+
+## 14.2.3 (2024-11-15)
+
+
+
+## 14.2.2 (2024-11-08)
+
+
+#### Bug Fixes
+
+* **cli:** replace coveralls with coveralls-next ([#1336](https://github.com/IgniteUI/igniteui-cli/issues/1336)) ([4028e28](https://github.com/IgniteUI/igniteui-cli/commit/4028e28bc62da3f2232f79b60e26b9d13c93c8f9))
+
+
+
+## 14.2.1 (2024-10-28)
+
+
+
+# 14.2.0 (2024-10-25)
+
+
+
+# 14.2.0-beta.4 (2024-10-23)
+
+
+#### Bug Fixes
+
+* **cli:** add fixes in react and wc templates ([#1326](https://github.com/IgniteUI/igniteui-cli/issues/1326)) ([0430547](https://github.com/IgniteUI/igniteui-cli/commit/0430547a733c98b76aa94499516934547049b117))
+
+
+
+# 14.1.0 (2024-10-11)
+
+
+
+## 14.0.2 (2024-09-20)
+
+
+
+## 14.0.1 (2024-09-05)
+
+
+
+# 14.0.0 (2024-08-23)
+
+
+#### Bug Fixes
+
+* **eslint:** turn off no-explicit-any rule for wc ([#1288](https://github.com/IgniteUI/igniteui-cli/issues/1288)) ([1ee5b0f](https://github.com/IgniteUI/igniteui-cli/commit/1ee5b0f4ecc97a93f60b95e1615bb2a75fce9238))
+
+
+
+# 14.0.0-beta.2 (2024-07-24)
+
+
+#### Bug Fixes
+
+* **igr-ts:** add new lines in base app routes file ([#1284](https://github.com/IgniteUI/igniteui-cli/issues/1284)) ([92a14ef](https://github.com/IgniteUI/igniteui-cli/commit/92a14ef05f174bb5e5bc09978c986eb8f27e57e1))
+
+
+#### Features
+
+* **igx-templates:** add AngularTypeScriptFileUpdate ([e7f6ed3](https://github.com/IgniteUI/igniteui-cli/commit/e7f6ed3d339bb444dcdbaec4cabe5dcbff27b5ac))
+
+
+
+## 13.3.3 (2024-07-16)
+
+
+
+## 13.3.2 (2024-07-04)
+
+
+
+## 13.3.1 (2024-06-28)
+
+
+
+# 13.3.0-rc.0 (2024-05-31)
+
+
+
+## 13.2.1 (2024-05-09)
+
+
+
+# 13.2.0 (2024-04-29)
+
+
+
+# 13.2.0-rc.0 (2024-04-29)
+
+
+
+## 13.1.16 (2024-04-28)
+
+
+#### Bug Fixes
+
+* **react:** fix null type build error in main.tsx ([#1242](https://github.com/IgniteUI/igniteui-cli/issues/1242)) ([2d0b579](https://github.com/IgniteUI/igniteui-cli/commit/2d0b57999b6a22445c2e7ff494310f9e94c421ea))
+
+
+
+## 13.1.15 (2024-04-12)
+
+
+
+## 13.1.13 (2024-04-11)
+
+
+#### Bug Fixes
+
+* **cli-templetes:** Replaced index.html <title> to ApplicationTitle as placeholder ([#1237](https://github.com/IgniteUI/igniteui-cli/issues/1237)) ([d622d54](https://github.com/IgniteUI/igniteui-cli/commit/d622d54fbd3becbc514bfc971eac4c97b3346255))
+* **igr-ts:** lint ignore unused vars prefix; ts strict ([#1232](https://github.com/IgniteUI/igniteui-cli/issues/1232)) ([91e35b3](https://github.com/IgniteUI/igniteui-cli/commit/91e35b3eb060f079ff6e30bdead75af7d6b98add))
+
+
+
+## 13.1.13-beta.4 (2024-04-04)
+
+
+
+## 13.1.13-beta.3 (2024-04-04)
+
+
+#### Features
+
+* **react:** remove igniteui deps from package.json and bump versions ([841a19d](https://github.com/IgniteUI/igniteui-cli/commit/841a19d2779f4f156c48368b4fa7a20b1a181eb4))
+* **react:** turn off no-explicit-any in eslint ([ef50011](https://github.com/IgniteUI/igniteui-cli/commit/ef500113afe214e8e64dea926d6937c5e5f827df))
+
+
+
+## 13.1.12 (2024-03-21)
+
+
+#### Features
+
+* **cli:** upgrade packages for React and WC ([#1198](https://github.com/IgniteUI/igniteui-cli/issues/1198)) ([16c9b8d](https://github.com/IgniteUI/igniteui-cli/commit/16c9b8dda219ebacd473a2fad5e0c0ea70d5f320))
+
+
+
+# 13.2.0-beta.0 (2024-03-15)
+
+
+#### Bug Fixes
+
+* add elements internal polyfill to base template ([c7d2396](https://github.com/IgniteUI/igniteui-cli/commit/c7d2396572a9cd77205b8727ed81089f460403e2))
+* **Imports:** Fixed class import path in .test.ts ([#1224](https://github.com/IgniteUI/igniteui-cli/issues/1224)) ([6b3a2ef](https://github.com/IgniteUI/igniteui-cli/commit/6b3a2effef4951f0fc59e5393186eb2e69f2972b))
+* **Lint:** Fixed styles typing in style-utils ([#1222](https://github.com/IgniteUI/igniteui-cli/issues/1222)) ([6ad842a](https://github.com/IgniteUI/igniteui-cli/commit/6ad842a2bc16d50c8b29ddbca5907b80e40fd798))
+
+
+
+## 13.1.11 (2024-03-12)
+
+
+#### Bug Fixes
+
+* **react:** add editorconfig and vite-env.d.ts ([555300c](https://github.com/IgniteUI/igniteui-cli/commit/555300c38df56246cb7cc08f6b25e8ae5fd316f0))
+
+
+
+## 13.1.10 (2024-03-11)
+
+
+
+## 13.1.9 (2024-03-05)
+
+
+
+## 13.1.8 (2024-02-29)
+
+
+
+## 13.1.7 (2024-02-28)
+
+
+#### Bug Fixes
+
+* **WebComponents:** Removing an unnecessary ` from package.json ([3420292](https://github.com/IgniteUI/igniteui-cli/commit/3420292eb5752eaf76cfee1e12927d8d2749b8be))
+
+
+
+## 13.1.6 (2024-02-26)
+
+
+#### Bug Fixes
+
+* **React:** Add styles to support dark themes [#29410](https://github.com/IgniteUI/igniteui-cli/issues/29410) ([#1205](https://github.com/IgniteUI/igniteui-cli/issues/1205)) ([a191348](https://github.com/IgniteUI/igniteui-cli/commit/a191348d07317cdaac43db7bd52ee3958784ae55))
+
+
+
+## 13.1.5 (2024-01-31)
+
+
+#### Features
+
+* add style-utils file to base project ([#1195](https://github.com/IgniteUI/igniteui-cli/issues/1195)) ([112f27d](https://github.com/IgniteUI/igniteui-cli/commit/112f27ddc49d9106a182c8c7768543aa1b913164))
+
+
+
+## 13.1.3 (2024-01-17)
+
+
+#### Bug Fixes
+
+* **igr-ts:** add github workflows folder ([#1192](https://github.com/IgniteUI/igniteui-cli/issues/1192)) ([2369c55](https://github.com/IgniteUI/igniteui-cli/commit/2369c556b8f84ce6a575c73b617c7581cedf5c0f))
+* open browser on app start ([#1187](https://github.com/IgniteUI/igniteui-cli/issues/1187)) ([c4e1f5c](https://github.com/IgniteUI/igniteui-cli/commit/c4e1f5c8d65dd8729083377973a40450b4899d63))
+
+
+#### Features
+
+* **igc-ts:** bump the version to 4.7.0 and add new components ([#1189](https://github.com/IgniteUI/igniteui-cli/issues/1189)) ([e9dbfd7](https://github.com/IgniteUI/igniteui-cli/commit/e9dbfd7d6212f1b8535de6a142f6140e3848f6ef))
+
+
+
+## 13.1.1 (2023-12-14)
+
+
+#### Features
+
+* **igr-ts:** add igr-ts proj type ([#1146](https://github.com/IgniteUI/igniteui-cli/issues/1146)) ([4609525](https://github.com/IgniteUI/igniteui-cli/commit/460952505758fcf1ab9b559ed6809015f3c5d3a5)), closes [#1147](https://github.com/IgniteUI/igniteui-cli/issues/1147) [#1153](https://github.com/IgniteUI/igniteui-cli/issues/1153)
+
+
+
+## 13.0.1 (2023-11-15)
+
+
+
+# 13.0.0 (2023-11-09)
+
+
+
+# 13.0.0-rc.0 (2023-11-09)
+
+
+
+## 12.0.6-beta.2 (2023-10-02)
+
+
+
+## 12.0.5 (2023-07-18)
+
+
+#### Bug Fixes
+
+* memory allocation issue during build of webComponent app that uses igc-category-chart ([ee188bf](https://github.com/IgniteUI/igniteui-cli/commit/ee188bf4672b8ee96ac1b891cf8e334f44bb4929))
+
+
+
+## 12.0.4 (2023-07-18)
+
+
+
+## 12.0.3 (2023-06-28)
+
+
+
+## 12.0.3-beta.0 (2023-06-02)
+
+
+#### Bug Fixes
+
+* **igx:** replace DataGridSelectionMode with GridSelectionMode ([fc61052](https://github.com/IgniteUI/igniteui-cli/commit/fc61052d68f5fffbaf96c0f7c71220c39c7d5ef2))
+
+
+
+## 12.0.1 (2023-05-26)
+
+
+
+# 12.0.0 (2023-05-15)
+
+
+
+# 12.0.0-rc.0 (2023-05-15)
+
+
+#### Bug Fixes
+
+* **grid:** Adding missing packages to the grid template [#1109](https://github.com/IgniteUI/igniteui-cli/issues/1109) ([9c65afe](https://github.com/IgniteUI/igniteui-cli/commit/9c65afe228f182918c6e3f50e7cfec0466d7f7d2))
+* **web-components:** Adding packages in each template. ([674f55c](https://github.com/IgniteUI/igniteui-cli/commit/674f55c66bfa3308696cee3da1dd1d0e3ae64c0c))
+
+
+#### Features
+
+* **igx:** add base_with_home proj to igx-templates ([#1118](https://github.com/IgniteUI/igniteui-cli/issues/1118)) ([d84c431](https://github.com/IgniteUI/igniteui-cli/commit/d84c4310a03e35588626c57148091c6b224c7bc3))
+* **igx:** update to 16 ([#1120](https://github.com/IgniteUI/igniteui-cli/issues/1120)) ([e6efa40](https://github.com/IgniteUI/igniteui-cli/commit/e6efa40c2c748d2679b6be66252bc7732e51de29))
+
+
+
+## 11.1.1 (2023-04-11)
+
+
+#### Bug Fixes
+
+* **wc:** changing the function call [#1110](https://github.com/IgniteUI/igniteui-cli/issues/1110) ([#1113](https://github.com/IgniteUI/igniteui-cli/issues/1113)) ([5e4d1db](https://github.com/IgniteUI/igniteui-cli/commit/5e4d1dbdeeaa498278a7669b08031c51bfa2f367))
+
+
+
+# 11.1.0 (2023-03-28)
+
+
+
+# 11.1.0-rc.0 (2023-03-24)
+
+
+
+## 11.0.2 (2023-02-17)
+
+
+
+# 11.0.0 (2022-11-23)
+
+
+#### Features
+
+* add lint file for web components ([#1085](https://github.com/IgniteUI/igniteui-cli/issues/1085)) ([25498c0](https://github.com/IgniteUI/igniteui-cli/commit/25498c09b2bc4e5bc30c67c36008d97b342e3526))
+
+
+
+# 10.1.0-beta.13 (2022-10-27)
+
+
+
+# 10.1.0-beta.12 (2022-10-27)
+
+
+#### Features
+
+* **wc:** add npmrc to proj template ([#1079](https://github.com/IgniteUI/igniteui-cli/issues/1079)) ([af233e5](https://github.com/IgniteUI/igniteui-cli/commit/af233e53d72b615ce11e16a65ddf358645329ffb))
+
+
+
+# 10.1.0-beta.11 (2022-10-25)
+
+
+
+# 10.1.0-beta.10 (2022-10-25)
+
+
+
+# 10.1.0-beta9 (2022-10-25)
+
+
+
+# 10.1.0-beta.8 (2022-10-23)
+
+
+
+# 10.1.0-beta.7 (2022-10-19)
+
+
+
+# 10.1.0-beta.6 (2022-10-19)
+
+
+
+# 10.1.0-beta.5 (2022-10-18)
+
+
+
+# 10.1.0-beta.4 (2022-10-18)
+
+
+#### Features
+
+* provide default options when adding a template ([#1070](https://github.com/IgniteUI/igniteui-cli/issues/1070)) ([73e5c2c](https://github.com/IgniteUI/igniteui-cli/commit/73e5c2c0cc62b81384d6b4928103adf5ccf16153))
+
+
+
+# 10.1.0-beta.3 (2022-10-17)
+
+
+
+# 10.1.0-beta.2 (2022-10-14)
+
+
+
+# 10.1.0-beta.1 (2022-10-14)
+
+
+
+# 10.1.0-beta.0 (2022-10-07)
+
+
+#### Bug Fixes
+
+* **webcomponents:** set background and color to body ([b41a8b6](https://github.com/IgniteUI/igniteui-cli/commit/b41a8b66834ed46206cb14aa8bff0d6e3b99ef18))
+* **webcomponents:** set correct fallback for background color ([#1065](https://github.com/IgniteUI/igniteui-cli/issues/1065)) ([a976831](https://github.com/IgniteUI/igniteui-cli/commit/a976831228c204b015bd49773af4b5fc9767873a))
+* **webcomponents:** update app-root markup ([c717c37](https://github.com/IgniteUI/igniteui-cli/commit/c717c370cae66218eb4a7d5daaf0137da8c12d23))
+
+
+#### Features
+
+* **wc:** add base template for Web Components [#988](https://github.com/IgniteUI/igniteui-cli/issues/988) ([#1058](https://github.com/IgniteUI/igniteui-cli/issues/1058)) ([7574ab2](https://github.com/IgniteUI/igniteui-cli/commit/7574ab2b0221687a6ace6f627ec55caa3945236f))
+
+
+
+## 10.0.5 (2022-09-19)
+
+
+#### Features
+
+* **wc:** add accordion, tab & date-time-editor templates ([#1055](https://github.com/IgniteUI/igniteui-cli/issues/1055)) ([f2a631f](https://github.com/IgniteUI/igniteui-cli/commit/f2a631fcd18f529172af8e038929bf7f542e71ff))
+
+
+
+## 10.0.4-beta.0 (2022-06-30)
+
+
+
+## 10.0.2 (2022-06-29)
+
+
+
+## 10.0.1 (2022-06-17)
+
+
+
+# 9.2.0 (2022-05-26)
+
+
+
+## 9.1.4 (2022-05-20)
+
+
+
+## 9.1.3 (2022-05-19)
+
+
+
+## 9.1.2 (2022-05-16)
+
+
+
+## 9.1.1 (2022-03-18)
+
+
+
+## 9.1.1-rc.0 (2022-03-17)
+
+
+#### Bug Fixes
+
+* **wc:** address comments ([e1f804d](https://github.com/IgniteUI/igniteui-cli/commit/e1f804deada9f5fdf628ba25e122278cb9118507))
+
+
+#### Features
+
+* **ng:** update to 13.3.0 ([17553b0](https://github.com/IgniteUI/igniteui-cli/commit/17553b0da7586d14d91778417161f2a77864fd16))
+* **wc:** add new 2.1.0 components ([526da0c](https://github.com/IgniteUI/igniteui-cli/commit/526da0ce167659c9cfd3b21caf21efdcbc47e18d))
+
+
+
+# 9.1.0 (2022-03-02)
+
+
+
+# 9.1.0-rc.1 (2022-02-25)
+
+
+
+# 9.1.0-beta.0 (2022-02-22)
+
+
+#### Bug Fixes
+
+* **start:** pass in options for wc child process ([2df9e33](https://github.com/IgniteUI/igniteui-cli/commit/2df9e337e86e353d6d3dde6b53001af7af36fe12))
+
+
+#### Features
+
+* **wc:** adding empty view and refactor proj structure [#967](https://github.com/IgniteUI/igniteui-cli/issues/967) ([#979](https://github.com/IgniteUI/igniteui-cli/issues/979)) ([622a014](https://github.com/IgniteUI/igniteui-cli/commit/622a0143be1583cfb97d7b80cabbfe21e03c20eb))
+* **web-components:** use LitElement in the templates [#989](https://github.com/IgniteUI/igniteui-cli/issues/989) ([#1001](https://github.com/IgniteUI/igniteui-cli/issues/1001)) ([5d828bc](https://github.com/IgniteUI/igniteui-cli/commit/5d828bc6062e6971d82f588ebf59a6e489d87257))
+
+
+
+## 9.0.6 (2022-02-04)
+
+
+
+## 9.0.5 (2022-02-04)
+
+
+
+## 9.0.5-beta.2 (2022-02-03)
+
+
+
+## 9.0.5-beta.1 (2022-01-28)
+
+
+
+## 9.0.5-beta.0 (2021-12-20)
+
+
+
+## 9.0.4 (2021-12-15)
+
+
+
+## 9.0.3 (2021-12-13)
+
+
+#### Features
+
+* **typescript:** Add support for typescript 4.5.2 ([055ca5b](https://github.com/IgniteUI/igniteui-cli/commit/055ca5b7f8e54acdd8f3f1d6b6d7517916d852f3))
+* Update [@use](https://github.com/use) [@forward](https://github.com/forward) and hsla ([#961](https://github.com/IgniteUI/igniteui-cli/issues/961)) ([2ef8435](https://github.com/IgniteUI/igniteui-cli/commit/2ef8435816f8ff4f60c7e0cd4ed497a11fc815da))
+
+
+
+## 9.0.1 (2021-11-25)
+
+
+
+# 9.0.0 (2021-11-22)
+
+
+
+# 9.0.0-rc.3 (2021-11-22)
+
+
+
+# 9.0.0-rc.2 (2021-11-19)
+
+
+#### Bug Fixes
+
+* add igx-scrollbar class to body, [#14033](https://github.com/IgniteUI/igniteui-cli/issues/14033) ([b02ac58](https://github.com/IgniteUI/igniteui-cli/commit/b02ac5822015c6b1b1fdd4684a52a2eecb3eadd9))
+
+
+
+# 9.0.0-rc.1 (2021-11-17)
+
+
+
+# 9.0.0-rc.0 (2021-11-17)
+
+
+#### Features
+
+* **angular:** update to Angular 13 [#895](https://github.com/IgniteUI/igniteui-cli/issues/895) ([#896](https://github.com/IgniteUI/igniteui-cli/issues/896)) ([32f1721](https://github.com/IgniteUI/igniteui-cli/commit/32f17215290af3372b554f0e440e39b9b9b5040a))
+
+
+
+# 8.3.0-rc.0 (2021-11-11)
+
+
+
+# 8.3.0-beta.7 (2021-11-09)
+
+
+
+# 8.3.0-beta.6 (2021-11-09)
+
+
+
+# 8.3.0-beta.5 (2021-11-09)
+
+
+
+# 8.3.0-beta.4 (2021-11-09)
+
+
+
+# 8.3.0-beta.3 (2021-11-08)
+
+
+
+# 8.3.0-beta.2 (2021-11-08)
+
+
+
+# 8.3.0-beta.1 (2021-11-04)
+
+
+
+# 8.3.0-beta.0 (2021-11-04)
+
+
+
+## 8.2.1 (2021-10-08)
+
+
+
+## 8.2.1-rc.0 (2021-10-07)
+
+
+
+# 8.2.0 (2021-10-04)
+
+
+
+# 8.2.0-alpha.0 (2021-09-30)
+
+
+
+## 8.1.2 (2021-09-28)
+
+
+#### Bug Fixes
+
+* **igr-es6:** Underscore dot ([a0ce582](https://github.com/IgniteUI/igniteui-cli/commit/a0ce582e112a31c2c59d5532791ef07ab988335b))
+
+
+
+## 8.1.1 (2021-09-02)
+
+
+#### Bug Fixes
+
+* **custom-templates:** Refactor samples, ([1f50907](https://github.com/IgniteUI/igniteui-cli/commit/1f509070a9409c4100d3d9c6a5de2f443d04c556))
+* **ig-ts:** Free version path contains no /en ([e96c7f6](https://github.com/IgniteUI/igniteui-cli/commit/e96c7f673729a034eeb3d89f5adfe3061d6e9f0b))
+* **ig-ts:** Make use of all visible height ([ebfe5ed](https://github.com/IgniteUI/igniteui-cli/commit/ebfe5edada1fcd9d4f8e25f868f916ad2d862121))
+* **ig-ts:** Temp fix - add static FormsModule ([9341753](https://github.com/IgniteUI/igniteui-cli/commit/9341753ab6fed9597c6f30f9fb1383ad132282ab))
+* **ig-ts:** Update prod budgets ([4edd971](https://github.com/IgniteUI/igniteui-cli/commit/4edd97100f0ab2cdd7a00176992ca1da57de47ff))
+* **lint:** Fix all lint errors. ([659cc29](https://github.com/IgniteUI/igniteui-cli/commit/659cc2913f20092bd9ffc3f5a1a1f549db005912))
+* **lint:** Fix dum line lenght ([570accb](https://github.com/IgniteUI/igniteui-cli/commit/570accbaef8f74d01cecbeda0046edb1a8423ef1))
+* **lint:** Fix lint errors ([84394b9](https://github.com/IgniteUI/igniteui-cli/commit/84394b9c4c24ed9727c8719bd9e463cea09d482b))
+* **lint:** Fix lint errors. ([0477e7d](https://github.com/IgniteUI/igniteui-cli/commit/0477e7dd3d9b4731e1b3176316581d3e0339ca5e))
+* **templates:** Add file-saver package ([8c7a59d](https://github.com/IgniteUI/igniteui-cli/commit/8c7a59db381a32719cdadbf1534a387c90bb05d5))
+
+
+#### Features
+
+* **ig-ts:** Empty project is now angular project. ([83e5c6f](https://github.com/IgniteUI/igniteui-cli/commit/83e5c6f8370b0d10a349751d9b90f3f284d9ae69))
+
+
+
+# 8.1.0-rc.0 (2021-07-30)
+
+
+
+# 8.1.0-beta.1 (2021-07-30)
+
+
+
+# 8.1.0-beta.0 (2021-07-28)
+
+
+#### Features
+
+* update angular to v12.1 [#856](https://github.com/IgniteUI/igniteui-cli/issues/856) ([#857](https://github.com/IgniteUI/igniteui-cli/issues/857)) ([971822e](https://github.com/IgniteUI/igniteui-cli/commit/971822e343158bd107ef5b07bf60773509bd928c))
+
+
+
+## 8.0.3 (2021-07-14)
+
+
+
+## 8.0.2 (2021-07-07)
+
+
+
+## 8.0.2-beta.1 (2021-07-06)
+
+
+
+## 8.0.2-beta.0 (2021-07-02)
+
+
+
+## 8.0.1 (2021-07-01)
+
+
+
+# 8.0.0 (2021-05-14)
+
+
+
+# 8.0.0-rc.0 (2021-05-13)
+
+
+
+# 8.0.0-alpha.1 (2021-05-13)
+
+
+
+## 7.1.1 (2021-03-15)
+
+
+
+## 7.1.1-beta.0 (2021-03-12)
+
+
+
+# 7.1.0 (2021-02-22)
+
+
+
+# 7.1.0-beta.0 (2021-02-18)
+
+
+
+## 7.0.1 (2020-11-16)
+
+
+
+# 7.0.0 (2020-11-13)
+
+
+
+# 7.0.0-rc.2 (2020-11-12)
+
+
+
+# 7.0.0-rc.1 (2020-11-10)
+
+
+
+# 7.0.0-rc.0 (2020-11-10)
+
+
+
+# 7.0.0-alpha.0 (2020-11-10)
+
+
+
+# 6.2.0 (2020-10-20)
+
+
+
+# 6.2.0-rc.0 (2020-10-16)
+
+
+
+# 6.2.0-beta.0 (2020-10-14)
+
+
+#### Bug Fixes
+
+* **react-grid:** Add missing module [#791](https://github.com/IgniteUI/igniteui-cli/issues/791) ([#798](https://github.com/IgniteUI/igniteui-cli/issues/798)) ([68e2b81](https://github.com/IgniteUI/igniteui-cli/commit/68e2b81e297a5b4279f53e5bb9dff80126cc08b6))
+
+
+
+# 6.1.0 (2020-08-12)
+
+
+
+# 6.1.0-beta.0 (2020-08-07)
+
+
+
+# 6.1.0-alpha.0 (2020-07-09)
+
+
+
+# 6.0.0 (2020-06-25)
+
+
+
+## 5.2.1 (2020-06-25)
+
+
+
+# 6.0.0-rc.0 (2020-06-25)
+
+
+#### Features
+
+* **packages:** Bump packages to Angular 10  [#767](https://github.com/IgniteUI/igniteui-cli/issues/767) ([73a5670](https://github.com/IgniteUI/igniteui-cli/commit/73a56703ff4f4f0cc23d1da3c65cb4fbe114c9b4))
+* **packages:** Bump packages to Angular 10  [#767](https://github.com/IgniteUI/igniteui-cli/issues/767) ([f7e104e](https://github.com/IgniteUI/igniteui-cli/commit/f7e104e8ccee1692ff886259a7b7cf653de46573))
+
+
+
+# 5.2.0 (2020-06-11)
+
+
+
+## 5.1.1 (2020-06-03)
+
+
+
+# 5.1.0 (2020-06-01)
+
+
+
+# 5.1.0-beta.4 (2020-06-01)
+
+
+
+# 5.1.0-beta.3 (2020-05-29)
+
+
+
+# 5.1.0-beta.2 (2020-05-28)
+
+
+
+# 5.1.0-beta.1 (2020-05-28)
+
+
+#### Bug Fixes
+
+* **upgrade:** provide default fallback for incorrect package template ([9dd4d80](https://github.com/IgniteUI/igniteui-cli/commit/9dd4d80db6cf13d3fd7594790bcaaeec9a383b49))
+
+
+
+# 5.1.0-beta.0 (2020-05-27)
+
+
+#### Features
+
+* **commands:** Add 'upgrade-packages' command ([25db37d](https://github.com/IgniteUI/igniteui-cli/commit/25db37d0df1fa52d81501b74ab328330e7a60744))
+* **schematics:** update-package logic added ([197b94e](https://github.com/IgniteUI/igniteui-cli/commit/197b94e367d5e9a359c989beef01c6f35d7b54b5))
+* **step-by-step:** add prompt to upgrade to private feed packages, [#724](https://github.com/IgniteUI/igniteui-cli/issues/724) ([63c0c85](https://github.com/IgniteUI/igniteui-cli/commit/63c0c85639c1e5e5415c82f96a6b5cb5bbad4b99))
+
+
+
+# 5.1.0-alpha.0 (2020-05-20)
+
+
+
+## 5.0.3 (2020-05-18)
+
+
+#### Bug Fixes
+
+* **igx:** proj template error handler log instead throw, register only in prod ([270addd](https://github.com/IgniteUI/igniteui-cli/commit/270adddfdee8bb84892e768971e976e70550b2c2))
+
+
+
+## 5.0.2 (2020-05-05)
+
+
+#### Bug Fixes
+
+* **ig-ts:** correct grid features template variable [#702](https://github.com/IgniteUI/igniteui-cli/issues/702) ([3f09bd9](https://github.com/IgniteUI/igniteui-cli/commit/3f09bd9af64177162e4e450df2148e1b13b2f87f))
+* **start:** inherit all stdio, not just input [#699](https://github.com/IgniteUI/igniteui-cli/issues/699) ([1c03891](https://github.com/IgniteUI/igniteui-cli/commit/1c03891227bcdcff6dbff2005939e631737d8b7f))
+
+
+
+# 5.0.0 (2020-02-11)
+
+
+
+# 5.0.0-rc.4 (2020-02-11)
+
+
+
+# 5.0.0-rc.3 (2020-02-07)
+
+
+
+# 5.0.0-rc.2 (2020-02-07)
+
+
+#### Features
+
+* **ix-ts:** Update ig-ts projects [#647](https://github.com/IgniteUI/igniteui-cli/issues/647) ([a6204d8](https://github.com/IgniteUI/igniteui-cli/commit/a6204d80f50e885459306276f3584fac0488460b))
+
+
+
+# 5.0.0-rc.0 (2020-01-31)
+
+
+#### Bug Fixes
+
+* new project accepts lower case theme name [#600](https://github.com/IgniteUI/igniteui-cli/issues/600) ([#619](https://github.com/IgniteUI/igniteui-cli/issues/619)) ([d6eedea](https://github.com/IgniteUI/igniteui-cli/commit/d6eedea8998b07aa6312dea6fdbab66acd88303a))
+
+
+
+# 5.0.0-beta.3 (2019-12-13)
+
+
+#### Bug Fixes
+
+* **cli, schematics:** check for fileSystem on post install [#612](https://github.com/IgniteUI/igniteui-cli/issues/612) ([#613](https://github.com/IgniteUI/igniteui-cli/issues/613)) ([0a6a878](https://github.com/IgniteUI/igniteui-cli/commit/0a6a87877bfe42fb9d665ac7b7e4be3d5e72511f))
+
+
+
+# 5.0.0-beta.2 (2019-12-06)
+
+
+
+# 5.0.0-beta.1 (2019-11-28)
+
+
+
+# 5.0.0-alpha.1 (2019-10-02)
+
+
 ## [14.9.2](https://github.com/IgniteUI/igniteui-cli/compare/14.9.1...14.9.2) (2026-03-11)
 
 ### What's Changed

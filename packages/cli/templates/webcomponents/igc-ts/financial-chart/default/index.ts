@@ -11,8 +11,8 @@ class IgcFinancialChartTemplate extends IgniteUIForWebComponentsTemplate {
 		this.name = "Financial Chart";
 		this.description = "IgcFinancialChart";
 		this.packages = [
-			"igniteui-webcomponents-core@~7.0.0",
-			"igniteui-webcomponents-charts@~7.0.0"
+			"igniteui-webcomponents-core@~6.0.0",
+			"igniteui-webcomponents-charts@~6.0.0"
 		];
 	}
 }
