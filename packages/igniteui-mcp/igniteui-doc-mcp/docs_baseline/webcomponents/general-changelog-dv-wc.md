@@ -20,8 +20,8 @@ All notable changes for each version of Ignite UI for Web Components are documen
 | Bug Number | Control | Description |
 |------------|---------|-------------|
 | 3055 | IgcDataPieChart | DataPieChart - missing styling properties for the Others Slice |
-| 38668 | IgcDataTooltipLayer | TitleTextColor is overriden when chart's TitleTextColor is used |
-| 40238 | Excel | fixed Excel Formula parser - Workbook.Load() throwing a Excel.FormulaParseException|
+| 38668 | IgcDataTooltipLayer | TitleTextColor is overridden when chart's TitleTextColor is used |
+| 40238 | Excel | fixed Excel Formula parser - Workbook.Load() throwing an Excel.FormulaParseException |
 | 41167 | Excel | Object's Formulas are not round-tripped - Added Excel support for round tripping the camera tool |
 | 41419 | Excel | Saving a VBA Signed Excel file does not keep a signature/certificate. |
 
