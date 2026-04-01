@@ -276,7 +276,7 @@ $my-palette: palette(
 @include elevations($material-elevations);
 @include palette($light-material-palette);
 @include typography(
-  $font-family: "Titillium Web, sans-serif",
+  $font-family: "Roboto, sans-serif",
   $type-scale: $material-type-scale
 );
 ```
