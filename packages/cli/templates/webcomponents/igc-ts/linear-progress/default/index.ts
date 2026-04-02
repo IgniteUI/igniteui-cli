@@ -10,10 +10,7 @@ class IgcLinearProgressComponent extends IgniteUIForWebComponentsTemplate {
 		this.projectType = "igc-ts";
 		this.name = "Linear Progress";
 		this.description = "Basic Linear Progress";
-		this.packages = [
-			"igniteui-webcomponents-core@~7.0.0",
-			"igniteui-webcomponents-charts@~7.0.0"
-		];
+		this.packages = [];
 	}
 }
 module.exports = new IgcLinearProgressComponent();
