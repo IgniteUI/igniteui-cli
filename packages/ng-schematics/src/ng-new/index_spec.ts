@@ -206,10 +206,11 @@ describe("Schematics ng-new", () => {
 				commit: true,
 				message: `Initial commit for project`
 			};
-			expect(taskOptions.length).toBe(2);
+			expect(taskOptions.length).toBe(3);
 			expect(mockProject.upgradeIgniteUIPackages).toHaveBeenCalled();
 			expect(taskOptions).toContain(jasmine.objectContaining(expectedInstall));
 			expect(taskOptions).toContain(expectedInit);
+			expect(taskOptions).toContain(jasmine.objectContaining({ name: "cli-config" }));
 		});
 	});
 

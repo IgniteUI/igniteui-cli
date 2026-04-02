@@ -31,12 +31,18 @@
     },
     "cli-config": {
       "description": "Installs the needed dependencies onto the host application.",
-      "factory": "./cli-config/index"
+      "factory": "./cli-config/index",
+      "schema": "./cli-config/schema.json"
     },
     "upgrade-packages": {
       "description": "Upgrades to the licensed Ignite UI for Angular packages",
       "factory": "./upgrade-packages/index",
       "schema": "./upgrade-packages/schema.json"
+    },
+    "add-skills": {
+      "description": "Copies AI coding skills to the current project",
+      "factory": "./add-skills/index",
+      "schema": "./add-skills/schema.json"
     }
   }
 }

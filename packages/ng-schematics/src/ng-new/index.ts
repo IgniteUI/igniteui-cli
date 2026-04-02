@@ -97,11 +97,6 @@ export function newProject(options: OptionsSchema): Rule {
 					const theme = projLibrary.themes[themeIndex];
 					Util.log(`Project Name: ${options.name}, theme ${theme}`);
 
-					// project options:
-					// cache available views and components, same as in component Schematic
-					const components = projLibrary.components;
-					const views = (projLibrary as any).customTemplates;
-
 					projectOptions = {
 						projTemplate,
 						theme,
@@ -180,6 +175,13 @@ export function newProject(options: OptionsSchema): Rule {
 						[...installChain] //copy
 					);
 					installChain.push(gitTask);
+				}
+
+				if (!options.skipInstall) {
+					context.addTask(
+						new RunSchematicTask("cli-config", {}),
+						[...installChain]
+					);
 				}
 
 				if (!options.skipInstall && !nameProvided) {

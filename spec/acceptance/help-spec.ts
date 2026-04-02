@@ -16,6 +16,7 @@ describe("Help command", () => {
 		const originalHelpText: string = `Commands:
 		new [name]             creates a project
 		add [template] [name]  adds template by its ID
+		add-skills             Copies AI coding skills to the current project
 		build                  builds the project
 		start                  starts the project
 		generate               generates custom template                  [aliases: g]

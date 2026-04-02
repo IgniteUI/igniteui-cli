@@ -1,11 +1,16 @@
 import * as ts from "typescript";
 import { DependencyNotFoundException } from "@angular-devkit/core";
 import { chain, FileDoesNotExistException, Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
+import { ScopedTree } from "@angular-devkit/schematics/src/tree/scoped";
 import { addClassToBody, FormatSettings, NPM_ANGULAR, resolvePackage, TypeScriptAstTransformer, TypeScriptUtils } from "@igniteui/cli-core";
 import { AngularTypeScriptFileUpdate } from "@igniteui/angular-templates";
 import { createCliConfig } from "../utils/cli-config";
 import { setVirtual } from "../utils/NgFileSystem";
 import { addFontsToIndexHtml, getProjects, importDefaultTheme } from "../utils/theme-import";
+
+interface CliConfigOptions {
+	directory?: string;
+}
 
 function getDependencyVersion(pkg: string, tree: Tree): string {
 	const targetFile = "/package.json";
@@ -157,16 +162,18 @@ export function addAIConfig(): Rule {
 	};
 }
 
-export default function (): Rule {
-	return (tree: Tree) => {
+export default function (options: CliConfigOptions = {}): Rule {
+	return (originalTree: Tree, context: SchematicContext) => {
+		const tree = options.directory ? new ScopedTree(originalTree, options.directory) : originalTree;
 		setVirtual(tree);
-		return chain([
+		const rules: Rule[] = [
 			importStyles(),
 			addTypographyToProj(),
 			importBrowserAnimations(),
 			createCliConfig(),
 			displayVersionMismatch(),
 			addAIConfig()
-		]);
+		];
+		return chain(rules)(tree, context);
 	};
 }

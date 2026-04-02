@@ -1,0 +1,8 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "igniteui-angular-cli-config",
+  "title": "Ignite UI for Angular CLI Config Options Schema",
+  "type": "object",
+  "properties": {},
+  "required": []
+}
