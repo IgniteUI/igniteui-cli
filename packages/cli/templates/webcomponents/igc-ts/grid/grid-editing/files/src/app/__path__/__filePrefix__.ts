@@ -1,216 +1,117 @@
 import { css, html, LitElement } from 'lit';
-import { customElement } from 'lit/decorators.js';
+import { customElement, query, state } from 'lit/decorators.js';
+import { defineComponents, IgcButtonComponent, IgcCheckboxChangeEventArgs, IgcSwitchComponent } from 'igniteui-webcomponents';
 import {
-  EditModeType,
-  GridActivationMode,
-  DataGridSelectionMode,
-  IgcDataGridComponent,
-  IgcDataGridModule,
-  IgcGridCellValueChangingEventArgs,
-  IgcGridColumnOptionsModule,
-  IgcTemplateCellUpdatingEventArgs,
-  IgcTemplateColumnComponent
+  IgcGridComponent
 } from 'igniteui-webcomponents-grids';
-import { ModuleManager } from 'igniteui-webcomponents-core';
 import { DataGridSharedData } from './DataGridSharedData';
 
-ModuleManager.register(
-  IgcDataGridModule,
-  IgcGridColumnOptionsModule,
-);
+import gridThemeLightMaterial from 'igniteui-webcomponents-grids/grids/themes/light/material.css?inline';
+
+defineComponents(IgcButtonComponent, IgcGridComponent, IgcSwitchComponent);
 
 @customElement('app-$(path)')
 export default class $(ClassName) extends LitElement {
-  data: any[] = DataGridSharedData.getEmployees();
-
   static styles = css`
     :host {
       height: 100%;
       margin: 0px;
       padding-right: 20px;
       width: calc(100% - 600px);
-  }
+      --ig-size: var(--ig-size-medium);
+    }
+    .actions {
+      display: flex;
+      gap: 8px;
+      padding: 8px;
+    }
+    igc-grid img {
+      object-fit: contain;
+      height: 30px;
+    }
   `;
+
+  @state()
+  data: any[] = DataGridSharedData.getEmployees();
+
+  @query('igc-grid', true)
+  grid!: IgcGridComponent & { transactions: any };
+
+  @state()
+  private batchEditingState = {
+    canUndo: false,
+    canRedo: false,
+    hasChanges: false,
+  };
+
+  @state()
+  private rowEditMode = false;
+
+  @state()
+  private batchEditing = false;
+
+  private undoClick = () => {
+    this.grid.endEdit(true);
+    this.grid.transactions.undo();
+  }
+
+  private redoClick = () => {
+    this.grid.endEdit(true);
+    this.grid.transactions.redo();
+  }
+
+  private commitClick = () => {
+    this.grid.endEdit(true);
+    this.grid.transactions.commit(this.grid.data);
+  }
+
+  private async updateBatchEditing(active: boolean) {
+    this.batchEditing = active;
+    if (active) {
+      // await for batchEditing to apply so transactions are ready:
+      await this.updateComplete;
+      this.grid.transactions.onStateUpdate.subscribe(() => {
+        this.batchEditingState = {
+          canUndo: this.grid.transactions.canUndo,
+          canRedo: this.grid.transactions.canRedo,
+          hasChanges: this.grid.transactions.getAggregatedChanges(false).length > 0
+        };
+      });
+    }
+  }
 
   render() {
     return html`
-    <div class="container sample">
-    <div class="options horizontal">
-      <button id="commitClick" disabled="true">Commit</button>
-      <button id="undoClick" disabled="true">Undo</button>
-      <button id="redoClick" disabled="true">Redo</button>
-        <span class="options-label">Edit Mode: </span>
-        <select id="editModeDropBox" class="options-label">
-          <option>Cell</option>
-          <option>CellBatch</option>
-          <option>Row</option>
-          <option>None</option>
-        </select>
-      <label id="excel-style-editing" >Excel Style</label>
-      <span class="options-label">Edit Mode: </span>
-        <select id="editModeClickActionDropBox" class="options-label">
-          <option>SingleClick</option>
-          <option>DoubleClick</option>
-        </select>
+    <style>${gridThemeLightMaterial}</style>
+    <div class="actions">
+      <igc-switch @igcChange=${(e: CustomEvent<IgcCheckboxChangeEventArgs>) => this.rowEditMode = e.detail.checked}>
+        Row Edit Mode
+      </igc-switch>
+      <igc-switch @igcChange=${(e: CustomEvent<IgcCheckboxChangeEventArgs>) => this.updateBatchEditing(e.detail.checked)}>
+        Batch Editing
+      </igc-switch>
+      <igc-button @click=${this.commitClick} ?disabled=${!this.batchEditingState.hasChanges}>Commit</igc-button>
+      <igc-button @click=${this.undoClick} ?disabled=${!this.batchEditingState.canUndo}>Undo</igc-button>
+      <igc-button @click=${this.redoClick} ?disabled=${!this.batchEditingState.canRedo}>Redo</igc-button>
     </div>
 
-    <igc-data-grid
-        id="grid"
-        height="calc(100% - 3.5rem)"
-        width="100%"
-        activation-mode="Cell"
-        selection-mode="SingleCell"
-        default-column-min-width="125"
-        is-column-options-enabled="true"
-        auto-generate-columns="false"
-        edit-mode-click-action="SingleClick"
-        edit-mode="Cell">
-
-        <igc-text-column field="Name" width="*>150"></igc-text-column>
-        <igc-text-column field="Street" header-text="Street" width="*>155"></igc-text-column>
-        <igc-text-column field="City" header-text="City" width="*>125"></igc-text-column>
-        <igc-numeric-column field="Salary" header-text="Salary" positive-prefix="$" show-grouping-separator="true"></igc-numeric-column>
-
-        <igc-image-column field="Photo" header-text="Photo" content-opacity="1"
-        horizontal-alignment="center"  width="*>90"></igc-image-column>
-        <igc-date-time-column field="Birthday" header-text="Date of Birth" width="*>140"></igc-date-time-column>
-        <igc-template-column id="deleteRowColumn" field="Delete Row" header-text="Delete Row" width="*>140" is-column-options-enabled="false" ></igc-date-time-column>
-      </igc-data-grid>
-    </div>
+    <igc-grid
+      class="ig-typography"
+      .data=${this.data}
+      primary-key="ID"
+      .batchEditing=${this.batchEditing}
+      .rowEditable=${this.rowEditMode}
+    >
+      <igc-column field="Name" editable width="150px"></igc-column>
+      <igc-column field="Street" header="Street" editable width="155px"></igc-column>
+      <igc-column field="City" header="City" editable width="125px"></igc-column>
+      <igc-column field="Salary" header="Salary" data-type="currency" editable></igc-column>
+      <igc-column field="Photo" header="Photo" data-type="image" editable width="90px"></igc-column>
+      <igc-column field="Birthday" header="Date of Birth" data-type="date" editable></igc-column>
+      <igc-action-strip>
+        <igc-grid-editing-actions></igc-grid-editing-actions>
+    </igc-action-strip>
+    </igc-grid>
   `;
-  }
-
-  firstUpdated() {
-    const grid = this.shadowRoot?.getElementById('grid') as IgcDataGridComponent;
-    const commitButton = this.shadowRoot?.getElementById('commitClick') as HTMLButtonElement;
-    const undoButton = this.shadowRoot?.getElementById('undoClick') as HTMLButtonElement;
-    const redoButton = this.shadowRoot?.getElementById('redoClick') as HTMLButtonElement;
-
-    const onCommitClick = () => {
-      grid.commitEdits();
-      commitButton.disabled = true;
-      undoButton.disabled = !grid.canUndo;
-    };
-
-    const onUndoClick = () => {
-      grid.undo();
-      undoButton.disabled = !grid.canUndo;
-      if (!grid.canUndo) {
-        commitButton.disabled = grid.canCommit;
-      } else {
-        commitButton.disabled = !grid.canCommit;
-      }
-
-      redoButton.disabled = !grid.canRedo;
-    };
-
-    const onRedoClick = () => {
-      grid.redo();
-
-      if (grid.editMode === EditModeType.Cell || grid.editMode === EditModeType.None) {
-        commitButton.disabled = !grid.canCommit;
-      }
-      if (grid.editMode === EditModeType.CellBatch || grid.editMode === EditModeType.Row) {
-        redoButton.disabled = !grid.canRedo;
-        undoButton.disabled = !grid.canUndo;
-        if (!grid.canUndo) {
-          commitButton.disabled = grid.canCommit;
-        } else {
-          commitButton.disabled = !grid.canCommit;
-        }
-      }
-    };
-
-    if (commitButton !== null) {
-      commitButton.onclick = onCommitClick;
-    }
-    if (undoButton !== null) {
-      undoButton.onclick = onUndoClick;
-    }
-
-    if (redoButton !== null) {
-      redoButton.onclick = onRedoClick;
-    }
-
-    const onDeleteRowClick = (e: MouseEvent) => {
-      const button = e.srcElement as HTMLButtonElement;
-      const viewIndex = parseInt(button.id, 10);
-      const rowItem = grid.actualDataSource.getItemAtIndex(viewIndex);
-
-      if (grid.editMode === EditModeType.CellBatch || grid.editMode === EditModeType.Row) {
-        grid.removeItem(rowItem);
-        commitButton.disabled = !grid.canCommit;
-        redoButton.disabled = !grid.canRedo;
-        undoButton.disabled = !grid.canUndo;
-      } else if (grid.editMode === EditModeType.Cell) {
-        // delete grid row immediately
-        grid.removeItem(rowItem);
-      }
-    };
-
-    const onDeleteCellUpdating = (s: IgcTemplateColumnComponent,
-      e: IgcTemplateCellUpdatingEventArgs) => {
-      const content = e.content as HTMLDivElement;
-      if (content.childElementCount === 0) {
-        const button = document.createElement('button') as HTMLButtonElement;
-        button.innerText = 'Delete';
-        button.onclick = onDeleteRowClick;
-        content.appendChild(button);
-      }
-
-      const button = content.children[0] as HTMLButtonElement;
-      button.disabled = e.cellInfo.isDeleted;
-      button.id = e.cellInfo.dataRow.toString();
-    };
-
-    const editModeChanged = (event: any) => {
-      grid.cancelEdits();
-      grid.editMode = event.target.value;
-      if (grid.editMode === EditModeType.None || grid.editMode === EditModeType.Cell) {
-        commitButton.disabled = true;
-        undoButton.disabled = !grid.canUndo;
-        redoButton.disabled = !grid.canRedo;
-      }
-    };
-
-    const editModeClickActionChanged = (event: any) => {
-      grid.editModeClickAction = event.target.value;
-    };
-
-    const onCellValueChanging = (s: IgcDataGridComponent, e: IgcGridCellValueChangingEventArgs) => {
-      if (s.editMode === EditModeType.CellBatch || grid.editMode === EditModeType.Row) {
-        commitButton.disabled = !grid.canCommit;
-        undoButton.disabled = false;
-      } else if (grid.editMode === EditModeType.Cell || grid.editMode === EditModeType.None) {
-        commitButton.disabled = grid.canCommit;
-      }
-      if (e.newValue === '') {
-        commitButton.disabled = true;
-        s.setEditError(e.editID, 'Error, cell is empty');
-      }
-    };
-
-    if (grid !== null) {
-      grid.dataSource = this.data;
-      grid.activationMode = GridActivationMode.Cell;
-      grid.selectionMode = DataGridSelectionMode.SingleCell;
-      grid.editMode = EditModeType.Cell;
-      grid.cellValueChanging = onCellValueChanging;
-    }
-
-    const dropDown = this.shadowRoot?.getElementById('editModeDropBox');
-    if (dropDown !== null) {
-      dropDown!.onchange = editModeChanged;
-    }
-
-    const dropDown2 = this.shadowRoot?.getElementById('editModeClickActionDropBox');
-    if (dropDown2 !== null) {
-      dropDown2!.onchange = editModeClickActionChanged;
-    }
-
-    const deleteRowColumn = this.shadowRoot?.getElementById('deleteRowColumn') as IgcTemplateColumnComponent;
-    if (deleteRowColumn !== null) {
-      deleteRowColumn.cellUpdating = onDeleteCellUpdating;
-    }
   }
 }

@@ -1,6 +1,6 @@
 {
   "servers": {
-    "igniteui": {
+    "igniteui-cli": {
       "command": "npx",
       "args": ["-y", "igniteui-cli@next", "mcp"]
     },
