@@ -13,16 +13,12 @@ _premium: true
 
 In scenarios where the pivot data is already grouped and aggregated from a remote service and there's no need for further processing on the client, the pivot grid can be configured to use a custom empty strategy that will skip data processing on the client and allow it to directly display the data as is:
 
-<!-- WebComponents -->
-
 ```typescript
 public pivotConfigHierarchy: IgcPivotConfiguration = {
     columnStrategy: IgcNoopPivotDimensionsStrategy.instance(),
     rowStrategy: IgcNoopPivotDimensionsStrategy.instance(),
 }
 ```
-
-<!-- end: WebComponents -->
 
 The following example show how to handle scenarios, where the data is already aggregated and how its structure should look like: ```typescript
 export class PivotNoopData extends Array<any> {
@@ -198,8 +194,6 @@ export const   = {
 
 Setting `NoopPivotDimensionsStrategy` for the [`columnStrategy`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotconfiguration.html#columnStrategy) and [`rowStrategy`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotconfiguration.html#rowStrategy) skips the data grouping and aggregation done by the data pipes, but the pivot grid still needs declarations for the rows, columns, values and filters in order to render the pivot view as expected:
 
-<!-- WebComponents -->
-
 ```typescript
 public pivotConfig: IgcPivotConfiguration = {
     rows: [
@@ -237,20 +231,14 @@ public pivotConfig: IgcPivotConfiguration = {
 }
 ```
 
-<!-- end: WebComponents -->
-
 It is important for the data to match the configuration. For the best results no additional fields should be included into the aggregated data and no fields from the provided data should be left undeclared as rows or columns. The [`IgcPivotGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotgridcomponent.html) component builds its data based on the [`pivotConfiguration`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotgridcomponent.html#pivotConfiguration) and it is expected for the configuration and aggregated data to match accordingly.
 
 Similarly for other remote data operations like sorting and filtering, data processing can be skipped by setting the related empty strategies - [`filterStrategy`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#filterStrategy), [`sortStrategy`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#sortStrategy):
-
-<!-- WebComponents -->
 
 ```html
 <igc-pivot-grid filter-strategy="noopFilterStrategy" sort-strategy="noopSortStrategy">
 </igc-pivot-grid>
 ```
-
-<!-- end: WebComponents -->
 
 ```typescript
 public noopFilterStrategy = NoopFilteringStrategy.instance();

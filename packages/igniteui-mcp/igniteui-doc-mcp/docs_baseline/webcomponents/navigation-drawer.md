@@ -32,13 +32,13 @@ igc-icon-button::part(icon) {
 
 ## Usage
 
-<!-- WebComponents -->
-
 First, you need to install the Ignite UI for Web Components by running the following command:
 
 ```cmd
 npm install igniteui-webcomponents
 ```
+
+Before using the [`IgcNavDrawerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcnavdrawercomponent.html), you need to register it as follows:
 
 ```ts
 import { defineComponents, IgcNavDrawerComponent } from 'igniteui-webcomponents';

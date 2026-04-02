@@ -13,11 +13,7 @@ _premium: true
 
 The Ignite UI for React Data Table / Data Grid supports accessibility and screen readers that interpret keyboard navigation interactions through the cells and columns of the grid.
 
-<!-- React, WebComponents -->
-
 This is activated by setting the [`useAccessibility`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_grids.igrdatagrid.html#useAccessibility) property of the grid to **true**.
-
-<!-- end: React, WebComponents -->
 
 ## React Grid Accessible Example
 

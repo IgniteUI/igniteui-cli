@@ -123,8 +123,6 @@ public class CountryRenewableElectricity
 
 ## Dependencies
 
-<!-- Blazor -->
-
 Add the **IgniteUI.Blazor.Controls** namespace in the **\_Imports.razor** file:
 
 ```razor
@@ -152,8 +150,6 @@ You will also need to link an additional CSS file to apply the styling to the [`
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
 ```
-
-<!-- end: Blazor -->
 
 ## Usage
 

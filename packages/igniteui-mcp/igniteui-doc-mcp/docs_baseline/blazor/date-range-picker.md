@@ -40,8 +40,6 @@ Below is a sample demonstrating the [`IgbDateRangePicker`](https://www.infragist
 
 ### Getting Started
 
-<!-- Blazor -->
-
 To get started with the [`IgbDateRangePicker`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html) component, first we need to register its module as follows:
 
 ```razor
@@ -55,8 +53,6 @@ You will also need to link an additional CSS file to apply the styling to the [`
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
 ```
-
-<!-- end: Blazor -->
 
 Now you can start with a basic configuration of the Blazor [`IgbDateRangePicker`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html).
 

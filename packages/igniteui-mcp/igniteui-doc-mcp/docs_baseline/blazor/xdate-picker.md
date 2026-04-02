@@ -11,7 +11,7 @@ _premium: true
 
 The XDate Picker component allows users to use a drop-down calendar UI allowing the intuitive selection of a day, month and year. This can be helpful when an application user needs to select specific dates, and multiple editors can be combined to create a date-range UI.
 
-> \[!WARNING]
+> [!WARNING]
 > The `XDatePicker` component is deprecated from version  of Ignite UI for Blazor. For the latest supported Ignite UI for Blazor Date Picker component refer to its respective page under "Scheduling".
 
 ## Blazor XDate Picker Example

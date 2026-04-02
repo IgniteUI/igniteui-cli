@@ -25,8 +25,6 @@ The following sample demonstrates how setting multiple properties on the same [`
 
 <div class="divider--half"></div>
 
-<!-- Angular, React, WebComponents -->
-
 ## Dependencies
 
 When installing the gauge component, the core package must also be installed.
@@ -35,8 +33,6 @@ When installing the gauge component, the core package must also be installed.
 npm install --save igniteui-webcomponents-core
 npm install --save igniteui-webcomponents-gauges
 ```
-
-<!-- end: Angular, React, WebComponents -->
 
 ## Component Modules
 

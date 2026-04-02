@@ -30,8 +30,6 @@ The Ignite UI for Web Components Circular Progress Indicator component provides 
 
 ## Usage
 
-<!-- WebComponents -->
-
 First, you need to install the Ignite UI for Web Components by running the following command:
 
 ```cmd
@@ -48,8 +46,6 @@ defineComponents(IgcCircularProgressComponent);
 ```
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
-
-<!-- end: WebComponents -->
 
 The simplest way to start using the [`IgcCircularProgressComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccircularprogresscomponent.html) is as follows:
 
@@ -122,7 +118,7 @@ Customizing the progress bar in order to use a color gradient instead of a solid
 ```
 
 
-> \[!Note]
+> [!Note]
 > For each [`IgcCircularGradientComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccirculargradientcomponent.html) defined as gradient slot of Ignite UI for Web Components [`IgcCircularProgressComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccircularprogresscomponent.html) a [SVG stop](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/stop) element would be created. The values passed as `color`, `offset` and `opacity` would be set as stop-color, offset and stop-opacity of the SVG element without further validations.
 
 ```html

@@ -188,11 +188,7 @@ The locale can be set in several ways, either globally or per component.
 
 ### Global API
 
-<!-- React -->
-
 You can set the locale that will be used globally using the `setCurrentI18n` method, available from the [`igniteui-react`](https://www.npmjs.com/package/igniteui-react) or [`igniteui-react-grids`](http://npmjs.com/package/igniteui-react-grids) package. All types and APIs can be imported from either package. It affects both formatting and the registered resource strings used in all components. For more on resource strings, see [Localized resource strings](#localized-resource-strings).
-
-<!-- end: React -->
 
 ```ts
 setCurrentI18n('de');
@@ -303,11 +299,11 @@ All Ignite UI for React components render in English by default and can be rende
 
 The translations for the component strings are stored in resource strings and need to be registered in the localization system before the components can use them.
 
-<!-- WebComponents, React -->
-
 To achieve that, you first need to install the [`igniteui-i18n-resources`](https://www.npmjs.com/package/igniteui-i18n-resources) package, which contains the localized resource strings for all languages:
 
-    npm install igniteui-i18n-resources --save-dev
+```
+npm install igniteui-i18n-resources --save-dev
+```
 
 After that, register each language to be made available. For example, German and Japanese:
 
@@ -317,8 +313,6 @@ import { ResourceStringsDE, ResourceStringsJA } from 'igniteui-i18n-resources';
 registerI18n(ResourceStringsDE, 'de');
 registerI18n(ResourceStringsJA, 'ja');
 ```
-
-<!-- end: WebComponents, React -->
 
 You also need to specify the locale to which the resource strings will apply. If an invalid tag is provided, the resources are set for the default `en-US` locale.
 
@@ -338,8 +332,6 @@ If Ignite UI for React does not provide resource strings for the required langua
 
 > Note: Contributions to the [`igniteui-i18n-resources`](https://github.com/IgniteUI/igniteui-i18n/tree/master/projects/igniteui-i18n-resources) GitHub repo with additional languages are welcome.
 
-<!-- React -->
-
 You can use the provided `IResourceStrings` type for all components to get typings for the resource strings used:
 
 ```tsx
@@ -351,11 +343,7 @@ export const customResourcesForAll: IResourceStrings = {
 registerI18n(customResourcesForAll, 'custom');
 ```
 
-<!-- end: React -->
-
 Or for a specific component separately, in this case the grids:
-
-<!-- React -->
 
 ```tsx
 import { IGridResourceStrings } from 'igniteui-react';
@@ -369,10 +357,6 @@ export const customGridResources: IGridResourceStrings = {
 };
 
 ```
-
-<!-- end: React -->
-
-<!-- React -->
 
 The existing resource strings can be mixed with custom strings in any combination, including for the default English language:
 
@@ -393,8 +377,6 @@ export const customResources: IResourceStrings = Object.assign(
 registerI18n(customResources, 'en');
 
 ```
-
-<!-- end: React -->
 
 > Note: The last examples set only specific resource strings. The remaining strings default to English if they are not available for the components in use.
 

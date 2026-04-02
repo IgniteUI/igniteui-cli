@@ -17,8 +17,6 @@ To enable a theme, a theme file should be loaded. Depending on your project conf
 
 Here's the complete list of all bundled themes and their path:
 
-<!-- WebComponents -->
-
 | Name        | Variant | Location                                          |
 | ----------- | ------- | ------------------------------------------------- |
 | **Bootstrap*- | Light   | igniteui-webcomponents/themes/light/bootstrap.css |
@@ -32,7 +30,7 @@ Here's the complete list of all bundled themes and their path:
 
 ## Runtime Theme Switching
 
-> \[!Note]
+> [!Note]
 > Changing the theme at runtime also requires you to replace the global stylesheet from the table above.
 
 Ignite UI for Web Components allows you to switch the component themes at runtime by using the `ConfigureTheme` function exported by the library.
@@ -46,10 +44,8 @@ import { configureTheme } from "igniteui-webcomponents";
 configureTheme("material");
 ```
 
-> \[!Note]
+> [!Note]
 > This only tells components to switch their internal styles to the desired theme, you should also switch the global theme file to one of the listed files above.
-
-<!-- end: WebComponents -->
 
 ## API References
 

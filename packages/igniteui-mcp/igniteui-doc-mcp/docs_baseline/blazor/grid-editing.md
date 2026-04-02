@@ -245,8 +245,6 @@ igRegisterScript("SortingHandler", SortingHandler, false);
 
 ## Additional Resources
 
-<!-- Blazor -->
-
 <!-- ComponentStart: Grid -->
 
 - [Column Data Types](column-types.md#default-template)
@@ -261,5 +259,3 @@ igRegisterScript("SortingHandler", SortingHandler, false);
 - [Searching](search.md)
 
 <!-- ComponentEnd: Grid -->
-
-<!-- end: Blazor -->

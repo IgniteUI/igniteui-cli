@@ -59,8 +59,6 @@ root.render(<SimpleCircularProgressIndicator/>);
 
 ## Usage
 
-<!-- React -->
-
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
 
 ```cmd
@@ -74,6 +72,8 @@ import { IgrCircularProgressModule, IgrCircularProgress } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 IgrCircularProgressModule.register();
 ```
+
+The simplest way to start using the [`IgrCircularProgress`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcircularprogress.html) is as follows:
 
 ```tsx
 <IgrCircularProgress value="100"></IgrCircularProgress>
@@ -242,7 +242,7 @@ root.render(<DynamicCircularProgress/>);
 ```
 
 
-> \[!Note]
+> [!Note]
 > For each [`IgrCircularGradient`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcirculargradient.html) defined as gradient slot of Ignite UI for React [`IgrCircularProgress`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcircularprogress.html) a [SVG stop](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/stop) element would be created. The values passed as `color`, `offset` and `opacity` would be set as stop-color, offset and stop-opacity of the SVG element without further validations.
 
 ```tsx

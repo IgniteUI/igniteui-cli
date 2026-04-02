@@ -27,8 +27,6 @@ They are added inside the [`IgrTreeGrid`](https://www.infragistics.com/products/
 
 <!-- ComponentEnd: TreeGrid -->
 
-<!-- React -->
-
 <!-- ComponentStart: TreeGrid -->
 
 ```tsx
@@ -44,9 +42,7 @@ They are added inside the [`IgrTreeGrid`](https://www.infragistics.com/products/
 
 <!-- ComponentEnd: TreeGrid -->
 
-<!-- end: React -->
-
-> \[!Note]
+> [!Note]
 > When `ActionStripComponent` is a child component of the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html), hovering a row will automatically show the UI.
 
 ## Custom Implementation
@@ -54,8 +50,6 @@ They are added inside the [`IgrTreeGrid`](https://www.infragistics.com/products/
 These components expose templates giving flexibility for customization. For instance, if we would like to use the [`IgrActionStrip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igractionstrip.html) for a Gmail scenario with row actions such as **delete**, **edit** and etc. You can simply create button component with icon, add click event to it and insert it into the [`IgrActionStrip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igractionstrip.html).
 
 <!-- ComponentEnd: Grid, TreeGrid -->
-
-<!-- React -->
 
 <!-- ComponentStart: Grid, TreeGrid -->
 
@@ -69,8 +63,6 @@ These components expose templates giving flexibility for customization. For inst
 ```
 
 <!-- ComponentEnd: Grid, TreeGrid -->
-
-<!-- end: React -->
 
 ```typescript
 export class EmployeesFlatDetailsItem {

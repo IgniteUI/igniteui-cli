@@ -30,8 +30,6 @@ igc-switch {
 
 ## Getting Started with Web Components Stepper
 
-<!-- WebComponents -->
-
 First, you need to install the Ignite UI for Web Components by running the following command:
 
 ```cmd
@@ -89,7 +87,7 @@ Steps can be declared using one of the following approaches.
 
 For each step the user has the ability to configure indicator, title and subtitle using the `Indicator`, `Title` and `Subtitle` slots as follows:
 
-> \[!Note]
+> [!Note]
 > The `Default` [`IgcStepComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcstepcomponent.html) slot renders the content of the step.
 
 ```html
@@ -181,7 +179,7 @@ When the linear property is set to **true**, the stepper will require the curren
 
 If the current non-optional step is not valid you cannot go forward to the next step until you validate the current one.
 
-> \[!Note]
+> [!Note]
 > Optional steps validity is not taken into account in order to move forward.
 
 ### Step Interactions
@@ -193,7 +191,7 @@ If the current non-optional step is not valid you cannot go forward to the next 
 - **prev** – activates the previous non-disabled step.
 - **reset** – resets the stepper to its initial state.
 
-> \[!Note]
+> [!Note]
 > The reset method would reset the stepper to its initial state, i.e. activates the first step. It would not clear the step\`s content. This should be done manually.
 
 ### Customizing the Steps
@@ -223,7 +221,7 @@ When the Web Components [`IgcStepperComponent`](https://www.infragistics.com/pro
 
 When the orientation is set to vertical and the title position **is not defined**, the titles would be displayed **after** the indicators.
 
-> \[!Note]
+> [!Note]
 > **titlePosition** property is applicable **only** when the stepper stepType property is set to **full**.
 
 **indicator**
@@ -238,7 +236,7 @@ If you want to display only titles for the steps, set the stepType option to **t
 
 In this way if subtitles are defined, they will also be rendered below the step title.
 
-> \[!Note]
+> [!Note]
 > This container could be re-templated as per your requirement without any size restrictions. For example, you could add an indicator with size greater than 24 pixels inside it.
 
 The sample below demonstrates all exposed step types and how they could be changed:
@@ -349,8 +347,6 @@ igc-step::part(indicator) {
 }
 ```
 
-<!-- WebComponents -->
-
 ```css
 :root {
   --color-teal: rgba(77, 182, 172, 1);
@@ -411,8 +407,6 @@ igc-step[active]:active::part(indicator) {
 }
 ```
 
-
-<!-- end: WebComponents -->
 
 <div class="divider--half"></div>
 

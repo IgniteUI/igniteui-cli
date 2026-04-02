@@ -340,8 +340,6 @@ root.render(<ExcelLibraryUsingWorksheets/>);
 
 <div class="divider--half"></div>
 
-<!-- Angular, React, WebComponents -->
-
 The following code shows the imports needed to use the code-snippets below:
 
 ```ts
@@ -358,8 +356,6 @@ import { RelativeIndex } from "igniteui-react-excel";
 import { SortDirection } from "igniteui-react-excel";
 import { WorkbookColorInfo } from "igniteui-react-excel";
 ```
-
-<!-- end: Angular, React, WebComponents -->
 
 ## Configuring the Gridlines
 

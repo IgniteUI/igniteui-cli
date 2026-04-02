@@ -189,7 +189,7 @@ You can exit edit mode and **commit** the changes in one of the following ways:
 - on single click to another cell - when you click on another cell in the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html), your changes will be submitted.
 - operations like paging, resize, pin or move will exit edit mode and changes will be submitted.
 
-> \[!Note]
+> [!Note]
 > The cell remains in edit mode when you scroll vertically or horizontally or click outside the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html). This is valid for both cell editing and row editing.
 
 ### Editing through API
@@ -223,13 +223,7 @@ Another way to update cell is directly through [`Update`](https://www.infragisti
 
 You can see and learn more for default cell editing templates in the [general editing topic](editing.md#editing-templates).
 
-<!-- Blazor, WebComponents -->
-
 If you want to provide a custom template which will be applied to a cell, you can pass such template either to the cell itself, or to its header. First create the column as you usually would:
-
-<!-- end: Blazor, WebComponents -->
-
-<!-- Blazor -->
 
 <!-- ComponentStart: Grid -->
 
@@ -269,8 +263,6 @@ igRegisterScript("WebGridCellEditCellTemplate", (ctx) => {
 </div>`;
 }, false);
 ```
-
-<!-- end: Blazor -->
 
 Working sample of the above can be found here for further reference:
 
@@ -412,12 +404,8 @@ Please check the full sample for further reference:
 
 #### Blazor Grid Excel Style Editing Sample
 
-<!-- WebComponents, Blazor -->
 
 
-
-
-<!-- end: WebComponents, Blazor -->
 
 Main benefits of the above approach include:
 
@@ -428,7 +416,7 @@ Main benefits of the above approach include:
 
 ## CRUD operations
 
-> \[!Note]
+> [!Note]
 > Please keep in mind that when you perform some **CRUD operation** all of the applied pipes like **filtering**, **sorting** and **grouping** will be re-applied and your view will be automatically updated.
 
 The [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) provides a straightforward API for basic CRUD operations.
@@ -498,15 +486,11 @@ In this example, we'll validate a cell based on the data entered in it by bindin
 
 The first thing we need to do is bind to the grid's event:
 
-<!-- Blazor, WebComponents -->
-
 ```razor
 <IgbGrid CellEditScript="HandleCellEdit" />
 ```
 
 <!-- ComponentEnd: Grid -->
-
-<!-- end: Blazor, WebComponents -->
 
 The `CellEdit` emits whenever **any** cell's value is about to be committed. In our **CellEdit** definition, we need to make sure that we check for our specific column before taking any action:
 
@@ -529,11 +513,7 @@ If the value entered in a cell under the **Units On Order** column is larger tha
 
 <!-- ComponentEnd: Grid -->
 
-<!-- Blazor -->
-
 If the value entered in a cell under the **Age** column is below 18 or the value in the **HireDate** column is in the future, the editing will be cancelled and the user will be alerted to the cancellation.
-
-<!-- end: Blazor -->
 
 <!-- ComponentEnd: TreeGrid -->
 
@@ -652,8 +632,6 @@ public class NwindData
 
 
 ## Styling
-
-<!-- WebComponents, Blazor, React -->
 
 In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
@@ -813,8 +791,6 @@ public class NwindData
 ```
 
 
-<!-- end: WebComponents, Blazor, React -->
-
 ## API References
 
 - [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html)
@@ -824,8 +800,6 @@ public class NwindData
 - [`IgbDatePicker`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDatePicker.html)
 
 ## Additional Resources
-
-<!-- Blazor, WebComponents, React -->
 
 <!-- ComponentStart: Grid -->
 
@@ -840,5 +814,3 @@ public class NwindData
 - [Searching](search.md)
 
 <!-- ComponentEnd: Grid -->
-
-<!-- end: Blazor, WebComponents, React -->

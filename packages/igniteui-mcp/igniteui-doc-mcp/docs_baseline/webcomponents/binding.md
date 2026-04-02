@@ -10,19 +10,13 @@ _tocName: Data Binding
 
 # Web Components Grid Lite Data Binding
 
-<!-- React, WebComponents -->
-
 The Grid Lite accepts an array of plain objects as a data source. Each grid row is the rendered representation of a data record in the array with row cells being controlled by the column configuration.
-
-<!-- end: React, WebComponents -->
 
 When applying data transformations, such as sorting and filtering, the grid does not modify the original data reference. That is to say, data transformations will not be reflected in the original source. The grid does not track changes to the objects inside the data array, so direct modification of the data objects will not be reflected.
 
 ## Change the Data Source at Runtime
 
 The component supports changing its data source at runtime. If the new source has a different "shape" than the previous one make sure to update your column configuration as well.
-
-<!-- WebComponents -->
 
 ```typescript
 grid.data = [...{
@@ -37,13 +31,7 @@ grid.data = [...{
 </igc-grid-lite>
 ```
 
-<!-- React, WebComponents -->
-
-If the grid has `autoGenerate` enabled, it will "*infer*" the new column configuration automatically when the data changes.
-
-<!-- end: React, WebComponents -->
-
-<!-- WebComponents -->
+If the grid has `autoGenerate` enabled, it will "_infer_" the new column configuration automatically when the data changes.
 
 ```typescript
 grid.autoGenerate = true;
@@ -52,15 +40,9 @@ grid.autoGenerate = true;
 grid.data = [];
 ```
 
-<!-- end: WebComponents -->
-
-<!-- React, WebComponents -->
-
-> \[!NOTE]
+> [!NOTE]
 > The sort/filter states of the Grid Lite are kept when changing the data source in this manner.
 > Usually you will want to reset them by calling either `clearSort()` and/or `clearFilter()`.
-
-<!-- end: React, WebComponents -->
 
 In the sample below, the grid has column auto-generation enabled. When you click on the switch data button,
 the column collection is reset, and a new data source is bound to the grid.

@@ -169,8 +169,6 @@ root.render(<Sample/>);
 
 Column pinning is controlled through the [`pinned`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#pinned) property of the [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html). Pinned columns are rendered on the left side of the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) by default and stay fixed through horizontal scrolling of the unpinned columns in the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) body.
 
-<!-- React -->
-
 ```tsx
 <IgrTreeGrid data={nwindData} autoGenerate={false}>
     <IgrColumn field="Name" pinned={true}></IgrColumn>
@@ -178,8 +176,6 @@ Column pinning is controlled through the [`pinned`](https://www.infragistics.com
     <IgrColumn field="Title"></IgrColumn>
 </IgrTreeGrid>
 ```
-
-<!-- end: React -->
 
 <!-- ComponentEnd: TreeGrid -->
 
@@ -202,8 +198,6 @@ A column is pinned to the right of the rightmost pinned column. Changing the ord
 
 <!-- end: Angular, React, WebComponents, React -->
 
-<!-- React -->
-
 ```typescript
 const columnPinning = (event: IgrPinColumnCancellableEventArgs) = {
     if (event.detail.column.field === 'Name') {
@@ -216,8 +210,6 @@ const columnPinning = (event: IgrPinColumnCancellableEventArgs) = {
 
 You can change the column pinning position via the [`pinning`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#pinning) configuration option. It allows you to set the columns position to either Start or End.
 When set to End the columns are rendered at the end of the grid, after the unpinned columns. Unpinned columns can be scrolled horizontally, while the pinned columns remain fixed on the right.
-
-<!-- React -->
 
 ```typescript
 const pinningConfig: IgrPinningConfig = { columns: ColumnPinningPosition.End };
@@ -420,8 +412,6 @@ root.render(<Sample/>);
 ```
 
 
-<!-- React, WebComponents, Blazor -->
-
 ### Column Pinning on Both Sides
 
 Additionally, you can specify each column pinning location separately, allowing you to pin columns to both sides of the grid for greater convenience and easier optimization of data sets. Please refer to the demo below for further reference. In order to pin a column, please either select a column by clicking on a header and use the pin buttons added to the toolbar, or simply drag a column to another pinned one.
@@ -612,8 +602,6 @@ root.render(<App />);
 ```
 
 
-<!-- end: React, WebComponents, Blazor -->
-
 ## Custom Column Pinning UI
 
 You can define your custom UI and change the pin state of the columns via the related API.
@@ -621,8 +609,6 @@ You can define your custom UI and change the pin state of the columns via the re
 Let's say that instead of a toolbar you would like to define pin icons in the column headers that the end user can click to change the particular column's pin state.
 
 This can be done by creating a header template for the columns with a custom icon.
-
-<!-- React -->
 
 ```tsx
 <IgrTreeGrid autoGenerate={false} data={CustomersData} ref={grid}>
@@ -656,8 +642,6 @@ const toggleColumnPin = (ctx: IgrColumnTemplateContext) => {
   );
 }
 ```
-
-<!-- end: React -->
 
 ### Demo
 

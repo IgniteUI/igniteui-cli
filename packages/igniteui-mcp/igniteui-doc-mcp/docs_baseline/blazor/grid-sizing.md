@@ -14,14 +14,14 @@ _premium: true
 
 The Ignite UI for Blazor Sizing feature in Blazor Grid is an important aspect of creating responsive and user-friendly grid interfaces. The Blazor Grid Sizing feature enables users to adjust the [`Width`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Width) and `Height` of the grid to accommodate different screen sizes, content, or user preferences. In terms of border and padding size for the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html), they are taken into its width/height size calculations or also known as [Border box](https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing) sizing. It is applied in all scenarios.
 
-> \[!Note]
+> [!Note]
 > If the Border box sizing is overridden by the user we cannot guarantee that the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) will size correctly.
 
 ## Blazor Grid Width
 
 If the [`Width`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Width) input does not have value assigned, its default value is `100%` and the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) tries to fill the available space. You can check how the grid reacts to it in the `Percentages` section.
 
-> \[!Note]
+> [!Note]
 > Setting manually the [`Width`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Width) style of the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) itself will result in an unexpected behavior.
 
 ### Null
@@ -44,7 +44,7 @@ The grid's [`Width`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.B
 
 <img src="../../../images/grid_sizing/width-null-parent-scroll-v2.jpg" alt="width-null-parent-scroll-v2" style="width: 80%"/>
 
-> \[!Note]
+> [!Note]
 > Due to this behavior, if the grid data contains too many columns, it might have significant impact on the browser performance, since all columns would be rendered without virtualization.
 
 ### Pixels
@@ -81,7 +81,7 @@ When the [`Width`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Bla
 
 By default if no height is defined for the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html), it will be set to `100%`. You can check how the grid reacts depending on the DOM structure in the `Percentages` section.
 
-> \[!Note]
+> [!Note]
 > Setting manually the `Height` style of the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) itself will result in an unexpected behavior.
 
 ### Null
@@ -101,7 +101,7 @@ The [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor
 <img src="../../../images/grid_sizing/height-null-24rows-parent-noscroll-v2.jpg" alt="height-null-24rows-parent-noscroll-v2" style="width: 80%"/>
 <img src="../../../images/grid_sizing/height-null-24rows-parent-scroll-v2.jpg" alt="height-null-24rows-parent-scroll-v2" style="width: 80%"/>
 
-> \[!Note]
+> [!Note]
 > Due to this behavior, if the grid data contains too many rows, it might have significant impact on the browser performance, since all rows would be rendered without virtualization.
 
 ### Pixels
@@ -180,7 +180,7 @@ When the grid is resized in these scenarios, the column width is also updated to
 
 <img src="../../../images/grid_sizing/columns-default-all-first-100px-v2.jpg" alt="columns-default-all-first-100px-v2" style="width: 80%"/>
 
-> \[!Note]
+> [!Note]
 > Feature columns like Row Selector checkbox column and etc. fill additional space that is taken into account when autosizing columns.
 
 ### Pixels

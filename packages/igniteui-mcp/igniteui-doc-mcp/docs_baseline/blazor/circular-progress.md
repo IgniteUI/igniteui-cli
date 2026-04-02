@@ -40,8 +40,6 @@ The Ignite UI for Blazor Circular Progress Indicator component provides a visual
 
 ## Usage
 
-<!-- Blazor -->
-
 Before using the [`IgbCircularProgress`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCircularProgress.html), you need to register it as follows:
 
 ```razor
@@ -55,6 +53,8 @@ You will also need to link an additional CSS file to apply the styling to the [`
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
 ```
+
+The simplest way to start using the [`IgbCircularProgress`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCircularProgress.html) is as follows:
 
 ```razor
 <IgbCircularProgress Value=100/>
@@ -189,7 +189,7 @@ Customizing the progress bar in order to use a color gradient instead of a solid
 ```
 
 
-> \[!Note]
+> [!Note]
 > For each [`IgbCircularGradient`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCircularGradient.html) defined as gradient slot of Ignite UI for Blazor [`IgbCircularProgress`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCircularProgress.html) a [SVG stop](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/stop) element would be created. The values passed as `color`, `offset` and `opacity` would be set as stop-color, offset and stop-opacity of the SVG element without further validations.
 
 ```razor

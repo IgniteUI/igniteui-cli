@@ -224,9 +224,7 @@ public class NwindData
 
 ### Dependencies
 
-To get started with the Blazor Data Grid, first you need to install the <!-- Blazor -->IgniteUI.Blazor package.<!-- end: Blazor -->
-
-<!-- Blazor -->
+To get started with the Blazor Data Grid, first you need to install the IgniteUI.Blazor package.
 
 Please refer to these topics on adding the IgniteUI.Blazor package:
 
@@ -245,10 +243,6 @@ Afterwards, you may start implementing the control by adding the following names
 @using IgniteUI.Blazor.Controls
 ```
 
-<!-- end: Blazor -->
-
-<!-- Angular, Blazor -->
-
 ### Component Modules
 
 The `DataGrid` requires the following modules:
@@ -258,8 +252,6 @@ The `DataGrid` requires the following modules:
 
 builder.Services.AddIgniteUIBlazor(typeof(IgbGridModule));
 ```
-
-<!-- end: Angular, Blazor -->
 
 ## Usage
 
@@ -1024,6 +1016,8 @@ See the [Grid Sizing](sizing.md) topic. -->
 > **Note**:
 > The grid uses **css grid layout**, which is **not supported in IE without prefixing**, consequently it will not render properly.
 
+In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grids/theming-grid.md). In case you would like to change the header background and text color, you need to set a class for the grid first:
+
 ```razor
  <IgbGrid Class="grid"></IgbGrid>
 ```
@@ -1036,8 +1030,6 @@ Then set the `--header-background` and `--header-text-color` CSS properties for 
     --header-text-color: #FFF;
 }
 ```
-
-<!-- end: WebComponents, Blazor, React -->
 
 ## Known Limitations
 
@@ -1062,8 +1054,6 @@ Then set the `--header-background` and `--header-text-color` CSS properties for 
 
 ## Additional Resources
 
-<!-- Blazor -->
-
 - [Grid Sizing](grid/sizing.md)
 - [Virtualization and Performance](grid/virtualization.md)
 - [Paging](grid/paging.md)
@@ -1075,8 +1065,6 @@ Then set the `--header-background` and `--header-text-color` CSS properties for 
 - [Column Resizing](grid/column-resizing.md)
 - [Selection](grid/selection.md)
 - [Column Data Types](grid/column-types.md#default-template)
-
-<!-- end: Blazor -->
 
 Our community is active and always welcoming to new ideas.
 

@@ -29,14 +29,14 @@ The following demo shows some [`IgcComboComponent`](https://www.infragistics.com
 
 In our sample we are going to use the [`IgcSwitchComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcswitchcomponent.html) component, so we have to import them together with the combo:
 
-<!-- WebComponents -->
-
 ```ts
 import { defineComponents, IgcComboComponent, IgcSwitchComponent } from 'igniteui-webcomponents';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
 defineComponents(IgcComboComponent, IgcSwitchComponent);
 ```
+
+Then, using React's useState hook, we will declare our variables which will update when the state of the switches change. This will keep track for updates and reflect the changes to the combo inputs accordingly:
 
 ```ts
 let combo = document.getElementById('combo') as IgcComboComponent<City>;
@@ -86,8 +86,6 @@ The Ignite UI for Web Components [`IgcComboComponent`](https://www.infragistics.
 
 The following code snippet shows how to filter the cities from our data source by country instead of name. We are also making the filtering case-sensitive by default:
 
-<!-- WebComponents -->
-
 ```ts
 const options = {
     filterKey: 'country',
@@ -97,8 +95,6 @@ const options = {
 combo.filteringOptions = options;
 ```
 
-<!-- end: WebComponents -->
-
 ### Grouping
 
 Defining a [`groupKey`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#groupKey) option will group the items, according to the provided key:
@@ -107,7 +103,7 @@ Defining a [`groupKey`](https://www.infragistics.com/products/ignite-ui-web-comp
 <igc-combo group-key="region"></igc-combo>
 ```
 
-> \[!Note]
+> [!Note]
 > The [`groupKey`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#groupKey) property will only have effect if your data source consists of complex objects.
 
 #### Sorting Direction
@@ -166,13 +162,9 @@ You can disable the ComboBox using the [`disabled`](https://www.infragistics.com
 <igc-combo disabled></igc-combo>
 ```
 
-<!-- WebComponents -->
-
 ## API Reference
 
 - [`IgcComboComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html)
-
-<!-- end: WebComponents -->
 
 ## Additional Resources
 

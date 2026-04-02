@@ -15,13 +15,13 @@ _premium: true
 
 The Web Components Tree Grid Column Moving feature in Ignite UI for Web Components allows quick and easy column reordering. This can be done through the Column Moving API or by dragging and dropping the headers to another position via mouse or touch gestures. In the Web Components Tree Grid, you can enable Column Moving for pinned and unpinned columns and for [Multi-Column Headers](multi-column-headers.md) as well.
 
-> \[!Note]
+> [!Note]
 > Reordering between columns and column groups is allowed only when they are at the same level in the hierarchy and both are in the same group. Moving is allowed between columns/column-groups, if they are top level columns.
 
-> \[!Note]
+> [!Note]
 > If a column header is templated and the Column Moving is enabled or the corresponding column is groupable, then the templated elements need to have the **draggable** attribute set to **false**!
 
-> \[!Note]
+> [!Note]
 > If the pinned area exceeds its maximum allowed width (80% of the total [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) width), a visual clue notifies the end user that the drop operation is forbidden and pinning is not possible. This means you won't be allowed to drop a column in the pinned area.
 
 ```ts
@@ -112,8 +112,6 @@ There are several events related to the column moving to provide a means for tap
 
 You can subscribe to the `ColumnMovingEnd` event of the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) to implement some custom logic when a column is dropped to a new position. For example, you can cancel dropping the **Category** column after the **Change On Year(%)** column in the following code snippet.
 
-<!-- WebComponents -->
-
 ```html
 <igc-tree-grid id="dataGrid" auto-generate="false" moving="true">
     <igc-column field="Category"></igc-column>
@@ -136,8 +134,6 @@ public onColumnMovingEnd(event) {
     }
 }
 ```
-
-<!-- WebComponents, Blazor, React -->
 
 ## Styling
 
@@ -210,8 +206,6 @@ export class EmployeesFlatDetails extends Array<EmployeesFlatDetailsItem> {
 }
 ```
 
-
-<!-- end: WebComponents, Blazor, React -->
 
 ## API References
 

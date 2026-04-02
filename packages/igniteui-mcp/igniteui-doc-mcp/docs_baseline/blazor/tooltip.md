@@ -35,8 +35,6 @@ The Ignite UI for Blazor Tooltip component provides a way to display a tooltip f
 
 ### Getting Started
 
-<!-- Blazor -->
-
 Before using the [`IgbTooltip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html), you need to register it as follows:
 
 ```razor
@@ -50,8 +48,6 @@ You will also need to link an additional CSS file to apply the styling to the [`
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
 ```
-
-<!-- end: Blazor -->
 
 For a complete introduction to the Ignite UI for Blazor, read the [**Getting Started**](../general-getting-started.md) topic.
 
@@ -176,7 +172,7 @@ If you want to control the delay before showing and hiding the [`IgbTooltip`](ht
 </IgbTooltip>
 ```
 
-> \[!NOTE]
+> [!NOTE]
 > It's important to note that the Tooltip API methods — [`Show`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html#IgniteUI_Blazor_Controls_IgbTooltip_Show), [`Hide`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html#IgniteUI_Blazor_Controls_IgbTooltip_Hide), and [`Toggle`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html#IgniteUI_Blazor_Controls_IgbTooltip_Toggle) — DO NOT take the [`ShowDelay`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html#IgniteUI_Blazor_Controls_IgbTooltip_ShowDelay) and [`HideDelay`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html#IgniteUI_Blazor_Controls_IgbTooltip_HideDelay) properties into account. They act immediately when invoked.
 
 ### Placement

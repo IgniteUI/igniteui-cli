@@ -25,8 +25,6 @@ The Web Components Checkbox is a component that lets you add checkboxes to your 
 
 At its core, the [`IgcCheckboxComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html) allows for a choice between selected/unselected state. The default styling is done according to the selection controls specification in the Material Design guidelines.
 
-<!-- WebComponents -->
-
 First, you need to install the Ignite UI for Web Components by running the following command:
 
 ```cmd
@@ -44,8 +42,6 @@ defineComponents(IgcCheckboxComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-<!-- end: WebComponents -->
-
 <div class="divider--half"></div>
 
 The simplest way to start using the [`IgcCheckboxComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html) is as follows:
@@ -54,7 +50,7 @@ The simplest way to start using the [`IgcCheckboxComponent`](https://www.infragi
 <igc-checkbox></igc-checkbox>
 ```
 
-> \[!WARNING]
+> [!WARNING]
 > The [`IgcCheckboxComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html) component doesn't work with the standard `<form>` element. Use `Form` instead.
 
 ## Examples

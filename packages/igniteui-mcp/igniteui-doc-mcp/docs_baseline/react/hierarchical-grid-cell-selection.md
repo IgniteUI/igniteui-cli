@@ -252,14 +252,12 @@ If you want to disable cell selection you can just set [`cellSelection`](https:/
 - <kbd>CTRL</kbd> + <kbd>SHIFT</kbd> + <kbd>HOME</kbd> to select all cells from the focused cell till the first-most cell in the grid
 - <kbd>CTRL</kbd> + <kbd>SHIFT</kbd> + <kbd>END</kbd> to select all cells from the focused cell till the last-most cell in the grid
 
-> \[!Note]
+> [!Note]
 > Continuous scroll is possible only within Grid's body.
 
 ## Api Usage
 
 Below are the methods that you can use in order to select ranges, clear selection or get selected cells data.
-
-<!-- Angular, WebComponents, React, Blazor -->
 
 ### Select range
 
@@ -274,8 +272,6 @@ gridRef.current.selectRange(range)
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
-<!-- end: Angular, WebComponents, React, Blazor -->
-
 ### Clear cell selection
 
 [`clearCellSelection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#clearCellSelection) will clear the current cell selection.
@@ -285,8 +281,6 @@ gridRef.current.clearCellSelection();
 ```
 
 ### Get Selected Data
-
-<!-- Angular, WebComponents, React -->
 
 [`getSelectedData`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#getSelectedData) will return array of the selected data in format depending on the selection. Examples below:
 
@@ -349,8 +343,6 @@ expectedData = [
 ];
 ```
 
-<!-- end: Angular, WebComponents, React -->
-
 ## Features Integration
 
 The multi-cell selection is index based (DOM elements selection).
@@ -364,8 +356,6 @@ The multi-cell selection is index based (DOM elements selection).
 - `GroupBy` - On column grouping selected cells will not be cleared.
 
 <!-- ComponentEnd: Grid, TreeGrid -->
-
-<!-- WebComponents, Blazor, React -->
 
 ## Styling
 
@@ -618,8 +608,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
-<!-- end: WebComponents, Blazor, React -->
 
 ## API References
 

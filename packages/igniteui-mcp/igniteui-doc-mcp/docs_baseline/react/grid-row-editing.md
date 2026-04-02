@@ -129,7 +129,7 @@ root.render(<Sample/>);
 ```
 
 
-> \[!Note]
+> [!Note]
 > When a row is in edit mode, clicking on a cell in another row will act like the "Done" button is pressed, submitting all changes made in the previous row. If the newly focused cell is editable, the new row enters edit mode as well. However, if the cell is not editable, only the previous row exits edit mode.
 
 ## Row Editing Usage
@@ -159,13 +159,13 @@ const unitsInStockCellTemplate = (ctx: IgrCellTemplateContext) => {
 
 <!-- ComponentEnd: Grid -->
 
-> \[!Note]
+> [!Note]
 > Setting primary key is mandatory for row editing operations.
 
-> \[!Note]
+> [!Note]
 > Enabling editing for individual columns is not necessary. Using the [`rowEditable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#rowEditable) property in the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html), all rows, with defined [`field`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#field) property (excluding the primary row) will be editable. If you want to disable editing for a specific column, simply set the [`editable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#editable) input of that column to `false`.
 
-> \[!Note]
+> [!Note]
 > The [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) utilizes `BaseTransactionService` - an internal provider that holds pending cell changes until the row state is either submitted or cancelled.
 
 ## Positioning
@@ -222,8 +222,6 @@ Customizing the text of the row editing overlay is possible using via templating
 
 The `RowChangesCount` property is exposed and it holds the count of the changed cells.
 
-<!-- React -->
-
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
 ```tsx
@@ -238,13 +236,9 @@ const rowEditTextTemplate = (ctx: IgrGridRowEditTextTemplateContext) =>{
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
-<!-- end: React -->
-
 ### Customizing Buttons
 
 Customizing the buttons of the row editing overlay also possible via templating.
-
-<!-- React -->
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -261,10 +255,6 @@ const rowEditActionsTemplate =(ctx: IgrGridRowEditActionsTemplateContext) => {
 ```
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
-
-<!-- end: React -->
-
-<!-- WebComponents, Blazor, React -->
 
 ## Styling
 
@@ -401,8 +391,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
-<!-- end: WebComponents, Blazor, React -->
 
 ## Known Issues and Limitations
 

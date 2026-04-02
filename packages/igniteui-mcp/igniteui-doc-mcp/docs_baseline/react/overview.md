@@ -12,21 +12,13 @@ _tocName: Grid Lite
 
 The Ignite UI for React Grid Lite is a lightweight, high-performance React data grid that’s free to use, open-source, and built for modern React applications.
 
-<!-- React, Blazor -->
-
 This free React data grid is open-source JavaScript data grid built as a Web Component, which means you can use it dependency-free with or without a web framework. It delivers essential data-display functionality with minimal overhead and the performance users expect. The React Grid Lite is designed for developers who need fast and lightweight data presentation.
-
-<!-- end: React, Blazor -->
 
 ## What You Get with our Free React Data Grid
 
 Our free, open-source React Grid Lite comes with the following column-based features: sorting, filtering, hiding, resizing and a variety of pre-defined data types. Blazing-fast performance is delivered with the use of row virtualization. In addition, the component supports keyboard navigation and theming through the [Ignite UI Theming Framework](../themes/overview.md).
 
-<!-- React, WebComponents -->
-
 ## Installation and Setup
-
-<!-- React -->
 
 ### Installation
 
@@ -44,11 +36,7 @@ yarn add igniteui-react
 yarn add igniteui-grid-lite
 ```
 
-<!-- end: React -->
-
 ### Using the Grid Lite in your React code
-
-<!-- React -->
 
 In the file where you want to use Grid Lite, first we need to import it:
 
@@ -57,8 +45,6 @@ import { IgrGridLite } from 'igniteui-react/grid-lite';
 ```
 
 <!-- End: React -->
-
-<!-- React -->
 
 Add the `<GridLite>` component to your markup:
 
@@ -71,10 +57,6 @@ return (
   </div>
 );
 ```
-
-<!-- end: React -->
-
-<!-- end: React, WebComponents -->
 
 ## Grid Lite in Action
 

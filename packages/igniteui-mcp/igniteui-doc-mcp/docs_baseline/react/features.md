@@ -115,14 +115,10 @@ root.render(<ComboFeatures />);
 
 In our sample we are going to use the [`IgrSwitch`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrswitch.html) component, so we have to import them together with the combo:
 
-<!-- React -->
-
 ```tsx
 import { IgrCombo, IgrSwitch  } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
-
-<!-- end: React -->
 
 Then, using React's useState hook, we will declare our variables which will update when the state of the switches change. This will keep track for updates and reflect the changes to the combo inputs accordingly:
 
@@ -184,8 +180,6 @@ The Ignite UI for React [`IgrCombo`](https://www.infragistics.com/products/ignit
 
 The following code snippet shows how to filter the cities from our data source by country instead of name. We are also making the filtering case-sensitive by default:
 
-<!-- React -->
-
 ```tsx
 const options = {
     filterKey: 'country',
@@ -195,8 +189,6 @@ const options = {
 <IgrCombo filteringOptions={options} />
 ```
 
-<!-- end: React -->
-
 ### Grouping
 
 Defining a [`groupKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#groupKey) option will group the items, according to the provided key:
@@ -205,7 +197,7 @@ Defining a [`groupKey`](https://www.infragistics.com/products/ignite-ui-react/do
 <IgrCombo groupKey="region" />
 ```
 
-> \[!Note]
+> [!Note]
 > The [`groupKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#groupKey) property will only have effect if your data source consists of complex objects.
 
 #### Sorting Direction

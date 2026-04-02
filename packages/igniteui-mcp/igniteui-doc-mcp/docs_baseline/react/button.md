@@ -9,7 +9,7 @@ _tocName: Button
 
 # React Button Overview
 
-The React Button Component lets you enable clickable elements that trigger actions in your React app. You get full control over how you set button variants, configure styles for the wrapped element, and define sizes. The Button Component also gives flexibility through the React Button <!-- React -->clicked callback<!-- end: React -->, toggle the React button, disable the React button, and more.
+The React Button Component lets you enable clickable elements that trigger actions in your React app. You get full control over how you set button variants, configure styles for the wrapped element, and define sizes. The Button Component also gives flexibility through the React Button clicked callback, toggle the React button, disable the React button, and more.
 
 ## React Button Example
 
@@ -59,8 +59,6 @@ root.render(<ButtonOverview/>);
 
 ## Usage
 
-<!-- React -->
-
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
 
 ```cmd
@@ -73,6 +71,8 @@ You will then need to import the [`IgrButton`](https://www.infragistics.com/prod
 import { IgrButton } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
+
+The simplest way to start using the [`IgrButton`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html) is as follows:
 
 ```tsx
 <IgrButton />

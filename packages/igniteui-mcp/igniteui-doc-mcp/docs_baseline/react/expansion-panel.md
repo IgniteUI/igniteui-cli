@@ -59,8 +59,6 @@ root.render(<ExpansionPanelUsage/>);
 
 ## Usage
 
-<!-- React -->
-
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
 
 ```cmd
@@ -73,8 +71,6 @@ You will then need to import the [`IgrExpansionPanel`](https://www.infragistics.
 import { IgrExpansionPanel } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
-
-<!-- end: React -->
 
 The simplest way to start using the [`IgrExpansionPanel`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrexpansionpanel.html) is as follows:
 
@@ -95,22 +91,14 @@ The simplest way to start using the [`IgrExpansionPanel`](https://www.infragisti
 
 The Expansion Panel component raises the following events:
 
-<!-- React -->
-
 - Closed - Raised when the expansion panel is collapsed
 - Opened - Raised when the expansion panel is expanded
 - Closing - Raised when the expansion panel starts collapsing
 - Opening - Raised when the expansion panel starts expanding
 
-<!-- end: React -->
-
 The following sample demonstrates how we can add some logic to our component to make it show/hide the `subtitle` depending on the current state of the panel.
 
-<!-- React -->
-
 We can do this by binding to the `Opened` and `Closed` events:
-
-<!-- end: React -->
 
 ```css
 igc-expansion-panel{

@@ -191,8 +191,6 @@ The [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-com
 
 As you can see in the sample, we specify a different format options in order to showcase the available formats for the specific column type. For example, below you can find the format options for the **time** portion of the date object:
 
-<!-- Angular, WebComponents -->
-
 ```ts
 // Time format with equivalent example
 public timeFormats = [
@@ -252,9 +250,9 @@ When [`autoGenerate`](https://www.infragistics.com/products/ignite-ui-web-compon
 
 #### Default template
 
-<!-- Blazor, WebComponents, React -->
-
 The default template will show a numeric value with currency symbol that would be either prefixed or suffixed.
+
+By using the [`pipeArgs`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#pipeArgs) input the end-user can customize the number format by **decimal point**, **currencyCode** and **display**.
 
 ```html
 <igc-column id="column" field="UnitsInStock" data-type="currency">
@@ -321,7 +319,7 @@ constructor() {
 }
 ```
 
-> \[!Note]
+> [!Note]
 > When using <kbd>↑</kbd> + <kbd>↓</kbd> arrow keys the value will increment/decrement with a step based on the digitsInfo - minFractionDigits (The minimum number of digits after the decimal point. Default is 0)
 
 ## Default Editing Template

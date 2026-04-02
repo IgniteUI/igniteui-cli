@@ -56,14 +56,10 @@ export class FoodsData extends Array<FoodsDataItem> {
 
 To turn on the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) component's Excel-style filtering, two inputs should be set. The `AllowFiltering` should be set to **true** and the `FilterMode` should be set to `ExcelStyleFilter` value.
 
-<!-- WebComponents -->
-
 ```html
 <igc-tree-grid auto-generate="true" allow-filtering="true" filter-mode="excelStyleFilter" >
 </igc-tree-grid>
 ```
-
-<!-- end: WebComponents -->
 
 ## Interactions
 
@@ -139,13 +135,9 @@ export class FoodsData extends Array<FoodsDataItem> {
 
 ## Templates
 
-<!-- WebComponents, Blazor, React -->
-
 If you want to further customize the Excel style filter menu, you can use the `ExcelStyleHeaderIconTemplate` property to define a custom template for the header icon of the menu.
 
 The following code demonstrates how to customize the Excel style filter menu using the `ExcelStyleHeaderIconTemplate`:
-
-<!-- WebComponents -->
 
 ```ts
 constructor() {
@@ -157,10 +149,6 @@ public webGridFilterAltIconTemplate = (ctx: IgcCellTemplateContext) => {
     return html`<img height="15px" width="15px" src="http://static.infragistics.com/xplatform/images/grid/propeller-logo.svg" title="Continued" alt="Continued" />`
 }
 ```
-
-<!-- end: WebComponents -->
-
-<!-- end: WebComponents, Blazor, React -->
 
 <!-- ```razor
 Add razor snipets
@@ -228,8 +216,6 @@ export class FoodsData extends Array<FoodsDataItem> {
 
 
 <!-- ComponentStart: TreeGrid -->
-
-<!-- WebComponents, Blazor, React -->
 
 ## Styling
 
@@ -309,8 +295,6 @@ export class FoodsData extends Array<FoodsDataItem> {
     }
 ```
 
-
-<!-- end: WebComponents, Blazor, React -->
 
 ## API References
 

@@ -284,9 +284,7 @@ public class SingersData
 
 ### Dependencies
 
-To get started with the Blazor hierarchical grid, first you need to install the <!-- Blazor -->IgniteUI.Blazor package.<!-- end: Blazor -->
-
-<!-- Blazor -->
+To get started with the Blazor hierarchical grid, first you need to install the IgniteUI.Blazor package.
 
 Please refer to these topics on adding the IgniteUI.Blazor package:
 
@@ -305,10 +303,6 @@ Afterwards, you may start implementing the control by adding the following names
 @using IgniteUI.Blazor.Controls
 ```
 
-<!-- end: Blazor -->
-
-<!-- Angular, Blazor -->
-
 ### Component Modules
 
 ```razor
@@ -316,8 +310,6 @@ Afterwards, you may start implementing the control by adding the following names
 
 builder.Services.AddIgniteUIBlazor(typeof(IgbhierarchicalGridModule));
 ```
-
-<!-- end: Angular, Blazor -->
 
 ## Using the Blazor Hierarchical Data Grid
 
@@ -384,7 +376,7 @@ Each **IgbRowIsland** should specify the key of the property that holds the chil
 </IgbHierarchicalGrid>
 ```
 
-> \[!NOTE]
+> [!NOTE]
 > Note that instead of `data` the user configures only the `childDataKey` that the IgbHierarchicalGrid needs to read to set the data automatically.
 
 ### Using Load-On-Demand
@@ -516,8 +508,6 @@ The Hierarchical Grid allows the users to conveniently collapse all its currentl
 <!-- ## Sizing
 
 See the [Hierarchical Grid Sizing](sizing.md) topic. -->
-
-<!-- WebComponents, Blazor, React -->
 
 ## Styling
 
@@ -802,8 +792,6 @@ public class SingersData
 }
 ```
 
-
-<!-- end: WebComponents, Blazor, React -->
 
 ## Known Limitations
 

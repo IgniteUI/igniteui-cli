@@ -44,8 +44,6 @@ root.render(<RippleButton/>);
 
 ## Usage
 
-<!-- React -->
-
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
 
 ```cmd
@@ -58,6 +56,8 @@ You will then need to import the [`IgrRipple`](https://www.infragistics.com/prod
 import { IgrRipple } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
+
+The simplest way to start using the [`IgrRipple`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrripple.html) is as follows:
 
 ```tsx
 <IgrButton>

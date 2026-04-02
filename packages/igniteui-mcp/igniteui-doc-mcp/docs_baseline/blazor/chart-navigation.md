@@ -399,7 +399,7 @@ The following example demonstrates enabling scrollbars.
 
 ## Chart Navigation through Code
 
-> \[!Note]
+> [!Note]
 > Code navigation of the chart can only be used for the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control.
 
 The Blazor data chart provides several navigation properties that are updated each time a zoom or pan operation happens in the chart. You can also set each of these properties to zoom or pan the data chart programmatically. The following is a list of these properties:

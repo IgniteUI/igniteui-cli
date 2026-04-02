@@ -64,8 +64,6 @@ root.render(<SliderOverview/>);
 
 ## Usage
 
-<!-- React -->
-
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
 
 ```cmd
@@ -78,6 +76,8 @@ You will then need to import the [`IgrSlider`](https://www.infragistics.com/prod
 import { IgrSlider, IgrRangeSlider } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
+
+The simplest way to start using the [`IgrSlider`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrslider.html) and [`IgrRangeSlider`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrrangeslider.html) is as follows:
 
 ```tsx
 <IgrSlider value="40" />

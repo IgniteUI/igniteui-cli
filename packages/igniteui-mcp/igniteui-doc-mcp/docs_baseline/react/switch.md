@@ -45,8 +45,6 @@ root.render(<SwitchOverview/>);
 
 At its core, the [`IgrSwitch`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrswitch.html) component allows for toggling between on/off states. The default styling is done according to the selection controls specification in the Material Design guidelines.
 
-<!-- React -->
-
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
 
 ```cmd
@@ -60,11 +58,13 @@ import { IgrSwitch } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
 
+The simplest way to start using the [`IgrSwitch`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrswitch.html) is as follows:
+
 ```tsx
 <IgrSwitch></IgrSwitch>
 ```
 
-> \[!WARNING]
+> [!WARNING]
 > The [`IgrSwitch`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrswitch.html) component doesn't work with the standard `<form>` element. Use `Form` instead.
 
 ## Examples

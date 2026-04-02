@@ -151,28 +151,6 @@ Both methods return a boolean value indicating whether their respective operatio
 
 A column is pinned to the right of the rightmost pinned column. Changing the order of the pinned columns can be done by subscribing to the `ColumnPin` event and changing the `InsertAtIndex` property of the event arguments to the desired position index.
 
-<!-- end: Angular, React, WebComponents, React -->
-
-<!-- Blazor -->
-
-A column is pinned to the right of the rightmost pinned column. Changing the order of the pinned columns can be done by subscribing to the `ColumnPinScript` event and providing a JavaScript function for changing the `InsertAtIndex` property of the event arguments to the desired position index.
-
-<!-- end: Blazor -->
-
-```razor
-<IgbTreeGrid Data=data AutoGenerate=true ColumnPinScript="onColumnPin"/>
-
-
-//In JavaScript
-function onColumnPin(e) {
-    if (e.detail.column.field == "Country") {
-        e.detail.insertAtIndex = 0;
-    }
-}
-
-igRegisterScript("onColumnPin", onColumnPin, false);
-```
-
 ## Pinning Position
 
 You can change the column pinning position via the [`Pinning`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_Pinning) configuration option. It allows you to set the columns position to either Start or End.
@@ -357,8 +335,6 @@ public class EmployeesFlatDetails
 }
 ```
 
-
-<!-- React, WebComponents, Blazor -->
 
 ### Column Pinning on Both Sides
 
@@ -585,8 +561,6 @@ public class EmployeesFlatDetails
 }
 ```
 
-
-<!-- end: React, WebComponents, Blazor -->
 
 ## Custom Column Pinning UI
 

@@ -197,17 +197,11 @@ Let's start by creating our [`IgbTreeGrid`](https://www.infragistics.com/blazor/
 
 <!-- ComponentEnd: TreeGrid -->
 
-<!-- Blazor -->
-
-<!-- end: Blazor -->
-
 ## Toolbar's Column Hiding UI
 
 The built-in Column Hiding UI is placed inside an `DropDown` in the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html)'s toolbar. We can show/hide the Column Hiding UI by using this exact dropdown.
 
 For this purpose all we have to do is set both the [`IgbGridToolbarActions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridToolbarActions.html) and the [`IgbGridToolbarHiding`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridToolbarHiding.html) inside of the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html).
-
-<!-- Blazor -->
 
 <!-- ComponentStart: TreeGrid -->
 
@@ -223,8 +217,6 @@ For this purpose all we have to do is set both the [`IgbGridToolbarActions`](htt
 
 <!-- ComponentEnd: TreeGrid -->
 
-<!-- end: Blazor -->
-
 <!-- Web Components -->
 
 <!-- ComponentEnd: TreeGrid -->
@@ -235,15 +227,9 @@ For this purpose all we have to do is set both the [`IgbGridToolbarActions`](htt
 
 <!-- end: Web Components -->
 
-<!-- Blazor -->
-
-<!-- end: Blazor -->
-
 The [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) provides us with some useful properties when it comes to using the toolbar's column hiding UI.
 
 By using the [`Title`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Title) property, we will set the title that is displayed inside the dropdown button in the toolbar.
-
-<!-- Blazor -->
 
 <!-- ComponentStart: TreeGrid -->
 
@@ -259,17 +245,11 @@ By using the [`Title`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI
 
 <!-- ComponentEnd: TreeGrid -->
 
-<!-- end: Blazor -->
-
 <!-- Web Components -->
 
 <!-- ComponentEnd: TreeGrid -->
 
 <!-- end: Web Components -->
-
-<!-- Blazor -->
-
-<!-- end: Blazor -->
 
 <!-- Web Components -->
 
@@ -289,8 +269,6 @@ We can easily prevent the user from being able to hide columns through the colum
 ```
 
 <!-- ComponentEnd: TreeGrid -->
-
-<!-- Blazor, WebComponents, React -->
 
 ## Styling
 
@@ -507,19 +485,13 @@ public class EmployeesFlatDetails
 ```
 
 
-<!-- end: Blazor, WebComponents, React -->
-
 ## API References
-
-<!-- Blazor, WebComponents, React -->
 
 In this article we learned how to use the built-in column hiding UI in the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html)'s toolbar. The column hiding UI has a few more APIs to explore, which are listed below.
 
 - `ColumnActionsComponent`
 
 Additional components with relative APIs that were used:
-
-<!-- end: Blazor, WebComponents, React -->
 
 [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html) properties:
 

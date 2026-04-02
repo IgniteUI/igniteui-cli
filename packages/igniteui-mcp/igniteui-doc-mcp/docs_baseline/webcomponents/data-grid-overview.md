@@ -8,12 +8,8 @@ _canonicalLink: grids/data-grid
 _tocName: Table / Grid
 ---
 
-<!-- Blazor, WebComponents -->
-
-> \[!Note]
+> [!Note]
 > Please note that this control has been deprecated and replaced with the [Grid](../data-grid.md), and as such, we recommend migrating to that control. This will not be receiving any new features, bug fixes will be deprioritized. For help or questions on migrating your codebase to the Data Grid, please contact support.
-
-<!-- end: Blazor, WebComponents -->
 
 # Web Components Data Grid Overview
 
@@ -325,8 +321,6 @@ export class DataGridSharedData {
 
 ### Dependencies
 
-<!-- Angular, React, WebComponents -->
-
 When installing the Web Components grid package, the core package must also be installed.
 
 ```cmd
@@ -335,13 +329,9 @@ npm install --save igniteui-webcomponents-grids
 npm install --save igniteui-webcomponents-inputs
 ```
 
-<!-- end: Angular, React, WebComponents -->
-
 ### Component Modules
 
 The [`IgcDataGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids.igcdatagridcomponent.html) requires the following modules:
-
-<!-- WebComponents -->
 
 ```ts
 import { ModuleManager } from 'igniteui-webcomponents-core';
@@ -352,8 +342,6 @@ ModuleManager.register(
     IgcDataGridModule
 );
 ```
-
-<!-- end: WebComponents -->
 
 <div class="divider--half"></div>
 

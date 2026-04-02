@@ -115,8 +115,6 @@ root.render(<AccordionOverview />);
 
 ## Getting Started with React Accordion
 
-<!-- React -->
-
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
 
 ```cmd
@@ -133,6 +131,8 @@ import {
 import "igniteui-webcomponents/themes/light/bootstrap.css";
 
 ```
+
+Before using the [`IgrAccordion`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igraccordion.html), you need to register it as follows:
 
 Now you can start with a basic configuration of the [`IgrAccordion`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igraccordion.html) and its panels.
 
@@ -162,7 +162,7 @@ As demonstrated above, the [`singleExpand`](https://www.infragistics.com/product
 
 By using the [`hideAll`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igraccordion.html#hideAll) and [`showAll`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igraccordion.html#showAll) methods you can respectively collapse and expand all [`IgrExpansionPanel`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrexpansionpanel.html)s of the [`IgrAccordion`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igraccordion.html) programmatically.
 
-> \[!Note]
+> [!Note]
 > If [`singleExpand`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igraccordion.html#singleExpand) property is set to **true** calling [`showAll`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igraccordion.html#showAll) method would expand only the focused panel.
 
 ### React Accordion Customization Example

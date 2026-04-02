@@ -226,17 +226,11 @@ For this purpose all we have to do is set both the [`IgrGridToolbarActions`](htt
 
 <!-- end: Web Components -->
 
-<!-- React -->
-
-<!-- end: React -->
-
 <!-- Web Components -->
 
 <!-- ComponentEnd: HierarchicalGrid -->
 
 <!-- end: Web Components -->
-
-<!-- React -->
 
 <!-- ComponentStart: HierarchicalGrid -->
 
@@ -252,8 +246,6 @@ For this purpose all we have to do is set both the [`IgrGridToolbarActions`](htt
 
 <!-- ComponentEnd: HierarchicalGrid -->
 
-<!-- end: React -->
-
 The [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html) provides us with some useful properties when it comes to using the toolbar's column hiding UI.
 
 By using the [`title`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#title) property, we will set the title that is displayed inside the dropdown button in the toolbar.
@@ -262,17 +254,11 @@ By using the [`title`](https://www.infragistics.com/products/ignite-ui-react/doc
 
 <!-- end: Web Components -->
 
-<!-- React -->
-
-<!-- end: React -->
-
 <!-- Web Components -->
 
 <!-- ComponentEnd: HierarchicalGrid -->
 
 <!-- end: Web Components -->
-
-<!-- React -->
 
 <!-- ComponentStart: HierarchicalGrid -->
 
@@ -287,8 +273,6 @@ By using the [`title`](https://www.infragistics.com/products/ignite-ui-react/doc
 ```
 
 <!-- ComponentEnd: HierarchicalGrid -->
-
-<!-- end: React -->
 
 You can see the result of the code from above at the beginning of this article in the React Column Hiding Example section.
 
@@ -308,8 +292,6 @@ We can easily prevent the user from being able to hide columns through the colum
 ```
 
 <!-- ComponentEnd: HierarchicalGrid -->
-
-<!-- Blazor, WebComponents, React -->
 
 ## Styling
 
@@ -568,19 +550,13 @@ root.render(<Sample/>);
 ```
 
 
-<!-- end: Blazor, WebComponents, React -->
-
 ## API References
-
-<!-- Blazor, WebComponents, React -->
 
 In this article we learned how to use the built-in column hiding UI in the [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html)'s toolbar. The column hiding UI has a few more APIs to explore, which are listed below.
 
 - `ColumnActionsComponent`
 
 Additional components with relative APIs that were used:
-
-<!-- end: Blazor, WebComponents, React -->
 
 [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html) properties:
 

@@ -55,8 +55,6 @@ This sample demonstrates how to create a Dialog component in Blazor.
 
 For a complete introduction to the Ignite UI for Blazor, read the [**Getting Started**](../general-getting-started.md) topic.
 
-<!-- Blazor -->
-
 Before using the Blazor [`IgbDialog`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDialog.html), you need to register it as follows:
 
 ```razor
@@ -64,8 +62,6 @@ Before using the Blazor [`IgbDialog`](https://www.infragistics.com/blazor/docs/a
 
 builder.Services.AddIgniteUIBlazor(typeof(IgbDialogModule));
 ```
-
-<!-- end: Blazor -->
 
 The simplest way to display the dialog component is to use its [`Show`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDialog.html#IgniteUI_Blazor_Controls_IgbDialog_Show) method and call it on a button click.
 

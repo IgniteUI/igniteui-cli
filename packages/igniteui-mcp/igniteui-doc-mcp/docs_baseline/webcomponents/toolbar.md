@@ -69,8 +69,6 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
 
 ## Dependencies
 
-<!-- Angular, WebComponents, React -->
-
 Install the Ignite UI for Web Components layouts, inputs, charts and core packages:
 
 ```cmd
@@ -98,8 +96,6 @@ ModuleManager.register(
     IgcDataChartCategoryTrendLineModule
 );
 ```
-
-<!-- end:Angular, WebComponents, React -->
 
 ## Usage
 

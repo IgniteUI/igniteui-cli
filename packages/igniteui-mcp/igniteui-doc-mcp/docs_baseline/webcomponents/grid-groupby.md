@@ -75,8 +75,6 @@ export class InvoicesWorldData extends Array<InvoicesWorldDataItem> {
 
 It is possible to define initial grouping of the grid by assigning an array of expressions to the [`groupingExpressions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#groupingExpressions) property of the grid.
 
-<!-- WebComponents -->
-
 ```typescript
 constructor() {
     var grid = document.getElementById("grid") as IgcGridComponent;
@@ -86,8 +84,6 @@ constructor() {
     ];
 }
 ```
-
-<!-- end: WebComponents -->
 
 Grouping expressions implement the `ISortingExpression` interface.
 
@@ -113,8 +109,6 @@ Grouping is available through the UI and through a robust API exposed by the gri
 </igc-grid>
 ```
 
-<!-- WebComponents -->
-
 ```typescript
     constructor() {
         var column1 = (this.column1 = document.getElementById("column1") as IgcColumnComponent);
@@ -122,25 +116,17 @@ Grouping is available through the UI and through a robust API exposed by the gri
     }
 ```
 
-<!-- end: WebComponents -->
-
 During runtime the expressions are gettable and settable from the `groupingExpressions` property. If you need to add or change an existing expression you may also use the [`groupBy`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#groupBy) method with either a single or an array of expressions.
-
-<!-- WebComponents -->
 
 ```typescript
 grid.groupBy({ fieldName: 'ProductName', dir: SortingDirection.Desc, ignoreCase: true });
 ```
-
-<!-- end: WebComponents -->
 
 ### Expand/Collapse API
 
 In addition to grouping expressions you can also control the expansion states for group rows. They are stored in a separate property of the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) component [`groupingExpansionState`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#groupingExpansionState) which is a collection of [`IgcGroupByExpandState`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgroupbyexpandstate.html). Each expansion state is uniquely defined by the field name it is created for and the value it represents for each level of grouping, i.e. the identifier is a hierarchy array of [`IgcGroupByKey`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgroupbykey.html).
 
 As with [`groupingExpressions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#groupingExpressions), setting a list of [`IgcGroupByExpandState`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgroupbyexpandstate.html) directly to the [`groupingExpansionState`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#groupingExpansionState) will change the expansion accordingly. Additionally [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) exposes a method [`toggleGroup`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#toggleGroup) that toggles a group by the group record instance or via the [`expanded`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcrowdirective.html#expanded) property of the row.
-
-<!-- WebComponents -->
 
 ```typescript
 const groupRow = this.grid.getRowByIndex(0).groupRow;
@@ -160,16 +146,12 @@ Selecting/Deselecting all rows in a group is available through the [`selectRowsI
 
 The code snippet below can be used to select all rows within a group using the group record instance [`selectRowsInGroup`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#selectRowsInGroup) method. Additionally, the second parameter of this method is a boolean property through which you may choose whether the previous row selection will be cleared or not. The previous selection is preserved by default.
 
-<!-- WebComponents -->
-
 ```typescript
 const groupRow = this.grid.getRowByIndex(0).groupRow;
 grid.selectRowsInGroup(groupRow);
 ```
 
 If you need to deselect all rows within a group programmatically, you can use the [`deselectRowsInGroup`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#deselectRowsInGroup) method.
-
-<!-- WebComponents -->
 
 ```typescript
 const groupRow = this.grid.getRowByIndex(0).groupRow;
@@ -296,8 +278,6 @@ The grouping UI supports the following keyboard interactions:
   - <kbd>SPACE</kbd> - changes the sorting direction
   - <kbd>DELETE</kbd> - ungroups the field
   - The separate elements of the chip are also focusable and can be interacted with using the <kbd>ENTER</kbd> key.
-
-<!-- WebComponents, Angular, React -->
 
 ## Web Components Grid Custom Group By
 
@@ -448,8 +428,6 @@ export class InvoicesData extends Array<InvoicesDataItem> {
 The sample defines custom sorting for the different date conditions.
 Each custom strategy defines the `GroupingComparer` method, which is the custom compare function used when sorting the values. Additionally it extracts the values from the date needed for the comparison.
 
-<!-- WebComponents -->
-
 ```typescript
 public groupByMode = "Month";
 public getParsedDate(date: any) {
@@ -460,8 +438,6 @@ public getParsedDate(date: any) {
     };
 }
 ```
-
-<!-- end: WebComponents -->
 
 A `GroupingComparer` function is defined for the grouping expressions, which determines the items belonging to the same group based on the selected grouping mode. Values in the sorted data for which this function returns 0 are marked as part of the same group.
 
@@ -484,16 +460,10 @@ grid.groupingExpressions = [
 ];
 ```
 
-<!-- end:WebComponents, Angular, React -->
-
-<!-- WebComponents, Blazor, React -->
-
 ## Styling
 
 In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
-
-<!-- WebComponents -->
 
 ```ts
 <igc-grid class="grid">
@@ -589,8 +559,6 @@ export class InvoicesData extends Array<InvoicesDataItem> {
 }
 ```
 
-
-<!-- end: WebComponents, Blazor, React -->
 
 ## Known Limitations
 

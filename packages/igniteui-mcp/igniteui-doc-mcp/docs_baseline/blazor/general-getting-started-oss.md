@@ -23,7 +23,7 @@ The open-source libraries include:
 
 - Start Visual Studio and click **Create a new project** on the start page, select a Blazor template such as **Blazor Server App**, **Blazor WebAssembly App**, or **Blazor Web App**, and click **Next**.
 
-> \[!Note]
+> [!Note]
 > When using **Blazor Server App**, ensure you add `@rendermode InteractiveServer` in the pages where the components are used.
 
 - Provide a project name and location, then click **Next**.
@@ -34,7 +34,7 @@ The open-source libraries include:
 
 The IgniteUI.Blazor.Lite package contains open-source UI components delivered via NuGet.
 
-> \[!Note]
+> [!Note]
 > You should not combine the **IgniteUI.Blazor** and **IgniteUI.Blazor.Lite** packages in the same project. They use the same namespaces and contain duplicate components, so only one of them should be used.
 
 In Visual Studio, open the NuGet package manager by selecting **Tools** → **NuGet Package Manager** → **Manage NuGet Packages for Solution**. Search for and install the **IgniteUI.Blazor.Lite** NuGet package.

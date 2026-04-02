@@ -32,8 +32,6 @@ The Ignite UI for Blazor Ripple component creates an animation in response to a 
 
 ## Usage
 
-<!-- Blazor -->
-
 Before using the [`IgbRipple`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRipple.html), you need to register it as follows:
 
 ```razor
@@ -47,6 +45,8 @@ You will also need to link an additional CSS file to apply the styling to the [`
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
 ```
+
+The simplest way to start using the [`IgbRipple`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRipple.html) is as follows:
 
 ```razor
 <IgbButton Variant="@ButtonVariant.Contained">
