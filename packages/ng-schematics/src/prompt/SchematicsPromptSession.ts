@@ -36,7 +36,8 @@ export class SchematicsPromptSession extends BasePromptSession {
 	}
 
 	public async getProjectLibraryByType(framework: Framework, type: string): Promise<ProjectLibrary> {
-		type = type === "igx-ts" || type === "igx-ts-legacy" ? type : "igx-ts";
+		type = type === "igx-ts" ? type : "igx-ts";
+		// narrow down projectLibraries so required option is auto-selected:
 		framework.projectLibraries = [framework.projectLibraries.find(lib => lib.projectType === type)!];
 		return super.getProjectLibrary(framework);
 	}
