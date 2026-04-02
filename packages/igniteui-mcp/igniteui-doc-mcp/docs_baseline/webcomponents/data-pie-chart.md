@@ -154,7 +154,7 @@ You can style the aggregated Others slice separately from other slices by using 
 
 These properties only affect the Others slice (when it exists). All other slices continue to use the normal palette and item-wise coloring behavior.
 
-> \[!NOTE]
+> [!NOTE]
 > The Others slice is only rendered when the chart is configured to create it (for example, with [`othersCategoryThreshold`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatapiebasechartcomponent.html#othersCategoryThreshold) greater than `0` and an appropriate [`othersCategoryType`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatapiebasechartcomponent.html#othersCategoryType)). If the Others slice is not present, `OthersCategoryBrush` and `OthersCategoryOutline` have no visible effect.
 
 If you want to ensure that the Others category does not show up in the [`IgcDataPieChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatapiechartcomponent.html), you can set the [`othersCategoryThreshold`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatapiebasechartcomponent.html#othersCategoryThreshold) to 0.

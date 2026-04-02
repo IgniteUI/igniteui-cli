@@ -23,8 +23,6 @@ Ignite UI for Web Components Chips help people enter information, make selection
 
 ## Usage
 
-<!-- WebComponents -->
-
 First, you need to install the Ignite UI for Web Components by running the following command:
 
 ```cmd
@@ -41,8 +39,6 @@ defineComponents(IgcChipComponent);
 ```
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
-
-<!-- end: WebComponents -->
 
 The simplest way to start using the [`IgcChipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcchipcomponent.html) is as follows:
 

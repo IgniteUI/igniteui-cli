@@ -28,7 +28,7 @@ By default the column uses the `field` property for label text. To customize the
 
 <!-- End: Blazor -->
 
-> \[!NOTE]
+> [!NOTE]
 > When `headerTemplate` is provided, `header` is ignored.
 
 ## Customization via Header Template

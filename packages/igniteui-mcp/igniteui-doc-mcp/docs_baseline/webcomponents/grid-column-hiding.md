@@ -144,8 +144,6 @@ We can easily prevent the user from being able to hide columns through the colum
 
 <!-- ComponentEnd: Grid -->
 
-<!-- Blazor, WebComponents, React -->
-
 ## Styling
 
 The grid could be further customized by setting some of the available [CSS variables](../theming-grid.md).
@@ -267,19 +265,13 @@ export class CustomersData extends Array<CustomersDataItem> {
 ```
 
 
-<!-- end: Blazor, WebComponents, React -->
-
 ## API References
-
-<!-- Blazor, WebComponents, React -->
 
 In this article we learned how to use the built-in column hiding UI in the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html)'s toolbar. The column hiding UI has a few more APIs to explore, which are listed below.
 
 - `ColumnActionsComponent`
 
 Additional components with relative APIs that were used:
-
-<!-- end: Blazor, WebComponents, React -->
 
 [`IgcColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html) properties:
 

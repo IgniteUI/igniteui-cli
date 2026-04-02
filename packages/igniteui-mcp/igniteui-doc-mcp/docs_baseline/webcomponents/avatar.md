@@ -23,13 +23,13 @@ The Ignite UI for Web Components Avatar helps to display initials, images, or ic
 
 ## Usage
 
-<!-- WebComponents -->
-
 First, you need to install the Ignite UI for Web Components npm package by running the following command:
 
 ```cmd
 npm install igniteui-webcomponents
 ```
+
+Before using the [`IgcAvatarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcavatarcomponent.html), you need to register it as follows:
 
 ```ts
 import { defineComponents, IgcAvatarComponent } from 'igniteui-webcomponents';

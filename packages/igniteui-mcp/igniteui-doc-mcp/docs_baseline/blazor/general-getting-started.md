@@ -7,8 +7,6 @@ mentionedTypes: ["XamBulletGraph", "IgrGrid"]
 _tocName: Blazor Server App
 ---
 
-<!-- Blazor -->
-
 ## Getting Started With Ignite UI for Blazor
 
 This topic provides step-by-step instructions for creating Blazor Server applications with Ignite UI for Blazor using Visual Studio.
@@ -136,5 +134,3 @@ Add an Ignite UI for Blazor component to your razor page:
 Build and run the Blazor app.
 
 <img src="../images/general/getting-started-blazor-card.jpg" alt="getting-started-blazor-card" />
-
-<!-- end: Blazor -->

@@ -280,8 +280,6 @@ Each tab has default slot to display information - icon, text or both and `prefi
 
 The [`IgbTabs`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTabs.html) component exposes several CSS parts, giving you full control over its style:
 
-<!-- Blazor -->
-
 | Name | Description |
 |--|--|
 | `headers` | The wrapper which includes the tabs and the scroll buttons. |
@@ -293,11 +291,7 @@ The [`IgbTabs`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor
 | `end-scroll-button` | The end scroll button displayed when the tabs overflow. |
 | `content` | The container for the content where the data is displayed. |
 
-<!-- end: Blazor -->
-
 The [`IgbTab`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTab.html) component exposes the following CSS parts:
-
-<!-- Blazor -->
 
 |Name|Description|
 |--|--|
@@ -341,8 +335,6 @@ igc-tab::part(tab-header)::before {
     --border-color--hover: var(--ig-gray-500);
 }
 ```
-
-<!-- end: Blazor -->
 
 ```razor
 @using IgniteUI.Blazor.Controls

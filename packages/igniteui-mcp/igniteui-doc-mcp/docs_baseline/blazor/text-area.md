@@ -15,8 +15,6 @@ The Ignite UI for Blazor Text Area represents a multi-line plain-text editing co
 
 <div class="divider--half"></div>
 
-<!-- React, WebComponents, Blazor -->
-
 ```razor
 @using IgniteUI.Blazor.Controls
 
@@ -31,11 +29,7 @@ The Ignite UI for Blazor Text Area represents a multi-line plain-text editing co
 ```
 
 
-<!-- end:React, WebComponents, Blazor -->
-
 ## Dependencies
-
-<!-- Blazor -->
 
 ```razor
 // in Program.cs file
@@ -48,6 +42,8 @@ You will also need to link an additional CSS file to apply the styling to the [`
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
 ```
+
+After we import the [`IgbTextarea`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTextarea.html) component we are ready to start using it, so let's add our first Text Area.
 
 ```razor
 <IgbTextarea Rows="5" Label="Tell us your story:">It was a dark and stormy night...</IgbTextarea>

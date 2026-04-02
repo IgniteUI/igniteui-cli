@@ -24,8 +24,6 @@ The Ignite UI for Blazor Rating component allows users to view and provide feedb
 
 Before using the [`IgbRating`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRating.html), you need to register it as follows:
 
-<!-- Blazor -->
-
 ```razor
 // in Program.cs file
 
@@ -38,25 +36,17 @@ You will also need to link an additional CSS file to apply the styling to the [`
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
 ```
 
-<!-- end: Blazor -->
-
 The simplest way to start using the [`IgbRating`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRating.html) is as follows:
-
-<!-- Blazor -->
 
 ```razor
 <IgbRating></IgbRating>
 ```
-
-<!-- end: Blazor -->
 
 This will create a five-star rating component that can be used to input and read data from.
 
 ## Using Custom Symbols
 
 The [`IgbRating`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRating.html) component allows you to use custom symbols in place of the default star symbols. If you want to use a different symbol, like SVG, icon or another unicode symbol, you should place [`IgbRatingSymbol`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRatingSymbol.html) components between the opening and closing brackets of the [`IgbRating`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRating.html):
-
-<!-- Blazor -->
 
 ```razor
 <IgbRating>
@@ -67,8 +57,6 @@ The [`IgbRating`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blaz
   <IgbRatingSymbol> <div>💙</div> <div slot="empty">💙</div> </IgbRatingSymbol>
 </IgbRating>
 ```
-
-<!-- end: Blazor -->
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -122,8 +110,6 @@ The [`IgbRating`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blaz
 
 The Ignite UI for Blazor Rating component has a single selection mode that allows users to provide different icons/elements for the different rating values. In this case, only one of the icons/elements can be selected and reflect the feedback given by the user.
 
-<!-- Blazor -->
-
 ```razor
 <IgbRating>
   <IgbRatingSymbol> <div>😣</div> <div slot="empty">😣</div> </IgbRatingSymbol>
@@ -133,8 +119,6 @@ The Ignite UI for Blazor Rating component has a single selection mode that allow
   <IgbRatingSymbol> <div>😣</div> <div slot="empty">😣</div> </IgbRatingSymbol>
 </IgbRating>
 ```
-
-<!-- end: Blazor -->
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -174,16 +158,12 @@ The Ignite UI for Blazor Rating component has a single selection mode that allow
 
 The Ignite UI for Blazor Rating component allows users to use different icons/elements for the empty and the selected state of a single rating value. It is mandatory to provide 2 icons for each slot (empty and full) when declaring a symbol, even if they are the same. For instance:
 
-<!-- Blazor -->
-
 ```razor
 <IgbRatingSymbol>
   <IgbIcon Collection="material" IconName="bandage"></IgbIcon>
   <IgbIcon Collection="material" IconName="bacteria" slot="empty"></IgbIcon>
 </IgbRatingSymbol>
 ```
-
-<!-- end: Blazor -->
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -259,11 +239,7 @@ The [`Step`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Co
 
 ### Hover Preview
 
-<!-- Blazor -->
-
 The [`HoverPreview`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRating.html#IgniteUI_Blazor_Controls_IgbRating_HoverPreview) attribute makes the component show the possible outcome of user selection on hover. It is useful when you want to give instant feedback about what the selected value could be.
-
-<!-- end: Blazor -->
 
 ### Read-Only
 
@@ -285,27 +261,15 @@ The [`StepDown`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazo
 
 ## Events
 
-<!-- Blazor -->
-
 The [`IgbRating`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRating.html) component emits two separate events - `Hover` and `Change`.
-
-<!-- end: Blazor -->
 
 ### Hover Event
 
-<!-- Blazor -->
-
 The `Hover` event is fired when hovering over a symbol. It provides the value of the symbol under the mouse cursor. Useful for creating custom value labels and readouts.
-
-<!-- end: Blazor -->
 
 ### Change Event
 
-<!-- Blazor -->
-
 The `Change` event is fired when the selected value changes.
-
-<!-- end: Blazor -->
 
 ## Styling
 

@@ -269,7 +269,7 @@ For achieving `n-th` level of nested headers, the declaration above should be fo
 
 Every [`IgbColumnGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumnGroup.html) supports [moving](column-moving.md), [pinning](column-pinning.md) and [hiding](column-hiding.md).
 
-> \[!Note]
+> [!Note]
 > When there is a set of columns and column groups, pinning works only for top level column parents. More specifically pinning per nested column groups or columns is not allowed. <br />
 > Moving between columns and column groups is allowed only when they are at the same level in the hierarchy and both are in the same `group`. <br />
 > When `columns/column-groups` are not wrapped by current `group` which means they are **top level** `columns`, moving is allowed between whole visible columns.
@@ -290,8 +290,6 @@ Every [`IgbColumnGroup`](https://www.infragistics.com/blazor/docs/api/api/Ignite
 <!-- ComponentEnd: TreeGrid -->
 
 ## Multi-Column Header Template
-
-<!-- Blazor -->
 
 Each of the column groups of the grid can be templated separately. The column group expects `RenderFragment` for the [`HeaderTemplate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_HeaderTemplate) property.
 The expression is provided with the column group object as a context.
@@ -324,7 +322,7 @@ If you want to re-use a single template for several column groups, you could set
 }
 ```
 
-> \[!Note]
+> [!Note]
 > If a header is re-templated and the corresponding column group is movable, you have to set the **draggable** attribute to **false** on the templated elements, so that you can handle any of the events that are applied!
 
 ```razor
@@ -533,8 +531,6 @@ public class EmployeesFlatDetails
 ```
 
 
-<!-- WebComponents, Blazor, React -->
-
 ## Styling
 
 In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
@@ -720,8 +716,6 @@ public class EmployeesFlatDetails
 }
 ```
 
-
-<!-- end: WebComponents, Blazor, React -->
 
 ## API References
 

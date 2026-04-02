@@ -36,8 +36,6 @@ The Ignite UI for Web Components Icon Button component allows developers to use 
 
 ## Usage
 
-<!-- WebComponents -->
-
 First, you need to install the Ignite UI for Web Components by running the following command:
 
 ```cmd
@@ -54,8 +52,6 @@ defineComponents(IgcIconButtonComponent);
 ```
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
-
-<!-- end: WebComponents -->
 
 The simplest way to start using the [`IgcIconButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconbuttoncomponent.html) is as follows:
 
@@ -101,8 +97,6 @@ The size of the button can be changed by utilizing the `--ig-size` CSS variable 
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
-<!-- WebComponents, Blazor-->
 
 ```css
 igc-icon-button {

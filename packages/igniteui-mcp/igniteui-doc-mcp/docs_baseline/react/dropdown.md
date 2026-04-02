@@ -60,8 +60,6 @@ root.render(<DropDownOverview/>);
 
 ## How to use the Dropdown List with Ignite UI for React
 
-<!-- React -->
-
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
 
 ```cmd
@@ -76,6 +74,8 @@ import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
 
 For a complete introduction to the Ignite UI for React, read the [**Getting Started**](../general-getting-started.md) topic.
+
+The simplest way to start using the [`IgrDropdown`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdropdown.html) is as follows:
 
 ```tsx
 <IgrDropdown>

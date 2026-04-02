@@ -377,8 +377,6 @@ root.render(<Sample/>);
 ```
 
 
-<!-- WebComponents, Blazor, React -->
-
 ## Usage
 
 You should first bind to the grid's `rendered` event to create and manage a text area element:
@@ -399,8 +397,6 @@ You should first bind to the grid's `rendered` event to create and manage a text
     <IgrColumn field="PostalCode" header="Postal Code" width="200px"> </IgrColumn>
 </IgrGrid>
 ```
-
-<!-- React -->
 
 ```ts
 public webGridPasteFromExcel(e: CustomEvent<any>) {
@@ -565,8 +561,6 @@ public updateRecords(processedData: any[]) {
     }
 }
 ```
-
-<!-- end: WebComponents, Blazor, React -->
 
 ## API References
 

@@ -63,8 +63,6 @@ export class OrdersTreeData extends Array<OrdersTreeDataItem> {
 }
 ```
 
-<!-- WebComponents -->
-
 ```html
 <igc-tree-grid id="grid" class="gridSize" height="500px" width="100%" >
     <igc-paginator per-page="10">
@@ -72,13 +70,9 @@ export class OrdersTreeData extends Array<OrdersTreeDataItem> {
 </igc-tree-grid>
 ```
 
-<!-- end: WebComponents -->
-
 ## Usage
 
 The [`IgcPaginatorComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpaginatorcomponent.html) component is used along with the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) component in the example below, but you can use it with any other component in case paging functionality is needed.
-
-<!-- WebComponents -->
 
 ```html
 <igc-tree-grid id="grid" className="gridSize">

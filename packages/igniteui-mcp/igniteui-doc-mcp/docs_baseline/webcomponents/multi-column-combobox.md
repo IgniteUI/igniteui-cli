@@ -245,8 +245,6 @@ export class SampleComboData {
 ```
 
 
-<!-- Angular, React, WebComponents -->
-
 ## Dependencies
 
 When installing the charts component, the core package must also be installed.
@@ -257,8 +255,6 @@ npm install --save igniteui-webcomponents-data-grids
 npm install --save igniteui-webcomponents-inputs
 npm install --save igniteui-webcomponents-layouts
 ```
-
-<!-- end: Angular, React, WebComponents -->
 
 ## Component Modules
 
@@ -279,11 +275,7 @@ ModuleManager.register(
 
 In order to display your objects in the Multi-Column Combo Box component, you will need to bind the `DataSource` property. This can be bound in the form of an array of complex objects. The following code demonstrates how to bind the data source property.
 
-<!-- React, WebComponents -->
-
 In the below code snippet, the "countryNames" collection is an any\[] full of custom objects.
-
-<!-- WebComponents -->
 
 ```html
 <igc-multi-column-combo-box id="comboBox" height="50px" width="400px">
@@ -302,8 +294,6 @@ constructor() {
 You can configure different properties of the Multi-Column Combo Box's bound `DataSource` to act as the display text for the control as well as the underlying value when a selection is made. This is done by setting the [`textField`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids.igcmulticolumncomboboxcomponent.html#textField) and [`valueField`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids.igcmulticolumncomboboxcomponent.html#valueField) properties of the control, respectively, to the name of the property on the data item that you want to represent these things.
 
 The following code snippet shows how to set these properties, given that the underlying data item has a "Country" and "ID" property:
-
-<!-- WebComponents -->
 
 ```html
 <igc-multi-column-combo-box id="comboBox" height="50px" width="400px">
@@ -325,8 +315,6 @@ By default, the Multi-Column Combo Box will show all of the properties on the un
 
 The following code snippet shows how to set this, and the resulting drop-down would only show the ID and Country columns:
 
-<!-- WebComponents -->
-
 ```html
 <igc-multi-column-combo-box id="comboBox" height="50px" width="400px">
 </igc-multi-column-combo-box>
@@ -343,8 +331,6 @@ constructor() {
 ### Setting Placeholder Text
 
 It is possible to configure the text that shows as a placeholder for when there is no selection in the Multi-Column Combo Box component. This is done by setting the [`placeholder`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids.igcmulticolumncomboboxcomponent.html#placeholder) property to the string you would like to be displayed. The following code demonstrates how to set this:
-
-<!-- WebComponents -->
 
 ```html
 <igc-multi-column-combo-box id="comboBox" height="50px" width="400px">
@@ -366,8 +352,6 @@ The user has the ability to sort the columns that are displayed in the Multi-Col
 Note, the TriState sort options will allow sorted columns to be unsorted.
 
 The following code demonstrates how to set the Multi-Column Combo Box to be able to sort by multiple columns tri-state.
-
-<!-- WebComponents -->
 
 ```html
 <igc-multi-column-combo-box id="comboBox" height="50px" width="400px">

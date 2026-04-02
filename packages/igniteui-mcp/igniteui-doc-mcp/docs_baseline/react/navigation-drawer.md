@@ -109,8 +109,6 @@ root.render(<NavDrawerAddDrawerItems />);
 
 ## Usage
 
-<!-- React -->
-
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
 
 ```cmd
@@ -123,6 +121,8 @@ You will then need to import the [`IgrNavDrawer`](https://www.infragistics.com/p
 import { IgrNavDrawer, IgrNavDrawerHeaderItem, IgrNavDrawerItem } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
+
+Before using the [`IgrNavDrawer`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrnavdrawer.html), you need to register it as follows:
 
 For a complete introduction to the Ignite UI for React, read the [**Getting Started**](../general-getting-started.md) topic.
 

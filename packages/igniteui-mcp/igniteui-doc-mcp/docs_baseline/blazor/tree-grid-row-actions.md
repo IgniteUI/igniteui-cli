@@ -43,7 +43,7 @@ They are added inside the [`IgbTreeGrid`](https://www.infragistics.com/blazor/do
 
 <!-- ComponentEnd: TreeGrid -->
 
-> \[!Note]
+> [!Note]
 > When `ActionStripComponent` is a child component of the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html), hovering a row will automatically show the UI.
 
 ## Custom Implementation

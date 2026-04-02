@@ -23,7 +23,7 @@ The Ignite UI for Blazor Row Selection feature in Blazor Grid allows users to in
 
 <!-- ComponentStart: Grid, HierarchicalGrid -->
 
-The sample below demonstrates the three types of [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html)'s **row selection** behavior. Use the drop-down below to enable each of the available selection modes. Use the checkbox to *hide* or *show* the row selector checkboxes.
+The sample below demonstrates the three types of [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html)'s **row selection** behavior. Use the drop-down below to enable each of the available selection modes. Use the checkbox to _hide_ or _show_ the row selector checkboxes.
 
 <!-- ComponentEnd: Grid, HierarchicalGrid -->
 
@@ -354,8 +354,6 @@ To enable multiple row selection in the [`IgbGrid`](https://www.infragistics.com
 ### Select Rows Programmatically
 
 The code snippet below can be used to select one or multiple rows simultaneously (via [`PrimaryKey`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_PrimaryKey)). Additionally, the second parameter of this method is a boolean property through which you may choose whether the previous row selection will be cleared or not. The previous selection is preserved by default.
-
-<!-- Blazor -->
 
 ```razor
     <IgbGrid Width="100%"

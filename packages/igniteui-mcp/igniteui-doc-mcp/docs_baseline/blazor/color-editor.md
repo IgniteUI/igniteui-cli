@@ -46,8 +46,6 @@ The Ignite UI for Blazor Color Editor is a lightweight color picker component. T
 
 ## Dependencies
 
-<!-- Blazor -->
-
 First, add the **IgniteUI.Blazor.Controls** namespace in the **\_Imports.razor** file:
 
 ```razor
@@ -63,20 +61,14 @@ builder.Services.AddIgniteUIBlazor(
 );
 ```
 
-<!-- end: Blazor -->
-
 ## Usage
 
 The simplest way to start using the `ColorEditor` is as follows:
-
-<!-- Blazor -->
 
 ```razor
 <IgbColorEditor>
 </IgbColorEditor>
 ```
-
-<!-- end:Blazor -->
 
 ## Binding to events
 
@@ -84,8 +76,6 @@ The Color Editor component raises the following events:
 
 - valueChanged
 - valueChanging
-
-<!-- Blazor -->
 
 ```razor
 <IgbColorEditor ValueChanged="@OnValueChanged" />
@@ -97,8 +87,6 @@ The Color Editor component raises the following events:
     }
 }
 ```
-
-<!-- end:Blazor -->
 
 <div class="divider--half"></div>
 

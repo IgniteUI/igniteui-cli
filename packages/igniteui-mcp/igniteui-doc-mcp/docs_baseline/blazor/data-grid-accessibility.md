@@ -9,22 +9,14 @@ _tocName: Accessibility Compliance
 _premium: true
 ---
 
-<!-- Blazor, WebComponents -->
-
-> \[!Note]
+> [!Note]
 > Please note that this control has been deprecated and replaced with the [Grid](../data-grid.md) component, and as such, we recommend migrating to that control. This will not be receiving any new features, bug fixes will be deprioritized. For help or questions on migrating your codebase to the Data Grid, please contact support.
-
-<!-- end: Blazor, WebComponents -->
 
 # Blazor Grid Accessibility Compliance
 
 The Ignite UI for Blazor Data Table / Data Grid supports accessibility and screen readers that interpret keyboard navigation interactions through the cells and columns of the grid.
 
-<!-- Blazor -->
-
 This is activated by setting `--use-accessibility` property to **true** explicitly in CSS, preferably using a div tag around the grid.
-
-<!-- end: Blazor -->
 
 ## Blazor Grid Accessible Example
 

@@ -53,8 +53,6 @@ root.render(<CheckboxOverview/>);
 
 At its core, the [`IgrCheckbox`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckbox.html) allows for a choice between selected/unselected state. The default styling is done according to the selection controls specification in the Material Design guidelines.
 
-<!-- React -->
-
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
 
 ```cmd
@@ -68,8 +66,6 @@ import { IgrCheckbox } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
 
-<!-- end: React -->
-
 <div class="divider--half"></div>
 
 The simplest way to start using the [`IgrCheckbox`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckbox.html) is as follows:
@@ -78,7 +74,7 @@ The simplest way to start using the [`IgrCheckbox`](https://www.infragistics.com
 <IgrCheckbox></IgrCheckbox>
 ```
 
-> \[!WARNING]
+> [!WARNING]
 > The [`IgrCheckbox`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckbox.html) component doesn't work with the standard `<form>` element. Use `Form` instead.
 
 ## Examples

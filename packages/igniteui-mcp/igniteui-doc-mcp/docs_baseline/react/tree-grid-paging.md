@@ -176,16 +176,12 @@ root.render(<Sample/>);
 }
 ```
 
-<!-- React -->
-
 ```tsx
 <IgrTreeGrid className="gridSize" height="500px" width="100%">
     <IgrPaginator perPage={10}>
     </IgrPaginator>
 </IgrTreeGrid>
 ```
-
-<!-- end: React -->
 
 ## Usage
 

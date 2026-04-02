@@ -175,7 +175,7 @@ To enable the [Advanced filtering](advanced-filtering.md) however, you need to s
 <IgbGrid Data=data AutoGenerate=true AllowAdvancedFiltering=true />
 ```
 
-> \[!Note]
+> [!Note]
 > You can enable both the `QuickFilter` or `ExcelStyleFilter` and the advanced filtering user interfaces in the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html). Both filtering user interfaces will work independently of one another. The final filtered result in the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) is the intersection between the results of the two filters.
 
 ## Interaction
@@ -201,7 +201,7 @@ The filtering feature is enabled for the [`IgbGrid`](https://www.infragistics.co
 </IgbGrid>
 ```
 
-> \[!Note]
+> [!Note]
 > If values of type **string** are used by a column of data type **date**, the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) won't parse them to **date** objects and using filtering conditions won't be possible. If you want to use **string** objects, additional logic should be implemented on the application level, in order to parse the values to **date** objects.
 
 ## Initial filtered state
@@ -257,8 +257,6 @@ The [`FilteringLogic`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI
 The default value of `AND` returns only the rows that match all the currently applied filtering expressions. Following the example above, a row will be returned when both the 'ProductName' cell value contains 'myproduct' and the 'Price' cell value is greater than 55.
 
 When set to `OR`, a row will be returned when either the 'ProductName' cell value contains 'myproduct' or the 'Price' cell value is greater than 55.
-
-<!-- WebComponents, Blazor, React -->
 
 ## Styling
 
@@ -488,11 +486,9 @@ public class NwindData
 ```
 
 
-<!-- end: WebComponents, Blazor, React -->
-
 ## Known Limitations
 
-> \[!Note]
+> [!Note]
 > Some browsers such as Firefox fail to parse regional specific decimal separators by considering them grouping separators, thus resulting in them being invalid. When inputting such values for a numeric column filter value, only the valid part of the number will be applied to the filtering expression. For further information, refer to the Firefox [issue](https://bugzilla.mozilla.org/show_bug.cgi?id=1199665).
 
 ## API References

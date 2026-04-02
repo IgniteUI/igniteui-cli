@@ -130,8 +130,6 @@ export class ExcelUtility {
 
 <div class="divider--half"></div>
 
-<!-- Angular, React, WebComponents -->
-
 ## Dependencies
 
 When installing the excel package, the core package must also be installed.
@@ -166,8 +164,6 @@ The Excel Library contains 5 modules that you can use to limit bundle size of yo
 - **IgxExcelXlsxModule** – This contains the load and save logic for xlsx (and related) type files – namely the Excel2007 related and StrictOpenXml WorkbookFormats.
 - **IgxExcelModule** – This references the other 4 modules and so basically ensures that all the functionality is loaded/available.
 
-<!-- end: Angular, React, WebComponents -->
-
 ## Supported Versions of Microsoft Excel
 
 The following is a list of the supported versions of Excel.\*\*
@@ -192,11 +188,7 @@ The following is a list of the supported versions of Excel.\*\*
 
 Now that the Excel Library module is imported, next step is to load a workbook.
 
-<!-- Angular, React, WebComponents -->
-
 In the following code snippet, an external [ExcelUtility](excel-utility.md) class is used to save and load a [`workbook`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.sheet.html#workbook).
-
-<!-- end: Angular, React, WebComponents -->
 
 In order to load and save [`workbook`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.sheet.html#workbook) objects, you can utilize the save method of the actual [`workbook`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.sheet.html#workbook) object, as well as its static `Load` method.
 

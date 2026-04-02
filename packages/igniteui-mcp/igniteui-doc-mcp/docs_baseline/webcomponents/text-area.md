@@ -15,19 +15,13 @@ The Ignite UI for Web Components Text Area represents a multi-line plain-text ed
 
 <div class="divider--half"></div>
 
-<!-- React, WebComponents, Blazor -->
-
 ```css
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
 
-<!-- end:React, WebComponents, Blazor -->
-
 ## Dependencies
-
-<!-- WebComponents -->
 
 To get started we need to import the [`IgcTextareaComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctextareacomponent.html) in our typescript file and register the component by calling the [defineComponents()](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/index.html#defineComponents) function as follows:
 
@@ -39,8 +33,6 @@ defineComponents(IgcTextareaComponent);
 ```
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
-
-<!-- end: WebComponents -->
 
 After we import the [`IgcTextareaComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctextareacomponent.html) component we are ready to start using it, so let's add our first Text Area.
 
@@ -74,11 +66,7 @@ There are three different resize options of the [`IgcTextareaComponent`](https:/
 ```
 
 
-<!-- WebComponents -->
-
 The full list of attributes of the text area can be found in [`IgcTextareaComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctextareacomponent.html) API.
-
-<!-- end: WebComponents -->
 
 ## Form Integration
 

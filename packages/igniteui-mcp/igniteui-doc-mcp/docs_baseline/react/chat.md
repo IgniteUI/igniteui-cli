@@ -149,32 +149,22 @@ root.render(<ChatOverview />);
 
 To get started, install the Ignite UI for React by running the following command:
 
-<!-- React -->
-
 ```cmd
 npm install igniteui-react
 ```
 
-<!-- end: React -->
-
 Once installed, you can import the component in your project and register it so it becomes available as a custom element:
-
-<!-- React -->
 
 ```tsx
 import { IgrChat } from "igniteui-react";
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
 
-<!-- end: React -->
-
 The CSS file includes one of our default themes. You can replace it with a different theme or create a custom one if you want the [`IgrChatComponent`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrchatcomponent.html) to match your application’s branding.
 
 ## Usage
 
 The simplest way to use the [`IgrChatComponent`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrchatcomponent.html) is to declare it as follows:
-
-<!-- React -->
 
 ```tsx
 import { IgrChat, IgrChatOptions } from 'igniteui-react';
@@ -189,13 +179,9 @@ return (
 );
 ```
 
-<!-- end: React -->
-
 Here, the `currentUserId` property tells the component which messages are “outgoing” (sent by the current user) versus “incoming” (sent by others). The `headerText` provides a title for the chat window.
 
 Once rendered, you can programmatically add messages:
-
-<!-- React -->
 
 ```tsx
 import { useRef } from 'react';
@@ -223,8 +209,6 @@ const ChatExample = () => {
 };
 ```
 
-<!-- end: React -->
-
 This approach makes it easy to plug the Chat into your own data source, such as a server endpoint, a chatbot engine, or a collaborative app backend.
 
 ### Properties
@@ -245,20 +229,14 @@ These properties make it straightforward to synchronize the Chat’s UI with you
 Modern conversations are rarely limited to text alone. The Chat component includes built-in support for file attachments, allowing users to share images, documents, and other files.
 By default, the input area includes an attachment button. You can control which file types are allowed by setting the `acceptedFiles` property:
 
-<!-- React -->
-
 ```tsx
 const options: IgrChatOptions = {
   acceptedFiles="image/*,.pdf",
 };
 ```
 
-<!-- end: React -->
-
 In this example, users will only be able to upload images and PDF files.
 If your use case does not require attachments, you can easily turn them off:
-
-<!-- React -->
 
 ```tsx
 const options: IgrChatOptions = {
@@ -266,14 +244,10 @@ const options: IgrChatOptions = {
 };
 ```
 
-<!-- end: React -->
-
 ### Suggestions
 
 Quick reply suggestions provide users with pre-defined responses they can tap to reply instantly. This feature is particularly useful in chatbots, customer service flows, or when guiding users through a structured process.
 You can provide suggestions by binding an array of strings to the suggestions property. The `suggestions-position` attribute lets you control where they are displayed: either below the input area or below the messages list.
-
-<!-- React -->
 
 ```tsx
 const options: IgrChatOptions = {
@@ -287,8 +261,6 @@ return (
 );
 ```
 
-<!-- end: React -->
-
 This approach helps streamline user interactions by reducing the need to type repetitive answers and improves the overall experience in guided conversations.
 
 ### Typing Indicator
@@ -296,15 +268,11 @@ This approach helps streamline user interactions by reducing the need to type re
 Conversations feel more natural when participants can see that the other person is typing. The Chat component provides this behavior through the `isTyping` property of the options object.
 When set to true, the chat shows a subtle typing indicator below the messages:
 
-<!-- React -->
-
 ```tsx
 const options: IgrChatOptions = {
   isTyping: true
 };
 ```
-
-<!-- end: React -->
 
 This feature is typically toggled programmatically, for example when receiving a typing event from your backend service.
 
@@ -348,8 +316,6 @@ This level of granularity means you can tweak just one part (for example, how at
 
 This example shows how to replace the message bubble with your own template:
 
-<!-- React -->
-
 ```tsx
 const options = {
   renderers: {
@@ -363,13 +329,9 @@ const options = {
 };
 ```
 
-<!-- end: React -->
-
 #### Example: Custom Input Area
 
 By default, the chat input is a text area. You can override it to provide a more tailored experience, such as adding a voice input button:
-
-<!-- React -->
 
 ```tsx
 const options = {
@@ -386,8 +348,6 @@ const options = {
 };
 ```
 
-<!-- end: React -->
-
 #### Example: Extending Input Actions
 
 The [`IgrChatComponent`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrchatcomponent.html) component provides two renderers which are useful when you want to keep the default actions (upload and send) but extend them with additional controls:
@@ -397,8 +357,6 @@ The [`IgrChatComponent`](https://www.infragistics.com/products/ignite-ui-react/d
 
 For example, you might want to add a voice recording button after the upload button, or a menu of extra options after the send button.
 In the following example, the default upload button is preserved, but we add a microphone button next to it. On the other end, we remove the default send button and replace it with a custom Ask button and a “more” menu:
-
-<!-- React -->
 
 ```tsx
 const _actionsStartTemplate = () => (
@@ -421,8 +379,6 @@ const options = {
 };
 ```
 
-<!-- end: React -->
-
 In this setup:
 
 - The upload button remains in place.
@@ -433,9 +389,9 @@ This approach gives you full flexibility over the chat input bar, letting you ad
 
 ### Markdown Rendering
 
-The Chat component includes built-in support for Markdown content through the `createMarkdownRenderer` helper, which is exported from the <!-- React --> `igniteui-react/extras` <!-- end: React --> entry point of the main package. This allows you to display messages with formatted text, links, lists, and even syntax-highlighted code blocks, while ensuring that all rendered HTML is sanitized for security.
+The Chat component includes built-in support for Markdown content through the `createMarkdownRenderer` helper, which is exported from the  `igniteui-react/extras`  entry point of the main package. This allows you to display messages with formatted text, links, lists, and even syntax-highlighted code blocks, while ensuring that all rendered HTML is sanitized for security.
 
-> \[!Note]
+> [!Note]
 > To use the Markdown renderer, you need to install the following peer dependencies in your project:
 
 ```cmd
@@ -443,8 +399,6 @@ npm install marked marked-shiki shiki dompurify
 ```
 
 By default, messages are rendered as plain text. If you want to enable Markdown support, you can override the messageContent renderer and use the Markdown renderer as shown below:
-
-<!-- React -->
 
 ```tsx
 import { createMarkdownRenderer } from 'igniteui-react/extras';
@@ -458,8 +412,6 @@ const options = {
   }
 };
 ```
-
-<!-- end: React -->
 
 In this example:
 
@@ -493,8 +445,6 @@ This will enable highlighted code blocks for JavaScript, Python, and Go, styled 
 
 To integrate with your application logic, the Chat component emits a set of events:
 
-<!-- React -->
-
 - onMessageCreated – when a new message is created.
 - onMessageReact – when a message is reacted to.
 - onAttachmentClick – when an attachment is clicked.
@@ -506,11 +456,7 @@ To integrate with your application logic, the Chat component emits a set of even
 - onInputFocus / onInputBlur – input focus events.
 - onInputChange – when the input value changes.
 
-<!-- end: React -->
-
 You can listen for these events and sync them with your backend:
-
-<!-- React -->
 
 ```tsx
 const chatRef = useRef<IgrChat>(null);
@@ -518,8 +464,6 @@ chatRef.current.addEventListener('onMessageCreated', (e) => {
   console.log('Message:', e.detail);
 });
 ```
-
-<!-- end: React -->
 
 ## Styling
 

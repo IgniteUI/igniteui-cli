@@ -13,7 +13,7 @@ _premium: true
 
 In the React chart, the data annotation layers allow you to annotate data plotted in Data Chart with sloped lines, vertical/horizontal lines (aka axis slices), vertical/horizontal strips (targeting specific axis), rectangles, and even parallelograms (aka bands). With data-binding supported, you can create as many annotations as you want to customize your charts. Also, you can combine different annotation layers and you can overlay text inside of plot area to annotated important events, patterns, and regions in your data.
 
-> \[!Note]
+> [!Note]
 > These features are designed to support cartesian axes and does not currently support radius or angle axes.
 
 For example, you can annotates stock prices with stock events and patterns.

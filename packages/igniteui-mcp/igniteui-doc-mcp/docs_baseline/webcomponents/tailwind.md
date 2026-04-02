@@ -53,27 +53,11 @@ Let’s look at how to use each.
 
 Our color utility classes are powered by tokens from each Ignite UI theme. You can apply them directly in your HTML:
 
-<!-- WebComponents -->
-
-```html
-<h1 class="bg-primary-500 text-primary-500-contrast">This is a title</h1>
-```
-
-<!-- end: WebComponents -->
-
 You can explore Tailwind’s full color system in this [topic](https://tailwindcss.com/docs/color), and apply it using the Ignite UI-provided class names. <br>
 
 ### Shadow utility classes
 
 You can add depth using any of the predefined [elevation levels](https://www.infragistics.com/products/ignite-ui-web-components/web-components/components/themes/elevations) (from 0 to 24):
-
-<!-- WebComponents -->
-
-```html
-<div class="shadow-elevation-8">Elevated container</div>
-```
-
-<!-- end: WebComponents -->
 
 You can find all the shadow-related utility classes provided by Tailwind in this [topic](https://tailwindcss.com/docs/box-shadow) <br>
 
@@ -81,14 +65,6 @@ You can find all the shadow-related utility classes provided by Tailwind in this
 
 To apply the font, add the `font-ig` class to a top-level element. You can also define the base font size using the `text-base` utility class.
 We provide custom utility classes for each typography level (e.g., h1, h2, body-1). Use them like so:
-
-<!-- WebComponents -->
-
-```html
-<p class="type-style-h3">This paragraph gets the h3 styles</p>
-```
-
-<!-- end: WebComponents -->
 
 Each class applies all necessary font settings, spacing, and sizing according to the [Ignite UI type scale](https://www.infragistics.com/products/ignite-ui-web-components/web-components/components/themes/typography).
 
@@ -111,7 +87,7 @@ main {
 ```
 
 
-> \[!NOTE]
+> [!NOTE]
 > This sample is fictional and fully custom, it’s not part of the Ignite UI component library.
 
 ## Summary

@@ -255,7 +255,8 @@ igc-card-content {
 ```
 
 
-> \[!Warning] Due to the iframe permissions policy, the fullscreen button in this example will only work when the example is opened in standalone mode by clicking the 'Expand to fullscreen' button in the top-right corner.
+> [!Warning]
+> Due to the iframe permissions policy, the fullscreen button in this example will only work when the example is opened in standalone mode by clicking the 'Expand to fullscreen' button in the top-right corner.
 
 ## Usage
 
@@ -268,30 +269,20 @@ The Tile Manager offers two components that we can use:
 
 ### Getting Started
 
-<!-- React -->
-
 To start using the Tile Manager, first, you need to install the Ignite UI for React by running the following command:
 
 ```cmd
 npm install igniteui-react
 ```
 
-<!-- end: React -->
-
 Before using the Tile Manager, you need to import it as follows:
-
-<!-- React -->
 
 ```tsx
 import { IgrTile, IgrTileManager } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
 
-<!-- end: React -->
-
 Now you can start with a basic configuration of the React Tile Manager.
-
-<!-- React -->
 
 ```tsx
   <IgrTileManager>
@@ -307,8 +298,6 @@ Now you can start with a basic configuration of the React Tile Manager.
   </IgrTileManager>
 ```
 
-<!-- end: React -->
-
 For a complete introduction to the Ignite UI for React, read the [**Getting Started**](../general-getting-started.md) topic.
 
 ## Layout
@@ -316,8 +305,6 @@ For a complete introduction to the Ignite UI for React, read the [**Getting Star
 ### Columns and Rows
 
 We can specify the number of grid columns for our Tile Manager. To do this, simply set the [`columnCount`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtilemanager.html#columnCount) property to the desired number of columns. If the number is less than one or the property is not set, the Tile Manager will create as many columns as can fit, with each column being at least 200px wide and expanding to equally share the available space. When the viewport dimensions change, the tiles will also rearrange themselves to maximize the use of space.
-
-<!-- React -->
 
 ```tsx
 <IgrTileManager columnCount={2}>
@@ -337,15 +324,11 @@ We can specify the number of grid columns for our Tile Manager. To do this, simp
 </IgrTileManager>
 ```
 
-<!-- end: React -->
-
 In this code snippet, the three tiles in the Tile Manager will be arranged into 2 rows and 2 columns.
 
 ### Gap
 
 Another property that can be used in the Tile Manager is the [`gap`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtilemanager.html#gap) property, which defines the space between tiles. The value of the [`gap`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtilemanager.html#gap) property must be a number followed by a length unit (e.g., px, rem, em, ...). This value will apply to both the horizontal gap (width) and the vertical gap (height) between tiles.
-
-<!-- React -->
 
 ```tsx
 <IgrTileManager gap="20px">
@@ -361,13 +344,9 @@ Another property that can be used in the Tile Manager is the [`gap`](https://www
 </IgrTileManager>
 ```
 
-<!-- end: React -->
-
 ### Minimum width and height
 
 We also have properties for setting the minimum width of the columns ([`minColumnWidth`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtilemanager.html#minColumnWidth)) and the minimum height of the rows ([`minRowHeight`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtilemanager.html#minRowHeight)) in the Tile Manager. Similar to the gap property, the values for these properties must be a number followed by a length unit. These values will define the minimum width for all columns and the minimum height for all rows in the Tile Manager.
-
-<!-- React -->
 
 ```tsx
 <IgrTileManager minColumnWidth="200px" minRowHeight="150px">
@@ -382,8 +361,6 @@ We also have properties for setting the minimum width of the columns ([`minColum
   ...
 </IgrTileManager>
 ```
-
-<!-- end: React -->
 
 ### Example
 
@@ -507,8 +484,6 @@ The Tile component has properties that can be set individually for each tile. So
 - The [`disableMaximize`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtile.html#disableMaximize) property hides the default maximize toggle action button.
 - The [`disableResize`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtile.html#disableResize) property prevents the tile from being resized by the user.
 
-<!-- React -->
-
 ```tsx
 <IgrTileManager>
   <IgrTile colSpan={2} disableResize={true}>
@@ -522,8 +497,6 @@ The Tile component has properties that can be set individually for each tile. So
   ...
 </IgrTileManager>
 ```
-
-<!-- end: React -->
 
 The Tile component also exposes several slots which you can use:
 
@@ -548,8 +521,6 @@ By default, the header section includes two action buttons:
 
 If you want to display just one of the two buttons, you can set either [`disableMaximize`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtile.html#disableMaximize) or [`disableFullscreen`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtile.html#disableFullscreen) property. To customize the appearance you can use the `maximize-action` slot for the maximize button, or the `fullscreen-action` slot for the fullscreen button.
 
-<!-- React -->
-
 ```tsx
 <IgrTileManager>
   <IgrTile disableFullscreen={true}>
@@ -559,8 +530,6 @@ If you want to display just one of the two buttons, you can set either [`disable
   </IgrTile>
 </IgrTileManager>
 ```
-
-<!-- end: React -->
 
 You also have the option to disable both action buttons and create custom ones according to your preferences.
 
@@ -744,13 +713,12 @@ Resizing in the Tile Manager is a functionality that allows tiles to be resized 
 
 To ensure smooth resizing, a ghost element is used instead of directly modifying the tile’s dimensions. This element appears on top of the original tile, displaying its current dimensions when resizing begins, and it updates in real time as the user drags any of the resize handles.
 
-> \[!Note] If the ghost element exceeds the available grid space, it will automatically adjust to the largest possible span within the grid's limits.
+> [!Note]
+> If the ghost element exceeds the available grid space, it will automatically adjust to the largest possible span within the grid's limits.
 
 The Tile Manager automatically rearranges itself when a tile changes size, ensuring that there is minimal empty space. That's why expanding a tile may push adjacent tiles into new positions, while shrinking creates gaps that other tiles may fill dynamically. This ensures that the Tile Manager stays as compact as possible, without any overlapping tiles, and that all movements remain within the defined grid structure.
 
 We can use the [`resizeMode`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtilemanager.html#resizeMode) property to control how resizing is applied in the Tile Manager. It can be set to `none`, `hover` or `always`, which determines when the resize adorners are visible. The default value is `none` and the tile could not be resized.
-
-<!-- React -->
 
 ```tsx
 <IgrTileManager resizeMode="hover">
@@ -762,8 +730,6 @@ We can use the [`resizeMode`](https://www.infragistics.com/products/ignite-ui-re
   </IgrTile>
 </IgrTileManager>
 ```
-
-<!-- end: React -->
 
 You can see the difference between the three states in the example below:
 
@@ -899,11 +865,10 @@ You can reorder tiles in the Tile Manager using the drag-and-drop feature. By de
 - With the `tile` option, you can click and hold anywhere on an individual tile to start dragging it.
 - With the `tile-header` option, you can only click and hold in the tile's header section to start the dragging process.
 
-> \[!Note] While the tile is in maximized or fullscreen state, the tile cannot be dragged.
+> [!Note]
+> While the tile is in maximized or fullscreen state, the tile cannot be dragged.
 
 Similar to resizing, when you initiate the drag-and-drop process, a ghost element appears beneath the tile you’ve grabbed. As you drag the tile, the ghost element moves with it, dynamically reordering the other tiles in real time. This allows you to preview how the tile grid will look when you drop the tile.
-
-<!-- React -->
 
 ```tsx
 <IgrTileManager dragMode="tile-header">
@@ -917,8 +882,6 @@ Similar to resizing, when you initiate the drag-and-drop process, a ghost elemen
   </IgrTile>
 </IgrTileManager>
 ```
-
-<!-- end: React -->
 
 ```css
 /* shared styles are loaded from: */
@@ -1170,8 +1133,6 @@ igc-tile:nth-child(n+2)::part(trigger) {
 
 You can also change the icon of the adorners to a custom one using the `side-adorner`, `corner-adorner`, and `bottom-adorner` slots. For instance:
 
-<!-- React -->
-
 ```tsx
 <IgrTile>
   <IgrIcon slot="side-adorner" className="side" name="indicator"></IgrIcon>
@@ -1180,8 +1141,6 @@ You can also change the icon of the adorners to a custom one using the `side-ado
   <span slot="title">Tile header</span>
 </IgrTile>
 ```
-
-<!-- end: React -->
 
 ```css
 /* shared styles are loaded from: */

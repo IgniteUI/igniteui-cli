@@ -65,16 +65,12 @@ export class AthletesData extends Array<AthletesDataItem> {
 }
 ```
 
-<!-- WebComponents -->
-
 ```html
 <igc-grid id="grid" class="gridSize" height="500px" width="100%" >
     <igc-paginator per-page="10">
     </igc-paginator>
 </igc-grid>
 ```
-
-<!-- end: WebComponents -->
 
 <!-- ComponentStart: Grid -->
 
@@ -89,8 +85,6 @@ Integration between Paging and Group By is described in the [Group By](groupby.m
 ## Usage
 
 The [`IgcPaginatorComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpaginatorcomponent.html) component is used along with the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) component in the example below, but you can use it with any other component in case paging functionality is needed.
-
-<!-- WebComponents -->
 
 ```html
 <igc-grid id="grid" className="gridSize">

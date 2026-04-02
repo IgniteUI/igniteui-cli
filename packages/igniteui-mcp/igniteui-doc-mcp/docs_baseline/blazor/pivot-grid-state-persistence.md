@@ -13,19 +13,13 @@ _premium: true
 
 # Blazor Pivot Grid State Persistence
 
-<!-- Blazor -->
-
 The Ignite UI for Blazor State Persistence in Blazor Pivot Grid allows developers to easily save and restore the grid state. When the [`IgbGridState`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridState.html) is applied on the Blazor [`IgbPivotGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotGrid.html), it exposes the `GetStateAsStringAsync` and `ApplyStateFromStringAsync` methods that developers can use to achieve state persistence in any scenario.
-
-<!-- end: Blazor -->
 
 ## Supported Features
 
 [`IgbGridState`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridState.html) supports saving and restoring the state of the following features:
 
 <!-- ComponentStart: PivotGrid -->
-
-<!-- Blazor, React -->
 
 - `Sorting`
 - `Filtering`
@@ -36,19 +30,13 @@ The Ignite UI for Blazor State Persistence in Blazor Pivot Grid allows developer
   - Pivot Configuration properties defined by the `IPivotConfiguration` interface.
   - Pivot Dimension and Value functions are restored using application level code, see [Restoring Pivot Configuration](state-persistence.md#restoring-pivot-configuration) section.
 
-<!-- end: Blazor, React -->
-
 <!-- ComponentEnd: PivotGrid -->
 
 ## Usage
 
-<!-- Blazor -->
-
 The `GetStateAsStringAsync` returns a serialized JSON string, so developers can just take it and save it on any data storage (database, cloud, browser localStorage, etc).
 
 The developer may choose to get only the state for a certain feature/features, by passing in an array with feature names as an argument. Empty array will result to using the default state options.
-
-<!-- end: Blazor -->
 
 <!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid, PivotGrid -->
 
@@ -68,8 +56,6 @@ The developer may choose to get only the state for a certain feature/features, b
 }
 ```
 
-<!-- Blazor -->
-
 `ApplyStateFromStringAsync` - The method accepts a serialized JSON string as argument and will restore the state of each feature found in the JSON string or specified features as second argument.
 
 ```razor
@@ -77,11 +63,7 @@ gridState.ApplyStateFromStringAsync(gridStateString, new string[0]);
 gridState.ApplyStateFromStringAsync(sortingFilteringStates, new string[0])
 ```
 
-<!-- Blazor -->
-
 The [`Options`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridStateBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridStateBaseDirective_Options) object implements the [`IgbGridStateOptions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridStateOptions.html) interface, i.e. for every key, which is the name of a certain feature, there is the boolean value indicating if this feature state will be tracked. `GetStateAsStringAsync` methods will not put the state of these features in the returned value and `ApplyStateFromStringAsync` methods will not restore state for them.
-
-<!-- end: Blazor -->
 
 <!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid, PivotGrid -->
 

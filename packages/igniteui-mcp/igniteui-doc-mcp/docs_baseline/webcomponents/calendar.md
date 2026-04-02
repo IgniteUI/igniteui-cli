@@ -27,13 +27,13 @@ The following Web Components [`IgcCalendarComponent`](https://www.infragistics.c
 
 ## How To Create a Calendar in Web Components with Ignite UI
 
-<!-- WebComponents -->
-
 First, you need to install the Ignite UI for Web Components by running the following command:
 
 ```cmd
 npm install igniteui-webcomponents
 ```
+
+Before using the [`IgcCalendarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html), you need to register it as follows:
 
 ```ts
 import { defineComponents, IgcCalendarComponent } from 'igniteui-webcomponents';
@@ -86,10 +86,10 @@ The Ignite UI for Web Components Calendar component allows you to switch between
 
 By default, the Ignite UI for Web Components Calendar component renders a header area which contains information about the selected dates. You could hide the header by setting the `HasHeader` property to **false**. You could also configure `vertical` or `horizontal` orientation of the header using the [`headerOrientation`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html#headerOrientation) property.
 
-> \[!Note]
+> [!Note]
 > Please note that the Ignite UI for Web Components Calendar header is not rendered when the [`selection`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html#selection) is set to multiple.
 
-> \[!Note]
+> [!Note]
 > Please note that the Ignite UI for Web Components Calendar DOM properties use `camelCase` naming while their corresponding HTML attributes are using `kebab-case`. For example the [`headerOrientation`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html#headerOrientation) property corresponds to the `header-orientation` attribute.
 
 The Ignite UI for Web Components Calendar component exposes a `title` slot which allows you to customize the title of the header.
@@ -107,8 +107,6 @@ The following sample demonstrates the above configuration:
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
-<!-- WebComponents, React -->
 
 ### Localization and Formatting
 
@@ -156,8 +154,6 @@ If everything went well, we should now have a Calendar with customized display, 
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
-<!-- end: WebComponents, React -->
 
 ### Disabled dates
 
@@ -263,8 +259,6 @@ You could control the size and spacing of the calendar inner elements using the 
 ### Events
 
 The Calendar component emits the `Change` event when the selected dates are changed by the end user. You can subscribe to the event like this:
-
-<!-- WebComponents -->
 
 ```ts
 this.calendar.addEventListener('igcChange', ev => console.log(ev.detail));

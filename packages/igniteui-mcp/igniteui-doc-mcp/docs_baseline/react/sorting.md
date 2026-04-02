@@ -10,11 +10,7 @@ _tocName: Sorting
 
 # Sort operations
 
-<!-- React, WebComponents -->
-
 The Grid Lite supports sorting operations on its data source. Data sorting is controlled on per-column level, allowing you to have sortable and non-sortable columns, while the grid itself controls certain sort behaviors. By default, sorting on a column is disabled unless explicitly configured with the `sortable` property of the column.
-
-<!-- end: React, WebComponents -->
 
 ```tsx
 return (
@@ -24,11 +20,7 @@ return (
 );
 ```
 
-<!-- React -->
-
 You can also control whether the sort operations for string columns should be case sensitive by using the `sortingCaseSensitive` property.
-
-<!-- end: React -->
 
 ```tsx
 return (
@@ -41,8 +33,6 @@ return (
   </IgrGridLite>
 );
 ```
-
-<!-- React -->
 
 For custom comparison logic, set the `sortConfiguration` property with a `comparer` function:
 
@@ -63,8 +53,6 @@ return (
   </IgrGridLite>
 );
 ```
-
-<!-- end: React -->
 
 ```typescript
 export type UserSimple = {
@@ -251,13 +239,7 @@ root.render(<GridLiteSortConfig/>);
 
 ## Single and multi-sorting
 
-<!-- React, WebComponents -->
-
 The Grid Lite supports both single and multi-column sorting. Multi-column is enabled by default and can be configured through the `sortingOptions` property of the grid. The `mode` property accepts `'single'` or `'multiple'` as values.
-
-<!-- end: React, WebComponents -->
-
-<!-- React -->
 
 ```tsx
 // Enable single-column sorting
@@ -267,30 +249,24 @@ gridRef.current.sortingOptions = { mode: 'single' };
 <IgrGridLite sortingOptions={{ mode: 'single' }}/>
 ```
 
-> \[!NOTE]
+> [!NOTE]
 > The single/multi-column sorting behavior controls how end-users interact with the Grid Lite. Sorting through the API with multiple expression will still work when single sorting is enabled.
 
 ### Tri-state sorting
 
 The Grid Lite supports tri-state sorting and it is always enabled. End-users will cycle through the following direction states when clicking on sortable column headers:
 
-<!-- React, WebComponents -->
-
-    ascending -> descending -> none -> ascending
+```
+ascending -> descending -> none -> ascending
+```
 
 where `none` is the initial state of the data, that is to say with no sorting applied by the grid.
-
-<!-- end: React, WebComponents -->
 
 ### Sorting Indicators
 
 When multi-column sort is enabled, the column headers will display a sorting indicator, which is a number representing the order in which the sorting operations were applied.
 
-<!-- React, WebComponents -->
-
 The following sample shows the grid `sortingOptions` property and how it controls the grid sorting behavior.
-
-<!-- end: React, WebComponents -->
 
 ```typescript
 export type UserSimple = {
@@ -550,11 +526,7 @@ root.render(<Sample />);
 
 ## Sort Model
 
-<!-- React, WebComponents -->
-
 The building block for sort operations in the Grid Lite is the `SortingExpression<T>` which has the following properties:
-
-<!-- end: React, WebComponents -->
 
 ```typescript
 type SortingExpression<T> = {
@@ -584,15 +556,9 @@ an end-user interacts with the component. See below for additional information.
 
 ## Sort API
 
-<!-- React, WebComponents -->
-
 The Grid Lite exposes two main approaches for applying sort operations from its API. Either through the `sort()`/`clearSort()` methods or through the `sortingExpressions` property.
 
 The `sort()` method accepts either a single expression or an array of sort expression and then sorts the grid data based on those expressions.
-
-<!-- end: React, WebComponents -->
-
-<!-- React -->
 
 ```typescript
 // Single
@@ -605,14 +571,8 @@ gridRef.current.sort([
 ]);
 ```
 
-<!-- React, WebComponents -->
-
 The `clearSort()` method, as the name implies, clears the sort state of a single column or the whole grid component, depending
 on the passed arguments.
-
-<!-- end: React, WebComponents -->
-
-<!-- React -->
 
 ```typescript
 // Clear the sort state for the `price` column.
@@ -624,14 +584,8 @@ gridRef.current.clearSort();
 
 ### Initial Sorting State
 
-<!-- React, WebComponents -->
-
 The `sortingExpressions` property is very similar in behavior to the `sort()` method call. It exposes a declarative way to control
 sort state in the grid, but the most useful property is the ability to set initial sort state when the Grid Lite is first rendered.
-
-<!-- end: React, WebComponents -->
-
-<!-- React -->
 
 Here is an example:
 
@@ -646,11 +600,7 @@ return (
 );
 ```
 
-<!-- end: React -->
-
 It can be used to get the current sort state of the component and do additional processing depending on another state in your application.
-
-<!-- React -->
 
 ```typescript
 const state = gridRef.current.sortingExpressions;
@@ -660,22 +610,14 @@ saveUserSortState(state);
 
 ## Events
 
-<!-- React, WebComponents -->
-
 When a sorting operation is performed through the UI, the component emits a custom `sorting` event. The `detail` property is the sort expression which will be applied by the Grid Lite. The event is cancellable and if cancelled will stop the current sort operation.
 
 After the grid applies the new sorting state, a `sorted` event is emitted. It contains the expression which was used in the last sort operation and it is not cancellable.
-
-<!-- React -->
 
 ```typescript
 gridRef.current.addEventListener('sorting', (event: CustomEvent<SortingExpression<T>>) => { ... });
 gridRef.current.addEventListener('sorted', (event: CustomEvent<SortingExpression<T>>) => { ... });
 ```
-
-<!-- end: React -->
-
-<!-- end: React, WebComponents -->
 
 In the following sample, when you try to sort the **Name** and **Rating** columns, the operation will be cancelled. Watch the event log below to see it in action.
 
@@ -939,40 +881,15 @@ root.render(<GridLiteSortConfigEvents/>);
 ```
 
 
-<!-- React, WebComponents -->
-
 ## Remote sort operations
 
 In cases where sorting must be done remotely or you want to save the current state/data to a server somewhere, the Grid Lite exposes a hook where you can implement and customize this behavior.
 
-<!-- React, WebComponents -->
-
 Using the `dataPipelineConfiguration` property, you can provide a custom hook which will be called each time a sort operation is about to run. The callback is passed a `DataPipelineParams` object.
-
-```typescript
-export type DataPipelineParams<T extends object> = {
-  /**
-   * The current data state of the grid.
-   */
-  data: T[];
-  /**
-   * The grid component itself.
-   */
-  grid: IgcGridLite<T>;
-  /**
-   * The type of data operation being performed.
-   */
-  type: 'sort' | 'filter';
-};
-```
-
-<!-- React -->
 
 ```typescript
 gridRef.current.dataPipelineConfiguration = { sort: (params: DataPipelineParams<T>) => T[] | Promise<T[]> };
 ```
-
-<!-- end: React -->
 
 <!-- End: React, WebComponents -->
 
@@ -1260,8 +1177,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<GridLiteSortConfigPipeline/>);
 ```
 
-
-<!-- end: React, WebComponents -->
 
 <!-- TODO ## API References
 

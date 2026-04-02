@@ -591,8 +591,6 @@ public onLoad() {
 }
 ```
 
-<!-- Angular, React, WebComponents -->
-
 ## Custom Summaries
 
 In some situations, you may want to expand the default set of summaries. For example, if you were looking to show the number of times a particular value in a column appears, a custom summary would be required for this.
@@ -641,8 +639,6 @@ class CustomDomestic extends SummaryCalculator
     }
 }
 ```
-
-<!--end: Angular, React, WebComponents -->
 
 ## API References
 

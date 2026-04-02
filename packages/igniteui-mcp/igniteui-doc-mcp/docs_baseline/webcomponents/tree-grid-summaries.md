@@ -56,7 +56,7 @@ export class OrdersTreeData extends Array<OrdersTreeDataItem> {
 ```
 
 
-> \[!Note]
+> [!Note]
 > The summary of the column is a **function of all column values**, unless filtering is applied, then the summary of the column will be **function of the filtered result values**
 
 [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) summaries can also be enabled on a per-column level in Ignite UI for Web Components, which means that you can activate it only for columns that you need. [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) summaries gives you a predefined set of default summaries, depending on the type of data in the column, so that you can save some time:
@@ -83,8 +83,6 @@ All available column data types could be found in the official [Column types top
 
 [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) summaries are enabled per-column by setting [`hasSummary`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#hasSummary) property to **true**. It is also important to keep in mind that the summaries for each column are resolved according to the column data type. In the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) the default column data type is `string`, so if you want `number` or `date` specific summaries you should specify the [`dataType`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#dataType) property as `number` or `date`. Note that the summary values will be displayed localized, according to the grid [`locale`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#locale) and column [`pipeArgs`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#pipeArgs).
 
-<!-- WebComponents -->
-
 ```html
 <igc-tree-grid id="grid1" auto-generate="false" height="800px" width="800px">
     <igc-column field="ID" header="Order ID">
@@ -101,8 +99,6 @@ All available column data types could be found in the official [Column types top
 The other way to enable/disable summaries for a specific column or a list of columns is to use the public method [`enableSummaries`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#enableSummaries)/[`disableSummaries`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#disableSummaries) of the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html).
 
 <!-- ComponentStart: TreeGrid -->
-
-<!-- WebComponents -->
 
 ```html
 <igc-tree-grid auto-generate="false" name="treeGrid" id="treeGrid" primary-key="ID">
@@ -128,10 +124,6 @@ constructor() {
 }
 ```
 
-<!-- end: WebComponents -->
-
-<!-- Angular, WebComponents -->
-
 ```typescript
 public enableSummary() {
     this.treeGrid.enableSummaries([
@@ -146,17 +138,11 @@ public disableSummary() {
 
 <!-- ComponentEnd: TreeGrid -->
 
-<!-- Angular, WebComponents, Blazor -->
-
 ## Custom Tree Grid Summaries
 
 If these functions do not fulfill your requirements you can provide a custom summary for the specific columns.
 
-<!-- WebComponents -->
-
 In order to achieve this you have to override one of the base classes [`IgcSummaryOperand`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcsummaryoperand.html), [`IgcNumberSummaryOperand`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcnumbersummaryoperand.html) or [`IgcDateSummaryOperand`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcdatesummaryoperand.html) according to the column data type and your needs. This way you can redefine the existing function or you can add new functions. [`IgcSummaryOperand`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcsummaryoperand.html) class provides the default implementation only for the [`count`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcsummaryoperand.html#count) method. [`IgcNumberSummaryOperand`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcnumbersummaryoperand.html) extends [`IgcSummaryOperand`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcsummaryoperand.html) and provides implementation for the `Min`, `Max`, `Sum` and `Average`. [`IgcDateSummaryOperand`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcdatesummaryoperand.html) extends [`IgcSummaryOperand`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcsummaryoperand.html) and additionally gives you `Earliest` and `Latest`.
-
-<!-- end: WebComponents -->
 
 ```typescript
 import { IgcSummaryResult, IgcSummaryOperand, IgcNumberSummaryOperand, IgcDateSummaryOperand } from 'igniteui-webcomponents-grids';
@@ -195,14 +181,12 @@ interface IgcSummaryResult {
 and take optional parameters for calculating the summaries.
 See [Custom summaries, which access all data](#custom-summaries-which-access-all-data) section below.
 
-> \[!Note]
+> [!Note]
 > In order to calculate the summary row height properly, the Tree Grid needs the [`operate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcsummaryoperand.html#operate) method to always return an array of [`IgcSummaryResult`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcsummaryresult.html) with the proper length even when the data is empty.
 
 <!-- ComponentStart: TreeGrid -->
 
 And now let's add our custom summary to the column [`title`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#title). We will achieve that by setting the Summaries\` property to the class we create below.
-
-<!-- WebComponents -->
 
 ```html
 <igc-tree-grid auto-generate="false" name="treeGrid" id="treeGrid" primary-key="ID">
@@ -220,8 +204,6 @@ constructor() {
     column1.summaries = this.mySummary;
 }
 ```
-
-<!-- end: WebComponents -->
 
 ```typescript
 export class TreeGridComponent implements OnInit {
@@ -256,8 +238,6 @@ class MySummary extends IgcNumberSummaryOperand {
 <!-- ComponentEnd: TreeGrid -->
 
 <!-- ComponentStart: Grid, TreeGrid -->
-
-<!-- WebComponents -->
 
 ```typescript
 export class EmployeesFlatDataItem {
@@ -330,15 +310,11 @@ export class EmployeesFlatData extends Array<EmployeesFlatDataItem> {
 ```
 
 
-<!-- end: WebComponents -->
-
 <!-- ComponentEnd: Grid, TreeGrid -->
 
 <!-- ComponentStart: TreeGrid -->
 
 <!-- ComponentEnd: TreeGrid -->
-
-<!-- end: Angular, WebComponents, Blazor -->
 
 ### Summary Template
 
@@ -446,27 +422,13 @@ export class EmployeesNestedTreeData extends Array<EmployeesNestedTreeDataItem> 
 
 ## Disabled Summaries
 
-<!-- WebComponents -->
-
 The `disabled-summaries` property provides precise per-column control over the Web Components Tree Grid summary feature. This property enables users to customize the summaries displayed for each column in the IgcTreeGrid, ensuring that only the most relevant and meaningful data is shown. For example, you can exclude specific summary types, such as **\['count', 'min', 'max']** by specifying their summary keys in an array.
-
-<!-- end: WebComponents -->
-
-<!-- WebComponents, React, Blazor -->
 
 This property can also be modified **dynamically at runtime** through code, providing flexibility to adapt the IgcTreeGrid's summaries to changing application states or user actions.
 
-<!-- end: WebComponents, React, Blazor -->
-
-<!-- WebComponents -->
-
 The following examples illustrate how to use the `disabled-summaries` property to manage summaries for different columns and exclude specific default and custom summary types in the Web Components Tree Grid:
 
-<!-- end: WebComponents -->
-
 <!-- ComponentStart: Grid, HierarchicalGrid, TreeGrid -->
-
-<!-- WebComponents -->
 
 ```html
 <!-- Disable default summaries -->
@@ -491,19 +453,13 @@ The following examples illustrate how to use the `disabled-summaries` property t
 </igc-column>
 ```
 
-<!-- end: WebComponents -->
-
 <!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid -->
 
 For `UnitPrice`, default summaries like `count`, `sum`, and `average` are disabled, leaving others like `min` and `max` active.
 
-<!-- WebComponents -->
-
 For `UnitsInStock`, custom summaries such as `discontinued` and `totalDiscontinued` are excluded using the `disabled-summaries` property.
 
 At runtime, summaries can also be dynamically disabled using the [`disabledSummaries`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#disabledSummaries) property. For example, you can set or update the property on specific columns programmatically to adapt the displayed summaries based on user actions or application state changes.
-
-<!-- end: WebComponents -->
 
 ```typescript
 export class OrdersTreeDataItem {
@@ -618,8 +574,6 @@ igc-dialog::part(title) {
 ```
 
 
-<!-- Angular, WebComponents, React -->
-
 ## Formatting summaries
 
 By default, summary results, produced by the built-in summary operands, are localized and formatted according to the grid [`locale`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#locale) and column [`pipeArgs`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#pipeArgs). When using custom operands, the [`locale`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#locale) and [`pipeArgs`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#pipeArgs) are not applied. If you want to change the default appearance of the summary results, you may format them using the [`summaryFormatter`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#summaryFormatter) property.
@@ -685,8 +639,6 @@ export class OrdersTreeData extends Array<OrdersTreeDataItem> {
 ```
 
 
-<!-- end: Angular, WebComponents, React -->
-
 <!-- ComponentStart: TreeGrid -->
 
 ## Child Summaries
@@ -706,7 +658,7 @@ The available values of the [`summaryPosition`](https://www.infragistics.com/pro
 
 The [`showSummaryOnCollapse`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#showSummaryOnCollapse) property is boolean. Its default value is set to **false**, which means that the summary row would be hidden when the parent row is collapsed. If the property is set to **true** the summary row stays visible when parent row is collapsed.
 
-> \[!Note]
+> [!Note]
 > The [`summaryPosition`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#summaryPosition) property applies only for the child level summaries. The root level summaries appear always fixed at the bottom of the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html).
 
 ```typescript
@@ -760,8 +712,6 @@ The summary rows can be navigated with the following keyboard interactions:
 - <kbd>RIGHT</kbd> - navigates one cell right.
 - <kbd>CTRL</kbd> + <kbd>LEFT</kbd> or <kbd>HOME</kbd> - navigates to the leftmost cell.
 - <kbd>CTRL</kbd> + <kbd>RIGHT</kbd> or <kbd>END</kbd> - navigates to the rightmost cell.
-
-<!-- WebComponents, Blazor, React -->
 
 ## Styling
 
@@ -838,8 +788,6 @@ export class OrdersTreeData extends Array<OrdersTreeDataItem> {
 
 
 <!-- ComponentEnd: TreeGrid -->
-
-<!-- end: WebComponents, Blazor, React -->
 
 ## API References
 

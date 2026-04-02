@@ -55,8 +55,6 @@ img {
 
 ## Usage
 
-<!-- WebComponents -->
-
 First, you need to install the Ignite UI for Web Components by running the following command:
 
 ```cmd
@@ -72,8 +70,6 @@ import 'igniteui-webcomponents/themes/light/bootstrap.css';
 defineComponents(IgcBannerComponent);
 ```
 
-<!-- end: WebComponents -->
-
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
 ### Show Banner
@@ -88,7 +84,7 @@ In order to display the banner component, use its [`show`](https://www.infragist
 </igc-banner>
 ```
 
-> \[!NOTE]
+> [!NOTE]
 > The [`IgcBannerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbannercomponent.html) includes a default action button `OK`, which closes the banner.
 
 ## Examples
@@ -109,7 +105,7 @@ Configuring the message displayed in the banner is easy - just change the conten
 
 An [`IgcIconComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconcomponent.html) can be displayed in the banner by using the banner's `prefix` slot. The icon will always be positioned at the beginning of the banner message.
 
-> \[!NOTE]
+> [!NOTE]
 > If several [`IgcIconComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconcomponent.html) elements are inserted, the banner will try to position all of them at the beginning. It is strongly advised to pass only one [`IgcIconComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconcomponent.html) directly to the banner.
 
 To pass an [`IgcIconComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconcomponent.html) to your banner, use the `prefix` slot:
@@ -207,7 +203,7 @@ banner.addEventListener('igcClosing', (event) => {
 });
 ```
 
-> \[!NOTE]
+> [!NOTE]
 > If the changes above are applied, the banner will never close, as the closing event is always cancelled.
 
 ## Advanced Example

@@ -123,27 +123,19 @@ Here's how to select/deselect an item programmatically in a single selection com
 
 ### Selecting items
 
-<!-- React -->
-
 ```tsx
 // select the item matching the 'BG01' value of the value key field.
 comboRef.current.select('BG01');
 ```
 
-<!-- end: React -->
-
 To deselect an item without making a new selection, call the [`deselect`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#deselect) method.
 
 #### Deselecting items
-
-<!-- React -->
 
 ```tsx
 // deselect the item matching the 'BG01' value of the value key field.
 comboRef.current.deselect('BG01');
 ```
-
-<!-- end: React -->
 
 ## Disabled features
 

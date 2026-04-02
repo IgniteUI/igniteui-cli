@@ -131,9 +131,9 @@ When [`autoGenerate`](https://www.infragistics.com/products/ignite-ui-react/docs
 
 #### Default template
 
-<!-- Blazor, WebComponents, React -->
-
 The default template will show a numeric value with currency symbol that would be either prefixed or suffixed.
+
+By using the [`pipeArgs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#pipeArgs) input the end-user can customize the number format by **decimal point**, **currencyCode** and **display**.
 
 ```tsx
 const formatOptions : IgrColumnPipeArgs = {
@@ -174,7 +174,7 @@ const formatOptions : IgrColumnPipeArgs = {
 <IgrColumn pipeArgs={formatOptions} dataType="percent"></IgrColumn>
 ```
 
-> \[!Note]
+> [!Note]
 > When using <kbd>↑</kbd> + <kbd>↓</kbd> arrow keys the value will increment/decrement with a step based on the digitsInfo - minFractionDigits (The minimum number of digits after the decimal point. Default is 0)
 
 ## Default Editing Template

@@ -10,13 +10,7 @@ _tocName: Filtering
 
 # Web Components Grid Lite Filter Operations
 
-<!-- React, WebComponents -->
-
 The Grid Lite supports filtering operations on its data source. Data filtering is controlled on per-column level, allowing you to have filterable and non-filterable columns. By default, filtering on a column is disabled unless explicitly configured with the `filterable` property of the column.
-
-<!-- end: React, WebComponents -->
-
-<!-- WebComponents -->
 
 ```html
 <igc-grid-lite .data=${data}>
@@ -24,13 +18,7 @@ The Grid Lite supports filtering operations on its data source. Data filtering i
 </igc-grid-lite>
 ```
 
-<!-- WebComponents -->
-
 You can also control whether the filter operations for string columns should be case sensitive by using the `filteringCaseSensitive` property or `filtering-case-sensitive` attribute:
-
-<!-- end: WebComponents -->
-
-<!-- WebComponents -->
 
 ```html
 <igc-grid-lite-column 
@@ -190,11 +178,7 @@ igc-grid-lite {
 
 ## Filter Model
 
-<!-- React, WebComponents -->
-
 The building blocks for filter operations in the grid is the `FilterExpression<T, K>` which has the following structure:
-
-<!-- end: React, WebComponents -->
 
 ```typescript
 export interface FilterExpression<T, K extends Keys<T> = Keys<T>> {
@@ -231,16 +215,10 @@ export interface FilterExpression<T, K extends Keys<T> = Keys<T>> {
 
 ## Filter API
 
-<!-- React, WebComponents -->
-
 The Grid Lite exposes two main approaches for applying filter operations from its API. Either through the `GridLite.filter()`/`GridLite.clearFilter()` methods or through the `GridLite.filterExpressions` property.
 
 The `filter()` method accepts either a single expression or an array of filter expression and then filters the grid data
 based on those expressions.
-
-<!-- end: React, WebComponents -->
-
-<!-- WebComponents -->
 
 ```typescript
 // Single
@@ -253,13 +231,7 @@ grid.filter([
 ]);
 ```
 
-<!-- React, WebComponents -->
-
 The `clearFilter()` method, as the name implies, clears the filter state of a single column or the whole grid component, depending on the passed arguments.
-
-<!-- end: React, WebComponents -->
-
-<!-- WebComponents -->
 
 ```typescript
 // Clear the filter state for the `age` column.
@@ -271,11 +243,7 @@ grid.clearFilter();
 
 ## Initial filter state
 
-<!-- React, WebComponents -->
-
 The `filterExpressions` property is very similar in behavior to the `filter()` method call. It exposes a declarative way to control filter state in the grid, but the most useful property is the ability to set initial filter state when the Grid Lite component is first rendered.
-
-<!-- WebComponents -->
 
 For example here is a Lit-based sample:
 
@@ -293,13 +261,7 @@ For example here is a Lit-based sample:
 }
 ```
 
-<!-- end: WebComponents -->
-
-<!-- end: React, WebComponents -->
-
 It can be used to get the current filter state of the component and do additional processing depending on another state in your application.
-
-<!-- WebComponents -->
 
 ```typescript
 const state = grid.filterExpressions;
@@ -309,15 +271,9 @@ saveUserFilterState(state);
 
 ## Events
 
-<!-- React, WebComponents -->
-
 When a filter operation is performed through the UI, the component emits a custom `filtering` event. The `detail` property is the filter expression which will be applied by the Grid Lite. The event is cancellable and if cancelled will prevent the current filter operation.
 
 After the grid applies the new filter state, a `filtered` event is emitted. It contains the filter state for the column which was the target of the operation and it is not cancellable.
-
-<!-- end: React, WebComponents -->
-
-<!-- WebComponents -->
 
 ```typescript
 grid.addEventListener('filtering', (event: CustomEvent<GridLiteFilteringEvent<T>>) => { ... });
@@ -490,14 +446,10 @@ igc-grid-lite {
 ```
 
 
-<!-- React, WebComponents -->
-
 ## Remote filter operations
 
 In cases where filtering must be done remotely or you want to save the current state/data to a server somewhere,
 the Grid Lite exposes a hook where you can implement and customize this behavior.
-
-<!-- React, WebComponents -->
 
 Using the `dataPipelineConfiguration` property, you can provide a custom hook which will be called each time a filter operation is about to run. The callback is passed a `DataPipelineParams` object.
 
@@ -518,13 +470,9 @@ export type DataPipelineParams<T extends object> = {
 };
 ```
 
-<!-- WebComponents -->
-
 ```typescript
 grid.dataPipelineConfiguration = { filter: (params: DataPipelineParams<T>) => T[] | Promise<T[]> };
 ```
-
-<!-- end: WebComponents -->
 
 <!-- End: React, WebComponents -->
 
@@ -700,8 +648,6 @@ igc-grid-lite {
 }
 ```
 
-
-<!-- end: React, WebComponents -->
 
 <!-- TODO ## API References
 ## API References

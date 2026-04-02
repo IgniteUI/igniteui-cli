@@ -27,8 +27,6 @@ The following Web Components Dropdown List example demonstrates the use of simpl
 
 ## How to use the Dropdown List with Ignite UI for Web Components
 
-<!-- WebComponents -->
-
 First, you need to install the Ignite UI for Web Components by running the following command:
 
 ```cmd
@@ -46,8 +44,6 @@ defineComponents(IgcDropdownComponent);
 ```
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
-
-<!-- end: WebComponents -->
 
 The simplest way to start using the [`IgcDropdownComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html) is as follows:
 

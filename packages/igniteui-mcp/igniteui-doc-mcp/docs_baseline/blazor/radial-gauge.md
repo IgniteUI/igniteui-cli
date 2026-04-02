@@ -496,8 +496,6 @@ The following sample demonstrates how setting multiple properties on the same [`
 
 <div class="divider--half"></div>
 
-<!-- Blazor -->
-
 Please refer to these topics on adding the IgniteUI.Blazor package.
 
 - [Getting Started](general-getting-started.md)
@@ -508,8 +506,6 @@ Afterwards you may start implementing the control by adding the following namesp
 ```razor
 @using IgniteUI.Blazor.Controls
 ```
-
-<!-- end: Blazor -->
 
 ## Component Modules
 

@@ -25,8 +25,6 @@ The Ignite UI for Web Components ComboBox component provides a list of options f
 
 ## Getting Started with Web Components ComboBox
 
-<!-- WebComponents -->
-
 First, you need to install the Ignite UI for Web Components by running the following command:
 
 ```cmd
@@ -45,9 +43,7 @@ defineComponents(IgcComboComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../../general-getting-started.md) topic.
 
-<!-- end: WebComponents -->
-
-> \[!WARNING]
+> [!WARNING]
 > The [`IgcComboComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html) component doesn't work with the standard `<form>` element. Use `Form` instead.
 
 Then, we will bind an array of objects to the combo data source used for building the list of options.
@@ -92,7 +88,7 @@ When the combo is bound to a list of complex data (i.e. objects), we need to spe
 - [`displayKey`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#displayKey) - **Optional**, **recommended** for complex data objects - Determines which field in the data source is used as the display value. If no value is specified for [`displayKey`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#displayKey), the combo will use the specified [`valueKey`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#valueKey) (if any).
     In our case, we want the combo to display the `name` of each city and use the `id` field for item selection and as the underlying value for each item. Therefore, we provide these properties to the combo's [`valueKey`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#valueKey) and [`displayKey`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#displayKey) respectively.
 
-> \[!Note]
+> [!Note]
 > When the data source consists of primitive types (e.g. `strings`, `numbers`, etc.), **do not** specify a [`valueKey`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#valueKey) and/or [`displayKey`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#displayKey).
 
 ### Setting Value
@@ -121,8 +117,6 @@ Besides selecting items from the list of options by user interaction, you can se
 
 #### Select/deselect some items
 
-<!-- WebComponents -->
-
 ```ts
 // Select/deselect items by their IDs as valueKey is set to 'id'
 combo.select(['BG01', 'BG02', 'BG03', 'BG04']);
@@ -130,8 +124,6 @@ combo.deselect(['BG01', 'BG02', 'BG03', 'BG04']);
 ```
 
 #### Select/deselect all items
-
-<!-- WebComponents -->
 
 ```ts
 // Select/deselect all items
@@ -141,15 +133,11 @@ combo.deselect();
 
 If the [`valueKey`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#valueKey) property is omitted, you will have to list the items you wish to select/deselect as objects references:
 
-<!-- WebComponents -->
-
 ```ts
 // Select/deselect values by object references when no valueKey is provided
 combo.select([cities[1], cities[5]]);
 combo.deselect([cities[1], cities[5]]);
 ```
-
-<!-- end: WebComponents -->
 
 ```css
 /* shared styles are loaded from: */

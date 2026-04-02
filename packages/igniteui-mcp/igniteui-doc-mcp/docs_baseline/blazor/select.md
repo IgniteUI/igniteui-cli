@@ -33,8 +33,6 @@ The Ignite UI for Blazor Select component allows a single selection from a list 
 
 ## Usage
 
-<!-- Blazor -->
-
 Before using the [`IgbSelect`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSelect.html) component, you need to register it together with its additional components:
 
 ```razor
@@ -49,14 +47,10 @@ You will also need to link an additional CSS file to apply the styling to the [`
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
 ```
 
-<!-- end: Blazor -->
-
-> \[!Note]
+> [!Note]
 > Please note that the select header and group components are not mandatory unless you want to use them.
 
 To start using the component add the [`IgbSelect`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSelect.html) along with a list of [`IgbSelectItem`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSelectItem.html)'s to choose from:
-
-<!-- Blazor -->
 
 ```razor
 <IgbSelect>
@@ -66,8 +60,6 @@ To start using the component add the [`IgbSelect`](https://www.infragistics.com/
     <IgbSelectItem Value="mango">Mango</IgbSelectItem>
 </IgbSelect>
 ```
-
-<!-- end: Blazor -->
 
 ### Select
 
@@ -136,21 +128,17 @@ You can use the [`IgbSelectHeader`](https://www.infragistics.com/blazor/docs/api
 ```
 
 
-<!-- Blazor -->
-
 ```razor
 <IgbSelect>
     <IgbSelectHeader>Tasks</IgbSelectHeader>
 </IgbSelect>
 ```
 
-<!-- end: Blazor -->
-
 ### Group
 
 Multiple [`IgbSelectItem`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSelectItem.html)s can be placed between the opening and closing brackets of an [`IgbSelectGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSelectGroup.html) component so that users can visually group them together. The [`IgbSelectGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSelectGroup.html) can be labelled via its `label` slot and disabled via its [`Disabled`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSelectGroup.html#IgniteUI_Blazor_Controls_IgbSelectGroup_Disabled) property.
 
-> \[!Note]
+> [!Note]
 > Keep in mind that if a select group is disabled, you cannot enable separate items of it.
 
 ```razor
@@ -247,8 +235,6 @@ Multiple [`IgbSelectItem`](https://www.infragistics.com/blazor/docs/api/api/Igni
 ```
 
 
-<!-- Blazor -->
-
 ```razor
 <IgbSelect>
     <IgbSelectGroup>
@@ -275,8 +261,6 @@ Multiple [`IgbSelectItem`](https://www.infragistics.com/blazor/docs/api/api/Igni
 </IgbSelect>
 ```
 
-<!-- end: Blazor -->
-
 ## Validation
 
 In addition, the [`IgbSelect`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSelect.html) supports most of the [`IgbInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbInput.html) properties, such as [`Required`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSelect.html#IgniteUI_Blazor_Controls_IgbSelect_Required), [`Disabled`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSelect.html#IgniteUI_Blazor_Controls_IgbSelect_Disabled), [`Autofocus`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbInput.html#IgniteUI_Blazor_Controls_IgbInput_Autofocus), etc. The component also exposes a method bound to its validation:
@@ -301,7 +285,7 @@ When the select is focused and the list of options is **visible**:
 - Using the <kbd>↑</kbd> <kbd>↓</kbd> keys will activate the next item in the list.
 - Using the <kbd>HOME</kbd> or <kbd>END</kbd> keys will activate the first or last item in the list.
 
-> \[!Note]
+> [!Note]
 > The [`IgbSelect`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSelect.html) component supports only **single** selection of items.
 
 ## API Reference

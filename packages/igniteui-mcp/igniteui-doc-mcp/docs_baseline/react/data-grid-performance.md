@@ -622,13 +622,9 @@ root.render(<DataGridPerformance/>);
 
 ## Additional Resources
 
-<!-- Angular, React, WebComponents -->
-
 <!-- TODO fix build flagging list items -->
 
 <!-- - [Binding Virtual Data](remote-data.md) -->
-
-<!-- end: Angular, React, WebComponents -->
 
 - [Column Types](column-types.md)
 - [Row Grouping](row-grouping.md)

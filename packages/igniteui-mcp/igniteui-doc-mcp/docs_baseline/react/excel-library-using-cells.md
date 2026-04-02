@@ -372,8 +372,6 @@ root.render(<ExcelLibraryWorkingWithCells/>);
 
 <div class="divider--half"></div>
 
-<!-- Angular, React, WebComponents -->
-
 ## References
 
 The following code shows the imports needed to use the code-snippets below:
@@ -387,8 +385,6 @@ import { NamedReference } from "igniteui-react-excel";
 import { WorksheetCellComment } from "igniteui-react-excel";
 import { FormattedString } from "igniteui-react-excel";
 ```
-
-<!-- end: Angular, React, WebComponents -->
 
 ## Referencing Cells and Regions
 

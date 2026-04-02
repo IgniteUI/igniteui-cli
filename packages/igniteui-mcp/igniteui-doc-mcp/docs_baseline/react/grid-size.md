@@ -329,7 +329,7 @@ And now let's see in details how each option reflects on the [`IgrGrid`](https:/
 - **medium** - this is the middle intense size with `40px` row height. Left and Right paddings are `16px`; Minimal column [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#width) is `64px`;
 - **small** - this is the size with highest intense and `32px` row height. Left and Right paddings are `12px`; Minimal column [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#width) is `56px`;
 
-> \[!Note]
+> [!Note]
 > Please keep in mind that currently you **can not** override any of the sizes.
 
 Let's now continue with our sample and see in action how the `--ig-size` is applied. Let's first add a button which will help us to switch between each size:
@@ -385,8 +385,6 @@ Finally, let's provide the necessary logic in order to actually apply the size:
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
-<!-- React -->
-
 ```tsx
 private propertyEditor: IgrPropertyEditorPanel
 private propertyEditorRef(r: IgrPropertyEditorPanel) {
@@ -425,8 +423,6 @@ public webGridSetGridSize(sender: any, args: IgrPropertyEditorPropertyDescriptio
     grid.style.setProperty('--ig-size', `var(--ig-size-${newVal})`);
 }
 ```
-
-<!-- end: React -->
 
 Another option that [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) provides for you, in order to be able to change the height of the rows in the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html), is the property [`rowHeight`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#rowHeight). So let's see in action how this property affects the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) layout along with the `--ig-size`.
 

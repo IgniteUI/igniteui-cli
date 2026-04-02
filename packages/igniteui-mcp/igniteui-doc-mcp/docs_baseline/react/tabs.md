@@ -72,15 +72,11 @@ root.render(<Overview/>);
 
 ## How to use Tabs with Ignite UI for React
 
-<!-- React -->
-
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
 
 ```cmd
 npm install igniteui-react
 ```
-
-<!-- end: React -->
 
 Before using the [`IgrTabs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtabs.html), you need to import it as follows:
 
@@ -322,19 +318,13 @@ root.render(<PrefixSuffix/>);
 
 The [`IgrTabs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtabs.html) component exposes several CSS parts, giving you full control over its style:
 
-<!-- WebComponents, React -->
-
 | Name | Description |
 |--|--|
 | `selected-indicator` | The selected indicator. |
 | `start-scroll-button` | The start scroll button displayed when the tabs overflow. |
 | `end-scroll-button` | The end scroll button displayed when the tabs overflow. |
 
-<!-- end: WebComponents, React -->
-
 The [`IgrTab`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtab.html) component exposes the following CSS parts:
-
-<!-- WebComponents, React -->
 
 |Name|Description|
 |--|--|
@@ -380,8 +370,6 @@ igc-tab::part(tab-header)::before {
     --border-color--hover: var(--ig-gray-500);
 }
 ```
-
-<!-- end: WebComponents, React -->
 
 ```css
 /* shared styles are loaded from: */

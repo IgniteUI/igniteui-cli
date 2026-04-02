@@ -7,17 +7,11 @@ mentionedTypes: ["XamBulletGraph", "IgrGrid"]
 _tocName: Getting Started
 ---
 
-<!-- React, WebComponents -->
-
 # Getting Started With Ignite UI for React
 
 [`Ignite UI for React`](https://github.com/IgniteUI/igniteui-react) is a complete set of UI widgets, components, and Figma UI kits for React by Infragistics. It enables developers to build modern, high-performance HTML5 and JavaScript apps for desktop browsers, mobile experiences, and progressive web apps (PWAs).
 
 Ignite UI for React comprises several packages available under either an MIT or a commercial license, depending on the components and services they contain. For a detailed list of components and their license, please refer to the [License FAQ and Installation](./general-licensing.md) and [Open Source vs Premium](./general-open-source-vs-premium.md) topics.
-
-<!-- end: React, WebComponents -->
-
-<!-- React -->
 
 ## Prerequisites
 
@@ -64,7 +58,7 @@ If you added a Grid component during the prompts, once the application is runnin
 
 <img src="../images/general/ig-cli-grid.png" />
 
-> \[!NOTE]
+> [!NOTE]
 > Keep in mind that by default Ignite UI CLI installs the Trial version of Ignite UI for React's Grid component which is under [commercial license](./general-open-source-vs-premium.md#comparison-table-for-all-components).
 
 Alternatively, you can use popular frameworks such as Next.js, Vite, or Expo as recommended by the React team. The following are step-by-step instructions for creating React applications with Ignite UI for React using one of these methods.
@@ -150,10 +144,6 @@ After executing this command, your project will be built and served locally on y
 
 <img src="../images/general/ig-vite-grid.png" />
 
-<!-- end: React -->
-
-<!-- Angular, React -->
-
 ## Updating Existing Apps
 
 If you want to use Ignite UI for React in an existing React CLI project, we have you covered! All you have to do is execute these commands:
@@ -181,17 +171,9 @@ yarn add igniteui-react-spreadsheet igniteui-react-core
 
 This will automatically install packages for Ignite UI for React, along with all of their dependencies, font imports and styles references to the existing project.
 
-<!-- end: Angular, React -->
-
-<!-- React -->
-
 # Ignite UI for React Packages Overview
 
 Ignite UI for React is a comprehensive suite of UI components, design toolkits, and supporting services for React. Built to empower developers to create modern, high-performance React applications for desktop browsers, mobile experiences, and progressive web apps (PWAs), Ignite UI for React leverages the latest React best practices and APIs.
-
-<!-- end: React -->
-
-<!-- WebComponents, React -->
 
 ## Charts & Graphs
 
@@ -212,5 +194,3 @@ Ignite UI for React provides several [Grid](grids/grids-header.md) components th
 ## Buttons, Inputs, Layouts, and Menus
 
 Ignite UI for React provides various types of [Buttons](inputs/button.md), [Inputs](inputs/input.md), [Menus](menus/navbar.md), and [Layouts](layouts/tabs.md) that give you the ability to build modern web applications using encapsulation and the concept of reusable components in a dependency-free approach. See the [Storybook here](https://igniteui.github.io/igniteui-webcomponents). These components are based on the [Indigo Design System](https://www.infragistics.com/products/appbuilder/ui-toolkit), are fully supported by [App Builder](https://appbuilder.indigo.design/) and are backed by ready-to-use UI kits for Figma.
-
-<!-- end: WebComponents, React -->

@@ -23,7 +23,7 @@ The Ignite UI for Web Components Row Selection feature in Web Components Tree Gr
 
 <!-- ComponentStart: TreeGrid -->
 
-The sample below demonstrates the four types of [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html)'s **row selection** behavior. Use the buttons below to enable each of the available selection modes. A brief description will be provided on each button interaction through a snackbar message box. Use the switch button to *hide* or *show* the row selector checkbox.
+The sample below demonstrates the four types of [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html)'s **row selection** behavior. Use the buttons below to enable each of the available selection modes. A brief description will be provided on each button interaction through a snackbar message box. Use the switch button to _hide_ or _show_ the row selector checkbox.
 
 <!-- ComponentEnd: TreeGrid -->
 
@@ -91,8 +91,6 @@ In the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-
 
 Single row selection can now be easily set up, the only thing you need to do, is to set [`rowSelection`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#rowSelection) to `Single` property. This gives you the opportunity to **select only one row within a grid**. You can select a row by clicking on a cell or pressing the <kbd>SPACE</kbd> key when you focus on a cell of the row, and of course you can select a row by clicking on the row selector field. When row is selected or deselected `RowSelectionChanging` event is emitted.
 
-<!-- WebComponents -->
-
 ```html
 <igc-tree-grid id="grid" row-selection="Single" auto-generate="true"
         allow-filtering="true">
@@ -118,8 +116,6 @@ public handleRowSelection(args: IgcRowSelectionEventArgs) {
 ### Multiple Selection
 
 To enable multiple row selection in the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) just set the [`rowSelection`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#rowSelection) property to `Multiple`. This will enable a row selector field on each row and in the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) header. The row selector allows users to select multiple rows, with the selection persisting through scrolling, paging, and data operations, such as sorting and filtering. The row also can be selected by clicking on a cell or by pressing the <kbd>SPACE</kbd> key when a cell is focused. If you have selected one row and click on another while holding the <kbd>SHIFT</kbd> key, this will select the whole range of rows. In this selection mode, when you click on a single row, the previous selected rows will be deselected. If you **click** while holding the <kbd>CTRL</kbd> key, the row will be toggled and the previous selection will be preserved.
-
-<!-- WebComponents -->
 
 ```html
 <igc-tree-grid id="grid" primary-key="ProductID" row-selection="Multiple"
@@ -155,8 +151,6 @@ In this mode a parent's selection state entirely depends on the selection state 
 
 The code snippet below can be used to select one or multiple rows simultaneously (via [`primaryKey`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#primaryKey)). Additionally, the second parameter of this method is a boolean property through which you may choose whether the previous row selection will be cleared or not. The previous selection is preserved by default.
 
-<!-- WebComponents -->
-
 ```html
 <igc-tree-grid id="grid"
 primary-key="ProductID"
@@ -182,8 +176,6 @@ This will add the rows which correspond to the data entries with IDs 1, 2 and 5 
 ### Deselect Rows
 
 If you need to deselect rows programmatically, you can use the [`deselectRows`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#deselectRows) method.
-
-<!-- WebComponents -->
 
 ```html
 <igc-tree-grid id="grid"
@@ -216,8 +208,6 @@ When there is some change in the row selection `RowSelectionChanging` event is e
 - `Event` - the original event that triggered row selection change.
 - `Cancel` - allows you the prevent the row selection change.
 
-<!-- WebComponents -->
-
 ```html
 <igc-tree-grid id="grid">
 </igc-tree-grid>
@@ -249,8 +239,6 @@ Another useful API method that [`IgcTreeGridComponent`](https://www.infragistics
 
 If you need to see which rows are currently selected, you can get their row IDs with the [`selectedRows`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#selectedRows) getter.
 
-<!-- WebComponents -->
-
 ```ts
 public getSelectedRows() {
     const grid = document.getElementById('grid') as IgcTreeGridComponent;
@@ -259,8 +247,6 @@ public getSelectedRows() {
 ```
 
 Additionally, assigning row IDs to [`selectedRows`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#selectedRows) will allow you to change the grid's selection state.
-
-<!-- WebComponents -->
 
 ```ts
 public mySelectedRows = [1, 2, 3]; // an array of row IDs
@@ -336,8 +322,6 @@ row-selection="Multiple"
 auto-generate="true">
 </igc-tree-grid>
 ```
-
-<!-- WebComponents -->
 
 ```ts
 constructor() {

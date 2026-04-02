@@ -35,7 +35,7 @@ Npm is the most popular package manager and is also the default one for the runt
 
 Infragistics Ignite UI for React is available as npm packages and you can add them as dependencies to your project in a [few easy steps](./general-getting-started.md). Choosing this approach will not require configuring npm. If you are installing a package under commercial license, you will start using the **Ignite UI for React Trial version** of the product.
 
-> \[!NOTE]
+> [!NOTE]
 > What does it mean to start using a trial version? It means that you will be using a version of our product with a **Watermark** part of your web view. It doesn’t mean that you will be using the licensed package for a certain amount of time before it expires. For example, for a month.
 
 The private npm feed Infragistics provides contains licensed versions of the packages under commercial license.
@@ -118,8 +118,6 @@ As a result you can either:
 }
 ```
 
-<!-- React -->
-
 Here's a full example with all path mappings for the react packages you may need:
 
 ```json
@@ -142,8 +140,6 @@ Here's a full example with all path mappings for the react packages you may need
         "igniteui-webcomponents": ["node_modules/igniteui-webcomponents", "node_modules/@infragistics/igniteui-webcomponents"]
       }
 ```
-
-<!-- end: React -->
 
 - Change the themes imports like this:
 

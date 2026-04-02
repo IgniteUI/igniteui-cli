@@ -178,8 +178,6 @@ root.render(<Sample/>);
 
 ## Dependencies
 
-<!-- Angular, WebComponents, React -->
-
 Install the Ignite UI for React layouts, inputs, charts and core packages:
 
 ```cmd
@@ -203,8 +201,6 @@ IgrDataChartAnnotationModule.register();
 IgrDataChartInteractivityModule.register();
 IgrDataChartCategoryTrendLineModule.register();
 ```
-
-<!-- end:Angular, WebComponents, React -->
 
 ## Usage
 

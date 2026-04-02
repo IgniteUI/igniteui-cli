@@ -25,8 +25,6 @@ The predefined actions UI components are:
 
 They are added inside the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) and this is all needed to have an [`IgrActionStrip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igractionstrip.html) providing default interactions.
 
-<!-- React -->
-
 <!-- ComponentStart: Grid -->
 
 ```tsx
@@ -42,9 +40,7 @@ They are added inside the [`IgrGrid`](https://www.infragistics.com/products/igni
 
 <!-- ComponentEnd: Grid -->
 
-<!-- end: React -->
-
-> \[!Note]
+> [!Note]
 > When `ActionStripComponent` is a child component of the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html), hovering a row will automatically show the UI.
 
 ## Custom Implementation
@@ -52,8 +48,6 @@ They are added inside the [`IgrGrid`](https://www.infragistics.com/products/igni
 These components expose templates giving flexibility for customization. For instance, if we would like to use the [`IgrActionStrip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igractionstrip.html) for a Gmail scenario with row actions such as **delete**, **edit** and etc. You can simply create button component with icon, add click event to it and insert it into the [`IgrActionStrip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igractionstrip.html).
 
 <!-- ComponentEnd: Grid, TreeGrid -->
-
-<!-- React -->
 
 <!-- ComponentStart: Grid, TreeGrid -->
 
@@ -67,8 +61,6 @@ These components expose templates giving flexibility for customization. For inst
 ```
 
 <!-- ComponentEnd: Grid, TreeGrid -->
-
-<!-- end: React -->
 
 ```css
 /* shared styles are loaded from: */

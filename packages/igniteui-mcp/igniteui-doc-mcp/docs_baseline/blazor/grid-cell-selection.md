@@ -353,22 +353,18 @@ If you want to disable cell selection you can just set [`CellSelection`](https:/
 - <kbd>CTRL</kbd> + <kbd>SHIFT</kbd> + <kbd>HOME</kbd> to select all cells from the focused cell till the first-most cell in the grid
 - <kbd>CTRL</kbd> + <kbd>SHIFT</kbd> + <kbd>END</kbd> to select all cells from the focused cell till the last-most cell in the grid
 
-> \[!Note]
+> [!Note]
 > Continuous scroll is possible only within Grid's body.
 
 ## Api Usage
 
 Below are the methods that you can use in order to select ranges, clear selection or get selected cells data.
 
-<!-- Angular, WebComponents, React, Blazor -->
-
 ### Select range
 
 [`SelectRange`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_SelectRange) - Select a range of cells with the API. rowStart and rowEnd should use row indexes and columnStart and columnEnd could use column index or column data field value.
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
-
-<!-- Blazor -->
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -393,10 +389,6 @@ Below are the methods that you can use in order to select ranges, clear selectio
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
-<!-- end: Blazor -->
-
-<!-- end: Angular, WebComponents, React, Blazor -->
-
 ### Clear cell selection
 
 [`ClearCellSelection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_ClearCellSelection) will clear the current cell selection.
@@ -411,8 +403,6 @@ Below are the methods that you can use in order to select ranges, clear selectio
 ```
 
 ### Get Selected Data
-
-<!-- Blazor -->
 
 [`GetSelectedData`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_GetSelectedData) will return array of the selected data in Dictionary format. Examples below:
 
@@ -429,8 +419,6 @@ Below are the methods that you can use in order to select ranges, clear selectio
 }
 ```
 
-<!-- end: Blazor -->
-
 ## Features Integration
 
 The multi-cell selection is index based (DOM elements selection).
@@ -444,8 +432,6 @@ The multi-cell selection is index based (DOM elements selection).
 - [`GroupBy`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_GroupBy) - On column grouping selected cells will not be cleared.
 
 <!-- ComponentEnd: Grid, TreeGrid -->
-
-<!-- WebComponents, Blazor, React -->
 
 ## Styling
 
@@ -561,8 +547,6 @@ public class CustomersData
 }
 ```
 
-
-<!-- end: WebComponents, Blazor, React -->
 
 ## API References
 

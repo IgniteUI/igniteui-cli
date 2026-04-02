@@ -24,11 +24,11 @@ Currently, the [`IgcGridComponent`](https://www.infragistics.com/products/ignite
 - **Column summaries** (if enabled).
 - **Grid paginator** (if enabled).
 
-> \[!Note]
+> [!Note]
 > Due to this change, navigating between the cells with <kbd>TAB</kbd> and <kbd>SHIFT</kbd> + <kbd>TAB</kbd> is no longer supported in the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html).
 > Pressing the <kbd>TAB</kbd> key now goes through the tab stops in the following order: **GroupBy** / **Toolbar** -> **Headers** -> **Body** -> **Summaries** -> **Footer / Paginator**.
 
-> \[!Note]
+> [!Note]
 > Exposing any **focusable** element into the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) body via template may introduce **side effects** in the keyboard navigation, since the default
 > browser behavior is not prevented. It is the developer's responsibility to prevent or modify it appropriately.
 
@@ -124,8 +124,6 @@ over Group Row - collapses the group.
  <!-- ComponentEnd: Grid -->
 
 Practice all of the above mentioned actions in the demo sample below. Focus any navigable grid element and a list with some of the available actions for the element will be shown to guide you through.
-
-<!-- Angular, WebComponents, React -->
 
 ## Demo
 
@@ -314,13 +312,9 @@ export class Item {
 ```
 
 
-<!-- end: Angular, WebComponents, React -->
-
 ## Custom Keyboard Navigation
 
 Overriding the default behavior for a certain key or keys combination is one of the benefits that the **Keyboard Navigation** feature provides. For example: press the <kbd>ENTER</kbd> or <kbd>TAB</kbd> key to navigate to the next cell or the cell below. This or any other navigation scenario is easily achieved by the **Keyboard Navigation** API:
-
-<!-- Angular, WebComponents -->
 
 | API | Description | Arguments |
 |---------|-------------|-----------|
@@ -329,8 +323,6 @@ Overriding the default behavior for a certain key or keys combination is one of 
 | [`navigateTo`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#navigateTo) | Navigates to a position in the grid, based on provided `Rowindex` and `VisibleColumnIndex`. It can also execute a custom logic over the target element, through a callback function that accepts param of type `{ targetType: GridKeydownTargetType, target: Object }` . Usage: <br />`grid.navigateTo(10, 3, (args) => { args.target.nativeElement.focus(); });` | `RowIndex: number, VisibleColumnIndex: number, callback: ({ targetType: GridKeydownTargetType, target: Object }`) => {} |
 | [`getNextCell`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#getNextCell)| returns `ICellPosition` object, which defines the next cell by `RowIndex` and `VisibleColumnIndex`. A callback function can be passed as a third parameter of [`getNextCell`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#getNextCell) method. The callback function accepts [`IgcColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html) as a param and returns a `boolean` value indication if a given criteria is met: <br />`const nextEditableCell = grid.getNextCell(0, 4, (col) => col.editable);` | `currentRowIndex: number, currentVisibleColumnIndex: number, callback: (Column) => boolean` |
 | [`getPreviousCell`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#getPreviousCell) | returns `ICellPosition` object, which defines the previous cell by `RowIndex` and `VisibleColumnIndex`. A callback function can be passed as a third parameter of [`getPreviousCell`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#getPreviousCell) method. The callback function accepts [`IgcColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html) as a param and returns a `boolean` value indication if a given criteria is met: <br />`const prevEditableCell = grid.getPreviousCell(0, 4, (col) => col.editable);` | `CurrentRowIndex: number, CurrentVisibleColumnIndex: number, callback: (Column) => boolean` |
-
-<!-- end: Angular, WebComponents -->
 
 <br />
 
@@ -341,8 +333,6 @@ Let's try the API to demonstrate how to achieve common scenarios like user input
 </igc-grid>
 ```
 
-<!-- WebComponents -->
-
 ```ts
 constructor() {
         const grid = this.grid = document.getElementById('grid1') as IgcGridComponent;
@@ -350,8 +340,6 @@ constructor() {
         grid.addEventListener("gridKeydown", this.customKeydown);
     }
 ```
-
-<!-- end: WebComponents -->
 
 <!-- WebComponents -->
 
@@ -373,13 +361,7 @@ public customKeydown(args: : CustomEvent<IgcGridKeydownEventArgs>) {
 
 <!-- WebComponents -->
 
-<!-- Angular, WebComponents, Blazor -->
-
 Based on the event arg values we identified two cases, where to provide our own logic (see above). Now, using the methods from the API, let's perform the desired - if the user is pressing <kbd>TAB</kbd> key over a cell in edit mode, we will perform validation on the input. If the user is pressing <kbd>ENTER</kbd> key over a cell, we will move focus to cell in the next row:
-
-<!-- end: Angular, WebComponents, Blazor -->
-
-<!-- Angular, WebComponents -->
 
 ```typescript
     // 1. USER INPUT VALIDATION ON TAB
@@ -393,7 +375,7 @@ Based on the event arg values we identified two cases, where to provide our own 
         });
 ```
 
-> \[!Note]
+> [!Note]
 > Please refer to the sample code for full implementation details.
 
 Use the demo below to try out the custom scenarios that we just implemented:

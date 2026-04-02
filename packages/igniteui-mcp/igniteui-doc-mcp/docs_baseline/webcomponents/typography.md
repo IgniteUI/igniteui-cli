@@ -13,7 +13,7 @@ The typography in Ignite UI for Web Components is modeled after the [Material Ty
 
 ## Overview
 
-The type system is a ***type scale*** consisting of ***13 different category type styles*** used across most components. All of the scale categories are completely reusable and adjustable by the end user.
+The type system is a **_type scale_** consisting of **_13 different category type styles_** used across most components. All of the scale categories are completely reusable and adjustable by the end user.
 
 Here's a list of all 13 category styles as defined for the Bootstrap Theme in Ignite UI for Web Components:
 
@@ -33,7 +33,7 @@ Here's a list of all 13 category styles as defined for the Bootstrap Theme in Ig
 | **caption*-      | System Font     | 400             | .75 rem       | none               | 0.025 rem          | 1 rem           | `--ig-caption-*`    |
 | **overline*-     | System Font     | 400             | .625 rem      | uppercase          | 0.09375 rem        | 1 rem           | `--ig-overline-*`   |
 
-Each theme defines its own type scale. This means each one of the themes we ship - Material, Fluent, Bootstrap, and Indigo will have its own type scale. They all share the same *scale categories*, but can have different font family, weight, size, text transform, letter spacing, and line height.
+Each theme defines its own type scale. This means each one of the themes we ship - Material, Fluent, Bootstrap, and Indigo will have its own type scale. They all share the same _scale categories_, but can have different font family, weight, size, text transform, letter spacing, and line height.
 
 ## Usage
 

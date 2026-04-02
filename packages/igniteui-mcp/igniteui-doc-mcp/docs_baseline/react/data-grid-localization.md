@@ -746,8 +746,6 @@ This is the full list of strings to localize the grid.
 - DataSource_Summary_Min
 - DataSource_Summary_Sum
 
-<!-- React, WebComponents -->
-
 ### Date-Time Column Strings
 
 - January_Full
@@ -800,8 +798,6 @@ This is the full list of strings to localize the grid.
 ### ComboBox Column Strings
 
 - NoMatches
-
-<!-- end: React, WebComponents -->
 
 ## API References
 

@@ -9,12 +9,8 @@ _tocName: Row Grouping
 _premium: true
 ---
 
-<!-- Blazor, WebComponents -->
-
-> \[!Note]
+> [!Note]
 > Please note that this control has been deprecated and replaced with the [Grid](../data-grid.md) component, and as such, we recommend migrating to that control. This will not be receiving any new features, bug fixes will be deprioritized. For help or questions on migrating your codebase to the Data Grid, please contact support.
-
-<!-- end: Blazor, WebComponents -->
 
 # Blazor Row Grouping
 

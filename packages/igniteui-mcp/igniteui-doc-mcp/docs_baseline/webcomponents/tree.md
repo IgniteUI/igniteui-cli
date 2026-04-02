@@ -36,8 +36,6 @@ igc-tree {
 
 ## How to Use Ignite UI for Web Components Tree With Ignite UI
 
-<!-- WebComponents -->
-
 First, you need to install the Ignite UI for Web Components by running the following command:
 
 ```cmd
@@ -61,8 +59,6 @@ The simplest way to start using the [`IgcTreeComponent`](https://www.infragistic
 Items provide [`disabled`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreeitemcomponent.html#disabled), [`active`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreeitemcomponent.html#active), [`selected`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreeitemcomponent.html#selected) and [`expanded`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreeitemcomponent.html#expanded) properties, which give you opportunity to configure the states of the item as per your requirement.
 The [`value`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreeitemcomponent.html#value) property can be used to add a reference to the data entry the item represents.
 
-<!-- WebComponents, Blazor -->
-
 Items can be declared using one of the following approaches.
 
 - Declaring the tree and its items by specifying the item hierarchy and iterating through a data set
@@ -80,8 +76,6 @@ Items can be declared using one of the following approaches.
     `
 </igc-tree>
 ```
-
-<!-- end: WebComponents, Blazor -->
 
 Items can be bound to a data model so that their expanded and selected states are reflected in the underlying data as well.
 
@@ -111,7 +105,7 @@ In order to render a tree you do not necessarily need a data set - individual it
 </igc-tree>
 ```
 
-> \[!Note]
+> [!Note]
 > You can provide a custom slot content for each [`IgcTreeItemComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreeitemcomponent.html)'s indentation, expansion and label area respectively using the provided `indentation`, `indicator` and `label` slots.
 
 ### Item Interactions
@@ -149,16 +143,12 @@ By default, multiple items could be expanded at the same time. In order to chang
 </igc-tree>
 ```
 
-<!-- WebComponents -->
-
 In addition, the [`IgcTreeComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreecomponent.html) provides the following API methods for item interactions:
 
 - [`expand`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreeitemcomponent.html#expand) - expands all items. If an items array is passed, expands only the specified items.
 - [`collapse`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreeitemcomponent.html#collapse) - collapses all items. If an items array is passed, collapses only the specified items.
 - [`IgcSelectComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectcomponent.html) - selects all items. If an items array is passed, selects only the specified items. Does not emit `selection` event.
 - `Tree.Deselect` - deselects all items. If an items array is passed, deselects only the specified items. Does not emit `selection` event.
-
-<!-- end: WebComponents -->
 
 ## Web Components Tree Selection
 
@@ -215,8 +205,6 @@ When selection is enabled, end-user selection of items is only allowed through t
 
 - <kbd>Click</kbd> - when performed on the item checkbox, toggles selection of the item if selection is enabled. Otherwise, focuses the item
 - <kbd>SHIFT</kbd> + <kbd>Click</kbd> - when performed on the item checkbox, toggles selection of all items between the active one and the one clicked while holding <kbd>SHIFT</kbd> if selection is enabled
-
-<!-- WebComponents -->
 
 ## Web Components Tree Load On Demand
 
@@ -1048,8 +1036,6 @@ export const DATA: SelectableItemData[] = [
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
-<!-- end: WebComponents -->
 
 ## Styling
 

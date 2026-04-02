@@ -18,8 +18,6 @@ The Ignite UI for Blazor [`IgbGrid`](https://www.infragistics.com/blazor/docs/ap
 
 Registering an icon caches it locally, so that it can reused between components, that reference that icon by name and collection name. Setting a reference changes which icon, from which collection, will be used when referencing that icon by name.
 
-<!-- Blazor -->
-
 ```razor
 @code {
     private IgbIcon icon;
@@ -48,8 +46,6 @@ Registering an icon caches it locally, so that it can reused between components,
 }
 
 ```
-
-<!-- end: Blazor -->
 
 ## Blazor Customize Icons Example
 

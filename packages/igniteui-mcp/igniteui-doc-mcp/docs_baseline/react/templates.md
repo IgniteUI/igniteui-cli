@@ -134,8 +134,6 @@ root.render(<ComboTemplates />);
 
 The [`itemTemplate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#itemTemplate) is a custom template that if defined should be used when rendering items in the list of options.
 
-<!-- React -->
-
 ```tsx
 type City = {
   name: string;
@@ -162,13 +160,9 @@ const renderItemTemplate = (args: ComboTemplateProps<City>) => {
 ></IgrCombo>
 ```
 
-<!-- end: React -->
-
 ### Group Header Template
 
 The [`groupHeaderTemplate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#groupHeaderTemplate) is a custom template that if defined should be used when rendering group headers in the list of options.
-
-<!-- React -->
 
 ```tsx
 <IgrCombo
@@ -185,8 +179,6 @@ const renderGroupHeaderTemplate = (args: ComboTemplateProps<City>) => {
   );
 }
 ```
-
-<!-- end: React -->
 
 ## Slots
 

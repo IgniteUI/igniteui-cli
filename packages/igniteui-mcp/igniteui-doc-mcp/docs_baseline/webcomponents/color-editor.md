@@ -25,8 +25,6 @@ The Ignite UI for Web Components Color Editor is a lightweight color picker comp
 
 ## Dependencies
 
-<!-- Angular, WebComponents, React -->
-
 First, you need to install the Ignite UI for Web Components by running the following command:
 
 ```cmd
@@ -55,13 +53,9 @@ ModuleManager.register(
 );
 ```
 
-<!-- end:Angular, WebComponents, React -->
-
 ## Usage
 
 The simplest way to start using the `ColorEditor` is as follows:
-
-<!-- WebComponents -->
 
 ```html
 <igc-color-editor
@@ -70,8 +64,6 @@ The simplest way to start using the `ColorEditor` is as follows:
 </igc-color-editor>
 ```
 
-<!-- end: WebComponents -->
-
 ## Binding to events
 
 The Color Editor component raises the following events:
@@ -79,15 +71,11 @@ The Color Editor component raises the following events:
 - valueChanged
 - valueChanging
 
-<!-- WebComponents -->
-
 ```ts
 this.OnValueChanged = this.OnValueChanged.bind(this);
 this.colorEditor = document.getElementById('colorEditor') as IgcColorEditorComponent;
 this.colorEditor.valueChanged = this.OnValueChanged;
 ```
-
-<!-- end: WebComponents -->
 
 <div class="divider--half"></div>
 

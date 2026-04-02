@@ -131,8 +131,6 @@ export class ExcelUtility {
 
 <div class="divider--half"></div>
 
-<!-- Angular, React, WebComponents -->
-
 ## References
 
 The following code shows the imports needed to use the code-snippets below:
@@ -146,8 +144,6 @@ import { NamedReference } from "igniteui-webcomponents-excel";
 import { WorksheetCellComment } from "igniteui-webcomponents-excel";
 import { FormattedString } from "igniteui-webcomponents-excel";
 ```
-
-<!-- end: Angular, React, WebComponents -->
 
 ## Referencing Cells and Regions
 

@@ -36,8 +36,6 @@ The Web Components Icon component allows you to easily display font or choose fr
 
 ## Usage
 
-<!-- WebComponents -->
-
 First, you need to install the Ignite UI for Web Components by running the following command:
 
 ```cmd
@@ -52,11 +50,11 @@ defineComponents(IgcIconComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-The [`IgcIconComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconcomponent.html) doesn't contain any icons on its own. It's a conduit for displaying any *registered* SVG images.
+Before using the [`IgcIconComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconcomponent.html), you need to register it as follows:
+
+The [`IgcIconComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconcomponent.html) doesn't contain any icons on its own. It's a conduit for displaying any _registered_ SVG images.
 
 ### Adding Icons
-
-<!-- WebComponents -->
 
 To register an image as an icon, all you have to do is import one of the 2 utility functions from the icons registry service that allows you to add icons to an icon collection.
 
@@ -77,8 +75,6 @@ registerIcon(
 );
 ```
 
-<!-- end: WebComponents -->
-
 The method above will add an icon named `search` to a cached collection named `material`.
 
 In order to use the newly registered icon, all you have to do is to pass the name and collection to the [`IgcIconComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconcomponent.html) element:
@@ -88,8 +84,6 @@ In order to use the newly registered icon, all you have to do is to pass the nam
 ```
 
 The second method for registering icons is by passing an SVG string to the [`registerIconFromText`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconcomponent.html#registerIconFromText) method:
-
-<!-- Blazor, WebComponents -->
 
 ```ts
 const searchIcon =
@@ -104,15 +98,11 @@ Then you'd use it in the same way as described in the component sample above.
 
 The icon component supports three icon sizes - `small`, `medium`(default), and `large`. In order to change the size of the icon, you can utilize the `--ig-size` CSS variable as follows:
 
-<!-- Blazor, WebComponents -->
-
 ```css
 igc-icon {
   --ig-size: var(--ig-size-large);
 }
 ```
-
-<!-- end: Blazor, WebComponents -->
 
 ```css
 .small {

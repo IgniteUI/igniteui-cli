@@ -9,12 +9,8 @@ _tocName: High Performance
 _premium: true
 ---
 
-<!-- Blazor, WebComponents -->
-
-> \[!Note]
+> [!Note]
 > Please note that this control has been deprecated and replaced with the [Grid](../data-grid.md) component, and as such, we recommend migrating to that control. This will not be receiving any new features, bug fixes will be deprioritized. For help or questions on migrating your codebase to the Data Grid, please contact support.
-
-<!-- end: Blazor, WebComponents -->
 
 # Web Components High Performance with Live Data
 
@@ -34,13 +30,9 @@ This sample demonstrates this performance by binding thousands of financial reco
 
 ## Additional Resources
 
-<!-- Angular, React, WebComponents -->
-
 <!-- TODO fix build flagging list items -->
 
 <!-- - [Binding Virtual Data](remote-data.md) -->
-
-<!-- end: Angular, React, WebComponents -->
 
 - [Column Types](column-types.md)
 - [Row Grouping](row-grouping.md)

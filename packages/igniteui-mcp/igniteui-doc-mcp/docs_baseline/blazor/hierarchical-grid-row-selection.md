@@ -23,7 +23,7 @@ The Ignite UI for Blazor Row Selection feature in Blazor Hierarchical Grid allow
 
 <!-- ComponentStart: Grid, HierarchicalGrid -->
 
-The sample below demonstrates the three types of [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html)'s **row selection** behavior. Use the drop-down below to enable each of the available selection modes. Use the checkbox to *hide* or *show* the row selector checkboxes.
+The sample below demonstrates the three types of [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html)'s **row selection** behavior. Use the drop-down below to enable each of the available selection modes. Use the checkbox to _hide_ or _show_ the row selector checkboxes.
 
 <!-- ComponentEnd: Grid, HierarchicalGrid -->
 
@@ -361,8 +361,6 @@ To enable multiple row selection in the [`IgbHierarchicalGrid`](https://www.infr
 
 The code snippet below can be used to select one or multiple rows simultaneously (via [`PrimaryKey`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_PrimaryKey)). Additionally, the second parameter of this method is a boolean property through which you may choose whether the previous row selection will be cleared or not. The previous selection is preserved by default.
 
-<!-- Blazor -->
-
 ```razor
     <IgbHierarchicalGrid Width="100%"
              Id="grid"
@@ -533,7 +531,7 @@ In the above example we are using an [`IgbCheckbox`](https://www.infragistics.co
 
 <!-- ComponentStart: HierarchicalGrid -->
 
-> \[!Note]
+> [!Note]
 > The `rowContext.select()` and `rowContext.deselect()` methods are exposed in the template context of an [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html). They make it easier to toggle the current row, especially in a child grid, when you implement a click handler that overrides the base functionality.
 
 <!-- ComponentEnd: HierarchicalGrid -->
@@ -557,7 +555,7 @@ The [`SelectedCount`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.
 
 Each hierarchy level in an [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) can have its own row and header templating.
 
-> \[!Note]
+> [!Note]
 > The `headContext.selectAll()` and `headContext.deselectAll()` methods are exposed in the template context of an [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html). They make it easier to toggle all rows, especially in a child grid, when you implement a click handler that overrides the base functionality.
 
 <!-- ComponentEnd: HierarchicalGrid -->

@@ -23,8 +23,6 @@ The Ignite UI for Web Components Linear Progress Indicator component provides a 
 
 ## Usage
 
-<!-- WebComponents -->
-
 First, you need to install the Ignite UI for Web Components by running the following command:
 
 ```cmd
@@ -41,8 +39,6 @@ defineComponents(IgcLinearProgressComponent);
 ```
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
-
-<!-- end: WebComponents -->
 
 The simplest way to start using the [`IgcLinearProgressComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igclinearprogresscomponent.html) is as follows:
 
