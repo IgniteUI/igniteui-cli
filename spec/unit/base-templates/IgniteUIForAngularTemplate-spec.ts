@@ -89,7 +89,8 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 				.toHaveBeenCalledWith(path.join("target/path", "src/app/app-module.ts"), false, { indentSize: 2, singleQuotes: true });
 			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith(
 				{
-					declare: [
+					declare: [],
+					import: [
 						"ViewName",
 					],
 					from: "./view-name/view-name",
@@ -189,7 +190,8 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 				.toHaveBeenCalledWith(path.join("target/path", "src/app/app-module.ts"), false, { indentSize: 2, singleQuotes: true });
 			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith(
 				{
-					declare: [
+					declare: [],
+					import: [
 					  "ViewName",
 					],
 					from: "./view-name/view-name",
@@ -199,6 +201,68 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 				true // multiline
 			);
 			expect(helpers.tsUpdateMock.finalize).toHaveBeenCalled();
+		});
+
+		it("should declare in NgModule when addAsNgModelDeclaration is true", async () => {
+			const templ = new TestTemplate();
+			templ.addAsNgModelDeclaration = true;
+			templ.addAsNgModelImport = false;
+			const mockFS = {
+				fileExists: (file: string): boolean => {
+					return false;
+				},
+				readFile: (file: string, encoding?: BufferEncoding): string => {
+					return JSON.stringify({ key: "value" });
+				},
+				writeFile: (file: string, text: string): void => {},
+			};
+			spyOn(App.container, "get").and.returnValue(mockFS);
+			spyOn(templ, "fileExists").and.returnValue(true);
+			templ.registerInProject("target/path", "view name");
+			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith(
+				{
+					declare: [
+						"ViewName",
+					],
+					import: [],
+					from: "./view-name/view-name",
+					export: []
+				},
+				jasmine.any(Object),
+				true
+			);
+		});
+
+		it("should both declare and import in NgModule when both flags are true", async () => {
+			const templ = new TestTemplate();
+			templ.addAsNgModelDeclaration = true;
+			templ.addAsNgModelImport = true;
+			const mockFS = {
+				fileExists: (file: string): boolean => {
+					return false;
+				},
+				readFile: (file: string, encoding?: BufferEncoding): string => {
+					return JSON.stringify({ key: "value" });
+				},
+				writeFile: (file: string, text: string): void => {},
+			};
+			spyOn(App.container, "get").and.returnValue(mockFS);
+			spyOn(templ, "fileExists").and.returnValue(true);
+			templ.registerInProject("target/path", "view name");
+			expect(helpers.tsUpdateMock.addNgModuleMeta).toHaveBeenCalledWith(
+				{
+					declare: [
+						"ViewName",
+					],
+					import: [
+						"ViewName",
+					],
+					from: "./view-name/view-name",
+					export: []
+				},
+				jasmine.any(Object),
+				true
+			);
 		});
 
 		it("generateConfig merges variables passed under extraConfig", async () => {

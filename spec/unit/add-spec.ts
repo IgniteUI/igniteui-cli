@@ -297,7 +297,8 @@ describe("Unit - Add command", () => {
 		expect(routeSpy).toHaveBeenCalledTimes(1);
 		expect(ngMetaSpy).toHaveBeenCalledTimes(1);
 		expect(ngMetaSpy).toHaveBeenCalledWith({
-				declare: [
+				declare: [],
+				import: [
 					"TestFileName"
 				],
 				from: "../test-file-name/test-file-name",
