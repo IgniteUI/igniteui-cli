@@ -95,8 +95,6 @@ root.render(<CarouselOverview />);
 
 ## Usage
 
-<!-- React -->
-
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
 
 ```cmd
@@ -109,8 +107,6 @@ You will then need to import the [`IgrCarousel`](https://www.infragistics.com/pr
 import { IgrCarousel, IgrCarouselSlide } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
-
-<!-- end: React -->
 
 For a complete introduction to the Ignite UI for React, read the [**Getting Started**](../general-getting-started.md) topic.
 
@@ -146,7 +142,7 @@ If you want a slide to be active by default, use the `Active` attribute:
 </IgrCarousel>
 ```
 
-> \[!NOTE]
+> [!NOTE]
 > If no active slide is set, the first one will be set by default. If there are multiple active slides on initial rendering or subsequent updates, only the last one will be taken into account.
 
 ## Examples
@@ -653,7 +649,7 @@ The carousel [animations](carousel.md#animations) are fully supported on touch d
 
 The [`IgrCarousel`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcarousel.html) can be easily configured to change the slides automatically, without any user interaction. This way you can create your own slideshow by only setting a transition interval to the [`interval`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcarousel.html#interval) property, which determines the amount of time in milliseconds between slides transition.
 
-> \[!NOTE]
+> [!NOTE]
 > Hovering the mouse over any carousel content or moving keyboard focus to any of the carousel content pauses automatic transitioning. Automatic transitioning resumes when the mouse moves away from the carousel or when keyboard focus moves out of the carousel content.
 > This can be prevented by setting [`disablePauseOnInteraction`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcarousel.html#disablePauseOnInteraction) property to **true**.
 

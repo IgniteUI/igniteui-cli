@@ -200,18 +200,12 @@ root.render(<Sample/>);
 
 ### Dependencies
 
-To get started with the React hierarchical grid, first you need to install the <!-- React -->`igniteui-react` and `igniteui-react-grids` packages.<!-- end: React -->
-
-<!-- React -->
+To get started with the React hierarchical grid, first you need to install the `igniteui-react` and `igniteui-react-grids` packages.
 
 ```cmd
 npm install --save igniteui-react
 npm install --save igniteui-react-grids
 ```
-
-<!-- end: React -->
-
-<!-- Angular, React, WebComponents -->
 
 The corresponding styles should also be referenced. You can choose light or dark option for one of the [themes](../../themes/overview.md) and based on your project configuration to import it:
 
@@ -220,8 +214,6 @@ import 'igniteui-react-grids/grids/themes/light/bootstrap.css'
 ```
 
 For more details on how to customize the appearance of the hierarchical grid, you may have a look at the [styling](overview.md#styling) section.
-
-<!-- end: Angular, React, WebComponents -->
 
 ## Using the React Hierarchical Data Grid
 
@@ -278,7 +270,7 @@ Each **IgrRowIsland** should specify the key of the property that holds the chil
 </IgrHierarchicalGrid>
 ```
 
-> \[!NOTE]
+> [!NOTE]
 > Note that instead of `data` the user configures only the `childDataKey` that the IgrHierarchicalGrid needs to read to set the data automatically.
 
 ### Using Load-On-Demand
@@ -345,8 +337,6 @@ export default function Sample() {
   );
 }
 ```
-
-<!-- WebComponents, React -->
 
 ```ts
 const URL = `https://data-northwind.indigo.design/`;
@@ -438,8 +428,6 @@ The Hierarchical Grid allows the users to conveniently collapse all its currentl
 <!-- ## Sizing
 
 See the [Hierarchical Grid Sizing](sizing.md) topic. -->
-
-<!-- WebComponents, Blazor, React -->
 
 ## Styling
 
@@ -652,8 +640,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
-<!-- end: WebComponents, Blazor, React -->
 
 ## Known Limitations
 

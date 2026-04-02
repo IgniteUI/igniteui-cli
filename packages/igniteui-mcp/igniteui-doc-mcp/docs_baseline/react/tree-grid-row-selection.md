@@ -23,7 +23,7 @@ The Ignite UI for React Row Selection feature in React Tree Grid allows users to
 
 <!-- ComponentStart: TreeGrid -->
 
-The sample below demonstrates the four types of [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html)'s **row selection** behavior. Use the buttons below to enable each of the available selection modes. A brief description will be provided on each button interaction through a snackbar message box. Use the switch button to *hide* or *show* the row selector checkbox.
+The sample below demonstrates the four types of [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html)'s **row selection** behavior. Use the buttons below to enable each of the available selection modes. A brief description will be provided on each button interaction through a snackbar message box. Use the switch button to _hide_ or _show_ the row selector checkbox.
 
 <!-- ComponentEnd: TreeGrid -->
 

@@ -208,11 +208,7 @@ public bool exactMatch = false;
 
 ### Blazor Search Box Input
 
-<!-- Blazor -->
-
 Now let's create our search input! By binding our `SearchText` to the `Value` property to our newly created input and subscribe to the `ValueChanging` event, we can detect every single `SearchText` modification by the user. This will allow us to use the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html)'s [`FindNext`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_FindNext) and [`FindPrev`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_FindPrev) methods to highlight all the occurrences of the `SearchText` and scroll to the next/previous one (depending on which method we have invoked).
-
-<!-- end: Blazor -->
 
 Both the [`FindNext`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_FindNext) and the [`FindPrev`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_FindPrev) methods have three arguments:
 
@@ -220,7 +216,7 @@ Both the [`FindNext`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.
 - (optional) `CaseSensitive`: **boolean** (should the search be case sensitive or not, default value is false)
 - (optional) `ExactMatch`: **boolean** (should the search be by an exact match or not, default value is false)
 
-When searching by an exact match, the search API will highlight as results only the cell values that match entirely the `SearchText` by taking the case sensitivity into account as well. For example the strings '*software*' and '*Software*' are an exact match with a disregard for the case sensitivity.
+When searching by an exact match, the search API will highlight as results only the cell values that match entirely the `SearchText` by taking the case sensitivity into account as well. For example the strings '_software_' and '_Software_' are an exact match with a disregard for the case sensitivity.
 
 The methods from above return a **number** value (the number of times the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) contains the given string).
 
@@ -299,11 +295,7 @@ We can also allow the users to navigate the results by using the keyboard's arro
 
 <!-- ComponentEnd: TreeGrid -->
 
-<!-- Blazor -->
-
 Now let's allow the user to choose whether the search should be case sensitive and/or by an exact match. For this purpose we can use simple selectable `Chips` and bind to the `SelectedChanged` event to determine when the user interacts with them.
-
-<!-- end: Blazor -->
 
 ```razor
 <IgbChip Selectable=true SelectedChanged="UpdateCase">
@@ -334,11 +326,7 @@ What if we would like to filter and sort our [`IgbTreeGrid`](https://www.infragi
 
 By using some of our other components, we can create an enriched user interface and improve the overall design of our entire search bar! We can have a nice search or delete icon on the left of the search input, a couple of chips for our search options and some material design icons combined with nice ripple styled buttons for our navigation on the right.
 
-<!-- Blazor -->
-
 To do this, let's go and grab the [`IgbInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbInput.html), [`IgbIcon`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIcon.html), [`IgbIconButton`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIconButton.html) and the [`IgbChip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbChip.html) modules.
-
-<!-- end: Blazor -->
 
 <!-- ComponentStart: TreeGrid -->
 
@@ -377,8 +365,6 @@ builder.Services.AddIgniteUIBlazor(
     }
 }
 ```
-
-<!-- WebComponents, Blazor -->
 
 Finally, let's update our template with the new components!
 
@@ -423,11 +409,7 @@ Finally, let's update our template with the new components!
 }
 ```
 
-<!-- Angular, Blazor, WebComponents -->
-
 On the right in our input group, let's create three separate containers with the following purposes:
-
-<!-- end: Angular, Blazor, WebComponents -->
 
 - For displaying a couple of chips that toggle the `CaseSensitive` and the `ExactMatch` properties. We have replaced the checkboxes with two stylish chips. Whenever a chip is clicked, we invoke its respective handler.
 
@@ -453,8 +435,6 @@ On the right in our input group, let's create three separate containers with the
     }
 }
 ```
-
-<!-- Angular, WebComponents, Blazor -->
 
 - For the search navigation buttons, we have added two ripple styled buttons with material icons. The handlers for the click events remain the same - invoking the [`FindNext`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_FindNext)/[`FindPrev`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_FindPrev) methods.
 
@@ -508,12 +488,10 @@ Additional components with relative APIs that were used:
 - [`IgbIcon`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIcon.html)
 - [`IgbChip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbChip.html)
 
-<!-- Blazor -->
+<!---->
 
 - [`IgbInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbInput.html)
 - [`IgbIconButton`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIconButton.html)
-
-<!-- end: Blazor -->
 
 ## Additional Resources
 

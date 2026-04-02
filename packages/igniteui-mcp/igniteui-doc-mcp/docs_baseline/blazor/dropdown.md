@@ -41,8 +41,6 @@ The following Blazor Dropdown List example demonstrates the use of simple intera
 
 ## How to use the Dropdown List with Ignite UI for Blazor
 
-<!-- Blazor -->
-
 Before using the [`IgbDropdown`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDropdown.html), you need to register it as follows:
 
 ```razor
@@ -50,6 +48,8 @@ Before using the [`IgbDropdown`](https://www.infragistics.com/blazor/docs/api/ap
 
 builder.Services.AddIgniteUIBlazor(typeof(IgbDropdownModule));
 ```
+
+The simplest way to start using the [`IgbDropdown`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDropdown.html) is as follows:
 
 ### Target
 

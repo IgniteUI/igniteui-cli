@@ -200,8 +200,6 @@ public class InvoicesData
 ```
 
 
-<!-- WebComponents, Blazor, React -->
-
 ## Usage
 
 You should first bind to the grid's `rendered` event to create and manage a text area element:
@@ -372,8 +370,6 @@ function updateRecords(processedData) {
         index++;
     }
 ```
-
-<!-- end: WebComponents, Blazor, React -->
 
 ## API References
 

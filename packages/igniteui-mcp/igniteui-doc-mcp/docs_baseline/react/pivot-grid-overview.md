@@ -163,14 +163,10 @@ export const SALES_DATA_NEW =
 
 The React IgrPivotGrid can be configured via the [`pivotConfiguration`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrpivotgrid.html#pivotConfiguration) property.
 
-<!--React -->
-
 ```tsx
 <IgrPivotGrid data={pivotData} pivotConfiguration={pivotConfiguration}>
 </IgrPivotGrid>
 ```
-
-<!-- end: React -->
 
 It is defined by three main dimensions: **rows**, **columns** and **values**. The **rows** and **columns** define the grouped structure that is displayed in the rows and columns of the grid. The **values** define the aggregation fields and the aggregation that will be used to calculate and display the related values of the groups.
 
@@ -186,8 +182,6 @@ The dimensions can be reordered or moved from one area to another via their corr
 
 A dimension can also describe an expandable hierarchy via the [`childLevel`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrpivotdimension.html#childLevel) property, for example:
 
-<!-- React -->
-
 ```tsx
 const dimension: IgrPivotDimension = {
     memberName: "AllProducts",
@@ -199,8 +193,6 @@ const dimension: IgrPivotDimension = {
 };
 
 ```
-
-<!-- end: React -->
 
 In this case the dimension renders an expander in the related section of the grid (row or column) and allows the children to be expanded or collapsed as part of the hierarchy. By default the row dimensions are initially expanded. This behavior can be controlled with the [`defaultExpandState`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrpivotgrid.html#defaultExpandState) property of the Pivot Grid.
 
@@ -218,8 +210,6 @@ As part of the Pivot Grid some additional predefined dimensions are exposed for 
 
 It can be set for rows or columns, for example:
 
-<!-- React -->
-
 ```ts
 
 const pivotConfiguration: IgrPivotConfiguration = {
@@ -233,8 +223,6 @@ const pivotConfiguration: IgrPivotConfiguration = {
 ```
 
 It also allows for further customization via the second option parameter in order to enable or disable a particular part of the hierarchy, for example:
-
-<!-- React -->
 
 ```tsx
  new IgrPivotDateDimension({
@@ -263,8 +251,6 @@ A value configuration requires a **member** that matches a field from the provid
     Contains the following aggregation functions: `COUNT`.
 
 The current aggregation function can be changed at runtime using the value chip's drop-down. By default, it displays a list of available aggregations based on the field's data type. A custom list of aggregations can also be set via the [`aggregateList`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrpivotvalue.html#aggregateList) property, for example:
-
-<!-- React -->
 
 ```typescript
 const totalSale = (members: any, data: any) => data.reduce((accumulator:any, value: any) => accumulator + value.UnitPrice * value.UnitsSold, 0);
@@ -316,8 +302,6 @@ The `Enable` property controls if a given [`IgrPivotDimension`](https://www.infr
 ### Full Configuration Code
 
 Let's take a look at a basic pivot configuration:
-
-<!-- React -->
 
 ```tsx
 const pivotConfiguration1: IgrPivotConfiguration = {
@@ -638,7 +622,7 @@ The default values are:
 };
 ```
 
-> \[!Note]
+> [!Note]
 > If you have data field values that contain the default keys, make sure to change the separators that match to any other symbols that you are not currently using. Otherwise could lead to unexpected behavior in calculating and showing the aggregated values.
 
 ## Known Issues and Limitations

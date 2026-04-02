@@ -42,8 +42,6 @@ root.render(<DrpOverview />);
 
 ### Getting Started
 
-<!-- React -->
-
 To start using the [`IgrDateRangePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html), you first need to install the Ignite UI for React by running the following command:
 
 ```cmd
@@ -56,8 +54,6 @@ After that, you need to import the [`IgrDateRangePicker`](https://www.infragisti
 import { IgrDateRangePicker } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
-
-<!-- end: React -->
 
 Now you can start with a basic configuration of the React [`IgrDateRangePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html).
 
@@ -102,11 +98,11 @@ return (
 );
 ```
 
+In addition, the value can be set as attribute. In this case it should represent an object that can be parsed correctly as JSON, where the `start` and `end` fields should have date values in the ISO 8601 format:
+
 ```tsx
 <IgrDateRangePicker value={{start: new Date('2025-01-01'), end: new Date('2025-01-02')}}/>
 ```
-
-<!-- end: WebComponents, React -->
 
 ### Read-only & Non-editable
 

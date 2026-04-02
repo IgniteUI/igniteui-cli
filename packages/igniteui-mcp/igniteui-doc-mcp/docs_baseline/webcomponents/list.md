@@ -27,13 +27,13 @@ The following example represents a list populated with contacts with a name and 
 
 At its core the list web component allows you to easily display a vertical list of items.
 
-<!-- WebComponents -->
-
 First, you need to install the Ignite UI for Web Components by running the following command:
 
 ```cmd
 npm install igniteui-webcomponents
 ```
+
+Before using the [`IgcListComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igclistcomponent.html), you need to register it as follows:
 
 ```ts
 import { defineComponents, IgcListComponent } from 'igniteui-webcomponents';

@@ -137,8 +137,6 @@ root.render(<ListOverview/>);
 
 At its core the list web component allows you to easily display a vertical list of items.
 
-<!-- React -->
-
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
 
 ```cmd
@@ -151,6 +149,8 @@ You will then need to import the [`IgrList`](https://www.infragistics.com/produc
 import { IgrList, IgrListHeader, IgrListItem } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
+
+Before using the [`IgrList`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrlist.html), you need to register it as follows:
 
 For a complete introduction to the Ignite UI for React, read the [**Getting Started**](../general-getting-started.md) topic.
 

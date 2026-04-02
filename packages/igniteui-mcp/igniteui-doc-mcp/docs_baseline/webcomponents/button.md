@@ -9,7 +9,7 @@ _tocName: Button
 
 # Web Components Button Overview
 
-The Web Components Button Component lets you enable clickable elements that trigger actions in your Web Components app. You get full control over how you set button variants, configure styles for the wrapped element, and define sizes. The Button Component also gives flexibility through the Web Components Button <!-- WebComponents, Blazor -->OnClick event<!-- end: WebComponents, Blazor -->, toggle the Web Components button, disable the Web Components button, and more.
+The Web Components Button Component lets you enable clickable elements that trigger actions in your Web Components app. You get full control over how you set button variants, configure styles for the wrapped element, and define sizes. The Button Component also gives flexibility through the Web Components Button OnClick event, toggle the Web Components button, disable the Web Components button, and more.
 
 ## Web Components Button Example
 
@@ -28,8 +28,6 @@ The Web Components Button Component lets you enable clickable elements that trig
 
 ## Usage
 
-<!-- WebComponents -->
-
 First, you need to install the Ignite UI for Web Components by running the following command:
 
 ```cmd
@@ -46,8 +44,6 @@ defineComponents(IgcButtonComponent);
 ```
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
-
-<!-- end: WebComponents -->
 
 The simplest way to start using the [`IgcButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html) is as follows:
 

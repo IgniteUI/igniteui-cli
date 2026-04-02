@@ -316,8 +316,6 @@ To enable the advanced filtering, the [`AllowAdvancedFiltering`](https://www.inf
 
 <!-- ComponentEnd: HierarchicalGrid -->
 
-<!-- Blazor -->
-
 <!-- ComponentStart: HierarchicalGrid -->
 
 ```razor
@@ -328,16 +326,12 @@ To enable the advanced filtering, the [`AllowAdvancedFiltering`](https://www.inf
 
 <!-- ComponentEnd: HierarchicalGrid -->
 
-<!-- end: Blazor -->
-
 The advanced filtering generates a [`FilteringExpressionsTree`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_FilteringExpressionsTree) which is stored in the [`AdvancedFilteringExpressionsTree`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_AdvancedFilteringExpressionsTree) input property. You could use the [`AdvancedFilteringExpressionsTree`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_AdvancedFilteringExpressionsTree) property to set an initial state of the advanced filtering.
 
 In case you don't want to show the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) toolbar, you could use the [`OpenAdvancedFilteringDialog`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_OpenAdvancedFilteringDialog) and [`CloseAdvancedFilteringDialog`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_CloseAdvancedFilteringDialog) methods to open and close the advanced filtering dialog programmatically.
 
-> \[!Note]
+> [!Note]
 > You can enable both the **QuickFilter**/**ExcelStyleFilter** and the advanced filtering user interfaces in the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html). Both filtering user interfaces will work independently of one another. The final filtered result in the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) is the intersection between the results of the two filters.
-
-<!-- WebComponents, Blazor, React -->
 
 ## Styling
 
@@ -644,8 +638,6 @@ public class SingersData
 }
 ```
 
-
-<!-- end: WebComponents, Blazor, React -->
 
 ## API References
 

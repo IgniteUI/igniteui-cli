@@ -191,8 +191,6 @@ root.render(<Sample/>);
 
 The predefined [`IgrGridToolbarActions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbaractions.html) and [`IgrGridToolbarTitle`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbartitle.html) UI components are added inside the [`IgrGridToolbar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbar.html) and this is all needed to have a toolbar providing default interactions with the corresponding Grid features:
 
-<!-- React -->
-
 <!-- ComponentStart: TreeGrid -->
 
 ```tsx
@@ -213,18 +211,10 @@ The predefined [`IgrGridToolbarActions`](https://www.infragistics.com/products/i
 
 <!-- ComponentEnd: TreeGrid -->
 
-<!-- end: React -->
-
-<!-- React -->
-
-<!-- end: React -->
-
-> \[!Note]
+> [!Note]
 > As seen in the code snippet above, the predefined `Actions` UI components are wrapped in the [`IgrGridToolbarActions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbaractions.html) container. This way, the toolbar title is aligned to the left of the toolbar and the actions are aligned to the right of the toolbar.
 
 Of course, each of these UIs can be added independently of each other, or may not be added at all. This way the toolbar container will be rendered empty:
-
-<!-- React -->
 
 <!-- ComponentStart: TreeGrid -->
 
@@ -234,20 +224,6 @@ Of course, each of these UIs can be added independently of each other, or may no
     </IgrGridToolbar>
 </IgrTreeGrid>
 ```
-
-<!-- ComponentEnd: TreeGrid -->
-
-<!-- end: React -->
-
-<!-- React -->
-
-<!-- end: React -->
-
-For a comprehensive look over each of the default UI components, continue reading the **Features** section below.
-
-<!-- React -->
-
-<!-- end: Angular, WebComponents, React -->
 
 ## Features
 
@@ -449,8 +425,6 @@ Setting a title for the toolbar in your grid is achieved by using the [`IgrGridT
 
 Users can provide anything from simple text to more involved templates.
 
-<!-- React -->
-
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
 ```tsx
@@ -463,15 +437,11 @@ Users can provide anything from simple text to more involved templates.
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
-<!-- end: React -->
-
 ### Actions
 
 The [`IgrGridToolbarActions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbaractions.html) is where users can place actions/interactions in relation to the parent grid.
 As with the title portion of the toolbar, users can provide anything inside that template part, including the default
 toolbar interaction components.
-
-<!-- React -->
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -485,15 +455,11 @@ toolbar interaction components.
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
-<!-- end: React -->
-
 ### Column Pinning
 
 The [`IgrGridToolbarPinning`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbarpinning.html) component provides the default UI for interacting with column pinning in the grid.
 
 The component is setup to work out of the box with the parent grid containing the toolbar as well as several input properties for customizing the UI, such as the component title, the placeholder for the component input and the height of the dropdown itself.
-
-<!-- React -->
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -507,14 +473,10 @@ The component is setup to work out of the box with the parent grid containing th
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
-<!-- end: React -->
-
 ### Column Hiding
 
 The [`IgrGridToolbarHiding`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbarhiding.html) provides the default UI for interacting with column hiding. Exposes the same input properties for customizing the UI, such as the component
 title, the placeholder for the component input and the height of the dropdown itself.
-
-<!-- React -->
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -528,13 +490,9 @@ title, the placeholder for the component input and the height of the dropdown it
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
-<!-- end: React -->
-
 ### Advanced Filtering
 
 Toolbar Advanced Filtering component provides the default UI for the Advanced Filtering feature. The component exposes a way to change the default text of the button.
-
-<!-- React -->
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -548,8 +506,6 @@ Toolbar Advanced Filtering component provides the default UI for the Advanced Fi
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
-<!-- end: React -->
-
 ### Data Exporting
 
 As with the rest of the toolbar actions, exporting is provided through a [`IgrGridToolbarExporter`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbarexporter.html) out of the box.
@@ -559,8 +515,6 @@ The toolbar exporter component exposes several input properties for customizing 
 These range from changing the display text, to enabling/disabling options in the dropdown to customizing the name of the generated file. For full reference, consult the API documentation for the `ToolbarExporter`.
 
 Here is a snippet showing some of the options which can be customized through the React template:
-
-<!-- React -->
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -574,11 +528,9 @@ Here is a snippet showing some of the options which can be customized through th
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
-<!-- end: React -->
-
 In addition to changing the exported filename, the user can further configure the exporter options by waiting for the `ToolbarExporting` event and customizing the options entry in the event properties.
 
-> \[!Note]
+> [!Note]
 > By default when exporting to CSV the exporter exports using a comma separator and uses a '.csv' extension for the output file.
 > You can customize these exporting parameters by subscribing to events of the exporter or changing the values of the exporter options fields.
 > You can also cancel the export process by setting the cancel field of the event args to true.
@@ -937,8 +889,6 @@ root.render(<TreeGridDataExportingIndicatorSample />);
 ```
 
 
-<!-- WebComponents, Blazor, React -->
-
 ## Styling
 
 In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
@@ -1126,8 +1076,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
-<!-- end: WebComponents, Blazor, React -->
 
 ## API References
 

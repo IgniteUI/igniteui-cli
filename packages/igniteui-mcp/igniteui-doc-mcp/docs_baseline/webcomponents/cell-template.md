@@ -14,8 +14,6 @@ By default, the grid uses the field of the column to render the value as a strin
 
 To achieve that, set the `cellTemplate` property of the column.
 
-<!-- WebComponents -->
-
 ```typescript
 // Get a reference to the column element
 const column = document.querySelector('igc-grid-lite-column[field="price"]');
@@ -33,8 +31,6 @@ column.cellTemplate = (params: IgcCellContext<T, K>) => { return html`<!-- templ
 ## Use as a Formatter Function
 
 For the simple scenario where some formatting is required, one can just return the formatted value. Here is an example for displaying a number value to a locale currency format:
-
-<!-- WebComponents -->
 
 ```typescript
 const { format: asCurrency } = new Intl.NumberFormat('en-150', { style: 'currency', currency: 'EUR' });
@@ -57,8 +53,6 @@ You can combine values of different fields from the data source as well.
 <!-- TODO:
 Refer to the API documentation for `GridLiteCellContext` for more information. -->
 
-<!-- WebComponents -->
-
 ```typescript
 const { format: asCurrency } = new Intl.NumberFormat('en-150', { style: 'currency', currency: 'EUR' });
 
@@ -80,12 +74,8 @@ column.cellTemplate = ({value, row}) => asCurrency(value * row.data.count);
 Aside from using the `cellTemplate` property as a value formatter, you can also create your own DOM template, which
 will be rendered inside the cell container.
 
-<!-- WebComponents -->
-
 We've decided to re-use the functionality provided by <a href="https://lit.dev/" target="_blank">Lit</a> and its <a href="https://lit.dev/docs/templates/expressions/" target="_blank">tagged template syntax</a> for building declarative
 DOM fragments.
-
-<!-- end: WebComponents -->
 
 You can template any standard DOM elements as well as web components from other libraries.
 
@@ -108,7 +98,7 @@ column.cellTemplate = ({ value }) => html`<igc-rating readonly value=${value}></
 
 <!-- End: Blazor -->
 
-> \[!NOTE]
+> [!NOTE]
 > Keep in mind the more complex and involved the template is, the greater the performance cost. Avoid complex DOM structures if performance is important.
 
 ## Cell Context Object

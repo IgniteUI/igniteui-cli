@@ -73,8 +73,6 @@ You can subscribe to the `ColumnResized` event of the [`IgcTreeGridComponent`](h
 
 <!-- ComponentStart: TreeGrid -->
 
-<!-- WebComponents -->
-
 ```html
 <igc-tree-grid id="treeGrid" auto-generate="false" primary-key="ID" foreign-key="ParentID">
     <igc-column field="Title" width="100px" resizable="true" width="100px"></igc-column>
@@ -114,7 +112,7 @@ This means that the following configuration is possible:
 
 <!-- ComponentEnd: TreeGrid -->
 
-> \[!Note]
+> [!Note]
 > There is a slight difference in the way resizing works for columns set in pixels and percentages.
 
 **Pixels**
@@ -229,8 +227,6 @@ export class EmployeesFlatDetails extends Array<EmployeesFlatDetailsItem> {
 ```
 
 
-<!-- WebComponents, Blazor, React -->
-
 ## Styling
 
 In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
@@ -297,8 +293,6 @@ export class EmployeesFlatDetails extends Array<EmployeesFlatDetailsItem> {
 }
 ```
 
-
-<!-- end: WebComponents, Blazor, React -->
 
 ## API References
 

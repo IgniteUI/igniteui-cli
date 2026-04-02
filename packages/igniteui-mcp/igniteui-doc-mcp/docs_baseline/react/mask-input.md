@@ -55,8 +55,6 @@ root.render(<MaskInputOverview/>);
 
 ## Usage
 
-<!-- React -->
-
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
 
 ```cmd
@@ -69,8 +67,6 @@ You will then need to import the [`IgrMaskInput`](https://www.infragistics.com/p
 import { IgrMaskInput } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
-
-<!-- end: React -->
 
 ```tsx
 <IgrMaskInput mask="00000">
@@ -286,7 +282,7 @@ igc-mask-input::part(input)::placeholder {
 
 ## Assumptions and limitations
 
-- The masked input does not expose a *type* attribute since it is always an input of type **text**.
+- The masked input does not expose a _type_ attribute since it is always an input of type **text**.
 - Undo/redo behavior is currently unsupported.
 
 ## API References

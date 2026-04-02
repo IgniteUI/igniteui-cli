@@ -15,17 +15,11 @@ The Ignite UI for Web Components Input is a component where the user can enter d
 
 <div class="divider--half"></div>
 
-<!-- React, WebComponents -->
-
 ```css
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
-<!-- end:React, WebComponents -->
-
-<!-- WebComponents -->
 
 To get started we need to import the [`IgcInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html) in our typescript file and register the component by calling the [defineComponents()](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/index.html#defineComponents) function as follows:
 
@@ -37,8 +31,6 @@ defineComponents(IgcInputComponent);
 ```
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
-
-<!-- end: WebComponents -->
 
 After we import the [`IgcInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html) component we are ready to start using it, so let's add our first Input.
 
@@ -95,11 +87,7 @@ In the sample above we have demonstrated the use of the following attributes:
 - `disabled` - Used to disable the input
 - `readonly` - Used to mark the input as readonly
 
-<!-- WebComponents -->
-
 The full list of attributes can be found in [`IgcInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html) API.
-
-<!-- end: WebComponents -->
 
 ## Styling
 

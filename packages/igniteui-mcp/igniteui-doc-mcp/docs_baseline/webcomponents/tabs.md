@@ -25,13 +25,13 @@ The Web Components Tabs example below displays three different tabs aligned in a
 
 ## How to use Tabs with Ignite UI for Web Components
 
-<!-- WebComponents -->
-
 First, you need to install the Ignite UI for Web Components by running the following command:
 
 ```cmd
 npm install igniteui-webcomponents
 ```
+
+Before using the [`IgcTabsComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctabscomponent.html), you need to import it as follows:
 
 ```ts
 import { defineComponents, IgcTabsComponent } from 'igniteui-webcomponents';
@@ -135,19 +135,13 @@ igc-icon-button {
 
 The [`IgcTabsComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctabscomponent.html) component exposes several CSS parts, giving you full control over its style:
 
-<!-- WebComponents, React -->
-
 | Name | Description |
 |--|--|
 | `selected-indicator` | The selected indicator. |
 | `start-scroll-button` | The start scroll button displayed when the tabs overflow. |
 | `end-scroll-button` | The end scroll button displayed when the tabs overflow. |
 
-<!-- end: WebComponents, React -->
-
 The [`IgcTabComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctabcomponent.html) component exposes the following CSS parts:
-
-<!-- WebComponents, React -->
 
 |Name|Description|
 |--|--|
@@ -193,8 +187,6 @@ igc-tab::part(tab-header)::before {
     --border-color--hover: var(--ig-gray-500);
 }
 ```
-
-<!-- end: WebComponents, React -->
 
 ```css
 igc-tab::part(tab-header),

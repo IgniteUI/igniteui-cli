@@ -19,8 +19,6 @@ The Ignite UI for Web Components Date Time Input allows the user to set and edit
 
 ## Usage
 
-<!-- WebComponents -->
-
 First, you need to install the Ignite UI for Web Components by running the following command:
 
 ```cmd
@@ -38,8 +36,6 @@ defineComponents(IgcDateTimeInput);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-<!-- end: WebComponents -->
-
 ### Value binding
 
 The easiest way to set the value of the [`IgcDateTimeInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html) component is by passing a Date object to the [`value`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html#value) property:
@@ -50,8 +46,6 @@ const date = new Date();
 
 input.value = date;
 ```
-
-<!-- WebComponents, React -->
 
 The [`IgcDateTimeInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html) also accepts [ISO 8601](https://tc39.es/ecma262/#sec-date-time-string-format) strings.
 
@@ -70,8 +64,6 @@ Time-only strings are normally not defined in the `ECMA` specification, however 
 If a full `ISO` string is bound, the directive will parse it only if all elements required by [Date.parse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse#date_time_string_format) are provided.
 
 All falsy values, including `InvalidDate` will be parsed as `null`. Incomplete date-only, time-only, or full `ISO` strings will be parsed as `InvalidDate`.
-
-<!-- end: WebComponents, React -->
 
 ### Keyboard Navigation
 
@@ -177,7 +169,7 @@ Furthermore, users can construct a displayFormat string using the supported symb
 |   | `tttt` | Long | noon |
 |   | `ttttt` | Narrow | n |
 
-> \[!Note]
+> [!Note]
 > Many locales use the same time period string, irrespective of the format specified. Also, it has an effect only if a 12-hour clock is used.
 
 ## Min/max value
@@ -208,11 +200,7 @@ The [`IgcDateTimeInputComponent`](https://www.infragistics.com/products/ignite-u
 
 In the first scenario, if no specific DatePart is passed to the method, a default DatePart will increment or decrement, based on the specified [`inputFormat`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html#inputFormat) and the internal component implementation. In the second scenario, you can explicitly specify what DatePart to manipulate as it may suite different requirements. Also, both methods accept an optional `delta` parameter of type number which can be used to set the stepUp/stepDown step.
 
-<!-- WebComponents, Blazor -->
-
 Additionally, [`spinDelta`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html#spinDelta) is a property that can be used to apply a different delta to each date time segment. It will be applied when spinning with the keyboard, mouse wheel or with the [`stepUp`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html#stepUp) and [`stepDown`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html#stepDown) methods, as long as they don't have the delta parameter provided since it will take precedence over [`spinDelta`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html#spinDelta).
-
-<!-- end: WebComponents, Blazor -->
 
 ```ts
 const input = document.getElementById('dateTimeInput') as IgcDateTimeInputComponent;

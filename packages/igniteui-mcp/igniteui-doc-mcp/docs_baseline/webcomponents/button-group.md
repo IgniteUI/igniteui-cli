@@ -28,8 +28,6 @@ igc-ripple {
 
 ## Usage
 
-<!-- WebComponents -->
-
 First, you need to install the Ignite UI for Web Components by running the following command:
 
 ```cmd
@@ -44,8 +42,6 @@ import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
 defineComponents(IgcButtonGroupComponent);
 ```
-
-<!-- end: WebComponents -->
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
@@ -149,7 +145,7 @@ A [`IgcToggleButtonComponent`](https://www.infragistics.com/products/ignite-ui-w
 </igc-button-group>
 ```
 
-> \[!Note]
+> [!Note]
 > Setting [`IgcToggleButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctogglebuttoncomponent.html) [`value`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctogglebuttoncomponent.html#value) attribute is mandatory for using the [`selectedItems`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttongroupcomponent.html#selectedItems) property of the [`IgcButtonGroupComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttongroupcomponent.html).
 
 ### Size

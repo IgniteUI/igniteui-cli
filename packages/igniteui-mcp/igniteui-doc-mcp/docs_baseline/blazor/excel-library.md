@@ -292,8 +292,6 @@ namespace Infragistics.Samples
 
 <div class="divider--half"></div>
 
-<!-- Blazor -->
-
 ## Requirements
 
 In order to use the Blazor excel library, you need to add the following using statement:
@@ -327,8 +325,6 @@ If you are using a Web Assembly (WASM) Blazor project, there are a couple of ext
     }
 }
 ```
-
-<!-- end: Blazor -->
 
 ## Supported Versions of Microsoft Excel
 

@@ -56,8 +56,6 @@ root.render(<RadioGroup/>);
 
 ### Usage
 
-<!-- React -->
-
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
 
 ```cmd
@@ -71,6 +69,8 @@ import { IgrRadio, IgrRadioGroupComponent } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
 
+The simplest way to start using the [`IgrRadio`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrradio.html) is as follows:
+
 ```tsx
 <IgrRadioGroup>
   <IgrRadio value="apple"><span>Apple</span></IgrRadio>
@@ -80,7 +80,7 @@ import 'igniteui-webcomponents/themes/light/bootstrap.css';
 </IgrRadioGroup>
 ```
 
-> \[!WARNING]
+> [!WARNING]
 > The [`IgrRadio`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrradio.html) component doesn't work with the standard `<form>` element. Use `Form` instead.
 
 ## Examples

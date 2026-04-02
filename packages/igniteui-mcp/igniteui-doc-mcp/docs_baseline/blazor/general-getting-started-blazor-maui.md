@@ -100,5 +100,5 @@ Build and run the .NET MAUI Blazor app for Windows.
 
 <img src="../images/general/getting-started-blazor-card-windows.jpg" alt="getting-started-blazor-card-windows" />
 
-> \[!Note]
+> [!Note]
 > For more information about building cross-platform applications with .NET MAUI, visit the [Microsoft Documentation](https://docs.microsoft.com/en-us/dotnet/maui/get-started/first-app?pivots=devices-android).

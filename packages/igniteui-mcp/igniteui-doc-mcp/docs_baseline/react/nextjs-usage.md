@@ -87,7 +87,7 @@ IgrGeographicMapModule.register();
 IgrDataChartInteractivityModule.register();
 ```
 
-> \[!Note]
+> [!Note]
 > It's important to note that Ignite UI for React components are using client-only features like state and browser events. Infragistics' components will work as expected within Client Next.js Components since they have the "use client" directive, but they won't work within Server Components.
 
 ## Using Components
@@ -150,7 +150,7 @@ function App() {
 }
 ```
 
-> \[!Note]
+> [!Note]
 > The majority of Ignite UI for React components may remain unwrapped as they are expected to be utilized within other Client Components. Therefore, there is no need to wrap all Infragistics' components.
 
 ## Dynamic import of Ignite UI for React components
@@ -254,7 +254,7 @@ export default function GridDynamicComponent() {
 }
 ```
 
-> \[!Note]
+> [!Note]
 > Implementing lazy loading for components can enhance performance, but it is advisable to use it exclusively when the components are not immediately visible on the page.
 
 ## Limitations

@@ -157,8 +157,6 @@ export class RemoteNwindService {
 
 The paging feature can operate with remote data. In order to demonstrate this let's first declare our service that will be responsible for data fetching. We will need the count of all data items in order to calculate the page count. This logic will be added to our service.
 
-<!-- WebComponents -->
-
 ```ts
 export class RemotePagingService {
     public static CUSTOMERS_URL = `https://data-northwind.indigo.design/Customers/GetCustomersWithPage`;
@@ -191,15 +189,11 @@ export class RemotePagingService {
 }
 ```
 
-<!-- end: WebComponents -->
-
 <!-- ComponentEnd: Grid -->
 
 After declaring the service, we need to create a component, which will be responsible for the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) construction and data subscription.
 
 <!-- ComponentStart: Grid -->
-
-<!-- WebComponents -->
 
 First we need to bind to the relevant events so when we change pages and the amount of records shown per page, the remote service will fetch the correct amount of data
 
@@ -308,8 +302,6 @@ export class RemotePagingService {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
-<!-- end: WebComponents -->
 
 <!-- ComponentEnd: Grid -->
 

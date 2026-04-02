@@ -33,13 +33,13 @@ Cards allow you to easily display content composed of different types of objects
 
 ### Getting Started
 
-<!-- WebComponents -->
-
 First, you need to install the Ignite UI for Web Components by running the following command:
 
 ```cmd
 npm install igniteui-webcomponents
 ```
+
+Before using the [`IgcCardComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccardcomponent.html), you need to register it as follows:
 
 ```ts
 import { defineComponents, IgcCardComponent } from 'igniteui-webcomponents';
@@ -83,7 +83,7 @@ Then, to represent the demo card template, we can add the following code:
 </igc-card>
 ```
 
-You will notice a few things above. First, when we want to *tag* an element as a header title, like the `h3` heading, we place it between the [`IgcCardHeaderComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccardheadercomponent.html) tags and set its slot name to `title`. Conversely, if we wanted to make another heading element a `subtitle` we would name its slot `subtitle`.
+You will notice a few things above. First, when we want to _tag_ an element as a header title, like the `h3` heading, we place it between the [`IgcCardHeaderComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccardheadercomponent.html) tags and set its slot name to `title`. Conversely, if we wanted to make another heading element a `subtitle` we would name its slot `subtitle`.
 
 Any image or video we want to show in the card, we wrap inside the [`IgcCardMediaComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccardmediacomponent.html) tags. The [`IgcCardMediaComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccardmediacomponent.html) allows us to size the content placed inside so that it maintains its aspect ratio while filling the element’s entire content box. If the object's aspect ratio does not match the aspect ratio of its box, then the object will be clipped to fit.
 

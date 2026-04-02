@@ -265,6 +265,8 @@ In order enable column editing, make sure [`editable`](https://www.infragistics.
 
 Once the column editing is enabled, you can start by adding your [`IgrCombo`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html). Please note that here in order to have only one single selection available, you will need to use set the [`singleSelect`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#singleSelect) property.
 
+To get started with the [`IgrCombo`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html), first you need to import it:
+
 ```tsx
 import { IgrCombo } from 'igniteui-react';
 ```
@@ -331,8 +333,6 @@ In order to handle the selection change, we need the `onChange` event. The emitt
         }
     }
 ```
-
-<!-- end: WebComponents, Blazor, React -->
 
 ## Known Issues and Limitations
 

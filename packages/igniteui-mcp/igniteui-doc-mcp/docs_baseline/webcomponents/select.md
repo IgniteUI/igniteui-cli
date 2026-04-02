@@ -23,8 +23,6 @@ The Ignite UI for Web Components Select component allows a single selection from
 
 ## Usage
 
-<!-- WebComponents -->
-
 First, you need to install the Ignite UI for Web Components by running the following command:
 
 ```cmd
@@ -46,14 +44,10 @@ defineComponents(IgcSelectComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-<!-- end: WebComponents -->
-
-> \[!Note]
+> [!Note]
 > Please note that the select header and group components are not mandatory unless you want to use them.
 
 To start using the component add the [`IgcSelectComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectcomponent.html) along with a list of [`IgcSelectItemComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectitemcomponent.html)'s to choose from:
-
-<!-- WebComponents -->
 
 ```html
 <igc-select>
@@ -63,8 +57,6 @@ To start using the component add the [`IgcSelectComponent`](https://www.infragis
     <igc-select-item value="mango">Mango</igc-select-item>
 </igc-select>
 ```
-
-<!-- end: WebComponents -->
 
 ### Select
 
@@ -90,21 +82,17 @@ You can use the [`IgcSelectHeaderComponent`](https://www.infragistics.com/produc
 ```
 
 
-<!-- WebComponents -->
-
 ```html
 <igc-select>
     <igc-select-header>Tasks</igc-select-header>
 </igc-select>
 ```
 
-<!-- end: WebComponents -->
-
 ### Group
 
 Multiple [`IgcSelectItemComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectitemcomponent.html)s can be placed between the opening and closing brackets of an [`IgcSelectGroupComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectgroupcomponent.html) component so that users can visually group them together. The [`IgcSelectGroupComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectgroupcomponent.html) can be labelled via its `label` slot and disabled via its [`disabled`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectgroupcomponent.html#disabled) property.
 
-> \[!Note]
+> [!Note]
 > Keep in mind that if a select group is disabled, you cannot enable separate items of it.
 
 ```css
@@ -112,8 +100,6 @@ Multiple [`IgcSelectItemComponent`](https://www.infragistics.com/products/ignite
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
-<!-- WebComponents -->
 
 ```html
 <igc-select>
@@ -141,8 +127,6 @@ Multiple [`IgcSelectItemComponent`](https://www.infragistics.com/products/ignite
 </igc-select>
 ```
 
-<!-- end: WebComponents -->
-
 ## Validation
 
 In addition, the [`IgcSelectComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectcomponent.html) supports most of the [`IgcInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html) properties, such as [`required`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectcomponent.html#required), [`disabled`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectcomponent.html#disabled), [`autofocus`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html#autofocus), etc. The component also exposes a method bound to its validation:
@@ -167,10 +151,8 @@ When the select is focused and the list of options is **visible**:
 - Using the <kbd>↑</kbd> <kbd>↓</kbd> keys will activate the next item in the list.
 - Using the <kbd>HOME</kbd> or <kbd>END</kbd> keys will activate the first or last item in the list.
 
-> \[!Note]
+> [!Note]
 > The [`IgcSelectComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectcomponent.html) component supports only **single** selection of items.
-
-<!-- WebComponents, React -->
 
 ## Styling
 
@@ -246,8 +228,6 @@ igc-select::part(suffix) {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
-<!-- end: WebComponents, React -->
 
 ## API Reference
 

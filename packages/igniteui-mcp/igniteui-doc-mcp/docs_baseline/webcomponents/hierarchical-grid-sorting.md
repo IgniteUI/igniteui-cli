@@ -51,15 +51,11 @@ The [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignit
 
 You can sort any column or a combination of columns through the [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html) API using the [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html) [`sort`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#sort) method:
 
-<!-- WebComponents -->
-
 ```typescript
 import { SortingDirection } from 'igniteui-webcomponents-grids';
 ```
 
 <!-- ComponentStart: HierarchicalGrid -->
-
-<!-- WebComponents -->
 
 ```typescript
 
@@ -75,14 +71,12 @@ this.hierarchicalGrid.sort([
 
 <!-- ComponentEnd: HierarchicalGrid -->
 
-> \[!Note]
+> [!Note]
 > Sorting is performed using our `DefaultSortingStrategy` algorithm. Any [`IgcColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html) or `ISortingExpression` can use a custom implementation of the `ISortingStrategy` as a substitute algorithm. This is useful when custom sorting needs to be defined for complex template columns, or image columns, for example.
 
 As with the filtering behavior, you can clear the sorting state by using the [`clearSort`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#clearSort) method:
 
 <!-- ComponentStart: HierarchicalGrid -->
-
-<!-- Angular, WebComponents -->
 
 ```typescript
 // Removes the sorting state from the ProductName column
@@ -94,17 +88,15 @@ this.hierarchicalGrid.clearSort();
 
 <!-- ComponentEnd: HierarchicalGrid -->
 
-> \[!Note]
+> [!Note]
 > The [`sortStrategy`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#sortStrategy) of the [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html) is of different type compared to the [`sortStrategy`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#sortStrategy) of the [`IgcColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html), since they work in different scopes and expose different parameters.
 
-> \[!Note]
+> [!Note]
 > The sorting operation **DOES NOT** change the underlying data source of the [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html).
 
 ## Initial Sorting State
 
 It is possible to set the initial sorting state of the [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html) by passing an array of sorting expressions to the [`sortingExpressions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#sortingExpressions) property of the [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html).
-
-<!-- WebComponents -->
 
 ```typescript
 public connectedCallback() {
@@ -117,7 +109,7 @@ public connectedCallback() {
 
 <!-- ComponentEnd: HierarchicalGrid -->
 
-> \[!Note]
+> [!Note]
 > If values of type `string` are used by a column of [`dataType`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#dataType) `Date`, the [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html) won't parse them to `Date` objects and using [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html) `Sorting` won't work as expected. If you want to use `string` objects, additional logic should be implemented on an application level, in order to parse the values to `Date` objects.
 
 ## Sorting Indicators Templates
@@ -125,8 +117,6 @@ public connectedCallback() {
 The sorting indicator icon in the column header can be customized using a template. The following properties are available for templating the sorting indicator for any sorting state (ascending, descending, none):
 
 - [`sortHeaderIconTemplate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#sortHeaderIconTemplate) – re-templates the sorting icon when no sorting is applied.
-
-<!-- WebComponents -->
 
 ```ts
 constructor() {
@@ -140,11 +130,7 @@ public sortHeaderIconTemplate = (ctx: IgcGridHeaderTemplateContext) => {
 }
 ```
 
-<!-- end: WebComponents -->
-
 - [`sortAscendingHeaderIconTemplate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#sortAscendingHeaderIconTemplate) – re-templates the sorting icon when the column is sorted in ascending order.
-
-<!-- WebComponents -->
 
 ```ts
 constructor() {
@@ -158,11 +144,7 @@ public sortAscendingHeaderIconTemplate = (ctx: IgcGridHeaderTemplateContext) => 
 }
 ```
 
-<!-- end: WebComponents -->
-
 - [`sortDescendingHeaderIconTemplate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#sortDescendingHeaderIconTemplate) – re-templates the sorting icon when the column is sorted in descending order.
-
-<!-- WebComponents -->
 
 ```ts
 constructor() {
@@ -175,10 +157,6 @@ public sortDescendingHeaderIconTemplate = (ctx: IgcGridHeaderTemplateContext) =>
     return html`<igc-icon name="expand_more"></igc-icon>`;
 }
 ```
-
-<!-- end: WebComponents -->
-
-<!-- WebComponents, Blazor, React -->
 
 ## Styling
 
@@ -211,8 +189,6 @@ Then set the related CSS properties to this class:
 }
 ```
 
-
-<!-- end: WebComponents, Blazor, React -->
 
 ## API References
 

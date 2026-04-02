@@ -26,14 +26,10 @@ The Web Components Hierarchical Grid exposes an Excel-style filtering feature th
 
 To turn on the [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html) component's Excel-style filtering, two inputs should be set. The [`allowFiltering`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#allowFiltering) should be set to **true** and the [`filterMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#filterMode) should be set to `ExcelStyleFilter` value.
 
-<!-- WebComponents -->
-
 ```html
 <igc-hierarchical-grid auto-generate="true" allow-filtering="true" filter-mode="excelStyleFilter" >
 </igc-hierarchical-grid>
 ```
-
-<!-- end: WebComponents -->
 
 ## Interactions
 
@@ -75,13 +71,9 @@ In the sample below 'Artist' column have all three features enabled, 'Debut' hav
 
 ## Templates
 
-<!-- WebComponents, Blazor, React -->
-
 If you want to further customize the Excel style filter menu, you can use the [`excelStyleHeaderIconTemplate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#excelStyleHeaderIconTemplate) property to define a custom template for the header icon of the menu.
 
 The following code demonstrates how to customize the Excel style filter menu using the [`excelStyleHeaderIconTemplate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#excelStyleHeaderIconTemplate):
-
-<!-- WebComponents -->
 
 ```ts
 constructor() {
@@ -94,11 +86,7 @@ public webGridFilterAltIconTemplate = (ctx: IgcCellTemplateContext) => {
 }
 ```
 
-<!-- end: WebComponents -->
-
 <!-- ComponentEnd: Grid, HierarchicalGrid -->
-
-<!-- end: WebComponents, Blazor, React -->
 
 <!-- ```razor
 Add razor snipets
@@ -151,8 +139,6 @@ Add razor snipets
 ```
 
 
-<!-- WebComponents, Blazor, React -->
-
 ## Styling
 
 In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
@@ -201,8 +187,6 @@ Then set the related CSS properties to this class:
     }
 ```
 
-
-<!-- end: WebComponents, Blazor, React -->
 
 ## API References
 

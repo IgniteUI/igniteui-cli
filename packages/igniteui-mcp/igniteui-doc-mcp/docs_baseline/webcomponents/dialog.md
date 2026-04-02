@@ -25,15 +25,11 @@ This sample demonstrates how to create a Dialog component in Web Components.
 
 ### Usage
 
-<!-- WebComponents -->
-
 First, you need to install the Ignite UI for Web Components by running the following command:
 
 ```cmd
 npm install igniteui-webcomponents
 ```
-
-<!-- end: WebComponents -->
 
 ```ts
 import { defineComponents, IgcDialogComponent } from 'igniteui-webcomponents';
@@ -67,15 +63,11 @@ By default, the Dialog is closed automatically when the user presses `ESC`. You 
 
 Use the [`closeOnOutsideClick`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdialogcomponent.html#closeOnOutsideClick) property to configure if the dialog should be closed when clicking outside of it. The default value is **false**.
 
-<!-- Angular, WebComponents, React -->
-
 ```css
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
-<!-- end: Angular, WebComponents, React -->
 
 ### Form
 

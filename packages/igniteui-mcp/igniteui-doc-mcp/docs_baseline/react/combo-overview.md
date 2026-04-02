@@ -59,8 +59,6 @@ root.render(<ComboOverview />);
 
 ## Getting Started with React ComboBox
 
-<!-- React -->
-
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
 
 ```cmd
@@ -74,9 +72,7 @@ import { IgrCombo } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
 
-<!-- end: React -->
-
-> \[!WARNING]
+> [!WARNING]
 > The [`IgrCombo`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html) component doesn't work with the standard `<form>` element. Use `Form` instead.
 
 Then, we will bind an array of objects to the combo data source used for building the list of options.
@@ -115,7 +111,7 @@ When the combo is bound to a list of complex data (i.e. objects), we need to spe
 - [`displayKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#displayKey) - **Optional**, **recommended** for complex data objects - Determines which field in the data source is used as the display value. If no value is specified for [`displayKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#displayKey), the combo will use the specified [`valueKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#valueKey) (if any).
     In our case, we want the combo to display the `name` of each city and use the `id` field for item selection and as the underlying value for each item. Therefore, we provide these properties to the combo's [`valueKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#valueKey) and [`displayKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#displayKey) respectively.
 
-> \[!Note]
+> [!Note]
 > When the data source consists of primitive types (e.g. `strings`, `numbers`, etc.), **do not** specify a [`valueKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#valueKey) and/or [`displayKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#displayKey).
 
 ### Setting Value
@@ -144,19 +140,13 @@ Besides selecting items from the list of options by user interaction, you can se
 
 #### Select/deselect some items
 
-<!-- React -->
-
 ```tsx
 // Select/deselect items by their IDs as valueKey is set to 'id'
 comboRef.current.select(["UK01", "UK02", "UK03", "UK04", "UK05"]);
 comboRef.current.deselect(["UK01", "UK02", "UK03", "UK04", "UK05"]);
 ```
 
-<!-- end: React -->
-
 #### Select/deselect all items
-
-<!-- React -->
 
 ```tsx
 // Select/deselect all items
@@ -164,19 +154,13 @@ comboRef.current.select([]);
 comboRef.current.deselect([]);
 ```
 
-<!-- end: React -->
-
 If the [`valueKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#valueKey) property is omitted, you will have to list the items you wish to select/deselect as objects references:
-
-<!-- React -->
 
 ```tsx
 // Select/deselect values by object references when no valueKey is provided
 comboRef.current.select([cities[1], cities[5]]);
 comboRef.current.deselect([cities[1], cities[5]]);
 ```
-
-<!-- end: React -->
 
 ```typescript
 interface City {

@@ -8,7 +8,7 @@ _tocName: Ignite UI CLI
 
 # Ignite UI CLI for Web Components
 
-Our CLI tools provide project templates pre-configured for the Ignite UI for Web Components toolset that help you get your next application off the ground in record time. The <!-- WebComponents --><a href="https://github.com/IgniteUI/igniteui-cli/blob/master/README.md#generate-ignite-ui-for-web-components-project" target="_blank"><!-- end: WebComponents -->Ignite UI CLI</a> is a stand-alone command-line tool for creating and scaffolding your applications for a variety of different frameworks and provides a substantial productivity boost for developers.
+Our CLI tools provide project templates pre-configured for the Ignite UI for Web Components toolset that help you get your next application off the ground in record time. The <a href="https://github.com/IgniteUI/igniteui-cli/blob/master/README.md#generate-ignite-ui-for-web-components-project" target="_blank">Ignite UI CLI</a> is a stand-alone command-line tool for creating and scaffolding your applications for a variety of different frameworks and provides a substantial productivity boost for developers.
 
 ## Getting Started
 
@@ -24,8 +24,6 @@ The above install command will make the Ignite UI CLI available for creation, sc
 
 To create an application that is configured to use the Ignite UI for Web Components controls using the Ignite UI CLI, you can use the following template in your command line:
 
-<!-- WebComponents -->
-
 ```cmd
 ig new "[name_of_project]" --framework=[target_framework]
 ```
@@ -35,8 +33,6 @@ Using the above template, if you wanted to create a **Web Components** applicati
 ```cmd
 ig new "My Project" --framework=webcomponents
 ```
-
-<!-- end: WebComponents -->
 
 ## Adding Components
 
@@ -68,8 +64,6 @@ ig add grid MyGridComponent
 
 > NOTE: Your routing file will be updated with the path to the page with the new component - in that case `/my-grid-component`. You can use it to manually navigate to the newly generated page.
 
-<!-- WebComponents -->
-
 Currently the CLI can be used with the following Web Components:
 
 | Name | Component Template |
@@ -91,8 +85,6 @@ Currently the CLI can be used with the following Web Components:
 | Ripple | ripple |
 | Pie Chart | pie-chart |
 | Dock Manager | dock-manager |
-
-<!-- end: WebComponents -->
 
 ## Build and Run the Application
 

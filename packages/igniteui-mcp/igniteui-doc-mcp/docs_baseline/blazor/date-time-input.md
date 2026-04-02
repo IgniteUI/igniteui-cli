@@ -63,8 +63,6 @@ The Ignite UI for Blazor Date Time Input allows the user to set and edit the dat
 
 ## Usage
 
-<!-- Blazor -->
-
 Before using the [`IgbDateTimeInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateTimeInput.html), you need to register it as follows:
 
 ```razor
@@ -78,8 +76,6 @@ You will also need to link an additional CSS file to apply the styling to the [`
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
 ```
-
-<!-- end: Blazor -->
 
 ### Value binding
 
@@ -238,7 +234,7 @@ Furthermore, users can construct a displayFormat string using the supported symb
 |   | `tttt` | Long | noon |
 |   | `ttttt` | Narrow | n |
 
-> \[!Note]
+> [!Note]
 > Many locales use the same time period string, irrespective of the format specified. Also, it has an effect only if a 12-hour clock is used.
 
 ## Min/max value
@@ -309,8 +305,6 @@ If all went well, the component will be `invalid` if the value is greater or low
 The [`IgbDateTimeInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateTimeInput.html) exposes public [`StepUp`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateTimeInput.html#IgniteUI_Blazor_Controls_IgbDateTimeInput_StepUp) and [`StepDown`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateTimeInput.html#IgniteUI_Blazor_Controls_IgbDateTimeInput_StepDown) methods. They increment or decrement a specific `DatePart` of the currently set date and time and can be used in a couple of ways.
 
 In the first scenario, if no specific DatePart is passed to the method, a default DatePart will increment or decrement, based on the specified [`InputFormat`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateTimeInput.html#IgniteUI_Blazor_Controls_IgbDateTimeInput_InputFormat) and the internal component implementation. In the second scenario, you can explicitly specify what DatePart to manipulate as it may suite different requirements. Also, both methods accept an optional `delta` parameter of type number which can be used to set the stepUp/stepDown step.
-
-<!-- WebComponents, Blazor -->
 
 Additionally, [`SpinDelta`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateTimeInput.html#IgniteUI_Blazor_Controls_IgbDateTimeInput_SpinDelta) is a property that can be used to apply a different delta to each date time segment. It will be applied when spinning with the keyboard, mouse wheel or with the [`StepUp`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateTimeInput.html#IgniteUI_Blazor_Controls_IgbDateTimeInput_StepUp) and [`StepDown`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateTimeInput.html#IgniteUI_Blazor_Controls_IgbDateTimeInput_StepDown) methods, as long as they don't have the delta parameter provided since it will take precedence over [`SpinDelta`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateTimeInput.html#IgniteUI_Blazor_Controls_IgbDateTimeInput_SpinDelta).
 

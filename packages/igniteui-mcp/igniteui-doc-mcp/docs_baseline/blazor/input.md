@@ -15,8 +15,6 @@ The Ignite UI for Blazor Input is a component where the user can enter data.
 
 <div class="divider--half"></div>
 
-<!-- Blazor -->
-
 ```razor
 @using IgniteUI.Blazor.Controls
 
@@ -40,8 +38,6 @@ The Ignite UI for Blazor Input is a component where the user can enter data.
 
 To get started with the Input component, you first need to register its module.
 
-<!-- Blazor -->
-
 ```razor
 // in Program.cs file
 
@@ -53,6 +49,8 @@ You will also need to link an additional CSS file to apply the styling to the [`
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
 ```
+
+After we import the [`IgbInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbInput.html) component we are ready to start using it, so let's add our first Input.
 
 ```razor
 <IgbInput DisplayType="@InputType.Email" Label="Subscribe" Placeholder="john.doe@mail.com" />

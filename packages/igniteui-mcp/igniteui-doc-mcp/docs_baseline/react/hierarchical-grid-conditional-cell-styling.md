@@ -259,8 +259,6 @@ Let's define our styles:
 
 <!-- ComponentStart: HierarchicalGrid -->
 
-<!-- React -->
-
 ```typescript
 const rowStyles = {
     background:(row: RowType) => row.data['HasGrammyAward'] ? '#eeddd3' : '#f0efeb',

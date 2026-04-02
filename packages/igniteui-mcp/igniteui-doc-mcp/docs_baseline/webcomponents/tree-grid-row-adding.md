@@ -65,8 +65,6 @@ Then define a [`IgcTreeGridComponent`](https://www.infragistics.com/products/ign
 
 <!-- ComponentStart: TreeGrid -->
 
-<!-- WebComponents -->
-
 <!-- ComponentStart: TreeGrid -->
 
 ```html
@@ -86,15 +84,9 @@ Then define a [`IgcTreeGridComponent`](https://www.infragistics.com/products/ign
 
 <!-- ComponentEnd: TreeGrid -->
 
-<!-- end: WebComponents -->
-
 <!-- ComponentEnd: TreeGrid -->
 
 <!-- ComponentEnd: TreeGrid -->
-
-<!-- WebComponents -->
-
-<!-- end: WebComponents -->
 
 > **Note**:
 > Setting primary key is mandatory for row adding operations.
@@ -171,13 +163,7 @@ After a new row is added through the row adding UI, its position and/or visibili
 
 ### Customizing Text
 
-<!-- WebComponents, React, Blazor -->
-
 Customizing the text of the row adding overlay is possible using the `RowAddTextTemplate`.
-
-<!-- end: WebComponents, React, Blazor -->
-
-<!-- WebComponents -->
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -188,8 +174,6 @@ this.grid.rowAddTextTemplate = (ctx: IgcGridEmptyTemplateContext) => {
 ```
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
-
-<!-- end: WebComponents -->
 
 ## Styling
 

@@ -43,7 +43,7 @@ Becomes
 <IgrGrid onColumnPin={handlePinning}></IgrGrid>
 ```
 
-- Component events emit a single standard *CustomEvent* argument instead of the `sender` as first argument. Therefore, custom properties like *sender.nativeElement* are no longer available, but native event properties all are. Also, types for event arguments are available as aliases for the specific custom event, so usage accessing `detail` will remain the same. With the new handler signature `event.detail` is the same and `event.target` is the DOM element equivalent to the sender:
+- Component events emit a single standard _CustomEvent_ argument instead of the `sender` as first argument. Therefore, custom properties like _sender.nativeElement_ are no longer available, but native event properties all are. Also, types for event arguments are available as aliases for the specific custom event, so usage accessing `detail` will remain the same. With the new handler signature `event.detail` is the same and `event.target` is the DOM element equivalent to the sender:
 
 ```tsx
     const handlePinning = (sender: IgrGridBaseDirective, event: IgrPinColumnCancellableEventArgs) => {};

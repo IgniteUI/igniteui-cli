@@ -23,13 +23,13 @@ The following example represents a [`IgcNavbarComponent`](https://www.infragisti
 
 ## Usage
 
-<!-- WebComponents -->
-
 First, you need to install the Ignite UI for Web Components by running the following command:
 
 ```cmd
 npm install igniteui-webcomponents
 ```
+
+Before using the [`IgcNavbarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcnavbarcomponent.html), you need to register it as follows:
 
 ```ts
 import { defineComponents, IgcNavbarComponent } from 'igniteui-webcomponents';
@@ -40,8 +40,6 @@ defineComponents(IgcNavbarComponent);
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
 Then in the template of [`IgcNavbarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcnavbarcomponent.html), you can add the following code to show a basic [`IgcNavbarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcnavbarcomponent.html) with a title only:
-
-<!-- WebComponents -->
 
 ```html
 <igc-navbar>Navigation Title</igc-navbar>

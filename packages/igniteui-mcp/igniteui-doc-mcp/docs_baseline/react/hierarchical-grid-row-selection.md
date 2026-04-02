@@ -23,7 +23,7 @@ The Ignite UI for React Row Selection feature in React Hierarchical Grid allows 
 
 <!-- ComponentStart: Grid, HierarchicalGrid -->
 
-The sample below demonstrates the three types of [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html)'s **row selection** behavior. Use the drop-down below to enable each of the available selection modes. Use the checkbox to *hide* or *show* the row selector checkboxes.
+The sample below demonstrates the three types of [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html)'s **row selection** behavior. Use the drop-down below to enable each of the available selection modes. Use the checkbox to _hide_ or _show_ the row selector checkboxes.
 
 <!-- ComponentEnd: Grid, HierarchicalGrid -->
 
@@ -406,7 +406,7 @@ In the above example we are using an [`IgrCheckbox`](https://www.infragistics.co
 
 <!-- ComponentStart: HierarchicalGrid -->
 
-> \[!Note]
+> [!Note]
 > The `rowContext.select()` and `rowContext.deselect()` methods are exposed in the template context of an [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html). They make it easier to toggle the current row, especially in a child grid, when you implement a click handler that overrides the base functionality.
 
 <!-- ComponentEnd: HierarchicalGrid -->
@@ -460,7 +460,7 @@ const headSelectorTemplate = (ctx: IgrHeadSelectorTemplateContext) => {
 
 Each hierarchy level in an [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html) can have its own row and header templating.
 
-> \[!Note]
+> [!Note]
 > The `headContext.selectAll()` and `headContext.deselectAll()` methods are exposed in the template context of an [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html). They make it easier to toggle all rows, especially in a child grid, when you implement a click handler that overrides the base functionality.
 
 <!-- ComponentEnd: HierarchicalGrid -->

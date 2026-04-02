@@ -70,8 +70,6 @@ root.render(<Sample/>);
 
 ## Dependencies
 
-<!-- Angular, WebComponents, React -->
-
 First, you need to install the Ignite UI for React by running the following command:
 
 ```cmd
@@ -88,21 +86,15 @@ import 'igniteui-webcomponents/themes/light/bootstrap.css';
 IgrColorEditorModule.register();
 ```
 
-<!-- end:Angular, WebComponents, React -->
-
 ## Usage
 
 The simplest way to start using the `ColorEditor` is as follows:
-
-<!-- React -->
 
 ```tsx
 <IgrColorEditor
     ref={this.colorEditorRef}>
 </IgrColorEditor>
 ```
-
-<!-- end:React -->
 
 ## Binding to events
 
@@ -111,8 +103,6 @@ The Color Editor component raises the following events:
 - valueChanged
 - valueChanging
 
-<!-- React -->
-
 ```tsx
 <IgrColorEditor valueChanged={this.onValueChanged} />
 
@@ -120,8 +110,6 @@ public onValueChanged(calendar: IgrColorEditor, e: IgrColorEditorPanelSelectedVa
 
 }
 ```
-
-<!-- end: React -->
 
 <div class="divider--half"></div>
 

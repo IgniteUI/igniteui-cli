@@ -13,7 +13,7 @@ _premium: true
 
 The pivot and flat grid components inherit from a common base and thus share some functionality and features.
 
-> \[!Note]
+> [!Note]
 > Some features do not have meaningful behavior in the context of a pivot table and therefore cannot be enabled for [`IgrPivotGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrpivotgrid.html). These include:
 >
 > - CRUD operations
@@ -228,8 +228,6 @@ The dimension is sorted on click of the related chip and as a result the dimensi
 
 Sorting can also be applied initially via the `sortDirection` property of the dimension definition.
 
-<!-- React -->
-
 ```tsx
 const dimension: IgrPivotDimension = {
     memberName: "SellerName",
@@ -238,16 +236,12 @@ const dimension: IgrPivotDimension = {
 };
 ```
 
-<!-- end: React -->
-
 ## Dimensions Resizing
 
 Row dimensions can be resized similarly to column resizing - via a resizing indicator that can be found on the right edge of the cells.
 They can also be auto-sized by double clicking the resize indicator, or by using the related API - [`autoSizeRowDimension`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrpivotgrid.html#autoSizeRowDimension).
 
 A different size can also be set initially with the [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#width) property available in the dimension definition:
-
-<!-- React -->
 
 ```tsx
 const igrPivotDimension2: IgrPivotDimension = {
@@ -257,20 +251,14 @@ const igrPivotDimension2: IgrPivotDimension = {
 };
 ```
 
-<!-- end: React -->
-
 ## Dimensions Selection
 
 The Pivot Grid supports single selection which is enabled just like in the base grid. For example:
-
-<!--React -->
 
 ```tsx
 <IgrPivotGrid data={pivotData} pivotConfiguration={pivotConfiguration} rowSelection="single">
 </IgrPivotGrid>
 ```
-
-<!-- end: React -->
 
 In case there are multiple row or column dimensions which would create groups that span multiple rows/columns, selection is applied to all cells that belong to the selected group.
 
@@ -278,14 +266,10 @@ In case there are multiple row or column dimensions which would create groups th
 
 The [`IgrPivotGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrpivotgrid.html) component provides a [`superCompactMode`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrpivotgrid.html#superCompactMode) input. It is suitable for cases that require a lot of cells to be present on the screen at once. If enabled the option ignores the `--ig-size` CSS variable for the Pivot Grid. Enabling [`superCompactMode`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrpivotgrid.html#superCompactMode) also sets the `--ig-size` to `small` for each child component(like [`IgrChip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrchip.html)) that does not have the `SuperCompactMode` option.
 
-<!--React -->
-
 ```tsx
 <IgrPivotGrid data={pivotData} pivotConfiguration={pivotConfiguration} superCompactMode={true}>
 </IgrPivotGrid>
 ```
-
-<!-- end: React -->
 
 ## Additional Summary Column
 
@@ -305,7 +289,7 @@ All chips can change their order within their area by drag & drop.
 The chips from `rows`, `column`, `filter`(dimension chips) can be moved from any of those areas to any other and at any place.
 Chips from these areas can not be moved to the `values` area and chips from the `values` area can not be moved to any of the dimension areas.
 
-> \[!Note]
+> [!Note]
 > The chips from the Pivot Grid can not be moved to the Pivot Data Selector and items from the Pivot Data Selector can not be moved to the Pivot Grid.
 
 ## API References

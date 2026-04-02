@@ -317,8 +317,6 @@ root.render(<LinearStepper />);
 
 ## Getting Started with React Stepper
 
-<!-- React -->
-
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
 
 ```cmd
@@ -369,7 +367,7 @@ Steps can be declared using one of the following approaches.
 
 For each step the user has the ability to configure indicator, title and subtitle using the `Indicator`, `Title` and `Subtitle` slots as follows:
 
-> \[!Note]
+> [!Note]
 > The `Default` [`IgrStep`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrstep.html) slot renders the content of the step.
 
 ```tsx
@@ -549,7 +547,7 @@ When the linear property is set to **true**, the stepper will require the curren
 
 If the current non-optional step is not valid you cannot go forward to the next step until you validate the current one.
 
-> \[!Note]
+> [!Note]
 > Optional steps validity is not taken into account in order to move forward.
 
 ### Step Interactions
@@ -561,7 +559,7 @@ If the current non-optional step is not valid you cannot go forward to the next 
 - **prev** – activates the previous non-disabled step.
 - **reset** – resets the stepper to its initial state.
 
-> \[!Note]
+> [!Note]
 > The reset method would reset the stepper to its initial state, i.e. activates the first step. It would not clear the step\`s content. This should be done manually.
 
 ### Customizing the Steps
@@ -591,7 +589,7 @@ When the React [`IgrStepper`](https://www.infragistics.com/products/ignite-ui-re
 
 When the orientation is set to vertical and the title position **is not defined**, the titles would be displayed **after** the indicators.
 
-> \[!Note]
+> [!Note]
 > **titlePosition** property is applicable **only** when the stepper stepType property is set to **full**.
 
 **indicator**
@@ -606,7 +604,7 @@ If you want to display only titles for the steps, set the stepType option to **t
 
 In this way if subtitles are defined, they will also be rendered below the step title.
 
-> \[!Note]
+> [!Note]
 > This container could be re-templated as per your requirement without any size restrictions. For example, you could add an indicator with size greater than 24 pixels inside it.
 
 The sample below demonstrates all exposed step types and how they could be changed:
@@ -972,8 +970,6 @@ igc-step::part(indicator) {
 }
 ```
 
-<!-- React,Blazor -->
-
 ```css
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
@@ -1272,8 +1268,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<StepperStyling />);
 ```
 
-
-<!-- end: React,Blazor -->
 
 <div class="divider--half"></div>
 

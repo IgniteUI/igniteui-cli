@@ -111,8 +111,6 @@ root.render(<BannerSample1 />);
 
 ## Usage
 
-<!-- React -->
-
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
 
 ```cmd
@@ -125,8 +123,6 @@ You will then need to import the [`IgrBanner`](https://www.infragistics.com/prod
 import { IgrBanner } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
-
-<!-- end: React -->
 
 For a complete introduction to the Ignite UI for React, read the [**Getting Started**](../general-getting-started.md) topic.
 
@@ -144,7 +140,7 @@ In order to display the banner component, use its [`show`](https://www.infragist
 </IgrBanner>
 ```
 
-> \[!NOTE]
+> [!NOTE]
 > The [`IgrBanner`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbanner.html) includes a default action button `OK`, which closes the banner.
 
 ## Examples
@@ -165,7 +161,7 @@ Configuring the message displayed in the banner is easy - just change the conten
 
 An [`IgrIcon`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igricon.html) can be displayed in the banner by using the banner's `prefix` slot. The icon will always be positioned at the beginning of the banner message.
 
-> \[!NOTE]
+> [!NOTE]
 > If several [`IgrIcon`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igricon.html) elements are inserted, the banner will try to position all of them at the beginning. It is strongly advised to pass only one [`IgrIcon`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igricon.html) directly to the banner.
 
 To pass an [`IgrIcon`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igricon.html) to your banner, use the `prefix` slot:
@@ -323,7 +319,7 @@ To cancel the closing event, call the [`preventDefault`](https://developer.mozil
 </IgrBanner>
 ```
 
-> \[!NOTE]
+> [!NOTE]
 > If the changes above are applied, the banner will never close, as the closing event is always cancelled.
 
 ## Advanced Example

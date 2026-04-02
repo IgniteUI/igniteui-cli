@@ -26,19 +26,11 @@ In this Web Components grid example you can see how users can visualize hierarch
 
 ### Dependencies
 
-To get started with the Web Components hierarchical grid, first you need to install the <!-- WebComponents -->`igniteui-webcomponents-grids` package.<!-- end: WebComponents -->
-
-<!-- Angular, WebComponents -->
+To get started with the Web Components hierarchical grid, first you need to install the `igniteui-webcomponents-grids` package.
 
 ```cmd
 npm install --save igniteui-webcomponents-grids
 ```
-
-<!-- end: Angular, WebComponents -->
-
-<!-- Angular, React, WebComponents -->
-
-<!-- WebComponents -->
 
 You also need to include the following import to use the grid:
 
@@ -46,17 +38,11 @@ You also need to include the following import to use the grid:
 import 'igniteui-webcomponents-grids/grids/combined.js';
 ```
 
-<!-- end: WebComponents -->
-
 The corresponding styles should also be referenced. You can choose light or dark option for one of the [themes](../../themes/overview.md) and based on your project configuration to import it:
-
-<!-- WebComponents -->
 
 ```typescript
 import 'igniteui-webcomponents-grids/grids/themes/light/bootstrap.css';
 ```
-
-<!-- WebComponents -->
 
 Or to link it:
 
@@ -64,11 +50,7 @@ Or to link it:
 <link rel='stylesheet' href='node_modules/igniteui-webcomponents-grids/grids/themes/light/bootstrap.css'>
 ```
 
-<!-- end: WebComponents -->
-
 For more details on how to customize the appearance of the hierarchical grid, you may have a look at the [styling](overview.md#styling) section.
-
-<!-- end: Angular, React, WebComponents -->
 
 ## Using the Web Components Hierarchical Data Grid
 
@@ -125,14 +107,12 @@ Each **igc-row-island** should specify the key of the property that holds the ch
 </igc-hierarchical-grid>
 ```
 
-> \[!NOTE]
+> [!NOTE]
 > Note that instead of `data` the user configures only the `childDataKey` that the igc-hierarchical-grid needs to read to set the data automatically.
 
 ### Using Load-On-Demand
 
 Most applications are designed to load as little data as possible initially, which results in faster load times. In such cases igc-hierarchical-grid may be configured to allow user-created services to feed it with data on demand.
-
-<!-- WebComponents -->
 
 ```html
 <igc-hierarchical-grid id="hGrid" primary-key="customerId" auto-generate="true" height="600px" width="100%">
@@ -184,8 +164,6 @@ export class HierarchicalGridLoadOnDemand {
     }
 }
 ```
-
-<!-- WebComponents, React -->
 
 ```ts
 const URL = `https://data-northwind.indigo.design/`;
@@ -279,13 +257,9 @@ The Hierarchical Grid allows the users to conveniently collapse all its currentl
 
 See the [Hierarchical Grid Sizing](sizing.md) topic. -->
 
-<!-- WebComponents, Blazor, React -->
-
 ## Styling
 
 In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md). In case you would like to change the header background and text color, you need to set a class for the grid first:
-
-<!-- WebComponents -->
 
 ```html
 <igc-hierarchical-grid class="grid"></igc-hierarchical-grid>
@@ -320,8 +294,6 @@ Then set the `--header-background` and `--header-text-color` CSS properties for 
 }
 ```
 
-
-<!-- end: WebComponents, Blazor, React -->
 
 ## Known Limitations
 

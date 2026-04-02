@@ -25,8 +25,6 @@ The Ignite UI for Web Components Switch component is a binary choice selection c
 
 At its core, the [`IgcSwitchComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcswitchcomponent.html) component allows for toggling between on/off states. The default styling is done according to the selection controls specification in the Material Design guidelines.
 
-<!-- WebComponents -->
-
 First, you need to install the Ignite UI for Web Components by running the following command:
 
 ```cmd
@@ -44,15 +42,13 @@ defineComponents(IgcSwitchComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-<!-- end: WebComponents -->
-
 The simplest way to start using the [`IgcSwitchComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcswitchcomponent.html) is as follows:
 
 ```html
 <igc-switch></igc-switch>
 ```
 
-> \[!WARNING]
+> [!WARNING]
 > The [`IgcSwitchComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcswitchcomponent.html) component doesn't work with the standard `<form>` element. Use `Form` instead.
 
 ## Examples

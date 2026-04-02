@@ -182,8 +182,6 @@ Then define a [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-re
 
 <!-- ComponentStart: TreeGrid -->
 
-<!-- React -->
-
 <!-- ComponentStart: TreeGrid -->
 
 ```tsx
@@ -201,15 +199,9 @@ Then define a [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-re
 
 <!-- ComponentEnd: TreeGrid -->
 
-<!-- end: React -->
-
 <!-- ComponentEnd: TreeGrid -->
 
 <!-- ComponentEnd: TreeGrid -->
-
-<!-- React -->
-
-<!-- end: React -->
 
 > **Note**:
 > Setting primary key is mandatory for row adding operations.
@@ -286,13 +278,7 @@ After a new row is added through the row adding UI, its position and/or visibili
 
 ### Customizing Text
 
-<!-- WebComponents, React, Blazor -->
-
 Customizing the text of the row adding overlay is possible using the [`rowAddTextTemplate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#rowAddTextTemplate).
-
-<!-- end: WebComponents, React, Blazor -->
-
-<!-- React -->
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -307,8 +293,6 @@ gridRef.current.rowAddTextTemplate = (ctx: IgrGridEmptyTemplateContext) => {
 ```
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid-->
-
-<!-- end: React -->
 
 ## Styling
 

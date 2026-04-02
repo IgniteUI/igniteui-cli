@@ -53,8 +53,6 @@ The Ignite UI for Blazor Icon Button component allows developers to use register
 
 ## Usage
 
-<!-- Blazor -->
-
 Before using the [`IgbIconButton`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIconButton.html), you need to register it as follows:
 
 ```razor
@@ -68,6 +66,8 @@ You will also need to link an additional CSS file to apply the styling to the [`
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
 ```
+
+The simplest way to start using the [`IgbIconButton`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIconButton.html) is as follows:
 
 ```razor
 <IgbIconButton IconName="thumb-up" Collection="material" />
@@ -158,15 +158,11 @@ The size of the button can be changed by utilizing the `--ig-size` CSS variable 
 ```
 
 
-<!-- WebComponents, Blazor-->
-
 ```css
 igc-icon-button {
     --ig-size: var(--ig-size-medium);
 }
 ```
-
-<!-- end: WebComponents, Blazor-->
 
 ```razor
 <IgbIconButton IconName="thumb-up" Collection="material" Size="@SizableComponentSize.Medium" />

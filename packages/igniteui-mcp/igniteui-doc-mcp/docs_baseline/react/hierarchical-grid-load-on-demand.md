@@ -147,8 +147,6 @@ First we will prepare our service provider so we will be ready to get the data w
 
 ### Getting basic data
 
-<!-- WebComponents, React -->
-
 We will be communicating with our backend service over HTTP protocol using the [`fetch()`](https://developer.mozilla.org/en-US/docs/Web/API/fetch) global function the browsers provide. That way in order to get our data we will need this simple method in our service:
 
 ```ts
@@ -161,8 +159,6 @@ export async function getData(dataState: any): Promise<any> {
 
 As you can see `buildUrl()` will be the method that will generate our url based on the data that we have received. We return a Promise, since this is executed asynchronously. That way we can later subscribe to it, process it further in our application and pass it to our grid.
 
-<!-- end: WebComponents, React -->
-
 ### Building our request url
 
 Next we will define how we should build our URL for the GET request. This is where we will be able to get the data for our main grid but also for any child grid inside it. We will use the `Customers` data from  this [topic](https://data-northwind.indigo.design/swagger/index.html) for our root level and use `Orders` and `Details` for the lower levels. The model will differ per application but we will use the following one:
@@ -170,8 +166,6 @@ Next we will define how we should build our URL for the GET request. This is whe
 <img class="responsive-img" src="../../../images/hgrid-database.jpg" alt="hgrid-database" />
 
 What we first need is the `key` of our table to determine from where to get the data for the desired grid, the primary key of the parent row and its unique ID.
-
-<!-- WebComponents, React -->
 
 We will define all this in the `dataState` object. An example:
 
@@ -198,11 +192,7 @@ function buildUrl(dataState: any) {
 }
 ```
 
-<!-- end: WebComponents, React -->
-
 ### Result
-
-<!-- WebComponents, React -->
 
 Finally, this is how our remote service would look like:
 
@@ -228,8 +218,6 @@ function buildUrl(dataState: any) {
 }
 ```
 
-<!-- end: WebComponents, React -->
-
 ## Hierarchical Grid Setup
 
 Next we will setup our hierarchical grid and connect it to our remote service provider.
@@ -237,8 +225,6 @@ Next we will setup our hierarchical grid and connect it to our remote service pr
 ### Template defining
 
 First we will define our hierarchical grid template with the levels of hierarchy that we expect to have. We know that our root grid [`primaryKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#primaryKey) for the customers is their `customerId`, for their orders on the first level - `orderId` and respectively for order details - `productId`. Knowing each database table and their keys allows us to define our initial template:
-
-<!-- React -->
 
 ```tsx
 <IgrHierarchicalGrid ref={hierarchicalGrid} primaryKey="customerId" height="600px">
@@ -264,35 +250,19 @@ First we will define our hierarchical grid template with the levels of hierarchy
 </IgrHierarchicalGrid>
 ```
 
-<!-- end: React -->
-
 There is one thing missing in our template though, and that is the data for our root level hierarchical grid, and eventually its children.
 
-<!-- React -->
-
 We will easily set the data of the root grid after getting its data from the service in our code later, since we can use the `ref={hierarchicalGrid}` reference.
-
-<!-- end: React -->
 
 Setting the data for any child that has been expanded is a bit different. When a row is expanded for the first time, a new child [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html) is rendered for it and we need to get the reference for the newly created grid to set its data. That is why each [`IgrRowIsland`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrrowisland.html) component provides the `GridCreated` event that is fired when a new child grid is created for that specific row island. We can use that to get the reference we need for the new grid, request its data from the service, and apply it.
 
 We can use one method for all row islands since we built our service so that it needs only information if it is the root level, the key of the row island, the primary key of the parent row, and its unique identifier. All this information can be accessed either directly from the event arguments, or from the row island responsible for triggering the event.
 
-<!-- Angular, WebComponents, React -->
-
 Let's name the method that we will use `gridCreated`.
-
-<!-- end: Angular, WebComponents, React -->
-
-<!-- React -->
 
 Since the `GridCreated` event provides a reference to the row island, the `parentID` property, and the new child `grid` property, this will be passed as the first and second arguments. We are only missing information about the parent row's `primaryKey`, but we can easily pass that as a third argument, depending on which row island we bind.
 
-<!-- end: React -->
-
 The template file, with these changes added, would look like this:
-
-<!-- React -->
 
 ```tsx
 <IgrHierarchicalGrid ref={hierarchicalGrid} primaryKey="customerId" height="600px">
@@ -318,13 +288,9 @@ The template file, with these changes added, would look like this:
 </IgrHierarchicalGrid>
 ```
 
-<!-- end: React -->
-
 ### Connecting our service
 
 One of our final steps now will be to connect our previously created service to our hierarchical grid.
-
-<!-- React -->
 
 We will get a reference to our root grid via the `useRef` React hook to set its data:
 
@@ -345,17 +311,9 @@ useEffect(() => {
 }, []);
 ```
 
-<!-- end: React -->
-
-<!-- Angular, WebComponents, React -->
-
 Next, we only need to create our `gridCreated` method that will request data for any new child grid created.
 
-<!-- end: Angular, WebComponents, React -->
-
 It will be similar to getting the root level grid data, just this time we will need to pass more information, like `parentID` and `parentKey`. `rootLevel` will be **false** for any child:
-
-<!-- React -->
 
 ```tsx
 function gridCreated(event: IgrGridCreatedEventArgs, _parentKey: string) {
@@ -375,8 +333,6 @@ function gridCreated(event: IgrGridCreatedEventArgs, _parentKey: string) {
 }
 ```
 
-<!-- end: React -->
-
 With this, the setup of our application is almost done. This last step aims to improve the user experience by informing the user that the data is still loading so he doesn't have to look at an empty grid in the meantime. That's why the [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html) supports a loading indicator that can be displayed while the grid is empty. If new data is received, the loading indicator will hide and the data will be rendered.
 
 ### Setup of loading indication
@@ -384,8 +340,6 @@ With this, the setup of our application is almost done. This last step aims to i
 The [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html) can display a loading indicator by setting the [`isLoading`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#isLoading) property to **true** while there is no data. We need to set it initially for the root grid and also when creating new child grids, until their data is loaded. We could always set it to **true** in our template, but we want to hide it and display that the grid has no data if the service returns an empty array by setting it to **false**.
 
 In this case the final version of our configuration would look like this:
-
-<!-- React -->
 
 ```tsx
 const hierarchicalGrid = useRef<IgrHierarchicalGrid>(null);
@@ -421,8 +375,6 @@ function gridCreated(event: IgrGridCreatedEventArgs, _parentKey: string) {
     });
 }
 ```
-
-<!-- end: React -->
 
 ## API References
 

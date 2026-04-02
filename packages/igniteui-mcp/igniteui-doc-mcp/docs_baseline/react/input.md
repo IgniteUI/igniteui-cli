@@ -15,8 +15,6 @@ The Ignite UI for React Input is a component where the user can enter data.
 
 <div class="divider--half"></div>
 
-<!-- React, WebComponents -->
-
 ```css
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
@@ -51,10 +49,6 @@ root.render(<InputOverview/>);
 ```
 
 
-<!-- end:React, WebComponents -->
-
-<!-- React -->
-
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
 
 ```cmd
@@ -67,6 +61,8 @@ You will then need to import the [`IgrInput`](https://www.infragistics.com/produ
 import { IgrInput } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
+
+After we import the [`IgrInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html) component we are ready to start using it, so let's add our first Input.
 
 ```tsx
 <IgrInput type="email" label="Subscribe"></IgrInput>

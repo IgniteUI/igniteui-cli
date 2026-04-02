@@ -209,18 +209,12 @@ root.render(<Sample/>);
 
 ### Dependencies
 
-To get started with the React Data Grid, first you need to install the <!-- React -->`igniteui-react` and `igniteui-react-grids` packages.<!-- end: React -->
-
-<!-- React -->
+To get started with the React Data Grid, first you need to install the `igniteui-react` and `igniteui-react-grids` packages.
 
 ```cmd
 npm install --save igniteui-react
 npm install --save igniteui-react-grids
 ```
-
-<!-- end: React -->
-
-<!-- Angular, React, WebComponents -->
 
 You also need to include the following import to use the grid:
 
@@ -235,8 +229,6 @@ import 'igniteui-react-grids/grids/themes/light/bootstrap.css'
 ```
 
 For more details on how to customize the appearance of the grid, you may have a look at the [styling](data-grid.md#styling-react-grid) section.
-
-<!-- end: Angular, React, WebComponents -->
 
 ## Usage
 
@@ -461,8 +453,6 @@ The `OrderDate` column will respect only the `Format` and `Timezone` properties,
 
 All available column data types could be found in the official [Column types topic](grid/column-types.md#default-template).
 
-<!-- Angular, WebComponents, React -->
-
 ## Grid Data Structure
 
 The [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) handles **flat data** and nested **POJO (Plain old Java objects)**. The data structure specific for rendering is in the form:
@@ -497,17 +487,11 @@ const POJO = [{
 
 > If you use [`autoGenerate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#autoGenerate) columns **the data keys must be identical.**
 
-<!-- end: Angular, WebComponents, React -->
-
-<!-- Angular, WebComponents, React -->
-
 ## Grid Data Binding
 
 Our React Data Grid provides unmatched data binding options and is optimized for real-time updates and smooth scrolling. With low-latency rendering, the grid ensures any UI change is displayed in an instant, including live streaming data, large datasets, and more.
 
 Before going any further with the React Data Grid we want to change the grid to bind to remote data service, which is the common scenario in large-scale applications.
-
-<!-- React -->
 
 You can do this by fetching the data from a given url receiving a JSON response and assigning it to the grid's `data` property that is used as the grid's data source:
 
@@ -525,11 +509,7 @@ function fetchData(url: string): void {
 }
 ```
 
-<!-- end:React -->
-
 **Note**: The grid [`autoGenerate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#autoGenerate) property is best to be avoided when binding to remote data for now. It assumes that the data is available in order to inspect it and generate the appropriate columns. This is usually not the case until the remote service responds, and the grid will throw an error. Making [`autoGenerate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#autoGenerate) available, when binding to remote service, is on our roadmap for future versions.
-
-<!-- end: Angular, WebComponents, React -->
 
 ## Complex Data Binding
 
@@ -566,11 +546,9 @@ An alternative way to bind complex data, or to visualize composite data (from mo
 
 - use the `value` of the cell, that contains the nested data
 
-<!-- React -->
+<!---->
 
 - use the `cell` object in the template, from which to access the `ctx.cell.id.rowIndex` or `ctx.cell.id.rowID` to get the row via the grid's API and retrieve any value from it and interpolate those in the template.
-
-<!-- end: React -->
 
 ```tsx
 function getName(rowIndex: number) {
@@ -1253,8 +1231,6 @@ See the [Grid Sizing](sizing.md) topic. -->
 > **Note**:
 > The grid uses **css grid layout**, which is **not supported in IE without prefixing**, consequently it will not render properly.
 
-<!-- WebComponents, Blazor, React -->
-
 In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grids/theming-grid.md). In case you would like to change the header background and text color, you need to set a class for the grid first:
 
 ```tsx
@@ -1269,8 +1245,6 @@ Then set the `--header-background` and `--header-text-color` CSS properties for 
     --header-text-color: #FFF;
 }
 ```
-
-<!-- end: WebComponents, Blazor, React -->
 
 ## Known Limitations
 

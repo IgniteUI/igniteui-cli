@@ -115,20 +115,14 @@ export class EmployeesNestedData extends Array<EmployeesNestedDataItem> {
 
 In order to enable row-dragging for your [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html), all you need to do is set the grid's `RowDraggable` to **true**. Once this is enabled, a row-drag handle will be displayed on each row. This handle can be used to initiate row dragging. Clicking on the drag-handle and **moving the cursor** while holding down the button will cause the grid's `RowDragStart` event to fire. Releasing the click at any time will cause `RowDragEnd` event to fire.
 
-<!-- WebComponents -->
-
 ```html
 <igc-tree-grid row-draggable="true">
 </igc-tree-grid>
 ```
 
-<!-- end: WebComponents -->
-
 ### Templating the Drag Icon
 
 The drag handle icon can be templated using the grid's `DragIndicatorIconTemplate`. In the example we're building, let's change the icon from the default one (**drag_indicator**) to **drag_handle**.
-
-<!-- WebComponents -->
 
 ```html
 <igc-tree-grid row-draggable="true" id="grid">
@@ -146,8 +140,6 @@ public dragIndicatorIconTemplate = (ctx: IgcGridEmptyTemplateContext) => {
 }
 ```
 
-<!-- end: WebComponents -->
-
 <!-- ComponentEnd: HierarchicalGrid -->
 
 <!-- ComponentEnd: TreeGrid -->
@@ -158,13 +150,9 @@ public dragIndicatorIconTemplate = (ctx: IgcGridEmptyTemplateContext) => {
 
 ### Row Reordering Demo
 
-<!--  WebComponents, Blazor, React -->
-
 With the help of the grid's row drag events you can create a grid that allows you to reorder rows by dragging them.
 
 <!-- ComponentStart: TreeGrid -->
-
-<!-- WebComponents -->
 
 ```html
 <igc-tree-grid id="tGrid" row-draggable="true" primary-key="ID">
@@ -181,9 +169,7 @@ constructor() {
 
 <!-- ComponentEnd: TreeGrid -->
 
-<!--  end: WebComponents, Blazor, React -->
-
-> \[!Note]
+> [!Note]
 > Make sure that there is a `PrimaryKey` specified for the grid! The logic needs an unique identifier for the rows so they can be properly reordered.
 
 Once `RowDraggable` is enabled and a drop zone has been defined, you need to implement a simple handler for the drop event. When a row is dragged, check the following:
@@ -199,8 +185,6 @@ Once `RowDraggable` is enabled and a drop zone has been defined, you need to imp
 <!-- ComponentEnd: TreeGrid, HierarchicalGrid -->
 
 Below, you can see this implemented:
-
-<!-- WebComponents -->
 
 <!-- ComponentStart: TreeGrid -->
 
@@ -260,8 +244,6 @@ public webTreeGridReorderRowStartHandler(args: CustomEvent<IgcRowDragStartEventA
 ```
 
 <!-- ComponentEnd: TreeGrid -->
-
-<!-- end: WebComponents -->
 
 With these few easy steps, you've configured a grid that allows reordering rows via drag/drop! You can see the above code in action in the following demo.
 

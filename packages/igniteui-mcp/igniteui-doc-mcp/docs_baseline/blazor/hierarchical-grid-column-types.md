@@ -140,11 +140,7 @@ When [`AutoGenerate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.
 
 #### Default template
 
-<!-- Blazor, WebComponents, React -->
-
 The default template will show a numeric value with currency symbol that would be either prefixed or suffixed.
-
-<!-- end: Blazor, WebComponents, React -->
 
 By using the [`PipeArgs`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_PipeArgs) input the end-user can customize the number format by **decimal point**, **currencyCode** and **display**.
 
@@ -193,7 +189,7 @@ When it comes to cell editing, the value will be the same as the data source val
 }
 ```
 
-> \[!Note]
+> [!Note]
 > When using <kbd>↑</kbd> + <kbd>↓</kbd> arrow keys the value will increment/decrement with a step based on the digitsInfo - minFractionDigits (The minimum number of digits after the decimal point. Default is 0)
 
 ## Default Editing Template

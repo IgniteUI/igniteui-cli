@@ -43,7 +43,7 @@ They are added inside the [`IgbHierarchicalGrid`](https://www.infragistics.com/b
 
 <!-- ComponentEnd: HierarchicalGrid -->
 
-> \[!Note]
+> [!Note]
 > When `ActionStripComponent` is a child component of the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html), hovering a row will automatically show the UI.
 
 ## Custom Implementation

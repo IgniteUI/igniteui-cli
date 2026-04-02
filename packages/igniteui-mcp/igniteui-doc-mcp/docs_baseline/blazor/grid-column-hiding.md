@@ -200,10 +200,6 @@ Let's start by creating our [`IgbGrid`](https://www.infragistics.com/blazor/docs
 
 <!-- ComponentEnd: Grid -->
 
-<!-- Blazor -->
-
-<!-- end: Blazor -->
-
 ## Toolbar's Column Hiding UI
 
 The built-in Column Hiding UI is placed inside an `DropDown` in the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html)'s toolbar. We can show/hide the Column Hiding UI by using this exact dropdown.
@@ -222,10 +218,6 @@ For this purpose all we have to do is set both the [`IgbGridToolbarActions`](htt
 
 <!-- ComponentEnd: Grid -->
 
-<!-- Blazor -->
-
-<!-- end: Blazor -->
-
 <!-- Web Components -->
 
 <!-- end: Web Components -->
@@ -233,10 +225,6 @@ For this purpose all we have to do is set both the [`IgbGridToolbarActions`](htt
 <!-- Web Components -->
 
 <!-- end: Web Components -->
-
-<!-- Blazor -->
-
-<!-- end: Blazor -->
 
 The [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) provides us with some useful properties when it comes to using the toolbar's column hiding UI.
 
@@ -254,17 +242,9 @@ By using the [`Title`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI
 
 <!-- ComponentEnd: Grid -->
 
-<!-- Blazor -->
-
-<!-- end: Blazor -->
-
 <!-- Web Components -->
 
 <!-- end: Web Components -->
-
-<!-- Blazor -->
-
-<!-- end: Blazor -->
 
 <!-- Web Components -->
 
@@ -284,8 +264,6 @@ We can easily prevent the user from being able to hide columns through the colum
 ```
 
 <!-- ComponentEnd: Grid -->
-
-<!-- Blazor, WebComponents, React -->
 
 ## Styling
 
@@ -504,19 +482,13 @@ public class CustomersData
 ```
 
 
-<!-- end: Blazor, WebComponents, React -->
-
 ## API References
-
-<!-- Blazor, WebComponents, React -->
 
 In this article we learned how to use the built-in column hiding UI in the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html)'s toolbar. The column hiding UI has a few more APIs to explore, which are listed below.
 
 - `ColumnActionsComponent`
 
 Additional components with relative APIs that were used:
-
-<!-- end: Blazor, WebComponents, React -->
 
 [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html) properties:
 

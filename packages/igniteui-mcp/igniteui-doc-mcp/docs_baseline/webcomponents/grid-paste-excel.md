@@ -88,8 +88,6 @@ export class InvoicesData extends Array<InvoicesDataItem> {
 ```
 
 
-<!-- WebComponents, Blazor, React -->
-
 ## Usage
 
 You should first bind to the grid's `rendered` event to create and manage a text area element:
@@ -109,8 +107,6 @@ You should first bind to the grid's `rendered` event to create and manage a text
     <igc-column field="PostalCode" header="Postal Code" width="200px"> </igc-column>
 </igc-grid>
 ```
-
-<!-- WebComponents -->
 
 ```ts
 public webGridPasteFromExcel(e: CustomEvent<any>) {
@@ -275,8 +271,6 @@ public updateRecords(processedData: any[]) {
     }
 }
 ```
-
-<!-- end: WebComponents, Blazor, React -->
 
 ## API References
 
