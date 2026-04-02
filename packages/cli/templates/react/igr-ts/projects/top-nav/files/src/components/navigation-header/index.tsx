@@ -1,23 +1,17 @@
-import { useState, useMemo } from 'react';
-import { Link } from 'react-router-dom';
+import { useMemo } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 export default function NavigationHeader({ routes }: any) {
-  const initialActiveItem = useMemo(() => {
-    const currentRoute = window.location.pathname || '/';
-    return routes.findIndex((route: { path: string; }) => route.path === currentRoute);
-  }, [routes]);
-
-  const [activeItem, setActiveItem] = useState(initialActiveItem);
-
-  function handleClick(index: any) {
-    setActiveItem(index);
-  }
+  const location = useLocation();
+  const activeItem = useMemo(() => {
+    return routes.findIndex((route: { path: string; }) => route.path === location.pathname);
+  }, [routes, location.pathname]);
 
   return (
     <nav>
       <ul>
         {routes.map(
-          (route: any, i: any) => <li key={i} className={activeItem === i ? 'active' : ''}><Link onClick={() => handleClick(i)} to={route.path}>{route.text}</Link></li>
+          (route: any, i: any) => <li key={i} className={activeItem === i ? 'active' : ''}><Link to={route.path}>{route.text}</Link></li>
         )}
       </ul>
     </nav>

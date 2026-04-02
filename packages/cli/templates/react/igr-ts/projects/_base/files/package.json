@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "vite",
-    "build": "tsc && node --max-old-space-size=4096 node_modules/vite/bin/vite build",
+    "build": "tsc -b && node --max-old-space-size=4096 node_modules/vite/bin/vite build",
     "preview": "vite preview",
     "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
     "test": "vitest"
@@ -27,8 +27,6 @@
     "@types/node": "^24.12.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "@typescript-eslint/eslint-plugin": "^8.21.0",
-    "@typescript-eslint/parser": "^8.21.0",
     "@vitest/browser-playwright": "^4.1.0",
     "eslint": "^9.39.4",
     "eslint-plugin-react-hooks": "^7.0.1",
