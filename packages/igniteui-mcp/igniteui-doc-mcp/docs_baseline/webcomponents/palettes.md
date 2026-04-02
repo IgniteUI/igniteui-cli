@@ -46,7 +46,7 @@ As the table above shows, the `gray` color doesn't include the `A100`, `A200`, `
 
 On top of the aforementioned colors, we also include **Level AA** [WCAG](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html) compliant `contrast` colors for each color variant. This means that you can safely use the corresponding `contrast` color variants as foreground colors for the base color variant.
 
-> \[!Note]
+> [!Note]
 > Contrast colors are generated at build-time therefore overriding the CSS variables will not update the corresponding contrast colors.
 
 Here's an excerpt of the `primary` color as declared in the Light Bootstrap Palette:
@@ -72,7 +72,7 @@ Here's an excerpt of the `primary` color as declared in the Light Bootstrap Pale
 
 All primary color variants are derived from one base variable color variant `--ig-primary-500`. The same goes for the other color variables `--ig-secondary-500`, `--ig-surface-500`, etc. The other variants are generated through the relative color function `hsl()` which takes the main variable color variant `500` and changes it's `staturation` and `lightness` according to the variable variant which is assigned on (`600`,`700`, etc.). We decided to use this approach as it allows us to modify all variants of the `primary`, `secondary`, `surface` and other colors at runtime.
 
-> \[!WARNING]
+> [!WARNING]
 > Because the contrast colors are not generated at CSS runtime like the rest, if we change the main color variant(`500`), the contrast color would not be updated. We would need to change them manually. This behavior will be improved upon in an upcoming release, where the contrast colors will also be calculated at CSS runtime.
 
 ## Defining Palettes
@@ -97,7 +97,7 @@ You will notice that color variants for each color are monochromatic. This is be
 
 ## Scoping
 
-We've seen that overriding colors in the palette is relatively easy. The *global* palette can be updated by scoping color variants to the `:root` selector in the `styles.css` file of our application.
+We've seen that overriding colors in the palette is relatively easy. The _global_ palette can be updated by scoping color variants to the `:root` selector in the `styles.css` file of our application.
 
 Let's say your corporate primary color is `#9f349c` and you want to create primary variants for it. All you need to do is to replace the `--ig-primary-500` variable with the desired color in any color value type - RGB, HEX, etc.
 

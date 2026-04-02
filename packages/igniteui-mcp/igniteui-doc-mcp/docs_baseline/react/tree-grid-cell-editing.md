@@ -192,7 +192,7 @@ You can exit edit mode and **commit** the changes in one of the following ways:
 - on single click to another cell - when you click on another cell in the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html), your changes will be submitted.
 - operations like paging, resize, pin or move will exit edit mode and changes will be submitted.
 
-> \[!Note]
+> [!Note]
 > The cell remains in edit mode when you scroll vertically or horizontally or click outside the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html). This is valid for both cell editing and row editing.
 
 ### Editing through API
@@ -227,8 +227,6 @@ public updateCell() {
 ### Cell Editing Templates
 
 You can see and learn more for default cell editing templates in the [general editing topic](editing.md#editing-templates).
-
-<!-- React -->
 
 If you want to provide a custom template which will be applied to a cell, you can pass such template either to the cell itself, or to its header. First create the column as you usually would:
 
@@ -283,8 +281,6 @@ public webGridCellEditCellTemplate = (e: IgrCellTemplateContext) => {
     );
   };
 ```
-
-<!-- end: React -->
 
 Working sample of the above can be found here for further reference:
 
@@ -473,7 +469,7 @@ root.render(<Sample/>);
 
 ## CRUD operations
 
-> \[!Note]
+> [!Note]
 > Please keep in mind that when you perform some **CRUD operation** all of the applied pipes like **filtering**, **sorting** and **grouping** will be re-applied and your view will be automatically updated.
 
 The [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) provides a straightforward API for basic CRUD operations.
@@ -541,18 +537,12 @@ In this example, we'll validate a cell based on the data entered in it by bindin
 
 The first thing we need to do is bind to the grid's event:
 
-<!-- React -->
-
 ```tsx
 <IgrTreeGrid onCellEdit={handleCellEdit}>
 </IgrTreeGrid>
 ```
 
-<!-- end: React -->
-
 The `CellEdit` emits whenever **any** cell's value is about to be committed. In our **CellEdit** definition, we need to make sure that we check for our specific column before taking any action:
-
-<!-- React -->
 
 <!-- ComponentStart: TreeGrid -->
 
@@ -576,17 +566,7 @@ public webTreeGridCellEdit(args: IgrGridEditEventArgs): void {
 
 <!-- ComponentEnd: TreeGrid -->
 
-<!-- end: React -->
-
-<!-- WebComponents, React -->
-
-<!-- end: WebComponents, React -->
-
 <!-- ComponentEnd: TreeGrid -->
-
-<!-- React -->
-
-<!-- end: React -->
 
 The result of the above validation being applied to our [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) can be seen in the below demo:
 
@@ -739,8 +719,6 @@ root.render(<Sample/>);
 
 
 ## Styling
-
-<!-- WebComponents, Blazor, React -->
 
 In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
@@ -912,8 +890,6 @@ root.render(<Sample/>);
 ```
 
 
-<!-- end: WebComponents, Blazor, React -->
-
 ## API References
 
 - [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html)
@@ -923,7 +899,3 @@ root.render(<Sample/>);
 - [`IgrDatePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html)
 
 ## Additional Resources
-
-<!-- Blazor, WebComponents, React -->
-
-<!-- end: Blazor, WebComponents, React -->

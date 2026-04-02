@@ -207,8 +207,6 @@ The dimensions can be reordered or moved from one area to another via their corr
 
 A dimension can also describe an expandable hierarchy via the [`ChildLevel`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotDimension.html#IgniteUI_Blazor_Controls_IgbPivotDimension_ChildLevel) property, for example:
 
-<!-- Blazor -->
-
 ```razor
 @code {
     var pivotConfiguration = new IgbPivotConfiguration();
@@ -221,8 +219,6 @@ A dimension can also describe an expandable hierarchy via the [`ChildLevel`](htt
         });
 }
 ```
-
-<!-- end: Blazor -->
 
 In this case the dimension renders an expander in the related section of the grid (row or column) and allows the children to be expanded or collapsed as part of the hierarchy. By default the row dimensions are initially expanded. This behavior can be controlled with the [`DefaultExpandState`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotGrid.html#IgniteUI_Blazor_Controls_IgbPivotGrid_DefaultExpandState) property of the Pivot Grid.
 
@@ -566,10 +562,8 @@ The default values are:
 }
 ```
 
-> \[!Note]
+> [!Note]
 > If you have data field values that contain the default keys, make sure to change the separators that match to any other symbols that you are not currently using. Otherwise could lead to unexpected behavior in calculating and showing the aggregated values.
-
-<!-- Blazor -->
 
 When overriding the [`IgbPivotKeys`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotKeys.html) in Blazor, currently you will need to define all other keys, since assigning a new PivotKeys object, it replaces completely the default ones:
 
@@ -587,8 +581,6 @@ When overriding the [`IgbPivotKeys`](https://www.infragistics.com/blazor/docs/ap
     };
 }
 ```
-
-<!-- end: Blazor -->
 
 ## Known Issues and Limitations
 

@@ -38,7 +38,7 @@ const satisfactionCellTemplate = (ctx: IgrCellContext) => (
 
 <!-- End: Blazor -->
 
-> \[!NOTE]
+> [!NOTE]
 > Keep in mind the more complex and involved the template is, the greater the performance cost. Avoid complex DOM structures if performance is important.
 
 ## Cell Context Object

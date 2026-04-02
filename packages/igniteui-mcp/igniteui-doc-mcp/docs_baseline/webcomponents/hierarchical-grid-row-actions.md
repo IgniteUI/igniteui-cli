@@ -27,6 +27,16 @@ They are added inside the [`IgcHierarchicalGridComponent`](https://www.infragist
 
 <!-- ComponentEnd: HierarchicalGrid -->
 
+```html
+<igc-grid row-editable="true" primary-key="ID">
+    <igc-column field="field"></igc-column>
+    <igc-action-strip>
+        <igc-grid-pinning-actions></igc-grid-pinning-actions>
+        <igc-grid-editing-actions></igc-grid-editing-actions>
+    </igc-action-strip>
+</igc-grid>
+```
+
 <!-- ComponentStart: HierarchicalGrid -->
 
 ```html
@@ -41,9 +51,7 @@ They are added inside the [`IgcHierarchicalGridComponent`](https://www.infragist
 
 <!-- ComponentEnd: HierarchicalGrid -->
 
-<!-- end: WebComponents -->
-
-> \[!Note]
+> [!Note]
 > When `ActionStripComponent` is a child component of the [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html), hovering a row will automatically show the UI.
 
 ## Custom Implementation
@@ -51,8 +59,6 @@ They are added inside the [`IgcHierarchicalGridComponent`](https://www.infragist
 These components expose templates giving flexibility for customization. For instance, if we would like to use the [`IgcActionStrip`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcactionstrip.html) for a Gmail scenario with row actions such as **delete**, **edit** and etc. You can simply create button component with icon, add click event to it and insert it into the [`IgcActionStrip`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcactionstrip.html).
 
 <!-- ComponentEnd: HierarchicalGrid -->
-
-<!-- WebComponents -->
 
 <!-- ComponentStart: HierarchicalGrid -->
 
@@ -66,8 +72,6 @@ These components expose templates giving flexibility for customization. For inst
 ```
 
 <!-- ComponentEnd: HierarchicalGrid -->
-
-<!-- end: WebComponents -->
 
 ```css
 /* shared styles are loaded from: */

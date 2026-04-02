@@ -97,15 +97,11 @@ Before using the [`IgbAccordion`](https://www.infragistics.com/blazor/docs/api/a
 builder.Services.AddIgniteUIBlazor(typeof(IgbAccordionModule));
 ```
 
-<!-- Blazor -->
-
 You will also need to link an additional CSS file to apply the styling to the [`IgbAccordion`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAccordion.html) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
 ```
-
-<!-- end: Blazor -->
 
 Now you can start with a basic configuration of the [`IgbAccordion`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAccordion.html) and its panels.
 
@@ -139,7 +135,7 @@ As demonstrated above, the [`SingleExpand`](https://www.infragistics.com/blazor/
 
 By using the [`HideAll`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAccordion.html#IgniteUI_Blazor_Controls_IgbAccordion_HideAll) and [`ShowAll`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAccordion.html#IgniteUI_Blazor_Controls_IgbAccordion_ShowAll) methods you can respectively collapse and expand all [`IgbExpansionPanel`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbExpansionPanel.html)s of the [`IgbAccordion`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAccordion.html) programmatically.
 
-> \[!Note]
+> [!Note]
 > If [`SingleExpand`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAccordion.html#IgniteUI_Blazor_Controls_IgbAccordion_SingleExpand) property is set to **true** calling [`ShowAll`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAccordion.html#IgniteUI_Blazor_Controls_IgbAccordion_ShowAll) method would expand only the focused panel.
 
 ### Blazor Accordion Customization Example

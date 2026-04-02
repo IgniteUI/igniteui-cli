@@ -13,11 +13,7 @@ _premium: true
 
 # Web Components Tree Grid Cell Merging
 
-<!-- WebComponents, React -->
-
 The Ignite UI for Web Components Tree Grid provides a Cell Merging feature that combines two or more adjacent cells with the same value into a single, larger cell. Merging is applied vertically within a column and helps improve readability by reducing duplicate values. The feature can be configured to merge cells either by default matching data values or by applying a custom condition.
-
-<!-- end: WebComponents, React -->
 
 ## Web Components Tree Grid Cell Merging Example
 
@@ -115,8 +111,6 @@ In the above example:
 
 Here, the grid is set to merge only when columns are sorted, and both Category and Product columns are configured for merging.
 
-<!-- WebComponents, React -->
-
 ## Custom Merge Conditions
 
 In addition to the built-in `always` and `onSort` modes, the grid allows you to define a custom condition for merging cells through the `mergeStrategy` property. This strategy controls both how cells are compared and how merged ranges are calculated.
@@ -124,8 +118,6 @@ In addition to the built-in `always` and `onSort` modes, the grid allows you to 
 ### Merge Strategy Class
 
 A custom merge strategy must implement the [`IgcGridMergeStrategy`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridmergestrategy.html) class:
-
-<!-- WebComponents -->
 
 ```ts
 export declare class IgcGridMergeStrategy {
@@ -142,8 +134,6 @@ export declare class IgcGridMergeStrategy {
 }
 ```
 
-<!-- end: WebComponents -->
-
 - `merge` - defines how merged cells are produced.
 - `comparer` - defines the condition to decide if two adjacent records should be merged.
 
@@ -154,8 +144,6 @@ The [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web
 ### Extending the Default Strategy
 
 If you only want to customize part of the behavior (for example, the comparer logic), you can extend one of the built-in strategies, either [`IgcDefaultTreeGridMergeStrategy`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcdefaulttreegridmergestrategy.html) or [`IgcByLevelTreeGridMergeStrategy`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcbyleveltreegridmergestrategy.html), and override the relevant methods.
-
-<!-- WebComponents -->
 
 ```ts
 export class MyCustomStrategy extends IgcDefaultTreeGridMergeStrategy {
@@ -170,8 +158,6 @@ export class MyCustomStrategy extends IgcDefaultTreeGridMergeStrategy {
 }
 ```
 
-<!-- end: WebComponents -->
-
 <!-- ComponentEnd: TreeGrid -->
 
 ### Applying a Custom Strategy
@@ -179,8 +165,6 @@ export class MyCustomStrategy extends IgcDefaultTreeGridMergeStrategy {
 Once defined, assign the strategy to the grid through the `mergeStrategy` property:
 
 ### Demo
-
-<!-- end: WebComponents -->
 
 <!-- ComponentStart: TreeGrid -->
 
@@ -463,8 +447,6 @@ export const generateEmployeeDetailedFlatData2 = () => ([
 
 <!-- ComponentEnd: TreeGrid -->
 
-<!-- end: WebComponents, React -->
-
 ## Feature Integration
 
 Due to the specific behavior of merged cells it has to be noted how exactly it ties together with some of the other features of the grid:
@@ -476,7 +458,7 @@ Due to the specific behavior of merged cells it has to be noted how exactly it t
 - **Row selection**: if selected rows intersect merged cells, all related merged cells should be marked as part of the selection.
 - **Navigation/Activation**: when a cell is active, all merged cells in the same row become single cells, i.e. their merge sequence is broken. This also includes activation via keyboard navigation.
 
-> \[!NOTE]
+> [!NOTE]
 > If a merged cell is clicked, the closest cell from the merge sequence will become active.
 
 ## API References

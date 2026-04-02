@@ -66,8 +66,6 @@ root.render(<TreeBasicExample/>);
 
 ## How to Use Ignite UI for React Tree With Ignite UI
 
-<!-- React -->
-
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
 
 ```cmd
@@ -114,7 +112,7 @@ In order to render a tree you do not necessarily need a data set - individual it
 </IgrTree>
 ```
 
-> \[!Note]
+> [!Note]
 > You can provide a custom slot content for each [`IgrTreeItem`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtreeitem.html)'s indentation, expansion and label area respectively using the provided `indentation`, `indicator` and `label` slots.
 
 ### Item Interactions

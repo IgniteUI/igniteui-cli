@@ -70,8 +70,6 @@ You can subscribe to the `ColumnResized` event of the [`IgcGridComponent`](https
 
 <!-- ComponentStart: Grid -->
 
-<!-- WebComponents -->
-
 ```html
 <igc-grid id="grid" auto-generate="false">
     <igc-column field="ID" width="100px" resizable="true"></igc-column>
@@ -112,7 +110,7 @@ This means that the following configuration is possible:
 
 <!-- ComponentEnd: Grid -->
 
-> \[!Note]
+> [!Note]
 > There is a slight difference in the way resizing works for columns set in pixels and percentages.
 
 **Pixels**
@@ -224,8 +222,6 @@ export class CustomersData extends Array<CustomersDataItem> {
 ```
 
 
-<!-- WebComponents, Blazor, React -->
-
 ## Styling
 
 In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
@@ -289,8 +285,6 @@ export class AthletesData extends Array<AthletesDataItem> {
 }
 ```
 
-
-<!-- end: WebComponents, Blazor, React -->
 
 ## API References
 

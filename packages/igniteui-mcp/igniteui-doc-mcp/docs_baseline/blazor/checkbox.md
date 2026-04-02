@@ -33,8 +33,6 @@ The Blazor Checkbox is a component that lets you add checkboxes to your Blazor a
 
 At its core, the [`IgbCheckbox`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCheckbox.html) allows for a choice between selected/unselected state. The default styling is done according to the selection controls specification in the Material Design guidelines.
 
-<!-- Blazor -->
-
 Before using the [`IgbCheckbox`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCheckbox.html), you need to register it as follows:
 
 ```razor
@@ -49,8 +47,6 @@ You will also need to link an additional CSS file to apply the styling to the [`
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
 ```
 
-<!-- end: Blazor -->
-
 <div class="divider--half"></div>
 
 The simplest way to start using the [`IgbCheckbox`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCheckbox.html) is as follows:
@@ -59,7 +55,7 @@ The simplest way to start using the [`IgbCheckbox`](https://www.infragistics.com
 <IgbCheckbox />
 ```
 
-> \[!WARNING]
+> [!WARNING]
 > The [`IgbCheckbox`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCheckbox.html) component doesn't work with the standard `<form>` element. Use `Form` instead.
 
 ## Examples

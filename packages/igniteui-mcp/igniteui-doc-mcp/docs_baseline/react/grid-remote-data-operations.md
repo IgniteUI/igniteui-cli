@@ -242,8 +242,6 @@ root.render(<App/>);
 
 The paging feature can operate with remote data. In order to demonstrate this let's first declare our service that will be responsible for data fetching. We will need the count of all data items in order to calculate the page count. This logic will be added to our service.
 
-<!-- React -->
-
 ```tsx
 const CUSTOMERS_URL = `https://data-northwind.indigo.design/Customers/GetCustomersWithPage`;
 
@@ -275,15 +273,11 @@ export class RemoteService {
 }
 ```
 
-<!-- end: React -->
-
 <!-- ComponentEnd: Grid -->
 
 After declaring the service, we need to create a component, which will be responsible for the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) construction and data subscription.
 
 <!-- ComponentStart: Grid -->
-
-<!-- React -->
 
 ```tsx
      <IgrGrid
@@ -475,15 +469,9 @@ root.render(<App />);
 ```
 
 
-<!-- end: React -->
-
 <!-- ComponentEnd: Grid -->
 
-<!-- React -->
-
 and finally set up the behaviour for the RowIslands:
-
-<!-- end: React -->
 
 <!-- ComponentEnd: HierarchicalGrid -->
 

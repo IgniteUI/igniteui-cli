@@ -63,8 +63,6 @@ export class EmployeesFlatDetails extends Array<EmployeesFlatDetailsItem> {
 
 The declaration of multi-column headers is achieved by wrapping a set of columns into an [`columnGroup`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#columnGroup) component with [`header`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#header) title information passed.
 
-<!-- WebComponents -->
-
 ```html
 <igc-tree-grid primaryKey="ID" foreignKey="ParentID">
     <igc-column-group header="Contact Information">
@@ -78,8 +76,6 @@ The declaration of multi-column headers is achieved by wrapping a set of columns
 <!-- ComponentEnd: TreeGrid -->
 
 For achieving `n-th` level of nested headers, the declaration above should be followed. So by nesting [`columnGroup`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#columnGroup) leads to the desired result.
-
-<!-- WebComponents -->
 
 ```html
 <igc-tree-grid primary-key="ID" foreign-key="ParentID" moving="true">
@@ -98,12 +94,10 @@ For achieving `n-th` level of nested headers, the declaration above should be fo
 
 Every [`columnGroup`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#columnGroup) supports [moving](column-moving.md), [pinning](column-pinning.md) and [hiding](column-hiding.md).
 
-> \[!Note]
+> [!Note]
 > When there is a set of columns and column groups, pinning works only for top level column parents. More specifically pinning per nested column groups or columns is not allowed. <br />
 > Moving between columns and column groups is allowed only when they are at the same level in the hierarchy and both are in the same `group`. <br />
 > When `columns/column-groups` are not wrapped by current `group` which means they are **top level** `columns`, moving is allowed between whole visible columns.
-
-<!-- WebComponents -->
 
 ```html
 <igc-tree-grid primary-key="ID" foreign-key="ParentID" moving="true">
@@ -119,8 +113,6 @@ Every [`columnGroup`](https://www.infragistics.com/products/ignite-ui-web-compon
 <!-- ComponentEnd: TreeGrid -->
 
 ## Multi-Column Header Template
-
-<!-- WebComponents -->
 
 Each of the column groups of the grid can be templated separately. The following code snippet demonstrates how to use the [`headerTemplate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#headerTemplate) of a column group:
 
@@ -166,7 +158,7 @@ public columnGroupHeaderTemplate = (ctx: IgcColumnTemplateContext) => {
 }
 ```
 
-> \[!Note]
+> [!Note]
 > If a header is re-templated and the corresponding column group is movable, you have to set the **draggable** attribute to **false** on the templated elements, so that you can handle any of the events that are applied!
 
 ```ts
@@ -222,8 +214,6 @@ export class EmployeesFlatDetails extends Array<EmployeesFlatDetailsItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
-<!-- WebComponents, Blazor, React -->
 
 ## Styling
 
@@ -299,8 +289,6 @@ export class EmployeesFlatDetails extends Array<EmployeesFlatDetailsItem> {
 }
 ```
 
-
-<!-- end: WebComponents, Blazor, React -->
 
 ## API References
 

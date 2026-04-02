@@ -11,8 +11,8 @@ _premium: true
 
 The XDate Picker component allows users to use a drop-down calendar UI allowing the intuitive selection of a day, month and year. This can be helpful when an application user needs to select specific dates, and multiple editors can be combined to create a date-range UI.
 
-> \[!WARNING]
-> The `XDatePicker` component is deprecated from version <!-- WebComponents -->5.0.0<!-- end: WebComponents --> of Ignite UI for Web Components. For the latest supported Ignite UI for Web Components Date Picker component refer to its respective page under "Scheduling".
+> [!WARNING]
+> The `XDatePicker` component is deprecated from version 5.0.0 of Ignite UI for Web Components. For the latest supported Ignite UI for Web Components Date Picker component refer to its respective page under "Scheduling".
 
 ## Web Components XDate Picker Example
 
@@ -24,8 +24,6 @@ This sample demonstrates how to create `XDatePicker` with option to select a sin
 ```
 
 
-<!-- React, WebComponents -->
-
 ## Dependencies
 
 When installing the XDate Picker component, the core and inputs packages must also be installed.
@@ -35,8 +33,6 @@ npm install --save igniteui-webcomponents-core
 npm install --save igniteui-webcomponents-inputs
 npm install --save igniteui-webcomponents-layouts
 ```
-
-<!-- end: React, WebComponents -->
 
 ## Component Modules
 

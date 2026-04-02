@@ -17,8 +17,6 @@ To enable a theme, a theme file should be loaded. Depending on your project conf
 
 Here's the complete list of all bundled themes and their path:
 
-<!-- React -->
-
 | Name        | Variant | Location                                          |
 | ----------- | ------- | ------------------------------------------------- |
 | **Bootstrap*- | Light   | igniteui-react-grids/grids/themes/light/bootstrap.css |
@@ -29,8 +27,6 @@ Here's the complete list of all bundled themes and their path:
 | **Material*-  | Dark    | igniteui-react-grids/grids/themes/dark/material.css   |
 | **Fluent*-    | Dark    | igniteui-react-grids/grids/themes/dark/fluent.css     |
 | **Indigo*-    | Dark    | igniteui-react-grids/grids/themes/dark/indigo.css     |
-
-<!-- end: React -->
 
 ## API References
 

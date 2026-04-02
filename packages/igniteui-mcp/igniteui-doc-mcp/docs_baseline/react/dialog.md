@@ -83,8 +83,6 @@ root.render(<DialogOverview/>);
 
 ### Usage
 
-<!-- React -->
-
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
 
 ```cmd
@@ -97,8 +95,6 @@ You will then need to import the React [`IgrDialog`](https://www.infragistics.co
 import { IgrDialog } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
-
-<!-- end: React -->
 
 For a complete introduction to the Ignite UI for React, read the [**Getting Started**](../general-getting-started.md) topic.
 
@@ -136,8 +132,6 @@ Action buttons or additional information can be placed in the bottom part of the
 By default, the Dialog is closed automatically when the user presses `ESC`. You could prevent this behavior using the [`keepOpenOnEscape`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdialog.html#keepOpenOnEscape) property. The default value is **false**. If there is an open dropdown (or any other element that should handle `ESC` internally) in the dialog, pressing `ESC` once will close the dropdown and pressing it again will close the dialog.
 
 Use the [`closeOnOutsideClick`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdialog.html#closeOnOutsideClick) property to configure if the dialog should be closed when clicking outside of it. The default value is **false**.
-
-<!-- Angular, WebComponents, React -->
 
 ```css
 /* shared styles are loaded from: */
@@ -215,8 +209,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DialogClosingVariations/>);
 ```
 
-
-<!-- end: Angular, WebComponents, React -->
 
 ### Form
 

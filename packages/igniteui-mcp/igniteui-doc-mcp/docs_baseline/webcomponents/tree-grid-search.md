@@ -94,8 +94,6 @@ Let's start by creating our grid and binding it to our data. We will also add so
 
 <!-- ComponentStart: TreeGrid -->
 
-<!-- WebComponents -->
-
 ```html
 <igc-tree-grid id="treeGrid" auto-generate="false" primary-key="ID" foreign-key="ParentID" allow-filtering="true" height="100%" width="100%">
     <igc-column field="Name" data-type="string" sortable="true"></igc-column>
@@ -121,8 +119,6 @@ Great, and now let's prepare for the search API of our [`IgcTreeGridComponent`](
 
 <!-- ComponentStart: TreeGrid -->
 
-<!-- WebComponents -->
-
 ```ts
 private treeGrid: IgcTreeGridComponent;
 
@@ -140,11 +136,7 @@ private exactMatchChip: IgcChipComponent;
 
 ### Web Components Search Box Input
 
-<!-- WebComponents -->
-
 Now let's create our search input!  By getting the input element we can get its current value. This will allow us to use the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html)'s `FindNext` and `FindPrev` methods to highlight all the occurrences of the `SearchText` and scroll to the next/previous one (depending on which method we have invoked).
-
-<!-- end: WebComponents -->
 
 Both the `FindNext` and the `FindPrev` methods have three arguments:
 
@@ -152,13 +144,11 @@ Both the `FindNext` and the `FindPrev` methods have three arguments:
 - (optional) `CaseSensitive`: **boolean** (should the search be case sensitive or not, default value is false)
 - (optional) `ExactMatch`: **boolean** (should the search be by an exact match or not, default value is false)
 
-When searching by an exact match, the search API will highlight as results only the cell values that match entirely the `SearchText` by taking the case sensitivity into account as well. For example the strings '*software*' and '*Software*' are an exact match with a disregard for the case sensitivity.
+When searching by an exact match, the search API will highlight as results only the cell values that match entirely the `SearchText` by taking the case sensitivity into account as well. For example the strings '_software_' and '_Software_' are an exact match with a disregard for the case sensitivity.
 
 The methods from above return a **number** value (the number of times the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) contains the given string).
 
 <!-- ComponentStart: TreeGrid -->
-
-<!-- WebComponents -->
 
 ```html
 <igc-input id="searchBox" name="searchBox">
@@ -184,8 +174,6 @@ public nextSearch() {
 In order to freely search and navigate among our search results, let's create a couple of buttons by invoking the `FindNext` and the `FindPrev` methods inside the buttons' respective click event handlers.
 
 <!-- ComponentStart: TreeGrid -->
-
-<!-- WebComponents -->
 
 ```html
 <igc-icon-button id="prevIconBtn" variant="flat" name="prev" collection="material" ></igc-icon-button>
@@ -214,8 +202,6 @@ public nextSearch() {
 We can also allow the users to navigate the results by using the keyboard's arrow keys and the <kbd>ENTER</kbd> key. In order to achieve this, we can handle the **keydown** event of our search input by preventing the default caret movement of the input with the `PreventDefault` method and invoke the `FindNext`/`FindPrev` methods depending on which key the user has pressed.
 
 <!-- ComponentStart: TreeGrid -->
-
-<!-- WebComponents -->
 
 ```html
 <igc-input id="searchBox" name="searchBox">
@@ -249,8 +235,6 @@ public onSearchKeydown(evt: KeyboardEvent) {
 
 <!-- ComponentStart: TreeGrid -->
 
-<!-- WebComponents -->
-
 Now let's allow the user to choose whether the search should be case sensitive and/or by an exact match. For this purpose we can use simple selectable `Chips` and bind to the `igcSelect` event to determine when the user interacts with them.
 
 ```html
@@ -272,8 +256,6 @@ constructor() {
 }
 ```
 
-<!-- end: WebComponents -->
-
 ### Persistence
 
 What if we would like to filter and sort our [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) or even to add and remove records? After such operations, the highlights of our current search automatically update and persist over any text that matches the `SearchText`! Furthermore, the search will work with paging and will persist the highlights through changes of the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html)'s `PerPage` property.
@@ -288,27 +270,7 @@ import { defineComponents, IgcInputComponent, IgcChipComponent, IgcIconComponent
 defineComponents(IgcInputComponent, IgcChipComponent, IgcIconComponent, IgcIconButtonComponent);
 ```
 
-<!-- WebComponents, Blazor -->
-
 Finally, let's update our template with the new components!
-
-<!-- end: WebComponents, Blazor -->
-
-```html
-<igx-input-group type="search" class="offset">
-    <igx-prefix>
-        <igx-icon *ngIf="searchText.length == 0">search</igx-icon>
-        <igx-icon *ngIf="searchText.length > 0" (click)="clearSearch()">clear</igx-icon>
-    </igx-prefix>
-
-    <input #search1 id="search1" igxInput placeholder="Search" [(ngModel)]="searchText" (ngModelChange)="@@igObjectRef.findNext(searchText, caseSensitive, exactMatch)"
-        (keydown)="searchKeyDown($event)" />
-
-    <igx-suffix *ngIf="searchText.length > 0">
-
-    </igx-suffix>
-</igx-input-group>
-```
 
 <!-- ComponentStart: TreeGrid -->
 
@@ -327,8 +289,6 @@ We will wrap all of our components inside an [`IgcInputComponent`](https://www.i
     </div>
 </igc-input>
 ```
-
-<!-- WebComponents -->
 
 ```typescript
 constructor() {
@@ -358,17 +318,9 @@ public clearSearch() {
 }
 ```
 
-<!-- end: WebComponents -->
-
-<!-- Angular, Blazor, WebComponents -->
-
 On the right in our input group, let's create three separate containers with the following purposes:
 
-<!-- end: Angular, Blazor, WebComponents -->
-
 - For displaying a couple of chips that toggle the `CaseSensitive` and the `ExactMatch` properties. We have replaced the checkboxes with two stylish chips. Whenever a chip is clicked, we invoke its respective handler.
-
-<!-- WebComponents -->
 
 ```html
 <div slot="suffix">
@@ -393,15 +345,7 @@ constructor() {
 }
 ```
 
-<!-- ComponentEnd: TreeGrid -->
-
-<!-- Angular, WebComponents, Blazor -->
-
 - For the search navigation buttons, we have added two ripple styled buttons with material icons. The handlers for the click events remain the same - invoking the `FindNext`/`FindPrev` methods.
-
-<!-- end: Angular, WebComponents, Blazor -->
-
-<!-- WebComponents -->
 
 ```html
 <div slot="suffix">
@@ -430,8 +374,6 @@ public nextSearch() {
     this.treeGrid.findNext(this.searchBox.value, this.caseSensitiveChip.selected, this.exactMatchChip.selected);
 }
 ```
-
-<!-- ComponentEnd: TreeGrid -->
 
 ## Known Limitations
 

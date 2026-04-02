@@ -236,8 +236,6 @@ For this purpose all we have to do is set both the [`IgrGridToolbarActions`](htt
 
 <!-- end: Web Components -->
 
-<!-- React -->
-
 <!-- ComponentStart: TreeGrid -->
 
 ```tsx
@@ -252,15 +250,9 @@ For this purpose all we have to do is set both the [`IgrGridToolbarActions`](htt
 
 <!-- ComponentEnd: TreeGrid -->
 
-<!-- end: React -->
-
 <!-- Web Components -->
 
 <!-- end: Web Components -->
-
-<!-- React -->
-
-<!-- end: React -->
 
 The [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) provides us with some useful properties when it comes to using the toolbar's column hiding UI.
 
@@ -271,8 +263,6 @@ By using the [`title`](https://www.infragistics.com/products/ignite-ui-react/doc
 <!-- ComponentEnd: TreeGrid -->
 
 <!-- end: Web Components -->
-
-<!-- React -->
 
 <!-- ComponentStart: TreeGrid -->
 
@@ -288,15 +278,9 @@ By using the [`title`](https://www.infragistics.com/products/ignite-ui-react/doc
 
 <!-- ComponentEnd: TreeGrid -->
 
-<!-- end: React -->
-
 <!-- Web Components -->
 
 <!-- end: Web Components -->
-
-<!-- React -->
-
-<!-- end: React -->
 
 You can see the result of the code from above at the beginning of this article in the React Column Hiding Example section.
 
@@ -312,8 +296,6 @@ We can easily prevent the user from being able to hide columns through the colum
 ```
 
 <!-- ComponentEnd: TreeGrid -->
-
-<!-- Blazor, WebComponents, React -->
 
 ## Styling
 
@@ -584,19 +566,13 @@ root.render(<Sample/>);
 ```
 
 
-<!-- end: Blazor, WebComponents, React -->
-
 ## API References
-
-<!-- Blazor, WebComponents, React -->
 
 In this article we learned how to use the built-in column hiding UI in the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html)'s toolbar. The column hiding UI has a few more APIs to explore, which are listed below.
 
 - `ColumnActionsComponent`
 
 Additional components with relative APIs that were used:
-
-<!-- end: Blazor, WebComponents, React -->
 
 [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html) properties:
 

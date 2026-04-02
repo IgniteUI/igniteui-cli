@@ -29,7 +29,7 @@ The following sample demonstrates how to enable row editing in the [`IgcGridComp
 ```
 
 
-> \[!Note]
+> [!Note]
 > When a row is in edit mode, clicking on a cell in another row will act like the "Done" button is pressed, submitting all changes made in the previous row. If the newly focused cell is editable, the new row enters edit mode as well. However, if the cell is not editable, only the previous row exits edit mode.
 
 ## Row Editing Usage
@@ -37,8 +37,6 @@ The following sample demonstrates how to enable row editing in the [`IgcGridComp
 Define a [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) with bound data source and [`rowEditable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#rowEditable) set to true:
 
 <!-- ComponentStart: Grid -->
-
-<!-- WebComponents -->
 
 ```html
 <igc-grid id="grid" primary-key="ProductID" width="100%" height="500px" row-editable="true">
@@ -66,13 +64,13 @@ public unitsInStockCellTemplate = (ctx: IgcCellTemplateContext) => {
 
 <!-- ComponentEnd: Grid -->
 
-> \[!Note]
+> [!Note]
 > Setting primary key is mandatory for row editing operations.
 
-> \[!Note]
+> [!Note]
 > Enabling editing for individual columns is not necessary. Using the [`rowEditable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#rowEditable) property in the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html), all rows, with defined [`field`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#field) property (excluding the primary row) will be editable. If you want to disable editing for a specific column, simply set the [`editable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#editable) input of that column to `false`.
 
-> \[!Note]
+> [!Note]
 > The [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) utilizes `BaseTransactionService` - an internal provider that holds pending cell changes until the row state is either submitted or cancelled.
 
 ## Positioning
@@ -149,8 +147,6 @@ public rowEditActionsTemplate = (ctx: IgcGridRowEditActionsTemplateContext) => {
 }
 ```
 
-<!-- WebComponents, Blazor, React -->
-
 ## Styling
 
 In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
@@ -186,8 +182,6 @@ Then set the related CSS properties for that class:
 }
 ```
 
-
-<!-- end: WebComponents, Blazor, React -->
 
 ## Known Issues and Limitations
 

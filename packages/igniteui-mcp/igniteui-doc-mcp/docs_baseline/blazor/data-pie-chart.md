@@ -237,7 +237,7 @@ You can style the aggregated Others slice separately from other slices by using 
 
 These properties only affect the Others slice (when it exists). All other slices continue to use the normal palette and item-wise coloring behavior.
 
-> \[!NOTE]
+> [!NOTE]
 > The Others slice is only rendered when the chart is configured to create it (for example, with [`OthersCategoryThreshold`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataPieBaseChart.html#IgniteUI_Blazor_Controls_IgbDataPieBaseChart_OthersCategoryThreshold) greater than `0` and an appropriate [`OthersCategoryType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataPieBaseChart.html#IgniteUI_Blazor_Controls_IgbDataPieBaseChart_OthersCategoryType)). If the Others slice is not present, `OthersCategoryBrush` and `OthersCategoryOutline` have no visible effect.
 
 If you want to ensure that the Others category does not show up in the [`IgbDataPieChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataPieChart.html), you can set the [`OthersCategoryThreshold`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataPieBaseChart.html#IgniteUI_Blazor_Controls_IgbDataPieBaseChart_OthersCategoryThreshold) to 0.

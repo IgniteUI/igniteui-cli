@@ -215,8 +215,6 @@ root.render(<Sample/>);
 
 Column pinning is controlled through the [`pinned`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#pinned) property of the [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html). Pinned columns are rendered on the left side of the [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html) by default and stay fixed through horizontal scrolling of the unpinned columns in the [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html) body.
 
-<!-- React -->
-
 ```tsx
 <IgrHierarchicalGrid data={nwindData} autoGenerate={false}>
     <IgrColumn field="CompanyName" pinned={true}></IgrColumn>
@@ -224,8 +222,6 @@ Column pinning is controlled through the [`pinned`](https://www.infragistics.com
     <IgrColumn field="ContactTitle"></IgrColumn>
 </IgrHierarchicalGrid>
 ```
-
-<!-- end: React -->
 
 <!-- ComponentEnd: HierarchicalGrid -->
 
@@ -248,8 +244,6 @@ A column is pinned to the right of the rightmost pinned column. Changing the ord
 
 <!-- end: Angular, React, WebComponents, React -->
 
-<!-- React -->
-
 ```typescript
 const columnPinning = (event: IgrPinColumnCancellableEventArgs) = {
     if (event.detail.column.field === 'Name') {
@@ -262,8 +256,6 @@ const columnPinning = (event: IgrPinColumnCancellableEventArgs) = {
 
 You can change the column pinning position via the [`pinning`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#pinning) configuration option. It allows you to set the columns position to either Start or End.
 When set to End the columns are rendered at the end of the grid, after the unpinned columns. Unpinned columns can be scrolled horizontally, while the pinned columns remain fixed on the right.
-
-<!-- React -->
 
 ```typescript
 const pinningConfig: IgrPinningConfig = { columns: ColumnPinningPosition.End };
@@ -478,8 +470,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
-<!-- React, WebComponents, Blazor -->
 
 ### Column Pinning on Both Sides
 
@@ -698,8 +688,6 @@ root.render(<App />);
 ```
 
 
-<!-- end: React, WebComponents, Blazor -->
-
 ## Custom Column Pinning UI
 
 You can define your custom UI and change the pin state of the columns via the related API.
@@ -707,8 +695,6 @@ You can define your custom UI and change the pin state of the columns via the re
 Let's say that instead of a toolbar you would like to define pin icons in the column headers that the end user can click to change the particular column's pin state.
 
 This can be done by creating a header template for the columns with a custom icon.
-
-<!-- React -->
 
 ```tsx
 <IgrHierarchicalGrid autoGenerate={false} data={HierarchicalCustomersData} ref={grid}>
@@ -742,8 +728,6 @@ const toggleColumnPin = (ctx: IgrColumnTemplateContext) => {
   );
 }
 ```
-
-<!-- end: React -->
 
 ### Demo
 

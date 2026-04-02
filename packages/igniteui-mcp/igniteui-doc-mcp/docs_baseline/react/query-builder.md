@@ -242,13 +242,9 @@ root.render(<Sample/>);
 
 To start using the `QueryBuilder`, first, you need to install the `Ignite UI for React` package by running the following command:
 
-<!-- React -->
-
 ```cmd
 npm install igniteui-react igniteui-react-grids
 ```
-
-<!-- end: React -->
 
 You also need to reference the corresponding styles based on your project configuration.
 
@@ -268,8 +264,6 @@ Since every condition is related to a specific field from a particular entity ch
 
 You can start using the component by setting the `Entities` property to an array describing the entity name and an array of its fields, where each field is defined by its name and data type. Once a field is selected it will automatically assign the corresponding operands based on the data type.
 The Query Builder has the [`IgrExpressionTree`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrexpressiontree.html) property. You could use it to set an initial state of the control and access the user-specified filtering logic.
-
-<!-- React -->
 
 ```tsx
 private queryBuilderRef: React.RefObject<IgcQueryBuilderComponent>;
@@ -344,8 +338,6 @@ private handleExpressionTreeChange = (event: CustomEvent<IgcExpressionTree>) => 
 };
 ```
 
-<!-- end: React -->
-
 # Expressions Dragging
 
 Condition chips can be easily repositioned using mouse Drag & Drop or Keyboard reordering approaches. With those, users can adjust their query logic dynamically.
@@ -354,7 +346,7 @@ Condition chips can be easily repositioned using mouse Drag & Drop or Keyboard r
 - Chip can also be dragged along groups and subgroups. For example, grouping/ungrouping expressions is achieved via the Expressions Dragging functionality.
     In order to group already existing conditions, first you need to add a new group through the 'add' group button. Then via dragging, the required expressions can be moved to that group. In order to ungroup, you could drag all conditions outside their current group and once the last condition is moved out, the group will be deleted.
 
-> \[!NOTE]
+> [!NOTE]
 > Chips from one query tree cannot be dragged in another, e.g. from parent to inner and vice versa.
 
 <img class="responsive-img" alt="Animated Example of Query Builder Drag and Drop using the Mouse" src="../../images/general/query-builder-drag-and-drop.gif" />
@@ -368,7 +360,7 @@ Condition chips can be easily repositioned using mouse Drag & Drop or Keyboard r
 - <kbd>Space</kbd> / <kbd>Enter</kbd> - focused expression enters edit mode. If chip is been moved, this confirms it's new position.
 - <kbd>Esc</kbd> - chip's reordering is canceled and it returns to it's original position.
 
-> \[!NOTE]
+> [!NOTE]
 > Keyboard reordering provides the same functionality as mouse Drag & Drop. Once a chip is moved, user has to confirm the new position or cancel the reorder.
 
 <img class="responsive-img" alt="Animated Example of Keyboard Drag and Drop Using the Ignite UI for Angular Query Builder" src="../../images/general/query-builder-keyboard-drag-and-drop.gif" />
@@ -385,11 +377,9 @@ By default the `{ComponentName}` header would not be displayed. In order to defi
 
 The search value of a condition can be templated by setting the `SearchValueTemplate` property to a function that returns a lit-html template.
 
-> \[!Note]
+> [!Note]
 > When using `SearchValueTemplate`, you must provide templates for all field types in your entity, or the query builder will not function correctly. It is mandatory to implement a default/fallback template that handles any fields or conditions not covered by specific custom templates. Without this, users will not be able to edit
 > conditions for those fields.
-
-<!-- React -->
 
 ```tsx
 <IgrQueryBuilder 
@@ -438,11 +428,7 @@ private buildSearchValueTemplate = (ctx: QueryBuilderSearchValueContext) => {
 };
 ```
 
-<!-- end: React -->
-
 Below are examples showing one template for each type of editor:
-
-<!-- React -->
 
 For the Region Select example:
 
@@ -638,13 +624,9 @@ private buildDefaultInput = (ctx: QueryBuilderSearchValueContext, matchesEqualit
 };
 ```
 
-<!-- end: React -->
-
 ### Formatter
 
 In order to change the appearance of the search value in the chip displayed when a condition is not in edit mode, you can set a formatter function to the fields array. The search value can be accessed through the value argument as follows:
-
-<!-- React, WebComponents -->
 
 ```ts
 this.ordersFields = [
@@ -666,8 +648,6 @@ this.ordersFields = [
   }
 ];
 ```
-
-<!-- end: React, WebComponents -->
 
 ### Demo
 

@@ -11,23 +11,19 @@ _tocName: Agent Skills
 
 Ignite UI for Web Components ships with **[Agent Skills](https://agentskills.io/)** — structured knowledge files that teach AI coding assistants (GitHub Copilot, Cursor, Windsurf, Claude, Gemini CLI, JetBrains Junie, etc.) how to work with Ignite UI for Web Components. These skill files provide context-aware guidance on components, grids, data operations, and theming, enabling your AI assistant to generate accurate, idiomatic code that follows best practices.
 
-> \[!NOTE]
+> [!NOTE]
 > The AI tooling landscape is evolving rapidly. Skill discovery locations and distribution options may change as tools and IDEs are updated. Always consult the official documentation for your specific tool or agent for the latest information.
 
 ## Available Skills
 
 The skill files live in the [`skills/`](https://github.com/IgniteUI/igniteui-webcomponents/tree/master/skills) directory of the Ignite UI for Web Components repository:
 
-<!-- WebComponents -->
-
 | Skill | Path | Description |
 |:------|:-----|:------------|
 | Components & Layout | [`skills/igniteui-wc-choose-components/SKILL.md`](https://github.com/IgniteUI/igniteui-webcomponents/blob/master/skills/igniteui-wc-choose-components/SKILL.md) | Standalone components, form controls, overlays, layout |
 | Platform Integration | [`skills/igniteui-wc-integrate-with-framework/SKILL.md`](https://github.com/IgniteUI/igniteui-webcomponents/blob/master/skills/igniteui-wc-integrate-with-framework/SKILL.md) | Helps with integrating components to the user's platform of choice |
 | Theming & Styling | [`skills/igniteui-wc-customize-component-theme/SKILL.md`](https://github.com/IgniteUI/igniteui-webcomponents/blob/master/skills/igniteui-wc-customize-component-theme/SKILL.md) | Palettes, typography, elevations, component themes, MCP server |
-| Optimization | [`skills/igniteui-wc-optimize-bundle-size/SKILL.md`](https://github.com/IgniteUI/igniteui-webcomponents/blob/master/skills/igniteui-wc-optimize-bundle-size/SKILL.md) | Ensuring best practices for tree shaking to optimize bundle size |
-
-<!-- end: WebComponents -->
+| Optimization | [`skills/igniteui-wc-optimize-bundle-size/SKILL.md`](https://github.com/IgniteUI/igniteui-webcomponents/blob/master/skills/igniteui-wc-optimize-bundle-size/SKILL.md) | Ensuring best practices for tree shaking to optimize bundle size
 
 ## Skill Locations
 
@@ -37,20 +33,18 @@ Each AI coding tool discovers skills from specific directories. Place your skill
 
 The `.agents/skills/` directory is a cross-agent convention supported by multiple tools, including [VS Code with Copilot](https://code.visualstudio.com/docs/copilot/customization/agent-skills), [OpenAI Codex](https://developers.openai.com/codex/skills), [Cursor](https://cursor.com/docs/skills), [Gemini CLI](https://geminicli.com/docs/cli/skills/#skill-discovery-tiers), [Antigravity](https://antigravity.google/docs/skills), and [Windsurf](https://docs.windsurf.com/windsurf/cascade/skills#skill-scopes). Copy the skill directories into `.agents/skills/` in your project root:
 
-<!-- WebComponents -->
-
-    .agents/
-      skills/
-        igniteui-wc-choose-components/
-          SKILL.md
-        igniteui-wc-integrate-with-framework/
-          SKILL.md
-        igniteui-wc-customize-component-theme/
-          SKILL.md
-        igniteui-wc-optimize-bundle-size/
-          SKILL.md
-
-<!-- end: WebComponents -->
+```
+.agents/
+  skills/
+    igniteui-wc-choose-components/
+      SKILL.md
+    igniteui-wc-integrate-with-framework/
+      SKILL.md
+    igniteui-wc-customize-component-theme/
+      SKILL.md
+    igniteui-wc-optimize-bundle-size/
+      SKILL.md
+```
 
 For user-level (global) skills available across all projects, use `~/.agents/skills/` instead.
 
@@ -112,7 +106,7 @@ For user-level (global) skills available across all projects, use `~/.agents/ski
 | Workspace | `.windsurf/skills/`, `.agents/skills/` |
 | Global | `~/.codeium/windsurf/skills/`, `~/.agents/skills/` |
 
-***
+---
 
 ## Installing Skills
 
@@ -138,8 +132,6 @@ Or copy individual skill directories as needed:
 
 **macOS / Linux / Windows (PowerShell)**
 
-<!-- WebComponents -->
-
 ```bash
 cp -r node_modules/igniteui-webcomponents/skills/igniteui-wc-choose-components .agents/skills/
 cp -r node_modules/igniteui-webcomponents/skills/igniteui-wc-customize-component-theme .agents/skills/
@@ -147,11 +139,7 @@ cp -r node_modules/igniteui-webcomponents/skills/igniteui-wc-optimize-bundle-siz
 cp -r node_modules/igniteui-webcomponents/skills/igniteui-wc-integrate-with-framework .agents/skills/
 ```
 
-<!-- end: WebComponents -->
-
 **Windows (Command Prompt)**
-
-<!-- WebComponents -->
 
 ```cmd
 robocopy node_modules\igniteui-webcomponents\skills\igniteui-wc-choose-components .agents\skills\igniteui-wc-choose-components /E
@@ -159,8 +147,6 @@ robocopy node_modules\igniteui-webcomponents\skills\igniteui-wc-customize-compon
 robocopy node_modules\igniteui-webcomponents\skills\igniteui-wc-optimize-bundle-size .agents\skills\igniteui-wc-optimize-bundle-size /E
 robocopy node_modules\igniteui-webcomponents\skills\igniteui-wc-integrate-with-framework .agents\skills\igniteui-wc-integrate-with-framework /E
 ```
-
-<!-- end: WebComponents -->
 
 ### **Option B — Use the `gemini skills` CLI**
 
@@ -171,8 +157,6 @@ The `gemini skills install` command installs skills directly from a Git reposito
 
 **Install to user scope (default):**
 
-<!-- WebComponents -->
-
 ```bash
 gemini skills install https://github.com/IgniteUI/igniteui-webcomponents.git --path skills/igniteui-wc-choose-components
 gemini skills install https://github.com/IgniteUI/igniteui-webcomponents.git --path skills/igniteui-wc-customize-component-theme
@@ -180,11 +164,7 @@ gemini skills install https://github.com/IgniteUI/igniteui-webcomponents.git --p
 gemini skills install https://github.com/IgniteUI/igniteui-webcomponents.git --path skills/igniteui-wc-integrate-with-framework
 ```
 
-<!-- end: WebComponents -->
-
 **Install to workspace scope:**
-
-<!-- WebComponents -->
 
 ```bash
 gemini skills install --scope workspace https://github.com/IgniteUI/igniteui-webcomponents.git --path skills/igniteui-wc-choose-components
@@ -192,8 +172,6 @@ gemini skills install --scope workspace https://github.com/IgniteUI/igniteui-web
 gemini skills install --scope workspace https://github.com/IgniteUI/igniteui-webcomponents.git --path skills/igniteui-wc-optimize-bundle-size
 gemini skills install --scope workspace https://github.com/IgniteUI/igniteui-webcomponents.git --path skills/igniteui-wc-integrate-with-framework
 ```
-
-<!-- end: WebComponents -->
 
 Once installed, the skill files are available in the respective location and will be automatically discovered by compatible AI assistants.
 
@@ -215,15 +193,11 @@ Once complete, the skills are ready to use — no manual file copying required.
 
 > **Note:** Requires Node.js and an internet connection. The command fetches the latest skill files from the [IgniteUI/igniteui-webcomponents](https://github.com/IgniteUI/igniteui-webcomponents) repository.
 
-***
+---
 
 ## Theming MCP Server
 
-<!-- WebComponents -->
-
 The **Theming skill** includes setup instructions for the `igniteui-theming` MCP server, which gives AI assistants access to live theming tools such as palette generation and component theme scaffolding. See the [Theming skill file](https://github.com/IgniteUI/igniteui-webcomponents/blob/master/skills/igniteui-wc-customize-component-theme/SKILL.md) for configuration steps for VS Code, Cursor, Claude Desktop, and JetBrains IDEs.
-
-<!-- end: WebComponents -->
 
 For more information on the Theming MCP, refer to the [Ignite UI Theming MCP](./theming-mcp.md) documentation.
 
@@ -231,12 +205,8 @@ For more information on the Theming MCP, refer to the [Ignite UI Theming MCP](./
 
 <div class="divider--half"></div>
 
-<!-- React, WebComponents -->
-
 - [Getting Started with Ignite UI for Web Components](../general-getting-started.md)
 - [Ignite UI CLI](../general-cli-overview.md)
-
-<!-- end: React, WebComponents -->
 
 <div class="divider--half"></div>
 Our community is active and always welcoming to new ideas.

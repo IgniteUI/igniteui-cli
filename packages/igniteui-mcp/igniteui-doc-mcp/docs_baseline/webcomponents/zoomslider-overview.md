@@ -422,8 +422,6 @@ class Country {
 | Extensibility       | The ZoomSlider control supports DataChart control out-of the box. |
 | Configurable zoom-range window       | The initial zoom-range window width and position, as well as its minimum size, are configurable. |
 
-<!-- Angular, React, WebComponents -->
-
 ## Dependencies
 
 When installing the Web Components chart component, the core package must also be installed.
@@ -432,8 +430,6 @@ When installing the Web Components chart component, the core package must also b
 npm install --save igniteui-webcomponents-core
 npm install --save igniteui-webcomponents-charts
 ```
-
-<!-- end: Angular, React, WebComponents -->
 
 ## Component Modules
 

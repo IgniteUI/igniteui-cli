@@ -27,8 +27,6 @@ They are added inside the [`IgrHierarchicalGrid`](https://www.infragistics.com/p
 
 <!-- ComponentEnd: HierarchicalGrid -->
 
-<!-- React -->
-
 <!-- ComponentStart: HierarchicalGrid -->
 
 ```tsx
@@ -44,9 +42,7 @@ They are added inside the [`IgrHierarchicalGrid`](https://www.infragistics.com/p
 
 <!-- ComponentEnd: HierarchicalGrid -->
 
-<!-- end: React -->
-
-> \[!Note]
+> [!Note]
 > When `ActionStripComponent` is a child component of the [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html), hovering a row will automatically show the UI.
 
 ## Custom Implementation
@@ -54,8 +50,6 @@ They are added inside the [`IgrHierarchicalGrid`](https://www.infragistics.com/p
 These components expose templates giving flexibility for customization. For instance, if we would like to use the [`IgrActionStrip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igractionstrip.html) for a Gmail scenario with row actions such as **delete**, **edit** and etc. You can simply create button component with icon, add click event to it and insert it into the [`IgrActionStrip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igractionstrip.html).
 
 <!-- ComponentEnd: HierarchicalGrid -->
-
-<!-- React -->
 
 <!-- ComponentStart: HierarchicalGrid -->
 
@@ -69,8 +63,6 @@ These components expose templates giving flexibility for customization. For inst
 ```
 
 <!-- ComponentEnd: HierarchicalGrid -->
-
-<!-- end: React -->
 
 ```css
 /* shared styles are loaded from: */

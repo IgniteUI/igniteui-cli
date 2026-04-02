@@ -365,8 +365,6 @@ public class CountryRenewableElectricity
 
 <div class="divider--half"></div>
 
-<!-- Blazor -->
-
 ### Timeline Styling
 
 The following example demonstrates how to style the data chart as a timeline with annotations by setting the [`AllowedPositions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCalloutLayer.html#IgniteUI_Blazor_Controls_IgbCalloutLayer_AllowedPositions) properties listed above:
@@ -472,8 +470,6 @@ The following example demonstrates how to style the data chart as a timeline wit
 }
 ```
 
-
-<!-- end: Blazor -->
 
 ## API References
 

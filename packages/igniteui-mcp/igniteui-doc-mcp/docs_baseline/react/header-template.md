@@ -32,7 +32,7 @@ return (
 
 <!-- End: Blazor -->
 
-> \[!NOTE]
+> [!NOTE]
 > When `headerTemplate` is provided, `header` is ignored.
 
 ## Customization via Header Template

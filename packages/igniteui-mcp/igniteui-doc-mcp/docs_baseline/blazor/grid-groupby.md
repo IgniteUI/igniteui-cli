@@ -214,8 +214,6 @@ public class InvoicesWorldData
 
 It is possible to define initial grouping of the grid by assigning an array of expressions to the [`GroupingExpressions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_GroupingExpressions) property of the grid.
 
-<!-- Blazor -->
-
 ```razor
 <IgbGrid AutoGenerate="true" Data="InvoicesData" @ref="grid" Id="grid" GroupingExpressions="GroupingExpression1"></IgbGrid>
 
@@ -228,8 +226,6 @@ It is possible to define initial grouping of the grid by assigning an array of e
 }
 ```
 
-<!-- end: Blazor -->
-
 Grouping expressions implement the `ISortingExpression` interface.
 
 ## Group By API
@@ -237,8 +233,6 @@ Grouping expressions implement the `ISortingExpression` interface.
 ### Grouping API
 
 Grouping is available through the UI and through a robust API exposed by the grid component. Developers can allow end-users to group the grid data by certain columns, by setting each column's `Groupable` property to `true`.
-
-<!-- Blazor -->
 
 ```razor
 <IgbGrid AutoGenerate="false" Data="InvoicesData" @ref="grid" Id="grid" GroupingExpressions="GroupingExpression1" GroupRowTemplateScript="WebGridGroupByRowTemplate">
@@ -258,8 +252,6 @@ Grouping is available through the UI and through a robust API exposed by the gri
 
 During runtime the expressions are gettable and settable from the `groupingExpressions` property. If you need to add or change an existing expression you may also use the [`GroupBy`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_GroupBy) method with either a single or an array of expressions.
 
-<!-- Blazor -->
-
 ```razor
 @code {
     public IgbGrid grid;
@@ -277,8 +269,6 @@ During runtime the expressions are gettable and settable from the `groupingExpre
     }
 }
 ```
-
-<!-- end: Blazor -->
 
 ### Expand/Collapse API
 
@@ -534,8 +524,6 @@ The grouping UI supports the following keyboard interactions:
   - <kbd>DELETE</kbd> - ungroups the field
   - The separate elements of the chip are also focusable and can be interacted with using the <kbd>ENTER</kbd> key.
 
-<!-- WebComponents, Blazor, React -->
-
 ## Styling
 
 In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
@@ -777,8 +765,6 @@ public class InvoicesData
 }
 ```
 
-
-<!-- end: WebComponents, Blazor, React -->
 
 ## Known Limitations
 

@@ -1782,14 +1782,10 @@ root.render(<App />);
 
 In order to enable row-dragging for your [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html), all you need to do is set the grid's [`rowDraggable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#rowDraggable) to **true**. Once this is enabled, a row-drag handle will be displayed on each row. This handle can be used to initiate row dragging. Clicking on the drag-handle and **moving the cursor** while holding down the button will cause the grid's `RowDragStart` event to fire. Releasing the click at any time will cause `RowDragEnd` event to fire.
 
-<!-- React -->
-
 ```tsx
 <IgrHierarchicalGrid rowDraggable={true}>
 </IgrHierarchicalGrid>
 ```
-
-<!-- end: React -->
 
 ### Templating the Drag Icon
 
@@ -1820,8 +1816,6 @@ The drag handle icon can be templated using the grid's [`dragIndicatorIconTempla
 
 ### Row Reordering Demo
 
-<!--  WebComponents, Blazor, React -->
-
 With the help of the grid's row drag events you can create a grid that allows you to reorder rows by dragging them.
 
 <!-- ComponentStart: HierarchicalGrid -->
@@ -1833,9 +1827,7 @@ With the help of the grid's row drag events you can create a grid that allows yo
 
 <!-- ComponentEnd: HierarchicalGrid -->
 
-<!--  end: WebComponents, Blazor, React -->
-
-> \[!Note]
+> [!Note]
 > Make sure that there is a [`primaryKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#primaryKey) specified for the grid! The logic needs an unique identifier for the rows so they can be properly reordered.
 
 Once [`rowDraggable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#rowDraggable) is enabled and a drop zone has been defined, you need to implement a simple handler for the drop event. When a row is dragged, check the following:
@@ -1852,13 +1844,7 @@ Once [`rowDraggable`](https://www.infragistics.com/products/ignite-ui-react/docs
 
 Below, you can see this implemented:
 
-<!-- React -->
-
-<!-- end: React -->
-
 <!-- ComponentStart: HierarchicalGrid -->
-
-<!-- React -->
 
 ```tsx
 const webHierarchicalGridReorderRowHandler = (args: IgrRowDragEndEventArgs): void => {

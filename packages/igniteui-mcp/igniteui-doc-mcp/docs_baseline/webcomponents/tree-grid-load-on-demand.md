@@ -82,8 +82,6 @@ export class EmployeesFlatData extends Array<EmployeesFlatDataItem> {
 
 The Load on Demand feature is compatible with both types of Tree Grid data sources - primary and foreign keys or child collection. You only need to load the root level data in the Tree Grid and specify the necessary keys for one of the data source types. In order to load the child rows when the user expands a row, the Tree Grid provides the callback input property [`loadChildrenOnDemand`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#loadChildrenOnDemand).
 
-<!-- WebComponents -->
-
 ```html
 <igc-tree-grid id="treeGrid"></igc-tree-grid>
 ```
@@ -109,8 +107,6 @@ public loadChildren = (parentID: any, done: (children: any[]) => void) => {
 }
 ```
 
-<!-- end: WebComponents -->
-
 After the user clicks the expand icon, it is replaced by a loading indicator. When the done callback is called, the loading indicator disappears and the children are loaded. The Tree Grid adds the children to the underlying data source and populates the necessary keys automatically.
 
 ### Expanding Indicator Visibility
@@ -124,8 +120,6 @@ If you have a way to provide an information whether a row has children prior to 
 Note that setting the [`hasChildrenKey`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#hasChildrenKey) property is not required. In case you don't provide it, expansion indicators will be displayed for each row. After expanding a row that has no children, you still need to call the done callback with undefined or empty array. In this case after the loading indicator disappears, the expansion indicator never shows up.
 
 ### Custom Loading Indicator
-
-<!-- WebComponents -->
 
 If you want to provide your own custom loading indicator, you can use the [`rowLoadingIndicatorTemplate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#rowLoadingIndicatorTemplate) option to set a custom template.The following code snippet demonstrates how set to it:
 
@@ -143,8 +137,6 @@ public rowLoadingTemplate() {
     return html`<igc-icon name="loop" collection="material"></igc-icon>`;
 }
 ```
-
-<!-- end: WebComponents -->
 
 ## API References
 

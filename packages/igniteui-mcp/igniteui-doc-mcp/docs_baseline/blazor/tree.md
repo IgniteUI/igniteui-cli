@@ -60,15 +60,11 @@ In this basic Ignite UI for Blazor Tree example, you can see how to define a tre
 
 ## How to Use Ignite UI for Blazor Tree With Ignite UI
 
-<!-- Blazor -->
-
 You will also need to link an additional CSS file to apply the styling to the [`IgbTree`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTree.html) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
 ```
-
-<!-- end: Blazor -->
 
 ```razor
 // in Program.cs file
@@ -87,8 +83,6 @@ The simplest way to start using the [`IgbTree`](https://www.infragistics.com/bla
 Items provide [`Disabled`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeItem.html#IgniteUI_Blazor_Controls_IgbTreeItem_Disabled), [`Active`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeItem.html#IgniteUI_Blazor_Controls_IgbTreeItem_Active), [`Selected`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeItem.html#IgniteUI_Blazor_Controls_IgbTreeItem_Selected) and [`Expanded`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeItem.html#IgniteUI_Blazor_Controls_IgbTreeItem_Expanded) properties, which give you opportunity to configure the states of the item as per your requirement.
 The [`Value`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeItem.html#IgniteUI_Blazor_Controls_IgbTreeItem_Value) property can be used to add a reference to the data entry the item represents.
 
-<!-- WebComponents, Blazor -->
-
 Items can be declared using one of the following approaches.
 
 - Declaring the tree and its items by specifying the item hierarchy and iterating through a data set
@@ -102,8 +96,6 @@ Items can be declared using one of the following approaches.
     }
 </IgbTree>
 ```
-
-<!-- end: WebComponents, Blazor -->
 
 Items can be bound to a data model so that their expanded and selected states are reflected in the underlying data as well.
 
@@ -130,7 +122,7 @@ In order to render a tree you do not necessarily need a data set - individual it
 </IgbTree>
 ```
 
-> \[!Note]
+> [!Note]
 > You can provide a custom slot content for each [`IgbTreeItem`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeItem.html)'s indentation, expansion and label area respectively using the provided `indentation`, `indicator` and `label` slots.
 
 ### Item Interactions

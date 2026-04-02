@@ -324,7 +324,7 @@ This means that the following configuration is possible:
 
 <!-- ComponentEnd: HierarchicalGrid -->
 
-> \[!Note]
+> [!Note]
 > There is a slight difference in the way resizing works for columns set in pixels and percentages.
 
 **Pixels**
@@ -674,8 +674,6 @@ public class HierarchicalCustomersCustom
 ```
 
 
-<!-- WebComponents, Blazor, React -->
-
 ## Styling
 
 In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
@@ -959,8 +957,6 @@ public class SingersData
 }
 ```
 
-
-<!-- end: WebComponents, Blazor, React -->
 
 ## API References
 

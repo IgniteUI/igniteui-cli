@@ -74,8 +74,6 @@ The Blazor Button Group component is used to organize [`IgbToggleButton`](https:
 
 ## Usage
 
-<!-- Blazor -->
-
 Before using the [`IgbButtonGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButtonGroup.html), you need to register it as follows:
 
 ```razor
@@ -89,8 +87,6 @@ You will also need to link an additional CSS file to apply the styling to the [`
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
 ```
-
-<!-- end: Blazor -->
 
 For a complete introduction to the Ignite UI for Blazor, read the [**Getting Started**](../general-getting-started.md) topic.
 
@@ -280,7 +276,7 @@ A [`IgbToggleButton`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.
 </IgbButtonGroup>
 ```
 
-> \[!Note]
+> [!Note]
 > Setting [`IgbToggleButton`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToggleButton.html) [`Value`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToggleButton.html#IgniteUI_Blazor_Controls_IgbToggleButton_Value) attribute is mandatory for using the [`SelectedItems`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButtonGroup.html#IgniteUI_Blazor_Controls_IgbButtonGroup_SelectedItems) property of the [`IgbButtonGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButtonGroup.html).
 
 ### Size

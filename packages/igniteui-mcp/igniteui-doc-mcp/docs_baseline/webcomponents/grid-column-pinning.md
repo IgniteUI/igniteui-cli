@@ -52,8 +52,6 @@ You may also use the [`IgcGridComponent`](https://www.infragistics.com/products/
 
 <!-- ComponentStart: Grid -->
 
-<!-- Angular, WebComponents -->
-
 ```typescript
 this.grid.pinColumn('AthleteNumber');
 this.grid.unpinColumn('Name');
@@ -68,8 +66,6 @@ Both methods return a boolean value indicating whether their respective operatio
 A column is pinned to the right of the rightmost pinned column. Changing the order of the pinned columns can be done by subscribing to the `ColumnPin` event and changing the `InsertAtIndex` property of the event arguments to the desired position index.
 
 <!-- end: Angular, React, WebComponents, React -->
-
-<!-- WebComponents -->
 
 ```html
 <igc-grid id="dataGrid" auto-generate="true"></igc-grid>
@@ -95,8 +91,6 @@ public columnPinning(event) {
 
 You can change the column pinning position via the [`pinning`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#pinning) configuration option. It allows you to set the columns position to either Start or End.
 When set to End the columns are rendered at the end of the grid, after the unpinned columns. Unpinned columns can be scrolled horizontally, while the pinned columns remain fixed on the right.
-
-<!-- WebComponents -->
 
 ```html
 <igc-grid id="dataGrid" auto-generate="true"></igc-grid>
@@ -158,8 +152,6 @@ export class AthletesDataExtended extends Array<AthletesDataExtendedItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
-<!-- React, WebComponents, Blazor -->
 
 ### Column Pinning on Both Sides
 
@@ -238,8 +230,6 @@ export class CustomersData extends Array<CustomersDataItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
-<!-- end: React, WebComponents, Blazor -->
 
 ## Custom Column Pinning UI
 

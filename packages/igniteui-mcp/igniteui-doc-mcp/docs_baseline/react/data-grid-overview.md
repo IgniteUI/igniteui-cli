@@ -670,8 +670,6 @@ root.render(<DataGridOverview/>);
 
 ### Dependencies
 
-<!-- Angular, React, WebComponents -->
-
 When installing the React grid package, the core package must also be installed.
 
 ```cmd
@@ -680,13 +678,9 @@ npm install --save igniteui-react-grids
 npm install --save igniteui-react-inputs
 ```
 
-<!-- end: Angular, React, WebComponents -->
-
 ### Component Modules
 
 The [`IgrDataGrid`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_grids.igrdatagrid.html) requires the following modules:
-
-<!-- React -->
 
 ```ts
 import { IgrDataGridModule } from 'igniteui-react-data-grids';
@@ -694,8 +688,6 @@ import { IgrDataGrid } from 'igniteui-react-data-grids';
 
 IgrDataGridModule.register();
 ```
-
-<!-- end: React -->
 
 <div class="divider--half"></div>
 
@@ -842,11 +834,7 @@ The following code demonstrates how to style specific columns using the provided
 
 <!-- TODO fix build flagging list items -->
 
-<!-- React -->
-
 <!-- - [Row Paging](row-paging.md) -->
-
-<!-- end: React -->
 
 ## API References
 

@@ -14,14 +14,14 @@ _premium: true
 
 The Ignite UI for React Sizing feature in React Hierarchical Grid is an important aspect of creating responsive and user-friendly grid interfaces. The React Hierarchical Grid Sizing feature enables users to adjust the [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#width) and [`height`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#height) of the grid to accommodate different screen sizes, content, or user preferences. In terms of border and padding size for the [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html), they are taken into its width/height size calculations or also known as [Border box](https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing) sizing. It is applied in all scenarios.
 
-> \[!Note]
+> [!Note]
 > If the Border box sizing is overridden by the user we cannot guarantee that the [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html) will size correctly.
 
 ## React Hierarchical Grid Width
 
 If the [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#width) input does not have value assigned, its default value is `100%` and the [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html) tries to fill the available space. You can check how the grid reacts to it in the `Percentages` section.
 
-> \[!Note]
+> [!Note]
 > Setting manually the [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#width) style of the [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html) itself will result in an unexpected behavior.
 
 ### Null
@@ -44,7 +44,7 @@ The grid's [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/
 
 <img src="../../../images/grid_sizing/width-null-parent-scroll-v2.jpg" alt="width-null-parent-scroll-v2" style="width: 80%"/>
 
-> \[!Note]
+> [!Note]
 > Due to this behavior, if the grid data contains too many columns, it might have significant impact on the browser performance, since all columns would be rendered without virtualization.
 
 ### Pixels
@@ -81,7 +81,7 @@ When the [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/ty
 
 By default if no height is defined for the [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html), it will be set to `100%`. You can check how the grid reacts depending on the DOM structure in the `Percentages` section.
 
-> \[!Note]
+> [!Note]
 > Setting manually the [`height`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#height) style of the [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html) itself will result in an unexpected behavior.
 
 ### Null
@@ -101,7 +101,7 @@ The [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-reac
 <img src="../../../images/grid_sizing/height-null-24rows-parent-noscroll-v2.jpg" alt="height-null-24rows-parent-noscroll-v2" style="width: 80%"/>
 <img src="../../../images/grid_sizing/height-null-24rows-parent-scroll-v2.jpg" alt="height-null-24rows-parent-scroll-v2" style="width: 80%"/>
 
-> \[!Note]
+> [!Note]
 > Due to this behavior, if the grid data contains too many rows, it might have significant impact on the browser performance, since all rows would be rendered without virtualization.
 
 ### Pixels
@@ -180,7 +180,7 @@ When the grid is resized in these scenarios, the column width is also updated to
 
 <img src="../../../images/grid_sizing/columns-default-all-first-100px-v2.jpg" alt="columns-default-all-first-100px-v2" style="width: 80%"/>
 
-> \[!Note]
+> [!Note]
 > Feature columns like Row Selector checkbox column and etc. fill additional space that is taken into account when autosizing columns.
 
 ### Pixels

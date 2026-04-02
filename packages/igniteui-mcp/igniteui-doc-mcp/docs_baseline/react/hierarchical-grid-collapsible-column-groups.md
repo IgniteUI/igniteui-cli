@@ -241,13 +241,9 @@ root.render(<Sample/>);
 
 To get started with the [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html) and the **Collapsible multi-column headers** feature, first you need to install Ignite UI for React by typing the following command:
 
-<!-- React -->
-
 ```cmd
 npm install igniteui-react-grids
 ```
-
-<!-- end: React -->
 
 For a complete introduction to the Ignite UI for React, read the [getting started](../../general-getting-started.md) topic.
 
@@ -296,8 +292,6 @@ To summarize, every child column has three states:
 
 The initial state of the column group which is specified as collapsible is [`expanded`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumngroup.html#expanded) set to **true**, but you can easily change this behavior by setting it to **false**.
 
-<!-- Angular, WebComponents, React -->
-
 ## Expand/Collapse Indicator Template
 
 Default expand indicator for the [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html) is the following:
@@ -327,8 +321,6 @@ const collapsibleIndicatorTemplate = (ctx: IgrColumnTemplateContext) => {
     </div>)
 }
 ```
-
-<!-- end: Angular, WebComponents, React -->
 
 > **Note**
 > Please keep in mind that initially collapse group option takes precedence over column hidden - If you declared your column to be hidden using the property

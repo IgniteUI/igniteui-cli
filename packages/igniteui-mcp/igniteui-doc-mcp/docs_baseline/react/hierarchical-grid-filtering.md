@@ -246,16 +246,12 @@ Property [`filterable`](https://www.infragistics.com/products/ignite-ui-react/do
 
 To enable the [Advanced filtering](advanced-filtering.md) however, you need to set the [`allowAdvancedFiltering`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#allowAdvancedFiltering) input property to **true**
 
-<!-- React -->
-
 ```tsx
 <IgrHierarchicalGrid data={nwindData} autoGenerate={false} ref={gridRef} allowAdvancedFiltering={true}>
 </IgrHierarchicalGrid>
 ```
 
-<!-- end: React -->
-
-> \[!Note]
+> [!Note]
 > You can enable both the `QuickFilter` or `ExcelStyleFilter` and the advanced filtering user interfaces in the [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html). Both filtering user interfaces will work independently of one another. The final filtered result in the [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html) is the intersection between the results of the two filters.
 
 ## Interaction
@@ -270,7 +266,7 @@ There's a default filtering strategy provided out of the box, as well as all the
 
 The filtering feature is enabled for the [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html) component by setting the [`allowFiltering`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#allowFiltering) input to **true**. The default [`filterMode`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#filterMode) is `QuickFilter` and it **cannot** be changed run time. To disable this feature for a certain column – set the [`filterable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#filterable) input to **false**.
 
-> \[!Note]
+> [!Note]
 > If values of type **string** are used by a column of data type **date**, the [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html) won't parse them to **date** objects and using filtering conditions won't be possible. If you want to use **string** objects, additional logic should be implemented on the application level, in order to parse the values to **date** objects.
 
 ## Initial filtered state
@@ -310,34 +306,24 @@ return (
 
 The [`filteringLogic`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#filteringLogic) property of the [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html) controls how filtering multiple columns will resolve in the [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html). You can change it at any time through the [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html) API, or through the [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html) input property.
 
-<!-- React -->
-
 ```tsx
 import { FilteringLogic } from "igniteui-react-grids";
 
 <IgrHierarchicalGrid filteringLogic={FilteringLogic.Or}></IgrHierarchicalGrid>
 ```
 
-<!-- end: React -->
-
 The default value of `AND` returns only the rows that match all the currently applied filtering expressions. Following the example above, a row will be returned when both the 'ProductName' cell value contains 'myproduct' and the 'Price' cell value is greater than 55.
 
 When set to `OR`, a row will be returned when either the 'ProductName' cell value contains 'myproduct' or the 'Price' cell value is greater than 55.
-
-<!-- WebComponents, Blazor, React -->
 
 ## Styling
 
 In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
 
-<!-- React -->
-
 ```tsx
 <IgrHierarchicalGrid className="grid"></IgrHierarchicalGrid>
 ```
-
-<!-- end: React -->
 
 Then set the related CSS properties for that class:
 
@@ -556,11 +542,9 @@ root.render(<Sample/>);
 ```
 
 
-<!-- end: WebComponents, Blazor, React -->
-
 ## Known Limitations
 
-> \[!Note]
+> [!Note]
 > Some browsers such as Firefox fail to parse regional specific decimal separators by considering them grouping separators, thus resulting in them being invalid. When inputting such values for a numeric column filter value, only the valid part of the number will be applied to the filtering expression. For further information, refer to the Firefox [issue](https://bugzilla.mozilla.org/show_bug.cgi?id=1199665).
 
 ## API References

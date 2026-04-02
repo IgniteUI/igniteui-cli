@@ -58,8 +58,6 @@ The Blazor Slider & Range Slider components allow selection in a given range by 
 
 ## Usage
 
-<!-- Blazor -->
-
 Before using the [`IgbSlider`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSlider.html) and [`IgbRangeSlider`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRangeSlider.html), you need to register them as follows:
 
 ```razor
@@ -70,6 +68,8 @@ builder.Services.AddIgniteUIBlazor(
   typeof(IgbRangeSliderModule)
 );
 ```
+
+The simplest way to start using the [`IgbSlider`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSlider.html) and [`IgbRangeSlider`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRangeSlider.html) is as follows:
 
 ```razor
 <IgbSlider Value="40" />

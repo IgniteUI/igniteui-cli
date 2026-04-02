@@ -9,7 +9,7 @@ _tocName: Button
 
 # Blazor Button Overview
 
-The Blazor Button Component lets you enable clickable elements that trigger actions in your Blazor app. You get full control over how you set button variants, configure styles for the wrapped element, and define sizes. The Button Component also gives flexibility through the Blazor Button <!-- WebComponents, Blazor -->OnClick event<!-- end: WebComponents, Blazor -->, toggle the Blazor button, disable the Blazor button, and more.
+The Blazor Button Component lets you enable clickable elements that trigger actions in your Blazor app. You get full control over how you set button variants, configure styles for the wrapped element, and define sizes. The Button Component also gives flexibility through the Blazor Button OnClick event, toggle the Blazor button, disable the Blazor button, and more.
 
 ## Blazor Button Example
 
@@ -41,8 +41,6 @@ The Blazor Button Component lets you enable clickable elements that trigger acti
 
 ## Usage
 
-<!-- Blazor -->
-
 Before using the [`IgbButton`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButton.html), you need to register it as follows:
 
 ```razor
@@ -56,6 +54,8 @@ You will also need to link an additional CSS file to apply the styling to the [`
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
 ```
+
+The simplest way to start using the [`IgbButton`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButton.html) is as follows:
 
 ```razor
 <IgbButton />

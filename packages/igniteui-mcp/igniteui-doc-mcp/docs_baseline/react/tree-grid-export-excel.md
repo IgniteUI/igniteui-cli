@@ -13,11 +13,7 @@ _premium: true
 
 # React Tree Grid Exporting
 
-<!-- Blazor, React, WebComponents -->
-
 The Ignite UI for React Tree Grid provides data export functionality through the Grid Toolbar Exporter component. You can export the displayed data to Excel, CSV, or PDF formats. Excel exports use the MS Excel table format, which supports features like filtering and sorting. To enable exporting, place the [`IgrGridToolbarExporter`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbarexporter.html) inside the grid's toolbar. By default, all export formats are enabled.
-
-<!-- end: Blazor, React, WebComponents  -->
 
 ## React Exporting Example
 
@@ -181,17 +177,13 @@ root.render(<Sample/>);
 
 You can export [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) with defined [multi-column headers](multi-column-headers.md). All headers are reflected in the exported Excel file as they are displayed in the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html). If you want to exclude the defined multi-column headers from the exported data, set the `ExporterOption` `IgnoreMultiColumnHeaders` to `true`.
 
-> \[!Note]
+> [!Note]
 > The exported [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) will not be formatted as a table, since Excel tables do not support multiple column headers.
 
-> \[!Note]
+> [!Note]
 > [`IgrGridToolbarExporter`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbarexporter.html) is also configured to demonstrate how you can control which export formats are available to end users. Use the toolbar exporter options to toggle Excel, CSV, or PDF buttons:
 >
-> <!-- Angular, React -->
->
 > - `exportExcel`, `exportCsv`, `exportPdf`
->
-> <!-- end: Angular, React -->
 
 ```typescript
 export class EmployeesFlatDetailsItem {
@@ -422,10 +414,8 @@ root.render(<Sample/>);
 
 By default, the Excel Exporter service exports the grid with scrollable (unfrozen) column headers. In many scenarios you may want to freeze all headers at the top of the exported Excel file so they always stay in view as the user scrolls through the records. To achieve this, set the `ExporterOption` `FreezeHeaders` to `true`.
 
-> \[!Note]
+> [!Note]
 > PDF exports automatically include the column header row at the top of the document, so readers retain the same context when they open or print the file.
-
-<!-- React -->
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -442,8 +432,6 @@ function exportEventFreezeHeaders(args: IgrExporterEventArgs) {
 ```
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
-
-<!-- end: React -->
 
 <!-- ComponentEnd: Grid, TreeGrid -->
 

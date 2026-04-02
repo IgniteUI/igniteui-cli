@@ -15,13 +15,13 @@ _premium: true
 
 The React Grid Column Moving feature in Ignite UI for React allows quick and easy column reordering. This can be done through the Column Moving API or by dragging and dropping the headers to another position via mouse or touch gestures. In the React Grid, you can enable Column Moving for pinned and unpinned columns and for [Multi-Column Headers](multi-column-headers.md) as well.
 
-> \[!Note]
+> [!Note]
 > Reordering between columns and column groups is allowed only when they are at the same level in the hierarchy and both are in the same group. Moving is allowed between columns/column-groups, if they are top level columns.
 
-> \[!Note]
+> [!Note]
 > If a column header is templated and the Column Moving is enabled or the corresponding column is groupable, then the templated elements need to have the **draggable** attribute set to **false**!
 
-> \[!Note]
+> [!Note]
 > If the pinned area exceeds its maximum allowed width (80% of the total [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) width), a visual clue notifies the end user that the drop operation is forbidden and pinning is not possible. This means you won't be allowed to drop a column in the pinned area.
 
 ```tsx
@@ -328,13 +328,9 @@ root.render(<Sample/>);
 
 **Column moving** feature is enabled on a per-grid level, meaning that the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) could have either movable or immovable columns. This is done via the [`moving`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#moving) input of the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html).
 
-<!-- React -->
-
 ```tsx
 <IgrGrid moving={true}></IgrGrid>
 ```
-
-<!-- end: React -->
 
 <!-- ComponentEnd: Grid -->
 
@@ -382,8 +378,6 @@ const onColumnMovingEnd = (event: IgrColumnMovingEndEventArgs) => {
     <IgrColumn field="Change On Year(%)" dataType="number"></IgrColumn>
 </IgrGrid>
 ```
-
-<!-- WebComponents, Blazor, React -->
 
 ## Styling
 
@@ -694,8 +688,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
-<!-- end: WebComponents, Blazor, React -->
 
 ## API References
 

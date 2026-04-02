@@ -27,13 +27,13 @@ Take a look at the simple Ignite UI for Web Components Toast example below. The 
 
 ### How To Use Ignite UI for Web Components Toast Notification
 
-<!-- WebComponents -->
-
 First, you need to install the Ignite UI for Web Components by running the following command:
 
 ```cmd
 npm install igniteui-webcomponents
 ```
+
+Before using the Web Components [`IgcToastComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctoastcomponent.html), you need to register it as follows:
 
 ```ts
 import { defineComponents, IgcToastComponent } from 'igniteui-webcomponents';

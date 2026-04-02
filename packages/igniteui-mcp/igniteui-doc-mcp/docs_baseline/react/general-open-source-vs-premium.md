@@ -23,8 +23,6 @@ Our Ignite UI Premium components come with advanced enterprise features and are 
 
 ### Grids and Advanced Components
 
-<!-- React, WebComponents -->
-
 - [Data Grid](../components/grids/data-grid.md), [Hierarchical Grid](../components/grids/hierarchical-grid/overview.md), [Tree Grid](../components/grids/tree-grid/overview.md), [Pivot Grid](../components/grids/pivot-grid/overview.md)
 - [Dock Manager](../components/layouts/dock-manager.md)
 - [Charting library](../components/charts/chart-overview.md)
@@ -34,8 +32,6 @@ Our Ignite UI Premium components come with advanced enterprise features and are 
 - Gauges - [Bullet Graph](../components/bullet-graph.md), [Linear Gauge](../components/linear-gauge.md) and [Radial Gauge](../components/radial-gauge.md)
 - [Toolbar](../components/menus/toolbar.md)
 
-<!-- end: React, WebComponents -->
-
 All the Premium components can be evaluated locally and even tested in production with watermarking. However, a commercial license is required for customer-facing deployments and for unlocking the full power of the advanced Grids, Charts, and other Premium controls.
 
 ## Upgrade Path
@@ -43,8 +39,6 @@ All the Premium components can be evaluated locally and even tested in productio
 Start with Grid Lite for essential needs and seamlessly upgrade to the full-featured Data Grid as your application grows in complexity. This ensures minimal refactoring and a smooth transition to enterprise-grade capabilities.
 
 ## Comparison Table for All Components
-
-<!-- React -->
 
 | Component                          | Open-Source | Premium |
 |-----------------------------------|-------------|---------|
@@ -144,5 +138,3 @@ Start with Grid Lite for essential needs and seamlessly upgrade to the full-feat
 | Tooltip                           | ✅          | ✅      |
 | Tree                              | ✅          | ✅      |
 | Zoom Slider                       | ❌          | ✅      |
-
-<!-- end: React -->

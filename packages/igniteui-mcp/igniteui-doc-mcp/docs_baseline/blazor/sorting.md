@@ -10,8 +10,6 @@ _tocName: Sorting
 
 # Sort operations
 
-<!-- Blazor -->
-
 The Grid Lite supports sorting operations on its data source. Data sorting is controlled on per-column level, allowing you to have sortable and non-sortable columns, while the grid itself controls certain sort behaviors. By default, sorting on a column is disabled unless explicitly configured with the `Sortable` property of the column.
 
 ```razor
@@ -19,8 +17,6 @@ The Grid Lite supports sorting operations on its data source. Data sorting is co
     <IgbGridLiteColumn Field="Price" Sortable="true" />
 </IgbGridLite>
 ```
-
-<!-- Blazor -->
 
 You can also control whether the sort operations for string columns should be case sensitive by using the `SortingCaseSensitive` parameter:
 
@@ -30,8 +26,6 @@ You can also control whether the sort operations for string columns should be ca
     Sortable="true"
     SortingCaseSensitive="true" />
 ```
-
-<!-- end: Blazor -->
 
 ```razor
 @page "/"
@@ -103,41 +97,31 @@ You can also control whether the sort operations for string columns should be ca
 
 ## Single and multi-sorting
 
-<!-- Blazor -->
-
 The Grid Lite supports both single and multi-column sorting. Multi-column is enabled by default and can be configured through the [`IgbSortingOptions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSortingOptions.html) property of the grid. The [`Mode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSortingOptions.html#IgniteUI_Blazor_Controls_IgbSortingOptions_Mode) property accepts `GridLiteSortingMode.Single` or `GridLiteSortingMode.Multiple` as values.
-
-<!-- end: Blazor -->
 
 ```razor
 // Enable single-column sorting
 grid.SortingOptions = new IgbGridLiteSortingOptions { Mode = GridLiteSortingMode.Single };
 ```
 
-> \[!NOTE]
+> [!NOTE]
 > The single/multi-column sorting behavior controls how end-users interact with the Grid Lite. Sorting through the API with multiple expression will still work when single sorting is enabled.
 
 ### Tri-state sorting
 
 The Grid Lite supports tri-state sorting and it is always enabled. End-users will cycle through the following direction states when clicking on sortable column headers:
 
-<!-- Blazor -->
-
-    Ascending -> Descending -> None -> Ascending
+```
+Ascending -> Descending -> None -> Ascending
+```
 
 where `None` is the initial state of the data, that is to say with no sorting applied by the grid.
-
-<!-- end: Blazor -->
 
 ### Sorting Indicators
 
 When multi-column sort is enabled, the column headers will display a sorting indicator, which is a number representing the order in which the sorting operations were applied.
 
-<!-- Blazor -->
-
 The following sample shows the grid [`IgbSortingOptions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSortingOptions.html) property and how it controls the grid sorting behavior.
-
-<!-- end: Blazor -->
 
 ```razor
 @page "/"
@@ -239,8 +223,6 @@ Sort = true
 
 ## Sort Model
 
-<!-- Blazor -->
-
 The building block for sort operations in the Grid Lite is the `GridLiteSortingExpression` which has the following properties:
 
 ```razor
@@ -273,13 +255,9 @@ an end-user interacts with the component. See below for additional information.
 
 ## Sort API
 
-<!-- Blazor -->
-
 The Grid Lite exposes two main approaches for applying sort operations from its API. Either through the `Sort()`/`ClearSort()` methods or through the `SortingExpressions` property.
 
 The `Sort()` method accepts either a single expression or an array of sort expression and then sorts the grid data based on those expressions.
-
-<!-- end: Blazor -->
 
 ```razor
 // Single
@@ -291,12 +269,8 @@ await grid.Sort(new IgbGridLiteSortingExpression[]
     new IgbGridLiteSortingExpression { Key = "Price", Direction = GridLiteSortingDirection.Descending },
     new IgbGridLiteSortingExpression { Key = "Name", Direction = GridLiteSortingDirection.Descending }```
 
-<!-- Blazor -->
-
 The `ClearSort()` method, as the name implies, clears the sort state of a single column or the whole grid component, depending
 on the passed arguments.
-
-<!-- end: Blazor -->
 
 ```razor
 // Clear the sort state for the `Price` column.
@@ -308,14 +282,8 @@ await grid.ClearSort();
 
 ### Initial Sorting State
 
-<!-- Blazor -->
-
 The `SortingExpressions` property is very similar in behavior to the `Sort()` method call. It exposes a declarative way to control
 sort state in the grid, but the most useful property is the ability to set initial sort state when the Grid Lite is first rendered.
-
-<!-- end: Blazor -->
-
-<!-- Blazor -->
 
 For example:
 
@@ -329,8 +297,6 @@ private IgbGridLiteSortingExpression[] sortState = new[]
 <IgbGridLite SortingExpressions="sortState" />
 ```
 
-<!-- end: Blazor -->
-
 It can be used to get the current sort state of the component and do additional processing depending on another state in your application.
 
 ```razor
@@ -340,8 +306,6 @@ SaveUserSortState(state);
 ```
 
 ## Events
-
-<!-- Blazor -->
 
 When a sorting operation is performed through the UI, the component raises `Sorting` and `Sorted` events. The `Sorting` event is cancellable and if cancelled will stop the current sort operation.
 
@@ -362,8 +326,6 @@ After the grid applies the new sorting state, a `Sorted` event is raised. It con
     }
 }
 ```
-
-<!-- end: Blazor -->
 
 In the following sample, when you try to sort the **Name** and **Rating** columns, the operation will be cancelled. Watch the event log below to see it in action.
 

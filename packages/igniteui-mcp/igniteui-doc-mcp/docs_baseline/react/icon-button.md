@@ -87,8 +87,6 @@ root.render(<IconButtonSize/>);
 
 ## Usage
 
-<!-- React -->
-
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
 
 ```cmd
@@ -101,6 +99,8 @@ You will then need to import the [`IgrIconButton`](https://www.infragistics.com/
 import { IgrIconButton } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
+
+The simplest way to start using the [`IgrIconButton`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igriconbutton.html) is as follows:
 
 ```tsx
 <IgrIconButton name="thumb-up" collection="material"></IgrIconButton>
@@ -248,8 +248,6 @@ root.render(<IconButtonSize/>);
 ```tsx
 <IgrIconButton className="size-medium" name="thumb-up"></IgrIconButton>
 ```
-
-<!-- React-->
 
 ```css
 .size-medium {

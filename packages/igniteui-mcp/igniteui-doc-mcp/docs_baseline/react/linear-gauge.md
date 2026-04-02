@@ -332,8 +332,6 @@ root.render(<LinearGaugeAnimation/>);
 
 <div class="divider--half"></div>
 
-<!-- Angular, React, WebComponents -->
-
 ## Dependencies
 
 When installing the React gauge component, the core package must also be installed.
@@ -342,8 +340,6 @@ When installing the React gauge component, the core package must also be install
 npm install --save igniteui-react-core
 npm install --save igniteui-react-gauges
 ```
-
-<!-- end: Angular, React, WebComponents -->
 
 ## Component Modules
 

@@ -182,8 +182,6 @@ To enable the advanced filtering, the [`allowAdvancedFiltering`](https://www.inf
 
 <!-- ComponentEnd: TreeGrid -->
 
-<!-- React -->
-
 <!-- ComponentStart: TreeGrid -->
 
 ```tsx
@@ -194,11 +192,7 @@ To enable the advanced filtering, the [`allowAdvancedFiltering`](https://www.inf
 
 <!-- ComponentEnd: TreeGrid -->
 
-<!-- end: React -->
-
 The advanced filtering generates a [`filteringExpressionsTree`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#filteringExpressionsTree) which is stored in the [`advancedFilteringExpressionsTree`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#advancedFilteringExpressionsTree) input property. You could use the [`advancedFilteringExpressionsTree`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#advancedFilteringExpressionsTree) property to set an initial state of the advanced filtering.
-
-<!-- React -->
 
 <!-- ComponentStart: Grid, HierarchicalGrid, TreeGrid -->
 
@@ -234,21 +228,15 @@ const filteringTree: IgrFilteringExpressionsTree = {
 
 <!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid -->
 
-<!-- end: React -->
-
 In case you don't want to show the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) toolbar, you could use the [`openAdvancedFilteringDialog`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#openAdvancedFilteringDialog) and [`closeAdvancedFilteringDialog`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#closeAdvancedFilteringDialog) methods to open and close the advanced filtering dialog programmatically.
 
-> \[!Note]
+> [!Note]
 > You can enable both the **QuickFilter**/**ExcelStyleFilter** and the advanced filtering user interfaces in the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html). Both filtering user interfaces will work independently of one another. The final filtered result in the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) is the intersection between the results of the two filters.
-
-<!-- WebComponents, Blazor, React -->
 
 ## Styling
 
 In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
-
-<!-- React -->
 
 ```tsx
 <IgrTreeGrid className="grid"></IgrTreeGrid>
@@ -424,8 +412,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
-<!-- end: WebComponents, Blazor, React -->
 
 ## API References
 

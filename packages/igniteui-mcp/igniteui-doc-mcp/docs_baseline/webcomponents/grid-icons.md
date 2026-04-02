@@ -18,8 +18,6 @@ The Ignite UI for Web Components [`IgcGridComponent`](https://www.infragistics.c
 
 Registering an icon caches it locally, so that it can reused between components, that reference that icon by name and collection name. Setting a reference changes which icon, from which collection, will be used when referencing that icon by name.
 
-<!-- WebComponents -->
-
 ```ts
 // Add a new 'material' icon called 'filter_list' from string
 registerIconFromText("filter_list", '<svg>...</svg>', "material");
@@ -34,8 +32,6 @@ setIconRef('filter_list', 'default', {
 });
 
 ```
-
-<!-- end: WebComponents -->
 
 ## Web Components Customize Icons Example
 

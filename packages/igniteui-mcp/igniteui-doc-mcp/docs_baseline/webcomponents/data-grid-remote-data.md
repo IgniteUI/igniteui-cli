@@ -9,12 +9,8 @@ _tocName: Binding Virtual Data
 _premium: true
 ---
 
-<!-- Blazor, WebComponents -->
-
-> \[!Note]
+> [!Note]
 > Please note that this control has been deprecated and replaced with the [Grid](../data-grid.md) component, and as such, we recommend migrating to that control. This will not be receiving any new features, bug fixes will be deprioritized. For help or questions on migrating your codebase to the Data Grid, please contact support.
-
-<!-- end: Blazor, WebComponents -->
 
 # Web Components Grid Binding Virtual Data
 
@@ -29,15 +25,12 @@ The Ignite UI for Web Components Data Table / Data Grid supports data binding to
 
 
 <div class="divider--half"></div>
-<!-- Angular, React, WebComponents -->
-In addition to the core and Web Components data grid packages you will also have to install the datasources package.
+
 
 - **npm install --save igniteui-webcomponents-core**
 - **npm install --save igniteui-webcomponents-grids**
 - **npm install --save igniteui-webcomponents-inputs**
 - **npm install --save igniteui-webcomponents-datasources**
-
-<!-- end: Angular, React, WebComponents -->
 
 ## Component Modules
 

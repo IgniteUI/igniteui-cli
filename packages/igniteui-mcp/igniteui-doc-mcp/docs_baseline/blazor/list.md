@@ -78,8 +78,6 @@ Before using the [`IgbList`](https://www.infragistics.com/blazor/docs/api/api/Ig
 builder.Services.AddIgniteUIBlazor(typeof(IgbListModule));
 ```
 
-<!-- Blazor -->
-
 You will also need to link an additional CSS file to apply the styling to the [`IgbList`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbList.html) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor

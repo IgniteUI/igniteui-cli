@@ -20,19 +20,13 @@ The Ignite UI for Web Components Rating component allows users to view and provi
 ```
 
 
-<!-- WebComponents -->
-
 First, you need to install the Ignite UI for Web Components by running the following command:
 
 ```cmd
 npm install igniteui-webcomponents
 ```
 
-<!-- end: WebComponents -->
-
 Before using the [`IgcRatingComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcratingcomponent.html), you need to register it as follows:
-
-<!-- WebComponents -->
 
 ```ts
 import { defineComponents, IgcRatingComponent } from "igniteui-webcomponents";
@@ -43,25 +37,17 @@ defineComponents(IgcRatingComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-<!-- end: WebComponents -->
-
 The simplest way to start using the [`IgcRatingComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcratingcomponent.html) is as follows:
-
-<!-- WebComponents -->
 
 ```html
 <igc-rating></igc-rating>
 ```
-
-<!-- end: WebComponents -->
 
 This will create a five-star rating component that can be used to input and read data from.
 
 ## Using Custom Symbols
 
 The [`IgcRatingComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcratingcomponent.html) component allows you to use custom symbols in place of the default star symbols. If you want to use a different symbol, like SVG, icon or another unicode symbol, you should place [`IgcRatingSymbolComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcratingsymbolcomponent.html) components between the opening and closing brackets of the [`IgcRatingComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcratingcomponent.html):
-
-<!-- WebComponents -->
 
 ```html
 <igc-rating>
@@ -71,8 +57,6 @@ The [`IgcRatingComponent`](https://www.infragistics.com/products/ignite-ui-web-c
   <igc-rating-symbol> <div>💙</div> <div slot="empty">💙</div> </igc-rating-symbol>
 </igc-rating>
 ```
-
-<!-- end: WebComponents -->
 
 ```css
 /* shared styles are loaded from: */
@@ -86,8 +70,6 @@ The [`IgcRatingComponent`](https://www.infragistics.com/products/ignite-ui-web-c
 
 The Ignite UI for Web Components Rating component has a single selection mode that allows users to provide different icons/elements for the different rating values. In this case, only one of the icons/elements can be selected and reflect the feedback given by the user.
 
-<!-- WebComponents -->
-
 ```html
 <igc-rating single>
   <igc-rating-symbol> <div>😣</div> <div slot="empty">😣</div> </igc-rating-symbol>
@@ -97,8 +79,6 @@ The Ignite UI for Web Components Rating component has a single selection mode th
   <igc-rating-symbol> <div>😣</div> <div slot="empty">😣</div> </igc-rating-symbol>
 </igc-rating>
 ```
-
-<!-- end: WebComponents -->
 
 ```css
 /* shared styles are loaded from: */
@@ -115,16 +95,12 @@ igc-rating::part(symbols) {
 
 The Ignite UI for Web Components Rating component allows users to use different icons/elements for the empty and the selected state of a single rating value. It is mandatory to provide 2 icons for each slot (empty and full) when declaring a symbol, even if they are the same. For instance:
 
-<!-- WebComponents -->
-
 ```html
 <igc-rating-symbol>
   <igc-icon collection="default" name="bandage"></igc-icon>
   <igc-icon collection="default" name="bacteria" slot="empty"></igc-icon>
 </igc-rating-symbol>
 ```
-
-<!-- end: WebComponents -->
 
 ```css
 /* shared styles are loaded from: */
@@ -160,11 +136,7 @@ The [`step`](https://www.infragistics.com/products/ignite-ui-web-components/docs
 
 ### Hover Preview
 
-<!-- WebComponents -->
-
 The `hover-preview` attribute makes the component show the possible outcome of user selection on hover. It is useful when you want to give instant feedback about what the selected value could be.
-
-<!-- end: WebComponents -->
 
 ### Read-Only
 
@@ -186,27 +158,15 @@ The [`stepDown`](https://www.infragistics.com/products/ignite-ui-web-components/
 
 ## Events
 
-<!-- WebComponents -->
-
 The [`IgcRatingComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcratingcomponent.html) component emits two separate events - `igcHover` and `igcChange`.
-
-<!-- end: WebComponents -->
 
 ### Hover Event
 
-<!-- WebComponents -->
-
 The `igcHover` event is fired when hovering over a symbol. It provides the value of the symbol under the mouse cursor. Useful for creating custom value labels and readouts.
-
-<!-- end: WebComponents -->
 
 ### Change Event
 
-<!-- WebComponents -->
-
 The `igcChange` event is fired when the selected value changes.
-
-<!-- end: WebComponents -->
 
 ## Styling
 

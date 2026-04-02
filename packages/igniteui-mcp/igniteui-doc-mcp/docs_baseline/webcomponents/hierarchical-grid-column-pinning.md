@@ -43,8 +43,6 @@ You may also use the [`IgcHierarchicalGridComponent`](https://www.infragistics.c
 
 <!-- ComponentStart: HierarchicalGrid -->
 
-<!-- Angular, WebComponents -->
-
 ```typescript
 this.hierarchicalGrid.pinColumn('Artist');
 this.hierarchicalGrid.unpinColumn('Debut');
@@ -59,8 +57,6 @@ Both methods return a boolean value indicating whether their respective operatio
 A column is pinned to the right of the rightmost pinned column. Changing the order of the pinned columns can be done by subscribing to the `ColumnPin` event and changing the `InsertAtIndex` property of the event arguments to the desired position index.
 
 <!-- end: Angular, React, WebComponents, React -->
-
-<!-- WebComponents -->
 
 ```html
 <igc-hierarchical-grid id="dataGrid" auto-generate="true"></igc-hierarchical-grid>
@@ -87,8 +83,6 @@ public columnPinning(event) {
 You can change the column pinning position via the [`pinning`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#pinning) configuration option. It allows you to set the columns position to either Start or End.
 When set to End the columns are rendered at the end of the grid, after the unpinned columns. Unpinned columns can be scrolled horizontally, while the pinned columns remain fixed on the right.
 
-<!-- WebComponents -->
-
 ```html
 <igc-hierarchical-grid id="dataGrid" auto-generate="true"></igc-hierarchical-grid>
 ```
@@ -106,8 +100,6 @@ grid.pinning = { columns: ColumnPinningPosition.End };
 ```
 
 
-<!-- React, WebComponents, Blazor -->
-
 ### Column Pinning on Both Sides
 
 Additionally, you can specify each column pinning location separately, allowing you to pin columns to both sides of the grid for greater convenience and easier optimization of data sets. Please refer to the demo below for further reference. In order to pin a column, please either select a column by clicking on a header and use the pin buttons added to the toolbar, or simply drag a column to another pinned one.
@@ -117,8 +109,6 @@ Additionally, you can specify each column pinning location separately, allowing 
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
-<!-- end: React, WebComponents, Blazor -->
 
 ## Custom Column Pinning UI
 
