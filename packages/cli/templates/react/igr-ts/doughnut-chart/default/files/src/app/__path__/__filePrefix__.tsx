@@ -23,12 +23,18 @@ const data: any = [
 
 export default function $(ClassName)() {
   const title = 'Doughnut Chart';
-  const [chartData, setChartData] = useState([]);
+  const [chartData] = useState(data);
   const legendRef: any = useRef(null);
   const chartRef: any = useRef(null);
 
   useEffect(() => {
-    setChartData(data);
+    if (chartRef.current && legendRef.current) {
+      const chart = chartRef.current;
+      const series = chart.series?.[0];
+      if (series) {
+        series.legend = legendRef.current;
+      }
+    }
   }, []);
 
   return (
@@ -53,7 +59,6 @@ export default function $(ClassName)() {
               dataSource={chartData}
               labelMemberPath="Company"
               valueMemberPath="MarketShare"
-              legend={legendRef.current}
               />
           </IgrDoughnutChart>
         </div>
