@@ -8,7 +8,6 @@ import {
   IgxDropDownComponent,
   IgxDropDownItemComponent,
 } from '<%=igxPackage%>';
-import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-<%=filePrefix%>',
@@ -20,7 +19,6 @@ import { NgFor } from '@angular/common';
     IgxToggleActionDirective,
     IgxDropDownItemNavigationDirective,
     IgxDropDownComponent,
-    NgFor,
     IgxDropDownItemComponent,
   ]
 })

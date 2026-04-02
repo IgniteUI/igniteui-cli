@@ -9,7 +9,7 @@ import {
   IgxRippleModule,
 } from '<%=igxPackage%>';
 
-import { AuthenticationModule, ExternalAuth } from './authentication';
+import { provideAuthentication } from './authentication';
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
@@ -24,9 +24,12 @@ export const appConfig: ApplicationConfig = {
       IgxNavbarModule,
       IgxNavigationDrawerModule,
       IgxRippleModule,
-      AuthenticationModule
     ),
     provideAnimations(),
-    ExternalAuth
+    provideAuthentication({
+      // google: { clientId: 'YOUR_GOOGLE_CLIENT_ID' },
+      // microsoft: { clientId: 'YOUR_MICROSOFT_CLIENT_ID', tenantId: 'YOUR_TENANT_ID' },
+      // facebook: { clientId: 'YOUR_FACEBOOK_CLIENT_ID' },
+    })
   ]
 };

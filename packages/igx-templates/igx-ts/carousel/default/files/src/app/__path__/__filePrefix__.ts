@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { NgFor } from '@angular/common';
 import { IgxCarouselComponent, IgxSlideComponent } from '<%=igxPackage%>';
 
 @Component({
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.html',
   styleUrl: './<%=filePrefix%>.scss',
-  imports: [IgxCarouselComponent, NgFor, IgxSlideComponent]
+  imports: [IgxCarouselComponent, IgxSlideComponent]
 })
 export class <%=ClassName%> implements OnInit {
   public slides: Slide[] = [];

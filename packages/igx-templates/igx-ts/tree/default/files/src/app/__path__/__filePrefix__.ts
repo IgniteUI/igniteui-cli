@@ -1,5 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
-import { NgFor, NgTemplateOutlet, NgIf } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import {
   IgxTreeNodeComponent,
   IgxTreeComponent,
@@ -19,11 +19,9 @@ import { Data } from './services/data';
   providers: [Data],
   imports: [
     IgxTreeComponent,
-    NgFor,
     IgxTreeNodeComponent,
     NgTemplateOutlet,
     IgxIconComponent,
-    NgIf,
     IgxTooltipTargetDirective,
     IgxTooltipDirective
   ]

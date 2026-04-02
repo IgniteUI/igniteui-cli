@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { NgIf } from '@angular/common';
 import { Router } from '@angular/router';
 import { IgxInputGroupComponent, IgxPrefixDirective, IgxIconComponent, IgxLabelDirective,
   IgxInputDirective, IgxButtonDirective, IgxRippleDirective } from 'igniteui-angular';
@@ -15,7 +14,7 @@ import { UserStore } from '../services/user-store';
   templateUrl: './login.html',
   styleUrl: './login.scss',
   imports: [ReactiveFormsModule, IgxInputGroupComponent, IgxPrefixDirective, IgxIconComponent, IgxLabelDirective,
-    IgxInputDirective, IgxButtonDirective, IgxRippleDirective, NgIf]
+    IgxInputDirective, IgxButtonDirective, IgxRippleDirective]
 })
 export class Login {
   public loginForm: FormGroup;
@@ -51,7 +50,7 @@ export class Login {
     const response = await this.authentication.login(this.loginForm.value);
     if (!response.error) {
       this.userStore.setCurrentUser(response.user!);
-      this.router.navigate(['/profile']);
+      this.router.navigate(['/auth/profile']);
       this.loginForm.reset();
       // https://github.com/angular/angular/issues/15741
       Object.keys(this.loginForm.controls).forEach(key => {

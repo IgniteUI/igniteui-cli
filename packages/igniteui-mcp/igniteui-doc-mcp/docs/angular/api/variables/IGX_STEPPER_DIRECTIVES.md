@@ -1,0 +1,5 @@
+# Variable: IGX\_STEPPER\_DIRECTIVES
+
+> `const` **IGX\_STEPPER\_DIRECTIVES**: readonly \[*typeof* [`IgxStepComponent`](../classes/IgxStepComponent.md), *typeof* [`IgxStepperComponent`](../classes/IgxStepperComponent.md), *typeof* [`IgxStepTitleDirective`](../classes/IgxStepTitleDirective.md), *typeof* [`IgxStepSubtitleDirective`](../classes/IgxStepSubtitleDirective.md), *typeof* [`IgxStepIndicatorDirective`](../classes/IgxStepIndicatorDirective.md), *typeof* [`IgxStepContentDirective`](../classes/IgxStepContentDirective.md), *typeof* [`IgxStepActiveIndicatorDirective`](../classes/IgxStepActiveIndicatorDirective.md), *typeof* [`IgxStepCompletedIndicatorDirective`](../classes/IgxStepCompletedIndicatorDirective.md), *typeof* [`IgxStepInvalidIndicatorDirective`](../classes/IgxStepInvalidIndicatorDirective.md)\]
+
+Defined in: [angular/igniteui-angular/projects/igniteui-angular/stepper/src/stepper/public\_api.ts:19](https://github.com/IgniteUI/igniteui-angular/blob/28ea802da6e8bd841b82e336a16781159d69e779/projects/igniteui-angular/stepper/src/stepper/public_api.ts#L19)
