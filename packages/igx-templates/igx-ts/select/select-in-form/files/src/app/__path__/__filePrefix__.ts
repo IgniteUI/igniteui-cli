@@ -10,7 +10,6 @@ import {
   IgxSelectItemComponent,
   IgxButtonDirective,
 } from '<%=igxPackage%>';
-import { NgFor } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @Component({
@@ -24,7 +23,6 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     IgxLabelDirective,
     IgxPrefixDirective,
     IgxSelectItemComponent,
-    NgFor,
     IgxButtonDirective,
     IgxToastComponent
   ]

@@ -1,6 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
 import { IgxDialogComponent } from 'igniteui-angular';
-import { NgIf } from '@angular/common';
 
 import { Register } from '../register/register';
 import { Login } from '../login/login';
@@ -9,7 +8,7 @@ import { Login } from '../login/login';
   selector: 'app-login-dialog',
   templateUrl: './login-dialog.html',
   styleUrl: './login-dialog.scss',
-  imports: [IgxDialogComponent, NgIf, Login, Register]
+  imports: [IgxDialogComponent, Login, Register]
 })
 export class LoginDialog {
   public showLogin = true;
