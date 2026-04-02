@@ -1,5 +1,12 @@
 {
-	"Gauges": "scale measure Controls including Linear and Radial Gauge and Bullet Graph.",
+	"Data Entry & Display": "user input and display controls including buttons, inputs, checkboxes and more.",
+	"Interactions": "interactive UI components including sliders and visual effects.",
+	"Menus": "navigation controls including navbar.",
+	"Grids & Lists": "components for displaying collections of data in list and tree views.",
+	"Scheduling": "date and time selection controls including calendar and date picker.",
+	"Layouts": "layout and structure controls including accordion, cards, tabs and panels.",
 	"Charts": "high-performance data visualization for category and financial data.",
-	"Grids": "bind and display data sets with little coding or configuration."
+	"Gauges": "scale measure Controls including Linear and Radial Gauge and Bullet Graph.",
+	"Grids": "bind and display data sets with little coding or configuration.",
+	"Notifications": "informational components including banners and alerts."
 }

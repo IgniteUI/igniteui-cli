@@ -309,4 +309,85 @@ export const appConfig: ApplicationConfig = {
 		await runner.runSchematic("cli-config", {}, tree);
 		expect(warns).toContain(jasmine.stringMatching(pattern));
 	});
+
+	describe("addAIConfig", () => {
+		const mcpFilePath = "/.vscode/mcp.json";
+
+		it("should create .vscode/mcp.json with both servers when file does not exist", async () => {
+			await runner.runSchematic("cli-config", {}, tree);
+
+			expect(tree.exists(mcpFilePath)).toBeTruthy();
+			const content = JSON.parse(tree.readContent(mcpFilePath));
+			expect(content.servers["igniteui-cli"]).toEqual({ command: "npx", args: ["-y", "igniteui-cli@next", "mcp"] });
+			expect(content.servers["igniteui-theming"]).toEqual({ command: "npx", args: ["-y", "igniteui-theming", "igniteui-theming-mcp"] });
+		});
+
+		it("should add both servers to existing .vscode/mcp.json that has no servers", async () => {
+			tree.create(mcpFilePath, JSON.stringify({ servers: {} }));
+
+			await runner.runSchematic("cli-config", {}, tree);
+
+			const content = JSON.parse(tree.readContent(mcpFilePath));
+			expect(content.servers["igniteui-cli"]).toEqual({ command: "npx", args: ["-y", "igniteui-cli@next", "mcp"] });
+			expect(content.servers["igniteui-theming"]).toEqual({ command: "npx", args: ["-y", "igniteui-theming", "igniteui-theming-mcp"] });
+		});
+
+		it("should add missing igniteui-theming server if only igniteui is already present", async () => {
+			tree.create(mcpFilePath, JSON.stringify({
+				servers: {
+					"igniteui-cli": { command: "npx", args: ["-y", "igniteui-cli@next", "mcp"] }
+				}
+			}));
+
+			await runner.runSchematic("cli-config", {}, tree);
+
+			const content = JSON.parse(tree.readContent(mcpFilePath));
+			expect(content.servers["igniteui-cli"]).toEqual({ command: "npx", args: ["-y", "igniteui-cli@next", "mcp"] });
+			expect(content.servers["igniteui-theming"]).toEqual({ command: "npx", args: ["-y", "igniteui-theming", "igniteui-theming-mcp"] });
+		});
+
+		it("should add missing igniteui server if only igniteui-theming is already present", async () => {
+			tree.create(mcpFilePath, JSON.stringify({
+				servers: {
+					"igniteui-theming": { command: "npx", args: ["-y", "igniteui-theming", "igniteui-theming-mcp"] }
+				}
+			}));
+
+			await runner.runSchematic("cli-config", {}, tree);
+
+			const content = JSON.parse(tree.readContent(mcpFilePath));
+			expect(content.servers["igniteui-cli"]).toEqual({ command: "npx", args: ["-y", "igniteui-cli@next", "mcp"] });
+			expect(content.servers["igniteui-theming"]).toEqual({ command: "npx", args: ["-y", "igniteui-theming", "igniteui-theming-mcp"] });
+		});
+
+		it("should not modify .vscode/mcp.json if both servers are already present", async () => {
+			const existing = {
+				servers: {
+					"igniteui-cli": { command: "npx", args: ["-y", "igniteui-cli@next", "mcp"] },
+					"igniteui-theming": { command: "npx", args: ["-y", "igniteui-theming", "igniteui-theming-mcp"] }
+				}
+			};
+			tree.create(mcpFilePath, JSON.stringify(existing));
+
+			await runner.runSchematic("cli-config", {}, tree);
+
+			const content = JSON.parse(tree.readContent(mcpFilePath));
+			expect(content).toEqual(existing);
+		});
+
+		it("should preserve existing servers when adding igniteui servers", async () => {
+			tree.create(mcpFilePath, JSON.stringify({
+				servers: {
+					"other-server": { command: "node", args: ["server.js"] }
+				}
+			}));
+
+			await runner.runSchematic("cli-config", {}, tree);
+
+			const content = JSON.parse(tree.readContent(mcpFilePath));
+			expect(content.servers["other-server"]).toEqual({ command: "node", args: ["server.js"] });
+			expect(content.servers["igniteui-cli"]).toBeDefined();
+			expect(content.servers["igniteui-theming"]).toBeDefined();
+		});
+	});
 });

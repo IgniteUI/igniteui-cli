@@ -1,6 +1,7 @@
 {
 	"packages": [
-		"packages/*"
+		"packages/*",
+		"packages/igniteui-mcp/igniteui-doc-mcp"
 	],
 	"npmClient": "yarn",
 	"version": "independent",

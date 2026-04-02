@@ -1,6 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgIf } from '@angular/common';
 import { IgxDropDownComponent, ISelectionEventArgs, IgxRippleDirective, IgxButtonDirective, IgxToggleActionDirective,
   IgxAvatarComponent, IgxIconComponent, IgxDropDownItemComponent } from 'igniteui-angular';
 import { LoginDialog } from '../login-dialog/login-dialog';
@@ -11,7 +10,7 @@ import { UserStore } from '../services/user-store';
   selector: 'app-login-bar',
   templateUrl: './login-bar.html',
   styleUrl: './login-bar.scss',
-  imports: [NgIf, IgxRippleDirective, IgxButtonDirective, IgxToggleActionDirective, IgxAvatarComponent, IgxIconComponent,
+  imports: [IgxRippleDirective, IgxButtonDirective, IgxToggleActionDirective, IgxAvatarComponent, IgxIconComponent,
     IgxDropDownComponent, IgxDropDownItemComponent, LoginDialog]
 })
 export class LoginBar {
@@ -42,7 +41,7 @@ export class LoginBar {
     // TODO: Use item value, swap to menu component in the future
     switch (args.newSelection.index) {
       case 0:
-        this.router.navigate(['/profile']);
+        this.router.navigate(['/auth/profile']);
         break;
       case 1:
         this.handleLogout();

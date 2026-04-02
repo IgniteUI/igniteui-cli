@@ -1,0 +1,5 @@
+# Variable: IGX\_CARD\_DIRECTIVES
+
+> `const` **IGX\_CARD\_DIRECTIVES**: readonly \[*typeof* [`IgxCardComponent`](../classes/IgxCardComponent.md), *typeof* [`IgxCardHeaderComponent`](../classes/IgxCardHeaderComponent.md), *typeof* [`IgxCardMediaDirective`](../classes/IgxCardMediaDirective.md), *typeof* [`IgxCardContentDirective`](../classes/IgxCardContentDirective.md), *typeof* [`IgxCardActionsComponent`](../classes/IgxCardActionsComponent.md), *typeof* [`IgxCardFooterDirective`](../classes/IgxCardFooterDirective.md), *typeof* [`IgxCardHeaderTitleDirective`](../classes/IgxCardHeaderTitleDirective.md), *typeof* [`IgxCardHeaderSubtitleDirective`](../classes/IgxCardHeaderSubtitleDirective.md), *typeof* [`IgxCardThumbnailDirective`](../classes/IgxCardThumbnailDirective.md)\]
+
+Defined in: [angular/igniteui-angular/projects/igniteui-angular/card/src/card/public\_api.ts:16](https://github.com/IgniteUI/igniteui-angular/blob/28ea802da6e8bd841b82e336a16781159d69e779/projects/igniteui-angular/card/src/card/public_api.ts#L16)

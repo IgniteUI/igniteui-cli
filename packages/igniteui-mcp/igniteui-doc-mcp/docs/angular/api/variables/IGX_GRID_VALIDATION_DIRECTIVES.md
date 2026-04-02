@@ -1,0 +1,5 @@
+# Variable: IGX\_GRID\_VALIDATION\_DIRECTIVES
+
+> `const` **IGX\_GRID\_VALIDATION\_DIRECTIVES**: readonly \[*typeof* [`IgxColumnRequiredValidatorDirective`](../classes/IgxColumnRequiredValidatorDirective.md), *typeof* [`IgxColumnMinValidatorDirective`](../classes/IgxColumnMinValidatorDirective.md), *typeof* [`IgxColumnMaxValidatorDirective`](../classes/IgxColumnMaxValidatorDirective.md), *typeof* [`IgxColumnEmailValidatorDirective`](../classes/IgxColumnEmailValidatorDirective.md), *typeof* [`IgxColumnMinLengthValidatorDirective`](../classes/IgxColumnMinLengthValidatorDirective.md), *typeof* [`IgxColumnMaxLengthValidatorDirective`](../classes/IgxColumnMaxLengthValidatorDirective.md), *typeof* [`IgxColumnPatternValidatorDirective`](../classes/IgxColumnPatternValidatorDirective.md)\]
+
+Defined in: [angular/igniteui-angular/projects/igniteui-angular/grids/core/src/columns/public\_api.ts:31](https://github.com/IgniteUI/igniteui-angular/blob/28ea802da6e8bd841b82e336a16781159d69e779/projects/igniteui-angular/grids/core/src/columns/public_api.ts#L31)

@@ -10,7 +10,6 @@ import {
   IgxExpansionPanelBodyComponent,
 } from '<%=igxPackage%>';
 import { data as weatherData } from './weather-data';
-import { NgIf, NgFor, NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-<%=filePrefix%>',
@@ -20,14 +19,11 @@ import { NgIf, NgFor, NgClass } from '@angular/common';
     IgxCardComponent,
     IgxCardHeaderComponent,
     IgxCardContentDirective,
-    NgIf,
     IgxIconComponent,
     IgxButtonDirective,
     IgxRippleDirective,
     IgxExpansionPanelComponent,
-    IgxExpansionPanelBodyComponent,
-    NgFor,
-    NgClass
+    IgxExpansionPanelBodyComponent
   ]
 })
 export class <%=ClassName%> {

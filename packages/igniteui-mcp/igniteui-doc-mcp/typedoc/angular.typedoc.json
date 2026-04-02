@@ -1,0 +1,15 @@
+{
+  "$schema": "https://typedoc-plugin-markdown.org/schema.json",
+  "plugin": ["typedoc-plugin-markdown"],
+  "entryPoints": ["../angular/igniteui-angular/projects/igniteui-angular/src/public_api.ts"],
+  "entryPointStrategy": "resolve",
+  "tsconfig": "../angular/igniteui-angular/projects/igniteui-angular/tsconfig.lib.json",
+  "out": "../docs/angular/api",
+  "name": "IgniteUI for Angular API",
+  "readme": "none",
+  "excludePrivate": true,
+  "excludeInternal": true,
+  "skipErrorChecking": true,
+  "hidePageHeader": true,
+  "hideBreadcrumbs": true
+}

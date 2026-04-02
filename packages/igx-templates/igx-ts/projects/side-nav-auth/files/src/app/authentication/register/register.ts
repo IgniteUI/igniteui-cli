@@ -39,7 +39,7 @@ export class Register {
     const response = await this.authentication.register(this.registrationForm.value as RegisterInfo);
     if (!response.error) {
       this.userStore.setCurrentUser(response.user!);
-      this.router.navigate(['/profile']);
+      this.router.navigate(['/auth/profile']);
       this.registered.emit();
     } else {
       alert(response.error);
