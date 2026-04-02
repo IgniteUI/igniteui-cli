@@ -133,8 +133,8 @@ export function addAIConfig(): Rule {
 			const content = JSON.parse(tree.read(mcpFilePath)!.toString());
 			const servers = content.servers ?? {};
 			let modified = false;
-			if (!servers["igniteui"]) {
-				servers["igniteui"] = igniteuiServer;
+			if (!servers["igniteui-cli"]) {
+				servers["igniteui-cli"] = igniteuiServer;
 				modified = true;
 			}
 			if (!servers["igniteui-theming"]) {
@@ -148,7 +148,7 @@ export function addAIConfig(): Rule {
 		} else {
 			const mcpConfig = {
 				servers: {
-					"igniteui": igniteuiServer,
+					"igniteui-cli": igniteuiServer,
 					"igniteui-theming": igniteuiThemingServer
 				}
 			};
