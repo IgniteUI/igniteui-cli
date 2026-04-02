@@ -38,6 +38,11 @@
       "description": "Upgrades to the licensed Ignite UI for Angular packages",
       "factory": "./upgrade-packages/index",
       "schema": "./upgrade-packages/schema.json"
+    },
+    "add-skills": {
+      "description": "Copies AI coding skills to the current project",
+      "factory": "./add-skills/index",
+      "schema": "./add-skills/schema.json"
     }
   }
 }
