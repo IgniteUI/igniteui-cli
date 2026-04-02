@@ -9,7 +9,8 @@ export class IgniteUIForAngularTemplate implements Template {
 	public components: string[];
 	public controlGroup: string;
 	public listInComponentTemplates: boolean = true;
-	public addAsNgModelDeclaration: boolean = true;
+	public addAsNgModuleDeclaration: boolean = false;
+	public addAsNgModuleImport: boolean = true;
 	public listInCustomTemplates: boolean = false;
 	public id: string;
 	public name: string;
@@ -126,7 +127,8 @@ export class IgniteUIForAngularTemplate implements Template {
 		//4) populate the declarations portion of the @NgModule with the component class name.
 		const mainModule = new TsUpdate(mainModulePath, false, { indentSize: 2, singleQuotes: true });
 		mainModule.addNgModuleMeta({
-				declare: this.addAsNgModelDeclaration ? [className] : [],
+				declare: this.addAsNgModuleDeclaration ? [className] : [],
+				import: this.addAsNgModuleImport ? [className] : [],
 				from: Util.relativePath(mainModulePath, componentFilePath, true, true),
 				export: modulePath !== "app-module.ts" ? [className] : []
 			},

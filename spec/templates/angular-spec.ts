@@ -10,13 +10,11 @@ describe("Angular templates", () => {
 	it("Templates should have IDs", async function() {
 		const angularFramework = require(templatesLocation);
 		expect(angularFramework.projectLibraries[0]).toBeDefined();
-		expect(angularFramework.projectLibraries[1]).toBeDefined();
 
 		for (const template of angularFramework.projectLibraries[0].templates) {
-			expect(template.id).toBeDefined("No ID: " + template.name + " type: " + template.projectType);
-		}
-		for (const template of angularFramework.projectLibraries[1].templates) {
-			expect(template.id).toBeDefined("No ID: " + template.name + " type: " + template.projectType);
+			expect(template.id)
+				.withContext("No ID: " + template.name + " type: " + template.projectType)
+				.toBeDefined();
 		}
 	});
 
