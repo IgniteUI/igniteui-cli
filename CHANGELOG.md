@@ -1,22 +1,90 @@
-# 14.10.0-alpha.4
+# 15.0.0-RC0
 
-## igniteui/cli-core@14.10.0-alpha.4 (2026-03-27)
+## Highlights
 
+This is a major release that introduces the **Ignite UI MCP Server** (`@igniteui/mcp-server`) as a new workspace package, **modernizes all Angular templates** to use the latest Angular patterns, **adds AI agent configurations** to scaffolded projects, and **removes legacy wrapper-based project types**.
 
+---
 
-# 14.10.0-alpha.3 (2026-03-25)
+### New: Ignite UI MCP Server (`@igniteui/mcp-server`)
 
+A new Model Context Protocol (MCP) server that provides AI assistants with Ignite UI documentation search, API reference lookup, and CLI scaffolding capabilities across four frameworks: Angular, React, Blazor, and Web Components.
 
+* **Two runtime modes:** Remote (proxies to a docs backend) and Local (bundled SQLite DB via sql.js WASM with FTS4 full-text search) ([#1533](https://github.com/IgniteUI/igniteui-cli/pull/1533))
+* **6 MCP tools** including `search_docs`, `get_doc`, `get_api_reference`, `search_api`, `get_project_setup_guide`, and `list_components` ([#1560](https://github.com/IgniteUI/igniteui-cli/pull/1560), [#1541](https://github.com/IgniteUI/igniteui-cli/pull/1541), [#1545](https://github.com/IgniteUI/igniteui-cli/pull/1545))
+* **`ig mcp` CLI command** to launch the MCP server, with documented configuration examples for VS Code, Claude Desktop, and Cursor ([#1570](https://github.com/IgniteUI/igniteui-cli/pull/1570))
+* **Comprehensive test suites:** Vitest unit tests (150+ tests) and Jasmine integration tests for CLI and runtime ([#1570](https://github.com/IgniteUI/igniteui-cli/pull/1570), [#1572](https://github.com/IgniteUI/igniteui-cli/pull/1572))
+* **Documentation pipelines** for incremental and full rebuilds per framework (angular, react, blazor, webcomponents)
+* **Skills and theming guides** for Angular, React, and Web Components — providing AI assistants with curated knowledge for component usage, theming, and bundle optimization ([#1563](https://github.com/IgniteUI/igniteui-cli/pull/1563), [#1573](https://github.com/IgniteUI/igniteui-cli/pull/1573), [#1580](https://github.com/IgniteUI/igniteui-cli/pull/1580))
 
-# 14.10.0-alpha.1 (2026-03-25)
+---
 
+### New: AI Agent Configuration in Scaffolded Projects
 
-#### Bug Fixes
+All scaffolded projects now include AI-ready configuration files to enhance the developer experience with AI coding assistants.
 
-* **eslint:** correct config ignores and resolve lint errors ([68d01ac](https://github.com/IgniteUI/igniteui-cli/commit/68d01ac6102e4e3d660dff9d229e826ea64943db))
-* **lint:** re-enable no-console rule ([3ffa07f](https://github.com/IgniteUI/igniteui-cli/commit/3ffa07ff8812e93dd358b38332f3abc2ea955af2))
+* **AGENTS.md** with framework-specific coding guidelines and best practices for Angular, React, and Web Components ([#1546](https://github.com/IgniteUI/igniteui-cli/pull/1546))
+* **CLAUDE.md** for Claude Code integration ([#1546](https://github.com/IgniteUI/igniteui-cli/pull/1546))
+* **VS Code MCP configuration** (`mcp.json`) pre-configured with `angular-cli`, `igniteui`, and `igniteui-theming` MCP servers ([#1563](https://github.com/IgniteUI/igniteui-cli/pull/1563))
+* **Claude skills** for component usage, theming customization, and bundle size optimization ([#1573](https://github.com/IgniteUI/igniteui-cli/pull/1573))
 
+---
 
+### Angular Template Modernization (`igx-ts`)
+
+A comprehensive modernization of all Angular templates to align with Angular v21+ patterns.
+
+* **Control flow migration:** replaced `*ngIf`, `*ngFor`, `*ngSwitch` structural directives with built-in `@if`, `@for`, `@switch` block syntax; migrated `[ngClass]` to `[class]` bindings across all templates ([#1584](https://github.com/IgniteUI/igniteui-cli/pull/1584))
+* **Standalone component adoption:** removed NgModule files (`AuthenticationModule`, `AppModule`) and replaced with provider functions; `provideAuthentication()` consolidates all auth setup ([#1554](https://github.com/IgniteUI/igniteui-cli/pull/1554))
+* **Auth library upgrade:** migrated to `angular-auth-oidc-client` v21 API with configurable social login providers (Google, Microsoft, Facebook) ([#1554](https://github.com/IgniteUI/igniteui-cli/pull/1554))
+* **Service naming refactoring:** removed `.service` suffix from service files per Angular style guide (e.g., `authentication.service.ts` → `authentication.ts`, `data.service.ts` → `data.ts`) ([#1547](https://github.com/IgniteUI/igniteui-cli/pull/1547))
+* **Spec file cleanup:** removed unnecessary NgModule imports from test files; standalone components imported directly in `TestBed.configureTestingModule` ([#1544](https://github.com/IgniteUI/igniteui-cli/pull/1544))
+* **Testing framework update:** replaced Karma/Jasmine with **Vitest + Playwright** for browser testing ([#1542](https://github.com/IgniteUI/igniteui-cli/pull/1542))
+* **Template naming update:** updated project setup and template names for consistency ([#1514](https://github.com/IgniteUI/igniteui-cli/pull/1514))
+* **Legacy template fixes:** updated `igx-ts-legacy` templates for compatibility ([#1517](https://github.com/IgniteUI/igniteui-cli/pull/1517))
+
+---
+
+### React & Web Components Template Updates
+
+* **React (`igr-ts`):** added 30 missing component templates (accordion, avatar, badge, banner, button, button-group, calendar, card, checkbox, chip, circular-progress, date-picker, divider, dropdown, expansion-panel, form, icon, icon-button, input, linear-progress, list, navbar, radio-group, rating, ripple, slider, switch, tabs, text-area, tree) to match Web Components template coverage ([#1576](https://github.com/IgniteUI/igniteui-cli/pull/1576))
+* **React packages update:** updated `igniteui-react-core/charts/gauges` to ~19.5.2 and `igniteui-react[-grids]` to ~19.6.0 ([#1567](https://github.com/IgniteUI/igniteui-cli/pull/1567))
+* **Web Components packages update:** updated igniteui-webcomponents packages to latest ([#1566](https://github.com/IgniteUI/igniteui-cli/pull/1566))
+* **Web Components grid fixes:** corrected component usage and dependencies in grid templates ([#1562](https://github.com/IgniteUI/igniteui-cli/pull/1562))
+
+---
+
+### Breaking Changes
+
+* **Removed `ig-ts` Angular wrappers project type:** the legacy Ignite UI for Angular wrappers template has been removed; use `igx-ts` instead ([#1548](https://github.com/IgniteUI/igniteui-cli/pull/1548))
+* **Removed `igr-es6` React wrappers project type:** the legacy ES6 React wrappers template has been removed; use `igr-ts` instead ([#1550](https://github.com/IgniteUI/igniteui-cli/pull/1550), [#1551](https://github.com/IgniteUI/igniteui-cli/pull/1551))
+* **Removed `AngularTemplate` wrapper class** and related tests ([#1556](https://github.com/IgniteUI/igniteui-cli/pull/1556))
+* **Default framework changed** from jQuery to **Angular** in the step-by-step guide ([#1574](https://github.com/IgniteUI/igniteui-cli/pull/1574))
+
+---
+
+### Refactoring & Internal Improvements
+
+* **core:** simplified `BasePromptSession` methods, replaced `let`-then-assign patterns with direct returns ([550f249](https://github.com/IgniteUI/igniteui-cli/commit/550f249db), [2f1bd38](https://github.com/IgniteUI/igniteui-cli/commit/2f1bd38c7))
+* **core:** cleaned up `BaseTemplateManager` custom templates loading logic and `Util` log/error/warn methods
+* **cli:** refactored `start` and `build` commands to remove legacy `es6`/`ig-ts` handling
+* **ng-schematics:** updated module file path from `app.module.ts` to `app-module.ts` to match Angular naming conventions
+* **build:** integrated MCP server into monorepo build (`build:mcp` script, tsconfig/lerna/workspace config, nyc exclusion)
+* **docs:** expanded README with MCP server usage instructions, tools table, and development guide
+* **issue template:** updated project type options from `ig-ts|igx-ts` to `igx-ts|igr-ts|js|igc-ts`
+
+---
+
+### Bug Fixes & Maintenance
+
+* **eslint:** correct config ignores and resolve lint errors ([#1557](https://github.com/IgniteUI/igniteui-cli/pull/1557))
+* **lint:** re-enable `no-console` rule ([3ffa07f](https://github.com/IgniteUI/igniteui-cli/commit/3ffa07ff8812e93dd358b38332f3abc2ea955af2))
+* **tslint:** cleanup all leftover references to tslint ([#1558](https://github.com/IgniteUI/igniteui-cli/pull/1558))
+* **ci:** mark `Util.sanitizeShellArg(x)` as command injection sanitizer for CodeQL ([#1524](https://github.com/IgniteUI/igniteui-cli/pull/1524))
+* **deps:** bump minimatch, ajv, immutable, and lodash ([#1549](https://github.com/IgniteUI/igniteui-cli/pull/1549))
+* **deps:** bump flatted ([#1559](https://github.com/IgniteUI/igniteui-cli/pull/1559))
+
+---
 
 ## 14.9.2 (2026-03-11)
 
