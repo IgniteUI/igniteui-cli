@@ -38,7 +38,7 @@ describe("Legacy type", () => {
 }`
 		);
 
-		const tree = await schematicRunner.runSchematic("legacy-type", { applyMigrations: true }, appTree);
+		const tree = await schematicRunner.runSchematic("legacy-type", appTree);
 		expect(tree.readContent("./ignite-ui-cli.json"))
 			.toEqual(
 `{

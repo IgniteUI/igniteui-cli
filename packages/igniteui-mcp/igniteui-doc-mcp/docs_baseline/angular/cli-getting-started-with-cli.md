@@ -53,9 +53,6 @@ When using [Ignite UI CLI](https://github.com/IgniteUI/igniteui-cli) you need to
 ig new newAngularProject --framework=angular --type=igx-ts --template=side-nav
 ```
 
->[!NOTE]
-> As of `v13.1.0`, the `igx-ts` project type will generate a project that uses standalone components by default. If you prefer to use the module-based bootstrapping instead you can set the `type` to be `igx-ts-legacy`.
-
 The new application is created in a directory with the same name (`newAngularProject`). There are several project templates from which you can choose when creating an Ignite UI for Angular application:
 
 | template id   | template description |

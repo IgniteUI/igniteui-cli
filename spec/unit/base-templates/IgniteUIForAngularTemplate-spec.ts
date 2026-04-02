@@ -203,10 +203,10 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 			expect(helpers.tsUpdateMock.finalize).toHaveBeenCalled();
 		});
 
-		it("should declare in NgModule when addAsNgModelDeclaration is true", async () => {
+		it("should declare in NgModule when addAsNgModuleDeclaration is true", async () => {
 			const templ = new TestTemplate();
-			templ.addAsNgModelDeclaration = true;
-			templ.addAsNgModelImport = false;
+			templ.addAsNgModuleDeclaration = true;
+			templ.addAsNgModuleImport = false;
 			const mockFS = {
 				fileExists: (file: string): boolean => {
 					return false;
@@ -235,8 +235,8 @@ describe("Unit - IgniteUIForAngularTemplate Base", () => {
 
 		it("should both declare and import in NgModule when both flags are true", async () => {
 			const templ = new TestTemplate();
-			templ.addAsNgModelDeclaration = true;
-			templ.addAsNgModelImport = true;
+			templ.addAsNgModuleDeclaration = true;
+			templ.addAsNgModuleImport = true;
 			const mockFS = {
 				fileExists: (file: string): boolean => {
 					return false;
