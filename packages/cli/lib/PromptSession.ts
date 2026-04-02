@@ -95,7 +95,6 @@ export class PromptSession extends BasePromptSession {
 
 	protected async completeAndRun(port?: number) {
 		await PackageManager.flushQueue(true);
-		await PackageManager.installPackages();
 		await start.start({ port });
 	}
 
