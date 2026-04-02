@@ -148,7 +148,7 @@ export function addAIConfig(): Rule {
 		} else {
 			const mcpConfig = {
 				servers: {
-					"igniteui": igniteuiServer,
+					"igniteui-cli": igniteuiServer,
 					"igniteui-theming": igniteuiThemingServer
 				}
 			};

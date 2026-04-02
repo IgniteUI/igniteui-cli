@@ -335,7 +335,7 @@ export const appConfig: ApplicationConfig = {
 		it("should add missing igniteui-theming server if only igniteui is already present", async () => {
 			tree.create(mcpFilePath, JSON.stringify({
 				servers: {
-					"igniteui": { command: "npx", args: ["-y", "igniteui-cli@next", "mcp"] }
+					"igniteui-cli": { command: "npx", args: ["-y", "igniteui-cli@next", "mcp"] }
 				}
 			}));
 
@@ -363,7 +363,7 @@ export const appConfig: ApplicationConfig = {
 		it("should not modify .vscode/mcp.json if both servers are already present", async () => {
 			const existing = {
 				servers: {
-					"igniteui": { command: "npx", args: ["-y", "igniteui-cli@next", "mcp"] },
+					"igniteui-cli": { command: "npx", args: ["-y", "igniteui-cli@next", "mcp"] },
 					"igniteui-theming": { command: "npx", args: ["-y", "igniteui-theming", "igniteui-theming-mcp"] }
 				}
 			};
