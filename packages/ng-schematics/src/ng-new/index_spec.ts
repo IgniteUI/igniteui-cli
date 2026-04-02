@@ -136,7 +136,7 @@ describe("Schematics ng-new", () => {
 				expect(mockFunc[1]).toHaveBeenCalled();
 			}
 			expect(AppProjectSchematic.default).toHaveBeenCalled();
-			expect(e.files.length).toEqual(1);
+			expect(e.files.length).toEqual(2);
 			expect(e.exists(`${workingDirectory}/.gitignore`)).toBeTruthy();
 			const taskOptions = runner.tasks.map(task => task.options);
 			const expectedInstall: NodePackageTaskOptions = {
@@ -189,7 +189,7 @@ describe("Schematics ng-new", () => {
 		runner.runSchematic("ng-new", { version: "8.0.3", name: workingDirectory }, myTree)
 		.then((e: UnitTestTree) => {
 			expect(AppProjectSchematic.default).toHaveBeenCalled();
-			expect(e.files.length).toEqual(1);
+			expect(e.files.length).toEqual(2);
 			expect(e.exists(`${workingDirectory}/.gitignore`)).toBeTruthy();
 			const taskOptions = runner.tasks.map(task => task.options);
 			const expectedInstall: NodePackageTaskOptions = {
@@ -210,6 +210,36 @@ describe("Schematics ng-new", () => {
 			expect(mockProject.upgradeIgniteUIPackages).toHaveBeenCalled();
 			expect(taskOptions).toContain(jasmine.objectContaining(expectedInstall));
 			expect(taskOptions).toContain(expectedInit);
+		});
+	});
+
+	describe("addAIConfig via ng-new", () => {
+		const workingDirectory = "my-test-project";
+		const mcpFilePath = `${workingDirectory}/.vscode/mcp.json`;
+
+		function setupAndRun(runner: SchematicTestRunner, myTree: Tree): Promise<UnitTestTree> {
+			spyOn(AppProjectSchematic, "default").and.returnValue((currentTree: Tree, _context: SchematicContext) => {
+				currentTree.create("gitignore", "");
+				return currentTree;
+			});
+
+			const userAnswers = new Map<string, any>();
+			userAnswers.set("upgradePackages", false);
+			spyOnProperty(SchematicsPromptSession.prototype, "userAnswers", "get").and.returnValue(userAnswers);
+
+			return runner.runSchematic("ng-new", { version: "8.0.3", name: workingDirectory, skipInstall: true, skipGit: true }, myTree);
+		}
+
+		it("should create .vscode/mcp.json with both servers during ng-new", async () => {
+			const runner = new SchematicTestRunner("schematics", collectionPath);
+			const myTree = Tree.empty();
+
+			const e = await setupAndRun(runner, myTree);
+
+			expect(e.exists(mcpFilePath)).toBeTruthy();
+			const content = JSON.parse(e.readContent(mcpFilePath));
+			expect(content.servers["igniteui"]).toEqual({ command: "npx", args: ["-y", "igniteui-cli@next", "mcp"] });
+			expect(content.servers["igniteui-theming"]).toEqual({ command: "npx", args: ["-y", "igniteui-theming", "igniteui-theming-mcp"] });
 		});
 	});
 });
