@@ -80,7 +80,7 @@ To use the server with an MCP client (VS Code, Claude Desktop, Cursor, etc.), ad
 ```json
 {
   "servers": {
-    "igniteui": {
+    "igniteui-cli": {
       "type": "stdio",
       "command": "node",
       "args": ["/absolute/path/to/igniteui-doc-mcp/dist/index.js"]
@@ -93,7 +93,7 @@ To use the server with an MCP client (VS Code, Claude Desktop, Cursor, etc.), ad
 ```json
 {
   "mcpServers": {
-    "igniteui": {
+    "igniteui-cli": {
       "command": "node",
       "args": ["/absolute/path/to/igniteui-doc-mcp/dist/index.js"]
     }

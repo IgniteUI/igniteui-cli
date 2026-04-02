@@ -163,7 +163,7 @@ Configure your MCP client (e.g., VS Code, Claude Desktop, Cursor) to use the CLI
 ```json
 {
   "mcpServers": {
-    "igniteui": {
+    "igniteui-cli": {
       "command": "ig",
       "args": ["mcp"]
     }
