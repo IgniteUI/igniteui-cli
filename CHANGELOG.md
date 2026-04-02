@@ -2,7 +2,7 @@
 
 ## Highlights
 
-This is a major release that introduces the **Ignite UI MCP Server** (`@igniteui/mcp-server`) as a new workspace package, **modernizes all Angular templates** to use the latest Angular patterns, **adds AI agent configurations** to scaffolded projects, and **removes legacy wrapper-based project types**.
+This is a major release that introduces the **Ignite UI CLI MCP Server** as a new workspace package, **modernizes all Angular templates** to use the latest Angular patterns, **adds AI agent configurations** to scaffolded projects, and **removes legacy wrapper-based project types**.
 
 ---
 
