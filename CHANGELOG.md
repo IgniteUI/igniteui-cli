@@ -25,7 +25,7 @@ All scaffolded projects now include AI-ready configuration files to enhance the 
 
 * **AGENTS.md** with framework-specific coding guidelines and best practices for Angular, React, and Web Components ([#1546](https://github.com/IgniteUI/igniteui-cli/pull/1546))
 * **CLAUDE.md** for Claude Code integration ([#1546](https://github.com/IgniteUI/igniteui-cli/pull/1546))
-* **VS Code MCP configuration** (`mcp.json`) pre-configured with `angular-cli`, `igniteui`, and `igniteui-theming` MCP servers ([#1563](https://github.com/IgniteUI/igniteui-cli/pull/1563))
+* **VS Code MCP configuration** (`mcp.json`) pre-configured with `angular-cli`, `igniteui-cli`, and `igniteui-theming` MCP servers ([#1563](https://github.com/IgniteUI/igniteui-cli/pull/1563))
 * **Claude skills** for component usage, theming customization, and bundle size optimization ([#1573](https://github.com/IgniteUI/igniteui-cli/pull/1573))
 
 ---
