@@ -1,7 +1,6 @@
 import style from './style.module.css';
-import 'igniteui-react-grids/grids';
 import { IgrGrid, IgrColumn } from 'igniteui-react-grids';
-import 'igniteui-react-grids/grids/themes/light/bootstrap.css'
+import 'igniteui-react-grids/grids/themes/light/bootstrap.css';
 
 import data from './data';
 
@@ -19,7 +18,7 @@ export default function $(ClassName)() {
       </div>
       <div className={style.container}>
         <div className={style.grid}>
-          <IgrGrid autoGenerate={false} data={data}>
+          <IgrGrid data={data}>
             <IgrColumn
               field="ProductID"
               header="Product ID"

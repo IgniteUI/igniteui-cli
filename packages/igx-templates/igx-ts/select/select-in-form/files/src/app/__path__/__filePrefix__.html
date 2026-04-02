@@ -15,9 +15,11 @@
         <label igxLabel for="fruitSelect">Favorite fruit</label>
         <igx-prefix>Fruit</igx-prefix>
         <igx-select-item> None </igx-select-item>
-        <igx-select-item *ngFor="let fruit of fruits" [value]="fruit">
-          {{fruit}}
-        </igx-select-item>
+        @for (fruit of fruits; track fruit) {
+          <igx-select-item [value]="fruit">
+            {{fruit}}
+          </igx-select-item>
+        }
       </igx-select>
     </div>
     <div class="actions">
