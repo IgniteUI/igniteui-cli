@@ -25,6 +25,8 @@ describe("Help command", () => {
 		test                   executes project tests
 		list                   list all templates                           [aliases: l]
 		upgrade-packages        upgrades Ignite UI Packages
+		mcp                    Starts the Ignite UI MCP server for AI assistant
+                               integration
 	  Options:
 		-v, --version  Show current Ignite UI CLI version                    [boolean]
 		-h, --help     Show help                                             [boolean]`.replace(/\s/g, "");

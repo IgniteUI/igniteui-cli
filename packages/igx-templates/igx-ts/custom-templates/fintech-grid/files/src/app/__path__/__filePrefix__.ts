@@ -46,7 +46,7 @@ import { timer } from 'rxjs';
 import { debounce } from 'rxjs/operators';
 import { LocalData } from './local-data';
 import { Contract, REGIONS } from './data/financialData';
-import { NgIf, NgFor, CurrencyPipe } from '@angular/common';
+import { CurrencyPipe } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @Component({
@@ -60,7 +60,6 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     FormsModule,
     IgxSliderComponent,
     IgxButtonGroupComponent,
-    NgIf,
     IgxGridComponent,
     IgxGridToolbarComponent,
     IgxGridToolbarActionsComponent,
@@ -71,7 +70,6 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     IgxCellEditorTemplateDirective,
     IgxSelectComponent,
     IgxFocusDirective,
-    NgFor,
     IgxSelectItemComponent,
     IgxCellTemplateDirective,
     IgxIconComponent,

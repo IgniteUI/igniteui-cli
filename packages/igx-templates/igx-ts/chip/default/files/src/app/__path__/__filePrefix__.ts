@@ -15,7 +15,6 @@ import {
   IgxDropDownItemNavigationDirective,
   IgxDropDownItemComponent,
 } from '<%=igxPackage%>';
-import { NgFor } from '@angular/common';
 
 interface NamedEntry {
   id: string;
@@ -29,7 +28,6 @@ interface NamedEntry {
  imports: [
     IgxLayoutDirective,
     IgxChipsAreaComponent,
-    NgFor,
     IgxChipComponent,
     IgxButtonDirective,
     IgxDropDownItemNavigationDirective,

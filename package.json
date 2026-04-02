@@ -21,8 +21,9 @@
 		"release": "lerna version --conventional-commits --force-publish=* --yes --no-git-tag-version --no-push",
 		"deploy": "lerna exec 'npm publish --tag'",
 		"version": "node ./scripts/versionScript.js",
-		"build": "node ./node_modules/typescript/lib/tsc.js && npm run config-schema",
-		"build-pack": "node ./node_modules/typescript/lib/tsc.js -p tsconfig-pack.json && npm run config-schema",
+		"build": "node ./node_modules/typescript/lib/tsc.js && npm run config-schema && npm run build:mcp",
+		"build:mcp": "cd packages/igniteui-mcp/igniteui-doc-mcp && npx tsc && npx tsx scripts/build.ts",
+		"build-pack": "node ./node_modules/typescript/lib/tsc.js -p tsconfig-pack.json && npm run config-schema && npm run build:mcp",
 		"pretest": "npm run lint && npm run build",
 		"test": "nyc npm run jasmine",
 		"jasmine": "node spec/jasmine-runner.js",
@@ -42,7 +43,8 @@
 			"**/*.d.ts",
 			"output/",
 			"packages/cli/templates/**/files/",
-			"packages/igx-templates/"
+			"packages/igx-templates/",
+			"packages/igniteui-mcp/"
 		],
 		"reporter": [
 			"lcov",
@@ -59,7 +61,7 @@
 		"js-yaml": "^4.1.1"
 	},
 	"dependencies": {
-		"handlebars": "4.7.8"
+		"handlebars": "4.7.9"
 	},
 	"devDependencies": {
 		"@inquirer/prompts": "^7.9.0",
@@ -87,6 +89,7 @@
 		"typescript-json-schema": "^0.65.1"
 	},
 	"workspaces": [
-		"packages/*"
+		"packages/*",
+		"packages/igniteui-mcp/igniteui-doc-mcp"
 	]
 }

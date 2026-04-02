@@ -10,6 +10,7 @@ import {
 	doc,
 	generate,
 	list,
+	mcp,
 	newCommand,
 	start,
 	test,
@@ -56,6 +57,7 @@ export async function run(args = null) {
 		.command(test)
 		.command(list)
 		.command(upgrade)
+		.command(mcp)
 		.version(false) // disable built-in `yargs.version` to override it with our custom option
 		.options({
 			version: {

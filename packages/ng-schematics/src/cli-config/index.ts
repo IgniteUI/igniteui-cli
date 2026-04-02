@@ -122,6 +122,46 @@ function importStyles(): Rule {
 	};
 }
 
+export function addAIConfig(): Rule {
+	return (tree: Tree) => {
+		const mcpFilePath = "/.vscode/mcp.json";
+		const igniteuiServer = {
+			command: "npx",
+			args: ["-y", "igniteui-cli@next", "mcp"]
+		};
+		const igniteuiThemingServer = {
+			command: "npx",
+			args: ["-y", "igniteui-theming", "igniteui-theming-mcp"]
+		};
+
+		if (tree.exists(mcpFilePath)) {
+			const content = JSON.parse(tree.read(mcpFilePath)!.toString());
+			const servers = content.servers ?? {};
+			let modified = false;
+			if (!servers["igniteui-cli"]) {
+				servers["igniteui-cli"] = igniteuiServer;
+				modified = true;
+			}
+			if (!servers["igniteui-theming"]) {
+				servers["igniteui-theming"] = igniteuiThemingServer;
+				modified = true;
+			}
+			if (modified) {
+				content.servers = servers;
+				tree.overwrite(mcpFilePath, JSON.stringify(content, null, 2));
+			}
+		} else {
+			const mcpConfig = {
+				servers: {
+					"igniteui-cli": igniteuiServer,
+					"igniteui-theming": igniteuiThemingServer
+				}
+			};
+			tree.create(mcpFilePath, JSON.stringify(mcpConfig, null, 2));
+		}
+	};
+}
+
 export default function (options: CliConfigOptions = {}): Rule {
 	return (originalTree: Tree, context: SchematicContext) => {
 		const tree = options.directory ? new ScopedTree(originalTree, options.directory) : originalTree;
@@ -131,7 +171,8 @@ export default function (options: CliConfigOptions = {}): Rule {
 			addTypographyToProj(),
 			importBrowserAnimations(),
 			createCliConfig(),
-			displayVersionMismatch()
+			displayVersionMismatch(),
+			addAIConfig()
 		];
 		return chain(rules)(tree, context);
 	};
