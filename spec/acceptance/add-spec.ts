@@ -8,7 +8,6 @@ import {
 	PackageManager
 } from "@igniteui/cli-core";
 import * as fs from "fs";
-import { EOL } from "os";
 import { parse } from "path";
 import * as cli from "../../packages/cli/lib/cli";
 import { deleteAll, resetSpy } from "../helpers/utils";
@@ -166,7 +165,7 @@ describe("Add command", () => {
 				dependencies: { [igxPackage]: "9.0.0" }
 			}));
 			fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
-				project: { framework: "angular", projectType: "igx-ts-legacy", components: [] }
+				project: { framework: "angular", projectType: "igx-ts", components: [] }
 			}));
 			fs.writeFileSync(".editorconfig", `
 				[*.ts]
@@ -176,19 +175,33 @@ describe("Add command", () => {
 			`);
 			fs.mkdirSync(`./src`);
 			fs.mkdirSync(`./src/app`);
-			fs.writeFileSync("src/app/app-routing-module.ts", "const routes: Routes = [];");
-			fs.writeFileSync("src/app/app-module.ts", `@NgModule({
-				declarations: [
-				App,
-				Home
-				],
-				imports: [
-				BrowserModule
-				],
-				bootstrap: [App]
-			})
-			export class AppModule { }`);
+			fs.writeFileSync("src/app/app.routes.ts",
+`import { Routes } from '@angular/router';
+import { NotFound } from './error-routing/not-found/not-found';
+import { UncaughtError } from './error-routing/error/uncaught-error';
 
+export const routes: Routes = [
+  { path: 'error', component: UncaughtError },
+  { path: '**', component: NotFound } // must always be last
+];
+`);
+
+			const appContent =
+`import { Component, signal } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+
+@Component({
+  selector: 'app-root',
+  imports: [RouterOutlet],
+  templateUrl: './app.html',
+  styleUrl: './app.scss'
+})
+export class App {
+  protected readonly title = signal('Home - IgniteUI for Angular');
+}
+`;
+
+			fs.writeFileSync("src/app/app.ts", appContent);
 			await cli.run(["add", "grid", "Test view"]);
 
 			expect(console.error).toHaveBeenCalledTimes(0);
@@ -198,32 +211,24 @@ describe("Add command", () => {
 			const componentPath = "./src/app/test-view/test-view.ts";
 			expect(fs.existsSync(componentPath)).toBeTruthy();
 			// file contents:
-			expect(fs.readFileSync(componentPath, "utf-8")).toContain("export class TestView");
-			expect(fs.readFileSync("src/app/app-routing-module.ts", "utf-8")).toBe(
-				`import { TestView } from './test-view/test-view';` + EOL +
-				`const routes: Routes = [{ path: 'test-view', component: TestView, data: { text: 'Test view' } }];` + EOL
-			);
+			expect(fs.readFileSync(componentPath, "utf-8")).toContain(`import { ColumnType, IgxGridComponent, IgxPaginatorComponent } from '${igxPackage}';`);
 
-			const expectedModuleSource =
-`import { TestView } from './test-view/test-view';
-import { IgxGridModule } from '${igxPackage}';
-@NgModule({
-  declarations: [
-    App,
-    Home,
-    TestView
-  ],
-  imports: [
-    BrowserModule,
-    IgxGridModule
-  ],
-  bootstrap: [App]
-})
-export class AppModule {
-}
+			const expectedRoutesSource =
+`import { Routes } from '@angular/router';
+import { NotFound } from './error-routing/not-found/not-found';
+import { UncaughtError } from './error-routing/error/uncaught-error';
+import { TestView } from './test-view/test-view';
+
+export const routes: Routes = [
+  { path: 'error', component: UncaughtError },
+  { path: 'test-view', component: TestView, data: { text: 'Test view' } },
+  { path: '**', component: NotFound } // must always be last
+];
 `;
-			expect(fs.readFileSync("src/app/app-module.ts", "utf-8").replace(/\r\n/g, "\n"))
-				.toBe(expectedModuleSource.replace(/\r\n/g, "\n"));
+			expect(fs.readFileSync("src/app/app.routes.ts", "utf-8").replace(/\r\n/g, "\n"))
+				.toBe(expectedRoutesSource.replace(/\r\n/g, "\n"));
+
+			expect(fs.readFileSync("src/app/app.ts", "utf-8")).toBe(appContent);
 
 			fs.unlinkSync("./src/app/test-view/test-view.ts");
 			fs.rmSync("./src", { recursive: true,  force: true });
@@ -238,9 +243,10 @@ export class AppModule {
 		, async () => {
 			const mockConfig = {} as unknown as Config;
 			spyOn(ProjectConfig, "globalConfig").and.returnValue(mockConfig);
+			spyOn(PackageManager, "queuePackage");
 
 			fs.writeFileSync(ProjectConfig.configFile, JSON.stringify({
-				project: { framework: "angular", projectType: "igx-ts-legacy", components: [] }
+				project: { framework: "angular", projectType: "igx-ts", components: [] }
 			}));
 			fs.writeFileSync(".editorconfig", `
 				[*.ts]
@@ -250,18 +256,12 @@ export class AppModule {
 			`);
 			fs.mkdirSync(`./src`);
 			fs.mkdirSync(`./src/app`);
-			fs.writeFileSync("src/app/app-routing-module.ts", "const routes: Routes = [];");
-			fs.writeFileSync("src/app/app-module.ts", `@NgModule({
-			declarations: [
-			  App,
-			  Home
-			],
-			imports: [
-			  BrowserModule
-			],
-			bootstrap: [App]
-		})
-		export class AppModule { }`);
+			fs.writeFileSync("src/app/app.routes.ts",
+`import { Routes } from '@angular/router';
+
+export const routes: Routes = [
+];
+`);
 
 			await cli.run(["add", "grid", "folder/test nested folders/  \t Test Nested Folders	\t"]);
 
@@ -275,35 +275,22 @@ export class AppModule {
 			// file contents:
 			expect(fs.readFileSync(componentPath, "utf-8")).toContain("export class TestNestedFolders");
 
-			expect(fs.readFileSync("src/app/app-routing-module.ts", "utf-8")).toBe(
-				`import { TestNestedFolders } from './${componentFolder}/test-nested-folders';` + EOL +
-				`const routes: Routes = [{ path: 'test-nested-folders', component: TestNestedFolders, data: { text: 'Test Nested Folders' } }];` + EOL
-			);
+			const expectedRoutesSource =
+`import { Routes } from '@angular/router';
+import { TestNestedFolders } from './${componentFolder}/test-nested-folders';
 
-			expect(fs.readFileSync("src/app/app-module.ts", "utf-8")).toBe(
-				`import { TestNestedFolders } from './${componentFolder}/test-nested-folders';` + EOL +
-				`import { IgxGridModule } from 'igniteui-angular';` + EOL +
-				`@NgModule({` + EOL +
-				`  declarations: [` + EOL +
-				`    App,` + EOL +
-				`    Home,` + EOL +
-				`    TestNestedFolders` + EOL +
-				`  ],` + EOL +
-				`  imports: [` + EOL +
-				`    BrowserModule,` + EOL +
-				`    IgxGridModule` + EOL +
-				`  ],` + EOL +
-				`  bootstrap: [App]` + EOL +
-				`})` + EOL +
-				`export class AppModule {` + EOL +
-				`}` + EOL
-			);
+export const routes: Routes = [
+  { path: 'test-nested-folders', component: TestNestedFolders, data: { text: 'Test Nested Folders' } }
+];
+`;
+			expect(fs.readFileSync("src/app/app.routes.ts", "utf-8").replace(/\r\n/g, "\n"))
+				.toBe(expectedRoutesSource.replace(/\r\n/g, "\n"));
 
 			deleteAll("./src");
 			fs.rmdirSync("./src");
 			fs.unlinkSync(ProjectConfig.configFile);
 			fs.unlinkSync(".editorconfig");
-		});
+	});
 
 	it("Should correctly add React template", async () => {
 		// TODO: Mock out template manager and project register
