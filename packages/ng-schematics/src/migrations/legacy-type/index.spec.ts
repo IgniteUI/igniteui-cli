@@ -2,7 +2,7 @@ import * as path from "path";
 import { EmptyTree } from "@angular-devkit/schematics";
 import { SchematicTestRunner, UnitTestTree } from "@angular-devkit/schematics/testing";
 
-describe("Update 13.1.0", () => {
+describe("Legacy type", () => {
 	let appTree: UnitTestTree;
 	const schematicRunner = new SchematicTestRunner("ig-migrate", path.join(__dirname, "../migration-collection.json"));
 
@@ -22,7 +22,7 @@ describe("Update 13.1.0", () => {
   "project": {
     "defaultPort": 4200,
     "framework": "angular",
-    "projectType": "igx-ts",
+    "projectType": "igx-ts-legacy",
     "projectTemplate": "side-nav",
     "theme": "Default",
     "themePath": "node_modules/igniteui-angular/styles/igniteui-angular.css",
@@ -35,10 +35,11 @@ describe("Update 13.1.0", () => {
     "version": ""
   },
   "build": {}
-}`
+}
+`
 		);
 
-		const tree = await schematicRunner.runSchematic("migration-07", { applyMigrations: true }, appTree);
+		const tree = await schematicRunner.runSchematic("legacy-type", { applyMigrations: true }, appTree);
 		expect(tree.readContent("./ignite-ui-cli.json"))
 			.toEqual(
 `{
@@ -50,7 +51,7 @@ describe("Update 13.1.0", () => {
   "project": {
     "defaultPort": 4200,
     "framework": "angular",
-    "projectType": "igx-ts-legacy",
+    "projectType": "igx-ts",
     "projectTemplate": "side-nav",
     "theme": "Default",
     "themePath": "node_modules/igniteui-angular/styles/igniteui-angular.css",
