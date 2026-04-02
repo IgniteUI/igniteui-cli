@@ -86,6 +86,13 @@ A comprehensive modernization of all Angular templates to align with Angular v21
 
 ---
 
+## 14.10.0-alpha.* (prerelease series)
+
+These `14.10.0-alpha.*` releases were experimental prereleases on the path to `15.0.0-RC0` and have been superseded by the 15.x line.
+
+For full details of the changes in these alpha versions, please refer to the corresponding Git tags and commit history.
+
+---
 ## 14.9.2 (2026-03-11)
 
 
