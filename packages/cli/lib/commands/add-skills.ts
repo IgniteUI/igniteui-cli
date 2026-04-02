@@ -1,4 +1,4 @@
-import { GoogleAnalytics, Util } from "@igniteui/cli-core";
+import { GoogleAnalytics, ProjectConfig, Util } from "@igniteui/cli-core";
 import { copyAISkillsToProject } from "../ai-skills";
 import { CommandType } from "./types";
 
@@ -11,6 +11,11 @@ const command: CommandType = {
 			t: "screenview",
 			cd: "Add Skills"
 		});
+
+		if (!ProjectConfig.hasLocalConfig()) {
+			Util.error("The add-skills command is supported only on existing project created with igniteui-cli", "red");
+			return;
+		}
 
 		GoogleAnalytics.post({
 			t: "event",
