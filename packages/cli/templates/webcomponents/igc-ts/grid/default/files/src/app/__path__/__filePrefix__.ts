@@ -1,45 +1,13 @@
 import { html, css, LitElement } from 'lit';
-import { customElement } from 'lit/decorators.js';
-import {
-  IgcDataGridModule,
-  IgcGridColumnOptionsModule,
-  IgcDataGridComponent,
-  IgcColumnGroupDescription,
-} from 'igniteui-webcomponents-grids';
-import { ModuleManager } from 'igniteui-webcomponents-core';
+import { customElement, state } from 'lit/decorators.js';
+import { IgcGridComponent, IgcGroupingExpression, SortingDirection } from 'igniteui-webcomponents-grids';
 
-ModuleManager.register(
-  IgcDataGridModule,
-  IgcGridColumnOptionsModule,
-);
+import gridThemeLightMaterial from 'igniteui-webcomponents-grids/grids/themes/light/material.css?inline'
+
+IgcGridComponent.register();
 
 @customElement('app-$(path)')
 export default class $(ClassName) extends LitElement {
-  data: any[] = [{
-    Country: 'USA',
-    CountryFlag: 'https://static.infragistics.com/xplatform/images/flags/USA.png',
-    Margin: 3,
-    OrderDate: new Date(2021, 4, 3),
-    OrderItems: 7,
-    OrderValue: 500,
-    ProductID: 1001,
-    ProductName: 'Patriot Memory',
-    ProductPrice: 2000,
-    Status: 'Shipped',
-  },
-  {
-    Country: 'Croatia',
-    CountryFlag: 'https://static.infragistics.com/xplatform/images/flags/Croatia.png',
-    Margin: 5,
-    OrderDate: new Date(2021, 1, 10),
-    OrderItems: 11,
-    OrderValue: 760,
-    ProductID: 1002,
-    ProductName: 'Asus GPU',
-    ProductPrice: 3000,
-    Status: 'Packing',
-  }];
-
   static styles = css`
     :host {
       height: 100%;
@@ -47,37 +15,62 @@ export default class $(ClassName) extends LitElement {
       padding-right: 20px;
       width: calc(100% - 600px);
     }
+    igc-grid img {
+      object-fit: contain;
+      height: 100%;
+      width: 100%;
+    }
   `;
+
+  @state()
+  data: any[] = [{
+    country: 'USA',
+    countryFlag: 'https://static.infragistics.com/xplatform/images/flags/USA.png',
+    margin: 0.03,
+    orderDate: new Date(2021, 4, 3),
+    orderItems: 7,
+    orderValue: 500,
+    productID: 1001,
+    productName: 'Patriot Memory',
+    productPrice: 2000,
+    status: 'Shipped',
+  },
+  {
+    country: 'Croatia',
+    countryFlag: 'https://static.infragistics.com/xplatform/images/flags/Croatia.png',
+    margin: 0.05,
+    orderDate: new Date(2021, 1, 10),
+    orderItems: 11,
+    orderValue: 760,
+    productID: 1002,
+    productName: 'Asus GPU',
+    productPrice: 3000,
+    status: 'Packing',
+  }];
+
+  @state()
+  groupingExpressions: IgcGroupingExpression[] = [
+    { fieldName: 'status', dir: SortingDirection.Desc },
+  ];
 
   render() {
     return html`
-      <igc-data-grid
-      id="grid"
-      height="100%"
-      width="100%"
-      auto-generate-columns="false"
-      is-column-options-enabled="true"
+      <style>${gridThemeLightMaterial}</style>
+      <igc-grid
+        class="ig-typography"
+        .data=${this.data}
+        .groupingExpressions=${this.groupingExpressions}
+        filter-mode="excelStyleFilter"
       >
-          <igc-text-column field="ProductID" header-text="ID" width="*>95"></igc-text-column>
-          <igc-text-column field="ProductName" header-text="Product" width="*>160"></igc-text-column>
-          <igc-image-column field="CountryFlag" header-text="Country" width="*>120" contentOpacity="1"
-          padding-top="5" padding-bottom="5"></igc-image-column>
-          <igc-numeric-column field="OrderItems" header-text="Orders" width="*>105"></igc-numeric-column>
-          <igc-numeric-column field="OrderValue" header-text="Order Value" width="*>140" positive-prefix="$" show-grouping-separator="true"></igc-numeric-column>
-          <igc-date-time-column field="OrderDate" header-text="Order Date" width="*>135" dateTimeFormat="DateShort" ></igc-date-time-column>
-          <igc-numeric-column field="Margin" header-text="Margin" width="*>115" positive-suffix="%"></igc-numeric-column>
-          <igc-text-column field="Status" header-text="Status" width="*>100"></igc-text-column>
-      </igc-data-grid>
+        <igc-column field="productID" header="ID" width="90px"></igc-column>
+        <igc-column field="productName" header="Product" width="160px"></igc-column>
+        <igc-column field="countryFlag" header="Country" data-type="image" width="100px"></igc-column>
+        <igc-column field="orderItems" header="Orders" data-type="number" width="100px"></igc-column>
+        <igc-column field="orderValue" header="Order Value" data-type="currency" width="140px"></igc-column>
+        <igc-column field="orderDate" header="Order Date" data-type="date"></igc-column>
+        <igc-column field="margin" header="Margin" data-type="percent" width="100px"></igc-column>
+        <igc-column field="status" header="Status" width="100px" groupable></igc-column>
+      </igc-grid>
     `;
-  }
-
-  firstUpdated() {
-    const grid = this.shadowRoot?.getElementById('grid') as IgcDataGridComponent;
-    grid.dataSource = this.data;
-
-    const grouping = new IgcColumnGroupDescription();
-    grouping.field = 'Status';
-    grouping.displayName = 'Status';
-    grid.groupDescriptions.add(grouping);
   }
 }
