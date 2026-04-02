@@ -6,7 +6,7 @@ This is a major release that introduces the **Ignite UI CLI MCP Server** as a ne
 
 ---
 
-### New: Ignite UI MCP Server (`@igniteui/mcp-server`)
+### New: Ignite UI CLI MCP Server
 
 A new Model Context Protocol (MCP) server that provides AI assistants with Ignite UI documentation search, API reference lookup, and CLI scaffolding capabilities across four frameworks: Angular, React, Blazor, and Web Components.
 
