@@ -1,6 +1,6 @@
 {
   "name": "@igniteui/mcp-server",
-  "version": "14.10.0-alpha.4",
+  "version": "15.0.0-rc.0",
   "description": "Unified MCP server for Ignite UI — documentation, GitHub API, and CLI scaffolding",
   "type": "module",
   "main": "dist/index.js",
@@ -107,8 +107,8 @@
     "openai": "^6.22.0",
     "tsx": "^4.21.0",
     "typedoc": "^0.28.6",
-    "vitest": "^3.0.0",
     "typedoc-plugin-markdown": "^4.4.1",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "vitest": "^3.0.0"
   }
 }
