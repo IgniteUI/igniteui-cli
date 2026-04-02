@@ -318,7 +318,7 @@ export const appConfig: ApplicationConfig = {
 
 			expect(tree.exists(mcpFilePath)).toBeTruthy();
 			const content = JSON.parse(tree.readContent(mcpFilePath));
-			expect(content.servers["igniteui"]).toEqual({ command: "npx", args: ["-y", "igniteui-cli@next", "mcp"] });
+			expect(content.servers["igniteui-cli"]).toEqual({ command: "npx", args: ["-y", "igniteui-cli@next", "mcp"] });
 			expect(content.servers["igniteui-theming"]).toEqual({ command: "npx", args: ["-y", "igniteui-theming", "igniteui-theming-mcp"] });
 		});
 
@@ -328,7 +328,7 @@ export const appConfig: ApplicationConfig = {
 			await runner.runSchematic("cli-config", {}, tree);
 
 			const content = JSON.parse(tree.readContent(mcpFilePath));
-			expect(content.servers["igniteui"]).toEqual({ command: "npx", args: ["-y", "igniteui-cli@next", "mcp"] });
+			expect(content.servers["igniteui-cli"]).toEqual({ command: "npx", args: ["-y", "igniteui-cli@next", "mcp"] });
 			expect(content.servers["igniteui-theming"]).toEqual({ command: "npx", args: ["-y", "igniteui-theming", "igniteui-theming-mcp"] });
 		});
 
@@ -342,7 +342,7 @@ export const appConfig: ApplicationConfig = {
 			await runner.runSchematic("cli-config", {}, tree);
 
 			const content = JSON.parse(tree.readContent(mcpFilePath));
-			expect(content.servers["igniteui"]).toEqual({ command: "npx", args: ["-y", "igniteui-cli@next", "mcp"] });
+			expect(content.servers["igniteui-cli"]).toEqual({ command: "npx", args: ["-y", "igniteui-cli@next", "mcp"] });
 			expect(content.servers["igniteui-theming"]).toEqual({ command: "npx", args: ["-y", "igniteui-theming", "igniteui-theming-mcp"] });
 		});
 
@@ -356,7 +356,7 @@ export const appConfig: ApplicationConfig = {
 			await runner.runSchematic("cli-config", {}, tree);
 
 			const content = JSON.parse(tree.readContent(mcpFilePath));
-			expect(content.servers["igniteui"]).toEqual({ command: "npx", args: ["-y", "igniteui-cli@next", "mcp"] });
+			expect(content.servers["igniteui-cli"]).toEqual({ command: "npx", args: ["-y", "igniteui-cli@next", "mcp"] });
 			expect(content.servers["igniteui-theming"]).toEqual({ command: "npx", args: ["-y", "igniteui-theming", "igniteui-theming-mcp"] });
 		});
 
@@ -386,7 +386,7 @@ export const appConfig: ApplicationConfig = {
 
 			const content = JSON.parse(tree.readContent(mcpFilePath));
 			expect(content.servers["other-server"]).toEqual({ command: "node", args: ["server.js"] });
-			expect(content.servers["igniteui"]).toBeDefined();
+			expect(content.servers["igniteui-cli"]).toBeDefined();
 			expect(content.servers["igniteui-theming"]).toBeDefined();
 		});
 	});

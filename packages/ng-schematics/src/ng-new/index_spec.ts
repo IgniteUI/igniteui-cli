@@ -238,7 +238,7 @@ describe("Schematics ng-new", () => {
 
 			expect(e.exists(mcpFilePath)).toBeTruthy();
 			const content = JSON.parse(e.readContent(mcpFilePath));
-			expect(content.servers["igniteui"]).toEqual({ command: "npx", args: ["-y", "igniteui-cli@next", "mcp"] });
+			expect(content.servers["igniteui-cli"]).toEqual({ command: "npx", args: ["-y", "igniteui-cli@next", "mcp"] });
 			expect(content.servers["igniteui-theming"]).toEqual({ command: "npx", args: ["-y", "igniteui-theming", "igniteui-theming-mcp"] });
 		});
 	});
