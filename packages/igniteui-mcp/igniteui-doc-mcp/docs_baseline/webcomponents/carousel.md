@@ -53,8 +53,6 @@ igc-carousel-slide::part(base) {
 
 ## Usage
 
-<!-- WebComponents -->
-
 First, you need to install the Ignite UI for Web Components by running the following command:
 
 ```cmd
@@ -69,8 +67,6 @@ import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
 defineComponents(IgcCarouselComponent);
 ```
-
-<!-- end: WebComponents -->
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
@@ -106,7 +102,7 @@ If you want a slide to be active by default, use the `Active` attribute:
 </igc-carousel>
 ```
 
-> \[!NOTE]
+> [!NOTE]
 > If no active slide is set, the first one will be set by default. If there are multiple active slides on initial rendering or subsequent updates, only the last one will be taken into account.
 
 ## Examples
@@ -349,7 +345,7 @@ The carousel [animations](carousel.md#animations) are fully supported on touch d
 
 The [`IgcCarouselComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccarouselcomponent.html) can be easily configured to change the slides automatically, without any user interaction. This way you can create your own slideshow by only setting a transition interval to the [`interval`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccarouselcomponent.html#interval) property, which determines the amount of time in milliseconds between slides transition.
 
-> \[!NOTE]
+> [!NOTE]
 > Hovering the mouse over any carousel content or moving keyboard focus to any of the carousel content pauses automatic transitioning. Automatic transitioning resumes when the mouse moves away from the carousel or when keyboard focus moves out of the carousel content.
 > This can be prevented by setting [`disablePauseOnInteraction`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccarouselcomponent.html#disablePauseOnInteraction) property to **true**.
 

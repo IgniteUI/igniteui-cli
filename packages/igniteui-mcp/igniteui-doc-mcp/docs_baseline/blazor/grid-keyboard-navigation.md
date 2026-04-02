@@ -24,11 +24,11 @@ Currently, the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/Igni
 - **Column summaries** (if enabled).
 - **Grid paginator** (if enabled).
 
-> \[!Note]
+> [!Note]
 > Due to this change, navigating between the cells with <kbd>TAB</kbd> and <kbd>SHIFT</kbd> + <kbd>TAB</kbd> is no longer supported in the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html).
 > Pressing the <kbd>TAB</kbd> key now goes through the tab stops in the following order: **GroupBy** / **Toolbar** -> **Headers** -> **Body** -> **Summaries** -> **Footer / Paginator**.
 
-> \[!Note]
+> [!Note]
 > Exposing any **focusable** element into the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) body via template may introduce **side effects** in the keyboard navigation, since the default
 > browser behavior is not prevented. It is the developer's responsibility to prevent or modify it appropriately.
 
@@ -129,14 +129,10 @@ Practice all of the above mentioned actions in the demo sample below. Focus any 
 
 Overriding the default behavior for a certain key or keys combination is one of the benefits that the **Keyboard Navigation** feature provides. For example: press the <kbd>ENTER</kbd> or <kbd>TAB</kbd> key to navigate to the next cell or the cell below. This or any other navigation scenario is easily achieved by the **Keyboard Navigation** API:
 
-<!-- Blazor -->
-
 | API | Description | Arguments |
 |---------|-------------|-----------|
 | `GridKeydown` | An event that is emitted when any of key press/combinations described above is performed. Can be canceled. For any other key press/combination, use the default `onkeydown` event. | [`IgbGridKeydownEventArgs`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridKeydownEventArgs.html) |
 | `ActiveNodeChange` | An event that is emitted when the active node is changed. You can use it to determine the Active focus position (header, tbody etc.), column index, row index or nested level. | [`IgbActiveNodeChangeEventArgs`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbActiveNodeChangeEventArgs.html) |
-
-<!-- end: Blazor -->
 
 <br />
 
@@ -165,39 +161,7 @@ igRegisterScript("WebGridCustomKBNav", (evtArgs) => {
 }, false);
 ```
 
-<!-- WebComponents -->
-
-<!-- Angular, WebComponents, Blazor -->
-
-Based on the event arg values we identified two cases, where to provide our own logic (see above). Now, using the methods from the API, let's perform the desired - if the user is pressing <kbd>TAB</kbd> key over a cell in edit mode, we will perform validation on the input. If the user is pressing <kbd>ENTER</kbd> key over a cell, we will move focus to cell in the next row:
-
-<!-- end: Angular, WebComponents, Blazor -->
-
-```razor
-
-// In JavaScript
-
-igRegisterScript("WebGridCustomKBNav", (evtArgs) => {
-    const args = evtArgs.detail;
-    const target = args.target;
-    const evt = args.event;
-    const type = args.targetType;
-    const grid = document.getElementById("grid1");
-
-    // 1. USER INPUT VALIDATION ON TAB
-    if (target.column.dataType === 'number' && target.editValue < 10) {
-        // alert the user that the input is invalid
-        return;
-    }
-    // 2. CUSTOM NAVIGATION ON ENTER KEY PRESS
-    grid.navigateTo(target.row.index + 1, target.column.visibleIndex, (obj) => {
-            obj.target.activate();
-    });
-}, false);
-
-```
-
-> \[!Note]
+> [!Note]
 > Please refer to the sample code for full implementation details.
 
 Use the demo below to try out the custom scenarios that we just implemented:

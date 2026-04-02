@@ -137,7 +137,7 @@ public class NwindData
 ```
 
 
-> \[!Note]
+> [!Note]
 > The summary of the column is a **function of all column values**, unless filtering is applied, then the summary of the column will be **function of the filtered result values**
 
 [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) summaries can also be enabled on a per-column level in Ignite UI for Blazor, which means that you can activate it only for columns that you need. [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) summaries gives you a predefined set of default summaries, depending on the type of data in the column, so that you can save some time:
@@ -202,8 +202,6 @@ The other way to enable/disable summaries for a specific column or a list of col
 
 <!-- ComponentEnd: Grid -->
 
-<!-- Angular, WebComponents, Blazor -->
-
 ## Custom Grid Summaries
 
 If these functions do not fulfill your requirements you can provide a custom summary for the specific columns.
@@ -251,7 +249,7 @@ The method returns a list of [`IgbSummaryResult`](https://www.infragistics.com/b
 and take optional parameters for calculating the summaries.
 See [Custom summaries, which access all data](#custom-summaries-which-access-all-data) section below.
 
-> \[!Note]
+> [!Note]
 > In order to calculate the summary row height properly, the Grid needs the `Operate` method to always return an array of [`IgbSummaryResult`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSummaryResult.html) with the proper length even when the data is empty.
 
 ```razor
@@ -304,8 +302,6 @@ class WebGridDiscontinuedSummary {
 <!-- ComponentEnd: Grid, TreeGrid -->
 
 <!-- ComponentStart: Grid -->
-
-<!-- Blazor -->
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -427,11 +423,7 @@ public class NwindData
 ```
 
 
-<!-- end: Blazor -->
-
 <!-- ComponentEnd: Grid -->
-
-<!-- end: Angular, WebComponents, Blazor -->
 
 ### Summary Template
 
@@ -712,27 +704,13 @@ public class NwindData
 
 ## Disabled Summaries
 
-<!-- Blazor -->
-
 The [`DisabledSummaries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_DisabledSummaries) property provides precise per-column control over the Blazor Grid summary feature. This property enables users to customize the summaries displayed for each column in the IgbGrid, ensuring that only the most relevant and meaningful data is shown. For example, you can exclude specific summary types, such as **\['count', 'min', 'max']** by specifying their summary keys in an array.
-
-<!-- end: Blazor -->
-
-<!-- WebComponents, React, Blazor -->
 
 This property can also be modified **dynamically at runtime** through code, providing flexibility to adapt the IgbGrid's summaries to changing application states or user actions.
 
-<!-- end: WebComponents, React, Blazor -->
-
-<!-- Blazor -->
-
 The following examples illustrate how to use the [`DisabledSummaries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_DisabledSummaries) property to manage summaries for different columns and exclude specific default and custom summary types in the Blazor Grid:
 
-<!-- end: Blazor -->
-
 <!-- ComponentStart: Grid, HierarchicalGrid, TreeGrid -->
-
-<!-- Blazor -->
 
 ```razor
 <!-- Disable default summaries -->
@@ -753,19 +731,13 @@ The following examples illustrate how to use the [`DisabledSummaries`](https://w
     DisabledSummaries="['discontinued', 'totalDiscontinued']" />
 ```
 
-<!-- end: Blazor -->
-
 <!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid -->
 
 For `UnitPrice`, default summaries like `count`, `sum`, and `average` are disabled, leaving others like `min` and `max` active.
 
-<!-- Blazor -->
-
 For `UnitsInStock`, custom summaries such as `discontinued` and `totalDiscontinued` are excluded using the [`DisabledSummaries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_DisabledSummaries) property.
 
 At runtime, summaries can also be dynamically disabled using the [`DisabledSummaries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_DisabledSummaries) property. For example, you can set or update the property on specific columns programmatically to adapt the displayed summaries based on user actions or application state changes.
-
-<!-- end: Blazor -->
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -1022,7 +994,7 @@ The available values of the [`SummaryPosition`](https://www.infragistics.com/bla
 
 The [`ShowSummaryOnCollapse`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_ShowSummaryOnCollapse) property is boolean. Its default value is set to **false**, which means that the summary row would be hidden when the group row is collapsed. If the property is set to **true** the summary row stays visible when group row is collapsed.
 
-> \[!Note]
+> [!Note]
 > The [`SummaryPosition`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_SummaryPosition) property applies only for the child level summaries. The root level summaries appear always fixed at the bottom of the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html).
 
 ### Demo
@@ -1243,8 +1215,6 @@ The summary rows can be navigated with the following keyboard interactions:
 - <kbd>RIGHT</kbd> - navigates one cell right.
 - <kbd>CTRL</kbd> + <kbd>LEFT</kbd> or <kbd>HOME</kbd> - navigates to the leftmost cell.
 - <kbd>CTRL</kbd> + <kbd>RIGHT</kbd> or <kbd>END</kbd> - navigates to the rightmost cell.
-
-<!-- WebComponents, Blazor, React -->
 
 ## Styling
 
@@ -1470,8 +1440,6 @@ public class InvoicesData
 
 <!-- ComponentEnd: Grid -->
 
-<!-- end: WebComponents, Blazor, React -->
-
 ## API References
 
 - `SummaryOperand`
@@ -1481,8 +1449,6 @@ public class InvoicesData
 - [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html)
 
 ## Additional Resources
-
-<!-- Blazor -->
 
 <!-- ComponentStart: Grid -->
 
@@ -1497,8 +1463,6 @@ public class InvoicesData
 - [Selection](selection.md)
 
 <!-- ComponentEnd: Grid -->
-
-<!-- end: Blazor -->
 
 Our community is active and always welcoming to new ideas.
 

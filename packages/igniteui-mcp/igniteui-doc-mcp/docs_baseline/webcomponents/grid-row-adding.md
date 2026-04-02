@@ -34,8 +34,6 @@ Then define a [`IgcGridComponent`](https://www.infragistics.com/products/ignite-
 
 <!-- ComponentStart: Grid -->
 
-<!-- WebComponents -->
-
 ```html
 <igc-grid id="grid" primary-key="ProductID" auto-generate="false" row-editable="true">
     <igc-column field="ProductID" header="Product ID" data-type="Number"></igc-column>
@@ -53,13 +51,7 @@ Then define a [`IgcGridComponent`](https://www.infragistics.com/products/ignite-
 
 <!-- ComponentEnd: Grid -->
 
-<!-- end: WebComponents -->
-
 <!-- ComponentEnd: TreeGrid -->
-
-<!-- WebComponents -->
-
-<!-- end: WebComponents -->
 
 > **Note**:
 > Setting primary key is mandatory for row adding operations.
@@ -84,16 +76,12 @@ The internal `BaseTransactionService` is automatically provided for [`grid`](htt
 
 Using [`beginAddRowById`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#beginAddRowById) requires you to specify the row to use as context for the operation by its `RowID` (PK). The method then functions as though the end-user clicked on the add row action strip button for the specified row, spawning the UI under it. You can also make the UI spawn as the very first row in the grid by passing `null` for the first parameter.
 
-<!-- WebComponents -->
-
 ```typescript
 this.grid.beginAddRowById('ALFKI');  // Spawns the add row UI under the row with PK 'ALFKI'
 this.grid.beginAddRowById(null);     // Spawns the add row UI as the first record
 ```
 
 The [`beginAddRowByIndex`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#beginAddRowByIndex) method works similarly but requires you to specify the index at which the UI should spawn. Allowed values range between 0 and the size of the data view - 1.
-
-<!-- WebComponents -->
 
 ```typescript
 this.grid.beginAddRowByIndex(10);   // Spawns the add row UI at index 10
@@ -136,13 +124,7 @@ After a new row is added through the row adding UI, its position and/or visibili
 
 ### Customizing Text
 
-<!-- WebComponents, React, Blazor -->
-
 Customizing the text of the row adding overlay is possible using the [`rowAddTextTemplate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#rowAddTextTemplate).
-
-<!-- end: WebComponents, React, Blazor -->
-
-<!-- WebComponents -->
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -153,8 +135,6 @@ this.grid.rowAddTextTemplate = (ctx: IgcGridEmptyTemplateContext) => {
 ```
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
-
-<!-- end: WebComponents -->
 
 ## Styling
 

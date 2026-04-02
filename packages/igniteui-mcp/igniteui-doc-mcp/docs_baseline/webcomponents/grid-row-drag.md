@@ -95,20 +95,14 @@ export class CustomersData extends Array<CustomersDataItem> {
 
 In order to enable row-dragging for your [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html), all you need to do is set the grid's [`rowDraggable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#rowDraggable) to **true**. Once this is enabled, a row-drag handle will be displayed on each row. This handle can be used to initiate row dragging. Clicking on the drag-handle and **moving the cursor** while holding down the button will cause the grid's `RowDragStart` event to fire. Releasing the click at any time will cause `RowDragEnd` event to fire.
 
-<!-- WebComponents -->
-
 ```html
 <igc-grid row-draggable="true">
 </igc-grid>
 ```
 
-<!-- end: WebComponents -->
-
 ### Templating the Drag Icon
 
 The drag handle icon can be templated using the grid's [`dragIndicatorIconTemplate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#dragIndicatorIconTemplate). In the example we're building, let's change the icon from the default one (**drag_indicator**) to **drag_handle**.
-
-<!-- WebComponents -->
 
 ```html
 <igc-grid row-draggable="true" id="grid">
@@ -126,8 +120,6 @@ public dragIndicatorIconTemplate = (ctx: IgcGridEmptyTemplateContext) => {
 }
 ```
 
-<!-- end: WebComponents -->
-
 <!-- ComponentEnd: HierarchicalGrid -->
 
 <!-- ComponentEnd: TreeGrid -->
@@ -142,13 +134,9 @@ public dragIndicatorIconTemplate = (ctx: IgcGridEmptyTemplateContext) => {
 
 ### Row Reordering Demo
 
-<!--  WebComponents, Blazor, React -->
-
 With the help of the grid's row drag events you can create a grid that allows you to reorder rows by dragging them.
 
 <!-- ComponentStart: Grid -->
-
-<!-- WebComponents -->
 
 ```html
 <igc-grid id="grid" row-draggable="true" primary-key="ID">
@@ -162,13 +150,9 @@ constructor() {
 }
 ```
 
-<!-- end: WebComponents -->
-
 <!-- ComponentEnd: Grid -->
 
-<!--  end: WebComponents, Blazor, React -->
-
-> \[!Note]
+> [!Note]
 > Make sure that there is a [`primaryKey`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#primaryKey) specified for the grid! The logic needs an unique identifier for the rows so they can be properly reordered.
 
 Once [`rowDraggable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#rowDraggable) is enabled and a drop zone has been defined, you need to implement a simple handler for the drop event. When a row is dragged, check the following:
@@ -213,10 +197,6 @@ public getCurrentRowIndex(rowList: any[], cursorPosition) {
 ```
 
 <!-- ComponentEnd: Grid -->
-
-<!-- WebComponents -->
-
-<!-- end: WebComponents -->
 
 With these few easy steps, you've configured a grid that allows reordering rows via drag/drop! You can see the above code in action in the following demo.
 

@@ -23,17 +23,11 @@ Unlike a static message list, the [`IgcChatComponent`](https://www.infragistics.
 
 To get started, install the Ignite UI for Web Components by running the following command:
 
-<!-- WebComponents -->
-
 ```cmd
 npm install igniteui-webcomponents
 ```
 
-<!-- end: WebComponents -->
-
 Once installed, you can import the component in your project and register it so it becomes available as a custom element:
-
-<!-- WebComponents -->
 
 ```ts
 import { defineComponents, IgcChatComponent } from "igniteui-webcomponents";
@@ -42,15 +36,11 @@ import 'igniteui-webcomponents/themes/light/bootstrap.css';
 defineComponents(IgcChatComponent);
 ```
 
-<!-- end: WebComponents -->
-
 The CSS file includes one of our default themes. You can replace it with a different theme or create a custom one if you want the [`IgcChatComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcchatcomponent.html) to match your application’s branding.
 
 ## Usage
 
 The simplest way to use the [`IgcChatComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcchatcomponent.html) is to declare it as follows:
-
-<!-- WebComponents -->
 
 ```ts
 const options: IgcChatOptions = {
@@ -64,13 +54,9 @@ const options: IgcChatOptions = {
 </igc-chat>
 ```
 
-<!-- end: WebComponents -->
-
 Here, the `currentUserId` property tells the component which messages are “outgoing” (sent by the current user) versus “incoming” (sent by others). The `headerText` provides a title for the chat window.
 
 Once rendered, you can programmatically add messages:
-
-<!-- WebComponents -->
 
 ```ts
 const chat = document.getElementById('myChat');
@@ -83,8 +69,6 @@ const newMessage = {
 chat.messages = [...chat.messages, newMessage ];
 
 ```
-
-<!-- end: WebComponents -->
 
 This approach makes it easy to plug the Chat into your own data source, such as a server endpoint, a chatbot engine, or a collaborative app backend.
 
@@ -106,20 +90,14 @@ These properties make it straightforward to synchronize the Chat’s UI with you
 Modern conversations are rarely limited to text alone. The Chat component includes built-in support for file attachments, allowing users to share images, documents, and other files.
 By default, the input area includes an attachment button. You can control which file types are allowed by setting the `acceptedFiles` property:
 
-<!-- WebComponents -->
-
 ```ts
 const options: IgcChatOptions = {
   acceptedFiles="image/*,.pdf",
 };
 ```
 
-<!-- end: WebComponents -->
-
 In this example, users will only be able to upload images and PDF files.
 If your use case does not require attachments, you can easily turn them off:
-
-<!-- WebComponents -->
 
 ```ts
 const options: IgcChatOptions = {
@@ -127,14 +105,10 @@ const options: IgcChatOptions = {
 };
 ```
 
-<!-- end: WebComponents -->
-
 ### Suggestions
 
 Quick reply suggestions provide users with pre-defined responses they can tap to reply instantly. This feature is particularly useful in chatbots, customer service flows, or when guiding users through a structured process.
 You can provide suggestions by binding an array of strings to the suggestions property. The `suggestions-position` attribute lets you control where they are displayed: either below the input area or below the messages list.
-
-<!-- WebComponents -->
 
 ```ts
 const options: IgcChatOptions = {
@@ -150,8 +124,6 @@ const options: IgcChatOptions = {
 </igc-chat>
 ```
 
-<!-- end: WebComponents -->
-
 This approach helps streamline user interactions by reducing the need to type repetitive answers and improves the overall experience in guided conversations.
 
 ### Typing Indicator
@@ -159,15 +131,11 @@ This approach helps streamline user interactions by reducing the need to type re
 Conversations feel more natural when participants can see that the other person is typing. The Chat component provides this behavior through the `isTyping` property of the options object.
 When set to true, the chat shows a subtle typing indicator below the messages:
 
-<!-- WebComponents -->
-
 ```ts
 const options: IgcChatOptions = {
   isTyping: true
 };
 ```
-
-<!-- end: WebComponents -->
 
 This feature is typically toggled programmatically, for example when receiving a typing event from your backend service.
 
@@ -211,8 +179,6 @@ This level of granularity means you can tweak just one part (for example, how at
 
 This example shows how to replace the message bubble with your own template:
 
-<!-- WebComponents -->
-
 ```ts
 const options = {
   renderers: {
@@ -224,13 +190,9 @@ const options = {
 };
 ```
 
-<!-- end: WebComponents -->
-
 #### Example: Custom Input Area
 
 By default, the chat input is a text area. You can override it to provide a more tailored experience, such as adding a voice input button:
-
-<!-- WebComponents -->
 
 ```ts
 const options = {
@@ -243,8 +205,6 @@ const options = {
 };
 ```
 
-<!-- end: WebComponents -->
-
 #### Example: Extending Input Actions
 
 The [`IgcChatComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcchatcomponent.html) component provides two renderers which are useful when you want to keep the default actions (upload and send) but extend them with additional controls:
@@ -254,8 +214,6 @@ The [`IgcChatComponent`](https://www.infragistics.com/products/ignite-ui-web-com
 
 For example, you might want to add a voice recording button after the upload button, or a menu of extra options after the send button.
 In the following example, the default upload button is preserved, but we add a microphone button next to it. On the other end, we remove the default send button and replace it with a custom Ask button and a “more” menu:
-
-<!-- WebComponents -->
 
 ```ts
 const _actionsStartTemplate = () => html`
@@ -278,8 +236,6 @@ const options = {
 };
 ```
 
-<!-- end: WebComponents -->
-
 In this setup:
 
 - The upload button remains in place.
@@ -290,9 +246,9 @@ This approach gives you full flexibility over the chat input bar, letting you ad
 
 ### Markdown Rendering
 
-The Chat component includes built-in support for Markdown content through the `createMarkdownRenderer` helper, which is exported from the <!-- WebComponents --> `igniteui-webcomponents/extras` <!-- end: WebComponents --> entry point of the main package. This allows you to display messages with formatted text, links, lists, and even syntax-highlighted code blocks, while ensuring that all rendered HTML is sanitized for security.
+The Chat component includes built-in support for Markdown content through the `createMarkdownRenderer` helper, which is exported from the  `igniteui-webcomponents/extras`  entry point of the main package. This allows you to display messages with formatted text, links, lists, and even syntax-highlighted code blocks, while ensuring that all rendered HTML is sanitized for security.
 
-> \[!Note]
+> [!Note]
 > To use the Markdown renderer, you need to install the following peer dependencies in your project:
 
 ```cmd
@@ -300,8 +256,6 @@ npm install marked marked-shiki shiki dompurify
 ```
 
 By default, messages are rendered as plain text. If you want to enable Markdown support, you can override the messageContent renderer and use the Markdown renderer as shown below:
-
-<!-- WebComponents -->
 
 ```ts
 import { createMarkdownRenderer } from 'igniteui-webcomponents/extras';
@@ -315,8 +269,6 @@ const options = {
   }
 };
 ```
-
-<!-- end: WebComponents -->
 
 In this example:
 
@@ -350,8 +302,6 @@ This will enable highlighted code blocks for JavaScript, Python, and Go, styled 
 
 To integrate with your application logic, the Chat component emits a set of events:
 
-<!-- WebComponents -->
-
 - igcMessageCreated – when a new message is created.
 - igcMessageReact – when a message is reacted to.
 - igcAttachmentClick – when an attachment is clicked.
@@ -363,11 +313,7 @@ To integrate with your application logic, the Chat component emits a set of even
 - igcInputFocus / igcInputBlur – input focus events.
 - igcInputChange – when the input value changes.
 
-<!-- end: WebComponents -->
-
 You can listen for these events and sync them with your backend:
-
-<!-- WebComponents -->
 
 ```ts
 chat.addEventListener('igcMessageCreated', (e) => {
@@ -380,8 +326,6 @@ chat.addEventListener('igcMessageCreated', (e) => {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
-<!-- end: WebComponents -->
 
 ## Styling
 

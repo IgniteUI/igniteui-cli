@@ -216,14 +216,12 @@ You can exit edit mode and **commit** the changes in one of the following ways:
 - on single click to another cell - when you click on another cell in the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html), your changes will be submitted.
 - operations like paging, resize, pin or move will exit edit mode and changes will be submitted.
 
-> \[!Note]
+> [!Note]
 > The cell remains in edit mode when you scroll vertically or horizontally or click outside the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html). This is valid for both cell editing and row editing.
 
 ### Editing through API
 
 You can also modify the cell value through the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) API but only if primary key is defined:
-
-<!-- React -->
 
 ```typescript
 function updateCell() {
@@ -231,13 +229,9 @@ function updateCell() {
 }
 ```
 
-<!-- end: React -->
-
 <!-- ComponentEnd: Grid -->
 
 Another way to update cell is directly through `Update` method of `Cell`:
-
-<!-- React -->
 
 ```typescript
 function updateCell() {
@@ -248,15 +242,11 @@ function updateCell() {
 }
 ```
 
-<!-- end: React -->
-
 <!-- ComponentEnd: Grid -->
 
 ### Cell Editing Templates
 
 You can see and learn more for default cell editing templates in the [general editing topic](editing.md#editing-templates).
-
-<!-- React -->
 
 If you want to provide a custom template which will be applied to a cell, you can pass such template either to the cell itself, or to its header. First create the column as you usually would:
 
@@ -311,8 +301,6 @@ public webGridCellEditCellTemplate = (e: IgrCellTemplateContext) => {
     );
   };
 ```
-
-<!-- end: React -->
 
 Working sample of the above can be found here for further reference:
 
@@ -503,8 +491,6 @@ Using Excel Style Editing allows the user to navigate trough the cells just as h
 
 Implementing this custom functionality can be done by utilizing the events of the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html). First we hook up to the grid's keydown events, and from there we can implement two functionalities:
 
-<!-- React -->
-
 ```tsx
 const gridRef = useRef<IgrGrid>();
 useEffect(() => {
@@ -517,14 +503,10 @@ useEffect(() => {
 </IgrGrid>
 ```
 
-> \[!Note]
+> [!Note]
 > We are using the native browser keydown event instead of React’s synthetic onKeyDown event. When a cell enters edit mode and the ENTER key is pressed to move to the next row, the grid’s editing feature updates the cell value and closes the edit mode. As a result, the input element used for editing is removed from the DOM. Due to React’s event system optimizations, the onKeyDown synthetic event does not bubble up to the grid because the element no longer exists in the React tree at that moment. Therefore, using the native event listener is necessary to ensure the expected behavior.
 
-<!-- end: React -->
-
 - Constant edit mode
-
-<!-- React -->
 
 ```typescript
 function handleKeyDown(event: KeyBoardEvent) {
@@ -545,11 +527,7 @@ function handleKeyDown(event: KeyBoardEvent) {
 }
 ```
 
-<!-- end: React -->
-
 - <kbd>ENTER</kbd>/<kbd>SHIFT</kbd> + <kbd>ENTER</kbd> navigation
-
-<!-- React -->
 
 ```typescript
 if (code === "Enter" || code === "NumpadEnter") {
@@ -564,8 +542,6 @@ if (code === "Enter" || code === "NumpadEnter") {
     });
 }
 ```
-
-<!-- end: React -->
 
 Key parts of finding the next eligible index would be:
 
@@ -585,8 +561,6 @@ return dataView.findIndex((rec, index) => index > currentRowIndex && this.isEdit
 Please check the full sample for further reference:
 
 #### React Grid Excel Style Editing Sample
-
-<!-- React -->
 
 ```css
 /* shared styles are loaded from: */
@@ -682,8 +656,6 @@ root.render(<Sample />);
 ```
 
 
-<!-- end: React -->
-
 Main benefits of the above approach include:
 
 - Constant edit mode: typing while a cell is selected will immediately enter edit mode with the value typed, replacing the existing one
@@ -693,7 +665,7 @@ Main benefits of the above approach include:
 
 ## CRUD operations
 
-> \[!Note]
+> [!Note]
 > Please keep in mind that when you perform some **CRUD operation** all of the applied pipes like **filtering**, **sorting** and **grouping** will be re-applied and your view will be automatically updated.
 
 The [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) provides a straightforward API for basic CRUD operations.
@@ -702,16 +674,12 @@ The [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/types
 
 The [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) component exposes the [`addRow`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#addRow) method which will add the provided data to the data source itself.
 
-<!-- React -->
-
 ```typescript
 // Adding a new record
 // Assuming we have a `getNewRecord` method returning the new row data.
 const record = getNewRecord();
 grid1Ref.current.addRow(record);
 ```
-
-<!-- end: React -->
 
 <!-- ComponentEnd: Grid -->
 
@@ -720,8 +688,6 @@ grid1Ref.current.addRow(record);
 Updating data in the Grid is achieved through [`updateRow`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#updateRow) and [`updateCell`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#updateCell) methods but **only if the PrimaryKey for the grid is defined**. You can also directly update a cell and/or a row value through their respective **update** methods.
 
 <!-- ComponentStart: Grid -->
-
-<!-- React -->
 
 ```typescript
 // Updating the whole row
@@ -746,8 +712,6 @@ Please keep in mind that [`deleteRow`](https://www.infragistics.com/products/ign
 
 <!-- ComponentStart: Grid -->
 
-<!-- React -->
-
 ```typescript
 // Delete row through Grid API
 grid1Ref.current.deleteRow(selectedCell.cellID.rowID);
@@ -764,20 +728,14 @@ In this example, we'll validate a cell based on the data entered in it by bindin
 
 The first thing we need to do is bind to the grid's event:
 
-<!-- React -->
-
 ```tsx
 <IgrGrid onCellEdit={handleCellEdit}>
 </IgrGrid>
 ```
 
-<!-- end: React -->
-
 The `CellEdit` emits whenever **any** cell's value is about to be committed. In our **CellEdit** definition, we need to make sure that we check for our specific column before taking any action:
 
 <!-- ComponentStart: Grid -->
-
-<!-- React -->
 
 ```typescript
 function handleCellEdit(args: IgrGridEditEventArgs): void {
@@ -800,17 +758,7 @@ If the value entered in a cell under the **Units On Order** column is larger tha
 
 <!-- ComponentEnd: Grid -->
 
-<!-- end: React -->
-
-<!-- WebComponents, React -->
-
-<!-- end: WebComponents, React -->
-
 <!-- ComponentEnd: TreeGrid -->
-
-<!-- React -->
-
-<!-- end: React -->
 
 The result of the above validation being applied to our [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) can be seen in the below demo:
 
@@ -925,8 +873,6 @@ root.render(<Sample/>);
 
 
 ## Styling
-
-<!-- WebComponents, Blazor, React -->
 
 In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
@@ -1083,8 +1029,6 @@ root.render(<Sample/>);
 ```
 
 
-<!-- end: WebComponents, Blazor, React -->
-
 ## API References
 
 - [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html)
@@ -1094,8 +1038,6 @@ root.render(<Sample/>);
 - [`IgrDatePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html)
 
 ## Additional Resources
-
-<!-- Blazor, WebComponents, React -->
 
 <!-- ComponentStart: Grid -->
 
@@ -1110,5 +1052,3 @@ root.render(<Sample/>);
 - [Searching](search.md)
 
 <!-- ComponentEnd: Grid -->
-
-<!-- end: Blazor, WebComponents, React -->

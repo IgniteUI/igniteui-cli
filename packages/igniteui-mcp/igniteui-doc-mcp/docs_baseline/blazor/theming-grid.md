@@ -269,8 +269,6 @@ public class NwindData
 
 ## Additional Resources
 
-<!-- Blazor -->
-
 - [Grid Sizing](grid/sizing.md)
 - [Virtualization and Performance](grid/virtualization.md)
 - [Paging](grid/paging.md)
@@ -282,8 +280,6 @@ public class NwindData
 - [Column Resizing](grid/column-resizing.md)
 - [Selection](grid/selection.md)
 - [Column Data Types](grid/column-types.md#default-template)
-
-<!-- end: Blazor -->
 
 Our community is active and always welcoming to new ideas.
 

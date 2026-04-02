@@ -20,8 +20,6 @@ You can perform these tasks remotely and feed the resulting data to the [`IgcHie
 
 <!-- ComponentStart: HierarchicalGrid -->
 
-<!-- WebComponents -->
-
 ```ts
 export class RemotePagingService {
     public static BASE_URL = 'https://data-northwind.indigo.design/';
@@ -61,15 +59,11 @@ export class RemotePagingService {
 }
 ```
 
-<!-- end: WebComponents -->
-
 <!-- ComponentEnd: HierarchicalGrid -->
 
 After declaring the service, we need to create a component, which will be responsible for the [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html) construction and data subscription.
 
 <!-- ComponentStart: HierarchicalGrid -->
-
-<!-- WebComponents -->
 
 First we need to bind to the relevant events so when we change pages and the amount of records shown per page, the remote service will fetch the correct amount of data
 
@@ -180,8 +174,6 @@ For further reference, please check the demo bellow:
 
 
 
-
-<!-- end: WebComponents -->
 
 <!-- ComponentEnd: HierarchicalGrid -->
 

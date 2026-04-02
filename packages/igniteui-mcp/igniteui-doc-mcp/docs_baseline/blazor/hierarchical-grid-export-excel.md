@@ -13,11 +13,7 @@ _premium: true
 
 # Blazor Hierarchical Grid Exporting
 
-<!-- Blazor, React, WebComponents -->
-
 The Ignite UI for Blazor Hierarchical Grid provides data export functionality through the Grid Toolbar Exporter component. You can export the displayed data to Excel, CSV, or PDF formats. Excel exports use the MS Excel table format, which supports features like filtering and sorting. To enable exporting, place the [`IgbGridToolbarExporter`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridToolbarExporter.html) inside the grid's toolbar. By default, all export formats are enabled.
-
-<!-- end: Blazor, React, WebComponents  -->
 
 ## Blazor Exporting Example
 
@@ -285,17 +281,13 @@ public class SingersExportData
 
 You can export [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) with defined [multi-column headers](multi-column-headers.md). All headers are reflected in the exported Excel file as they are displayed in the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html). If you want to exclude the defined multi-column headers from the exported data, set the `ExporterOption` `IgnoreMultiColumnHeaders` to `true`.
 
-> \[!Note]
+> [!Note]
 > The exported [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) will not be formatted as a table, since Excel tables do not support multiple column headers.
 
-> \[!Note]
+> [!Note]
 > [`IgbGridToolbarExporter`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridToolbarExporter.html) is also configured to demonstrate how you can control which export formats are available to end users. Use the toolbar exporter options to toggle Excel, CSV, or PDF buttons:
 >
-> <!-- Blazor -->
->
 > - [`ExportExcel`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridToolbarExporter.html#IgniteUI_Blazor_Controls_IgbGridToolbarExporter_ExportExcel), `ExportCsv`, `ExportPdf`
->
-> <!-- end: Blazor -->
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -708,10 +700,8 @@ public class MultiColumnsExportData
 
 By default, the Excel Exporter service exports the grid with scrollable (unfrozen) column headers. In many scenarios you may want to freeze all headers at the top of the exported Excel file so they always stay in view as the user scrolls through the records. To achieve this, set the `ExporterOption` `FreezeHeaders` to `true`.
 
-> \[!Note]
+> [!Note]
 > PDF exports automatically include the column header row at the top of the document, so readers retain the same context when they open or print the file.
-
-<!-- Blazor -->
 
 <!-- ComponentStart: HierarchicalGrid -->
 
@@ -732,8 +722,6 @@ igRegisterScript("WebHierarchicalGridExportEventFreezeHeaders", (ev) => {
 ```
 
 <!-- ComponentEnd: HierarchicalGrid -->
-
-<!-- end: Blazor -->
 
 ## Known Limitations
 

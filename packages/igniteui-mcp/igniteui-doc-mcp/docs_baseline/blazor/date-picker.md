@@ -13,7 +13,7 @@ The Ignite UI for Blazor Date Picker is a feature rich component used for enteri
 
 The Ignite UI for Blazor Date Picker Component lets users pick a single date through a month-view calendar dropdown or editable input field. The Blazor Date Picker also supports a dialog mode for selection from the calendar only, locale-aware and customizable date formatting and validation integration.
 
-> \[!NOTE]
+> [!NOTE]
 > The [`IgbDatePicker`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDatePicker.html) is a brand new component from Ignite UI for Blazor version . The old [`IgbDatePicker`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDatePicker.html) prior to this version has been renamed to `XDatePicker` and its respective documentation page can be found under "Deprecated Components"
 
 ## Blazor Date Picker Example
@@ -39,8 +39,6 @@ Below you can see a sample that demonstrates how the Date Picker works when user
 
 ## Getting Started with Blazor Date Picker
 
-<!-- Blazor -->
-
 To get started with the [`IgbDatePicker`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDatePicker.html) component, first we need to register its module as follows:
 
 ```razor
@@ -55,8 +53,6 @@ You will also need to link an additional CSS file to apply the styling to the [`
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
 ```
 
-<!-- end: Blazor -->
-
 For a complete introduction to the Ignite UI for Blazor, read the [**Getting Started**](../general-getting-started.md) topic.
 
 ## Using the Blazor Date Picker Component
@@ -70,8 +66,6 @@ To instantiate a [`IgbDatePicker`](https://www.infragistics.com/blazor/docs/api/
 ```
 
 ### Options
-
-<!-- React, Blazor -->
 
 The [`IgbDatePicker`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDatePicker.html) can be bound to a `date`.
 
@@ -226,11 +220,7 @@ The [`IgbDatePicker`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.
 
 The [`IgbDatePicker`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDatePicker.html) could be used in a form element, the component's [`Min`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDatePicker.html#IgniteUI_Blazor_Controls_IgbDatePicker_Min) and [`Max`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDatePicker.html#IgniteUI_Blazor_Controls_IgbDatePicker_Max) properties act as form validators.
 
-<!-- Blazor -->
-
 In forms, we can handle the `Change` event of the component and update the value of the label.
-
-<!-- end: Blazor -->
 
 ```razor
 @using IgniteUI.Blazor.Controls

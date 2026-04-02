@@ -196,16 +196,12 @@ root.render(<Sample/>);
 }
 ```
 
-<!-- React -->
-
 ```tsx
 <IgrGrid className="gridSize" height="500px" width="100%">
     <IgrPaginator perPage={10}>
     </IgrPaginator>
 </IgrGrid>
 ```
-
-<!-- end: React -->
 
 <!-- ComponentStart: Grid -->
 

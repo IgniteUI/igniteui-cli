@@ -13,6 +13,25 @@ _tocName: Changelog
 
 All notable changes for each version of Ignite UI for React are documented on this page.
 
+## **19.6.0 (March 2026)**
+
+### igniteui-react
+
+#### Changed
+
+- [`IgrDockManager`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdockmanager.html): Updated to use the latest `igniteui-dockmanager@2.1.0` with new `minResizeWidth` and `minResizeHeight` properties, `paneFlyoutToggle` event; additional `layoutChange` event detail and fixes. See the [full changelog](https://github.com/IgniteUI/igniteui-dockmanager/blob/master/CHANGELOG.md#210).
+- Updated to use the latest `igniteui-webcomponents@7.1.0` including new `Splitter` and `Highlight` container components and fixes. See the [full changelog](https://github.com/IgniteUI/igniteui-webcomponents/blob/master/CHANGELOG.md#710---2026-03-19).
+
+#### New Features
+
+- #### AI-Assisted Development - Agent Skills
+  - Structured knowledge files that teach AI coding assistants (GitHub Copilot, Cursor, Windsurf, Claude, JetBrains AI, etc.) how to work with Ignite UI for React.
+  - The skill files are included in the `igniteui-react` package and also live in the [skills/](https://github.com/IgniteUI/igniteui-react/tree/master/skills) directory:
+    - **components** - Identify the right React components (`*`) for a UI pattern, then install, import, and use them — JSX patterns, events, refs, forms, etc.
+    - **customize-theme** - Customize styling using CSS custom properties, Sass, and the theming system in React, including using Ignite UI Theming MCP server.
+    - **optimize-bundle-size** - Reduce bundle size with granular imports, tree-shaking, and lazy loading.
+  - These skills are automatically discovered when placed in the agent's skills path (e.g. `.agents/skills` or `.claude/skills`).
+
 ## **19.5.2 (March 2026)**
 
 ### Bug Fixes
@@ -171,12 +190,14 @@ Ability for axis annotations to automatically detect collisions and truncate to 
 - [`grid`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_grids.igrdatagridcelleventargs.html#grid), [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html), [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html)
   - Introduced a new cell merging feature that allows you to configure and merge cells in a column based on same data or other custom condition, into a single cell.
 
-            It can be enabled on the individual columns:
+        ````
+        It can be enabled on the individual columns:
 
-            ```tsx
-            <IgrColumn field="field" merge={true}></IgrColumn>
-            ```
-            The merging can be configured on the grid level to apply either:
+        ```tsx
+        <IgrColumn field="field" merge={true}></IgrColumn>
+        ```
+        The merging can be configured on the grid level to apply either:
+        ````
 
     - `onSort` - only when the column is sorted.
     - `always` - always, regardless of data operations.
@@ -194,23 +215,25 @@ Ability for axis annotations to automatically detect collisions and truncate to 
 
   - Added ability to pin individual columns to a specific side (start or end of the grid), so that you can now have pinning from both sides. This can be done either declaratively by setting the `pinningPosition` property on the column:
 
-            ```tsx
-            <IgrColumn field="Col1" pinned={true} pinningPosition="pinningPosition">
-            </IgrColumn>
-            ```
+        ````
+        ```tsx
+        <IgrColumn field="Col1" pinned={true} pinningPosition="pinningPosition">
+        </IgrColumn>
+        ```
 
-            ```ts
-            pinningPosition = ColumnPinningPosition.End;
-            ```
+        ```ts
+        pinningPosition = ColumnPinningPosition.End;
+        ```
 
-            Or with the API, via optional parameter:
+        Or with the API, via optional parameter:
 
-            ```ts
-            grid.pinColumn('Col1', 0, ColumnPinningPosition.End);
-            grid.pinColumn('Col2', 0, ColumnPinningPosition.Start);
-            ```
+        ```ts
+        grid.pinColumn('Col1', 0, ColumnPinningPosition.End);
+        grid.pinColumn('Col2', 0, ColumnPinningPosition.Start);
+        ```
 
-            If property `pinningPosition` is not set on a column, the column will default to the position specified on the grid's `pinning` options for `columns`.
+        If property `pinningPosition` is not set on a column, the column will default to the position specified on the grid's `pinning` options for `columns`.
+        ````
 
   - **Sorting improvements**
     - Improved sorting algorithm efficiency using Schwartzian transformation. This is a technique, also known as decorate-sort-undecorate, which avoids recomputing the sort keys by temporarily associating them with the original data records.
@@ -432,7 +455,7 @@ Please note that the maximum size available for the icons is 24x24. You can prov
 
 ### igniteui-react-maps (Geographic Map)
 
-> \[!Note]
+> [!Note]
 > As of June 30, 2025 all Microsoft Bing Maps for Enterprise Basic (Free) accounts will be retired. If you're still using an unpaid Basic Account and key, now is the time to act to avoid service disruptions. Bing Maps for Enterprise license holders can continue to use Bing Maps in their applications until June 30,2028.
 > For more details please visit:
 
@@ -487,7 +510,8 @@ Please note that the maximum size available for the icons is 24x24. You can prov
 
 ## **19.0.0 (April 2025)**
 
-> \[!Note]With 19.0.0 the React product introduces many breaking changes done to improve and streamline the API. Please refer to the full Update Guide.
+> [!Note]
+> With 19.0.0 the React product introduces many breaking changes done to improve and streamline the API. Please refer to the full Update Guide.
 
 [Update Guide](update-guide.md)
 
@@ -893,7 +917,7 @@ Added significant improvements to default behaviors, and refined the Category Ch
   - GroupSorts
   - GroupSortDescriptions
 
-> \[!Note]
+> [!Note]
 > [Chart Aggregation](charts/features/chart-data-aggregations.md) will not work when using [`includedProperties`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#includedProperties) | [`excludedProperties`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#excludedProperties). These properties on the chart are meant for non-aggregated data. Once you attempt to aggregate data these properties should no longer be used. The reason it does not work is because aggregation replaces the collection that is passed to the chart for render. The include/exclude properties are designed to filter in/out properties of that data and those properties no longer exist in the new aggregated collection.
 
 ### igniteui-react-grids (Data Grid)
@@ -934,7 +958,7 @@ Added New Feature - [Row Paging](grids/data-grid/row-paging.md) which is used to
 
 - Added `ValueMultiField`, of type string\[], in the [`IgrComboBoxColumn`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_grids.igrcomboboxcolumn.html) to be used when your items in the drop down contain a key that consists of multiple fields.
 
-> \[!Note]
+> [!Note]
 > The following breaking changes were introduced
 
 - Changed [`valueField`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_grids.igrcomboboxcolumn.html#valueField) property from type string\[] to string.
@@ -954,7 +978,7 @@ Added New Feature - [Row Paging](grids/data-grid/row-paging.md) which is used to
 
 ## **16.15.0 (November 2021)**
 
-> \[!Note]
+> [!Note]
 > Please ensure package "lit-html": "^2.0.0" or newer is added to your project for optimal compatibility.
 
 ### igniteui-react-charts (Charts)
@@ -1063,7 +1087,7 @@ for example:
 
 ### igniteui-react-maps (GeoMap)
 
-> \[!Note]
+> [!Note]
 > These features are CTP
 
 - Added support for wrap around display of the map (scroll infinitely horizontally)
@@ -1108,7 +1132,7 @@ for example:
 
 ### igniteui-react-grids (Data Grid)
 
-> \[!Note]
+> [!Note]
 > These breaking changes were introduce in the grid package.
 
 - Changed name of PropertyPath
@@ -1137,7 +1161,7 @@ income.field = "Income";
 
 The data grid component and it's corresponding module's names have changed from "LiveGrid" to "DataGrid".
 
-> \[!Note]
+> [!Note]
 > These breaking changes were introduce in these packages and components only:
 
 The new code for importing the grid and it's corresponding module is:
@@ -1163,7 +1187,7 @@ The data grid component requires the "inputs" package.
 
 Import statements have been simplified to use just package names instead of full paths to API classes and enums.
 
-> \[!Note]
+> [!Note]
 > These breaking changes were introduce in these packages and components only:
 
 | Affected Packages | Affected Components |

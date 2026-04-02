@@ -107,8 +107,6 @@ Great, and now let's prepare for the search API of our [`IgcGridComponent`](http
 
 <!-- ComponentStart: Grid -->
 
-<!-- WebComponents -->
-
 ```typescript
     private grid: IgcGridComponent;
 
@@ -127,11 +125,7 @@ Great, and now let's prepare for the search API of our [`IgcGridComponent`](http
 
 ### Web Components Search Box Input
 
-<!-- WebComponents -->
-
 Now let's create our search input!  By getting the input element we can get its current value. This will allow us to use the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html)'s [`findNext`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#findNext) and [`findPrev`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#findPrev) methods to highlight all the occurrences of the `SearchText` and scroll to the next/previous one (depending on which method we have invoked).
-
-<!-- end: WebComponents -->
 
 Both the [`findNext`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#findNext) and the [`findPrev`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#findPrev) methods have three arguments:
 
@@ -139,11 +133,9 @@ Both the [`findNext`](https://www.infragistics.com/products/ignite-ui-web-compon
 - (optional) `CaseSensitive`: **boolean** (should the search be case sensitive or not, default value is false)
 - (optional) `ExactMatch`: **boolean** (should the search be by an exact match or not, default value is false)
 
-When searching by an exact match, the search API will highlight as results only the cell values that match entirely the `SearchText` by taking the case sensitivity into account as well. For example the strings '*software*' and '*Software*' are an exact match with a disregard for the case sensitivity.
+When searching by an exact match, the search API will highlight as results only the cell values that match entirely the `SearchText` by taking the case sensitivity into account as well. For example the strings '_software_' and '_Software_' are an exact match with a disregard for the case sensitivity.
 
 The methods from above return a **number** value (the number of times the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) contains the given string).
-
-<!-- WebComponents -->
 
 ```html
 <igc-input id="searchBox" name="searchBox">
@@ -168,8 +160,6 @@ public nextSearch(){
 
 In order to freely search and navigate among our search results, let's create a couple of buttons by invoking the [`findNext`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#findNext) and the [`findPrev`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#findPrev) methods inside the buttons' respective click event handlers.
 
-<!-- WebComponents -->
-
 ```html
 <igc-icon-button id="prevIconBtn" variant="flat" name="prev" collection="material" ></igc-icon-button>
 <igc-icon-button id="nextIconBtn" variant="flat" name="next" collection="material"></igc-icon-button>
@@ -191,19 +181,9 @@ public nextSearch() {
 }
 ```
 
-<!-- end: WebComponents -->
-
 ### Add Keyboard Search
 
 We can also allow the users to navigate the results by using the keyboard's arrow keys and the <kbd>ENTER</kbd> key. In order to achieve this, we can handle the **keydown** event of our search input by preventing the default caret movement of the input with the `PreventDefault` method and invoke the [`findNext`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#findNext)/[`findPrev`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#findPrev) methods depending on which key the user has pressed.
-
-<!-- ComponentStart: Grid -->
-
-<!-- WebComponents -->
-
-```html
-<input id="searchBox" name="searchBox"/>
-```
 
 ```typescript
 constructor() {
@@ -230,20 +210,6 @@ public onSearchKeydown(evt: KeyboardEvent) {
 
 ### Case Sensitive and Exact Match
 
-<!-- ComponentStart: Grid -->
-
-<!-- WebComponents -->
-
-Now let's allow the user to choose whether the search should be case sensitive and/or by an exact match. For this purpose we can use simple checkbox inputs and bind to its `change` event where we can use the checkbox `checked` state.
-
-```html
-<span>Case sensitive</span>
-<input id="case" type="checkbox">
-
-<span>Exact match</span>
-<input id="exact" type="checkbox">
-```
-
 ```typescript
 constructor() {
     const case = document.getElementById("case") as HTMLInputElement;
@@ -261,8 +227,6 @@ public updateSearch() {
 }
 ```
 
-<!-- end: WebComponents -->
-
 ### Persistence
 
 What if we would like to filter and sort our [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) or even to add and remove records? After such operations, the highlights of our current search automatically update and persist over any text that matches the `SearchText`! Furthermore, the search will work with paging and will persist the highlights through changes of the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html)'s `PerPage` property.
@@ -277,27 +241,7 @@ import { defineComponents, IgcInputComponent, IgcChipComponent, IgcIconComponent
 defineComponents(IgcInputComponent, IgcChipComponent, IgcIconComponent, IgcIconButtonComponent);
 ```
 
-<!-- WebComponents, Blazor -->
-
 Finally, let's update our template with the new components!
-
-<!-- end: WebComponents, Blazor -->
-
-```html
-<igx-input-group type="search" class="offset">
-    <igx-prefix>
-        <igx-icon *ngIf="searchText.length == 0">search</igx-icon>
-        <igx-icon *ngIf="searchText.length > 0" (click)="clearSearch()">clear</igx-icon>
-    </igx-prefix>
-
-    <input #search1 id="search1" igxInput placeholder="Search" [(ngModel)]="searchText" (ngModelChange)="@@igObjectRef.findNext(searchText, caseSensitive, exactMatch)"
-        (keydown)="searchKeyDown($event)" />
-
-    <igx-suffix *ngIf="searchText.length > 0">
-
-    </igx-suffix>
-</igx-input-group>
-```
 
 <!-- ComponentStart: Grid -->
 
@@ -315,8 +259,6 @@ Finally, let's update our template with the new components!
 </igc-input>
 ```
 
-<!-- WebComponents -->
-
 ```typescript
 constructor() {
     const prevIconText = "<svg width='24' height='24' viewBox='0 0 24 24'><path d='M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z'></path></svg>";
@@ -331,17 +273,9 @@ constructor() {
 }
 ```
 
-<!-- end: WebComponents -->
-
-<!-- Angular, Blazor, WebComponents -->
-
 On the right in our input group, let's create three separate containers with the following purposes:
 
-<!-- end: Angular, Blazor, WebComponents -->
-
 - For displaying a couple of chips that toggle the `CaseSensitive` and the `ExactMatch` properties. We have replaced the checkboxes with two stylish chips. Whenever a chip is clicked, we invoke its respective handler.
-
-<!-- WebComponents -->
 
 ```html
 <div slot="suffix">
@@ -365,15 +299,7 @@ public updateSearch() {
 }
 ```
 
-<!-- ComponentEnd: Grid -->
-
-<!-- Angular, WebComponents, Blazor -->
-
 - For the search navigation buttons, we have added two ripple styled buttons with material icons. The handlers for the click events remain the same - invoking the [`findNext`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#findNext)/[`findPrev`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#findPrev) methods.
-
-<!-- end: Angular, WebComponents, Blazor -->
-
-<!-- WebComponents -->
 
 ```html
 <div slot="suffix">
@@ -402,8 +328,6 @@ public prevSearch() {
     this.grid.findPrev(this.searchBox.value, this.caseSensitiveChip.selected, this.exactMatchChip.selected);
 }
 ```
-
-<!-- ComponentEnd: Grid -->
 
 ## Known Limitations
 

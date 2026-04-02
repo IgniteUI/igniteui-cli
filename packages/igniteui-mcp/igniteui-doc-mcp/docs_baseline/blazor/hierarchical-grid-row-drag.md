@@ -947,8 +947,6 @@ In order to enable row-dragging for your [`IgbHierarchicalGrid`](https://www.inf
 
 The drag handle icon can be templated using the grid's [`DragIndicatorIconTemplate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_DragIndicatorIconTemplate). In the example we're building, let's change the icon from the default one (**drag_indicator**) to **drag_handle**.
 
-<!-- Blazor -->
-
 <!-- ComponentStart: HierarchicalGrid -->
 
 ```razor
@@ -965,11 +963,7 @@ private RenderFragment<IgbGridEmptyTemplateContext> dragIndicatorIconTemplate = 
 
 <!-- ComponentEnd: HierarchicalGrid -->
 
-<!-- end: Blazor -->
-
 <!-- ComponentEnd: HierarchicalGrid -->
-
-<!-- end: Blazor -->
 
 <!-- ComponentEnd: TreeGrid -->
 
@@ -978,8 +972,6 @@ private RenderFragment<IgbGridEmptyTemplateContext> dragIndicatorIconTemplate = 
 ## Application Demo
 
 ### Row Reordering Demo
-
-<!--  WebComponents, Blazor, React -->
 
 With the help of the grid's row drag events you can create a grid that allows you to reorder rows by dragging them.
 
@@ -1015,9 +1007,7 @@ function getCurrentRowIndex(rowList, cursorPosition) {
 
 <!-- ComponentEnd: HierarchicalGrid -->
 
-<!--  end: WebComponents, Blazor, React -->
-
-> \[!Note]
+> [!Note]
 > Make sure that there is a [`PrimaryKey`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_PrimaryKey) specified for the grid! The logic needs an unique identifier for the rows so they can be properly reordered.
 
 Once [`RowDraggable`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_RowDraggable) is enabled and a drop zone has been defined, you need to implement a simple handler for the drop event. When a row is dragged, check the following:
@@ -1033,12 +1023,6 @@ Once [`RowDraggable`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.
 <!-- ComponentEnd: TreeGrid, HierarchicalGrid -->
 
 Below, you can see this implemented:
-
-<!-- Blazor -->
-
-<!-- end: Blazor -->
-
-<!-- Blazor -->
 
 ```razor
 <IgbHierarchicalGrid Data="SingersData" PrimaryKey="ID" RowDraggable="true" RowDragEndScript="WebGridReorderRowHandler"></IgbHierarchicalGrid >
@@ -1069,8 +1053,6 @@ function getCurrentRowIndex(rowList, cursorPosition) {
     return -1;
 }
 ```
-
-<!-- end: Blazor -->
 
 <!-- ComponentEnd: HierarchicalGrid -->
 

@@ -338,12 +338,8 @@ igRegisterScript("SortingHandler", SortingHandler, false);
 
 ## Additional Resources
 
-<!-- Blazor -->
-
 <!-- ComponentStart: HierarchicalGrid -->
 
 <!-- * [Searching](search.md) -->
 
 <!-- ComponentEnd: HierarchicalGrid -->
-
-<!-- end: Blazor -->

@@ -907,8 +907,6 @@ root.render(<Sample/>);
 
 ## Dependencies
 
-<!-- Angular, WebComponents, React -->
-
 Install the following packages in the Ignite UI for React toolset:
 
 ```cmd
@@ -936,8 +934,6 @@ IgrGeographicMapDashboardTileModule.register();
 IgrPieChartDashboardTileModule.register();
 IgrDashboardTileModule.register();
 ```
-
-<!-- end:Angular, WebComponents, React -->
 
 ## Usage
 

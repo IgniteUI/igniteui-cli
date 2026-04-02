@@ -219,45 +219,33 @@ If you want to disable cell selection you can just set [`cellSelection`](https:/
 - <kbd>CTRL</kbd> + <kbd>SHIFT</kbd> + <kbd>HOME</kbd> to select all cells from the focused cell till the first-most cell in the grid
 - <kbd>CTRL</kbd> + <kbd>SHIFT</kbd> + <kbd>END</kbd> to select all cells from the focused cell till the last-most cell in the grid
 
-> \[!Note]
+> [!Note]
 > Continuous scroll is possible only within Grid's body.
 
 ## Api Usage
 
 Below are the methods that you can use in order to select ranges, clear selection or get selected cells data.
 
-<!-- Angular, WebComponents, React, Blazor -->
-
 ### Select range
 
 [`selectRange`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#selectRange) - Select a range of cells with the API. rowStart and rowEnd should use row indexes and columnStart and columnEnd could use column index or column data field value.
-
-<!-- WebComponents -->
 
 ```ts
 const range = { rowStart: 2, rowEnd: 2, columnStart: 1, columnEnd: 1 };
 this.grid.selectRange(range);
 ```
 
-<!-- end: WebComponents -->
-
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
-
-<!-- end: Angular, WebComponents, React, Blazor -->
 
 ### Clear cell selection
 
 [`clearCellSelection`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#clearCellSelection) will clear the current cell selection.
-
-<!-- WebComponents -->
 
 ```ts
 this.grid.clearCellSelection();
 ```
 
 ### Get Selected Data
-
-<!-- Angular, WebComponents, React -->
 
 [`getSelectedData`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#getSelectedData) will return array of the selected data in format depending on the selection. Examples below:
 
@@ -320,8 +308,6 @@ expectedData = [
 ];
 ```
 
-<!-- end: Angular, WebComponents, React -->
-
 ## Features Integration
 
 The multi-cell selection is index based (DOM elements selection).
@@ -336,16 +322,12 @@ The multi-cell selection is index based (DOM elements selection).
 
 <!-- ComponentEnd: Grid, TreeGrid -->
 
-<!-- WebComponents, Blazor, React -->
-
 ## Styling
 
 In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
 
 <!-- ComponentStart: Grid -->
-
-<!-- WebComponents -->
 
 ```ts
 <igc-grid class="grid">
@@ -411,8 +393,6 @@ export class CustomersData extends Array<CustomersDataItem> {
 }
 ```
 
-
-<!-- end: WebComponents, Blazor, React -->
 
 ## API References
 

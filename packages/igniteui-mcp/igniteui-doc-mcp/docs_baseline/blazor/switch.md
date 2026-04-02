@@ -34,8 +34,6 @@ The Ignite UI for Blazor Switch component is a binary choice selection component
 
 At its core, the [`IgbSwitch`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSwitch.html) component allows for toggling between on/off states. The default styling is done according to the selection controls specification in the Material Design guidelines.
 
-<!-- Blazor -->
-
 Before using the [`IgbSwitch`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSwitch.html), you need to register it as follows:
 
 ```razor
@@ -50,11 +48,13 @@ You will also need to link an additional CSS file to apply the styling to the [`
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
 ```
 
+The simplest way to start using the [`IgbSwitch`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSwitch.html) is as follows:
+
 ```razor
 <IgbSwitch />
 ```
 
-> \[!WARNING]
+> [!WARNING]
 > The [`IgbSwitch`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSwitch.html) component doesn't work with the standard `<form>` element. Use `Form` instead.
 
 ## Examples

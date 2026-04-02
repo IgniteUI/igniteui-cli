@@ -29,8 +29,6 @@ igc-expansion-panel{
 
 ## Usage
 
-<!-- WebComponents -->
-
 First, you need to install the Ignite UI for Web Components by running the following command:
 
 ```cmd
@@ -47,11 +45,7 @@ defineComponents(IgcExpansionPanelComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-<!-- end: WebComponents -->
-
 The simplest way to start using the [`IgcExpansionPanelComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcexpansionpanelcomponent.html) is as follows:
-
-<!-- WebComponents -->
 
 ```html
 <igc-expansion-panel>
@@ -70,22 +64,14 @@ The simplest way to start using the [`IgcExpansionPanelComponent`](https://www.i
 
 The Expansion Panel component raises the following events:
 
-<!-- WebComponents -->
-
 - igcClosed - Raised when the expansion panel is collapsed
 - igcOpened - Raised when the expansion panel is expanded
 - igcClosing - Raised when the expansion panel starts collapsing
 - igcOpening - Raised when the expansion panel starts expanding
 
-<!-- end: WebComponents -->
-
 The following sample demonstrates how we can add some logic to our component to make it show/hide the `subtitle` depending on the current state of the panel.
 
-<!-- WebComponents -->
-
 We can do this by binding to the `igcOpened` and `igcClosed` event emitters:
-
-<!-- end: WebComponents -->
 
 ```css
 igc-expansion-panel{

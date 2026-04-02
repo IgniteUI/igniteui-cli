@@ -72,8 +72,6 @@ Before using the [`IgrNavbar`](https://www.infragistics.com/products/ignite-ui-r
 
 For a complete introduction to the Ignite UI for React, read the [**Getting Started**](../general-getting-started.md) topic.
 
-<!-- React -->
-
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
 
 ```cmd
@@ -86,6 +84,8 @@ You will then need to import the [`IgrNavbar`](https://www.infragistics.com/prod
 import { IgrNavbar } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
+
+Then in the template of [`IgrNavbar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrnavbar.html), you can add the following code to show a basic [`IgrNavbar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrnavbar.html) with a title only:
 
 ```tsx
 <IgrNavbar>

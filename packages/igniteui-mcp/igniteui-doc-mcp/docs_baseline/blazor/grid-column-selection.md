@@ -21,7 +21,7 @@ The sample below demonstrates the three types of [`IgbGrid`](https://www.infragi
 
 <!-- ComponentStart: Grid -->
 
-\**Contact Title*, *City* and *Address* columns are with disabled column selection.
+\*_Contact Title_, _City_ and _Address_ columns are with disabled column selection.
 
 <!-- ComponentEnd: Grid -->
 
@@ -171,12 +171,12 @@ The column selection feature can be enabled through the [`ColumnSelection`](http
 
 The default selection mode is `None`. If set to `Single` or `Multiple`, all of the presented columns will be [`Selectable`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Selectable). With that being said, in order to select a column, we just need to click on one, which will mark it as [`Selected`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Selected). If the column is not selectable, no selection style will be applied on the header, while hovering.
 
-> \[!Note]
+> [!Note]
 > The [Multi Column Headers](multi-column-headers.md) feature does not reflect on the [`Selectable`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Selectable) input. The `ColumnGroupComponent` is [`Selectable`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Selectable), if at least one of its children has the selection behavior enabled. In addition, the component is marked as [`Selected`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Selected) if all of its [`Selectable`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Selectable) descendants are [`Selected`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Selected).
 
 <!-- ComponentStart: Grid -->
 
-\*Under *Country Information* Column Group only column *City* and *Postal code* are selectable.
+\*Under _Country Information_ Column Group only column _City_ and _Postal code_ are selectable.
 
 <!-- ComponentEnd: Grid -->
 
@@ -319,7 +319,7 @@ public class CustomersData
 
 ## Keyboard Combinations
 
-> \[!Note]
+> [!Note]
 > The keyboard combinations are available only when the grid [`ColumnSelection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_ColumnSelection) input is set to `multiple`.
 
 There are two scenarios for keyboard navigation of the **Column Selection** feature:
@@ -331,12 +331,10 @@ There are two scenarios for keyboard navigation of the **Column Selection** feat
 
 The **API** provides some additional capabilities when it comes to the **non-visible** columns such that, every **hidden** column could be marked as [`Selected`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Selected) by setting the corresponding **setter**.
 
-> \[!Note]
+> [!Note]
 > The above statement also applies to the `ColumnGroupComponent`, except that when the [`Selected`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Selected) property is changed it changes the state of its descendants.
 
 More information regarding the API manipulations could be found in the [API References](#api-references) section.
-
-<!-- WebComponents, Blazor, React -->
 
 ## Styling
 
@@ -469,8 +467,6 @@ public class CustomersData
 }
 ```
 
-
-<!-- end: WebComponents, Blazor, React -->
 
 ## API References
 

@@ -9,12 +9,8 @@ _tocName: Column Summaries
 _premium: true
 ---
 
-<!-- Blazor, WebComponents -->
-
-> \[!Note]
+> [!Note]
 > Please note that this control has been deprecated and replaced with the [Grid](../data-grid.md) component, and as such, we recommend migrating to that control. This will not be receiving any new features, bug fixes will be deprioritized. For help or questions on migrating your codebase to the Data Grid, please contact support.
-
-<!-- end: Blazor, WebComponents -->
 
 # Web Components Column Summaries
 
@@ -394,8 +390,6 @@ connectedCallback() {
 }
 ```
 
-<!-- Angular, React, WebComponents -->
-
 ## Custom Summaries
 
 In some situations, you may want to expand the default set of summaries. For example, if you were looking to show the number of times a particular value in a column appears, a custom summary would be required for this.
@@ -442,8 +436,6 @@ class CustomDomestic extends SummaryCalculator
     }
 }
 ```
-
-<!--end: Angular, React, WebComponents -->
 
 ## API References
 

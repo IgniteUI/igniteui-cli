@@ -13,8 +13,8 @@ The Ignite UI for React Date Picker is a feature rich component used for enterin
 
 The Ignite UI for React Date Picker Component lets users pick a single date through a month-view calendar dropdown or editable input field. The React Date Picker also supports a dialog mode for selection from the calendar only, locale-aware and customizable date formatting and validation integration.
 
-> \[!NOTE]
-> The [`IgrDatePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html) is a brand new component from Ignite UI for React version <!-- React -->18.7.0<!-- end: React -->. The old [`IgrDatePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html) prior to this version has been renamed to `XDatePicker` and its respective documentation page can be found under "Deprecated Components"
+> [!NOTE]
+> The [`IgrDatePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html) is a brand new component from Ignite UI for React version 18.7.0. The old [`IgrDatePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html) prior to this version has been renamed to `XDatePicker` and its respective documentation page can be found under "Deprecated Components"
 
 ## React Date Picker Example
 
@@ -48,8 +48,6 @@ root.render(<App/>);
 
 ## Getting Started with React Date Picker
 
-<!-- React -->
-
 First, you need to install the Ignite UI for React by running the following command:
 
 ```cmd
@@ -62,8 +60,6 @@ You will then need to import the [`IgrDatePicker`](https://www.infragistics.com/
 import { IgrDatePicker } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
-
-<!-- end: React -->
 
 For a complete introduction to the Ignite UI for React, read the [**Getting Started**](../general-getting-started.md) topic.
 
@@ -79,11 +75,7 @@ To instantiate a [`IgrDatePicker`](https://www.infragistics.com/products/ignite-
 
 ### Options
 
-<!-- React, Blazor -->
-
 The [`IgrDatePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html) can be bound to a `date`.
-
-<!-- end: React, Blazor -->
 
 ```tsx
 const date = new Date();
@@ -248,11 +240,7 @@ The [`IgrDatePicker`](https://www.infragistics.com/products/ignite-ui-react/docs
 
 The [`IgrDatePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html) could be used in a form element, the component's [`min`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html#min) and [`max`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html#max) properties act as form validators.
 
-<!-- React -->
-
 In forms, we can handle the `change` event of the component and update the value of the label.
-
-<!-- end: React -->
 
 ```tsx
 import React, { useRef, useState, useEffect } from 'react';

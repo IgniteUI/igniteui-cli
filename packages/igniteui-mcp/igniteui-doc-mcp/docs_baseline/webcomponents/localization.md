@@ -36,11 +36,7 @@ The locale can be set in several ways, either globally or per component.
 
 ### Global API
 
-<!-- WebComponents -->
-
 You can set the locale that will be used globally using the `setCurrentI18n` method, available from the [`igniteui-webcomponents`](https://www.npmjs.com/package/igniteui-webcomponents) or [`igniteui-webcomponents-grids`](https://www.npmjs.com/package/igniteui-webcomponents-grids) package. All types and APIs can be imported from either package. It affects both formatting and the registered resource strings used in all components. For more on resource strings, see [Localized resource strings](#localized-resource-strings).
-
-<!-- end: WebComponents -->
 
 ```ts
 setCurrentI18n('de');
@@ -55,17 +51,6 @@ In general, resources should be registered under the languages, regions, and scr
 This approach enables setting the localization through the `lang` global attribute of the `HTML` tag. This attribute is observed, and if it changes, all rendered components update their resource strings to the currently set language. All rules regarding the tag used apply as described above.
 
 > Note: This works only on root level and will not work for inner elements on the page.
-
-<!-- WebComponents, Blazor -->
-
-```html
-<html lang="ja">
-    <head>
-        <title>My app</title>
-    </head>
-    <body></body>
-</html>
-```
 
 ### Per component
 
@@ -153,11 +138,11 @@ All Ignite UI for Web Components components render in English by default and can
 
 The translations for the component strings are stored in resource strings and need to be registered in the localization system before the components can use them.
 
-<!-- WebComponents, React -->
-
 To achieve that, you first need to install the [`igniteui-i18n-resources`](https://www.npmjs.com/package/igniteui-i18n-resources) package, which contains the localized resource strings for all languages:
 
-    npm install igniteui-i18n-resources --save-dev
+```
+npm install igniteui-i18n-resources --save-dev
+```
 
 After that, register each language to be made available. For example, German and Japanese:
 
@@ -167,8 +152,6 @@ import { ResourceStringsDE, ResourceStringsJA } from 'igniteui-i18n-resources';
 registerI18n(ResourceStringsDE, 'de');
 registerI18n(ResourceStringsJA, 'ja');
 ```
-
-<!-- end: WebComponents, React -->
 
 You also need to specify the locale to which the resource strings will apply. If an invalid tag is provided, the resources are set for the default `en-US` locale.
 
@@ -188,8 +171,6 @@ If Ignite UI for Web Components does not provide resource strings for the requir
 
 > Note: Contributions to the [`igniteui-i18n-resources`](https://github.com/IgniteUI/igniteui-i18n/tree/master/projects/igniteui-i18n-resources) GitHub repo with additional languages are welcome.
 
-<!-- WebComponents -->
-
 You can use the provided `IResourceStrings` type for all components to get typings for the resource strings used:
 
 ```ts
@@ -201,11 +182,7 @@ export const customResourcesForAll: IResourceStrings = {
 registerI18n(customResourcesForAll, 'custom');
 ```
 
-<!-- end: WebComponents -->
-
 Or for a specific component separately, in this case the grids:
-
-<!-- WebComponents -->
 
 ```ts
 import { IGridResourceStrings } from 'igniteui-webcomponents';
@@ -219,10 +196,6 @@ export const customGridResources: IGridResourceStrings = {
 };
 
 ```
-
-<!-- end: WebComponents -->
-
-<!-- WebComponents -->
 
 The existing resource strings can be mixed with custom strings in any combination, including for the default English language:
 
@@ -243,8 +216,6 @@ export const customResources: IResourceStrings = Object.assign(
 registerI18n(customResources, 'en');
 
 ```
-
-<!-- end: WebComponents -->
 
 > Note: The last examples set only specific resource strings. The remaining strings default to English if they are not available for the components in use.
 

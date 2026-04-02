@@ -24,8 +24,6 @@ The toolbar and the predefined UI components support Web Components events and e
 
 <!-- ComponentStart: HierarchicalGrid -->
 
-<!-- Angular, WebComponents -->
-
 ## Web Components Toolbar Grid Example
 
 ```css
@@ -34,17 +32,9 @@ The toolbar and the predefined UI components support Web Components events and e
 ```
 
 
-<!-- end: Angular, WebComponents -->
-
 <!-- ComponentEnd: HierarchicalGrid -->
 
 The predefined [`IgcGridToolbarActionsComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbaractionscomponent.html) and [`IgcGridToolbarTitleComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbartitlecomponent.html) UI components are added inside the [`IgcGridToolbarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbarcomponent.html) and this is all needed to have a toolbar providing default interactions with the corresponding Grid features:
-
-<!-- WebComponents -->
-
-<!-- end: WebComponents -->
-
-<!-- WebComponents -->
 
 <!-- ComponentStart: HierarchicalGrid -->
 
@@ -64,18 +54,10 @@ The predefined [`IgcGridToolbarActionsComponent`](https://www.infragistics.com/p
 
 <!-- ComponentEnd: HierarchicalGrid -->
 
-<!-- end: WebComponents -->
-
-> \[!Note]
+> [!Note]
 > As seen in the code snippet above, the predefined `Actions` UI components are wrapped in the [`IgcGridToolbarActionsComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbaractionscomponent.html) container. This way, the toolbar title is aligned to the left of the toolbar and the actions are aligned to the right of the toolbar.
 
 Of course, each of these UIs can be added independently of each other, or may not be added at all. This way the toolbar container will be rendered empty:
-
-<!-- WebComponents -->
-
-<!-- end: WebComponents -->
-
-<!-- WebComponents -->
 
 <!-- ComponentStart: HierarchicalGrid -->
 
@@ -88,25 +70,15 @@ Of course, each of these UIs can be added independently of each other, or may no
 
 <!-- ComponentEnd: HierarchicalGrid -->
 
-<!-- end: WebComponents -->
-
 For a comprehensive look over each of the default UI components, continue reading the **Features** section below.
-
-<!-- Angular, WebComponents, React -->
 
 <!-- ComponentStart: HierarchicalGrid -->
 
 ## Toolbar with Child Grids
 
-<!-- WebComponents, React -->
-
 Due to certain limitations in how the child grids of an `igc-hierarchical-grid` are implemented and how DI scope works, to define a toolbar component inside the `igc-row-island`, use the `ToolbarTemplate` input property. This allows child grids to create their own separate toolbar instances:
 
-<!-- end: WebComponents, React -->
-
 <!-- ComponentEnd: HierarchicalGrid -->
-
-<!-- WebComponents -->
 
 <!-- ComponentStart: HierarchicalGrid -->
 
@@ -138,10 +110,6 @@ public rowIslandToolbarTemplate = () => {
 
 <!-- ComponentEnd: HierarchicalGrid -->
 
-<!-- ComponentEnd: HierarchicalGrid -->
-
-<!-- end: Angular, WebComponents, React -->
-
 ## Features
 
 The toolbar is great at separating logic/interactions which affects the grid as a whole.
@@ -154,15 +122,11 @@ Listed below are the main features of the toolbar with example code for each of 
 
 <!-- ComponentStart: HierarchicalGrid -->
 
-<!-- Angular, WebComponents -->
-
 ```css
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
-<!-- end: Angular, WebComponents -->
 
 <!-- ComponentEnd: HierarchicalGrid -->
 
@@ -171,8 +135,6 @@ Listed below are the main features of the toolbar with example code for each of 
 Setting a title for the toolbar in your grid is achieved by using the [`IgcGridToolbarTitleComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbartitlecomponent.html).
 
 Users can provide anything from simple text to more involved templates.
-
-<!-- WebComponents -->
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -184,15 +146,11 @@ Users can provide anything from simple text to more involved templates.
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
-<!-- end: WebComponents -->
-
 ### Actions
 
 The [`IgcGridToolbarActionsComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbaractionscomponent.html) is where users can place actions/interactions in relation to the parent grid.
 As with the title portion of the toolbar, users can provide anything inside that template part, including the default
 toolbar interaction components.
-
-<!-- WebComponents -->
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -206,15 +164,11 @@ toolbar interaction components.
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
-<!-- end: WebComponents -->
-
 ### Column Pinning
 
 The [`IgcGridToolbarPinningComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbarpinningcomponent.html) component provides the default UI for interacting with column pinning in the grid.
 
 The component is setup to work out of the box with the parent grid containing the toolbar as well as several input properties for customizing the UI, such as the component title, the placeholder for the component input and the height of the dropdown itself.
-
-<!-- WebComponents -->
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -232,14 +186,10 @@ The component is setup to work out of the box with the parent grid containing th
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
-<!-- end: WebComponents -->
-
 ### Column Hiding
 
 The [`IgcGridToolbarHidingComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbarhidingcomponent.html) provides the default UI for interacting with column hiding. Exposes the same input properties for customizing the UI, such as the component
 title, the placeholder for the component input and the height of the dropdown itself.
-
-<!-- WebComponents -->
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -257,13 +207,9 @@ title, the placeholder for the component input and the height of the dropdown it
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
-<!-- end: WebComponents -->
-
 ### Advanced Filtering
 
 Toolbar Advanced Filtering component provides the default UI for the Advanced Filtering feature. The component exposes a way to change the default text of the button.
-
-<!-- WebComponents -->
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -277,13 +223,11 @@ Toolbar Advanced Filtering component provides the default UI for the Advanced Fi
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
-<!-- end: WebComponents -->
-
 ### Data Exporting
 
 <!-- ComponentStart: HierarchicalGrid -->
 
-> \[!Note]
+> [!Note]
 > When exporting the [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html) or any of its child grids down the hierarchy, the exported data will be a flat collection of rows
 > belonging to their respective grid (the child grids will not be included in the exported data).
 
@@ -296,8 +240,6 @@ The toolbar exporter component exposes several input properties for customizing 
 These range from changing the display text, to enabling/disabling options in the dropdown to customizing the name of the generated file. For full reference, consult the API documentation for the `ToolbarExporter`.
 
 Here is a snippet showing some of the options which can be customized through the Web Components template:
-
-<!-- WebComponents -->
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -312,11 +254,9 @@ Here is a snippet showing some of the options which can be customized through th
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
-<!-- end: WebComponents -->
-
 In addition to changing the exported filename, the user can further configure the exporter options by waiting for the `ToolbarExporting` event and customizing the options entry in the event properties.
 
-> \[!Note]
+> [!Note]
 > By default when exporting to CSV the exporter exports using a comma separator and uses a '.csv' extension for the output file.
 > You can customize these exporting parameters by subscribing to events of the exporter or changing the values of the exporter options fields.
 > You can also cancel the export process by setting the cancel field of the event args to true.
@@ -324,8 +264,6 @@ In addition to changing the exported filename, the user can further configure th
 The following code snippet demonstrates subscribing to the toolbar exporting event and configuring the exporter options:
 
 <!-- ComponentStart: HierarchicalGrid -->
-
-<!-- WebComponents -->
 
 ```html
 <igc-hierarchical-grid id="hierarchicalGrid"></igc-hierarchical-grid>
@@ -1942,15 +1880,11 @@ export class SingersData extends Array<SingersDataItem> {
 ```
 
 
-<!-- Angular, WebComponents, Blazor -->
-
 ## Custom Content
 
 If the actions part of the toolbar component is not sufficient for a particular use case, the toolbar itself has a general content projection where users can provide additional UI. If the user needs the respective grid instance for API calls or bindings, they can create a template reference variable.
 
 Here is a sample snippet:
-
-<!-- WebComponents -->
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -1969,8 +1903,6 @@ Here is a sample snippet:
 ```
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
-
-<!-- end: WebComponents -->
 
 The following sample demonstrates how to add an additional button to the toolbar to clear the sorting set by clicking on the columns' headers:
 
@@ -3547,10 +3479,6 @@ export class SingersData extends Array<SingersDataItem> {
 ```
 
 
-<!-- end: Angular, WebComponents, Blazor -->
-
-<!-- WebComponents, Blazor, React -->
-
 ## Styling
 
 In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
@@ -3583,8 +3511,6 @@ Then set the related CSS properties for that class:
 }
 ```
 
-
-<!-- end: WebComponents, Blazor, React -->
 
 <!-- ComponentStart: HierarchicalGrid -->
 

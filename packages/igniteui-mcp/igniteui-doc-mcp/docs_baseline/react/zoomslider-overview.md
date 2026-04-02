@@ -777,8 +777,6 @@ root.render(<ZoomSliderOverview/>);
 | Extensibility       | The ZoomSlider control supports DataChart control out-of the box. |
 | Configurable zoom-range window       | The initial zoom-range window width and position, as well as its minimum size, are configurable. |
 
-<!-- Angular, React, WebComponents -->
-
 ## Dependencies
 
 When installing the React chart component, the core package must also be installed.
@@ -787,8 +785,6 @@ When installing the React chart component, the core package must also be install
 npm install --save igniteui-react-core
 npm install --save igniteui-react-charts
 ```
-
-<!-- end: Angular, React, WebComponents -->
 
 ## Component Modules
 

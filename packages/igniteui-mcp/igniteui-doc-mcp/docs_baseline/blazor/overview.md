@@ -12,17 +12,11 @@ _tocName: Grid Lite
 
 The Ignite UI for Blazor Grid Lite is a lightweight, high-performance Blazor data grid that’s free to use, open-source, and built for modern Blazor applications.
 
-<!-- React, Blazor -->
-
 This free Blazor data grid is open-source JavaScript data grid built as a Web Component, which means you can use it dependency-free with or without a web framework. It delivers essential data-display functionality with minimal overhead and the performance users expect. The Blazor Grid Lite is designed for developers who need fast and lightweight data presentation.
-
-<!-- end: React, Blazor -->
 
 ## What You Get with our Free Blazor Data Grid
 
 Our free, open-source Blazor Grid Lite comes with the following column-based features: sorting, filtering, hiding, resizing and a variety of pre-defined data types. Blazing-fast performance is delivered with the use of row virtualization. In addition, the component supports keyboard navigation and theming through the [Ignite UI Theming Framework](../themes/overview.md).
-
-<!-- Blazor -->
 
 ### Install IgniteUI.Blazor.GridLite
 
@@ -71,8 +65,6 @@ dotnet add package IgniteUI.Blazor.GridLite
     };
 }
 ```
-
-<!-- end: Blazor -->
 
 ## Grid Lite in Action
 

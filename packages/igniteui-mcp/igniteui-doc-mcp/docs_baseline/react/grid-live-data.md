@@ -2026,13 +2026,9 @@ root.render(<FinjsSample />);
 
 A service provides data to the component when the page loads, and when the slider controller is used to fetch a certain number of records. While in a real scenario updated data would be consumed from the service, here data is updated in code. This is done to keep the demo simple and focus on its main goal - demonstrate the grid performance.
 
-<!-- React -->
-
 ```tsx
 <IgrGrid></IgrGrid>
 ```
-
-<!-- React -->
 
 ```typescript
 const startUpdate = () => {
@@ -2054,7 +2050,7 @@ A change in the data field value or a change in the data object/data collection 
 </IgrGrid>
 ```
 
-<!-- React -->
+A change in the data field value or a change in the data object/data collection reference will trigger the corresponding pipes. However, this is not the case for columns, which are bound to [complex data objects](../data-grid.md#complex-data-binding). To resolve the situation, provide a new object reference for the data object containing the property. Example:
 
 ```typescript
 const updateData = (data: any[]) => {

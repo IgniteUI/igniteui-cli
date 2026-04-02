@@ -10,11 +10,7 @@ _tocName: Filtering
 
 # React Grid Lite Filter Operations
 
-<!-- React, WebComponents -->
-
 The Grid Lite supports filtering operations on its data source. Data filtering is controlled on per-column level, allowing you to have filterable and non-filterable columns. By default, filtering on a column is disabled unless explicitly configured with the `filterable` property of the column.
-
-<!-- end: React, WebComponents -->
 
 ```tsx
 return (
@@ -24,11 +20,7 @@ return (
 );
 ```
 
-<!-- React -->
-
 You can also control whether the filter operations for string columns should be case sensitive by using the `filteringCaseSensitive` property:
-
-<!-- end: React -->
 
 ```tsx
 return (
@@ -258,11 +250,7 @@ root.render(<Sample />);
 
 ## Filter Model
 
-<!-- React, WebComponents -->
-
 The building blocks for filter operations in the grid is the `FilterExpression<T, K>` which has the following structure:
-
-<!-- end: React, WebComponents -->
 
 ```typescript
 export interface FilterExpression<T, K extends Keys<T> = Keys<T>> {
@@ -299,16 +287,10 @@ export interface FilterExpression<T, K extends Keys<T> = Keys<T>> {
 
 ## Filter API
 
-<!-- React, WebComponents -->
-
 The Grid Lite exposes two main approaches for applying filter operations from its API. Either through the `GridLite.filter()`/`GridLite.clearFilter()` methods or through the `GridLite.filterExpressions` property.
 
 The `filter()` method accepts either a single expression or an array of filter expression and then filters the grid data
 based on those expressions.
-
-<!-- end: React, WebComponents -->
-
-<!-- React -->
 
 ```typescript
 // Single
@@ -321,13 +303,7 @@ gridRef.current.filter([
 ]);
 ```
 
-<!-- React, WebComponents -->
-
 The `clearFilter()` method, as the name implies, clears the filter state of a single column or the whole grid component, depending on the passed arguments.
-
-<!-- end: React, WebComponents -->
-
-<!-- React -->
 
 ```typescript
 // Clear the filter state for the `age` column.
@@ -339,11 +315,7 @@ gridRef.current.clearFilter();
 
 ## Initial filter state
 
-<!-- React, WebComponents -->
-
 The `filterExpressions` property is very similar in behavior to the `filter()` method call. It exposes a declarative way to control filter state in the grid, but the most useful property is the ability to set initial filter state when the Grid Lite component is first rendered.
-
-<!-- React -->
 
 Here is an example:
 
@@ -359,13 +331,7 @@ return(
 );
 ```
 
-<!-- end: React -->
-
-<!-- end: React, WebComponents -->
-
 It can be used to get the current filter state of the component and do additional processing depending on another state in your application.
-
-<!-- React -->
 
 ```typescript
 const state = gridRef.current.filterExpressions;
@@ -375,15 +341,9 @@ saveUserFilterState(state);
 
 ## Events
 
-<!-- React, WebComponents -->
-
 When a filter operation is performed through the UI, the component emits a custom `filtering` event. The `detail` property is the filter expression which will be applied by the Grid Lite. The event is cancellable and if cancelled will prevent the current filter operation.
 
 After the grid applies the new filter state, a `filtered` event is emitted. It contains the filter state for the column which was the target of the operation and it is not cancellable.
-
-<!-- end: React, WebComponents -->
-
-<!-- React -->
 
 ```typescript
 gridRef.current.addEventListener('filtering', (event: CustomEvent<GridLiteFilteringEvent<T>>) => { ... });
@@ -626,14 +586,10 @@ root.render(<GridLiteFilteringConfigEvents/>);
 ```
 
 
-<!-- React, WebComponents -->
-
 ## Remote filter operations
 
 In cases where filtering must be done remotely or you want to save the current state/data to a server somewhere,
 the Grid Lite exposes a hook where you can implement and customize this behavior.
-
-<!-- React, WebComponents -->
 
 Using the `dataPipelineConfiguration` property, you can provide a custom hook which will be called each time a filter operation is about to run. The callback is passed a `DataPipelineParams` object.
 
@@ -654,13 +610,9 @@ export type DataPipelineParams<T extends object> = {
 };
 ```
 
-<!-- React -->
-
 ```typescript
 gridRef.current.dataPipelineConfiguration = { filter: (params: DataPipelineParams<T>) => T[] | Promise<T[]> };
 ```
-
-<!-- end: React -->
 
 <!-- End: React, WebComponents -->
 
@@ -963,8 +915,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<Sample />);
 ```
 
-
-<!-- end: React, WebComponents -->
 
 <!-- TODO ## API References
 ## API References

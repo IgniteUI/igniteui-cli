@@ -13,8 +13,8 @@ The Ignite UI for Web Components Date Picker is a feature rich component used fo
 
 The Ignite UI for Web Components Date Picker Component lets users pick a single date through a month-view calendar dropdown or editable input field. The Web Components Date Picker also supports a dialog mode for selection from the calendar only, locale-aware and customizable date formatting and validation integration.
 
-> \[!NOTE]
-> The [`IgcDatePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html) is a brand new component from Ignite UI for Web Components version <!-- WebComponents -->5.0.0<!-- end: WebComponents -->. The old [`IgcDatePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html) prior to this version has been renamed to `XDatePicker` and its respective documentation page can be found under "Deprecated Components"
+> [!NOTE]
+> The [`IgcDatePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html) is a brand new component from Ignite UI for Web Components version 5.0.0. The old [`IgcDatePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html) prior to this version has been renamed to `XDatePicker` and its respective documentation page can be found under "Deprecated Components"
 
 ## Web Components Date Picker Example
 
@@ -27,8 +27,6 @@ Below you can see a sample that demonstrates how the Date Picker works when user
 
 
 ## Getting Started with Web Components Date Picker
-
-<!-- WebComponents -->
 
 First, you need to install the Ignite UI for Web Components by running the following command:
 
@@ -44,8 +42,6 @@ import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
 defineComponents(IgcDatePickerComponent);
 ```
-
-<!-- end: WebComponents -->
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
@@ -63,13 +59,7 @@ To instantiate a [`IgcDatePickerComponent`](https://www.infragistics.com/product
 
 ### Options
 
-<!-- WebComponents -->
-
 The [`IgcDatePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html) can be bound to a `date` or a `string`.
-
-<!-- end: WebComponents -->
-
-<!-- WebComponents -->
 
 ```typescript
 const DatePicker = document.querySelector('igc-date-picker') as IgcDatePickerComponent;
@@ -78,15 +68,11 @@ const date = new Date();
 DatePicker.value = date;
 ```
 
-<!-- WebComponents -->
-
 If a string is bound to the picker, it needs to be in the **ISO 8601** format:
 
 ```html
 <igc-date-picker value="2000-01-01"></igc-date-picker>
 ```
-
-<!-- end: WebComponents -->
 
 ### Projecting components
 
@@ -186,11 +172,7 @@ The [`IgcDatePickerComponent`](https://www.infragistics.com/products/ignite-ui-w
 
 The [`IgcDatePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html) could be used in a form element, the component's [`min`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html#min) and [`max`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html#max) properties act as form validators.
 
-<!-- WebComponents -->
-
 In forms, we can handle the `igcChange` event of the component and update the value of the label.
-
-<!-- end: WebComponents -->
 
 ```css
 /* shared styles are loaded from: */

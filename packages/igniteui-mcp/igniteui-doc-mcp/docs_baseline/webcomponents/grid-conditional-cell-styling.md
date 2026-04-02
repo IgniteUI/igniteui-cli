@@ -28,8 +28,6 @@ Further in this topic we will cover both of them in more details.
 
 You can conditionally style the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) rows by setting the [`rowClasses`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#rowClasses) input and define custom rules.
 
-<!-- WebComponents -->
-
 ```html
 <igc-grid id="grid" height="600px" width="100%">
 </igc-grid>
@@ -43,8 +41,6 @@ constructor() {
 ```
 
 The [`rowClasses`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#rowClasses) input accepts an object literal, containing key-value pairs, where the key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value.
-
-<!-- WebComponents -->
 
 ```ts
 public rowClasses = {
@@ -77,8 +73,6 @@ public rowClasses = {
 The [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) control exposes the [`rowStyles`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#rowStyles) property which allows conditional styling of the data rows. Similar to [`rowClasses`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#rowClasses) it accepts an object literal where the keys are style properties and the values are expressions for evaluation. Also, you can apply regular styling (without any conditions).
 
 > The callback signature for both [`rowStyles`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#rowStyles) and [`rowClasses`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#rowClasses) is:
-
-<!-- WebComponents -->
 
 ```ts
 (row: IgcRowType) => boolean
@@ -232,8 +226,6 @@ The [`cellClasses`](https://www.infragistics.com/products/ignite-ui-web-componen
 
 <!-- ComponentStart: Grid -->
 
-<!-- Angular, WebComponents -->
-
 ```typescript
 
 private upFontCondition = (rowData: any, columnKey: any): boolean => {
@@ -331,8 +323,6 @@ Columns expose the [`cellStyles`](https://www.infragistics.com/products/ignite-u
 
 Let's define our styles:
 
-<!-- WebComponents -->
-
 ```ts
 public webGridCellStylesHandler = {
     background: (rowData, columnKey, cellValue, rowIndex) => rowIndex % 2 === 0 ? "#EFF4FD" : null,
@@ -347,8 +337,6 @@ public webGridCellStylesHandler = {
     }
 }
 ```
-
-<!-- WebComponents -->
 
 ```html
 <igc-column id="col1">
@@ -411,8 +399,6 @@ export class AthletesData extends Array<AthletesDataItem> {
 
 - If there are cells bind to the same condition (from different columns) and one cell is updated, the other cells won't be updated based on the new value, if the condition is met.
 
-<!-- Angular, WebComponents -->
-
 A check should be performed in order to apply the changes to the rest of the cells. The example below shows how to do that.
 
 ```ts
@@ -448,8 +434,6 @@ constructor() {
     Col3.cellClasses = this.backgroundClasses;
 }
 ```
-
-<!-- end:Angular, WebComponents -->
 
 <!--ComponentEnd: Grid, HierarchicalGrid, TreeGrid-->
 

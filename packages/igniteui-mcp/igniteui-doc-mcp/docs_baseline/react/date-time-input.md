@@ -66,8 +66,6 @@ root.render(<DateTimeInputOverview/>);
 
 ## Usage
 
-<!-- React -->
-
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
 
 ```cmd
@@ -81,8 +79,6 @@ import { IgrDateTimeInput } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
 
-<!-- end: React -->
-
 ### Value binding
 
 The easiest way to set the value of the [`IgrDateTimeInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatetimeinput.html) component is by passing a Date object to the [`value`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatetimeinput.html#value) property:
@@ -90,8 +86,6 @@ The easiest way to set the value of the [`IgrDateTimeInput`](https://www.infragi
 ```tsx
 <IgrDateTimeInput value={someValue}></IgrDateTimeInput>
 ```
-
-<!-- WebComponents, React -->
 
 The [`IgrDateTimeInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatetimeinput.html) also accepts [ISO 8601](https://tc39.es/ecma262/#sec-date-time-string-format) strings.
 
@@ -110,8 +104,6 @@ Time-only strings are normally not defined in the `ECMA` specification, however 
 If a full `ISO` string is bound, the directive will parse it only if all elements required by [Date.parse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse#date_time_string_format) are provided.
 
 All falsy values, including `InvalidDate` will be parsed as `null`. Incomplete date-only, time-only, or full `ISO` strings will be parsed as `InvalidDate`.
-
-<!-- end: WebComponents, React -->
 
 ### Keyboard Navigation
 
@@ -263,7 +255,7 @@ Furthermore, users can construct a displayFormat string using the supported symb
 |   | `tttt` | Long | noon |
 |   | `ttttt` | Narrow | n |
 
-> \[!Note]
+> [!Note]
 > Many locales use the same time period string, irrespective of the format specified. Also, it has an effect only if a 12-hour clock is used.
 
 ## Min/max value

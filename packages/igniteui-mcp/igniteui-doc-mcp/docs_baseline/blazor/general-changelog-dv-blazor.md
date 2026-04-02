@@ -18,6 +18,15 @@ All notable changes for each version of Ignite UI for Blazor are documented on t
 
 - As of version 2024.2, the Ignite UI for Blazor toolset supports .NET 9. For more information on .NET 9 please refer to [this article on Microsoft's site](https://learn.microsoft.com/en-us/dotnet/core/whats-new/dotnet-9/overview).
 
+## **25.2.83 (March 2026)**
+
+### Bug Fixes
+
+| Bug Number | Control | Description |
+|------------|---------|-------------|
+| 3229  | Grids | Latest version of Blazor Grids shows Trial watermark for Licensed version |
+| 2754  | IgbTabs | Changing the check state for IgbSwitch inside the tab causes the tab content to disappear |
+
 ## **25.2.77 (March 2026)**
 
 ### IgniteUI.Blazor (Grids)
@@ -409,7 +418,7 @@ The following properties of these components are now nullable:
 
 ### IgniteUI.Blazor (Geographic Map)
 
-> \[!Note]
+> [!Note]
 > As of June 30, 2025 all Microsoft Bing Maps for Enterprise Basic (Free) accounts will be retired. If you're still using an unpaid Basic Account and key, now is the time to act to avoid service disruptions. Bing Maps for Enterprise license holders can continue to use Bing Maps in their applications until June 30,2028.
 > For more details please visit:
 
@@ -987,7 +996,7 @@ Added significant improvements to default behaviors, and refined the Category Ch
   - GroupSorts
   - GroupSortDescriptions
 
-> \[!Note]
+> [!Note]
 > [Chart Aggregation](charts/features/chart-data-aggregations.md) will not work when using [`IncludedProperties`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_IncludedProperties) | [`ExcludedProperties`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_ExcludedProperties). These properties on the chart are meant for non-aggregated data. Once you attempt to aggregate data these properties should no longer be used. The reason it does not work is because aggregation replaces the collection that is passed to the chart for render. The include/exclude properties are designed to filter in/out properties of that data and those properties no longer exist in the new aggregated collection.
 
 ### IgniteUI.Blazor (Data Grid)
@@ -1036,7 +1045,7 @@ Added New Feature - [Row Paging](grids/data-grid/row-paging.md) which is used to
 
 ## **21.2.52 (December 2021)**
 
-> \[!Note]
+> [!Note]
 > The following breaking changes were introduced
 
 ### IgniteUI.Blazor (Data Grid)
@@ -1058,7 +1067,7 @@ Added New Feature - [Row Paging](grids/data-grid/row-paging.md) which is used to
 
 ## **21.2.22 (November 2021)**
 
-> \[!Note]
+> [!Note]
 > The **Igb** prefix is now required for the Ignite UI for Blazor components and nested elements within each component. This API change was necessary to avoid ambiguity between Infragistics controls and 3rd party controls.
 >
 > For example, `<CategoryChart/>` instead of `<CategoryChart/>`
@@ -1183,7 +1192,7 @@ for example:
 
 #### Geographic Map
 
-> \[!Note]
+> [!Note]
 > These features are CTP
 
 - Added support for wrap around display of the map (scroll infinitely horizontally)

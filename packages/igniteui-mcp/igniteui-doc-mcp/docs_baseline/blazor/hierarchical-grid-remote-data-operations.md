@@ -20,8 +20,6 @@ You can perform these tasks remotely and feed the resulting data to the [`IgbHie
 
 <!-- ComponentStart: HierarchicalGrid -->
 
-<!-- Blazor -->
-
 As Blazor Server is already a remote instance, unlike the demos in the other platforms we do not need to set another remote instance for the data, as the data is already remote. In order to do remote paging, we just need to set a couple of methods ins the data class
 
 ```razor
@@ -37,15 +35,11 @@ As Blazor Server is already a remote instance, unlike the demos in the other pla
         }
 ```
 
-<!-- end: Blazor -->
-
 <!-- ComponentEnd: HierarchicalGrid -->
 
 After declaring the service, we need to create a component, which will be responsible for the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) construction and data subscription.
 
 <!-- ComponentStart: HierarchicalGrid -->
-
-<!-- Blazor -->
 
 First we should load some data to the grid. It is best to do after the grid has been rendered to avoid any timing issues.
 
@@ -283,8 +277,6 @@ namespace Infragistics.Samples
 }
 ```
 
-
-<!-- end: Blazor -->
 
 <!-- ComponentEnd: HierarchicalGrid -->
 

@@ -111,15 +111,11 @@ export class OrdersTreeData extends Array<OrdersTreeDataItem> {
 
 You can sort any column or a combination of columns through the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) API using the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) `Sort` method:
 
-<!-- WebComponents -->
-
 ```typescript
 import { SortingDirection } from 'igniteui-webcomponents-grids';
 ```
 
 <!-- ComponentStart: TreeGrid -->
-
-<!-- WebComponents -->
 
 ```typescript
 
@@ -135,14 +131,12 @@ this.treeGrid.sort([
 
 <!-- ComponentEnd: TreeGrid -->
 
-> \[!Note]
+> [!Note]
 > Sorting is performed using our `DefaultSortingStrategy` algorithm. Any [`IgcColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html) or `ISortingExpression` can use a custom implementation of the `ISortingStrategy` as a substitute algorithm. This is useful when custom sorting needs to be defined for complex template columns, or image columns, for example.
 
 As with the filtering behavior, you can clear the sorting state by using the `ClearSort` method:
 
 <!-- ComponentStart: TreeGrid -->
-
-<!-- Angular, WebComponents -->
 
 ```typescript
 // Removes the sorting state from the Category column
@@ -154,17 +148,15 @@ this.treeGrid.clearSort();
 
 <!-- ComponentEnd: TreeGrid -->
 
-> \[!Note]
+> [!Note]
 > The [`sortStrategy`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#sortStrategy) of the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) is of different type compared to the [`sortStrategy`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#sortStrategy) of the [`IgcColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html), since they work in different scopes and expose different parameters.
 
-> \[!Note]
+> [!Note]
 > The sorting operation **DOES NOT** change the underlying data source of the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html).
 
 ## Initial Sorting State
 
 It is possible to set the initial sorting state of the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) by passing an array of sorting expressions to the `SortingExpressions` property of the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html).
-
-<!-- WebComponents -->
 
 ```typescript
 public connectedCallback() {
@@ -177,7 +169,7 @@ public connectedCallback() {
 
 <!-- ComponentEnd: TreeGrid -->
 
-> \[!Note]
+> [!Note]
 > If values of type `string` are used by a column of [`dataType`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#dataType) `Date`, the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) won't parse them to `Date` objects and using [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) `Sorting` won't work as expected. If you want to use `string` objects, additional logic should be implemented on an application level, in order to parse the values to `Date` objects.
 
 ## Sorting Indicators Templates
@@ -185,8 +177,6 @@ public connectedCallback() {
 The sorting indicator icon in the column header can be customized using a template. The following properties are available for templating the sorting indicator for any sorting state (ascending, descending, none):
 
 - `SortHeaderIconTemplate` – re-templates the sorting icon when no sorting is applied.
-
-<!-- WebComponents -->
 
 ```ts
 constructor() {
@@ -200,11 +190,7 @@ public sortHeaderIconTemplate = (ctx: IgcGridHeaderTemplateContext) => {
 }
 ```
 
-<!-- end: WebComponents -->
-
 - `SortAscendingHeaderIconTemplate` – re-templates the sorting icon when the column is sorted in ascending order.
-
-<!-- WebComponents -->
 
 ```ts
 constructor() {
@@ -218,11 +204,7 @@ public sortAscendingHeaderIconTemplate = (ctx: IgcGridHeaderTemplateContext) => 
 }
 ```
 
-<!-- end: WebComponents -->
-
 - `SortDescendingHeaderIconTemplate` – re-templates the sorting icon when the column is sorted in descending order.
-
-<!-- WebComponents -->
 
 ```ts
 constructor() {
@@ -235,10 +217,6 @@ public sortDescendingHeaderIconTemplate = (ctx: IgcGridHeaderTemplateContext) =>
     return html`<igc-icon name="expand_more"></igc-icon>`;
 }
 ```
-
-<!-- end: WebComponents -->
-
-<!-- WebComponents, Blazor, React -->
 
 ## Styling
 
@@ -304,8 +282,6 @@ export class OrdersTreeData extends Array<OrdersTreeDataItem> {
 }
 ```
 
-
-<!-- end: WebComponents, Blazor, React -->
 
 ## API References
 

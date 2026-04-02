@@ -49,8 +49,6 @@ root.render(<CalendarOverview/>);
 
 ## How To Create a Calendar in React with Ignite UI
 
-<!-- React -->
-
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
 
 ```cmd
@@ -63,6 +61,8 @@ You will then need to import the Ignite UI for React [`IgrCalendar`](https://www
 import { IgrCalendar } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
+
+Before using the [`IgrCalendar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendar.html), you need to register it as follows:
 
 For a complete introduction to the Ignite UI for React, read the [**Getting Started**](../general-getting-started.md) topic.
 
@@ -152,10 +152,10 @@ The Ignite UI for React Calendar component allows you to switch between three di
 
 By default, the Ignite UI for React Calendar component renders a header area which contains information about the selected dates. You could hide the header by setting the `HasHeader` property to **false**. You could also configure `vertical` or `horizontal` orientation of the header using the [`headerOrientation`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendar.html#headerOrientation) property.
 
-> \[!Note]
+> [!Note]
 > Please note that the Ignite UI for React Calendar header is not rendered when the [`selection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendarbase.html#selection) is set to multiple.
 
-> \[!Note]
+> [!Note]
 > Please note that the Ignite UI for React Calendar DOM properties use `camelCase` naming while their corresponding HTML attributes are using `kebab-case`. For example the [`headerOrientation`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendar.html#headerOrientation) property corresponds to the `header-orientation` attribute.
 
 The Ignite UI for React Calendar component exposes a `title` slot which allows you to customize the title of the header.
@@ -199,8 +199,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CalendarHeader/>);
 ```
 
-
-<!-- WebComponents, React -->
 
 ### Localization and Formatting
 
@@ -318,8 +316,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CalendarFormatting/>);
 ```
 
-
-<!-- end: WebComponents, React -->
 
 ### Disabled dates
 

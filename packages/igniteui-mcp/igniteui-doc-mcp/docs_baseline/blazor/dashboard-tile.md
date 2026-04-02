@@ -994,8 +994,6 @@ Interacting with the chart type menu in the toolbar will allow for selecting a d
 
 ## Dependencies
 
-<!-- Blazor -->
-
 Add the **IgniteUI.Blazor.Controls** namespace in the **\_Imports.razor** file:
 
 ```razor
@@ -1016,8 +1014,6 @@ builder.Services.AddIgniteUIBlazor(
     typeof(IgbDashboardTileModule)
 );
 ```
-
-<!-- end: Blazor -->
 
 ## Usage
 

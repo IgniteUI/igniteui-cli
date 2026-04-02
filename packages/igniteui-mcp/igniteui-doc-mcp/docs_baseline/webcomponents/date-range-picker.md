@@ -23,8 +23,6 @@ Below is a sample demonstrating the [`IgcDateRangePickerComponent`](https://www.
 
 ### Getting Started
 
-<!-- WebComponents -->
-
 To start using the [`IgcDateRangePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html), you first need to install the Ignite UI for Web Components by running the following command:
 
 ```cmd
@@ -39,8 +37,6 @@ import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
 defineComponents(IgcDateRangePickerComponent);
 ```
-
-<!-- end: WebComponents -->
 
 Now you can start with a basic configuration of the Web Components [`IgcDateRangePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html).
 
@@ -81,16 +77,12 @@ let endDate = new Date(2025, 4, 8);
 dateRange.value = { start: startDate, end: endDate }
 ```
 
-<!-- WebComponents, React -->
-
 In addition, the value can be set as attribute. In this case it should represent an object that can be parsed correctly as JSON, where the `start` and `end` fields should have date values in the ISO 8601 format:
 
 ```html
 <igc-date-range-picker value='{"start":"2025-01-01","end":"2025-01-02"}'>
 <igc-date-range-picker/>
 ```
-
-<!-- end: WebComponents, React -->
 
 ### Read-only & Non-editable
 

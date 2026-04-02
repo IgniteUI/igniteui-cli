@@ -134,8 +134,6 @@ In order enable column editing, make sure [`Editable`](https://www.infragistics.
 
 Once the column editing is enabled, you can start by adding your [`IgbCombo`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCombo.html). Please note that here in order to have only one single selection available, you will need to use set the [`SingleSelect`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCombo.html#IgniteUI_Blazor_Controls_IgbCombo_SingleSelect) property.
 
-<!-- WebComponents, Blazor, React -->
-
 To get started with the [`IgbCombo`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCombo.html), first you need to import it:
 
 ```razor
@@ -186,10 +184,6 @@ igRegisterScript("CountryChange", (ctx) => {
 });
 ```
 
-<!-- end: WebComponents, Blazor, React -->
-
-<!-- Blazor -->
-
 And lastly, adding the [`IgbLinearProgress`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbLinearProgress.html), which is required while loading the list of data.
 
 ```razor
@@ -199,8 +193,6 @@ And lastly, adding the [`IgbLinearProgress`](https://www.infragistics.com/blazor
         return @<div style="display:flex;flex-direction:column;"><IgbCombo id="@id" Placeholder="Choose Region..." SingleSelect=true ValueKey="Region" DisplayKey="Region" ChangeScript="RegionChange"></IgbCombo><IgbLinearProgress Indeterminate=true></IgbLinearProgress></div>;
     };
 ```
-
-<!-- end: Blazor -->
 
 ## Known Issues and Limitations
 

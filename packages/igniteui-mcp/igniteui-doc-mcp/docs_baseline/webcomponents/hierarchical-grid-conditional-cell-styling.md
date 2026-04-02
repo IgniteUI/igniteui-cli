@@ -28,8 +28,6 @@ Further in this topic we will cover both of them in more details.
 
 You can conditionally style the [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html) rows by setting the [`rowClasses`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#rowClasses) input and define custom rules.
 
-<!-- WebComponents -->
-
 ```html
 <igc-hierarchical-grid id="grid" height="600px" width="100%">
 </igc-hierarchical-grid>
@@ -43,8 +41,6 @@ constructor() {
 ```
 
 The [`rowClasses`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#rowClasses) input accepts an object literal, containing key-value pairs, where the key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value.
-
-<!-- WebComponents -->
 
 ```ts
 public rowClasses = {
@@ -78,8 +74,6 @@ The [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignit
 
 > The callback signature for both [`rowStyles`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#rowStyles) and [`rowClasses`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#rowClasses) is:
 
-<!-- WebComponents -->
-
 ```ts
 (row: IgcRowType) => boolean
 ```
@@ -87,8 +81,6 @@ The [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignit
 Let's define our styles:
 
 <!-- ComponentStart: HierarchicalGrid -->
-
-<!-- WebComponents -->
 
 ```typescript
 public rowStyles = {
@@ -159,8 +151,6 @@ The [`cellClasses`](https://www.infragistics.com/products/ignite-ui-web-componen
 
 <!-- ComponentStart: HierarchicalGrid -->
 
-<!-- Angular, WebComponents -->
-
 ```typescript
 public grammyNominationsCellClassesHandler = {
     downFont: (rowData: any, columnKey: any): boolean => rowData[columnKey] < 5,
@@ -210,8 +200,6 @@ Columns expose the [`cellStyles`](https://www.infragistics.com/products/ignite-u
 
 Let's define our styles:
 
-<!-- WebComponents -->
-
 ```ts
 public cellStylesHandler = {
     background: (rowData, columnKey, cellValue, rowIndex) => rowIndex % 2 === 0 ? "#EFF4FD" : null,
@@ -223,8 +211,6 @@ public cellStylesHandler = {
     }
 }
 ```
-
-<!-- WebComponents -->
 
 ```html
 <igc-column id="col1">
@@ -251,8 +237,6 @@ constructor() {
 ## Known issues and limitations
 
 - If there are cells bind to the same condition (from different columns) and one cell is updated, the other cells won't be updated based on the new value, if the condition is met.
-
-<!-- Angular, WebComponents -->
 
 A check should be performed in order to apply the changes to the rest of the cells. The example below shows how to do that.
 
@@ -289,8 +273,6 @@ constructor() {
     Col3.cellClasses = this.backgroundClasses;
 }
 ```
-
-<!-- end:Angular, WebComponents -->
 
 <!--ComponentEnd: Grid, HierarchicalGrid, TreeGrid-->
 

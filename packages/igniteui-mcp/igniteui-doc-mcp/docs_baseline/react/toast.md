@@ -54,8 +54,6 @@ root.render(<ToastOverview />);
 
 ### How To Use Ignite UI for React Toast Notification
 
-<!-- React -->
-
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
 
 ```cmd
@@ -68,6 +66,8 @@ You will then need to import the React [`IgrToast`](https://www.infragistics.com
 import { IgrToast } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
+
+Before using the React [`IgrToast`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtoast.html), you need to register it as follows:
 
 For a complete introduction to the Ignite UI for React, read the [**Getting Started**](../general-getting-started.md) topic.
 

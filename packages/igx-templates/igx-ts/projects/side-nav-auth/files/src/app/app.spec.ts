@@ -3,7 +3,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { IgxLayoutModule, IgxNavbarModule, IgxNavigationDrawerModule, IgxRippleModule } from 'igniteui-angular';
 import { App } from './app';
-import { AuthenticationModule } from './authentication';
+import { provideAuthentication } from './authentication/provide-authentication';
 
 describe('App', () => {
   beforeEach(async () => {
@@ -12,11 +12,13 @@ describe('App', () => {
         NoopAnimationsModule,
         RouterModule.forRoot([]),
         IgxNavigationDrawerModule,
-        AuthenticationModule,
         IgxNavbarModule,
         IgxLayoutModule,
         IgxRippleModule,
         App
+      ],
+      providers: [
+        ...provideAuthentication()
       ]
     }).compileComponents();
   });

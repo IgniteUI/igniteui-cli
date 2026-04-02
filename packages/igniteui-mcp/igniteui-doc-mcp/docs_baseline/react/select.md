@@ -47,8 +47,6 @@ root.render(<SelectOverview />);
 
 ## Usage
 
-<!-- React -->
-
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
 
 ```cmd
@@ -62,14 +60,10 @@ import { IgrSelect, IgrSelectItem } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
 
-<!-- end: React -->
-
-> \[!Note]
+> [!Note]
 > Please note that the select header and group components are not mandatory unless you want to use them.
 
 To start using the component add the [`IgrSelect`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrselect.html) along with a list of [`IgrSelectItem`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrselectitem.html)'s to choose from:
-
-<!-- React -->
 
 ```tsx
 <IgrSelect>
@@ -79,8 +73,6 @@ To start using the component add the [`IgrSelect`](https://www.infragistics.com/
   <IgrSelectItem value="Mango"><span>Mango</span></IgrSelectItem>
 </IgrSelect>
 ```
-
-<!-- end: React -->
 
 ### Select
 
@@ -196,8 +188,6 @@ root.render(<SelectHeader />);
 ```
 
 
-<!-- React -->
-
 ```tsx
 <IgrSelect>
   <IgrSelectHeader>
@@ -206,13 +196,11 @@ root.render(<SelectHeader />);
 </IgrSelect>
 ```
 
-<!-- end: React -->
-
 ### Group
 
 Multiple [`IgrSelectItem`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrselectitem.html)s can be placed between the opening and closing brackets of an [`IgrSelectGroup`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrselectgroup.html) component so that users can visually group them together. The [`IgrSelectGroup`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrselectgroup.html) can be labelled via its `label` slot and disabled via its [`disabled`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrselectgroup.html#disabled) property.
 
-> \[!Note]
+> [!Note]
 > Keep in mind that if a select group is disabled, you cannot enable separate items of it.
 
 ```css
@@ -341,8 +329,6 @@ root.render(<SelectGroup />);
 ```
 
 
-<!-- React -->
-
 ```tsx
 <IgrSelect>
   <IgrSelectGroup>
@@ -372,8 +358,6 @@ root.render(<SelectGroup />);
 </IgrSelect>
 ```
 
-<!-- end: React -->
-
 ## Validation
 
 In addition, the [`IgrSelect`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrselect.html) supports most of the [`IgrInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html) properties, such as [`required`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrselect.html#required), [`disabled`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrselect.html#disabled), [`autofocus`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html#autofocus), etc. The component also exposes a method bound to its validation:
@@ -398,10 +382,8 @@ When the select is focused and the list of options is **visible**:
 - Using the <kbd>↑</kbd> <kbd>↓</kbd> keys will activate the next item in the list.
 - Using the <kbd>HOME</kbd> or <kbd>END</kbd> keys will activate the first or last item in the list.
 
-> \[!Note]
+> [!Note]
 > The [`IgrSelect`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrselect.html) component supports only **single** selection of items.
-
-<!-- WebComponents, React -->
 
 ## Styling
 
@@ -577,8 +559,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<SelectGroup />);
 ```
 
-
-<!-- end: WebComponents, React -->
 
 ## API Reference
 

@@ -249,7 +249,7 @@ IgrSpreadsheetModule.register();
 
 Now that the React spreadsheet module is imported, next is the basic configuration of the spreadsheet.
 
-> \[!Note]
+> [!Note]
 >
 > In the following code snippet, an external [ExcelUtility](excel-utility.md) class is used to save and load a [`workbook`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_spreadsheet.igrspreadsheet.html#workbook).
 

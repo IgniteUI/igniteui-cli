@@ -61,8 +61,6 @@ The built-in row pinning UI is enabled by adding an [`IgcActionStrip`](https://w
 
 <!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid -->
 
-<!-- WebComponents -->
-
 <!-- ComponentStart: Grid, HierarchicalGrid, TreeGrid -->
 
 ```html
@@ -77,23 +75,17 @@ The built-in row pinning UI is enabled by adding an [`IgcActionStrip`](https://w
 
 <!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid -->
 
-<!-- end: WebComponents -->
-
 <!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid -->
 
 ## Row Pinning API
 
 Row pinning is controlled through the [`pinned`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#pinned) input of the `Row`. Pinned rows are rendered at the top of the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) by default and stay fixed through vertical scrolling of the unpinned rows in the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) body.
 
-<!-- Angular, WebComponents -->
-
 ```typescript
 this.grid.getRowByIndex(0).pinned = true;
 ```
 
 You may also use the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html)'s [`pinRow`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#pinRow) or [`unpinRow`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#unpinRow) methods of the to pin or unpin records by their ID:
-
-<!-- Angular, WebComponents -->
 
 ```typescript
 this.grid.pinRow('ALFKI');
@@ -103,8 +95,6 @@ this.grid.unpinRow('ALFKI');
 Note that the row ID is the primary key value, defined by the `PrimaryKey` of the grid, or the record instance itself. Both methods return a boolean value indicating whether their respective operation is successful or not. Usually the reason they fail is that the row is already in the desired state.
 
 A row is pinned below the last pinned row. Changing the order of the pinned rows can be done by subscribing to the `RowPinning` event and changing the `InsertAtIndex` property of the event arguments to the desired position index.
-
-<!-- WebComponents -->
 
 ```html
 <igc-tree-grid id="grid" auto-generate="true">
@@ -123,14 +113,10 @@ public rowPinning(event) {
 }
 ```
 
-<!-- end: WebComponents -->
-
 ## Pinning Position
 
 You can change the row pinning position via the `Pinning` configuration option. It allows you to set the pin area position to either Top or Bottom.
 When set to Bottom pinned rows are rendered at the bottom of the grid, after the unpinned rows. Unpinned rows can be scrolled vertically, while the pinned rows remain fixed at the bottom.
-
-<!-- WebComponents -->
 
 ```html
 <igc-tree-grid id="dataGrid" auto-generate="true"></igc-tree-grid>
@@ -152,16 +138,6 @@ You can define your custom UI and change the pin state of the rows via the relat
 Let's say that instead of an action strip you would like to show a pin icon in every row allowing the end-user to click and change a particular row's pin state.
 This can be done by adding an extra column with a cell template containing the custom icon.
 
-<!-- end: Angular -->
-
-<!-- WebComponents -->
-
-```html
-<igc-tree-grid id="grid" primary-key="ID" auto-generate="false">
-    <igc-column id="column1" name="column1"></igc-column>
-</igc-tree-grid>
-```
-
 ```typescript
 constructor() {
     var grid = document.getElementById('grid') as IgcTreeGridComponent;
@@ -177,15 +153,11 @@ public pinCellTemplate = (ctx: IgcCellTemplateContext) => {
 }
 ```
 
-<!-- end: WebComponents -->
-
 <!-- ComponentEnd: Grid, TreeGrid -->
 
 <!-- ComponentStart: Grid, TreeGrid -->
 
 On click of the custom icon the pin state of the related row can be changed using the row's API methods.
-
-<!-- Angular, WebComponents -->
 
 ```typescript
 public togglePinning(index: number) {
@@ -242,8 +214,6 @@ export class EmployeesNestedTreeData extends Array<EmployeesNestedTreeDataItem> 
 - The row pinning state is not exported to excel. The grid is exported as if no row pinning is applied.
 - The copies of pinned rows in the scrollable area of the grid are an integral part of how other grid features achieve their functionality in the presence of pinned rows and therefore their creation cannot be disabled nor can they be removed.
 - As Row Selection works entirely with row Ids, selecting pinned rows selects their copies as well (and vice versa). Additionally, range selection (e.g. using <kbd>SHIFT</kbd> + click) within the pinned area works the same way as selecting a range of rows within the scrollable area. The resulting selection includes all rows in between even if they are not currently pinned. Getting the selected rows through the API only returns a single instance of each selected record.
-
-<!-- WebComponents, Blazor, React -->
 
 ## Styling
 
@@ -311,8 +281,6 @@ export class EmployeesNestedTreeData extends Array<EmployeesNestedTreeDataItem> 
     }
 ```
 
-
-<!-- end: WebComponents, Blazor, React -->
 
 ## API References
 

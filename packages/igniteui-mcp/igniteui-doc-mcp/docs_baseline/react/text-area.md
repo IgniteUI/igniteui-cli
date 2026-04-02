@@ -15,8 +15,6 @@ The Ignite UI for React Text Area represents a multi-line plain-text editing con
 
 <div class="divider--half"></div>
 
-<!-- React, WebComponents, Blazor -->
-
 ```css
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
@@ -43,11 +41,7 @@ root.render(<TextAreaOverview/>);
 ```
 
 
-<!-- end:React, WebComponents, Blazor -->
-
 ## Dependencies
-
-<!-- React -->
 
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
 
@@ -61,6 +55,8 @@ You will then need to import the [`IgrTextarea`](https://www.infragistics.com/pr
 import { IgrTextarea } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
+
+After we import the [`IgrTextarea`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtextarea.html) component we are ready to start using it, so let's add our first Text Area.
 
 ```tsx
 <IgrTextarea rows="5" label="Tell us your story:"><span>It was a dark and stormy night...</span></IgrTextarea>

@@ -28,12 +28,6 @@ The toolbar and the predefined UI components support React events and expose API
 
 The predefined [`IgrGridToolbarActions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbaractions.html) and [`IgrGridToolbarTitle`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbartitle.html) UI components are added inside the [`IgrGridToolbar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbar.html) and this is all needed to have a toolbar providing default interactions with the corresponding Grid features:
 
-<!-- React -->
-
-<!-- end: React -->
-
-<!-- React -->
-
 <!-- ComponentStart: HierarchicalGrid -->
 
 ```tsx
@@ -54,18 +48,10 @@ The predefined [`IgrGridToolbarActions`](https://www.infragistics.com/products/i
 
 <!-- ComponentEnd: HierarchicalGrid -->
 
-<!-- end: React -->
-
-> \[!Note]
+> [!Note]
 > As seen in the code snippet above, the predefined `Actions` UI components are wrapped in the [`IgrGridToolbarActions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbaractions.html) container. This way, the toolbar title is aligned to the left of the toolbar and the actions are aligned to the right of the toolbar.
 
 Of course, each of these UIs can be added independently of each other, or may not be added at all. This way the toolbar container will be rendered empty:
-
-<!-- React -->
-
-<!-- end: React -->
-
-<!-- React -->
 
 <!-- ComponentStart: HierarchicalGrid -->
 
@@ -78,23 +64,13 @@ Of course, each of these UIs can be added independently of each other, or may no
 
 <!-- ComponentEnd: HierarchicalGrid -->
 
-<!-- end: React -->
-
 For a comprehensive look over each of the default UI components, continue reading the **Features** section below.
-
-<!-- Angular, WebComponents, React -->
 
 <!-- ComponentStart: HierarchicalGrid -->
 
 ## Toolbar with Child Grids
 
-<!-- WebComponents, React -->
-
 Due to certain limitations in how the child grids of an [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html) are implemented and how DI scope works, to define a toolbar component inside the [`IgrRowIsland`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrrowisland.html), use the `ToolbarTemplate` input property. This allows child grids to create their own separate toolbar instances:
-
-<!-- end: WebComponents, React -->
-
-<!-- React -->
 
 <!-- ComponentStart: HierarchicalGrid -->
 
@@ -119,11 +95,7 @@ const rowIslandToolbarTemplate = (ctx: IgrGridToolbarTemplateContext) => {
 </IgrHierarchicalGrid>
 ```
 
-<!-- end: React -->
-
 <!-- ComponentEnd: HierarchicalGrid -->
-
-<!-- end: Angular, WebComponents, React -->
 
 ## Features
 
@@ -145,8 +117,6 @@ Setting a title for the toolbar in your grid is achieved by using the [`IgrGridT
 
 Users can provide anything from simple text to more involved templates.
 
-<!-- React -->
-
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
 ```tsx
@@ -159,15 +129,11 @@ Users can provide anything from simple text to more involved templates.
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
-<!-- end: React -->
-
 ### Actions
 
 The [`IgrGridToolbarActions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbaractions.html) is where users can place actions/interactions in relation to the parent grid.
 As with the title portion of the toolbar, users can provide anything inside that template part, including the default
 toolbar interaction components.
-
-<!-- React -->
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -181,15 +147,11 @@ toolbar interaction components.
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
-<!-- end: React -->
-
 ### Column Pinning
 
 The [`IgrGridToolbarPinning`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbarpinning.html) component provides the default UI for interacting with column pinning in the grid.
 
 The component is setup to work out of the box with the parent grid containing the toolbar as well as several input properties for customizing the UI, such as the component title, the placeholder for the component input and the height of the dropdown itself.
-
-<!-- React -->
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -203,14 +165,10 @@ The component is setup to work out of the box with the parent grid containing th
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
-<!-- end: React -->
-
 ### Column Hiding
 
 The [`IgrGridToolbarHiding`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbarhiding.html) provides the default UI for interacting with column hiding. Exposes the same input properties for customizing the UI, such as the component
 title, the placeholder for the component input and the height of the dropdown itself.
-
-<!-- React -->
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -224,13 +182,9 @@ title, the placeholder for the component input and the height of the dropdown it
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
-<!-- end: React -->
-
 ### Advanced Filtering
 
 Toolbar Advanced Filtering component provides the default UI for the Advanced Filtering feature. The component exposes a way to change the default text of the button.
-
-<!-- React -->
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -244,13 +198,11 @@ Toolbar Advanced Filtering component provides the default UI for the Advanced Fi
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
-<!-- end: React -->
-
 ### Data Exporting
 
 <!-- ComponentStart: HierarchicalGrid -->
 
-> \[!Note]
+> [!Note]
 > When exporting the [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html) or any of its child grids down the hierarchy, the exported data will be a flat collection of rows
 > belonging to their respective grid (the child grids will not be included in the exported data).
 
@@ -264,8 +216,6 @@ These range from changing the display text, to enabling/disabling options in the
 
 Here is a snippet showing some of the options which can be customized through the React template:
 
-<!-- React -->
-
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
 ```tsx
@@ -278,11 +228,9 @@ Here is a snippet showing some of the options which can be customized through th
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
-<!-- end: React -->
-
 In addition to changing the exported filename, the user can further configure the exporter options by waiting for the `ToolbarExporting` event and customizing the options entry in the event properties.
 
-> \[!Note]
+> [!Note]
 > By default when exporting to CSV the exporter exports using a comma separator and uses a '.csv' extension for the output file.
 > You can customize these exporting parameters by subscribing to events of the exporter or changing the values of the exporter options fields.
 > You can also cancel the export process by setting the cancel field of the event args to true.
@@ -2233,8 +2181,6 @@ root.render(<App />);
 ```
 
 
-<!-- WebComponents, Blazor, React -->
-
 ## Styling
 
 In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
@@ -2444,18 +2390,12 @@ root.render(<Sample/>);
 ```
 
 
-<!-- end: WebComponents, Blazor, React -->
-
 <!-- ComponentStart: HierarchicalGrid -->
-
-<!-- React, Blazor -->
 
 ## Known Limitations
 
-> \[!Note]
+> [!Note]
 > Currently, defining a toolbar component directly inside the IgrRowIsland is not supported. Use the `ToolbarTemplate` property instead.
-
-<!-- end: React, Blazor -->
 
 <!-- ComponentEnd: HierarchicalGrid -->
 

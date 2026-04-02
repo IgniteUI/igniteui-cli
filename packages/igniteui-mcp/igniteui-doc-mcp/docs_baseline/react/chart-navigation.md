@@ -527,7 +527,7 @@ root.render(<Sample/>);
 
 ## Chart Navigation through Code
 
-> \[!Note]
+> [!Note]
 > Code navigation of the chart can only be used for the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control.
 
 The React data chart provides several navigation properties that are updated each time a zoom or pan operation happens in the chart. You can also set each of these properties to zoom or pan the data chart programmatically. The following is a list of these properties:

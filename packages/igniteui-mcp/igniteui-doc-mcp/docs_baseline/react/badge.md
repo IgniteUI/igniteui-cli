@@ -49,8 +49,6 @@ root.render(<BadgeOutlined/>);
 
 ## Usage
 
-<!-- React -->
-
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
 
 ```cmd
@@ -63,6 +61,8 @@ You will then need to import the [`IgrBadge`](https://www.infragistics.com/produ
 import { IgrBadge } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
+
+The simplest way to start using the [`IgrBadge`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbadge.html) is as follows:
 
 ```tsx
 <IgrBadge />

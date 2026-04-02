@@ -102,8 +102,6 @@ Before using the [`IgbCard`](https://www.infragistics.com/blazor/docs/api/api/Ig
 builder.Services.AddIgniteUIBlazor(typeof(IgbCardModule));
 ```
 
-<!-- Blazor -->
-
 You will also need to link an additional CSS file to apply the styling to the [`IgbCard`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCard.html) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
@@ -147,7 +145,7 @@ Then, to represent the demo card template, we can add the following code:
 </IgbCard>
 ```
 
-You will notice a few things above. First, when we want to *tag* an element as a header title, like the `h3` heading, we place it between the [`IgbCardHeader`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCardHeader.html) tags and set its slot name to `title`. Conversely, if we wanted to make another heading element a `subtitle` we would name its slot `subtitle`.
+You will notice a few things above. First, when we want to _tag_ an element as a header title, like the `h3` heading, we place it between the [`IgbCardHeader`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCardHeader.html) tags and set its slot name to `title`. Conversely, if we wanted to make another heading element a `subtitle` we would name its slot `subtitle`.
 
 Any image or video we want to show in the card, we wrap inside the [`IgbCardMedia`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCardMedia.html) tags. The [`IgbCardMedia`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCardMedia.html) allows us to size the content placed inside so that it maintains its aspect ratio while filling the element’s entire content box. If the object's aspect ratio does not match the aspect ratio of its box, then the object will be clipped to fit.
 

@@ -204,8 +204,6 @@ root.render(<DockManagerOverview/>);
 
 <div class="divider--half"></div>
 
-<!-- Angular, React, WebComponents -->
-
 To install the Dock Manager package execute the following command:
 
 ```cmd
@@ -214,11 +212,7 @@ npm install --save igniteui-react-dockmanager
 
 <!-- end: Angular, React, WebComponents -->
 
-<!-- end: Angular, React, WebComponents -->
-
 <div class="divider--half"></div>
-
-<!-- React, WebComponents -->
 
 ## Usage
 
@@ -229,7 +223,7 @@ Once the Dock Manager is imported, you can add it on the page:
 </IgrDockManager>
 ```
 
-> \[!Note]
+> [!Note]
 > Since the Dock Manager component uses ShadowDOM and slots it is not supported on older browsers like Internet Explorer 11 and Edge 18 and below (non-Chromium versions).
 
 The Dock Manager has a [`layout`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdockmanager.html#layout) property, which describes the layout of the panes. To start defining a layout, you should set the [`rootPane`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdocumenthost.html#rootPane) property and add child panes. Here is how you can define a layout with a single content pane:
@@ -590,19 +584,15 @@ private loadLayout() {
 
 The Dock Manager component raises events when specific end-user interactions are performed for example closing, pinning, resizing and dragging a pane. You can find the full list of Dock Manager events in this [topic](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/interfaces/igcdockmanagereventmap.html).
 
-<!-- end: React, WebComponents -->
-
 <div class="divider--half"></div>
 
- <!-- WebComponents, React, Angular -->
+ 
 
 Here is how to add an event listener for the `PaneClose` event:
 
 ```ts
 this.dockManager.addEventListener('paneClose', ev => console.log(ev.detail));
 ```
-
-<!-- end: WebComponents, React, Angular -->
 
 <div class="divider--half"></div>
 
@@ -2065,13 +2055,9 @@ root.render(<DockManagerStyling/>);
 | `horizontal` | Indicates a horizontal position. Applies to `splitter-handle`. |
 | `vertical` | Indicates a vertical position. Applies to `splitter-handle`. |
 
-<!-- React, WebComponents -->
-
 ### Themes
 
 The Dock Manager comes with a light and a dark theme. The light theme is the default one. To change it to dark, you only need to import the **igc.themes.css** file in your css and add the **dark-theme** class to the Dock Manager or any of its parents:
-
-<!-- React -->
 
 ```scss
 @import 'igniteui-dockmanager/dist/collection/styles/igc.themes';
@@ -2081,15 +2067,11 @@ The Dock Manager comes with a light and a dark theme. The light theme is the def
 <IgrDockManager class="dark-theme">
 ```
 
-<!-- end: React -->
-
 ## Localization
 
-The Dock Manager component supports localizing the strings used in the context menus, tooltips and aria attributes. By default, the Dock Manager detects the language of the page by searching for a [lang](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang) attribute on any of its parents. If the [lang](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang) attribute is not set or is set to a value which the Dock Manager does not support, the default language used is [English (en)](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/index.html#IgcDockManagerResourceStringsEN). The Dock Manager provides built-in localized strings for the following languages: [English (en)](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/index.html#IgcDockManagerResourceStringsEN), [Japanese (jp)](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/index.html#IgcDockManagerResourceStringsJP), [Korean (ko)](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/index.html#IgcDockManagerResourceStringsKO) and [Spanish (es)](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/index.html#IgcDockManagerResourceStringsES).
+The Dock Manager lets you localize the strings used in context menus, tooltips, and ARIA attributes. By default, it reads the [lang](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang) attribute from the root `<html>` element to determine which language to use. If the [lang](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang) attribute is missing or set to an unsupported value, the Dock Manager uses [English (en)](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/index.html#IgcDockManagerResourceStringsEN).
 
-The Dock Manager exposes [`resourceStrings`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdockmanager.html#resourceStrings) property which allows you to modify the strings. If you set the [`resourceStrings`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdockmanager.html#resourceStrings) property, the Dock Manager will use your strings no matter what [lang](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang) attribute is set.
-
-<!-- end: React, WebComponents -->
+The Dock Manager also exposes a [`resourceStrings`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdockmanager.html#resourceStrings) property that you can use to modify individual strings directly. When you set the [`resourceStrings`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdockmanager.html#resourceStrings) property, the Dock Manager uses the strings you provide regardless of the [lang](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang) attribute on the page.
 
 ## API References
 

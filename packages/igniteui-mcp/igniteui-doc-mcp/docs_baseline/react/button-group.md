@@ -99,8 +99,6 @@ root.render(<ButtonGroupOverview/>);
 
 ## Usage
 
-<!-- React -->
-
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
 
 ```cmd
@@ -113,8 +111,6 @@ You will then need to import the [`IgrButtonGroup`](https://www.infragistics.com
 import { IgrButtonGroup } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
-
-<!-- end: React -->
 
 For a complete introduction to the Ignite UI for React, read the [**Getting Started**](../general-getting-started.md) topic.
 
@@ -344,7 +340,7 @@ A [`IgrToggleButton`](https://www.infragistics.com/products/ignite-ui-react/docs
 </IgrButtonGroup>
 ```
 
-> \[!Note]
+> [!Note]
 > Setting [`IgrToggleButton`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtogglebutton.html) [`value`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtogglebutton.html#value) attribute is mandatory for using the [`selectedItems`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbuttongroup.html#selectedItems) property of the [`IgrButtonGroup`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbuttongroup.html).
 
 ### Size

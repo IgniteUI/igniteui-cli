@@ -45,8 +45,6 @@ Before using the [`IgbCalendar`](https://www.infragistics.com/blazor/docs/api/ap
 builder.Services.AddIgniteUIBlazor(typeof(IgbCalendarModule));
 ```
 
-<!-- Blazor -->
-
 You will also need to link an additional CSS file to apply the styling to the Ignite UI for Blazor [`IgbCalendar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCalendar.html) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
@@ -117,10 +115,10 @@ The Ignite UI for Blazor Calendar component allows you to switch between three d
 
 By default, the Ignite UI for Blazor Calendar component renders a header area which contains information about the selected dates. You could hide the header by setting the `HasHeader` property to **false**. You could also configure `vertical` or `horizontal` orientation of the header using the [`HeaderOrientation`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCalendar.html#IgniteUI_Blazor_Controls_IgbCalendar_HeaderOrientation) property.
 
-> \[!Note]
+> [!Note]
 > Please note that the Ignite UI for Blazor Calendar header is not rendered when the [`Selection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCalendarBase.html#IgniteUI_Blazor_Controls_IgbCalendarBase_Selection) is set to multiple.
 
-> \[!Note]
+> [!Note]
 > Please note that the Ignite UI for Blazor Calendar DOM properties use `camelCase` naming while their corresponding HTML attributes are using `kebab-case`. For example the [`HeaderOrientation`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCalendar.html#IgniteUI_Blazor_Controls_IgbCalendar_HeaderOrientation) property corresponds to the `header-orientation` attribute.
 
 The Ignite UI for Blazor Calendar component exposes a `title` slot which allows you to customize the title of the header.

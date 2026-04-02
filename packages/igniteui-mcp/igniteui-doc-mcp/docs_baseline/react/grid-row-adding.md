@@ -146,8 +146,6 @@ Then define a [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/
 
 <!-- ComponentStart: Grid -->
 
-<!-- React -->
-
 ```tsx
 <IgrGrid autoGenerate={false} data={NwindData} primaryKey="ProductID" rowEditable={true}>
     <IgrColumn field="ProductID" header="Product ID" dataType="number"></IgrColumn>
@@ -165,15 +163,7 @@ Then define a [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/
 
 <!-- ComponentEnd: Grid -->
 
-<!-- React -->
-
-<!-- end: React -->
-
 <!-- ComponentEnd: TreeGrid -->
-
-<!-- React -->
-
-<!-- end: React -->
 
 > **Note**:
 > Setting primary key is mandatory for row adding operations.
@@ -198,16 +188,12 @@ The internal `BaseTransactionService` is automatically provided for [`grid`](htt
 
 Using [`beginAddRowById`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#beginAddRowById) requires you to specify the row to use as context for the operation by its `RowID` (PK). The method then functions as though the end-user clicked on the add row action strip button for the specified row, spawning the UI under it. You can also make the UI spawn as the very first row in the grid by passing `null` for the first parameter.
 
-<!-- React -->
-
 ```typescript
 gridRef.current.beginAddRowById('ALFKI');  // Spawns the add row UI under the row with PK 'ALFKI'
 gridRef.current.beginAddRowById(null);     // Spawns the add row UI as the first record
 ```
 
 The [`beginAddRowByIndex`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#beginAddRowByIndex) method works similarly but requires you to specify the index at which the UI should spawn. Allowed values range between 0 and the size of the data view - 1.
-
-<!-- React -->
 
 ```typescript
 gridRef.current.beginAddRowByIndex(10);   // Spawns the add row UI at index 10
@@ -250,13 +236,7 @@ After a new row is added through the row adding UI, its position and/or visibili
 
 ### Customizing Text
 
-<!-- WebComponents, React, Blazor -->
-
 Customizing the text of the row adding overlay is possible using the [`rowAddTextTemplate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#rowAddTextTemplate).
-
-<!-- end: WebComponents, React, Blazor -->
-
-<!-- React -->
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -271,8 +251,6 @@ gridRef.current.rowAddTextTemplate = (ctx: IgrGridEmptyTemplateContext) => {
 ```
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid-->
-
-<!-- end: React -->
 
 ## Styling
 

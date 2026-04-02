@@ -107,8 +107,6 @@ export class PivotSalesData extends Array<PivotSalesDataItem> {
 
 The Web Components IgcPivotGrid can be configured via the [`pivotConfiguration`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotgridcomponent.html#pivotConfiguration) property.
 
-<!--WebComponents -->
-
 ```html
 <igc-pivot-grid #grid1 data="data" pivot-configuration="pivotConfigHierarchy">
 </igc-pivot-grid>
@@ -128,8 +126,6 @@ The dimensions can be reordered or moved from one area to another via their corr
 
 A dimension can also describe an expandable hierarchy via the [`childLevel`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotdimension.html#childLevel) property, for example:
 
-<!-- WebComponents -->
-
 ```typescript
    {
             memberFunction: () => 'All',
@@ -142,8 +138,6 @@ A dimension can also describe an expandable hierarchy via the [`childLevel`](htt
             }
     }
 ```
-
-<!-- end: WebComponents -->
 
 In this case the dimension renders an expander in the related section of the grid (row or column) and allows the children to be expanded or collapsed as part of the hierarchy. By default the row dimensions are initially expanded. This behavior can be controlled with the [`defaultExpandState`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotgridcomponent.html#defaultExpandState) property of the Pivot Grid.
 
@@ -161,8 +155,6 @@ As part of the Pivot Grid some additional predefined dimensions are exposed for 
 
 It can be set for rows or columns, for example:
 
-<!-- WebComponents -->
-
 ```typescript
 public pivotConfigHierarchy: IgcPivotConfiguration = {
     rows: [
@@ -172,8 +164,6 @@ public pivotConfigHierarchy: IgcPivotConfiguration = {
 ```
 
 It also allows for further customization via the second option parameter in order to enable or disable a particular part of the hierarchy, for example:
-
-<!-- WebComponents -->
 
 ```typescript
  new IgcPivotDateDimension({ memberName: 'Date', enabled: true }, {
@@ -199,8 +189,6 @@ A value configuration requires a **member** that matches a field from the provid
     Contains the following aggregation functions: `COUNT`.
 
 The current aggregation function can be changed at runtime using the value chip's drop-down. By default, it displays a list of available aggregations based on the field's data type. A custom list of aggregations can also be set via the [`aggregateList`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotvalue.html#aggregateList) property, for example:
-
-<!-- WebComponents -->
 
 ```typescript
 public pivotConfigHierarchy: IgcPivotConfiguration = {
@@ -252,8 +240,6 @@ The `Enable` property controls if a given [`IgcPivotDimension`](https://www.infr
 ### Full Configuration Code
 
 Let's take a look at a basic pivot configuration:
-
-<!-- WebComponents -->
 
 ```typescript
       public pivotConfigHierarchy: IgcPivotConfiguration = {
@@ -416,7 +402,7 @@ The default values are:
 };
 ```
 
-> \[!Note]
+> [!Note]
 > If you have data field values that contain the default keys, make sure to change the separators that match to any other symbols that you are not currently using. Otherwise could lead to unexpected behavior in calculating and showing the aggregated values.
 
 ## Known Issues and Limitations

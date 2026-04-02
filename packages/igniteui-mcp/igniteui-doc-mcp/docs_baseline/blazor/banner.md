@@ -109,8 +109,6 @@ The Ignite UI for Blazor Banner component provides a way to easily display a pro
 
 ## Usage
 
-<!-- Blazor -->
-
 Before using the [`IgbBanner`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBanner.html), you need to register it as follows:
 
 ```razor
@@ -124,8 +122,6 @@ You will also need to link an additional CSS file to apply the styling to the [`
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
 ```
-
-<!-- end: Blazor -->
 
 For a complete introduction to the Ignite UI for Blazor, read the [**Getting Started**](../general-getting-started.md) topic.
 
@@ -150,7 +146,7 @@ In order to display the banner component, use its [`Show`](https://www.infragist
 }
 ```
 
-> \[!NOTE]
+> [!NOTE]
 > The [`IgbBanner`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBanner.html) includes a default action button `OK`, which closes the banner.
 
 ## Examples
@@ -171,7 +167,7 @@ Configuring the message displayed in the banner is easy - just change the conten
 
 An [`IgbIcon`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIcon.html) can be displayed in the banner by using the banner's `prefix` slot. The icon will always be positioned at the beginning of the banner message.
 
-> \[!NOTE]
+> [!NOTE]
 > If several [`IgbIcon`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIcon.html) elements are inserted, the banner will try to position all of them at the beginning. It is strongly advised to pass only one [`IgbIcon`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIcon.html) directly to the banner.
 
 To pass an [`IgbIcon`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIcon.html) to your banner, use the `prefix` slot:
@@ -359,7 +355,7 @@ function handleClosing() {
 }
 ```
 
-> \[!NOTE]
+> [!NOTE]
 > If the changes above are applied, the banner will never close, as the closing event is always cancelled.
 
 ## Advanced Example

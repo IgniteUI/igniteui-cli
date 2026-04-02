@@ -1,6 +1,5 @@
 import { Component, Pipe, PipeTransform, forwardRef } from '@angular/core';
 import { Towns } from './towns-data';
-import { NgFor } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {
   IgxInputGroupComponent,
@@ -23,7 +22,6 @@ import {
     IgxInputDirective,
     IgxAutocompleteDirective,
     IgxDropDownComponent,
-    NgFor,
     IgxDropDownItemComponent,
     forwardRef(() => <%=ClassName%>PipeStartsWith),
   ],

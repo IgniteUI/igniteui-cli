@@ -39,8 +39,6 @@ The Ignite UI for Blazor Radio component allows the user to select a single opti
 
 ### Usage
 
-<!-- Blazor -->
-
 Before using the [`IgbRadio`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadio.html) and the [`IgbRadioGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadioGroup.html), you need to register them as follows:
 
 ```razor
@@ -58,6 +56,8 @@ You will also need to link an additional CSS file to apply the styling to the [`
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
 ```
 
+The simplest way to start using the [`IgbRadio`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadio.html) is as follows:
+
 ```razor
 <IgbRadioGroup>
     <IgbRadio>Apple</IgbRadio>
@@ -67,7 +67,7 @@ You will also need to link an additional CSS file to apply the styling to the [`
 </IgbRadioGroup>
 ```
 
-> \[!WARNING]
+> [!WARNING]
 > The [`IgbRadio`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadio.html) component doesn't work with the standard `<form>` element. Use `Form` instead.
 
 ## Examples

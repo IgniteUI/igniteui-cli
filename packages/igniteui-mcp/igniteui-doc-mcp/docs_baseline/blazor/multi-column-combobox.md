@@ -80,9 +80,9 @@ In order to display your objects in the Multi-Column Combo Box component, you wi
 
 You can configure different properties of the Multi-Column Combo Box's bound `DataSource` to act as the display text for the control as well as the underlying value when a selection is made. This is done by setting the [`TextField`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbMultiColumnComboBox.html#IgniteUI_Blazor_Controls_IgbMultiColumnComboBox_TextField) and [`ValueField`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbMultiColumnComboBox.html#IgniteUI_Blazor_Controls_IgbMultiColumnComboBox_ValueField) properties of the control, respectively, to the name of the property on the data item that you want to represent these things.
 
-<!-- Blazor -->
-
 If the value of the component needs to be updated programmatically, the `ValueChanged` event needs to be handled. The `GetValue` and `GetValueAsync` methods can be used to get the value when not within the `ValueChanged` event handler.
+
+The following code snippet shows how to set these properties, given that the underlying data item has a "Country" and "ID" property:
 
 ```razor
 <IgbMultiColumnComboBox Height="50px" Width="400px"
