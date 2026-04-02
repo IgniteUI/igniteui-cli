@@ -18,14 +18,12 @@ const data: any = [
 
 export default function $(ClassName)() {
   const title = 'Pie Chart';
-  const [chartData] = useState(data);
+  const [chartData, setChartData] = useState([]);
   const legendRef: any = useRef(null);
   const chartRef: any = useRef(null);
 
   useEffect(() => {
-    if (chartRef.current && legendRef.current) {
-      chartRef.current.legend = legendRef.current;
-    }
+    setChartData(data);
   }, []);
 
   return (
@@ -49,6 +47,7 @@ export default function $(ClassName)() {
             height="500px"
             ref={chartRef}
             legendLabelMemberPath="Label"
+            legend={legendRef.current}
           />
         </div>
       </div>

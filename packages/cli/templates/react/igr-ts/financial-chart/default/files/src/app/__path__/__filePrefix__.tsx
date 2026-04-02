@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { IgrFinancialChartModule } from 'igniteui-react-charts';
 import { IgrFinancialChart } from 'igniteui-react-charts';
 import style from './style.module.css';
@@ -22,7 +22,11 @@ const data: any = [
 
 export default function $(ClassName)() {
   const title = 'Financial Chart';
-  const [chartData] = useState(data);
+  const [chartData, setChartData] = useState([]);
+
+  useEffect(() => {
+    setChartData(data);
+  }, []);
 
   return (
     <div>
