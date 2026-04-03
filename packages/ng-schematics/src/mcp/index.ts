@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import * as path from "path";
+import { spawnSync } from "child_process";
 import { Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
-import { Util } from "@igniteui/cli-core";
 import { defer } from "rxjs";
 import { McpOptions } from "./schema";
 
@@ -36,10 +36,7 @@ export default function(options: McpOptions): Rule {
 				args.push("--debug");
 			}
 
-			Util.execSync(
-				`node "${mcpEntry}" ${args.join(" ")}`,
-				{ stdio: "inherit", killSignal: "SIGINT" }
-			);
+			spawnSync(process.execPath, [mcpEntry, ...args], { stdio: "inherit" });
 			return _tree;
 		});
 	};

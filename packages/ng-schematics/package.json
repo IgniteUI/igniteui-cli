@@ -19,7 +19,7 @@
   "schematics": "./src/collection.json",
   "builders": "./src/builders.json",
   "dependencies": {
-    "@angular-devkit/architect": "^0.2100.0",
+    "@angular-devkit/architect": "^0.2102.0",
     "@angular-devkit/core": "^21.0.0",
     "@angular-devkit/schematics": "^21.0.0",
     "@igniteui/angular-templates": "~21.1.1500-rc.0",

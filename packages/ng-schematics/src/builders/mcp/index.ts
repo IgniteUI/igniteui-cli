@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import * as path from "path";
+import { spawnSync } from "child_process";
 import { createBuilder, BuilderContext, BuilderOutput } from "@angular-devkit/architect";
-import { Util } from "@igniteui/cli-core";
 import { McpOptions } from "../../mcp/schema";
 
 export default createBuilder<McpOptions>((options: McpOptions, context: BuilderContext): BuilderOutput => {
@@ -33,9 +33,6 @@ export default createBuilder<McpOptions>((options: McpOptions, context: BuilderC
 		args.push("--debug");
 	}
 
-	Util.execSync(
-		`node "${mcpEntry}" ${args.join(" ")}`,
-		{ stdio: "inherit", killSignal: "SIGINT" }
-	);
+	spawnSync(process.execPath, [mcpEntry, ...args], { stdio: "inherit" });
 	return { success: true };
 });
