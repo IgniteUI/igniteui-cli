@@ -1,0 +1,17 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema",
+	"type": "object",
+	"properties": {
+		"remote": {
+			"type": "string",
+			"description": "Backend URL for remote mode (uses HTTP instead of local SQLite)",
+			"alias": "r"
+		},
+		"debug": {
+			"type": "boolean",
+			"description": "Enable debug logging to mcp-server.log",
+			"default": false,
+			"alias": "d"
+		}
+	}
+}
