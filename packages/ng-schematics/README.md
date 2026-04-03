@@ -43,4 +43,21 @@ ng g @igniteui/angular-schematics:component [templateId] [componentName]
 ```
 
 You can find all of the template definitions in the [official documentation](https://www.infragistics.com/products/ignite-ui-angular/angular/components/general/cli/component-templates.html)
- 
+
+## MCP Server
+
+The package includes an Architect Builder that starts the [Ignite UI MCP server](../igniteui-mcp/igniteui-doc-mcp) for AI assistant integration. The `mcp` target is automatically registered in `angular.json` when you create a new project or run `ng add`.
+
+```bash
+ng run <project>:mcp
+```
+
+Options:
+
+- `--remote <url>` — Use a remote backend instead of the local SQLite database
+- `--debug` — Enable debug logging to `mcp-server.log`
+
+```bash
+ng run my-app:mcp --remote https://your-backend-url.com
+ng run my-app:mcp --debug
+```

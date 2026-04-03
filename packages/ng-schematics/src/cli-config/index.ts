@@ -1,7 +1,7 @@
 import * as ts from "typescript";
-import { DependencyNotFoundException } from "@angular-devkit/core";
+import { DependencyNotFoundException, workspaces } from "@angular-devkit/core";
 import { chain, FileDoesNotExistException, Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
-import { addClassToBody, FormatSettings, NPM_ANGULAR, resolvePackage, TypeScriptAstTransformer, TypeScriptUtils } from "@igniteui/cli-core";
+import { addClassToBody, createWorkspaceHost, FormatSettings, NPM_ANGULAR, resolvePackage, TypeScriptAstTransformer, TypeScriptUtils } from "@igniteui/cli-core";
 import { AngularTypeScriptFileUpdate } from "@igniteui/angular-templates";
 import { createCliConfig } from "../utils/cli-config";
 import { setVirtual } from "../utils/NgFileSystem";
@@ -157,6 +157,25 @@ export function addAIConfig(): Rule {
 	};
 }
 
+export function addMcpBuilderTarget(): Rule {
+	return async (tree: Tree) => {
+		const host = createWorkspaceHost(tree);
+		const { workspace } = await workspaces.readWorkspace("/", host);
+
+		const project = workspace.extensions.defaultProject ?
+			workspace.projects.get(workspace.extensions.defaultProject as string) :
+			workspace.projects.values().next().value as workspaces.ProjectDefinition;
+
+		if (project && !project.targets.has("mcp")) {
+			project.targets.set("mcp", {
+				builder: "@igniteui/angular-schematics:mcp",
+				options: {}
+			});
+			await workspaces.writeWorkspace(workspace, host);
+		}
+	};
+}
+
 export default function (): Rule {
 	return (tree: Tree) => {
 		setVirtual(tree);
@@ -166,7 +185,8 @@ export default function (): Rule {
 			importBrowserAnimations(),
 			createCliConfig(),
 			displayVersionMismatch(),
-			addAIConfig()
+			addAIConfig(),
+			addMcpBuilderTarget()
 		]);
 	};
 }

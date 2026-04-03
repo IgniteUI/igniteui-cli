@@ -37,6 +37,12 @@
       "description": "Upgrades to the licensed Ignite UI for Angular packages",
       "factory": "./upgrade-packages/index",
       "schema": "./upgrade-packages/schema.json"
+    },
+    "mcp": {
+      "description": "Starts the Ignite UI MCP server for AI assistant integration",
+      "factory": "./mcp/index",
+      "schema": "./mcp/schema.json",
+      "hidden": true
     }
   }
 }
