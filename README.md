@@ -205,7 +205,7 @@ See the [Contribution guide](https://github.com/IgniteUI/igniteui-cli/blob/maste
     npm install
     npm run build
     cd ../../..
-    npm run build:mcp-bundle
+    npm run build:mcp
     ```
 4. Build the monorepo packages: `npm run build`
 5. Open in Visual Studio Code
