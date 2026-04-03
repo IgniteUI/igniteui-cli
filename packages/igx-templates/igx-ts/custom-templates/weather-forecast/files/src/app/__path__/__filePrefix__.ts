@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, viewChild } from '@angular/core';
 import {
   IgxExpansionPanelComponent,
   IgxCardComponent,
@@ -27,11 +27,10 @@ import { data as weatherData } from './weather-data';
   ]
 })
 export class <%=ClassName%> {
-  @ViewChild(IgxExpansionPanelComponent, { static: true })
-  public panel!: IgxExpansionPanelComponent;
+  public panel = viewChild.required(IgxExpansionPanelComponent);
   public data = weatherData;
 
   public toggleDetails() {
-    this.panel.toggle();
+    this.panel().toggle();
   }
 }

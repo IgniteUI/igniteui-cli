@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
   FormBuilder,
-  FormGroup,
   Validators,
   ReactiveFormsModule,
 } from '@angular/forms';
@@ -31,26 +30,21 @@ import {
   ]
 })
 export class <%=ClassName%> {
-  public loginForm: FormGroup;
-  public registrationForm: FormGroup;
+  private fb = inject(FormBuilder);
+  public loginForm = this.fb.group({
+    email: ['', Validators.required],
+    password: ['', Validators.required]
+  });
+  public registrationForm = this.fb.group({
+    newEmail: ['', Validators.required],
+    newPassword: ['', Validators.required],
+    firstName: ['', Validators.required],
+    lastName: ['', Validators.required]
+  });
   public showLogin = true;
   public showRegister = false;
   public showSuccessLogin = false;
   public showSuccessRegister = false;
-
-  constructor(fb: FormBuilder) {
-    this.loginForm = fb.group( {
-        email: ['', Validators.required],
-        password: ['', Validators.required]
-      });
-
-    this.registrationForm = fb.group( {
-        newEmail: ['', Validators.required],
-        newPassword: ['', Validators.required],
-        firstName: ['', Validators.required],
-        lastName: ['', Validators.required]
-    });
-  }
 
   tryLogin() {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
