@@ -41,13 +41,13 @@ A comprehensive modernization of all Angular templates to align with Angular v21
 * **Spec file cleanup:** removed unnecessary NgModule imports from test files; standalone components imported directly in `TestBed.configureTestingModule` ([#1544](https://github.com/IgniteUI/igniteui-cli/pull/1544))
 * **Testing framework update:** replaced Karma/Jasmine with **Vitest + Playwright** for browser testing ([#1542](https://github.com/IgniteUI/igniteui-cli/pull/1542))
 * **Template naming update:** updated project setup and template names for consistency ([#1514](https://github.com/IgniteUI/igniteui-cli/pull/1514))
-* **Legacy template fixes:** updated `igx-ts-legacy` templates for compatibility ([#1517](https://github.com/IgniteUI/igniteui-cli/pull/1517))
 
 ---
 
 ### React & Web Components Template Updates
 
 * **React (`igr-ts`):** added 30 missing component templates (accordion, avatar, badge, banner, button, button-group, calendar, card, checkbox, chip, circular-progress, date-picker, divider, dropdown, expansion-panel, form, icon, icon-button, input, linear-progress, list, navbar, radio-group, rating, ripple, slider, switch, tabs, text-area, tree) to match Web Components template coverage ([#1576](https://github.com/IgniteUI/igniteui-cli/pull/1576))
+* **React (`igr-ts`):** updated project template to latest with vite@8 ([#1598](https://github.com/IgniteUI/igniteui-cli/pull/1598))
 * **React packages update:** updated `igniteui-react-core/charts/gauges` to ~19.5.2 and `igniteui-react[-grids]` to ~19.6.0 ([#1567](https://github.com/IgniteUI/igniteui-cli/pull/1567))
 * **Web Components packages update:** updated igniteui-webcomponents packages to latest ([#1566](https://github.com/IgniteUI/igniteui-cli/pull/1566))
 * **Web Components grid fixes:** corrected component usage and dependencies in grid templates ([#1562](https://github.com/IgniteUI/igniteui-cli/pull/1562))
@@ -56,9 +56,9 @@ A comprehensive modernization of all Angular templates to align with Angular v21
 
 ### Breaking Changes
 
+* **Removed `igx-ts-legacy` Angular NgModules project type:** the legacy NgModules project template has been removed; use `igx-ts` instead ([#1565](https://github.com/IgniteUI/igniteui-cli/pull/1565))
 * **Removed `ig-ts` Angular wrappers project type:** the legacy Ignite UI for Angular wrappers template has been removed; use `igx-ts` instead ([#1548](https://github.com/IgniteUI/igniteui-cli/pull/1548))
 * **Removed `igr-es6` React wrappers project type:** the legacy ES6 React wrappers template has been removed; use `igr-ts` instead ([#1550](https://github.com/IgniteUI/igniteui-cli/pull/1550), [#1551](https://github.com/IgniteUI/igniteui-cli/pull/1551))
-* **Removed `AngularTemplate` wrapper class** and related tests ([#1556](https://github.com/IgniteUI/igniteui-cli/pull/1556))
 * **Default framework changed** from jQuery to **Angular** in the step-by-step guide ([#1574](https://github.com/IgniteUI/igniteui-cli/pull/1574))
 
 ---

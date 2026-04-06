@@ -804,7 +804,6 @@ describe("Unit - PromptSession", () => {
 		spyOn(InquirerWrapper, "input").and.returnValues(Promise.resolve("Test1"));
 		spyOn(InquirerWrapper, "select").and.returnValues(
 			Promise.resolve("Angular"),
-			Promise.resolve("Ignite UI for Angular"),
 			Promise.resolve("Default side navigation"),
 			Promise.resolve("Custom")
 		);
@@ -842,7 +841,6 @@ describe("Unit - PromptSession", () => {
 		spyOn(InquirerWrapper, "input").and.returnValues(Promise.resolve("Test1"));
 		spyOn(InquirerWrapper, "select").and.returnValues(
 			Promise.resolve("Angular"),
-			Promise.resolve("Ignite UI for Angular"),
 			Promise.resolve("Default side navigation"),
 			Promise.resolve("Default"));
 		spyOn(mockSession, "chooseActionLoop").and.returnValue(Promise.resolve());
