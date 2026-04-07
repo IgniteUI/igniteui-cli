@@ -15,7 +15,7 @@
   "scripts": {
     "start": "concurrently -k -r \"tsc --watch\" \"vite\"",
     "build": "rimraf dist && tsc && node --max-old-space-size=4096 node_modules/vite/bin/vite.js build",
-    "start:build": "web-dev-server --root-dir dist --app-index index.html --open",
+    "start:build": "vite preview",
     "lint": "eslint \"**/*.{js,ts}\" --ignore-pattern .gitignore",
     "test": "tsc --project tsconfig.test.json && vitest run"
   },
@@ -28,7 +28,6 @@
   "devDependencies": {
     "@babel/preset-env": "^7.28.3",
     "@vitest/browser-playwright": "^4.1.0",
-    "@web/dev-server": "^0.4.6",
     "babel-plugin-template-html-minifier": "^4.1.0",
     "concurrently": "^9.2.1",
     "deepmerge": "^4.3.1",
