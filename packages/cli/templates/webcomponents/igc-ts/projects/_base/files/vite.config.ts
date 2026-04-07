@@ -32,7 +32,7 @@ export default defineConfig({
     /** Copy static assets */
     viteStaticCopy({
       targets: [
-        { src: 'src/assets', dest: 'src' }
+        { src: 'src/assets', dest: '.' }
       ],
       silent: true,
     }),
