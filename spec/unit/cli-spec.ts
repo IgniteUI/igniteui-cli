@@ -58,7 +58,7 @@ describe("Unit - Cli.ts", () => {
 		spyOn(Util , "log");
 		spyOn(GoogleAnalytics, "post");
 		spyOn(PromptSession.prototype, "start");
-		await run.run("");
+		await run.run([]);
 
 		// expected console output:
 		expect(Util.log).toHaveBeenCalledWith("Starting Step by step mode.", "green");

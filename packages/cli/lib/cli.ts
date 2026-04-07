@@ -84,12 +84,11 @@ export async function run(args = null) {
 					// but in reality it also does not trigger the command's handler (╯°□°）╯︵ ┻━┻
 		)
 		.fail((msg, err, yargs) => {
-			if (msg) {
-				Util.error(msg, "red");
+			const message = err?.message ?? msg;
+			if (message) {
+				Util.error(message, "red");
 				yargs.showHelp();
-			}
-			if (err) {
-				Util.error(err.message, "red");
+				process.exitCode = 1;
 			}
 		})
 		.help().alias("help", "h")
@@ -131,6 +130,7 @@ export async function run(args = null) {
 
 				if (!helpRequest && !ALL_COMMANDS.has(command?.toString())) {
 					if (command) {
+						process.exitCode = 1;
 						Util.error(`Unknown command: "${command}"`, "red");
 						yargsModule.showHelp();
 					} else {
