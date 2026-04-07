@@ -83,6 +83,15 @@ export async function run(args = null) {
 			false	// setting this to `true` is supposed to exec the middleware after parsing and before arg validation
 					// but in reality it also does not trigger the command's handler (╯°□°）╯︵ ┻━┻
 		)
+		.fail((msg, err, yargs) => {
+			if (msg) {
+				Util.error(msg, "red");
+				yargs.showHelp();
+			}
+			if (err) {
+				Util.error(err.message, "red");
+			}
+		})
 		.help().alias("help", "h")
 		.parseAsync(
 			args, // the args to parse to argv
@@ -121,10 +130,15 @@ export async function run(args = null) {
 				App.testMode = !!argv.testMode;
 
 				if (!helpRequest && !ALL_COMMANDS.has(command?.toString())) {
-					Util.log("Starting Step by step mode.", "green");
-					Util.log("For available commands, stop this execution and use --help.", "green");
-					const prompts = new PromptSession(templateManager);
-					prompts.start();
+					if (command) {
+						Util.error(`Unknown command: "${command}"`, "red");
+						yargsModule.showHelp();
+					} else {
+						Util.log("Starting Step by step mode.", "green");
+						Util.log("For available commands, stop this execution and use --help.", "green");
+						const prompts = new PromptSession(templateManager);
+						prompts.start();
+					}
 				}
 			}
 		);

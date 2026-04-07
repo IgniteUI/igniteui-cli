@@ -6,6 +6,14 @@ This is a major release that introduces the **Ignite UI CLI MCP Server** as a ne
 
 ---
 
+### Bug Fixes
+
+* **CLI error handling:** added `.fail()` handler to yargs to gracefully handle command validation errors (e.g., missing required subcommands) instead of showing raw stack traces
+* **Unknown command detection:** running `ig <unknown>` now prints an error message and available commands instead of silently falling through to the step-by-step interactive mode
+* **Unhandled promise rejection:** added `.catch()` in the CLI entry point to catch and display unexpected errors cleanly
+
+---
+
 ### New: Ignite UI CLI MCP Server
 
 A new Model Context Protocol (MCP) server that provides AI assistants with Ignite UI documentation search, API reference lookup, and CLI scaffolding capabilities across four frameworks: Angular, React, Blazor, and Web Components.
