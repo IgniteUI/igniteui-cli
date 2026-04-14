@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { IgrPieChartModule } from 'igniteui-react-charts';
 import { IgrPieChart } from 'igniteui-react-charts';
 import { IgrItemLegend } from 'igniteui-react-charts';
@@ -18,13 +18,8 @@ const data: any = [
 
 export default function $(ClassName)() {
   const title = 'Pie Chart';
-  const [chartData, setChartData] = useState([]);
-  const legendRef: any = useRef(null);
-  const chartRef: any = useRef(null);
-
-  useEffect(() => {
-    setChartData(data);
-  }, []);
+  const [chartData] = useState(data);
+  const [legend, setLegend] = useState<IgrItemLegend | null>(null);
 
   return (
     <div>
@@ -37,7 +32,7 @@ export default function $(ClassName)() {
       </div>
       <div className={style.container}>
         <div className={style.legend}>
-          <IgrItemLegend ref={legendRef} />
+          <IgrItemLegend ref={setLegend} />
         </div>
         <div className={style.chart}>
           <IgrPieChart dataSource={chartData}
@@ -45,9 +40,8 @@ export default function $(ClassName)() {
             valueMemberPath="MarketShare"
             width="500px"
             height="500px"
-            ref={chartRef}
             legendLabelMemberPath="Label"
-            legend={legendRef.current}
+            legend={legend}
           />
         </div>
       </div>
