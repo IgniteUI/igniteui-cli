@@ -16,7 +16,7 @@
     "start": "tsc && concurrently -k -r \"tsc --watch\" \"vite\"",
     "build": "rimraf dist && tsc && node --max-old-space-size=4096 node_modules/vite/bin/vite.js build",
     "start:build": "vite preview --open",
-    "lint": "eslint \"**/*.{js,ts}\" --ignore-pattern .gitignore",
+    "lint": "eslint",
     "test": "tsc --project tsconfig.test.json && vitest run"
   },
   "dependencies": {
