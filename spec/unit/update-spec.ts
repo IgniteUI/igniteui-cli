@@ -1239,7 +1239,7 @@ export default class App extends LitElement {
 <body class="ig-scrollbar">
 	<app-root></app-root>
 
-	<script type="module" src="./dist/src/index.js"></script>
+	<script type="module" src="./src/index.ts"></script>
 </body>
 </html>
 	`,
@@ -1256,7 +1256,7 @@ export default class App extends LitElement {
 <body class="ig-scrollbar">
 	<app-root></app-root>
 
-	<script type="module" src="./dist/src/index.js"></script>
+	<script type="module" src="./src/index.ts"></script>
 </body>
 </html>
 	`
