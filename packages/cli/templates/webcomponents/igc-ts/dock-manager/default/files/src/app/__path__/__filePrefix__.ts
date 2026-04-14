@@ -3,7 +3,7 @@ import { customElement, state } from 'lit/decorators.js';
 import {
   defineComponents,
   IgcDockManagerComponent,
-  IgcDockManagerLayout,
+  type IgcDockManagerLayout,
 } from 'igniteui-dockmanager';
 
 defineComponents(IgcDockManagerComponent);

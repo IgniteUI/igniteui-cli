@@ -1,6 +1,6 @@
 import { html, css, LitElement } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
-import { IgcGridComponent, IgcGroupingExpression, SortingDirection } from 'igniteui-webcomponents-grids';
+import { IgcGridComponent, type IgcGroupingExpression, SortingDirection } from 'igniteui-webcomponents-grids';
 
 import gridThemeLightMaterial from 'igniteui-webcomponents-grids/grids/themes/light/material.css?inline'
 
