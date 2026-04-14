@@ -16,24 +16,27 @@ defineComponents(
 @customElement('app-root')
 export default class App extends LitElement {
   static styles = css`
+    :host {
+      display: flex;
+      height: 100%;
+    }
+
     router-outlet {
       height: 100%;
+      width: 100%;
       display: flex;
       text-align: center;
       flex-flow: column nowrap;
       justify-content: stretch;
       align-items: center;
-      overflow: inherit;
-    }
-
-    igc-nav-drawer {
-      float: left;
+      padding: 1rem;
+      box-sizing: border-box;
     }
   `;
 
   render() {
     return html`
-      <igc-nav-drawer open="true" position="relative">
+      <igc-nav-drawer open position="relative">
         <igc-nav-drawer-header-item>Ignite UI CLI</igc-nav-drawer-header-item>
         ${routes.filter(route => route.name).map(({path, name}) => html`
           <igc-nav-drawer-item>
