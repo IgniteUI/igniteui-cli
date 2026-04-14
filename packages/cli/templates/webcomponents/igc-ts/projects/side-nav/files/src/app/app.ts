@@ -14,7 +14,7 @@ defineComponents(
 );
 
 @customElement('app-root')
-export class App extends LitElement {
+export default class App extends LitElement {
   static styles = css`
     router-outlet {
       height: 100%;
@@ -35,10 +35,10 @@ export class App extends LitElement {
     return html`
       <igc-nav-drawer open="true" position="relative">
         <igc-nav-drawer-header-item>Ignite UI CLI</igc-nav-drawer-header-item>
-        ${routes.filter((element, index) => index < routes.length - 1).map(i => html`
+        ${routes.filter(route => route.name).map(({path, name}) => html`
           <igc-nav-drawer-item>
             <span slot="content">
-              <a href="${i.path}">${i.name}<igc-ripple></igc-ripple></a>
+              <a href="${path}">${name}<igc-ripple></igc-ripple></a>
             </span>
           </igc-nav-drawer-item>
         `)}
