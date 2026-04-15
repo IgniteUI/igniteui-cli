@@ -62,9 +62,9 @@ description: >
 >
 >     {
 >       "mcpServers": {
->         "igniteui-mcp-server": {
+>         "igniteui-cli": {
 >           "command": "npx",
->           "args": ["-y", "igniteui-mcp-server"]
+>           "args": ["-y", "igniteui-cli@next", "mcp"]
 >         }
 >       }
 >     }
