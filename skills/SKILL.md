@@ -25,7 +25,7 @@ description: >
 ## Prerequisite — MCP Server Setup (REQUIRED)
 
 **Project requirements:**
-- The **Ignite UI MCP server** (`igniteui-mcp-server`) available as a tool provider
+- The **Ignite UI CLI MCP server** available as a tool provider
 
 > **AGENT INSTRUCTION — MUST RUN BEFORE ANY IGNITE UI WORK**
 >
