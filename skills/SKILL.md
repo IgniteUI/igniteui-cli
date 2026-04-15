@@ -12,7 +12,7 @@ compatibility:
   - igniteui-mcp-server
 ---
 
-# Ignite UI Skill
+# Ignite UI CLI Skill
 
 ## Non-Negotiable Rules
 
