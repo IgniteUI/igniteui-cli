@@ -29,7 +29,7 @@ description: >
 
 > **AGENT INSTRUCTION — MUST RUN BEFORE ANY IGNITE UI WORK**
 >
-> Before using any `igniteui-mcp-server` tools, verify the server is available by calling `list_components`.
+> Before using any `igniteui-cli` tools, verify the server is available by calling `list_components`.
 > If the tool is unavailable or the call fails, you MUST automatically configure it —
 > do NOT ask the user to do it manually.
 >
