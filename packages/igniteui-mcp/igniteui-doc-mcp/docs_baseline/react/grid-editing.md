@@ -283,8 +283,6 @@ As seen from the table, all interactions, except resizing a column, will end the
 
 Example how to commit new values, if user tries to sort the column while a cell/row is in edit mode:
 
-<!-- React -->
-
 ```tsx
 function onSorting(args: IgrSortingEventArgs) {
     const grid = args.target as IgrGrid;
@@ -295,15 +293,11 @@ function onSorting(args: IgrSortingEventArgs) {
 </IgrGrid>
 ```
 
-<!-- end: React -->
-
 ## API References
 
 - [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html)
 
 ## Additional Resources
-
-<!-- Angular, WebComponents, React -->
 
 - [Column Data Types](column-types.md#default-template)
 - [Virtualization and Performance](virtualization.md)
@@ -314,5 +308,3 @@ function onSorting(args: IgrSortingEventArgs) {
 - [Column Pinning](column-pinning.md)
 - [Column Resizing](column-resizing.md)
 - [Selection](selection.md)
-
-<!-- end: Angular, WebComponents, React -->

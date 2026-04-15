@@ -14,8 +14,6 @@ By default, the grid uses the field of the column to render the value as a strin
 
 To achieve that, set the `cellTemplate` property of the column.
 
-<!-- React, WebComponents -->
-
 ```typescript
 // Get a reference to the column element
 const column = document.querySelector('igc-grid-lite-column[field="price"]');
@@ -24,7 +22,9 @@ const column = document.querySelector('igc-grid-lite-column[field="price"]');
 column.cellTemplate = (params: IgcCellContext<T, K>) => { return html`<!-- template content -->`};
 ```
 
-<!-- End: React, WebComponents -->
+<!-- End: WebComponents -->
+
+<!-- End: React -->
 
 <!-- End: Blazor -->
 
@@ -32,40 +32,40 @@ column.cellTemplate = (params: IgcCellContext<T, K>) => { return html`<!-- templ
 
 For the simple scenario where some formatting is required, one can just return the formatted value. Here is an example for displaying a number value to a locale currency format:
 
-<!-- React, WebComponents -->
-
 ```typescript
 const { format: asCurrency } = new Intl.NumberFormat('en-150', { style: 'currency', currency: 'EUR' });
 
 // Get a reference to the column element
 const column = document.querySelector('igc-grid-lite-column');
 
-// Return the custom currency format for a value `value = 123456.789`
+// Return the custom currency formatted value
 column.cellTemplate = (params) => asCurrency(params.value); // => "€123,456.79"
 ```
 
-<!-- End: React, WebComponents -->
+<!-- End: WebComponents -->
+
+<!-- End: React -->
 
 <!-- End: Blazor -->
 
-You can combine values different fields from the data source as well.
+You can combine values of different fields from the data source as well.
 
 <!-- TODO:
 Refer to the API documentation for `GridLiteCellContext` for more information. -->
 
-<!-- React, WebComponents -->
-
 ```typescript
 const { format: asCurrency } = new Intl.NumberFormat('en-150', { style: 'currency', currency: 'EUR' });
 
 // Get a reference to the column element
 const column = document.querySelector('igc-grid-lite-column');
 
-// Return the custom currency format for an order of 10 items where the price is 99.99
-column.cellTemplate = ({value, row}) => asCurrency(value * row.data.count); // => "€999.90"
+// Return the custom currency formatted value
+column.cellTemplate = ({value, row}) => asCurrency(value * row.data.count);
 ```
 
-<!-- End: React, WebComponents -->
+<!-- End: WebComponents -->
+
+<!-- End: React -->
 
 <!-- End: Blazor -->
 
@@ -79,7 +79,7 @@ DOM fragments.
 
 You can template any standard DOM elements as well as web components from other libraries.
 
-<!-- React, WebComponents -->
+<!-- WebComponents -->
 
 ```typescript
 // Import the `html` tag function from the Lit package.
@@ -92,11 +92,13 @@ const column = document.querySelector('igc-grid-lite-column[field="rating"]');
 column.cellTemplate = ({ value }) => html`<igc-rating readonly value=${value}></igc-rating>`;
 ```
 
-<!-- End: React, WebComponents -->
+<!-- End: WebComponents -->
+
+<!-- End: React -->
 
 <!-- End: Blazor -->
 
-> \[!NOTE]
+> [!NOTE]
 > Keep in mind the more complex and involved the template is, the greater the performance cost. Avoid complex DOM structures if performance is important.
 
 ## Cell Context Object

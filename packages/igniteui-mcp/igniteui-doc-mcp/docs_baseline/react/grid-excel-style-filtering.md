@@ -208,14 +208,10 @@ root.render(<Sample/>);
 
 To turn on the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) component's Excel-style filtering, two inputs should be set. The [`allowFiltering`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#allowFiltering) should be set to **true** and the [`filterMode`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#filterMode) should be set to `ExcelStyleFilter` value.
 
-<!-- React -->
-
 ```tsx
 <IgrGrid data={nwindData} autoGenerate={true} allowFiltering={true} filterMode="excelStyleFilter">
 </IgrGrid>
 ```
-
-<!-- end: React -->
 
 ## Interactions
 
@@ -410,8 +406,6 @@ root.render(<Sample/>);
 
 ## Templates
 
-<!-- WebComponents, Blazor, React -->
-
 If you want to further customize the Excel style filter menu, you can use the [`excelStyleHeaderIconTemplate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#excelStyleHeaderIconTemplate) property to define a custom template for the header icon of the menu.
 
 The following code demonstrates how to customize the Excel style filter menu using the [`excelStyleHeaderIconTemplate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#excelStyleHeaderIconTemplate):
@@ -437,8 +431,6 @@ const webGridFilterAltIconTemplate = (ctx: IgrGridHeaderTemplateContext) => {
 ```
 
 <!-- ComponentEnd: Grid, HierarchicalGrid -->
-
-<!-- end: WebComponents, Blazor, React -->
 
 <!-- ```razor
 Add razor snipets
@@ -621,8 +613,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
-<!-- WebComponents, Blazor, React -->
 
 ## Styling
 
@@ -814,8 +804,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
-<!-- end: WebComponents, Blazor, React -->
 
 ## API References
 

@@ -589,9 +589,9 @@ export class IconButtonStylingComponent { }
 // );
 
 // :host {
-//   @include css-vars($custom-flat);
-//   @include css-vars($custom-contained);
-//   @include css-vars($custom-outlined);
+//   @include tokens($custom-flat);
+//   @include tokens($custom-contained);
+//   @include tokens($custom-outlined);
 // }
 
 [igxIconButton="flat"] {

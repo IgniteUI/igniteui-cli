@@ -404,7 +404,9 @@ $custom-icon-theme: icon-theme(
 The last step is to pass the custom icon theme in our application:
 
 ```scss
-@include css-vars($custom-icon-theme);
+:host {
+  @include tokens($custom-icon-theme);
+}
 ```
 
 ### Demo
@@ -449,7 +451,9 @@ $custom-icon-theme: icon-theme(
   $disabled-color: #494949
 );
 
-@include css-vars($custom-icon-theme);
+:host {
+    @include tokens($custom-icon-theme);
+}
 ```
 
 ### SVG Limitations
@@ -496,7 +500,7 @@ igx-icon {
 }
 ```
 
-Or you can use the universal `--igx-icon-size` variable to target all instances:
+Or you can use the universal `--ig-icon-size` variable to target all instances:
 
 ```html
 <div class="my-app">
@@ -506,7 +510,7 @@ Or you can use the universal `--igx-icon-size` variable to target all instances:
 
 ```scss
 .my-app {
-  --igx-icon-size: 50px;
+  --ig-icon-size: 50px;
 }
 ```
 

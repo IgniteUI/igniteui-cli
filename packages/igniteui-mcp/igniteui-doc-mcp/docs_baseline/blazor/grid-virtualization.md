@@ -252,8 +252,6 @@ In most cases, letting the grid apply its default behavior by leaving dimensions
 
 Explicitly setting column widths in percentages (%) will, in most cases, create a grid that is not virtualized horizontally as it will not have a horizontal scrollbar.
 
-<!-- Blazor -->
-
 ## Templating
 
 When needing to customize one of the existing templates in the grid, Blazor provides two possible ways to define a template:
@@ -287,10 +285,8 @@ igRegisterScript("CellTemplate", (ctx) => {
 
 The handler then renders the provided lit template directly in the DOM as needed.
 
-> \[!Note]
+> [!Note]
 > While both approaches are valid, the server-side templates do require a round-trip request to the server to retrieve and resolve the custom template before rendering it on the client. As such the client-template approach is more optimized and recommended, especially in scenarios with many templates that need frequent updates as there may be a noticeable delay between the related user-interaction and the template updates.
-
-<!-- end: Blazor -->
 
 ## Virtualization Limitations
 

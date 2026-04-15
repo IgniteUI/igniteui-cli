@@ -85,8 +85,6 @@ The following demo shows some [`IgbCombo`](https://www.infragistics.com/blazor/d
 
 In our sample we are going to use the [`IgbSwitch`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSwitch.html) component, so we have to import them together with the combo:
 
-<!-- Blazor -->
-
 ```razor
 // in Program.cs file
 
@@ -99,6 +97,8 @@ You will also need to link an additional CSS file to apply the styling to the [`
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
 ```
+
+Then, using React's useState hook, we will declare our variables which will update when the state of the switches change. This will keep track for updates and reflect the changes to the combo inputs accordingly:
 
 ```razor
 <IgbCombo
@@ -179,7 +179,7 @@ Defining a [`GroupKey`](https://www.infragistics.com/blazor/docs/api/api/IgniteU
 <IgbCombo GroupKey="region" />
 ```
 
-> \[!Note]
+> [!Note]
 > The [`GroupKey`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCombo.html#IgniteUI_Blazor_Controls_IgbCombo_GroupKey) property will only have effect if your data source consists of complex objects.
 
 #### Sorting Direction

@@ -12,17 +12,11 @@ _tocName: Grid Lite
 
 The Ignite UI for Web Components Grid Lite is a lightweight, high-performance Web Components data grid that’s free to use, open-source, and built for modern Web Components applications.
 
-<!-- WebComponents -->
-
 Grid Lite is a free, open-source JavaScript data grid built as a Web Component, which means you can use it dependency-free with or without a web framework. It delivers essential data-display functionality with minimal overhead and the performance users expect. The Web Components Grid Lite is designed for developers who need fast and lightweight data presentation.
-
-<!-- end: WebComponents -->
 
 ## What You Get with our Free Web Components Data Grid
 
 Our free, open-source Web Components Grid Lite comes with the following column-based features: sorting, filtering, hiding, resizing and a variety of pre-defined data types. Blazing-fast performance is delivered with the use of row virtualization. In addition, the component supports keyboard navigation and theming through the [Ignite UI Theming Framework](../themes/overview.md).
-
-<!-- React, WebComponents -->
 
 ## Installation and Setup
 
@@ -31,7 +25,7 @@ Our free, open-source Web Components Grid Lite comes with the following column-b
 To install Grid Lite, go to the root folder of your project (where `package.json` is located) and run the following command using npm:
 
 ```cmd
-npm install igniteui-grid-lite --save
+npm install igniteui-grid-lite
 ```
 
 Or using yarn:
@@ -42,19 +36,11 @@ yarn add igniteui-grid-lite
 
 ### Using the Grid Lite in your Web Components code
 
-In the file where you want to use Grid Lite, import and register it before your component class or function is declared:
-
-<!-- WebComponents -->
-
 ```html
 <div class="grid-lite-wrapper">
     <igc-grid-lite id="grid-lite"></igc-grid-lite>
 </div>
 ```
-
-<!-- end: WebComponents -->
-
-<!-- end: React, WebComponents -->
 
 ## Grid Lite in Action
 
@@ -216,13 +202,9 @@ Row-level virtualization allows you to render unlimited amounts of data with smo
 
 Column types are automatically generated based on your data source, with built-in filtering tailored to each column type.
 
-<!-- WebComponents -->
-
 ## Custom Column Templates
 
 Deliver any type of UX with column templates. Anything you imagine can render in a grid column!
-
-<!-- end: WebComponents -->
 
 ## Interactive Features
 

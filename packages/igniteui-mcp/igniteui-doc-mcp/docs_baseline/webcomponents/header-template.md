@@ -28,14 +28,14 @@ By default the column uses the `field` property for label text. To customize the
 
 <!-- End: Blazor -->
 
-> \[!NOTE]
+> [!NOTE]
 > When `headerTemplate` is provided, `header` is ignored.
 
 ## Customization via Header Template
 
 Similar to the cell template, you can also pass a custom template renderer and create your own DOM inside the column header.
 
-<!-- React, WebComponents -->
+<!-- WebComponents -->
 
 ```typescript
 import { html } from 'lit';
@@ -45,7 +45,9 @@ const column = document.querySelector('igc-grid-lite-column');
 column.headerTemplate = () => html`<h3>⭐ Rating ⭐</h3>`;
 ```
 
-<!-- End: React, WebComponents -->
+<!-- End: WebComponents -->
+
+<!-- End: React -->
 
 <!-- End: Blazor -->
 

@@ -186,6 +186,12 @@ function main() {
   const sizeKB = (fs.statSync(DB_PATH).size / 1024).toFixed(1);
   console.log(`DB size: ${sizeKB} KB`);
 
+  // Copy to db/ directory (tracked in git)
+  const gitDbPath = path.resolve("db/igniteui-docs.db");
+  fs.mkdirSync(path.dirname(gitDbPath), { recursive: true });
+  fs.copyFileSync(DB_PATH, gitDbPath);
+  console.log(`Copied DB to ${gitDbPath}`);
+
   const backendDbPath = path.resolve("../docs-backend/docs-backend/igniteui-docs.db");
   const backendDir = path.dirname(backendDbPath);
   if (fs.existsSync(backendDir)) {

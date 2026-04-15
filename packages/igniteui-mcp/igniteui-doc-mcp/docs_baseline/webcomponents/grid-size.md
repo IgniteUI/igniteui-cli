@@ -88,8 +88,6 @@ As you can see in the demo above, the [`IgcGridComponent`](https://www.infragist
 }
 ```
 
-<!-- WebComponents -->
-
 ```html
 <igc-grid id="grid" class="gridSize">
 </igc-grid>
@@ -101,7 +99,7 @@ And now let's see in details how each option reflects on the [`IgcGridComponent`
 - **medium** - this is the middle intense size with `40px` row height. Left and Right paddings are `16px`; Minimal column [`width`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#width) is `64px`;
 - **small** - this is the size with highest intense and `32px` row height. Left and Right paddings are `12px`; Minimal column [`width`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#width) is `56px`;
 
-> \[!Note]
+> [!Note]
 > Please keep in mind that currently you **can not** override any of the sizes.
 
 Let's now continue with our sample and see in action how the `--ig-size` is applied. Let's first add a button which will help us to switch between each size:
@@ -185,8 +183,6 @@ Finally, let's provide the necessary logic in order to actually apply the size:
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
-<!-- WebComponents -->
-
 ```ts
 constructor() {
     var propertyEditor = this.propertyEditor = document.getElementById('PropertyEditor') as IgcPropertyEditorPanelComponent;
@@ -217,8 +213,6 @@ public webGridSetGridSize(sender: any, args: IgcPropertyEditorPropertyDescriptio
 }
 ```
 
-<!-- end: WebComponents -->
-
 Another option that [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) provides for you, in order to be able to change the height of the rows in the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html), is the property [`rowHeight`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#rowHeight). So let's see in action how this property affects the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) layout along with the `--ig-size`.
 
 Please keep in mind the following:
@@ -228,7 +222,7 @@ Please keep in mind the following:
 
 We can now extend our sample and add [`rowHeight`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#rowHeight) property to the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html):
 
- <!-- WebComponents -->
+ 
 
 ```html
 <igc-grid id="grid" class="gridSize" row-height="80px" width="100%" height="550px" allow-filtering="true">

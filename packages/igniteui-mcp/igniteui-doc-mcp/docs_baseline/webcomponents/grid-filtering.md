@@ -63,16 +63,12 @@ Property [`filterable`](https://www.infragistics.com/products/ignite-ui-web-comp
 
 To enable the [Advanced filtering](advanced-filtering.md) however, you need to set the [`allowAdvancedFiltering`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#allowAdvancedFiltering) input property to **true**
 
-<!-- WebComponents -->
-
 ```html
 <igc-grid  data="data" auto-generate="true" allow-advanced-filtering="true">
 </igc-grid>
 ```
 
-<!-- end: WebComponents -->
-
-> \[!Note]
+> [!Note]
 > You can enable both the `QuickFilter` or `ExcelStyleFilter` and the advanced filtering user interfaces in the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html). Both filtering user interfaces will work independently of one another. The final filtered result in the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) is the intersection between the results of the two filters.
 
 ## Interaction
@@ -89,8 +85,6 @@ The filtering feature is enabled for the [`IgcGridComponent`](https://www.infrag
 
 <!-- ComponentStart: Grid, TreeGrid -->
 
-<!-- WebComponents -->
-
 ```html
 <igc-grid auto-generate="false" allow-filtering="true">
     <igc-column field="ProductName" data-type="string"></igc-column>
@@ -99,12 +93,8 @@ The filtering feature is enabled for the [`IgcGridComponent`](https://www.infrag
 </igc-grid>
 ```
 
-<!-- end: WebComponents -->
-
-> \[!Note]
+> [!Note]
 > If values of type **string** are used by a column of data type **date**, the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) won't parse them to **date** objects and using filtering conditions won't be possible. If you want to use **string** objects, additional logic should be implemented on the application level, in order to parse the values to **date** objects.
-
-<!-- Angular, WebComponents -->
 
 You can filter any column or a combination of columns through the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) API. The [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) exposes several methods for this task - [`filter`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#filter), [`filterGlobal`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#filterGlobal) and [`clearFilter`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#clearFilter).
 
@@ -127,7 +117,7 @@ this.grid.filter('ProductName', 'myproduct', IgcStringFilteringOperand.instance(
 
 The only required parameters are the column field key and the filtering term. Both the condition and the case sensitivity will be inferred from the column properties if not provided. In the case of multiple filtering, the method accepts an array of filtering expressions.
 
-> \[!Note]
+> [!Note]
 > The filtering operation **DOES NOT** change the underlying data source of the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html).
 
 ```typescript
@@ -167,8 +157,6 @@ this.grid.filterGlobal('myproduct', IgcStringFilteringOperand.instance().conditi
 
 - [`clearFilter`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#clearFilter) - removes any applied filtering from the target column. If called with no arguments it will clear the filtering of all columns.
 
-<!-- WebComponents -->
-
 ```typescript
 // Remove the filtering state from the ProductName column
 this.grid.clearFilter('ProductName');
@@ -176,10 +164,6 @@ this.grid.clearFilter('ProductName');
 // Clears the filtering state from all columns
 this.grid.clearFilter();
 ```
-
-<!-- end: WebComponents -->
-
-<!-- end: Angular, WebComponents -->
 
 ## Initial filtered state
 
@@ -212,21 +196,15 @@ constructor() {
 
 The [`filteringLogic`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#filteringLogic) property of the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) controls how filtering multiple columns will resolve in the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html). You can change it at any time through the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) API, or through the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) input property.
 
-<!-- WebComponents -->
-
 ```typescript
 import { FilteringLogic } from "igniteui-webcomponents-grids/grids";
 
 this.grid.filteringLogic = FilteringLogic.OR;
 ```
 
-<!-- end: WebComponents -->
-
 The default value of `AND` returns only the rows that match all the currently applied filtering expressions. Following the example above, a row will be returned when both the 'ProductName' cell value contains 'myproduct' and the 'Price' cell value is greater than 55.
 
 When set to `OR`, a row will be returned when either the 'ProductName' cell value contains 'myproduct' or the 'Price' cell value is greater than 55.
-
-<!-- Angular, WebComponents -->
 
 ## Custom Filtering Operands
 
@@ -299,8 +277,6 @@ export class BooleanFilteringOperand extends IgcBooleanFilteringOperand {
 
 <!-- ComponentStart: Grid, TreeGrid -->
 
-<!-- WebComponents -->
-
 ```html
 <!-- grid-custom-filtering.component.html -->
 
@@ -319,144 +295,18 @@ constructor() {
 }
 ```
 
-<!-- end: WebComponents -->
-
 <!-- ComponentEnd: Grid, TreeGrid -->
 
-```typescript
-export class NwindDataItem {
-    public constructor(init: Partial<NwindDataItem>) {
-        Object.assign(this, init);
-    }
-
-    public ProductID: number;
-    public ProductName: string;
-    public SupplierID: number;
-    public CategoryID: number;
-    public QuantityPerUnit: string;
-    public UnitPrice: number;
-    public UnitsInStock: number;
-    public UnitsOnOrder: number;
-    public ReorderLevel: number;
-    public Discontinued: boolean;
-    public OrderDate: string;
-    public Rating: number;
-    public Locations: NwindDataItem_LocationsItem[];
-
-}
-export class NwindDataItem_LocationsItem {
-    public constructor(init: Partial<NwindDataItem_LocationsItem>) {
-        Object.assign(this, init);
-    }
-
-    public Shop: string;
-    public LastInventory: string;
-
-}
-export class NwindData extends Array<NwindDataItem> {
-    public constructor() {
-        super();
-        this.push(new NwindDataItem(
-        {
-            ProductID: 1,
-            ProductName: `Chai`,
-            SupplierID: 1,
-            CategoryID: 1,
-            QuantityPerUnit: `10 boxes x 20 bags`,
-            UnitPrice: 18,
-            UnitsInStock: 39,
-            UnitsOnOrder: 30,
-            ReorderLevel: 10,
-            Discontinued: false,
-            OrderDate: `2012-02-12`,
-            Rating: 5,
-            Locations: [
-                new NwindDataItem_LocationsItem(
-                {
-                    Shop: `Fun-Tasty Co.`,
-                    LastInventory: `06/12/2018`
-                }),
-                new NwindDataItem_LocationsItem(
-                {
-                    Shop: `Farmer Market`,
-                    LastInventory: `04/04/2018`
-                })]
-
-        }));
-        this.push(new NwindDataItem(
-        {
-            ProductID: 2,
-            ProductName: `Chang`,
-            SupplierID: 1,
-            CategoryID: 1,
-            QuantityPerUnit: `24 - 12 oz bottles`,
-            UnitPrice: 19,
-            UnitsInStock: 17,
-            UnitsOnOrder: 40,
-            ReorderLevel: 25,
-            Discontinued: true,
-            OrderDate: `2003-03-17`,
-            Rating: 5,
-            Locations: [
-                new NwindDataItem_LocationsItem(
-                {
-                    Shop: `Super Market`,
-                    LastInventory: `09/09/2018`
-                })]
-
-        }));
-        this.push(new NwindDataItem(
-        {
-            ProductID: 3,
-            ProductName: `Aniseed Syrup`,
-            SupplierID: 1,
-            CategoryID: 2,
-            QuantityPerUnit: `12 - 550 ml bottles`,
-            UnitPrice: 10,
-            UnitsInStock: 13,
-            UnitsOnOrder: 70,
-            ReorderLevel: 25,
-            Discontinued: false,
-            OrderDate: `2006-03-17`,
-            Rating: 3,
-            Locations: [
-                new NwindDataItem_LocationsItem(
-                {
-                    Shop: `Farmer Market`,
-                    LastInventory: `04/04/2018`
-                }),
-                new NwindDataItem_LocationsItem(
-                {
-                    Shop: `Street Market`,
-                    LastInventory: `12/12/2018`
-                }),
-                new NwindDataItem_LocationsItem(
-                {
-                    Shop: `24/7 Market`,
-                    LastInventory: `11/11/2018`
-                })]
-
-        }));
-        // ... 17 more items
-    }
-}
-```
 ```css
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
 
-<!-- end: Angular, WebComponents -->
-
-<!-- WebComponents, Blazor, React -->
-
 ## Styling
 
 In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
-
-<!-- WebComponents -->
 
 ```html
 <igc-grid class="grid"></igc-grid>
@@ -488,11 +338,9 @@ Then set the related CSS properties for that class:
 ```
 
 
-<!-- end: WebComponents, Blazor, React -->
-
 ## Known Limitations
 
-> \[!Note]
+> [!Note]
 > Some browsers such as Firefox fail to parse regional specific decimal separators by considering them grouping separators, thus resulting in them being invalid. When inputting such values for a numeric column filter value, only the valid part of the number will be applied to the filtering expression. For further information, refer to the Firefox [issue](https://bugzilla.mozilla.org/show_bug.cgi?id=1199665).
 
 ## API References

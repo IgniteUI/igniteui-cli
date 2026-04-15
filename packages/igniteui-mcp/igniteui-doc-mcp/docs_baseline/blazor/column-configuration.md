@@ -10,8 +10,6 @@ _tocName: Column Configuration
 
 # Column Configuration
 
-<!-- Blazor -->
-
 Columns are defined declaratively using `<GridLiteColumn>` child elements within the grid. The `Field` property is the only required for a column, as it serves as the column identifier. It is also the property that is used to map and render the relevant data in the grid rows.
 
 ```razor
@@ -72,21 +70,15 @@ By default, the columns have a width of **minmax(136px, 1fr)** which translates 
 1 part of the available space in the Grid Lite. This way the columns are fluid and responsive accommodating for changes
 in the grid width.
 
-<!-- Blazor -->
-
 To change the width of column, use the `Width` parameter of the `GridLiteColumn` component.
 
 ```razor
 <IgbGridLiteColumn Field="Price" Width="250px" />
 ```
 
-<!-- end: Blazor -->
-
 The property accepts <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units#numbers_lengths_and_percentages" target="_blank">valid CSS length units</a>.
 
 ### Hiding columns
-
-<!-- Blazor -->
 
 Columns can be hidden/shown by setting the `Hidden` parameter on the `GridLiteColumn` component.
 
@@ -94,11 +86,7 @@ Columns can be hidden/shown by setting the `Hidden` parameter on the `GridLiteCo
 <IgbGridLiteColumn Field="Price" Hidden="true" />
 ```
 
-<!-- end: Blazor -->
-
 ### Column resize
-
-<!-- Blazor -->
 
 Each column of the Grid Lite can be configured to be resizable by setting the `Resizable` parameter on the `GridLiteColumn` component.
 
@@ -106,11 +94,9 @@ Each column of the Grid Lite can be configured to be resizable by setting the `R
 <IgbGridLiteColumn Field="Price" Resizable="true" />
 ```
 
-<!-- end: Blazor -->
-
 If a column is set to be resizable, you can drag the right size of the column header to either increase/decrease  the column width. Double-clicking on the resize area will trigger auto-sizing of the column where it will try set its width according to the largest content of its cells/header.
 
-> \[!NOTE]
+> [!NOTE]
 > Columns with "fluid" widths (fr, %, etc.) can behave erratically when resizing in the grid is performed as they try to accommodate for the new dimensions. Depending on the application scenario, it may be better to use "hard" units so users don't experience layout shifts.
 
 In the sample below you can try out the different column properties and how they reflect in the rendered grid.

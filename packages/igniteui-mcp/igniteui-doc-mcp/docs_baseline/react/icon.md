@@ -76,8 +76,6 @@ root.render(<IconSizing/>);
 
 Before using the [`IgrIcon`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igricon.html), you need to register it as follows:
 
-<!-- React -->
-
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
 
 ```cmd
@@ -91,13 +89,9 @@ import { IgrIcon } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
 
-<!-- end: React -->
-
-The [`IgrIcon`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igricon.html) doesn't contain any icons on its own. It's a conduit for displaying any *registered* SVG images.
+The [`IgrIcon`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igricon.html) doesn't contain any icons on its own. It's a conduit for displaying any _registered_ SVG images.
 
 ### Adding Icons
-
-<!-- React -->
 
 To register an image as an icon, all you need to do is call one of the 2 "register" methods on a single [`IgrIcon`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igricon.html) element that allow you to add icons to an icon collection on your page.
 
@@ -110,8 +104,6 @@ constructor() {
 
 <IgrIcon name="search" collection="material" />
 ```
-
-<!-- end: React -->
 
 The method above will add an icon named `search` to a cached collection named `material`.
 
@@ -140,8 +132,6 @@ Then you'd use it in the same way as described in the component sample above.
 
 The icon component supports three icon sizes - `small`, `medium`(default), and `large`. In order to change the size of the icon, you can utilize the `--ig-size` CSS variable as follows:
 
-<!-- React -->
-
 ```tsx
 <IgrIcon className="size-small" />
 <IgrIcon className="size-medium" />
@@ -161,8 +151,6 @@ The icon component supports three icon sizes - `small`, `medium`(default), and `
     --ig-size: var(--ig-size-large);
 }
 ```
-
-<!-- end: React -->
 
 ```css
 .horizontal-border-container {

@@ -1,0 +1,43 @@
+import { Component, Pipe, PipeTransform, forwardRef } from '@angular/core';
+import { Towns } from './towns-data';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import {
+  IgxInputGroupComponent,
+  IgxLabelDirective,
+  IgxInputDirective,
+  IgxAutocompleteDirective,
+  IgxDropDownComponent,
+  IgxDropDownItemComponent,
+} from '<%=igxPackage%>';
+
+@Component({
+  selector: 'app-<%=filePrefix%>',
+  templateUrl: './<%=filePrefix%>.html',
+  styleUrl: './<%=filePrefix%>.scss',
+  imports: [
+    ReactiveFormsModule,
+    FormsModule,
+    IgxInputGroupComponent,
+    IgxLabelDirective,
+    IgxInputDirective,
+    IgxAutocompleteDirective,
+    IgxDropDownComponent,
+    IgxDropDownItemComponent,
+    forwardRef(() => <%=ClassName%>PipeStartsWith),
+  ],
+})
+export class <%=ClassName%> {
+  public towns: string[];
+  public townSelected = '';
+
+  constructor() {
+    this.towns = Towns;
+  }
+}
+
+@Pipe({ name: '<%=camelCaseName%>StartsWith' })
+export class <%=ClassName%>PipeStartsWith implements PipeTransform {
+  public transform(collection: string[], term = '') {
+    return collection.filter(item => item.toLowerCase().startsWith(term.trim().toLowerCase()));
+  }
+}

@@ -158,7 +158,7 @@ public class NwindData
 ```
 
 
-> \[!Note]
+> [!Note]
 > When a row is in edit mode, clicking on a cell in another row will act like the "Done" button is pressed, submitting all changes made in the previous row. If the newly focused cell is editable, the new row enters edit mode as well. However, if the cell is not editable, only the previous row exits edit mode.
 
 ## Row Editing Usage
@@ -197,13 +197,13 @@ Define a [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.B
 
 <!-- ComponentEnd: Grid -->
 
-> \[!Note]
+> [!Note]
 > Setting primary key is mandatory for row editing operations.
 
-> \[!Note]
+> [!Note]
 > Enabling editing for individual columns is not necessary. Using the [`RowEditable`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_RowEditable) property in the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html), all rows, with defined [`Field`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Field) property (excluding the primary row) will be editable. If you want to disable editing for a specific column, simply set the [`Editable`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Editable) input of that column to `false`.
 
-> \[!Note]
+> [!Note]
 > The [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) utilizes `BaseTransactionService` - an internal provider that holds pending cell changes until the row state is either submitted or cancelled.
 
 ## Positioning
@@ -283,8 +283,6 @@ Customizing the buttons of the row editing overlay also possible via templating.
 </div>`;
 }, false);
 ```
-
-<!-- WebComponents, Blazor, React -->
 
 ## Styling
 
@@ -447,8 +445,6 @@ public class NwindData
 ```
 
 
-<!-- end: WebComponents, Blazor, React -->
-
 ## Known Issues and Limitations
 
 - When the grid has no [`PrimaryKey`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_PrimaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
@@ -475,8 +471,6 @@ public class NwindData
 
 ## Additional Resources
 
-<!-- Blazor -->
-
 <!-- ComponentStart: Grid -->
 
 - [Grid Editing](editing.md)
@@ -484,8 +478,6 @@ public class NwindData
 <!-- ComponentEnd: Grid -->
 
 <!-- * [Grid Transactions](batch-editing.md) -->
-
-<!-- end: Blazor -->
 
 Our community is active and always welcoming to new ideas.
 

@@ -366,7 +366,9 @@ $custom-theme: progress-circular-theme(
 The last step is to **include** the component theme in our application.
 
 ```scss
-@include css-vars($custom-theme);
+:host {
+  @include tokens($custom-theme);
+}
 ```
 
 ### Demo
@@ -399,9 +401,8 @@ $custom-theme: progress-circular-theme(
   $diameter: 50px,
 );
 
-@include css-vars($custom-theme);
-
 igx-circular-bar {
+    @include tokens($custom-theme);
     margin: 20px;
 }
 ```

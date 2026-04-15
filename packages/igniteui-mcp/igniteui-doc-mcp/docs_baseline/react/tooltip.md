@@ -55,8 +55,6 @@ root.render(<TooltipOverview />);
 
 ### Getting Started
 
-<!-- React -->
-
 To start using the [`IgrTooltip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html), first, you need to install the Ignite UI for React by running the following command:
 
 ```cmd
@@ -69,8 +67,6 @@ After that, you need to import the [`IgrTooltip`](https://www.infragistics.com/p
 import { IgrTooltip } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
-
-<!-- end: React -->
 
 For a complete introduction to the Ignite UI for React, read the [**Getting Started**](../general-getting-started.md) topic.
 
@@ -97,8 +93,6 @@ To attach a tooltip to the desired element, use the [`anchor`](https://www.infra
 </IgrTooltip>
 ```
 
-<!-- WebComponents, React -->
-
 You can also specify the target by passing the element instance directly:
 
 ```tsx
@@ -124,15 +118,11 @@ The tooltip content is defined by placing custom content between the opening and
 </IgrTooltip>
 ```
 
-<!-- WebComponents, React -->
-
 Alternatively, to set simple text, you can use the [`message`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html#message) property.
 
 ```tsx
 <IgrTooltip message="This is my custom content here."></IgrTooltip>
 ```
-
-<!-- WebComponents, React -->
 
 If you use both approaches (slotted content and the [`message`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html#message) property), the slotted content will take priority and the [`message`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html#message) value will be ignored.
 
@@ -143,11 +133,7 @@ If you use both approaches (slotted content and the [`message`](https://www.infr
 </IgrTooltip>
 ```
 
-<!-- WebComponents, React -->
-
 In this example, the slotted content (“I will be shown!”) will be displayed instead of the [`message`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html#message) property value.
-
-<!-- end: WebComponents, React -->
 
 The [`IgrTooltip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html) content can be more than just simple text. Since the [`IgrTooltip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html) is a regular element in the markup, you can enhance its content by adding any elements you need and styling them accordingly.
 
@@ -248,7 +234,7 @@ If you want to control the delay before showing and hiding the [`IgrTooltip`](ht
 </IgrTooltip>
 ```
 
-> \[!NOTE]
+> [!NOTE]
 > It's important to note that the Tooltip API methods — [`show`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html#show), [`hide`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html#hide), and [`toggle`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html#toggle) — DO NOT take the [`showDelay`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html#showDelay) and [`hideDelay`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html#hideDelay) properties into account. They act immediately when invoked.
 
 ### Placement

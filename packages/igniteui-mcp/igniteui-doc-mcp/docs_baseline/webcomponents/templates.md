@@ -34,8 +34,6 @@ igc-combo::part(empty) {
 
 The [`itemTemplate`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#itemTemplate) is a custom template that if defined should be used when rendering items in the list of options.
 
-<!-- WebComponents -->
-
 ```ts
 import { ComboItemTemplate } from 'igniteui-webcomponents';
 
@@ -48,13 +46,9 @@ const itemTemplate: ComboItemTemplate<City> = ({ item }) => {
 combo.itemTempate = itemTemplate;
 ```
 
-<!-- end: WebComponents -->
-
 ### Group Header Template
 
 The [`groupHeaderTemplate`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#groupHeaderTemplate) is a custom template that if defined should be used when rendering group headers in the list of options.
-
-<!-- WebComponents -->
 
 ```ts
 import { ComboItemTemplate } from 'igniteui-webcomponents';
@@ -65,8 +59,6 @@ const groupHeaderTemplate: ComboItemTemplate<City> = ({ item }) => {
 
 combo.groupHeaderTemplate = groupHeaderTemplate;
 ```
-
-<!-- end: WebComponents -->
 
 ## Slots
 
@@ -122,13 +114,9 @@ The clear icon can be changed via the `clear-icon` slot:
 </igc-combo>
 ```
 
-<!-- WebComponents -->
-
 ## API Reference
 
 - [`IgcComboComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html)
-
-<!-- end: WebComponents -->
 
 ## Additional Resources
 

@@ -9,12 +9,8 @@ _tocName: Localization
 _premium: true
 ---
 
-<!-- Blazor, WebComponents -->
-
-> \[!Note]
+> [!Note]
 > Please note that this control has been deprecated and replaced with the [Grid](../data-grid.md) component, and as such, we recommend migrating to that control. This will not be receiving any new features, bug fixes will be deprioritized. For help or questions on migrating your codebase to the Data Grid, please contact support.
-
-<!-- end: Blazor, WebComponents -->
 
 # Web Components Grid Localization
 
@@ -559,8 +555,6 @@ This is the full list of strings to localize the grid.
 - DataSource_Summary_Min
 - DataSource_Summary_Sum
 
-<!-- React, WebComponents -->
-
 ### Date-Time Column Strings
 
 - January_Full
@@ -613,8 +607,6 @@ This is the full list of strings to localize the grid.
 ### ComboBox Column Strings
 
 - NoMatches
-
-<!-- end: React, WebComponents -->
 
 ## API References
 

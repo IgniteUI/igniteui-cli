@@ -420,6 +420,16 @@ When combobox is closed and focused:
 
 - `ArrowDown` or `Alt` + `ArrowDown` will open the combobox's drop down and will move focus to the search input.
 
+- `Esc` will clear the selected value(s) while keeping focus on the combobox.
+
+- `Tab` will move the focus to the next focusable element outside the combobox.
+
+When combobox is opened:
+
+- `Esc` will close the list and keep the focus on the combobox.
+
+- `Tab` will close the list and move focus to the next focusable element.
+
 When combobox is opened and search input is focused:
 
 - `ArrowUp` or `Alt` + `ArrowUp` will close the combobox's drop down and will move focus to the closed combobox.
@@ -442,8 +452,6 @@ When combobox is opened and list item is focused:
 - `Space` will select/deselect the active list item.
 
 - `Enter` will confirm the already selected items and will close the list.
-
-- `Esc` will close the list.
 
 When combobox is opened, allow custom values are enabled and add item button is focused:
 
@@ -551,10 +559,10 @@ $custom-checkbox-theme: checkbox-theme(
 The last step is to include the component's theme.
 
 ```scss
-:host ::ng-deep {
-  @include css-vars($custom-combo-theme);
-  @include css-vars($custom-drop-down-theme);
-  @include css-vars($custom-checkbox-theme);
+:host {
+  @include tokens($custom-combo-theme);
+  @include tokens($custom-drop-down-theme);
+  @include tokens($custom-checkbox-theme);
 }
 ```
 
@@ -630,10 +638,10 @@ $custom-checkbox-theme: checkbox-theme(
   $empty-color: #1d3743,
 );
 
-:host ::ng-deep {
-  @include css-vars($custom-drop-down-theme);
-  @include css-vars($custom-combo-theme);
-  @include css-vars($custom-checkbox-theme);
+:host {
+    @include tokens($custom-drop-down-theme);
+    @include tokens($custom-combo-theme);
+    @include tokens($custom-checkbox-theme);
 }
 ```
 
@@ -688,7 +696,7 @@ At the end your combo should look like this:
 > [!NOTE]
 > The combobox uses `igxForOf` directive internally hence all `igxForOf` limitations are valid for the combobox. For more details see [`igxForOf Known Issues`](for-of.md#known-limitations) section.
 
-## API Summary
+## API References
 
 <div class="divider--half"></div>
 

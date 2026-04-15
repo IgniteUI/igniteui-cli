@@ -10,35 +10,27 @@ _tocName: Filtering
 
 # React Grid Lite Filter Operations
 
-<!-- React, WebComponents -->
-
 The Grid Lite supports filtering operations on its data source. Data filtering is controlled on per-column level, allowing you to have filterable and non-filterable columns. By default, filtering on a column is disabled unless explicitly configured with the `filterable` property of the column.
-
-<!-- end: React, WebComponents -->
 
 ```tsx
 return (
-  <igc-grid-lite data={data}>
-    <igc-grid-lite-column field="price" filterable></igc-grid-lite-column>
-  </igc-grid-lite>
+  <IgrGridLite data={data}>
+    <IgrGridLiteColumn field="price" filterable></IgrGridLiteColumn>
+  </IgrGridLite>
 );
 ```
 
-<!-- React, WebComponents -->
-
-You can also control whether the filter operations for string columns should be case sensitive by using the `filteringCaseSensitive` property or `filtering-case-sensitive` attribute:
-
-<!-- end: React, WebComponents -->
+You can also control whether the filter operations for string columns should be case sensitive by using the `filteringCaseSensitive` property:
 
 ```tsx
 return (
-  <igc-grid-lite data={data}>
-    <igc-grid-lite-column 
+  <IgrGridLite data={data}>
+    <IgrGridLiteColumn 
       field="price" 
       filterable
-      filtering-case-sensitive
-    ></igc-grid-lite-column>
-  </igc-grid-lite>
+      filteringCaseSensitive
+    ></IgrGridLiteColumn>
+  </IgrGridLite>
 );
 ```
 
@@ -189,71 +181,76 @@ igc-grid-lite {
 }
 ```
 ```tsx
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { GridLiteDataService, User } from './GridLiteDataService';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { GridLiteDataService, User } from "./GridLiteDataService";
 
-// Import the web component
-import { IgcGridLite } from 'igniteui-grid-lite';
-import { 
-  defineComponents,
-  IgcCheckboxComponent
-} from 'igniteui-webcomponents';
+import { IgrCheckbox } from "igniteui-react";
+import {
+  IgrGridLite,
+  IgrGridLiteColumn,
+  type IgrCellContext,
+} from "igniteui-react/grid-lite";
 
 import "igniteui-webcomponents/themes/light/bootstrap.css";
 import "./index.css";
 
-// Register components
-IgcGridLite.register();
-defineComponents(IgcCheckboxComponent);
-
 // Define cellTemplate function outside component
-const activeCellTemplate = (params: any) => {
-  const checkbox = document.createElement('igc-checkbox');
-  if (params.value) {
-    checkbox.setAttribute('checked', '');
-  }
-  return checkbox;
-};
+const activeCellTemplate = (ctx: IgrCellContext) => (
+  <IgrCheckbox checked={ctx.value}></IgrCheckbox>
+);
 
 export default function Sample() {
-  const gridRef = React.useRef<any>(null);
+  const [data, setData] = React.useState<User[]>([]);
 
   React.useEffect(() => {
-    if (gridRef.current) {
-      const dataService = new GridLiteDataService();
-      const data: User[] = dataService.generateUsers(50);
-      gridRef.current.data = data;
-    }
+    const dataService = new GridLiteDataService();
+    const items: User[] = dataService.generateUsers(50);
+    setData(items);
   }, []);
 
   return (
     <div className="container sample ig-typography">
       <div className="grid-lite-wrapper">
-        <igc-grid-lite ref={gridRef} id="grid-lite">
-          <igc-grid-lite-column field="firstName" header="First name" filterable></igc-grid-lite-column>
-          <igc-grid-lite-column field="lastName" header="Last name" filterable></igc-grid-lite-column>
-          <igc-grid-lite-column field="age" header="Age" filterable data-type="number"></igc-grid-lite-column>
-          <igc-grid-lite-column field="active" header="Active" data-type="boolean" filterable cellTemplate={activeCellTemplate}></igc-grid-lite-column>
-        </igc-grid-lite>
+        <IgrGridLite id="grid-lite" data={data}>
+          <IgrGridLiteColumn
+            field="firstName"
+            header="First name"
+            filterable
+          ></IgrGridLiteColumn>
+          <IgrGridLiteColumn
+            field="lastName"
+            header="Last name"
+            filterable
+          ></IgrGridLiteColumn>
+          <IgrGridLiteColumn
+            field="age"
+            header="Age"
+            filterable
+            dataType="number"
+          ></IgrGridLiteColumn>
+          <IgrGridLiteColumn
+            field="active"
+            header="Active"
+            dataType="boolean"
+            filterable
+            cellTemplate={activeCellTemplate}
+          ></IgrGridLiteColumn>
+        </IgrGridLite>
       </div>
     </div>
   );
 }
 
 // rendering above component in the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Sample/>);
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<Sample />);
 ```
 
 
 ## Filter Model
 
-<!-- React, WebComponents -->
-
 The building blocks for filter operations in the grid is the `FilterExpression<T, K>` which has the following structure:
-
-<!-- end: React, WebComponents -->
 
 ```typescript
 export interface FilterExpression<T, K extends Keys<T> = Keys<T>> {
@@ -290,75 +287,67 @@ export interface FilterExpression<T, K extends Keys<T> = Keys<T>> {
 
 ## Filter API
 
-<!-- React, WebComponents -->
-
-The Grid Lite exposes two main approaches for applying filter operations from its API. Either through the `GridLite.filter()`/`GridLite.clearFilter()` methods or through the `Grid.Lite.filterExpressions` property.
+The Grid Lite exposes two main approaches for applying filter operations from its API. Either through the `GridLite.filter()`/`GridLite.clearFilter()` methods or through the `GridLite.filterExpressions` property.
 
 The `filter()` method accepts either a single expression or an array of filter expression and then filters the grid data
 based on those expressions.
 
-<!-- end: React, WebComponents -->
-
 ```typescript
 // Single
-grid.filter({ key: 'firstName', condition: 'contains', searchTerm: 'George' });
+gridRef.current.filter({ key: 'firstName', condition: 'contains', searchTerm: 'George' });
 
 // Multiple
-grid.filter([
+gridRef.current.filter([
   { key: 'firstName', condition: 'startsWith', searchTerm: 'a' },
-  { key: 'firstName', condition: 'startsWith' searchTerm: 'g', criteria: 'or' },
+  { key: 'firstName', condition: 'startsWith', searchTerm: 'g', criteria: 'or' },
 ]);
 ```
 
-<!-- React, WebComponents -->
-
 The `clearFilter()` method, as the name implies, clears the filter state of a single column or the whole grid component, depending on the passed arguments.
-
-<!-- end: React, WebComponents -->
 
 ```typescript
 // Clear the filter state for the `age` column.
-grid.clearFilter('age');
+gridRef.current.clearFilter('age');
 
 // Clear the filter state of the grid.
-grid.clearFilter();
+gridRef.current.clearFilter();
 ```
 
 ## Initial filter state
 
-<!-- React, WebComponents -->
-
 The `filterExpressions` property is very similar in behavior to the `filter()` method call. It exposes a declarative way to control filter state in the grid, but the most useful property is the ability to set initial filter state when the Grid Lite component is first rendered.
 
-For example here is a Lit-based sample:
+Here is an example:
+
+```tsx
+const filterState: FilterExpression<User>[] = [
+  { key: 'age', condition: 'greaterThan', searchTerm: 21 },
+  /** unary condition so `searchTerm` is not required */
+  { key: 'active', condition: 'true' },
+];
+
+return(
+  <IgrGridLite filterExpressions={filterState}></IgrGridLite>
+);
+```
+
+It can be used to get the current filter state of the component and do additional processing depending on another state in your application.
 
 ```typescript
-{
-  filterState: FilterExpression<User>[] = [
-    { key: 'age', condition: 'greaterThan', searchTerm: 21 },
-    /** unary condition so `searchTerm` is not required */
-    { key: 'active', condition: 'true' },
-  ];
-
-  render() {
-    return html`<igc-grid-lite .filterExpressions=${filterState}></igc-grid-lite>`
-  }
-}
+const state = gridRef.current.filterExpressions;
+// Save the current filter state
+saveUserFilterState(state);
 ```
 
 ## Events
 
-<!-- React, WebComponents -->
-
-When a filter operation is performed through the UI, the component emits a custom `filtering` event. The `detail` property is the sort expression which will be applied by the Grid Lite. The event is cancellable and if cancelled will prevent the current filter operation.
+When a filter operation is performed through the UI, the component emits a custom `filtering` event. The `detail` property is the filter expression which will be applied by the Grid Lite. The event is cancellable and if cancelled will prevent the current filter operation.
 
 After the grid applies the new filter state, a `filtered` event is emitted. It contains the filter state for the column which was the target of the operation and it is not cancellable.
 
-<!-- end: React, WebComponents -->
-
 ```typescript
-grid.addEventListener('filtering', (event: CustomEvent<GridLiteFilteringEvent<T>>) => { ... });
-grid.addEventListener('filtered', (event: CustomEvent<GridLiteFilteredEvent<T>>) => { ... });
+gridRef.current.addEventListener('filtering', (event: CustomEvent<GridLiteFilteringEvent<T>>) => { ... });
+gridRef.current.addEventListener('filtered', (event: CustomEvent<GridLiteFilteredEvent<T>>) => { ... });
 ```
 
 ```typescript
@@ -526,27 +515,22 @@ igc-grid-lite {
 }
 ```
 ```tsx
-import React from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import { GridLiteDataService, User } from './GridLiteDataService';
 
-// Import the web component
-import { IgcGridLite } from 'igniteui-grid-lite';
-
+import { IgrGridLite, IgrGridLiteColumn } from 'igniteui-react/grid-lite';
 import "igniteui-webcomponents/themes/light/bootstrap.css";
 import "./index.css";
 
-// Register components
-IgcGridLite.register();
-
 const getTime = () => `[${new Date().toLocaleTimeString()}]`;
 
-export default function Sample() {
-  const gridRef = React.useRef<any>(null);
-  const logRef = React.useRef<HTMLDivElement>(null);
-  const [log, setLog] = React.useState<string[]>([]);
+export default function GridLiteFilteringConfigEvents() {
+  const logRef = useRef<HTMLDivElement>(null);
+  const [data, setData] = useState<User[]>([]);
+  const [log, setLog] = useState<string[]>([]);
 
-  const updateLog = React.useCallback((message: string) => {
+  const updateLog = useCallback((message: string) => {
     setLog(prevLog => {
       const newLog = [...prevLog];
       if (newLog.length > 10) {
@@ -557,54 +541,40 @@ export default function Sample() {
     });
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (logRef.current) {
       logRef.current.scrollTop = logRef.current.scrollHeight;
     }
   }, [log]);
 
-  React.useEffect(() => {
-    if (gridRef.current) {
-      const dataService = new GridLiteDataService();
-      const data: User[] = dataService.generateUsers(50);
-      gridRef.current.data = data;
-
-      // Listen to filter events
-      const handleFiltering = (e: any) => {
-        const { expressions, type } = e.detail;
-        updateLog(`${getTime()} :: Event \`${e.type}\` :: Filter operation of type '${type}' for column '${expressions[0].key}'`);
-      };
-
-      const handleFiltered = (e: any) => {
-        updateLog(`${getTime()} :: Event \`${e.type}\` for column '${e.detail.key}'`);
-      };
-
-      gridRef.current.addEventListener('filtering', handleFiltering);
-      gridRef.current.addEventListener('filtered', handleFiltered);
-
-      return () => {
-        if (gridRef.current) {
-          gridRef.current.removeEventListener('filtering', handleFiltering);
-          gridRef.current.removeEventListener('filtered', handleFiltered);
-        }
-      };
-    }
+  const handleFiltering = useCallback((event: CustomEvent<any>) => {
+    const { expressions, type } = event.detail;
+    updateLog(`${getTime()} :: Event \`filtering\` :: Filter operation of type '${type}' for column '${expressions[0].key}'`);
   }, [updateLog]);
 
-  const logContent = log
-    .map(entry => `<p><code>${entry}</code></p>`)
-    .join('');
+  const handleFiltered = useCallback((event: CustomEvent<any>) => {
+    updateLog(`${getTime()} :: Event \`filtered\` for column '${event.detail.key}'`);
+  }, [updateLog]);
+
+  useEffect(() => {
+    const dataService = new GridLiteDataService();
+    setData(dataService.generateUsers(50));
+  }, []);
 
   return (
     <div className="container sample ig-typography">
       <div className="grid-lite-wrapper">
-        <igc-grid-lite ref={gridRef} id="grid-lite">
-          <igc-grid-lite-column field="firstName" header="First name" filterable></igc-grid-lite-column>
-          <igc-grid-lite-column field="lastName" header="Last name" filterable></igc-grid-lite-column>
-          <igc-grid-lite-column field="age" header="Age" filterable data-type="number"></igc-grid-lite-column>
-          <igc-grid-lite-column field="email" header="Email" filterable></igc-grid-lite-column>
-        </igc-grid-lite>
-        <div ref={logRef} className="log" id="log" dangerouslySetInnerHTML={{ __html: logContent }}></div>
+        <IgrGridLite id="grid-lite" data={data} onFiltering={handleFiltering} onFiltered={handleFiltered}>
+          <IgrGridLiteColumn field="firstName" header="First name" filterable={true}></IgrGridLiteColumn>
+          <IgrGridLiteColumn field="lastName" header="Last name" filterable={true}></IgrGridLiteColumn>
+          <IgrGridLiteColumn field="age" header="Age" filterable={true} dataType="number"></IgrGridLiteColumn>
+          <IgrGridLiteColumn field="email" header="Email" filterable={true}></IgrGridLiteColumn>
+        </IgrGridLite>
+        <div ref={logRef} className="log" id="log">
+          {log.map((entry, index) => (
+            <p key={index}><code>{entry}</code></p>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -612,18 +582,14 @@ export default function Sample() {
 
 // rendering above component in the React DOM
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Sample/>);
+root.render(<GridLiteFilteringConfigEvents/>);
 ```
 
-
-<!-- React, WebComponents -->
 
 ## Remote filter operations
 
 In cases where filtering must be done remotely or you want to save the current state/data to a server somewhere,
 the Grid Lite exposes a hook where you can implement and customize this behavior.
-
-<!-- React, WebComponents -->
 
 Using the `dataPipelineConfiguration` property, you can provide a custom hook which will be called each time a filter operation is about to run. The callback is passed a `DataPipelineParams` object.
 
@@ -645,7 +611,7 @@ export type DataPipelineParams<T extends object> = {
 ```
 
 ```typescript
-grid.dataPipelineConfiguration = { filter: (params: DataPipelineParams<T>) => T[] | Promise<T[]> };
+gridRef.current.dataPipelineConfiguration = { filter: (params: DataPipelineParams<T>) => T[] | Promise<T[]> };
 ```
 
 <!-- End: React, WebComponents -->
@@ -791,49 +757,53 @@ export class GridLiteDataService {
 ```
 ```css
 p {
-    border: 1px solid var(--border);
-    padding: 1rem;
-    min-height: 1rem;
-    font-size: 0.75rem;
+  border: 1px solid var(--border);
+  padding: 1rem;
+  min-height: 1rem;
+  font-size: 0.75rem;
 }
 
 code {
-    background-color: rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 4px;
-    padding: 0.125rem 0.375rem;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 0.875em;
-    color: #222222;
-    display: inline-block;
-    width: 100%;
-    min-height: 2em;
-    box-sizing: border-box;
+  background-color: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  padding: 0.125rem 0.375rem;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.875em;
+  color: #222222;
+  display: inline-block;
+  width: 100%;
+  min-height: 2em;
+  box-sizing: border-box;
 }
 
 .grid-lite-wrapper {
-    width: 100%;
-    height: calc(100% - 1rem);
+  width: 100%;
+  height: calc(100% - 1rem);
+}
+
+.grid-section {
+  position: relative;
 }
 
 igc-grid-lite {
-    min-height: 65vh;
-    --ig-size: 2;
+  min-height: 65vh;
+  --ig-size: 2;
 }
 ```
 ```tsx
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { GridLiteDataService, User } from './GridLiteDataService';
-
-// Import the web component
-import { IgcGridLite } from 'igniteui-grid-lite';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { GridLiteDataService, User } from "./GridLiteDataService";
+import { IgrCheckbox, IgrCircularProgress } from "igniteui-react";
+import {
+  IgrGridLite,
+  IgrGridLiteColumn,
+  type IgrCellContext,
+} from "igniteui-react/grid-lite";
 
 import "igniteui-webcomponents/themes/light/bootstrap.css";
 import "./index.css";
-
-// Register components
-IgcGridLite.register();
 
 function groupBy<T extends object>(arr: T[], key: keyof T) {
   const out: Record<string, T[]> = {};
@@ -850,10 +820,10 @@ function groupBy<T extends object>(arr: T[], key: keyof T) {
 const mapExpressions = (arr: any[]) => {
   return arr
     .map(({ searchTerm, criteria, condition }: any, idx: number) => {
-      const c = condition;
+      const normalizedSearchTerm = !searchTerm ? condition.name : searchTerm;
       return idx < 1
-        ? `${c.name}("${searchTerm}")`
-        : `${criteria?.toUpperCase()} ${c.name}("${searchTerm}")`;
+        ? `${condition.name}("${normalizedSearchTerm}")`
+        : `${criteria?.toUpperCase()} ${condition.name}("${normalizedSearchTerm}")`;
     })
     .join(' ');
 };
@@ -867,53 +837,84 @@ const buildUri = (state: any[], setQueryString: (qs: string) => void) => {
   setQueryString(`GET: /data?filter=${out.join('&')}`);
 };
 
-export default function Sample() {
-  const gridRef = React.useRef<any>(null);
-  const [queryString, setQueryString] = React.useState('');
+const activeCellTemplate = (ctx: IgrCellContext) => (
+  <IgrCheckbox checked={ctx.value}></IgrCheckbox>
+);
 
-  const dataPipelineConfiguration = React.useMemo(() => ({
-    filter: async ({ data, grid }: any) => {
-      buildUri(grid.filterExpressions, setQueryString);
-      await new Promise((resolve) => setTimeout(resolve, 250));
-      return data;
-    },
-  }), []);
+export default function Sample() {
+  const [data, setData] = React.useState<User[]>([]);
+  const [queryString, setQueryString] = React.useState("");
+  const [inOperation, setInOperation] = React.useState(false);
+
+  const dataPipelineConfiguration = React.useMemo(
+    () => ({
+      filter: async ({ data, grid }: any) => {
+        setInOperation(true);
+        buildUri(grid.filterExpressions, setQueryString);
+        await new Promise((resolve) => setTimeout(resolve, 250));
+        setInOperation(false);
+        return data;
+      },
+    }),
+    [],
+  );
 
   React.useEffect(() => {
-    if (gridRef.current) {
-      const dataService = new GridLiteDataService();
-      const allData: User[] = dataService.generateUsers(100);
-      gridRef.current.data = allData;
-      gridRef.current.dataPipelineConfiguration = dataPipelineConfiguration;
-    }
-  }, [dataPipelineConfiguration]);
+    const dataService = new GridLiteDataService();
+    const allData: User[] = dataService.generateUsers(500);
+    setData(allData);
+  }, []);
 
   return (
     <div className="container sample ig-typography">
-      <div className="info-panel">
-        <div id="queryString">
-          <p><code>{queryString}</code></p>
-        </div>
-      </div>
       <div className="grid-lite-wrapper">
-        <igc-grid-lite ref={gridRef} id="grid-lite">
-          <igc-grid-lite-column field="firstName" header="First name" filterable></igc-grid-lite-column>
-          <igc-grid-lite-column field="lastName" header="Last name" filterable></igc-grid-lite-column>
-          <igc-grid-lite-column field="age" header="Age" filterable data-type="number"></igc-grid-lite-column>
-          <igc-grid-lite-column field="email" header="Email"></igc-grid-lite-column>
-        </igc-grid-lite>
+        <div>
+          <h5>Generated request</h5>
+          <p>
+            <code>{queryString}</code>
+          </p>
+        </div>
+        <section className="grid-section">
+          <IgrGridLite
+            id="grid-lite"
+            data={data}
+            dataPipelineConfiguration={dataPipelineConfiguration}
+          >
+            <IgrGridLiteColumn
+              field="firstName"
+              header="First Name"
+              filterable
+            ></IgrGridLiteColumn>
+            <IgrGridLiteColumn
+              field="lastName"
+              header="Last Name"
+              filterable
+            ></IgrGridLiteColumn>
+            <IgrGridLiteColumn
+              field="age"
+              header="Age"
+              filterable
+              dataType="number"
+            ></IgrGridLiteColumn>
+            <IgrGridLiteColumn
+              field="active"
+              header="Active"
+              dataType="boolean"
+              filterable
+              cellTemplate={activeCellTemplate}
+            ></IgrGridLiteColumn>
+          </IgrGridLite>
+        </section>
       </div>
     </div>
   );
 }
 
 // rendering above component in the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Sample/>);
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<Sample />);
 ```
 
-
-<!-- end: React, WebComponents -->
 
 <!-- TODO ## API References
 ## API References

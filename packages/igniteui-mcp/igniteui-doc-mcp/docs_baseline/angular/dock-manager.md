@@ -203,11 +203,11 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 export class AppModule {}
 ```
 
-Next, one should call the `defineCustomElements()` function in the `main.ts` file:
+Next, one should call the `defineComponents()` function in the `main.ts` file:
 
 ```typescript
 import { AppModule } from './app/app.module';
-import { defineCustomElements } from 'igniteui-dockmanager/loader';
+import { defineComponents } from 'igniteui-dockmanager';
 import { enableProdMode } from '@angular/core';
 import { environment } from '.environments/environment';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
@@ -219,7 +219,7 @@ if (environment.production) {
 platformBrowserDynamic().bootstrapModule(AppModule)
     .catch(err => console.log(err));
 
-defineCustomElements();
+defineComponents(IgcDockManagerComponent);
 ```
 
 This is it, you are now ready to use the Dock Manager component in an Angular component template. To do so simply use its tag name:

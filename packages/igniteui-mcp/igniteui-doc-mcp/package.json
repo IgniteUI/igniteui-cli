@@ -1,15 +1,39 @@
 {
   "name": "@igniteui/mcp-server",
-  "version": "1.0.0",
+  "version": "15.0.0-rc.0",
   "description": "Unified MCP server for Ignite UI — documentation, GitHub API, and CLI scaffolding",
   "type": "module",
   "main": "dist/index.js",
+  "exports": {
+    ".": "./dist/index.js",
+    "./package.json": "./package.json"
+  },
   "bin": {
     "igniteui-mcp": "./dist/index.js"
   },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist/**/*.js",
+    "dist/**/*.d.ts",
+    "dist/tools/*.md",
+    "dist/igniteui-docs.db",
+    "dist/tools/*.md",
+    "docs/angular/api/**/*.md",
+    "docs/angular/api/**/*.json",
+    "docs/react/**/*.md",
+    "docs/react/**/*.json",
+    "docs/webcomponents/api/**/*.md",
+    "docs/webcomponents/api/**/*.json",
+    "README.md"
+  ],
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && npx tsx scripts/build.ts",
     "start": "node dist/index.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "coverage": "vitest run --coverage",
     "build:db": "npx tsx scripts/build-db.ts",
     "inspector": "npx @modelcontextprotocol/inspector dist/index.js",
     "clear": "npx tsx -e \"import{rmSync}from'fs';rmSync('dist',{recursive:true,force:true})\"",
@@ -17,9 +41,12 @@
     "clear:react": "npx tsx -e \"import{rmSync}from'fs';['docs_processing','docs_prepeared','docs_final'].forEach(d=>{rmSync('dist/'+d+'/react',{recursive:true,force:true})})\"",
     "clear:blazor": "npx tsx -e \"import{rmSync}from'fs';['docs_processing','docs_prepeared','docs_final'].forEach(d=>{rmSync('dist/'+d+'/blazor',{recursive:true,force:true})})\"",
     "clear:webcomponents": "npx tsx -e \"import{rmSync}from'fs';['docs_processing','docs_prepeared','docs_final'].forEach(d=>{rmSync('dist/'+d+'/webcomponents',{recursive:true,force:true})})\"",
-    "build:xplat-blazor": "cd common/igniteui-xplat-docs && npm run buildBlazor",
-    "build:xplat-react": "cd common/igniteui-xplat-docs && npm run buildReact",
-    "build:xplat-wc": "cd common/igniteui-xplat-docs && npm run buildWC",
+    "build:xplat-blazor": "cd common/igniteui-xplat-docs && npm install --silent && npx tsc --skipLibCheck && npx gulp buildOutputBlazor",
+    "build:xplat-react": "cd common/igniteui-xplat-docs && npm install --silent && npx tsc --skipLibCheck && npx gulp buildOutputReact",
+    "build:xplat-wc": "cd common/igniteui-xplat-docs && npm install --silent && npx tsc --skipLibCheck && npx gulp buildOutputWC",
+    "build:docs:angular": "git submodule update --init angular/igniteui-angular && npm run build && node scripts/build-docs.mjs angular",
+    "build:docs:webcomponents": "git submodule update --init webcomponents/igniteui-webcomponents && npm run build && node scripts/build-docs.mjs webcomponents",
+    "build:docs:all": "npm run build:docs:angular && npm run build:docs:webcomponents",
     "export:angular": "npx tsx scripts/export-angular-docs.ts",
     "export:react": "npx tsx scripts/export-react-docs.ts --skip-build",
     "export:blazor": "npx tsx scripts/export-blazor-docs.ts --skip-build",
@@ -65,19 +92,23 @@
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.12.1",
     "dotenv": "^17.2.4",
-    "js-tiktoken": "^1.0.21",
-    "js-yaml": "^4.1.1",
-    "octokit": "^5.0.5",
-    "openai": "^6.22.0",
+    "sql.js": "^1.14.1",
     "zod": "^3.25.1"
   },
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.13",
     "@types/js-yaml": "^4.0.9",
-    "@types/tmp": "^0.2.6",
     "@types/node": "^25.2.2",
+    "@types/tmp": "^0.2.6",
     "better-sqlite3": "^12.6.2",
+    "js-tiktoken": "^1.0.21",
+    "js-yaml": "^4.1.1",
+    "octokit": "^5.0.5",
+    "openai": "^6.22.0",
     "tsx": "^4.21.0",
-    "typescript": "^5.8.3"
+    "typedoc": "^0.28.6",
+    "typedoc-plugin-markdown": "^4.4.1",
+    "typescript": "^5.8.3",
+    "vitest": "^3.0.0"
   }
 }

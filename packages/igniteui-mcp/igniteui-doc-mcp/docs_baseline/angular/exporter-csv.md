@@ -24,11 +24,13 @@ The exporting functionality is encapsulated in the [`IgxCsvExporterService`](htt
 import { Component, inject } from '@angular/core';
 
 import { CsvFileTypes, IgxCsvExporterOptions, IgxCsvExporterService } from 'igniteui-angular/grids/core';
+import { IgxButtonDirective } from 'igniteui-angular/directives';
 
 @Component({
     selector: 'app-csv-export',
     styleUrls: ['./csv-export.component.scss'],
-    templateUrl: './csv-export.component.html'
+    templateUrl: './csv-export.component.html',
+    imports: [IgxButtonDirective]
 })
 export class CsvExportComponent {
   private csvExportService = inject(IgxCsvExporterService);
@@ -55,10 +57,10 @@ export class CsvExportComponent {
 ```html
 <p>
   Press the "Export CSV Data" button below to export an array as .csv file.<br />
-  <button (click)="exportCsvButtonHandler()">Export CSV Data</button>
+  <button igxButton="contained" (click)="exportCsvButtonHandler()">Export CSV Data</button>
   <br />
   Press the "Export TSV Data" button below to export an array as .tsv file.<br />
-  <button (click)="exportTsvButtonHandler()">Export TSV Data</button><br />
+  <button igxButton="contained" (click)="exportTsvButtonHandler()">Export TSV Data</button><br />
 </p>
 ```
 
@@ -265,7 +267,7 @@ this.csvExportService.export(this.igxGrid1, new IgxCsvExporterOptions('ExportedD
 
 When you are exporting data from [**IgxGrid**](grid/grid.md) the export process takes in account features like row filtering and column hiding and exports only the data visible in the grid. You can configure the exporter service to include filtered rows or hidden columns by setting properties on the [`IgxCsvExporterOptions`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcsvexporteroptions.html) object. These properties are described in the table below.
 
-## API Summary
+## API References
 
 The CSV Exporter service has a few more APIs to explore, which are listed below.
 

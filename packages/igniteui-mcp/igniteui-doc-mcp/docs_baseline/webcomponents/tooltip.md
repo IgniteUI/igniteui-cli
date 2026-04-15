@@ -25,8 +25,6 @@ igc-avatar {
 
 ### Getting Started
 
-<!-- WebComponents -->
-
 To start using the [`IgcTooltipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html), first, you need to install the Ignite UI for Web Components by running the following command:
 
 ```cmd
@@ -41,8 +39,6 @@ import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
 defineComponents(IgcTooltipComponent);
 ```
-
-<!-- end: WebComponents -->
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
@@ -69,11 +65,7 @@ To attach a tooltip to the desired element, use the [`anchor`](https://www.infra
 </igc-tooltip>
 ```
 
-<!-- WebComponents, React -->
-
 You can also specify the target by passing the element instance directly:
-
-<!-- end: WebComponents, React -->
 
 ```html
 <igc-tooltip id="tooltip">
@@ -100,21 +92,13 @@ The tooltip content is defined by placing custom content between the opening and
 </igc-tooltip>
 ```
 
-<!-- WebComponents, React -->
-
 Alternatively, to set simple text, you can use the [`message`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html#message) property.
-
-<!-- end: WebComponents, React -->
 
 ```html
 <igc-tooltip message="This is my custom content here."></igc-tooltip>
 ```
 
-<!-- WebComponents, React -->
-
 If you use both approaches (slotted content and the [`message`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html#message) property), the slotted content will take priority and the [`message`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html#message) value will be ignored.
-
-<!-- end: WebComponents, React -->
 
 ```html
 <igc-button id="target-button">Hover me</igc-button>
@@ -123,11 +107,7 @@ If you use both approaches (slotted content and the [`message`](https://www.infr
 </igc-tooltip>
 ```
 
-<!-- WebComponents, React -->
-
 In this example, the slotted content (“I will be shown!”) will be displayed instead of the [`message`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html#message) property value.
-
-<!-- end: WebComponents, React -->
 
 The [`IgcTooltipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html) content can be more than just simple text. Since the [`IgcTooltipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html) is a regular element in the markup, you can enhance its content by adding any elements you need and styling them accordingly.
 
@@ -178,7 +158,7 @@ If you want to control the delay before showing and hiding the [`IgcTooltipCompo
 </igc-tooltip>
 ```
 
-> \[!NOTE]
+> [!NOTE]
 > It's important to note that the Tooltip API methods — [`show`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html#show), [`hide`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html#hide), and [`toggle`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html#toggle) — DO NOT take the [`showDelay`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html#showDelay) and [`hideDelay`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html#hideDelay) properties into account. They act immediately when invoked.
 
 ### Placement

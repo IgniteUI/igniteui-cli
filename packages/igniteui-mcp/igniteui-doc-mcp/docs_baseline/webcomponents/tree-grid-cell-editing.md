@@ -82,7 +82,7 @@ You can exit edit mode and **commit** the changes in one of the following ways:
 - on single click to another cell - when you click on another cell in the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html), your changes will be submitted.
 - operations like paging, resize, pin or move will exit edit mode and changes will be submitted.
 
-> \[!Note]
+> [!Note]
 > The cell remains in edit mode when you scroll vertically or horizontally or click outside the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html). This is valid for both cell editing and row editing.
 
 ### Editing through API
@@ -118,13 +118,7 @@ public updateCell() {
 
 You can see and learn more for default cell editing templates in the [general editing topic](editing.md#editing-templates).
 
-<!-- Blazor, WebComponents -->
-
 If you want to provide a custom template which will be applied to a cell, you can pass such template either to the cell itself, or to its header. First create the column as you usually would:
-
-<!-- end: Blazor, WebComponents -->
-
-<!-- WebComponents -->
 
 <!-- ComponentStart: TreeGrid -->
 
@@ -172,8 +166,6 @@ public webGridCellEditCellTemplate = (ctx: IgcCellTemplateContext) => {
 
 <!-- ComponentEnd: TreeGrid -->
 
-<!-- end: WebComponents -->
-
 Working sample of the above can be found here for further reference:
 
 ```typescript
@@ -215,7 +207,7 @@ export class RoleplayTreeGridData extends Array<RoleplayTreeGridDataItem> {
 
 ## CRUD operations
 
-> \[!Note]
+> [!Note]
 > Please keep in mind that when you perform some **CRUD operation** all of the applied pipes like **filtering**, **sorting** and **grouping** will be re-applied and your view will be automatically updated.
 
 The [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) provides a straightforward API for basic CRUD operations.
@@ -295,8 +287,6 @@ constructor() {
 
 <!-- ComponentEnd: TreeGrid -->
 
-<!-- end: Blazor, WebComponents -->
-
 The `CellEdit` emits whenever **any** cell's value is about to be committed. In our **CellEdit** definition, we need to make sure that we check for our specific column before taking any action:
 
 <!-- ComponentStart: TreeGrid -->
@@ -319,10 +309,6 @@ public webTreeGridCellEdit(event: CustomEvent<IgcGridEditEventArgs>): void {
 }
 
 ```
-
-<!-- WebComponents, React -->
-
-<!-- end: WebComponents, React -->
 
 <!-- ComponentEnd: TreeGrid -->
 
@@ -367,8 +353,6 @@ export class EmployeesNestedTreeData extends Array<EmployeesNestedTreeDataItem> 
 
 
 ## Styling
-
-<!-- WebComponents, Blazor, React -->
 
 In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
@@ -437,8 +421,6 @@ export class EmployeesNestedTreeData extends Array<EmployeesNestedTreeDataItem> 
 ```
 
 
-<!-- end: WebComponents, Blazor, React -->
-
 ## API References
 
 - [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html)
@@ -448,7 +430,3 @@ export class EmployeesNestedTreeData extends Array<EmployeesNestedTreeDataItem> 
 - [`IgcDatePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html)
 
 ## Additional Resources
-
-<!-- Blazor, WebComponents, React -->
-
-<!-- end: Blazor, WebComponents, React -->

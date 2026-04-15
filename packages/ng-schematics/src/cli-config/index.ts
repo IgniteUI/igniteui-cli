@@ -62,7 +62,7 @@ function importBrowserAnimations(): Rule {
 		const projects = await getProjects(tree);
 		projects.forEach(project => {
 			// TODO: Resolve hardcoded paths instead
-			const moduleFilePath = `${project.sourceRoot}/app/app.module.ts`;
+			const moduleFilePath = `${project.sourceRoot}/app/app-module.ts`;
 			if (tree.exists(moduleFilePath)) {
 				const mainModule = new AngularTypeScriptFileUpdate(
 					moduleFilePath,
@@ -117,7 +117,46 @@ function importStyles(): Rule {
 	};
 }
 
-// tslint:disable-next-line:space-before-function-paren
+export function addAIConfig(): Rule {
+	return (tree: Tree) => {
+		const mcpFilePath = "/.vscode/mcp.json";
+		const igniteuiServer = {
+			command: "npx",
+			args: ["-y", "igniteui-cli@next", "mcp"]
+		};
+		const igniteuiThemingServer = {
+			command: "npx",
+			args: ["-y", "igniteui-theming", "igniteui-theming-mcp"]
+		};
+
+		if (tree.exists(mcpFilePath)) {
+			const content = JSON.parse(tree.read(mcpFilePath)!.toString());
+			const servers = content.servers ?? {};
+			let modified = false;
+			if (!servers["igniteui-cli"]) {
+				servers["igniteui-cli"] = igniteuiServer;
+				modified = true;
+			}
+			if (!servers["igniteui-theming"]) {
+				servers["igniteui-theming"] = igniteuiThemingServer;
+				modified = true;
+			}
+			if (modified) {
+				content.servers = servers;
+				tree.overwrite(mcpFilePath, JSON.stringify(content, null, 2));
+			}
+		} else {
+			const mcpConfig = {
+				servers: {
+					"igniteui-cli": igniteuiServer,
+					"igniteui-theming": igniteuiThemingServer
+				}
+			};
+			tree.create(mcpFilePath, JSON.stringify(mcpConfig, null, 2));
+		}
+	};
+}
+
 export default function (): Rule {
 	return (tree: Tree) => {
 		setVirtual(tree);
@@ -126,7 +165,8 @@ export default function (): Rule {
 			addTypographyToProj(),
 			importBrowserAnimations(),
 			createCliConfig(),
-			displayVersionMismatch()
+			displayVersionMismatch(),
+			addAIConfig()
 		]);
 	};
 }

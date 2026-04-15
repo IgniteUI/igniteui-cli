@@ -846,8 +846,6 @@ export class RetailSalesPerformanceLocalDataSource extends LocalDataSource {
 
 ## Dependencies
 
-<!-- Angular, WebComponents, React -->
-
 Install the following packages in the Ignite UI for Web Components toolset:
 
 ```cmd
@@ -877,8 +875,6 @@ ModuleManager.register(
     IgcDashboardTileModule
 );
 ```
-
-<!-- end:Angular, WebComponents, React -->
 
 ## Usage
 

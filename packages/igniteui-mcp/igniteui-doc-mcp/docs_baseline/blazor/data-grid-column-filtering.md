@@ -9,12 +9,8 @@ _tocName: Column Filtering
 _premium: true
 ---
 
-<!-- Blazor, WebComponents -->
-
-> \[!Note]
+> [!Note]
 > Please note that this control has been deprecated and replaced with the [Grid](../data-grid.md) component, and as such, we recommend migrating to that control. This will not be receiving any new features, bug fixes will be deprioritized. For help or questions on migrating your codebase to the Data Grid, please contact support.
-
-<!-- end: Blazor, WebComponents -->
 
 # Blazor Grid Filtering Overview
 
@@ -207,11 +203,7 @@ In addition, the grid's [`FilterLogicalOperator`](https://www.infragistics.com/b
 - [`and`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.FilterFactory.html#IgniteUI_Blazor_Controls_FilterFactory_and) logical operator. In order for a successful match, all conditions have to pass.
 - [`or`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.FilterFactory.html#IgniteUI_Blazor_Controls_FilterFactory_or) logical operator. In order for a successful match, at least one of the conditions have to pass.
 
-<!-- Blazor -->
-
 Since the operands are applied to the column they can be added in several ways, such as inline, in-code, or in a separate class. Each approach is demonstrated in the example below.
-
-<!-- end:Blazor -->
 
 ```razor
 @using IgniteUI.Blazor.Controls

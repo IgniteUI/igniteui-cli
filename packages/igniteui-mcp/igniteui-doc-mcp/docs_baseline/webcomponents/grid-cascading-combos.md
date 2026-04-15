@@ -63,11 +63,7 @@ In order enable column editing, make sure [`editable`](https://www.infragistics.
 
 Once the column editing is enabled, you can start by adding your [`IgcComboComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html). Please note that here in order to have only one single selection available, you will need to use set the [`singleSelect`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#singleSelect) property.
 
-<!-- WebComponents, Blazor, React -->
-
 To get started with the [`IgcComboComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html), first you need to import it:
-
-<!-- WebComponents -->
 
 ```ts
 import { IgcComboComponent, defineAllComponents } from 'igniteui-webcomponents';
@@ -121,10 +117,6 @@ public bindEventsCountryCombo(rowId: any, cell: any) {
     }
 ```
 
-<!-- end: WebComponents, Blazor, React -->
-
-<!-- WebComponents -->
-
 And lastly, adding the [`IgcLinearProgressComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igclinearprogresscomponent.html), which is required while loading the list of data.
 The `id` is necessary to set the value of `id` attribute.
 
@@ -137,8 +129,6 @@ The `id` is necessary to set the value of `id` attribute.
         <igc-linear-progress style="display:none;" indeterminate id="${progressId}"></<igc-linear-progress><div>`;
     }
 ```
-
-<!-- end: WebComponents -->
 
 ## Known Issues and Limitations
 

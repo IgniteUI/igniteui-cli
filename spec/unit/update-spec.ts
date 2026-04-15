@@ -10,7 +10,6 @@ interface MockFile {
 	expected: string;
 }
 
-// tslint:disable: object-literal-sort-keys
 describe("updateWorkspace", () => {
 	let fsSpy: IFileSystem;
 
@@ -115,7 +114,7 @@ describe("updateWorkspace", () => {
 `};
 			(fsSpy.glob as jasmine.Spy).and.returnValues(// per workspace
 				["package.json"], // root package.json
-				["src/home.component.ts", "src/app.module.ts"], // logic files
+				["src/home.component.ts", "src/app-module.ts"], // logic files
 				["src/home.component.scss"], [], [], // for each style extension
 				[] // inner package.json files
 			);
@@ -148,7 +147,7 @@ describe("updateWorkspace", () => {
 		it("Should not modify existing npmrc file", async () => {
 			(fsSpy.glob as jasmine.Spy).and.returnValues(// per workspace
 				["package.json"], // root package.json
-				["src/home.component.ts", "src/app.module.ts"], // logic files
+				["src/home.component.ts", "src/app-module.ts"], // logic files
 				["src/home.component.scss"], [], [], // for each style extension
 				[] // inner package.json files
 			);
@@ -260,7 +259,7 @@ export class HomeComponent {
 		"test-e2e": {}
 	}
 }`}, {
-				path: "src/app.module.ts",
+				path: "src/app-module.ts",
 				content:
 `import { something } from 'module';
 import { bait } from 'igniteui-angular-core';
@@ -330,7 +329,7 @@ title = 'igniteui-angular example';
 `}];
 			(fsSpy.glob as jasmine.Spy).and.returnValues // per workspace
 				([ "package.json" ], // root package.json
-				["src/home.component.ts", "src/app.module.ts"], // logic files
+				["src/home.component.ts", "src/app-module.ts"], // logic files
 				["src/home.component.scss"], [], [], // for each style extension
 				[]); // inner package.json files
 			(fsSpy.readFile as jasmine.Spy).and.callFake((filePath: string) => {

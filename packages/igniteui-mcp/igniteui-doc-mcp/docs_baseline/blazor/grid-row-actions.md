@@ -39,7 +39,7 @@ They are added inside the [`IgbGrid`](https://www.infragistics.com/blazor/docs/a
 </IgbGrid>
 ```
 
-> \[!Note]
+> [!Note]
 > When `ActionStripComponent` is a child component of the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html), hovering a row will automatically show the UI.
 
 ## Custom Implementation

@@ -75,8 +75,6 @@ export class EmployeesFlatAvatars extends Array<EmployeesFlatAvatarsItem> {
 
 The predefined [`IgcGridToolbarActionsComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbaractionscomponent.html) and [`IgcGridToolbarTitleComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbartitlecomponent.html) UI components are added inside the [`IgcGridToolbarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbarcomponent.html) and this is all needed to have a toolbar providing default interactions with the corresponding Grid features:
 
-<!-- WebComponents -->
-
 <!-- ComponentStart: TreeGrid -->
 
 ```html
@@ -95,18 +93,10 @@ The predefined [`IgcGridToolbarActionsComponent`](https://www.infragistics.com/p
 
 <!-- ComponentEnd: TreeGrid -->
 
-<!-- end: WebComponents -->
-
-<!-- WebComponents -->
-
-<!-- end: WebComponents -->
-
-> \[!Note]
+> [!Note]
 > As seen in the code snippet above, the predefined `Actions` UI components are wrapped in the [`IgcGridToolbarActionsComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbaractionscomponent.html) container. This way, the toolbar title is aligned to the left of the toolbar and the actions are aligned to the right of the toolbar.
 
 Of course, each of these UIs can be added independently of each other, or may not be added at all. This way the toolbar container will be rendered empty:
-
-<!-- WebComponents -->
 
 <!-- ComponentStart: TreeGrid -->
 
@@ -116,22 +106,6 @@ Of course, each of these UIs can be added independently of each other, or may no
     </igc-grid-toolbar>
 </igc-tree-grid>
 ```
-
-<!-- ComponentEnd: TreeGrid -->
-
-<!-- end: WebComponents -->
-
-<!-- WebComponents -->
-
-<!-- end: WebComponents -->
-
-For a comprehensive look over each of the default UI components, continue reading the **Features** section below.
-
-<!-- Angular, WebComponents, React -->
-
-<!-- WebComponents -->
-
-<!-- end: Angular, WebComponents, React -->
 
 ## Features
 
@@ -203,8 +177,6 @@ Setting a title for the toolbar in your grid is achieved by using the [`IgcGridT
 
 Users can provide anything from simple text to more involved templates.
 
-<!-- WebComponents -->
-
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
 ```html
@@ -215,15 +187,11 @@ Users can provide anything from simple text to more involved templates.
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
-<!-- end: WebComponents -->
-
 ### Actions
 
 The [`IgcGridToolbarActionsComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbaractionscomponent.html) is where users can place actions/interactions in relation to the parent grid.
 As with the title portion of the toolbar, users can provide anything inside that template part, including the default
 toolbar interaction components.
-
-<!-- WebComponents -->
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -237,15 +205,11 @@ toolbar interaction components.
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
-<!-- end: WebComponents -->
-
 ### Column Pinning
 
 The [`IgcGridToolbarPinningComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbarpinningcomponent.html) component provides the default UI for interacting with column pinning in the grid.
 
 The component is setup to work out of the box with the parent grid containing the toolbar as well as several input properties for customizing the UI, such as the component title, the placeholder for the component input and the height of the dropdown itself.
-
-<!-- WebComponents -->
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -263,14 +227,10 @@ The component is setup to work out of the box with the parent grid containing th
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
-<!-- end: WebComponents -->
-
 ### Column Hiding
 
 The [`IgcGridToolbarHidingComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbarhidingcomponent.html) provides the default UI for interacting with column hiding. Exposes the same input properties for customizing the UI, such as the component
 title, the placeholder for the component input and the height of the dropdown itself.
-
-<!-- WebComponents -->
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -288,13 +248,9 @@ title, the placeholder for the component input and the height of the dropdown it
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
-<!-- end: WebComponents -->
-
 ### Advanced Filtering
 
 Toolbar Advanced Filtering component provides the default UI for the Advanced Filtering feature. The component exposes a way to change the default text of the button.
-
-<!-- WebComponents -->
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -308,8 +264,6 @@ Toolbar Advanced Filtering component provides the default UI for the Advanced Fi
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
-<!-- end: WebComponents -->
-
 ### Data Exporting
 
 As with the rest of the toolbar actions, exporting is provided through a [`IgcGridToolbarExporterComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbarexportercomponent.html) out of the box.
@@ -319,8 +273,6 @@ The toolbar exporter component exposes several input properties for customizing 
 These range from changing the display text, to enabling/disabling options in the dropdown to customizing the name of the generated file. For full reference, consult the API documentation for the `ToolbarExporter`.
 
 Here is a snippet showing some of the options which can be customized through the Web Components template:
-
-<!-- WebComponents -->
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -335,11 +287,9 @@ Here is a snippet showing some of the options which can be customized through th
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
-<!-- end: WebComponents -->
-
 In addition to changing the exported filename, the user can further configure the exporter options by waiting for the `ToolbarExporting` event and customizing the options entry in the event properties.
 
-> \[!Note]
+> [!Note]
 > By default when exporting to CSV the exporter exports using a comma separator and uses a '.csv' extension for the output file.
 > You can customize these exporting parameters by subscribing to events of the exporter or changing the values of the exporter options fields.
 > You can also cancel the export process by setting the cancel field of the event args to true.
@@ -347,8 +297,6 @@ In addition to changing the exported filename, the user can further configure th
 The following code snippet demonstrates subscribing to the toolbar exporting event and configuring the exporter options:
 
 <!-- ComponentStart: TreeGrid -->
-
-<!-- WebComponents -->
 
 ```html
 <igc-tree-grid id="treeGrid"></igc-tree-grid>
@@ -503,15 +451,11 @@ export class OrdersTreeData extends Array<OrdersTreeDataItem> {
 ```
 
 
-<!-- Angular, WebComponents, Blazor -->
-
 ## Custom Content
 
 If the actions part of the toolbar component is not sufficient for a particular use case, the toolbar itself has a general content projection where users can provide additional UI. If the user needs the respective grid instance for API calls or bindings, they can create a template reference variable.
 
 Here is a sample snippet:
-
-<!-- WebComponents -->
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -530,8 +474,6 @@ Here is a sample snippet:
 ```
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
-
-<!-- end: WebComponents -->
 
 The following sample demonstrates how to add an additional button to the toolbar to clear the sorting set by clicking on the columns' headers:
 
@@ -579,10 +521,6 @@ export class EmployeesFlatAvatars extends Array<EmployeesFlatAvatarsItem> {
 }
 ```
 
-
-<!-- end: Angular, WebComponents, Blazor -->
-
-<!-- WebComponents, Blazor, React -->
 
 ## Styling
 
@@ -655,8 +593,6 @@ export class EmployeesFlatAvatars extends Array<EmployeesFlatAvatarsItem> {
 }
 ```
 
-
-<!-- end: WebComponents, Blazor, React -->
 
 ## API References
 

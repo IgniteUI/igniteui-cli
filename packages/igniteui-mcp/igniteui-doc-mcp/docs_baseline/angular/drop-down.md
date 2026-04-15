@@ -921,7 +921,7 @@ $custom-navbar-theme: navbar-theme(
     $background: #f8f9fa,
 );
 
-$custom-button-theme: button-theme(
+$custom-button-theme: flat-button-theme(
     $foreground: #666,
     $hover-foreground: #0099ff,
     $focus-foreground: #0099ff,
@@ -932,11 +932,11 @@ $custom-button-theme: button-theme(
     $active-background: transparent,
 );
 
-:host::ng-deep {
+:host {
     --ig-button-font-size: 0.75rem;
 
-    @include css-vars($custom-navbar-theme);
-    @include css-vars($custom-button-theme);
+    @include tokens($custom-navbar-theme);
+    @include tokens($custom-button-theme);
 }
 ```
 
@@ -1242,11 +1242,11 @@ $custom-drop-down-theme: drop-down-theme(
 );
 ```
 
-The last step is to pass the custom drop-down theme to a class or element selector:
+The last step is to pass the custom drop-down theme:
 
 ```scss
-.drop-down__scroll-container {
-  @include css-vars($custom-drop-down-theme);
+:host {
+  @include tokens($custom-drop-down-theme);
 }
 ```
 
@@ -1309,14 +1309,14 @@ $custom-drop-down-theme: drop-down-theme(
   $selected-item-background: #345779,
 );
 
-.drop-down__scroll-container {
-  @include css-vars($custom-drop-down-theme);
+:host {
+  @include tokens($custom-drop-down-theme);
 }
 ```
 
 <div class="divider--half"></div>
 
-## API Summary
+## API References
 
 - [IgxDropDownComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdowncomponent.html)
 - [IgxDropDownComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-drop-down-theme)

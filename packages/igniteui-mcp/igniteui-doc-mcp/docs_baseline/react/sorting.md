@@ -10,54 +10,49 @@ _tocName: Sorting
 
 # Sort operations
 
-<!-- React, WebComponents -->
-
 The Grid Lite supports sorting operations on its data source. Data sorting is controlled on per-column level, allowing you to have sortable and non-sortable columns, while the grid itself controls certain sort behaviors. By default, sorting on a column is disabled unless explicitly configured with the `sortable` property of the column.
 
-<!-- end: React, WebComponents -->
-
 ```tsx
 return (
-  <igc-grid-lite data={data}>
-    <igc-grid-lite-column field="price" sortable></igc-grid-lite-column>
-  </igc-grid-lite>
+  <IgrGridLite data={data}>
+    <IgrGridLiteColumn field="price" sortable></IgrGridLiteColumn>
+  </IgrGridLite>
 );
 ```
 
-<!-- React, WebComponents -->
-
-You can also control whether the sort operations for string columns should be case sensitive by using the `sortingCaseSensitive` property or `sorting-case-sensitive` attribute.
-
-<!-- end: React, WebComponents -->
+You can also control whether the sort operations for string columns should be case sensitive by using the `sortingCaseSensitive` property.
 
 ```tsx
 return (
-  <igc-grid-lite data={data}>
-    <igc-grid-lite-column 
+  <IgrGridLite data={data}>
+    <IgrGridLiteColumn 
       field="name" 
       sortable
-      sorting-case-sensitive
-    ></igc-grid-lite-column>
-  </igc-grid-lite>
+      sortingCaseSensitive
+    ></IgrGridLiteColumn>
+  </IgrGridLite>
 );
 ```
-
-<!-- React, WebComponents -->
 
 For custom comparison logic, set the `sortConfiguration` property with a `comparer` function:
 
-```typescript
-const column = document.querySelector('igc-grid-lite-column[field="name"]');
-column.sortConfiguration = {
-  /**
-   * Custom comparer function which will be used for sort operations for this column.
-   * In the following sample, we compare the `name` values based on their length.
-   */
-  comparer: (a, b) => a.length - b.length
-};
+```tsx
+/**
+ * Custom comparer function which will be used for sort operations for this column.
+ * In the following sample, we compare the `name` values based on their length.
+ */
+return (
+  <IgrGridLite data={data}>
+    <IgrGridLiteColumn 
+      field="name" 
+      sortable
+      sortConfiguration={{
+        comparer: (a: string, b: string) => a.length - b.length
+      }}
+    ></IgrGridLiteColumn>
+  </IgrGridLite>
+);
 ```
-
-<!-- end: React, WebComponents -->
 
 ```typescript
 export type UserSimple = {
@@ -206,39 +201,31 @@ igc-grid-lite {
 }
 ```
 ```tsx
-import React from 'react';
+import { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import { GridLiteDataService, User } from './GridLiteDataService';
 
-// Import the web component
-import { IgcGridLite } from 'igniteui-grid-lite';
-
+import { IgrGridLite, IgrGridLiteColumn } from 'igniteui-react/grid-lite';
 import "igniteui-webcomponents/themes/light/bootstrap.css";
 import "./index.css";
 
-// Register components
-IgcGridLite.register();
+export default function GridLiteSortConfig() {
+  const [data, setData] = useState<User[]>([]);
 
-export default function Sample() {
-  const gridRef = React.useRef<any>(null);
-
-  React.useEffect(() => {
-    if (gridRef.current) {
-      const dataService = new GridLiteDataService();
-      const data: User[] = dataService.generateUsers(50);
-      gridRef.current.data = data;
-    }
+  useEffect(() => {
+    const dataService = new GridLiteDataService();
+    setData(dataService.generateUsers(50));
   }, []);
 
   return (
     <div className="container sample ig-typography">
       <div className="grid-lite-wrapper">
-        <igc-grid-lite ref={gridRef} id="grid-lite">
-          <igc-grid-lite-column field="firstName" header="First name" sortable></igc-grid-lite-column>
-          <igc-grid-lite-column field="lastName" header="Last name" sortable></igc-grid-lite-column>
-          <igc-grid-lite-column field="age" header="Age" sortable data-type="number"></igc-grid-lite-column>
-          <igc-grid-lite-column field="email" header="Email" sortable></igc-grid-lite-column>
-        </igc-grid-lite>
+        <IgrGridLite id="grid-lite" data={data}>
+          <IgrGridLiteColumn field="firstName" header="First name" sortable={true}></IgrGridLiteColumn>
+          <IgrGridLiteColumn field="lastName" header="Last name" sortable={true}></IgrGridLiteColumn>
+          <IgrGridLiteColumn field="age" header="Age" sortable={true} dataType="number"></IgrGridLiteColumn>
+          <IgrGridLiteColumn field="email" header="Email" sortable={true}></IgrGridLiteColumn>
+        </IgrGridLite>
       </div>
     </div>
   );
@@ -246,47 +233,40 @@ export default function Sample() {
 
 // rendering above component in the React DOM
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Sample/>);
+root.render(<GridLiteSortConfig/>);
 ```
 
 
 ## Single and multi-sorting
 
-<!-- React, WebComponents -->
-
 The Grid Lite supports both single and multi-column sorting. Multi-column is enabled by default and can be configured through the `sortingOptions` property of the grid. The `mode` property accepts `'single'` or `'multiple'` as values.
 
-<!-- end: React, WebComponents -->
-
-```typescript
+```tsx
 // Enable single-column sorting
-grid.sortingOptions = { mode: 'single' };
+gridRef.current.sortingOptions = { mode: 'single' };
+
+// or directly in the JSX
+<IgrGridLite sortingOptions={{ mode: 'single' }}/>
 ```
 
-> \[!NOTE]
+> [!NOTE]
 > The single/multi-column sorting behavior controls how end-users interact with the Grid Lite. Sorting through the API with multiple expression will still work when single sorting is enabled.
 
 ### Tri-state sorting
 
 The Grid Lite supports tri-state sorting and it is always enabled. End-users will cycle through the following direction states when clicking on sortable column headers:
 
-<!-- React, WebComponents -->
-
-    ascending -> descending -> none -> ascending
+```
+ascending -> descending -> none -> ascending
+```
 
 where `none` is the initial state of the data, that is to say with no sorting applied by the grid.
-
-<!-- end: React, WebComponents -->
 
 ### Sorting Indicators
 
 When multi-column sort is enabled, the column headers will display a sorting indicator, which is a number representing the order in which the sorting operations were applied.
 
-<!-- React, WebComponents -->
-
 The following sample shows the grid `sortingOptions` property and how it controls the grid sorting behavior.
-
-<!-- end: React, WebComponents -->
 
 ```typescript
 export type UserSimple = {
@@ -447,94 +427,106 @@ igc-grid-lite {
 }
 ```
 ```tsx
-import React, { useRef, useState } from 'react';
-import ReactDOM from 'react-dom/client';
-import { IgrSwitch } from 'igniteui-react';
-import { GridLiteDataService, ProductInfo } from './GridLiteDataService';
+import React, { useRef, useState } from "react";
+import ReactDOM from "react-dom/client";
+import { IgrRating, IgrSwitch } from "igniteui-react";
+import { GridLiteDataService, ProductInfo } from "./GridLiteDataService";
 
-// Import the web component
-import { IgcGridLite } from 'igniteui-grid-lite';
-import { 
-  defineComponents,
-  IgcRatingComponent
-} from 'igniteui-webcomponents';
+import {
+  IgrGridLite,
+  IgrGridLiteColumn,
+  type IgrCellContext,
+} from "igniteui-react/grid-lite";
 import "igniteui-webcomponents/themes/light/bootstrap.css";
 import "./index.css";
 
-// Register components
-IgcGridLite.register();
-defineComponents(IgcRatingComponent);
-
 // Define cellTemplate function outside component
-const ratingCellTemplate = (params: any) => {
-  const rating = document.createElement('igc-rating');
-  rating.setAttribute('readonly', '');
-  rating.setAttribute('step', '0.01');
-  rating.setAttribute('value', params.value.toString());
-  return rating;
-};
+const ratingCellTemplate = (ctx: IgrCellContext) => (
+  <IgrRating readOnly step={0.01} max={5} value={ctx.value}></IgrRating>
+);
 
 export default function Sample() {
   const gridRef = useRef<any>(null);
-  const [switchChecked, setSwitchChecked] = useState(true);
+  const [data, setData] = useState<ProductInfo[]>([]);
   const [sortingOptions, setSortingOptions] = useState<any>({
-    mode: 'multiple'
+    mode: "multiple",
   });
 
   React.useEffect(() => {
-    if (gridRef.current) {
-      const dataService = new GridLiteDataService();
-      const data: ProductInfo[] = dataService.generateProducts(100);
-      gridRef.current.data = data;
-      gridRef.current.sortingOptions = sortingOptions;
-    }
-  }, [sortingOptions]);
-
-  const updateConfig = React.useCallback((prop: string, checked: boolean) => {
-    setSwitchChecked(checked);
-  
-    if (prop === 'multiple' && gridRef.current) {
-      const mode = checked ? 'multiple' : 'single';
-      setSortingOptions({ mode });
-  
-      gridRef.current.sortingConfiguration = { mode };
-      gridRef.current.clearSort();
-    }
+    const dataService = new GridLiteDataService();
+    const items: ProductInfo[] = dataService.generateProducts(100);
+    setData(items);
   }, []);
-  
+
+  const updateConfig = React.useCallback((checked: boolean) => {
+    const mode = checked ? "multiple" : "single";
+    setSortingOptions((prev: any) => ({ ...prev, mode }));
+    gridRef.current?.clearSort();
+  }, []);
+
   return (
     <div className="container sample ig-typography">
-      <div className="controls-wrapper">
-        <IgrSwitch id="multisort" checked={switchChecked} onChange={(e: any) => updateConfig('multiple', e.target.checked)}>
-          Multiple Sort
+      <section className="config-panel">
+        <IgrSwitch
+          id="multisort"
+          checked={sortingOptions.mode === "multiple"}
+          onChange={(e: any) => updateConfig(e.target.checked)}
+        >
+          Enable multi-sort
         </IgrSwitch>
-      </div>
+      </section>
       <div className="grid-lite-wrapper">
-        <igc-grid-lite ref={gridRef} id="grid-lite">
-          <igc-grid-lite-column field="name" header="Name" sortable></igc-grid-lite-column>
-          <igc-grid-lite-column field="price" data-type="number" header="Price" sortable></igc-grid-lite-column>
-          <igc-grid-lite-column field="rating" data-type="number" header="Rating" sortable cellTemplate={ratingCellTemplate}></igc-grid-lite-column>
-          <igc-grid-lite-column field="sold" data-type="number" header="Sold" sortable></igc-grid-lite-column>
-          <igc-grid-lite-column field="total" data-type="number" header="Total" sortable></igc-grid-lite-column>
-        </igc-grid-lite>
+        <IgrGridLite
+          ref={gridRef}
+          id="grid-lite"
+          data={data}
+          sortingOptions={sortingOptions}
+        >
+          <IgrGridLiteColumn
+            field="name"
+            header="Name"
+            sortable
+          ></IgrGridLiteColumn>
+          <IgrGridLiteColumn
+            field="price"
+            dataType="number"
+            header="Price"
+            sortable
+          ></IgrGridLiteColumn>
+          <IgrGridLiteColumn
+            field="rating"
+            dataType="number"
+            header="Rating"
+            sortable
+            cellTemplate={ratingCellTemplate}
+          ></IgrGridLiteColumn>
+          <IgrGridLiteColumn
+            field="sold"
+            dataType="number"
+            header="Sold"
+            sortable
+          ></IgrGridLiteColumn>
+          <IgrGridLiteColumn
+            field="total"
+            dataType="number"
+            header="Total"
+            sortable
+          ></IgrGridLiteColumn>
+        </IgrGridLite>
       </div>
     </div>
   );
 }
 
 // rendering above component in the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Sample/>);
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<Sample />);
 ```
 
 
 ## Sort Model
 
-<!-- React, WebComponents -->
-
 The building block for sort operations in the Grid Lite is the `SortingExpression<T>` which has the following properties:
-
-<!-- end: React, WebComponents -->
 
 ```typescript
 type SortingExpression<T> = {
@@ -564,90 +556,68 @@ an end-user interacts with the component. See below for additional information.
 
 ## Sort API
 
-<!-- React, WebComponents -->
-
 The Grid Lite exposes two main approaches for applying sort operations from its API. Either through the `sort()`/`clearSort()` methods or through the `sortingExpressions` property.
 
 The `sort()` method accepts either a single expression or an array of sort expression and then sorts the grid data based on those expressions.
 
-<!-- end: React, WebComponents -->
-
 ```typescript
 // Single
-grid.sort({ key: 'price', direction: 'descending' });
+gridRef.current.sort({ key: 'price', direction: 'descending' });
 
 // Multiple
-grid.sort([
+gridRef.current.sort([
   { key: 'price', direction: 'descending' },
   { key: 'name', direction: 'descending' },
 ]);
 ```
 
-<!-- React, WebComponents -->
-
 The `clearSort()` method, as the name implies, clears the sort state of a single column or the whole grid component, depending
 on the passed arguments.
 
-<!-- end: React, WebComponents -->
-
 ```typescript
 // Clear the sort state for the `price` column.
-grid.clearSort('price');
+gridRef.current.clearSort('price');
 
 // Clear the sort state of the grid.
-grid.clearSort();
+gridRef.current.clearSort();
 ```
 
 ### Initial Sorting State
 
-<!-- React, WebComponents -->
-
 The `sortingExpressions` property is very similar in behavior to the `sort()` method call. It exposes a declarative way to control
 sort state in the grid, but the most useful property is the ability to set initial sort state when the Grid Lite is first rendered.
 
-<!-- end: React, WebComponents -->
+Here is an example:
 
-<!-- React, WebComponents -->
+```tsx
+const sortState: SortingExpression<Products>[] = [
+  { key: 'price', direction: 'descending' },
+  { key: 'name', direction: 'ascending', caseSensitive: true },
+];
 
-For example here is a Lit-based sample:
-
-```typescript
-{
-  sortState: SortingExpression<Products>[] = [
-    { key: 'price', direction: 'descending' },
-    { key: 'name', direction: 'ascending', caseSensitive: true },
-  ];
-
-  render() {
-    return html`<igc-grid-lite .sortingExpressions=${sortState}></igc-grid-lite>`
-  }
-}
+return (
+  <IgrGridLite sortingExpressions={sortState} />
+);
 ```
-
-<!-- end: React, WebComponents -->
 
 It can be used to get the current sort state of the component and do additional processing depending on another state in your application.
 
 ```typescript
-const state = grid.sortingExpressions;
+const state = gridRef.current.sortingExpressions;
 // Save the current sort state
 saveUserSortState(state);
 ```
 
 ## Events
 
-<!-- React, WebComponents -->
-
 When a sorting operation is performed through the UI, the component emits a custom `sorting` event. The `detail` property is the sort expression which will be applied by the Grid Lite. The event is cancellable and if cancelled will stop the current sort operation.
 
 After the grid applies the new sorting state, a `sorted` event is emitted. It contains the expression which was used in the last sort operation and it is not cancellable.
 
 ```typescript
-grid.addEventListener('sorting', (event: CustomEvent<SortingExpression<T>>) => { ... });
-grid.addEventListener('sorted', (event: CustomEvent<SortingExpression<T>>) => { ... });
+gridRef.current.addEventListener('sorting', (event: CustomEvent<SortingExpression<T>>) => { ... });
+gridRef.current.addEventListener('sorted', (event: CustomEvent<SortingExpression<T>>) => { ... });
 ```
-
-<!-- end: React, WebComponents -->
 
 In the following sample, when you try to sort the **Name** and **Rating** columns, the operation will be cancelled. Watch the event log below to see it in action.
 
@@ -816,40 +786,31 @@ igc-grid-lite {
 }
 ```
 ```tsx
-import React from 'react';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import { GridLiteDataService, ProductInfo } from './GridLiteDataService';
 
-// Import the web component
-import { IgcGridLite } from 'igniteui-grid-lite';
-import { 
-  defineComponents,
-  IgcRatingComponent
-} from 'igniteui-webcomponents';
+import { IgrGridLite, IgrGridLiteColumn } from 'igniteui-react/grid-lite';
+import { IgrRating } from 'igniteui-react';
 import "igniteui-webcomponents/themes/light/bootstrap.css";
 import "./index.css";
-
-// Register components
-IgcGridLite.register();
-defineComponents(IgcRatingComponent);
 
 const getTimeStamp = (): string => `[${new Date().toLocaleTimeString()}]`;
 
 // Define cellTemplate function outside component
-const ratingCellTemplate = (params: any) => {
-  const rating = document.createElement('igc-rating');
-  rating.setAttribute('readonly', '');
-  rating.setAttribute('step', '0.01');
-  rating.setAttribute('value', params.value.toString());
-  return rating;
+const ratingCellTemplate = (ctx: any) => {
+  return (
+    <IgrRating readonly={true} step={0.01} value={ctx.value}></IgrRating>
+  );
 };
 
-export default function Sample() {
-  const gridRef = React.useRef<any>(null);
-  const logRef = React.useRef<HTMLDivElement>(null);
-  const [log, setLog] = React.useState<string[]>([]);
+export default function GridLiteSortConfigEvents() {
+  const gridRef = useRef<IgrGridLite>(null);
+  const logRef = useRef<HTMLDivElement>(null);
+  const [data, setData] = useState<ProductInfo[]>([]);
+  const [log, setLog] = useState<string[]>([]);
 
-  const updateLog = React.useCallback((message: string) => {
+  const updateLog = useCallback((message: string) => {
     setLog(prevLog => {
       const newLog = [...prevLog];
       if (newLog.length > 10) {
@@ -860,69 +821,55 @@ export default function Sample() {
     });
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (logRef.current) {
       logRef.current.scrollTop = logRef.current.scrollHeight;
     }
   }, [log]);
 
-  const handleSorting = React.useCallback((event: any) => {
-    const { detail, type } = event;
+  const handleSorting = useCallback((event: CustomEvent<any>) => {
+    const { detail } = event;
     const allowedColumns = ['price', 'total', 'sold'];
     
     if (!allowedColumns.includes(detail.key)) {
       event.preventDefault();
       updateLog(
-        `${getTimeStamp()} :: Event '${type}' :: Sort operation was prevented for column '${detail.key}'`
+        `${getTimeStamp()} :: Event 'sorting' :: Sort operation was prevented for column '${detail.key}'`
       );
     } else {
       updateLog(
-        `${getTimeStamp()} :: Event '${type}' :: Column '${detail.key}' is being sorted with expression: ${JSON.stringify(detail)}`
+        `${getTimeStamp()} :: Event 'sorting' :: Column '${detail.key}' is being sorted with expression: ${JSON.stringify(detail)}`
       );
     }
   }, [updateLog]);
 
-  const handleSorted = React.useCallback((event: any) => {
-    const { detail, type } = event;
+  const handleSorted = useCallback((event: CustomEvent<any>) => {
+    const { detail } = event;
     updateLog(
-      `${getTimeStamp()} :: Event '${type}' :: Column '${detail.key}' was sorted with expression: ${JSON.stringify(detail)}`
+      `${getTimeStamp()} :: Event 'sorted' :: Column '${detail.key}' was sorted with expression: ${JSON.stringify(detail)}`
     );
   }, [updateLog]);
 
-  React.useEffect(() => {
-    if (gridRef.current) {
-      const dataService = new GridLiteDataService();
-      const data: ProductInfo[] = dataService.generateProducts(100);
-      gridRef.current.data = data;
-
-      // Listen to sorting events
-      gridRef.current.addEventListener('sorting', handleSorting);
-      gridRef.current.addEventListener('sorted', handleSorted);
-
-      return () => {
-        if (gridRef.current) {
-          gridRef.current.removeEventListener('sorting', handleSorting);
-          gridRef.current.removeEventListener('sorted', handleSorted);
-        }
-      };
-    }
-  }, [handleSorting, handleSorted]);
-
-  const logContent = log
-    .map(entry => `<p><code>${entry}</code></p>`)
-    .join('');
+  useEffect(() => {
+    const dataService = new GridLiteDataService();
+    setData(dataService.generateProducts(100));
+  }, []);
 
   return (
     <div className="container sample ig-typography">
       <div className="grid-lite-wrapper">
-        <igc-grid-lite ref={gridRef} id="grid-lite">
-          <igc-grid-lite-column field="name" header="Name" sortable></igc-grid-lite-column>
-          <igc-grid-lite-column field="price" data-type="number" header="Price" sortable></igc-grid-lite-column>
-          <igc-grid-lite-column field="rating" data-type="number" header="Rating" sortable cellTemplate={ratingCellTemplate}></igc-grid-lite-column>
-          <igc-grid-lite-column field="sold" data-type="number" header="Sold" sortable></igc-grid-lite-column>
-          <igc-grid-lite-column field="total" data-type="number" header="Total" sortable></igc-grid-lite-column>
-        </igc-grid-lite>
-        <div ref={logRef} className="log" id="log" dangerouslySetInnerHTML={{ __html: logContent }}></div>
+        <IgrGridLite ref={gridRef} id="grid-lite" data={data} onSorting={handleSorting} onSorted={handleSorted}>
+          <IgrGridLiteColumn field="name" header="Name" sortable={true}></IgrGridLiteColumn>
+          <IgrGridLiteColumn field="price" dataType="number" header="Price" sortable={true}></IgrGridLiteColumn>
+          <IgrGridLiteColumn field="rating" dataType="number" header="Rating" sortable={true} cellTemplate={ratingCellTemplate}></IgrGridLiteColumn>
+          <IgrGridLiteColumn field="sold" dataType="number" header="Sold" sortable={true}></IgrGridLiteColumn>
+          <IgrGridLiteColumn field="total" dataType="number" header="Total" sortable={true}></IgrGridLiteColumn>
+        </IgrGridLite>
+        <div ref={logRef} className="log" id="log">
+          {log.map((entry, index) => (
+            <p key={index}><code>{entry}</code></p>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -930,39 +877,18 @@ export default function Sample() {
 
 // rendering above component in the React DOM
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Sample/>);
+root.render(<GridLiteSortConfigEvents/>);
 ```
 
-
-<!-- React, WebComponents -->
 
 ## Remote sort operations
 
 In cases where sorting must be done remotely or you want to save the current state/data to a server somewhere, the Grid Lite exposes a hook where you can implement and customize this behavior.
 
-<!-- React, WebComponents -->
-
 Using the `dataPipelineConfiguration` property, you can provide a custom hook which will be called each time a sort operation is about to run. The callback is passed a `DataPipelineParams` object.
 
 ```typescript
-export type DataPipelineParams<T extends object> = {
-  /**
-   * The current data state of the grid.
-   */
-  data: T[];
-  /**
-   * The grid component itself.
-   */
-  grid: IgcGridLite<T>;
-  /**
-   * The type of data operation being performed.
-   */
-  type: 'sort' | 'filter';
-};
-```
-
-```typescript
-grid.dataPipelineConfiguration = { sort: (params: DataPipelineParams<T>) => T[] | Promise<T[]> };
+gridRef.current.dataPipelineConfiguration = { sort: (params: DataPipelineParams<T>) => T[] | Promise<T[]> };
 ```
 
 <!-- End: React, WebComponents -->
@@ -1160,31 +1086,20 @@ igc-grid-lite {
 }
 ```
 ```tsx
-import React from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import ReactDOM from 'react-dom/client';
 import { GridLiteDataService, ProductInfo } from './GridLiteDataService';
 
-// Import the web component
-import { IgcGridLite } from 'igniteui-grid-lite';
-import { 
-  defineComponents,
-  IgcRatingComponent,
-  IgcCircularProgressComponent
-} from 'igniteui-webcomponents';
+import { IgrGridLite, IgrGridLiteColumn } from 'igniteui-react/grid-lite';
+import { IgrRating } from 'igniteui-react';
 import "igniteui-webcomponents/themes/light/bootstrap.css";
 import "./index.css";
 
-// Register components
-IgcGridLite.register();
-defineComponents(IgcRatingComponent, IgcCircularProgressComponent);
-
 // Define cellTemplate function outside component
-const ratingCellTemplate = (params: any) => {
-  const rating = document.createElement('igc-rating');
-  rating.setAttribute('readonly', '');
-  rating.setAttribute('step', '0.01');
-  rating.setAttribute('value', params.value.toString());
-  return rating;
+const ratingCellTemplate = (ctx: any) => {
+  return (
+    <IgrRating readonly={true} step={0.01} value={ctx.value}></IgrRating>
+  );
 };
 
 const buildUri = (state: any[]): string => {
@@ -1202,12 +1117,13 @@ const buildUri = (state: any[]): string => {
   return `GET: /data?sort_by=${uri.join(',')}`;
 };
 
-export default function Sample() {
-  const gridRef = React.useRef<any>(null);
-  const progressRef = React.useRef<HTMLDivElement>(null);
-  const [queryString, setQueryString] = React.useState('');
+export default function GridLiteSortConfigPipeline() {
+  const gridRef = useRef<any>(null);
+  const progressRef = useRef<HTMLDivElement>(null);
+  const [data, setData] = useState<ProductInfo[]>([]);
+  const [queryString, setQueryString] = useState('');
 
-  const dataPipelineConfiguration = React.useMemo(() => ({
+  const dataPipelineConfiguration = useMemo(() => ({
     sort: async ({ data, grid }: any) => {
       if (progressRef.current) {
         progressRef.current.classList.add('in-operation');
@@ -1225,11 +1141,13 @@ export default function Sample() {
     }
   }), []);
 
-  React.useEffect(() => {
+  useEffect(() => {
+    const dataService = new GridLiteDataService();
+    setData(dataService.generateProducts(100));
+  }, []);
+
+  useEffect(() => {
     if (gridRef.current) {
-      const dataService = new GridLiteDataService();
-      const data: ProductInfo[] = dataService.generateProducts(100);
-      gridRef.current.data = data;
       gridRef.current.dataPipelineConfiguration = dataPipelineConfiguration;
     }
   }, [dataPipelineConfiguration]);
@@ -1242,13 +1160,13 @@ export default function Sample() {
         </div>
       </div>
       <div className="grid-lite-wrapper">
-        <igc-grid-lite ref={gridRef} id="grid-lite">
-          <igc-grid-lite-column field="name" header="Name" sortable></igc-grid-lite-column>
-          <igc-grid-lite-column field="price" data-type="number" header="Price" sortable></igc-grid-lite-column>
-          <igc-grid-lite-column field="rating" data-type="number" header="Rating" sortable cellTemplate={ratingCellTemplate}></igc-grid-lite-column>
-          <igc-grid-lite-column field="sold" data-type="number" header="Sold" sortable></igc-grid-lite-column>
-          <igc-grid-lite-column field="total" data-type="number" header="Total" sortable></igc-grid-lite-column>
-        </igc-grid-lite>
+        <IgrGridLite ref={gridRef} id="grid-lite" data={data}>
+          <IgrGridLiteColumn field="name" header="Name" sortable={true}></IgrGridLiteColumn>
+          <IgrGridLiteColumn field="price" dataType="number" header="Price" sortable={true}></IgrGridLiteColumn>
+          <IgrGridLiteColumn field="rating" dataType="number" header="Rating" sortable={true} cellTemplate={ratingCellTemplate}></IgrGridLiteColumn>
+          <IgrGridLiteColumn field="sold" dataType="number" header="Sold" sortable={true}></IgrGridLiteColumn>
+          <IgrGridLiteColumn field="total" dataType="number" header="Total" sortable={true}></IgrGridLiteColumn>
+        </IgrGridLite>
       </div>
     </div>
   );
@@ -1256,11 +1174,9 @@ export default function Sample() {
 
 // rendering above component in the React DOM
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Sample/>);
+root.render(<GridLiteSortConfigPipeline/>);
 ```
 
-
-<!-- end: React, WebComponents -->
 
 <!-- TODO ## API References
 

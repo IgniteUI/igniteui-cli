@@ -238,7 +238,8 @@ When used with templates, the `igxComboClearIcon` and the `igxComboToggleIcon` s
 </igx-combo>
 ```
 
-## API Summary
+## API References
+
 
 <div class="divider--half"></div>
 

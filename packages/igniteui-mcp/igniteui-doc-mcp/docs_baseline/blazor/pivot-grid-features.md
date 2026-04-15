@@ -13,7 +13,7 @@ _premium: true
 
 The pivot and flat grid components inherit from a common base and thus share some functionality and features.
 
-> \[!Note]
+> [!Note]
 > Some features do not have meaningful behavior in the context of a pivot table and therefore cannot be enabled for [`IgbPivotGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotGrid.html). These include:
 >
 > - CRUD operations
@@ -167,8 +167,6 @@ The dimension is sorted on click of the related chip and as a result the dimensi
 
 Sorting can also be applied initially via the `sortDirection` property of the dimension definition.
 
-<!-- Blazor -->
-
 ```razor
     var pivotConfiguration = new IgbPivotConfiguration();
     var rowDimension = new IgbPivotDimension() {
@@ -179,16 +177,12 @@ Sorting can also be applied initially via the `sortDirection` property of the di
     pivotConfiguration.Rows.Add(rowDimension);
 ```
 
-<!-- end:Blazor -->
-
 ## Dimensions Resizing
 
 Row dimensions can be resized similarly to column resizing - via a resizing indicator that can be found on the right edge of the cells.
 They can also be auto-sized by double clicking the resize indicator, or by using the related API - [`AutoSizeRowDimension`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotGrid.html#IgniteUI_Blazor_Controls_IgbPivotGrid_AutoSizeRowDimension).
 
 A different size can also be set initially with the `Width` property available in the dimension definition:
-
-<!-- Blazor -->
 
 ```razor
     var pivotConfiguration = new IgbPivotConfiguration();
@@ -199,8 +193,6 @@ A different size can also be set initially with the `Width` property available i
     };
     pivotConfiguration.Rows.Add(rowDimension);
 ```
-
-<!-- end:Blazor -->
 
 ## Dimensions Selection
 
@@ -243,7 +235,7 @@ All chips can change their order within their area by drag & drop.
 The chips from `rows`, `column`, `filter`(dimension chips) can be moved from any of those areas to any other and at any place.
 Chips from these areas can not be moved to the `values` area and chips from the `values` area can not be moved to any of the dimension areas.
 
-> \[!Note]
+> [!Note]
 > The chips from the Pivot Grid can not be moved to the Pivot Data Selector and items from the Pivot Data Selector can not be moved to the Pivot Grid.
 
 ## API References

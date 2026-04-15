@@ -179,9 +179,7 @@ public class EmployeesNestedData
 
 Getting started with our Blazor Grid library and the Blazor Tree Grid in particular is the first step to building powerful, data-rich applications that display hierarchical information in a clear and interactive way. The Blazor Tree Grid allows you to present parent-child data structures in a familiar tabular format, complete with features like row expansion, sorting, filtering, editing, and virtualization for high performance with large datasets.
 
-To get started with the Blazor tree grid, first you need to install the <!-- Blazor -->IgniteUI.Blazor package.<!-- end: Blazor -->
-
-<!-- Blazor -->
+To get started with the Blazor tree grid, first you need to install the IgniteUI.Blazor package.
 
 Please refer to these topics on adding the IgniteUI.Blazor package:
 
@@ -200,10 +198,6 @@ Afterwards, you may start implementing the control by adding the following names
 @using IgniteUI.Blazor.Controls
 ```
 
-<!-- end: Blazor -->
-
-<!-- Angular, Blazor -->
-
 ### Component Modules
 
 ```razor
@@ -211,8 +205,6 @@ Afterwards, you may start implementing the control by adding the following names
 
 builder.Services.AddIgniteUIBlazor(typeof(IgbTreeGridModule));
 ```
-
-<!-- end: Angular, Blazor -->
 
 ## Usage
 
@@ -226,7 +218,7 @@ Regardless of which option is used for building the tree grid's hierarchy (child
 - `GridCell` - Ordinary cell that contains a value.
 - `TreeGridCell` - Tree cell that contains a value, an expand/collapse indicator and an indentation div element, which is based on the level of the cell's row. The level of a row component can be accessed through the `level` property of its inner `treeRow`.
 
-> \[!Note]
+> [!Note]
 > Each row can have only one tree cell, but it can have multiple (or none) ordinary cells.
 
 ### Initial Expansion Depth
@@ -500,8 +492,6 @@ The indentation of the tree grid cell persists across other tree grid features l
 - Exported Excel worksheets reflect the hierarchy by grouping the records as they are grouped in the tree grid itself. All records expanded states would also be persisted and reflected.
 - When exporting to CSV, levels and expanded states are ignored and all data is exported as flat.
 
-<!-- WebComponents, Blazor -->
-
 ## Blazor Tree Grid Styling Configuration
 
 In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
@@ -641,8 +631,6 @@ public class EmployeesNestedData
 }
 ```
 
-
-<!-- end: WebComponents, Blazor -->
 
 ## API References
 

@@ -10,8 +10,6 @@ _tocName: Filtering
 
 # Blazor Grid Lite Filter Operations
 
-<!-- Blazor -->
-
 The Grid Lite supports filtering operations on its data source. Data filtering is controlled on per-column level, allowing you to have filterable and non-filterable columns. By default, filtering on a column is disabled unless explicitly configured with the `Filterable` property of the column.
 
 ```razor
@@ -19,8 +17,6 @@ The Grid Lite supports filtering operations on its data source. Data filtering i
     <IgbGridLiteColumn Field="LastName" Filterable="true" />
 </IgbGridLite>
 ```
-
-<!-- Blazor -->
 
 You can also control whether the filter operations for string columns should be case sensitive by using the `FilteringCaseSensitive` parameter:
 
@@ -30,8 +26,6 @@ You can also control whether the filter operations for string columns should be 
     Filterable="true"
     FilteringCaseSensitive="true" />
 ```
-
-<!-- end: Blazor -->
 
 ```razor
 @page "/samples/grids/grid-lite/filtering-config"
@@ -96,8 +90,6 @@ You can also control whether the filter operations for string columns should be 
 
 ## Filter Model
 
-<!-- Blazor -->
-
 The building blocks for filter operations in the grid is the `GridLiteFilterExpression` which has the following structure:
 
 ```razor
@@ -144,9 +136,7 @@ public class IgbGridLiteFilterExpression
 
 ## Filter API
 
-<!-- Blazor -->
-
-The Grid Lite exposes two main approaches for applying filter operations from its API. Either through the `GridLite.Filter()`/`GridLite.ClearFilter()` methods or through the `Grid.Lite.FilterExpressions` property.
+The Grid Lite exposes two main approaches for applying filter operations from its API. Either through the `GridLite.Filter()`/`GridLite.ClearFilter()` methods or through the `GridLite.FilterExpressions` property.
 
 The `Filter()` method accepts either a single expression or an array of filter expression and then filters the grid data
 based on those expressions.
@@ -161,8 +151,6 @@ await grid.Filter(new IgbGridLiteFilterExpression[]
     new IgbGridLiteFilterExpression { Key = "FirstName", Condition = "startsWith", SearchTerm = "a" },
     new IgbGridLiteFilterExpression { Key = "FirstName", Condition = "startsWith", SearchTerm = "g", Criteria = "or" }```
 
-<!-- Blazor -->
-
 The `ClearFilter()` method, as the name implies, clears the filter state of a single column or the whole grid component, depending on the passed arguments.
 
 ```razor
@@ -174,8 +162,6 @@ grid.ClearFilter();
 ```
 
 ## Initial filter state
-
-<!-- Blazor -->
 
 The `FilterExpressions` property is very similar in behavior to the `Filter()` method call. It exposes a declarative way to control filter state in the grid, but the most useful property is the ability to set initial filter state when the Grid Lite component is first rendered.
 
@@ -192,9 +178,15 @@ private IgbGridLiteFilterExpression[] filterState = new[]
 <IgbGridLite FilterExpressions="filterState" />
 ```
 
-<!-- end: Blazor -->
+It can be used to get the current filter state of the component and do additional processing depending on another state in your application.
 
-<!-- Blazor -->
+```razor
+var state = grid.FilterExpressions;
+// Save the current filter state
+SaveUserFilterState(state);
+```
+
+## Events
 
 When a filter operation is performed through the UI, the component raises `Filtering` and `Filtered` events. The `Filtering` event is cancellable and if cancelled will prevent the current filter operation.
 

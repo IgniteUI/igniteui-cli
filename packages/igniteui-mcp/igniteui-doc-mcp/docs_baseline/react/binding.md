@@ -10,11 +10,7 @@ _tocName: Data Binding
 
 # React Grid Lite Data Binding
 
-<!-- React, WebComponents -->
-
 The Grid Lite accepts an array of plain objects as a data source. Each grid row is the rendered representation of a data record in the array with row cells being controlled by the column configuration.
-
-<!-- end: React, WebComponents -->
 
 When applying data transformations, such as sorting and filtering, the grid does not modify the original data reference. That is to say, data transformations will not be reflected in the original source. The grid does not track changes to the objects inside the data array, so direct modification of the data objects will not be reflected.
 
@@ -23,42 +19,47 @@ When applying data transformations, such as sorting and filtering, the grid does
 The component supports changing its data source at runtime. If the new source has a different "shape" than the previous one make sure to update your column configuration as well.
 
 ```tsx
-this.gridRef.current.data = [...{
-  /** records follow */
-}];
+/* First we set the initial data */
+const [data, setData] = React.useState([/* initial data */]);
+
+/* Then inside an event handler or a useEffect we update the data via setData */
+const updateData = () => {
+  setData([]);
+};
 
 return (
-    <igc-grid-lite data={data}>
-        {/* Update column configuration, add or remove columns as needed to represent the new data. */}
-        <igc-grid-lite-column field="id"></igc-grid-lite-column>
-    </igc-grid-lite>
+    <>
+        <IgrButton onClick={updateData}>Update Data</IgrButton>
+        <IgrGridLite data={data}>
+            {/* Update column configuration, add or remove columns as needed to represent the new data. */}
+            <IgrGridLiteColumn field="id"></IgrGridLiteColumn>
+        </IgrGridLite>
+    </>
 );
 ```
 
-<!-- React, WebComponents -->
+If the grid has `autoGenerate` enabled, it will "_infer_" the new column configuration automatically when the data changes.
 
-If the grid has `autoGenerate` enabled, it will "*infer*" the new column configuration automatically when the data changes.
+```tsx
+const [data, setData] = React.useState([/* initial data */]);
 
-<!-- end: React, WebComponents -->
-
-<!-- React, WebComponents -->
-
-```typescript
-grid.autoGenerate = true;
 
 /** After the new binding the grid will infer the column collection from the bound data. */
-grid.data = [];
+const updateData = () => {
+  setData([/* new data */]);
+};
+
+return (
+    <>
+        <IgrButton onClick={updateData}>Update Data</IgrButton>
+        <IgrGridLite id="grid-lite" data={data} autoGenerate={true} />
+    </>
+);
 ```
 
-<!-- end: React, WebComponents -->
-
-<!-- React, WebComponents -->
-
-> \[!NOTE]
+> [!NOTE]
 > The sort/filter states of the Grid Lite are kept when changing the data source in this manner.
 > Usually you will want to reset them by calling either `clearSort()` and/or `clearFilter()`.
-
-<!-- end: React, WebComponents -->
 
 In the sample below, the grid has column auto-generation enabled. When you click on the switch data button,
 the column collection is reset, and a new data source is bound to the grid.
@@ -212,24 +213,21 @@ igc-grid-lite {
 }
 ```
 ```tsx
-import React, { useCallback, useState } from "react";
+import { useCallback, useState, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import { GridLiteDataService } from "./GridLiteDataService";
 
-// Import the web component
-import { IgcGridLite } from "igniteui-grid-lite";
+import { IgrGridLite } from 'igniteui-react/grid-lite';
 import { IgrButton } from "igniteui-react";
 import "igniteui-webcomponents/themes/light/bootstrap.css";
 import "./index.css";
 
-// Register components
-IgcGridLite.register();
 
-export default function Sample() {
+export default function GridLiteDataBinding() {
   const [showingProducts, setShowingProducts] = useState(true);
   const [data, setData] = useState([]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const dataService = new GridLiteDataService();
     setData(dataService.generateProducts(50));
 
@@ -264,18 +262,18 @@ export default function Sample() {
           Switch Data
         </IgrButton>
       </div>
-      <igc-grid-lite
-        auto-generate="true"
+      <IgrGridLite
+        autoGenerate={true}
         id="grid-lite"
         data={data}
-      ></igc-grid-lite>
+      ></IgrGridLite>
     </div>
   );
 }
 
 // rendering above component in the React DOM
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<Sample />);
+root.render(<GridLiteDataBinding />);
 ```
 
 

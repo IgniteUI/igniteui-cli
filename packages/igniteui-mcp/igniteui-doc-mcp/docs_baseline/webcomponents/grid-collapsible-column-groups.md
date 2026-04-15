@@ -78,14 +78,10 @@ export class InvoicesData extends Array<InvoicesDataItem> {
 
 To get started with the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) and the **Collapsible multi-column headers** feature, first you need to install Ignite UI for Web Components by typing the following command:
 
-<!-- WebComponents -->
-
 ```cmd
 npm install --save igniteui-webcomponents-core
 npm install --save igniteui-webcomponents-grids
 ```
-
-<!-- end: WebComponents -->
 
 For a complete introduction to the Ignite UI for Web Components, read the [getting started](../../general-getting-started.md) topic.
 
@@ -128,8 +124,6 @@ To summarize, every child column has three states:
 
 The initial state of the column group which is specified as collapsible is [`expanded`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumngroupcomponent.html#expanded) set to **true**, but you can easily change this behavior by setting it to **false**.
 
-<!-- Angular, WebComponents, React -->
-
 ## Expand/Collapse Indicator Template
 
 Default expand indicator for the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) is the following:
@@ -167,8 +161,6 @@ public indTemplate = (ctx: IgcColumnTemplateContext) => {
     `;
 }
 ```
-
-<!-- end: Angular, WebComponents, React -->
 
 > **Note**
 > Please keep in mind that initially collapse group option takes precedence over column hidden - If you declared your column to be hidden using the property

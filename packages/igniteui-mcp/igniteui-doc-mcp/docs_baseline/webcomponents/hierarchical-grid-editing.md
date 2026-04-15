@@ -113,8 +113,6 @@ As seen from the table, all interactions, except resizing a column, will end the
 
 Example how to commit new values, if user tries to sort the column while a cell/row is in edit mode:
 
-<!-- WebComponents -->
-
 ```html
 <igc-hierarchical-grid id="grid" primary-key="ProductID" >
 </igc-hierarchical-grid>
@@ -139,8 +137,6 @@ public onSorting(event: IgcSortingEventArgs) {
 
 ## Additional Resources
 
-<!-- Angular, WebComponents, React -->
-
 - [Column Data Types](column-types.md#default-template)
 - [Virtualization and Performance](virtualization.md)
 - [Paging](paging.md)
@@ -156,5 +152,3 @@ public onSorting(event: IgcSortingEventArgs) {
 <!-- * [Searching](search.md) -->
 
 <!-- ComponentEnd: HierarchicalGrid -->
-
-<!-- end: Angular, WebComponents, React -->

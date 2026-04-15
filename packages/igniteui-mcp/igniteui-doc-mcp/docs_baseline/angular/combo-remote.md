@@ -379,7 +379,7 @@ When using a combobox bound to remote data loaded in chunks and dealing with a m
 
 When the combobox is bound to remote data, setting value/selected items through API will only take into account the items that are loaded in the current chunk. If you want to set an initial value, make sure those specific items are loaded before selecting.
 
-## API Summary
+## API References
 
 <div class="divider--half"></div>
 

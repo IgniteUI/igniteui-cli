@@ -18,8 +18,6 @@ The Ignite UI for React [`IgrGrid`](https://www.infragistics.com/products/ignite
 
 Registering an icon caches it locally, so that it can reused between components, that reference that icon by name and collection name. Setting a reference changes which icon, from which collection, will be used when referencing that icon by name.
 
-<!-- React -->
-
 ```ts
 // Add a new 'material' icon called 'filter_list' from string
 registerIconFromText("filter_list", '<svg>...</svg>', "material");
@@ -33,8 +31,6 @@ setIconRef('filter_list', 'default', {
             collection: 'material',
 });
 ```
-
-<!-- end: React -->
 
 ## React Customize Icons Example
 

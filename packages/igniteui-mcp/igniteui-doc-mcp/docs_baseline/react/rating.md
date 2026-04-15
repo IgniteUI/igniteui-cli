@@ -46,44 +46,30 @@ root.render(<RatingOverview/>);
 ```
 
 
-<!-- React -->
-
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
 
 ```cmd
 npm install igniteui-react
 ```
 
-<!-- end: React -->
-
 Before using the [`IgrRating`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrrating.html), you need to register it as follows:
-
-<!-- React -->
 
 ```tsx
 import { IgrRating } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
 
-<!-- end: React -->
-
 The simplest way to start using the [`IgrRating`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrrating.html) is as follows:
-
-<!-- React -->
 
 ```tsx
   <IgrRating></IgrRating>
 ```
-
-<!-- end: React -->
 
 This will create a five-star rating component that can be used to input and read data from.
 
 ## Using Custom Symbols
 
 The [`IgrRating`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrrating.html) component allows you to use custom symbols in place of the default star symbols. If you want to use a different symbol, like SVG, icon or another unicode symbol, you should place [`IgrRatingSymbol`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrratingsymbol.html) components between the opening and closing brackets of the [`IgrRating`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrrating.html):
-
-<!-- React -->
 
 ```tsx
   <IgrRating className="size-large" label="Rate Experience" step={.5} hoverPreview={true}>
@@ -104,8 +90,6 @@ The [`IgrRating`](https://www.infragistics.com/products/ignite-ui-react/docs/typ
     </IgrRatingSymbol>
 </IgrRating>
 ```
-
-<!-- end: React -->
 
 ```css
 /* shared styles are loaded from: */
@@ -174,8 +158,6 @@ root.render(<RatingCustomSymbols/>);
 
 The Ignite UI for React Rating component has a single selection mode that allows users to provide different icons/elements for the different rating values. In this case, only one of the icons/elements can be selected and reflect the feedback given by the user.
 
-<!-- React -->
-
 ```tsx
 <IgrRating single={true}>
   <IgrRatingSymbol>
@@ -200,8 +182,6 @@ The Ignite UI for React Rating component has a single selection mode that allows
   </IgrRatingSymbol>
 </IgrRating>
 ```
-
-<!-- end: React -->
 
 ```css
 /* shared styles are loaded from: */
@@ -262,16 +242,12 @@ root.render(<RatingSingleSelection/>);
 
 The Ignite UI for React Rating component allows users to use different icons/elements for the empty and the selected state of a single rating value. It is mandatory to provide 2 icons for each slot (empty and full) when declaring a symbol, even if they are the same. For instance:
 
-<!-- React -->
-
 ```tsx
 <IgrRatingSymbol>
     <div><IgrIcon name='bandage' collection="material"></IgrIcon></div>
     <div slot='empty'><IgrIcon name='bacteria' collection="material"></IgrIcon></div>
 </IgrRatingSymbol>
 ```
-
-<!-- end: React -->
 
 ```css
 /* shared styles are loaded from: */
@@ -359,11 +335,7 @@ The [`step`](https://www.infragistics.com/products/ignite-ui-react/docs/typescri
 
 ### Hover Preview
 
-<!-- React -->
-
 The `hoverPreview` attribute makes the component show the possible outcome of user selection on hover. It is useful when you want to give instant feedback about what the selected value could be.
-
-<!-- end: React -->
 
 ### Read-Only
 
@@ -385,27 +357,15 @@ The [`stepDown`](https://www.infragistics.com/products/ignite-ui-react/docs/type
 
 ## Events
 
-<!-- React -->
-
 The [`IgrRating`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrrating.html) component emits two separate events - `hover` and `change`.
-
-<!-- end: React -->
 
 ### Hover Event
 
-<!-- React -->
-
 The `hover` event is fired when hovering over a symbol. It provides the value of the symbol under the mouse cursor. Useful for creating custom value labels and readouts.
-
-<!-- end: React -->
 
 ### Change Event
 
-<!-- React -->
-
 The `change` event is fired when the selected value changes.
-
-<!-- end: React -->
 
 ## Styling
 

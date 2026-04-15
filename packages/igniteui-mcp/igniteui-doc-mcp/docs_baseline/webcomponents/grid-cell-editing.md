@@ -54,7 +54,7 @@ You can exit edit mode and **commit** the changes in one of the following ways:
 - on single click to another cell - when you click on another cell in the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html), your changes will be submitted.
 - operations like paging, resize, pin or move will exit edit mode and changes will be submitted.
 
-> \[!Note]
+> [!Note]
 > The cell remains in edit mode when you scroll vertically or horizontally or click outside the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html). This is valid for both cell editing and row editing.
 
 ### Editing through API
@@ -62,8 +62,6 @@ You can exit edit mode and **commit** the changes in one of the following ways:
 You can also modify the cell value through the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) API but only if primary key is defined:
 
 <!-- ComponentStart: Grid -->
-
-<!-- Angular, WebComponents -->
 
 ```typescript
 public updateCell() {
@@ -76,8 +74,6 @@ public updateCell() {
 Another way to update cell is directly through `Update` method of `Cell`:
 
 <!-- ComponentStart: Grid -->
-
-<!-- Angular, WebComponents -->
 
 ```typescript
 public updateCell() {
@@ -94,13 +90,7 @@ public updateCell() {
 
 You can see and learn more for default cell editing templates in the [general editing topic](editing.md#editing-templates).
 
-<!-- Blazor, WebComponents -->
-
 If you want to provide a custom template which will be applied to a cell, you can pass such template either to the cell itself, or to its header. First create the column as you usually would:
-
-<!-- end: Blazor, WebComponents -->
-
-<!-- WebComponents -->
 
 <!-- ComponentStart: Grid -->
 
@@ -150,8 +140,6 @@ public webGridCellEditCellTemplate = (ctx: IgcCellTemplateContext) => {
 
 <!-- ComponentEnd: Grid -->
 
-<!-- end: WebComponents -->
-
 Working sample of the above can be found here for further reference:
 
 ```typescript
@@ -199,8 +187,6 @@ Implementing this custom functionality can be done by utilizing the events of th
 
 - Constant edit mode
 
-<!-- Angular, WebComponents -->
-
 ```typescript
 public keydownHandler(event) {
   const key = event.keyCode;
@@ -221,11 +207,7 @@ public keydownHandler(event) {
 }
 ```
 
-<!-- end: Angular, WebComponents -->
-
 - <kbd>ENTER</kbd>/<kbd>SHIFT</kbd> + <kbd>ENTER</kbd> navigation
-
-<!-- Angular, WebComponents -->
 
 ```typescript
 if (key == 13) {
@@ -245,8 +227,6 @@ if (key == 13) {
 }
 ```
 
-<!-- end: Angular, WebComponents -->
-
 Key parts of finding the next eligible index would be:
 
 ```typescript
@@ -265,8 +245,6 @@ return dataView.findIndex((rec, index) => index > currentRowIndex && this.isEdit
 Please check the full sample for further reference:
 
 #### Web Components Grid Excel Style Editing Sample
-
-<!-- WebComponents, Blazor -->
 
 ```typescript
 export class NwindDataItem {
@@ -344,8 +322,6 @@ export class NwindData extends Array<NwindDataItem> {
 ```
 
 
-<!-- end: WebComponents, Blazor -->
-
 Main benefits of the above approach include:
 
 - Constant edit mode: typing while a cell is selected will immediately enter edit mode with the value typed, replacing the existing one
@@ -355,7 +331,7 @@ Main benefits of the above approach include:
 
 ## CRUD operations
 
-> \[!Note]
+> [!Note]
 > Please keep in mind that when you perform some **CRUD operation** all of the applied pipes like **filtering**, **sorting** and **grouping** will be re-applied and your view will be automatically updated.
 
 The [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) provides a straightforward API for basic CRUD operations.
@@ -365,8 +341,6 @@ The [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-com
 The [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) component exposes the [`addRow`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#addRow) method which will add the provided data to the data source itself.
 
 <!-- ComponentStart: Grid -->
-
-<!-- Angular, WebComponents -->
 
 ```typescript
 // Adding a new record
@@ -382,8 +356,6 @@ this.grid.addRow(record);
 Updating data in the Grid is achieved through [`updateRow`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#updateRow) and [`updateCell`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#updateCell) methods but **only if the PrimaryKey for the grid is defined**. You can also directly update a cell and/or a row value through their respective **update** methods.
 
 <!-- ComponentStart: Grid -->
-
-<!-- Angular, WebComponents -->
 
 ```typescript
 // Updating the whole row
@@ -407,8 +379,6 @@ row.update(newData);
 Please keep in mind that [`deleteRow`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#deleteRow) method will remove the specified row only if a [`primaryKey`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#primaryKey) is defined.
 
 <!-- ComponentStart: Grid -->
-
-<!-- Angular, WebComponents -->
 
 ```typescript
 // Delete row through Grid API
@@ -438,13 +408,9 @@ constructor() {
 
 <!-- ComponentEnd: Grid -->
 
-<!-- end: Blazor, WebComponents -->
-
 The `CellEdit` emits whenever **any** cell's value is about to be committed. In our **CellEdit** definition, we need to make sure that we check for our specific column before taking any action:
 
 <!-- ComponentStart: Grid -->
-
-<!-- WebComponents -->
 
 ```typescript
 public webGridCellEdit(event: CustomEvent<IgcGridEditEventArgs>): void {
@@ -467,10 +433,6 @@ If the value entered in a cell under the **Units On Order** column is larger tha
 
 <!-- ComponentEnd: Grid -->
 
-<!-- WebComponents, React -->
-
-<!-- end: WebComponents, React -->
-
 <!-- ComponentEnd: TreeGrid -->
 
 The result of the above validation being applied to our [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) can be seen in the below demo:
@@ -482,8 +444,6 @@ The result of the above validation being applied to our [`IgcGridComponent`](htt
 
 
 ## Styling
-
-<!-- WebComponents, Blazor, React -->
 
 In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
@@ -524,8 +484,6 @@ Then set the related CSS properties for that class:
 ```
 
 
-<!-- end: WebComponents, Blazor, React -->
-
 ## API References
 
 - [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html)
@@ -535,8 +493,6 @@ Then set the related CSS properties for that class:
 - [`IgcDatePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html)
 
 ## Additional Resources
-
-<!-- Blazor, WebComponents, React -->
 
 <!-- ComponentStart: Grid -->
 
@@ -551,5 +507,3 @@ Then set the related CSS properties for that class:
 - [Searching](search.md)
 
 <!-- ComponentEnd: Grid -->
-
-<!-- end: Blazor, WebComponents, React -->

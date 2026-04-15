@@ -289,8 +289,6 @@ root.render(<MultiColumnComboBoxOverview/>);
 ```
 
 
-<!-- Angular, React, WebComponents -->
-
 ## Dependencies
 
 When installing the charts component, the core package must also be installed.
@@ -301,8 +299,6 @@ npm install --save igniteui-react-data-grids
 npm install --save igniteui-react-inputs
 npm install --save igniteui-react-layouts
 ```
-
-<!-- end: Angular, React, WebComponents -->
 
 ## Component Modules
 
@@ -321,11 +317,7 @@ IgrMultiColumnComboBoxModule.register();
 
 In order to display your objects in the Multi-Column Combo Box component, you will need to bind the `DataSource` property. This can be bound in the form of an array of complex objects. The following code demonstrates how to bind the data source property.
 
-<!-- React, WebComponents -->
-
 In the below code snippet, the "countryNames" collection is an any\[] full of custom objects.
-
-<!-- end:React, WebComponents -->
 
 ```tsx
 <IgrMultiColumnComboBox height="50px" width="400px" dataSource={this.countryNames} />

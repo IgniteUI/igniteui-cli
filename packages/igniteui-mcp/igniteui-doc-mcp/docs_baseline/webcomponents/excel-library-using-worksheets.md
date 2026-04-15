@@ -131,8 +131,6 @@ export class ExcelUtility {
 
 <div class="divider--half"></div>
 
-<!-- Angular, React, WebComponents -->
-
 The following code shows the imports needed to use the code-snippets below:
 
 ```ts
@@ -149,8 +147,6 @@ import { RelativeIndex } from "igniteui-webcomponents-excel";
 import { SortDirection } from "igniteui-webcomponents-excel";
 import { WorkbookColorInfo } from "igniteui-webcomponents-excel";
 ```
-
-<!-- end: Angular, React, WebComponents -->
 
 ## Configuring the Gridlines
 

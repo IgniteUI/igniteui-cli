@@ -49,8 +49,6 @@ igc-expansion-panel {
 
 ## Getting Started with Web Components Accordion
 
-<!-- WebComponents -->
-
 First, you need to install the Ignite UI for Web Components by running the following command:
 
 ```cmd
@@ -66,6 +64,8 @@ defineComponents(IgcAccordionComponent);
 ```
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
+
+Before using the [`IgcAccordionComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcaccordioncomponent.html), you need to register it as follows:
 
 Now you can start with a basic configuration of the [`IgcAccordionComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcaccordioncomponent.html) and its panels.
 
@@ -95,8 +95,6 @@ The accordion wraps all expansion panels declared inside it.
 </igc-accordion>
 ```
 
-<!-- WebComponents -->
-
 Using the `Panels` accessor you can get a reference to the collection containing all expansion panels children of the [`IgcAccordionComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcaccordioncomponent.html).
 
 ```typescript
@@ -109,13 +107,11 @@ constructor() {
 }
 ```
 
-<!-- end: WebComponents -->
-
 As demonstrated above, the [`singleExpand`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcaccordioncomponent.html#singleExpand)property gives you the ability to set whether single or multiple panels can be expanded at a time.
 
 By using the [`hideAll`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcaccordioncomponent.html#hideAll) and [`showAll`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcaccordioncomponent.html#showAll) methods you can respectively collapse and expand all [`IgcExpansionPanelComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcexpansionpanelcomponent.html)s of the [`IgcAccordionComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcaccordioncomponent.html) programmatically.
 
-> \[!Note]
+> [!Note]
 > If [`singleExpand`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcaccordioncomponent.html#singleExpand) property is set to **true** calling [`showAll`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcaccordioncomponent.html#showAll) method would expand only the focused panel.
 
 ### Web Components Accordion Customization Example

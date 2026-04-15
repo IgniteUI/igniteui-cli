@@ -643,8 +643,6 @@ public class SingersData
 
 ## Templates
 
-<!-- WebComponents, Blazor, React -->
-
 If you want to further customize the Excel style filter menu, you can use the [`ExcelStyleHeaderIconTemplate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_ExcelStyleHeaderIconTemplate) property to define a custom template for the header icon of the menu.
 
 The following code demonstrates how to customize the Excel style filter menu using the [`ExcelStyleHeaderIconTemplate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_ExcelStyleHeaderIconTemplate):
@@ -665,8 +663,6 @@ igRegisterScript("WebGridFilterAltIconTemplate", (ctx) => {
 ```
 
 <!-- ComponentEnd: Grid, HierarchicalGrid -->
-
-<!-- end: WebComponents, Blazor, React -->
 
 <!-- ```razor
 Add razor snipets
@@ -1005,8 +1001,6 @@ public class SingersData
 ```
 
 
-<!-- WebComponents, Blazor, React -->
-
 ## Styling
 
 In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
@@ -1316,8 +1310,6 @@ public class SingersData
 }
 ```
 
-
-<!-- end: WebComponents, Blazor, React -->
 
 ## API References
 

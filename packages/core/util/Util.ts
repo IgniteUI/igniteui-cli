@@ -110,7 +110,6 @@ export class Util {
 
 	public static applyConfigTransformation = (data: string, configuration: { [key: string]: string }): string => {
 		let key;
-		// tslint:disable-next-line:forin
 		for (key in configuration) {
 			data = data.replace(new RegExp(Util.escapeRegExp(key), "g"), configuration[key]);
 		}
@@ -128,14 +127,12 @@ export class Util {
 	 * @param colorKeyword Optional color (CSS keyword like red, green, etc.)
 	 */
 	public static log(message: string, colorKeyword?: string) {
-		// tslint:disable:no-console
 		if (colorKeyword) {
 			const color = chalk.keyword(colorKeyword);
-			console.log(color(message));
-		} else {
-			console.log(message);
+			message = color(message);
 		}
-		// tslint:enable:no-console
+		// eslint-disable-next-line no-console
+		console.log(message);
 	}
 
 	/**
@@ -149,14 +146,12 @@ export class Util {
 			cd: `error: ${message}`
 		});
 
-		// tslint:disable:no-console
 		if (colorKeyword) {
 			const color = chalk.keyword(colorKeyword);
-			console.error(color(message));
-		} else {
-			console.error(message);
+			message = color(message);
 		}
-		// tslint:enable:no-console
+		// eslint-disable-next-line no-console
+		console.error(message);
 	}
 
 	/**
@@ -165,14 +160,12 @@ export class Util {
 	 * @param colorKeyword Optional color (CSS keyword like red, green, etc.)
 	 */
 	public static warn(message: string, colorKeyword?: string) {
-		// tslint:disable:no-console
 		if (colorKeyword) {
 			const color = chalk.keyword(colorKeyword);
-			console.warn(color(message));
-		} else {
-			console.warn(message);
+			message = color(message);
 		}
-		// tslint:enable:no-console
+		// eslint-disable-next-line no-console
+		console.warn(message);
 	}
 
 	public static greenCheck() {
@@ -430,22 +423,12 @@ export class Util {
 	}
 
 	public static getAvailableName(
-		defaultName: string, isApp: boolean, framework?: string, projectType?: string): string {
+		defaultName: string, isApp: boolean, framework?: string, _projectType?: string): string {
 
 		const baseLength = defaultName.length;
 		let specificPath = "";
 
-		if (framework === "angular" && projectType === "igx-ts") {
-			specificPath = path.join("src", "app");
-		} else if (framework === "angular" && projectType === "ig-ts") {
-			specificPath = path.join("src", "app", "components");
-		} else if (framework === "react" && projectType === "es6") {
-			specificPath = path.join("src", "components");
-		} else if (framework === "react" && projectType === "igr-es6") {
-			specificPath = path.join("src", "views");
-		} else if (framework === "react" && projectType === "igr-ts") {
-			specificPath = path.join("src", "app");
-		} else if (framework === "webcomponents" && projectType === "igc-ts") {
+		if (["angular", "react", "webcomponents"].includes(framework)) {
 			specificPath = path.join("src", "app");
 		}
 

@@ -1,0 +1,28 @@
+import { Component } from '@angular/core';
+import { Country, data } from './local-data';
+import {
+  IgxButtonDirective,
+  IgxRippleDirective,
+  IgxToggleActionDirective,
+  IgxDropDownItemNavigationDirective,
+  IgxDropDownComponent,
+  IgxDropDownItemComponent,
+} from '<%=igxPackage%>';
+
+@Component({
+  selector: 'app-<%=filePrefix%>',
+  templateUrl: './<%=filePrefix%>.html',
+  styleUrl: './<%=filePrefix%>.scss',
+  imports: [
+    IgxButtonDirective,
+    IgxRippleDirective,
+    IgxToggleActionDirective,
+    IgxDropDownItemNavigationDirective,
+    IgxDropDownComponent,
+    IgxDropDownItemComponent,
+  ]
+})
+
+export class <%=ClassName%> {
+  public items: Country[] = data;
+}

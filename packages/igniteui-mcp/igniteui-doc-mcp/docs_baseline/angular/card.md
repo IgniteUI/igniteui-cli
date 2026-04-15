@@ -581,7 +581,9 @@ As seen, the `card-theme` exposes some useful parameters for basic styling of it
 Finally, **include** the custom theme in your application:
 
 ```scss
-@include css-vars($custom-card-theme);
+:host {
+    @include tokens($custom-card-theme);
+}
 ```
 
 In the sample below, you can see how using the card component with customized CSS variables allows you to create a design that visually resembles the card used in the [`Ant`](https://ant.design/components/card?theme=light#card-demo-meta) design system.
@@ -713,24 +715,23 @@ igx-divider {
 //     $focus-background: #d9d9d9,
 // );
 
-// $custom-icon-button-theme: icon-button-theme(
+// $custom-icon-button-theme: flat-icon-button-theme(
 //     $foreground: #00000073,
 //     $hover-foreground: #1677ff,
 //     $hover-background: none,
-//     $border-color: transparent
 // );
 
 // $custom-divider-theme: divider-theme(
 //     $color: #f0f0f0
 // );
 
-// @include css-vars($custom-card-theme);
-// @include css-vars($custom-avatar-theme);
-// @include css-vars($custom-chip-theme);
-// @include css-vars($custom-divider-theme);
-// .igx-icon-button--flat {
-//     @include css-vars($custom-icon-button-theme);
-// };
+// :host {
+//     @include tokens($custom-card-theme);
+//     @include tokens($custom-avatar-theme);
+//     @include tokens($custom-chip-theme);
+//     @include tokens($custom-divider-theme);
+//     @include tokens($custom-icon-button-theme);
+// }
 ```
 
 ### Styling with Tailwind

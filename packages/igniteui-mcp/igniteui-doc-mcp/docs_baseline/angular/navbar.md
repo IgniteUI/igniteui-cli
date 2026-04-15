@@ -486,10 +486,12 @@ $custom-navbar-theme: navbar-theme(
 >[!NOTE]
 >Instead of hardcoding the color values like we just did, we can achieve greater flexibility in terms of colors by using the [`palette`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/palettes#function-palette) and [`color`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/palettes#function-color) functions. Please refer to [`Palettes`](/themes/sass/palettes.md) topic for detailed guidance on how to use them.
 
-The last step is to pass the newly created theme to the `css-vars` mixin:
+The last step is to pass the newly created theme to the `tokens` mixin:
 
 ```scss
-@include css-vars($custom-navbar-theme);
+:host {
+  @include tokens($custom-navbar-theme);
+}
 ```
 
 ### Demo
@@ -541,8 +543,10 @@ $custom-icon-button-theme: flat-icon-button-theme(
   $foreground: #ecaa53,
 );
 
-@include css-vars($custom-navbar-theme);
-@include css-vars($custom-icon-button-theme);
+:host {
+  @include tokens($custom-navbar-theme);
+  @include tokens($custom-icon-button-theme);
+}
 ```
 
 <div class="divider--half"></div>

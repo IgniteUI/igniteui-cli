@@ -4,13 +4,16 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is the **Ignite UI Documentation MCP Server** — a Model Context Protocol server that provides AI assistants with tools to search and retrieve Ignite UI component documentation. The server loads compressed markdown docs at startup and exposes them via three MCP tools: `list_components`, `get_doc`, and `search_docs`. It includes documentation processing pipelines for Angular, React, WebComponents, and Blazor.
+This is the **Ignite UI Documentation MCP Server** — a Model Context Protocol server that provides AI assistants with tools to search and retrieve Ignite UI component documentation. The server loads compressed markdown docs at startup and exposes them via MCP tools such as `list_components`, `get_doc`, and `search_docs`. It includes documentation processing pipelines for Angular, React, WebComponents, and Blazor.
 
 ## Project Structure
 
 ```
-├── src/index.ts                        # MCP server entry point (sql.js + SQLite FTS4)
-├── src/sql.js.d.ts                     # TypeScript type declarations for sql.js
+├── src/index.ts                        # MCP server entry point — dual-mode (remote or local SQLite)
+├── src/providers/
+│   ├── DocsProvider.ts                 # DocsProvider interface (listComponents, getDoc, searchDocs)
+│   ├── RemoteDocsProvider.ts           # Remote mode — proxies to URL given via --remote
+│   └── LocalDocsProvider.ts            # Local mode — sql.js WASM SQLite with FTS4
 ├── scripts/
 │   ├── build-db.ts                    # Build SQLite DB from compressed docs (better-sqlite3)
 │   ├── export-angular-docs.ts          # Export Angular docs from docfx (toc-driven, template expansion, include resolution, API URL resolution)
@@ -68,8 +71,34 @@ This is the **Ignite UI Documentation MCP Server** — a Model Context Protocol 
 npm install        # install dependencies
 npm run build:db   # build SQLite database from compressed docs → dist/igniteui-docs.db
 npm run build      # compile TypeScript (tsc) → outputs to ./dist/
-npm start          # run MCP server (node dist/index.js), uses stdio transport
+npm start          # run MCP server in local mode (default, uses bundled SQLite DB)
 ```
+
+### Server Modes
+
+| Mode | Activation | Data Source |
+|------|-----------|-------------|
+| **Local** (default) | No flags needed | Bundled `dist/igniteui-docs.db` via sql.js |
+| **Remote** | `--remote <url>` flag | Proxies to the given backend URL |
+
+```bash
+# Local mode (default)
+node dist/index.js
+
+# Remote mode via CLI flag
+node dist/index.js --remote https://your-backend-url.com
+
+# Remote mode via env var (still needs --remote flag without URL)
+IGNITEUI_MCP_DOCS_BACKEND_URL=https://your-backend-url.com node dist/index.js --remote
+
+# Custom DB path
+DB_PATH=/path/to/igniteui-docs.db node dist/index.js
+
+# Enable debug logging
+node dist/index.js --debug
+```
+
+Local mode requires `dist/igniteui-docs.db` to exist. Run the pipeline and `npm run build:db` first.
 
 ### Database Build
 
@@ -116,7 +145,7 @@ Key compression prompt rules (shared across all platforms):
 - Writes `_compression_log.csv` (file, original_kb, compressed_kb, reduction_pct, tokens) alongside output
 - Writes `total_tokens` to `_compression_stats.json`
 
-**`validate:angular`** (`scripts/validate-docs.ts`): Platform-independent LLM-as-Judge validation (also used by `validate:react`). Samples compressed docs and scores them against originals on 4 dimensions (completeness, accuracy, hallucination, structure) using GPT-5.1. Uses OpenAI structured output (`zodTextFormat` + `client.responses.parse()`) for guaranteed valid JSON — no manual parsing. CLI args: `--input` (required, compressed docs dir), `--original` (auto-inferred from input path), `--output` (default: `dist/validation_report_<platform>.json`), `--model`, `--sample`, `--delay`, `--only`. Reports are named per-platform (e.g. `validation_report_angular.json`).
+**`validate:angular`** (`scripts/validate-docs.ts`): Platform-independent LLM-as-Judge validation (also used by `validate:react`). Samples compressed docs and scores them against originals on 4 dimensions (completeness, accuracy, hallucination, structure) using GPT-5.4. Uses OpenAI structured output (`zodTextFormat` + `client.responses.parse()`) for guaranteed valid JSON — no manual parsing. CLI args: `--input` (required, compressed docs dir), `--original` (auto-inferred from input path), `--output` (default: `dist/validation_report_<platform>.json`), `--model`, `--sample`, `--delay`, `--only`. Reports are named per-platform (e.g. `validation_report_angular.json`).
 
 ## React Documentation Pipeline
 
@@ -172,28 +201,27 @@ npm run pipeline:blazor           # run all steps: clear → build → export �
 ## Architecture
 
 **MCP Server** (`src/index.ts`): Unified server using `@modelcontextprotocol/sdk` with stdio transport.
-- Documentation tools use a backend API (`DOCS_BACKEND_URL`)
+- **Dual-mode documentation**: Uses a `DocsProvider` interface (`src/providers/DocsProvider.ts`) with two implementations:
+  - `LocalDocsProvider` — loads `dist/igniteui-docs.db` into memory via `sql.js` WASM SQLite, queries with FTS4 (default)
+  - `RemoteDocsProvider` — proxies to URL provided via `--remote <url>` flag
+  - Mode selected at startup: local by default, `--remote <url>` for remote. `--debug` enables request logging.
 - GitHub API tools use `octokit` (requires `GITHUB_TOKEN` env var)
 - CLI scaffolding tools use `igniteui-cli` via `npx`
-- Ten registered tools:
+- Six registered tools:
   - `list_components` — list/filter docs by `framework` (required) and optional `filter` keyword
   - `get_doc` — retrieve full markdown content by `framework` (required) + `name` (required, without `.md`)
   - `search_docs` — full-text search by `framework` (required) + `query` (required), top 20 results with snippets
-  - `search_components` — find component source file paths on GitHub by framework + component name
-  - `get_api_definition` — extract public API (interfaces, classes, types) from a GitHub source file
-  - `get_scaffold_reference` — find real-world usage examples from IgniteUI sample repositories
-  - `get_project_framework` — auto-detect framework from local project files (angular.json, package.json, .csproj, file extensions)
-  - `generate_ignite_app` — scaffold a new Ignite UI project via `igniteui-cli new`
-  - `add_ignite_component` — add a component to an existing Ignite UI CLI project via `igniteui-cli add`
-  - `get_cli_templates_list` — list available CLI templates via `igniteui-cli list`
+  - `search_api` — discover API entries by keyword or partial component name
+  - `get_api_reference` — retrieve full API details for an exact component or class name
+  - `get_project_setup_guide` — return setup guides for creating a new Ignite UI project (CLI docs for Angular/React/WC, dotnet + NuGet guides for Blazor)
 
 **Build DB** (`scripts/build-db.ts`): Reads compressed docs from `dist/docs_final/<framework>/`, looks up `_tocName` from `dist/docs_prepeared/<framework>/`, and produces `dist/igniteui-docs.db` using `better-sqlite3`. Supports full rebuild or per-framework rebuild via `--framework` flag. DB schema: `docs` table + `docs_fts` FTS4 virtual table with external content, porter tokenizer, and prefix indexes.
 
 ## Key Dependencies
 
 - `@modelcontextprotocol/sdk` — MCP protocol implementation
-- `octokit` — GitHub API client (used by search_components, get_api_definition, get_scaffold_reference)
-- `dotenv` — env file loading (GITHUB_TOKEN, DOCS_BACKEND_URL)
+- `octokit` — GitHub API client used by legacy integration work in this repo
+- `dotenv` — env file loading (GITHUB_TOKEN, IGNITEUI_MCP_DOCS_BACKEND_URL)
 - `sql.js` — Pure WASM SQLite for the MCP server (loads .db into memory, cross-platform)
 - `better-sqlite3` — Native SQLite for build-db.ts (dev dependency, fast bulk inserts)
 - `openai` — OpenAI API client (used by compress scripts)

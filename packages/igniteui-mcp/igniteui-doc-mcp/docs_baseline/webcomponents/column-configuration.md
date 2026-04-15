@@ -10,13 +10,7 @@ _tocName: Column Configuration
 
 # Column Configuration
 
-<!-- React, WebComponents -->
-
 Columns are defined declaratively using column child components within the grid. The `field` property is the only required for a column, as it serves as the column identifier. It is also the property that is used to map and render the relevant data in the grid rows.
-
-<!-- end: React, WebComponents -->
-
-<!-- WebComponents -->
 
 ```html
 <igc-grid-lite .data=${data}>
@@ -29,8 +23,6 @@ Columns are defined declaratively using column child components within the grid.
 </igc-grid-lite>
 ```
 
-<!-- React, WebComponents -->
-
 ## Configuration Based on the Data Source
 
 The grid supports inferring the column configuration based on the provided data source when `autoGenerate` is set to true. It tries to infer the appropriate `field` and `dataType` based on records in the data.
@@ -42,17 +34,11 @@ const data: Record[] = [
 ];
 ```
 
-<!-- end: React, WebComponents -->
-
-<!-- WebComponents -->
-
 ```html
 <igc-grid-lite auto-generate .data=${data}></igc-grid-lite>
 ```
 
 The previous snippet will result in the grid automatically creating columns equivalent to:
-
-<!-- WebComponents -->
 
 ```html
 <igc-grid-lite .data=${data}>
@@ -74,13 +60,7 @@ By default, the columns have a width of **minmax(136px, 1fr)** which translates 
 1 part of the available space in the Grid Lite. This way the columns are fluid and responsive accommodating for changes
 in the grid width.
 
-<!-- React, WebComponents -->
-
 To change the width of column, use the `width` property of the column.
-
-<!-- end: React, WebComponents -->
-
-<!-- WebComponents -->
 
 ```html
 <igc-grid-lite-column field="price" width="250px"></igc-grid-lite-column>
@@ -90,13 +70,7 @@ The property accepts <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS
 
 ### Hiding columns
 
-<!-- React, WebComponents -->
-
 Columns can be hidden/shown by setting the `hidden` property of the column.
-
-<!-- end: React, WebComponents -->
-
-<!-- WebComponents -->
 
 ```html
 <igc-grid-lite-column field="price" hidden></igc-grid-lite-column>
@@ -104,13 +78,7 @@ Columns can be hidden/shown by setting the `hidden` property of the column.
 
 ### Column resize
 
-<!-- React, WebComponents -->
-
 Each column of the Grid Lite can be configured to be resizable by setting the `resizable` property of the column element.
-
-<!-- end: React, WebComponents -->
-
-<!-- WebComponents -->
 
 ```html
 <igc-grid-lite-column field="price" resizable></igc-grid-lite-column>
@@ -118,7 +86,7 @@ Each column of the Grid Lite can be configured to be resizable by setting the `r
 
 If a column is set to be resizable, you can drag the right size of the column header to either increase/decrease  the column width. Double-clicking on the resize area will trigger auto-sizing of the column where it will try set its width according to the largest content of its cells/header.
 
-> \[!NOTE]
+> [!NOTE]
 > Columns with "fluid" widths (fr, %, etc.) can behave erratically when resizing in the grid is performed as they try to accommodate for the new dimensions. Depending on the application scenario, it may be better to use "hard" units so users don't experience layout shifts.
 
 In the sample below you can try out the different column properties and how they reflect in the rendered grid.

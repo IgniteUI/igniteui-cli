@@ -79,8 +79,6 @@ The Blazor Carousel demo you see below shows slides containing only images.
 
 ## Usage
 
-<!-- Blazor -->
-
 Before using the [`IgbCarousel`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCarousel.html), you need to register it as follows:
 
 ```razor
@@ -94,8 +92,6 @@ You will also need to link an additional CSS file to apply the styling to the [`
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
 ```
-
-<!-- end: Blazor -->
 
 For a complete introduction to the Ignite UI for Blazor, read the [**Getting Started**](../general-getting-started.md) topic.
 
@@ -131,7 +127,7 @@ If you want a slide to be active by default, use the `Active` attribute:
 </IgbCarousel>
 ```
 
-> \[!NOTE]
+> [!NOTE]
 > If no active slide is set, the first one will be set by default. If there are multiple active slides on initial rendering or subsequent updates, only the last one will be taken into account.
 
 ## Examples
@@ -533,7 +529,7 @@ The carousel [animations](carousel.md#animations) are fully supported on touch d
 
 The [`IgbCarousel`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCarousel.html) can be easily configured to change the slides automatically, without any user interaction. This way you can create your own slideshow by only setting a transition interval to the [`Interval`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCarousel.html#IgniteUI_Blazor_Controls_IgbCarousel_Interval) property, which determines the amount of time in milliseconds between slides transition.
 
-> \[!NOTE]
+> [!NOTE]
 > Hovering the mouse over any carousel content or moving keyboard focus to any of the carousel content pauses automatic transitioning. Automatic transitioning resumes when the mouse moves away from the carousel or when keyboard focus moves out of the carousel content.
 > This can be prevented by setting [`DisablePauseOnInteraction`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCarousel.html#IgniteUI_Blazor_Controls_IgbCarousel_DisablePauseOnInteraction) property to **true**.
 

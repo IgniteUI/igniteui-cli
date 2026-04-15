@@ -1202,7 +1202,9 @@ $carousel-theme: carousel-theme(
 The last step is to include the component's theme.
 
 ```scss
-@include css-vars($carousel-theme);
+:host {
+  @include tokens($carousel-theme);
+}
 ```
 
 ### Demo
@@ -1258,7 +1260,9 @@ $custom-carousel-theme: carousel-theme(
 );
 
 // Apply the custom theme.
-@include css-vars($custom-carousel-theme);
+:host {
+  @include tokens($custom-carousel-theme);
+}
 ```
 
 ### Styling with Tailwind

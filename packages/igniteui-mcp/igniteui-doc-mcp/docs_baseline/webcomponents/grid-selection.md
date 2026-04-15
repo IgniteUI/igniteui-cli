@@ -92,8 +92,6 @@ If there is a **multi-cell selection**, we will put logic, which will check whet
 
 Basically the main function will look like this:
 
-<!-- WebComponents -->
-
 ```ts
     public rightClick(event: any) {
         const eventArgs = event.detail;
@@ -125,11 +123,9 @@ Basically the main function will look like this:
 
 The context menu will have the following functions:
 
-- Copy the selected cell's *value*.
-- Copy the selected cell's *dataRow*.
-- If the selected cell is within a **multi-cell selection range**, copy all the *selected data*.
-
-<!-- WebComponents -->
+- Copy the selected cell's _value_.
+- Copy the selected cell's _dataRow_.
+- If the selected cell is within a **multi-cell selection range**, copy all the _selected data_.
 
 ```ts
     public copySelectedRowData() {
@@ -172,8 +168,6 @@ The context menu will have the following functions:
 The [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) will fetch the copied data and will paste it in a container element.
 
 The template we are going to use to combine the grid with the context menu:
-
-<!-- WebComponents -->
 
 ```html
     <div class="container sample">

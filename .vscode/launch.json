@@ -91,24 +91,6 @@
 		{
 			"type": "node",
 			"request": "launch",
-			"name": "Launch New Angular ig-ts",
-			"cwd": "${workspaceRoot}/output",
-			"program": "${workspaceRoot}/packages/cli/bin/execute.js",
-			"console": "externalTerminal",
-			"preLaunchTask": "build",
-			"outFiles": [ "${workspaceRoot}/lib/**/*.js",
-				"${workspaceRoot}/spec/**/*.js" ],
-			"args": [
-				"new",
-				"angular-wrapers-proj",
-				"--framework=angular",
-				"--type=ig-ts",
-				"--template=empty"
-			]
-		},
-		{
-			"type": "node",
-			"request": "launch",
 			"name": "Launch Wizard",
 			"cwd": "${workspaceRoot}/output",
 			"program": "${workspaceRoot}/packages/cli/bin/execute.js",
@@ -122,21 +104,6 @@
 			"type": "node",
 			"request": "launch",
 			"name": "Launch New React",
-			"cwd": "${workspaceRoot}/output",
-			"program": "${workspaceRoot}/packages/cli/bin/execute.js",
-			"console": "externalTerminal",
-			"preLaunchTask": "build",
-			"outFiles": ["${workspaceFolder}/**/*.js"],
-			"args": [
-				"new",
-				"reactproj",
-				"--framework=react"
-			]
-		},
-		{
-			"type": "node",
-			"request": "launch",
-			"name": "Launch New React TS ES6",
 			"cwd": "${workspaceRoot}/output",
 			"program": "${workspaceRoot}/packages/cli/bin/execute.js",
 			"console": "externalTerminal",
@@ -258,21 +225,6 @@
 			"request": "launch",
 			"name": "Add Combo to Angular igx-ts",
 			"cwd": "${workspaceRoot}/output/angularproj",
-			"program": "${workspaceRoot}/packages/cli/bin/execute.js",
-			"console": "externalTerminal",
-			"preLaunchTask": "build",
-			"outFiles": ["${workspaceFolder}/**/*.js"],
-			"args": [
-				"add",
-				"--template=combo",
-				"--name=mycombo"
-			]
-		},
-		{
-			"type": "node",
-			"request": "launch",
-			"name": "Add Combo to Angular ig-ts",
-			"cwd": "${workspaceRoot}/output/angular-wrapers-proj",
 			"program": "${workspaceRoot}/packages/cli/bin/execute.js",
 			"console": "externalTerminal",
 			"preLaunchTask": "build",

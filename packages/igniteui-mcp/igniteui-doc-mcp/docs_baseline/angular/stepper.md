@@ -2121,7 +2121,9 @@ $stepper-theme: stepper-theme(
 The last step is to include the component's theme.
 
 ```scss
-@include css-vars($custom-stepper-theme);
+:host {
+    @include tokens($custom-stepper-theme);
+}
 ```
 
 ### Demo
@@ -2209,7 +2211,9 @@ $stepper-theme: stepper-theme(
   $border-radius-indicator: 10px 4px 10px 4px,
 );
 
-@include css-vars($stepper-theme);
+:host {
+  @include tokens($stepper-theme);
+}
 ```
 
 ### Styling with Tailwind

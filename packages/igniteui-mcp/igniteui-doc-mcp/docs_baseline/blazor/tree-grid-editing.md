@@ -229,7 +229,3 @@ igRegisterScript("SortingHandler", SortingHandler, false);
 - [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html)
 
 ## Additional Resources
-
-<!-- Blazor -->
-
-<!-- end: Blazor -->

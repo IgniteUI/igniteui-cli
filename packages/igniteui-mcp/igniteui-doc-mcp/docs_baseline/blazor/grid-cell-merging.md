@@ -13,11 +13,7 @@ _premium: true
 
 # Blazor Grid Cell Merging
 
-<!-- Blazor -->
-
 The Ignite UI for Blazor Grid provides a Cell Merging feature that combines two or more adjacent cells with the same value into a single, larger cell. Merging is applied vertically within a column and helps improve readability by reducing duplicate values.
-
-<!-- end: Blazor -->
 
 ## Blazor Grid Cell Merging Example
 
@@ -210,7 +206,7 @@ Due to the specific behavior of merged cells it has to be noted how exactly it t
 - **Row selection**: if selected rows intersect merged cells, all related merged cells should be marked as part of the selection.
 - **Navigation/Activation**: when a cell is active, all merged cells in the same row become single cells, i.e. their merge sequence is broken. This also includes activation via keyboard navigation.
 
-> \[!NOTE]
+> [!NOTE]
 > If a merged cell is clicked, the closest cell from the merge sequence will become active.
 
 <!-- ComponentStart: Grid -->

@@ -51,9 +51,8 @@ describe("Unit - Util", () => {
 		expect(Util.getAvailableName(defaultComponentName, false)).toEqual("grid 1");
 		expect(Util.getAvailableName(defaultComponentName, false, "jQuery")).toEqual("grid 1");
 		expect(Util.getAvailableName(defaultComponentName, false, "React")).toEqual("grid 1");
-		expect(Util.getAvailableName(defaultComponentName, false, "Angular", "ig-ts")).toEqual("grid 1");
 		expect(Util.getAvailableName(defaultComponentName, false, "Angular", "igx-ts")).toEqual("grid 1");
-		expect(Util.directoryExists).toHaveBeenCalledTimes(10);
+		expect(Util.directoryExists).toHaveBeenCalledTimes(8);
 	});
 
 	it("should read the existing component view name and return incremented view name ", () => {
@@ -68,7 +67,7 @@ describe("Unit - Util", () => {
 
 		expect(Util.getAvailableName("editors-calculation-form", false)).toEqual("editors-calculation-form 1");
 		expect(Util.getAvailableName("editors-calculation-form", false, "jQuery")).toEqual("editors-calculation-form 1");
-		expect(Util.getAvailableName("editors-calculation-form", false, "Angular", "ig-ts")).
+		expect(Util.getAvailableName("editors-calculation-form", false, "Angular", "igx-ts")).
 			toEqual("editors-calculation-form 1");
 		defaultViewName = "awesome-grid";
 		expect(Util.getAvailableName("awesome-grid", false, "Angular", "igx-ts")).toEqual("awesome-grid 1");
@@ -85,7 +84,7 @@ describe("Unit - Util", () => {
 			))
 			.toBe("./carousel/carousel.component", "Shared Win root, file to file => posix ");
 			expect(Util.relativePath(
-				"/home/app/app.module.ts",
+				"/home/app/app-module.ts",
 				"/home/app/grid/grid.component.ts", true, true
 			))
 			.toBe("./grid/grid.component", "Shared posix root, file to file => posix ");

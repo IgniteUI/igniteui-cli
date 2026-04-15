@@ -437,7 +437,9 @@ $custom-switch-theme: switch-theme(
 Finally, **include** the custom theme in your application:
 
 ```scss
-@include css-vars($custom-switch-theme);
+:host {
+  @include tokens($custom-switch-theme);
+}
 ```
 
 In the sample below, you can see how using the switch component with customized CSS variables allows you to create a design that visually resembles the switch used in the [`SAP UI5`](https://ui5.sap.com/#/entity/sap.m.Switch/sample/sap.m.sample.Switch) design system.
@@ -507,7 +509,9 @@ igx-switch {
 //     $border-hover-color: transparent,
 // );
 
-// @include css-vars($custom-switch-theme)
+// :host {
+//     @include tokens($custom-switch-theme);
+// }
 ```
 
 ### Styling with Tailwind

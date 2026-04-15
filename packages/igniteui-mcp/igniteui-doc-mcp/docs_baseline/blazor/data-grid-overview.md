@@ -8,12 +8,8 @@ _canonicalLink: grids/data-grid
 _tocName: Table / Grid
 ---
 
-<!-- Blazor, WebComponents -->
-
-> \[!Note]
+> [!Note]
 > Please note that this control has been deprecated and replaced with the [Grid](../data-grid.md), and as such, we recommend migrating to that control. This will not be receiving any new features, bug fixes will be deprioritized. For help or questions on migrating your codebase to the Data Grid, please contact support.
-
-<!-- end: Blazor, WebComponents -->
 
 # Blazor Data Grid Overview
 
@@ -147,8 +143,6 @@ Filtering, Grouping, Pin/Unpin columns, Reposition columns, Sorting, and Summari
 
 ### Dependencies
 
-<!-- Blazor -->
-
 Please refer to these topics on adding the IgniteUI.Blazor package.
 
 - [Getting Started](../../general-getting-started.md)
@@ -160,21 +154,15 @@ Afterwards, you may start implementing the control by adding the following names
 @using IgniteUI.Blazor.Controls
 ```
 
-<!-- end: Blazor -->
-
 ### Component Modules
 
 The [`IgbDataGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataGrid.html) requires the following modules:
-
-<!-- Blazor -->
 
 ```razor
 // in Program.cs file
 
 builder.Services.AddIgniteUIBlazor(typeof(IgbDataGridModule));
 ```
-
-<!-- end: Blazor -->
 
 <div class="divider--half"></div>
 
@@ -353,15 +341,9 @@ The following code demonstrates how to style specific columns using the provided
 />
 ```
 
-<!-- Blazor -->
-
 ### Tutorial Video
 
 Learn more about creating a Blazor data grid in our short tutorial video:
-
-<iframe width="100%" height="600" src="https://www.youtube.com/embed/aT1L3nXqN6o">
-</iframe>
-<!-- end: Blazor -->
 
 ## Additional Resources
 

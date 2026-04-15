@@ -698,7 +698,9 @@ If we take a look at the [`bottom-nav-theme`](https://www.infragistics.com/produ
 The last step is to **include** the component theme in our application.
 
 ```scss
-@include css-vars($dark-bottom-nav);
+:host {
+    @include tokens($dark-bottom-nav);
+}
 ```
 
 ### Demo
@@ -797,7 +799,9 @@ $dark-bottom-nav: bottom-nav-theme(
   $icon-selected-color: #F4D45C
 );
 
-@include css-vars($dark-bottom-nav);
+:host {
+  @include tokens($dark-bottom-nav);
+}
 ```
 
 ### Styling with Tailwind

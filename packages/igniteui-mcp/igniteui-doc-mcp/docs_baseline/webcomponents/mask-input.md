@@ -21,8 +21,6 @@ The Ignite UI for Web Components Mask Input is an input field that allows the de
 
 ## Usage
 
-<!-- WebComponents -->
-
 First, you need to install the Ignite UI for Web Components by running the following command:
 
 ```cmd
@@ -30,8 +28,6 @@ npm install igniteui-webcomponents
 ```
 
 Before using the [`IgcMaskInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcmaskinputcomponent.html), you need to register it as follows:
-
-<!-- end: WebComponents -->
 
 ```ts
 import { defineComponents, IgcMaskInputComponent } from 'igniteui-webcomponents';
@@ -154,7 +150,7 @@ igc-mask-input::part(input)::placeholder {
 
 ## Assumptions and limitations
 
-- The masked input does not expose a *type* attribute since it is always an input of type **text**.
+- The masked input does not expose a _type_ attribute since it is always an input of type **text**.
 - Undo/redo behavior is currently unsupported.
 
 ## API References

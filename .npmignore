@@ -1,0 +1,3 @@
+# MCP server source, submodules, and build artifacts
+# (bundled into packages/cli/mcp/ via build:mcp-bundle script)
+packages/igniteui-mcp/

@@ -25,8 +25,6 @@ The predefined actions UI components are:
 
 They are added inside the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) and this is all needed to have an [`IgcActionStrip`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcactionstrip.html) providing default interactions.
 
-<!-- WebComponents -->
-
 ```html
 <igc-grid row-editable="true" primary-key="ID">
     <igc-column field="field"></igc-column>
@@ -37,9 +35,7 @@ They are added inside the [`IgcGridComponent`](https://www.infragistics.com/prod
 </igc-grid>
 ```
 
-<!-- end: WebComponents -->
-
-> \[!Note]
+> [!Note]
 > When `ActionStripComponent` is a child component of the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html), hovering a row will automatically show the UI.
 
 ## Custom Implementation
@@ -62,8 +58,6 @@ These components expose templates giving flexibility for customization. For inst
 
 <!-- ComponentEnd: Grid, TreeGrid -->
 
-<!-- WebComponents -->
-
 <!-- ComponentStart: Grid, TreeGrid -->
 
 ```html
@@ -76,8 +70,6 @@ These components expose templates giving flexibility for customization. For inst
 ```
 
 <!-- ComponentEnd: Grid, TreeGrid -->
-
-<!-- end: WebComponents -->
 
 ```css
 /* shared styles are loaded from: */

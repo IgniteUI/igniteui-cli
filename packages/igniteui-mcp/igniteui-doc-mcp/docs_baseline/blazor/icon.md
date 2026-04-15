@@ -55,21 +55,15 @@ Before using the [`IgbIcon`](https://www.infragistics.com/blazor/docs/api/api/Ig
 builder.Services.AddIgniteUIBlazor(typeof(IgbIconModule));
 ```
 
-<!-- Blazor -->
-
 You will also need to link an additional CSS file to apply the styling to the [`IgbIcon`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIcon.html) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
 ```
 
-<!-- end: Blazor -->
-
-The [`IgbIcon`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIcon.html) doesn't contain any icons on its own. It's a conduit for displaying any *registered* SVG images.
+The [`IgbIcon`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIcon.html) doesn't contain any icons on its own. It's a conduit for displaying any _registered_ SVG images.
 
 ### Adding Icons
-
-<!-- Blazor -->
 
 To register an image as an icon, all you need to do is call one of the 2 "register" methods on a single [`IgbIcon`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIcon.html) element that allow you to add icons to an icon collection on your page.
 
@@ -91,8 +85,6 @@ The [`RegisterIcon`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.B
   }
 }
 ```
-
-<!-- end: Blazor -->
 
 The method above will add an icon named `search` to a cached collection named `material`.
 
@@ -128,8 +120,6 @@ Then you'd use it in the same way as described in the component sample above.
 
 The icon component supports three icon sizes - `small`, `medium`(default), and `large`. In order to change the size of the icon, you can utilize the `--ig-size` CSS variable as follows:
 
-<!-- Blazor, WebComponents -->
-
 ```css
 igc-icon {
   --ig-size: var(--ig-size-large);
@@ -139,8 +129,6 @@ igc-icon {
 ```razor
 <IgbIcon Size="@SizableComponentSize.Large">
 ```
-
-<!-- end: Blazor, WebComponents -->
 
 ```razor
 @using IgniteUI.Blazor.Controls

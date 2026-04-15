@@ -24,11 +24,11 @@ Currently, the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react
 - **Column summaries** (if enabled).
 - **Grid paginator** (if enabled).
 
-> \[!Note]
+> [!Note]
 > Due to this change, navigating between the cells with <kbd>TAB</kbd> and <kbd>SHIFT</kbd> + <kbd>TAB</kbd> is no longer supported in the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html).
 > Pressing the <kbd>TAB</kbd> key now goes through the tab stops in the following order: **GroupBy** / **Toolbar** -> **Headers** -> **Body** -> **Summaries** -> **Footer / Paginator**.
 
-> \[!Note]
+> [!Note]
 > Exposing any **focusable** element into the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) body via template may introduce **side effects** in the keyboard navigation, since the default
 > browser behavior is not prevented. It is the developer's responsibility to prevent or modify it appropriately.
 
@@ -125,14 +125,10 @@ over Group Row - collapses the group.
 
 Practice all of the above mentioned actions in the demo sample below. Focus any navigable grid element and a list with some of the available actions for the element will be shown to guide you through.
 
-<!-- Angular, WebComponents, React -->
-
 ## Demo
 
 
 
-
-<!-- end: Angular, WebComponents, React -->
 
 ## Custom Keyboard Navigation
 
@@ -146,8 +142,6 @@ Let's try the API to demonstrate how to achieve common scenarios like user input
 <IgrGrid id="grid1" primaryKey="ProductID" onGridKeydown={customKeydown}>
 </IgrGrid>
 ```
-
-<!-- React -->
 
 ```tsx
 const customKeydown = (eventArgs: IgrGridKeydownEventArgs) => {
@@ -166,23 +160,7 @@ const customKeydown = (eventArgs: IgrGridKeydownEventArgs) => {
 }
 ```
 
-<!-- end: React -->
-
-<!-- WebComponents -->
-
-<!-- React -->
-
-Based on the event arg values we identified two cases, where to provide our own logic (see above). Now, using the methods from the API, let's perform the desired - if the user is pressing <kbd>TAB</kbd> key over a cell in edit mode, we will perform validation on the input:
-
-```typescript
-    // 1. USER INPUT VALIDATION ON TAB
-    if (target.column.dataType === 'number' && target.editValue < 10) {
-        // alert the user that the input is invalid
-        return;
-    }
-```
-
-> \[!Note]
+> [!Note]
 > Please refer to the sample code for full implementation details.
 
 Use the demo below to try out the custom scenarios that we just implemented:

@@ -21,7 +21,7 @@ The sample below demonstrates the three types of [`IgrTreeGrid`](https://www.inf
 
 <!-- ComponentStart: TreeGrid -->
 
-\**Unit Price* and *Discontinued* are with disabled column selection.
+\*_Unit Price_ and _Discontinued_ are with disabled column selection.
 
 <!-- ComponentEnd: TreeGrid -->
 
@@ -190,12 +190,12 @@ The column selection feature can be enabled through the [`columnSelection`](http
 
 The default selection mode is `None`. If set to `Single` or `Multiple`, all of the presented columns will be [`selectable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#selectable). With that being said, in order to select a column, we just need to click on one, which will mark it as [`selected`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#selected). If the column is not selectable, no selection style will be applied on the header, while hovering.
 
-> \[!Note]
+> [!Note]
 > The [Multi Column Headers](multi-column-headers.md) feature does not reflect on the [`selectable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#selectable) input. The `ColumnGroupComponent` is [`selectable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#selectable), if at least one of its children has the selection behavior enabled. In addition, the component is marked as [`selected`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#selected) if all of its [`selectable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#selectable) descendants are [`selected`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#selected).
 
 <!-- ComponentStart: TreeGrid -->
 
-\*Under *Personal Details* Column Group only column *ID* and *Title* are selectable.
+\*Under _Personal Details_ Column Group only column _ID_ and _Title_ are selectable.
 
 <!-- ComponentEnd: TreeGrid -->
 
@@ -374,7 +374,7 @@ root.render(<Sample/>);
 
 ## Keyboard Combinations
 
-> \[!Note]
+> [!Note]
 > The keyboard combinations are available only when the grid [`columnSelection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#columnSelection) input is set to `multiple`.
 
 There are two scenarios for keyboard navigation of the **Column Selection** feature:
@@ -386,12 +386,10 @@ There are two scenarios for keyboard navigation of the **Column Selection** feat
 
 The **API** provides some additional capabilities when it comes to the **non-visible** columns such that, every **hidden** column could be marked as [`selected`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#selected) by setting the corresponding **setter**.
 
-> \[!Note]
+> [!Note]
 > The above statement also applies to the `ColumnGroupComponent`, except that when the [`selected`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#selected) property is changed it changes the state of its descendants.
 
 More information regarding the API manipulations could be found in the [API References](#api-references) section.
-
-<!-- WebComponents, Blazor, React -->
 
 ## Styling
 
@@ -599,8 +597,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
-<!-- end: WebComponents, Blazor, React -->
 
 ## API References
 

@@ -249,9 +249,9 @@ Basically the main function will look like this:
 
 The context menu will have the following functions:
 
-- Copy the selected cell's *value*.
-- Copy the selected cell's *dataRow*.
-- If the selected cell is within a **multi-cell selection range**, copy all the *selected data*.
+- Copy the selected cell's _value_.
+- Copy the selected cell's _dataRow_.
+- If the selected cell is within a **multi-cell selection range**, copy all the _selected data_.
 
 ```razor
     public void CopyCellData()

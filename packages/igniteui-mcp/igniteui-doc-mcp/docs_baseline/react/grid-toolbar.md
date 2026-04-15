@@ -209,15 +209,7 @@ The predefined [`IgrGridToolbarActions`](https://www.infragistics.com/products/i
 
 <!-- ComponentEnd: Grid -->
 
-<!-- React -->
-
-<!-- end: React -->
-
-<!-- React -->
-
-<!-- end: React -->
-
-> \[!Note]
+> [!Note]
 > As seen in the code snippet above, the predefined `Actions` UI components are wrapped in the [`IgrGridToolbarActions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbaractions.html) container. This way, the toolbar title is aligned to the left of the toolbar and the actions are aligned to the right of the toolbar.
 
 Of course, each of these UIs can be added independently of each other, or may not be added at all. This way the toolbar container will be rendered empty:
@@ -228,22 +220,6 @@ Of course, each of these UIs can be added independently of each other, or may no
     </IgrGridToolbar>
 </IgrGrid>
 ```
-
-<!-- ComponentEnd: Grid -->
-
-<!-- React -->
-
-<!-- end: React -->
-
-<!-- React -->
-
-<!-- end: React -->
-
-For a comprehensive look over each of the default UI components, continue reading the **Features** section below.
-
-<!-- React -->
-
-<!-- end: Angular, WebComponents, React -->
 
 ## Features
 
@@ -426,8 +402,6 @@ Setting a title for the toolbar in your grid is achieved by using the [`IgrGridT
 
 Users can provide anything from simple text to more involved templates.
 
-<!-- React -->
-
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
 ```tsx
@@ -440,15 +414,11 @@ Users can provide anything from simple text to more involved templates.
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
-<!-- end: React -->
-
 ### Actions
 
 The [`IgrGridToolbarActions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbaractions.html) is where users can place actions/interactions in relation to the parent grid.
 As with the title portion of the toolbar, users can provide anything inside that template part, including the default
 toolbar interaction components.
-
-<!-- React -->
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -462,15 +432,11 @@ toolbar interaction components.
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
-<!-- end: React -->
-
 ### Column Pinning
 
 The [`IgrGridToolbarPinning`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbarpinning.html) component provides the default UI for interacting with column pinning in the grid.
 
 The component is setup to work out of the box with the parent grid containing the toolbar as well as several input properties for customizing the UI, such as the component title, the placeholder for the component input and the height of the dropdown itself.
-
-<!-- React -->
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -484,14 +450,10 @@ The component is setup to work out of the box with the parent grid containing th
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
-<!-- end: React -->
-
 ### Column Hiding
 
 The [`IgrGridToolbarHiding`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbarhiding.html) provides the default UI for interacting with column hiding. Exposes the same input properties for customizing the UI, such as the component
 title, the placeholder for the component input and the height of the dropdown itself.
-
-<!-- React -->
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -505,13 +467,9 @@ title, the placeholder for the component input and the height of the dropdown it
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
-<!-- end: React -->
-
 ### Advanced Filtering
 
 Toolbar Advanced Filtering component provides the default UI for the Advanced Filtering feature. The component exposes a way to change the default text of the button.
-
-<!-- React -->
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -525,8 +483,6 @@ Toolbar Advanced Filtering component provides the default UI for the Advanced Fi
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
-<!-- end: React -->
-
 ### Data Exporting
 
 As with the rest of the toolbar actions, exporting is provided through a [`IgrGridToolbarExporter`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbarexporter.html) out of the box.
@@ -536,8 +492,6 @@ The toolbar exporter component exposes several input properties for customizing 
 These range from changing the display text, to enabling/disabling options in the dropdown to customizing the name of the generated file. For full reference, consult the API documentation for the `ToolbarExporter`.
 
 Here is a snippet showing some of the options which can be customized through the React template:
-
-<!-- React -->
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -551,11 +505,9 @@ Here is a snippet showing some of the options which can be customized through th
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
-<!-- end: React -->
-
 In addition to changing the exported filename, the user can further configure the exporter options by waiting for the `ToolbarExporting` event and customizing the options entry in the event properties.
 
-> \[!Note]
+> [!Note]
 > By default when exporting to CSV the exporter exports using a comma separator and uses a '.csv' extension for the output file.
 > You can customize these exporting parameters by subscribing to events of the exporter or changing the values of the exporter options fields.
 > You can also cancel the export process by setting the cancel field of the event args to true.
@@ -757,10 +709,126 @@ The sample belows uses has significant amount of data, in order to increase the 
 
 <!-- NOTE this sample is differed -->
 
+```typescript
+export class AthletesDataItem {
+    public constructor(init: Partial<AthletesDataItem>) {
+        Object.assign(this, init);
+    }
+
+    public Id: number;
+    public Avatar: string;
+    public Position: string;
+    public Name: string;
+    public AthleteNumber: number;
+    public BeatsPerMinute: number;
+    public TopSpeed: number;
+    public Registered: string;
+    public TrackProgress: number;
+    public CountryFlag: string;
+    public CountryName: string;
+
+}
+export class AthletesData extends Array<AthletesDataItem> {
+    public constructor(items: Array<AthletesDataItem> | number = -1) {
+        if (Array.isArray(items)) {
+            super(...items);
+        } else {
+            const newItems = [
+                new AthletesDataItem({ Id: 100, Avatar: `https://dl.infragistics.com/x/img/people/women/20.png`, Position: `current`, Name: `Alexis Walker`, AthleteNumber: 43183, BeatsPerMinute: 103, TopSpeed: 5.8, Registered: `2017-08-07T10:35:06-03:00`, TrackProgress: 45, CountryFlag: `https://dl.infragistics.com/x/img/flags/GH.png`, CountryName: `Ghana` }),
+                new AthletesDataItem({ Id: 101, Avatar: `https://dl.infragistics.com/x/img/people/women/31.png`, Position: `down`, Name: `Lavínia Silva`, AthleteNumber: 33994, BeatsPerMinute: 93, TopSpeed: 5.6, Registered: `2017-03-22T08:55:46-02:00`, TrackProgress: 45, CountryFlag: `https://dl.infragistics.com/x/img/flags/NO.png`, CountryName: `Norway` }),
+                new AthletesDataItem({ Id: 105, Avatar: `https://dl.infragistics.com/x/img/people/men/13.png`, Position: `down`, Name: `Samu Hokkanen`, AthleteNumber: 22469, BeatsPerMinute: 106, TopSpeed: 5.5, Registered: `2017-06-29T04:58:27-03:00`, TrackProgress: 25, CountryFlag: `https://dl.infragistics.com/x/img/flags/AZ.png`, CountryName: `Azerbaijan` }),
+                // ... 182 more items
+            ];
+            super(...newItems.slice(0));
+        }
+    }
+}
+```
+```css
+/* shared styles are loaded from: */
+/* https://dl.infragistics.com/x/css/samples/shared.v8.css */
+```
+```tsx
+import React, { useEffect, useMemo, useState } from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import "igniteui-react-grids/grids/themes/light/bootstrap.css";
+import { AthletesData, AthletesDataItem } from "./AthletesData";
+
+import { IgrButton } from "igniteui-react";
+import {
+  IgrGridToolbar,
+  IgrGridToolbarActions,
+  IgrGridToolbarExporter,
+  IgrGridToolbarTitle,
+  IgrGrid,
+  IgrColumn,
+} from "igniteui-react-grids";
 
 
+export default function GridDataExportingIndicatorSample() {
+  const athletesData = useMemo(() => new AthletesData(), []);
+  const [localData, setLocalData] = useState([]);
+  const [showProgress, setShowProgress] = useState(false);
+  
+  useEffect(() => {
+    const data: AthletesDataItem[] = [];
+    let uniqueId = 0;
+    for (let i = 0; i < 2000; i ++) {
+      for (let c = 0; c < athletesData.length; c++) {
+        data.push({ ...athletesData[c], Id: uniqueId++ });
+      }
+    }
+    setLocalData(data);
+  }, [athletesData]);
+  
 
-<!-- WebComponents, Blazor, React -->
+  const setupProgressVisibility = () => {
+    setShowProgress(true);
+
+    setTimeout(() => {
+      setShowProgress(false);
+    }, 5000);
+  };
+
+  return (
+    <div className="container sample ig-typography">
+      <div className="container fill">
+        <IgrGrid
+          data={localData}
+          autoGenerate={false}
+          primaryKey="Id"
+        >
+          <IgrGridToolbar key="toolbar" showProgress={showProgress}>
+            <IgrGridToolbarTitle key="toolbarTitle">
+              <span key="toolbarTitleText">Grid Toolbar</span>
+            </IgrGridToolbarTitle>
+            <IgrButton key="btn" onClick={setupProgressVisibility}>
+              <span key="simulate">Simulate long running operation</span>
+            </IgrButton>
+            <IgrGridToolbarActions key="toolbarActions">
+              <IgrGridToolbarExporter key="toolbarExporter"></IgrGridToolbarExporter>
+            </IgrGridToolbarActions>
+          </IgrGridToolbar>
+
+          <IgrColumn field="Id" header="ID" dataType="number" />
+          <IgrColumn field="Name" header="Name" />
+          <IgrColumn field="Position" header="Position" />
+          <IgrColumn field="AthleteNumber" header="Athlete Number" dataType="number" />
+          <IgrColumn field="BeatsPerMinute" header="Beats Per Minute" dataType="number" />
+          <IgrColumn field="TopSpeed" header="Top Speed" dataType="number" />
+          <IgrColumn field="CountryName" header="Country" />
+        </IgrGrid>
+      </div>
+    </div>
+  );
+}
+
+// rendering above component in the React DOM
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<GridDataExportingIndicatorSample />);
+```
+
 
 ## Styling
 
@@ -944,8 +1012,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
-<!-- end: WebComponents, Blazor, React -->
 
 ## API References
 

@@ -20,8 +20,6 @@ You can perform these tasks remotely and feed the resulting data to the [`IgrHie
 
 <!-- ComponentStart: HierarchicalGrid -->
 
-<!-- React -->
-
 ```tsx
 const BASE_URL = `https://data-northwind.indigo.design/`;
 const CUSTOMERS_URL = `${BASE_URL}Customers/GetCustomersWithPage`;
@@ -59,15 +57,11 @@ export class RemoteService {
 }
 ```
 
-<!-- end: React -->
-
 <!-- ComponentEnd: HierarchicalGrid -->
 
 After declaring the service, we need to create a component, which will be responsible for the [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html) construction and data subscription.
 
 <!-- ComponentStart: HierarchicalGrid -->
-
-<!-- React -->
 
 ```tsx
   <IgrHierarchicalGrid
@@ -140,11 +134,7 @@ next set up the method for loading the data:
   }
 ```
 
-<!-- end: React -->
-
 <!-- ComponentEnd: HierarchicalGrid -->
-
-<!-- React -->
 
 and finally set up the behaviour for the RowIslands:
 
@@ -390,8 +380,6 @@ root.render(<App />);
 
 
 <!-- ComponentEnd: HierarchicalGrid -->
-
-<!-- end: React -->
 
 <!-- ComponentEnd: HierarchicalGrid -->
 

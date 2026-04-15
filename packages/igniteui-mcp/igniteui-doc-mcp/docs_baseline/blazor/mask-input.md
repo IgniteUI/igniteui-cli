@@ -42,8 +42,6 @@ The Ignite UI for Blazor Mask Input is an input field that allows the developer 
 
 ## Usage
 
-<!-- Blazor -->
-
 Before using the [`IgbMaskInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbMaskInput.html), you need to register it as follows:
 
 ```razor
@@ -57,8 +55,6 @@ You will also need to link an additional CSS file to apply the styling to the [`
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
 ```
-
-<!-- end: Blazor -->
 
 For a complete introduction to the Ignite UI for Blazor, read the [**Getting Started**](../general-getting-started.md) topic.
 
@@ -264,7 +260,7 @@ igc-mask-input::part(input)::placeholder {
 
 ## Assumptions and limitations
 
-- The masked input does not expose a *type* attribute since it is always an input of type **text**.
+- The masked input does not expose a _type_ attribute since it is always an input of type **text**.
 - Undo/redo behavior is currently unsupported.
 
 ## API References

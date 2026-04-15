@@ -316,8 +316,6 @@ Then define a [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/a
 
 <!-- ComponentEnd: TreeGrid -->
 
-<!-- Blazor -->
-
 <!-- ComponentStart: HierarchicalGrid -->
 
 ```razor
@@ -358,8 +356,6 @@ Then define a [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/a
 ```
 
 <!-- ComponentEnd: HierarchicalGrid -->
-
-<!-- end: Blazor -->
 
 > **Note**:
 > Setting primary key is mandatory for row adding operations.
@@ -442,13 +438,7 @@ After a new row is added through the row adding UI, its position and/or visibili
 
 ### Customizing Text
 
-<!-- WebComponents, React, Blazor -->
-
 Customizing the text of the row adding overlay is possible using the [`RowAddTextTemplate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_RowAddTextTemplate).
-
-<!-- end: WebComponents, React, Blazor -->
-
-<!-- Blazor -->
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -465,10 +455,6 @@ Customizing the text of the row adding overlay is possible using the [`RowAddTex
 ```
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
-
-<!-- end: Blazor -->
-
-<!-- Blazor -->
 
 ### Customizing Buttons
 
@@ -502,8 +488,6 @@ igRegisterScript("rowEditActionsTemplate", (endRowEdit) => {
 
 > **Note**:
 > Using `RowEditActions` template will change edit actions for both editing and adding overlay buttons.
-
-<!-- end: Blazor -->
 
 ## Styling
 

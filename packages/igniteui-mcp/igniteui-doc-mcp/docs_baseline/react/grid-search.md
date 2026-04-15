@@ -263,11 +263,7 @@ const [searchText, setSearchText] = useState('');
 
 ### React Search Box Input
 
-<!-- React -->
-
 Now let's create our search input! By binding our `searchText` to the `value` property to our newly created input and subscribe to the `inputOccured` event, we can detect every single `searchText` modification by the user. This will allow us to use the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html)'s `findNext` and `findPrev` methods to highlight all the occurrences of the `searchText` and scroll to the next/previous one (depending on which method we have invoked).
-
-<!-- end: React -->
 
 Both the [`findNext`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#findNext) and the [`findPrev`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#findPrev) methods have three arguments:
 
@@ -275,7 +271,7 @@ Both the [`findNext`](https://www.infragistics.com/products/ignite-ui-react/docs
 - (optional) `CaseSensitive`: **boolean** (should the search be case sensitive or not, default value is false)
 - (optional) `ExactMatch`: **boolean** (should the search be by an exact match or not, default value is false)
 
-When searching by an exact match, the search API will highlight as results only the cell values that match entirely the `SearchText` by taking the case sensitivity into account as well. For example the strings '*software*' and '*Software*' are an exact match with a disregard for the case sensitivity.
+When searching by an exact match, the search API will highlight as results only the cell values that match entirely the `SearchText` by taking the case sensitivity into account as well. For example the strings '_software_' and '_Software_' are an exact match with a disregard for the case sensitivity.
 
 The methods from above return a **number** value (the number of times the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) contains the given string).
 
@@ -340,11 +336,7 @@ const searchKeyDown = (e: KeyboardEvent<HTMLElement>) => {
 
 <!-- ComponentStart: Grid -->
 
-<!-- React -->
-
 Now let's allow the user to choose whether the search should be case sensitive and/or by an exact match. For this purpose we can use the [`IgrChip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrchip.html) component along with a boolean state variable to indicate whether the IgrChip is selected.
-
-<!-- end: React -->
 
 ```tsx
 const [caseSensitiveSelected, setCaseSensitiveSelected] = useState<boolean>(false);
@@ -376,11 +368,7 @@ What if we would like to filter and sort our [`IgrGrid`](https://www.infragistic
 
 By using some of our other components, we can create an enriched user interface and improve the overall design of our entire search bar! We can have a nice search or delete icon on the left of the search input, a couple of chips for our search options and some material design icons combined with nice ripple styled buttons for our navigation on the right.
 
-<!-- React -->
-
 Let's begin by creating the search navigation buttons on the right of the input by adding two ripple styled buttons with material icons. The handlers for the click events remain the same - invoking the [`findNext`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#findNext)/[`findPrev`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#findPrev) methods.
-
-<!-- end: React -->
 
 - For displaying a couple of chips that toggle the `CaseSensitive` and the `ExactMatch` properties. We have replaced the checkboxes with two stylish chips. Whenever a chip is clicked, we invoke its respective handler.
 
@@ -402,8 +390,6 @@ const nextSearch = (text: string, caseSensitive: boolean, exactMatch: boolean) =
     </IgrIconButton>
 </div>
 ```
-
-<!-- React -->
 
 Now let's add the search and clear icons to the left of the input:
 

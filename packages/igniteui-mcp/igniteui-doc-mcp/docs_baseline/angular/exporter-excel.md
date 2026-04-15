@@ -23,11 +23,13 @@ The Ignite UI for Angular Excel Exporter service can export data in Microsoft® 
 import { Component, inject } from '@angular/core';
 
 import { IgxExcelExporterOptions, IgxExcelExporterService } from 'igniteui-angular/grids/core';
+import { IgxButtonDirective } from 'igniteui-angular/directives';
 
 @Component({
     selector: 'app-excel-export',
     styleUrls: ['./excel-export.component.scss'],
-    templateUrl: './excel-export.component.html'
+    templateUrl: './excel-export.component.html',
+    imports: [IgxButtonDirective]
 })
 export class ExcelExportComponent {
   private excelExportService = inject(IgxExcelExporterService);
@@ -48,7 +50,7 @@ export class ExcelExportComponent {
 ```html
 <p>
   Press the "Export Data" button below to export an array as .xlsx file.<br />
-  <button (click)="exportButtonHandler()">Export Data</button><br />
+  <button igxButton="contained" (click)="exportButtonHandler()">Export Data</button><br />
 </p>
 ```
 

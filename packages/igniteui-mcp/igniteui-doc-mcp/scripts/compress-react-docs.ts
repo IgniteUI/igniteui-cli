@@ -56,7 +56,7 @@ interface BatchState {
 function parseArgs(): CliArgs {
   const args = process.argv.slice(2);
   const opts: CliArgs = {
-    model: "gpt-5-mini",
+    model: "gpt-5.4-mini",
     minSize: 0,
     dryRun: false,
     delay: 0.5,

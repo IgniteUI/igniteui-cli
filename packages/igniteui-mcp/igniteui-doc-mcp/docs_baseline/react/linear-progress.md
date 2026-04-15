@@ -51,8 +51,6 @@ root.render(<SimpleLinearProgressIndicator/>);
 
 ## Usage
 
-<!-- React -->
-
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
 
 ```cmd
@@ -66,6 +64,8 @@ import { IgrLinearProgressModule, IgrLinearProgress } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 IgrLinearProgressModule.register();
 ```
+
+The simplest way to start using the [`IgrLinearProgress`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrlinearprogress.html) is as follows:
 
 ```tsx
 <IgrLinearProgress value="100"></IgrLinearProgress>

@@ -12,7 +12,7 @@ _premium: true
 
 All Ignite UI for Blazor charts include options to configure many axis layout options such as location as well as having the ability to share axis between series or have multiple axes in the same chart. These features are demonstrated in the examples given below.
 
-> \[!Note]
+> [!Note]
 > the following examples can be applied to [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html) as well as [`IgbFinancialChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFinancialChart.html) controls.
 
 ## Axis Locations Example
@@ -300,8 +300,6 @@ The following example shows a Sin and Cos wave represented by a [Scatter Spline 
 
 <div class="divider--half"></div>
 
-<!-- Blazor -->
-
 ### Axis Timeline Example
 
 The following example demonstrates how to style the data chart using the [`IgbTimeXAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTimeXAxis.html) as a timeline:
@@ -407,9 +405,6 @@ The following example demonstrates how to style the data chart using the [`IgbTi
 }
 ```
 
-
-<div class="divider--half"></div>
-<!-- end: Blazor -->
 
 ## Additional Resources
 

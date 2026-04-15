@@ -7,17 +7,11 @@ mentionedTypes: ["XamBulletGraph", "IgrGrid"]
 _tocName: Getting Started
 ---
 
-<!-- React, WebComponents -->
-
 # Getting Started With Ignite UI for Web Components
 
 [`Ignite UI for Web Components`](https://github.com/IgniteUI/igniteui-webcomponents) is a complete set of UI widgets, components, and Figma UI kits for Web Components by Infragistics. It enables developers to build modern, high-performance HTML5 and JavaScript apps for desktop browsers, mobile experiences, and progressive web apps (PWAs).
 
 Ignite UI for Web Components comprises several packages available under either an MIT or a commercial license, depending on the components and services they contain. For a detailed list of components and their license, please refer to the [License FAQ and Installation](./general-licensing.md) and [Open Source vs Premium](./general-open-source-vs-premium.md) topics.
-
-<!-- end: React, WebComponents -->
-
-<!-- WebComponents -->
 
 ## Install Ignite UI CLI
 
@@ -39,6 +33,10 @@ Additionally, you can read more about the Ignite UI CLI in this [topic](general-
 ## Install Polyfills
 
 Run this command to install the web component polyfills:
+
+```bash
+npm install @webcomponents/custom-elements
+```
 
 Then import the web component polyfills into index.js:
 
@@ -71,7 +69,7 @@ import { defineAllComponents } from 'igniteui-webcomponents';
 defineAllComponents();
 ```
 
-> \[!Note]
+> [!Note]
 > Importing all of the components will increase the bundle size of your application. That's why we recommend you to import only the components that you are actually using.
 
 The last step is to import the necessary CSS for our components so that they are styled properly:
@@ -115,7 +113,7 @@ npm init -y
 npm install webpack webpack-cli --save-dev
 ```
 
-> \[!Note]
+> [!Note]
 > Webpack is a module bundler. Its main purpose is to bundle JavaScript files for usage in a browser, yet it is also capable of transforming, bundling, or packaging just about any resource or asset.
 
 5 - Open the project in **VS Code**
@@ -138,7 +136,7 @@ code .
   },
 ```
 
-> \[!Note]
+> [!Note]
 > This script will use webpack to bundle the **index.js** file into another file called **index.bundle.js** and place it into a folder named **dist**.
 >
 > If a **JavaScript heap out of memory** issue occurs while building you can increase the heap size by using this build command instead:
@@ -212,7 +210,7 @@ ModuleManager.register(
 npm run build
 ```
 
-> \[!Note]
+> [!Note]
 > This command will run the build script we created earlier. The build script will generate a file named **index.bundle.js** in a folder named **dist**
 
 2 - Add the **index.bundle.js** script to the end of **body** element in **index.html** file.
@@ -230,7 +228,7 @@ npm run build
 
 <!-- <img src="../images/wc-live-server.jpg" alt="wc-live-server" /> -->
 
-> \[!Note]
+> [!Note]
 > Live Server is an extension to Visual Studio Code that allows you to launch a local development server with live reload feature for static & dynamic pages. This extension can be installed via the Visual Studio Code Extensions tab, or by downloading it from the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer).
 
 4 - Navigate to the **index.html** using a web browser on your local server. The final result should show interactive map of the world:
@@ -243,17 +241,9 @@ npm run build
 ```
 
 
-<!-- end: WebComponents -->
-
-<!-- WebComponents -->
-
 # Ignite UI for Web Components Packages Overview
 
 Ignite UI for Web Components is a complete set of UI widgets, components, and UI kits for design tools and supporting services for Web Components. Designed to enable developers to build the most modern, high-performance HTML5 and JavaScript apps for modern desktop browsers, mobile experiences, and progressive web apps (PWAs) targeting the browsers web components APIs.
-
-<!-- end: WebComponents -->
-
-<!-- WebComponents, React -->
 
 ## Charts & Graphs
 
@@ -274,5 +264,3 @@ Ignite UI for Web Components provides several [Grid](grids/grids-header.md) comp
 ## Buttons, Inputs, Layouts, and Menus
 
 Ignite UI for Web Components provides various types of [Buttons](inputs/button.md), [Inputs](inputs/input.md), [Menus](menus/navbar.md), and [Layouts](layouts/tabs.md) that give you the ability to build modern web applications using encapsulation and the concept of reusable components in a dependency-free approach. See the [Storybook here](https://igniteui.github.io/igniteui-webcomponents). These components are based on the [Indigo Design System](https://www.infragistics.com/products/appbuilder/ui-toolkit), are fully supported by [App Builder](https://appbuilder.indigo.design/) and are backed by ready-to-use UI kits for Figma.
-
-<!-- end: WebComponents, React -->

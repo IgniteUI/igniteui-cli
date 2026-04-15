@@ -227,13 +227,9 @@ public class EmployeesFlatDetails
 
 To get started with the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) and the **Collapsible multi-column headers** feature, first you need to install Ignite UI for Blazor by typing the following command:
 
-<!-- Blazor -->
-
 ```cmd
-> dotnet add package IgniteUI.Blazor --version 25.2.38 (December 2025)
+> dotnet add package IgniteUI.Blazor --version 25.2.83 (March 2026)
 ```
-
-<!-- end: Blazor -->
 
 For a complete introduction to the Ignite UI for Blazor, read the [getting started](../../general-getting-started.md) topic.
 

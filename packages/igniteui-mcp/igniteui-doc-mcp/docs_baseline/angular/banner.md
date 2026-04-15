@@ -518,7 +518,9 @@ $custom-banner-theme: banner-theme(
 The last step is to pass the custom banner theme:
 
 ```scss
-@include css-vars($custom-banner-theme);
+:host {
+    @include tokens($custom-banner-theme);
+}
 ```
 
 ```typescript
@@ -623,7 +625,9 @@ $custom-banner-theme: banner-theme(
   $banner-background: #011627,
 );
 
-@include css-vars($custom-banner-theme);
+igx-banner {
+    @include tokens($custom-banner-theme);
+}
 ```
 
 

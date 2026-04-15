@@ -84,19 +84,11 @@ export class EmployeesNestedData extends Array<EmployeesNestedDataItem> {
 
 Getting started with our Web Components Grid library and the Web Components Tree Grid in particular is the first step to building powerful, data-rich applications that display hierarchical information in a clear and interactive way. The Web Components Tree Grid allows you to present parent-child data structures in a familiar tabular format, complete with features like row expansion, sorting, filtering, editing, and virtualization for high performance with large datasets.
 
-To get started with the Web Components tree grid, first you need to install the <!-- WebComponents -->`igniteui-webcomponents-grids` package.<!-- end: WebComponents -->
-
-<!-- Angular, React, WebComponents -->
-
-<!-- Angular, WebComponents -->
+To get started with the Web Components tree grid, first you need to install the `igniteui-webcomponents-grids` package.
 
 ```cmd
 npm install --save igniteui-webcomponents-grids
 ```
-
-<!-- end: Angular, WebComponents -->
-
-<!-- WebComponents -->
 
 You also need to include the following import to use the tree grid:
 
@@ -118,10 +110,6 @@ Or to link it:
 
 For more details on how to customize the appearance of the tree grid, you may have a look at the [styling](overview.md#web-components-tree-grid-styling-configuration) section.
 
-<!-- end: WebComponents -->
-
-<!-- end: Angular, React, WebComponents -->
-
 ## Usage
 
 The tree grid shares a lot of features with the grid, but it also adds the ability to display its data hierarchically.
@@ -134,7 +122,7 @@ Regardless of which option is used for building the tree grid's hierarchy (child
 - `GridCell` - Ordinary cell that contains a value.
 - `TreeGridCell` - Tree cell that contains a value, an expand/collapse indicator and an indentation div element, which is based on the level of the cell's row. The level of a row component can be accessed through the `level` property of its inner `treeRow`.
 
-> \[!Note]
+> [!Note]
 > Each row can have only one tree cell, but it can have multiple (or none) ordinary cells.
 
 ### Initial Expansion Depth
@@ -323,8 +311,6 @@ The indentation of the tree grid cell persists across other tree grid features l
 - Exported Excel worksheets reflect the hierarchy by grouping the records as they are grouped in the tree grid itself. All records expanded states would also be persisted and reflected.
 - When exporting to CSV, levels and expanded states are ignored and all data is exported as flat.
 
-<!-- WebComponents, Blazor -->
-
 ## Web Components Tree Grid Styling Configuration
 
 In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
@@ -411,8 +397,6 @@ export class EmployeesNestedData extends Array<EmployeesNestedDataItem> {
 }
 ```
 
-
-<!-- end: WebComponents, Blazor -->
 
 ## API References
 

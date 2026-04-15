@@ -23,7 +23,7 @@ The Ignite UI for Blazor Row Selection feature in Blazor Tree Grid allows users 
 
 <!-- ComponentStart: TreeGrid -->
 
-The sample below demonstrates the four types of [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html)'s **row selection** behavior. Use the buttons below to enable each of the available selection modes. A brief description will be provided on each button interaction through a snackbar message box. Use the switch button to *hide* or *show* the row selector checkbox.
+The sample below demonstrates the four types of [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html)'s **row selection** behavior. Use the buttons below to enable each of the available selection modes. A brief description will be provided on each button interaction through a snackbar message box. Use the switch button to _hide_ or _show_ the row selector checkbox.
 
 <!-- ComponentEnd: TreeGrid -->
 
@@ -275,8 +275,6 @@ In this mode a parent's selection state entirely depends on the selection state 
 ### Select Rows Programmatically
 
 The code snippet below can be used to select one or multiple rows simultaneously (via [`PrimaryKey`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_PrimaryKey)). Additionally, the second parameter of this method is a boolean property through which you may choose whether the previous row selection will be cleared or not. The previous selection is preserved by default.
-
-<!-- Blazor -->
 
 ```razor
     <IgbTreeGrid Width="100%"

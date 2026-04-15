@@ -27,8 +27,6 @@ The [`IgcFileInputComponent`](https://www.infragistics.com/products/ignite-ui-we
 
 ### Getting Started
 
-<!-- WebComponents -->
-
 To start using the [`IgcFileInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcfileinputcomponent.html), first, you need to install the Ignite UI for Web Components by running the following command:
 
 ```cmd
@@ -42,8 +40,6 @@ import { defineComponents, IgcFileInputComponent } from 'igniteui-webcomponents'
 
 defineComponents(IgcFileInputComponent);
 ```
-
-<!-- end: WebComponents -->
 
 Now you can start with a basic configuration of the Web Components [`IgcFileInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcfileinputcomponent.html).
 

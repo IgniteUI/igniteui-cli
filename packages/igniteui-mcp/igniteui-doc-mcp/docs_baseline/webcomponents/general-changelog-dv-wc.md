@@ -13,6 +13,90 @@ _tocName: Changelog
 
 All notable changes for each version of Ignite UI for Web Components are documented on this page.
 
+## **7.0.1 (March 2026)**
+
+#### Bug Fixes
+
+| Bug Number | Control | Description |
+|------------|---------|-------------|
+| 3055 | IgcDataPieChart | DataPieChart - missing styling properties for the Others Slice |
+| 38668 | IgcDataTooltipLayer | TitleTextColor is overriden when chart's TitleTextColor is used |
+| 40238 | Excel | fixed Excel Formula parser - Workbook.Load() throwing a Excel.FormulaParseException|
+| 41167 | Excel | Object's Formulas are not round-tripped - Added Excel support for round tripping the camera tool |
+| 41419 | Excel | Saving a VBA Signed Excel file does not keep a signature/certificate. |
+
+## **7.0.0 (February 2026)**
+
+### igniteui-webcomponents-charts
+
+#### Bug Fixes
+
+| Bug Number | Control | Description |
+|------------|---------|-------------|
+|2327|IgcToolbar|SubPanel sample not working in WebComponents|
+|2638|IgcDataChart|Improve mouse hot detection for rotated labels|
+|2959|IgcLinearGauge|Gauges should not call View functions|
+|2326|IgcDataChart|Add property to set others color|
+|41594|IgcDataChart|AssigningCategoryStyle args.GetItems is null or not working to update items in the fragment series|
+
+### igniteui-webcomponents
+
+#### New Features
+
+- #### AI-Assisted Development - Copilot Skills
+  - Four end-user skills are now shipped with the `igniteui-webcomponents` package under the `skills/` directory providing step-by-step guidance to GitHub Copilot and other LLM agents for common tasks:
+    - **igniteui-wc-choose-components** - Identify the right component for a given UI pattern.
+    - **igniteui-wc-integrate-with-framework** - Set up and use components in React, Angular, Vue, or vanilla JS.
+    - **igniteui-wc-customize-component-theme** - Apply custom styles via CSS custom properties, parts, and the theming system.
+    - **igniteui-wc-optimize-bundle-size** - Reduce production bundle size through selective imports and lazy loading.
+
+- #### Chat
+  - `adoptRootStyles` can now be toggled on/off at runtime.
+
+#### Breaking Changes
+
+- #### Themes
+  - Changed global prefixes for CSS custom properties for component themes to align with other Ignite UI component libraries.
+
+- #### Chat
+  - Removed the `typingIndicator` template renderer. Use the `typing-indicator` slot instead.
+
+- #### Tooltip
+  - Removed the `disableArrow` deprecated property.
+
+- #### Library
+  - Minimum Node version required is now >= 22.
+
+#### Bug Fixes
+
+| Bug Number | Control | Description |
+|------------|---------|-------------|
+|[2033](https://github.com/IgniteUI/igniteui-webcomponents/pull/2033)|Carousel|Context instantiation in Blazor|
+|[2085](https://github.com/IgniteUI/igniteui-webcomponents/pull/2085)|Combo|Correct cursor style over non input parts|
+|[2085](https://github.com/IgniteUI/igniteui-webcomponents/pull/2085)|Textarea|Correct cursor style over non input parts|
+
+### igniteui-webcomponents-grids (Grids)
+
+- [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html), [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html), [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html), [`IgcPivotGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotgridcomponent.html)
+  - Improved performance by dynamically adjusting the scroll throttle based on the data displayed in grid.
+
+**Breaking Changes**
+
+- [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html), [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html), [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html), [`IgcPivotGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotgridcomponent.html)
+  - Original `data` array mutations (like adding/removing/moving records in the original array) are no longer detected automatically. Components need an array reference change for the change to be detected.
+
+**Localization(i18n)**
+
+- [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html), [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html), [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html), [`IgcPivotGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotgridcomponent.html), [`IgcComboComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html), [`IgcDatePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html), [`IgcDateRangePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html), [`IgcCalendarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html), [`IgcCarouselComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccarouselcomponent.html), [`IgcChipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcchipcomponent.html), [`IgcInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html), [`IgcTreeComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreecomponent.html)
+  - New `Intl` implementation for the grid components that format and render data like dates and numbers. Updated `Intl` implementation for [`IgcCalendarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html), [`IgcDatePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html), and [`IgcDateRangePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html) that previously used it in `igniteui-webcomponents`.
+  - New localization implementation for the currently supported languages for all components that have resource strings in the currently supported languages.
+  - New public localization API and package named `igniteui-i18n-resources` containing the new resources that are used in conjunction.
+        **PDF export**
+- Added PDF export functionality allowing users to export grid data to PDF format.
+
+**Popover API**
+Dropdown menus and dialogs are now using HTML Popover API to provide better positioning and accessibility.
+
 ## **6.3.1 (December 2025)**
 
 ### Enhancements
@@ -81,12 +165,14 @@ Ability for axis annotations to automatically detect collisions and truncate to 
 - [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html), [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html), [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html)
   - Introduced a new cell merging feature that allows you to configure and merge cells in a column based on same data or other custom condition, into a single cell.
 
-            It can be enabled on the individual columns:
+        ````
+        It can be enabled on the individual columns:
 
-            ```html
-            <igc-column field="field" merge="true"></igc-column>
-            ```
-            The merging can be configured on the grid level to apply either:
+        ```html
+        <igc-column field="field" merge="true"></igc-column>
+        ```
+        The merging can be configured on the grid level to apply either:
+        ````
 
     - `onSort` - only when the column is sorted.
     - `always` - always, regardless of data operations.
@@ -104,23 +190,25 @@ Ability for axis annotations to automatically detect collisions and truncate to 
 
   - Added ability to pin individual columns to a specific side (start or end of the grid), so that you can now have pinning from both sides. This can be done either declaratively by setting the `pinningPosition` property on the column:
 
-            ```html
-            <igc-column field="Col1" pinned="true" pinningPosition="pinningPosition">
-            </igc-column>
-            ```
+        ````
+        ```html
+        <igc-column field="Col1" pinned="true" pinningPosition="pinningPosition">
+        </igc-column>
+        ```
 
-            ```ts
-            pinningPosition = ColumnPinningPosition.End;
-            ```
+        ```ts
+        pinningPosition = ColumnPinningPosition.End;
+        ```
 
-            Or with the API, via optional parameter:
+        Or with the API, via optional parameter:
 
-            ```ts
-            grid.pinColumn('Col1', 0, ColumnPinningPosition.End);
-            grid.pinColumn('Col2', 0, ColumnPinningPosition.Start);
-            ```
+        ```ts
+        grid.pinColumn('Col1', 0, ColumnPinningPosition.End);
+        grid.pinColumn('Col2', 0, ColumnPinningPosition.Start);
+        ```
 
-            If property `pinningPosition` is not set on a column, the column will default to the position specified on the grid's `pinning` options for `columns`.
+        If property `pinningPosition` is not set on a column, the column will default to the position specified on the grid's `pinning` options for `columns`.
+        ````
 
   - **Sorting improvements**
     - Improved sorting algorithm efficiency using Schwartzian transformation. This is a technique, also known as decorate-sort-undecorate, which avoids recomputing the sort keys by temporarily associating them with the original data records.
@@ -326,7 +414,7 @@ Please note that the maximum size available for the icons is 24x24. You can prov
 
 ### igniteui-webcomponents-maps
 
-> \[!Note]
+> [!Note]
 > As of June 30, 2025 all Microsoft Bing Maps for Enterprise Basic (Free) accounts will be retired. If you're still using an unpaid Basic Account and key, now is the time to act to avoid service disruptions. Bing Maps for Enterprise license holders can continue to use Bing Maps in their applications until June 30,2028.
 > For more details please visit:
 
@@ -662,7 +750,7 @@ The following table lists the bug fixes made for the Ignite UI for Web Component
   - GroupSorts
   - GroupSortDescriptions
 
-> \[!Note]
+> [!Note]
 > [Chart Aggregation](charts/features/chart-data-aggregations.md) will not work when using [`includedProperties`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#includedProperties) | [`excludedProperties`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#excludedProperties). These properties on the chart are meant for non-aggregated data. Once you attempt to aggregate data these properties should no longer be used. The reason it does not work is because aggregation replaces the collection that is passed to the chart for render. The include/exclude properties are designed to filter in/out properties of that data and those properties no longer exist in the new aggregated collection.
 
 ## **3.2.1 (June 2022)**
@@ -696,7 +784,7 @@ The following table lists the bug fixes made for the Ignite UI for Web Component
 - `DataGrid`:
   - Added `ValueMultiField`, of type string\[], in the [`IgcComboBoxColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids.igccomboboxcolumncomponent.html) to be used when your items in the drop down contain a key that consists of multiple fields.
 
-> \[!Note]
+> [!Note]
 > The following breaking changes were introduced: Changed [`valueField`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids.igccomboboxcolumncomponent.html#valueField) property from type string\[] to string.
 
 ### igniteui-webcomponents-inputs
@@ -723,7 +811,7 @@ The following table lists the bug fixes made for the Ignite UI for Web Component
     - Changed grid's SummaryScope property's type to SummaryScope from [`DataSourceSummaryScope`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_core.datasourcesummaryscope.html)
     - Changed GroupHeaderDisplayMode property's type to GroupHeaderDisplayMode from [`DataSourceSectionHeaderDisplayMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_core.datasourcesectionheaderdisplaymode.html)
 
-> \[!Note]
+> [!Note]
 > Please ensure package "lit-html": "^2.0.0" or newer is added to your project for optimal compatibility.
 
 ### igniteui-webcomponents-charts
@@ -792,7 +880,7 @@ This release introduces a few improvements and simplifications to visual design 
 
 ### igniteui-webcomponents-maps
 
-> \[!Note]
+> [!Note]
 > These features are CTP
 
 - Added support for wrap around display of the map (scroll infinitely horizontally)
@@ -857,7 +945,7 @@ for example:
 
 - `DataGrid`:
 
-> \[!Note]
+> [!Note]
 > These breaking changes were introduce in the grid package.
 
 - Changed name of PropertyPath
@@ -886,7 +974,7 @@ income.field = "Income";
 
 - Changed Name of Live Grid - the data grid component and it's corresponding module's names have changed from "LiveGrid" to "DataGrid".
 
-> \[!Note]
+> [!Note]
 > These breaking changes were introduce in these packages and components only:
 
 The new code for importing the grid and it's corresponding module is:
@@ -912,7 +1000,7 @@ The data grid component requires the "inputs" package.
 
 Import statements have been simplified to use just package names instead of full paths to API classes and enums.
 
-> \[!Note]
+> [!Note]
 > These breaking changes were introduce in these packages and components only:
 
 | Affected Packages | Affected Components |

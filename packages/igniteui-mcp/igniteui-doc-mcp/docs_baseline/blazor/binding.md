@@ -10,11 +10,7 @@ _tocName: Data Binding
 
 # Blazor Grid Lite Data Binding
 
-<!-- Blazor -->
-
 The Grid Lite accepts a `List<T>` as its data source, where `T` is representing your model. Each grid row is the rendered representation of a data record in the array with row cells being controlled by the column configuration.
-
-<!-- end: Blazor -->
 
 When applying data transformations, such as sorting and filtering, the grid does not modify the original data reference. That is to say, data transformations will not be reflected in the original source. The grid does not track changes to the objects inside the data array, so direct modification of the data objects will not be reflected.
 
@@ -35,13 +31,7 @@ The component supports changing its data source at runtime. If the new source ha
 }
 ```
 
-<!-- Blazor -->
-
-If the grid has `AutoGenerate` enabled, it will "*infer*" the new column configuration automatically when the data changes.
-
-<!-- end: Blazor -->
-
-<!-- Blazor -->
+If the grid has `AutoGenerate` enabled, it will "_infer_" the new column configuration automatically when the data changes.
 
 ```razor
 <IgbGridLite Data="data" AutoGenerate="true" />
@@ -52,15 +42,9 @@ If the grid has `AutoGenerate` enabled, it will "*infer*" the new column configu
 }
 ```
 
-<!-- end: Blazor -->
-
-<!-- Blazor -->
-
-> \[!NOTE]
+> [!NOTE]
 > The sort/filter states of the Grid Lite are kept when changing the data source in this manner.
 > Usually you will want to reset them by calling either `ClearSort()` and/or `ClearFilter()`.
-
-<!-- end: Blazor -->
 
 In the sample below, the grid has column auto-generation enabled. When you click on the switch data button,
 the column collection is reset, and a new data source is bound to the grid.

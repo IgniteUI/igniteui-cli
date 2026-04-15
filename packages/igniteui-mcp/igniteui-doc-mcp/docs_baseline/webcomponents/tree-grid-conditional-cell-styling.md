@@ -28,8 +28,6 @@ Further in this topic we will cover both of them in more details.
 
 You can conditionally style the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) rows by setting the `RowClasses` input and define custom rules.
 
-<!-- WebComponents -->
-
 ```html
 <igc-tree-grid id="grid" height="600px" width="100%">
 </igc-tree-grid>
@@ -43,8 +41,6 @@ constructor() {
 ```
 
 The `RowClasses` input accepts an object literal, containing key-value pairs, where the key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value.
-
-<!-- WebComponents -->
 
 ```ts
 public rowClasses = {
@@ -110,8 +106,6 @@ The [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web
 
 > The callback signature for both `RowStyles` and `RowClasses` is:
 
-<!-- WebComponents -->
-
 ```ts
 (row: IgcRowType) => boolean
 ```
@@ -119,8 +113,6 @@ The [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web
 Let's define our styles:
 
 <!-- ComponentStart: TreeGrid -->
-
-<!-- WebComponents -->
 
 ```typescript
 public rowStyles = {
@@ -136,8 +128,6 @@ public rowStyles = {
     color: (row: IgcRowType) => row.data.data['Title'] === 'CEO' ? '#fff' : null
 };
 ```
-
-<!-- WebComponents -->
 
 ```html
 <igc-tree-grid id="treeGrid" moving="true" primary-key="ID" foreign-key="ParentID"
@@ -214,8 +204,6 @@ You can conditionally style the [`IgcTreeGridComponent`](https://www.infragistic
 
 <!-- ComponentStart: TreeGrid -->
 
-<!-- WebComponents -->
-
 ```html
 <igc-column id="unitPrice" field="UnitPrice" header="Unit Price" data-type="currency"></igc-column>
 ```
@@ -232,8 +220,6 @@ constructor() {
 The [`cellClasses`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#cellClasses) input accepts an object literal, containing key-value pairs, where the key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value.
 
 <!-- ComponentStart: TreeGrid -->
-
-<!-- WebComponents -->
 
 ```typescript
 private downPriceCondition = (rowData: any, columnKey: any): boolean => {
@@ -331,8 +317,6 @@ Let's define our styles:
 
 <!-- ComponentStart: TreeGrid -->
 
-<!-- WebComponents -->
-
 ```ts
 public webTreeGridCellStylesHandler = {
     background: (rowData, columnKey, cellValue, rowIndex) => rowIndex % 2 === 0 ? "#EFF4FD" : null,
@@ -405,8 +389,6 @@ export class OrdersTreeData extends Array<OrdersTreeDataItem> {
 
 - If there are cells bind to the same condition (from different columns) and one cell is updated, the other cells won't be updated based on the new value, if the condition is met.
 
-<!-- Angular, WebComponents -->
-
 A check should be performed in order to apply the changes to the rest of the cells. The example below shows how to do that.
 
 ```ts
@@ -442,8 +424,6 @@ constructor() {
     Col3.cellClasses = this.backgroundClasses;
 }
 ```
-
-<!-- end:Angular, WebComponents -->
 
 <!--ComponentEnd: Grid, HierarchicalGrid, TreeGrid-->
 
