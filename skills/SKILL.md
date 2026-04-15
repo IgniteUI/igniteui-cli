@@ -8,8 +8,6 @@ description: >
   whenever the user mentions "igniteui", "ignite ui", "igx", "igr", "igb", "igc", "ig cli",
   "infragistics", or asks about scaffolding, building, or customizing an Ignite UI app —
   don't wait for an explicit skill request.
-compatibility:
-  - igniteui-mcp-server
 ---
 
 # Ignite UI CLI Skill
