@@ -1,5 +1,5 @@
 ---
-name: igniteui
+name: igniteui-cli
 description: >
   Use this skill for anything related to Ignite UI — scaffolding projects, adding components,
   serving, building, testing, upgrading packages, or working with the ig CLI. Also triggers for
