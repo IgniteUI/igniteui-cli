@@ -23,6 +23,7 @@
 		"version": "node ./scripts/versionScript.js",
 		"build": "node ./node_modules/typescript/lib/tsc.js && npm run config-schema && npm run build:mcp",
 		"build:mcp": "cd packages/igniteui-mcp/igniteui-doc-mcp && npx tsc && npx tsx scripts/build.ts",
+		"build:update-skills": "npx tsx scripts/update-skills.ts",
 		"build-pack": "node ./node_modules/typescript/lib/tsc.js -p tsconfig-pack.json && npm run config-schema && npm run build:mcp",
 		"pretest": "npm run lint && npm run build",
 		"test": "nyc npm run jasmine",
