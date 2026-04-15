@@ -1,0 +1,9 @@
+{
+	"builders": {
+		"mcp": {
+			"implementation": "./builders/mcp/index",
+			"schema": "./builders/mcp/schema.json",
+			"description": "Starts the Ignite UI MCP server for AI assistant integration"
+		}
+	}
+}

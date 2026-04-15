@@ -2,6 +2,14 @@
 # yarn lockfile v1
 
 
+"@angular-devkit/architect@^0.2102.0":
+  version "0.2102.6"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.2102.6.tgz#65eae4f7a9e422ade7c5e9d9e5d9b811aecf12d5"
+  integrity sha512-h4qybKypR7OuwcTHPQI1zRm7abXgmPiV49vI2UeMtVVY/GKzru9gMexcYmWabzEyBY8w6VSfWjV2X+eit2EhDQ==
+  dependencies:
+    "@angular-devkit/core" "21.2.6"
+    rxjs "7.8.2"
+
 "@angular-devkit/core@21.2.3", "@angular-devkit/core@^21.0.0":
   version "21.2.3"
   resolved "https://registry.npmjs.org/@angular-devkit/core/-/core-21.2.3.tgz"
@@ -11,6 +19,18 @@
     ajv-formats "3.0.1"
     jsonc-parser "3.3.1"
     picomatch "4.0.3"
+    rxjs "7.8.2"
+    source-map "0.7.6"
+
+"@angular-devkit/core@21.2.6":
+  version "21.2.6"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-21.2.6.tgz#96b864e5e1b7e718c0c20f45a9847fde8d1dcda2"
+  integrity sha512-u5gPTAY7MC02uACQE39xxiFcm1hslF+ih/f2borMWnhER0JNTpHjLiLRXFkq7or7+VVHU30zfhK4XNAuO4WTIg==
+  dependencies:
+    ajv "8.18.0"
+    ajv-formats "3.0.1"
+    jsonc-parser "3.3.1"
+    picomatch "4.0.4"
     rxjs "7.8.2"
     source-map "0.7.6"
 
@@ -6871,6 +6891,11 @@ picomatch@4.0.3, picomatch@^4.0.2, picomatch@^4.0.3:
   version "4.0.3"
   resolved "https://registry.npmjs.org/picomatch/-/picomatch-4.0.3.tgz"
   integrity sha512-5gTmgEY/sqK6gFXLIsQNH19lWb4ebPDLA4SdLP7dsWkIXHWlG66oPuVvXSGFPppYZz8ZDZq0dYYrbHfBCVUb1Q==
+
+picomatch@4.0.4:
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-4.0.4.tgz#fd6f5e00a143086e074dffe4c924b8fb293b0589"
+  integrity sha512-QP88BAKvMam/3NxH6vj2o21R6MjxZUAd6nlwAS/pnGvN9IVLocLHxGYIzFhg6fUQ+5th6P4dv4eW9jX3DSIj7A==
 
 picomatch@^2.0.4, picomatch@^2.2.1, picomatch@^2.3.1:
   version "2.3.1"

@@ -7,7 +7,7 @@
 [![npm version](https://badge.fury.io/js/igniteui-cli.svg)](https://badge.fury.io/js/igniteui-cli)
 [![Discord](https://img.shields.io/discord/836634487483269200?logo=discord&logoColor=ffffff)](https://discord.gg/39MjrTRqds)
 
-Quickly create projects including [Ignite UI for Angular](https://www.infragistics.com/products/ignite-ui-angular) and [Ignite UI for jQuery](https://www.infragistics.com/products/ignite-ui) components for a variety of frameworks.
+Quickly create projects including [Ignite UI for Angular](https://www.infragistics.com/products/ignite-ui-angular), [Ignite UI for React](https://www.infragistics.com/products/ignite-ui-react), [Ignite UI for Web Components](https://www.infragistics.com/products/ignite-ui-web-components) and [Ignite UI for jQuery](https://www.infragistics.com/products/ignite-ui) components.
 
 ## Overview
 ### Features:
@@ -19,9 +19,10 @@ Quickly create projects including [Ignite UI for Angular](https://www.infragisti
 - Step by step guide
 
 ### Supported frameworks
- * jQuery
  * Angular
  * React
+ * Web Components
+ * jQuery
 
 ### Prerequisites
 The repository houses multiple packages and orchestrates building and publishing them with [lerna](https://github.com/lerna/lerna) and [yarn workspaces](https://yarnpkg.com/lang/en/docs/workspaces/).
@@ -95,7 +96,7 @@ ig new <project name> --framework=<framework> --type=<proj-type> --theme=<theme>
 ```
 This will create the project and will install the needed dependencies.
 
-Parameters besides name are optional. Framework default to "jquery", project type defaults to the first available in the framework and theme to the first available for the project. For more information visit [ig new](https://github.com/IgniteUI/igniteui-cli/wiki/New) Wiki page.
+Parameters besides name are optional. Framework defaults to "jquery", project type defaults to the first available in the framework and theme to the first available for the project. For more information visit [ig new](https://github.com/IgniteUI/igniteui-cli/wiki/New) Wiki page.
 
 #### Generate Ignite UI for Angular project
 
@@ -180,7 +181,7 @@ The MCP server exposes the following tools to AI assistants:
 | `search_docs` | Full-text search across Ignite UI documentation |
 | `get_api_reference` | Retrieve the full API reference for a component or class |
 | `search_api` | Search API entries by keyword or partial component name |
-| `generate_ignite_app` | Return a setup guide for a new Ignite UI project |
+| `get_project_setup_guide` | Return a setup guide for a new Ignite UI project |
 
 ### Testing with MCP Inspector
 
@@ -190,7 +191,7 @@ npx @modelcontextprotocol/inspector ig mcp
 ```
 
 ## Schematics
-You can also add `Ignite UI for Angular` components to your projects by using the `igniteui/angular-schematics` package. It included schematic definitions for most of the logic present in the [`igniteui-cli`](/packages/cli). These can be called in any existing Angular project or even when creating one. You can learn more about the schematics package on from its [readme](/package/ng-schematics).
+You can also add `Ignite UI for Angular` components to your projects by using the `@igniteui/angular-schematics` package. It includes schematic definitions for most of the logic present in the [`igniteui-cli`](/packages/cli), as well as an Architect Builder for starting the MCP server via `ng run <project>:mcp`. These can be called in any existing Angular project or even when creating one. You can learn more about the schematics package from its [readme](/packages/ng-schematics).
 
 ## Contribution
 
@@ -199,20 +200,12 @@ See the [Contribution guide](https://github.com/IgniteUI/igniteui-cli/blob/maste
 ### Run locally
 1. Clone the repository
 2. Install dependencies with `yarn install`
-3. Build the MCP server and bundle it into the CLI:
-    ```bash
-    cd packages/igniteui-mcp/igniteui-doc-mcp
-    npm install
-    npm run build
-    cd ../../..
-    npm run build:mcp-bundle
-    ```
-4. Build the monorepo packages: `npm run build`
-5. Open in Visual Studio Code
+3. Build the monorepo packages (includes MCP server): `npm run build`
+4. Open in Visual Studio Code
     
-    There is a predefined launch.config file for VS Code in the root folder, so you can use VS Code View/Debug window and choose one of the predefined actions. These include launching the step by step guide, create new project for a particular framework or add components.
+    There is a predefined `.vscode/launch.json` file for VS Code, so you can use VS Code View/Debug window and choose one of the predefined actions. These include launching the step by step guide, create new project for a particular framework or add components.
 
-6. Hit Start Debugging/F5
+5. Hit Start Debugging/F5
 
 #### MCP Server development
 
@@ -238,55 +231,38 @@ npm run build:docs:all             # Build both
 
 > **Note:** Web Components requires a one-time library build (`npm run build:publish` in the submodule) before TypeDoc can run. The build script handles this automatically.
 
-**Bundle MCP into CLI** (from the repo root):
-```bash
-npm run build:mcp-bundle    # Copies dist/ and docs/ into packages/cli/mcp/
-```
-
-This copies the compiled MCP server, SQLite documentation database, and API reference docs into the CLI package. The `packages/cli/mcp/` directory is a build artifact (gitignored) and must be regenerated before publishing.
-
 **Test the MCP server locally:**
 ```bash
-npm run build:mcp-bundle
 npm run build
 node packages/cli/lib/cli.js mcp          # Start via CLI
-# or directly:
-node packages/cli/mcp/dist/index.js       # Start the bundled server
 ```
 
-#### Building CLI package with bundled MCP server
+#### Building CLI package with MCP server
 
-The CLI package includes the MCP server as a bundled build artifact (not an npm dependency). To produce a complete CLI package with full MCP functionality, follow these steps:
+The CLI package depends on `@igniteui/mcp-server` as an npm dependency. To produce a complete CLI package with full MCP functionality, follow these steps:
 
 ```bash
 # 1. Install monorepo dependencies
 yarn install
 
-# 2. Build the MCP server
+# 2. Build API reference docs (optional but recommended for full functionality)
 cd packages/igniteui-mcp/igniteui-doc-mcp
-npm install
-npm run build                              # Compile TypeScript + copy SQLite DB
-
-# 3. Build API reference docs (optional but recommended for full functionality)
 npm run build:docs:all                     # Init submodules + generate Angular + WC API docs via TypeDoc
 
-# 4. Bundle MCP into CLI (from repo root)
+# 3. Build all packages for publishing (from repo root)
 cd ../../..
-npm run build:mcp-bundle                   # Copy dist/ + docs/ → packages/cli/mcp/
-
-# 5. Build all packages for publishing
 npm run build-pack
 ```
 
-After step 5, `npm pack` from the repo root or `packages/cli/` will produce a tarball with the MCP server, documentation database, and API reference docs all included.
+After step 3, `npm pack` from the repo root or `packages/cli/` will produce a tarball with the MCP server, documentation database, and API reference docs all included.
 
-> **Skipping API docs:** If you skip step 3, the MCP server will still work for `list_components`, `get_doc`, `search_docs`, and `generate_ignite_app` tools using the bundled SQLite database. Only the `get_api_reference` and `search_api` tools require API docs.
+> **Skipping API docs:** If you skip step 2, the MCP server will still work for `list_components`, `get_doc`, `search_docs`, and `get_project_setup_guide` tools using the bundled SQLite database. Only the `get_api_reference` and `search_api` tools require API docs.
 
 ## Data Collection
 
 The Ignite UI CLI tool uses Google Analytics to anonymously report feature usage statistics and basic crash reports. This data is used to help improve the Ignite UI CLI tools over time. You can opt out of analytics before any data is sent by using
 
-```bach
+```bash
 ig config set disableAnalytics true -g
 ```
 
