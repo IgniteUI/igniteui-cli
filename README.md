@@ -205,7 +205,7 @@ See the [Contribution guide](https://github.com/IgniteUI/igniteui-cli/blob/maste
     npm install
     npm run build
     cd ../../..
-    npm run build:mcp-bundle
+    npm run build:mcp
     ```
 4. Build the monorepo packages: `npm run build`
 5. Open in Visual Studio Code
@@ -238,16 +238,14 @@ npm run build:docs:all             # Build both
 
 > **Note:** Web Components requires a one-time library build (`npm run build:publish` in the submodule) before TypeDoc can run. The build script handles this automatically.
 
-**Bundle MCP into CLI** (from the repo root):
+**Build MCP server** (from the repo root):
 ```bash
-npm run build:mcp-bundle    # Copies dist/ and docs/ into packages/cli/mcp/
+npm run build:mcp    # Compiles MCP server TypeScript and copies SQLite DB into dist/
 ```
-
-This copies the compiled MCP server, SQLite documentation database, and API reference docs into the CLI package. The `packages/cli/mcp/` directory is a build artifact (gitignored) and must be regenerated before publishing.
 
 **Test the MCP server locally:**
 ```bash
-npm run build:mcp-bundle
+npm run build:mcp
 npm run build
 node packages/cli/lib/cli.js mcp          # Start via CLI
 # or directly:
@@ -272,7 +270,7 @@ npm run build:docs:all                     # Init submodules + generate Angular 
 
 # 4. Bundle MCP into CLI (from repo root)
 cd ../../..
-npm run build:mcp-bundle                   # Copy dist/ + docs/ → packages/cli/mcp/
+npm run build:mcp                      # Build MCP server
 
 # 5. Build all packages for publishing
 npm run build-pack
