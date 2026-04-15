@@ -1,6 +1,5 @@
 import * as ts from "typescript";
 import { DependencyNotFoundException } from "@angular-devkit/core";
-import { parse as parseJsonc } from "jsonc-parser";
 import { chain, FileDoesNotExistException, Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
 import { addClassToBody, FormatSettings, NPM_ANGULAR, resolvePackage, TypeScriptAstTransformer, TypeScriptUtils } from "@igniteui/cli-core";
 import { AngularTypeScriptFileUpdate } from "@igniteui/angular-templates";
@@ -121,6 +120,10 @@ function importStyles(): Rule {
 export function addAIConfig(): Rule {
 	return (tree: Tree) => {
 		const mcpFilePath = "/.vscode/mcp.json";
+		const angularCliServer = {
+			command: "npx",
+			args: ["-y", "@angular/cli", "mcp"]
+		};
 		const igniteuiServer = {
 			command: "npx",
 			args: ["-y", "igniteui-cli@next", "mcp"]
@@ -131,9 +134,13 @@ export function addAIConfig(): Rule {
 		};
 
 		if (tree.exists(mcpFilePath)) {
-			const content = parseJsonc(tree.read(mcpFilePath)!.toString()) as any;
+			const content = JSON.parse(tree.read(mcpFilePath)!.toString());
 			const servers = content.servers ?? {};
 			let modified = false;
+			if (!servers["angular-cli"]) {
+				servers["angular-cli"] = angularCliServer;
+				modified = true;
+			}
 			if (!servers["igniteui-cli"]) {
 				servers["igniteui-cli"] = igniteuiServer;
 				modified = true;
@@ -149,6 +156,7 @@ export function addAIConfig(): Rule {
 		} else {
 			const mcpConfig = {
 				servers: {
+					"angular-cli": angularCliServer,
 					"igniteui-cli": igniteuiServer,
 					"igniteui-theming": igniteuiThemingServer
 				}
