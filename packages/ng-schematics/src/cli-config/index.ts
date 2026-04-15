@@ -1,5 +1,6 @@
 import * as ts from "typescript";
 import { DependencyNotFoundException } from "@angular-devkit/core";
+import { parse as parseJsonc } from "jsonc-parser";
 import { chain, FileDoesNotExistException, Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
 import { addClassToBody, FormatSettings, NPM_ANGULAR, resolvePackage, TypeScriptAstTransformer, TypeScriptUtils } from "@igniteui/cli-core";
 import { AngularTypeScriptFileUpdate } from "@igniteui/angular-templates";
@@ -130,7 +131,7 @@ export function addAIConfig(): Rule {
 		};
 
 		if (tree.exists(mcpFilePath)) {
-			const content = JSON.parse(tree.read(mcpFilePath)!.toString());
+			const content = parseJsonc(tree.read(mcpFilePath)!.toString()) as any;
 			const servers = content.servers ?? {};
 			let modified = false;
 			if (!servers["igniteui-cli"]) {
