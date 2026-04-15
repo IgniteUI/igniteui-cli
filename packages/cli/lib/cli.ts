@@ -4,6 +4,7 @@ import {
 	add,
 	ADD_COMMAND_NAME,
 	ALL_COMMANDS,
+	aiConfig,
 	build,
 	config,
 	doc,
@@ -56,6 +57,7 @@ export async function run(args = null) {
 		.command(list)
 		.command(upgrade)
 		.command(mcp)
+		.command(aiConfig)
 		.version(false) // disable built-in `yargs.version` to override it with our custom option
 		.options({
 			version: {

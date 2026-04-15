@@ -91,7 +91,7 @@ function configureClaude(entry: McpServerEntry): void {
 }
 
 const command: CommandModule = {
-	command: "mcp",
+	command: "ai-config",
 	describe: "Configure the Ignite UI MCP server for an AI client",
 	builder: (yargs) => {
 		return yargs
