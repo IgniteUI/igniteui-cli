@@ -23,6 +23,7 @@ const mappings = [
 
 for (const { name, src, dest } of mappings) {
 	if (!existsSync(src)) {
+		// eslint-disable-next-line no-console
 		console.warn(`[update-skills] Skipping ${name}: source not found at ${src}`);
 		continue;
 	}
@@ -30,5 +31,6 @@ for (const { name, src, dest } of mappings) {
 		rmSync(dest, { recursive: true, force: true });
 	}
 	cpSync(src, dest, { recursive: true });
+	// eslint-disable-next-line no-console
 	console.log(`[update-skills] Updated ${name} skills`);
 }
