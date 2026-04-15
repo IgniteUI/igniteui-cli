@@ -1,4 +1,6 @@
-import { defineConfig } from 'vitest/config';
+/// <reference types="vitest/config" />
+import { playwright } from '@vitest/browser-playwright'
+import { defineConfig } from 'vite'
 import { VitePWA } from 'vite-plugin-pwa';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 
@@ -10,7 +12,7 @@ export default defineConfig({
         chunkFileNames: '[hash].js',
         assetFileNames: '[hash][extname]',
       },
-      onwarn: (warning, warn) => {
+      onwarn: (warning: any, warn: any) => {
         if (warning.code === 'THIS_IS_UNDEFINED') return;
         warn(warning);
       },
@@ -23,19 +25,15 @@ export default defineConfig({
   test: {
     browser: {
       enabled: true,
-      provider: 'playwright',
-      instances: [
-        {
-          browser: 'chromium'
-        },
-      ],
-    },
+      provider: playwright(),
+      instances: [{ browser: 'chromium' }]
+    }
   },
   plugins: [
     /** Copy static assets */
     viteStaticCopy({
       targets: [
-        { src: 'src/assets', dest: 'src' }
+        { src: 'src/assets', dest: '.' }
       ],
       silent: true,
     }),
