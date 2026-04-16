@@ -46,14 +46,9 @@ for (const { name, repo, src, dest } of mappings) {
 		execFileSync("git", ["submodule", "update", "--init", submodulePath], { cwd: root, stdio: "inherit" });
 	}
 	// eslint-disable-next-line no-console
-	console.log(`[update-skills] Pulling ${name} from branch '${branch}'...`);
-	// Abort any in-progress merge left from a previous failed pull
-	try {
-		execFileSync("git", ["merge", "--abort"], { cwd: repo, stdio: "pipe" });
-	} catch {
-		// No merge in progress — ignore
-	}
-	execFileSync("git", ["pull", "origin", branch, "--no-edit"], { cwd: repo, stdio: "inherit" });
+	console.log(`[update-skills] Updating ${name} to branch '${branch}'...`);
+	execFileSync("git", ["fetch", "origin", branch], { cwd: repo, stdio: "inherit" });
+	execFileSync("git", ["checkout", "-B", branch, `origin/${branch}`], { cwd: repo, stdio: "inherit" });
 
 	if (!existsSync(src)) {
 		// eslint-disable-next-line no-console
