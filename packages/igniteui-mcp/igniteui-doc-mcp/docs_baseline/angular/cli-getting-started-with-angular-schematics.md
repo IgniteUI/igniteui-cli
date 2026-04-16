@@ -39,8 +39,6 @@ To create an application that is configured to use the Ignite UI for Angular con
 ng new newAngularProject --collection="@igniteui/angular-schematics" --template=side-nav
 ```
 
-Additionally, by setting the `type` of the project, like so `--type=igx-ts-legacy`, you can specify that you prefer your project to be generated using module based bootstrapping. Not specifying it will default to a project that uses standalone components.
-
 If you already have an Angular project, created without providing the `@igniteui/angular-schematics` collection as described above, you can add the Ignite UI for Angular product, using the following command:
 
 ```cmd
