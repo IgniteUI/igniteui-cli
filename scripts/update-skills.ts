@@ -5,7 +5,7 @@ import { join, relative, resolve } from "path";
 const root = resolve(__dirname, "..");
 const branch = process.argv[2] || "master";
 
-if (!/^[\w.\-/]+$/.test(branch)) {
+if (!/^[\w.\-/]+$/.test(branch) || branch.startsWith("-")) {
 	// eslint-disable-next-line no-console
 	console.error(`[update-skills] Invalid branch name: '${branch}'`);
 	process.exit(1);
