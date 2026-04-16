@@ -1,9 +1,15 @@
-import { execSync } from "child_process";
+import { execFileSync } from "child_process";
 import { cpSync, existsSync, rmSync } from "fs";
-import { join, resolve } from "path";
+import { join, relative, resolve } from "path";
 
 const root = resolve(__dirname, "..");
 const branch = process.argv[2] || "master";
+
+if (!/^[\w.\-/]+$/.test(branch)) {
+	// eslint-disable-next-line no-console
+	console.error(`[update-skills] Invalid branch name: '${branch}'`);
+	process.exit(1);
+}
 
 const mappings = [
 	{
@@ -32,15 +38,22 @@ for (const { name, repo, src, dest } of mappings) {
 		console.warn(`[update-skills] Skipping ${name}: repo not found at ${repo}`);
 		continue;
 	}
+	if (!existsSync(join(repo, ".git"))) {
+		// Submodule directory exists but hasn't been initialized yet — initialize it now
+		// eslint-disable-next-line no-console
+		console.log(`[update-skills] Initializing submodule for ${name}...`);
+		const submodulePath = relative(root, repo).replace(/\\/g, "/");
+		execFileSync("git", ["submodule", "update", "--init", submodulePath], { cwd: root, stdio: "inherit" });
+	}
 	// eslint-disable-next-line no-console
 	console.log(`[update-skills] Pulling ${name} from branch '${branch}'...`);
 	// Abort any in-progress merge left from a previous failed pull
 	try {
-		execSync("git merge --abort", { cwd: repo, stdio: "pipe" });
+		execFileSync("git", ["merge", "--abort"], { cwd: repo, stdio: "pipe" });
 	} catch {
 		// No merge in progress — ignore
 	}
-	execSync(`git pull origin ${branch} --no-edit`, { cwd: repo, stdio: "inherit" });
+	execFileSync("git", ["pull", "origin", branch, "--no-edit"], { cwd: repo, stdio: "inherit" });
 
 	if (!existsSync(src)) {
 		// eslint-disable-next-line no-console
