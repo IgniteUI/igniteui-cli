@@ -491,7 +491,7 @@ describe("Unit - PromptSession", () => {
 		await mockSession.chooseActionLoop(mockProjectLibrary);
 		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(1);
 		expect(InquirerWrapper.select).toHaveBeenCalledTimes(9);
-		expect(Util.log).toHaveBeenCalledTimes(3);
+		expect(Util.log).toHaveBeenCalledTimes(4);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
 		expect(start.start).toHaveBeenCalledTimes(1);
 		expect(add.addTemplate).toHaveBeenCalledTimes(1);
@@ -568,7 +568,7 @@ describe("Unit - PromptSession", () => {
 		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(1);
 		expect(InquirerWrapper.select).toHaveBeenCalledTimes(5);
 		expect(InquirerWrapper.input).toHaveBeenCalledTimes(2);
-		expect(Util.log).toHaveBeenCalledTimes(3);
+		expect(Util.log).toHaveBeenCalledTimes(4);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
 		expect(start.start).toHaveBeenCalledTimes(1);
 		expect(Util.getAvailableName).toHaveBeenCalledTimes(1);
@@ -691,7 +691,7 @@ describe("Unit - PromptSession", () => {
 		expect(InquirerWrapper.select).toHaveBeenCalledTimes(10);
 		expect(InquirerWrapper.input).toHaveBeenCalledTimes(2);
 		expect(InquirerWrapper.checkbox).toHaveBeenCalledTimes(1);
-		expect(Util.log).toHaveBeenCalledTimes(3);
+		expect(Util.log).toHaveBeenCalledTimes(4);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
 		expect(start.start).toHaveBeenCalledTimes(1);
 		expect(add.addTemplate).toHaveBeenCalledTimes(1);

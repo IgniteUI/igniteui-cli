@@ -422,19 +422,7 @@ export abstract class BasePromptSession {
 				}
 			}
 			
-			const addMcp = await this.getUserInput({
-				type: "list",
-				name: "addMcp",
-				message: "Would you like to add the Ignite UI MCP server to this project?",
-				choices: [
-					{ value: "yes", name: "Yes (adds .vscode/mcp.json)", short: "Yes" },
-					{ value: "no", name: "Skip for now", short: "Skip" }
-				],
-				default: "yes"
-			});
-			if (addMcp === "yes") {
-				await this.configureMcp();
-			}
+			await this.configureMcp();
 
 			const defaultPort = config.project.defaultPort;
 			const port = await this.getUserInput({
