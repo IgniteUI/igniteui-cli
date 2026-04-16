@@ -1,6 +1,7 @@
 import * as ts from "typescript";
 import { DependencyNotFoundException } from "@angular-devkit/core";
 import { chain, FileDoesNotExistException, Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
+import * as jsonc from "jsonc-parser";
 import { addClassToBody, FormatSettings, NPM_ANGULAR, resolvePackage, TypeScriptAstTransformer, TypeScriptUtils } from "@igniteui/cli-core";
 import { AngularTypeScriptFileUpdate } from "@igniteui/angular-templates";
 import { createCliConfig } from "../utils/cli-config";
@@ -134,24 +135,26 @@ export function addAIConfig(): Rule {
 		};
 
 		if (tree.exists(mcpFilePath)) {
-			const content = JSON.parse(tree.read(mcpFilePath)!.toString());
+			let text = tree.read(mcpFilePath)!.toString();
+			const content = jsonc.parse(text);
 			const servers = content.servers ?? {};
-			let modified = false;
+			const formattingOptions: jsonc.FormattingOptions = { tabSize: 2, insertSpaces: true };
+			const newServers: Record<string, object> = {};
 			if (!servers["angular-cli"]) {
-				servers["angular-cli"] = angularCliServer;
-				modified = true;
+				newServers["angular-cli"] = angularCliServer;
 			}
 			if (!servers["igniteui-cli"]) {
-				servers["igniteui-cli"] = igniteuiServer;
-				modified = true;
+				newServers["igniteui-cli"] = igniteuiServer;
 			}
 			if (!servers["igniteui-theming"]) {
-				servers["igniteui-theming"] = igniteuiThemingServer;
-				modified = true;
+				newServers["igniteui-theming"] = igniteuiThemingServer;
 			}
-			if (modified) {
-				content.servers = servers;
-				tree.overwrite(mcpFilePath, JSON.stringify(content, null, 2));
+			for (const [key, value] of Object.entries(newServers)) {
+				const edits = jsonc.modify(text, ["servers", key], value, { formattingOptions });
+				text = jsonc.applyEdits(text, edits);
+			}
+			if (Object.keys(newServers).length > 0) {
+				tree.overwrite(mcpFilePath, text);
 			}
 		} else {
 			const mcpConfig = {
