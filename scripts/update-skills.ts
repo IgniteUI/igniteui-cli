@@ -33,17 +33,17 @@ const mappings = [
 ];
 
 for (const { name, repo, src, dest } of mappings) {
-	if (!existsSync(repo)) {
-		// eslint-disable-next-line no-console
-		console.warn(`[update-skills] Skipping ${name}: repo not found at ${repo}`);
-		continue;
-	}
 	if (!existsSync(join(repo, ".git"))) {
 		// Submodule directory exists but hasn't been initialized yet — initialize it now
 		// eslint-disable-next-line no-console
 		console.log(`[update-skills] Initializing submodule for ${name}...`);
 		const submodulePath = relative(root, repo).replace(/\\/g, "/");
 		execFileSync("git", ["submodule", "update", "--init", submodulePath], { cwd: root, stdio: "inherit" });
+	}
+	if (!existsSync(repo)) {
+		// eslint-disable-next-line no-console
+		console.warn(`[update-skills] Skipping ${name}: repo not found at ${repo}`);
+		continue;
 	}
 	// eslint-disable-next-line no-console
 	console.log(`[update-skills] Updating ${name} to branch '${branch}'...`);
