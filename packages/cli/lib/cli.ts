@@ -132,7 +132,7 @@ export async function run(args = null) {
 					if (command) {
 						process.exitCode = 1;
 						Util.error(`Unknown command: "${command}"`, "red");
-						yargsModule.showHelp();
+						Util.log(await yargsModule.getHelp());
 					} else {
 						Util.log("Starting Step by step mode.", "green");
 						Util.log("For available commands, stop this execution and use --help.", "green");
