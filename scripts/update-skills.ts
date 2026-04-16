@@ -33,14 +33,19 @@ for (const { name, repo, src, dest } of mappings) {
 		continue;
 	}
 	// eslint-disable-next-line no-console
-	console.log(`[update-skills] Pulling ${name} from branch '${branch}'...`);
+	console.log(`[update-skills] Updating ${name} from branch '${branch}'...`);
+	// eslint-disable-next-line no-console
+	console.warn(
+		`[update-skills] Note: updating ${name} will move the nested repository HEAD and may mark the parent repository as modified if it is checked out as a submodule.`
+	);
 	// Abort any in-progress merge left from a previous failed pull
 	try {
 		execSync("git merge --abort", { cwd: repo, stdio: "pipe" });
 	} catch {
 		// No merge in progress — ignore
 	}
-	execSync(`git pull origin ${branch} --no-edit`, { cwd: repo, stdio: "inherit" });
+	execSync(`git fetch origin ${branch}`, { cwd: repo, stdio: "inherit" });
+	execSync("git checkout --detach FETCH_HEAD", { cwd: repo, stdio: "inherit" });
 
 	if (!existsSync(src)) {
 		// eslint-disable-next-line no-console
