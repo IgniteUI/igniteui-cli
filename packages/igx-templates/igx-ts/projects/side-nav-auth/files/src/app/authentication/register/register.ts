@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Component, inject, output } from '@angular/core';
+import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IgxInputGroupComponent, IgxPrefixDirective, IgxIconComponent, IgxLabelDirective, IgxInputDirective, IgxButtonDirective,
 	IgxRippleDirective } from 'igniteui-angular';
@@ -16,24 +16,20 @@ import { UserStore } from '../services/user-store';
 })
 export class Register {
 
-  public registrationForm: FormGroup;
+  private authentication = inject(Authentication);
+  private fb = inject(FormBuilder);
+  private userStore = inject(UserStore);
+  private router = inject(Router);
 
-  @Output()
-  viewChange: EventEmitter<any> = new EventEmitter();
-  @Output()
-  registered: EventEmitter<any> = new EventEmitter();
+  public registrationForm = this.fb.group({
+    given_name: ['', Validators.required],
+    family_name: ['', Validators.nullValidator],
+    email: ['', Validators.required],
+    password: ['', Validators.required]
+  });
 
-  constructor(private authentication: Authentication,
-    private fb: FormBuilder,
-    private userStore: UserStore,
-    private router: Router) {
-    this.registrationForm = this.fb.group({
-      given_name: ['', Validators.required],
-      family_name: ['', Validators.nullValidator],
-      email: ['', Validators.required],
-      password: ['', Validators.required]
-    });
-  }
+  viewChange = output<any>();
+  registered = output<any>();
 
   async tryRegister() {
     const response = await this.authentication.register(this.registrationForm.value as RegisterInfo);

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import {
   IgxSelectComponent,
@@ -58,7 +58,7 @@ export class <%=ClassName%> implements OnInit {
   public minDate = new Date();
   public maxDate = new Date(new Date(this.minDate.getFullYear(), this.minDate.getMonth(), this.minDate.getDate() + 14));
 
-  constructor(private fb: FormBuilder) { }
+  private fb = inject(FormBuilder);
 
   public ngOnInit(): void {
     this.genres = [

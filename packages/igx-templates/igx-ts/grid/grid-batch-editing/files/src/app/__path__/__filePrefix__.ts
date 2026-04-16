@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, viewChild } from '@angular/core';
 import {
   IgxDialogComponent,
   IgxGridComponent,
@@ -33,16 +33,16 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
   ]
 })
 export class <%=ClassName%> implements OnInit {
-  @ViewChild('gridRowEditTransaction', { static: true, read: IgxGridComponent }) public grid!: IgxGridComponent;
-  @ViewChild(IgxDialogComponent, { static: true }) public dialog!: IgxDialogComponent;
-  @ViewChild('dialogGrid', { static: true, read: IgxGridComponent }) public dialogGrid!: IgxGridComponent;
+  public grid = viewChild.required('gridRowEditTransaction', { read: IgxGridComponent });
+  public dialog = viewChild.required(IgxDialogComponent);
+  public dialogGrid = viewChild.required('dialogGrid', { read: IgxGridComponent });
 
   public data: Product[];
   public transactionsData: Transaction[] = [];
   private addProductId: number;
 
   public get transactions(): TransactionService<Transaction, State> {
-    return this.grid.transactions;
+    return this.grid().transactions;
   }
 
   constructor() {
@@ -52,7 +52,7 @@ export class <%=ClassName%> implements OnInit {
 
   public ngOnInit(): void {
     this.transactionsData = this.transactions.getAggregatedChanges(true);
-    this.grid.rendered$.subscribe(() => {
+    this.grid().rendered$.subscribe(() => {
       this.transactions.onStateUpdate?.subscribe(() => {
         this.transactionsData = this.transactions.getAggregatedChanges(true);
       })
@@ -60,7 +60,7 @@ export class <%=ClassName%> implements OnInit {
   }
 
   public addRow(): void {
-    this.grid.addRow({
+    this.grid().addRow({
       CategoryID: this.getRandomInt(1, 10),
       Discontinued: this.getRandomInt(1, 10) % 2 === 0,
       OrderDate: new Date(this.getRandomInt(2000, 2050), this.getRandomInt(0, 11), this.getRandomInt(1, 25)),
@@ -80,26 +80,26 @@ export class <%=ClassName%> implements OnInit {
   }
 
   public deleteRow(rowID: any): void {
-    this.grid.deleteRow(rowID);
+    this.grid().deleteRow(rowID);
   }
 
   public openCommitDialog(): void {
-    this.dialog.open();
-    this.dialogGrid.reflow();
+    this.dialog().open();
+    this.dialogGrid().reflow();
   }
 
   public commit(): void {
-    this.grid.transactions.commit(this.data);
-    this.dialog.close();
+    this.grid().transactions.commit(this.data);
+    this.dialog().close();
   }
 
   public cancel(): void {
-    this.dialog.close();
+    this.dialog().close();
   }
 
   public discard(): void {
-    this.grid.transactions.clear();
-    this.dialog.close();
+    this.grid().transactions.clear();
+    this.dialog().close();
   }
 
   private getRandomInt(min: number, max: number): number {
@@ -107,7 +107,7 @@ export class <%=ClassName%> implements OnInit {
   }
 
   public get hasTransactions(): boolean {
-    return this.grid.transactions.getAggregatedChanges(false).length > 0;
+    return this.grid().transactions.getAggregatedChanges(false).length > 0;
   }
 
   public stateFormatter(value: string): string {

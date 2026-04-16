@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { UserStore } from '../services/user-store';
 
 @Component({
@@ -7,5 +7,5 @@ import { UserStore } from '../services/user-store';
   styleUrl: './profile.scss'
 })
 export class Profile {
-  constructor(public userStore: UserStore) { }
+  public userStore = inject(UserStore);
 }

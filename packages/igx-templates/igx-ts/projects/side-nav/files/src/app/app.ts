@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, viewChild, ViewEncapsulation, inject } from '@angular/core';
 import { NavigationStart, Router, RouterLinkActive, RouterLink, RouterOutlet } from '@angular/router';
 import {
   IgxNavigationDrawerComponent,
@@ -36,10 +36,11 @@ export class App implements OnInit {
     name: string
   }[] = [];
 
-  @ViewChild(IgxNavigationDrawerComponent, { static: true })
-  public navdrawer!: IgxNavigationDrawerComponent;
+  public navdrawer = viewChild.required(IgxNavigationDrawerComponent);
 
-  constructor(private router: Router) {
+  private router = inject(Router);
+
+  constructor() {
     for (const route of routes) {
       if (route.path && route.data && route.path.indexOf('*') === -1) {
         this.topNavLinks.push({
@@ -55,9 +56,9 @@ export class App implements OnInit {
       filter((x): x is NavigationStart => x instanceof NavigationStart)
     )
       .subscribe((event: NavigationStart) => {
-        if (event.url !== '/' && !this.navdrawer.pin) {
+        if (event.url !== '/' && !this.navdrawer().pin) {
           // Close drawer when selecting a view on mobile (unpinned)
-          this.navdrawer.close();
+          this.navdrawer().close();
         }
       });
   }

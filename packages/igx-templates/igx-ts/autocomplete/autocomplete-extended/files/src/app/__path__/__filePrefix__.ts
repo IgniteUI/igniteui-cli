@@ -1,4 +1,4 @@
-import { Component, Pipe, PipeTransform, ViewChild, forwardRef } from '@angular/core';
+import { Component, Pipe, PipeTransform, viewChild, forwardRef } from '@angular/core';
 import {
   IgxToastComponent,
   ISelectionEventArgs,
@@ -44,8 +44,7 @@ export class <%=ClassName%> {
     verticalDirection: VerticalAlignment.Middle
   };
 
-  @ViewChild(IgxToastComponent, { static: true })
-  public toast!: IgxToastComponent;
+  public toast = viewChild.required(IgxToastComponent);
 
   constructor() {
     this.regions = townsExtended;
@@ -59,7 +58,7 @@ export class <%=ClassName%> {
     const townEntry = allTowns.find(t => t.name === e.newSelection.value);
 
     this.postalCode = townEntry?.postalCode;
-    this.toast.open(undefined, this.messagePositionSettings);
+    this.toast().open(undefined, this.messagePositionSettings);
   }
 }
 
