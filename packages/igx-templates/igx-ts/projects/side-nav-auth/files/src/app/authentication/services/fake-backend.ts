@@ -6,7 +6,7 @@ import {
   HttpResponse,
   HTTP_INTERCEPTORS
 } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { dematerialize, materialize, mergeMap } from 'rxjs/operators';
 import { ExternalLogin } from '../models/login';
@@ -21,8 +21,7 @@ import msKeys from './microsoft-keys';
 })
 export class BackendInterceptor implements HttpInterceptor {
   users: StorageUser[] = [];
-
-  constructor(private localStorage: LocalStorageService) { }
+  private localStorage = inject(LocalStorageService);
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const storedUsers = this.localStorage.getItem('users');

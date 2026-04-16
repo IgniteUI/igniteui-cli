@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, viewChild } from '@angular/core';
 import {
   HorizontalAlignment,
   IgxSelectComponent,
@@ -28,11 +28,9 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
   ]
 })
 export class <%=ClassName%> {
-  @ViewChild(IgxSelectComponent, { static: true })
-  public igxSelect!: IgxSelectComponent;
+  public igxSelect = viewChild.required(IgxSelectComponent);
 
-  @ViewChild(IgxToastComponent, { static: true })
-  public output!: IgxToastComponent;
+  public output = viewChild.required(IgxToastComponent);
 
   public selected!: string;
   public fruits: string[] = ['Orange', 'Apple', 'Banana', 'Mango'];
@@ -42,6 +40,6 @@ export class <%=ClassName%> {
   };
 
   public onSubmit() {
-    this.output.open(undefined, this.messagePositionSettings);
+    this.output().open(undefined, this.messagePositionSettings);
   }
 }

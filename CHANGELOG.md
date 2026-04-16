@@ -34,6 +34,7 @@ All scaffolded projects now include AI-ready configuration files to enhance the 
 
 A comprehensive modernization of all Angular templates to align with Angular v21+ patterns.
 
+* **Signals and inject() migration:** replaced `@ViewChild` with signal-based `viewChild()` / `viewChild.required()`, `@Output` with `output()`, and constructor-based dependency injection with the `inject()` function across all 34 template files ([#1586](https://github.com/IgniteUI/igniteui-cli/pull/1586))
 * **Control flow migration:** replaced `*ngIf`, `*ngFor`, `*ngSwitch` structural directives with built-in `@if`, `@for`, `@switch` block syntax; migrated `[ngClass]` to `[class]` bindings across all templates ([#1584](https://github.com/IgniteUI/igniteui-cli/pull/1584))
 * **Standalone component adoption:** removed NgModule files (`AuthenticationModule`, `AppModule`) and replaced with provider functions; `provideAuthentication()` consolidates all auth setup ([#1554](https://github.com/IgniteUI/igniteui-cli/pull/1554))
 * **Auth library upgrade:** migrated to `angular-auth-oidc-client` v21 API with configurable social login providers (Google, Microsoft, Facebook) ([#1554](https://github.com/IgniteUI/igniteui-cli/pull/1554))

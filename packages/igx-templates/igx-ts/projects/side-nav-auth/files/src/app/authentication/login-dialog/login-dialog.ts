@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, viewChild } from '@angular/core';
 import { IgxDialogComponent } from 'igniteui-angular';
 
 import { Register } from '../register/register';
@@ -13,15 +13,14 @@ import { Login } from '../login/login';
 export class LoginDialog {
   public showLogin = true;
   public get title() { return this.showLogin ? 'Login' : 'Register'; }
-  @ViewChild(IgxDialogComponent, { static: true })
-  public loginDialog!: IgxDialogComponent;
+  public loginDialog = viewChild.required(IgxDialogComponent);
 
   open() {
-    this.loginDialog.open();
+    this.loginDialog().open();
   }
 
   close() {
-    this.loginDialog.close();
+    this.loginDialog().close();
   }
 
   onOpen() {
