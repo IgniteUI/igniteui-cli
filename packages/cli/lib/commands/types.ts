@@ -14,6 +14,7 @@ export const TEST_COMMAND_NAME = "test";
 export const LIST_COMMAND_NAME = "list";
 export const UPGRADE_COMMAND_NAME = "upgrade-packages";
 export const MCP_COMMAND_NAME = "mcp";
+export const AI_CONFIG_COMMAND_NAME = "ai-config";
 
 export const ALL_COMMANDS = new Set([
   ADD_COMMAND_NAME,
@@ -27,7 +28,8 @@ export const ALL_COMMANDS = new Set([
   TEST_COMMAND_NAME,
   LIST_COMMAND_NAME,
   UPGRADE_COMMAND_NAME,
-  MCP_COMMAND_NAME
+  MCP_COMMAND_NAME,
+  AI_CONFIG_COMMAND_NAME
 ]);
 
 export interface PositionalArgs {
