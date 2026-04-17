@@ -41,7 +41,7 @@ function writeJson(filePath: string, data: unknown, fileSystem: IFileSystem): vo
 	fileSystem.writeFile(filePath, JSON.stringify(data, null, 2) + "\n");
 }
 
-export function configureVsCode(fileSystem: IFileSystem = new FsFileSystem()): void {
+export function configureMCP(fileSystem: IFileSystem = new FsFileSystem()): void {
 	const configPath = getConfigPath();
 	const config = readJson<VsCodeMcpConfig>(configPath, { servers: {} }, fileSystem);
 	config.servers = config.servers || {};
@@ -65,7 +65,7 @@ export function configureVsCode(fileSystem: IFileSystem = new FsFileSystem()): v
 }
 
 export function configure(fileSystem: IFileSystem = new FsFileSystem()): void {
-	configureVsCode(fileSystem);
+	configureMCP(fileSystem);
 }
 
 const command: CommandModule = {

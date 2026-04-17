@@ -1,6 +1,6 @@
 import * as path from "path";
 import { GoogleAnalytics, IFileSystem, Util } from "@igniteui/cli-core";
-import { configureVsCode } from "../../packages/cli/lib/commands/ai-config";
+import { configureMCP } from "../../packages/cli/lib/commands/ai-config";
 import { default as aiConfig } from "../../packages/cli/lib/commands/ai-config";
 
 const IGNITEUI_SERVER_KEY = "igniteui-cli";
@@ -38,11 +38,11 @@ describe("Unit - ai-config command", () => {
 		return JSON.parse(content);
 	}
 
-	describe("configureVsCode", () => {
+	describe("configureMCP", () => {
 		it("creates .vscode/mcp.json with both servers when file does not exist", () => {
 			const mockFs = createMockFs();
 
-			configureVsCode(mockFs);
+			configureMCP(mockFs);
 
 			expect(mockFs.mkdir).toHaveBeenCalledWith(path.dirname(configPath), { recursive: true });
 			expect(mockFs.writeFile).toHaveBeenCalled();
@@ -54,7 +54,7 @@ describe("Unit - ai-config command", () => {
 		it("adds both servers when file exists but servers object is empty", () => {
 			const mockFs = createMockFs(JSON.stringify({ servers: {} }));
 
-			configureVsCode(mockFs);
+			configureMCP(mockFs);
 
 			expect(mockFs.writeFile).toHaveBeenCalled();
 			const config = writtenConfig(mockFs);
@@ -67,7 +67,7 @@ describe("Unit - ai-config command", () => {
 				servers: { [IGNITEUI_SERVER_KEY]: igniteuiServer }
 			}));
 
-			configureVsCode(mockFs);
+			configureMCP(mockFs);
 
 			expect(mockFs.writeFile).toHaveBeenCalled();
 			const config = writtenConfig(mockFs);
@@ -80,7 +80,7 @@ describe("Unit - ai-config command", () => {
 				servers: { [IGNITEUI_THEMING_SERVER_KEY]: igniteuiThemingServer }
 			}));
 
-			configureVsCode(mockFs);
+			configureMCP(mockFs);
 
 			expect(mockFs.writeFile).toHaveBeenCalled();
 			const config = writtenConfig(mockFs);
@@ -96,7 +96,7 @@ describe("Unit - ai-config command", () => {
 				}
 			}));
 
-			configureVsCode(mockFs);
+			configureMCP(mockFs);
 
 			expect(mockFs.writeFile).not.toHaveBeenCalled();
 			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("already configured"));
@@ -108,7 +108,7 @@ describe("Unit - ai-config command", () => {
 				servers: { "other-server": thirdPartyServer }
 			}));
 
-			configureVsCode(mockFs);
+			configureMCP(mockFs);
 
 			expect(mockFs.writeFile).toHaveBeenCalled();
 			const config = writtenConfig(mockFs);
@@ -119,7 +119,7 @@ describe("Unit - ai-config command", () => {
 	});
 
 	describe("handler", () => {
-		it("posts analytics and calls configureVsCode", async () => {
+		it("posts analytics and calls configureMCP", async () => {
 			await aiConfig.handler({ _: ["ai-config"], $0: "ig" });
 
 			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "screenview", cd: "MCP" }));
