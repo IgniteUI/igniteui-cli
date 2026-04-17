@@ -28,10 +28,6 @@ export class MockFS implements IFileSystem {
     this.fsMap.set(filePath, text);
   }
 
-  public mkdir(_dirPath: string, _options?: { recursive?: boolean }): void {
-    // no-op for in-memory mock
-  }
-
   public directoryExists(dirPath: string): boolean {
     throw new Error('directoryExists is not implemented.');
   }

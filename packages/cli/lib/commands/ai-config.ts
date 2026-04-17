@@ -37,7 +37,6 @@ function readJson<T>(filePath: string, fallback: T, fileSystem: IFileSystem): T 
 }
 
 function writeJson(filePath: string, data: unknown, fileSystem: IFileSystem): void {
-	fileSystem.mkdir(path.dirname(filePath), { recursive: true });
 	fileSystem.writeFile(filePath, JSON.stringify(data, null, 2) + "\n");
 }
 

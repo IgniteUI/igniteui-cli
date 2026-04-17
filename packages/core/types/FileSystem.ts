@@ -2,7 +2,6 @@ export interface IFileSystem {
 	fileExists(filePath: string): boolean;
 	readFile(filePath: string, encoding?: string): string;
 	writeFile(filePath: string, text: string): void;
-	mkdir(dirPath: string, options?: { recursive?: boolean }): void;
 	directoryExists(dirPath: string): boolean;
 
 	/**

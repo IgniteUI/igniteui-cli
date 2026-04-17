@@ -19,10 +19,6 @@ export class NgTreeFileSystem implements IFileSystem {
 			: this.tree.create(filePath, text);
 	}
 
-	public mkdir(_dirPath: string, _options?: { recursive?: boolean }): void {
-		// Angular Tree manages directories implicitly; no-op here.
-	}
-
 	public directoryExists(dirPath: string): boolean {
 		const dir = this.tree.getDir(dirPath);
 		return dir.subdirs.length || dir.subfiles.length ? true : false;

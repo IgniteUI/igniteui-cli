@@ -15,7 +15,6 @@ function createMockFs(existingContent?: string): IFileSystem {
 			? jasmine.createSpy("readFile").and.returnValue(existingContent)
 			: jasmine.createSpy("readFile").and.throwError("ENOENT"),
 		writeFile: jasmine.createSpy("writeFile"),
-		mkdir: jasmine.createSpy("mkdir"),
 		directoryExists: jasmine.createSpy("directoryExists"),
 		glob: jasmine.createSpy("glob").and.returnValue([])
 	};
@@ -44,7 +43,6 @@ describe("Unit - ai-config command", () => {
 
 			configureMCP(mockFs);
 
-			expect(mockFs.mkdir).toHaveBeenCalledWith(path.dirname(configPath), { recursive: true });
 			expect(mockFs.writeFile).toHaveBeenCalled();
 			const config = writtenConfig(mockFs);
 			expect((config.servers as any)[IGNITEUI_SERVER_KEY]).toEqual(igniteuiServer);
@@ -122,6 +120,7 @@ describe("Unit - ai-config command", () => {
 		it("posts analytics and calls configure", async () => {
 			const fs = require("fs");
 			spyOn(fs, "readFileSync").and.throwError(new Error("ENOENT"));
+			spyOn(fs, "existsSync").and.returnValue(false);
 			spyOn(fs, "mkdirSync");
 			spyOn(fs, "writeFileSync");
 
