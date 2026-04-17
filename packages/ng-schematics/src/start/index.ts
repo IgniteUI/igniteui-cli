@@ -7,6 +7,7 @@ import { setVirtual } from "../utils/NgFileSystem";
 export default function(options: any): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
 		return defer(async () => {
+			// TODO: ScopedTree iffy import
 			setVirtual(options.directory ? new ScopedTree(tree, options.directory) : tree);
 			const config = ProjectConfig.getConfig();
 			// TODO: call in ng serve directly somehow?

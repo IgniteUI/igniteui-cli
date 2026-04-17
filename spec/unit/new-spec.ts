@@ -74,7 +74,6 @@ describe("Unit - New command", () => {
 
 	it("Logs error for wrong framework", async () => {
 		spyOn(Util, "error");
-		spyOn(Util, "directoryExists").and.returnValue(false);
 		//spied getFrameworkById won't return anything, i.e. not found
 		newCmd.templateManager = jasmine.createSpyObj("TemplateManager", ["getFrameworkById", "getProjectLibrary"]);
 
@@ -89,7 +88,6 @@ describe("Unit - New command", () => {
 
 	it("Logs error for wrong project type", async () => {
 		spyOn(Util, "error");
-		spyOn(Util, "directoryExists").and.returnValue(false);
 		newCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: {},
 			// return nothing, i.e. not found
@@ -107,7 +105,6 @@ describe("Unit - New command", () => {
 
 	it("Logs error for wrong project theme", async () => {
 		spyOn(Util, "error");
-		spyOn(Util, "directoryExists").and.returnValue(false);
 
 		const mockProjLib = {
 			getProject: () => { },
@@ -149,7 +146,6 @@ describe("Unit - New command", () => {
 
 	it("Logs error for unavailable project", async () => {
 		spyOn(Util, "error");
-		spyOn(Util, "directoryExists").and.returnValue(false);
 
 		const mockProjLib = {
 			getProject: () => { },
@@ -204,9 +200,7 @@ describe("Unit - New command", () => {
 
 		const mockFileSystem = {
 			fileExists: jasmine.createSpy().and.returnValue(false),
-			readFile: jasmine.createSpy().and.returnValue(JSON.stringify({ key: "value" })),
-			directoryExists: jasmine.createSpy().and.returnValue(false),
-			glob: jasmine.createSpy().and.returnValue([])
+			readFile: jasmine.createSpy().and.returnValue(JSON.stringify({ key: "value" }))
 		};
 		spyOn(App.container, 'get').and.returnValue(mockFileSystem);
 
@@ -252,9 +246,7 @@ describe("Unit - New command", () => {
 
 		const mockFileSystem = {
 			fileExists: jasmine.createSpy().and.returnValue(false),
-			readFile: jasmine.createSpy().and.returnValue(JSON.stringify({ key: "value" })),
-			directoryExists: jasmine.createSpy().and.returnValue(false),
-			glob: jasmine.createSpy().and.returnValue([])
+			readFile: jasmine.createSpy().and.returnValue(JSON.stringify({ key: "value" }))
 		};
 		spyOn(App.container, 'get').and.returnValue(mockFileSystem);
 

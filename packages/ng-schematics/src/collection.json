@@ -31,8 +31,7 @@
     },
     "cli-config": {
       "description": "Installs the needed dependencies onto the host application.",
-      "factory": "./cli-config/index",
-      "schema": "./cli-config/schema.json"
+      "factory": "./cli-config/index"
     },
     "ai-config": {
       "description": "Configures AI tooling: MCP servers and AI coding skills.",

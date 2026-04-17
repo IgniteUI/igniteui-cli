@@ -1,17 +1,12 @@
 import * as ts from "typescript";
 import { DependencyNotFoundException } from "@angular-devkit/core";
 import { chain, FileDoesNotExistException, Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
-import { ScopedTree } from "@angular-devkit/schematics/src/tree/scoped";
 import * as jsonc from "jsonc-parser";
 import { addClassToBody, copyAISkillsToProject, FormatSettings, NPM_ANGULAR, resolvePackage, TypeScriptAstTransformer, TypeScriptUtils } from "@igniteui/cli-core";
 import { AngularTypeScriptFileUpdate } from "@igniteui/angular-templates";
 import { createCliConfig } from "../utils/cli-config";
 import { setVirtual } from "../utils/NgFileSystem";
 import { addFontsToIndexHtml, getProjects, importDefaultTheme } from "../utils/theme-import";
-
-interface CliConfigOptions {
-	directory?: string;
-}
 
 function getDependencyVersion(pkg: string, tree: Tree): string {
 	const targetFile = "/package.json";
@@ -125,7 +120,6 @@ function importStyles(): Rule {
 
 export function addAIConfig(): Rule {
 	return (tree: Tree) => {
-		setVirtual(tree);
 		copyAISkillsToProject();
 
 		const mcpFilePath = "/.vscode/mcp.json";
@@ -177,18 +171,16 @@ export function addAIConfig(): Rule {
 	};
 }
 
-export default function (options: CliConfigOptions = {}): Rule {
-	return (originalTree: Tree, context: SchematicContext) => {
-		const tree = options.directory ? new ScopedTree(originalTree, options.directory) : originalTree;
+export default function (): Rule {
+	return (tree: Tree) => {
 		setVirtual(tree);
-		const rules: Rule[] = [
+		return chain([
 			importStyles(),
 			addTypographyToProj(),
 			importBrowserAnimations(),
 			createCliConfig(),
 			displayVersionMismatch(),
 			addAIConfig()
-		];
-		return chain(rules)(tree, context);
+		]);
 	};
 }
