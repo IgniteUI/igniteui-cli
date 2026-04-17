@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { OidcSecurityService } from 'angular-auth-oidc-client';
 import { ExternalLogin } from '../models/login';
@@ -20,19 +20,17 @@ export enum ExternalAuthRedirectUrl {
   providedIn: 'root'
 })
 export class ExternalAuth {
+  private router = inject(Router);
+  private oidcSecurityService = inject(OidcSecurityService);
+  private location = inject(Location);
+  private localStorage = inject(LocalStorageService);
+
   protected providers: Map<ExternalAuthProvider, AuthProvider> = new Map();
   public get activeProvider(): ExternalAuthProvider {
     return this.localStorage.getItem('extActiveProvider') as ExternalAuthProvider;
   }
   public set activeProvider(provider: ExternalAuthProvider) {
     this.localStorage.setItem('extActiveProvider', provider);
-  }
-
-  constructor(
-    private router: Router,
-    private oidcSecurityService: OidcSecurityService,
-    private location: Location,
-    private localStorage: LocalStorageService) {
   }
 
   public hasProvider(provider?: ExternalAuthProvider) {

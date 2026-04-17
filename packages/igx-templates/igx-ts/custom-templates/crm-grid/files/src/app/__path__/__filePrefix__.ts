@@ -3,8 +3,9 @@ import {
   OnInit,
   AfterViewInit,
   QueryList,
-  ViewChild,
+  viewChild,
   ElementRef,
+  inject,
 } from '@angular/core';
 
 import {
@@ -76,14 +77,13 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 })
 export class <%=ClassName%> implements OnInit, AfterViewInit {
 
-  @ViewChild('grid1', { read: IgxGridComponent, static: true })
-  public grid1!: IgxGridComponent;
+  public grid1 = viewChild.required('grid1', { read: IgxGridComponent });
 
-  @ViewChild('toggleRefHiding') public toggleRefHiding!: IgxToggleDirective;
-  @ViewChild('toggleRefPinning') public toggleRefPinning!: IgxToggleDirective;
+  public toggleRefHiding = viewChild<IgxToggleDirective>('toggleRefHiding');
+  public toggleRefPinning = viewChild<IgxToggleDirective>('toggleRefPinning');
 
-  @ViewChild('hidingButton') public hidingButton!: ElementRef;
-  @ViewChild('pinningButton') public pinningButton!: ElementRef;
+  public hidingButton = viewChild<ElementRef>('hidingButton');
+  public pinningButton = viewChild<ElementRef>('pinningButton');
 
   public localData: Employee[] = [];
   public dealsSummary = DealsSummary;
@@ -112,10 +112,10 @@ export class <%=ClassName%> implements OnInit, AfterViewInit {
     scrollStrategy: new CloseScrollStrategy()
   };
 
-  constructor(
-    private csvExporter: IgxCsvExporterService,
-    private excelExporter: IgxExcelExporterService) {
+  private csvExporter = inject(IgxCsvExporterService);
+  private excelExporter = inject(IgxExcelExporterService);
 
+  constructor() {
     const exporterCb = (args: IColumnExportingEventArgs): void => {
       if (args.field === 'Deals') { args.cancel = true; }
     };
@@ -133,17 +133,17 @@ export class <%=ClassName%> implements OnInit, AfterViewInit {
   }
 
   public toggleHiding(): void {
-    this.overlaySettings.target = this.hidingButton.nativeElement;
-    this.toggleRefHiding.toggle(this.overlaySettings);
+    this.overlaySettings.target = this.hidingButton()!.nativeElement;
+    this.toggleRefHiding()!.toggle(this.overlaySettings);
   }
 
   public togglePinning(): void {
-    this.overlaySettings.target = this.pinningButton.nativeElement;
-    this.toggleRefPinning.toggle(this.overlaySettings);
+    this.overlaySettings.target = this.pinningButton()!.nativeElement;
+    this.toggleRefPinning()!.toggle(this.overlaySettings);
   }
 
   public ngAfterViewInit(): void {
-    this.cols = this.grid1.columnList;
+    this.cols = this.grid1().columnList;
     this.hiddenColsLength = this.cols.filter((col) => col.hidden).length;
     this.pinnedColsLength = this.cols.filter((col) => col.pinned).length;
   }
@@ -159,10 +159,10 @@ export class <%=ClassName%> implements OnInit, AfterViewInit {
 
   public togglePin(col: ColumnType, evt: any): void {
     if (col.pinned) {
-      this.grid1.unpinColumn(col.field);
+      this.grid1().unpinColumn(col.field);
       this.pinnedColsLength--;
     } else {
-      if (this.grid1.pinColumn(col.field)) {
+      if (this.grid1().pinColumn(col.field)) {
         this.pinnedColsLength++;
       } else {
         // if pinning fails uncheck the checkbox
@@ -178,21 +178,21 @@ export class <%=ClassName%> implements OnInit, AfterViewInit {
   public searchKeyDown(ev: KeyboardEvent): void {
     if (ev.key === 'Enter' || ev.key === 'ArrowDown' || ev.key === 'ArrowRight') {
       ev.preventDefault();
-      this.grid1.findNext(this.searchText, this.caseSensitive);
+      this.grid1().findNext(this.searchText, this.caseSensitive);
     } else if (ev.key === 'ArrowUp' || ev.key === 'ArrowLeft') {
       ev.preventDefault();
-      this.grid1.findPrev(this.searchText, this.caseSensitive);
+      this.grid1().findPrev(this.searchText, this.caseSensitive);
     }
   }
 
   public updateSearch(): void {
     this.caseSensitive = !this.caseSensitive;
-    this.grid1.findNext(this.searchText, this.caseSensitive);
+    this.grid1().findNext(this.searchText, this.caseSensitive);
   }
 
   public clearSearch(): void {
     this.searchText = '';
-    this.grid1.clearSearch();
+    this.grid1().clearSearch();
   }
 
   public formatValue(val: any): string {

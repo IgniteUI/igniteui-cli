@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, inject } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
 import {
   IgxTreeNodeComponent,
@@ -35,7 +35,9 @@ export class <%=ClassName%> implements OnDestroy {
   public remoteData: SelectableNodeData[] = [];
   private destroy$ = new Subject<void>();
 
-  constructor(private dataService: Data) {
+  private dataService = inject(Data);
+
+  constructor() {
     this.dataService.data.pipe(takeUntil(this.destroy$)).subscribe((data) => {
       this.loading = false;
       this.remoteData = data;
