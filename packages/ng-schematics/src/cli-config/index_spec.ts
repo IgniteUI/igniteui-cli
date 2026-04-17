@@ -363,6 +363,7 @@ export const appConfig: ApplicationConfig = {
 		it("should not modify .vscode/mcp.json if both servers are already present", async () => {
 			const existing = {
 				servers: {
+					"angular-cli": { command: "npx", args: ["-y", "@angular/cli", "mcp"] },
 					"igniteui-cli": { command: "npx", args: ["-y", "igniteui-cli@next", "mcp"] },
 					"igniteui-theming": { command: "npx", args: ["-y", "igniteui-theming", "igniteui-theming-mcp"] }
 				}

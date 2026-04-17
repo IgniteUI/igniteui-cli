@@ -49,24 +49,27 @@ function MyPage() {
 
 ## Uncontrolled Components
 
-`igniteui-react` Inputs integrate with the native form handling through Element internals, allowing to take advantage of the native state management adn validation to create intuitive, straight-forward forms:
+`igniteui-react` Form elements like Inputs, Select, Checkbox, etc., integrate with the native form handling through Element internals, allowing to take advantage of the native state management and validation to create intuitive, straightforward forms. Use the `name` attribute to register the field value with `FormData`:
 
 ```tsx
-import { useRef } from 'react';
-import { IgrInput, IgrButton } from 'igniteui-react';
+import { IgrInput, IgrSelect, IgrSelectItem, IgrButton } from 'igniteui-react';
 
 function SimpleForm() {
-  const nameRef = useRef<IgrInput>(null);
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    // e.preventDefault(); // optionally prevent default submit form custom handling
+  const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
+    // e.preventDefault(); // optionally prevent default submit for custom handling
     const formData = new FormData(e.target);
+    console.log(formData.get('name'));       // input value
+    console.log(formData.get('role'));       // selected option value
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <IgrInput name="name" label="Name" required={true} />
-      <IgrInput name="description" label="description" minLength={0}>
+      <IgrSelect name="role" label="Role" required={true}>
+        <IgrSelectItem value="user">User</IgrSelectItem>
+        <IgrSelectItem value="admin">Admin</IgrSelectItem>
+        <IgrSelectItem value="editor">Editor</IgrSelectItem>
+      </IgrSelect>
       <IgrButton type="submit">
         <span>Submit</span>
       </IgrButton>

@@ -1,5 +1,5 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { inject, Injectable, PLATFORM_ID } from '@angular/core';
 
 class LocalStorageFallback implements Storage {
   [name: string]: any;
@@ -23,7 +23,8 @@ export class LocalStorageService implements Storage {
     return this.storage.length;
   }
 
-  constructor(@Inject(PLATFORM_ID) platformId: object) {
+  constructor() {
+    const platformId = inject(PLATFORM_ID);
     if (isPlatformBrowser(platformId)) {
       this.storage = localStorage;
     } else {

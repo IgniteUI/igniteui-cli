@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, viewChild } from '@angular/core';
 import {
   CloseScrollStrategy,
   ConnectedPositioningStrategy,
@@ -73,11 +73,9 @@ export class <%=ClassName%> {
 
   public chipList: NamedEntry[] = [];
 
-  @ViewChild('chipsArea', { static: true, read: IgxChipsAreaComponent })
-  public chipsArea!: IgxChipsAreaComponent;
+  public chipsArea = viewChild.required('chipsArea', { read: IgxChipsAreaComponent });
 
-  @ViewChild(IgxDropDownComponent, { static: true })
-  public igxDropDown!: IgxDropDownComponent;
+  public igxDropDown = viewChild.required(IgxDropDownComponent);
 
   private positionSettings = {
     horizontalStartPoint: HorizontalAlignment.Left,
@@ -91,7 +89,7 @@ export class <%=ClassName%> {
     scrollStrategy: new CloseScrollStrategy()
   };
 
-  constructor(public cdr: ChangeDetectorRef) { }
+  public cdr = inject(ChangeDetectorRef);
 
   public chipRemoved(event: IBaseChipEventArgs) {
     this.chipList = this.chipList.filter((item) => {
@@ -102,7 +100,7 @@ export class <%=ClassName%> {
 
   public toggleDropDown(ev: MouseEvent) {
     this.overlaySettings.target = ev.target as HTMLButtonElement;
-    this.igxDropDown.toggle(this.overlaySettings);
+    this.igxDropDown().toggle(this.overlaySettings);
   }
 
   public itemSelection(ev: ISelectionEventArgs) {
