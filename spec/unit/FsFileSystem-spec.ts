@@ -1,4 +1,4 @@
-import * as fs from "fs";
+import fs = require("fs");
 import * as glob from "glob";
 import { FsFileSystem } from "../../packages/core/util/FileSystem";
 
