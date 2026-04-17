@@ -69,7 +69,7 @@ export function configure(fileSystem: IFileSystem = new FsFileSystem()): void {
 
 const command: CommandModule = {
 	command: "ai-config",
-	describe: "Configure the Ignite UI MCP server for an AI client",
+	describe: "Configure Ignite UI AI tooling (MCP servers)",
 	builder: (yargs) => yargs.usage(""),
 	async handler(_argv: ArgumentsCamelCase) {
 		GoogleAnalytics.post({

@@ -26,7 +26,7 @@ describe("Help command", () => {
 		upgrade-packages        upgrades Ignite UI Packages
 		mcp                    Starts the Ignite UI MCP server for AI assistant
                                integration
-		ai-config              Configure the Ignite UI MCP server for an AI client
+		ai-config              Configure Ignite UI AI tooling (MCP servers)
 	  Options:
 		-v, --version  Show current Ignite UI CLI version                    [boolean]
 		-h, --help     Show help                                             [boolean]`.replace(/\s/g, "");
