@@ -139,12 +139,22 @@ export default [
     },
   },
   {
+    files: ['packages/igniteui-mcp/igniteui-doc-mcp/src/**/*.ts'],
+    rules: {
+      'no-console': 'off',
+    },
+  },
+  {
     ignores: [
       'node_modules/**/*',
       'coverage/**/*',
       'output/**/*',
       'packages/cli/templates/**/*',
-      '**/files/**/*'
+      '**/files/**/*',
+      'packages/igniteui-mcp/**/dist/**/*',
+      'packages/igniteui-mcp/**/*.test.ts',
+      'packages/igniteui-mcp/igniteui-doc-mcp/scripts/**/*',
+      'packages/igniteui-mcp/igniteui-doc-mcp/vitest.config.ts',
     ]
   },
 ];
