@@ -1,5 +1,4 @@
-import { App, Config, IFileSystem, ProjectConfig } from "@igniteui/cli-core";
-import { copyAISkillsToProject } from "../../packages/cli/lib/ai-skills";
+import { App, Config, copyAISkillsToProject, IFileSystem, ProjectConfig } from "@igniteui/cli-core";
 
 function skillsDir(pkgName: string) {
 	return `node_modules/${pkgName}/skills`;

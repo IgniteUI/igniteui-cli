@@ -1,7 +1,6 @@
-import { FsFileSystem, GoogleAnalytics, IFileSystem, ProjectConfig, Util } from "@igniteui/cli-core";
+import { copyAISkillsToProject, FsFileSystem, GoogleAnalytics, IFileSystem, Util } from "@igniteui/cli-core";
 import { ArgumentsCamelCase, CommandModule } from "yargs";
 import * as path from "path";
-import { copyAISkillsToProject } from "../ai-skills";
 
 const IGNITEUI_SERVER_KEY = "igniteui-cli";
 const IGNITEUI_THEMING_SERVER_KEY = "igniteui-theming";
@@ -65,9 +64,6 @@ export function configureMCP(fileSystem: IFileSystem = new FsFileSystem()): void
 }
 
 export function configureSkills(): void {
-	if (!ProjectConfig.hasLocalConfig()) {
-		return;
-	}
 	const result = copyAISkillsToProject();
 	if (result === "copied") {
 		Util.log(Util.greenCheck() + " AI skills added to the project.");

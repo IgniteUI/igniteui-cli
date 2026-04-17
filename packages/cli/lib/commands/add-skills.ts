@@ -1,5 +1,4 @@
-import { GoogleAnalytics, ProjectConfig, Util } from "@igniteui/cli-core";
-import { copyAISkillsToProject } from "../ai-skills";
+import { copyAISkillsToProject, GoogleAnalytics, ProjectConfig, Util } from "@igniteui/cli-core";
 import { CommandType } from "./types";
 
 const command: CommandType = {
