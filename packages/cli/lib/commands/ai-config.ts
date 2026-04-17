@@ -64,6 +64,10 @@ export function configureVsCode(fileSystem: IFileSystem = new FsFileSystem()): v
 	Util.log(Util.greenCheck() + ` MCP servers configured in ${configPath}`);
 }
 
+export function configure(fileSystem: IFileSystem = new FsFileSystem()): void {
+	configureVsCode(fileSystem);
+}
+
 const command: CommandModule = {
 	command: "ai-config",
 	describe: "Configure the Ignite UI MCP server for an AI client",
@@ -80,7 +84,7 @@ const command: CommandModule = {
 			ea: "client: vscode"
 		});
 
-		configureVsCode();
+		configure();
 	}
 };
 

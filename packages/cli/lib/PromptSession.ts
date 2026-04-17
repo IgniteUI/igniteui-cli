@@ -1,20 +1,18 @@
 import {
-	BasePromptSession, FsFileSystem, GoogleAnalytics, IFileSystem, InquirerWrapper, PackageManager, ProjectConfig,
+	BasePromptSession, GoogleAnalytics, InquirerWrapper, PackageManager, ProjectConfig,
 	ProjectLibrary, PromptTaskContext, Task, Util
 } from "@igniteui/cli-core";
 import * as path from "path";
 import { default as add } from "./commands/add";
+import { configure as aiConfigure } from "./commands/ai-config";
 import { default as start } from "./commands/start";
 import { default as upgrade } from "./commands/upgrade";
 import { TemplateManager } from "./TemplateManager";
 
 export class PromptSession extends BasePromptSession {
 
-	private readonly mcpFs: IFileSystem;
-
-	constructor(templateManager: TemplateManager, mcpFs: IFileSystem = new FsFileSystem()) {
+	constructor(templateManager: TemplateManager) {
 		super(templateManager);
-		this.mcpFs = mcpFs;
 	}
 
 	public static async chooseTerm() {
@@ -107,34 +105,7 @@ export class PromptSession extends BasePromptSession {
 	}
 
 	protected async configureMcp(): Promise<void> {
-		const MCP_SERVER_KEY = "igniteui-mcp-server";
-		let command: string;
-		let args: string[];
-		try {
-			const pkgEntry = require.resolve("igniteui-mcp-server");
-			command = "node";
-			args = [pkgEntry];
-		} catch {
-			command = "npx";
-			args = ["-y", "igniteui-mcp-server"];
-		}
-		const configPath = path.join(process.cwd(), ".vscode", "mcp.json");
-		let config: { servers: Record<string, { command: string; args: string[] }> } = { servers: {} };
-		try {
-			config = JSON.parse(this.mcpFs.readFile(configPath, "utf8"));
-		} catch { /* file doesn't exist yet */ }
-		config.servers = config.servers || {};
-
-		if (config.servers[MCP_SERVER_KEY]) {
-			Util.log(Util.greenCheck() + ` Ignite UI MCP server already configured in ${configPath}`);
-			return;
-		}
-
-		// Preserve existing MCP entries and add ours
-		config.servers[MCP_SERVER_KEY] = { command, args };
-		this.mcpFs.mkdir(path.dirname(configPath), { recursive: true });
-		this.mcpFs.writeFile(configPath, JSON.stringify(config, null, 2) + "\n");
-		Util.log(Util.greenCheck() + ` MCP server configured in ${configPath}`);
+		aiConfigure();
 	}
 
 	/**

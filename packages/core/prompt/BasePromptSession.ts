@@ -421,7 +421,7 @@ export abstract class BasePromptSession {
 					await this.upgradePackages();
 				}
 			}
-			
+
 			await this.configureMcp();
 
 			const defaultPort = config.project.defaultPort;

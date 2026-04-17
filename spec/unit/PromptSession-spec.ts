@@ -1,23 +1,13 @@
-import { App, BaseTemplate, Config, ControlExtraConfigType, GoogleAnalytics, IFileSystem, InquirerWrapper, PackageManager, ProjectConfig,
+import { App, BaseTemplate, Config, ControlExtraConfigType, GoogleAnalytics, InquirerWrapper, PackageManager, ProjectConfig,
 	ProjectLibrary, ProjectTemplate, Template, Util } from "@igniteui/cli-core";
 import * as path from "path";
 import { default as add } from "../../packages/cli/lib/commands/add";
+import * as aiConfig from "../../packages/cli/lib/commands/ai-config";
 import { default as start } from "../../packages/cli/lib/commands/start";
 import { default as upgrade } from "../../packages/cli/lib/commands/upgrade";
 import { PromptSession } from "../../packages/cli/lib/PromptSession";
 import { TemplateManager } from "../../packages/cli/lib/TemplateManager";
 import { Separator } from "@inquirer/prompts";
-
-function createMockMcpFs(): IFileSystem {
-	return {
-		fileExists: jasmine.createSpy("fileExists").and.returnValue(false),
-		readFile: jasmine.createSpy("readFile").and.throwError("ENOENT"),
-		writeFile: jasmine.createSpy("writeFile"),
-		mkdir: jasmine.createSpy("mkdir"),
-		directoryExists: jasmine.createSpy("directoryExists").and.returnValue(false),
-		glob: jasmine.createSpy("glob").and.returnValue([])
-	};
-}
 
 function createMockBaseTemplate(): BaseTemplate {
 	return {
@@ -108,6 +98,10 @@ function createMockLibrary(mockTemplate: Template, mockProjectTemplate: ProjectT
 describe("Unit - PromptSession", () => {
 	beforeAll(() => {
 		spyOn(GoogleAnalytics, "post");
+	});
+
+	beforeEach(() => {
+		spyOn(aiConfig, "configure");
 	});
 
 	// TODO: most of the tests use same setup - move the setup to beforeAll call
@@ -468,7 +462,7 @@ describe("Unit - PromptSession", () => {
 			getProjectLibraryNames: projectLibraries,
 			getProjectLibraryByName: mockProjectLibrary
 		});
-		const mockSession = new PromptSession(mockTemplate, createMockMcpFs());
+		const mockSession = new PromptSession(mockTemplate);
 		const mockProjectConfig = {
 			project: {
 				defaultPort: 4200
@@ -502,9 +496,10 @@ describe("Unit - PromptSession", () => {
 		await mockSession.chooseActionLoop(mockProjectLibrary);
 		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(1);
 		expect(InquirerWrapper.select).toHaveBeenCalledTimes(9);
-		expect(Util.log).toHaveBeenCalledTimes(4);
+		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
 		expect(start.start).toHaveBeenCalledTimes(1);
+		expect(aiConfig.configure).toHaveBeenCalledTimes(1);
 		expect(add.addTemplate).toHaveBeenCalledTimes(1);
 		expect(InquirerWrapper.input).toHaveBeenCalledWith({
 			type: "input",
@@ -542,7 +537,7 @@ describe("Unit - PromptSession", () => {
 			getProjectLibrary: mockProjectLibrary,
 			getProjectLibraryByName: mockProjectLibrary
 		});
-		const mockSession = new PromptSession(mockTemplate, createMockMcpFs());
+		const mockSession = new PromptSession(mockTemplate);
 		const mockProjectConfig = {
 				packagesInstalled: true,
 				project: {
@@ -579,9 +574,10 @@ describe("Unit - PromptSession", () => {
 		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(1);
 		expect(InquirerWrapper.select).toHaveBeenCalledTimes(5);
 		expect(InquirerWrapper.input).toHaveBeenCalledTimes(2);
-		expect(Util.log).toHaveBeenCalledTimes(4);
+		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
 		expect(start.start).toHaveBeenCalledTimes(1);
+		expect(aiConfig.configure).toHaveBeenCalledTimes(1);
 		expect(Util.getAvailableName).toHaveBeenCalledTimes(1);
 		expect(add.addTemplate).toHaveBeenCalledTimes(1);
 		expect(add.addTemplate).toHaveBeenCalledWith("Custom Template Name", mockSelectedTemplate);
@@ -660,7 +656,7 @@ describe("Unit - PromptSession", () => {
 			getProjectLibraryNames: projectLibraries,
 			getProjectLibraryByName: mockProjectLibrary
 		});
-		const mockSession = new PromptSession(mockTemplate, createMockMcpFs());
+		const mockSession = new PromptSession(mockTemplate);
 		const mockProjectConfig = {
 			project: {
 				defaultPort: 4200
@@ -702,9 +698,10 @@ describe("Unit - PromptSession", () => {
 		expect(InquirerWrapper.select).toHaveBeenCalledTimes(10);
 		expect(InquirerWrapper.input).toHaveBeenCalledTimes(2);
 		expect(InquirerWrapper.checkbox).toHaveBeenCalledTimes(1);
-		expect(Util.log).toHaveBeenCalledTimes(4);
+		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
 		expect(start.start).toHaveBeenCalledTimes(1);
+		expect(aiConfig.configure).toHaveBeenCalledTimes(1);
 		expect(add.addTemplate).toHaveBeenCalledTimes(1);
 		expect(InquirerWrapper.checkbox).toHaveBeenCalledWith({
 			type: "checkbox",
@@ -742,7 +739,7 @@ describe("Unit - PromptSession", () => {
 		} as unknown as Config;
 		spyOn(ProjectConfig, "localConfig").and.returnValue(mockProjectConfig);
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
-		const mockSession = new PromptSession(mockTemplate, createMockMcpFs());
+		const mockSession = new PromptSession(mockTemplate);
 		spyOn(mockSession, "chooseActionLoop").and.callThrough();
 		spyOn(InquirerWrapper, "select").and.returnValues(
 			Promise.resolve("Complete & Run"),
@@ -784,7 +781,7 @@ describe("Unit - PromptSession", () => {
 		spyOn(ProjectConfig, "localConfig").and.returnValue(mockProjectConfig);
 		spyOn(ProjectConfig, "setConfig");
 
-		const mockSession = new PromptSession({} as any, createMockMcpFs());
+		const mockSession = new PromptSession({} as any);
 		spyOn(mockSession as any, "generateActionChoices").and.returnValues([]);
 		spyOn(mockSession as any, "getUserInput").and.returnValues(
 			Promise.resolve("Complete & Run"),
