@@ -1,5 +1,5 @@
 import * as path from "path";
-import { GoogleAnalytics, IFileSystem, Util } from "@igniteui/cli-core";
+import { App, FS_TOKEN, GoogleAnalytics, IFileSystem, Util } from "@igniteui/cli-core";
 import { configureMCP } from "../../packages/cli/lib/commands/ai-config";
 import * as aiConfig  from "../../packages/cli/lib/commands/ai-config";
 
@@ -118,6 +118,7 @@ describe("Unit - ai-config command", () => {
 
 	describe("handler", () => {
 		it("posts analytics and calls configure", async () => {
+			App.container.set(FS_TOKEN, createMockFs());
 			const fs = require("fs");
 			spyOn(fs, "readFileSync").and.throwError(new Error("ENOENT"));
 			spyOn(fs, "existsSync").and.returnValue(false);
