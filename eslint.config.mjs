@@ -31,7 +31,10 @@ export default [
     },
     rules: {
       'complexity': 'off',
-      'eslint-plugin-import/no-extraneous-dependencies': 'warn',
+      'eslint-plugin-import/no-extraneous-dependencies': [
+        'error',
+        {'packageDir': ['./packages/cli', './packages/core', './packages/igniteui-mcp/igniteui-doc-mcp', './packages/igx-templates', './packages/ng-schematics']}
+      ],
       'eslint-plugin-import/order': [
         'off',
         {
