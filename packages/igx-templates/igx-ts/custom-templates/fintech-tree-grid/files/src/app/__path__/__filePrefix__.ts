@@ -4,8 +4,8 @@ import {
   ElementRef,
   OnDestroy,
   OnInit,
-  ViewChild,
-  NgZone,
+  inject,
+  viewChild,
 } from '@angular/core';
 import {
   AbsoluteScrollStrategy,
@@ -63,10 +63,10 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
   ]
 })
 export class <%=ClassName%> implements OnInit, AfterViewInit, OnDestroy {
-  @ViewChild('grid1', { static: true }) public grid1!: IgxTreeGridComponent;
-  @ViewChild('buttonGroup1', { static: true }) public buttonGroup1!: IgxButtonGroupComponent;
-  @ViewChild('slider1', { static: true }) public volumeSlider!: IgxSliderComponent;
-  @ViewChild('slider2', { static: true }) public intervalSlider!: IgxSliderComponent;
+  public grid1 = viewChild.required<IgxTreeGridComponent>('grid1');
+  public buttonGroup1 = viewChild.required<IgxButtonGroupComponent>('buttonGroup1');
+  public volumeSlider = viewChild.required<IgxSliderComponent>('slider1');
+  public intervalSlider = viewChild.required<IgxSliderComponent>('slider2');
 
   public showToolbar = true;
   public selectionMode: GridSelectionMode = 'multiple';
@@ -139,14 +139,17 @@ export class <%=ClassName%> implements OnInit, AfterViewInit, OnDestroy {
   private timer: any;
   private volumeChanged: any;
 
-  constructor(private zone: NgZone, private localData: LocalData, private elRef: ElementRef) {
+  private localData = inject(LocalData);
+  private elRef = inject(ElementRef);
+
+  constructor() {
     this.subscription = this.localData.getData(this.volume);
     this.localData.records.subscribe((d) => this.data = d);
   }
 
   public ngOnInit(): void {
-    this.grid1.sortingExpressions = [{ fieldName: this.groupColumnKey, dir: SortingDirection.Desc }];
-    this.volumeChanged = this.volumeSlider.valueChange.pipe(debounce(() => timer(200)));
+    this.grid1().sortingExpressions = [{ fieldName: this.groupColumnKey, dir: SortingDirection.Desc }];
+    this.volumeChanged = this.volumeSlider().valueChange.pipe(debounce(() => timer(200)));
     this.volumeChanged.subscribe(
       () => {
         this.localData.getData(this.volume);
@@ -155,7 +158,7 @@ export class <%=ClassName%> implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public ngAfterViewInit(): void {
-    this.grid1.reflow();
+    this.grid1().reflow();
   }
   public onButtonAction(evt: IButtonGroupEventArgs): void {
     switch (evt.index) {
@@ -263,10 +266,10 @@ export class <%=ClassName%> implements OnInit, AfterViewInit, OnDestroy {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
-    this.volumeSlider.disabled = disableButtons;
-    this.intervalSlider.disabled = disableButtons;
+    this.volumeSlider().disabled = disableButtons;
+    this.intervalSlider().disabled = disableButtons;
     this.selectedButton = ind;
-    this.buttonGroup1.buttons.forEach((button, index) => {
+    this.buttonGroup1().buttons.forEach((button, index) => {
       if (index === 2) { button.disabled = !disableButtons; } else {
         button.disabled = disableButtons;
       }

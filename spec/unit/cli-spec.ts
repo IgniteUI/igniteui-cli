@@ -54,15 +54,33 @@ describe("Unit - Cli.ts", () => {
 		await run.run("list");
 		expect(list.handler).toHaveBeenCalled();
 	});
-	it("Should fire properly - fallback to default", async () => {
+	it("Should fire properly - fallback to default with no args", async () => {
 		spyOn(Util , "log");
 		spyOn(GoogleAnalytics, "post");
 		spyOn(PromptSession.prototype, "start");
-		await run.run("Nonexistent command");
+		await run.run([]);
 
 		// expected console output:
 		expect(Util.log).toHaveBeenCalledWith("Starting Step by step mode.", "green");
 		expect(Util.log).toHaveBeenCalledWith("For available commands, stop this execution and use --help.", "green");
 		expect(PromptSession.prototype.start).toHaveBeenCalled();
+	});
+	it("Should show error for unknown command", async () => {
+		spyOn(Util , "log");
+		spyOn(Util , "error");
+		spyOn(GoogleAnalytics, "post");
+		spyOn(PromptSession.prototype, "start");
+		await run.run("nonexistent");
+
+		expect(Util.error).toHaveBeenCalledWith(`Unknown command: "nonexistent"`, "red");
+		expect(PromptSession.prototype.start).not.toHaveBeenCalled();
+	});
+	it("Should gracefully handle subcommand validation errors", async () => {
+		spyOn(Util , "log");
+		spyOn(Util , "error");
+		spyOn(GoogleAnalytics, "post");
+		await run.run("generate");
+
+		expect(Util.error).toHaveBeenCalledWith("Please select command", "red");
 	});
 });

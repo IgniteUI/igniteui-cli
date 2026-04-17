@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { ExternalLogin, Login } from '../models/login';
 import { RegisterInfo } from '../models/register-info';
 import { LoginResult, User } from '../models/user';
@@ -11,7 +11,7 @@ import { parseUser } from './jwt-util';
 })
 export class Authentication {
 
-  constructor(private http: HttpClient) { }
+  private http = inject(HttpClient);
 
   /** Send basic credentials to login endpoint. */
   public async login(userData: Login): Promise<LoginResult> {
