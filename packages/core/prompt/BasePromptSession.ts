@@ -98,7 +98,7 @@ export abstract class BasePromptSession {
 	/** Upgrade packages to use private Infragistics feed */
 	protected abstract upgradePackages();
 
-	/** Configure Ignite UI AI tooling (MCP servers) for the project */
+	/** Configure Ignite UI AI tooling (MCP servers and AI coding skills) for the project */
 	protected abstract configureAI(): Promise<void>;
 
 	/**

@@ -87,6 +87,7 @@ export function component(options: ComponentOptions): Rule {
 			component: projLib.components,
 			custom: projLib.getCustomTemplates()
 		};
+		void properties; // cache templates for use inside chooseActionLoop
 		let prompt: SchematicsPromptSession;
 		if (!options.template || !options.name) {
 			prompt = new SchematicsPromptSession(templateManager);

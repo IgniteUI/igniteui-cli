@@ -1,4 +1,4 @@
-import { FsFileSystem, GoogleAnalytics, IFileSystem, Util } from "@igniteui/cli-core";
+import { copyAISkillsToProject, FsFileSystem, GoogleAnalytics, IFileSystem, Util } from "@igniteui/cli-core";
 import { ArgumentsCamelCase, CommandModule } from "yargs";
 import * as path from "path";
 
@@ -63,13 +63,24 @@ export function configureMCP(fileSystem: IFileSystem = new FsFileSystem()): void
 	Util.log(Util.greenCheck() + ` MCP servers configured in ${configPath}`);
 }
 
+export function configureSkills(): void {
+	const result = copyAISkillsToProject();
+	if (result === "copied") {
+		Util.log(Util.greenCheck() + " AI skills added to the project.");
+	} else {
+		Util.warn("No AI skill files found. Make sure packages are installed (npm install) " +
+			"and your Ignite UI package includes a skills/ directory.", "yellow");
+	}
+}
+
 export function configure(fileSystem: IFileSystem = new FsFileSystem()): void {
 	configureMCP(fileSystem);
+	configureSkills();
 }
 
 const command: CommandModule = {
 	command: "ai-config",
-	describe: "Configure Ignite UI AI tooling (MCP servers)",
+	describe: "Configure Ignite UI AI tooling (MCP servers and AI coding skills)",
 	builder: (yargs) => yargs.usage(""),
 	async handler(_argv: ArgumentsCamelCase) {
 		GoogleAnalytics.post({

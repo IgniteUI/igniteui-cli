@@ -473,6 +473,7 @@ describe("Unit - PromptSession", () => {
 		spyOn(Util, "log");
 		spyOn(add, "addTemplate").and.returnValue(Promise.resolve(true));
 		spyOn(PackageManager, "flushQueue").and.returnValue(Promise.resolve());
+		spyOn(PackageManager, "installPackages").and.returnValue(Promise.resolve());
 		spyOn(start, "start").and.returnValue(Promise.resolve());
 
 		spyOn(InquirerWrapper, "select").and.returnValues(
@@ -667,6 +668,7 @@ describe("Unit - PromptSession", () => {
 		spyOn(Util, "log");
 		spyOn(add, "addTemplate").and.returnValue(Promise.resolve(true));
 		spyOn(PackageManager, "flushQueue").and.returnValue(Promise.resolve());
+		spyOn(PackageManager, "installPackages").and.returnValue(Promise.resolve());
 		//spyOn(start, "start").and.returnValue(Promise.resolve({port: 3333 }));
 		spyOn(start, "start").and.returnValue(Promise.resolve());
 
