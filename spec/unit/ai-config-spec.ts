@@ -1,7 +1,7 @@
 import * as path from "path";
 import { GoogleAnalytics, IFileSystem, Util } from "@igniteui/cli-core";
 import { configureMCP } from "../../packages/cli/lib/commands/ai-config";
-import { default as aiConfig } from "../../packages/cli/lib/commands/ai-config";
+import * as aiConfig  from "../../packages/cli/lib/commands/ai-config";
 
 const IGNITEUI_SERVER_KEY = "igniteui-cli";
 const IGNITEUI_THEMING_SERVER_KEY = "igniteui-theming";
@@ -119,9 +119,15 @@ describe("Unit - ai-config command", () => {
 	});
 
 	describe("handler", () => {
-		it("posts analytics and calls configureMCP", async () => {
-			await aiConfig.handler({ _: ["ai-config"], $0: "ig" });
+		it("posts analytics and calls configure", async () => {
+			const fs = require("fs");
+			spyOn(fs, "readFileSync").and.throwError(new Error("ENOENT"));
+			spyOn(fs, "mkdirSync");
+			spyOn(fs, "writeFileSync");
 
+			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
+
+			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("MCP servers configured"));
 			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "screenview", cd: "MCP" }));
 			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", ec: "$ig ai-config" }));
 		});
